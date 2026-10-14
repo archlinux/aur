@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=2.0.0alpha13
+pkgver=2.0.0alpha14
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
@@ -17,10 +17,10 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
 provides=('wingdrive')
 conflicts=('wingdrive')
 options=('!strip' '!debug')
-_upstream_version=2.0.0-alpha.13
-source=("WingDrive-2.0.0-alpha.13-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.0-alpha.13-x86_64.AppImage"
+_upstream_version=2.0.0-alpha.14
+source=("WingDrive-2.0.0-alpha.14-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.0-alpha.14-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('2a8cf75f213cafb63a205ed92daf27f25078188dbb6d4b3bf22c4bb6243afab6' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('a13fa2eaae2f805391588946e2da1ef38e03d2de6de3f77414683b8205fb1c5c' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -29,8 +29,8 @@ sha256sums=('2a8cf75f213cafb63a205ed92daf27f25078188dbb6d4b3bf22c4bb6243afab6' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-2.0.0-alpha.13-x86_64.AppImage"
-  "./WingDrive-2.0.0-alpha.13-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-2.0.0-alpha.14-x86_64.AppImage"
+  "./WingDrive-2.0.0-alpha.14-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
