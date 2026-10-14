@@ -1,6 +1,6 @@
 pkgbase = wsjtcb
 	pkgdesc = CB-oriented fork of WSJT-X for weak-signal digital communications on 27 MHz
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/vash909/WSJT-CB
 	arch = x86_64
@@ -14,16 +14,22 @@ pkgbase = wsjtcb
 	makedepends = qt5-tools
 	depends = boost-libs
 	depends = fftw
+	depends = glibc
 	depends = hamlib
 	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libgfortran
+	depends = libgomp
+	depends = libstdc++
 	depends = libusb
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-serialport
 	depends = qt5-websockets
+	depends = readline
 	provides = wsjtcb
 	conflicts = wsjtcb-git
-	source = WSJT-CB-WSJT-CB-1.3.0::git+https://github.com/vash909/WSJT-CB.git#tag=WSJT-CB-1.3.0
+	source = WSJT-CB-1.4.0::git+https://github.com/vash909/WSJT-CB.git#commit=28a6f156827bf76df4f8e70b532289da3e108362
 	sha256sums = SKIP
 
 pkgname = wsjtcb

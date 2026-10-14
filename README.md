@@ -1,22 +1,23 @@
 # AUR package repo
 
-This directory is ready to be used as the root of an AUR repository for `wsjtcb`.
+This is the AUR repository for `wsjtcb`.
 
 Suggested flow:
 
 ```bash
-cd aur/wsjtcb
+git clone ssh://aur@aur.archlinux.org/wsjtcb.git
+cd wsjtcb
+# Update PKGBUILD, then build and validate the package.
+makepkg -s
 makepkg --printsrcinfo > .SRCINFO
-namcap PKGBUILD .SRCINFO
-git init
-git remote add origin ssh://aur@aur.archlinux.org/wsjtcb.git
+namcap PKGBUILD wsjtcb-*.pkg.tar.zst
 git add PKGBUILD .SRCINFO
-git commit -m "Initial import"
+git commit -m "Update to 1.4.0"
 git push origin master
 ```
 
 Notes:
 
-- The package tracks the tagged release matching `pkgver` via a pinned git source, so it stays on the stable release while avoiding GitHub archive checksum churn.
+- Version 1.4.0 (Scarlet) pins upstream commit `28a6f156827bf76df4f8e70b532289da3e108362`, the merge into `main`. No 1.4.0 tag was available when preparing this update. The fixed commit keeps builds independent of later branch changes.
 - Documentation generation and manpages are disabled to keep Arch build dependencies minimal.
 - The upstream CMake install already ships the desktop file, icon, shared data, helper binaries, and docs.

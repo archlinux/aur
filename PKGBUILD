@@ -1,7 +1,7 @@
 # Maintainer: vash909 <iu1bot@xzgroup.net>
 
 pkgname=wsjtcb
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='CB-oriented fork of WSJT-X for weak-signal digital communications on 27 MHz'
 arch=('x86_64')
@@ -10,13 +10,19 @@ license=('GPL-3.0-only')
 depends=(
   'boost-libs'
   'fftw'
+  'glibc'
   'hamlib'
   'hicolor-icon-theme'
+  'libgcc'
+  'libgfortran'
+  'libgomp'
+  'libstdc++'
   'libusb'
   'qt5-base'
   'qt5-multimedia'
   'qt5-serialport'
   'qt5-websockets'
+  'readline'
 )
 makedepends=(
   'boost'
@@ -31,10 +37,11 @@ conflicts=('wsjtcb-git')
 provides=('wsjtcb')
 
 _srcname='WSJT-CB'
-_tag="WSJT-CB-${pkgver}"
-_srcdir="${_srcname}-${_tag}"
+# 1.4.0 (Scarlet), merged upstream; no release tag is available yet.
+_commit='28a6f156827bf76df4f8e70b532289da3e108362'
+_srcdir="${_srcname}-${pkgver}"
 source=(
-  "${_srcdir}::git+${url}.git#tag=${_tag}"
+  "${_srcdir}::git+${url}.git#commit=${_commit}"
 )
 sha256sums=(
   'SKIP'
