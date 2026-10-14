@@ -3,7 +3,7 @@
 pkgname=noctalia-greeter-git
 _pkgname=noctalia-greeter
 pkgver=1.0.0.r32.g34599488c
-pkgrel=6
+pkgrel=7
 pkgdesc="Minimal greetd greeter matching the look and feel of Noctalia Shell"
 arch=('x86_64' 'aarch64')
 url="https://github.com/noctalia-dev/noctalia-greeter"
@@ -20,6 +20,7 @@ depends=(
   'greetd'
   'libglvnd'
   'libinput'
+  'libjxl'
   'librsvg'
   'libwebp'
   'libxkbcommon'
