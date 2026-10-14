@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mnextend
 _name=${pkgname#python-}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Additional functionality for MNE-Python"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-uv-build')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9ff2220cb5dfa56449d34d1bd50c60943512ad922a3cd69323f96ef03f724a9e')
+sha256sums=('df10681e06acae7acc7d58f0bc295be418188611e0c0bf29bffdfe2bf8cc9703')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
