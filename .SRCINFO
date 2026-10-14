@@ -1,0 +1,18 @@
+pkgbase = harlettizer
+	pkgdesc = Open encoding engine for immersive audio: object masters to TrueHD/MLP with object metadata, or IAMF
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/harletty/harlettizer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = Apache-2.0
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = opus
+	source = harlettizer-0.1.0.tar.gz::https://github.com/harletty/harlettizer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0cc373f71da6ee1875ff578c38287c4f0769d3c7a56367f4a6d7020cffc41db6
+
+pkgname = harlettizer
