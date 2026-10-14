@@ -1,6 +1,6 @@
 pkgbase = kache-bin
 	pkgdesc = Content-addressed zero-copy build cache for Rust, C/C++ and more (prebuilt binary)
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/kunobi-ninja/kache
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kache-bin
 	license = Apache-2.0
 	provides = kache
 	conflicts = kache
-	source_x86_64 = kache-1.1.1-x86_64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v1.1.1/kache-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 2ef097121b87ed7a24f9b40fbf5d3799837b4c2ac75391d2264ea5cc6c38b3d7
-	source_aarch64 = kache-1.1.1-aarch64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v1.1.1/kache-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 3c2e82f42092123a937004aa1a3b5efa766c39b071eedce2de9e9b51fbe91b08
+	source_x86_64 = kache-1.2.0-x86_64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v1.2.0/kache-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 25ac2aa05400114b728058afde5ed09ae44657377160b58a5630c3cc2066c62d
+	source_aarch64 = kache-1.2.0-aarch64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v1.2.0/kache-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = ddb13fc2f9a9bf4aeac3b9112495c37f30499d1f5df83d5e26bab69b5badc265
 
 pkgname = kache-bin
