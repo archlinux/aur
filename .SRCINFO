@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-windows-media-player-9
-	pkgdesc = AIMP skin: Windows Media Player 9 1.0 (by memo-se)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Windows Media Player 9 2019-06-11 (by memo-se)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-windows-media-player-9
 	options = !strip
 	options = !debug
 	source = aimp-skin-windows-media-player-9-1073.archive::https://aimp.ru/?do=catalog.download&id=1073
-	sha256sums = e56f36f50ade9584126a94b0f5635b21ac7770584c66d82d9c79c556d0a21864
+	sha256sums = SKIP
 
 pkgname = aimp-skin-windows-media-player-9
