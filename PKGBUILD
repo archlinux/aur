@@ -3,7 +3,7 @@
 pkgname=deepin-reader
 pkgver=6.6.2
 pkgrel=1
-pkgdesc='Document viewer for PDF, DjVu, XPS, DOCX and PPTX files'
+pkgdesc='Document viewer for PDF, DjVu, DOCX and XPS files'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/deepin-reader'
 license=(GPL-3.0-or-later LGPL-3.0-or-later BSD-3-Clause CC-BY-4.0 CC0-1.0)
@@ -17,17 +17,20 @@ depends=(
   gcc-libs
   glib2
   glibc
+  hicolor-icon-theme
   icu
+  libarchive
   libchardet
+  # loaded with dlopen() by deepin-reader-batchprint
   libcups
   libgxps
   libjpeg-turbo
-  libpng
   lcms2
   openjpeg2
+  # unzip, pandoc and the bundled htmltopdf convert DOCX documents
   pandoc-cli
-  qt6-5compat
   qt6-base
+  # image format plugin, renders the SVG icons of the interface
   qt6-svg
   qt6-webengine
   unzip
@@ -35,8 +38,9 @@ depends=(
 )
 makedepends=(
   cmake
+  libpng
   ninja
-  pkgconf
+  qt6-5compat
   qt6-tools
 )
 optdepends=(
@@ -58,6 +62,7 @@ prepare() {
 build() {
   # GCC 14 no longer includes <cstdint> transitively; the bundled PDFium headers rely on it
   CXXFLAGS+=" -include cstdint"
+  # librofd-ffi, required for OFD documents, is not packaged in Arch
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
