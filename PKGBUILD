@@ -6,7 +6,7 @@
 
 pkgname=sonarr-develop
 _pkgname=Sonarr
-pkgver=4.0.20.3012
+pkgver=5.0.0.2569
 pkgrel=1
 pkgdesc='Smart PVR for newsgroup and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
@@ -14,12 +14,15 @@ url='https://sonarr.tv'
 license=('GPL-3.0-or-later')
 groups=(servarr-develop)
 depends=(
-  aspnet-runtime-6.0
+  aspnet-runtime-10.0
   gcc-libs
   glibc
   sqlite
 )
-makedepends=(dotnet-sdk-6.0 yarn)
+makedepends=(
+  dotnet-sdk-10.0
+  aspnet-targeting-pack-10.0
+  yarn)
 optdepends=(
   'postgresql: postgresql database'
   'sabnzbd: usenet downloader'
@@ -48,7 +51,7 @@ source=(
   sonarr.sysusers
   sonarr.tmpfiles
 )
-sha256sums=('f8fdc469fbcc286e3fabc11006014f05331355a6022db87ebea1ac21fc0173ae'
+sha256sums=('1feacf4cc29077419d2f44933d976ef1cc30b6f0f5136e1592160faaff719e36'
             'a6b37e75143a309b1d8c163c3f90f7f0275fd730015c3f74e3ad27c278b1ae90'
             'a5fc162aeafb2c6322176db736a503047a39f2740eea4dead05438ed47187fbd'
             '00141d4cbf34daa6d91b26179d4847ec970e2767382e18fdf9af2ec84a0ff43e'
@@ -60,7 +63,7 @@ case ${CARCH} in
   armv7h) _CARCH='arm' ;;
 esac
 
-_framework='net6.0'
+_framework='net10.0'
 _runtime="linux-${_CARCH}"
 _output='_output'
 _artifacts="${_output}/${_framework}/${_runtime}/publish"
@@ -75,7 +78,13 @@ prepare() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 6.0.113 --force
+  dotnet new globaljson --sdk-version 10.0.112 --roll-forward latestFeature
+
+  # Patch vulnerabilities
+  if ! grep -q -i 'System.Security.Cryptography.Pkcs' src/NzbDrone.Core/Sonarr.Core.csproj; then
+    dotnet package add System.Security.Cryptography.Pkcs --version 10.0.13 --project src/NzbDrone.Core/Sonarr.Core.csproj
+    dotnet package add Microsoft.AspNetCore.SignalR.Common --version 10.0.13 --project src/NzbDrone.Core/Sonarr.Core.csproj
+  fi
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
@@ -107,7 +116,7 @@ build() {
     && dotnet build-server shutdown # Build servers do not terminate automatically
 
   # Build frontend
-  yarn run build --env production
+  yarn run build
 }
 
 package() {
