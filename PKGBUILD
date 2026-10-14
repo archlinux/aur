@@ -1,7 +1,7 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 
 pkgname=scooter
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='An interactive find and replace in the terminal'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(gcc-libs glibc oniguruma)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=(0763a96361c4d0c7b6548b0c48b0e3c89b26f2136ba73cf85d570db78496917b)
+sha256sums=(724b874f11814d02bf08f4dc74d47251ef7ec5b93ecc855b663c2def8e1ccef5)
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
