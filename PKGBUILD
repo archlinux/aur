@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=2.0.0alpha12
+pkgver=2.0.0alpha13
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
@@ -11,14 +11,16 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
             'gvfs: network locations (SFTP, FTP, WebDAV) in the sidebar'
             'gvfs-mtp: Android phones over MTP'
             'gvfs-smb: Windows and Samba shares'
-            'gvfs-gphoto2: cameras')
+            'gvfs-gphoto2: cameras'
+            'ffmpeg: video thumbnails in folders that are not indexed'
+            'poppler: PDF thumbnails in folders that are not indexed')
 provides=('wingdrive')
 conflicts=('wingdrive')
 options=('!strip' '!debug')
-_upstream_version=2.0.0-alpha.12
-source=("WingDrive-2.0.0-alpha.12-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.0-alpha.12-x86_64.AppImage"
+_upstream_version=2.0.0-alpha.13
+source=("WingDrive-2.0.0-alpha.13-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.0-alpha.13-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('ba0b9401939b3c1b6f7e212c3865708d1400a20796cfcea698ecf75951828cd5' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('2a8cf75f213cafb63a205ed92daf27f25078188dbb6d4b3bf22c4bb6243afab6' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -27,8 +29,8 @@ sha256sums=('ba0b9401939b3c1b6f7e212c3865708d1400a20796cfcea698ecf75951828cd5' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-2.0.0-alpha.12-x86_64.AppImage"
-  "./WingDrive-2.0.0-alpha.12-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-2.0.0-alpha.13-x86_64.AppImage"
+  "./WingDrive-2.0.0-alpha.13-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 

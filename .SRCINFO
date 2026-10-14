@@ -1,6 +1,6 @@
 pkgbase = wingdrive-bin
 	pkgdesc = WingDrive desktop file manager
-	pkgver = 2.0.0alpha12
+	pkgver = 2.0.0alpha13
 	pkgrel = 1
 	url = https://github.com/bernardopg/wingdrive
 	arch = x86_64
@@ -24,13 +24,15 @@ pkgbase = wingdrive-bin
 	optdepends = gvfs-mtp: Android phones over MTP
 	optdepends = gvfs-smb: Windows and Samba shares
 	optdepends = gvfs-gphoto2: cameras
+	optdepends = ffmpeg: video thumbnails in folders that are not indexed
+	optdepends = poppler: PDF thumbnails in folders that are not indexed
 	provides = wingdrive
 	conflicts = wingdrive
 	options = !strip
 	options = !debug
-	source = WingDrive-2.0.0-alpha.12-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v2.0.0-alpha.12/WingDrive-2.0.0-alpha.12-x86_64.AppImage
-	source = LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v2.0.0-alpha.12/LICENSE
-	sha256sums = ba0b9401939b3c1b6f7e212c3865708d1400a20796cfcea698ecf75951828cd5
+	source = WingDrive-2.0.0-alpha.13-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v2.0.0-alpha.13/WingDrive-2.0.0-alpha.13-x86_64.AppImage
+	source = LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v2.0.0-alpha.13/LICENSE
+	sha256sums = 2a8cf75f213cafb63a205ed92daf27f25078188dbb6d4b3bf22c4bb6243afab6
 	sha256sums = 57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8
 
 pkgname = wingdrive-bin
