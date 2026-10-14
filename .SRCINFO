@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-glass-and-pixels
-	pkgdesc = AIMP skin: Glass & Pixels 1.0.2 (by Xpand)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Glass & Pixels v1.0.2 (by Xpand)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-glass-and-pixels
 	options = !strip
 	options = !debug
 	source = aimp-skin-glass-and-pixels-226.archive::https://aimp.ru/?do=catalog.download&id=226
-	sha256sums = c69e33ef8fa0a621d29cb11360743d0dbb230a751932a38391eda25909190447
+	sha256sums = SKIP
 
 pkgname = aimp-skin-glass-and-pixels
