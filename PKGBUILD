@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('bd3748310f0db49eeb215e8da02b8948896135bb1447333ed797200f051ddde2dc472c41c8520f15afd7d7696302a4623526a98f6bbb717e5da93cac1c7f7c78')
+b2sums=('86a291fda8d9f42059cc0ed840be774cdce3142eb262d6b5ce26382f027462be41c2200168d4301fb845be91d8e320a9e04a9857aedcd5a4da5fcaa211c45a61')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
