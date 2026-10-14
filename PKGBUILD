@@ -11,6 +11,14 @@ conflicts=('laurel-audit-bin' 'laurel-audit-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9cacc0d7097a0e8e7c7eccfe6fcc7fd7958e3b403ed8270a8691ad68299dec23')
 
+prepare() {
+  cd "laurel-${pkgver}"
+
+  sed -i \
+    's|^path = /usr/local/sbin/laurel$|path = /usr/bin/laurel|' \
+    etc/audit/plugins.d/laurel.conf
+}
+
 build() {
   cd "laurel-${pkgver}"
 
