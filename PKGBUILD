@@ -2,7 +2,7 @@
 
 pkgname=proton-ge-git
 pkgver=GE.Proton11.9.r0.g01bfbf6
-pkgrel=2
+pkgrel=3
 pkgdesc='Custom distribution of Valves Proton with various patches (built from git)'
 arch=('x86_64')
 url='https://github.com/GloriousEggroll/proton-ge-custom'
@@ -69,6 +69,15 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
+
+  # makepkg clones with --shared from $SRCDEST (default: the PKGBUILD dir).
+  # The build container only mounts the source tree, so git inside it can't
+  # reach those objects and the version file loses its name. Keep this.
+  if [[ -f .git/objects/info/alternates ]]; then
+    git repack -a -d -q
+    rm .git/objects/info/alternates
+  fi
+
   git submodule update --init --recursive
 
   # Upstream's patch step; its apply_patch ignores failures, so check the log
@@ -107,6 +116,12 @@ package() {
   local _built="build/dist"
   if [[ ! -d "${_built}/files" ]]; then
     printf 'ERROR: Build output not found under %s. The build may have failed.\n' "${_built}" >&2
+    return 1
+  fi
+
+  # protonfixes aborts every launch unless this reads "<timestamp> <name>"
+  if ! grep -qE '^[0-9]+ [^ ]+$' "${_built}/version"; then
+    printf 'ERROR: malformed %s/version: %s\n' "${_built}" "$(<"${_built}/version")" >&2
     return 1
   fi
 
