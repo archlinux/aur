@@ -1,0 +1,523 @@
+--- python/pylibcudf/pylibcudf/aggregation.pyx.orig
++++ python/pylibcudf/pylibcudf/aggregation.pyx
+@@ -421,7 +421,7 @@
+ 
+ 
+ cpdef Aggregation quantile(
+-    list quantiles: list[float],
++    list quantiles,
+     interpolation interp = interpolation.LINEAR,
+ ):
+     """Create a quantile aggregation.
+--- python/pylibcudf/pylibcudf/copying.pyx.orig
++++ python/pylibcudf/pylibcudf/copying.pyx
+@@ -499,7 +499,7 @@
+ 
+ cpdef list[ColumnOrTable] slice(
+     ColumnOrTable input,
+-    list indices: list[int],
++    list indices,
+     object stream: CudaStreamLike | None = None,
+ ):
+     """Slice input according to indices.
+@@ -560,7 +560,7 @@
+ 
+ cpdef list[ColumnOrTable] split(
+     ColumnOrTable input,
+-    list splits: list[int],
++    list splits,
+     object stream: CudaStreamLike | None = None,
+ ):
+     """Split input into multiple.
+--- python/pylibcudf/pylibcudf/expressions.pyx.orig
++++ python/pylibcudf/pylibcudf/expressions.pyx
+@@ -476,7 +476,7 @@
+ 
+ 
+ @functools.lru_cache(256)
+-def to_expression(str expr, tuple column_names: tuple[str, ...]) -> Expression:
++def to_expression(str expr, tuple column_names) -> Expression:
+     """
+     Create an expression for `pylibcudf.transform.compute_column`.
+ 
+--- python/pylibcudf/pylibcudf/groupby.pyx.orig
++++ python/pylibcudf/pylibcudf/groupby.pyx
+@@ -57,7 +57,7 @@
+         The list of aggregations to perform.
+     """
+     def __init__(
+-        self, Column values, list aggregations: list[Aggregation]
++        self, Column values, list aggregations
+     ):
+         self._values = values
+         self._aggregations = aggregations
+@@ -173,7 +173,7 @@
+ 
+     cpdef tuple[Table, list[Table]] aggregate(
+         self,
+-        list requests: list[GroupByRequest],
++        list requests,
+         object stream: CudaStreamLike | None = None,
+         DeviceMemoryResource mr=None,
+     ):
+@@ -217,7 +217,7 @@
+ 
+     cpdef tuple[Table, list[Table]] scan(
+         self,
+-        list requests: list[GroupByRequest],
++        list requests,
+         object stream: CudaStreamLike | None = None,
+         DeviceMemoryResource mr=None,
+     ):
+@@ -261,7 +261,7 @@
+     cpdef tuple[Table, Table] shift(
+         self,
+         Table values,
+-        list offset: list[int],
++        list offset,
+         list fill_values: list[Scalar],
+         object stream: CudaStreamLike | None = None,
+         DeviceMemoryResource mr=None,
+--- python/pylibcudf/pylibcudf/merge.pyx.orig
++++ python/pylibcudf/pylibcudf/merge.pyx
+@@ -25,8 +25,8 @@
+ __all__ = ["merge"]
+ 
+ cpdef Table merge (
+-    list tables_to_merge: list[Table],
+-    list key_cols: list[int],
++    list tables_to_merge,
++    list key_cols,
+     list column_order: list[Order],
+     list null_precedence: list[NullOrder],
+     object stream: CudaStreamLike | None = None,
+--- python/pylibcudf/pylibcudf/rolling.pyx.orig
++++ python/pylibcudf/pylibcudf/rolling.pyx
+@@ -131,7 +131,7 @@
+     null_order null_order,
+     PrecedingRangeWindowType preceding,
+     FollowingRangeWindowType following,
+-    list requests: list[RollingRequest],
++    list requests,
+     object stream: CudaStreamLike | None = None,
+     DeviceMemoryResource mr=None,
+ ):
+--- python/pylibcudf/pylibcudf/stream_compaction.pyx.orig
++++ python/pylibcudf/pylibcudf/stream_compaction.pyx
+@@ -50,7 +50,7 @@
+ 
+ cpdef Table drop_nulls(
+     Table source_table,
+-    list keys: list[int],
++    list keys,
+     size_type keep_threshold,
+     object stream: CudaStreamLike | None = None,
+     DeviceMemoryResource mr=None,
+@@ -90,7 +90,7 @@
+ 
+ cpdef Table drop_nans(
+     Table source_table,
+-    list keys: list[int],
++    list keys,
+     size_type keep_threshold,
+     object stream: CudaStreamLike | None = None,
+     DeviceMemoryResource mr=None,
+@@ -219,7 +219,7 @@
+ 
+ cpdef Table unique(
+     Table input,
+-    list keys: list[int],
++    list keys,
+     duplicate_keep_option keep,
+     null_equality nulls_equal,
+     object stream: CudaStreamLike | None = None,
+@@ -268,7 +268,7 @@
+ 
+ cpdef Table distinct(
+     Table input,
+-    list keys: list[int],
++    list keys,
+     duplicate_keep_option keep,
+     null_equality nulls_equal,
+     nan_equality nans_equal,
+@@ -358,7 +358,7 @@
+ 
+ cpdef Table stable_distinct(
+     Table input,
+-    list keys: list[int],
++    list keys,
+     duplicate_keep_option keep,
+     null_equality nulls_equal,
+     nan_equality nans_equal,
+--- python/pylibcudf/pylibcudf/io/avro.pyx.orig
++++ python/pylibcudf/pylibcudf/io/avro.pyx
+@@ -57,7 +57,7 @@
+         avro_builder.source = source
+         return avro_builder
+ 
+-    cpdef void set_columns(self, list col_names: list[str]):
++    cpdef void set_columns(self, list col_names):
+         """
+         Set names of the column to be read.
+ 
+@@ -95,7 +95,7 @@
+ cdef class AvroReaderOptionsBuilder:
+     """Builder to build options for ``read_avro``."""
+ 
+-    cpdef AvroReaderOptionsBuilder columns(self, list col_names: list[str]):
++    cpdef AvroReaderOptionsBuilder columns(self, list col_names):
+         """
+         Set names of the column to be read.
+ 
+--- python/pylibcudf/pylibcudf/io/csv.pyx.orig
++++ python/pylibcudf/pylibcudf/io/csv.pyx
+@@ -91,7 +91,7 @@
+         """
+         self.c_obj.set_header(header)
+ 
+-    cpdef void set_names(self, list col_names: list[str]):
++    cpdef void set_names(self, list col_names):
+         """
+         Sets names of the column.
+ 
+@@ -124,7 +124,7 @@
+         """
+         self.c_obj.set_prefix(prefix.encode())
+ 
+-    cpdef void set_use_cols_indexes(self, list col_indices: list[int]):
++    cpdef void set_use_cols_indexes(self, list col_indices):
+         """
+         Sets indexes of columns to read.
+ 
+@@ -142,7 +142,7 @@
+             vec.push_back(i)
+         self.c_obj.set_use_cols_indexes(vec)
+ 
+-    cpdef void set_use_cols_names(self, list col_names: list[str]):
++    cpdef void set_use_cols_names(self, list col_names):
+         """
+         Sets names of the columns to be read.
+ 
+@@ -285,7 +285,7 @@
+         else:
+             raise TypeError("Must pass an dict or list")
+ 
+-    cpdef void set_true_values(self, list true_values: list[str]):
++    cpdef void set_true_values(self, list true_values):
+         """
+         Sets additional values to recognize as boolean true values.
+ 
+@@ -303,7 +303,7 @@
+             vec.push_back(val.encode())
+         self.c_obj.set_true_values(vec)
+ 
+-    cpdef void set_false_values(self, list false_values: list[str]):
++    cpdef void set_false_values(self, list false_values):
+         """
+         Sets additional values to recognize as boolean false values.
+ 
+@@ -321,7 +321,7 @@
+             vec.push_back(val.encode())
+         self.c_obj.set_false_values(vec)
+ 
+-    cpdef void set_na_values(self, list na_values: list[str]):
++    cpdef void set_na_values(self, list na_values):
+         """
+         Sets additional values to recognize as null values.
+ 
+--- python/pylibcudf/pylibcudf/io/json.pyx.orig
++++ python/pylibcudf/pylibcudf/io/json.pyx
+@@ -338,7 +338,7 @@
+     cpdef void allow_nonnumeric_numbers(self, bool val):
+         self.c_obj.allow_nonnumeric_numbers(val)
+ 
+-    cpdef void set_na_values(self, list vals: list[str]):
++    cpdef void set_na_values(self, list vals):
+         cdef vector[string] vec
+         for val in vals:
+             if isinstance(val, str):
+--- python/pylibcudf/pylibcudf/io/orc.pyx.orig
++++ python/pylibcudf/pylibcudf/io/orc.pyx
+@@ -329,7 +329,7 @@
+         """
+         self.c_obj.set_skip_rows(skip_rows)
+ 
+-    cpdef void set_stripes(self, list stripes: list[list[int]]):
++    cpdef void set_stripes(self, list stripes):
+         """
+         Sets list of stripes to read for each input source.
+ 
+@@ -351,7 +351,7 @@
+             vec.clear()
+         self.c_obj.set_stripes(c_stripes)
+ 
+-    cpdef void set_decimal128_columns(self, list val: list[str]):
++    cpdef void set_decimal128_columns(self, list val):
+         """
+         Set columns that should be read as 128-bit Decimal.
+ 
+@@ -387,7 +387,7 @@
+         """
+         self.c_obj.set_timestamp_type(type_.c_obj)
+ 
+-    cpdef void set_columns(self, list col_names: list[str]):
++    cpdef void set_columns(self, list col_names):
+         """
+         Sets names of the column to read.
+ 
+@@ -634,7 +634,7 @@
+         self.c_obj.enable_statistics(val)
+         return self
+ 
+-    cpdef OrcWriterOptionsBuilder key_value_metadata(self, dict kvm: dict[str, str]):
++    cpdef OrcWriterOptionsBuilder key_value_metadata(self, dict kvm):
+         """
+         Sets Key-Value footer metadata.
+ 
+@@ -879,7 +879,7 @@
+ 
+     cpdef ChunkedOrcWriterOptionsBuilder key_value_metadata(
+         self,
+-        dict kvm: dict[str, str]
++        dict kvm
+     ):
+         """
+         Sets Key-Value footer metadata.
+--- python/pylibcudf/pylibcudf/io/parquet.pyx.orig
++++ python/pylibcudf/pylibcudf/io/parquet.pyx
+@@ -142,7 +142,7 @@
+         parquet_builder.source = source
+         return parquet_builder
+ 
+-    cpdef void set_row_groups(self, list row_groups: list[list[int]]):
++    cpdef void set_row_groups(self, list row_groups):
+         """
+         Sets list of individual row groups to read.
+ 
+@@ -212,7 +212,7 @@
+         """
+         self.c_obj.set_skip_rows(skip_rows)
+ 
+-    cpdef void set_columns(self, list col_names: list[str]):
++    cpdef void set_columns(self, list col_names):
+         """
+         Sets names of the columns to be read. Deprecated and will be
+         removed in a future version. Use set_column_names instead.
+@@ -229,7 +229,7 @@
+         _warn_deprecated("set_columns", "set_column_names")
+         self.set_column_names(col_names)
+ 
+-    cpdef void set_column_names(self, list col_names: list[str]):
++    cpdef void set_column_names(self, list col_names):
+         """
+         Sets names of the columns to be read.
+ 
+@@ -247,7 +247,7 @@
+             vec.push_back(<string>str(name).encode())
+         self.c_obj.set_column_names(vec)
+ 
+-    cpdef void set_column_indices(self, list col_indices: list[int]):
++    cpdef void set_column_indices(self, list col_indices):
+         """
+         Sets indices of the top-level columns to be read.
+ 
+@@ -265,7 +265,7 @@
+             vec.push_back(idx)
+         self.c_obj.set_column_indices(vec)
+ 
+-    cpdef void set_column_field_ids(self, list column_field_ids: list[int]):
++    cpdef void set_column_field_ids(self, list column_field_ids):
+         """
+         Sets Parquet field IDs of the columns/fields to be read.
+ 
+@@ -475,7 +475,7 @@
+         self.c_obj.filter(<expression &>dereference(filter.c_obj))
+         return self
+ 
+-    cpdef ParquetReaderOptionsBuilder columns(self, list col_names: list[str]):
++    cpdef ParquetReaderOptionsBuilder columns(self, list col_names):
+         """
+         Sets names of the columns to be read. Deprecated and will be
+         removed in a future version. Use column_names instead.
+@@ -492,7 +492,7 @@
+         _warn_deprecated("columns", "column_names")
+         return self.column_names(col_names)
+ 
+-    cpdef ParquetReaderOptionsBuilder column_names(self, list col_names: list[str]):
++    cpdef ParquetReaderOptionsBuilder column_names(self, list col_names):
+         """
+         Sets names of the columns to be read.
+ 
+@@ -511,7 +511,7 @@
+         self.c_obj.column_names(vec)
+         return self
+ 
+-    cpdef ParquetReaderOptionsBuilder column_indices(self, list col_indices: list[int]):
++    cpdef ParquetReaderOptionsBuilder column_indices(self, list col_indices):
+         """
+         Sets indices of the top-level columns to be read.
+ 
+@@ -530,7 +530,7 @@
+         self.c_obj.column_indices(vec)
+         return self
+ 
+-    cpdef ParquetReaderOptionsBuilder column_field_ids(self, list column_field_ids: list[int]):
++    cpdef ParquetReaderOptionsBuilder column_field_ids(self, list column_field_ids):
+         """
+         Sets Parquet field IDs of the columns/fields to be read.
+ 
+@@ -1130,7 +1130,7 @@
+         bldr.sink_ref = sink
+         return bldr
+ 
+-    cpdef void set_partitions(self, list partitions: list[PartitionInfo]):
++    cpdef void set_partitions(self, list partitions):
+         """
+         Sets partitions.
+ 
+--- python/pylibcudf/pylibcudf/io/experimental/hybrid_scan.pyx.orig
++++ python/pylibcudf/pylibcudf/io/experimental/hybrid_scan.pyx
+@@ -297,7 +297,7 @@
+         return list(row_groups)
+ 
+     def total_rows_in_row_groups(
+-        self, list row_group_indices: list[int]
++        self, list row_group_indices
+     ) -> int:
+         """Get the total number of top-level rows in the row groups.
+ 
+@@ -330,7 +330,7 @@
+ 
+     def filter_row_groups_with_stats(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options,
+         object stream: CudaStreamLike | None = None
+     ) -> list[int]:
+@@ -365,7 +365,7 @@
+ 
+     def bloom_filters_byte_ranges(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options
+     ) -> list[ByteRangeInfo]:
+         """Get byte ranges of bloom filters for row group pruning.
+@@ -398,7 +398,7 @@
+ 
+     def dictionary_pages_byte_ranges(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options
+     ) -> list[ByteRangeInfo]:
+         """Get byte ranges of column chunk dictionary pages for row group pruning.
+@@ -427,7 +427,7 @@
+     def filter_row_groups_with_dictionary_pages(
+         self,
+         list dictionary_page_data,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options,
+         object stream: CudaStreamLike | None = None
+     ) -> list[int]:
+@@ -471,7 +471,7 @@
+     def filter_row_groups_with_bloom_filters(
+         self,
+         list bloom_filter_data,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options,
+         object stream: CudaStreamLike | None = None
+     ) -> list[int]:
+@@ -548,7 +548,7 @@
+ 
+     def build_row_mask_with_page_index_stats(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options,
+         object stream: CudaStreamLike | None = None,
+         DeviceMemoryResource mr=None
+@@ -586,7 +586,7 @@
+ 
+     def filter_column_chunks_byte_ranges(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options
+     ) -> list[ByteRangeInfo]:
+         """Get byte ranges of column chunks of filter columns.
+@@ -614,7 +614,7 @@
+ 
+     def materialize_filter_columns(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         list column_chunk_data,
+         Column row_mask,
+         cpp_use_data_page_mask mask_data_pages,
+@@ -672,7 +672,7 @@
+ 
+     def payload_column_chunks_byte_ranges(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options
+     ) -> list[ByteRangeInfo]:
+         """Get byte ranges of column chunks of payload columns.
+@@ -700,7 +700,7 @@
+ 
+     def materialize_payload_columns(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         list column_chunk_data,
+         Column row_mask,
+         cpp_use_data_page_mask mask_data_pages,
+@@ -758,7 +758,7 @@
+ 
+     def all_column_chunks_byte_ranges(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         ParquetReaderOptions options
+     ) -> list[ByteRangeInfo]:
+         """Get byte ranges of column chunks of all columns.
+@@ -786,7 +786,7 @@
+ 
+     def materialize_all_columns(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         list column_chunk_data,
+         ParquetReaderOptions options,
+         object stream: CudaStreamLike | None = None,
+@@ -836,7 +836,7 @@
+         self,
+         size_t chunk_read_limit,
+         size_t pass_read_limit,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         Column row_mask,
+         cpp_use_data_page_mask mask_data_pages,
+         object column_chunk_data: Sequence,
+@@ -927,7 +927,7 @@
+         self,
+         size_t chunk_read_limit,
+         size_t pass_read_limit,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         Column row_mask,
+         cpp_use_data_page_mask mask_data_pages,
+         object column_chunk_data: Sequence,
+@@ -1015,7 +1015,7 @@
+ 
+     def construct_row_group_passes(
+         self,
+-        list row_group_indices: list[int],
++        list row_group_indices,
+         size_t pass_read_limit,
+     ) -> list[list[int]]:
+         """Partition row groups into passes such that the GPU memory required to

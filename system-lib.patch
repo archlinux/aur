@@ -80,7 +80,7 @@
  # Fetch librtcx via CPM (zstd and nvtx3 are already available at this point)
 -include(cmake/thirdparty/get_rtcx.cmake)
 +add_subdirectory(librtcx)
-+include(librtcx/embed.cmake)
++include(librtcx/cmake/modules/embed.cmake)
  
  # Pre-compiled fragment management helper functions
  include(cmake/Modules/AddFragment.cmake)

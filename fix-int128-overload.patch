@@ -1,0 +1,11 @@
+--- typed_statistics_chunk.cuh.orig
++++ typed_statistics_chunk.cuh
+@@ -54,7 +54,7 @@
+ 
+   template <typename T, typename U>
+   __device__ static type<T, U> get(U& val)
+-    requires(std::is_integral_v<T> and std::is_signed_v<T>)
++    requires(std::is_integral_v<T> and std::is_signed_v<T> and not std::is_same_v<T, __int128_t>)
+   {
+     return val.i_val;
+   }

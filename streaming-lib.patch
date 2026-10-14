@@ -1,0 +1,20 @@
+--- a/cpp/libcudf_streaming/CMakeLists.txt
++++ b/cpp/libcudf_streaming/CMakeLists.txt
+@@ -61,11 +61,14 @@
+ 
+ # add third party dependencies using CPM
+ rapids_cpm_init()
++find_package(rapids_logger REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
++find_package(cudf REQUIRED)
++find_package(rapidsmpf REQUIRED)
+ include(cmake/ConfigureOptionalCommunication.cmake)
+-include(cmake/thirdparty/get_cudf.cmake)
+-include(cmake/thirdparty/get_rapidsmpf.cmake)
+ cudf_streaming_configure_optional_communication()
+-include(../cmake/thirdparty/get_cucollections.cmake)
+ 
+ # ##################################################################################################
+ # * library target --------------------------------------------------------------------------------

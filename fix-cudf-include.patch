@@ -1,0 +1,10 @@
+--- cpp/include/cudf/ast/expressions.hpp.orig	2026-10-08 18:52:30.829847917 +0800
++++ cpp/include/cudf/ast/expressions.hpp	2026-10-08 18:52:48.229868877 +0800
+@@ -21,6 +21,7 @@
+ #include <memory>
+ #include <optional>
+ #include <vector>
++#include <variant>
+ 
+ /**
+  * @file
