@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-prable
-	pkgdesc = AIMP skin: Prable 1.0 (by Aleksandr009)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Prable 2013-11-12 (by Aleksandr009)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-prable
 	options = !strip
 	options = !debug
 	source = aimp-skin-prable-442.archive::https://aimp.ru/?do=catalog.download&id=442
-	sha256sums = c31ebb6e1b77fb4b478ebc2073c048910293ad186448f2ab9519642cf01e454e
+	sha256sums = SKIP
 
 pkgname = aimp-skin-prable
