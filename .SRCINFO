@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mi-sk-blue
-	pkgdesc = AIMP skin: MI-SK Blue 1.0 (by Zigar)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: MI-SK Blue 2013-12-04 (by Zigar)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-mi-sk-blue
 	options = !strip
 	options = !debug
 	source = aimp-skin-mi-sk-blue-460.archive::https://aimp.ru/?do=catalog.download&id=460
-	sha256sums = 404c98768029709db1b7f309481ba89165fe537eb7c89145aeb865cdab1d3ea7
+	sha256sums = SKIP
 
 pkgname = aimp-skin-mi-sk-blue
