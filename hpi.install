@@ -1,0 +1,33 @@
+
+sync_nemo_action() {
+    local action="/usr/share/nemo/actions/install_pkg.nemo_action"
+    local template="/usr/share/hpi/install_pkg.nemo_action"
+
+    if [[ -e "$action" ]]; then
+        if pacman -Qo "$action" >/dev/null 2>&1; then
+            return 0
+        fi
+
+        rm -f -- "$action" || return 1
+    fi
+
+    install -Dm644 "$template" "$action"
+}
+
+post_install() {
+    sync_nemo_action
+}
+
+post_upgrade() {
+    sync_nemo_action
+}
+
+pre_remove() {
+    local action="/usr/share/nemo/actions/install_pkg.nemo_action"
+    local template="/usr/share/hpi/install_pkg.nemo_action"
+
+    if [[ -f "$action" && -f "$template" ]] &&
+       cmp -s "$action" "$template"; then
+        rm -f -- "$action"
+    fi
+}
