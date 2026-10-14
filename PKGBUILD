@@ -1,16 +1,35 @@
 # Maintainer: Scott Marshall <marshals@gmail.com>
 # Contributor: Catriel Müller <catriel at gmail dot com>
 pkgname=synergy1-bin
-pkgver=1.21.3
-pkgrel=2
+pkgver=1.22.2
+pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
 url="https://symless.com/synergy"
 license=('custom:Proprietary')
-depends=('gcc-libs' 'glibc' 'openssl' 'libx11' 'libxi' 'libxkbfile' 'libxext' 'libxtst'
-         'libxinerama' 'libxkbcommon-x11' 'libnotify' 'hicolor-icon-theme' 'qt6-base'
-         'qt6-tools' 'libei' 'libportal')
-conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
+depends=(
+  'glibc'
+  'hicolor-icon-theme'
+  'libei'
+  'libportal'
+  'libx11'
+  'libxext'
+  'libxi'
+  'libxinerama'
+  'libxkbfile'
+  'libxtst'
+  'openssl'
+  'qt6-base'
+)
+conflicts=(
+  'synergy'
+  'synergy1-bin'
+  'synergy-git'
+  'synergy-1.6'
+  'synergy2-bin'
+  'synergy3-bin'
+  'synergy3-beta-bin'
+)
 options=('!strip' '!emptydirs')
 source=()
 sha256sums=()
