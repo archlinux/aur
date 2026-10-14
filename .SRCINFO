@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-metalik-glass-dark
-	pkgdesc = AIMP skin: Metalik Glass (Dark) 1.04 (by Banned)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Metalik Glass (Dark) v1.04 (by Banned)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-metalik-glass-dark
 	options = !strip
 	options = !debug
 	source = aimp-skin-metalik-glass-dark-534.archive::https://aimp.ru/?do=catalog.download&id=534
-	sha256sums = 90e6f7a40c5e9c8d4b528a6b741a4f13c850f1427d79370c2543ebcebacb5c34
+	sha256sums = SKIP
 
 pkgname = aimp-skin-metalik-glass-dark
