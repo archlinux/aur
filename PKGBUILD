@@ -13,7 +13,7 @@ makedepends=('squashfs-tools')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/JunAkerBuilds/CorosLink/releases/download/v${pkgver}/CorosLink-${pkgver}.AppImage"
         "LICENSE::https://raw.githubusercontent.com/JunAkerBuilds/CorosLink/main/LICENSE")
-sha256sums=('e032ec94e5b25b98690b4067fb9a51ea22bcaad078fe0bf1f1ffd37d6eaa82fc'
+sha256sums=('b85d492bd9005c0f34ea181abdb735ff04ac49c1d24290e6f3f53958d34d1aa7'
             '852251d268287b43ae09daa3cb5ece6ccb6cb03245da1ec7ad23d7054dc1a8da')
 
 prepare() {
