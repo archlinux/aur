@@ -14,7 +14,7 @@ makedepends=()
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/zgit-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('e1ff963c6a1bd096fceaff9bce50f231c54d0e0bffdfdde46ebd2d9981bbe2d0')
+sha256sums=('913b42818e07637c627944662211ebc49174a0848729e39a31bb19ce532682b6')
 
 package() {
   # GoReleaser archives place the binary at the tarball root (no parent dir).

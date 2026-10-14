@@ -10,6 +10,6 @@ pkgbase = zgit-bin
 	provides = zgit=0.3.0
 	conflicts = zgit
 	source = https://github.com/zaidejjo/zgit/releases/download/v0.3.0/zgit-v0.3.0-linux-amd64.tar.gz
-	sha256sums = e1ff963c6a1bd096fceaff9bce50f231c54d0e0bffdfdde46ebd2d9981bbe2d0
+	sha256sums = 913b42818e07637c627944662211ebc49174a0848729e39a31bb19ce532682b6
 
 pkgname = zgit-bin
