@@ -1,7 +1,7 @@
 # Maintainer: Emil Bay <archlinux@tixz.dk>
 pkgname=commit-boost-bin
 _pkgname=commit-boost
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Commit-Boost allows Ethereum validators to safely run MEV-Boost and community-built commitment protocols. Binary distribution.'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=("${_repo}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-li
 
 sha256sums=('593cd24e77e6876dbd13ff289570c24ff2ade58fac631f2b5f41b072044c0f65'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('f7c32b8ea44a69565c93f0a6bb5985b4e5c27a53032e0dce89941617fe0faaa6')
-sha256sums_aarch64=('dd4750d65ae245b71c930d53daeed0df14010877d4871e21fa98e256a6540ad0')
+sha256sums_x86_64=('859540b87f042e28f5750fed312e18d5439f6512fbbb6cf637bed321a38e6e4e')
+sha256sums_aarch64=('f7ffabad2f3125a472cc719b48f660c7a3ff0810757f6348cfa4b5846a5dac9d')
 
 package() {
   install -Dm755 "${srcdir}/commit-boost" "${pkgdir}/usr/bin/commit-boost"
