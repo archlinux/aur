@@ -3,7 +3,7 @@
 pkgname=corplink-bin
 pkgver=3.2.16
 _pkgrel=r8362_0d182a
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
