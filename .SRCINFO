@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-3-5-and-34
+	pkgdesc = AIMP skin: 3.5&#34; 2016-04-22 (by AlexF)
+	pkgver = 20261014
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-3-5-and-34-802.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-3-5-and-34-802.archive::https://aimp.ru/?do=catalog.download&id=802
+	sha256sums = SKIP
+
+pkgname = aimp-skin-3-5-and-34
