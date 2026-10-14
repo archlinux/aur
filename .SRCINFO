@@ -1,0 +1,19 @@
+pkgbase = bors
+	pkgdesc = Display images in terminals using Kitty Graphics Protocol or ANSI blocks
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kristyancarvalho/bors
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	makedepends = go>=1.27.2
+	makedepends = meson>=1.2.0
+	makedepends = ninja
+	depends = glibc
+	options = !debug
+	source = git+https://github.com/kristyancarvalho/bors.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = bors
