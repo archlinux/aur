@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-skif
-	pkgdesc = AIMP skin: Skif 1.01 (by samix)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Skif v1.01 (by samix)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-skif
 	options = !strip
 	options = !debug
 	source = aimp-skin-skif-807.archive::https://aimp.ru/?do=catalog.download&id=807
-	sha256sums = c31d3b8b432f1191b39c0a91b37d1ba2bf8de1630ed9d53b97e432d3b803fcba
+	sha256sums = SKIP
 
 pkgname = aimp-skin-skif
