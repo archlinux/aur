@@ -3,12 +3,19 @@
 # Contributor: SoulHarsh007 <admin@soulharsh007.dev>
 # Contributor: MedzikUser <nivua1fn@duck.com>
 
+# prevent excessive memory usage
+export DEBUG_CFLAGS="-g1"
+export DEBUG_CXXFLAGS="-g1"
+
 ## options
 : ${_use_sodeps:=false}
 
+: ${_wallet_engine_ver:=0.0.7}
+: ${_wallet_engine_patch_commit:=82ed0c85bc1a1399a66b75ca7a978799c507e2ba}
+
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=7.2.10
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -49,6 +56,7 @@ depends=(
 makedepends=(
   boost
   boost-libs # static link
+  cargo      # for wallet-engine
   cmake
   extra-cmake-modules
   fmt
@@ -57,6 +65,7 @@ makedepends=(
   gobject-introspection
   gperf    # for tde2e
   jemalloc # gio error when absent
+  just     # for wallet-engine
   libtg_owt
   ninja
   qt6-shadertools
@@ -73,38 +82,42 @@ options=('!lto')
 
 _pkgsrc="frk-v$pkgver-full"
 _pkgsrc_tdlib="telegram-tdlib"
+_pkgsrc_wallet_engine="wallet-engine-${_wallet_engine_ver}"
+_wallet_engine_patch="wallet-engine-${_wallet_engine_patch_commit::7}.patch"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
+  "$_pkgsrc_wallet_engine.$_pkgext"::"https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.$_pkgext"
+  "$_wallet_engine_patch"::"https://github.com/desktop-app/patches/raw/$_wallet_engine_patch_commit/wallet-engine.patch"
 )
 sha256sums=(
-  '23d757bbb93322828f25640843ef3342e26cf711aeae43c4ed71ab2f74a9a379'
+  '25b7193e84f936ecb73a7f5b06980bb3b3e138b744634d21616261e5541614b0'
   'SKIP'
+  '96600a6f393a27a0f84a41ad1d6d69f96014edc29e4d907c05e965666b0a66cf'
+  'b40aba82c39a42d0526a85ecfa40d613baa57b1a2d6600e601a42a1576b3b822'
 )
 
 prepare() {
-  cd "$_pkgsrc"
-
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
-    fi
-  done
-
   # fix cmake patching for non-git sources
-  sed -E -e 's& AND EXISTS \$\{_dir\}/\.git&&' -i CMakeLists.txt
+  sed -E -e 's& AND EXISTS \$\{_dir\}/\.git&&' -i "$_pkgsrc"/CMakeLists.txt
 
   # drop broken patch
-  rm patches/cmake_ffmpeg_heif.patch || :
+  rm "$_pkgsrc"/patches/cmake_ffmpeg_heif.patch || :
+
+  # wallet-engine
+  patch -d "$_pkgsrc_wallet_engine" -Np1 -F100 -i "$srcdir/$_wallet_engine_patch"
 }
 
 build() {
+  echo "Building wallet engine..."
+  pushd "$_pkgsrc_wallet_engine" &> /dev/null
+  just build
+  just bindings-cpp
+  install -Dm644 target/release/libwallet_engine.a -t "$srcdir/deps/usr/lib/"
+  install -Dm644 bindings/cpp-experimental/* -t "$srcdir/deps/usr/include/wallet_engine/"
+  popd &> /dev/null
+
   echo "Building tde2e..."
   local _cmake_tde2e=(
     -B "build_tde2e"
