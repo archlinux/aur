@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-qmp-5
-	pkgdesc = AIMP skin: QMP 5 1.0 (by memo-se)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: QMP 5 2013-11-14 (by memo-se)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-qmp-5
 	options = !strip
 	options = !debug
 	source = aimp-skin-qmp-5-446.archive::https://aimp.ru/?do=catalog.download&id=446
-	sha256sums = 47913967df76975491d5fb5899353f0e186c6383776e02f25f6237e99604a83b
+	sha256sums = SKIP
 
 pkgname = aimp-skin-qmp-5
