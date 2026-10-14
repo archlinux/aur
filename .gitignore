@@ -1,2 +1,4 @@
-fcitx5-themes-candlelight
-*.tar.zst
+src/
+pkg/
+*.tar.gz
+*.pkg.tar.*
