@@ -58,7 +58,6 @@ depends=(
   'systemd'
   'tesseract'
   'tesseract-data-eng'
-  'ttfx'
   'uv'
   'vsys'
   'wireplumber'
@@ -72,6 +71,7 @@ depends=(
   'xdg-utils'
 )
 optdepends=(
+  'ttfx: animates the Screensaver text art'
   'bandwhich: See all network traffic in the Network Traffic plugin'
   'libcap: check and allow traffic capture in the Network Traffic plugin'
   'btop: all processes and system readings from the System monitor panel'
