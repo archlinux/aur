@@ -1,6 +1,6 @@
 pkgbase = moekoemusic
-	pkgdesc = An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端
-	pkgver = 1.7.0
+	pkgdesc = An open-source, concise, and aesthetically pleasing third-party client for KuGou.一款开源简洁高颜值的酷狗第三方客户端
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://music.moekoe.cn/
 	arch = aarch64
@@ -10,13 +10,15 @@ pkgbase = moekoemusic
 	makedepends = pnpm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron39
-	source = moekoemusic-1.7.0::git+https://github.com/MoeKoeMusic/MoeKoeMusic.git#tag=v1.7.0
+	noextract = api.tar.gz
+	source = moekoemusic-1.7.1.tar.gz::https://github.com/MoeKoeMusic/MoeKoeMusic/archive/v1.7.1.tar.gz
+	source = api.tar.gz::https://github.com/MakcRe/KuGouMusicApi/archive/refs/heads/main.tar.gz
 	source = moekoemusic.sh
-	sha256sums = 038ebe4eda0dde875822438d07f59fd0d5c5639261d26811ac61dc1830387d67
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 68031a5e01a11825567afad2f4894ad29e7dad5e8380f99ea174ba8fa49d809d
+	sha256sums = e5e02eca8a627033a7f517148c5c26286fa8648e897ef6791b54019423866ab3
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = moekoemusic
