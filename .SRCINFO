@@ -1,0 +1,23 @@
+pkgbase = workforest-bin
+	pkgdesc = Git worktree forest management: per-branch worktrees with project-defined setup hooks (precompiled)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/ArkadyBuryakov/workforest
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = workforest=0.9.0
+	conflicts = workforest
+	options = !strip
+	options = !debug
+	source = workforest-0.9.0.tar.gz::https://github.com/ArkadyBuryakov/workforest/archive/v0.9.0.tar.gz
+	sha256sums = 3fb66547a575bece3130ba1e9e0efe614654871fd504cd5f7f308469b938fc0d
+	source_x86_64 = workforest-bin-0.9.0-x86_64::https://github.com/ArkadyBuryakov/workforest/releases/download/v0.9.0/workforest-linux-x86_64
+	sha256sums_x86_64 = 9f7617b4412c5ea7ed4216b3baa3e9f407af17d8d9176948474b89a3e3cf2fdd
+	source_aarch64 = workforest-bin-0.9.0-aarch64::https://github.com/ArkadyBuryakov/workforest/releases/download/v0.9.0/workforest-linux-aarch64
+	sha256sums_aarch64 = 657ab58347eb128dfe71bd2f3dae78b83f4ec4700359c3c426fa48d3679e615e
+
+pkgname = workforest-bin
