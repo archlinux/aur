@@ -1,7 +1,7 @@
 # Maintainer: Mike Macpherson <mmacpherson@noreply.github.io>
 
 pkgname=expirito
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 epoch=
 pkgdesc="A utility to clean up old files and empty directories"
