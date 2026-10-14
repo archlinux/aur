@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=zgit-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A modern, fast Git & GitHub client — TUI binary"
 arch=('x86_64')
@@ -14,10 +14,11 @@ makedepends=()
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/zgit-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('19a35ce73e084d60209bbd97a2e54229c3debf8c29b540df5ec3f1f367dc023a')
+sha256sums=('0b007920f4206904965e1a57d55a6c611941ac2d9dc81f437b213ddc50e95cae')
 
 package() {
-  install -Dm755 "zgit-v${pkgver}-linux-amd64/zgit" "${pkgdir}/usr/bin/zgit"
+  # GoReleaser archives place the binary at the tarball root (no parent dir).
+  install -Dm755 "zgit" "${pkgdir}/usr/bin/zgit"
 }
 
 # vim:set ts=2 sw=2 et:

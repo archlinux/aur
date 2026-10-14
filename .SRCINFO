@@ -1,15 +1,15 @@
 pkgbase = zgit-bin
 	pkgdesc = A modern, fast Git & GitHub client — TUI binary
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/zaidejjo/zgit
 	arch = x86_64
 	license = Apache
 	depends = git
 	depends = glibc
-	provides = zgit=0.2.0
+	provides = zgit=0.3.0
 	conflicts = zgit
-	source = https://github.com/zaidejjo/zgit/releases/download/v0.2.0/zgit-v0.2.0-linux-amd64.tar.gz
-	sha256sums = 19a35ce73e084d60209bbd97a2e54229c3debf8c29b540df5ec3f1f367dc023a
+	source = https://github.com/zaidejjo/zgit/releases/download/v0.3.0/zgit-v0.3.0-linux-amd64.tar.gz
+	sha256sums = 0b007920f4206904965e1a57d55a6c611941ac2d9dc81f437b213ddc50e95cae
 
 pkgname = zgit-bin
