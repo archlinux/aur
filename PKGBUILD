@@ -1,40 +1,28 @@
 # Maintainer: Kenan Pelit <kenanpelit@gmail.com>
 #
 # margo — a Rust + Smithay Wayland tiling compositor in the dwl/mango
-# tradition. Ships:
-#   * compositor binary `margo` + the `start-margo` launcher
-#   * first-party helpers: `mctl` (dwl-ipc-v2 client), `mlock` (PAM
-#     lockscreen), `mlayout` (per-tag layout profile manager),
-#     `mscreenshot` (grim/slurp pipeline), `mvisual` (output
-#     monitor-profile manager), `mpicker` (native colour picker —
-#     frozen screencap + zoom lens, drops the hyprpicker dep),
-#     `mvpn` (native Mullvad VPN control — full CLI + GTK4 layer-shell
-#     panel; drives the `mullvad` daemon, optional), `mcal` (read-only
-#     calendar CLI over local .ics + remote iCal subscriptions), `mtm`
-#     (native tmux session/layout/buffer/clipboard/plugin manager,
-#     Rust port of a bash tmux toolkit — also wired into the app
-#     launcher as the `mtm <session>` provider), `mtune` (folder-first
-#     music player — GTK4 + libadwaita + GStreamer; point it at a music
-#     folder and it recursively scans + watches it, MPRIS-exposed)
-#   * `mshell` first-party desktop shell (GTK4 + relm4 + layer-shell)
-#     and its `mshellctl` / `mshellshare` IPC siblings
-#   * `mwizard` first-launch setup wizard (writes the shell profile
-#     YAML + xkb_rules_layout into config.conf the first time the
-#     user runs margo with no existing profile)
-#   * `mlogind` TUI login / display manager (fork of lemurs): a
-#     bare-TTY greeter (PAM auth + session launch) themed from the
-#     margo matugen palette. Binary is shipped; its config / PAM /
-#     systemd templates land under doc/ for deliberate install (a
-#     login manager must not auto-clobber the PAM stack). See NOTE.
+# tradition, bundled with its first-party desktop. Ships:
+#   * compositor `margo` + the `start-margo` watchdog launcher, the uwsm
+#     session entry, and the native `margo-portal` (ScreenCast /
+#     Screenshot) backend
+#   * `mshell` desktop shell (GTK4 + relm4 + layer-shell: bar, menus,
+#     notifications, settings) with `mshellctl` / `mshellshare`, and the
+#     `mwizard` first-run setup wizard
+#   * helpers: `mctl` (compositor IPC client), `mlock` (PAM lock screen),
+#     `mlayout` (per-tag layout profiles), `mscreenshot`, `mvisual`
+#     (monitor profiles), `mpicker` (colour picker), `mkeys` (on-screen
+#     keyboard), `mvpn` (Mullvad CLI + panel), `mpower` (automatic power
+#     profiles), `mcal` (calendar CLI), `mtm` (tmux manager), `mdots`
+#     (dotfiles manager), `mtune` (folder-first music player)
+#   * `mlogind` TUI login manager (fork of lemurs) + `mgreet` GTK
+#     greeter — installed but never auto-enabled (see NOTE)
 #
-# mshell speaks `dwl-ipc-v2` against `margo`. The bundle replaces
-# the previous "compositor-only" `margo-git` so a single
-# `pacman -S margo-git` gives the full first-party desktop. Users
-# who prefer a different bar (noctalia, waybar-dwl, fnott, …) can
-# simply not run `mshell`; the helper binaries are still useful.
+# mshell talks to margo over margo's own Unix control socket
+# (`MARGO_SOCKET`, the same one `mctl` uses). Users who prefer another
+# bar can simply not run mshell; the helpers stay useful on their own.
 
 pkgname=margo-git
-pkgver=r2297.edbe9109
+pkgver=r2591.904a1813
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -43,9 +31,9 @@ license=("GPL-3.0-or-later")
 
 # Runtime libraries — split into compositor-side and mshell-side so
 # trimming this list back to a shell-less build later is mechanical.
-# Verified with `ldd /usr/bin/margo /usr/bin/mlock /usr/bin/mshell
-# /usr/bin/mshellctl /usr/bin/mpicker /usr/bin/mwizard` against a
-# fresh release build.
+# Library entries are the packages owning each binary's ELF NEEDED
+# entries (`readelf -d … | grep NEEDED` over every shipped binary,
+# re-verified 2026-10-14); the rest are runtime tools / daemons.
 depends=(
   # ── Compositor + helpers ────────────────────────────────────────
   glibc
@@ -57,14 +45,13 @@ depends=(
   seatd           # libseat.so.1
   pixman
   libdrm
-  systemd-libs    # libudev, libsystemd, sd-bus
-  libgudev
+  systemd-libs    # libudev, libsystemd
+  libpipewire     # margo's PipeWire screencast streams
   glib2
-  pcre2           # `regex` crate's PCRE backend → window-rule regexes
-  pam             # `mlock` authenticates the session owner
+  pam             # `mlock` / `mlogind` / mshell authenticate the user
   cairo           # `mlock` software renderer
   pango           # `mlock` + mshell text shaping
-  dbus            # screencast / portal D-Bus shims
+  dbus            # session bus for the portal / Mutter D-Bus shims
   uwsm            # the installed wayland-session entry launches margo via uwsm
   # ── mlogind greeter host (native per-monitor login resolution) ──
   # `[display] host = "cage"` (the default) runs the login greeter inside
@@ -81,7 +68,7 @@ depends=(
   # serves the FileChooser/OpenURI/Notification/etc routes.
   xdg-desktop-portal
   xdg-desktop-portal-gtk
-  libnotify       # `notify-send` from the config-reload toast path
+  libnotify       # `notify-send`: config-reload toast, session_end countdown
   grim            # `mscreenshot` capture pipeline
   slurp
   wl-clipboard
@@ -99,6 +86,7 @@ depends=(
   gstreamer
   gst-plugins-base
   gst-plugins-base-libs
+  gst-plugins-bad-libs  # libgstplay — mtune links it directly
   gst-plugins-good
   # Audio output paths — rodio backend + wayle-audio
   alsa-lib
@@ -191,10 +179,9 @@ backup=(
 # render aborts. The Cargo release profile sets `strip = "none"`;
 # this line keeps makepkg's outer strip from overriding it.
 options=(!lto !strip)
-# Compiles the mtune GSettings schema and refreshes the desktop /
-# icon-cache databases on install/upgrade/remove (mtune ships a
-# /usr/share/applications entry + a load-bearing gschema).
-install=margo-git.install
+# No install scriptlet: mtune's GSettings schema, desktop entry and
+# hicolor icons are picked up by the system pacman hooks (glib2's
+# glib-compile-schemas, desktop-file-utils, gtk-update-icon-cache).
 source=("git+${url}.git#branch=main")
 sha256sums=("SKIP")
 
@@ -641,42 +628,6 @@ package() {
       "$pkgdir/usr/share/mshell/scss/"
   fi
 
-  # ── Default mshell profile config ──────────────────────────────
-  # Annotated example users can copy into
-  # `~/.config/mshell/profiles/default.yaml`. mshell falls back to
-  # compiled-in defaults when no profile is found; this is starter
-  # material, not load-bearing.
-  local mshell_profile_example=""
-  for candidate in \
-      "mshell-crates/mshell-config/profiles/default.yaml" \
-      "mshell/profiles/default.yaml" \
-      "contrib/mshell/profiles/default.yaml"; do
-    if [[ -f "$candidate" ]]; then
-      mshell_profile_example="$candidate"
-      break
-    fi
-  done
-  if [[ -n "$mshell_profile_example" ]]; then
-    install -Dm644 "$mshell_profile_example" \
-      "$pkgdir/usr/share/doc/$pkgname/mshell/profile.example.yaml"
-  fi
-
-  # ── mshell desktop entry ───────────────────────────────────────
-  # Meant to be started by uwsm / margo from the session target.
-  # Shipped under /usr/share/doc/ so distro packagers / users can
-  # choose to wire autostart vs leave it to margo. NOT installed
-  # under /etc/xdg/autostart by default.
-  for entry in \
-      "mshell/contrib/mshell.desktop" \
-      "contrib/mshell/mshell.desktop" \
-      "mshell-crates/mshell-session/assets/mshell.desktop"; do
-    if [[ -f "$entry" ]]; then
-      install -Dm644 "$entry" \
-        "$pkgdir/usr/share/doc/$pkgname/mshell/mshell.desktop"
-      break
-    fi
-  done
-
   # ── Developer / packager documentation ─────────────────────────
   local doc
   for doc in README.md CHANGELOG.md road_map.md CONTRIBUTING.md; do
@@ -684,15 +635,8 @@ package() {
     install -Dm644 "$doc" "$pkgdir/usr/share/doc/$pkgname/$doc"
   done
 
-  # mshell-specific docs — surface them under the main package doc
-  # tree so `pacman -Qpl` shows them.
-  for mshell_doc in \
-      "mshell/README.md" \
-      "mshell-crates/mshell-core/README.md"; do
-    [[ -f "$mshell_doc" ]] || continue
-    install -Dm644 "$mshell_doc" \
-      "$pkgdir/usr/share/doc/$pkgname/mshell/$(basename "$mshell_doc")"
-  done
+  install -Dm644 "mshell/README.md" \
+    "$pkgdir/usr/share/doc/$pkgname/mshell/README.md"
 
   # ── mlogind (TUI login manager) ────────────────────────────────
   # Ship config + PAM + systemd unit to their real locations, like
@@ -771,17 +715,9 @@ package() {
 }
 
 # NOTE — manual one-time setup the package does NOT perform:
-#   • PAM service for mlock: create /etc/pam.d/mlock (e.g. one line
-#     `auth include system-auth`) so mlock can authenticate the
-#     session owner. Not shipped here to avoid clobbering a local
-#     PAM stack; `mlock --help` prints the recipe.
-#   • mshell first-launch: copy
-#     /usr/share/doc/margo-git/mshell/profile.example.yaml to
-#     ~/.config/mshell/profiles/default.yaml and edit the
-#     weather_location_query / icon theme / clock format fields.
-#   • Autostart: either let margo's `exec_once` in config.conf
-#     spawn `mshell` for you, or symlink the example desktop file
-#     into ~/.config/autostart/.
+#   (mlock authenticates against the system `login` PAM service and
+#   mshell is auto-started by mshell.service + the first-run wizard,
+#   so neither needs setup.)
 #   • mlogind (TUI login manager) — config, PAM, and the systemd unit
 #     ARE installed (/etc/mlogind/, /etc/pam.d/mlogind,
 #     /usr/lib/systemd/system/mlogind.service) but, like any DM, it is

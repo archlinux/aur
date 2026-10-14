@@ -1,9 +1,8 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)
-	pkgver = r2297.edbe9109
+	pkgver = r2591.904a1813
 	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
-	install = margo-git.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = rust
@@ -25,9 +24,8 @@ pkgbase = margo-git
 	depends = pixman
 	depends = libdrm
 	depends = systemd-libs
-	depends = libgudev
+	depends = libpipewire
 	depends = glib2
-	depends = pcre2
 	depends = pam
 	depends = cairo
 	depends = pango
@@ -52,6 +50,7 @@ pkgbase = margo-git
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-base-libs
+	depends = gst-plugins-bad-libs
 	depends = gst-plugins-good
 	depends = alsa-lib
 	depends = libpulse
@@ -82,10 +81,10 @@ pkgbase = margo-git
 	optdepends = cliphist: mtm clip's clipboard-history backend
 	optdepends = gst-libav: mtune playback of AAC / M4A / ALAC / WMA and other ffmpeg-only codecs
 	optdepends = gst-plugins-bad: mtune playback of extra containers / codecs (M4A via faad, etc.)
-	provides = margo=r2297.edbe9109
+	provides = margo=r2591.904a1813
 	provides = wayland-compositor
-	provides = mshell=r2297.edbe9109
-	provides = margo-mshell-git=r2297.edbe9109
+	provides = mshell=r2591.904a1813
+	provides = margo-mshell-git=r2591.904a1813
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell
