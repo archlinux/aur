@@ -8,7 +8,7 @@
 _pkgname="palemoon"
 pkgname="$_pkgname-gtk3-bin"
 epoch=1
-pkgver=35.0.1
+pkgver=35.0.2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency"
 url="https://www.palemoon.org/"
@@ -31,9 +31,11 @@ source=(
   "palemoon-$pkgver.desktop"::"https://repo.palemoon.org/MoonchildProductions/Pale-Moon/raw/tag/${pkgver}_Release/palemoon/branding/official/palemoon.desktop"
   "https://rm-eu.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk3.tar.xz"{,.sig}
 )
-sha256sums=('b3803b30b5e6b9589387b7162cd24247da242fe77c0aed0d09bc51338d36d7d8'
-  'b80f053292f90a7a6fbac25599617edbfdaf96a5fca6a69ea97c7384152d9f4f'
-  'SKIP')
+sha256sums=(
+  'b3803b30b5e6b9589387b7162cd24247da242fe77c0aed0d09bc51338d36d7d8'
+  '3136ee8ecde1c1f865d45c3f5015f07e27e590ae0b43c22f1811f65633547adb'
+  'SKIP'
+)
 validpgpkeys=(
   '439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
   '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC' # Moonchild, see https://forum.palemoon.org/viewtopic.php?f=1&t=7176
