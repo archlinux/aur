@@ -25,17 +25,20 @@ prepare() {
 
 build() {
   cd psi
-  mkdir -p build
-  cd build
-  #cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DENABLE_WEBKIT=OFF -DQT_DEFAULT_MAJOR_VERSION=6 ..
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DQT_DEFAULT_MAJOR_VERSION=6 -DCHAT_TYPE=WEBENGINE ..
-  make
+  cmake -B build -S . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DQT_DEFAULT_MAJOR_VERSION=6 \
+    -DCHAT_TYPE=WEBENGINE
+  cmake --build build
 }
 
 package() {
-  cd psi/build
-  make DESTDIR="$pkgdir" install
+  cd psi
+  DESTDIR="$pkgdir" cmake --install build
   install -dm755 "$pkgdir/usr/include/psi/plugins"
-  install -m644 ../plugins/include/*.h "$pkgdir/usr/include/psi/plugins"
-  install -Dm644 ../linux/psi.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
+  install -m644 plugins/include/*.h "$pkgdir/usr/include/psi/plugins"
+  install -Dm644 linux/psi.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
 }
+
