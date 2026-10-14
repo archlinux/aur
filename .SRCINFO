@@ -1,0 +1,23 @@
+pkgbase = scramblery-migraphx-bin
+	pkgdesc = Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.MIGraphX version.
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/altunenes/scramblery
+	arch = x86_64
+	license = MIT
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = fontconfig
+	depends = gtk3
+	depends = migraphx
+	provides = scramblery=4.3.0
+	conflicts = scramblery
+	conflicts = scramblery-cuda
+	conflicts = scramblery-openvino
+	conflicts = scramblery-webgpu
+	source = scramblery-migraphx-4.3.0.deb::https://github.com/altunenes/scramblery/releases/download/v4.3.0/scramblery-migraphx_4.3.0_amd64.deb
+	source = LICENSE-4.3.0::https://raw.githubusercontent.com/altunenes/scramblery/v4.3.0/LICENSE
+	sha256sums = 02073672a47ab95fbe523d5a345a700b6dd6b1055c985f083262364f2b6de0bb
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+
+pkgname = scramblery-migraphx-bin
