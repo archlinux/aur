@@ -3,9 +3,9 @@
 # Submit by pushing this and the generated .SRCINFO (makepkg --printsrcinfo > .SRCINFO) to
 #   ssh://aur@aur.archlinux.org/wadsmith-bin.git
 pkgname=wadsmith-bin
-pkgver=0.0.11
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Map editor for Doom, Heretic, Hexen and Strife, made for GZDoom"
+pkgdesc="Map editor for Doom, Heretic, Hexen and Strife, made for UZDoom and GZDoom"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/WadSmith"
 license=('GPL-3.0-or-later')
@@ -15,11 +15,12 @@ conflicts=('wadsmith')
 # (libx11 + extensions, wayland + libxkbcommon), the 3D view through EGL/OpenGL (libglvnd); icu = .NET globalization.
 depends=('fontconfig' 'freetype2' 'libglvnd' 'libx11' 'libxi' 'libxcursor' 'libxext' 'libxrandr' 'libxrender'
          'libice' 'libsm' 'wayland' 'libxkbcommon' 'icu' 'zlib')
-optdepends=('gzdoom: play your maps (or the Flatpak org.zdoom.GZDoom)'
+optdepends=('uzdoom: play your maps (uzdoom-bin provides it; or the Flatpak org.zdoom.UZDoom)'
+            'gzdoom: play your maps when UZDoom is not installed'
             'sdl2: an object'"'"'s sound when pointing at it on the shelf')
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/WadSmith-$pkgver-linux-x64.tar.gz")
-sha256sums=('c102c7d7812849faf6feabe525468cf8eda5c6cf59a3b41e0f3b0281dd34f5a1')
+sha256sums=('d42c174578080de2cee02be1aedb520f6cce123025502b34fce1b0f92836f82b')
 # The tarball unpacks flat ("./"); stage it in its own folder so package() copies the payload wholesale.
 noextract=("WadSmith-$pkgver-linux-x64.tar.gz")
 
@@ -67,13 +68,13 @@ WRAP
 [Desktop Entry]
 Name=WadSmith
 GenericName=Map Editor
-Comment=Build maps for Doom, Heretic, Hexen and Strife, then play them in GZDoom
+Comment=Build maps for Doom, Heretic, Hexen and Strife, then play them in UZDoom or GZDoom
 Exec=wadsmith %F
 Icon=wadsmith
 Terminal=false
 Type=Application
 Categories=Game;Development;
-Keywords=doom;gzdoom;map;editor;wad;udmf;level;
+Keywords=doom;uzdoom;gzdoom;map;editor;wad;udmf;level;
 StartupWMClass=wadsmith
 DESK
 }

@@ -1,6 +1,6 @@
 pkgbase = wadsmith-bin
-	pkgdesc = Map editor for Doom, Heretic, Hexen and Strife, made for GZDoom
-	pkgver = 0.0.11
+	pkgdesc = Map editor for Doom, Heretic, Hexen and Strife, made for UZDoom and GZDoom
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/WadSmith
 	arch = x86_64
@@ -20,13 +20,14 @@ pkgbase = wadsmith-bin
 	depends = libxkbcommon
 	depends = icu
 	depends = zlib
-	optdepends = gzdoom: play your maps (or the Flatpak org.zdoom.GZDoom)
+	optdepends = uzdoom: play your maps (uzdoom-bin provides it; or the Flatpak org.zdoom.UZDoom)
+	optdepends = gzdoom: play your maps when UZDoom is not installed
 	optdepends = sdl2: an object's sound when pointing at it on the shelf
 	provides = wadsmith
 	conflicts = wadsmith
-	noextract = WadSmith-0.0.11-linux-x64.tar.gz
+	noextract = WadSmith-0.1.0-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/WadSmith/releases/download/v0.0.11/WadSmith-0.0.11-linux-x64.tar.gz
-	sha256sums = c102c7d7812849faf6feabe525468cf8eda5c6cf59a3b41e0f3b0281dd34f5a1
+	source = https://github.com/codingncaffeine/WadSmith/releases/download/v0.1.0/WadSmith-0.1.0-linux-x64.tar.gz
+	sha256sums = d42c174578080de2cee02be1aedb520f6cce123025502b34fce1b0f92836f82b
 
 pkgname = wadsmith-bin
