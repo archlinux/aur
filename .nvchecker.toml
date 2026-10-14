@@ -1,0 +1,4 @@
+[agy-acp-server]
+source = "regex"
+url = "https://raw.githubusercontent.com/agentclientprotocol/registry/main/antigravity-acp/agent.json"
+regex = '"version":\s*"([^"]+)"'

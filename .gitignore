@@ -1,0 +1,9 @@
+/pkg/
+/src/
+/build/
+*.pkg.tar*
+*.zip
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.log
