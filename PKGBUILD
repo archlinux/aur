@@ -12,12 +12,12 @@
 # 载荷里只有两个文件写着产物自己的安装前缀(.desktop 与 AppArmor profile),按原样安装、只改写
 # 这一处字面路径;其余文件原封不动使用。
 #
-# 载荷自带 Electron 44.4.5、Node 24.21.0、CPython 3.12.14、Office Python wheels 与 pnpm,
+# 载荷自带 Electron 44.7.0、Node 24.21.0、CPython 3.12.14、Office Python wheels 与 pnpm,
 # 运行时除下列共享库外不需要系统提供任何东西。Electron 的 Fuses 已禁用 NODE_OPTIONS 与
 # ELECTRON_RUN_AS_NODE。
 
 pkgname=dsh-desktop-linux-bin
-pkgver=0.2.0rc.2
+pkgver=0.2.1alpha.2
 pkgrel=1
 pkgdesc='Official DeepSeek Harness desktop packaging ported to Linux (prebuilt)'
 arch=('x86_64')
@@ -43,15 +43,15 @@ conflicts=('deepseek-harness-desktop')
 options=('!strip' '!debug' '!emptydirs')
 install="$pkgname.install"
 
-_debrel=v0.2.0rc2
-_debname=deepseek-harness-0.2.0-rc.2-linux-amd64-unsigned.deb
+_debrel=v0.2.1alpha2
+_debname=deepseek-harness-0.2.1-alpha.2-linux-amd64-unsigned.deb
 # 产物自身的安装前缀,以及本包的安装前缀。
 _artprefix="/opt/DeepSeek Harness"
 _pkgprefix="/opt/$pkgname"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ffyfox/dsh-desktop-linux/releases/download/$_debrel/$_debname"
         'LICENSE')
-sha256sums=('d3f3c51855ad41c9ebeee754ebdb2a80f23282aba4b08b17956dbfc774dcaab0'
+sha256sums=('d256ebab8f010da77e244647c2934854bffa1b41b228fa84b4d7518850b85982'
             'ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be')
 
 package() {
