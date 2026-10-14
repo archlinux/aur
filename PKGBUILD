@@ -13,7 +13,7 @@
 ## options
 : ${_build_save_source:=true} # save tarball of patched sources
 : ${_build_repatch:=false}    # discard previously saved tarball
-: ${_build_fast_patch:=true}  # patch makeicecat to parallelize patching
+: ${_build_fast_patch:=true}  # parallelize makeicecat patching (~10x speedup)
 
 : ${_build_pgo:=true}      # profile-guided optimization; ~20% better benchmarks, 3x build time
 : ${_build_pgo_reuse:=try} # reuse previously generated profile
@@ -25,9 +25,9 @@
 : ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
 ## update
-_icver="140.17.0-1"
-_commit="d7ffa7cbb29e7047b491ebbf5e50549548d480cb"
-_ffsum="4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33"
+_icver="153.5.0-1"
+_commit="ac1ff821a67463e277853820109d56f7a2daf44d"
+_ffsum="28714a7d4f9b38c7aafbe38022de7775a3d9cb3c1ebf19a567c26eb761e3410b"
 
 ## package
 _pkgname="icecat"
@@ -138,41 +138,11 @@ source=(
 
   # speed up patching
   0000-parallelize-makeicecat.diff
-
-  # fix for python 3.14
-  1001-python_3.14-5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
-  1002-python_3.14-23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
-  1003-python_3.14-b68b1f93a6e31188486458f32fbe37811257604f.patch
-  1004-python_3.14-d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
-  1005-python_3.14-dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
-
-  # fix for glibc 2.43
-  0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  0002-Fix-sandbox-to-build-with-glibc-2.43.patch
-
-  # fix for clang 22
-  0003-Use-wasm32-wasip1-target.patch
-  0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
-  0005-skia-m142-update.patch.xz
-
-  # fix for ffmpeg 9
-  0006-Add-FFmpeg-63-support.patch.xz
 )
 sha256sums=(
   'SKIP'
   "$_ffsum"
-  '1f1b71fcc22fe5e12bd57e7dcc544599e99071eb17b843b261c77fb86f943288'
-  '10e928127276c934a51c053d3f7ceb247344afd2e82186e12c4f188dd743bc49'
-  '6479aa1df3fda931d0e261edaffdcac2d162c0166c5cfd6adf6f45ccf632b852'
-  '7b6f7c2906a4fb4b83c5f8e6be2cd873c3d99b1f1c4e6b98887364d26fee88de'
-  '25c9af8395f4816b0874728d1f32b43b702a0ba2daa340da4945eb7c8ed74fe2'
-  '37dbe762d88613d8d556dad53988fc45c7b3aa8947b4322e92ee5c9a763cbc2c'
-  '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
-  '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8'
-  '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
-  '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
-  '43cf4f00643c1144f6debeec6a7cabde63de4089cca5d3bb3501beadd2c837bc'
-  'e7d30072641dfea9c3bff025db7e3a2c60201e630c5253bda1f2b54a0b5501ae'
+  '27e3e298e59788156b180f8b4e5f9e91d0ad7c4cf74fb396f5e65c7d291ef94c'
 )
 
 _make_icecat() (
@@ -216,7 +186,7 @@ _make_icecat() (
 
   # produce icecat sources
   cd output
-  ../makeicecat
+  time ../makeicecat
   popd
 
   # save icecat tarball
@@ -324,7 +294,6 @@ MOZ_REQUIRE_SIGNING=
 
 # Features
 ac_add_options --enable-alsa
-ac_add_options --enable-av1
 #ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
