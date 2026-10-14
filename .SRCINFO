@@ -1,6 +1,6 @@
 pkgbase = waytator
 	pkgdesc = Screenshot annotator and lightweight image editor
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/faetalize/waytator
 	arch = x86_64
@@ -8,12 +8,17 @@ pkgbase = waytator
 	makedepends = meson
 	makedepends = ninja
 	makedepends = pkgconf
+	makedepends = wayland-protocols
 	depends = gtk4
 	depends = libadwaita
+	depends = gtk4-layer-shell
+	depends = wayland
 	depends = wl-clipboard
+	depends = adwaita-icon-theme
 	optdepends = tesseract: OCR support
+	optdepends = xdg-desktop-portal: screenshots on compositors without wlr-screencopy
 	options = !debug
-	source = waytator-1.2.5.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v1.2.5.tar.gz
-	sha256sums = 065335daaa1506ade60f1bcae90a5893834f246c42f0de6e654b40fce62b8380
+	source = waytator-1.3.0.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 2d08d7447955e0c306c2c0aebd960f3affd602c78e7ef603cedddd15737ed45a
 
 pkgname = waytator
