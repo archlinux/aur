@@ -1,6 +1,6 @@
 pkgbase = rokast-git
 	pkgdesc = Mirror your Linux screen to a Roku TV over native Miracast, with nothing installed on the TV (git main)
-	pkgver = 0.8.0.r0.gc3db858
+	pkgver = 0.8.1.r0.ge148716
 	pkgrel = 1
 	url = https://github.com/papacasper/rokast
 	arch = x86_64
