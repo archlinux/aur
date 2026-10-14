@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-oxyfoxy-and-39-s-aimp-skin
+	pkgdesc = AIMP skin: Oxyfoxy&#39;s AIMP skin v1.2 (by Oxyfoxy)
+	pkgver = 20261014
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-oxyfoxy-and-39-s-aimp-skin-249.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-oxyfoxy-and-39-s-aimp-skin-249.archive::https://aimp.ru/?do=catalog.download&id=249
+	sha256sums = SKIP
+
+pkgname = aimp-skin-oxyfoxy-and-39-s-aimp-skin
