@@ -1,12 +1,13 @@
-# Maintainer: sgtaziz <sgtaziz013 at google dot com>
+# Maintainer: sgtaziz <sgtaziz013 at gmail dot com>
 pkgname=lianli-linux-git
-pkgver=1.1.6.r5.g99bc755
+pkgver=1.2.0.r5.gca531d9
 pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 for Lian Li devices"
 arch=('x86_64')
 url="https://github.com/sgtaziz/lian-li-linux"
 license=('MIT' 'GPL-2.0-only WITH Linux-syscall-note')
-depends=('libusb' 'ffmpeg' 'webkit2gtk-4.1' 'gtk3' 'glib2' 'libsoup3')
+depends=('cairo' 'dbus' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgcc' 'libsoup3'
+         'libstdc++' 'libusb' 'systemd-libs' 'webkit2gtk-4.1')
 optdepends=('evdi-dkms: EVDI desktop mode (userspace library and kernel module)' 'polkit: administrator authorization for service mode switching')
 makedepends=('git' 'cargo' 'clang' 'cmake' 'nasm' 'npm')
 provides=('lianli-linux')
@@ -25,15 +26,22 @@ prepare() {
   cd lian-li-linux
   git submodule update --init --recursive --depth=1
   cargo fetch --locked --target host-tuple
+  npm ci --prefix crates/lianli-gui --cache "$srcdir/npm-cache" --no-audit --no-fund
 }
 
 build() {
   cd lian-li-linux
 
-  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  export CARGO_PROFILE_RELEASE_STRIP=symbols
+  npm run build --prefix crates/lianli-gui
   cargo build --frozen --release
+}
+
+check() {
+  cd lian-li-linux
+
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --workspace
 }
 
 package() {
