@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.10.2
+pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/$pkgname"
@@ -28,7 +28,7 @@ optdepends=(
 )
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('ef246ad8b5f25494f4b70876b38926dcacf5e570672582e2743a30ed223d93fd1fda1a6cf8a88c17df7d45d716fd903b3ed893bb41fc48f135fe618fe293d8fb')
+b2sums=('a341093eb075835e0fc9aed7c33cfe17b00d19a0f468548a4dd10aa6f936667e8bbafd2d9172891076315d106ea4cc2cae7f3a8defc41efaef76b5dc5b39f258')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -49,8 +49,6 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  export TMPDIR="$srcdir/tmp"
-    mkdir -p "$TMPDIR"
   export GOCACHE="$srcdir"/go-build
   export GOPATH="$srcdir"/go
   export CGO_CPPFLAGS=$CPPFLAGS
