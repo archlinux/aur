@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-x-black
-	pkgdesc = AIMP skin: x_Black 1.0 (by ruSS)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: x_Black 2011-10-18 (by ruSS)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-x-black
 	options = !strip
 	options = !debug
 	source = aimp-skin-x-black-189.archive::https://aimp.ru/?do=catalog.download&id=189
-	sha256sums = a6994f8a362fc8607e77a1cb86afe5acad4861487f566c3040a45856ef858192
+	sha256sums = SKIP
 
 pkgname = aimp-skin-x-black
