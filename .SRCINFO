@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-kibtech-skin-aio
-	pkgdesc = AIMP skin: Kibtech skin AIO 1.0 (by kibermanick)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Kibtech skin AIO 2014-02-10 (by kibermanick)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-kibtech-skin-aio
 	options = !strip
 	options = !debug
 	source = aimp-skin-kibtech-skin-aio-535.archive::https://aimp.ru/?do=catalog.download&id=535
-	sha256sums = 7ba91a2230e02fe2d00c70ab85bb6328767a291c0094db2c0a0ed2949a3dcae3
+	sha256sums = SKIP
 
 pkgname = aimp-skin-kibtech-skin-aio
