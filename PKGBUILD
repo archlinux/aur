@@ -4,8 +4,8 @@
 # Contributor: Juan Francisco Miranda <aurarchlinux.sleek355 at passfwd dot com>
 
 pkgname=postman-bin
-pkgver=12.31.7
-pkgrel=2
+pkgver=12.32.2
+pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
 conflicts=('postman')
@@ -20,8 +20,8 @@ source_x86_64=("postman-${pkgver}-linux-${arch[0]}.tar.gz::https://dl.pstmn.io/d
 source_aarch64=("postman-${pkgver}-linux-${arch[1]}.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux_arm64")
 
 sha256sums=('d87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
-sha256sums_x86_64=('2126e165ccbaa59552ff53417ec8326b6faa58d96f2b9d8500d6b00dfd4fa862')
-sha256sums_aarch64=('77ed1c1308507b5e8cbcf8d89a641659eff6017307420e4cdf704990364a1925')
+sha256sums_x86_64=('b7e7391bb207a3367c7828a5264926ef4cc9508a5a15a1354f15e58d209fa902')
+sha256sums_aarch64=('0d7a64a8da2bee255caf90878eb56453203042db14abc71b1fcd2cb6d8e5ccc6')
 
 package() {
   install -dm755 "${pkgdir}/opt/"
