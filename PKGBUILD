@@ -1,15 +1,16 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-git
-pkgver=0.42.1.r536.ga43cade
+pkgver=0.42.2.r880.g6de5bb0
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
-depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
+depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
          'tmux>=3.7' 'openssh' 'python' 'curl' 'procps-ng' 'libgcc' 'libstdc++' 'glibc' 'hicolor-icon-theme' 'bash' 'tar')
-makedepends=('git' 'rust' 'cmake' 'ninja')
+makedepends=('git' 'rust' 'cmake' 'ninja' 'qt6-webengine')
 optdepends=('konsole: external KDE terminal integration'
+            'qt6-webengine: embedded DeepSeek Native UI'
             'wl-clipboard: clipboard transfers on Wayland'
             'xclip: clipboard transfers on X11'
             'nodejs: separately installed native agents and DeepSeek Harness'
@@ -38,7 +39,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
     cargo build --frozen --release
     cmake -S tray -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
+        -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DHGS_NATIVE_UI_PLUGIN=ON
     cmake --build build
     python scripts/collect-licenses.py "$srcdir/licenses"
 }
@@ -52,5 +53,6 @@ check() {
 package() {
     cd "$srcdir/zerus"
     python scripts/package-linux.py --destdir "$pkgdir" \
-        --cli target/release/hgs --gui build/hgs-tray --licenses "$srcdir/licenses" --package-name "$pkgname"
+        --cli target/release/hgs --gui build/hgs-tray --native-ui-plugin build/plugins/libhgs-tray-native-ui.so \
+        --licenses "$srcdir/licenses" --package-name "$pkgname"
 }

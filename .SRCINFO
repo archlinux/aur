@@ -1,6 +1,6 @@
 pkgbase = zerus-git
 	pkgdesc = Agent development environment for AI coding agents across your machines
-	pkgver = 0.42.1.r536.ga43cade
+	pkgver = 0.42.2.r880.g6de5bb0
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = zerus-git
 	makedepends = rust
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = qt6-webengine
 	depends = qt6-base
-	depends = qt6-webengine
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = kstatusnotifieritem
@@ -28,13 +28,14 @@ pkgbase = zerus-git
 	depends = bash
 	depends = tar
 	optdepends = konsole: external KDE terminal integration
+	optdepends = qt6-webengine: embedded DeepSeek Native UI
 	optdepends = wl-clipboard: clipboard transfers on Wayland
 	optdepends = xclip: clipboard transfers on X11
 	optdepends = nodejs: separately installed native agents and DeepSeek Harness
 	optdepends = npm: install Codex and DeepSeek Harness from Accounts
 	optdepends = git: Git repository and worktree features
 	optdepends = systemd: user service autostart and isolated DeepSeek scopes
-	provides = zerus=0.42.1.r536.ga43cade
+	provides = zerus=0.42.2.r880.g6de5bb0
 	provides = hgs
 	provides = hgs-tray
 	conflicts = zerus
