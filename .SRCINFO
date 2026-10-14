@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-obscuro
-	pkgdesc = AIMP skin: Obscuro 1.7 (by kestiq)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Obscuro v1.7 (by kestiq)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-obscuro
 	options = !strip
 	options = !debug
 	source = aimp-skin-obscuro-569.archive::https://aimp.ru/?do=catalog.download&id=569
-	sha256sums = 4c78bfeb45656298ad5e167c8e9d20f3baba0f078f1e1bb92165b7fbaca95880
+	sha256sums = SKIP
 
 pkgname = aimp-skin-obscuro
