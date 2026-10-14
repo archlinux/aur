@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-clipboard
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Encrypted clipboard history daemon for sysc-shell"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('gnome-keyring: Secret Service for encrypted persistence' 'keepassxc
 makedepends=('go>=1.26.4')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-clipboard/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e111cc8deb6a1bb8c9d3f81f8a49b3638c1403d86faf9811b0f45629e1454922')
+sha256sums=('d6778a9a426572b66b3f8004e507beef5dd1411779fa8f32ffa0793ee627c46c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
