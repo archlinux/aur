@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-siveria
-	pkgdesc = AIMP skin: Siveria 1.2 (by San4o)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Siveria v1.2 (by San4o)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-siveria
 	options = !strip
 	options = !debug
 	source = aimp-skin-siveria-93.archive::https://aimp.ru/?do=catalog.download&id=93
-	sha256sums = f5dd71b60207583bb09a0eb72dd84e435d8850e3e55866fe2649ff9806b279fa
+	sha256sums = SKIP
 
 pkgname = aimp-skin-siveria
