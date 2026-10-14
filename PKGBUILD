@@ -17,18 +17,20 @@ prepare() {
   sed -i \
     's|^path = /usr/local/sbin/laurel$|path = /usr/bin/laurel|' \
     etc/audit/plugins.d/laurel.conf
+
+  cargo fetch --locked
 }
 
 build() {
   cd "laurel-${pkgver}"
 
-  cargo build --release --locked
+  CARGO_TARGET_DIR=target cargo build --release --frozen
 }
 
 check() {
   cd "laurel-${pkgver}"
 
-  cargo test --locked
+  CARGO_TARGET_DIR=target cargo test --frozen
 }
 
 package() {
