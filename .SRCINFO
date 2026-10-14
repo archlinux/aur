@@ -1,6 +1,6 @@
 pkgbase = gale
 	pkgdesc = A modern mod manager for Thunderstore
-	pkgver = 1.23.0
+	pkgver = 1.23.2
 	pkgrel = 1
 	url = https://github.com/Kesomannen/gale
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = gale
 	depends = which
 	depends = xz
 	depends = zstd
-	source = gale-1.23.0.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/1.23.0.tar.gz
+	source = gale-1.23.2.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/1.23.2.tar.gz
 	source = gale.desktop
-	sha256sums = 2ce3300e59322c95734caa9b43ee6341f583603fe493c9745754f311d5fbce5c
+	sha256sums = 74e48032e13f97f26eed37539ce550c88c6ee65b1c8cd9662c796c91728fa3aa
 	sha256sums = 52abef25674537cd97783ae8dfa97e3569305856bea094c43862ec82d6e21360
 
 pkgname = gale
