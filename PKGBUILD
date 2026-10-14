@@ -1,8 +1,8 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=onlyoffice-documentserver-bin
-pkgver=9.4.0
-pkgrel=2
+pkgver=10.0.0
+pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.rpm::https://github.com/ONLYOFFICE/DocumentServer/rele
         "onlyoffice-documentserver.sysusers"
         "onlyoffice-documentserver.tmpfiles"
         "local.json")
-sha512sums=('d02ff8904f76629b5b44a028d25db910b1c080c14a58dbeee2a8d783d98b8545b3fb81f00cd18787792739a78f6f88971fb002207620ca653b6a217fc295f1fb'
+sha512sums=('a48197b435f8612e550c7007dc559ded4eaaa5a9f36691ecdfd978ccbec1caa4a8f290e82e00277ab731fcba74ffe94aaaf153cc91997744eaf0730761c1691e'
             'd028b3c5e9da33a998e35d3089d182bb0992d0ef88851d12acd7f8b53bd55a9e077729d51306afa3e203d9a05ee9b11008eb381a54bb525c37b1c6f14008a392'
             'c7c23c5a7014e3251dfd86312d1d1e5c2d88f26ddc5aa967285202fd3ebf62c0a10c009b1cc5ad1b78e13fa0bc2eda515616d8af02325db434c0b2113c5b1ecb'
             '2145478015c6a77c8435f9aaafbbd395bb2dfd87d68c850f91bd8ca1f22d4bff207309ca24992d1747cc24ca9d5828434543295327e654dee31c6634d3207363'
