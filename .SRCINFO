@@ -1,0 +1,26 @@
+pkgbase = qoder-cn
+	pkgdesc = Qoder CN desktop app, an agentic coding workbench from Alibaba
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://qoder.cn/
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3: system tray icon support
+	conflicts = qoder-cn-bin
+	noextract = Qoder-CN-linux-0.4.4-amd64.deb
+	options = !strip
+	source_x86_64 = Qoder-CN-linux-0.4.4-amd64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.4.4/Qoder-CN-linux-amd64.deb
+	sha256sums_x86_64 = f173172ec619ed46f1926b3715647bc54df6a2d4c152243c489566c90ea85335
+
+pkgname = qoder-cn
