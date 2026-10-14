@@ -3,8 +3,8 @@
 
 pkgname='aimp-skin-infinite'
 pkgdesc='AIMP skin: Infinite 1.2 (by MaxAx)'
-pkgver=20261001
-pkgrel=2
+pkgver=20261014
+pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -16,7 +16,7 @@ _skinsdir='/opt/aimp/Skins'
 
 source=('aimp-skin-infinite-728.archive::https://aimp.ru/?do=catalog.download&id=728')
 noextract=("${source[@]%%::*}")
-sha256sums=('148c6f4ea8aa07dee333858656f77189d1b34e77b082c19f257abbac21e682c8')
+sha256sums=('SKIP')
 
 package() {
   local dest="$pkgdir$_skinsdir"

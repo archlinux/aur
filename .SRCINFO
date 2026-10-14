@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-infinite
 	pkgdesc = AIMP skin: Infinite 1.2 (by MaxAx)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-infinite
 	options = !strip
 	options = !debug
 	source = aimp-skin-infinite-728.archive::https://aimp.ru/?do=catalog.download&id=728
-	sha256sums = 148c6f4ea8aa07dee333858656f77189d1b34e77b082c19f257abbac21e682c8
+	sha256sums = SKIP
 
 pkgname = aimp-skin-infinite
