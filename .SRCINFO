@@ -1,6 +1,6 @@
 pkgbase = custota-tool
 	pkgdesc = Android A/B OTA updater app for custom OTA servers
-	pkgver = 6.6
+	pkgver = 6.7
 	pkgrel = 1
 	url = https://github.com/chenxiaolong/Custota
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = custota-tool
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
-	source = git+https://github.com/chenxiaolong/Custota.git#tag=v6.6
-	sha256sums = b8c3f3bbe3243bf1ae8956cd69062a78c375d9e5961d64b5c41d60112793d6a8
+	source = git+https://github.com/chenxiaolong/Custota.git#tag=v6.7
+	sha256sums = a8a6f027c98b72e126e093f0196066db5a067828c62ad5e760943bdcf8310fe7
 
 pkgname = custota-tool
