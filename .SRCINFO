@@ -1,6 +1,6 @@
 pkgbase = colony-bin
 	pkgdesc = Application launcher for the Project-Colony ecosystem (prebuilt binary)
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/Project-Colony/Colony
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = colony-bin
 	provides = colony
 	conflicts = colony
 	conflicts = colony-git
-	noextract = colony-0.11.0
-	source = colony-0.11.0::https://github.com/Project-Colony/Colony/releases/download/v0.11.0/colony-linux
-	source = colony-icon-0.11.0.png::https://raw.githubusercontent.com/Project-Colony/Colony/v0.11.0/assets/icons/icon.png
-	sha256sums = 90305b0fc375ea24e6b67bfc7655cd6af643411f9a92c789a4f35bc8b6a2e70a
+	noextract = colony-0.11.1
+	source = colony-0.11.1::https://github.com/Project-Colony/Colony/releases/download/v0.11.1/colony-linux
+	source = colony-icon-0.11.1.png::https://raw.githubusercontent.com/Project-Colony/Colony/v0.11.1/assets/icons/icon.png
+	sha256sums = 2903ce16764b2c2eb8024a4448fe3074bd1ce43f2cac7884b17d9d10718cf971
 	sha256sums = b2a6ae79e9cea7718d0457f9e2623d3a62a2fc4978f4ff0ef5457c1b865b3af4
 
 pkgname = colony-bin
