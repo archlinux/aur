@@ -2,7 +2,7 @@
 
 pkgname=papers-ofd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OFD (GB/T 33190-2016) document backend for GNOME Papers, on the rofd-ffi C ABI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/YangtseSu/papers-ofd'
@@ -25,12 +25,16 @@ makedepends=(
   'meson'
   'poppler-glib'
 )
+# The space-bar preview in GNOME Files is Sushi's; our plugin only takes effect
+# where Sushi is installed (and gjs + Sushi make tests/test-sushi-plugin.js run).
+optdepends=('sushi: space-bar previews in GNOME Files')
 # 0.1.0 is not tagged yet, so the package pins the commit that finished plan §5
-# phase 3 (fd loading, i.e. the previewer path). Bump _commit with pkgver when a
-# release tag exists; keep it identical to the AUR copy in the AUR repository.
-_commit=6936c96a22571a999aa5a9d725609584a11df8e3
+# phase 3 (fd loading, packaging, and the Sushi plugin that makes the space-bar
+# preview work out of tree). Bump _commit with pkgver when a release tag exists;
+# keep this file identical to the AUR copy in the AUR repository.
+_commit=30e1fc6913c835711ad1fabb56b307fdef2b2812
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/papers-ofd/archive/$_commit.tar.gz")
-sha256sums=('64c1797d6bcc5fb4baa66400f8e2f3cd0d6de6ab22ef8a595fbaac259b28853b')
+sha256sums=('a8ec59ce0c265fa3c9116f78d7c8fe49c555b2d9b78d4be643bf161cb45fa767')
 _dirname="papers-ofd-$_commit"
 
 build() {
