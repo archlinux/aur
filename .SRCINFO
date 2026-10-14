@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-yellow-blue
-	pkgdesc = AIMP skin: Yellow-blue 1.0 (by k.egor)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Yellow-blue 2009-12-28 (by k.egor)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-yellow-blue
 	options = !strip
 	options = !debug
 	source = aimp-skin-yellow-blue-15.archive::https://aimp.ru/?do=catalog.download&id=15
-	sha256sums = 255a9fd5273a2f91e28485b30fffe46113b618cefc4e199c904c27ad78f9fbfe
+	sha256sums = SKIP
 
 pkgname = aimp-skin-yellow-blue
