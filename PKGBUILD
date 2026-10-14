@@ -7,7 +7,7 @@
 # guacamole-server build. The only runtime pieces are this binary and the
 # system webkit/freerdp libraries.
 pkgname=trdc
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Remote desktop client with a built-in AI copilot (native FreeRDP RDP client)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('freerdp' 'gcc-libs' 'glibc' 'glib2' 'gtk3' 'libsoup3' 'pango' 'webkit2
 makedepends=('cargo' 'npm' 'pkgconf' 'rust')
 options=('!debug')
 source=("https://github.com/Teejer/trdc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('55304b606e0a7ed0e943a136752becb053d18a03949d1ccbe4cb9778d085ac23')
+sha256sums=('d6ca8eac4003e46993c7389bf445df5c3c0f0c6a70737be172b15726f454c739')
 
 build() {
   cd "trdc-$pkgver"
