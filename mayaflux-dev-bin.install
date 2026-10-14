@@ -1,0 +1,23 @@
+post_install() {
+    if ! getent group mayaflux > /dev/null 2>&1; then
+        groupadd --system mayaflux
+    fi
+
+    echo "MayaFlux installed."
+    echo ""
+    echo "To enable real-time scheduling, add your user to the mayaflux group:"
+    echo "  sudo usermod -aG mayaflux \$USER"
+    echo "Then log out and back in."
+    echo ""
+    echo "Source /etc/profile.d/mayaflux.sh or restart your shell for environment variables."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    groupdel mayaflux 2>/dev/null || true
+    echo "MayaFlux has been removed."
+    echo "Remove or edit /etc/profile.d/mayaflux.sh if desired."
+}

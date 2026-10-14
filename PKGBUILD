@@ -4,9 +4,9 @@
 
 pkgname=mayaflux-dev-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MayaFlux development build - A modern C++ framework for real-time graphics and audio"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/MayaFlux/MayaFlux"
 license=('GPL-3.0-or-later' 'Apache-2.0' 'BSD-3-Clause' 'MIT')
 depends=(
@@ -40,41 +40,29 @@ depends=(
     'fontconfig'
     'nlohmann-json'
     'libpipewire'
-)
-makedepends=(
-    'git'
+    'alsa-lib'
+    'tbb'
+    'shaderc'
 )
 optdepends=(
     'doxygen: for documentation generation'
     'vulkan-extra-layers: additional Vulkan layers'
     'vulkan-extra-tools: additional Vulkan tools'
 )
-provides=('MayaFlux')
-conflicts=('MayaFlux')
+provides=("mayaflux=${pkgver}")
+conflicts=('mayaflux' 'mayaflux-bin')
+install="${pkgname}.install"
+_tarball="MayaFlux-${pkgver}-dev-linux-arch.tar.gz"
 source=(
-    "MayaFlux-${pkgver}-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-linux-arch.tar.gz"
-    "MayaFlux-${pkgver}-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-linux-arch.tar.gz.sha256"
+    "${_tarball}::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/${_tarball}"
+    "${_tarball}.sha256::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/${_tarball}.sha256"
 )
+noextract=("${_tarball}")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-    echo "Verifying package integrity..."
-
-    local expected_sha=$(cat "MayaFlux-${pkgver//_/-}-linux-arch.tar.gz.sha256")
-
-    local actual_sha=$(sha256sum "MayaFlux-${pkgver//_/-}-linux-arch.tar.gz" | cut -d' ' -f1)
-
-    echo "Expected SHA256: $expected_sha"
-    echo "Actual SHA256:   $actual_sha"
-
-    if [[ "$expected_sha" != "$actual_sha" ]]; then
-        error "SHA256 verification failed!"
-        error "Expected: $expected_sha"
-        error "Actual:   $actual_sha"
-        return 1
-    fi
-
-    echo "✅ SHA256 verification passed"
+    cd "$srcdir"
+    sha256sum -c "${_tarball}.sha256"
 }
 
 package() {
@@ -86,7 +74,7 @@ package() {
 
     local extract_dir="${srcdir}/MayaFlux-${pkgver}-dev-extracted"
     mkdir -p "$extract_dir"
-    tar -xzf "${srcdir}/MayaFlux-${pkgver}-dev-linux-arch.tar.gz" -C "$extract_dir"
+    tar -xzf "${srcdir}/${_tarball}" -C "$extract_dir"
 
     [[ -d "$extract_dir/lib" ]]     && cp -r "$extract_dir/lib/"*     "$pkgdir/usr/lib/"
     [[ -d "$extract_dir/include" ]] && cp -r "$extract_dir/include/"* "$pkgdir/usr/include/"
@@ -122,29 +110,4 @@ EOF
 @mayaflux    -    memlock    unlimited
 @mayaflux    -    nice       -19
 EOF
-}
-
-post_install() {
-    if ! getent group mayaflux > /dev/null 2>&1; then
-        groupadd --system mayaflux
-    fi
-
-    echo "MayaFlux ${pkgver} installed."
-    echo ""
-    echo "To enable real-time audio scheduling, add your user to the mayaflux group:"
-    echo "  sudo usermod -aG mayaflux \$USER"
-    echo "Then log out and back in."
-    echo ""
-    echo "Source /etc/profile.d/mayaflux.sh or restart your shell for environment variables."
-}
-
-post_upgrade() {
-    post_install
-}
-
-post_remove() {
-    groupdel mayaflux 2>/dev/null || true
-    rm -f /etc/security/limits.d/50-mayaflux.conf
-    echo "MayaFlux has been removed. You may want to clean up your environment variables."
-    echo "Remove or edit /etc/profile.d/mayaflux.sh if desired."
 }
