@@ -3,8 +3,8 @@
 
 pkgname='aimp-skin-kibtech'
 pkgdesc='AIMP skin: KibTech 2.7 (by kibermanick)'
-pkgver=20261001
-pkgrel=2
+pkgver=20261014
+pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -16,7 +16,7 @@ _skinsdir='/opt/aimp/Skins'
 
 source=('aimp-skin-kibtech-623.archive::https://aimp.ru/?do=catalog.download&id=623')
 noextract=("${source[@]%%::*}")
-sha256sums=('beaed20b0cbc1345746e45614323385cfebc6ac30d563776dade908164152de3')
+sha256sums=('SKIP')
 
 package() {
   local dest="$pkgdir$_skinsdir"
