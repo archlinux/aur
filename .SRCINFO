@@ -1,6 +1,6 @@
 pkgbase = rokast
 	pkgdesc = Mirror your Linux screen to a Roku TV over native Miracast, with nothing installed on the TV
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/papacasper/rokast
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = rokast
 	optdepends = gst-plugin-pipewire: Wayland capture
 	optdepends = xdg-desktop-portal: Wayland capture
 	options = !lto
-	source = rokast-0.7.0.tar.gz::https://github.com/papacasper/rokast/archive/v0.7.0.tar.gz
+	source = rokast-0.8.0.tar.gz::https://github.com/papacasper/rokast/archive/v0.8.0.tar.gz
 	source = https://w1.fi/releases/wpa_supplicant-2.11.tar.gz
-	sha256sums = b71eed670bd4879fb3ac7ac80e3ab571983c405b30f3ac701a2dc8ca775ae821
+	sha256sums = fc198b5aef8ddaf5e718e05cde642c32ef4547e9ae762a2c6dd626608afc1d25
 	sha256sums = 912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a
 
 pkgname = rokast
