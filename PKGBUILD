@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gautier <emmanuel@cerberauth.com>
 
 pkgname='iamigrate-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='CIAM identity migration toolkit — export, map, validate, and import users into Auth0.'
 url='https://github.com/cerberauth/iamigrate'
@@ -12,16 +12,16 @@ provides=('iamigrate')
 conflicts=('iamigrate')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d3648f0fa0e38fb0cfe199258428628996b7e97801e29bf22b7ca30744afb90b')
+sha256sums_aarch64=('460b7f5577be5047ede35986addabd330a958c28aee07204dce336d3ba1d4ec3')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_armv7.tar.gz")
-sha256sums_armv7h=('c46d17e5fa3c0b9bdd2ee8229afe9ff1802f331e505065bb901e1295576230ba')
+sha256sums_armv7h=('7fc8ce277cf174c5e2ae9cb222019597a1b9262092b0b670eead767049e920d1')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_i386.tar.gz")
-sha256sums_i686=('01e889e8f2fab38419e9124e04b6278d0b1ffee16da7a19b688ebcd2495f8b48')
+sha256sums_i686=('efba8991be9a2b10c43993eb126b942b685e3fe420fb4b2437dc66ba78da14e4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/iamigrate/releases/download/v${pkgver}/iamigrate_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9fdd400e48688dbf223749bf50c0e0e36d7be488a9991c555c9eec71168db47a')
+sha256sums_x86_64=('97e6430760bc4a6c8f699d152b10545af2ebf1f4f213d5b1966fa827f64b5db0')
 
 package() {
   install -Dm755 "./iamigrate" "${pkgdir}/usr/bin/iamigrate"
