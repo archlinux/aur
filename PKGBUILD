@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-bin
 _pkgname=PicList
-pkgver=3.6.0
+pkgver=3.6.1
 _electronversion=39
 pkgrel=1
 pkgdesc="A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
@@ -30,10 +30,11 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('e0fd688f9f2597479e9c9e7c052886f0018c37460b8e21d706f3fd375d3cbed3'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('354a722f7b53bb867369444392b529ea949ce85eba53d16495549029d05adf88')
-sha256sums_x86_64=('fb724480c85589906b11dc304c652761b581e3050120888f040bae73cfb382b1')
+sha256sums_aarch64=('6bc6d5ebcaa60205bfb833e909aafead9ade5a81084f9acf7718fb967d17e0a6')
+sha256sums_x86_64=('ac9cbe4569868b5cacde50e1a76fe01443b84dcee38c564e8e3c73af22ccec84')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -54,23 +55,18 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     find "${srcdir}/opt/${_pkgname}/resources" -type d -perm 700 -exec chmod 755 {} +
-    local _app_dir="$(_get_app_dir)"
-    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
-	case "${CARCH}" in
-		aarch64)	_archrem=x64	;;
-		x86_64)		_archrem=arm	;;
-	esac
-	find "${_app_dir}/resources/app.asar.unpacked" -depth \
-		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
-		-exec rm -rf {} +
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "${srcdir}" -type d \
+		\( -name 'darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/resources/plugin-runtime/npm"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/resources/plugin-runtime"
     ln -sf "/usr/lib/node_modules/npm" "${pkgdir}/usr/lib/${pkgname%-bin}/resources/plugin-runtime/npm"

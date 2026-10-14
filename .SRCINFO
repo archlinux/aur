@@ -1,6 +1,6 @@
 pkgbase = piclist-bin
 	pkgdesc = A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发.
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://piclist.cn/
 	arch = aarch64
@@ -12,13 +12,13 @@ pkgbase = piclist-bin
 	depends = python
 	depends = python-packaging
 	conflicts = piclist
-	source = LICENSE-3.6.0::https://raw.githubusercontent.com/Kuingsmile/PicList/v3.6.0/LICENSE
+	source = LICENSE-3.6.1::https://raw.githubusercontent.com/Kuingsmile/PicList/v3.6.1/LICENSE
 	source = piclist.sh
 	sha256sums = e0fd688f9f2597479e9c9e7c052886f0018c37460b8e21d706f3fd375d3cbed3
 	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
-	source_aarch64 = piclist-3.6.0-aarch64.rpm::https://github.com/Kuingsmile/PicList/releases/download/v3.6.0/PicList-3.6.0-aarch64.rpm
-	sha256sums_aarch64 = 354a722f7b53bb867369444392b529ea949ce85eba53d16495549029d05adf88
-	source_x86_64 = piclist-3.6.0-x86_64.rpm::https://github.com/Kuingsmile/PicList/releases/download/v3.6.0/PicList-3.6.0-x86_64.rpm
-	sha256sums_x86_64 = fb724480c85589906b11dc304c652761b581e3050120888f040bae73cfb382b1
+	source_aarch64 = piclist-3.6.1-aarch64.rpm::https://github.com/Kuingsmile/PicList/releases/download/v3.6.1/PicList-3.6.1-aarch64.rpm
+	sha256sums_aarch64 = 6bc6d5ebcaa60205bfb833e909aafead9ade5a81084f9acf7718fb967d17e0a6
+	source_x86_64 = piclist-3.6.1-x86_64.rpm::https://github.com/Kuingsmile/PicList/releases/download/v3.6.1/PicList-3.6.1-x86_64.rpm
+	sha256sums_x86_64 = ac9cbe4569868b5cacde50e1a76fe01443b84dcee38c564e8e3c73af22ccec84
 
 pkgname = piclist-bin
