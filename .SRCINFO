@@ -1,6 +1,6 @@
 pkgbase = taskbar-cat-git
 	pkgdesc = Pixel-Art-Tamagotchi-Katze für KDE Plasma 6 / Wayland, lebt auf Boden und Fensteroberkanten
-	pkgver = r6.e956472
+	pkgver = r16.9acd6df
 	pkgrel = 1
 	url = https://github.com/BangL/taskbar-cat
 	arch = any

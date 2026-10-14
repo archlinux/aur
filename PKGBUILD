@@ -1,7 +1,7 @@
 # Maintainer: BangL <henno.rickowski@gmail.com>
 pkgname=taskbar-cat-git
 _pkgname=taskbar-cat
-pkgver=r6.e956472
+pkgver=r16.9acd6df
 pkgrel=1
 pkgdesc="Pixel-Art-Tamagotchi-Katze für KDE Plasma 6 / Wayland, lebt auf Boden und Fensteroberkanten"
 arch=('any')
