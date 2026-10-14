@@ -1,7 +1,7 @@
 pkgbase = linphone-desktop
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol
-	pkgver = 5.3.1
-	pkgrel = 2
+	pkgver = 6.2.3
+	pkgrel = 1
 	url = http://linphone.org
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,8 @@ pkgbase = linphone-desktop
 	makedepends = git
 	makedepends = gendesk
 	makedepends = cmake
+	makedepends = meson
+	makedepends = ninja
 	makedepends = yasm
 	makedepends = nasm
 	makedepends = doxygen
@@ -26,12 +28,10 @@ pkgbase = linphone-desktop
 	depends = libxcrypt-compat
 	depends = v4l-utils
 	depends = glew
-	provides = linphone=5.3.1
-	source = git+https://gitlab.linphone.org/BC/public/linphone-desktop.git#tag=5.3.1
+	provides = linphone=6.2.3
+	source = git+https://gitlab.linphone.org/BC/public/linphone-desktop.git#tag=6.2.3
 	source = linphone.png::https://gitlab.linphone.org/BC/public/linphone-desktop/-/raw/8dfd384e3df08b200c8eb382b740da6839961bf0/linphone-app/assets/icons/hicolor/128x128/apps/icon.png
-	source = linphone_package-cmake.patch
-	sha512sums = a7adeec5b8e116ad8504e443429fc8607cc4001f6eeb0a4b2c9eb8f81d1768a8ddec3104649d74a1683e0b934975d27cfd323fcac8ee357df6ae5853ce54a3a5
-	sha512sums = d6495cdc022b1e4c92b3641cb70347e7e6b6ef47599004de729e908b4876a12540713ab54b588611c99c8025fb9b33e3392573c85c13f72cdaee8bcf7a73d65d
-	sha512sums = 7bc4c74555e7ef3bf65daa136e015e7f338ed63dc65989852754256d813cc859c78174480ee524a5efafc61e9414db76c5ca6abf13d654db696de34c068ed460
+	sha512sums = 3ad59435c3dfa3cdc30cd1596827c65006eac850ffeb091ac42714054cba414a65db9050a726dcda0b1719912796e800f67fdb064422abd5d51fd40756dbc2cc
+	sha512sums = 3a5431033d40cff112d8db4c3bb9d43d41e5ae20c1c18d4c0ddc207b21f19853951298b23fc656bb464980a3c178717aabf379778c191ab53fcb9d99f2f577fd
 
 pkgname = linphone-desktop
