@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui-mtg-multi-core
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Highly opinionated MTPROTO proxy for Telegram. Supports accounts (for *x-ui)"
 arch=(aarch64 armv7h i686 x86_64)
@@ -13,8 +13,8 @@ provides=(x-ui-mtg-core x-ui-mtg-multi-core)
 conflicts=(x-ui-mtg-core x-ui-mtg-multi-core)
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('0eb46e8ad42a441c053e60eb4d8e234052fdebc08f9c5bd771c0722237b0cc27')
-b2sums=('b469f048775286bd94fa6fe725ba8df5a19b9860ff7e41fc029132d8b5d3892d6d770e756799fcfbcfcfabb4ccb11785b5c5c3e5dfad10110976fa863bfd32b9')
+sha256sums=('265c723d1c8cdccd5d43c826505a4aa5b22ffe0462f35322665594991fb9482f')
+b2sums=('92079472f58b8eab625ebee7088b3860fa675cfcb22f27e5639b004ab27930c6b42f29608d5ecf3cb7ae5edc25a58092c207d74c926f4f2a57dbaa70fee3089c')
 
 build() {
   cd mtg-multi-$pkgver
