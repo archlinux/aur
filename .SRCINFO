@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-vkmini
-	pkgdesc = AIMP skin: Vkmini 3.5.3 (by Soolo)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Vkmini v3.5.3 (by Soolo)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-vkmini
 	options = !strip
 	options = !debug
 	source = aimp-skin-vkmini-360.archive::https://aimp.ru/?do=catalog.download&id=360
-	sha256sums = 225c999cf03b581a8232ad6f401fdc49fd4c4bf52783c00e0ba089dc413068c1
+	sha256sums = SKIP
 
 pkgname = aimp-skin-vkmini
