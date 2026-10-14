@@ -1,6 +1,6 @@
 pkgbase = logfmt-bin
 	pkgdesc = Simple CLI tool for colorizing, analyzing, filtering, and formatting logfmt structured logs
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/TheEdgeOfRage/logfmt
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = logfmt-bin
 	provides = logfmt
 	conflicts = logfmt
 	noextract = logfmt
-	source_x86_64 = logfmt::https://github.com/TheEdgeOfRage/logfmt/releases/download/v0.2.2/logfmt-linux-amd64-v0.2.2
-	sha256sums_x86_64 = 0f8057f916c45412c34e9fc6f2cba6d5330bb7c3fa9d4caef69a13c2b2f553e2
-	source_arm64 = logfmt::https://github.com/TheEdgeOfRage/logfmt/releases/download/v0.2.2/logfmt-linux-arm64-v0.2.2
-	sha256sums_arm64 = b504954e6ea7e5553bba7f762888e4e38cba067e88469c640dc80baf94ee0e55
+	source_x86_64 = logfmt::https://github.com/TheEdgeOfRage/logfmt/releases/download/v0.2.3/logfmt-linux-amd64-v0.2.3
+	sha256sums_x86_64 = c3dd7a5249205c877f87b3400bfd17bd99da4c26e8d44bcf6a008a09fc88c72a
+	source_arm64 = logfmt::https://github.com/TheEdgeOfRage/logfmt/releases/download/v0.2.3/logfmt-linux-arm64-v0.2.3
+	sha256sums_arm64 = 18de6a6451c2ca6a2a3e9167b4dd65f2a0831d69bc5eff32aae00eb295a4aaae
 
 pkgname = logfmt-bin

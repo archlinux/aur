@@ -2,7 +2,7 @@
 
 _pkgname=logfmt
 pkgname=${_pkgname}-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Simple CLI tool for colorizing, analyzing, filtering, and formatting logfmt structured logs"
 url="https://github.com/TheEdgeOfRage/logfmt"
@@ -14,8 +14,8 @@ makedepends=("go")
 source_x86_64=("logfmt::https://github.com/TheEdgeOfRage/logfmt/releases/download/v${pkgver}/logfmt-linux-amd64-v${pkgver}")
 source_arm64=("logfmt::https://github.com/TheEdgeOfRage/logfmt/releases/download/v${pkgver}/logfmt-linux-arm64-v${pkgver}")
 noextract=("logfmt")
-sha256sums_x86_64=("0f8057f916c45412c34e9fc6f2cba6d5330bb7c3fa9d4caef69a13c2b2f553e2")
-sha256sums_arm64=("b504954e6ea7e5553bba7f762888e4e38cba067e88469c640dc80baf94ee0e55")
+sha256sums_x86_64=("c3dd7a5249205c877f87b3400bfd17bd99da4c26e8d44bcf6a008a09fc88c72a")
+sha256sums_arm64=("18de6a6451c2ca6a2a3e9167b4dd65f2a0831d69bc5eff32aae00eb295a4aaae")
 
 package() {
 	install -m 0755 -D "logfmt" "$pkgdir/usr/bin/logfmt"
