@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-wooden-light
-	pkgdesc = AIMP skin: Wooden Light 1.0 (by FreeZeek)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Wooden Light 2012-03-13 (by FreeZeek)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-wooden-light
 	options = !strip
 	options = !debug
 	source = aimp-skin-wooden-light-272.archive::https://aimp.ru/?do=catalog.download&id=272
-	sha256sums = 7b487a89c61049fe93661e282b482295e18b6464566c69eddc115f8c77deb224
+	sha256sums = SKIP
 
 pkgname = aimp-skin-wooden-light
