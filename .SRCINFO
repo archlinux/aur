@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-ellipse-gentator
-	pkgdesc = AIMP skin: Ellipse Gentator 1.0 (by sagitt.67)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Ellipse Gentator 2014-02-25 (by sagitt.67)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-ellipse-gentator
 	options = !strip
 	options = !debug
 	source = aimp-skin-ellipse-gentator-546.archive::https://aimp.ru/?do=catalog.download&id=546
-	sha256sums = f91c61fb2cd8752d2beb9d7fc9561a0a8c13e853354d1f2879a019670ee568d1
+	sha256sums = SKIP
 
 pkgname = aimp-skin-ellipse-gentator
