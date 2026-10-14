@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-login-manager
-pkgver=6.7.5
+pkgver=6.8.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 arch=(x86_64)
@@ -19,7 +19,6 @@ depends=(glibc
          kirigami
          kpackage
          kservice
-         kwindowsystem
          layer-shell-qt
          libkscreen
          libplasma
@@ -36,7 +35,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('6ed7c3bbac1c79bc1a21c330923804aa6c3f720fafd6accb1a6a1fada684e84f'
+sha256sums=('69e829f49fdf40a6a020c7d5d8603eb50a1cd76feb88c770cf0611f78c9d9818'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -45,7 +44,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DDBUS_CONFIG_FILENAME=plasma_org.freedesktop.DisplayManager.conf
   cmake --build build
 }
