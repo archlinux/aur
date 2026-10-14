@@ -1,7 +1,7 @@
 pkgbase = elph-nova-bin
 	pkgdesc = A corporate communications hub designed for effective collaboration with colleagues
-	pkgver = 3.6.2
-	pkgrel = 2
+	pkgver = 3.7.0
+	pkgrel = 1
 	arch = x86_64
 	license = custom
 	depends = gtk3
@@ -15,7 +15,7 @@ pkgbase = elph-nova-bin
 	depends = libappindicator
 	provides = elph-nova
 	conflicts = elph-nova
-	source = https://archive.eltex-co.ru/repository/elph-services-raw/elph-nova/3.6.2/linux/elph-nova-3.6.2-linux-x64.deb
-	sha256sums = c5dfe263405a73e8c2001556a040186592a8c0de8ce5ad6f68208140a3c9dd16
+	source = https://archive.eltex-co.ru/repository/elph-services-raw/elph-nova/3.7.0/linux/elph-nova-3.7.0-linux-x64.deb
+	sha256sums = fd12cd2c16ab4be335290f7906feed8c2515df4be3178812221dec79efd3d0d0
 
 pkgname = elph-nova-bin
