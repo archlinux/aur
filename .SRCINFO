@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-pulsar
-	pkgdesc = AIMP skin: Pulsar 3.2 (by samix)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Pulsar v3.2 (by samix)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-pulsar
 	options = !strip
 	options = !debug
 	source = aimp-skin-pulsar-871.archive::https://aimp.ru/?do=catalog.download&id=871
-	sha256sums = 8856ad116f558b7851ae014357835355894fc87e51d9353cbd4d059de8ccb7e6
+	sha256sums = SKIP
 
 pkgname = aimp-skin-pulsar
