@@ -1,0 +1,18 @@
+pkgbase = librofd-ffi
+	pkgdesc = Stable C ABI for the rofd OFD parser and renderer
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/rofd
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cargo
+	makedepends = rust
+	depends = cairo
+	depends = freetype2
+	depends = glibc
+	depends = gcc-libs
+	depends = jbig2dec
+	source = librofd-ffi-0.4.0.tar.gz::https://github.com/linuxdeepin/rofd/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 7834fb1156049b0a409a5722e6b54a31c511a4ef3c301f10913dbc495fc738ac
+
+pkgname = librofd-ffi
