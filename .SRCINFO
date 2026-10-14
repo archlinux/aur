@@ -1,7 +1,7 @@
 pkgbase = audax-data-manager-bin
 	pkgdesc = A free, open-source database client and administration tool for PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, and Oracle - all from one app, so you don't need a different tool per database.
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.commandprompt.com/
 	arch = x86_64
 	license = MIT

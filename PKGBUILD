@@ -3,7 +3,7 @@ pkgname=audax-data-manager-bin
 _shortname=audaxdm
 _pkgname='Audax Data Manager'
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source database client and administration tool for PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, and Oracle - all from one app, so you don't need a different tool per database."
 arch=('x86_64')
 url="https://www.commandprompt.com/"
@@ -40,7 +40,7 @@ sha256sums=('f5d6940fd142b02325272ad9b0d98a90ae49d5823b2a201c43c10f043cc00ef0'
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${pkgname%-bin}-app/g
+        s/@runname@/${_shortname}-app/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
