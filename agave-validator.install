@@ -1,5 +1,5 @@
 post_install() {
-  setcap 'cap_net_raw,cap_net_admin,cap_bpf,cap_perfmon=ep' /usr/bin/agave-validator 2>/dev/null || true
+  setcap 'cap_net_raw,cap_net_admin,cap_bpf,cap_perfmon+eip' /usr/bin/agave-validator 2>/dev/null || true
 
   cat <<'EOF'
 

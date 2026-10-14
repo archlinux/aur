@@ -7,32 +7,28 @@
 pkgbase=solana
 pkgname=(solana-cli agave-validator solana-dev solana)
 epoch=1
-pkgver=4.3.0
+pkgver=4.3.1
+pkgrel=1
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.6.1
 # https://github.com/anza-xyz/agave/blob/$pkgver/scripts/cargo-build-sbf-version.sh
 _cargoBuildSbfVersion=4.4.0
-# cargo-build-sbf 4.4.0 default.
-_platformToolsVersion=v1.57
-pkgrel=2
+# We're ignoring the platform tools version specified by cargo-build-spf. Instead we'll ship whatever the latest compatible version is
+_platformToolsVersion=1.58
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
-makedepends=(clang cargo git protobuf rust systemd-libs)
+makedepends=(clang cargo git protobuf rust)
 source=("git+https://github.com/anza-xyz/agave.git#tag=v${pkgver}"
         "git+https://github.com/anza-xyz/cargo-build-sbf.git#tag=cargo-build-sbf@v${_cargoBuildSbfVersion}"
         "git+https://github.com/solana-program/token-2022.git#tag=cli@v${_splTokenCliVersion}"
-        "https://github.com/anza-xyz/platform-tools/releases/download/${_platformToolsVersion}/platform-tools-linux-x86_64.tar.bz2"
-        $pkgbase.sysusers
-        $pkgbase.tmpfiles
+        "https://github.com/anza-xyz/platform-tools/releases/download/v${_platformToolsVersion}/platform-tools-linux-x86_64.tar.bz2"
         $pkgbase-sbf_sdk-path.patch)
 noextract=(platform-tools-linux-x86_64.tar.bz2)
-sha256sums=('61b3f3d214474425ff6954c471af7ba8ad1813763d47b2da1f8df30dec0cf25c'
+sha256sums=('be422ad5f04114ba9169f3f7adaa658f31726e560ba7ce3ab0944e42cf8f0fa9'
             'b039350d6d73488e1b4296c78475738c3c2e5c54e8370d031983c6e59a6d7c8d'
             '5191648d2bb219c91774966900e6fcf44e2e5b08cfe2b2c483cf955dd36d9cd8'
-            'b0f7af104adf726fff2a6a09ea2eb2f2d2965c92295f4d7388c08d140e0c2b00'
-            'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
-            'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
+            '7b82eb420b5aebd1e5590db0ae25c523eca06724d4238ae02139690535636c37'
             '34b4ca06956669e23b7043a4b025365a43b42a6c3f13b21d5a60a6ac7d8b7c3f')
 options=(!lto)
 
@@ -148,7 +144,7 @@ build() {
 
 package_solana-cli() {
   pkgdesc="Solana CLI tools"
-  depends=(bzip2 glibc libgcc systemd-libs zstd)
+  depends=(bzip2 glibc libgcc zstd)
   provides=(spl-token)
   conflicts=(spl-token solana-bin)
 
@@ -160,10 +156,6 @@ package_solana-cli() {
   # Install spl-token
   cd "$srcdir/token-2022"
   install -Dm755 "target/release/spl-token" -t "$pkgdir/usr/bin"
-
-  # Install systemd integration
-  install -Dm644 "$srcdir/$pkgbase.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgbase.conf"
-  install -Dm644 "$srcdir/$pkgbase.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgbase.conf"
 }
 
 package_agave-validator() {

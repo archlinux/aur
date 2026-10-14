@@ -1,6 +1,6 @@
 pkgbase = solana
-	pkgver = 4.3.0
-	pkgrel = 2
+	pkgver = 4.3.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
 	arch = x86_64
@@ -10,22 +10,17 @@ pkgbase = solana
 	makedepends = git
 	makedepends = protobuf
 	makedepends = rust
-	makedepends = systemd-libs
 	noextract = platform-tools-linux-x86_64.tar.bz2
 	options = !lto
-	source = git+https://github.com/anza-xyz/agave.git#tag=v4.3.0
+	source = git+https://github.com/anza-xyz/agave.git#tag=v4.3.1
 	source = git+https://github.com/anza-xyz/cargo-build-sbf.git#tag=cargo-build-sbf@v4.4.0
 	source = git+https://github.com/solana-program/token-2022.git#tag=cli@v5.6.1
-	source = https://github.com/anza-xyz/platform-tools/releases/download/v1.57/platform-tools-linux-x86_64.tar.bz2
-	source = solana.sysusers
-	source = solana.tmpfiles
+	source = https://github.com/anza-xyz/platform-tools/releases/download/v1.58/platform-tools-linux-x86_64.tar.bz2
 	source = solana-sbf_sdk-path.patch
-	sha256sums = 61b3f3d214474425ff6954c471af7ba8ad1813763d47b2da1f8df30dec0cf25c
+	sha256sums = be422ad5f04114ba9169f3f7adaa658f31726e560ba7ce3ab0944e42cf8f0fa9
 	sha256sums = b039350d6d73488e1b4296c78475738c3c2e5c54e8370d031983c6e59a6d7c8d
 	sha256sums = 5191648d2bb219c91774966900e6fcf44e2e5b08cfe2b2c483cf955dd36d9cd8
-	sha256sums = b0f7af104adf726fff2a6a09ea2eb2f2d2965c92295f4d7388c08d140e0c2b00
-	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
-	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
+	sha256sums = 7b82eb420b5aebd1e5590db0ae25c523eca06724d4238ae02139690535636c37
 	sha256sums = 34b4ca06956669e23b7043a4b025365a43b42a6c3f13b21d5a60a6ac7d8b7c3f
 
 pkgname = solana-cli
@@ -33,7 +28,6 @@ pkgname = solana-cli
 	depends = bzip2
 	depends = glibc
 	depends = libgcc
-	depends = systemd-libs
 	depends = zstd
 	provides = spl-token
 	conflicts = spl-token
@@ -71,7 +65,6 @@ pkgname = solana-dev
 
 pkgname = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain (meta package)
-	arch = any
 	depends = solana-cli
 	depends = agave-validator
 	depends = solana-dev
