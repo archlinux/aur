@@ -1,6 +1,6 @@
 pkgbase = tabularis-nightly-bin
 	pkgdesc = Open-source desktop SQL workspace for PostgreSQL, MySQL/MariaDB, SQLite and 15+ more databases, with a built-in MCP server (nightly build)
-	pkgver = 0.27.1.nightly5
+	pkgver = 0.28.1.nightly1
 	pkgrel = 1
 	url = https://github.com/TabularisDB/tabularis
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tabularis-nightly-bin
 	depends = libsecret
 	provides = tabularis
 	conflicts = tabularis
-	source = tabularis_0.27.1-5_amd64.deb::https://github.com/TabularisDB/tabularis/releases/download/nightly-20261013-1d53f00/tabularis_0.27.1-5_amd64.deb
-	sha256sums = cae758eaa0e4e6c368c1d31285fbedd7f920d39a56d7e290b727a70aed9eb38e
+	source = tabularis_0.28.1-1_amd64.deb::https://github.com/TabularisDB/tabularis/releases/download/nightly-20261014-4c2e6e1/tabularis_0.28.1-1_amd64.deb
+	sha256sums = a38a81ef6676d7d59df53367d5d26ec57a7421d88ca8b17ced47779ca1412e01
 
 pkgname = tabularis-nightly-bin
