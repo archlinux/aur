@@ -1,9 +1,10 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=spsdk
 pkgname=python-spsdk
-pkgver=3.11.0
-pkgrel=2
+pkgver=3.12.0
+pkgrel=3
 pkgdesc="Open Source Secure Provisioning SDK for NXP MCU/MPU"
 arch=(any)
 url="https://github.com/nxp-mcuxpresso/spsdk"
@@ -12,7 +13,6 @@ depends=(
   ipython
   python
   python-asn1crypto
-  python-astunparse
   python-bitstring
   python-can
   python-click
@@ -42,9 +42,11 @@ depends=(
   python-ftd2xx
   python-pyftdi
   python-pylibftdi
+  python-pyhsslms
   python-gmssl
   python-libuuu
   python-sly
+  python-spsdk-iped
   python-spsdk-pqc
   python-libusbsio
   #   python-spsdk-mcu-link
@@ -65,7 +67,7 @@ checkdepends=(
 )
 optdepends=()
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('0f3b4452f18347b4537fb0b6c8e2c996d7036c721e93f43f46cda1c266f0068731221103069cf6c6c1b3f2279cdea170ed87894753a9f19b58bbb05d2c905c02')
+sha512sums=('8c7adde5abe51bcd7fa8280464a62cbeeaebc00d7b722af2c6b60e37d8c5e21ba30a5e690dcc18f9033d8eb48aad2b2c2df7ece922a96d3da361f1b4d177a04a')
 
 prepare() {
   cd $_name-$pkgver
