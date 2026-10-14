@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-zeon-rlc
-	pkgdesc = AIMP skin: Zeon RLC 2 (by -=Lee=-)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Zeon RLC V2 (by -=Lee=-)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-zeon-rlc
 	options = !strip
 	options = !debug
 	source = aimp-skin-zeon-rlc-317.archive::https://aimp.ru/?do=catalog.download&id=317
-	sha256sums = c5972177808562d990054cbd658f9e44ae81a2f87bcb6d0af0f6e9e2f3f4cb8b
+	sha256sums = SKIP
 
 pkgname = aimp-skin-zeon-rlc
