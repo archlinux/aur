@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-tron-laser
-	pkgdesc = AIMP skin: Tron Laser 1.0 (by trancepx)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Tron Laser 2012-08-17 (by trancepx)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-tron-laser
 	options = !strip
 	options = !debug
 	source = aimp-skin-tron-laser-319.archive::https://aimp.ru/?do=catalog.download&id=319
-	sha256sums = 2d0e659980544ad239572f64b8a7a5325884ef25b204e352df4c5a1770e64282
+	sha256sums = SKIP
 
 pkgname = aimp-skin-tron-laser
