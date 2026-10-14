@@ -3,7 +3,7 @@
 pkgname=pi-desktop-git
 _pkgname=pi-desktop
 _electron=electron43
-pkgver=0.19.1.r14.ge01dc31
+pkgver=0.20.1.r60.gcd91b99
 pkgrel=1
 pkgdesc="Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins (git, system Electron)"
 arch=('x86_64' 'aarch64')
