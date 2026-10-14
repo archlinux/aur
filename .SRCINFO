@@ -1,0 +1,26 @@
+pkgbase = livekit-bin
+	pkgdesc = LiveKit: Real-time video, audio and data for developers
+	pkgver = 1.13.10
+	pkgrel = 1
+	url = https://livekit.io/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache
+	optdepends = redis
+	provides = livekit
+	conflicts = livekit
+	options = !debug
+	backup = etc/livekit/config.yaml
+	source = https://github.com/livekit/livekit/archive/refs/tags/v1.13.10.tar.gz
+	source = livekit.service
+	sha256sums = d1b93ced314b14654faceeb99627a79114b8ebe002bb5d620be4a185db83a4b2
+	sha256sums = c23c7576f6ab9e94cde3501581a5732e3678bd51321903cff3171906456c40bf
+	source_x86_64 = https://github.com/livekit/livekit/releases/download/v1.13.10/livekit_1.13.10_linux_amd64.tar.gz
+	sha256sums_x86_64 = c25a3e45fb922e9a93c6443d10c0ed041ba64342097e38632331736630283165
+	source_aarch64 = https://github.com/livekit/livekit/releases/download/v1.13.10/livekit_1.13.10_linux_arm64.tar.gz
+	sha256sums_aarch64 = ff60607e1931ff078576882fa11c087aa5821d635ac0c47f56ff77e203e32006
+	source_armv7h = https://github.com/livekit/livekit/releases/download/v1.13.10/livekit_1.13.10_linux_armv7.tar.gz
+	sha256sums_armv7h = 53527b3a0c52661dcac726614bcefb42702e36fd7bf9b389be971f8d8e4661c1
+
+pkgname = livekit-bin
