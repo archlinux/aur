@@ -9,6 +9,7 @@ pkgbase = mayaflux-dev-bin
 	license = Apache-2.0
 	license = BSD-3-Clause
 	license = MIT
+	makedepends = aria2
 	depends = llvm
 	depends = llvm-libs
 	depends = clang

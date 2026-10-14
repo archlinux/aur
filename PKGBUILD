@@ -58,6 +58,9 @@ source=(
     "${_tarball}.sha256::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/${_tarball}.sha256"
 )
 noextract=("${_tarball}")
+DLAGENTS=('http::/usr/bin/aria2c -UWget -c -x16 -s16 -k1M --allow-overwrite=true --auto-file-renaming=false --file-allocation=none --console-log-level=warn --download-result=hide --max-tries=5 --retry-wait=3 %u -o %o'
+    'https::/usr/bin/aria2c -UWget -c -x16 -s16 -k1M --allow-overwrite=true --auto-file-renaming=false --file-allocation=none --console-log-level=warn --download-result=hide --max-tries=5 --retry-wait=3 %u -o %o')
+makedepends=('aria2')
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
