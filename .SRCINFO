@@ -1,6 +1,6 @@
 pkgbase = datui-bin
 	pkgdesc = Explore tabular data in your terminal: Parquet, CSV, JSON and more
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://derekwisong.github.io/datui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = datui-bin
 	conflicts = datui
 	options = !strip
 	options = !debug
-	source = datui-bin-0.4.8.tar.gz::https://github.com/derekwisong/datui/releases/download/v0.4.8/datui-v0.4.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = ba5df4f6c32f5fdd9f55ab685eb0325bdd2fc22025ab572cc9b1cc1f0c97a009
+	source = datui-bin-0.4.9.tar.gz::https://github.com/derekwisong/datui/releases/download/v0.4.9/datui-v0.4.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 564492a055db18576b3603efbf8adcc79f9cf6bd7e6f4487fe844bf8801e6a27
 
 pkgname = datui-bin
