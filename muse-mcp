@@ -4,7 +4,11 @@ muse-mcp: configure Muse Code MCP servers and import them from other agents.
 
 Reads MCP server definitions from opencode, Codex CLI, Claude Code and
 Antigravity (agy) configs and merges them into ~/.config/muse/settings.json
-under the `mcp_servers` key. Other settings.json keys are left untouched.
+under the canonical `mcpServers` key. Other settings.json keys are left
+untouched. A legacy `mcp_servers` key is merged into `mcpServers` on the
+next write: carrying both keys makes the native loader drop every MCP
+server ("MCP configuration error ... MCP is disabled"), so this tool never
+leaves both behind and never stores the same name twice.
 
 Integrated with the muse wrapper: `muse mcp ...` dispatches here.
 """
@@ -91,14 +95,74 @@ def save_settings(data):
         raise
 
 
+# Native settings use the camelCase key. A legacy snake_case key is still
+# honored on read, but both keys at once makes the native loader drop the
+# whole MCP member, so every write path migrates legacy entries into the
+# canonical key first and re-imports stay idempotent.
+CANONICAL_KEY = "mcpServers"
+LEGACY_KEY = "mcp_servers"
+
+
+def server_maps(data):
+    """Split settings into (canonical, legacy) server dicts (read-only)."""
+    canon = data.get(CANONICAL_KEY, {})
+    legacy = data.get(LEGACY_KEY, {})
+    if not isinstance(canon, dict):
+        die(f"{CANONICAL_KEY} in settings.json is not an object")
+    if not isinstance(legacy, dict):
+        die(f"{LEGACY_KEY} in settings.json is not an object")
+    return canon, legacy
+
+
 def muse_servers(data=None):
+    """Merged read-only view of configured servers (canonical wins)."""
     data = load_settings() if data is None else data
-    servers = data.get("mcp_servers", {})
-    return servers if isinstance(servers, dict) else {}
+    canon, legacy = server_maps(data)
+    merged = dict(legacy)
+    merged.update(canon)
+    return merged
+
+
+def legacy_names(data=None):
+    data = load_settings() if data is None else data
+    _, legacy = server_maps(data)
+    return sorted(legacy)
+
+
+def warn_legacy(data=None):
+    names = legacy_names(data)
+    if names:
+        warn(f"{len(names)} server(s) still under legacy '{LEGACY_KEY}' key "
+             f"({', '.join(names)}); they merge into '{CANONICAL_KEY}' on "
+             "the next add/enable/disable/remove/import")
+    return names
+
+
+def migrate_legacy_key(settings):
+    """Move legacy entries into the canonical key (in memory).
+
+    Returns (moved, conflicts). Conflicting names keep the canonical entry;
+    the legacy key is always removed so the file never carries both keys.
+    Callers persist with save_settings()."""
+    canon, legacy = server_maps(settings)
+    if not legacy:
+        return [], []
+    moved, conflicts = [], []
+    for name, entry in legacy.items():
+        if name in canon:
+            conflicts.append(name)
+            warn(f"'{name}' is configured under both '{LEGACY_KEY}' and "
+                 f"'{CANONICAL_KEY}'; keeping the '{CANONICAL_KEY}' entry")
+        else:
+            canon[name] = entry
+            moved.append(name)
+    settings[CANONICAL_KEY] = canon
+    del settings[LEGACY_KEY]
+    return moved, conflicts
 
 
 def to_muse_entry(srv):
-    """Convert a normalized server dict to a muse mcp_servers entry."""
+    """Convert a normalized server dict to a muse mcpServers entry."""
     entry = {
         "transport": "stdio" if srv["transport"] == "stdio" else "streamable_http",
         "enabled": srv["enabled"],
@@ -352,23 +416,13 @@ def collect_source(name, custom_path=None):
 # Display helpers
 # ---------------------------------------------------------------------------
 
-def fmt_server(srv):
-    if srv["transport"] == "stdio":
-        cmd = " ".join(shlex.quote(p) for p in [srv["command"]] + srv["args"])
-        detail = cmd
-    else:
-        detail = srv["url"]
-    state = green("enabled") if srv["enabled"] else dim("disabled")
-    extra = dim(f" [{len(srv['env'])} env]") if srv.get("env") else ""
-    return f"  {bold(srv['name'])}  {dim(srv['transport'])}  {state}\n    {dim(detail)}{extra}"
-
-
 # ---------------------------------------------------------------------------
 # Subcommands
 # ---------------------------------------------------------------------------
 
 def cmd_list(args):
     servers = muse_servers()
+    warn_legacy()
     if args.json:
         print(json.dumps(servers, indent=2))
         return 0
@@ -395,6 +449,7 @@ def cmd_status(args):
     existing = muse_servers()
     print(f"  {len(existing)} server(s): "
           + (", ".join(sorted(existing)) if existing else dim("none")))
+    warn_legacy()
     print()
     for name, spec in SOURCES.items():
         found = [p for p in spec["paths"] if os.path.exists(p)]
@@ -445,9 +500,11 @@ def cmd_import(args):
             s["enabled"] = False
 
     settings = load_settings()
-    servers = settings.setdefault("mcp_servers", {})
-    if not isinstance(servers, dict):
-        die("mcp_servers in settings.json is not an object")
+    # Migrate first so the skip-check below sees every configured name:
+    # re-running an import then skips instead of duplicating, and the file
+    # never ends up with both keys (which disables all MCP natively).
+    moved, conflicts = migrate_legacy_key(settings)
+    servers = settings.setdefault(CANONICAL_KEY, {})
 
     remote_warn = False
     added, skipped, overwritten = [], [], []
@@ -466,12 +523,16 @@ def cmd_import(args):
         warn("remote (http) servers are imported as transport "
              "'streamable_http' (best effort) — verify in muse")
 
+    changed = bool(added or overwritten or moved or conflicts)
     if args.dry_run:
         print(dim("(dry run — settings.json unchanged)"))
-    elif added or overwritten:
+    elif changed:
         save_settings(settings)
         print(dim(f"backup: {MUSE_SETTINGS}.bak"))
 
+    mig_label = "would migrate" if args.dry_run else "migrated"
+    for n in moved:
+        print(f"  {green(mig_label)} {n} ({LEGACY_KEY} -> {CANONICAL_KEY})")
     for n in added:
         print(f"  {green('added')} {n}")
     for n in overwritten:
@@ -483,9 +544,8 @@ def cmd_import(args):
 
 def cmd_add(args):
     settings = load_settings()
-    servers = settings.setdefault("mcp_servers", {})
-    if not isinstance(servers, dict):
-        die("mcp_servers in settings.json is not an object")
+    migrate_legacy_key(settings)
+    servers = settings.setdefault(CANONICAL_KEY, {})
     if args.name in servers and not args.force:
         die(f"server '{args.name}' exists (use --force to replace)")
     env = {}
@@ -515,11 +575,12 @@ def cmd_add(args):
 
 def _mutate(name, fn, label):
     settings = load_settings()
+    migrate_legacy_key(settings)
     servers = muse_servers(settings)
     if name not in servers:
         die(f"no muse server named '{name}'")
     fn(servers[name])
-    settings["mcp_servers"] = servers
+    settings[CANONICAL_KEY] = servers
     save_settings(settings)
     print(f"{green(label)} {name}")
     return 0
@@ -535,11 +596,12 @@ def cmd_disable(args):
 
 def cmd_remove(args):
     settings = load_settings()
+    migrate_legacy_key(settings)
     servers = muse_servers(settings)
     if args.name not in servers:
         die(f"no muse server named '{args.name}'")
     del servers[args.name]
-    settings["mcp_servers"] = servers
+    settings[CANONICAL_KEY] = servers
     save_settings(settings)
     print(f"{green('removed')} {args.name}")
     return 0
@@ -573,7 +635,7 @@ muse-mcp manual
 ===============
 
 Import MCP servers from other coding agents into Muse Code, and manage the
-muse `mcp_servers` block in ~/.config/muse/settings.json.
+muse `mcpServers` block in ~/.config/muse/settings.json.
 
 SOURCES (auto-detected)
   opencode  ~/.config/opencode/opencode.json[c], ./opencode.json[c]
@@ -589,6 +651,12 @@ WORKFLOW
 
 NOTES
   * Existing muse servers are never overwritten unless --force is given.
+    Re-running an import only adds new names, never duplicates.
+  * Servers live under the canonical `mcpServers` key. A legacy
+    `mcp_servers` key is merged into it on the next write (same name in
+    both keeps the `mcpServers` entry); carrying both keys makes the
+    native loader drop every MCP server, so this tool never leaves
+    both behind.
   * A backup (settings.json.bak) is written before every change.
   * Remote (http/sse) servers import as transport 'streamable_http';
     verify them in muse afterwards — that mapping is best effort.
