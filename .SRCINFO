@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-dreaminess
-	pkgdesc = AIMP skin: Dreaminess 1.0 (by Zigar)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Dreaminess 2017-03-21 (by Zigar)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-dreaminess
 	options = !strip
 	options = !debug
 	source = aimp-skin-dreaminess-887.archive::https://aimp.ru/?do=catalog.download&id=887
-	sha256sums = d721f367aaf99cd8ee3ef0ef842ce3a0f88df219a3225923590c39c381687c59
+	sha256sums = SKIP
 
 pkgname = aimp-skin-dreaminess
