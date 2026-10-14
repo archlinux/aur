@@ -46,7 +46,7 @@ source=(
     "cua-driver-rs-${pkgver}-linux-x86_64-binary.tar.gz::https://github.com/trycua/cua/releases/download/cua-driver-rs-v${pkgver}/cua-driver-rs-${pkgver}-linux-x86_64-binary.tar.gz"
     "cua-driver.service"
 )
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
+sha256sums=('3a47b35ae8e083af8975c62f873a142f4a47c248c630a0eebfdf90de14d6fccf'
             'SKIP')
 
 # ── Package ─────────────────────────────────────────────────────────
