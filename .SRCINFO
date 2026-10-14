@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-nguvu-vert-tabs-layout
-	pkgdesc = AIMP skin: NGuvu (Vert.Tabs Layout) 2.2 (by ScrollUnLock)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: NGuvu (Vert.Tabs Layout) v2.2 (by ScrollUnLock)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-nguvu-vert-tabs-layout
 	options = !strip
 	options = !debug
 	source = aimp-skin-nguvu-vert-tabs-layout-352.archive::https://aimp.ru/?do=catalog.download&id=352
-	sha256sums = 0811b60b5978ca214269625694b76a4ccfcfd5e413833955e39aa0610de129ee
+	sha256sums = SKIP
 
 pkgname = aimp-skin-nguvu-vert-tabs-layout
