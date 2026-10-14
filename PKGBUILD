@@ -2,8 +2,8 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/mcp-linker-bin
 
 pkgname=mcp-linker-bin
-pkgver=2.4.0 # renovate: datasource=github-tags depName=milisp/mcp-linker versioning=semver-coerced extractVersion=^v?(?<version>.*)$
-pkgrel=4
+pkgver=2.5.0 # renovate: datasource=github-tags depName=milisp/mcp-linker versioning=semver-coerced extractVersion=^v?(?<version>.*)$
+pkgrel=1
 pkgdesc="Desktop manager for adding and syncing MCP servers across AI clients"
 arch=('x86_64')
 url="https://github.com/milisp/mcp-linker"
@@ -21,7 +21,7 @@ source=(
   "mcp-linker-bin.desktop"
   "LICENSE"
 )
-sha256sums=('f5e8d5696e12cd4dde820d25a7d39986e1cbd99f5c0e51afa0dd25b4f37e2760'
+sha256sums=('813c157c27d7d98f5c91bee8593bde012204ccfbf5397eca20ca6dcc67c0fddb'
             '17b717623d714585d43fe064157261bc48f93f48aea176eabdee2cf8905b8ab5'
             'c474269f10d838b1e8b044f124dd9b32199fddef24df811d7a05db331536f834'
             'd505308ce53c54f0e5dc890b85e19182d5c6d60a594de316c24e7a8d29665342')
