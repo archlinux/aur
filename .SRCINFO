@@ -1,6 +1,6 @@
 pkgbase = cryptsetup-beep
 	pkgdesc = Audible cue when systemd-cryptsetup prompts for a LUKS passphrase in initramfs
-	pkgver = 0.2.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/heath-toby/cryptsetup-beep
 	install = cryptsetup-beep.install
@@ -15,7 +15,7 @@ pkgbase = cryptsetup-beep
 	depends = alsa-utils
 	optdepends = beep: required for PC-speaker mode
 	optdepends = orca: spoken feedback in the setup wizard
-	source = cryptsetup-beep-0.2.1.tar.gz::https://github.com/heath-toby/cryptsetup-beep/archive/v0.2.1.tar.gz
-	sha256sums = 6ad76ebe283a1043ee388661296d14fec57f18d177fab55ff56c338d660bb554
+	source = cryptsetup-beep-0.4.0.tar.gz::https://github.com/heath-toby/cryptsetup-beep/archive/v0.4.0.tar.gz
+	sha256sums = 65a4963da4a2cc26bad40543ce13b199ab9647516f7f7854b4b99a9792d4b57a
 
 pkgname = cryptsetup-beep

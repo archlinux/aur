@@ -2,7 +2,7 @@
 # Co-author: Claude (Anthropic), via Claude Code
 
 pkgname=cryptsetup-beep
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Audible cue when systemd-cryptsetup prompts for a LUKS passphrase in initramfs'
 arch=('any')
@@ -15,7 +15,8 @@ optdepends=(
 )
 install=cryptsetup-beep.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ad76ebe283a1043ee388661296d14fec57f18d177fab55ff56c338d660bb554')
+# sha256 pinned post-release — see the follow-up "Pin sha256 for v0.4.0" commit.
+sha256sums=('65a4963da4a2cc26bad40543ce13b199ab9647516f7f7854b4b99a9792d4b57a')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
