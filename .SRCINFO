@@ -1,6 +1,6 @@
 pkgbase = ctranslate2-cuda
 	pkgdesc = A C++ and Python library for efficient inference with Transformer models (with CUDA).
-	pkgver = 4.8.2
+	pkgver = 4.8.3
 	pkgrel = 1
 	url = https://github.com/OpenNMT/CTranslate2
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ctranslate2-cuda
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	options = !lto
-	source = git+https://github.com/OpenNMT/CTranslate2.git#tag=v4.8.2
+	source = git+https://github.com/OpenNMT/CTranslate2.git#tag=v4.8.3
 	source = git+https://github.com/jarro2783/cxxopts.git
 	source = git+https://github.com/NVIDIA/cccl.git
 	source = git+https://github.com/google/cpu_features.git
@@ -24,7 +24,7 @@ pkgbase = ctranslate2-cuda
 	source = git+https://github.com/google/ruy.git
 	source = git+https://github.com/pytorch/cpuinfo.git
 	source = git+https://github.com/NVIDIA/cutlass.git
-	sha256sums = 3ebe3d22a615f1b04710e19aa7d94c26c704bdd1e3ed3b3d31f7f7e77dfc2ebd
+	sha256sums = b9261d99550030a626a2bb4bb12dd66d832c1e04da7f0f7032cf641de0794433
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -41,7 +41,7 @@ pkgname = ctranslate2-cuda
 	depends = libstdc++
 	depends = libgomp
 	depends = glibc
-	provides = ctranslate2=4.8.2
+	provides = ctranslate2=4.8.3
 	conflicts = ctranslate2
 
 pkgname = python-ctranslate2-cuda
@@ -55,5 +55,5 @@ pkgname = python-ctranslate2-cuda
 	depends = libstdc++
 	optdepends = python-pytorch: model converters
 	optdepends = python-transformers: Hugging Face model converter
-	provides = python-ctranslate2=4.8.2
+	provides = python-ctranslate2=4.8.3
 	conflicts = python-ctranslate2

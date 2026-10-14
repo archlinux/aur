@@ -10,7 +10,7 @@ pkgname=(
   'python-ctranslate2-cuda'
 )
 pkgbase=ctranslate2-cuda
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models (with CUDA)."
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cutlass.git')
-sha256sums=('3ebe3d22a615f1b04710e19aa7d94c26c704bdd1e3ed3b3d31f7f7e77dfc2ebd'
+sha256sums=('b9261d99550030a626a2bb4bb12dd66d832c1e04da7f0f7032cf641de0794433'
             'SKIP'
             'SKIP'
             'SKIP'
