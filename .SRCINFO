@@ -12,6 +12,6 @@ pkgbase = zgit-desktop-bin
 	provides = zgit-desktop=0.3.0
 	conflicts = zgit-desktop
 	source = https://github.com/zaidejjo/zgit/releases/download/v0.3.0/zgit-desktop-v0.3.0-linux-amd64.tar.gz
-	sha256sums = 532cfe3387c3515162481df52c18d2cfda4a93fef61898e42cd5c3f77b55d3b1
+	sha256sums = 5efff5c8bd2760191b4121b923c33ce1616766e2be0ec78c0241b84d51ebb51d
 
 pkgname = zgit-desktop-bin
