@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 
 pkgname=koboldcpp
-pkgver=1.122
+pkgver=1.123
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
@@ -24,11 +24,17 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz"
+    'json_to_gbnf'
+    'kcpp_agent'
+    'koboldcpp'
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
 sha256sums=(
-    '40d3bec39673f512d2c8c935734091670f8d659079b2b77ad7ebe43a15231971'
+    '8136ca1809359cfc3d166f049664cb71b9faa45d277db14db85742da95e0119c'
+    '0a02338100375ef45f6cd83168d3c135020a4d650c0eda6a5c2fd5f66469c760'
+    '53c787d94bead546198ff4b7cf21f191dc054046694faaf2c4a5692724679b8b'
+    '9915ba0fbc0931fc61dc0bcaf55394948e43d1328b3c08a12b730416dcd28238'
     '2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
@@ -40,44 +46,28 @@ build() {
 }
 
 package() {
+    cd "$srcdir"
+
+    for i in json_to_gbnf kcpp_agent koboldcpp; do
+        install -Dm644 "$i" "$pkgdir/usr/bin/$i"
+    done
+
+    install -Dm644 koboldcpp.desktop "$pkgdir/usr/share/applications/koboldcpp.desktop"
+    install -Dm644 koboldcpp.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/koboldcpp.png"
+
     cd "$srcdir/koboldcpp-$pkgver"
 
-    install -d "$pkgdir/usr/share/koboldcpp"
+    for i in {*.so,embd_res/*,kcpp_adapters/*} {json_to_gbnf,kcpp_agent,koboldcpp}.py; do
+        install -Dm644 "$i" "$pkgdir/usr/share/koboldcpp/$i"
+    done
 
-    install -Dm644 ./*.so "$pkgdir/usr/share/koboldcpp/"
-
-    install -d "$pkgdir/usr/share/koboldcpp/embd_res"
-    install -Dm644 ./embd_res/* "$pkgdir/usr/share/koboldcpp/embd_res"
-
-    install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
-    install -m644 kcpp_adapters/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
-
-    install -Dm644 ./json_to_gbnf.py "$pkgdir/usr/share/koboldcpp/json_to_gbnf.py"
-    install -Dm644 ./kcpp_agent.py "$pkgdir/usr/share/koboldcpp/kcpp_agent.py"
-    install -Dm644 ./koboldcpp.py "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
-
-    install -d "$pkgdir/usr/bin"
-
-    echo '#!/bin/sh' > "$pkgdir/usr/bin/json_to_gbnf"
-    echo 'exec /usr/bin/python3 /usr/share/koboldcpp/json_to_gbnf.py "$@"' >> "$pkgdir/usr/bin/json_to_gbnf"
-    chmod +x "$pkgdir/usr/bin/json_to_gbnf"
-
-    echo '#!/bin/sh' > "$pkgdir/usr/bin/kcpp_agent"
-    echo 'exec /usr/bin/python3 /usr/share/koboldcpp/kcpp_agent.py "$@"' >> "$pkgdir/usr/bin/kcpp_agent"
-    chmod +x "$pkgdir/usr/bin/kcpp_agent"
-
-    echo '#!/bin/sh' > "$pkgdir/usr/bin/koboldcpp"
-    echo 'exec /usr/bin/python3 /usr/share/koboldcpp/koboldcpp.py "$@"' >> "$pkgdir/usr/bin/koboldcpp"
-    chmod +x "$pkgdir/usr/bin/koboldcpp"
-
-    install -Dm644 "$srcdir/koboldcpp.desktop" "$pkgdir/usr/share/applications/koboldcpp.desktop"
-    install -Dm644 "$srcdir/koboldcpp.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/koboldcpp.png"
-
-    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-    install -Dm644 MIT_LICENSE_GGML_SDCPP_LLAMACPP_ONLY.md "${pkgdir}/usr/share/licenses/${pkgname}/MIT_LICENSE_GGML_SDCPP_LLAMACPP_ONLY.md"
+    for i in {LICENSE,MIT_LICENSE_GGML_SDCPP_LLAMACPP_ONLY}.md; do
+        install -Dm644 "$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
+    done
 
     # Compile Python scripts
-    python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/json_to_gbnf.py"
-    python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/kcpp_agent.py"
-    python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
+    for i in "$pkgdir/usr/share/koboldcpp"/*.py; do
+        python -m compileall -q -o 0 -o 1 -d '/usr/share/koboldcpp' "$i"
+    done
 }
+
