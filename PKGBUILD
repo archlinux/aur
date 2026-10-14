@@ -1,7 +1,7 @@
 # Maintainer: Jean-Louis Queguiner <jlqueguiner@gladia.io>
 pkgname=python-words2num2
 _pkgname=words2num2
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Inverse of num2words2: convert spoken-form numbers back to numeric values across 100+ languages."
 # A compiled Rust extension (maturin/PyO3), not a pure-Python package.
@@ -19,7 +19,7 @@ checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/w/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 # pkgver and sha256sums are rewritten by .github/workflows/aur-publish.yml
 # from the PyPI sdist of each release.
-sha256sums=('0e77750a61987d6e6cdd375d40e94833fa5138f6b54bf8060af43e85b5085a24')
+sha256sums=('cd65c7112033e0944fde05cb0821008ed2c05ebc996f02fa25a61ba120888b70')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
