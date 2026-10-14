@@ -11,7 +11,7 @@
 # Linting: shellcheck --shell=bash --exclude=SC2034,SC2148,SC2154 PKGBUILD
 
 pkgname=granola
-pkgver=7.637.0
+pkgver=7.645.1
 pkgrel=1
 pkgdesc="AI notepad for back-to-back meetings, repackaged from the official macOS build"
 arch=('x86_64')
@@ -47,7 +47,7 @@ noextract=(
   "granola-$pkgver.dmg"
   "node-v$_elver-headers.tar.gz"
 )
-sha256sums=('9ca52082cd037259b58d457a215e91ec2d77a398f448abb5e0cf06ffe56b2623'
+sha256sums=('afa8fb5052aa0dceca883086df40fca24f8c95f94f849ad72d06cfba16524dc4'
             'ad8ceb2cfe687e0c106547fdd281f0d20b40688200d04f40bb163afd1f102609'
             '8c559da0c922a68d9e41c5a8f8abef332c5d4814e7b55dd28e3d2245d751fd19'
             '22b5217b929a1d184f1f73d5f55fbef6756d5fbcef207da64f188231d38c9c20')
