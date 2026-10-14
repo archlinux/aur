@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-pimeer
-	pkgdesc = AIMP skin: Pimeer 1.0 (by PL)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Pimeer 2011-05-19 (by PL)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-pimeer
 	options = !strip
 	options = !debug
 	source = aimp-skin-pimeer-128.archive::https://aimp.ru/?do=catalog.download&id=128
-	sha256sums = c1b89ec6aac99d2c7501a1c5dbb20116e35f1d9d91bf935be026895d858adf26
+	sha256sums = SKIP
 
 pkgname = aimp-skin-pimeer
