@@ -4,7 +4,7 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.8.9
-pkgrel=5
+pkgrel=6
 _attrver=2.5.2
 _aclver=2.3.2
 _sslver=3.6.5
@@ -36,6 +36,7 @@ sha512sums=('b16c64874cda0a0ab2d66bb89aaf7ffdb8abafad21101c9d64265f15e6b188cbf7f
             'b5887ea77417fae49b6cb1e9fa782d3021f268d5219701d87a092235964f73fa72a31428b630445517f56f2bb69dcbbb24119ef9dbf8b4e40a753369a9f9a16f'
             '70963771ea5d763614278a69b474f09b7d237ef8f53b675a10fe31d9923aeef601504b35d7ebd1b1e7f347e9ebb048e6b3b47fffdf137e7bdc7e8d5eb4ec4692'
             'SKIP'
+            'a8cca9039ff9f09f92fa7fbcf5c6744615e8cd71a033784c0b996ee931af0dfa69f5b6efb67243693d418b9b3e1f7dadc178335bd407b72b0d72bdc4679da9ff'
             'd669b66a7dcea627c88c077f3f3f23b42c1dd477bd240b5c26b6f473b0f2ea1b9db3c0a7b153cece3172e657e7d734a5f51c84b4174c98ba567d0b36535b28d6'
             '083f5e675d73f3233c7930ebe20425a533feedeaaa9d8cc86831312a6581cefbe6ed0d08d2fa89be81082f2a5abdabca8b3c080bf97218a1bd59dc118a30b9f3'
             'SKIP'
@@ -45,7 +46,7 @@ sha512sums=('b16c64874cda0a0ab2d66bb89aaf7ffdb8abafad21101c9d64265f15e6b188cbf7f
 case "${CARCH}" in
 	i486|armv6h)
 		sha512sums[0]='SKIP'
-		sha512sums[13]='SKIP'
+		sha512sums[14]='SKIP'
 		;;
 esac
 
@@ -84,7 +85,8 @@ validpgpkeys+=('8657ABB260F056B1E5190839D9C4D26D0E604491'  # Matt Caswell <matt@
               'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'   # OpenSSL security team key
               'B146647E45A7B33947AB226B2A2C87D161692D40')  # OpenSSL <openssl@openssl.org>, new release-signing key 2026-05
 # zlib
-source+=("https://zlib.net/zlib-${_zlibver}.tar.gz"{,.asc})
+source+=("https://zlib.net/zlib-${_zlibver}.tar.gz"{,.asc}
+         "zlib-1.3.2-CVE-2026-85091.patch")
 validpgpkeys+=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA') # Mark Adler <madler@alumni.caltech.edu>
 # xz
 source+=("git+https://github.com/tukaani-project/xz#tag=v${_xzver}")
@@ -163,6 +165,12 @@ prepare() {
             msg2 "Applying openssl patch openssl-3.0.7-no-atomic.patch..."
             patch -Np1 -i "${srcdir}/openssl-3.0.7-no-atomic.patch"
     esac
+
+    # zlib -- CVE-2026-85091 (gzwrite non-blocking buffer overflow), fixed
+    # upstream in git but not yet in a tagged release; same unreleased patch
+    # Arch Linux's own zlib package applies on top of 1.3.2
+    cd "${srcdir}/"zlib-${_zlibver}
+    patch -Np1 -i "${srcdir}/zlib-1.3.2-CVE-2026-85091.patch"
 }
 
 build() {
