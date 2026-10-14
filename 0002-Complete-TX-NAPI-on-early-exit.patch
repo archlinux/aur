@@ -1,0 +1,63 @@
+commit cb0d28afdfe39cffdfa43f2e3a2160a194f21d96
+Author: Maykel Moya <mmoya@mmoya.org>
+Date:   Wed Oct 14 15:04:45 2026 +0200
+
+    Complete TX NAPI on early exit to avoid napi_disable() hang
+    
+    ax_tx_poll_qx() bails out with "return -1" when the device is unplugged,
+    disabled, or has no carrier, without calling napi_complete_done(). The
+    NAPI core treats any return value below the budget as "done" and drops
+    the instance from the poll list, but only the driver can clear
+    NAPI_STATE_SCHED. The instance therefore stays scheduled forever, and
+    the next napi_disable() on it loops in usleep_range() indefinitely.
+    
+    The race is easy to hit: ax_start_xmit() schedules tx_napi without
+    looking at the carrier, so a frame queued just before the link drops
+    (e.g. on resume from suspend) leads to a poll that sees
+    !netif_carrier_ok() and takes the early exit.
+    
+    Observed on 6.18.55-1-lts with an AX88179A (0b95:1790) after resume:
+    the carrier dropped, NetworkManager took the interface down, and
+    ax_close() blocked in napi_disable(&tx_napi[i]) while holding RTNL:
+    
+      napi_disable_locked+0xf0/0x100
+      napi_disable+0x25/0x40
+      ax_close+0x63/0x160 [ax_usb_nic]
+      __dev_close_many
+      __dev_change_flags
+      netif_change_flags
+      do_setlink.isra.0
+      rtnl_newlink
+    
+    Every other RTNL user (geoclue, avahi, browsers, systemd-resolved
+    clients) then hung in rtnl_dumpit() in D state. The link-down branch
+    of ax_set_carrier() also calls napi_disable(&tx_napi[i]) and is
+    exposed to the same hang from a kworker.
+    
+    Complete NAPI on every early-exit path and return 0; a poll function
+    must never return a negative value. No work is lost: TX is rescheduled
+    by ax_set_carrier() / __ax_work_func() once the carrier comes back.
+    The RX poll path already completes correctly, and the tasklet build
+    (ENABLE_TX_TASKLET) is unaffected.
+    
+    Guarding in ax_close() instead is not viable: napi_disable() has no
+    timeout variant, and skipping it would let the poll function run
+    against buffers that ax_free_buffer() is about to free.
+
+diff --git a/src/ax_main.c b/src/ax_main.c
+index 5f1cddb..c722bce 100644
+--- a/src/ax_main.c
++++ b/src/ax_main.c
+@@ -1497,8 +1497,10 @@ static int ax_tx_poll_qx(struct ax_device *axdev, struct napi_struct *tx_napi,
+ 
+ 	if (test_bit(AX_UNPLUG, &axdev->flags) ||
+ 	    !test_bit(AX_ENABLE, &axdev->flags) ||
+-	    !netif_carrier_ok(axdev->netdev))
+-		return -1;
++	    !netif_carrier_ok(axdev->netdev)) {
++		napi_complete_done(tx_napi, 0);
++		return 0;
++	}
+ 
+ 	clear_bit(AX_SCHEDULE_NAPI_TX, &axdev->flags);
+ 
