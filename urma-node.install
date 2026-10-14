@@ -1,0 +1,24 @@
+_urma_service() {
+    /usr/bin/urma-node service "$@"
+    rc=$?
+    if [ "$rc" -ne 0 ] && [ "$rc" -ne 3 ]; then
+        echo "urma-node: service $1 failed ($rc)" >&2
+    fi
+}
+
+post_install() {
+    _urma_service install
+}
+
+post_upgrade() {
+    _urma_service install
+}
+
+pre_remove() {
+    _urma_service uninstall
+}
+
+post_remove() {
+    echo "urma-node: kept /etc/urma-node, /var/lib/urma-node and /var/log/urma-node;"
+    echo "to purge, run 'urma-node service uninstall --purge' before removing the package."
+}
