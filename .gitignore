@@ -4,6 +4,8 @@
 *.tar.zst
 pkg
 src
+# pkgctl build / namcap logs (local build artifacts)
+*.log
 !.SRCINFO
 !.gitignore
 # nvchecker local version records (not committed)
