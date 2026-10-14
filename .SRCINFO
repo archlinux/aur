@@ -1,6 +1,6 @@
 pkgbase = cloudflare-warp-minimal-bin
 	pkgdesc = Minimal Cloudflare WARP client
-	pkgver = 2026.8.2100
+	pkgver = 2026.8.2110
 	pkgrel = 1
 	url = https://developers.cloudflare.com/warp-client
 	install = cloudflare-warp-minimal-bin.install
@@ -16,7 +16,7 @@ pkgbase = cloudflare-warp-minimal-bin
 	provides = cloudflare-warp
 	conflicts = cloudflare-warp-bin
 	conflicts = cloudflare-warp
-	source = https://pkg.cloudflareclient.com/pool/trixie/main/c/cloudflare-warp/cloudflare-warp_2026.8.2100.0_amd64.deb
-	sha256sums = e22c0310206b904da3368c94defa1e6db88865ac1905ccf007cb416eefadafe5
+	source = https://pkg.cloudflareclient.com/pool/trixie/main/c/cloudflare-warp/cloudflare-warp_2026.8.2110.0_amd64.deb
+	sha256sums = 2b3558ed92abe01e1b08019ba0be578541644690d623ff4b8cc5beaeae802efb
 
 pkgname = cloudflare-warp-minimal-bin
