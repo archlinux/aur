@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=exifcleaner-bin
-pkgver=4.2.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Clean metadata from images, videos, PDFs, and other files"
 url="https://github.com/szTheory/exifcleaner"
@@ -14,7 +14,7 @@ provides=("exifcleaner")
 conflicts=("exifcleaner")
 source=("$url/releases/download/v$pkgver/exifcleaner-$pkgver.x86_64.rpm"
         "$url/raw/v$pkgver/LICENSE")
-sha256sums=('8d6386a0ee39891353bc678cb99360969986bb3eff9c14a660440f427dc1ae2f'
+sha256sums=('46c539b3882ee4a81694ed954b76cd85d539cd327efd9f8ba986983cdbc5f05c'
             'a74847d1e523991859009094dca82f704240d291dea5728a59de9e419cf104ac')
 
 package() {
