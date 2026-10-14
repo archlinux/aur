@@ -1,6 +1,6 @@
 pkgbase = lactea-bin
 	pkgdesc = MilkDrop 2 / 3 and projectM-compatible music visualizer on wgpu, with C library (binary release)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/M0Rf30/lactea
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = lactea-bin
 	conflicts = lactea
 	options = !strip
 	options = !debug
-	source = lactea-0.2.1-LICENSE-MIT::https://raw.githubusercontent.com/M0Rf30/lactea/v0.2.1/LICENSE-MIT
-	source = lactea-0.2.1-LICENSE-APACHE::https://raw.githubusercontent.com/M0Rf30/lactea/v0.2.1/LICENSE-APACHE
-	source = lactea-0.2.1-THIRD_PARTY_NOTICES.md::https://raw.githubusercontent.com/M0Rf30/lactea/v0.2.1/THIRD_PARTY_NOTICES.md
+	source = lactea-0.2.2-LICENSE-MIT::https://raw.githubusercontent.com/M0Rf30/lactea/v0.2.2/LICENSE-MIT
+	source = lactea-0.2.2-LICENSE-APACHE::https://raw.githubusercontent.com/M0Rf30/lactea/v0.2.2/LICENSE-APACHE
+	source = lactea-0.2.2-THIRD_PARTY_NOTICES.md::https://raw.githubusercontent.com/M0Rf30/lactea/v0.2.2/THIRD_PARTY_NOTICES.md
 	sha256sums = c2afe6af9683ff3c73ec628191f433bf778a1b75ab9a2c7a7118d6632237f537
 	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
 	sha256sums = f150af83189c671c23d26eb6e00aee841e6ca04a6b4575b91072dc58cfeef214
-	source_x86_64 = https://github.com/M0Rf30/lactea/releases/download/v0.2.1/lactea-v0.2.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 80ddf8e6639981d28b67e3f8bde536eea88dd037152086f545254ed8416d0fd1
+	source_x86_64 = https://github.com/M0Rf30/lactea/releases/download/v0.2.2/lactea-v0.2.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2c2208cace8d081c80f34628aaab3c0391cb79986da2e2ec4fe869fd0a765f2f
 
 pkgname = lactea-bin

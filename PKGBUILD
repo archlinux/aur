@@ -2,7 +2,7 @@
 
 pkgname=lactea-bin
 _pkgname=lactea
-pkgver=0.2.1 # renovate: datasource=github-releases depName=M0Rf30/lactea extractVersion=^v(?<version>.*)$
+pkgver=0.2.2 # renovate: datasource=github-releases depName=M0Rf30/lactea extractVersion=^v(?<version>.*)$
 pkgrel=1
 pkgdesc="MilkDrop 2 / 3 and projectM-compatible music visualizer on wgpu, with C library (binary release)"
 arch=(x86_64)
@@ -32,7 +32,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux
 sha256sums=('c2afe6af9683ff3c73ec628191f433bf778a1b75ab9a2c7a7118d6632237f537'
             '62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a'
             'f150af83189c671c23d26eb6e00aee841e6ca04a6b4575b91072dc58cfeef214')
-sha256sums_x86_64=('80ddf8e6639981d28b67e3f8bde536eea88dd037152086f545254ed8416d0fd1')
+sha256sums_x86_64=('2c2208cace8d081c80f34628aaab3c0391cb79986da2e2ec4fe869fd0a765f2f')
 
 package() {
   cd "${_pkgname}-v${pkgver}-linux-x86_64"
