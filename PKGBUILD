@@ -1,7 +1,7 @@
 # Maintainer: Phillip Dykman <phil.d324@gmail.com>
 pkgname=supermemory-server
 # renovate: datasource=github-releases depName=supermemoryai/supermemory extractVersion=^server-v(?<version>.+)$
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Self-hosted AI memory server for managing and retrieving information"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_aarch64=("https://github.com/supermemoryai/supermemory/releases/download/
 
 sha256sums=('9c888af5610069b19b84922e1456abaa54332a4b5513f24c2bf8fcfbc966a677'
             'ad3736bb35f7e8daed367baa5f87300afc53886e4dc0e6192725e00857719ca8')
-sha256sums_x86_64=('87f32433d0179be80bb9d8a1bafbac65af4128324342a27ecb8bd1a77b5506f3')
-sha256sums_aarch64=('eeb9e62a8bf59646bd799a05d1a2981b945413a03640c3a39f4f267ad2d2bf37')
+sha256sums_x86_64=('d7987ecbf2b024c6de9d167becbcfcaabce447169b41d6f56db86f87d5187984')
+sha256sums_aarch64=('b789be16cd7192b3c08e882396c0a94ba330ea467d5a7fb1b39ac3684abf5374')
 
 package() {
 	# Detect binary filename based on architecture
