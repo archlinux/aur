@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=comfy-desktop-bin
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Official desktop application for ComfyUI — install, run, and manage ComfyUI with GPU-ready environments'
 arch=('x86_64' 'aarch64')
@@ -44,8 +44,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Comfy-Org/Comfy-De
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_dl_base}/versions/${pkgver}/linux/deb/x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_dl_base}/versions/${pkgver}/linux/deb/arm64")
 sha256sums=('0cea5d109b4d245ea1110c205df0f825a1088c9e45e257514c1661c7c14f7bc3')
-sha256sums_x86_64=('10352d97022768d99ed36372c6b2ad2a1736a331cbda1a8fd94574d60a3cc6d3')
-sha256sums_aarch64=('f2d38afc179ccaaae23e19097b08a7ce60c4640452727325a2a1bbf1a2bb283f')
+sha256sums_x86_64=('60c9b73e82a0a9ae996c8193ab72fbc99aae9f41ebeff90233ac8b8147a5f25b')
+sha256sums_aarch64=('32a2e9f2aa0196a40a50034eaba07fbbf5b2aeb149b02a3b41759b6b910c822c')
 
 latestver() {
     # electron-builder update feed — the authoritative published Linux version.
