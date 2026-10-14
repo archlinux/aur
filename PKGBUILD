@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=4.7.0
+pkgver=4.8.0
 _nodeversion=24
 pkgrel=1
-pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
+pkgdesc="Transparent chat overlay for streamers. Twitch, YouTube, and Kick in one window."
 arch=('any')
-url="https://github.com/Enubia/ghost-chat"
+url="https://getghostchat.com/"
+_ghurl="https://github.com/Enubia/ghost-chat"
 license=('LicenseRef-DBAD')
 conflicts=("${pkgname}")
 depends=(
@@ -22,10 +23,10 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "modifiers_linux.go"
 )
-sha256sums=('0bbe509279f84d1afd1d2ebd2814724e9c3c220acd250d9d868e64aa7e7baaac'
+sha256sums=('fb4c02c2ad7a5997fd7f37e0b480b51d6493807cb978a9b808243e9bd4c9d65f'
             '131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c')
 _get_project_dir() {
 	local d
