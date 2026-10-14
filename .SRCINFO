@@ -1,6 +1,6 @@
 pkgbase = synergy3-beta-bin
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 3.8.0
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://symless.com/synergy
 	arch = x86_64

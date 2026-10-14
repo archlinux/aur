@@ -1,6 +1,6 @@
 # Maintainers: thadah
 pkgname="synergy3-beta-bin"
-pkgver="3.8.0"
+pkgver="3.8.1"
 pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
