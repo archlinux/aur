@@ -1,6 +1,6 @@
 pkgbase = rogctl
 	pkgdesc = Battery status, settings and panel widgets for ASUS mice
-	pkgver = 2.4.1
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/humblemonk/rogctl
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rogctl
 	makedepends = cargo
 	depends = libgcc
 	depends = glibc
-	source = rogctl-2.4.1.tar.gz::https://github.com/humblemonk/rogctl/archive/refs/tags/v2.4.1.tar.gz
-	sha256sums = de35033c92cecdf4b5deea06a7b023abe6c98ec8fd10e93760d6239369591702
+	source = rogctl-2.4.3.tar.gz::https://github.com/humblemonk/rogctl/archive/refs/tags/v2.4.3.tar.gz
+	sha256sums = 9a286f1013ec72734eed51e57504f918232dc464a12f1c53c30d81081e065962
 
 pkgname = rogctl
