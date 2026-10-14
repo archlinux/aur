@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=scramblery-bin
 _pkgname=Scramblery
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.Common version."
 arch=('x86_64')
@@ -13,6 +13,7 @@ conflicts=(
     "${pkgname%-bin}-cuda"
     "${pkgname%-bin}-openvino"
     "${pkgname%-bin}-webgpu"
+    "${pkgname%-bin}-migraphx"
 )
 depends=(
     'gstreamer'
@@ -24,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altunenes/scramblery/v${pkgver}/LICENSE"
 )
-sha256sums=('73f1b55d4058e96a4a1a2f201eced81d140326d2f9f2083e8625738525adaeac'
+sha256sums=('72ec31aa6406b1c24b59f979ca0b4773ec3080605095970a1c6d370f8b7bcfb2'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
