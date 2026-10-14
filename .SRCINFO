@@ -1,0 +1,20 @@
+pkgbase = joyint-joy-bin
+	pkgdesc = Joy, product management that lives in your Git repository (CLI)
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://joyint.com/joy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	conflicts = joy
+	options = !strip
+	options = !debug
+	source_x86_64 = joy-cli-x86_64-0.23.1.tar.xz::https://github.com/joyint/joy/releases/download/v0.23.1/joy-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1c214b001c10acbd6a32736472df88814b206361c4bcd8d00c35ed653ef59ea4
+	source_aarch64 = joy-cli-aarch64-0.23.1.tar.xz::https://github.com/joyint/joy/releases/download/v0.23.1/joy-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b5404843a0238c6c8b4dc1053aff015e705d1a741e06ecc80f12cc5670a6701b
+
+pkgname = joyint-joy-bin
