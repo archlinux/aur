@@ -1,0 +1,17 @@
+pkgbase = cbsg
+	pkgdesc = Corporate Bullshit Generator
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/zertovitch/cbsg
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = gcc-ada
+	makedepends = gprbuild
+	depends = glibc
+	source = cbsg-master.tar.gz
+	sha256sums = c855c58a006ef78f4c27fc4c3fbd91c41b2f8c8d9d260df86f4a87528efb97e9
+
+pkgname = cbsg
