@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-vertikal
-	pkgdesc = AIMP skin: Вертикаль 1.0 (by Marat_S)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Вертикаль 2023-12-01 (by Marat_S)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-vertikal
 	options = !strip
 	options = !debug
 	source = aimp-skin-vertikal-924.archive::https://aimp.ru/?do=catalog.download&id=924
-	sha256sums = 5bc3f167416c8e8724b9f4902116786b7b8ca24294f8c9231366d86debaa0ea1
+	sha256sums = SKIP
 
 pkgname = aimp-skin-vertikal
