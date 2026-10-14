@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tanaybhomia/Whisp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e358e1580fbc454a53fbee99bc8b4f2b3973b12edfc5e24e0c8ab7fa2e5dbe29')
+sha256sums=('0d9d10fa54d4328bbb6758c3672111b0f38a3933fbca4f988111fa2435efb914')
 
 build() {
   cd "${srcdir}/Whisp-${pkgver}"
