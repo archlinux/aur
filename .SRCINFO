@@ -1,6 +1,6 @@
 pkgbase = orca-ide-bin
 	pkgdesc = ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription.
-	pkgver = 1.4.224
+	pkgver = 1.4.225
 	pkgrel = 1
 	url = https://onorca.dev/
 	arch = aarch64
@@ -13,17 +13,17 @@ pkgbase = orca-ide-bin
 	depends = python-gobject
 	depends = github-cli
 	depends = npm
-	provides = orca-ide=1.4.224
+	provides = orca-ide=1.4.225
 	conflicts = orca-ide
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-1.4.224::https://raw.githubusercontent.com/stablyai/orca/v1.4.224/LICENSE
+	source = LICENSE-1.4.225::https://raw.githubusercontent.com/stablyai/orca/v1.4.225/LICENSE
 	source = orca-ide.sh
 	sha256sums = ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
-	source_aarch64 = orca-ide-1.4.224-aarch64.rpm::https://github.com/stablyai/orca/releases/download/v1.4.224/orca-ide-1.4.224.aarch64.rpm
-	sha256sums_aarch64 = e344b2f8928ea3f6163716e5d910068b1d71ba9781bfcbc87672531dc9aeb07c
-	source_x86_64 = orca-ide-1.4.224-x86_64.rpm::https://github.com/stablyai/orca/releases/download/v1.4.224/orca-ide-1.4.224.x86_64.rpm
-	sha256sums_x86_64 = af583eb5ae139b27240e68e9ec5f849b7d6063a4786cc63071b4ff82b60008de
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	source_aarch64 = orca-ide-1.4.225-aarch64.rpm::https://github.com/stablyai/orca/releases/download/v1.4.225/orca-ide-1.4.225.aarch64.rpm
+	sha256sums_aarch64 = a508d0e13aede01d82037ee82f9ef4cbfdbaa9879586a60364bae149a1c04feb
+	source_x86_64 = orca-ide-1.4.225-x86_64.rpm::https://github.com/stablyai/orca/releases/download/v1.4.225/orca-ide-1.4.225.x86_64.rpm
+	sha256sums_x86_64 = a7ab3c80e3a1ccb8a730c3971c67e8ae90549f42a28b10c7255f63206e9c5f18
 
 pkgname = orca-ide-bin

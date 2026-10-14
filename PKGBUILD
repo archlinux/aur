@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.224
+pkgver=1.4.225
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
@@ -36,11 +36,12 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
-sha256sums_aarch64=('e344b2f8928ea3f6163716e5d910068b1d71ba9781bfcbc87672531dc9aeb07c')
-sha256sums_x86_64=('af583eb5ae139b27240e68e9ec5f849b7d6063a4786cc63071b4ff82b60008de')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+sha256sums_aarch64=('a508d0e13aede01d82037ee82f9ef4cbfdbaa9879586a60364bae149a1c04feb')
+sha256sums_x86_64=('a7ab3c80e3a1ccb8a730c3971c67e8ae90549f42a28b10c7255f63206e9c5f18')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -54,25 +55,20 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\///g
         s/Utility/Development/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir="$(_get_app_dir)"
-    case "${CARCH}" in
-        aarch64)    _archrem=x64       ;;
-        x86_64)     _archrem=arm       ;;
-    esac
-    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     find "${srcdir}" -type d \
         \( -name "*darwin*" -o -name "*win32*" -o -name "*${_archrem}*" \) \
         -exec rm -rf {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
-    cat > "${_app_dir}/resources/bin/${pkgname%-bin}" <<'SH'
+    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
+    cat > "$(_get_app_dir)/resources/bin/${pkgname%-bin}" <<'SH'
 #!/usr/bin/env bash
 set -euo pipefail
 export ORCA_NODE_OPTIONS="${NODE_OPTIONS-}"
@@ -85,8 +81,7 @@ SH
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir="$(_get_app_dir)"
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
