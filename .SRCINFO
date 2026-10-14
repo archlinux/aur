@@ -1,6 +1,6 @@
 pkgbase = ivar
 	pkgdesc = Multi-repo worktrees for coding agents: one feature across repos, on one branch, one PR per repo
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/mnzsss/ivar
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ivar
 	conflicts = ivar-bin
 	options = !lto
 	options = !debug
-	source = ivar-0.15.0.tar.gz::https://github.com/mnzsss/ivar/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = c2ba8bf90993f44072feee924b7287d6715a3fdb01955562d6cd3c2341d6eb94
+	source = ivar-0.16.0.tar.gz::https://github.com/mnzsss/ivar/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = 634084d9caa62edbd2f437890714f7b747c1b16a0a49c2896d89cb194d4c7e1b
 
 pkgname = ivar
