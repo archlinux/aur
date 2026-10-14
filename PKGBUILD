@@ -1,7 +1,7 @@
 # Maintainer: Petapton <petapton@gmail.com>
 
 pkgname=gnome-shell-extension-custom-command-toggle
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc='Create customizable GNOME quick-toggle buttons to run user commands and scripts'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('glib2')
 source=("$pkgname-$pkgver.zip::https://github.com/StorageB/custom-command-toggle/releases/download/v$pkgver/custom-command-toggle.zip")
-sha256sums=('8fcb42a3a5670ff23be1f0b6512abb3af06d0cb29d2f3c100d441f1e98cd300e')
+sha256sums=('52bb01bf696026cff93cac6e3c2124e338ff737ce0dba81a511eb960a499a1b7')
 
 _uuid='custom-command-toggle@storageb.github.com'
 
