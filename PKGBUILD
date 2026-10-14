@@ -1,6 +1,6 @@
 pkgname=laurel-audit
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Transform Linux Audit logs for SIEM usage'
 arch=('x86_64' 'aarch64')
 url='https://github.com/threathunters-io/laurel'
@@ -36,33 +36,30 @@ check() {
 package() {
   cd "laurel-${pkgver}"
 
-  install -Dm755 "target/release/laurel" \
+  local docdir="${pkgdir}/usr/share/doc/${pkgname}"
+  local doc
+  local -a docs=(
+    'man/laurel.8.md'
+    'man/laurel-about.7.md'
+    'man/laurel-audit-rules.7.md'
+    'INSTALL.md'
+    'README.md'
+    'performance.md'
+  )
+
+  install -Dm755 target/release/laurel \
     "${pkgdir}/usr/bin/laurel"
 
-  install -Dm644 "LICENSE" \
+  install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 "etc/laurel/config.toml" \
-    "${pkgdir}/usr/share/doc/${pkgname}/config.toml.example"
+  install -Dm644 etc/laurel/config.toml \
+    "${docdir}/config.toml.example"
 
-  install -Dm644 "etc/audit/plugins.d/laurel.conf" \
-    "${pkgdir}/usr/share/doc/${pkgname}/laurel.conf.example"
+  install -Dm644 etc/audit/plugins.d/laurel.conf \
+    "${docdir}/laurel.conf.example"
 
-  install -Dm644 "man/laurel.8.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/laurel.8.md"
-
-  install -Dm644 "man/laurel-about.7.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/laurel-about.7.md"
-
-  install -Dm644 "man/laurel-audit-rules.7.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/laurel-audit-rules.7.md"
-
-  install -Dm644 "INSTALL.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/INSTALL.md"
-
-  install -Dm644 "README.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  install -Dm644 "performance.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/performance.md"
+  for doc in "${docs[@]}"; do
+    install -Dm644 "${doc}" "${docdir}/${doc##*/}"
+  done
 }
