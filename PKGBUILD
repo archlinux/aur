@@ -13,7 +13,7 @@ url='https://github.com/OpenCommunityEdition/OpenCE'
 license=('CC0-1.0' 'Apache-2.0' 'BSD-3-Clause' 'BSD-4-Clause' 'ISC' 'MIT' 'OFL-1.1' 'Zlib')
 # The game is 32-bit x86 code (its data has 32-bit pointers, as on the Xbox).
 # The release brings its own SDL3, which loads the rest when it starts.
-depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-libxext' 'lib32-opengl-driver'
+depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-libxext' 'lib32-libgl'
          'hicolor-icon-theme')
 optdepends=('lib32-pipewire: sound through PipeWire (one of the sound libraries is needed for sound)'
             'lib32-libpulse: sound through PulseAudio'
@@ -22,7 +22,8 @@ optdepends=('lib32-pipewire: sound through PipeWire (one of the sound libraries 
             'lib32-libxkbcommon: a native Wayland window instead of XWayland (with lib32-wayland)'
             'lib32-libdecor: window borders on GNOME under Wayland'
             'zenity: the disc image picker at the first start, where there is no desktop portal'
-            'xdg-utils: invite links that open the game')
+            'xdg-utils: invite links that open the game'
+	    'lib32-nvidia-uitils: graphics on NVIDIA cards')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 # Upstream's files as they are: its crash reports name addresses in this build.
