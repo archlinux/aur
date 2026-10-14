@@ -9,6 +9,7 @@ pkgbase = scramblery-openvino-bin
 	depends = gst-plugins-base-libs
 	depends = fontconfig
 	depends = openvino
+	depends = gtk3
 	provides = scramblery=4.2.0
 	conflicts = scramblery
 	conflicts = scramblery-cuda

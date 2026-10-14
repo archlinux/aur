@@ -19,6 +19,7 @@ depends=(
     'gst-plugins-base-libs'
     'fontconfig'
     'openvino'
+    'gtk3'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
