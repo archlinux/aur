@@ -1,5 +1,5 @@
 [sonarr-develop-bin]
 source = "jq"
 url = "https://services.sonarr.tv/v1/releases"
-filter = '."v4-nightly".version'
+filter = '."v5-nightly".version'
 include_regex = "(\\d+\\.\\d+\\.\\d+\\.\\d+)"
