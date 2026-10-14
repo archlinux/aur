@@ -1,7 +1,7 @@
 pkgbase = tizen-cli
-	pkgdesc = Lightweight CLI to rebuild, resign, and package Tizen applications without Tizen Studio
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgdesc = Lightweight CLI to build, install, and launch Tizen applications without Tizen Studio
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/reisxd/tizen.js
 	arch = any
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = tizen-cli
 	provides = tizen.js
 	conflicts = tizenjs
 	conflicts = tizen.js
-	source = tizen-cli-1.0.1-2.tar.gz::https://github.com/Twilight0/tizen.js/archive/bc86be41ddcc19fcd1b01988291f4f2683da7a81.tar.gz
-	sha256sums = 709af4a8fe29a3c9e7578cdc38d943d115c9974595a7020e65868964c370c0fd
+	source = tizen-cli-1.1.0-1.tar.gz::https://github.com/Twilight0/tizen.js/archive/5717a6f882c561f739c194a8dd075f985f756d39.tar.gz
+	sha256sums = 6fa23abc4f8cf1f5adff3897865da20049cfd65cc7c9112aa11875013d49a815
 
 pkgname = tizen-cli
