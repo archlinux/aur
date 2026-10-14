@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "pi-ext-web-access": {
-      "version": "0.39.0",
-      "gitref": "refs/tags/v0.39.0",
-      "url": "https://github.com/nicobailon/pi-web-access/releases/tag/v0.39.0"
+      "version": "0.40.0",
+      "gitref": "refs/tags/v0.40.0",
+      "url": "https://github.com/nicobailon/pi-web-access/releases/tag/v0.40.0"
     }
   }
 }
