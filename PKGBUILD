@@ -76,7 +76,7 @@ prepare() {
   git clean python -dfx
 
   # Relax pybind11 version
-  sed -i 's/pybind11==2.11.1/pybind11/g' python/pyproject.toml
+  sed -i 's/pybind11==2.13.6/pybind11/g' python/pyproject.toml
 
   # Include cstdint
   pushd third_party/cxxopts
