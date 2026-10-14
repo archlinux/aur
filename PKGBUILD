@@ -24,7 +24,6 @@ makedepends=(
   'nodejs>=22.12.0'
   'pnpm'
   'rust-wasm'
-  'wasm-bindgen'
 )
 
 optdepends=(
@@ -62,6 +61,11 @@ prepare() {
   export CARGO_HTTP_CAINFO=/etc/ssl/cert.pem
   export npm_config_cache="${srcdir}/npm-cache"
 
+  cargo install wasm-bindgen-cli \
+    --version 0.2.126 \
+    --locked \
+    --root "${srcdir}/wasm-bindgen-cli"
+
   cargo fetch --manifest-path wasm-bridge/Cargo.toml --target wasm32-unknown-unknown
   cargo fetch --manifest-path src-tauri/Cargo.toml
 
@@ -71,6 +75,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  export PATH="${srcdir}/wasm-bindgen-cli/bin:${PATH}"
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_HTTP_CAINFO=/etc/ssl/cert.pem
   export npm_config_cache="${srcdir}/npm-cache"
