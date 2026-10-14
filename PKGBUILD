@@ -1,6 +1,6 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=sober-bin
-_upstream_version=2026.10.0
+_upstream_version=2026.10.1
 pkgver="${_upstream_version//-/_}"
 pkgrel=1
 pkgdesc='Prevent AI-Slop: a local-first repository governance client and code reviewer with deterministic review readiness (local app; the forge-side Raccoon daemon and dashboard ship in Sober Enterprise)'
@@ -27,7 +27,7 @@ source=(
   "https://pkg.sober-dev.app/ce/SHA256SUMS"
 )
 sha256sums=(
-  '44bd1cfabce033b3a85b2c2f93a2681c8ddf333472f807fca37fb51d5adb8221'
+  'ecb072368ba340104dbd4bd2de6700de091b797e8bf70d319c3aae6949f2c748'
   'SKIP'
 )
 
