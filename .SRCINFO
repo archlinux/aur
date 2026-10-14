@@ -1,6 +1,6 @@
 pkgbase = openclaw
 	pkgdesc = Multi-channel AI gateway with extensible messaging integrations
-	pkgver = 2026.10.2
+	pkgver = 2026.10.3
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
 	install = openclaw.install
@@ -19,10 +19,10 @@ pkgbase = openclaw
 	optdepends = tmux: tmux skill
 	optdepends = uv: nano-pdf skill
 	optdepends = go: for installing skill tools not packaged for Arch
-	noextract = openclaw-2026.10.2.tgz
+	noextract = openclaw-2026.10.3.tgz
 	options = !debug
 	options = !strip
-	source = openclaw-2026.10.2.tgz::https://registry.npmjs.org/openclaw/-/openclaw-2026.10.2.tgz
-	sha256sums = d1c979c9ff6c5fb600a4582a7d777e0ef5264f5a570d2e822323a8c508d744fe
+	source = openclaw-2026.10.3.tgz::https://registry.npmjs.org/openclaw/-/openclaw-2026.10.3.tgz
+	sha256sums = 761685d010d96645d1deabe19299ecde263eac3f2489a17322f48c461a1130a5
 
 pkgname = openclaw
