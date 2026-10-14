@@ -15,11 +15,12 @@ diff --git a/Linphone/CMakeLists.txt b/Linphone/CMakeLists.txt
 index 4e8701a40..2f0bbfe6a 100644
 --- a/Linphone/CMakeLists.txt
 +++ b/Linphone/CMakeLists.txt
-@@ -42,7 +42,7 @@ set(QT_PACKAGES Core Quick Qml Widgets Svg Multimedia Test NetworkAuth Concurrent)
- endif()
- 
+@@ -42,7 +42,7 @@
+ #						CONFIGS
+ ################################################################
  if(NOT WIN32)
 -	add_compile_options(-Werror=deprecated-declarations)
 +	add_compile_options(-Wno-error=deprecated-declarations)
  endif()
-
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG -DQT_NO_DEBUG")

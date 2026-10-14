@@ -2,27 +2,27 @@
 
 pkgname=linphone-desktop-call-edition
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A lighter version of Linphone Desktop based dedicated exclusively to simple voice/video calls'
 arch=(x86_64)
 url='http://linphone.org'
 license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-multimedia' 'qt6-networkauth' 'qt6-speech' 'qt6-tools' 'libpulse' 'libxcrypt-compat' 'v4l-utils' 'glew')
-makedepends=('coreutils' 'git' 'gendesk' 'cmake' 'yasm' 'nasm' 'doxygen' 'perl' 'python-pystache' 'python-six')
+makedepends=('coreutils' 'git' 'gendesk' 'cmake' 'meson' 'ninja' 'yasm' 'nasm' 'doxygen' 'perl' 'python-pystache' 'python-six')
 source=(
   "git+https://gitlab.linphone.org/BC/public/linphone-desktop.git#tag=${pkgver}-CallEdition"
   "linphone.png::https://gitlab.linphone.org/BC/public/linphone-desktop/-/raw/8dfd384e3df08b200c8eb382b740da6839961bf0/linphone-app/assets/icons/hicolor/128x128/apps/icon.png"
   "linphone_package-cmake.patch"
 )
 sha256sums=('d111c476f24624c7c91f34269bc92ecf13b10881e846f3c849524e2ff6ef409d'
-            '1ab2170029e8c090a498e37cdad12c087c5de623ddd665898309f00d114d7706'
-            'aaf9fe6ab49c62368d358ecb09f3e97363fd8e60f35fb4cbdf300acb6a53cb10')
+            '5e73b34c0bb09c77c40ffe1673a67de58aafcec6ef75d4ba2dea6151bca33832'
+            'ebb4b36eeab5387a71b45e7de29d478f8197771015fb3a0afb5c0b0bf1c62e09')
 provides=(linphone=${pkgver})
 
 prepare() {
     cd "$srcdir/linphone-desktop"
     git submodule update --init --recursive
-    patch -p1 < "$srcdir/linphone_package-cmake.patch"
+    patch --batch --fuzz=0 -p1 < "$srcdir/linphone_package-cmake.patch"
 }
 
 build() {
