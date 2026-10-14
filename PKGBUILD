@@ -12,8 +12,10 @@
 #   - Windows font directory is set according to the ArchWiki example
 
 pkgbase=imagemagick-full
-pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.2.33
+pkgname=(
+    'imagemagick-full'
+    'imagemagick-full-doc')
+pkgver=7.1.2.34
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -75,7 +77,7 @@ makedepends=(
     'zlib'
     'zstd')
 source=("git+https://github.com/ImageMagick/ImageMagick.git#tag=${pkgver%.*}-${pkgver##*.}")
-sha256sums=('e89052ac977ff3bbdfe425e15581df4d53aad8b6fd60f91d763451efeca44093')
+sha256sums=('2decd930d110206c70b1cd5f591c03974d7a2253c1f3d6da1fd90a2f3da38c3f')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 build() {
