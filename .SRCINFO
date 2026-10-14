@@ -1,14 +1,14 @@
 pkgbase = hemtt-bin
 	pkgdesc = powerful, opinionated and modern build system for Arma 3 mod development
-	pkgver = 1.21.0
+	pkgver = 1.22.0
 	pkgrel = 0
 	url = https://github.com/brettmayson/HEMTT
 	arch = x86_64
 	license = GPL2
-	provides = hemtt=1.21.0
+	provides = hemtt=1.22.0
 	conflicts = hemtt
 	conflicts = hemtt-git
-	source = hemtt-1.21.0::https://github.com/brettmayson/HEMTT/releases/download/v1.21.0/linux-x64
-	sha256sums = d43bf6625720dec739bb7efe6aabf6118ea2e3cc858fa4d56283eb22f92cdeb1
+	source = hemtt-1.22.0::https://github.com/brettmayson/HEMTT/releases/download/v1.22.0/linux-x64
+	sha256sums = 58c0f2c1d88041ebce24753e920ac80efb7624d28e8af9b7960c669117695770
 
 pkgname = hemtt-bin
