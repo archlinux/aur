@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-koyna-rn
-	pkgdesc = AIMP skin: Koyna RN 3.33 (by samix)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Koyna RN v3.33 (by samix)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-koyna-rn
 	options = !strip
 	options = !debug
 	source = aimp-skin-koyna-rn-1040.archive::https://aimp.ru/?do=catalog.download&id=1040
-	sha256sums = 7d22e7c0cc6b6fd92f9c3c693a49b38765bc26d202beabb71399d7d306040046
+	sha256sums = SKIP
 
 pkgname = aimp-skin-koyna-rn
