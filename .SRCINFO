@@ -1,6 +1,6 @@
 pkgbase = flowshot-bin
 	pkgdesc = Screenshot and annotation tool for Wayland and X11 with mixed-DPI support (prebuilt binary)
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/FlowOSS/flowshot
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = flowshot-bin
 	optdepends = xdg-desktop-portal-wlr: portal backend for wlroots compositors (Sway)
 	optdepends = vulkan-driver: Vulkan implementation for the GPU-accelerated overlay
 	optdepends = gnome-shell-extension-appindicator: system tray icon under GNOME
-	provides = flowshot=0.3.2
+	provides = flowshot=0.3.3
 	conflicts = flowshot
 	conflicts = flowshot-git
 	options = !strip
 	options = !lto
 	options = !debug
-	source = https://github.com/FlowOSS/flowshot/releases/download/v0.3.2/flowshot-0.3.2-1-x86_64-Arch.pkg.tar.zst
-	b2sums = 2e9df867e4beea71989b81ffa885a1fafc38697d36a122d17a44e1d3c1f28ab09a5d5a4c572c6d2329e69ee7457c7a7b4e5d358c32c0bb1f592db2987f0d410d
+	source = https://github.com/FlowOSS/flowshot/releases/download/v0.3.3/flowshot-0.3.3-1-x86_64-Arch.pkg.tar.zst
+	b2sums = 0c207044211706759205c14b9e4913b4495e718078281628aa197a1f037caac207c068c1dc4172c13ce7c0f7b1338211a6c6a692f01199bded59c131c6e3c8db
 
 pkgname = flowshot-bin
