@@ -66,7 +66,7 @@ prepare() {
   git clean python -dfx
 
   # Relax pybind11 version
-  sed -i 's/pybind11==2.11.1/pybind11/g' python/pyproject.toml
+  sed -i 's/pybind11==[0-9.]*/pybind11/' python/pyproject.toml
 
   # Remove the /usr/local RUNPATH from the Python extension
   sed -i '/-Wl,-rpath/d' python/setup.py
