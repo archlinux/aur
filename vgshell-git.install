@@ -1,5 +1,7 @@
 # pacman runs post_install on a first install. The text is the installed
-# tree's own file, the one every package channel prints.
+# tree's own file, the one every package channel prints. Then VGS starts
+# in running Hyprland sessions through the installed first-start helper.
 post_install() {
   cat /usr/share/vgshell/bin/lib/post-install.txt
+  /usr/share/vgshell/bin/lib/first-start.sh
 }

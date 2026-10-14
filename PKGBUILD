@@ -1,6 +1,6 @@
 # Maintainer: VanillaGreen <brad@vanillagreen.com>
 #
-# The development package, built from main. docs/architecture/distribution-arch.md
+# The development package, built from main. docs/architecture/distribution.md
 # states the rules scripts/check-packaging.js enforces on
 # this file and on ../vgshell/PKGBUILD. makepkg rewrites pkgver from pkgver().
 
@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='Desktop shell for Hyprland, built on Quickshell (development version)'
 arch=('any')
 url='https://github.com/vanillagreencom/vgshell'
-license=('MIT AND OFL-1.1 AND ISC AND Apache-2.0')
+license=('MIT AND OFL-1.1 AND ISC AND Apache-2.0 AND CC-BY-SA-4.0')
 depends=(
   'quickshell>=0.3.1'
   'hyprland>=0.56'
@@ -30,7 +30,9 @@ depends=(
   'fd'
   'ffmpeg'
   'file'
+  'fontconfig'
   'fzf'
+  'gawk'
   'glib2'
   'gpu-screen-recorder'
   'grim'
@@ -40,6 +42,7 @@ depends=(
   'iproute2'
   'less'
   'libnotify'
+  'power-profiles-daemon'
   'libpulse'
   'libsecret'
   'mise'
@@ -49,22 +52,34 @@ depends=(
   'pipewire-audio'
   'playerctl'
   'qrencode'
+  'rclone'
+  'sed'
   'slurp'
   'systemd'
   'tesseract'
   'tesseract-data-eng'
+  'ttfx'
   'uv'
   'vsys'
   'wireplumber'
   'wl-clipboard'
   'wlrctl'
   'wtype'
+  'xdg-desktop-portal-gnome'
+  'xdg-desktop-portal-gtk'
+  'xdg-desktop-portal-hyprland'
   'xdg-terminal-exec'
   'xdg-utils'
 )
 optdepends=(
+  'bandwhich: See all network traffic in the Network Traffic plugin'
+  'libcap: check and allow traffic capture in the Network Traffic plugin'
+  'btop: all processes and system readings from the System monitor panel'
+  'claude-code: sign in to Claude Code and use its account as the Jarvis AI model'
+  'openai-codex: sign in to Codex and use its account as the Jarvis AI model'
   'voxtype-bin: Voice dictation engine'
   'tmux: several Jarvis coding tasks at once'
+  'kendex-bin: the mail tool Jarvis hands a request for your agent fleet with'
   'ydotool: Jarvis pointer fallback with an already running input service'
   'bluez-utils: bluetoothctl, the Bluetooth pairing agent that answers pairing prompts'
   'snapper: a snapshot before the update pipeline changes packages'
@@ -80,6 +95,16 @@ optdepends=(
   'glibc: getent, the accounts on the login screen'
   'polkit: pkexec, so applications can ask for administrator access'
   'tailscale: the Tailscale connection in the VPN plugin'
+  'cups: lpstat and ipptool, which list your printers and their changes in the Printers plugin'
+  'cups-pk-helper: adds, removes and sets the default printer in the Printers plugin'
+  'system-config-printer: Print Settings, for drivers, paper size and quality in the Printers plugin'
+  'imv: opens a saved screenshot from its Capture notification'
+  'satty: edits a saved screenshot from its Capture notification'
+  'mpv: plays a saved recording from its Capture notification'
+  'google-chrome: opens a calendar day in a Google Chrome profile'
+  'brave-bin: opens a calendar day in a Brave profile'
+  'vivaldi: opens a calendar day in a Vivaldi profile'
+  'microsoft-edge-stable-bin: opens a calendar day in a Microsoft Edge profile'
 )
 makedepends=('git')
 install=vgshell-git.install
@@ -100,7 +125,7 @@ prepare() {
 pkgver() {
   local out
   cd "$srcdir/vgshell"
-  out="$(./bin/vgshell version)" || return 1
+  out="$(./bin/vgshell --version)" || return 1
   out="${out#vgshell }"
   if [[ ! $out =~ ^[0-9]+\.[0-9]+\.[0-9]+\.r[0-9]+\.g[0-9a-f]+$ ]]; then
     printf 'vgshell-git: refused: pkgver=%s\n' "$out" >&2
