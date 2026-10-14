@@ -1,12 +1,12 @@
 pkgname=banchoxterm
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Multi-protocol terminal emulator and remote session manager'
 arch=('x86_64')
 url='https://github.com/Gargadon/banchoxterm'
 license=('GPL-2.0-or-later')
-depends=('qt6-base' 'qt6-serialport')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'desktop-file-utils')
+depends=('qt6-base' 'qt6-serialport' 'freerdp')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'desktop-file-utils' 'pkgconf')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Gargadon/banchoxterm/archive/refs/tags/v${pkgver}.tar.gz"
   'qtermwidget::git+https://github.com/Gargadon/qtermwidget.git'
@@ -14,7 +14,7 @@ source=(
   'libsodium::git+https://github.com/jedisct1/libsodium.git'
   'libvncserver::git+https://github.com/LibVNC/libvncserver.git'
 )
-sha256sums=('8750dba10c220f75893a49e12287c4a44a9172a2d16c3e2111fb0289b89bc586'
+sha256sums=('20ff9e011f27b1e6548fe3680a6b02966fe1bb38fdf00e059d5748fe693b09f2'
             'SKIP'
             'SKIP'
             'SKIP'
