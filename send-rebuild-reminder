@@ -1,5 +1,8 @@
 #! /usr/bin/bash
 
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Written by PKGBUILD
 
 declare -r pkgname=
@@ -30,7 +33,7 @@ while :; do
   shift
 done
 
-if ((!use_environment)); then
+if ((! use_environment)); then
   app_name=$pkgname
   message="Kwin was updated. It is necessary to rebuild $pkgname."
   icon=update-medium
@@ -48,7 +51,7 @@ if ((use_global_config)); then
   fi
 fi
 
-if ((!broadcast)); then
+if ((! broadcast)); then
   local_config=$(systemd-path user-configuration --suffix="/$pkgname/reminder.conf")
 
   if [[ -f $local_config ]]; then
