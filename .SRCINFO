@@ -1,6 +1,6 @@
 pkgbase = faro
 	pkgdesc = Terminal client for Signal, built for people who live in tmux
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://getfaro.dev
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = faro
 	optdepends = libsecret: read the remote transcription API key from the keyring
 	options = !lto
 	options = !debug
-	source = faro-0.1.0.tar.gz::https://github.com/harababurel/faro/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 75de02e83d0f05cab877492e19400696142a4be7eb599a71ad51c511b8847d71
+	source = faro-0.1.1.tar.gz::https://github.com/harababurel/faro/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 294b909287dd4605d0c4ebc05600382becc02c2371d4fc3e4eef502e9a46743d
 
 pkgname = faro
