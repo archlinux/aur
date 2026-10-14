@@ -2,7 +2,7 @@
 
 pkgname=librofd-ffi
 pkgver=0.4.3
-pkgrel=2
+pkgrel=4
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/rofd'
@@ -21,9 +21,11 @@ makedepends=(
 _commit=140b936d1b3f33a9adeda9fb6f428016b735d9a0   # 0.4.3 on main; upstream published no v0.4.3 tag
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/$_commit.tar.gz"
         "rofd-ffi-page-size.patch"
+        "rofd-ffi-font-advances.patch"
         "rofd-ffi.pc.in")
 sha256sums=('0d6300fb28507f0597e2aa10d3822df3519e630fbf820fd95164df0ba8e3ce38'
             '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d'
+            'b9bb6731ecfa7baa025674a5a071924cee481e0ae6b062c38b210243696b1de1'
             'cf912f767bb51933051144c074600f008c48cf694489630db52cd1edbb7bf538')
 
 # the archive of $_commit extracts to rofd-$_commit
@@ -35,6 +37,11 @@ prepare() {
   # size query rofd_document_get_page_size_mm. Drop this line and the source
   # entry once a release contains it (see papers-ofd/patches/README.md).
   patch -Np1 -i "$srcdir/rofd-ffi-page-size.patch"
+  # Temporarily carried: upstream PR linuxdeepin/rofd#13 — text runs without an
+  # explicit DeltaX take their advances from the resolved font, so page geometry
+  # and search rectangles match the rendered glyphs. Drop this line and the
+  # source entry once a release contains it (see papers-ofd/patches/README.md).
+  patch -Np1 -i "$srcdir/rofd-ffi-font-advances.patch"
 }
 
 build() {
