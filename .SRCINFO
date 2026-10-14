@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built with Quickshell: living surfaces rather than a bar
-	pkgver = 1.0.0beta38
+	pkgver = 1.0.0beta39
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -63,7 +63,7 @@ pkgbase = bioma-shell
 	optdepends = gnome-online-accounts: the calendars of Google, Nextcloud and WebDAV accounts in the clock
 	optdepends = gnome-online-accounts-gtk: adding those accounts outside GNOME Settings
 	options = !lto
-	source = bioma-shell-1.0.0beta38.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.38.tar.gz
-	sha256sums = a32dae2a9542074f754fe3380a4cd8d0ba64644d6f80ef8f2c55ebabb7e1eb84
+	source = bioma-shell-1.0.0beta39.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.39.tar.gz
+	sha256sums = 79720587548d4ffc83f3f792c62f9aa5348347863c3f40efd63641e83617da49
 
 pkgname = bioma-shell
