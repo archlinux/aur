@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-karo-block
-	pkgdesc = AIMP skin: Karo Block 3 (by becon)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Karo Block v3 (by becon)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-karo-block
 	options = !strip
 	options = !debug
 	source = aimp-skin-karo-block-254.archive::https://aimp.ru/?do=catalog.download&id=254
-	sha256sums = 1450e70a37cff8f35555ea957c542c7953a681a2809438c62f598142aa480923
+	sha256sums = SKIP
 
 pkgname = aimp-skin-karo-block
