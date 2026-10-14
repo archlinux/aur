@@ -1,6 +1,6 @@
 pkgbase = lwe-git
 	pkgdesc = Linux dynamic wallpaper shell for Wallpaper Engine content
-	pkgver = 0.9.11.beta.206.00a8cee
+	pkgver = 0.9.11.beta.208.9278023
 	pkgrel = 1
 	url = https://github.com/YangYuS8/lwe
 	arch = x86_64
