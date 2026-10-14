@@ -2,7 +2,7 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
@@ -15,7 +15,6 @@ makedepends=('python-hatchling'
              'python-uv-dynamic-versioning'
              'python-build'
              'python-installer'
-             'python-wheel'
              'git')
 checkdepends=('python-anyio'
               'python-dirty-equals'
@@ -33,7 +32,7 @@ optdepends=('python-pydantic-settings: cli'
             'python-rich: cli'
             'python-rich-argparse: cli')
 source=("$_name::git+$url.git#tag=v$pkgver")
-sha256sums=('7452c3976a710104c3837085028ac42b97efb167c6c4f05013416383218107be')
+sha256sums=('7425460e633b041c9165877909ef4ed570a06b4f938a652bf9c7077de95e4dfe')
 
 build() {
   cd "$srcdir"/$_name
@@ -44,7 +43,6 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
-    # Package still doesn't exist in AUR
     --ignore tests/test_source_aws.py
   )
   cd "$srcdir"/$_name
@@ -56,4 +54,5 @@ check() {
 package() {
   cd "$srcdir"/$_name
   python -m installer --destdir="$pkgdir" packages/python/dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
