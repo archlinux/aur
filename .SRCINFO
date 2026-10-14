@@ -1,6 +1,6 @@
 pkgbase = filmcraft-bin
 	pkgdesc = Video editor: edit video, color and sound — a clean-room Premiere-style editor in Rust (official binary)
-	pkgver = 0.6.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://getartcraft.com/apps/filmcraft
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = filmcraft-bin
 	provides = filmcraft
 	conflicts = filmcraft
 	options = !strip
-	source = https://github.com/storytold/filmcraft/releases/download/v0.6.0/filmcraft-0.6.0-linux-x86_64.tar.gz
-	sha256sums = b3d706d599699ead76b46a29d5697287b9f75a0bc9eb40f7733db7657dae8204
+	source = https://github.com/storytold/filmcraft/releases/download/v0.7.2/filmcraft-0.7.2-linux-x86_64.tar.gz
+	sha256sums = 4171c4bf5f57fd29475655f8a6df4719feda8c8f3ed95b2475d8dc112ad3be86
 
 pkgname = filmcraft-bin
