@@ -1,0 +1,17 @@
+pkgbase = pycompile
+	pkgdesc = Compile Python source files into standalone native binaries
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ramackersjp/pycompile
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc
+	provides = python-compiler
+	conflicts = python-compiler
+	options = !debug
+	source = pycompile-0.1.0.tar.gz::https://github.com/ramackersjp/pycompile/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 593632de438e1cbb5b0a91ab190035790557f0d850a1b44d940e58d45b325f78
+
+pkgname = pycompile
