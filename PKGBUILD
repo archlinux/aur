@@ -3,7 +3,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=brev-cli
-pkgver=0.6.335
+pkgver=0.6.336
 pkgrel=1
 pkgdesc="Connect your laptop to cloud computers. Follow to stay updated about our product"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/brevdev/brev-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='e955eb979937624a2e80fcc513044d2cedf609a5'
+_commit='a0190d24655f57f327778f7708d8a6f634afdb1a'
 source=("git+https://github.com/brevdev/brev-cli.git#commit=$_commit")
 sha256sums=('SKIP')
 
