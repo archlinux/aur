@@ -4,7 +4,7 @@ _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
 _debname="com.${pkgname//-/}.Nuclear"
-pkgver=1.50.0
+pkgver=1.51.1
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -24,6 +24,7 @@ makedepends=(
     'pnpm'
     'nvm'
     'rustup'
+    'jq'
 )
 optdepends=(
     'gst-plugins-bad: Additional media codec support'
@@ -31,7 +32,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/player@${pkgver}.tar.gz")
-sha256sums=('fcafdc51a0ec23777d768018345bac5fbfcfd5eb3c6ea71d670de7272994cdca')
+sha256sums=('05fac4fbd4780ee35973626b225d9d0f16844a689be8b1a726d857435009b4dc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,10 +40,15 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_project_dir() {
-	local d
-	while IFS= read -r d; do
-		find "$d" -name "src-tauri" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
-	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+    find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
+        while read -r tauri_dir; do
+            [ -f "${tauri_dir}/Cargo.toml" ] || continue
+            local dir="${tauri_dir}"
+            until [ -f "${dir}/package.json" ] || [ "$dir" = "${srcdir}" ] || [ "$dir" = "/" ]; do
+                dir="$(dirname "$dir")"
+            done
+            [ -f "${dir}/package.json" ] && { echo "$dir"; return; }
+        done
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -96,10 +102,10 @@ prepare() {
         s/Icon=${_debname}/Icon=${pkgname}/g
     " "packages/player/src-tauri/resources/${_debname}.desktop"
     sed -i "s/${_debname}/${pkgname}/g" "packages/player/src-tauri/resources/${_debname}.metainfo.xml"
-    sed -i -e "
-        s/\"active\"\: true\,/\"active\"\: false\,/g
-        s/${_appname}-music-player/${pkgname}/g
-    " packages/player/src-tauri/tauri.conf.json
+    jq -r '
+        .bundle.active = false |
+        .mainBinaryName = "'"${pkgname}"'"
+    ' packages/player/src-tauri/tauri.conf.json > tmp.json && mv tmp.json packages/player/src-tauri/tauri.conf.json
     rustup update stable
     rustup default stable
     export NODE_ENV=development
@@ -121,8 +127,7 @@ build() {
     done
 }
 package() {
-    local _src="$(_get_project_dir)"
-    local _appdir="${_src}/packages/player/src-tauri"
+    local _appdir="$(_get_project_dir)/packages/player/src-tauri"
     install -Dm755 "${_appdir}/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm755 "${_appdir}/resources/${_debname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -130,7 +135,7 @@ package() {
         "${pkgdir}/usr/share/metainfo/${pkgname}.metainfo.xml"
     _icon_sizes=(32x32 64x64 128x128 256x256 512x512)
 	for _icons in "${_icon_sizes[@]}";do
-		install -Dm644 "${_src}/flatpak/icons/${_icons}.png" \
+		install -Dm644 "$(_get_project_dir)/flatpak/icons/${_icons}.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
 	done
 }
