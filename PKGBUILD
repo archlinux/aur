@@ -1,7 +1,7 @@
 # Maintainer: Ernesto Cruz Olivera <ecruzolivera@gmail.com>
 
 pkgname=riskie-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Disk automounting daemon for Linux with system tray support (pre-built binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('riskie')
 conflicts=('riskie')
 install=riskie.install
 source=("https://github.com/ecruzolivera/riskie/releases/download/v$pkgver/riskie-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('04697cce30685c385d8baa0d0dc8ae429882c3325bda25b4c9974748bb1db295')
 
 package() {
   cd "riskie-$pkgver"
