@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.2.6
+pkgver=1.2.7
 _electronversion=44
 pkgrel=1
 pkgdesc="Desktop app for Jasper Knowledge Management."
@@ -22,11 +22,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cjmalloy/jasper-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('839960ac4638741edbe69779befe12c2746a2c3f3e7164ff4e49699ca55f2a04'
+sha256sums=('66da31def0d9ae53a3769bbfe6ee435c2be59d302d1d596f5b9738fb5c2f23f6'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -40,7 +41,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -50,24 +50,22 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir="$(_get_app_dir)"
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}-app/Icon=${pkgname%-bin}/g
-    " "${_app_dir}/${_appname}-app.desktop"
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} \;
+    " "$(_get_app_dir)/${_appname}-app.desktop"
+    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
         _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${_app_dir}/${_appname}-app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "$(_get_app_dir)/${_appname}-app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
