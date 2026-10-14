@@ -1,0 +1,16 @@
+pkgbase = plasma-panel-sync
+	pkgdesc = Keep matching KDE Plasma 6 panels in sync across multiple screens
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/broroeror/plasma-panel-sync
+	install = plasma-panel-sync.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = qt6-tools
+	depends = plasma-workspace
+	source = plasma-panel-sync::git+https://github.com/broroeror/plasma-panel-sync.git#tag=v0.2.0
+	sha256sums = SKIP
+
+pkgname = plasma-panel-sync

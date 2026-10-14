@@ -1,0 +1,14 @@
+post_install() {
+  cat <<'MSG'
+==> To start syncing in the background, run as your normal user (not root):
+      systemctl --user enable --now plasma-panel-sync.service
+==> Check that your panels look right first with:  plasma-panel-sync status
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+==> Restart the watcher to pick up the new version:
+      systemctl --user restart plasma-panel-sync.service
+MSG
+}
