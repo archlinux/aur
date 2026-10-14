@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-slaem
-	pkgdesc = AIMP skin: Slaem 1.0 (by Demcha)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Slaem 2013-11-15 (by Demcha)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-slaem
 	options = !strip
 	options = !debug
 	source = aimp-skin-slaem-448.archive::https://aimp.ru/?do=catalog.download&id=448
-	sha256sums = 4260fe9a8e8bd78750f244c32c96589c865047035de63b4693ea676e308d1f4a
+	sha256sums = SKIP
 
 pkgname = aimp-skin-slaem
