@@ -23,7 +23,7 @@ provides=('neovide')
 conflicts=('neovide')
 
 source=(
-    'neovide-linux-x86_64.tar.gz::https://github.com/neovide/neovide/releases/download/nightly/neovide-linux-x86_64.tar.gz'
+    "neovide-linux-x86_64-${pkgver}.tar.gz::https://github.com/neovide/neovide/releases/download/nightly/neovide-linux-x86_64.tar.gz"
     'neovide.desktop::https://raw.githubusercontent.com/neovide/neovide/nightly/assets/neovide.desktop'
     'neovide.svg::https://raw.githubusercontent.com/neovide/neovide/nightly/assets/neovide.svg'
     'LICENSE::https://raw.githubusercontent.com/neovide/neovide/nightly/LICENSE'
@@ -37,7 +37,7 @@ sha256sums=(
 )
 
 prepare() {
-    tar -xzf neovide-linux-x86_64.tar.gz
+    tar -xzf "neovide-linux-x86_64-${pkgver}.tar.gz"
 }
 
 check() {
