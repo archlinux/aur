@@ -1,6 +1,6 @@
 pkgbase = rowel-bin
 	pkgdesc = Free Offline-first Password Manager.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://rowel.app/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rowel-bin
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = rowel=1.0.1
+	provides = rowel=1.0.2
 	conflicts = rowel
-	source = rowel-1.0.1.rpm::https://github.com/fwdai/rowel/releases/download/v1.0.1/Rowel-1.0.1-1.x86_64.rpm
-	sha256sums = c1a9754a88ba8a5d26fa73f8159481c786b0c4bc1606c35335acfe1c69d6703a
+	source = rowel-1.0.2.rpm::https://github.com/fwdai/rowel/releases/download/v1.0.2/Rowel-1.0.2-1.x86_64.rpm
+	sha256sums = 6005fa2f2af467dc8ff4ce822a0530e28a2cefa88f8b3f9587c1c5446741387e
 
 pkgname = rowel-bin
