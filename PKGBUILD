@@ -38,7 +38,7 @@ conflicts=('telegram-drive-appimage')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caamer20/Telegram-Drive/archive/refs/tags/v${pkgver}.tar.gz")
 # codeload распаковывает архив в каталог с именем репозитория
 _src="Telegram-Drive-${pkgver}" 
-sha256sums=('1cd009d3e222578a179cfd2b635d4b180ab8d0ad59c24a534e2d81ed4d8845c9')
+sha256sums=('32b3053f7a3705c8b2a17fa12d59b1c083b6f9d3a3ef59f4f2c520902eae224a')
 
 build() {
     cd "${srcdir}/${_src}/app"
