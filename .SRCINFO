@@ -63,8 +63,6 @@ pkgbase = python-hermes-agent
 	options = !strip
 	options = !debug
 	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v0.21.7.tar.gz
-	source = 0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch
 	sha256sums = fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459
-	sha256sums = e315425a50267e22a6752ed8cfac4de4a377dbce6daa1997157637470dc876b9
 
 pkgname = python-hermes-agent

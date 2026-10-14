@@ -43,11 +43,9 @@ makedepends=('python-installer' 'python-wheel' 'python-build' 'python-setuptools
 options=('!strip' '!debug')
 source=(
     "${url}/archive/refs/tags/v${tag}.tar.gz"
-    "0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 )
 sha256sums=(
     'fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459'
-    'e315425a50267e22a6752ed8cfac4de4a377dbce6daa1997157637470dc876b9'
 )
 
 prepare() {
@@ -55,8 +53,9 @@ prepare() {
   # Relax upstream's exact build-system pin: `python -m build --no-isolation`
   # validates requires against the system env, and Arch ships newer setuptools.
   sed -i 's/requires = \["setuptools==83.0.0"\(, *\)\?/requires = ["setuptools>=83.0.0", /' pyproject.toml
-  # Python 3.14: ThreadPoolExecutor no longer has _initializer/_initargs
-  patch -p1 < "${srcdir}/0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
+  # Python 3.14 daemon_pool fix: upstream's own hasattr-guarded
+  # _create_worker_context (present since ~0.21.4) replaces the local 0001
+  # patch — keep no patch here.
 }
 
 package() {
