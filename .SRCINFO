@@ -1,0 +1,21 @@
+pkgbase = cloner-bin
+	pkgdesc = USB download/flashing tool for Ingenic SoCs — prebuilt binary, upstream provides no source code
+	pkgver = 2.5.36.1
+	pkgrel = 1
+	url = https://github.com/Ingenic-community/Cloner
+	install = cloner-bin.install
+	arch = x86_64
+	license = LicenseRef-Unfree
+	depends = libx11
+	depends = fontconfig
+	depends = freetype2
+	depends = zlib
+	depends = systemd-libs
+	depends = glib2
+	optdepends = android-tools: bundled adb support for connected targets
+	options = !strip
+	options = !debug
+	source = cloner-2.5.36.1-ubuntu_alpha.tar.gz::https://github.com/Ingenic-community/Cloner/releases/download/v2.5.36/cloner-2.5.36.1-ubuntu_alpha.tar.gz
+	sha256sums = 87438a0a8aa8af32bc4833c8b3adc7b80dda3e592d00a387957ad5c7b38f854a
+
+pkgname = cloner-bin
