@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OpenCE
+GenericName=First-Person Shooter
+Comment=Halo: Combat Evolved, ported from the Xbox decompilation
+Exec=opence
+Icon=opence
+Terminal=false
+Categories=Game;ActionGame;Shooter;
+Keywords=Halo;Combat Evolved;Xbox;

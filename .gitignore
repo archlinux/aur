@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!opence-bin.install
+!opence.desktop
+!opence.sh

@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'EOF'
+==> OpenCE does not include the game data. You need an Xbox disc image
+    (.iso or .xiso) of Halo: Combat Evolved, any region.
+==> Run "opence". At the first start it asks for the disc image and copies
+    maps/ from it into ~/.local/share/opence.
+==> Your settings (config.toml), maps/, the log (debug.txt) and screenshots
+    are in ~/.local/share/opence. Saved games and the map cache are in
+    ~/.local/share/halo-linux.
+==> Settings and controls: /usr/share/doc/opence/LINUX.md
+EOF
+}
