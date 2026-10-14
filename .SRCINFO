@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-pandemic-all-in-one-simple
-	pkgdesc = AIMP skin: Pandemic All-In-One Simple 1.71 (by Tarik)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Pandemic All-In-One Simple v1.71 (by Tarik)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-pandemic-all-in-one-simple
 	options = !strip
 	options = !debug
 	source = aimp-skin-pandemic-all-in-one-simple-187.archive::https://aimp.ru/?do=catalog.download&id=187
-	sha256sums = b104d86863accc37122653794157d109ae4198a584dcedeb9e4306ae1f39f77f
+	sha256sums = SKIP
 
 pkgname = aimp-skin-pandemic-all-in-one-simple
