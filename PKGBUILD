@@ -2,7 +2,7 @@
 pkgname=cpyref
 pkgver=0.2.2
 pkgrel=1
-pkgdesc='Copy exact bytes once and paste them by a short reference, for AI agents'
+pkgdesc='Local references, bounded test logs and source snapshots for AI agents'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/cpyref'
 license=('LicenseRef-AUL-1.0-draft.1')
