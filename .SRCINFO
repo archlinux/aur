@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-gilly-matt-and-glossy
-	pkgdesc = AIMP skin: Gilly Matt&Glossy 1.0 (by Zigar)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Gilly Matt&Glossy 2018-12-28 (by Zigar)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-gilly-matt-and-glossy
 	options = !strip
 	options = !debug
 	source = aimp-skin-gilly-matt-and-glossy-591.archive::https://aimp.ru/?do=catalog.download&id=591
-	sha256sums = 58cf97faa4bea7ca817ca0344138a55f37e40c20e96d2c2ed6ed119c01ebd7aa
+	sha256sums = SKIP
 
 pkgname = aimp-skin-gilly-matt-and-glossy
