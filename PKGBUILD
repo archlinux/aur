@@ -1,7 +1,7 @@
 # Maintainer: Adam Wahab <awahab@adhoc.tools>
 _name=soundshed-guitar
 pkgname=${_name,,}-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=0
 pkgdesc="A guitar/bass effects app and plugin."
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 "https://downloads.soundshed.com/downloads/SoundshedGuitar-${pkgver}-Linux-x64.zip"
 "$_name.desktop"
 )
-sha256sums=('3beb782a8df8925b42bfcc17f40513348ae6610061c98fadf7e0d3959475f8fa'
+sha256sums=('092be634599821c0629feccbd575d52e3de3033f4e61e9a6bc1356803ef3fb9c'
             '841f9d304c6bce88380d30c86c8badc89c985548d9b5ad31e0c6c19cb7ca26a9')
 
 package() {
