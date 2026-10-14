@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-plugins-git
-pkgver=20261010.r495.g018ab7a
+pkgver=20261015.r564.gce8a111
 pkgrel=1
 pkgdesc="Official plugins for sysc-shell (development version)"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  make build
+  make STRICT=1 build
 }
 
 package() {
