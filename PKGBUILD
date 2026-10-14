@@ -1,6 +1,6 @@
 # Maintainer: Aochi <me@aochi.uk>
 pkgname=rosu-patcher-bin
-pkgver=20261007.1
+pkgver=20261014.2
 pkgrel=1
 pkgdesc="Launcher for the RealistikOsu Patcher"
 arch=('x86_64')
