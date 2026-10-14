@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-notify
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Freedesktop notification daemon for sysc-shell"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('sysc-shell: notification popups and history')
 makedepends=('go>=1.26.4')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-notify/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f3a22384d794f169abc6cbdd1b516f3ae4960d481c23f06e5ec75d4af05a4cb7')
+sha256sums=('0858c88f4fa8e681a44c0240271185ea9742a2dc57af8e031af3b7e530cef5fc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
