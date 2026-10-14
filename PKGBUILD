@@ -1,6 +1,6 @@
 # Maintainer: KannarFr <kannarfr@gmail.com>
 pkgname=friendly
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Spotlight-style overlay that rewrites a dictated/typed message in a chosen tone via Claude Code (claude -p), then copies it to the clipboard"
 arch=('any')
@@ -21,10 +21,13 @@ optdepends=(
   'libnotify: desktop notifications (result + progress)'
   'rofi: fallback launcher if wofi is missing'
   'zenity: last-resort fallback dialogs'
+  'handy: speech-to-text backend for built-in dictation, --dictate (AUR: handy or handy-bin)'
+  'whisper.cpp-git: alternative speech-to-text backend, --stt whisper (AUR; plus a ggml model)'
+  'pipewire-audio: mic recording for --dictate (pw-record; falls back to parecord/arecord)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Refreshed by CI on each release (updpkgsums); placeholder for manual builds.
-sha256sums=('3b38f363864a36f9d74584b20f2a605eb1cbd71bebfc2ad9b2379bbbaa25c345')
+sha256sums=('92462b4f6cdd6bf7734a73f6ccdbf2d8396cb9a6fcfaae8d077f25866f0066ce')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
