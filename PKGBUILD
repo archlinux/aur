@@ -1,30 +1,34 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=pvolok
+_upstream=dekit
 pkgname=mprocs
-pkgver=0.9.6
+pkgver=0.10.2
 pkgrel=1
-pkgdesc="Run multiple commands in parallel"
+pkgdesc="Run multiple commands in parallel (now dekit; installs both dekit and mprocs)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/${_pkgauthor}/${pkgname}"
+url="https://github.com/${_pkgauthor}/${_upstream}"
 license=('MIT')
 
-provides=("${pkgname}")
+provides=("${pkgname}" "${_upstream}")
+conflicts=("${_upstream}" "${_upstream}-bin")
 makedepends=('rust')
 
-source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('294fa02bfec7c73bc29448c55497ac46deda8b82bec259e492c51cfb67330c2d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${_upstream}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6acfd19444a371ce04557af1a755accc4735c64e650704ae257aaf9f2e1168ba')
 
 build() {
-	cd ${pkgname}-${pkgver} || exit 1
+	cd ${_upstream}-${pkgver} || exit 1
 
 	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+	cd ${srcdir}/${_upstream}-${pkgver} || exit 1
 
-	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${_upstream}" "${pkgdir}/usr/bin/${_upstream}"
+	# started as `mprocs`, dekit runs the legacy mprocs CLI
+	ln -s ${_upstream} "${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 

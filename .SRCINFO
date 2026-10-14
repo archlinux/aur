@@ -1,14 +1,17 @@
 pkgbase = mprocs
-	pkgdesc = Run multiple commands in parallel
-	pkgver = 0.9.6
+	pkgdesc = Run multiple commands in parallel (now dekit; installs both dekit and mprocs)
+	pkgver = 0.10.2
 	pkgrel = 1
-	url = https://github.com/pvolok/mprocs
+	url = https://github.com/pvolok/dekit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
 	provides = mprocs
-	source = https://github.com/pvolok/mprocs/archive/refs/tags/v0.9.6.tar.gz
-	sha256sums = 294fa02bfec7c73bc29448c55497ac46deda8b82bec259e492c51cfb67330c2d
+	provides = dekit
+	conflicts = dekit
+	conflicts = dekit-bin
+	source = mprocs-0.10.2.tar.gz::https://github.com/pvolok/dekit/archive/refs/tags/v0.10.2.tar.gz
+	sha256sums = 6acfd19444a371ce04557af1a755accc4735c64e650704ae257aaf9f2e1168ba
 
 pkgname = mprocs
