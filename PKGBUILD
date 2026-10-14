@@ -4,7 +4,7 @@
 
 pkgname=teslamate
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted data logger for your Tesla"
 arch=(x86_64 aarch64)
 url="https://github.com/teslamate-org/teslamate"
@@ -32,6 +32,8 @@ install=teslamate.install
 build() {
   cd "$pkgname-$pkgver"
   sed -i -e '/teslamate_internal/,$d' -e 's,/dashboards,/var/lib/grafana/conf/provisioning/dashboards,g' grafana/dashboards.yml
+
+  cd elixir
   export HEX_HOME=${srcdir}/.hex
   export MIX_HOME=${srcdir}/.mix
   export MIX_ENV=prod
@@ -43,15 +45,13 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver/elixir"
   HEX_HOME=${srcdir}/.hex MIX_HOME=${srcdir}/.mix MIX_ENV=prod mix do phx.digest, release --overwrite --path=${pkgdir}/usr/share/webapps/${pkgname}
   install -Dm 644 "${srcdir}/teslamate.conf" "${pkgdir}/etc/teslamate.conf"
   install -Dm 644 "${srcdir}/teslamate.service" "${pkgdir}/usr/lib/systemd/system/teslamate.service"
   install -Dm 644 "${srcdir}/teslamate.sysusers" "${pkgdir}/usr/lib/sysusers.d/teslamate.conf"
   install -Dm 644 "${srcdir}/teslamate.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/teslamate.conf"
-  install -Dm 644 grafana/dashboards.yml ${pkgdir}/var/lib/grafana/conf/provisioning/dashboards/teslamate.yml
-  cp -r grafana/dashboards ${pkgdir}/var/lib/grafana/conf/provisioning
-#  install -dm 750 "grafana/dashboards/" "${pkgdir}/var/lib/grafana/conf/provisioning/"
-#  install -Dm 644 grafana/dashboards.yml ${pkgdir}/var/lib/grafana/conf/provisioning/dashboards/teslamate.yml
-  install -Dm 644 grafana/datasource.yml ${pkgdir}/var/lib/grafana/conf/provisioning/datasources/teslamate.yml
+  install -Dm 644 ../grafana/dashboards.yml ${pkgdir}/var/lib/grafana/conf/provisioning/dashboards/teslamate.yml
+  cp -r ../grafana/dashboards ${pkgdir}/var/lib/grafana/conf/provisioning
+  install -Dm 644 ../grafana/datasource.yml ${pkgdir}/var/lib/grafana/conf/provisioning/datasources/teslamate.yml
 }

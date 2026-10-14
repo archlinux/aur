@@ -1,7 +1,7 @@
 pkgbase = teslamate
 	pkgdesc = A self-hosted data logger for your Tesla
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teslamate-org/teslamate
 	install = teslamate.install
 	arch = x86_64
