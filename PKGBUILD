@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navop-bin
 _pkgname=Navop
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="A native, all-in-one workspace for databases, SSH, SFTP, terminals, remote desktop, monitoring, and AI."
 arch=(
@@ -24,8 +24,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.gz")
-sha256sums_aarch64=('73b0fecd2aa92bd733ffa56abb11fb28ff3328a6ac6d9f4de0e5a9a1a182058a')
-sha256sums_x86_64=('c152408c963e051569f9ba8bfe373e4f4820522cf10784f991ce6afda04710da')
+sha256sums_aarch64=('309aa361f26093e79e19cf4dc052b3876bfe515a5c285455a81044388fbfa4d7')
+sha256sums_x86_64=('0b07e7d528fa0f2ac30a1609ca4cb9727555ee89002ae74b2e3efb40d78a980e')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
