@@ -1,14 +1,14 @@
 # Maintainer: Nils Werner <nils at hey dot com>
 #
 pkgname=just-the-browser
-pkgver=1.10
-pkgrel=2
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Remove AI features, telemetry data reporting, sponsored content, product integrations, and other annoyances from web browsers.'
 license=('MIT')
 arch=('any')
 url='https://justthebrowser.com/'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/corbindavenport/just-the-browser/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1b7a28262603ded872371461887c9fae9fb0665e0f0247a8f79012ebe801a71c')
+sha256sums=('24100a4511be403708f8db34f2638655e7f4c1654ab9b18eb0de4201eb6f65be')
 optdepends=('firefox: Firefox support'
             'chromium: Chromium support'
             'google-chrome: Google Chrome support'

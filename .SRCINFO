@@ -1,7 +1,7 @@
 pkgbase = just-the-browser
 	pkgdesc = Remove AI features, telemetry data reporting, sponsored content, product integrations, and other annoyances from web browsers.
-	pkgver = 1.10
-	pkgrel = 2
+	pkgver = 1.10.1
+	pkgrel = 1
 	url = https://justthebrowser.com/
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = just-the-browser
 	optdepends = chromium: Chromium support
 	optdepends = google-chrome: Google Chrome support
 	optdepends = brave-browser: Brave support
-	source = just-the-browser-1.10.tar.gz::https://github.com/corbindavenport/just-the-browser/archive/refs/tags/v1.10.tar.gz
-	sha256sums = 1b7a28262603ded872371461887c9fae9fb0665e0f0247a8f79012ebe801a71c
+	source = just-the-browser-1.10.1.tar.gz::https://github.com/corbindavenport/just-the-browser/archive/refs/tags/v1.10.1.tar.gz
+	sha256sums = 24100a4511be403708f8db34f2638655e7f4c1654ab9b18eb0de4201eb6f65be
 
 pkgname = just-the-browser
