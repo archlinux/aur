@@ -1,7 +1,7 @@
 # Maintainer: BangL <henno.rickowski@gmail.com>
 pkgname=taskbar-cat-git
 _pkgname=taskbar-cat
-pkgver=r2.23d6b07
+pkgver=r5.306afc5
 pkgrel=1
 pkgdesc="Pixel-Art-Tamagotchi-Katze für KDE Plasma 6 / Wayland, lebt auf Boden und Fensteroberkanten"
 arch=('any')
@@ -34,7 +34,7 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 data/${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 taskbar_cat/data/${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # Icon wird prozedural erzeugt, es liegt kein PNG im Quell-Repo
   install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
