@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-w8-light
-	pkgdesc = AIMP skin: W8 Light 2.1 (by VladShip)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: W8 Light v2.1 (by VladShip)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-w8-light
 	options = !strip
 	options = !debug
 	source = aimp-skin-w8-light-593.archive::https://aimp.ru/?do=catalog.download&id=593
-	sha256sums = 514970967f619aa4918054cee384469cb90b0764d0c6993c9ccd310bd62f2c4c
+	sha256sums = SKIP
 
 pkgname = aimp-skin-w8-light
