@@ -1,0 +1,29 @@
+# ZCode Pro pacman 安装脚本：检测并提示清理旧版手动安装残留。
+# 手动安装（install.sh）写入 ~/.local 的同名快捷方式优先级高于系统级、
+# 且 ~/.local/bin 在 PATH 中更靠前，会一直遮蔽本包，必须由用户手动清理。
+
+warn_stale_manual_install() {
+  local home_dir
+  for home_dir in /home/*; do
+    [ -d "${home_dir}" ] || continue
+    if [ -e "${home_dir}/.local/share/zcode-pro" ] || [ -e "${home_dir}/.local/bin/zcode-pro" ] \
+       || [ -e "${home_dir}/.local/share/applications/zcode-pro.desktop" ]; then
+      cat >&2 <<EOF
+>>> 检测到 ${home_dir} 下有旧版手动安装（install.sh）的残留，
+    会遮蔽本包的应用菜单快捷方式与终端命令（表现为一直运行旧版）。
+    请以该用户身份清理后重新打开应用菜单：
+        rm -f  ~/.local/bin/zcode-pro ~/.local/share/applications/zcode-pro.desktop
+        rm -rf ~/.local/share/zcode-pro
+    或在 zcode-pro 源码仓库执行：./scripts/install.sh --uninstall
+EOF
+    fi
+  done
+}
+
+post_install() {
+  warn_stale_manual_install
+}
+
+post_upgrade() {
+  warn_stale_manual_install
+}

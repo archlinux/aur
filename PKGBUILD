@@ -1,19 +1,20 @@
-# Maintainer: duanluan <duanluan@outlook.com>
-# ZCode Pro — ZCode 桌面版界面增强（不修改 app.asar）
+# Maintainer: duanluan
+# ZCode Pro — ZCode 桌面版界面增强（不修改客户端文件）
 # 依赖 AUR 的 zcode 包提供 ZCode 桌面版本体。
 
 pkgname=zcode-pro
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
-pkgdesc="ZCode Pro — 界面增强启动器（自定义项目别名等），不修改官方应用文件"
+pkgdesc="ZCode Pro — 界面增强启动器（自定义项目别名等），不修改客户端文件"
 arch=(any)
 license=(Apache)
-url="https://github.com/duanluan/zcode-pro"
 depends=('zcode')
 optdepends=('nodejs>=22: 使用系统 Node 运行启动器（缺省复用 ZCode 内置运行时，无需安装 Node）')
 makedepends=()
+url="https://github.com/duanluan/zcode-pro"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=(7111190f2f7ee5b02430df28ab51dac1f9f62d69396722e5487db2875d0c9c7b)
+sha256sums=(9f5c8d9be1d7fcc02f19fb1937d915f6345daa87a5bf6cfe62aecde5d25dc754)
+install=zcode-pro.install  # 装后检测并提示清理 ~/.local 下的手动安装残留
 options=('!strip')
 
 package() {
@@ -25,7 +26,7 @@ package() {
   install -Dm644 LICENSE              "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/bin/zcode-pro" "${pkgdir}/usr/bin/zcode-pro"
-  # 应用菜单快捷方式「ZCode Pro」（图标复用 zcode 包的 Icon=zcode）
+  # 应用菜单快捷方式：点“ZCode Pro”即带增强启动 ZCode（图标复用 zcode 包的 Icon=zcode）
   install -Dm644 packaging/zcode-pro.desktop "${pkgdir}/usr/share/applications/zcode-pro.desktop"
   sed -i 's|@bindir@|/usr/bin|' "${pkgdir}/usr/share/applications/zcode-pro.desktop"
   # Linux 下 zcode-pro 会自动探测 /opt/ZCode/zcode（AUR zcode 包安装位置）
