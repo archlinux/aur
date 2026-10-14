@@ -1,0 +1,28 @@
+pkgbase = quicklook-bin
+	pkgdesc = Quick Look image preview for KDE Plasma 6 with optional soft blur (prebuilt)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/13Stokes31/quicklook
+	install = quicklook.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = GPL-2.0-or-later
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = qt6-base>=6.12
+	depends = qt6-wayland
+	depends = kwindowsystem
+	depends = libglvnd
+	optdepends = dolphin: file manager service menu and Space shortcut (26.04+)
+	optdepends = kwin: window centering and blur (soft module requires 6.7.5)
+	optdepends = qt6-declarative>=6.12: optional KWin soft blur module
+	optdepends = libepoxy: optional KWin soft blur module
+	optdepends = python: optional quicklook-dolphin-shortcut command
+	provides = quicklook=0.2.0
+	conflicts = quicklook
+	options = !debug
+	options = !strip
+	source = https://github.com/13Stokes31/quicklook/releases/download/v0.2.0/quicklook-0.2.0-linux-x86_64.tar.gz
+	sha256sums = b2b176a5d5a2a9ba312ec60a536831cbda03b7a784eddc9dd047754060b00651
+
+pkgname = quicklook-bin

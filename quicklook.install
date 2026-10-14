@@ -1,0 +1,11 @@
+post_install() {
+  printf '%s\n' \
+    'Quick Look: enable Quick Look Center in System Settings > Window Management > KWin Scripts.' \
+    'Soft blur is optional and supports KWin 6.7.5 only; native blur/opaque fallback stays available.' \
+    'Dolphin Space shortcut is opt-in (26.04+): quicklook-dolphin-shortcut --dry-run, then quicklook-dolphin-shortcut.' \
+    'This removes Space from Dolphin selection mode and saves a backup. Installation does not change user settings.' \
+    'An older ~/.local Quick Look installation can override /usr/bin/quicklook and the system service menu; see README.'
+}
+post_upgrade() {
+  post_install
+}
