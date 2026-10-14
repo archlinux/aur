@@ -2,7 +2,7 @@
 # Contributor: Michell Gailing <gailing.michell at gmail dot com>
 
 pkgname="pterodactyl-wings"
-pkgver=1.13.3
+pkgver=1.13.4
 pkgrel=1
 pkgdesc="The server control plane for Pterodactyl Panel"
 url="https://pterodactyl.io/"
@@ -13,7 +13,7 @@ makedepends=("go")
 conflicts=("pterodactyl-daemon")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/wings/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('052117541919caac8b83e6d8f05160ba189d41531b9b8a505e823aa0e4e0d39b'
+sha256sums=('cbb5fccf10b7a344ad3c16fe05a68044abfc7c94b23f8ec501bd9c873ccd082c'
             '62dfff25f9bdae4769f4201ed30e7c2bfca54611bee75512c5626e74c764f46e')
 build(){
  cd "wings-$pkgver"
