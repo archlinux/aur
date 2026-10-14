@@ -4,7 +4,7 @@ _pkgname=MusicFreeDesktop
 pkgver=0.0.8
 _electronversion=25
 _nodeversion=20
-pkgrel=4
+pkgrel=5
 pkgdesc="Plug-in, customized, ad-free music player.插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
 url="https://musicfree.catcat.work/"
@@ -13,7 +13,7 @@ _pluginurl="https://gitee.com/maotoumao/MusicFreePlugins/raw/master/plugins.json
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'libvips'
     'nodejs'
 )
@@ -33,32 +33,34 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('318d579c06590bb3a607dbb898378d7afebee43f2d3729aff5108fc409f12807'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-_ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
-}
+sha256sums=('b61c4fa553f72ac8b4d23b9a33db31d6fa39b43eeb84edc38d950b68dd5fd2b9'
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
 		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
+_ensure_local_nvm() {
+    local NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+    find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+        | while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+		| grep -oE '[0-9]+' | head -1)
 	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -81,18 +83,16 @@ _set_build_env() {
 	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
 _use_local_electron_for_forge() {
-	local _v="${SYSTEM_ELECTRON_VERSION}"
-	local _zd="${srcdir}/electron-zips"
-	case "${CARCH}" in
-		aarch64)    _arch=arm64	;;
-		x86_64)     _arch=x64	;;
-	esac
-	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
-	install -Dm755 -d "${_zd}"
-	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
-	find . -name "forge.config.*" ! -path "*/node_modules/*" -print0 | while IFS= read -r -d '' _cfg; do
-		sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${_cfg}"
-	done
+    local _arch=$([[ "${CARCH}" == "aarch64" ]] && echo arm64 || echo x64)
+    local _zd="${srcdir}/electron-zips"
+    local _zf="${_zd}/electron-v${SYSTEM_ELECTRON_VERSION}-linux-${_arch}.zip"
+    mkdir -p "${_zd}"
+    rm -f "${_zf}"
+    ( cd "${ELECTRON_DIST}" && find . \( -type f -o -type l \) -readable -print | zip -@ -0 -q -y "${_zf}" )
+    [[ -s "${_zf}" ]] || { echo "ERROR: Failed to generate electron zip (directory not readable?)"; return 1; }
+    find . -name "forge.config.*" ! -path "*/node_modules/*" -print0 | while IFS= read -r -d '' _cfg; do
+        sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${_cfg}"
+    done
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -100,8 +100,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-        s/@runname@/app/g
-        s/@cfgdirname@/${_pkgname%Desktop}/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -f -q -n \
         --pkgname="${pkgname}" \
@@ -112,8 +110,7 @@ prepare() {
     _ensure_local_nvm
     _set_build_env
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp \
-        && mv package.json.tmp package.json
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     rm -rf package-lock.json
     export NODE_ENV=development
     bun install
@@ -125,21 +122,23 @@ build() {
     _set_build_env
     export NODE_ENV=production
     bun run package
-    local _src="$(_get_project_dir)"
-    case "${CARCH}" in
-		aarch64)	_archrem=x64	;;
-		x86_64)		_archrem=arm	;;
-	esac
-	find "${_app_dir}/resources/app.asar.unpacked" -type d \
-		\( -name "darwin*" -o -name "*android*" -o -name "win32*" -o -name "*${_archrem}"* \) \
-		-exec rm -rf {} +
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+    find "$(_get_app_dir)" -type d \
+        \( -name 'darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*${_archrem}*" \) \
+        -prune -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    local _src="$(_get_project_dir)"
+
+    local _app_dir; _app_dir="$(_get_app_dir)"
+    if [[ -z "${_app_dir}" || ! -d "${_app_dir}/resources" ]]; then
+        error "无法定位 forge 输出目录（resources 不存在）"
+        return 1
+    fi
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+
+    local _src; _src="$(_get_project_dir)"
     install -Dm644 "${_src}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }

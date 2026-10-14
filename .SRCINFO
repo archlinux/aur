@@ -1,7 +1,7 @@
 pkgbase = musicfree-desktop
 	pkgdesc = Plug-in, customized, ad-free music player.插件化、定制化、无广告的免费音乐播放器
 	pkgver = 0.0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://musicfree.catcat.work/
 	arch = any
 	license = GPL-3.0-only
@@ -15,14 +15,14 @@ pkgbase = musicfree-desktop
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = electron25
+	depends = electron25-bin
 	depends = libvips
 	depends = nodejs
 	conflicts = musicfree-desktop
 	options = !emptydirs
-	source = musicfree-desktop-0.0.8::git+https://github.com/maotoumao/MusicFreeDesktop#tag=v0.0.8
+	source = musicfree-desktop-0.0.8.tar.gz::https://github.com/maotoumao/MusicFreeDesktop/archive/v0.0.8.tar.gz
 	source = musicfree-desktop.sh
-	sha256sums = 318d579c06590bb3a607dbb898378d7afebee43f2d3729aff5108fc409f12807
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = b61c4fa553f72ac8b4d23b9a33db31d6fa39b43eeb84edc38d950b68dd5fd2b9
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = musicfree-desktop
