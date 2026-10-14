@@ -1,0 +1,14 @@
+post_install() {
+
+	# 注册 URL Scheme
+	update-desktop-database /usr/share/applications/
+
+	# 设置可执行权限
+	chmod +x /usr/bin/pcb_autorouter
+
+	echo "PCB Auto Router installed successfully!"
+}
+
+post_upgrade() {
+	post_install
+}

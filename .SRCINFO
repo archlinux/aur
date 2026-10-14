@@ -1,0 +1,22 @@
+pkgbase = pcb-autorouter-bin
+	pkgdesc = Intelligent PCB Auto Router. PCB Auto Router is an intelligent automatic routing tool for printed circuit boards.
+	pkgver = 1.4807
+	pkgrel = 1
+	url = https://www.pcbautorouter.top
+	install = pcb-autorouter-bin.install
+	arch = x86_64
+	license = custom
+	depends = fmt
+	depends = fmt9
+	depends = glfw
+	depends = glm
+	depends = libepoxy
+	depends = teamspeak3
+	depends = vulkan-icd-loader
+	optdepends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source = https://download.pcbautorouter.top/releases/pcb-autorouter_1.4807_amd64.deb
+	sha512sums = bb9d5ee12ce0fca32fb0e736007a7ffdb017dc3dbeac98e1a844991a250112a5bc0f87519e14e7ef44fbbc8694848743cda03daa0b39588fcf26b7e606fec7a4
+
+pkgname = pcb-autorouter-bin
