@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/bin/python3 /usr/share/koboldcpp/json_to_gbnf.py "$@"
