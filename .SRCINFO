@@ -1,0 +1,17 @@
+pkgbase = aimp-skin-heart-and-39-s-desire
+	pkgdesc = AIMP skin: Heart&#39;s Desire v1.2 (by Arindel)
+	pkgver = 20261014
+	pkgrel = 1
+	url = https://github.com/badcast/aimpskins
+	arch = any
+	license = custom
+	groups = AIMP_Skins
+	makedepends = libarchive
+	depends = aimp
+	noextract = aimp-skin-heart-and-39-s-desire-361.archive
+	options = !strip
+	options = !debug
+	source = aimp-skin-heart-and-39-s-desire-361.archive::https://aimp.ru/?do=catalog.download&id=361
+	sha256sums = SKIP
+
+pkgname = aimp-skin-heart-and-39-s-desire
