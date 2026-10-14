@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-romantik-201
-	pkgdesc = AIMP skin: Romantik-201 1.02 (by McClaud)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Romantik-201 v1.02 (by McClaud)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-romantik-201
 	options = !strip
 	options = !debug
 	source = aimp-skin-romantik-201-1296.archive::https://aimp.ru/?do=catalog.download&id=1296
-	sha256sums = 902db62159003e6b7ba66299c207c99ec921cfaa64aee5ec28f943d962550dbb
+	sha256sums = SKIP
 
 pkgname = aimp-skin-romantik-201
