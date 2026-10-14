@@ -1,0 +1,14 @@
+pkgbase = flashforgemonitor
+	pkgdesc = Native Linux desktop monitor and controller for Flashforge Creator 5-series printers
+	pkgver = 1.0.0rc1
+	pkgrel = 1
+	url = https://github.com/RokenPrice/flashforgemonitor
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = pyside6
+	depends = mpv
+	source = flashforgemonitor-1.0.0rc1.tar.gz::https://github.com/RokenPrice/flashforgemonitor/archive/refs/tags/v1.0.0-rc1.tar.gz
+	sha256sums = 494dab47eebaea63a66c3482f3ca267696163c7ec5319b46ce07709ea308ff18
+
+pkgname = flashforgemonitor
