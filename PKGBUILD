@@ -5,13 +5,16 @@
 
 pkgname='fhtagn'
 pkgdesc='Literate testing for command-line programs'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 url='https://github.com/xonixx/fhtagn'
+changelog="$pkgname.changelog"
 arch=('any')
+license=('MIT')
 depends=('awk')
-license=('MIT')  # SPDX-License-Identifier: MIT
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('30f5885fdfb32edf3f03388e2c144d0a5b4d3ebe9184e03bd3398fba3be00b6b')
 
 check() {
   cd "$pkgname-$pkgver"
@@ -22,16 +25,9 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 fhtagn.awk "$pkgdir/usr/bin/fhtagn"
-  install -vDm0644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -vDm0644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0755 fhtagn.awk "$pkgdir/usr/bin/fhtagn"
+  install -Dm0644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-sha256sums=(
-  'a45cb31741f90986d511ada6b50ff22129ed687f7dd1207cc1a96733c599e124'
-)
-b2sums=(
-  '1efb82b37d3398a435b489d1f68261bddff75d3346c1371e78f620a80a18e8431b6aff9d5bb4f6e2797a6fce79dfb22b9829f5f4bc7736e79cdffe5f75f3f8ab'
-)
 
 # eof
