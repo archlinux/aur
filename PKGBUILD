@@ -1,41 +1,30 @@
 pkgname=paintdotjs-bin
-pkgver=2.1.17
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='An open source general-purpose raster graphics editor program.'
 arch=('x86_64')
 url='https://paintjs.net/'
 license=('MIT')
 depends=('fuse2' 'gtk3' 'nss')
-makedepends=('nodejs')
 provides=('paintdotjs')
 conflicts=('paintdotjs')
 options=('!strip')
 source=(
   "paintdotjs-${pkgver}-source.tar.gz::https://github.com/LabyStudio/paintdotjs/archive/refs/tags/v${pkgver}.tar.gz"
-  "paintdotnet.zip::https://github.com/paintdotnet/release/releases/download/v5.1.12/paint.net.5.1.12.portable.x64.zip"
 )
 source_x86_64=("paintdotjs-${pkgver}.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v${pkgver}/paintdotjs-${pkgver}-linux-x86_64.AppImage")
-noextract=('paintdotnet.zip' "paintdotjs-${pkgver}.AppImage")
-sha256sums=('7ce34bf051573b7a4b4aeb24cd4bae16168f4f940996fa18d062b15c097812f1' 'd5ae7043f2fb9d365b48dfe243a2aca1c74924de99b04b6445916c95354aefa3')
-sha256sums_x86_64=('b43ae09a4c5794a74db5391f572e13c6c3a0096f23b3867dc598e47f2c03f8e9')
-
-prepare() {
-  mkdir -p paintdotnet-source
-  bsdtar -xf paintdotnet.zip -C paintdotnet-source
-}
+noextract=("paintdotjs-${pkgver}.AppImage")
+sha256sums=('27bf2b2d5a535e02179c5ddbab4650949009832b49f238679b665481223f2b5e')
+sha256sums_x86_64=('11531c1f6e34754410e8ac3c1f210cca3172426d9c859e665f56c4e4a3e8d8e7')
 
 package() {
   local project="paintdotjs-${pkgver}"
   install -Dm755 "paintdotjs-${pkgver}.AppImage" "$pkgdir/opt/paintdotjs/paintdotjs.AppImage"
-  node "$project/scripts/install_desktop_assets.js" \
-    --source paintdotnet-source \
-    --output "$pkgdir/opt/paintdotjs/assets" \
-    --manifest "$project/desktop-resources/asset-manifest.json"
 
   install -Dm755 "$project/aur/paintdotjs" "$pkgdir/usr/bin/paintdotjs"
   install -Dm644 "$project/aur/paintdotjs.desktop" "$pkgdir/usr/share/applications/paintdotjs.desktop"
   install -Dm644 "$project/aur/x-paintdotnet.xml" "$pkgdir/usr/share/mime/packages/x-paintdotnet.xml"
-  install -Dm644 "$project/desktop-resources/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/paintdotjs.png"
-  install -Dm644 "$project/desktop-resources/file-icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/mimetypes/application-x-paintdotnet.png"
+  install -Dm644 "$project/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/paintdotjs.png"
+  install -Dm644 "$project/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/mimetypes/application-x-paintdotnet.png"
   install -Dm644 "$project/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
