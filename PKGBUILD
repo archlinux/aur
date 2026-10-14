@@ -1,6 +1,6 @@
 # Maintainer: moecly <moecly@users.noreply.github.com>
 pkgname=omp-ctl-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Desktop GUI for managing omp configuration in ~/.omp-ctl (prebuilt)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'glibc' 'gcc-libs')
 provides=('omp-ctl')
 conflicts=('omp-ctl')
 source=("$url/releases/download/v$pkgver/omp-ctl_${pkgver}_amd64.deb")
-sha256sums=('4f31686216b7ca9add5585efecaa4bc39735a3308c9da7a6373a878ffc757bdd')
+sha256sums=('87e3f3c5c0f80d7bfafc8aac30b79848278281fa484ec31a269c6c5cea92afef')
 noextract=("omp-ctl_${pkgver}_amd64.deb")
 options=('!strip' '!debug')
 
