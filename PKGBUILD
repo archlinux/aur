@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.46.0
+pkgver=1.46.2
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
@@ -47,7 +47,7 @@ package() {
 
 	install -D -m644 "application-wrapper/Looksyk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -D -m755 "backend/target/release/src-tauri" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk"
+	install -D -m755 "backend/target/release/looksyk" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk"
 	
 	ln -s "/usr/lib/${_pkgnameshort}/looksyk-tauri" "${pkgdir}/usr/bin/looksyk"
 }
