@@ -1,8 +1,8 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.5.6.38337834_5f969292
-pkgrel=2
+pkgver=5.6.2.40046327_c7b525f3
+pkgrel=1
 pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具"
 arch=('x86_64' 'aarch64')
 url="https://www.workbuddy.cn/app"
@@ -53,22 +53,22 @@ _debloat_prompt() {
 
 build() {
     cd opt/WorkBuddy/resources
-    rm -rf app.asar.unpacked/node_modules/better-sqlite3
-    mv ${srcdir}/package app.asar.unpacked/node_modules/better-sqlite3
-    asar e app.asar app.asar.unpacked || true
-    find app.asar.unpacked -type f -exec sed -i "s/process.resourcesPath/\'\/opt\/WorkBuddy\'/g" {} +
-    _debloat_prompt
+#   rm -rf app.asar.unpacked/node_modules/better-sqlite3
+#   mv ${srcdir}/package app.asar.unpacked/node_modules/better-sqlite3
+#   asar e app.asar app.asar.unpacked || true
+#   find app.asar.unpacked -type f -exec sed -i "s/process.resourcesPath/\'\/opt\/WorkBuddy\/resources\'/g" {} +
+#   _debloat_prompt
 }
 
 package() {
     install -d ${pkgdir}/opt/WorkBuddy
     cp -a usr ${pkgdir}/
     install -m644 WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
-    cd opt/WorkBuddy/resources
-    cp -a app.asar.unpacked ${pkgdir}/opt/WorkBuddy/
+    cd opt/WorkBuddy
+    cp -a * ${pkgdir}/opt/WorkBuddy/
 #    cp -r wb-guest-sdk/ ${pkgdir}/opt/WorkBuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
 #!/usr/bin/bash
-exec electron /opt/WorkBuddy/app.asar.unpacked "\$@"
+exec /opt/WorkBuddy/workbuddy "\$@"
 EOF
 }
