@@ -1,6 +1,6 @@
 --- python/cuvs/CMakeLists.txt	2026-02-05 05:46:31.000000000 +0800
 +++ python/cuvs/CMakeLists.txt.new	2026-03-11 16:22:30.546984430 +0800
-@@ -36,10 +36,16 @@
+@@ -36,10 +36,17 @@
  rapids_cpm_init()
  
  # --- cuVS ---#
@@ -10,6 +10,7 @@
 +find_package(rmm REQUIRED)
 +find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
++find_package(kvikio REQUIRED)
  find_package(cuvs "${RAPIDS_VERSION}" REQUIRED COMPONENTS cuvs_cpp_headers cuvs cuvs_shared c_api)
  
  # --- dlpack ---#

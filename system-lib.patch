@@ -1,22 +1,22 @@
---- cpp/CMakeLists.txt	2025-12-11 08:51:28.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2025-12-24 15:34:18.535882660 +0800
-@@ -184,13 +184,12 @@
- rapids_cpm_init()
+--- cpp/CMakeLists.txt.orig	2026-10-08 09:23:47.000000000 +0800
++++ cpp/CMakeLists.txt	2026-10-08 16:58:52.477549109 +0800
+@@ -194,13 +194,13 @@
  
  if(NOT BUILD_CPU_ONLY)
--  # We must find CCCL ourselves before raft so that we get the right version.
+   # We must find CCCL ourselves before raft so that we get the right version.
 -  include(${rapids-cmake-dir}/cpm/cccl.cmake)
 -  rapids_cpm_cccl()
 -  include(cmake/thirdparty/get_raft.cmake)
--  include(cmake/thirdparty/get_cutlass.cmake)
--  include(${rapids-cmake-dir}/cpm/cuco.cmake)
--  rapids_cpm_cuco()
+-  include(cmake/thirdparty/get_kvikio.cmake)
 +  find_package(rapids_logger REQUIRED)
 +  find_package(rmm REQUIRED)
 +  find_package(nvtx3 REQUIRED)
-+  include(cmake/thirdparty/get_cutlass.cmake)
+   include(cmake/thirdparty/get_cutlass.cmake)
+-  include(${rapids-cmake-dir}/cpm/cuco.cmake)
+-  rapids_cpm_cuco()
 +  find_package(cuco REQUIRED)
 +  find_package(raft REQUIRED)
++  find_package(kvikio REQUIRED)
+   include(cmake/thirdparty/get_rtcx.cmake)
  endif()
  
- if(BUILD_TESTS OR BUILD_C_TESTS)

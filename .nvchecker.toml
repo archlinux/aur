@@ -1,0 +1,5 @@
+[cuvs]
+source = "github"
+github = "NVIDIA/cuvs"
+use_latest_release = true
+prefix = "v"
