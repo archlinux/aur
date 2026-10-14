@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-himera
-	pkgdesc = AIMP skin: Himera 1.1 (by Starkad)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Himera v1.1 (by Starkad)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-himera
 	options = !strip
 	options = !debug
 	source = aimp-skin-himera-851.archive::https://aimp.ru/?do=catalog.download&id=851
-	sha256sums = e3a18b508bc495fc4fca9cc129dd29dfb3db6df59aa66e938d7a35cc186195c5
+	sha256sums = SKIP
 
 pkgname = aimp-skin-himera
