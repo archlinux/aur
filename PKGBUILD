@@ -4,7 +4,7 @@
 # Edit the template in the tidemail repository, not this file.
 
 pkgname=tidemail-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Keyboard-first terminal email client with multi-account mail, a unified inbox, drafts, contacts, search, and optional AI tools"
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgve
 sha256sums=('7ded3abde5f4be92306e0ee24c6db97b1825e4eaa1b8fd473669c521f5a409dd'
             'a2510a7a5185a520ea815f8c19799055a363e2cd9c98e7c9d8ce748a703db0b6'
             '65217068259c58ac622c1ceb73acf33c96eaa0f1905a936410ac7936853d2b44')
-sha256sums_x86_64=('e2507aa8dd04113f83da1d1ac0fb0e9f0f15f1713db2a0320bb05110bcb9c2b5')
-sha256sums_aarch64=('44dc6613d7b293341448b3a02dbf25bdfcac9e51f42a4d6b3decf100bbe2818b')
+sha256sums_x86_64=('77613e0e7feab6f1adbf708c5a04ffc2266e3fdefdad433931a6c47db0375936')
+sha256sums_aarch64=('560cb07dd5c906a50d1b366b3e17508f800834ae2b56d6b421208ec9afbb60d4')
 
 package() {
   install -Dm755 "$srcdir/tidemail-linux-$CARCH" "$pkgdir/usr/bin/tidemail"
