@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=fabric-d77
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="GTK desktop shell for Wayland compositors, built on Fabric"
 arch=('any')
@@ -34,13 +34,14 @@ optdepends=(
   'xdg-user-dirs: locate the music folder'
   'xdg-terminal-exec: pick the default terminal when $TERMINAL is unset'
   'ollama: backend for the Ollama Chat popup'
+  'matugen: wallpaper-based color palette'
 )
 backup=('etc/pam.d/fabric-d77')
 # No upstream release tags yet: pinned to the same commit as the Void template
 # in srcpkgs-d77. Bump _commit and sha256sums together.
-_commit=b2e1878f0876c2ffc14cbc002fce188c13b69457
+_commit=5c95b99e5502fc3b94ac745d7fee3afcdd3d51ae
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('27bcbba677b70f868c46c77d4bb7c1b4982a1a999e614687dfc719ecc104d66e')
+sha256sums=('c31408e874970b4e1e688b0a7545b700565ffd718dd5fc4fac4389d14a8b4862')
 
 package() {
     cd "$pkgname-$_commit"
