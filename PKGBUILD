@@ -3,7 +3,7 @@
 # Contributor: MrHacker <kmunoz@condorbs.net>
 
 pkgname=mssql-server-fts
-pkgver=17.0.5005.3
+pkgver=17.0.5015.4
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -21,7 +21,7 @@ license=('LicenseRef-Microsoft-SQL-Server-EULA')
 _debfile="${pkgname}_${_prodver}_amd64.deb"
 source=("https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/${pkgname}/${_debfile}")
 noextract=("${_debfile}")
-sha256sums=('5d46c644c35013f2a28f23caa43400a89d06b0ea310d42a9e909da2ed18dfeb8')
+sha256sums=('fa1e3e5e3073937fdaf4c9865b47aa2bf483d8da0a760674a5de1a9bea49ee3a')
 
 # The .sfp is loaded into the engine process, so it has to match the engine
 # build exactly. Declared at the top level, not inside package(), so that
