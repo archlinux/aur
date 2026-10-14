@@ -1,0 +1,25 @@
+pkgbase = atc-bin
+	pkgdesc = Atomic Server: install an inference engine, pull a model, serve it over an OpenAI-compatible API
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AtomicBot-ai/eye-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = atc
+	conflicts = atc
+	options = !strip
+	options = !debug
+	source = LICENSE-0.1.0::https://github.com/AtomicBot-ai/eye-cli/releases/download/v0.1.0/LICENSE
+	source = NOTICE-0.1.0::https://github.com/AtomicBot-ai/eye-cli/releases/download/v0.1.0/NOTICE
+	source = THIRD_PARTY_NOTICES-0.1.0.md::https://github.com/AtomicBot-ai/eye-cli/releases/download/v0.1.0/THIRD_PARTY_NOTICES.md
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	sha256sums = 0fc89a2d40a3f52c9e85f9430412cb6095360a1b5fa500afff596e59d5cafd7f
+	sha256sums = 4ff8f11accca6136f1ca8d312aad8a56dd80f0b6c2f49c7aa4f42ca0f8b6e5af
+	source_x86_64 = atc-0.1.0-x86_64::https://github.com/AtomicBot-ai/eye-cli/releases/download/v0.1.0/atc-0.1.0-x86_64-unknown-linux-gnu-baseline
+	sha256sums_x86_64 = e250ec01a032d82d363a070edb701d0a02119264df371a816447e645607e7f73
+	source_aarch64 = atc-0.1.0-aarch64::https://github.com/AtomicBot-ai/eye-cli/releases/download/v0.1.0/atc-0.1.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = fc603c1470f480a67f593b1d7ddd76d8deab4694dd7e557944e4a9e16ab6457b
+
+pkgname = atc-bin
