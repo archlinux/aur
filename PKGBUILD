@@ -1,13 +1,13 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r2125.405f05b9
+pkgver=r2723.ecebd004
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
 url="https://github.com/RimSort/RimSort"
 license=("GPL3")
 makedepends=(git)
-depends=(python uv)
+depends=(uv)
 optdepends=('todds: Texture optimization support')
 source=("git+https://github.com/RimSort/RimSort.git"
         "RimSort.desktop"
@@ -27,7 +27,8 @@ pkgver() {
 build() {
     cd "$srcdir/RimSort"
     rm -rf .venv
-    uv sync --group build
+    # Managed python is needed, the system one would make package() copy all of /usr/lib
+    uv sync --managed-python --group build
     git submodule update --init --recursive
 }
 
@@ -38,8 +39,14 @@ package() {
     target=$(readlink ".venv/bin/python")
     targetDir=$(dirname "$target")
     targetLib="$targetDir/../lib"
+    if [[ "$target" == /usr/* ]]; then
+        echo "venv uses system python ($target), refusing to copy $targetLib" >&2
+        return 1
+    fi
     cp -r "$targetLib"/* .venv/lib
     cp --remove-destination "$(readlink ".venv/bin/python")" ".venv/bin/python"
+    # home still points into the builder's uv python dir, point it at the bundled copy
+    sed -i 's|^home = .*|home = /opt/rimsort/.venv/bin|' .venv/pyvenv.cfg
 
     # Main Files
     install -dm755 "$pkgdir/opt/rimsort/"
