@@ -2,7 +2,7 @@
 
 _pkgname=mechrevo-drivers
 pkgname=mechrevo-drivers-dkms-git
-pkgver=4.24.0.r2.g5dce9a2
+pkgver=4.24.0.r6.g4bbbdc9
 pkgrel=1
 pkgdesc='Unofficial MECHREVO laptop platform drivers based on TUXEDO drivers (DKMS, git)'
 arch=('x86_64')
@@ -58,6 +58,7 @@ pkgver() {
 
 package() {
     local dkmsdir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+    local doc
     install -dm755 "$dkmsdir"
     cp -a "${srcdir}/${_pkgname}/src/." "$dkmsdir/"
     install -m644 "${srcdir}/dkms.conf" "$dkmsdir/dkms.conf"
@@ -74,6 +75,8 @@ package() {
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}/README.md" \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "${srcdir}/${_pkgname}"/docs/*.md \
-        -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+    while IFS= read -r -d '' doc; do
+        install -Dm644 "$doc" \
+            "${pkgdir}/usr/share/doc/${pkgname}/docs/${doc#"${srcdir}/${_pkgname}/docs/"}"
+    done < <(find "${srcdir}/${_pkgname}/docs" -type f -name '*.md' -print0)
 }
