@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v0.21.7
-_commit=71d34bad1045610252eda02ee79549436896e784
-pkgver=0.21.7
+_pkgver_tag=v0.22.0
+_commit=e06df9c2eae6901f4c88f464e0ae6e753c0428b8
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('MIT')
 # hermes-agent would pull them in transitively.
 depends=(
   'electron42'
-  'hermes-agent'
+  'hermes-agent>=0.22.0'
   'hicolor-icon-theme'
   'libnotify'
   'libsecret'
@@ -32,20 +32,18 @@ optdepends=(
 )
 conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
+# Runtime patches only: refuse in-app agent bootstrap/update when the launcher
+# sets HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME=1. Test-only / RELRO patches dropped.
 source=(
   "hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz"
   'package-managed-runtime.patch'
   'package-managed-bootstrap.patch'
-  'fix-voice-prefs-storage-spy.patch'
-  'harden-hud-modifier-monitor.patch'
   'hermes-desktop'
   'launcher.test.cjs'
 )
-sha256sums=('fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459'
-            'af06707c57ae08646af03af8f05aee5b94651028b115eaaa18c7ed11ca4edb04'
-            '6a11f2a21bdd3bc6e459072e681641386621b99e90f37005906f0c361fa05886'
-            '047d6e615017b2bb8584383234cdfb3169694e25c10221d7a78da864884b1481'
-            'cf8b625b00e606b5b135bf5a38a851d8a699c819139e6720eecfa043ba886e9b'
+sha256sums=('61333ab64f7ad728bc265d103fd73b2eb4b936f9c8d9fe3ccf2531ad955e96a1'
+            '3f4f8aa40a634b13baf356533ebf534dc6560c1a99d642e7b47c83e2ed24ca7f'
+            '412ad7b2b6bc5149a8d236ad2cb9be54d2ac0ab78dbd3c8e16deb4f4e683713f'
             '8a677666d7d20578a88a745d83b4a75412a55fd5c184fd4f66a50dfe66adb3c6'
             '202e474fda5fd845f1ba334e503e751f746fb7d1f378fb0d3e8142b4795a025b')
 
@@ -66,8 +64,6 @@ prepare() {
   _set_npm_env
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/package-managed-runtime.patch"
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/package-managed-bootstrap.patch"
-  patch --batch --fuzz=0 -Np1 -i "${srcdir}/fix-voice-prefs-storage-spy.patch"
-  patch --batch --fuzz=0 -Np1 -i "${srcdir}/harden-hud-modifier-monitor.patch"
   # Keep desktop metadata aligned with the Agent release, not the separately
   # versioned upstream desktop package.json.
   npm pkg set version=${pkgver} --prefix apps/desktop
@@ -147,7 +143,10 @@ check() {
   npm run typecheck --workspace apps/desktop
   # The upstream live-portal fixture does not forward XAUTHORITY to Electron.
   # Without xvfb-run, a graphical host's DISPLAY would falsely enable it.
-  env -u DISPLAY -u WAYLAND_DISPLAY npm run test --workspace apps/desktop
+  # Skip voice-prefs spy that fails under Arch's Node localStorage (was a
+  # packaging-only test patch; not needed at runtime).
+  env -u DISPLAY -u WAYLAND_DISPLAY npm run test --workspace apps/desktop -- \
+    --exclude 'src/store/voice-prefs.test.ts'
 
   # node-pty is the native Node addon shipped by Hermes. Load the staged
   # module with the exact Electron runtime used by the installed launcher; its
