@@ -1,6 +1,6 @@
 pkgbase = cc-switch-bin
 	pkgdesc = A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI.
-	pkgver = 4.0.11
+	pkgver = 4.0.12
 	pkgrel = 1
 	url = https://github.com/farion1231/cc-switch
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = cc-switch-bin
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	source_x86_64 = CC-Switch-v4.0.11-Linux-x86_64.deb::https://github.com/farion1231/cc-switch/releases/download/v4.0.11/CC-Switch-v4.0.11-Linux-x86_64.deb
-	md5sums_x86_64 = d0294ff35856ad0bf28d8d3d3671a94d
-	source_aarch64 = CC-Switch-v4.0.11-Linux-arm64.deb::https://github.com/farion1231/cc-switch/releases/download/v4.0.11/CC-Switch-v4.0.11-Linux-arm64.deb
-	md5sums_aarch64 = db36b0d9775e4aedebb1668f9e71ff98
+	source_x86_64 = CC-Switch-v4.0.12-Linux-x86_64.deb::https://github.com/farion1231/cc-switch/releases/download/v4.0.12/CC-Switch-v4.0.12-Linux-x86_64.deb
+	md5sums_x86_64 = 0eb4fa989ec1044db46e1a76f725067b
+	source_aarch64 = CC-Switch-v4.0.12-Linux-arm64.deb::https://github.com/farion1231/cc-switch/releases/download/v4.0.12/CC-Switch-v4.0.12-Linux-arm64.deb
+	md5sums_aarch64 = fea7ed678414010959ae0d7416f047d5
 
 pkgname = cc-switch-bin
