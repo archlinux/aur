@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=utumno
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimal Quickshell shell for Wayland compositors, lighter sibling of quickshell-d77"
 arch=('any')
@@ -15,9 +15,10 @@ makedepends=('rsync')
 optdepends=(
   'upower: battery widget'
   'networkmanager: network widget'
+  'matugen: wallpaper-based color palette'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7a784f95abc1cc1b47140445c838b74431fd548de9ac8af6b133edd69dfaadac')
+sha256sums=('cae997a22c31c96bc9c1c37c857cf4757ef16c0e69d43e8761b84d9c95ff2ed6')
 
 package() {
     cd "$pkgname-$pkgver"
