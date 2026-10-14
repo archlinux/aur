@@ -7,8 +7,12 @@
 
 pkgname=nyx2-emulator-git
 pkgver=r16.6f501db
-pkgrel=3
-pkgdesc="Open-source Nintendo Switch 2 emulator frontend written in Python (PyQt5)"
+pkgrel=4
+# The pkgdesc deliberately does not claim emulation: upstream ships a PyQt5
+# cover/library manager (main.py copies files into assets/covers), a toy 8-bit
+# CPU written in Rust (main.rs) that is not wired into anything, and a Windows
+# XInput DLL. No Switch 2 game data is read, parsed or executed anywhere.
+pkgdesc="PyQt5 game-library frontend that, despite the name, emulates zero Switch 2 hardware"
 arch=('any')
 url="https://github.com/nat-carbonara/NYx-2-Emulator"
 license=('GPL-3.0-or-later')

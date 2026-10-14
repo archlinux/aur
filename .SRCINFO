@@ -1,7 +1,7 @@
 pkgbase = nyx2-emulator-git
-	pkgdesc = Open-source Nintendo Switch 2 emulator frontend written in Python (PyQt5)
+	pkgdesc = PyQt5 game-library frontend that, despite the name, emulates zero Switch 2 hardware
 	pkgver = r16.6f501db
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nat-carbonara/NYx-2-Emulator
 	install = nyx2-emulator-git.install
 	arch = any
