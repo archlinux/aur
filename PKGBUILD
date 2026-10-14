@@ -7,7 +7,7 @@ _pkgname='puppyclicker'
 pkgname="${_pkgname}-appimage"
 pkgver=3.5.8
 pkgrel=1
-pkgdesc='Click your puppies from anywhere. (By KinkyRaven)'
+pkgdesc='Click your puppies from anywhere. (By Boundfire.)'
 url="https://${_pkgname}.app/"
 arch=(
   'x86_64'
@@ -32,14 +32,17 @@ sha384sums_aarch64=('ab8784603786b33a079c30fe3fd31e1731ec9c96588f545c1c6b898216e
 sha256sums_aarch64=('f5598b9c7cbd16ad79c199802f9b046d9ec225b1d7c61ada219c865b626a4574')
 
 pkgver() {
-  cd "${srcdir}"
+  cd      "${srcdir}"
+
+  # install -Dm755 "${_pkgname}.AppImage"    "${_pkgname}-temp.AppImage"
+  chmod +x "../${_pkgname}.AppImage"
   "./${_pkgname}.AppImage" --appimage-extract &>/dev/null
 
-  grep -oP 'X-AppImage-Version=\K.*' "squashfs-root/${_pkgname}.desktop"
+  grep    -oP    'X-AppImage-Version=\K.*' "squashfs-root/${_pkgname}.desktop"
 }
 
 package() {
-  cd "${srcdir}"
+  cd      "${srcdir}"
 
   install -Dm755 "${_pkgname}.AppImage"              "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"

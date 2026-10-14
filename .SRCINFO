@@ -1,12 +1,12 @@
 pkgbase = puppyclicker-appimage
-	pkgdesc = Click your puppies from anywhere. (By KinkyRaven)
-	pkgver = 3.5.1
+	pkgdesc = Click your puppies from anywhere. (By Boundfire.)
+	pkgver = 3.5.8
 	pkgrel = 1
 	url = https://puppyclicker.app/
 	arch = x86_64
 	arch = aarch64
 	license = unknown
-	depends = grep
+	makedepends = grep
 	source_x86_64 = puppyclicker.AppImage::https://cdnpuppyclicker.boundfire.com/build/linux.AppImage
 	sha256sums_x86_64 = f5598b9c7cbd16ad79c199802f9b046d9ec225b1d7c61ada219c865b626a4574
 	sha384sums_x86_64 = ab8784603786b33a079c30fe3fd31e1731ec9c96588f545c1c6b898216e928b23d58c935b2e2de78e24010fc5368c0de
