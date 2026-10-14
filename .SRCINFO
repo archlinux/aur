@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-steam
-	pkgdesc = AIMP skin: AiMP Steam 1.0 (by l4ko)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: AiMP Steam 2013-12-20 (by l4ko)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aimp-steam
 	options = !strip
 	options = !debug
 	source = aimp-skin-aimp-steam-483.archive::https://aimp.ru/?do=catalog.download&id=483
-	sha256sums = 32b3676a9a899f1da76803fd861696dcdff86938de86a71cda6b57018105b770
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aimp-steam
