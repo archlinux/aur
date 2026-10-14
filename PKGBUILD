@@ -4,8 +4,8 @@
 # (repository is being renamed to claude-desktop-extra; the old URL redirects)
 
 pkgname=claude-desktop-extra
-pkgver=2.31226.1
-pkgrel=5
+pkgver=2.37337.1
+pkgrel=1
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -39,6 +39,7 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'ydotool: Computer Use input on exotic Wayland compositors ONLY (non-wlroots, non-GNOME, non-KDE; requires ydotoold daemon, v1.0+) - wlroots/GNOME/KDE use the bundled bridges'
             'bubblewrap: Claude Code shell sandbox (needed with socat when an organization sandbox policy applies)'
             'socat: Claude Code shell sandbox (with bubblewrap); also a faster Quick Entry toggle via socket (~2ms vs ~25ms python3)'
+            'openssh: Claude Code SSH sessions over the system ssh client (without it the built-in SSH engine is used)'
             'bluez: Hardware Buddy (Nibblet BLE pet) - the daemon Web Bluetooth talks to; without it the in-app device scan finds nothing'
             'gnome-keyring: credential storage backend for libsecret (KDE users: kwallet works too - upstream Recommends gnome-keyring | kwalletd)'
             'xdg-desktop-portal-gtk: portal backend for DEs without their own (GNOME/KDE ship xdg-desktop-portal-gnome/-kde) - file dialogs, screen sharing'
@@ -57,10 +58,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.31226.1-5/claude-desktop-2.31226.1-linux.tar.gz")
-sha256sums_x86_64=('c713982df0b95a30e6772843726700f29a32156b093b5663ef87976b1ab07d03')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.31226.1-5/claude-desktop-2.31226.1-linux-aarch64.tar.gz")
-sha256sums_aarch64=('3ea0d2c5d9f8353ad6976e103bf13bde4764bb6593091397e56c854de5e916b6')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.37337.1/claude-desktop-2.37337.1-linux.tar.gz")
+sha256sums_x86_64=('8ea6c91775f7d49b801393577d9139961103c0052fde4710aa67192844ccc654')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.37337.1/claude-desktop-2.37337.1-linux-aarch64.tar.gz")
+sha256sums_aarch64=('c4c16fec006507cf142be0586470a126c4dfc495c7b7bd28a7efb1cd5b2f8a1e')
 options=('!strip' '!emptydirs')
 
 package() {
