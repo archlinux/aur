@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-xenomorph-no-visual
-	pkgdesc = AIMP skin: XenoMorph (no visual) 1.0 (by Imperator3)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: XenoMorph (no visual) 2009-12-28 (by Imperator3)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-xenomorph-no-visual
 	options = !strip
 	options = !debug
 	source = aimp-skin-xenomorph-no-visual-14.archive::https://aimp.ru/?do=catalog.download&id=14
-	sha256sums = 453d364faf0c8a0b6d5c1f2717075da8c3ef3c272f5830896210a79796ab7019
+	sha256sums = SKIP
 
 pkgname = aimp-skin-xenomorph-no-visual
