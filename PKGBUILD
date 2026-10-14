@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Scafora <scafora.giovanni@gmail.com>
 
 pkgname=leolink-git
-pkgver=0.1.1+r7+g63952d7
+pkgver=0.2.5+r1+g1588048
 pkgrel=1
 pkgdesc="Native Linux client for Reolink cameras: live view, motion alerts, recording - git version"
 arch=('x86_64')
