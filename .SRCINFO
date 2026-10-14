@@ -1,10 +1,14 @@
 pkgbase = stork-agent
 	pkgdesc = The agent that monitors ISC BIND 9 DNS, ISC Kea DHCP, and other services as part of ISC Stork.
-	pkgver = 2.5.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://gitlab.isc.org/isc-projects/stork
 	arch = any
 	license = MPL2
+	makedepends = go
+	makedepends = nodejs
+	makedepends = protoc-gen-go
+	makedepends = protoc-gen-go-grpc
 	makedepends = python
 	makedepends = rake
 	makedepends = sed
@@ -12,7 +16,9 @@ pkgbase = stork-agent
 	makedepends = unzip
 	makedepends = wget
 	backup = etc/stork/agent.env
-	source = https://downloads.isc.org/isc/stork/2.5.1/stork-2.5.1.tar.gz
-	sha512sums = ae9389333580df50841911e7a5c4228a575cc708ee2538a291baa7d60e74e753e702e58860b6591b2d33a36762bf57bfb22bd72b832de7375ea532ff0d04f93f
+	source = https://downloads.isc.org/isc/stork/2.6.0/stork-2.6.0.tar.gz
+	source = stork-agent.sysuser
+	sha512sums = 845ebc0ea2b9365a844b9124deb570d61ffe537c402ba16583081bd2e98a5e1a00c0a054a061fb610eaabb676aa58604c053c1218cb1bd4201e30ec2c07c4f29
+	sha512sums = 5a1ff88f2e64db884696c7c86aa0d119caa9a7ae3dd0d9ab9c750281353100af7f96ff0af642489002e2d01fa623fd173762078b27b9caf5e7f4aacee08eea48
 
 pkgname = stork-agent
