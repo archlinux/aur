@@ -13,7 +13,7 @@ url='https://github.com/OpenCommunityEdition/OpenCE'
 license=('CC0-1.0' 'Apache-2.0' 'BSD-3-Clause' 'BSD-4-Clause' 'ISC' 'MIT' 'OFL-1.1' 'Zlib')
 # The game is 32-bit x86 code (its data has 32-bit pointers, as on the Xbox).
 # The release brings its own SDL3, which loads the rest when it starts.
-depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-libxext' 'lib32-libgl'
+depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-libxext' 'lib32-mesa'
          'hicolor-icon-theme')
 optdepends=('lib32-pipewire: sound through PipeWire (one of the sound libraries is needed for sound)'
             'lib32-libpulse: sound through PulseAudio'
