@@ -1,0 +1,18 @@
+pkgbase = pawnix
+	pkgdesc = Keyboard-first terminal chess client with local play and Lichess support
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/a-shygun/Pawnix
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-chess
+	depends = python-keyring
+	source = pawnix-0.1.1.tar.gz::https://github.com/a-shygun/Pawnix/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = pawnix
