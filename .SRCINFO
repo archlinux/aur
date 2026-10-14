@@ -3,6 +3,7 @@ pkgbase = settings-tui-bin
 	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/ziuus/settings-tui
+	install = settings-tui-bin.install
 	arch = x86_64
 	license = MIT
 	provides = settings-tui

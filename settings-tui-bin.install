@@ -1,0 +1,31 @@
+post_install() {
+    # Check if npm/pnpm global versions exist
+    found_nodes=""
+    for p in "/home/$SUDO_USER/.local/share/pnpm/settings-tui" \
+             "/home/$SUDO_USER/.nvm/versions/node"/*/bin/settings-tui \
+             "/home/$SUDO_USER/.npm-global/bin/settings-tui" \
+             "/usr/local/bin/settings-tui"; do
+        if [ -e "$p" ]; then
+            found_nodes="$found_nodes $p"
+        fi
+    done
+
+    echo ":: settings-tui has been installed natively to /usr/bin/settings-tui."
+    if [ -n "$found_nodes" ]; then
+        echo ""
+        echo ":: [Notice] Found existing non-AUR installations in your environment:"
+        for f in $found_nodes; do
+            echo "   -> $f"
+        done
+        echo ""
+        echo "   To ensure clean execution, your PATH will prioritize this native binary,"
+        echo "   or you can clean up redundant npm shims via:"
+        echo "     npm uninstall -g settings-tui"
+        echo "     pnpm remove -g settings-tui"
+        echo ""
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

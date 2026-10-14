@@ -9,6 +9,7 @@ license=('MIT')
 depends=()
 provides=('settings-tui')
 conflicts=('settings-tui')
+install=settings-tui-bin.install
 source=("https://github.com/ziuus/settings-tui/releases/download/v${pkgver}/settings-tui-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('2332e9102778a822faa51d2b0cd962e22818ccdd5828f4c512092991ba690109')
 
