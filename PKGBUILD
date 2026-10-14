@@ -3,7 +3,7 @@
 
 pkgname=chrome-for-testing-bin
 pkgver=155.0.8059.79 # renovate: datasource=custom.chrome-for-testing depName=chrome-for-testing versioning=semver-coerced
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Google Chrome for Testing browser"
 arch=('x86_64')
 url="https://googlechromelabs.github.io/chrome-for-testing/"
@@ -47,7 +47,7 @@ package() {
 
   install -dm755 "$_install_dir"
   cp -a "$srcdir/chrome-linux64/." "$_install_dir/"
-  chmod 4755 "$_install_dir/chrome_sandbox"
+  chmod 0755 "$_install_dir/chrome_sandbox"
   chmod 0644 "$_install_dir/deb.deps" "$_install_dir/rpm.deps"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/chrome-for-testing" <<'EOF'

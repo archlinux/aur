@@ -1,7 +1,7 @@
 pkgbase = chrome-for-testing-bin
 	pkgdesc = Official Google Chrome for Testing browser
 	pkgver = 155.0.8059.79
-	pkgrel = 1
+	pkgrel = 2
 	url = https://googlechromelabs.github.io/chrome-for-testing/
 	arch = x86_64
 	license = LicenseRef-Google-Chrome
