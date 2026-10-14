@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-acubens
-	pkgdesc = AIMP skin: Acubens 1.7 (by Remoder)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Acubens v1.7 (by Remoder)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-acubens
 	options = !strip
 	options = !debug
 	source = aimp-skin-acubens-1198.archive::https://aimp.ru/?do=catalog.download&id=1198
-	sha256sums = 0dd5e86110bde925c8b71f52531fabb1af7d4f6a8782c276ed00e6b0e6a63e5d
+	sha256sums = SKIP
 
 pkgname = aimp-skin-acubens
