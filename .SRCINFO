@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-antimatter
-	pkgdesc = AIMP skin: Antimatter 1.1 (by Grin)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Antimatter v1.1 (by Grin)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-antimatter
 	options = !strip
 	options = !debug
 	source = aimp-skin-antimatter-150.archive::https://aimp.ru/?do=catalog.download&id=150
-	sha256sums = d44b2b4516669b97841c5d74b7e332cbf55b6922c4d6280a70a7aea5b9aa548a
+	sha256sums = SKIP
 
 pkgname = aimp-skin-antimatter
