@@ -1,14 +1,18 @@
 pkgbase = rffmpeg-git
 	pkgdesc = Remote SSH FFmpeg wrapper tool
-	pkgver = r231.a242218
+	pkgver = r251.f54ac84
 	pkgrel = 1
 	url = https://github.com/joshuaboniface/rffmpeg
 	arch = any
-	license = GPLv3
+	license = GPL-3.0-only
 	makedepends = git
 	depends = python
 	depends = python-yaml
-	provides = ffmpeg-wrapper
+	depends = python-click
+	depends = python-psycopg2
+	provides = rffmpeg
+	conflicts = rffmpeg
+	conflicts = rffmpeg-bin
 	source = rffmpeg::git+https://github.com/joshuaboniface/rffmpeg
 	md5sums = SKIP
 
