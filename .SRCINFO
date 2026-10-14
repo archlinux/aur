@@ -1,21 +1,21 @@
 pkgbase = silence-speedup-bin
-	pkgdesc = An electron-based app,speed-up your videos speeding-up (or removing) silences, using FFmpeg.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.0
+	pkgdesc = Shorten lectures, interviews and tutorials by speeding up or cutting the silences. Flutter desktop app with FFmpeg built in.
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://vincenzopadula.altervista.org/silence-speedup/
+	url = https://www.vincenzopadula.it/silence-speedup/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
-	depends = electron34
-	depends = nodejs
-	depends = ffmpeg
-	provides = silence-speedup=2.0.0
+	depends = gtk3
+	depends = at-spi2-core
+	depends = libepoxy
+	provides = silence-speedup=3.0.0
 	conflicts = silence-speedup
 	options = !strip
 	options = !emptydirs
-	source = silence-speedup-2.0.0.zip::https://github.com/padvincenzo/silence-speedup/releases/download/v2.0.0/Silence-SpeedUp-linux-x64.zip
+	source = silence-speedup-3.0.0.tar.gz::https://github.com/padvincenzo/silence-speedup/releases/download/v3.0.0/silence-speedup-3.0.0-linux-x64.tar.gz
 	source = silence-speedup.sh
-	sha256sums = 9d688e579f7c8f05007b7f10aeb9aa31e49fdd74a46fd2c260db4a7ddc6e20b2
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 6e134b04b8d3106a93abac00e8418739234567d73ead6ce8c711d914d4bc4b03
+	sha256sums = f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5
 
 pkgname = silence-speedup-bin
