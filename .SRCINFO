@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mayak-mp140c
-	pkgdesc = AIMP skin: Mayak MP140C 1.71 (by McClaud)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Mayak MP140C v1.71 (by McClaud)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-mayak-mp140c
 	options = !strip
 	options = !debug
 	source = aimp-skin-mayak-mp140c-622.archive::https://aimp.ru/?do=catalog.download&id=622
-	sha256sums = 27e8e52c9ea1b500f8ae07270864d4ff2f4dc1a78ad6ccad178bdcacf78d5935
+	sha256sums = SKIP
 
 pkgname = aimp-skin-mayak-mp140c
