@@ -2,7 +2,7 @@
 
 pkgbase=cugraph
 pkgname=(cugraph python-pylibcugraph python-cugraph)
-pkgver=26.08.00
+pkgver=26.10.00
 pkgrel=1
 pkgdesc="cuGraph - RAPIDS Graph Analytics Library"
 url="https://github.com/rapidsai/cugraph"
@@ -15,11 +15,13 @@ source=(
     "system-lib.patch"
     "missing-include.patch"
     "missing-pkg.patch"
+    "fix-cccl35-tuple-upper-bound.patch"
 )
-sha256sums=('815dcc14edcb2d1a39b6de5d64218697af22e5d512a1ce738b2efe1206f4bff3'
-            '70b1699c7439a9aca6b5987e1f5191ea09f2c202d34315c3004aa27d95678352'
+sha256sums=('403b96373b8150b6229dc18c149621a8d3d14acb9a51367fa6d441b34d4f0fac'
+            'ffd9b9e6d54888ea3ae42381461fe7a8a6f7047c2dff25550d39adaacef1e621'
             'cf9d3bbb9ac0a12c4883059ce23531c3f10886f65c8d2b4559fd7c5193d3940c'
-            '25da2d862c4ceb202e45e5a36d2ce4fa977e45d91757160407c808ac5b6b8054')
+            '4f56e0bb4221923b51497f024905152f8e4009e4f7623d7b064798fb5d9d93e5'
+            '2627ff54c6bedfea19d1eaaa66cfdb6e87962d7eb34a4fa9d28afd91b9f6a102')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
@@ -27,6 +29,7 @@ prepare() {
     patch -p1 "cpp/src/c_api/resource_handle.hpp" < "$srcdir/missing-include.patch"
     patch -p1 "python/pylibcugraph/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
     patch -p1 "python/cugraph/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
+    patch -p1 "cpp/src/sampling/sampling_post_processing_impl.cuh" < "$srcdir/fix-cccl35-tuple-upper-bound.patch"
 }
 
 

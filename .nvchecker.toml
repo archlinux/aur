@@ -1,0 +1,5 @@
+[cugraph]
+source = "github"
+github = "rapidsai/cugraph"
+use_latest_release = true
+prefix = "v"

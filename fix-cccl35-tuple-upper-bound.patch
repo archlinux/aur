@@ -1,0 +1,101 @@
+--- a/cpp/src/sampling/sampling_post_processing_impl.cuh
++++ b/cpp/src/sampling/sampling_post_processing_impl.cuh
+@@ -153,6 +153,41 @@
+   }
+ };
+ 
++// Work around https://github.com/NVIDIA/cccl/issues/7855
++// The vector overload of thrust::upper_bound zips the value iterator with the output iterator
++// internally; the thrust::detail::tuple_of_iterator_references proxy of that zip does not compile
++// with CCCL 3.5 when the values are cuda::std::tuples. Perform one sequential upper_bound per value
++// instead, comparing the tuple elements individually.
++template <typename ExecutionPolicy,
++          typename PairIterator,
++          typename ValueIterator,
++          typename OutputIterator>
++void upper_bound_tuple_values(ExecutionPolicy&& exec,
++                              PairIterator pair_first,
++                              size_t num_pair_elements,
++                              ValueIterator value_first,
++                              size_t num_values,
++                              OutputIterator output_first)
++{
++  thrust::tabulate(
++    exec,
++    output_first,
++    output_first + num_values,
++    [pair_first, num_pair_elements, value_first] __device__(size_t i) {
++      return static_cast<size_t>(
++        thrust::upper_bound(
++          thrust::seq,
++          pair_first,
++          pair_first + num_pair_elements,
++          value_first[i],
++          [] __device__(auto const& lhs, auto const& rhs) {
++            return cuda::std::make_tuple(cuda::std::get<0>(lhs), cuda::std::get<1>(lhs)) <
++                   cuda::std::make_tuple(cuda::std::get<0>(rhs), cuda::std::get<1>(rhs));
++          }) -
++        pair_first);
++    });
++}
++
+ template <typename label_index_t, typename vertex_t, typename vertex_type_t>
+ void check_input_edges(raft::handle_t const& handle,
+                        rmm::device_uvector<vertex_t> const& edgelist_majors,
+@@ -1293,12 +1328,12 @@
+             return cuda::std::make_tuple(static_cast<label_index_t>(i / num_vertex_types),
+                                          static_cast<vertex_type_t>(i % num_vertex_types));
+           }));
+-      thrust::upper_bound(handle.get_thrust_policy(),
+-                          label_type_pair_first,
+-                          label_type_pair_first + renumber_map.size(),
+-                          value_first,
+-                          value_first + (num_labels * num_vertex_types),
+-                          (*renumber_map_label_type_offsets).begin() + 1);
++      upper_bound_tuple_values(handle.get_thrust_policy(),
++                               label_type_pair_first,
++                               renumber_map.size(),
++                               value_first,
++                               num_labels * num_vertex_types,
++                               (*renumber_map_label_type_offsets).begin() + 1);
+     } else {
+       thrust::upper_bound(handle.get_thrust_policy(),
+                           renumber_map_label_indices.begin(),
+@@ -1621,12 +1656,12 @@
+             return cuda::std::make_tuple(static_cast<label_index_t>(i / num_edge_types),
+                                          static_cast<edge_type_t>(i % num_edge_types));
+           }));
+-      thrust::upper_bound(handle.get_thrust_policy(),
+-                          label_type_pair_first,
+-                          label_type_pair_first + renumber_map.size(),
+-                          value_first,
+-                          value_first + (num_labels * num_edge_types),
+-                          (*renumber_map_label_type_offsets).begin() + 1);
++      upper_bound_tuple_values(handle.get_thrust_policy(),
++                               label_type_pair_first,
++                               renumber_map.size(),
++                               value_first,
++                               num_labels * num_edge_types,
++                               (*renumber_map_label_type_offsets).begin() + 1);
+     } else {
+       auto label_first = cuda::make_transform_iterator(
+         tmp_indices.begin(),
+@@ -2911,12 +2946,12 @@
+                 return cuda::std::make_tuple(static_cast<label_index_t>(i / num_hops),
+                                              static_cast<int32_t>(i % num_hops));
+               }));
+-          thrust::upper_bound(handle.get_thrust_policy(),
+-                              pair_first,
+-                              pair_first + (*compressed_label_indices).size(),
+-                              value_pair_first,
+-                              value_pair_first + (num_labels * num_hops),
+-                              offset_array_offsets.begin() + 1);
++          upper_bound_tuple_values(handle.get_thrust_policy(),
++                                   pair_first,
++                                   (*compressed_label_indices).size(),
++                                   value_pair_first,
++                                   num_labels * num_hops,
++                                   offset_array_offsets.begin() + 1);
+         } else {
+           thrust::upper_bound(
+             handle.get_thrust_policy(),
