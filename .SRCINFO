@@ -1,6 +1,6 @@
 pkgbase = fcitx5-misstype-bin
 	pkgdesc = Offline, fuzzy Zhuyin input method for fcitx5 (prebuilt)
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/Yukaii/misstype
 	arch = x86_64
@@ -17,20 +17,20 @@ pkgbase = fcitx5-misstype-bin
 	optdepends = gtk4: misstype-dictionary-editor
 	optdepends = fcitx5-gtk: GTK application integration
 	optdepends = fcitx5-qt: Qt application integration
-	provides = fcitx5-misstype=0.5.4
+	provides = fcitx5-misstype=0.5.5
 	conflicts = fcitx5-misstype
 	conflicts = fcitx5-misstype-git
 	conflicts = fcitx5-mistype-git
 	conflicts = ibus-misstype
 	conflicts = ibus-misstype-git
 	conflicts = ibus-misstype-bin
-	noextract = Misstype-0.5.4-arch-x86_64.pkg.tar.zst
-	noextract = Misstype-0.5.4-arch-aarch64.pkg.tar.zst
+	noextract = Misstype-0.5.5-arch-x86_64.pkg.tar.zst
+	noextract = Misstype-0.5.5-arch-aarch64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Yukaii/misstype/releases/download/v0.5.4/Misstype-0.5.4-arch-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = d67b8299bca98af381a8caaeb18218827510b647169b323b3e03c370d56692fb
-	source_aarch64 = https://github.com/Yukaii/misstype/releases/download/v0.5.4/Misstype-0.5.4-arch-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = f296f522df3277f0aaba957bed9b8f5b568feec27b4517ded8eb057936fe3919
+	source_x86_64 = https://github.com/Yukaii/misstype/releases/download/v0.5.5/Misstype-0.5.5-arch-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 1d118b4777677fba2d10d03a60c9c90474a91738df3295ea0797ffa27d6f510d
+	source_aarch64 = https://github.com/Yukaii/misstype/releases/download/v0.5.5/Misstype-0.5.5-arch-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = c40dd41f0ccd4e0264402061fabc19a73c8aa0c2c29800c70de7a042ef3d0a21
 
 pkgname = fcitx5-misstype-bin
