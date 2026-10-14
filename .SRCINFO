@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-origami
-	pkgdesc = AIMP skin: Origami 1.0 (by Arindel)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Origami 2012-10-25 (by Arindel)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-origami
 	options = !strip
 	options = !debug
 	source = aimp-skin-origami-331.archive::https://aimp.ru/?do=catalog.download&id=331
-	sha256sums = 80b12fdd60bb9bff77bf838c7e12114910c451dc47026e074971a48b2214c1c0
+	sha256sums = SKIP
 
 pkgname = aimp-skin-origami
