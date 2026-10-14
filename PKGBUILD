@@ -6,7 +6,7 @@
 pkgname='fhtagn'
 pkgdesc='Literate testing for command-line programs'
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 url='https://github.com/xonixx/fhtagn'
 changelog="$pkgname.changelog"
 arch=('any')
