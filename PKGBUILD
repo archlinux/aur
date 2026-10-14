@@ -3,8 +3,8 @@
 
 pkgname='aimp-skin-web-light'
 pkgdesc='AIMP skin: Web Light 1.0.1 (by orishaka)'
-pkgver=20261001
-pkgrel=2
+pkgver=20261014
+pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -16,7 +16,7 @@ _skinsdir='/opt/aimp/Skins'
 
 source=('aimp-skin-web-light-323.archive::https://aimp.ru/?do=catalog.download&id=323')
 noextract=("${source[@]%%::*}")
-sha256sums=('af414405b85a35f1f7d276e9c3e0c2e66bb03a799a9a1f245b6061d520795479')
+sha256sums=('SKIP')
 
 package() {
   local dest="$pkgdir$_skinsdir"

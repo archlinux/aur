@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-web-light
 	pkgdesc = AIMP skin: Web Light 1.0.1 (by orishaka)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-web-light
 	options = !strip
 	options = !debug
 	source = aimp-skin-web-light-323.archive::https://aimp.ru/?do=catalog.download&id=323
-	sha256sums = af414405b85a35f1f7d276e9c3e0c2e66bb03a799a9a1f245b6061d520795479
+	sha256sums = SKIP
 
 pkgname = aimp-skin-web-light
