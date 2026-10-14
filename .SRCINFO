@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-sirius-rem-228s
-	pkgdesc = AIMP skin: Сириус РЭМ-228С 1.04 (by McClaud)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Сириус РЭМ-228С v1.04 (by McClaud)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-sirius-rem-228s
 	options = !strip
 	options = !debug
 	source = aimp-skin-sirius-rem-228s-1278.archive::https://aimp.ru/?do=catalog.download&id=1278
-	sha256sums = 27cb99417eda09c95dccf48901f56f3a3072d451f418c78233004d23440d7cff
+	sha256sums = SKIP
 
 pkgname = aimp-skin-sirius-rem-228s
