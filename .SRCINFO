@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-euphoria-162
-	pkgdesc = AIMP skin: Euphoria 3.01 (by GR-X)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Euphoria v3.01 (by GR-X)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-euphoria-162
 	options = !strip
 	options = !debug
 	source = aimp-skin-euphoria-162-162.archive::https://aimp.ru/?do=catalog.download&id=162
-	sha256sums = 67d4421097b6088546c70c0012d2e011060e9b9c9cf4be90adc6356533ae6e49
+	sha256sums = SKIP
 
 pkgname = aimp-skin-euphoria-162
