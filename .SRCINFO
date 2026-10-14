@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-dekor-blue
-	pkgdesc = AIMP skin: Dekor Blue 1.0 (by varlesh)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Dekor Blue 2013-12-30 (by varlesh)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-dekor-blue
 	options = !strip
 	options = !debug
 	source = aimp-skin-dekor-blue-497.archive::https://aimp.ru/?do=catalog.download&id=497
-	sha256sums = 64119d1dba73a03ca77f6cc032dff37eac553900c0f05329b9ae0e35b9dbd0d7
+	sha256sums = SKIP
 
 pkgname = aimp-skin-dekor-blue
