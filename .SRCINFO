@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-bloom-daylight
-	pkgdesc = AIMP skin: Bloom - Daylight 1.0 (by Arindel)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Bloom - Daylight 2013-10-16 (by Arindel)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-bloom-daylight
 	options = !strip
 	options = !debug
 	source = aimp-skin-bloom-daylight-402.archive::https://aimp.ru/?do=catalog.download&id=402
-	sha256sums = 7201481ae9143b74d909d5863a227f4eeb8782edb93bf377b198055ba95fb05c
+	sha256sums = SKIP
 
 pkgname = aimp-skin-bloom-daylight
