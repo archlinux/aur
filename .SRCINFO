@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-telos
-	pkgdesc = AIMP skin: Telos 1.0 (by HyperOne)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Telos 2020-08-27 (by HyperOne)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-telos
 	options = !strip
 	options = !debug
 	source = aimp-skin-telos-953.archive::https://aimp.ru/?do=catalog.download&id=953
-	sha256sums = 1a91a6dab0bdfde95976a44821025816872755d115ebc9ad555352ed07468c84
+	sha256sums = SKIP
 
 pkgname = aimp-skin-telos
