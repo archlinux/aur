@@ -1,0 +1,15 @@
+pkgbase = cpyref
+	pkgdesc = Copy exact bytes once and paste them by a short reference, for AI agents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/cpyref
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = cpyref-0.1.0.tar.gz::https://static.crates.io/crates/cpyref/cpyref-0.1.0.crate
+	sha256sums = b4ac6ff1215513c665e72f21af7ef4af38cbdd219b17eb2b60b985d8d199be4d
+
+pkgname = cpyref
