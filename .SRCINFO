@@ -1,0 +1,26 @@
+pkgbase = shottino-bin
+	pkgdesc = Terminal client and IRC bridge for Grappa with an ncurses interface (official binary)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/vjt/grappa-irc
+	arch = x86_64
+	license = MIT
+	depends = ca-certificates
+	depends = glibc
+	depends = ncurses
+	depends = openssl
+	optdepends = grappa-bin: run a local Grappa server
+	optdepends = ffmpeg: inline image, video and GIF previews
+	optdepends = chafa: enhanced terminal image rendering
+	optdepends = xdg-utils: open links in external applications
+	provides = shottino=0.3.1
+	conflicts = shottino
+	noextract = shottino-bin-v1.5.14-shottino-0.3.1-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = shottino-bin-v1.5.14-shottino-0.3.1-1-x86_64.pkg.tar.zst::https://github.com/vjt/grappa-irc/releases/download/v1.5.14/shottino-0.3.1-1-x86_64.pkg.tar.zst
+	source = README.md
+	sha256sums = 399d1eebd4c8a9cd2b021f234314bb8d0269c3b4bbcf2c1ad0719d660185b7ae
+	sha256sums = 9e10e292cb2f14c8bb99fcbf5c65c20b7309d6ee8655a3a8d3212c38a1fdb8e6
+
+pkgname = shottino-bin
