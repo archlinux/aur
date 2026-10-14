@@ -1,7 +1,7 @@
 pkgbase = deepin-reader
 	pkgdesc = Document viewer for PDF, DjVu, DOCX and XPS files
 	pkgver = 6.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/deepin-reader
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -28,6 +28,7 @@ pkgbase = deepin-reader
 	depends = libarchive
 	depends = libchardet
 	depends = libcups
+	depends = librofd-ffi
 	depends = libgxps
 	depends = libjpeg-turbo
 	depends = lcms2

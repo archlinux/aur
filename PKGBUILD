@@ -2,7 +2,7 @@
 
 pkgname=deepin-reader
 pkgver=6.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Document viewer for PDF, DjVu, DOCX and XPS files'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/deepin-reader'
@@ -23,6 +23,7 @@ depends=(
   libchardet
   # loaded with dlopen() by deepin-reader-batchprint
   libcups
+  librofd-ffi
   libgxps
   libjpeg-turbo
   lcms2
@@ -62,14 +63,12 @@ prepare() {
 build() {
   # GCC 14 no longer includes <cstdint> transitively; the bundled PDFium headers rely on it
   CXXFLAGS+=" -include cstdint"
-  # librofd-ffi, required for OFD documents, is not packaged in Arch
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=None \
     -DVERSION="$pkgver" \
-    -DAPP_VERSION="$pkgver" \
-    -DOFD_SUPPORT=OFF
+    -DAPP_VERSION="$pkgver"
   cmake --build build
 }
 
