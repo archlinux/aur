@@ -3,12 +3,16 @@
 # Update pkgver + sha256sums (run: updpkgsums) for each new release.
 
 pkgname=paintfe
-pkgver=1.3.7
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Fast, GPU-accelerated raster image editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kylejckson/PaintFE"
 license=('MIT')
+# The Paint.NET compatibility host is hashed after `dotnet publish`.  makepkg's
+# default stripping would change that executable afterwards and invalidate its
+# adjacent .sha256 file at runtime.
+options=('!strip')
 depends=(
     'gcc-libs'
     'glibc'
@@ -33,7 +37,7 @@ makedepends=(
     'dotnet-sdk-8.0'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('31f38b349be1f8a1c9ee5eb21d0553258a4561abc62d934c0e9f8aa2319d7102')
+sha256sums=('702edacdb4b82943d70a68fe035af67dd88d946d473b9c2460f8b76b302c270d')
 
 prepare() {
     cd "PaintFE-$pkgver"
