@@ -32,4 +32,4 @@ pkgbase = bbrave-bin
 	source_aarch64 = brave-bin-1.97.56-aarch64.zip::https://github.com/brave/brave-browser/releases/download/v1.97.56/brave-browser-1.97.56-linux-arm64.zip
 	sha256sums_aarch64 = f18823bfe8bf626a7412a2cc142ba851f991665ca31af8d750f80dbb8371f984
 
-pkgname = bbrave-bin-bin-bin-bin-bin-bin-bin
+pkgname = bbrave-bin
