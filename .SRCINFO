@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-toloka
-	pkgdesc = AIMP skin: Toloka 1.0 (by Тень)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Toloka 2020-12-30 (by Тень)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-toloka
 	options = !strip
 	options = !debug
 	source = aimp-skin-toloka-1169.archive::https://aimp.ru/?do=catalog.download&id=1169
-	sha256sums = cafc75e0934546b9de72d93a9f174c3422585f5dc278e0c55f6f3de322806568
+	sha256sums = SKIP
 
 pkgname = aimp-skin-toloka
