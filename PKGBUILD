@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#commit=da172bf8e3ee1bfe18d2feec6bbde2d123adb2f6")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=e49340a71d87ad0cac7b6ab6184463158cebb69b")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -132,6 +132,24 @@ package() {
       install -Dm644 "$entry" "$pkgdir/etc/xdg/$base"
     fi
   done
+
+  # btop searches its package-wide themes under /usr/share/btop/themes; it
+  # does not use /etc/xdg/btop/themes as a system theme directory. Keep the
+  # staged XDG copy for per-user materialization and install a recognized
+  # factory fallback for package-only systems.
+  install -Dm644 "$stage/.config/btop/themes/Hornero Dynamic.theme" \
+    "$pkgdir/usr/share/btop/themes/Hornero Dynamic.theme"
+
+  # btop and Cava read user configuration rather than /etc/xdg defaults.
+  # Seed new accounts with the curated configs; Cava resolves themes only
+  # from its user config directory, while btop also has the system fallback
+  # installed above.
+  install -Dm644 "$stage/.config/btop/btop.conf" \
+    "$pkgdir/etc/skel/.config/btop/btop.conf"
+  install -Dm644 "$stage/.config/cava/config" \
+    "$pkgdir/etc/skel/.config/cava/config"
+  install -Dm644 "$stage/.config/cava/themes/Hornero Dynamic" \
+    "$pkgdir/etc/skel/.config/cava/themes/Hornero Dynamic"
 
   # Niri reads /etc/niri/config.kdl as its system fallback after the user's
   # XDG config. Keep one source file: materialize.sh also places it in the
