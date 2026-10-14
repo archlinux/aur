@@ -1,0 +1,47 @@
+# shellcheck shell=bash
+post_install() {
+    cat <<'EOF'
+Mimic-Node installed. Services are not started automatically.
+  sudo systemctl enable --now mimic-node-mount.service
+  sudo mimictl setup
+  sudo mimictl check && sudo mimictl apply
+  sudo systemctl enable --now sing-box.service
+Optional automation, after setup succeeds:
+  sudo systemctl enable --now mimic-node.timer mimic-node.path
+Existing sing-box configuration takes priority over package defaults.
+Keys and users remain in /var/lib/mimic-node when the package is removed.
+EOF
+    _warn_legacy_binary
+}
+
+post_upgrade() {
+    cat <<'EOF'
+Mimic-Node upgraded. Existing keys and users were preserved.
+Review changes with `sudo mimictl diff` before merging new defaults.
+Use `sudo mimictl diagnose --verbose` to inspect the current node.
+Local /etc/systemd/system overrides take priority over new packaged units;
+review `systemctl cat mimic-node.path mimic-node-deploy.service` if automation
+was configured by the old standalone installer.
+EOF
+    _warn_legacy_binary
+}
+
+_warn_legacy_binary() {
+    if [ -x /usr/local/bin/mimictl ]; then
+        printf '%s\n' 'Review /usr/local/bin/mimictl from the old installer; it may shadow /usr/bin/mimictl.'
+    fi
+}
+
+pre_remove() {
+    if [ -d /run/systemd/system ]; then
+        # Stop watchers first; then stop maintenance and unmount before removing
+        # its helper. The mount dependency also stops sing-box safely.
+        systemctl stop mimic-node.path mimic-node.timer || return 1
+        systemctl stop mimic-node.service mimic-node-deploy.service mimic-node-mount.service || return 1
+        systemctl disable mimic-node.path mimic-node.timer mimic-node-mount.service 2>/dev/null || true
+    fi
+}
+
+post_remove() {
+    printf '%s\n' 'Mimic-Node removed. /var/lib/mimic-node and original sing-box configuration were preserved.'
+}
