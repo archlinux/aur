@@ -9,7 +9,7 @@
 # branch, and pkgver() below derives the version from git, so no checksums or
 # `updpkgsums` step is needed.
 pkgname=deadband-git
-pkgver=r157.07212d3
+pkgver=r170.02c5810
 pkgrel=1
 pkgdesc="Configure game controller lighting, sticks, triggers and buttons on Linux"
 arch=('any')
