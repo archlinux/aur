@@ -1,6 +1,6 @@
 pkgbase = ente-auth-bin
 	pkgdesc = Ente two-factor authenticator.
-	pkgver = 4.4.24
+	pkgver = 4.4.25
 	pkgrel = 1
 	url = https://ente.io/auth
 	arch = x86_64
@@ -10,10 +10,12 @@ pkgbase = ente-auth-bin
 	depends = org.freedesktop.secrets
 	depends = xdg-user-dirs
 	depends = polkit
-	optdepends = zenity: Required for importing files
+	depends = ayatana-ido
+	depends = libayatana-indicator
 	provides = ente-auth
 	conflicts = ente-auth
-	source = https://github.com/ente-io/ente/releases/download/auth-v4.4.24/ente-auth-v4.4.24-x86_64.deb
-	sha256sums = b6ea5c0f298226e9feaf1ebb98b1884ca025641e35c2b454f15b3356355a1f31
+	options = !debug
+	source = https://github.com/ente-io/ente/releases/download/auth-v4.4.25/ente-auth-v4.4.25-x86_64.deb
+	sha256sums = 00ff315f040ee69dd1100d74ecf4ddf0fabd246c796d17c6170dc84172ca38af
 
 pkgname = ente-auth-bin
