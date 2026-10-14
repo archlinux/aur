@@ -3,7 +3,7 @@
 import { app } from "electron/main";
 import * as path from "node:path";
 import * as fs from "node:fs";
-const name = "vscodium-electron";
+const name = "@name@";
 // Change command name.
 const fd = fs.openSync("/proc/self/comm", fs.constants.O_WRONLY);
 fs.writeSync(fd, name);
@@ -11,7 +11,7 @@ fs.closeSync(fd);
 // Remove all extra prefix arguments
 process.argv.splice(
   0,
-  process.argv.findIndex((arg) => arg.endsWith("/vscodium-electron.js")),
+  process.argv.findIndex((arg) => arg.endsWith("/@name@.js")),
 );
 // Set application paths.
 const appPath = import.meta.dirname;
