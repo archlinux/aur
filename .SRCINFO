@@ -1,13 +1,13 @@
 pkgbase = lice-git
 	pkgdesc = inject a license file into your git repo
-	pkgver = r11.695f15b
+	pkgver = r22.0d19cdb
 	pkgrel = 1
 	url = https://gitlab.com/5unekku/lice
-	arch = x86_64
+	arch = any
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = rust
-	source = lice-git::git+https://gitlab.com/5unekku/lice
+	source = lice-git::git+https://gitlab.com/5unekku/lice.git
 	sha256sums = SKIP
 
 pkgname = lice-git
