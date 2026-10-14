@@ -1,0 +1,44 @@
+pkgbase = mechrevo-drivers-dkms-git
+	pkgdesc = Unofficial MECHREVO laptop platform drivers based on TUXEDO drivers (DKMS, git)
+	pkgver = 4.24.0.r2.g5dce9a2
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/mechrevo-drivers
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	optdepends = linux-headers: build modules for the Arch Linux kernel
+	optdepends = linux-lts-headers: build modules for the LTS kernel
+	optdepends = linux-zen-headers: build modules for the Zen kernel
+	optdepends = linux-hardened-headers: build modules for the hardened kernel
+	optdepends = udev-hid-bpf: keyboard fixes for TUXEDO Sirius 16 Gen1/2
+	provides = mechrevo-drivers-dkms=4.24.0.r2.g5dce9a2
+	provides = tuxedo-drivers-dkms=4.24.0.r2.g5dce9a2
+	provides = tuxedo-keyboard
+	provides = tuxedo-keyboard-ite
+	provides = tuxedo-io
+	provides = clevo-wmi
+	provides = clevo-acpi
+	provides = uniwill-wmi
+	provides = ite_8291
+	provides = ite_8291_lb
+	provides = ite_8297
+	provides = ite_829x
+	conflicts = mechrevo-drivers-dkms
+	conflicts = tuxedo-drivers
+	conflicts = tuxedo-drivers-git
+	conflicts = tuxedo-drivers-dkms
+	conflicts = tuxedo-drivers-dkms-git
+	conflicts = tuxedo-keyboard-dkms
+	conflicts = tuxedo-keyboard-dkms-git
+	conflicts = tuxedo-keyboard-ite-dkms
+	conflicts = tuxedo-keyboard-ite-dkms-git
+	options = !strip
+	options = !debug
+	options = !lto
+	source = mechrevo-drivers::git+https://github.com/LIghtJUNction/mechrevo-drivers.git#branch=main
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 1e04086ef9bb94ec15878464b6594f7507715c081c4c114e56b7d46731fd7ea6
+
+pkgname = mechrevo-drivers-dkms-git
