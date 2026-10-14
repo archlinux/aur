@@ -7,7 +7,7 @@
 # of that is reproduced here.
 
 pkgname=claude-desktop
-pkgver=2.31226.1
+pkgver=2.37337.1
 pkgrel=1
 pkgdesc="Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code"
 arch=('x86_64' 'aarch64')
@@ -77,6 +77,7 @@ optdepends_aarch64=('qemu-system-aarch64: run Cowork tasks in a local virtual ma
 optdepends=('gnome-keyring: credential storage via Secret Service (GNOME)'
             'kwallet: credential storage (KDE Plasma)'
             'libayatana-appindicator: system tray icon'
+            'openssh: system SSH client for remote sessions'
             'xdg-desktop-portal-gtk: portal backend for GTK desktops'
             'xdg-desktop-portal-kde: portal backend for KDE Plasma')
 
@@ -94,8 +95,8 @@ source=("${pkgname}.sh")
 source_x86_64=("${_baseurl}/${pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_baseurl}/${pkgname}_${pkgver}_arm64.deb")
 sha256sums=('2b50c019e70b263750255c446bab8db6ab1e50c7396d37ef6547cf118131da65')
-sha256sums_x86_64=('5a9bebdfcb1df6ce38767b373f3a7fabf77156a2ddd8a3f5d04961da5bde305e')
-sha256sums_aarch64=('d2f57a38ffc73cfda660f8772a5f8bada05e6d74399948a268c6f5d53593ee8f')
+sha256sums_x86_64=('41745b0914f0ff51631a1ff1bb403b836bf5c995845cca6742dd39bca3a2da14')
+sha256sums_aarch64=('ad6f1da2a114215d2a73c53c1a99681f9c0bbe148b92f906d635b2efed835cdc')
 
 package() {
   # A .deb is an ar archive, which makepkg unpacks like any other source:
