@@ -1,0 +1,83 @@
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -128,9 +128,10 @@
+   INSTALL_EXPORT_SET rapidsmpf-exports
+ )
+ 
+-include(../cmake/thirdparty/get_nvtx.cmake)
+-include(../cmake/thirdparty/get_rmm.cmake)
+-include(../cmake/thirdparty/get_cuco.cmake)
++find_package(rapids_logger REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
+ include(../cmake/thirdparty/get_cucascade.cmake)
+ 
+ if(RAPIDSMPF_HAVE_UCXX)
+--- a/cmake/thirdparty/get_cucascade.cmake
++++ b/cmake/thirdparty/get_cucascade.cmake
+@@ -9,20 +9,18 @@
+ #
+ # We build cuCascade as a static library to avoid packaging issues with wheels.
+ function(find_and_configure_cucascade)
+-  rapids_cpm_find(
+-    cuCascade 0.1.0
+-    GLOBAL_TARGETS cuCascade::cucascade_topology_discovery
+-    CPM_ARGS
+-    GIT_REPOSITORY https://github.com/NVIDIA/cuCascade.git
+-    GIT_TAG d515bb0536b8766bae61ec60a530df394467af64
+-    OPTIONS "CUCASCADE_BUILD_TESTS OFF"
+-            "CUCASCADE_BUILD_BENCHMARKS OFF"
+-            "CUCASCADE_BUILD_SHARED_LIBS OFF"
+-            "CUCASCADE_BUILD_STATIC_LIBS ON"
+-            "CUCASCADE_WARNINGS_AS_ERRORS OFF"
+-            "CUCASCADE_TOPOLOGY_ONLY ON"
+-    EXCLUDE_FROM_ALL ON
++  set(CUCASCADE_BUILD_TESTS OFF CACHE BOOL "" FORCE)
++  set(CUCASCADE_BUILD_BENCHMARKS OFF CACHE BOOL "" FORCE)
++  set(CUCASCADE_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
++  set(CUCASCADE_BUILD_STATIC_LIBS ON CACHE BOOL "" FORCE)
++  set(CUCASCADE_WARNINGS_AS_ERRORS OFF CACHE BOOL "" FORCE)
++  set(CUCASCADE_TOPOLOGY_ONLY ON CACHE BOOL "" FORCE)
++  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/cuCascade" "${CMAKE_BINARY_DIR}/cuCascade"
++                   EXCLUDE_FROM_ALL
+   )
++  if(TARGET cucascade_topology_discovery_static)
++    set_property(TARGET cucascade_topology_discovery_static PROPERTY SYSTEM TRUE)
++  endif()
+ endfunction()
+ 
+ find_and_configure_cucascade()
+--- a/cmake/thirdparty/get_libcoro.cmake
++++ b/cmake/thirdparty/get_libcoro.cmake
+@@ -7,8 +7,28 @@
+ 
+ # This function finds libcoro and sets any additional necessary environment variables.
+ function(find_and_configure_libcoro)
+-  include(${rapids-cmake-dir}/cpm/libcoro.cmake)
+-  rapids_cpm_libcoro(BUILD_EXPORT_SET rapidsmpf-exports BUILD_STATIC)
++  set(LIBCORO_BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
++  set(LIBCORO_EXTERNAL_DEPENDENCIES OFF CACHE BOOL "" FORCE)
++  set(LIBCORO_FEATURE_NETWORKING OFF CACHE BOOL "" FORCE)
++  set(LIBCORO_FEATURE_TLS OFF CACHE BOOL "" FORCE)
++  set(LIBCORO_BUILD_TESTS OFF CACHE BOOL "" FORCE)
++  set(LIBCORO_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
++  set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++  set(_rapidsmpf_libcoro_orig_build_shared_libs ${BUILD_SHARED_LIBS})
++  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/libcoro" "${CMAKE_BINARY_DIR}/libcoro"
++                   EXCLUDE_FROM_ALL
++  )
++  set(BUILD_SHARED_LIBS
++      ${_rapidsmpf_libcoro_orig_build_shared_libs}
++      CACHE INTERNAL ""
++      FORCE
++  )
++  if(NOT TARGET libcoro::libcoro)
++    add_library(libcoro::libcoro ALIAS libcoro)
++  endif()
++  if(TARGET libcoro)
++    set_property(TARGET libcoro PROPERTY SYSTEM TRUE)
++  endif()
+ endfunction()
+ 
+ find_and_configure_libcoro()

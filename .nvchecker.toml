@@ -1,0 +1,5 @@
+[rapidsmpf]
+source = "github"
+github = "rapidsai/rapidsmpf"
+use_latest_release = true
+prefix = "v"
