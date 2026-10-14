@@ -3,7 +3,7 @@
 
 pkgname=coinomi-wallet-bin
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Coinomi desktop wallet. Securely store, manage and exchange Bitcoin, Ethereum, and more than 500 other blockchain assets."
 arch=(x86_64)
 url="https://coinomi.com"
@@ -11,7 +11,7 @@ license=('unknown')
 depends=(java-runtime libxss gtk3)
 source=("https://storage.coinomi.com/binaries/desktop/coinomi-wallet-$pkgver-linux64.tar.gz"
 	"coinomi.png")
-sha256sums=('8b0b7b3d2c1799e664ad9f164672d9a4e4b983bf1c9ee162fd3a786fcabf5d2f'
+sha256sums=('f71416cee11c397b56609aa7b6a8483c0b2090f9065911932b7c359be80772fd'
             '8b390909072edf85b195dbb73b5cceb52ae9f19093cce5ae313827590ae9d576')
 #stupid server 502s if no user-agent
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
