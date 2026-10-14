@@ -1,0 +1,5 @@
+# The wireview group may edit wireviewd's settings (wireviewctl config set).
+# The package ships them root:root; the systemd-tmpfiles pacman hook applies
+# this after the sysusers hook has created the group, on install and upgrade.
+d /etc/wireview 0750 root wireview -
+z /etc/wireview/config 0660 root wireview -

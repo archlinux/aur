@@ -1,16 +1,18 @@
 pkgbase = wireview-hwmon
 	pkgdesc = WireView Pro II hwmon daemon, CLI and DKMS kernel module
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/emaspa/wireview-hwmon
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = gcc
 	options = !debug
-	source = wireview-hwmon-1.7.2.tar.gz::https://github.com/emaspa/wireview-hwmon/archive/refs/tags/v1.7.2.tar.gz
+	source = wireview-hwmon-1.8.0.tar.gz::https://github.com/emaspa/wireview-hwmon/archive/refs/tags/v1.8.0.tar.gz
 	source = wireview-hwmon.sysusers
-	sha256sums = dd7c705bbb099823a7987613da193e6c1cfafe8deeefeea23856d52ae8c7bd7f
+	source = wireview-hwmon.tmpfiles
+	sha256sums = bcc2b0b206d5570dd38b624ec85885952c0cd8067f6554157e66f9b55c1589e0
 	sha256sums = dec7ef8e8cc0bcfb7a692a0484b9df3fbd8909f89ee63658f1c3f77ab20d7660
+	sha256sums = 01ca092a9409307d362c4edbe4421d21837b02f7de443cc34c053284952407cf
 
 pkgname = wireview-hwmon
 	pkgdesc = WireView Pro II hwmon daemon and CLI (userspace)
