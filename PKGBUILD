@@ -1,6 +1,6 @@
 # Maintainer: MaksSuRitik <https://github.com/MaksSuRitik>
 pkgname=hyprwallselector-git
-pkgver=0.1.0.r9.g802ae0d
+pkgver=0.1.0.r10.gec57dd4
 pkgrel=1
 pkgdesc='Independent image and video wallpaper carousel for Hyprland'
 arch=('x86_64' 'aarch64')
