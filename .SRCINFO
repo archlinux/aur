@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimware-beta
-	pkgdesc = AIMP skin: AIMWARE BETA 1.4 (by w7rus)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: AIMWARE BETA v1.4 (by w7rus)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aimware-beta
 	options = !strip
 	options = !debug
 	source = aimp-skin-aimware-beta-806.archive::https://aimp.ru/?do=catalog.download&id=806
-	sha256sums = b96a9acff2cf407350b3a870a8851f3f7504ef9966ab49d40d6af2fbfff76911
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aimware-beta
