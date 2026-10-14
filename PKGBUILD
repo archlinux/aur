@@ -2,12 +2,17 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sdrtop-git
 pkgver=0.6.6.r25.g7ee397f
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal monitor for SDR hardware - written in Rust."
 arch=("x86_64")
 url="https://github.com/musithang/sdrtop"
 license=("GPL-3.0")
 depends=("gcc-libs")
+optdepends=(
+    'libhackrf: HackRF support'
+    'rtl-sdr: RTL-SDR support'
+    'soapysdr: SoapySDR device support'
+)
 makedepends=("cargo" "git")
 provides=("sdrtop")
 conflicts=("sdrtop")

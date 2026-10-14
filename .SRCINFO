@@ -1,13 +1,16 @@
 pkgbase = sdrtop-git
 	pkgdesc = Terminal monitor for SDR hardware - written in Rust.
 	pkgver = 0.6.6.r25.g7ee397f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/musithang/sdrtop
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	optdepends = libhackrf: HackRF support
+	optdepends = rtl-sdr: RTL-SDR support
+	optdepends = soapysdr: SoapySDR device support
 	provides = sdrtop
 	conflicts = sdrtop
 	options = !lto
