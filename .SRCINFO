@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-albedo
-	pkgdesc = AIMP skin: Albedo 1.0 (by -=Lee=-)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Albedo 2014-11-05 (by -=Lee=-)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-albedo
 	options = !strip
 	options = !debug
 	source = aimp-skin-albedo-620.archive::https://aimp.ru/?do=catalog.download&id=620
-	sha256sums = 0c99d293e4ea8b660e14f8945f6904353838c161d17d1e7479d5b91fc2d47cb2
+	sha256sums = SKIP
 
 pkgname = aimp-skin-albedo
