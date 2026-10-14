@@ -3,16 +3,22 @@ pkgname=scramblery-bin
 _pkgname=Scramblery
 pkgver=4.2.0
 pkgrel=1
-pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area."
+pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.Common version."
 arch=('x86_64')
 url="https://github.com/altunenes/scramblery"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${pkgname%-bin}-cuda"
+    "${pkgname%-bin}-openvino"
+    "${pkgname%-bin}-webgpu"
+)
 depends=(
     'gstreamer'
     'gst-plugins-base-libs'
     'fontconfig'
+    'gtk3'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
