@@ -1,6 +1,6 @@
 pkgbase = proton-meet-bin
 	pkgdesc = Secure, end-to-end encrypted video conferencing
-	pkgver = 1.0.12
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://proton.me/meet
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = proton-meet-bin
 	depends = xdg-utils
 	provides = proton-meet
 	conflicts = proton-meet
-	source = proton-meet-1.0.12.deb::https://proton.me/download/meet/linux/1.0.12/ProtonMeet-desktop.deb
+	source = proton-meet-1.0.14.deb::https://proton.me/download/meet/linux/1.0.14/ProtonMeet-desktop.deb
 	source = proton-meet.sh
-	sha512sums = fee34ed3772176f8f984e867040c18cbe5a30840bb79f18bbdec886473da5f6ed57956bef806468f37cd4e5a759ca9bafb707de906a46793750f320f0508d086
+	sha512sums = 883f0375567275b252e202c4a4e4114a0ac44a61fab62058dd8e1eb6f5e55be1b8db50ff675ac4cecbd5045390ba7b0c4c43960105e39a695cfec2a9de73ff52
 	sha512sums = 558644ebe5a0fb43fead451e93b65f4006108ea76fb5241b591fe06951f9d1be742ef6fbac307d86020d132eeee3a2c182604351144f7c750fe4f275c876ae9b
-	b2sums = 58d57d943c10aaef96643fd5e03bdee6a7b11a3f5eecf8613e29563d612e836233eff5ea0ba634c064cb9c1799f98224edb8632ba073643215765911fc3b55e8
+	b2sums = 63e875d1fe73a91bd51cc44539ce277f8d174ad26b51d25403b865cefe06ce93e41786582974f5674693372f4a798ddd66d9087ef1d1edc0ac39b5d7c32fe3ce
 	b2sums = cc16def864fd2e9134c194b473db94b0588871af895803fe4151ab7b715f66bbbb695a0964c03577da12b72397230626dabf186885cd206de412c8eac3a47e4a
 
 pkgname = proton-meet-bin
