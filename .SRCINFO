@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-hm-blue-steal
-	pkgdesc = AIMP skin: hm_blue_Steal 1.0 (by flon)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: hm_blue_Steal 2013-09-10 (by flon)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-hm-blue-steal
 	options = !strip
 	options = !debug
 	source = aimp-skin-hm-blue-steal-378.archive::https://aimp.ru/?do=catalog.download&id=378
-	sha256sums = 9c9ae0895a0598dc697b0b678b593d898148813628580883e9c24782ce5f3d0f
+	sha256sums = SKIP
 
 pkgname = aimp-skin-hm-blue-steal
