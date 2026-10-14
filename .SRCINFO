@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-tunes
-	pkgdesc = AIMP skin: Tunes 1.1 (by Braindefender)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Tunes v1.1 (by Braindefender)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-tunes
 	options = !strip
 	options = !debug
 	source = aimp-skin-tunes-733.archive::https://aimp.ru/?do=catalog.download&id=733
-	sha256sums = f0c908ff6a23322e0f29c36951cdd00d4d5f84cf98e3acd9a03840487fa59e4e
+	sha256sums = SKIP
 
 pkgname = aimp-skin-tunes
