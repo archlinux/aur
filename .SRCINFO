@@ -1,6 +1,6 @@
 pkgbase = figcraft
 	pkgdesc = vibe coded clean-room reimplementation of Figma Design
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/figcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = figcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/figcraft/archive/refs/tags/v0.5.1/figcraft-0.5.1.tar.gz
-	sha256sums = 5b4ca4f669d3980130e3e51da50836986bd550c7e9c04d1d5b0a0c5b19966b7d
+	source = https://github.com/storytold/figcraft/archive/refs/tags/v0.6.0/figcraft-0.6.0.tar.gz
+	sha256sums = 130421efbf4e824f55f6b71b5119a817a9e10effae582e5d98944fe79c7e4d2b
 
 pkgname = figcraft
 	depends = glibc
