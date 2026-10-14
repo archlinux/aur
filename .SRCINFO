@@ -1,7 +1,7 @@
 pkgbase = hermes-agent-bin
 	pkgdesc = Locally-run AI agent with tool use, web browsing, and automation (prebuilt binary, CI-built)
 	pkgver = 0.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
 	license = MIT
@@ -33,10 +33,10 @@ pkgbase = hermes-agent-bin
 	optdepends = brave-bin: system browser for the browser tools (AUR)
 	provides = hermes-agent
 	conflicts = hermes-agent
-	noextract = hermes-agent-bin-0.22.0-2-prebuilt.tar.zst
+	noextract = hermes-agent-bin-0.22.0-3-prebuilt.tar.zst
 	options = !debug
 	options = !strip
-	source = hermes-agent-bin-0.22.0-2-prebuilt.tar.zst::https://github.com/jabla/hermes-agent-bin/releases/download/v0.22.0-2/hermes-agent-bin-0.22.0-2-x86_64.pkg.tar.zst
-	sha256sums = 85b10a2d21bb5a4091cbc20c2145c846faaf64d1ac945e408b542b0c928daf3c
+	source = hermes-agent-bin-0.22.0-3-prebuilt.tar.zst::https://github.com/jabla/hermes-agent-bin/releases/download/v0.22.0-3/hermes-agent-bin-0.22.0-3-x86_64.pkg.tar.zst
+	sha256sums = 1d144ea3760977881f67e67a5e9a3486e16f5780f5b4371c87859c4d208dbdf2
 
 pkgname = hermes-agent-bin
