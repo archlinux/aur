@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-urania-dark-mod
-	pkgdesc = AIMP skin: Urania Dark Mod 1.0 (by nayamabite)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Urania Dark Mod 2017-06-16 (by nayamabite)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-urania-dark-mod
 	options = !strip
 	options = !debug
 	source = aimp-skin-urania-dark-mod-898.archive::https://aimp.ru/?do=catalog.download&id=898
-	sha256sums = af188d6efd0de448511802495792ab5f8ca46b86f1d5e8a46b1b2c904bc1e7bc
+	sha256sums = SKIP
 
 pkgname = aimp-skin-urania-dark-mod
