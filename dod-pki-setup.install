@@ -8,6 +8,48 @@ post_install() {
 
   echo "Enabling and starting pcscd service..."
   systemctl enable --now pcscd.service || echo "Warning: pcscd enable/start failed"
+
+  # Firefox policies
+  local dest="/etc/firefox/policies/policies.json"
+  mkdir -p "$(dirname "$dest")"
+
+  if [[ ! -f "$dest" ]]; then
+    cat > "$dest" <<'EOF'
+{
+  "policies": {
+    "SecurityDevices": {
+      "p11-kit-proxy": "/usr/lib/p11-kit-proxy.so"
+    }
+  }
+}
+EOF
+    echo "dod-pki-setup: created $dest"
+  else
+    python3 - <<'PY'
+import json
+from pathlib import Path
+
+dest = Path("/etc/firefox/policies/policies.json")
+try:
+    data = json.loads(dest.read_text())
+except Exception as e:
+    print(f"dod-pki-setup: existing Firefox policies.json is invalid ({e}); leaving it untouched")
+    raise SystemExit(0)
+
+policies = data.setdefault("policies", {})
+sec = policies.setdefault("SecurityDevices", {})
+
+key = "p11-kit-proxy"
+value = "/usr/lib/p11-kit-proxy.so"
+
+if key not in sec:
+    sec[key] = value
+    dest.write_text(json.dumps(data, indent=2) + "\n")
+    print(f"dod-pki-setup: added {key} to existing Firefox policies.json")
+else:
+    print(f"dod-pki-setup: {key} already present in Firefox policies.json")
+PY
+  fi
 }
 
 post_upgrade() {
@@ -24,4 +66,35 @@ pre_remove() {
   echo "Removing DoD cert anchor and refreshing trust..."
   rm -f "/etc/ca-certificates/trust-source/anchors/dod-cas.crt"
   update-ca-trust || true
+
+  # Remove Firefox policy key
+  local dest="/etc/firefox/policies/policies.json"
+  if [[ -f "$dest" ]]; then
+    python3 - <<'PY'
+import json
+from pathlib import Path
+
+dest = Path("/etc/firefox/policies/policies.json")
+try:
+    data = json.loads(dest.read_text())
+except Exception:
+    raise SystemExit(0)
+
+policies = data.get("policies", {})
+sec = policies.get("SecurityDevices", {})
+
+if sec.get("p11-kit-proxy") == "/usr/lib/p11-kit-proxy.so":
+    del sec["p11-kit-proxy"]
+    if not sec:
+        policies.pop("SecurityDevices", None)
+    if not policies:
+        data.pop("policies", None)
+    if not data:
+        dest.unlink(missing_ok=True)
+        print("dod-pki-setup: removed empty Firefox policies.json")
+    else:
+        dest.write_text(json.dumps(data, indent=2) + "\n")
+        print("dod-pki-setup: removed p11-kit-proxy from Firefox policies.json")
+PY
+  fi
 }

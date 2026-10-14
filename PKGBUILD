@@ -2,12 +2,12 @@
 
 pkgname=dod-pki-setup
 pkgver=5.14
-pkgrel=3
+pkgrel=4
 pkgdesc="One-click setup for DoD/DoW CAC/PKI on Arch Linux: Install drivers, certs, register PKCS#11 in browser. Works out of the box on most modern browsers."
 arch=('any')
 url="https://public.cyber.mil/pki-pke/"
 license=('0BSD')
-depends=('pcsclite' 'ccid' 'opensc' 'nss' 'p11-kit' 'openssl' 'ca-certificates-utils')
+depends=('ca-certificates-utils' 'ccid' 'nss' 'opensc' 'openssl' 'p11-kit' 'pcsclite' 'python3')
 install="$pkgname.install"
 source=("certs.zip") #https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_DoD.zip
 sha256sums=('32595adbe752df5823cedd2c6a4f206c07fcc3c1520fb831015204e9fbb75711')
