@@ -1,7 +1,7 @@
 pkgbase = harletty-bridge
-	pkgdesc = Format-decoder bridge plugins for the orender engine, one per codec family (loaded via dlopen at runtime)
+	pkgdesc = Format-decoder bridge plugins for the orender engine, one per codec family, and the harletty offline decoder
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/harletty/harletty-bridge
 	arch = x86_64
 	license = GPL-3.0-or-later
