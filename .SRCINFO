@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-sports-blue
-	pkgdesc = AIMP skin: Sports Blue 1.02 (by FreeZeek)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Sports Blue v1.02 (by FreeZeek)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-sports-blue
 	options = !strip
 	options = !debug
 	source = aimp-skin-sports-blue-119.archive::https://aimp.ru/?do=catalog.download&id=119
-	sha256sums = fe9479c0e6f552b9d5b1430c79641a00774518fe6f880e2d219b78fa9dbe5f31
+	sha256sums = SKIP
 
 pkgname = aimp-skin-sports-blue
