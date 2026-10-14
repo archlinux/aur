@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-skif-310-2s
-	pkgdesc = AIMP skin: Скиф 310-2с 1.1 (by Пупс)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Скиф 310-2с v1.1 (by Пупс)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-skif-310-2s
 	options = !strip
 	options = !debug
 	source = aimp-skin-skif-310-2s-717.archive::https://aimp.ru/?do=catalog.download&id=717
-	sha256sums = 23e00fba3108f9a6b573ef8bc948871056162435c8341c0593b8045774d4843a
+	sha256sums = SKIP
 
 pkgname = aimp-skin-skif-310-2s
