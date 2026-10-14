@@ -2,7 +2,7 @@
 # Contributor: Catriel Müller <catriel at gmail dot com>
 pkgname=synergy1-bin
 pkgver=1.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
 url="https://symless.com/synergy"
@@ -17,9 +17,10 @@ depends=(
   'libxi'
   'libxinerama'
   'libxkbfile'
+  'libxrandr'
   'libxtst'
   'openssl'
-  'qt6-base'
+  'qt6-base>=6.12.0'
 )
 conflicts=(
   'synergy'
