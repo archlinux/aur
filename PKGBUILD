@@ -3,7 +3,7 @@
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
 pkgver=r578.97eeacb
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rozniak/xfce-winxp-tc"
@@ -95,6 +95,7 @@ package_libwintc-git() {
 # Package components
 package_xfce-winxp-tc-git() {
 	depends=('xdg-utils' 'libwintc')
+	install=setup.install
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
