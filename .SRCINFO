@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aqua-minerale
-	pkgdesc = AIMP skin: Aqua Minerale 1.2 (by Freyr (aka Kristall_k8))
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Aqua Minerale v1.2 (by Freyr (aka Kristall_k8))
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aqua-minerale
 	options = !strip
 	options = !debug
 	source = aimp-skin-aqua-minerale-90.archive::https://aimp.ru/?do=catalog.download&id=90
-	sha256sums = 232c7586ffe5124a92382606340023fcc7996bf422036f9018f4505673f513b5
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aqua-minerale
