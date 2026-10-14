@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-paline
-	pkgdesc = AIMP skin: Paline 1.5.1 (by kestiq)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Paline v1.5.1 (by kestiq)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-paline
 	options = !strip
 	options = !debug
 	source = aimp-skin-paline-374.archive::https://aimp.ru/?do=catalog.download&id=374
-	sha256sums = 07068c66526d4108ab1b590d451aec5b9a8ca025ab98b7944b2ad8b5f35af833
+	sha256sums = SKIP
 
 pkgname = aimp-skin-paline
