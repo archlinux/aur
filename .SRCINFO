@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mutter
-	pkgdesc = AIMP skin: Mutter 1.0 (by ser3ga)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Mutter 2014-09-18 (by ser3ga)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-mutter
 	options = !strip
 	options = !debug
 	source = aimp-skin-mutter-600.archive::https://aimp.ru/?do=catalog.download&id=600
-	sha256sums = d7cdcdc48d78139ad7794e5fb87fb937066fe27caf73d7efb852a4396dc57ed2
+	sha256sums = SKIP
 
 pkgname = aimp-skin-mutter
