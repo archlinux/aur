@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-t-black-nrj-mod-sereg
-	pkgdesc = AIMP skin: T-Black NRJ MOD SeReG@ 1.0 (by SeReG@)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: T-Black NRJ MOD SeReG@ 2012-06-21 (by SeReG@)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-t-black-nrj-mod-sereg
 	options = !strip
 	options = !debug
 	source = aimp-skin-t-black-nrj-mod-sereg-314.archive::https://aimp.ru/?do=catalog.download&id=314
-	sha256sums = ec4449061ff41c7390392b11eeee6002aa86448305ea17365c9a3d160f485b9f
+	sha256sums = SKIP
 
 pkgname = aimp-skin-t-black-nrj-mod-sereg
