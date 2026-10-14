@@ -5,7 +5,7 @@
 # the source of truth to copy from. See ../README.md for the publish
 # procedure and how to bump pkgver for a new release.
 pkgname=tesseract-matrix
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Cross-platform Matrix chat client"
 arch=('x86_64')
@@ -38,7 +38,7 @@ makedepends=(
     'wayland'            # xdg-activation Wayland window focus (find_library at configure time)
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/surakin/tesseract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('631bc81b6d023fe2b514c75cc11095d4bc8fde815560469839234c6e06294084')
+sha256sums=('1dcea91278ad9a393fa142e5175021f17779288d5acd55da167f503b7ba0a32f')
 
 build() {
     cmake -S "tesseract-$pkgver" -B build -G Ninja \
