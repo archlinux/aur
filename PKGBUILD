@@ -27,7 +27,7 @@ optdepends=(
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/caamer20/Telegram-Drive/releases/download/v${pkgver}/Telegram.Drive_${pkgver}_amd64.AppImage"
         "LICENSE::https://raw.githubusercontent.com/caamer20/Telegram-Drive/v${pkgver}/packaging/arch/UPSTREAM-LICENSE-NOTICE")
-sha256sums=('0f3e33f1ac5f5480b1b0d1eba5d3c1778c33ea437c7a680ffe57c3338346e02b'
+sha256sums=('f2deefe8be98489c25aeef3ad3eba45124f66f3a2e7d833875777599a21ab648'
             '164994ae2a66a7215deca4a6ebf5822cc1d67737c5c1e1ba2f32b28016e0d6fb')
 
 prepare() {
