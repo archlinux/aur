@@ -2,7 +2,7 @@
 # OpenCE keeps config.toml, maps/, its log and its screenshots beside its
 # executable, and copies maps/ there from the disc image at the first start.
 # /usr/lib/opence is not writable, so each user runs a copy of the game from
-# a folder of their own.
+# a folder of their own, which also holds their saves.
 set -eu
 
 libdir=/usr/lib/opence
@@ -25,6 +25,14 @@ ln -sfn "$libdir/libSDL3.so.0" "$userdir/libSDL3.so.0"
 # link with a file to keep a list of your own.
 if [[ ! -e $userdir/brokers.txt && ! -L $userdir/brokers.txt ]]; then
     ln -s "$libdir/brokers.txt" "$userdir/brokers.txt"
+fi
+
+# A first config.toml: saves, profiles and the map cache go in saves/ here,
+# not ~/.local/share/halo-linux, and the game does not update itself (pacman
+# updates it). The game adds every other setting at its default, and reads
+# these however it starts: an invite link runs the copy without this script.
+if [[ ! -e $userdir/config.toml ]]; then
+    printf '[paths]\nsaves = "%s"\n\n[update]\nauto = false\n' "$userdir/saves" > "$userdir/config.toml"
 fi
 
 # pacman updates the game, not the game's own updater.

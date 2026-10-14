@@ -4,9 +4,9 @@ post_install() {
     (.iso or .xiso) of Halo: Combat Evolved, any region.
 ==> Run "opence". At the first start it asks for the disc image and copies
     maps/ from it into ~/.local/share/opence.
-==> Your settings (config.toml), maps/, the log (debug.txt) and screenshots
-    are in ~/.local/share/opence. Saved games and the map cache are in
-    ~/.local/share/halo-linux.
+==> Everything is in ~/.local/share/opence: your settings (config.toml),
+    maps/, saves/ (saved games, profiles and the map cache), the log
+    (debug.txt) and screenshots.
 ==> Settings and controls: /usr/share/doc/opence/LINUX.md
 EOF
 }
