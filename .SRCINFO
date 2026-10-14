@@ -1,6 +1,6 @@
 pkgbase = khal-agenda-bin
 	pkgdesc = An on-demand Wayland calendar popup for khal (prebuilt binary)
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mikkelrask/khal-agenda
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = khal-agenda-bin
 	depends = python
 	depends = khal
 	optdepends = vdirsyncer: sync local calendar files
-	provides = khal-agenda=0.2.1
+	provides = khal-agenda=0.3.0
 	conflicts = khal-agenda
 	options = !debug
-	source_x86_64 = khal-agenda-bin-0.2.1-x86_64.tar.gz::https://github.com/mikkelrask/khal-agenda/releases/download/v0.2.1/khal-agenda-0.2.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 3bd4feb39d66d3dd462b9febfe4608dca81f83b9ad8ce5ce8652f0e14a359f43
+	source_x86_64 = khal-agenda-bin-0.3.0-x86_64.tar.gz::https://github.com/mikkelrask/khal-agenda/releases/download/v0.3.0/khal-agenda-0.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 03bfb112796a42c26d36cc71728b08ed9fbd00b93e230b461d8178f1bf14d798
 
 pkgname = khal-agenda-bin
