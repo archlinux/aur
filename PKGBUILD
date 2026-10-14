@@ -1,6 +1,6 @@
 # Maintainer: zyk-miao <45023244+zyk-miao@users.noreply.github.com>
 pkgname=uuway-git
-pkgver=1.2.0.r65.g766c293
+pkgver=1.2.0.r69.g641b0f6
 pkgrel=1
 pkgdesc='NetEase UU Remote host bridge for KDE Wayland with native capture'
 arch=('x86_64')
@@ -60,11 +60,11 @@ prepare() {
 
     local tree="$srcdir/uuway"
     install -dm755 "$tree/build/dxvk-capture" "$tree/build/gpu-relay/downloads"
-    cp -a "$srcdir/dxvk" "$tree/build/dxvk-capture/source-v3.1"
+    cp -aT "$srcdir/dxvk" "$tree/build/dxvk-capture/source-v3.1"
     install -dm755 "$tree/build/gpu-relay/wine-review"
     bsdtar -xf "$srcdir/wine-source-11.0.tar.gz" -C "$tree/build/gpu-relay/wine-review" \
         --strip-components 1 wine-db11d0fe6a169c457e23d007e20404643d067aa8/include
-    cp -a "$srcdir/nv-codec-headers" "$tree/build/gpu-relay/nv-codec-headers"
+    cp -aT "$srcdir/nv-codec-headers" "$tree/build/gpu-relay/nv-codec-headers"
     install -m644 "$srcdir/dxvk-3.1.tar.gz" "$tree/build/gpu-relay/downloads/dxvk-3.1.tar.gz"
     local dxvk="$tree/build/dxvk-capture/source-v3.1"
     git -C "$dxvk" submodule init
