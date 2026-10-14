@@ -1,5 +1,5 @@
 pkgbase = rust-yak
-	pkgdesc = Terminal-first AI coding agent in Rust
+	pkgdesc = A plugin-based harness for LLMs in Rust
 	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/yak
