@@ -1,0 +1,17 @@
+pkgbase = sdrtop-bin
+	pkgdesc = Terminal monitor for SDR hardware
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/musithang/sdrtop
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	optdepends = hackrf: HackRF support
+	optdepends = rtl-sdr: RTL-SDR support
+	optdepends = soapysdr: SoapySDR support
+	provides = sdrtop
+	conflicts = sdrtop
+	source_x86_64 = https://github.com/musithang/sdrtop/releases/download/v0.6.6/sdrtop-0.6.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 29f6e59b11e72d3bdb24d5d213e75767cf198da6569553ff13320db30e55d3f2
+
+pkgname = sdrtop-bin
