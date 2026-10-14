@@ -1,0 +1,33 @@
+pkgbase = grappa-bin
+	pkgdesc = Always-on IRC bouncer with a REST/WebSocket API and bundled cicchetto web client (official binary)
+	pkgver = 1.5.14
+	pkgrel = 1
+	url = https://github.com/vjt/grappa-irc
+	install = grappa.install
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = ca-certificates
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = ncurses
+	depends = openssl
+	depends = systemd
+	depends = util-linux
+	depends = zlib
+	optdepends = shottino-bin: terminal client and IRC bridge for Grappa
+	optdepends = perl-image-exiftool: remove metadata from image uploads
+	optdepends = ffmpeg: remove metadata from video uploads
+	optdepends = nginx: HTTPS reverse proxy
+	provides = grappa=1.5.14
+	conflicts = grappa
+	noextract = grappa-bin-v1.5.14-grappa-1.5.14-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = grappa-bin-v1.5.14-grappa-1.5.14-1-x86_64.pkg.tar.zst::https://github.com/vjt/grappa-irc/releases/download/v1.5.14/grappa-1.5.14-1-x86_64.pkg.tar.zst
+	source = README.md
+	sha256sums = f54fce0bdc3c7b3e85ce63d5bde30e768939ccccf2a40f9713c5708b436f2db3
+	sha256sums = f40466d9862f8bf95819effdedceea8fa08f454ab179c583d53e04a85835d7a5
+
+pkgname = grappa-bin

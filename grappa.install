@@ -1,0 +1,41 @@
+post_install() {
+    systemd-sysusers /usr/lib/sysusers.d/grappa.conf || return 1
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/grappa.conf || return 1
+    install -d -o root -g grappa -m 0750 /etc/grappa || return 1
+    if [ ! -e /etc/grappa/grappa.env ]; then
+        install -o root -g grappa -m 0640 \
+            /usr/share/grappa/grappa.env.example /etc/grappa/grappa.env || return 1
+    fi
+    /usr/share/grappa/gen-secrets.sh || return 1
+
+    cat <<'EOF'
+Grappa: configuration and secrets are ready in /etc/grappa/grappa.env.
+Set PHX_HOST and VAPID_SUBJECT there, then initialize and start the server:
+  sudo grappa migrate
+  sudo grappa seed-themes
+  sudo systemctl enable --now grappa.service
+  sudo grappa create-user YOUR_NAME --admin
+
+Back up /etc/grappa/grappa.env and /var/lib/grappa together.
+The encryption key is required to recover stored IRC credentials.
+The service is not enabled or started automatically.
+Read /usr/share/doc/grappa/AUR.md for setup and upgrade instructions.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+Grappa updated. Back up /etc/grappa/grappa.env and /var/lib/grappa,
+review the release notes, and apply the upgrade when ready:
+  sudo systemctl stop grappa.service
+  sudo grappa gen-secrets
+  sudo grappa migrate
+  sudo grappa seed-themes
+  sudo systemctl start grappa.service
+Database migrations and service restarts are not performed automatically.
+EOF
+}
+
+post_remove() {
+    echo 'Grappa: configuration in /etc/grappa and data in /var/lib/grappa are preserved.'
+}
