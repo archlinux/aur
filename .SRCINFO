@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-premiere
-	pkgdesc = AIMP skin: Premiere 1.1 (by Prince)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Premiere v1.1 (by Prince)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-premiere
 	options = !strip
 	options = !debug
 	source = aimp-skin-premiere-239.archive::https://aimp.ru/?do=catalog.download&id=239
-	sha256sums = 353883bf16a02f8b7e512527f46d5b3ff7b1dda12f3e60ff89c6e67fbbef59e3
+	sha256sums = SKIP
 
 pkgname = aimp-skin-premiere
