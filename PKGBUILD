@@ -2,7 +2,7 @@
 
 _pkgname=mechrevo-drivers
 pkgname=mechrevo-drivers-dkms-git
-pkgver=4.24.0.r16.gb549e06
+pkgver=4.24.0.r23.gf1aa652
 pkgrel=1
 pkgdesc='Unofficial MECHREVO laptop platform drivers based on TUXEDO drivers (DKMS, git)'
 arch=('x86_64')
