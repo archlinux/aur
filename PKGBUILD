@@ -5,7 +5,7 @@
 # Contributor: Saghm Rossi <aur@saghm.com>
 
 pkgname=curseforge
-pkgver=1.322.0_40357
+pkgver=1.323.0_40840
 pkgrel=1
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   "CurseForge_${pkgver/_/-}_amd64.deb::https://curseforge.overwolf.com/electron/linux/CurseForge_${pkgver/_/-}_amd64.deb"
   'LICENSE'
 )
-sha256sums=('dcdf0b5eba0129d2e38b811e6a5f4db9d3b2527efa91f36a7a05f1aa9b8e814f'
+sha256sums=('87abbafacc4ec3a1bcf57b97b58ec3389ee77d022b2a3f29bb91be191b9a5896'
             '135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f')
 
 package() {
