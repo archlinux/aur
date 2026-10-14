@@ -1,6 +1,6 @@
 pkgbase = python-spsdk-iped
 	pkgdesc = Fast C++ PRINCE cipher backend for SPSDK IPED encryption
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://pypi.org/project/spsdk-iped
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = python-spsdk-iped
 	provides = spsdk-iped
 	conflicts = spsdk-iped
 	replaces = spsdk-iped
-	source = spsdk_iped-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk_iped/spsdk_iped-0.1.0.tar.gz
-	sha512sums = 1f0ee9acac22ac27d9cd629ff1d72d6447dd01a8b29edc6f04e4161a5cf07c648bcdc4c874a3241af2138050d6d498016989aedefbcc7d48d39260003f0fd25c
+	options = !debug
+	source = spsdk_iped-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk_iped/spsdk_iped-0.1.1.tar.gz
+	sha512sums = 548dc4608cca6ca1a311e5c9ba754252157050029fee320e3f97c3511969ede410614a7d6fe1e1e1245c6631b5db7ebc55a4e3a877bc9fc069ebbd73cc748bec
 
 pkgname = python-spsdk-iped
