@@ -2,7 +2,7 @@
 # Automation: https://github.com/its-me/aur.claurst
 
 pkgname=claurst
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Agentic Coding for Builders who Ship"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'cmake' 'clang')
 conflicts=('claurst-bin' 'claurst-git')
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuberwastaken/claurst/archive/v${pkgver}.tar.gz")
-sha256sums=('69b95f2013a6a3d1803c9ba9371f292d9961d59d16b92af47e8aef45015d0bea')
+sha256sums=('e92c0f306bbdec7124bc76b7b3510355e86b37e8b0e3de91b76f0249b0d6cdd7')
 
 prepare() {
     cd "${pkgname}-${pkgver}/src-rust"
