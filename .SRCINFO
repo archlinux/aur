@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-nefarious
-	pkgdesc = AIMP skin: Nefarious 1.0 (by nofx1994)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Nefarious 2014-01-29 (by nofx1994)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-nefarious
 	options = !strip
 	options = !debug
 	source = aimp-skin-nefarious-520.archive::https://aimp.ru/?do=catalog.download&id=520
-	sha256sums = eb8f09f04969228848f831f7ca6421fb9d39beeb2571f6908a9f78c5ffc1371d
+	sha256sums = SKIP
 
 pkgname = aimp-skin-nefarious
