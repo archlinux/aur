@@ -3,7 +3,7 @@ _pkgname=10Play
 pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unofficial 10 Play desktop app."
-arch=('x86_64''aarch64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/10play"
 license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2026.4' 'nss' 'gtk3' 'libxss' 'git')
