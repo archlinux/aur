@@ -2,7 +2,7 @@
 
 pkgbase=angie
 pkgname=(angie angie-src)
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/webserver-llc/angie"
@@ -13,11 +13,11 @@ source=(https://download.angie.software/files/$pkgbase-$pkgver.tar.gz
         angie.service
         logrotate
         https://angie.software/keys/angie-signing.gpg)
-sha512sums=('79a5ddb4721f6fde0b158e9cd55ccd3429bdee3c5faef34c4ce7ec39d019390bbb654fef843acb894480fc1aab49154d2fcd72c7114d83f5f04222ac81b15f7c'
+sha512sums=('2083ba625f664c1babfbec4bfdf1f8b2ebdab9debef7ab7bb3c31ed98a1ab366d9752c77a14a5d8c568ae69c2cf4ffb0fb150fe117a8fcfb65a7e0f71d3ce2d7'
             '65e3ba379411c638db6ac506b08efc118c975b00f65ed43c8af9d45d564711d55520bf56524e787df31a9b7dc65af4c7454b3b9baf2f8f013a44d9087be53a51'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9'
             'f3e2b68cfae760fd04ad4829834bf562bb65a9204e2c83798550b4e53a12f532c878148b2c675370f9fef069b58b68e5b99b3b6fe6fe4f4e046ad61bab538c74')
-b2sums=('6e37ec497be82c83167cba15de5313549bde8f3b5e1d96a49a2eae6661b9a43115b291c56f6ccfb425076bf8972e76fe2c32fd0d2a4ff494be5e6229393f18d3'
+b2sums=('935ce39c3c4f3495ef7e118a1b498e65dc84c15281ea0fb14f7b3fb92bb5961fe9afe316548d34d3041efea9dd67b5ad898f8465a1b112bf35e392347188d2dc'
         '27619a4a3ca0c1b977c54c8ba99fa19abebef37e8eff7c211567e47a98b80ce038f7ec20b7ec936aa0f8945a16fe064cf1fe58d68db3d493f4f63d057d5bf007'
         'e1755f61b4eaece83c6c22e48f9e5e316851d1dc35f8d770f837c7d3c8bdc894af1b697c25f1788ac50cd597085c22fb9bf8096a55ecf7659d63185f68ba2d8a'
         '7957894d9973ddc8ca44a3ac1844eefbf71f2681ae57d51fcdd0ca570c0cafbb027d05fa2b288d695e7069eb26600d0099cc354fcc4b9061971243b384edd01a')
