@@ -2,18 +2,20 @@
 # Contributor: Rafael Dominiquini
 #
 # Source-of-truth PKGBUILD for the `odytty` AUR package. The AUR holds its own
-# git repository; this copy is the upstream template. On each release tag the
-# `aur` job in .github/workflows/release.yml stamps pkgver, runs `updpkgsums`
-# to replace the placeholder checksum with the real release-tarball sha256,
-# regenerates `.SRCINFO`, and pushes to the AUR remote — the same pattern the
-# `scoop` job uses for the Windows manifest. The manual runbook in
-# dist/aur/README.md remains the fallback if the automated push fails.
+# git repository; this copy is the upstream template, and its pkgver, source URL
+# and checksum are release-time seeds rather than the current release. On each
+# release tag the AUR publish workflow (.github/workflows/aur-publish.yml,
+# called from release.yml) stamps pkgver, runs `updpkgsums` to replace the
+# placeholder checksum with the real release-tarball sha256, regenerates
+# `.SRCINFO`, and pushes to the AUR remote - the same pattern the `scoop` job
+# uses for the Windows manifest. The manual runbook in dist/aur/README.md
+# remains the fallback if the automated push fails.
 #
 # This builds from the published GitHub release source tarball (the same
 # `git archive` tarball the Release workflow attaches), so the package is
 # versioned, owned by pacman, and reproducible from a fixed source.
 pkgname=odytty
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="GPU-rendered Rust terminal emulator with an Odyssey visual identity"
 arch=('x86_64')
@@ -23,7 +25,7 @@ depends=('fontconfig' 'freetype2' 'vulkan-icd-loader' 'libxkbcommon' 'libxkbcomm
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ghreprimand/odytty/releases/download/v$pkgver/odytty-$pkgver.tar.gz")
 # Replaced with the real checksum by `updpkgsums` before each AUR publish.
-sha256sums=('0c97fcdde64dedb071bc80dfb4f715ee0b235db2ee08cad4de7ee61dcfbbff79')
+sha256sums=('a45d47fea9bd7934029d331ebafc20cfa8217b8da26245da290987a2b26272f1')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -50,5 +52,9 @@ package() {
     cp -a dist/icons/hicolor "$pkgdir/usr/share/icons/"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 docs/install.md "$pkgdir/usr/share/doc/$pkgname/install.md"
+    install -Dm644 NOTICE "$pkgdir/usr/share/doc/$pkgname/NOTICE"
+    install -Dm644 THIRD-PARTY-LICENSES "$pkgdir/usr/share/doc/$pkgname/THIRD-PARTY-LICENSES"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # The bundled fonts' licence texts travel with the package.
+    bash dist/install-font-licenses.sh "$pkgdir/usr/share/licenses/$pkgname/fonts"
 }
