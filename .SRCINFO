@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-cc
-	pkgdesc = AIMP skin: AIMP-CC 1.86 (by McClaud)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: AIMP-CC v1.86 (by McClaud)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aimp-cc
 	options = !strip
 	options = !debug
 	source = aimp-skin-aimp-cc-646.archive::https://aimp.ru/?do=catalog.download&id=646
-	sha256sums = 2a752ae01ffab267506144e1d6a55cd41ae403f5aaa4185e5d2847f5bceee555
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aimp-cc
