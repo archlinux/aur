@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fotema
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Photo gallery for Linux"
 arch=('x86_64')
@@ -35,22 +35,31 @@ makedepends=(
   'meson'
   'mold'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2226eb41470b96af9e78edfc629f912ef6a457a7e0af1855d794517f6f7945d3')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        'https://github.com/blissd/fotema/pull/751.patch')
+sha256sums=('d33a793ec76c86cf33c9c555cde816a1cf1fbbdd7a68ad84affc0ac58ee57ba3'
+            '455fb43509e80da08bf8e404cecdcfe4fdb907b112c25557283710864d491b49')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
 
-  # Bump dependencies to fix build with ffmpeg 8.1
-  cargo update ffmpeg-next --precise 8.1.0
-  cargo update opencv --precise 0.98.2
+  # Bump dependencies to fix build with ffmpeg 9.0
+  patch -Np1 -i ../751.patch
 
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
+
+  # https://github.com/aws/aws-lc-rs/issues/1097
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
