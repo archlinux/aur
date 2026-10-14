@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-hameleon
-	pkgdesc = AIMP skin: Hameleon 1.0 (by GR-X)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Hameleon 2011-10-17 (by GR-X)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-hameleon
 	options = !strip
 	options = !debug
 	source = aimp-skin-hameleon-184.archive::https://aimp.ru/?do=catalog.download&id=184
-	sha256sums = 120a8cc5f66ecc5badc9a8cdfd21c009412a8c122eb8acd0d2cc5a3f6347e6f2
+	sha256sums = SKIP
 
 pkgname = aimp-skin-hameleon
