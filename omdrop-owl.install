@@ -11,7 +11,7 @@ post_install() {
   firmware. Nothing runs until omdrop asks. The interface is the omdrop
   plugin, 0.16.0 or newer:
 
-      omarchy plugin add https://github.com/brentkearney/omdrop-plugin.git
+      omarchy plugin add https://github.com/netmojo-systems/omdrop-plugin.git
 
   Then turn omdrop on from its icon in the bar.
 
