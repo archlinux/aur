@@ -4,7 +4,7 @@
 # MIT license. See LICENSE.packaging.
 
 pkgname=openshell-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='The safe, private runtime for autonomous AI agents.'
 arch=('x86_64' 'aarch64')
@@ -52,17 +52,17 @@ source_aarch64=(
 sha256sums=('d07c0367e2861e7fe70fa1b679f879f4fa2f9138ade4457d44ecf8b2e135bb45'
             'a267ac371807966057f0e5d595d6da72d04c3d6cacd604fa6e66ef275084fcfe'
             'd0fde0899d0df90c5bf2dc0054b8bcbe701198e3643239ffe77bd6a164c23d35'
-            'a44c5fcec95dab22dc8e125c620378913207d06593b1e26fa70e9ac0fb07799f'
+            '1608a2dc3b66ddfa9b5550f190fbb7693777aba529748b176cbe34e0fbb21998'
             '707c93399d6af66b8f4479e5c9a4e1958958f883324f033aa7eae8d2708b8c13'
             'b21382e3e0ce1f394e66eca7ef8903c36214c9c267c5784d1ad58d96a1e6b95a')
-sha256sums_x86_64=('ed08ea7874c47f22d6e5dcc4b27d9ef1ef5d2060f83035b35ff725d5160830a3'
-                   'da8dce943fe01cce90243b2bf2587c71a243e4d641a4b616528829b681ced198'
-                   '8ab28e18e425f4160e99744ba74bb2a2d32a7f158ca55a2536e79f11ea1a8cf5'
-                   '22593640c6179eb87413ab099832fbd133d3a6a4979904d27679e7da6d80a0cb')
-sha256sums_aarch64=('07687dacefc52bc73b01943f5b58f7a5082c1ceaa228461b9a2a78023b8057c0'
-                    '801214322227f64f2d3faa6989daaa5e6cd9ef1ab768b5860496deeb1158c27b'
-                    '47fb89fee5997f5dfb1911ec95201346690b46580df0220458f418e4c3c6782b'
-                    '4426ee0992989060eb5987ad7072feb3eb6aecf5a628ad0284c3d7ad5f39974b')
+sha256sums_x86_64=('2b65178e62e1ece1d90d482555e9f1f98ff0296e058409b33418104b6333df07'
+                   '43f43554bcaabff2a8147444410d1ad0b7f51bdae7589c2d249982bc8b260b91'
+                   '832b65c7af487ddbf57cf84cc0edd55de8b7bdef021c6e9e93b0ee8c5acd1571'
+                   '43f1abd8416a1ae6298a39daa7a62b242f55f12f677dadb51b66bffe41e05519')
+sha256sums_aarch64=('1cd6e63597e1947c44a753bf5352f949e8d8d02e344af92ab899b7c111112d95'
+                    'd0f8a2045e613f612a542abe860e497906169c2483093a9bd52e41737df397f0'
+                    'd1100446dd8c105ac59c00e9f6dfb9266d9a1aadf36cb9cabbc775514ff705f2'
+                    '7396892beaef4f05199e8ccfc49d49b434b1e1c9a00eda78a6e7c8f6e76b0198')
 
 build() {
   pandoc -s -t man "$srcdir/openshell-$pkgver.1.md" -o "$srcdir/openshell.1"
