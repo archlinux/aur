@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-metro-evolution
-	pkgdesc = AIMP skin: Metro Evolution 1.0 (by bro)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Metro Evolution 2013-10-10 (by bro)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-metro-evolution
 	options = !strip
 	options = !debug
 	source = aimp-skin-metro-evolution-392.archive::https://aimp.ru/?do=catalog.download&id=392
-	sha256sums = 1ab9c6127c88ce0178ef4f04622aeeccd6660fb0c6233ed7e3b3e98b633f69a5
+	sha256sums = SKIP
 
 pkgname = aimp-skin-metro-evolution
