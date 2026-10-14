@@ -1,6 +1,6 @@
 pkgbase = lianli-linux
 	pkgdesc = Open-source Linux replacement for L-Connect 3 for Lian Li devices
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/sgtaziz/lian-li-linux
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = lianli-linux
 	optdepends = polkit: administrator authorization for service mode switching
 	conflicts = lianli-linux-git
 	options = !lto
-	source = lianli-linux-1.2.0.tar.gz::https://github.com/sgtaziz/lian-li-linux/archive/refs/tags/v1.2.0.tar.gz
+	source = lianli-linux-1.2.1.tar.gz::https://github.com/sgtaziz/lian-li-linux/archive/refs/tags/v1.2.1.tar.gz
 	source = tinyuz-1d74ffa4d453796df352df470733f45dfa099bb1.tar.gz::https://github.com/sisong/tinyuz/archive/1d74ffa4d453796df352df470733f45dfa099bb1.tar.gz
 	source = HDiffPatch-3b9dca715ca492873bf2c49e22e5d5b7d2a78620.tar.gz::https://github.com/sisong/HDiffPatch/archive/3b9dca715ca492873bf2c49e22e5d5b7d2a78620.tar.gz
-	sha256sums = 4308b61d329ee54c0ba05b162db41f724d29805d97ca4fb9b5aa58d9f42c47a2
+	sha256sums = b6c7bdef5b3c90793dd43e69a8cebad14516a13b1afc9642634e7f9453147064
 	sha256sums = 307558ad57549d8ad55ba77add19cfca2e384c0857dfd4b6c2ff82b95172a033
 	sha256sums = 62378965f548feaf5d5c3e1e2e65e985fae33ff4c87432cb42e60250d7e0d670
 
