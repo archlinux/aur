@@ -1,6 +1,6 @@
 pkgbase = devknx
 	pkgdesc = KNX monitor with CLI, TUI, GUI, REST and MCP
-	pkgver = 0.1.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/metaneutrons/devknx
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = devknx
 	conflicts = devknx-bin
 	options = !lto
 	options = !debug
-	source = https://github.com/metaneutrons/devknx/releases/download/v0.1.0/devknx-v0.1.0-source.tar.gz
-	sha256sums = 46753003837b573517da56c7e0e583ab0a34c135f53e377b3a0bd80f81d78fb6
+	source = https://github.com/metaneutrons/devknx/releases/download/v0.3.1/devknx-v0.3.1-source.tar.gz
+	sha256sums = 4661d8ccb6a38a3079a4bfd46aa237d574e4447920088cd3d014c1cd928cedc6
 
 pkgname = devknx
