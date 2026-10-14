@@ -3,7 +3,7 @@
 
 _pkgname="cloudlist"
 pkgname="${_pkgname}-bin"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Tool for listing Assets from multiple Cloud Providers"
 arch=(
@@ -35,10 +35,10 @@ source_i686=(
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip"
 )
-sha256sums_aarch64=('d5c2232e487a9be09d6063ed7e4a0c90ee6b2998f7dd80275e6b12e44c04f5fa')
-sha256sums_armv7h=('27c0c49fc61087047458f22d5d55cee7f9d138f97814a818a400fcebb6df995e')
-sha256sums_i686=('9e84d9ed3c65fbca70bd3f7d05fe322076f71749f7ef2670e85996ad041bd490')
-sha256sums_x86_64=('92823d16f77971eca378eeeb2ef4a204bf3eb30f7dae1be6b5a7769932f9ea08')
+sha256sums_aarch64=('53ee72ddfdfbb5dfe76742ae1db03aec92f6545f32ebe743b8e0154851c412fe')
+sha256sums_armv7h=('d1d85a514bfd229d97636f03442ffa36dea839815e5e863ef3d4368b92b14867')
+sha256sums_i686=('537f6460a738ba327b5b2745540bb7133e9554012b1f358d7c7ba6c49b236222')
+sha256sums_x86_64=('9df38cfc134da15b56827e9a437f36038928a47c74aec85dfb99d46594cbbf94')
 
 package() {
   cd "${srcdir}"
