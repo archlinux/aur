@@ -1,6 +1,6 @@
 pkgbase = f2p-evo
 	pkgdesc = F2P Evo — unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates
-	pkgver = 0.3.40.r196.gf1ea3bb
+	pkgver = 0.3.43rc.1.r214.g66c91cd
 	pkgrel = 1
 	url = https://git.sanhost.net/sanasol/f2p-evo
 	arch = x86_64

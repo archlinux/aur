@@ -1,7 +1,7 @@
 # Maintainer: 00ein00 <ein420@proton.me>
 pkgname=f2p-evo
 _pkgname=f2p-evo
-pkgver=0.3.40.r196.gf1ea3bb # auto-updated
+pkgver=0.3.43rc.1.r214.g66c91cd # auto-updated
 pkgrel=1
 pkgdesc="F2P Evo — unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates"
 arch=('x86_64')
@@ -19,14 +19,17 @@ replaces=('f2p-evo')
 source=("git+$url.git"
   "F2P-Evo.desktop")
 sha256sums=('SKIP'
-            '1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0')
+  '1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0')
 
 pkgver() {
   cd "$_pkgname"
   version=$(git describe --abbrev=0 --tags --match "v[0-9]*")
+  version=${version#v}
+  # drop hyphens before letters (0.3.43-rc.1 -> 0.3.43rc.1), turn any others into dots
+  version=$(sed -E 's/-([[:alpha:]])/\1/g; s/-/./g' <<<"$version")
   commits=$(git rev-list --count HEAD)
   hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "${version#v}" "$commits" "$hash"
+  printf "%s.r%s.g%s" "$version" "$commits" "$hash"
 }
 
 build() {
