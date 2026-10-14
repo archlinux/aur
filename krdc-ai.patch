@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..ffa53ca0
+index 00000000..9fc230eb
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,463 @@
+@@ -0,0 +1,552 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4247,6 +4247,24 @@ index 00000000..ffa53ca0
 +constexpr int s_flatOwnSat = 120;
 +constexpr int s_surfMax = 60; // surfaces never land lighter than this
 +
++// The mirror rule: a flat DARK surface - a neighborhood that averages very
++// dark - is chrome the remote already renders dark-mode, and must not be
++// brightened. The Server 2012 Start menu paints its app list over (31, 31,
++// 31); without this rule the curve flipped that panel to (242) and turned
++// the menu into a glaring white slab the moment the filter learned to stay
++// engaged behind it. This test is mean-based, not spread-based like the
++// light rule above: panel pixels right next to text glyphs have glyph
++// antialiasing inside their window (a dense text row pulls the average to
++// ~85), and the mean shrugs sparse intruders off while a spread test fails
++// on a single luma-94 pixel. The Start menu's dark dots still recolor: a
++// dither window averages its bright dots in, well over any dark-surface
++// bound. Dark-surface pixels also count as dark support for the light text
++// rule below, colored-dark pixels (taskbar, wallpaper) aside: they are
++// pixels that stay dark after filtering, which is exactly what white text
++// needs to stand on.
++constexpr int s_darkOwnMax = 100; // the pixel itself must be this dark or darker
++constexpr int s_darkMean = 100; // and its window average this dark
++
 +// Light text protection, the mirror of the colored text lift below. Windows
 +// paints desktop icon labels and the taskbar clock as white text over the
 +// wallpaper, which on this remote ((0, 27, 58)) is dark before the filter
@@ -4264,22 +4282,32 @@ index 00000000..ffa53ca0
 +// both axes, and the broad-dark test already excludes the white-page cases
 +// that keep the other rules strict.
 +//
-+// The broad window only counts dark pixels that carry color (saturation
-+// above the content threshold). A Server taskbar ((0, 3, 8)) and this
-+// wallpaper ((0, 27, 58)) are saturated dark - a surface the remote already
-+// renders dark-mode. Neutral dark pixels are different: they are text, or
-+// the dithered translucency of a Start menu border over a white window -
-+// pixels the filter itself turns light. Without this bound the dither band
-+// masquerades as white-on-wallpaper text (its alternating dots make every
-+// white pixel "thin" with dark neighbors), and the filter preserved a 530
-+// pixel strip of it as a glowing white border. With it: zero pixels of the
-+// band kept, desktop labels 117/117 and clock 171/174 still kept.
++// The broad window counts dark pixels that STAY dark after filtering:
++// colored dark ones (a Server taskbar ((0, 3, 8)) or this wallpaper
++// ((0, 27, 58)) - saturated, preserved by the saturation rule) and flat
++// dark surfaces (the Start menu's (31, 31, 31) panel, preserved by the
++// dark surface rule above). Plain neutral dark pixels that are neither -
++// text, or the dithered translucency of a Start menu border over a white
++// window - are exactly what the filter turns light, and must not count:
++// without this the dither band masquerades as white-on-wallpaper text
++// (its alternating dots make every white pixel "thin" with dark
++// neighbors), and the filter preserved a 530 pixel strip of it as a
++// glowing white border.
++//
++// And the window must be mostly dark: at most s_keepBrightMax of its 225
++// pixels may themselves be light. Dither dots have dark support next door
++// but sit in a half-white checkerboard (measured median 195 light pixels);
++// real text has only its own strokes and neighbours (menu text median 48),
++// so this bound closes the last of the band leak (473 kept pixels before
++// these two guards, 17 after) while Start menu text 93%, desktop labels
++// 110/117 and the clock 325/330 stay bright.
 +constexpr int s_keepMinLuma = 150;
 +constexpr int s_keepMaxSat = 80;
 +constexpr int s_keepMaxThin = 5;
 +constexpr int s_keepDarkDelta = 60; // a supporting neighbor is this much darker
 +constexpr int s_keepBroadRadius = 7;
 +constexpr int s_keepBroadMin = 120; // dark pixels needed in the 15x15 window
++constexpr int s_keepBrightMax = 70; // light pixels tolerated in that window
 +constexpr int s_keepBrightDelta = 20; // "still brighter" defeats the AA pixel
 +// ClearType neutralization. Windows renders text with subpixel
 +// antialiasing, so a black glyph on white arrives with colored pixels baked
@@ -4354,7 +4382,7 @@ index 00000000..ffa53ca0
 +    const int stepX = std::max(1, image.width() / 256);
 +    const int stepY = std::max(1, image.height() / 256);
 +
-+    for (int y = 0; y < image.height(); ++y) {
++    for (int y = 0; y < image.height(); y += stepY) {
 +        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
 +        for (int x = 0; x < image.width(); ++x += stepX) {
 +            const QRgb c = line[x];
@@ -4377,6 +4405,35 @@ index 00000000..ffa53ca0
 +        }
 +    }
 +    return 255;
++}
++
++int brightFraction(const QImage &image)
++{
++    if (image.isNull()) {
++        return 0;
++    }
++
++    // Same subsample as medianLuma(). White window chrome (luma above 200)
++    // is what a native dark screen or a fullscreen video does not have much
++    // of, however dark its median is - text and icons keep the fraction
++    // under ~10%, while a light desktop under a dark overlay sits near 30%.
++    int samples = 0;
++    int bright = 0;
++
++    const int stepX = std::max(1, image.width() / 256);
++    const int stepY = std::max(1, image.height() / 256);
++
++    for (int y = 0; y < image.height(); y += stepY) {
++        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
++        for (int x = 0; x < image.width(); x += stepX) {
++            const QRgb c = line[x];
++            const int luma = (qRed(c) * 77 + qGreen(c) * 150 + qBlue(c) * 29) >> 8;
++            bright += (luma > 200) ? 1 : 0;
++            ++samples;
++        }
++    }
++
++    return samples == 0 ? 0 : bright * 100 / samples;
 +}
 +
 +void apply(QImage &image)
@@ -4436,6 +4493,7 @@ index 00000000..ffa53ca0
 +    }
 +
 +    QVector<uint8_t> surface(n, 0);
++    QVector<uint8_t> darkSurface(n, 0);
 +    for (int y = 0; y < h; ++y) {
 +        const int y0 = std::max(y - s_flatRadius, 0);
 +        const int y1 = std::min(y + s_flatRadius, h - 1);
@@ -4452,6 +4510,14 @@ index 00000000..ffa53ca0
 +            if (mx - mn <= s_flatSpread && int(sum / count) >= s_flatMean
 +                && saturation[y * w + x] <= s_flatOwnSat) {
 +                surface[y * w + x] = 1;
++            }
++            // The dark mirror, mean-based (see the constants): full windows
++            // only, so a one-pixel-tall strip at an image edge - or the
++            // brightness ramp of a test - is never a surface.
++            if (count == (2 * s_flatRadius + 1) * (2 * s_flatRadius + 1)
++                && luma[y * w + x] <= s_darkOwnMax && int(sum / count) <= s_darkMean
++                && saturation[y * w + x] <= s_flatOwnSat) {
++                darkSurface[y * w + x] = 1;
 +            }
 +        }
 +    }
@@ -4520,16 +4586,31 @@ index 00000000..ffa53ca0
 +                    continue;
 +                }
 +                int broad = 0;
++                int neighboursLight = 0;
 +                for (int yy = std::max(y - s_keepBroadRadius, 0); yy <= std::min(y + s_keepBroadRadius, h - 1); ++yy) {
 +                    for (int xx = std::max(x - s_keepBroadRadius, 0); xx <= std::min(x + s_keepBroadRadius, w - 1); ++xx) {
 +                        const int j = yy * w + xx;
-+                        // Only colored dark pixels are a truly dark surface;
-+                        // neutral dark ones are text or dither the filter
-+                        // itself will flip. See the constants.
-+                        broad += (luma[j] <= selfLuma - s_keepDarkDelta && saturation[j] > s_satKeep) ? 1 : 0;
++                        // Dark support = pixels that stay dark after
++                        // filtering: colored dark ones (taskbar, wallpaper -
++                        // the saturation rule preserves them) and flat dark
++                        // surfaces (Start menu panel - that rule preserves
++                        // them). Neutral dark pixels the curve flips light
++                        // do not count: that is what keeps the dithered
++                        // Start menu border from glowing. See the constants.
++                        broad += (luma[j] <= selfLuma - s_keepDarkDelta
++                                  && (saturation[j] > s_satKeep || darkSurface[j]))
++                            ? 1
++                            : 0;
++                        neighboursLight += (luma[j] >= s_keepMinLuma) ? 1 : 0;
 +                    }
 +                }
-+                keep[self] = (broad >= s_keepBroadMin) ? 1 : 0;
++                // And the region must be mostly dark, not a checkerboard:
++                // white text on a white page or a dithered translucent band
++                // both have dark support nearby, but half their 15x15
++                // window is light pixels; real text has only its own
++                // strokes (measured: menu text median 48 of 225, dither
++                // band median 195).
++                keep[self] = (broad >= s_keepBroadMin && neighboursLight <= s_keepBrightMax) ? 1 : 0;
 +                continue;
 +            }
 +
@@ -4589,6 +4670,14 @@ index 00000000..ffa53ca0
 +                continue;
 +            }
 +
++            if (darkSurface[self]) {
++                // Flat dark surface - the remote's own dark chrome (a Start
++                // menu panel at (31, 31, 31)): already dark-mode, and the
++                // curve would flip it into a glowing slab. Untouched; the
++                // light text standing on it is preserved by the keep rule.
++                continue;
++            }
++
 +            if (keep[self]) {
 +                // White text over an already-dark surface (wallpaper,
 +                // taskbar): recoloring it dark would hide it. Untouched.
@@ -4637,10 +4726,10 @@ index 00000000..ffa53ca0
 +}
 diff --git a/core/smartinvert.h b/core/smartinvert.h
 new file mode 100644
-index 00000000..13793e73
+index 00000000..6b469442
 --- /dev/null
 +++ b/core/smartinvert.h
-@@ -0,0 +1,56 @@
+@@ -0,0 +1,69 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4676,9 +4765,12 @@ index 00000000..13793e73
 + * filter cannot distinguish from colorful content, and they would remain as
 + * colored halos around recolored text.
 + *
-+ * medianLuma() supports an auto-bias: a screen whose median brightness shows
-+ * a light theme is filtered, one that is already dark (native dark mode, or
-+ * full-screen video) is passed through untouched.
++ * medianLuma() and brightFraction() support an auto-bias: a screen that is
++ * light, or still has wide white windows under a dark overlay such as the
++ * Start menu, is filtered; one that is genuinely dark (native dark mode, or
++ * full-screen video) is passed through untouched. The view repaints fully
++ * whenever that decision flips, so no region keeps pixels painted under the
++ * other state.
 + */
 +namespace SmartInvert
 +{
@@ -4689,6 +4781,16 @@ index 00000000..13793e73
 +KRDCCORE_EXPORT int medianLuma(const QImage &image);
 +
 +/**
++ * Percent (0-100) of subsampled pixels with luma above 200 - white window
++ * chrome. This is the guard medianLuma() needs: a dark Start menu opened
++ * over a white desktop drops the median to ~50 while a third of the screen
++ * is still white chrome, and only medianLuma() cannot tell that from the
++ * remote switching to native dark mode or a fullscreen video, where white
++ * survives only as sparse text and icons (well under 15 percent).
++ */
++KRDCCORE_EXPORT int brightFraction(const QImage &image);
++
++/**
 + * Recolor the image in place. Low-saturation pixels have their brightness
 + * mapped through a smooth, monotone light-to-dark curve; saturated pixels
 + * are preserved unless they match the structural rules described above
@@ -4697,6 +4799,18 @@ index 00000000..13793e73
 + */
 +KRDCCORE_EXPORT void apply(QImage &image);
 +}
+diff --git a/devplugins/krdc/krdc_rdpplugin.so b/devplugins/krdc/krdc_rdpplugin.so
+new file mode 100755
+index 00000000..05b7e7b7
+Binary files /dev/null and b/devplugins/krdc/krdc_rdpplugin.so differ
+diff --git a/devplugins/krdc/krdc_spiceplugin.so b/devplugins/krdc/krdc_spiceplugin.so
+new file mode 100755
+index 00000000..f4a1d53b
+Binary files /dev/null and b/devplugins/krdc/krdc_spiceplugin.so differ
+diff --git a/devplugins/krdc/krdc_vncplugin.so b/devplugins/krdc/krdc_vncplugin.so
+new file mode 100755
+index 00000000..7831f2d0
+Binary files /dev/null and b/devplugins/krdc/krdc_vncplugin.so differ
 diff --git a/krdcui.rc b/krdcui.rc
 index 8dbfd755..9928190d 100644
 --- a/krdcui.rc
@@ -5573,7 +5687,7 @@ index 807a04fa..6e7fc6c4 100644
      void initializeDisplay(RdpContext *krdp, DispClientContext *disp);
      void destroyClipboard();
 diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
-index 90dd3a0e..7e8c20a3 100644
+index 90dd3a0e..5dba3599 100644
 --- a/rdp/rdpview.cpp
 +++ b/rdp/rdpview.cpp
 @@ -10,8 +10,10 @@
@@ -5587,7 +5701,22 @@ index 90dd3a0e..7e8c20a3 100644
  
  #include <KMessageDialog>
  #include <KPasswordDialog>
-@@ -73,6 +75,26 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
+@@ -33,6 +35,14 @@
+ 
+ #include "rdpmonitorview.h"
+ 
++namespace {
++// Percent of white-chrome pixels under which a dark-median screen counts as
++// genuinely dark (native dark mode, fullscreen video) rather than a light
++// desktop under a dark overlay: measured 28-32% for a Start menu over white
++// windows, and text-only whites keep native dark screens near 10%.
++constexpr int s_darkChromePct = 15;
++}
++
+ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, const QString &user, const QString &domain, const QString &password)
+     : RemoteView(parent)
+     , m_user(user)
+@@ -73,6 +83,27 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
      }
  
      m_hostPreferences = std::make_unique<RdpHostPreferences>(configGroup);
@@ -5602,9 +5731,10 @@ index 90dd3a0e..7e8c20a3 100644
 +            return;
 +        }
 +        // Same hysteresis as updateDarkFilter(): re-engage above 150, drop
-+        // below 110, hold in between.
++        // below 110 only once white chrome has gone too, hold in between.
 +        const int median = SmartInvert::medianLuma(*m_session->videoBuffer());
-+        const bool engage = m_darkFilterActive ? median >= 110 : median > 150;
++        const bool chrome = SmartInvert::brightFraction(*m_session->videoBuffer()) >= s_darkChromePct;
++        const bool engage = m_darkFilterActive ? (median >= 110 || chrome) : median > 150;
 +        if (engage != m_darkFilterActive) {
 +            m_darkFilterActive = engage;
 +            m_displaySequence = -1;
@@ -5614,7 +5744,7 @@ index 90dd3a0e..7e8c20a3 100644
  }
  
  RdpView::~RdpView()
-@@ -403,6 +425,52 @@ QPixmap RdpView::takeScreenshot()
+@@ -403,6 +434,52 @@ QPixmap RdpView::takeScreenshot()
      return QPixmap{};
  }
  
@@ -5667,7 +5797,7 @@ index 90dd3a0e..7e8c20a3 100644
  bool RdpView::supportsScaling() const
  {
      return true;
-@@ -572,16 +640,23 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -572,16 +649,23 @@ void RdpView::paintEvent(QPaintEvent *event)
  
      const auto &image = *m_session->videoBuffer();
  
@@ -5694,7 +5824,7 @@ index 90dd3a0e..7e8c20a3 100644
      const qreal outputScale = m_session->outputScale();
      scaledImage.setDevicePixelRatio(outputScale);
  
-@@ -593,6 +668,59 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -593,6 +677,73 @@ void RdpView::paintEvent(QPaintEvent *event)
      painter.end();
  }
  
@@ -5727,14 +5857,28 @@ index 90dd3a0e..7e8c20a3 100644
 +    }
 +    m_displaySequence = m_updateSequence;
 +
++    const bool wasActive = m_darkFilterActive;
 +    const int median = SmartInvert::medianLuma(image);
 +    // Hysteresis: engage on a clearly light screen, disengage on a clearly
 +    // dark one, and hold the decision in between so a screen that is half
-+    // dark window / half light window does not flicker.
++    // dark window / half light window does not flicker. The disengage also
++    // demands that white chrome has vanished: a dark Start menu opening
++    // over a white desktop drops the median to ~50 while a third of the
++    // screen is still white windows, and disengaging on the median alone
++    // painted that chrome raw (see the repaint note below for why regions
++    // painted raw stayed raw). A genuinely dark remote - native dark mode,
++    // a fullscreen video - holds its bright fraction under ~10%.
 +    if (median > 150) {
 +        m_darkFilterActive = true;
-+    } else if (median < 110) {
++    } else if (median < 110 && SmartInvert::brightFraction(image) < s_darkChromePct) {
 +        m_darkFilterActive = false;
++    }
++    if (m_darkFilterActive != wasActive) {
++        // A flip must repaint the whole view, not just this damage rect:
++        // regions painted while the filter was in the other state would
++        // otherwise keep those pixels until something happened to damage
++        // them again - the white band a Start menu left behind.
++        update();
 +    }
 +
 +    if (!m_darkFilterActive) {
@@ -5754,7 +5898,7 @@ index 90dd3a0e..7e8c20a3 100644
  void RdpView::handleKeyEvent(QKeyEvent *event)
  {
      if (m_session) {
-@@ -624,6 +752,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
+@@ -624,6 +775,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
  
  void RdpView::onRectangleUpdated(const QRect &remoteRect, const QSize &remoteSize)
  {
@@ -5865,10 +6009,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..6fef5f29
+index 00000000..15352dd0
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,637 @@
+@@ -0,0 +1,691 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -6016,9 +6160,21 @@ index 00000000..6fef5f29
 +{
 +    QImage img(64, 64, QImage::Format_RGB32);
 +    img.fill(Qt::white);
-+    for (int x = 4; x < 20; ++x) {
-+        for (int y = 4; y < 10; ++y) {
++    // A realistic thin-stroked glyph, not a solid block: a filled 16x6 dark
++    // rectangle is structurally a small dark panel, and the flat dark
++    // surface rule (rightly) leaves panels alone. Real glyph strokes on a
++    // light page window-average bright and recolor.
++    for (int y = 4; y < 16; ++y) { // an "H" of 2px stems and a crossbar
++        for (int x = 4; x < 6; ++x) {
 +            img.setPixel(x, y, qRgb(20, 20, 20));
++        }
++        for (int x = 10; x < 12; ++x) {
++            img.setPixel(x, y, qRgb(20, 20, 20));
++        }
++        if (y >= 8 && y < 10) {
++            for (int x = 6; x < 10; ++x) {
++                img.setPixel(x, y, qRgb(20, 20, 20));
++            }
 +        }
 +    }
 +    for (int x = 30; x < 46; ++x) {
@@ -6207,6 +6363,48 @@ index 00000000..6fef5f29
 +    page.setPixel(12, 26, qRgb(200, 200, 200)); // its antialiasing edge
 +    SmartInvert::apply(page);
 +    check(qRed(page.pixel(12, 26)) < 120, "white chrome beside dark text still goes dark, no speckle");
++
++    // brightFraction(), the disengage guard: a dark Start menu ((11,26,53))
++    // opened over a white desktop reads dark by median while a third of the
++    // screen is still white chrome - disengaging there unfiltered a wall of
++    // white windows. A native dark screen (or a video) keeps its bright
++    // pixels sparse: text and icons only.
++    QImage menuOverDesktop(64, 64, QImage::Format_RGB32);
++    menuOverDesktop.fill(qRgb(11, 26, 53));
++    for (int y = 0; y < 26; ++y) {
++        for (int x = 0; x < 64; ++x) {
++            menuOverDesktop.setPixel(x, y, qRgb(255, 255, 255)); // white windows
++        }
++    }
++    check(SmartInvert::medianLuma(menuOverDesktop) < 110, "a Start menu over a white desktop reads dark by median");
++    check(SmartInvert::brightFraction(menuOverDesktop) >= 15, "but its white chrome fraction keeps the filter engaged");
++    QImage nativeDark(64, 64, QImage::Format_RGB32);
++    nativeDark.fill(qRgb(24, 24, 24));
++    for (int y = 0; y < 64; ++y) {
++        nativeDark.setPixel(y, (y * 7) % 64, qRgb(255, 255, 255)); // sparse text dots
++    }
++    check(SmartInvert::medianLuma(nativeDark) < 110, "a native dark screen reads dark by median");
++    check(SmartInvert::brightFraction(nativeDark) < 15, "and its sparse whites let it pass through unfiltered");
++    check(SmartInvert::brightFraction(QImage()) == 0, "a null image has no bright pixels");
++
++    // The Start menu panel itself: the app list is painted over a flat
++    // (31, 31, 31) panel that the curve would flip to near-white, turning
++    // the menu into a glaring slab the moment the filter learned to stay
++    // engaged behind it. The flat dark surface rule leaves the panel alone,
++    // and the white text standing on it stays bright - while the dithered
++    // translucent border above (previous test) still darkens, because a
++    // dither window averages its bright dots in above any dark surface
++    // bound.
++    QImage menuPanel(64, 64, QImage::Format_RGB32);
++    menuPanel.fill(qRgb(31, 31, 31));
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 10; x < 12; ++x) {
++            menuPanel.setPixel(x, y, qRgb(255, 255, 255)); // white glyph stroke
++        }
++    }
++    SmartInvert::apply(menuPanel);
++    check(menuPanel.pixel(40, 40) == qRgb(31, 31, 31), "a flat dark Start menu panel is left alone, not flipped to a white slab");
++    check(qRed(menuPanel.pixel(10, 26)) >= 200, "white text standing on the dark panel stays bright");
 +}
 +
 +static void testUrlDerivation()
