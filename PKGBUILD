@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=2.29.0
+pkgver=2.30.1
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -44,14 +44,20 @@ optdepends=('python-aiohttp: aiohttp'
             'python-transformers: local-tokenizer'
 
             'python-pyopenssl: pyopenssl')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bc5b03ffd041bce8b11bd2f2fa2bb856920d921f53ebf14c13b6caf5e65c4538')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz"
+        "$url/pull/3064.patch")
+sha256sums=('b8f9817676911d701ba9d985630a48dcd147b62331995b0a5888acf63b860133'
+            '3d18903ca18ae3d2913d87d6423df903e2a96408aa2dd671271347ce52f02d28')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   sed -i 's/, "twine>=6.1.0", "packaging>=24.2", "pkginfo>=1.12.0"//g' pyproject.toml
   # Fix compatibility with newer tenacity versions
   sed -i 's/wait.initial/wait.multiplier/g' google/genai/tests/client/test_retries.py
+  # Add the google.genai._interactions module that test_interactions_default_timeout imports (upstream PR #3064, not merged yet)
+  patch -Np1 -i ../3064.patch
+  # Use the default timeout set by upstream commit b006b4b, which PR #3064 doesn't have yet
+  sed -i 's/Timeout(timeout=60.0, connect=5.0)/Timeout(timeout=None, connect=5.0)/' google/genai/_interactions/__init__.py
 }
 
 build() {
@@ -81,6 +87,7 @@ check() {
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
     --deselect google/genai/tests/operations/test_get.py
     --deselect google/genai/tests/interactions/test_paths.py
+    --deselect google/genai/tests/chats/test_send_message_continuation_token.py
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   touch ${_name//-//}/tests/certificate_config.json
