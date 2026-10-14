@@ -4,7 +4,7 @@
 _appname=integration_gitlab
 pkgname=nextcloud-app-${_appname/_/-}
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GitLab integration into Nextcloud'
 arch=(any)
 url="https://github.com/nextcloud/$_appname"
