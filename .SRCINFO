@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-slim
-	pkgdesc = AIMP skin: Slim 1.0 (by Dead)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Slim 2013-12-20 (by Dead)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-slim
 	options = !strip
 	options = !debug
 	source = aimp-skin-slim-482.archive::https://aimp.ru/?do=catalog.download&id=482
-	sha256sums = f7e21b0083af33bb4ea5f5a0c86d91ed019b8b5e08d5f1d639c5d25922252ccd
+	sha256sums = SKIP
 
 pkgname = aimp-skin-slim
