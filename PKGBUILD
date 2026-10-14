@@ -3,8 +3,8 @@
 _name=easymesh4openems
 _pkgname=python-${_name}
 pkgname=${_pkgname}-git
-pkgver=r52.75231fb
-pkgrel=1
+pkgver=r55.6f2c54d
+pkgrel=2
 pkgdesc='Automatic mesh generation for OpenEMS/CSXCAD'
 arch=(any)
 url=https://github.com/MustafaAlchalabi/easyMesh4openEMS
@@ -28,6 +28,7 @@ optdepends=(
 )
 source=("${_name}::git+${url}")
 b2sums=("SKIP")
+provides=("${pkgname%%-git}")
 
 pkgver() {
   cd "${_name}"

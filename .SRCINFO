@@ -1,7 +1,7 @@
 pkgbase = python-easymesh4openems-git
 	pkgdesc = Automatic mesh generation for OpenEMS/CSXCAD
-	pkgver = r52.75231fb
-	pkgrel = 1
+	pkgver = r55.6f2c54d
+	pkgrel = 2
 	url = https://github.com/MustafaAlchalabi/easyMesh4openEMS
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,6 +15,7 @@ pkgbase = python-easymesh4openems-git
 	depends = python-openems
 	depends = python-csxcad
 	optdepends = python-matplotlib: Used in tutorial files
+	provides = python-easymesh4openems
 	source = easymesh4openems::git+https://github.com/MustafaAlchalabi/easyMesh4openEMS
 	b2sums = SKIP
 
