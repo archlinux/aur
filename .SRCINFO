@@ -1,8 +1,9 @@
 pkgbase = comate-bin
-	pkgdesc = Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)
-	pkgver = 3.7.0
+	pkgdesc = Code as you like, one step ahead, and understand your intelligent code assistant better.
+	pkgver = 3.11.5
 	pkgrel = 1
 	url = https://comate.baidu.com
+	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron39
@@ -14,23 +15,26 @@ pkgbase = comate-bin
 	depends = libsecret
 	depends = webkit2gtk-4.1
 	depends = python-yaml
+	depends = python-lxml
 	optdepends = bash
 	optdepends = zsh
-	provides = comate=3.7.0
+	provides = comate=3.11.5
 	conflicts = comate
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-3.7.0::https://cloud.baidu.com/doc/COMATE/s/glxiygwdx
+	source = LICENSE-3.11.5::https://cloud.baidu.com/doc/COMATE/s/glxiygwdx
 	source = comate.js
 	source = comate.desktop
 	source = comate-url-handler.desktop
 	source = comate.sh
-	sha256sums = e53c134a53b07446e984cf02440f9496cb95f0094076f1fdce865f9ca15efee4
-	sha256sums = df2535dcf1679b8681a27f35a445c08300d34b0336af0dea07f0fbcd5ef5e946
+	sha256sums = 16d9eed478ac62bd4ea2abd5cc2c291541657baf3d7f25d9b37860efc54a2879
+	sha256sums = 34154f0c3b9fd59edb131d803f1cbba6031c8f45a014b6cbddf1242064937d65
 	sha256sums = 0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d
 	sha256sums = 787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5
-	sha256sums = 700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599
-	source_x86_64 = comate-3.7.0-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/dbe3bb9d65a13a91ebcb1b9d16d028498c0653e8-267429020/Comate-linux-x64.tar.gz
-	sha256sums_x86_64 = 0d1d443c24404390be895615e305cc36da478e4414fd9e16a373cdeed66426e5
+	sha256sums = ee3d816992d08490f0d7fe8eb5b3c23006c1c7c280cde73c7dee79a23903aa5c
+	source_aarch64 = comate-3.11.5-aarch64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/b0a3898a5a5ca92be2dc09a8bb0f91d341925e3a-273608800/Comate-linux-arm64.tar.gz
+	sha256sums_aarch64 = dd79acf213f3a523be07f9febdd35e58981571e65daa7701e160f2f20b1fde09
+	source_x86_64 = comate-3.11.5-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/b0a3898a5a5ca92be2dc09a8bb0f91d341925e3a-273608800/Comate-linux-x64.tar.gz
+	sha256sums_x86_64 = 20315b31fa30fc768f5c38fe308a3b8e3397040af43498689f0286c8f9ace578
 
 pkgname = comate-bin

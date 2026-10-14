@@ -4,12 +4,13 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=3.7.0
-_version=dbe3bb9d65a13a91ebcb1b9d16d028498c0653e8-267429020
+pkgver=3.11.5
+_version=b0a3898a5a5ca92be2dc09a8bb0f91d341925e3a-273608800
 _electronversion=39
 pkgrel=1
-pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
+pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better."
 arch=(
+    'aarch64'
     'x86_64'
 )
 url="https://comate.baidu.com"
@@ -26,6 +27,7 @@ depends=(
     'libsecret'
     'webkit2gtk-4.1'
     'python-yaml'
+    'python-lxml'
 )
 optdepends=(
     'bash'
@@ -42,55 +44,54 @@ source=(
     "${pkgname%-bin}-url-handler.desktop"
     "${pkgname%-bin}.sh"
 )
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('e53c134a53b07446e984cf02440f9496cb95f0094076f1fdce865f9ca15efee4'
-            'df2535dcf1679b8681a27f35a445c08300d34b0336af0dea07f0fbcd5ef5e946'
+sha256sums=('16d9eed478ac62bd4ea2abd5cc2c291541657baf3d7f25d9b37860efc54a2879'
+            '34154f0c3b9fd59edb131d803f1cbba6031c8f45a014b6cbddf1242064937d65'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
-            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_x86_64=('0d1d443c24404390be895615e305cc36da478e4414fd9e16a373cdeed66426e5')
+            'ee3d816992d08490f0d7fe8eb5b3c23006c1c7c280cde73c7dee79a23903aa5c')
+sha256sums_aarch64=('dd79acf213f3a523be07f9febdd35e58981571e65daa7701e160f2f20b1fde09')
+sha256sums_x86_64=('20315b31fa30fc768f5c38fe308a3b8e3397040af43498689f0286c8f9ace578')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
-    echo "Verifying Electron version..."
-    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
-    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
-    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
-    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
-    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
-        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
-        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
+		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+		| grep -oP 'Electron/\K[0-9]+' | head -1)
+	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
+	(( _v == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
     _check_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
-        s/@cfgdirname@/${_pkgname}/g
+        s/@runname@/${pkgname%-bin}.js/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
-    # 删除其他平台的预编译 .node 文件
-    local _app_dir=$(_get_app_dir)
-    find "${_app_dir}/resources/app" -path "*/prebuilds/*" \
-        ! -path "*/linux-x64/*" -name "*.node" -delete
-    rm -rf "${_app_dir}/resources/app/extensions/baiducomate.comate/dist/comate-engine/node_modules/tree-sitter-bash/prebuilds/"{win32-x64,win32-arm64,darwin-x64,darwin-arm64}
-    find "${_app_dir}/resources/app" -name "win32-*" -name "*.node" -delete
-    rm -rf "${_app_dir}/resources/app/extensions/preview-dev-tools"
+    sed -i -e "
+        s/@ELECTRON@/electron${_electronversion}/g
+        s/@name@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.js"
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "${srcdir}" -type d \
+		\( -name '*darwin*' -o -name "*ia32*" -o -name '*android*' -o -name '*win32*' -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "${srcdir}" -type f \
+		\( -name '*darwin*.*' -o -name "*ia32*.*" -o -name '*android*.*' -o -name '*win32*.*' -o -name "*${_archrem}*.*" \) \
+		-delete
+    rm -rf "$(_get_app_dir)/resources/app/extensions/preview-dev-tools"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}"*.desktop -t "${pkgdir}/usr/share/applications"
-    if [ -x "/usr/bin/bash" ];then
-        install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/completions/bash/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
-    fi
-    if [ -x "/usr/bin/zsh" ];then
-        install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/completions/zsh/_${pkgname%-bin}" -t "${pkgdir}/usr/share/zsh/site-functions"
-    fi
+    [ -x "/usr/bin/bash" ] && install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/completions/bash/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
+    [ -x "/usr/bin/zsh" ] && install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/completions/zsh/_${pkgname%-bin}" -t "${pkgdir}/usr/share/zsh/site-functions"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
