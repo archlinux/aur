@@ -1,0 +1,42 @@
+pkgbase = libpdfium
+	pkgdesc = PDF rendering/manipulation library from Chromium
+	pkgver = 155.0.8059.79
+	pkgrel = 1
+	url = https://pdfium.googlesource.com/pdfium/
+	arch = x86_64
+	license = Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND MIT AND NCSA
+	makedepends = clang
+	makedepends = fast_float
+	makedepends = gn
+	makedepends = lld
+	makedepends = llvm
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = rust
+	makedepends = highway
+	depends = glibc
+	depends = libbrotlidec.so=1-64
+	depends = libfreetype.so=6-64
+	depends = libgcc_s.so=1-64
+	depends = libharfbuzz.so=0-64
+	depends = libharfbuzz-subset.so=0-64
+	depends = libicuuc.so=78-64
+	depends = liblcms2.so=2-64
+	depends = libjpeg.so=8-64
+	depends = libz.so=1-64
+	depends = openjpeg2
+	provides = libpdfium.so=libpdfium.so-64
+	options = !lto
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-155.0.8059.79-lite.tar.xz
+	source = compiler-rt-adjust-paths.patch
+	source = increase-fortify-level.patch
+	source = chromium-153-hermetic-python.patch
+	source = chromium-155-fix-gn-no-public_inputs.patch
+	sha256sums = fcb5be44f1f5916ac23309c706146819c792c0d0e9c1a8220b7fbc046d79f15e
+	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
+	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
+	sha256sums = ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49
+	sha256sums = 81a9014afff7e2a836c2ba2da69a9023d42d2f69a46cb91a0504642c480f6cc7
+
+pkgname = libpdfium
