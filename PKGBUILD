@@ -3,8 +3,8 @@
 _obs_studio=obs-studio
 pkgbase=obs-rust
 pkgname=("$_obs_studio-rust" "$_obs_studio-rust-plugin-browser")
-pkgver=0.1.0beta.20261012
-pkgrel=2
+pkgver=0.1.0beta.20261014
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://github.com/$pkgbase"
@@ -25,7 +25,7 @@ source=(
   "${pkgbase}-obs-browser::git+$url/obs-browser.git"
   "${pkgbase}-obs-websocket::git+$url/obs-websocket.git"
 )
-sha256sums=('57d49493193b8daf10d5ce93cd854e9f587dafd31c43a56fdf160b161e0c2aa8'
+sha256sums=('05ac0389bfab6a4a4ee313495743a82866d035adaf2655d018141954aa8634a1'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -94,7 +94,7 @@ package_obs-studio-rust() {
               )
   DESTDIR="$pkgdir" cmake --install build
   pushd "$pkgbase"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/obs-stream-rust"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_obs_studio-rust"
 }
 
 package_obs-studio-rust-plugin-browser() {
