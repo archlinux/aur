@@ -1,0 +1,16 @@
+pkgbase = hpi
+	pkgdesc = Helwan Package Installer for Arch Linux packages
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/helwan-linux/hpi
+	install = hpi.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = gtk3
+	depends = polkit
+	depends = pacman
+	source = git+https://github.com/helwan-linux/hpi.git
+	sha256sums = SKIP
+
+pkgname = hpi
