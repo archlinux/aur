@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-unsquareable
-	pkgdesc = AIMP skin: Unsquareable 0.4.9 (by quefcyze)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Unsquareable v0.4.9 (by quefcyze)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-unsquareable
 	options = !strip
 	options = !debug
 	source = aimp-skin-unsquareable-915.archive::https://aimp.ru/?do=catalog.download&id=915
-	sha256sums = 56f763bac81aef185df02a3977a63e3e687886249c02e28605ed532c65a3a203
+	sha256sums = SKIP
 
 pkgname = aimp-skin-unsquareable
