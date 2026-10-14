@@ -31,9 +31,8 @@ post_upgrade() {
 
 SYSC-WALLS UPGRADED
 
-v1.1.0 changes:
-  - Apply the Hyprland fullscreen rule once using current syntax.
-  - Run one screensaver on labwc when output focus control is unavailable.
+v1.1.1 changes:
+  - Restore compatibility with sysc-shell's screensaver controls.
 
 Restart the service to apply changes:
     systemctl --user restart sysc-walls.service
