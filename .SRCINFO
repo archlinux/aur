@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-ex-black
-	pkgdesc = AIMP skin: eX-Black 1.54 (by Braindefender)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: eX-Black v1.54 (by Braindefender)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-ex-black
 	options = !strip
 	options = !debug
 	source = aimp-skin-ex-black-713.archive::https://aimp.ru/?do=catalog.download&id=713
-	sha256sums = 78326b3886b0543f853145f187f15c5300960bf3d600e5e607920fe2cfadba25
+	sha256sums = SKIP
 
 pkgname = aimp-skin-ex-black
