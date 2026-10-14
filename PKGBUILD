@@ -6,7 +6,7 @@
 # suite CI does.
 pkgname=python-openappx
 _name=openappx
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Build, sign, bundle and install Windows Appx/MSIX packages from Linux"
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python' 'python-cryptography')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4aa8cb74cdee889d3af5f301b57b74d5cbb1deb5b410d5bfb3229636c4c1e2e1')
+sha256sums=('ecd0ae76d2aa1ecefc892845ac6eca9fc9d6c763cbeb965819868c34e11a26cb')
 
 build() {
 	cd "$_name-$pkgver"
