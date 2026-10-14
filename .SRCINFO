@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aimp-potplayer
-	pkgdesc = AIMP skin: AIMP PotPlayer 3.0 (by BehemothXxx)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: AIMP PotPlayer v3.0 (by BehemothXxx)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aimp-potplayer
 	options = !strip
 	options = !debug
 	source = aimp-skin-aimp-potplayer-607.archive::https://aimp.ru/?do=catalog.download&id=607
-	sha256sums = 91d0cb94b8a4105b0c95eec122be7764c0d7be66e58856011c73fdd8a274b70e
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aimp-potplayer
