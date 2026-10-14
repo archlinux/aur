@@ -1,14 +1,14 @@
 # Maintainer: BangL <henno.rickowski@gmail.com>
 pkgname=taskbar-cat-git
 _pkgname=taskbar-cat
-pkgver=r5.306afc5
+pkgver=r6.e956472
 pkgrel=1
 pkgdesc="Pixel-Art-Tamagotchi-Katze für KDE Plasma 6 / Wayland, lebt auf Boden und Fensteroberkanten"
 arch=('any')
 url="https://github.com/BangL/taskbar-cat"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'qt6-declarative' 'qt6-wayland' 'layer-shell-qt' 'kwin')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools>=77' 'python-wheel')
 checkdepends=('python-pytest')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
