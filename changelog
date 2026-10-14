@@ -1,3 +1,6 @@
+2026-10-14 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.10.6-1:
+    Adapted to dotnet/docs#56396 breaking change (@JustArchi).
 2026-10-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.10.4-1:
     Fixed a security issue of ASF crash possibility upon receiving a specifically-crafted message (@JustArchi @hothaot GHSA-638f-693r-f7qr).
