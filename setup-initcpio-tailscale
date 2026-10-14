@@ -4,6 +4,7 @@ set -e
 CMD0="${0##*/}"
 TS_HOSTNAME="${HOSTNAME}-initrd"
 TS_STATEDIR=/etc/initcpio/tailscale
+TS_SECURITY_URL=https://github.com/dangra/mkinitcpio-tailscale#security-considerations
 PID=""
 
 usage() {
@@ -277,32 +278,38 @@ run_check() {
     done
   fi
 
-  # Key expiry, the one setup step nothing else can verify: an expired initrd
-  # node cannot reach the tailnet, and you would find out while locked out of
-  # a machine waiting for its passphrase. The booted system's own tailscale
-  # sees the initrd node as a peer, and a node with expiry disabled -- what
-  # the setup output asks for -- simply has no KeyExpiry. Every way this can
-  # be inapplicable is a warning: it is a courtesy check on someone else's
-  # control plane, not a verdict on this machine's configuration.
-  local expiry='' status=''
+  # Tag and key expiry, the two things only the control plane knows, read
+  # from the booted system's own tailscale, which sees the initrd node as a
+  # peer. Untagged, the node holds the permissions of whoever registered it,
+  # and anyone who lifts its key from the image gets them; tagged, only rules
+  # naming the tag apply. An expired initrd node cannot reach the tailnet at
+  # all, and you would find out while locked out of a machine waiting for its
+  # passphrase; a node with expiry disabled -- the default for tagged ones --
+  # simply has no KeyExpiry. Every way this can be inapplicable is a warning:
+  # it is a courtesy check on someone else's control plane, not a verdict on
+  # this machine's configuration.
+  local status='' peer='' tags='' expiry=''
   if ! command -v tailscale >/dev/null; then
-    chk_warn "tailscale is not installed here, so '${TS_HOSTNAME}' key expiry cannot be checked"
+    chk_warn "tailscale is not installed here, so '${TS_HOSTNAME}' tags and key expiry cannot be checked"
   elif ! command -v jq >/dev/null; then
-    chk_warn "jq is not installed, so '${TS_HOSTNAME}' key expiry cannot be checked"
+    chk_warn "jq is not installed, so '${TS_HOSTNAME}' tags and key expiry cannot be checked"
   elif ! status=$(tailscale status --json 2>/dev/null); then
-    chk_warn "the system tailscale is not running, so '${TS_HOSTNAME}' key expiry cannot be checked"
+    chk_warn "the system tailscale is not running, so '${TS_HOSTNAME}' tags and key expiry cannot be checked"
+  elif ! peer=$(printf '%s' "$status" |
+    jq -ce --arg n "$TS_HOSTNAME" '[.Peer[]? | select(.HostName == $n)][0] // empty' 2>/dev/null); then
+    # Telling "not found" apart from "found, nothing to report" keeps a
+    # custom --hostname from reading as an all-clear.
+    chk_warn "'${TS_HOSTNAME}' is not among this tailnet's peers, so its tags and key expiry cannot be checked (registered under another name? pass --hostname=)"
   else
-    expiry=$(printf '%s' "$status" |
-      jq -r --arg n "$TS_HOSTNAME" '[.Peer[]? | select(.HostName == $n)][0].KeyExpiry // ""' 2>/dev/null)
+    tags=$(jq -r '(.Tags // []) | join(",")' <<<"$peer")
+    if [[ -n $tags ]]; then
+      chk_ok "'${TS_HOSTNAME}' is tagged ${tags}; keep that out of every ACL source so the node can be reached but never reaches out"
+    else
+      chk_warn "'${TS_HOSTNAME}' carries no tag, so it holds the permissions of the user who registered it, and so does anyone who lifts its key from the image; see ${TS_SECURITY_URL}"
+    fi
+    expiry=$(jq -r '.KeyExpiry // ""' <<<"$peer")
     if [[ -z $expiry ]]; then
-      # No peer of that name, or one with expiry disabled. Telling them apart
-      # keeps a custom --hostname from reading as an all-clear.
-      if printf '%s' "$status" |
-        jq -e --arg n "$TS_HOSTNAME" '[.Peer[]? | select(.HostName == $n)] | length > 0' >/dev/null 2>&1; then
-        chk_ok "key expiry is disabled for '${TS_HOSTNAME}'"
-      else
-        chk_warn "'${TS_HOSTNAME}' is not among this tailnet's peers, so its key expiry cannot be checked (registered under another name? pass --hostname=)"
-      fi
+      chk_ok "key expiry is disabled for '${TS_HOSTNAME}'"
     else
       local now left when
       now=$(date +%s)
@@ -639,6 +646,18 @@ if [[ $TS_SSH == yes ]]; then
   done
 fi
 
+# Whether the node came out tagged, asked of the node itself: a tag can come
+# from --advertise-tags, but just as well from a tagged auth key, which is
+# the only way headscale applies one, so the arguments cannot tell. Without
+# jq there is no asking, and the next steps say so rather than guess.
+TS_TAGS=''
+TS_TAGS_KNOWN=no
+if command -v jq >/dev/null &&
+  TS_TAGS=$(tailscale --socket="$socket" status --json 2>/dev/null |
+    jq -er '(.Self.Tags // []) | join(",")' 2>/dev/null); then
+  TS_TAGS_KNOWN=yes
+fi
+
 # The one escalation boundary of the whole flow: as root, install the state
 # directly; otherwise re-invoke this script once, elevated, and let the same
 # code run plainly there. One password prompt on any escalation tool.
@@ -661,16 +680,32 @@ else
     to /etc/mkinitcpio.conf or you will have no way to enter the passphrase"
 fi
 
+if [[ -n $TS_TAGS ]]; then
+  tag_note="  * '${TS_HOSTNAME}' is tagged ${TS_TAGS}, so it holds no user's permissions and its
+    key does not expire by default. Keep the tag out of every ACL source, so the node
+    can be reached but never reaches out: ${TS_SECURITY_URL}"
+elif [[ $TS_TAGS_KNOWN == yes ]]; then
+  tag_note="  * Disable key expiry for '${TS_HOSTNAME}' at https://console.tailscale.com/admin/machines
+  * Consider tagging '${TS_HOSTNAME}': untagged, anyone who lifts its key from the image
+    gets your permissions. Add tag:initrd to tagOwners and re-run with
+    '--advertise-tags=tag:initrd' or a tagged auth key: ${TS_SECURITY_URL}"
+else
+  tag_note="  * Disable key expiry for '${TS_HOSTNAME}' at https://console.tailscale.com/admin/machines,
+    unless it is tagged: tagging disables expiry
+  * If '${TS_HOSTNAME}' is not tagged, consider tagging it: untagged, anyone who lifts its
+    key from the image gets your permissions. Add tag:initrd to tagOwners and re-run with
+    '--advertise-tags=tag:initrd' or a tagged auth key: ${TS_SECURITY_URL}"
+fi
+
 info "tailscale successfully configured.
 
 Next steps:
-  * Disable key expiry for '${TS_HOSTNAME}' at https://console.tailscale.com/admin/machines
+${tag_note}
   * Review ${TS_STATEDIR}/default.env (as root)
   * Edit /etc/mkinitcpio.conf and add 'tailscale'. A safe choice is to insert it right before 'sd-encrypt' or 'encrypt*' hooks
   * Add a network hook too -- 'sd-network' on a systemd image, 'net' or 'netconf' on a busybox one -- since nothing in mkinitcpio's stock hooks brings up an interface
 ${ssh_note}
   * Run 'mkinitcpio -P' to rebuild initramfs
-  * Check the README at https://github.com/dangra/mkinitcpio-tailscale for security considerations
 
 enjoy!
 "

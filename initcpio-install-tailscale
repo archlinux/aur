@@ -1,5 +1,82 @@
 #!/usr/bin/env bash
 
+# An 'unlock' command for whoever logs in over SSH, and an /etc/profile that
+# offers it. Tailscale SSH starts an interactive session as a login shell
+# ($SHELL -l), so the profile runs on every such login; a command given on the
+# ssh command line runs through -c instead and skips it, as it should.
+#
+# On a systemd image the passphrase prompts are ask files that
+# systemd-tty-ask-password-agent can answer from any terminal, and a root login
+# while one is pending is taken straight to it. A busybox image has no such
+# mechanism: the 'encrypt' hook reads the console and nothing else, so the only
+# remote path there is the cryptsetup_shell that 'encryptssh'
+# (mkinitcpio-utils) installs. That hook also makes the script root's login
+# shell, so a root login on such an image never reaches this profile at all.
+#
+# No stock hook writes /etc/profile, so it is ours to own. Both files are
+# written from here rather than shipped separately, since this hook is the one
+# file every image build reads.
+_tailscale_add_unlock() {
+	add_file - /usr/bin/unlock 0755 <<'__EOF_UNLOCK__'
+#!/bin/sh
+# Enter the disk passphrase this initramfs is waiting for. Written by the
+# mkinitcpio tailscale hook; /etc/profile runs it as 'unlock --login'.
+
+pending() {
+	for f in /run/systemd/ask-password/ask.*; do
+		[ -e "$f" ] && return 0
+	done
+	return 1
+}
+
+# Answering means writing into this root-only directory. A systemd image has no
+# 'id', so this is also the simplest way to ask whether we are root.
+can_answer() {
+	[ -w /run/systemd/ask-password ]
+}
+
+if [ "${1:-}" = --login ]; then
+	if ! { [ -d /run/systemd/system ] && can_answer && pending; }; then
+		echo "Run 'unlock' to enter the disk passphrase."
+		exit 0
+	fi
+fi
+
+if [ -d /run/systemd/system ]; then
+	if ! can_answer; then
+		echo "unlock: only root can answer a passphrase prompt" >&2
+		exit 1
+	fi
+	if [ ! -t 0 ]; then
+		echo "unlock: needs a terminal; connect with 'ssh -t'" >&2
+		exit 1
+	fi
+	if [ ! -x /usr/bin/systemd-tty-ask-password-agent ]; then
+		echo "unlock: no password agent in this image; is sd-encrypt in HOOKS?" >&2
+		exit 1
+	fi
+	echo "Answering passphrase prompts as they appear; press Ctrl-C for a shell."
+	exec /usr/bin/systemd-tty-ask-password-agent --watch
+fi
+
+if [ -x /bin/cryptsetup_shell ]; then
+	exec /bin/cryptsetup_shell
+fi
+
+echo "unlock: nothing in this initramfs takes a passphrase over SSH." >&2
+echo "The 'encrypt' hook only asks on the console; use 'encryptssh' from" >&2
+echo "mkinitcpio-utils in its place." >&2
+exit 1
+__EOF_UNLOCK__
+
+	add_file - /etc/profile 0644 <<'__EOF_PROFILE__'
+# Written by the mkinitcpio tailscale hook: an interactive login is told how to
+# unlock this machine, or taken straight to the prompt if root and one is
+# pending.
+[ -t 0 ] && /usr/bin/unlock --login
+__EOF_PROFILE__
+}
+
 build() {
 	# mkinitcpio's run_build_hook discards build()'s return value, so returning
 	# 1 on its own reports the problem and still lets the image be generated.
@@ -58,6 +135,8 @@ build() {
 	# emergency shell. Measured on a systemd image: 31.5MB compressed with it,
 	# 22.9MB without.
 	[[ -n $cli ]] && add_binary tailscale
+
+	_tailscale_add_unlock
 
 	if [[ $(type -t add_systemd_unit) == function ]]; then
 		add_systemd_unit tailscaled.service
@@ -131,6 +210,11 @@ help() {
 		Tailscale's own SSH server. Only if you ran it with '--no-ssh' do you need
 		one of your own -- 'sd-tinyssh' (mkinitcpio-systemd-extras), or 'dropbear'
 		or 'tinyssh' (mkinitcpio-extras).
+
+		Logged in over SSH, run 'unlock' to enter the disk passphrase. On a
+		systemd-based initramfs a root login while a passphrase is pending goes
+		straight to the prompt. A busybox-based one needs 'encryptssh'
+		(mkinitcpio-utils) in place of 'encrypt', which only asks on the console.
 
 		After editing HOOKS=, run 'setup-initcpio-tailscale --check': it verifies
 		the configuration files, this hook's placement, that the built images
