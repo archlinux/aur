@@ -17,3 +17,4 @@ pkg/
 # nvchecker local version records (not committed)
 oldver.json
 newver.json
+oldver.json~
