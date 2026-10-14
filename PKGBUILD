@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat-git
 _pkgname=GhostChat
-pkgver=4.5.0.r2.g1b3a9e6
+pkgver=4.8.0.r0.g1b86996
 _nodeversion=24
 pkgrel=1
 pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
@@ -19,7 +19,6 @@ makedepends=(
     'gendesk'
     'go'
     'nvm'
-    'curl'
     'git'
 )
 source=(
@@ -27,12 +26,18 @@ source=(
     "modifiers_linux.go"
 )
 sha256sums=('SKIP'
-            'b7f2400b0e956887b1e0d8cf4419c82726617503142b81b5c7ef3acbb1fc6798')
+            '4e4f974f65a6cc7bdf11f4182d5f183e5831ebfd5ef9fae9814b617639440b35')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     set -o pipefail
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+_get_project_dir() {
+    local d
+    while IFS= read -r d; do
+        find "$d" -name "go.mod" -o -name "go.sum" 2>/dev/null | grep -q . && { echo "$d"; return; }
+    done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -41,62 +46,87 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export HOME="${srcdir}/.electron-gyp"
-    export PATH="${HOME}/go/bin:$PATH"
-    export CGO_ENABLED=1
-    export GO111MODULE=on
-    export GOOS=linux
-    export GOCACHE="${srcdir}/go-build"
-    export GOMODCACHE="${srcdir}/go/pkg/mod"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export GOPROXY=https://goproxy.cn,direct
-        }
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_BUILDER_OFFLINE=true
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+    export HOME="${srcdir}/.home"
+    export XDG_CACHE_HOME="${HOME}/.cache"
+    export XDG_CONFIG_HOME="${HOME}/.config"
+    export XDG_DATA_HOME="${HOME}/.local/share"
+    export XDG_STATE_HOME="${HOME}/.local/state"
+    export PNPM_HOME="${HOME}/.pnpm/bin"
+    export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+    export pnpm_config_store_dir="${HOME}/.pnpm_store"
+    export pnpm_config_global_dir="${HOME}/.pnpm/global"
+    export pnpm_config_state_dir="${HOME}/.pnpm/state"
+    export pnpm_config_node_linker=hoisted
+    export pnpm_config_minimum_release_age=0
+    export pnpm_config_update_notifier=false
+    export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+    export COREPACK_HOME="${HOME}/.corepack"
+    mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+    export PATH="${PNPM_HOME}:${PATH}"
+    local _pnpmver=""
+    local _pkgjson="$(_get_project_dir)/package.json"
+    if [ -f "${_pkgjson}" ]; then
+        _pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+        if [ -z "${_pnpmver}" ]; then
+            _pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+        fi
     fi
+    if [ -n "${_pnpmver}" ]; then
+        npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+            --registry "${COREPACK_NPM_REGISTRY}"
+    fi
+    export GOPATH="${HOME}/go"
+    export GOCACHE="${HOME}/go-build"
+    export GOENV="${HOME}/go/env"
+    export XDG_CONFIG_HOME="${HOME}/.config"
+    export XDG_CACHE_HOME="${HOME}/.cache"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOTOOLCHAIN=local
+    export GOWORK=off
+    export PATH="${PATH}:$(go env GOPATH)/bin"
+    mkdir -p "${HOME}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
+    : > "${GOENV}"
 }
 prepare() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)"
     gendesk -f -n -q \
-        --pkgname="${pkgname%-git}" \
+        --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${_pkgname}" \
-        --exec="${pkgname%-git} %U"
-    _set_build_env
+        --exec="${pkgname} %U"
     _ensure_local_nvm
+    _set_build_env
     cp "${srcdir}/modifiers_linux.go" internal/hotkey/modifiers_linux.go
     go install github.com/wailsapp/wails/v3/cmd/wails3@latest
-    cd "${srcdir}/${pkgname%-git}.git/frontend"
-    NODE_ENV=development    pnpm install --frozen-lockfile
+    cd "$(_get_project_dir)/frontend"
+    export NODE_ENV=development
+    pnpm install
 }
 build() {
-    _set_build_env
+    cd "$(_get_project_dir)/build"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname%-git}.git/build"
+    _set_build_env
     go mod tidy
     wails3 generate bindings -f '-tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1"' -clean=true -ts
-    cd "${srcdir}/${pkgname%-git}.git/frontend"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "$(_get_project_dir)/frontend"
+    export NODE_ENV=production
+    pnpm run build
+    cd "$(_get_project_dir)"
     go build -tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1" -o "bin/${pkgname%-git}"
 }
 package() {
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "$(_get_project_dir)/build/appicon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
