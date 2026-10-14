@@ -2,7 +2,7 @@
 # Maintainer: LightJunction <lightjunction.me@gmail.com>
 pkgname=mimic-node
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An OverlayFS-based sing-box Reality node manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/Mimic-Node'

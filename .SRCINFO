@@ -1,7 +1,7 @@
 pkgbase = mimic-node
 	pkgdesc = An OverlayFS-based sing-box Reality node manager
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LIghtJUNction/Mimic-Node
 	install = mimic-node.install
 	arch = x86_64

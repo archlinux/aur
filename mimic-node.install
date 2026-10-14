@@ -1,5 +1,6 @@
 # shellcheck shell=bash
 post_install() {
+    _warn_unofficial_git_package
     cat <<'EOF'
 Mimic-Node installed. Services are not started automatically.
   sudo systemctl enable --now mimic-node-mount.service
@@ -15,6 +16,7 @@ EOF
 }
 
 post_upgrade() {
+    _warn_unofficial_git_package
     cat <<'EOF'
 Mimic-Node upgraded. Existing keys and users were preserved.
 Review changes with `sudo mimictl diff` before merging new defaults.
@@ -24,6 +26,15 @@ review `systemctl cat mimic-node.path mimic-node-deploy.service` if automation
 was configured by the old standalone installer.
 EOF
     _warn_legacy_binary
+}
+
+_warn_unofficial_git_package() {
+    cat <<'EOF'
+WARNING: mimic-node-git is maintained by a third party, not officially by the Mimic-Node project.
+警告：mimic-node-git 由第三方维护，不由 Mimic-Node 项目官方维护。
+The project-maintained AUR package is mimic-node.
+本项目官方维护的 AUR 包是 mimic-node。
+EOF
 }
 
 _warn_legacy_binary() {
