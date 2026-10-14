@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-groovem-black
-	pkgdesc = AIMP skin: GrooveM (Black) 1.0 (by amdpastrana)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: GrooveM (Black) 2016-11-28 (by amdpastrana)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-groovem-black
 	options = !strip
 	options = !debug
 	source = aimp-skin-groovem-black-856.archive::https://aimp.ru/?do=catalog.download&id=856
-	sha256sums = 0cef944974bc1f7166fb42277f0da46624cb85982267eeba6bcce0519abdf709
+	sha256sums = SKIP
 
 pkgname = aimp-skin-groovem-black
