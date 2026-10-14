@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-lunar
-	pkgdesc = AIMP skin: Lunar 1.1 (by NikolavRj)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Lunar v1.1 (by NikolavRj)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-lunar
 	options = !strip
 	options = !debug
 	source = aimp-skin-lunar-287.archive::https://aimp.ru/?do=catalog.download&id=287
-	sha256sums = b4fada5ade8b1cd8b3150f0eddb7fc27e625e892a64ffd6cfd7567b8268ebe5f
+	sha256sums = SKIP
 
 pkgname = aimp-skin-lunar
