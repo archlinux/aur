@@ -1,7 +1,7 @@
 # Maintainer: papacasper <chj1axr0 at gmail dot com>
 # Source of truth: https://github.com/papacasper/rokast/tree/main/packaging/aur (playbooks/release.md, "AUR").
 pkgname=rokast-git
-pkgver=0.7.0.r0.gbaa7232
+pkgver=0.8.0.r0.gc3db858
 pkgrel=1
 pkgdesc='Mirror your Linux screen to a Roku TV over native Miracast, with nothing installed on the TV (git main)'
 arch=(x86_64)
