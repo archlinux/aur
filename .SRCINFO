@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-winplay-glass
-	pkgdesc = AIMP skin: WinPlay Glass 2.9 (by memo-se)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: WinPlay Glass v2.9 (by memo-se)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-winplay-glass
 	options = !strip
 	options = !debug
 	source = aimp-skin-winplay-glass-438.archive::https://aimp.ru/?do=catalog.download&id=438
-	sha256sums = 328f207c8bd8e4c7eb70be89ba6046402aae4e34f4a2e41e25df582c08557223
+	sha256sums = SKIP
 
 pkgname = aimp-skin-winplay-glass
