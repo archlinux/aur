@@ -1,0 +1,20 @@
+pkgbase = kvant
+	pkgdesc = A clean Material 3 audio player
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/proshiv85-byte/kvant
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = taglib
+	depends = hicolor-icon-theme
+	optdepends = qt6-multimedia-ffmpeg: FFmpeg playback backend (recommended)
+	source = kvant-0.1.0.tar.gz::https://github.com/proshiv85-byte/kvant/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f218eb8ab6584ffc60b580d56aba342798e93a91f9d29e5bc103cd1a434213a2
+
+pkgname = kvant
