@@ -1,7 +1,7 @@
 pkgbase = qoder-bin
 	pkgdesc = Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle.
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.4.4
+	pkgrel = 1
 	url = https://qoder.com/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -11,15 +11,15 @@ pkgbase = qoder-bin
 	depends = nodejs
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder=0.4.3
+	provides = qoder=0.4.4
 	conflicts = qoder
 	options = !emptydirs
 	options = !strip
-	source = qoder-0.4.3.rpm::https://download.qoder.com/qoder-app/releases/latest/Qoder-linux-x86_64.rpm
+	source = qoder-0.4.4.rpm::https://download.qoder.com/qoder-app/releases/latest/Qoder-linux-x86_64.rpm
 	source = LICENSE.html
 	source = qoder.sh
-	sha256sums = f46feec5d4e89366bf6c2bbb63b249fd27768edf6cb279ff32b73432ed0f2ecd
+	sha256sums = SKIP
 	sha256sums = d93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = qoder-bin
