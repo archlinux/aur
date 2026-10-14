@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-euphoria-aio
-	pkgdesc = AIMP skin: Euphoria AIO 3.01 (by GR-X)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Euphoria AIO v3.01 (by GR-X)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-euphoria-aio
 	options = !strip
 	options = !debug
 	source = aimp-skin-euphoria-aio-163.archive::https://aimp.ru/?do=catalog.download&id=163
-	sha256sums = c9b0a5661dd10c65da93e78c1d5bbd5ba432026db51737c06be623398eae6e3d
+	sha256sums = SKIP
 
 pkgname = aimp-skin-euphoria-aio
