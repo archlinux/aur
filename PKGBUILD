@@ -2,7 +2,7 @@
 pkgname=arkenfox-hook-git
 _pkgname=arkenfox-hook
 _reponame=arkenfox-hooks
-pkgver=r2.2c3c397
+pkgver=r6.6b6287a
 pkgrel=1
 pkgdesc='Post-install hook to update the arkenfox user.js'
 url='https://github.com/aartoni/arkenfox-hooks'
