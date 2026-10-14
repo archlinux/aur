@@ -1,6 +1,6 @@
 pkgname=prizrak-box-bin
 _pkgname=Prizrak-Box
-pkgver=1.0.21_beta06
+pkgver=1.0.21_beta07
 _electronversion=41
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)"
@@ -12,11 +12,11 @@ conflicts=("${pkgname%-bin}")
 depends=("electron${_electronversion}")
 makedepends=('asar')
 source=("prizrak-box.sh")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v1.0.21-beta06/linux-arm64-aur.tar.zst")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.zst::${url}/releases/download/v1.0.21-beta06/linux-amd64-aur.tar.zst")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v1.0.21-beta07/linux-arm64-aur.tar.zst")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.zst::${url}/releases/download/v1.0.21-beta07/linux-amd64-aur.tar.zst")
 sha256sums=('4497d4c2cfb24ca0665cbeabf377a6bc850a8cfd6dd17469b0dc937a9ed6bf65')
-sha256sums_aarch64=('4df465497bb3fe38966df9d5b49110617dd6d82cf3a8b36fd4e0a300be4bb626')
-sha256sums_x86_64=('a0decf3ae286cc88731b4ccbf0d95d3d169c75a2087bb9b7cc6d90bab864197e')
+sha256sums_aarch64=('2a59fa568e3d08be4fc2c18a54f1030e830c0914e9a4d42972a7b350880e36ba')
+sha256sums_x86_64=('eea2d42c4643bde63167f6bbeb9bcb17ab9e18cdfd5d99afc5f803b4cb7590e3')
 
 _get_electron_version() {
   _elec_ver="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
