@@ -2,7 +2,7 @@
 # Contributor: pikl <me@pikl.uk>
 # Contributor: CountMurphy (sarif)
 pkgname=immich-machine-learning
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 _model_commit=8bf3fd1b44b0c8608f52fb6e50ddff52826576d8
 pkgdesc="Machine learning server for the Immich photo management system"
@@ -45,7 +45,7 @@ source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/r
 	"ml-models-${_model_commit}.tar.gz::https://github.com/immich-app/ml-models/archive/${_model_commit}.tar.gz"
 	'immich-machine-learning.service'
 	'opencv.patch')
-b2sums=('66335b33ef0930d1c6e1d102a2a1280ad937f4f08f9438104ba386d24c5b6444f5fc28d5c21dc1fc39446770e21a9caeb901e1f999badaa577929b46465b87a3'
+b2sums=('7df60f96ba885a0475b5d7dc155495aa7faaa35253086a2163f321233d69b7c16a2231ce127f14ae8f0a9e5c831e0ec996573f40749052967bfe6253e276542c'
         '10a6ff3903a65855dca3f621fcbb60843b17c24ae587caef40f3c1791d8da5d0f5ba5b0aba3187763423793efeec58d3c8cdbd35024072d670bd6b6861f6c4dd'
         '2097cfbe79d07d32f696be0ec4998f987976cd3031ad5f693e84619a5da758c78a4a25171eb983b08a9b9ab567159e9be51f56226ad66ab0ea0c01d4d167d2f6'
         '2c18901487a3f279b0bfa19f875c6def44386bc0fdb283990ca4e9b86a928ca085093db6ff1f1833be3c93b3ae99e91044a6196a88d456d1698d2ed7f7be0481')
