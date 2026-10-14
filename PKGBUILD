@@ -2,7 +2,7 @@
 
 pkgname=docker-native-manager-bin
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Docker Desktop alternative for Linux"
 arch=('x86_64')
 url="https://github.com/pedrofariasx/dockernativemanager"
@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-    '866d54cc8ef56c01a9993fa3cb5853738d09623f31cb9fc2c514b6e8853ce7a5'
+    '63fffaa08928c913be9500fd7235a20c1ea14f2922c9aa0158b30a780e9e0ea2'
     'SKIP'
 )
 
