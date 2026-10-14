@@ -1,6 +1,6 @@
 pkgbase = veshell-bin
 	pkgdesc = An innovative Not-Desktop environment for Linux built with Flutter and Rust
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/free-explorers/veshell
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = veshell-bin
 	provides = wayland-compositor
 	conflicts = veshell
 	conflicts = veshell-git
-	source = veshell-0.1.3-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.1.3/veshell-0.1.3-x86_64.tar.zst
-	sha256sums = 9d12a77536bfaa9d81e490a9670c62b3eb3b78d0de0087dbf6c40d0609c809b6
+	source = veshell-0.1.4-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.1.4/veshell-0.1.4-x86_64.tar.zst
+	sha256sums = c35626d57501dcaaf507d5327812e8b20617a22edb0efbf6df806d0e9e89fd23
 
 pkgname = veshell-bin

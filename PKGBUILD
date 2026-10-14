@@ -9,7 +9,7 @@
 # you want a fully verifiable source build.
 
 pkgname=veshell-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
@@ -34,11 +34,11 @@ optdepends=(
 provides=('veshell' 'wayland-compositor')
 conflicts=('veshell' 'veshell-git')
 
-source=("veshell-0.1.3-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.1.3/veshell-0.1.3-x86_64.tar.zst")
-sha256sums=('9d12a77536bfaa9d81e490a9670c62b3eb3b78d0de0087dbf6c40d0609c809b6')
+source=("veshell-0.1.4-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.1.4/veshell-0.1.4-x86_64.tar.zst")
+sha256sums=('c35626d57501dcaaf507d5327812e8b20617a22edb0efbf6df806d0e9e89fd23')
 
 package() {
-  bsdtar -xf "$srcdir/veshell-0.1.3-x86_64.tar.zst" -C "$pkgdir"
+  bsdtar -xf "$srcdir/veshell-0.1.4-x86_64.tar.zst" -C "$pkgdir"
   install -Dm644 "$pkgdir/usr/share/licenses/veshell/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
