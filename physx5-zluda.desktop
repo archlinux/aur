@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=PhysX 5 GPU Demo (ZLUDA)
+GenericName=GPU physics demo
+Comment=NVIDIA PhysX 5.11 SnippetHelloGRB: 8,400 rigid bodies simulated with GPU broadphase and GPU dynamics on the AMD Radeon RX 9070 XT through ZLUDA. First start compiles the PTX kernels (slow); log stays in the terminal.
+Exec=konsole --hold -e physx5-zluda-run SnippetHelloGRB
+Icon=applications-science
+Terminal=false
+Categories=Science;Physics;
+Keywords=physx;nvidia;cuda;zluda;gpu;physics;rigid;body;simulation;

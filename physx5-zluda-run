@@ -1,0 +1,54 @@
+#!/bin/bash
+# physx5-zluda-run -- run a PhysX 5 snippet / tool from /opt/physx5 on the AMD GPU via ZLUDA.
+#
+# usage: physx5-zluda-run [--cpu-only] [--debug] [--list] <SnippetName|gputest|/path/to/exe> [args...]
+#
+#   SnippetName   e.g. HelloGRB, SnippetHelloGRB or SnippetHelloGRB_64 (case-insensitive match)
+#   gputest       bounded headless check that GPU broadphase + GPU dynamics engage (exit 0 = OK)
+#   --cpu-only    do not preload the ZLUDA shim and hide the GPU (PHYSX_GPU_DEVICE=-1 style run)
+#   --debug       PHYSX_SHIM_DEBUG=1: log every driver-API fallback / PTX rewrite the shim performs
+#   --list        list the installed snippets
+#
+# Environment it sets up:
+#   LD_LIBRARY_PATH  -> /opt/physx5/lib   (libPhysXGpu_64.so is dlopen'ed by bare name; also libcudart.so.13)
+#   LD_PRELOAD       -> /opt/physx5/lib/libzluda-physx-shim.so (cuMemcpy3DAsync/cuMemcpyPeerAsync fallbacks,
+#                       red.*.f32 -> atom PTX rewrite; see /opt/physx5/share/doc/README.md)
+#   PHYSX_GPU_DEVICE -> 0 unless already set (CUDA device ordinal used by PhysX)
+# ZLUDA_CC is NOT needed: the GPU library is PTX-only (compute_75), so ZLUDA's reported CC 8.x is fine.
+set -euo pipefail
+PREFIX=/opt/physx5
+cpu_only=0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --cpu-only) cpu_only=1; shift ;;
+    --debug) export PHYSX_SHIM_DEBUG=1; shift ;;
+    --list) ls "$PREFIX/bin" | sed -n 's/^Snippet\(.*\)_64$/\1/p' | column -c "${COLUMNS:-100}"; exit 0 ;;
+    -h|--help) sed -n '2,20p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) break ;;
+  esac
+done
+[[ $# -ge 1 ]] || { echo "usage: physx5-zluda-run [--cpu-only] [--debug] [--list] <SnippetName|gputest|exe> [args]" >&2; exit 2; }
+target=$1; shift
+exe=""
+if [[ "$target" == gputest ]]; then exe="$PREFIX/bin/physx5-gputest"
+elif [[ -x "$target" ]]; then exe="$target"
+else
+  for cand in "$PREFIX/bin/$target" "$PREFIX/bin/${target}_64" "$PREFIX/bin/Snippet${target}_64" "$PREFIX/bin/Snippet${target}"; do
+    [[ -x "$cand" ]] && { exe="$cand"; break; }
+  done
+  if [[ -z "$exe" ]]; then
+    exe=$(find "$PREFIX/bin" -maxdepth 1 -iname "snippet${target}_64" -o -maxdepth 1 -iname "${target}_64" -o -maxdepth 1 -iname "$target" 2>/dev/null | head -1 || true)
+  fi
+fi
+[[ -n "$exe" && -x "$exe" ]] || { echo "physx5-zluda-run: no such snippet/executable: $target (try --list)" >&2; exit 2; }
+
+export LD_LIBRARY_PATH="$PREFIX/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export PHYSX_GPU_DEVICE="${PHYSX_GPU_DEVICE:-0}"
+if [[ $cpu_only -eq 0 ]]; then
+  export LD_PRELOAD="$PREFIX/lib/libzluda-physx-shim.so${LD_PRELOAD:+:$LD_PRELOAD}"
+else
+  export PHYSX_GPU_DEVICE=-1
+fi
+# ZLUDA compiles each PTX module with comgr on first use and caches it in ~/.cache/zluda; the
+# first start of a GPU snippet therefore takes noticeably longer than later ones.
+exec "$exe" "$@"
