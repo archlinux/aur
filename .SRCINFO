@@ -20,7 +20,7 @@ pkgbase = tang-dynasty-wayland
 	makedepends = xcb-util-wm
 	makedepends = libdrm
 	makedepends = mesa
-	depends = tang-dynasty-bin=2026.1.SP3
+	depends = tang-dynasty-bin
 	depends = bash
 	depends = glibc
 	depends = glib2

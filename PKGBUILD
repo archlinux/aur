@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://www.anlogic.com/'
 license=('LGPL-3.0-only')
 depends=(
-  'tang-dynasty-bin=2026.1.SP3' 'bash' 'glibc' 'glib2' 'libgcc' 'libstdc++'
+  'tang-dynasty-bin' 'bash' 'glibc' 'glib2' 'libgcc' 'libstdc++'
   'wayland' 'libxkbcommon' 'libglvnd' 'libx11' 'libxcomposite'
   'dbus' 'fontconfig' 'freetype2'
 )
