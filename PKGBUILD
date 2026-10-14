@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=telegram-drive
-pkgver=4.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive"
 arch=('x86_64' 'aarch64')
