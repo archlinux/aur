@@ -1,6 +1,6 @@
 # Maintainer: zyk-miao <45023244+zyk-miao@users.noreply.github.com>
 pkgname=uuway-git
-pkgver=1.2.0.r71.g57552f4
+pkgver=1.2.0.r73.gc382146
 pkgrel=1
 pkgdesc='NetEase UU Remote host bridge for KDE Wayland with native capture'
 arch=('x86_64')
