@@ -22,7 +22,7 @@ diff --git a/src/server/CMakeLists.txt b/src/server/CMakeLists.txt
 index 46bbad1..1255bef 100644
 --- a/src/server/CMakeLists.txt
 +++ b/src/server/CMakeLists.txt
-@@ -476,9 +476,6 @@ set(SRCS
+@@ -513,9 +513,6 @@ set(SRCS
  	src/services/news/news-service.hpp
  	src/services/news/news-service.cpp
  
@@ -36,7 +36,7 @@ diff --git a/src/server/src/config/config.hpp b/src/server/src/config/config.hpp
 index dc3ff95..0b0f0bc 100644
 --- a/src/server/src/config/config.hpp
 +++ b/src/server/src/config/config.hpp
-@@ -257,7 +257,7 @@ template <> struct Partial<Footer> {
+@@ -271,7 +271,7 @@ template <> struct Partial<Footer> {
  };
  
  struct TelemetryConfig {
@@ -45,19 +45,19 @@ index dc3ff95..0b0f0bc 100644
  };
  
  template <> struct Partial<TelemetryConfig> {
-diff --git a/src/server/src/extensions/vicinae/vicinae-extension.cpp b/src/server/src/extensions/vicinae/vicinae-extension.cpp
+diff --git a/src/server/src/builtins/vicinae/vicinae-extension.cpp b/src/server/src/builtins/vicinae/vicinae-extension.cpp
 index 571b958..55cbd50 100644
---- a/src/server/src/extensions/vicinae/vicinae-extension.cpp
-+++ b/src/server/src/extensions/vicinae/vicinae-extension.cpp
+--- a/src/server/src/builtins/vicinae/vicinae-extension.cpp
++++ b/src/server/src/builtins/vicinae/vicinae-extension.cpp
 @@ -7,7 +7,6 @@
- #include "qml/oauth-token-store-view-host.hpp"
- #include "extensions/vicinae/report-bug-command.hpp"
- #include "qml/builtin-icons-view-host.hpp"
+ #include "builtins/vicinae/oauth-token-store-view-host.hpp"
+ #include "builtins/vicinae/report-bug-command.hpp"
+ #include "builtins/vicinae/builtin-icons-view-host.hpp"
 -#include "services/telemetry/telemetry-service.hpp"
  #include "navigation-controller.hpp"
  #include "config/config.hpp"
- #include "qml/local-storage-view-host.hpp"
-@@ -164,43 +163,6 @@ class ReloadScriptDirectoriesCommand : public BuiltinCallbackCommand {
+ #include "builtins/vicinae/local-storage-view-host.hpp"
+@@ -168,43 +167,6 @@ class ReloadScriptDirectoriesCommand : public BuiltinCallbackCommand {
    }
  };
  
@@ -101,7 +101,7 @@ index 571b958..55cbd50 100644
  class OAuthTokenStoreCommand : public BuiltinViewCommand<OAuthTokenStoreViewHost> {
    Q_DECLARE_TR_FUNCTIONS(OAuthTokenStoreCommand)
  
-@@ -263,7 +225,6 @@ VicinaeExtension::VicinaeExtension() {
+@@ -273,7 +235,6 @@ VicinaeExtension::VicinaeExtension() {
    registerCommand<ShowLogs>();
  
    // disabled by default
@@ -109,10 +109,10 @@ index 571b958..55cbd50 100644
    registerCommand<IconBrowserCommand>();
    registerCommand<OAuthTokenStoreCommand>();
    registerCommand<InspectLocalStorage>();
-diff --git a/src/server/src/qml/general-settings-model.cpp b/src/server/src/qml/general-settings-model.cpp
+diff --git a/src/server/src/ui/settings/general-settings-model.cpp b/src/server/src/ui/settings/general-settings-model.cpp
 index 79df28d..41f489c 100644
---- a/src/server/src/qml/general-settings-model.cpp
-+++ b/src/server/src/qml/general-settings-model.cpp
+--- a/src/server/src/ui/settings/general-settings-model.cpp
++++ b/src/server/src/ui/settings/general-settings-model.cpp
 @@ -85,11 +85,6 @@ void GeneralSettingsModel::setEncryptSensitiveData(bool v) {
    cfgManager().mergeWithUser({.encryptSensitiveData = v});
  }
@@ -125,11 +125,11 @@ index 79df28d..41f489c 100644
  bool GeneralSettingsModel::layerShellEnabled() const { return cfg().launcherWindow.layerShell.enabled; }
  void GeneralSettingsModel::setLayerShellEnabled(bool v) {
    cfgManager().mergeWithUser({.launcherWindow = config::Partial<config::WindowConfig>{
-diff --git a/src/server/src/qml/general-settings-model.hpp b/src/server/src/qml/general-settings-model.hpp
+diff --git a/src/server/src/ui/settings/general-settings-model.hpp b/src/server/src/ui/settings/general-settings-model.hpp
 index 341bbdf..827671a 100644
---- a/src/server/src/qml/general-settings-model.hpp
-+++ b/src/server/src/qml/general-settings-model.hpp
-@@ -20,8 +20,6 @@ class GeneralSettingsModel : public QObject {
+--- a/src/server/src/ui/settings/general-settings-model.hpp
++++ b/src/server/src/ui/settings/general-settings-model.hpp
+@@ -24,8 +24,6 @@ class GeneralSettingsModel : public QObject {
    Q_PROPERTY(bool wrapNavigation READ wrapNavigation WRITE setWrapNavigation NOTIFY configChanged)
    Q_PROPERTY(
        bool encryptSensitiveData READ encryptSensitiveData WRITE setEncryptSensitiveData NOTIFY configChanged)
@@ -138,7 +138,7 @@ index 341bbdf..827671a 100644
    Q_PROPERTY(bool layerShellEnabled READ layerShellEnabled WRITE setLayerShellEnabled NOTIFY configChanged)
    Q_PROPERTY(bool clientSideDecorations READ clientSideDecorations WRITE setClientSideDecorations NOTIFY
                   configChanged)
-@@ -74,8 +72,6 @@ public:
+@@ -78,8 +76,6 @@ public:
    void setWrapNavigation(bool v);
    bool encryptSensitiveData() const;
    void setEncryptSensitiveData(bool v);
@@ -147,11 +147,11 @@ index 341bbdf..827671a 100644
    bool layerShellEnabled() const;
    void setLayerShellEnabled(bool v);
    bool clientSideDecorations() const;
-diff --git a/src/server/src/qml/qml/GeneralSettingsPage.qml b/src/server/src/qml/qml/GeneralSettingsPage.qml
+diff --git a/src/server/src/ui/qml/settings/GeneralSettingsPage.qml b/src/server/src/ui/qml/settings/GeneralSettingsPage.qml
 index 5063923..443f5cd 100644
---- a/src/server/src/qml/qml/GeneralSettingsPage.qml
-+++ b/src/server/src/qml/qml/GeneralSettingsPage.qml
-@@ -99,24 +99,6 @@ Flickable {
+--- a/src/server/src/ui/qml/settings/GeneralSettingsPage.qml
++++ b/src/server/src/ui/qml/settings/GeneralSettingsPage.qml
+@@ -103,24 +103,6 @@ Flickable {
              }
          }
  
@@ -168,7 +168,7 @@ index 5063923..443f5cd 100644
 -                showSeparator: false
 -                SettingsToggle {
 -                    checked: root.model.telemetrySystemInfo
--                    onToggled: root.model.telemetrySystemInfo = checked
+-                    onToggled: checked => root.model.telemetrySystemInfo = checked
 -                }
 -            }
 -        }
@@ -180,35 +180,35 @@ diff --git a/src/server/src/server.cpp b/src/server/src/server.cpp
 index 431bb79..67137b5 100644
 --- a/src/server/src/server.cpp
 +++ b/src/server/src/server.cpp
-@@ -54,7 +54,6 @@
+@@ -59,7 +59,6 @@
  #include "services/script-command/script-command-service.hpp"
  #include "services/shortcut/shortcut-service.hpp"
  #include "services/news/news-service.hpp"
 -#include "services/telemetry/telemetry-service.hpp"
  #include "services/update/update-service.hpp"
- #ifdef Q_OS_MACOS
+ #if defined(Q_OS_MACOS)
  #include "services/update/macos-update-installer.hpp"
-@@ -359,7 +358,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
+@@ -379,7 +378,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
      ShortcutInhibitor::setManager(registry->shortcutInhibitManager());
-     registry->setFileChooserService(std::make_unique<FileChooserService>());
+     registry->setFileChooserService(std::make_unique<FileChooserService>(nullptr));
      registry->setNewsService(std::make_unique<NewsService>(*registry->config()));
 -    registry->setTelemetry(std::make_unique<TelemetryService>(*registry->config()));
- #ifdef Q_OS_MACOS
+ #if defined(Q_OS_MACOS)
      auto updateInstaller = std::unique_ptr<AbstractUpdateInstaller>(std::make_unique<MacosUpdateInstaller>());
- #else
-@@ -522,7 +520,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
+ #elif defined(Q_OS_WIN)
+@@ -593,7 +591,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
      }
  #endif
  
 -    ServiceRegistry::instance()->telemetry()->setEnabled(next.telemetry.systemInfo);
-   };
  
-   auto cfgService = ServiceRegistry::instance()->config();
+     if (tray) {
+       if (next.tray.enabled) {
 diff --git a/src/server/src/service-registry.cpp b/src/server/src/service-registry.cpp
 index ad1c296..e783da9 100644
 --- a/src/server/src/service-registry.cpp
 +++ b/src/server/src/service-registry.cpp
-@@ -24,7 +24,6 @@
+@@ -27,7 +27,6 @@
  #include "services/raycast/raycast-store.hpp"
  #include "services/extension-store/vicinae-store.hpp"
  #include "services/root-item-manager/root-item-manager.hpp"
@@ -216,7 +216,7 @@ index ad1c296..e783da9 100644
  #include "services/update/update-service.hpp"
  #include "services/toast/toast-service.hpp"
  #include "services/window-manager/window-manager.hpp"
-@@ -86,8 +85,6 @@ ShortcutInhibitManager *ServiceRegistry::shortcutInhibitManager() const {
+@@ -94,8 +93,6 @@ ShortcutInhibitManager *ServiceRegistry::shortcutInhibitManager() const {
    return m_shortcutInhibitManager.get();
  }
  
@@ -225,7 +225,7 @@ index ad1c296..e783da9 100644
  UpdateService *ServiceRegistry::updateService() const { return m_updateService.get(); }
  
  AudioControlService *ServiceRegistry::audioControl() const { return m_audioControl.get(); }
-@@ -198,10 +195,6 @@ void ServiceRegistry::setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitM
+@@ -215,10 +212,6 @@ void ServiceRegistry::setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitM
    m_shortcutInhibitManager = std::move(service);
  }
  
@@ -240,47 +240,57 @@ diff --git a/src/server/src/service-registry.hpp b/src/server/src/service-regist
 index 53a5d99..ccf69b5 100644
 --- a/src/server/src/service-registry.hpp
 +++ b/src/server/src/service-registry.hpp
-@@ -36,7 +36,6 @@ class FileChooserService;
+@@ -38,7 +38,6 @@ class FileChooserService;
  class NewsService;
  class PasteService;
  class AbstractSelectionService;
 -class TelemetryService;
  class UpdateService;
  class AudioControlService;
- class AppRuntime;
-@@ -83,7 +82,6 @@ public:
+ class MediaControlService;
+@@ -89,7 +88,6 @@ public:
    NewsService *newsService() const;
    WindowMaterialManager *windowMaterialManager() const;
    ShortcutInhibitManager *shortcutInhibitManager() const;
 -  TelemetryService *telemetry() const;
    UpdateService *updateService() const;
    AudioControlService *audioControl() const;
-   AppRuntime *appRuntime() const;
-@@ -123,7 +121,6 @@ public:
+   MediaControlService *mediaControl() const;
+@@ -132,7 +130,6 @@ public:
    void setNewsService(std::unique_ptr<NewsService> service);
    void setWindowMaterialManager(std::unique_ptr<WindowMaterialManager> manager);
    void setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitManager> manager);
 -  void setTelemetry(std::unique_ptr<TelemetryService> telemetry);
    void setUpdateService(std::unique_ptr<UpdateService> service);
    void setAudioControl(std::unique_ptr<AudioControlService> service);
-   void setAppRuntime(std::unique_ptr<AppRuntime> service);
-@@ -163,7 +160,6 @@ private:
+   void setMediaControl(std::unique_ptr<MediaControlService> service);
+@@ -176,7 +173,6 @@ private:
    std::unique_ptr<NewsService> m_newsService;
    std::unique_ptr<WindowMaterialManager> m_windowMaterialManager;
    std::unique_ptr<ShortcutInhibitManager> m_shortcutInhibitManager;
 -  std::unique_ptr<TelemetryService> m_telemetry;
    std::unique_ptr<UpdateService> m_updateService;
    std::unique_ptr<AudioControlService> m_audioControl;
-   std::unique_ptr<AppRuntime> m_appRuntime;
+   std::unique_ptr<MediaControlService> m_mediaControl;
 diff --git a/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp b/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
 index 7d56b74..89e82ea 100644
 --- a/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
 +++ b/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
-@@ -25,11 +25,7 @@ std::string formatTimezone(const numen::Timezone &tz) {
+@@ -1,7 +1,6 @@
+ #include "services/calculator-service/numen/numen-calculator-backend.hpp"
+ #include "numen/numen.hpp"
+ #include "services/calculator-service/numen/numen-currency-provider.hpp"
+-#include "utils/environment.hpp"
+ #include <qfuture.h>
+ #include <chrono>
+ #include <format>
+@@ -27,13 +26,7 @@ std::string formatTimezone(const numen::Timezone &tz) {
  }
  }; // namespace
  
 -NumenCalculatorBackend::NumenCalculatorBackend() {
+-  if (Environment::isAutoRateRefreshDisabled()) return;
+-
 -  m_rateRefreshTimer.setInterval(std::chrono::hours{1});
 -  m_rateRefreshTimer.start();
 -  connect(&m_rateRefreshTimer, &QTimer::timeout, this, [this]() { m_numen.updateRates(); });
@@ -628,14 +638,14 @@ diff --git a/src/server/src/services/update/update-service.cpp b/src/server/src/
 index b9a4fca..9cf43be 100644
 --- a/src/server/src/services/update/update-service.cpp
 +++ b/src/server/src/services/update/update-service.cpp
-@@ -1,213 +1,22 @@
+@@ -1,215 +1,25 @@
  #include "update-service.hpp"
- #include "builtin_icon.hpp"
+ #include "services/builtin-icon/builtin-icon.hpp"
 -#include "environment.hpp"
  #include "generated/version.h"
 -#include "service-registry.hpp"
 -#include "services/toast/toast-service.hpp"
--#include "vicinae.hpp"
+ #include "vicinae.hpp"
 -#include <algorithm>
 -#include <chrono>
 -#include <filesystem>
@@ -684,6 +694,8 @@ index b9a4fca..9cf43be 100644
  
  QString UpdateService::currentVersionTag() const { return VICINAE_GIT_TAG; }
  
+-fs::path UpdateService::downloadDir() { return Omnicast::cacheDir() / "updates"; }
+-
 -void UpdateService::checkNow() { performCheck(); }
 -
 -void UpdateService::performCheck() {
@@ -737,7 +749,9 @@ index b9a4fca..9cf43be 100644
 -  update.assetUrl = QString::fromStdString(asset->browser_download_url);
 -
 -  qInfo() << "Update available:" << update.tag;
++std::filesystem::path UpdateService::downloadDir() { return Omnicast::cacheDir() / "updates"; }
 -
++
 -  m_available = std::move(update);
 -  setStatus(Status::UpdateAvailable);
 -}
@@ -750,11 +764,11 @@ index b9a4fca..9cf43be 100644
 +void UpdateService::downloadAndInstall() {}
  
 -  std::error_code ec;
--  const fs::path downloadDir = Omnicast::cacheDir() / "updates";
+-  const fs::path dir = downloadDir();
 -
--  fs::create_directories(downloadDir, ec);
+-  fs::create_directories(dir, ec);
 -
--  const fs::path archivePath = downloadDir / m_installer->assetName().toStdString();
+-  const fs::path archivePath = dir / m_installer->assetName().toStdString();
 -
 -  setStatus(Status::Downloading);
 -
@@ -852,28 +866,28 @@ diff --git a/src/server/src/services/update/update-service.hpp b/src/server/src/
 index f3b0880..b2a2d93 100644
 --- a/src/server/src/services/update/update-service.hpp
 +++ b/src/server/src/services/update/update-service.hpp
-@@ -1,17 +1,11 @@
+@@ -1,17 +1,12 @@
  #pragma once
  #include "abstract-update-installer.hpp"
  #include "common/types.hpp"
 -#include "github-release.hpp"
 -#include "http-client.hpp"
 -#include "semver.hpp"
- #include "ui/action-pannel/action.hpp"
+ #include "ui/action-panel/action.hpp"
  #include <QCoreApplication>
  #include <QObject>
 -#include <QTimer>
--#include <filesystem>
+ #include <filesystem>
  #include <memory>
  #include <optional>
 -#include <string>
  
  class ToastService;
  
-@@ -38,32 +32,12 @@ public:
-   const std::optional<AvailableUpdate> &available() const { return m_available; }
+@@ -39,32 +34,12 @@ public:
    Status status() const { return m_status; }
    QString currentVersionTag() const;
+   static std::filesystem::path downloadDir();
 -  bool checksSupported() const { return m_currentVersion.has_value() && m_installer->supported(); }
 +  bool checksSupported() const { return false; }
  
