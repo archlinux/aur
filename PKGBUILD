@@ -1,7 +1,7 @@
 pkgname=passkeyd-bin
 _pkgname=passkeyd
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A WebAuthn authenticator, without telemetry or interactive prompts"
 arch=('x86_64')
 license=('GPL-3.0-only')
@@ -19,7 +19,7 @@ provides=("passkeyd")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('180f85f7a2343a8e7252d8174564bb10c0ed5d813880bf1b09da448b1f9fcd5c')
+sha256sums=('4daf03244e150fb53a28bee99a5a5d750c417cde11f7590e8f9ea65cae664af2')
 options=('!debug')
 backup=('etc/passkeyd.conf' 'usr/share/passkeyd/theme.conf')
 
