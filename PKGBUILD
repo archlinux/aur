@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sokuji-bin
 _pkgname=Sokuji
-pkgver=0.44.0
+pkgver=0.45.1
 _electronversion=44
 pkgrel=1
 pkgdesc="Real-time two-way speech translation for bilingual meetings — auto-detects the spoken language and translates both directions, cloud or fully offline on-device."
@@ -21,10 +21,11 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('e94cfe38560f156be642005ae455742f634f7efdcba635866bbc040e43077a13')
-sha256sums_x86_64=('d2970f2f1e730bb0933da7835f9befde98c08c4deee8efdc0ab63a6eecf26e5c')
+sha256sums_aarch64=('218ca6a7daa38513796f69665763c3538b45648542e6ff4b0b0e0d0c522be25d')
+sha256sums_x86_64=('45b55587f17a1536cc42367616bc9758c5bb5a5661b54ef2ea9bf9dc5aabc370')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -41,15 +42,13 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
-    local _app_dir="$(_get_app_dir)"
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    rm -rf "${_app_dir}/resources/resources/drivers/SokujiVirtualAudio.driver/Contents/MacOS"
+    rm -rf "$(_get_app_dir)/resources/resources/drivers/SokujiVirtualAudio.driver/Contents/MacOS"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir="$(_get_app_dir)"
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
