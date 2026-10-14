@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chirpity-bin
 _pkgname=Chirpity
-pkgver=6.1.0
+pkgver=6.1.1
 _electronversion=43
 pkgrel=1
 pkgdesc="AI powered audio analyser for bird call visualisation, detection and cataloguing."
@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'python'
     'ffmpeg'
     'libsecret'
     'nodejs'
@@ -23,11 +22,12 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Mattk70/Chirpity-Electron/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a016f2e303641f70991750fd77dbad7d652e4cbb13f04ac7f02b1f9d76bda898'
+sha256sums=('81ad2c9cd7563b1ca1df27e7a3c96fa389ef4685011c84f12dd83cb538cb6de9'
             '04d5c28567bb68b3c647742455c90091e2ea2b6708da27679889e1f80dd838ed'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -41,7 +41,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -51,23 +50,21 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir="$(_get_app_dir)"
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
-    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
-    ln -sf "/usr/bin/ffprobe" "${_app_dir}/resources/app.asar.unpacked/node_modules/@ffprobe-installer/linux-x64/ffprobe"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
+    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
+    ln -sf "/usr/bin/ffmpeg" "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/@ffprobe-installer/linux-x64/ffprobe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
         _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${_app_dir}/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
