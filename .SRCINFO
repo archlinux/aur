@@ -1,7 +1,7 @@
 pkgbase = qoder-cn-bin
 	pkgdesc = Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.4.4
+	pkgrel = 1
 	url = https://qoder.cn
 	arch = x86_64
 	license = LicenseRef-custom
@@ -11,15 +11,15 @@ pkgbase = qoder-cn-bin
 	depends = nodejs
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder-cn=0.4.3
+	provides = qoder-cn=0.4.4
 	conflicts = qoder-cn
 	options = !emptydirs
 	options = !strip
-	source = qoder-cn-0.4.3.rpm::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/Qoder-CN-linux-x86_64.rpm
+	source = qoder-cn-0.4.4.rpm::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/Qoder-CN-linux-x86_64.rpm
 	source = LICENSE.html
 	source = qoder-cn.sh
 	sha256sums = SKIP
 	sha256sums = 64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = qoder-cn-bin
