@@ -1,6 +1,6 @@
 post_install() {
     cat <<'MSG'
-  To make the "PDF Actions" entry appear in Dolphin's right-click menu, run:
+  To refresh the converter entries in Dolphin's right-click menu, run:
       kbuildsycoca6
   and restart Dolphin (close all its windows) if it was open.
 MSG

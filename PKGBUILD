@@ -1,16 +1,16 @@
 # Maintainer: Stokes <jesusmanuelgonzalezmeneses18@gmail.com>
 
 pkgname=conversor-dolphin
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Dolphin (KF6) service menu to manage PDF and convert PDF, images, SVG, audio, video, e-books and office files"
 arch=('any')
 url="https://github.com/13Stokes31/conversor-dolphin"
 license=('MIT')
 depends=('poppler' 'kdialog')
 optdepends=('ghostscript: comprimir PDF'
-            'img2pdf: convertir imágenes a PDF (sin pérdida)'
-            'imagemagick: convertir entre formatos de imagen (JPG/PNG/WebP/AVIF/TIFF, HEIC…)'
+            'img2pdf: convertir imágenes a PDF'
+            'imagemagick: convertir imágenes y admitir HEIC/HEIF a PDF'
             'libheif: leer HEIC/HEIF y escribir AVIF en imagemagick'
             'ffmpeg: convertir audio y vídeo'
             'librsvg: convertir SVG a PNG/PDF'
@@ -20,7 +20,7 @@ optdepends=('ghostscript: comprimir PDF'
             'tesseract-data-spa: datos de OCR en español')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b30b0def6f4522be2aa7b02bc00ed92f04224e85dcd3c1ca77f4122c7fae8f18')
+sha256sums=('0b103575b26a453c9db6e7d1a42df8fad1093f7ad1ba27b4aed17d9d96a61463')
 
 package() {
     make -C "$srcdir/$pkgname-$pkgver" DESTDIR="$pkgdir" PREFIX=/usr install
