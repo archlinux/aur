@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=zgit-desktop-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A modern, fast Git & GitHub client — Desktop app (Wails)"
 arch=('x86_64')
@@ -14,11 +14,12 @@ makedepends=()
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/zgit-desktop-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('19f7fc69e70bad8b2091829201f27da2b8b21b5fdbb38cdad09fb2e8e3538e4a')
+sha256sums=('532cfe3387c3515162481df52c18d2cfda4a93fef61898e42cd5c3f77b55d3b1')
 
 package() {
-    # Install binary dynamically using $pkgver
-    install -Dm755 "zgit-desktop-v${pkgver}-linux-amd64" "$pkgdir/usr/bin/zgit-desktop"
+    # Release tarballs (see release.yml desktop-matrix) contain the GUI
+    # binary as "zgit", plus zgit.png / zgit.desktop / metainfo at root.
+    install -Dm755 "zgit" "$pkgdir/usr/bin/zgit-desktop"
 
     # Install desktop integration files
     install -Dm644 zgit.png "$pkgdir/usr/share/pixmaps/zgit.png"

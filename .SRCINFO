@@ -1,6 +1,6 @@
 pkgbase = zgit-desktop-bin
 	pkgdesc = A modern, fast Git & GitHub client — Desktop app (Wails)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/zaidejjo/zgit
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = zgit-desktop-bin
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
-	provides = zgit-desktop=0.2.0
+	provides = zgit-desktop=0.3.0
 	conflicts = zgit-desktop
-	source = https://github.com/zaidejjo/zgit/releases/download/v0.2.0/zgit-desktop-v0.2.0-linux-amd64.tar.gz
-	sha256sums = 19f7fc69e70bad8b2091829201f27da2b8b21b5fdbb38cdad09fb2e8e3538e4a
+	source = https://github.com/zaidejjo/zgit/releases/download/v0.3.0/zgit-desktop-v0.3.0-linux-amd64.tar.gz
+	sha256sums = 532cfe3387c3515162481df52c18d2cfda4a93fef61898e42cd5c3f77b55d3b1
 
 pkgname = zgit-desktop-bin
