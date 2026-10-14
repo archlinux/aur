@@ -2,7 +2,7 @@
 # Contributor: kajoox <kayquesousa02004@gmail.com> (original maintainer)
 
 pkgname=espressif-ide-bin
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Eclipse-based IDE for ESP-IDF development'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-${pkgver}-linux.gtk.x86_64.tar.gz"
 	"espressif-ide.desktop"
 )
-sha256sums=('2fd36289c59abb9cb25afa24ce07a3c87138d983f76739f7e58c8ab5bacd0672'
+sha256sums=('dd2865c01dd16a44c0e9ef441a47caab0f83e2db174529006edea2922f8cafa7'
             '01b498d77f4076a2b47bac488e47e1be164e5802cb39373256709f8441a33ad7')
 
 package() {
