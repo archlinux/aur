@@ -1,0 +1,19 @@
+pkgbase = scramblery-cuda-bin
+	pkgdesc = Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/altunenes/scramblery
+	arch = x86_64
+	license = MIT
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = fontconfig
+	depends = cuda
+	provides = scramblery=4.2.0
+	conflicts = scramblery
+	source = scramblery-cuda-4.2.0.deb::https://github.com/altunenes/scramblery/releases/download/v4.2.0/scramblery-cuda_4.2.0_amd64.deb
+	source = LICENSE-4.2.0::https://raw.githubusercontent.com/altunenes/scramblery/v4.2.0/LICENSE
+	sha256sums = dab3c14c7354d5392a6ad3f33e5aeb41dde72acc09accbd5ed03ba6a75b36d3a
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+
+pkgname = scramblery-cuda-bin
