@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-electronica-302
-	pkgdesc = AIMP skin: Electronica-302 2.22 (by McClaud)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Electronica-302 v2.22 (by McClaud)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-electronica-302
 	options = !strip
 	options = !debug
 	source = aimp-skin-electronica-302-583.archive::https://aimp.ru/?do=catalog.download&id=583
-	sha256sums = eedc4681089eac1919691d99ad8e1915aeaa32a83bbdfba5dfb9fbe4029f034c
+	sha256sums = SKIP
 
 pkgname = aimp-skin-electronica-302
