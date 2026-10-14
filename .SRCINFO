@@ -1,0 +1,26 @@
+pkgbase = python-gds2openems-git
+	pkgdesc = GDSII to openEMS workflow and scripts
+	pkgver = 0.5.0.r35.g0f87e9d
+	pkgrel = 1
+	url = https://github.com/VolkerMuehlhaus/gds2openEMS
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-openems
+	depends = python-csxcad
+	depends = python-gdspy
+	depends = python-shapely
+	depends = pyside6
+	depends = shiboken6
+	optdepends = python-easymesh4openems: Alternative mesher
+	provides = python-gds2openems
+	source = gds2openems::git+https://github.com/VolkerMuehlhaus/gds2openEMS
+	b2sums = SKIP
+
+pkgname = python-gds2openems-git
