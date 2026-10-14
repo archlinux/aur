@@ -5,7 +5,6 @@ pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tonyantony300/dashbeam"
 license=('AGPL-3.0-only')
-options=('!lto')
 
 depends=(
   'cairo'

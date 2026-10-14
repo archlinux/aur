@@ -29,7 +29,6 @@ pkgbase = dashbeam
 	conflicts = dashbeam-bin
 	conflicts = dashbeam-git
 	replaces = alt-sendme
-	options = !lto
 	source = dashbeam-0.7.1.tar.gz::https://github.com/tonyantony300/dashbeam/archive/refs/tags/v0.7.1.tar.gz
 	sha256sums = 7644f6669d44be4ef9b91aab270103fc5b3f3964f997f46b80d37c02a6660e5b
 
