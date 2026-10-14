@@ -1,6 +1,6 @@
 # Maintainer: Daniel Plank <tyrolyean@gmx.at>
 pkgname=electric
-_pkgver_out=9.09a
+_pkgver_out=9.09b
 pkgver="${_pkgver_out}.1"
 pkgrel=1
 pkgdesc="a sophisticated electrical CAD system for the design of \
@@ -27,11 +27,12 @@ build() {
 
 package() {
 
-        mkdir -p "$pkgdir/usr/bin/" "$pkgdir/usr/share/icons" "$pkgdir/usr/share/java/$pkgname"
 
-        mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Binary-$_pkgver_out.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-
-        cp "$pkgname.jpg" "$pkgdir/usr/share/icons/$pkgname.jpg"
-
-        cp "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+        install -D -m 0555 "$pkgname/trunk/$pkgname/packaging/${pkgname}Binary-$_pkgver_out.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+        install -D -m 0444 "$pkgname.jpg" "$pkgdir/usr/share/icons/$pkgname.jpg"
+        install -D -m 0555 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -D -m 0444 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	# Symlink required as the default desktop application expects the jar
+	# file in that location
+	ln -sr "$pkgdir/usr/share/java/$pkgname/$pkgname.jar" "$pkgdir/usr/bin/$pkgname.jar"
 }
