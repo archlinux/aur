@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=zxc
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Asymmetric lossless compression CLI — ultra-fast decode, 40%+ faster than LZ4 on ARM64 (source build)"
 arch=('x86_64' 'aarch64')
