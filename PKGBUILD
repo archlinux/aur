@@ -2,10 +2,10 @@
 
 pkgbase=libraft
 pkgname=(libraft python-pylibraft python-raft-dask)
-pkgver=26.08.00
+pkgver=26.10.00
 pkgrel=1
 pkgdesc="Reusable Accelerated Functions and Tools for Vector Search and More"
-url="https://github.com/rapidsai/raft"
+url="https://github.com/NVIDIA/raft"
 arch=('x86_64')
 license=('Apache-2.0')
 depends=(cuda rmm nccl)
@@ -19,6 +19,7 @@ makedepends=(
     python-rapids-build-backend
     ninja
     cython
+    ucxx
 )
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
@@ -27,7 +28,7 @@ source=(
     "system-lib-dask.patch"
     "missing-include.patch"
 )
-sha256sums=('0cfde0970198653fd8734eb86e870981d8c7f7507fbfedc7dbd33fc6534e8009'
+sha256sums=('294cc0b5f1bfee9a4990d9ac99dc6188fd4c60cc8cc41a57190d1d21a2ea0a51'
             '8bd0c372711f9320205179543bc2dbd7ff7b1b53e604dc4cef24fd140ee0e9a4'
             '81c9650b01a8b3810aaa92923fd85d43fad64d1692e8eb25b7086754599f5e95'
             'c1b4971c184c733d99c6abeec8ae24e6b5dc9bdd0780bc13a27934ba27f6e87e'
@@ -68,15 +69,10 @@ package_python-pylibraft() {
     depends+=(libraft python python-rmm python-numpy python-cuda)
     cd "$srcdir/raft-$pkgver/python/pylibraft"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    rm "$pkgdir/usr/lib/python3.13/site-packages/include" -rf
-    rm "$pkgdir/usr/lib/python3.13/site-packages/lib" -rf
-    rm "$pkgdir/usr/lib/python3.13/site-packages/test" -rf
 }
 
 package_python-raft-dask() {
     depends+=(libraft python python-dask-cuda openucx python-pylibraft ucxx nccl)
     cd "$srcdir/raft-$pkgver/python/raft-dask"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    rm "$pkgdir/usr/lib/python3.13/site-packages/include" -rf
-    rm "$pkgdir/usr/lib/python3.13/site-packages/lib" -rf
 }
