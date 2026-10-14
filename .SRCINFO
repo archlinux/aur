@@ -1,10 +1,9 @@
 pkgbase = sbsondemand
 	pkgdesc = Unofficial SBS on Demand desktop app.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/sbsondemand/
 	arch = x86_64
-	arch = arm7h
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
@@ -14,7 +13,7 @@ pkgbase = sbsondemand
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/sbsondemand//application/-/archive/1.0.4/application-1.0.4.tar.bz2
-	sha256sums = 88b8baa2b91fa1864570f57edc519bddf32b944c6e9376d0c1ef7092058da476
+	source = https://gitlab.com/linuxbombay/sbsondemand//application/-/archive/1.0.5/application-1.0.5.tar.bz2
+	sha256sums = c1b417153f394e1aea163eed542409bcf9cbd56514232a2389fd84c0cccd5450
 
 pkgname = sbsondemand

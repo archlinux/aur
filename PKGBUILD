@@ -1,25 +1,26 @@
 pkgname=sbsondemand
 _pkgname=SBSonDemand
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unofficial SBS on Demand desktop app."
-arch=('x86_64' 'arm7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/sbsondemand/"
 license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('88b8baa2b91fa1864570f57edc519bddf32b944c6e9376d0c1ef7092058da476')
+sha256sums=('c1b417153f394e1aea163eed542409bcf9cbd56514232a2389fd84c0cccd5450')
 
 package() {
     cd "$srcdir/application-$pkgver"
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
-    #Libsplash/LibAdblock lib cleanup to use LibElectron deps instead
-    rm -rf \
-  "$srcdir/application-$pkgver/libsplash"
+    #LibElectron deps cleanup
+    rm -rf "$srcdir/application-$pkgver/libsplash"
+    rm -rf "$srcdir/application-$pkgver/libadblock"
     #link libelectron deps
     ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
+    ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
