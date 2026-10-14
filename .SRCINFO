@@ -1,0 +1,19 @@
+pkgbase = scottbass3-clipd-git
+	pkgdesc = Clipboard history daemon for Wayland, with pins organized in categories
+	pkgver = r9.b5b6a4f
+	pkgrel = 1
+	url = https://github.com/scottbass3/clipd
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = clipd
+	conflicts = clipd
+	options = !lto
+	source = clipd::git+https://github.com/scottbass3/clipd.git
+	sha256sums = SKIP
+
+pkgname = scottbass3-clipd-git
