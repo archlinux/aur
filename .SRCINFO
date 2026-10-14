@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-tristania
-	pkgdesc = AIMP skin: Tristania 1.5 (by Tarik)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Tristania v1.5 (by Tarik)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-tristania
 	options = !strip
 	options = !debug
 	source = aimp-skin-tristania-282.archive::https://aimp.ru/?do=catalog.download&id=282
-	sha256sums = 86af4422437e19bfcbf62199f5f666d0caa1a100b9ca67e89f4e12c18fd6e5a6
+	sha256sums = SKIP
 
 pkgname = aimp-skin-tristania
