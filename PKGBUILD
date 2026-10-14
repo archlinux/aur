@@ -40,16 +40,14 @@ makedepends=(
 #options=('!lto')  ## lto-wrapper fails with CUDA options enabled
 source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/jarro2783/cxxopts.git'
-        'git+https://github.com/NVIDIA/thrust.git'
+        'git+https://github.com/NVIDIA/cccl.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/google/cpu_features.git'
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
-        'git+https://github.com/NVIDIA/cutlass.git'
-        'git+https://github.com/NVIDIA/cub.git')
+        'git+https://github.com/NVIDIA/cutlass.git')
 sha256sums=('b9261d99550030a626a2bb4bb12dd66d832c1e04da7f0f7032cf641de0794433'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -62,21 +60,16 @@ sha256sums=('b9261d99550030a626a2bb4bb12dd66d832c1e04da7f0f7032cf641de0794433'
 prepare() {
   cd CTranslate2
   git submodule init
-  for submodule in cxxopts thrust googletest cpu_features spdlog ruy cutlass; do
+  for submodule in cxxopts googletest cpu_features spdlog ruy cutlass; do
     git config submodule."third_party/${submodule}".url "$srcdir/${submodule}"
   done
+  git config submodule."third_party/thrust".url "$srcdir/cccl"
   git -c protocol.file.allow=always submodule update
 
   pushd third_party/ruy
   git submodule init
   git config submodule."cpuinfo".url "$srcdir/cpuinfo"
   git config submodule."googletest".url "$srcdir/googletest"
-  git -c protocol.file.allow=always submodule update
-  popd
-
-  pushd third_party/thrust
-  git submodule init
-  git config submodule."cub".url "$srcdir/cub"
   git -c protocol.file.allow=always submodule update
   popd
 
