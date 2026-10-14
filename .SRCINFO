@@ -1,0 +1,16 @@
+pkgbase = tizen-tv-mcp
+	pkgdesc = MCP server bridging AI assistants to Samsung Tizen Smart TVs over SDB (dev tools, telemetry, debloating)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Twilight0/tizen-tv-mcp
+	arch = any
+	license = MIT
+	makedepends = uv
+	makedepends = python-installer
+	depends = python
+	depends = sdb-bin
+	optdepends = tizen-cli: certificate creation and .wgt signing tools
+	source = tizen-tv-mcp-0.1.0.tar.gz::https://github.com/Twilight0/tizen-tv-mcp/archive/0373bbdd5c594098b7dfff3b830bd126a94490f5.tar.gz
+	sha256sums = 649bd846884fa1837aa102538b83069ac24af6c03784bb0ed47f663c7983d71d
+
+pkgname = tizen-tv-mcp
