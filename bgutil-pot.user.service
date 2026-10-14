@@ -1,0 +1,37 @@
+[Unit]
+Description=BgUtils YouTube POT token provider
+Documentation=https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Platform default cache: ~/.cache/bgutil-ytdlp-pot-provider
+# Bind loopback only; the yt-dlp plugin defaults to http://127.0.0.1:4416
+ExecStart=/usr/bin/bgutil-pot server --host 127.0.0.1 --port 4416
+Restart=on-failure
+RestartSec=5
+
+# Hardening (no MemoryDenyWriteExecute: binary embeds a JS VM for BotGuard)
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+LockPersonality=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+
+[Install]
+WantedBy=default.target
