@@ -1,6 +1,6 @@
 pkgbase = portprotonqt
-	pkgdesc = Modern GUI for managing and launching games from PortProton and Steam
-	pkgver = 1.4.1
+	pkgdesc = Game library manager and launcher for Linux
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgbase = portprotonqt
 	provides = portprotonqt-steam-compat
 	conflicts = portprotonqt-steam-compat
 	replaces = portprotonqt-steam-compat
-	source = git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v1.4.1
-	sha256sums = b26792dca66f6cbc438821581e710cff4ddc7af97c0b273f286dc56775158710
+	source = git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v1.5.0
+	sha256sums = 6c30909a4152a0234880082cde74334b0476c33c8e748d6c98795f9f3d2586c7
 
 pkgname = portprotonqt

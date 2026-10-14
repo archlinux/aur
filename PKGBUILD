@@ -1,9 +1,9 @@
 # Maintainer: Boris Yumankulov <boriabloger[at]protonmail[dot]com>
 
 pkgname=portprotonqt
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="Modern GUI for managing and launching games from PortProton and Steam"
+pkgdesc="Game library manager and launcher for Linux"
 arch=('x86_64')
 url="https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt"
 license=('GPL-3.0')
@@ -22,7 +22,7 @@ optdepends=(
     'squashfs-tools: for legacy PortProton prefix backup support'
 )
 source=("git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v$pkgver")
-sha256sums=('b26792dca66f6cbc438821581e710cff4ddc7af97c0b273f286dc56775158710')
+sha256sums=('6c30909a4152a0234880082cde74334b0476c33c8e748d6c98795f9f3d2586c7')
 
 build() {
     arch-meson PortProtonQt build
