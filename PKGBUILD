@@ -13,7 +13,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=137.0.6036.39
+pkgver=137.0.6036.63
 pkgrel=3
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -37,7 +37,7 @@ source=(
     "libffmpeg-${chromium_version}.so::https://github.com/ModLabsCC/chromium-ffmpeg-prebuilt/releases/download/chromium-${chromium_version}/libffmpeg.so"
 )
 
-sha512sums=('10464f77cc26619d46406df136f1c6d41e1cab70a1c14345d17c9913e86db65a6875ba7a0ee19c85f341b16f815605ce646d33e309e81696b28e4937cc871520'
+sha512sums=('2675e948c812faa970047d8fac494ad1a24a182379ef79d3e4cb511f95db20fd488c2a682e10fd72f3d32b258d817fbe97b18d747265bd99046ec89450ac645e'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
             'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
