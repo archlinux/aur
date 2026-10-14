@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=agentics-agentboard
-pkgver=0.3.306
+pkgver=0.3.307
 pkgrel=1
 pkgdesc="Agentics AgentBoard - the desktop PowerBoard host, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://agentics.co.za"
 license=('custom')
 depends=('agentics')
 options=('!strip' '!debug')
-source=("agentics-agentboard-0.3.306-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-agentboard-0.3.306-x86_64.enc")
-sha512sums=('bf0228dbc15daba2fd67f6b9516ad20ee439949dfafd8ba3fec9f8cb12b1e5e63ebc50b38c1dee838332ba314d477045771673e5ff510f5dbc7fea8975939692')
+source=("agentics-agentboard-0.3.307-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-agentboard-0.3.307-x86_64.enc")
+sha512sums=('086b7c1c3c778a6aceeaefe1e6d7f594baa8883b99e153c671a1b08c283f4c4d12dd9cf76a46d366691b66e9a38a7c93c1eb9481c0ba9f808e75bcea088242aa')
 
 package() {
-  install -Dm644 "$srcdir/agentics-agentboard-0.3.306-x86_64.enc" "$pkgdir/opt/agentics/components/agentboard/0.3.306/agentboard-0.3.306-linux-amd64.enc"
+  install -Dm644 "$srcdir/agentics-agentboard-0.3.307-x86_64.enc" "$pkgdir/opt/agentics/components/agentboard/0.3.307/agentboard-0.3.307-linux-amd64.enc"
   install -dm755 "$pkgdir/usr/share/doc/agentics-agentboard"
   printf '%s\n' \
     'agentics-agentboard ships the encrypted Agentics agentboard component.' \
