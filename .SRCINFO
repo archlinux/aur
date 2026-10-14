@@ -1,7 +1,7 @@
 pkgbase = proton-ge-git
 	pkgdesc = Custom distribution of Valves Proton with various patches (built from git)
 	pkgver = GE.Proton11.9.r0.g01bfbf6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	install = proton-ge-git.install
 	arch = x86_64
@@ -29,12 +29,10 @@ pkgbase = proton-ge-git
 	optdepends = lib32-vkd3d: vkd3d (32-bit)
 	optdepends = winetricks: protonfixes backend - highly recommended
 	optdepends = xboxdrv: gamepad driver service
-	provides = proton-ge-custom=GE.Proton11.9.r0.g01bfbf6
-	conflicts = proton-ge-custom
 	options = !strip
 	options = emptydirs
 	options = !lto
-	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
+	backup = usr/share/steam/compatibilitytools.d/proton-ge-git/user_settings.py
 	source = proton-ge-git::git+https://github.com/GloriousEggroll/proton-ge-custom.git
 	source = user_settings.py
 	source = launcher.sh

@@ -2,7 +2,7 @@
 
 pkgname=proton-ge-git
 pkgver=GE.Proton11.9.r0.g01bfbf6
-pkgrel=1
+pkgrel=2
 pkgdesc='Custom distribution of Valves Proton with various patches (built from git)'
 arch=('x86_64')
 url='https://github.com/GloriousEggroll/proton-ge-custom'
@@ -31,15 +31,13 @@ makedepends=(
   'podman'
   'wget'
 )
-provides=("proton-ge-custom=${pkgver}")
-conflicts=('proton-ge-custom')
 options=(!strip emptydirs !lto)
 install=proton-ge-git.install
 
-_pkgname='proton-ge-custom'
-_protondir="usr/share/steam/compatibilitytools.d/${_pkgname}"
+# Own paths and tool name (Proton-GE-git), so it installs beside proton-ge-custom(-bin)
+_protondir="usr/share/steam/compatibilitytools.d/${pkgname}"
 _licensedir="usr/share/licenses/${pkgname}"
-_execfile="usr/bin/proton-ge"
+_execfile="usr/bin/proton-ge-git"
 _protoncfg="${_protondir}/user_settings.py"
 
 backup=("${_protoncfg}")
@@ -83,9 +81,6 @@ prepare() {
     printf 'ERROR: patch failures, see %s\n' "${srcdir}/patchlog.txt" >&2
     return 1
   fi
-
-  sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" \
-    "${srcdir}/launcher.sh"
 }
 
 build() {
@@ -134,13 +129,14 @@ package() {
   cp -r "${_built}/." "${pkgdir}/${_protondir}/"
 
   install -Dm755 "${srcdir}/launcher.sh" "${pkgdir}/${_execfile}"
+  sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${pkgdir}/${_execfile}"
 
   install -Dm664 -g 50 "${srcdir}/user_settings.py" \
     "${pkgdir}/${_protondir}/user_settings.py"
 
   install -Dm644 "${srcdir}/pam_limits.conf" \
-    "${pkgdir}/etc/security/limits.d/10-games.conf"
+    "${pkgdir}/etc/security/limits.d/10-proton-ge-git.conf"
 
   install -Dm644 "${srcdir}/proton-ge-custom-bin.conf" \
-    "${pkgdir}/usr/lib/modules-load.d/proton-ge.conf"
+    "${pkgdir}/usr/lib/modules-load.d/proton-ge-git.conf"
 }
