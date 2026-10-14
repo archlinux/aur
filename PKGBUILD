@@ -1,15 +1,15 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-walls
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A terminal screensaver, designed in Go and built for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-walls"
 license=('GPL-3.0-only')
 depends=('kitty' 'wayland')
-makedepends=('go>=1.24' 'git')
+makedepends=('go>=1.24.2' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6dac75c831e7a743b388cbee34364d59e3797aab800f7850fa2e603114b92f0f')
+sha256sums=('b1a8d7c47c5084dfdc0ea5f510681c68e1b971ee82e0e37ba120a74fb81d3067')
 install=${pkgname}.install
 
 build() {
@@ -21,9 +21,9 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
 
-    go build -buildvcs=false -o sysc-walls-daemon ./cmd/daemon/
-    go build -buildvcs=false -o sysc-walls-display ./cmd/display/
-    go build -buildvcs=false -o sysc-walls-client ./cmd/client/
+    go build -buildvcs=false -ldflags "-X github.com/Nomadcxx/sysc-walls/internal/version.Version=${pkgver}" -o sysc-walls-daemon ./cmd/daemon/
+    go build -buildvcs=false -ldflags "-X github.com/Nomadcxx/sysc-walls/internal/version.Version=${pkgver}" -o sysc-walls-display ./cmd/display/
+    go build -buildvcs=false -ldflags "-X github.com/Nomadcxx/sysc-walls/internal/version.Version=${pkgver}" -o sysc-walls-client ./cmd/client/
 }
 
 package() {
