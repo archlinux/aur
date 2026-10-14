@@ -11,6 +11,6 @@ pkgbase = llm-checker
 	optdepends = ollama: for running recommended models locally
 	options = !debug
 	source = llm-checker-3.8.2.tar.gz::https://github.com/Pavelevich/llm-checker/archive/refs/tags/v3.8.2.tar.gz
-	sha256sums = 85a2a2001e1d78ff99d78874e6815eaf191d031fa55ba32477663d1925d092ec
+	sha256sums = eb1062f6b9b032d7a4733920bdb452a68bb88f2337f9fe8f941e42b3c2260a61
 
 pkgname = llm-checker
