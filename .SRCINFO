@@ -1,16 +1,16 @@
 pkgbase = mqtt5-explorer-bin
 	pkgdesc = A simple yet feature-rich client to visualize data of any MQTT broker.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://flathub.org/apps/io.github.Omniaevo.mqtt5-explorer
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron44
-	provides = mqtt5-explorer=2.0.0
+	provides = mqtt5-explorer=2.0.1
 	conflicts = mqtt5-explorer
-	source = mqtt5-explorer-2.0.0-x86_64.AppImage::https://github.com/Omniaevo/mqtt5-explorer/releases/download/v2.0.0/mqtt5-explorer-2.0.0-linux-x86_64.AppImage
+	source = mqtt5-explorer-2.0.1-x86_64.AppImage::https://github.com/Omniaevo/mqtt5-explorer/releases/download/v2.0.1/mqtt5-explorer-2.0.1-linux-x86_64.AppImage
 	source = mqtt5-explorer.sh
-	sha256sums = d74f018196a61a42611933804334fbedff4224de4dc33f9e06b0744d8b3c6dc0
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = fb6acca7019f3478b1e440c5a4ff3c9b411519258fab6b7438a28ba7f09f7e0f
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = mqtt5-explorer-bin
