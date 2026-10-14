@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-breeze
-	pkgdesc = AIMP skin: Breeze 1.21 (by KEIII)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Breeze v1.21 (by KEIII)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-breeze
 	options = !strip
 	options = !debug
 	source = aimp-skin-breeze-104.archive::https://aimp.ru/?do=catalog.download&id=104
-	sha256sums = 2e6fc462aa5b265c5f00d79a39ee79dbfc3cec372d2233c748c4b3251a6cb868
+	sha256sums = SKIP
 
 pkgname = aimp-skin-breeze
