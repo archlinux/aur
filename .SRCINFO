@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-comfortable-new
-	pkgdesc = AIMP skin: Comfortable New 1.8 (by Kolbasko)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Comfortable New v1.8 (by Kolbasko)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-comfortable-new
 	options = !strip
 	options = !debug
 	source = aimp-skin-comfortable-new-198.archive::https://aimp.ru/?do=catalog.download&id=198
-	sha256sums = 085f86c4df5adefd5ec0eaf946a39e74d3ea0cd13b069788ba14cc9b09cbd8ae
+	sha256sums = SKIP
 
 pkgname = aimp-skin-comfortable-new
