@@ -1,13 +1,13 @@
 pkgbase = wps-office-cn
 	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
-	pkgver = 12.1.2.28080
+	pkgver = 12.1.2.29183
 	pkgrel = 1
 	url = https://linux.wps.cn
 	arch = x86_64
 	license = LicenseRef-WPS-EULA
 	options = !emptydirs
-	source_x86_64 = wps-office_12.1.2.28080_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/28080/wps-office_12.1.2.28080.AK.preread.sw.Personal_765474_amd64.deb?t=1786938883&k=747d63811db71a14cfb8cb5b0366c99c
-	sha256sums_x86_64 = 2fa999f60a71e21093ab49ef6d7f61d7668c844bfebf30907d2c290e460f9be0
+	source_x86_64 = wps-office_12.1.2.29183_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/29183/wps-office_12.1.2.29183.AK.preread.sw.Personal_806791_amd64.deb?t=1791949710&k=b0e2355d90f22cabe29e2e59d357d3d5
+	sha256sums_x86_64 = 77ffbdc1be76c834e1853c27ff9063e49d5d3b1f30b206d785761b5bf560c83b
 
 pkgname = wps-office-cn
 	install = wps-office-cn.install
