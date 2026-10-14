@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mediatower
-	pkgdesc = AIMP skin: MediaTower 3.6.4 (by Soolo)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: MediaTower v3.6.4 (by Soolo)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-mediatower
 	options = !strip
 	options = !debug
 	source = aimp-skin-mediatower-651.archive::https://aimp.ru/?do=catalog.download&id=651
-	sha256sums = e0260196333f120ffb355552eb9b53c5dbf3f2360d7a8b09cefe87fe72aa9788
+	sha256sums = SKIP
 
 pkgname = aimp-skin-mediatower
