@@ -1,6 +1,6 @@
 pkgbase = alchitry-labs-beta-bin
 	pkgdesc = Alchitry Labs - The Easiest Way to Program FPGAs (Beta Binary Release)
-	pkgver = 2.0.60
+	pkgver = 2.0.61
 	pkgrel = 1
 	url = https://alchitry.com/alchitry-labs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = alchitry-labs-beta-bin
 	provides = alchitry-labs-beta
 	conflicts = alchitry-labs-beta
 	options = !strip
-	source = alchitry-labs-beta-bin-2.0.60.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2-Beta/releases/download/2.0.60/alchitry-labs-beta-2.0.60-linux-amd64.tar.gz
-	sha256sums = 7a2b0a6862be90ad8aa5ce4973157a974cf25548f36dd8138d7a38c676fd436f
+	source = alchitry-labs-beta-bin-2.0.61.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2-Beta/releases/download/2.0.61/alchitry-labs-beta-2.0.61-linux-amd64.tar.gz
+	sha256sums = bba50f3d924dfd725d28981903a3b96470c80ef4c77f68b949097f9721b1274c
 
 pkgname = alchitry-labs-beta-bin
