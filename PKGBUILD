@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.141.1
+pkgver=1.141.2
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -35,6 +35,8 @@ depends=(
     'libxkbfile'
     'webkit2gtk-4.1'
     'libsecret'
+    'glibc>=2.28'
+    'gcc-libs>=8.1.0'
 )
 optdepends=(
     'gvfs: For move to trash functionality'
@@ -50,11 +52,11 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
-sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
-            '95ce7d9db1ef83c0ec03a416eab865ed940aa20535893eb2e71b8524bbf1fc1a')
-sha256sums_aarch64=('4098a7669f3766a2f30c2442ff4394d2cc0c7349394ec6ea31078bb3a777ceae')
-sha256sums_armv7h=('df3c49469a2f0fa9a6b2cd612a5a30fef01cc468311746b3b7f9041b575d0751')
-sha256sums_x86_64=('3bc78c8208ce7365a0026a920b8c29be91ff7557c4395dc252a42827f5b17321')
+sha256sums=('34154f0c3b9fd59edb131d803f1cbba6031c8f45a014b6cbddf1242064937d65'
+            'ee3d816992d08490f0d7fe8eb5b3c23006c1c7c280cde73c7dee79a23903aa5c')
+sha256sums_aarch64=('261302ab65e1c4bb2e7b56f5ef2c15a73098274f618b27c2366b68ee29764910')
+sha256sums_armv7h=('fb506dad14c124a4e23bcb1142479d1cf1190961a62e37f8455d579427813476')
+sha256sums_x86_64=('3c01cb0f503416c17c195a8fa5f17a6cf84a98d19c6831fa6fce7e4551001684')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -70,13 +72,17 @@ _check_electron_version() {
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
 prepare() {
+    _check_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}.js/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _check_electron_version
+    sed -i -e "
+        s/@ELECTRON@/electron${_electronversion}/g
+        s/@name@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.js"
     grep '"version": ' "$(_get_app_dir)/resources/app/package.json" | awk '{print $2}' | tr -d '"' | tr -d ',' > "${srcdir}/.pkgver"
-    sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
     sed -i "s/${_debname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_debname}.appdata.xml"
     sed -i -e "
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
