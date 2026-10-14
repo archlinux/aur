@@ -1,6 +1,6 @@
 pkgbase = seraphirc-bin
 	pkgdesc = Modern desktop IRC client built with Go and Wails (prebuilt binary)
-	pkgver = 6.0.12
+	pkgver = 6.0.13
 	pkgrel = 1
 	url = https://www.seraphirc.chat/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = seraphirc-bin
 	provides = seraphirc
 	conflicts = seraphirc
 	options = !strip
-	source = seraphirc_6.0.12_amd64.deb::https://github.com/seraphirc/seraphirc-download/releases/download/v6.0.12/seraphirc_6.0.12_amd64.deb
-	sha256sums = a970e51d62473c18da5488b87e5d722ff2ce6ea72a6ae7ac36db1ff4913fa60a
+	source = seraphirc_6.0.13_amd64.deb::https://github.com/seraphirc/seraphirc-download/releases/download/v6.0.13/seraphirc_6.0.13_amd64.deb
+	sha256sums = 3552e4ee64ce53cadeafbb3d0de2c0f4f99bf626c5cf8f8aad73cec320c22940
 
 pkgname = seraphirc-bin
