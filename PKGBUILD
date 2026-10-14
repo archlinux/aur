@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sokuji-bin
 _pkgname=Sokuji
-pkgver=0.45.1
+pkgver=0.45.2
 _electronversion=44
 pkgrel=1
 pkgdesc="Real-time two-way speech translation for bilingual meetings — auto-detects the spoken language and translates both directions, cloud or fully offline on-device."
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('218ca6a7daa38513796f69665763c3538b45648542e6ff4b0b0e0d0c522be25d')
-sha256sums_x86_64=('45b55587f17a1536cc42367616bc9758c5bb5a5661b54ef2ea9bf9dc5aabc370')
+sha256sums_aarch64=('4c52b822e4da1378f1cae8cda457cbd5105c0d99143e49d1ac1f816e0eab335c')
+sha256sums_x86_64=('509a82c6749d67049a586d2bf46fec54d36221df18b5c992ed06ae5d94d35611')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
