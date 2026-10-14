@@ -1,6 +1,6 @@
 pkgbase = python-social-auth-app-django
 	pkgdesc = Python Social Auth Django component
-	pkgver = 6.0.0
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/python-social-auth/social-app-django
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-social-auth-app-django
 	depends = python-social-auth-core
 	depends = python-django
 	depends = python-asgiref
-	source = python-social-auth-app-django-6.0.0.tar.gz::https://github.com/python-social-auth/social-app-django/archive/refs/tags/6.0.0.tar.gz
-	b2sums = 1118a1cc6fae3d3ae80ef5c66f9cb6e4cf87cae3bea1ef2b70dc0519026d9789099fcd1a63e78a00564a412fff14a5e36fb258ca20ca09a30bce847cba8f5df2
+	source = python-social-auth-app-django-7.1.0.tar.gz::https://github.com/python-social-auth/social-app-django/archive/refs/tags/7.1.0.tar.gz
+	b2sums = 4045762d62875406537c3cc1202e64df6e9af4b3c2857760a9d2f3a0a6e6b342c71a6e7ce19e96647a1b33da9643656eeb1a03fde4cfd2b9a3159e8002312a18
 
 pkgname = python-social-auth-app-django
