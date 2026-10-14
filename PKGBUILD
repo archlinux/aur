@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=b4-bin
-pkgver=1.85.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
