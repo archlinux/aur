@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-windows-media-player-10
-	pkgdesc = AIMP skin: Windows Media Player 10 1.0 (by memo-se)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Windows Media Player 10 2019-06-07 (by memo-se)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-windows-media-player-10
 	options = !strip
 	options = !debug
 	source = aimp-skin-windows-media-player-10-1074.archive::https://aimp.ru/?do=catalog.download&id=1074
-	sha256sums = 96df1edab8af1d9822ee4e634601050825a44289216d1b4cfb83440474495641
+	sha256sums = SKIP
 
 pkgname = aimp-skin-windows-media-player-10
