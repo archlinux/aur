@@ -2,7 +2,7 @@
 _appname=scramblery
 pkgname="${_appname}-openvino-bin"
 _pkgname=Scramblery
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.OpenVino version."
 arch=('x86_64')
@@ -13,6 +13,7 @@ conflicts=(
     "${_appname}"
     "${_appname}-cuda"
     "${_appname}-webgpu"
+    "${_appname}-migraphx"
 )
 depends=(
     'gstreamer'
@@ -25,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altunenes/scramblery/v${pkgver}/LICENSE"
 )
-sha256sums=('87a271f3e9be37abb26b6e86bf9ffdc825dfe8af4a342fe0a7ceb15c7a3437d4'
+sha256sums=('0f21175375b1c36f61849728c51ba3b91b8ff6f851066d0792639f0e42d7e7d5'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
