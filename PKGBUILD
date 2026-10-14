@@ -2,7 +2,7 @@
 _pkgname=f5vpn
 pkgname=${_pkgname}-ng
 pkgver=7273.0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=(aarch64 x86_64)
 mirror=vpn.f5networks.net
@@ -26,7 +26,7 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${_pkgname}")
-url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/releasenotes/related/relnote-edge-client-7-2-7-2.html'
+url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/releasenotes/related/relnote-edge-client-7-2-7-3.html'
 license=('commercial')
 
 pkgver() {
