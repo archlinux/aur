@@ -2,7 +2,7 @@
 _appname=flomo
 pkgname="${_appname}-pake"
 _pkgname=Flomo
-pkgver=3.17.3
+pkgver=3.17.5
 pkgrel=1
 pkgdesc="Use Pake to package Flomo.浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-pake}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('c6e02c8952f778603ec54577bcfe3341b8c19310ec31f43017f71b2d99c3dba3'
+sha256sums=('46536e085982102b1ef789fa2c0db3f052c8a665f9a699035f5d1e328a70e634'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
@@ -29,7 +29,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/pake-${_appname}" "${pkgdir}/usr/bin/${_appname}"
-    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     install -Dm644 "${srcdir}/usr/share/applications/com.pake.${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
