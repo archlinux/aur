@@ -1,0 +1,23 @@
+pkgbase = ham2k-power-logger-bin
+	pkgdesc = Next-generation amateur radio logging app by Ham2K (pre-compiled binary)
+	pkgver = 26.9.0
+	pkgrel = 1
+	url = https://ham2k.com/
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = gtk3
+	depends = libsecret
+	depends = curl
+	provides = ham2k-power-logger
+	provides = ham2k-polo
+	provides = polo
+	conflicts = ham2k-power-logger
+	conflicts = ham2k-polo
+	options = !strip
+	source_x86_64 = halo-next-26.9.0-(179)-x64.AppImage::https://updates.ham2k.net/halo-next/linux-x64/26.9/halo-next-26.9.0-(179)-x64.AppImage
+	sha256sums_x86_64 = 7fe1de6f834292959364d940c807c5e581e1c7f2f26bc66e2c715d9692dd578b
+	source_aarch64 = halo-next-26.9.0-(179)-arm64.AppImage::https://updates.ham2k.net/halo-next/linux-arm64/26.9/halo-next-26.9.0-(179)-arm64.AppImage
+	sha256sums_aarch64 = 514d834bc3b485f8dc61259ce546e6d19b779f84ef182184ba01519484b6fdfd
+
+pkgname = ham2k-power-logger-bin
