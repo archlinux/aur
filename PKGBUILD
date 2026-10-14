@@ -5,12 +5,15 @@
 # Portable archive sha256 is in checksums-SHA256.txt attached to each GitHub release.
 
 pkgname=paintfe-bin
-pkgver=1.3.7
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Fast, GPU-accelerated raster image editor (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/kylejckson/PaintFE"
 license=('MIT')
+# Preserve the published compatibility-host binary: its adjacent .sha256 file
+# verifies the exact release artifact before PaintFE loads legacy plugins.
+options=('!strip')
 provides=('paintfe')
 conflicts=('paintfe')
 depends=(
@@ -30,9 +33,9 @@ source=(
     "PaintFE-${pkgver}.png::https://raw.githubusercontent.com/kylejckson/PaintFE/v${pkgver}/assets/icons/app_icon.png"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/kylejckson/PaintFE/v${pkgver}/LICENSE.md"
 )
-sha256sums=('9050785501f7d5c4fdf18f7c665a5d677926a84cf753734cbdf0eee6a44f1399'
+sha256sums=('f611411c79e891f6295515165223f03c746d58a395bbdd34e6369339f11c8a56'
             'cc0764b5e156e1c7af4ca70d1cadec0c47368e51ae480324eee2f448db58e4d4'
-            '01d846f2682ae7fb3a67542ef4e2b31212a6286b6da3964d18e0591c72e3fcc5'
+            '81d202b768f21db258ba7268288eefb643f5c082edb6eb0b8d481b2e100ee0f0'
             '93a341aa77d861fdf5fcf20243c40a13da5bf7ab1d2058e9d67b8777534a5c0e')
 
 package() {
