@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-pdf-studio-bin
 _pkgname=Open.PDF.Studio
-pkgver=2026.39
+pkgver=2026.41.0
 pkgrel=1
 pkgdesc="a lightweight, native desktop application that provides professional-grade PDF annotation, markup, and editing tools without subscriptions, telemetry, or bloatware. "
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.0_amd64.deb")
-sha256sums=('bc6c7dea4a53f2645577aeaebe5f1cba9d38819a7349575a4c5beb7215cfc479')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('39d04e1374fef55e5cf62bf8ea2e6a117b886ef77047ce53e6bf3050b6224a70')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=Office;/" "${srcdir}/usr/share/applications/${_pkgname//./ }.desktop"
@@ -23,7 +23,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
