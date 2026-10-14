@@ -10,6 +10,8 @@ Add yourself to the plugdev group to use the device without root:
 
 Then log out and back in (or run: newgrp plugdev).
 
+Launch the tool with:  cloner
+
 Note: this package ships a prebuilt binary. Upstream does not release source code.
 EOF
 }

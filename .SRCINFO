@@ -1,7 +1,7 @@
 pkgbase = cloner-bin
 	pkgdesc = USB download/flashing tool for Ingenic SoCs — prebuilt binary, upstream provides no source code
 	pkgver = 2.5.36.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ingenic-community/Cloner
 	install = cloner-bin.install
 	arch = x86_64
