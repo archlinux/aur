@@ -4,7 +4,7 @@
 # VCS package: builds the tip of master. pkgver() derives the version from
 # git describe at build time; the value below only feeds the AUR web page.
 pkgname=actionlint-kjanat-git
-pkgver=1.17.0.r58.gf553d1b
+pkgver=1.17.0.r61.g8e2e612
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork, git master)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,7 +24,14 @@ sha256sums=('SKIP')
 # Go module path; the ldflags targets below are package-level vars in it.
 _module='actionlint.kjanat.dev'
 
+# mise shims on the builder's PATH otherwise apply the repository's mise configs.
+_system_tools() {
+	export PATH="/usr/bin:${PATH}"
+	export MISE_IGNORED_CONFIG_PATHS="${srcdir}/actionlint${MISE_IGNORED_CONFIG_PATHS:+:${MISE_IGNORED_CONFIG_PATHS}}"
+}
+
 pkgver() {
+	_system_tools
 	cd actionlint || exit 1
 	local tag
 	# v1.17.0-12-gabc1234 -> 1.17.0.r12.gabc1234
@@ -33,11 +40,13 @@ pkgver() {
 }
 
 prepare() {
+	_system_tools
 	cd actionlint || exit 1
 	go mod download
 }
 
 build() {
+	_system_tools
 	cd actionlint || exit 1
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
@@ -54,6 +63,7 @@ build() {
 }
 
 check() {
+	_system_tools
 	cd actionlint || exit 1
 	# The ./scripts/... tests reach the network; the shellcheck
 	# integration tests self-skip when those tools are absent.
@@ -61,6 +71,7 @@ check() {
 }
 
 package() {
+	_system_tools
 	cd actionlint || exit 1
 	install -Dm0755 build/actionlint "${pkgdir}/usr/bin/actionlint"
 	install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
