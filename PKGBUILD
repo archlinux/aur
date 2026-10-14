@@ -1,6 +1,6 @@
 # Maintainer: Kolimi contributors <chaitanyachowdary125@live.com>
 pkgname=kolimi-server
-pkgver=0.1.17
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="Pure-Rust, single-binary self-hosted cloud: files, WebDAV, CalDAV/CardDAV, sync"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('kolimi')
 conflicts=('kolimi-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07e3c37f013150e278890bb400adfcb611c4a81b526af92455e9af2bbdbc6a6a')
+sha256sums=('615181c2d8c3b584fc3ec983f59ab28d0979ff74196aee841f31164bf36ba6ba')
 
 build() {
     cd "kolimi-$pkgver"
@@ -21,7 +21,9 @@ build() {
     # but Arch's hardened CFLAGS force -O2 afterwards, tripping a compile-time
     # #error. Disable the jitterentropy fallback so the OS RNG is used instead.
     export AWS_LC_SYS_NO_JITTER_ENTROPY=1
-    cargo build --release --locked -p kolimi-server -p kolimi-sync
+    # glibc build: enable the CLI OS-keystore backend (falls back to the
+    # `0600` device file when no Secret Service is running).
+    cargo build --release --locked -p kolimi-server -p kolimi-sync --features kolimi-sync/keystore
 }
 
 check() {
