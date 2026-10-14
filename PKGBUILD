@@ -2,7 +2,7 @@
 
 _name=phonic
 pkgname=python-$_name
-pkgver=0.32.38
+pkgver=0.32.39
 pkgrel=1
 pkgdesc='The Phonic Python library provides convenient access to the Phonic APIs from Python.'
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest'
               'python-pytest-xdist'
               'python-dateutil')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('92332933eaa60509f795302c4dd1bd2da17828fda75d367bd6cb4fa9f09dc433')
+sha256sums=('88194a9974b8953550796e6eb7638481d8a64004d056411918cda61697aa00b9')
 
 build() {
   cd "$srcdir"/$_name-python-$pkgver
