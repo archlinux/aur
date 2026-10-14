@@ -1,0 +1,9 @@
+# makepkg build artifacts
+/src/
+/pkg/
+*.pkg.tar
+*.pkg.tar.*
+*.pkg.tar.zst
+
+# downloaded upstream AppImage (registered as a source in PKGBUILD)
+*.AppImage
