@@ -1,8 +1,8 @@
 # Maintainer: rdbt <87152661+rdbtCVS@users.noreply.github.com>
 pkgname=horizon-launcher-bin
 pkgver=0.2.0
-pkgrel=1
-pkgdesc='Downloads, prepares and starts Horizon, a Minecraft Java Edition rewrite'
+pkgrel=2
+pkgdesc='Horizon is Minecraft Java Edition rewritten in Rust'
 arch=('x86_64')
 url='https://github.com/ludovic111/horizon'
 license=('MIT' 'OFL-1.1')
