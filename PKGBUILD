@@ -1,8 +1,8 @@
 # Maintainer: Rotko Networks <hq@rotko.net>
 #
-# Canonical, in-repo source of truth for the AUR package. The workflow at
-# .github/workflows/aur.yml copies this file into the AUR repo whenever it
-# changes on main. Do not hand-edit the AUR copy.
+# Canonical, in-repo source of truth for the AUR package. Publish by hand:
+# copy this file into the AUR repo, regenerate .SRCINFO with
+# `makepkg --printsrcinfo`, and push. Do not hand-edit the AUR copy.
 #
 # zomp is a rolling fork: main is a rebased commit series on top of upstream
 # oh-my-pi, so this is a -git package. pkgver() reads the checkout, which means
@@ -11,7 +11,7 @@
 pkgname=zomp-git
 # Snapshot only: makepkg recomputes this with pkgver() at build time, and the
 # .SRCINFO the AUR ships is generated from the same function.
-pkgver=v18.3.1.r50.ge513077
+pkgver=v18.10.3.r157.g644a75c
 pkgrel=1
 pkgdesc="Fork of oh-my-pi (omp) that runs tool calls through zish's kernel sandbox (git build)"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ url="https://github.com/rotkonetworks/zomp"
 license=('MIT')
 # gcc-libs: the bundled pi_natives addon links libstdc++/libgcc at runtime.
 depends=('glibc' 'gcc-libs')
-# rustup (not rust): rust-toolchain.toml pins nightly-2026-08-08, and rustup is
+# rustup (not rust): rust-toolchain.toml pins nightly-2026-10-06, and rustup is
 # what honors it. cmake/make build the C dependencies of pi_natives.
 makedepends=('git' 'bun' 'rustup' 'cmake' 'make')
 optdepends=('zish: kernel-enforced (Landlock+seccomp) sandbox for the external-shell backend'

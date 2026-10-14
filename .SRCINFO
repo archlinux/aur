@@ -1,6 +1,6 @@
 pkgbase = zomp-git
 	pkgdesc = Fork of oh-my-pi (omp) that runs tool calls through zish's kernel sandbox (git build)
-	pkgver = v18.3.1.r50.ge513077
+	pkgver = v18.10.3.r157.g644a75c
 	pkgrel = 1
 	url = https://github.com/rotkonetworks/zomp
 	arch = x86_64
