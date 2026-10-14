@@ -1,6 +1,6 @@
 pkgbase = python-mempalace
 	pkgdesc = The highest-scoring AI memory system, with 30x context compression and a temporal knowledge graph.
-	pkgver = 3.10.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://github.com/milla-jovovich/mempalace
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-mempalace
 	depends = python-chromadb
 	provides = mempalace
 	conflicts = mempalace
-	source = https://files.pythonhosted.org/packages/source/m/mempalace/mempalace-3.10.0.tar.gz
-	sha256sums = c76f1aeae81a68b695249f940e6771f147ae3be73d99bb43ad93530de12cb1f4
+	source = https://files.pythonhosted.org/packages/source/m/mempalace/mempalace-3.11.0.tar.gz
+	sha256sums = 5e5ff52671d5d751113d9067555d69d0ef77b672df1fbdc64dbc16f360639214
 
 pkgname = python-mempalace
