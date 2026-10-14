@@ -47,7 +47,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('2ed6959ee30e53d1a9091e375b4de0e25d18072a3aed993a348a83b55c62648b')
+sha256sums=('151ddfe43f9ece2b8b98bdc1436c6f055832232ab4057ff44c05db6b64acae46')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
