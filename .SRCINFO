@@ -1,19 +1,19 @@
 pkgbase = zt
 	pkgdesc = Minimal terminal emulator in Zig (X11 backend, no GPU required)
-	pkgver = 0.8.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/midasdf/zt
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = zig>=0.16.0
+	makedepends = zig>=0.17.0
 	depends = libxcb
 	depends = xcb-imdkit
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
-	provides = zt=0.8.0
+	provides = zt=0.11.0
 	options = !lto
-	source = zt-0.8.0.tar.gz::https://github.com/midasdf/zt/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 9b202a5ef9981f03bb5cfb9c724eaee8f7a4cc76c42d5e165f89394606b090be
+	source = zt-0.11.0.tar.gz::https://github.com/midasdf/zt/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = 4e906d189f17c7331f7167351cbf8aa5064714832df7339efa77996ae5d1bff6
 
 pkgname = zt
