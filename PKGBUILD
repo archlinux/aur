@@ -25,10 +25,10 @@
 pkgname=hermes-agent
 # Peeled v0.21.7 tag object (git rev-parse v0.21.7^{}); pin so the stamp
 # does not depend on a live network lookup during package().
-_commit=71d34bad1045610252eda02ee79549436896e784
-_commit_date=1791775030
-pkgver=0.21.7
-pkgrel=3
+_commit=e06df9c2eae6901f4c88f464e0ae6e753c0428b8
+_commit_date=1792015291
+pkgver=0.22.0
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -57,7 +57,7 @@ source=(
     'keep-venv-interpreter.patch'
     'system-tools.py'
 )
-sha256sums=('fcf5fc29d3088764a5a293910f75f43dc736b5655ed410d7339cf94cc1462459'
+sha256sums=('61333ab64f7ad728bc265d103fd73b2eb4b936f9c8d9fe3ccf2531ad955e96a1'
             '516bee4492e4d6f6e4310703bdec7e88229a1b0ddb828542f297d4e6e226c427'
             '5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d')
 
