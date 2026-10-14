@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-mere
-	pkgdesc = AIMP skin: Mere 1.3 (by ScrollUnLock)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Mere v1.3 (by ScrollUnLock)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-mere
 	options = !strip
 	options = !debug
 	source = aimp-skin-mere-362.archive::https://aimp.ru/?do=catalog.download&id=362
-	sha256sums = 332390cf77ebbf4f4ed64c3586c0573b6c8859b789372604a8793dfeefe4b9b2
+	sha256sums = SKIP
 
 pkgname = aimp-skin-mere
