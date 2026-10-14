@@ -4168,10 +4168,10 @@ index a988f504..1620f348 100644
      QUrl m_url;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
-index 00000000..9fc230eb
+index 00000000..bf36689b
 --- /dev/null
 +++ b/core/smartinvert.cpp
-@@ -0,0 +1,552 @@
+@@ -0,0 +1,629 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4363,6 +4363,35 @@ index 00000000..9fc230eb
 +constexpr int s_liftLightMin = 25; // clearly-brighter neighbors needed in 9x9
 +constexpr int s_liftBgDelta = 60; // a background pixel is this much brighter...
 +constexpr int s_liftBgSat = 120; // ...and no more colored than this
++
++// The dark edge strip - the taskbar rule. A Windows taskbar is a band of
++// flat dark fill docked to one screen edge, carrying small bright islands:
++// the Start button, pinned-app icons, the system tray clock. Those are
++// light-on-dark pixels, and the per-pixel rules mangle exactly that: the
++// ClearType fringe rule (built for dark text on white chrome) sees the
++// saturated antialiased edge of a white clock glyph as a subpixel fringe and
++// flips it to a white dot, while the light-text keep rule does not fire
++// because the taskbar's own fill is saturated dark, not a flat dark surface.
++// On one real capture that scribbled 1764 of the taskbar's pixels: 927 dark
++// edges flipped white, 409 white glyph pixels flipped dark, 383 mid. Rather
++// than tune two rules to cooperate on light-on-dark text, pass the whole
++// already-dark band through untouched - the remote already renders it
++// dark-mode.
++//
++// A band qualifies per edge: it starts at the edge and runs inward over rows
++// (or columns) that are each at least s_stripDarkFrac percent pixels of luma
++// at most s_stripDarkLuma, and it stops at the first bright row or after
++// s_stripMaxPx. That condition is self-limiting and is what makes the rule
++// safe: a light window docked to the edge makes those rows bright, so the
++// run stops before it and the window is still filtered whole - the band can
++// never leave a bright window's edge raw. And a row that is 85% dark holds
++// only sparse bright pixels (text and icons on dark), never white window
++// chrome, so passing it raw darkens nothing that needed darkening. The
++// wallpaper margin the band soaks up past the taskbar was already preserved
++// by the saturation rule, so it costs nothing to include it.
++constexpr int s_stripDarkLuma = 100; // a pixel counts as dark background
++constexpr int s_stripDarkFrac = 85; // percent of a row that must be dark
++constexpr int s_stripMaxPx = 90; // never protect more than this many px
 +}
 +
 +namespace SmartInvert
@@ -4462,6 +4491,48 @@ index 00000000..9fc230eb
 +            const int mn = std::min(r, std::min(g, b));
 +            luma[y * w + x] = uint8_t((r * 77 + g * 150 + b * 29) >> 8);
 +            saturation[y * w + x] = uint8_t(mx == 0 ? 0 : (mx - mn) * 255 / mx);
++        }
++    }
++
++    // Pass 1b: the dark edge strip map (the taskbar). For each of the four
++    // edges, walk inward from the edge while each row (or column) is mostly
++    // dark; those pixels are the remote's already-dark docked chrome and are
++    // painted raw. See the constants for why the mostly-dark-row condition
++    // makes this safe against bright windows.
++    QVector<uint8_t> protectedStrip(n, 0);
++    const auto mostly_dark_row = [&](int y) {
++        int dark = 0;
++        const uint8_t *row = luma.constData() + y * w;
++        for (int x = 0; x < w; ++x) {
++            dark += (row[x] <= s_stripDarkLuma) ? 1 : 0;
++        }
++        return dark * 100 >= w * s_stripDarkFrac;
++    };
++    const auto mostly_dark_col = [&](int x) {
++        int dark = 0;
++        for (int y = 0; y < h; ++y) {
++            dark += (luma[y * w + x] <= s_stripDarkLuma) ? 1 : 0;
++        }
++        return dark * 100 >= h * s_stripDarkFrac;
++    };
++    const int stripBottom = std::min(s_stripMaxPx, h);
++    for (int y = h - 1, run = 0; run < stripBottom && mostly_dark_row(y); --y, ++run) {
++        std::fill_n(protectedStrip.begin() + y * w, w, uint8_t(1));
++    }
++    const int stripTop = std::min(s_stripMaxPx, h);
++    for (int y = 0, run = 0; run < stripTop && mostly_dark_row(y); ++y, ++run) {
++        std::fill_n(protectedStrip.begin() + y * w, w, uint8_t(1));
++    }
++    const int stripLeft = std::min(s_stripMaxPx, w);
++    for (int x = 0, run = 0; run < stripLeft && mostly_dark_col(x); ++x, ++run) {
++        for (int y = 0; y < h; ++y) {
++            protectedStrip[y * w + x] = 1;
++        }
++    }
++    const int stripRight = std::min(s_stripMaxPx, w);
++    for (int x = w - 1, run = 0; run < stripRight && mostly_dark_col(x); --x, ++run) {
++        for (int y = 0; y < h; ++y) {
++            protectedStrip[y * w + x] = 1;
 +        }
 +    }
 +
@@ -4653,6 +4724,12 @@ index 00000000..9fc230eb
 +            const int g = qGreen(c);
 +            const int b = qBlue(c);
 +
++            if (protectedStrip[self]) {
++                // Already-dark docked chrome (taskbar, its icons, its
++                // clock): passed through raw. See the constants.
++                continue;
++            }
++
 +            if (fringe[self]) {
 +                // Subpixel antialiasing: recolor from luma as plain grey.
 +                const int recolored = s_curve[luma[self]];
@@ -4726,10 +4803,10 @@ index 00000000..9fc230eb
 +}
 diff --git a/core/smartinvert.h b/core/smartinvert.h
 new file mode 100644
-index 00000000..6b469442
+index 00000000..74adf254
 --- /dev/null
 +++ b/core/smartinvert.h
-@@ -0,0 +1,69 @@
+@@ -0,0 +1,75 @@
 +// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +
@@ -4746,15 +4823,21 @@ index 00000000..6b469442
 + * The filter remaps the brightness of window chrome - near-white
 + * backgrounds, grey panels and near-black text - through a light-to-dark
 + * curve. Saturated pixels (photo content, colorful icons) are kept
-+ * untouched, so pictures keep looking like pictures. Three structural rules
-+ * refine that split, each keyed on pixel neighborhoods rather than color:
-+ * a uniform light neighborhood is a surface whatever its tint (tinted
-+ * chrome bands darken with the rest of the window); a thin band of saturated
-+ * pixels between a black glyph core and light chrome is ClearType
-+ * antialiasing and neutralizes to grey (no colored halos around text); and a
-+ * thin dark saturated stroke standing on clearly brighter pixels is colored
-+ * text and lifts to a readable light tone of its own hue (GPMC's blue
-+ * section headers stay legible on darkened bands).
++ * untouched, so pictures keep looking like pictures. Structural rules refine
++ * that split, each keyed on pixel neighborhoods rather than color: a uniform
++ * light neighborhood is a surface whatever its tint (tinted chrome bands
++ * darken with the rest of the window); a thin band of saturated pixels
++ * between a black glyph core and light chrome is ClearType antialiasing and
++ * neutralizes to grey (no colored halos around text); a thin dark saturated
++ * stroke standing on clearly brighter pixels is colored text and lifts to a
++ * readable light tone of its own hue (GPMC's blue section headers stay
++ * legible on darkened bands); a thin bright stroke in a broad dark region is
++ * light text and stays bright (desktop labels, the taskbar clock); a flat
++ * dark neighborhood is the remote's own dark-mode chrome and is left alone
++ * (the Start menu's panel, which the curve would otherwise flip to a glowing
++ * slab); and a mostly-dark band docked to a screen edge is the taskbar,
++ * passed through raw so its Start button, icons and clock text - light-on-dark
++ * pixels the per-pixel rules mangle - survive whole.
 + *
 + * It cannot tell a white window background from a white document page: both
 + * are flat white pixels. Only the remote OS itself knows that difference, so
@@ -6009,10 +6092,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..15352dd0
+index 00000000..1b3631ea
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,691 @@
+@@ -0,0 +1,724 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -6394,17 +6477,50 @@ index 00000000..15352dd0
 +    // and the white text standing on it stays bright - while the dithered
 +    // translucent border above (previous test) still darkens, because a
 +    // dither window averages its bright dots in above any dark surface
-+    // bound.
-+    QImage menuPanel(64, 64, QImage::Format_RGB32);
-+    menuPanel.fill(qRgb(31, 31, 31));
-+    for (int y = 20; y < 32; ++y) {
-+        for (int x = 10; x < 12; ++x) {
++    // bound. The panel floats in the middle of a light screen so this tests
++    // the dark surface rule directly, not the edge strip.
++    QImage menuPanel(96, 96, QImage::Format_RGB32);
++    menuPanel.fill(Qt::white);
++    for (int y = 30; y < 70; ++y) {
++        for (int x = 30; x < 70; ++x) {
++            menuPanel.setPixel(x, y, qRgb(31, 31, 31)); // the dark panel
++        }
++    }
++    for (int y = 40; y < 52; ++y) {
++        for (int x = 40; x < 42; ++x) {
 +            menuPanel.setPixel(x, y, qRgb(255, 255, 255)); // white glyph stroke
 +        }
 +    }
 +    SmartInvert::apply(menuPanel);
-+    check(menuPanel.pixel(40, 40) == qRgb(31, 31, 31), "a flat dark Start menu panel is left alone, not flipped to a white slab");
-+    check(qRed(menuPanel.pixel(10, 26)) >= 200, "white text standing on the dark panel stays bright");
++    check(menuPanel.pixel(60, 60) == qRgb(31, 31, 31), "a flat dark Start menu panel is left alone, not flipped to a white slab");
++    check(qRed(menuPanel.pixel(41, 45)) >= 200, "white text standing on the dark panel stays bright");
++    check(qRed(menuPanel.pixel(80, 80)) < 70, "the light screen around the panel is still darkened");
++
++    // The taskbar strip: a Windows taskbar is a band of flat dark fill on a
++    // screen edge with small bright islands (its clock glyphs, Start button,
++    // pinned icons). Those light-on-dark pixels are exactly what the per
++    // pixel rules mangle, so a mostly-dark band docked to an edge is passed
++    // through raw. Its dark fill and bright clock text both survive intact,
++    // while the light screen above the taskbar is still filtered - proving
++    // the band is bounded to the dark rows and cannot leave a window raw.
++    QImage taskbarStrip(96, 96, QImage::Format_RGB32);
++    taskbarStrip.fill(Qt::white);
++    for (int y = 76; y < 96; ++y) { // the (0, 3, 8) taskbar fill on the bottom edge
++        for (int x = 0; x < 96; ++x) {
++            taskbarStrip.setPixel(x, y, qRgb(0, 3, 8));
++        }
++    }
++    for (int y = 80; y < 90; ++y) { // a white clock glyph standing on it
++        for (int x = 40; x < 42; ++x) {
++            taskbarStrip.setPixel(x, y, qRgb(255, 255, 255));
++        }
++    }
++    taskbarStrip.setPixel(42, 85, qRgb(10, 8, 6)); // its antialiased saturated edge
++    SmartInvert::apply(taskbarStrip);
++    check(taskbarStrip.pixel(10, 90) == qRgb(0, 3, 8), "the dark taskbar fill is passed through, not recolored");
++    check(qRed(taskbarStrip.pixel(41, 85)) >= 200, "the taskbar clock text stays bright, not scribbled dark");
++    check(qRed(taskbarStrip.pixel(42, 85)) < 60, "the clock glyph antialiasing is not flipped to a white dot");
++    check(qRed(taskbarStrip.pixel(48, 20)) < 70, "the light desktop above the taskbar is still darkened");
 +}
 +
 +static void testUrlDerivation()

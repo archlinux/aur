@@ -7,7 +7,7 @@
 pkgname=krdc-ai
 _commit=5876dc366adc24f0751eaae6ef81cee742ce04e6
 pkgver=26.11.70
-pkgrel=29
+pkgrel=30
 pkgdesc="KDE Remote Desktop Client with an integrated AI assistant panel and a client-side dark mode filter"
 arch=('x86_64')
 url="https://invent.kde.org/network/krdc"
