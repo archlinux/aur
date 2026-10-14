@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ait
+Comment=Local-first multi-agent manager
+Exec=ait --class=Ait %U
+Terminal=false
+Type=Application
+Icon=ait
+StartupWMClass=Ait
+Categories=Development;
+MimeType=x-scheme-handler/ait;
