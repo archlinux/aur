@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-red
-	pkgdesc = AIMP skin: Red! 2.0 (by NikolavRj)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Red! v2.0 (by NikolavRj)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-red
 	options = !strip
 	options = !debug
 	source = aimp-skin-red-250.archive::https://aimp.ru/?do=catalog.download&id=250
-	sha256sums = 9e1268c00333f85ffd21454e8899ee02de86b68140077fde05b074608e728c4a
+	sha256sums = SKIP
 
 pkgname = aimp-skin-red
