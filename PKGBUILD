@@ -1,6 +1,6 @@
 # Maintainer: Isaías Rodríguez <isurwars@gmail.com>
 pkgname=correlation
-pkgver=3.10.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Analysis tool for liquid and amorphous solid structures"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('intel-oneapi-tbb' 'hdf5' 'arrow' 'fontconfig' 'freetype2' 'libxcb' 'fftw')
 makedepends=('cmake' 'ninja' 'rust' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1904f0b7e4f3e0b2c21400de33c8bf79ad545b222d6d4f0faffcfe9105d1bed2')
+sha256sums=('c8e8f05bd7261cb20003d2cbba4d51d107702f0859dfb379d9acf67e3f4f2aca')
 
 prepare() {
   cmake -B build -S "Correlation-${pkgver}" \
