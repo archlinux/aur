@@ -3,8 +3,8 @@
 
 pkgname='aimp-skin-tunes-466'
 pkgdesc='AIMP skin: Tunes 1.3 (by Braindefender)'
-pkgver=20261001
-pkgrel=2
+pkgver=20261014
+pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -16,7 +16,7 @@ _skinsdir='/opt/aimp/Skins'
 
 source=('aimp-skin-tunes-466-466.archive::https://aimp.ru/?do=catalog.download&id=466')
 noextract=("${source[@]%%::*}")
-sha256sums=('70a0d8a237818815c0a572c55648bba497b8e043c08be552875147fe1e1b3cb1')
+sha256sums=('SKIP')
 
 package() {
   local dest="$pkgdir$_skinsdir"
