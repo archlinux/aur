@@ -1,6 +1,6 @@
 pkgbase = atmosphera
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/alexindigo/atmosphera
 	install = atmosphera.install
@@ -32,7 +32,7 @@ pkgbase = atmosphera
 	provides = atmosphera
 	provides = xdg-desktop-portal-impl
 	conflicts = atmosphera-git
-	source = atmosphera-0.8.0.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 6c0529315af3cceeee69c89ecad0db3792ba8bb5f9a26b8f3a4e939495f44be8
+	source = atmosphera-0.8.1.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.8.1.tar.gz
+	sha256sums = f71d2d5bc2912f9b8ab977f44c208736529bf3d562e6359711d6ab7263c64f51
 
 pkgname = atmosphera
