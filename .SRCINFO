@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-files-accesscontrol
 	pkgdesc = Control access to files based on conditions.
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://github.com/nextcloud/files_accesscontrol
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = yq
 	makedepends = rsync
-	source = files_accesscontrol-6.0.0.tar.gz::https://github.com/nextcloud/files_accesscontrol/archive/v6.0.0.tar.gz
-	sha512sums = 0b3c329ec939f6ede370843b01d8f30848a9fae3237fb414299fa0fa6b9d9b32516d7f8833adedc79b308eec205354fe62292f2c2e80d2b51f0efa4aea7c003a
+	source = files_accesscontrol-6.0.1.tar.gz::https://github.com/nextcloud/files_accesscontrol/archive/v6.0.1.tar.gz
+	sha512sums = fac09b1c1f332cb825b40ba4ce62a2280e89dadd38338a02629af98eabe18f313fc0531740a1de5af28190ba885dc3d35114cbfaeaed8eed1e2957c39866ae61
 
 pkgname = nextcloud-app-files-accesscontrol
