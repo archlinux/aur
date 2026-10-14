@@ -1,7 +1,7 @@
 _pkgname="DiagNG"
 pkgname="diagng"
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for mobile baseband Diag interfaces - Successor for QCSuper"
 arch=(
   'any'
