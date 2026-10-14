@@ -2,7 +2,7 @@
 _appname=scramblery
 pkgname="${_appname}-webgpu-bin"
 _pkgname=Scramblery
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.WebGPU version."
 arch=('x86_64')
@@ -13,19 +13,20 @@ conflicts=(
     "${_appname}"
     "${_appname}-cuda"
     "${_appname}-openvino"
+    "${_appname}-migraphx"
 )
 depends=(
     'gstreamer'
     'gst-plugins-base-libs'
     'fontconfig'
-    'vulkan-icd-loader'
     'gtk3'
+    'vulkan-icd-loader'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altunenes/scramblery/v${pkgver}/LICENSE"
 )
-sha256sums=('9ed8bcf62ed0e81fd9d5dc3814614c7b7d3126ba4d86e735ef74d4f213925247'
+sha256sums=('1da889263d92f8634d29d22ac326656fad8dfe622935a389de6d2aaeca25abb8'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
