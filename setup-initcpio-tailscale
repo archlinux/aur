@@ -95,11 +95,15 @@ install_state() {
     info "keeping existing ${TS_STATEDIR}/default.env"
   else
     cat >"${TS_STATEDIR}/default.env" <<EOF
-# Set the port to listen on for incoming VPN packets.
-# Remote nodes will automatically be informed about the new port number,
-# but you might want to configure this in order to set external firewall
-# settings.
-PORT="41641"
+# UDP port for WireGuard and peer-to-peer traffic. Unset, tailscaled takes
+# whatever free port the kernel hands it, a different one each boot, and
+# that is fine almost everywhere: peers are told the port, NAT traversal
+# finds a direct path without help, and traffic falls back to a relay when
+# it cannot. Set a fixed port when a firewall or router in front of this
+# machine needs a rule for it, such as a port forward that lets peers reach
+# the initramfs directly. 41641 is what the booted system's tailscaled uses
+# by default, so one rule can serve both. Rebuild after changing.
+#PORT="41641"
 
 # Network stack for the initramfs tailscaled. Empty means userspace
 # networking, which needs no kernel module; an interface name (tailscale0)

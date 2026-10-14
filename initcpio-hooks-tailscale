@@ -19,11 +19,13 @@ _tailscale_launch() (
   # word-split; quoting it would pass the whole string as a single argument.
   # It comes last so a --tun= the user put there wins over everything.
   # shellcheck disable=SC2086
+  # PORT may be empty or commented out, which leaves the choice to tailscaled;
+  # passing an empty --port= would make it refuse to start.
   /usr/sbin/tailscaled \
     --state=/var/lib/tailscale/tailscaled.state \
     --socket=/run/tailscale/tailscaled.sock \
     --tun="${TUN:-userspace-networking}" \
-    --port="${PORT}" ${FLAGS} &
+    ${PORT:+"--port=$PORT"} ${FLAGS} &
 
   echo "$!" >/run/tailscaled.pid
 )

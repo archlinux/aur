@@ -94,6 +94,22 @@ build() {
 			return 1
 		fi
 	done
+
+	# PORT is optional: empty, or commented out, lets tailscaled choose its UDP
+	# port. A value has to be one tailscaled accepts, or the daemon refuses to
+	# start -- discovered at boot, by a machine waiting for its passphrase.
+	# Checked here so a typo fails the build instead. Read in a subshell, like
+	# TUN and CLI below.
+	local port
+	# shellcheck source=/dev/null
+	port=$(. "${setupdir}/default.env" 2>/dev/null; printf '%s' "${PORT:-}")
+	if [[ -n $port ]] && { ! [[ $port =~ ^[0-9]{1,5}$ ]] || ((10#$port > 65535)); }; then
+		error "PORT=\"${port}\" in ${setupdir}/default.env is not a port number; set it from 0 to 65535, or leave it empty to let tailscaled choose"
+		# shellcheck disable=SC2034
+		builderrors=$((++_builderrors))
+		return 1
+	fi
+
 	add_file ${setupdir}/default.env /etc/default/tailscaled
 	# 0600 rather than add_file's default of the source's mode: the state file
 	# is the node key, and Tailscale SSH can grant unprivileged logins, whose
@@ -142,8 +158,10 @@ build() {
 		add_systemd_unit tailscaled.service
 		# The ExecStart override restates the stock unit's command line (from
 		# the tailscale package's tailscaled.service) with the network stack
-		# baked in at build time; the empty ExecStart= clears the stock one
-		# first, as systemd requires for Type!=oneshot.
+		# and port baked in at build time; the empty ExecStart= clears the stock
+		# one first, as systemd requires for Type!=oneshot. The stock line's
+		# --port=${PORT} cannot be kept as is: an empty PORT makes tailscaled
+		# refuse to start, where leaving the flag out lets it choose.
 		add_systemd_drop_in tailscaled.service override <<-EOU
 			[Unit]
 			DefaultDependencies=no
@@ -151,7 +169,7 @@ build() {
 			Wants=network-online.target
 			[Service]
 			ExecStart=
-			ExecStart=/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --tun=${tun} --port=\${PORT} \$FLAGS
+			ExecStart=/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --tun=${tun}${port:+ --port=${port}} \$FLAGS
 		EOU
 		add_symlink /etc/systemd/system/sysinit.target.wants/tailscaled.service \
 			/usr/lib/systemd/system/tailscaled.service
