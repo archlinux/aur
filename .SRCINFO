@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-tascam-cd-rw750
-	pkgdesc = AIMP skin: TASCAM CD-RW750 1.2 (by Zigar)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: TASCAM CD-RW750 v1.2 (by Zigar)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-tascam-cd-rw750
 	options = !strip
 	options = !debug
 	source = aimp-skin-tascam-cd-rw750-675.archive::https://aimp.ru/?do=catalog.download&id=675
-	sha256sums = ba43949ee22011dcbf948746c9dfd719cc3dd370f7504c645fadd4799d6458ea
+	sha256sums = SKIP
 
 pkgname = aimp-skin-tascam-cd-rw750
