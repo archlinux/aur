@@ -1,4 +1,5 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Maintainer: Noah C (libreDucks) < noah-aur at libreducks dot net >
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 
