@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-aurora-white
-	pkgdesc = AIMP skin: Aurora White 1.0 (by NikolavRj)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Aurora White 2012-10-23 (by NikolavRj)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-aurora-white
 	options = !strip
 	options = !debug
 	source = aimp-skin-aurora-white-326.archive::https://aimp.ru/?do=catalog.download&id=326
-	sha256sums = 6215580427512bc25eb76a9e89ca894b802ef5c0a16c9a8c477ce65cacaa124f
+	sha256sums = SKIP
 
 pkgname = aimp-skin-aurora-white
