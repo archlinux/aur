@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=zxc-full-bin
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — prebuilt)"
 arch=('x86_64' 'aarch64')
