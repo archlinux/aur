@@ -7,5 +7,7 @@ Name: rofd-ffi
 Description: C ABI for the rofd OFD parser and renderer
 URL: https://github.com/linuxdeepin/rofd
 Version: @VERSION@
+# rofd.h includes <cairo.h>, so consumers need cairo's include path and library
+Requires: cairo
 Cflags: -I${includedir}
 Libs: -L${libdir} -lrofd_ffi

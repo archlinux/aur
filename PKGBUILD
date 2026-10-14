@@ -2,7 +2,7 @@
 
 pkgname=librofd-ffi
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/rofd'
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/$_
         "rofd-ffi.pc.in")
 sha256sums=('0d6300fb28507f0597e2aa10d3822df3519e630fbf820fd95164df0ba8e3ce38'
             '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d'
-            'd8762c70289a93815b36a4b0d5afbb2a893df72ef54c410431f724515ebd3eb0')
+            'cf912f767bb51933051144c074600f008c48cf694489630db52cd1edbb7bf538')
 
 # the archive of $_commit extracts to rofd-$_commit
 _dirname="rofd-$_commit"
