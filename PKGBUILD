@@ -2,7 +2,7 @@
 
 pkgname=python-dask-cuda
 _pkgname=dask-cuda
-pkgver=26.08.00
+pkgver=26.10.00
 pkgrel=1
 pkgdesc="Utilities for Dask and CUDA interactions"
 url="https://github.com/rapidsai/dask-cuda"
@@ -22,7 +22,7 @@ makedepends=('python-setuptools' 'python-scikit-build-core' 'python-rapids-build
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
 )
-sha256sums=('62e832fd55a531403a9f734dc81e0452271c6fa3d29a150035f6b5a1b96af16b')
+sha256sums=('6637d9199c9a61554e84c229fd549780b6fe397f8b7752978a201ac9fc08cae9')
 
 
 build() {
