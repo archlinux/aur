@@ -14,7 +14,7 @@ makedepends=()
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/zgit-desktop-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('5efff5c8bd2760191b4121b923c33ce1616766e2be0ec78c0241b84d51ebb51d')
+sha256sums=('d2613cbb87b7f02fb801e39dac30ab3642041e35bb96e7c2579da895324f9fef')
 
 package() {
     # Release tarballs (see release.yml desktop-matrix) contain the GUI
