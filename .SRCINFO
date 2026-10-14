@@ -1,0 +1,20 @@
+pkgbase = joyint-jyn-bin
+	pkgdesc = Jyn, a personal task manager: Git-native, CLI-first, CalDAV-ready
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://joyint.com/jyn
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = jyn
+	conflicts = jyn
+	options = !strip
+	options = !debug
+	source_x86_64 = jyn-cli-x86_64-0.9.0.tar.xz::https://github.com/joyint/jyn/releases/download/v0.9.0/jyn-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 41cf112ac933e7febbd8f497095380f9fcc585db312d9940f6d1681daab3a78b
+	source_aarch64 = jyn-cli-aarch64-0.9.0.tar.xz::https://github.com/joyint/jyn/releases/download/v0.9.0/jyn-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = ba1e945bc5b391a18449c70a5d1e2a1a3fdbf4b74368ace8b01560d2e350a5ab
+
+pkgname = joyint-jyn-bin
