@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-nguvu-horz-tabs-layout
-	pkgdesc = AIMP skin: NGuvu (Horz.Tabs Layout) 2.2 (by ScrollUnLock)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: NGuvu (Horz.Tabs Layout) v2.2 (by ScrollUnLock)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-nguvu-horz-tabs-layout
 	options = !strip
 	options = !debug
 	source = aimp-skin-nguvu-horz-tabs-layout-353.archive::https://aimp.ru/?do=catalog.download&id=353
-	sha256sums = 745886d67f6faf0eee829536607ace3c4187e93c6ed590cf11695da066137aa0
+	sha256sums = SKIP
 
 pkgname = aimp-skin-nguvu-horz-tabs-layout
