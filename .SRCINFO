@@ -1,23 +1,23 @@
 pkgbase = kick-talk-git
 	pkgdesc = A chat client for Kick made with Electron.(Use system-wide electron)
-	pkgver = 1.0.3.r10.g74a4db3
+	pkgver = 1.1.2.r1.ga3570be
 	pkgrel = 1
-	url = https://github.com/KickTalkOrg/KickTalk
+	url = https://kicktalk.app/
 	arch = any
-	license = LicenseRef-unknown
+	license = GPL-3.0-or-later
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
+	makedepends = jq
 	makedepends = icoutils
 	depends = electron34
 	depends = python
-	provides = kick-talk=1.0.3
+	provides = kick-talk=1.1.2
 	conflicts = kick-talk
 	source = kick-talk.git::git+https://github.com/KickTalkOrg/KickTalk
 	source = kick-talk.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = kick-talk-git
