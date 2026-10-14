@@ -1,6 +1,6 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen gnome-shell-extension-waywallen)
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
@@ -12,8 +12,8 @@ options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-cmake-Install-kde-wallpaper-to-correct-path.patch"
         "0002-cmake-Install-gnome-extensions-separately.patch")
-sha256sums=('f3fa18cfe549a626c38fb70ade0417ec4f32f0a617668d61b2a001db6261072e'
-            '1cfbc0f7388e2be1e9a4385d5d0310fabf28e930ad4c0fc8ff17d82795e98140'
+sha256sums=('b0f1c4e1dd76d0fdb6b5727b5df91ed767078d238111b036750f1686fe1f55b3'
+            'd05552ecf884b63e8ecdb59814ba1706f699ae2a8cb0497e34bb90759d3f91a4'
             '5593469af684d71870cc6d41678ac2201879617f0538cc5c947fc990cb057c30')
 
 prepare() {
@@ -60,7 +60,8 @@ package_plasma-wallpaper-waywallen() {
     arch=(any)
     depends=(waywallen-display qt6-base qt6-declarative libplasma kirigami plasma-workspace)
     DESTDIR="$pkgdir" cmake --install build --component kde_extension
-    install -Dm644 "$pkgbase-$pkgver/extensions/kde/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    ln -srf "$pkgdir/usr/share/plasma/wallpapers/org.waywallen.kde/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_gnome-shell-extension-waywallen() {
