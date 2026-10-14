@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-for-granny
-	pkgdesc = AIMP skin: For granny 2.2 (by samix)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: For granny v2.2 (by samix)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-for-granny
 	options = !strip
 	options = !debug
 	source = aimp-skin-for-granny-848.archive::https://aimp.ru/?do=catalog.download&id=848
-	sha256sums = 25474a5defdd5ca15183ac833f963d0dbfaa885b405ec76b75fc2342f947c2ab
+	sha256sums = SKIP
 
 pkgname = aimp-skin-for-granny
