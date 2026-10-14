@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TuxTalk
+Comment=Hold a key, talk, and your words are typed for you
+Exec=tuxtalk
+Icon=tuxtalk
+Terminal=false
+Type=Application
+Categories=Utility;Accessibility;AudioVideo;
+Keywords=voice;dictation;speech;transcription;whisper;
+StartupNotify=true

@@ -1,0 +1,26 @@
+pkgbase = tuxtalk-appimage
+	pkgdesc = Voice dictation for Linux: hold a key, talk, and your words are typed for you
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/ronb1964/TuxTalk
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = ydotool
+	depends = wl-clipboard
+	depends = libayatana-appindicator
+	optdepends = pipewire-pulse: PipeWire audio support
+	optdepends = pulseaudio: PulseAudio support
+	provides = tuxtalk
+	provides = talktype
+	conflicts = talktype
+	conflicts = talktype-appimage
+	replaces = talktype-appimage
+	options = !strip
+	noextract = TuxTalk-v0.15.0-x86_64.AppImage
+	source = TuxTalk-v0.15.0-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v0.15.0/TuxTalk-v0.15.0-x86_64.AppImage
+	source = tuxtalk.desktop
+	sha256sums = b4ab940ab0d636b392133702fdbc977d06479a9432900e49c199dd3aab4307b9
+	sha256sums = SKIP
+
+pkgname = tuxtalk-appimage
