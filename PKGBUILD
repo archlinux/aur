@@ -1,7 +1,7 @@
 # Maintainer: Sierra S. <sscoolqaz at protonmail dot com>
 
 pkgname=proton-ge-git
-pkgver=GE.Proton11.8.r0.g66e74f6
+pkgver=GE.Proton11.9.r0.g01bfbf6
 pkgrel=1
 pkgdesc='Custom distribution of Valves Proton with various patches (built from git)'
 arch=('x86_64')
@@ -27,73 +27,8 @@ optdepends=(
 )
 makedepends=(
   'git'
-  'autoconf'
-  'automake'
-  'bison'
-  'cmake'
-  'flex'
-  'fontforge'
-  'gcc'
-  'gcc-libs'
-  'gettext'
-  'giflib'
-  'gnutls'
-  'gst-plugins-base-libs'
-  'lib32-fontconfig'
-  'lib32-freetype2'
-  'lib32-gcc-libs'
-  'lib32-giflib'
-  'lib32-gnutls'
-  'lib32-gst-plugins-base-libs'
-  'lib32-libjpeg-turbo'
-  'lib32-libldap'
-  'lib32-libpng'
-  'lib32-libpulse'
-  'lib32-libva'
-  'lib32-libxcomposite'
-  'lib32-libxinerama'
-  'lib32-libxrandr'
-  'lib32-libxslt'
-  'lib32-libxxf86vm'
-  'lib32-mesa'
-  'lib32-mpg123'
-  'lib32-ncurses'
-  'lib32-openal'
-  'lib32-opencl-icd-loader'
-  'lib32-sdl2'
-  'lib32-v4l-utils'
-  'lib32-vulkan-icd-loader'
-  'libjpeg-turbo'
-  'libldap'
-  'libpng'
-  'libpulse'
-  'libva'
-  'libxcomposite'
-  'libxinerama'
-  'libxslt'
-  'libxxf86vm'
-  'mesa'
-  'meson'
-  'mingw-w64-gcc'
-  'mingw-w64-tools'
-  'mpg123'
-  'nasm'
-  'ncurses'
-  'ninja'
-  'openal'
-  'opencl-headers'
-  'opencl-icd-loader'
   'perl'
-  'python-pefile'
-  'python-yaml'
-  'rsync'
-  'rust'
-  'sdl2'
-  'v4l-utils'
-  'vulkan-headers'
-  'vulkan-icd-loader'
-  'wayland'
-  'wayland-protocols'
+  'podman'
   'wget'
 )
 provides=("proton-ge-custom=${pkgver}")
@@ -138,26 +73,45 @@ prepare() {
   cd "${pkgname}"
   git submodule update --init --recursive
 
+  # Upstream's patch step; its apply_patch ignores failures, so check the log
+  ./patches/protonprep-valve-staging.sh &> "${srcdir}/patchlog.txt" || {
+    tail -n 30 "${srcdir}/patchlog.txt" >&2
+    return 1
+  }
+  if grep -E 'FAILED at|can.t find file to patch|^patch: \*\*\*\*' \
+      "${srcdir}/patchlog.txt" >&2; then
+    printf 'ERROR: patch failures, see %s\n' "${srcdir}/patchlog.txt" >&2
+    return 1
+  fi
+
   sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" \
     "${srcdir}/launcher.sh"
 }
 
 build() {
-  cd "${pkgname}"
+  # configure.sh refuses a top-level in-tree build
+  mkdir -p "${pkgname}/build"
+  cd "${pkgname}/build"
 
   export MAKEFLAGS="${MAKEFLAGS:--j$(nproc)}"
 
-  ./configure.sh --build-name="Proton-GE-git"
+  # Prefer podman: configure.sh aborts on the podman-docker shim unless told
+  local _engine="${PROTON_CONTAINER_ENGINE:-}"
+  if [[ -z "${_engine}" ]] && command -v podman >/dev/null; then
+    _engine=podman
+  fi
+
+  ../configure.sh --build-name="Proton-GE-git" \
+    ${_engine:+--container-engine="${_engine}"}
   make
 }
 
 package() {
   cd "${pkgname}"
 
-  local _built
-  _built="$(ls -d build/${_pkgname}* 2>/dev/null | head -1)"
-  if [[ -z "${_built}" ]]; then
-    printf 'ERROR: Build output not found under build/. The build may have failed.\n' >&2
+  local _built="build/dist"
+  if [[ ! -d "${_built}/files" ]]; then
+    printf 'ERROR: Build output not found under %s. The build may have failed.\n' "${_built}" >&2
     return 1
   fi
 
