@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-hm-touch
-	pkgdesc = AIMP skin: hm_Touch 1.0 (by flon)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: hm_Touch 2016-03-28 (by flon)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-hm-touch
 	options = !strip
 	options = !debug
 	source = aimp-skin-hm-touch-782.archive::https://aimp.ru/?do=catalog.download&id=782
-	sha256sums = 1c94fd0a0cc7b1840697060375efafd66e82c2624e60dcff632e4dafef615f42
+	sha256sums = SKIP
 
 pkgname = aimp-skin-hm-touch
