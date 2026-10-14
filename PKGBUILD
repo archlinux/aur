@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=herdr-bin
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Supervise multiple coding agents in one terminal"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=('herdr.bash' '_herdr' 'herdr.fish')
 sha256sums=('7b9b8b3118d891f8247aa6115cd19fe4ae51578d419f1a1910dad49f09d99a5a'
             'dbe949d3b10e5b52896edaf9a86698012906893d7a36349c29d42b0ecdbf189e'
             '51e0c6f3983f9f215bd8642090dfcbe30b7eb8d60b4e4e30d297d5ee49642ed5')
-sha256sums_x86_64=('493304fbefb0ed0ea0455f373b47f48d24e8774bc7974f4c916ad2e937675b23')
-sha256sums_aarch64=('9511cb70982c1ef115f232058e7ed7cf9640aa5a2c0ca78934cefda3aeb093fd')
+sha256sums_x86_64=('14d9e8bc8b4a9e0118d77c32266f76d461f09b40342eb23752960bd89f59929d')
+sha256sums_aarch64=('17d7536f2da50859523680ef279dffcac8e4a235f4e46fe8da6c2ec44141897c')
 
 package() {
     install -Dm755 "herdr-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/herdr"
