@@ -1,6 +1,6 @@
 pkgbase = codeburn-desktop-bin
 	pkgdesc = CodeBurn Desktop — Electron app fed by the codeburn CLI, for AI coding token/cost observability
-	pkgver = 0.9.25
+	pkgver = 0.9.27
 	pkgrel = 1
 	url = https://github.com/getagentseal/codeburn
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = codeburn-desktop-bin
 	provides = codeburn-desktop
 	conflicts = codeburn-desktop
 	options = !strip
-	source = codeburn-desktop-0.9.25.deb::https://github.com/getagentseal/codeburn/releases/download/desktop-v0.9.25/codeburn-desktop_0.9.25_amd64.deb
-	source = LICENSE-0.9.25::https://raw.githubusercontent.com/getagentseal/codeburn/desktop-v0.9.25/LICENSE
-	sha256sums = f62b2bcdf565aa3742ba156f09a4570efb676cc5d7b81d2970e973cfae257d42
+	source = codeburn-desktop-0.9.27.deb::https://github.com/getagentseal/codeburn/releases/download/desktop-v0.9.27/codeburn-desktop_0.9.27_amd64.deb
+	source = LICENSE-0.9.27::https://raw.githubusercontent.com/getagentseal/codeburn/desktop-v0.9.27/LICENSE
+	sha256sums = 03cf6bc4bf9379b105ebdf3e77c8ce5c105a453bb99244a65dde552ccc52ddff
 	sha256sums = 25dd3389bfc55f463f9745c6fa3f4193bb31b58157a6861836b62bf91f6b76e5
 
 pkgname = codeburn-desktop-bin
