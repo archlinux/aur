@@ -13,8 +13,8 @@ conflicts=('zxc')
 options=('!debug')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('d75bfe0493747d7a9af6f06be990e62e0f84dc493e6fd2109c8752aebe6b1adf')
-sha256sums_aarch64=('14b4abf6240827b0cdc2d6e60a96df416c69bcab349f432b240fea55e1e0647d')
+sha256sums_x86_64=('15ad58ede0cf280b6c5433fea25b372ef433de38bb0e125b1da13c1e4c1e2b66')
+sha256sums_aarch64=('e3253b095fc9bad0ecb1084b8357547f050e6ebf5056ca2cebed8672ec2496e8')
 
 package() {
   local _arch="${CARCH}"
