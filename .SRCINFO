@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-hameleon-aio
-	pkgdesc = AIMP skin: Hameleon AIO 1.0 (by NITROGEN)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Hameleon AIO 2013-10-29 (by NITROGEN)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-hameleon-aio
 	options = !strip
 	options = !debug
 	source = aimp-skin-hameleon-aio-422.archive::https://aimp.ru/?do=catalog.download&id=422
-	sha256sums = 07f49ef6aa7fa9c91c765c71087152a680f74aa0622c0c13ebe80be8fb7649ad
+	sha256sums = SKIP
 
 pkgname = aimp-skin-hameleon-aio
