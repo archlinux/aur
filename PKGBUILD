@@ -4,12 +4,12 @@
 pkgname=pgdog-bin
 _gitname=pgdog
 pkgver=0.1.61
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="PostgreSQL connection pooler, load balancer and database sharder."
 arch=('x86_64')
 url="https://pgdog.dev/"
-license=('MIT')
+license=('AGPL-3.0')
 groups=()
 depends=()
 checkdepends=()
