@@ -1,6 +1,6 @@
 pkgbase = dashbeam
 	pkgdesc = Peer-to-peer file and folder transfer app without cloud storage
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/tonyantony300/dashbeam
 	arch = x86_64
@@ -21,14 +21,14 @@ pkgbase = dashbeam
 	depends = pango
 	depends = webkit2gtk-4.1
 	optdepends = xdg-utils
-	provides = alt-sendme=0.7.1
+	provides = alt-sendme=0.7.2
 	conflicts = alt-sendme
 	conflicts = alt-sendme-bin
 	conflicts = alt-sendme-git
 	conflicts = dashbeam-bin
 	conflicts = dashbeam-git
 	replaces = alt-sendme
-	source = dashbeam-0.7.1.tar.gz::https://github.com/tonyantony300/dashbeam/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 7644f6669d44be4ef9b91aab270103fc5b3f3964f997f46b80d37c02a6660e5b
+	source = dashbeam-0.7.2.tar.gz::https://github.com/tonyantony300/dashbeam/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = c6bbb2100127ea7b8c6ba3bfda3ca7573c71764ff46522a92dd3b05361f14141
 
 pkgname = dashbeam

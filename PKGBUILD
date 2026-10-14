@@ -1,5 +1,5 @@
 pkgname=dashbeam
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
@@ -51,7 +51,7 @@ source=(
 )
 
 sha256sums=(
-  '7644f6669d44be4ef9b91aab270103fc5b3f3964f997f46b80d37c02a6660e5b'
+  'c6bbb2100127ea7b8c6ba3bfda3ca7573c71764ff46522a92dd3b05361f14141'
 )
 
 prepare() {
