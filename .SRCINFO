@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-luminescence
-	pkgdesc = AIMP skin: Luminescence 2.9 (by ELECTRON!CK)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Luminescence v2.9 (by ELECTRON!CK)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-luminescence
 	options = !strip
 	options = !debug
 	source = aimp-skin-luminescence-207.archive::https://aimp.ru/?do=catalog.download&id=207
-	sha256sums = 08f969e97da5d2c0f44db14dc74bc55099661336eafafd2b347ecfe10e218056
+	sha256sums = SKIP
 
 pkgname = aimp-skin-luminescence
