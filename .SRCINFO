@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-experience-visual
-	pkgdesc = AIMP skin: Experience (+Visual) 1.82 (by Tarik)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Experience (+Visual) v1.82 (by Tarik)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-experience-visual
 	options = !strip
 	options = !debug
 	source = aimp-skin-experience-visual-186.archive::https://aimp.ru/?do=catalog.download&id=186
-	sha256sums = 7bb4f5adcd8a67125603ab16470d7e01c86b2a4d51105516bd085627a9ab41c3
+	sha256sums = SKIP
 
 pkgname = aimp-skin-experience-visual
