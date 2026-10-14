@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'MSG'
+==> GulchCE does not include the game data. You need an Xbox disc image
+    (.iso or .xiso) of Halo: Combat Evolved, any region.
+==> Run "gulchce". At the first start it asks for the disc image and copies
+    maps/ from it into ~/.local/share/gulchce (or put a maps/ folder there
+    yourself).
+==> Everything is in ~/.local/share/gulchce: your settings (config.toml),
+    maps/, custom_maps/, mcc_maps/, saves/ (saved games, profiles and the
+    map cache), the log (debug.txt) and screenshots.
+==> GulchCE cannot play online with OpenCE: they have different network
+    versions. Invite links open whichever of the two you started last.
+==> Settings and controls: /usr/share/doc/gulchce/LINUX.md
+    MCC custom maps: /usr/share/doc/gulchce/MCC.md
+MSG
+}

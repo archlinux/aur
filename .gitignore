@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!gulchce-bin.install
+!gulchce.desktop
+!gulchce.sh

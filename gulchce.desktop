@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=GulchCE
+GenericName=First-Person Shooter
+Comment=Halo: Combat Evolved with experimental features, a fork of OpenCE
+Exec=gulchce
+Icon=gulchce
+Terminal=false
+Categories=Game;ActionGame;Shooter;
+Keywords=Halo;Combat Evolved;Xbox;MCC;OpenCE;
