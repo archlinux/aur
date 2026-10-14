@@ -1,8 +1,8 @@
 # Maintainer: Yangtse Su <yangtsesu at gmail dot com>
 
 pkgname=librofd-ffi
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/rofd'
@@ -18,26 +18,29 @@ makedepends=(
   cargo
   rust
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/refs/tags/v$pkgver.tar.gz"
-        "rofd-ffi-page-size.patch")
-sha256sums=('7834fb1156049b0a409a5722e6b54a31c511a4ef3c301f10913dbc495fc738ac'
-            '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d')
+_commit=140b936d1b3f33a9adeda9fb6f428016b735d9a0   # 0.4.3 on main; upstream published no v0.4.3 tag
+source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/$_commit.tar.gz"
+        "rofd-ffi-page-size.patch"
+        "rofd-ffi.pc.in")
+sha256sums=('0d6300fb28507f0597e2aa10d3822df3519e630fbf820fd95164df0ba8e3ce38'
+            '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d'
+            'd8762c70289a93815b36a4b0d5afbb2a893df72ef54c410431f724515ebd3eb0')
 
-# the archive of the v$pkgver tag extracts to rofd-$pkgver
-_dirname="rofd-$pkgver"
+# the archive of $_commit extracts to rofd-$_commit
+_dirname="rofd-$_commit"
 
 prepare() {
   cd "$_dirname"
-  # 临时携带：上游 PR linuxdeepin/rofd#11 —— 元数据式页尺寸查询
-  # rofd_document_get_page_size_mm；合入正式版本后删除本行与 source 项
+  # Temporarily carried: upstream PR linuxdeepin/rofd#11 — metadata-only page
+  # size query rofd_document_get_page_size_mm. Drop this line and the source
+  # entry once a release contains it (see papers-ofd/patches/README.md).
   patch -Np1 -i "$srcdir/rofd-ffi-page-size.patch"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$_dirname"
-  export RUSTUP_TOOLCHAIN=stable
+  # 0.4.1 onwards vendors every crate and sets net.offline = true in
+  # .cargo/config.toml, so --frozen builds without touching the network.
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --package rofd-ffi
 }
@@ -47,5 +50,11 @@ package() {
   install -Dm755 "target/release/librofd_ffi.so" "$pkgdir/usr/lib/librofd_ffi.so.0"
   ln -s librofd_ffi.so.0 "$pkgdir/usr/lib/librofd_ffi.so"
   install -Dm644 crates/rofd-ffi/include/rofd.h -t "$pkgdir/usr/include/"
+  # pkg-config metadata for the C ABI, so consumers (papers-ofd today, upstream
+  # Papers after the phase-4 move) can use dependency('rofd-ffi') instead of
+  # hardcoding a build directory. rofd has no install system upstream; this
+  # package installs the file.
+  install -d "$pkgdir/usr/lib/pkgconfig"
+  sed "s/@VERSION@/$pkgver/" "$srcdir/rofd-ffi.pc.in" > "$pkgdir/usr/lib/pkgconfig/rofd-ffi.pc"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

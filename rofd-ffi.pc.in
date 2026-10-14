@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: rofd-ffi
+Description: C ABI for the rofd OFD parser and renderer
+URL: https://github.com/linuxdeepin/rofd
+Version: @VERSION@
+Cflags: -I${includedir}
+Libs: -L${libdir} -lrofd_ffi
