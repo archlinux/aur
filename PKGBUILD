@@ -1,7 +1,7 @@
 # Maintainer: GGOBP <GGOBP at protonmail dot ch>
 
 pkgname=mendimaru
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Manage Mendix Studio Pro on Linux through WinBoat"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(
   'cairo'
   'dbus'
-  'freerdp'
+  'freerdp>=3.24'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
@@ -38,7 +38,7 @@ optdepends=(
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('396f437e733225d20f5ca972269f62e9f3b59b0e11a8bfe101cae47b2e53380e')
+sha256sums=('ea244f62bf86600b2f9afb205a65424a9e48347ccfd347595b0273295ea93bf2')
 
 _set_rustflags() {
   local remap="--remap-path-prefix=$srcdir=/usr/src/debug/$pkgname-$pkgver"
