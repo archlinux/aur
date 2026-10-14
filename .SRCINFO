@@ -1,7 +1,7 @@
 pkgbase = qoder-ide-bin
 	pkgdesc = AI native IDE for real-world software development.
-	pkgver = 1.32.2
-	pkgrel = 2
+	pkgver = 1.33.0
+	pkgrel = 1
 	url = https://qoder.com/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -11,17 +11,17 @@ pkgbase = qoder-ide-bin
 	depends = python
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder-ide=1.32.2
+	provides = qoder-ide=1.33.0
 	conflicts = qoder-ide
 	options = !emptydirs
 	options = !strip
-	source = qoder-ide-1.32.2.rpm::https://download.qoder.com/release/latest/qoder-ide_x86_64.rpm
+	source = qoder-ide-1.33.0.rpm::https://download.qoder.com/release/latest/qoder-ide_x86_64.rpm
 	source = LICENSE.html
 	source = qoder-ide.js
 	source = qoder-ide.sh
-	sha256sums = 5fa93ead5b76afb977a2c165ab14fb0361e746e57e7b04d05f7c397ab32d8cda
+	sha256sums = SKIP
 	sha256sums = d93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61
-	sha256sums = cbeb2e78d46c0cbe8793e7a2c06bd339e3ed9dca5f0ae1196281b8d2cf60c4c5
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = 6b73e24e50a54c5451b5d19b6ebc6ea941a8611fe14a1eef5e5d9a2aa8bb84aa
+	sha256sums = f7ce9ccdc0c41dd0201c410889a8049a34b772047d7689fee8a193b9746767bb
 
 pkgname = qoder-ide-bin
