@@ -3,7 +3,7 @@
 _pkgname=minisforum-platform
 _modname=minisforum_platform
 pkgname=minisforum-platform-dkms
-pkgver=0.3
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Linux platform & hardware monitoring driver for Minisforum UM790 Pro (Venus series) with in-kernel CPPC QoS and EC fan control"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('tuned-ppd: recommended daemon for seamless GNOME/KDE desktop power 
 provides=("${_modname}")
 conflicts=("${_modname}" 'power-profiles-daemon' 'tlp')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('d80a1367749c3509eeee05d7b47cddd82df9b077bda1faa04164409c88e2c61a')
+sha256sums=('0dff83abc154bbf1d29366643418c7202a14b09eec580042fb330c150a77a37c')
 
 prepare() {
   cd "${_pkgname}-v${pkgver}"
