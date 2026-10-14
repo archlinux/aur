@@ -5,9 +5,9 @@
 pkgname=simple_backup-git
 _pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
-pkgver=4.3.0.r6.g8d08032
+pkgver=4.4.0.r2.g3e486eb
 pkgrel=1
-url="https://git.shouldnt.work/fuxino/${_pkgname}"
+url="https://git.shouldnt.work/fuxino/$_pkgname"
 install=simple_backup.install
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -25,37 +25,38 @@ checkdepends=('python-pytest'
               'openssh')
 conflicts=('simple_backup')
 provides=('simple_backup')
-source=(git+${url}.git?signed#branch=master)
+source=("git+$url.git?signed#branch=master")
 validpgpkeys=('7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514')
 sha256sums=('SKIP')
 
-pkgver() 
-{  
-    cd ${_pkgname}
+pkgver()
+{
+    cd "$_pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare()
 {
-    git -C ${srcdir}/${_pkgname} clean -dfx
+    git -C "$srcdir"/"$_pkgname" clean -dfx
 }
 
 build()
 {
-    cd ${srcdir}/${_pkgname}
+    cd "$srcdir"/"$_pkgname"
     python -m build --wheel --no-isolation
 }
 
 check()
 {
-    cd ${srcdir}/${_pkgname}
+    cd "$srcdir"/"$_pkgname"
     python -m pytest
 }
 
 package()
 {
-    cd ${srcdir}/${_pkgname}
-    python -m installer --destdir=${pkgdir} dist/*.whl
-    install -Dm644 ${_pkgname}/${_pkgname}.conf ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}.conf
-    install -Dm644 man/${_pkgname}.1 ${pkgdir}/usr/share/man/man1/${_pkgname}.1
+    cd "$srcdir"/"$_pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 "$_pkgname"/"$_pkgname".conf "$pkgdir"/usr/share/doc/"$_pkgname"/"$_pkgname".conf
+    install -Dm644 README.md "$pkgdir"/usr/share/doc/"$_pkgname"/README.md
+    install -Dm644 man/"$_pkgname".1 "$pkgdir"/usr/share/man/man1/"$_pkgname".1
 }
