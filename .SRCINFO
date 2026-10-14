@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-nott
-	pkgdesc = AIMP skin: Nott 1.1 (by Zigar)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Nott v1.1 (by Zigar)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-nott
 	options = !strip
 	options = !debug
 	source = aimp-skin-nott-649.archive::https://aimp.ru/?do=catalog.download&id=649
-	sha256sums = bbcd3cc69386d73994a1c76051c238dbb86e7641c28c27c7ae2c923ce86c0d05
+	sha256sums = SKIP
 
 pkgname = aimp-skin-nott
