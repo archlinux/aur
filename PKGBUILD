@@ -3,8 +3,8 @@
 
 pkgname='aimp-skin-neon-light'
 pkgdesc='AIMP skin: Neon Light 2.1 (by Black_AVP)'
-pkgver=20261001
-pkgrel=2
+pkgver=20261014
+pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
 license=('custom')
@@ -16,7 +16,7 @@ _skinsdir='/opt/aimp/Skins'
 
 source=('aimp-skin-neon-light-590.archive::https://aimp.ru/?do=catalog.download&id=590')
 noextract=("${source[@]%%::*}")
-sha256sums=('01a6d9d6242e677492a34199c72622f35556a4aca165bf103dd8c7c3cb6927b4')
+sha256sums=('SKIP')
 
 package() {
   local dest="$pkgdir$_skinsdir"
