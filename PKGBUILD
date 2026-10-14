@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('cmake' 'gcc')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('53744db7583231b03dc012b18880ea74b3a7060b58d411eed3694c9f521ceda3')
+sha256sums=('1af49a9d40e644740dca75f176c03535e123f6d0ba81833552b77a70e6eeabaa')
 
 build() {
   cd "${srcdir}/zxc-${pkgver}"
