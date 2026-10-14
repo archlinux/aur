@@ -1,6 +1,6 @@
 pkgbase = ibus-misstype-bin
 	pkgdesc = Offline, fuzzy Zhuyin input method for IBus (prebuilt)
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/Yukaii/misstype
 	arch = x86_64
@@ -14,20 +14,20 @@ pkgbase = ibus-misstype-bin
 	depends = gtk4
 	depends = gcc-libs
 	depends = glibc
-	provides = ibus-misstype=0.5.3
+	provides = ibus-misstype=0.5.4
 	conflicts = ibus-misstype
 	conflicts = ibus-misstype-git
 	conflicts = fcitx5-misstype
 	conflicts = fcitx5-misstype-git
 	conflicts = fcitx5-misstype-bin
 	conflicts = fcitx5-mistype-git
-	noextract = MisstypeIBus-0.5.3-arch-x86_64.pkg.tar.zst
-	noextract = MisstypeIBus-0.5.3-arch-aarch64.pkg.tar.zst
+	noextract = MisstypeIBus-0.5.4-arch-x86_64.pkg.tar.zst
+	noextract = MisstypeIBus-0.5.4-arch-aarch64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Yukaii/misstype/releases/download/v0.5.3/MisstypeIBus-0.5.3-arch-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 9b89393006b7bd76537caa056f0371e64d2f73968a2266f336854afcf88b749c
-	source_aarch64 = https://github.com/Yukaii/misstype/releases/download/v0.5.3/MisstypeIBus-0.5.3-arch-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = 7f4d721fdafa187682079f4e7802b8488cd49606e9ffaa1426b406275e625eac
+	source_x86_64 = https://github.com/Yukaii/misstype/releases/download/v0.5.4/MisstypeIBus-0.5.4-arch-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 749eb6d8fb19f2fa4e1fe99b6f9c1abd92d0799f787768f490094398a4501219
+	source_aarch64 = https://github.com/Yukaii/misstype/releases/download/v0.5.4/MisstypeIBus-0.5.4-arch-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 5482dd67d0ea2ef54cc322109602cf237adb354cbffb1875a3e76e3b30c3cc36
 
 pkgname = ibus-misstype-bin
