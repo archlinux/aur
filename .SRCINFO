@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-comfort
-	pkgdesc = AIMP skin: Comfort 1.0 (by Freyr (aka Kristall_k8))
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Comfort 2009-12-28 (by Freyr (aka Kristall_k8))
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-comfort
 	options = !strip
 	options = !debug
 	source = aimp-skin-comfort-4.archive::https://aimp.ru/?do=catalog.download&id=4
-	sha256sums = d637e3e43c1e9d613ff7269e1c7d7ec0eadcc3618bb93e44e5c86de599b3ad2c
+	sha256sums = SKIP
 
 pkgname = aimp-skin-comfort
