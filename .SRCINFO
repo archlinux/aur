@@ -1,7 +1,7 @@
 pkgbase = opennn-git
 	pkgdesc = OpenNN neural network library with attention and deep learning support (Git Version)
 	pkgver = 26.0.1.r0.g828dd67d8
-	pkgrel = 4
+	pkgrel = 3
 	url = https://www.opennn.net/
 	arch = x86_64
 	license = AGPL-3.0-only
