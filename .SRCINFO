@@ -1,7 +1,7 @@
 pkgbase = aimp-skin-zoom
-	pkgdesc = AIMP skin: Zoom 1.0 (by memo-se)
-	pkgver = 20261001
-	pkgrel = 2
+	pkgdesc = AIMP skin: Zoom 2011-12-04 (by memo-se)
+	pkgver = 20261014
+	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = aimp-skin-zoom
 	options = !strip
 	options = !debug
 	source = aimp-skin-zoom-225.archive::https://aimp.ru/?do=catalog.download&id=225
-	sha256sums = d507eb17a303d62c77d019aa3e2f0933c1376c3d6527e79b3a45e24fb14e1324
+	sha256sums = SKIP
 
 pkgname = aimp-skin-zoom
