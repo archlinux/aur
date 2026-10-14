@@ -8,16 +8,16 @@ pkgdesc='Post-install hook to update the arkenfox user.js'
 url='https://github.com/aartoni/arkenfox-hooks'
 license=('Unlicense')
 arch=('any')
-depends=('arkenfox-user.js' 'sudo')
+depends=('arkenfox-user.js' 'util-linux')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-backup=('usr/share/libalpm/hooks/arkenfox.hook')
 source=("git+https://github.com/aartoni/arkenfox-hooks")
 b2sums=('SKIP')
 
 package() {
     cd "$_reponame"
     install -Dm644 pacman.hook "$pkgdir/usr/share/libalpm/hooks/arkenfox.hook"
+    install -Dm755 arkenfox-update "$pkgdir/usr/share/libalpm/scripts/arkenfox-update"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

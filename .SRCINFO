@@ -6,10 +6,9 @@ pkgbase = arkenfox-hook-git
 	arch = any
 	license = Unlicense
 	depends = arkenfox-user.js
-	depends = sudo
+	depends = util-linux
 	provides = arkenfox-hook
 	conflicts = arkenfox-hook
-	backup = usr/share/libalpm/hooks/arkenfox.hook
 	source = git+https://github.com/aartoni/arkenfox-hooks
 	b2sums = SKIP
 
