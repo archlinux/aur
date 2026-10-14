@@ -1,6 +1,6 @@
 pkgbase = codexbar-cli
 	pkgdesc = AI coding provider usage tracker CLI
-	pkgver = 0.74.1
+	pkgver = 0.75.0
 	pkgrel = 1
 	url = https://github.com/steipete/CodexBar
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = codexbar-cli
 	conflicts = codexbar
 	options = !strip
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/steipete/CodexBar/v0.74.1/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/steipete/CodexBar/v0.75.0/LICENSE
 	sha256sums = 14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe
-	source_x86_64 = CodexBarCLI-v0.74.1-linux-x86_64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v0.74.1/CodexBarCLI-v0.74.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2d4afdfc4b6404a72f8128e6304f3dcd28a9590fce8f9f6a0790ba4ccb8dbc92
-	source_aarch64 = CodexBarCLI-v0.74.1-linux-aarch64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v0.74.1/CodexBarCLI-v0.74.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 5a3b4914e17257cd8bd1bbeb3aa22e5b96c226184a4fc5b88e40b64ca4341462
+	source_x86_64 = CodexBarCLI-v0.75.0-linux-x86_64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v0.75.0/CodexBarCLI-v0.75.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7920c8e42a64aa5dc249bdb3a745e8ec91a062cb2668b78dc9266dfffa0d7ad7
+	source_aarch64 = CodexBarCLI-v0.75.0-linux-aarch64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v0.75.0/CodexBarCLI-v0.75.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6b63c3fefeb2ec59618fa8b5c8424ea734cda00648afd4e7dd397d1bc0c16d61
 
 pkgname = codexbar-cli
