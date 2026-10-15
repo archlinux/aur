@@ -1,7 +1,7 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname="paseo-desktop-bin-edge"
-pkgver=0.11.2
-_deb_sha='09b4573407cc92f12008cdd9324cb6dc3ea472fca3ee044c935eb49fd1e991a8'
+pkgver=0.11.3
+_deb_sha='11e8ab2fb46af66f5dd8af608e413ca954c9d5892556f50d1179752a843786f0'
 pkgrel=2
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
