@@ -1,0 +1,16 @@
+pkgbase = yt-tui
+	pkgdesc = Curses TUI for yt-dlp with search and queueing
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Twilight0/yt-tui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = yt-dlp
+	depends = ffmpeg
+	source = yt-tui-1.1.0.tar.gz::https://github.com/Twilight0/yt-tui/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = ce70a68e4648962ed0471660ba6da9be71d21368a75eb69e821a8bf05c0444ac
+
+pkgname = yt-tui
