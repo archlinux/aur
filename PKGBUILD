@@ -6,7 +6,7 @@ _pkgname=plenti
 pkgname=${_pkgname}-bin
 pkgdesc="Static Site Generator with Go backend and Svelte frontend"
 
-pkgver=0.7.25
+pkgver=0.7.26
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('d101bab55e2f18cfd22e43dd0e138755749266625bfd503ced2c8e88d06c564a')
+sha256sums_x86_64=('dfb6790e386c974a16474a05b100d57134ef1e595d1618e78a12dc945863b47a')
 
 
 package() {
