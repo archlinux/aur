@@ -1,0 +1,15 @@
+pkgbase = zest
+	pkgdesc = Install, run, and upgrade Zig CLI tools from any git repository
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/JustinWoodring/zest
+	arch = x86_64
+	license = MIT
+	makedepends = zig-bin
+	depends = git
+	optdepends = zig: use a system zig from $PATH instead of a zest-managed toolchain
+	options = !debug
+	source = zest-0.2.0.tar.gz::https://github.com/JustinWoodring/zest/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = d8dff6ee94dceaa10ce6b0c030e58f2b02790ada014fc428e2063552ee9c4548
+
+pkgname = zest
