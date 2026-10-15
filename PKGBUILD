@@ -2,8 +2,8 @@
 # Contributor: Xyne <ca archlinux xyne, backwards>
 
 pkgname=python-pyzotero-git
-pkgver=1.13.2.r2.g93cedbb
-pkgrel=2
+pkgver=1.16.0.r0.g5d9307d
+pkgrel=1
 pkgdesc="A Python wrapper for the Zotero API"
 arch=(any)
 url="https://github.com/urschrei/pyzotero"
@@ -12,12 +12,12 @@ depends=(
     python
     python-bibtexparser
     python-click
-    python-fastmcp
+    #python-fastmcp
     python-feedparser
-    python-httpx
+    python-httpx2
     #python-pytz
     #python-requests
-    python-whenever
+    python-whenever-git
     )
 makedepends=(
     git
@@ -32,6 +32,11 @@ provides=(python-pyzotero)
 conflicts=(python-pyzotero)
 source=("python-pyzotero::git+https://github.com/urschrei/pyzotero.git")
 sha512sums=('SKIP')
+
+prepare() {
+  cd "python-pyzotero"
+  sed -i 's/uv_build>=0.8.14,<0.12.0/uv_build>=0.13/g' pyproject.toml
+}
 
 pkgver() {
   cd "python-pyzotero"
