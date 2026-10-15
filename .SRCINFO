@@ -1,0 +1,13 @@
+pkgbase = age-keylookup
+	pkgdesc = A tool to look up age public keys from a keyserver
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/FiloSottile/torchwood
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/FiloSottile/torchwood#tag=v0.10.0
+	sha512sums = 6000f6bf6371039c2b3c82f6f86ef53c5f5afc4803d8166e8107a0d35e7fa97c2936cf7790ab37a4e22a5e79362df6e7c609ceb4cacdd602c400563f345042c2
+
+pkgname = age-keylookup
