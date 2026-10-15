@@ -1,6 +1,6 @@
 # Maintainer: slatkin@woims.net
 pkgname=mbv
-pkgver=0.25.2
+pkgver=0.25.4
 pkgrel=1
 pkgdesc="mpv/Emby and Audiobookshelf front-end"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/slatkin/mbv"
 license=('MIT')
 depends=('mpv' 'openssl' 'pipewire' 'wayland' 'libxkbcommon' 'fontconfig')
 source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('bcf6684867b3f8390517e60c128db24605b1b05af07c412a659b19d44020279c')
+sha256sums=('9ccf42edd4f405ce57b63cd182552cd93985dbbc95b7399dbcfb59ebb3163467')
 
 package() {
     cd "${pkgname}-${pkgver}"
