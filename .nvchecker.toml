@@ -1,0 +1,4 @@
+[rustgis]
+source = "git"
+git = "https://github.com/opengeos/rustgis.git"
+prefix = "v"
