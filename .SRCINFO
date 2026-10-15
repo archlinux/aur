@@ -1,6 +1,6 @@
 pkgbase = alsa-utils-git
 	pkgdesc = Advanced Linux Sound Architecture - Utilities
-	pkgver = 1.2.4
+	pkgver = v1.2.16+4+gf3537ed
 	pkgrel = 1
 	url = https://www.alsa-project.org
 	arch = x86_64
@@ -34,4 +34,3 @@ pkgname = alsa-utils-git
 	depends = libncursesw.so
 	depends = libpanelw.so
 	depends = libsamplerate.so
-

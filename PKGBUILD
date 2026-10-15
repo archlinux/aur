@@ -4,7 +4,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=alsa-utils-git
-pkgver=1.2.4
+pkgver=v1.2.16+4+gf3537ed
 pkgrel=1
 pkgdesc="Advanced Linux Sound Architecture - Utilities"
 arch=('x86_64')
