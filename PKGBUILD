@@ -5,8 +5,8 @@
 # Regenerate checksums and .SRCINFO for a release with scripts/linux/gen-aur.sh.
 pkgname=linuxfiles-bin
 _pkgname=linuxfiles
-_tag=0.1.0-alpha7
-pkgver=0.1.0alpha7
+_tag=0.1.0-alpha8
+pkgver=0.1.0alpha8
 pkgrel=1
 pkgdesc='LinuxFiles, Files for Linux: unofficial port of Files by the Files Community (Uno Platform), prebuilt binaries'
 arch=('x86_64')
@@ -18,7 +18,9 @@ optdepends=('polkit: authenticated root actions'
             'gvfs: network and MTP locations'
             'udisks2: mount and eject drives'
             'libsecret: saved network credentials (Secret Service provider)'
-            'gnome-disk-utility: format and manage drives')
+            'gnome-disk-utility: format and manage drives'
+            'mpv: audio and video playback in the preview pane'
+            'webkit2gtk-4.1: rendered HTML previews')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')  # stripping breaks the self-contained .NET binaries
@@ -26,7 +28,7 @@ _base="$url/releases/download/linux-v$_tag"
 source=("$pkgname-$pkgver.tar.gz::$_base/files-linux-x64.tar.gz"
         "$pkgname-packaging-$pkgver.tar.gz::$_base/files-packaging.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz" "$pkgname-packaging-$pkgver.tar.gz")
-sha256sums=('14d1870fe2a633df26c3f8a498878ee386de9784ecddfb058598059ab7815d29' '1957e750e3c2d92d211300226a2452a5cde7a5265276baa12e917923df86553b')
+sha256sums=('70dd2be05ecccadc3ab642ef71dc9a30c07afc27199ec1537e7e8bec7d77dc10' 'e8a293e89a189fe3d9365925cfee30ec469ffd1dce01e069e38153252a18a547')
 
 prepare() {
   mkdir -p app packaging
