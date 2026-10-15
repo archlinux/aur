@@ -1,7 +1,7 @@
 pkgbase = gedit-menubar
 	pkgdesc = Easy-to-use general-purpose text editor (Patched to show menubar)
 	pkgver = 51.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gedit-text-editor.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
