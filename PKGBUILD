@@ -57,7 +57,8 @@ build() {
 	cd $_pkgname/packages/cli
 	# patched to emit a plain bun bundle: the default build compiles a standalone
 	# executable that embeds its own bun runtime, we run the system bun instead
-	OPENCODE_VERSION=$pkgver bun run ./script/build.ts --single
+	# opencode gets the plain tag version (pkgver minus the commit hash); the server rejects the 4-part form
+	OPENCODE_VERSION=${pkgver%.*} bun run ./script/build.ts --single
 }
 
 package() {
@@ -76,7 +77,7 @@ package() {
 	install -vdm755 "$pkgdir/usr/bin"
 	cat > "$pkgdir/usr/bin/opencode" <<- EOF
 	#!/bin/sh
-	exec /usr/bin/bun --smol --user-agent=opencode/latest/$pkgver/cli --use-system-ca --no-warnings /usr/lib/$pkgname/bin/index.js "\$@"
+	exec /usr/bin/bun --smol --user-agent=opencode/latest/${pkgver%.*}/cli --use-system-ca --no-warnings /usr/lib/$pkgname/bin/index.js "\$@"
 	EOF
 	chmod -v 755 "$pkgdir/usr/bin/opencode"
 
