@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgbase=fcitx5-lotus
 pkgname=('fcitx5-lotus' 'fcitx5-lotus-openrc' 'fcitx5-lotus-runit')
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare_staging() {
 package_fcitx5-lotus() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
-    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
+    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libevdev' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
     optdepends=(
         'fcitx5-lotus-openrc: OpenRC init script for fcitx5-lotus'
         'fcitx5-lotus-runit: Runit service for fcitx5-lotus'
