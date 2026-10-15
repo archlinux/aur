@@ -1,0 +1,37 @@
+From e77341f760a386a35280792530d1fb83f71639a6 Mon Sep 17 00:00:00 2001
+From: Natalia Portillo <claunia@claunia.com>
+Date: Tue, 13 Oct 2026 15:25:15 +0100
+Subject: [PATCH 2/2] Remove the slog submodule.
+
+Its upstream repository is gone, which broke recursive clones and
+dependants fetching libaaruformat with submodules.
+---
+ .gitmodules   | 3 ---
+ 3rdparty/slog | 1 -
+ 2 files changed, 4 deletions(-)
+ delete mode 160000 3rdparty/slog
+
+diff --git a/.gitmodules b/.gitmodules
+index 81d8b34..1e1155e 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -7,9 +7,6 @@
+ [submodule "3rdparty/uthash"]
+ 	path = 3rdparty/uthash
+ 	url = https://github.com/troydhanson/uthash
+-[submodule "3rdparty/slog"]
+-	path = 3rdparty/slog
+-	url = https://github.com/kala13x/slog
+ [submodule "3rdparty/xxHash"]
+ 	path = 3rdparty/xxHash
+ 	url = https://github.com/Cyan4973/xxHash
+diff --git a/3rdparty/slog b/3rdparty/slog
+deleted file mode 160000
+index 128b070..0000000
+--- a/3rdparty/slog
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit 128b070e7685f59890729a1dae304aed86920f8b
+-- 
+2.56.0
+

@@ -1,7 +1,7 @@
 pkgbase = libaaruformat
 	pkgdesc = Library for reading and writing AaruFormat disk images
 	pkgver = 1.0.0.beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aaru-dps/libaaruformat
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -10,6 +10,10 @@ pkgbase = libaaruformat
 	makedepends = ninja
 	depends = argtable3
 	source = libaaruformat::git+https://github.com/aaru-dps/libaaruformat.git#tag=v1.0.0-beta.2
-	sha256sums = SKIP
+	source = 0001-Replace-slog-with-an-in-house-TRACE-FATAL-logger.patch
+	source = 0002-Remove-the-slog-submodule.patch
+	sha256sums = 22c7096f7f3802544dfbb6bdf64989b50ad6fb1955b06182b1b81c3aa382673f
+	sha256sums = 1c73bbf809b59329feb57dc7c31fd0da2f3dec17cd9c176909d9a662b2ae65e2
+	sha256sums = b0ecd18557b8596d39625dc25ed0aaedf7696c610d9ad3f56d499b4194b2cd6b
 
 pkgname = libaaruformat
