@@ -1,7 +1,7 @@
 # Maintainer: Wiktor W. <wykwit@disroot.org>
 
 pkgname='llm-sessions'
-pkgver=0.2.0
+pkgver=0.3.0
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc='TUI explorer for LLM coding-agent sessions'
@@ -12,7 +12,7 @@ depends=('git')
 options=(!lto)
 arch=('x86_64' 'i686')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('951ec17db28f82550e4fcca31cbe18310d73dfa73d3afec9a1682b9d0c469090')
+sha256sums=('e59b105b40e93535c8e1054fad2da9b1a34610481d8c5132cb03b96712be0a8b')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
