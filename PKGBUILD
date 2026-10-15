@@ -1,6 +1,6 @@
 # Maintainer: Booker <lordbooker@gmail.com>
 pkgname=linux-g13-driver-git
-pkgver=2.0.0.r1.g74b16b3
+pkgver=2.0.0.r2.gd378bf9
 pkgrel=1
 pkgdesc="User-space driver and Qt6 configuration tool for the Logitech G13 gameboard (Modernized Fork)"
 arch=('x86_64')
@@ -24,8 +24,7 @@ build() {
   cmake -B build -S "$srcdir/linux-g13-driver/g13-driver" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTS=OFF \
-    -Wno-dev
+    -DBUILD_TESTS=OFF
   cmake --build build
 }
 
