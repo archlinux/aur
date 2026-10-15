@@ -1,0 +1,30 @@
+post_install() {
+  echo '==> Start the collector for your user:'
+  echo '      systemctl --user enable --now sysmand'
+  echo '==> Optional: the privileged helper adds SMART drive health, CPU package power,'
+  echo '    disk I/O and open files of other users processes, and per-process network'
+  echo '    traffic. Turn it on in Settings in the app, or:'
+  echo '      sudo systemctl enable --now sysman-helper'
+}
+
+post_upgrade() {
+  # running services pick up the new binaries; stopped or disabled ones stay as they are
+  systemctl try-restart sysman-helper.service 2>/dev/null || true
+  local user restarted=()
+  for user in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
+    if systemctl --user -M "$user@" is-active --quiet sysmand.service 2>/dev/null &&
+      systemctl --user -M "$user@" restart sysmand.service 2>/dev/null; then
+      restarted+=("$user")
+    fi
+  done
+  if [ ${#restarted[@]} -gt 0 ]; then
+    echo "==> Restarted the collector for: ${restarted[*]}"
+  fi
+}
+
+pre_remove() {
+  echo '==> Stop the collector first if it is running:'
+  echo '      systemctl --user disable --now sysmand'
+  echo '==> and the privileged helper, if enabled:'
+  echo '      sudo systemctl disable --now sysman-helper'
+}
