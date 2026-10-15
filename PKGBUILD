@@ -1,7 +1,7 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis-bin
 _pkgname=botropolis
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city (binary release)"
 arch=('x86_64' 'aarch64')
@@ -33,14 +33,17 @@ options=('!debug')
 # package would be built from binaries whose source tree is not here.
 source_x86_64=("${_pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('e6b25457a7651b84a6236eca28efc1b883cec9a3d0e91ccf60583e6d6cfe85c3')
-sha256sums_aarch64=('42d4b6f1ce62d8d9f2f4d432e5ef9a38500add0ef7378c98c3731e8621133c5c')
+sha256sums_x86_64=('72c8f579a35567851d8bfbfc1246e5e7d4fad21265e0011f3798e0492ef65a5a')
+sha256sums_aarch64=('bdadc5ffcefaf641d207352459e56d2dcd99b05d32aedd95ba3ba60c81469f7b')
 
 package() {
     cd "${_pkgname}-${pkgver}"
     for bin in botropolis botropolisd botropolis-hook; do
         install -Dm755 "${bin}" "${pkgdir}/usr/bin/${bin}"
     done
+    install -Dm644 completions/botropolis.bash "${pkgdir}/usr/share/bash-completion/completions/botropolis"
+    install -Dm644 completions/_botropolis "${pkgdir}/usr/share/zsh/site-functions/_botropolis"
+    install -Dm644 completions/botropolis.fish "${pkgdir}/usr/share/fish/vendor_completions.d/botropolis.fish"
     install -Dm644 packaging/botropolisd.service "${pkgdir}/usr/lib/systemd/user/botropolisd.service"
     install -Dm644 packaging/botropolis-notify.service "${pkgdir}/usr/lib/systemd/user/botropolis-notify.service"
     install -Dm644 packaging/botropolis.bash "${pkgdir}/usr/share/botropolis/botropolis.bash"

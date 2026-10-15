@@ -1,6 +1,6 @@
 pkgbase = botropolis-bin
 	pkgdesc = Every Claude Code session on this machine, drawn as a city (binary release)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Botropolis-City/botropolis
 	install = botropolis.install
@@ -17,12 +17,12 @@ pkgbase = botropolis-bin
 	depends = hicolor-icon-theme
 	optdepends = claude-code: the sessions botropolis draws and manages
 	optdepends = waybar: a status bar for `botropolis bar --watch`
-	provides = botropolis=0.1.6
+	provides = botropolis=0.1.7
 	conflicts = botropolis
 	options = !debug
-	source_x86_64 = botropolis-0.1.6-linux-amd64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.1.6/botropolis-0.1.6-linux-amd64.tar.gz
-	sha256sums_x86_64 = e6b25457a7651b84a6236eca28efc1b883cec9a3d0e91ccf60583e6d6cfe85c3
-	source_aarch64 = botropolis-0.1.6-linux-arm64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.1.6/botropolis-0.1.6-linux-arm64.tar.gz
-	sha256sums_aarch64 = 42d4b6f1ce62d8d9f2f4d432e5ef9a38500add0ef7378c98c3731e8621133c5c
+	source_x86_64 = botropolis-0.1.7-linux-amd64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.1.7/botropolis-0.1.7-linux-amd64.tar.gz
+	sha256sums_x86_64 = 72c8f579a35567851d8bfbfc1246e5e7d4fad21265e0011f3798e0492ef65a5a
+	source_aarch64 = botropolis-0.1.7-linux-arm64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.1.7/botropolis-0.1.7-linux-arm64.tar.gz
+	sha256sums_aarch64 = bdadc5ffcefaf641d207352459e56d2dcd99b05d32aedd95ba3ba60c81469f7b
 
 pkgname = botropolis-bin
