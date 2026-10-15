@@ -2,7 +2,7 @@
 
 pkgbase=linux-mnt-reform-bin
 pkgname=('linux-mnt-reform-bin' 'linux-mnt-reform-bin-headers')
-pkgver=7.2.10.reform1
+pkgver=7.2.11.reform1
 pkgrel=1
 _base_kernel_version="${pkgver%%.reform*}"
 _kernver="${pkgver/.reform/-reform}"
@@ -26,17 +26,17 @@ source_x86_64=(
 )
 sha256sums=(
   '8a15cec00fc571b7b62dba4ad9aa7b0132fe837dca3a424828bb19a37f5d3e58'
-  'df46ceb1b9ed9b8e4f2ce2cc7d458fade05f07b429e8c797a6fe9b71eed17610'
+  'c2b6a5cd38bb3b239c991f780549a408b3b1b804fea61344284eb3460a61c6ef'
   '24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e'
-  'd3c85cb22c53fd2efb3237dec00a38875eba4b1dfcbbfae082cf01ffb23531d4'
+  '8ca2462feef17faa09e88af09f6eab4a789f7888b8a88ffd1a66a7ef95f2f2ca'
 )
 sha256sums_aarch64=(
-  '363f286059cbfea675e75c534049fb5f5cca5766cd7f8766612b9af138d69495'
-  '51216e76bdeb349effdd10af1750c02221224e37ee75ea36dbd31e906df388be'
+  '4424b6b1430b47e520bc15ea91d1aae0f476e16eddc60e35cee7d109a579745d'
+  '5265cb90f191ca5f03911884d92f323243fac88750c74e4ebc807c16238edf8d'
 )
 sha256sums_x86_64=(
-  '592ac68ebeda937101a2601149d8a007a30e6149763e34e9cbd4add88e1bcd91'
-  '78a7d72d5cebc89fd5a587e594ac1bf18e007aa1c9ccdcdac39f4a7b88f3d1cb'
+  '039a41bf0c28935899b31da3ca4166a83ace4828016f1160905dc3837f7577a9'
+  '17bba742aa32cb705bfd4e6659b0b3e9d09e49a3a882f11b6cc8bf18f2d9826f'
 )
 
 build() {
