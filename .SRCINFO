@@ -1,6 +1,6 @@
 pkgbase = sable-bin
 	pkgdesc = A Matrix client
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://git.sable.moe/SableClient/sable-next
 	install = sable-bin.install
@@ -25,7 +25,7 @@ pkgbase = sable-bin
 	conflicts = sable-nightly-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = sable-bin-2.0.1-x86_64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/v2.0.1/sable-2.0.1-linux-x86_64.deb
-	sha256sums_x86_64 = 116547054d0c71ef1999fe630b76fc5af1e6559642d5800fcb4bec5b4e0f2793
+	source_x86_64 = sable-bin-2.0.2-x86_64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/v2.0.2/sable-2.0.2-linux-x86_64.deb
+	sha256sums_x86_64 = e7e52b457844fdb44bef058aa60e6458589f4389dc0a0d8315fdc14c8f42189b
 
 pkgname = sable-bin
