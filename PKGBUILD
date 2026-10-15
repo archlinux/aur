@@ -2,7 +2,7 @@ pkgname=bagworm
 # GitHub archives extract to the repository's canonical casing, which is
 # "Bagworm" - keep this in sync if the repo is ever renamed to lowercase.
 _repo=Bagworm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Opinionated developer UX for OCI containers - drops you into a shell inside your project's image"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=('podman: container runtime'
             'docker: container runtime'
             'nerdctl: container runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cb9917a2bb5e01d7c40c69dddb1a227c814a5d4d97ab7f9f34b7e9d08d122373')
+sha256sums=('2db75b61fcf9f2ee1ece0e0732faecb2b072ca580a899129e9a9afbd4b0d747c')
 
 prepare() {
 	cd "$_repo-$pkgver"
