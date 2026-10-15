@@ -6,7 +6,7 @@
 _pkgname='puppyclicker'
 pkgname="${_pkgname}-appimage"
 pkgver=3.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Click your puppies from anywhere. (By Boundfire.)'
 url="https://${_pkgname}.app/"
 arch=(
@@ -43,21 +43,21 @@ prepare() {
   sed -i 's|^Exec=AppRun.*|Exec=/usr/bin/puppyclicker %U|' "${_pkgname}.desktop"
 
   # Patch the launcher to ignore hcaptcha and fix the api endpoint to the new structure.
-  cd           'squashfs-root/resources'
-  asar extract 'app.asar'                                        'app-extracted'
-  (
-    cd app-extracted/app/_expo/static/js/web/
-    sed -i \
-      -e 's/const c=!0;/const c=!1;/g' \
-      -e "s|const S='\([^']*\)/api'|const S='\1/api/v2'|g" \
-      index-*.js
-  )
+  # cd           'squashfs-root/resources'
+  # asar extract 'app.asar'                                        'app-extracted'
+  # (
+  #   cd app-extracted/app/_expo/static/js/web/
+  #   sed -i \
+  #     -e 's/const c=!0;/const c=!1;/g' \
+  #     index-*.js
+  # )
 
   # Repack
-  asar pack    'app-extracted'                                   'app.asar'
-  rm -rf       'app-extracted'
-  cd           '../..'
-  appimagetool 'squashfs-root'                                   'puppyclicker'
+  # asar pack    'app-extracted'                                   'app.asar'
+  # rm -rf       'app-extracted'
+  # cd           '../..'
+  # appimagetool 'squashfs-root'                                   'puppyclicker'
+  cp "${_pkgname}.AppImage" "${_pkgname}"
 }
 
 pkgver() {
