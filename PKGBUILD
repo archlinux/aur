@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=codex-security
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="SDK and CLI for finding, validating, and fixing security vulnerabilities in code"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ depends=('nodejs>=22' 'git')
 makedepends=('npm' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/npm-v${pkgver}.tar.gz"
         "https://registry.npmjs.org/@openai/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('d582b134e5d69b2226c167cb10d63f3de707683b0b635e6fc03d92a24aac5d38'
-            'b28a2b793c0eba3c6989c7847e879282c0ed170d47f0085936c208076495f229')
+sha256sums=('f531b33970a9b4b225c6b5a601963007fe0c5b3a4b1fc0ee7989f93cf2a9670a'
+            '93a3b155c789a5149c26bdd5b6f142d60bf10311ee9cae17a77dc2882a4e2090')
 
 build() {
   cd "${pkgname}-npm-v${pkgver}/sdk/typescript"
