@@ -1,6 +1,6 @@
 pkgbase = hermes-agent
 	pkgdesc = Locally-run AI agent with tool use, web browsing, and automation
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	install = hermes-agent.install
@@ -16,10 +16,10 @@ pkgbase = hermes-agent
 	depends = agent-browser
 	optdepends = chromium: local browser automation (or google-chrome)
 	optdepends = google-chrome: local browser automation (or chromium)
-	source = hermes-agent-0.22.0.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v0.22.0.tar.gz
+	source = hermes-agent-0.22.1.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v0.22.1.tar.gz
 	source = keep-venv-interpreter.patch
 	source = system-tools.py
-	sha256sums = 61333ab64f7ad728bc265d103fd73b2eb4b936f9c8d9fe3ccf2531ad955e96a1
+	sha256sums = 45ebe864dbf65ecd31693a811ddd6e2e449b1878b835b563cf0a28d6a9c4bf38
 	sha256sums = 516bee4492e4d6f6e4310703bdec7e88229a1b0ddb828542f297d4e6e226c427
 	sha256sums = 5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d
 
