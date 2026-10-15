@@ -7,7 +7,7 @@
 # that release exists) skips the network fetch.
 pkgname=daily-you-bin
 pkgver=3.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Every day is worth remembering... (mood tracking, journaling)"
 arch=('x86_64')
 url="https://github.com/BigWebstas/Daily_You"
