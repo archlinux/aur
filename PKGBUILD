@@ -3,7 +3,7 @@
 # Hand-edits are fine but will be overwritten on the next tagged release.
 
 pkgname=dicto-bin
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('dicto')
 conflicts=('dicto')
 source_x86_64=("https://github.com/logi-camp/dicto/releases/download/v${pkgver}/dicto-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 # Checksum is injected by CI from the built release tarball (real b2sum, not SKIP).
-b2sums_x86_64=('82f51ce2f3cf58ed68c658e25808c4578515b1aa9202734134170e2f738b9550cbaf22ee161f52d8c2ebd8f7d3899f1abf3296acd13dc235b9c2ebcbcbda992c')
+b2sums_x86_64=('95d6db97b50fb696dbc1e0b337cbdf1c7dc2c441c0cdc0efc9ec91005932931e9adf346ea2e22a80a8a3f002f7c28831ebedd380639292f2ad0337ce5e189e2d')
 
 package() {
   install -Dm755 "$srcdir/dicto" \
