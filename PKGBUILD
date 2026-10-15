@@ -1,20 +1,19 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=dosbox-pure-unleashed-bin
 pkgver=1.0_preview7
-pkgrel=1
+pkgrel=2
 pkgdesc="DOSBox reimagined with a friendly interface, ZIP loading and save states"
 arch=('x86_64')
-url="https://github.com/schellingb/dosbox-pure-unleashed"
+url="https://codeberg.org/schelling/dosbox-pure-unleashed"
 license=('GPL2')
 depends=('libgl' 'libx11')
 provides=('dosbox-pure-unleashed')
 conflicts=('dosbox-pure-unleashed' 'dosbox-pure-unleashed-git')
 options=('!strip')
 _pkgver="${pkgver//_/-}"
-# Temporarily adding 'fix' suffix
-source=("dosbox-pure-unleashed-${pkgver}.zip::https://github.com/schellingb/dosbox-pure-unleashed/releases/download/${_pkgver}/dosbox_pure_unleashed-linux-x64-${_pkgver}fix.zip"
+source=("dosbox-pure-unleashed-${pkgver}.zip::${url}/releases/download/${_pkgver}/dosbox_pure_unleashed-linux-x64-${_pkgver}.zip"
         "dosbox-pure-unleashed.png"
-        "LICENSE::https://github.com/schellingb/dosbox-pure-unleashed/raw/main/LICENSE")
+        "LICENSE::${url}/raw/tag/${_pkgver}/LICENSE")
 sha256sums=('800864ec91900af2c591f2e9e4311205f4ce5ac575524dbe9156387f773a9669'
             'dbc60121b55da42d2f4f2f19b92bc741d073be313d28a16699572ce3942a89dc'
             '61e0922747762a12e88a47ab66ef4ed026148361900440086b4863145973a374')
