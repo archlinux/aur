@@ -8,7 +8,7 @@ url='https://github.com/rfvgyhn/min-ed-launcher'
 arch=('x86_64')
 license=(MIT)
 makedepends=(
-    'dotnet-sdk-bin'
+    'dotnet-sdk-bin>=10.0.13.sdk402'
 )
 depends=(
     'hicolor-icon-theme'
