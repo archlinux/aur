@@ -12,7 +12,7 @@ depends=('cups')
 depends_x86_64=('lib32-glibc')
 
 source=("https://download.brother.com/welcome/dlf103631/hlb2080dwpdrv-4.0.0-2.i386.rpm")
-sha512sums=('75829ed24bada0f007c48067000f6ced7a65b48d92782ef6d25045cb66cf4654fd5208a5b4779802eda231e467132a782693f5756df027da3b119da2f09e2d3a')
+sha512sums=('55746952a03db55cc988630bb6cf3545c98c3bda1dfb029cbb2b2208dafc631016ec8094ba84cc104d39d3688a6c9898dc54cf4d6d8672ab13fffed17e943d4b')
 
 package(){
   cp -R "$srcdir/opt" "$pkgdir/opt"
