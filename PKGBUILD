@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><contacto@mrhacker.com.co>
 pkgname=wazuh-agent
-pkgver=4.14.8
+pkgver=4.14.9
 pkgrel=1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
@@ -22,9 +22,6 @@ optdepends=(
   'lsb-release'
 )
 
-# Agente y manager son el mismo /var/ossec: comparten ~164 ficheros. Sin esta
-# declaracion pacman aborta con un "exists in filesystem" ilegible en vez de
-# avisar del conflicto real entre los dos paquetes.
 conflicts=('wazuh-manager')
 
 validpgpkeys=(
@@ -50,8 +47,8 @@ backup=(
 sha512sums=('3951de83f3f61191eb5ddc5c5474a2a049e86d6a9607cdcbbe9caa77cc58d3a33f9a3e6b2070381ff6285b8b41da544a9785d1fbe3fb1dd72d956c58c516b2c6'
             '94ef03e4ec28bf5adb6abc761adfa785e9088667e3a6df39af87b33d25cd9cdd3df3a388bb4bccae22643dc7c030927754240ab1724afaef047e08393536bf44'
             '41548675747387bc11ea755f41272d42456d82845fa9e469c3ad6f16254062ac220e6e5652721201884e2256941968b24b92d17e15b869eaf2a7ba2ba22a8d72')
-sha512sums_x86_64=('6198fbd9a3bdbe1d5511d6f83a07a94cefaa272855307df78d82c6994762a2f64aac61923429111022248ce2557f41b893dcbed330a9823fac46791d0c95c2f6')
-sha512sums_aarch64=('9ee87f986ea9c3256be15fe5c99fe82b30cd0c0a1ec3e3419aff7c2c502399e634888146d8075528ab3f2894f5e5ad97a7dc1997201e46ead482080836922694')
+sha512sums_x86_64=('d4ad14b5759a73ed8e047f1b834e9943bbedbb8e17914267ac906e89304b583cc4e78e088a8494260b49a644d29e133e65582f5fe2fd8902325a7e213a15acd6')
+sha512sums_aarch64=('355d2a5ae190e94c071dc49c61fec8c19ad6d6e80a7244232793273f20bb564226bf6f06e1eb8c37b9031da5fd2af8680dd5b5b6b1f9f4bac5a10434bc9dbef7')
 
 install=$pkgname.install
 
