@@ -3,7 +3,7 @@
 
 pkgbase=python-neo
 pkgname=('python-neo')
-pkgver=0.14.5
+pkgver=0.14.6
 pkgrel=1
 pkgdesc="Neo is a package for representing electrophysiology data in Python, together with support for reading a wide range of neurophysiology file formats"
 arch=('any')
@@ -12,7 +12,7 @@ license=("custom")
 depends=("python-quantities")
 makedepends=("python-build" "python-installer" "python-wheel")
 source=("https://github.com/NeuralEnsemble/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e4ed05cbb0907253c664a6cc8fcb6cf7d0e3c391a9af707182014a51823dbd15')
+sha256sums=('cabb806978cf8c96e53fd5bfb49a4ba7a04120049e75e90d145e09a67eebf8d2')
 
 build() {
     cd ${pkgname}-${pkgver}
