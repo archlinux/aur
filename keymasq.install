@@ -22,12 +22,10 @@ session_allowed_uids = []
 exec_timeout_max_ms = 30000
 
 [recording_guard]
-# Tier 1 (recommended): require unlock for capture and recording commands.
-unlock_required = true
+# Allow macro recording. Set to false to disable it for all users.
+macro_recording_allowed = true
 # Stop a recording normally after this many minutes. Set to 0 for no time limit.
 macro_recording_time_limit = 10
-# Tier 2 (optional): require unlock for macro inspection/edit commands.
-macro_edit_requires_unlock = false
 EOF
     chown root:root /etc/keymasq/security.toml 2>/dev/null || true
 }
