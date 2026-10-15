@@ -2,7 +2,7 @@
 
 pkgname=portprotonqt
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Game library manager and launcher for Linux"
 arch=('x86_64')
 url="https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt"
@@ -22,7 +22,7 @@ optdepends=(
     'squashfs-tools: for legacy PortProton prefix backup support'
 )
 source=("git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v$pkgver")
-sha256sums=('6c30909a4152a0234880082cde74334b0476c33c8e748d6c98795f9f3d2586c7')
+sha256sums=('4badaf6f2f3aea39e4dae10a0949e67b6343dd931aaee177994b6d1a7085ebf7')
 
 build() {
     arch-meson PortProtonQt build
