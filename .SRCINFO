@@ -1,11 +1,11 @@
 pkgbase = game-cheetah
 	pkgdesc = High-performance memory scanner/editor and game trainer
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/mkrueger/game_cheetah
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = rust
+	makedepends = rust>=1.95
 	makedepends = cargo
 	depends = gtk3
 	depends = libxcb
@@ -14,7 +14,7 @@ pkgbase = game-cheetah
 	depends = libgl
 	depends = fontconfig
 	depends = freetype2
-	source = game-cheetah-0.7.3.tar.gz::https://github.com/mkrueger/game_cheetah/archive/refs/tags/v0.7.3.tar.gz
-	sha256sums = 200137e7820ed6018be73206f9974ddb1ae5c10c2169e981e654adc01c475c3b
+	source = game-cheetah-0.7.4.tar.gz::https://github.com/mkrueger/game_cheetah/archive/refs/tags/v0.7.4.tar.gz
+	sha256sums = 91f694d05351b13fe9a2aa7d5ba6c6db1e970c032732700589a2b9c7c137525b
 
 pkgname = game-cheetah
