@@ -1,7 +1,7 @@
 pkgbase = libarchive-static
 	pkgdesc = Statically-compiled bsdtar (Multi-format archive and compression library, to fix badly broken systems)
-	pkgver = 3.8.9
-	pkgrel = 6
+	pkgver = 3.8.10
+	pkgrel = 1
 	url = https://libarchive.org/
 	arch = i486
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = libarchive-static
 	makedepends = git
 	options = !emptydirs
 	options = !lto
-	source = git+https://github.com/libarchive/libarchive.git?signed#tag=v3.8.9
+	source = git+https://github.com/libarchive/libarchive.git?signed#tag=v3.8.10
 	source = libarchive-3.8.3-all-static.patch
 	source = https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.xz
 	source = https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.xz.sig
@@ -57,7 +57,7 @@ pkgbase = libarchive-static
 	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
 	validpgpkeys = EC3CFE88F6CA0788774F5C1D1AA44BE649DE760A
 	validpgpkeys = 4EF4AC63455FC9F4545D9B7DEF8FE99528B52FFD
-	sha512sums = b16c64874cda0a0ab2d66bb89aaf7ffdb8abafad21101c9d64265f15e6b188cbf7fee744dc19bec6baee85b9caef042c9aaffc07c152b3be076eccb2dedb7ea6
+	sha512sums = a8aef71929161c6f15bb58e21a8a6d4997a37d5afdd0ad1442d335c7cebb6db6082820aecca97cf8c75c6280c9152a0314c0e739ad66371a2f1393632f55d3f0
 	sha512sums = 8478795f3d980073128c31ddd388a113c55d7d2ecc60ccb0488edf5b34d5156f5e773d62a61083dedd5333ef71613d5af619e1dcf2d9acea372c76746b16f879
 	sha512sums = f587ea544effb7cfed63b3027bf14baba2c2dbe3a9b6c0c45fc559f7e8cb477b3e9a4a826eae30f929409468c50d11f3e7dc6d2500f41e1af8662a7e96a30ef3
 	sha512sums = SKIP
