@@ -1,5 +1,5 @@
 pkgname=zendrite
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="An opinionated fork of element-hq/dendrite"
 arch=(x86_64)
@@ -12,7 +12,7 @@ optdepends=("postgresql>=12: Recommended database"
 install="$pkgname.install"
 source=("git+https://codefloe.com/pat-s/zendrite.git#tag=v$pkgver"
         "$pkgname.service")
-sha256sums=('5cf6ac17ff315ea66e46c9f412a8d3ea1facadebb752395b266d4c61945853a5'
+sha256sums=('dfaa58e787878ae871cf2bdc5703f329dc6d366a389610630f63fb0b280d6d61'
             '8eb2c645705cd432b6d16cda65f31f06fa97f513b9d3d90e4c6e5a87bfb39513')
 
 prepare() {
