@@ -1,7 +1,7 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 _pkgname='ubuntu'
-_release='26.04'
+_release='26.10'
 _flavor='live-server'
 _upstream_arch='amd64'
 _image_id='ubuntu-server'
@@ -9,7 +9,7 @@ _disk_product='Ubuntu-Server'
 _installer_variant='server'
 _require_lts='false'
 pkgname='libvirt-iso-ubuntu-server-bin'
-pkgver=26.04.1
+pkgver=26.10
 pkgrel=1
 pkgdesc='Official Ubuntu Server installation ISO for libvirt'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 )
 noextract=("${_source_iso}")
 sha256sums=(
-	'cc8a95cde20f6ced61a322420de00f10cc3c90ced545daa46cb9c1a117f1d927'
+	'c8e9d797f718404bdb1e282f8466fe6f5f2e9f03c814bdf11b31326d45200929'
 	'SKIP'
 	'SKIP'
 	'ccee829abe16869c3b4e989844357a0fff8fc74ca5eb8d80d83019982c487185'
