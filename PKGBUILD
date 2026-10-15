@@ -2,7 +2,7 @@
 # Contributor: Iswad
 
 pkgname=touchdesigner-linux
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="Run TouchDesigner on Linux"
 arch=('x86_64')
