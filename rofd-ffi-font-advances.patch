@@ -962,54 +962,66 @@ index 636c530..086a254 100644
  
          // Search rectangles come from the same geometry.
          let query = CString::new("BZ").unwrap();
-From 7f6a1852cc8c15a7a9fcd4508096fb9b41d053f4 Mon Sep 17 00:00:00 2001
+From a364014ed409ffe5390a26499d289bd0870043d5 Mon Sep 17 00:00:00 2001
 From: Yangtse Su <yangtsesu@gmail.com>
 Date: Thu, 15 Oct 2026 08:46:29 +0800
-Subject: [PATCH 3/3] feat(core): cover the painted glyph with the resolved
- character box
+Subject: [PATCH 3/3] feat(core): span a character box and selection band with
+ the font's metrics
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-A character box spanned one font size above its baseline and stopped there, while a
-renderer paints the glyph's own extent: on a real government document (2464 glyphs
-over six embedded fonts, sizes 4.9-7.8 mm) 86% of the scalars reach below the
-baseline - CJK overshoot of 0.10-0.13 em, Latin descenders up to 0.19 em, mean
-0.50 mm and up to 1.46 mm - so a selection or search highlight cut the bottom off
-the text it belonged to, and the top carried a further 0.15-0.17 em of unused space.
+rofd's page text geometry built every character box from the font size - one size
+above the baseline, stopping at it - while a PDF text box is built from the font's own
+metrics (poppler's `TextWord::setInitialBounds`: `yMin = y - ascent`, `yMax = y -
+descent`, the ascent/descent of the face). The mismatch cut the bottom off CJK glyphs
+and Latin descenders, and it left the vertical extent of a box dependent on the glyph
+inside it, so punctuation and Latin did not line up with CJK in one line. Measured on a
+real government document (2464 glyphs over six embedded fonts, sizes 4.9-7.8 mm): 86%
+of the scalars reach below the baseline - CJK overshoot 0.098-0.129 em, Latin
+descenders up to 0.188 em - by a mean of 0.50 mm and up to 1.46 mm, while the box top
+sat 1.45 mm above the painted top on average.
 
 The provider seam that already resolves per-scalar advances now answers the whole
-scalar geometry: `TextScalarMetrics` carries the advance, the ascent and the descent
-of the glyph the positioner selected, in millimetres. rofd-core keeps its font-free
-fallback (font size above the baseline, nothing below) for scalars the provider
-cannot resolve and for documents loaded without a provider, and the builder spans
-the baseline sweep with the resolved extents. rofd-render reads the extents from the
-same FreeType control box it already loads for the advance - cached per glyph, so no
-extra face loads - and `PositionedGlyph::metrics` replaces `advance`, exposing both
-to callers. The FFI provider now owns its shared resolver in a `LazyLock` instead of
-leaking one, because a document keeps the provider for its whole life.
+scalar geometry: `TextScalarMetrics` carries the advance of the glyph the positioner
+selected plus the *face's* typographic ascent and descent, which are the same for every
+glyph of that face at one size, so the boxes of a run share one band and cover the
+glyphs. `ResolvedFont` reads that pair once from FreeType while validating the face,
+`GlyphMetrics` exposes it beside the advance, and a face that declares no usable
+metrics keeps the font-size footprint - as does a document loaded without a provider.
+
+Selection regions grow that band by an eighth of its height above and below: the margin
+poppler's `TextSelectionSizer::visitLine` gives a PDF selection region, so a selected
+line reads as one band that clears the glyphs instead of ending on them. Character
+boxes and match rectangles keep the plain band, the way poppler keeps them.
 
 Verified: cargo fmt --all -- --check; cargo clippy -p rofd-core -p rofd-render
--p rofd-ffi --all-targets -- -D warnings; cargo test for the three crates (the two
-new pixel-level tests - `semantic_character_boxes_cover_the_rendered_ink` in
-crates/rofd-render/tests/cairo_text.rs and
-`text_layout_rectangles_cover_the_rendered_ink_below_the_baseline` in
-crates/rofd-ffi/tests/semantic.rs - fail with the builder extent change reverted and
-pass with it); crates/rofd-ffi/tests/run_c_tests.sh (rc=0, symbol list unchanged, 77
-entries). rofd-render's pre-existing decoded_limits_have_exact_and_one_over_boundaries
-failure is unaffected (it fails with this change stashed as well).
+-p rofd-ffi --all-targets -- -D warnings; cargo test for the three crates;
+crates/rofd-ffi/tests/run_c_tests.sh (symbol list unchanged, 77 entries). The
+pixel-level tests fail against the previous model and pass with this one -
+`crates/rofd-render/tests/cairo_text.rs::semantic_character_boxes_cover_the_rendered_ink`
+(the two scalars of one run now share top and bottom, and the band is strictly taller
+than the ink) and
+`crates/rofd-ffi/tests/semantic.rs::text_layout_rectangles_cover_the_rendered_ink_below_the_baseline`
+(same band for A and 中, the region equals the band plus the eighth-height margin) -
+and `crates/rofd-core/tests/semantic_text.rs` pins the margin and the aligned band.
+rofd-render's pre-existing decoded_limits_have_exact_and_one_over_boundaries failure is
+unaffected (it fails with this change stashed as well).
 ---
  crates/rofd-core/src/document.rs              |  69 ++---
  crates/rofd-core/src/lib.rs                   |   4 +-
- crates/rofd-core/src/semantic.rs              |  91 +++++--
- crates/rofd-core/tests/semantic_text.rs       |  75 ++++--
+ crates/rofd-core/src/semantic.rs              | 122 ++++++---
+ crates/rofd-core/tests/semantic_text.rs       | 132 +++++++--
  crates/rofd-ffi/include/rofd.h                |   9 +-
  crates/rofd-ffi/src/document.rs               |  10 +-
  crates/rofd-ffi/src/renderer.rs               |  29 +-
- crates/rofd-ffi/tests/semantic.rs             | 157 +++++++++++
- crates/rofd-render/src/fonts.rs               | 251 ++++++++++++------
+ crates/rofd-ffi/tests/semantic.rs             | 200 ++++++++++++++
+ crates/rofd-render/src/fonts.rs               | 258 +++++++++++++-----
  crates/rofd-render/src/lib.rs                 |   4 +-
- crates/rofd-render/tests/cairo_text.rs        |  79 +++++-
- crates/rofd-render/tests/fonts.rs             |  78 ++++--
+ crates/rofd-render/tests/cairo_text.rs        |  84 +++++-
+ crates/rofd-render/tests/fonts.rs             |  77 ++++--
  ...-09-poppler-style-c-semantic-api-design.md |  14 +-
- 13 files changed, 659 insertions(+), 211 deletions(-)
+ 13 files changed, 791 insertions(+), 221 deletions(-)
 
 diff --git a/crates/rofd-core/src/document.rs b/crates/rofd-core/src/document.rs
 index 0ac4ac6..22c5168 100644
@@ -1163,10 +1175,10 @@ index 027a344..7f6435c 100644
  pub use signature::{SealPicture, SealPictureKind, StampAnnotation};
  pub use text::{CharacterGlyphMap, GlyphTransform, TextCode, TextObject};
 diff --git a/crates/rofd-core/src/semantic.rs b/crates/rofd-core/src/semantic.rs
-index 40587cc..e28af55 100644
+index 40587cc..d65f5c3 100644
 --- a/crates/rofd-core/src/semantic.rs
 +++ b/crates/rofd-core/src/semantic.rs
-@@ -2,22 +2,43 @@ use std::ops::Range;
+@@ -2,22 +2,46 @@ use std::ops::Range;
  
  use crate::{Error, Page, PageObject, Point, Rect, Result, TextObject, Transform};
  
@@ -1184,14 +1196,17 @@ index 40587cc..e28af55 100644
 -    /// Returns one advance in millimetres per scalar of `text`, concatenating its
 -    /// runs in order, or `None` when the object's font cannot be resolved (the
 +/// Every value is relative to the scalar's pen position, which is the baseline
-+/// origin the OFD text model positions and a renderer paints from.
++/// origin the OFD text model positions and a renderer paints from. The advance is the
++/// glyph's; the extents are its face's typographic ascent and descent, so the scalars
++/// of one face at one size share them and the boxes of different scripts and of
++/// punctuation stay aligned, the way a PDF text box built from font metrics does.
 +#[derive(Clone, Copy, Debug, PartialEq)]
 +pub struct TextScalarMetrics {
 +    /// Horizontal advance the pen moves by after the scalar is painted.
 +    pub advance_mm: f64,
-+    /// Painted extent above the baseline.
++    /// Extent the face declares above the baseline.
 +    pub ascent_mm: f64,
-+    /// Painted extent below the baseline.
++    /// Extent the face declares below the baseline.
 +    pub descent_mm: f64,
 +}
 +
@@ -1223,7 +1238,70 @@ index 40587cc..e28af55 100644
  }
  
  /// Options for literal search in canonical page text.
-@@ -482,9 +503,9 @@ fn union_rectangles(mut rectangles: impl Iterator<Item = Rect>) -> Result<Option
+@@ -85,7 +109,8 @@ impl TextSelection {
+         &self.text
+     }
+ 
+-    /// Returns one union of selected visible boxes per participating logical line.
++    /// Returns one union of selected visible boxes per participating logical line,
++    /// each grown by the highlight margin a PDF selection region has.
+     pub fn regions(&self) -> &[Rect] {
+         &self.regions
+     }
+@@ -334,7 +359,9 @@ impl PageText {
+     /// Glyph and word selections emit selected source scalars without synthesized
+     /// separators. Line selections retain a synthesized newline only when both
+     /// adjacent lines are selected. Regions are ordered by canonical text, with
+-    /// one union per selected logical line, never across synthesized separators.
++    /// one union per selected logical line, never across synthesized separators. Each
++    /// union carries the highlight margin a PDF reader's selection region has: it is
++    /// grown by an eighth of its height above and below.
+     pub fn select(&self, area: Rect, style: SelectionStyle) -> Result<TextSelection> {
+         validate_area(area)?;
+         let mut selected = self
+@@ -364,7 +391,7 @@ impl PageText {
+         for (index, character) in self.characters.iter().enumerate() {
+             if self.is_separator(index) {
+                 if let Some(rect) = region.take() {
+-                    selection.regions.push(rect);
++                    selection.regions.push(selection_region(rect)?);
+                 }
+                 if style == SelectionStyle::Line
+                     && index.checked_sub(1).is_some_and(|before| selected[before])
+@@ -385,7 +412,7 @@ impl PageText {
+             }
+         }
+         if let Some(rect) = region {
+-            selection.regions.push(rect);
++            selection.regions.push(selection_region(rect)?);
+         }
+         Ok(selection)
+     }
+@@ -405,6 +432,23 @@ impl PageText {
+     }
+ }
+ 
++/// Returns the rectangle a selection highlight paints for one selected line.
++///
++/// A PDF reader grows the line band by an eighth of its height above and below
++/// (poppler's `TextSelectionSizer::visitLine`: `margin = (yMax - yMin) / 8`), which is
++/// what makes a selected line read as one band that clears the glyphs instead of
++/// ending on them. Selection regions mirror that growth; character boxes and match
++/// rectangles stay the plain band.
++fn selection_region(rect: Rect) -> Result<Rect> {
++    let margin = rect.height / 8.0;
++    Ok(Rect {
++        x: rect.x,
++        y: finite_add(rect.y, -margin)?,
++        width: rect.width,
++        height: finite_add(rect.height, 2.0 * margin)?,
++    })
++}
++
+ fn expand_selected_group(selected: &mut [bool]) {
+     if selected.iter().any(|hit| *hit) {
+         selected.fill(true);
+@@ -482,9 +526,9 @@ fn union_rectangles(mut rectangles: impl Iterator<Item = Rect>) -> Result<Option
  
  pub(crate) fn build_page_text(
      page: &crate::Page,
@@ -1235,7 +1313,7 @@ index 40587cc..e28af55 100644
      for layer in page.layers() {
          builder.objects(layer.objects(), Transform::IDENTITY)?;
      }
-@@ -499,7 +520,7 @@ pub(crate) fn build_page_text(
+@@ -499,7 +543,7 @@ pub(crate) fn build_page_text(
  struct TextBuilder<'a> {
      text: PageText,
      page: &'a Page,
@@ -1244,7 +1322,7 @@ index 40587cc..e28af55 100644
      source_characters: usize,
      metadata_entries: usize,
      max_source_characters: usize,
-@@ -507,12 +528,12 @@ struct TextBuilder<'a> {
+@@ -507,12 +551,12 @@ struct TextBuilder<'a> {
  }
  
  impl<'a> TextBuilder<'a> {
@@ -1259,7 +1337,7 @@ index 40587cc..e28af55 100644
              source_characters: 0,
              metadata_entries: 0,
              max_source_characters: limits.max_text_characters_per_page,
-@@ -552,21 +573,33 @@ impl<'a> TextBuilder<'a> {
+@@ -552,21 +596,33 @@ impl<'a> TextBuilder<'a> {
              self.push_separator()?;
          }
          let size = object.font_size();
@@ -1300,7 +1378,7 @@ index 40587cc..e28af55 100644
                  let dx = if run.has_explicit_delta_x() {
                      run.delta_x()[index]
                  } else {
-@@ -581,7 +614,9 @@ impl<'a> TextBuilder<'a> {
+@@ -581,7 +637,9 @@ impl<'a> TextBuilder<'a> {
                  let next_x = finite_add(x, dx)?;
                  let next_y = finite_add(y, dy)?;
                  // A resolved glyph advance is the box width, so the boxes of a run
@@ -1311,7 +1389,7 @@ index 40587cc..e28af55 100644
                  // bound the horizontal baseline sweep with a direction-independent
                  // font-size footprint instead; explicit zero advances still receive
                  // nonempty conservative geometry.
-@@ -590,8 +625,8 @@ impl<'a> TextBuilder<'a> {
+@@ -590,8 +648,8 @@ impl<'a> TextBuilder<'a> {
                      left,
                      font_advance.map_or_else(|| dx.abs().max(size), f64::abs),
                  )?;
@@ -1323,10 +1401,110 @@ index 40587cc..e28af55 100644
                  let flags = if character.is_whitespace() {
                      TextCharFlags::WHITESPACE
 diff --git a/crates/rofd-core/tests/semantic_text.rs b/crates/rofd-core/tests/semantic_text.rs
-index ee3f300..585be26 100644
+index ee3f300..c2d2b6f 100644
 --- a/crates/rofd-core/tests/semantic_text.rs
 +++ b/crates/rofd-core/tests/semantic_text.rs
-@@ -398,50 +398,59 @@ fn page_with_text(content: &str) -> rofd_core::Page {
+@@ -3,8 +3,8 @@ mod support;
+ use std::sync::Arc;
+ 
+ use rofd_core::{
+-    Document, Error, FindOptions, LoadOptions, Rect, ResourceLimits, SelectionStyle, TextCharFlags,
+-    TextGeometryPrecision, TextObject, TextSelection,
++    Document, Error, FindOptions, LoadOptions, Rect, ResourceLimits, SelectionStyle, TextChar,
++    TextCharFlags, TextGeometryPrecision, TextObject, TextSelection,
+ };
+ 
+ fn rect(x: f64, y: f64, width: f64, height: f64) -> Rect {
+@@ -220,9 +220,11 @@ fn area_extraction_and_glyph_selection_require_positive_intersection() {
+     assert_eq!(text.text_for_area(area).unwrap(), "bf");
+     let selection = text.select(area, SelectionStyle::Glyph).unwrap();
+     assert_eq!(selection.text(), "bf");
++    // Each region is the line band grown by an eighth of its height on both sides,
++    // the margin a PDF selection region has.
+     assert_eq!(
+         selection.regions(),
+-        &[rect(5.0, 1.0, 4.0, 4.0), rect(5.0, 11.0, 4.0, 4.0)]
++        &[rect(5.0, 0.5, 4.0, 5.0), rect(5.0, 10.5, 4.0, 5.0)]
+     );
+     assert_eq!(text.text_for_area(rect(8.9, 2.0, 0.2, 1.0)).unwrap(), "b_");
+     assert_eq!(text.text_for_area(rect(1.0, 5.0, 4.0, 1.0)).unwrap(), "");
+@@ -236,7 +238,7 @@ fn word_selection_expands_unicode_words_without_crossing_punctuation_or_space()
+         .select(rect(6.0, 2.0, 8.0, 1.0), SelectionStyle::Word)
+         .unwrap();
+     assert_eq!(selection.text(), "ab_中");
+-    assert_eq!(selection.regions(), &[rect(1.0, 1.0, 16.0, 4.0)]);
++    assert_eq!(selection.regions(), &[rect(1.0, 0.5, 16.0, 5.0)]);
+     assert_eq!(
+         text.select(rect(18.0, 2.0, 1.0, 1.0), SelectionStyle::Word)
+             .unwrap()
+@@ -265,14 +267,14 @@ fn line_selection_preserves_internal_synthesized_newlines_and_region_order() {
+         .select(rect(6.0, 2.0, 1.0, 1.0), SelectionStyle::Line)
+         .unwrap();
+     assert_eq!(one.text(), "ab_中, cd");
+-    assert_eq!(one.regions(), &[rect(1.0, 1.0, 32.0, 4.0)]);
++    assert_eq!(one.regions(), &[rect(1.0, 0.5, 32.0, 5.0)]);
+     let both = text
+         .select(rect(6.0, 2.0, 1.0, 12.0), SelectionStyle::Line)
+         .unwrap();
+     assert_eq!(both.text(), "ab_中, cd\nef gh");
+     assert_eq!(
+         both.regions(),
+-        &[rect(1.0, 1.0, 32.0, 4.0), rect(1.0, 11.0, 20.0, 4.0)]
++        &[rect(1.0, 0.5, 32.0, 5.0), rect(1.0, 10.5, 20.0, 5.0)]
+     );
+ }
+ 
+@@ -286,7 +288,48 @@ fn selection_preserves_canonical_order_when_geometry_runs_backwards() {
+     assert_eq!(text.text_for_area(area).unwrap(), "abc");
+     let selection = text.select(area, SelectionStyle::Glyph).unwrap();
+     assert_eq!(selection.text(), "abc");
+-    assert_eq!(selection.regions(), &[rect(1.0, 1.0, 12.0, 4.0)]);
++    assert_eq!(selection.regions(), &[rect(1.0, 0.5, 12.0, 5.0)]);
++}
++
++/// A selection region is the line band grown by an eighth of its height on both sides:
++/// the highlight clears the glyphs the way a PDF reader's does. The band itself comes
++/// from the metrics of one face, so its top and bottom do not depend on which scalars
++/// happen to have the tallest ink.
++#[test]
++fn selection_regions_carry_the_pdf_highlight_margin_on_an_aligned_band() {
++    let page = page_with_text(
++        r#"<ofd:TextObject ID="2" Boundary="0 0 100 8" Font="10" Size="4"><ofd:TextCode X="1" Y="5">A中, 。</ofd:TextCode></ofd:TextObject>"#,
++    );
++    let text = page.text().unwrap();
++    let boxes: Vec<_> = text
++        .characters()
++        .iter()
++        .filter_map(TextChar::rect_mm)
++        .collect();
++    assert!(boxes.len() > 3, "{boxes:?}");
++    let top = boxes
++        .iter()
++        .map(|rect| rect.y)
++        .fold(f64::INFINITY, f64::min);
++    let bottom = boxes
++        .iter()
++        .map(|rect| rect.y + rect.height)
++        .fold(f64::NEG_INFINITY, f64::max);
++    for rect in &boxes {
++        assert!(
++            (rect.y - top).abs() < 1e-9 && (rect.y + rect.height - bottom).abs() < 1e-9,
++            "aligned band expected, got {rect:?} against {top}..{bottom}"
++        );
++    }
++
++    let selection = text
++        .select(rect(1.0, 1.0, 20.0, 4.0), SelectionStyle::Line)
++        .unwrap();
++    assert_eq!(selection.text(), "A中, 。");
++    let region = selection.regions()[0];
++    let margin = (bottom - top) / 8.0;
++    assert!((region.y - (top - margin)).abs() < 1e-9, "{region:?}");
++    assert!((region.height - (bottom - top + 2.0 * margin)).abs() < 1e-9);
+ }
+ 
+ #[test]
+@@ -398,50 +441,59 @@ fn page_with_text(content: &str) -> rofd_core::Page {
      document_with_page(&page_xml, "", "", &[]).page(0).unwrap()
  }
  
@@ -1398,7 +1576,7 @@ index ee3f300..585be26 100644
      let page_xml = format!(
          r#"<?xml version="1.0" encoding="UTF-8"?>
  <ofd:Page xmlns:ofd="http://www.ofdspec.org/2016">
-@@ -450,17 +459,18 @@ fn advance_provider_supplies_scalar_steps_where_deltas_are_absent() {
+@@ -450,17 +502,18 @@ fn advance_provider_supplies_scalar_steps_where_deltas_are_absent() {
          text_object(2, "ABCD")
      );
  
@@ -1420,7 +1598,7 @@ index ee3f300..585be26 100644
          })),
      )
      .page(0)
-@@ -483,11 +493,37 @@ fn advance_provider_supplies_scalar_steps_where_deltas_are_absent() {
+@@ -483,11 +536,37 @@ fn advance_provider_supplies_scalar_steps_where_deltas_are_absent() {
      let first_end = with[0].rect_mm().unwrap().x + with[0].rect_mm().unwrap().width;
      assert!((first_end - with[1].rect_mm().unwrap().x).abs() < 1e-9);
  
@@ -1460,7 +1638,7 @@ index ee3f300..585be26 100644
          })),
      )
      .page(0)
-@@ -508,10 +544,11 @@ fn explicit_deltas_stay_authoritative_with_a_provider() {
+@@ -508,10 +587,11 @@ fn explicit_deltas_stay_authoritative_with_a_provider() {
  </ofd:Page>"#,
          r#"<ofd:TextObject ID="2" Boundary="0 0 20 8" Font="10" Size="4"><ofd:TextCode X="1" Y="5" DeltaX="9 9 9 9">ABCD</ofd:TextCode></ofd:TextObject>"#
      );
@@ -1568,7 +1746,7 @@ index 44397a7..5bacc24 100644
  
  pub(crate) struct RenderOptionsInput;
 diff --git a/crates/rofd-ffi/tests/semantic.rs b/crates/rofd-ffi/tests/semantic.rs
-index 086a254..57d9bef 100644
+index 086a254..311a177 100644
 --- a/crates/rofd-ffi/tests/semantic.rs
 +++ b/crates/rofd-ffi/tests/semantic.rs
 @@ -1,6 +1,7 @@
@@ -1579,7 +1757,26 @@ index 086a254..57d9bef 100644
  use rofd_ffi::*;
  use std::ffi::{CStr, CString};
  use std::mem::{size_of, MaybeUninit};
-@@ -1021,3 +1022,159 @@ fn text_geometry_and_search_rectangles_use_font_advances() {
+@@ -162,6 +163,18 @@ unsafe fn selection_bytes(selection: *const rofd_text_selection_t) -> Vec<u8> {
+     }
+ }
+ 
++unsafe fn selection_region_count(selection: *const rofd_text_selection_t) -> usize {
++    let mut count = usize::MAX;
++    // SAFETY: The output is valid and distinct from the live immutable selection handle.
++    unsafe {
++        assert_eq!(
++            rofd_text_selection_get_region_count(selection, &mut count, ptr::null_mut()),
++            ROFD_STATUS_OK
++        );
++    }
++    count
++}
++
+ unsafe fn selection_region(selection: *const rofd_text_selection_t, index: usize) -> rofd_rect_t {
+     let mut region = rofd_rect_t {
+         x_mm: f64::NAN,
+@@ -1021,3 +1034,190 @@ fn text_geometry_and_search_rectangles_use_font_advances() {
          rofd_page_free(page);
      }
  }
@@ -1591,9 +1788,9 @@ index 086a254..57d9bef 100644
 +#[test]
 +fn text_layout_rectangles_cover_the_rendered_ink_below_the_baseline() {
 +    const FONT: &[u8] = include_bytes!("../../rofd-render/tests/fixtures/fonts/phase3-subset.ttf");
-+    // 中 reaches 0.079 em below its baseline in this subset (Noto Sans CJK SC) and
-+    // 0.84 em above it.
-+    let xml = r#"<ofd:Page xmlns:ofd="http://www.ofdspec.org/2016"><ofd:Content><ofd:Layer ID="1"><ofd:TextObject ID="2" Boundary="0 0 30 10" Font="10" Size="4"><ofd:TextCode X="1" Y="4">中</ofd:TextCode></ofd:TextObject></ofd:Layer></ofd:Content></ofd:Page>"#;
++    // A stays above the baseline, 中 reaches 0.079 em below it in this subset (Noto
++    // Sans CJK SC): the two boxes still have to span one band.
++    let xml = r#"<ofd:Page xmlns:ofd="http://www.ofdspec.org/2016"><ofd:Content><ofd:Layer ID="1"><ofd:TextObject ID="2" Boundary="0 0 30 10" Font="10" Size="4"><ofd:TextCode X="1" Y="4">A中</ofd:TextCode></ofd:TextObject></ofd:Layer></ofd:Content></ofd:Page>"#;
 +    let document = r#"<ofd:Document xmlns:ofd="http://www.ofdspec.org/2016"><ofd:CommonData><ofd:PageArea><ofd:PhysicalBox>0 0 30 10</ofd:PhysicalBox></ofd:PageArea><ofd:DocumentRes>Res.xml</ofd:DocumentRes></ofd:CommonData><ofd:Pages><ofd:Page ID="900" BaseLoc="Pages/Page_0/Content.xml"/></ofd:Pages></ofd:Document>"#;
 +    let font = br#"<ofd:Res xmlns:ofd="http://www.ofdspec.org/2016"><ofd:Fonts><ofd:Font ID="10" FontName="Fixture"><ofd:FontFile>Fonts/subset.ttf</ofd:FontFile></ofd:Font></ofd:Fonts></ofd:Res>"#;
 +    let bytes = support::ofd_with_document_page_and_entries(
@@ -1678,7 +1875,7 @@ index 086a254..57d9bef 100644
 +            rofd_text_layout_get_count(layout, &mut count, ptr::null_mut()),
 +            ROFD_STATUS_OK
 +        );
-+        assert_eq!(count, 1);
++        assert_eq!(count, 2);
 +
 +        surface.flush();
 +        let (mut ink_left, mut ink_top) = (i32::MAX, i32::MAX);
@@ -1702,35 +1899,66 @@ index 086a254..57d9bef 100644
 +            .unwrap();
 +        assert!(ink_bottom > ink_top, "the embedded glyphs must paint");
 +
-+        // One glyph covers the same area as the page's only ink. Hinting can push a
-+        // device pixel of ink outside the unhinted control box, so the three edges it
-+        // can reach get a pixel of slack.
-+        let glyph = character(layout, 0).rect_mm;
++        // Both scalars span one band, taken from the face's metrics rather than from
++        // each glyph's own ink, so Latin, CJK and punctuation line up.
++        let a = character(layout, 0).rect_mm;
++        let cjk = character(layout, 1).rect_mm;
++        assert_eq!(a.y_mm, cjk.y_mm);
++        assert_eq!(a.height_mm, cjk.height_mm);
 +        let slack = 1.0;
-+        let (box_left, box_top) = (glyph.x_mm * 10.0, glyph.y_mm * 10.0);
++        let (box_left, box_top) = (a.x_mm * 10.0, a.y_mm * 10.0);
 +        let (box_right, box_bottom) = (
-+            (glyph.x_mm + glyph.width_mm) * 10.0,
-+            (glyph.y_mm + glyph.height_mm) * 10.0,
++            (cjk.x_mm + cjk.width_mm) * 10.0,
++            (a.y_mm + a.height_mm) * 10.0,
++        );
++
++        // The band is the face's ascent and descent (hhea 1160/-288 over the subset's
++        // 1000-unit em), so it sticks out above and below the ink instead of hugging
++        // it, and its bottom clears the baseline (40 px at ten pixels per millimetre).
++        assert!(box_top < f64::from(ink_top), "top {box_top} vs {ink_top}");
++        assert!(box_bottom > 40.0, "bottom {box_bottom} vs the baseline");
++        assert!(
++            box_bottom > f64::from(ink_bottom),
++            "bottom {box_bottom} vs {ink_bottom}"
 +        );
 +        assert!(
 +            box_left <= f64::from(ink_left) + slack,
 +            "left {box_left} vs {ink_left}"
 +        );
 +        assert!(
-+            box_top <= f64::from(ink_top) + slack,
-+            "top {box_top} vs {ink_top}"
-+        );
-+        assert!(
 +            box_right >= f64::from(ink_right) - slack,
 +            "right {box_right} vs {ink_right}"
 +        );
-+        // The bottom is the regression: the baseline sits at 4 mm, so the old
-+        // font-size footprint stopped at 40 pixels while 中 paints below it.
-+        assert!(box_bottom > 40.0, "bottom {box_bottom} vs the baseline");
-+        assert!(
-+            box_bottom >= f64::from(ink_bottom),
-+            "bottom {box_bottom} vs {ink_bottom}"
++
++        // A line selection over the same text is that band grown by an eighth of its
++        // height on both sides, the margin a PDF selection region has.
++        let area = rofd_rect_t {
++            x_mm: 0.0,
++            y_mm: 0.0,
++            width_mm: 30.0,
++            height_mm: 10.0,
++        };
++        let mut selection = ptr::null_mut();
++        assert_eq!(
++            rofd_page_get_selected_text(
++                page,
++                ROFD_SELECTION_LINE,
++                &area,
++                &mut selection,
++                ptr::null_mut()
++            ),
++            ROFD_STATUS_OK
 +        );
++        assert_eq!(selection_region_count(selection), 1);
++        let region = selection_region(selection, 0);
++        let margin = a.height_mm / 8.0;
++        assert!(
++            (region.y_mm - (a.y_mm - margin)).abs() < 1e-3,
++            "region {region:?} vs band {:?} + margin {margin}",
++            a
++        );
++        assert!((region.height_mm - (a.height_mm + 2.0 * margin)).abs() < 1e-3);
++        rofd_text_selection_free(selection);
 +
 +        rofd_render_report_free(report);
 +        rofd_text_layout_free(layout);
@@ -1740,7 +1968,7 @@ index 086a254..57d9bef 100644
 +    }
 +}
 diff --git a/crates/rofd-render/src/fonts.rs b/crates/rofd-render/src/fonts.rs
-index 2ce8f21..381ab87 100644
+index 2ce8f21..cbe2d63 100644
 --- a/crates/rofd-render/src/fonts.rs
 +++ b/crates/rofd-render/src/fonts.rs
 @@ -5,8 +5,8 @@ use std::sync::{Arc, Condvar, Mutex};
@@ -1754,26 +1982,39 @@ index 2ce8f21..381ab87 100644
  };
  
  use crate::{Error, Result};
-@@ -118,7 +118,17 @@ impl PartialEq for ResolvedFont {
- #[derive(Debug, Default)]
- struct FontMetricsCache {
-     characters: HashMap<char, Option<u32>>,
--    advances: HashMap<u32, (i64, i64)>,
-+    glyphs: HashMap<u32, UnscaledGlyphMetrics>,
-+}
-+
-+/// Unscaled metrics of one face glyph, in font units.
-+#[derive(Clone, Copy, Debug, PartialEq)]
-+struct UnscaledGlyphMetrics {
-+    /// Advance the pen moves by after painting the glyph.
-+    advance: (i64, i64),
-+    /// Painted extent above and below the baseline, or `None` when the glyph paints
-+    /// nothing (a space, for instance).
-+    ink: Option<(i64, i64)>,
+@@ -100,6 +100,11 @@ pub struct ResolvedFont {
+     family_name: Option<Arc<str>>,
+     glyph_count: u32,
+     units_per_em: u16,
++    /// Typographic ascender in font units, or zero when the face declares none.
++    ascender: i64,
++    /// Typographic descender in font units (negative below the baseline), or zero
++    /// when the face declares none.
++    descender: i64,
+     metrics: Arc<Mutex<FontMetricsCache>>,
  }
  
- impl ResolvedFont {
-@@ -298,13 +308,8 @@ impl ResolvedFont {
+@@ -243,6 +248,10 @@ impl ResolvedFont {
+             });
+         }
+         let family_name = face.family_name().map(Arc::<str>::from);
++        // The face's own typographic extents, in font units. Everything painted from
++        // this face sits inside them (see `typographic_extents_mm`).
++        let ascender = i64::from(face.ascender());
++        let descender = i64::from(face.descender());
+         Ok(Self {
+             bytes,
+             face_index,
+@@ -251,6 +260,8 @@ impl ResolvedFont {
+             family_name,
+             glyph_count,
+             units_per_em,
++            ascender,
++            descender,
+             metrics: Arc::new(Mutex::new(FontMetricsCache::default())),
+         })
+     }
+@@ -298,13 +309,8 @@ impl ResolvedFont {
      /// Returns the unshaped horizontal-layout advance at `size_mm`.
      pub fn glyph_advance_mm(&self, glyph_id: u32, size_mm: f64) -> Result<(f64, f64)> {
          validate_glyph(self, glyph_id)?;
@@ -1789,7 +2030,7 @@ index 2ce8f21..381ab87 100644
      }
  
      fn glyph_for(&self, character: char) -> Result<Option<u32>> {
-@@ -319,35 +324,73 @@ impl ResolvedFont {
+@@ -319,35 +325,77 @@ impl ResolvedFont {
          Ok(glyph_id)
      }
  
@@ -1812,14 +2053,14 @@ index 2ce8f21..381ab87 100644
 -            metrics.advances.insert(glyph_id, advance);
 -            advance
 -        };
-+    /// Returns the advance and the painted vertical extents of `glyph_id` at
-+    /// `size_mm`.
++    /// Returns the advance and the vertical extents of `glyph_id` at `size_mm`.
 +    ///
-+    /// The extents are the control box FreeType reports for the unscaled outline, so
-+    /// they contain every pixel the renderer can paint for this glyph; they are what
-+    /// makes a character box cover its glyph instead of stopping at the baseline. A
-+    /// glyph that paints nothing (a space) has no ink, so it keeps the font-size
-+    /// footprint above the baseline, exactly like a scalar without a face.
++    /// The extents are the face's own typographic ascent and descent, so every glyph
++    /// of one face at one size reports the same pair: a character box built from them
++    /// covers the glyph (the extents span everything the face can paint around the
++    /// baseline) and lines up with the boxes of the other glyphs, exactly like the
++    /// font metrics a PDF text box uses. A face that declares no usable metrics keeps
++    /// the font-size footprint above the baseline.
 +    fn scaled_metrics(&self, glyph_id: u32, size_mm: f64) -> Result<GlyphMetrics> {
 +        if !size_mm.is_finite() || size_mm <= 0.0 {
 +            return Err(Error::InvalidFont {
@@ -1827,15 +2068,12 @@ index 2ce8f21..381ab87 100644
 +                message: "glyph advance size must be finite and positive".to_owned(),
 +            });
 +        }
-+        let unscaled = self.unscaled_metrics(glyph_id)?;
++        let unscaled = self.advance_units(glyph_id)?;
          let scale = size_mm / f64::from(self.units_per_em);
 -        let x = advance.0 as f64 * scale;
 -        let y = advance.1 as f64 * scale;
 -        if !x.is_finite() || !y.is_finite() {
-+        let advance = (
-+            unscaled.advance.0 as f64 * scale,
-+            unscaled.advance.1 as f64 * scale,
-+        );
++        let advance = (unscaled.0 as f64 * scale, unscaled.1 as f64 * scale);
 +        if !advance.0.is_finite() || !advance.1.is_finite() {
              return Err(Error::InvalidFont {
                  identity: self.identity().to_owned(),
@@ -1843,10 +2081,7 @@ index 2ce8f21..381ab87 100644
              });
          }
 -        Ok((x, y))
-+        let (ascent, descent) = match unscaled.ink {
-+            Some((above, below)) => (above as f64 * scale, below as f64 * scale),
-+            None => (size_mm, 0.0),
-+        };
++        let (ascent, descent) = self.typographic_extents_mm(size_mm);
 +        Ok(GlyphMetrics {
 +            advance,
 +            ascent,
@@ -1854,46 +2089,58 @@ index 2ce8f21..381ab87 100644
 +        })
 +    }
 +
-+    /// Returns the cached unscaled metrics of `glyph_id`, loading them on first use.
-+    fn unscaled_metrics(&self, glyph_id: u32) -> Result<UnscaledGlyphMetrics> {
++    /// Returns the face's typographic extent above and below the baseline at
++    /// `size_mm`, or the font-size footprint when the face declares none.
++    ///
++    /// The pair is identical for every glyph of the face at one size, which is what
++    /// keeps character boxes of different scripts and of punctuation aligned. It is
++    /// the same font metric poppler uses for a PDF text box
++    /// (`TextWord::setInitialBounds`: `yMin = y - ascent`, `yMax = y - descent`).
++    fn typographic_extents_mm(&self, size_mm: f64) -> (f64, f64) {
++        if self.ascender <= 0 || self.descender >= 0 {
++            return (size_mm, 0.0);
++        }
++        let scale = size_mm / f64::from(self.units_per_em);
++        let ascent = self.ascender as f64 * scale;
++        let descent = -(self.descender as f64) * scale;
++        if !ascent.is_finite() || !descent.is_finite() || ascent <= 0.0 || descent < 0.0 {
++            return (size_mm, 0.0);
++        }
++        (ascent, descent)
++    }
++
++    /// Returns the cached unscaled advance of `glyph_id`, loading it on first use.
++    fn advance_units(&self, glyph_id: u32) -> Result<(i64, i64)> {
 +        let mut metrics = self.metrics.lock().map_err(|_| Error::FontCache {
 +            message: "face metadata lock is poisoned".to_owned(),
 +        })?;
-+        if let Some(glyph) = metrics.glyphs.get(&glyph_id) {
-+            return Ok(*glyph);
++        if let Some(advance) = metrics.advances.get(&glyph_id) {
++            return Ok(*advance);
 +        }
-+        let glyph = self.with_face(|face| {
++        let advance = self.with_face(|face| {
 +            face.load_glyph(glyph_id, LoadFlag::NO_SCALE | LoadFlag::NO_HINTING)
 +                .map_err(|error| Error::InvalidFont {
 +                    identity: self.identity().to_owned(),
 +                    message: error.to_string(),
 +                })?;
-+            let slot = face.glyph();
-+            let advance = slot.advance();
-+            let box_ = slot.metrics();
-+            // Unscaled metrics report the glyph's control box: the top bearing is its
-+            // highest point and the height spans it down to the lowest one, so the
-+            // descending part is the remainder of that span below the baseline.
-+            let ink =
-+                (box_.height > 0).then(|| (box_.horiBearingY, box_.height - box_.horiBearingY));
-+            Ok(UnscaledGlyphMetrics {
-+                advance: (advance.x, advance.y),
-+                ink,
-+            })
++            let advance = face.glyph().advance();
++            Ok((advance.x, advance.y))
 +        })?;
-+        metrics.glyphs.insert(glyph_id, glyph);
-+        Ok(glyph)
++        metrics.advances.insert(glyph_id, advance);
++        Ok(advance)
      }
  
      fn with_face<T>(
-@@ -410,13 +453,39 @@ pub enum FontDiagnostic {
+@@ -410,13 +458,43 @@ pub enum FontDiagnostic {
      },
  }
  
-+/// Advance and painted vertical extents of one positioned glyph, in millimetres.
++/// Advance and vertical extents of one positioned glyph, in millimetres.
 +///
 +/// Every value is relative to the glyph's own pen position, which is the baseline
-+/// origin the renderer paints it from.
++/// origin the renderer paints it from. The advance is the glyph's; the extents are
++/// the selected face's typographic ascent and descent, so they are the same for every
++/// glyph the face owns and a box built from them stays aligned across scripts.
 +#[derive(Clone, Copy, Debug, PartialEq)]
 +pub struct GlyphMetrics {
 +    advance: (f64, f64),
@@ -1906,11 +2153,13 @@ index 2ce8f21..381ab87 100644
 +    pub fn advance(&self) -> (f64, f64) {
 +        self.advance
 +    }
-+    /// Returns the painted extent above the glyph's baseline, in millimetres.
++    /// Returns the selected face's typographic ascent above the baseline, in
++    /// millimetres.
 +    pub fn ascent(&self) -> f64 {
 +        self.ascent
 +    }
-+    /// Returns the painted extent below the glyph's baseline, in millimetres.
++    /// Returns the selected face's typographic descent below the baseline, in
++    /// millimetres.
 +    pub fn descent(&self) -> f64 {
 +        self.descent
 +    }
@@ -1927,12 +2176,12 @@ index 2ce8f21..381ab87 100644
      character: Option<char>,
      source_range: Range<usize>,
      scalar_index: usize,
-@@ -439,14 +508,15 @@ impl PositionedGlyph {
+@@ -439,14 +517,15 @@ impl PositionedGlyph {
      pub fn y(&self) -> f64 {
          self.y
      }
 -    /// Returns the advance this glyph contributes on each axis, in millimetres.
-+    /// Returns the advance and painted extents of this glyph in millimetres.
++    /// Returns the advance and vertical extents of this glyph in millimetres.
      ///
 -    /// This is the selected face advance, or the font size when no face was
 -    /// available. It is what positions the next glyph, so a caller that needs the
@@ -1943,14 +2192,14 @@ index 2ce8f21..381ab87 100644
 +    /// The advance is the selected face advance, or the font size when no face was
 +    /// available; it is what positions the next glyph, so a caller that needs the
 +    /// per-scalar geometry of a run can sum it instead of resolving fonts again. The
-+    /// extents are the painted control box of the selected face glyph, so a caller
-+    /// can size a character box that covers the glyph itself.
++    /// extents are the selected face's typographic metrics, so a caller can size a
++    /// character box that covers the glyph and matches its neighbours.
 +    pub fn metrics(&self) -> GlyphMetrics {
 +        self.metrics
      }
      /// Returns the associated source scalar, or `None` for an extra mapped glyph.
      pub fn character(&self) -> Option<char> {
-@@ -1124,12 +1194,12 @@ pub fn position_glyph_runs(
+@@ -1124,12 +1203,12 @@ pub fn position_glyph_runs(
                          let (offset_x, offset_y) = glyph_transform
                              .map(|t| (t.x(), t.y()))
                              .unwrap_or((0.0, 0.0));
@@ -1965,7 +2214,7 @@ index 2ce8f21..381ab87 100644
                              character,
                              source_range: start_byte..end_byte,
                              scalar_index,
-@@ -1138,8 +1208,10 @@ pub fn position_glyph_runs(
+@@ -1138,8 +1217,10 @@ pub fn position_glyph_runs(
                              font_source: selected.source().clone(),
                              transform: glyph_transform.and_then(|t| t.matrix()),
                          });
@@ -1978,7 +2227,7 @@ index 2ce8f21..381ab87 100644
                      }
                      let delta_x = if run.has_explicit_delta_x() {
                          run.delta_x()[local..end_local].iter().sum()
-@@ -1197,17 +1269,21 @@ pub fn position_glyph_runs(
+@@ -1197,17 +1278,21 @@ pub fn position_glyph_runs(
                  &requested,
                  &mut diagnostics,
              )?;
@@ -2004,7 +2253,7 @@ index 2ce8f21..381ab87 100644
                  character: Some(character),
                  source_range: byte_start..byte_end,
                  scalar_index,
-@@ -1219,12 +1295,12 @@ pub fn position_glyph_runs(
+@@ -1219,12 +1304,12 @@ pub fn position_glyph_runs(
              let delta_x = if run.has_explicit_delta_x() {
                  run.delta_x()[local]
              } else {
@@ -2019,7 +2268,7 @@ index 2ce8f21..381ab87 100644
              };
              x = finite_coordinate(text, "glyph x", x + delta_x)?;
              y = finite_coordinate(text, "glyph y", y + delta_y)?;
-@@ -1244,49 +1320,76 @@ pub fn position_glyph_runs(
+@@ -1244,49 +1329,76 @@ pub fn position_glyph_runs(
      Ok(runs)
  }
  
@@ -2135,7 +2384,7 @@ index 5337574..ed1d0cc 100644
  pub use images::{DecodedImage, ImageDecoder};
  
 diff --git a/crates/rofd-render/tests/cairo_text.rs b/crates/rofd-render/tests/cairo_text.rs
-index 65cb678..10b6a3d 100644
+index 65cb678..84f2ed5 100644
 --- a/crates/rofd-render/tests/cairo_text.rs
 +++ b/crates/rofd-render/tests/cairo_text.rs
 @@ -1,11 +1,16 @@
@@ -2156,7 +2405,7 @@ index 65cb678..10b6a3d 100644
  use zip::{write::SimpleFileOptions, ZipWriter};
  
  const FONT: &[u8] = include_bytes!("fixtures/fonts/phase3-subset.ttf");
-@@ -152,6 +157,78 @@ fn embedded_latin_and_cjk_glyphs_render_at_positioned_baselines() {
+@@ -152,6 +157,83 @@ fn embedded_latin_and_cjk_glyphs_render_at_positioned_baselines() {
      assert_eq!(bounds, (30, 46, 136, 83));
  }
  
@@ -2198,6 +2447,13 @@ index 65cb678..10b6a3d 100644
 +        })
 +        .collect();
 +    assert_eq!(boxes.len(), 2);
++    // One band for the whole text object: the boxes of A and 中 share their top and
++    // bottom, because both come from the face's metrics rather than from each glyph's
++    // ink.
++    for index in 1..boxes.len() {
++        assert_eq!(boxes[index].1, boxes[0].1, "tops differ: {boxes:?}");
++        assert_eq!(boxes[index].3, boxes[0].3, "bottoms differ: {boxes:?}");
++    }
 +    let box_left = boxes
 +        .iter()
 +        .map(|box_| box_.0)
@@ -2215,28 +2471,26 @@ index 65cb678..10b6a3d 100644
 +        .map(|box_| box_.3)
 +        .fold(f64::NEG_INFINITY, f64::max);
 +
-+    // Hinting can push a device pixel of ink outside the unhinted control box.
++    // The band contains the painted ink and sticks out above and below it, the way a
++    // PDF text box built from the same font metrics does.
 +    let slack = 1.0;
 +    assert!(f64::from(left) >= box_left - slack, "{left} vs {box_left}");
-+    assert!(f64::from(top) >= box_top - slack, "{top} vs {box_top}");
 +    assert!(
 +        f64::from(right) <= box_right + slack,
 +        "{right} vs {box_right}"
 +    );
++    assert!(box_top < f64::from(top), "{box_top} vs {top}");
++    assert!(box_bottom > f64::from(bottom), "{box_bottom} vs {bottom}");
 +    // 中 paints below the baseline, which is where the font-size footprint stopped:
-+    // the box has to reach the painted bottom without any slack.
-+    assert!(box_bottom >= f64::from(bottom), "{box_bottom} vs {bottom}");
-+    assert!(
-+        f64::from(bottom) <= box_bottom + slack,
-+        "{bottom} vs {box_bottom}"
-+    );
++    // the band's bottom is below the baseline even without the ink.
++    assert!(box_bottom > 80.0, "{box_bottom} vs the baseline");
 +}
 +
  #[test]
  fn embedded_text_regions_preserve_fractional_glyph_positions_at_every_rotation() {
      let page = page(
 diff --git a/crates/rofd-render/tests/fonts.rs b/crates/rofd-render/tests/fonts.rs
-index d95e8ce..ddb5ec6 100644
+index d95e8ce..0eb8530 100644
 --- a/crates/rofd-render/tests/fonts.rs
 +++ b/crates/rofd-render/tests/fonts.rs
 @@ -4,7 +4,7 @@ use std::sync::Arc;
@@ -2291,7 +2545,7 @@ index d95e8ce..ddb5ec6 100644
          .expect("embedded font resolves");
  
      assert!(
-@@ -886,29 +888,59 @@ fn font_text_advances_match_the_positioner_and_follow_font_metrics() {
+@@ -886,29 +888,58 @@ fn font_text_advances_match_the_positioner_and_follow_font_metrics() {
          runs[0].diagnostics()
      );
  
@@ -2338,24 +2592,23 @@ index d95e8ce..ddb5ec6 100644
 +        .all(|advance| *advance < text.font_size()));
      assert!(advances.iter().all(|advance| *advance > 0.0));
  
-+    // The vertical extents come from each glyph's control box in the subset font: the
-+    // Latin scalars stay above the baseline, while 中 reaches below it. Values are the
-+    // font's units over its 1000-unit em, scaled to Size.
++    // The vertical extents come from the face's own metrics (hhea 1160/-288 over the
++    // subset's 1000-unit em), scaled to Size: every glyph reports the same pair, which
++    // is what keeps the boxes of Latin, CJK and punctuation aligned.
 +    let size = text.font_size();
 +    let per_em = |units: f64| units / 1000.0 * size;
-+    assert!(
-+        (metrics[0].ascent_mm - per_em(733.0)).abs() < 1e-6,
-+        "{metrics:?}"
-+    );
-+    assert_eq!(metrics[0].descent_mm, 0.0);
-+    assert!(
-+        (metrics[3].ascent_mm - per_em(840.0)).abs() < 1e-6,
-+        "{metrics:?}"
-+    );
-+    assert!(
-+        (metrics[3].descent_mm - per_em(79.0)).abs() < 1e-6,
-+        "{metrics:?}"
-+    );
++    for entry in &metrics {
++        assert!(
++            (entry.ascent_mm - per_em(1160.0)).abs() < 1e-6,
++            "{metrics:?}"
++        );
++        assert!(
++            (entry.descent_mm - per_em(288.0)).abs() < 1e-6,
++            "{metrics:?}"
++        );
++    }
++    // 中 paints below the baseline and A does not, yet both boxes span the same band.
++    assert!(metrics[3].descent_mm > 0.0);
 +
      // Both layers agree on where the run ends.
      let semantic_end: f64 = advances.iter().sum();
