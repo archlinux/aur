@@ -58,7 +58,7 @@ package() {
   install -d "${pkgdir}"/{usr/bin,usr/lib/opentubex-git}
   cp -R "./$_pkgname/build/linux-unpacked/resources/"{app.asar,app.asar.unpacked} "$pkgdir/usr/lib/$pkgname"
   install -Dm755 "./opentubex.sh" "$pkgdir/usr/bin/opentubex"
-  
+
   cd $_pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/opentubex.svg"
