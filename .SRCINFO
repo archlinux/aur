@@ -1,6 +1,6 @@
 pkgbase = voxtype
 	pkgdesc = Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://voxtype.io
 	install = voxtype.install
@@ -38,12 +38,13 @@ pkgbase = voxtype
 	optdepends = ollama: local AI summarization for meeting mode
 	optdepends = gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)
 	optdepends = gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer
+	optdepends = quickshell: Quickshell-based OSD frontend (opt in via [osd] frontend = "quickshell")
 	backup = etc/voxtype/config.toml
-	source = voxtype-1.1.0.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v1.1.0.tar.gz
-	source = voxtype-1.1.0.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v1.1.0/voxtype-1.1.0.tar.gz.asc
+	source = voxtype-1.1.1.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v1.1.1.tar.gz
+	source = voxtype-1.1.1.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v1.1.1/voxtype-1.1.1.tar.gz.asc
 	validpgpkeys = E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6
 	validpgpkeys = 9CCF7915B750CAE8B095ED1AA3FC9F33FD209279
-	sha256sums = 7d223f1ebee3c3ded8619fb17d20ab43f5a4d7c5f7264890750c176078542a32
+	sha256sums = dbde68a335ae190aec4f077e1b653f5fef3ff9dc7cddbfce1befae090eea33c9
 	sha256sums = SKIP
 
 pkgname = voxtype

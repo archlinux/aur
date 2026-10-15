@@ -70,22 +70,29 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.7.2"
+    # pacman passes the new full version (pkgver-pkgrel) as $1; strip the
+    # pkgrel. A hardcoded number here once announced 1.1.0 as 0.7.2.
+    echo "==> Voxtype upgraded to ${1%%-*}"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    What's new in v0.7.2:"
-    echo "      * Streaming dictation (experimental): Parakeet types text at the"
-    echo "        cursor while you speak. Requires [hotkey] mode = toggle, or a"
-    echo "        compositor binding to 'voxtype record toggle'."
-    echo "      * Modifier-release guard (#350): waits for held modifier keys"
-    echo "        (Super/Ctrl/Alt/Shift) to release before typing, so chord"
-    echo "        keybindings no longer collide with the first typed letters."
-    echo "      * Notification stacking fix (#345): status notifications now"
-    echo "        overwrite each other instead of piling up in GNOME/Ubuntu."
-    echo "      * Streaming state icon in Waybar + all 9 status themes."
+    echo "    What's new in v1.1.1:"
+    echo "      * Hybrid Intel + NVIDIA laptops: VOXTYPE_VULKAN_DEVICE=nvidia"
+    echo "        now really moves Whisper to the discrete GPU, and a daemon"
+    echo "        started at login waits for the GPU instead of loading on CPU"
+    echo "        ([whisper] gpu_wait_secs, default 5)."
+    echo "      * Paste mode follows driver_order, and new installs default"
+    echo "        to paste_keys = \"shift+insert\" so it pastes in terminals."
+    echo "      * Clipboard output copies in under 2 ms instead of ~760 ms,"
+    echo "        and transcripts starting with \"From \" paste again."
+    echo "      * Quiet microphones no longer lose short dictations, and a"
+    echo "        notification says when a recording had no speech."
+    echo "      * voxtype setup model, --config and voxtype configure no"
+    echo "        longer break your config.toml."
+    echo "      * This package now ships the full Quickshell QML module and"
+    echo "        the OSD styles and recipes (voxtype setup osd --list)."
     echo ""
     # Check if ONNX engines were built
     if [ -f /usr/lib/voxtype/voxtype-onnx ] || [ -f /usr/lib/voxtype/voxtype-onnx-avx2 ]; then
@@ -99,7 +106,7 @@ post_upgrade() {
     echo "      systemctl --user restart voxtype"
     echo ""
     echo "    Full release notes:"
-    echo "      https://github.com/peteonrails/voxtype/releases/tag/v0.7.2"
+    echo "      https://github.com/peteonrails/voxtype/releases/tag/v${1%%-*}"
     echo ""
 }
 

@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
@@ -42,6 +42,7 @@ optdepends=(
     'ollama: local AI summarization for meeting mode'
     'gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
     'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer'
+    'quickshell: Quickshell-based OSD frontend (opt in via [osd] frontend = "quickshell")'
 )
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
@@ -60,7 +61,7 @@ source=(
     "$pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-    '7d223f1ebee3c3ded8619fb17d20ab43f5a4d7c5f7264890750c176078542a32'
+    'dbde68a335ae190aec4f077e1b653f5fef3ff9dc7cddbfce1befae090eea33c9'
     'SKIP'
 )
 
@@ -104,6 +105,11 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
+    # build.rs stamps `git rev-parse HEAD` into --version when it finds a
+    # repo. A tarball has none, but git would walk up into the AUR clone
+    # makepkg runs in and stamp the packaging repo's commit (1.1.1+g<aur-sha>).
+    export GIT_CEILING_DIRECTORIES="$srcdir"
 
     # Clear flags set by makepkg - they can interfere with whisper-rs/whisper.cpp build
     unset RUSTFLAGS
@@ -229,27 +235,24 @@ package() {
     # quickshell launcher can exec it by basename.
     install -Dm755 "voxtype-audio-bridge" "$pkgdir/usr/bin/voxtype-audio-bridge"
 
-    # Quickshell QML tree. voxtype-osd-quickshell probes
-    # /usr/share/voxtype/quickshell/ for shell.qml after user/runtime paths,
-    # so shipping these files lets users opt in via
-    # [osd] frontend = "quickshell" without copying anything by hand.
-    # The voxtype-shared/ subdir holds a QML module registered via qmldir.
-    install -Dm644 "quickshell/shell.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/shell.qml"
-    install -Dm644 "quickshell/OsdSurface.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/OsdSurface.qml"
-    install -Dm644 "quickshell/EnginePicker.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/EnginePicker.qml"
-    install -Dm644 "quickshell/MeetingControls.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/MeetingControls.qml"
-    install -Dm644 "quickshell/voxtype-shared/Theme.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/Theme.qml"
-    install -Dm644 "quickshell/voxtype-shared/StateReader.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/StateReader.qml"
-    install -Dm644 "quickshell/voxtype-shared/AudioBridge.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/AudioBridge.qml"
-    install -Dm644 "quickshell/voxtype-shared/qmldir" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/qmldir"
+    # Quickshell QML tree, copied wholesale. voxtype-osd-quickshell probes
+    # /usr/share/voxtype/quickshell/ for shell.qml after user/runtime paths.
+    # The voxtype-shared/ subdir is a QML module registered via qmldir, and
+    # every file qmldir names must ship or `import voxtype-shared 1.0` fails
+    # (a per-file list here missed StyleLoader and RecipeRenderer in 1.1.0).
+    install -d "$pkgdir/usr/share/voxtype"
+    cp -a quickshell "$pkgdir/usr/share/voxtype/"
+    find "$pkgdir/usr/share/voxtype/quickshell" -type f -exec chmod 644 {} +
+    find "$pkgdir/usr/share/voxtype/quickshell" -type d -exec chmod 755 {} +
+
+    # OSD style packages and recipes. The OSD resolves [osd] style = "<name>"
+    # in /usr/share/voxtype/osd/<name> after the user paths, and
+    # `voxtype setup osd --recipe` reads /usr/share/voxtype/osd-recipes.
+    install -d "$pkgdir/usr/share/voxtype/osd" "$pkgdir/usr/share/voxtype/osd-recipes"
+    cp -a examples/osd-packages/. "$pkgdir/usr/share/voxtype/osd/"
+    cp -a examples/osd-recipes/. "$pkgdir/usr/share/voxtype/osd-recipes/"
+    find "$pkgdir/usr/share/voxtype/osd" "$pkgdir/usr/share/voxtype/osd-recipes" -type f -exec chmod 644 {} +
+    find "$pkgdir/usr/share/voxtype/osd" "$pkgdir/usr/share/voxtype/osd-recipes" -type d -exec chmod 755 {} +
 
     # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
     install -Dm755 "packaging/scripts/voxtype-configure-launcher" \
