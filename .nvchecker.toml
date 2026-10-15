@@ -1,0 +1,5 @@
+[redmine-tui]
+source = "github"
+github = "omertahaoztop/redmine-tui"
+prefix = "v"
+use_latest_release = true
