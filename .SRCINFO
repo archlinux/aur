@@ -1,8 +1,8 @@
 pkgbase = openclaude
 	pkgdesc = OpenClaude is an open-source coding-agent CLI for cloud and local model providers.
-	pkgver = 0.30.0
+	pkgver = 0.33.0
 	pkgrel = 1
-	url = https://github.com/Gitlawb/openclaude
+	url = https://github.com/Twigpine/openclaude
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = openclaude
 	depends = nodejs
 	optdepends = ripgrep: for faster file search within openclaude
 	options = !debug
-	source = openclaude-0.30.0.tar.gz::https://github.com/Gitlawb/openclaude/archive/refs/tags/v0.30.0.tar.gz
-	sha256sums = 24624a0d60caa1921b66fccf543524fe2f141b5c24decff997bc689f5bf95222
+	source = openclaude-0.33.0.tar.gz::https://github.com/Twigpine/openclaude/archive/refs/tags/v0.33.0.tar.gz
+	sha256sums = 3e6cdf761a8d83cf3798b5d7f972e7feed8364e5f8c097f7b8302c469f2e9b59
 
 pkgname = openclaude
