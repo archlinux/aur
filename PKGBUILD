@@ -1,9 +1,9 @@
 # Maintainer: Audiolinux  audiolinux@fastmail.fm
 
 pkgname=tune-server
-pkgver=1.0.0.rc4
+pkgver=1.0.0.rc6
 _pkgver=1.0.0
-rc=4
+rc=6
 pkgrel=1
 pkgdesc="self-hosted multi-room music server in Rust: local library (FLAC/DSD) + Qobuz/Tidal/Deezer to DLNA/UPnP, Chromecast, AirPlay"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=('tune-server.service' 'sysusers.d' 'tmpfiles.d')
 source_x86_64=("https://github.com/renesenses/tune-server-rust/releases/download/v$_pkgver-rc"$rc"/tune-server_$_pkgver-rc"$rc"_amd64.deb")
 source_aarch64=("https://github.com/renesenses/tune-server-rust/releases/download/v$_pkgver-rc"$rc"/tune-server_$_pkgver-rc"$rc"_arm64.deb")
 sha256sums=('57cc779089fdd19aae126c1bf6d3257af48d34c4bf6f4f16ae0f77a532f61a60' 'ea2a97dca78b25341876c1d62b66a9561a7fd40197137b0e104c565b25d59cf4' '6e7a92685d8020446dd929c6da56a69f5d2e82d40d90cf82c43607b559943396')
-sha256sums_x86_64=('5ea24c598b3b36f761518c623d5d80ac25bf2cde3b5bed6b152ee12d742d4d3c')
-sha256sums_aarch64=('c5eb496d41bab94db715137da70b606024d50f978377d795d5e90639bba4e63b')
+sha256sums_x86_64=('c5a81f119b8b6c27ea5109dce397611ffdb355782c2b1546286ccda0a8b3bf48')
+sha256sums_aarch64=('88d59f67855cb5f7311cd97267e8dee517501742926ac8901415805a5f25e028')
 install=$pkgname.install
 backup=(etc/default/hqplayer/tune-server)
 
