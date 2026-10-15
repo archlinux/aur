@@ -1,8 +1,8 @@
 pkgname=clash-nyanpasu-appimage
 _pkgname=clash-nyanpasu
-_upstream_tag=v2.0.0-rc.1
-_source_url=https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-rc.1/Clash.Nyanpasu_2.0.0-rc.1_amd64.AppImage
-pkgver=2.0.0rc.1
+_upstream_tag=v2.0.0-rc.2
+_source_url=https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-rc.2/Clash.Nyanpasu_2.0.0-rc.2_amd64.AppImage
+pkgver=2.0.0rc.2
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('clash-nyanpasu')
 optdepends=('clash-rs: custom protocol network proxy, coding with rust')
 _appimage="${_pkgname}-${pkgver}-amd64.AppImage"
 source_x86_64=("${_appimage}::${_source_url}")
-sha256sums_x86_64=('98086f44321577d436c1d90abebca3d7d0b64b0e81c7833416f20ef4ea16215a')
+sha256sums_x86_64=('60aef85e59427c1a911b246708de0fcd77ee4fce91f0431c1394480bfe77e168')
 noextract=("${_appimage}")
 
 prepare() {
