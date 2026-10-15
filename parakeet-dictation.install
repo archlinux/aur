@@ -16,10 +16,11 @@ post_install() {
        "Remote Control" the session. Approve it; the grant is kept in
        ~/.config/parakeet-dictation/portal-restore-token and is not asked again.
     4. Run "parakeet-dictation" (or "Parakeet Dictation" from the menu), then
-       hold Meta+Z, speak, release. Optional autostart:
+       hold Insert, speak, release (Meta+Insert starts and stops a longer
+       dictation; both shortcuts are changeable in Settings > General).
+       Optional autostart: tick "Start at login" in Settings > General, or
            cp /usr/share/applications/parakeet-dictation.desktop ~/.config/autostart/
-       or System Settings > Autostart > Add > Application.
-    Needs KDE Plasma 6 on Wayland: kglobalacceld (hold shortcut), KWin
+    Needs KDE Plasma 6 on Wayland: kglobalacceld (both shortcuts), KWin
     (focused-window class), xdg-desktop-portal-kde with RemoteDesktop v2.
 MSG
 }

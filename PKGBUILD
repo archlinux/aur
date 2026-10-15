@@ -9,18 +9,19 @@
 #     python-ten-vad       AUR, provided by python-ten-vad-bin (source in
 #                          packaging/deps/ of the upstream repository)
 #     python-sounddevice   AUR
-#     python-pynput        AUR
 #     everything else      official repositories
 #
 # After installing: see the post-install message (parakeet-dictation.install):
 # download a model with `parakeet-dictation-models desktop`, enable the ydotool
 # service, join the uinput group, approve the one-time portal prompt.
-# Autostart is the user's choice:
+# Shortcuts: Insert (hold to talk) and Meta+Insert (start/stop), registered
+# with kglobalaccel at startup; no pynput dependency.
+# Autostart: "Start at login" in Settings > General, or
 #   cp /usr/share/applications/parakeet-dictation.desktop ~/.config/autostart/
 
 pkgname=parakeet-dictation-git
 _pkgname=parakeet-dictation
-pkgver=2.0.0.r99.g7a69bb2
+pkgver=2.0.0.r131.g794c717
 pkgrel=1
 pkgdesc="On-device push-to-talk voice dictation for KDE Plasma Wayland (Parakeet TDT via sherpa-onnx, TEN VAD)"
 arch=('any')
@@ -32,7 +33,6 @@ depends=(
   'python-cairo'
   'python-numpy'
   'python-sounddevice'
-  'python-pynput'
   'python-sherpa-onnx'
   'python-ten-vad'
   'python-requests'
@@ -45,7 +45,7 @@ depends=(
   'xdg-desktop-portal-kde'
 )
 optdepends=(
-  'kglobalacceld: push-to-talk hold shortcut (KDE Plasma)'
+  'kglobalacceld: the two global shortcuts (hold and start/stop)'
   'kwin: focused-window class detection for the paste chord (KWin script)'
   'xdotool: last-resort chord transport, reaches XWayland windows only'
   'wtype: "wtype" typer on compositors with the virtual-keyboard protocol (GNOME, Sway)'
