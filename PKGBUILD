@@ -1,7 +1,7 @@
 # Maintainer: sunnysab <i@sunnysab.cn>
 pkgname=intel-xpu-smi-bin
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 # The build version part from the filename
 _buildver=1.24.04
 pkgdesc="Intel XPU SMI - CLI tool for Intel XPU Manager (Binary, Daemon-less)"
@@ -14,7 +14,7 @@ depends=(
     'intel-compute-runtime'
     'level-zero-loader'
     'igsc>=1.3.1'
-    'intel-metee'        # xpu-smi links libmetee directly (see package())
+    'intel-metee'
     'hwloc'
     'libpciaccess'
 )
@@ -28,7 +28,7 @@ provides=('intel-xpu-smi')
 source=("https://github.com/intel/xpumanager/releases/download/v${pkgver}/xpu-smi_${pkgver}-${_buildver}_amd64.deb")
 
 # IMPORTANT: Run 'updpkgsums' to generate real checksums before AUR submission
-sha256sums=('fa8700e97b51c0e19298f53237a02e435b5e1e1377ddcd064813faae29a1d11a')
+sha256sums=('eb30a37967b404c83b4b2ddd76b6a927ef8c25961d672e1ff0c0bc4633f795f0')
 
 package() {
     msg2 "Extracting data.tar.zst..."

@@ -1,7 +1,7 @@
 pkgbase = intel-xpu-smi-bin
 	pkgdesc = Intel XPU SMI - CLI tool for Intel XPU Manager (Binary, Daemon-less)
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/intel/xpumanager
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = intel-xpu-smi-bin
 	conflicts = intel-xpumanager
 	conflicts = intel-xpumanager-bin
 	conflicts = intel-xpu-smi
-	source = https://github.com/intel/xpumanager/releases/download/v2.2.0/xpu-smi_2.2.0-1.24.04_amd64.deb
-	sha256sums = fa8700e97b51c0e19298f53237a02e435b5e1e1377ddcd064813faae29a1d11a
+	source = https://github.com/intel/xpumanager/releases/download/v2.3.0/xpu-smi_2.3.0-1.24.04_amd64.deb
+	sha256sums = eb30a37967b404c83b4b2ddd76b6a927ef8c25961d672e1ff0c0bc4633f795f0
 
 pkgname = intel-xpu-smi-bin
