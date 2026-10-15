@@ -1,6 +1,6 @@
 pkgbase = devknx-bin
 	pkgdesc = KNX monitor with CLI, TUI, GUI, REST and MCP
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/metaneutrons/devknx
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = devknx-bin
 	conflicts = devknx
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/metaneutrons/devknx/releases/download/v0.3.1/devknx-v0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0bcba429a4fd498885cc30abe534813eb49c9b178401b92e21756cbc927ec815
-	source_aarch64 = https://github.com/metaneutrons/devknx/releases/download/v0.3.1/devknx-v0.3.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e88eb9b953b36e41ac1f66dfe2b0d3e7708eb32000a0fc68cd23c257ae497f08
+	source_x86_64 = https://github.com/metaneutrons/devknx/releases/download/v0.4.0/devknx-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 250a9a7bb14012b148134f1fec5ae11f62b97c58a4c53f9928c2c9ee33884f24
+	source_aarch64 = https://github.com/metaneutrons/devknx/releases/download/v0.4.0/devknx-v0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 109f867f4b2c94a1731eae6cfa1cc3a561fc198e7638743a9fac19afc05ecc87
 
 pkgname = devknx-bin
