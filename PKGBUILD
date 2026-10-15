@@ -1,7 +1,7 @@
 # Maintainer: Shaik Jameel Ur Rahaman
 # Maintainer: Vijay Kumar
 pkgname=novel-cli-git
-pkgver=r36.253beeb
+pkgver=r37.6b65ac5
 pkgrel=1
 pkgdesc="A terminal-based novel and webnovel reader with ncurses"
 arch=('x86_64')
