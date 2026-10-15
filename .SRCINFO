@@ -1,0 +1,22 @@
+pkgbase = tauri-motrix-bin
+	pkgdesc = A full-featured download manager written in Tauri.The purpose is to restructure Motrix open source project.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://tauri-motrix-website.vercel.app/
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	depends = aria2
+	provides = tauri-motrix=0.2.5
+	conflicts = tauri-motrix
+	source_aarch64 = tauri-motrix-0.2.5-aarch64.deb::https://github.com/Taoister39/tauri-motrix/releases/download/v0.2.5/Tauri.Motrix_0.2.5_arm64.deb
+	sha256sums_aarch64 = 72a5b85df06ef64d5fe5f3641cf06d91bfb2b091a6e5f41b2e90e3bcb494342c
+	source_x86_64 = tauri-motrix-0.2.5-x86_64.deb::https://github.com/Taoister39/tauri-motrix/releases/download/v0.2.5/Tauri.Motrix_0.2.5_amd64.deb
+	sha256sums_x86_64 = 224679600aa038bd45dae6a87c9431702dacfdf818564da9e3001c6762c94365
+
+pkgname = tauri-motrix-bin
