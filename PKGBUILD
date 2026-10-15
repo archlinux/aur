@@ -60,6 +60,7 @@ prepare() {
 
 	patch -i ../use-system-openssl.patch
 
+	export CARGO_HOME="${PWD}"
 	export RUSTUP_TOOLCHAIN=stable
 
 	cargo fetch \
@@ -79,6 +80,7 @@ build() {
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_PROFILE_RELEASE_STRIP=false
 
+	export CARGO_HOME="${PWD}"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -92,6 +94,7 @@ build() {
 check() {
 	cd "${_pkgname}-${pkgver}"
 
+	export CARGO_HOME="${PWD}"
 	export RUSTUP_TOOLCHAIN=stable
 
 	# Skip rebuilding the executable.
