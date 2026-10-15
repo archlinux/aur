@@ -1,0 +1,29 @@
+post_install() {
+  cat <<'MSG'
+==> parakeet-dictation: before the first start
+    1. Download a recognizer model (once; the default "desktop" profile is 639 MB):
+           parakeet-dictation-models desktop
+       Same as: python -m parakeet_dictation.models desktop
+       Profiles: desktop, laptop, streaming, all. Files go to
+       ~/.local/share/parakeet-dictation/models/. Starting the app without a
+       model opens a welcome dialog that offers the download too.
+    2. ydotool presses the paste chord when the portal session is unavailable:
+           systemctl --user enable --now ydotool
+           sudo usermod -aG input $USER         # then log out and back in
+       (ydotool's /usr/lib/udev/rules.d/80-uinput.rules gives /dev/uinput to
+       group "input", mode 0660; check with: ls -l /dev/uinput)
+    3. The first start asks once, through xdg-desktop-portal, whether the app may
+       "Remote Control" the session. Approve it; the grant is kept in
+       ~/.config/parakeet-dictation/portal-restore-token and is not asked again.
+    4. Run "parakeet-dictation" (or "Parakeet Dictation" from the menu), then
+       hold Meta+Z, speak, release. Optional autostart:
+           cp /usr/share/applications/parakeet-dictation.desktop ~/.config/autostart/
+       or System Settings > Autostart > Add > Application.
+    Needs KDE Plasma 6 on Wayland: kglobalacceld (hold shortcut), KWin
+    (focused-window class), xdg-desktop-portal-kde with RemoteDesktop v2.
+MSG
+}
+
+post_upgrade() {
+  echo "==> parakeet-dictation: restart the app to run the new version (setup notes: /usr/share/doc/parakeet-dictation/README.md)"
+}
