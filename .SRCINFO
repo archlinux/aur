@@ -1,6 +1,6 @@
 pkgbase = downjack
 	pkgdesc = Set up your gitignore and license files like using a lumberjack
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/chardoncs/downjack
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = downjack
 	conflicts = downjack
 	provides = downjack
 	
-	source = https://github.com/chardoncs/downjack/releases/download/v0.2.9/downjack-0.2.9.tar.gz
-	sha256sums = 797af5e0d026dea3218ad4d14bafccef6e554e57f834505a130cc3f4a9f1ffe7
+	source = downjack_0.2.10.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.2.10/downjack-0.2.10.tar.gz
+	sha256sums = 0476295e4d370e868cbf660e4e1c08ccb11f445019b82c34b6a0adbcae9bd499
 	
 pkgname = downjack

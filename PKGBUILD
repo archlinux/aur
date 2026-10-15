@@ -2,7 +2,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname='downjack'
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc='Set up your gitignore and license files like using a lumberjack'
 url='https://github.com/chardoncs/downjack'
@@ -13,7 +13,7 @@ conflicts=('downjack')
 makedepends=('go')
 optdepends=('git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/chardoncs/downjack/releases/download/v${pkgver}/downjack-${pkgver}.tar.gz")
-sha256sums=('797af5e0d026dea3218ad4d14bafccef6e554e57f834505a130cc3f4a9f1ffe7')
+sha256sums=('0476295e4d370e868cbf660e4e1c08ccb11f445019b82c34b6a0adbcae9bd499')
 prepare() {
   go mod download
 }
