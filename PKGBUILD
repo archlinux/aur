@@ -23,12 +23,6 @@ backup=(
 )
 install='proxy_certificate.install'
 
-# Use debug
-#export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false 
-
-# Use LTO 
-export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 
-
 export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
 export CFLAGS+=' -ffat-lto-objects'
@@ -46,7 +40,6 @@ build() {
    upx --best --no-lzma --brute target/release/dane-without-root-proxy
    upx --best --no-lzma --brute target/release/dane-without-root-client
    upx --best --no-lzma --brute target/release/usr/lib/libdane_without_root.so.0.1.52
-   #upx --best --no-lzma --brute target/release/libdane_without_root.a
 
 }
 check() {
@@ -68,7 +61,6 @@ package() {
    install -vDm 0755 -t "$pkgdir/usr/bin/"             "../target/release/$pkgname-client"
    install -vDm 0644 -t "$pkgdir/usr/include/"         ../target/release/usr/include/dane_without_root/dane_without_root.h
    install -vDm 0644 -t "$pkgdir/usr/lib/"             ../target/release/usr/lib/libdane_without_root.so.0.1.52
-   #install -vDm 0644 -t "$pkgdir/usr/lib/"             ../target/release/usr/lib/libdane_without_root.a
    install -vDm 0644 -t "$pkgdir/usr/lib/pkgconfig/"   ../target/release/usr/lib/pkgconfig/dane_without_root.pc
    install -vdm 0755 "$pkgdir"/etc/dane-proxy
    install -vDm 0644 dane-proxy.conf                   "$pkgdir"/etc/dane-proxy/dane-proxy.conf
