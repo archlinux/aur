@@ -1,19 +1,23 @@
 # Maintainer: Emiliano Gandini Outeda <emiliano.gandini@protonmail.com>
 
 pkgname=trustsight
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
 arch=('any')
 url='https://github.com/emiliano-go/trustsight'
 license=('MIT')
+# The python-pygit2 floor is a security floor, not a preference: pygit2 < 1.20
+# bundles libgit2 versions with the delta result-size allocation flaw.  Kept in
+# step with pyproject.toml by tests/test_pkgbuild.py.
 depends=(
   'python'
-  'python-pygit2'
-  'python-tldextract'
-  'python-rich'
-  'python-typer'
-  'python-cryptography'
+  'python-pygit2>=1.20.0'
+  'python-tldextract>=5.0'
+  'python-rich>=13.0'
+  'python-typer>=0.12'
+  'python-cryptography>=42.0'
+  'python-yaml>=6.0'
 )
 makedepends=(
   'python-build'
@@ -21,7 +25,7 @@ makedepends=(
   'python-wheel'
   'python-hatchling'
   'python-pytest'
-  # The property-based parser tests (spec §12) import hypothesis; the
+  # The property-based parser tests import hypothesis; the
   # package's own check() runs the suite.
   'python-hypothesis'
 )
@@ -37,8 +41,8 @@ validpgpkeys=('F759D6D49B0A395AB922414A5CC3B4C50D37E793')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig")
 
-sha256sums=('5dd9b52e45f06cc50d52255f831e658a54ae8daf505b2f03782cc748f65c8f48'
-            '2bf19171ec9285d727c2812638ce2dd08ec9156caf96905f99ece9a6a080f93d')
+sha256sums=('c2963e9e03fc65e018335449eda7e444201818d2424018e1e93eeccc5db9341f'
+            'bdef0d66ab2984b6b367fc245eac34a01c277c33f834a28b0d96accd581afef1')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -60,7 +64,13 @@ check() {
   find _test-env/lib -path '*/trustsight*' -exec rm -rf {} + 2>/dev/null || true
   rm -f _test-env/bin/trustsight
   _test-env/bin/python -m installer dist/*.whl
-  _test-env/bin/python -m pytest tests/ -q --ignore=tests/test_fetcher.py --ignore=tests/test_rebaseline.py
+  # test_fetcher and test_rebaseline need network/corpus; test_contract_artifact
+  # needs the repository-root contract/contract.json, which is not part of the
+  # wheel this check installs.  They are repo gates, not package gates.
+  _test-env/bin/python -m pytest tests/ -q \
+    --ignore=tests/test_fetcher.py \
+    --ignore=tests/test_rebaseline.py \
+    --ignore=tests/test_contract_artifact.py
 }
 
 package() {
