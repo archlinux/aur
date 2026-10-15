@@ -1,6 +1,6 @@
 pkgbase = festival-bin
 	pkgdesc = Festival Methodology CLI suite (fest, camp, and festival) - AI-native project planning
-	pkgver = 0.3.21
+	pkgver = 0.3.22
 	pkgrel = 1
 	url = https://fest.build
 	license = Apache-2.0
@@ -11,10 +11,10 @@ pkgbase = festival-bin
 	provides = camp
 	install = festival.install
 	arch = aarch64
-	source_aarch64 = festival-bin_0.3.21_aarch64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v0.3.21/festival-0.3.21-linux-arm64.tar.gz
-	sha256sums_aarch64 = f3891b8184bd9e058d58180aa62a1f89dfeec91b3d1e87f73644b5e314bd0fa8
+	source_aarch64 = festival-bin_0.3.22_aarch64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v0.3.22/festival-0.3.22-linux-arm64.tar.gz
+	sha256sums_aarch64 = 491ff3e5c2222cb8ba697d97249a021594aba9b20d0c51de061a1954facc07a8
 	arch = x86_64
-	source_x86_64 = festival-bin_0.3.21_x86_64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v0.3.21/festival-0.3.21-linux-x86_64.tar.gz
-	sha256sums_x86_64 = dc213a9239f4864c87fbbf3a5f82518e90f427511b3182736a0c128d6bdee5ea
+	source_x86_64 = festival-bin_0.3.22_x86_64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v0.3.22/festival-0.3.22-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4af3728d7d74e6f4c719aeda20172c32125f479551211befd3db39b094fb46cc
 	
 pkgname = festival-bin
