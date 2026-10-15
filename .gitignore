@@ -1,0 +1,6 @@
+*.patch
+*.pkg.tar*
+/.idea/
+/pam_ssh_agent_auth/
+/pkg/
+/src/
