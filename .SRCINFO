@@ -1,6 +1,6 @@
 pkgbase = cpyref
 	pkgdesc = Local references, bounded test logs and source snapshots for AI agents
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/cpyref
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cpyref
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = cpyref-0.3.1.tar.gz::https://static.crates.io/crates/cpyref/cpyref-0.3.1.crate
-	sha256sums = 3433fef6831c00cc2f1180c03177ca0b1ba03f3c54c2945fcee378db254ce8a8
+	source = cpyref-0.4.0.tar.gz::https://static.crates.io/crates/cpyref/cpyref-0.4.0.crate
+	sha256sums = d08dae150afb66c1af9430aae6bafae7d7c162492c308420966b75bd15eb1596
 
 pkgname = cpyref

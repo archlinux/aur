@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <lightjunction.me@gmail.com>
 pkgname=cpyref
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Local references, bounded test logs and source snapshots for AI agents'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('LicenseRef-AUL-1.0-draft.1')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('3433fef6831c00cc2f1180c03177ca0b1ba03f3c54c2945fcee378db254ce8a8')
+sha256sums=('d08dae150afb66c1af9430aae6bafae7d7c162492c308420966b75bd15eb1596')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -44,4 +44,10 @@ package() {
   install -m644 docs/*.md "$pkgdir/usr/share/doc/$pkgname/docs/"
   install -Dm644 skills/cpyref/SKILL.md "$pkgdir/usr/share/doc/$pkgname/skills/cpyref/SKILL.md"
   install -Dm644 skills/cpyref/agents/openai.yaml "$pkgdir/usr/share/doc/$pkgname/skills/cpyref/agents/openai.yaml"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname/examples"
+  install -m644 examples/project.toml examples/shared.toml "$pkgdir/usr/share/doc/$pkgname/examples/"
+  # Older source archives may not include the optional integration example.
+  if [[ -f examples/agentgc-handoff.sh ]]; then
+    install -Dm755 examples/agentgc-handoff.sh "$pkgdir/usr/share/doc/$pkgname/examples/agentgc-handoff.sh"
+  fi
 }
