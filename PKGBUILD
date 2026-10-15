@@ -1,6 +1,6 @@
 # Maintainer: Yuzuki <lxf74663@gmail.com>
 pkgname=napcat-qq
-pkgver=4.18.28
+pkgver=4.18.38
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64' 'aarch64')
@@ -9,22 +9,22 @@ license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'xorg-server-xvfb' 'screen')
 makedepends=('unzip' 'clang')
 install='napcat-qq.install'
-_qqver="3.2.30-50969"
+_qqver="3.2.34-53644"
 
 source=("NapCat.Shell-${pkgver}.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v${pkgver}/NapCat.Shell.zip"
         "napcat-qq.sh"
         "napcat-qq.install"
         "launcher.cpp")
 
-sha256sums=('bcdd8bdb9e44bd0cf6a90908e572141787fd9e98cb8d8eecc5adf25bbdcabb94'
-            '2a60a09b349558bff7e638f7b5c6b0563b62457293b2d9a3d8cb63bb84a932b7'
+sha256sums=('735f2e633247df3ffd6e8ee8b84d7039c315b2655f5807e5f0029f93d2c30016'
+            '80f20352148b3c66c22cdc3a6ba06138ceeef0031abf57903d7312ef7e4839a9'
             'fecf169a5e052b9b475d9c28594f5f57557c4424391bf1e6190e2d1a33eeb8e2'
             '601b88813a8563dcd71c7961fc34a9b352226671e31aa603faa9f0f4fe54995a')
-sha256sums_x86_64=('98f0d8cfd0d689e898c36432feada8ada2df9d287dda52a3389cc795978c0c0e')
-sha256sums_aarch64=('68d59a60f8bb67b84fffe21cb67d4f1e54628b8383c8eb296e3c632ec43dc392')
+sha256sums_x86_64=('436c65e1dd28422e128a21cbddb5fe4e2e6c079d7f27fec2541e014d38cc336e')
+sha256sums_aarch64=('181b895cb573548e396e54bb0548cca92ffdc1b1a4b018fa4551bb062385fdca')
 
-source_x86_64=("linuxqq_${_qqver}_amd64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.32/beta/fd40a3ec/linuxqq_3.2.30-50969_amd64.deb")
-source_aarch64=("linuxqq_${_qqver}_arm64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.32/beta/fd40a3ec/linuxqq_3.2.30-50969_arm64.deb")
+source_x86_64=("linuxqq_${_qqver}_amd64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.36/beta/9ee04bef/linuxqq_3.2.34-53644_amd64.deb")
+source_aarch64=("linuxqq_${_qqver}_arm64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.36/beta/9ee04bef/linuxqq_3.2.34-53644_arm64.deb")
 
 build() {
     cd "${srcdir}"
