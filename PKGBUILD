@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-ade-nightly-bin
-pkgver=0.42.2.r922.g70f2fc8.n9
+pkgver=0.42.2.r981.g4dbd9c4.n10
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across machines (nightly)'
 arch=('x86_64')
@@ -20,8 +20,8 @@ optdepends=('konsole: external KDE terminal integration'
 provides=("zerus=$pkgver" 'hgs' 'hgs-tray')
 conflicts=('zerus' 'zerus-git' 'zerus-ade-bin')
 options=('!strip' '!debug')
-source=("https://github.com/ufna/zerus/releases/download/nightly-38633396497/zerus-${pkgver}-arch-${CARCH}.tar.gz")
-sha256sums=('ce4097d597dd1d51a0cd208116de5f82f63a2d81957accb3415ce873a5eb573b')
+source=("https://github.com/ufna/zerus/releases/download/nightly-38682508484/zerus-${pkgver}-arch-${CARCH}.tar.gz")
+sha256sums=('a7821a1b63ca213dfc1c8409608af1d1792efbb99a60965ad650a813e81c4869')
 
 package() {
     cp -a "$srcdir/zerus-0.42.2-arch-$CARCH/usr" "$pkgdir/"
