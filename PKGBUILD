@@ -1,5 +1,5 @@
 pkgname=dotdrop
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
