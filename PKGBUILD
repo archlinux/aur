@@ -4,7 +4,7 @@
 # release version, pkgrel, source location, and checksum into the AUR metadata.
 
 pkgname=chan
-pkgver=0.105.0
+pkgver=0.106.0
 pkgrel=1
 pkgdesc='Headless terminal multiplexer and workspace manager'
 # Native CI builds both architectures; aarch64 is observed-only for v0.73.0.
@@ -21,8 +21,8 @@ conflicts=('chan-desktop')
 # Cargo owns thin LTO. makepkg's additional -flto=auto reaches native C/C++
 # dependencies and can leave rustc unable to resolve their symbols at link time.
 options=(!lto)
-source=('chan-0.105.0.tar.gz::https://github.com/fiorix/chan/archive/v0.105.0.tar.gz')
-sha256sums=('5007a1595cfbc9a5e46884334f88004b5c335b5aae7a44d50020a38699c8c8ce')
+source=('chan-0.106.0.tar.gz::https://github.com/fiorix/chan/archive/v0.106.0.tar.gz')
+sha256sums=('6178621f1915995299f4c9dc0344370dc383949b26358f7c52c2e873fae7a742')
 
 # RUSTUP_TOOLCHAIN keeps the tree's rust-toolchain.toml pin from making a
 # rustup-provided cargo download a second toolchain mid-build, per Arch's Rust
