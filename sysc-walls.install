@@ -26,6 +26,18 @@ For custom ASCII art, install sysc-Go:
 EOF
 }
 
+pre_upgrade() {
+    # Older standalone installers enabled a system-scoped sysc-walls.service
+    # that ran as root and read root's configuration. This package ships a
+    # user unit only, so stop and disable any legacy system unit before the
+    # upgrade hands the daemon to the user's systemd manager.
+    # Failures must not block the transaction.
+    state="$(systemctl --system show --property=LoadState --value sysc-walls.service 2>/dev/null || true)"
+    if [ -n "$state" ] && [ "$state" != "not-found" ]; then
+        systemctl --system disable --now sysc-walls.service || true
+    fi
+}
+
 post_upgrade() {
     cat << 'EOF'
 
@@ -33,6 +45,7 @@ SYSC-WALLS UPGRADED
 
 v1.1.1 changes:
   - Restore compatibility with sysc-shell's screensaver controls.
+  - Stop and disable a legacy system-scoped sysc-walls.service on upgrade.
 
 Restart the service to apply changes:
     systemctl --user restart sysc-walls.service
