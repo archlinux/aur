@@ -1,11 +1,11 @@
 # Maintainer: Yangtse Su <yangtsesu at gmail dot com>
 
 pkgname=librofd-ffi
-pkgver=0.4.3
-pkgrel=7
+pkgver=0.4.3.fork.1
+pkgrel=1
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
-url='https://github.com/linuxdeepin/rofd'
+url='https://github.com/YangtseSu/rofd'
 license=(LGPL-2.1-or-later)
 depends=(
   cairo
@@ -18,48 +18,26 @@ makedepends=(
   cargo
   rust
 )
-_commit=140b936d1b3f33a9adeda9fb6f428016b735d9a0   # 0.4.3 on main; upstream published no v0.4.3 tag
-source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/$_commit.tar.gz"
-        "rofd-ffi-page-size.patch"
-        "rofd-ffi-font-advances.patch"
-        "rofd-ffi-image-decode-budget.patch"
-        "rofd-ffi.pc.in")
-sha256sums=('0d6300fb28507f0597e2aa10d3822df3519e630fbf820fd95164df0ba8e3ce38'
-            '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d'
-            '0c7fe14c4659ec56292475964adbf748d02f80318dc332db7314424e4a5b4bcb'
-            'd3e9406ee9cc96e0380f46f816d23f9e078e3b1bb4043ebc458cef999c7d8d09'
-            'cf912f767bb51933051144c074600f008c48cf694489630db52cd1edbb7bf538')
+# The fork's release branch. It carries the changes papers-ofd relies on
+# (page-size query, font-resolved text advances, image decode budget) plus the
+# pkg-config metadata, proposed upstream as PRs #11–#14. Retire this package in
+# favour of an upstream-built one once a linuxdeepin/rofd release contains all
+# of them (see papers-ofd/patches/README.md).
+_tag=v0.4.3-fork.1
+source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/rofd/archive/refs/tags/$_tag.tar.gz")
+sha256sums=('b19a464ea34bab6b6260221dd9900247bd8cc581c49e5afff95a8a19f05681dd')
 
-# the archive of $_commit extracts to rofd-$_commit
-_dirname="rofd-$_commit"
+# GitHub strips the tag's leading v; pkgver differs only in dots
+_dirname="rofd-0.4.3-fork.1"
 
 prepare() {
   cd "$_dirname"
-  # Temporarily carried: upstream PR linuxdeepin/rofd#11 — metadata-only page
-  # size query rofd_document_get_page_size_mm. Drop this line and the source
-  # entry once a release contains it (see papers-ofd/patches/README.md).
-  patch -Np1 -i "$srcdir/rofd-ffi-page-size.patch"
-  # Temporarily carried: upstream PR linuxdeepin/rofd#13 — text runs without an
-  # explicit DeltaX take their advances from the resolved font, character boxes span
-  # that face's typographic ascent and descent, and a selection region grows by an
-  # eighth of its height on both sides, so page geometry, search rectangles and
-  # selection highlights match a PDF reader's. Drop this line and the source entry once
-  # a release contains it (see papers-ofd/patches/README.md).
-  patch -Np1 -i "$srcdir/rofd-ffi-font-advances.patch"
-  # Temporarily carried: upstream PR linuxdeepin/rofd#14 — the image crate's
-  # allocation budget covers the decoder's intermediate buffers on top of the
-  # finished RGBA8 raster, so budgeting it with the raster size alone dropped seals
-  # (stamp annotations) that are inside the decoded-image limits and reported a decode
-  # error instead of a raster-budget error for the ones outside them. Only the two
-  # source hunks are carried: the regression test and its 430 KiB fixture belong to the
-  # fork branch and the upstream PR, not to a library package. Drop this line and the
-  # source entry once a release contains it (see papers-ofd/patches/README.md).
-  patch -Np1 -i "$srcdir/rofd-ffi-image-decode-budget.patch"
+  true
 }
 
 build() {
   cd "$_dirname"
-  # 0.4.1 onwards vendors every crate and sets net.offline = true in
+  # the release tarball vendors every crate and sets net.offline = true in
   # .cargo/config.toml, so --frozen builds without touching the network.
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --package rofd-ffi
@@ -70,11 +48,13 @@ package() {
   install -Dm755 "target/release/librofd_ffi.so" "$pkgdir/usr/lib/librofd_ffi.so.0"
   ln -s librofd_ffi.so.0 "$pkgdir/usr/lib/librofd_ffi.so"
   install -Dm644 crates/rofd-ffi/include/rofd.h -t "$pkgdir/usr/include/"
-  # pkg-config metadata for the C ABI, so consumers (papers-ofd today, upstream
-  # Papers after the phase-4 move) can use dependency('rofd-ffi') instead of
-  # hardcoding a build directory. rofd has no install system upstream; this
-  # package installs the file.
+  # pkg-config metadata for the C ABI, shipped in the fork source tree
+  # (debian/rofd-ffi.pc.in, upstream PR #12). Consumers (papers-ofd today,
+  # upstream Papers after the phase-4 move) can use dependency('rofd-ffi')
+  # instead of hardcoding a build directory. libdir uses @MULTIARCH@ in the
+  # Debian template; Arch has no multiarch, so substitute /usr/lib.
   install -d "$pkgdir/usr/lib/pkgconfig"
-  sed "s/@VERSION@/$pkgver/" "$srcdir/rofd-ffi.pc.in" > "$pkgdir/usr/lib/pkgconfig/rofd-ffi.pc"
+  sed -e "s/@VERSION@/$pkgver/" -e 's|/lib/@MULTIARCH@|/lib|' \
+      debian/rofd-ffi.pc.in > "$pkgdir/usr/lib/pkgconfig/rofd-ffi.pc"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
