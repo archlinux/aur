@@ -1,0 +1,21 @@
+pkgbase = astra-flightdeck
+	pkgdesc = A powerful, modern Hyprland configuration manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AstraSuite/Flightdeck
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-shadertools
+	depends = qt6-svg
+	optdepends = caelestia-cli: dynamic color scheme syncing
+	conflicts = astra-flightdeck-git
+	source = https://github.com/AstraSuite/Flightdeck/releases/download/v1.0.0/astra-flightdeck-1.0.0.tar.gz
+	sha256sums = f5f0f1fef13c5b0f42ce5584ebc804637cc1be4d7b18956a8ddb5460b25d1f9b
+
+pkgname = astra-flightdeck
