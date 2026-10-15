@@ -1,5 +1,5 @@
 pkgname='linuxtoys-bin'
-pkgver='7.7'
+pkgver='7.7.1'
 pkgrel=1
 arch=('x86_64')
 depends=(bash git curl wget zenity appstream archlinux-appstream-data python python-gobject python-requests gtk3 vte3 sudo util-linux webp-pixbuf-loader shared-mime-info)
@@ -7,7 +7,7 @@ makedepends=(rust cargo maturin python pkgconf patchelf gtk3)
 conflicts=(linuxtoys)
 provides=("linuxtoys=$pkgver")
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('c2d19ba335d5e3e936ee94fbc8d985092e349054423a3ae0a854f24146394295')
+sha256sums=('59ed59b4a98ffe599080d363cdce164e4b16f327d6887d774a77a2a085adbd72')
 options=(!lto)
 
 build() {
@@ -34,6 +34,10 @@ package() {
     test -f "${pkgdir}/usr/share/linuxtoys/app/liblinuxtoys_gui.so"
     find "${pkgdir}/usr/share/linuxtoys" -type d -name '__pycache__' -prune -exec rm -rf {} +
     find "${pkgdir}/usr/share/linuxtoys" -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+    
+    # Ensure Python modules and assets are readable by ordinary users.
+    find "${pkgdir}/usr/share/linuxtoys" -type d -exec chmod 755 {} +
+    find "${pkgdir}/usr/share/linuxtoys" -type f -exec chmod a+r {} +
 
     # Set proper permissions for executable files
     chmod +x "${pkgdir}/usr/bin/linuxtoys"
