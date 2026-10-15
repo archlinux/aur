@@ -2,7 +2,7 @@
 # Contributor: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=komga
-pkgver=1.29.0
+pkgver=1.29.1
 pkgrel=1
 pkgdesc='Media server for comics/mangas/BDs/magazines/eBooks with API, OPDS, Kobo Sync and KOReader Sync support'
 arch=(any)
@@ -14,13 +14,13 @@ optdepends=('libjxl: JPEG XL support'
             'kepubify: EPUB to KEPUB conversion')
 backup=("etc/${pkgname}.conf")
 source=("https://github.com/gotson/komga/releases/download/${pkgver}/${pkgname}-${pkgver}.jar"
-        "${pkgname}-LICENSE::https://raw.githubusercontent.com/gotson/${pkgver}/${pkgver}/LICENSE"
+        "${pkgname}-LICENSE::https://raw.githubusercontent.com/gotson/${pkgname}/${pkgver}/LICENSE"
         "${pkgname}"
         "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('00e5791900ee9225712b6d9d5f60753e8a246e5b63f8dc825fec9e005ce7cec8'
+sha256sums=('e9cafae1ec6d0d117c2375fff9ecb737ed384eede2afea9716bcb555d96ea834'
             '0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f'
             'ea583b007a654b24e96838033ae1ce01bd66a0aacf4bda429bb8bbec1bf400ef'
             'a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d'
