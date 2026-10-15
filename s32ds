@@ -43,4 +43,22 @@ if [ ! -x "$_s32ds_home/s32ds.sh" ]; then
   exit 127
 fi
 
+# The SDK packs are produced on Windows and carry paths that do not resolve on
+# a case sensitive file system: component descriptors reference their code
+# generator through lower case directory names (../gpio_dio/... for a shipped
+# Gpio_Dio/) and the clock scripts build file names with backslashes.  Beyond
+# the "Script not found" errors, the configuration tools then consider the
+# component unknown and drop it from the sdkComponents list of every project
+# they touch, which keeps reporting "X is not found in the toolchain/IDE
+# project" even after the installation itself is repaired.  NXP documents the
+# case sensitivity of Linux as the reason the RTD is not supported on it and
+# ships no fix; s32ds-fix-linux-case rewrites the references to the case the
+# files really have.  It is idempotent and silent when there is nothing to do.
+# Packs installed from the IDE bring their own descriptors, which the pacman
+# scriptlets never see, so it runs on every launch.  S32DS_SKIP_CASE_FIX=1
+# bypasses it.
+if [ -z "${S32DS_SKIP_CASE_FIX:-}" ] && [ -x /usr/bin/s32ds-fix-linux-case ]; then
+  /usr/bin/s32ds-fix-linux-case || true
+fi
+
 exec "$_s32ds_home/s32ds.sh" "$@"

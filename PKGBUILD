@@ -1,8 +1,8 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 pkgname=s32-design-studio
 pkgver=3.6.10
-pkgrel=1
-pkgdesc="IDE for editing, compiling, debugging and flashing NXP S32 designs (Kinetis, LPC, S32K, S32G, SAF)"
+pkgrel=2
+pkgdesc="IDE for editing, compiling, debugging and flashing NXP S32 designs (Kinetis, LPC, S32K, S32G, SAF). With Linux-specific fixes for RTD libraries"
 arch=('x86_64')
 url="https://www.nxp.com/design/design-center/software/automotive-software-and-tools/s32-design-studio-ide:S32-DESIGN-STUDIO-IDE"
 # The vendor binaries are shipped as they are: the cross toolchains, the
@@ -54,10 +54,16 @@ installer="SW32_S32DS_${pkgver}_RFP_D2607_linux.$arch.bin"
 source=("$installer::https://freescaleesd.flexnetoperations.com/337170/607/20142607/SW32_S32DS_3.6.11_RFP_D2609_linux.x86_64.bin?ftpRequestID=4480565751&server=freescaleesd.flexnetoperations.com&ext=.bin")
 sha256sums=('4b4d760f0400080ba59d628f923d45bad936e066638d21862266ce4b154b2ed3')
 # Reloads the udev rules of the debug probes after install, so they are usable
-# without a reboot.  The installation itself is made writable in build(), see
-# _allow_extension_installs(), so this scriptlet is only about udev.  makepkg
-# only embeds it when it is declared here, the $pkgname.install of the start
-# directory is not picked up implicitly.
+# without a reboot, repairs the Windows paths of the SDK component
+# descriptors, see s32ds-fix-linux-case, restores the world writable state the
+# package ships before every install and upgrade — pacman leaves directories
+# that already exist alone and the IDE re-creates some of them at 755, which
+# every update reports as "directory permissions differ" — and removes the
+# installation directory on removal, the IDE installs extensions into it at
+# runtime and pacman does not know those files.  The world writable state
+# itself is put into the package by build(), see _allow_extension_installs().
+# makepkg only embeds the scriptlet when it is declared here, the
+# $pkgname.install of the start directory is not picked up implicitly.
 install=s32-design-studio.install
 
 _installdir="/opt/$pkgname"
@@ -283,6 +289,10 @@ package() {
   mv "$_stage" "$pkgdir$_installdir"
 
   install -Dm755 "$startdir/s32ds" "$pkgdir/usr/bin/s32ds"
+  # repairs the case wrong paths the SDK packs carry for a case sensitive file
+  # system; the launcher runs it on every start, the scriptlet at install time
+  install -Dm755 "$startdir/s32ds-fix-linux-case" \
+    "$pkgdir/usr/bin/s32ds-fix-linux-case"
   # installed executable on request: the entry point has to be a usable
   # regular file, not a symlink into /opt
   install -Dm755 "$startdir/s32-design-studio.desktop" \

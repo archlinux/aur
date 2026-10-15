@@ -1,0 +1,156 @@
+#!/bin/sh
+# s32ds-fix-linux-case - repair the Windows paths in the SDK packs of S32DS
+#
+# The SDK component descriptors and the code generator scripts of S32DS are
+# produced on Windows and carry two kinds of paths that do not resolve on a
+# case sensitive file system:
+#
+#   1. A component descriptor references its code generator through a lower
+#      case directory name that does not match the directory the pack ships:
+#
+#        <variable value="`../gpio_dio/gpio_dio_codegenerator.js`" id="codegen_file"/>
+#
+#      while the file is Gpio_Dio/gpio_dio_codegenerator.js.  The
+#      configuration tools report
+#
+#        java.io.IOException: Script not found: ../gpio_dio/gpio_dio_codegenerator.js
+#
+#      and, because they then consider the component unknown, remove it from
+#      the sdkComponents list of every project they touch.  Such a project
+#      keeps reporting
+#
+#        gpio_dio is not found in the toolchain/IDE project. The project will
+#        not compile!
+#
+#      even after the installation itself is repaired, so the repair has to be
+#      in place before the tools first see the project.
+#
+#   2. The clock scripts build file names with backslashes:
+#
+#        Paths.get(ProjDirPath + "\\ClockYaml.txt")
+#
+#      On Linux the backslash is an ordinary character, so the clock tool
+#      drops files named `project\ClockYaml.txt` next to the project instead
+#      of ClockYaml.txt inside it.
+#
+# Both are rewritten in place to the case and the separator the files on disk
+# actually use.  The script is idempotent, changes nothing that is already
+# correct and runs in well under a second, so the s32ds launcher invokes it on
+# every start: packs installed from the IDE bring their own descriptors, which
+# the pacman install scriptlets never see.  NXP documents the case sensitivity
+# of Linux as the reason the RTD is not supported on it and ships no fix of
+# its own.
+#
+# usage: s32ds-fix-linux-case [installation-root]
+#        S32DS_HOME overrides the default root /opt/s32-design-studio
+
+root=${1:-${S32DS_HOME:-/opt/s32-design-studio}}
+mcu_data=$root/eclipse/mcu_data
+components=$mcu_data/components
+
+[ -d "$mcu_data" ] || exit 0
+
+status=0
+
+# rewrite FILE SCRIPT: run sed with SCRIPT over FILE, and if the content
+# changed write it back over the same file rather than renaming a temporary
+# over it.  The write back keeps the inode, so the file keeps its root
+# ownership and a concurrent reader never sees a half written descriptor; a
+# rename would silently hand the file to whichever user launches the IDE
+# first.
+rewrite() {
+  _file=$1
+  _script=$2
+  _tmp=$(mktemp) || return 1
+  sed "$_script" "$_file" > "$_tmp"
+  if cmp -s "$_tmp" "$_file"; then
+    rm -f "$_tmp"
+    return 0
+  fi
+  if cat "$_tmp" > "$_file" 2>/dev/null; then
+    printf 's32ds-fix-linux-case: fixed %s\n' "${_file#"$root"/}"
+  else
+    printf 's32ds-fix-linux-case: cannot write %s\n' "${_file#"$root"/}" >&2
+    status=1
+  fi
+  rm -f "$_tmp"
+}
+
+# resolve_case BASE RELATIVE: re-resolve every segment of RELATIVE against the
+# file system ignoring case and echo the path with the case it really has,
+# e.g. ../gpio_dio/x.js from inside Gpio_Dio/ becomes ../Gpio_Dio/x.js.  Fails
+# when a segment does not exist at all, so a reference that is broken for
+# another reason is reported instead of guessed at.
+resolve_case() {
+  _cur=$1
+  _rest=$2
+  _new=
+  while [ -n "$_rest" ]; do
+    _seg=${_rest%%/*}
+    if [ "$_seg" = "$_rest" ]; then _rest=; else _rest=${_rest#*/}; fi
+    case $_seg in
+      . | ..)
+        _new=${_new:+$_new/}$_seg
+        _cur=$_cur/$_seg
+        ;;
+      *)
+        _hit=$(find "$_cur" -mindepth 1 -maxdepth 1 -iname "$_seg" \
+          -printf '%f\n' 2>/dev/null | head -n 1)
+        [ -n "$_hit" ] || return 1
+        _new=${_new:+$_new/}$_hit
+        _cur=$_cur/$_hit
+        ;;
+    esac
+  done
+  printf '%s\n' "$_new"
+}
+
+# --- the code generator references of every component descriptor -----------
+for descriptor in "$components"/*/*/*.component; do
+  [ -f "$descriptor" ] || continue
+  _dir=$(dirname "$descriptor")
+
+  # the reference is matched literally, the replacement must not eat
+  # characters sed considers special; the backticks and the \1 are data and
+  # must not be expanded by the shell
+  # shellcheck disable=SC2016
+  _refs=$(sed -n 's/.*value="`\([^`]*\)`" id="codegen_file".*/\1/p' \
+    "$descriptor" | sort -u)
+  [ -n "$_refs" ] || continue
+
+  _script=
+  for _ref in $_refs; do
+    # a reference that resolves as it stands needs no attention
+    [ -e "$_dir/$_ref" ] && continue
+    if ! _fixed=$(resolve_case "$_dir" "$_ref"); then
+      printf 's32ds-fix-linux-case: %s references %s, which does not exist\n' \
+        "${descriptor#"$root"/}" "$_ref" >&2
+      status=1
+      continue
+    fi
+    [ "$_fixed" = "$_ref" ] && continue
+    # the reference is matched literally, the replacement must not eat
+    # characters sed considers special
+    _esc=$(printf '%s' "$_ref" | sed 's/[.[\*^$|]/\\&/g')
+    _fixed_esc=$(printf '%s' "$_fixed" | sed 's/[&|]/\\&/g')
+    _script="$_script
+s|$_esc|$_fixed_esc|g"
+  done
+  [ -n "$_script" ] && rewrite "$descriptor" "$_script"
+done
+
+# --- backslash path separators in the scripts ------------------------------
+# The whole mcu_data tree is scanned, not only components/: the clock scripts
+# also ship as per-device copies under
+# processors/<Device>/<pack>/scripts/clocks/, and those are the copies the
+# clock tool executes.  Only lines that build a java.nio.file.Path are
+# touched.  The scripts also contain regular expressions that legitimately
+# spell a backslash, e.g. templatingengine.js turns line endings into "\\n",
+# and those must be left alone.  The vendor paths carry no whitespace, so
+# iterating the grep result word by word is safe.
+# shellcheck disable=SC2013
+for _js in $(grep -rl 'Paths\.get' "$mcu_data" --include='*.js' 2>/dev/null); do
+  rewrite "$_js" '/Paths\.get/ { s|+"\\\\|+"/|g; s|lastIndexOf("\\\\")|lastIndexOf("/")|g; }'
+done
+
+exit "$status"

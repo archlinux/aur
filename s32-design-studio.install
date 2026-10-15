@@ -1,14 +1,44 @@
-# The only thing left to do at install time is the udev rule: the debug probe
-# rules of S32 Design Studio are 15 vendor rules for the S32 Debugger, the PEmicro
-# GDB server and the SEGGER probe, shipped in /usr/lib/udev/rules.d.  udev only
-# picks them up after a reload, and without them the probes are not usable until
-# the next reboot.
+# The install scriptlets of this package do four things.
 #
-# The installation itself needs no help: /opt/s32-design-studio is shipped world
-# writable (see _allow_extension_installs() in the PKGBUILD), because the IDE
-# installs extensions into it and would otherwise fail with
+# The udev rules of the debug probes are reloaded: the 15 vendor rules for the
+# S32 Debugger, the PEmicro GDB server and the SEGGER probe ship in
+# /usr/lib/udev/rules.d, udev only picks them up after a reload, and without
+# them the probes are not usable until the next reboot.
+#
+# The installation is shipped world writable (see _allow_extension_installs()
+# in the PKGBUILD), because the IDE installs extensions into it and would
+# otherwise fail with
 #
 #   Target: Path /opt/s32-design-studio/... could not be created
+#
+# The package can ship that state but pacman does not keep it: directories
+# that already exist on disk are left alone when a package is installed, only
+# reported, and the IDE re-creates directories inside the installation at 755
+# with the umask of the session while it installs extensions.  Every update
+# then prints
+#
+#   warning: directory permissions differ on /opt/s32-design-studio/.../,
+#   filesystem: 755  package: 777
+#
+# once for every directory that drifted, and nothing ever corrects it.
+# _s32ds_writable_tree() therefore restores the modes and the ownership the
+# package ships before the files are extracted, so that the comparison of
+# pacman runs against a matching tree: the update is silent, `pacman -Qkk`
+# stops reporting ownership and mode drift for those directories, and a root
+# owned directory at 755 — the one thing that really does block the extension
+# installs the world writable tree exists for — cannot survive an update
+# either.
+#
+# The Windows paths in the SDK component descriptors are repaired, see
+# s32ds-fix-linux-case: the packs reference their code generators through
+# case wrong directory names that only resolve on a case insensitive file
+# system, which on Linux makes the configuration tools drop the component
+# from the sdkComponents list of every project they touch.
+#
+# And the removal cleans up: the IDE installs extensions (SDK packs,
+# toolchains) and writes caches into its own installation directory at
+# runtime, none of which pacman knows about, and leaving those behind would
+# keep the tree on the system after the package is gone.
 
 _s32ds_reload_rules() {
   if command -v udevadm >/dev/null; then
@@ -16,16 +46,52 @@ _s32ds_reload_rules() {
   fi
 }
 
+_s32ds_fix_case_paths() {
+  if [ -x /usr/bin/s32ds-fix-linux-case ]; then
+    /usr/bin/s32ds-fix-linux-case || true
+  fi
+}
+
+# the two finds are exactly what _allow_extension_installs() records in the
+# package, applied to the live tree instead of the staging tree; X only adds
+# the execute bit to directories and to files that already have one
+_s32ds_writable_tree() {
+  [ -d /opt/s32-design-studio ] || return 0
+
+  find /opt/s32-design-studio -type d ! -user root -exec chown root:root {} +
+  find /opt/s32-design-studio -type d -exec chmod a+rwX {} +
+}
+
+pre_install() {
+  # a fresh installation over leftovers of a removal without post_remove, the
+  # pkgrel 1 of this package had none
+  _s32ds_writable_tree
+}
+
 post_install() {
   _s32ds_reload_rules
+  _s32ds_fix_case_paths
+}
+
+pre_upgrade() {
+  # before the extraction, that is before pacman compares the directories it
+  # finds with the ones the package ships
+  _s32ds_writable_tree
 }
 
 post_upgrade() {
   _s32ds_reload_rules
+  _s32ds_fix_case_paths
 }
 
 pre_remove() {
   _s32ds_reload_rules
 
   return 0
+}
+
+post_remove() {
+  if [ -d /opt/s32-design-studio ]; then
+    rm -rf /opt/s32-design-studio
+  fi
 }

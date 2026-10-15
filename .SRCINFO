@@ -1,7 +1,7 @@
 pkgbase = s32-design-studio
-	pkgdesc = IDE for editing, compiling, debugging and flashing NXP S32 designs (Kinetis, LPC, S32K, S32G, SAF)
+	pkgdesc = IDE for editing, compiling, debugging and flashing NXP S32 designs (Kinetis, LPC, S32K, S32G, SAF). With Linux-specific fixes for RTD libraries
 	pkgver = 3.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nxp.com/design/design-center/software/automotive-software-and-tools/s32-design-studio-ide:S32-DESIGN-STUDIO-IDE
 	install = s32-design-studio.install
 	arch = x86_64
