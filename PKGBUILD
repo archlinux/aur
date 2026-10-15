@@ -1,7 +1,7 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=macos-sequoia-fonts
 pkgver=15.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Apple macOS Sequoia fonts from system directories, website-selected Font7, and official Apple Fonts'
 arch=('any')
 url='https://support.apple.com/en-eg/120414'
@@ -9,6 +9,9 @@ license=('custom:Apple')
 makedepends=('gcc' 'zlib' '7zip' 'libarchive' 'python-fonttools' 'git')
 depends=('fontconfig')
 install=macos_sequoia_fonts.install
+
+# makepkg sets LANG=C while archiving; retain UTF-8 for non-ASCII font paths.
+export LC_ALL=C.UTF-8
 
 _libneoaa_commit='c1bdecd059e4b57347f859fc7b3e7be94a4e405e'
 _lzfse_commit='e634ca58b4821d9f3d560cdc6df5dec02ffc93fd'

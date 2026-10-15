@@ -65,6 +65,8 @@ Library, FontServices and Platform are preserved independently. Source prioritie
 makepkg -s
 ```
 
+The PKGBUILD exports `LC_ALL=C.UTF-8` for the entire build and packaging process. This keeps Japanese font paths in UTF-8 even when makepkg sets `LANG=C` while creating archives, or the invoking shell uses an ASCII locale.
+
 An optional local Docker workflow, excluded from Git, is available in this workspace:
 
 ```sh

@@ -1,7 +1,7 @@
 pkgbase = macos-sequoia-fonts
 	pkgdesc = Apple macOS Sequoia fonts from system directories, website-selected Font7, and official Apple Fonts
 	pkgver = 15.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.apple.com/en-eg/120414
 	install = macos_sequoia_fonts.install
 	arch = any
