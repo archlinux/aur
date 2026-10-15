@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgbase=c47
 pkgname=(c47 r47)
-pkgver=00.109.05.00b0
+pkgver=00.109.05.00b2
 pkgrel=1
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=("git+https://gitlab.com/rpncalculators/c43.git#tag=${pkgver}"
 	"git+https://github.com/swissmicros/DMCP5_SDK.git"
 	"git+https://github.com/msteveb/jimtcl.git"
 	)
-sha256sums=('7456b485adc8f5d119f02672116d4c823142425942c85d94216d39cf69b37f72'
+sha256sums=('15f00ec3176eb0877e9c4a8ec894fdbe132561f5c8a330b7f35a8108a0c29caa'
             'SKIP'
             'SKIP'
             'SKIP')
