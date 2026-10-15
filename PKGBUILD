@@ -1,18 +1,18 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
 url="https://github.com/hrzlgnm/zux"
-license=('MIT')
+license=('MIT' 'OFL-1.1')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 conflicts=('zux-bin')
 makedepends=('cargo' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf6d195061a95b187ba2ebbd8fa2ed45b8626b0d6c107e62a2b81cceeb316b0a')
+sha256sums=('6e186d601c8d02f4999f0d52b32875d6c05defa110a19b830737be8a64282cff')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
@@ -41,5 +41,6 @@ package() {
     install -Dm644 usr/share/icons/hicolor/256x256@2/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/zux.png
     install -Dm644 usr/share/icons/hicolor/32x32/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zux.png
     install -Dm644 "${srcdir}/${_builddir}/LICENSE" "$pkgdir"/usr/share/licenses/zux/LICENSE
+    install -Dm644 "${srcdir}/${_builddir}/LICENSES/Inter-OFL.txt" "$pkgdir"/usr/share/licenses/zux/Inter-OFL.txt
     install -Dm644 "${srcdir}/${_builddir}/docs/zux.1" "$pkgdir"/usr/share/man/man1/zux.1
 }
