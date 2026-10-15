@@ -4,6 +4,7 @@
 /ocaml-tree-sitter-core
 /opengrep
 /opengrep-crystal
+/visitors
 /pcre2-ocaml
 /semgrep-rules
 /semgrep-apex

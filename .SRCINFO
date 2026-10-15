@@ -1,6 +1,6 @@
 pkgbase = opengrep
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep
-	pkgver = 1.30.2
+	pkgver = 1.31.0
 	pkgrel = 1
 	url = https://github.com/opengrep/opengrep
 	arch = x86_64
@@ -38,8 +38,9 @@ pkgbase = opengrep
 	depends = python-urllib3
 	depends = python-wcmatch
 	depends = tree-sitter
-	source = opengrep::git+https://github.com/opengrep/opengrep.git#tag=v1.30.2
+	source = opengrep::git+https://github.com/opengrep/opengrep.git#tag=v1.31.0
 	source = memprof-limits::git+https://gitlab.com/dimitris-m/memprof-limits.git#commit=c2cced325a93d2271379f0712db85867b29dbee1
+	source = visitors::git+https://github.com/opengrep/visitors.git#commit=e18a7a67150a54a3aef51661e0317cacc313d764
 	source = semgrep-interfaces::git+https://github.com/opengrep/semgrep-interfaces.git#commit=5e705660dc7381d4c4c247fa83c4c5860e61d555
 	source = semgrep-apex::git+https://github.com/opengrep/semgrep-apex.git#commit=024974494b1042141388e1efda11cd5dbcc273e3
 	source = semgrep-bash::git+https://github.com/opengrep/semgrep-bash#commit=aa7d8eec0714a1e1492a1dcbac32c883a58bb6da
@@ -79,7 +80,8 @@ pkgbase = opengrep
 	source = ocaml-tree-sitter-core::git+https://github.com/opengrep/ocaml-tree-sitter-core.git#commit=1392efc21e60d5acde72d0d1c6586f5692fedace
 	source = pcre2-ocaml::git+https://github.com/semgrep/pcre2-ocaml#commit=b763e279b7aa624c9f1adf0afdd45ee7555e2460
 	source = testo::git+https://github.com/semgrep/testo.git#commit=634c978b8c03f02f8f172820fed4554aff721313
-	source = semgrep-rules::git+https://github.com/semgrep/semgrep-rules.git#commit=a84ff9cc2453ca91d581380de4b8b3f272f6f4be
+	source = semgrep-rules::git+https://github.com/semgrep/semgrep-rules.git#commit=9bbf021d0acffa3095fcffd17b2bc7787eb4796d
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
