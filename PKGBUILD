@@ -2,7 +2,7 @@
 # Contributor: Andrés J. Díaz <ajdiaz@ajdiaz.me>
 
 pkgname=pqp-crypto
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Quantum-resistant GPG emulation (ML-KEM + ML-DSA)'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'rust')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ajdiaz/pqp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dc9a3c9997d18197113fb87814a20d3c2bea0069ca896ec7a3cb0c18ae9e4464')
+sha256sums=('d23ee685cee41cbfdea1ce1a2b6ed685bb5d64c51fa78763089015602042d340')
 
 build() {
     cd "$srcdir/pqp-$pkgver"
@@ -33,4 +33,4 @@ package() {
     install -Dm644 "man/pqp.1" "$pkgdir/usr/share/man/man1/pqp.1"
     install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-sha256sums=('dc9a3c9997d18197113fb87814a20d3c2bea0069ca896ec7a3cb0c18ae9e4464')
+sha256sums=('d23ee685cee41cbfdea1ce1a2b6ed685bb5d64c51fa78763089015602042d340')
