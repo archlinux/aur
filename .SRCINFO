@@ -1,6 +1,6 @@
 pkgbase = torresmo
-	pkgdesc = Dead simple and minimal TUI client for the Transmission daemon
-	pkgver = 1.0.7
+	pkgdesc = Dead-simple and minimal TUI client for the Transmission daemon
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://sr.ht/~paemuri/torresmo
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = torresmo
 	depends = libgcc
 	optdepends = transmission-cli: the Transmission daemon to connect to
 	options = !debug
-	source = torresmo-1.0.7.tar.gz::https://static.crates.io/crates/torresmo/torresmo-1.0.7.crate
-	sha256sums = c77ba5cd9218ff8e783646dcc34a6dde94d9e319708da4bcde78f871c6265252
+	source = torresmo-1.0.8.tar.gz::https://static.crates.io/crates/torresmo/torresmo-1.0.8.crate
+	sha256sums = 3d6d7cab154384c820ec345e36a401e7d557385aead8e66e0b8f6418537c3400
 
 pkgname = torresmo
