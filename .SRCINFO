@@ -1,0 +1,19 @@
+pkgbase = crcbl-bin
+	pkgdesc = Crucible engine's headless control CLI (binary release)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kryptic-sh/crcbl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	provides = crcbl=0.1.0
+	conflicts = crcbl
+	source_x86_64 = crcbl-v0.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v0.1.0/crcbl-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7dcf480c81d4b7bb46c72ce0f07e5a13cb52837dc151077ccac43d364ded14af
+	source_aarch64 = crcbl-v0.1.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v0.1.0/crcbl-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 77e675b2d9195d149ef76ba50a4c3604eb20813936c40a4d84f1b493ee03b94a
+
+pkgname = crcbl-bin
