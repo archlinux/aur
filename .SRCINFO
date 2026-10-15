@@ -1,74 +1,62 @@
 pkgbase = gamescope-sk
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.16.31.sk1rc1.gd465650e
+	pkgver = 3.16.23.5.sk1
 	pkgrel = 1
-	url = https://github.com/SkorionOS/gamescope
+	url = https://github.com/3003n/gamescope
 	install = gamescope.install
 	arch = x86_64
-	license = BSD-2-Clause
-	license = BSD-3-Clause
-	license = MIT
-	license = LicenseRef-Reshade
+	license = BSD
 	makedepends = benchmark
-	makedepends = catch2
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = git
 	makedepends = glslang
 	makedepends = meson
 	makedepends = pkgconf
-	makedepends = python
 	makedepends = ninja
 	makedepends = vulkan-headers
-	makedepends = wayland-protocols>=1.47
+	makedepends = wayland-protocols
 	depends = gcc-libs
 	depends = glibc
-	depends = hwdata
 	depends = glm
 	depends = lcms2
 	depends = libavif
 	depends = libcap.so
 	depends = libdecor
-	depends = libdrm>=2.4.129
-	depends = libei
+	depends = libdrm
 	depends = libinput
 	depends = libpipewire-0.3.so
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
-	depends = libxcursor
 	depends = libxdamage
 	depends = libxext
 	depends = libxfixes
-	depends = libxi
 	depends = libxkbcommon.so
-	depends = libxkbcommon>=1.8.0
 	depends = libxmu
 	depends = libxrender
 	depends = libxres
 	depends = libxtst
 	depends = libxxf86vm
 	depends = luajit
-	depends = pixman>=0.46.0
 	depends = sdl2
 	depends = seatd
-	depends = systemd-libs
 	depends = vulkan-icd-loader
-	depends = wayland>=1.24.0
+	depends = wayland
 	depends = xcb-util-errors
 	depends = xcb-util-wm
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/SkorionOS/gamescope.git#commit=d465650e100774ef6cc877c788cd65eab32556a6
+	source = git+https://github.com/3003n/gamescope.git#tag=3.16.23.5.sk1
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://github.com/ValveSoftware/openvr.git
 	source = git+https://github.com/Joshua-Ashton/reshade.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://github.com/Joshua-Ashton/vkroots.git
-	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
-	b2sums = 2b65449da22efcbdcada1956bb4fe9b5855afb32d3265553dfede6cafba6e8f3372d604a97a67b6fb8612016d70985694bacbb7d07c094bef2ed150f4cee5775
+	source = git+https://github.com/Joshua-Ashton/wlroots.git
+	b2sums = 0d3eb1571b38c11647c760486fd7e67f7edd3c723dcc72cc140ed9cdc05c4c25ea84189c87c0ba79e846987d1b6692c41454e39a7a2edf550b24d493337cfee4
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
