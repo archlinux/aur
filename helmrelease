@@ -307,7 +307,7 @@ function helmrelease() {
           valuesFromItemName="$(<<< "$valuesFromItem" | yq -er .name)"
           valuesFromItemValuesKey="$(<<< "$valuesFromItem" | yq -er '.valuesKey // "values.yaml"')"
           valuesFromItemTargetPath="$(<<< "$valuesFromItem" | yq -er '.targetPath // ""')"
-          if valuesFromYaml=$(_hr_getYaml "$yaml" "" "$valuesFromItemKind") || ! valuesFromItemResource=$(<<< "$valuesFromYaml" | yq -erys "map(select( (.metadata.namespace == \"$helmReleaseNamespace\") and (.metadata.name == \"$valuesFromItemName\") ))[0] // empty"); then
+          if ! { valuesFromYaml=$(_hr_getYaml "$yaml" "" "$valuesFromItemKind") && valuesFromItemResource=$(<<< "$valuesFromYaml" | yq -ers --arg valuesFromItemValuesKey "$valuesFromItemValuesKey" "map(select( (.metadata.namespace == \"$helmReleaseNamespace\") and (.metadata.name == \"$valuesFromItemName\") ))[0].data[\$valuesFromItemValuesKey] // empty") }; then
             if [[ "$clusterConnected" == true ]]; then
               if ! valuesFromItemResource=$(kubectl --namespace=$helmReleaseNamespace get $valuesFromItemKind $valuesFromItemName -o yaml | yq -er --arg valuesFromItemValuesKey "$valuesFromItemValuesKey" '.data[$valuesFromItemValuesKey]'); then
                 info "ValuesFrom resource '$helmReleaseNamespace/$valuesFromItemKind/$valuesFromItemName' not found in cluster nor in input or doesn't contain '$valuesFromItemValuesKey', template result might not be accurate"
@@ -355,7 +355,7 @@ function helmrelease() {
         local sourceResource
         local chartName
         local helmRepositoryUrl
-        sourceNamespace=$(<<< "$helmReleaseYaml" | yq -er ".spec.chart.spec.sourceRef.namespace // \"$namespace\"")
+        sourceNamespace=$(<<< "$helmReleaseYaml" | yq -er ".spec.chart.spec.sourceRef.namespace // \"$helmReleaseNamespace\"")
         sourceName=$(<<< "$helmReleaseYaml" | yq -er .spec.chart.spec.sourceRef.name)
         sourceKind=$(<<< "$helmReleaseYaml" | yq -er .spec.chart.spec.sourceRef.kind)
         if [[ -z "$sourceParameter" ]]; then
