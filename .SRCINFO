@@ -1,7 +1,7 @@
 pkgbase = python-dploot
 	pkgdesc = DPAPI looting remotely in Python
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zblurx/dploot
 	arch = any
 	license = MIT
@@ -15,9 +15,9 @@ pkgbase = python-dploot
 	depends = python-cryptography>=40.0.1
 	depends = python-pyasn1>=0.4.8
 	depends = python-lxml>=5.0
-	depends = python-pycryptodomex
 	depends = python-pypsrp>=0.9.1
-	depends = python-pick>=2.6.0
+	depends = python-questionary>=2.1.1
+	depends = python-pycryptodomex
 	source = git+https://github.com/zblurx/dploot#commit=bdff349825fd1d8cdf026df03db6cf45bb4d27ee
 	b2sums = 2f9ef6703d462976f4ccd49eaff60bd369370ee95ee79cc1cb37c1a037b62452943e346a70c6b269468dd8f8afd5f6db8b3f81005a15fa0df950ceb89b3664f4
 

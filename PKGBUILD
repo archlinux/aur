@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname="python-dploot"
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 _commit='bdff349825fd1d8cdf026df03db6cf45bb4d27ee'
 pkgdesc="DPAPI looting remotely in Python"
 arch=('any')
@@ -13,9 +13,9 @@ depends=(
   'python-cryptography>=40.0.1'
   'python-pyasn1>=0.4.8'
   'python-lxml>=5.0'
-  'python-pycryptodomex'
   'python-pypsrp>=0.9.1'
-  'python-pick>=2.6.0'
+  'python-questionary>=2.1.1'
+  'python-pycryptodomex'
 )
 makedepends=(
   'python-build'
