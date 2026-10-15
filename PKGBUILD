@@ -1,7 +1,7 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-bin
-pkgver=2.2.0
-pkgrel=5
+pkgver=2.3.1
+pkgrel=1
 pkgdesc='澜音 - 一款简洁优雅的跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。'
 arch=('x86_64')
 url='https://ceru.docs.shiqianjiang.cn/'
@@ -30,7 +30,7 @@ _debdir='澜音'         # 上游 deb 内部目录名（中文）
 source=("LICENSE::https://raw.githubusercontent.com/timeshiftsauce/CeruMusic/main/LICENSE")
 source_x86_64=("${_debname}::https://github.com/timeshiftsauce/CeruMusic/releases/download/v${pkgver}/${_debname}")
 sha256sums=('156192fbbc7e97514fc250480ed4bd1570f1a7f6e59420b088b4151a7e68431b')
-sha256sums_x86_64=('50df31c3284b06369cbdb4402ec7e879eff4af0c3056dcb3d17b598ec78f9b3f')
+sha256sums_x86_64=('6e3ddae9ee3f24d7d53a61b9e6bfa35f86cc1330e1e40f77bdd710b332f9c76b')
 
 prepare() {
     # 只解出 app.asar 与 app.asar.unpacked，跳过 218MB 的 electron 二进制、
