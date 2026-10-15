@@ -10,6 +10,41 @@
 
 ### Dependencies:
 
+## [v16.2.0](https://github.com/fastly/cli/releases/tag/v16.2.0) (2026-10-15)
+
+### Bug Fixes:
+
+- fix(secret-store): return `[]` instead of `null` when no secret stores exist ([#1892](https://github.com/fastly/cli/pull/1892))
+- fix(service): allow `service version validate` to use `FASTLY_SERVICE_ID` ([#1907](https://github.com/fastly/cli/pull/1907))
+- fix(compute): for `compute` subcommands, properly report a missing `name` in fastly.toml instead of "file not found" ([#1916](https://github.com/fastly/cli/pull/1916))
+- fix(compute): remove the hardcoded `-gc=conservative` flag from the tinygo build command. For `tinygo` versions below
+  `0.34`, this will not change behavior. For `0.34` and above, this switches to the default `precise` collector ([#1926](https://github.com/fastly/cli/pull/1926))
+
+### Enhancements:
+
+- feat(service/logging): add support for the 'public-key` flag for GCS logging ([#1925](https://github.com/fastly/cli/pull/1925))
+- feat(help): add -h short flag for --help. ([#1918](https://github.com/fastly/cli/pull/1918))
+- feat(routing-config): add CLI support for routing configs ([#1931](https://github.com/fastly/cli/pull/1931))
+- docs(compute): for `compute deploy` and `compute publish`, the `--version` help now says that the flag is optional and
+  defaults to the active version, or to the latest version if none is active. ([#1928](https://github.com/fastly/cli/pull/1928))
+
+### Dependencies:
+- build(deps): `github.com/andybalholm/brotli` from 1.2.3 to 1.2.4 ([#1913](https://github.com/fastly/cli/pull/1913))
+- build(deps): `github.com/mattn/go-runewidth` from 0.0.29 to 0.0.30 ([#1913](https://github.com/fastly/cli/pull/1913))
+- build(deps): `github.com/pierrec/lz4/v4` from 4.1.29 to 4.1.30 ([#1913](https://github.com/fastly/cli/pull/1913))
+- build(deps): `github.com/fastly/go-fastly/v17` from 17.3.2 to 17.4.0 ([#1913](https://github.com/fastly/cli/pull/1913))
+- build(deps): `github.com/hashicorp/cap` from 0.13.0 to 0.14.0 ([#1919](https://github.com/fastly/cli/pull/1919))
+- build(deps): `github.com/hashicorp/go-uuid` from 1.0.3 to 1.0.4 ([#1919](https://github.com/fastly/cli/pull/1919))
+- build(deps): `github.com/ulikunitz/xz` from 0.5.16 to 0.5.17 ([#1919](https://github.com/fastly/cli/pull/1919))
+- build(deps): `github.com/fastly/go-fastly/v17` from 17.4.0 to 17.7.0 ([#1919](https://github.com/fastly/cli/pull/1919))
+- build(deps): `@xhmikosr/decompress` from 11.1.3 to 11.1.4 ([#1927](https://github.com/fastly/cli/pull/1927))
+- build(deps): `github.com/minio/minlz` from 1.2.0 to 1.2.1 ([#1929](https://github.com/fastly/cli/pull/1929))
+- build(deps): `github.com/andybalholm/brotli` from 1.2.4 to 1.2.6 ([#1929](https://github.com/fastly/cli/pull/1929))
+- build(deps): `github.com/klauspost/compress` from 1.20.0 to 1.20.1 ([#1929](https://github.com/fastly/cli/pull/1929))
+- build(deps): `github.com/klauspost/pgzip` from 1.2.6 to 1.2.7 ([#1929](https://github.com/fastly/cli/pull/1929))
+- build(deps): `github.com/pierrec/lz4/v4` from 4.1.30 to 4.1.31 ([#1929](https://github.com/fastly/cli/pull/1929))
+- build(deps): `github.com/fastly/go-fastly/v17` from 17.7.0 to 17.8.0 ([#1929](https://github.com/fastly/cli/pull/1929))
+
 ## [v16.1.0](https://github.com/fastly/cli/releases/tag/v16.1.0) (2026-09-14)
 
 ### Enhancements:
