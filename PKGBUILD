@@ -1,7 +1,7 @@
 pkgname=fcitx5-areca-git
 _pkgname=fcitx5-areca
 _reponame=ArecaIME
-pkgver=r187.07dc508
+pkgver=r192.41b20e8
 pkgrel=1
 pkgdesc='Areca Vietnamese input method for Fcitx5 using the Bamboo engine'
 arch=('x86_64')
