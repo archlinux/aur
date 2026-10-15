@@ -21,9 +21,11 @@ options=(
 )
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/sbdchd/squawk/archive/refs/tags/v${pkgver}.tar.gz"
+	prevent-rebuild.patch
 	use-system-openssl.patch
 )
 sha256sums=('05355c8464a1f2c7d8791a77ccccade0babbb16c59ed6cdc5fd3610edd7858de'
+            'e63a32b66331fe4b8952b6e4e9153cb3c8789a5e1229353e7c25f1271bd4d14e'
             'd524c128516732626fa14acff4ce74de3fcb275405a89130a0d5857d23b3c447')
 
 declare -gA _depends=(
@@ -94,8 +96,7 @@ check() {
 
 	# Skip rebuilding the executable.
 	# https://github.com/rust-lang/cargo/issues/12980
-	find "crates/${_pkgname}/src" -name "*.rs" -delete
-	sed -i '/^default-run = "squawk"$/d' "crates/${_pkgname}/Cargo.toml"
+	patch -p0 -i ../prevent-rebuild.patch
 	# Skip rebuilding the dependencies.
 	_list_packages_for_removal --edges no-dev | _remove_packages
 	_list_packages_for_removal --edges dev | _remove_packages --dev

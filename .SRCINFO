@@ -10,8 +10,10 @@ pkgbase = squawk-cli
 	makedepends = openssl
 	depends = glibc
 	source = squawk-2.70.0.tar.gz::https://github.com/sbdchd/squawk/archive/refs/tags/v2.70.0.tar.gz
+	source = prevent-rebuild.patch
 	source = use-system-openssl.patch
 	sha256sums = 05355c8464a1f2c7d8791a77ccccade0babbb16c59ed6cdc5fd3610edd7858de
+	sha256sums = e63a32b66331fe4b8952b6e4e9153cb3c8789a5e1229353e7c25f1271bd4d14e
 	sha256sums = d524c128516732626fa14acff4ce74de3fcb275405a89130a0d5857d23b3c447
 
 pkgname = squawk-cli

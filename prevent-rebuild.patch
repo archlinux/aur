@@ -1,0 +1,11 @@
+--- crates/squawk/Cargo.toml	2026-10-15 17:05:08.909182347 +0200
++++ crates/squawk/Cargo.toml	2026-10-15 17:50:35.675114860 +0200
+@@ -1,7 +1,7 @@
+ [package]
+ name = "squawk"
+ version.workspace = true
+-default-run = "squawk"
++autobins = false
+ 
+ authors.workspace = true
+ edition.workspace = true
