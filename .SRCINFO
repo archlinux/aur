@@ -1,6 +1,6 @@
 pkgbase = botropolis
 	pkgdesc = Every Claude Code session on this machine, drawn as a city
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Botropolis-City/botropolis
 	install = botropolis.install
@@ -20,7 +20,7 @@ pkgbase = botropolis
 	optdepends = waybar: a status bar for `botropolis bar --watch`
 	conflicts = botropolis-bin
 	options = !debug
-	source = botropolis-0.1.6.tar.gz::https://github.com/Botropolis-City/botropolis/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = a870005dc46fe6c7dfa63535cc7268055cd94336c3b6d548c187c10b1e0f409f
+	source = botropolis-0.1.7.tar.gz::https://github.com/Botropolis-City/botropolis/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 1a414073511b735c95855dd4fdb2cb4dbd731a7d0fd2c9b230493f0daab3ae4d
 
 pkgname = botropolis
