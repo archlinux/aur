@@ -2,9 +2,9 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=1.8.0
-pkgrel=2
-pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
+pkgver=1.9.0
+pkgrel=1
+pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust; one install command for the repositories, the AUR, Flatpak and Snap. Arch Linux and Arch-based distributions; no desktop needed; works on a plain text console (tty)"
 arch=('x86_64')
 url="https://github.com/jetomev/nog"
 license=('GPL-3.0-or-later')
@@ -15,8 +15,8 @@ makedepends=('rust' 'cargo')
 optdepends=(
     'yay: AUR helper integration (preferred if installed)'
     'paru: AUR helper integration (alternative)'
-    'flatpak: Flatpak updates and installs (switched off when it is not installed)'
-    'snapd: Snap updates and installs (switched off when it is not installed)'
+    'flatpak: Flatpak apps installed, removed and updated through nog (offered when the install chain reaches it; off when absent)'
+    'snapd: snaps installed, removed and updated through nog (offered when the install chain reaches it; off when absent)'
 )
 # Preserve user modifications to these files across upgrades — pacman will
 # write .pacnew next to them instead of overwriting. Without this, running
@@ -31,7 +31,7 @@ options=('!debug')
 # signed GitHub release tarball for the tag being packaged.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('71e4db82a61926dbee4ff05906863e293be95b2402c56e01c83073e7a08d7a5d'
+sha256sums=('ff56889c5ef099eb461bd20f653faabba109d5a65da856df4b6a7c20dab47093'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
