@@ -1,6 +1,6 @@
 pkgbase = orzma-bin
 	pkgdesc = A terminal emulator that can render webviews inline
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/not-elm/orzma
 	arch = x86_64
@@ -35,11 +35,11 @@ pkgbase = orzma-bin
 	provides = orzbrowser
 	conflicts = orzma
 	options = !strip
-	source = README-0.3.0.md::https://raw.githubusercontent.com/not-elm/orzma/v0.3.0/README.md
-	source = LICENSE-0.3.0::https://raw.githubusercontent.com/not-elm/orzma/v0.3.0/LICENSE
-	sha256sums = f34fbee103d8f3e6b168eca5add52e7932abd9d816d7fcd0af326bbc21000ebe
+	source = README-0.4.0.md::https://raw.githubusercontent.com/not-elm/orzma/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/not-elm/orzma/v0.4.0/LICENSE
+	sha256sums = e56eedd1d2aa8b3ad033a5036626b8a00cfca168030d1d0a5c5f8fc9e11024be
 	sha256sums = af7d47a6b65781c7c7a0d74afb983b788a4243e75ad3c52e70fae08585a7de78
-	source_x86_64 = orzma-x86_64-0.3.0.deb::https://github.com/not-elm/orzma/releases/download/v0.3.0/orzma_0.3.0_amd64.deb
-	sha256sums_x86_64 = 43dd47c25b7ffe09b37e6de16cbd7dde1efc4c73e6369cbfc6cb0b3433166949
+	source_x86_64 = orzma-x86_64-0.4.0.deb::https://github.com/not-elm/orzma/releases/download/v0.4.0/orzma_0.4.0_amd64.deb
+	sha256sums_x86_64 = 28ce3b4bcb63f202c026b6a8ac10c70bb6978a34ea687ecc558103873805a8c9
 
 pkgname = orzma-bin
