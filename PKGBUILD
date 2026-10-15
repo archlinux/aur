@@ -1,7 +1,7 @@
 # Maintainer: Zine Yu zine.xlws@gmail.com
 
 pkgname=buck2-bin
-pkgver=2026.10.01
+pkgver=2026.10.15
 pkgrel=1
 pkgdesc="A large-scale build system from Meta, developed in Rust"
 arch=('x86_64' 'aarch64' 'riscv64gc')
@@ -23,9 +23,9 @@ source_x86_64=("buck2-${pkgver}-x86_64.zst::https://github.com/facebook/buck2/re
 source_aarch64=("buck2-${pkgver}-aarch64.zst::https://github.com/facebook/buck2/releases/download/$(_formatted_date)/buck2-aarch64-unknown-linux-gnu.zst")
 source_riscv64gc=("buck2-${pkgver}-riscv64gc.zst::https://github.com/facebook/buck2/releases/download/$(_formatted_date)/buck2-riscv64gc-unknown-linux-gnu.zst")
 
-sha256sums_x86_64=('828aba01bf80e8ba50ed27d89be86efe0246b3807c3d040e1ea7b4810a55fb78')
-sha256sums_aarch64=('8df3e94f569b1df74c905e26d18ea6bf6e64f946d0f0cbec90c7398bd33d1861')
-sha256sums_riscv64gc=('19a4fe2ecf6ae1019535c56e4519aff74b0da44a964eed9c87b05e4b5eae6115')
+sha256sums_x86_64=('f0f21a31ed2e2428b6a0b4722a82372861051002d4c0cc95db7906e33119e3a3')
+sha256sums_aarch64=('0d6b4420f5ccedcc46c9cca09183448c523c75efb37b0f8e627a63c344b3d80c')
+sha256sums_riscv64gc=('17840df63ae312105fc1af2d7c997eb35b460c79e68b91de9ae7f06eb3b5074e')
 
 
 case "$CARCH" in
