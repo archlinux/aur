@@ -2,7 +2,7 @@
 
 pkgname=papers-ofd
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='OFD (GB/T 33190-2016) document backend for GNOME Papers, on the rofd-ffi C ABI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/YangtseSu/papers-ofd'
@@ -22,22 +22,23 @@ depends=(
 # unneeded here.
 makedepends=(
   'gtk4'
+  'librofd-ffi>=0.4.3-6'  # check(): ofd-text compares the selection region with the ink rofd renders and requires the metrics band
   'meson'
   'poppler-glib'
 )
 # The space-bar preview in GNOME Files is Sushi's; our plugin only takes effect
 # where Sushi is installed (and gjs + Sushi make tests/test-sushi-plugin.js run).
 optdepends=('sushi: space-bar previews in GNOME Files')
-# 0.1.0 is not tagged yet, so the package pins the commit that finished plan §5
-# phase 3 (fd loading, packaging, and the Sushi plugin that makes the space-bar
-# preview work out of tree) plus the fix that makes the Sushi test stage its own
-# backend directory and MIME database: with the older pin, `check()` failed on a
-# rebuild where no papers-ofd was installed and no other package defined
-# application/ofd. Bump _commit with pkgver when a release tag exists; keep this
-# file identical to the AUR copy in the AUR repository.
-_commit=c1f05653e9e9bdd47e532973ceac1f5fde1581e7
+# 0.1.0 is not tagged yet, so the package pins the commit that carries the
+# phase-3 work plus the highlight-geometry tests: they compare the selection region
+# with the ink rofd renders and require the font-metric band and its eighth-height
+# margin, so `check()` needs librofd-ffi >= 0.4.3-6 (see makedepends) and a builder
+# with the older 0.4.3-5 library sees a failed test with an install hint. The module
+# binary itself is unchanged by that commit. Bump _commit with pkgver when a release
+# tag exists; keep this file identical to the AUR copy in the AUR repository.
+_commit=ffca9aaaeea0c7401982a61a36ad1c074d03c410
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/papers-ofd/archive/$_commit.tar.gz")
-sha256sums=('e5b5eec94b763ad1bb311ce971364c2b9afc152cd26b4e3d1ace5e4d52540559')
+sha256sums=('41ada59a41d864925a3819092375d2e14ffc46e1da948cacfe8305590edd1556')
 _dirname="papers-ofd-$_commit"
 
 build() {
