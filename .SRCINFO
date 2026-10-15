@@ -1,16 +1,16 @@
 pkgbase = fwci-bin
 	pkgdesc = CLI Tooling for FirmwareCI - binary distribution
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://firmware-ci.com/
 	depends = git
 	conflicts = fwci
 	provides = fwci-cli
 	arch = aarch64
-	source_aarch64 = fwci-bin_0.18.1_aarch64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v0.18.1/fwci-0.18.1.linux-arm64.tar.gz
-	sha256sums_aarch64 = ab8b83dd9c6624a2a04a1a953df9b9cd88108df704b695b1627795e98c3c668f
+	source_aarch64 = fwci-bin_0.18.2_aarch64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v0.18.2/fwci-0.18.2.linux-arm64.tar.gz
+	sha256sums_aarch64 = a8100409a54909639d8772b4a90fed7099ddaa76cea45b370612f1c0a59f287c
 	arch = x86_64
-	source_x86_64 = fwci-bin_0.18.1_x86_64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v0.18.1/fwci-0.18.1.linux-amd64.tar.gz
-	sha256sums_x86_64 = 23edb6ac5e13e303ea08b6bee2fdc9c904e48b399b4229c6f454b672016594d8
+	source_x86_64 = fwci-bin_0.18.2_x86_64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v0.18.2/fwci-0.18.2.linux-amd64.tar.gz
+	sha256sums_x86_64 = b971e50d07d27b0add9aedd74e171834a4bdab9933ea2300224f851e93e2b118
 	
 pkgname = fwci-bin
