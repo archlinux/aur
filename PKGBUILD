@@ -1,6 +1,6 @@
 # Maintainer: archix contributors <https://github.com/archix-org/archix>
 pkgname=archix-git
-pkgver=0.1.0.r57.gc22a7df
+pkgver=0.1.0.r63.gb8117cb
 pkgrel=1
 pkgdesc="Declarative, lockable, rollback-able system configuration for Arch Linux (latest commit)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   'flatpak: Flatpak apps'
 )
 provides=('archix')
-conflicts=('archix')
+conflicts=('archix' 'ax')
 # ARCHIX_BRANCH=<branch> makepkg -si builds an unmerged branch instead of main.
 source=("archix::git+https://github.com/archix-org/archix.git#branch=${ARCHIX_BRANCH:-main}")
 sha256sums=('SKIP')
@@ -58,6 +58,7 @@ check() {
 package() {
   cd archix
   install -Dm755 target/release/archix "$pkgdir/usr/bin/archix"
+  ln -s archix "$pkgdir/usr/bin/ax"
   install -Dm755 target/x86_64-unknown-linux-musl/release/archix "$pkgdir/usr/lib/archix/archix-static"
   install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

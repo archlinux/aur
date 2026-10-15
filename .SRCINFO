@@ -1,6 +1,6 @@
 pkgbase = archix-git
 	pkgdesc = Declarative, lockable, rollback-able system configuration for Arch Linux (latest commit)
-	pkgver = 0.1.0.r57.gc22a7df
+	pkgver = 0.1.0.r63.gb8117cb
 	pkgrel = 1
 	url = https://archix.dev
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = archix-git
 	optdepends = flatpak: Flatpak apps
 	provides = archix
 	conflicts = archix
+	conflicts = ax
 	options = !lto
 	options = !debug
 	source = archix::git+https://github.com/archix-org/archix.git#branch=main
