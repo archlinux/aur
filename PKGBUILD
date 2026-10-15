@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.44
-pkgver=1.0.0beta44
+_tag=v1.0.0-beta.45
+pkgver=1.0.0beta45
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -102,8 +102,11 @@ optdepends=(
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
 options=('!lto')
 install=bioma-shell.install
+# Kept if edited: turning the autostart off belongs in ~/.config/autostart,
+# but one switched off here must not come back with the next update.
+backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('fab99eaaf50a7262f79192af40c83e6abc5fd11999c4b21a9bf14ae811fde0d6')
+sha256sums=('62cb1f692146a2b7c017ea2cc3ce38286e19947897e1cc38d834651c6feb7938')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
@@ -151,6 +154,12 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 docs/configuration.md "$pkgdir/usr/share/doc/$pkgname/configuration.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Started at every niri login, so installing the package is enough for
+    # the first login to open the setup (OnlyShowIn=niri keeps it out of
+    # every other desktop).
+    install -Dm644 packaging/system/bioma-autostart.desktop \
+        "$pkgdir/etc/xdg/autostart/bioma.desktop"
 
     # Dictation pastes through a uinput keyboard: the seat's user gets
     # /dev/uinput, as steam-devices gives it for controllers.

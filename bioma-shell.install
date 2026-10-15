@@ -66,14 +66,16 @@ _greeter_remove() {
 post_install() {
     _uinput
     cat <<'MSG'
-==> Bioma is installed in /usr/share/bioma. Start it once, from a terminal
-    inside niri:
+==> Bioma is installed in /usr/share/bioma. It starts by itself at the next
+    niri login, and the first start walks you through the rest: the layout,
+    the look, its keys in niri's configuration, the login screen, and what is
+    still missing on this machine. Nothing outside Bioma's own files changes
+    until you say so there.
+
+    Already in niri, or starting niri from a TTY rather than a login manager?
+    Start it now from a terminal inside niri:
 
       bioma -d
-
-    It walks you through the rest: the layout, the look, its keys in niri's
-    configuration, the login screen, and what is still missing on this
-    machine. Nothing outside Bioma's own files changes until you say so there.
 
     For a terminal instead, `bioma-install --autostart` writes the keys and
     the includes, and `bioma-install --check` says what is missing.
