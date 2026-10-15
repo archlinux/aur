@@ -1,4 +1,4 @@
-# Maintainer: iswad-lab <iswad@lab.dev>
+# Maintainer: ismail-bahloul <iswadlillah@gmail.com>
 
 # TuxMix — Open-source TotalMix replacement for RME audio interfaces on Linux
 #
@@ -13,6 +13,9 @@ pkgrel=1
 pkgdesc="Open-source TotalMix replacement for RME audio interfaces on Linux"
 arch=('x86_64')
 url="https://github.com/ismail-bahloul/TuxMix"
+# The application crates are MIT, but tuxmix-gui links tuxmix-usb
+# (GPL-3.0-or-later) and tuxmix-sys (GPL-3.0), so the binaries this
+# package installs are GPL-3.0 as a whole. See the repo's LICENSE.
 license=('GPL3')
 depends=(
     'alsa-lib'
