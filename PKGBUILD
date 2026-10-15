@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-bin
-pkgver=2.22.3
+pkgver=2.22.4
 _electronversion=43
 pkgrel=1
 pkgdesc="An open-source desktop markup editor that supports webdav.一款支持webdav的开源桌面端markdown编辑器"
@@ -23,11 +23,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nlbwqmz/wj-markdown-editor/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a73bbf49c57b16309b7f0c4436798683e22fb47e8bf96510054790ee50a3e2aa'
+sha256sums=('be7c5c4dbe7da6a96bc6af2c7f6e49ad7a8f1ab06aa2577da7f4b95b200472c4'
             '4db85f2bcfa2b60623a893393a61158a562fd907cf1244a06f41fd11eb6f8605'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -44,24 +45,21 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir="$(_get_app_dir)"
-    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s|const documentsPath = app.isPackaged ? path.resolve(app.getPath('documents'), 'wj-markdown-editor') : app.getAppPath()|const documentsPath = path.resolve(app.getPath('userData'))|g" \
         "${srcdir}/app.asar.unpacked/src/data/recent.js"
-    # Fix configConstants.js: force true branch and use userData
     sed -i "s|return app.isPackaged|return true \|\| app.isPackaged|g" \
         "${srcdir}/app.asar.unpacked/src/data/config/configConstants.js"
     sed -i "s|app.getPath('documents'), 'wj-markdown-editor'|app.getPath('userData')|g" \
         "${srcdir}/app.asar.unpacked/src/data/config/configConstants.js"
     sed -i "s|app.getPath('documents'), 'wj-markdown-editor/logs'|app.getPath('userData'), 'logs'|g" \
         "${srcdir}/app.asar.unpacked/src/util/logUtil.js"
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
