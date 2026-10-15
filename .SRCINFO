@@ -1,6 +1,6 @@
 pkgbase = xrizer-git
 	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR
-	pkgver = 0.5.r24.g0989a7f
+	pkgver = 0.6.r5.g63fc7eb
 	pkgrel = 1
 	url = https://github.com/Supreeeme/xrizer
 	arch = x86_64
