@@ -1,0 +1,25 @@
+pkgbase = setsuna-bin
+	pkgdesc = Download in one Setsuna - Motrix & AriaNg alternative in one app.
+	pkgver = 1.0.213+0
+	pkgrel = 1
+	url = https://github.com/GT-610/setsuna
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = aria2
+	depends = libnotify
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	depends = ayatana-ido
+	depends = libsecret
+	provides = setsuna=1.0.213+0
+	conflicts = setsuna
+	source = setsuna.sh
+	sha256sums = 3fa20f85c87576bc9daa1db5d163def5aa239d040b7e308d747cc46bdd1b1713
+	source_aarch64 = setsuna-1.0.213+0-aarch64.deb::https://github.com/GT-610/setsuna/releases/download/v1.0.213+0/Setsuna_v1.0.213+0_linux_arm64.deb
+	sha256sums_aarch64 = dd0132bd357b49f84dcc800cf0107e2995f097a63ea94120419eed9de34b6779
+	source_x86_64 = setsuna-1.0.213+0-x86_64.deb::https://github.com/GT-610/setsuna/releases/download/v1.0.213+0/Setsuna_v1.0.213+0_linux_x64.deb
+	sha256sums_x86_64 = c5dd3e79c0934d26547f864da2eeda7aae44e70b3429bbc97e965c7dc0c5774a
+
+pkgname = setsuna-bin
