@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-export
 	pkgdesc = Telegram Desktop with export patches: media reused between exports, size limits per media type, no hangs on lost media
 	pkgver = 7.3.1
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/Remenod/telegram-desktop-export
 	arch = x86_64
 	license = GPL-3.0-or-later WITH OpenSSL-exception

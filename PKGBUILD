@@ -8,7 +8,7 @@ pkgname=telegram-desktop-export
 pkgver=7.3.1
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Telegram Desktop with export patches: media reused between exports, size limits per media type, no hangs on lost media'
 arch=('x86_64')
 url="https://github.com/Remenod/telegram-desktop-export"
@@ -149,4 +149,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  [[ -e "$pkgdir/usr/bin/telegram-desktop" ]] \
+    || ln -s Telegram "$pkgdir/usr/bin/telegram-desktop"
 }
