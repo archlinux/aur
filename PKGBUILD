@@ -1,6 +1,6 @@
 # Maintainer: Adria <adria@lightpanda.io>
 pkgname=lightpanda-nightly-bin
-pkgver=1.0.0+nightly.5301+a6a87527
+pkgver=1.1.0+nightly.10619+ed5a25e5d
 pkgrel=1
 pkgdesc="The headless browser designed for AI and data scripting (Nightly Build)"
 arch=('x86_64' 'aarch64')
