@@ -3,19 +3,19 @@
 
 pkgname='bzr-player'
 pkgver='2.0.94'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
-url="https://github.com/aargirakis/BZRPlayer"
+url="https://github.com/bzr-player/bzr-player"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'noto-fonts-cjk' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'git' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative'
   'sdl2-compat' 'vulkan-headers')
-source=("git+https://github.com/aargirakis/BZRPlayer.git#tag=$pkgver")
+source=("git+https://github.com/bzr-player/bzr-player.git#tag=$pkgver")
 sha256sums=('ff991fc3c01e250103ceda07d997eabd58b88ec4001089cd79f5e504503d4abd')
 
 build() {
-  cmake -B cmake-build -S BZRPlayer -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
+  cmake -B cmake-build -S "$pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
   ninja -C cmake-build
 }
 
@@ -30,8 +30,8 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
   done
 
-  install -Dm644 "BZRPlayer/src/inst/x-bzr-player.xml" "$pkgdir/usr/share/mime/packages/x-bzr-player.xml"
-  mapfile -t mime_types_supported <"BZRPlayer/src/inst/supported_mime_types"
+  install -Dm644 "$pkgname/src/inst/x-bzr-player.xml" "$pkgdir/usr/share/mime/packages/x-bzr-player.xml"
+  mapfile -t mime_types_supported <"$pkgname/src/inst/supported_mime_types"
 
   for mime_type in "${mime_types_supported[@]}"; do
     desktop_entry_mime_types="$desktop_entry_mime_types$mime_type;"
