@@ -1,0 +1,9 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar.zst
+*.log
+
+# downloaded sources (release tarball + signature, pinned by sha256 in PKGBUILD)
+*.tar.xz
+*.tar.xz.asc
