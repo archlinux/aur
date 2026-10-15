@@ -1,6 +1,6 @@
 pkgbase = hinoirisetr
 	pkgdesc = A lightweight daemon that automatically adjusts your screen's color temperature and gamma based on the time of day
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://git.vavakado.xyz/me/hinoirisetr.git
 	arch = i686

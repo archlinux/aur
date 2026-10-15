@@ -2,8 +2,8 @@
 # Maintainer: a-catgirl <paws@a-catgirl.dev>
 
 pkgname=hinoirisetr
-pkgver=1.6.4
-_pkgver=1.6.4
+pkgver=1.6.5
+_pkgver=1.6.5
 pkgrel=1
 pkgdesc="A lightweight daemon that automatically adjusts your screen's color temperature and gamma based on the time of day"
 arch=("i686" "x86_64" "aarch64")
