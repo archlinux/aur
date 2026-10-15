@@ -1,7 +1,7 @@
 pkgbase = uu-remote-bin
 	pkgdesc = 非官方 UU 远程 Linux 被控端，纯 Rust 实现，可用官方客户端远程控制 Linux 桌面
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/VallierDev/uu-remote-linux
 	install = uu-remote-bin.install
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = uu-remote-bin
 	optdepends = nvidia-utils: NVENC hardware encoding on NVIDIA GPUs
 	provides = uu-remote
 	conflicts = uu-remote
-	source_x86_64 = uu-remote-linux-v0.1.5-x86_64-linux.tar.gz::https://github.com/VallierDev/uu-remote-linux/releases/download/v0.1.5/uu-remote-linux-v0.1.5-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 7e3ce5a6cdd72bf678e5ebe324e1b633b9487fe281c13a202d56ff4207886e66
+	source = uu-remote-native.service
+	sha256sums = 910d0627d7b1b7edc2408d9def0dacecf92db01e43c094f10f250a22e7efbdc6
+	source_x86_64 = uu-remote-linux-v0.1.6-x86_64-linux.tar.gz::https://github.com/VallierDev/uu-remote-linux/releases/download/v0.1.6/uu-remote-linux-v0.1.6-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 2bad52885196d991b4217e1af0d097a3333a790477ca9f87a2e298c3e42c8c22
 
 pkgname = uu-remote-bin

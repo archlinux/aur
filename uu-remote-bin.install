@@ -9,28 +9,15 @@ uu-remote-bin — 非官方 UU 远程 Linux 被控端
 
 登录凭证保存在 ~/.config/uuremote/config.json（权限 0600）。
 
-如需开机常驻，创建用户服务 ~/.config/systemd/user/uuremote-native.service：
-
-    [Unit]
-    Description=UU Remote Linux host (unofficial)
-    After=graphical-session.target
-
-    [Service]
-    Environment=RUST_LOG=info
-    Environment=DISPLAY=:0
-    ExecStart=/usr/bin/uuremote-server
-    Restart=always
-    RestartSec=5
-
-    [Install]
-    WantedBy=default.target
-
-然后：
+如需开机常驻（包已附带用户服务），启用即可：
 
     systemctl --user daemon-reload
-    systemctl --user enable --now uuremote-native.service
+    systemctl --user enable --now uu-remote-native.service
 
-X11 桌面需设置正确的 DISPLAY；GNOME 的 XAUTHORITY 通常在 /run/user/<uid>/gdm/Xauthority。
+查看日志：journalctl --user -u uu-remote-native.service -f
+
+X11 桌面需设置正确的 DISPLAY（默认 :0）；GNOME 的 XAUTHORITY 通常在
+/run/user/<uid>/gdm/Xauthority，可用 Environment= 追加到服务中。
 用官方 Mac / Windows / 手机客户端扫码登录后，本机即出现在设备列表中。
 
 EOF
