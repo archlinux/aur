@@ -1,0 +1,29 @@
+pkgbase = squelch
+	pkgdesc = Push-to-talk speech-to-text on GPU: Parakeet/Whisper, mic-array beamforming, Menu-key dictation
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ieatfood314/squelch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = spirv-headers
+	depends = python
+	depends = python-evdev
+	depends = python-numpy
+	depends = python-pyqt6
+	depends = ydotool
+	depends = wl-clipboard
+	depends = libnotify
+	depends = pipewire
+	depends = vulkan-icd-loader
+	depends = kanata
+	optdepends = python-huggingface_hub: alternative model downloads
+	options = !debug
+	source = squelch-0.2.0.tar.gz::https://github.com/ieatfood314/squelch/archive/refs/tags/v0.2.0.tar.gz
+	source = whisper.cpp::git+https://github.com/ggml-org/whisper.cpp.git#commit=0c7be696371069e0baa2515ed7aa08d5a5473aa6
+	sha256sums = b57b9fc5b0d79ab3dd3d144ccf9e8c2c3de38504dbef253ecde35cc724f2f54e
+	sha256sums = SKIP
+
+pkgname = squelch
