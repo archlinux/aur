@@ -3,7 +3,7 @@
 # Maintainer: Damien Flament <damien dot flament at zoho dot com>
 
 pkgname='tine-outliner'
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A fast, local, Logseq-compatible outliner"
 url='https://tine.page/'
@@ -16,7 +16,7 @@ depends=('gtk3' 'gdk-pixbuf2' 'libgcc' 'libsoup3' 'webkit2gtk-4.1' 'dbus' 'libx1
 conflicts=('tine-outliner-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/martinkoutecky/tine/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('abc2a4cfda7591496fcdb70da30b7b186204d9dcf900bb446b335539956985f4')
+sha256sums=('ea9117a5a01cc17230ec95f6794193be1e366b537cf56e232dbbf3bff2876fd5')
 
 function prepare {
   cd "tine-${pkgver}" || return
