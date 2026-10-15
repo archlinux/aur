@@ -1,11 +1,13 @@
 pkgbase = papers-ofd
 	pkgdesc = OFD (GB/T 33190-2016) document backend for GNOME Papers, on the rofd-ffi C ABI
 	pkgver = 51.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YangtseSu/papers-ofd
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
+	checkdepends = noto-fonts
+	checkdepends = noto-fonts-cjk
 	makedepends = gtk4
 	makedepends = librofd-ffi>=0.4.3-6
 	makedepends = meson

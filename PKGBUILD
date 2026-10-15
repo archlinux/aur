@@ -2,7 +2,7 @@
 
 pkgname=papers-ofd
 pkgver=51.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='OFD (GB/T 33190-2016) document backend for GNOME Papers, on the rofd-ffi C ABI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/YangtseSu/papers-ofd'
@@ -28,6 +28,15 @@ makedepends=(
 )
 # The space-bar preview in GNOME Files is Sushi's; our plugin only takes effect
 # where Sushi is installed (and gjs + Sushi make tests/test-sushi-plugin.js run).
+# The suite measures the geometry of text the fixtures draw with a *system* font
+# (rofd resolves fonts through fontdb, not fontconfig, so no environment variable
+# hides a missing one), and tests/test-ofd-text.c names the missing package instead
+# of failing an opaque assertion. Declared here rather than in makedepends: they
+# are only needed while check() runs.
+checkdepends=(
+  'noto-fonts'      # the Latin pages
+  'noto-fonts-cjk'  # the CJK page of the text fixture
+)
 optdepends=('sushi: space-bar previews in GNOME Files')
 # The source is the release tag. Upstream versions the module by the Papers line
 # rather than by its own feature count (papers-ofd plan D13): 51.1.1 is the
