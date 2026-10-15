@@ -1,0 +1,11 @@
+/docker/
+/.dockerignore
+/src/
+/pkg/
+/docker-out/
+/.docker-build.*/
+/.asset-cache/
+__pycache__/
+*.py[cod]
+*.pkg.tar.*
+*.log

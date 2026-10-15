@@ -1,0 +1,10 @@
+The exact English license documents extracted from the official Apple New York and SF downloads are installed alongside this notice under this directory. Read the license for each font family before use.
+
+Apple publishes the downloads and license information at:
+https://developer.apple.com/fonts/
+
+Read and accept the applicable license terms before using any font. Installing this package does not record license acceptance or grant additional usage rights. If you do not accept the terms, do not use the fonts and remove the package.
+
+The New York and SF font licenses restrict use to specified Apple-platform design and development purposes and prohibit use for non-Apple operating systems. macOS system fonts and downloadable fonts remain subject to their respective Apple and third-party terms. macOS license agreements are available at https://www.apple.com/legal/sla/ .
+
+The AUR repository contains only the build recipe and helper source code. Font files and Apple installer licenses are downloaded directly from Apple when the package is built; they are not uploaded to AUR.

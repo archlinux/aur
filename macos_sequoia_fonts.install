@@ -1,0 +1,39 @@
+post_install() {
+  cat <<'NOTICE'
+==> Apple font licenses: read and accept the applicable terms BEFORE USE.
+    License files: /usr/share/licenses/macos-sequoia-fonts/
+    Apple font information: https://developer.apple.com/fonts/
+    macOS license agreements: https://www.apple.com/legal/sla/
+    Installing this package does not grant additional font usage rights.
+    Read the license files before confirming. If you decline, do not use
+    the fonts. Pacman does not roll back files on a scriptlet error;
+    remove the package with: pacman -R macos-sequoia-fonts
+NOTICE
+  if ! { : < /dev/tty; } 2>/dev/null; then
+    printf '%s\n' 'ERROR: License NOT accepted: an interactive terminal is required.' >&2
+    return 1
+  fi
+  local response
+  while true; do
+    printf '%s' 'Type ACCEPT to confirm you have read and accept the applicable licenses, or DECLINE: ' > /dev/tty
+    if ! IFS= read -r response < /dev/tty; then
+      printf '\n%s\n' 'ERROR: License NOT accepted: no confirmation received.' >&2
+      return 1
+    fi
+    case "$response" in
+      ACCEPT)
+        printf '%s\n' 'Apple font license acceptance confirmed for this installation.'
+        return 0
+        ;;
+      DECLINE)
+        printf '%s\n' 'ERROR: License NOT accepted. Do not use these fonts; remove macos-sequoia-fonts.' >&2
+        return 1
+        ;;
+      *) printf '%s\n' 'No acceptance recorded. Enter exactly ACCEPT or DECLINE.' > /dev/tty ;;
+    esac
+  done
+}
+
+post_upgrade() {
+  post_install
+}
