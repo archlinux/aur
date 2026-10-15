@@ -2,7 +2,7 @@
 
 pkgname=dgop-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.6.r0.g0e85650
+pkgver=1.6.2.r4.gea79945
 pkgrel=1
 pkgdesc='System monitoring CLI + REST API (git snapshot)'
 arch=(x86_64 aarch64 armv7h)
@@ -34,7 +34,7 @@ build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o $_pkgname ./cmd/cli
+	go build -o $_pkgname ./cmd/dgop
 }
 
 check() {
