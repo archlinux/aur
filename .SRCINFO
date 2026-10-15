@@ -1,7 +1,7 @@
 pkgbase = cloneholio
-	pkgdesc = CLI for the AWeber API
+	pkgdesc = Maintain local backups of *all Git repositories* belonging to a user or group.
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrewrabert/cloneholio
 	arch = aarch64
 	arch = x86_64

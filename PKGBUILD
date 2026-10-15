@@ -2,8 +2,8 @@
 
 pkgname=cloneholio
 pkgver=0.17.0
-pkgrel=1
-pkgdesc="CLI for the AWeber API"
+pkgrel=2
+pkgdesc="Maintain local backups of *all Git repositories* belonging to a user or group."
 url="https://github.com/andrewrabert/cloneholio"
 depends=()
 makedepends=('cargo')
@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/aweber" "$pkgdir/usr/bin/aweber"
+  install -Dm755 "target/release/cloneholio" "$pkgdir/usr/bin/cloneholio"
 }
