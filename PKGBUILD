@@ -3,7 +3,7 @@
 _pkgbase="gasket"
 pkgname="$_pkgbase-dkms-git"
 pkgver=r236.5815ee3
-pkgrel=2
+pkgrel=4
 pkgdesc='Google Coral driver for PCIe-based Edge TPU devices, such as the M.2 and Mini PCIe Accelerator, Git version'
 arch=('x86_64')
 url='https://coral.withgoogle.com/'
