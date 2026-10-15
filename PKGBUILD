@@ -1,15 +1,25 @@
 # Maintainer: 5unekku <jimmy.bungalo8@gmail.com>
 
-pkgname=monsoon-git
-_pkgname=monsoon
-pkgver=r44.fe34af5
+_pkgname='monsoon'
+pkgname="${_pkgname}-git"
+pkgver='r201.7c8bd8b'
 pkgrel=1
-pkgdesc="bittorrent client (daemon + cli + tui) built on libtorrent-rasterbar"
-arch=('x86_64' 'aarch64')
-url="https://gitlab.com/5unekku/monsoon"
+pkgdesc='bittorrent client (daemon + cli + tui) built on libtorrent-rasterbar'
+arch=('any')
+url='https://gitlab.com/5unekku/monsoon'
 license=('GPL-3.0-only')
-depends=('libtorrent-rasterbar' 'gcc-libs' 'glibc' 'curl')
-makedepends=('git' 'rust' 'boost' 'clang')
+depends=(
+	'libtorrent-rasterbar'
+	'gcc-libs'
+	'glibc'
+	'curl'
+)
+makedepends=(
+	'git'
+	'rust'
+	'boost'
+	'clang'
+)
 optdepends=(
     'systemd: user service included — enable with: systemctl --user enable --now monsoon'
 )
@@ -41,18 +51,20 @@ build() {
     # ── env diagnostics (printed to stderr) ──────────────────────────────
     # makes cross-machine failures easier to triage. cheap; runs once.
     {
-        echo "[monsoon-git build env]"
-        echo "  rustc:       $(rustc --version 2>&1 || echo unknown)"
-        echo "  cargo:       $(cargo --version 2>&1 || echo unknown)"
-        echo "  cc:          $(cc --version 2>&1 | head -1 || echo unknown)"
-        echo "  c++:         $(c++ --version 2>&1 | head -1 || echo unknown)"
-        echo "  libtorrent:  $(pkg-config --modversion libtorrent-rasterbar 2>/dev/null || echo 'pkg-config miss')"
-        echo "  boost hdrs:  $(test -f /usr/include/boost/config.hpp && echo present || echo MISSING)"
-        echo "  RUSTFLAGS:   ${RUSTFLAGS:-(unset)}"
-        echo "  CFLAGS:      ${CFLAGS:-(unset)}"
-        echo "  CXXFLAGS:    ${CXXFLAGS:-(unset)}"
-        echo "  LDFLAGS:     ${LDFLAGS:-(unset)}"
-        echo "  CARGO_PROFILE_RELEASE_LTO: ${CARGO_PROFILE_RELEASE_LTO:-(unset)}"
+        cat <<- EOF
+        [monsoon-git build env]
+          rustc:       $(rustc --version 2>&1 || echo unknown)
+          cargo:       $(cargo --version 2>&1 || echo unknown)
+          cc:          $(cc --version 2>&1 | head -1 || echo unknown)
+          c++:         $(c++ --version 2>&1 | head -1 || echo unknown)
+          libtorrent:  $(pkg-config --modversion libtorrent-rasterbar 2>/dev/null || echo 'pkg-config miss')
+          boost hdrs:  $(test -f /usr/include/boost/config.hpp && echo present || echo MISSING)
+          RUSTFLAGS:   ${RUSTFLAGS:-(unset)}
+          CFLAGS:      ${CFLAGS:-(unset)}
+          CXXFLAGS:    ${CXXFLAGS:-(unset)}
+          LDFLAGS:     ${LDFLAGS:-(unset)}
+          CARGO_PROFILE_RELEASE_LTO: ${CARGO_PROFILE_RELEASE_LTO:-(unset)}
+        EOF
     } >&2
 
     # belt-and-suspenders against env-injected RUSTFLAGS / LTO settings.
