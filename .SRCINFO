@@ -1,6 +1,6 @@
 pkgbase = netbird
-	pkgver = 0.80.0
-	pkgrel = 1
+	pkgver = 0.81.0
+	pkgrel = 2
 	url = https://netbird.io
 	arch = i686
 	arch = pentium4
@@ -11,9 +11,9 @@ pkgbase = netbird
 	arch = aarch64
 	arch = riscv64
 	makedepends = go
-	source = netbird-0.80.0.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.80.0.tar.gz
+	source = netbird-0.81.0.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.81.0.tar.gz
 	source = netbird-server.service
-	sha256sums = ab453b7d015fd657c912c40986868784f77c3460f296dc07bc2c7f07f4bce7b7
+	sha256sums = 62ffeb81c9eda603de04afc1e15789109eb5295dca8429d0c111d1e7d9eb908c
 	sha256sums = 6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9
 
 pkgname = netbird

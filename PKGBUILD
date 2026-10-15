@@ -7,7 +7,7 @@ pkgname=(
   $pkgbase-server
 )
 pkgver=0.81.0
-pkgrel=1
+pkgrel=2
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 makedepends=('go')
