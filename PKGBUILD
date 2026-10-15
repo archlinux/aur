@@ -19,13 +19,14 @@
 # rename (verified against the 0164 worktree). If the dist name ever changes,
 # update `_bitty_asset` here and in `release.yml` together.
 pkgname=bitty-bin
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/bitty-terminal/bitty"
 license=('MIT' 'Apache-2.0')
 depends=('fontconfig' 'freetype2')
+makedepends=('ncurses')
 optdepends=('noto-fonts: fallback font')
 provides=('bitty')
 conflicts=('bitty' 'bitty-nightly' 'bitty-git')
@@ -35,7 +36,7 @@ source_x86_64=(
   "bitty-${pkgver}.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums_x86_64=(
-  '00140625136da64afaf7b7628988a318a3f2ac0279add039bd8ff10ffcbafebf'
+  '17b66174d73d2c45a6aee7767cff5a340d8b0e256b41e132f44963bf32ee79ca'
   'SKIP'
 )
 
@@ -51,4 +52,6 @@ package() {
     install -Dm644 "packaging/icons/hicolor/${size}x${size}/apps/bitty.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
   done
   install -Dm644 packaging/icons/hicolor/scalable/apps/bitty.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitty.svg"
+  # Terminfo (CTX-1121 #1764): compile canonical source; never install raw .ti.
+  tic -x -o "$pkgdir/usr/share/terminfo" terminfo/bitty.ti
 }
