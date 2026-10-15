@@ -1,5 +1,4 @@
 [session-desktop]
-source = "github"
-github = "session-foundation/session-desktop"
-use_max_tag = true
+source = "git"
+git = "https://github.com/session-foundation/session-desktop.git"
 prefix = "v"

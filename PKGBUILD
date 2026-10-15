@@ -2,21 +2,21 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
-pkgdesc="A Decentralized, Onion Routed, Private Messenger"
+pkgdesc="A decentralized, onion routed, private messenger"
 arch=('x86_64')
 url="https://getsession.org"
 license=('GPL-3.0-only')
 _electron=electron40
-depends=('bash' "${_electron}" 'glib2' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'libvips' 'python')
-makedepends=('cmake' 'git' 'nvm' 'pnpm')
+depends=('bash' "${_electron}" 'glib2' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'libvips' 'nodejs')
+makedepends=('chrpath' 'cmake' 'git' 'nvm' 'pnpm')
 source=("git+https://github.com/session-foundation/session-desktop.git#tag=v${pkgver}"
         "git+https://github.com/session-foundation/session-localization.git"
         "git+https://github.com/session-foundation/session-desktop-dynamic-assets.git"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('5ba6f339aa3a14b6b106d500a17b638e15588e2688d707d02d203a1235e1c878'
+sha256sums=('6e41627bf2083fca98e1f0a7d37333754e2738d735ca65f86e3c30371eefa2ce'
             'SKIP'
             'SKIP'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
@@ -47,12 +47,11 @@ build() {
     _ensure_local_nvm
 
     cd "${pkgname}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export NODE_ENV=production
     export SHARP_FORCE_GLOBAL_LIBVIPS=1
     pnpm install --frozen-lockfile
     pnpm run build
-    pnpm electron-builder --linux --dir \
+    pnpm exec electron-builder --linux dir \
         --config.extraMetadata.environment=production \
         --config.electronDist="/usr/lib/${_electron}" \
         --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
@@ -60,7 +59,6 @@ build() {
 
 package() {
     cd "${pkgname}"
-    install -d "${pkgdir}/usr/lib"
     install -Dm644 release/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r release/linux-unpacked/resources/{app.asar.unpacked,dynamic_assets} "${pkgdir}/usr/lib/${pkgname}"
     for i in 16 32 48 64 128 256 512 1024; do
@@ -68,4 +66,8 @@ package() {
     done
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+
+    for file in sharp-linux{-sse2,}-x64; do
+        chrpath --delete "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/node_modules/@img/${file}/lib/${file}.node"
+    done
 }
