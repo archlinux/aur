@@ -1,6 +1,6 @@
 pkgbase = anthropic-cli-bin
 	pkgdesc = The official CLI for the Claude API (ant)
-	pkgver = 1.21.0
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://github.com/anthropics/anthropic-cli
 	arch = x86_64
@@ -8,20 +8,20 @@ pkgbase = anthropic-cli-bin
 	arch = i686
 	arch = armv6h
 	license = MIT
-	provides = anthropic-cli=1.21.0
+	provides = anthropic-cli=1.41.0
 	conflicts = anthropic-cli
 	conflicts = ant
 	options = !strip
 	options = !debug
-	source = LICENSE-1.21.0::https://raw.githubusercontent.com/anthropics/anthropic-cli/v1.21.0/LICENSE
+	source = LICENSE-1.41.0::https://raw.githubusercontent.com/anthropics/anthropic-cli/v1.41.0/LICENSE
 	sha256sums = 8bf96984ff8bcfae7e48cae76a529e8a25317ba9e02abf7fd3cc64fdf95657a6
-	source_x86_64 = anthropic-cli-1.21.0-x86_64.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.21.0/ant_1.21.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = dabd2c9425b18052ca6a610c1ecbdbabcd4c3cca409df943d264ad5e9969bb98
-	source_aarch64 = anthropic-cli-1.21.0-aarch64.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.21.0/ant_1.21.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5e2f1fce4ac714c71a48a50fb43f57d45dbf7012f7bfb7ca6c05e160bb29ad02
-	source_i686 = anthropic-cli-1.21.0-i686.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.21.0/ant_1.21.0_linux_386.tar.gz
-	sha256sums_i686 = b3c90e8286ab16b4750c2c514c005cc10ff18f13b726096d5d9b93300c9eab6a
-	source_armv6h = anthropic-cli-1.21.0-armv6h.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.21.0/ant_1.21.0_linux_armv6.tar.gz
-	sha256sums_armv6h = 56e7beb4492370faa4f375fa99a484fdbf0d6edeb96ff41ffcbbb3f02d528c77
+	source_x86_64 = anthropic-cli-1.41.0-x86_64.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.41.0/ant_1.41.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 464df887f9371df822637ccd949e0f82553c53d25994b75207124870891b3931
+	source_aarch64 = anthropic-cli-1.41.0-aarch64.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.41.0/ant_1.41.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ad48ba9216bb7dd4860e84772f1e99153ba319c56bdc4d1aabb28433b7ec24ce
+	source_i686 = anthropic-cli-1.41.0-i686.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.41.0/ant_1.41.0_linux_386.tar.gz
+	sha256sums_i686 = 510ff4f6c820c107ac1031fc3381111f37e0a08698d0c7b75a282102d033f99f
+	source_armv6h = anthropic-cli-1.41.0-armv6h.tar.gz::https://github.com/anthropics/anthropic-cli/releases/download/v1.41.0/ant_1.41.0_linux_armv6.tar.gz
+	sha256sums_armv6h = ec4b48f22cec65b52e69c5aebe7099edd816e38103b243902a43106eca7741af
 
 pkgname = anthropic-cli-bin
