@@ -1,14 +1,14 @@
 # Maintainer: Zachary M <minein12 at protonmail dot com>
 
 pkgname='min-ed-launcher'
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Minimal Elite Dangerous Launcher'
 url='https://github.com/rfvgyhn/min-ed-launcher'
 arch=('x86_64')
 license=(MIT)
 makedepends=(
-    'dotnet-sdk-8.0-bin'
+    'dotnet-sdk-bin'
 )
 depends=(
     'zlib-ng-compat'
@@ -16,7 +16,7 @@ depends=(
     'libstdc++'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6cac04e1d5e6161465ddefeb1c360c5ecd68892e43aab928cf886ca0da9fe424')
+sha256sums=('3d235419414a9a70a3a728aef8663241d72ba898c0b9c17dceabfda390a911a3')
 install=${pkgname}.install
 options=(!strip)
 
