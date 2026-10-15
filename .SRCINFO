@@ -1,11 +1,10 @@
 pkgbase = monsoon-git
 	pkgdesc = bittorrent client (daemon + cli + tui) built on libtorrent-rasterbar
-	pkgver = r44.fe34af5
+	pkgver = r201.7c8bd8b
 	pkgrel = 1
 	url = https://gitlab.com/5unekku/monsoon
 	install = monsoon.install
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = rust

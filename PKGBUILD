@@ -21,7 +21,7 @@ makedepends=(
 	'clang'
 )
 optdepends=(
-    'systemd: user service included — enable with: systemctl --user enable --now monsoon'
+	'systemd: user service included — enable with: systemctl --user enable --now monsoon'
 )
 install=monsoon.install
 provides=("${_pkgname}")
@@ -34,68 +34,68 @@ source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    # cargo version + commit count since tag + short hash
-    # produces something like 0.1.0.r42.gabc1234
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${pkgname}"
+	# cargo version + commit count since tag + short hash
+	# produces something like 0.1.0.r42.gabc1234
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "${pkgname}"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cd "${pkgname}"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${pkgname}"
+	cd "${pkgname}"
 
-    # ── env diagnostics (printed to stderr) ──────────────────────────────
-    # makes cross-machine failures easier to triage. cheap; runs once.
-    {
-        cat <<- EOF
-        [monsoon-git build env]
-          rustc:       $(rustc --version 2>&1 || echo unknown)
-          cargo:       $(cargo --version 2>&1 || echo unknown)
-          cc:          $(cc --version 2>&1 | head -1 || echo unknown)
-          c++:         $(c++ --version 2>&1 | head -1 || echo unknown)
-          libtorrent:  $(pkg-config --modversion libtorrent-rasterbar 2>/dev/null || echo 'pkg-config miss')
-          boost hdrs:  $(test -f /usr/include/boost/config.hpp && echo present || echo MISSING)
-          RUSTFLAGS:   ${RUSTFLAGS:-(unset)}
-          CFLAGS:      ${CFLAGS:-(unset)}
-          CXXFLAGS:    ${CXXFLAGS:-(unset)}
-          LDFLAGS:     ${LDFLAGS:-(unset)}
-          CARGO_PROFILE_RELEASE_LTO: ${CARGO_PROFILE_RELEASE_LTO:-(unset)}
-        EOF
-    } >&2
+	# ── env diagnostics (printed to stderr) ──────────────────────────────
+	# makes cross-machine failures easier to triage. cheap; runs once.
+	{
+		cat <<- EOF
+		[monsoon-git build env]
+		  rustc:       $(rustc --version 2>&1 || echo unknown)
+		  cargo:       $(cargo --version 2>&1 || echo unknown)
+		  cc:          $(cc --version 2>&1 | head -1 || echo unknown)
+		  c++:         $(c++ --version 2>&1 | head -1 || echo unknown)
+		  libtorrent:  $(pkg-config --modversion libtorrent-rasterbar 2>/dev/null || echo 'pkg-config miss')
+		  boost hdrs:  $(test -f /usr/include/boost/config.hpp && echo present || echo MISSING)
+		  RUSTFLAGS:   ${RUSTFLAGS:-(unset)}
+		  CFLAGS:      ${CFLAGS:-(unset)}
+		  CXXFLAGS:    ${CXXFLAGS:-(unset)}
+		  LDFLAGS:     ${LDFLAGS:-(unset)}
+		  CARGO_PROFILE_RELEASE_LTO: ${CARGO_PROFILE_RELEASE_LTO:-(unset)}
+		EOF
+	} >&2
 
-    # belt-and-suspenders against env-injected RUSTFLAGS / LTO settings.
-    # options=('!lto') above tells makepkg not to add LTO flags; these
-    # additionally override anything in ~/.cargo/config.toml or shell env
-    # that might re-enable it. C/asm ffi (ring, our libtorrent bridge)
-    # silently lose symbols under LTO.
-    unset RUSTFLAGS CARGO_BUILD_RUSTFLAGS
-    export CARGO_PROFILE_RELEASE_LTO=off
-    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
+	# belt-and-suspenders against env-injected RUSTFLAGS / LTO settings.
+	# options=('!lto') above tells makepkg not to add LTO flags; these
+	# additionally override anything in ~/.cargo/config.toml or shell env
+	# that might re-enable it. C/asm ffi (ring, our libtorrent bridge)
+	# silently lose symbols under LTO.
+	unset RUSTFLAGS CARGO_BUILD_RUSTFLAGS
+	export CARGO_PROFILE_RELEASE_LTO=off
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
 
-    export RUSTUP_TOOLCHAIN=stable
-    # cache target/ OUTSIDE paru's clone dir. paru runs `git clean -fdx`
-    # between -S invocations, which would wipe an in-tree target/ on every
-    # build. parking it under $HOME/.cache/cargo-builds/ lets cargo's
-    # incremental + dep cache survive reinstalls. typical second build
-    # with no source change <5s; with small edits <30s. first build still
-    # pays the full ~2min compile.
-    #
-    # one-time recovery if cargo's state ever gets corrupt:
-    #   rm -rf ~/.cache/cargo-builds/monsoon-git
-    export CARGO_TARGET_DIR="${HOME}/.cache/cargo-builds/monsoon-git"
-    mkdir -p "${CARGO_TARGET_DIR}"
-    cargo build --frozen --release
+	export RUSTUP_TOOLCHAIN=stable
+	# cache target/ OUTSIDE paru's clone dir. paru runs `git clean -fdx`
+	# between -S invocations, which would wipe an in-tree target/ on every
+	# build. parking it under $HOME/.cache/cargo-builds/ lets cargo's
+	# incremental + dep cache survive reinstalls. typical second build
+	# with no source change <5s; with small edits <30s. first build still
+	# pays the full ~2min compile.
+	#
+	# one-time recovery if cargo's state ever gets corrupt:
+	#   rm -rf ~/.cache/cargo-builds/monsoon-git
+	export CARGO_TARGET_DIR="${HOME}/.cache/cargo-builds/monsoon-git"
+	mkdir -p "${CARGO_TARGET_DIR}"
+	cargo build --frozen --release
 }
 
 package() {
-    cd "${pkgname}"
-    install -Dm755 "${HOME}/.cache/cargo-builds/monsoon-git/release/${_pkgname}" \
-        "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 contrib/systemd/monsoon.service \
-        "${pkgdir}/usr/lib/systemd/user/monsoon.service"
+	cd "${pkgname}"
+	install -Dm755 "${HOME}/.cache/cargo-builds/monsoon-git/release/${_pkgname}" \
+		"${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 contrib/systemd/monsoon.service \
+		"${pkgdir}/usr/lib/systemd/user/monsoon.service"
 }
