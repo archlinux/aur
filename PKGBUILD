@@ -14,15 +14,18 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/php/frankenphp/archive/
 sha256sums=('6bcb8fdb414899cfb74e712c552771ec31cbe14d07ec767ce6a3aa671b54ab36')
 
 build() {
-	cd "frankenphp-${pkgver}/caddy/frankenphp/"
-	export CGO_CFLAGS="$(php-config --includes) ${CFLAGS}"
-	export CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs) ${LDFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
+	# like yay's PKGBUILD
+	export GOPATH="${srcdir}/gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="$(php-config --includes) ${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs) ${LDFLAGS}"
 	export GOFLAGS="-trimpath -buildmode=pie"
+
+	cd "${pkgname}-${pkgver}/caddy/frankenphp/"
 	go build -tags=nobadger,nomysql,nopgx,deprecated_topic,deprecated_claim
 }
 
 package() {
-	install -Dm755 "frankenphp-$pkgver/caddy/frankenphp/frankenphp" "$pkgdir/usr/bin/frankenphp"
+	install -Dm755 "${pkgname}-${pkgver}/caddy/frankenphp/frankenphp" "${pkgdir}/usr/bin/frankenphp"
 }
