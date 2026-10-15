@@ -1,8 +1,9 @@
 pkgbase = wlan-auto-login-bin
 	pkgdesc = CLI and TUI for automatic Student_CX campus Wi-Fi login (prebuilt binary)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SEUCXCS/wlan-auto-login
+	install = wlan-auto-login-bin.install
 	arch = x86_64
 	license = MIT
 	depends = dbus

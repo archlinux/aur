@@ -1,0 +1,32 @@
+post_install() {
+    printf '%s\n' \
+        'WLAN Auto Login: install or update the background service manually.' \
+        'Choose ONE scope; use the original scope when updating an existing service:' \
+        '  User (run as your desktop user): wlanlogin --user service install' \
+        '  System: sudo wlanlogin --system service install' \
+        '' \
+        'User credentials require a running, unlocked Secret Service (GNOME Keyring, KWallet, etc.).' \
+        'The background service cannot show wallet unlock or authorization dialogs.' \
+        'Unlock the wallet in your desktop, or run: wlanlogin --user login' \
+        '' \
+        'Standard desktops normally need no additional session setup.' \
+        'On custom desktops without standard session targets, after the graphical session is ready, run:' \
+        '  wlanlogin --user service session-ready' \
+        'Repeat this after restarting the daemon; before logout, you may run:' \
+        '  wlanlogin --user service session-end' \
+        '' \
+        'Before removing this package, uninstall the service in its original scope:' \
+        '  User: wlanlogin --user service uninstall' \
+        '  System: sudo wlanlogin --system service uninstall' \
+        'Only add --purge if you also want to delete saved configuration and credentials.' \
+        '' \
+        'Documentation: /usr/share/doc/wlan-auto-login-bin/README.md'
+}
+
+post_upgrade() {
+    printf '%s\n' \
+        'WLAN Auto Login was upgraded. Existing services use a separate executable copy.' \
+        'Re-run service install in the original scope to update that copy.' \
+        ''
+    post_install
+}

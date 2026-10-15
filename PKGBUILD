@@ -2,7 +2,7 @@
 
 pkgname=wlan-auto-login-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI and TUI for automatic Student_CX campus Wi-Fi login (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/SEUCXCS/wlan-auto-login'
@@ -13,6 +13,7 @@ optdepends=('gnome-keyring: Secret Service backend for user credentials'
 provides=('wlanlogin')
 conflicts=('wlanlogin')
 options=('!debug')
+install=wlan-auto-login-bin.install
 source=("$pkgname-$pkgver-$CARCH.tar.gz::$url/releases/download/v$pkgver/wlanlogin-linux-$CARCH.tar.gz")
 sha256sums=('d9348b383ddba34ee3171a4e12f48c51ac20d2c1d86276ef7a10a49d74ff9c76')
 
