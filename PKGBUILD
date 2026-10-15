@@ -2,7 +2,7 @@
 
 _name=envoy-server
 pkgname=python-$_name
-pkgver=1.39.3
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='A Python wheel distribution of the Envoy server.'
 arch=('x86_64' 'aarch64')
@@ -23,9 +23,9 @@ options=(!strip)
 source=("$_name::git+$url.git#tag=v$pkgver")
 source_x86_64=("envoy::https://github.com/envoyproxy/envoy/releases/download/v$pkgver/envoy-$pkgver-linux-x86_64")
 source_aarch64=("envoy::https://github.com/envoyproxy/envoy/releases/download/v$pkgver/envoy-$pkgver-linux-aarch_64")
-sha256sums=('2dbb0a1fc66e15e631521b91d9ba1b932cee3a38691d98f8975c7ddcd5cf495a')
-sha256sums_x86_64=('f61653fb5f7645129d3092a82f21ce3e6f70d0a75fe2e861b0e7417790f2c200')
-sha256sums_aarch64=('02ba9588283be771c9743cae6d013e45714cda2ca970be968a5a9f4db25ea446')
+sha256sums=('292737aba482445181bd316fe02f40f4a421865b31b1f8b4772ddb758e326e3d')
+sha256sums_x86_64=('8aa137a7d00994ce43f613556f5a120709229f63bedb86eedde5ccbc402c2b80')
+sha256sums_aarch64=('03cacc952561635c0b7d2a829291f341dadbebc32050475efbe7321b1bbe18c2')
 
 prepare() {
   cd "$srcdir"/$_name
