@@ -1,9 +1,9 @@
 # Maintainer: flaviofearn <heroicgameslauncher@protonmail.com>
 # Maintainer: CommandMC <kate@commandmc.de>
 
-pkgver=2.22.3
-pkgrel=2
-sha256sums=('ed17ce083a71dd7e49a89218052ab475edd5a654cedf443853f6baacbb0a00e9')
+pkgver=2.22.4
+pkgrel=1
+sha256sums=('a5a798ee49bb4a20d3d163f46f39382389974cf4f818b49aa715e1b74d2a0eb0')
 
 pkgname=heroic-games-launcher-bin
 pkgdesc="An Open Source Launcher for GOG, Epic Games and Amazon Games"

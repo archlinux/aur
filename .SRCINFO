@@ -1,7 +1,7 @@
 pkgbase = heroic-games-launcher-bin
 	pkgdesc = An Open Source Launcher for GOG, Epic Games and Amazon Games
-	pkgver = 2.22.3
-	pkgrel = 2
+	pkgver = 2.22.4
+	pkgrel = 1
 	url = https://heroicgameslauncher.com/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -22,8 +22,8 @@ pkgbase = heroic-games-launcher-bin
 	optdepends = rsync: Move games using rsync instead of mv
 	provides = heroic-games-launcher
 	conflicts = heroic-games-launcher
-	noextract = Heroic-2.22.3-linux-x64.pacman
-	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.22.3/Heroic-2.22.3-linux-x64.pacman
-	sha256sums = ed17ce083a71dd7e49a89218052ab475edd5a654cedf443853f6baacbb0a00e9
+	noextract = Heroic-2.22.4-linux-x64.pacman
+	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.22.4/Heroic-2.22.4-linux-x64.pacman
+	sha256sums = a5a798ee49bb4a20d3d163f46f39382389974cf4f818b49aa715e1b74d2a0eb0
 
 pkgname = heroic-games-launcher-bin
