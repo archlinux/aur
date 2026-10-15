@@ -78,7 +78,7 @@ package_xrizer-common-git() {
 
 package_xrizer-git() {
   depends=(
-    "xrizer-common"
+    "xrizer-common-git"
     "glibc"
     "libgcc"
     "libstdc++"
@@ -94,7 +94,7 @@ package_xrizer-git() {
 package_lib32-xrizer-git() {
   pkgdesc+=" (32-bit)"
   depends=(
-    "xrizer-common"
+    "xrizer-common-git"
     "lib32-glibc"
     "lib32-gcc-libs"
   )

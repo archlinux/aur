@@ -21,7 +21,7 @@ pkgbase = xrizer-git
 	sha256sums = SKIP
 
 pkgname = xrizer-git
-	depends = xrizer-common
+	depends = xrizer-common-git
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -35,7 +35,7 @@ pkgname = xrizer-common-git
 
 pkgname = lib32-xrizer-git
 	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR (32-bit)
-	depends = xrizer-common
+	depends = xrizer-common-git
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	provides = lib32-xrizer
