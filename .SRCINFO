@@ -1,6 +1,6 @@
 pkgbase = python-numbers-parser
 	pkgdesc = Read and write Apple Numbers spreadsheets
-	pkgver = 4.21.0
+	pkgver = 4.22.0
 	pkgrel = 1
 	url = https://github.com/masaccio/numbers-parser
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-numbers-parser
 	depends = python-snappy
 	provides = python-numbers-parser
 	conflicts = python-numbers-parser
-	source = numbers-parser::git+https://github.com/masaccio/numbers-parser.git#tag=v4.21.0
-	sha256sums = 0d901531850d59224444073f4d0ec8f16469b45232a6f0b043a65e12fb8e8086
+	source = numbers-parser::git+https://github.com/masaccio/numbers-parser.git#tag=v4.22.0
+	sha256sums = 54cfed60d58ab85ab2c6cea902aa38b34b6e3c21e3174267ecf73bb9abc07c8e
 
 pkgname = python-numbers-parser
