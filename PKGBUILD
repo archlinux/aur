@@ -4,7 +4,7 @@ _appauthor="maxludden"
 _appname="rich-gradient"
 
 pkgname="python-${_appname}"
-pkgver=0.3.13
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="This is a python library built on textualize/rich that allows the printing of gradient colored text to the console"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-rich' 'python-pygments' 'python-loguru' 'python-rich-c
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "LICENSE")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "LICENSE")
-sha256sums=('d8cbbc344c8f4dd006dc25b5bfca8b9a36cac02f79d36105a4f934a36f0d525e'
+sha256sums=('5f4604168d26db4b5af4a25fd0c55879a4f1b853bccc2d9f10c47f90cca576d6'
             'ce03c1e0e64ef777f23081460c6474be87d9298b649dca8a01059c51ad9e1b30')
 
 
