@@ -1,6 +1,6 @@
 pkgbase = pyproject-udeps
 	pkgdesc = Find unused dependencies in pyproject.toml
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/lukehsiao/pyproject-udeps
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pyproject-udeps
 	depends = libgcc
 	conflicts = pyproject-udeps-bin
 	options = !debug
-	source = pyproject-udeps-0.3.10.tar.gz::https://github.com/lukehsiao/pyproject-udeps/archive/v0.3.10.tar.gz
-	sha256sums = 103d2652941b26308ce05e7f83880f2ef50469c2389219e0a301b7af0a3a2817
+	source = pyproject-udeps-0.3.11.tar.gz::https://github.com/lukehsiao/pyproject-udeps/archive/v0.3.11.tar.gz
+	sha256sums = 8d43879793a4576370362b75f52389b0ddf3fda6d8558ded4ce2050a182108a6
 
 pkgname = pyproject-udeps
