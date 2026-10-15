@@ -1,0 +1,6 @@
+
+git -c init.defaultBranch=master clone ssh://aur@aur.archlinux.org/wput-git.git
+
+makepkg --printsrcinfo > .SRCINFO
+
+makepkg -si

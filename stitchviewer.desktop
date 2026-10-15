@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=StitchViewer
+Comment=View large TIFF images and stitched PNG grids
+Comment[pl]=Przeglądaj duże obrazy TIFF i mozaiki PNG
+Exec=stitchviewer %f
+TryExec=stitchviewer
+Icon=stitchviewer
+Terminal=false
+Categories=Graphics;Viewer;
+MimeType=image/tiff;
+StartupNotify=true

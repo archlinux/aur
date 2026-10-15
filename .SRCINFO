@@ -1,0 +1,24 @@
+pkgbase = stitchviewer-git
+	pkgdesc = Viewer for large TIFF images and stitched PNG grids
+	pkgver = 0.1.0.r0
+	pkgrel = 1
+	url = https://github.com/RafalVonau/StitchViewer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = xdg-desktop-portal
+	depends = hicolor-icon-theme
+	provides = stitchviewer
+	conflicts = stitchviewer
+	source = stitchviewer::git+https://github.com/RafalVonau/StitchViewer.git
+	sha256sums = SKIP
+
+pkgname = stitchviewer-git
