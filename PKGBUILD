@@ -2,7 +2,7 @@
 
 _name=vercel-sandbox
 pkgname=python-$_name
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Python SDK for Vercel Sandbox.'
 arch=('any')
@@ -18,19 +18,17 @@ depends=('python'
          'python-pydantic')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel'
-             'git')
+             'python-installer')
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-httpx'
               'python-hypothesis'
               'python-trio')
-source=("$_name::git+$_repo.git#tag=$_name-v$pkgver")
-sha256sums=('b7132abde08e90692518a56ab8a793120503eb8fe8232762d54fe01821a6c9e0')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
+sha256sums=('4caaf48fc52ac0e012105a388875015d9136fd974599a9949edfc5d515c27f15')
 
 build() {
-  cd "$srcdir"/$_name/src/$_name
+  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
   python -m build --wheel --no-isolation
 }
 
@@ -39,11 +37,12 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/$_name/src/$_name
+  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/$_name/src/$_name
+  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
