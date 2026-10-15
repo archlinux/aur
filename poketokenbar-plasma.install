@@ -1,0 +1,66 @@
+# Messages only. Scriptlets run as root and must never touch anyone's $HOME (ADR-0006).
+
+_migration_notice() {
+  cat <<'EOF'
+==> Upgrading from upstream's install.sh? Its per-user copies take precedence
+    over this package. Remove them (your save, state and config are kept):
+
+      systemctl --user disable --now poketokend
+      rm -f  ~/.config/systemd/user/poketokend.service ~/.local/bin/poketokenctl
+      rm -rf ~/.local/share/plasma/plasmoids/org.kde.plasma.poketokenbar \
+             ~/.local/share/plasma/plasmoids/org.kde.plasma.poketokenpet \
+             ~/.local/share/poketokenbar/app ~/.local/share/poketokenbar/venv
+      systemctl --user daemon-reload && systemctl --user enable --now poketokend
+
+    Do NOT delete ~/.local/share/poketokenbar itself: it holds your save
+    (companion.json, your Pokedex and inventory).
+EOF
+}
+
+post_install() {
+  cat <<'EOF'
+==> Start the PokeTokenBar daemon for your user:
+
+      systemctl --user enable --now poketokend
+
+    Then add "PokeTokenBar" (and optionally "PokeTokenBar Pet") via Add Widgets...
+
+==> If Plasma runs with systemdBoot=false, graphical-session.target is never
+    reached. Start the daemon with your session instead:
+
+      systemctl --user add-wants default.target poketokend
+
+==> The widgets read ~/.local/state and ~/.config directly. Custom
+    XDG_STATE_HOME or XDG_CONFIG_HOME values are not supported.
+EOF
+  _migration_notice
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Restart the daemon so it runs the new code:
+
+      systemctl --user restart poketokend
+
+    Log out and back in (or run: plasmashell --replace) to reload the widgets.
+EOF
+  _migration_notice
+}
+
+pre_remove() {
+  cat <<'EOF'
+==> Stop and disable the daemon for your user before removal:
+
+      systemctl --user disable --now poketokend
+
+==> Your data stays in place. To remove it later (optional):
+
+      rm -rf ~/.local/state/poketokenbar ~/.config/poketokenbar ~/.cache/poketokenbar
+
+    Your save is kept separately. Back it up first with:
+
+      poketokenctl export ~/poketokenbar-save.json
+
+    Deleting ~/.local/share/poketokenbar/companion.json loses your Pokedex for good.
+EOF
+}

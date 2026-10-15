@@ -1,0 +1,10 @@
+# Allowlist (ADR-0008): only the build files reach the AUR.
+*
+!PKGBUILD
+!.SRCINFO
+!pyproject-build.patch
+!poketokend.service
+!poketokenbar-plasma.install
+!.nvchecker.toml
+!LICENSE
+!.gitignore

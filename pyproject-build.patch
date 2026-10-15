@@ -1,0 +1,18 @@
+--- a/pyproject.toml	2026-08-19 11:03:15.000000000 -0500
++++ b/pyproject.toml	2026-10-15 00:15:05.304529343 -0500
+@@ -6,3 +6,15 @@
+ [tool.pytest.ini_options]
+ testpaths = ["tests"]
+ pythonpath = ["."]
++
++[project.scripts]
++poketokend = "poketokenbar.daemon:main"
++poketokenctl = "poketokenbar.ctl:main"
++
++[build-system]
++requires = ["setuptools>=61"]
++build-backend = "setuptools.build_meta"
++
++# Flat layout: without this, setuptools also finds plasmoid/, packaging/, systemd/ and tests/.
++[tool.setuptools.packages.find]
++include = ["poketokenbar*"]

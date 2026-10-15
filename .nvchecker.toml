@@ -1,0 +1,5 @@
+[poketokenbar-plasma]
+source = "github"
+github = "rubensanchezrivero/poketokenbar-plasma"
+use_max_tag = true
+prefix = "v"
