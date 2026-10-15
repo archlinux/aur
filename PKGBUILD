@@ -47,6 +47,7 @@ build() {
 
 check() {
     cd "${pkgname}-${pkgver}"
+    export NO_COLOR=1
     bun run test:unit
     dist/sonarqube-cli --version
 }
