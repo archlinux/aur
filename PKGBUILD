@@ -1,7 +1,7 @@
 # Maintainer: Ivo Maceira <ivomaceira at gmail dot com>
 pkgname=python-deepgram-sdk
-pkgver=5.3.1  # https://pypi.org/project/deepgram-sdk/
-pkgrel=3
+pkgver=7.13.0  # https://pypi.org/project/deepgram-sdk/
+pkgrel=1
 pkgdesc="Official Deepgram SDK for Python"
 arch=("any")
 url="https://github.com/deepgram/deepgram-python-sdk"
@@ -10,20 +10,22 @@ depends=(
   "python"
   "python-httpx"
   "python-pydantic"
+  "python-pydantic-core"
   "python-typing_extensions"
   "python-websockets"
 )
 optdepends=()
-makedepends=("python-build" "python-poetry")
-source=("https://files.pythonhosted.org/packages/b8/76/ba0f925f955e171ed789c7f3626251c78786cce09ddc122ac92fe1cc508d/deepgram_sdk-5.3.1.tar.gz")
-sha256sums=("87336787c3072d324a0fa412364668adec73175a9f6f0fdd4f91983f734c2842")
+makedepends=("python-build" "python-installer" "python-poetry-core")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/deepgram/deepgram-python-sdk/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=("be7f1d09dbf990a51a94b111d6e51752c7e547e0c64f6e41eb572a223c10a637")
 
 build() {
-	cd "deepgram_sdk-$pkgver"
+	cd "deepgram-python-sdk-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "deepgram_sdk-$pkgver"
+	cd "deepgram-python-sdk-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
