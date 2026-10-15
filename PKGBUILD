@@ -3,7 +3,7 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=moon
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -12,7 +12,7 @@ arch=('x86_64' 'aarch64')
 depends=('glibc' 'libgcc')
 makedepends=('cargo' 'cmake' 'protobuf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f4ecd6eb69032e4ce201c6064649fa00c747012a08448e328070461ab25271cd')
+sha256sums=('21e0bbc2be7a84f59450a93ecb490bafbfca1818feab06c47ecc7913c989c00d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
