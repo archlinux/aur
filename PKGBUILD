@@ -1,23 +1,25 @@
 # Contributor: Andrew Rabert <ar nullsum.net>
 
 pkgname=cloneholio
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
-pkgdesc="Maintain local backups of *all Git repositories* belonging to a user or group."
-url="https://github.com/nvllsvm/cloneholio"
-depends=('python' 'python-arrow' 'python-gitpython' 'python-pygithub' 'python-requests' 'python-tqdm')
-makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-installer')
+pkgdesc="CLI for the AWeber API"
+url="https://github.com/andrewrabert/cloneholio"
+depends=()
+makedepends=('cargo')
+options=(!lto)
 license=('MIT')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e16942c887c424c8a7b89a2eb619dbae13b39376c107c42da531b9bf8613d763')
+arch=('aarch64' 'x86_64')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/andrewrabert/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('a94c3c18ab7b151108c4af3d4ccbf3e2bf92b909b382f2c3dfb1721d8d9e7d43')
 
 build() {
-    cd $pkgname-$pkgver
-    python -m build --wheel --no-isolation
+  cd "$pkgname-$pkgver"
+
+  cargo build --release --locked
 }
 
 package() {
-    cd $pkgname-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$pkgname-$pkgver"
+  install -Dm755 "target/release/aweber" "$pkgdir/usr/bin/aweber"
 }
