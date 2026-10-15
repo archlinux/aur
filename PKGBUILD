@@ -1,7 +1,7 @@
 # Maintainer: Fabian Schmieder <fabian@schmieder.eu>
 pkgname=morphos-cross-bin
 pkgver=20260529
-pkgrel=3
+pkgrel=4
 pkgdesc="GCC 15 cross-compiler toolchain for MorphOS (PowerPC), with the MorphOS SDK"
 arch=('x86_64' 'aarch64')
 url="https://github.com/metaneutrons/morphos-cross"
@@ -14,12 +14,12 @@ conflicts=('morphos-cross')
 # run the host's strip over them.
 options=('!strip' '!debug' '!lto' 'staticlibs')
 source=("sdk-20260529.lha::https://morphos-team.net/files/sdk-20260529.lha")
-source_x86_64=("morphos-cross-20260529-r3-linux-x86_64.tar.xz::https://github.com/metaneutrons/morphos-cross/releases/download/v20260529-r3/morphos-cross-20260529-r3-linux-x86_64.tar.xz")
-source_aarch64=("morphos-cross-20260529-r3-linux-arm64.tar.xz::https://github.com/metaneutrons/morphos-cross/releases/download/v20260529-r3/morphos-cross-20260529-r3-linux-arm64.tar.xz")
+source_x86_64=("morphos-cross-20260529-r4-linux-x86_64.tar.xz::https://github.com/metaneutrons/morphos-cross/releases/download/v20260529-r4/morphos-cross-20260529-r4-linux-x86_64.tar.xz")
+source_aarch64=("morphos-cross-20260529-r4-linux-arm64.tar.xz::https://github.com/metaneutrons/morphos-cross/releases/download/v20260529-r4/morphos-cross-20260529-r4-linux-arm64.tar.xz")
 noextract=("sdk-20260529.lha")
 sha256sums=('310dfb888b995e32206c5c3aba409847334a5fee049d13aad27b4af0d518ec77')
-sha256sums_x86_64=('bfcd7145d1f7cd7b8aee8e1a14bc0cc33dec8d84a06f2294480b9c71d4912998')
-sha256sums_aarch64=('1a5c5d0038cfe96da62a62728867b1e38aa0b7a830dc0c64141989600768d10e')
+sha256sums_x86_64=('f35e54072b7c36b00e3901669cfc4ac3fa3df805c3117e0d5f3f22f3379caab6')
+sha256sums_aarch64=('c992707004fc2c854f4a6b13a3975640899821bae35ca3bf5b837b2931bb06ca')
 
 # The MorphOS SDK belongs to the MorphOS Team. makepkg downloads it from their site for the user, so that
 # this recipe never distributes it, and the toolchain's own helper installs it into the package.
