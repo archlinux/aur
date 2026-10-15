@@ -1,0 +1,6 @@
+# Build artifacts — only packaging sources are tracked.
+/src/
+/pkg/
+/*.tar.gz
+/*.pkg.tar.*
+/*.log
