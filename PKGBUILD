@@ -1,7 +1,7 @@
 # Maintainer: papacasper <chj1axr0 at gmail dot com>
 # Source of truth: https://github.com/papacasper/rokast/tree/main/packaging/aur (playbooks/release.md, "AUR").
 pkgname=rokast
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Mirror your Linux screen to a Roku TV over native Miracast, with nothing installed on the TV'
 arch=(x86_64)
@@ -19,7 +19,7 @@ optdepends=('xorg-xrandr: mirror one monitor on X11 instead of the whole X scree
             'xdg-desktop-portal: Wayland capture')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/papacasper/rokast/archive/v$pkgver.tar.gz"
         'https://w1.fi/releases/wpa_supplicant-2.11.tar.gz')
-sha256sums=('115685bc91c83283fa496beb634e681f364de5121995b8e5b7b2b55a5afc9a62'
+sha256sums=('83122d488e6b33f65cf020f42764ce2090b06f3426f787febaf12ecbd306b74f'
             '912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a')
 
 prepare() {
