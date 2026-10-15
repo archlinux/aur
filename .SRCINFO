@@ -12,6 +12,12 @@ pkgbase = wb2api-git
 	conflicts = wb2api
 	backup = etc/wb2api/config.json
 	source = git+https://github.com/linguo2625469/workbuddy2api-panel.git
+	source = wb2api.service
+	source = wb2api.sysusers
+	source = wb2api.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = wb2api-git

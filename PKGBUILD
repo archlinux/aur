@@ -10,8 +10,14 @@ makedepends=('git' 'go')
 provides=('wb2api')
 conflicts=('wb2api')
 backup=('etc/wb2api/config.json')
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        "wb2api.service"
+        "wb2api.sysusers"
+        "wb2api.tmpfiles")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd workbuddy2api-panel
