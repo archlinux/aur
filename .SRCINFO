@@ -1,12 +1,13 @@
 pkgbase = comfy-desktop
 	pkgdesc = The desktop app for ComfyUI
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Comfy-Org/Comfy-Desktop
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
 	makedepends = gendesk
+	makedepends = nodejs
 	makedepends = pnpm
 	depends = bash
 	depends = electron40
