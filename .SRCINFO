@@ -1,6 +1,6 @@
 pkgbase = clash-nyanpasu-bin
 	pkgdesc = A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​
-	pkgver = 2.0.0rc.1
+	pkgver = 2.0.0rc.2
 	pkgrel = 1
 	url = https://github.com/LibNyanpasu/clash-nyanpasu
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = clash-nyanpasu-bin
 	conflicts = clash-nyanpasu
 	options = !strip
 	options = !debug
-	source = clash-nyanpasu-2.0.0rc.1-x86_64.deb::https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-rc.1/Clash.Nyanpasu_2.0.0-rc.1_amd64.deb
-	sha256sums = a92a2ec98b20cb23bf171793b3be202df1d299d83d6f40962651969e969e13ec
+	source = clash-nyanpasu-2.0.0rc.2-x86_64.deb::https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-rc.2/Clash.Nyanpasu_2.0.0-rc.2_amd64.deb
+	sha256sums = 8198a15e46e8f02ec486fded764efb3808c74d6bc2a7445bc15419254e0134e5
 
 pkgname = clash-nyanpasu-bin
