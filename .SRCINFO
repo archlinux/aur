@@ -1,0 +1,19 @@
+pkgbase = holo-realtek-firmware-toggles
+	pkgdesc = Valve's SteamOS low-latency helper for the Steam Frame wireless adapter (desktop Linux port)
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/evlaV/holo
+	arch = any
+	license = MIT
+	depends = bash
+	depends = iw
+	depends = polkit
+	optdepends = wireless-regdb: correct regulatory domain for 6 GHz
+	source = holo-realtek-firmware-toggles::https://raw.githubusercontent.com/evlaV/holo/a49f24b1f9900f53300e1ae690f8a2e2728b3c84/holo-realtek-firmware-toggles/holo-realtek-firmware-toggles
+	source = org.valve.holo-realtek-firmware-toggles.policy::https://raw.githubusercontent.com/evlaV/holo/a49f24b1f9900f53300e1ae690f8a2e2728b3c84/holo-realtek-firmware-toggles/org.valve.holo-realtek-firmware-toggles.policy
+	source = PACKAGE-LICENSE
+	sha256sums = 0534273eb532593bfe977835666f88a9f50f5f2edd8d6792f55202f65ba757f8
+	sha256sums = 7e1c21c1b23b67d7baea989b85f96a8d8c611778b09449fb181619064cf7231e
+	sha256sums = 95807266839002dd0a7a15cbfe2faefb5a2653c10596480cf8c66f7629a1c610
+
+pkgname = holo-realtek-firmware-toggles

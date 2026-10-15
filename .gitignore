@@ -1,0 +1,7 @@
+src/
+pkg/
+*.pkg.tar.zst
+holo-realtek-firmware-toggles
+org.valve.holo-realtek-firmware-toggles.policy
+*.log
+*.md
