@@ -11,7 +11,6 @@ pkgbase = rayburst-bin
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
-	depends = aria2-next
 	provides = rayburst=4.0.1
 	conflicts = rayburst
 	source = LICENSE-4.0.1::https://raw.githubusercontent.com/AnInsomniacy/rayburst/v4.0.1/LICENSE
