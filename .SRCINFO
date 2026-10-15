@@ -1,0 +1,21 @@
+pkgbase = phpbox-bin
+	pkgdesc = GUI application to manage PHP Docker development environments (PyQt6, Fluent Design)
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://github.com/xxyangyoulin/phpbox
+	arch = x86_64
+	license = MIT
+	depends = docker
+	depends = hicolor-icon-theme
+	provides = phpbox
+	conflicts = phpbox
+	noextract = LICENSE
+	options = !strip
+	source = phpbox-bin-1.0.18.tar.gz::https://github.com/xxyangyoulin/phpbox/releases/download/v1.0.18/phpbox-linux-x86_64.tar.gz
+	source = phpbox.desktop::https://github.com/xxyangyoulin/phpbox/raw/v1.0.18/phpbox.desktop
+	source = LICENSE::https://github.com/xxyangyoulin/phpbox/raw/v1.0.18/LICENSE
+	sha256sums = e38688d6bfbc66ced0d18b6af1ad0d68875773f0968d21cab19363b9ff9d532b
+	sha256sums = 4c8a4eff64d7b49dfd235f93a1b0610919528d1b3b541c60d6f0a2975b48b98d
+	sha256sums = 87c8ce3041afa2de6c78c8a3158050e656ef1f4d436406c22847c8aab191946b
+
+pkgname = phpbox-bin
