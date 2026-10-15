@@ -1,6 +1,6 @@
 pkgbase = hqplayer-client
 	pkgdesc = The high-end upsampling multichannel software HD-audio player - client application
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = http://www.signalyst.com/consumer.html
 	install = hqplayer-client.install
@@ -12,7 +12,7 @@ pkgbase = hqplayer-client
 	optdepends = hqplayer-embedded
 	optdepends = hqplayer-embedded-sse
 	options = !strip
-	source = https://www.signalyst.com/bins/noble/hqplayer6desktop_6.1.0-4_amd64.deb
-	sha256sums = 0caadf28b77697508311b5405ffa872ec0b60a82cf32ebe765ac31e505456a35
+	source = https://www.signalyst.com/bins/resolute/hqplayer6desktop_6.1.1-5_amd64.deb
+	sha256sums = 10a0449e71d0f2a79c2d62161626b9d6fe89b5c3937256927b352c7078f9ade1
 
 pkgname = hqplayer-client
