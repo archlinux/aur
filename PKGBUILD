@@ -2,7 +2,7 @@
 # Contributor: Luca Bauer <git@lucabauer.de>
 
 pkgname=kosmonaut
-pkgver=0.0.1_rc1
+pkgver=0.0.1_rc2
 pkgrel=1
 pkgdesc="A modern NetworkManager TUI written in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('networkmanager')
 makedepends=('rust')
 conflicts=('kosmonaut-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('4cd875ff70a5c145859eeb9c925dd60979bea75a9756da30e2d9ffcb12748f9a')
+sha256sums=('16de299f2840552b74c9eb5b6e96c9d59a1f149ce29a08786254637dd42280c2')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
