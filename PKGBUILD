@@ -4,7 +4,7 @@ _gitauthor=NayJi7
 _gitname=gitoui
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="A terminal git client"
+pkgdesc="Terminal Git client with an image-rendered commit graph and GitHub PRs"
 
 pkgver=0.3.6
 pkgrel=1
