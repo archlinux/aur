@@ -1,9 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
+# Last release before fork point, useful for plugins that pin dependencies
+_obs_ver=32.2.2
+
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
-pkgver=0.0.0.r847.g563e9eb
+pkgver=0.0.0.r1240.gb474ce2
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -91,7 +94,7 @@ build() {
 }
 
 package_obs-studio-rust-git() {
-  provides=("$_obs_studio-rust=${pkgver%%.g*}" "obs-studio=${pkgver%%.g*}")
+  provides=("$_obs_studio-rust=${pkgver%%.g*}" "obs-studio=$_obs_ver")
   optdepends=('libfdk-aac: FDK AAC codec support'
               'libva-intel-driver: hardware encoding for older Intel GPUs'
               'intel-media-driver: hardware encoding for recent Intel GPUs'
@@ -107,7 +110,7 @@ package_obs-studio-rust-git() {
 }
 
 package_obs-studio-rust-plugin-browser-git() {
-  provides=("$_obs_studio-rust-plugin-browser=$pkgver" "obs-studio-plugin-browser=$pkgver")
+  provides=("$_obs_studio-rust-plugin-browser=$pkgver" "obs-studio-plugin-browser=$_obs_ver")
   pkgdesc="CEF-based OBS Studio browser plugin"
   url="https://obsproject.com/kb/browser-source"
   depends=('cef' 'glibc' 'libgcc' 'libstdc++' 'libx11' "$_obs_studio-rust" 'qt6-base')
