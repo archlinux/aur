@@ -1,0 +1,26 @@
+pkgbase = grabbit-git
+	pkgdesc = A cross-platform download manager powered by aria2. Beautiful, easy to use, and powerful.
+	pkgver = 1.3.4.r5.g8c1d094
+	pkgrel = 1
+	url = https://cassidoo.github.io/grabbit/
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron42
+	depends = nodejs
+	depends = aria2
+	depends = perl
+	provides = grabbit=1.3.4
+	conflicts = grabbit
+	options = !strip
+	source = grabbit.git::git+https://github.com/ricode-labs/grabbit.git
+	source = grabbit.sh
+	sha256sums = SKIP
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+
+pkgname = grabbit-git
