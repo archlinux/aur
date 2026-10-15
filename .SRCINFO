@@ -1,0 +1,16 @@
+pkgbase = lazyovpn-bin
+	pkgdesc = A terminal UI for managing OpenVPN connections
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/omartelo/lazyovpn
+	arch = x86_64
+	license = MIT
+	depends = openvpn
+	depends = polkit
+	depends = zenity
+	provides = lazyovpn
+	conflicts = lazyovpn
+	source = https://github.com/omartelo/lazyovpn/releases/download/v0.8.1/lazyovpn_0.8.1_linux_amd64.tar.gz
+	sha256sums = 350d73ca024dcf97c9159cc28d7c0ae78840e35a0d89099aa3e9bc6233c7914a
+
+pkgname = lazyovpn-bin
