@@ -1,38 +1,55 @@
-# Maintainer: Chiwan Park <chiwanpark@hotmail.com>
-pkgname='mendeley-reference-manager'
-pkgver=2.149.0
+# Maintainer:
+# Contributor: Chiwan Park <chiwanpark@hotmail.com>
+
+pkgname=mendeley-reference-manager
+pkgver=2.150.0
 pkgrel=1
-pkgdesc='Mendeley Reference Manager'
+pkgdesc="Mendeley Reference Manager"
 arch=('x86_64')
-depends=('harfbuzz' 'libgl' 'libxss')
-url='https://www.mendeley.com/download-reference-manager'
-license=('custom')
-
-_file=mendeley-reference-manager-${pkgver}-x86_64.AppImage
-source=(https://static.mendeley.com/bin/desktop/${_file})
-sha256sums=('5daae2aca295ee1c96f88e647d12d65fbf324b60622c938bd7afd5c34bc6b308')
-
+url="https://www.mendeley.com/download-reference-manager"
+license=('LicenseRef-Mendeley')
+depends=('alsa-lib'
+         'at-spi2-core'
+         'bash'
+         'cairo'
+         'dbus'
+         'expat'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'hicolor-icon-theme'
+         'libcups'
+         'libgcc'
+         'libstdc++'
+         'libx11'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxkbcommon'
+         'libxrandr'
+         'mesa'
+         'nspr'
+         'nss'
+         'pango'
+         'systemd-libs')
 options=('!strip')
+source=("https://static.mendeley.com/bin/desktop/${pkgname}-${pkgver}-x86_64.AppImage")
+sha256sums=('492bcbd86a6bb6d5b782860fe86e3baa6919c092f95c5d55bf6930877eb6c068')
 
 prepare() {
-  # Extract AppImage contents so we install bypassing every and all AppImage
-  # desktop integration/deployment mechanisms
-  chmod +x "${_file}"
-  "./${_file}" --appimage-extract &>/dev/null
+    chmod +x "${pkgname}-${pkgver}-${CARCH}.AppImage"
+    "./${pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract &>/dev/null
+    sed -i "s|Exec=AppRun|Exec=/usr/bin/${pkgname}|g" "squashfs-root/${pkgname}.desktop"
+    rm -r squashfs-root/{usr/lib,"${pkgname}.png"}
+    find squashfs-root -type d -exec chmod 755 {} +
 }
 
 package() {
-  install -d "$pkgdir"/usr/bin/
-  install -d "$pkgdir"/usr/local/mendeley-reference-manager/
-  install -d "$pkgdir"/usr/share/applications/
-  install -d "$pkgdir"/usr/share/icons/
-
-  install -m644 squashfs-root/mendeley-reference-manager.png "$pkgdir"/usr/share/icons/
-
-  sed -i 's%Exec=AppRun%Exec=/usr/bin/mendeley-reference-manager%g' squashfs-root/mendeley-reference-manager.desktop
-  install -m644 squashfs-root/mendeley-reference-manager.desktop "$pkgdir"/usr/share/applications/
-
-  find squashfs-root -type d -exec chmod 755 {} +
-  mv squashfs-root/* "$pkgdir"/usr/local/mendeley-reference-manager/
-  ln -s /usr/local/mendeley-reference-manager/mendeley-reference-manager "$pkgdir"/usr/bin/mendeley-reference-manager
+    mv squashfs-root/usr "${pkgdir}"
+    install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgname}" "${pkgdir}/usr/share/applications"
+    mv squashfs-root/* "${pkgdir}/usr/lib/${pkgname}"
+    mv "${pkgdir}/usr/lib/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+    ln -s "/usr/lib/${pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
 }
