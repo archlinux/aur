@@ -3,7 +3,7 @@
 
 _name=stripe-python
 pkgname=python-stripe
-pkgver=15.3.1
+pkgver=16.0.0
 pkgrel=1
 pkgdesc='Stripe python bindings'
 arch=('any')
@@ -12,8 +12,8 @@ license=('MIT')
 depends=('python>=3.6' 'python-requests' 'python-typing_extensions')
 makedepends=('python-build' 'python-flit-core' 'python-setuptools' 'python-installer' 'python-wheel')
 source=("https://github.com/stripe/stripe-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('5de00f9fc5f46e6a351b19e0f00ad2c029e4d61d8122ae96ef89e88e061707ef9ea79eda9c826d1cd32db89e4caeae94ab6d14350479b10dc1e919c5765bb76d')
-b2sums=('403d4d2f0d8275b45d55ba2867a98036fa2239af00d80fc2520929e0ca240fdeb3b0d30343b93fbab8cee6037027218ca206fd9a69f48eba791a7418e8699179')
+sha512sums=('bbcd6054f97ab11c6ca864e648fb03516cc3f3254e2f024bc2cbbab5d19a2dd1fdbba1de88df7b64d8fa070e0bdfb6fcf427f6ca6fc3b97cb781a86853631793')
+b2sums=('73a604fc128b6291b1a86278634a6a421c3a1f85c701439715bbe278c16c601d659685c6f8020cac623dec7c526d78894727e51b53520bc277a8f587983d54dd')
 
 prepare() {
 	cd "$_name-$pkgver"
