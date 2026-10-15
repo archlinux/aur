@@ -6,7 +6,7 @@
 # values here are the release this copy was last checked against.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.2.0
+_version=0.3.0
 pkgname=wikistow-desktop-bin
 pkgver=${_version//-/}
 pkgrel=1
@@ -24,11 +24,13 @@ optdepends=('gnome-keyring: keep the sign-in and a remembered unlock between lau
 provides=('wikistow-desktop')
 conflicts=('wikistow-desktop')
 source=("https://github.com/skint007/wikistow/releases/download/v$_version/wikistow-desktop-$_version.tar.gz")
-sha256sums=('3a1ddcb1dd8c38997a83c7d013062cccb972405a546f737acd9c7846d7214560')
+sha256sums=('8b460612dc89082bfcf65fabbf668b2c19ae481c37e2d4a5f7b2b7c1d0956e0a')
 
 package() {
     cd "wikistow-desktop-$_version"
     install -Dm644 app.asar "$pkgdir/usr/lib/wikistow-desktop/app.asar"
+    # How the app was installed, for the app to read (docs/desktop.md).
+    echo aur > "$pkgdir/usr/lib/wikistow-desktop/install-source"
     install -Dm755 wikistow-desktop "$pkgdir/usr/bin/wikistow-desktop"
     install -Dm644 wikistow-desktop.desktop "$pkgdir/usr/share/applications/wikistow-desktop.desktop"
     install -Dm644 wikistow-desktop.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wikistow-desktop.svg"
