@@ -1,7 +1,7 @@
 # Maintainer: Yangtse Su <yangtsesu at gmail dot com>
 
 pkgname=librofd-ffi
-pkgver=0.4.3.fork.1
+pkgver=0.4.3.fork.2
 pkgrel=1
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
@@ -18,17 +18,18 @@ makedepends=(
   cargo
   rust
 )
-# The fork's release branch. It carries the changes papers-ofd relies on
-# (page-size query, font-resolved text advances, image decode budget) plus the
-# pkg-config metadata, proposed upstream as PRs #11–#14. Retire this package in
-# favour of an upstream-built one once a linuxdeepin/rofd release contains all
-# of them (see papers-ofd/patches/README.md).
-_tag=v0.4.3-fork.1
+# The fork's dev integration branch, released as tag v0.4.3-fork.2. It carries
+# the changes papers-ofd relies on (page-size query, font-resolved text
+# advances, image decode budget, region-AA test tolerance) plus the pkg-config
+# metadata, proposed upstream as PRs #11-#15. Retire this package in favour of
+# an upstream-built one once a linuxdeepin/rofd release contains all of them
+# (see papers-ofd/patches/README.md and the fork's FORK.md).
+_tag=v0.4.3-fork.2
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/rofd/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('b19a464ea34bab6b6260221dd9900247bd8cc581c49e5afff95a8a19f05681dd')
+sha256sums=('6b6c462a1494ee1118f2b344ca127ce233b5d5f332acd319cbfccb373c5ba6c0')
 
 # GitHub strips the tag's leading v; pkgver differs only in dots
-_dirname="rofd-0.4.3-fork.1"
+_dirname="rofd-0.4.3-fork.2"
 
 prepare() {
   cd "$_dirname"
