@@ -1,7 +1,7 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=hexora
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Statically analyze potentially malicious Python code'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/rushter/hexora/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('9b51788813485dd92d74cdb8a89eb1eb68d3307f03bd62e340c1be92feea51b81785ea858c4a0bce2645327254bc69fd3f3ae2e81588bf45a546924d8535b43a')
+sha512sums=('4b98b460aed9a8fe5447e6c19b49b48d33e7cf31d406c273c727ebed53657bab8e0c5699ca7dff14248f28032a9c826c257f3f4774150e5e40ae215837562604')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
