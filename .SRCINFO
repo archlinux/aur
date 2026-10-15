@@ -1,10 +1,10 @@
 pkgbase = vim-vala-arrufat-git
 	pkgdesc = Vim runtime files for Vala.
-	pkgver = r82.7fbab07
-	pkgrel = 3
+	pkgver = r85.3c5988d
+	pkgrel = 2
 	url = https://github.com/vala-lang/vala.vim
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = git
 	provides = vim-vala
 	conflicts = vim-vala

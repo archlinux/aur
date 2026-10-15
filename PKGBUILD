@@ -2,12 +2,12 @@
 
 _pkgname=vala.vim
 pkgname=vim-vala-arrufat-git
-pkgver=r82.7fbab07
-pkgrel=3
+pkgver=r85.3c5988d
+pkgrel=2
 pkgdesc='Vim runtime files for Vala.'
 arch=('x86_64')
 url='https://github.com/vala-lang/vala.vim'
-license=('GPL-3.0-only')  # ambiguous upstream; might be "or later", choosing this to be safe. See https://github.com/vala-lang/vala.vim/issues/21
+license=('GPL-3.0-or-later')
 makedepends=(git)
 provides=('vim-vala')
 conflicts=('vim-vala')
