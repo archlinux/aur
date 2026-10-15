@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/agx/munin-libvirt-plugins'
 license=('GPL-2.0-only')
 depends=('munin-node' 'libvirt-python' 'libxml2' 'python')
+makedepends=('git')
 source=("git+https://github.com/agx/munin-libvirt-plugins.git#tag=debian/${pkgver}-1")
 sha256sums=('SKIP')
 

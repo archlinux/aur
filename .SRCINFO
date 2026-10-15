@@ -5,6 +5,7 @@ pkgbase = munin-libvirt-plugins
 	url = https://github.com/agx/munin-libvirt-plugins
 	arch = any
 	license = GPL-2.0-only
+	makedepends = git
 	depends = munin-node
 	depends = libvirt-python
 	depends = libxml2
