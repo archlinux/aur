@@ -1,0 +1,23 @@
+pkgbase = graphicle-bin
+	pkgdesc = Code graph and memory for repositories and coding agents, in one Rust program
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Graphicle-AI/graphicle
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	optdepends = git: repository cloning and Git-hook setup
+	optdepends = xdg-utils: open the web app with `graphicle open`
+	provides = graphicle
+	conflicts = graphicle
+	options = !strip
+	options = !debug
+	source_x86_64 = graphicle-0.1.0-x86_64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.0/graphicle-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 41491cd79e8150dfa7010e862d65d2cabbc1f78dfd51e3b9cf42af591ee1de6f
+	source_aarch64 = graphicle-0.1.0-aarch64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.0/graphicle-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2c22329c781ff9e0822ec7e9343c7aa75a1fba926e26aeb8ac76c15c7e9c3053
+
+pkgname = graphicle-bin
