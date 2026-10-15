@@ -5,7 +5,7 @@ _pkgname=go-mitmproxy
 pkgname=${_pkgname}
 pkgdesc="Golang implementation of mitmproxy that supports man-in-the-middle attacks and parsing, monitoring, and tampering with HTTP/HTTPS traffic"
 
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,7 +24,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}"{-bin,-git})
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e251e55c9b48d38ad04841ff864249d57c8d5eb68ccd922a17a425289998fa41')
+sha256sums=('d11073ca3e92de24f33803a23e89a5100c0a283af541115430848f5563ed4f6a')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
