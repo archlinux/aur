@@ -2,7 +2,7 @@
 
 pkgbase=cuopt
 pkgname=(cuopt python-cuopt)
-pkgver=26.08.00
+pkgver=26.10.00
 pkgrel=1
 pkgdesc="NVIDIA cuOpt is an open-source GPU-accelerated optimization engine delivering near real-time solutions for complex decision-making challenges."
 url="https://github.com/NVIDIA/cuopt"
@@ -16,7 +16,7 @@ source=(
     "missing-pkg.patch"
     "fix-nvcc-dependent-value-type.patch"
 )
-sha256sums=('f2869097cc5a10984ccdbb140d3f813e918f7b006c80d5be7bd85f662a053bc7'
+sha256sums=('30bcf69b27af583af018f6face191d8bab6d538e587f3c88df14ea314fdf0b5c'
             '6cdead3b18e784c5b8654239be1bdb02862d4c37d5d4c2798f6d111c8ccb7829'
             '162f42f35f0727f68f3890f454749e04f129b023c06e0fdf99122b1d4de3ca0c'
             'cdc0181943c79531760ec98346b86b75e90ae2332d821bc4d7187ae8dd3fb77a')
