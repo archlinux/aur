@@ -1,0 +1,17 @@
+pkgbase = phpbox
+	pkgdesc = GUI application to manage PHP Docker development environments (PyQt6, Fluent Design)
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://github.com/xxyangyoulin/phpbox
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt6
+	depends = python-pyqt6-fluent-widgets
+	depends = docker
+	depends = hicolor-icon-theme
+	conflicts = phpbox-bin
+	source = phpbox-1.0.18.tar.gz::https://github.com/xxyangyoulin/phpbox/archive/refs/tags/v1.0.18.tar.gz
+	sha256sums = f62e24014ff80fa2dd34970e7631b0ab71fa078a2d3d2936dbf3bb1db4ef0a4d
+
+pkgname = phpbox
