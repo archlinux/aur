@@ -4,7 +4,7 @@
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
 pkgver=2.70.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(x86_64)
 url=https://squawkhq.com/
