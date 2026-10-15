@@ -1,0 +1,14 @@
+pkgbase = watcher
+	pkgdesc = Simple and efficient filesystem watcher
+	pkgver = 0.14.5
+	pkgrel = 1
+	url = https://github.com/e-dant/watcher
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	source = watcher-0.14.5.tar.gz::https://github.com/e-dant/watcher/archive/refs/tags/0.14.5.tar.gz
+	sha256sums = 190bbe5e19923083db2beb3aa68f4e99a563c8f685d8037b0536780b0116c4d3
+
+pkgname = watcher
