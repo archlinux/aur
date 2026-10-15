@@ -15,7 +15,10 @@ sha256sums=('6bcb8fdb414899cfb74e712c552771ec31cbe14d07ec767ce6a3aa671b54ab36')
 
 build() {
 	cd "frankenphp-${pkgver}/caddy/frankenphp/"
-	CGO_CFLAGS=$(php-config --includes) CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs)" go build
+	env \
+		CGO_CFLAGS="$(php-config --includes)" \
+		CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs)" \
+		go build -tags=nobadger,nomysql,nopgx,deprecated_topic,deprecated_claim
 }
 
 package() {
