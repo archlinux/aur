@@ -1,29 +1,29 @@
 pkgbase = uefitool-bin
 	pkgdesc = UEFI firmware image viewer and editor
-	pkgver = A74
+	pkgver = A75
 	pkgrel = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = x86_64
 	license = BSD-2-Clause
-	provides = uefiextract=A74
-	provides = uefifind=A74
-	provides = uefitool=A74
+	provides = uefiextract=A75
+	provides = uefifind=A75
+	provides = uefitool=A75
 	conflicts = uefitool
-	source = UEFIExtract-A74-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A74/UEFIExtract_NE_A74_x64_linux.zip
-	source = UEFIFind-A74-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A74/UEFIFind_NE_A74_x64_linux.zip
-	source = UEFITool-A74-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A74/UEFITool_NE_A74_x64_linux.zip
-	source = uefitool_A74-1_16.png::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/icons/uefitool_16x16.png
-	source = uefitool_A74-1_32.png::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/icons/uefitool_32x32.png
-	source = uefitool_A74-1_48.png::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/icons/uefitool_48x48.png
-	source = uefitool_A74-1_64.png::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/icons/uefitool_64x64.png
-	source = uefitool_A74-1_128.png::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/icons/uefitool_128x128.png
-	source = uefitool_A74-1_256.png::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/icons/uefitool_256x256.png
-	source = uefitool_A74-1_512.png::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/icons/uefitool_512x512.png
-	source = uefitool_A74-1.desktop::https://github.com/LongSoft/UEFITool/raw/A74/UEFITool/uefitool.desktop
-	source = uefitool_A74-1.license::https://github.com/LongSoft/UEFITool/raw/A74/LICENSE.md
-	sha256sums = 56bf6d8970033673ee4ba337594eb745c3926e5943f7c53ca912b5fd602e8f21
-	sha256sums = 774c29c86269ef47aadb798598b087bff8b15c9560bce1c71259c5ec6514c130
-	sha256sums = 431adfdf244a4f52de18edf28bd393513cd1db768a67bcf6062618694b0917cd
+	source = UEFIExtract-A75-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A75/UEFIExtract_NE_A75_x64_linux.zip
+	source = UEFIFind-A75-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A75/UEFIFind_NE_A75_x64_linux.zip
+	source = UEFITool-A75-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A75/UEFITool_NE_A75_x64_linux.zip
+	source = uefitool_A75-1_16.png::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/icons/uefitool_16x16.png
+	source = uefitool_A75-1_32.png::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/icons/uefitool_32x32.png
+	source = uefitool_A75-1_48.png::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/icons/uefitool_48x48.png
+	source = uefitool_A75-1_64.png::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/icons/uefitool_64x64.png
+	source = uefitool_A75-1_128.png::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/icons/uefitool_128x128.png
+	source = uefitool_A75-1_256.png::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/icons/uefitool_256x256.png
+	source = uefitool_A75-1_512.png::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/icons/uefitool_512x512.png
+	source = uefitool_A75-1.desktop::https://github.com/LongSoft/UEFITool/raw/A75/UEFITool/uefitool.desktop
+	source = uefitool_A75-1.license::https://github.com/LongSoft/UEFITool/raw/A75/LICENSE.md
+	sha256sums = 5ee05d0da0c235626de67959d6cd97767e0d7ac67d42c8839e5972e8c23fd5a5
+	sha256sums = 4a3ff6995a20770bdf0e0a71b0daccb1b64280246240a9b7a52b3d46c0eaf1ae
+	sha256sums = e2c6f70730bb8e2c26661cf195a65958494a430d9e295152cb92225376e73321
 	sha256sums = 8a026dc03d82500aeac6bfa47ddb838b10196b7cc09169981430e67bf79aab7a
 	sha256sums = 9b6bce56fcccea4104642c6c8d393e6043671a8fd45b1c7bf8495407b4ad206a
 	sha256sums = ed001d549f96e142fd609e9a89d3482702d9d37abfa3f6a39cfa0fd2a9b36335
