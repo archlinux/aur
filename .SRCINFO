@@ -1,0 +1,15 @@
+pkgbase = console-emulators
+	pkgdesc = Meta package for popular console emulators on Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = retroarch
+	depends = ppsspp
+	depends = dolphin-emu
+	depends = pcsx2
+	depends = mame
+	depends = mgba
+	depends = fceux
+	depends = mednafen
+
+pkgname = console-emulators
