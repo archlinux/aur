@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built with Quickshell: living surfaces rather than a bar
-	pkgver = 1.0.0beta45
+	pkgver = 1.0.0beta46
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -66,7 +66,7 @@ pkgbase = bioma-shell
 	optdepends = gnome-online-accounts-gtk: adding those accounts outside GNOME Settings
 	options = !lto
 	backup = etc/xdg/autostart/bioma.desktop
-	source = bioma-shell-1.0.0beta45.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.45.tar.gz
-	sha256sums = 62cb1f692146a2b7c017ea2cc3ce38286e19947897e1cc38d834651c6feb7938
+	source = bioma-shell-1.0.0beta46.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.46.tar.gz
+	sha256sums = 36bf3ffeea5a516a5141d2bb1d9116f3d7d71ce1c5523dc5d91fadd64c2dd42e
 
 pkgname = bioma-shell
