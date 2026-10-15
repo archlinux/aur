@@ -1,0 +1,18 @@
+pkgbase = lsa-sysinfo
+	pkgdesc = Linux System Audit: clean-room Linux implementation of AIDA64 Business features (AIDA64 by FinalWire Ltd.) - Cache & Memory Benchmark
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/eugenesflanagin-spec/lsa-sysinfo
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = gtk3
+	depends = glib2
+	depends = glibc
+	depends = cairo
+	depends = hicolor-icon-theme
+	depends = hwdata
+	optdepends = srs-sysinfo: srs-root DMI cache for memory speed / type details
+	source = lsa-sysinfo-0.1.0.tar.gz::https://github.com/eugenesflanagin-spec/lsa-sysinfo/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 304338db07e3042afd500a614ffdb20fe3e9c357d48192f9c9c2229630a0195c
+
+pkgname = lsa-sysinfo
