@@ -1,7 +1,8 @@
 # Maintainer: YageGeng <icoderdev@outlook.com>
 # 维护者负责 AUR 打包配方，应用和浏览器由上游提供。
 pkgname=ccbaga-bin
-pkgver=0.2.36
+# 跟随上游稳定版更新，校验和与固定版本下载地址保持一致。
+pkgver=0.2.48
 pkgrel=1
 pkgdesc='Claude maintenance and isolated fingerprint browser toolkit'
 arch=('x86_64')
@@ -25,7 +26,7 @@ source=(
   "ccbaga-$pkgver-LICENSE.lobehub.txt::https://raw.githubusercontent.com/liseami/CCBaga/v$pkgver/assets/ai-icons/LICENSE.lobehub.txt"
 )
 sha256sums=(
-  '13a76d455092d38a5b0437d49713874308986d580e3a8592386c25a9d52e04a6'
+  '5e6d4c561a58b701343313149297c1345ce2efada159d9ad69f3424101fedf05'
   'add9d7531d1b21646317a8958e38fc727506fa39d24bdecb44154d943c82753a'
 )
 

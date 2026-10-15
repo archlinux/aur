@@ -1,6 +1,6 @@
 # CCBaga 的 Arch Linux 二进制包
 
-将 [CCBaga 官方 v0.2.36](https://github.com/liseami/CCBaga/releases/tag/v0.2.36) 的原生 Arch 包重新打包为 `ccbaga-bin`，仅支持 `x86_64`，同时包含 CCBaga-A 和 CCBaga-B。无需编译 Rust、前端或 Chromium，也不需要安装 Bun。原包下载约 201 MiB，安装载荷约 725 MiB。
+将 [CCBaga 官方 v0.2.48](https://github.com/liseami/CCBaga/releases/tag/v0.2.48) 的原生 Arch 包重新打包为 `ccbaga-bin`，仅支持 `x86_64`，同时包含 CCBaga-A 和 CCBaga-B。无需编译 Rust、前端或 Chromium，也不需要安装 Bun。原包下载约 201 MiB，安装载荷约 726 MiB。
 
 AUR 打包维护者：YageGeng <icoderdev@outlook.com>。维护范围为本仓库的打包配方，应用开发、浏览器引擎和上游发布由各自项目负责。
 
@@ -43,6 +43,6 @@ Linux 更新交给包管理器。AUR 维护者更新并推送配方后，用户�
 makepkg --printsrcinfo > .SRCINFO
 ```
 
-应用原创代码采用 MIT，浏览器保留 BSD-3-Clause 及其依赖各自的许可。相关声明安装在 `/usr/share/licenses/ccbaga-bin/`，完整浏览器资源也随包保留。上游 [NOTICE.md](https://github.com/liseami/CCBaga/blob/v0.2.36/NOTICE.md) 还记录了 Cromma UI 授权说明不完整的问题；本配方保留该说明，具体授权信息由上游提供。
+应用原创代码采用 MIT，浏览器保留 BSD-3-Clause 及其依赖各自的许可。相关声明安装在 `/usr/share/licenses/ccbaga-bin/`，完整浏览器资源也随包保留。上游 [NOTICE.md](https://github.com/liseami/CCBaga/blob/v0.2.48/NOTICE.md) 还记录了 Cromma UI 授权说明不完整的问题；本配方保留该说明，具体授权信息由上游提供。
 
 提交 AUR 时仅上传配方、`.SRCINFO` 和文本说明；下载缓存、构建目录与二进制包由 `.gitignore` 排除。
