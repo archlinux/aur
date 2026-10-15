@@ -8,7 +8,7 @@ pkgname=(
 	autovala
 	gedit-autovala
 )
-pkgver=1.17.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="A program that automatically generates CMake and Meson configuration files for your Vala project"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('git' 'meson' 'vala'
              'vte3' 'gtksourceview4' 'libpeas'
              'pandoc' 'gobject-introspection')
 source=("git+https://gitlab.com/rastersoft/autovala#tag=$pkgver" gedit40.patch tepl.patch local.patch)
-sha256sums=('f33a99d85ddd008204588434f7492cabfa8df9e8addb5792000568d72aaed62a'
+sha256sums=('c0f6e77c8942f2649c56e200fb0c6969c998323e4aa1ef42e8021f628264edd7'
             'c72f55685649d184da17ef47a3ecbcf9a77906e0ae7b831ca116bf06db4764b3'
             '66eba692513fb12283fef312ef39c3acb3d7705f7129addd7023ad936b0e3f0b'
             '5b40b72a328c45ff66af92bbbdf2918cdcc9c8bdd9077ba169badfa743589b66')
