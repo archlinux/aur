@@ -1,0 +1,24 @@
+[Unit]
+Description=wb2api panel service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=wb2api
+Group=wb2api
+WorkingDirectory=/var/lib/wb2api
+ExecStart=/usr/bin/wb2api -config /etc/wb2api/config.json
+Restart=on-failure
+RestartSec=5
+
+# 加固
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/wb2api
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target
