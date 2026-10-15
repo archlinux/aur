@@ -42,14 +42,14 @@
 # (prime-run), where WebKit + PRIME + Wayland aborts, and can be disabled with
 # ISHELLPRO_GPU_FIX=0.
 
-pkgname=ishellpro
+pkgname=ishellpro-bin
 pkgver=3.1.58
 pkgrel=2
 pkgdesc="Lightweight cross-platform SSH/SFTP terminal client (native repack of the upstream AppImage)"
 arch=('x86_64')
 url="https://ishell.cc"
 license=('custom:proprietary')
-install="${pkgname}.install"
+install="ishellpro-bin.install"
 
 # The GUI stack is pulled in transitively:
 #   gtk3            -> glib2, gdk-pixbuf2, pango, cairo, at-spi2-core, dconf, ...

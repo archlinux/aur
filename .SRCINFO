@@ -1,9 +1,9 @@
-pkgbase = ishellpro
+pkgbase = ishellpro-bin
 	pkgdesc = Lightweight cross-platform SSH/SFTP terminal client (native repack of the upstream AppImage)
 	pkgver = 3.1.58
 	pkgrel = 2
 	url = https://ishell.cc
-	install = ishellpro.install
+	install = ishellpro-bin.install
 	arch = x86_64
 	license = custom:proprietary
 	depends = gtk3
@@ -15,7 +15,7 @@ pkgbase = ishellpro
 	optdepends = xdg-desktop-portal: file open/save dialogs and OpenURI under Wayland
 	optdepends = xdg-desktop-portal-gtk: GTK portal backend
 	options = !debug
-	source = ishellpro-3.1.58-amd64.AppImage::https://ishell-down.oss-cn-beijing.aliyuncs.com/ishellpro_3.1.58_amd64.AppImage
+	source = ishellpro-bin-3.1.58-amd64.AppImage::https://ishell-down.oss-cn-beijing.aliyuncs.com/ishellpro_3.1.58_amd64.AppImage
 	sha256sums = 7b8d9503706323497a5ec3924f6ea9c5a254f147bcb763dd4bb3951f9b967835
 
-pkgname = ishellpro
+pkgname = ishellpro-bin
