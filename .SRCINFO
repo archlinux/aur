@@ -1,0 +1,22 @@
+pkgbase = gitoui-bin
+	pkgdesc = A terminal git client
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/NayJi7/gitoui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = gitoui
+	conflicts = gitoui
+	options = !strip
+	source = README-0.3.6.md::https://raw.githubusercontent.com/NayJi7/gitoui/v0.3.6/README.md
+	source = LICENSE-0.3.6::https://raw.githubusercontent.com/NayJi7/gitoui/v0.3.6/LICENSE
+	sha256sums = d1636253aadd81c35bada1e4dfe1542c39eaccf8aa133958503150d8a95fff02
+	sha256sums = 99d61b26cd4453bbc03103277ebb8ff89f7854eade50dbf20ac68b86c1b2be05
+	source_x86_64 = gitoui-x86_64-0.3.6.tgz::https://github.com/NayJi7/gitoui/releases/download/v0.3.6/gitoui-0.3.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 761b7edd68ef31eabbe6f8f4946d6335d77cb80082f3a5d4a3b2efba6d080ee7
+	source_aarch64 = gitoui-aarch64-0.3.6.tgz::https://github.com/NayJi7/gitoui/releases/download/v0.3.6/gitoui-0.3.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fcdf0d5db6167d1e2587ea3f5d0f2a7ab3f7ed48767d1777dca9bc8734751a8c
+
+pkgname = gitoui-bin

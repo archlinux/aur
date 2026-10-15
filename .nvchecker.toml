@@ -1,0 +1,5 @@
+[gitoui-bin]
+source = "github"
+github = "NayJi7/gitoui"
+use_latest_release = true
+prefix = "v"
