@@ -22,7 +22,7 @@ conflicts=('chan-desktop')
 # dependencies and can leave rustc unable to resolve their symbols at link time.
 options=(!lto)
 source=('chan-0.105.0.tar.gz::https://github.com/fiorix/chan/archive/v0.105.0.tar.gz')
-sha256sums=('9451cec5f6c990fbead3c3fc4444187ef05986eab57e212b78b6d08aac07ca09')
+sha256sums=('5007a1595cfbc9a5e46884334f88004b5c335b5aae7a44d50020a38699c8c8ce')
 
 # RUSTUP_TOOLCHAIN keeps the tree's rust-toolchain.toml pin from making a
 # rustup-provided cargo download a second toolchain mid-build, per Arch's Rust
