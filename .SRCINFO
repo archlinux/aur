@@ -1,5 +1,5 @@
 pkgbase = mbelib-neo-git
-	pkgdesc = IMBE, AMBE and AMBE+2 vocoder library for P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA and ProVoice
+	pkgdesc = IMBE, AMBE and AMBE+2 vocoder library for P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA and ProVoice.
 	pkgver = 2.4.3.r1.g4e40bbd
 	pkgrel = 1
 	url = https://github.com/arancormonk/mbelib-neo
