@@ -1,7 +1,7 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
 pkgver=0.18.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -50,7 +50,7 @@ source=(omnigent-0.18.0.tar.gz::https://files.pythonhosted.org/packages/51/c5/9a
         jeepney-0.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/b2/a3/e137168c9c44d18eff0376253da9f1e9234d0239e0ee230d2fee6cea8e55/jeepney-0.9.0-py3-none-any.whl
         jiter-0.17.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl::https://files.pythonhosted.org/packages/f5/75/b04013c7743269d4533ef4e746fc0ed678a143968dd7448658e3f51daad2/jiter-0.17.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
         jmespath-1.1.0-py3-none-any.whl::https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
-        json5-0.15.0-py3-none-any.whl::https://files.pythonhosted.org/packages/eb/be/59527c99478aade6bb33a68d72e6e18dd4e6ff6eacfc7d01bdb15bc76912/json5-0.15.0-py3-none-any.whl
+        json5-0.16.0-py3-none-any.whl::https://files.pythonhosted.org/packages/22/ea/6983226ffa91ff470b685e1673b7bd863e526eb208af1e7458fd71f02e31/json5-0.16.0-py3-none-any.whl
         jsonschema-4.26.0-py3-none-any.whl::https://files.pythonhosted.org/packages/69/90/f63fb5873511e014207a475e2bb4e8b2e570d655b00ac19a9a0ca0a385ee/jsonschema-4.26.0-py3-none-any.whl
         jsonschema_specifications-2025.9.1-py3-none-any.whl::https://files.pythonhosted.org/packages/41/45/1a4ed80516f02155c51f51e8cedb3c1902296743db0bbc66608a0db2814f/jsonschema_specifications-2025.9.1-py3-none-any.whl
         keyring-25.7.0-py3-none-any.whl::https://files.pythonhosted.org/packages/81/db/e655086b7f3a705df045bf0933bdd9c2f79bb3c97bfef1384598bb79a217/keyring-25.7.0-py3-none-any.whl
@@ -149,7 +149,7 @@ sha256sums=(3e9f73ab39de9eec9d47350a46d793b7b81650e0a56abd83a6dc547d3873bdfa
             97e5714520c16fc0a45695e5365a2e11b81ea79bba796e26f9f1d178cb182683
             523c499235fb65add25d4bb01b1c4709ce695efdc7deb6c0a7bc515b5c44e0fb
             a5663118de4908c91729bea0acadca56526eb2698e83de10cd116ae0f4e97c64
-            56636a30c0e8a4665fe2179c0212f32eae3796dea89ea6f649b9436ecdb39618
+            ab703e0d2e565ecff92b4d3525159108911db47e1becc3903a9433d4d504505a
             d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce
             98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe
             be4a0b195f149690c166e850609a477c532ddbfbaed96a404d4e43f8d5e2689f
@@ -208,7 +208,7 @@ sha256sums=(3e9f73ab39de9eec9d47350a46d793b7b81650e0a56abd83a6dc547d3873bdfa
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            283e582700dcc324ace93b87d57b03f84f62aa53cf92d6ced92e91735b35185e
+            eed9b6d141e731995bbd643835e1df3a0e63cae9e9d29348b6e273be77eb9aa1
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -245,7 +245,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            jeepney-0.9.0-py3-none-any.whl
            jiter-0.17.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
            jmespath-1.1.0-py3-none-any.whl
-           json5-0.15.0-py3-none-any.whl
+           json5-0.16.0-py3-none-any.whl
            jsonschema-4.26.0-py3-none-any.whl
            jsonschema_specifications-2025.9.1-py3-none-any.whl
            keyring-25.7.0-py3-none-any.whl
