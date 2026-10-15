@@ -3,12 +3,12 @@
 pkgname=dbvis
 pkgver=26.2.4
 __pkgver_underscore=26_2_4
-pkgrel=1
+pkgrel=2
 pkgdesc="DbVisualizer free - The Universal Database Tool."
 url="https://www.dbvis.com/"
 license=('custom')
 arch=('any')
-depends=('java-runtime>=21')
+depends=('java-runtime=25')
 makedepends=(coreutils sed unzip)
 source=('https://dbvis.com/product_download/'$pkgname'-'$pkgver'/media/'$pkgname'_linux_'$__pkgver_underscore'.tar.gz')
 sha256sums=('39a26a8bd07b0dcf72dbd05eaa8026a930cdd86d08d6618f6d9be48b6ffab525')
