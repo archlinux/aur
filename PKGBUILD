@@ -2,7 +2,7 @@
 
 pkgname=vsview
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -27,10 +27,6 @@ makedepends=(
     'python-build'
     'python-hatchling'
     'python-installer'
-    'python-setuptools'
-    'python-versioningit'
-    'python-wheel'
-    'python-hatch-sbom'
 )
 optdepends=(
     'vapoursynth-plugin-bestsource: Source filter'
@@ -47,9 +43,20 @@ source=(
     "${pkgname}.desktop"
 )
 sha256sums=(
-    'SKIP'        
+    'SKIP'
     '20a08e239e1ccd181023f5fa51b2bc98f415b194c86a352777bd441197188755'
 )
+
+prepare() {
+    cd "${pkgname}"
+
+    sed -i \
+        -e 's/, "hatch-sbom\[uv\]>=0.3.0"//' \
+        -e 's/, "versioningit"//' \
+        -e '/^\[tool\.hatch\.build\.targets\.wheel\.hooks\.sbom/,/^$/d' \
+        -e "s/^dynamic = \[\"version\"\]\$/version = \"${pkgver}\"/" \
+        pyproject.toml
+}
 
 build() {
     cd "${pkgname}"
