@@ -9,7 +9,8 @@ arch=('x86_64')
 url="https://github.com/owasp-amass/amass"
 _githubname="owasp-amass/amass"
 license=('Apache-2.0')
-conflicts=('amass')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("https://github.com/owasp-amass/amass/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 sha512sums=('6e7289beaf0809e4795f9715de0bd739a41a89493a27b8134c9696f620eff8bca355c92bd83207244da1763f52b4b97e9d4f4201ece357bdaf45cad48c26c8ed')
 

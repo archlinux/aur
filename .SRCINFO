@@ -5,6 +5,7 @@ pkgbase = amass-bin
 	url = https://github.com/owasp-amass/amass
 	arch = x86_64
 	license = Apache-2.0
+	provides = amass
 	conflicts = amass
 	source = https://github.com/owasp-amass/amass/releases/download/v5.1.1/amass_linux_amd64.tar.gz
 	sha512sums = 6e7289beaf0809e4795f9715de0bd739a41a89493a27b8134c9696f620eff8bca355c92bd83207244da1763f52b4b97e9d4f4201ece357bdaf45cad48c26c8ed
