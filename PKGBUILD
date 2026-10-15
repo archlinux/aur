@@ -9,15 +9,16 @@ url='https://pypi.org/project/kfactory/'
 license=("None")
 depends=(
 	"python-gitpython"
-	"klayout"
+	"python-aenum"
 	"python-dotenv"
-	"python-aenum"
-	"python-aenum"
 	"python-cachetools"
-	"python-pydantic-settings"
+	"python-kfnetlist"
+	"klayout"
 	"python-loguru"
-	"python-rectangle-packer"
+	"python-pydantic"
+	"python-pydantic-settings"
 	"python-pydantic-extra-types"
+	"python-rectangle-packer"
   )
 makedepends=(
 	"python-build"
