@@ -7,7 +7,7 @@
 test ! -d FreeCAD -a -d ../freecad-git/FreeCAD && ln -s ../freecad-git/FreeCAD .
 
 pkgname=freecad-weekly
-pkgver=26.3.0dev.10.01
+pkgver=27.1.0dev.2026.10.14
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout of last weekly-yyyy.MM.DD tag'
 arch=('x86_64')
@@ -24,7 +24,7 @@ netcdf
 opencascade
 openmpi
 pybind11
-pyside6
+'pyside6'
 pyside6-tools
 python-defusedxml
 python-yaml
