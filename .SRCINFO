@@ -1,6 +1,6 @@
 pkgbase = paxman
 	pkgdesc = A modern and fast package manager for Arch-based systems
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/denix666/pax
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = paxman
 	optdepends = fish: fish shell completions
 	provides = pax
 	conflicts = pax
-	source = https://github.com/denix666/pax/releases/download/v0.3.1/pax_linux_x86_64.tar.gz
-	sha256sums = 6b34f53f3d1c49970dc5bb0dcd9247c13a0385533c70e246b9283dafd7b8ada4
+	source = https://github.com/denix666/pax/releases/download/v0.3.2/pax_linux_x86_64.tar.gz
+	sha256sums = 8d4c2f4f2a47be937d7fe52732eeefecf46f9ec70ad543a27a0039f71fd60fd3
 
 pkgname = paxman
