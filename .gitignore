@@ -1,0 +1,6 @@
+# Only add files explicitly using -f flag with git, eg git -f add <file>
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!Taskfile.yaml
