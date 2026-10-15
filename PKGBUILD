@@ -9,7 +9,7 @@ pkgdesc="Low level CD dumper utility"
 provides=('redumper')
 
 # The previous maintainer set pkgver against what Media Preservation Frontend had bundled. However, the lead maintainer (superg) has recommended to simply use the latest. There's also no conflicts with redump or no-intro project submissions by using the latest version.
-pkgver=b763
+pkgver=b764
 pkgrel=1
 license=('GPL3')
 
@@ -28,7 +28,7 @@ source=("https://github.com/superg/redumper/releases/download/$pkgver/redumper-$
 'https://raw.githubusercontent.com/superg/redumper/main/README.md'
 'https://raw.githubusercontent.com/superg/redumper/main/LICENSE')
 
-sha256sums=('fd1f5475715b5b60be0c920f4d0ae0ba00f6d337e483b4228fe02b2557a9449c'
+sha256sums=('226d9c395aee4ffd1b9f36d532eeb09aaa70a21f48b0f6349a5a3685a72d5080'
 'SKIP'
 'SKIP')
 
