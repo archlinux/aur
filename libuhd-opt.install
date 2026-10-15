@@ -1,0 +1,21 @@
+post_install() {
+    # $1 holds the full version (e.g., "1.0.0-1")
+    local version_full="$1"
+    # This removes everything after and including the last "-"
+    local version_semantic="${version_full%-*}"
+
+	echo ""
+	echo "CMake variables to use the AUR package"
+	echo ""
+    echo "UHD_DIR=/opt/libuhd-opt/${version_semantic}/uhd/lib/cmake/uhd"
+    echo "UHD_INCLUDE_HINTS=/opt/libuhd-opt/${version_semantic}/uhd/include"
+    echo "UHD_LIBDIR_HINTS=/opt/libuhd-opt/${version_semantic}/uhd/lib"
+	echo ""
+}
+
+post_upgrade() {
+    local version_new="$1"
+    local version_old="$2"
+    post_install ${version_new}
+}
+

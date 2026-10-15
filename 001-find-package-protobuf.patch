@@ -1,0 +1,43 @@
+diff --git a/host/lib/usrp/b200/b200_impl.cpp b/host/lib/usrp/b200/b200_impl.cpp
+index 1304ddb65..bb8cc1cf1 100644
+--- a/host/lib/usrp/b200/b200_impl.cpp
++++ b/host/lib/usrp/b200/b200_impl.cpp
+@@ -36,7 +36,7 @@ using namespace uhd::usrp::gpio_atr;
+ using namespace uhd::transport;
+ 
+ namespace {
+-constexpr int64_t REENUMERATION_TIMEOUT_MS = 3000;
++constexpr int64_t REENUMERATION_TIMEOUT_MS = 10000;
+ }
+ constexpr bool is_b2xx_mini(const b200_product_t& product)
+ {
+diff --git a/host/lib/usrp/common/CMakeLists.txt b/host/lib/usrp/common/CMakeLists.txt
+index a568e1335..bdcfc353b 100644
+--- a/host/lib/usrp/common/CMakeLists.txt
++++ b/host/lib/usrp/common/CMakeLists.txt
+@@ -69,7 +69,7 @@ if(ENABLE_MPMD)
+         set(protobuf_MODULE_COMPATIBLE ON CACHE BOOL "" FORCE)
+         find_package(Protobuf CONFIG REQUIRED)
+     else()
+-        find_package(Protobuf REQUIRED)
++        find_package(Protobuf CONFIG REQUIRED)
+     endif()
+     find_package(gRPC REQUIRED)
+ 
+@@ -149,14 +149,14 @@ if(ENABLE_MPMD)
+         ${CMAKE_CURRENT_BINARY_DIR}/mpm_server.grpc.pb.cc
+         ${CMAKE_CURRENT_BINARY_DIR}/mpm_client.cpp
+     )
+-    
++
+     # Mark files as generated so CMake doesn't complain at configure time
+     set_source_files_properties(
+         ${CMAKE_CURRENT_BINARY_DIR}/mpm_client.cpp
+         ${CMAKE_CURRENT_BINARY_DIR}/mpm_client_python.cpp
+         PROPERTIES GENERATED TRUE
+     )
+-    
++
+     # Add binary directory to include path for generated headers
+     include_directories(${CMAKE_CURRENT_BINARY_DIR})
+     # Add Protobuf include directories
