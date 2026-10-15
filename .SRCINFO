@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
-	pkgver = 1.141.2
+	pkgver = 1.142.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	install = visual-studio-code-bin.install
@@ -33,11 +33,11 @@ pkgbase = visual-studio-code-bin
 	options = !strip
 	source = visual-studio-code-bin.sh
 	sha256sums = bd0d9edf69283ebdf4e73e0a7b168d2fcf50acbd01f63674cad93ed4fe42fdad
-	source_x86_64 = code_1.141.2_amd64.deb::https://update.code.visualstudio.com/1.141.2/linux-deb-x64/stable
-	sha256sums_x86_64 = d09b25a39b41b35e514b276ec551f73df4fea9197a14b4f365ca72fb139211cc
-	source_aarch64 = code_1.141.2_arm64.deb::https://update.code.visualstudio.com/1.141.2/linux-deb-arm64/stable
-	sha256sums_aarch64 = 12b0b8064f85a90772fa4daa62515f3ac0c7e3a19ab0ba37bfb8fea45f8be147
-	source_armv7h = code_1.141.2_armhf.deb::https://update.code.visualstudio.com/1.141.2/linux-deb-armhf/stable
-	sha256sums_armv7h = 8dc5c6040a622a63f38b6383013580ea6cc7085d9fbfd482f6953d02b160e4d7
+	source_x86_64 = code_1.142.0_amd64.deb::https://update.code.visualstudio.com/1.142.0/linux-deb-x64/stable
+	sha256sums_x86_64 = 33454f7d2d7bc79a5925b3e794d106fb454a10c6a635ddfeb908a63659a44ec5
+	source_aarch64 = code_1.142.0_arm64.deb::https://update.code.visualstudio.com/1.142.0/linux-deb-arm64/stable
+	sha256sums_aarch64 = 036b445fe4c634f0917cb0d09f4ce43048da1b2797d3fd2169c645ea9a261af8
+	source_armv7h = code_1.142.0_armhf.deb::https://update.code.visualstudio.com/1.142.0/linux-deb-armhf/stable
+	sha256sums_armv7h = a2fd8d9458dc9443761d9970b68782897f14cf41e9dae0a74b58869c748b673b
 
 pkgname = visual-studio-code-bin
