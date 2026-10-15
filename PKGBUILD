@@ -5,7 +5,7 @@ _appname=bnb
 _execname=${_appname,,}
 
 pkgname=${_execname}-shell
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A fast, cross-platform terminal shell built in Rust with Powerlevel10k aesthetics, fuzzy search, and safety guardrails"
 
@@ -25,7 +25,7 @@ install="${_execname}.install"
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b1c42d03e9711539bd293d931d017ebc1e9cda0f905520ce37c63dd275bc80c9')
+sha256sums=('0f4932936b2e374789999c29223eaee76d5e91b04dce409be0f4e028110b18c4')
 
 
 prepare() {
