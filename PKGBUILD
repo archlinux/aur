@@ -2,7 +2,7 @@
 # Maintainer: Yoan Wai <106609173+YoanWai@users.noreply.github.com>
 
 pkgname='agent-manager-bin'
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc='Run Claude Code, Codex, OpenCode and other AI coding agents in tmux'
 url='https://agent-manager.dev/'
@@ -13,10 +13,10 @@ conflicts=('agent-manager')
 depends=('tmux' 'git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v${pkgver}/agent-manager_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('312bd67f035edc30ba849eb48b48b11a91ef4ac6f0ac1bfbf501bb2ba5fc8f91')
+sha256sums_aarch64=('1d4e60bc141354a54422cfc9916f61e059b3f5c9f87d1a6d5fb914dce0e5ee5d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v${pkgver}/agent-manager_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f5ec6dc1ba0f5715881d0c5ac163f79b6a1843e2ab7ce6bbbcc34f95533e2a9d')
+sha256sums_x86_64=('ab195e77401e407cea06d38b7aa6f881cb13e5499268ee7ae66f35bf1739f30b')
 
 package() {
   install -Dm755 "./agent-manager" "${pkgdir}/usr/bin/agent-manager"
