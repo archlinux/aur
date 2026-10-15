@@ -1,19 +1,19 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgbase=fcitx5-lotus-bin
 pkgname=('fcitx5-lotus-bin' 'fcitx5-lotus-openrc-bin' 'fcitx5-lotus-runit-bin')
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
 source=("https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v${pkgver}/fcitx5-lotus-v${pkgver}-x86_64-archlinux.tar.zst")
-sha256sums=('7b8368c0fcc800df9db6c1df6dc838393ab80a25427fe6c9ebb10fa080d3ee53')
+sha256sums=('53b42c0aba8588f57230d1725fc7416d73fdae33857307be10681610190697bb')
 
 package_fcitx5-lotus-bin() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
-    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
+    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libevdev' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
     optdepends=(
         'fcitx5-lotus-openrc-bin: OpenRC service for fcitx5-lotus'
         'fcitx5-lotus-runit-bin: Runit service for fcitx5-lotus'
