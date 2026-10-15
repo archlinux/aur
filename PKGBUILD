@@ -1,8 +1,8 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 
 pkgname=vsview
-pkgver=0.12.1
-pkgrel=3
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -46,8 +46,10 @@ source=(
     "${pkgname}::git+${url}.git#tag=vsview/v${pkgver}"
     "${pkgname}.desktop"
 )
-sha256sums=('SKIP'
-            '20a08e239e1ccd181023f5fa51b2bc98f415b194c86a352777bd441197188755')
+sha256sums=(
+    'SKIP'        
+    '20a08e239e1ccd181023f5fa51b2bc98f415b194c86a352777bd441197188755'
+)
 
 build() {
     cd "${pkgname}"
