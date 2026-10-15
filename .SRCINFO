@@ -1,0 +1,21 @@
+pkgbase = wlan-auto-login-bin
+	pkgdesc = CLI and TUI for automatic Student_CX campus Wi-Fi login (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SEUCXCS/wlan-auto-login
+	arch = x86_64
+	license = MIT
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	depends = networkmanager
+	depends = systemd
+	optdepends = gnome-keyring: Secret Service backend for user credentials
+	optdepends = kwallet: alternative Secret Service backend for user credentials
+	provides = wlanlogin
+	conflicts = wlanlogin
+	options = !debug
+	source = wlan-auto-login-bin-0.1.0-x86_64.tar.gz::https://github.com/SEUCXCS/wlan-auto-login/releases/download/v0.1.0/wlanlogin-linux-x86_64.tar.gz
+	sha256sums = d9348b383ddba34ee3171a4e12f48c51ac20d2c1d86276ef7a10a49d74ff9c76
+
+pkgname = wlan-auto-login-bin
