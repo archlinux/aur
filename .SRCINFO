@@ -1,6 +1,6 @@
 pkgbase = shurectl
 	pkgdesc = TUI configurator for Shure MOTIV USB audio interfaces and microphones
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/Humblemonk/shurectl
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = shurectl
 	depends = glibc
 	depends = alsa-lib
 	depends = systemd-libs
-	source = shurectl-2.11.1.tar.gz::https://github.com/Humblemonk/shurectl/archive/refs/tags/v2.11.1.tar.gz
-	sha256sums = 959adb13d5a71e60e80838839dcaedc44296b425aeb58176ee6bc67ecc957025
+	source = shurectl-2.12.0.tar.gz::https://github.com/Humblemonk/shurectl/archive/refs/tags/v2.12.0.tar.gz
+	sha256sums = 71681af843182c2b6ce0390314a546a80aea9b17a1a8525355ed64c1fa35500d
 
 pkgname = shurectl
