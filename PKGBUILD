@@ -30,7 +30,7 @@ source=("git+$url#commit=$_commit"
         "build-toolchain_unset_target_flags.patch"
         "retro68.sh")
 
-md5sums=('235748087836ff9034a26224e122c047'
+md5sums=('SKIP'
          '3f32f16d1e3b972e4a8b91ff6fd1406f'
          '42d4055c5b833e229100e77628b61e45'
          '1b2aa328b29c63cb7376c5fb136b7153')
