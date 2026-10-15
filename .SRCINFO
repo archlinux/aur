@@ -1,6 +1,6 @@
 pkgbase = dsd-neo-git
 	pkgdesc = Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more.
-	pkgver = 2.10.0.r76.g32ae7c8
+	pkgver = 2.10.0.r77.gadd6d64
 	pkgrel = 1
 	url = https://github.com/arancormonk/dsd-neo
 	arch = x86_64
@@ -23,7 +23,9 @@ pkgbase = dsd-neo-git
 	conflicts = dsd-neo
 	source = dsd-neo-git::git+https://github.com/arancormonk/dsd-neo.git#branch=main
 	source = pffft-94d3c8323a530c5e60a2535505166366171c1fdb.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/94d3c8323a530c5e60a2535505166366171c1fdb
+	source = TETRA_crypto-defed030f6155ac70ff5d8bea97b348cb92ee1f6.tar.gz::https://codeload.github.com/MidnightBlueLabs/TETRA_crypto/tar.gz/defed030f6155ac70ff5d8bea97b348cb92ee1f6
 	sha256sums = SKIP
 	sha256sums = 18339f8f518f1837785120881857f98b3c0d028200967354bf422e9eb5181f6a
+	sha256sums = 41043b60890297f87b5cfc9d3b2d06eec57fe89022ce676fe1ca393e00b814c0
 
 pkgname = dsd-neo-git

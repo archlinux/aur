@@ -1,5 +1,5 @@
 pkgname=dsd-neo-git
-pkgver=2.10.0.r76.g32ae7c8
+pkgver=2.10.0.r77.gadd6d64
 pkgrel=1
 pkgdesc="Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more."
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,21 @@ source+=("pffft-$_pffft_sha.tar.gz::https://codeload.github.com/arancormonk/pfff
 sha256sums+=('18339f8f518f1837785120881857f98b3c0d028200967354bf422e9eb5181f6a')
 # END pinned PFFFT
 
+# BEGIN pinned TETRA_crypto (tools/update_aur_tetra_crypto.py)
+_tetra_crypto_sha=defed030f6155ac70ff5d8bea97b348cb92ee1f6
+source+=("TETRA_crypto-$_tetra_crypto_sha.tar.gz::https://codeload.github.com/MidnightBlueLabs/TETRA_crypto/tar.gz/$_tetra_crypto_sha")
+sha256sums+=('41043b60890297f87b5cfc9d3b2d06eec57fe89022ce676fe1ca393e00b814c0')
+# END pinned TETRA_crypto
+
 build() {
+    local _tetra_crypto_source="$pkgname"
+    [[ "$pkgname" == *-git ]] || _tetra_crypto_source="$pkgname-$pkgver"
+    # Sources that predate the embedded TETRA_crypto have no pin to compare.
+    if [[ -f "$_tetra_crypto_source/cmake/TetraCrypto.cmake" ]] &&
+        ! grep -qx "TETRA_CRYPTO_SHA=$_tetra_crypto_sha" "$_tetra_crypto_source/tools/ci-dependency-pins.env"; then
+        echo "TETRA_crypto pin changed; update the AUR PKGBUILD before building." >&2
+        return 1
+    fi
     local _dsd_source="$pkgname"
     [[ "$pkgname" == *-git ]] || _dsd_source="$pkgname-$pkgver"
     # Keep the recipe usable before the FetchContent migration reaches main/releases.
@@ -55,6 +69,7 @@ build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DFETCHCONTENT_SOURCE_DIR_DSD_TETRA_CRYPTO="$srcdir/TETRA_crypto-$_tetra_crypto_sha" \
         -DFETCHCONTENT_SOURCE_DIR_DSD_PFFFT="$srcdir/pffft-$_pffft_sha" \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
         -DBUILD_TESTING=OFF \
