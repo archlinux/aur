@@ -2,6 +2,17 @@
 pkgname=tone3000-plugin
 pkgver=0.0.12
 pkgrel=1
+# Publish targets: aur + Arch release + Debian release (opt-in per format).
+_publish_targets="aur github-arch github-deb"
+# Debian runtime deps for the fpm conversion, translated from depends and
+# cross-checked against `readelf -d` on the shipped ELF payload:
+#   gtk3->libgtk-3-0t64, alsa-lib->libasound2t64, freetype2->libfreetype6,
+#   curl->libcurl4t64, hicolor-icon-theme->hicolor-icon-theme,
+#   glibc->libc6, gcc-libs->libgcc-s1 + libstdc++6, plus the libs JUCE links
+#   directly (libfontconfig1, libx11-6). t64 is what Debian 13 and Ubuntu
+#   24.04 ship. jack stays an optional Arch optdepend; the standalone loads
+#   without it.
+_deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'libgtk-3-0t64' 'libasound2t64' 'libfreetype6' 'libfontconfig1' 'libcurl4t64' 'libx11-6' 'hicolor-icon-theme')
 pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Built from source)"
 arch=('x86_64')
 url="https://github.com/tone-3000/tone3000-plugin"
@@ -47,10 +58,10 @@ package() {
 	find "${pkgdir}/usr/lib" -type d -exec chmod 755 {} +
 	find "${pkgdir}/usr/lib" -type f -name "*.so" -exec chmod 755 {} +
 
-	# Factory presets — system-wide (upstream install.sh replaces, we do same)
+	# Factory presets — the Linux runtime scans this shared system directory.
 	if compgen -G "resources/factory-presets/*.t3kpreset" > /dev/null; then
-		install -d "${pkgdir}/usr/share/tone3000/factory-presets"
-		install -m644 resources/factory-presets/*.t3kpreset "${pkgdir}/usr/share/tone3000/factory-presets/"
+		install -d "${pkgdir}/usr/share/TONE3000/Presets/Factory"
+		install -m644 resources/factory-presets/*.t3kpreset "${pkgdir}/usr/share/TONE3000/Presets/Factory/"
 	fi
 
 	# Icon + desktop entry (absolute Exec)
