@@ -1,0 +1,11 @@
+function post_install() {
+    /usr/lib/lantern/lanternd install --log-level=trace &>/dev/null
+}
+
+function pre_remove() {
+    /usr/lib/lantern/lanternd uninstall &>/dev/null
+}
+
+function post_remove() {
+    systemctl reset-failed lanternd.service &>/dev/null
+}
