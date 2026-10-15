@@ -10,7 +10,7 @@
 
 pkgname=frenfoil-bin
 _pkgname=frenfoil
-pkgver=0.60.12
+pkgver=0.60.13
 pkgrel=1
 pkgdesc='e2e-only messenger on its own protocol, post-quantum'
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("${_pkgname}-${pkgver}-linux-x64.zip::${_relbase}/${_pkgname}-${pkgver}-
         "${_pkgname}-${pkgver}.desktop::${_rawbase}/${_pkgname}.desktop")
 # Placeholders, not SKIP: an unverified download is worse than a build that refuses to start.
 # CI substitutes the real hashes; building this dir by hand fails until `updpkgsums` is run.
-sha256sums=('3022f11d57272b4f1aba679bdc839e8ec03b7f8071abda0374547f29bf115b9a' '75dbb90de272ebc99a4736598fe5e8a07f0a7fe7f276916a78481849bbacf143')
+sha256sums=('9cec07b8aaa1cf3d81ec21de557c54636f5fea6a18978eb5a2792f1ac8ea8e2d' '75dbb90de272ebc99a4736598fe5e8a07f0a7fe7f276916a78481849bbacf143')
 
 package() {
 	install -dm755 "$pkgdir/opt/$_pkgname"
