@@ -1,0 +1,26 @@
+--- a/basis/ui/backend/gtk3/gtk3.factor
++++ b/basis/ui/backend/gtk3/gtk3.factor
+@@ -515,6 +515,10 @@
+     ] with-destructors ;
+ 
+ M: gtk3-ui-backend (with-ui)
++    ! GDK derives the Wayland app_id from the program name, which would be
++    ! "factor-vm" here since the coreutils binary of that name is shadowed.
++    ! Set it so the window is associated with factor.desktop.
++    "factor" utf8 string>alien g_set_prgname
+     f f gtk_init_check [ "Unable to initialize GTK" throw ] unless
+     setup-gl3-hooks
+     load-icon
+--- a/basis/ui/backend/gtk4/gtk4.factor
++++ b/basis/ui/backend/gtk4/gtk4.factor
+@@ -372,6 +372,10 @@
+     ! Factor's GLSL shaders require desktop GL. GDK's shared context must
+     ! use the same API (not its default GLES choice on some drivers).
+     ! gl-prefer-gl was introduced in GTK 4.14.
++    ! GDK derives the Wayland app_id from the program name and falls back to
++    ! the generic "GTK Application" when it is not set, which no desktop entry
++    ! can match. Set it so the window is associated with factor.desktop.
++    "factor" utf8 string>alien g_set_prgname
+     gtk_is_initialized [ t ] [
+         4 14 0 gtk_check_version [
+             "GDK_DEBUG" os-env dup empty?

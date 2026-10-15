@@ -1,28 +1,31 @@
 # Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
 # Contributor: Leonidas <marek@xivilization.net>
 pkgname=factor
-pkgver=0.100
+pkgver=0.102
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
-url="http://factorcode.org"
+url="https://factorcode.org"
 license=(BSD)
 provides=(factor)
 conflicts=(factor-git)
-depends=(gtkglext)
+
+depends_i686=('gtk3' 'openssl')
+makedepends_i686=('gtk3')
+
+depends=('gtk4' 'openssl')
+makedepends=('gtk4')
+optdepends=('udis86: enables "disassemble" (tools.disassembler)'
+            'rlwrap: readline editing in the terminal listener (as recommended by build.sh deps-pacman)')
 options=(!strip)
 source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zip
-        factor.desktop
-        factor.svg
-        fuel-factor-vm.patch)
-sha512sums=('7a653ca646f499944d91b5a584883da025dccde2e0a065d353a80c85cd2959f6c2380fed8b091431a4ec7aadbcbacd2b39206074ddb6f8570f48758f3ab35da7'
-            '19cf98d0fce2f1f65db4d3416c9577aa5e1f9c5829fab8f722756d37d4683caf3c740669ba895660a66177b6b38e3c7a30153ca70a515e91a455b83c4a55a026'
-            '4065a22cd10873f74024655aa71aafa2b96c0e391f61a5e71f5f4fac9b49955428528c2666da5e6e5058aa28347b0f9327575f2467baf9e3914739b8fa0b2c26'
-            '743b7d1332acc9863968686b2182bc9e9fa91822abd8c3b63a7933480b014dce15e86bb69201695186af26a6b267705e0618f131632249b2c3872d85a1973b07')
+        factor-app-id.patch)
+sha512sums=('413d355b481982bc5adad0ff1eaad5314ba0e4953599b481e7ccd4baf9a842c896a41e1fd085f19d25f0bc77e8be4cae3c789de9be16603d6fe70338c1e86cb0'
+            '01685c39a623ad812f370c122be85d99c38ce7bd1eac9b51708e1cc7b4c62439b69d49d29b25cae6b341c6a0676dba53bf909bb290cb2740089f454efe0d0942')
+
 prepare() {
     cd $pkgname
-    # apply patches
-    patch -p1 < $srcdir/fuel-factor-vm.patch
+    patch -Np1 -i "$srcdir/factor-app-id.patch"
 }
 
 build() {
@@ -57,16 +60,28 @@ package() {
     # copy over the actual binary and create a symlink called factor-vm
     # (otherwise it conflicts with factor from the GNU coreutils)
     cp -a factor $pkgdir/usr/lib/factor/factor
-    cd $pkgdir/usr/bin
-    ln -s ../lib/factor/factor factor-vm
-    cd -
+    ln -s ../lib/factor/factor $pkgdir/usr/bin/factor-vm
 
     # copy over the license (as defined in Arch Packaging Standards)
     chmod -x LICENSE.txt
     cp LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
 
-    # add the desktop entry
-    install -D "$srcdir/factor.desktop" "$pkgdir/usr/share/applications/factor.desktop"
-    install -D "$srcdir/factor.svg" "$pkgdir/usr/share/pixmaps/factor.svg"
+    # add the desktop entry from the distribution, adjusted to use factor-vm
+    # (the upstream Exec=factor would conflict with GNU coreutils).
+    # StartupWMClass only matters for X11/XWayland sessions and has to match
+    # the WM_CLASS the backend advertises: the GTK4 backend derives both
+    # components from the program name, while the GTK3 backend sets the class
+    # to "Factor" explicitly.
+    if [ "$CARCH" = x86_64 ]; then
+        wmclass=factor
+    else
+        wmclass=Factor
+    fi
+    sed -e 's|^Exec=factor$|Exec=factor-vm|' \
+        -e "s|^StartupWMClass=.*|StartupWMClass=$wmclass|" \
+        "$srcdir/$pkgname/misc/factor.desktop" |
+        install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/factor.desktop"
+    install -Dm644 "$srcdir/$pkgname/misc/icons/icon.svg" \
+        "$pkgdir/usr/share/pixmaps/factor.svg"
 }
 
