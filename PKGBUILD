@@ -4,8 +4,8 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2-bootstrap
-pkgver=2.14.3
-pkgrel=2
+pkgver=2.15.0
+pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
 url='https://www.freetype.org/'
@@ -19,7 +19,7 @@ source=(
   0002-Enable-subpixel-rendering.patch
   0003-Enable-long-PCF-family-names.patch
 )
-b2sums=('26db1946b099abc73d9d249dc48303e70886e0b1cb7180d5b9538b3934dc677a1572a32573af6adabeeb1c1a2eef81f24399038d3d8e640c29bba77f6c8a3596'
+b2sums=('b49bbcf6eae90159b8c3f315a8175d23a0c6a8f8574361aaff1b05d19984b31c000c1d637ba128e6f2f09d984d583f36cc7dd84e196152214f6fc8bed20e810d'
         'SKIP'
         'f45ec7d03193b446d8b46c8d981f330843a1ab2c83a91a5011cb328b26b4fc4c4b5729f32f3270018cf5ba8a162712bd0ebc2cd67f97b906e46ce293aeda466f'
         'b9481bfe770104b181a59be8cf30c90d329447d3ba04bd7dc641a54057cf2a9024c1a881d096b7ff940e9b467960ff3e08e611686d9a01136523fbb34299d057'
