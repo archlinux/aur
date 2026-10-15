@@ -1,7 +1,7 @@
 # Maintainer: shiwenwen <shiwenwendevelopment@gmail.com>
 
 pkgname=hope-agent-bin
-pkgver=0.65.0
+pkgver=0.66.0
 pkgrel=1
 pkgdesc='Local-first AI assistant desktop app — cross-device sessions, IM channel routing'
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ conflicts=('hope-agent')
 options=('!strip' '!debug')
 
 source_x86_64=("hope-agent-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/Hope.Agent_${pkgver}_amd64.deb")
-sha256sums_x86_64=('d252c8fee62d4592e650ff63e065dbd4865bbb8084c186dff2a11811504b72b6')
+sha256sums_x86_64=('978864478cda1c3b77c387c6d9d5e02552f33052ce1055e017f06f8472f90e25')
 
 source_aarch64=("hope-agent-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/Hope.Agent_${pkgver}_arm64.deb")
-sha256sums_aarch64=('777a538fc337ce7b359df3cc7d67a7996bc7162009e1b5a5fa7b73b2349e6639')
+sha256sums_aarch64=('9a97c95f81df953268d3fc82f17ccb28542471de3064c4f65a636378b8c6ad79')
 
 package() {
     # `bsdtar` (libarchive) handles `ar`-style .deb archives directly.
