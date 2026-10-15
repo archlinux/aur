@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Fast, modern, and intuitive terminal editor with a rope-based buffer"
 
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('f028d5d3151f652ac6f0438af51ebe25a0509fff7f956cc0b6b8454d17db3ab1')
+sha256sums=('c544f437ad27bfadec8aa3b83a0e19056c0c504fe5b88fa25a72f999a4dcfa46')
 
 
 prepare() {
