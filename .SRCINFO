@@ -1,6 +1,6 @@
 pkgbase = stitchviewer-git
 	pkgdesc = Viewer for large TIFF images and stitched PNG grids
-	pkgver = 0.1.0.r0
+	pkgver = 0.1.0.r1
 	pkgrel = 1
 	url = https://github.com/RafalVonau/StitchViewer
 	arch = x86_64
