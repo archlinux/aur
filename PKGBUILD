@@ -2,7 +2,7 @@
 # Contributor: Juliette Monsel <j_4321 at protonmail dot com>
 
 pkgname=python-pyzotero
-pkgver=1.13.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="A Python wrapper for the Zotero API"
 arch=(any)
@@ -12,12 +12,12 @@ depends=(
     python
     python-bibtexparser
     python-click
-    python-fastmcp
+    #python-fastmcp
     python-feedparser
-    python-httpx
+    python-httpx2
     #python-pytz
     #python-requests
-    python-whenever
+    python-whenever-git
     )
 makedepends=(
     python-build
@@ -28,7 +28,12 @@ makedepends=(
     python-wheel
     )
 source=("https://github.com/urschrei/pyzotero/releases/download/v${pkgver}/pyzotero-${pkgver}.tar.gz")
-sha512sums=('46611670b1a75c20edbae542fbf01eb4996b80b387ad7a8d516d35c49ba344aaba16ff35916a31ac62e43e1779b42f153b9e3a46cbbf03490a31514b422238f4')
+sha512sums=('1b6e5fc8da38cc9ae54a5fb1645e4ee2420fe14bdbc630113afb0cdf6a24bc4a4266da97cfba5e016ef4bf875e8396c964c2aed580ddba821ca78bcc344adb3c')
+
+prepare() {
+  cd "pyzotero-${pkgver}"
+  sed -i 's/uv_build>=0.8.14,<0.12.0/uv_build>=0.13/g' pyproject.toml
+}
 
 build() {
   cd "pyzotero-${pkgver}"
