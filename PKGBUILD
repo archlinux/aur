@@ -2,7 +2,7 @@
 # Contributor: leonekmi <me+git@leonekmi.fr>
 pkgname=kolossus-launcher
 pkgver="200_8"
-pkgrel=1
+pkgrel=2
 pkgdesc="Kolossus Launcher, to download the latest version of the IFSCL."
 arch=(x86_64)
 url="https://en.codelyoko.fr/ifscl/"
@@ -20,7 +20,7 @@ source=(https://ifscl.b-cdn.net/kolossus/Kolossus_${pkgver}_Linux.zip Kolossus-L
 noextract=(Kolossus_${pkgver}_Linux.zip)
 md5sums=('d5a8fb999105b008aa8572792697c18e'
          '51d205515237b6d61ed7ed3379ed6d5f'
-         '9f1a0529669e271c87ce19325fcdb893'
+         '07976c32fd38c38b1221580ba59c37ee'
          '6cbd8a292f3700ffe4a1150d607542cc')
  
 prepare() {
@@ -33,6 +33,7 @@ package() {
 	mkdir -p "$pkgdir/opt" "$pkgdir/usr/share/applications"
 	find "$pkgname-$pkgver"/* -type f -exec install -Dm 755 "{}" "$pkgdir/opt/Kolossus-Launcher/{}" \;
 	mv "$pkgdir/opt/Kolossus-Launcher/$pkgname-$pkgver"/* "$pkgdir/opt/Kolossus-Launcher/"
+	echo $pkgver > "$pkgdir/opt/Kolossus-Launcher/version.txt"
 	rm -r "$pkgdir/opt/Kolossus-Launcher/$pkgname-$pkgver"
 	install -m755 "$srcdir/install.sh" "$pkgdir/opt/Kolossus-Launcher"
 	install "$srcdir/Kolossus-Launcher.desktop" "$pkgdir/usr/share/applications/"
