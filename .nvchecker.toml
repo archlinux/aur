@@ -1,0 +1,4 @@
+[mendeley-reference-manager]
+source = "regex"
+url = "https://www.mendeley.com/release-notes-reference-manager/"
+regex = '\d{8}_v([\d\.]+)\.[\d\w]{8}\.html'
