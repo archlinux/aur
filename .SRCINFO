@@ -1,6 +1,6 @@
 pkgbase = pudu-launcher-git
 	pkgdesc = Official launcher for Unitystation (development version)
-	pkgver = r132.8d853ca
+	pkgver = r140.4185288
 	pkgrel = 1
 	url = https://github.com/unitystation/PuduLauncher
 	install = pudu-launcher.install

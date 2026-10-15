@@ -1,6 +1,6 @@
 # Maintainer: Gilles (gillesgillespie) - https://github.com/corp-0
 pkgname=pudu-launcher-git
-pkgver=r132.8d853ca
+pkgver=r140.4185288
 pkgrel=1
 pkgdesc="Official launcher for Unitystation (development version)"
 arch=('x86_64')
@@ -61,7 +61,7 @@ build() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   export AllowMissingPrunePackageData=true
-  npx tauri build -b deb
+  npx tauri build -b deb --features no-updater 
 }
 
 package() {
