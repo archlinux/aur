@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/php/frankenphp"
 license=('MIT')
 depends=()
-makedepends=('php-embed' 'go')
+makedepends=('php-embed' 'go' 'watcher')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/php/frankenphp/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6bcb8fdb414899cfb74e712c552771ec31cbe14d07ec767ce6a3aa671b54ab36')
 
