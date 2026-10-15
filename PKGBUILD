@@ -1,39 +1,32 @@
 # Maintainer: Daniel Liland <celsiuss@await.sh>
 
 pkgname=preflight
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A modern slicer built for precision and performance. "
 arch=('x86_64')
 url="https://github.com/oozebot/preFlight"
 license=('AGPL-3.0-only')
-depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
-  'expat' 'libjpeg-turbo' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
-  'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
-  'wxwidgets-gtk3' 'z3' 'zlib' 'gcc-libs' 'dbus' 'imath'
-  'glib2' 'pango' 'hicolor-icon-theme' 'python')
+depends=('gtk3' 'webkit2gtk-4.1' 'boost-libs' 'curl' 'expat' 'libjpeg-turbo'
+  'nanosvg' 'nlopt' 'opencascade' 'libpng' 'qhull' 'tbb'
+  'wxwidgets-gtk3' 'wxwidgets-common' 'z3' 'zlib' 'libgcc' 'libstdc++' 'glibc' 'dbus' 'fontconfig'
+  'cairo' 'libglvnd' 'libx11' 'glib2' 'pango' 'hicolor-icon-theme' 'python')
 makedepends=('cmake' 'glu' 'ninja' 'git' 'boost' 'catch2'
   'cereal' 'cgal' 'eigen' 'nlohmann-json' 'glad' 'pybind11')
 options=('!makeflags')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oozebot/preFlight/archive/refs/tags/v${pkgver}.tar.gz"
-  0001-fix-building-for-arch.patch)
-sha256sums=('2126dbd2c6a19707eabb3a99cc5841b88f6c0006fd705b4421d9ebecb6311d92'
-            '00950c192a500014c7f090d3b394bb21271ad9b9b3b8da0a1594293083de1c9c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oozebot/preFlight/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7de2b4ed1769255363a11e354df1867c27fefb821ecff1286d167eeb8942f95d')
 
 _dir="preFlight-$pkgver"
 
 prepare() {
   cd ${_dir}
-  # We want to use the system OpenVDB
-  rm cmake/modules/FindOpenVDB.cmake
 
   # Dynamically link system OpenCASCADE
   sed -i -e 's/\(OpenCASCADE\).*\(REQUIRED\)/\1 \2/
              /TK/d
              s/^\(set(OCCT_LIBS\)/\1 TKDESTEP/' \
-    src/occt_wrapper/CMakeLists.txt
-
-  patch -Np1 -i "${srcdir}/0001-fix-building-for-arch.patch"
+    src/step/CMakeLists.txt
 }
 
 build() {
@@ -56,7 +49,8 @@ build() {
     -G Ninja \
     -S ${_dir}/deps \
     -B deps_${pkgver} \
-    -DpreFlight_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;pybind11;PythonRuntime;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
+    -DCMAKE_BUILD_TYPE=Release \
+    -DpreFlight_deps_PACKAGE_EXCLUDES="Boost|Catch2|Cereal|CGAL|CURL|Eigen|EXPAT|JPEG|json|NanoSVG|NLopt|OCCT|OpenSSL|PNG|pybind11|PythonRuntime|Qhull|TBB|TBBMallocProxy|wxWidgets|z3|ZLIB"
   ninja -C deps_${pkgver}
 
   cmake \
@@ -67,16 +61,18 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_PREFIX_PATH="$(pwd)/deps_${pkgver}/destdir/usr/local" \
     -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-    -DSLIC3R_FHS=ON \
-    -DSLIC3R_GTK=3 \
-    -DSLIC3R_PCH=1 \
-    -DSLIC3R_STATIC=0 \
+    -DPREFLIGHT_FHS=ON \
+    -DPREFLIGHT_GTK=3 \
+    -DPREFLIGHT_PCH=1 \
+    -DPREFLIGHT_STATIC=0 \
+    -DPREFLIGHT_ENC_CHECK=OFF \
     -DCMAKE_CXX_FLAGS="-Wno-template-body"
   ninja -C build_${pkgver}
 }
 
 package() {
-  optdepends=('slicer-udev: 3D printer connection rules')
+  optdepends=('slicer-udev: 3D printer connection rules'
+              'python-numpy: numpy_analysis.py preprocessor sample')
 
   DESTDIR="$pkgdir" ninja -C build_${pkgver} install
 }
