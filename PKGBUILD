@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-cli-git
-pkgver=0.7.2.r100.g6ad1247
+pkgver=0.7.2.r100.gb2ca7dc
 pkgrel=2
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
