@@ -1,6 +1,6 @@
 --- a/apps/desktop/electron/main.ts
 +++ b/apps/desktop/electron/main.ts
-@@ -740,6 +740,9 @@
+@@ -719,6 +719,9 @@
  
  const DEV_SERVER = process.env.HERMES_DESKTOP_DEV_SERVER
  const IS_PACKAGED = app.isPackaged || Boolean(process.env.HERMES_DESKTOP_IS_PACKAGED)
@@ -10,7 +10,7 @@
  const IS_MAC = process.platform === 'darwin'
  const IS_WINDOWS = process.platform === 'win32'
  const IS_WSL = isWslEnvironment()
-@@ -4740,6 +4743,14 @@
+@@ -4510,6 +4513,14 @@
  // Detection (checkUpdates / commit changelog / "N behind") stays in the UI;
  // only this apply action changed.
  async function applyUpdates(): Promise<UpdaterApplyResultWire> {
@@ -25,7 +25,7 @@
    return updateOperation.apply(async (): Promise<UpdaterApplyResultWire> => {
      updateInFlight = true
      let handedOff: boolean = false
-@@ -5477,6 +5488,17 @@
+@@ -5248,6 +5259,17 @@
    }
  
    if (backend.kind === 'bootstrap-needed') {
@@ -43,7 +43,7 @@
      rememberLog('[bootstrap] no Hermes install found; starting first-launch bootstrap')
  
      if (await handOffWindowsBootstrapRecovery('bootstrap-needed')) {
-@@ -18634,14 +18656,24 @@
+@@ -17525,14 +17547,24 @@
  
  ipcMain.handle(
    'hermes:updates:check',
