@@ -1,6 +1,6 @@
 post_install() {
     udevadm control --reload-rules
-    udevadm trigger
+    udevadm trigger --subsystem-match=input
     setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui-plus 2>/dev/null || true
     echo ""
     echo ">>> z13gui-plus installed disabled so it can coexist with upstream."
@@ -10,6 +10,6 @@ post_install() {
 
 post_upgrade() {
     udevadm control --reload-rules
-    udevadm trigger
+    udevadm trigger --subsystem-match=input
     setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui-plus 2>/dev/null || true
 }

@@ -1,6 +1,6 @@
 pkgbase = z13gui-plus-bin
 	pkgdesc = Z13GUI+ GTK4 overlay companion for z13ctl-plus
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/aic0d3r/z13gui-plus
 	install = z13gui-plus-bin.install
@@ -12,7 +12,7 @@ pkgbase = z13gui-plus-bin
 	depends = z13ctl-plus-bin
 	provides = z13gui-plus
 	conflicts = z13gui-plus
-	source = https://github.com/aic0d3r/z13gui-plus/releases/download/v2.5.0/z13gui-plus_2.5.0_linux_amd64.tar.gz
-	sha256sums = 3dcea60e22b5b6592aa952c60f44f9d54ec070f14d79f86c0e4f655df4a79409
+	source = https://github.com/aic0d3r/z13gui-plus/releases/download/v2.6.0/z13gui-plus_2.6.0_linux_amd64.tar.gz
+	sha256sums = 95636766c5ddb26415f4024c47a54d98fff39ac6b9a90e6febf1dbf655c2cdbe
 
 pkgname = z13gui-plus-bin
