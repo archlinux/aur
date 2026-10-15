@@ -5,7 +5,7 @@
 # AIDA64 code, binaries or data files and is not affiliated with or endorsed by FinalWire.
 
 pkgname=lsa-sysinfo
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Linux System Audit: clean-room Linux implementation of AIDA64 Business features (AIDA64 by FinalWire Ltd.) - Cache & Memory Benchmark"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL-2.0-or-later')
 depends=('gtk3' 'glib2' 'glibc' 'cairo' 'hicolor-icon-theme' 'hwdata')
 optdepends=('srs-sysinfo: srs-root DMI cache for memory speed / type details')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('26bdcbd757b8336375635d325c243776ebba3a1c750d433d31b14b7c0a35fa7a')
+sha256sums=('fb35933eb033554a86589e9a89b911ee24433b4f2c3ca2e9152cc222c0df4bcc')
 
 build() {
   cd "$pkgname-$pkgver"
