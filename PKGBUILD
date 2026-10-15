@@ -2,7 +2,7 @@ pkgname=cephalote
 # GitHub archives extract to the repository's canonical casing, which is
 # "Cephalote" - keep this in sync if the repo is ever renamed to lowercase.
 _repo=Cephalote
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Scan source code for weak cryptographic schemes"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Refresh on every pkgver bump with `updpkgsums` (pacman-contrib); it needs the
 # tagged tarball to be published upstream first.
-sha256sums=('2718b54ace0b72f59cbe7b19e2702a66332a9d214c6689601e06bb7a2d88d270')
+sha256sums=('5454170028d9d65e567349e02821e15dc5bc9de9b380c3269e8c0b28e0b82051')
 
 prepare() {
 	cd "$_repo-$pkgver"
@@ -34,11 +34,10 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-	# Upstream ships two profiles: a zero-cgo static default (built to be
-	# scp'd onto a server) and a cgo "treesitter" build that adds real AST
-	# analysis at high confidence for thirteen languages. A distro package is compiled
-	# on the user's machine against a toolchain that is already there, so
-	# the static profile buys nothing - take the tier that detects more.
+	# Tree-sitter is compiled into every cgo build. Upstream's release
+	# binaries link it statically against musl; a distro package links
+	# dynamically against the system libc like everything else, which is
+	# why this is a plain cgo build with no static flags.
 	#
 	# main.version is what lands in SARIF output as the tool version, so it
 	# uses the bare pkgver to match the official GoReleaser binaries, whose
@@ -46,7 +45,7 @@ build() {
 	#
 	# No -s -w: leave symbol handling to makepkg's own strip option rather
 	# than hardcoding it here.
-	go build -tags treesitter \
+	CGO_ENABLED=1 go build \
 		-ldflags "-linkmode=external -X main.version=$pkgver" \
 		-o build/cephalote ./cmd/cephalote
 
@@ -58,8 +57,8 @@ build() {
 
 check() {
 	cd "$_repo-$pkgver"
-	# Same tag as build(), so the tier that ships is the tier that is tested.
-	go test -tags treesitter ./...
+	# cgo on, as in build(), so the tier that ships is the tier that is tested.
+	CGO_ENABLED=1 go test ./...
 }
 
 package() {
