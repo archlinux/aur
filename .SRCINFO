@@ -1,12 +1,13 @@
 pkgbase = daily-you-bin
 	pkgdesc = Every day is worth remembering... (mood tracking, journaling)
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BigWebstas/Daily_You
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	depends = sqlite
+	depends = mpv
 	provides = daily-you
 	conflicts = daily-you
 	source = daily_you.desktop

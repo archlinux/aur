@@ -7,14 +7,14 @@
 # that release exists) skips the network fetch.
 pkgname=daily-you-bin
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Every day is worth remembering... (mood tracking, journaling)"
 arch=('x86_64')
 url="https://github.com/BigWebstas/Daily_You"
 license=('GPL3')
 provides=('daily-you')
 conflicts=('daily-you')
-depends=('gtk3' 'sqlite')
+depends=('gtk3' 'sqlite' 'mpv')
 source=("daily_you.desktop"
         "logo.svg"
         "https://github.com/BigWebstas/Daily_You/releases/download/v$pkgver/DailyYou-$pkgver-linux-x86_64-bundle.tar.gz")
