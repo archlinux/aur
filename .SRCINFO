@@ -1,6 +1,6 @@
 pkgbase = bitty
 	pkgdesc = Bitty pre-alpha terminal workspace minimal correct terminal
-	pkgver = 0.0.22
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://github.com/bitty-terminal/bitty
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = bitty
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = pkgconf
+	makedepends = ncurses
 	depends = fontconfig
 	depends = freetype2
 	optdepends = noto-fonts: fallback font
 	provides = bitty
 	conflicts = bitty-nightly
 	conflicts = bitty-git
-	source = bitty-0.0.22.tar.gz::https://github.com/bitty-terminal/bitty/archive/v0.0.22.tar.gz
+	source = bitty-0.0.23.tar.gz::https://github.com/bitty-terminal/bitty/archive/v0.0.23.tar.gz
 	sha256sums = SKIP
 
 pkgname = bitty

@@ -1,13 +1,13 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 pkgname=bitty
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bitty-terminal/bitty"
 license=('MIT' 'Apache-2.0')
 depends=('fontconfig' 'freetype2')
-makedepends=('cargo' 'pkgconf')
+makedepends=('cargo' 'pkgconf' 'ncurses')
 optdepends=('noto-fonts: fallback font')
 provides=('bitty')
 conflicts=('bitty-nightly' 'bitty-git')
@@ -46,4 +46,7 @@ package() {
     install -Dm644 "packaging/icons/hicolor/${size}x${size}/apps/bitty.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
   done
   install -Dm644 packaging/icons/hicolor/scalable/apps/bitty.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bitty.svg"
+  # Terminfo (CTX-1121 #1764): compile the canonical source with tic -x;
+  # never install the raw .ti to /usr/share/terminfo.
+  tic -x -o "$pkgdir/usr/share/terminfo" terminfo/bitty.ti
 }
