@@ -3,7 +3,7 @@
 pkgname=motrix-git
 _debname="app.${pkgname%-git}.native"
 _pkgname=Motrix
-pkgver=2.0.0.beta.47.r3.g99a40ab
+pkgver=2.0.0.beta.47.r10.ga4a867d
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -41,7 +41,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -49,13 +49,20 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)"
+	set -o pipefail
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+_ensure_local_nvm() {
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
@@ -108,20 +115,12 @@ _set_build_env() {
 			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
 }
-_ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
-}
 prepare() {
     cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-git}/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     _set_build_env
@@ -130,8 +129,6 @@ prepare() {
         s/Icon=${_debname}/Icon=${pkgname%-git}/g
     " "flatpak/${_debname}.desktop"
     sed -i "s/${_debname}/${pkgname%-git}/g" "flatpak/${_debname}.metainfo.xml"
-    # Replace process.resourcesPath with system-wide install path in source files
-    # Only replace property access patterns, not string literals
     local _rp="'/usr/lib/${pkgname%-git}'"
     find src -type f -name '*.ts' -exec sed -i \
         -e "s|: process\.resourcesPath,|: ${_rp},|g" \
@@ -142,45 +139,39 @@ prepare() {
     rustup update stable
     rustup default stable
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    export	NODE_ENV=development
+    export NODE_ENV=development
     export MOTRIX_SKIP_ENGINE_FETCH=1
     pnpm install
     node node_modules/electron/install.js
 }
 build() {
     cd "$(_get_project_dir)"
-    _set_build_env
     _ensure_local_nvm
-    case "${CARCH}" in
-        x86_64)  _arch="x64" ;;
-        aarch64) _arch="arm64" ;;
-        armv7h)  _arch="armv7l" ;;
-        *)       _arch="x64" ;;
-    esac
+    _set_build_env
     export	NODE_ENV=production
+    declare -A _arch_map=( [x86_64]=x64 [aarch64]=arm64 [armv7h]=armv7l )
+    local _arch="${_arch_map[${CARCH}]:-x64}"
+    local _rust_target="${CARCH/x86_64/x86_64-unknown-linux-musl}"
+    _rust_target="${_rust_target/aarch64/aarch64-unknown-linux-musl}"
     pnpm run fetch:engine --platform linux --arch "${_arch}"
     pnpm run build:builtin
-    case "${CARCH}" in
-        x86_64)  rustup target add x86_64-unknown-linux-musl ;;
-        aarch64) rustup target add aarch64-unknown-linux-musl ;;
-    esac
+    [[ "${_rust_target}" == *"-linux-musl" ]] && rustup target add "${_rust_target}"
     pnpm run build:native-host -- --platform linux --arch "${_arch}"
     pnpm run build:finalize-fs -- --platform linux --arch "${_arch}"
     pnpm run build:electron
     pnpm run stage:electron -- --platform linux --arch "${_arch}"
     pnpm exec electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
+    rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir="$(_get_app_dir)"
-	rm -rf "${_app_dir}/resources/default_app.asar"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     install -Dm644 "$(_get_project_dir)/flatpak/${_debname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "$(_get_project_dir)/flatpak/${_debname}.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
-    install -Dm644 "$(_get_project_dir)/build/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/build/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
     install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
