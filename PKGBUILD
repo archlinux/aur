@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=ipsort
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="versitile ip address sorting tool"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(cargo scdoc)
 depends=(glibc libgcc)
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('5585313020cdfd4ad512965d0d8c207891d04ec1a3fe38b7420f6bb3c6b5c92e')
+sha256sums=('8b1b702bbf0f26de2c9cc56d77f9ba9b3e9a59b01a19e4070e366da73e377464')
 
 prepare() {
   cd $pkgname-$pkgver
