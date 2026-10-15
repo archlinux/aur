@@ -3,10 +3,18 @@
 _pkgname=opentubex
 _ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-nightly-bin
-pkgver=0.36.0.nightly.2111
+pkgver=0.36.1
 pkgrel=1
-_version=${pkgver//.nightly./-nightly-}
-pkgdesc='A private desktop YouTube client, nightly build'
+# The old .nightly. versions sort after stable versions of the same release.
+epoch=1
+if [[ "$pkgver" == *nightly.* ]]; then
+    _tag="v${pkgver/nightly./-nightly-}"
+    _asset_version=${_tag#v}
+else
+    _tag="v${pkgver}-beta"
+    _asset_version="${pkgver}_beta"
+fi
+pkgdesc='A private desktop YouTube client, nightly channel'
 arch=('x86_64' 'aarch64')
 url='https://opentubex.org'
 license=('AGPL3')
@@ -17,8 +25,8 @@ optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; c
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$_ghurl/releases/download/v${_version}/${_pkgname}_${_version}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$_ghurl/releases/download/v${_version}/${_pkgname}_${_version}_arm64.deb")
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$_ghurl/releases/download/${_tag}/${_pkgname}_${_asset_version}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$_ghurl/releases/download/${_tag}/${_pkgname}_${_asset_version}_arm64.deb")
 
 prepare() {
     mkdir -p data
@@ -31,5 +39,5 @@ package() {
     ln -s "/opt/OpenTubeX/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('2e04f3f16d12fa8c3865b4a8119a159fd7ce24987249eb259935be2f65ecdfb3')
-sha256sums_aarch64=('9afbf0bb73eb1703b1036583f0c73c5a1c44f90fdc717f93154bc1e067bcc330')
+sha256sums_x86_64=('a2bfd4938c3761402f3dd36224cdb4191110107059a2f88c4cfede8c3cfda686')
+sha256sums_aarch64=('612605a6bba726b522ffa19ebb702b1f4ad2c846c0c44b06643c50e13434d658')
