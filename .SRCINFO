@@ -1,0 +1,26 @@
+pkgbase = morphos-cross-bin
+	pkgdesc = GCC 15 cross-compiler toolchain for MorphOS (PowerPC), with the MorphOS SDK
+	pkgver = 20260529
+	pkgrel = 3
+	url = https://github.com/metaneutrons/morphos-cross
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = LicenseRef-MorphOS-SDK
+	makedepends = libarchive
+	depends = glibc
+	provides = morphos-cross
+	conflicts = morphos-cross
+	noextract = sdk-20260529.lha
+	options = !strip
+	options = !debug
+	options = !lto
+	options = staticlibs
+	source = sdk-20260529.lha::https://morphos-team.net/files/sdk-20260529.lha
+	sha256sums = 310dfb888b995e32206c5c3aba409847334a5fee049d13aad27b4af0d518ec77
+	source_x86_64 = morphos-cross-20260529-r3-linux-x86_64.tar.xz::https://github.com/metaneutrons/morphos-cross/releases/download/v20260529-r3/morphos-cross-20260529-r3-linux-x86_64.tar.xz
+	sha256sums_x86_64 = bfcd7145d1f7cd7b8aee8e1a14bc0cc33dec8d84a06f2294480b9c71d4912998
+	source_aarch64 = morphos-cross-20260529-r3-linux-arm64.tar.xz::https://github.com/metaneutrons/morphos-cross/releases/download/v20260529-r3/morphos-cross-20260529-r3-linux-arm64.tar.xz
+	sha256sums_aarch64 = 1a5c5d0038cfe96da62a62728867b1e38aa0b7a830dc0c64141989600768d10e
+
+pkgname = morphos-cross-bin
