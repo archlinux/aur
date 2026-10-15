@@ -1,7 +1,7 @@
 pkgbase = xfce-winxp-tc-git
 	pkgdesc = Windows XP Total Conversion for XFCE
-	pkgver = r933.beefd67
-	pkgrel = 2
+	pkgver = r941.bd35c04
+	pkgrel = 1
 	url = https://github.com/rozniak/xfce-winxp-tc
 	arch = x86_64
 	arch = aarch64

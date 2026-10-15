@@ -2,8 +2,8 @@
 
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
-pkgver=r933.beefd67
-pkgrel=2
+pkgver=r941.bd35c04
+pkgrel=1
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rozniak/xfce-winxp-tc"
@@ -59,17 +59,6 @@ pkgver() {
 		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
-}
-
-prepare() {
-	cd "${_basename}"
-	# Workaround for https://github.com/rozniak/xfce-winxp-tc/issues/647, remove once #283 lands
-	if ! grep -q 'wintc-comctl' shell/shext/zip/CMakeLists.txt; then
-		sed -i -e 's/^wintc_resolve_library(wintc-comgtk .*/wintc_resolve_library(wintc-comctl   WINTC_COMCTL)\n&/' \
-			-e 's/^\(\s*\)PRIVATE ${WINTC_COMGTK_\([A-Z_]*\)}/\1PRIVATE ${WINTC_COMCTL_\2}\n&/' \
-			shell/shext/zip/CMakeLists.txt
-		sed -i 's/^bt,rt:wintc-comgtk$/bt,rt:wintc-comctl\n&/' shell/shext/zip/deps
-	fi
 }
 
 build() {
