@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=flclash
 _name=FlClash
-pkgver=0.8.99
-_flutter=3.47.4
+pkgver=0.9.0
+_flutter=3.47.6
 pkgrel=1
 pkgdesc="Multi-platform proxy client based on ClashMeta"
 arch=('x86_64')
@@ -12,6 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('at-spi2-core'
          'cairo'
          'fontconfig'
+         'gdk-pixbuf2'
          'glib2'
          'glibc'
          'gtk3'
@@ -19,11 +20,12 @@ depends=('at-spi2-core'
          'libepoxy'
          'libgcc'
          'libstdc++'
+         'libx11'
          'pango')
 makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'gendesk' 'git' 'go' 'ninja' 'rustup')
 source=("git+${url}.git#tag=v${pkgver}"
         "git+https://github.com/chen08209/Clash.Meta.git")
-sha256sums=('9196a879eb3e28f2b4a271da7f67d517cbb3d8e774c8120962df2192977f0cba'
+sha256sums=('126eb13a9239604c683fecc9c10adf0ebbfdf82981b205d4bec1b29343825f9f'
             'SKIP')
 
 prepare() {
