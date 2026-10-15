@@ -2,7 +2,7 @@
 
 pkgname=librofd-ffi
 pkgver=0.4.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/rofd'
@@ -22,10 +22,14 @@ _commit=140b936d1b3f33a9adeda9fb6f428016b735d9a0   # 0.4.3 on main; upstream pub
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/$_commit.tar.gz"
         "rofd-ffi-page-size.patch"
         "rofd-ffi-font-advances.patch"
+        "rofd-ffi-image-decode-budget.patch"
+        "seal-16bit-boundary.png"
         "rofd-ffi.pc.in")
 sha256sums=('0d6300fb28507f0597e2aa10d3822df3519e630fbf820fd95164df0ba8e3ce38'
             '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d'
             '0c7fe14c4659ec56292475964adbf748d02f80318dc332db7314424e4a5b4bcb'
+            '7e3da60263db4b9fe7b431c6960c6120b0ee55406b49eba0cf94e6a02499c4a0'
+            '264bfb51e016bb80c612db7dbab8d6070b91e5b4b4b0f8f7f8a2012842496c55'
             'cf912f767bb51933051144c074600f008c48cf694489630db52cd1edbb7bf538')
 
 # the archive of $_commit extracts to rofd-$_commit
@@ -44,6 +48,18 @@ prepare() {
   # selection highlights match a PDF reader's. Drop this line and the source entry once
   # a release contains it (see papers-ofd/patches/README.md).
   patch -Np1 -i "$srcdir/rofd-ffi-font-advances.patch"
+  # Temporarily carried: upstream PR linuxdeepin/rofd#14 — the image crate's
+  # allocation budget covers the decoder's intermediate buffers on top of the
+  # finished RGBA8 raster, so budgeting it with the raster size alone dropped seals
+  # (stamp annotations) that are inside the decoded-image limits and reported a decode
+  # error instead of a raster-budget error for the ones outside them. Drop this line
+  # and the source entry once a release contains it (see papers-ofd/patches/README.md).
+  patch -Np1 -i "$srcdir/rofd-ffi-image-decode-budget.patch"
+  # That patch adds the regression test whose fixture is a 430 KiB binary PNG; binary
+  # diffs do not survive `git format-patch` + `patch`, so the fixture ships beside the
+  # patch and is placed here (its sha256 is checked by makepkg like any other source).
+  install -Dm644 "$srcdir/seal-16bit-boundary.png" \
+    crates/rofd-render/tests/fixtures/images/seal-16bit-boundary.png
 }
 
 build() {

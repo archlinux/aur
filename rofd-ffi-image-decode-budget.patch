@@ -1,0 +1,172 @@
+From 2983cf6a3f9590590b064f103c01526c0ba92908 Mon Sep 17 00:00:00 2001
+From: Yangtse Su <yangtsesu@gmail.com>
+Date: Thu, 15 Oct 2026 12:59:31 +0800
+Subject: [PATCH] fix(render): budget decoder intermediates on top of the
+ decoded image
+
+Both image decode sites handed the image crate a single budget derived from the
+*finished* RGBA8 raster, while `Limits::max_alloc` accounts for every allocation the
+decoder makes - its own sample buffer, palette and row buffers included. A picture
+whose raster fits the limits therefore still failed with "Memory limit exceeded"
+before those limits were consulted:
+
+- `ImageDecoder::decode` rejected every image whose decode needs more than one
+  raster's worth of memory, which is why
+  `crates/rofd-render/tests/images.rs::decoded_limits_have_exact_and_one_over_boundaries`
+  is red on main (`decoded_limits_have_exact_and_one_over_boundaries`).
+- `decode_seal_raster` (stamp annotations, i.e. electronic seals) reported a decode
+  error instead of `RasterBudgetExceeded`, and silently dropped seals that are inside
+  the limits. Measured with the real decoder on 16-bit RGBA PNGs: a 6000x6000 seal
+  (137 MiB raster, 274 MiB decoder buffers, both well inside
+  `ResourceLimits::max_decoded_image_bytes` = 400 MiB) failed to decode at the old
+  budget and decodes now; a 14336x14336 one is still rejected.
+
+Budget the decoder with three times the finished raster and keep the raster checks as
+the authority (the pre-decode dimension limit and the post-decode
+`RasterBudgetExceeded` comparison are unchanged). A decoder holds its own buffer (up
+to 8 bytes per pixel for 16-bit channels) and the RGBA8 conversion at the same time,
+so the exact boundary of the caller's budget decodes and the wall stays proportional
+to it.
+
+Tests: `cargo test -p rofd-render --test images` 14/14 (1/14 at 140b936), the new
+`cairo_stamp.rs::a_large_seal_raster_within_the_document_limits_is_not_called_over_budget`
+(6000x6000 16-bit seal, generated fixture, 420 KiB, ~11 s) fails before and passes
+after, and `cargo test -p rofd-render` is green. Verified with `cargo fmt --all --
+--check` and `cargo clippy -p rofd-render --all-targets -- -D warnings`.
+---
+ crates/rofd-render/src/cairo_renderer.rs      | 10 ++++++-
+ crates/rofd-render/src/images.rs              |  9 +++++-
+ crates/rofd-render/tests/cairo_stamp.rs       | 30 +++++++++++++++++++
+ .../tests/fixtures/images/PROVENANCE.md       | 30 +++++++++++++++++++
+ 4 files changed, 77 insertions(+), 2 deletions(-)
+
+diff --git a/crates/rofd-render/src/cairo_renderer.rs b/crates/rofd-render/src/cairo_renderer.rs
+index 7494998..4f514e1 100644
+--- a/crates/rofd-render/src/cairo_renderer.rs
++++ b/crates/rofd-render/src/cairo_renderer.rs
+@@ -1614,7 +1614,15 @@ fn decode_seal_raster(
+             ))
+         })?;
+     let mut decoder_limits = Limits::default();
+-    decoder_limits.max_alloc = Some(limits.max_decoded_image_bytes.min(max_raster_bytes));
++    // Two different budgets meet here. `max_decoded_image_bytes` and
++    // `max_raster_bytes` both bound the finished RGBA8 raster, which is only known
++    // after decoding, so the image crate's allocation budget (which also covers the
++    // decoder's own intermediate buffers) must be wider than the tighter of the two
++    // — the RGBA8 check below stays the authority. Three times the tighter budget:
++    // a decoder holds its own buffer (up to 8 bytes per pixel for 16-bit channels)
++    // and the RGBA8 conversion at the same time.
++    let raster_budget = limits.max_decoded_image_bytes.min(max_raster_bytes);
++    decoder_limits.max_alloc = Some(raster_budget.saturating_mul(3));
+     reader.limits(decoder_limits);
+     let decoded = reader.decode().map_err(|error| {
+         invalid_display_list(format!("seal picture could not be decoded: {error}"))
+diff --git a/crates/rofd-render/src/images.rs b/crates/rofd-render/src/images.rs
+index a1f9a9a..fd0bf7d 100644
+--- a/crates/rofd-render/src/images.rs
++++ b/crates/rofd-render/src/images.rs
+@@ -666,7 +666,14 @@ fn decode_pixels(
+     let mut decoder_limits = Limits::default();
+     decoder_limits.max_image_width = Some(width);
+     decoder_limits.max_image_height = Some(height);
+-    decoder_limits.max_alloc = Some(limits.max_decoded_image_bytes);
++    // `Limits::max_alloc` is a running budget for every allocation the decoder
++    // makes, its own intermediate buffers included, while
++    // `max_decoded_image_bytes` bounds the finished RGBA8 buffer, which
++    // `validate_dimensions` has already checked. Allow three times that budget: a
++    // decoder holds its own buffer (up to 8 bytes per pixel for 16-bit channels)
++    // and the RGBA8 conversion (4 bytes per pixel) at the same time, so an image
++    // that exactly fills the byte budget must still decode.
++    decoder_limits.max_alloc = Some(limits.max_decoded_image_bytes.saturating_mul(3));
+     reader.limits(decoder_limits);
+     let decoded = reader
+         .decode()
+diff --git a/crates/rofd-render/tests/cairo_stamp.rs b/crates/rofd-render/tests/cairo_stamp.rs
+index b774ab2..ccad520 100644
+--- a/crates/rofd-render/tests/cairo_stamp.rs
++++ b/crates/rofd-render/tests/cairo_stamp.rs
+@@ -10,6 +10,13 @@ use zip::{write::SimpleFileOptions, ZipWriter};
+ /// A 3x2 RGBA PNG with six distinct pixels.
+ const PNG: &[u8] = include_bytes!("fixtures/images/asymmetric-rgba.png");
+ 
++/// A 6000x6000 16-bit RGBA PNG. Its finished RGBA8 raster is 137 MiB, well inside
++/// the default document limits (400 MiB decoded bytes, 100 M pixels), but the
++/// decoder holds the 274 MiB source buffer and the RGBA8 conversion at the same
++/// time, which the old single-budget accounting rejected ("Memory limit exceeded")
++/// before those limits were ever consulted - so the seal was silently dropped.
++const LARGE_PNG: &[u8] = include_bytes!("fixtures/images/seal-16bit-boundary.png");
++
+ fn der(tag: u8, content: &[u8]) -> Vec<u8> {
+     let mut out = vec![tag];
+     if content.len() < 0x80 {
+@@ -193,6 +200,29 @@ fn ofd_stamp_renders_the_mini_document_page() {
+     assert_eq!(pixel(&mut surface, 14, 8), [255, 255, 255, 255]);
+ }
+ 
++#[test]
++fn a_large_seal_raster_within_the_document_limits_is_not_called_over_budget() {
++    // The stamp raster decode must not report a budget error for a picture that
++    // fits the document's decoded-image limits: the image crate's allocation
++    // budget covers its own intermediate buffers on top of the finished RGBA8
++    // raster, so budgeting it with the raster size alone rejects pictures that
++    // are well inside the limits. A broken picture still leaves the page blank
++    // (see the next test); this one distinguishes a decode failure from a budget
++    // failure by pixel colour.
++    let mut surface = render(
++        r#"<ofd:StampAnnot PageRef="10" ID="01" Boundary="2 2 6 4"/>"#,
++        "png",
++        LARGE_PNG,
++    );
++    let inside = pixel(&mut surface, 4, 4);
++    assert_eq!(inside[3], 255, "stamp pixel stayed transparent: {inside:?}");
++    assert_eq!(
++        (&inside[0], &inside[1], &inside[2]),
++        (&0x20, &0x40, &0x60),
++        "stamp pixel is not the fixture's colour: {inside:?}"
++    );
++}
++
+ #[test]
+ fn broken_or_unsupported_stamps_are_skipped_silently() {
+     let mut surface = render(
+diff --git a/crates/rofd-render/tests/fixtures/images/PROVENANCE.md b/crates/rofd-render/tests/fixtures/images/PROVENANCE.md
+index 8b61017..59cd3df 100644
+--- a/crates/rofd-render/tests/fixtures/images/PROVENANCE.md
++++ b/crates/rofd-render/tests/fixtures/images/PROVENANCE.md
+@@ -32,3 +32,33 @@ b98b78b351b1511a0b9c5a953334bf2e801f3bf8c6922173d4590613bdb9f9a8  asymmetric-rgb
+ 86367e4786fe0911e54a3c7567e1cbd1f68557de199b1f72ffcf43b184c27982  asymmetric-rgb.gif
+ e6b956ad3682993147602bda9ff31c4a6755ebf7cf5b4e0f9015069f240e93ec  asymmetric-rgb.tiff
+ ```
++
++`seal-16bit-boundary.png` is a programmatically generated 6000 by 6000 16-bit
++RGBA test image, filled with the single opaque colour `#204060` at 16-bit
++precision (every 16-bit channel is the 8-bit value repeated). It contains no
++third-party artwork or other licensed material. It was generated with CPython
++3.14 in a few lines (a zero filter byte per row, `zlib.compress` at level 9, and
++`zlib.crc32` for the PNG chunks), with no image library involved:
++
++```text
++python3 - <<'EOF'
++import struct, zlib
++w = h = 6000
++raw = bytearray()
++for _ in range(h):
++    raw.append(0)
++    raw.extend(b'\x20\x20\x40\x40\x60\x60\xff\xff' * w)
++chunk = lambda t, d: struct.pack('>I', len(d)) + t + d + struct.pack('>I', zlib.crc32(t + d) & 0xffffffff)
++open('seal-16bit-boundary.png', 'wb').write(
++    b'\x89PNG\r\n\x1a\n'
++    + chunk(b'IHDR', struct.pack('>IIBBBBB', w, h, 16, 6, 0, 0, 0))
++    + chunk(b'IDAT', zlib.compress(bytes(raw), 9))
++    + chunk(b'IEND', b''))
++EOF
++```
++
++SHA-256 checksums:
++
++```text
++264bfb51e016bb80c612db7dbab8d6070b91e5b4b4b0f8f7f8a2012842496c55  seal-16bit-boundary.png
++```
+-- 
+2.56.0
+

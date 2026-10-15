@@ -1,7 +1,7 @@
 pkgbase = librofd-ffi
 	pkgdesc = Stable C ABI for the rofd OFD parser and renderer
 	pkgver = 0.4.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/linuxdeepin/rofd
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -15,10 +15,14 @@ pkgbase = librofd-ffi
 	source = librofd-ffi-0.4.3.tar.gz::https://github.com/linuxdeepin/rofd/archive/140b936d1b3f33a9adeda9fb6f428016b735d9a0.tar.gz
 	source = rofd-ffi-page-size.patch
 	source = rofd-ffi-font-advances.patch
+	source = rofd-ffi-image-decode-budget.patch
+	source = seal-16bit-boundary.png
 	source = rofd-ffi.pc.in
 	sha256sums = 0d6300fb28507f0597e2aa10d3822df3519e630fbf820fd95164df0ba8e3ce38
 	sha256sums = 812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d
 	sha256sums = 0c7fe14c4659ec56292475964adbf748d02f80318dc332db7314424e4a5b4bcb
+	sha256sums = 7e3da60263db4b9fe7b431c6960c6120b0ee55406b49eba0cf94e6a02499c4a0
+	sha256sums = 264bfb51e016bb80c612db7dbab8d6070b91e5b4b4b0f8f7f8a2012842496c55
 	sha256sums = cf912f767bb51933051144c074600f008c48cf694489630db52cd1edbb7bf538
 
 pkgname = librofd-ffi
