@@ -1,0 +1,14 @@
+pkgbase = redmine-tui
+	pkgdesc = Terminal UI for Redmine: kanban board, time logging, status updates
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/omertahaoztop/redmine-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = redmine-tui-1.1.0.tar.gz::https://github.com/omertahaoztop/redmine-tui/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = bb3c67d4a01f9a93302d9fb6c7cfde72177ee6873baaaa4b0ec6afdd77f1cd35
+
+pkgname = redmine-tui
