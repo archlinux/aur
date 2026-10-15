@@ -19,6 +19,7 @@ build() {
 	export CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs) ${LDFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export GOFLAGS="-trimpath -buildmode=pie"
 	go build -tags=nobadger,nomysql,nopgx,deprecated_topic,deprecated_claim
 }
 
