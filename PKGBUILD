@@ -1,6 +1,6 @@
 # Maintainer: David Borzek <mail@davidborzek.de>
 pkgname=ringo-flow-bin
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="Declarative telephony scenario test runner for baresip"
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ license=('MIT')
 depends=('opus' 'spandsp')
 provides=('ringo-flow')
 conflicts=('ringo-flow')
-source_x86_64=("ringo-flow-$pkgver-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.14.3/ringo-flow-0.14.3-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("ringo-flow-$pkgver-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.14.3/ringo-flow-0.14.3-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('63ad6450276ea1ce1655c05abf462dfe7a45e5cee26f4b66d6657f218f536aeb')
-sha256sums_aarch64=('00a2dfed50ad4404e088469e15e94acc82cca1f2a19f7019c9e5cb30900eabd7')
+source_x86_64=("ringo-flow-$pkgver-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.14.4/ringo-flow-0.14.4-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("ringo-flow-$pkgver-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.14.4/ringo-flow-0.14.4-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('6ac895c04817d7dcde87c33f8796fa354dcfa77e3ca8bcb692dd558af3a5da2a')
+sha256sums_aarch64=('aa952696ee88ea58e10b62ecfb2d7df7cd63bc881402a93d2eb08f7991aff961')
 
 package() {
   case "$CARCH" in
