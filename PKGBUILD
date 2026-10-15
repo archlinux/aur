@@ -3,8 +3,8 @@
 _pkgname=amass
 pkgname=${_pkgname}-git
 pkgver=5.1.1.r0.g79299dc
-pkgrel=1
-pkgdesc="In-depth Attack Surface Mapping and Asset Discovery (VCS version)"
+pkgrel=2
+pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
 arch=('x86_64' 'aarch64')
 url="https://github.com/owasp-amass/amass"
 _githubname="owasp-amass/amass"
