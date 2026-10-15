@@ -1,13 +1,20 @@
 # Maintainer: BangL <henno.rickowski@gmail.com>
 pkgname=taskbar-cat-git
 _pkgname=taskbar-cat
-pkgver=r34.e8e2570
+pkgver=r36.87d48c8
 pkgrel=1
-pkgdesc="Pixel-Art-Tamagotchi-Katze für KDE Plasma 6 / Wayland, lebt auf Boden und Fensteroberkanten"
+pkgdesc="Pixel-Art-Tamagotchi-Katze für KDE Plasma 6 und GNOME, lebt auf Boden und Fensteroberkanten"
 arch=('any')
 url="https://github.com/BangL/taskbar-cat"
 license=('MIT')
-depends=('python' 'python-pyqt6' 'qt6-declarative' 'qt6-wayland' 'layer-shell-qt' 'kwin')
+depends=('python' 'python-pyqt6' 'qt6-declarative')
+# Das Backend wird beim Start gewaehlt; je nach Arbeitsumgebung braucht es
+# entweder Layer-Shell (KDE, sway, Hyprland) oder XWayland (GNOME).
+optdepends=('layer-shell-qt: Overlay unter KDE Plasma, sway und Hyprland'
+            'qt6-wayland: Qt unter Wayland, zusammen mit layer-shell-qt'
+            'kwin: Fenster-Sensor unter KDE Plasma'
+            'xorg-xwayland: Overlay unter GNOME'
+            'gnome-shell: Fenster-Sensor unter GNOME')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools>=77' 'python-wheel')
 checkdepends=('python-pytest')
 provides=("${_pkgname}")
