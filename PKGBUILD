@@ -4,7 +4,7 @@
 # Auto-updated by GitHub Actions (see .github/workflows/devin-desktop.yml)
 
 pkgname=devin-desktop
-pkgver=3.10.48
+pkgver=3.10.67
 pkgrel=1
 pkgdesc="A team of agents for every engineer — Devin Desktop"
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=(
 )
 
 sha256sums=(
-    '33be942d9bf31b1f2eeac38536c722884414492336457831bbcf50dac1140ed8'
+    '09ea29ae8796828f81ed4afc1810db38aebc3700c8e403d6516e82579d565c6d'
     '74b6568385dbcbb8c0f118bd81c526ab019f91726dd7b7b15742c1ac0228cd13'
     '9fffea94a75faca248102cd830508932a674f469c1b42d48e2387db45b81cb33'
     'a6d17d4f506181b3061dbdc882e258ca494a5f84636694bba1742c3a8c7f1c5e'
