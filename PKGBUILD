@@ -1,30 +1,34 @@
 # Maintainer: Booker <lordbooker@gmail.com>
 pkgname=linux-g13-driver-git
-pkgver=r1.0.0 
+pkgver=2.0.0.r0.g616cfe1
 pkgrel=1
-pkgdesc="User-space driver and configuration tool for the Logitech G13 gameboard (Modernized Fork)"
+pkgdesc="User-space driver and Qt6 configuration tool for the Logitech G13 gameboard (Modernized Fork)"
 arch=('x86_64')
 url="https://github.com/Lordbooker/linux-g13-driver"
-license=('GPL') 
-depends=('libusb' 'gtk3' 'libappindicator-gtk3' 'jre17-openjdk' 'python-psutil')
-makedepends=('git' 'cmake' 'maven' 'jdk17-openjdk')
+license=('GPL')
+depends=('libusb' 'qt6-base' 'gcc-libs' 'glibc')
+makedepends=('git' 'cmake')
 provides=('linux-g13-driver')
 conflicts=('linux-g13-driver' 'g13-driver')
+install=linux-g13-driver-git.install
 source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/linux-g13-driver"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # z. B. 2.0.0.r0.g616cfe1 (Tag v2.0.0, 0 Commits danach)
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  # Pfad ggf. anpassen, falls 'g13-driver' Ordner im Git-Repo nicht existiert
-  cd "$srcdir/linux-g13-driver/g13-driver/src"
-  make build-driver build-gui
+  cmake -B build -S "$srcdir/linux-g13-driver/g13-driver" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTS=OFF \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/linux-g13-driver/g13-driver/src"
-  make install DESTDIR="$pkgdir" PREFIX=/usr
+  DESTDIR="$pkgdir" cmake --install build
 }
