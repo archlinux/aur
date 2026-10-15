@@ -1,0 +1,20 @@
+pkgbase = wb2api
+	pkgdesc = workbuddy2api panel - Go API panel service
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/linguo2625469/workbuddy2api-panel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	backup = etc/wb2api/config.json
+	source = wb2api-1.9.2.tar.gz::https://github.com/linguo2625469/workbuddy2api-panel/archive/refs/tags/v1.9.2.tar.gz
+	source = wb2api.service
+	source = wb2api.sysusers
+	source = wb2api.tmpfiles
+	sha256sums = fee235713e997289d4c5a5b151e7e9c092da4442aa3afaee893162527428ab56
+	sha256sums = 3701fc1aa5faffb47be3aa938c798b219f407d26e785d0ec15314af5d79bb215
+	sha256sums = 8184df3096f6a37ebf979a4f7c5d98396e3b6335a6cef0d96b2e921995ca380b
+	sha256sums = 9f860b440f762818220aa000caebabaf54bb545a7b500b6ea966fe3016b08d36
+
+pkgname = wb2api

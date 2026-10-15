@@ -1,0 +1,4 @@
+d /var/lib/wb2api 0750 wb2api wb2api -
+d /var/lib/wb2api/auths 0750 wb2api wb2api -
+d /var/lib/wb2api/data 0750 wb2api wb2api -
+d /var/lib/wb2api/data/request-logs 0750 wb2api wb2api -
