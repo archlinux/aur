@@ -11,7 +11,7 @@ conflicts=('ani-cli-ar')
 depends=('python' 'python-rich' 'python-requests' 'python-pypresence' 'python-pycryptodome' 'python-curl-cffi' 'python-beautifulsoup4' 'python-arabic-reshaper' 'python-bidi' 'python-pillow' 'python-numpy' 'mpv')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/np4abdou1/ani-cli-arabic/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('14aa9639ba1fcb8623b206fa52efebeed264abae74678c14a30c719eedeaf3c8')
+sha256sums=('50276d0bb303e71f44f6b91fb4c04473a48f79dbc2c72044853d53fc2f02d696')
 
 build() {
     cd "${pkgname}-${pkgver}"
