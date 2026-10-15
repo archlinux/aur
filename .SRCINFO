@@ -1,14 +1,16 @@
 pkgbase = openless-bin
 	pkgdesc = Hold a key, speak, release — AI-polished text appears at your cursor in any app.
 	pkgver = 1.3.18
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Open-Less/openless
 	arch = x86_64
 	license = MIT
+	makedepends = patchelf
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = xdotool
+	optdepends = fcitx5: reliable text insertion support, especially under Wayland
 	provides = openless
 	conflicts = openless
 	source_x86_64 = OpenLess_1.3.18_amd64.deb::https://github.com/Open-Less/openless/releases/download/v1.3.18-tauri/OpenLess_1.3.18_amd64.deb
