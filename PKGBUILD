@@ -1,5 +1,5 @@
 pkgname=legio-launcher-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 epoch=1
 pkgdesc='Legio desktop game launcher'
@@ -10,8 +10,8 @@ depends=('fuse2' 'umu-launcher' 'xdg-utils' 'desktop-file-utils')
 provides=('legio-launcher')
 conflicts=('legio-launcher')
 options=('!strip')
-source=("Legio-${pkgver}.AppImage::https://github.com/fraa2a/Legio/releases/download/v0.2.0/Legio.Launcher_0.2.0_amd64.AppImage" "icon.png::https://raw.githubusercontent.com/fraa2a/Legio/v${pkgver}/src-tauri/icons/icon.png" 'legio-launcher' 'legio-launcher.desktop' 'LICENSE')
-sha256sums=('745843accbd35734fd2088b1e0863d573b2831f4031e03d3678db4c1ef60ad5b' '90c37c62e8de273897ec1c96e1d00847c27cb19b685f8eb0e5e5309e685eb495' '09ee16ce55c31ebbfec8e7753564a7d342944b0c68a999355ec65029710d2871' 'b60b83844458475f90d93ab0b6a37f7d16cfb897945feaff82e2cf83f2a65333' 'b86297b73f6613f615f32cd23c31ace1b23d409b2007c9930f2f252dccc97a5b')
+source=("Legio-${pkgver}.AppImage::https://github.com/fraa2a/Legio/releases/download/v0.2.1/Legio.Launcher_0.2.1_amd64.AppImage" "icon.png::https://raw.githubusercontent.com/fraa2a/Legio/v${pkgver}/src-tauri/icons/icon.png" 'legio-launcher' 'legio-launcher.desktop' 'LICENSE')
+sha256sums=('87de08e899b46904796bd58275f69d28efca2c040ec391998b66af6827dd0a45' '90c37c62e8de273897ec1c96e1d00847c27cb19b685f8eb0e5e5309e685eb495' '09ee16ce55c31ebbfec8e7753564a7d342944b0c68a999355ec65029710d2871' 'b60b83844458475f90d93ab0b6a37f7d16cfb897945feaff82e2cf83f2a65333' 'b86297b73f6613f615f32cd23c31ace1b23d409b2007c9930f2f252dccc97a5b')
 
 package() {
   install -Dm755 "$srcdir/Legio-${pkgver}.AppImage" "$pkgdir/opt/legio-launcher/Legio.AppImage"
