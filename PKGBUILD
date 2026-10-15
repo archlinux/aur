@@ -1,7 +1,7 @@
 pkgname=mbelib-neo
 pkgver=2.4.3
 pkgrel=1
-pkgdesc="IMBE, AMBE and AMBE+2 vocoder library for P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA and ProVoice"
+pkgdesc="IMBE, AMBE and AMBE+2 vocoder library for P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA and ProVoice."
 arch=('x86_64' 'aarch64')
 url="https://github.com/arancormonk/mbelib-neo"
 license=('GPL-2.0-or-later')
