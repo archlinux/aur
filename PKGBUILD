@@ -1,13 +1,13 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=modcrawl
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Detect, inspect, and analyze Minecraft mods and plugins from JARs"
 arch=('x86_64')
 url="https://github.com/SirCesarium/modcrawl"
 license=('MIT')
 depends=(libgcc glibc)
-makedepends=(cargo zstd)
+makedepends=(cargo zstd cbindgen)
 provides=("lib$pkgname")
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")

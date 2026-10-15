@@ -1,12 +1,13 @@
 pkgbase = modcrawl
 	pkgdesc = Detect, inspect, and analyze Minecraft mods and plugins from JARs
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SirCesarium/modcrawl
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = zstd
+	makedepends = cbindgen
 	depends = libgcc
 	depends = glibc
 	provides = libmodcrawl
