@@ -1,7 +1,7 @@
 pkgbase = krdc-ai
 	pkgdesc = KDE Remote Desktop Client with an integrated AI assistant panel and a client-side dark mode filter
 	pkgver = 26.11.70
-	pkgrel = 31
+	pkgrel = 32
 	url = https://invent.kde.org/network/krdc
 	arch = x86_64
 	license = GPL-2.0-or-later

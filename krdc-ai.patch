@@ -56,10 +56,10 @@ index f99b39e2..6750798e 100644
      KF6::BookmarksWidgets
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..ddb91146
+index 00000000..7111c80a
 --- /dev/null
 +++ b/ai/aiconfig.cpp
-@@ -0,0 +1,130 @@
+@@ -0,0 +1,145 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -172,6 +172,11 @@ index 00000000..ddb91146
 +        "- When writing a guide or documenting a procedure, capture each key step with save_screenshot using short "
 +        "descriptive file names, then quote the paths it returns in the write-up.\n"
 +        "- Never guess a coordinate you cannot see; take a screenshot first.\n"
++        "- Menus with submenus are driven by hovering, not guessing: click the menu title, take a "
++        "screenshot, then use the hover tool on the entry with the submenu arrow - it rests the "
++        "pointer, waits for the submenu to open and returns a screenshot showing it. Click only "
++        "menu entries you can see in a screenshot; clicking where a submenu has not opened yet "
++        "closes the whole menu.\n"
 +        "- On every click or drag, set the target field to a few words naming what you are clicking, e.g. \"the OK button\"; "
 +        "the user approves the action from that and a zoomed crop of the spot.\n"
 +        "- If an action needs a password or would delete or overwrite something, stop and let "
@@ -182,11 +187,21 @@ index 00000000..ddb91146
 +        // models are bad at that arithmetic: clicks landed off target by the
 +        // downscale factor. The point tools map screenshot pixels to screen
 +        // pixels now, so the model must not.
-+        return prompt.replace(
++        prompt.replace(
 +            QLatin1String("If the reported image size differs from the screen size, scale the coordinates you read off the "
 +                          "image accordingly."),
 +            QStringLiteral("Point tools take coordinates in this image's pixels and are mapped to the real screen "
 +                           "for you; do not scale coordinates yourself."));
++    }
++    if (prompt.contains(QLatin1String("embedded in KRDC")) && !prompt.contains(QLatin1String("hover tool"))) {
++        // Saved copies of a previous default predate the hover tool; append
++        // the menu guidance to them too (only to prompts that are recognisably
++        // ours, so genuinely custom prompts stay untouched).
++        prompt.replace(QLatin1String("- On every click or drag,"),
++                       QStringLiteral("- Menus with submenus are driven by hovering: click the menu, then use the hover "
++                                      "tool on the entry with the submenu arrow and click only entries you can see in "
++                                      "the screenshot it returns.\n"
++                                      "- On every click or drag,"));
 +    }
 +    return prompt;
 +}
@@ -259,10 +274,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..c770505e
+index 00000000..063fb3d6
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,1198 @@
+@@ -0,0 +1,1247 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -302,6 +317,13 @@ index 00000000..c770505e
 +constexpr int TypeChunkSize = 64;
 +constexpr int MaxTypeDelayMs = 200;
 +constexpr double MaxWaitSeconds = 30.0;
++// Remote menus open submenus on a hover timer (Windows: SM_MENU_SHOWDELAY,
++// ~400ms), and the opened submenu only reaches our screenshot after the RDP
++// damage update arrives. A click aimed at a submenu that has not rendered
++// lands on whatever is behind it and closes the whole menu, so the hover
++// tool rests the pointer past the delay plus a little margin before it
++// looks.
++constexpr int HoverSettleMs = 800;
 +
 +// How many trailing entries survive into the saved history.
 +constexpr int SavedHistoryEntries = 120;
@@ -1088,6 +1110,48 @@ index 00000000..c770505e
 +        const QPoint pos = toScreen(raw);
 +        view->aiMouseMove(pos);
 +        finishTool(call, QStringLiteral("Pointer moved to (%1, %2).").arg(pos.x()).arg(pos.y()));
++        return;
++    }
++
++    if (name == QLatin1String("hover")) {
++        QPoint raw;
++        QString error;
++        if (!pointArg(args, QStringLiteral("x"), QStringLiteral("y"), &raw, &error, aimSize())) {
++            failTool(call, error);
++            return;
++        }
++        const QPoint pos = toScreen(raw);
++        // Move, then rest the pointer through the remote's hover delay in a
++        // timer rather than blocking, and come back holding a fresh screen-
++        // shot. The model cannot get ahead of the submenu: the screenshot it
++        // is handed is taken after the submenu had time to open and arrive
++        // over the wire, so the entry it clicks next is one it can already
++        // see. This reuses the wait machinery, so a cancel during the settle
++        // drops it exactly like a cancelled wait.
++        view->aiMouseMove(pos);
++        m_waitCall = call;
++        m_waitActive = true;
++        QTimer::singleShot(HoverSettleMs, this, [this, pos] {
++            m_waitActive = false;
++            if (!m_busy) {
++                return; // the turn was cancelled while we waited
++            }
++            const QByteArray image = grabScreenshot();
++            if (image.isEmpty()) {
++                finishTool(m_waitCall, QStringLiteral("Hovered (%1, %2), but no screenshot was available.").arg(pos.x()).arg(pos.y()));
++            } else {
++                finishTool(m_waitCall,
++                           QStringLiteral("Hovered (%1, %2). Any submenu or tooltip it opens is in the attached "
++                                          "screenshot (%3x%4 pixels); click an entry you can see in it.")
++                               .arg(pos.x())
++                               .arg(pos.y())
++                               .arg(m_sentImageSize.width())
++                               .arg(m_sentImageSize.height()),
++                           image);
++            }
++            m_queueIndex++;
++            processQueue();
++        });
 +        return;
 +    }
 +
@@ -3378,10 +3442,10 @@ index 00000000..d0a21673
 +}
 diff --git a/ai/aitools.cpp b/ai/aitools.cpp
 new file mode 100644
-index 00000000..92f41f92
+index 00000000..3f51fe09
 --- /dev/null
 +++ b/ai/aitools.cpp
-@@ -0,0 +1,496 @@
+@@ -0,0 +1,527 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -3601,7 +3665,31 @@ index 00000000..92f41f92
 +        properties.insert(QStringLiteral("x"), property(QStringLiteral("integer"), QStringLiteral("X coordinate in screenshot pixels.")));
 +        properties.insert(QStringLiteral("y"), property(QStringLiteral("integer"), QStringLiteral("Y coordinate in screenshot pixels.")));
 +        tools.append(wrapped(QStringLiteral("mouse_move"),
-+                             QStringLiteral("Move the remote pointer without clicking, e.g. to reveal a tooltip or hover state."),
++                             QStringLiteral("Move the remote pointer without clicking, e.g. to reveal a tooltip or hover "
++                                            "state. Prefer the hover tool for menus: it also waits for the menu to open "
++                                            "and returns a screenshot."),
++                             properties,
++                             {QStringLiteral("x"), QStringLiteral("y")}));
++    }
++
++    {
++        // Cascading menus are a timing problem, not a coordinate problem:
++        // the submenu does not exist on screen until the pointer has rested
++        // on the parent item for the remote's hover delay (about 400ms on
++        // Windows). A model that clicks the parent and then clicks where the
++        // submenu "should be" hits empty desktop and closes the whole menu.
++        // So waiting and looking are built into the tool the model reaches
++        // for, and it cannot skip them.
++        QJsonObject properties;
++        properties.insert(QStringLiteral("x"), property(QStringLiteral("integer"), QStringLiteral("X coordinate in screenshot pixels.")));
++        properties.insert(QStringLiteral("y"), property(QStringLiteral("integer"), QStringLiteral("Y coordinate in screenshot pixels.")));
++        tools.append(wrapped(QStringLiteral("hover"),
++                             QStringLiteral("Move the remote pointer onto something without clicking, wait for any menu, "
++                                            "submenu or tooltip to open, and return a fresh screenshot. This is how menus "
++                                            "are driven: click the menu title, screenshot, hover the entry with the "
++                                            "submenu arrow, then click the submenu entry you can now see in the returned "
++                                            "screenshot. Never click a submenu entry you have not seen in a screenshot - "
++                                            "it has probably not opened yet and the click would close the menu."),
 +                             properties,
 +                             {QStringLiteral("x"), QStringLiteral("y")}));
 +    }
@@ -3619,7 +3707,11 @@ index 00000000..92f41f92
 +                          property(QStringLiteral("string"),
 +                                   QStringLiteral("What you are clicking, in a few words, e.g. \"the OK button\". Shown to the "
 +                                                  "user for approval.")));
-+        tools.append(wrapped(QStringLiteral("mouse_click"), QStringLiteral("Click at a point on the remote screen."), properties,
++        tools.append(wrapped(QStringLiteral("mouse_click"),
++                             QStringLiteral("Click at a point on the remote screen. Only click something visible in the "
++                                            "latest screenshot; clicking where a submenu is expected but not yet visible "
++                                            "lands outside the menu and closes it - hover the parent entry first."),
++                             properties,
 +                             {QStringLiteral("x"), QStringLiteral("y")}));
 +    }
 +
@@ -3734,9 +3826,9 @@ index 00000000..92f41f92
 +{
 +    static const QStringList names = {
 +        QStringLiteral("take_screenshot"), QStringLiteral("screen_info"),      QStringLiteral("mouse_move"),
-+        QStringLiteral("mouse_click"),     QStringLiteral("mouse_drag"),       QStringLiteral("mouse_scroll"),
-+        QStringLiteral("type_text"),       QStringLiteral("press_key"),        QStringLiteral("hotkey"),
-+        QStringLiteral("save_screenshot"), QStringLiteral("wait"),
++        QStringLiteral("hover"),           QStringLiteral("mouse_click"),      QStringLiteral("mouse_drag"),
++        QStringLiteral("mouse_scroll"),    QStringLiteral("type_text"),        QStringLiteral("press_key"),
++        QStringLiteral("hotkey"),          QStringLiteral("save_screenshot"), QStringLiteral("wait"),
 +    };
 +    return names.contains(name);
 +}
@@ -3786,6 +3878,9 @@ index 00000000..92f41f92
 +    }
 +    if (name == QLatin1String("mouse_move")) {
 +        return QStringLiteral("Move the remote pointer to (%1, %2)").arg(number(QStringLiteral("x")), number(QStringLiteral("y")));
++    }
++    if (name == QLatin1String("hover")) {
++        return QStringLiteral("Hover (%1, %2) and look").arg(number(QStringLiteral("x")), number(QStringLiteral("y")));
 +    }
 +    if (name == QLatin1String("mouse_click")) {
 +        const QString button = arguments.value(QStringLiteral("button")).toString();
@@ -6099,10 +6194,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..1b3631ea
+index 00000000..0624ab6f
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,724 @@
+@@ -0,0 +1,727 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -6610,6 +6705,8 @@ index 00000000..1b3631ea
 +
 +    check(AiTools::risk(QStringLiteral("mouse_click"), arg(QStringLiteral("x"), QStringLiteral("10"))) == AiTools::Risk::Action,
 +          "mouse_click is an action");
++    check(AiTools::risk(QStringLiteral("hover"), arg(QStringLiteral("x"), QStringLiteral("10"))) == AiTools::Risk::Action,
++          "hover moves the remote pointer, so it is an action like mouse_move");
 +
 +    QJsonObject clickArgs;
 +    clickArgs.insert(QStringLiteral("x"), 40);
@@ -6793,7 +6890,8 @@ index 00000000..1b3631ea
 +    // through the tool schema table instead.
 +    check(!AiTools::isKnownTool(QStringLiteral("launch_nukes")), "an invented tool is not known");
 +    check(AiTools::isKnownTool(QStringLiteral("save_screenshot")), "the screenshot save tool is known");
-+    check(AiTools::schemas().size() >= 8, "the schema list offers the expected number of tools");
++    check(AiTools::isKnownTool(QStringLiteral("hover")), "the hover tool that drives cascading menus is known");
++    check(AiTools::schemas().size() >= 12, "the schema list offers the expected number of tools");
 +    check(!AiTools::isKnownTool(QString()), "the empty name is not a tool");
 +}
 +
