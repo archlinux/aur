@@ -1,14 +1,14 @@
 pkgbase = rtpengine-kernel-dkms
 	pkgdesc = Kernel module for Sipwise rtpengine media proxy (DKMS)
-	pkgver = 26.2.1.2
+	pkgver = 26.2.1.3
 	pkgrel = 1
 	url = https://github.com/sipwise/rtpengine
 	arch = any
 	license = GPL-3.0-or-later
 	depends = dkms
-	provides = rtpengine-kernel-module=26.2.1.2
+	provides = rtpengine-kernel-module=26.2.1.3
 	conflicts = rtpengine-kernel-module
-	source = rtpengine-kernel-dkms-26.2.1.2.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr26.2.1.2.tar.gz
-	sha256sums = a7ddc657f3f07883a267eb04aedb82b005db10f954f7a6c3a74b1acbdc21287b
+	source = rtpengine-kernel-dkms-26.2.1.3.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr26.2.1.3.tar.gz
+	sha256sums = 7fc02c9a07314b26f8f9aec5e02e2bf86f21eb122b86d4f6f443b6833eca8613
 
 pkgname = rtpengine-kernel-dkms
