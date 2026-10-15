@@ -1,82 +1,79 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-_tag=3.16.23.5.sk1
-pkgver="$_tag"
+# Fixed release-candidate snapshot: Valve 3.16.31 plus SKOS patches; not a release tag.
+_commit=d465650e100774ef6cc877c788cd65eab32556a6
+pkgver=3.16.31.sk1rc1.gd465650e
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
-url=https://github.com/3003n/gamescope
-license=(BSD)
+url=https://github.com/SkorionOS/gamescope
+license=(BSD-2-Clause BSD-3-Clause MIT LicenseRef-Reshade)
 depends=(
     gcc-libs
     glibc
+    hwdata
     glm
     lcms2
     libavif
     libcap.so
     libdecor
-    libdrm
+    'libdrm>=2.4.129'
+    libei
     libinput
     libpipewire-0.3.so
     libx11
     libxcb
     libxcomposite
+    libxcursor
     libxdamage
     libxext
     libxfixes
+    libxi
     libxkbcommon.so
+    'libxkbcommon>=1.8.0'
     libxmu
     libxrender
     libxres
     libxtst
     libxxf86vm
     luajit
+    'pixman>=0.46.0'
     sdl2
     seatd
+    systemd-libs
     vulkan-icd-loader
-    wayland
+    'wayland>=1.24.0'
     xcb-util-errors
     xcb-util-wm
     xorg-server-xwayland
 )
 makedepends=(
     benchmark
+    catch2
     cmake
     gcc
     git
     glslang
     meson
     pkgconf
+    python
     ninja
     vulkan-headers
-    wayland-protocols
+    'wayland-protocols>=1.47'
 )
-# source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
-#     # "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-#     "git+https://github.com/nothings/stb.git"
-#     "git+https://github.com/bazzite-org/wlroots.git"
-#     "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
-#     "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
-#     "git+https://github.com/Joshua-Ashton/vkroots.git"
-#     "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
-#     # "git+https://github.com/ValveSoftware/openvr.git"
-#     "git+https://github.com/Joshua-Ashton/reshade.git"
-#     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-# )
-
 source=(
-    git+https://github.com/3003n/gamescope.git#tag=${_tag}
+    git+https://github.com/SkorionOS/gamescope.git#commit=${_commit}
     git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
     git+https://gitlab.freedesktop.org/emersion/libliftoff.git
     git+https://github.com/ValveSoftware/openvr.git
     git+https://github.com/Joshua-Ashton/reshade.git
     git+https://github.com/KhronosGroup/SPIRV-Headers.git
     git+https://github.com/Joshua-Ashton/vkroots.git
-    git+https://github.com/Joshua-Ashton/wlroots.git
+    git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 )
 
 
-b2sums=('0d3eb1571b38c11647c760486fd7e67f7edd3c723dcc72cc140ed9cdc05c4c25ea84189c87c0ba79e846987d1b6692c41454e39a7a2edf550b24d493337cfee4'
+b2sums=('2b65449da22efcbdcada1956bb4fe9b5855afb32d3265553dfede6cafba6e8f3372d604a97a67b6fb8612016d70985694bacbb7d07c094bef2ed150f4cee5775'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -92,52 +89,67 @@ install=gamescope.install
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in src/reshade subprojects/{libdisplay-info,libliftoff,vkroots,wlroots} thirdparty/SPIRV-Headers ; do
+    for submodule in src/reshade subprojects/{libdisplay-info,libliftoff,openvr,vkroots,wlroots} thirdparty/SPIRV-Headers ; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url ../${submodule##*/}
     done
 
     git -c protocol.file.allow=always submodule update
 
-    # Fix wlroots build with newer libinput (unhandled LIBINPUT_SWITCH_KEYPAD_SLIDE)
-    sed -i '/switch (libinput_event_switch_get_switch(sevent)) {/a\\t\tdefault:\n\t\t\tbreak;' \
-        subprojects/wlroots/backend/libinput/switch.c
+    meson subprojects download glm stb
 
-    meson subprojects download
-
-    # Fix wlroots dependency override issue
-    # sed -i '/meson\.override_dependency(versioned_name, wlroots)/a meson.override_dependency('\''wlroots'\'', wlroots)' subprojects/wlroots/meson.build
-
-    # make stb.wrap use our local clone
-    # rm -rf subprojects/stb
-    # git clone "$srcdir/stb" subprojects/stb
-    # cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
-}
-
-pkgver() {
-    # cd "$srcdir/$_pkgname"
-    # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    echo "$_tag" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     export LDFLAGS="$LDFLAGS -lrt"
     arch-meson gamescope build \
         -Dforce_fallback_for=glm,stb,libdisplay-info,libliftoff,vkroots,wlroots \
-        -Dpipewire=enabled 
+        -Dpipewire=enabled \
+        -Ddrm_backend=enabled \
+        -Dsdl2_backend=enabled \
+        -Davif_screenshots=enabled \
+        -Denable_openvr_support=true \
+        -Drt_cap=enabled \
+        -Dinput_emulation=enabled \
+        -Denable_gamescope_wsi_layer=true \
+        -Denable_tests=true
     meson compile -C build
 }
 
+check() {
+    meson test -C build --suite gamescope --print-errorlogs
+}
+
 package() {
-    # install -d "$pkgdir"/usr/share/gamescope/reshade
-    # cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
-
-    # chmod -R 655 "$pkgdir"/usr/share/gamescope
-    # meson install -C build --skip-subprojects --destdir="${pkgdir}"
-
     DESTDIR="${pkgdir}" meson install -C build \
     --skip-subprojects
 
     cd "$srcdir/$_pkgname"
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
+    local _licensedir="${pkgdir}/usr/share/licenses/$pkgname"
+    install -Dm 644 LICENSE -t "$_licensedir/"
+    for project in openvr wlroots libdisplay-info libliftoff; do
+        install -Dm 644 "subprojects/$project/LICENSE" "$_licensedir/LICENSE.$project"
+    done
+    install -Dm 644 subprojects/glm/copying.txt "$_licensedir/LICENSE.glm"
+    install -Dm 644 subprojects/stb/LICENSE "$_licensedir/LICENSE.stb"
+    install -Dm 644 subprojects/vkroots/LICENSES/MIT.txt "$_licensedir/LICENSE.vkroots"
+    install -Dm 644 thirdparty/SPIRV-Headers/LICENSE "$_licensedir/LICENSE.SPIRV-Headers"
+    install -Dm 644 src/shaders/NVIDIAImageScaling/licence.txt "$_licensedir/LICENSE.NVIDIAImageScaling"
+
+    # Preserve the original notice text embedded in these compiled sources.
+    grep -q '^// This file was generated with a script\.' thirdparty/sol/sol.hpp
+    sed '/^\/\/ This file was generated with a script\./,$d' thirdparty/sol/sol.hpp \
+        > "$_licensedir/LICENSE.sol2"
+    sed -n '/^\/\*$/,/^\*\/$/ { p; /^\*\/$/q; }' subprojects/openvr/src/jsoncpp.cpp \
+        > "$_licensedir/LICENSE.openvr-jsoncpp"
+    grep -q 'Copyright (c) 2013-2020 Rapptz, ThePhD and contributors' "$_licensedir/LICENSE.sol2"
+    grep -q '(END LICENSE TEXT)' "$_licensedir/LICENSE.openvr-jsoncpp"
+    grep -q '^// ABOUT' src/shaders/ffx_a.h
+    sed '/^\/\/ ABOUT/,$d' src/shaders/ffx_a.h > "$_licensedir/LICENSE.FidelityFX"
+    sed -n '/^\/\*$/,/^\*\/$/ { p; /^\*\/$/q; }' src/shaders/sgsr1.h \
+        > "$_licensedir/LICENSE.SGSR"
+    grep -q 'Copyright (c) 2014 Michal Drobot' "$_licensedir/LICENSE.FidelityFX"
+    grep -q 'SPDX-License-Identifier: BSD-3-Clause' "$_licensedir/LICENSE.SGSR"
+    chmod 644 "$_licensedir/LICENSE.sol2" "$_licensedir/LICENSE.openvr-jsoncpp" \
+        "$_licensedir/LICENSE.FidelityFX" "$_licensedir/LICENSE.SGSR"
 }
