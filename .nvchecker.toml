@@ -1,5 +1,5 @@
 [teleport-client]
 source = "github"
 github = "gravitational/teleport"
-use_latest_release = true
+use_latest_tag = true
 prefix = "v"

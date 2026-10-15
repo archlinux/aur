@@ -1,33 +1,34 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=teleport-client
-pkgver=18.10.0
-pkgrel=3
+pkgver=18.11.1
+pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=(AGPL-3.0-only)
 depends=(glibc libfido2)
-makedepends=(go git cargo)
+makedepends=(go git rustup clang llvm)
+options=(!lto)
 provides=(teleport-client tctl tsh)
 conflicts=(teleport teleport-client-bin tctl tsh)
-source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('75a6018ebb6e7e5ffc9f74ee6a5352dc1d5a3390f5617945cbef4f1a45f614e5')
+source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a95bddd445dc3f93d91493b48e73d39959bbc4d4d00cd93fea34b3d02c3ba1da')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
-  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
-  go mod download -modcacherw
+  rustup toolchain install
 }
 
 build() {
   cd "${pkgname%-*}-${pkgver}"
 
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export ADDFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   make build/tsh build/tctl
 
