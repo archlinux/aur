@@ -1,0 +1,22 @@
+pkgbase = charmtone-bin
+	pkgdesc = A command line tool for rendering the CharmTone color palette.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://charm.land/
+	license = Apache-2.0
+	conflicts = charmtone
+	provides = charmtone
+	arch = aarch64
+	source_aarch64 = charmtone-bin_0.0.1_aarch64.tar.gz::https://github.com/charmbracelet/tone/releases/download/v0.0.1/charmtone_0.0.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 07e112b2b55b44f56057c68daa4ffd39fd14e9e7129263247b74dc2320ec238e
+	arch = armv7h
+	source_armv7h = charmtone-bin_0.0.1_armv7h.tar.gz::https://github.com/charmbracelet/tone/releases/download/v0.0.1/charmtone_0.0.1_Linux_arm.tar.gz
+	sha256sums_armv7h = c8c7ade6bd9584a94a5e445d42085d6b2d4aefeb27da69d5947fd4d5d405ca84
+	arch = i686
+	source_i686 = charmtone-bin_0.0.1_i686.tar.gz::https://github.com/charmbracelet/tone/releases/download/v0.0.1/charmtone_0.0.1_Linux_i386.tar.gz
+	sha256sums_i686 = 9122dac8146c7ed1a1fc62ca06f0a9ce63c0b4f01d6dc3f089e20b4934cd40d5
+	arch = x86_64
+	source_x86_64 = charmtone-bin_0.0.1_x86_64.tar.gz::https://github.com/charmbracelet/tone/releases/download/v0.0.1/charmtone_0.0.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 55a1d5738d523818e6d2b606cc4e06b2cc78fc51776fd30c32e9004dabe85366
+	
+pkgname = charmtone-bin
