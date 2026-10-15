@@ -4,9 +4,9 @@
 pkgname=frankenphp
 pkgver=1.13.0
 pkgrel=1
-pkgdesc="FrankenPHP: Modern app server for PHP"
+pkgdesc="The modern PHP app server"
 arch=('x86_64')
-url="https://github.com/php/frankenphp"
+url="https://frankenphp.dev"
 license=('MIT')
 depends=()
 makedepends=('php-embed' 'go' 'watcher')
