@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=fbarcalc
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="calculate the maximum account value"
 arch=(x86_64)
@@ -10,18 +10,12 @@ license=(GPL-3.0-or-later)
 makedepends=(cargo)
 depends=(glibc libgcc)
 options=(!lto)
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
-  ignore-hung-tests.patch)
-sha256sums=('19881491d5812da31e9a88733a384d1546bfda3aa61b6160d72a14dd22926bef'
-            '9bb87f2d5f3ad4339203c610b50cc4542452ef80d8b9971d78273570a4c18eb5')
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('e19ea6eb55cf86454cb7d8156d9b182e8668e39013e7df3fd0a88433efe75ca2')
 
 prepare() {
   cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
-
-  # these tests hang in a chroot for some reason
-  patch -p1 -N -i "${srcdir}/ignore-hung-tests.patch"
-
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
