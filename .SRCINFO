@@ -1,0 +1,18 @@
+pkgbase = ringo-mcp-bin
+	pkgdesc = MCP server over stdio exposing ringo SIP agents for LLM-driven telephony
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/davidborzek/ringo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = opus
+	depends = spandsp
+	provides = ringo-mcp
+	conflicts = ringo-mcp
+	source_x86_64 = ringo-mcp-0.1.0-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-mcp-v0.1.0/ringo-mcp-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ce885bf74b4e8d064cf9b2a3ad3d8320194c732f444843acee1d6254f5b7f51c
+	source_aarch64 = ringo-mcp-0.1.0-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-mcp-v0.1.0/ringo-mcp-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6d07a1c5efa16e16c4f8cab8aae91cb34d00072cdcc8bedf98119e71093e8473
+
+pkgname = ringo-mcp-bin
