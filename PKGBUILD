@@ -1,7 +1,7 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
 
 pkgname=mantisbt-cli
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Command line client for the MantisBT REST API'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('44b0dafc690d93f5dca3a19971c72f0ef81a5296a8946ab6ab65456a21d894b5')
+sha256sums=('d98de186484cedf8e1ac27f2afc2c1e71ab37adc0213dba605316da4b1512b9f')
 
 build() {
   cd "${pkgname}-${pkgver}"
