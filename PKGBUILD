@@ -4,7 +4,7 @@ _pkgbase=rssguard
 pkgbase="$_pkgbase-git"
 pkgname=($_pkgbase-{,nowebengine-}git)
 pkgver=5.1.2.r80.g537232ebf
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, lightweight and easy-to-use RSS/ATOM feed aggregator developed using Qt'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/martinrotter/rssguard'
@@ -54,7 +54,7 @@ build() {
 package_rssguard-git() {
   depends=(qt6-webengine qt6-multimedia qxmpp mpv)
   provides=($_pkgbase)
-  conflicts=($_pkgbase{,-nowebengine} rss-guard{,-git})
+  conflicts=($_pkgbase{,-nowebengine-git})
   cd build
   make DESTDIR="${pkgdir}" install
 }
@@ -63,7 +63,7 @@ package_rssguard-nowebengine-git() {
   pkgdesc+='. Variant without Qt WebEngine support.'
   depends=(qt6-multimedia qxmpp mpv)
   provides=($_pkgbase-nowebengine)
-  conflicts=($_pkgbase{,-nowebengine})
+  conflicts=($_pkgbase{,-git})
   cd build-nowebengine
   make DESTDIR="${pkgdir}" install
 }

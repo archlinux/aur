@@ -1,7 +1,7 @@
 pkgbase = rssguard-git
 	pkgdesc = Simple, lightweight and easy-to-use RSS/ATOM feed aggregator developed using Qt
 	pkgver = 5.1.2.r80.g537232ebf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martinrotter/rssguard
 	arch = i686
 	arch = x86_64
@@ -34,9 +34,7 @@ pkgname = rssguard-git
 	depends = mpv
 	provides = rssguard
 	conflicts = rssguard
-	conflicts = rssguard-nowebengine
-	conflicts = rss-guard
-	conflicts = rss-guard-git
+	conflicts = rssguard-nowebengine-git
 
 pkgname = rssguard-nowebengine-git
 	pkgdesc = Simple, lightweight and easy-to-use RSS/ATOM feed aggregator developed using Qt. Variant without Qt WebEngine support.
@@ -45,4 +43,4 @@ pkgname = rssguard-nowebengine-git
 	depends = mpv
 	provides = rssguard-nowebengine
 	conflicts = rssguard
-	conflicts = rssguard-nowebengine
+	conflicts = rssguard-git
