@@ -1,6 +1,6 @@
 pkgbase = python-whenever-git
-	pkgdesc = Modern datetime library for Python (development version)
-	pkgver = 0.10.3.r0.ga107d67
+	pkgdesc = Modern datetime library for Python
+	pkgver = 0.11.0.r12.g18402a1
 	pkgrel = 1
 	url = https://github.com/ariebovenberg/whenever
 	arch = aarch64
@@ -15,9 +15,10 @@ pkgbase = python-whenever-git
 	depends = libgcc
 	depends = python
 	depends = python-pydantic-core
+	depends = python-tzlocal
 	provides = python-whenever
 	conflicts = python-whenever
-	source = git+https://github.com/ariebovenberg/whenever.git
+	source = python-whenever::git+https://github.com/ariebovenberg/whenever.git
 	sha256sums = SKIP
 
 pkgname = python-whenever-git
