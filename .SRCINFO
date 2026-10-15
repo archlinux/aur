@@ -1,0 +1,30 @@
+pkgbase = opencode-v2-git
+	pkgdesc = The open source coding agent (version 2)
+	pkgver = 2.0.30.412b2b1d85
+	pkgrel = 1
+	url = https://github.com/anomalyco/opencode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = bun>=1.4.2
+	depends = curl
+	depends = glibc
+	depends = icu
+	depends = ripgrep
+	depends = tar
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	provides = opencode
+	provides = opencode-v2
+	conflicts = opencode
+	conflicts = opencode-bin
+	conflicts = opencode-git
+	options = !debug
+	options = !strip
+	source = git+https://github.com/anomalyco/opencode.git
+	source = shared-bun.patch
+	sha256sums = SKIP
+	sha256sums = 8c4f437a3a0ce746c0b8d06fd5c2592176d4a3d9dbefa7e9ac02efd72466db33
+
+pkgname = opencode-v2-git
