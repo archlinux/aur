@@ -1,6 +1,6 @@
 # Maintainer: Rafal Vonau <rafal.vonau@gmail.com>
 pkgname=stitchviewer-git
-pkgver=0.1.0.r0
+pkgver=0.1.0.r1
 pkgrel=1
 pkgdesc='Viewer for large TIFF images and stitched PNG grids'
 arch=('x86_64')
