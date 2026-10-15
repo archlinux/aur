@@ -2,7 +2,7 @@
 
 pkgname=teleport-client
 pkgver=18.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -12,11 +12,16 @@ makedepends=(go git rustup clang llvm)
 options=(!lto)
 provides=(teleport-client tctl tsh)
 conflicts=(teleport teleport-client-bin tctl tsh)
-source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a95bddd445dc3f93d91493b48e73d39959bbc4d4d00cd93fea34b3d02c3ba1da')
+source=(
+  "${pkgname%-*}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  strcase_v0.0.6.patch
+)
+sha256sums=('a95bddd445dc3f93d91493b48e73d39959bbc4d4d00cd93fea34b3d02c3ba1da'
+            '66788f0103ddf6d30c71892fab18833392d294c6666fd50020c48a023d108b4e')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
+  patch -p1 < ../strcase_v0.0.6.patch
   rustup toolchain install
 }
 

@@ -1,7 +1,7 @@
 pkgbase = teleport-client
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)
 	pkgver = 18.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gravitational/teleport
 	arch = x86_64
 	arch = armv7h
@@ -23,6 +23,8 @@ pkgbase = teleport-client
 	conflicts = tsh
 	options = !lto
 	source = teleport-18.11.1.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v18.11.1.tar.gz
+	source = strcase_v0.0.6.patch
 	sha256sums = a95bddd445dc3f93d91493b48e73d39959bbc4d4d00cd93fea34b3d02c3ba1da
+	sha256sums = 66788f0103ddf6d30c71892fab18833392d294c6666fd50020c48a023d108b4e
 
 pkgname = teleport-client
