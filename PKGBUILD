@@ -1,6 +1,6 @@
 # Maintainer: rDev <proshiv85@gmail.com>
 pkgname=kvant
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A clean Material 3 audio player'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'taglib' 'hicolor-icon-th
 makedepends=('cmake' 'ninja')
 optdepends=('qt6-multimedia-ffmpeg: FFmpeg playback backend (recommended)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f218eb8ab6584ffc60b580d56aba342798e93a91f9d29e5bc103cd1a434213a2')
+sha256sums=('977a1e3166a4afb522aa9e0171a4f5ccc23fb183dada93944bedece2e8052c22')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
