@@ -2,7 +2,7 @@
 
 pkgname=papers-ofd
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='OFD (GB/T 33190-2016) document backend for GNOME Papers, on the rofd-ffi C ABI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/YangtseSu/papers-ofd'
@@ -29,17 +29,17 @@ makedepends=(
 # The space-bar preview in GNOME Files is Sushi's; our plugin only takes effect
 # where Sushi is installed (and gjs + Sushi make tests/test-sushi-plugin.js run).
 optdepends=('sushi: space-bar previews in GNOME Files')
-# 0.1.0 is not tagged yet, so the package pins a commit: the phase-3 work plus the
-# highlight-geometry tests, which compare the selection region with the ink rofd
-# renders and require the font-metric band and its eighth-height margin, so
-# `check()` needs librofd-ffi >= 0.4.3-6 (see makedepends) and a builder with the
-# older 0.4.3-5 library sees a failed test with an install hint. The module binary
-# itself is unchanged by that commit. Bump _commit with pkgver when a release tag
-# exists. This file is the canonical recipe — the upstream project repository
-# carries no PKGBUILD copy.
-_commit=6692feb485339f2301a53747a298442031bbe8e2
+# 0.1.0 is not tagged yet, so the package pins a commit. The phase-3 work plus the
+# highlight-geometry tests compare the selection region with the ink rofd renders and
+# require the font-metric band and its eighth-height margin, so `check()` needs
+# librofd-ffi >= 0.4.3-6 (see makedepends); a builder with the older 0.4.3-5 library
+# sees a failed test with an install hint. The module binary is unchanged from the
+# phase-3 tree: the pins differ only in the tracked documentation. Bump _commit with
+# pkgver when a release tag exists. This file is the canonical recipe — the upstream
+# project repository carries no PKGBUILD copy.
+_commit=7becd282db17859d73984754b195a625a03b6218
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/papers-ofd/archive/$_commit.tar.gz")
-sha256sums=('06a08c84d927b5e5db199a8ae628546779428edcdb481a48b88c3b78a6e12068')
+sha256sums=('9f492120e70c910c1ae0318ec153fdd4ffc0068d62e3f9af3da025b804227419')
 _dirname="papers-ofd-$_commit"
 
 build() {
