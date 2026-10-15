@@ -3,7 +3,7 @@
 
 _plug=hysteresis
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('vapoursynth')
 makedepends=('cargo')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/sgt0/vapoursynth-hysteresis/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e46ba0a53fe3815662930e705062df63083fee9ea4435647bd38a665c6cfc5d9')
+sha256sums=('cc07db9c91d52bcd119026b267612fa239361faad88caacfb97df9f6a1bd6b69')
 
 build() {
 	cd "vapoursynth-${_plug}-${pkgver}"
