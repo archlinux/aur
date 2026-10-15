@@ -1,6 +1,6 @@
 pkgbase = dan-bin
 	pkgdesc = Fast, modern, and intuitive terminal editor with a rope-based buffer
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/dfallman/dan
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = dan-bin
 	provides = dan
 	conflicts = dan
 	options = !strip
-	source_x86_64 = dan-x86_64-0.5.0.tgz::https://github.com/dfallman/dan/releases/download/0.5.0/dan-0.5.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 32363d9d10debae05eef80935e9b5ded040819cfc9e88244f69173be8f75d273
-	source_aarch64 = dan-aarch64-0.5.0.tgz::https://github.com/dfallman/dan/releases/download/0.5.0/dan-0.5.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e03525585afef77b419fe3878ec83d1e75bfbb1f72c28a0e7a50de205672263d
+	source_x86_64 = dan-x86_64-0.5.1.tgz::https://github.com/dfallman/dan/releases/download/0.5.1/dan-0.5.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2d66af48ca17f8e7f17822d8314eea45b171dbac0954135aa8bd36a15cd4120f
+	source_aarch64 = dan-aarch64-0.5.1.tgz::https://github.com/dfallman/dan/releases/download/0.5.1/dan-0.5.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5e48c46526bdcd8809a1d487af97a6983f8900922db58070e0317aa1e234cb8b
 
 pkgname = dan-bin

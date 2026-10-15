@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast, modern, and intuitive terminal editor with a rope-based buffer"
 
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('32363d9d10debae05eef80935e9b5ded040819cfc9e88244f69173be8f75d273')
-sha256sums_aarch64=('e03525585afef77b419fe3878ec83d1e75bfbb1f72c28a0e7a50de205672263d')
+sha256sums_x86_64=('2d66af48ca17f8e7f17822d8314eea45b171dbac0954135aa8bd36a15cd4120f')
+sha256sums_aarch64=('5e48c46526bdcd8809a1d487af97a6983f8900922db58070e0317aa1e234cb8b')
 
 
 case ${CARCH} in
