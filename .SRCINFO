@@ -1,0 +1,26 @@
+pkgbase = all-the-platforms-git
+	pkgdesc = One command for all the platforms: read, search, post, chat and download on 67 platforms, with JSON output and an MCP server
+	pkgver = 0.1.0.r0.g6b233f3
+	pkgrel = 1
+	url = https://github.com/WindustH/atp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cmake
+	makedepends = clang
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	optdepends = ffmpeg: merge video and audio, audio-only downloads
+	optdepends = chromium: pass human checks in a browser (or google-chrome, microsoft-edge, brave)
+	provides = all-the-platforms
+	conflicts = all-the-platforms
+	conflicts = all-the-platforms-bin
+	conflicts = atp-bin
+	options = !lto
+	source = all-the-platforms::git+https://github.com/WindustH/atp.git
+	sha256sums = SKIP
+
+pkgname = all-the-platforms-git
