@@ -1,0 +1,17 @@
+pkgbase = python-kfnetlist
+	pkgdesc = Rust-backed netlist schema and extraction tools for KFactory
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/gdsfactory/kfnetlist
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-maturin
+	source = https://files.pythonhosted.org/packages/d2/80/6c1ec7ba4160c61ffaf710943fc25cc1b096ebe50233edf20f8258fd5a8d/kfnetlist-0.2.2.tar.gz
+	sha256sums = 9ae38fc262867daa9d06cbda3efff3f1c00504227480d4ab92c379bf0d13b84e
+
+pkgname = python-kfnetlist
