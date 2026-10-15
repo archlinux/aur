@@ -1,7 +1,7 @@
 pkgbase = piliplus
 	pkgdesc = A third-party Bilibili client developed in Flutter
 	pkgver = 2.1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bggRGjQaUbCoE/PiliPlus
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,7 +13,6 @@ pkgbase = piliplus
 	makedepends = patchelf
 	depends = gtk3
 	depends = mpv
-	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	options = !debug
 	source = git+https://github.com/bggRGjQaUbCoE/PiliPlus.git#tag=2.1.6.2
