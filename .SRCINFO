@@ -1,16 +1,16 @@
 pkgbase = misskey-notedeck-bin
-	pkgver = 1.85.0
+	pkgver = 1.85.1
 	pkgrel = 1
 	url = https://github.com/notedeck-dev/notedeck
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	source = misskey-notedeck-bin-1.85.0.tar.gz::https://github.com/notedeck-dev/notedeck/releases/download/v1.85.0/NoteDeck-1.85.0-linux-x64.tar.gz
-	source = notecli-1.85.0-linux-amd64::https://github.com/notedeck-dev/notedeck/releases/download/v1.85.0/notecli-1.85.0-linux-amd64
+	source = misskey-notedeck-bin-1.85.1.tar.gz::https://github.com/notedeck-dev/notedeck/releases/download/v1.85.1/NoteDeck-1.85.1-linux-x64.tar.gz
+	source = notecli-1.85.1-linux-amd64::https://github.com/notedeck-dev/notedeck/releases/download/v1.85.1/notecli-1.85.1-linux-amd64
 	source = notedeck.desktop
-	source = notedeck-icon-128.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.85.0/src-tauri/icons/128x128.png
-	source = notedeck-icon-32.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.85.0/src-tauri/icons/32x32.png
-	sha256sums = 7bd6f332991be6f9c1b7edfe7847f591f1f1a6c3890fc80f5f15931cf789bf2e
-	sha256sums = 127e88a74d7411b2d33aa0c3a1cc7c2b41ee2c29525cca248f1bc0c6013d2575
+	source = notedeck-icon-128.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.85.1/src-tauri/icons/128x128.png
+	source = notedeck-icon-32.png::https://raw.githubusercontent.com/notedeck-dev/notedeck/v1.85.1/src-tauri/icons/32x32.png
+	sha256sums = 37da726039ad9a0dec462bf2dca04937085e4fcb534c963c3b96db2b0811f4be
+	sha256sums = 6182858aed5786383c418994f2db601a904eae76c8c29526127e06c80e2a082a
 	sha256sums = 402b528d0bc1d1747ad0aba623994ab4b3efa24ad3877c80bb9c8e31d2775ba5
 	sha256sums = 20ccfc14895ab30ee165475cb8a5121711114fcab0226a2516db8dd6d0a7e017
 	sha256sums = 4b4d94d68706298000bed6f1dff338a06bb13de2ab6587cf2db65bb992bb5693
@@ -22,7 +22,7 @@ pkgname = misskey-notedeck-bin
 	depends = libayatana-appindicator
 	depends = librsvg
 	depends = glib-networking
-	optdepends = notecli-bin=1.85.0: CLI
+	optdepends = notecli-bin=1.85.1: CLI
 	provides = notedeck
 	provides = notemaid
 	conflicts = notedeck
