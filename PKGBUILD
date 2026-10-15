@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.41
-pkgver=1.0.0beta41
+_tag=v1.0.0-beta.42
+pkgver=1.0.0beta42
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -41,8 +41,12 @@ depends=(
     'matugen'
     'zenity'
     'librsvg'
-    # Launcher: files found by name in the home, and opened.
+    # Drives: removable drives attached, opened and ejected.
+    'udisks2'
+    # Launcher: files found by name in the home, and opened; sums and
+    # conversions answered in the field.
     'fd'
+    'libqalculate'
     'xdg-utils'
     # The weather organism: Open-Meteo, through the proxy when one is on.
     'curl'
@@ -99,7 +103,7 @@ optdepends=(
 options=('!lto')
 install=bioma-shell.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('a41efca2dcb5b5b9994a6b022e931a621ec5bf7a16c3c70b5efb9d2fa9f3f25c')
+sha256sums=('b9b320cdf53cd89d49564966cc602bc31c74a9965c6ff13e53872b92b1049bc3')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
