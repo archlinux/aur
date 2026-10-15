@@ -2,41 +2,42 @@
 
 pkgname=nuggetvpn-bin
 _pkgname=nuggetvpn
-pkgver=1.0.0_beta.2
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Modern, lightweight, and fast VPN client built with Tauri v2 and React 19 (Binary release)"
+pkgdesc="Fast, good-looking VPN client with an embedded sing-box core (binary release)"
 arch=('x86_64')
-url="https://github.com/Rigby-Foundation/nuggetvpn"
-license=('GPL3')
+url="https://github.com/Rigby-Foundation/NuggetVPN"
+license=('GPL-3.0-only')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl' 'glibc')
-options=('!strip')
+# The interface is Wails v3 on GTK 4 and WebKitGTK 6.0; the tunnel is set up
+# by a helper started as root through pkexec, so polkit (and an agent to ask
+# for the password, which every desktop has) is needed to connect.
+depends=('gtk4' 'webkitgtk-6.0' 'libsoup3' 'glib2' 'libx11' 'glibc' 'polkit')
+options=('!strip' '!debug')
 
-_pkgver=${pkgver/_/-}
-_srcver=${pkgver%%_*}
-source_x86_64=("NuggetVPN_${_srcver}_amd64.deb::https://github.com/Rigby-Foundation/NuggetVPN/releases/download/v${_pkgver}/NuggetVPN_${_srcver}_amd64.deb")
-sha256sums_x86_64=('3bd398f5e7f0967ffb9b1bd2bfeab346d1b44973abac2e61cd0f301c8c970197')
+source_x86_64=("NuggetVPN-v${pkgver}-linux-amd64.deb::${url}/releases/download/v${pkgver}/NuggetVPN-v${pkgver}-linux-amd64.deb")
+sha256sums_x86_64=('cecca5ebb4360f84323241c237afe056f06b52b83a85dd66066cc86bf1937b76')
 
 package() {
-    bsdtar -O -xf "$srcdir/NuggetVPN_${_srcver}_amd64.deb" data.tar* | bsdtar -C "$pkgdir" -x
+    bsdtar -O -xf "${srcdir}/NuggetVPN-v${pkgver}-linux-amd64.deb" 'data.tar*' | bsdtar -C "${pkgdir}" -xf -
 
-    if [ -f "$pkgdir/usr/bin/${_pkgname}" ]; then
-        chmod 755 "$pkgdir/usr/bin/${_pkgname}"
-    fi
+    chmod 755 "${pkgdir}/usr/bin/NuggetVPN"
+    # The lowercase name earlier versions of this package installed.
+    ln -s NuggetVPN "${pkgdir}/usr/bin/${_pkgname}"
 
-    install -dm755 "$pkgdir/usr/share/applications"
-    cat <<EOF > "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/NuggetVPN.desktop" <<DESKTOP
 [Desktop Entry]
 Type=Application
-Version=1.0.0-beta.2
+Version=1.5
 Name=NuggetVPN
-Comment=${pkgdesc}
-Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 /usr/bin/${_pkgname} %U
-Icon=${_pkgname}
+GenericName=VPN Client
+Comment=${pkgdesc%% (*}
+Exec=NuggetVPN %U
+Icon=NuggetVPN
 Terminal=false
-Categories=Network;VPN;GTK;
+Categories=Network;Security;
+Keywords=vpn;proxy;vless;sing-box;
 StartupNotify=true
-EOF
-    chmod 644 "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+DESKTOP
 }
