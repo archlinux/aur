@@ -1,0 +1,16 @@
+pkgbase = tuxmix
+	pkgdesc = Open-source TotalMix replacement for RME audio interfaces on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ismail-bahloul/TuxMix
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = alsa-lib
+	depends = libgl
+	depends = systemd-libs
+	options = !lto
+	source = https://github.com/ismail-bahloul/TuxMix/archive/v0.1.0/TuxMix-0.1.0.tar.gz
+	sha256sums = 62fc554fe8768295ce141cb344a5ca15cf1e03d925e51841071dc05135457bbc
+
+pkgname = tuxmix
