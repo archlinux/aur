@@ -1,107 +1,52 @@
 diff --git a/gedit/gedit-plugins-engine.c b/gedit/gedit-plugins-engine.c
-index 28e60960c..f428815bb 100644
+index 28e60960c..ee1f0e3ec 100644
 --- a/gedit/gedit-plugins-engine.c
 +++ b/gedit/gedit-plugins-engine.c
-@@ -25,7 +25,12 @@
+@@ -25,7 +25,7 @@
  
  #include <string.h>
  #include <glib/gi18n.h>
-+#ifdef GEDIT_PEAS_USE_GIR2
+-#include <girepository.h>
 +#include <girepository/girepository.h>
-+#else
- #include <girepository.h>
-+#endif
-+
  #include "gedit-debug.h"
  #include "gedit-dirs.h"
  #include "gedit-settings.h"
-@@ -46,6 +51,9 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
+@@ -46,6 +46,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
  {
  	gchar *typelib_dir;
  	GError *error = NULL;
-+	#ifdef GEDIT_PEAS_USE_GIR2
 +	GIRepository *repo = NULL;
-+	#endif
  
  	gedit_debug (DEBUG_PLUGINS);
  
-@@ -57,9 +65,17 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
- 	typelib_dir = g_build_filename (gedit_dirs_get_gedit_lib_dir (),
+@@ -58,8 +59,9 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
  	                                "girepository-1.0",
  	                                NULL);
-+	#ifdef GEDIT_PEAS_USE_GIR2
+ 
+-	if (!g_irepository_require_private (g_irepository_get_default (),
+-	                                    typelib_dir, "Gedit", "3.0", 0, &error))
 +	repo = gi_repository_dup_default();
 +	gi_repository_prepend_search_path(repo, typelib_dir);
-+	#endif
- 
-+	#ifdef GEDIT_PEAS_USE_GIR2
 +	if (!gi_repository_require_private (repo, typelib_dir, "Gedit", "3.0", 0, &error))
-+	#else
- 	if (!g_irepository_require_private (g_irepository_get_default (),
- 	                                    typelib_dir, "Gedit", "3.0", 0, &error))
-+	#endif
  	{
  		g_warning ("Could not load Gedit repository: %s", error->message);
  		g_error_free (error);
-@@ -69,16 +84,24 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
+@@ -69,16 +71,14 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
  	g_free (typelib_dir);
  
  	/* This should be moved to libpeas */
-+	#ifdef GEDIT_PEAS_USE_GIR2
+-	if (!g_irepository_require (g_irepository_get_default (),
+-	                            "Peas", "1.0", 0, &error))
 +	if (!gi_repository_require (repo, "Peas", "1.0", 0, &error))
-+	#else
- 	if (!g_irepository_require (g_irepository_get_default (),
- 	                            "Peas", "1.0", 0, &error))
-+	#endif
  	{
  		g_warning ("Could not load Peas repository: %s", error->message);
  		g_error_free (error);
  		error = NULL;
  	}
  
-+	#ifdef GEDIT_PEAS_USE_GIR2
+-	if (!g_irepository_require (g_irepository_get_default (),
+-	                            "PeasGtk", "1.0", 0, &error))
 +	if (!gi_repository_require (repo, "PeasGtk", "1.0", 0, &error))
-+	#else
- 	if (!g_irepository_require (g_irepository_get_default (),
- 	                            "PeasGtk", "1.0", 0, &error))
-+	#endif
  	{
  		g_warning ("Could not load PeasGtk repository: %s", error->message);
  		g_error_free (error);
-diff --git a/meson.build b/meson.build
-index 5d2168285..7bfce058b 100644
---- a/meson.build
-+++ b/meson.build
-@@ -101,6 +101,7 @@ libgd_dep = libgd_subproject.get_variable('libgd_dep')
- 
- # Dependencies
- gio_dep = dependency('gio-2.0', version: '>= 2.76')
-+peas_isgir2 = dependency('libpeas-1.0', version: '>=1.38', required: false).found()
- 
- libgedit_public_deps = [
-   gio_dep,
-@@ -111,9 +112,14 @@ libgedit_public_deps = [
- 
- deps_basic_list = [
-   libgedit_public_deps,
--  dependency('gobject-introspection-1.0'),
- ]
- 
-+if peas_isgir2
-+	deps_basic_list += dependency('girepository-2.0')
-+else
-+	deps_basic_list += dependency('gobject-introspection-1.0')
-+endif
-+
- gspell_dep = dependency('gspell-1', version: '>= 1.0')
- python3 = python.find_installation('python3')
- 
-@@ -132,6 +138,8 @@ else
-   config_h.set10('GEDIT_HAS_HEADERBAR', get_option('headerbar') == 'yes')
- endif
- 
-+config_h.set10('GEDIT_PEAS_USE_GIR2', peas_isgir2)
-+
- configure_file(
-   output: 'config.h',
-   configuration: config_h
