@@ -1,0 +1,15 @@
+pkgbase = pkgds
+	pkgdesc = Real on-disk usage per installed Arch Linux package
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/John-Gee/pkgds
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	source = pkgds-0.1.0.tar.gz::https://github.com/John-Gee/pkgds/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 974b3f89a7dfd6cdd52998cefbad0518e2b45d2838cf0d10ddd046a04b40d2f8
+
+pkgname = pkgds
