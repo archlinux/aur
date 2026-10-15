@@ -6,7 +6,7 @@
 #
 # See docs/knowledgebase/concepts/releases.md for the release workflow.
 pkgname=tower-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Control and visibility for herds of coding agents"
 arch=("aarch64" "x86_64")
@@ -15,11 +15,11 @@ license=("MIT" "Apache-2.0")
 provides=("tower")
 conflicts=("tower" "tower-git")
 
-source_aarch64=("https://github.com/geoffjay/tower/releases/download/v0.1.1/tower-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('86d1e7842e4acd9cab74e91c544286b00e8f0ab0bcf054f6aeda00f00fbaedd5')
+source_aarch64=("https://github.com/geoffjay/tower/releases/download/v0.2.0/tower-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('5a2b14998ffbb56b461ebb10e42fbac57921aa28a32eb463d500f0e874ed614d')
 
-source_x86_64=("https://github.com/geoffjay/tower/releases/download/v0.1.1/tower-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('de5440bff6213e4ed613f5d1d12c5579bca9ac503e2caff8a6f207b9b8e3a17f')
+source_x86_64=("https://github.com/geoffjay/tower/releases/download/v0.2.0/tower-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('e81fed76993b9ed9fa2fd07e31832038c1593398da6f18cf1b516e726f017821')
 
 package() {
     install -Dm755 "tower" "${pkgdir}/usr/bin/tower"
