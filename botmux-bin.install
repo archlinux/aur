@@ -1,0 +1,10 @@
+post_install() {
+  echo ':: botmux installed to /usr/bin/botmux (managed by pacman).'
+  echo ':: Run "botmux setup" as your normal user to configure it; state lives in ~/.botmux.'
+  echo ':: Do NOT use "botmux upgrade" or the curl install.sh: they install a second copy'
+  echo '::   into ~/.botmux/bin and edit your shell startup files. Upgrade via pacman/AUR instead.'
+}
+
+post_upgrade() {
+  echo ':: botmux upgraded. Run "botmux restart" (as your user) to apply it to a running daemon.'
+}
