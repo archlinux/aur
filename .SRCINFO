@@ -1,0 +1,15 @@
+pkgbase = munin-libvirt-plugins
+	pkgdesc = Munin plugins to monitor virtual machines managed via libvirt
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/agx/munin-libvirt-plugins
+	arch = any
+	license = GPL-2.0-only
+	depends = munin-node
+	depends = libvirt-python
+	depends = libxml2
+	depends = python
+	source = git+https://github.com/agx/munin-libvirt-plugins.git#tag=debian/0.0.7-1
+	sha256sums = SKIP
+
+pkgname = munin-libvirt-plugins
