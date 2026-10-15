@@ -4,8 +4,8 @@
 
 _pkgname=kglobalacceld
 pkgname="${_pkgname}"-ptt-fix
-pkgver=6.7.5
-_dirver="${pkgver%.*}"
+pkgver=6.8.0
+_dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality patched with MR !124'
 
@@ -43,9 +43,6 @@ options=(!debug)
 
 prepare() {
   cd "${_pkgname}-${pkgver}" || exit
-
-  # Fix with upstream
-  sed -i 's/m_lastShortcutSequence = normalizedSequence;/m_lastShortcutSequence = tempSequence;/' ../124.diff
 
   patch -Np1 -i ../124.diff
 }
