@@ -11,7 +11,6 @@ makedepends=(
     'dotnet-sdk-bin'
 )
 depends=(
-    'zlib-ng-compat'
     'hicolor-icon-theme'
     'libstdc++'
 )
