@@ -2,7 +2,7 @@
 
 _name=vercel-internal-core
 pkgname=python-$_name
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Shared internal runtime for Vercel Python packages.'
 arch=('any')
@@ -14,18 +14,16 @@ depends=('python'
          'python-anyio')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel'
-             'git')
+             'python-installer')
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-httpx'
               'python-hypothesis')
-source=("$_name::git+$_repo.git#tag=$_name-v$pkgver")
-sha256sums=('c88958e62fdd71617be1b5dfb348b00d385cb4c85a051b72808ffd632f305cf8')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
+sha256sums=('e0cb857873741a796687aa36876f7e145ef91d196c66ff61b8cf42757c400420')
 
 build() {
-  cd "$srcdir"/$_name/src/$_name
+  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
   python -m build --wheel --no-isolation
 }
 
@@ -34,11 +32,12 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/$_name/src/$_name
+  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/$_name/src/$_name
+  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
