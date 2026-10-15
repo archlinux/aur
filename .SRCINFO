@@ -1,0 +1,29 @@
+pkgbase = aurora-music
+	pkgdesc = 本地音乐播放器，基于 Tauri 2 + Rust + React
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/johnsmith8736/aurora-music
+	install = aurora-music.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = cairo
+	depends = dbus
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !lto
+	source = aurora-music::git+https://github.com/johnsmith8736/aurora-music.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = aurora-music

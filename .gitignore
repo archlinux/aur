@@ -1,0 +1,9 @@
+# makepkg 的工作产物，不应入库
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# VCS 源的克隆缓存（makepkg 的 SRCDEST，默认落在 PKGBUILD 同目录）
+aurora-music/
