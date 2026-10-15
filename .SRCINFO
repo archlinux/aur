@@ -1,0 +1,21 @@
+pkgbase = python-ten-vad-bin
+	pkgdesc = TEN VAD: low-latency, lightweight voice activity detector (Python bindings, prebuilt library)
+	pkgver = 1.0.6.9
+	pkgrel = 1
+	url = https://github.com/TEN-framework/ten-vad
+	arch = x86_64
+	license = LicenseRef-TEN-VAD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = libc++
+	provides = python-ten-vad
+	conflicts = python-ten-vad
+	options = !strip
+	options = !debug
+	source = https://files.pythonhosted.org/packages/source/t/ten_vad/ten_vad-1.0.6.9.tar.gz
+	sha256sums = 0c80936314b75bbcc3c478ad45540fcd6a86b7de87147ff481faa1c9beee191e
+
+pkgname = python-ten-vad-bin
