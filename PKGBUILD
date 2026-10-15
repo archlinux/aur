@@ -4,7 +4,7 @@ pkgname="${_pkgname}-bin"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 # renovate: datasource=github-releases depName=zync-sh/zync
-pkgver=2.34.1
+pkgver=2.35.1
 pkgrel=1
 pkgdesc='Open-source SSH client for developers & DevOps with SFTP, tunneling, and a modern terminal.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "https://github.com/zync-sh/zync/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
   https://github.com/zync-sh/zync/blob/main/LICENSE
 )
-sha256sums=('452d6e16c4855f0e7e9a6d952bf9bebbbe498d0a0cbd4e01c7c2af0f0ae9a951'
+sha256sums=('57d7b9c07df3c4d993ebfa3e0579af69b993db553fd5d1e241e7737c371247ee'
             'f0d43dfea4c354d4c46f8380d7deb3d065701ad335c70fc7366a1c971ce32c60')
 
 package() {
