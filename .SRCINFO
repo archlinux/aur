@@ -1,6 +1,6 @@
 pkgbase = seraph-git
 	pkgdesc = A lightweight Qt6/QML file manager for Hyprland and niri
-	pkgver = r356.g7c7f139
+	pkgver = r367.g06952ec
 	pkgrel = 1
 	url = https://github.com/raphamzn/seraph
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = seraph-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
+	makedepends = qt6-tools
 	depends = glib2
 	depends = kwindowsystem
 	depends = qt6-base
@@ -25,7 +26,7 @@ pkgbase = seraph-git
 	optdepends = poppler: PDF thumbnails, previews, and metadata (via pdftoppm/pdfinfo)
 	optdepends = perl-image-exiftool: EXIF metadata for images (via exiftool)
 	optdepends = udisks2: mount/unmount devices from sidebar
-	provides = seraph=r356.g7c7f139
+	provides = seraph=r367.g06952ec
 	conflicts = seraph
 	source = seraph-git::git+https://github.com/raphamzn/seraph.git
 	source = quill-icons::git+https://github.com/soyeb-jim285/quill-icons.git
