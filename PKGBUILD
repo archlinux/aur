@@ -1,7 +1,7 @@
 # Maintainer: Christian Kühn (damachin3 at proton dot me)
 _pkgbase=coolerdash
 pkgname=${_pkgbase}-git
-pkgver=3.3.5.r0.g8605fee
+pkgver=3.3.6.r0.g17b19b8
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -14,7 +14,7 @@ depends=('cairo' 'coolercontrold' 'curl' 'fontconfig' 'gdk-pixbuf2' 'glibc' 'jan
 makedepends=('git')
 backup=('var/lib/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=8605feea48a1898515f13c22aa78069d6bbbf5f1
+_commit=17b19b8eec5d6a9e001ffb03adf48ca73ac74cf2
 source=("${_pkgbase}::git+https://github.com/damachine/${_pkgbase}.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
