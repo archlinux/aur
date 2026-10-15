@@ -1,0 +1,5 @@
+post_install() {
+	echo "tmpcleaner: the timer is not enabled automatically."
+	echo "  Preview first: sudo tmpcleaner --dry-run"
+	echo "  Then enable:   sudo systemctl enable --now tmpcleaner.timer"
+}
