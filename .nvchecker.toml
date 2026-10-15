@@ -1,0 +1,5 @@
+[termo-bin]
+source = "github"
+github = "nicoriff/termo-releases"
+use_latest_release = true
+prefix = "v"
