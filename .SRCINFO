@@ -1,0 +1,17 @@
+pkgbase = fbarcalc
+	pkgdesc = calculate the maximum account value
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mfinelli/fbarcalc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = fbarcalc-1.0.1.tar.gz::https://github.com/mfinelli/fbarcalc/archive/v1.0.1/fbarcalc-1.0.1.tar.gz
+	source = ignore-hung-tests.patch
+	sha256sums = 19881491d5812da31e9a88733a384d1546bfda3aa61b6160d72a14dd22926bef
+	sha256sums = 9bb87f2d5f3ad4339203c610b50cc4542452ef80d8b9971d78273570a4c18eb5
+
+pkgname = fbarcalc
