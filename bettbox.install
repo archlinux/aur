@@ -1,0 +1,15 @@
+post_install() {
+  # 应用文件 capabilities（不再使用 setuid 提权；pacman 不保留包内 xattr，
+  # 故安装/升级后通过本钩子重新 setcap，setcap 由 libcap 提供）：
+  #   cap_net_admin         TUN
+  #   cap_net_bind_service  特权端口
+  #   cap_net_raw           raw socket
+  CORE_PATH="/usr/share/Bettbox/BettboxCore"
+  if [ -f "$CORE_PATH" ]; then
+    /usr/bin/setcap 'cap_net_admin,cap_net_bind_service,cap_net_raw=+ep' "$CORE_PATH" && sync
+  fi
+}
+
+post_upgrade() {
+  post_install "$1"
+}

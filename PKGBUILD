@@ -11,11 +11,17 @@ depends=(
   'libayatana-appindicator'
   'libkeybinder3'
 )
+optdepends=('polkit: TUN 模式授权（配合 polkit 规则免密调用 resolvectl）')
 options=('!strip' '!debug')
-source=("restart-bettbox.hook")
+install=bettbox.install
+source=("restart-bettbox.hook"
+        "99-bettbox.rules"
+        "bettbox.install")
 source_x86_64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-amd64.deb")
 source_aarch64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-arm64.deb")
-sha256sums=('9d8b0a54499c9325ed64d987184a229af75c34600ca28afd016dff43ebb53cd0')
+sha256sums=('9d8b0a54499c9325ed64d987184a229af75c34600ca28afd016dff43ebb53cd0'
+            'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
+            'ba5165cd9c2fa422507323c1942bea73c001613fb5b4ffeb0d41c5c451709810')
 sha256sums_x86_64=('92744ea0ce54529a32bc694830e5751620f28c003613ffbb70e3a95489fb718a')
 sha256sums_aarch64=('e01302a552660f721c217bd75dc560addd45dc5a1a09b0939df19e7dcdda4aed')
 
@@ -30,10 +36,8 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /usr/share/Bettbox/Bettbox "${pkgdir}/usr/bin/Bettbox"
 
-  # 桌面快捷方式（添加 StartupWMClass 修复窗口图标）
+  # 桌面快捷方式（v1.19.5 起上游 desktop 已自带 StartupWMClass）
   install -Dm644 "${srcdir}/usr/share/applications/Bettbox.desktop" \
-    "${pkgdir}/usr/share/applications/Bettbox.desktop"
-  sed -i '/^StartupNotify=true/a StartupWMClass=com.appshub.bettbox' \
     "${pkgdir}/usr/share/applications/Bettbox.desktop"
 
   # 图标（确保尺寸正确）
@@ -44,4 +48,12 @@ package() {
 
   # pacman hook: 升级后自动重启 bettbox
   install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
+
+  # polkit 规则作为包内容交付：从 v1.19.5 起 TUN 的 DNS 授权依赖它。
+  # 不能沿用上游 deb 的做法（postinstall 向 rules.d 写文件）——该文件不进包清单，
+  # 属"无主"文件，pacman -Qkk 等校验不可见，卸载/校验失败时还会残留一条免密规则。
+  # 上游已提交 PR https://github.com/appshubcc/Bettbox/pull/539 改为随包交付规则（连带收窄
+  # 放行范围），合入后将从 deb 内直接取出该规则，本文件可移除
+  install -Dm644 "${srcdir}/99-bettbox.rules" \
+    "${pkgdir}/usr/share/polkit-1/rules.d/99-bettbox.rules"
 }
