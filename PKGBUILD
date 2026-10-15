@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=('java-runtime>=17' 'mpv')
 makedepends=('git' 'java-environment>=17' 'patchelf' 'pkgconf')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}" "nuvio-desktop-bin" "nuvio")
 
 # Maps pkgver to git tag format (e.g., 0.1.12_alpha -> 0.1.12-alpha)
 _git_tag="${pkgver//_/-}"

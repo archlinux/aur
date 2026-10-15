@@ -13,6 +13,8 @@ pkgbase = nuvio-desktop
 	depends = mpv
 	provides = nuvio-desktop
 	conflicts = nuvio-desktop
+	conflicts = nuvio-desktop-bin
+	conflicts = nuvio
 	source = nuvio-desktop::git+https://github.com/NuvioMedia/NuvioDesktop.git#tag=0.1.30-alpha
 	sha256sums = SKIP
 
