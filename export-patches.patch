@@ -1,0 +1,1300 @@
+diff --git a/Telegram/SourceFiles/export/export_api_wrap.cpp b/Telegram/SourceFiles/export/export_api_wrap.cpp
+index b004843..89f123a 100644
+--- a/Telegram/SourceFiles/export/export_api_wrap.cpp
++++ b/Telegram/SourceFiles/export/export_api_wrap.cpp
+@@ -11,13 +11,26 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #include "export/data/export_data_types.h"
+ #include "export/output/export_output_result.h"
+ #include "export/output/export_output_file.h"
++#include "export/output/export_output_stats.h"
+ #include "mtproto/mtproto_response.h"
++#include "mtproto/facade.h"
+ #include "base/bytes.h"
+ #include "base/options.h"
+ #include "base/random.h"
++#include <QtCore/QDir>
++#include <QtCore/QFile>
++#include <QtCore/QFileInfo>
++#include <QtCore/QJsonArray>
++#include <QtCore/QJsonDocument>
++#include <QtCore/QJsonObject>
++#include <QtCore/QTimer>
+ #include <set>
+ #include <deque>
+ 
++#ifdef Q_OS_UNIX
++#include <unistd.h>
++#endif // Q_OS_UNIX
++
+ namespace Export {
+ namespace {
+ 
+@@ -25,6 +38,18 @@ constexpr auto kUserpicsSliceLimit = 100;
+ constexpr auto kFileChunkSize = 128 * 1024;
+ constexpr auto kFileRequestsCount = 2;
+ //constexpr auto kFileNextRequestDelay = crl::time(20);
++
++// A file part that keeps failing with temporary errors (5xx, timeouts)
++// or doesn't answer at all is given up instead of being retried forever.
++constexpr auto kFileTemporaryErrorsLimit = 5;
++constexpr auto kFileRetryDelayMax = 16 * crl::time(1000);
++constexpr auto kFilePartTimeout = 45 * crl::time(1000);
++constexpr auto kFileStallsLimit = 2;
++constexpr auto kFileReferenceRefreshesLimit = 3;
++
++// Same shift as AdjustMigrateMessageIds applies in export_data_types.cpp.
++constexpr auto kMigratedMessagesIdShift = -1'000'000'000;
++
+ constexpr auto kChatsSliceLimit = 100;
+ constexpr auto kMessagesSliceLimit = 100;
+ constexpr auto kTopPeerSliceLimit = 100;
+@@ -34,6 +59,10 @@ constexpr auto kMaxEmojiPerRequest = 100;
+ constexpr auto kStoriesSliceLimit = 100;
+ constexpr auto kProfileMusicSliceLimit = 100;
+ 
++[[nodiscard]] QString MediaIndexName() {
++	return u".media_index"_q;
++}
++
+ struct LocationKey {
+ 	uint64 type;
+ 	uint64 id;
+@@ -426,6 +455,54 @@ private:
+ 
+ };
+ 
++// Every export writes an index of the files it got into its own folder.
++// A new export reads the indexes of the exports next to it and takes
++// a file from the disk instead of downloading it again.
++//
++// Exports made without that index (by the official client) are read from
++// their result.json: there files are known only by the message they belong
++// to, so they are matched by chat, message id and file role.
++class ApiWrap::MediaReuse {
++public:
++	using Location = Data::FileLocation;
++
++	struct Previous {
++		QString path;
++		int64 size = 0;
++	};
++	struct OriginKey {
++		uint64 peer = 0;
++		int64 messageId = 0;
++		bool thumb = false;
++
++		friend inline auto operator<=>(
++			const OriginKey &,
++			const OriginKey &) = default;
++	};
++
++	MediaReuse(const QString &folder, bool usePrevious);
++
++	[[nodiscard]] const Previous *find(const Location &location) const;
++	[[nodiscard]] const Previous *find(const OriginKey &key) const;
++	void save(
++		const Location &location,
++		const QString &relativePath,
++		int64 size);
++
++private:
++	void loadPrevious();
++	void loadIndex(const QString &folder, const QString &indexPath);
++	void loadLegacyExport(const QString &folder);
++	[[nodiscard]] bool openIndex();
++
++	QString _folder;
++	QFile _index;
++	bool _indexFailed = false;
++	std::map<LocationKey, Previous> _previous;
++	std::map<OriginKey, Previous> _previousByOrigin;
++
++};
++
+ struct ApiWrap::StartProcess {
+ 	FnMut<void(StartInfo)> done;
+ 
+@@ -515,6 +592,12 @@ struct ApiWrap::FileProcess {
+ 	};
+ 	std::deque<Request> requests;
+ 	mtpRequestId requestId = 0;
++
++	// Reset on every received part.
++	int temporaryErrors = 0;
++	int stalls = 0;
++	int referenceRefreshes = 0;
++	uint64 retrySerial = 0;
+ };
+ 
+ struct ApiWrap::FileProgress {
+@@ -705,6 +788,219 @@ std::optional<QString> ApiWrap::LoadedFileCache::find(
+ 	return std::nullopt;
+ }
+ 
++ApiWrap::MediaReuse::MediaReuse(const QString &folder, bool usePrevious)
++: _folder(folder)
++, _index(folder + MediaIndexName()) {
++	if (usePrevious) {
++		loadPrevious();
++	}
++}
++
++void ApiWrap::MediaReuse::loadPrevious() {
++	// The export goes either right into the chosen folder or into
++	// a DataExport_* / ChatExport_* subfolder of it, so look at the
++	// parent folder and at all the folders next to ours.
++	const auto current = QDir(_folder).absolutePath();
++	auto parent = QDir(_folder);
++	if (!parent.cdUp()) {
++		return;
++	}
++	auto candidates = std::vector<QFileInfo>();
++	const auto check = [&](const QString &folder) {
++		if (QDir(folder).absolutePath() == current) {
++			return;
++		}
++		const auto index = QFileInfo(folder + '/' + MediaIndexName());
++		const auto legacy = QFileInfo(folder + u"/result.json"_q);
++		if (index.isFile()) {
++			candidates.push_back(index);
++		} else if (legacy.isFile()) {
++			candidates.push_back(legacy);
++		}
++	};
++	check(parent.absolutePath());
++	const auto folders = parent.entryInfoList(
++		QDir::Dirs | QDir::NoDotAndDotDot);
++	for (const auto &folder : folders) {
++		check(folder.absoluteFilePath());
++	}
++
++	// The newest export wins when several have the same file.
++	ranges::sort(candidates, [](const QFileInfo &a, const QFileInfo &b) {
++		return a.lastModified() > b.lastModified();
++	});
++	for (const auto &info : candidates) {
++		const auto folder = info.absolutePath() + '/';
++		if (info.fileName() == MediaIndexName()) {
++			loadIndex(folder, info.absoluteFilePath());
++		} else {
++			loadLegacyExport(folder);
++		}
++	}
++	LOG(("Export Info: %1 files by location and %2 by message known "
++		"from %3 previous exports."
++		).arg(_previous.size()
++		).arg(_previousByOrigin.size()
++		).arg(candidates.size()));
++}
++
++void ApiWrap::MediaReuse::loadLegacyExport(const QString &folder) {
++	auto file = QFile(folder + u"result.json"_q);
++	if (!file.open(QIODevice::ReadOnly)) {
++		return;
++	}
++	auto error = QJsonParseError();
++	const auto document = QJsonDocument::fromJson(file.readAll(), &error);
++	if (error.error != QJsonParseError::NoError || !document.isObject()) {
++		LOG(("Export Error: Could not parse '%1': %2."
++			).arg(file.fileName()
++			).arg(error.errorString()));
++		return;
++	}
++	const auto peerByType = [](const QString &type, int64 bareId) {
++		const auto bare = BareId(bareId);
++		if (type == u"private_group"_q) {
++			return peerFromChat(ChatId(bare));
++		} else if (type.endsWith(u"_supergroup"_q)
++			|| type.endsWith(u"_channel"_q)) {
++			return peerFromChannel(ChannelId(bare));
++		}
++		return peerFromUser(UserId(bare));
++	};
++	const auto parseChat = [&](const QJsonObject &chat) {
++		const auto peer = peerByType(
++			chat.value(u"type"_q).toString(),
++			chat.value(u"id"_q).toInteger());
++		const auto messages = chat.value(u"messages"_q).toArray();
++		for (const auto &value : messages) {
++			const auto message = value.toObject();
++			const auto id = message.value(u"id"_q).toInteger();
++			const auto add = [&](
++					const QString &pathKey,
++					const QString &sizeKey,
++					bool thumb) {
++				const auto path = message.value(pathKey).toString();
++
++				// Skipped files have a "(File not included...)" text.
++				if (path.isEmpty() || path.startsWith('(')) {
++					return;
++				}
++				_previousByOrigin.emplace(
++					OriginKey{ peer.value, id, thumb },
++					Previous{
++						folder + path,
++						message.value(sizeKey).toInteger(),
++					});
++			};
++			add(u"photo"_q, u"photo_file_size"_q, false);
++			add(u"file"_q, u"file_size"_q, false);
++			add(u"thumbnail"_q, u"thumbnail_file_size"_q, true);
++		}
++	};
++	const auto root = document.object();
++	if (root.contains(u"messages"_q)) {
++		// A single chat export.
++		parseChat(root);
++	}
++	for (const auto &key : { u"chats"_q, u"left_chats"_q }) {
++		const auto list = root.value(key).toObject().value(u"list"_q);
++		for (const auto &chat : list.toArray()) {
++			parseChat(chat.toObject());
++		}
++	}
++}
++
++void ApiWrap::MediaReuse::loadIndex(
++		const QString &folder,
++		const QString &indexPath) {
++	auto file = QFile(indexPath);
++	if (!file.open(QIODevice::ReadOnly)) {
++		return;
++	}
++	while (!file.atEnd()) {
++		auto bytes = file.readLine();
++		if (bytes.endsWith('\n')) {
++			bytes.chop(1);
++		}
++		if (bytes.isEmpty() || bytes.startsWith('#')) {
++			continue;
++		}
++		const auto parts = QString::fromUtf8(bytes).split('\t');
++		if (parts.size() != 4) {
++			continue;
++		}
++		auto typeOk = false, idOk = false, sizeOk = false;
++		const auto key = LocationKey{
++			parts[0].toULongLong(&typeOk, 16),
++			parts[1].toULongLong(&idOk, 16),
++		};
++		const auto size = parts[2].toLongLong(&sizeOk);
++		if (!typeOk || !idOk || !sizeOk || parts[3].isEmpty()) {
++			continue;
++		}
++		_previous.emplace(key, Previous{ folder + parts[3], size });
++	}
++}
++
++auto ApiWrap::MediaReuse::find(const Location &location) const
++-> const Previous* {
++	if (!location) {
++		return nullptr;
++	}
++	const auto i = _previous.find(ComputeLocationKey(location));
++	return (i != end(_previous)) ? &i->second : nullptr;
++}
++
++auto ApiWrap::MediaReuse::find(const OriginKey &key) const
++-> const Previous* {
++	const auto i = _previousByOrigin.find(key);
++	return (i != end(_previousByOrigin)) ? &i->second : nullptr;
++}
++
++bool ApiWrap::MediaReuse::openIndex() {
++	if (_index.isOpen()) {
++		return true;
++	} else if (_indexFailed) {
++		return false;
++	}
++	const auto exists = _index.exists();
++	QDir().mkpath(_folder);
++	if (!_index.open(QIODevice::Append)) {
++		LOG(("Export Error: Could not open media index '%1'."
++			).arg(_index.fileName()));
++		_indexFailed = true;
++		return false;
++	}
++	if (!exists) {
++		_index.write("# Telegram Desktop export media index v1\n"
++			"# location type, location id, size, relative path\n");
++	}
++	return true;
++}
++
++void ApiWrap::MediaReuse::save(
++		const Location &location,
++		const QString &relativePath,
++		int64 size) {
++	if (!location
++		|| relativePath.isEmpty()
++		|| relativePath.contains('\n')
++		|| relativePath.contains('\t')
++		|| !openIndex()) {
++		return;
++	}
++	const auto key = ComputeLocationKey(location);
++	const auto line = QString::number(key.type, 16)
++		+ '\t' + QString::number(key.id, 16)
++		+ '\t' + QString::number(size)
++		+ '\t' + relativePath
++		+ '\n';
++
++	// Written right away, so that an interrupted export is reusable too.
++	_index.write(line.toUtf8());
++	_index.flush();
++}
++
+ ApiWrap::FileProcess::FileProcess(const QString &path, Output::Stats *stats)
+ : file(path, stats) {
+ }
+@@ -750,31 +1046,17 @@ auto ApiWrap::fileRequest(const Data::FileLocation &location, int64 offset) {
+ 			MTP_int(kFileChunkSize))
+ 	)).fail([=](const MTP::Error &result) {
+ 		_fileProcess->requestId = 0;
+-		if (result.type() == u"TAKEOUT_FILE_EMPTY"_q
+-			&& _otherDataProcess != nullptr) {
+-			filePartDone(
+-				0,
+-				MTP_upload_file(
+-					MTP_storage_filePartial(),
+-					MTP_int(0),
+-					MTP_bytes()));
+-		} else if (result.type() == u"LOCATION_INVALID"_q
+-			|| result.type() == u"VERSION_INVALID"_q
+-			|| result.type() == u"LOCATION_NOT_AVAILABLE"_q) {
+-			filePartUnavailable();
+-		} else if (result.code() == 400
+-			&& result.type().startsWith(u"FILE_REFERENCE_"_q)) {
+-			filePartRefreshReference(offset);
+-		} else {
+-			error(std::move(result));
+-		}
+-	}).toDC(MTP::ShiftDcId(location.dcId, MTP::kExportMediaDcShift)));
++		filePartFail(offset, result);
++	}).handleAllErrors(
++	).toDC(MTP::ShiftDcId(location.dcId, MTP::kExportMediaDcShift)));
+ }
+ 
+ ApiWrap::ApiWrap(
+ 	base::weak_qptr<MTP::Instance> weak,
+ 	Fn<void(FnMut<void()>)> runner)
+-: _mtp(weak, std::move(runner))
++: _mtp(weak, runner)
++, _instance(weak)
++, _runner(std::move(runner))
+ , _fileCache(std::make_unique<LoadedFileCache>(kLocationCacheSize)) {
+ }
+ 
+@@ -795,6 +1077,9 @@ void ApiWrap::startExport(
+ 
+ 	_settings = std::make_unique<Settings>(settings);
+ 	_stats = stats;
++	_mediaReuse = std::make_unique<MediaReuse>(
++		_settings->path,
++		_settings->reusePreviousMedia);
+ 	_startProcess = std::make_unique<StartProcess>();
+ 	_startProcess->done = std::move(done);
+ 
+@@ -1052,8 +1337,14 @@ void ApiWrap::requestDialogsList(
+ 
+ void ApiWrap::startMainSession(FnMut<void()> done) {
+ 	using Type = Settings::Type;
+-	const auto sizeLimit = _settings->media.sizeLimit;
+-	const auto hasFiles = ((_settings->media.types != 0) && (sizeLimit > 0))
++
++	// The takeout limit must let through the largest per-type limit,
++	// each type is filtered by its own limit in processFileLoad.
++	const auto mediaSizeLimit = _settings->media.maxSizeLimit();
++	const auto sizeLimit = std::max(
++		mediaSizeLimit,
++		_settings->media.sizeLimit);
++	const auto hasFiles = (mediaSizeLimit > 0)
+ 		|| (_settings->types & Type::Userpics)
+ 		|| (_settings->types & Type::Stories);
+ 
+@@ -1885,8 +2176,11 @@ void ApiWrap::skipFile(uint64 randomId) {
+ 	}
+ 	LOG(("Export Info: File skipped."));
+ 	Assert(!_fileProcess->requests.empty());
+-	Assert(_fileProcess->requestId != 0);
+-	_mtp.request(base::take(_fileProcess->requestId)).cancel();
++
++	// No request is in flight while a retry of a failed part is pending.
++	if (_fileProcess->requestId) {
++		_mtp.request(base::take(_fileProcess->requestId)).cancel();
++	}
+ 	base::take(_fileProcess)->done(QString());
+ }
+ 
+@@ -3286,11 +3580,14 @@ bool ApiWrap::processFileLoad(
+ 	} else if ((_settings->media.types & policy.type) != policy.type) {
+ 		file.skipReason = SkipReason::FileType;
+ 		return true;
+-	} else if (policy.controllingSize > _settings->media.sizeLimit) {
++	} else if (policy.controllingSize
++		> _settings->media.sizeLimitFor(policy.type)) {
+ 		file.skipReason = SkipReason::FileSize;
+ 		return true;
+ 	} else if (writePreloadedFile(file, origin)) {
+ 		return !file.relativePath.isEmpty();
++	} else if (reusePreviousFile(file, policy.message)) {
++		return true;
+ 	}
+ 	loadFile(file, origin, std::move(progress), std::move(done));
+ 	return false;
+@@ -3335,10 +3632,12 @@ bool ApiWrap::processFileLoad(
+ 	} else if (!story && (_settings->media.types & type) != type) {
+ 		file.skipReason = SkipReason::FileType;
+ 		return true;
+-	} else if (!story && fullSize > _settings->media.sizeLimit) {
++	} else if (!story && fullSize > _settings->media.sizeLimitFor(type)) {
+ 		// Don't load thumbs for large files that we skip.
+ 		file.skipReason = SkipReason::FileSize;
+ 		return true;
++	} else if (reusePreviousFile(file, message)) {
++		return true;
+ 	}
+ 	loadFile(file, origin, std::move(progress), std::move(done));
+ 	return false;
+@@ -3367,6 +3666,82 @@ bool ApiWrap::writePreloadedFile(
+ 	return false;
+ }
+ 
++bool ApiWrap::reusePreviousFile(
++		Data::File &file,
++		const Data::Message *message) {
++	Expects(_settings != nullptr);
++	Expects(_mediaReuse != nullptr);
++
++	auto previous = _mediaReuse->find(file.location);
++	const auto byLocation = (previous != nullptr);
++	if (!previous
++		&& message
++		&& _chatProcess
++		&& _chatProcess->localSplitIndex < _chatProcess->info.splits.size()) {
++		// Old exports without an index know files only by message.
++		const auto thumb = (&file == &message->thumb().file);
++		if (thumb || &file == &message->file()) {
++			const auto &info = _chatProcess->info;
++			const auto split = info.splits[_chatProcess->localSplitIndex];
++
++			// Messages of a group migrated to a supergroup get their ids
++			// shifted the same way in the written export.
++			const auto shift = (split < 0) ? kMigratedMessagesIdShift : 0;
++			previous = _mediaReuse->find(MediaReuse::OriginKey{
++				.peer = info.peerId.value,
++				.messageId = int64(message->id) + shift,
++				.thumb = thumb,
++			});
++		}
++	}
++	if (!previous) {
++		return false;
++	}
++	const auto info = QFileInfo(previous->path);
++	const auto size = info.size();
++	if (!info.isFile()
++		|| (previous->size > 0 && size != previous->size)
++		|| (file.size > 0 && size != file.size)
++		|| (!byLocation && file.size <= 0)) {
++		// A match by message alone is trusted only with a known size.
++		return false;
++	}
++	const auto relativePath = Output::File::PrepareRelativePath(
++		_settings->path,
++		file.suggestedPath);
++	const auto target = _settings->path + relativePath;
++	QDir().mkpath(QFileInfo(target).absolutePath());
++
++	// A hard link costs no space and survives removal of the old export,
++	// a copy is the fallback for another disk or a file system without
++	// hard links.
++	auto linked = false;
++#ifdef Q_OS_UNIX
++	linked = !::link(
++		QFile::encodeName(previous->path).constData(),
++		QFile::encodeName(target).constData());
++#endif // Q_OS_UNIX
++	if (!linked && !QFile::copy(previous->path, target)) {
++		LOG(("Export Error: Could not reuse '%1' as '%2'."
++			).arg(previous->path
++			).arg(target));
++		QFile::remove(target);
++		return false;
++	}
++	file.relativePath = relativePath;
++	_fileCache->save(file.location, relativePath);
++	_mediaReuse->save(file.location, relativePath, size);
++	if (_stats) {
++		_stats->incrementFiles();
++		for (auto left = size; left > 0;) {
++			const auto part = std::min(left, int64(1024 * 1024 * 1024));
++			_stats->incrementBytes(int(part));
++			left -= part;
++		}
++	}
++	return true;
++}
++
+ void ApiWrap::loadFile(
+ 		const Data::File &file,
+ 		const Data::FileOrigin &origin,
+@@ -3426,14 +3801,8 @@ void ApiWrap::loadFilePart() {
+ 
+ 	const auto offset = _fileProcess->offset;
+ 	_fileProcess->requests.push_back({ offset });
+-	_fileProcess->requestId = fileRequest(
+-		_fileProcess->location,
+-		_fileProcess->offset
+-	).done([=](const MTPupload_File &result) {
+-		_fileProcess->requestId = 0;
+-		filePartDone(offset, result);
+-	}).send();
+ 	_fileProcess->offset += kFileChunkSize;
++	filePartRequest(offset);
+ 
+ 	if (_fileProcess->size > 0
+ 		&& _fileProcess->requests.size() < kFileRequestsCount) {
+@@ -3449,18 +3818,196 @@ void ApiWrap::loadFilePart() {
+ 	}
+ }
+ 
++void ApiWrap::filePartRequest(int64 offset) {
++	Expects(_fileProcess != nullptr);
++	Expects(_fileProcess->requestId == 0);
++
++	_fileProcess->requestId = fileRequest(
++		_fileProcess->location,
++		offset
++	).done([=](const MTPupload_File &result) {
++		_fileProcess->requestId = 0;
++		filePartDone(offset, result);
++	}).send();
++	filePartWatchStall(offset);
++}
++
++void ApiWrap::filePartFail(int64 offset, const MTP::Error &result) {
++	Expects(_fileProcess != nullptr);
++	Expects(_fileProcess->requestId == 0);
++
++	const auto &type = result.type();
++	if (type == u"TAKEOUT_FILE_EMPTY"_q && _otherDataProcess != nullptr) {
++		filePartDone(
++			0,
++			MTP_upload_file(
++				MTP_storage_filePartial(),
++				MTP_int(0),
++				MTP_bytes()));
++	} else if (type == u"LOCATION_INVALID"_q
++		|| type == u"VERSION_INVALID"_q
++		|| type == u"LOCATION_NOT_AVAILABLE"_q) {
++		filePartUnavailable();
++	} else if (result.code() == 400
++		&& type.startsWith(u"FILE_REFERENCE_"_q)) {
++		filePartRefreshReference(offset);
++	} else if (MTP::IsFloodError(result)) {
++		// Flood waits are expected during a long export, honor them.
++		const auto seconds = type.mid(type.lastIndexOf('_') + 1).toInt();
++		const auto delay = std::max(seconds, 1) * crl::time(1000);
++		LOG(("Export Info: File part flood wait %1s.").arg(seconds));
++		const auto randomId = _fileProcess->randomId;
++		const auto serial = ++_fileProcess->retrySerial;
++		callDelayed(delay, [=] {
++			if (_fileProcess
++				&& _fileProcess->randomId == randomId
++				&& _fileProcess->retrySerial == serial
++				&& !_fileProcess->requestId) {
++				filePartRequest(offset);
++			}
++		});
++	} else if (MTP::IsTemporaryError(result)) {
++		filePartTemporaryFail(
++			offset,
++			QString::number(result.code()) + ' ' + type);
++	} else if (type.startsWith(u"TAKEOUT_"_q)) {
++		// The takeout session itself is broken, the export can't go on.
++		error(result);
++	} else {
++		// Any other error concerns only this file, not the whole export.
++		filePartGiveUp(QString::number(result.code()) + ' ' + type);
++	}
++}
++
++void ApiWrap::filePartTemporaryFail(int64 offset, const QString &reason) {
++	Expects(_fileProcess != nullptr);
++	Expects(_fileProcess->requestId == 0);
++
++	const auto attempt = ++_fileProcess->temporaryErrors;
++	if (attempt > kFileTemporaryErrorsLimit) {
++		filePartGiveUp(u"%1 temporary errors, last: %2"_q
++			.arg(attempt - 1)
++			.arg(reason));
++		return;
++	}
++	const auto delay = std::min(
++		crl::time(1000) << (attempt - 1),
++		kFileRetryDelayMax);
++	LOG(("Export Info: File part failed (%1), retry %2 of %3 in %4ms."
++		).arg(reason
++		).arg(attempt
++		).arg(kFileTemporaryErrorsLimit
++		).arg(delay));
++	const auto randomId = _fileProcess->randomId;
++	const auto serial = ++_fileProcess->retrySerial;
++	callDelayed(delay, [=] {
++		if (_fileProcess
++			&& _fileProcess->randomId == randomId
++			&& _fileProcess->retrySerial == serial
++			&& !_fileProcess->requestId) {
++			filePartRequest(offset);
++		}
++	});
++}
++
++void ApiWrap::filePartWatchStall(int64 offset) {
++	Expects(_fileProcess != nullptr);
++	Expects(_fileProcess->requestId != 0);
++
++	// The MTP layer may keep a request waiting without ever failing it.
++	// The connection state is read on the main thread, where MTP lives.
++	const auto randomId = _fileProcess->randomId;
++	const auto requestId = _fileProcess->requestId;
++	crl::on_main([=, instance = _instance, runner = _runner] {
++		QTimer::singleShot(int(kFilePartTimeout), [=] {
++			const auto strong = instance.get();
++			const auto online = strong
++				&& (strong->dcstate() == MTP::ConnectedState);
++			runner([=] {
++				filePartStalled(offset, randomId, requestId, online);
++			});
++		});
++	});
++}
++
++void ApiWrap::filePartStalled(
++		int64 offset,
++		uint64 randomId,
++		mtpRequestId requestId,
++		bool online) {
++	if (!_fileProcess
++		|| _fileProcess->randomId != randomId
++		|| _fileProcess->requestId != requestId) {
++		return;
++	}
++	if (!online) {
++		// No connection at all is not a problem of this file: keep the
++		// request, MTP sends it again once the connection is back.
++		LOG(("Export Info: No connection, still waiting for a file part."));
++		filePartWatchStall(offset);
++		return;
++	}
++	_mtp.request(base::take(_fileProcess->requestId)).cancel();
++	if (++_fileProcess->stalls >= kFileStallsLimit) {
++		filePartGiveUp(u"no answer for a file part %1 times in a row"_q
++			.arg(_fileProcess->stalls));
++	} else {
++		LOG(("Export Info: File part got no answer in %1s, retrying."
++			).arg(kFilePartTimeout / 1000));
++		filePartRequest(offset);
++	}
++}
++
++void ApiWrap::filePartGiveUp(const QString &reason) {
++	Expects(_fileProcess != nullptr);
++	Expects(_settings != nullptr);
++
++	LOG(("Export Error: Giving up on file '%1': %2."
++		).arg(_fileProcess->relativePath
++		).arg(reason));
++
++	// Don't leave a truncated file in the export folder.
++	if (!_fileProcess->relativePath.isEmpty()) {
++		QFile::remove(_settings->path + _fileProcess->relativePath);
++	}
++
++	// Make the holes visible in the export itself, not only in the log.
++	auto list = QFile(_settings->path + u"skipped_files.txt"_q);
++	if (list.open(QIODevice::Append)) {
++		list.write((_fileProcess->relativePath
++			+ '\t'
++			+ reason
++			+ '\n').toUtf8());
++	}
++	filePartUnavailable();
++}
++
++void ApiWrap::callDelayed(crl::time delay, Fn<void()> callback) {
++	// ApiWrap lives on a crl queue without an event loop, so the timer
++	// runs on the main thread and the callback goes back to the queue.
++	crl::on_main([=, runner = _runner] {
++		QTimer::singleShot(int(delay), [=] {
++			runner(callback);
++		});
++	});
++}
++
+ void ApiWrap::filePartDone(int64 offset, const MTPupload_File &result) {
+ 	Expects(_fileProcess != nullptr);
+ 	Expects(!_fileProcess->requests.empty());
+ 
++	_fileProcess->temporaryErrors = 0;
++	_fileProcess->stalls = 0;
++	_fileProcess->referenceRefreshes = 0;
+ 	if (result.type() == mtpc_upload_fileCdnRedirect) {
+-		error("Cdn redirect is not supported.");
++		filePartGiveUp(u"CDN redirect is not supported"_q);
+ 		return;
+ 	}
+ 	const auto &data = result.c_upload_file();
+ 	if (data.vbytes().v.isEmpty()) {
+ 		if (_fileProcess->size > 0) {
+-			error("Empty bytes received in file part.");
++			// The server has less data than the file size says.
++			filePartGiveUp(u"empty bytes received in file part"_q);
+ 			return;
+ 		}
+ 		const auto result = _fileProcess->file.writeBlock({});
+@@ -3506,6 +4053,7 @@ void ApiWrap::filePartDone(int64 offset, const MTPupload_File &result) {
+ 	auto process = base::take(_fileProcess);
+ 	const auto relativePath = process->relativePath;
+ 	_fileCache->save(process->location, relativePath);
++	_mediaReuse->save(process->location, relativePath, process->file.size());
+ 	process->done(process->relativePath);
+ }
+ 
+@@ -3525,19 +4073,18 @@ void ApiWrap::filePartRetryReference(
+ 	Expects(_fileProcess->requestId == 0);
+ 
+ 	_fileProcess->location = std::move(location);
+-	_fileProcess->requestId = fileRequest(
+-		_fileProcess->location,
+-		offset
+-	).done([=](const MTPupload_File &result) {
+-		_fileProcess->requestId = 0;
+-		filePartDone(offset, result);
+-	}).send();
++	filePartRequest(offset);
+ }
+ 
+ void ApiWrap::filePartRefreshReference(int64 offset) {
+ 	Expects(_fileProcess != nullptr);
+ 	Expects(_fileProcess->requestId == 0);
+ 
++	// A reference the server keeps rejecting must not loop forever.
++	if (++_fileProcess->referenceRefreshes > kFileReferenceRefreshesLimit) {
++		filePartGiveUp(u"file reference keeps expiring"_q);
++		return;
++	}
+ 	const auto origin = _fileProcess->origin;
+ 	if (origin.storyId) {
+ 		_fileProcess->requestId = mainRequest(MTPstories_GetStoriesByID(
+@@ -3598,7 +4145,7 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
+ 		return;
+ 	}
+ 	if (!origin.messageId) {
+-		error("FILE_REFERENCE error for non-message file.");
++		filePartGiveUp(u"FILE_REFERENCE error for non-message file"_q);
+ 		return;
+ 	}
+ 	if (origin.peer.type() == mtpc_inputPeerChannel
+diff --git a/Telegram/SourceFiles/export/export_api_wrap.h b/Telegram/SourceFiles/export/export_api_wrap.h
+index c82e171..805119c 100644
+--- a/Telegram/SourceFiles/export/export_api_wrap.h
++++ b/Telegram/SourceFiles/export/export_api_wrap.h
+@@ -123,6 +123,7 @@ public:
+ 
+ private:
+ 	class LoadedFileCache;
++	class MediaReuse;
+ 	struct StartProcess;
+ 	struct ContactsProcess;
+ 	struct UserpicsProcess;
+@@ -283,14 +284,28 @@ private:
+ 	bool writePreloadedFile(
+ 		Data::File &file,
+ 		const Data::FileOrigin &origin);
++	bool reusePreviousFile(
++		Data::File &file,
++		const Data::Message *message);
+ 	void loadFile(
+ 		const Data::File &file,
+ 		const Data::FileOrigin &origin,
+ 		Fn<bool(FileProgress)> progress,
+ 		FnMut<void(QString)> done);
+ 	void loadFilePart();
++	void filePartRequest(int64 offset);
+ 	void filePartDone(int64 offset, const MTPupload_File &result);
++	void filePartFail(int64 offset, const MTP::Error &error);
++	void filePartTemporaryFail(int64 offset, const QString &reason);
++	void filePartWatchStall(int64 offset);
++	void filePartStalled(
++		int64 offset,
++		uint64 randomId,
++		mtpRequestId requestId,
++		bool online);
++	void filePartGiveUp(const QString &reason);
+ 	void filePartUnavailable();
++	void callDelayed(crl::time delay, Fn<void()> callback);
+ 	[[nodiscard]] QString filePartMediaFolder() const;
+ 	void filePartRetryReference(
+ 		int64 offset,
+@@ -331,6 +346,8 @@ private:
+ 	void ioError(const Output::Result &result);
+ 
+ 	MTP::ConcurrentSender _mtp;
++	base::weak_qptr<MTP::Instance> _instance;
++	Fn<void(FnMut<void()>)> _runner;
+ 	std::optional<uint64> _takeoutId;
+ 	std::optional<UserId> _selfId;
+ 	Output::Stats *_stats = nullptr;
+@@ -340,6 +357,7 @@ private:
+ 
+ 	std::unique_ptr<StartProcess> _startProcess;
+ 	std::unique_ptr<LoadedFileCache> _fileCache;
++	std::unique_ptr<MediaReuse> _mediaReuse;
+ 	std::unique_ptr<ContactsProcess> _contactsProcess;
+ 	std::unique_ptr<UserpicsProcess> _userpicsProcess;
+ 	std::unique_ptr<StoriesProcess> _storiesProcess;
+diff --git a/Telegram/SourceFiles/export/export_settings.cpp b/Telegram/SourceFiles/export/export_settings.cpp
+index 58f2ab5..24e9939 100644
+--- a/Telegram/SourceFiles/export/export_settings.cpp
++++ b/Telegram/SourceFiles/export/export_settings.cpp
+@@ -22,9 +22,35 @@ bool MediaSettings::validate() const {
+ 	} else if (sizeLimit < 0 || sizeLimit > kMaxFileSize) {
+ 		return false;
+ 	}
++	for (const auto &[type, limit] : sizeLimits) {
++		if ((Types(type) | Type::AllMask) != Type::AllMask
++			|| limit < 0
++			|| limit > kMaxFileSize) {
++			return false;
++		}
++	}
+ 	return true;
+ }
+ 
++int64 MediaSettings::sizeLimitFor(Type type) const {
++	const auto i = sizeLimits.find(type);
++	return (i != end(sizeLimits)) ? i->second : sizeLimit;
++}
++
++void MediaSettings::setSizeLimit(Type type, int64 limit) {
++	sizeLimits[type] = limit;
++}
++
++int64 MediaSettings::maxSizeLimit() const {
++	auto result = int64(0);
++	for (const auto type : kAllTypes) {
++		if (types & type) {
++			result = std::max(result, sizeLimitFor(type));
++		}
++	}
++	return result;
++}
++
+ bool Settings::validate() const {
+ 	using Format = Output::Format;
+ 	const auto MustBeFull = Type::PersonalChats | Type::BotChats;
+@@ -37,7 +63,9 @@ bool Settings::validate() const {
+ 		return false;
+ 	} else if ((fullChats & MustNotBeFull) != 0) {
+ 		return false;
+-	} else if (format != Format::Html && format != Format::Json) {
++	} else if (format != Format::Html
++		&& format != Format::Json
++		&& format != Format::HtmlAndJson) {
+ 		return false;
+ 	} else if (!media.validate()) {
+ 		return false;
+diff --git a/Telegram/SourceFiles/export/export_settings.h b/Telegram/SourceFiles/export/export_settings.h
+index ae2e323..00eb2dc 100644
+--- a/Telegram/SourceFiles/export/export_settings.h
++++ b/Telegram/SourceFiles/export/export_settings.h
+@@ -34,11 +34,29 @@ struct MediaSettings {
+ 	friend inline constexpr auto is_flag_type(Type) { return true; };
+ 
+ 	Types types = DefaultTypes();
++
++	// Limit for the types that don't have their own one in sizeLimits.
+ 	int64 sizeLimit = 8 * 1024 * 1024;
++	base::flat_map<Type, int64> sizeLimits;
++
++	[[nodiscard]] int64 sizeLimitFor(Type type) const;
++	void setSizeLimit(Type type, int64 limit);
++
++	// The largest limit among the enabled types, 0 if none is enabled.
++	[[nodiscard]] int64 maxSizeLimit() const;
+ 
+ 	static inline Types DefaultTypes() {
+ 		return Type::Photo;
+ 	}
++	static inline constexpr Type kAllTypes[] = {
++		Type::Photo,
++		Type::Video,
++		Type::VoiceMessage,
++		Type::VideoMessage,
++		Type::Sticker,
++		Type::GIF,
++		Type::File,
++	};
+ 
+ };
+ 
+@@ -84,6 +102,10 @@ struct Settings {
+ 	Types fullChats = DefaultFullChats();
+ 	MediaSettings media;
+ 
++	// Take files already downloaded by earlier exports in the same base
++	// folder from the disk instead of downloading them again.
++	bool reusePreviousMedia = true;
++
+ 	MTPInputPeer singlePeer = MTP_inputPeerEmpty();
+ 	TimeId singlePeerFrom = 0;
+ 	TimeId singlePeerTill = 0;
+diff --git a/Telegram/SourceFiles/export/view/export.style b/Telegram/SourceFiles/export/view/export.style
+index 29092ed..9033818 100644
+--- a/Telegram/SourceFiles/export/view/export.style
++++ b/Telegram/SourceFiles/export/view/export.style
+@@ -27,6 +27,8 @@ exportFileSizeLabel: LabelSimple(defaultLabelSimple) {
+ }
+ exportFileSizePadding: margins(22px, 8px, 22px, 8px);
+ exportFileSizeLabelBottom: 18px;
++exportTypeSizeLabelPadding: margins(56px, 0px, 22px, 0px);
++exportTypeSizeSliderPadding: margins(56px, 8px, 22px, 12px);
+ 
+ exportLocationLabel: FlatLabel(boxLabel) {
+ 	maxHeight: 21px;
+diff --git a/Telegram/SourceFiles/export/view/export_view_panel_controller.cpp b/Telegram/SourceFiles/export/view/export_view_panel_controller.cpp
+index c9bbe92..4117798 100644
+--- a/Telegram/SourceFiles/export/view/export_view_panel_controller.cpp
++++ b/Telegram/SourceFiles/export/view/export_view_panel_controller.cpp
+@@ -175,6 +175,10 @@ void PanelController::createPanel() {
+ 	_panel = base::make_unique_q<Ui::SeparatePanel>(Ui::SeparatePanelArgs{
+ 		.onAllSpaces = true,
+ 	});
++
++	// A fixed window title lets compositor rules find this panel, e.g.
++	// to drop Hyprland's own border, shadow and blur around it.
++	_panel->setWindowTitle(u"Telegram Desktop Export"_q);
+ 	_panel->setTitle((singleTopic
+ 		? tr::lng_export_header_topic
+ 		: singlePeer
+@@ -338,7 +342,12 @@ void PanelController::showProgress() {
+ 	}, progress->lifetime());
+ 
+ 	_panel->showInner(std::move(progress));
+-	_panel->setHideOnDeactivate(true);
++
++	// Don't hide the progress panel when it loses focus: with focus
++	// following the mouse (e.g. Hyprland follow_mouse = 1) the panel
++	// would disappear as soon as the cursor crosses another window.
++	// It still hides by the close button or Escape, export goes on.
++	_panel->setHideOnDeactivate(false);
+ }
+ 
+ void PanelController::stopWithConfirmation(Fn<void()> callback) {
+diff --git a/Telegram/SourceFiles/export/view/export_view_settings.cpp b/Telegram/SourceFiles/export/view/export_view_settings.cpp
+index b5d3ad6..d1c096a 100644
+--- a/Telegram/SourceFiles/export/view/export_view_settings.cpp
++++ b/Telegram/SourceFiles/export/view/export_view_settings.cpp
+@@ -57,16 +57,6 @@ constexpr auto kMegabyte = int64(1024) * 1024;
+ 	});
+ }
+ 
+-[[nodiscard]] bool SizeLimitFitsOptionLine(
+-		int outerWidth,
+-		int optionWidth,
+-		int labelWidth) {
+-	const auto available = outerWidth
+-		- st::exportSettingPadding.left()
+-		- st::exportFileSizePadding.right();
+-	return (optionWidth + labelWidth <= available);
+-}
+-
+ void ChooseFormatBox(
+ 		not_null<Ui::GenericBox*> box,
+ 		Output::Format format,
+@@ -782,35 +772,49 @@ void SettingsWidget::addChatOption(
+ 
+ void SettingsWidget::addMediaOptions(
+ 		not_null<Ui::VerticalLayout*> container) {
+-	addMediaOption(
+-		container,
+-		tr::lng_export_option_photos(tr::now),
+-		MediaType::Photo);
+-	addMediaOption(
+-		container,
+-		tr::lng_export_option_video_files(tr::now),
+-		MediaType::Video);
+-	addMediaOption(
+-		container,
++	const auto add = [&](const QString &text, MediaType type) {
++		const auto checkbox = addMediaOption(container, text, type);
++		addSizeSlider(container, checkbox, type);
++	};
++	add(tr::lng_export_option_photos(tr::now), MediaType::Photo);
++	add(tr::lng_export_option_video_files(tr::now), MediaType::Video);
++	add(
+ 		tr::lng_export_option_voice_messages(tr::now),
+ 		MediaType::VoiceMessage);
+-	addMediaOption(
+-		container,
++	add(
+ 		tr::lng_export_option_video_messages(tr::now),
+ 		MediaType::VideoMessage);
+-	addMediaOption(
+-		container,
+-		tr::lng_export_option_stickers(tr::now),
+-		MediaType::Sticker);
+-	addMediaOption(
+-		container,
+-		tr::lng_export_option_gifs(tr::now),
+-		MediaType::GIF);
+-	const auto files = addMediaOption(
+-		container,
+-		tr::lng_export_option_files(tr::now),
+-		MediaType::File);
+-	addSizeSlider(container, files);
++	add(tr::lng_export_option_stickers(tr::now), MediaType::Sticker);
++	add(tr::lng_export_option_gifs(tr::now), MediaType::GIF);
++	add(tr::lng_export_option_files(tr::now), MediaType::File);
++	addReuseMediaOption(container);
++}
++
++void SettingsWidget::addReuseMediaOption(
++		not_null<Ui::VerticalLayout*> container) {
++	// Plain strings instead of lang keys keep the patch away from
++	// lang.strings, which changes in every release.
++	const auto checkbox = container->add(
++		object_ptr<Ui::Checkbox>(
++			container,
++			u"Reuse media from previous exports"_q,
++			readData().reusePreviousMedia,
++			st::defaultBoxCheckbox),
++		st::exportSettingPadding);
++	checkbox->checkedChanges(
++	) | rpl::on_next([=](bool checked) {
++		changeData([&](Settings &data) {
++			data.reusePreviousMedia = checked;
++		});
++	}, checkbox->lifetime());
++	container->add(
++		object_ptr<Ui::FlatLabel>(
++			container,
++			(u"Files already downloaded by earlier exports in the same "
++				"folder are hard-linked or copied instead of being "
++				"downloaded again."_q),
++			st::exportAboutOptionLabel),
++		st::exportAboutOptionPadding);
+ }
+ 
+ not_null<Ui::Checkbox*> SettingsWidget::addMediaOption(
+@@ -839,64 +843,48 @@ not_null<Ui::Checkbox*> SettingsWidget::addMediaOption(
+ 
+ void SettingsWidget::addSizeSlider(
+ 		not_null<Ui::VerticalLayout*> container,
+-		not_null<Ui::Checkbox*> above) {
++		not_null<Ui::Checkbox*> above,
++		MediaType type) {
++	// Each media type has its own limit, shown under its checkbox.
+ 	const auto wrap = container->add(
+-		object_ptr<Ui::FixedHeightWidget>(container));
+-	const auto slider = container->add(
+-		object_ptr<Ui::MediaSlider>(container, st::exportFileSizeSlider),
+-		st::exportFileSizePadding);
++		object_ptr<Ui::SlideWrap<Ui::VerticalLayout>>(
++			container,
++			object_ptr<Ui::VerticalLayout>(container)));
++	const auto inner = wrap->entity();
++	inner->add(
++		object_ptr<Ui::FlatLabel>(
++			inner,
++			value() | rpl::map([=](const Settings &data) {
++				const auto limit = data.media.sizeLimitFor(type) / kMegabyte;
++				return tr::lng_export_option_size_limit(
++					tr::now,
++					lt_size,
++					QString::number(limit) + " MB");
++			}) | rpl::distinct_until_changed(),
++			st::exportAboutOptionLabel),
++		st::exportTypeSizeLabelPadding);
++	const auto slider = inner->add(
++		object_ptr<Ui::MediaSlider>(inner, st::exportFileSizeSlider),
++		st::exportTypeSizeSliderPadding);
+ 	slider->resize(st::exportFileSizeSlider.seekSize);
+ 	slider->setPseudoDiscrete(
+ 		kSizeValueCount,
+ 		SizeLimitByIndex,
+-		readData().media.sizeLimit,
++		readData().media.sizeLimitFor(type),
+ 		[=](int64 limit) {
+ 			changeData([&](Settings &data) {
+-				data.media.sizeLimit = limit;
++				// Pin the current limits of all types first, so that
++				// the ones not touched yet don't follow the common one.
++				for (const auto each : MediaSettings::kAllTypes) {
++					data.media.setSizeLimit(
++						each,
++						data.media.sizeLimitFor(each));
++				}
++				data.media.setSizeLimit(type, limit);
+ 			});
+ 		});
+ 
+-	const auto label = Ui::CreateChild<Ui::LabelSimple>(
+-		container.get(),
+-		st::exportFileSizeLabel);
+-	value() | rpl::map([](const Settings &data) {
+-		return data.media.sizeLimit;
+-	}) | rpl::on_next([=](int64 sizeLimit) {
+-		const auto limit = sizeLimit / kMegabyte;
+-		const auto size = QString::number(limit) + " MB";
+-		const auto text = tr::lng_export_option_size_limit(
+-			tr::now,
+-			lt_size,
+-			size);
+-		label->setText(text);
+-	}, slider->lifetime());
+-
+-	_sizeLimitExtraHeight = SizeLimitFitsOptionLine(
+-		st::exportPanelSize.width(),
+-		above->naturalWidth(),
+-		label->width())
+-		? 0
+-		: label->height();
+-
+-	rpl::combine(
+-		container->widthValue(),
+-		label->widthValue(),
+-		slider->geometryValue()
+-	) | rpl::on_next([=](int outerWidth, int labelWidth, QRect geometry) {
+-		const auto sameLine = SizeLimitFitsOptionLine(
+-			outerWidth,
+-			above->naturalWidth(),
+-			labelWidth);
+-		wrap->resize(wrap->width(), sameLine ? 0 : label->height());
+-		label->moveToRight(
+-			st::exportFileSizePadding.right(),
+-			(sameLine
+-				? (geometry.y()
+-					- label->height()
+-					- st::exportFileSizeLabelBottom)
+-				: wrap->y()),
+-			outerWidth);
+-	}, label->lifetime());
++	wrap->toggleOn(above->checkedValue());
+ }
+ 
+ void SettingsWidget::refreshButtons(
+diff --git a/Telegram/SourceFiles/export/view/export_view_settings.h b/Telegram/SourceFiles/export/view/export_view_settings.h
+index 8f255a3..1418912 100644
+--- a/Telegram/SourceFiles/export/view/export_view_settings.h
++++ b/Telegram/SourceFiles/export/view/export_view_settings.h
+@@ -85,7 +85,9 @@ private:
+ 		MediaType type);
+ 	void addSizeSlider(
+ 		not_null<Ui::VerticalLayout*> container,
+-		not_null<Ui::Checkbox*> above);
++		not_null<Ui::Checkbox*> above,
++		MediaType type);
++	void addReuseMediaOption(not_null<Ui::VerticalLayout*> container);
+ 	void addLocationLabel(
+ 		not_null<Ui::VerticalLayout*> container);
+ 	void addFormatAndLocationLabel(
+diff --git a/Telegram/SourceFiles/storage/storage_account.cpp b/Telegram/SourceFiles/storage/storage_account.cpp
+index 5203607..05fc4ba 100644
+--- a/Telegram/SourceFiles/storage/storage_account.cpp
++++ b/Telegram/SourceFiles/storage/storage_account.cpp
+@@ -66,6 +66,12 @@ constexpr auto kSinglePeerTypeChat = qint32(8 + 2);
+ constexpr auto kSinglePeerTypeChannel = qint32(8 + 3);
+ constexpr auto kSinglePeerTypeSelf = qint32(4);
+ constexpr auto kSinglePeerTypeEmpty = qint32(0);
++
++// Marks the export settings block added by the export patches.
++constexpr auto kExportPatchMagic = quint32(0x45585054); // 'EXPT'
++constexpr auto kExportPatchVersion = quint32(1);
++constexpr auto kExportPatchSizeLimitsMax = quint32(64);
++
+ constexpr auto kMultiDraftTagOld = quint64(0xFFFF'FFFF'FFFF'FF01ULL);
+ constexpr auto kMultiDraftCursorsTagOld = quint64(0xFFFF'FFFF'FFFF'FF02ULL);
+ constexpr auto kMultiDraftTag = quint64(0xFFFF'FFFF'FFFF'FF03ULL);
+@@ -3002,6 +3008,8 @@ void Account::writeExportSettings(const Export::Settings &settings) {
+ 		&& settings.fullChats == check.fullChats
+ 		&& settings.media.types == check.media.types
+ 		&& settings.media.sizeLimit == check.media.sizeLimit
++		&& settings.media.sizeLimits == check.media.sizeLimits
++		&& settings.reusePreviousMedia == check.reusePreviousMedia
+ 		&& settings.path == check.path
+ 		&& settings.format == check.format
+ 		&& settings.availableAt == check.availableAt
+@@ -3019,7 +3027,10 @@ void Account::writeExportSettings(const Export::Settings &settings) {
+ 	}
+ 	quint32 size = sizeof(quint32) * 6
+ 		+ Serialize::stringSize(settings.path)
+-		+ sizeof(qint32) * 2 + sizeof(quint64);
++		+ sizeof(qint32) * 2 + sizeof(quint64)
++		+ sizeof(quint32) * 4
++		+ (sizeof(quint32) + sizeof(quint64))
++			* settings.media.sizeLimits.size();
+ 	EncryptedDescriptor data(size);
+ 	data.stream
+ 		<< quint32(settings.types)
+@@ -3053,6 +3064,17 @@ void Account::writeExportSettings(const Export::Settings &settings) {
+ 	data.stream << qint32(settings.singlePeerFrom);
+ 	data.stream << qint32(settings.singlePeerTill);
+ 
++	// Patched export fields, appended after everything the official client
++	// writes, so the official client still reads this file and ignores them.
++	data.stream
++		<< kExportPatchMagic
++		<< kExportPatchVersion
++		<< quint32(settings.reusePreviousMedia ? 1 : 0)
++		<< quint32(settings.media.sizeLimits.size());
++	for (const auto &[type, limit] : settings.media.sizeLimits) {
++		data.stream << quint32(type) << quint64(limit);
++	}
++
+ 	FileWriteDescriptor file(_exportSettingsKey, _basePath);
+ 	file.writeEncrypted(data, _localKey);
+ }
+@@ -3108,11 +3130,40 @@ Export::Settings Account::readExportSettings() {
+ 	if (!file.stream.atEnd()) {
+ 		file.stream >> singlePeerFrom >> singlePeerTill;
+ 	}
++	quint32 patchMagic = 0, patchVersion = 0;
++	quint32 reusePreviousMedia = 1, sizeLimitsCount = 0;
++	auto sizeLimits = base::flat_map<Export::MediaSettings::Type, int64>();
++	if (!file.stream.atEnd()) {
++		file.stream >> patchMagic >> patchVersion;
++		if (patchMagic == kExportPatchMagic && patchVersion >= 1) {
++			file.stream >> reusePreviousMedia >> sizeLimitsCount;
++			if (sizeLimitsCount > kExportPatchSizeLimitsMax) {
++				sizeLimitsCount = 0;
++			}
++			for (auto i = quint32(); i != sizeLimitsCount; ++i) {
++				quint32 type = 0;
++				quint64 limit = 0;
++				file.stream >> type >> limit;
++				sizeLimits.emplace(
++					Export::MediaSettings::Type(type),
++					int64(limit));
++			}
++		}
++		if (patchMagic != kExportPatchMagic
++			|| file.stream.status() != QDataStream::Ok) {
++			// Not our block or a broken one, keep the defaults for it.
++			file.stream.resetStatus();
++			reusePreviousMedia = 1;
++			sizeLimits.clear();
++		}
++	}
+ 	auto result = Export::Settings();
+ 	result.types = Export::Settings::Types::from_raw(types);
+ 	result.fullChats = Export::Settings::Types::from_raw(fullChats);
+ 	result.media.types = Export::MediaSettings::Types::from_raw(mediaTypes);
+ 	result.media.sizeLimit = mediaSizeLimit;
++	result.media.sizeLimits = std::move(sizeLimits);
++	result.reusePreviousMedia = (reusePreviousMedia != 0);
+ 	result.format = Export::Output::Format(format);
+ 	result.path = path;
+ 	result.availableAt = availableAt;
