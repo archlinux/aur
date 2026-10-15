@@ -1,17 +1,17 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux-bin
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
 url="https://github.com/hrzlgnm/zux"
-license=('MIT')
+license=('MIT' 'OFL-1.1')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 conflicts=('zux')
 source_x86_64=("https://github.com/hrzlgnm/zux/releases/download/v$pkgver/zux_${pkgver}_amd64.deb" "https://github.com/hrzlgnm/zux/releases/download/v$pkgver/zux_linux_x64")
-sha256sums_x86_64=('3331c6a1c0c4ff018705191894dba163592b925e8cbfbf5366aa60de0d814a6e' '4affbdc30a76a434a530a2777e02c8c78512c81497c292c658eaa57b40484e57')
+sha256sums_x86_64=('8ede6114de406a34ee3103e7deec244a6584f110775cb46c1c38bf97df41f647' 'e0678ebeefb90e5f4cf400e1139ea31d231cd583f9421fcc87ae0db4dc059f81')
 package() {
     # The .deb contains the icons, .desktop file and other files installed to shared.
     tar -xz -f data.tar.gz -C "${pkgdir}"
