@@ -1,0 +1,14 @@
+pkgbase = pass-pqp-ff-extension
+	pkgdesc = Firefox/LibreWolf extension to browse a pass-pqp password store
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/ajdiaz/pass-pqp-ff-extension
+	arch = any
+	license = MIT
+	makedepends = zip
+	depends = pass-pqp
+	depends = pqp-crypto
+	source = pass-pqp-ff-extension-0.1.3.tar.gz::https://github.com/ajdiaz/pass-pqp-ff-extension/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 9d0663351ccb86ad77a9139022e43288bc7a092bc95ed2511a3de32d7af4a680
+
+pkgname = pass-pqp-ff-extension
