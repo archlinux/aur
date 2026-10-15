@@ -3,7 +3,7 @@
 
 _pkgname=valhalla
 pkgname=$_pkgname
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,8 @@ prepare() {
   # become inconsistent. On a thrown exception inside that function (any /route
   # request with costing=auto|truck|taxi), the unwinder lands at a trap-filler
   # address `mov 0x28, %eax; ud2` between two endbr64 landing pads, dereferencing
-  # null+0x28 → SIGSEGV. Bug confirmed in valhalla 3.6.3 through 3.9.0.
+  # null+0x28 → SIGSEGV. Bug confirmed in valhalla 3.6.3 through 3.9.0, and
+  # 3.9.1 does not touch it. Upstream issue still open.
   # Upstream docker uses no -march so it never triggers.
   # Tracked upstream: https://github.com/valhalla/valhalla/issues/6079 (OPEN).
   # Full investigation: build/debug/INVESTIGATION.md in valhalla-pi repo.
