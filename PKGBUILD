@@ -4,7 +4,7 @@
 
 pkgname=v2rayn
 _name=v2rayN
-pkgver=7.25.4
+pkgver=7.25.6
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
@@ -21,7 +21,7 @@ source=("git+${url}#tag=${pkgver}"
         "sing-box-rules-geoip::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geoip"
         "sing-box-rules-geosite::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geosite"
         "${pkgname}.sh")
-sha256sums=('66b6c6919c39f215017a13b97719a7eda2133b30ba9a294414034e65fa76ab7e'
+sha256sums=('a565a06c8a239ad59ef5e62d4eaedc6883ec16bde67dcc4860af35716aab2b7c'
             'SKIP'
             'SKIP'
             'SKIP'
