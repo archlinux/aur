@@ -1,6 +1,6 @@
 # Maintainer: J.P. Ramackers <jramackers@proton.me>
 pkgname=pycompile
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Compile Python source files into standalone native binaries"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('python-compiler')
 conflicts=('python-compiler')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('593632de438e1cbb5b0a91ab190035790557f0d850a1b44d940e58d45b325f78')
+sha256sums=('26e8cfe6f1f5227adcbe86ad9845bcae5fceae9a6c9176369adaca6bd951ca32')
 
 build() {
   cd "$pkgname-$pkgver"
