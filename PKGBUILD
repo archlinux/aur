@@ -2,7 +2,7 @@
 # Maintainer: SlotSun <slot_sun@outlook.com>
 pkgname=slive-bin
 _pkgname=slive
-pkgver=1.8.14
+pkgver=1.8.13
 pkgrel=1
 pkgdesc="基于Flutter的聚合直播软件，支持多平台直播源聚合与观看"
 arch=('x86_64' 'aarch64')
