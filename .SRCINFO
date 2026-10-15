@@ -1,0 +1,19 @@
+pkgbase = wikistow-desktop-bin
+	pkgdesc = Desktop app for your family's encrypted wiki
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/skint007/wikistow
+	arch = x86_64
+	license = MIT
+	depends = electron44
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = gnome-keyring: keep the sign-in and a remembered unlock between launches
+	optdepends = kwallet: keep the sign-in and a remembered unlock between launches
+	provides = wikistow-desktop
+	conflicts = wikistow-desktop
+	source = https://github.com/skint007/wikistow/releases/download/v0.2.0/wikistow-desktop-0.2.0.tar.gz
+	sha256sums = 3a1ddcb1dd8c38997a83c7d013062cccb972405a546f737acd9c7846d7214560
+
+pkgname = wikistow-desktop-bin
