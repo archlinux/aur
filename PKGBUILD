@@ -2,7 +2,7 @@
 
 pkgauthor=kdekorte
 pkgname=basika
-pkgver=0.99.7
+pkgver=0.99.8
 pkgrel=1
 pkgdesc="BASIC Interpreter"
 
@@ -18,7 +18,7 @@ depends=('glibc' 'sdl3' 'sdl3_ttf' 'sdl3_mixer' 'sdl3_image')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('18ee86e5b07ab6ef215c6dea8b0c6ea0319580566b2d7c8fc2f228d50547f0a8')
+sha256sums=('1da7b9a93b88fb886d6d88fc2000bcb1407cf6cce3953216ac3cebdcf5cc27b4')
 
 
 prepare() {
