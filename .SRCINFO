@@ -1,6 +1,6 @@
 pkgbase = nvpair-bin
 	pkgdesc = NVIDIA Personal AI Router for local inference (prebuilt binary)
-	pkgver = 0.1.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/Personal-AI-Router
 	arch = x86_64
@@ -37,14 +37,14 @@ pkgbase = nvpair-bin
 	depends = xdg-utils
 	optdepends = libappindicator: system tray integration
 	optdepends = ollama: local inference backend
-	provides = nvpair=0.1.1
+	provides = nvpair=1.0.0
 	conflicts = nvpair
-	noextract = nvpair-bin-0.1.1-x86_64.deb
-	noextract = nvpair-bin-0.1.1-aarch64.deb
+	noextract = nvpair-bin-1.0.0-x86_64.deb
+	noextract = nvpair-bin-1.0.0-aarch64.deb
 	options = !strip
-	source_x86_64 = nvpair-bin-0.1.1-x86_64.deb::https://github.com/NVIDIA/Personal-AI-Router/releases/download/v0.1.1/NVPAIR-Setup-0.1.1-amd64.deb
-	sha256sums_x86_64 = 879fc316b5bff9f26f05f02b40cacfff8f14c5c79a751bdd975d568b40b543ac
-	source_aarch64 = nvpair-bin-0.1.1-aarch64.deb::https://github.com/NVIDIA/Personal-AI-Router/releases/download/v0.1.1/NVPAIR-Setup-0.1.1-arm64.deb
-	sha256sums_aarch64 = 9f64b21c99fbd2517e3ef3ab9feec7f5aa0bcf4c338fa55846f0564148442229
+	source_x86_64 = nvpair-bin-1.0.0-x86_64.deb::https://github.com/NVIDIA/Personal-AI-Router/releases/download/v1.0.0/NVPAIR-Setup-1.0.0-amd64.deb
+	sha256sums_x86_64 = 1a77e976adbb97f319b80b170302c05f86151c69ae39b0794e5db18c948ce499
+	source_aarch64 = nvpair-bin-1.0.0-aarch64.deb::https://github.com/NVIDIA/Personal-AI-Router/releases/download/v1.0.0/NVPAIR-Setup-1.0.0-arm64.deb
+	sha256sums_aarch64 = 3890ce8e59eda74b119406b5eaefa8ec45244d37dee41546aafa21cca4dddbee
 
 pkgname = nvpair-bin

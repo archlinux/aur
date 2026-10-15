@@ -1,7 +1,7 @@
 # Maintainer: wzl <git@wzl.cc>
 
 pkgname=nvpair-bin
-pkgver=0.1.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='NVIDIA Personal AI Router for local inference (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ source_x86_64=(
 source_aarch64=(
   "${pkgname}-${pkgver}-aarch64.deb::https://github.com/NVIDIA/Personal-AI-Router/releases/download/v${pkgver}/NVPAIR-Setup-${pkgver}-arm64.deb"
 )
-sha256sums_x86_64=('879fc316b5bff9f26f05f02b40cacfff8f14c5c79a751bdd975d568b40b543ac')
-sha256sums_aarch64=('9f64b21c99fbd2517e3ef3ab9feec7f5aa0bcf4c338fa55846f0564148442229')
+sha256sums_x86_64=('1a77e976adbb97f319b80b170302c05f86151c69ae39b0794e5db18c948ce499')
+sha256sums_aarch64=('3890ce8e59eda74b119406b5eaefa8ec45244d37dee41546aafa21cca4dddbee')
 noextract=(
   "${pkgname}-${pkgver}-x86_64.deb"
   "${pkgname}-${pkgver}-aarch64.deb"
@@ -43,6 +43,8 @@ package() {
     bsdtar --no-same-owner -xpf - -C "$pkgdir"
 
   # Upstream duplicates Name as Comment, which desktop-file-validate warns about.
+  sed -i '1i# Modified by nvpair-bin AUR packaging: adjusted Comment for desktop-file validation.' \
+    "${pkgdir}/usr/share/applications/nvpair.desktop"
   sed -i 's/^Comment=.*/Comment=Route local AI inference across compatible computers/' \
     "${pkgdir}/usr/share/applications/nvpair.desktop"
 
