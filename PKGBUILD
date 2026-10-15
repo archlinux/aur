@@ -4,7 +4,7 @@
 _pkgname=min-ed-launcher
 pkgname=${_pkgname}-bin
 pkgver=v0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal Elite Dangerous Launcher"
 arch=('x86_64')
 url="https://github.com/Rfvgyhn/min-ed-launcher"
@@ -25,7 +25,6 @@ package() {
 
   # Copy files
   cd "$srcdir/${_pkgname}_${pkgver}_linux-x64"
-  install -Dm644 CHANGELOG.md "${pkgdir}"/opt/min-ed-launcher/CHANGELOG.md
   install -Dm755 MinEdLauncher "${pkgdir}"/opt/min-ed-launcher/MinEdLauncher
   install -Dm644 README.md "${pkgdir}"/opt/min-ed-launcher/README.md
 

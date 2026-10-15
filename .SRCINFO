@@ -1,7 +1,7 @@
 pkgbase = min-ed-launcher-bin
 	pkgdesc = Minimal Elite Dangerous Launcher
 	pkgver = v0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rfvgyhn/min-ed-launcher
 	install = min-ed-launcher.install
 	arch = x86_64
