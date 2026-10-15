@@ -1,7 +1,7 @@
 pkgbase = gotenberg
 	pkgdesc = A developer-friendly API for converting numerous document formats into PDF files, and more!
-	pkgver = 8.37.0
-	pkgrel = 2
+	pkgver = 8.38.1
+	pkgrel = 1
 	url = https://github.com/gotenberg/gotenberg
 	arch = i686
 	arch = pentium4
@@ -20,10 +20,10 @@ pkgbase = gotenberg
 	depends = perl-image-exiftool
 	depends = qpdf
 	backup = etc/default/gotenberg
-	source = https://github.com/gotenberg/gotenberg/archive/refs/tags/v8.37.0/gotenberg-8.37.0.tar.gz
+	source = https://github.com/gotenberg/gotenberg/archive/refs/tags/v8.38.1/gotenberg-8.38.1.tar.gz
 	source = gotenberg.env
 	source = gotenberg.service
-	sha256sums = b6395f7c819cd7c7a6ad9e2c1de9723639f8b150f160f777325ce16449ad4658
+	sha256sums = e8a7b61e84699c214757a653d6e2b78ec6b52679edc2fc7b27e184e174ff554b
 	sha256sums = 99449d281a2228da65f976b6d836b0c04e5f5031c750dae74a36cc005ecdc514
 	sha256sums = 1b3567e2fe374ce104150d198de3fe372724d3b8510aba64716e3dcb3b37c50a
 
