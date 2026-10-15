@@ -27,6 +27,7 @@ makedepends=(
 	'nvm'
 	'gendesk'
 	'jq'
+	'zip'
 )
 options=(
 	'!strip'
