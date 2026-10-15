@@ -27,8 +27,8 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/HUI/HUI-linux-$(uname -m)-webkit-gtk3/libHUI.so" "$pkgdir/usr/lib/libHUI.so"
-  install -Dm644 "$srcdir/HUI/HUI.h" "$pkgdir/usr/include/HUI/HUI.h"
-  install -Dm644 "$srcdir/HUI/HUI.hh" "$pkgdir/usr/include/HUI/HUI.hh"
-  install -Dm644 "$srcdir/HUI/hui_datatypes.h" "$pkgdir/usr/include/HUI/hui_datatypes.h"
+  install -Dm644 "$srcdir/HUI/c/HUI.h" "$pkgdir/usr/include/HUI/HUI.h"
+  install -Dm644 "$srcdir/HUI/c++/HUI.hh" "$pkgdir/usr/include/HUI/HUI.hh"
+  install -Dm644 "$srcdir/HUI/c++/hui_datatypes.h" "$pkgdir/usr/include/HUI/hui_datatypes.h"
   install -Dm644 "$srcdir/HUI/LICENSE" "$pkgdir/usr/share/licenses/libHUI/LICENSE"
 }
