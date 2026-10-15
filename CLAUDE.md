@@ -2,53 +2,50 @@
 
 ## Repository Overview
 
-This is an Arch Linux AUR package for Inkdrop, a note-taking app with a robust Markdown editor. The package downloads the precompiled Linux binary distribution from Inkdrop's CDN and packages it with a desktop entry and icon for system integration.
+This is an Arch Linux AUR package for Inkdrop, a note-taking app with a robust Markdown editor.
+The package downloads the precompiled Linux zip from Inkdrop's distribution host and installs it with the desktop entry, icon, and AppStream metainfo that ship inside the zip.
 
 ## Inkdrop-Specific Files
 
-- `checksum.sh`: Utility script to fetch MD5 checksums from Inkdrop's CDN headers for new releases
-- `inkdrop.desktop`: Desktop entry file for application menu integration
-- `inkdrop.png`: Application icon (1516 bytes)
+- `checksum.sh`: Prints the sha512 checksum of the x86_64 and aarch64 zips for a release (requires `curl` and `jq`)
 
 ## Package Maintenance
 
 ```bash
-# Update checksums for new version (replace X.Y.Z with version)
+# Print checksums for a version (replace X.Y.Z with version)
 ./checksum.sh X.Y.Z
+# x86_64: <sha512>   → sha512sums_x86_64
+# aarch64: <sha512>  → sha512sums_aarch64
 
 # Generate .SRCINFO after PKGBUILD changes
 makepkg --printsrcinfo > .SRCINFO
 ```
 
+`checksum.sh` reads checksums from the release API when the version is the latest release.
+For any other version it downloads both zips (~140 MB each) and hashes them locally,
+because the API only describes the latest release.
+
 ### Version Discovery
 
-New Inkdrop versions can be discovered using two methods:
+The latest version is published by Inkdrop's release API:
 
-1. **Official Announcements**: Check https://forum.inkdrop.app/c/announcements/14 for release announcements
+```bash
+curl -s https://api.inkdrop.app/download/latest | jq -r .version
+```
 
-2. **Sequential Testing**: Use `./checksum.sh` to test versions incrementally:
-   - Start from current version and test patch versions (e.g., 5.11.0 → 5.11.1, 5.11.2, etc.)
-   - When a patch version returns 404, try the next minor version (e.g., 5.11.3 → 404, try 5.12.0)
-   - When a minor version returns 404, try the next major version (e.g., 5.12.0 → 404, try 6.0.0)
-   - When a major version returns 404, the last successful version was the latest available
-   
-   Example flow:
-   ```bash
-   # Starting from 5.11.0
-   ./checksum.sh 5.11.1  # Success → continue
-   ./checksum.sh 5.11.2  # Success → continue  
-   ./checksum.sh 5.11.3  # 404 → try next minor
-   ./checksum.sh 5.12.0  # Success → continue with 5.12.1...
-   # Or if 5.12.0 → 404, try 6.0.0
-   # If 6.0.0 → 404, then 5.11.2 was the latest
-   ```
+Release notes are announced at https://forum.inkdrop.app/c/announcements/14.
+
+Do not probe versions by guessing URLs.
+Missing files on the distribution host return 403 rather than 404,
+and the pre-v6 CDN (`d3ip0rje8grhnl.cloudfront.net`) stopped receiving releases after 5.11.10.
 
 ## Architecture
 
 This is a binary package that:
-1. Downloads the precompiled Inkdrop Linux distribution (zip file) from `https://d3ip0rje8grhnl.cloudfront.net/vX.Y.Z/Inkdrop-X.Y.Z-Linux.zip`
+1. Downloads the precompiled Inkdrop Linux zip from `https://dist.inkdrop.app/releases/inkdrop-X.Y.Z-{x64,arm64}-linux.zip`
 2. Installs the application files to `/usr/lib/inkdrop/`
 3. Creates a symlink at `/usr/bin/inkdrop` for command-line access
-4. Installs desktop entry to `/usr/share/applications/` and icon to `/usr/share/pixmaps/`
+4. Installs the bundled `app.inkdrop.Inkdrop` desktop entry, 256x256 hicolor icon, and metainfo
 
-The package supports only x86_64 architecture and depends on typical Electron app dependencies (gtk3, libsecret, gnome-keyring, etc.).
+The package supports x86_64 and aarch64 and depends on typical Electron app dependencies (gtk3, libsecret, gnome-keyring, etc.).
+Since v6 the app is packaged as `resources/app.asar`, and the standalone `ipm` CLI is no longer shipped.

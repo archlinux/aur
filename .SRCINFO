@@ -1,9 +1,10 @@
 pkgbase = inkdrop
 	pkgdesc = The Note-taking App with Robust Markdown Editor
-	pkgver = 5.11.10
+	pkgver = 6.1.5
 	pkgrel = 1
 	url = https://www.inkdrop.app/
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	depends = gnome-keyring
 	depends = gtk3
@@ -14,11 +15,9 @@ pkgbase = inkdrop
 	optdepends = nodejs
 	options = !debug
 	options = !strip
-	source = inkdrop.png
-	source = inkdrop.desktop
-	md5sums = f9c4790ca2e4463da42369533fe03781
-	md5sums = a7a5d6324a17a99cc09a58141cacd4b7
-	source_x86_64 = inkdrop-5.11.10.zip::https://d3ip0rje8grhnl.cloudfront.net/v5.11.10/Inkdrop-5.11.10-Linux.zip
-	md5sums_x86_64 = 03f59e6c43fc516de59cf9b03898e2b8
+	source_x86_64 = inkdrop-6.1.5-x86_64.zip::https://dist.inkdrop.app/releases/inkdrop-6.1.5-x64-linux.zip
+	sha512sums_x86_64 = 32cf931ddc7cdcec3b6a20a081fcedf19f83aaa332cc857e8aafb15da641d1a459d7932800b779f1c59b70afca9dfdb4824996a94dbacd925463d8aa8bbace12
+	source_aarch64 = inkdrop-6.1.5-aarch64.zip::https://dist.inkdrop.app/releases/inkdrop-6.1.5-arm64-linux.zip
+	sha512sums_aarch64 = c1059b24c8b7106703b74080736b99a427556fdf98ffb8c4baaf4e51e602c8b46b048bdac0122ccad88f1b6a29ea22a395e7133deb8a8dfad8220f2c679df4b4
 
 pkgname = inkdrop
