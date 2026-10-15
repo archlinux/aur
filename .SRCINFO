@@ -1,7 +1,7 @@
 pkgbase = transcribe
 	pkgdesc = Software to help transcribe recorded music
 	pkgver = 9.70.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.seventhstring.com/xscribe/overview.html
 	arch = x86_64
 	license = custom:seventhstring

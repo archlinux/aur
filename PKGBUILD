@@ -6,7 +6,7 @@
 
 pkgname=transcribe
 pkgver=9.70.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to help transcribe recorded music"
 arch=('x86_64')
 url="https://www.seventhstring.com/xscribe/overview.html"
@@ -68,7 +68,7 @@ Categories=Audio;
 Terminal=false
 Icon=seventhstring-transcribe
 Name=Transcribe!
-StartupWMClass=transcribe
+StartupWMClass=Transcribe!
 EOF
 
   install -Dm0644 "$desktop_file" "$pkgdir/usr/share/applications/$desktop_file"
