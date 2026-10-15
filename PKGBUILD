@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="Encode spatial data as topology in Python"
 url="https://mattijn.github.io/topojson/"
 
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 
 arch=("any")
@@ -28,6 +28,7 @@ checkdepends=(
     "python-geojson"
     "python-geopandas"
     "python-ipywidgets"
+    "python-polars"
     "python-pyshp"
     "python-pytest"
     "python-simplification"
@@ -37,7 +38,7 @@ source=(
     "python-topojson-flit-4.patch"
 )
 b2sums=(
-    "c1bee02e13d163a482df9f44c518f2eecec4c85046fd84c8d0727d6b1d04544fad83f343fec2219df3fa8a6b9eb0dc873caf0f7d1a47c0971e605b2b3aab102c"
+    "0de687c82831029eb8ab579f6a6cf0c084849154a8eb0f5c1698abca21d1ee3cdbd7174cc74e0b09d748284dbdb89c35015c5bbfe7a7f5a727460e5e6fe93330"
     "b10395a1d9adfeb3011d728dcb0fd2b73efe56b060ae3eb0875a581adb078f4eedf3a65db438ab8fa95d9a80668d2c6be58f0327f694eaaf34689354d55f5ac6"
 )
 
