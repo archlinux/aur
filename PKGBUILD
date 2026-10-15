@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=v2
-pkgver=0.17.8
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='A local-first, privacy oriented rich text editor with Git-style version control'
 arch=(x86_64 aarch64)
@@ -27,7 +27,7 @@ makedepends=(git
 optdepends=('libappindicator-gtk3: tray icon support')
 source=("git+$_url.git#tag=v$pkgver"
         "$pkgname.sh.in")
-sha256sums=('25ac1685ab0d98e011c62cd5fd8207ac0c6ff10a232c94f89f3915468dd46688'
+sha256sums=('ef97d8cc3cea42f462fc9247eef0d993c1b08f8fb3515adfd42a39b983bb6541'
             '4426132f3455e44ae2698752dfd4d748a9bd831079f7fed038d18814dc5088f1')
 
 _icons=(16 32 48 64 128 256 512)
