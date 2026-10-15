@@ -2,7 +2,7 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=('python-pydantic-settings: cli'
             'python-rich: cli'
             'python-rich-argparse: cli')
 source=("$_name::git+$url.git#tag=v$pkgver")
-sha256sums=('7425460e633b041c9165877909ef4ed570a06b4f938a652bf9c7077de95e4dfe')
+sha256sums=('f0f753bc11b13bdf025555f44c1551fdfde5631fed9b010478b8796acb87fc2e')
 
 build() {
   cd "$srcdir"/$_name
