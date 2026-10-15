@@ -1,0 +1,48 @@
+From 8cd2c619916c09b327c3230b975d1eace2924d58 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 7 Oct 2025 14:16:23 +0200
+Subject: [PATCH] Adapt to SDL 3.2.24
+
+After upgrading SDL from 3.2.22 to 3.2.24 t/core.t started to fail
+like this:
+
+    #   Failed test '[get_error] got error '
+    #   at t/core.t line 69.
+    #          got: ''
+    #     expected: anything else
+    # Looks like you failed 1 test of 28.
+    t/core.t ........................ Dubious, test returned 1 (wstat 256, 0x100)
+    Failed 1/28 subtests
+	    (3 TODO tests unexpectedly succeeded)
+
+The failure is triggered by SDL 5594d03da086ab255b1d7ace1496f3a0c109a83d commit
+("Leave letterbox borders set to the frame clear color").
+
+SDL_SetVideoMode(640, 480, 232, SDL_ANYFORMAT) kept succeeding, but
+SDL_GetError() stopped returning "rect has a negative size" error.
+
+Because the new behavior is more consistent and because the Perl test
+checks for SDL::get_error() instead of SDL::Video::set_video_mode()
+return value, I conlude that the Perl test wants to test
+SDL::get_error() and uses SDL::Video::set_video_mode() only as a way
+to produce an error.
+
+Thus this patch uses a different SDL::Video::set_video_mode()
+arguments to obtain an error ("Invalid width or height").
+---
+ t/core.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/core.t b/t/core.t
+index 1ccac868..8b35b9bc 100644
+--- a/t/core.t
++++ b/t/core.t
+@@ -62,7 +62,7 @@ is( SDL_INIT_EVENTTHREAD(), 16777216,
+ 	'SDL_INIT_EVENTTHREAD() should also be available'
+ );
+ 
+-my $display = SDL::Video::set_video_mode( 640, 480, 232, SDL_ANYFORMAT );
++my $display = SDL::Video::set_video_mode( -1, 480, 232, SDL_ANYFORMAT );
+ 
+ isnt( SDL::get_error(), '', '[get_error] got error ' . SDL::get_error() );
+ TODO:
