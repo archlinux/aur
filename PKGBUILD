@@ -1,7 +1,7 @@
 # Maintainer: Sam M <contact@s-mc.io>
 pkgname=nuvio-desktop
 _pkgname=nuvio
-pkgver=0.1.13_alpha
+pkgver=0.1.30_alpha
 pkgrel=1
 pkgdesc="A modern media hub desktop application (built from git source)"
 arch=('x86_64')
