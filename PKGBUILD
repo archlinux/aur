@@ -2,7 +2,7 @@
 
 pkgname=tinybpt-git
 pkgver=r28.b490fcc
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="Tinybpt (Tiny Buildroot Packaging Tool) 是一个 buildroot 的包管理工具，主要处理 buildroot 的包依赖关系，提供包的安装、卸载等功能。"
 arch=($CARCH)
@@ -13,8 +13,6 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
     bash
-    gcc-libs
-    glibc
     openssl
 )
 makedepends=(
@@ -32,7 +30,7 @@ source=(${pkgname}::git+$url.git
 )
 noextract=()
 sha256sums=('SKIP'
-            'a3f328c21e39ddd1f2be1cea43ac0dec819eaa20a90425d7da901a11531b3aa5'
+            'f66dff1bdf8f96060b8177976f8b7d9254bc89bc4db933d769f7384d28480bc9'
             'aef37c794e79637913ceb23a9a300c51cf4d3264ab48837c82209f4bf6c3cddb')
 
 pkgver() {
@@ -57,7 +55,7 @@ build() {
     cmake -S ${pkgname} \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
