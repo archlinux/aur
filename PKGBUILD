@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=mercurygram-desktop-bin
 _pkgname=mercurygram
-pkgver=7.2.9.3
+pkgver=7.3.1.1
 pkgrel=1
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
@@ -48,7 +48,7 @@ source=(
 source_x86_64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-linux-x86_64.tar.xz")
 source_aarch64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-linux-arm64.tar.xz")
 
-sha256sums=('f4e156ad9e71ee0d3f9155d5b0396c6e7bae92f47ab28a9e14a57bd5a63fde16'
+sha256sums=('e94a745912b7c9852d3f9cda31056af33375a3915f3182a6126ab114f78de847'
             'a1a1ea2d8a1e69a2c3d71c2ddd442f71c614e3abcdb60c54d0f90e4c9d778c88'
             '7b4ee11e84e42335a8ae2d4161fb989152117b2d64d70036973822b93563d6e5'
             'f7b76cc8c9878a5daf550ee9fcb65d0649f54e8e9e356c260d59b51312a057b8'
@@ -56,8 +56,8 @@ sha256sums=('f4e156ad9e71ee0d3f9155d5b0396c6e7bae92f47ab28a9e14a57bd5a63fde16'
             'e7b1f3fdc5b92977f29eb08b6936dd94539da928bac4253ccbc53d9110a4252b'
             '64650964193d328389b2cf4be9fdfb6ccc56b17fb932e46d0589a8c0f779f3cf'
             '3cd0d6b3d46b406e8f2458e744a87d22713f049cf1615269347697e1282577d0')
-sha256sums_x86_64=('5122d75e1cdb25cbb3fdc7cc525e9e7bc01fe83519f685ee2b5701a0d0fca053')
-sha256sums_aarch64=('b0c8c60074eb2ee7c6947ab2c260ecee27117db9075aa41c43aad44ee00744ec')
+sha256sums_x86_64=('4444f7178c3e8a8835969f47fad9590d1bc8439fff2a7b05b5f26f5826bce11f')
+sha256sums_aarch64=('b44668c148a79c7fbd512eaa0687012368cecda746273c30f4094a241605ea91')
 
 package() {
   install -Dm755 "${_pkgname^}" "$pkgdir/usr/bin/${_pkgname^}"
