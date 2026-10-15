@@ -4,7 +4,7 @@
 
 pkgname=rust-yak-bin
 _pkgname=yak
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='A plugin-based harness for LLMs in Rust'
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_aarch64=(
     "${_pkgname}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/yak-aarch64-unknown-linux-musl.tar.gz"
 )
 sha256sums=('b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c')
-sha256sums_x86_64=('130a90879bd7b855e642f6823d71d7a6eb0c257312325ec0b742754f19f9bf57')
-sha256sums_aarch64=('ddc63ff26a64cd6c3fa36f70effdb1d6f6667cbc0f234bc828c28fa1a68d1adc')
+sha256sums_x86_64=('53764045261e461e33e4d4bc5a21318ed0278b16c23fe90bf63bdf1ceec18faf')
+sha256sums_aarch64=('12c3555449b9e2182f912268a12b2cc14aa43a4c058337c543d5b372ac7bec39')
 
 # Upstream ships a static-pie (musl) single binary, so there are no runtime
 # shared-library dependencies and no build step. The release tarball contains

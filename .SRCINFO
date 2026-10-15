@@ -1,12 +1,12 @@
 pkgbase = rust-yak-bin
 	pkgdesc = A plugin-based harness for LLMs in Rust
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/yak
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = yak=0.4.4
+	provides = yak=0.4.5
 	conflicts = yak
 	conflicts = yak-bin
 	conflicts = yak-git
@@ -17,9 +17,9 @@ pkgbase = rust-yak-bin
 	options = !debug
 	source = LICENSE::https://raw.githubusercontent.com/imjiaoyuan/yak/main/LICENSE
 	sha256sums = b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c
-	source_x86_64 = yak-x86_64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.4/yak-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 130a90879bd7b855e642f6823d71d7a6eb0c257312325ec0b742754f19f9bf57
-	source_aarch64 = yak-aarch64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.4/yak-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = ddc63ff26a64cd6c3fa36f70effdb1d6f6667cbc0f234bc828c28fa1a68d1adc
+	source_x86_64 = yak-x86_64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.5/yak-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 53764045261e461e33e4d4bc5a21318ed0278b16c23fe90bf63bdf1ceec18faf
+	source_aarch64 = yak-aarch64.tar.gz::https://github.com/imjiaoyuan/yak/releases/download/v0.4.5/yak-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 12c3555449b9e2182f912268a12b2cc14aa43a4c058337c543d5b372ac7bec39
 
 pkgname = rust-yak-bin
