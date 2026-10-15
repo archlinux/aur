@@ -1,7 +1,7 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 _pkgname='ubuntu'
-_release='26.04'
+_release='26.10'
 _flavor='desktop'
 _upstream_arch='amd64'
 _image_id='ubuntu-desktop'
@@ -9,7 +9,7 @@ _disk_product='Ubuntu'
 _installer_variant='desktop'
 _require_lts='false'
 pkgname='libvirt-iso-ubuntu-desktop-bin'
-pkgver=26.04.1
+pkgver=26.10
 pkgrel=1
 pkgdesc='Official Ubuntu Desktop installation ISO for libvirt'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 )
 noextract=("${_source_iso}")
 sha256sums=(
-	'601e30fbf5d97759367c632e2c33630665039b7e2158fd068403da3ccf1bda1f'
+	'19efc38dde60055b192526bfbba075ac1da23992f1b006ddd41cbd30db0d9b0c'
 	'SKIP'
 	'SKIP'
 	'ccee829abe16869c3b4e989844357a0fff8fc74ca5eb8d80d83019982c487185'
