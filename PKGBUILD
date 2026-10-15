@@ -1,7 +1,7 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-bin
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='澜音 - 一款简洁优雅的跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。'
 arch=('x86_64')
 url='https://ceru.docs.shiqianjiang.cn/'
@@ -80,19 +80,16 @@ EOF
     # 注意 StartupWMClass 用 ceru-music 而非上游 deb 写的「澜音」：
     # WM_CLASS 取自 app.asar 内 package.json 的 name 字段，实测为 ceru-music
     #
-    # 关于 Name 的本地化：GLib 实测发现只写 Name[en] 无效——en_US/en_GB/
-    # en_AU/C.UTF-8 全部回退到无后缀的 Name=，英文环境搜不到。
-    # 原因是没有 zh_CN 变体时，中文 locale 与英文 locale 都落到默认值。
-    # 故补 Name[zh_CN]（本项目主语言）并加 Keywords 兜底，
-    # 让 fuzzel/rofi/gnome 在中英文环境都能搜到。
+    # 关于 Name 的本地化：GLib 在无匹配 locale 变体时会回退到无后缀的
+    # Name=，故默认值用英文（Ceru Music），中文 locale 再补
+    # Name[zh_CN]/Name[zh]=澜音。只写 Name[en] 是无效的
+    # （en_US/en_GB/C.UTF-8 等都会落到默认值），因此不再单独写英文变体。
+    # 另加 Keywords 兜底，让 fuzzel/rofi/gnome 在中英文环境都能搜到。
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/ceru-music.desktop" << EOF
 [Desktop Entry]
-Name=澜音
+Name=Ceru Music
 Name[zh_CN]=澜音
 Name[zh]=澜音
-Name[en]=Ceru Music
-Name[en_US]=Ceru Music
-Name[en_GB]=Ceru Music
 GenericName=Music Player
 GenericName[zh_CN]=音乐播放器
 Comment=${pkgdesc}
@@ -110,8 +107,8 @@ EOF
     # 5. ceru-music:// 深度链接处理器
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/ceru-music-scheme-handler.desktop" << EOF
 [Desktop Entry]
-Name=澜音
-Name[en]=Ceru Music
+Name=Ceru Music
+Name[zh_CN]=澜音
 Comment=Open ceru-music:// links
 Exec=ceru-music %u
 Icon=ceru-music
