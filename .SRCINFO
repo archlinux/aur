@@ -1,6 +1,6 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 12.3.0
+	pkgver = 12.8.0
 	pkgrel = 1
 	url = https://libvirt.org/
 	arch = x86_64
@@ -118,14 +118,14 @@ pkgbase = libvirt-xen
 	backup = etc/libvirt/libxl-lockd.conf
 	backup = etc/libvirt/virtxend.conf
 	backup = etc/logrotate.d/libvirtd.libxl
-	source = https://libvirt.org/sources/libvirt-12.3.0.tar.xz
-	source = https://libvirt.org/sources/libvirt-12.3.0.tar.xz.asc
+	source = https://libvirt.org/sources/libvirt-12.8.0.tar.xz
+	source = https://libvirt.org/sources/libvirt-12.8.0.tar.xz.asc
 	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
-	sha256sums = 0d2b548d1b732d1ae21cfefacc204a2c8dabada80ea1edfbd528bfb73b9d2d27
+	sha256sums = 0cd46a8f3a2b9b63c35c6e6f42a6c2989183ef3b3d1499ee92b4876db35e6fe9
 	sha256sums = SKIP
 
 pkgname = libvirt-xen
-	provides = libvirt=12.3.0
+	provides = libvirt=12.8.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
