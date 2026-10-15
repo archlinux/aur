@@ -1,6 +1,6 @@
 # Maintainer: Ahmet Altindis
 pkgname=wipsync-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Sync work-in-progress folders between machines, through restic and ssh"
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=(wipsync)
 conflicts=(wipsync)
 options=(!debug)
 source=("wipsync-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/wipsync-$pkgver-x86_64.tar.gz")
-sha256sums=('e24ee814989e5b76d5fcf88c560247a6de25d56aa3edf0f6d56dd45c6014723c')
+sha256sums=('0c597bdfc0af3aa6c9cad0a9e0cca28b50ae0e9d1c9852219dc5348ffbd91179')
 
 package() {
   cd "wipsync-$pkgver-x86_64"
