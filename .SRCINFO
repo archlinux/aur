@@ -1,6 +1,6 @@
 pkgbase = flyctl-bin
 	pkgdesc = Command line tools for fly.io services
-	pkgver = 0.4.117
+	pkgver = 0.4.118
 	pkgrel = 1
 	url = https://github.com/superfly/flyctl
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = flyctl-bin
 	conflicts = flyctl
 	replaces = flyctl
 	options = !strip
-	source = flyctl-bin-0.4.117-x86_64.tgz::https://github.com/superfly/flyctl/releases/download/v0.4.117/flyctl_0.4.117_Linux_x86_64.tar.gz
-	b2sums = 6f62dfdcc78c63ec5eda286f6b5a077712da8306b1e4b87ebc02c902ed88db6a8021436a207f502f256a8c712e417ada736ede1b6b808afb7649b421cedf27ca
+	source = flyctl-bin-0.4.118-x86_64.tgz::https://github.com/superfly/flyctl/releases/download/v0.4.118/flyctl_0.4.118_Linux_x86_64.tar.gz
+	b2sums = b30b536e7ab4d670a3da407355ce916618cc692f8989bd65393f5c4d0c16f5f3f1defcd6fb0838327c728fc3205e73073c6b98461ade153041280da83d454d44
 
 pkgname = flyctl-bin
