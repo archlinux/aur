@@ -4,7 +4,7 @@
 
 pkgname=telegram-desktop-export-bin
 pkgver=7.3.1
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Telegram Desktop with export patches: media reused between exports, size limits per media type, no hangs on lost media'
 arch=('x86_64')
 url='https://github.com/Remenod/telegram-desktop-export'
@@ -71,7 +71,7 @@ conflicts=('telegram-desktop' 'telegram-desktop-export')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/Remenod/telegram-desktop-export/releases/download/pkg-$pkgver-$pkgrel/telegram-desktop-export-$pkgver-$pkgrel-$CARCH.pkg.tar.zst")
 noextract=("telegram-desktop-export-$pkgver-$pkgrel-$CARCH.pkg.tar.zst")
-sha512sums_x86_64=('7f386f702926d35286c3cff8593498fb57aaaa3487427abc997037543cd6e81965481334c3f0f83f43cbdbd34e1e3fc69597444c68d83e03949d748e5838e73b')
+sha512sums_x86_64=('9e5ccf86bec83e37ec31fafa29255e9b7acd45f7578237f158d39cf307f2977ae1f5987ebc5f9089107e512d683f7976cc1a284b793c7a6bd952b9148934c6ad')
 
 package() {
   bsdtar -xf "$srcdir/telegram-desktop-export-$pkgver-$pkgrel-$CARCH.pkg.tar.zst" -C "$pkgdir" \
