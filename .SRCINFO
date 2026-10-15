@@ -1,6 +1,6 @@
 pkgbase = ai-usagebar-bin
 	pkgdesc = Omarchy/Waybar widgets + TUI for AI plan usage (prebuilt binary)
-	pkgver = 1.37.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-usagebar
 	arch = x86_64
@@ -9,19 +9,19 @@ pkgbase = ai-usagebar-bin
 	depends = gcc-libs
 	optdepends = waybar: status bar that hosts the widget
 	optdepends = libnotify: desktop notifications on hard auth failures
-	provides = ai-usagebar=1.37.0
+	provides = ai-usagebar=1.38.0
 	conflicts = ai-usagebar
 	conflicts = ai-usagebar-debug
 	options = !strip
 	options = !debug
 	validpgpkeys = AE42EF5D73DD92E248815C95B65CCCAF64A99438
-	source_x86_64 = ai-usagebar-1.37.0-x86_64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.37.0/ai-usagebar-linux-x86_64.tar.gz
-	source_x86_64 = ai-usagebar-1.37.0-x86_64.tar.gz.sig::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.37.0/ai-usagebar-linux-x86_64.tar.gz.sig
-	sha256sums_x86_64 = 4d724bc4fb15e6327b786aba420bc5e0f3a584f022c4e5151c92c32434bfd702
+	source_x86_64 = ai-usagebar-1.38.0-x86_64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.38.0/ai-usagebar-linux-x86_64.tar.gz
+	source_x86_64 = ai-usagebar-1.38.0-x86_64.tar.gz.sig::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.38.0/ai-usagebar-linux-x86_64.tar.gz.sig
+	sha256sums_x86_64 = 74e0d100f698ebf51a94d082e7a438f96645b18a08ad0dc2e8d4196e353ede14
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = ai-usagebar-1.37.0-aarch64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.37.0/ai-usagebar-linux-aarch64.tar.gz
-	source_aarch64 = ai-usagebar-1.37.0-aarch64.tar.gz.sig::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.37.0/ai-usagebar-linux-aarch64.tar.gz.sig
-	sha256sums_aarch64 = 21a7c08ffa8d4f9c79e0fd15ca82231fffdaf9221f48b1bd454ec2d33615fd8a
+	source_aarch64 = ai-usagebar-1.38.0-aarch64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.38.0/ai-usagebar-linux-aarch64.tar.gz
+	source_aarch64 = ai-usagebar-1.38.0-aarch64.tar.gz.sig::https://github.com/akitaonrails/ai-usagebar/releases/download/v1.38.0/ai-usagebar-linux-aarch64.tar.gz.sig
+	sha256sums_aarch64 = 6b47f008b79727fbe5f3f4b43b99b80ab1fd148dc3569231db633fe1b7e49262
 	sha256sums_aarch64 = SKIP
 
 pkgname = ai-usagebar-bin
