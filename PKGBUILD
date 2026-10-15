@@ -2,7 +2,7 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname=python-langfuse
-pkgver=4.17.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A client library for accessing langfuse"
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(python-build python-installer python-uv-build python-wheel)
 optdepends=(python-langchain python-llama-index python-openai)
 install=migration-notice.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('438c05f6e8278c4253c8ee780c4bbef211b83560e61d232830dbc555bd0708c8')
+sha256sums=('bc9da92199ac99b81ab314662e44e9bf187d1e335ef17373cd32e89aac8d4c1b')
 
 prepare() {
     cd "langfuse-python-$pkgver"
