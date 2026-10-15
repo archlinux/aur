@@ -2,7 +2,7 @@
 
 pkgname=librofd-ffi
 pkgver=0.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Stable C ABI for the rofd OFD parser and renderer'
 arch=(x86_64)
 url='https://github.com/linuxdeepin/rofd'
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/rofd/archive/$_
         "rofd-ffi.pc.in")
 sha256sums=('0d6300fb28507f0597e2aa10d3822df3519e630fbf820fd95164df0ba8e3ce38'
             '812bebb544844164d0004f9854fde1714aa9da97b4fa9ff8d0fa6a8eea96564d'
-            'b9bb6731ecfa7baa025674a5a071924cee481e0ae6b062c38b210243696b1de1'
+            '108062dae1afa9484708ee42128386c983169c95c954b096f4b27c8fbf8d1d80'
             'cf912f767bb51933051144c074600f008c48cf694489630db52cd1edbb7bf538')
 
 # the archive of $_commit extracts to rofd-$_commit
@@ -38,9 +38,10 @@ prepare() {
   # entry once a release contains it (see papers-ofd/patches/README.md).
   patch -Np1 -i "$srcdir/rofd-ffi-page-size.patch"
   # Temporarily carried: upstream PR linuxdeepin/rofd#13 — text runs without an
-  # explicit DeltaX take their advances from the resolved font, so page geometry
-  # and search rectangles match the rendered glyphs. Drop this line and the
-  # source entry once a release contains it (see papers-ofd/patches/README.md).
+  # explicit DeltaX take their advances from the resolved font and their character
+  # boxes span that glyph's painted extents, so page geometry, search rectangles and
+  # selection regions match the rendered glyphs. Drop this line and the source entry
+  # once a release contains it (see papers-ofd/patches/README.md).
   patch -Np1 -i "$srcdir/rofd-ffi-font-advances.patch"
 }
 

@@ -1,7 +1,7 @@
 From 6f989280cb364d03ca1ea64b790223cf83258c0b Mon Sep 17 00:00:00 2001
 From: Yangtse Su <yangtsesu@gmail.com>
 Date: Thu, 15 Oct 2026 01:57:21 +0800
-Subject: [PATCH 1/2] feat(core): resolve missing text deltas through font
+Subject: [PATCH 1/3] feat(core): resolve missing text deltas through font
  advances
 
 An OFD text run that declares no `DeltaX` for a scalar is positioned by that
@@ -848,14 +848,10 @@ index 475ce6b..3448607 100644
  Reading order is deterministic. It starts with effective paint/source order,
  then groups compatible characters into lines using writing direction and
  geometry. Stable source order breaks geometric ties. Whitespace from the OFD
--- 
-2.56.0
-
-
 From 812073e15c13f693a7640a4dde7705bea93ca78b Mon Sep 17 00:00:00 2001
 From: Yangtse Su <yangtsesu@gmail.com>
 Date: Thu, 15 Oct 2026 02:15:58 +0800
-Subject: [PATCH 2/2] feat(core): size a resolved glyph box by its advance, not
+Subject: [PATCH 2/3] feat(core): size a resolved glyph box by its advance, not
  the font size
 
 The conservative footprint (at least one font size per scalar) exists so a
@@ -966,6 +962,1429 @@ index 636c530..086a254 100644
  
          // Search rectangles come from the same geometry.
          let query = CString::new("BZ").unwrap();
--- 
-2.56.0
+From 7f6a1852cc8c15a7a9fcd4508096fb9b41d053f4 Mon Sep 17 00:00:00 2001
+From: Yangtse Su <yangtsesu@gmail.com>
+Date: Thu, 15 Oct 2026 08:46:29 +0800
+Subject: [PATCH 3/3] feat(core): cover the painted glyph with the resolved
+ character box
 
+A character box spanned one font size above its baseline and stopped there, while a
+renderer paints the glyph's own extent: on a real government document (2464 glyphs
+over six embedded fonts, sizes 4.9-7.8 mm) 86% of the scalars reach below the
+baseline - CJK overshoot of 0.10-0.13 em, Latin descenders up to 0.19 em, mean
+0.50 mm and up to 1.46 mm - so a selection or search highlight cut the bottom off
+the text it belonged to, and the top carried a further 0.15-0.17 em of unused space.
+
+The provider seam that already resolves per-scalar advances now answers the whole
+scalar geometry: `TextScalarMetrics` carries the advance, the ascent and the descent
+of the glyph the positioner selected, in millimetres. rofd-core keeps its font-free
+fallback (font size above the baseline, nothing below) for scalars the provider
+cannot resolve and for documents loaded without a provider, and the builder spans
+the baseline sweep with the resolved extents. rofd-render reads the extents from the
+same FreeType control box it already loads for the advance - cached per glyph, so no
+extra face loads - and `PositionedGlyph::metrics` replaces `advance`, exposing both
+to callers. The FFI provider now owns its shared resolver in a `LazyLock` instead of
+leaking one, because a document keeps the provider for its whole life.
+
+Verified: cargo fmt --all -- --check; cargo clippy -p rofd-core -p rofd-render
+-p rofd-ffi --all-targets -- -D warnings; cargo test for the three crates (the two
+new pixel-level tests - `semantic_character_boxes_cover_the_rendered_ink` in
+crates/rofd-render/tests/cairo_text.rs and
+`text_layout_rectangles_cover_the_rendered_ink_below_the_baseline` in
+crates/rofd-ffi/tests/semantic.rs - fail with the builder extent change reverted and
+pass with it); crates/rofd-ffi/tests/run_c_tests.sh (rc=0, symbol list unchanged, 77
+entries). rofd-render's pre-existing decoded_limits_have_exact_and_one_over_boundaries
+failure is unaffected (it fails with this change stashed as well).
+---
+ crates/rofd-core/src/document.rs              |  69 ++---
+ crates/rofd-core/src/lib.rs                   |   4 +-
+ crates/rofd-core/src/semantic.rs              |  91 +++++--
+ crates/rofd-core/tests/semantic_text.rs       |  75 ++++--
+ crates/rofd-ffi/include/rofd.h                |   9 +-
+ crates/rofd-ffi/src/document.rs               |  10 +-
+ crates/rofd-ffi/src/renderer.rs               |  29 +-
+ crates/rofd-ffi/tests/semantic.rs             | 157 +++++++++++
+ crates/rofd-render/src/fonts.rs               | 251 ++++++++++++------
+ crates/rofd-render/src/lib.rs                 |   4 +-
+ crates/rofd-render/tests/cairo_text.rs        |  79 +++++-
+ crates/rofd-render/tests/fonts.rs             |  78 ++++--
+ ...-09-poppler-style-c-semantic-api-design.md |  14 +-
+ 13 files changed, 659 insertions(+), 211 deletions(-)
+
+diff --git a/crates/rofd-core/src/document.rs b/crates/rofd-core/src/document.rs
+index 0ac4ac6..22c5168 100644
+--- a/crates/rofd-core/src/document.rs
++++ b/crates/rofd-core/src/document.rs
+@@ -123,18 +123,18 @@ struct DocumentInner {
+     bookmarks: OnceLock<crate::navigation::BookmarkData>,
+     bookmark_initialization: Mutex<()>,
+     navigation_warning_state: Mutex<NavigationWarningState>,
+-    /// Font-resolved per-scalar advances for runs without explicit deltas, when the
+-    /// loader supplied a provider (see [`crate::TextAdvanceProvider`]).
+-    text_advances: Option<TextAdvances>,
++    /// Font-resolved per-scalar geometry for the page text index, when the loader
++    /// supplied a provider (see [`crate::TextMetricsProvider`]).
++    text_metrics: Option<TextMetricsSource>,
+ }
+ 
+-/// Debug-friendly owner of the optional text advance provider.
++/// Debug-friendly owner of the optional text metrics provider.
+ #[derive(Clone)]
+-struct TextAdvances(Arc<dyn crate::TextAdvanceProvider>);
++struct TextMetricsSource(Arc<dyn crate::TextMetricsProvider>);
+ 
+-impl std::fmt::Debug for TextAdvances {
++impl std::fmt::Debug for TextMetricsSource {
+     fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+-        formatter.write_str("TextAdvances(<provider>)")
++        formatter.write_str("TextMetricsSource(<provider>)")
+     }
+ }
+ 
+@@ -242,15 +242,17 @@ impl Page {
+         &self.data.layers
+     }
+ 
+-    /// Returns flattened source text and conservative character geometry in
+-    /// physical-page millimetres, in effective paint order.
++    /// Returns flattened source text and per-character geometry in physical-page
++    /// millimetres, in effective paint order.
+     ///
+     /// Visible annotation appearances follow the page layers. Distinct nonempty
+-    /// text objects are separated by synthesized newlines. Geometry uses validated
+-    /// OFD positioning; a scalar whose run declares no `DeltaX` uses the advance of a
+-    /// provider's font when the document was loaded with one, and the font size
+-    /// otherwise. The complete result is cached and shared by cloned page handles.
+-    /// Failed builds are not cached and may be retried on a later call.
++    /// text objects are separated by synthesized newlines. Geometry uses validated OFD
++    /// positioning; a scalar whose run declares no `DeltaX` advances by the advance of
++    /// a provider's font when the document was loaded with one, and its box spans that
++    /// font's ascent and descent around the baseline, so it covers the painted glyph.
++    /// Without a provider the font-size footprint stays in place. The complete result
++    /// is cached and shared by cloned page handles. Failed builds are not cached and
++    /// may be retried on a later call.
+     pub fn text(&self) -> crate::Result<&crate::PageText> {
+         if let Some(text) = self.data.semantic_text.get() {
+             return Ok(text);
+@@ -261,12 +263,12 @@ impl Page {
+         if let Some(text) = self.data.semantic_text.get() {
+             return Ok(text);
+         }
+-        let advances = self
++        let metrics = self
+             ._document
+-            .text_advances
++            .text_metrics
+             .as_ref()
+-            .map(|advances| advances.0.as_ref() as &dyn crate::TextAdvanceProvider);
+-        let text = crate::semantic::build_page_text(self, advances)?;
++            .map(|metrics| metrics.0.as_ref() as &dyn crate::TextMetricsProvider);
++        let text = crate::semantic::build_page_text(self, metrics)?;
+         Ok(self.data.semantic_text.get_or_init(|| text))
+     }
+ 
+@@ -358,39 +360,40 @@ impl Page {
+ impl Document {
+     /// Opens an OFD document from a host file path.
+     pub fn open(path: impl AsRef<Path>, options: LoadOptions) -> Result<Self> {
+-        Self::open_with_advances(path, options, None)
++        Self::open_with_metrics(path, options, None)
+     }
+ 
+-    /// Opens an OFD document from a host file path, resolving text advances through
+-    /// `advances`.
+-    pub fn open_with_advances(
++    /// Opens an OFD document from a host file path, resolving per-scalar text
++    /// geometry through `metrics`.
++    pub fn open_with_metrics(
+         path: impl AsRef<Path>,
+         options: LoadOptions,
+-        advances: Option<Arc<dyn crate::TextAdvanceProvider>>,
++        metrics: Option<Arc<dyn crate::TextMetricsProvider>>,
+     ) -> Result<Self> {
+         let path = path.as_ref();
+         let bytes = fs::read(path).map_err(|source| Error::Io {
+             path: path.to_owned(),
+             source,
+         })?;
+-        Self::from_bytes_with_advances(bytes, options, advances)
++        Self::from_bytes_with_metrics(bytes, options, metrics)
+     }
+ 
+     /// Opens an OFD document from owned bytes.
+     pub fn from_bytes(bytes: Vec<u8>, options: LoadOptions) -> Result<Self> {
+-        Self::from_bytes_with_advances(bytes, options, None)
++        Self::from_bytes_with_metrics(bytes, options, None)
+     }
+ 
+-    /// Opens an OFD document from owned bytes, resolving text advances through
+-    /// `advances`.
++    /// Opens an OFD document from owned bytes, resolving per-scalar text geometry
++    /// through `metrics`.
+     ///
+-    /// Without a provider, runs that carry no explicit `DeltaX` keep the font-size
+-    /// footprint; with one they use the font's advances, which is what a renderer
+-    /// draws.
+-    pub fn from_bytes_with_advances(
++    /// Without a provider, text geometry keeps the font-size footprint. With one, a
++    /// scalar whose run declares no `DeltaX` advances by the font's advance and its
++    /// box spans the font's extent around the baseline, which is what a renderer
++    /// paints.
++    pub fn from_bytes_with_metrics(
+         bytes: Vec<u8>,
+         options: LoadOptions,
+-        advances: Option<Arc<dyn crate::TextAdvanceProvider>>,
++        metrics: Option<Arc<dyn crate::TextMetricsProvider>>,
+     ) -> Result<Self> {
+         let strictness = options.strictness;
+         let limits = options.limits;
+@@ -534,7 +537,7 @@ impl Document {
+             container,
+             document_path,
+             limits,
+-            text_advances: advances.map(TextAdvances),
++            text_metrics: metrics.map(TextMetricsSource),
+             metadata: Metadata {
+                 document_id: info.document_id,
+                 title: info.title,
+diff --git a/crates/rofd-core/src/lib.rs b/crates/rofd-core/src/lib.rs
+index 027a344..7f6435c 100644
+--- a/crates/rofd-core/src/lib.rs
++++ b/crates/rofd-core/src/lib.rs
+@@ -36,8 +36,8 @@ pub use paint::{Color, LineCap, LineJoin, StrokeStyle};
+ pub use path_data::{PathCommand, PathData};
+ pub use resources::{FontResource, ImageFormat, ImageResource, ResourceIdentity, ResourceKind};
+ pub use semantic::{
+-    FindOptions, PageText, SelectionStyle, TextAdvanceProvider, TextChar, TextCharFlags,
+-    TextGeometryPrecision, TextMatch, TextSelection,
++    FindOptions, PageText, SelectionStyle, TextChar, TextCharFlags, TextGeometryPrecision,
++    TextMatch, TextMetricsProvider, TextScalarMetrics, TextSelection,
+ };
+ pub use signature::{SealPicture, SealPictureKind, StampAnnotation};
+ pub use text::{CharacterGlyphMap, GlyphTransform, TextCode, TextObject};
+diff --git a/crates/rofd-core/src/semantic.rs b/crates/rofd-core/src/semantic.rs
+index 40587cc..e28af55 100644
+--- a/crates/rofd-core/src/semantic.rs
++++ b/crates/rofd-core/src/semantic.rs
+@@ -2,22 +2,43 @@ use std::ops::Range;
+ 
+ use crate::{Error, Page, PageObject, Point, Rect, Result, TextObject, Transform};
+ 
+-/// Supplies the horizontal advance of one scalar when a text run declares no
+-/// `DeltaX` for it.
++/// Font-resolved geometry of one scalar of a text object, in millimetres.
+ ///
+-/// The OFD text model positions such a scalar by its font's advance, so geometry
+-/// that resolves fonts matches what a renderer draws; this crate parses and indexes
+-/// text without font access, which is why a provider is injected from outside
+-/// (`rofd-render` implements it over the same font stack the renderer uses). A
+-/// document loaded without a provider keeps the font-size footprint for those runs,
+-/// which stays a valid conservative approximation.
+-pub trait TextAdvanceProvider: Send + Sync {
+-    /// Returns one advance in millimetres per scalar of `text`, concatenating its
+-    /// runs in order, or `None` when the object's font cannot be resolved (the
++/// Every value is relative to the scalar's pen position, which is the baseline
++/// origin the OFD text model positions and a renderer paints from.
++#[derive(Clone, Copy, Debug, PartialEq)]
++pub struct TextScalarMetrics {
++    /// Horizontal advance the pen moves by after the scalar is painted.
++    pub advance_mm: f64,
++    /// Painted extent above the baseline.
++    pub ascent_mm: f64,
++    /// Painted extent below the baseline.
++    pub descent_mm: f64,
++}
++
++/// Supplies the font-resolved geometry of each scalar of one text object.
++///
++/// A scalar without an explicit `DeltaX` is positioned by its font's advance, and it
++/// is painted at the font's own extent around the baseline; this crate parses and
++/// indexes text without font access, which is why a provider is injected from outside
++/// (`rofd-render` implements it over the same font stack the renderer uses) whenever
++/// page geometry has to match what a renderer draws. A document loaded without a
++/// provider keeps the font-size footprint, which stays a valid conservative
++/// approximation.
++pub trait TextMetricsProvider: Send + Sync {
++    /// Returns one metrics entry in millimetres per scalar of `text`, concatenating
++    /// its runs in order, or `None` when the object's font cannot be resolved (the
+     /// builder then keeps the font-size footprint).
+     ///
+-    /// Non-finite or negative values are ignored per scalar.
+-    fn advances_mm(&self, page: &Page, text: &TextObject, size_mm: f64) -> Option<Vec<f64>>;
++    /// A scalar without a resolved glyph of its own keeps the conservative font-size
++    /// footprint: `size_mm` above the baseline and nothing below it. That covers both
++    /// a scalar no face owns and one whose glyph paints nothing, such as a space.
++    fn metrics_mm(
++        &self,
++        page: &Page,
++        text: &TextObject,
++        size_mm: f64,
++    ) -> Option<Vec<TextScalarMetrics>>;
+ }
+ 
+ /// Options for literal search in canonical page text.
+@@ -482,9 +503,9 @@ fn union_rectangles(mut rectangles: impl Iterator<Item = Rect>) -> Result<Option
+ 
+ pub(crate) fn build_page_text(
+     page: &crate::Page,
+-    advances: Option<&dyn TextAdvanceProvider>,
++    metrics: Option<&dyn TextMetricsProvider>,
+ ) -> Result<PageText> {
+-    let mut builder = TextBuilder::new(page, advances);
++    let mut builder = TextBuilder::new(page, metrics);
+     for layer in page.layers() {
+         builder.objects(layer.objects(), Transform::IDENTITY)?;
+     }
+@@ -499,7 +520,7 @@ pub(crate) fn build_page_text(
+ struct TextBuilder<'a> {
+     text: PageText,
+     page: &'a Page,
+-    advances: Option<&'a dyn TextAdvanceProvider>,
++    metrics: Option<&'a dyn TextMetricsProvider>,
+     source_characters: usize,
+     metadata_entries: usize,
+     max_source_characters: usize,
+@@ -507,12 +528,12 @@ struct TextBuilder<'a> {
+ }
+ 
+ impl<'a> TextBuilder<'a> {
+-    fn new(page: &'a Page, advances: Option<&'a dyn TextAdvanceProvider>) -> Self {
++    fn new(page: &'a Page, metrics: Option<&'a dyn TextMetricsProvider>) -> Self {
+         let limits = page.resource_limits();
+         Self {
+             text: PageText::default(),
+             page,
+-            advances,
++            metrics,
+             source_characters: 0,
+             metadata_entries: 0,
+             max_source_characters: limits.max_text_characters_per_page,
+@@ -552,21 +573,33 @@ impl<'a> TextBuilder<'a> {
+             self.push_separator()?;
+         }
+         let size = object.font_size();
+-        // One font-resolved advance per scalar of the whole object, in run order;
+-        // absent when the provider has no font for it. Explicit deltas stay
+-        // authoritative and are never replaced.
++        // One metrics entry per scalar of the whole object, in run order; absent
++        // when the provider has no font for it. Explicit deltas stay authoritative
++        // and are never replaced.
+         let resolved = self
+-            .advances
+-            .and_then(|advances| advances.advances_mm(self.page, object, size));
++            .metrics
++            .and_then(|metrics| metrics.metrics_mm(self.page, object, size));
+         let mut scalar = 0usize;
+         for run in object.runs() {
+             let (mut x, mut y) = (run.x(), run.y());
+             for (index, character) in run.text().chars().enumerate() {
+-                let font_advance = resolved
++                let metrics = resolved
+                     .as_ref()
+                     .and_then(|values| values.get(scalar))
+-                    .copied()
++                    .copied();
++                let font_advance = metrics
++                    .map(|metrics| metrics.advance_mm)
+                     .filter(|value| value.is_finite() && *value > 0.0);
++                // A glyph that paints nothing (a space) or that no face owns keeps
++                // the conservative font-size footprint above the baseline.
++                let ascent = metrics
++                    .map(|metrics| metrics.ascent_mm)
++                    .filter(|value| value.is_finite() && *value > 0.0)
++                    .unwrap_or(size);
++                let descent = metrics
++                    .map(|metrics| metrics.descent_mm)
++                    .filter(|value| value.is_finite() && *value >= 0.0)
++                    .unwrap_or(0.0);
+                 let dx = if run.has_explicit_delta_x() {
+                     run.delta_x()[index]
+                 } else {
+@@ -581,7 +614,9 @@ impl<'a> TextBuilder<'a> {
+                 let next_x = finite_add(x, dx)?;
+                 let next_y = finite_add(y, dy)?;
+                 // A resolved glyph advance is the box width, so the boxes of a run
+-                // tile it and a match rectangle hugs the matched text. Without one,
++                // tile it and a match rectangle hugs the matched text. Its ascent and
++                // descent are the vertical extents, so the box covers the painted
++                // glyph instead of stopping at the baseline. Without resolved metrics,
+                 // bound the horizontal baseline sweep with a direction-independent
+                 // font-size footprint instead; explicit zero advances still receive
+                 // nonempty conservative geometry.
+@@ -590,8 +625,8 @@ impl<'a> TextBuilder<'a> {
+                     left,
+                     font_advance.map_or_else(|| dx.abs().max(size), f64::abs),
+                 )?;
+-                let top = finite_add(y.min(next_y), -size)?;
+-                let bottom = y.max(next_y);
++                let top = finite_add(y.min(next_y), -ascent)?;
++                let bottom = finite_add(y.max(next_y), descent)?;
+                 let rect = transformed_box(left, top, right, bottom, transform)?;
+                 let flags = if character.is_whitespace() {
+                     TextCharFlags::WHITESPACE
+diff --git a/crates/rofd-core/tests/semantic_text.rs b/crates/rofd-core/tests/semantic_text.rs
+index ee3f300..585be26 100644
+--- a/crates/rofd-core/tests/semantic_text.rs
++++ b/crates/rofd-core/tests/semantic_text.rs
+@@ -398,50 +398,59 @@ fn page_with_text(content: &str) -> rofd_core::Page {
+     document_with_page(&page_xml, "", "", &[]).page(0).unwrap()
+ }
+ 
+-/// A provider that advances every scalar by half the font size, so the geometry it
+-/// produces is distinguishable from both the font-size footprint and explicit deltas.
+-struct HalfSizeAdvances {
++/// A provider that advances every scalar by half the font size and paints it between
++/// a quarter and three quarters of the font size around the baseline, so the geometry
++/// it produces is distinguishable from both the font-size footprint and explicit
++/// deltas.
++struct HalfSizeMetrics {
+     resolution_failure: bool,
++    empty_ink: bool,
+ }
+ 
+-impl rofd_core::TextAdvanceProvider for HalfSizeAdvances {
+-    fn advances_mm(
++impl rofd_core::TextMetricsProvider for HalfSizeMetrics {
++    fn metrics_mm(
+         &self,
+         _page: &rofd_core::Page,
+         text: &TextObject,
+         size_mm: f64,
+-    ) -> Option<Vec<f64>> {
++    ) -> Option<Vec<rofd_core::TextScalarMetrics>> {
+         if self.resolution_failure {
+             return None;
+         }
+         Some(
+             text.runs()
+                 .iter()
+-                .flat_map(|run| run.text().chars().map(|_| size_mm / 2.0))
++                .flat_map(|run| {
++                    run.text().chars().map(|_| rofd_core::TextScalarMetrics {
++                        advance_mm: size_mm / 2.0,
++                        ascent_mm: size_mm / 2.0,
++                        descent_mm: if self.empty_ink { 0.0 } else { size_mm / 4.0 },
++                    })
++                })
+                 .collect(),
+         )
+     }
+ }
+ 
+-fn document_with_page_and_advances(
++fn document_with_page_and_metrics(
+     page_xml: &str,
+-    advances: Option<Arc<dyn rofd_core::TextAdvanceProvider>>,
++    metrics: Option<Arc<dyn rofd_core::TextMetricsProvider>>,
+ ) -> Document {
+     let document_xml = r#"<ofd:Document xmlns:ofd="http://www.ofdspec.org/2016"><ofd:CommonData>
+ <ofd:PageArea><ofd:PhysicalBox>0 0 210 297</ofd:PhysicalBox></ofd:PageArea>
+ <ofd:PublicRes>Res.xml</ofd:PublicRes></ofd:CommonData>
+ <ofd:Pages><ofd:Page ID="900" BaseLoc="Pages/Page_0/Content.xml"/></ofd:Pages></ofd:Document>"#;
+     let entries = [("Doc_0/Res.xml", FONT_CATALOG.as_bytes())];
+-    Document::from_bytes_with_advances(
++    Document::from_bytes_with_metrics(
+         support::ofd_with_document_page_and_entries(document_xml, page_xml, &entries),
+         LoadOptions::default(),
+-        advances,
++        metrics,
+     )
+     .unwrap()
+ }
+ 
+ #[test]
+-fn advance_provider_supplies_scalar_steps_where_deltas_are_absent() {
++fn metrics_provider_supplies_scalar_geometry_where_deltas_are_absent() {
+     let page_xml = format!(
+         r#"<?xml version="1.0" encoding="UTF-8"?>
+ <ofd:Page xmlns:ofd="http://www.ofdspec.org/2016">
+@@ -450,17 +459,18 @@ fn advance_provider_supplies_scalar_steps_where_deltas_are_absent() {
+         text_object(2, "ABCD")
+     );
+ 
+-    let without = document_with_page_and_advances(&page_xml, None)
++    let without = document_with_page_and_metrics(&page_xml, None)
+         .page(0)
+         .unwrap()
+         .text()
+         .unwrap()
+         .characters()
+         .to_vec();
+-    let with = document_with_page_and_advances(
++    let with = document_with_page_and_metrics(
+         &page_xml,
+-        Some(Arc::new(HalfSizeAdvances {
++        Some(Arc::new(HalfSizeMetrics {
+             resolution_failure: false,
++            empty_ink: false,
+         })),
+     )
+     .page(0)
+@@ -483,11 +493,37 @@ fn advance_provider_supplies_scalar_steps_where_deltas_are_absent() {
+     let first_end = with[0].rect_mm().unwrap().x + with[0].rect_mm().unwrap().width;
+     assert!((first_end - with[1].rect_mm().unwrap().x).abs() < 1e-9);
+ 
++    // The vertical box spans the resolved extents around the baseline: the fixture
++    // places it at Y=5, so the box starts half a font size above it and ends a
++    // quarter below.
++    let box_ = with[0].rect_mm().unwrap();
++    assert!((box_.y - (5.0 - 2.0)).abs() < 1e-9, "{box_:?}");
++    assert!((box_.height - 3.0).abs() < 1e-9, "{box_:?}");
++
++    // A glyph that does not paint below its baseline keeps the box bottom there.
++    let flat = document_with_page_and_metrics(
++        &page_xml,
++        Some(Arc::new(HalfSizeMetrics {
++            resolution_failure: false,
++            empty_ink: true,
++        })),
++    )
++    .page(0)
++    .unwrap()
++    .text()
++    .unwrap()
++    .characters()
++    .to_vec();
++    let flat_box = flat[0].rect_mm().unwrap();
++    assert!((flat_box.y - (5.0 - 2.0)).abs() < 1e-9, "{flat_box:?}");
++    assert!((flat_box.height - 2.0).abs() < 1e-9, "{flat_box:?}");
++
+     // A provider that cannot resolve a font leaves the font-size footprint alone.
+-    let failed = document_with_page_and_advances(
++    let failed = document_with_page_and_metrics(
+         &page_xml,
+-        Some(Arc::new(HalfSizeAdvances {
++        Some(Arc::new(HalfSizeMetrics {
+             resolution_failure: true,
++            empty_ink: false,
+         })),
+     )
+     .page(0)
+@@ -508,10 +544,11 @@ fn explicit_deltas_stay_authoritative_with_a_provider() {
+ </ofd:Page>"#,
+         r#"<ofd:TextObject ID="2" Boundary="0 0 20 8" Font="10" Size="4"><ofd:TextCode X="1" Y="5" DeltaX="9 9 9 9">ABCD</ofd:TextCode></ofd:TextObject>"#
+     );
+-    let text = document_with_page_and_advances(
++    let text = document_with_page_and_metrics(
+         &page_xml,
+-        Some(Arc::new(HalfSizeAdvances {
++        Some(Arc::new(HalfSizeMetrics {
+             resolution_failure: false,
++            empty_ink: false,
+         })),
+     )
+     .page(0)
+diff --git a/crates/rofd-ffi/include/rofd.h b/crates/rofd-ffi/include/rofd.h
+index 5465878..76b5945 100644
+--- a/crates/rofd-ffi/include/rofd.h
++++ b/crates/rofd-ffi/include/rofd.h
+@@ -574,10 +574,11 @@ void rofd_string_free(rofd_string_t *text);
+  * scalar in canonical page text, including synthesized separators. Free with
+  * rofd_text_layout_free. The snapshot survives page and document destruction.
+  * A scalar whose run declares no explicit delta is placed by its font's advance,
+- * resolved through the default font stack (the one a renderer created with NULL
+- * options uses); a renderer configured with other fallback families may draw
+- * slightly different advances. Scalars that cannot be resolved fall back to a
+- * conservative font-size box.
++ * and its box spans that font's painted extents around the baseline, both resolved
++ * through the default font stack (the one a renderer created with NULL options
++ * uses); a renderer configured with other fallback families may draw slightly
++ * different glyphs. Scalars that cannot be resolved fall back to a conservative
++ * font-size box.
+  * page and layout are required; error is optional. All outputs must be aligned,
+  * writable, mutually disjoint and disjoint from live page storage. */
+ rofd_status_t rofd_page_get_text_layout(const rofd_page_t *page,
+diff --git a/crates/rofd-ffi/src/document.rs b/crates/rofd-ffi/src/document.rs
+index b2d6c1f..dfecb60 100644
+--- a/crates/rofd-ffi/src/document.rs
++++ b/crates/rofd-ffi/src/document.rs
+@@ -104,12 +104,12 @@ pub unsafe extern "C" fn rofd_document_open(
+                 return Err(FfiError::invalid_argument("path is empty"));
+             }
+             let options = LoadOptionsInput::from_ffi(options)?;
+-            // Semantic text geometry resolves font advances through the default font
++            // Semantic text geometry resolves font metrics through the default font
+             // stack, so search/selection rectangles match the rendered glyphs (see
+-            // `text_advance_provider`).
+-            let advances: std::sync::Arc<dyn rofd_core::TextAdvanceProvider> =
+-                std::sync::Arc::new(crate::renderer::text_advance_provider());
+-            let inner = rofd_core::Document::open_with_advances(path, options, Some(advances))
++            // `text_metrics_provider`).
++            let metrics: std::sync::Arc<dyn rofd_core::TextMetricsProvider> =
++                std::sync::Arc::new(crate::renderer::text_metrics_provider());
++            let inner = rofd_core::Document::open_with_metrics(path, options, Some(metrics))
+                 .map_err(FfiError::from)?;
+             Ok(Box::new(DocumentHandle { inner }))
+         })
+diff --git a/crates/rofd-ffi/src/renderer.rs b/crates/rofd-ffi/src/renderer.rs
+index 44397a7..5bacc24 100644
+--- a/crates/rofd-ffi/src/renderer.rs
++++ b/crates/rofd-ffi/src/renderer.rs
+@@ -16,7 +16,7 @@ use rofd_render::{
+ use std::ffi::CStr;
+ use std::panic::{catch_unwind, AssertUnwindSafe};
+ use std::slice;
+-use std::sync::OnceLock;
++use std::sync::{Arc, LazyLock};
+ 
+ const MAX_FALLBACK_FAMILIES: usize = 1024;
+ const DEFAULT_FALLBACK_FAMILIES: [&str; 3] = ["Noto Sans CJK SC", "Noto Sans", "DejaVu Sans"];
+@@ -131,23 +131,24 @@ fn default_fallback_families() -> Vec<String> {
+         .collect()
+ }
+ 
+-/// Font advances for text runs that carry no explicit `DeltaX`.
++/// Font metrics for the semantic page text index.
+ ///
+-/// Semantic page geometry is resolved with the same font stack a default renderer
+-/// uses (`rofd_renderer_new` with NULL options), so the page text layout, search
+-/// rectangles and selection regions land on the glyphs that get drawn. The resolver
+-/// is created once per process and kept for the life of the library, because the
+-/// system font database scan is the expensive part. A renderer created with other
+-/// fallback families still chooses its own faces for drawing.
+-pub(crate) fn text_advance_provider() -> rofd_render::FontTextAdvances<'static> {
+-    static RESOLVER: OnceLock<&'static SystemFontResolver> = OnceLock::new();
+-    let resolver = RESOLVER.get_or_init(|| {
+-        Box::leak(Box::new(SystemFontResolver::with_system_fonts(
++/// Page text geometry is resolved with the same font stack a default renderer uses
++/// (`rofd_renderer_new` with NULL options), so the page text layout, search
++/// rectangles and selection regions land on the glyphs that get drawn - including the
++/// vertical extent of each glyph, so a highlight covers the text it belongs to. The
++/// resolver is created once per process and shared with every document that resolves
++/// metrics, because the system font database scan is the expensive part. A renderer
++/// created with other fallback families still chooses its own faces for drawing.
++pub(crate) fn text_metrics_provider() -> rofd_render::FontTextMetrics {
++    static RESOLVER: LazyLock<Arc<SystemFontResolver>> = LazyLock::new(|| {
++        Arc::new(SystemFontResolver::with_system_fonts(
+             default_fallback_families(),
+             64 * 1024 * 1024,
+-        )))
++        ))
+     });
+-    rofd_render::FontTextAdvances::new(*resolver)
++    let resolver: Arc<SystemFontResolver> = Arc::clone(&RESOLVER);
++    rofd_render::FontTextMetrics::new(resolver)
+ }
+ 
+ pub(crate) struct RenderOptionsInput;
+diff --git a/crates/rofd-ffi/tests/semantic.rs b/crates/rofd-ffi/tests/semantic.rs
+index 086a254..57d9bef 100644
+--- a/crates/rofd-ffi/tests/semantic.rs
++++ b/crates/rofd-ffi/tests/semantic.rs
+@@ -1,6 +1,7 @@
+ #[path = "../../rofd-core/tests/support/mod.rs"]
+ mod support;
+ 
++use cairo::{Context, Format, ImageSurface};
+ use rofd_ffi::*;
+ use std::ffi::{CStr, CString};
+ use std::mem::{size_of, MaybeUninit};
+@@ -1021,3 +1022,159 @@ fn text_geometry_and_search_rectangles_use_font_advances() {
+         rofd_page_free(page);
+     }
+ }
++
++/// A character box covers the glyph a renderer paints, including the part below the
++/// baseline: the font-size footprint ended exactly at the baseline, so a selection or
++/// search highlight built from the ABI's rectangles was clipped at the bottom of the
++/// text (CJK overshoot and Latin descenders alike).
++#[test]
++fn text_layout_rectangles_cover_the_rendered_ink_below_the_baseline() {
++    const FONT: &[u8] = include_bytes!("../../rofd-render/tests/fixtures/fonts/phase3-subset.ttf");
++    // 中 reaches 0.079 em below its baseline in this subset (Noto Sans CJK SC) and
++    // 0.84 em above it.
++    let xml = r#"<ofd:Page xmlns:ofd="http://www.ofdspec.org/2016"><ofd:Content><ofd:Layer ID="1"><ofd:TextObject ID="2" Boundary="0 0 30 10" Font="10" Size="4"><ofd:TextCode X="1" Y="4">中</ofd:TextCode></ofd:TextObject></ofd:Layer></ofd:Content></ofd:Page>"#;
++    let document = r#"<ofd:Document xmlns:ofd="http://www.ofdspec.org/2016"><ofd:CommonData><ofd:PageArea><ofd:PhysicalBox>0 0 30 10</ofd:PhysicalBox></ofd:PageArea><ofd:DocumentRes>Res.xml</ofd:DocumentRes></ofd:CommonData><ofd:Pages><ofd:Page ID="900" BaseLoc="Pages/Page_0/Content.xml"/></ofd:Pages></ofd:Document>"#;
++    let font = br#"<ofd:Res xmlns:ofd="http://www.ofdspec.org/2016"><ofd:Fonts><ofd:Font ID="10" FontName="Fixture"><ofd:FontFile>Fonts/subset.ttf</ofd:FontFile></ofd:Font></ofd:Fonts></ofd:Res>"#;
++    let bytes = support::ofd_with_document_page_and_entries(
++        document,
++        xml,
++        &[("Doc_0/Res.xml", font), ("Doc_0/Fonts/subset.ttf", FONT)],
++    );
++    static NEXT: AtomicUsize = AtomicUsize::new(0);
++    let path = std::env::temp_dir().join(format!(
++        "rofd-ffi-semantic-ink-{}-{}.ofd",
++        std::process::id(),
++        NEXT.fetch_add(1, Ordering::Relaxed)
++    ));
++    std::fs::write(&path, bytes).unwrap();
++    let cpath = CString::new(path.to_str().unwrap()).unwrap();
++
++    let mut document_handle = ptr::null_mut();
++    let mut page = ptr::null_mut();
++    let mut renderer = ptr::null_mut();
++    let mut layout = ptr::null_mut();
++    let mut report = ptr::null_mut();
++    // SAFETY: Live handles, initialized records and disjoint outputs; every handle is
++    // freed once after its last borrow.
++    unsafe {
++        assert_eq!(
++            rofd_document_open(
++                cpath.as_ptr(),
++                ptr::null(),
++                &mut document_handle,
++                ptr::null_mut()
++            ),
++            ROFD_STATUS_OK
++        );
++        std::fs::remove_file(&path).unwrap();
++        assert_eq!(
++            rofd_document_get_page(document_handle, 0, &mut page, ptr::null_mut()),
++            ROFD_STATUS_OK
++        );
++
++        // 254 dpi renders exactly ten pixels per millimetre.
++        let options = rofd_render_options_t {
++            dpi: 254.0,
++            ..Default::default()
++        };
++        assert_eq!(
++            rofd_renderer_new(ptr::null(), &mut renderer, ptr::null_mut()),
++            ROFD_STATUS_OK
++        );
++        let (mut width, mut height) = (0, 0);
++        assert_eq!(
++            rofd_renderer_get_pixel_canvas_size(
++                renderer,
++                page,
++                &options,
++                &mut width,
++                &mut height,
++                ptr::null_mut()
++            ),
++            ROFD_STATUS_OK
++        );
++        let surface = ImageSurface::create(Format::ARgb32, width, height).unwrap();
++        let context = Context::new(&surface).unwrap();
++        assert_eq!(
++            rofd_renderer_render_page_cairo(
++                renderer,
++                page,
++                context.to_raw_none(),
++                &options,
++                &mut report,
++                ptr::null_mut()
++            ),
++            ROFD_STATUS_OK
++        );
++        drop(context);
++
++        assert_eq!(
++            rofd_page_get_text_layout(page, &mut layout, ptr::null_mut()),
++            ROFD_STATUS_OK
++        );
++        let mut count = 0;
++        assert_eq!(
++            rofd_text_layout_get_count(layout, &mut count, ptr::null_mut()),
++            ROFD_STATUS_OK
++        );
++        assert_eq!(count, 1);
++
++        surface.flush();
++        let (mut ink_left, mut ink_top) = (i32::MAX, i32::MAX);
++        let (mut ink_right, mut ink_bottom) = (i32::MIN, i32::MIN);
++        let stride = surface.stride() as usize;
++        surface
++            .with_data(|data| {
++                for y in 0..height {
++                    for x in 0..width {
++                        let offset = y as usize * stride + x as usize * 4;
++                        if data[offset..offset + 3] == [255, 255, 255] {
++                            continue;
++                        }
++                        ink_left = ink_left.min(x);
++                        ink_top = ink_top.min(y);
++                        ink_right = ink_right.max(x);
++                        ink_bottom = ink_bottom.max(y);
++                    }
++                }
++            })
++            .unwrap();
++        assert!(ink_bottom > ink_top, "the embedded glyphs must paint");
++
++        // One glyph covers the same area as the page's only ink. Hinting can push a
++        // device pixel of ink outside the unhinted control box, so the three edges it
++        // can reach get a pixel of slack.
++        let glyph = character(layout, 0).rect_mm;
++        let slack = 1.0;
++        let (box_left, box_top) = (glyph.x_mm * 10.0, glyph.y_mm * 10.0);
++        let (box_right, box_bottom) = (
++            (glyph.x_mm + glyph.width_mm) * 10.0,
++            (glyph.y_mm + glyph.height_mm) * 10.0,
++        );
++        assert!(
++            box_left <= f64::from(ink_left) + slack,
++            "left {box_left} vs {ink_left}"
++        );
++        assert!(
++            box_top <= f64::from(ink_top) + slack,
++            "top {box_top} vs {ink_top}"
++        );
++        assert!(
++            box_right >= f64::from(ink_right) - slack,
++            "right {box_right} vs {ink_right}"
++        );
++        // The bottom is the regression: the baseline sits at 4 mm, so the old
++        // font-size footprint stopped at 40 pixels while 中 paints below it.
++        assert!(box_bottom > 40.0, "bottom {box_bottom} vs the baseline");
++        assert!(
++            box_bottom >= f64::from(ink_bottom),
++            "bottom {box_bottom} vs {ink_bottom}"
++        );
++
++        rofd_render_report_free(report);
++        rofd_text_layout_free(layout);
++        rofd_renderer_free(renderer);
++        rofd_page_free(page);
++        rofd_document_free(document_handle);
++    }
++}
+diff --git a/crates/rofd-render/src/fonts.rs b/crates/rofd-render/src/fonts.rs
+index 2ce8f21..381ab87 100644
+--- a/crates/rofd-render/src/fonts.rs
++++ b/crates/rofd-render/src/fonts.rs
+@@ -5,8 +5,8 @@ use std::sync::{Arc, Condvar, Mutex};
+ use fontdb::{Database, Family, Query, Source, ID};
+ use freetype::face::LoadFlag;
+ use rofd_core::{
+-    FontResource, Page, ResourceIdentity, ResourceLimits, TextAdvanceProvider, TextObject,
+-    Transform,
++    FontResource, Page, ResourceIdentity, ResourceLimits, TextMetricsProvider, TextObject,
++    TextScalarMetrics, Transform,
+ };
+ 
+ use crate::{Error, Result};
+@@ -118,7 +118,17 @@ impl PartialEq for ResolvedFont {
+ #[derive(Debug, Default)]
+ struct FontMetricsCache {
+     characters: HashMap<char, Option<u32>>,
+-    advances: HashMap<u32, (i64, i64)>,
++    glyphs: HashMap<u32, UnscaledGlyphMetrics>,
++}
++
++/// Unscaled metrics of one face glyph, in font units.
++#[derive(Clone, Copy, Debug, PartialEq)]
++struct UnscaledGlyphMetrics {
++    /// Advance the pen moves by after painting the glyph.
++    advance: (i64, i64),
++    /// Painted extent above and below the baseline, or `None` when the glyph paints
++    /// nothing (a space, for instance).
++    ink: Option<(i64, i64)>,
+ }
+ 
+ impl ResolvedFont {
+@@ -298,13 +308,8 @@ impl ResolvedFont {
+     /// Returns the unshaped horizontal-layout advance at `size_mm`.
+     pub fn glyph_advance_mm(&self, glyph_id: u32, size_mm: f64) -> Result<(f64, f64)> {
+         validate_glyph(self, glyph_id)?;
+-        if !size_mm.is_finite() || size_mm <= 0.0 {
+-            return Err(Error::InvalidFont {
+-                identity: self.identity().to_owned(),
+-                message: "glyph advance size must be finite and positive".to_owned(),
+-            });
+-        }
+-        self.advance_mm(glyph_id, size_mm)
++        self.scaled_metrics(glyph_id, size_mm)
++            .map(|metrics| metrics.advance)
+     }
+ 
+     fn glyph_for(&self, character: char) -> Result<Option<u32>> {
+@@ -319,35 +324,73 @@ impl ResolvedFont {
+         Ok(glyph_id)
+     }
+ 
+-    fn advance_mm(&self, glyph_id: u32, size_mm: f64) -> Result<(f64, f64)> {
+-        let mut metrics = self.metrics.lock().map_err(|_| Error::FontCache {
+-            message: "face metadata lock is poisoned".to_owned(),
+-        })?;
+-        let advance = if let Some(advance) = metrics.advances.get(&glyph_id) {
+-            *advance
+-        } else {
+-            let advance = self.with_face(|face| {
+-                face.load_glyph(glyph_id, LoadFlag::NO_SCALE | LoadFlag::NO_HINTING)
+-                    .map_err(|error| Error::InvalidFont {
+-                        identity: self.identity().to_owned(),
+-                        message: error.to_string(),
+-                    })?;
+-                let advance = face.glyph().advance();
+-                Ok((advance.x, advance.y))
+-            })?;
+-            metrics.advances.insert(glyph_id, advance);
+-            advance
+-        };
++    /// Returns the advance and the painted vertical extents of `glyph_id` at
++    /// `size_mm`.
++    ///
++    /// The extents are the control box FreeType reports for the unscaled outline, so
++    /// they contain every pixel the renderer can paint for this glyph; they are what
++    /// makes a character box cover its glyph instead of stopping at the baseline. A
++    /// glyph that paints nothing (a space) has no ink, so it keeps the font-size
++    /// footprint above the baseline, exactly like a scalar without a face.
++    fn scaled_metrics(&self, glyph_id: u32, size_mm: f64) -> Result<GlyphMetrics> {
++        if !size_mm.is_finite() || size_mm <= 0.0 {
++            return Err(Error::InvalidFont {
++                identity: self.identity().to_owned(),
++                message: "glyph advance size must be finite and positive".to_owned(),
++            });
++        }
++        let unscaled = self.unscaled_metrics(glyph_id)?;
+         let scale = size_mm / f64::from(self.units_per_em);
+-        let x = advance.0 as f64 * scale;
+-        let y = advance.1 as f64 * scale;
+-        if !x.is_finite() || !y.is_finite() {
++        let advance = (
++            unscaled.advance.0 as f64 * scale,
++            unscaled.advance.1 as f64 * scale,
++        );
++        if !advance.0.is_finite() || !advance.1.is_finite() {
+             return Err(Error::InvalidFont {
+                 identity: self.identity().to_owned(),
+                 message: "glyph advance is non-finite".to_owned(),
+             });
+         }
+-        Ok((x, y))
++        let (ascent, descent) = match unscaled.ink {
++            Some((above, below)) => (above as f64 * scale, below as f64 * scale),
++            None => (size_mm, 0.0),
++        };
++        Ok(GlyphMetrics {
++            advance,
++            ascent,
++            descent,
++        })
++    }
++
++    /// Returns the cached unscaled metrics of `glyph_id`, loading them on first use.
++    fn unscaled_metrics(&self, glyph_id: u32) -> Result<UnscaledGlyphMetrics> {
++        let mut metrics = self.metrics.lock().map_err(|_| Error::FontCache {
++            message: "face metadata lock is poisoned".to_owned(),
++        })?;
++        if let Some(glyph) = metrics.glyphs.get(&glyph_id) {
++            return Ok(*glyph);
++        }
++        let glyph = self.with_face(|face| {
++            face.load_glyph(glyph_id, LoadFlag::NO_SCALE | LoadFlag::NO_HINTING)
++                .map_err(|error| Error::InvalidFont {
++                    identity: self.identity().to_owned(),
++                    message: error.to_string(),
++                })?;
++            let slot = face.glyph();
++            let advance = slot.advance();
++            let box_ = slot.metrics();
++            // Unscaled metrics report the glyph's control box: the top bearing is its
++            // highest point and the height spans it down to the lowest one, so the
++            // descending part is the remainder of that span below the baseline.
++            let ink =
++                (box_.height > 0).then(|| (box_.horiBearingY, box_.height - box_.horiBearingY));
++            Ok(UnscaledGlyphMetrics {
++                advance: (advance.x, advance.y),
++                ink,
++            })
++        })?;
++        metrics.glyphs.insert(glyph_id, glyph);
++        Ok(glyph)
+     }
+ 
+     fn with_face<T>(
+@@ -410,13 +453,39 @@ pub enum FontDiagnostic {
+     },
+ }
+ 
++/// Advance and painted vertical extents of one positioned glyph, in millimetres.
++///
++/// Every value is relative to the glyph's own pen position, which is the baseline
++/// origin the renderer paints it from.
++#[derive(Clone, Copy, Debug, PartialEq)]
++pub struct GlyphMetrics {
++    advance: (f64, f64),
++    ascent: f64,
++    descent: f64,
++}
++
++impl GlyphMetrics {
++    /// Returns the advance this glyph contributes on each axis, in millimetres.
++    pub fn advance(&self) -> (f64, f64) {
++        self.advance
++    }
++    /// Returns the painted extent above the glyph's baseline, in millimetres.
++    pub fn ascent(&self) -> f64 {
++        self.ascent
++    }
++    /// Returns the painted extent below the glyph's baseline, in millimetres.
++    pub fn descent(&self) -> f64 {
++        self.descent
++    }
++}
++
+ /// One exact glyph placement in OFD object-space millimetres.
+ #[derive(Clone, Debug, PartialEq)]
+ pub struct PositionedGlyph {
+     glyph_id: u32,
+     x: f64,
+     y: f64,
+-    advance: (f64, f64),
++    metrics: GlyphMetrics,
+     character: Option<char>,
+     source_range: Range<usize>,
+     scalar_index: usize,
+@@ -439,14 +508,15 @@ impl PositionedGlyph {
+     pub fn y(&self) -> f64 {
+         self.y
+     }
+-    /// Returns the advance this glyph contributes on each axis, in millimetres.
++    /// Returns the advance and painted extents of this glyph in millimetres.
+     ///
+-    /// This is the selected face advance, or the font size when no face was
+-    /// available. It is what positions the next glyph, so a caller that needs the
+-    /// per-scalar geometry of a run without explicit deltas can sum it instead of
+-    /// resolving fonts again.
+-    pub fn advance(&self) -> (f64, f64) {
+-        self.advance
++    /// The advance is the selected face advance, or the font size when no face was
++    /// available; it is what positions the next glyph, so a caller that needs the
++    /// per-scalar geometry of a run can sum it instead of resolving fonts again. The
++    /// extents are the painted control box of the selected face glyph, so a caller
++    /// can size a character box that covers the glyph itself.
++    pub fn metrics(&self) -> GlyphMetrics {
++        self.metrics
+     }
+     /// Returns the associated source scalar, or `None` for an extra mapped glyph.
+     pub fn character(&self) -> Option<char> {
+@@ -1124,12 +1194,12 @@ pub fn position_glyph_runs(
+                         let (offset_x, offset_y) = glyph_transform
+                             .map(|t| (t.x(), t.y()))
+                             .unwrap_or((0.0, 0.0));
+-                        let advance = selected.advance_mm(glyph_id, text.font_size())?;
++                        let metrics = selected.scaled_metrics(glyph_id, text.font_size())?;
+                         glyphs.push(PositionedGlyph {
+                             glyph_id,
+                             x: finite_coordinate(text, "glyph x", x + inferred_x + offset_x)?,
+                             y: finite_coordinate(text, "glyph y", y + inferred_y + offset_y)?,
+-                            advance,
++                            metrics,
+                             character,
+                             source_range: start_byte..end_byte,
+                             scalar_index,
+@@ -1138,8 +1208,10 @@ pub fn position_glyph_runs(
+                             font_source: selected.source().clone(),
+                             transform: glyph_transform.and_then(|t| t.matrix()),
+                         });
+-                        inferred_x = finite_coordinate(text, "advance x", inferred_x + advance.0)?;
+-                        inferred_y = finite_coordinate(text, "advance y", inferred_y + advance.1)?;
++                        inferred_x =
++                            finite_coordinate(text, "advance x", inferred_x + metrics.advance.0)?;
++                        inferred_y =
++                            finite_coordinate(text, "advance y", inferred_y + metrics.advance.1)?;
+                     }
+                     let delta_x = if run.has_explicit_delta_x() {
+                         run.delta_x()[local..end_local].iter().sum()
+@@ -1197,17 +1269,21 @@ pub fn position_glyph_runs(
+                 &requested,
+                 &mut diagnostics,
+             )?;
+-            let advance = selection
++            let metrics = selection
+                 .font
+                 .as_ref()
+-                .map(|font| font.advance_mm(selection.glyph_id, text.font_size()))
++                .map(|font| font.scaled_metrics(selection.glyph_id, text.font_size()))
+                 .transpose()?
+-                .unwrap_or((text.font_size(), 0.0));
++                .unwrap_or(GlyphMetrics {
++                    advance: (text.font_size(), 0.0),
++                    ascent: text.font_size(),
++                    descent: 0.0,
++                });
+             glyphs.push(PositionedGlyph {
+                 glyph_id: selection.glyph_id,
+                 x: finite_coordinate(text, "glyph x", x)?,
+                 y: finite_coordinate(text, "glyph y", y)?,
+-                advance,
++                metrics,
+                 character: Some(character),
+                 source_range: byte_start..byte_end,
+                 scalar_index,
+@@ -1219,12 +1295,12 @@ pub fn position_glyph_runs(
+             let delta_x = if run.has_explicit_delta_x() {
+                 run.delta_x()[local]
+             } else {
+-                advance.0
++                metrics.advance.0
+             };
+             let delta_y = if run.has_explicit_delta_y() {
+                 run.delta_y()[local]
+             } else {
+-                advance.1
++                metrics.advance.1
+             };
+             x = finite_coordinate(text, "glyph x", x + delta_x)?;
+             y = finite_coordinate(text, "glyph y", y + delta_y)?;
+@@ -1244,49 +1320,76 @@ pub fn position_glyph_runs(
+     Ok(runs)
+ }
+ 
+-/// Per-scalar advances from the same font resolution the renderer positions text with.
++/// Per-scalar metrics from the same font resolution the renderer positions text with.
+ ///
+-/// This is the [`TextAdvanceProvider`] rofd-core asks for when a text run carries no
+-/// explicit `DeltaX`: the answer is the advance of the glyph the positioner selected,
+-/// summed per scalar for structured `Glyphs` mappings, so page geometry matches the
+-/// rendered glyphs. Resolution failures answer `None`, which keeps rofd-core's
+-/// font-size footprint.
+-#[derive(Clone, Copy)]
+-pub struct FontTextAdvances<'a> {
+-    resolver: &'a dyn FontResolver,
++/// This is the [`TextMetricsProvider`] rofd-core asks for: the answer is the advance
++/// of the glyph the positioner selected, summed per scalar for structured `Glyphs`
++/// mappings, and that glyph's painted extents around the baseline, so a character box
++/// covers the glyph a renderer draws. Resolution failures answer `None`, which keeps
++/// rofd-core's font-size footprint.
++#[derive(Clone)]
++pub struct FontTextMetrics {
++    resolver: Arc<dyn FontResolver>,
+ }
+ 
+-impl<'a> FontTextAdvances<'a> {
++impl FontTextMetrics {
+     /// Wraps the resolver a renderer would use for the same page.
+-    pub fn new(resolver: &'a dyn FontResolver) -> Self {
++    ///
++    /// The provider owns the shared resolver, because a document holds it for its
++    /// whole life and page text is built lazily on later queries.
++    pub fn new(resolver: Arc<dyn FontResolver>) -> Self {
+         Self { resolver }
+     }
+ }
+ 
+-impl TextAdvanceProvider for FontTextAdvances<'_> {
+-    fn advances_mm(&self, page: &Page, text: &TextObject, size_mm: f64) -> Option<Vec<f64>> {
++impl TextMetricsProvider for FontTextMetrics {
++    fn metrics_mm(
++        &self,
++        page: &Page,
++        text: &TextObject,
++        size_mm: f64,
++    ) -> Option<Vec<TextScalarMetrics>> {
+         let resource = page.font_resource(text.font_id()).ok()?;
+-        let runs =
+-            position_glyph_runs(self.resolver, &resource, text, page.resource_limits()).ok()?;
++        let runs = position_glyph_runs(
++            self.resolver.as_ref(),
++            &resource,
++            text,
++            page.resource_limits(),
++        )
++        .ok()?;
+         let total = text.runs().iter().try_fold(0usize, |total, run| {
+             total.checked_add(run.text().chars().count())
+         })?;
+         // Glyphs of one structured mapping share the scalar index of the mapped
+         // range, so their advances sum there, exactly as the positioner advances the
+-        // mapped run. A scalar without a glyph keeps the size footprint the builder
+-        // uses on its own.
+-        let mut advances: Vec<Option<f64>> = vec![None; total];
++        // mapped run, and their extents widen it, because the box has to cover every
++        // glyph painted for that scalar. A scalar without a glyph keeps the size
++        // footprint the builder uses on its own.
++        let mut resolved: Vec<Option<TextScalarMetrics>> = vec![None; total];
+         for run in &runs {
+             for glyph in run.glyphs() {
+-                let slot = advances.get_mut(glyph.scalar_index())?;
+-                let (x, _) = glyph.advance();
+-                *slot = Some(slot.unwrap_or(0.0) + x);
++                let metrics = glyph.metrics();
++                let slot = resolved.get_mut(glyph.scalar_index())?;
++                let entry = slot.get_or_insert(TextScalarMetrics {
++                    advance_mm: 0.0,
++                    ascent_mm: 0.0,
++                    descent_mm: 0.0,
++                });
++                entry.advance_mm += metrics.advance().0;
++                entry.ascent_mm = entry.ascent_mm.max(metrics.ascent());
++                entry.descent_mm = entry.descent_mm.max(metrics.descent());
+             }
+         }
+         Some(
+-            advances
++            resolved
+                 .into_iter()
+-                .map(|advance| advance.unwrap_or(size_mm))
++                .map(|entry| {
++                    entry.unwrap_or(TextScalarMetrics {
++                        advance_mm: size_mm,
++                        ascent_mm: size_mm,
++                        descent_mm: 0.0,
++                    })
++                })
+                 .collect(),
+         )
+     }
+diff --git a/crates/rofd-render/src/lib.rs b/crates/rofd-render/src/lib.rs
+index 5337574..ed1d0cc 100644
+--- a/crates/rofd-render/src/lib.rs
++++ b/crates/rofd-render/src/lib.rs
+@@ -19,8 +19,8 @@ pub use display_list::{
+     ClipPath, Command, DisplayList, DisplayListBuilder, RenderDiagnostic, RenderDiagnosticKind,
+ };
+ pub use fonts::{
+-    position_glyph_runs, FontDiagnostic, FontIdentity, FontResolver, FontSource, FontTextAdvances,
+-    GlyphRun, PositionedGlyph, ResolvedFont, SystemFontResolver,
++    position_glyph_runs, FontDiagnostic, FontIdentity, FontResolver, FontSource, FontTextMetrics,
++    GlyphMetrics, GlyphRun, PositionedGlyph, ResolvedFont, SystemFontResolver,
+ };
+ pub use images::{DecodedImage, ImageDecoder};
+ 
+diff --git a/crates/rofd-render/tests/cairo_text.rs b/crates/rofd-render/tests/cairo_text.rs
+index 65cb678..10b6a3d 100644
+--- a/crates/rofd-render/tests/cairo_text.rs
++++ b/crates/rofd-render/tests/cairo_text.rs
+@@ -1,11 +1,16 @@
+ use std::io::{Cursor, Write};
++use std::sync::Arc;
++
++use fontdb::Database;
+ 
+ use cairo::{
+     Antialias, Context, FillRule, FontOptions, Format, HintMetrics, HintStyle, ImageSurface,
+     Matrix, Operator, PathSegment, SubpixelOrder,
+ };
+ use rofd_core::{Document, LoadOptions};
+-use rofd_render::{CairoRenderer, Error, PixelRect, RenderOptions};
++use rofd_render::{
++    CairoRenderer, Error, FontTextMetrics, PixelRect, RenderOptions, SystemFontResolver,
++};
+ use zip::{write::SimpleFileOptions, ZipWriter};
+ 
+ const FONT: &[u8] = include_bytes!("fixtures/fonts/phase3-subset.ttf");
+@@ -152,6 +157,78 @@ fn embedded_latin_and_cjk_glyphs_render_at_positioned_baselines() {
+     assert_eq!(bounds, (30, 46, 136, 83));
+ }
+ 
++#[test]
++fn semantic_character_boxes_cover_the_rendered_ink() {
++    let content = r#"<ofd:TextObject ID="2" Boundary="2 3 24 12" Font="10" Size="4" Fill="true" Stroke="false"><ofd:FillColor Value="0 0 0"/><ofd:TextCode X="1" Y="5">A中</ofd:TextCode></ofd:TextObject>"#;
++    let mut database = Database::new();
++    database.load_font_data(FONT.to_vec());
++    let resolver: Arc<dyn rofd_render::FontResolver> = Arc::new(SystemFontResolver::from_database(
++        database,
++        Vec::new(),
++        1 << 20,
++    ));
++    let metrics: Arc<dyn rofd_core::TextMetricsProvider> = Arc::new(FontTextMetrics::new(resolver));
++    let page =
++        Document::from_bytes_with_metrics(package(content), LoadOptions::default(), Some(metrics))
++            .unwrap()
++            .page(0)
++            .unwrap();
++
++    let mut surface = render(&page, 0);
++    let (left, top, right, bottom) =
++        ink_bounds(&mut surface).expect("controlled glyphs must paint");
++
++    // 254 dpi renders exactly ten pixels per millimetre.
++    let boxes: Vec<(f64, f64, f64, f64)> = page
++        .text()
++        .unwrap()
++        .characters()
++        .iter()
++        .map(|character| {
++            let rect = character.rect_mm().expect("both glyphs carry geometry");
++            (
++                rect.x * 10.0,
++                rect.y * 10.0,
++                (rect.x + rect.width) * 10.0,
++                (rect.y + rect.height) * 10.0,
++            )
++        })
++        .collect();
++    assert_eq!(boxes.len(), 2);
++    let box_left = boxes
++        .iter()
++        .map(|box_| box_.0)
++        .fold(f64::INFINITY, f64::min);
++    let box_top = boxes
++        .iter()
++        .map(|box_| box_.1)
++        .fold(f64::INFINITY, f64::min);
++    let box_right = boxes
++        .iter()
++        .map(|box_| box_.2)
++        .fold(f64::NEG_INFINITY, f64::max);
++    let box_bottom = boxes
++        .iter()
++        .map(|box_| box_.3)
++        .fold(f64::NEG_INFINITY, f64::max);
++
++    // Hinting can push a device pixel of ink outside the unhinted control box.
++    let slack = 1.0;
++    assert!(f64::from(left) >= box_left - slack, "{left} vs {box_left}");
++    assert!(f64::from(top) >= box_top - slack, "{top} vs {box_top}");
++    assert!(
++        f64::from(right) <= box_right + slack,
++        "{right} vs {box_right}"
++    );
++    // 中 paints below the baseline, which is where the font-size footprint stopped:
++    // the box has to reach the painted bottom without any slack.
++    assert!(box_bottom >= f64::from(bottom), "{box_bottom} vs {bottom}");
++    assert!(
++        f64::from(bottom) <= box_bottom + slack,
++        "{bottom} vs {box_bottom}"
++    );
++}
++
+ #[test]
+ fn embedded_text_regions_preserve_fractional_glyph_positions_at_every_rotation() {
+     let page = page(
+diff --git a/crates/rofd-render/tests/fonts.rs b/crates/rofd-render/tests/fonts.rs
+index d95e8ce..ddb5ec6 100644
+--- a/crates/rofd-render/tests/fonts.rs
++++ b/crates/rofd-render/tests/fonts.rs
+@@ -4,7 +4,7 @@ use std::sync::Arc;
+ use std::thread;
+ 
+ use fontdb::Database;
+-use rofd_core::{Document, LoadOptions, PageObject, ResourceLimits, TextAdvanceProvider};
++use rofd_core::{Document, LoadOptions, PageObject, ResourceLimits, TextMetricsProvider};
+ use rofd_render::{
+     position_glyph_runs, Error, FontDiagnostic, FontIdentity, FontResolver, FontSource,
+     ResolvedFont, SystemFontResolver,
+@@ -854,16 +854,18 @@ fn equal_resource_ids_from_distinct_documents_do_not_share_cache_entries() {
+     );
+ }
+ 
+-/// The provider rofd-core asks for must answer exactly the advances the positioner
+-/// used, so page geometry lands on the glyphs a renderer draws.
++/// The provider rofd-core asks for must answer exactly the geometry the positioner
++/// used, so page character boxes land on the glyphs a renderer draws - horizontally
++/// on their advance and vertically on their painted extents.
+ #[test]
+-fn font_text_advances_match_the_positioner_and_follow_font_metrics() {
++fn font_text_metrics_match_the_positioner_and_follow_font_metrics() {
+     // A, B and Z carry proportional advances in the fixture subset; most other
+     // Latin scalars map to a full-width face advance equal to the font size, which
+-    // would not distinguish metrics from the size-based fallback.
++    // would not distinguish metrics from the size-based fallback. 中 adds a CJK glyph
++    // whose ink reaches below the baseline.
+     let document = package_named(
+-        Some(LATIN_FONT),
+-        r#"<ofd:TextCode X="0" Y="4">ABZ</ofd:TextCode>"#,
++        Some(FONT),
++        r#"<ofd:TextCode X="0" Y="4">ABZ中</ofd:TextCode>"#,
+         "",
+         "Fixture",
+     );
+@@ -871,13 +873,13 @@ fn font_text_advances_match_the_positioner_and_follow_font_metrics() {
+     let page = document.page(0).unwrap();
+     let resource = document.font_resource(text.font_id()).unwrap();
+     let mut database = Database::new();
+-    database.load_font_data(LATIN_FONT.to_vec());
++    database.load_font_data(FONT.to_vec());
+     let resolver = SystemFontResolver::from_database(database, Vec::new(), 1 << 20);
+ 
+     let runs = position_glyph_runs(&resolver, &resource, &text, page.resource_limits()).unwrap();
+-    let provider = rofd_render::FontTextAdvances::new(&resolver);
+-    let advances = provider
+-        .advances_mm(&page, &text, text.font_size())
++    let provider = rofd_render::FontTextMetrics::new(Arc::new(resolver));
++    let metrics = provider
++        .metrics_mm(&page, &text, text.font_size())
+         .expect("embedded font resolves");
+ 
+     assert!(
+@@ -886,29 +888,59 @@ fn font_text_advances_match_the_positioner_and_follow_font_metrics() {
+         runs[0].diagnostics()
+     );
+ 
+-    // One advance per scalar, equal to the advance of the glyph that owns it.
+-    let positioned: Vec<f64> = runs
++    // One entry per scalar, equal to the metrics of the glyph that owns it.
++    let positioned: Vec<rofd_render::GlyphMetrics> = runs
+         .iter()
+         .flat_map(|run| run.glyphs())
+-        .map(|glyph| glyph.advance().0)
++        .map(|glyph| glyph.metrics())
+         .collect();
+-    assert_eq!(advances.len(), positioned.len());
+-    assert_eq!(advances.len(), 3);
+-    for (index, advance) in advances.iter().enumerate() {
++    let advances: Vec<f64> = metrics.iter().map(|metrics| metrics.advance_mm).collect();
++    assert_eq!(metrics.len(), positioned.len());
++    assert_eq!(metrics.len(), 4);
++    for (index, entry) in metrics.iter().enumerate() {
+         assert!(
+-            (advance - positioned[index]).abs() < 1e-9,
+-            "scalar {index}: provider {advance} vs positioner {}",
+-            positioned[index]
++            (entry.advance_mm - positioned[index].advance().0).abs() < 1e-9,
++            "scalar {index}: provider {} vs positioner {}",
++            entry.advance_mm,
++            positioned[index].advance().0
+         );
++        assert_eq!(entry.ascent_mm, positioned[index].ascent(), "{index}");
++        assert_eq!(entry.descent_mm, positioned[index].descent(), "{index}");
+     }
+ 
+-    // Font metrics, not a uniform font-size footprint.
++    // Font metrics, not a uniform font-size footprint: the Latin scalars are narrower
++    // than the size, while the full-width 中 fills its em.
+     assert!(advances[0] < advances[1], "{advances:?}");
+-    assert!(advances.iter().all(|advance| *advance < text.font_size()));
++    assert!(
++        (advances[3] - text.font_size()).abs() < 1e-9,
++        "{advances:?}"
++    );
++    assert!(advances[..3]
++        .iter()
++        .all(|advance| *advance < text.font_size()));
+     assert!(advances.iter().all(|advance| *advance > 0.0));
+ 
++    // The vertical extents come from each glyph's control box in the subset font: the
++    // Latin scalars stay above the baseline, while 中 reaches below it. Values are the
++    // font's units over its 1000-unit em, scaled to Size.
++    let size = text.font_size();
++    let per_em = |units: f64| units / 1000.0 * size;
++    assert!(
++        (metrics[0].ascent_mm - per_em(733.0)).abs() < 1e-6,
++        "{metrics:?}"
++    );
++    assert_eq!(metrics[0].descent_mm, 0.0);
++    assert!(
++        (metrics[3].ascent_mm - per_em(840.0)).abs() < 1e-6,
++        "{metrics:?}"
++    );
++    assert!(
++        (metrics[3].descent_mm - per_em(79.0)).abs() < 1e-6,
++        "{metrics:?}"
++    );
++
+     // Both layers agree on where the run ends.
+     let semantic_end: f64 = advances.iter().sum();
+-    let positioned_end: f64 = positioned.iter().sum();
++    let positioned_end: f64 = positioned.iter().map(|metrics| metrics.advance().0).sum();
+     assert!((semantic_end - positioned_end).abs() < 1e-9);
+ }
+diff --git a/docs/superpowers/specs/2026-09-09-poppler-style-c-semantic-api-design.md b/docs/superpowers/specs/2026-09-09-poppler-style-c-semantic-api-design.md
+index 3448607..6b051ce 100644
+--- a/docs/superpowers/specs/2026-09-09-poppler-style-c-semantic-api-design.md
++++ b/docs/superpowers/specs/2026-09-09-poppler-style-c-semantic-api-design.md
+@@ -90,12 +90,14 @@ Where OFD data cannot yield an exact glyph box, the API returns a conservative
+ finite character box and records its precision in flags instead of pretending
+ font-derived accuracy.
+ 
+-A run that declares no delta for a scalar is positioned by its font's advance, so
+-the core builder accepts an optional `TextAdvanceProvider` that answers those
+-advances without pulling fonts into the core crate: `rofd-render` implements it
+-over the same font resolution the renderer positions text with, and `rofd-ffi`
+-loads documents with the default font stack so the ABI's rectangles land on the
+-glyphs a default renderer draws. Without a provider the builder keeps the
++A run that declares no delta for a scalar is positioned by its font's advance, and
++the glyph is painted at that font's extent around the baseline, so the core builder
++accepts an optional `TextMetricsProvider` that answers both without pulling fonts
++into the core crate: `rofd-render` implements it over the same font resolution the
++renderer positions text with, and `rofd-ffi` loads documents with the default font
++stack so the ABI's rectangles land on the glyphs a default renderer draws - covered
++horizontally by the advance and vertically by the painted ascent and descent, which
++is what a highlight or caret needs. Without a provider the builder keeps the
+ font-size footprint, and scalars it cannot resolve stay flagged as conservative.
+ 
+ Reading order is deterministic. It starts with effective paint/source order,
