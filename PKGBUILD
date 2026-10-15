@@ -1,13 +1,15 @@
 # Maintainer: Booker <lordbooker@gmail.com>
 pkgname=linux-g13-driver-git
-pkgver=2.0.0.r5.gbac8cc9
+pkgver=2.2.0.r0.gafc0cd8
 pkgrel=1
 pkgdesc="User-space driver and Qt6 configuration tool for the Logitech G13 gameboard (Modernized Fork)"
 arch=('x86_64')
 url="https://github.com/Lordbooker/linux-g13-driver"
 license=('GPL-2.0-only')
 depends=('libusb' 'qt6-base' 'gcc-libs' 'glibc')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'qt6-tools')
+optdepends=('qt6-translations: translated standard dialog buttons'
+            'qt6-wayland: native Wayland sessions')
 provides=('linux-g13-driver')
 conflicts=('linux-g13-driver' 'g13-driver')
 install=linux-g13-driver-git.install
