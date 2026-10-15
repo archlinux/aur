@@ -1,4 +1,4 @@
-pkgbase = sping-bin
+pkgbase = sping-rs-bin
 	pkgdesc = A modern, cross-platform ping with real-time diagnostics, network context, quality scoring, and multi-target monitoring
 	pkgver = 1.6.0
 	pkgrel = 1
@@ -6,12 +6,14 @@ pkgbase = sping-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = glibc
+	depends = libgcc
 	provides = sping
-	conflicts = sping
+	conflicts = sping-rs
 	options = !strip
 	source_x86_64 = sping-x86_64-1.6.0.deb::https://github.com/LambdaBytes/sping/releases/download/v1.6.0/sping_1.6.0-1_amd64.deb
 	sha256sums_x86_64 = 4e5a18d44eba3089b5940ed4de7cfef7f5e1145b60ca688b86bf68e24295a1d8
 	source_aarch64 = sping-aarch64-1.6.0.deb::https://github.com/LambdaBytes/sping/releases/download/v1.6.0/sping_1.6.0-1_arm64.deb
 	sha256sums_aarch64 = 80c8f801320d64007b4c869fe4f98c7fbafb5ee94fca3dfe492194017502f695
 
-pkgname = sping-bin
+pkgname = sping-rs-bin

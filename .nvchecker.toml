@@ -1,4 +1,4 @@
-[sping-bin]
+[sping-rs-bin]
 source = "github"
 github = "LambdaBytes/sping"
 use_latest_release = true

@@ -3,7 +3,7 @@
 _gitauthor=LambdaBytes
 _gitname=sping
 _appname=${_gitname}
-pkgname=${_appname}-bin
+pkgname=${_appname}-rs-bin
 pkgdesc="A modern, cross-platform ping with real-time diagnostics, network context, quality scoring, and multi-target monitoring"
 
 pkgver=1.6.0
@@ -21,6 +21,8 @@ license=('MIT')
 
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
+
+depends=('glibc' 'libgcc')
 
 options=('!strip')
 
