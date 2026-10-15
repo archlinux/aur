@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=pgschema
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc='Declarative schema migration CLI for Postgres (Terraform-style)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 conflicts=('pgschema-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b1b94cee2fb258565d25dfd06abfddbaabcb49dc9c32ce9207434ad4185149b3')
+sha256sums=('60f5611cd64f9184fabf0f769f6ac7b246f909ea9c1571a0bfe24d5f87e8f455')
 
 build() {
     cd "${pkgname}-${pkgver}"
