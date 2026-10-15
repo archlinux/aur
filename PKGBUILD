@@ -4,7 +4,7 @@
 
 pkgname=koboldcpp-portable
 pkgver=1.123
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (portable build for old CPUs)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -30,40 +30,35 @@ conflicts=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz"
-    'json_to_gbnf'
-    'kcpp_agent'
     'koboldcpp'
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
 sha256sums=(
     '8136ca1809359cfc3d166f049664cb71b9faa45d277db14db85742da95e0119c'
-    '0a02338100375ef45f6cd83168d3c135020a4d650c0eda6a5c2fd5f66469c760'
-    '53c787d94bead546198ff4b7cf21f191dc054046694faaf2c4a5692724679b8b'
     '9915ba0fbc0931fc61dc0bcaf55394948e43d1328b3c08a12b730416dcd28238'
     '2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
+options=(!debug)
 
 build() {
     cd "$srcdir/koboldcpp-$pkgver"
 
-    make LLAMA_VULKAN=1 LLAMA_PORTABLE=1 LLAMA_NOAVX2=1
+    make LLAMA_VULKAN=1 LLAMA_USE_BUNDLED_GLSLC=0 LLAMA_ADD_CONDA_PATHS=0 LLAMA_PORTABLE=1 LLAMA_NOAVX2=1
 }
 
 package() {
     cd "$srcdir"
 
-    for i in json_to_gbnf kcpp_agent koboldcpp; do
-        install -Dm644 "$i" "$pkgdir/usr/bin/$i"
-    done
+    install -Dm755 koboldcpp "$pkgdir/usr/bin/koboldcpp"
 
     install -Dm644 koboldcpp.desktop "$pkgdir/usr/share/applications/koboldcpp.desktop"
     install -Dm644 koboldcpp.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/koboldcpp.png"
 
     cd "$srcdir/koboldcpp-$pkgver"
 
-    for i in {*.so,embd_res/*,kcpp_adapters/*} {json_to_gbnf,kcpp_agent,koboldcpp}.py; do
+    for i in {*.so,embd_res/*,kcpp_adapters/*} {kcpp_agent,koboldcpp}.py kcpp_src/json_to_gbnf.py; do
         install -Dm644 "$i" "$pkgdir/usr/share/koboldcpp/$i"
     done
 
@@ -74,6 +69,10 @@ package() {
     # Compile Python scripts
     for i in "$pkgdir/usr/share/koboldcpp"/*.py; do
         python -m compileall -q -o 0 -o 1 -d '/usr/share/koboldcpp' "$i"
+    done
+
+    for i in "$pkgdir/usr/share/koboldcpp/kcpp_src"/*.py; do
+        python -m compileall -q -o 0 -o 1 -d '/usr/share/koboldcpp/kcpp_src' "$i"
     done
 }
 
