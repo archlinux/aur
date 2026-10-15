@@ -3,7 +3,7 @@
 _pkgname=jupytext
 pkgname=python-$_pkgname
 pkgver=1.19.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
 depends=(
@@ -15,8 +15,8 @@ depends=(
     python-yaml
 )
 makedepends=(
+    corepack
     jupyterlab
-    npm
     python-build
     python-hatch-jupyter-builder
     python-hatchling
@@ -35,9 +35,19 @@ arch=('any')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c398400a96a26894d025d5c3fb6560b384a338cec679b60e4c6587245acb82b6')
 
+prepare() {
+    cd $_pkgname-$pkgver/jupyterlab
+    # jupytext requires yarn>=3
+    mkdir -p bin
+    corepack enable --install-directory bin yarn
+    COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/yarn set version stable
+    bin/yarn install
+}
+
 build() {
     cd $_pkgname-$pkgver
-    HATCH_BUILD_HOOKS_ENABLE=true python -m build --wheel --no-isolation --skip-dependency-check
+    PATH="$PWD/jupyterlab/bin:$PATH" HATCH_BUILD_HOOKS_ENABLE=true \
+        python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
