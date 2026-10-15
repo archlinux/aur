@@ -1,0 +1,14 @@
+[Unit]
+Description=Virtual X desktop for uu-remote-linux (Xvfb + session bus)
+After=dbus.socket
+
+[Service]
+# Environment=UU_VIRTUAL_SESSION=startxfce4
+# Environment=UU_VIRTUAL_SIZE=1920x1080
+# Environment=UU_VIRTUAL_BUS=private
+ExecStart=/usr/bin/uu-virtual-desktop
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

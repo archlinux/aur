@@ -1,0 +1,4 @@
+# Grant the active seat user access to /dev/uinput so uu-remote can use
+# kernel-level virtual keyboard/mouse on Wayland (layout independent, no
+# portal input consent). X11 keeps using XTest.
+KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"

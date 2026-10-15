@@ -3,7 +3,7 @@ post_install() {
 
 uu-remote-bin — 非官方 UU 远程 Linux 被控端
 
-首次使用需扫码登录：
+首次使用需扫码登录（图形桌面）：
 
     uuremote-server login
 
@@ -16,9 +16,22 @@ uu-remote-bin — 非官方 UU 远程 Linux 被控端
 
 查看日志：journalctl --user -u uu-remote-native.service -f
 
+Wayland 下建议启用 uinput 虚拟键鼠（包已附带 udev 规则，重插生效）：
+
+    sudo udevadm control --reload && sudo udevadm trigger --name-match=uinput
+
+无显示器服务器可选两种方式（详见上游 README）：
+
+  1. 无头模式（仅终端/文件/端口映射）：服务中加
+     Environment=UU_DESKTOP_BACKEND=none
+     并执行 loginctl enable-linger $USER
+  2. 虚拟桌面（完整远控，需 xorg-server-xvfb 和桌面环境）：
+     systemctl --user enable --now uu-virtual-desktop.service
+     然后参考 /usr/share/doc/uu-remote-bin/virtual-display.conf.example
+     配置 drop-in 并重启主服务
+
 X11 桌面需设置正确的 DISPLAY（默认 :0）；GNOME 的 XAUTHORITY 通常在
 /run/user/<uid>/gdm/Xauthority，可用 Environment= 追加到服务中。
-用官方 Mac / Windows / 手机客户端扫码登录后，本机即出现在设备列表中。
 
 EOF
 }
