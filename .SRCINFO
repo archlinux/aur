@@ -1,7 +1,7 @@
 pkgbase = ishellpro
 	pkgdesc = Lightweight cross-platform SSH/SFTP terminal client (native repack of the upstream AppImage)
 	pkgver = 3.1.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ishell.cc
 	install = ishellpro.install
 	arch = x86_64

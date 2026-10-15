@@ -44,7 +44,7 @@
 
 pkgname=ishellpro
 pkgver=3.1.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight cross-platform SSH/SFTP terminal client (native repack of the upstream AppImage)"
 arch=('x86_64')
 url="https://ishell.cc"
