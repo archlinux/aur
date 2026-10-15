@@ -27,5 +27,6 @@ build() {
 }
 
 package() {
-	install -Dm755 "${pkgname}-${pkgver}/caddy/frankenphp/frankenphp" "${pkgdir}/usr/bin/frankenphp"
+	cd "${pkgname}-${pkgver}/caddy/frankenphp/"
+	install -Dm755 "frankenphp" "${pkgdir}/usr/bin/frankenphp"
 }
