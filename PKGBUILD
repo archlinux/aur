@@ -12,13 +12,13 @@ _version_yyyy_r_n_m=2026.3.0.0
 #   1. matching-hash build number tag at https://github.com/JetBrains/intellij-community/tags
 #   2. https://youtrack.jetbrains.com/articles/IDEA-A-21/IDEA-Latest-Builds-And-Release-Notes
 #   3. installing closed-source build via "snap install intellij-idea --classic --edge" and checking Help --> About
-_build_number=263.6800.24
+_build_number=263.7031.23
 # like "eap_5", "rc", etc.
-_pre_release_identifier_snake_case=eap_6
+_pre_release_identifier_snake_case=eap_7
 pkgver="$_version_yyyy_r_n_m.$_build_number${_pre_release_identifier_snake_case:+.$_pre_release_identifier_snake_case}"
 pkgrel=1
 
-_tag=idea/2026.3-eap-6
+_tag=idea/2026.3-eap-7
 # Override Git hash if needed, for when they change a tag's hash and build number after pushing, as with
 # the "idea/2026.2.1" tag.
 _git_hash_override_idea=
@@ -49,7 +49,7 @@ optdepends=(
 source=("git+https://github.com/JetBrains/intellij-community.git#$_github_source_fragment_idea"
   idea-android::"git+https://github.com/JetBrains/android.git#$_github_source_fragment_android"
   idea.desktop)
-sha256sums=('174ac5012e4d7dfbed485478a6c85489317fff4cb103344fa45e80d7fac1b1f2'
+sha256sums=('85b047a241afeecbc9cd580087bc702d8650e4e22dd9ffbcb77567411af1fc27'
   'bbf76fbe6994f519339674afe5d6de96e4f5844f67a68771fd47b676bd1e9321'
   '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f')
 
