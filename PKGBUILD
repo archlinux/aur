@@ -2,18 +2,17 @@
 
 _pkgname='min-ed-launcher'
 pkgname="${_pkgname}-git"
-pkgver=0.12.2.r26.g9814c54
-pkgrel=2
+pkgver=0.14.0.r0.g139e4ff
+pkgrel=1
 pkgdesc='Minimal Elite Dangerous Launcher'
 url='https://github.com/rfvgyhn/min-ed-launcher'
 arch=('x86_64')
 license=(MIT)
 makedepends=(
-    'dotnet-sdk-8.0-bin'
+    'dotnet-sdk-bin>=10.0.13.sdk402'
     'git'
 )
 depends=(
-    'zlib-ng-compat'
     'hicolor-icon-theme'
     'libstdc++'
 )
