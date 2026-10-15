@@ -1,6 +1,6 @@
 pkgbase = photocraft-bin
 	pkgdesc = Layer-based image and photo editor (prebuilt binaries)
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/storytold/photocraft
 	arch = x86_64
@@ -25,16 +25,16 @@ pkgbase = photocraft-bin
 	optdepends = vulkan-driver: hardware-accelerated Vulkan rendering
 	optdepends = xdg-desktop-portal: native file dialogs
 	optdepends = xdg-utils: open external links
-	provides = photocraft=0.8.2
+	provides = photocraft=0.9.0
 	conflicts = photocraft
 	options = !strip
-	source = photocraft-0.8.2-NOTICE.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.8.2/NOTICE
-	source = photocraft-0.8.2-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.8.2/docs/brand/LICENSE-brand.txt
-	source = photocraft-0.8.2-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.8.2/assets/app-icon/LICENSE.txt
-	source = photocraft-0.8.2-LICENSE-SCOWL.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.8.2/assets/dict/LICENSE-SCOWL.txt
-	source = photocraft-0.8.2-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.8.2/assets/fonts/OFL-Inter.txt
-	source = photocraft-0.8.2-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.8.2/assets/fonts/OFL-JetBrainsMono.txt
-	source = photocraft-0.8.2-LICENSE-lucide.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.8.2/assets/icons/LICENSE-lucide.txt
+	source = photocraft-0.9.0-NOTICE.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.9.0/NOTICE
+	source = photocraft-0.9.0-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.9.0/docs/brand/LICENSE-brand.txt
+	source = photocraft-0.9.0-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.9.0/assets/app-icon/LICENSE.txt
+	source = photocraft-0.9.0-LICENSE-SCOWL.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.9.0/assets/dict/LICENSE-SCOWL.txt
+	source = photocraft-0.9.0-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.9.0/assets/fonts/OFL-Inter.txt
+	source = photocraft-0.9.0-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.9.0/assets/fonts/OFL-JetBrainsMono.txt
+	source = photocraft-0.9.0-LICENSE-lucide.txt::https://raw.githubusercontent.com/storytold/photocraft/v0.9.0/assets/icons/LICENSE-lucide.txt
 	sha256sums = fb7d6f0e57c396b6c94f6315d3dba13048a296d81e7546d33e2b7c77c71ea147
 	sha256sums = f0a582a0645a2ec9c979ac2619e9503315483a33f1bb39b56fe5b55632b0ca79
 	sha256sums = a5cf25f3f3c2fe2c6d294db04f1bfea7259ac21e8edde5c7fabaa4c379e94795
@@ -42,9 +42,9 @@ pkgbase = photocraft-bin
 	sha256sums = 262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a
 	sha256sums = a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697
 	sha256sums = b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57
-	source_x86_64 = https://github.com/storytold/photocraft/releases/download/v0.8.2/photocraft-0.8.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 16c3089976eee2d290dbe73986db4835c1ec5a043c5c16b017b24848ff5ea827
-	source_aarch64 = https://github.com/storytold/photocraft/releases/download/v0.8.2/photocraft-0.8.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = f3920f31406574d1d3f9ca152d46703c8e7f3b504e0d2b2e394f0ad10f0df348
+	source_x86_64 = https://github.com/storytold/photocraft/releases/download/v0.9.0/photocraft-0.9.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 91300c1485ad710839604b085531c90e77ac7ebdb2a30259309ad74afcfdb90d
+	source_aarch64 = https://github.com/storytold/photocraft/releases/download/v0.9.0/photocraft-0.9.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c956084444653142dd25274cff08dbc17e8bf99815380db7f64eec026e882fc7
 
 pkgname = photocraft-bin
