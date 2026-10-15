@@ -1,7 +1,7 @@
 # Maintainer: lyj <lyj404@gmail.com>
 pkgname=bettbox-bin
 pkgver=1.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc="基于 Mihomo（Clash.Meta 内核）的多平台代理客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/appshubcc/Bettbox"

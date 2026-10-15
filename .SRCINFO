@@ -1,7 +1,7 @@
 pkgbase = bettbox-bin
 	pkgdesc = 基于 Mihomo（Clash.Meta 内核）的多平台代理客户端
 	pkgver = 1.19.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/appshubcc/Bettbox
 	install = bettbox.install
 	arch = x86_64
