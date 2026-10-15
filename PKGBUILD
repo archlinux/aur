@@ -106,7 +106,8 @@ pkgname='dgrp'
 #_pkgver='1.9-38'; _dl='81000137_Y.tgz'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 #_pkgver='1.9-40'; _dl='40002086_AA.tgz'
-_pkgver='1.9-42'; _dl='40002086_AC.tgz'
+#_pkgver='1.9-42'; _dl='40002086_AC.tgz'
+_pkgver='1.9-45'; _dl='40002086_AE.tgz'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
@@ -218,7 +219,7 @@ unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
-md5sums=('b78ad8db7920566a199d7ba191daff3d'
+md5sums=('060bd87af7ab8e351724a9338ff50dd5'
          'b4af5022ba96fcc2429263cfbbe85bae'
          '9feebec170552c9186e713e7f5852e14'
          'e9ae823e597f2b63d95e6d6a8e25cde3'
@@ -274,7 +275,7 @@ md5sums=('b78ad8db7920566a199d7ba191daff3d'
          'a7b0e6bfebc82bf30ab6ed846bd64bf2'
          'df025331e29fe36ed7d97b2ee661c990'
          '4726b79fbe2c94db647be809c34ddff1')
-sha256sums=('f9fb258e85d70b7e89e8a4452401df01df3e23e8e423fb04f7bed3a0ea81e9b8'
+sha256sums=('d0cf2990c0db20fe5c7f58b7639f43fbda18b6666de66ae6ae2cac7ab4d923ea'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
@@ -342,55 +343,34 @@ _modulename='dgrp'
 # Check for updates and case errors to the 2 mib lists
 _fn_mibcheck() {
   echo 'Checking for newer and misnamed MIB'
-  local line
-  local linea
-  local file='/tmp/PKGBUILD.mibs'
-  # Get list of files
-  while IFS='' read -r line || [[ -n "${line}" ]]; do
-    read -r -a linea <<<"${line}"
-    line="${linea[8]}" # filename
-    case "${line}" in
-    4000*.mib)
-      echo "${line}" >> "${file}"
-      ;;
-    esac
-  done < <(curl -s 'ftp://ftp1.digi.com/support/utilities/') # curl is sorted and case insensitive because Digi runs WSFTP. We can't assume this will be always so.
-  # get list of latest files
-  local lineu linep lineup
-  lineup=''
-  linep=''
-  linea=()
-  while IFS='' read -r line || [[ -n "${line}" ]]; do
-    lineu="${line^^}"
-    if [ "${lineup%%_*}" != "${lineu%%_*}" ] && [ ! -z "${linep}" ]; then
-      linea+=("${linep}")
-    fi
-    lineup="${lineu}"
-    linep="${line}"
-  done < <(sort -f "${file}")
-  rm -f "${file}"
-      linea+=("${linep}")
-  # Check against _mibs
-  local found mib mibu
-  for line in "${linea[@]}"; do
-    lineu="${line^^}"
-    found=0
-    for mib in "${_mibs[@]}" "${_mibsdnw[@]}"; do
-      mibu="${mib^^}"
-      if [ "${lineu%%_*}" = "${mibu%%_*}" ]; then
-        if [ "${lineu}" != "${mibu}" ]; then
-          echo "${mib} has been updated to ${line}"
-        elif [ "${line}" != "${mib}" ]; then
-          echo "Case correction: ${mib} -> ${line}"
+  
+  # download *mib file list from ftp
+  # remove doubles keeping newer versions
+  # check for case errors
+  curl -sl 'ftp://ftp1.digi.com/support/utilities/' | grep -E '4000.+\.mib' \
+  | sort -fr | sort -u -t _ -k 1,1 | sort -f \
+  | while read line
+    do
+      lineu="${line^^}"
+      found=0
+      # unclear what the original script wants to do here with _mibsdnw
+      # list seems to be "Do Not Want" but is added to the loop anyway
+      for mib in "${_mibs[@]}" "${_mibsdnw[@]}"; do
+        mibu="${mib^^}"
+        if [ "${lineu%%_*}" = "${mibu%%_*}" ]; then
+          if [ "${lineu}" != "${mibu}" ]; then
+            echo "${mib} has been updated to ${line}"
+          elif [ "${line}" != "${mib}" ]; then
+            echo "Case correction: ${mib} -> ${line}"
+          fi
+          found=1
+          break
         fi
-        found=1
-        break
+      done
+      if [ "${found}" -eq 0 ]; then
+        echo "${line} is missing"
       fi
     done
-    if [ "${found}" -eq 0 ]; then
-      echo "${line} is missing"
-    fi
-  done
   return 1
 }
 #_fn_mibcheck
@@ -503,7 +483,8 @@ prepare() {
     _patches+=("0019-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch")
   fi
 
-  if [ "$(vercmp "${pkgver}" '1.9.42')" -ge 0 ]; then
+  # not sure about version upper bound for those 2 patches
+  if [ "$(vercmp "${pkgver}" '1.9.42')" -ge 0 ] && [ "$(vercmp "${pkgver}" '1.9.44')" -le 0 ]; then
     _patches+=("0019a-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch")
     _patches+=("0020-revert-POPULATED_KERNEL_HEADERS-for-DKMS.patch")
   fi
@@ -511,7 +492,7 @@ prepare() {
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
     set +u; msg2 "Patch ${_pt}"; set -u
-    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
       _pts+=("${_pt}")
     else
       _ptf+=("${_pt}")
@@ -606,7 +587,7 @@ prepare() {
       -e '# Build with any specified kernel, not just the current one' \
       -e 's:@MODDIR@:/usr/lib/modules/$(KERNELRELEASE):g' \
       -e 's:@KERNEL_HEADERS@:/usr/lib/modules/$(KERNELRELEASE)/build:g' \
-      -e '1i KERNELRELEASE?=$(shell uname -r)' \
+      -e '1i KERNELRELEASE ?= $(shell uname -r)' \
     -i driver/*/Makefile*
 
   # Branding in dmesg
@@ -643,7 +624,8 @@ build() {
 }
 
 # Copy this line into the .install file
-_daemons=('daemon' 'ditty')
+#_daemons=('daemon' 'ditty')
+_daemons=()
 
 package() {
   set -u
@@ -685,10 +667,11 @@ package() {
   install -dm755 "${pkgdir}/etc/udev/rules.d/"
   touch "${pkgdir}/${backup[0]}" # postinstall handles the pacsave file automatically
   chmod 644 "${pkgdir}/${backup[0]}"
-  if [ ! -s "${pkgdir}/tmp/dgrp/10-dgrp.rules" ]; then
-    mv "${pkgdir}/etc/udev/rules.d/10-dgrp.rules" "${pkgdir}/tmp/dgrp/10-dgrp.rules" # 1.9-41
-  fi
-  sed -e 's:^KERNEL=="cu_dgrp:#&:g' -i "${pkgdir}/tmp/dgrp/10-dgrp.rules" # Recommended by Digi
+  
+#  if [ ! -s "${pkgdir}/tmp/dgrp/10-dgrp.rules" ]; then
+#    mv "${pkgdir}/etc/udev/rules.d/10-dgrp.rules" "${pkgdir}/tmp/dgrp/10-dgrp.rules" # 1.9-41
+#  fi
+  newrules=$(sed -e 's:^KERNEL=="cu_dgrp:#&:g' "${pkgdir}/etc/udev/rules.d/10-dgrp.rules") # Recommended by Digi
   cat > "${pkgdir}/etc/udev/rules.d/10-dgrp.rules" << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
 # https://aur.archlinux.org/
@@ -707,10 +690,15 @@ package() {
 
 # Then copy this file into the folder with PKGBUILD.
 
-$(cat "${pkgdir}/tmp/dgrp/10-dgrp.rules")
+$(echo "$newrules")
 EOF
-  rm -f "${pkgdir}/tmp/dgrp/10-dgrp.rules"
-  rmdir "${pkgdir}/tmp/dgrp" "${pkgdir}/tmp" # crashes if other files ever show up in /tmp/dgrp
+
+  if [ -d "${pkgdir}/tmp/dgrp" ]
+  then
+    rm -f "${pkgdir}/tmp/dgrp/10-dgrp.rules"
+    rmdir "${pkgdir}/tmp/dgrp" "${pkgdir}/tmp" # crashes if other files ever show up in /tmp/dgrp
+  fi
+  
   if [ ! -z "${_opt_defaultmode:-}" ]; then
     sed -e 's:^\(KERNEL=="tty_dgrp\)\(.*\)$:\1\2, MODE="'"${_opt_defaultmode}"'", GROUP="'"${_opt_defaultgroup}"'":g' -i "${pkgdir}/etc/udev/rules.d/10-dgrp.rules"
   fi
@@ -719,9 +707,10 @@ EOF
   fi
   chmod 644 "${pkgdir}/etc/udev/rules.d/10-dgrp.rules"
 
-  install -Dpm755 "${pkgdir}/etc/init.d"/{dgrp_daemon,dgrp_ditty} -t "${pkgdir}/usr/bin/dgrp/daemon/"
-  rm -f "${pkgdir}/etc/init.d"/{dgrp_daemon,dgrp_ditty}
-  rmdir "${pkgdir}/etc/init.d"
+# TODO: test if dgrp_daemon / dgrp_ditty are present (binaries from older releases ?)
+#  install -Dpm755 "${pkgdir}/etc/init.d"/{dgrp_daemon,dgrp_ditty} -t "${pkgdir}/usr/bin/dgrp/daemon/"
+#  rm -f "${pkgdir}/etc/init.d"/{dgrp_daemon,dgrp_ditty}
+#  rmdir "${pkgdir}/etc/init.d"
 
   # systemd integration.
   #install -dm755 "${pkgdir}/usr/lib/systemd/system/"
@@ -809,7 +798,7 @@ BUILT_MODULE_NAME[0]="${_modulename}"
 BUILT_MODULE_LOCATION[0]="driver/build"
 # Using all processors doesn't compile this tiny module any faster.
 MAKE[0]="make -j1 -C 'driver/build'"
-CLEAN[0]="make -j1 -C 'driver/build' clean"
+#CLEAN[0]="make -j1 -C 'driver/build' clean"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
