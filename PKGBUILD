@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rayburst-git
 _pkgname=Rayburst
-pkgver=4.1.0.beta.1.r0.g86cc8e6
+pkgver=4.1.0.beta.5.r0.g63d2ec6
 _nodeversion=24
 pkgrel=1
 pkgdesc="Redefining the open-source download manager."
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://rayburst.pages.dev/"
 _ghurl="https://github.com/AnInsomniacy/rayburst"
 license=('MIT')
@@ -16,7 +19,6 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
     'libayatana-appindicator'
-    'aria2-next'
 )
 makedepends=(
     'nvm'
@@ -28,10 +30,15 @@ makedepends=(
 source=("${pkgname//-/.}::git+${_ghurl}.git")
 sha256sums=('SKIP')
 _get_project_dir() {
-	local d
-	while IFS= read -r d; do
-		find "$d" -name "src-tauri" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
-	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+	find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
+		while read -r tauri_dir; do
+			[ -f "${tauri_dir}/Cargo.toml" ] || continue
+			local dir="${tauri_dir}"
+			until [ -f "${dir}/package.json" ] || [ "$dir" = "${srcdir}" ] || [ "$dir" = "/" ]; do
+				dir="$(dirname "$dir")"
+			done
+			[ -f "${dir}/package.json" ] && { echo "$dir"; return; }
+		done
 }
 pkgver() {
     cd "$(_get_project_dir)"
@@ -95,9 +102,9 @@ prepare() {
         s/{{icon}}/${pkgname%-git}/g
         s/{{name}}/${_pkgname}/g
     " "src-tauri/linux/${pkgname%-git}.desktop.hbs"
+    cp src-tauri/icons/128x128@2x.png src-tauri/icons/256x256.png
     rustup update stable
     rustup default stable
-    cp src-tauri/icons/128x128@2x.png src-tauri/icons/256x256.png
     export NODE_ENV=development
     pnpm install
 }
@@ -107,10 +114,10 @@ build() {
     pnpm run tauri build
 }
 package() {
-    local _src="$(_get_project_dir)"
-    local _targetdir="${_src}/src-tauri"
-    install -Dm755 "${_targetdir}/target/release/"{"${pkgname%-git}","${pkgname%-git}-browser-launcher"} -t "${pkgdir}/usr/bin"
-    install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+    local _targetdir="$(_get_project_dir)/src-tauri"
+    install -Dm755 "${_targetdir}/target/release/"{aria2-next,"${pkgname%-git}","${pkgname%-git}-browser-launcher"} -t "${pkgdir}/usr/lib/${_pkgname}/bin"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/${_pkgname}/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
     cp -a "${_targetdir}/data" "${pkgdir}/usr/lib/${_pkgname}"
     install -Dm644 "${_targetdir}/linux/${pkgname%-git}.desktop.hbs" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     _icon_sizes=(32x32 64x64 128x128 256x256)
@@ -118,5 +125,5 @@ package() {
         install -Dm644 "${_targetdir}/icons/${_icons}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
