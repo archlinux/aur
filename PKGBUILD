@@ -1,6 +1,6 @@
 # Maintainer: archix contributors <https://github.com/archix-org/archix>
 pkgname=archix-git
-pkgver=0.1.0.r13.gc5fb50f
+pkgver=0.1.0.r57.gc22a7df
 pkgrel=1
 pkgdesc="Declarative, lockable, rollback-able system configuration for Arch Linux (latest commit)"
 arch=('x86_64')
