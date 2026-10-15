@@ -1,6 +1,6 @@
 pkgbase = databow
 	pkgdesc = A command-line tool for querying databases
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/columnar-tech/databow
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = databow
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = databow-0.1.2.tar.gz::https://github.com/columnar-tech/databow/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 97d437123a15cd3e23696780dd05cf74856a2acd4d18788b85cb6841bd63915d
+	source = databow-0.2.0.tar.gz::https://github.com/columnar-tech/databow/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 3794948bf83a284e5cad7038ba0205a3fa81053ec47ce6dcc18a2ac97e4be918
 
 pkgname = databow
