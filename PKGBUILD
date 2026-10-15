@@ -47,6 +47,7 @@ prepare() {
   done
   # allow git sources (they are depended on)
   # need to do a scriptless fetch before a normal one to make `youtube-dl-exec` work
+  # Upstream bug report: https://github.com/Mechanical-Advantage/AdvantageScope/issues/570
   NPM_CONFIG_ALLOW_GIT=all npm ci --ignore-scripts
   NPM_CONFIG_ALLOW_GIT=all npm install
 }
