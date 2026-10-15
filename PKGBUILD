@@ -3,7 +3,7 @@
 
 pkgname=plasma-login-manager-idle
 _pkgname=plasma-login-manager
-pkgver=6.7.5
+pkgver=6.8.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 arch=(x86_64)
@@ -21,7 +21,6 @@ depends=(glibc
          kirigami
          kpackage
          kservice
-         kwindowsystem
          layer-shell-qt
          libkscreen
          libplasma
@@ -41,7 +40,7 @@ provides=(plasma-login-manager)
 conflicts=(plasma-login-manager)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         https://invent.kde.org/plasma/plasma-login-manager/-/merge_requests/123.patch)
-sha256sums=('6ed7c3bbac1c79bc1a21c330923804aa6c3f720fafd6accb1a6a1fada684e84f'
+sha256sums=('69e829f49fdf40a6a020c7d5d8603eb50a1cd76feb88c770cf0611f78c9d9818'
             'SKIP'
             'c9847e3eb299921258fda7319e03de773b6561c3b50c3d2afa9bcf10d76f401f')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -55,7 +54,7 @@ prepare() {
 
 build() {
   cmake -B build -S $_pkgname-$pkgver \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DDBUS_CONFIG_FILENAME=plasma_org.freedesktop.DisplayManager.conf
   cmake --build build
 }
