@@ -1,0 +1,41 @@
+post_install() {
+    cat <<'EOF'
+
+uu-remote-bin — 非官方 UU 远程 Linux 被控端
+
+首次使用需扫码登录：
+
+    uuremote-server login
+
+登录凭证保存在 ~/.config/uuremote/config.json（权限 0600）。
+
+如需开机常驻，创建用户服务 ~/.config/systemd/user/uuremote-native.service：
+
+    [Unit]
+    Description=UU Remote Linux host (unofficial)
+    After=graphical-session.target
+
+    [Service]
+    Environment=RUST_LOG=info
+    Environment=DISPLAY=:0
+    ExecStart=/usr/bin/uuremote-server
+    Restart=always
+    RestartSec=5
+
+    [Install]
+    WantedBy=default.target
+
+然后：
+
+    systemctl --user daemon-reload
+    systemctl --user enable --now uuremote-native.service
+
+X11 桌面需设置正确的 DISPLAY；GNOME 的 XAUTHORITY 通常在 /run/user/<uid>/gdm/Xauthority。
+用官方 Mac / Windows / 手机客户端扫码登录后，本机即出现在设备列表中。
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
