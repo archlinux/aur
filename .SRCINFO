@@ -1,6 +1,6 @@
 pkgbase = urma-node
 	pkgdesc = URMA archive node: service, control CLI and desktop status app
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/urma-protocol/urma-node
 	install = urma-node.install
@@ -20,7 +20,7 @@ pkgbase = urma-node
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = https://github.com/urma-protocol/urma-node/releases/download/v0.7.1/urma-node-0.7.1.tar.gz
-	sha256sums = 6a489b47977206cd38e56a044dd74be94b293e138788284e996084c66666548a
+	source = https://github.com/urma-protocol/urma-node/releases/download/v0.7.2/urma-node-0.7.2.tar.gz
+	sha256sums = c51400b9d16fc03cf566c147630d321c8b0a3b7d01be03429c3eb1394e74c4ff
 
 pkgname = urma-node

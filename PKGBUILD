@@ -1,6 +1,6 @@
 # Maintainer: Cristian Zmole <urma@rosint.org>
 pkgname=urma-node
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='URMA archive node: service, control CLI and desktop status app'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!lto')
 install=urma-node.install
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 # SKIP only here, for CI's local git-archive tarball; each release publishes urma-node-<ver>.PKGBUILD with its attached tarball's sha256.
-sha256sums=('6a489b47977206cd38e56a044dd74be94b293e138788284e996084c66666548a')
+sha256sums=('c51400b9d16fc03cf566c147630d321c8b0a3b7d01be03429c3eb1394e74c4ff')
 
 prepare() {
     cd "$pkgname-$pkgver"
