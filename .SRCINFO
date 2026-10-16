@@ -1,6 +1,6 @@
 pkgbase = aeroshell-libplasma-git
 	pkgdesc = Plasma library and runtime components, with AeroShell patches
-	pkgver = 6.7.4_18049.rda45ff7
+	pkgver = 6.8.0_18237.rbc48942
 	pkgrel = 1
 	url = https://gitgud.io/aeroshell/libplasma
 	arch = x86_64
