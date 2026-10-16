@@ -1,10 +1,14 @@
 pkgbase = shelly
-	pkgver = 3.1.6
+	pkgver = 3.1.7
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
+	makedepends = libarchive
+	makedepends = curl
+	makedepends = sqlite
+	makedepends = gnupg
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = gtk4
@@ -14,14 +18,16 @@ pkgbase = shelly
 	makedepends = flatpak
 	makedepends = ripgrep
 	makedepends = go-md2man
-	source = shelly-3.1.6.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/archive/v3.1.6.tar.gz
+	makedepends = binutils
+	makedepends = pacman
+	source = shelly-3.1.7.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/archive/v3.1.7.tar.gz
 	source = shellybuild.conf
 	source = com.shellyorg.shelly.desktop
 	source = com.shellyorg.shelly-notifications.desktop
 	source = shelly-flatpak-integrate
-	sha256sums = fa1e587a69b9d6e63e6835696e2d696f880d6120a023f5c922e260fc023e70af
-	sha256sums = d7adb207c0073b93679ff3b8741a734ab62b48283134465b47844884bd211bb9
-	sha256sums = a86884190d69b483376bf4f7b224483cae7fc5a65b61f98e46e805f838e053ed
+	sha256sums = c69be6dbfb391100c28f327ac4a4ead4d35681bd4e6a3f348be0109c4156e36b
+	sha256sums = 9f551f28d79748c7e255a35cb577081b3263e65d290b4809e10066ed17ce30e5
+	sha256sums = 4b7cb0e42eb322de9eb616d22ca05823f91d178db5b8b67497d497ed495aca9c
 	sha256sums = cf0dc0a6d1865b9010054b36941e7bf4d445c3e7549219889f07ab08283c5c0f
 	sha256sums = 07bca40395c180578450c523ea052b036aa8197d8a871efcce55f937c101c323
 
@@ -38,6 +44,8 @@ pkgname = shelly
 	depends = dbus
 	depends = glibc
 	depends = libarchive
+	depends = curl
+	depends = sqlite
 	depends = dconf
 	depends = gnupg
 	depends = zstd
@@ -55,8 +63,8 @@ pkgname = shelly
 
 pkgname = shelly-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for Shelly
-	depends = shelly=3.1.6
+	depends = shelly=3.1.7
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.1.6
+	provides = shelly-flatpak-backend=3.1.7
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
