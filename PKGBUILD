@@ -1,6 +1,6 @@
 # Maintainer: Hannes Körber <hannes@hkoerber.de>
 pkgname='grm-git'
-pkgver=0.7.21.r1.gfcd315b
+pkgver=0.12.0.r6.gb0a2e8e
 pkgrel=1
 pkgdesc='Manage git repos, worktrees and integrate with GitHub and GitLab'
 arch=('x86_64')
