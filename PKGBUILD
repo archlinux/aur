@@ -1,6 +1,6 @@
 # Maintainer: Cody Schafer <dev@codyps.com>
 
-pkgrel=3
+pkgrel=4
 _bpn=diod
 pkgname=$_bpn-git
 pkgdesc="A multi-threaded, user space file server that speeks 9P2000.L"
@@ -35,7 +35,8 @@ prepare() {
 build () {
 	cd "$srcdir/$_bpn"
 	LUA=lua5.4 LUA_INCLUDE="$(pkg-config --cflags lua54)" \
-	  LUA_LIB="$(pkg-config --libs lua54)" ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+	  LUA_LIB="$(pkg-config --libs lua54)" ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
+	  --with-systemdsystemunitdir=/usr/lib/systemd/system
 	# Upstream developer warnings must not fail distribution builds.
 	make AM_CFLAGS=-Wall
 }
