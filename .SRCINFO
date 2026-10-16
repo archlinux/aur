@@ -1,6 +1,6 @@
 pkgbase = herta-bin
 	pkgdesc = The self that uses the agent - desktop companion (AppImage payload, system Electron)
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/PersonaCLI/Herta
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = herta-bin
 	conflicts = herta
 	options = !strip
 	options = !debug
-	source = Herta-x86_64.AppImage::https://github.com/PersonaCLI/Herta/releases/download/v0.1.7/Herta-x86_64.AppImage
+	source = Herta-x86_64.AppImage::https://github.com/PersonaCLI/Herta/releases/download/v0.1.8/Herta-x86_64.AppImage
 	source = herta.sh
 	source = herta.desktop
-	sha256sums = c4db68e94490ba1ea6f8734dbd477877d6bb4439d80b80d3d680e08ed2f6a86a
+	sha256sums = a5dee6900f4f7c423ddcf054d56f9342933761abf32da39f6e0c54ffb855a23b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
