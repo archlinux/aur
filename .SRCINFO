@@ -1,19 +1,19 @@
 pkgbase = engram-bin
 	pkgdesc = Persistent memory system for AI coding agents - SQLite + FTS5 with MCP server, HTTP API, CLI, and TUI
-	pkgver = 3.3.2
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/Gentleman-Programming/engram
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = engram=3.3.2
+	provides = engram=3.4.0
 	conflicts = engram
 	options = !debug
-	source = LICENSE-3.3.2::https://raw.githubusercontent.com/Gentleman-Programming/engram/v3.3.2/LICENSE
+	source = LICENSE-3.4.0::https://raw.githubusercontent.com/Gentleman-Programming/engram/v3.4.0/LICENSE
 	sha256sums = 09608597ddda4e5f9033ac407a0d401986d96376c47f6d46789ca38db672dc15
-	source_x86_64 = engram-3.3.2-linux-amd64.tar.gz::https://github.com/Gentleman-Programming/engram/releases/download/v3.3.2/engram_3.3.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8694d3817b63c5fc5607b5919e88aa929bffa0bafda330513364e10c8ab61445
-	source_aarch64 = engram-3.3.2-linux-arm64.tar.gz::https://github.com/Gentleman-Programming/engram/releases/download/v3.3.2/engram_3.3.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = b4546b6e00f68e56da52064f1865c6cbae1d5b0633aeebc36e1a2f20b17683e7
+	source_x86_64 = engram-3.4.0-linux-amd64.tar.gz::https://github.com/Gentleman-Programming/engram/releases/download/v3.4.0/engram_3.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 715fda625556e46d65ddb4526bb7f88a3fee5339ca3c44ce44cc652f17fa57f1
+	source_aarch64 = engram-3.4.0-linux-arm64.tar.gz::https://github.com/Gentleman-Programming/engram/releases/download/v3.4.0/engram_3.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3309e9c0bbb539d183fd5aa9f9a13cd7aa0e81ec2512b5bedefb8b2bdd35b3e5
 
 pkgname = engram-bin
