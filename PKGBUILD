@@ -1,6 +1,6 @@
 pkgname=zxfer
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="transfer ZFS filesystems, snapshots, properties, files and directories"
 arch=('any')
 url="https://github.com/allanjude/zxfer"
@@ -12,10 +12,8 @@ package() {
     cd "$srcdir/zxfer-${pkgver}"
 
     mkdir -p "$pkgdir/usr/share/man/man8/"
-    gzip -9 zxfer.8
-
     install -D -m755 "zxfer" "$pkgdir/usr/bin/zxfer"
-    install -D -m644 "zxfer.8.gz" "$pkgdir/usr/share/man/man8/zxfer.8.gz"
+    install -D -m644 "zxfer.8" "$pkgdir/usr/share/man/man8/zxfer.8"
     install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/zxfer/COPYING"
     install -D -m644 "CHANGELOG.txt" "$pkgdir/usr/share/doc/zxfer/CHANGELOG.txt"
 }
