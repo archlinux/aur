@@ -1,6 +1,6 @@
 pkgbase = wtfi2
 	pkgdesc = Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/kanywst/wtfi2
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wtfi2
 	conflicts = wtfi2-bin
 	options = !lto
 	options = !debug
-	source = wtfi2-0.6.0.tar.gz::https://github.com/kanywst/wtfi2/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 230396dbb1b49830b42ffaf8a390e0faad60999bf0b3a2f59f7a511746235ba9
+	source = wtfi2-0.7.0.tar.gz::https://github.com/kanywst/wtfi2/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 282c05637203fca846a58b56f1e5dd0bc5fbb6b1fbd0dfca2e2270753dda0b88
 
 pkgname = wtfi2

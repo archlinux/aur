@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=wtfi2
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies'
 arch=(
@@ -18,7 +18,7 @@ options=(
 provides=('wtfi')
 conflicts=('wtfi2-git' 'wtfi2-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('230396dbb1b49830b42ffaf8a390e0faad60999bf0b3a2f59f7a511746235ba9')
+sha256sums=('282c05637203fca846a58b56f1e5dd0bc5fbb6b1fbd0dfca2e2270753dda0b88')
 
 prepare() {
     cd "$pkgname-$pkgver"
