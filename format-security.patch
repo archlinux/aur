@@ -1,0 +1,46 @@
+Description: Fix -Werror=format-security build failures
+
+--- a/loop.c	2014-02-23 13:31:19.000000000 +0100
++++ b/loop.c	2026-10-16 14:08:00.766334234 +0200
+@@ -1025,10 +1025,10 @@
+ 			kr_y = -1;
+ 
+ 		if (f1_y >= 0)
+-			mvwprintw(chat_window_border -> win, f1_y, f1_x, f1_help);
++			mvwprintw(chat_window_border -> win, f1_y, f1_x, "%s", f1_help);
+ 
+ 		if (kr_y >= 0)
+-			mvwprintw(chat_window_border -> win, kr_y, kr_x, tooltip);
++			mvwprintw(chat_window_border -> win, kr_y, kr_x, "%s", tooltip);
+ 
+ 		if (server_color != -1)
+ 			color_off(chat_window_border, server_color);
+--- a/user.c	2014-02-23 13:31:19.000000000 +0100
++++ b/user.c	2026-10-16 14:08:00.768552371 +0200
+@@ -1229,7 +1229,7 @@
+ 			if (index == woffset)
+ 				mywattron(win -> win, A_REVERSE);
+ 
+-			mvwprintw(win -> win, 1 + index, 2, buffer);
++			mvwprintw(win -> win, 1 + index, 2, "%s", buffer);
+ 
+ 			if (index == woffset)
+ 				mywattroff(win -> win, A_REVERSE);
+@@ -1407,7 +1407,7 @@
+ 			if (index == woffset)
+ 				mywattron(win -> win, A_REVERSE);
+ 
+-			mvwprintw(win -> win, 4 + index, 2, buffer);
++			mvwprintw(win -> win, 4 + index, 2, "%s", buffer);
+ 
+ 			if (index == woffset)
+ 				mywattroff(win -> win, A_REVERSE);
+@@ -2091,7 +2091,7 @@
+ 
+ 	color_on(win, dummy);
+ 
+-	mvwprintw(win -> win, y, x, what);
++	mvwprintw(win -> win, y, x, "%s", what);
+ 
+ 	color_off(win, dummy);
+ }

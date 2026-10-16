@@ -1,15 +1,17 @@
 pkgbase = fi
 	pkgdesc = f-irc is an irc terminal client
 	pkgver = 1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://web.archive.org/web/20181207164751/https://vanheusden.com/f-irc/
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = GPL-2.0-only
 	depends = ncurses
 	source = http://deb.debian.org/debian/pool/main/f/f-irc/f-irc_1.36.orig.tar.gz
 	source = fix_ftbfs.patch
+	source = format-security.patch
 	sha256sums = b5fad4383ab905ec5ca5865325e72a4b2c8f0e7c08d3bb8e7419aad12d9a6dc7
 	sha256sums = e166168a733bcd909b672f5e47a1bda59e391ebb4f4fca588c78a702ed1ca7fd
+	sha256sums = e358f051cb1cd895b6b8ba0d821aa8ccedce73295d4a663aca72d47b007ad1da
 
 pkgname = fi
