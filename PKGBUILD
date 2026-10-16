@@ -1,9 +1,9 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-tritonclient
-pkgver=2.72.0
+pkgver=2.73.0
 pkgrel=1
-_commit=77e666d5235234d9ed61fa82165adbaf216dc0d8
+_commit=9e2333e7040822490ffe479c47c9a8411aa91f1c
 pkgdesc='Python client libraries for NVIDIA Triton Inference Server (HTTP/gRPC)'
 arch=('any')
 url='https://github.com/triton-inference-server/client'
@@ -19,7 +19,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
-  'python-setuptools'
+  'python-hatchling'
   'python-grpcio-tools'
   'git'
 )
@@ -53,6 +53,9 @@ pkgver() {
 
 prepare() {
   cd client/src/python/library
+  # The custom metadata hook uses Hatchling's public API; validate Arch's
+  # current backend with wheel construction and the retained client suite.
+  sed -i 's/hatchling==1.27.0/hatchling>=1.27.0/' pyproject.toml
   # Exercise these Arch versions in check(): BF16 serialization, locally
   # generated gRPC stubs, and 100 actual HTTP request/teardown cycles. The
   # latter specifically guards the teardown regression behind the greenlet pin.
@@ -74,12 +77,8 @@ prepare() {
   sed -i 's/^import model_config_pb2/from tritonclient.grpc import model_config_pb2/' tritonclient/grpc/service_pb2.py
   sed -i 's/^import service_pb2/from tritonclient.grpc import service_pb2/' tritonclient/grpc/service_pb2_grpc.py
 
-  # Avoid installing the upstream test suite as a generic top-level "tests"
-  # package and its duplicate license as /usr/LICENSE.txt.
-  sed -i \
-    -e 's/packages=find_packages()/packages=find_packages(exclude=("tests", "tests.*"))/' \
-    -e '/^    data_files=data_files,$/d' \
-    setup.py
+  # Hatchling now explicitly packages only the supported client namespaces.
+
 }
 
 build() {
