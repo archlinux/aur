@@ -1,0 +1,37 @@
+pkgbase = nota-daw
+	pkgdesc = Modern digital audio workstation (DAW) (Built from source)
+	pkgver = 0.55.1
+	pkgrel = 1
+	url = https://github.com/nota-daw/nota
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = dotnet-sdk-10.0
+	makedepends = aspnet-targeting-pack-10.0
+	depends = alsa-lib
+	depends = freetype2
+	depends = fontconfig
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxinerama
+	depends = libxrandr
+	depends = libice
+	depends = libsm
+	depends = openssl
+	depends = zlib
+	depends = icu
+	depends = hicolor-icon-theme
+	optdepends = pulseaudio: PulseAudio audio backend support
+	optdepends = pipewire-pulse: PipeWire PulseAudio audio backend support
+	provides = nota
+	conflicts = nota
+	options = !strip
+	source = nota::git+https://github.com/nota-daw/nota.git#tag=v0.55.1
+	sha256sums = SKIP
+
+pkgname = nota-daw
