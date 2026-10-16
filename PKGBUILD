@@ -1,8 +1,9 @@
 # Maintainer: Forest Ames <fox dot ames at smallfox dot io>
 _pkgname="multiworld-gg"
 pkgname="${_pkgname}-git"
-pkgver=r9734
+pkgver=0.7.273.r0.gf2ee95d
 pkgrel=1
+epoch=1
 pkgdesc="MultiworldGG Multi-Game Randomizer and Server - Fork of Archipelago"
 arch=('x86_64')
 url="https://github.com/MultiworldGG/MultiworldGG"
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git rev-list --count HEAD | sed 's/\([0-9][0-9]*\)/r\1/'
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
