@@ -10,6 +10,7 @@ license=('custom')
 options=(!debug)
 provides=(swiftpoint-x1-control-panel)
 conflicts=(swiftpoint-x1-control-panel)
+optdepends=('gnome-shell-extension-appindicator: tray icon on GNOME')
 backup=('etc/xdg/Swiftpoint X1 Control Panel/policy.ini') #Leave any user changes to policy.ini
 source=(
    	"Swiftpoint_X1_Control_Panel_${pkgver}.tar.xz::https://swiftpointdrivers.blob.core.windows.net/pro/public/linux/Swiftpoint%20X1%20Control%20Panel%20${pkgver}-33507352.tar.xz"
