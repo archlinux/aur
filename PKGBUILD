@@ -2,7 +2,7 @@
 # Fork of https://github.com/Rexilone/yamusic-cli
 pkgname=ymusic-cli
 _repo=ymusic
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Terminal client for Yandex Music: My Wave, likes, stations (TUI); fork of https://github.com/Rexilone/yamusic-cli"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('mpv' 'libgcc' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('284709eba118461986d631c58f58081265222746d95c72da2e6b548ea90574b9')
+sha256sums=('faa3dfc5172829938189f0c4249f3c65f5be243a726418006a731571649f49dd')
 
 prepare() {
   cd "$_repo-$pkgver"
