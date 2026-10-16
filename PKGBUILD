@@ -1,6 +1,6 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
 pkgname=dankmail-git
-pkgver=r112.ef77f9b
+pkgver=r113.25a5c58
 pkgrel=1
 pkgdesc="Mail notifier with triage for Linux — Go daemon + Quickshell UI (git version)"
 arch=('x86_64' 'aarch64')
