@@ -2,7 +2,7 @@
 
 _name=langgraph-cli
 pkgname=python-$_name
-pkgver=0.4.35
+pkgver=0.4.36
 pkgrel=1
 pkgdesc='CLI for interacting with LangGraph API.'
 arch=('any')
@@ -25,16 +25,16 @@ checkdepends=('python-pytest'
 optdepends=('python-langgraph-api: inmem'
             'python-langgraph-runtime-inmem: inmem')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('48abc1bd2b277cafb80272e3a765c50f36627691662fbb5828053d46f79cab60')
+sha256sums=('5999916a0e34c57cafadf60040e2aa7ca023cf4da14086ce56ab4c8c2d3b76e5')
 
 prepare(){
   # Fix tests
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "${_name//-/_}-$pkgver"
   sed -i "s/cli_1/${_name//-/_}-$pkgver/g" tests/unit_tests/cli/test_cli.py
 }
 
 build() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "${_name//-/_}-$pkgver"
   python -m build --wheel --no-isolation
 }
 
@@ -42,19 +42,18 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
-    # Need docker
     --deselect tests/unit_tests/cli/test_cli.py::test_dockerfile_command_with_docker_compose
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_shows_wolfi_warning
     --deselect tests/unit_tests/cli/test_cli.py::test_build_generate_proper_build_context
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version_and_base_image
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version
   )
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "${_name//-/_}-$pkgver"
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "${_name//-/_}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
