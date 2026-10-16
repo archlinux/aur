@@ -1,6 +1,6 @@
 pkgbase = python-transformer-engine
 	pkgdesc = NVIDIA Transformer Engine: accelerated transformer training/inference with FP8 on Hopper+ GPUs (PyTorch backend)
-	pkgver = 2.19
+	pkgver = 2.20.2
 	pkgrel = 1
 	url = https://github.com/NVIDIA/TransformerEngine
 	arch = x86_64
@@ -35,10 +35,10 @@ pkgbase = python-transformer-engine
 	depends = cudnn>=9.3
 	depends = nccl>=2.30.4
 	depends = nvidia-utils
-	source = git+https://github.com/NVIDIA/TransformerEngine.git#tag=v2.19
-	source = te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=57e3cfb47a2d9e0d46eb6335c3dc411498efa198
+	source = git+https://github.com/NVIDIA/TransformerEngine.git#tag=v2.20.2
+	source = te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=cdcf8d86daa9b417840fd99875a1b1af685d389d
 	source = te-googletest::git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571
-	source = te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=9f47d6eb3b60962d8157a579b4caaaa4ae6b19f4
+	source = te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=a9f207c2263b4af1622a1d902b3e608fe17be0eb
 	source = nccl-ep-nvcc-ldflags.patch
 	sha256sums = SKIP
 	sha256sums = SKIP

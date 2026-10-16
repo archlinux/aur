@@ -2,7 +2,7 @@
 
 pkgname=python-transformer-engine
 _pkgname=TransformerEngine
-pkgver=2.19
+pkgver=2.20.2
 pkgrel=1
 pkgdesc='NVIDIA Transformer Engine: accelerated transformer training/inference with FP8 on Hopper+ GPUs (PyTorch backend)'
 arch=('x86_64')
@@ -46,9 +46,9 @@ checkdepends=('python-pytest>=8.2.1')
 # sdist/PyPI package is only a metapackage, so the full source tree is required.
 source=(
   "git+https://github.com/NVIDIA/TransformerEngine.git#tag=v${pkgver}"
-  "te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=57e3cfb47a2d9e0d46eb6335c3dc411498efa198"
+  "te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=cdcf8d86daa9b417840fd99875a1b1af685d389d"
   "te-googletest::git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571"
-  "te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=9f47d6eb3b60962d8157a579b4caaaa4ae6b19f4"
+  "te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=a9f207c2263b4af1622a1d902b3e608fe17be0eb"
   'nccl-ep-nvcc-ldflags.patch'
 )
 sha256sums=('SKIP'
@@ -164,7 +164,7 @@ from importlib.metadata import version
 
 from transformer_engine.common.recipe import DelayedScaling, Format
 
-assert version("transformer_engine") == "2.19.0"
+assert version("transformer_engine") == "2.20.2"
 
 recipe = DelayedScaling(
     margin=2,
