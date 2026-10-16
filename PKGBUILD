@@ -5,7 +5,7 @@
 # engine re-reads just those instead of scanning over the network. It needs
 # the protocol client only, so it builds in seconds without the engine.
 pkgname=melody-watch-git
-pkgver=r462.gd3c7d32
+pkgver=r1020.gacd0ac0e
 pkgrel=1
 pkgdesc='Tells a Melody engine which music files changed on a NAS, so it need not scan'
 arch=(x86_64 aarch64)
@@ -27,8 +27,8 @@ pkgver() {
 build() {
   cd melody-next
   cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DTRACKKNIFE_CLI_ONLY=ON -DTRACKKNIFE_BUILD_UI=OFF -DBUILD_TESTING=OFF \
-    -DTRACKKNIFE_BUILD_BENCHMARKS=OFF -DTRACKKNIFE_WARNINGS_AS_ERRORS=OFF
+    -DMELODY_CLI_ONLY=ON -DMELODY_BUILD_UI=OFF -DBUILD_TESTING=OFF \
+    -DMELODY_BUILD_BENCHMARKS=OFF -DMELODY_WARNINGS_AS_ERRORS=OFF
   cmake --build build --target melody_watch
 }
 
