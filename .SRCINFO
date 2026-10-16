@@ -1,6 +1,6 @@
 pkgbase = sway-session
 	pkgdesc = Persistent work sessions for Sway
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/marang/sway-session
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sway-session
 	makedepends = go>=1.26.5
 	depends = sway
 	options = !debug
-	source = sway-session-0.9.0.tar.gz::https://github.com/marang/sway-session/archive/bc257d2d33d5571696f9d61a4ab9c082dd5123e4.tar.gz
-	sha256sums = 517819eb6d5f9cb890bdbd5df410421648a95ff3bef3d571cecb11b201db5cea
+	source = sway-session-0.10.0.tar.gz::https://github.com/marang/sway-session/archive/069b800d11c785a3d9a3a4cb58fd3a2b8661e412.tar.gz
+	sha256sums = eef122ad6725ce848858a6459154cf8ed4db9651f73fab1695812b600b01f81a
 
 pkgname = sway-session
