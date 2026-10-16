@@ -3,13 +3,13 @@
 
 _pkgname=neo4j-community
 pkgname=${_pkgname}-bin
-pkgver="2026.02.3"
-pkgrel=1
+pkgver="2026.09.0"
+pkgrel="1"
 pkgdesc='A fully transactional graph database implemented in Java (binary package)'
 license=('GPL-3.0-only')
 arch=('any')
 url="https://neo4j.com/deployment-center/#panel7"
-_min_java_version=21
+_min_java_version="21"
 depends=("java-runtime>=$_min_java_version" "psmisc")
 provides=("${_pkgname}" "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" neo4j-enterprise)
@@ -19,14 +19,21 @@ source=(
     "neo4j.tmpfiles"
 )
 # https://dist.neo4j.org/deb/neo4j_${pkgver}_all.deb.sha256
-sha256sums=(
-    '7f7a56c7087d5be81446c31ad9c211a38682b2b1e303f0b9af8f1f7807812ddd'
-    '440874201629f436b3817be05d7f8240c9bef603a11dc0a125634287c0376b5d'
-    'a4a12084b93c357adfc54d1c0736d710ff507418824e08e33cc1f30bdc8a67f8'
-)
+sha256sums=('583b3b64fde62696d349e0aed6047e374e83695bf25ec3427dfa5eaac7a7f35a'
+            '440874201629f436b3817be05d7f8240c9bef603a11dc0a125634287c0376b5d'
+            'a4a12084b93c357adfc54d1c0736d710ff507418824e08e33cc1f30bdc8a67f8')
 
 package() {
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    local data_archives=()
+    local archive
+    for archive in data.tar.xz data.tar.zst data.tar.gz; do
+        [[ ! -f "$archive" ]] || data_archives+=("$archive")
+    done
+    if (( ${#data_archives[@]} != 1 )); then
+        printf '%s\n' 'Expected exactly one data.tar.{xz,zst,gz}' >&2
+        return 1
+    fi
+    bsdtar -xf "${data_archives[0]}" -C "${pkgdir}"
     install -Dm644 "$srcdir/neo4j.sysusers" "$pkgdir/usr/lib/sysusers.d/neo4j.conf"
     install -Dm644 "$srcdir/neo4j.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/neo4j.conf"
 }
