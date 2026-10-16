@@ -1,6 +1,6 @@
 pkgbase = omdrop-owl
 	pkgdesc = AirDrop radio backend for omdrop on non-Broadcom Wi-Fi: AWDL in userspace through OWL
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/t4t5/omdrop-owl
 	install = omdrop-owl.install
@@ -32,13 +32,14 @@ pkgbase = omdrop-owl
 	depends = bluez
 	depends = python-dbus
 	depends = python-gobject
+	optdepends = hostapd: exclusive mode on cards without ad-hoc mode
 	conflicts = brcmfmac-awdl-dkms
-	source = omdrop-owl-0.2.0.tar.gz::https://github.com/t4t5/omdrop-owl/archive/refs/tags/v0.2.0.tar.gz
+	source = omdrop-owl-0.3.0.tar.gz::https://github.com/t4t5/omdrop-owl/archive/refs/tags/v0.3.0.tar.gz
 	source = owl::git+https://github.com/jedbillyb/owl.git#commit=832d70f815c3d4a06a02117bf0fc5e868daa1ff0
 	source = googletest::git+https://github.com/google/googletest.git
 	source = radiotap::git+https://github.com/radiotap/radiotap-library.git
 	source = omdrop-awdl::git+https://github.com/brentkearney/omdrop-awdl.git#commit=534f91a525337951ca19c311e53d333bd6d55100
-	sha256sums = 2f26d1dcfb75a7001b886a0e21620c21da5f979333d52e7f3541259a091342c7
+	sha256sums = f64ec24563e70cf923cebc78ad4fa61255f50c319fd98e5706a90f742fe10a5b
 	sha256sums = a56d9c05716db293cce2f58a069a7100faedfcf15b4a4bef25c4a7a361dfae3d
 	sha256sums = SKIP
 	sha256sums = SKIP
