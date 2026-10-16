@@ -1,17 +1,17 @@
 pkgbase = jdatestamp
 	pkgdesc = losslessly imprint date/time of a picture into its JPEG image
 	pkgver = 1.2
-	pkgrel = 2
-	url = http://sourceforge.net/projects/jdatestamp/
-	arch = i686
+	pkgrel = 3
+	url = https://sourceforge.net/projects/jdatestamp/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	depends = freetype2
 	depends = libjpeg9
-	source = http://sourceforge.net/projects/jdatestamp/files/jdatestamp/1.2/jdatestamp-1.2-src.tar.gz/download
+	depends = glibc
+	depends = ttf-dejavu
+	source = jdatestamp-1.2-src.tar.gz::https://downloads.sourceforge.net/project/jdatestamp/jdatestamp/1.2/jdatestamp-1.2-src.tar.gz
 	source = jpegtran_binary.patch
 	md5sums = eaf9075f17780c6ef50f40e0865b28d1
 	md5sums = e0036c42274bf6fd265fec8debd04803
 
 pkgname = jdatestamp
-
