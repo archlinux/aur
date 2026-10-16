@@ -1,13 +1,13 @@
 # Maintainer: Shaun Lastra <shaun@revolvetrading.com>
 pkgname=hyprglaze-git
-pkgver=r205.e750f4d
+pkgver=r240.164ec18
 pkgrel=1
 pkgdesc="Wayland shader wallpaper daemon for Hyprland with window-aware effects and AI desktop buddy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/slastra/hyprglaze"
 license=('MIT')
 depends=('hyprland>=0.55' 'wayland' 'mesa' 'libglvnd' 'libpulse')
-makedepends=('git' 'zig>=0.16' 'wayland-protocols' 'stb')
+makedepends=('git' 'zig>=0.16' 'stb')
 optdepends=('aws-cli-v2: AI buddy via AWS Bedrock')
 provides=('hyprglaze')
 conflicts=('hyprglaze')
@@ -26,18 +26,8 @@ build() {
 
 package() {
     cd hyprglaze
-    install -Dm755 zig-out/bin/hyprglaze "$pkgdir/usr/bin/hyprglaze"
+    # Binary, shaders, sprite sheet and systemd user units, laid out by
+    # build.zig (the compile itself is cached from build()).
+    zig build -Doptimize=ReleaseSafe --prefix "$pkgdir/usr"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Shaders
-    install -dm755 "$pkgdir/usr/share/hyprglaze/shaders"
-    install -Dm644 shaders/*.frag "$pkgdir/usr/share/hyprglaze/shaders/"
-
-    # Sprites
-    install -dm755 "$pkgdir/usr/share/hyprglaze/sprites"
-    install -Dm644 sprites/*.png "$pkgdir/usr/share/hyprglaze/sprites/"
-
-    # Systemd user unit
-    install -Dm644 contrib/hyprglaze.service "$pkgdir/usr/lib/systemd/user/hyprglaze.service"
-    install -Dm644 "contrib/hyprglaze@.service" "$pkgdir/usr/lib/systemd/user/hyprglaze@.service"
 }
