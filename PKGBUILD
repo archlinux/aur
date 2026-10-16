@@ -2,8 +2,8 @@
 
 _pkgname=raylib
 pkgname=$_pkgname-wayland
-pkgver=6.0
-pkgrel=2
+pkgver=6.2
+pkgrel=1
 pkgdesc='Simple and easy-to-use game programming library. Wayland backend'
 arch=(x86_64)
 url='https://www.raylib.com'
@@ -13,7 +13,7 @@ makedepends=(cmake git vulkan-headers wayland-protocols)
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+https://github.com/raysan5/raylib#tag=$pkgver")
-b2sums=('4a6bfc4e88900e600ec10f4b42bbdede3f9ea758cf5925fa7193a304360e3b4b92c5ec52e04a3d33f4b624253ee08be92af8442e9217ab2df23e8fa831a5c395')
+b2sums=('5d4ef7f4650eda6b048167ba82202dbae7964ba1af668678444c1bbd4e0158352f93eb786cfd18c80532610658b5e5c7b0c15407832bc47f9467c42d0760b3a9')
 
 build() {
   cmake \
