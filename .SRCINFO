@@ -6,7 +6,6 @@ pkgbase = kst4contest
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = java-environment=21
-	makedepends = maven
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	provides = kst4contest

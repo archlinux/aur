@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/praktimarc/kst4contest"
 license=('GPL-3.0-only')
 depends=('gst-plugins-base' 'gst-plugins-good')
-makedepends=('java-environment=21' 'maven')
+makedepends=('java-environment=21')
 provides=('kst4contest')
 conflicts=('kst4contest-bin' 'kst4contest-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/praktimarc/kst4contest/archive/refs/tags/v${pkgver}.tar.gz")
@@ -19,38 +19,19 @@ build() {
     export JAVA_HOME=$(find /usr/lib/jvm -maxdepth 1 -name 'java-21-*' -type d | head -n 1)
     export PATH="${JAVA_HOME}/bin:${PATH}"
 
-    mvn -B -DskipTests package dependency:copy-dependencies \
-        -DincludeScope=runtime \
-        -DoutputDirectory=target/dist-libs
+    # A Gradle home inside $srcdir keeps the build independent of whatever the
+    # builder's ~/.gradle happens to hold: with --offline against the personal
+    # cache, every dependency added since the last local build broke the package.
+    export GRADLE_USER_HOME="${srcdir}/gradle-home"
 
-    cp "$(ls -t target/praktiKST-*.jar | head -n 1)" target/dist-libs/app.jar
+    ./gradlew --no-daemon -S :app-desktop:createDistributable
 
+    # package() reads dist/KST4Contest. Application name, icon and the JDK
+    # module list come from app-desktop/build.gradle.kts, so this PKGBUILD no
+    # longer has to keep its own copy of them.
+    rm -rf dist
     mkdir -p dist
-    # This PKGBUILD builds from a released source tarball, which may predate
-    # packaging/AddModules.java. Older tarballs carry the same list in pom.xml,
-    # which the build keeps in sync with module-info.java from v1.42.0 onwards.
-    if [ -f packaging/AddModules.java ]; then
-        ADD_MODULES="$(java packaging/AddModules.java)"
-    else
-        ADD_MODULES="$(sed -n 's:.*<addmodule>\(.*\)</addmodule>.*:\1:p' pom.xml | paste -sd,)"
-    fi
-    # Same story for the packaging icon: without --icon jpackage silently ships
-    # its own Duke placeholder, but tarballs older than v1.42.0 have no icon to
-    # point at, so only pass the flag when the file is actually there.
-    ICON_ARGS=()
-    if [ -f packaging/icons/kst4contest.png ]; then
-        ICON_ARGS=(--icon packaging/icons/kst4contest.png)
-    fi
-    jpackage \
-        --type app-image \
-        --name KST4Contest \
-        "${ICON_ARGS[@]}" \
-        --input target/dist-libs \
-        --main-jar app.jar \
-        --main-class kst4contest.view.Kst4ContestApplication \
-        --module-path target/dist-libs \
-        --add-modules "$ADD_MODULES" \
-        --dest dist
+    cp -a app-desktop/build/compose/binaries/main/app/KST4Contest dist/
 }
 
 package() {
