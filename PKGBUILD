@@ -109,7 +109,7 @@ pkgname='dgrp'
 #_pkgver='1.9-42'; _dl='40002086_AC.tgz'
 _pkgver='1.9-45'; _dl='40002086_AE.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -202,25 +202,25 @@ source=(
   '0007-kernel-5.14-task_struct.state-unsigned-tty.patch'
   '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch'
-  '0010-kernel-5.17-change-PDE_DATA.patch'
+  '0010'{,a}'-kernel-5.17-change-PDE_DATA.patch'
   '0011-kernel-6.1-remove-TTY_MAGIC.patch'
   '0012-kernel-6.1-INIT_C_CC-termios_internal.patch'
   '0013-kernel-6.0-set_termios-const-ktermios.patch'
   '0014-kernel-6.6-struct-tty_operations-size_t.patch'
-  '0015-kernel-6.4-class_create-1arg.patch'
+  '0015'{,a}'-kernel-6.4-class_create-1arg.patch'
   '0016-0006-kernel-5.10-dropped-tty_check_change.patch'
   '0017-gcc-14-strict-function-definition-configure.patch'
   '0018-kernel-6.6-strict-sign-enforcement-for-minmax-__cmp_once.patch'
-  '0019-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
-  '0019a-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
+  '0019'{,a,b}'-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
   '0020-revert-POPULATED_KERNEL_HEADERS-for-DKMS.patch'
+  '0021-kernel-6.9-strncpy-strscpy.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
 md5sums=('060bd87af7ab8e351724a9338ff50dd5'
-         'b4af5022ba96fcc2429263cfbbe85bae'
+         'e04f8169340c3081fdf799fbecac0543'
          '9feebec170552c9186e713e7f5852e14'
          'e9ae823e597f2b63d95e6d6a8e25cde3'
          '1b6491756c123234035c053baab1607c'
@@ -264,19 +264,23 @@ md5sums=('060bd87af7ab8e351724a9338ff50dd5'
          'f60c03c266bec028b4df4b7996deaacb'
          '3b51a73b29843bfc6db748351dea464b'
          'a841defc71b4b1da33ac9b24cdff52ca'
+         '5a0aa14b20eedd9398be0efe160a39d0'
          '18dad6ca1c3bc2dd5206fe8caf4bcdf1'
          'bca5ff7935af3fe539ec30f1e9f59190'
          '26d60834e4804c1c8af826e4f2a45503'
          'dc163d401cf3db6e07ff66793d3ec7ca'
          '762d49459368bb78da084e57ffc25d7c'
+         '1e1f2df1eff317757978f5695f8d169f'
          '8aeeb382e88b712c163e149bea6c5e1a'
          'c177b666a0f9a7da04c16b3b974debfa'
          'f0ece6ca3aed462f7c11ff82bb3cc32f'
          'a7b0e6bfebc82bf30ab6ed846bd64bf2'
          'df025331e29fe36ed7d97b2ee661c990'
-         '4726b79fbe2c94db647be809c34ddff1')
+         '2732affd375e716c5f8685a358c42fba'
+         '4726b79fbe2c94db647be809c34ddff1'
+         '912306ad2c2941c6c4a295cb0f725eb2')
 sha256sums=('d0cf2990c0db20fe5c7f58b7639f43fbda18b6666de66ae6ae2cac7ab4d923ea'
-            '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
+            '0696ba324923b543510a41a86f2cc3ae2df96ad3f7fa465d55ae3cca59e804b4'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
             '00d7b452a4f16599f7162f512a05599614115554992b872fc5302b521ea04468'
@@ -320,17 +324,21 @@ sha256sums=('d0cf2990c0db20fe5c7f58b7639f43fbda18b6666de66ae6ae2cac7ab4d923ea'
             '0ae424e8211836edbededafd308cf9ae73cdb791752c4fc43e1c194db7b77cab'
             '1d6ab72eec4977b7789d0f5af3dc907bebdd21e417abb5dcfdac80c460a77bae'
             'd1c641d3f024e8e11c4a36bf58570afb4b63fcaa4a22f05c59b513a35a6a4af7'
+            '66acabbf3b6fd87f7dc11b815407a12b32e189ce44a7f05384d02c6ed639f01f'
             '2b9ccbe92e4e1cbeafd16208ef011209bce30b6d3f9b4f288d0b83418479b1bc'
             '2ac185b8a27855c22d64d2e3f56e28f6a4442b1141ad46e4a0a078e0e22adc53'
             '3afe6487f26f7393aa1a05b1cd307b3bd29d164a49596e199a681b4432f6e23e'
             '5787763cac47a3ba5df203f75d57c9d7d8d4364c7cd32db426b268f77f17247a'
             'df2c6cf5943ca26f282b96f22cf7301cffa6521a273c8301199840b5dca57e8a'
+            '4e4c98b99186f13fdc6e81e12d6cdf085a90435f71e1fd898d9c3b655c5043a4'
             '26022e04543aa8ccebe1b9c698c452e2dccc98d5bf1fd8c4f0dba000067e899a'
             '4ead538f59c7a9f3a643b5530e251eec4c1363ec2cfa7539da6a67650e2836c2'
             '3ae84041ed1d5b9b3fffb95c58bb52763aae0b6a73ca85ee3f4fde27472258a9'
             'eb57a8de226ed5c030c263f2247bfb0e60256366960255fcfa5166ada39edc30'
             '4a9b4141a7ac9ce1ec3f3bc509008350c647919c0af4bc1bc6210a506d365d74'
-            '098dfc644c744a5127934a495fd309005469f3fda9a118c9fd246732856e1596')
+            '39f7ad29fa9a322278a8f3ee500d9853364585f1bad3a2e67a18388277813533'
+            '098dfc644c744a5127934a495fd309005469f3fda9a118c9fd246732856e1596'
+            'c023d095b0e7f76dd441211a955d7b05468b0d395a05c6a2aaacab3703dc13e2')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -343,7 +351,8 @@ _modulename='dgrp'
 # Check for updates and case errors to the 2 mib lists
 _fn_mibcheck() {
   echo 'Checking for newer and misnamed MIB'
-  
+
+  local _lineu,_found,_mibu
   # download *mib file list from ftp
   # remove doubles keeping newer versions
   # check for case errors
@@ -351,23 +360,23 @@ _fn_mibcheck() {
   | sort -fr | sort -u -t _ -k 1,1 | sort -f \
   | while read line
     do
-      lineu="${line^^}"
-      found=0
+      _lineu="${line^^}"
+      _found=0
       # unclear what the original script wants to do here with _mibsdnw
       # list seems to be "Do Not Want" but is added to the loop anyway
       for mib in "${_mibs[@]}" "${_mibsdnw[@]}"; do
-        mibu="${mib^^}"
-        if [ "${lineu%%_*}" = "${mibu%%_*}" ]; then
-          if [ "${lineu}" != "${mibu}" ]; then
+        _mibu="${mib^^}"
+        if [ "${_lineu%%_*}" = "${_mibu%%_*}" ]; then
+          if [ "${_lineu}" != "${_mibu}" ]; then
             echo "${mib} has been updated to ${line}"
           elif [ "${line}" != "${mib}" ]; then
             echo "Case correction: ${mib} -> ${line}"
           fi
-          found=1
+          _found=1
           break
         fi
       done
-      if [ "${found}" -eq 0 ]; then
+      if [ "${_found}" -eq 0 ]; then
         echo "${line} is missing"
       fi
     done
@@ -377,7 +386,7 @@ _fn_mibcheck() {
 # bash -c 'source PKGBUILD; _fn_mibcheck'
 
 prepare() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   # Version check
@@ -489,6 +498,14 @@ prepare() {
     _patches+=("0020-revert-POPULATED_KERNEL_HEADERS-for-DKMS.patch")
   fi
 
+  if [ "$(vercmp "${pkgver}" '1.9.45')" -ge 0 ]; then
+    _patches+=('0010a-kernel-5.17-change-PDE_DATA.patch')
+    _patches+=("0015a-kernel-6.4-class_create-1arg.patch")
+    _patches+=("0019b-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch")
+  fi
+
+  _patches+=('0021-kernel-6.9-strncpy-strscpy.patch')
+
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
     set +u; msg2 "Patch ${_pt}"; set -u
@@ -594,8 +611,6 @@ prepare() {
   sed -e 's@ please visit [^"]\+"@ please visit https://aur.archlinux.org/packages/dgrp/"@g' \
       -e '/^dgrp_init_module/,/^$/ s@version: %s@& Arch Linux@g' \
     -i driver/[0-9]*/dgrp_driver.c
-
-  set +u
 }
 
 _configure() {
@@ -614,13 +629,12 @@ _configure() {
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   _configure
 
   #. 'config/file_locations.Arch'
   make all -j1 # This package doesn't support threaded make and it's too small to fix
-  set +u
 }
 
 # Copy this line into the .install file
@@ -628,7 +642,7 @@ build() {
 _daemons=()
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
@@ -811,7 +825,6 @@ EOF
     #   -i "${_dkms}/driver/build/Makefile"
     make -C "${_dkms}/driver/build/" clean
   fi
-  set +u
 }
 
 set +u

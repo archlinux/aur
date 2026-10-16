@@ -1,0 +1,29 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2026-02-11 14:33:42.000000000 -0500
++++ b/driver/2.6.27/dgrp_tty.c	2026-10-15 22:45:19.130430965 -0400
+@@ -143,11 +143,11 @@ static int dgrp_tty_tiocmset(struct tty_
+ #else
+ static int dgrp_tty_tiocmget(struct tty_struct *);
+ static int dgrp_tty_tiocmset(struct tty_struct *, unsigned int, unsigned int);
+ #endif
+ static int dgrp_tty_send_break(struct tty_struct *, int);
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,8,0)
+ static void dgrp_tty_send_xchar(struct tty_struct *, char);
+ #else
+ static void dgrp_tty_send_xchar(struct tty_struct *, u8);
+ #endif
+ #ifdef MISSING_TTY_CHECK_CHANGE
+@@ -4076,11 +4076,11 @@ static void dgrp_tty_input_stop(struct t
+ 		wake_up_interruptible(&(ch->ch_nd)->nd_tx_waitq);
+ 
+ }
+ 
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(6,6,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,8,0)
+ static void dgrp_tty_send_xchar(struct tty_struct *tty, char c)
+ #else
+ static void dgrp_tty_send_xchar(struct tty_struct *tty, u8 c)
+ #endif
+ {

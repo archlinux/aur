@@ -1,0 +1,119 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_dpa_ops.c b/driver/2.6.27/dgrp_dpa_ops.c
+--- a/driver/2.6.27/dgrp_dpa_ops.c	2026-10-15 22:57:05.312386976 -0400
++++ b/driver/2.6.27/dgrp_dpa_ops.c	2026-10-15 22:59:30.100592986 -0400
+@@ -335,11 +335,11 @@ static int dgrp_dpa_open(struct inode *i
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 	nd = (struct nd_struct *)de->data;
+ #else
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	nd = (struct nd_struct *)pde_data(inode);
+  #else
+ 	nd = (struct nd_struct *)PDE_DATA(inode);
+  #endif
+ #endif
+diff -pNaru5 a/driver/2.6.27/dgrp_mon_ops.c b/driver/2.6.27/dgrp_mon_ops.c
+--- a/driver/2.6.27/dgrp_mon_ops.c	2026-02-11 14:33:42.000000000 -0500
++++ b/driver/2.6.27/dgrp_mon_ops.c	2026-10-15 23:00:02.084519339 -0400
+@@ -298,11 +298,11 @@ static int dgrp_mon_open(struct inode *i
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 	nd = (struct nd_struct *)de->data;
+ #else
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	nd = (struct nd_struct *)pde_data(inode);
+  #else
+ 	nd = (struct nd_struct *)PDE_DATA(inode);
+  #endif
+ #endif
+diff -pNaru5 a/driver/2.6.27/dgrp_net_ops.c b/driver/2.6.27/dgrp_net_ops.c
+--- a/driver/2.6.27/dgrp_net_ops.c	2026-10-15 22:57:05.312648134 -0400
++++ b/driver/2.6.27/dgrp_net_ops.c	2026-10-15 22:59:17.688005083 -0400
+@@ -1524,11 +1524,11 @@ static int dgrp_net_open(struct inode *i
+ 		goto done;
+ 	}
+ 
+ 	nd = (struct nd_struct *) de->data;
+ #else
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	nd = (struct nd_struct *) pde_data(inode);
+  #else
+ 	nd = (struct nd_struct *) PDE_DATA(inode);
+  #endif
+ 
+diff -pNaru5 a/driver/2.6.27/dgrp_ports_ops.c b/driver/2.6.27/dgrp_ports_ops.c
+--- a/driver/2.6.27/dgrp_ports_ops.c	2026-02-11 14:33:42.000000000 -0500
++++ b/driver/2.6.27/dgrp_ports_ops.c	2026-10-15 23:00:08.290779935 -0400
+@@ -287,11 +287,11 @@ static int dgrp_ports_open(struct inode
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 	nd = (struct nd_struct *)de->data;
+ #else
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	nd = (struct nd_struct *) pde_data(inode);
+  #else
+ 	nd = (struct nd_struct *) PDE_DATA(inode);
+  #endif
+ #endif
+diff -pNaru5 a/driver/2.6.27/dgrp_specproc.c b/driver/2.6.27/dgrp_specproc.c
+--- a/driver/2.6.27/dgrp_specproc.c	2026-02-11 14:33:42.000000000 -0500
++++ b/driver/2.6.27/dgrp_specproc.c	2026-10-15 22:59:56.379552982 -0400
+@@ -476,11 +476,11 @@ static int dgrp_gen_proc_open(struct ino
+ 		goto done;
+ 	}
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
+ #else /* >=3,10,0 */
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgrp_proc_entry *) pde_data(file_inode(file));
+  #else
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+  #endif
+ #endif
+@@ -525,11 +525,11 @@ static int dgrp_gen_proc_close(struct in
+ 		goto done;
+ 	}
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
+ #else /* >=3,10,0 */
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgrp_proc_entry *) pde_data(file_inode(file));
+  #else
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+  #endif
+ #endif
+@@ -565,11 +565,11 @@ static ssize_t dgrp_gen_proc_read(struct
+ 	if (!de || !de->data)
+ 		return -ENXIO;
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
+ #else /* >=3,10,0 */
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgrp_proc_entry *) pde_data(file_inode(file));
+  #else
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+  #endif
+ #endif
+@@ -610,11 +610,11 @@ static ssize_t dgrp_gen_proc_write(struc
+ 	if (!de || !de->data)
+ 		return-ENXIO;
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
+ #else /* >=3,10,0 */
+- #ifdef LOW_PDE_DATA
++ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgrp_proc_entry *) pde_data(file_inode(file));
+  #else
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+  #endif
+ #endif

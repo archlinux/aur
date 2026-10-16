@@ -286,15 +286,16 @@ resetmove_ps() {
 
 show_ps() {
   check_kernel
-  local lines
+  local lines=0
   if [ -s "${DGRP_STORE}" ]; then
     lines="$(wc -l "${DGRP_STORE}" | cut -d ' ' -f 1)"
-  else
-    lines=0
+  fi
+  if [ -z "${lines}" ]; then
+    lines=-1
   fi
   if [ "${lines}" -eq 0 ]; then
     printf '\nNo devices are configured.\n'
-  elif [ "${lines}" -lt 20 ]; then
+  elif [ "${lines}" -ge 0 ] && [ "${lines}" -lt 20 ]; then
     echo "$(grep 'PortCount' "${DGRP_STORE}" | cut -d ' ' -f3-)"
     grep "^[a-z]" "${DGRP_STORE}"
   else

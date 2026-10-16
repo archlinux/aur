@@ -1,0 +1,39 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_dpa_ops.c b/driver/2.6.27/dgrp_dpa_ops.c
+--- a/driver/2.6.27/dgrp_dpa_ops.c	2026-02-11 14:33:42.000000000 -0500
++++ b/driver/2.6.27/dgrp_dpa_ops.c	2026-10-15 22:33:13.276754607 -0400
+@@ -700,12 +700,15 @@ static long dgrp_dpa_ioctl(struct file *
+ 			getnode.nd_chan_count = nd->nd_chan_count;
+ 			getnode.nd_tx_byte = nd->nd_tx_byte;
+ 			getnode.nd_rx_byte = nd->nd_rx_byte;
+ 
+ 			memset(&getnode.nd_ps_desc, '\0', MAX_DESC_LEN);
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,9,0)
+ 			strncpy(getnode.nd_ps_desc, nd->nd_ps_desc, MAX_DESC_LEN);
+-
++#else
++			strscpy(getnode.nd_ps_desc, nd->nd_ps_desc, MAX_DESC_LEN);
++#endif
+ 			if (copy_to_user(uarg, &getnode, sizeof(struct digi_node)))
+ 				return -EFAULT;
+ 		}
+ 		break;
+ 
+diff -pNaru5 a/driver/2.6.27/dgrp_net_ops.c b/driver/2.6.27/dgrp_net_ops.c
+--- a/driver/2.6.27/dgrp_net_ops.c	2026-02-11 14:33:42.000000000 -0500
++++ b/driver/2.6.27/dgrp_net_ops.c	2026-10-15 22:33:24.685955117 -0400
+@@ -4294,11 +4294,15 @@ check_query:
+ 						nd->nd_hw_ver = (b[8] << 8) | b[9];
+ 						nd->nd_sw_ver = (b[10] << 8) | b[11];
+ 						nd->nd_hw_id = b[6];
+ 						desclen = ((plen - 12) > MAX_DESC_LEN) ? MAX_DESC_LEN :
+ 							plen - 12;
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,9,0)
+ 						strncpy(nd->nd_ps_desc, b + 12, desclen);
++#else
++						strscpy(nd->nd_ps_desc, b + 12, desclen);
++#endif
+ 						nd->nd_ps_desc[desclen] = 0;
+ 					}
+ 
+ 					nd->nd_expect &= ~NR_IDENT;
+ 					break;
