@@ -1,6 +1,6 @@
 pkgbase = hal-9001-bin
 	pkgdesc = Pure Rust TUI system control hub for Arch users (BTW) tired of 14 separate tools (No AI!) - binary release
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/IvelOt/hal-9001
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = hal-9001-bin
 	provides = hal-9001
 	provides = hal9001
 	conflicts = hal-9001
-	source_x86_64 = https://github.com/IvelOt/hal-9001/releases/download/v0.1.4/hal-9001-0.1.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b46c7c6810537b7a14257cc5798c891edf224d31af8d09ecf492d8a97fdaa5ac
-	source_aarch64 = https://github.com/IvelOt/hal-9001/releases/download/v0.1.4/hal-9001-0.1.4-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = dae2c94412d3c8a4d885542bc6b5873dafa3e69437fe80e30ad15a2512744274
+	source_x86_64 = https://github.com/IvelOt/hal-9001/releases/download/v0.2.0/hal-9001-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d124c7475b5e5636323994c3c9cb206bb7e218717b15f8053f1191caf46d0dd2
+	source_aarch64 = https://github.com/IvelOt/hal-9001/releases/download/v0.2.0/hal-9001-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2a7b417fc91cb3f40edb91a7169ab74cce04a18fd1c19337cbda13897f551c39
 
 pkgname = hal-9001-bin
