@@ -1,8 +1,8 @@
 # Maintainer: solsTiCe d'Hiver <solsticedhiver@gmail.com>
 pkgname=opennow
 _pkgname=OpenNOW
-pkgver=1.0.2
-_pkgver=$pkgver
+pkgver=1.0.3
+_pkgver="$pkgver"
 pkgrel=1
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
@@ -17,7 +17,7 @@ arch=('x86_64')
 source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz
 	opennow.desktop)
 
-sha256sums=('08506d2256b944d8c2c353448a9fc5dd59dabdc4e28ce1f1420f0d7c72c12f46'
+sha256sums=('fa347896c1649d1fd05794c7ed1895a0feebb02b8d6ad1e4670f2a20c2d04372'
             '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513')
 
 #prepare() {
@@ -57,9 +57,4 @@ package() {
 	# icons
 	mkdir -p "${pkgdir}/usr/share/icons"
 	cp -a hicolor "${pkgdir}/usr/share/icons"
-
-	# move lib to the right place
-	mkdir -p ${pkgdir}/usr/lib/
-	mv ${pkgdir}/usr/bin/libopennow_streamer_ffi.so ${pkgdir}/usr/lib/
-	chmod -x ${pkgdir}/usr/lib/libopennow_streamer_ffi.so
 }
