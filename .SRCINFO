@@ -1,5 +1,5 @@
 pkgbase = taigikeyboard
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://taigikeyboard.tw
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = taigikeyboard
 	makedepends = protobuf-c
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = ibus
 	makedepends = fcitx5
 	depends = libgcc
 	depends = glibc
@@ -21,8 +22,8 @@ pkgbase = taigikeyboard
 	optdepends = ttf-jf-openhuninn: font with more support for Taigi
 	optdepends = ttf-iansui-git: font with more support for Taigi
 	options = !lto
-	source = taigikeyboard-3.7.0.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/desktop-3.7.0.tar.gz
-	sha512sums = 066aae3ff15b94a776762667fd6d15e62744367b6ff01f97b141183178fe25c110fecdfbcee32f420836fd24a3c3ac1013cdcf38f7cf9e45bfbbafb3f6349194
+	source = taigikeyboard-3.8.0.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/desktop-3.8.0.tar.gz
+	sha512sums = f2cda6006344e91b795c1d50960a0c91ec9acdb4ccbe88903e59a5b0995d8a3911dd68a9a417d3d47485a44eb84bd35ec61badb69792bddc6de5dd51ba654d25
 
 pkgname = fcitx5-taigikeyboard
 	pkgdesc = Taigi input method for Fcitx5
