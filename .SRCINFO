@@ -1,6 +1,6 @@
 pkgbase = ptouch-rs
 	pkgdesc = Brother P-Touch label printer driver and tools for Linux
-	pkgver = 0.8.7
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/vowstar/ptouch-rs
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ptouch-rs
 	provides = ptouch-rs
 	conflicts = ptouch-rs
 	options = !lto
-	source = ptouch-rs::git+https://github.com/vowstar/ptouch-rs.git#tag=v0.8.7
-	sha256sums = a96111c6e1d470c0925b6422df8516b98c70e39e28282b439b078a3e15135208
+	source = ptouch-rs::git+https://github.com/vowstar/ptouch-rs.git#tag=v0.10.0
+	sha256sums = aec4baecabe6b836c8cfade53c417f511cda9a8565891186d5ccc05cd3f0ad97
 
 pkgname = ptouch-rs
