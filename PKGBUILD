@@ -1,6 +1,6 @@
 # Maintainer: Mikkel Kappel Persson <mikkel@kappelpersson.dk>
 pkgname=huebox
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Terminal theme editor with live preview'
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('gcc-libs')
 source_x86_64=("huebox-$pkgver-x86_64-linux.tar.gz::$url/releases/download/v$pkgver/huebox-$pkgver-x86_64-linux.tar.gz")
 source_aarch64=("huebox-$pkgver-aarch64-linux.tar.gz::$url/releases/download/v$pkgver/huebox-$pkgver-aarch64-linux.tar.gz")
-sha256sums_x86_64=('086e4e0b5249f63db38566f8ce76f619a14da9b4136f993ce86cec8f62834a62')
-sha256sums_aarch64=('3401217e94ba642fb3f925cc874d45b16a5991fed6f4d3ff0eb288ebeb3fe597')
+sha256sums_x86_64=('8c492a08ae4ea7eb4857408c4f8b39f2823f2f12fe500a7122c60693e47e614f')
+sha256sums_aarch64=('b52a690ee61c0025454c32fa1201fd8c2824e38808469a7830132f8c995d065e')
 
 package() {
   install -Dm755 huebox "$pkgdir/usr/bin/huebox"

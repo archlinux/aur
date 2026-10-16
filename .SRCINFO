@@ -1,15 +1,15 @@
 pkgbase = huebox
 	pkgdesc = Terminal theme editor with live preview
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/MikkelKappelPersson/huebox
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = gcc-libs
-	source_x86_64 = huebox-0.5.3-x86_64-linux.tar.gz::https://github.com/MikkelKappelPersson/huebox/releases/download/v0.5.3/huebox-0.5.3-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 086e4e0b5249f63db38566f8ce76f619a14da9b4136f993ce86cec8f62834a62
-	source_aarch64 = huebox-0.5.3-aarch64-linux.tar.gz::https://github.com/MikkelKappelPersson/huebox/releases/download/v0.5.3/huebox-0.5.3-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 3401217e94ba642fb3f925cc874d45b16a5991fed6f4d3ff0eb288ebeb3fe597
+	source_x86_64 = huebox-0.5.4-x86_64-linux.tar.gz::https://github.com/MikkelKappelPersson/huebox/releases/download/v0.5.4/huebox-0.5.4-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 8c492a08ae4ea7eb4857408c4f8b39f2823f2f12fe500a7122c60693e47e614f
+	source_aarch64 = huebox-0.5.4-aarch64-linux.tar.gz::https://github.com/MikkelKappelPersson/huebox/releases/download/v0.5.4/huebox-0.5.4-aarch64-linux.tar.gz
+	sha256sums_aarch64 = b52a690ee61c0025454c32fa1201fd8c2824e38808469a7830132f8c995d065e
 
 pkgname = huebox
