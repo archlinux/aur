@@ -1,5 +1,5 @@
 pkgname=thunderbolt
-pkgver=0.1.139
+pkgver=0.1.141
 pkgrel=1
 pkgdesc='Privacy-respecting AI chat client. AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '8195105a991dac23d8ce89861ce4588cd3753f48d58d1713ec5aa387133ed31e'
+  'd2faa3592001f77e670f2e7693209b73d9f04f72df72ff9993fb3ae2413df1f9'
 )
 
 build() {
