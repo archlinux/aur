@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-ade-bin
-pkgver=0.43.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=("zerus=$pkgver" 'hgs' 'hgs-tray')
 conflicts=('zerus' 'zerus-git')
 options=('!strip' '!debug')
 source=("https://github.com/ufna/zerus/releases/download/v${pkgver}/zerus-${pkgver}-arch-${CARCH}.tar.gz")
-sha256sums=('6bc7f44995196fcefd07bc30d2c68d9df16d96328f88c75727a850235342d5e3')
+sha256sums=('5d000f4abaf2e5a5fa02ea93f91ccd82b800974dbde2584d3e935a0d078dba25')
 
 package() {
     cp -a "$srcdir/zerus-$pkgver-arch-$CARCH/usr" "$pkgdir/"
