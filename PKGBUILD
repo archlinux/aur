@@ -3,14 +3,14 @@
 pkgname=python-cmyt
 _module_name=cmyt
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of Matplotlib colormaps from the yt project."
 arch=(any)
 url="http://yt-project.org"
 license=('BSD')
-depends=(python-colorspacious python-matplotlib python-more-itertools python-numpy)
-makedepends=(python-build python-installer python-wheel python-hatchling)
-optdepends=()
+depends=(python-matplotlib python-numpy)
+makedepends=(python-build python-installer python-wheel python-flit-core)
+optdepends=('python-colorspacious: required for grayscale colormap rendering')
 options=(!emptydirs)
 source=(
     "https://pypi.io/packages/source/c/${_module_name}/${_module_name}-${pkgver}.tar.gz"
@@ -30,4 +30,3 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
