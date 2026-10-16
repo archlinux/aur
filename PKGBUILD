@@ -3,7 +3,7 @@
 _pkgname=amass
 pkgname=${_pkgname}-git
 pkgver=5.1.1.r0.g79299dc
-pkgrel=2
+pkgrel=3
 pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
 arch=('x86_64' 'aarch64')
 url="https://github.com/owasp-amass/amass"
@@ -21,10 +21,22 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${_pkgname}"
+  export GOPATH="${srcdir}"
+  GOFLAGS="-mod=readonly" go mod vendor -v
+}
+
 build() {
   cd "${_pkgname}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
+  export GOPATH="${srcdir}"
   mkdir -p bin
-  go build -trimpath -o bin/amass ./cmd/amass
+  go build -o bin/amass ./cmd/amass
 }
 
 package() {
