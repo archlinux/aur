@@ -1,6 +1,6 @@
 pkgbase = chatgpt-desktop
 	pkgdesc = ChatGPT desktop application for Linux (repackaged from the official binary)
-	pkgver = 26.1007.71326
+	pkgver = 26.1013.31256
 	pkgrel = 1
 	url = https://chatgpt.com/download
 	install = chatgpt-desktop.install
@@ -50,10 +50,10 @@ pkgbase = chatgpt-desktop
 	optdepends = kde-cli-tools: move deleted files to the Plasma trash through kioclient
 	optdepends = org.freedesktop.secrets: securely store credentials with a Secret Service backend
 	optdepends = pipewire: enable WebRTC screen sharing under Wayland
-	provides = chatgpt=26.1007.71326
+	provides = chatgpt=26.1013.31256
 	conflicts = chatgpt
-	noextract = chatgpt_26.1007.71326_amd64.deb
-	noextract = chatgpt_26.1007.71326_arm64.deb
+	noextract = chatgpt_26.1013.31256_amd64.deb
+	noextract = chatgpt_26.1013.31256_arm64.deb
 	options = !strip
 	options = !debug
 	backup = etc/apparmor.d/chatgpt
@@ -61,9 +61,9 @@ pkgbase = chatgpt-desktop
 	source = chatgpt-LICENSE
 	sha256sums = aab6b1105d7273443234e77412fbaa35ff9e04098ac63c2f73ae8e87afb43bd2
 	sha256sums = ddd13d7256e03b29bb3f879f07266ba4d6572c161ccddf7a8a2f82e47b24b2b4
-	source_x86_64 = chatgpt_26.1007.71326_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.1007.71326_amd64.deb
-	sha256sums_x86_64 = 0e006b4931712f5a90d4cd04972c6e0b533cedcdfdb2b51946d5b9367471f556
-	source_aarch64 = chatgpt_26.1007.71326_arm64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.1007.71326_arm64.deb
-	sha256sums_aarch64 = d9fbd854a1522edb2b53c755a3ea5ecfa67b3f8c035313405b50967242efba0a
+	source_x86_64 = chatgpt_26.1013.31256_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.1013.31256_amd64.deb
+	sha256sums_x86_64 = 70ccf2b9bf78098e7bbbfddbf1ee196a8fdd42beb7e77f16dd42faba36403324
+	source_aarch64 = chatgpt_26.1013.31256_arm64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.1013.31256_arm64.deb
+	sha256sums_aarch64 = 1729da0b955ce5fbd7abe4e8697f3fa58be9543101c9118c47aed42559b8a396
 
 pkgname = chatgpt-desktop
