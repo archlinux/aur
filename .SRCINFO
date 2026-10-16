@@ -1,6 +1,6 @@
 pkgbase = filen-menubar-bin
 	pkgdesc = Lightweight system tray app for Filen cloud sync
-	pkgver = 0.1.34
+	pkgver = 0.1.35
 	pkgrel = 1
 	url = https://github.com/philippgerard/filen-menubar
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = filen-menubar-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
-	provides = filen-menubar=0.1.34
+	provides = filen-menubar=0.1.35
 	conflicts = filen-menubar
-	noextract = filen-menubar-bin-0.1.34.deb
+	noextract = filen-menubar-bin-0.1.35.deb
 	options = !strip
 	options = !debug
 	options = !lto
-	source = filen-menubar-bin-0.1.34.deb::https://github.com/philippgerard/filen-menubar/releases/download/v0.1.34/Filen.Menubar_0.1.34_amd64.deb
-	source = LICENSE-0.1.34::https://github.com/philippgerard/filen-menubar/raw/v0.1.34/LICENSE
-	sha256sums = 43512aaaefb79c5c88f26213f80999f55fe64a3f70047959184cf6acc58d54db
+	source = filen-menubar-bin-0.1.35.deb::https://github.com/philippgerard/filen-menubar/releases/download/v0.1.35/Filen.Menubar_0.1.35_amd64.deb
+	source = LICENSE-0.1.35::https://github.com/philippgerard/filen-menubar/raw/v0.1.35/LICENSE
+	sha256sums = 2eefdb03f3e73641c26c5ef46afbc7ded0bd8494e0b09f50f815a0cf657de5fa
 	sha256sums = 63d3d5dbe2ed4b855613bc1d0cdaa541583985329fd66b4179f937eb55ded130
 
 pkgname = filen-menubar-bin
