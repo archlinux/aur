@@ -14,11 +14,9 @@ makedepends=('imagemagick' 'libxcrypt-compat' 'rust' 'cmake' 'qt6-base' 'qt6-dec
 provides=('opennow')
 conflicts=('opennow-appimage')
 arch=('x86_64')
-source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz
-	opennow.desktop)
+source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz)
 
-sha256sums=('fa347896c1649d1fd05794c7ed1895a0feebb02b8d6ad1e4670f2a20c2d04372'
-            '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513')
+sha256sums=('fa347896c1649d1fd05794c7ed1895a0feebb02b8d6ad1e4670f2a20c2d04372')
 
 #prepare() {
 #}
@@ -32,14 +30,6 @@ build() {
 	export LDFLAGS=""
 	cmake -S opennow-qt -B build/opennow-qt -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build/opennow-qt
-
-	mkdir hicolor || :
-	# create a set of icons from huge logo.png
-	for i in 8x8 16x16 20x20 22x22 24x24 32x32 36x36 40x40 42x42 48x48 64x64 72x72 80x80 96x96 128x128 192x192 256x256 384x384 512x512 1024x1024; do
-		_dir="hicolor/${i}/apps"
-		mkdir -p "${_dir}"
-	 	magick logo.png -resize "${i}" "${_dir}/opennow.png"
-	done
 }
 
 #test() {
@@ -51,10 +41,6 @@ package() {
 	cd "$_pkgname-$_pkgver"
 	DESTDIR="${pkgdir}" cmake --install build/opennow-qt
 
-	# misc (licence, dekstop)
+	# misc (licence)
 	install -m644 -D -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
-	install -m 644 -D -t "${pkgdir}/usr/share/applications/" "${srcdir}/opennow.desktop"
-	# icons
-	mkdir -p "${pkgdir}/usr/share/icons"
-	cp -a hicolor "${pkgdir}/usr/share/icons"
 }
