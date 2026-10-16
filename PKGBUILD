@@ -5,7 +5,7 @@ _pkgname=treehouse
 pkgname=${_pkgname}-bin
 pkgdesc="Manage worktrees without managing worktrees"
 
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("CONFIG_EXAMPLE-${pkgver}.toml::${_urlraw}/${_pkgname}.toml.example"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('811b74cf1c876d42efffa54b5465dae2c617ed36d946920eb936315a5c7149f1'
-            '476ffb39cbd6f852878d5668d73fd6a51d0d2cf71f7a62e474548351a944bbd8'
+            'e674891999d817bd1068122d994a5813d1b0b8fb28c96e459708bcf8c67353fc'
             '1b962d20f826f6a758c737f8aa4e8e76dc719b8aa78fcfacdfb46681bb36c2f4')
-sha256sums_x86_64=('78c820c5872bf9d9d3eb19bbedd75e4804b9258c862238993fa160cf9d215ed8')
-sha256sums_aarch64=('9e34a13fd30fa3855520bfa4ad355d3acde139db41fba29e78bdd331633dd617')
+sha256sums_x86_64=('a169277ffdc5f48b51a4b53ce6c2e46fe3c222a5017c67f72bf9260a9b382ae2')
+sha256sums_aarch64=('8d82b132cb952c77992daf9f56f49f8d6a1accb1a973ef235af7fa71bfe6f614')
 
 
 package() {
