@@ -1,6 +1,6 @@
 pkgbase = v2-bin
 	pkgdesc = A local-first, privacy oriented rich text editor with Git-style version control
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://v2editor.com
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = v2-bin
 	depends = zlib
 	depends = libz.so
 	optdepends = libappindicator-gtk3: tray icon support
-	provides = v2=0.18.0
+	provides = v2=0.18.1
 	conflicts = v2
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/oktana-coop/v2/releases/download/v0.18.0/v2-0.18.0-x86_64.AppImage
-	sha256sums_x86_64 = 8ba038c4fd1336616a900ad44bd9fa6a1cbc2804f097396224e67308b6ca134e
-	source_aarch64 = https://github.com/oktana-coop/v2/releases/download/v0.18.0/v2-0.18.0-arm64.AppImage
-	sha256sums_aarch64 = 891a05893090c49eb63168803b9c433e9693888766d00945bbad6239695024ac
+	source_x86_64 = https://github.com/oktana-coop/v2/releases/download/v0.18.1/v2-0.18.1-x86_64.AppImage
+	sha256sums_x86_64 = c1211de139d7ba2f53f51de01d990332429af5235582e0b613c18c6092b43a2a
+	source_aarch64 = https://github.com/oktana-coop/v2/releases/download/v0.18.1/v2-0.18.1-arm64.AppImage
+	sha256sums_aarch64 = cdacf332da7a78874678390135332191d68bba656710cf8d97fab651ab2c0e4c
 
 pkgname = v2-bin
