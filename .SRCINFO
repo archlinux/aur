@@ -1,0 +1,25 @@
+pkgbase = lorgarctl-bin
+	pkgdesc = Linux CLI controller, background daemon & DKMS kernel driver for LORGAR MSA10W mouse (prebuilt binary release)
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://github.com/Sqrilizz/lorgarctl
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	license = GPL-2.0-or-later
+	depends = hidapi
+	depends = systemd-libs
+	depends = dbus
+	depends = glib2
+	optdepends = dkms: to build and manage the hid-lorgar kernel module for native UPower battery
+	optdepends = linux-headers: required if compiling the DKMS module
+	optdepends = plasma-workspace: for the KDE Plasma 6 battery widget
+	provides = lorgarctl
+	provides = lorgard
+	provides = hid-lorgar-dkms
+	conflicts = lorgarctl
+	conflicts = lorgarctl-git
+	source = https://github.com/Sqrilizz/lorgarctl/releases/download/v2.3.4/lorgar-v2.3.4-linux-x86_64.tar.gz
+	sha256sums = 70d75aecd803a12dde4dcf050504bd28014bcf129c233bb85e037a7a67969d99
+
+pkgname = lorgarctl-bin
