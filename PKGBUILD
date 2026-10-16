@@ -10,7 +10,7 @@ license=('UNLICENSED')
 provides=('openaside')
 conflicts=('openaside')
 options=('!strip' '!debug')
-source=("$pkgname-$pkgver.tar.gz::$base/openaside-$pkgver-linux-x64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@$pkgver/openaside-$pkgver-linux-x64.tar.gz")
 sha256sums=('b992dd7fa691496bf969e170d987ba38c5986265d2c76315cd3e6790296f9234')
 
 package() {
