@@ -5,14 +5,14 @@
 pkgname=python-whois
 _name=python_whois
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Whois querying and parsing of domain registration information'
 arch=(any)
 url='https://pypi.org/project/python-whois/'
 license=(MIT)
 depends=(python python-dateutil)
 makedepends=(python-build python-installer python-setuptools)
-checkdepends=(python-pytest python-simplejson)
+checkdepends=(python-pytest)
 optdepends=('python-pysocks: SOCKS proxy support for whois queries')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('2e6de7b6d70e305a85f4859cd17781ee3f0da3a02a8e94f23cb4cdcd2e400bfa')
@@ -24,7 +24,11 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  python -m pytest
+  # test_simple_unicode_domain queries нарояци.com live and asserts nothing; the
+  # domain's registration has lapsed, so VeriSign answers "No match" and the
+  # library correctly raises WhoisDomainNotFoundError. Deselecting it is the same
+  # remedy python-requests uses for its hanging test_unicode_header_name.
+  python -m pytest --deselect test/test_query.py::TestQuery::test_simple_unicode_domain
 }
 
 package() {

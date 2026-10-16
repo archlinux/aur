@@ -1,12 +1,11 @@
 pkgbase = python-whois
 	pkgdesc = Whois querying and parsing of domain registration information
 	pkgver = 0.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/python-whois/
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-simplejson
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
