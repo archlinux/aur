@@ -2,7 +2,7 @@
 
 pkgname=nuclear-player-bin
 _pkgname=nuclear-player
-pkgver=1.51.1
+pkgver=1.51.2
 pkgrel=1
 pkgdesc='Nuclear is a free, open-source music player without ads or tracking.'
 arch=(x86_64)
@@ -11,18 +11,17 @@ license=('AGPL-3.0-only')
 provides=('nuclear-player')
 conflicts=('nuclear-player' 'nuclear-player-git')
 options=('!strip' '!debug')
-depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-base' 'gst-plugins-good')
+depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
 optdepends=(
     'gst-plugins-bad: Additional media codec support'
     'gst-plugins-ugly: Patented codec support'
-    'gst-libav: FFmpeg-based codec support'
 )
 source=(
-    "nuclear-player-1.51.1.deb::https://github.com/nukeop/nuclear/releases/download/player@1.51.1/Nuclear_1.51.1_amd64.deb"
-    "https://raw.githubusercontent.com/nukeop/nuclear/player@1.51.1/LICENSE"
+    "nuclear-player-1.51.2.deb::https://github.com/nukeop/nuclear/releases/download/player@1.51.2/Nuclear_1.51.2_amd64.deb"
+    "https://raw.githubusercontent.com/nukeop/nuclear/player@1.51.2/LICENSE"
 )
-noextract=("nuclear-player-1.51.1.deb")
-sha256sums=('2c4820838d8b0acfaac9c1358e038736530550746d5e9a4bddc2f2f780479818'
+noextract=("nuclear-player-1.51.2.deb")
+sha256sums=('bef1578254d77227b4e1740b0efaae2decf9c9b716c5d6c49b54e40a77511253'
             'SKIP')
 
 package() {
