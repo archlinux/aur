@@ -1,0 +1,18 @@
+pkgbase = pocketpsp
+	pkgdesc = Write Sony PSP homebrew games in a restricted Python DSL compiled to C
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/psp-game-studio
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = make
+	optdepends = ppsspp: run built games with "pocketpsp run"
+	source = pocketpsp-0.1.0.tar.gz::https://github.com/user14923929/psp-game-studio/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 1245488fd63c8f396058109355fe9c28bc23291c7434e7577d0401b2636cac7a
+
+pkgname = pocketpsp
