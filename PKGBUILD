@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-dashboard
-pkgver=4.14.3
+pkgver=4.14.9
 pkgrel=1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
@@ -20,7 +20,7 @@ source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
 )
 
-sha512sums=('8c1e8d6d7ceaf62c86005655d14686a1a5b88aa159dd90a28d60837242067f9b5c4ee7cc9f15c7747361581d8b411753c20c89f9a1888fffffb68561d435e0a0')
+sha512sums=('1ddb6e286010f42398f1401e11b1b9d68b13944db6e263151d5ab1697c1b3048624da7cb89c26954b49bbc2678f8ce03c39007f5483758133f0262eb7a68901d')
 
 install=$pkgname.install
 

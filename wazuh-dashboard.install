@@ -16,6 +16,9 @@ post_upgrade()
     echo "Previous config restored. New config saved as opensearch_dashboards.yml.rpmnew"
   fi
 
+  # Recrea el keystore solo si falta (no pisa credenciales existentes)
+  _setup_keystore
+
   # Reapply permissions
   _set_permissions
 
@@ -43,6 +46,9 @@ post_install()
   mkdir -p /etc/wazuh-dashboard/certs
   mkdir -p /var/log/wazuh-dashboard
   mkdir -p /run/wazuh-dashboard
+
+  # Credenciales del dashboard contra el indexer
+  _setup_keystore
 
   # Set permissions
   _set_permissions
@@ -80,7 +86,66 @@ post_install()
   echo "  Default credentials: admin / admin"
   echo "  (Change password after first login!)"
   echo ""
+  echo "  NOTE: the dashboard takes 1-3 minutes to become available on first"
+  echo "  start while it optimizes its bundles. HTTP 503 until then is normal."
+  echo ""
+  echo "=== IF YOU CHANGED THE kibanaserver PASSWORD ==="
+  echo ""
+  echo "The dashboard reads its indexer credentials from its keystore, not from"
+  echo "opensearch_dashboards.yml. After changing the password, update it with:"
+  echo ""
+  echo "  KS=/usr/share/wazuh-dashboard/bin/opensearch-dashboards-keystore"
+  echo "  printf 'kibanaserver'  | \$KS add -f --stdin opensearch.username"
+  echo "  printf '<NEW_PASSWORD>'| \$KS add -f --stdin opensearch.password"
+  echo "  chown wazuh-dashboard:wazuh-dashboard /etc/wazuh-dashboard/opensearch_dashboards.keystore"
+  echo "  systemctl restart wazuh-dashboard"
+  echo ""
   echo "Documentation: https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html"
+}
+
+_setup_keystore()
+{
+  # opensearch_dashboards.yml NO lleva usuario/contrasena por diseno: el dashboard
+  # los lee de su keystore. Sin el, no puede autenticarse contra el indexer y se
+  # queda en bucle "[ResponseError]: Response Error" devolviendo HTTP 503 para
+  # siempre, con el servicio en estado "active" (parece sano pero no lo esta).
+  local ks_bin=/usr/share/wazuh-dashboard/bin/opensearch-dashboards-keystore
+  local ks_file=/etc/wazuh-dashboard/opensearch_dashboards.keystore
+
+  if [ ! -x "$ks_bin" ]; then
+    echo "  WARNING: keystore binary not found, skipping credential setup"
+    return
+  fi
+
+  if [ -f "$ks_file" ]; then
+    echo "  Keystore already present, keeping existing credentials"
+    return
+  fi
+
+  echo "Creating dashboard keystore with default credentials..."
+
+  # --allow-root es imprescindible: post_install corre como root y el binario se
+  # niega con "OpenSearch Dashboards should not be run as root" y termina sin
+  # crear nada. Antes la salida iba a /dev/null, asi que el fallo era invisible
+  # y el dashboard se quedaba en HTTP 503 para siempre.
+  local ks_out
+  if ! ks_out=$("$ks_bin" create --allow-root 2>&1); then
+    echo "  WARNING: no se pudo crear el keystore:"
+    echo "$ks_out" | sed 's/^/    /'
+    echo "  WARNING: el dashboard devolvera HTTP 503 hasta que se cree a mano"
+    return
+  fi
+
+  printf 'kibanaserver' | "$ks_bin" add -f --stdin --allow-root opensearch.username >/dev/null 2>&1
+  printf 'kibanaserver' | "$ks_bin" add -f --stdin --allow-root opensearch.password >/dev/null 2>&1
+
+  if [ -f "$ks_file" ]; then
+    chown wazuh-dashboard:wazuh-dashboard "$ks_file" 2>/dev/null || true
+    chmod 600 "$ks_file" 2>/dev/null || true
+    echo "  Keystore created (user: kibanaserver)"
+  else
+    echo "  WARNING: keystore was not created, the dashboard will return HTTP 503"
+  fi
 }
 
 _set_permissions()
