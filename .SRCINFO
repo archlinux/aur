@@ -1,11 +1,12 @@
 pkgbase = python-imagecodecs
 	pkgdesc = Image transformation, compression, and decompression codecs
 	pkgver = 2026.10.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cgohlke/imagecodecs
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = cython
+	makedepends = pkgconf
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
