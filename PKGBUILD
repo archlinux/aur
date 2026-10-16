@@ -5,14 +5,15 @@
 #   3. extend the CARCH switch in package() below
 pkgname=lzc-client-bin
 pkgver=2.0.30
-pkgrel=3
+pkgrel=5
 pkgdesc='懒猫微服桌面客户端（LCMD），扫码登录后管理微服应用、文件与远程访问'
 arch=('x86_64')
 url='https://lazycat.cloud/'
 license=('custom')
 install="${pkgname}.install"
 provides=('lzc-client-desktop' 'lazycat-client')
-conflicts=('lzc-client-desktop' 'lazycat-client')
+conflicts=('lzc-client-desktop' 'lazycat-client' 'lzc-client-desktop-bin')
+options=('!strip' '!debug')
 depends=(
   'zenity'
   'libcap'

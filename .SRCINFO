@@ -1,7 +1,7 @@
 pkgbase = lzc-client-bin
 	pkgdesc = 懒猫微服桌面客户端（LCMD），扫码登录后管理微服应用、文件与远程访问
 	pkgver = 2.0.30
-	pkgrel = 3
+	pkgrel = 5
 	url = https://lazycat.cloud/
 	install = lzc-client-bin.install
 	arch = x86_64
@@ -34,6 +34,9 @@ pkgbase = lzc-client-bin
 	provides = lazycat-client
 	conflicts = lzc-client-desktop
 	conflicts = lazycat-client
+	conflicts = lzc-client-desktop-bin
+	options = !strip
+	options = !debug
 	source_x86_64 = lzc-client-desktop_2.0.30_x86_64.tar.zst::https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v2.0.30.tar.zst
 	sha256sums_x86_64 = 4a1a14bd73c41fd59250ef9d77da5dfcad7735019c6a8bfee851ba4090890d00
 
