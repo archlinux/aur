@@ -1,6 +1,6 @@
 pkgbase = bwrap-common
 	pkgdesc = Reusable bubblewrap sandbox helpers for shell wrappers
-	pkgver = 0.0.5
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/fkzys/bwrap-common
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = bwrap-common
 	depends = bash
 	optdepends = xdg-dbus-proxy: filtered D-Bus access
 	optdepends = verify-lib: library integrity verification before sourcing
-	source = bwrap-common-0.0.5.tar.gz::https://github.com/fkzys/bwrap-common/archive/refs/tags/v0.0.5.tar.gz
-	sha256sums = 1e61f7efe00a7c509c94f7f167d429777d1a0850cc9be0a39ae089a6705a0398
+	source = bwrap-common-0.0.7.tar.gz::https://github.com/fkzys/bwrap-common/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = 03b28e87de422aa46979c5f99efe77532d1f28e422df0476bac4974b750d2c07
 
 pkgname = bwrap-common
