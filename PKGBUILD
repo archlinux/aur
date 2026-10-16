@@ -3,7 +3,7 @@
 _sdk=10.0
 _name="FsAutoComplete"
 pkgname="${_name,,}"
-pkgver=0.85.3
+pkgver=0.85.4
 pkgrel=1
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=("dotnet-sdk-${_sdk}" 'sh')
 makedepends=("dotnet-sdk-${_sdk}")
 conflicts=("${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4066f0286f9334d6a4f2509895882f999bf0fdff16a8844b8593cbe97b60ab6')
+sha256sums=('7ad879f6fd6001233c2bf2420f60a26e7a7f792e3006721993740597a58bae0e')
 
 _dotnet_env() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -44,10 +44,6 @@ build() {
 check() {
     cd "${_name}-${pkgver}"
     _dotnet_env
-
-    # GoToTests references GoToCSharp, but the first test group using it
-    # does not build it. Build it here to make sure it exists.
-    dotnet build test/${_name}.Tests.Lsp/TestCases/GoToCSharp/GoToCSharp.csproj
 
     dotnet test test/${_name}.Tests.Lsp/${_name}.Tests.Lsp.fsproj \
         --configuration Release \
