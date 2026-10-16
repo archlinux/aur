@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.271
+pkgver=5.10.272
 pkgrel=1
 pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
@@ -13,7 +13,7 @@ makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-six python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
-makedepends+=('gcc15')
+#makedepends+=('gcc15')
 options=('!strip')
 _srcname=linux-${pkgver%.*}
 source=(
@@ -36,8 +36,8 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 md5sums=('753adc474bf799d569dec4f165ed92c3'
          'SKIP'
-         '4a563c9b6f36fffc7b84d14bbef7bfcb'
-         '8b8fa773fe9c7938a76ba07ca2933ed8'
+         'a0dfd89536858165681732d5178422ad'
+         '73307d1e2f6a0a44eb465bb32ed0a387'
          'd31360693fb06a0d69c1f126350baa6d'
          'c1f10e50f7ca23d07ae83ae6252854d5'
          'd15820a808c3cc159e6e5916a8c05e8f'
@@ -46,8 +46,8 @@ md5sums=('753adc474bf799d569dec4f165ed92c3'
          '6140c1a5cd25145548ed5867d13ee7d9')
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            'f384a7e239e391f7cb63617784d91635e02324340bcfae3b2ea4f0a671065637'
-            'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
+            '8cca64b75d7d0a224925a5ba0e652454cbbdc719d74fa01b681c46b7c21ac13f'
+            'f343736197e6959bc8381147b49a91e2c94cad40b46084b1bbc496f645f14dfc'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
             '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
             '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
@@ -61,7 +61,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 _makeopts=(
   #CC='gcc-5' CXX='g++-5' HOSTCC='gcc-5' HOSTCXX='g++-5' # LD='ld.gold'
-  CC='gcc-15' CXX='g++-15' HOSTCC='gcc-15' HOSTCXX='g++-15'
+  #CC='gcc-15' CXX='g++-15' HOSTCC='gcc-15' HOSTCXX='g++-15'
   #LDFLAGS='-z max-page-size=0x200000' # http://lists.gnu.org/archive/html/bug-binutils/2018-03/msg00193.html
 )
 
