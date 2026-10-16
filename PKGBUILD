@@ -1,7 +1,7 @@
 # Maintainer: Yukari Hafner <shinmera@tymoon.eu>
 pkgname=ttf-promptfont
 pkgver=1.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A font for button prompts and glyphs in games and game-related applications"
 arch=('any')
 url="https://shinmera.com/promptfont"
@@ -18,6 +18,6 @@ package() {
             -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 README.md index.html promptfont.css index.css tags.txt preview.png \
             -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 glyphs.json tags.txt promptfont.txt promptfont.css promptfont.h promptfont.cs promptfont.py promptfont.lisp promptfont.lua promptfont.rs promptfont.gd promptfont.gml atlas*.png \
+    install -Dm644 glyphs.json tags.txt promptfont.txt promptfont.css promptfont.h promptfont.cs promptfont.py promptfont.lisp promptfont.lua promptfont.rs promptfont.gd promptfont.gml \
             -t "${pkgdir}/usr/share/${pkgname}"
 }
