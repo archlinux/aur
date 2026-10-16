@@ -1,6 +1,6 @@
 pkgname=ashpd-demo-git
-pkgver=0.3.0
-pkgrel=2.0
+pkgver=0.13.0.r124.gc9b9ddc
+pkgrel=1
 pkgdesc='asph-demo'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bilelmoussaoui/ashpd'
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  cd $pkgname/ashpd-demo
+  cd $pkgname/demo/client
   meson setup \
     -Dprefix=/usr \
     -Dbuildtype=release \
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd $pkgname/ashpd-demo
+  cd $pkgname/demo/client
   DESTDIR="$pkgdir" ninja -C build install
 }

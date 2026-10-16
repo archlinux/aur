@@ -1,7 +1,7 @@
 pkgbase = ashpd-demo-git
 	pkgdesc = asph-demo
-	pkgver = 0.3.0
-	pkgrel = 2.0
+	pkgver = 0.13.0.r124.gc9b9ddc
+	pkgrel = 1
 	url = https://github.com/bilelmoussaoui/ashpd
 	arch = x86_64
 	arch = aarch64
