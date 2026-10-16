@@ -8,7 +8,7 @@ pkgname=telegram-desktop-export
 pkgver=7.3.1
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='Telegram Desktop with export patches: media reused between exports, size limits per media type, no hangs on lost media'
 arch=('x86_64')
 url="https://github.com/Remenod/telegram-desktop-export"
@@ -103,7 +103,7 @@ sha512sums=('da4d47678692a01acf8b84ce66a8530897853b2b94c9e77b40a3d179fd1657a08b9
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
             '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
-            'a9d352570e31e84cd2c4b17b7f77d4330c5e6c0a42290bdefabc5e787880b6d27f71f8270bdf1e070960e4024d3625502a5a7b24bbeff93d33268c571a0c6646')
+            '9b58aad5c530ad824654543a22c8e8a84f556cd02b1f126eb8d8022c2a8f3932dcb3ae02a5ae80a06cb20cfbaf2a8d0dc5fd927f9c204c304a78efbf5adc2a1f')
 
 prepare() {
   patch -Np1 -d "$srcdir/tdesktop-$pkgver-full" -i "$srcdir/export-patches.patch"
