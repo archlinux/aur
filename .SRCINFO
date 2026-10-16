@@ -1,7 +1,7 @@
 pkgbase = python-tokenizers
 	pkgdesc = Fast State-of-the-Art Tokenizers optimized for Research and Production
 	pkgver = 0.23.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/huggingface/tokenizers
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = python-tokenizers
 	makedepends = python-maturin
 	makedepends = python-build
 	makedepends = python-installer
+	depends = python
 	depends = python-huggingface-hub
 	depends = libgcc
 	depends = libstdc++
