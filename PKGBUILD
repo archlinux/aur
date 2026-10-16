@@ -9,8 +9,6 @@ arch=('x86_64')
 
 depends=('kwin')
 makedepends=('cmake' 'extra-cmake-modules' 'ninja' 'vulkan-headers')
-optdepends=(
-  'kwin-effect-rounded-corners-x11: for X11 support')
 
 
 _pkgsrc="KDE-Rounded-Corners-$pkgver"
