@@ -3,7 +3,7 @@
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio-earlyaccess'
-_basever='6.1.4'
+_basever='6.1.5'
 _betaver='7'
 #pkgver=${_basever}b${_betaver}
 pkgver=${_basever}
@@ -25,7 +25,7 @@ options=(!strip)
 #RELEASE SOURCE
 source=("bitwig-studio-${_basever}.deb::https://www.bitwig.com/dl/Bitwig%20Studio/${_basever}/installer_linux/")
 
-sha256sums=('fad7d13706979723d3c3ecaf509d81cfbb49c39a96bff5eab2bc75eaef108175')
+sha256sums=('4368fe7b1c435772ee09be499502d9a5914fe27526f6dade0fe7c9013d3aadf6')
 
 package() {
   # Unpack package contents
