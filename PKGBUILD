@@ -1,8 +1,8 @@
 # Maintainer: Remco Stoeten
 pkgname=kiekje
-pkgver=0.1.0alpha5
+pkgver=0.1.0alpha6
 pkgrel=1
-_tag=0.1.0-alpha.5
+_tag=0.1.0-alpha.6
 pkgdesc='Capture, mark up and keep screenshots'
 arch=('x86_64' 'aarch64')
 url='https://github.com/remcostoeten/kiekje'
@@ -12,11 +12,12 @@ makedepends=('cargo')
 optdepends=(
     'xdg-desktop-portal: capture and global shortcuts through the portal'
     'gst-plugins-base: capture sound'
-    'gst-plugins-good: capture sound through PulseAudio'
+    'gst-plugins-good: capture sound through PulseAudio, and screen recording'
+    'gst-plugin-pipewire: screen recording'
 )
 options=('!lto')
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('c5b75da01bfd54badb2786480316be0a2797ca08acf1db943611d4be5cdf54e0')
+sha256sums=('749a61c30ebce377c62cbe375f64f58491275b2e682b5ff0f680e221453e8674')
 
 prepare() {
     cd "$pkgname-$_tag"
