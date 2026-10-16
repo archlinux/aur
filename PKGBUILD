@@ -5,7 +5,7 @@
 pkgname=python-teletype
 _name=${pkgname#python-}
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform Python tty library'
 arch=('any')
 url='https://github.com/jkwill87/teletype'

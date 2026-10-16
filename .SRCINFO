@@ -1,7 +1,7 @@
 pkgbase = python-teletype
 	pkgdesc = Cross-platform Python tty library
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jkwill87/teletype
 	arch = any
 	license = MIT
