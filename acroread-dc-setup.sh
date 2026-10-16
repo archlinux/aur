@@ -40,7 +40,6 @@ if [[ ! -d "$WINEPREFIX" ]]; then
     echo "[1/5] Creating Wine prefix..."
     mkdir -p "$WINEPREFIX"
     wineboot --init
-    wineserver -w
 else
     echo "[1/5] Wine prefix already exists."
 fi
@@ -54,7 +53,6 @@ if ! winetricks --unattended win10 riched20 vcrun2015 \
     tail -n 40 "$WINETRICKS_LOG" >&2 || true
     exit 1
 fi
-wineserver -w
 
 # Wine's built-in mspatcha cannot decode every PA19 stream used by current
 # Adobe updates.  Install the source-built, multi-architecture implementation.
@@ -125,11 +123,16 @@ if ! wine msiexec \
     DISABLE_BROWSER_INTEGRATION=YES \
     INSTALLPDFPRINTER=0 \
     DISABLEDESKTOPSHORTCUT=1; then
-    wineserver -w || true
     echo "Error: Adobe Reader installation failed. See $INSTALL_LOG." >&2
     exit 1
 fi
-wineserver -w
+
+# msiexec is synchronous. Waiting for the whole Wine server here can hang
+# forever on updater services started by the installer. Stop only those
+# services; do not terminate other applications in this prefix.
+for service in armsvc edgeupdate edgeupdatem; do
+    wine sc stop "$service" >/dev/null 2>&1 || true
+done
 
 cleanup_installer
 EXTRACT_DIR=""
@@ -140,7 +143,6 @@ trap - EXIT
 echo "[5/5] Applying configuration..."
 if [[ -f "$APPDIR/acroread-dc.reg" ]]; then
     wine regedit "$APPDIR/acroread-dc.reg" 2>/dev/null || true
-    wineserver -w
 fi
 
 # Disable services that don't work properly in Wine
@@ -180,7 +182,6 @@ wine reg add "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows NT\\
 # Set Adobe Reader to start maximized (fills the virtual desktop window)
 wine reg add "HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral" /v bMaximizeAtOpen /t REG_DWORD /d 1 /f 2>/dev/null || true
 
-wineserver -w
 
 READER_EXE="$WINEPREFIX/drive_c/Program Files/Adobe/Acrobat DC/Acrobat/Acrobat.exe"
 if [[ ! -f "$READER_EXE" ]]; then
