@@ -7,8 +7,8 @@ pkgdesc="Open source reimplementation of the game Black & White (2001)."
 arch=('x86_64')
 url="https://github.com/openblack/openblack"
 license=('GPL3' 'MIT')
-depends=('fmt' 'spdlog' 'entt' 'sdl3' 'glm' 'bullet' 'minizip' 'imgui' 'openal')
-makedepends=('git' 'cmake' 'cxxopts' 'stb' 'dr_libs-git' 'utf8cpp')
+depends=('fmt' 'spdlog' 'entt' 'sdl3' 'glm' 'bullet' 'minizip' 'imgui' 'openal' 'vulkan-icd-loader')
+makedepends=('git' 'cmake' 'cxxopts' 'stb' 'dr_libs-git' 'utf8cpp' 'shader-slang')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
