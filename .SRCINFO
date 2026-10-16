@@ -1,6 +1,6 @@
 pkgbase = look-bin
 	pkgdesc = Keyboard-first, local-first launcher for apps, files, clipboard, and quick commands
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/kunkka19xx/look
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = look-bin
 	provides = lookapp
 	conflicts = lookapp
 	conflicts = look
-	noextract = look-bin-0.7.3.deb
+	noextract = look-bin-0.7.4.deb
 	options = !strip
 	options = !debug
-	source = look-bin-0.7.3.deb::https://github.com/kunkka19xx/look/releases/download/v0.7.3/Look_0.7.3_amd64.deb
-	sha256sums = 4720f238b62a3a31a0b18711c1ba3157d334da6516a3f81dfd54972df23f6fa3
+	source = look-bin-0.7.4.deb::https://github.com/kunkka19xx/look/releases/download/v0.7.4/Look_0.7.4_amd64.deb
+	sha256sums = 60b916a88c0186c1155ff2db3279095e69733ff148c2130e2f741b3ff742832b
 
 pkgname = look-bin
