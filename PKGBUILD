@@ -1,7 +1,7 @@
 # Maintainer: Yukari Hafner <shinmera@tymoon.eu>
 pkgname=ttf-promptfont
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A font for button prompts and glyphs in games and game-related applications"
 arch=('any')
 url="https://shinmera.com/promptfont"
