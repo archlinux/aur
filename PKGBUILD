@@ -3,8 +3,8 @@
 
 pkgname=pgdog-bin
 _gitname=pgdog
-pkgver=0.1.61
-pkgrel=3
+pkgver=0.1.62
+pkgrel=1
 epoch=
 pkgdesc="PostgreSQL connection pooler, load balancer and database sharder."
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=("${_gitname}-v${pkgver}.tar.gz::https://github.com/pgdogdev/pgdog/releases/download/v${pkgver}/${_gitname}-v${pkgver}-${arch}-unknown-linux-gnu.tar.gz")
-sha256sums=('b8ceb6b4e17cb7cb49b1dff122db8fa559a4cf94fc245d4d9415f9ae744011a7')
+sha256sums=('398151545bcc47b54b364099aeb67a07613d3655cc54ab807a4bccce585bd10b')
 
 package() {
   srcpath="${srcdir}/${_gitname}-v${pkgver}-${arch}-unknown-linux-gnu"
