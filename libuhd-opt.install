@@ -11,6 +11,12 @@ post_install() {
     echo "UHD_INCLUDE_HINTS=/opt/libuhd-opt/${version_semantic}/uhd/include"
     echo "UHD_LIBDIR_HINTS=/opt/libuhd-opt/${version_semantic}/uhd/lib"
 	echo ""
+	echo "Runtime environment variables"
+	echo ""
+	echo "UHD_IMAGES_DIR=/opt/libuhd-opt/${version_semantic}/images"
+	echo "LD_LIBRARY_PATH=/opt/libuhd-opt/${version_semantic}/uhd/lib:\${LD_LIBRARY_PATH}"
+	echo "UHD_LOG_LEVEL=1 (optional (UHD_LOG_LEVEL_DEBUG))"
+	echo ""
 }
 
 post_upgrade() {

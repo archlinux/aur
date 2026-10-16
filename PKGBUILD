@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=libuhd-opt
 pkgver=4.11.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc='UHD is the free & open-source software driver and API for the Universal Software Radio Peripheral (USRP™) SDR platform, created and sold by Ettus Research.'
 arch=('x86_64')
 url='https://github.com/EttusResearch/uhd'
@@ -28,7 +28,7 @@ source=(
 )
 
 sha512sums=(
-	"9aa636351aed97bca19d18425c4a66d54a7ba564ffcc1b66ae2afbf7bf6f2ecfe12da05798288aac901836b23f43d62ebe100a62ab8f3848b68db5f0dbf2e919"
+	"41cd456b5607208f5380707211670f2ca3899492382aaeedd4438c7a86a5db31266455f499e1a5e7714527153174494cc0514ae02eaa24751e949abc5aab1e51"
 	"b8f1d534f156ce42417910c2f161720d309db9e19fca3a597e1a794e725a18e2b37c741cfceaa4182435a92be12c71ad30ebdc32fc8b34662e757c3934b9da88"
 	"2644008b0024d41689701ea33fd244ee2e629de1fe5bb6d2f3ef39aa5281337edc11475273e42e041845798794eee9e134a5bf649aa7d8a07990c5fccc5ef131"
 	"5021fc5ee64048502b912f6a01e0f4e4a9e6082b052f1a03e8b15c4c2c0742f251abe38e5f34cb7ce6298f9159eedd939cb092767778358c1afc7c1febb28c44"
