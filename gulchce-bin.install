@@ -7,9 +7,10 @@ post_install() {
     yourself).
 ==> Everything is in ~/.local/share/gulchce: your settings (config.toml),
     maps/, custom_maps/, mcc_maps/, saves/ (saved games, profiles and the
+==> GulchCE plays online with OpenCE (the same network version) on the
+    game's own maps and Custom Edition maps; MCC maps need GulchCE on
+    every machine. Invite links open whichever of the two you started last.
     map cache), the log (debug.txt) and screenshots.
-==> GulchCE cannot play online with OpenCE: they have different network
-    versions. Invite links open whichever of the two you started last.
 ==> Settings and controls: /usr/share/doc/gulchce/LINUX.md
     MCC custom maps: /usr/share/doc/gulchce/MCC.md
 MSG
