@@ -2,11 +2,29 @@
 
 PACKAGE_NAME=remoteit
 REMOTEIT_DIR=/usr/share/remoteit
-INSTALL_API=https://install.remote.it/v1
 CONFIG_DIR=/etc/remoteit
 CONFIG_FILE=$CONFIG_DIR/config.json
 ENV_FILE=$CONFIG_DIR/r3.env
 REGISTRATION=$CONFIG_DIR/registration
+
+# Actual env vars take priority over r3.env file
+# Save existing R3_* environment variables
+_r3_saved_vars=""
+for var in $(env | grep '^R3_' | cut -d= -f1); do
+    eval "_save_$var=\"\$$var\""
+    _r3_saved_vars="$_r3_saved_vars $var"
+done
+
+# Source the file (sets defaults from file)
+[ -f $ENV_FILE ] && . $ENV_FILE
+
+# Restore any previously set env vars (they take priority)
+for var in $_r3_saved_vars; do
+    eval "$var=\"\$_save_$var\""
+done
+
+# Can be overridden via R3_INSTALL_API env var (priority) or r3.env file (fallback)
+INSTALL_API=${R3_INSTALL_API:-https://install.remote.it/v1}
 VERSION=$(cat $REMOTEIT_DIR/version.txt)
 
 if [ -d "/run" ]; then
@@ -30,7 +48,6 @@ else
   . $REMOTEIT_DIR/sysvinit.sh
 fi
 
-[ -f $ENV_FILE ] && . $ENV_FILE
 . $REMOTEIT_DIR/oem.sh
 
 r3_update_config() {
@@ -113,14 +130,23 @@ r3_install_agent() {
 
     [ -n "$arch" ] || r3_error "Unable to determine architecture."
 
-    local url=https://downloads.remote.it/openwrt/v5.4.0/$arch/binaries.tgz
+    local url=https://downloads.remote.it/openwrt/v5.6.1/$arch/binaries.tgz
 
     curl -sSfo- "$url" | tar xzf - -C $REMOTEIT_DIR 2>/dev/null || r3_error "Unknown architecture \"$arch\"."
   fi
 
   [ -r $CONFIG_FILE ] || r3_update_config
 
-  ln -sf $REMOTEIT_DIR/task_notify.sh /usr/bin/connectd_task_notify
+  ln -sfn $REMOTEIT_DIR/task_notify.sh /usr/bin/remoteit_task_notify
+
+  # Legacy name called by job scripts, shared by coexisting packages. It
+  # follows remoteit whenever remoteit is installed, whichever package runs
+  # this, so an install or upgrade of either one cannot take it from the other.
+  if [ -e /usr/share/remoteit/task_notify.sh ]; then
+    ln -sfn /usr/share/remoteit/task_notify.sh /usr/bin/connectd_task_notify
+  else
+    ln -sfn $REMOTEIT_DIR/task_notify.sh /usr/bin/connectd_task_notify
+  fi
 
   # If /run is available, move pid files stored in legacy /var/run to this dir.
   if [ -d "/run" ]; then
@@ -167,9 +193,20 @@ r3_remove_agent() {
     update-rc.d remoteit-main remove
   fi
 
-  rm -f /usr/bin/connectd_task_notify
+  rm -f /usr/bin/remoteit_task_notify
 
-  rm -r /usr/share/remoteit
+  # Give up the shared legacy name only if this package holds it, handing it
+  # to another installed package so job scripts keep working. Peer payloads
+  # are the signal: older package versions never made the per-package links.
+  if [ "$(readlink /usr/bin/connectd_task_notify 2>/dev/null)" = "$REMOTEIT_DIR/task_notify.sh" ]; then
+    rm -f /usr/bin/connectd_task_notify
+    for peer in /usr/share/*/task_notify.sh; do
+      [ "$peer" = "$REMOTEIT_DIR/task_notify.sh" ] && continue
+      [ -e "$peer" ] && ln -sfn "$peer" /usr/bin/connectd_task_notify && break
+    done
+  fi
+
+  rm -rf /usr/share/remoteit
 }
 
 r3_reload_agent() {

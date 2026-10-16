@@ -1,6 +1,6 @@
 # Maintainer: Yusuke Takahashi <yusuke@remote.it>
 pkgname=remoteit
-pkgver=5.4.2
+pkgver=5.6.1
 pkgrel=1
 pkgdesc="remote.it is a cloud service that provides secure connections."
 url="https://remote.it"
