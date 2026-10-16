@@ -1,10 +1,11 @@
 pkgbase = zulu-25-jdk-fx
 	pkgdesc = Azul Zulu JDK 25 with JavaFX
 	pkgver = 25.36.205
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.azul.com/downloads
 	install = zulu-25-jdk-fx.install
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	depends = java-runtime-common
 	depends = java-environment-common
