@@ -1,7 +1,7 @@
 # Maintainer: Mahfuz Shaikh <mah3uz at gmail dot com>
 
 pkgname=darwan
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Themes for the SDDM login screen and the Quickshell lockscreen, with a CLI, TUI and GUI'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
 # makepkg's -flto turns cxx-qt's C++ into GCC LTO objects that the Rust link can't resolve.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c6021532f07c386832719cd5d3b2f4a8ac4e25ad8823438391d628a390672d72')
+sha256sums=('33f07e0bd632007240c20de624d4db14e0c51fb557d18876251637e57a3ac393')
 
 prepare() {
   cd "$pkgname-$pkgver"
