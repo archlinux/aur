@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64' 'aarch64')
@@ -17,17 +17,15 @@ provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
 source_x86_64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
-sha256sums_x86_64=('a89cb4380075ebb20938103bc98ec63327fbeabe43a71f0575ddb285a051eab4')
+sha256sums_x86_64=('609a2e4b881ba9a7fd21543077e53d3b863a6b99eebee1f208e51a097ab56a05')
 source_aarch64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-arm64.tar.gz")
-sha256sums_aarch64=('6a3c45df52ff32722bb33e4d2c66f9920e284b9a3adeba17afcfcea3ad346eff')
+sha256sums_aarch64=('83eb3a2cdebf28b1b8e3e8f5d8e964c60d8bb8323c52447ac947864fdca0fd15')
 
 package() {
     # sbx locates its helper binaries at runtime via a path relative to its
     # own executable (<dir>/../libexec)
     install -Dm755 "$srcdir/docker-sbx/sbx" \
         "$pkgdir/usr/lib/${pkgname}/bin/sbx"
-    install -Dm644 "$srcdir/docker-sbx/sbx-version.json" \
-        "$pkgdir/usr/lib/${pkgname}/bin/sbx-version.json"
     install -d "$pkgdir/usr/bin"
     ln -s "../lib/${pkgname}/bin/sbx" "$pkgdir/usr/bin/sbx"
 
