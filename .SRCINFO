@@ -1,6 +1,6 @@
 pkgbase = fcitx5-areca-git
 	pkgdesc = Areca Vietnamese input method for Fcitx5 using the Bamboo engine
-	pkgver = r199.0a19ac8
+	pkgver = r202.e4b6613
 	pkgrel = 1
 	url = https://github.com/xhkzeroone/ArecaIME
 	arch = x86_64
