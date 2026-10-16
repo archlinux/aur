@@ -1864,6 +1864,127 @@ def command_subscription(args: argparse.Namespace) -> int:
     raise SubscriptionError(f"未知订阅管理操作：{action}")
 
 
+def render_tun_state(original: str, enabled: bool) -> str:
+    """只改顶层 tun.enable，保留主配置其他字段的排版与注释。"""
+    try:
+        existing = yaml.safe_load(original)
+    except yaml.YAMLError as exc:
+        raise SubscriptionError("Mihomo 主配置 YAML 无效") from exc
+    if not isinstance(existing, dict):
+        raise SubscriptionError("Mihomo 主配置顶层必须是映射")
+
+    tun = existing.get("tun")
+    if tun is None:
+        if "tun" in existing:
+            raise SubscriptionError("tun 必须是映射，请手工检查主配置")
+        if not enabled:
+            return original
+        addition = (
+            "tun:\n  enable: true\n  stack: mixed\n  auto-route: true\n"
+            "  auto-detect-interface: true\n  dns-hijack:\n    - any:53\n"
+        )
+        updated = original.rstrip("\n") + "\n\n" + addition
+    else:
+        if not isinstance(tun, dict):
+            raise SubscriptionError("tun 必须是映射，请手工检查主配置")
+        old_enable = tun.get("enable", False)
+        if not isinstance(old_enable, bool):
+            raise SubscriptionError("tun.enable 必须是布尔值")
+        if old_enable == enabled:
+            return original
+
+        lines = original.splitlines(keepends=True)
+        headers = [
+            i for i, line in enumerate(lines)
+            if re.fullmatch(r"tun:\s*(?:#.*)?\n?", line)
+        ]
+        if len(headers) != 1:
+            raise SubscriptionError("tun 使用了非标准 YAML 写法，请手工修改 tun.enable")
+        start = headers[0]
+        end = next(
+            (i for i in range(start + 1, len(lines))
+             if lines[i].strip() and not lines[i][0].isspace()
+             and not lines[i].lstrip().startswith("#")),
+            len(lines),
+        )
+        candidates = [
+            i for i in range(start + 1, end)
+            if re.match(r"^[ \t]+enable\s*:", lines[i])
+        ]
+        if len(candidates) > 1:
+            raise SubscriptionError("tun.enable 重复，请手工检查主配置")
+        if candidates:
+            index = candidates[0]
+            match = re.fullmatch(
+                r"([ \t]+enable\s*:\s*)(?:true|false)([ \t]*(?:#.*)?)(\n?)",
+                lines[index],
+            )
+            if match is None:
+                raise SubscriptionError("tun.enable 使用了非标准写法，请手工修改")
+            lines[index] = f"{match[1]}{'true' if enabled else 'false'}{match[2]}{match[3]}"
+        else:
+            lines.insert(start + 1, f"  enable: {'true' if enabled else 'false'}\n")
+        updated = "".join(lines)
+
+    try:
+        rendered = yaml.safe_load(updated)
+    except yaml.YAMLError as exc:
+        raise SubscriptionError("生成的 TUN 配置 YAML 无效") from exc
+    expected = copy.deepcopy(existing)
+    if tun is None:
+        expected["tun"] = {
+            "enable": True, "stack": "mixed", "auto-route": True,
+            "auto-detect-interface": True, "dns-hijack": ["any:53"],
+        }
+    else:
+        expected["tun"]["enable"] = enabled
+    if rendered != expected:
+        raise SubscriptionError("无法只修改 tun.enable，请手工检查主配置")
+    return updated
+
+
+def command_tun(args: argparse.Namespace) -> int:
+    lock_handle = acquire_lock()
+    try:
+        control = load_yaml(args.control_file)
+        settings, _ = validate_control_inventory(control)
+        home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+        config_file = Path(str(settings.get("config_file", home_dir / "config.yaml")))
+        original = config_file.read_text(encoding="utf-8")
+        enabled = args.tun_action == "enable"
+        updated = render_tun_state(original, enabled)
+        if updated == original:
+            log("TUN 已是请求的默认状态；未修改配置")
+            return 0
+
+        log("警告：启用 TUN 可能中断 SSH/VPN；本命令不重载服务，但后续订阅更新或服务重启可能使改动生效。")
+        if not args.yes:
+            if not sys.stdin.isatty():
+                raise SubscriptionError("非交互环境必须使用 --yes 确认 TUN 修改")
+            if not ask_yes_no("确认修改 TUN 默认状态？", default=False):
+                log("已取消，未修改配置")
+                return 0
+
+        provider_relative = Path(str(settings.get("provider_file", "providers/subscriptions.yaml")))
+        provider_file = ensure_inside(home_dir, home_dir / provider_relative)
+        validate_with_mihomo(
+            settings, provider_file.read_bytes(), config_document=yaml.safe_load(updated)
+        )
+
+        backup = config_file.with_name(config_file.name + ".tun.bak")
+        original_stat = config_file.stat()
+        shutil.copy2(config_file, backup)
+        os.chmod(backup, 0o600)
+        atomic_write(config_file, updated.encode("utf-8"), 0o600)
+        os.chown(config_file, original_stat.st_uid, original_stat.st_gid)
+        os.chmod(config_file, original_stat.st_mode & 0o640)
+        log(f"TUN 持久配置已设为{'开启' if enabled else '关闭'}；原配置备份：{backup}")
+        log("本命令未重载服务；后续订阅更新、重载或重启可能应用此配置")
+        return 0
+    finally:
+        lock_handle.close()
+
+
 # reset 时从现有主配置保留的服务器参数白名单。
 # 白名单之外的 DNS、代理组、规则和 provider 定义一律按最新模板重建，
 # 避免把旧配置重新带入，同时自动获得模板新增的安全默认值。
@@ -2425,6 +2546,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="同步成功后不重载 Mihomo",
     )
     rules_parser.set_defaults(func=command_rules)
+
+    tun_parser = subparsers.add_parser("tun", help="设置持久 TUN 状态，不主动重载服务")
+    tun_parser.add_argument("tun_action", choices=("enable", "disable"))
+    tun_parser.add_argument("--control-file", type=Path, default=DEFAULT_CONTROL_FILE)
+    tun_parser.add_argument("--yes", action="store_true", help="跳过交互确认，仍会提示远程断线风险")
+    tun_parser.set_defaults(func=command_tun)
 
     reset_parser = subparsers.add_parser(
         "reset",

@@ -23,6 +23,7 @@ show_help() {
   mihomo-webui-setup subscription [mihomo-subscription subscription 参数]
   mihomo-webui-setup update [mihomo-subscription update 参数]
   mihomo-webui-setup show-secret
+  mihomo-webui-setup tun enable|disable [--yes]
   mihomo-webui-setup rules [--yes] [--dry-run] [--template-file PATH]
   mihomo-webui-setup reset [--yes] [--dry-run]
   mihomo-webui-setup policy-init [--file PATH]
@@ -48,6 +49,11 @@ show_help() {
 在交互终端按需显示 Mihomo WebUI/API 密钥（会请求 sudo 权限）：
   mihomo-webui-setup show-secret
 请勿将密钥粘贴到聊天、日志或截图中。
+
+设置持久 TUN 状态（仅修改配置，不主动重载服务）：
+  mihomo-webui-setup tun enable
+  mihomo-webui-setup tun disable
+远程启用可能改变 SSH/VPN 路由；之后订阅更新也可能触发服务重载。确认有恢复配置的访问方式后再操作。
 
 普通用户定制策略（不加 sudo）：
   mihomo-webui-setup policy-init     # 从软件包模板创建用户 policy.yaml，不覆盖已有文件
@@ -119,11 +125,11 @@ main() {
   fi
 
   local command=setup
-  if [[ ${1-} == setup || ${1-} == subscription || ${1-} == update || ${1-} == show-secret || ${1-} == rules || ${1-} == reset || ${1-} == policy-init || ${1-} == check || ${1-} == diff || ${1-} == apply ]]; then
+  if [[ ${1-} == setup || ${1-} == subscription || ${1-} == update || ${1-} == show-secret || ${1-} == tun || ${1-} == rules || ${1-} == reset || ${1-} == policy-init || ${1-} == check || ${1-} == diff || ${1-} == apply ]]; then
     command=$1
     shift
   elif [[ -n ${1-} && ${1-} != -* ]]; then
-    die "未知子命令：$1（支持 setup、subscription、update、show-secret、rules、reset、policy-init、check、diff、apply）"
+    die "未知子命令：$1（支持 setup、subscription、update、show-secret、tun、rules、reset、policy-init、check、diff、apply）"
   fi
 
   if [[ $command == policy-init || $command == check || $command == diff || $command == apply ]]; then
@@ -174,7 +180,7 @@ PY
     return 0
   fi
 
-  if [[ $command == rules || $command == reset ]]; then
+  if [[ $command == tun || $command == rules || $command == reset ]]; then
     "$SUBSCRIPTION_COMMAND" "$command" "$@"
     return 0
   fi
