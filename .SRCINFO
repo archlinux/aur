@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-yyjson
+	pkgdesc = A high performance C JSON library (mingw-w64)
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/ibireme/yyjson
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = mingw-w64-yyjson-0.13.0.tar.gz::https://github.com/ibireme/yyjson/archive/refs/tags/0.13.0.tar.gz
+	sha512sums = 6447bbb50d18a4e0d57ac3232bd23eed7f94a16cff781d4779d28c81833b8de7566e730f827f1e7e6d60a06fcbbdc41fd581a1f872901391f7a09288bb93fd40
+
+pkgname = mingw-w64-yyjson
