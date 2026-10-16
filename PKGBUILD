@@ -1,6 +1,6 @@
 # Maintainer: Avi Tretiak <contact at avitretiak dot dev>
 pkgname=wayleaf-4d
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='KDE Plasma 6 Wayland tray applet for Nanoleaf 4D screen-edge color sync'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "https://github.com/avitretiak/wayleaf-4d/releases/download/v${pkgver}/wayleaf-4d-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '550dfd6277c0ddc4ecad502d2ee45b2b1b2ebb569084d6807cd15dbf0285a4f6'
+  'cddc265de295fb288c566befa24b0edefcf463e74b5d6b646b824e009c54d47d'
 )
 
 prepare() {
