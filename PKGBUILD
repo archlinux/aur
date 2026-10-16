@@ -1,7 +1,7 @@
 # Maintainer: RefractMC <refractmc at users dot noreply dot github dot com>
 
 pkgname=refract-launcher-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Fast, open-source Minecraft launcher built with Tauri and React'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('refract-launcher')
 conflicts=('refract-launcher')
 options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}.rpm::https://github.com/RefractMC/Refract_MC/releases/download/v${pkgver}/Refract-Linux-x86_64.rpm")
-sha256sums_x86_64=('e7a803ed2a05b7c5ab15f62b7691e0222250eb3d6a16cfb08907a716c037590b')
+sha256sums_x86_64=('2e72352fb0b7ba3a9fc421cc33aa779b3d10d6883cf7f6568b21f4a993fb10b5')
 
 package() {
   cp -a "${srcdir}/usr" "${pkgdir}/"
