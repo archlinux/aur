@@ -9,7 +9,6 @@ url='https://github.com/overworks/mantisbt-cli'
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d98de186484cedf8e1ac27f2afc2c1e71ab37adc0213dba605316da4b1512b9f')
 
