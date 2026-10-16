@@ -1,6 +1,6 @@
 pkgbase = hov-qt
 	pkgdesc = Aggregated YouTube/Bilibili/NetEase/QQ Music client (Qt6 desktop)
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/HougeLangley/HyperOnlineVideo
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hov-qt
 	depends = mpv
 	depends = ffmpeg
 	depends = yt-dlp
-	source = hov-qt-1.3.0.tar.gz::https://github.com/HougeLangley/HyperOnlineVideo/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = c164e97fa110e101223ba85aaf707a410216bedf118f4b90bdadbb65d54f74f4
+	source = hov-qt-1.3.1.tar.gz::https://github.com/HougeLangley/HyperOnlineVideo/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 882bd1ccf3e128370e88841b8a0c97b6148474f9ff68333fff2fbbf0708773b5
 
 pkgname = hov-qt
