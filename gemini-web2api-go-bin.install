@@ -1,0 +1,29 @@
+post_install() {
+    echo ":: gemini-web2api-go is installed but not started."
+    echo ""
+    echo "   *** This binary always listens on 0.0.0.0 (all interfaces) — ***"
+    echo "   *** there is no loopback-only mode. Before starting it, set  ***"
+    echo "   *** ADMIN_TOKEN in /etc/gemini-web2api-go/gemini-web2api-go.env ***"
+    echo "   *** or firewall off the port from outside this machine.      ***"
+    echo ""
+    echo "   Edit the config:   /etc/gemini-web2api-go/gemini-web2api-go.env"
+    echo "   Start it now:      systemctl start gemini-web2api-go.service"
+    echo "   Start on boot:     systemctl enable gemini-web2api-go.service"
+    echo ""
+    echo "   On first start, an API key for /v1/* is generated automatically;"
+    echo "   read it from the admin panel (needs ADMIN_TOKEN to log in):"
+    echo "       journalctl -u gemini-web2api-go.service -n 50"
+    echo "       http://<this-host>:8083/admin"
+    echo ""
+    echo "   Data (SQLite db, etc.) is stored in /var/lib/gemini-web2api-go"
+    echo "   (managed by systemd's DynamicUser, StateDirectory=gemini-web2api-go)."
+}
+
+post_upgrade() {
+    echo ":: If gemini-web2api-go.service is running, restart it to use the new binary:"
+    echo "     systemctl restart gemini-web2api-go.service"
+}
+
+pre_remove() {
+    systemctl stop gemini-web2api-go.service >/dev/null 2>&1 || true
+}

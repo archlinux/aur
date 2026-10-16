@@ -1,0 +1,34 @@
+[Unit]
+Description=gemini-web2api-go - OpenAI-compatible proxy for the Gemini web app
+Documentation=https://github.com/zexadev/gemini-web2api-go
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gemini-web2api-go --port 8083 --db /var/lib/gemini-web2api-go/gemini.db
+WorkingDirectory=/var/lib/gemini-web2api-go
+EnvironmentFile=-/etc/gemini-web2api-go/gemini-web2api-go.env
+
+DynamicUser=yes
+StateDirectory=gemini-web2api-go
+StateDirectoryMode=0750
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+ReadWritePaths=/var/lib/gemini-web2api-go
+
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

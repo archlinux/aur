@@ -1,0 +1,26 @@
+pkgbase = gemini-web2api-go-bin
+	pkgdesc = Self-hosted OpenAI-compatible proxy for the Gemini web app (no API key needed), prebuilt binary
+	pkgver = 4.22.0
+	pkgrel = 1
+	url = https://github.com/zexadev/gemini-web2api-go
+	install = gemini-web2api-go-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gemini-web2api-go
+	conflicts = gemini-web2api-go
+	options = !strip
+	options = !debug
+	backup = etc/gemini-web2api-go/gemini-web2api-go.env
+	source = gemini-web2api-go.service
+	source = gemini-web2api-go.env
+	source = LICENSE::https://raw.githubusercontent.com/zexadev/gemini-web2api-go/v4.22.0/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = gemini-web2api-go::https://github.com/zexadev/gemini-web2api-go/releases/download/v4.22.0/gemini-web2api-go_v4.22.0_linux_amd64
+	sha256sums_x86_64 = 21fcc81e0ad8ce0921e6b6c2cafce1089852530142b37e0289355c6e72df5299
+	source_aarch64 = gemini-web2api-go::https://github.com/zexadev/gemini-web2api-go/releases/download/v4.22.0/gemini-web2api-go_v4.22.0_linux_arm64
+	sha256sums_aarch64 = f2822fa0f1a7d2b37c2bc9cbb30a95c2e8028462453a110389511408bdfd4fd7
+
+pkgname = gemini-web2api-go-bin
