@@ -1,0 +1,21 @@
+pkgbase = ur44-control-git
+	pkgdesc = Configure the DSP mixer and effects of the Steinberg UR44 audio interface (latest commit)
+	pkgver = 0.1.0.r0.gd165e45
+	pkgrel = 1
+	url = https://github.com/Dethware/UR-44
+	arch = x86_64
+	arch = aarch64
+	license = MS-PL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = qt6-base
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	provides = ur44-control
+	conflicts = ur44-control
+	source = ur44-control::git+https://github.com/Dethware/UR-44.git
+	sha256sums = SKIP
+
+pkgname = ur44-control-git
