@@ -4,9 +4,9 @@
 # before verification, build and publication. Historical bootstrap placeholders
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
-_commit=f61cc4a02b44e5c962c57a2db2fb1f148aea6811
+_commit=bc257d2d33d5571696f9d61a4ab9c082dd5123e4
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marang/sway-session"
@@ -14,14 +14,14 @@ license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.5')
 options=('!debug')
-source=("sway-session-$pkgver.tar.gz::$url/archive/f61cc4a02b44e5c962c57a2db2fb1f148aea6811.tar.gz")
-sha256sums=('3353b3d2511d366ca5193c014b0ef93813b8443bfeb1f5b37639c5dc2eccbe1d')
+source=("sway-session-$pkgver.tar.gz::$url/archive/bc257d2d33d5571696f9d61a4ab9c082dd5123e4.tar.gz")
+sha256sums=('517819eb6d5f9cb890bdbd5df410421648a95ff3bef3d571cecb11b201db5cea')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid= -X "main.version=$pkgver" -X "main.commit=$_commit" -X "main.modified=false" -X "github.com/marang/sway-session/internal/buildmetadata.Stamp=sway-session-build-v1|$pkgver|$_commit|false|end-sway-session-build-v1")
 
 build() {
-  cd "sway-session-f61cc4a02b44e5c962c57a2db2fb1f148aea6811"
+  cd "sway-session-bc257d2d33d5571696f9d61a4ab9c082dd5123e4"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -30,7 +30,7 @@ build() {
 }
 
 check() {
-  cd "sway-session-f61cc4a02b44e5c962c57a2db2fb1f148aea6811"
+  cd "sway-session-bc257d2d33d5571696f9d61a4ab9c082dd5123e4"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -39,7 +39,7 @@ check() {
 }
 
 package() {
-  cd "sway-session-f61cc4a02b44e5c962c57a2db2fb1f148aea6811"
+  cd "sway-session-bc257d2d33d5571696f9d61a4ab9c082dd5123e4"
   install -Dm755 sway-session "$pkgdir/usr/bin/sway-session"
   install -Dm644 contrib/completions/bash/sway-session "$pkgdir/usr/share/bash-completion/completions/sway-session"
   install -Dm644 contrib/completions/zsh/_sway-session "$pkgdir/usr/share/zsh/site-functions/_sway-session"
@@ -56,10 +56,21 @@ package() {
   if [[ -f docs/agent-reporting.md ]]; then
     install -Dm644 docs/agent-reporting.md "$pkgdir/usr/share/doc/$pkgname/docs/agent-reporting.md"
   fi
+  if [[ -f docs/named-work-environments.md ]]; then
+    install -Dm644 docs/named-work-environments.md "$pkgdir/usr/share/doc/$pkgname/docs/named-work-environments.md"
+    install -Dm644 docs/research/lab-375-reach-focus-capability.md "$pkgdir/usr/share/doc/$pkgname/docs/research/lab-375-reach-focus-capability.md"
+    install -Dm644 docs/adr/0002-nonowning-work-environments.md "$pkgdir/usr/share/doc/$pkgname/docs/adr/0002-nonowning-work-environments.md"
+  fi
   # Keep the release template usable with the currently pinned older source.
   if [[ -f docs/lifecycle-recovery.md ]]; then
     install -Dm644 docs/lifecycle-recovery.md "$pkgdir/usr/share/doc/$pkgname/docs/lifecycle-recovery.md"
     install -Dm644 docs/research/herdr-plugin-session-deletion.md "$pkgdir/usr/share/doc/$pkgname/docs/research/herdr-plugin-session-deletion.md"
+  fi
+  if [[ -f docs/adr/0003-explicit-remote-terminal-bindings.md ]]; then
+    install -Dm644 docs/adr/0003-explicit-remote-terminal-bindings.md "$pkgdir/usr/share/doc/$pkgname/docs/adr/0003-explicit-remote-terminal-bindings.md"
+  fi
+  if [[ -f docs/research/lab-374-herdr-remote-restoration.md ]]; then
+    install -Dm644 docs/research/lab-374-herdr-remote-restoration.md "$pkgdir/usr/share/doc/$pkgname/docs/research/lab-374-herdr-remote-restoration.md"
   fi
   install -Dm644 docs/sway-session-verification.md "$pkgdir/usr/share/doc/$pkgname/docs/sway-session-verification.md"
   install -Dm644 docs/releasing.md "$pkgdir/usr/share/doc/$pkgname/docs/releasing.md"
