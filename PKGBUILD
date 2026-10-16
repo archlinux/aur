@@ -2,7 +2,7 @@
 
 pkgname=grpcurl
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers"
 arch=(x86_64)
 url="https://github.com/fullstorydev/grpcurl"
@@ -32,7 +32,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build ./cmd/...
+	go build -ldflags="-linkmode=external -X main.version=v${pkgver}" -o build ./cmd/...
 }
 
 check() {
