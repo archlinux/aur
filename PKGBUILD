@@ -4,7 +4,7 @@
 # https://github.com/LumaryLabsLLC/muxin from each release.
 
 pkgname=muxin-bin
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="All your machines in one app, for you and your AI agents"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=('muxin')
 options=('!strip' '!debug')
 source_x86_64=("Muxin-${pkgver}-linux-x86_64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v${pkgver}/Muxin-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("Muxin-${pkgver}-linux-aarch64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v${pkgver}/Muxin-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('ea45e7a458ae95ba0893f884cee448b62da9000eab8effc259035ac83f3a6d14')
-sha256sums_aarch64=('228c1b4345e9001feea1d9efe11b7f2025996302730cf3cac16c09c27af797da')
+sha256sums_x86_64=('b56487673de9fef1b0ffe17cb71055f5f18d15ddb21b9afd4d8186a0c84b59fb')
+sha256sums_aarch64=('305d24e637387dc13e20ae0594241a90b56db93afd72c1185bdc2fd1fff36ef9')
 
 package() {
   cd "${srcdir}/Muxin"
