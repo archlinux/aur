@@ -1,8 +1,8 @@
 # Maintainer: minpeter <minpeter@users.noreply.github.com>
 
 pkgname=epic-games-launcher-bin
-pkgver=0.95.2
-_commit=gfa9ad49
+pkgver=0.96.1
+_commit=ge3e236d
 pkgrel=1
 pkgdesc="Official Epic Games Store launcher (Preview)"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
   'glibc'
   'gtk3'
   'hicolor-icon-theme'
+  'libayatana-appindicator'
   'libsoup3'
   'libx11'
   'webkit2gtk-4.1'
@@ -33,7 +34,7 @@ options=('!debug' '!strip')
 _appimage="EpicGamesLauncher-${pkgver}-${_commit}-x86_64.AppImage"
 source=("${_appimage}::https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${pkgver}%2B${_commit}/Linux/EpicGamesLauncher-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums=('7066159ec987afcdc27069f070b456bdb9a805bd5f02114aa7ad86e5559cbfd5')
+sha256sums=('841567e93d9128c9d24cbb8b1e4d26e15c375ca0c73e968551a2c1af320b06bd')
 
 prepare() {
   rm -rf "${srcdir}/squashfs-root"
