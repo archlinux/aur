@@ -1,10 +1,25 @@
+_vinput_refresh_uinput() {
+    # Load the module (it may not be in use yet) so the device exists, then
+    # reload the rules and re-trigger the device. TAG+="uaccess" is applied by
+    # systemd-logind at that point; `getfacl /dev/uinput` should then list a
+    # `user:<you>:rw-` entry for the active local session.
+    modprobe uinput >/dev/null 2>&1 || true
+    udevadm control --reload >/dev/null 2>&1 || true
+    udevadm trigger --subsystem-match=misc --sysname-match=uinput >/dev/null 2>&1 || true
+}
+
 post_install() {
+    # /dev/uinput is a static node, and the rule that grants it to local
+    # sessions (70-vinput-uinput.rules) was just installed. Reload udev so the
+    # current session gets access without a reboot.
+    _vinput_refresh_uinput
     echo "==> Vinput: defaults are built in; user config lives in ~/.config/vinput/."
     echo "==> Copy an example you need from /usr/share/doc/fcitx5-vinput/config/."
     printf '\033[1;31m==> Vinput: Local ASR models (zipformer/fire-red) must be downloaded separately.\033[0m\n'
     echo "==> See setup instructions: https://github.com/xander-lin/vinput#local-models-optional"
     echo "==> Cloud providers: put your API key into ~/.config/vinput/qwen.json"
     echo "==> or doubao.json (plaintext; chmod 600 recommended)"
+    echo "==> CapsLock restore uses /dev/uinput; restart fcitx5 to pick it up: fcitx5 -r"
 }
 
 post_upgrade() {
