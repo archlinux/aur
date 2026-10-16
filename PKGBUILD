@@ -9,7 +9,7 @@ url="https://bisq.network"
 license=('AGPL3')
 depends=('java-runtime>=21' 'tor')
 makedepends=('java-environment=21' 'git')
-checkdepends=('ttf-dejavu')
+checkdepends=('pango' 'ttf-dejavu')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
   "git+https://github.com/bisq-network/bitcoind.git"
   "bisq2.desktop")
