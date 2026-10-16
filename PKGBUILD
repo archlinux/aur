@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-smod-git')
-pkgver=6.7.4_54.r53569e7
+pkgver=6.8.0_76.r5bb41e9
 pkgrel=1
 pkgdesc="KDecoration3 decoration engine for AeroShell-based desktops"
 arch=(x86_64)
