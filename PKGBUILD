@@ -5,12 +5,12 @@
 
 pkgname=splix
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('x86_64')
 url="https://openprinting.github.io/splix/"
 license=('GPL-2.0-only')
-depends=('libcups' 'gcc-libs' 'ghostscript' 'jbigkit')
+depends=('libcups' 'cups' 'gcc-libs' 'ghostscript' 'jbigkit')
 makedepends=('krb5')
 install=splix.install
 source=(https://github.com/OpenPrinting/splix/releases/download/$pkgver/$pkgname-$pkgver.tar.xz
