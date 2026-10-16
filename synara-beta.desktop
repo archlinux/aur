@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Synara Beta
+GenericName=Coding Agent GUI
+Comment=Minimal desktop GUI for coding agents (beta channel)
+Exec=synara-beta %U
+Icon=synara-beta
+Terminal=false
+Categories=Development;IDE;
+StartupWMClass=synara-beta
+Keywords=ai;agent;codex;claude;cursor;beta;

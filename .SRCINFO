@@ -1,0 +1,23 @@
+pkgbase = synara-beta
+	pkgdesc = Minimal desktop GUI for coding agents (beta channel)
+	pkgver = 1.0.6_beta.1
+	pkgrel = 1
+	url = https://trysynara.com
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = synara-bin
+	options = !strip
+	options = !debug
+	source = Synara-Beta-1.0.6-beta.1-x86_64.AppImage::https://github.com/Emanuele-web04/synara/releases/download/v1.0.6-beta.1/Synara-Beta-1.0.6-beta.1-x86_64.AppImage
+	source = synara-beta.desktop
+	source = synara-beta.svg
+	source = LICENSE::https://raw.githubusercontent.com/Emanuele-web04/synara/v1.0.6-beta.1/LICENSE
+	sha256sums = e8207324c27fa65b1d4e5a6232655bd8cf431caa215d1060f25838dbacda29d2
+	sha256sums = ed88f2bdf151c043f7dc15e54de63862c397c95b30dd5bdba202b077a74d8d6b
+	sha256sums = 426cd0c3bacd826957099cb20609c6aeb62445c8203b515924b998623a646fad
+	sha256sums = 305724dd050ca7ded99c662de813d755bc4ec3887c4543a37159c6662ca36d1b
+
+pkgname = synara-beta
