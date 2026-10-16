@@ -1,8 +1,10 @@
 # Maintainer: Ivan Reutov <nujievik@gmail.com>
 
 pkgname=mux-media-bin
+provides=("mux-media")
+conflicts=("mux-media")
 pkgver=0.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI utility to mux (merge) video, audio, and subtitles"
 arch=("x86_64" "i686")
 url="https://github.com/nujievik/mux-media"
