@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, fast, beautiful open-source Git client"
 
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_packagename}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('62a9d92ab644e46d0768559613d1d2a0aa95a0f8e0e0880a19ae112208109e39'
+sha256sums=('7feec9a42313953ac0626ffe2d7035cb7e17b93db7a1dd773fce1be2d8b637d3'
             'e2e20cd37ca31853f05df3cfdc3053208ead8f26279cea442fb6930bd4cc59fe')
-sha256sums_x86_64=('028f68f5bf894a4dd1d6b48c897b4945c980881802f36174c3bd08a4476d5943')
+sha256sums_x86_64=('17b699f5149b6766fa543605e937e2c450f974c464ac96daca5be1dcad1a25e4')
 
 
 package() {
