@@ -2,7 +2,7 @@
 pkgbase=wireview-hwmon
 pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
 # Must match the top-level VERSION file ("make check-version").
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha256sums=('bcc2b0b206d5570dd38b624ec85885952c0cd8067f6554157e66f9b55c1589e0'
+sha256sums=('7a227dcd91bfabcc14a35dfdccc5ae03fea18a9c0a6119268ab797b6cbd1be27'
             'dec7ef8e8cc0bcfb7a692a0484b9df3fbd8909f89ee63658f1c3f77ab20d7660'
             '01ca092a9409307d362c4edbe4421d21837b02f7de443cc34c053284952407cf')
 
