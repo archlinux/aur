@@ -4,7 +4,7 @@ pkgdesc="Zalo for Linux — unofficial port with ZaDark, running on system Elect
 arch=('x86_64' 'aarch64')
 url="https://github.com/doandat943/zalo-for-linux"
 license=('MIT')
-pkgver=26.10.10+26.2.1.r141.a532d9e
+pkgver=26.10.11+26.2.1.r183.285ba91
 pkgrel=1
 epoch=1
 provides=('zalo')
@@ -16,13 +16,17 @@ depends=(
     'xz'
     'openssl'
     'hicolor-icon-theme'
+    'python'
+    'opus'
+    'libpulse'
+    'alsa-utils'
+    'pipewire'
+    'rtkit'
 )
 
 makedepends=(
-    'git' 'nodejs' 'npm' 'python' 'make'
+    'git' 'nodejs' 'npm' 'make'
     'gcc' '7zip' 'rust' 'wget'
-    'mingw-w64-gcc'
-    'lib32-gcc-libs' 'lib32-glibc' 'lib32-libx11' 'lib32-libxcb' 'lib32-libxext'
 )
 
 optdepends=(
@@ -34,20 +38,9 @@ optdepends=(
     'gnome-screenshot: Screenshot without/with Zalo window button'
     'xfce4-screenshooter: Screenshot without/with Zalo window button'
     'mate-utils: Screenshot without/with Zalo window button'
+    'cosmic-screenshot: Screenshot without/with Zalo window button'
     'scrot: Screenshot without/with Zalo window button'
-    'wine: Voice/Video call engine support (or download portable wine in-app)'
-    'v4l-utils: control camera formats (fix inverted/green camera)'
-    'v4l2loopback-dkms: loopback camera support'
-    'xorg-server-xvfb: headless X server for Wayland screen-sharing bridge'
-    'python-dbus: required by the Wayland screen-sharing bridge (zcall-bridge/screenbridge.py)'
-    'python: required by the Wayland screen-sharing bridge (screenbridge.py)'
-    'xdotool: window resizing for screen bridge display'
-    'gst-plugins-base: 64-bit GStreamer plugins (ximagesink) for screen bridge'
-    'gst-plugins-bad: 64-bit GStreamer plugins (pipewiresrc) for screen bridge'
-    'python-gobject: required by the Wayland screen-sharing bridge (zcall-bridge/screenbridge.py)'
-    'lib32-glibc: 32-bit runtime for the Wayland screen-share shim (zcall-bridge/streamproxy.so, pulled in by wine)'
-    'lib32-libx11: 32-bit X11 for the Wayland screen-share shim (pulled in by wine)'
-    'lib32-libxcb: 32-bit XCB for the Wayland screen-share shim (pulled in by wine)'
+    'zenity: call window when the engine is run standalone'
 )
 
 options=(!emptydirs !debug)
@@ -60,8 +53,8 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'd88b81e287f303e0824b37a9778f92c223ff946b31c81c699e9fde3fe436b762'
-    '277f7b54fc65deb7d524537ac73a110c23aab771aabff092d19c114abd305c91'
+    '27e59a47df95684e171c00f3d26204f85c297e07a2a90a96f591d74028396008'
+    'bda3e47be9cb7a9707bed0e6c1344b32abe67a6c85de6538521223d59fa998de'
     '9c692898a06c7d311e1cd2cbe53a4b0a0e5b46a42c69c8320318dce12d48bb47'
 )
 
@@ -87,47 +80,39 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-
+    
     # Zalo version = repo's latest tag, same number as the DMG on zadn.vn
     export ZALO_VERSION="$(git describe --tags --abbrev=0)"
-    export ZALO_WIN_VERSION="$ZALO_VERSION"
     export ZADARK_VERSION="$(node -p "require('./plugins/zadark/package.json').version")"
-
+    
     # npm >= 12 blocks git deps (crx in zadark's lockfile) — allow-git=all
     # scripts skipped, so fetch sqlite3's N-API v6 prebuilt manually
     export npm_config_allow_git="all"
     npm ci --ignore-scripts --no-audit --no-fund
     (cd node_modules/sqlite3 && npx prebuild-install -r napi)
-
+    
     node scripts/download.js
     node scripts/prepare-zadark.js
     node scripts/prepare-app.js
-    node scripts/setup-zcall-bridge.js
-    test -f app/native/qt-call-and-cap/pipebridge.exe || {
-        echo 'ERROR: call engine missing (qt-call-and-cap/pipebridge.exe) — Windows installer download failed' >&2
-        return 1
-    }
+    node scripts/clean-unused.js
     node "$srcdir/integrate-zadark.js"
 }
 
 package() {
     cd "$srcdir/$pkgname"
     local _lib="$pkgdir/usr/lib/zalo"
-
+    
     install -d "$_lib" "$_lib/plugins"
-    # Strip Mach-O/PE natives from the DMG: Linux bindings always sit under a
-    # path containing "linux"; keep qt-call-and-cap (the Wine call engine).
-    find app/native/nativelibs -type f \( -name '*.node' -o -name '*.dylib' \
-    -o -name '*.exe' -o -name '*.dll' \) ! -path '*linux*' -delete
-    find app/native/nativelibs -type d -empty -delete
-    cp -a main.js package.json app zcall-bridge plugins "$_lib/"
+    cp -a main.js package.json app zcall-native plugins "$_lib/"
     # ps-list's vendored Windows exes are unused on Linux (reads /proc).
     find "$_lib/plugins/zadark" -type f \( -name '*.exe' -o -name '*.dylib' \
     -o -name '*.dll' \) -delete
     rm -rf "$_lib/plugins/zadark/node_modules"
+    find "$_lib" -type d -name __pycache__ -prune -exec rm -rf {} +
+    find "$_lib" -type f -name '*.pyc' -delete
     # gulp in the zadark submodule leaves the o+w bit; packages must not be world-writable
     chmod -R o-w "$_lib"
-
+    
     install -Dm755 "$srcdir/zalo.sh" "$pkgdir/usr/bin/zalo"
     install -Dm644 "$srcdir/zalo.desktop" "$pkgdir/usr/share/applications/zalo.desktop"
     install -Dm644 app/pc-dist/favicon-512x512.png \
