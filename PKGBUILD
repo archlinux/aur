@@ -4,7 +4,7 @@
 pkgname=python-flash-attn
 _pkgname=flash-attention
 _cutlass_commit=dc4817921edda44a549197ff3a9dcf5df0636e7b
-pkgver=2.8.3.post1
+pkgver=2.8.3.post2
 pkgrel=1
 pkgdesc="Fast and memory-efficient exact attention"
 arch=('x86_64')
@@ -62,7 +62,7 @@ source=(
   'cpu-only-test-skip.patch'
 )
 sha256sums=(
-  'd0f5bf63f9051cacc8007213e748f3d4edf3af8cd9b4c08d388eae07cb2ab1d9'
+  'fe02f6383dc53de82810e129c6906ac4ee1539681a3da0cee4c3ae78d8858b0f'
   'f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56'
   'cfdc7f13c855599e90861fcfc15ae5d3759b8823ca609a70ddbd061691287137'
   'e7e704be13c6b69c310caf3eaeaeaa195aaacb7d3cfaad965526629ed4ed09fb'
@@ -100,7 +100,8 @@ build() {
   local _cpus=${SLURM_CPUS_PER_TASK:-${MAX_JOBS:-2}}
   local _jobs=$((_cpus / NVCC_THREADS))
   ((_jobs > 0)) || _jobs=1
-  ((_jobs <= 16)) || _jobs=16
+  # Each compiler can exceed 8 GiB for the full architecture set.
+  ((_jobs <= 4)) || _jobs=4
   export MAX_JOBS=$_jobs
 
   # The Arch ninja package supplies the executable but intentionally has no
@@ -170,7 +171,7 @@ import flash_attn
 import flash_attn_2_cuda
 from flash_attn.bert_padding import pad_input, unpad_input
 
-assert flash_attn.__version__ == "2.8.3.post1"
+assert flash_attn.__version__ == "2.8.3.post2"
 assert callable(flash_attn_2_cuda.fwd)
 
 hidden = torch.arange(2 * 4 * 2 * 3, dtype=torch.float32).reshape(2, 4, 2, 3)
