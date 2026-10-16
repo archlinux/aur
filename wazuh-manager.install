@@ -18,9 +18,11 @@ post_upgrade()
     echo "Previous config restored. New config saved as /var/ossec/etc/ossec.conf.rpmnew"
   fi
 
-  # Update filebeat wazuh module
-  echo "Updating filebeat wazuh module..."
-  curl -s https://packages.wazuh.com/4.x/filebeat/wazuh-filebeat-0.4.tar.gz | tar -xz -C /usr/share/filebeat/module 2>/dev/null || true
+  # El modulo wazuh de filebeat lo aporta el paquete wazuh-filebeat (dependencia).
+
+  # Red de seguridad: si se viene de una instalacion sin ossec.conf, generarlo
+  # aqui en vez de dejar el manager sin arrancar. No pisa uno existente.
+  _generate_ossec_conf
 
   # Reload and restart services
   systemctl daemon-reload
@@ -47,13 +49,27 @@ post_install()
   echo "Setting permissions..."
   chown -R wazuh:wazuh /var/ossec
 
+  # ossec.conf NO viene dentro del paquete: el RPM lo genera en su %post con
+  # gen_ossec.sh, porque add_localfiles.sh necesita mirar que logs existen en
+  # ESTA maquina. Sin este paso una instalacion limpia se queda sin
+  # /var/ossec/etc/ossec.conf y wazuh-manager no arranca.
+  _generate_ossec_conf
+
   # Generate SSL certificates for wazuh-authd (agent enrollment)
   echo "Generating certificates for wazuh-authd..."
   /var/ossec/bin/wazuh-authd -C 365 -B 2048 -K /var/ossec/etc/sslmanager.key -X /var/ossec/etc/sslmanager.cert -S "/C=US/ST=California/CN=wazuh/" 2>/dev/null || true
 
-  # Setup filebeat wazuh module
-  echo "Setting up filebeat wazuh module..."
-  curl -s https://packages.wazuh.com/4.x/filebeat/wazuh-filebeat-0.4.tar.gz | tar -xz -C /usr/share/filebeat/module 2>/dev/null || true
+  # Ficheros de log que el manager espera encontrar creados (los crea el %post
+  # del RPM; sin ellos active response e integraciones no pueden escribir).
+  touch /var/ossec/logs/active-responses.log /var/ossec/logs/integrations.log
+  chown wazuh:wazuh /var/ossec/logs/active-responses.log /var/ossec/logs/integrations.log
+  chmod 0660 /var/ossec/logs/active-responses.log
+  chmod 0640 /var/ossec/logs/integrations.log
+
+  # Restos de configuracion compartida que el RPM elimina en instalacion limpia
+  rm -f /var/ossec/etc/shared/ar.conf /var/ossec/etc/shared/merged.mg 2>/dev/null || true
+
+  # El modulo wazuh de filebeat lo aporta el paquete wazuh-filebeat (dependencia).
 
   echo ""
   echo "=========================================="
@@ -84,4 +100,44 @@ post_install()
   echo "   filebeat test output"
   echo ""
   echo "Documentation: https://documentation.wazuh.com/current/installation-guide/wazuh-server/step-by-step.html"
+}
+
+_generate_ossec_conf()
+{
+  local scripts=/var/ossec/packages_files/manager_installation_scripts
+
+  if [ -f /var/ossec/etc/ossec.conf ]; then
+    echo "  ossec.conf ya existe, se conserva"
+    return
+  fi
+
+  if [ ! -x "$scripts/gen_ossec.sh" ]; then
+    echo "  WARNING: gen_ossec.sh no esta disponible, no se puede generar ossec.conf"
+    echo "  WARNING: wazuh-manager NO arrancara sin /var/ossec/etc/ossec.conf"
+    return
+  fi
+
+  echo "Generating /var/ossec/etc/ossec.conf..."
+
+  # dist-detect.sh exporta DIST_NAME / DIST_VER / DIST_SUBVER. En Arch y
+  # derivadas no hay plantilla propia y gen_ossec.sh cae en la 'generic', que
+  # es la correcta.
+  DIST_NAME="generic"; DIST_VER="0"; DIST_SUBVER="0"
+  # shellcheck source=/dev/null
+  [ -r "$scripts/src/init/dist-detect.sh" ] && . "$scripts/src/init/dist-detect.sh"
+
+  if "$scripts/gen_ossec.sh" conf manager "$DIST_NAME" "${DIST_VER}.${DIST_SUBVER}" \
+        /var/ossec > /var/ossec/etc/ossec.conf 2>/dev/null && \
+     [ -s /var/ossec/etc/ossec.conf ]; then
+    # localfiles depende de que logs existan en esta maquina, por eso se
+    # resuelve aqui y no en tiempo de empaquetado.
+    "$scripts/add_localfiles.sh" /var/ossec >> /var/ossec/etc/ossec.conf 2>/dev/null || true
+    chown root:wazuh /var/ossec/etc/ossec.conf
+    chmod 0660 /var/ossec/etc/ossec.conf
+    echo "  ossec.conf generado para ${DIST_NAME} ${DIST_VER}.${DIST_SUBVER}"
+  else
+    rm -f /var/ossec/etc/ossec.conf
+    echo "  WARNING: fallo la generacion de ossec.conf"
+    echo "  WARNING: wazuh-manager NO arrancara sin /var/ossec/etc/ossec.conf"
+  fi
 }

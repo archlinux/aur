@@ -1,6 +1,6 @@
 pkgbase = wazuh-manager
 	pkgdesc = Wazuh Manager for Arch Linux
-	pkgver = 4.14.3
+	pkgver = 4.14.9
 	pkgrel = 1
 	url = https://wazuh.com/
 	install = wazuh-manager.install
@@ -9,7 +9,8 @@ pkgbase = wazuh-manager
 	license = gpl2
 	depends = wazuh-filebeat
 	depends = curl
-	source = https://packages.wazuh.com/4.x/yum/wazuh-manager-4.14.3-1.x86_64.rpm
-	sha512sums = 987acc2e344586dba932a23f09d6ba2c98a5a860925436a65da9fdf1032e4f70c71b1b2fd499e3939c2f2ae9557e8e411ad94b7549a721cdf4e6d34f7efb80fd
+	conflicts = wazuh-agent
+	source = https://packages.wazuh.com/4.x/yum/wazuh-manager-4.14.9-1.x86_64.rpm
+	sha512sums = 70502e04e0773493ac3b59576399147530aa13602204055df1d8d426226ec7d5e8300e72960c7d0e51ee69a61495900e5db7df5958f1b52bef38c6a4ee952eae
 
 pkgname = wazuh-manager
