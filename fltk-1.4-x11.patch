@@ -1,0 +1,24 @@
+--- a/src-crashtest/crashtest.cxx
++++ b/src-crashtest/crashtest.cxx
+@@ -23,6 +23,7 @@
+ #include <FL/Fl_Value_Slider.H>
+ #include <FL/Fl_Gl_Window.H>
+ #include <FL/fl_draw.H>
++#include <FL/platform.H>
+ 
+ #include <plib/ssg.h>
+ #include <plib/ul.h>
+@@ -626,6 +627,13 @@
+     dirprefix = getenv("PLODE_DATADIR");
+   modelmap = new ModelMap(dirprefix);
+ 
++  // plib checks for a GL context with glXGetCurrentContext(), which fails
++  // with FLTK 1.4 Wayland backend (EGL), so force X11 (XWayland).
++  // The backend is selected when the display is opened, which must happen
++  // before querying GL visuals.
++  setenv("FLTK_BACKEND", "x11", 1);
++  fl_open_display();
++
+   if (!Fl::gl_visual(FL_RGB | FL_MULTISAMPLE))
+   {
+     Fl::warning("Sorry, Your display does not do Multi Sample OpenGL");
