@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus
-pkgver=0.42.2
+pkgver=0.43.0
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
@@ -21,33 +21,42 @@ provides=('hgs' 'hgs-tray')
 conflicts=('zerus-git' 'zerus-ade-bin')
 options=('!lto' '!debug')
 source=("https://github.com/ufna/zerus/releases/download/v${pkgver}/zerus-${pkgver}-source.tar.gz")
-sha256sums=('c83b01eaa802e762bf923c5c90ee9f9c4a3bfd8903df9a4d089e4ae3b7deae1a')
+sha256sums=('1b075aba947271c7f8e3d89d7d8f2c9bd36a0db9f6830d9514e4112770c3f95e')
 
 prepare() {
     cd "$srcdir/zerus-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')" \
+        --manifest-path services/mobile/connector/Cargo.toml
 }
 
 build() {
     cd "$srcdir/zerus-$pkgver"
     export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
     cargo build --frozen --release
+    cargo build --frozen --release --manifest-path services/mobile/connector/Cargo.toml
     cmake -S tray -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DHGS_NATIVE_UI_PLUGIN=ON
     cmake --build build
-    python scripts/collect-licenses.py "$srcdir/licenses"
+    python scripts/collect-licenses.py "$srcdir/licenses" \
+        --manifest-path Cargo.toml --manifest-path services/mobile/connector/Cargo.toml
 }
 
 check() {
     cd "$srcdir/zerus-$pkgver"
     export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
     cargo test --frozen --release
+    # The journal handoff tests need a Python connector with aiohttp; CI runs them.
+    cargo test --frozen --release --manifest-path services/mobile/connector/Cargo.toml \
+        --lib --test config_vectors --test journal_vectors --test runtime_vectors --test mutations \
+        --test launch_runtime --test binary
 }
 
 package() {
     cd "$srcdir/zerus-$pkgver"
     python scripts/package-linux.py --destdir "$pkgdir" \
         --cli target/release/hgs --gui build/hgs-tray --native-ui-plugin build/plugins/libhgs-tray-native-ui.so \
+        --connector target/release/zerus-mobile-connector \
         --licenses "$srcdir/licenses" --package-name "$pkgname"
 }
