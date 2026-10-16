@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=omniphony-studio-egui-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.6.0 # renovate: datasource=github-releases depName=mgth/Omniphony extractVersion=^v(?<version>\d.+)$
+pkgver=0.7.0 # renovate: datasource=github-releases depName=mgth/Omniphony extractVersion=^v(?<version>\d.+)$
 pkgrel=1
 pkgdesc="Omniphony Studio native (egui) control and 3D visualization UI for the orender spatial audio engine (binary release)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!debug')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.tar.gz"
-  "${_pkgname}-${pkgver}.png::https://raw.githubusercontent.com/mgth/Omniphony/v${pkgver}/omniphony-studio/src-tauri/icons/128x128.png"
+  "${_pkgname}-${pkgver}.png::https://raw.githubusercontent.com/mgth/Omniphony/v${pkgver}/omniphony-studio-egui/assets/icons/128x128.png"
   "${_pkgname}.desktop")
 
 package() {
@@ -49,6 +49,6 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums=('bc668e4874da739bcbd0efd613f9205514a0d913514f76e932163e7ca6b6e803'
+sha256sums=('fbbb6ef9db051b9e9097b02008d6d29441c559b00c757d27c8f7a9661b239706'
             'fceeadfb485429ccb5c2ec55b65c2106fe8f47d31c9af6f00f576ac6999a6aec'
             '5295612dab098d9d5b4749aaddd18adf2ec3a7f4bc31f0102b3b77db1e090e03')
