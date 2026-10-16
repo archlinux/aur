@@ -1,6 +1,6 @@
 pkgbase = llm-leaders-bin
 	pkgdesc = Rust CLI ranking coding LLMs by arena.ai WebDev Elo with live OpenRouter pricing
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/mohamadkhani/llm-leaders
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = llm-leaders-bin
 	depends = zstd
 	provides = llm-leaders
 	conflicts = llm-leaders
-	source_x86_64 = https://github.com/mohamadkhani/llm-leaders/releases/download/v0.9.0/llm-leaders-0.9.0-x86_64-unknown-linux-gnu.tar.gz
-	b2sums_x86_64 = 0e8f46ad3033c6b78e1c79c348a26154f0c41051f75a8224bef398d7dc99757f2e00a3ef2cc50162527883d670551b5d14b5d8b77ce47fded290b5ce1c1ddc9d
+	source_x86_64 = https://github.com/mohamadkhani/llm-leaders/releases/download/v0.9.1/llm-leaders-0.9.1-x86_64-unknown-linux-gnu.tar.gz
+	b2sums_x86_64 = 08795722e4cae62763c39fc31f88fcc95550fe2df55a96b0d072dfeafb33e4e38b837465a6f694893e84fb035bddb94989bdfeca7e8de2d4458399741d1aac0f
 
 pkgname = llm-leaders-bin
