@@ -1,8 +1,8 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 
 pkgname=novabench
-pkgver=6.1.2
-pkgrel=2
+pkgver=6.2.1
+pkgrel=1
 pkgdesc="Cross-platform benchmark for CPU, GPU, memory, storage, and NPU"
 arch=('x86_64' 'aarch64')
 url="https://novabench.com/"
@@ -48,10 +48,10 @@ sha256sums=(
   'SKIP'
 )
 sha256sums_x86_64=(
-  '9fb452522351a56599f6a3eebb9594fb3249c276ff4c945701a91d97cf4ce51c'
+  '90239399f07355eee78e5a7990347e62e145b1d4bc605db09556b531c809ce8c'
 )
 sha256sums_aarch64=(
-  '274fbee4d621c9aef919e606a631e5fa6ee1c94dc07358e13d492c4b84f672a6'
+  '9e807052b7632cfc8a1795d046b3f5b1e5b387d0c74b8d9edafdc6d1878f57ff'
 )
 
 package() {

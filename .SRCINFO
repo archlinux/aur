@@ -1,7 +1,7 @@
 pkgbase = novabench
 	pkgdesc = Cross-platform benchmark for CPU, GPU, memory, storage, and NPU
-	pkgver = 6.1.2
-	pkgrel = 2
+	pkgver = 6.2.1
+	pkgrel = 1
 	url = https://novabench.com/
 	install = novabench.install
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = novabench
 	options = !strip
 	source = Novabench-EULA.html::https://novabench.com/legal/eula
 	sha256sums = SKIP
-	source_x86_64 = novabench-6.1.2-x86_64.deb::https://cdn.novabench.net/novabench-x64.deb
-	sha256sums_x86_64 = 9fb452522351a56599f6a3eebb9594fb3249c276ff4c945701a91d97cf4ce51c
-	source_aarch64 = novabench-6.1.2-aarch64.deb::https://cdn.novabench.net/novabench-arm64.deb
-	sha256sums_aarch64 = 274fbee4d621c9aef919e606a631e5fa6ee1c94dc07358e13d492c4b84f672a6
+	source_x86_64 = novabench-6.2.1-x86_64.deb::https://cdn.novabench.net/novabench-x64.deb
+	sha256sums_x86_64 = 90239399f07355eee78e5a7990347e62e145b1d4bc605db09556b531c809ce8c
+	source_aarch64 = novabench-6.2.1-aarch64.deb::https://cdn.novabench.net/novabench-arm64.deb
+	sha256sums_aarch64 = 9e807052b7632cfc8a1795d046b3f5b1e5b387d0c74b8d9edafdc6d1878f57ff
 
 pkgname = novabench
