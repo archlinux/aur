@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest-git
-pkgver=1.50.0.r351.g92c2576a
+pkgver=1.50.0.r353.gfeb4b4e2
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation (git)"
 arch=('x86_64')
