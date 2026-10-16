@@ -6,6 +6,7 @@ pkgbase = swiftpoint-x1-control-panel
 	install = Swiftpoint_X1_Control_Panel.install
 	arch = x86_64
 	license = custom
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
 	provides = swiftpoint-x1-control-panel
 	conflicts = swiftpoint-x1-control-panel
 	options = !debug
