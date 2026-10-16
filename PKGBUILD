@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=appattic-qt
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Leftovers, stale apps, unused packages, and disk usage"
 arch=('x86_64')
@@ -15,20 +15,20 @@ conflicts=('appattic-bin')
 options=('!buildflags')
 source=(
   "appattic-${pkgver}.tar.gz::https://github.com/maci0/appattic/archive/refs/tags/v${pkgver}.tar.gz"
-  "https://ziglang.org/download/0.16.0/zig-x86_64-linux-0.16.0.tar.xz"
+  "https://ziglang.org/download/0.17.0/zig-x86_64-linux-0.17.0.tar.xz"
   "https://github.com/bytecodealliance/wasmtime/releases/download/v28.0.0/wasmtime-v28.0.0-x86_64-linux-c-api.tar.xz"
 )
 sha256sums=(
-  'cae5f1194edd44d1b10e3dba5d1bbcbfb0e0d30e216f54b1d312d0e1a4ad9eb9'
-  '70e49664a74374b48b51e6f3fdfbf437f6395d42509050588bd49abe52ba3d00'
+  '9da91b25123a807abbd6458564a5f9de0dac5ac7baf4ca314727280618c6d8eb'
+  '1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026'
   '23f282f333f07ec82a838928cbc86355cc4978c3618080d1a2e5714fec8411bf'
 )
 
 build() {
-  # .zig-version is 0.16.0 and the Wasmtime C API pin is v28.0.0. Neither is
+  # .zig-version is 0.17.0 and the Wasmtime C API pin is v28.0.0. Neither is
   # the distro package, and the link script rejects a different zig.
   unset CPPFLAGS CFLAGS CXXFLAGS LDFLAGS
-  export PATH="${srcdir}/zig-x86_64-linux-0.16.0:${PATH}"
+  export PATH="${srcdir}/zig-x86_64-linux-0.17.0:${PATH}"
   export WASMTIME_DIR="${srcdir}/wasmtime-v28.0.0-x86_64-linux-c-api"
   cd "appattic-${pkgver}"
   rm -rf ui/linux-qt/build-release
