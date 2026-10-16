@@ -1,12 +1,12 @@
 pkgname=dsd-neo-git
-pkgver=2.10.0.r83.g409a98e
+pkgver=2.10.0.r85.g0af0d6f
 pkgrel=1
 pkgdesc="Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
 url="https://github.com/arancormonk/dsd-neo"
 license=('GPL-3.0-or-later')
 depends=(
-    'mbelib-neo>=2.3'
+    'mbelib-neo>=2.5'
     'mbelib-neo<3'
     'libsndfile'
     'openssl'
