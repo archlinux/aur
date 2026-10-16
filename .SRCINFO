@@ -1,8 +1,8 @@
 pkgbase = slskr
 	pkgdesc = Rust Soulseek daemon with bundled Web UI
-	pkgver = 0.2.56
+	pkgver = 0.2.67
 	pkgrel = 3
-	url = https://github.com/snapetech/slskr
+	url = https://github.com/snapetech-org/slskr
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-only
@@ -11,12 +11,12 @@ pkgbase = slskr
 	depends = gcc-libs
 	depends = glibc
 	backup = etc/slskr/config.toml
-	source = slskr-0.2.56.tar.gz::https://github.com/snapetech/slskr/archive/refs/tags/release-v0.2.56.tar.gz
+	source = slskr-0.2.67.tar.gz::https://github.com/snapetech-org/slskr/archive/refs/tags/release-v0.2.67.tar.gz
 	source = slskr.service
 	source = slskr.sysusers
 	source = slskr.tmpfiles
 	sha256sums = SKIP
-	sha256sums = 3553ccff12888654c51848ae84c2ffec6fd35171a41ecfc4e7985553a59a90c9
+	sha256sums = 308ec26e906beb290ae7a18ca3a8f1a898cee0591923da3ac0d66d0791d9da25
 	sha256sums = 384dc783fd133eadcee6d9575eb41209fd231bd0728b815a5cf4af2ff6c43629
 	sha256sums = efbe26e7b0765a17276981f4694d30d3174cba6799588e7ae6590acdd1fe73d9
 

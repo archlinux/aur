@@ -1,6 +1,6 @@
 [Unit]
 Description=slskr daemon
-Documentation=https://github.com/snapetech/slskr
+Documentation=https://github.com/snapetech-org/slskr
 After=network-online.target
 Wants=network-online.target
 
