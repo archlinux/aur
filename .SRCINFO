@@ -1,7 +1,7 @@
 pkgbase = age-keylookup
 	pkgdesc = A tool to look up age public keys from a keyserver
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FiloSottile/torchwood
 	arch = x86_64
 	license = BSD-3-Clause
