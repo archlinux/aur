@@ -1,7 +1,7 @@
 pkgbase = wayleaf-4d
 	pkgdesc = KDE Plasma 6 Wayland tray applet for Nanoleaf 4D screen-edge color sync
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/avitretiak/wayleaf-4d
 	arch = x86_64
 	license = GPL-3.0-or-later
