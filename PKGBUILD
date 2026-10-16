@@ -2,11 +2,12 @@
 
 pkgname=recordbox
 pkgver=0.11.0 # renovate: datasource=git-tags depName=https://codeberg.org/edestcroix/Recordbox
-pkgrel=2
+pkgrel=3
 pkgdesc='A music player and library browser designed primarily to be as simple as possible, and tailored specifically to browsing and playing albums, rather than tracks or playlists.'
 arch=(x86_64)
 url="https://codeberg.org/edestcroix/Recordbox"
 license=(GPL-3.0-only)
+options=(!debug)
 depends=(
   dconf
   gcc-libs
@@ -41,6 +42,9 @@ source=("${pkgname}-${pkgver}::https://codeberg.org/edestcroix/Recordbox/archive
 prepare() {
   cd "${pkgname}"
 
+  # Fix E0446: private type in public interface
+  sed -i 's/^enum LyricsSaveDestination/pub enum LyricsSaveDestination/' src/lyrics/edit_dialog.rs
+
   CARGO_HOME="$srcdir/build/cargo-home" \
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -48,7 +52,8 @@ prepare() {
 build() {
   arch-meson "${pkgname}" build
 
-  CARGO_PROFILE_RELEASE_LTO=true \
+  RUSTFLAGS="$RUSTFLAGS --remap-path-prefix=$srcdir=src" \
+    CARGO_PROFILE_RELEASE_LTO=true \
     CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 \
     CARGO_PROFILE_RELEASE_DEBUG=2 \
     CARGO_PROFILE_RELEASE_STRIP=false \
@@ -59,4 +64,4 @@ package() {
   meson install -C build --destdir "${pkgdir}" --no-rebuild
 }
 
-sha256sums=('45edda9b723d1f93cc2e3b6cc9afd622d8d1c6277341a6a99cc1d43c14b38503')
+sha256sums=('9b9eb4e347c086c254910982cd6b12e4016f9e748f32d865013cede86aed8a4d')
