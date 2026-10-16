@@ -1,8 +1,8 @@
 pkgbase = beammp-launcher4linux
-	pkgdesc = BeamMP Launcher for Linux, prebuilt (GamePath config/CLI override for non-Steam installs)
+	pkgdesc = BeamMP Launcher for Linux, (GamePath config/CLI switch override for non-Steam installs), prebuilt vcpkg included (no dependency).
 	pkgver = 2.8.1
-	pkgrel = 1
-	url = https://github.com/SerShef/BeamMP-Launcher4Linux
+	pkgrel = 2
+	url = https://github.com/BeamMP/BeamMP-Launcher
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = glibc
