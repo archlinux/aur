@@ -2,13 +2,13 @@
 # Contributor: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=1.2.3077.9b79d49
+pkgver=1.3.3182.05c5f4d
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://tic80.com/"
 license=('MIT')
-depends=('glibc' 'libgcc' 'libstdc++' 'libglvnd' 'curl')
+depends=('glibc' 'libgcc' 'libstdc++' 'libglvnd' 'curl' 'libx11' 'libxi' 'libxcursor' 'alsa-lib')
 makedepends=('git' 'cmake' 'ruby' 'ruby-rake' 'glu')
 provides=("tic-80")
 
@@ -33,7 +33,6 @@ build() {
     cmake -S . -B build \
           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DBUILD_PRO=true \
-          -DBUILD_SDL=true -DBUILD_SDLGPU=true \
           -DBUILD_PLAYER=true -DBUILD_TOOLS=true \
           -DBUILD_WITH_ALL=true -DBUILD_STATIC=true \
           -DBUILD_TOUCH_INPUT=true
@@ -43,7 +42,6 @@ build() {
 package() {
     cd "$srcdir/$_gitname/build"
     install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
-    install -Dm755 bin/player-sdl "${pkgdir}/usr/bin/player-sdl"
     install -Dm755 bin/bin2txt "${pkgdir}/usr/bin/bin2txt"
     install -Dm755 bin/cart2prj "${pkgdir}/usr/bin/cart2prj"
     install -Dm755 bin/prj2cart "${pkgdir}/usr/bin/prj2cart"
