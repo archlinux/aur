@@ -1,7 +1,7 @@
 pkgbase = mangayomi
 	pkgdesc = free and open source application for reading manga, novels, and watching animes
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodjodevf/mangayomi
 	arch = x86_64
 	license = Apache-2.0

@@ -2,7 +2,7 @@
 
 pkgname=mangayomi
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="free and open source application for reading manga, novels, and watching animes"
 url="https://github.com/kodjodevf/${pkgname}"
 license=('Apache-2.0')
@@ -47,8 +47,7 @@ prepare() {
     export RUSTUP_HOME="${srcdir}/rustup-home"
     export CARGO_HOME="${srcdir}/cargo-home"
     export PATH="${CARGO_HOME}/bin:${PATH}"
-
-    rustup default stable
+    export RUSTUP_TOOLCHAIN=stable
 
     fvm use stable
     fvm flutter --disable-analytics
@@ -70,6 +69,7 @@ build() {
     export RUSTUP_HOME="${srcdir}/rustup-home"
     export CARGO_HOME="${srcdir}/cargo-home"
     export PATH="${CARGO_HOME}/bin:${PATH}"
+    export RUSTUP_TOOLCHAIN=stable
 
     fvm flutter build linux --no-pub --release
 }
