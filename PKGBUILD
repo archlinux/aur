@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
-pkgver=0.0.0.r1240.gb474ce2
+pkgver=0.0.0.r1350.g0ce7533
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -79,7 +79,7 @@ build() {
     -DENABLE_JACK=ON
     -DENABLE_LIBFDK=ON
     -DENABLE_WEBRTC=ON
-    -DOBS_VERSION_OVERRIDE="$pkgver"
+    -DOBS_RUST_VERSION="${pkgver%.r*}"
     -DCALM_DEPRECATION=ON
     -DENABLE_WEBSOCKET=ON
     -DENABLE_RUST_LIBOBS=ON
