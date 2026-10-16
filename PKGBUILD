@@ -1,4 +1,4 @@
-# Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
+# Maintainer: Asger Hautop Drewsen <asger@tyilo.com>
 pkgname=kattis-cli-git
 pkgver=r94.624fe94
 pkgrel=1
