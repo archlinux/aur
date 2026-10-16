@@ -1,6 +1,6 @@
 pkgbase = nimbus-beacon-node
 	pkgdesc = Nimbus Ethereum consensus client (beacon node)
-	pkgver = 26.10.0
+	pkgver = 26.10.1
 	pkgrel = 1
 	url = https://github.com/status-im/nimbus-eth2
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nimbus-beacon-node
 	conflicts = nimbus-beacon-node-bin
 	options = !strip
 	options = !buildflags
-	source = nimbus-eth2::git+https://github.com/status-im/nimbus-eth2.git#tag=v26.10.0?submodules
-	sha256sums = 4d9c09744b94d482910d3580a6e9916f6576795e5fbb734d2607185e87f481a6
+	source = nimbus-eth2::git+https://github.com/status-im/nimbus-eth2.git#tag=v26.10.1?submodules
+	sha256sums = f764184ab889d69e6ad798d54b360b0e299ebb40701ad30ef51fe44d5d288827
 
 pkgname = nimbus-beacon-node
