@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.14.3
+pkgver=4.14.9
 pkgrel=1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
@@ -25,9 +25,9 @@ source=(
   "config.yml"
 )
 
-sha512sums=('711a0aaa44772f9a1e638a2dec9b462a4542fd22059f5a8eec44b6c9c1b1c36cca66c57594dc980a97a08ab57f632bad4548320af262b22bfb02e462d658862c'
+sha512sums=('8d0ac7dd82990f5f7984f2c0d20df556a15386403a1a9b5b1c7bd3aad35ca2b1b75485ce909cd4d39fd8feff4163d0670974d1a97f4dc7f541aa001b09b6a8b7'
             'e38bc65e55f51d639c9521090ab0370f8b1fc33fdcba4ec7eab49d0f065b4c744a215dd2380b2c6d57803bba4b865dcd2f82ec0ba67bad8831cbc531e957dae9'
-            'f6383d5a839ba740ccf9c3c17ea3a9c996a1469f7ab77c3ad6023c4e9398162d309ef7ddb299320f9b5f321ecb70a3b7b6e247fc754ef6d90c87cbb0312c40e2'
+            'b767202849ed28c7b080fdbf17f70b4f26ee1b3f90b9806db9493e83de29244f80c6a8b8c68a571e3dd2931cb80399feffade90a55cacbc4110c38072dabfee3'
             '5d062026225f0befba836c176858cee040b27057c93f6ae791e042dbb015c5c3b462fd11a5d3cdc7a7172f33e090dd600919b08b391e15aa573e1739f0116db8')
 
 install=$pkgname.install

@@ -9,8 +9,17 @@
 # Foundation.
 adminpem="/etc/wazuh-indexer/certs/admin.pem"
 adminkey="/etc/wazuh-indexer/certs/admin-key.pem"
-readonly base_path="$(dirname "$(readlink -f "$0")")"
-readonly config_file="${base_path}/config.yml"
+# Parche Arch Linux: upstream ancla base_path al directorio del propio script.
+# Instalado bajo /usr/share/wazuh-indexer/... eso provoca tres fallos:
+#   1) lee SIEMPRE el config.yml plantilla de /usr/share e ignora en silencio el
+#      que el usuario copió y editó en su directorio de trabajo (certificados
+#      generados con las IPs equivocadas, sin ningún aviso);
+#   2) escribe wazuh-certificates/ y el .log dentro de /usr/share (viola la FHS);
+#   3) ese wazuh-certificates/ no pertenece a pacman, sobrevive a la desinstalación
+#      y aborta la siguiente ejecución con "already exists".
+# Anclamos al directorio de trabajo actual, que es lo que documenta post_install.
+readonly base_path="${WAZUH_CERTS_DIR:-$PWD}"
+readonly config_file="${WAZUH_CERTS_CONFIG:-${base_path}/config.yml}"
 readonly logfile="${base_path}/wazuh-certificates-tool.log"
 cert_tmp_path="/tmp/wazuh-certificates"
 debug=">> ${logfile} 2>&1"
