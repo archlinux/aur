@@ -1,0 +1,10 @@
+# makepkg build artifacts
+src/
+pkg/
+sioyek/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log
+
+# vendored mupdf source, kept locally so rebuilds skip the download
+mupdf-*-source.tar.gz

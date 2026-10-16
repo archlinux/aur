@@ -1,6 +1,6 @@
 pkgbase = sioyek-supernote
 	pkgdesc = A PDF viewer designed for reading research papers and technical books with Supernote .mark file support.
-	pkgver = r2044.98bc90ff
+	pkgver = r2096.4719fbb2
 	pkgrel = 1
 	url = https://github.com/mil-ad/sioyek
 	arch = x86_64
@@ -12,17 +12,19 @@ pkgbase = sioyek-supernote
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-tools
-	depends = libmupdf>=1.25
 	depends = qt6-wayland
 	depends = qt6-speech
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = sqlite3
 	depends = zlib
+	depends = harfbuzz
 	provides = sioyek
 	conflicts = sioyek-git
 	conflicts = sioyek
 	source = git+https://github.com/mil-ad/sioyek.git#branch=feature/add-supernote-mark-support
+	source = https://mupdf.com/downloads/archive/mupdf-1.28.4-source.tar.gz
 	sha512sums = SKIP
+	sha512sums = 74c697fdfef8068f69fc61e9018d03fc29325f7f09e36b755e0218d0027c3ebe5d7bb3075a31a3be7dba4088380b3f638d877a0b1cadfc1ea8bb17b18667f4ed
 
 pkgname = sioyek-supernote
