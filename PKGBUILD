@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=headroom-ai
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90%"
 arch=('x86_64')
@@ -14,6 +14,9 @@ depends=(
   'python-click'
   'python-rich'
   'python-opentelemetry-api'
+  'python-yaml'
+  'python-tomlkit'
+  'python-truststore'
   'ast-grep'
   'litellm'
 )
@@ -34,7 +37,7 @@ optdepends=(
   'python-hnswlib: HNSW vector memory adapter'
 )
 source=("https://files.pythonhosted.org/packages/source/h/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('19403478224ae30e2599865de743051d0138f0e5d68d78418643c6f1f7892593')
+sha256sums=('b24e6b33becfa767d7b82bce02b9ca06f05ce2a3daf1392f8e591947a9c5bf28')
 
 build() {
   cd "${pkgname//-/_}-$pkgver"
