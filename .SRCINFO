@@ -1,6 +1,6 @@
 pkgbase = zerus-git
 	pkgdesc = Agent development environment for AI coding agents across your machines
-	pkgver = 0.42.2.r880.g6de5bb0
+	pkgver = 0.43.0.r1475.g48dff262
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = zerus-git
 	optdepends = npm: install Codex and DeepSeek Harness from Accounts
 	optdepends = git: Git repository and worktree features
 	optdepends = systemd: user service autostart and isolated DeepSeek scopes
-	provides = zerus=0.42.2.r880.g6de5bb0
+	provides = zerus=0.43.0.r1475.g48dff262
 	provides = hgs
 	provides = hgs-tray
 	conflicts = zerus

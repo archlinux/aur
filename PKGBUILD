@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-git
-pkgver=0.42.2.r880.g6de5bb0
+pkgver=0.43.0.r1475.g48dff262
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
@@ -32,27 +32,36 @@ prepare() {
     cd "$srcdir/zerus"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')" \
+        --manifest-path services/mobile/connector/Cargo.toml
 }
 
 build() {
     cd "$srcdir/zerus"
     export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
     cargo build --frozen --release
+    cargo build --frozen --release --manifest-path services/mobile/connector/Cargo.toml
     cmake -S tray -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DHGS_NATIVE_UI_PLUGIN=ON
     cmake --build build
-    python scripts/collect-licenses.py "$srcdir/licenses"
+    python scripts/collect-licenses.py "$srcdir/licenses" \
+        --manifest-path Cargo.toml --manifest-path services/mobile/connector/Cargo.toml
 }
 
 check() {
     cd "$srcdir/zerus"
     export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
     cargo test --frozen --release
+    # The journal handoff tests need a Python connector with aiohttp; CI runs them.
+    cargo test --frozen --release --manifest-path services/mobile/connector/Cargo.toml \
+        --lib --test config_vectors --test journal_vectors --test runtime_vectors --test mutations \
+        --test launch_runtime --test binary
 }
 
 package() {
     cd "$srcdir/zerus"
     python scripts/package-linux.py --destdir "$pkgdir" \
         --cli target/release/hgs --gui build/hgs-tray --native-ui-plugin build/plugins/libhgs-tray-native-ui.so \
+        --connector target/release/zerus-mobile-connector \
         --licenses "$srcdir/licenses" --package-name "$pkgname"
 }
