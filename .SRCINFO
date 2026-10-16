@@ -1,0 +1,15 @@
+pkgbase = wikistow-cli-bin
+	pkgdesc = Command-line client for your family's encrypted wiki, for people and their agents
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/skint007/wikistow
+	arch = any
+	license = MIT
+	depends = nodejs>=26
+	optdepends = libsecret: keep an agent's key in the keyring (agent enroll --secret-store)
+	provides = wikistow-cli
+	conflicts = wikistow-cli
+	source = https://github.com/skint007/wikistow/releases/download/v0.6.0/wikistow-cli-0.6.0.tar.gz
+	sha256sums = 821f45f9a8472ecdfa1771fba88a6abe3b4cb904369b59fba99a7bb098223f4c
+
+pkgname = wikistow-cli-bin
