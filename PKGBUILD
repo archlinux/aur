@@ -13,7 +13,7 @@
 pkgbase=skwir
 pkgname=(skwir skwir-mermaid skwir-mupdf)
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An augmented file manager, for humans and agents'
 arch=('x86_64' 'aarch64')
 url='https://skwir.org'
@@ -43,7 +43,10 @@ sha256sums_aarch64=('e7e2fe4686925618330103cb167950aca5a84bb00fd977a41b86be59dd1
 prepare() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  # Every platform's crates, not only this one's: cargo-about, which makes
+  # the notices in build(), reads every crate Cargo.lock names, offline.
+  # From 0.1.1 on, the notices come with the source (ADR-063).
+  cargo fetch --locked
 }
 
 build() {
