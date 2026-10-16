@@ -2,7 +2,7 @@
 
 pkgname=python-roboflow
 _pkgname=roboflow
-pkgver=1.5.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Official Python package for working with the Roboflow API"
 arch=('any')
@@ -54,8 +54,8 @@ source=(
   'offline-version-validation.patch'
 )
 sha256sums=(
-  '41da80f51f37df9ea271077a8a8e2f4863da0dcbc61888303ed2a4c0f715eec4'
-  '198258ebfef1a31d04dac0bc65d49c2906f7c76a2662e9e1fbd52882b53db1d1'
+  'efa5b1ada9b0c9bab3f425a4406fe7c02eebe181d7dab22de3a2a90815b234e8'
+  'c87994f60859a4567300a7e3f5904e03ea6fcc5ab3c1cbaed4f431e59e4ad04b'
   'edc9df623eca3a1d7aebcddb84f040c89a5f675cc163ade50179e509fe321a20'
   'bfe799a95ae3530f0b561cf9b6a3a4ec23b124210d3e74b0004fb0e4d3af6605'
   'a7e2142ef275e7799012e36b8fbe0be94c6ce2b69f6fcfc902f0844616f2b594'
@@ -94,6 +94,10 @@ check() {
   python -m installer --destdir="$srcdir/test-install" dist/*.whl
   mkdir -p "$srcdir/test-root"
   cp -a tests "$srcdir/test-root/"
+  # The CLI subprocess test replaces PYTHONPATH with the source root. Keep
+  # its assertions, but make its subprocess use the same staged wheel.
+  sed -i 's@env\["PYTHONPATH"\] = str(Path(__file__).resolve().parents\[1\])@env["PYTHONPATH"] = os.environ["PYTHONPATH"]@' \
+    "$srcdir/test-root/tests/test_region_config.py"
 
   # Upstream's CI entry point is unittest. Copying the suite outside the
   # source tree ensures every import exercises the staged wheel.
