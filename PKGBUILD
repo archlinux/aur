@@ -1,7 +1,7 @@
 # Maintainer: Diego Ascânio Santos <ascanio@cefetmg.br>
 
 pkgname=tic80-pro-git
-pkgver=1.1.2837
+pkgver=1.3.1.r31.g692e7b8
 pkgrel=1
 pkgdesc="TIC-80 is a fantasy computer for making, playing and sharing tiny games. This is the pro version, built from git, for those who don't have money to buy it."
 arch=('x86_64')
@@ -11,8 +11,14 @@ conflicts=('tic80')
 depends=('libglvnd')
 makedepends=('git' 'cmake' 'ruby' 'mesa' 'glu' 'coreutils')
 source=(
-    'git+https://github.com/nesbox/TIC-80.git#tag=v1.1.2837'
+    'git+https://github.com/nesbox/TIC-80.git#branch=main'
 )
+pkgver() {
+  cd "$srcdir/TIC-80"
+  
+  # Pega a última tag, remove o 'v' inicial (se houver), e formata no padrão do pacman
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 sha256sums=(
     'SKIP'
 )
