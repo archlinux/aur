@@ -5,8 +5,8 @@
 # produces, i.e. a complete staged /usr tree built against glibc.
 
 pkgname=rozelynx-bin
-pkgver=156.0.1
-pkgrel=4
+pkgver=158.0
+pkgrel=1
 pkgdesc='RozeLynx Web Browser: Firefox fork with LibreWolf privacy patches and per-tab network interface binding (binary release; Wayland-only builds - build rozelynx-git for X11/XWayland)'
 arch=(x86_64)
 url='https://bytewheel.org/rozelynx'
@@ -42,7 +42,8 @@ depends=(
   libxrandr
   mesa
   'nspr>=4.39'
-  'nss>=3.125'
+  'nss>=3.130'
+  pam
   pango
   pixman
   zlib
@@ -51,15 +52,28 @@ optdepends=(
   'libva: VAAPI hardware video decoding'
   'networkmanager: geolocation via nearby Wi-Fi networks (necko-wifi)'
   'vulkan-icd-loader: Vulkan rendering (hwaccel vulkantest)'
+  'howdy: face recognition for local passkeys (pam-passkeys; password prompt is the fallback)'
 )
 provides=("rozelynx=${pkgver}")
 conflicts=(rozelynx)
 install=rozelynx-bin.install
 _tag="v${pkgver}"
 source=("https://github.com/Bytewheel/RozeLynx/releases/download/${_tag}/rozelynx-${pkgver}-${CARCH}.tar.xz")
-sha256sums=('19ca2ae64a8a3a62d69e0bf535bdcc00fc9165eee95f7f28c4893e0d750ba936')
+sha256sums=('109734884e7b505bcf7fae711ff5c2689466d9d8b84ac51a0569b6010830a920')
 
 package() {
   # the tarball contains a complete staged usr/ tree
   cp -a "${srcdir}/usr" "${pkgdir}/"
+
+  # PAM service for the local passkey platform authenticator (the
+  # browser resolves this name first, then system-auth); face
+  # recognition comes from pam_howdy.so when the system carries it.
+  install -Dm644 /dev/stdin "${pkgdir}/etc/pam.d/rozelynx" <<'PAMCONF'
+#%PAM-1.0
+# RozeLynx passkeys: user verification (howdy face auth first when
+# configured, then the account password).
+#auth     sufficient   pam_howdy.so
+auth     include      system-auth
+account  include      system-auth
+PAMCONF
 }
