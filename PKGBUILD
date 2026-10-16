@@ -1,8 +1,8 @@
 # Maintainer: Yaroslav Krytsun <slavko7 at gmail dot com>
 pkgname=dyedfox-radio
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="Desktop internet radio player for KDE Plasma"
+pkgdesc="Desktop internet radio player"
 arch=('any')
 url="https://github.com/dyedfox/dyedfox-radio"
 license=('GPL-3.0-or-later')
