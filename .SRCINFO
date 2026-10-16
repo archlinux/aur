@@ -1,0 +1,18 @@
+pkgbase = bws
+	pkgdesc = Bitwarden Secrets Manager CLI
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/bitwarden/sdk-sm
+	arch = x86_64
+	arch = aarch64
+	license = custom:Bitwarden-SDK-License-Agreement
+	makedepends = cargo
+	makedepends = jq
+	depends = glibc
+	depends = libgcc
+	provides = bws-bin
+	conflicts = bws-bin
+	source = bws-2.1.0.tar.gz::https://github.com/bitwarden/sdk-sm/archive/refs/tags/bws-v2.1.0.tar.gz
+	sha256sums = 3ea669ae57b1d3090f98ff2c09894b4da0bf2c700a4f8d79f70a0f96615cd9ed
+
+pkgname = bws
