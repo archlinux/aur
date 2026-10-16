@@ -1,19 +1,24 @@
 pkgbase = docscan
 	pkgdesc = Turn photos of documents into clean, straight PDF pages, like Microsoft Lens
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/salehjg/docscan
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
+	license = MIT
 	checkdepends = catch2
 	makedepends = cmake
 	makedepends = cli11
 	depends = opencv
 	depends = texlive-basic
+	depends = curl
+	depends = openssl
 	depends = gcc-libs
 	depends = glibc
-	source = docscan-0.1.0.tar.gz::https://github.com/salehjg/docscan/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = d278f0251a22d2654babcb7f141d15165cd0b3a8f9d0165800752b63b64a63c3
+	source = docscan-0.2.0.tar.gz::https://github.com/salehjg/docscan/archive/refs/tags/v0.2.0.tar.gz
+	source = uvdoc-4c9b82b.pkl::https://github.com/tanguymagne/UVDoc/raw/4c9b82b537057aff2526e6dd118a847cdd072e82/model/best_model.pkl
+	sha256sums = 90c8a79d24c47e5327a70b610d8167a102a335ddb745d2685ac964735f9b9d79
+	sha256sums = 7e90861b8a516eb4bc51f84bd889cb77275743d2d1d3ca8091951ec9f2b7da23
 
 pkgname = docscan
