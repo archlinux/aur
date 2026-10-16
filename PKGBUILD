@@ -5,8 +5,8 @@
 pkgname=waylyrics-layer-shell-git
 _pkgname=waylyrics
 _appname="io.github.waylyrics.Waylyrics"
-pkgver=0.4.6.r3.g9806e9b7
-pkgrel=2
+pkgver=0.4.7.r1.gc3dd538b
+pkgrel=1
 pkgdesc="the furry way to show desktop lyrics (git version, with layer-shell feature enabled)"
 url="https://github.com/waylyrics/waylyrics"
 conflicts=('waylyrics' 'waylyrics-git')
@@ -52,7 +52,7 @@ build() {
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
 
 	export RUSTUP_TOOLCHAIN=stable
-    cargo build --frozen --release --all-targets --features layer-shell
+    cargo build --frozen --release --all-targets --features layer-shell,offline-test
 }
 
 
@@ -63,7 +63,7 @@ check() {
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
 
 	export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release --features layer-shell
+    cargo test --frozen --release --features layer-shell,offline-test
 }
 
 package() {
