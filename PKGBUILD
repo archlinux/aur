@@ -1,12 +1,12 @@
-# Maintainer: ByAlphas <https://github.com/byalphas>
+# Maintainer: abel0x <https://github.com/abel0x>
 # CachyDPI — System-wide DPI bypass tool for Linux
 
 pkgname=cachydpi
-pkgver=1.0.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="System-wide DPI bypass tool for Linux — GoodbyeDPI alternative"
 arch=('x86_64' 'aarch64')
-url="https://github.com/byalphas/cachydpi"
+url="https://github.com/abel0x/cachydpi"
 license=('GPL-3.0-or-later')
 depends=(
     'libnetfilter_queue'
@@ -19,9 +19,10 @@ makedepends=(
     'cargo'
     'pkg-config'
 )
+install="$pkgname.install"
 backup=('etc/cachydpi/config.toml' 'etc/cachydpi/blacklist.txt')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/byalphas/cachydpi/archive/v$pkgver.tar.gz")
-sha256sums=('dde09621a5fb84af11c7befcceeea9855d4075f0677ba164a49a9710e01f0464')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('9b4038e2f35e5f3b209184fa10c27ecf6dcfa5db3f6ed220716250c2a295f160')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -34,8 +35,10 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    # Use CachyOS-optimized build flags
-    export RUSTFLAGS="-C opt-level=3 -C lto=fat -C codegen-units=1 -C strip=symbols"
+    # Optimisation (opt-level 3, fat LTO, one codegen unit, stripped) comes
+    # from [profile.release] in Cargo.toml. Passing -C lto through RUSTFLAGS
+    # instead breaks the build: it also reaches build scripts and proc macros,
+    # which cargo compiles with -C embed-bitcode=no.
 
     cargo build --frozen --release
 }
@@ -71,33 +74,10 @@ package() {
     # Install documentation
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
 
-post_install() {
-    systemd-sysusers cachydpi.conf
-    systemd-tmpfiles --create cachydpi.conf
-
-    echo ""
-    echo ">>> CachyDPI installed!"
-    echo ">>> Start with: sudo systemctl enable --now cachydpi"
-    echo ">>> Status: sudo systemctl status cachydpi"
-    echo ">>> Configuration: /etc/cachydpi/config.toml"
-    echo ""
-}
-
-post_upgrade() {
-    systemd-sysusers cachydpi.conf
-    systemd-tmpfiles --create cachydpi.conf
-
-    echo ""
-    echo ">>> CachyDPI updated. Restart the service:"
-    echo ">>> sudo systemctl restart cachydpi"
-    echo ""
-}
-
-pre_remove() {
-    systemctl stop cachydpi 2>/dev/null || true
-    systemctl disable cachydpi 2>/dev/null || true
-    # Remove nftables rules
-    /usr/bin/cachydpi remove-rules 2>/dev/null || true
+    # Pristine config kept as documentation: /etc/cachydpi/config.toml is a
+    # backup= file and is never replaced, so recovering from a damaged one
+    # needs a reference copy to restore from (see Troubleshooting in README).
+    install -Dm644 "config/config.toml" "$pkgdir/usr/share/doc/$pkgname/config.toml"
+    install -Dm644 "CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }

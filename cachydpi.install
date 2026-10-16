@@ -1,0 +1,63 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 abel0x <https://github.com/abel0x>
+post_install() {
+    systemd-sysusers cachydpi.conf
+    systemd-tmpfiles --create cachydpi.conf
+
+    echo ""
+    echo ">>> CachyDPI installed!"
+    echo ">>> Start with: sudo systemctl enable --now cachydpi"
+    echo ">>> Status: sudo systemctl status cachydpi"
+    echo ">>> Configuration: /etc/cachydpi/config.toml"
+    echo ""
+}
+
+post_upgrade() {
+    systemd-sysusers cachydpi.conf
+    systemd-tmpfiles --create cachydpi.conf
+
+    echo ""
+    echo ">>> CachyDPI updated. Restart the service:"
+    echo ">>>   sudo systemctl restart cachydpi"
+
+    # 1.1.0 tightened the config format. /etc/cachydpi/config.toml is a
+    # backup= file and is deliberately never replaced, so a config written
+    # for 1.0.x is left exactly as it was — which means an older one can now
+    # stop the daemon from starting. Say so here, because the alternative is
+    # the operator discovering it when their internet goes away.
+    if (( $(vercmp "$2" 1.1.0) < 0 )); then
+        echo ""
+        echo ">>> BREAKING CHANGE in 1.1.0 — check /etc/cachydpi/config.toml"
+        echo ">>>"
+        echo ">>>   * The [domains] section is now REQUIRED and must state a mode."
+        echo ">>>     A config without it will not start."
+        echo ">>>   * \"whitelist\" is renamed to \"exempt\" (it exempts domains from"
+        echo ">>>     the bypass; it never meant \"only these\"). The old spelling"
+        echo ">>>     is refused since 1.2.0."
+        echo ">>>   * mode = \"exempt\" with an empty list is now refused: it would"
+        echo ">>>     bypass every site, which is what mode = \"none\" is for."
+        echo ">>>"
+        echo ">>> Verify before restarting:  sudo cachydpi --dry-run"
+        echo ">>> Reference config:          /usr/share/doc/cachydpi/config.toml"
+        echo ">>> Details:                   /usr/share/doc/cachydpi/CHANGELOG.md"
+    elif (( $(vercmp "$2" 1.2.0) < 0 )); then
+        # 1.1.x accepted the "whitelist" spelling with a warning; 1.2.0 refuses it.
+        echo ""
+        echo ">>> BREAKING CHANGE in 1.2.0 — check /etc/cachydpi/config.toml"
+        echo ">>>"
+        echo ">>>   * The \"whitelist\" spelling, deprecated in 1.1.0, is no longer"
+        echo ">>>     accepted. Rename mode = \"whitelist\" to mode = \"exempt\","
+        echo ">>>     whitelist_file to exempt_file, and whitelist to exempt."
+        echo ">>>     A config still using it will not start."
+        echo ">>>"
+        echo ">>> Verify before restarting:  sudo cachydpi --dry-run"
+    fi
+    echo ""
+}
+
+pre_remove() {
+    systemctl stop cachydpi 2>/dev/null || true
+    systemctl disable cachydpi 2>/dev/null || true
+    # Remove nftables rules
+    /usr/bin/cachydpi remove-rules 2>/dev/null || true
+}
