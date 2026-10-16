@@ -2,7 +2,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libsafec
-pkgver=3.14
+pkgver=3.15
 pkgrel=1
 epoch=1
 pkgdesc='Implementation of C11 Annex K + ISO TR24731 Bounds Checking Interface'
@@ -14,7 +14,7 @@ makedepends=('doxygen')
 provides=("$pkgname.so=3-64")
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/safeclib-$pkgver.tar.xz")
-sha256sums=('065e666fde31194643317ceefcddb92e08e4c42213987b525df0f60b07a82029')
+sha256sums=('55af946855f77f72769cb833d3b2b4c39e162569bd2c431236ae08da9aabc54c')
 
 build() {
   cd "safeclib-$pkgver"
