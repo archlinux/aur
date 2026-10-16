@@ -4,65 +4,62 @@
 
 pkgname=jitsi-nightly
 _pkgname=jitsi
-# pkgvermajor needs manual increment
-_pkgvermajor=2.11
 # pkgver is determined automatically
-pkgver=2.11.20210926
-pkgrel=2
+pkgver=2.14.r13264.gccf694380
+pkgrel=1
 pkgdesc="Audio/video SIP VoIP phone and instant messenger (formerly SIP-Communicator)"
-arch=('i686' 'x86_64')
-url="https://jitsi.org"
-license=('Apache')
+arch=('x86_64')
+url="https://github.com/jitsi/jitsi"
+license=('Apache-2.0')
 provides=(jitsi)
 conflicts=(jitsi jitsi-stable)
-depends=('java-environment=8' 'bash' 'gtk2' 'libxv' 'alsa-lib' 'libxss' 'ffmpeg' 'archlinux-java-run')
-makedepends=('ant')
+depends=('java-runtime>=11' 'bash' 'glibc' 'libstdc++' 'archlinux-java-run' 'gtk2' 'dbus' 'libx11' 'libxext' 'libxss' 'libxtst' 'libxv' 'libsm' 'libice' 'alsa-lib')
+makedepends=('git' 'maven' 'cmake' 'java-environment>=11')
 optdepends=(
   'libpulse: PulseAudio support'
 )
-options=(!strip !emptydirs zipman !libtool docs)
 source=(
   git+https://github.com/jitsi/jitsi.git
   ${_pkgname}.desktop
   ${_pkgname}.sh
-  MANIFEST.MF
 )
 md5sums=('SKIP'
-         'f5c21e511756458172dc0ae8020c7bd5'
-         '345b5ab9e26038952eef90ce18b78002'
-         '92f6b21cdfa361c430cb837956967b20')
+         '27e2bff81511b120c4b5924d188fe6a9'
+         'aa8fbd429afeca25100e91f155083a96')
 install=jitsi-nightly.install
 
 pkgver() {
-  printf "${_pkgvermajor}.$(date +%Y%m%d)"
+  cd "${srcdir}/jitsi"
+  printf "%s.r%s.g%s" \
+    "$(sed -n 's:.*<revision>\([0-9.]*\).*</revision>.*:\1:p' pom.xml)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "${srcdir}/jitsi"
 
-  # append the build revision to the jitsi version
-  sed -i "s/BUILD_ID="\"".*"\""/BUILD_ID="\"$(date +%Y%m%d)\""/" src/net/java/sip/communicator/impl/version/NightlyBuildID.java
+  mvn -B -Dmaven.repo.local="${srcdir}/m2" package -DskipTests
 
-  export PATH=/usr/lib/jvm/java-8-openjdk/bin/:$PATH
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-
-  ant rebuild
+  cmake -S native -B cmake-build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX="${srcdir}/jitsi/native-install"
+  cmake --build cmake-build --target install
 }
 
 package() {
   cd "${srcdir}/jitsi"
-  find lib/ lib/bundle/ -maxdepth 1 -type f -exec install -Dm644 {} "${pkgdir}/usr/lib/jitsi/"{} \;
-  shopt -sq extglob
-  find lib/native/linux$(sed 's/_/-/g' <<<${CARCH/#*(i?86|x86)/})/ -maxdepth 1 -type f -execdir install -Dm644 {} "${pkgdir}/usr/lib/jitsi/lib/native/"{} \;
-  find sc-bundles/{,os-specific/linux/} -maxdepth 1 -type f -execdir install -Dm644 {} "${pkgdir}/usr/lib/jitsi/sc-bundles/"{} \;
-  install -Dm755 "$srcdir/jitsi.sh" "${pkgdir}/usr/bin/jitsi"
-  install -Dm644 "$srcdir/jitsi.desktop" "${pkgdir}/usr/share/applications/jitsi.desktop"
-  local _file
-  for _file in resources/install/debian/*.{svg,xpm}; do
-      install -Dm644 "$_file" "${pkgdir}/usr/share/pixmaps/jitsi${_file/*sip-communicator/}"
-  done
 
-  # manual update of manifest.
-  cd "${srcdir}"
-  jar uvfm "${pkgdir}/usr/lib/jitsi/sc-bundles/libjitsi.jar" MANIFEST.MF
+  install -dm755 "${pkgdir}/usr/share/jitsi/lib"
+  find target/bundles -maxdepth 1 -name '*.jar' ! -name '*.pom' \
+    -exec install -m644 -t "${pkgdir}/usr/share/jitsi/lib/" {} +
+  cp -r --no-preserve=ownership resources/install/src/main/dist/. "${pkgdir}/usr/share/jitsi/"
+
+  install -Dm755 -t "${pkgdir}/usr/lib/jitsi/" native-install/*.so
+
+  install -Dm755 "${srcdir}/jitsi.sh" "${pkgdir}/usr/bin/jitsi"
+  install -Dm644 "${srcdir}/jitsi.desktop" "${pkgdir}/usr/share/applications/jitsi.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" resources/install/debian/jitsi{.svg,-16.xpm,-32.xpm}
+  install -Dm644 resources/install/debian/jitsi.1 "${pkgdir}/usr/share/man/man1/jitsi.1"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

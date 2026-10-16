@@ -1,26 +1,18 @@
 #!/bin/bash
 
-CLIENTARGS=""
-uname -m | grep i686 && CLIENTARGS="-client -Xmx256m"
+SCDIR=/usr/share/jitsi
 
-export JAVA_HOME=$(archlinux-java-run --max 8 --java-home)
+SPLASH_ARG="-splash:${SCDIR}/splash.gif"
+for arg in "$@"; do
+  [[ $arg == --splash=no ]] && SPLASH_ARG=""
+done
 
-if [[ -n ${JAVA_HOME} ]]; then
-  javabin=${JAVA_HOME}/bin/java
-else
-  javabin=java
-fi
-
-SCDIR=/usr/lib/jitsi
-LIBPATH=$SCDIR/lib
-CLASSPATH=$LIBPATH/felix.jar:$SCDIR/sc-bundles/sc-launcher.jar:$SCDIR/sc-bundles/util.jar:$SCDIR/sc-bundles/dnsjava.jar:$LIBPATH
-FELIX_CONFIG=$LIBPATH/felix.client.run.properties
-LOG_CONFIG=$LIBPATH/logging.properties
-COMMAND="$javabin $CLIENTARGS -Djdk.gtk.version=2.2 -classpath $CLASSPATH -Djna.library.path=$LIBPATH/native -Dfelix.config.properties=file:$FELIX_CONFIG -Djava.util.logging.config.file=$LOG_CONFIG net.java.sip.communicator.launcher.SIPCommunicator"
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LIBPATH/native
-
-cd $SCDIR
-
-exec $COMMAND $*
-
+exec archlinux-java-run --min 11 -- \
+  -cp "${SCDIR}/lib/*:${SCDIR}/config/" \
+  -Djava.library.path=/usr/lib/jitsi \
+  --add-opens=java.base/jdk.internal.loader=ALL-UNNAMED \
+  --add-opens=java.base/java.lang=ALL-UNNAMED \
+  ${SPLASH_ARG} \
+  ${JITSI_EXTRA_ARGS} \
+  net.java.sip.communicator.launcher.Jitsi \
+  "$@"
