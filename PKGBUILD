@@ -1,7 +1,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=switchyard
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A lightweight bridge that accepts email over SMTP and forwards each message to XMPP'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://tty.fail/mrus/switchyard'
 source=("git+${url}.git#tag=v$pkgver")
 makedepends=('git' 'go')
 options=(!lto)
-sha256sums=('61502f7b086fee9824f2d7a9cc22fd30c79c95f4478ae0b9991a001c86b2ed8d')
+sha256sums=('57fe01c0cf186c70d99d1d04ce67c16dc1aac4679cb174b82489b515289d5479')
 
 prepare() {
     cd "$pkgname"
