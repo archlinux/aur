@@ -1,6 +1,6 @@
 pkgbase = driftwood-game-bin
 	pkgdesc = Open-world survival crafting game: gather, build, explore, fight, trade and learn magic
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Driftwood
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = driftwood-game-bin
 	provides = driftwood-game
 	conflicts = driftwood-game
 	options = !strip
-	source_x86_64 = https://github.com/codingncaffeine/Driftwood/releases/download/v0.5.1/Driftwood-v0.5.1-linux-x64.tar.gz
-	sha256sums_x86_64 = e1508d7664e55ceeb4c757083488c9d804e776944cad59c7a39e73c7d75fa1f4
+	source_x86_64 = https://github.com/codingncaffeine/Driftwood/releases/download/v0.5.2/Driftwood-v0.5.2-linux-x64.tar.gz
+	sha256sums_x86_64 = 9a5932b6dd5671c8201793bd110e19caec16ca63f51ce254885784e2e82dc75d
 
 pkgname = driftwood-game-bin
