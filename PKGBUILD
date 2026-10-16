@@ -2,7 +2,7 @@
 # Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
 pkgname=rudesktop
-pkgver=
+pkgver=3.0.1563
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
@@ -10,9 +10,9 @@ url="https://rudesktop.ru/downloads/"
 license=('Commercial')
 install=${pkgname}.install
 depends=(sudo ca-certificates python lshw smartmontools pyalpm cron gtk3 libxcb alsa-lib libxfixes libsystemd python-evdev python-six python-pynput python-xlib libpulse)
-sha256sums=('413dc48ae38076ce40ae1ac4f6f62e13e0f173bb656587041a093c10d17e8020')
+sha256sums=('ddeea1c39bee50fa1343717861506afeca28e04a2cafcadb14e36876d1fad62b')
 options=(!debug)
-source=("sandwich role")
+source=("https://storage.rudesktop.ru/download/rudesktop-3.0.1563-x86_64.pkg.tar.zst")
 
 package() {
   cd "${srcdir}"
