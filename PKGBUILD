@@ -3,7 +3,7 @@
 pkgname=aulos-bin
 _pkgname=aulos
 _appid=io.github.m0rf30.Aulos
-pkgver=0.7.0 # renovate: datasource=github-releases depName=M0Rf30/aulos
+pkgver=0.7.1 # renovate: datasource=github-releases depName=M0Rf30/aulos
 pkgrel=1
 pkgdesc="A modern music player: local library, Subsonic, MPD, podcasts, radio and a MilkDrop visualizer (binary release)"
 arch=(x86_64 aarch64)
@@ -29,8 +29,8 @@ conflicts=("${_pkgname}")
 options=(!strip !debug)
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('739c068d3bf3f3afd5d6eb2c2bcf92cca6d792802dc220efe9472a5f7816b7c2')
-sha256sums_aarch64=('8892af5dd5aa97c9d2b40dc16815c77a2d30cecc62db4fa5453c057c5b346d22')
+sha256sums_x86_64=('cf9b8c1286cb07e6c7caae9c709ba50db11daf8f79b52ce047ce954307d9e6d4')
+sha256sums_aarch64=('b6cee7843daac7748372cbe0feea82d94edd080dc15611b2c9b6478970dfc737')
 
 package() {
   cd "${_pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu"
