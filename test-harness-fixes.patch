@@ -1,27 +1,42 @@
-diff --git a/test/gtest/meson.build b/test/gtest/meson.build
-index 8a0c79a..6933dfb 100644
 --- a/test/gtest/meson.build
 +++ b/test/gtest/meson.build
-@@ -128,6 +128,7 @@ endif
+@@ -174,7 +174,7 @@
+ if get_option('sanitizer') != 'none'
      gtest_args += '--gtest_filter=-MetadataExchangeTestFixture.*'
  endif
 -test('gtest', test_exe, args: gtest_args, env: sanitizer_env, suite: 'sanitizer')
-+test('gtest', test_exe, args: gtest_args, env: sanitizer_env,
-+     suite: 'sanitizer', timeout: 300)
++test('gtest', test_exe, args: gtest_args, env: sanitizer_env, suite: 'sanitizer', timeout: 300)
  
  # Telemetry hot-path microbenchmark (NVBug 5876558). The cases are DISABLED_ so
  # they never run in the normal 'gtest' suite; this dedicated entry opts them in.
-diff --git a/test/gtest/metadata_exchange.cpp b/test/gtest/metadata_exchange.cpp
-index 9a94f64..608c9a9 100644
---- a/test/gtest/metadata_exchange.cpp
-+++ b/test/gtest/metadata_exchange.cpp
-@@ -136,6 +136,9 @@ protected:
- 
-     void TearDown() override
-     {
-+        const gtest::LogIgnoreGuard no_etcd(
-+            "invalidateLocalMD: ETCD is not supported and socket information was not provided "
-+            "either");
-         for (auto &agent : agents_) {
-             if (agent.agent) {
-                 agent.agent->invalidateLocalMD(nullptr);
+--- a/test/unit/plugins/posix/nixl_posix_uring_test.cpp
++++ b/test/unit/plugins/posix/nixl_posix_uring_test.cpp
+@@ -222,6 +222,8 @@
+     if (probe_ret < 0) {
+         std::cerr << "io_uring backend test requires a usable ring: " << std::strerror(-probe_ret)
+                   << " (" << probe_ret << ")" << std::endl;
++        // Meson recognizes 77 as an unavailable-platform skip. Other errors fail.
++        if (probe_ret == -EPERM || probe_ret == -ENOSYS || probe_ret == -EACCES) return 77;
+         return 1;
+     }
+     io_uring_queue_exit(&probe_ring);
+--- a/test/unit/plugins/posix/nixl_posix_aio_test.cpp
++++ b/test/unit/plugins/posix/nixl_posix_aio_test.cpp
+@@ -364,6 +364,17 @@
+             AIO_CHECK(pread(test.fd, actual.data(), actual.size(), partial_io_offset) ==
+                       static_cast<ssize_t>(actual.size()));
+         }
++        if (std::memcmp(actual.data(), expected.data(), block_size) != 0) {
++            for (size_t i = 0; i < block_size; ++i) {
++                if (actual[i] != expected[i]) {
++                    std::cerr << "Partial I/O mismatch: read=" << read << " byte=" << i
++                              << " actual=" << static_cast<unsigned>(static_cast<unsigned char>(actual[i]))
++                              << " expected=" << static_cast<unsigned>(static_cast<unsigned char>(expected[i]))
++                              << std::endl;
++                    break;
++                }
++            }
++        }
+         AIO_CHECK(std::memcmp(actual.data(), expected.data(), block_size) == 0);
+     }
+     for (const size_t file_size : {size_t{0}, block_size / 2}) {

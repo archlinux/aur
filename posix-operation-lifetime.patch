@@ -1,0 +1,11 @@
+--- a/src/plugins/posix/posix_backend.h
++++ b/src/plugins/posix/posix_backend.h
+@@ -80,7 +80,7 @@
+     nixl_status_t
+     queueResult(nixl_status_t queue_result);
+ 
+-    const nixl_xfer_op_t &operation; // The transfer operation (read/write)
++    const nixl_xfer_op_t operation; // Own the operation: caller temporaries may expire.
+     const nixl_meta_dlist_t &local; // Local memory descriptor list
+     const nixl_meta_dlist_t &remote; // Remote memory descriptor list
+     const int queue_depth_; // Queue depth for async I/O

@@ -2,7 +2,7 @@
 
 pkgbase=nixl
 pkgname=('nixl' 'python-nixl')
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='NVIDIA Inference Xfer Library: high-throughput, low-latency point-to-point data transfer for distributed inference'
 arch=('x86_64')
@@ -43,44 +43,36 @@ checkdepends=(
 )
 source=(
   "$pkgbase-$pkgver.tar.gz::https://github.com/ai-dynamo/nixl/archive/refs/tags/v$pkgver.tar.gz"
-  'asio-1.38-post.patch'
   'missing-fstream.patch'
-  'gds-smoke-no-path.patch'
   'system-prometheus-cpp.patch'
   'test-harness-fixes.patch'
+  'posix-operation-lifetime.patch'
 )
 sha256sums=(
-  '603661e435cb8da34bcf582f78dfbad158e57f47fe0552c446f26d21bd0be70d'
-  '7c03c35227f2630bac8b6e2dbbb22160ec14b041c5d9a20877d8de3226110ac4'
+  '1dc9d1c070491ed8ed89942f14124c5d914b85be279cf694678203fd7a94c927'
   '158cf152d25c632bdd6317a4fff6bda13fcfe3fc4bd37955c7b34477df694384'
-  '890220839cfb1032f49bb0333337855b2965239171f76157b95eefa2cc1e1d90'
   'bad9d6e32089cd06839be084cdd6135ffe0b7945d78ef53448c1f1e55a8f17af'
-  '871daba857bfd92072d2d15fcdcf037ec6f85a569d59dce7b3f24d2d67f869c9'
+  'c764f312c21ea983547f98171b12b6a0a59048d972fef8f9d8c876ebbd8762ed'
+  'bf31d44528faeaa13128b3768aa01ca54e39aa8898567620306566a530a4d5d9'
 )
 
 prepare() {
   cd "$srcdir/nixl-$pkgver"
 
-  # Standalone Asio 1.38 removed the deprecated io_context::post member.
-  # The free function is API-equivalent and also works with older Asio.
-  patch -Np1 -i "$srcdir/asio-1.38-post.patch"
-
   # configuration.cpp uses std::ofstream but relied on an indirect include that
   # is absent with the current Arch toolchain.
   patch -Np1 -i "$srcdir/missing-fstream.patch"
-
-  # The two GDS path-mode smoke tests are registered by Meson without the
-  # directory argument required by the benchmark portion of their executables.
-  # Stop after the registered smoke test when no benchmark path was supplied.
-  patch -Np1 -i "$srcdir/gds-smoke-no-path.patch"
 
   # Use Arch's prometheus-cpp libraries instead of downloading a Meson
   # subproject, retaining the Prometheus telemetry exporter in offline builds.
   patch -Np1 -i "$srcdir/system-prometheus-cpp.patch"
 
-  # Give the full integration suite its required timeout and ignore the one
-  # documented teardown diagnostic when the optional ETCD backend is absent.
+  # Skip only unavailable io_uring syscalls and retain all AIO data checks.
+  # Give the full integration suite its required timeout. Upstream now fixes
+  # metadata teardown and no-argument GDS smoke handling itself.
   patch -Np1 -i "$srcdir/test-harness-fixes.patch"
+  # Requests outlive the caller's operation argument; retain its value.
+  patch -Np1 -i "$srcdir/posix-operation-lifetime.patch"
 }
 
 build() {
