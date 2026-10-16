@@ -1,6 +1,6 @@
 pkgbase = openxlr
 	pkgdesc = A Wave Link replacement for Linux: hardware controls, a PipeWire submixer and an OpenDeck plugin for the Elgato Wave XLR Pro, XLR Dock, Wave XLR, MK.2 family and Wave:3
-	pkgver = 0.1.50
+	pkgver = 0.1.51
 	pkgrel = 1
 	url = https://github.com/emaspa/openxlr
 	install = openxlr.install
@@ -10,6 +10,7 @@ pkgbase = openxlr
 	makedepends = dotnet-targeting-pack
 	makedepends = lv2
 	makedepends = pkgconf
+	makedepends = python
 	depends = aspnet-runtime
 	depends = pipewire
 	depends = pipewire-pulse
@@ -25,7 +26,8 @@ pkgbase = openxlr
 	optdepends = swh-plugins: software ClipGuard for the XLR Dock
 	optdepends = lsp-plugins-lv2: a starter set of LV2 plugins for the inserts
 	optdepends = opendeck: Stream Deck control through the bundled plugin
-	source = openxlr-0.1.50.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v0.1.50.tar.gz
-	sha256sums = 13829dbfe453f66c6277571e4253a5189372f38bcd5cef1814b865fa2cd83f20
+	options = !strip
+	source = openxlr-0.1.51.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v0.1.51.tar.gz
+	sha256sums = 1431c1fadb0f1070be5dbc133b7b20729e011df6f1c6a2bb4f641ffa01a5d4cc
 
 pkgname = openxlr

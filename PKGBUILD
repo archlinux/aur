@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.50
+pkgver=0.1.51
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: hardware controls, a PipeWire submixer and an OpenDeck plugin for the Elgato Wave XLR Pro, XLR Dock, Wave XLR, MK.2 family and Wave:3"
 arch=('x86_64')
@@ -8,11 +8,13 @@ url="https://github.com/emaspa/openxlr"
 license=('GPL-3.0-only')
 depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
          'fontconfig' 'libx11' 'libice' 'libsm' 'glib2')
-makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf')
+makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf' 'python')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
+# The receipt below hashes the payload; makepkg must not strip it afterwards.
+options=('!strip')
 
 # Omarchy 4 replaced Waybar with its own Quickshell process, whose bar is
 # built from plugins. Ship the mixer's bar plugin only when the build host
@@ -23,7 +25,7 @@ if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     depends+=(qt6-websockets)
 fi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('13829dbfe453f66c6277571e4253a5189372f38bcd5cef1814b865fa2cd83f20')
+sha256sums=('1431c1fadb0f1070be5dbc133b7b20729e011df6f1c6a2bb4f641ffa01a5d4cc')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -96,4 +98,9 @@ WRAP
     install -Dm755 packaging/omarchy/openxlr-omarchy-enable \
       "$pkgdir/usr/bin/openxlr-omarchy-enable"
   fi
+
+  # Record every packaged path for openxlr doctor. Runs last, after the
+  # whole payload is in place.
+  python3 packaging/install_receipt.py --root "$pkgdir" --prefix /usr \
+    --manager arch --version "$pkgver-$pkgrel"
 }
