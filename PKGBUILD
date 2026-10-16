@@ -5,7 +5,7 @@
 # -> git add -A && git commit && git push（AUR 只接受 master 分支上的 PKGBUILD/.SRCINFO）。
 
 pkgname=jstart
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Lightweight launcher for jar/war and native (tar.gz) Java artifacts"
 arch=('x86_64')
