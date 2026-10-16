@@ -2,12 +2,16 @@
 
 pkgbase=shelly-cli
 pkgname=('shelly-cli' 'shelly-cli-flatpak-backend')
-pkgver=3.1.6
+pkgver='3.1.7r4938.gc5d654e'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
 license=('GPL-3.0-only')
 makedepends=(
+  'libarchive'
+  'curl'
+  'sqlite'
+  'gnupg'
   'git'
   'pkgconf'
   'zig>=0.16.0'
@@ -15,16 +19,25 @@ makedepends=(
   'ripgrep'
   'go-md2man'
 )
+# Keep package metadata tied to the compiled native backend variant.
+_shelly_libalpm=${SHELLY_LIBALPM:-true}
+case $_shelly_libalpm in
+  true) _shelly_native_depends=('pacman'); _shelly_native_optdepends=() ;;
+  false) _shelly_native_depends=(); _shelly_native_optdepends=('pacman: package-owner lookup for pacfile merging') ;;
+  *) printf 'SHELLY_LIBALPM must be true or false\n' >&2; return 1 ;;
+esac
+makedepends+=('binutils' "${_shelly_native_depends[@]}")
+
 source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development"
         'shellybuild.conf')
 sha256sums=('SKIP'
-            'd7adb207c0073b93679ff3b8741a734ab62b48283134465b47844884bd211bb9')
+            '9f551f28d79748c7e255a35cb577081b3263e65d290b4809e10066ed17ce30e5')
 conflicts=('shelly' 'shelly-git' 'shelly-bin')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.1.6r%s.g%s' \
+  printf '3.1.7r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -37,7 +50,7 @@ build() {
     -Dcpu=baseline \
     -Doptimize=ReleaseSafe)
 
-  (cd Shelly.Cli.Zig && zig build --verbose \
+  (cd Shelly.Cli.Zig && zig build -Dlibalpm="${_shelly_libalpm}" --verbose \
     --prefix "${srcdir}/zig-out" \
     -Dcpu=baseline \
     -Doptimize=ReleaseSmall)
@@ -72,8 +85,8 @@ check() {
   cd "${srcdir}/${pkgbase}"
 
   (cd Shelly.Flatpak.Backend && zig build test abi-test integration-test)
-  (cd Shelly.PackageManager && zig build flatpak-test)
-  (cd Shelly.Cli.Zig && zig build test)
+  (cd Shelly.PackageManager && zig build -Dlibalpm="${_shelly_libalpm}" flatpak-test)
+  (cd Shelly.Cli.Zig && zig build -Dlibalpm="${_shelly_libalpm}" test)
 }
 
 package_shelly-cli() {
@@ -86,10 +99,13 @@ package_shelly-cli() {
     'glibc'
     'gnupg'
     'libarchive'
-    'pacman'
+    'curl'
+    'sqlite'
+    "${_shelly_native_depends[@]}"
     'sudo'
   )
   optdepends=(
+      "${_shelly_native_optdepends[@]}"
     'base-devel: build and install AUR packages'
     'devtools: build AUR packages in a clean chroot'
     'desktop-file-utils: update AppImage desktop entries'
@@ -106,6 +122,13 @@ package_shelly-cli() {
 
   install -Dm755 "${srcdir}/zig-out/bin/shelly" \
     "${pkgdir}/usr/bin/shelly"
+  local shelly_dynamic
+  shelly_dynamic=$(LC_ALL=C readelf -d "$pkgdir/usr/bin/shelly") || return 1
+  if [[ $_shelly_libalpm == true && $shelly_dynamic != *libalpm.so* ]] ||
+     [[ $_shelly_libalpm == false && $shelly_dynamic == *libalpm.so* ]]; then
+    printf 'Shelly binary does not match SHELLY_LIBALPM package metadata\n' >&2
+    return 1
+  fi
   install -Dm755 "${srcdir}/zig-out-key/bin/shelly-key" \
     "${pkgdir}/usr/bin/shelly-key"
   install -Dm644 "${srcdir}/shellybuild.conf" \

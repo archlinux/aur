@@ -1,22 +1,28 @@
 pkgbase = shelly-cli
-	pkgver = 3.1.6
+	pkgver = 3.1.7r4938.gc5d654e
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = libarchive
+	makedepends = curl
+	makedepends = sqlite
+	makedepends = gnupg
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = zig>=0.16.0
 	makedepends = flatpak
 	makedepends = ripgrep
 	makedepends = go-md2man
+	makedepends = binutils
+	makedepends = pacman
 	conflicts = shelly
 	conflicts = shelly-git
 	conflicts = shelly-bin
 	source = shelly-cli::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
 	source = shellybuild.conf
 	sha256sums = SKIP
-	sha256sums = d7adb207c0073b93679ff3b8741a734ab62b48283134465b47844884bd211bb9
+	sha256sums = 9f551f28d79748c7e255a35cb577081b3263e65d290b4809e10066ed17ce30e5
 
 pkgname = shelly-cli
 	pkgdesc = Native Shelly package-manager CLI beta
@@ -25,6 +31,8 @@ pkgname = shelly-cli
 	depends = glibc
 	depends = gnupg
 	depends = libarchive
+	depends = curl
+	depends = sqlite
 	depends = pacman
 	depends = sudo
 	optdepends = base-devel: build and install AUR packages
@@ -42,9 +50,9 @@ pkgname = shelly-cli
 
 pkgname = shelly-cli-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for the Shelly CLI beta
-	depends = shelly-cli=3.1.6-1
+	depends = shelly-cli=3.1.7r4938.gc5d654e-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.1.6
+	provides = shelly-flatpak-backend=3.1.7r4938.gc5d654e
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
