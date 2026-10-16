@@ -8,4 +8,5 @@ Icon=synara-beta
 Terminal=false
 Categories=Development;IDE;
 StartupWMClass=synara-beta
+MimeType=x-scheme-handler/synara-beta;
 Keywords=ai;agent;codex;claude;cursor;beta;
