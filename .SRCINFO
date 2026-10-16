@@ -1,6 +1,6 @@
 pkgbase = herdr-gpui
 	pkgdesc = Native GPUI client for an installed Herdr daemon
-	pkgver = 20261014.1
+	pkgver = 20261016.1
 	pkgrel = 1
 	url = https://github.com/penso/herdr-gpui
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = herdr-gpui
 	depends = libxkbcommon-x11
 	depends = wayland
 	depends = vulkan-icd-loader
-	source_x86_64 = Herdr-20261014.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/penso/herdr-gpui/releases/download/v20261014.1/Herdr-20261014.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 85f5d94e26a3bde073d563b68663c525201b61d3bb45594123d8ff95930c6ace
-	source_aarch64 = Herdr-20261014.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/penso/herdr-gpui/releases/download/v20261014.1/Herdr-20261014.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e24852310881267670ca917e8a4d58dc6745b4e489336f34029a10a6e5cd3052
+	source_x86_64 = Herdr-20261016.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/penso/herdr-gpui/releases/download/v20261016.1/Herdr-20261016.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b7e2077801924c35d6ad5151ecae6554d94a7beedb6d5b268ef2462f0ea3dab6
+	source_aarch64 = Herdr-20261016.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/penso/herdr-gpui/releases/download/v20261016.1/Herdr-20261016.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d3cc4c6c413b15b695cb8a7ca6a6f3c2c005e1fc1ddeb14690e4cfc106fb13b4
 
 pkgname = herdr-gpui

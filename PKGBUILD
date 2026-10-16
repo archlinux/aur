@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=herdr-gpui
-pkgver=20261014.1
+pkgver=20261016.1
 pkgrel=1
 pkgdesc="Native GPUI client for an installed Herdr daemon"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ depends=('glibc>=2.39' 'gcc-libs' 'alsa-lib' 'freetype2' 'libxcb' 'libxkbcommon'
 source_x86_64=(
   "Herdr-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/penso/herdr-gpui/releases/download/v${pkgver}/Herdr-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_x86_64=('85f5d94e26a3bde073d563b68663c525201b61d3bb45594123d8ff95930c6ace')
-sha256sums_aarch64=('e24852310881267670ca917e8a4d58dc6745b4e489336f34029a10a6e5cd3052')
+sha256sums_x86_64=('b7e2077801924c35d6ad5151ecae6554d94a7beedb6d5b268ef2462f0ea3dab6')
+sha256sums_aarch64=('d3cc4c6c413b15b695cb8a7ca6a6f3c2c005e1fc1ddeb14690e4cfc106fb13b4')
 
 source_aarch64=(
   "Herdr-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/penso/herdr-gpui/releases/download/v${pkgver}/Herdr-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
