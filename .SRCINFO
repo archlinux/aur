@@ -1,6 +1,6 @@
 pkgbase = rhun-bin
 	pkgdesc = Small and fast code editor written in assembly (prebuilt binaries)
-	pkgver = 0.17.13
+	pkgver = 0.17.15
 	pkgrel = 1
 	url = https://github.com/vshvedov/rhun
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rhun-bin
 	provides = rhun
 	conflicts = rhun
 	options = !strip
-	source = LICENSE-Iosevka-0.17.13.md::https://raw.githubusercontent.com/vshvedov/rhun/v0.17.13/assets/fonts/LICENSE-Iosevka.md
+	source = LICENSE-Iosevka-0.17.15.md::https://raw.githubusercontent.com/vshvedov/rhun/v0.17.15/assets/fonts/LICENSE-Iosevka.md
 	sha256sums = 4ba53c7c1cb39279aae5f8d7d22054c485c71169920e5a36ed098b115e2e3c5d
-	source_x86_64 = rhun-0.17.13-linux-x86_64.tar.gz::https://github.com/vshvedov/rhun/releases/download/v0.17.13/rhun-0.17.13-linux-x86_64.tar.gz
-	sha256sums_x86_64 = f006d34d97126f5ed399e98940c81a20b371f282add51648cccdeeb3b9349880
+	source_x86_64 = rhun-0.17.15-linux-x86_64.tar.gz::https://github.com/vshvedov/rhun/releases/download/v0.17.15/rhun-0.17.15-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f21af251e15fdce8788e51daaedb71e1baa9fbf048534c1c6cda8f71bac28de8
 
 pkgname = rhun-bin
