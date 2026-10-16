@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=BeamMP
+Comment=BeamMP Launcher for Linux (GamePath-enabled fork)
+Exec=beammp
+Icon=applications-games
+Terminal=false
+Categories=Game;Network;
+StartupNotify=true

@@ -1,0 +1,22 @@
+pkgbase = beammp-launcher4linux
+	pkgdesc = BeamMP Launcher for Linux, prebuilt (GamePath config/CLI override for non-Steam installs)
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://github.com/SerShef/BeamMP-Launcher4Linux
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	optdepends = steam: launch BeamNG.drive through Steam
+	provides = beammp
+	provides = beammp-launcher
+	conflicts = beammp
+	conflicts = beammp-launcher
+	conflicts = beammp-launcher4linux-git
+	conflicts = beammp-launcher-git
+	source = https://github.com/SerShef/BeamMP-Launcher4Linux/releases/download/v2.8.1/BeamMP-Launcher
+	source = https://github.com/SerShef/BeamMP-Launcher4Linux/releases/download/v2.8.1/BeamMP-Launcher.sha256
+	sha256sums = 3f1603a7d698bbca3f726ac52de2749c847f82c200c0f87493ad60fbbb872d2e
+	sha256sums = 34ea2effe56baf9e5e242001fe0e5ffbc852b1ed566b08c12b0f0e17df99e1a4
+
+pkgname = beammp-launcher4linux
