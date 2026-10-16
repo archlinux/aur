@@ -1,0 +1,17 @@
+pkgbase = tf2decalvault-bin
+	pkgdesc = A user interface to upload and download UGC images for TF2's decal system.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/arclight-servers/TF2-Decal-Vault
+	arch = x86_64
+	license = unknown
+	options = !strip
+	options = !debug
+	source = tf2decalvault-bin-1.0.zip::https://github.com/arclight-servers/TF2-Decal-Vault/releases/download/1.0/TF2DecalVault_linux64.zip
+	source = tf2decalvault.desktop
+	source = tf2decalvault.svg::https://raw.githubusercontent.com/arclight-servers/TF2-Decal-Vault/1.0/icon.svg
+	sha256sums = ca977e86317fc8e72add03bca21d9d85f00e9963676cd007c5db3efbebeb4ae8
+	sha256sums = 88fa576e334ff68fb20449b2c8ec5d0d7b13dc7d7494441d7306794d8f6bbe85
+	sha256sums = 6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8
+
+pkgname = tf2decalvault-bin

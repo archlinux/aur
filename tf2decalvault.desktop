@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TF2 Decal Vault
+Exec=/usr/bin/tf2decalvault
+Terminal=false
+Type=Application
+Icon=tf2decalvault
+GenericName=Uploader/Downloader for TF2 UGC images
+Categories=GameTool;
+Keywords=tf2;decal;arclight;UGC
+Comment=A user interface to upload and download UGC images for TF2's decal system
