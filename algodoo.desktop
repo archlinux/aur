@@ -1,10 +1,11 @@
 [Desktop Entry]
-Encoding=UTF-8
-Name=Algodoo
-Comment=A physics simulation program
-Exec=algodoo
-Icon=/usr/share/pixmaps/algodoo.bmp
-Terminal=false
 Type=Application
-Categories=Game;LogicGame;
+Name=Algodoo
+GenericName=Physics Simulator
+Comment=A physics simulation program for education and fun
+Exec=algodoo %f
+Icon=algodoo
+Terminal=false
+Categories=Education;Science;Physics;
+Keywords=physics;simulation;phun;
 StartupNotify=true
