@@ -1,7 +1,7 @@
 # Maintainer: vash909 <iu1bot@xzgroup.net>
 
 pkgname=wsjtcb
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='CB-oriented fork of WSJT-X for weak-signal digital communications on 27 MHz'
 arch=('x86_64')
@@ -37,8 +37,8 @@ conflicts=('wsjtcb-git')
 provides=('wsjtcb')
 
 _srcname='WSJT-CB'
-# 1.4.0 (Scarlet), merged upstream; no release tag is available yet.
-_commit='28a6f156827bf76df4f8e70b532289da3e108362'
+# 1.4.1 Scarlet; pinned upstream source revision.
+_commit='f73435253b4227ecde518c50c38656b35cec01e1'
 _srcdir="${_srcname}-${pkgver}"
 source=(
   "${_srcdir}::git+${url}.git#commit=${_commit}"
@@ -47,18 +47,6 @@ sha256sums=(
   'SKIP'
 )
 
-prepare() {
-  cd "${_srcdir}"
-
-  # Add the out-of-line destructor required by the pimpl helper, regardless of
-  # whether the upstream checkout uses LF or CRLF line endings.
-  perl -0pi -e 's/(, QWidget \* = nullptr\);)(\r?\n)/$1$2  ~EqualizationToolsDialog ();$2/' \
-    EqualizationToolsDialog.hpp
-
-  perl -0pi -e 's/(void EqualizationToolsDialog::show \(\))/EqualizationToolsDialog::~EqualizationToolsDialog () = default;\n\n$1/' \
-    EqualizationToolsDialog.cpp
-}
-
 build() {
   cmake -S "${_srcdir}" -B build \
     -G Ninja \
@@ -66,9 +54,15 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWSJT_SKIP_MANPAGES=ON \
     -DWSJT_GENERATE_DOCS=OFF \
-    -DWSJT_ENABLE_WERROR=OFF
+    -DWSJT_ENABLE_WERROR=OFF \
+    -DWSJT_BUILD_PATH_TESTS=ON \
+    -DWSJT_BUILD_DECODER_TESTS=ON
 
   cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
