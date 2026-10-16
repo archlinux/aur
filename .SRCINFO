@@ -1,13 +1,12 @@
 pkgbase = r-xfun
 	pkgdesc = Supporting Functions for Packages Maintained by 'Yihui Xie'
-	pkgver = 0.61
+	pkgver = 0.62
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xfun
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testit
 	depends = r
-	optdepends = r-commonmark
 	optdepends = r-curl
 	optdepends = r-data.table
 	optdepends = r-jsonlite
@@ -23,8 +22,8 @@ pkgbase = r-xfun
 	optdepends = r-tinytex
 	optdepends = r-xml2
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/xfun_0.61.tar.gz
-	md5sums = 70130070c686204fb71dbf20c6c871ac
-	b2sums = 898fa445738104fedbee43e2024eda2cac952c711d10c757c7fe7e4205a697dea2f16bc6f99a3dd239adc4446bdbef4798f66e503875060823a725c62274bf75
+	source = https://cran.r-project.org/src/contrib/xfun_0.62.tar.gz
+	md5sums = 93bc01d797fcdf1e4014998e4c248bd7
+	b2sums = 9a0a186f0b07b356249af81a37ae63e79ce2f4a338b56728b56118b89c46a4265b043975522a1c3376bcf626a5fb70be67f6a9dfc056ce1d6b687958f90a2ee7
 
 pkgname = r-xfun
