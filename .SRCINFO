@@ -29,7 +29,7 @@ pkgbase = wsjtcb
 	depends = readline
 	provides = wsjtcb
 	conflicts = wsjtcb-git
-	source = WSJT-CB-1.4.1::git+https://github.com/vash909/WSJT-CB.git#commit=f73435253b4227ecde518c50c38656b35cec01e1
+	source = WSJT-CB-1.4.1::git+https://github.com/vash909/WSJT-CB.git#commit=94f776d54946fe43db5e0bb9c966b1595c7b7d97
 	sha256sums = SKIP
 
 pkgname = wsjtcb

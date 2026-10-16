@@ -38,7 +38,7 @@ provides=('wsjtcb')
 
 _srcname='WSJT-CB'
 # 1.4.1 Scarlet; pinned upstream source revision.
-_commit='f73435253b4227ecde518c50c38656b35cec01e1'
+_commit='94f776d54946fe43db5e0bb9c966b1595c7b7d97'
 _srcdir="${_srcname}-${pkgver}"
 source=(
   "${_srcdir}::git+${url}.git#commit=${_commit}"
