@@ -3,13 +3,13 @@ pkgname=opennow
 _pkgname=OpenNOW
 pkgver=1.0.3
 _pkgver="$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
 depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib' 'sdl3'
 	'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
-makedepends=('imagemagick' 'libxcrypt-compat' 'rust' 'cmake' 'qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-shadertools' 'vulkan-headers' 'wayland-protocols' 'ffmpeg')
+makedepends=('imagemagick' 'libxcrypt-compat' 'rust' 'cmake' 'qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-shadertools' 'vulkan-headers' 'wayland-protocols' 'ffmpeg' 'clang')
 # dependencies for rust opennow-streamer: cargo gstreamer gst-plugins-base-libs gst-plugins-bad-libs gst-libav gst-plugins-{good|bad|ugly}
 provides=('opennow')
 conflicts=('opennow-appimage')
