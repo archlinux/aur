@@ -5,11 +5,11 @@
 
 pkgname=darkplaces
 pkgver=20140513
-pkgrel=5
+pkgrel=6
 pkgdesc="An advanced Quake 1 game engine"
 arch=('i686' 'x86_64')
 url="http://icculus.org/twilight/darkplaces/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('alsa-lib' 'hicolor-icon-theme' 'libjpeg-turbo' 'libxpm'
          'libxxf86vm' 'sdl' 'zlib')
 install=$pkgname.install
@@ -30,6 +30,8 @@ prepare() {
 	# Fix a couple options in the Makefile.
 	sed -i '1i DP_LINK_TO_LIBJPEG=1' makefile
 	sed -i '/(STRIP)/d' makefile.inc
+	# Honor LDFLAGS from makepkg.conf (full RELRO etc.)
+	sed -i "s|^LDFLAGS_RELEASE=\$(OPTIM_RELEASE)|& ${LDFLAGS}|" makefile.inc
 
 	# Fix compilation with GCC-11+
 	patch -p1 -i "${srcdir}/gcc-11.patch"
