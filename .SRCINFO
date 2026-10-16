@@ -1,6 +1,6 @@
 pkgbase = pokeductor
 	pkgdesc = A terminal Pokedex and evolution analyzer with sprite rendering, built with Rust
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Huseynteymurzade28/pokeductor
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pokeductor
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = pokeductor-0.6.0.tar.gz::https://static.crates.io/crates/pokeductor/pokeductor-0.6.0.crate
-	sha256sums = 479ac8e28b324e370538c6378ee8b17a9093c4ff2c0115ebfe916b46d3067eae
+	source = pokeductor-0.7.0.tar.gz::https://static.crates.io/crates/pokeductor/pokeductor-0.7.0.crate
+	sha256sums = 44b035e38ad2f19fa2b5b23cead0fd577933f397428d1f4347832e60a5e01095
 
 pkgname = pokeductor

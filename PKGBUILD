@@ -1,6 +1,6 @@
 # Maintainer: Huseyn Teymurzade <huseynteymurrr74@gmail.com>
 pkgname=pokeductor
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A terminal Pokedex and evolution analyzer with sprite rendering, built with Rust"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cargo')
 # already sets `lto = true`, so the Rust side loses nothing here.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('479ac8e28b324e370538c6378ee8b17a9093c4ff2c0115ebfe916b46d3067eae')
+sha256sums=('44b035e38ad2f19fa2b5b23cead0fd577933f397428d1f4347832e60a5e01095')
 
 prepare() {
   cd "$pkgname-$pkgver"
