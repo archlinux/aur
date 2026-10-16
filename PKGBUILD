@@ -2,7 +2,7 @@
 # Binary package: downloads prebuilt pacman package from GitHub Release.
 # Source package mark-shot builds from source; mark-shot-bin installs prebuilt binary.
 pkgname=mark-shot-bin
-pkgver=0.1.58
+pkgver=0.1.59
 pkgrel=1
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-svg' 'qt6-wayland' 'pipewire' 'grim' 'wl-clipboard' 'hicolor-icon-theme' 'python'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libavfilter.so' 'libswresample.so' 'libswscale.so')
 # x86_64：Arch 容器编译，声明 layer-shell-qt
-# aarch64：当前 CI 在 Ubuntu 22.04-arm 预编译，so 代际可能与 Arch aarch64 不一致；
+# aarch64：当前 CI 在 Ubuntu 24.04-arm 预编译，so 代际可能与 Arch aarch64 不一致；
 #          aarch64 用户优先安装源码包 mark-shot 在本机构建
 # depends_x86_64 在 depends 基础上追加，不是替换
 depends_x86_64=('layer-shell-qt')
@@ -35,8 +35,8 @@ conflicts=('mark-shot')
 source_x86_64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst")
 source_aarch64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
 noextract=("mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst" "mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('f35995db3f3051869a6482a4c22b65ab139a6f374dc50e4f3b6daa3d59da978b')
-sha256sums_aarch64=('1fa44879bab67182ba2c5b272adc9ee1776edd5e0afc545aa6c0a0f9a66baea4')
+sha256sums_x86_64=('5c2ce70e22af212a5916bce6dbc5e8dd32717e4aed1cc3e469f0b4abac99b0d5')
+sha256sums_aarch64=('0e7e2052738cce620c9fa6883e94c3f00fc21c93d5bcf7a014e7a53dfed8098b')
 options=('!strip')
 
 # 解压预编译 pacman 包到 pkgdir，排除包元数据文件
