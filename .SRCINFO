@@ -1,6 +1,6 @@
 pkgbase = clai-desktop-bin
 	pkgdesc = Desktop app for building, running, and supervising teams of AI agents
-	pkgver = 26.9.20
+	pkgver = 26.10.17
 	pkgrel = 1
 	url = https://github.com/clairun/clai
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = clai-desktop-bin
 	conflicts = clai
 	options = !strip
 	options = !debug
-	source = https://github.com/clairun/clai/releases/download/v26.9.20/clai_26.9.20_amd64.deb
-	source = https://github.com/clairun/clai/raw/v26.9.20/LICENSE
-	sha256sums = beb63f6291f3d71a9b13ad108bf55d9951892853b02cf4690758be6721b66fb2
+	source = https://github.com/clairun/clai/releases/download/v26.10.17/clai_26.10.17_amd64.deb
+	source = https://github.com/clairun/clai/raw/v26.10.17/LICENSE
+	sha256sums = 407b7851e2e2af4265aba2a923a4c7cd8e9b2d117b18e2a2ad887bde5142ca33
 	sha256sums = SKIP
 
 pkgname = clai-desktop-bin
