@@ -4,13 +4,13 @@
 # The release workflow's binaries with flea's own closure, whose reasons live beside it in the root PKGBUILD.
 pkgname=flea-bin
 _pkgname=flea
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/thisisgm/flea'
 license=('MIT' 'Apache-2.0' 'EPL-2.0' 'BSD-2-Clause')
-depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'udisks2' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
+depends=('bat' 'bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'jq' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'udisks2' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
 optdepends=('libarchive: archive listing and extraction'
             '7zip: 7z archive support'
             'imagemagick: image conversion'
@@ -18,6 +18,7 @@ optdepends=('libarchive: archive listing and extraction'
              'ffmpeg: media metadata in the preview column'
              'ffmpegthumbnailer: video thumbnails, made by one pre-linked worker through libffmpegthumbnailer.so.4, or by the ffmpegthumbnailer program per video when that library will not load'
              'dropbox-cli: Dropbox share links'
+             'libreoffice: office document previews'
              'zoxide: frecent folders in the folder jump of the path bar')
 provides=("$_pkgname=$pkgver")
 # All three own /usr/bin/flea, so pacman refuses the pair rather than leaving one half-installed.
@@ -28,8 +29,8 @@ options=('!strip' '!debug')
 # The local names carry pkgrel, so a rebuilt release is downloaded again, never read from a stale yay cache.
 source_x86_64=("$_pkgname-v$pkgver-$pkgrel-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-v$pkgver-$pkgrel-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('b5bf5528bf1f3f610770c9abf109ce42be253e20f22470df7a544e09014321bd')
-sha256sums_aarch64=('799cf1a1f779ea13ffc6603b145a29a7eca0e948e74ac69f3cf34807ef0e45d1')
+sha256sums_x86_64=('95fcfe7f7b0aba40be63379eeab72d01d6031e3975e46cd246c324e82832015e')
+sha256sums_aarch64=('860d2dbe49fadfabcc44d5662ff22ff1185f9aabe85af5d442761fbc01606903')
 
 # The source PKGBUILD's package() with the binary read from the tarball's root; the release workflow diffs the two.
 package() {
@@ -44,6 +45,7 @@ package() {
   # FileManager1 is Chromium's "Show in folder"; the file is vendor-named, as nautilus owns the plain one.
   install -Dm755 tools/flea-filemanager1 "$pkgdir/usr/lib/flea/flea-filemanager1"
   install -Dm644 packaging/com.thisisgm.flea.FileManager1.service -t "$pkgdir/usr/share/dbus-1/services"
+  install -Dm755 tools/flea-mpris "$pkgdir/usr/lib/flea/flea-mpris"
   install -Dm644 packaging/com.thisisgm.flea.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/com.thisisgm.flea.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
