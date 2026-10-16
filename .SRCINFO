@@ -1,6 +1,6 @@
 pkgbase = aeroshell-kwin-components-git
 	pkgdesc = KWin effects, scripts, and other plugins for AeroShell-based desktops
-	pkgver = 6.7.4_61.rba5b59a
+	pkgver = 6.8.0_74.r053ced9
 	pkgrel = 1
 	url = https://github.com/aeroshell-desktop/aeroshell-kwin-components
 	arch = x86_64
