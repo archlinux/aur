@@ -1,7 +1,5 @@
 # Maintainer: Blaadick <null>
 
-# Maintainer: Your Name <you@example.com>
-
 _architectures=("i686-w64-mingw32" "x86_64-w64-mingw32")
 
 pkgname="mingw-w64-yyjson"
@@ -12,7 +10,6 @@ arch=("any")
 url="https://github.com/ibireme/yyjson"
 license=("MIT")
 depends=("mingw-w64-crt")
-optdepends=()
 makedepends=("mingw-w64-cmake")
 options=("!strip" "!buildflags" "staticlibs")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ibireme/yyjson/archive/refs/tags/$pkgver.tar.gz")
