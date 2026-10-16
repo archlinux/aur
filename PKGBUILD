@@ -2,7 +2,7 @@
 
 pkgname=python-speechbrain
 _pkgname=speechbrain
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="All-in-one speech toolkit in pure Python and Pytorch"
 arch=('any')
@@ -51,8 +51,8 @@ source=(
     'hyperpyyaml-loader.patch'
 )
 sha256sums=(
-    'ad8b3fc3a00bcf1b7302ec12601534fd5287b2471e96a3226a39a23066bf3d5f'
-    'e6a924bb235ef41f791f302d7b5d8829bbe91c52324287493905e7b1268daf68'
+    '3fa7e09ee04e9b16e8b33b362595c4335f8ac9be7106fd31258c1061cbe3426d'
+    '390d297b9e56f171cc3f5ee03cace4979e58a0257358b81520e49d16c33a231f'
     '5ba5f4a3979ad43c116adb531356c878f5a19beb1b3ee67af0024991ede2e17e'
     '001c592042bd4ecf596dd6893844ea451cb90fe29342a49ac0fa98974cb15f6e'
 )
@@ -61,9 +61,9 @@ prepare() {
     cd "$_pkgname-$pkgver"
     patch -Np1 -i "$srcdir/pytorch-2.11-compat.patch"
     patch -Np1 --fuzz=0 -i "$srcdir/hyperpyyaml-loader.patch"
-    # Limit namespace discovery before building so wheel RECORD stays accurate.
-    sed -i '/^\[tool.setuptools.packages.find\]$/a include = ["speechbrain*"]' pyproject.toml
-    sed -i 's/^exclude = \["tests", "tests\.\*"\]$/exclude = ["tests", "tests.*", "speechbrain.integrations.tests*"]/' pyproject.toml
+    # Upstream already limits discovery to speechbrain. Exclude packaged
+    # integration tests before wheel construction so RECORD stays accurate.
+    sed -i '/^\[tool.setuptools.packages.find\]$/a exclude = ["speechbrain.integrations.tests*"]' pyproject.toml
     # Integration examples must use the same public compatibility entry point
     # as inference, not HyperPyYAML's broken default ruamel.yaml loader.
     find tests/integration -name '*.py' -exec sed -i \

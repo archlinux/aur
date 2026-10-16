@@ -1,6 +1,6 @@
 pkgbase = python-speechbrain
 	pkgdesc = All-in-one speech toolkit in pure Python and Pytorch
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/speechbrain/speechbrain
 	arch = any
@@ -33,12 +33,12 @@ pkgbase = python-speechbrain
 	optdepends = python-pandas: for data manipulation utilities
 	optdepends = python-numba: for the CUDA transducer loss integration
 	optdepends = python-scikit-learn: for clustering and diarization integrations
-	source = python-speechbrain-1.1.1.tar.gz::https://github.com/speechbrain/speechbrain/archive/refs/tags/v1.1.1.tar.gz
+	source = python-speechbrain-1.1.2.tar.gz::https://github.com/speechbrain/speechbrain/archive/refs/tags/v1.1.2.tar.gz
 	source = pytorch-2.11-compat.patch
 	source = pytest-fork-runner.py
 	source = hyperpyyaml-loader.patch
-	sha256sums = ad8b3fc3a00bcf1b7302ec12601534fd5287b2471e96a3226a39a23066bf3d5f
-	sha256sums = e6a924bb235ef41f791f302d7b5d8829bbe91c52324287493905e7b1268daf68
+	sha256sums = 3fa7e09ee04e9b16e8b33b362595c4335f8ac9be7106fd31258c1061cbe3426d
+	sha256sums = 390d297b9e56f171cc3f5ee03cace4979e58a0257358b81520e49d16c33a231f
 	sha256sums = 5ba5f4a3979ad43c116adb531356c878f5a19beb1b3ee67af0024991ede2e17e
 	sha256sums = 001c592042bd4ecf596dd6893844ea451cb90fe29342a49ac0fa98974cb15f6e
 
