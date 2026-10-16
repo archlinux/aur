@@ -1,0 +1,20 @@
+pkgbase = jegan-bin
+	pkgdesc = Terminal JSON Editor
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/hymkor/jegan
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = jegan
+	conflicts = jegan
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/hymkor/jegan/v0.7.0/LICENSE
+	source = README-0.7.0.md::https://raw.githubusercontent.com/hymkor/jegan/v0.7.0/README.md
+	sha256sums = 8c0a9244db57f92567321331916a35ed27abfa21d0457df155f62df6cb058dc1
+	sha256sums = fd9969539fce59482b25c075e421b36612e416739259f9d2a1a6ce31e3a00570
+	source_x86_64 = jegan-x86_64-0.7.0.zip::https://github.com/hymkor/jegan/releases/download/v0.7.0/jegan-v0.7.0-linux-amd64.zip
+	sha256sums_x86_64 = a43371867f5f76a547999b8b5755bed9d0dd9aea07f8acbbd4628ec6bbeee12e
+	source_i686 = jegan-i686-0.7.0.zip::https://github.com/hymkor/jegan/releases/download/v0.7.0/jegan-v0.7.0-linux-386.zip
+	sha256sums_i686 = a12dac7eee5eb71767e200b550bd356d47b77e7dd483bd35023f6943bd8957f5
+
+pkgname = jegan-bin

@@ -1,0 +1,5 @@
+[jegan-bin]
+source = "github"
+github = "hymkor/jegan"
+use_latest_release = true
+prefix = "v"
