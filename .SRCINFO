@@ -1,6 +1,6 @@
 pkgbase = kasetto-bin
 	pkgdesc = A declarative AI agent environment manager, written in Rust
-	pkgver = 3.10.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/pivoshenko/kasetto
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = kasetto-bin
 	depends = gcc-libs
 	provides = kasetto
 	conflicts = kasetto
-	source = kasetto-bin-3.10.0.tar.gz::https://github.com/pivoshenko/kasetto/releases/download/v3.10.0/kasetto-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE-MIT-3.10.0::https://raw.githubusercontent.com/pivoshenko/kasetto/v3.10.0/LICENSE-MIT
-	source = LICENSE-APACHE-3.10.0::https://raw.githubusercontent.com/pivoshenko/kasetto/v3.10.0/LICENSE-APACHE
-	sha256sums = 1aac6540926feae412c5f62f9178586d9e4c896c474a3404843ddc181c1a76e8
+	source = kasetto-bin-3.10.1.tar.gz::https://github.com/pivoshenko/kasetto/releases/download/v3.10.1/kasetto-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-MIT-3.10.1::https://raw.githubusercontent.com/pivoshenko/kasetto/v3.10.1/LICENSE-MIT
+	source = LICENSE-APACHE-3.10.1::https://raw.githubusercontent.com/pivoshenko/kasetto/v3.10.1/LICENSE-APACHE
+	sha256sums = 9a1d72e7790ede58354646363df4397d9e05b36a6f5084ae0cba6c661c61868c
 	sha256sums = 477e9dbc8f0f6e1a6f467dbcca256b4892ddde9a694e471b8edaaf3266cece45
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
