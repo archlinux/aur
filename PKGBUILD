@@ -1,13 +1,13 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
 pkgname=('phonors')
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A Python module implemented in Rust for Phonopy"
 arch=('any')
 url="https://github.com/phonopy/phonors"
 license=('BSD')
-provides=('python-phonors')   # 新增这一行
+provides=('python-phonors')
 depends=(
     "python"
 )

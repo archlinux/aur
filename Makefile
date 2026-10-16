@@ -13,7 +13,7 @@ md5:
 release:
 	makepkg --printsrcinfo > .SRCINFO
 	git add .
-	git commit -m "init"
+	git commit -m "update: 0.6.0"
 	git push
 
 .PHONY: test
