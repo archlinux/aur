@@ -1,4 +1,4 @@
-pkgbase = re-zoids-saga-bin
+pkgbase = zoids-re-saga-bin
 	pkgdesc = Native Zoids Saga runtime with localization support (requires your own ROM)
 	pkgver = 0.8.0
 	pkgrel = 1
@@ -40,4 +40,4 @@ pkgbase = re-zoids-saga-bin
 	sha256sums = 5a7b209bf9a84f9693a64b76b99e31d07f6f54d8001db4e865eccb9027cce7d1
 	sha256sums = b3c5136c762bb4b3b6a1546a0355074216169c1443b94257ab99fc87016cfc07
 
-pkgname = re-zoids-saga-bin
+pkgname = zoids-re-saga-bin

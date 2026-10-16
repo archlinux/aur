@@ -1,5 +1,5 @@
 # Maintainer: Twooey <twooey@rhone.dev>
-pkgname=re-zoids-saga-bin
+pkgname=zoids-re-saga-bin
 pkgver=0.8.0
 pkgrel=1
 pkgdesc='Native Zoids Saga runtime with localization support (requires your own ROM)'
