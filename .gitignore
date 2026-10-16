@@ -1,3 +1,5 @@
-pkg/
-src/
-xhidecursor*
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.src.tar.*
+/xhidecursor-*.tar.gz
