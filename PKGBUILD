@@ -2,7 +2,7 @@
 
 pkgname=anthropic-cli-bin
 _pkgname=anthropic-cli
-pkgver=1.21.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="The official CLI for the Claude API (ant)"
 arch=('x86_64' 'aarch64' 'i686' 'armv6h')
@@ -21,10 +21,10 @@ source_i686=("$_pkgname-$pkgver-i686.tar.gz::$_relurl/ant_${pkgver}_linux_386.ta
 source_armv6h=("$_pkgname-$pkgver-armv6h.tar.gz::$_relurl/ant_${pkgver}_linux_armv6.tar.gz")
 
 sha256sums=('8bf96984ff8bcfae7e48cae76a529e8a25317ba9e02abf7fd3cc64fdf95657a6')
-sha256sums_x86_64=('dabd2c9425b18052ca6a610c1ecbdbabcd4c3cca409df943d264ad5e9969bb98')
-sha256sums_aarch64=('5e2f1fce4ac714c71a48a50fb43f57d45dbf7012f7bfb7ca6c05e160bb29ad02')
-sha256sums_i686=('b3c90e8286ab16b4750c2c514c005cc10ff18f13b726096d5d9b93300c9eab6a')
-sha256sums_armv6h=('56e7beb4492370faa4f375fa99a484fdbf0d6edeb96ff41ffcbbb3f02d528c77')
+sha256sums_x86_64=('f048cb6b274cff5c67b4fec6f9d96c5f4e7edbb32e4ff5b6d4eea20862827c9a')
+sha256sums_aarch64=('31f18f0b1eda4c2c4fe2b822b5ef8f362672304b01e922e6cbb427297452e45e')
+sha256sums_i686=('525dbe9c91276920a6499b909616c8653fb50429c67e86f6390c78fd38d989c7')
+sha256sums_armv6h=('3fd57964467d28a3a393414d64456deb41f7cb5155dba0ec53680018905ae396')
 
 package() {
 	install -Dm755 "$srcdir/ant" "$pkgdir/usr/bin/ant"
