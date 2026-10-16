@@ -1,19 +1,20 @@
 pkgbase = opencode-desktop
-	pkgdesc = OpenCode desktop app (built from source, runs on system electron42)
-	pkgver = 1.18.34
+	pkgdesc = OpenCode desktop app (built from source, runs on system electron44)
+	pkgver = 2.0.31
 	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = bun
+	makedepends = bun>=1.4.2
 	makedepends = git
 	makedepends = libxcrypt-compat
 	makedepends = node-gyp
-	depends = electron42
+	depends = electron44
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = icu
 	optdepends = opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)
 	optdepends = nodejs: needed only when invoking npm CLI helpers shipped inside bundled node_modules (marked, js-yaml, semver, ...) — the desktop app itself runs entirely under electron
 	conflicts = opencode-desktop-bin
@@ -22,11 +23,11 @@ pkgbase = opencode-desktop
 	replaces = opencode-desktop-electron
 	options = !strip
 	options = !debug
-	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.18.34
+	source = opencode-desktop-2.0.31-22728d67461260d56bb9796b9b8f36e1de47202e::git+https://github.com/anomalyco/opencode.git#commit=22728d67461260d56bb9796b9b8f36e1de47202e
 	source = opencode-desktop.sh
 	source = enable-pacman-target.patch
 	sha256sums = SKIP
-	sha256sums = 9d4ea3c1ce242edef248cae1cfaca971ef05c7225e52b49f8dd851395d0bbbbe
-	sha256sums = c3a544a2b7ffc252a55da303c2327de4ee075e0b72bf4167d7691fba1cb92ed6
+	sha256sums = 5474a17cc16bd58bc52117f8cc49c319e7c6861863873fbb8a86953794ba9ef1
+	sha256sums = 75ded1e76c4de6f00e116910b46b103199da5bbb2679b8b08d77999544c77b77
 
 pkgname = opencode-desktop

@@ -8,12 +8,6 @@ electron-builder target — no extra dependency.
 
 --- a/packages/desktop/electron-builder.config.ts
 +++ b/packages/desktop/electron-builder.config.ts
-@@ -102,7 +102,7 @@ const getBase = (appId: string): Configuration => ({
-         StartupWMClass: appId,
-       },
-     },
--    target: ["AppImage", "deb", "rpm"],
-+    target: ["AppImage", "deb", "rpm", "pacman"],
-   },
- })
- 
+@@ -209,1 +209,1 @@
+-      target: ["AppImage", "deb", "rpm"],
++      target: ["AppImage", "deb", "rpm", "pacman"],

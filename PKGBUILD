@@ -1,20 +1,21 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=1.18.34
+pkgver=2.0.31
 pkgrel=1
-pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
+pkgdesc='OpenCode desktop app (built from source, runs on system electron44)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
 license=('MIT')
 depends=(
-  'electron42'
+  'electron44'
   'gcc-libs'
   'glibc'
   'hicolor-icon-theme'
+  'icu'
 )
 makedepends=(
-  'bun'
+  'bun>=1.4.2'
   'git'
   # electron-builder downloads a Ruby-based fpm tool that links against
   # libcrypt.so.1, which is provided by libxcrypt-compat on Arch.
@@ -37,46 +38,51 @@ options=('!strip' '!debug')
 # Use git source (not the GitHub tag tarball): Tailwind v4's @tailwindcss/oxide
 # scanner enumerates source files via the git index when .git is present, and
 # falls back to a traversal that misses ~28% of the renderer's utility classes
-# when it isn't. Cloning the tag preserves .git so we get the same CSS as CI.
+# when it isn't. Cloning the pinned commit preserves .git for the same CSS as CI.
+_commit=22728d67461260d56bb9796b9b8f36e1de47202e
 source=(
-  "$pkgname::git+https://github.com/anomalyco/opencode.git#tag=v$pkgver"
+  "$pkgname-$pkgver-$_commit::git+https://github.com/anomalyco/opencode.git#commit=$_commit"
   "$pkgname.sh"
   'enable-pacman-target.patch'
 )
 sha256sums=('SKIP'
-            '9d4ea3c1ce242edef248cae1cfaca971ef05c7225e52b49f8dd851395d0bbbbe'
-            'c3a544a2b7ffc252a55da303c2327de4ee075e0b72bf4167d7691fba1cb92ed6')
+            '5474a17cc16bd58bc52117f8cc49c319e7c6861863873fbb8a86953794ba9ef1'
+            '75ded1e76c4de6f00e116910b46b103199da5bbb2679b8b08d77999544c77b77')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver-$_commit"
 
   patch -Np1 -i "$srcdir/enable-pacman-target.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  local _src="$srcdir/$pkgname-$pkgver-$_commit"
+  cd "$_src"
 
   export OPENCODE_CHANNEL=prod
   export ELECTRON_BUILDER_CACHE="$srcdir/.cache/electron-builder"
 
-  bun install
+  bun install --frozen-lockfile
 
-  bun run --cwd packages/desktop build
+  OPENCODE_CHANNEL=latest OPENCODE_VERSION="$pkgver" \
+    bun packages/cli/script/build.ts --single --baseline
+  OPENCODE_CLI_DIST="$_src/packages/cli/dist" bun run --cwd packages/desktop build
 
   # Strip $srcdir absolute paths leaked into Vite-bundled chunks (CommonJS
   # interop inlines __dirname/__filename). Not dereferenced at runtime, but
   # both namcap and basic hygiene reject packages that contain build-host paths.
   find packages/desktop/out -type f \
     \( -name '*.js' -o -name '*.cjs' -o -name '*.mjs' \) \
-    -exec sed -i "s|$srcdir/$pkgname|/usr/lib/$pkgname|g" {} +
+    -exec sed -i "s|$_src|/usr/lib/$pkgname|g" {} +
 
-  # Force app.isPackaged → true. System electron treats an externally-passed
-  # main as a "default app" and sets isPackaged=false, which makes the app
-  # pick its dev appId / userData / resourcesPath instead of prod ones.
-  sed -i 's/app\.isPackaged/true/g' packages/desktop/out/main/index.js
+  # External system Electron uses development mode and its own resources path.
+  # Point packaged main-process chunks at this app's installed CLI/resources.
+  find packages/desktop/out/main -type f -name '*.js' \
+    -exec sed -i -e 's/app\.isPackaged/true/g' \
+      -e "s|process\.resourcesPath|\"/usr/lib/$pkgname/resources\"|g" {} +
 
   local sysver
-  sysver=$(< /usr/lib/electron42/version)
+  sysver=$(< /usr/lib/electron44/version)
 
   # Build with --linux pacman: this produces both the unpacked app/ directory
   # (we ship that) AND a .pacman archive which embeds the .desktop file and
@@ -88,17 +94,28 @@ build() {
   ( cd packages/desktop && bun run package -- \
       --linux pacman \
       -c.asar=false \
-      -c.electronDist=/usr/lib/electron42 \
+      -c.electronDist=/usr/lib/electron44 \
       -c.electronVersion="$sysver" \
       --publish=never )
 }
 
 package() {
-  local _bld="$srcdir/$pkgname/packages/desktop"
+  local _src="$srcdir/$pkgname-$pkgver-$_commit"
+  local _bld="$_src/packages/desktop"
+  local _out
+  case "$CARCH" in
+    x86_64) _out='linux-unpacked' ;;
+    aarch64) _out='linux-arm64-unpacked' ;;
+    *) echo "ERROR: unsupported architecture: $CARCH" >&2; return 1 ;;
+  esac
 
   # Install the unpacked app/ directory to /usr/lib/$pkgname/.
   install -d "$pkgdir/usr/lib/$pkgname"
-  cp -a "$_bld/dist/linux-unpacked/resources/app/." "$pkgdir/usr/lib/$pkgname/"
+  cp -a "$_bld/dist/$_out/resources/app/." "$pkgdir/usr/lib/$pkgname/"
+  install -Dm755 "$_bld/dist/$_out/resources/opencode-cli" \
+    "$pkgdir/usr/lib/$pkgname/resources/opencode-cli"
+  install -Dm644 "$_bld/dist/$_out/resources/opencode-cli.version" \
+    "$pkgdir/usr/lib/$pkgname/resources/opencode-cli.version"
 
   # Pin the Wayland app_id to our wrapper basename. electron-builder injects
   # "desktopName": "<appId>.desktop" (currently "ai.opencode.desktop.desktop")
@@ -151,6 +168,6 @@ package() {
     install -Dm644 "$png" "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
   done
 
-  install -Dm644 "$srcdir/$pkgname/LICENSE" \
+  install -Dm644 "$_src/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
