@@ -1,0 +1,592 @@
+From 1ab5b7392747771970ce0a279e709f3f3d4b252a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cl=C3=A9ment=20Gayot?= <contact@clement-gayot.fr>
+Date: Sun, 11 Oct 2026 14:52:23 +0200
+Subject: [PATCH] feat: support GNOME Shell 51
+
+GNOME Shell 51 removed three APIs the extension relies on
+(https://gjs.guide/extensions/upgrading/gnome-shell-51.html):
+
+- ui/pointerWatcher.js: still import it on GNOME Shell 50 and earlier;
+  on 51, follow the pointer through the cursor tracker's
+  position-invalidated signal instead, as ui/magnifier.js now does
+  (CursorTrackerPointerWatcher).  The signal is not used on older
+  versions: before mutter 50 it was not emitted for captured input.
+- Clutter.get_default_backend(): get the seat from
+  global.stage.context.get_backend() instead (getDefaultSeat).
+- Shell.GLSLEffect: on GNOME Shell 51, GammaCurveEffect derives from
+  Clutter.ShaderEffect, which takes the GLSL as a Cogl snippet and sets
+  uniforms by name.  GNOME Shell 45-50 keep the GLSLEffect
+  implementation; only the class matching the running Shell is
+  registered.
+
+Add "51" to shell-version.
+---
+ src/extension.js             | 171 +++++++++++++++++++-----
+ src/metadata.json.in         |   3 +-
+ test/gnome51-compat.test.mjs | 251 +++++++++++++++++++++++++++++++++++
+ test/mocks/clutter.mjs       |  21 +++
+ test/mocks/cogl.mjs          |   5 +
+ test/mocks/meta.mjs          |   1 +
+ 6 files changed, 415 insertions(+), 37 deletions(-)
+ create mode 100644 test/gnome51-compat.test.mjs
+
+diff --git a/src/extension.js b/src/extension.js
+index 19942b9..9069425 100644
+--- a/src/extension.js
++++ b/src/extension.js
+@@ -17,7 +17,6 @@
+ 
+ import * as Config from 'resource:///org/gnome/shell/misc/config.js';
+ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+-import * as PointerWatcher from 'resource:///org/gnome/shell/ui/pointerWatcher.js';
+ import {QuickSlider} from 'resource:///org/gnome/shell/ui/quickSettings.js';
+ import Clutter from 'gi://Clutter';
+ import Cogl from 'gi://Cogl';
+@@ -34,6 +33,11 @@ import * as Logger from './logger.js';
+ import * as Utils from './utils.js';
+ import { MouseSpriteContent } from './cursor.js';
+ 
++// In GS 51, ui/pointerWatcher.js was removed; see CursorTrackerPointerWatcher.
++const PointerWatcher = parseInt(Config.PACKAGE_VERSION) < 51
++    ? await import('resource:///org/gnome/shell/ui/pointerWatcher.js')
++    : null;
++
+ // Backlight-like GLSL dimming effect: out = b * c, where b = brightness.
+ // Contrast ratios are preserved, like a hardware backlight; blacks stay
+ // black and everything scales down linearly.
+@@ -99,45 +103,140 @@ export function hasPaintArea(actor) {
+     return width > 0 && height > 0;
+ }
+ 
+-export const GammaCurveEffect = GObject.registerClass(
+-    class GammaCurveEffect extends Shell.GLSLEffect {
+-        _init(brightness, monitorRects) {
+-            super._init();
+-            this._brightnessLoc = this.get_uniform_location('u_brightness');
+-            this._brightness = brightness;
+-            this._monitorRects = monitorRects || [];
+-        }
++const GAMMA_CURVE_DECLARATIONS = `
++    uniform float u_brightness;
++`;
++
++const GAMMA_CURVE_SOURCE = `
++    cogl_color_out.rgb = clamp(u_brightness, 0.0, 1.0) *
++        clamp(cogl_color_out.rgb, 0.0, 1.0);
++`;
++
++// The effect classes are only defined on the GNOME Shell versions that
++// have their base class (registering the other one would fail).
++function defineGLSLEffectGammaCurve() {
++    return GObject.registerClass(
++        class GammaCurveEffect extends Shell.GLSLEffect {
++            _init(brightness, monitorRects) {
++                super._init();
++                this._brightnessLoc = this.get_uniform_location('u_brightness');
++                this._brightness = brightness;
++                this._monitorRects = monitorRects || [];
++            }
+ 
+-        vfunc_build_pipeline() {
+-            const declarations = `
+-                uniform float u_brightness;
+-            `;
+-            const src = `
+-                cogl_color_out.rgb = clamp(u_brightness, 0.0, 1.0) *
+-                    clamp(cogl_color_out.rgb, 0.0, 1.0);
+-            `;
+-            this.add_glsl_snippet(Cogl.SnippetHook.FRAGMENT, declarations, src, false);
+-        }
++            vfunc_build_pipeline() {
++                this.add_glsl_snippet(Cogl.SnippetHook.FRAGMENT,
++                    GAMMA_CURVE_DECLARATIONS, GAMMA_CURVE_SOURCE, false);
++            }
+ 
+-        vfunc_pre_paint(node, paintContext) {
+-            if (!hasPaintArea(this.get_actor()))
+-                return false;
+-            return super.vfunc_pre_paint(node, paintContext);
+-        }
++            vfunc_pre_paint(node, paintContext) {
++                if (!hasPaintArea(this.get_actor()))
++                    return false;
++                return super.vfunc_pre_paint(node, paintContext);
++            }
++
++            vfunc_paint_target(node, paintContext) {
++                this.set_uniform_float(this._brightnessLoc, 1,
++                    [paintBrightness(this._brightness, this._monitorRects, paintContext)]);
++                super.vfunc_paint_target(node, paintContext);
++            }
+ 
+-        vfunc_paint_target(node, paintContext) {
+-            this.set_uniform_float(this._brightnessLoc, 1,
+-                [paintBrightness(this._brightness, this._monitorRects, paintContext)]);
+-            super.vfunc_paint_target(node, paintContext);
++            update(brightness, monitorRects) {
++                this._brightness = brightness;
++                this._monitorRects = monitorRects;
++                this.queue_repaint();
++            }
+         }
++    );
++}
++
++// In GS 51, Shell.GLSLEffect was removed.  Its replacement,
++// Clutter.ShaderEffect, takes the GLSL as a Cogl snippet and sets uniforms
++// by name.  Exported for tests.
++export function defineShaderEffectGammaCurve() {
++    return GObject.registerClass(
++        class GammaCurveEffect extends Clutter.ShaderEffect {
++            _init(brightness, monitorRects) {
++                super._init();
++                this._brightness = brightness;
++                this._monitorRects = monitorRects || [];
++            }
++
++            vfunc_get_static_snippet() {
++                return Cogl.Snippet.new(Cogl.SnippetHook.FRAGMENT,
++                    GAMMA_CURVE_DECLARATIONS, GAMMA_CURVE_SOURCE);
++            }
++
++            vfunc_pre_paint(node, paintContext) {
++                if (!hasPaintArea(this.get_actor()))
++                    return false;
++                return super.vfunc_pre_paint(node, paintContext);
++            }
++
++            vfunc_paint_target(node, paintContext) {
++                this.set_uniform_float('u_brightness', 1,
++                    [paintBrightness(this._brightness, this._monitorRects, paintContext)]);
++                super.vfunc_paint_target(node, paintContext);
++            }
+ 
+-        update(brightness, monitorRects) {
+-            this._brightness = brightness;
+-            this._monitorRects = monitorRects;
+-            this.queue_repaint();
++            update(brightness, monitorRects) {
++                this._brightness = brightness;
++                this._monitorRects = monitorRects;
++                this.queue_repaint();
++            }
+         }
++    );
++}
++
++export const GammaCurveEffect = Shell.GLSLEffect !== undefined
++    ? defineGLSLEffectGammaCurve()
++    : defineShaderEffectGammaCurve();
++
++// Stand-in for ui/pointerWatcher.js on GS 51+: follows the pointer through
++// the cursor tracker's position-invalidated signal, like ui/magnifier.js.
++// Only the subset of the PointerWatcher API used by CursorManager is provided.
++export class CursorTrackerPointerWatcher {
++    constructor(cursorTracker) {
++        this._cursorTracker = cursorTracker;
++    }
++
++    addWatch(_interval, fn) {
++        const laters = global.compositor.get_laters();
++        let laterId = 0;
++        const positionId = this._cursorTracker.connect('position-invalidated', () => {
++            if (laterId)
++                return;
++            laterId = laters.add(Meta.LaterType.BEFORE_REDRAW, () => {
++                laterId = 0;
++                fn();
++                return GLib.SOURCE_REMOVE;
++            });
++        });
++        return {
++            remove: () => {
++                this._cursorTracker.disconnect(positionId);
++                if (laterId) {
++                    laters.remove(laterId);
++                    laterId = 0;
++                }
++            },
++        };
+     }
+-);
++}
++
++function getPointerWatcher(cursorTracker) {
++    return PointerWatcher !== null
++        ? PointerWatcher.getPointerWatcher()
++        : new CursorTrackerPointerWatcher(cursorTracker);
++}
++
++// In GS 51, Clutter.get_default_backend was removed.
++export function getDefaultSeat() {
++    const backend = Clutter.get_default_backend !== undefined
++        ? Clutter.get_default_backend()
++        : global.stage.context.get_backend();
++    return backend.get_default_seat();
++}
+ 
+ export default class SoftBrightnessExtension extends Extension {
+     constructor(...args) {
+@@ -830,7 +929,7 @@ class CursorManager {
+ 
+             this._cursorActor = new Clutter.Actor();
+             this._cursorActor.add_child(this._cursorSprite);
+-            this._cursorWatcher = PointerWatcher.getPointerWatcher();
++            this._cursorWatcher = getPointerWatcher(this._cursorTracker);
+ 
+             this._overlayManager.addActor(this._cursorActor);
+             this._cursorInOverlay = true;
+@@ -983,7 +1082,7 @@ class CursorManager {
+     }
+ 
+     _showSystemCursor() {
+-        const seat = Clutter.get_default_backend().get_default_seat();
++        const seat = getDefaultSeat();
+ 
+         if (this._cursorUnfocusInhibited) {
+             seat.uninhibit_unfocus();
+@@ -1002,7 +1101,7 @@ class CursorManager {
+     }
+ 
+     _hideSystemCursor() {
+-        const seat = Clutter.get_default_backend().get_default_seat();
++        const seat = getDefaultSeat();
+ 
+         if (!this._cursorUnfocusInhibited) {
+             seat.inhibit_unfocus();
+diff --git a/src/metadata.json.in b/src/metadata.json.in
+index 88566a2..8a6337d 100644
+--- a/src/metadata.json.in
++++ b/src/metadata.json.in
+@@ -13,7 +13,8 @@
+     "47",
+     "48",
+     "49",
+-    "50"
++    "50",
++    "51"
+   ],
+   "url": "https://github.com/jkitching/soft-brightness-plus",
+   "uuid": "soft-brightness-plus@joelkitching.com",
+diff --git a/test/gnome51-compat.test.mjs b/test/gnome51-compat.test.mjs
+new file mode 100644
+index 0000000..29b1d85
+--- /dev/null
++++ b/test/gnome51-compat.test.mjs
+@@ -0,0 +1,251 @@
++import { test, describe, beforeEach, afterEach } from 'node:test';
++import assert from 'node:assert/strict';
++
++// GNOME 51 removed ui/pointerWatcher.js and Clutter.get_default_backend().
++// These tests import the REAL extension code and cover the replacements.
++
++import Clutter from './mocks/clutter.mjs';
++import {
++    CursorTrackerPointerWatcher,
++    defineShaderEffectGammaCurve,
++    getDefaultSeat,
++} from '../src/extension.js';
++
++// ── helpers ──────────────────────────────────────────────────────────────────
++
++function makeCursorTracker() {
++    const handlers = new Map();
++    let nextId = 1;
++    return {
++        connect(signal, fn) {
++            const id = nextId++;
++            handlers.set(id, { signal, fn });
++            return id;
++        },
++        disconnect(id) {
++            handlers.delete(id);
++        },
++        emit(signal) {
++            for (const h of [...handlers.values()]) {
++                if (h.signal === signal)
++                    h.fn();
++            }
++        },
++        connectionCount(signal) {
++            return [...handlers.values()].filter(h => h.signal === signal).length;
++        },
++    };
++}
++
++function makeLaters() {
++    const pending = new Map();
++    let nextId = 1;
++    return {
++        add(_type, fn) {
++            const id = nextId++;
++            pending.set(id, fn);
++            return id;
++        },
++        remove(id) {
++            pending.delete(id);
++        },
++        // Simulate the compositor reaching BEFORE_REDRAW.
++        run() {
++            const fns = [...pending.values()];
++            pending.clear();
++            fns.forEach(fn => fn());
++        },
++        get size() {
++            return pending.size;
++        },
++    };
++}
++
++let laters;
++
++beforeEach(() => {
++    laters = makeLaters();
++    global.compositor = { get_laters: () => laters };
++});
++
++// ── CursorTrackerPointerWatcher ──────────────────────────────────────────────
++
++describe('CursorTrackerPointerWatcher (GS 51+ PointerWatcher replacement)', () => {
++    test('addWatch connects to position-invalidated', () => {
++        const tracker = makeCursorTracker();
++        const watcher = new CursorTrackerPointerWatcher(tracker);
++
++        watcher.addWatch(1000 / 60, () => {});
++
++        assert.equal(tracker.connectionCount('position-invalidated'), 1);
++    });
++
++    test('callback runs before the next redraw, not synchronously', () => {
++        const tracker = makeCursorTracker();
++        const watcher = new CursorTrackerPointerWatcher(tracker);
++        let calls = 0;
++        watcher.addWatch(1000 / 60, () => calls++);
++
++        tracker.emit('position-invalidated');
++        assert.equal(calls, 0);
++
++        laters.run();
++        assert.equal(calls, 1);
++    });
++
++    test('several invalidations within a frame coalesce into one callback', () => {
++        const tracker = makeCursorTracker();
++        const watcher = new CursorTrackerPointerWatcher(tracker);
++        let calls = 0;
++        watcher.addWatch(1000 / 60, () => calls++);
++
++        tracker.emit('position-invalidated');
++        tracker.emit('position-invalidated');
++        tracker.emit('position-invalidated');
++        assert.equal(laters.size, 1);
++
++        laters.run();
++        assert.equal(calls, 1);
++
++        // A later frame schedules a new callback.
++        tracker.emit('position-invalidated');
++        laters.run();
++        assert.equal(calls, 2);
++    });
++
++    test('remove() disconnects and cancels a pending callback', () => {
++        const tracker = makeCursorTracker();
++        const watcher = new CursorTrackerPointerWatcher(tracker);
++        let calls = 0;
++        const watch = watcher.addWatch(1000 / 60, () => calls++);
++
++        tracker.emit('position-invalidated');
++        watch.remove();
++
++        assert.equal(tracker.connectionCount('position-invalidated'), 0);
++        assert.equal(laters.size, 0);
++        laters.run();
++        tracker.emit('position-invalidated');
++        laters.run();
++        assert.equal(calls, 0);
++    });
++
++    test('watch can be removed and re-added (idle pause/resume)', () => {
++        const tracker = makeCursorTracker();
++        const watcher = new CursorTrackerPointerWatcher(tracker);
++        let calls = 0;
++
++        watcher.addWatch(1000 / 60, () => calls++).remove();
++        watcher.addWatch(1000 / 60, () => calls++);
++
++        assert.equal(tracker.connectionCount('position-invalidated'), 1);
++        tracker.emit('position-invalidated');
++        laters.run();
++        assert.equal(calls, 1);
++    });
++});
++
++// ── getDefaultSeat ───────────────────────────────────────────────────────────
++
++describe('getDefaultSeat()', () => {
++    let savedGetDefaultBackend;
++
++    beforeEach(() => {
++        savedGetDefaultBackend = Clutter.get_default_backend;
++    });
++
++    afterEach(() => {
++        Clutter.get_default_backend = savedGetDefaultBackend;
++        delete global.stage;
++    });
++
++    test('GS 45–50: uses Clutter.get_default_backend()', () => {
++        assert.equal(getDefaultSeat(), Clutter._mockSeat);
++    });
++
++    test('GS 51+: falls back to global.stage.context.get_backend()', () => {
++        const seat = { name: 'gs51-seat' };
++        Clutter.get_default_backend = undefined;
++        global.stage = {
++            context: {
++                get_backend() {
++                    return { get_default_seat: () => seat };
++                },
++            },
++        };
++
++        assert.equal(getDefaultSeat(), seat);
++    });
++});
++
++// ── GammaCurveEffect on Clutter.ShaderEffect ─────────────────────────────────
++
++describe('GammaCurveEffect on Clutter.ShaderEffect (GS 51+)', () => {
++    const ShaderGammaCurveEffect = defineShaderEffectGammaCurve();
++
++    // Paint into the framebuffer of the stage area `area`: like Clutter, a
++    // viewport spanning the whole stage, offset by the area's position.
++    function paintContextFor(area) {
++        const framebuffer = {
++            get_viewport_x: () => -area.x,
++            get_viewport_y: () => -area.y,
++            get_viewport_width: () => global.stage.width,
++            get_width: () => area.width,
++            get_height: () => area.height,
++        };
++        return { get_framebuffer: () => framebuffer };
++    }
++    function effectOn(brightness, monitorRects) {
++        const actor = new Clutter.Actor();
++        const e = new ShaderGammaCurveEffect(brightness, monitorRects);
++        actor.add_effect_with_name('soft-brightness-plus-shader', e);
++        return e;
++    }
++
++    const left = { x: 0, y: 0, width: 1920, height: 1080 };
++    const right = { x: 1920, y: 0, width: 1680, height: 1050 };
++    beforeEach(() => {
++        global.stage = { width: 3600, height: 1080 };
++    });
++
++    test('extends Clutter.ShaderEffect', () => {
++        assert.ok(new ShaderGammaCurveEffect(0.5, []) instanceof Clutter.ShaderEffect);
++    });
++
++    test('static snippet is a fragment snippet scaling by u_brightness', () => {
++        const snippet = new ShaderGammaCurveEffect(0.5, []).vfunc_get_static_snippet();
++
++        assert.equal(snippet.hook, 'fragment');
++        assert.match(snippet.declarations, /uniform float u_brightness;/);
++        assert.match(snippet.post, /u_brightness/);
++    });
++
++    test('sets u_brightness by name at paint time', () => {
++        const e = effectOn(0.5, []);
++        e.vfunc_paint_target(null, paintContextFor(left));
++        assert.deepEqual(e._uniforms.u_brightness, { size: 1, values: [0.5] });
++    });
++
++    test('leaves views of unselected monitors at full brightness', () => {
++        const e = effectOn(0.5, [right]);
++        e.vfunc_paint_target(null, paintContextFor(right));
++        assert.deepEqual(e._uniforms.u_brightness.values, [0.5]);
++        e.vfunc_paint_target(null, paintContextFor(left));
++        assert.deepEqual(e._uniforms.u_brightness.values, [1.0]);
++    });
++
++    test('skips the effect for actors that paint nothing', () => {
++        const e = effectOn(0.5, []);
++        assert.equal(e.vfunc_pre_paint(null, null), true);
++        e.get_actor()._paintVolumeSize = [1024, 0];
++        assert.equal(e.vfunc_pre_paint(null, null), false);
++    });
++
++    test('update() stores new parameters and queues a repaint', () => {
++        const e = effectOn(0.5, []);
++        e.update(0.3, []);
++        assert.equal(e._repaints, 1);
++        e.vfunc_paint_target(null, paintContextFor(left));
++        assert.deepEqual(e._uniforms.u_brightness.values, [0.3]);
++    });
++});
+diff --git a/test/mocks/clutter.mjs b/test/mocks/clutter.mjs
+index b1157f5..fe43101 100644
+--- a/test/mocks/clutter.mjs
++++ b/test/mocks/clutter.mjs
+@@ -91,6 +91,26 @@ class TextureNode {
+     add_child(node) {}
+ }
+ 
++// Mock of Clutter.ShaderEffect as of GS 51 (replacement for Shell.GLSLEffect).
++// Uniforms are set by name; like the real one, it rejects more than 4 components.
++class ShaderEffect {
++    constructor() {
++        this.enabled = true;
++        this._uniforms = {};
++        this._repaints = 0;
++    }
++    _init() {}
++    get_actor() { return this._actor ?? null; }
++    vfunc_pre_paint(..._args) { return true; }
++    set_uniform_float(name, nComponents, values) {
++        if (nComponents > 4 || values.length > 4)
++            throw new Error(`clutter_value_set_shader_float: assertion 'size <= 4' failed (${name})`);
++        this._uniforms[name] = { size: nComponents, values: Array.from(values) };
++    }
++    queue_repaint() { this._repaints++; }
++    vfunc_paint_target(..._args) {}
++}
++
+ const mockSeat = {
+     _unfocusInhibited: false,
+     inhibit_unfocus() { this._unfocusInhibited = true; },
+@@ -104,6 +124,7 @@ export default {
+     // Leave Container undefined to simulate GS 45+ (uses 'child-added'/'child-removed')
+     Container: undefined,
+     TextureNode,
++    ShaderEffect,
+ 
+     get_default_backend() {
+         return {
+diff --git a/test/mocks/cogl.mjs b/test/mocks/cogl.mjs
+index 2d4bf7f..a2b48ec 100644
+--- a/test/mocks/cogl.mjs
++++ b/test/mocks/cogl.mjs
+@@ -4,4 +4,9 @@ export default {
+         FRAGMENT: 'fragment',
+         VERTEX: 'vertex',
+     },
++    Snippet: {
++        new(hook, declarations, post) {
++            return { hook, declarations, post };
++        },
++    },
+ };
+diff --git a/test/mocks/meta.mjs b/test/mocks/meta.mjs
+index defd858..12beb3a 100644
+--- a/test/mocks/meta.mjs
++++ b/test/mocks/meta.mjs
+@@ -22,6 +22,7 @@ export default {
+             };
+         },
+     },
++    LaterType: { BEFORE_REDRAW: 2 },
+     disable_unredirect_for_display(_display) {},
+     enable_unredirect_for_display(_display) {},
+ };

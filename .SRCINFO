@@ -1,18 +1,19 @@
 pkgbase = gnome-shell-extension-soft-brightness-git
 	pkgdesc = Manage your display brightness via an alpha overlay (instead of the backlight).
-	pkgver = 43.r5.gdba4979
+	pkgver = 52.r32.gf24df9a
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jkitching/soft-brightness-plus
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = meson>=0.50
-	makedepends = m4
+	makedepends = nodejs>=20.6.0
 	depends = gnome-shell>=45
 	source = gnome-shell-extension-soft-brightness-git::git+https://github.com/jkitching/soft-brightness-plus
-	source = build.patch
+	source = pr-80.patch::https://github.com/jkitching/soft-brightness-plus/commit/3c8c42f497d7a04b4b5e521542f66aa3b77567bd.patch
+	source = pr-81.patch::https://github.com/jkitching/soft-brightness-plus/commit/1ab5b7392747771970ce0a279e709f3f3d4b252a.patch
 	sha256sums = SKIP
-	sha256sums = 9b5d81c37d06ffef37340f0a70ea613c90d8b80e08f43750e2605478e2de8716
+	sha256sums = b42b0cb12bb5493ab1e9b43618a6b4eba2109fe8882a691c774b1414d2a978b3
+	sha256sums = e2d32ea6cf541651a606c0dbc776620e1009f7c167ce9a70bfcac8de3769d4c8
 
 pkgname = gnome-shell-extension-soft-brightness-git
