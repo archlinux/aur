@@ -1,8 +1,7 @@
-# Maintainer: David Parrish <daveparrish@tutanota.com>
-# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Nikolay Bryskin <nikicat@users.noreply.github.com>
 
 pkgname=bisq2
-pkgver=2.1.13
+pkgver=2.1.14
 pkgrel=1
 pkgdesc="The Decentralized Trading Platform"
 arch=('x86_64')
@@ -10,10 +9,11 @@ url="https://bisq.network"
 license=('AGPL3')
 depends=('java-runtime>=21' 'tor')
 makedepends=('java-environment=21' 'git')
+checkdepends=('ttf-dejavu')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
   "git+https://github.com/bisq-network/bitcoind.git"
   "bisq2.desktop")
-sha256sums=('6cefe4cdff68be7de6f0850fb6fbba1652aede4ee883fbf8811abaf1b8e7320d'
+sha256sums=('2f33b13ab0a35a60c387d8be673d9711ff56ebf8c278bfc8afe26ab7d36f4b81'
             'SKIP'
             '4168bef82a5330ddaaa7b5055b1107d6eb912cd6b071c29220262173a4b8d61f')
 
