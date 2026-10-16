@@ -2,9 +2,11 @@ post_install() {
     cat <<'EOF'
 ai-memory is installed.
 
-User service:
-  ai-memory --data-dir "$HOME/.local/share/ai-memory" --config "$HOME/.config/ai-memory/config.toml" init
-  systemctl --user enable --now ai-memory.service
+Single user: run
+  ai-memory setup
+It creates the data dir and its bearer token, installs and starts a user
+service, wires the agents it finds (it shows the plan and asks first), and
+checks the result.
 
 System service:
   sudo systemd-sysusers /usr/lib/sysusers.d/ai-memory.conf
@@ -21,7 +23,9 @@ post_upgrade() {
     cat <<'EOF'
 ai-memory was upgraded.
 
-If you use lifecycle hooks, refresh staged hook scripts for each agent:
-  ai-memory install-hooks --agent claude-code --apply
+If you use lifecycle hooks, refresh the staged hook scripts: re-run
+  ai-memory setup
+(it shows the plan and asks first), or, for one agent,
+  ai-memory install-hooks --agent <name> --apply
 EOF
 }
