@@ -10,51 +10,14 @@ license=('UNLICENSED')
 provides=('openaside')
 conflicts=('openaside')
 options=('!strip' '!debug')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minpeter/openaside/releases/download/openaside@${pkgver}/openaside-${pkgver}-linux-x64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$base/openaside-$pkgver-linux-x64.tar.gz")
 sha256sums=('c030779a5bca0efc5dfcdcda726414b47b414d914d6b607b60b75539a95c2d04')
 
 package() {
-  cd "openaside-${pkgver}"
-
-  # System-wide installation
-  install -dm755 "${pkgdir}/usr/local/bin"
-  install -dm755 "${pkgdir}/usr/local/share/openaside"
-  install -dm755 "${pkgdir}/usr/local/lib/systemd/user"
-
-  # Binaries
-  install -Dm755 bin/oside "${pkgdir}/usr/local/bin/oside"
-  install -Dm755 bin/aside-ui "${pkgdir}/usr/local/bin/aside-ui"
-  install -Dm755 bin/aside-updater "${pkgdir}/usr/local/bin/aside-updater"
-  install -Dm755 bin/aside-privileged-helper "${pkgdir}/usr/local/bin/aside-privileged-helper"
-  install -Dm755 bin/aside-password-import "${pkgdir}/usr/local/bin/aside-password-import"
-  install -Dm755 bin/aside-browser-native-host "${pkgdir}/usr/local/bin/aside-browser-native-host"
-  install -Dm755 bin/aside-browser-native-manifest "${pkgdir}/usr/local/bin/aside-browser-native-manifest"
-
-  # Runtime
-  install -Dm755 libexec/openaside/runtime/bun "${pkgdir}/usr/local/libexec/openaside/runtime/bun"
-
-  # Components
-  cp -r share/openaside/components "${pkgdir}/usr/local/share/openaside/"
-
-  # Deployment files
-  install -Dm644 share/openaside/deployment/desktop/openaside.desktop "${pkgdir}/usr/local/share/applications/openaside.desktop"
-  install -Dm644 share/openaside/deployment/polkit/actions/org.openaside.privileged-helper.policy "${pkgdir}/usr/local/share/polkit-1/actions/org.openaside.privileged-helper.policy"
-  install -Dm644 share/openaside/deployment/polkit/rules.d/49-openaside-privileged-helper.rules "${pkgdir}/usr/local/share/polkit-1/rules.d/49-openaside-privileged-helper.rules"
-  install -Dm640 share/openaside/deployment/sudoers.d/openaside-privileged-helper "${pkgdir}/etc/sudoers.d/openaside-privileged-helper"
-
-  # Systemd user services
-  install -Dm644 share/openaside/deployment/systemd/openaside-updater.service "${pkgdir}/usr/local/lib/systemd/user/openaside-updater.service"
-  install -Dm644 share/openaside/deployment/systemd/openaside-updater.timer "${pkgdir}/usr/local/lib/systemd/user/openaside-updater.timer"
-
-  # Native messaging host
-  install -Dm644 share/openaside/native-messaging/org.openaside.browser_native_host.json "${pkgdir}/etc/chromium/native-messaging-hosts/org.openaside.browser_native_host.json"
-
-  # Icons
-  install -Dm644 share/icons/hicolor/128x128/apps/openaside.png "${pkgdir}/usr/local/share/icons/hicolor/128x128/apps/openaside.png"
-
-  # Documentation
-  install -Dm644 share/doc/openaside/README.md "${pkgdir}/usr/local/share/doc/openaside/README.md"
-
-  # Version
-  install -Dm644 share/openaside/VERSION "${pkgdir}/usr/local/share/openaside/VERSION"
+  cd "openaside-$pkgver"
+  # install.sh owns DESTDIR staging, desktop-entry templating
+  # (@OPENASIDE_BIN@), native-messaging manifest rendering, and permission
+  # hardening; packaging must not re-implement them against files that only
+  # exist post-install (e.g. the generated openaside.desktop).
+  DESTDIR="$pkgdir" ./install.sh --prefix /usr/local
 }

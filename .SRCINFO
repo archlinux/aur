@@ -9,7 +9,7 @@ pkgbase = openaside-bin
 	conflicts = openaside
 	options = !strip
 	options = !debug
-	source = openaside-bin-0.0.0.tar.gz::https://github.com/minpeter/openaside/releases/download/openaside@0.0.0/openaside-0.0.0-linux-x64.tar.gz
+	source = openaside-bin-0.0.0.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@0.0.0/openaside-0.0.0-linux-x64.tar.gz
 	sha256sums = c030779a5bca0efc5dfcdcda726414b47b414d914d6b607b60b75539a95c2d04
 
 pkgname = openaside-bin
