@@ -2,7 +2,7 @@
 
 pkgname=python-diffsynth
 _pkgname=diffsynth
-pkgver=2.1.7
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team"
 arch=('any')
@@ -21,6 +21,8 @@ depends=(
     'python-sentencepiece'
     'python-protobuf'
     'python-modelscope'
+    # ModelScope Hub imports cryptography but its public recipe omits it.
+    'python-cryptography'
     'python-ftfy'
     'python-pandas'
     'python-accelerate'
@@ -57,7 +59,7 @@ optdepends=(
     'python-xformers: xFormers attention acceleration'
     'python-opencv: face restoration and image-processing pipelines'
 )
-_commit=7822d1781287971d24bf94e09bd487ce21ee08d8
+_commit=4e3496991455b300fd60ab023113422cd16899f5
 _archive=DiffSynth-Studio
 source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')

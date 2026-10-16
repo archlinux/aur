@@ -1,6 +1,6 @@
 pkgbase = python-diffsynth
 	pkgdesc = Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team
-	pkgver = 2.1.7
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://github.com/modelscope/DiffSynth-Studio
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = python-diffsynth
 	depends = python-sentencepiece
 	depends = python-protobuf
 	depends = python-modelscope
+	depends = python-cryptography
 	depends = python-ftfy
 	depends = python-pandas
 	depends = python-accelerate
@@ -48,7 +49,7 @@ pkgbase = python-diffsynth
 	optdepends = python-wandb: Weights & Biases training logger
 	optdepends = python-xformers: xFormers attention acceleration
 	optdepends = python-opencv: face restoration and image-processing pipelines
-	source = git+https://github.com/modelscope/DiffSynth-Studio.git#commit=7822d1781287971d24bf94e09bd487ce21ee08d8
+	source = git+https://github.com/modelscope/DiffSynth-Studio.git#commit=4e3496991455b300fd60ab023113422cd16899f5
 	sha256sums = SKIP
 
 pkgname = python-diffsynth
