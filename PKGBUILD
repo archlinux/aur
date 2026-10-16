@@ -1,17 +1,17 @@
 # Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 pkgname=bs-manager-git
-pkgver=v1.6.0.r2.g0319826
+pkgver=v1.6.0.r27.ge14e7ab
 pkgrel=1
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
 depends=()
-makedepends=('git' 'pnpm' 'corepack' 'libxcrypt-compat')
+makedepends=('git' 'pnpm' 'corepack' 'libxcrypt-compat' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!strip') # DepotDownloader breaks without this
+options=('!strip' '!lto') # bs-downloader breaks without !strip and !lto
 source=(
   'git+https://github.com/Zagrios/bs-manager.git'
   "${pkgname%-git}.desktop"
@@ -48,6 +48,7 @@ build() {
     cd "${pkgname%-git}"
 
     corepack pnpm install --frozen-lockfile
+    corepack pnpm build-rust-scripts
     corepack pnpm run build
     corepack pnpm exec electron-builder --config electron-builder.config.js --publish never --linux pacman --x64
 }
