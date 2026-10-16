@@ -1,6 +1,6 @@
 # Maintainer: vMohammad <vmohammad@vmohammad.dev>
 pkgname=framr
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Wayland screenshot, annotation and screen recording tool with ShareX-compatible uploads"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!lto')
 depends=('wayland' 'libxkbcommon' 'dbus' 'cairo' 'libxcursor' 'alsa-lib' 'ffmpeg' 'pipewire' 'libdrm' 'mesa')
 makedepends=('cargo' 'pkgconf' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8bae57668f46271596e35c4db0cc0e87cb66ab298e368909caccb8251612c813')
+sha256sums=('84ae0389b07f6f6c6218d85a3101515f047ed9b9a5aa376cbfce088e24844cf8')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
