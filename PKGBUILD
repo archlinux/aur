@@ -1,17 +1,35 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-smda
-pkgver=4.9.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Recursive diassembler optimized for CFG recovery from memory dumps"
 arch=(any)
 url="https://github.com/danielplohmann/smda"
 license=(BSD-2-Clause)
-depends=(python python-capstone python-dncil python-dnfile python-purepdb python-pycxxfilt lief)
-makedepends=(python-setuptools python-build python-installer python-wheel)
-checkdepends=(python-hypothesis python-pytest python-tqdm)
+depends=(
+    python
+    python-capstone
+    python-demangle
+    python-dncil
+    python-dnfile
+    python-purepdb
+    python-pycxxfilt
+    lief
+)
+makedepends=(
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
+)
+checkdepends=(
+    python-hypothesis
+    python-pytest
+    python-tqdm
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('96aceddfe2c492e8ee0c86c58bb4b94d180ec48592ea5b6f131e840ac4192115')
+sha256sums=('90624cafc075287dc6cb4b65bc05a4c5f6e5c92d2b1888b41de67ef693079e1b')
 
 prepare() {
     cd "smda-$pkgver"
@@ -27,7 +45,7 @@ check() {
     cd "smda-$pkgver"
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    HYPOTHESIS_MAX_EXAMPLES=0 test-env/bin/python -P -m pytest -x
+    test-env/bin/python -P -m pytest -x -k "not slow and not fuzz"
 }
 
 package() {
