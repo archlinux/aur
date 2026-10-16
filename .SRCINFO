@@ -1,16 +1,13 @@
 pkgbase = library-brainmap
-	pkgdesc = Brain Neuron Map - for Generate Maze and Path-Finder interface.
-	pkgver = 1.0.2
+	pkgdesc = Brain Neuron Map - for Generate Maze and Path-Finder interface with ULTRA fast
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/badcast/library-brainmap
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = make
 	makedepends = cmake
-	makedepends = gcc
 	depends = glibc
-	replaces = libacross
-	source = library-brainmap-1.0.2.tar.gz::https://codeload.github.com/badcast/library-brainmap/tar.gz/refs/tags/v1.0.2
-	sha256sums = 025d63d0cfac1a507fc5444aec176dcf058f646872b0baddabaf7910505319c0
+	source = library-brainmap-1.1.0.tar.gz::https://github.com/badcast/library-brainmap/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = ee5e3564e02fe615400c9c315b35eee8bed10bedba43377792348d8a6f39e4d7
 
 pkgname = library-brainmap
