@@ -30,16 +30,16 @@ fi
 
 # Ask user about where to look for mods
 if [[ $user_lang == "ru" ]]; then
-    SMAPI_MODS_PATH=$(kdialog --title "Выберите дерикторию которая содержит Моды для Stardew Valley" --getexistingdirectory $previous_mods_path)
+    SMAPI_MODS_PATH=$(kdialog --title "Выберите дерикторию которая содержит Моды для Stardew Valley" --getexistingdirectory "$previous_mods_path")
     status=$?
 elif [[ $user_lang == "de" ]]; then
-    SMAPI_MODS_PATH=$(kdialog --title "Wähle ein Verzeichnis, das Mods für Stardew Valley enthält" --getexistingdirectory $previous_mods_path)
+    SMAPI_MODS_PATH=$(kdialog --title "Wähle ein Verzeichnis, das Mods für Stardew Valley enthält" --getexistingdirectory "$previous_mods_path")
     status=$?
 elif [[ $user_lang == "pl" ]]; then
-    SMAPI_MODS_PATH=$(kdialog --title "Wybierz katalog zawierający Mody dla Stardew Valley" --getexistingdirectory $previous_mods_path)
+    SMAPI_MODS_PATH=$(kdialog --title "Wybierz katalog zawierający Mody dla Stardew Valley" --getexistingdirectory "$previous_mods_path")
     status=$?
 else
-    SMAPI_MODS_PATH=$(kdialog --title "Choose directory that contains Mods for Stardew Valley" --getexistingdirectory $previous_mods_path)
+    SMAPI_MODS_PATH=$(kdialog --title "Choose directory that contains Mods for Stardew Valley" --getexistingdirectory "$previous_mods_path")
     status=$?
 fi
 clear
