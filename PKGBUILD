@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2034
 pkgname=rong
-pkgver=5.2.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="A Material You and Base16 color generator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$pkgname")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=("glibc" "ffmpeg")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('475b91dfb97e2453aef65ce2c8983c1fc1d934449fb3dd8497134566f1d9bc37')
+sha256sums=('820435729df03de45be651cf46bf2744a999bd282d659dc308c284f3bf816f0f')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}" || exit
