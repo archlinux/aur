@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/funes-*.tar.gz
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log

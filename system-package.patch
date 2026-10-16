@@ -1,0 +1,62 @@
+--- a/src/commands/update.rs
++++ b/src/commands/update.rs
+@@ -68,6 +68,11 @@
+ /// executable in place. Idempotent — with `force`, reinstalls even when already up to date. The
+ /// executable it replaced, or `None` when it was up to date.
+ pub async fn run(force: bool) -> Result<Option<PathBuf>> {
++    if option_env!("FUNES_SYSTEM_PACKAGE").is_some() {
++        println!("The funes binary is managed by pacman; update the funes AUR package to upgrade it.");
++        return Ok(None);
++    }
++
+     let asset = ASSET.ok_or_else(|| {
+         anyhow!(
+             "no prebuilt funes binary for this platform ({}/{}) — build from source: {REPO}#building-from-source",
+@@ -190,6 +195,10 @@
+ /// offline, or the check fails. Never errors and never blocks for long — a short timeout and
+ /// any failure just yield no notice, so the check can't break or stall status.
+ pub async fn upgrade_notice() -> Option<String> {
++    if option_env!("FUNES_SYSTEM_PACKAGE").is_some() {
++        return None;
++    }
++
+     let bucket = release_bucket(false).ok()?;
+     let latest = match tokio::time::timeout(NOTICE_TIMEOUT, fetch_latest_version(&bucket)).await {
+         Ok(Ok(v)) => v,
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -218,11 +218,10 @@
+     /// flagged by an updated ruleset); needs no source transcript. Cleans the local memory only: it
+     /// does NOT scrub an already-published remote, which the push gate can only stop adding to.
+     Scrub,
+-    /// Update funes in place: download the latest release binary for this platform and replace the
+-    /// running executable, then bring the installed agent integrations to their newest release.
+-    /// Idempotent — `--force` reinstalls the binary even when already up to date.
++    /// Bring the installed agent integrations to their newest release.
++    /// The funes binary is managed by pacman; upgrade it through the funes AUR package.
+     Update {
+-        /// Reinstall the latest binary even if this build is already up to date.
++        /// Accepted for compatibility; binary replacement is disabled in this package.
+         #[arg(short, long)]
+         force: bool,
+     },
+--- a/docs/add.md
++++ b/docs/add.md
+@@ -87,10 +87,13 @@
+-
++
+ ## Getting the newest integration
+-
++
+-`funes update` replaces the binary, then takes each installed integration to what its source now
++`funes update` takes each installed integration to what its source now
+ holds and re-runs its setup, on the host's memory, only when that changed its files. None of an add's
+ one-time steps run: no first index, no first push. An install named with `--from` stays as it is,
+ and so does a copy no source lists. The update says so.
++
++In the Arch Linux package, the binary is managed by pacman. Upgrade the `funes` AUR
++package to update it; `funes update` (including `--force`) only updates integrations.
+-
++
+ Re-running `funes add <agent>` does the same for one agent, and more: it installs on the host's
+ memory, or binds the host to the one you name first, and re-runs the integration's setup, which clears what an older funes

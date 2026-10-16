@@ -1,0 +1,25 @@
+pkgbase = funes
+	pkgdesc = Durable, searchable memory of your past AI agent sessions
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/huggingface/funes
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = protobuf
+	depends = ca-certificates
+	depends = glibc
+	depends = libgcc
+	depends = tar
+	depends = trufflehog
+	optdepends = git: associate sessions with their Git repositories
+	options = !lto
+	source = funes-1.9.0.tar.gz::https://github.com/huggingface/funes/archive/refs/tags/v1.9.0.tar.gz
+	source = system-package.patch
+	sha256sums = d6c224ae811392f5e491b47d340ad27fb8bd9e3a3186d84348c1a9bd5f8e876d
+	sha256sums = cdee7dc04241f11fe2b95bb21d916d6f6dd19088ecd216b96a8b30a900a7b202
+
+pkgname = funes
