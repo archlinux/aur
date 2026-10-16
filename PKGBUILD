@@ -33,7 +33,8 @@ build() {
 pyfastyaz0yay0 @ git+https://github.com/LagoLunatic/PyFastYaz0Yay0.git@00e19626ab17621416d4b9055b17f0ea3fea66f3
 EOF
   ls worlds/*/requirements.txt | xargs -l uv pip install --quiet --overrides=requirements-override.txt -r
-  uv pip install --quiet pip cx-Freeze==8.4.0 # Used directly by the setup script
+  CX_FREEZE=(grep -o 'cx-Freeze==[0-9]\.[0-9]\.[0-9]' setup.py)
+  uv pip install --quiet pip $CX_FREEZE # Used directly by the setup script
   python setup.py build_exe -b build/MultiworldGG
 }
 
