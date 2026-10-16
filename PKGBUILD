@@ -1,7 +1,7 @@
 # Maintainer: Kruemmelbande  (kai.scheufen@gmail.com)
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
-pkgver=21.0.0
+pkgver=21.1.0
 pkgrel=1
 epoch=1
 pkgdesc="SlimeVR FBT software beta version"
