@@ -1,6 +1,6 @@
 pkgbase = snapraid-daemon
 	pkgdesc = a background service for SnapRAID: always-on, health monitoring, power management, web ui, rest api, notifications
-	pkgver = 1.15
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://www.snapraid.it/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = snapraid-daemon
 	license = GPL3
 	depends = libutil-linux
 	depends = glibc
-	depends = snapraid>=14.4
+	depends = snapraid>=15.0
 	depends = zip
 	optdepends = zlib
 	optdepends = zstd
 	backup = etc/snapraidd.conf
-	source = https://github.com/amadvance/snapraid-daemon/releases/download/v1.15/snapraid-daemon-1.15.tar.gz
+	source = https://github.com/amadvance/snapraid-daemon/releases/download/v2.0/snapraid-daemon-2.0.tar.gz
 	sha256sums = effac2e5acae64466a888fe4657a22a0d67cc69b74048e0acec7ee8d205f1986
 
 pkgname = snapraid-daemon
