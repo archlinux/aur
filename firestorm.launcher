@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd "/usr/lib/firestorm/"
-exec ./firestorm $*
+exec ./firestorm $@
