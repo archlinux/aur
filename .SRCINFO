@@ -6,10 +6,9 @@ pkgbase = riscv-pk-git
 	arch = x86_64
 	groups = risc-v
 	license = custom
+	makedepends = riscv64-linux-gnu-gcc
 	makedepends = git
-	depends = riscv64-linux-gnu-binutils
-	depends = riscv64-linux-gnu-gcc
-	depends = riscv64-linux-gnu-glibc
+	depends = spike-git
 	options = !strip
 	source = git+https://github.com/riscv-software-src/riscv-pk#branch=master
 	sha256sums = SKIP
