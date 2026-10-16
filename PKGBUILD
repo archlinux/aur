@@ -3,14 +3,14 @@
 _pkgbase=adskiller
 pkgname=$_pkgbase-desktop
 pkgver=1.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for Android/iOS cleaner and multi-tool GUI utility"
 arch=('x86_64')
 url="https://github.com/badcast/$_pkgbase"
 license=('GPL-3.0-only')
 depends=('glibc' 'qt6-base')
 makedepends=('cmake' 'gcc')
-optdeps=(
+optdepends=(
   'android-tools: Android support'
   'libimobiledevice: iOS support'
 )

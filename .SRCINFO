@@ -1,7 +1,7 @@
 pkgbase = adskiller-desktop
 	pkgdesc = Client for Android/iOS cleaner and multi-tool GUI utility
 	pkgver = 1.3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/adskiller
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,8 @@ pkgbase = adskiller-desktop
 	makedepends = gcc
 	depends = glibc
 	depends = qt6-base
+	optdepends = android-tools: Android support
+	optdepends = libimobiledevice: iOS support
 	source = adskiller-desktop-1.3.12.tar.gz::https://github.com/badcast/adskiller/archive/refs/tags/v1.3.12.tar.gz
 	source = adskiller-gui.desktop
 	source = adskiller-gui-desktop.png
