@@ -11,7 +11,7 @@ arch=('any')
 url='https://github.com/jkwill87/teletype'
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-setuptools')
+makedepends=('python-build' 'python-setuptools' 'python-installer')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('2dff646aba2ffa788ebc0cedc425eb1d180e7bef66e87ed8cd8b7d3aeba7e8ba')
 

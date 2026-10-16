@@ -7,6 +7,7 @@ pkgbase = python-teletype
 	license = MIT
 	makedepends = python-build
 	makedepends = python-setuptools
+	makedepends = python-installer
 	depends = python
 	source = teletype-1.3.4.tar.gz::https://github.com/jkwill87/teletype/archive/1.3.4.tar.gz
 	sha256sums = 2dff646aba2ffa788ebc0cedc425eb1d180e7bef66e87ed8cd8b7d3aeba7e8ba
