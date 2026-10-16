@@ -1,6 +1,6 @@
 pkgbase = jam-cli-bin
 	pkgdesc = CLI for reading and creating Jam bug reports (prebuilt binary)
-	pkgver = 1.27.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://jam.dev/docs/cli
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = jam-cli-bin
 	conflicts = jam-cli
 	options = !debug
 	options = !strip
-	source = jam-terms.html::https://jam.dev/legal/terms
-	sha256sums = e440f4fb37af7eca802203550e27affca2ac84cc95461a7e059fb252195a90bd
-	source_x86_64 = jam-cli-bin-1.27.1-x86_64::https://native.jam.dev/download/linux/x64?version=1.27.1
-	sha256sums_x86_64 = 1dd161b5a9cf2391e10f9419e271f671b3ab7c32844429111b74971eeedce85e
-	source_aarch64 = jam-cli-bin-1.27.1-aarch64::https://native.jam.dev/download/linux/arm64?version=1.27.1
-	sha256sums_aarch64 = e170dac6b92d246a9f3f320849e85969906991d2380d972e7253158ebc4bf6d9
+	source = jam-terms-1.28.0.html::https://jam.dev/legal/terms
+	sha256sums = 21caa0b3ebbf268502e44b7efffd83ff50f852dfae2d48a89e396f21df45445b
+	source_x86_64 = jam-cli-bin-1.28.0-x86_64::https://native.jam.dev/download/linux/x64?version=1.28.0
+	sha256sums_x86_64 = 57adc3a6773b32819d9518ff1744276ea62b044ac2d2adaa3cc3e8f8ff7b1137
+	source_aarch64 = jam-cli-bin-1.28.0-aarch64::https://native.jam.dev/download/linux/arm64?version=1.28.0
+	sha256sums_aarch64 = 57a73e08f8fad4196dbb394dcf3b6473740dd00b8d4f5bbc5bbbbfa29b894b3f
 
 pkgname = jam-cli-bin
