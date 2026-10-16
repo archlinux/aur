@@ -1,29 +1,25 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=python-jsonrpclib-pelix
-pkgver=0.3.1
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A Python (2 & 3) JSON-RPC over HTTP that mirrors xmlrpclib syntax"
+pkgdesc="JSON-RPC v2.0 client and server, usable with Pelix/iPOPO remote services"
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 url="https://github.com/tcalmant/jsonrpclib"
-license=('Apache')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/cc/a9/8767fbdaad0e5f53803d5d0e5f5cc778dc1efbabe7f2891e4b95806246b8/jsonrpclib-pelix-0.3.1.tar.gz)
-md5sums=('29b501ec629afe8f9cbb88d281e5d155')
-sha256sums=('5417b1508d5a50ec64f6e5b88907f111155d52607b218ff3ba9a777afb2e49e3')
+license=('Apache-2.0')
+source=(https://files.pythonhosted.org/packages/source/j/jsonrpclib-pelix/jsonrpclib_pelix-$pkgver.tar.gz)
+sha256sums=('353b66707c0fc4263edc8fd6bbd471b7aede823a83e4dbf1614b0c83aee20f18')
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
+  cd "jsonrpclib_pelix-$pkgver"
 
-  msg 'Building...'
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
+  cd "jsonrpclib_pelix-$pkgver"
 
-  msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
