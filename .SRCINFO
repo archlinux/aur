@@ -1,0 +1,17 @@
+pkgbase = sqlmux-bin
+	pkgdesc = A tmux-style terminal database client with vim keys
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/kackerx/sqlmux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sqlmux
+	conflicts = sqlmux
+	options = !strip
+	source_x86_64 = sqlmux-x86_64-0.5.0.tgz::https://github.com/kackerx/sqlmux/releases/download/v0.5.0/sqlmux_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d6e36570f400befe8f2e697230d79320c7c606cb579c21479316d85b39f89693
+	source_aarch64 = sqlmux-aarch64-0.5.0.tgz::https://github.com/kackerx/sqlmux/releases/download/v0.5.0/sqlmux_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fa5ea66b31408b95af668d6c13e897feee36ecccd0b5bbb5041b659df200c0e0
+
+pkgname = sqlmux-bin

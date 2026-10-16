@@ -1,0 +1,5 @@
+[sqlmux-bin]
+source = "github"
+github = "kackerx/sqlmux"
+use_latest_release = true
+prefix = "v"
