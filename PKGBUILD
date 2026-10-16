@@ -3,8 +3,8 @@
 _pkgname=gritql
 pkgname=gritql-bin
 pkgver=0.1.0alpha.1743007075
-pkgrel=1
-_tag="v0.1.0-alpha.1743007075"
+pkgrel=2
+_tag="v${pkgver/alpha/-alpha}"
 pkgdesc="GritQL query language for searching, linting, and modifying source code (prebuilt 'grit' CLI)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/biomejs/gritql"

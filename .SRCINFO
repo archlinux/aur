@@ -1,7 +1,7 @@
 pkgbase = gritql-bin
 	pkgdesc = GritQL query language for searching, linting, and modifying source code (prebuilt 'grit' CLI)
 	pkgver = 0.1.0alpha.1743007075
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/biomejs/gritql
 	arch = x86_64
 	arch = aarch64
