@@ -1,0 +1,21 @@
+pkgbase = tubetui-bin
+	pkgdesc = YouTube — and your own videos and music — in the terminal
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/polblancoo/tubetui
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tubetui
+	conflicts = tubetui
+	options = !strip
+	source = LICENSE-MIT-0.7.7::https://raw.githubusercontent.com/polblancoo/tubetui/v0.7.7/LICENSE-MIT
+	source = LICENSE-APACHE-0.7.7::https://raw.githubusercontent.com/polblancoo/tubetui/v0.7.7/LICENSE-APACHE
+	sha256sums = 0c632fdaad3edd3af2d4f47dc50581d0bdd45e09f72a9a6e7876b5c6615b9c9b
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = tubetui-x86_64-0.7.7.tgz::https://github.com/polblancoo/tubetui/releases/download/v0.7.7/tubetui-x86_64-linux.tar.gz
+	sha256sums_x86_64 = dc9fc58e646790fb482916dc154eb4f578df438f81b60f05c5419a61f0e4812a
+
+pkgname = tubetui-bin

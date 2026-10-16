@@ -1,0 +1,5 @@
+[tubetui-bin]
+source = "github"
+github = "polblancoo/tubetui"
+use_latest_release = true
+prefix = "v"
