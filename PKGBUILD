@@ -1,7 +1,7 @@
 # Maintainer: Marc Straube <email@marcstraube.de>
 
 pkgname=socket-cli
-pkgver=1.1.173
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Socket CLI — find and fix vulnerabilities, malware and supply chain risks in your dependencies'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('npm: socket-npm and socket-npx wrappers'
             'socket-patch: support for the "socket patch" command (separate Rust binary)')
 provides=('socket')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d3ba887cfd993cfe5cd0884bb4aef7c5c050f1ad9e5b1475d1539e63075ab35')
+sha256sums=('4fc646d7324d39699884d3aeb19bfa3df9e3c1e60a396c08a7543dc1a17259b5')
 
 build() {
   cd "$srcdir/socket-cli-$pkgver"
