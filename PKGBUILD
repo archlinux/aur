@@ -1,5 +1,5 @@
 pkgname=mbelib-neo-git
-pkgver=2.4.3.r2.g0a2335c
+pkgver=2.5.0.r0.g0e477e1
 pkgrel=1
 pkgdesc="IMBE, AMBE and AMBE+2 vocoder library with TETRA ACELP decoding. Supports P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA, ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
