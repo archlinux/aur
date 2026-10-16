@@ -1,20 +1,40 @@
-# Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
+# Maintainer: robertfoster
 pkgname=rayfish
-pkgver=0.5.2
+pkgver=0.5.2 # renovate: datasource=github-tags depName=rayfish/rayfish
 pkgrel=1
 pkgdesc="P2P mesh VPN powered by iroh"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rayfish/rayfish"
 license=('MPL-2.0')
 depends=('gcc-libs')
-options=(!strip)
+makedepends=('rust' 'cargo')
+options=(!lto)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('39e280375306c91d59f5ae642cabfee28ca6398490146177d22abd867d5ffbd4')
 
-source_x86_64=("ray-linux-x86_64-$pkgver::$url/releases/download/v$pkgver/ray-linux-x86_64")
-source_aarch64=("ray-linux-aarch64-$pkgver::$url/releases/download/v$pkgver/ray-linux-aarch64")
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
-sha256sums_x86_64=('4b85d32c2cff117e4ada6f9af4a954892bd323653db322b8325ca937c209a568')
-sha256sums_aarch64=('8191382473bf3cab91fd999c6b77ea06326f6304a0bf8f4948fc5911b16c1d1b')
+build() {
+  cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+}
 
 package() {
-  install -Dm755 "$srcdir/ray-linux-$CARCH-$pkgver" "$pkgdir/usr/bin/ray"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 target/release/ray \
+    "${pkgdir}/usr/bin/ray"
+  install -Dm644 contrib/rayfish.service \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  sed -i 's|/usr/local/bin/ray|/usr/bin/ray|' \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md \
+    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

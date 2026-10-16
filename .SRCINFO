@@ -6,11 +6,11 @@ pkgbase = rayfish
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
+	makedepends = rust
+	makedepends = cargo
 	depends = gcc-libs
-	options = !strip
-	source_x86_64 = ray-linux-x86_64-0.5.2::https://github.com/rayfish/rayfish/releases/download/v0.5.2/ray-linux-x86_64
-	sha256sums_x86_64 = 4b85d32c2cff117e4ada6f9af4a954892bd323653db322b8325ca937c209a568
-	source_aarch64 = ray-linux-aarch64-0.5.2::https://github.com/rayfish/rayfish/releases/download/v0.5.2/ray-linux-aarch64
-	sha256sums_aarch64 = 8191382473bf3cab91fd999c6b77ea06326f6304a0bf8f4948fc5911b16c1d1b
+	options = !lto
+	source = rayfish-0.5.2.tar.gz::https://github.com/rayfish/rayfish/archive/v0.5.2.tar.gz
+	sha256sums = 39e280375306c91d59f5ae642cabfee28ca6398490146177d22abd867d5ffbd4
 
 pkgname = rayfish
