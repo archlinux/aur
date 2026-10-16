@@ -1,13 +1,13 @@
 pkgbase = cockpit-dockermanager
 	pkgdesc = A Cockpit plugin for managing Docker containers
-	pkgver = 1.0.8.2
+	pkgver = 1.0.9.1
 	pkgrel = 1
 	url = https://github.com/chrisjbawden/cockpit-dockermanager
 	arch = any
 	license = MIT
 	depends = cockpit
 	depends = docker
-	source = git+https://github.com/chrisjbawden/cockpit-dockermanager.git#tag=v1.0.8.2
+	source = git+https://github.com/chrisjbawden/cockpit-dockermanager.git#tag=v1.0.9.1
 	sha256sums = SKIP
 
 pkgname = cockpit-dockermanager
