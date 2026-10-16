@@ -1,6 +1,6 @@
 pkgbase = ionterm-git
 	pkgdesc = GPU-rendered terminal emulator for the Ionix desktop, with kitty-style graphics and features
-	pkgver = r51.f6c9302
+	pkgver = r57.68e0279
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionterm
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ionterm-git
 	depends = vulkan-icd-loader
 	depends = vulkan-driver
 	depends = fontconfig
-	optdepends = ttf-jetbrains-mono-nerd: the default font
+	depends = ttf-jetbrains-mono-nerd
 	optdepends = noto-fonts-emoji: colour emoji
 	provides = ionterm
 	conflicts = ionterm
