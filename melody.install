@@ -1,45 +1,21 @@
-_new_melody() {
+_renamed() {
   cat <<'MESSAGE'
-==> This is a new Melody, not an update of the old one.
+==> Trackknife is Melody now (ADR-0287).
 
-The Go daemon this package used to build is gone. melodyd is now a C++
-engine that owns the library and playback, and it does not read anything
-the old one left behind:
+The program is melody, its menu entry Melody. At its first start its
+settings, tabs and cache move once from Trackknife's folders
+(~/.config/trackknife, ~/.local/share/trackknife, ~/.cache/trackknife) to
+melody's; the engine moves its library to ~/.local/share/melody/engine as
+it restarts. Nothing has to be done by hand.
 
-  - no MPD protocol (port 6600) and no web UI or HTTP API (port 6701);
-    clients speak Melody's own protocol on port 6603, streams go out on 6604
-  - no melodyd.toml and no setup wizard: options are flags, in
-    ~/.config/melody/melodyd.conf for the user service
-  - a new library database: add your music again and let it scan
-  - melody-tui, melody-rofi, melody-musiclist, melody-lrcmatch and
-    melody-watcher do not work with it; remove them if you have them
-
-What talks to it: trackknife-git (the desktop app), melody-cli-git, the
-Android app, and melody-agent-git for speakers elsewhere.
-
-Setup: /usr/share/doc/melodyd-git/melody.md
+Setup and servers: /usr/share/doc/melodyd-git/melody.md
 MESSAGE
 }
 
 post_install() {
-  _new_melody
-  cat <<'MESSAGE'
-
-On a desktop, Trackknife starts the engine itself. On a server:
-
-  echo 'MELODYD_OPTIONS=--name myserver' > ~/.config/melody/melodyd.conf
-  systemctl --user enable --now melodyd.service
-  loginctl enable-linger $USER    # to run without being logged in
-MESSAGE
+  _renamed
 }
 
 post_upgrade() {
-  # Coming from the Go daemon, whose history ended at r116; the rewrite's
-  # starts far above it. Quiet on ordinary updates after that.
-  if [ "$(vercmp "$2" r300)" -lt 0 ]; then
-    _new_melody
-  fi
-  cat <<'MESSAGE'
-Restart the engine to use the new one: systemctl --user restart melodyd.service
-MESSAGE
+  _renamed
 }
