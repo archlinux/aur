@@ -1,6 +1,6 @@
 pkgbase = agentics-vocal-auth
 	pkgdesc = Agentics Vocal Auth - speaker verification, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = agentics-vocal-auth
 	depends = agentics
 	options = !strip
 	options = !debug
-	source = agentics-vocal-auth-0.1.16-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-vocal-auth-0.1.16-x86_64.enc
-	sha512sums = be29544501bf32719ccc4efbd0f00f9dfab038458964972556c57d43ab3576ef0da18b4bea99193db56bbf0c768b938d890e259af31a89fd80fc1ef68909af99
+	source = agentics-vocal-auth-0.1.17-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-vocal-auth-0.1.17-x86_64.enc
+	sha512sums = a97d5f1923075d909c848652266e82bbb3cba97fd09107acc448931b1734d7f21c2c42afff1450b0b769c2daaeba5c0c0ee50648296c7637c43710ce49622713
 
 pkgname = agentics-vocal-auth
