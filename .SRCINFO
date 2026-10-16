@@ -1,6 +1,6 @@
 pkgbase = grunden-work-bin
 	pkgdesc = Grunden Cowork desktop - sovereign AI workbench (prebuilt release)
-	pkgver = 0.17.76
+	pkgver = 0.17.77
 	pkgrel = 1
 	url = https://grunden.ai
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = grunden-work-bin
 	provides = grunden-work
 	conflicts = grunden-work
 	options = !strip
-	source = grunden-work-bin-0.17.76.tar.gz::https://work.grunden.ai/installers/grunden-work-linux-x64-0.17.76.tar.gz
-	source = grunden-work-bin-0.17.76.tar.gz.asc::https://work.grunden.ai/installers/grunden-work-linux-x64-0.17.76.tar.gz.asc
+	source = grunden-work-bin-0.17.77.tar.gz::https://work.grunden.ai/installers/grunden-work-linux-x64-0.17.77.tar.gz
+	source = grunden-work-bin-0.17.77.tar.gz.asc::https://work.grunden.ai/installers/grunden-work-linux-x64-0.17.77.tar.gz.asc
 	validpgpkeys = F0278514447EB0CC73F11D02E2773FCE0DD16E0A
-	sha256sums = 9b678c1954babaf58efecb12ab20a8d0a1b26c7c07537244b1396a67adff2175
+	sha256sums = c0d0a5b881a4882dcafbd5f5e9378fd98790880bf29614c26cc2146b1550e64d
 	sha256sums = SKIP
 
 pkgname = grunden-work-bin
