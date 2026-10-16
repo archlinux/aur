@@ -2,7 +2,7 @@
 
 pkgname=sshman
 pkgauthor=eightshone
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 
 _npmname=${pkgname}
@@ -24,7 +24,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('a1a47272a8d95e598aefcaea9d67f24d21a64952abf4e91939520c3beda6f546c77153b42c1c8d5888ef46aac31f8834483b879f8ac8365218305a74b301e186')
+b2sums=('c5ffd0de079e1e0532b424e1f6ad10d2dc8250425e259bf94ae230a1299dd864957a182b57e4a7f4d266a1f24567f74350aef8bda708e78184de535686880f13')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
