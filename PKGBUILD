@@ -11,6 +11,8 @@ pkgdesc="Lightweight launcher for jar/war and native (tar.gz) Java artifacts"
 arch=('x86_64')
 url='https://github.com/beangle/jstart'
 license=('GPL-3.0-or-later')
+# jstart 的所有下载都走宿主 curl(1)（不链接 libcurl，见上游 docs/build.md），
+# 所以 curl 是硬依赖；namcap 的 "may not be needed" 是误报。
 depends=('curl')
 makedepends=('ldc' 'dub' 'git')
 optdepends=(
