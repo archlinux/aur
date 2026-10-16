@@ -2,12 +2,20 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-bin
 pkgname=('shelly-bin' 'shelly-flatpak-backend-bin')
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
 license=('GPL-3.0-only')
-makedepends=('go-md2man')
+makedepends=('go-md2man' 'binutils')
+# Declare the expected release variant and verify it against the shipped CLI.
+_shelly_libalpm=${SHELLY_LIBALPM:-true}
+case $_shelly_libalpm in
+  true) _shelly_native_depends=('pacman'); _shelly_native_optdepends=() ;;
+  false) _shelly_native_depends=(); _shelly_native_optdepends=('pacman: package-owner lookup for pacfile merging') ;;
+  *) printf 'SHELLY_LIBALPM must be true or false\n' >&2; return 1 ;;
+esac
+
 source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
     "Shelly-Flatpak-Backend-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-Flatpak-Backend-linux-x64.tar.gz"
@@ -17,10 +25,10 @@ source=(
     'shelly-flatpak-integrate'
 )
 
-sha256sums=('cd6443eb5cce22560dca583b4b935891379e8b8ce4836f3ba85eaa52adb6da47'
-            '8919be4c25f56c28c3b037c656c6a600b0f600cd9edb74fee128babecc59acfe'
-            'd7adb207c0073b93679ff3b8741a734ab62b48283134465b47844884bd211bb9'
-            'a86884190d69b483376bf4f7b224483cae7fc5a65b61f98e46e805f838e053ed'
+sha256sums=('3e3c0bcd9b03e5f386e30030e0db5c9bce68ba62d4aa2ec8f39943eeb6b01ff4'
+            'dff8bc06582009dab700451c244d9a7d3f58ffe084f8fafee1604854a60afa97'
+            '9f551f28d79748c7e255a35cb577081b3263e65d290b4809e10066ed17ce30e5'
+            '4b7cb0e42eb322de9eb616d22ca05823f91d178db5b8b67497d497ed495aca9c'
             'cf0dc0a6d1865b9010054b36941e7bf4d445c3e7549219889f07ab08283c5c0f'
             '07bca40395c180578450c523ea052b036aa8197d8a871efcce55f937c101c323')
 
@@ -30,7 +38,7 @@ package_shelly-bin() {
   conflicts=('shelly' 'shelly-git')
   backup=('etc/shellybuild.conf')
   depends=(
-      'pacman'
+      "${_shelly_native_depends[@]}"
       'gtk4'
       'glib2'
       'sudo'
@@ -41,12 +49,15 @@ package_shelly-bin() {
       'dbus'
       'glibc'
       'libarchive'
+      'curl'
+      'sqlite'
       'dconf'
       'gnupg'
       'zstd'
       'json-glib'
   )
   optdepends=(
+      "${_shelly_native_optdepends[@]}"
       'fish: Fish shell completions'
       'zsh: Zsh shell completions'
       'libstarfish: dependency viewer for arch packages'
@@ -54,6 +65,14 @@ package_shelly-bin() {
       'util-linux: isolate fresh-root provisioning for --isolated builds'
       'fuse2: run AppImages that require FUSE 2'
   )
+
+  local shelly_dynamic
+  shelly_dynamic=$(LC_ALL=C readelf -d "$srcdir/shelly") || return 1
+  if [[ $_shelly_libalpm == true && $shelly_dynamic != *libalpm.so* ]] ||
+     [[ $_shelly_libalpm == false && $shelly_dynamic == *libalpm.so* ]]; then
+    printf 'Shelly binary does not match SHELLY_LIBALPM package metadata\n' >&2
+    return 1
+  fi
 
   # Install Shelly.Gtk binary
   install -Dm755 "$srcdir/shelly-ui" "$pkgdir/usr/bin/shelly-ui"
