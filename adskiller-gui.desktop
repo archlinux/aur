@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Adskiller Desktop
+Exec=adskiller-gui
+Icon=adskiller-gui-desktop
+Terminal=false
+Categories=Utility;System;Settings;
+Keywords=android;ios;cleaner;adb;tools;adskiller;
+StartupNotify=true
