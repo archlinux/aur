@@ -7,6 +7,8 @@ pkgbase = hachimi-world-bin
 	license = AGPL-3.0
 	depends = hicolor-icon-theme
 	source = https://storage.hachimi.world/distribution/linux/hachimi-world-1.5.0-3-g8218e29-178.deb
+	source = hachimi_world.desktop
 	sha256sums = a4f3d1b65dfd38d646c02123ea8dac0c7f48bc21031438ff3bfe85ce48bf28d2
+	sha256sums = 6b0f18a105b54197adfd13cc762c93485d538ec2fcc5830cdc1f1b4ee493efc9
 
 pkgname = hachimi-world-bin

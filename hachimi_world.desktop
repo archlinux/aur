@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Hachimi World
+Name[zh_CN]=基米天堂
+Name[zh_TW]=基米天堂
+Comment=Hachimi World
+Comment[zh_CN]=基米天堂
+Comment[zh_TW]=基米天堂
+Exec=/usr/bin/Hachimi_World
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/512x512/apps/hachimi-world.png
+Categories=AudioVideo;Audio;Player;Music;
+Keywords=media;player;video;audio;

@@ -9,8 +9,14 @@ arch=('x86_64')
 depends=('hicolor-icon-theme')
 url='https://hachimi.world/'
 license=('AGPL-3.0')
-source=("https://storage.hachimi.world/distribution/linux/hachimi-world-${pkgver}-${pkgrel}-${_build_hash}.deb")
-sha256sums=('a4f3d1b65dfd38d646c02123ea8dac0c7f48bc21031438ff3bfe85ce48bf28d2')
+source=(
+  "https://storage.hachimi.world/distribution/linux/hachimi-world-${pkgver}-${pkgrel}-${_build_hash}.deb"
+  "hachimi_world.desktop"
+)
+sha256sums=(
+  'a4f3d1b65dfd38d646c02123ea8dac0c7f48bc21031438ff3bfe85ce48bf28d2'
+  '6b0f18a105b54197adfd13cc762c93485d538ec2fcc5830cdc1f1b4ee493efc9'
+)
 
 prepare() {
   cd "$srcdir"
@@ -32,7 +38,7 @@ package() {
   # desktop dir
   install -dm 755 "${pkgdir}/usr/share/applications"
   install -dm 755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-  install -Dm0644 "lib/hachimi-world-Hachimi_World.desktop" "${pkgdir}/usr/share/applications/hachimi-world.desktop"
+  install -Dm0644 "../../hachimi_world.desktop" "${pkgdir}/usr/share/applications/hachimi-world.desktop"
   install -Dm0644 "lib/Hachimi_World.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/hachimi-world.png"
 }
 
