@@ -2,7 +2,7 @@
 pkgname=wayleaf-4d
 pkgver=0.3.0
 pkgrel=1
-pkgdesc='KDE Plasma 6 screen-edge color sync for Nanoleaf 4D'
+pkgdesc='KDE Plasma 6 Wayland tray applet for Nanoleaf 4D screen-edge color sync'
 arch=('x86_64')
 url='https://github.com/avitretiak/wayleaf-4d'
 license=('GPL-3.0-or-later')
@@ -23,24 +23,15 @@ optdepends=(
 )
 source=(
   "https://github.com/avitretiak/wayleaf-4d/releases/download/v${pkgver}/wayleaf-4d-${pkgver}.tar.gz"
-  "wayleaf-4d-${pkgver}-vendor.tar.gz::https://github.com/avitretiak/wayleaf-4d/releases/download/v${pkgver}/wayleaf-4d-${pkgver}-vendor.tar.gz"
 )
 sha256sums=(
   '0eeaf73d3e278fd3889112f912792e3268c998df0b7439497852311374672057'
-  '8a6c4554a926e9a3908060a80789c3b75336f552d333e987e015810d4dc5d755'
 )
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  tar -xf "$srcdir/wayleaf-4d-$pkgver-vendor.tar.gz"
-  mkdir -p .cargo
-  cat > .cargo/config.toml <<'EOF'
-[source.crates-io]
-replace-with = "vendored-sources"
-
-[source.vendored-sources]
-directory = "aur-vendor"
-EOF
+  RUSTUP_TOOLCHAIN=stable CARGO_HOME="$srcdir/cargo-home" \
+    cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
