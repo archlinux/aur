@@ -1,0 +1,23 @@
+[Unit]
+Description=ChaptarrNG audiobook and ebook library manager
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=chaptarrng
+Group=chaptarrng
+WorkingDirectory=/usr/lib/chaptarrng/bin
+ExecStart=/usr/lib/chaptarrng/bin/Chaptarr /nobrowser -data=/var/lib/chaptarrng
+Restart=on-failure
+RestartSec=5s
+KillSignal=SIGINT
+TimeoutStopSec=90s
+UMask=0027
+ProtectSystem=full
+ProtectHome=read-only
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+post_install() {
+  systemd-sysusers
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/chaptarrng.conf
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+  systemd-sysusers
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/chaptarrng.conf
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+post_remove() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
