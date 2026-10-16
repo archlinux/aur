@@ -13,7 +13,6 @@ license=('GPL-2.0-only')
 backup=('etc/notebook.conf' 'etc/$notebook.conf.py')
 depends=('inotify-tools' 'pandoc' 'python' 'retext')
 optdepends=(
-    #'retext: Markdown-Editor for writing notebooks'
     'python-pyenchant: Spell checking for ReText'
     'aspell-en: English dictionary'
     'aspell-de: German dictionary'
@@ -34,11 +33,9 @@ package() {
     install -Dm644 "${_name}-watcher.service" "$pkgdir/usr/lib/systemd/user/${_name}-watcher.service"
     install -Dm644 "retext.service" "$pkgdir/usr/lib/systemd/user/retext.service"
     install -Dm644 "${_name}_server.py" "$pkgdir/usr/share/$_name/${_name}_server.py"
-    # install -Dm644 "retext.js" "$pkgdir/usr/share/$_name/retext.js"
     install -Dm644 "tamplate.html" "$pkgdir/usr/share/$_name/tamplate.html"
     install -Dm644 "rename-links.lua" "$pkgdir/usr/share/$_name/rename-links.lua"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_name/LICENSE"
-    # install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_name/README.md"
 
     # Manpage (falls vorhanden):
     if [[ -f "$_name.1" ]]; then
