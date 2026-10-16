@@ -1,14 +1,14 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=fluent-reader
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 _pkgname="${pkgname}-${pkgver}"
 pkgdesc='Modern desktop RSS reader built with Electron, React, and Fluent UI'
 arch=('any')
 url='https://hyliu.me/fluent-reader/'
 license=('BSD')
 depends=('hicolor-icon-theme')
-makedepends=('nodejs' 'node-gyp' 'bun')
+makedepends=('nodejs' 'node-gyp' 'npm')
 source=("https://github.com/yang991178/fluent-reader/archive/v${pkgver}.tar.gz"
         'fluent-reader.desktop')
 sha256sums=('8769ea045406dc733fccda99596962b4dda8a39cb53402a6602b9ac55a9e1236'
@@ -78,10 +78,10 @@ EOF
 
 build() {
   cd "$_pkgname"
-  bun install --no-save
+  npm install --allow-git=all
   node patch-griffel.js
   export NODE_ENV=production
-  bun run build
+  npm run build
   node_modules/.bin/electron-builder --linux dir -p never
 }
 
