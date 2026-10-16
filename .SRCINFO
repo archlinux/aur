@@ -1,0 +1,35 @@
+pkgbase = mantle-bin
+	pkgdesc = A Wayland shell engine that runs shells written in Lua (release binaries)
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/anasgets111/mantle
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = libgcc
+	depends = glibc
+	depends = libglvnd
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = mesa
+	depends = pacman
+	depends = pam
+	depends = polkit
+	depends = systemd-libs
+	depends = wayland
+	optdepends = niri: workspaces, windows and keyboard layout
+	optdepends = hyprland: workspaces, windows and keyboard layout
+	optdepends = paru: AUR package updates
+	optdepends = yay: AUR package updates
+	optdepends = sound-theme-freedesktop: notification sounds
+	optdepends = lua-language-server: type-checking the config in an editor
+	provides = mantle=0.7.5
+	conflicts = mantle
+	conflicts = mantle-git
+	options = !debug
+	options = !strip
+	backup = etc/pam.d/mantle
+	source = https://github.com/anasgets111/mantle/releases/download/v0.7.5/mantle-0.7.5-x86_64-linux.tar.gz
+	sha256sums = b57b66edcb3ba4d7e6b6c36ed2d4fd944cedab82ddb91d920636f980e6b06f7c
+
+pkgname = mantle-bin
