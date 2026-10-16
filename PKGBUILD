@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=dncdbg
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Managed-code debugger for .NET applications with DAP support'
 url='https://github.com/viewizard/dncdbg'
@@ -12,7 +12,7 @@ makedepends=(cmake ninja clang llvm)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/viewizard/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('ff3477fbfbae7d441de03692ff99f39ddb20fbf9489c9dd9c975165d9a1d24e9')
+sha256sums=('c4eb2fa30315c22f546876321d1821a5ce5aac15cbca75499663a23824d779c1')
 
 build() {
     local cmake_options=(
