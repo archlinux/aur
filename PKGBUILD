@@ -2,7 +2,7 @@
 
 pkgauthor="paulrobello"
 pkgname="parllama"
-pkgver=0.9.2
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="TUI for Ollama and other LLM providers"
 
@@ -16,7 +16,7 @@ makedepends=('python' 'uv')
 depends=('python')
 
 source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/v${pkgver}.tar.gz")
-sha256sums=('2c2bb92eff73db90a658cb18c5d9138fc944f6edee332ac1263d8ffde8463de2')
+sha256sums=('e54804ffb8b15b877ac7906e5fdbacdfa489680928f6096f23fd6ac1f0e246a9')
 
 package() {
     cd "${pkgname}-${pkgver}"
