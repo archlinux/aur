@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.1.38.r0.g256d5cf3
+pkgver=1.1.42.r0.gf05daaf9
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -68,6 +68,7 @@ prepare() {
     git -C gopher64 config --local submodule.parallel-rdp/parallel-rdp-standalone.url "${srcdir}/parallel-rdp-standalone-gopher64"
     git -C gopher64 config --local submodule.src/compat/sse2neon.update none
     git -C gopher64 config --local submodule.retroachievements/rcheevos.url "${srcdir}/rcheevos"
+    git -C gopher64 config --local submodule.libadrenotools.update none
     git -C gopher64 -c protocol.file.allow='always' submodule update
     
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='gopher64/Cargo.toml'
