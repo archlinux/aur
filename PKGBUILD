@@ -1,6 +1,6 @@
 # Maintainer: Avi Tretiak <contact at avitretiak dot dev>
 pkgname=wayleaf-4d
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='KDE Plasma 6 Wayland tray applet for Nanoleaf 4D screen-edge color sync'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
   'plasma-workspace'
   'kirigami'
   'qt6-declarative'
+  'hicolor-icon-theme'
 )
 makedepends=('cargo')
 optdepends=(
@@ -24,7 +25,7 @@ source=(
   "https://github.com/avitretiak/wayleaf-4d/releases/download/v${pkgver}/wayleaf-4d-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '9f94c38a6689dd0bb3d82a036cebf2388e2ea9be2545927c8c25c305b54a3c8c'
+  '652c330f681d90e6b8adb22b1e1219510900d1eb31a8ca8ac79cb5a620071942'
 )
 
 prepare() {
@@ -64,6 +65,9 @@ package() {
     "$pkgdir/usr/share/plasma/plasmoids/$_app_id/metadata.json"
   install -d "$pkgdir/usr/share/plasma/plasmoids/$_app_id/contents"
   cp -a "$_applet/contents/." "$pkgdir/usr/share/plasma/plasmoids/$_app_id/contents/"
+  install -Dm644 "$_applet/contents/ambient-light.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_app_id.svg"
+
 
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
