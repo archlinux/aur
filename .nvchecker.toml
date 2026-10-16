@@ -2,4 +2,4 @@
 source = "github"
 github = "dungngminh/simutil"
 use_latest_release = true
-prefix = "v"
+prefix = "cli-v"
