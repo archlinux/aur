@@ -2,8 +2,8 @@
 
 pkgname=python-opentelemetry-exporter-prometheus
 _distname=opentelemetry-exporter-prometheus
-_release=1.44.0
-pkgver=0.65b0
+_release=1.45.1
+pkgver=0.66b1
 pkgrel=1
 pkgdesc='Prometheus metric exporter for OpenTelemetry'
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=(
   'python-pytest'
   'python-wrapt')
 source=("$pkgname-$_release.tar.gz::$url/archive/refs/tags/v$_release.tar.gz")
-sha256sums=('928038ad82a20dca5cd31490263faa1c844dde5705a35d895e72518060ca8e12')
+sha256sums=('7fa3279ff22ee1322ab9e92290d4b0547e19ce164ff3ebbbeb3fcdaf96f0f2a4')
 
 build() {
   cd "opentelemetry-python-$_release/exporter/$_distname"
