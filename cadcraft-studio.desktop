@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=CadCraft Studio
+GenericName=CAD Suite
+Comment=Every CadCraft app in one desktop install, on one license
+Exec=cadcraft-studio %U
+Icon=cadcraft-studio
+Terminal=false
+Categories=Graphics;Engineering;2DGraphics;3DGraphics;
+MimeType=application/x-cadcraft-sheetset;image/vnd.dwg;image/vnd.dxf;application/x-pln;application/x-pla;application/x-tpl-project;application/x-bpn;application/x-modelcraft;application/vnd.las;application/vnd.laszip;application/x-landxml;application/x-rfa;application/x-rft;application/x-rte;application/x-rvt;application/geo+json;application/geopackage+sqlite3;application/vnd.google-earth.kml+xml;application/vnd.google-earth.kmz;application/x-bcf;application/vnd.shp;application/x-step-ifc;model/gltf-binary;model/gltf+json;model/obj;model/vnd.collada+xml;x-scheme-handler/ccstudio;
+StartupWMClass=cadcraft-studio
