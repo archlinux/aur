@@ -31,13 +31,13 @@ sha256sums_x86_64=('9e4c1cb4482433b91373167d72bc0b6e8f90e4a177eebb00979a295e610b
 package() {
     cd "${pkgdir}"
 
-    # this extracts all into the pkgdir
-    tar xf "${srcdir}/data.tar.gz"
+    # Extracts all into the pkgdir
+    tar -xf "${srcdir}/data.tar.gz"
 
-    # add categories
+    # Add categories to the launcher
     sed -e 's/Categories=/Categories=System;Utilites;/g' -i "${pkgdir}/usr/share/applications/NeoHtop.desktop"
 
-    # install LICENSE and README.md
+    # Install LICENSE and README.md
     install -Dm644 "${srcdir}/README-${pkgver}.md" "./usr/share/doc/${pkgname}/README.md"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "./usr/share/licenses/${pkgname}/LICENSE"
 } 
