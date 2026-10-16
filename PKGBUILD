@@ -36,7 +36,7 @@ source_x86_64=(
   "bitty-${pkgver}.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums_x86_64=(
-  '17b66174d73d2c45a6aee7767cff5a340d8b0e256b41e132f44963bf32ee79ca'
+  '007bc150ddd5aab6f5dfde6c2ba38699e6ba05dc8f3f131c438a235bb8d38855'
   'SKIP'
 )
 
