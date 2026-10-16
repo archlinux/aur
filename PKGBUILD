@@ -2,7 +2,7 @@
 # Current maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=python-yt
 _module_name=yt
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data."
 arch=(any)
@@ -41,8 +41,9 @@ optdepends=(
     'python-glue: input/output to glueviz format'
 )
 options=(!emptydirs)
-source=("https://pypi.io/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-sha256sums=('e0883a89c2543b436c3778f555edf253c71f252f744752dc1688f8524ad03b0b')
+
+source=("https://github.com/yt-project/${_module_name}/archive/refs/tags/${_module_name}-${pkgver}.tar.gz")
+sha256sums=('c00f481080122698d8578fb4aa7a8c998f5fb6569edf40ce044d9ac23ba09c9d')
 
 build() {
   cd "$srcdir/${_module_name}-$pkgver"
