@@ -1,6 +1,6 @@
 pkgbase = termo-bin
 	pkgdesc = A terminal built from the ground up to run coding agents and your own local agents
-	pkgver = 0.21.1
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://www.termo.im/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = termo-bin
 	provides = termo
 	conflicts = termo
 	options = !strip
-	source_x86_64 = termo-x86_64-0.21.1.deb::https://github.com/nicoriff/termo-releases/releases/download/v0.21.1/Termo_0.21.1_amd64.deb
-	sha256sums_x86_64 = 89b924062d6b90057d2ed0b72b3c4e50a26e5cf59372f638f6b222f73b7fd581
+	source_x86_64 = termo-x86_64-0.22.0.deb::https://github.com/nicoriff/termo-releases/releases/download/v0.22.0/Termo_0.22.0_amd64.deb
+	sha256sums_x86_64 = a6c4ea73c315ec216f4b9613d5c315546f4971374262156c222edd98e9c0e752
 
 pkgname = termo-bin
