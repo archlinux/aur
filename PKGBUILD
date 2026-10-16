@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ctl
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="CLI for COSMIC Desktop configuration management"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cosmic-utils/cosmic-ctl"
@@ -9,12 +9,12 @@ license=('GPL-3.0-or-later')
 depends=('libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6d0feb0179be9f96e32f2ba60e5c65905eee8b880f6c3254c6833fcb363111c8')
+sha256sums=('b6f44c5a3d1bb1334a35231ddaf86ce8dd469c25eec0870a15b94a43014a6d9a')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
