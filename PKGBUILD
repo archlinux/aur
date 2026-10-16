@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Terminal browser for IMDb Top 250 movies and series written in Rust"
 
-pkgver=0.7.7
+pkgver=0.8.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('1de24196d45e42668a79979afdfe8e564223967ea56548151ca918f88ccee8b9')
-sha256sums_x86_64=('8d99290a51f30a560609aaa05e8371dea18a33dd97652c38fb43edfb0774c3ac')
-sha256sums_aarch64=('e35b63bdfe8a57ba073875ebd5d1e8659c9a1ebc0ec035c6da1d6df41e4dfd9e')
+sha256sums_x86_64=('3224b339962cf5bff33e071eb8e89b08a1fdc5673d744e8eff99eb7c64ded15d')
+sha256sums_aarch64=('d59e6f8f409a1583b046d77d24581539c7a314c9abff083b1c9e8b6548fbf48b')
 
 
 package() {
