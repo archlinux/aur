@@ -2,7 +2,7 @@
 
 pkgname=opencl-vanity-gpg
 pkgver="1.0.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Rusty GPU/OpenCL-powered vanity PGP keys generator"
 arch=(
     "x86_64"
@@ -24,12 +24,12 @@ license=('AGPL-3.0')
 
 source=("https://github.com/TransparentLC/opencl_vanity_gpg/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=("1156a1e11862bcd2f07db4b2815a53e8c53fa5b1560b48c6d57e8c25fdd3b7f3")
+sha256sums=('1156a1e11862bcd2f07db4b2815a53e8c53fa5b1560b48c6d57e8c25fdd3b7f3')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${srcdir}/opencl_vanity_gpg-${pkgver}"
-    cargo fetch --locked --target host-tuple
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {

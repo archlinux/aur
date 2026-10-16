@@ -1,7 +1,7 @@
 pkgbase = opencl-vanity-gpg
 	pkgdesc = Rusty GPU/OpenCL-powered vanity PGP keys generator
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TransparentLC/opencl_vanity_gpg
 	arch = x86_64
 	arch = i686
