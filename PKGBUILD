@@ -2,7 +2,7 @@
 # 维护目录：~/aur-packages/micdn
 
 pkgname=micdn
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Beangle minimal CDN (static, Maven, npm, blob, www)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   "micdn.tmpfiles"
 )
 sha256sums=('SKIP'
-            '081e93ab98fb3fafc307ce166a6268fe892ac5b9c67cc0c8fa87c9c422cef2b8'
+            '16d1e0ce6e10e38924afc61a03f9d65dca693135150650f50a8a39425b1fb5f4'
             'abbeb4d5fc1c271a950d1bd9f8e316e0d696931a9cebbb56651186cc8ef148c6'
             'd80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f')
 
