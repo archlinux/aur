@@ -2,8 +2,8 @@
 
 pkgname=gulchce-bin
 _pkgname=gulchce
-pkgver=150
-_commit=b7e7da5eb9436a3df523b3c7170eae5394b946db # the commit tagged build-$pkgver
+pkgver=152
+_commit=3384f31d1e597a75489299942be80b5c9ba7d2f7 # the commit tagged build-$pkgver
 pkgrel=1
 pkgdesc='OpenCE fork with experimental features such as Halo MCC custom maps (needs your own Xbox disc image)'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=("halo-linux-release-$pkgver.zip::$url/releases/download/build-$pkgver/ha
         "icon-512-$pkgver.png::$_raw/port/assets/icon/opence-icon.png"
         'gulchce.sh'
         'gulchce.desktop')
-sha256sums=('ffc8eff67dbc23fd18154b72b58e8aca6d0f3c5dc96896a4f3416a49ad9a5203'
+sha256sums=('9bd59647d99a68337412dc97d376098e632d28f25071fbad8a150cf2768d9509'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499'
             '0527a6c96c139873a56e35b8b8a1c66e1d301a28e26b95db0294ff61630c1f94'
             'f2b8a07d6f9612ee29b939dce19597e67cd8db41c5ab5b91a45a1995d5f2935f'
