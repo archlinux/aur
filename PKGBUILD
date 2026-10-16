@@ -2,21 +2,21 @@
 _pkgname=slabikar
 pkgname=latex-${_pkgname}-font
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Handwritten Czech/Slovak font slabikar"
 arch=('any')
 url="http://petr.olsak.net/ftp/olsak/slabikar/"
-license=('LPPL')
-depends=('texlive-core')
+license=('LicenseRef-slabikar')
+depends=('texlive-basic')
 install="${pkgname}.install"
-base_url="http://petr.olsak.net/ftp/olsak/slabikar/"
-source=("${base_url}README"
-        "${base_url}slabi.pdf"
-        "${base_url}slabi.tex"
-        "${base_url}slabikar.mf"
-        "${base_url}slabikar.pfb"
-        "${base_url}slabikar.tfm"
-        "${base_url}ukazka.tex"
+_base_url="http://petr.olsak.net/ftp/olsak/slabikar/"
+source=("${_base_url}README"
+        "${_base_url}slabi.pdf"
+        "${_base_url}slabi.tex"
+        "${_base_url}slabikar.mf"
+        "${_base_url}slabikar.pfb"
+        "${_base_url}slabikar.tfm"
+        "${_base_url}ukazka.tex"
         )
 
 
@@ -27,6 +27,7 @@ package() {
     install -Dm644 slabikar.pfb ${pkgdir}/usr/share/texmf-dist/fonts/type1/public/${_pkgname}/slabikar.pfb
     install -d ${pkgdir}/usr/share/doc/${_pkgname}
     install -Dm644 ukazka.tex slabi.pdf README ${pkgdir}/usr/share/doc/${_pkgname}/
+    install -Dm644 README ${pkgdir}/usr/share/licenses/${pkgname}/README
 }
 md5sums=('41593108e2283ea64c035892833bfb0e'
          'a88d137e93bde8f82fd906d16e5e7bf7'

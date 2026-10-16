@@ -1,12 +1,12 @@
 pkgbase = latex-slabikar-font
 	pkgdesc = Handwritten Czech/Slovak font slabikar
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://petr.olsak.net/ftp/olsak/slabikar/
 	install = latex-slabikar-font.install
 	arch = any
-	license = LPPL
-	depends = texlive-core
+	license = LicenseRef-slabikar
+	depends = texlive-basic
 	source = http://petr.olsak.net/ftp/olsak/slabikar/README
 	source = http://petr.olsak.net/ftp/olsak/slabikar/slabi.pdf
 	source = http://petr.olsak.net/ftp/olsak/slabikar/slabi.tex
@@ -23,4 +23,3 @@ pkgbase = latex-slabikar-font
 	md5sums = b6477d47702a83388d2fde37a8008054
 
 pkgname = latex-slabikar-font
-
