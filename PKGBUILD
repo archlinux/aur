@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fotema
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Photo gallery for Linux"
 arch=('x86_64')
@@ -39,17 +39,12 @@ checkdepends=(
   'appstream'
   'desktop-file-utils'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'https://github.com/blissd/fotema/pull/751.patch')
-sha256sums=('d33a793ec76c86cf33c9c555cde816a1cf1fbbdd7a68ad84affc0ac58ee57ba3'
-            '455fb43509e80da08bf8e404cecdcfe4fdb907b112c25557283710864d491b49')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2422758d4d0721dc146e30707d410d36d1ea6d1020fa7b0f162d7e1b03c36aad')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-
-  # Bump dependencies to fix build with ffmpeg 9.0
-  patch -Np1 -i ../751.patch
 
   cargo fetch --target host-tuple
 }
