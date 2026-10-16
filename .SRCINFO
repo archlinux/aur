@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-bin
 	pkgdesc = Raw image converter forked from RawTherapee with ease of use in mind
-	pkgver = 1.26.9
+	pkgver = 1.26.10
 	pkgrel = 1
 	url = https://github.com/artraweditor/ART
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = art-rawconverter-bin
 	conflicts = art-rawconverter
 	options = !strip
 	options = !debug
-	source_x86_64 = art-rawconverter-1.26.9-x86_64.tar.xz::https://github.com/artraweditor/ART/releases/download/1.26.9/ART-1.26.9-linux64.tar.xz
-	sha256sums_x86_64 = c08038728c0590e198c3a20bd32a88993b208bb744a97d82ba705a90f8aa2f2f
-	source_aarch64 = art-rawconverter-1.26.9-aarch64.tar.xz::https://github.com/artraweditor/ART/releases/download/1.26.9/ART-1.26.9-linux-aarch64.tar.xz
-	sha256sums_aarch64 = d9187b853b6faf2ba881a38be72ec8a2c638190381713a83cf1267b0d7f94ee2
+	source_x86_64 = art-rawconverter-1.26.10-x86_64.tar.xz::https://github.com/artraweditor/ART/releases/download/1.26.10/ART-1.26.10-linux64.tar.xz
+	sha256sums_x86_64 = 7a58560e98be5c849cec1b31d0512a99b199ee6357623ef377c0f8cda065cc55
+	source_aarch64 = art-rawconverter-1.26.10-aarch64.tar.xz::https://github.com/artraweditor/ART/releases/download/1.26.10/ART-1.26.10-linux-aarch64.tar.xz
+	sha256sums_aarch64 = b46e672facf650c2a3d3608d88217f7b78f8e63b661959b6082c2dff1d63c915
 
 pkgname = art-rawconverter-bin
