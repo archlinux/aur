@@ -1,0 +1,65 @@
+diff -u a/metadata.json b/metadata.json
+--- a/metadata.json	2026-10-16 09:43:16.468853811 -0600
++++ b/metadata.json	2026-10-16 09:43:48.064768451 -0600
+@@ -10,6 +10,7 @@
+         "47",
+         "48",
+         "49",
+-        "50"
++        "50",
++        "51"
+     ]
+ }
+diff --git a/src/panel_settings.ts b/src/panel_settings.ts
+index b72c6f3f..446ae661 100644
+--- a/src/panel_settings.ts
++++ b/src/panel_settings.ts
+@@ -134,7 +134,7 @@ function floating_window_exceptions(ext: Ext, menu: any): any {
+ 
+     let icon = new St.Icon({ icon_name: 'go-next-symbolic', icon_size: 16 });
+ 
+-    let widget = new St.BoxLayout({ vertical: false });
++    let widget = new St.BoxLayout();
+     widget.add_child(label);
+     widget.add_child(icon);
+     widget.set_x_expand(true);
+diff --git a/src/search.ts b/src/search.ts
+index 09460ba4..52a4e472 100644
+--- a/src/search.ts
++++ b/src/search.ts
+@@ -19,6 +19,14 @@ import { Overview } from 'resource:///org/gnome/shell/ui/overview.js';
+ 
+ let overview_toggle: any = null;
+ 
++function set_vertical_layout(layout: any): void {
++    if (typeof layout.set_orientation === 'function') {
++        layout.set_orientation(Clutter.Orientation.VERTICAL);
++    } else {
++        layout.set_vertical(true);
++    }
++}
++
+ export class Search {
+     dialog: Shell.ModalDialog = new ModalDialog({
+         styleClass: 'pop-shell-search modal-dialog',
+@@ -207,8 +215,8 @@ export class Search {
+ 
+         this.list = new St.BoxLayout({
+             styleClass: 'pop-shell-search-list',
+-            vertical: true,
+         });
++        set_vertical_layout(this.list);
+ 
+         const scroller = new St.ScrollView();
+         scroller.add_child(this.list);
+@@ -435,9 +443,9 @@ export class SearchOption {
+ 
+         const info_box = new St.BoxLayout({
+             y_align: Clutter.ActorAlign.CENTER,
+-            vertical: true,
+             x_expand: true,
+         });
++        set_vertical_layout(info_box);
+         info_box.add_child(label);
+ 
+         if (description) {
