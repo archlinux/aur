@@ -2,7 +2,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 pkgname=mrbayes
 _up_pkgname=MrBayes
-pkgver=3.2.8
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="A program for the Bayesian estimation of phylogeny"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://nbisweden.github.io/MrBayes/"
 depends=('readline')
 optdepends=('beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep')
 source=(https://github.com/NBISweden/MrBayes/archive/v${pkgver}.tar.gz)
-sha256sums=('331ceb0af036d07cd8bd7091d39632f6d102d8b98c160409d19df3958db85dc2')
+sha256sums=('03d86cbf6ef52336d3dc6d7cd73cde415bb368bba6994f0586b47083426ac17c')
 
 build() {
   cd ${srcdir}/${_up_pkgname}-${pkgver}
