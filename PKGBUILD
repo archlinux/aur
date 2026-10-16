@@ -2,7 +2,7 @@
 _base=glasbey
 pkgname=python-${_base}
 pkgdesc="Algorithmically generate categorical color palettes"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 arch=(any)
 url="https://github.com/lmcinnes/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numba python-colorspacious python-matplotlib python-scikit-learn
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-release-${pkgver}.tar.gz::${url}/archive/release-${pkgver}.tar.gz)
-sha512sums=('419751dd8e12b7d16e5d73c4a33e57abece56c771bbb780aadcdf695c79a4841f0fd74900dd69b4d95917ffde3ecdeb8a5bfe9389e47d82e0149840a18ddaa89')
+sha512sums=('76d0e649f088fb18cdf840ca267937f5d6659f5182b966c62d9f6f39cfd111cd5ad1b832b5a6c9e20475c9c2f9eb1f1da2f5cdccb404774eceae777972ed7b56')
 
 build() {
   cd ${_base}-release-${pkgver}
