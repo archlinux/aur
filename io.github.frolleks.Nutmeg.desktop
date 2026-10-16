@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Roblox (nutmeg)
+Comment=Play Roblox with the macOS client through rosemary
+Exec=/usr/bin/nutmeg launch %u
+Icon=applications-games
+Terminal=false
+Categories=Game;
+MimeType=x-scheme-handler/roblox-player;x-scheme-handler/roblox;
+StartupNotify=true

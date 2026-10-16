@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=nutmeg Settings
+Comment=Configure how nutmeg installs and runs Roblox
+Exec=/usr/bin/nutmeg settings
+Icon=applications-games
+Terminal=false
+Categories=Game;
+StartupNotify=true

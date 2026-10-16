@@ -1,0 +1,27 @@
+pkgbase = nutmeg-git
+	pkgdesc = Play macOS Roblox on Linux.
+	pkgver = r23.3eff518
+	pkgrel = 1
+	url = https://github.com/frolleks/nutmeg.git
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python3
+	depends = python-gobject
+	depends = gtk4
+	depends = vulkan-driver
+	depends = xdg-utils
+	optdepends = rosemary: System-level rosemary runner
+	provides = nutmeg
+	conflicts = nutmeg
+	source = git+https://github.com/frolleks/nutmeg.git
+	source = io.github.frolleks.Nutmeg.desktop
+	source = io.github.frolleks.Nutmeg.Settings.desktop
+	md5sums = SKIP
+	md5sums = 37a0c7731283b65fd56da7c6f66e59d5
+	md5sums = 9b22356068488149107a4505b9fc8ba7
+
+pkgname = nutmeg-git
