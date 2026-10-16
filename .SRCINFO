@@ -1,0 +1,26 @@
+pkgbase = hypertube-git
+	pkgdesc = A truly native YouTube Music client
+	pkgver = 0.2.0.r11.g7b37adc
+	pkgrel = 1
+	url = https://github.com/hyper-tube/app
+	arch = any
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	makedepends = svgo
+	makedepends = vulkan-headers
+	makedepends = python-fonttools
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = qt6-positioning
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = curl
+	depends = zlib
+	depends = mpv
+	provides = hypertube
+	source = git+https://github.com/hyper-tube/app.git
+	sha256sums = SKIP
+
+pkgname = hypertube-git
