@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v6.3.0
-Build: posix/68-1563-g29c031e9e94 (48)
+Version: v6.4.0
+Build: posix/69-16-g359abb179a3 (22)
 
-Date: 30th April 2026
+Date: 24th September 2026
 
-Extensible Virtual Display Interface version included: v1.14.14-5 (3dafd62)
+Extensible Virtual Display Interface version included: v1.15.1 (bad8b39)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.14.14-5 (3dafd62)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v6.3.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v6.4.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and ethernet interfaces.
 
@@ -45,13 +45,21 @@ I.  Future development
 C.  Bugs fixed in this release
 ==============================
 
-C.13 Changes in 6.3.0 release
+C.15 Changes in 6.4.0 release - 09/24/2026, 12:00:00
+-----------------------------
+- Added preliminary support for Ubuntu 26.10
+- New apt-based distribution channel via Launchpad PPA (PS-6112)
+- Debian packages now conform to Debian packaging policy (PS-5805)
+- Fixed slow network speeds when using the Ethernet port on DisplayLink docks (VIFR-7972)
+- Improved compatibility with system-provided libusb, supporting version 1.0.24 and newer (PS-6141)
+
+C.14 Changes in 6.3.0 release - 04/30/2026, 12:00:00
 -----------------------------
 - Support for Ubuntu 26.04
 - Fixed an issue where disabling one of the DisplayLink screens using xrandr caused multiple screens to go black. (VIFR-7205)
-- DL-7xxx: Fixed an issue causing blank screens after resuming from sleep. (VIFR-7208, VIFR-7254)
+- DL-7xxx: Fixed an issue casuing blank screens after resuming from sleep. (VIFR-7208, VIFR-7254)
 
-C.12 Changes in 6.2.0 release
+C.13 Changes in 6.2.0 release - 7/24/2025, 10:54:42
 -----------------------------
 - Compatibility with evdi-dkms(>=1.12.0) and libevdi1(>=1.12.0) community debian packages (PS-4882)
 - Support for kernel up to 6.16
@@ -63,14 +71,14 @@ C.12 Changes in 6.2.0 release
 - DL-7xxx: Monitors interoperability issues (VIFR-6199, VIFR-6200, VIFR-6278)
 - DL-7xxx: Fixed driver stability issues that could lead to unexpected splash screen apperance during cold boot (VIFR-5828)
 
-C.11 Changes in 6.1.1 release
+C.12 Changes in 6.1.1 release - 4/4/2025, 13:49:36
 -----------------------------
 - DL-7xxx series: Improved splash screen functionality. (WS-8450, WS-7209, VIFR-5303, VIFR-4658)
 - DL-7xxx series: HDMI cannot output correct resoluion. (VIFR-5301)
 - DL-7xxx series: Support for 2.5G LAN connection. (WS-6934)
 - DL-6xxx series: Avoid blanking extended display while host PC is under heavy load. (VIFR-5507)
 
-C.10 Changes in 6.1 release
+C.11 Changes in 6.1 release - 10/4/2024, 15:28:35
 -----------------------------
 - DL−7xxx series: LG 34WK95UP monitor was not working properly on DisplayPort. (VIFR-5046)
 - DL−7xxx series: Improved interoperability with DisplayPort monitors at 4K 144 Hz. (VIFR-4803)
@@ -82,7 +90,7 @@ C.10 Changes in 6.1 release
 - Incorrect scaling and blinking windows on Wayland. (PS-3915)
 - New support tool
 
-C.9  Changes in 6.0 release
+C.10  Changes in 6.0 release - 4/10/2024, 12:43:00
 -----------------------------
 - DL-7xxx: Support for DP++ (HDMI) video
 - DL-7xxx: Added Unigraf UCD-400/500 for DisplayPort compliance testing
@@ -90,18 +98,18 @@ C.9  Changes in 6.0 release
 - Added preliminary support for kernel 6.9
 - General stability updates and bug fixes
 
-C.8  Changes in 5.9 release
+C.9  Changes in 5.9 release - 11/22/2023, 7:43:54
 -----------------------------
 - Drop support for Ubuntu 18.04
 
-C.8  Changes in 5.8 release
+C.8  Changes in 5.8 release - 7/17/2023, 9:39:44
 -----------------------------
 - Alpha support for DisplayLink DL-7400 products
 - Support for new DisplayLink DL-6150 products
 - Support for Ubuntu 23.04
 - Added preliminary support for kernel 6.5
 
-C.7  Changes in 5.7 release
+C.7  Changes in 5.7 release - 2/10/2023, 10:46:55
 -----------------------------
 - New driver distribution channel via Synaptics apt repository (https://www.synaptics.com/sites/default/files/Ubuntu/)
 - In some cases DisplayLink installer freezes when Secure Boot is enabled. (PS-2455)
@@ -109,13 +117,13 @@ C.7  Changes in 5.7 release
 - Added preliminary support for kernel 6.2
 - Added preliminary support for Ubuntu 23.04
 
-C.6  Changes in 5.6.1 release
+C.6  Changes in 5.6.1 release - 7/18/2022, 9:40:41
 -----------------------------
 - Added support for new DisplayLink DL-6350 products
 - DL-6xxx series: fixed LAN sent package status for half-duplex 100M fixed switch config (VIFR-1040)
 - DL-6xxx series: fixed timing issue on some modes with Dell AW2721D monitor (VIFR-1045)
 
-C.5  Changes in 5.6 release
+C.5  Changes in 5.6 release - 4/25/2022, 8:12:11
 -----------------------------
 - Added preliminary support for kernel 5.18
 - Added support for Ubuntu 22.04
@@ -129,7 +137,7 @@ C.5  Changes in 5.6 release
 - Fix kernel bugcheck in dma-buf on device plug-in (PS-1691)
 - Fixed drm device leaks on evdi module unload (PS-1839)
 
-C.4  Changes in 5.5 release
+C.4  Changes in 5.5 release - 3/24/2022, 9:12:11 
 -----------------------------
 - Added preliminary support for kernel 5.17
 - Community fixes for evdi kernel module
@@ -140,7 +148,7 @@ C.4  Changes in 5.5 release
 - Fix corruptions under cursor in X session on DL-3xx0 devices
 - Fix runit scripts for displayLink-driver daemon
 
-C.3  Changes in 5.5 beta release
+C.3  Changes in 5.5 beta release - 2/23/2022, 13:40:45
 -----------------------------
 - Added support for kernel 5.14 and 5.15
 - Added preliminary support for kernel 5.16
@@ -148,7 +156,7 @@ C.3  Changes in 5.5 beta release
 - DL-6xxx series: adding RTL8211FD-VX and RTL8211E Ethernet PHYs (WS1597)
 - DL-41xx: improved firmware flashing time, visible from following update onwards
 
-C.2  Changes in 5.4.1 release
+C.2  Changes in 5.4.1 release - 12/8/2021, 12:47:38
 -----------------------------
 - Added support for kernel 5.13
 - Added beta support for kernel 5.14 beta (33194)
@@ -157,7 +165,7 @@ C.2  Changes in 5.4.1 release
 - Improved performance in Wayland session with AMD GPU machines (33151)
 - DL-6xxx series: fixed blinking mouse cursor while moving across displays (32987)
 
-C.1  Changes in 5.4.0 release
+C.1  Changes in 5.4.0 release - 8/17/2021, 6:58:43
 -----------------------------
 - Added support for kernel 5.11 and 5.12
 - DL-6xxx series: added support for nVidia G-SYNC monitors
@@ -168,11 +176,11 @@ C.1  Changes in 5.4.0 release
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 26.04, 25.04, 24.04, 22.04 and 20.04.
+This release has been prepared to be compatible with Ubuntu 26.04, 25.04, 24.04, 22.04 and 20.04 (with preliminary support for Ubuntu 26.10).
 Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
-Supported Linux Kernel version range is from 4.15 to 6.15.
+Supported Linux Kernel version range is from 4.15 to 7.3.0-rc3.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
@@ -184,6 +192,16 @@ Source code for the open-source components can be found at Synaptics' DisplayLin
 F. How to install
 =================
 
+Option 1: Installing via Launchpad PPA (recommended)
+----------------------------------------------------
+To install the DisplayLink driver via the Launchpad PPA repository:
+
+sudo add-apt-repository ppa:synaptics-displaylink/displaylink-driver
+sudo apt update
+sudo apt install displaylink-driver
+
+Option 2: Installing via standalone installer (.run)
+----------------------------------------------------
 To install the release, from a terminal window, with root permissions use the command:
 
 sudo ./displaylink-driver-XXXX.run
@@ -212,6 +230,8 @@ DL-1x5 and DL-1x0 devices use the open source udl driver, which is not developed
 
 H. Limitations & known issues
 =============================
+
+After upgrading to DisplayLink Manager 6.4.0 from a previous version, the DisplayLink device must be replugged for displays to start rendering pixels.
 
 A list of limitations and known issues can be found here:
 http://support.displaylink.com/knowledgebase/articles/641668

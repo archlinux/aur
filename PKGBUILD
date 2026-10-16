@@ -5,10 +5,10 @@
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=6.3
-_releasedate=2026-06
-_pkgfullver=6.3.0-48
-pkgrel=2
+pkgver=6.4
+_releasedate=2026-10
+_pkgfullver=6.4.0-22
+pkgrel=1
 pkgdesc="Linux driver for DisplayLink devices"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.synaptics.com/products/displaylink-graphics"
@@ -24,8 +24,8 @@ source=(displaylink-driver-${pkgver}.zip::https://www.synaptics.com/sites/defaul
         99-displaylink.rules
 	displaylink.service
         displaylink-sleep.sh)
-sha256sums=('7269856c7527060c513215ce1b5a36fef074d8e89cab89bcab13df342acce098'
-            'eb1dddc973eee7ca6c7d213c9be8ebca89701e47782fe8340ab4957d6d4cb66c'
+sha256sums=('7e1a81d2194a40b20de704cb3846d66cbfb1e7837e30de23455729ba14f0296d'
+            'd58ccb8dd5e5c19092ee204a0d485c07a4633c0c46f7a96dae05dd3812833e2a'
             '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
             'f46839b1f5a1642392c739c3044177f70dd313e7e14db7b121509fa73c91107d'
             '35b5c5cf24c0b43cbcb054e8547a2a6966ad764de40208d5364b8d57d793a635'
@@ -33,8 +33,8 @@ sha256sums=('7269856c7527060c513215ce1b5a36fef074d8e89cab89bcab13df342acce098'
             '9b4609423fd9cfaa8cad8acd086dd6b92cd09182facbb28792affeac1ecc4a45')
 
 prepare() {
-  chmod +x displaylink-driver-${_pkgfullver}.run
-  ./displaylink-driver-${_pkgfullver}.run \
+  chmod +x run/displaylink-driver-${_pkgfullver}.run
+  ./run/displaylink-driver-${_pkgfullver}.run \
      --noexec \
      --target $pkgname-$pkgver \
      --nox11 \
