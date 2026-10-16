@@ -1,8 +1,8 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=ipcalc-redhat
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Redhat's modernized ipcalc fork with IPv6 support"
 arch=('x86_64')
 url="https://gitlab.com/ipcalc/ipcalc"
@@ -10,22 +10,20 @@ license=('GPL-2.0-or-later')
 conflicts=('ipcalc')
 depends=('glibc')
 makedepends=(
-	'geoip'
+	'jq'
+	'libmaxminddb'
 	'meson'
 	'pkgconf'
-	'ruby-erb'
-	'ruby-kramdown-parser-gfm'
 	'ruby-ronn'
 )
-optdepends=('geoip: display geoinfo for IP with -g')
+optdepends=('libmaxminddb: display geoinfo for IP with -g')
 source=("https://gitlab.com/ipcalc/ipcalc/-/archive/${pkgver}/ipcalc-${pkgver}.tar.gz")
-sha256sums=('451f323764f37ea6057e0ade60a0473938232ab2a92b97ffdc8c4860a8c76cfc')
+sha256sums=('f6fc9076d3f1a64d1e050e1d6edd3fd61b91db71d0dfa1d9d184618e81865747')
 
 build() {
 	cd "$srcdir/ipcalc-$pkgver"
 	meson setup build \
-		-Duse_maxminddb=disabled \
-		-Duse_geoip=enabled \
+		-Duse_maxminddb=enabled \
 		-Duse_runtime_linking=enabled
 	ninja -C build
 }
