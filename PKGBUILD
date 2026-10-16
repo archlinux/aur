@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A tiling window manager for the terminal: i3's tree, Hyprland's dwindle, configured in Lua"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,7 +32,7 @@ optdepends=('git: hako, the plugin manager, clones itself on the first start'
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('93f18237cb55271dda7216095aed5ff99699a5abeec7829bf8ce17c70c1beea7')
+sha256sums_x86_64=('ca0cca5d05dbf7ccf61b6e736fd9250d2920607d8cfbcae6cc393c2753d4fabd')
 
 
 case ${CARCH} in

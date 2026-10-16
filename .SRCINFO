@@ -1,6 +1,6 @@
 pkgbase = ranma-bin
 	pkgdesc = A tiling window manager for the terminal: i3's tree, Hyprland's dwindle, configured in Lua
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/masshirodev/ranma
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ranma-bin
 	provides = ranma
 	conflicts = ranma
 	options = !strip
-	source_x86_64 = ranma-x86_64-0.3.0.tgz::https://github.com/masshirodev/ranma/releases/download/v0.3.0/ranma-0.3.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 93f18237cb55271dda7216095aed5ff99699a5abeec7829bf8ce17c70c1beea7
+	source_x86_64 = ranma-x86_64-0.4.0.tgz::https://github.com/masshirodev/ranma/releases/download/v0.4.0/ranma-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ca0cca5d05dbf7ccf61b6e736fd9250d2920607d8cfbcae6cc393c2753d4fabd
 
 pkgname = ranma-bin
