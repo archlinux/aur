@@ -1,0 +1,5 @@
+[qrr-bin]
+source = "github"
+github = "harryxu/qrr"
+use_latest_release = true
+prefix = "v"

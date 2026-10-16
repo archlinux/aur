@@ -1,0 +1,19 @@
+pkgbase = qrr-bin
+	pkgdesc = Turns complex commands into interactive recipes, with prompts for values and menus for options
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/harryxu/qrr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = qrr
+	conflicts = qrr
+	options = !strip
+	source = README-0.1.1.md::https://raw.githubusercontent.com/harryxu/qrr/v0.1.1/README.md
+	sha256sums = 5e272495fc8db7531a39c081cc1a4f8d1d3542c8edd4d23116afbc6a28022978
+	source_x86_64 = qrr-x86_64-0.1.1.tgz::https://github.com/harryxu/qrr/releases/download/v0.1.1/qrr_v0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5d77deb7f67be331da2867fad1420e822c557579a3db007e9e13dbe2ddde13af
+	source_aarch64 = qrr-aarch64-0.1.1.tgz::https://github.com/harryxu/qrr/releases/download/v0.1.1/qrr_v0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e6d0c8049cd7242b9d11fb28d24382e6519f18f48446e0f298c0109e8070bd8
+
+pkgname = qrr-bin
