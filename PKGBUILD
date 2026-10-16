@@ -3,7 +3,7 @@
 _pkgauthor=n0-computer
 _pkgname=dumbpipe
 pkgname=${_pkgname}-bin
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc='Unix pipes between devices'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -23,8 +23,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linu
 sha256sums=('27866d975f6c8f87a37eb495a1164a435e067901a4f7fdb258025be86ec238bc'
             'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353'
             '7ee92352fcac2b427c4754822087d0aeb3afc99951b71bd15cc4c2e5c61c1b60')
-sha256sums_x86_64=('9ac5e71983eba4cf4f47e92e4694dad0f0133abba4f14dd2a2a8428cece88fef')
-sha256sums_aarch64=('8cd099afe80c69ac58bfbc975b28e29d41caea141f3dd396457345a739836a0e')
+sha256sums_x86_64=('bce08ab425dbe2642f8e89ba7e0d8e910a2da36cca662e56f793054a69f68b30')
+sha256sums_aarch64=('9b5797cdfeb3d4a91575e1a7696971eec9403e400121744c88891b8ecbf2d26f')
 
 package() {
   cd "${srcdir}/" || exit
