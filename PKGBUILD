@@ -11,7 +11,7 @@ provides=('openaside')
 conflicts=('openaside')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@$pkgver/openaside-$pkgver-linux-x64.tar.gz")
-sha256sums=('1a0da27aa502dc9e332923afa5bfe2c3f5d2418518e76c3855914f6ad1e3dffd')
+sha256sums=('c3183ce160bed019c3e3e8fd7474f41764ad87ea8a0e6b7102e523677d215e09')
 
 package() {
   cd "openaside-$pkgver"
