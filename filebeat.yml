@@ -1,0 +1,42 @@
+# Wazuh - Filebeat configuration file
+#
+# Envia las alertas de /var/ossec/logs/alerts/alerts.json al Wazuh Indexer.
+# Ajusta output.elasticsearch.hosts si el indexer no esta en esta misma maquina.
+#
+# Las credenciales NO van aqui, van en el keystore de filebeat:
+#   filebeat keystore create
+#   echo -n 'admin'     | filebeat keystore add username --stdin --force
+#   echo -n '<PASSWORD>'| filebeat keystore add password --stdin --force
+
+output.elasticsearch:
+  hosts: ["127.0.0.1:9200"]
+  protocol: https
+  username: ${username}
+  password: ${password}
+  ssl.certificate_authorities:
+    - /etc/filebeat/certs/root-ca.pem
+  ssl.certificate: "/etc/filebeat/certs/filebeat.pem"
+  ssl.key: "/etc/filebeat/certs/filebeat-key.pem"
+setup.template.json.enabled: true
+setup.template.json.path: '/etc/filebeat/wazuh-template.json'
+setup.template.json.name: 'wazuh'
+setup.ilm.overwrite: true
+setup.ilm.enabled: false
+
+filebeat.modules:
+  - module: wazuh
+    alerts:
+      enabled: true
+    archives:
+      enabled: false
+
+logging.metrics.enabled: false
+
+# Necesario en kernels/glibc recientes: sin permitir rseq explicitamente el
+# filtro seccomp por defecto de filebeat aborta el proceso al arrancar.
+seccomp:
+  default_action: allow
+  syscalls:
+  - action: allow
+    names:
+    - rseq

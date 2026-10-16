@@ -1,4 +1,80 @@
+pre_upgrade()
+{
+  echo "=== PRE-UPGRADE ==="
+  systemctl stop filebeat 2>/dev/null || true
+  cp /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.rpmsave 2>/dev/null || true
+
+  # Hasta 7.10.2-3 el modulo wazuh y wazuh-template.json se descargaban con curl
+  # desde post_install, asi que no pertenecen a ningun paquete. Desde 7.10.2-4
+  # los empaquetamos, y pacman aborta la actualizacion si esos ficheros ya estan
+  # en disco sin dueno. Los retiramos aqui; el paquete los reinstala completos.
+  if [ -e /usr/share/filebeat/module/wazuh ] \
+     && ! pacman -Qo /usr/share/filebeat/module/wazuh &>/dev/null; then
+    echo "Removing unowned wazuh module left by previous versions..."
+    rm -rf /usr/share/filebeat/module/wazuh
+  fi
+  if [ -e /etc/filebeat/wazuh-template.json ] \
+     && ! pacman -Qo /etc/filebeat/wazuh-template.json &>/dev/null; then
+    echo "Removing unowned wazuh-template.json left by previous versions..."
+    rm -f /etc/filebeat/wazuh-template.json
+  fi
+}
+
+post_upgrade()
+{
+  echo "=== POST-UPGRADE ==="
+
+  # Restore previous config
+  if [ -f /etc/filebeat/filebeat.yml.rpmsave ]; then
+    cp /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.rpmnew
+    cp /etc/filebeat/filebeat.yml.rpmsave /etc/filebeat/filebeat.yml
+    echo "Previous config restored. New config saved as filebeat.yml.rpmnew"
+  fi
+
+  # El modulo wazuh y wazuh-template.json vienen dentro del paquete; no hay
+  # nada que descargar aqui.
+
+  systemctl daemon-reload
+  systemctl start filebeat
+}
+
 post_install()
 {
-  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-manager/step-by-step.html and follow the configure instructions for filebeat"
+  echo "=== POST-INSTALL ==="
+  echo ""
+  echo "=========================================="
+  echo "  WAZUH FILEBEAT INSTALLATION COMPLETE"
+  echo "=========================================="
+  echo ""
+  echo "The wazuh module and /etc/filebeat/wazuh-template.json ship with this"
+  echo "package. /etc/filebeat/filebeat.yml is preconfigured for an all-in-one"
+  echo "deployment (indexer on 127.0.0.1:9200)."
+  echo ""
+  echo "=== STEP 1: CONFIGURE FILEBEAT ==="
+  echo ""
+  echo "Only if the indexer runs on another host, edit /etc/filebeat/filebeat.yml:"
+  echo "  - output.elasticsearch.hosts: [\"<INDEXER_IP>:9200\"]"
+  echo ""
+  echo "Store the credentials in the keystore (never in the yml):"
+  echo "  filebeat keystore create"
+  echo "  echo -n 'admin'      | filebeat keystore add username --stdin --force"
+  echo "  echo -n '<PASSWORD>' | filebeat keystore add password --stdin --force"
+  echo ""
+  echo "=== STEP 2: DEPLOY CERTIFICATES ==="
+  echo ""
+  echo "  tar -xf wazuh-certificates.tar -C /etc/filebeat/certs/ ./<SERVER_NODE_NAME>.pem ./<SERVER_NODE_NAME>-key.pem ./root-ca.pem --strip-components=1"
+  echo "  mv /etc/filebeat/certs/<SERVER_NODE_NAME>.pem /etc/filebeat/certs/filebeat.pem"
+  echo "  mv /etc/filebeat/certs/<SERVER_NODE_NAME>-key.pem /etc/filebeat/certs/filebeat-key.pem"
+  echo "  chmod 500 /etc/filebeat/certs && chmod 400 /etc/filebeat/certs/*"
+  echo ""
+  echo "=== STEP 3: START SERVICE ==="
+  echo ""
+  echo "  systemctl daemon-reload"
+  echo "  systemctl enable --now filebeat"
+  echo ""
+  echo "=== STEP 4: VERIFY ==="
+  echo ""
+  echo "  filebeat test output"
+  echo ""
+  echo "Documentation: https://documentation.wazuh.com/current/installation-guide/wazuh-server/step-by-step.html"
 }
