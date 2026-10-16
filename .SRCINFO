@@ -1,0 +1,27 @@
+pkgbase = libva-v4l2-request
+	pkgdesc = LibVA implementation for the Linux Video4Linux2 Request API
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/sofus13/libva-v4l2_request/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = riscv64
+	arch = loong64
+	license = LGPL2.1
+	license = MIT
+	makedepends = git
+	makedepends = patch
+	makedepends = meson
+	depends = libva>=2.1.0
+	depends = libdrm>=2.4.52
+	provides = libva-v4l2-request
+	provides = v4l2_request_drv_video.so
+	conflicts = libva-v4l2-request
+	source = https://github.com/sofus13/libva-v4l2_request/archive/refs/tags/1.3.tar.gz
+	sha256sums = 3670a1712f9f0a5a61bd44a781eba81dd9b2e0fd8271417ca8a9fbbed9dccfe9
+
+pkgname = libva-v4l2-request
