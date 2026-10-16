@@ -5,46 +5,41 @@
 # Contributor: liberodark
 
 pkgname=frostwire
-pkgver=7.0.4
-_build=331
+pkgver=7.1.1
+_build=333
 pkgrel=1
-pkgdesc='An easy to use Cloud Downloader, BitTorrent Client'
+pkgdesc='An easy to use cloud downloader, BitTorrent client'
 arch=('any')
 url='https://www.frostwire.com'
 license=('GPL-3.0-or-later')
 depends=('bash' 'java-runtime')
-makedepends=('gendesk' 'gradle' 'java-environment')
-source=("https://github.com/frostwire/frostwire/archive/${pkgname}-desktop-${pkgver}-build-${_build}.tar.gz")
-sha256sums=('5373652374c0b8b71ab9656d4fe7211c5b65dbf041333daa5744a2a856ca09f1')
+makedepends=('gendesk' 'git' 'gradle' 'java-environment')
+source=("git+https://github.com/frostwire/frostwire.git#tag=${pkgname}-desktop-${pkgver}-build-${_build}"
+        "${pkgname}.sh")
+sha256sums=('35dfbefe5570f620797442152cbf28920d7a3df8b5513262b5d5f3a5d54bd7c8'
+            '40b5ba9e018022270c57b7cc7e11124b7829d2a50035dc07382e60409e2e0152')
 
 prepare() {
-    ln -sf "${pkgname}-${pkgname}-desktop-${pkgver}-build-${_build}/desktop" "${pkgname}-${pkgver}"
-
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}/desktop"
     gendesk -f -n \
         --pkgname "${pkgname}" \
         --pkgdesc "${pkgdesc}" \
         --name "FrostWire" \
-        --genericname "P2P Bittorrent and cloud downloader" \
-        --categories "Network;FileTransfer;P2P;" \
-        --mimetypes "application/x-bittorrent;x-scheme-handler/magnet;" \
+        --genericname "P2P BitTorrent and cloud downloader" \
+        --categories "Network;FileTransfer;P2P" \
+        --mimetypes "application/x-bittorrent;x-scheme-handler/magnet" \
         --custom "StartupWMClass=com-limegroup-gnutella-gui-Main"
-
-    cat >"${pkgname}.sh" <<EOF
-#!/usr/bin/bash
-exec java -jar /usr/share/java/${pkgname}/${pkgname}.jar "\$@"
-EOF
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    gradle clean build
+    cd "${pkgname}/desktop"
+    gradle build
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm644 "build/libs/${pkgname}.jar" -t "${pkgdir}/usr/share/java/${pkgname}"
-    install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    cd "${pkgname}/desktop"
+    install -Dm644 build/libs/{"${pkgname}.jar",icebridge.jar} -t "${pkgdir}/usr/share/java/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 lib/icons/frostwire.svg -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "lib/icons/${pkgname}.svg" -t "${pkgdir}/usr/share/pixmaps"
 }
