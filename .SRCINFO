@@ -1,0 +1,32 @@
+pkgbase = spoti-git
+	pkgdesc = lightweight native Spotify client
+	pkgver = 0.1.0.r0
+	pkgrel = 1
+	url = https://github.com/hyperpuncher/spoti
+	arch = x86_64
+	license = MIT AND Zlib AND ISC AND OFL-1.1 AND Unicode-3.0
+	makedepends = git
+	makedepends = just
+	makedepends = odin>=dev_2026_10
+	depends = curl>=7.86
+	depends = fontconfig
+	depends = glib2
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libsecret
+	depends = libvorbis
+	depends = libwebp
+	depends = sdl3>=3.4
+	depends = sdl3_ttf>=3.2.2
+	depends = systemd-libs
+	depends = xdg-utils
+	optdepends = noto-fonts: additional script and symbol coverage
+	optdepends = noto-fonts-cjk: CJK characters
+	optdepends = noto-fonts-emoji: color emoji
+	optdepends = org.freedesktop.secrets: save login credentials
+	provides = spoti=0.1.0.r0
+	conflicts = spoti
+	source = spoti::git+https://github.com/hyperpuncher/spoti.git#branch=main
+	sha256sums = SKIP
+
+pkgname = spoti-git
