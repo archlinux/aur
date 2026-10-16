@@ -1,6 +1,6 @@
 # Maintainer: InstaZDLL <github.105mh@8shield.net>
 pkgname=waveflow-bin
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Local-first music player with Hi-Res audio, exclusive output, word-by-word synced lyrics, smart playlists and plugins'
 arch=('x86_64')
@@ -49,7 +49,7 @@ provides=('waveflow')
 conflicts=('waveflow')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v${pkgver}/WaveFlow_${pkgver}_linux-x86_64.deb")
-sha256sums=('dc9d044e9b85a2f4d5a75ff8cfd3b26654770c619965166a58e0a2308717052f')
+sha256sums=('60d2e8c1c6e72af2a13143613e79bff2015dcdb7039a16829479aa95997319e6')
 
 prepare() {
   # Crack open the .deb so package() can move its data tarball into $pkgdir.
