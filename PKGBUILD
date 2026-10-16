@@ -24,6 +24,10 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
+  # https://github.com/aws/aws-lc-rs/issues/1097
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+
   cargo build --frozen --release
 
   # Generate completions
