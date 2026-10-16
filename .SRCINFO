@@ -1,6 +1,6 @@
 pkgbase = olympus
 	pkgdesc = Everest installer / mod manager for Celeste
-	pkgver = 26.07.25.01
+	pkgver = 26.09.19.01
 	pkgrel = 1
 	url = https://github.com/EverestAPI/Olympus
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = olympus
 	depends = love
 	depends = lua51-lsqlite3
 	conflicts = olympus-bin
-	source = git+https://github.com/EverestAPI/Olympus.git#commit=e024bf2360b0d911f5f46b808ee3c80ae7e17cbb
+	source = git+https://github.com/EverestAPI/Olympus.git#commit=5db9c0b7d82ab20c940bd5eeb3e4dcade8ca0cc7
 	source = git+https://github.com/EverestAPI/OlympUI.git
 	source = git+https://github.com/vrld/moonshine.git
 	source = git+https://github.com/LPGhatguy/luajit-request.git
 	source = git+https://github.com/maddie480/lua-subprocess.git#commit=786303cd172bf8eb8f88c5998603875f3c33974c
 	source = git+https://github.com/Vexatos/nativefiledialog.git#commit=bea4560b9269bdc142fef946ccd8682450748958
-	sha256sums = 4b20a76dc88dc0e0f938b60ce0057c676684145b8d68a297c205524e7ee1b34c
+	sha256sums = edeaf6913356bbcfb0b7cf118f4ce76b68d9af53d7fd4c23f855f6889283f5fd
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
