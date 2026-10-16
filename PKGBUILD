@@ -3,7 +3,7 @@
 # Contributor: Cillian Berragan <cjberragan@gmail.com>
 pkgname=python-stanza
 _name=${pkgname#python-}
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages"
 arch=('any')
@@ -15,13 +15,14 @@ depends=(
   'python-huggingface-hub'
   'python-networkx'
   'python-numpy'
+  'python-orjson'
   'python-packaging'
   'python-platformdirs'
   'python-protobuf'
   'python-pytorch'
   'python-requests'
   'python-tqdm'
-  'python-udtools'
+  'python-udtools>=0.2.4'
 )
 makedepends=(
   'python-build'
@@ -51,7 +52,14 @@ optdepends=(
   'python-zstandard: Process compressed Community OSCAR corpora'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07858f7c91fc0c6bd499d544b4e67963994a52c06a8cf189cd67d373765398ed')
+sha256sums=('3defd7c9924d3d6527f2c58f8dac4a0f4150a1ecf9043cfa943d3c983ac47a81')
+
+prepare() {
+  cd "$_name-$pkgver"
+  # Exclude tests before wheel construction, preserving a truthful RECORD.
+  sed -i "s/find_packages(exclude=\[/find_packages(exclude=['stanza.tests', 'stanza.tests.*', /" setup.py
+  sed -i '/include_package_data=True,/a\    exclude_package_data={"stanza": ["tests/*", "tests/**/*"]},' setup.py
+}
 
 build() {
   cd "$_name-$pkgver"
@@ -67,6 +75,9 @@ check() {
   rm -rf "$_checkdir" "$srcdir/test-home"
   mkdir -p "$srcdir/test-home/out"
   python -m installer --destdir="$_checkdir" "$_name-$pkgver"/dist/*.whl
+  # Tests belong only to the temporary test installation; runtime imports
+  # continue to exercise the built wheel.
+  cp -a "$srcdir/$_name-$pkgver/stanza/tests" "$_installed/stanza/"
 
   cd "$_checkdir"
 
@@ -118,7 +129,7 @@ import tempfile
 
 import stanza
 
-assert stanza.__version__ == "1.14.0"
+assert stanza.__version__ == "1.15.0"
 with tempfile.TemporaryDirectory() as model_dir:
     with open(os.path.join(model_dir, "resources.json"), "w", encoding="utf-8") as stream:
         json.dump({}, stream)
@@ -146,10 +157,6 @@ package() {
 
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # The wheel includes upstream's pytest suite, which is used in check() but is
-  # not part of Stanza's public runtime API.
-  rm -rf "$pkgdir$_site_packages/stanza/tests"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
