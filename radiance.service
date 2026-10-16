@@ -1,0 +1,41 @@
+# Installed verbatim by the radiance-inference-git PKGBUILD (install -Dm644):
+# the ${...} below belong to systemd at runtime, not to the packaging shell.
+[Unit]
+Description=radiance LLM inference server (OpenAI-compatible HTTP API)
+Documentation=https://codeberg.org/StillDeadcode/radiance
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+EnvironmentFile=/etc/radiance/radiance.conf
+# The HIP runtime caps one allocation and the heap below what the placement plan
+# hands out (Dockerfile ENV, docs/DOCKER.md).
+Environment=GPU_MAX_ALLOC_PERCENT=100 GPU_MAX_HEAP_SIZE=100
+# systemd expansion (verified empirically on systemd 262, not from docs):
+#   $VAR    -> value SPLIT on whitespace into zero-or-more arguments; an empty or
+#              unset value contributes ZERO arguments.
+#   ${VAR}  -> exactly ONE argument, spaces included; empty/unset contributes one
+#              EMPTY argument (radiance rejects it: "unknown option ''").
+# So the flag bag MUST be the bare $RADIANCE_EXTRA_ARGS form; ${...} is kept on
+# model/host/port where a single argument is what we want. Quotes in the conf are
+# irrelevant: EnvironmentFile strips them before expansion either way.
+ExecStart=/usr/bin/radiance --model ${RADIANCE_MODEL} --host ${RADIANCE_HOST} --port ${RADIANCE_PORT} $RADIANCE_EXTRA_ARGS
+
+Restart=on-failure
+RestartSec=15
+# Finishes the step in flight, then releases the cards (compose stop_grace_period 60s).
+TimeoutStopSec=90
+
+# No PrivateDevices=/DevicePolicy=closed/SystemCallFilter= here: an io_uring or
+# mbind/set_mempolicy refusal stops model serving (docs/DOCKER.md).
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+UMask=0077
+# --host-pool-mib pins host memory; Arch defaults to 8 MiB. Required for GPU host tiers.
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

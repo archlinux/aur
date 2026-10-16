@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!radiance-inference-git.install
+!radiance.conf
+!radiance.service

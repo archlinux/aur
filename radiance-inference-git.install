@@ -1,0 +1,17 @@
+# arg 1:  the new package version
+post_install() {
+  cat <<'EOM'
+==> radiance-inference-git was installed. Next steps:
+==>   1. Learn about the CLI:        radiance --help
+==>   2. Edit the configuration:     sudo $EDITOR /etc/radiance/radiance.conf
+==>      (set RADIANCE_MODEL to a real target (view --models in --help to see options); the unit fails until you do)
+==>   3. Enable and start service:   sudo systemctl enable --now radiance.service
+EOM
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  # -git convention: re-show setup steps on every upgrade.
+  post_install "$1"
+}
