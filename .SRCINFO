@@ -1,6 +1,6 @@
 pkgbase = dackel-launcher-bin
 	pkgdesc = Launch Windows games with Proton, with gamepad support (prebuilt binary)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/dasbd72/dackel-launcher
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = dackel-launcher-bin
 	depends = libgcc
 	depends = systemd-libs
 	depends = umu-launcher
-	provides = dackel-launcher=0.1.9
+	provides = dackel-launcher=0.1.10
 	conflicts = dackel-launcher
 	options = !strip
 	options = !debug
-	source = dackel-launcher-0.1.9-x86_64::https://github.com/dasbd72/dackel-launcher/releases/download/v0.1.9/dackel-launcher
-	source = dackel-launcher-0.1.9.tar.gz::https://github.com/dasbd72/dackel-launcher/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = 9dff57a306e084bc50bd7fea18f3d57109d8a5db525259e3b3fa945637c7dcc7
-	sha256sums = bbe5be2b194810b91f718970252c6791c9fc70ec2488707d1939656618fa81f6
+	source = dackel-launcher-0.1.10-x86_64::https://github.com/dasbd72/dackel-launcher/releases/download/v0.1.10/dackel-launcher
+	source = dackel-launcher-0.1.10.tar.gz::https://github.com/dasbd72/dackel-launcher/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = 86fb93d28fd67f2dfe299d44c96b6b5a45fa32bf88323a513067a95f9f66ef75
+	sha256sums = 3f2f6dcff24cecffe5e2eca32faace8d8ae3c199356c2d877b4d317b67c20e04
 
 pkgname = dackel-launcher-bin
