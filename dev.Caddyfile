@@ -16,8 +16,6 @@
 log
 
 route {
-    encode zstd gzip
-
     mercure {
         # Transport to use (default to Bolt)
         transport bolt {
