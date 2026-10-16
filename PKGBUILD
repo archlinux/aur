@@ -2,7 +2,7 @@
 # Contributor: Ananas <ananas@ananas.moe>
 _pkgname=pytubefix
 pkgname=python-pytubefix
-pkgver=11.2.0
+pkgver=11.2.1
 pkgrel=1
 pkgdesc="A pytube fork with additional features and fixes"
 arch=("any")
@@ -13,7 +13,7 @@ depends=("python")
 optdepends=('python-aiohttp: async HTTP support (AsyncYouTube)'
             'python-nodejs-wheel: bot-guard and nsig/sig JS execution')
 provides=("pytubefix")
-sha256sums=('29aaeb03707c48777fbab3129af9b60a93dff4cf9afc3e62e21a4155668e29f3')
+sha256sums=('20f3b5fe9bafed5f8eea82805128da559ddf9d7ee5022779303bca235d54c417')
 source=(
 	"${pkgname}-${pkgver}.zip::https://github.com/JuanBindez/pytubefix/archive/refs/tags/v$pkgver.zip"
 )
