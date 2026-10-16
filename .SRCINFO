@@ -1,6 +1,6 @@
 pkgbase = sysmanage
 	pkgdesc = Centralized system management server with web-based interface
-	pkgver = 3.10.0.7
+	pkgver = 3.11.0.4
 	pkgrel = 1
 	url = https://github.com/bceverly/sysmanage
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = sysmanage
 	depends = python-websockets
 	backup = etc/sysmanage.yaml
 	backup = etc/nginx/conf.d/sysmanage-nginx.conf
-	source = sysmanage-3.10.0.7.tar.gz::https://github.com/bceverly/sysmanage/archive/refs/tags/v3.10.0.7.tar.gz
-	sha256sums = f1db2eb97226026d03ce559d95639b48ff41b6d808ca9ac73bf489f8deaea344
+	source = sysmanage-3.11.0.4.tar.gz::https://github.com/bceverly/sysmanage/archive/refs/tags/v3.11.0.4.tar.gz
+	sha256sums = 5570db663a4c60aa5a65e8e89ea5f6e75f6fe2cc883410f2eb443db89ac4bea0
 
 pkgname = sysmanage
