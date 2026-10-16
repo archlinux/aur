@@ -1,14 +1,14 @@
 # Maintainer: noctulus <fangyuhao0612@gmail.com>
 pkgname=intel-mlc
-pkgver=v3.11b
+pkgver=3.13
 pkgrel=1
 pkgdesc="Intel® Memory Latency Checker (Intel® MLC) is a tool used to measure memory latencies and b/w, and how they change with increasing load on the system."
 arch=('x86_64')
 url="https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html"
 license=("LicenseRef-custom")
 install="${pkgname}.install"
-source=("https://downloadmirror.intel.com/834254/mlc_${pkgver}.tgz")
-sha256sums=('5d5abd27d145af59d564c9c53938301a08205f075b9bd41f2f92b4c8efeb2824')
+source=("https://downloadmirror.intel.com/926327/mlc_v${pkgver}.tgz")
+sha256sums=('A8537E8FF3FAD626D75A383FABC224CCC4CC98A0111C9989F7FB26B639F12019')
 
 package() {
 	cd "${srcdir}"
