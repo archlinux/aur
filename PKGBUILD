@@ -3,7 +3,7 @@
 # Template: the release workflow sets pkgver, pkgrel and the checksum from
 # the tag, then publishes it to the AUR.
 pkgname=rimor
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Terminal workbench for PostgreSQL, SQL Server and SQLite'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('glibc') # the PIE build uses the system's dynamic loader
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alchemy/rimor/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b9dfafb17344966121bb0fab9d502e6ce8b176607a5b621225ac100e6ce80d0b')
+sha256sums=('38966e749dc0ee95a794887f324488332c3051234953f1f62554e6659131fa75')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
