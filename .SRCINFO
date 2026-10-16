@@ -1,6 +1,6 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = b764
+	pkgver = b765
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = redumper-bin
 	conflicts = redumper-gui
 	conflicts = redumper-git
 	conflicts = redumper
-	source = https://github.com/superg/redumper/releases/download/b764/redumper-b764-linux-x64.zip
+	source = https://github.com/superg/redumper/releases/download/b765/redumper-b765-linux-x64.zip
 	source = https://raw.githubusercontent.com/superg/redumper/main/README.md
 	source = https://raw.githubusercontent.com/superg/redumper/main/LICENSE
-	sha256sums = 226d9c395aee4ffd1b9f36d532eeb09aaa70a21f48b0f6349a5a3685a72d5080
+	sha256sums = 04dd1465dd7a8dad336358df099836e935d1c556847c7f09a1526dbb985584c1
 	sha256sums = SKIP
 	sha256sums = SKIP
 
