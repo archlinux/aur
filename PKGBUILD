@@ -8,7 +8,7 @@ pkgdesc='Scifi FPS made with Raylib'
 arch=('x86_64')
 url="https://sr.ht/~akselmo/ArtificialRage/"
 license=('GPL-3.0-or-later')
-depends=('odin' 'raylib')
+depends=('odin' 'hicolor-icon-theme')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('git')
@@ -23,20 +23,6 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p ./build ./src/raylib
-
-  # The odin package is unable to use the system raylib and the raylib it has is
-  # not built. A local version is made, modified to use the system package and
-  # the game is modified to use the local version
-  find ./src -type f -exec sed -i 's/import rl "vendor:raylib"/import rl "src:raylib"/g' {} +
-  cp /usr/lib/odin/vendor/raylib/raylib.odin src/raylib/
-  sed -i \
-    -e 's|"linux/libraylib\.so\.600" when RAYLIB_SHARED else "linux/libraylib\.a"|"system:raylib"|' \
-    -e 's|"linux-arm64/libraylib\.so\.600" when RAYLIB_SHARED else "linux-arm64/libraylib\.a"|"system:raylib"|' \
-    ./src/raylib/raylib.odin
-  ln -s /usr/lib/odin/vendor/raylib/raymath.odin src/raylib/raymath.odin
-  ln -s /usr/lib/odin/vendor/raylib/raygui.odin src/raylib/raygui.odin
-  ln -s /usr/lib/odin/vendor/raylib/easings.odin src/raylib/easings.odin
-  ln -s /usr/lib/odin/vendor/raylib/rlgl src/raylib/rlgl
 
   odin build ./src -collection:src=src -debug -out:./build/ArtificialRage
 }
