@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# pacman install scriptlet: print an opt-in hint only. It must never enable,
+# start or reload any unit; upgrades stay quiet.
+
+post_install() {
+  cat <<'EOF'
+==> linux-cleaner: nothing was enabled.
+    Preview what would be removed:  cleaner --dry-run
+    Optional daily cleanup (03:00), per user:
+      systemctl --user enable --now linux-cleaner-clean.timer
+    Cleanup deletes permanently unless LINUX_CLEANER_TRASH=1 is set in
+    ~/.config/linux-cleaner/env (see man cleaner).
+EOF
+}
