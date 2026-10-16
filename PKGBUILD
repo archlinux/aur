@@ -1,12 +1,12 @@
 # Maintainer: umceko <support@stockimg.ai>
 pkgname=hush-mic
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA Maxine AI noise-suppression virtual microphone (built from source)"
 arch=('x86_64')
 url="https://github.com/UMCEKO/hush"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'glib-networking' 'pipewire' 'libpulse' 'dbus' 'gcc-libs')
+depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'glib-networking' 'pipewire' 'libpulse' 'dbus' 'gcc-libs' 'xdotool')
 makedepends=('rust>=1.88' 'cargo' 'pkgconf' 'clang')
 optdepends=('nvidia-utils: nvidia-smi GPU detection (required at runtime)')
 # makepkg's -flto=auto in CFLAGS turns ring's C objects into GCC LTO bitcode,
