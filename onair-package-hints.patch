@@ -1,0 +1,79 @@
+--- a/app/fixit.cpp
++++ b/app/fixit.cpp
+@@ -11,7 +11,7 @@
+ constexpr const char* kCodecs = "https://github.com/adswill/OnAir/blob/main/docs/CODECS.md";
+ constexpr const char* kDevices = "https://github.com/adswill/OnAir/blob/main/DEVICES.md";
+ constexpr const char* kUhdImages = "https://files.ettus.com/manual/page_images.html";
+-constexpr const char* kUdevCmd = "sudo ./install-udev-rules.sh   # in the OnAir folder; then unplug and replug the radio";
++constexpr const char* kUdevCmd = "sudo udevadm control --reload-rules && sudo udevadm trigger --subsystem-match=usb   # the onair package already installed the udev rules; then unplug and replug the radio";
+ #define NONE {nullptr}
+ 
+ const Entry kTable[] = {
+@@ -31,26 +31,26 @@
+     {"kernel_driver", "msi2500", N_("Linux grabbed the SDRplay radio"),
+      N_("A Linux driver for TV sticks took the radio before the SDRplay software could."),
+      {N_("This is a Linux problem. On this system, unplug the radio, plug it in again and press the refresh button."), nullptr}, NONE, NONE,
+-     {N_("Run: sudo modprobe -r msi2500 msi001"), N_("Or install OnAir's blacklist file (the .deb package does it)."), N_("Unplug the radio and plug it in again."), nullptr},
++     {N_("Run: sudo modprobe -r msi2500 msi001"), N_("OnAir's blacklist file is already installed by the onair package."), N_("Unplug the radio and plug it in again."), nullptr},
+      {{Act::CopyText, N_("Copy the command"), "sudo modprobe -r msi2500 msi001", OsLinux}}},
+     {"kernel_audio", "snd-usb-audio", N_("Linux treats the radio as a sound card"),
+      N_("The Linux sound driver holds the radio, so the SDRplay software cannot see it."),
+      {N_("This is a Linux problem. On this system, unplug the radio, plug it in again and press the refresh button."), nullptr}, NONE, NONE,
+-     {N_("Install OnAir's blacklist file (the .deb package does it), or run: sudo systemctl restart sdrplay"), N_("Unplug the radio and plug it in again."), nullptr},
++     {N_("OnAir's blacklist file is already installed by the onair package; or run: sudo systemctl restart sdrplay"), N_("Unplug the radio and plug it in again."), nullptr},
+      {{Act::CopyText, N_("Copy the command"), "sudo systemctl restart sdrplay", OsLinux}}},
+     {"usb_permission", "may not open it", N_("This user may not open the radio"),
+      N_("The radio is plugged in, but the system does not let your account use it yet."),
+      NONE,
+      {N_("Unplug the radio and plug it in again, then press the refresh button."), nullptr},
+      {N_("Install the WinUSB driver once with Zadig (zadig.akeo.ie): choose the radio, then the driver WinUSB, then Install."), N_("Press the refresh button next to the radio list."), nullptr},
+-     {N_("Install the udev rules: run install-udev-rules.sh from the OnAir folder (the .deb package does it for you)."), N_("Unplug the radio and plug it in again."), N_("Press the refresh button next to the radio list."), nullptr},
++     {N_("Reload the udev rules installed by the onair package: sudo udevadm control --reload-rules && sudo udevadm trigger --subsystem-match=usb."), N_("Unplug the radio and plug it in again."), N_("Press the refresh button next to the radio list."), nullptr},
+      {{Act::CopyText, N_("Copy the udev command"), kUdevCmd, OsLinux}, {Act::OpenUrl, N_("Open driver page"), kZadig, OsWin}}},
+     {"usb_error", "USB error", N_("The radio's USB connection failed"),
+      N_("The radio was found but the USB link to it did not work. This is usually permission, the cable or the port."),
+      {N_("Try another USB port, directly on the computer (not a hub), and a short cable."), N_("Close other programs that use the radio."), nullptr},
+      NONE,
+      {N_("Install the WinUSB driver once with Zadig (zadig.akeo.ie): choose the radio, then the driver WinUSB, then Install."), N_("Try another USB port and a short cable."), nullptr},
+-     {N_("Install the udev rules (install-udev-rules.sh), then unplug and replug the radio."), N_("Try another USB port, directly on the computer (not a hub)."), nullptr},
++     {N_("Reload the udev rules installed by the onair package, then unplug and replug the radio."), N_("Try another USB port, directly on the computer (not a hub)."), nullptr},
+      {{Act::CopyText, N_("Copy the udev command"), kUdevCmd, OsLinux}, {Act::OpenUrl, N_("Open driver page"), kZadig, OsWin}, {Act::OpenDiagnostics, N_("Copy diagnostics"), "", OsAll}}},
+     {"hackrf_firmware", "USB API version", N_("The HackRF firmware does not match"),
+      N_("The firmware inside the HackRF is older than the software talking to it."),
+@@ -67,7 +67,7 @@
+      {N_("Check the USB cable and port, then press the refresh button."), nullptr},
+      NONE,
+      {N_("On Windows a HackRF needs its WinUSB driver once: install it with Zadig (zadig.akeo.ie)."), N_("Press the refresh button next to the radio list."), nullptr},
+-     {N_("Install the udev rules (install-udev-rules.sh), then unplug and replug the radio."), nullptr},
++     {N_("Reload the udev rules installed by the onair package, then unplug and replug the radio."), nullptr},
+      {{Act::OpenUrl, N_("Open driver page"), kZadig, OsWin}, {Act::CopyText, N_("Copy the udev command"), kUdevCmd, OsLinux}}},
+     {"rtltcp_bad_address", "bad address", N_("The rtl_tcp address is not valid"),
+      N_("The address of the network radio must look like host:port, for example 192.168.1.20:1234."),
+@@ -121,7 +121,7 @@
+      NONE,
+      {N_("Plug the radio in, directly or through a powered hub."), N_("Press the refresh button next to the source."), N_("For an RSP, install the SDRplay API first (sdrplay.com)."), nullptr},
+      {N_("Plug the radio in, directly or through a powered hub."), N_("A HackRF, Airspy or RTL-SDR needs its WinUSB driver once: install it with Zadig (zadig.akeo.ie)."), N_("Press the refresh button next to the source."), nullptr},
+-     {N_("Plug the radio in, directly or through a powered hub."), N_("Install the udev rules: run install-udev-rules.sh from the OnAir folder (the .deb does it)."), N_("Unplug and replug the radio, then press the refresh button."), nullptr},
++     {N_("Plug the radio in, directly or through a powered hub."), N_("Reload the udev rules installed by the onair package (sudo udevadm control --reload-rules && sudo udevadm trigger --subsystem-match=usb)."), N_("Unplug and replug the radio, then press the refresh button."), nullptr},
+      {{Act::OpenUrl, N_("Open driver page"), kZadig, OsWin}, {Act::CopyText, N_("Copy the udev command"), kUdevCmd, OsLinux}, {Act::OpenUrl, N_("Open the device list"), kDevices, OsAll}}},
+     {"start_failed", "could not start the radio", N_("The radio did not start"),
+      N_("The radio opened badly or stopped at once. The message above says why; these steps solve most cases."),
+--- a/core/src/usb_diag.cpp
++++ b/core/src/usb_diag.cpp
+@@ -103,14 +103,14 @@
+             if (boundTo(devices, dev, "msi2500"))
+                 out.push_back("The Linux driver msi2500 holds the SDRplay RSP, so the SDRplay API cannot see it: run sudo modprobe -r msi2500 msi001, or install OnAir's blacklist file (the .deb does it), then unplug and replug it");
+             else if (boundTo(devices, dev, "snd-usb-audio"))
+-                out.push_back("The Linux sound driver snd-usb-audio holds the SDRplay RSP, so the SDRplay API cannot see it: unplug and replug it after installing OnAir's blacklist file (the .deb does it), or restart the SDRplay API service (sudo systemctl restart sdrplay)");
++                out.push_back("The Linux sound driver snd-usb-audio holds the SDRplay RSP, so the SDRplay API cannot see it: unplug and replug it (OnAir's blacklist file is already installed by the onair package), or restart the SDRplay API service (sudo systemctl restart sdrplay)");
+         }
+         int bus = 0, num = 0;
+         if (!readInt(e.path() / "busnum", bus) || !readInt(e.path() / "devnum", num)) continue;
+         char node[64];
+         snprintf(node, sizeof node, "/dev/bus/usb/%03d/%03d", bus, num);
+         if (!canOpen(root + node))
+-            out.push_back(std::string(radio) + " is plugged in but this user may not open it: install OnAir's udev rules (the .deb does it, or run install-udev-rules.sh from the portable folder), then unplug and replug it");
++            out.push_back(std::string(radio) + " is plugged in but this user may not open it: reload OnAir's udev rules (already installed by the onair package) with sudo udevadm control --reload-rules && sudo udevadm trigger --subsystem-match=usb, then unplug and replug it");
+     }
+     return out;
+ }
