@@ -1,0 +1,46 @@
+post_install() {
+  # chrome-sandbox needs setuid for Electron apps
+  if [ -f usr/lib/lzc-client-desktop/chrome-sandbox ]; then
+    chmod 4755 usr/lib/lzc-client-desktop/chrome-sandbox 2>/dev/null || true
+  fi
+
+  # cap_net_admin for the TUN core (used for remote access networking)
+  if [ -f usr/lib/lzc-client-desktop/core/lzc-core ]; then
+    setcap cap_net_admin+ep usr/lib/lzc-client-desktop/core/lzc-core 2>/dev/null \
+      && echo '  ✓ lzc-core cap_net_admin set' \
+      || echo '  ! 请手动执行: sudo setcap cap_net_admin+ep /usr/lib/lzc-client-desktop/core/lzc-core'
+  fi
+
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q usr/share/applications
+  fi
+
+  cat <<'EOF'
+
+懒猫微服客户端已安装。
+
+  启动: 从应用菜单启动「懒猫微服」或运行 lzc-client-desktop
+  登录: 使用懒猫微服 App 扫码
+
+说明:
+  - 系统已注册 polkit 策略，客户端请求网络权限时会弹窗授权
+    （等价于官方安装脚本的 setcap cap_net_admin+ep 步骤）
+  - 若 AppArmor 启用且客户端无法运行，可参考官方文档为其添加 unconfined 配置
+  - 用户数据目录: ~/.config/lzc-client-desktop
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  setcap -r usr/lib/lzc-client-desktop/core/lzc-core 2>/dev/null || true
+}
+
+post_remove() {
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q usr/share/applications
+  fi
+}
