@@ -1,0 +1,10 @@
+    post_install() {
+    echo "Setting CAP_SYS_PTRACE & CAP_BPF & CAP_PERFMON & CAP_DAC_READ_SEARCH capabilities on /usr/bin/procinsh..."
+    setcap 'cap_sys_ptrace,cap_bpf,cap_perfmon,cap_dac_read_search=ep' usr/bin/procinsh
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:
