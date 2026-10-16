@@ -4,7 +4,7 @@
 # Maintainer: Guilherme G. Piccoli <gpiccoli@igalia.com>
 
 pkgname=kdumpst
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="kdumpst, a tool for collecting pstore/kdump logs."
 arch=('any')
@@ -13,7 +13,7 @@ license=('LGPL2.1')
 install=kdumpst.install
 
 source=("https://gitlab.freedesktop.org/gpiccoli/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6b6eb2e68dfa22378511c41d0951d973208585aec48bc242a8beb8141055a2dd')
+sha256sums=('b5d16f72341e4430a7d427458b576b0daf7f300546847346451da8185a01dcbf')
 
 package() {
 	depends=('dmidecode' 'kexec-tools' 'makedumpfile' 'zip' 'zstd')
