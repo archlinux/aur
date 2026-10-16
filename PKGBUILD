@@ -3,7 +3,7 @@
 
 _name=dspy
 pkgname=python-$_name
-pkgver=3.3.1
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="The framework for programming (not prompting) language models"
 arch=('any')
@@ -29,8 +29,11 @@ depends=(
     'python-requests'
     'python-tenacity'
     'python-tqdm'
+    'python-yaml'
 )
 makedepends=(
+    # Public Genson omits build/installer/wheel from .SRCINFO; keep these
+    # explicit so the normal AUR dependency installation has its build tools.
     'python-build'
     'python-installer'
     'python-setuptools'
@@ -72,17 +75,16 @@ optdepends=(
     'python-transformers: local Hugging Face model training'
     'python-trl: local supervised fine-tuning'
     'python-weaviate-client: weaviate extra (Weaviate retriever)'
-    'python-yaml: ALFWorld dataset configuration'
     'sglang: local model serving'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/stanfordnlp/dspy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d733227462118ff4419813ad0b389e9b03745d2a2f8c042e611e44472b3ed840')
+sha256sums=('973b12683e325aa79ada1d117782ce1833f55fb43ebe6a9677071f0491167503')
 
 prepare() {
     cd "$srcdir/$_name-$pkgver"
-    # Upstream's publish workflow replaces the tag's 3.3.0 placeholders.
-    sed -i -E 's/^version *= *"3\.3\.0"/version = "3.3.1"/' pyproject.toml
-    sed -i -E 's/__version__ *= *"3\.3\.0"/__version__ = "3.3.1"/' dspy/__metadata__.py
+    # Upstream's publish workflow replaces the tag's 3.4.0 placeholders.
+    sed -i -E 's/^version *= *"3\.4\.0"/version = "3.4.1"/' pyproject.toml
+    sed -i -E 's/__version__ *= *"3\.4\.0"/__version__ = "3.4.1"/' dspy/__metadata__.py
 }
 
 build() {
@@ -100,6 +102,9 @@ check() {
     mkdir -p "$_checkroot/suite" "$_checkroot/home"
     cp -a "$srcdir/$_name-$pkgver/tests" "$_checkroot/suite/"
     cp -a "$srcdir/$_name-$pkgver/docs" "$_checkroot/suite/"
+    # Repository-maintenance tests read these fixtures relative to the suite.
+    cp -a "$srcdir/$_name-$pkgver/scripts" "$srcdir/$_name-$pkgver/.github" \
+        "$_checkroot/suite/"
     cp "$srcdir/$_name-$pkgver/pyproject.toml" "$_checkroot/suite/"
     cat > "$_checkroot/suite/dspy_offline_plugin.py" <<'PY'
 import io
@@ -160,7 +165,7 @@ from dspy.utils import DummyLM
 assert Path(dspy.__file__).resolve().is_relative_to(
     Path(os.environ["DSPY_STAGED_ROOT"]).resolve()
 )
-assert dspy.__version__ == "3.3.1"
+assert dspy.__version__ == "3.4.1"
 
 lm = DummyLM([{"reasoning": "add two and two", "answer": "4"}])
 with dspy.context(lm=lm):
