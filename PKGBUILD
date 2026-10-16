@@ -1,8 +1,6 @@
 # Maintainer: Caus <caus@ik.me>
 # Maintainer: Felitendo
 # Contributor: Cosmo <cptncosmo@gmail.com>
-# This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=fluxer-canary-bin
 pkgver=2026.1015.145307
