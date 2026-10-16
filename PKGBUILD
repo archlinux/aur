@@ -33,12 +33,15 @@ sha512sums=('066aae3ff15b94a776762667fd6d15e62744367b6ff01f97b141183178fe25c110f
 # it instead.
 options=(!lto)
 
+# Fix / work around makepkg's warning about $srcdir references (seems to come
+# from the way some protobuf stuff is included)
+#
+# This needs to be outside, otherwise when the Makefile ends up running cargo
+# during package() it would end up rebuilding.
+RUSTFLAGS="--remap-path-prefix $HOME=~/ $RUSTFLAGS"
+RUSTFLAGS="--remap-path-prefix ${srcdir}/${pkgbase}-${_tag}=${pkgbase} $RUSTFLAGS"
+
 build() {
-	# The way some protobuf stuff is included ends up putting references to the
-	# home and $srcdir paths into the executables and shared libraries.
-	# Work around that and fix makepkg's warning about this.
-	RUSTFLAGS="--remap-path-prefix $HOME=~/ $RUSTFLAGS"
-	RUSTFLAGS="--remap-path-prefix ${srcdir}/${pkgbase}-${_tag}=${pkgbase} $RUSTFLAGS"
 	cd "${pkgbase}-${_tag}/linux"
 	make build
 	make component
