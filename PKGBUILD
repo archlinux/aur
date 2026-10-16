@@ -7,7 +7,7 @@ arch=('any')
 url="https://shinmera.com/promptfont"
 license=('OFL-1.0')
 source=("https://shinmera.com/projects/promptfont/releases/download/v$pkgver/promptfont.zip")
-sha1sums=('ffd13bf5979f953a9ff007c69cda093a0af47715')
+sha1sums=('ede29cf7560e32da73aec1ad5c30a900e69a1720')
 
 package() {
     install -Dm644 *.ttf \

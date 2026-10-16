@@ -6,6 +6,6 @@ pkgbase = ttf-promptfont
 	arch = any
 	license = OFL-1.0
 	source = https://shinmera.com/projects/promptfont/releases/download/v1.15/promptfont.zip
-	sha1sums = ffd13bf5979f953a9ff007c69cda093a0af47715
+	sha1sums = ede29cf7560e32da73aec1ad5c30a900e69a1720
 
 pkgname = ttf-promptfont
