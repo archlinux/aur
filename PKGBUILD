@@ -1,6 +1,6 @@
 # Maintainer: va2bbw <antelaurijssen@gmail.com>
 pkgname=open-sstv-bin
-pkgver=0.6.14
+pkgver=0.6.15
 pkgrel=1
 pkgdesc="Open-source cross-platform SSTV transceiver for amateur radio (prebuilt binary, GUI only)"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,7 @@ optdepends=('hamlib: rigctld-based radio control')
 options=('!strip')
 source_x86_64=("$pkgname-$pkgver-linux-x86_64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v$pkgver/open-sstv-linux-x86_64.zip")
 source_aarch64=("$pkgname-$pkgver-linux-arm64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v$pkgver/open-sstv-linux-arm64.zip")
+
 package() {
     install -dm755 "$pkgdir/opt/open-sstv"
     cp -r open-sstv/* "$pkgdir/opt/open-sstv/"
@@ -32,5 +33,5 @@ Type=Application
 Categories=HamRadio;AudioVideo;
 EOF
 }
-sha256sums_x86_64=('ab5f08a3ae8284cd75a740294cefc414bf39ad9fd247afbaaa7ffac2cf43a533')
-sha256sums_aarch64=('246e29c2234f430d163406310aecb43fb78e5ea5c39f556fa9774b20ff1a3d5a')
+sha256sums_x86_64=('7192b832bb6a431d64db6e75186c103de12e0a606ec2f0ae5457c26117ba8c67')
+sha256sums_aarch64=('986db259f55aa3e9add99e31b9f09199905d2bce70d55e6491cda6648b942fd3')
