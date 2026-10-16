@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
 provides=('screencfg')
 conflicts=('screencfg')
-source=("${pkgname}::git+https://github.com/hakoerber/screencfg#branch=master")
+source=("${pkgname}::git+https://github.com/hakoerber/screencfg#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
