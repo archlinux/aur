@@ -1,6 +1,6 @@
 # Maintainer: Djalel Oukid <sniper1720@linuxtechmore.com>
 pkgname=khushu
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="An all-in-one Muslim app for Linux"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('xdg-desktop-portal: autostart portal support')
 options=(!debug)
 makedepends=('cargo' 'gettext' 'meson' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sniper1720/khushu/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d4149d86215b3957364b6a0d692af518db36aa0fbb4627458cbb7366e0dd97d')
+sha256sums=('f426870d3ac7523ccacb5f8b0518914563521f0585961d113cf1d49e340780cc')
 
 build() {
     arch-meson "$pkgname-$pkgver" build --buildtype=release
