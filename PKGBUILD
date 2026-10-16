@@ -3,8 +3,8 @@
 _pkgname=gym-pusht
 _module=gym_pusht
 pkgname=python-gym-pusht
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="A gymnasium environment for PushT"
 arch=('any')
 url="https://github.com/huggingface/gym-pusht"
@@ -33,10 +33,10 @@ optdepends=(
     'python-pytest: for the test extra'
     'python-pytest-cov: for the test extra'
 )
-_commit=8227842037637f92cf7e2a7199db7570d04de8a1
+_commit=e49cf07fd32ad6e69443af2921dd8343b0f9ad7d
 _archive="gym-pusht-$_commit"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('717bc3e78acb2070d1e0bde907ed5738f3c5ee3aaf47417c7445f482d7bf9663')
+sha256sums=('41c35e99a8673ee12407840e4e89f2916a91805bcfc65a6245fd721625eca138')
 
 prepare() {
     cd "$srcdir/$_archive"
