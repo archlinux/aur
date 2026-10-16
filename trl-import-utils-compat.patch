@@ -1,0 +1,35 @@
+diff --git a/unsloth/import_fixes.py b/unsloth/import_fixes.py
+index 7b86d14..25034c6 100644
+--- a/unsloth/import_fixes.py
++++ b/unsloth/import_fixes.py
+@@ -583,6 +583,30 @@ def fix_trl_vllm_ascend():
+         import trl.import_utils as tiu
+     except Exception:
+         return
++    # TRL 0.28 stopped caching every availability result in module globals:
++    # its accessors now call the imported Transformers probe directly.  That
++    # probe returns ``(available, version)`` and therefore remains truthy even
++    # when the package is absent.  Wrap TRL's module-local reference as well as
++    # retaining the cached-flag repair for older releases.
++    package_probe = getattr(tiu, "_is_package_available", None)
++    if callable(package_probe) and not getattr(
++        package_probe, "_unsloth_returns_bool", False
++    ):
++        @functools.wraps(package_probe)
++        def _is_package_available_bool(*args, **kwargs):
++            result = package_probe(*args, **kwargs)
++            return_version = kwargs.get(
++                "return_version", args[1] if len(args) > 1 else False
++            )
++            if return_version:
++                return result
++            if isinstance(result, tuple):
++                return bool(result and result[0])
++            return bool(result)
++
++        _is_package_available_bool._unsloth_returns_bool = True
++        tiu._is_package_available = _is_package_available_bool
++
+     for attr in list(vars(tiu)):
+         if not (attr.startswith("_") and attr.endswith("_available")):
+             continue

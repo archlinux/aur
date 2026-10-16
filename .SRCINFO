@@ -1,20 +1,28 @@
 pkgbase = python-unsloth-zoo
 	pkgdesc = Utility functions for Unsloth fine-tuning framework
-	pkgver = 2026.5.5
+	pkgver = 2026.10.6
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth-zoo
 	arch = any
 	license = LGPL-3.0-or-later
+	checkdepends = git
+	checkdepends = ipython
+	checkdepends = python-bitsandbytes
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-socket
+	checkdepends = python-yaml
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	depends = python
-	depends = python-pytorch
-	depends = python-triton
+	depends = python-pytorch>=2.4
+	depends = python-pytorch<2.15
+	depends = python-triton>=3
 	depends = python-numpy
-	depends = python-packaging
+	depends = python-einops
+	depends = python-packaging>=24.1
 	depends = python-psutil
 	depends = python-tqdm
 	depends = python-protobuf
@@ -22,19 +30,37 @@ pkgbase = python-unsloth-zoo
 	depends = python-regex
 	depends = python-typing_extensions
 	depends = python-filelock
-	depends = python-sentencepiece
-	depends = python-transformers
-	depends = python-datasets
-	depends = python-accelerate
-	depends = python-peft
-	depends = python-trl
-	depends = python-huggingface-hub
+	depends = python-sentencepiece>=0.2
+	depends = python-transformers>=4.52.4
+	depends = python-transformers<6
+	depends = python-datasets>=3.4.1
+	depends = python-datasets<6
+	depends = python-accelerate>=0.34.1
+	depends = python-accelerate<2
+	depends = python-peft>=0.18.0
+	depends = python-peft<1
+	depends = python-trl>=0.18.2
+	depends = python-trl<=1.15.0
+	depends = python-huggingface-hub>=0.34
+	depends = python-huggingface-hub<1:3
 	depends = python-hf-transfer
 	depends = python-cut-cross-entropy
-	depends = python-torchao
+	depends = python-torchao>=0.13
 	depends = python-tyro
 	depends = python-msgspec
-	source = python-unsloth-zoo-2026.5.5.tar.gz::https://pypi.io/packages/source/u/unsloth-zoo/unsloth_zoo-2026.5.5.tar.gz
-	sha256sums = f924edc4042c5d996bc3255a8549d83466a7205bdc7d2e1d108595b98cbef38d
+	depends = python-wheel>=0.42
+	depends = python-requests
+	depends = python-safetensors
+	depends = python-torchvision
+	optdepends = git: clone llama.cpp for GGUF model conversion
+	optdepends = python-bitsandbytes: 4-bit/8-bit quantization and LoRA merging
+	optdepends = python-fastapi: diffusion-studio HTTP service
+	optdepends = uvicorn: diffusion-studio HTTP service
+	source = unsloth-zoo-9e560677fbe7460cf9d2e047d8825689cacb02b7.tar.gz::https://github.com/unslothai/unsloth-zoo/archive/9e560677fbe7460cf9d2e047d8825689cacb02b7.tar.gz
+	source = unsloth-983226fa739a3d00836d4d77b94390bebe144781.tar.gz::https://github.com/unslothai/unsloth/archive/983226fa739a3d00836d4d77b94390bebe144781.tar.gz
+	source = trl-import-utils-compat.patch
+	sha256sums = 8c7195183889bfdce670d85f0d987af11398d871f6e6c0978df09e8fc89dd28b
+	sha256sums = d6f3ab919bf0e2cbebbae89633b21bc08cb0d277e32d8f5890d8d22d516fa82a
+	sha256sums = ddc0c8a0dddae64bdd1f94351b6d86682eae9774fa304a05a84bb6088709ac89
 
 pkgname = python-unsloth-zoo
