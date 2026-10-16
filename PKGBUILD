@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/hakoerber/git-repo-manager'
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'libgit2' 'curl' 'openssl')
-makedepends=('cargo' 'git')
+makedepends=('cargo')
 source=("https://github.com/hakoerber/git-repo-manager/releases/download/v${pkgver}/source.tar.gz")
 sha256sums=('SKIP')
   # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20

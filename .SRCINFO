@@ -6,7 +6,6 @@ pkgbase = grm
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
-	makedepends = git
 	depends = glibc
 	depends = gcc-libs
 	depends = libgit2
