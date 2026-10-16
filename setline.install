@@ -1,0 +1,66 @@
+post_install() {
+  # 服务账号：先 sysusers/tmpfiles（Arch 的正常路径），下面的 groupadd/useradd 是兜底，
+  # 供 sysusers 解析失败或非 systemd 环境使用。
+  systemd-sysusers setline.conf 2>/dev/null || :
+  systemd-tmpfiles --create setline.conf 2>/dev/null || :
+
+  if ! getent group beangle >/dev/null 2>&1; then
+    groupadd -r beangle 2>/dev/null || :
+  fi
+  if ! getent passwd setline >/dev/null 2>&1; then
+    useradd -r -g beangle -d /var/lib/setline -s /usr/sbin/nologin \
+      -c "Setline proxy" setline 2>/dev/null || :
+  fi
+
+  # 配置只在首次安装时从 .default 生成，并且刻意不由包跟踪：setline 运行时会重写这个文件
+  # （路由变更落盘），交给 pacman 跟踪的话每次升级都只会多出一个 .pacnew。卸载保留该文件，
+  # 与上游的 rpm/deb 包行为一致。
+  mkdir -p /etc/setline
+  if [ ! -f /etc/setline/setline.json ]; then
+    cp /usr/share/setline/setline.json.default /etc/setline/setline.json 2>/dev/null || :
+  fi
+  # 目录要 2775 + setgid：setline 以 setline:beangle 运行，重写配置时要在该目录里建临时文件
+  # 再改名，只给文件写权限是不够的。
+  if getent passwd setline >/dev/null 2>&1; then
+    chown setline:beangle /etc/setline /etc/setline/setline.json 2>/dev/null || :
+  fi
+  chmod 2775 /etc/setline 2>/dev/null || :
+  chmod 0664 /etc/setline/setline.json 2>/dev/null || :
+
+  if [ -d /var/lib/setline ]; then
+    chown -R setline:beangle /var/lib/setline /var/log/setline 2>/dev/null || :
+    chmod 2775 /var/lib/setline /var/log/setline 2>/dev/null || :
+    # 片段目录本身不需要组写：写片段的是 setline，setline-apply 以 root 运行。
+    chmod 0755 /var/lib/setline/haproxy /var/lib/setline/nginx /var/lib/setline/apply 2>/dev/null || :
+  fi
+
+  systemctl daemon-reload 2>/dev/null || :
+}
+
+post_upgrade() {
+  # 重跑 post_install：升级后补齐用户/目录（新版本可能加了目录）并修正权限。
+  # /etc/setline/setline.json 已存在时不会被覆盖。
+  post_install
+}
+
+pre_remove() {
+  # 这里不做参数判断：pacman 传给 pre_remove 的 $1 是「被移除的版本号」
+  # （0.0.4-1 这样的字符串），不是 Debian/rpm 的「剩余安装实例数」，写成
+  # `[ "$1" -eq 0 ]` 只会得到 "integer expected" 并把整段跳过去，服务不会被停、
+  # timer 也不会被摘掉。升级走的是 pre_upgrade，这里只会在卸载时执行。
+  systemctl stop setline.service 2>/dev/null || :
+  systemctl disable setline.service 2>/dev/null || :
+
+  # 清掉 timer 的 enable 链接：留着会指向已删除的 unit，timer 周期性地失败。
+  for unit in /etc/systemd/system/timers.target.wants/setline-render.timer \
+              /etc/systemd/system/timers.target.wants/setline-apply.timer; do
+    [ -e "$unit" ] || continue
+    # 保留 .timer 后缀：要禁用的是 timer 单元本身，去掉后缀会去 disable 一个不存在的
+    # 同名 service，链接原地不动。
+    systemctl disable --now "$(basename "$unit")" 2>/dev/null || :
+  done
+}
+
+post_remove() {
+  systemctl daemon-reload 2>/dev/null || :
+}

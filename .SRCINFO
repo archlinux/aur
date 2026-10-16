@@ -1,0 +1,25 @@
+pkgbase = setline
+	pkgdesc = Beangle local HTTP path router and transparent proxy
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/beangle/setline
+	install = setline.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = ldc
+	makedepends = dub
+	makedepends = git
+	depends = bash
+	depends = systemd
+	optdepends = haproxy: edge proxy setline-apply can validate and reload
+	optdepends = nginx: edge proxy setline-apply can validate and reload
+	source = git+https://github.com/beangle/setline.git#tag=v0.0.4
+	source = setline.install
+	source = setline.sysusers
+	source = setline.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 0ee234408bc442374e5a625cb61729317aefb950411be6b48e63f79fe75d40f0
+	sha256sums = 56e26acdac8b69bb99a05caf720551877cacae5f442f77c6172af5e0771f13be
+	sha256sums = 2c7aa9cbc587e904380b2c409275abab1b370d87de48125003ec13cc5640aa22
+
+pkgname = setline

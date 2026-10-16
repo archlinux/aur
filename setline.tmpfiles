@@ -1,0 +1,5 @@
+d /var/lib/setline 2775 setline beangle -
+d /var/lib/setline/haproxy 0755 setline beangle -
+d /var/lib/setline/nginx 0755 setline beangle -
+d /var/lib/setline/apply 0755 setline beangle -
+d /var/log/setline 2775 setline beangle -
