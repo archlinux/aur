@@ -1,7 +1,7 @@
 # Maintainer: Tess Hoffman <tess@zrhoffman.net>
 pkgname=f5fpc
 pkgver=7272.0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(aarch64 x86_64)
 
