@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="python-inquirer-textual"
-pkgver=0.8.1
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Versatile library for user input in Python"
 
@@ -16,7 +16,7 @@ depends=('python' 'python-rich' 'python-textual' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('1f098d0c4d7b3f4238857c4d9be50ad11e0f304ccf69f50191504cc620a2ec88')
+sha256sums=('baa082aee687ad56ad27c73ee9e96f527ee0d8a9c412dfa9b88f1f8c89903940')
 
 
 build() {

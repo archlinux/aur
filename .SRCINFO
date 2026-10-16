@@ -1,6 +1,6 @@
 pkgbase = python-inquirer-textual
 	pkgdesc = Versatile library for user input in Python
-	pkgver = 0.8.1
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com//inquirer-textual
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-inquirer-textual
 	depends = python-rich
 	depends = python-textual
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/i/inquirer_textual/inquirer_textual-0.8.1.tar.gz
-	sha256sums = 1f098d0c4d7b3f4238857c4d9be50ad11e0f304ccf69f50191504cc620a2ec88
+	source = https://files.pythonhosted.org/packages/source/i/inquirer_textual/inquirer_textual-0.8.5.tar.gz
+	sha256sums = baa082aee687ad56ad27c73ee9e96f527ee0d8a9c412dfa9b88f1f8c89903940
 
 pkgname = python-inquirer-textual
