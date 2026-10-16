@@ -14,7 +14,7 @@ optdepends=(
     'scid: legacy database tools (tcscid)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chrisfair/newscid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('83dd246978d7e65f7325a2ac5d7183d209a18657848d028f4d33c63af841d20f')
+sha256sums=('c799f0fb1e2cecd5bf944349ed05113a75114af35457bdebd1f326747838731c')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/frontend"
