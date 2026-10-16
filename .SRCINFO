@@ -1,6 +1,6 @@
 pkgbase = tinymist-bin
 	pkgdesc = Integrated language service for Typst (LSP, CLI, preview server)
-	pkgver = 0.15.8
+	pkgver = 0.15.10
 	pkgrel = 1
 	url = https://github.com/Myriad-Dreamin/tinymist
 	arch = x86_64
@@ -9,18 +9,18 @@ pkgbase = tinymist-bin
 	license = Apache-2.0
 	depends = libgcc
 	optdepends = tinymist-viewer-bin: standalone native preview client
-	provides = tinymist=0.15.8
+	provides = tinymist=0.15.10
 	conflicts = tinymist
 	conflicts = tinymist-git
 	conflicts = tinymist-nightly-bin
 	options = !debug
-	source = LICENSE-0.15.8::https://raw.githubusercontent.com/Myriad-Dreamin/tinymist/v0.15.8/LICENSE
+	source = LICENSE-0.15.10::https://raw.githubusercontent.com/Myriad-Dreamin/tinymist/v0.15.10/LICENSE
 	sha256sums = a9f29769fd3a7ee2976e6e161a93e16461fa305c088c4806242e50ec8ef86bce
-	source_x86_64 = tinymist-0.15.8-x86_64.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.8/tinymist-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2428932e8d8b593ebc1ac4eed41fb9d3584166e1044bbcdef740b7296c348295
-	source_aarch64 = tinymist-0.15.8-aarch64.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.8/tinymist-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = ec78300e89b34e0958b615b1d42c275fd11bf91d2d27401bbef07150e477f199
-	source_armv7h = tinymist-0.15.8-armv7.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.8/tinymist-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = ddee35504e7203c8afc399895695b90912a46e2a1cff932389e635c6fd7c2495
+	source_x86_64 = tinymist-0.15.10-x86_64.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.10/tinymist-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 10df33ec0b6cb380b1354b55bd8a32fdc2f00fec281b7dc0a41086bd0038e0fc
+	source_aarch64 = tinymist-0.15.10-aarch64.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.10/tinymist-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0a545957d894cec8a4ca9010d05a7fa27beb1e356c2b221b7f7f704538ff0bb0
+	source_armv7h = tinymist-0.15.10-armv7.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.10/tinymist-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 8b334de94c91d95d679d59a920f0d850a33778b14fc3ce9061cba9f157f4fdc2
 
 pkgname = tinymist-bin
