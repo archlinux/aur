@@ -49,9 +49,12 @@ post_upgrade() {
 }
 
 pre_remove() {
-  if [ "$1" -eq 0 ]; then
-    systemctl stop micdn.service 2>/dev/null || :
-  fi
+  # 不做参数判断：pacman 只在真正卸载时调用 pre_remove（升级走 pre_upgrade /
+  # post_upgrade），并且 $1 是被移除的版本号（如 0.4.0-1），不是「剩余安装实例数」。
+  # 写成 `[ "$1" -eq 0 ]` 只会让 bash 报 integer expected，判断永远不成立，
+  # 服务不会被停、enable 链接也会留成悬空链接。
+  systemctl stop micdn.service 2>/dev/null || :
+  systemctl disable micdn.service 2>/dev/null || :
 }
 
 post_remove() {

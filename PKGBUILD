@@ -1,5 +1,5 @@
-# 上游模板：micdn/scripts/package/PKGBUILD.proto
-# 维护目录：~/aur-packages/micdn
+# AUR 维护目录：~/aur-packages/micdn
+# 打包说明见上游 docs/build_aur.md
 
 pkgname=micdn
 pkgver=0.4.0
@@ -8,12 +8,17 @@ pkgdesc="Beangle minimal CDN (static, Maven, npm, blob, www)"
 arch=('x86_64')
 url='https://github.com/beangle/micdn'
 license=('GPL-3.0-or-later')
+# 默认配置（executable）用宿主 curl(1) 回源下载（src/micdn/web/curl.d），
+# 所以 curl 是硬依赖；namcap 的 "may not be needed" 是误报。
 depends=('curl')
 makedepends=('ldc' 'dub' 'git' 'zlib' 'openssl')
 optdepends=(
   'systemd: service unit micdn.service'
 )
-backup=('etc/micdn/micdn.xml')
+# 不设 backup：/etc/micdn/micdn.xml 由 micdn.install 首次安装时从
+# micdn.xml.default 生成，不在包里，pacman 跟踪不到（写进 backup 只会得到
+# namcap 的 "File in backup array not found in package"）。上游 rpm/deb 同样
+# 不跟踪该文件，升级与卸载都保留。
 install=micdn.install
 source=(
   "git+https://github.com/beangle/micdn.git#tag=v${pkgver}"
@@ -22,7 +27,7 @@ source=(
   "micdn.tmpfiles"
 )
 sha256sums=('SKIP'
-            '16d1e0ce6e10e38924afc61a03f9d65dca693135150650f50a8a39425b1fb5f4'
+            'c9af15c01fe7b5f0ee42ccc00e41c056c88525b06e90160716d0fd905fc4cfad'
             'abbeb4d5fc1c271a950d1bd9f8e316e0d696931a9cebbb56651186cc8ef148c6'
             'd80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f')
 
