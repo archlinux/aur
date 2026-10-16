@@ -1,6 +1,6 @@
 pkgbase = cephalote
 	pkgdesc = Scan source code for weak cryptographic schemes
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Smiduweorc/Cephalote
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cephalote
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = cephalote-0.2.0.tar.gz::https://github.com/Smiduweorc/Cephalote/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 5454170028d9d65e567349e02821e15dc5bc9de9b380c3269e8c0b28e0b82051
+	source = cephalote-0.2.1.tar.gz::https://github.com/Smiduweorc/Cephalote/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 75c01035579f5e6aa3339d14696514207876ee117e1c640ed673b6d8a9cbad0a
 
 pkgname = cephalote

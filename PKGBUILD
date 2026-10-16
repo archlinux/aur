@@ -2,7 +2,7 @@ pkgname=cephalote
 # GitHub archives extract to the repository's canonical casing, which is
 # "Cephalote" - keep this in sync if the repo is ever renamed to lowercase.
 _repo=Cephalote
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Scan source code for weak cryptographic schemes"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Refresh on every pkgver bump with `updpkgsums` (pacman-contrib); it needs the
 # tagged tarball to be published upstream first.
-sha256sums=('5454170028d9d65e567349e02821e15dc5bc9de9b380c3269e8c0b28e0b82051')
+sha256sums=('75c01035579f5e6aa3339d14696514207876ee117e1c640ed673b6d8a9cbad0a')
 
 prepare() {
 	cd "$_repo-$pkgver"
