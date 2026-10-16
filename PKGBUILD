@@ -2,38 +2,41 @@
 
 pkgname=gpmd85emulator
 pkgver=0.11.1912_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform GNU/GPL Tesla PMD 85 Emulator"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/mborik/GPMD85Emulator"
-license=('GPL')
-depends=('gcc-libs' 'sdl')
+license=('GPL-3.0-or-later')
+depends=('glibc' 'libgcc' 'libstdc++' 'sdl2')
 makedepends=('gendesk')
 conflicts=('gpmd85emulator-git')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/mborik/GPMD85Emulator/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('fe5d8cdde453cff6890a8cdace11d13e')
+sha256sums=('deae6a6967981960fb188e201c089e3caff0aafc09423087b592dae6e2457c24')
 
 prepare() {
-  cd "${srcdir}"
-  gendesk -f --pkgname "GPMD85Emulator" \
+  cd "$srcdir"
+  gendesk -f -n --pkgname "GPMD85Emulator" \
              --exec "GPMD85emu" \
              --pkgdesc "$pkgdesc" \
              --categories 'Game;System;Emulator'
+
+  cd "GPMD85Emulator-$pkgver"
+  # respect system CFLAGS/CXXFLAGS/LDFLAGS and don't strip the binary
+  sed -i -e 's/^\tCXXFLAGS="-Os -Wall"/\tCXXFLAGS="$CXXFLAGS -Wall"/' \
+         -e 's/^\tCFLAGS="-Os -Wall"/\tCFLAGS="$CFLAGS -Wall"/' \
+         -e 's/^\t\tLDFLAGS="-s"/\t\t:/' configure.ac
+  autoreconf -fi
 }
 
-build ()
-{
-  cd $srcdir/GPMD85Emulator-$pkgver
-  aclocal
-  automake --add-missing
-  autoconf
+build() {
+  cd "$srcdir/GPMD85Emulator-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/GPMD85Emulator-$pkgver
-  mkdir -p $pkgdir/usr/share/gpmd85emu
-  make DESTDIR=$pkgdir install
-  install -Dm644 $srcdir/GPMD85Emulator.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  cd "$srcdir/GPMD85Emulator-$pkgver"
+  mkdir -p "$pkgdir/usr/share/gpmd85emu"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir/GPMD85Emulator.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

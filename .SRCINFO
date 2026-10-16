@@ -1,17 +1,17 @@
 pkgbase = gpmd85emulator
 	pkgdesc = Multiplatform GNU/GPL Tesla PMD 85 Emulator
 	pkgver = 0.11.1912_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mborik/GPMD85Emulator
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = gendesk
-	depends = gcc-libs
-	depends = sdl
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = sdl2
 	conflicts = gpmd85emulator-git
 	source = gpmd85emulator-0.11.1912_beta.tar.gz::https://github.com/mborik/GPMD85Emulator/archive/refs/tags/v0.11.1912_beta.tar.gz
-	md5sums = fe5d8cdde453cff6890a8cdace11d13e
+	sha256sums = deae6a6967981960fb188e201c089e3caff0aafc09423087b592dae6e2457c24
 
 pkgname = gpmd85emulator
-
