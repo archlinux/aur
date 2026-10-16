@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=akp02d Theme Editor
+GenericName=Panel Theme Editor
+Comment=Design themes for the Ajazz AKP02 panel with a live preview
+Exec=akp02d-edit
+Icon=video-display
+Terminal=false
+Categories=Settings;HardwareSettings;Qt;
+Keywords=AKP02;Ajazz;panel;display;theme;stats;
+StartupWMClass=akp02d-edit

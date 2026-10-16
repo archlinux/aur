@@ -1,0 +1,22 @@
+# A systemd user service for akp02d: runs as you, so it can reach your
+# themes, your sound server and the control socket in $XDG_RUNTIME_DIR.
+#
+#   mkdir -p ~/.config/systemd/user
+#   cp contrib/akp02d.service ~/.config/systemd/user/
+#   systemctl --user enable --now akp02d
+#
+# Reaching the panel as your user needs read/write access to its hidraw
+# node -- a udev rule granting it to the logged-in user (TAG+="uaccess").
+
+[Unit]
+Description=Themed system stats on the Ajazz AKP02 panel
+After=graphical-session.target pipewire.service
+
+[Service]
+ExecStart=/usr/bin/env akp02d
+# Not plugged in yet, or unplugged: try again rather than give up.
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

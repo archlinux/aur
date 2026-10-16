@@ -1,0 +1,13 @@
+post_install() {
+  cat <<'MSG'
+==> akp02d runs as your user, not as root. To start it now and at every login:
+      systemctl --user enable --now akp02d
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+==> Restart akp02d to run the new version:
+      systemctl --user restart akp02d
+MSG
+}
