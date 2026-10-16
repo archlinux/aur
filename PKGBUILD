@@ -2,18 +2,18 @@
 
 pkgname=age-keylookup
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to look up age public keys from a keyserver'
 arch=('x86_64')
 url="https://github.com/FiloSottile/torchwood"
 license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('go')
-source=("git+$url#tag=v$pkgver")
-sha512sums=('6000f6bf6371039c2b3c82f6f86ef53c5f5afc4803d8166e8107a0d35e7fa97c2936cf7790ab37a4e22a5e79362df6e7c609ceb4cacdd602c400563f345042c2')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('28a747cf6d0fc095eac9748c7d9a9e3670b76061a69bb58b986881069390c31db5a615601a674cd041fcdfb0349c99a272dd6bc032468703ae4869942545418e')
 
 build() {
-  cd "torchwood"
+  cd "torchwood-$pkgver"
   go build \
     -trimpath \
     -buildmode=pie \
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "torchwood"
+  cd "torchwood-$pkgver"
   install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE

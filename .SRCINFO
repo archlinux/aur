@@ -7,7 +7,7 @@ pkgbase = age-keylookup
 	license = BSD-3-Clause
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/FiloSottile/torchwood#tag=v0.10.0
-	sha512sums = 6000f6bf6371039c2b3c82f6f86ef53c5f5afc4803d8166e8107a0d35e7fa97c2936cf7790ab37a4e22a5e79362df6e7c609ceb4cacdd602c400563f345042c2
+	source = https://github.com/FiloSottile/torchwood/archive/refs/tags/v0.10.0.tar.gz
+	sha512sums = 28a747cf6d0fc095eac9748c7d9a9e3670b76061a69bb58b986881069390c31db5a615601a674cd041fcdfb0349c99a272dd6bc032468703ae4869942545418e
 
 pkgname = age-keylookup
