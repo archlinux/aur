@@ -1,6 +1,6 @@
 pkgbase=rust-dos
 pkgname=('rust-dos' 'libretro-rust-dos')
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/dividebysandwich/rust-dos"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Update with updpkgsums once v$pkgver is tagged.
-sha256sums=('e0229cbd1160824896d73d29da3820fe74b6b6dc57b2499bcbc890c740725a9a')
+sha256sums=('0546790719d97993192dd6da68e38eac59faa7a23a09491813c4dcdc91bec00d')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -56,7 +56,8 @@ package_rust-dos() {
     install -Dm0755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm0755 "target/release/$pkgname-relay" "$pkgdir/usr/bin/$pkgname-relay"
     install -Dm0644 "packaging/linux/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm0644 "packaging/linux/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+    install -Dm0644 "packaging/linux/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    install -Dm0644 "assets/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm0644 CONFIGURATION.md "$pkgdir/usr/share/doc/$pkgname/CONFIGURATION.md"
