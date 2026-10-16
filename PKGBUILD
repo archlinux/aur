@@ -4,7 +4,7 @@
 pkgname=kryoflux
 pkgdesc="USB Floppy Controller for Software Preservation"
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="http://www.kryoflux.com"
 license=('custom')
@@ -18,19 +18,17 @@ source=("https://www.kryoflux.com/download/kryoflux_${pkgver}0_linux.tar.gz"
         'https://kryoflux.com/kryoflux-ui.jar'
         '80-kryoflux.rules'
         'kryoflux.conf'
-        'kryoflux.sh'
-        'https://webstore.kryoflux.com/catalog/images/kf_logo_big.png')
+        'kryoflux.sh')
 md5sums=('aa1a74bc681e2092278506ef4a2126f9'
          '44a067aa8d40dd0c8c53d6ff3ad8109c'
          '43ec7eb49fbdab703cafe146145fe0de'
          'ede10c48b2b1edc5c346e8814f07bcdb'
-         '6811dc57633d7046a540b65e763aa338'
-         'ede9a2b77643af8bf9d166c30827c170')
+         '6811dc57633d7046a540b65e763aa338')
 
 prepare() {
   cd "${srcdir}"
   gendesk -f -n --pkgname "${pkgname}" --pkgdesc "Control program for KryoFlux" --exec "kryoflux" --categories "Utility;Archiving"
-  convert kf_logo_big.png -background None -gravity center -extent 400x400 kryoflux.png
+  magick images/logo.png -background None -gravity center -extent 186x186 kryoflux.png
 }
 
 package() {
@@ -45,9 +43,9 @@ package() {
   install -d ${pkgroot}/{bin,lib}
   if [ "$CARCH" = "x86_64" ]
   then
-    ar -xv dtc/${CARCH}/kryoflux-dtc_${pkgver}.0_amd64.deb data.tar.gz
+    ar -xv dtc/x86_64/kryoflux-dtc_${pkgver}.0_amd64.deb data.tar.gz
   else
-    ar -xv dtc/${CARCH}/kryoflux-dtc_${pkgver}.0_arm64.deb data.tar.gz
+    ar -xv dtc/arm64/kryoflux-dtc_${pkgver}.0_arm64.deb data.tar.gz
   fi
   tar -C ${pkgdir} -xvf data.tar.gz
   # rename dtc binary to kdtc to avoid clash with dtc package (suggested by @frankspace)

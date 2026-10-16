@@ -1,7 +1,7 @@
 pkgbase = kryoflux
 	pkgdesc = USB Floppy Controller for Software Preservation
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kryoflux.com
 	install = kryoflux.install
 	arch = x86_64
@@ -18,12 +18,10 @@ pkgbase = kryoflux
 	source = 80-kryoflux.rules
 	source = kryoflux.conf
 	source = kryoflux.sh
-	source = https://webstore.kryoflux.com/catalog/images/kf_logo_big.png
 	md5sums = aa1a74bc681e2092278506ef4a2126f9
 	md5sums = 44a067aa8d40dd0c8c53d6ff3ad8109c
 	md5sums = 43ec7eb49fbdab703cafe146145fe0de
 	md5sums = ede10c48b2b1edc5c346e8814f07bcdb
 	md5sums = 6811dc57633d7046a540b65e763aa338
-	md5sums = ede9a2b77643af8bf9d166c30827c170
 
 pkgname = kryoflux
