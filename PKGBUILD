@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=concat-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine (upstream binary)"
 arch=('x86_64' 'aarch64')
@@ -43,13 +43,13 @@ options=('!strip' '!debug')
 # 0.2.4 ships Concat-0.2.4-linux-x86_64.deb whatever its tag says), so both
 # the tag and that version are resolved through the release manifest and
 # synced here along with the checksums; see pkg.sh.
-_tag="v0.2.6"
-_relver="0.2.6"
+_tag="v0.2.7"
+_relver="0.2.7"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/jub0t/Concat/releases/download/${_tag}/Concat-${_relver}-linux-x86_64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/jub0t/Concat/releases/download/${_tag}/Concat-${_relver}-linux-aarch64.deb")
 noextract=("${pkgname}-${pkgver}-x86_64.deb" "${pkgname}-${pkgver}-aarch64.deb")
-sha256sums_x86_64=('fca5f4e8a763caeb9ab8654feb55f9743eb01763f18cee71ef83bffb20259eec')
-sha256sums_aarch64=('99215754f7a964489385cb817868863557b554899b9d24118a3dcfa0b692c14d')
+sha256sums_x86_64=('ffcd76d3501011bfd96c3b98f7bd5842fb12514ce670d24b5b91035ea589d0be')
+sha256sums_aarch64=('12ba96f1ea1c31d247446023615563d8a124d7a15d9e985fb5fae915addf0bb5')
 
 package() {
   # -p: lib/ is the usual set of soname symlinks beside the real files, and
