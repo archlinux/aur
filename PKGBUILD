@@ -3,13 +3,13 @@
 
 # The root PKGBUILD of github.com/thisisgm/flea, built from the release's source tarball; its closure's reasons live there.
 pkgname=flea
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
 url='https://github.com/thisisgm/flea'
 license=('MIT' 'Apache-2.0' 'EPL-2.0' 'BSD-2-Clause')
-depends=('bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'udisks2' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
+depends=('bat' 'bubblewrap' 'expect' 'gcc-libs' 'glib2' 'glibc' 'gvfs' 'gvfs-afc' 'gvfs-dnssd' 'gvfs-gphoto2' 'gvfs-mtp' 'gvfs-nfs' 'gvfs-smb' 'hicolor-icon-theme' 'jq' 'kimageformats' 'libheif' 'omarchy' 'python' 'python-gobject' 'qt6-multimedia' 'qt6-webengine' 'quickjs-ng' 'quickshell' 'shared-mime-info' 'udisks2' 'usbmuxd' 'util-linux' 'wl-clipboard' 'xdg-terminal-exec' 'xdg-utils')
 makedepends=('cargo')
 # flea-bin declares its own conflict with this package, and pacman honours a conflict from either side.
 conflicts=('flea-git')
@@ -20,12 +20,13 @@ optdepends=('libarchive: archive listing and extraction'
             'ffmpeg: media metadata in the preview column'
             'ffmpegthumbnailer: video thumbnails, made by one pre-linked worker through libffmpegthumbnailer.so.4, or by the ffmpegthumbnailer program per video when that library will not load'
             'dropbox-cli: Dropbox share links'
+            'libreoffice: office document previews'
             'zoxide: frecent folders in the folder jump of the path bar')
 options=('!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins it from SHASUMS256.txt before the AUR sees it.
 # The local name carries pkgrel, so a rebuilt release is downloaded again, never read from a stale yay cache.
 source=("$pkgname-v$pkgver-$pkgrel.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('d3361a384f136cd3e991a4dba9007fbea57868d923f94b8f3ffcb9d8dd7c6d87')
+sha256sums=('c0597fa7ac1edc8874b4ef3be7f1453209e4867da8ccc35f39e75d21bdbf24ea')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
@@ -52,6 +53,7 @@ package() {
   install -Dm644 packaging/org.freedesktop.impl.portal.desktop.flea.service -t "$pkgdir/usr/share/dbus-1/services"
   install -Dm755 tools/flea-filemanager1 "$pkgdir/usr/lib/flea/flea-filemanager1"
   install -Dm644 packaging/com.thisisgm.flea.FileManager1.service -t "$pkgdir/usr/share/dbus-1/services"
+  install -Dm755 tools/flea-mpris "$pkgdir/usr/lib/flea/flea-mpris"
   install -Dm644 packaging/com.thisisgm.flea.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/com.thisisgm.flea.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
