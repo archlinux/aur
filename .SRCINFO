@@ -1,0 +1,15 @@
+pkgbase = ans2irc
+	pkgdesc = Convert ANSI art to mIRC-coloured text that fits in IRC messages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mmoyles87/ans2irc
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = ans2irc-0.1.0.tar.gz::https://github.com/mmoyles87/ans2irc/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = d5135fdb7cf904dab761cb7236b6c9b7fe4fd9852689541f1f83588ff3205086
+
+pkgname = ans2irc
