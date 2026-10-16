@@ -1,6 +1,6 @@
 # Maintainer: captience <milkkjello@gmail.com>
 pkgname=tide
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A multi-source music player with two personalities"
 arch=('any')
@@ -24,6 +24,8 @@ optdepends=(
   'kwallet: KDE wallet backend for cookie import'
   'python-watchdog: live re-indexing of the local files source'
   'librespot: Spotify Premium playback via the librespot backend'
+  'python-onnxruntime-cpu: precise lyric word timing (local alignment)'
+  'python-yaml: word-synced lyrics from LRClib'
 )
 makedepends=(
   'python-build'
@@ -33,7 +35,7 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # computed from the GitHub tag tarball at release time (updpkgsums once
 # v$pkgver is tagged and pushed); until then this is the previous release's.
-sha256sums=('89d3e475d8ad272dd24d3af0f385e7211259c5ad5cb70f00f8b76fe5358187e2')
+sha256sums=('d0d049d1909961cad3f0ceb11bea8b10fb32b4679a59e0ddd51c328081e29da5')
 
 build() {
   cd "$pkgname-$pkgver"
