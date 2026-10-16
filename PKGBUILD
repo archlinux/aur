@@ -5,7 +5,7 @@
 
 pkgname=mnamer
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A media organization tool'
 arch=('any')
 url='https://github.com/jkwill87/mnamer'
@@ -15,6 +15,7 @@ depends=(
   'python-appdirs'
   'python-babelfish'
   'python-guessit'
+  'python-installer'
   'python-requests'
   'python-requests-cache'
   'python-teletype')

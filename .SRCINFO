@@ -1,7 +1,7 @@
 pkgbase = mnamer
 	pkgdesc = A media organization tool
 	pkgver = 2.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jkwill87/mnamer
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = mnamer
 	depends = python-appdirs
 	depends = python-babelfish
 	depends = python-guessit
+	depends = python-installer
 	depends = python-requests
 	depends = python-requests-cache
 	depends = python-teletype
