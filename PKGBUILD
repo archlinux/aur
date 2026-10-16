@@ -1,12 +1,12 @@
 # Maintainer: Asger Hautop Drewsen <asger@tyilo.com>
 pkgname=kattis-cli-git
-pkgver=r94.624fe94
+pkgver=r143.2c237a8
 pkgrel=1
 pkgdesc="Kattis online judge command line tool"
 arch=('any')
 url="https://github.com/Kattis/kattis-cli"
 license=('MIT')
-depends=('python' 'python-requests' 'python-lxml')
+depends=('uv')
 makedepends=('git')
 source=("git+https://github.com/Kattis/kattis-cli")
 md5sums=('SKIP')
