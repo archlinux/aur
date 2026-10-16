@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Re Zoids Saga
+Comment=Native Zoids Saga runtime (requires your own ROM)
+Exec=re-zoids-saga
+Icon=re-zoids-saga
+Terminal=false
+Categories=Game;RolePlaying;
+Keywords=Zoids;Saga;GBA;
