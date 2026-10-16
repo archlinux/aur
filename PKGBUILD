@@ -1,6 +1,6 @@
 # Maintainer: bjl32 <bjl32@users.noreply.github.com>
 pkgname=why
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A Linux troubleshooter that explains why a program does not work'
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,9 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Run `updpkgsums` once the v$pkgver tag exists; it fills this in for you.
-sha256sums=('68e096e63b36f3efab7077de6e750daeafb2113b081dde13010f503fed240188')
+# Release preparation: replace SKIP with `updpkgsums` once the v$pkgver
+# archive exists, then regenerate .SRCINFO before publishing to the AUR.
+sha256sums=('fa5482032765d99e7ecc0d5bab5e03d8aff469874b4bd2dfbcdcec92d7a31576')
 
 build() {
   cd "$pkgname-$pkgver"
