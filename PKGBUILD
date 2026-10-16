@@ -2,7 +2,7 @@
 
 _pkgname=mantisbt-cli
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r5.gbd18ea8
+pkgver=0.3.0.r0.g3ad0eba
 pkgrel=1
 pkgdesc='Command line client for the MantisBT REST API'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,6 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-options=('!debug')
 source=("${_pkgname}::git+${url}.git#branch=0.x")
 sha256sums=('SKIP')
 
