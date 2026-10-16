@@ -6,7 +6,7 @@ url="https://github.com/doandat943/zalo-for-linux"
 license=('MIT')
 pkgver=26.10.11+26.2.1.r183.285ba91
 pkgrel=1
-epoch=1
+epoch=2
 provides=('zalo')
 conflicts=('zalo' 'zalo-for-linux-bin')
 
@@ -53,8 +53,8 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '27e59a47df95684e171c00f3d26204f85c297e07a2a90a96f591d74028396008'
     'bda3e47be9cb7a9707bed0e6c1344b32abe67a6c85de6538521223d59fa998de'
+    '277f7b54fc65deb7d524537ac73a110c23aab771aabff092d19c114abd305c91'
     '9c692898a06c7d311e1cd2cbe53a4b0a0e5b46a42c69c8320318dce12d48bb47'
 )
 
