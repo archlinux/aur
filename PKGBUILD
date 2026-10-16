@@ -1,6 +1,6 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
 pkgname=tagwerk-git
-pkgver=r94.8c86fd5
+pkgver=r95.59c3bc3
 pkgrel=1
 pkgdesc="Passive time tracker for Hyprland, nothing to start or stop"
 arch=(any)
