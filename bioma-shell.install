@@ -15,6 +15,7 @@ _uinput() {
 _greetd_config=/etc/greetd/config.toml
 _greetd_backup=/etc/greetd/config.toml.before-bioma
 _greeter_dir=/var/lib/bioma-greeter
+_keyring_mark='# bioma: the login password unlocks the keyring'
 
 # Rewrites [default_session] to run $1 as user `greeter`, and keeps everything
 # else in the file: the terminal, an initial_session, comments.
@@ -50,6 +51,17 @@ _greeter_remove() {
         fi
     fi
     rm -f "$_greetd_backup"
+    # The keyring lines greeter-setup added to greetd's PAM file, each under
+    # its mark; any other line stays.
+    if [ -f /etc/pam.d/greetd ] && grep -qxF "$_keyring_mark" /etc/pam.d/greetd; then
+        local tmp
+        tmp="$(mktemp)" && awk -v mark="$_keyring_mark" '
+            skip { skip = 0; if ($0 ~ /pam_gnome_keyring/) next }
+            $0 == mark { skip = 1; next }
+            { print }
+        ' /etc/pam.d/greetd > "$tmp" && cat "$tmp" > /etc/pam.d/greetd
+        rm -f "$tmp"
+    fi
     # The login manager the setup's greeter replaced, back in its place: a
     # disabled SDDM with greetd removed would leave a text console.
     if [ -f "$_greeter_dir/.manager-before" ]; then
