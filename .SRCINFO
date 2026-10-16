@@ -1,5 +1,5 @@
 pkgbase = verdana-bin
-	pkgdesc = Binary release of Verdana, a launcher for Nostr napps
+	pkgdesc = A native launcher for napps, modular and pluggable Nostr microapps.
 	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/fiatjaf/verdana
