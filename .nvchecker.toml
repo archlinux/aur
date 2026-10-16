@@ -1,0 +1,5 @@
+[sjq-bin]
+source = "github"
+github = "vivgrid/sjq"
+use_latest_release = true
+prefix = "v"
