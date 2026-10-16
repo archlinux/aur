@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="🔌 What's really using your ports? htop-style TUI, one keypress to kill it"
 
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f7121d8bb7fd3f23bd60bf99ae4afc85b01e53cbca4c490d792877b41b930ba7')
-sha256sums_aarch64=('9e87203ed9069cf5815d220d0da72a1471d0587842d6679441f7398fa009c360')
+sha256sums_x86_64=('cad92b1b8b809605c32febdd295d176a2f0e4d83b3e3ea732e60cf220c13b819')
+sha256sums_aarch64=('dae0167d28478fa89ed63e10ec7fb1568f7eca0903132d088b17c3783e30ca18')
 
 
 package() {
