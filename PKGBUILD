@@ -9,7 +9,7 @@
 
 pkgname=tuxmix
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source TotalMix replacement for RME audio interfaces on Linux"
 arch=('x86_64')
 url="https://github.com/ismail-bahloul/TuxMix"
@@ -34,8 +34,21 @@ makedepends=(
 options=('!lto')
 # GitHub names the archive after the repo's real casing (TuxMix-*),
 # not the lowercase pkgname — build()/package() cd into that below.
-source=("${url}/archive/v${pkgver}/TuxMix-${pkgver}.tar.gz")
-sha256sums=('62fc554fe8768295ce141cb344a5ca15cf1e03d925e51841071dc05135457bbc')
+#
+# The three icon files are carried here instead of being taken from the
+# archive: v0.1.0 was tagged before the icon was redrawn, so its tree
+# still holds the placeholder that first release shipped, and pkgrel
+# exists exactly for this — packaging changes over unchanged binaries.
+# Drop them, and the ${srcdir} paths in package() below, at the next
+# version, where the archive brings all of it back.
+source=("${url}/archive/v${pkgver}/TuxMix-${pkgver}.tar.gz"
+        "tuxmix.svg"
+        "tuxmix-128.png"
+        "tuxmix-256.png")
+sha256sums=('62fc554fe8768295ce141cb344a5ca15cf1e03d925e51841071dc05135457bbc'
+            '7e9931e9ee8231de8ff3b7754767270297f22535fe9079742508bb69d1c7a6ee'
+            '597010272ea72ea330477d06286e31d5efd7a6a7164123b3dbba48dc8bae95ec'
+            '2bda7026de88b9c52c891b03be53ee787c474fe2c77e87bb971faab67b14495c')
 
 build() {
     cd "${srcdir}/TuxMix-${pkgver}"
@@ -52,11 +65,11 @@ package() {
 
     install -Dm644 "tuxmix-gui/assets/tuxmix.desktop" \
         "${pkgdir}/usr/share/applications/tuxmix.desktop"
-    install -Dm644 "tuxmix-gui/assets/tuxmix.svg" \
+    install -Dm644 "${srcdir}/tuxmix.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tuxmix.svg"
-    install -Dm644 "tuxmix-gui/assets/tuxmix-128.png" \
+    install -Dm644 "${srcdir}/tuxmix-128.png" \
         "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tuxmix.png"
-    install -Dm644 "tuxmix-gui/assets/tuxmix-256.png" \
+    install -Dm644 "${srcdir}/tuxmix-256.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/tuxmix.png"
 
     install -Dm644 "README.md" \
