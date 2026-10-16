@@ -5,7 +5,7 @@ gitname="JukeboxCli"
 pkgname="jukebox-cli"
 appname="${pkgname//-/}"
 pkgdesc="Music player that lives in the terminal. Local music, YouTube search and live radio in one queue. Download only when you choose."
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 
 arch=("x86_64")
@@ -20,7 +20,7 @@ provides=("${appname}")
 options=('!strip' 'emptydirs' 'staticlibs' 'zipman')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('18a799776cb76bcc4c4d0f8426a0809f3b6c29c3388c7d24b250dca8dfdd388169672c8d96c8132dcf5b954d4b3636ebda2c6389795bddd3367a9355cb6baf3d')
+b2sums=('60199acd1e9599baabb90ea676b315eee0b24470d5fa83f00862937213482bb3f0614d7099471e94d64410dacb46bae8ab60976e09e0e42485ce24adf6bd9f8c')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
