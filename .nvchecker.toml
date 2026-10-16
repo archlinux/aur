@@ -1,0 +1,4 @@
+[python-demangle]
+source = "git"
+git = "https://github.com/r0ny123/demangle.git"
+prefix = "v"
