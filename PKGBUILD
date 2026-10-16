@@ -2,7 +2,7 @@
 
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
-pkgver=1.19.5
+pkgver=1.19.6
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
@@ -19,24 +19,20 @@ depends=(
 )
 optdepends=('polkit: for TUN authorization')
 options=('!debug')
-source=("restart-bettbox.hook" "99-bettbox.rules" "bettbox.install")
+source=("restart-bettbox.hook" "bettbox.install")
 source_x86_64=(
     "${pkgname%-pre-bin}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
 )
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
-            'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
-sha256sums_x86_64=('d1d0f156a4c1af2eeb3a092ec7c56a07460f47abc3efcdde5bc0851a434667c9')
+sha256sums_x86_64=('2205dab6e463313b0115d6de2a2fe1401d95317b96b032809ee9537b0e1c8f04')
 install=bettbox.install
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    # Upstream already ships Categories=Network; (line 8), so only the missing
-    # StartupWMClass is inserted, right before StartupNotify=true (line 10).
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-compatible-pre-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-compatible-pre-bin}/g
-        10i\StartupWMClass=com.appshub.bettbox
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 
@@ -51,7 +47,8 @@ package() {
 
     install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
 
-    # Polkit rule for resolvectl command
-    install -Dm644 "${srcdir}/99-bettbox.rules" \
-        "${pkgdir}/usr/share/polkit-1/rules.d/99-bettbox.rules"
+    # Polkit rule for resolvectl command; the upstream deb carries it at
+    # usr/share/polkit-1/rules.d/, so the package ships that exact file.
+    install -Dm644 "${srcdir}/usr/share/polkit-1/rules.d/90-bettbox.rules" \
+        "${pkgdir}/usr/share/polkit-1/rules.d/90-bettbox.rules"
 }
