@@ -1,0 +1,18 @@
+pkgbase = brainmap-gui
+	pkgdesc = GUI maze generator using library-brainmap
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/badcast/library-brainmap
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = library-brainmap
+	source = brainmap-gui-1.1.0.tar.gz::https://github.com/badcast/library-brainmap/archive/refs/tags/v1.1.0.tar.gz
+	source = brainmap.desktop
+	source = brainmap-gui.png
+	sha256sums = ee5e3564e02fe615400c9c315b35eee8bed10bedba43377792348d8a6f39e4d7
+	sha256sums = c246b3c062633a230c3a6c2bee3b95f3f348cb620a9747eb47bc9a39d6fff4aa
+	sha256sums = 038a810ba8b17a45a79f8bbca3ddd8c4c3ab8ae390a48c0f309c135fefc05759
+
+pkgname = brainmap-gui

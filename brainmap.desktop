@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Brainmap GUI
+GenericName=Maze Generator
+GenericName[ru]=Генератор лабиринтов
+Comment=GUI application for procedural maze generation and visualization
+Comment[ru]=Графическое приложение для процедурной генерации и визуализации лабиринтов
+Exec=brainmap-gui
+Icon=brainmap-gui
+Terminal=false
+Categories=Utility;Graphics;Development;
+Keywords=maze;generator;brainmap;labyrinth;procedural;
+StartupNotify=true
