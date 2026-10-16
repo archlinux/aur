@@ -2,7 +2,7 @@
 _pkgname=f5vpn
 pkgname=${_pkgname}-ng
 pkgver=7272.0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=(aarch64 x86_64)
 mirror=vpn.f5networks.net
