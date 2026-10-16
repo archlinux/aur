@@ -1,7 +1,7 @@
 # Maintainer: Lin Evelynn <lin@sz.cn.eu.org>
 pkgname=incy-bin
 _pkgname=incy
-pkgver=3.8.8
+pkgver=3.8.10
 pkgrel=1
 pkgdesc="Cross-platform proxy client built on Xray-core"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=incy-bin.install
 
 source=("${_pkgname}-${pkgver}-linux-x64.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v${pkgver}/incy-linux-x64.pkg.tar.zst"
         "fix-xatom.c")
-sha256sums=('435563eddd6883d366ed8b8ff0bd1be87f558c3e4517b827457f653aaf960c16'
+sha256sums=('e28960fe964e1d88866d34e3006220468a6ddbda5ab14e6bdc124d618e422e03'
             'd821ef0eb09c7868faae25390dad7d847cc1d94fbb6d5432b09ae965068466cc')
 
 
