@@ -1,13 +1,16 @@
 pkgbase = dsd-neo
 	pkgdesc = Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA.
 	pkgver = 2.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arancormonk/dsd-neo
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = help2man
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = mbelib-neo>=2.0
 	depends = mbelib-neo<3
 	depends = libsndfile
@@ -18,6 +21,7 @@ pkgbase = dsd-neo
 	depends = soapysdr
 	depends = codec2
 	depends = curl
+	depends = expat
 	conflicts = dsd-neo-git
 	source = dsd-neo-2.10.0.tar.gz::https://github.com/arancormonk/dsd-neo/archive/refs/tags/v2.10.0.tar.gz
 	source = pffft-f5ecc890d185eb33507b79d2e96f5310f9062d7f.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/f5ecc890d185eb33507b79d2e96f5310f9062d7f
