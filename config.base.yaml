@@ -16,8 +16,8 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-# Use explicit upstream resolvers so TUN takeover on systemd-resolved cannot
-# send Mihomo DNS queries back to itself through `system`.
+# Resolve domestic domains directly and other domains through the primary
+# proxy. Avoid parallel domestic/overseas fallback queries and `system` loops.
 dns:
   enable: true
   ipv6: false
@@ -30,25 +30,26 @@ dns:
   use-hosts: true
   respect-rules: true
   proxy-server-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - 114.114.114.114
+    - 223.5.5.5#DIRECT
+    - 119.29.29.29#DIRECT
+    - 114.114.114.114#DIRECT
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - 114.114.114.114
-  fallback:
-    - 1.1.1.1
-    - 8.8.8.8
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - +.google.com
-      - +.facebook.com
-      - +.youtube.com
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    - https://8.8.8.8/dns-query#🚀 节点选择
+  direct-nameserver:
+    - 223.5.5.5#DIRECT
+    - 119.29.29.29#DIRECT
+    - 114.114.114.114#DIRECT
+  direct-nameserver-follow-policy: false
+  nameserver-policy:
+    rule-set:ACL4SSR_LocalAreaNetwork,ACL4SSR_ChinaDomain:
+      - 223.5.5.5#DIRECT
+      - 119.29.29.29#DIRECT
+      - 114.114.114.114#DIRECT
+    +.cn:
+      - 223.5.5.5#DIRECT
+      - 119.29.29.29#DIRECT
+      - 114.114.114.114#DIRECT
 
 proxy-providers:
   subscriptions:

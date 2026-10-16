@@ -5,6 +5,7 @@ set -Eeuo pipefail
 PROGRAM=mihomo-webui-setup
 SUBSCRIPTION_COMMAND=/usr/bin/mihomo-subscription
 CONTROL_FILE=/etc/mihomo-subscription/subscriptions.yaml
+CONFIG_FILE=/etc/mihomo/config.yaml
 
 log() {
   printf '[%s] %s\n' "$PROGRAM" "$*" >&2
@@ -21,6 +22,7 @@ show_help() {
   mihomo-webui-setup [setup] [mihomo-subscription init 参数]
   mihomo-webui-setup subscription [mihomo-subscription subscription 参数]
   mihomo-webui-setup update [mihomo-subscription update 参数]
+  mihomo-webui-setup show-secret
   mihomo-webui-setup rules [--yes] [--dry-run] [--template-file PATH]
   mihomo-webui-setup reset [--yes] [--dry-run]
   mihomo-webui-setup policy-init [--file PATH]
@@ -42,6 +44,10 @@ show_help() {
 日常手工更新：
   mihomo-webui-setup update
   mihomo-webui-setup update --strict
+
+在交互终端按需显示 Mihomo WebUI/API 密钥（会请求 sudo 权限）：
+  mihomo-webui-setup show-secret
+请勿将密钥粘贴到聊天、日志或截图中。
 
 普通用户定制策略（不加 sudo）：
   mihomo-webui-setup policy-init     # 从软件包模板创建用户 policy.yaml，不覆盖已有文件
@@ -113,11 +119,11 @@ main() {
   fi
 
   local command=setup
-  if [[ ${1-} == setup || ${1-} == subscription || ${1-} == update || ${1-} == rules || ${1-} == reset || ${1-} == policy-init || ${1-} == check || ${1-} == diff || ${1-} == apply ]]; then
+  if [[ ${1-} == setup || ${1-} == subscription || ${1-} == update || ${1-} == show-secret || ${1-} == rules || ${1-} == reset || ${1-} == policy-init || ${1-} == check || ${1-} == diff || ${1-} == apply ]]; then
     command=$1
     shift
   elif [[ -n ${1-} && ${1-} != -* ]]; then
-    die "未知子命令：$1（支持 setup、subscription、update、rules、reset、policy-init、check、diff、apply）"
+    die "未知子命令：$1（支持 setup、subscription、update、show-secret、rules、reset、policy-init、check、diff、apply）"
   fi
 
   if [[ $command == policy-init || $command == check || $command == diff || $command == apply ]]; then
@@ -125,8 +131,33 @@ main() {
     exec "$SUBSCRIPTION_COMMAND" "$command" "$@"
   fi
 
+  if [[ $command == show-secret ]]; then
+    (( $# == 0 )) || die "show-secret 不接受参数"
+    [[ -t 1 ]] || die "show-secret 只允许在交互终端显示密钥"
+  fi
+
   if (( EUID != 0 )); then
     exec sudo -- "$0" "$command" "$@"
+  fi
+
+  if [[ $command == show-secret ]]; then
+    python - "$CONFIG_FILE" <<'PY'
+import sys
+
+import yaml
+
+try:
+    with open(sys.argv[1], encoding="utf-8") as file:
+        config = yaml.safe_load(file)
+except (OSError, yaml.YAMLError):
+    raise SystemExit("无法读取 Mihomo 主配置，请确认已完成初始化") from None
+
+secret = config.get("secret") if isinstance(config, dict) else None
+if not isinstance(secret, str) or not secret:
+    raise SystemExit("Mihomo 主配置中没有有效的 API secret")
+print(secret)
+PY
+    return 0
   fi
 
   [[ -x "$SUBSCRIPTION_COMMAND" ]] || die "找不到 $SUBSCRIPTION_COMMAND"

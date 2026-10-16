@@ -21,6 +21,7 @@ post_upgrade() {
 mihomo-webui-config 已升级。
 
 现有 /etc/mihomo/config.yaml 和订阅密钥不会被覆盖。
+新默认模板使用国内直连、海外经代理的 DNS 分流；reset 会使用新模板重建 DNS。
 可运行 mihomo-webui-setup 补齐服务配置并验证订阅。
 本版本会自动用常见客户端标识协商 Clash/Mihomo YAML，但不转换 URI/Base64，
 也不依赖 Subconverter。
