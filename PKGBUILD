@@ -3,8 +3,8 @@
 # Regenerate .SRCINFO on any edit: makepkg --printsrcinfo > .SRCINFO
 pkgname=mantle-git
 pkgver=0.7.4.r0.g5ae47571
-pkgrel=2
-pkgdesc='A Wayland shell engine that runs shells written in Lua'
+pkgrel=3
+pkgdesc='Wayland shell engine: bars, panels and lock screens written in Lua'
 arch=('x86_64')
 url='https://github.com/anasgets111/mantle'
 license=('MIT')
@@ -16,6 +16,8 @@ makedepends=('cargo' 'clang' 'git')
 checkdepends=('dbus' 'pipewire' 'ttf-dejavu')
 optdepends=('niri: workspaces, windows and keyboard layout'
             'hyprland: workspaces, windows and keyboard layout'
+            'sway: workspaces, windows and keyboard layout'
+            'mangowm: workspaces, windows and keyboard layout'
             'paru: AUR package updates'
             'yay: AUR package updates'
             'sound-theme-freedesktop: notification sounds'
