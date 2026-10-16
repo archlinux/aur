@@ -1,4 +1,4 @@
-_THIS_JDK='zulu-25-jdk-fx'
+_THIS_JVM='java-25-zulu-fx'
 
 _fix_default() {
     if [[ ! -x /usr/bin/java ]]; then
@@ -14,7 +14,7 @@ post_install() {
     default=$(_fix_default)
 
     if [[ -z "$default" ]]; then
-        /usr/bin/archlinux-java set "$_THIS_JDK"
+        /usr/bin/archlinux-java set "$_THIS_JVM"
     fi
 }
 
@@ -23,7 +23,7 @@ post_upgrade() {
     default=$(_fix_default)
 
     if [[ -z "$default" ]]; then
-        /usr/bin/archlinux-java set "$_THIS_JDK"
+        /usr/bin/archlinux-java set "$_THIS_JVM"
     fi
 }
 
@@ -31,7 +31,7 @@ pre_remove() {
     local default
     default=$(_fix_default)
 
-    if [[ "$default" == "$_THIS_JDK" ]]; then
+    if [[ "$default" == "$_THIS_JVM" ]]; then
         /usr/bin/archlinux-java unset
     fi
 }
