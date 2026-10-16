@@ -1,11 +1,11 @@
 # Maintainer: Yangtse Su <yangtsesu@gmail.com>
 pkgname=pixlay
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Native Linux photo collage maker designed for GNOME"
 # `aarch64` is the claim that this tree builds under Arch Linux ARM too, and that half of the
 # package is built there: no GitHub runner has an aarch64 Arch userland. The release's arm64
-# binaries are the runner's (`AGENTS.md`, "AUR discipline").
+# binaries are the runner's (`AGENTS.md`, "Distribution").
 arch=('x86_64' 'aarch64')
 url="https://github.com/YangtseSu/pixlay"
 license=('GPL-3.0-or-later')
@@ -18,6 +18,11 @@ license=('GPL-3.0-or-later')
 # pulls all of them in today, which is exactly why `namcap` calls them *implicitly satisfied*
 # rather than missing; a `depends` names what the package links, not what its neighbour
 # happens to carry (`extra/loupe`, the same stack, lists every one of them beside a few more).
+# `libheif` is the one entry neither binary links: glycin runs its loaders as child processes,
+# so it is `glycin-heif` that links it — and glycin itself carries it as an optional
+# dependency, which this package cannot, because since 0.2.0 AVIF is the export's default
+# format and an AVIF or HEIC photo needs that same loader: without libheif the default path
+# fails, so it is a `depends` here and not an `optdepends`.
 depends=(
   cairo
   fontconfig
@@ -28,19 +33,19 @@ depends=(
   hicolor-icon-theme
   libadwaita
   libgcc
+  libheif
   libseccomp
 )
 # `gettext` is not here because it is a member of `base-devel`, which `makepkg` assumes and a
 # clean chroot has by definition. `cargo` is a name `rust` provides (and conflicts with, and
 # replaces) and is kept beside it so the entry stays right if the two split again.
 makedepends=('cargo' 'rust' 'meson')
-optdepends=('libheif: decode HEIC and AVIF photos')
 # `updpkgsums` fills the checksum from the pushed `v$pkgver` tag, so it carries `SKIP` until that
-# tag exists — and a tag that was re-pointed needs the cached `packaging/arch/*.tar.gz` deleted
+# tag exists — and a tag that was re-pointed needs the cached `$pkgname-$pkgver.tar.gz` deleted
 # first, because `updpkgsums` reads the file already in `SRCDEST` and would print the old tag's
 # sum (measured 2026-09-27). `.SRCINFO`, the AUR's own file, comes from `makepkg --printsrcinfo`.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/pixlay/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0aa89d76242d2e151ac7bbc2b9ce9faab6d41c706d6acbf86650f6ed985e1c8d')
+sha256sums=('97a3e83b589aa6bf5c658e0dec72a52ecd94a95342f5ed7a6f38441b7d976ab3')
 
 # The vendored registry, and the `cargo vendor` that fills it: a download, and so `prepare()`'s
 # work and not `build()`'s — `makepkg -e` re-runs `build()` on a tree whose vendor directory is
