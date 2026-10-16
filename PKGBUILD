@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=appattic
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Leftovers, stale apps, unused packages, and disk usage (command line)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "https://download.swift.org/swift-5.10.1-release/ubuntu2204/swift-5.10.1-RELEASE/swift-5.10.1-RELEASE-ubuntu22.04.tar.gz"
 )
 sha256sums=(
-  'cae5f1194edd44d1b10e3dba5d1bbcbfb0e0d30e216f54b1d312d0e1a4ad9eb9'
+  '9da91b25123a807abbd6458564a5f9de0dac5ac7baf4ca314727280618c6d8eb'
   'cab1bfffd33b79ebd49f4b7475bef6c7eb2d60cf3948cbc693d61afabd23c282'
 )
 
