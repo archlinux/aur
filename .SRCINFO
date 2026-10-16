@@ -1,20 +1,20 @@
 pkgbase = seerrng-bin
 	pkgdesc = Standalone media request and discovery service with optional external service integrations
-	pkgver = 3.58.0
+	pkgver = 3.59.0
 	pkgrel = 2
-	url = https://github.com/snapetech/seerrng
+	url = https://github.com/snapetech-org/seerrng
 	arch = x86_64
 	license = MIT
 	depends = nodejs>=24.15.0
 	provides = seerrng
 	conflicts = seerrng
 	install = seerrng.install
-	source = https://github.com/snapetech/seerrng/releases/download/v3.58.0/seerrng-v3.58.0-linux-x64.tar.gz
+	source = https://github.com/snapetech-org/seerrng/releases/download/v3.59.0/seerrng-v3.59.0-linux-x64.tar.gz
 	source = seerrng.service
 	source = seerrng.env
 	source = seerrng.sysusers
 	source = seerrng.tmpfiles
-	sha256sums = 9b1dfe7a2216310b2fd5cd85000ed1f9f5dcec0532f0933f761490078c5305f5
+	sha256sums = f1a2d10b3fad812ebc880f14214ba373f947e91bcc65b82e24f40896462ea858
 	sha256sums = 5f85a0dbe7d1e8b07da64ec70ff2aed89c86447b6a2af53535c94073e07ccbe0
 	sha256sums = dd48963dad7fd1a059bb0a036ff416404c673d5932f31188a4760306293bcede
 	sha256sums = 2d838557b8d3976095299731450c4fd665d29b2dc5f27d13bcba7d5ea4c3569f
