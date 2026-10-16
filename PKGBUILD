@@ -1,5 +1,5 @@
 pkgname=ionterm-git
-pkgver=r41.beba6cb
+pkgver=r48.f4f79d5
 pkgrel=1
 pkgdesc='GPU-rendered terminal emulator for the Ionix desktop, with kitty-style graphics and features'
 arch=('x86_64' 'aarch64')
