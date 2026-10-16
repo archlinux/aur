@@ -1,13 +1,13 @@
 # Maintainer: Sebastian Palencsar <moin@nerdbear.de>
 pkgname=bearwave-git
-pkgver=1.2.0
-pkgrel=2
-pkgdesc="KDE-focused desktop internet radio app"
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="Desktop internet radio app (Qt 6 / QML)"
 arch=('x86_64')
 url="https://github.com/spalencsar/bearwave"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-multimedia-ffmpeg')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'qt6-tools')
+makedepends=('cmake' 'git' 'ninja' 'qt6-tools')
 provides=('bearwave')
 conflicts=('bearwave')
 source=("git+${url}.git")
@@ -15,9 +15,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  # Holt das letzte Tag (z.B. 1.2.0), die Anzahl der Commits danach und den Hash
+  # Letztes Tag (z.B. 1.3.0), Commits danach und Hash
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g' || \
-  printf "1.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
