@@ -1,6 +1,6 @@
 pkgbase = pomodorolm-bin
 	pkgdesc = Multi-platform pomodoro tracker with a nice looking UI, inspired by Pomotroid
-	pkgver = 0.8.0
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/vjousse/pomodorolm
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = pomodorolm-bin
 	depends = gdk-pixbuf2
 	depends = libayatana-appindicator
 	provides = pomodorolm
-	source = https://github.com/vjousse/pomodorolm/releases/download/app-v0.8.0/pomodorolm_0.8.0_amd64.deb
-	sha256sums = 58b6d0b87468e45d6da42853c81a36bde8802dbac5227abb6044002f383aa1a8
+	source = https://github.com/vjousse/pomodorolm/releases/download/app-v0.9.2/pomodorolm_0.9.2_amd64.deb
+	sha256sums = 3f83ce7015800cfc4ca52f2c132679cb2cff29048665046c0583fe43cdaf0a2c
 
 pkgname = pomodorolm-bin
