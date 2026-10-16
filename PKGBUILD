@@ -1,8 +1,8 @@
 # Maintainer: MLM Games <dev@mlm.games>
 pkgname=repadio-bin
 _pkgname=repadio
-pkgver=0.4.3
-_tag=v0.4.3
+pkgver=0.4.4
+_tag=v0.4.4
 pkgrel=1
 pkgdesc='Pure-Rust audio player built with Symphonia and CPAL on the Repose GUI framework'
 arch=('x86_64' 'aarch64')
@@ -12,19 +12,19 @@ depends=()
 provides=(repadio)
 conflicts=(repadio)
 options=(!strip)
-source_x86_64=("repadio-0.4.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/repadio/releases/download/${_tag}/repadio-0.4.3-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("repadio-0.4.3-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/repadio/releases/download/${_tag}/repadio-0.4.3-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('08e63089fc7e1b2495c553bbf24d6c420a27e0b1e5c76b4d8652121a7372024a')
-sha256sums_aarch64=('0492013ab88416f8b87d08e6debe6ff732545fe9efc04239df0e81e2daf3f7d3')
+source_x86_64=("repadio-0.4.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/repadio/releases/download/${_tag}/repadio-0.4.4-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("repadio-0.4.4-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/repadio/releases/download/${_tag}/repadio-0.4.4-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('3b283830c31fa2623fc7844332c8c27ca10e570bcd2751905a2075e65ab7c4d7')
+sha256sums_aarch64=('50ae3f85e00378ab0c749c4f912b17be5fc5e5d0744dc9da8306b0ecfee5cac6')
 source+=("icon.svg::https://raw.githubusercontent.com/mlm-games/repadio/main/others/packaging/icon.svg")
 sha256sums+=('SKIP')
 
 package() {
   local dir
   if [[ "$CARCH" == "x86_64" ]]; then
-    dir="${srcdir}/repadio-0.4.3-x86_64-unknown-linux-gnu"
+    dir="${srcdir}/repadio-0.4.4-x86_64-unknown-linux-gnu"
   else
-    dir="${srcdir}/repadio-0.4.3-aarch64-unknown-linux-gnu"
+    dir="${srcdir}/repadio-0.4.4-aarch64-unknown-linux-gnu"
   fi
   install -Dm755 "${dir}/repadio" "${pkgdir}/usr/bin/repadio"
 
