@@ -1,6 +1,6 @@
 pkgbase = scala-cli
 	pkgdesc = A command-line tool to interact with the Scala language
-	pkgver = 1.17.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://scala-cli.virtuslab.org
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = scala-cli
 	license = Apache-2.0
 	options = !strip
 	options = !debug
-	source_x86_64 = scala-cli-x86_64-1.17.1.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.17.1/scala-cli-x86_64-pc-linux.gz
-	sha256sums_x86_64 = 4186bfac6552097fbfd3939bdf2ecdec1cb55baafcbf6259bef5c04e08858eb3
-	source_aarch64 = scala-cli-aarch64-1.17.1.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.17.1/scala-cli-aarch64-pc-linux.gz
-	sha256sums_aarch64 = a12ed53f4723f3e9312a2383e47664b4beaccf2be366cff40adf6b054426156f
+	source_x86_64 = scala-cli-x86_64-1.18.0.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.18.0/scala-cli-x86_64-pc-linux.gz
+	sha256sums_x86_64 = eb41442f870bcae75aa5d6622ac96a173dae14fed59f71c97125eb21536bb060
+	source_aarch64 = scala-cli-aarch64-1.18.0.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.18.0/scala-cli-aarch64-pc-linux.gz
+	sha256sums_aarch64 = a9e5d10b4bb623839d1697518102d5b6a81d8f9ed8031b10b97f87f35a63ae68
 
 pkgname = scala-cli
