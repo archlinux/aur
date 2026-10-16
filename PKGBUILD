@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=wtfi2-bin
 _pkgname=wtfi2
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies'
 arch=(
@@ -18,8 +18,8 @@ provides=('wtfi')
 conflicts=('wtfi2-git' 'wtfi2')
 source_x86_64=("${_pkgname}-bin-${pkgver}.tar.xz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-bin-${pkgver}.tar.xz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('cc38559d9d7718c59f0fb575945dbb245b04ab164b39c3c29eb7a858494e3d2b')
-sha256sums_aarch64=('681f3d3b1db53ac4a88a6707a87adb9cc975c36f550654ce30a5bbc726fd3d56')
+sha256sums_x86_64=('d6c61f166e2d575eab58c2368b84c4c4def4c5264042518013edb88a24200baf')
+sha256sums_aarch64=('613ef06797ca8bbf74bfd04167055a2c9228e33be3e267df7852d5c9e86edefd')
 
 package() {
     cd "wtfi2-$CARCH-unknown-linux-gnu"
