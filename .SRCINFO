@@ -1,5 +1,5 @@
 pkgbase = netbird
-	pkgver = 0.81.1
+	pkgver = 0.81.2
 	pkgrel = 1
 	url = https://netbird.io
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = netbird
 	arch = aarch64
 	arch = riscv64
 	makedepends = go
-	source = netbird-0.81.1.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.81.1.tar.gz
+	source = netbird-0.81.2.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.81.2.tar.gz
 	source = netbird-server.service
-	sha256sums = c4b50687979ea231c8afa1c956bd045a6d1f7289c5fb6c1a729789b4f5675a10
+	sha256sums = a2c3d87f089f44d539247bc927ffde5f2990d90e9bbc35041ca2d78554d41d90
 	sha256sums = 6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9
 
 pkgname = netbird
