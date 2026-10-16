@@ -1,7 +1,7 @@
 pkgbase = ttl
 	pkgdesc = Fast, modern traceroute with real-time TUI, per-hop stats, ASN/geo and ECMP
-	pkgver = 0.23.0
-	pkgrel = 2
+	pkgver = 0.24.0
+	pkgrel = 1
 	url = https://github.com/lance0/ttl
 	install = ttl.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ttl
 	depends = libgcc
 	conflicts = ttl-bin
 	options = !lto
-	source = ttl-0.23.0.tar.gz::https://github.com/lance0/ttl/archive/refs/tags/v0.23.0.tar.gz
-	sha256sums = e3e2f88707f0ce22a329a91f2f2a2e2f33a5468470fe076c15357328156300a5
+	source = ttl-0.24.0.tar.gz::https://github.com/lance0/ttl/archive/refs/tags/v0.24.0.tar.gz
+	sha256sums = db1fd6933ad07f01029c5bedf3c6ccd485683eadf8e875564552f0891142f40d
 
 pkgname = ttl
