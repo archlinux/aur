@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=launcher-studio
 _app_id=fr.arnaudmichel.launcherstudio
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A GTK4 desktop application for creating and managing .desktop files"
 arch=('x86_64')
@@ -12,8 +12,12 @@ depends=(
   'libadwaita'
 )
 makedepends=('cargo')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MrArnaudMichel/launcher_studio/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('12fc408fcac2f5ebfb6be990bfaa946553fb11fd95464322998e61d0b44d32ab')
+sha256sums=('c292eb593fbb481a38d67fb08d67aa1107927f3f507ade59ba1707c29296e242')
 
 prepare() {
   cd "launcher_studio-$pkgver"

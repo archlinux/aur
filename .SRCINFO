@@ -1,14 +1,16 @@
 pkgbase = launcher-studio
 	pkgdesc = A GTK4 desktop application for creating and managing .desktop files
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://arnaudmichel.fr/projects/launcher-studio
 	arch = x86_64
 	license = MIT
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = cargo
 	depends = gtk4
 	depends = libadwaita
-	source = launcher-studio-0.1.5.tar.gz::https://github.com/MrArnaudMichel/launcher_studio/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 12fc408fcac2f5ebfb6be990bfaa946553fb11fd95464322998e61d0b44d32ab
+	source = launcher-studio-0.1.6.tar.gz::https://github.com/MrArnaudMichel/launcher_studio/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = c292eb593fbb481a38d67fb08d67aa1107927f3f507ade59ba1707c29296e242
 
 pkgname = launcher-studio
