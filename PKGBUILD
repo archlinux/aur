@@ -2,7 +2,7 @@
 
 pkgname=bettbox-pre-bin
 _pkgname=Bettbox
-pkgver=1.19.5
+pkgver=1.19.6
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
@@ -19,7 +19,7 @@ depends=(
 )
 optdepends=('polkit: for TUN authorization')
 options=('!debug')
-source=("restart-bettbox.hook" "99-bettbox.rules" "bettbox.install")
+source=("restart-bettbox.hook" "bettbox.install")
 # Upstream names its debs by Debian architecture (amd64/arm64), which does not
 # match the AUR architecture names, so both the cache name and the URL are
 # spelled out per architecture. ${arch} cannot be used here: makepkg binds it
@@ -32,20 +32,16 @@ source_aarch64=(
     "${pkgname%-pre-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-arm64.deb"
 )
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
-            'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
-sha256sums_x86_64=('92744ea0ce54529a32bc694830e5751620f28c003613ffbb70e3a95489fb718a')
-sha256sums_aarch64=('e01302a552660f721c217bd75dc560addd45dc5a1a09b0939df19e7dcdda4aed')
+sha256sums_x86_64=('910a65453650037f000fac81f50ac92053103adcfdd6339adf3c6cee9eaf51ba')
+sha256sums_aarch64=('7b2a0c2ac4120ff998a90dbdfa7b9cd7f7aac6dc5b3212c1071505667007da6e')
 install=bettbox.install
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    # Upstream already ships Categories=Network; (line 8), so only the missing
-    # StartupWMClass is inserted, right before StartupNotify=true (line 10).
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-pre-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-pre-bin}/g
-        10i\StartupWMClass=com.appshub.bettbox
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 
@@ -60,7 +56,8 @@ package() {
 
     install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
 
-    # Polkit rule for resolvectl command
-    install -Dm644 "${srcdir}/99-bettbox.rules" \
-        "${pkgdir}/usr/share/polkit-1/rules.d/99-bettbox.rules"
+    # Polkit rule for resolvectl command; the upstream deb carries it at
+    # usr/share/polkit-1/rules.d/, so the package ships that exact file.
+    install -Dm644 "${srcdir}/usr/share/polkit-1/rules.d/90-bettbox.rules" \
+        "${pkgdir}/usr/share/polkit-1/rules.d/90-bettbox.rules"
 }
