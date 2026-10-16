@@ -1,6 +1,6 @@
 # Maintainer: dasbd72 <twbd723@gmail.com>
 pkgname=dackel-launcher
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Launch Windows games with Proton, with gamepad support'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'hicolor-icon-theme' 'libgcc' 'systemd-libs' 'umu-launcher')
 makedepends=('cargo')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bbe5be2b194810b91f718970252c6791c9fc70ec2488707d1939656618fa81f6')
+sha256sums=('3f2f6dcff24cecffe5e2eca32faace8d8ae3c199356c2d877b4d317b67c20e04')
 
 prepare() {
   cd "$pkgname-$pkgver"
