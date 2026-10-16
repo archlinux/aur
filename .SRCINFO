@@ -1,18 +1,18 @@
 pkgbase = dirstat-go-bin
 	pkgdesc = Small tool that shows selected folder or drive usage statistic (binary release)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/aegoroff/dirstat
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	source_x86_64 = https://github.com/aegoroff/dirstat/releases/download/v1.4.0/dirstat_1.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = a9f9df8f722f543898134072bb410cbe031f6d9e3b4ff561c001a5bccc116c7d
-	source_armv7h = https://github.com/aegoroff/dirstat/releases/download/v1.4.0/dirstat_1.4.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 418fad687fd13173345c49309592c1e50a3282b34bdc1c16d5c909688965095f
-	source_aarch64 = https://github.com/aegoroff/dirstat/releases/download/v1.4.0/dirstat_1.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3629f19b1c3dbb08ad9da7a0cc9399cf293f722f5e8ffe4106e4fc107dc7234e
+	source_x86_64 = https://github.com/aegoroff/dirstat/releases/download/v1.4.1/dirstat_1.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 854fd55c779fcec3f0afaf09e1538796d2e6b1de4d52795b22c4e4f496ab63ad
+	source_armv7h = https://github.com/aegoroff/dirstat/releases/download/v1.4.1/dirstat_1.4.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 29ddaae0d9245e85808ae0e5f6e00d9e7ed6fb6548b40418bb7207bb304fdb17
+	source_aarch64 = https://github.com/aegoroff/dirstat/releases/download/v1.4.1/dirstat_1.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = b27f48176e2e816ca53f62c97ecd249794f99373661c413184fdeb650f3ba49f
 
 pkgname = dirstat-go-bin
 	conflicts = dirstat-bin
