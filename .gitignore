@@ -1,0 +1,10 @@
+src
+pkg
+*.tar.xz
+*.tar.gz
+*.tar.zst
+*.log
+redmine-tui-*
+README_*.md
+LICENSE_*
+
