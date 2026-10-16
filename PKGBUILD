@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
 
 pkgname=tic80
-pkgver=1.1.2837
+pkgver=1.3
 pkgrel=1
 pkgdesc="TIC-80 is a fantasy computer for making, playing and sharing tiny games."
 arch=('x86_64')
@@ -31,17 +31,17 @@ url="https://tic80.com"
 license=('MIT')
 depends=('libglvnd')
 source=(
-    'https://github.com/nesbox/TIC-80/releases/download/v1.1.2837/tic80-v1.1-linux.deb'
+    'https://github.com/nesbox/TIC-80/releases/download/v1.3.1/tic80-v1.3-linux.deb'
 )
 sha256sums=(
-    '2d003e68485579af11807b6c527f27a17a5197297f75114dc02c19ad24924b15'
+    '8e686f6dd6e702119621ef0d14d11f0fc435bb908ac6ba468c8ced92ad9422c0'
 )
 
 package() {
     cd "$srcdir"
     echo "$MIT_LICENSE" > LICENSE
-    ar x tic80-v1.1-linux.deb
-    tar -xzf data.tar.gz -C "$pkgdir"
+    ar x tic80-v1.3-linux.deb
+    tar -xf data.tar.zst -C "$pkgdir"
 
     # Create a license directory
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
