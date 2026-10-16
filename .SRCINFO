@@ -1,6 +1,6 @@
 pkgbase = riscv-pk-git
 	pkgdesc = RISC-V proxy kernel and boot loader
-	pkgver = 1
+	pkgver = r644.9c61d29
 	pkgrel = 1
 	url = https://github.com/riscv-software-src/riscv-pk
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = riscv-pk-git
 	depends = riscv64-linux-gnu-binutils
 	depends = riscv64-linux-gnu-gcc
 	depends = riscv64-linux-gnu-glibc
+	options = !strip
 	source = git+https://github.com/riscv-software-src/riscv-pk#branch=master
 	sha256sums = SKIP
 
