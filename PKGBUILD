@@ -3,8 +3,8 @@
 pkgname=python-neural-compressor
 _pkgname=neural_compressor
 _archive=neural-compressor
-pkgver=3.9
-pkgrel=3
+pkgver=3.10
+pkgrel=1
 pkgdesc="Intel Neural Compressor: model quantization and compression for ONNX, PyTorch, TensorFlow and JAX"
 arch=('any')
 url="https://github.com/intel/neural-compressor"
@@ -54,7 +54,7 @@ optdepends=(
     'python-scipy: JAX backend numerics'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9df89c5cc72a5edefd7a9765e423470e4ca03d7b0e98b16ef9f144fb1807c1e2')
+sha256sums=('fc2159cf3a4e46235ee631d83b87d18b5ca438c6b5549f58fdf02ad04b70b2d9')
 
 build() {
     cd "$_archive-$pkgver"
