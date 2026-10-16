@@ -12,6 +12,7 @@ license=(custom)
 depends=(riscv64-linux-gnu-binutils riscv64-linux-gnu-gcc riscv64-linux-gnu-glibc)
 makedepends=(git)
 groups=(risc-v)
+options=('!strip')
 source=("git+$url#branch=master")
 sha256sums=('SKIP')
 
