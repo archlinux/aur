@@ -1,6 +1,6 @@
 # Maintainer: h4us0x <95170448+h4us0x@users.noreply.github.com>
 pkgname=ryzenadj-control
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="PyQt6 GUI for ryzenadj"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/h4us0x/ryzenadj-control"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'ryzenadj' 'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b28bea78994abc2d766426becefd47a573a401ae76453e59877d158f8418fd05')
+sha256sums=('0f0fcebf684c09fae58c5e65dd8da70b6e9782ef1a61c346d13850609a5cb48c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
