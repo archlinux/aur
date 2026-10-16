@@ -1,0 +1,25 @@
+pkgbase = muxin-bin
+	pkgdesc = All your machines in one app, for you and your AI agents
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://muxin.dev
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	optdepends = wayland: to run in a Wayland session
+	optdepends = vulkan-driver: to draw its window (Mesa or your GPU maker's)
+	provides = muxin
+	conflicts = muxin
+	options = !strip
+	options = !debug
+	source_x86_64 = Muxin-0.5.2-linux-x86_64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v0.5.2/Muxin-0.5.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f8f2898fc68db1ee761ce4011713c39d5066191d5da18df8dbd6217b1ef11bab
+	source_aarch64 = Muxin-0.5.2-linux-aarch64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v0.5.2/Muxin-0.5.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 4d7bd733512e86a223cef92f313d4512c00949957c781e3d4aadb1d5ad25a66e
+
+pkgname = muxin-bin
