@@ -1,7 +1,7 @@
 # Maintainer: dasbd72 <twbd723@gmail.com>
 pkgname=dackel-launcher-bin
 _name=dackel-launcher
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Launch Windows games with Proton, with gamepad support (prebuilt binary)'
 arch=('x86_64')
@@ -15,8 +15,8 @@ options=('!strip' '!debug')
 # entry, icon, metadata and license, which are the same files the source package installs.
 source=("$_name-$pkgver-x86_64::$url/releases/download/v$pkgver/$_name"
         "$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f58887812d170748244c25e53b6e6a82a6c670a397430e4e8b1c0b7ce31ad864'
-            '14bc86e1e63df526e747b902c3b5f19802e742a110298d184534abeedc42b68a')
+sha256sums=('f39557342d8628ec2890cbab95ee783ab473686bd64ddc0832adac9eee74547d'
+            '825a7c36465c423416ee5b582dffb5ef6f1de808b28ca76998d535f3fa9d415a')
 
 package() {
   local appid=io.github.dasbd72.DackelLauncher
