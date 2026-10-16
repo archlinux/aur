@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Valdez <b.valdez.0509+aur<at>gmail.com>
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
 pkgname=inputactions-kwin
-pkgver=0.9.2.0
-pkgrel=3
+pkgver=0.9.2.1
+pkgrel=1
 pkgdesc="Bind keyboard, mouse, touchpad and touchscreen actions to system actions"
 arch=('x86_64')
 url="https://inputactions.org"
@@ -33,13 +33,11 @@ makedepends=('cmake' 'pkgconf' 'extra-cmake-modules' 'vulkan-headers')
 provides=('inputactions')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/InputActions/kwin/releases/download/v$pkgver/source.tar.gz"
-  "plasma_6_8-support.patch::https://github.com/InputActions/kwin/commit/a4c74d765c9f7554820e281bd28ee01905d3a92b.patch?full_index=1"
   "send-rebuild-reminder"
   "reminder.conf"
   "rebuild-reminder.hook"
 )
-sha256sums=('b4953af8d7ef595eb71e177bfaf3c732239d872502fb361e05961dfdca98aaa7'
-            'b0f10009ab55030356b4b308e890d17757cb38eaceeb558c38b3cb01842c1f7d'
+sha256sums=('e489d64a239570f22b29fab3c3fbbba478816b3a1cf0a8f97e0f570bd97f118e'
             'c0338be975d092e5590fcbabd16805828a6d238b78f1a04047c3317e84eb80d4'
             '6e6e8973160ffd1f02a41549ec1f570c32ec8c9b4ae08f9c0862d0e33aa65636'
             '72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13')
@@ -55,8 +53,6 @@ prepare() {
     "$srcdir/send-rebuild-reminder"
 
   sed --in-place -e "s/\$pkgname/$pkgname/" "$srcdir/rebuild-reminder.hook"
-
-  patch -Np1 -i "plasma_6_8-support.patch"
 }
 
 build() {
