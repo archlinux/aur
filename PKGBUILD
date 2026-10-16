@@ -2,8 +2,8 @@
 
 pkgname=python-khali-git
 _pkgname=khali
-pkgver=1.0.0.r31.f6ff732
-pkgrel=2
+pkgver=1.0.0.r32.1ef7cd6
+pkgrel=1
 pkgdesc="Uses khal, vdirsyncer and at to sync calendars and set alarms."
 arch=('any')
 url="https://codeberg.org/dhruva_sambrani/khali"
@@ -44,7 +44,7 @@ package() {
       'khal'
       'vdirsyncer'
       'at'
-	  'libnotify')
+      'libnotify')
     
     cd "${_pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
