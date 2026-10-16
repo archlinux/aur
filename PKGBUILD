@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=svelte-language-server
 pkgname=${_pkgname}-git
-pkgver=r1948.f03e5667
+pkgver=r1958.e549d195c
 pkgrel=1
 pkgdesc='Svelte Language Server, git master build'
 url="https://github.com/sveltejs/language-tools"
@@ -18,9 +18,8 @@ makedepends=(
   git
   pnpm
 )
-source=("${pkgname}::git+${url}.git#branch=${_branch}"
-  fix-config-crawl-dot-ancestor.patch)
-sha256sums=('SKIP' 'SKIP')
+source=("${pkgname}::git+${url}.git#branch=${_branch}")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -29,7 +28,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	patch -Np1 -i "${srcdir}/fix-config-crawl-dot-ancestor.patch"
 }
 
 build() {
