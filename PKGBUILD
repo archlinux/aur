@@ -24,6 +24,7 @@ makedepends=(
 	'protobuf-c'
 	'cmake'
 	'extra-cmake-modules'
+	'ibus'
 	'fcitx5'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/${_tag}.tar.gz")
