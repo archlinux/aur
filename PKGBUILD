@@ -2,7 +2,7 @@
 
 pkgname=python-lancedb
 _pkgname=lancedb
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Serverless, low-latency vector database for AI applications"
 arch=('x86_64')
@@ -81,7 +81,7 @@ source=(
     'remote-dataloader-fixture.patch'
 )
 sha256sums=(
-    'acd6877fdfa5e6f4397304a04744f995821e94bb7cd8e0353f6028ce0ee56a02'
+    'bbb3ebb841e9971bf971a28fd80604b337f90a1e76e6e76e3b5a65d0c6e747f7'
     'f86fde58f6a3c8e73c7442cd0f186cc89a1a46ecad8d34a9329a4824f16acc63'
     '7a99c9c4d594c6626145a94f01db0fb2e8132a9b1b6b362a4e98afb11e1656f3'
     'ccf35839209d9560ac49075b9a901e8c5eb5ae0c44c6307638699bfd4a38ad50'
