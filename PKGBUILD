@@ -2,7 +2,7 @@
 pkgname=aulos-git
 pkgver=0.1.1.r0.ge8cec09
 pkgrel=1
-pkgdesc='A modern music player for the COSMIC desktop'
+pkgdesc='A modern music player: local library, Subsonic, MPD, podcasts, radio and a MilkDrop visualizer'
 arch=(aarch64 x86_64)
 url=https://github.com/M0Rf30/aulos
 license=(GPL-3.0-only)
@@ -11,7 +11,7 @@ conflicts=("${pkgname%%-git}" lyra-git)
 replaces=(lyra-git)
 depends=(
   alsa-lib
-  cosmic-icon-theme
+  hicolor-icon-theme
   glibc
   libgcc
   libgl
@@ -27,10 +27,11 @@ makedepends=(
   git
   just
   mesa
+  pipewire
   nasm
 )
 optdepends=(
-  'projectm: visualizer presets'
+  'vulkan-icd-loader: GPU accelerated rendering'
   'ffmpeg: lossy audio conversion'
 )
 source=("${pkgname%%-git}::git+${url}.git")
