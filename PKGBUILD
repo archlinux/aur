@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=ps7_libpicocv
-pkgver=1.1.43_1r443
+pkgver=1.1.44_1r444
 pkgrel=1
 pkgdesc="Library for Pico Technology PicoScope 7 Oscilloscope Software"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/picoscope7/debian/pool/main/libp/libpicocv/libpicocv_${pkgver//_/-}_amd64.deb")
-md5sums=('d67418fa3c96ba99253cbac8fd42ed5b')
+md5sums=('c11c1f94118d13999ca769ac4cadf006')
 
 package() {
   tar -xf data.tar.* -C "${pkgdir}"
