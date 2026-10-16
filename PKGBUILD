@@ -2,8 +2,8 @@
 
 pkgname=python-cmyt
 _module_name=cmyt
-pkgver=2.0.2
-pkgrel=4
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="A collection of Matplotlib colormaps from the yt project."
 arch=(any)
 url="http://yt-project.org"
@@ -16,7 +16,7 @@ source=(
     "https://pypi.io/packages/source/c/${_module_name}/${_module_name}-${pkgver}.tar.gz"
     "LICENSE"
 )
-sha256sums=('cf308415401c615dffded3033be575373553573740298e44ef4b016ffd99a9be'
+sha256sums=('3cb83424adf95337840d9dd6eef5f0e2f6d53e9618cd11a2cb31218227e40b27'
             '6e13969520b08a454eed4e15bef8926babca14ab65f4f9936c9adc1860c00e1d')
 
 build() {
