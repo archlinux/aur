@@ -26,7 +26,7 @@ pkgname=hermes-agent
 # Peeled v0.22.2 tag object (git rev-parse v0.22.2^{}); pin so the stamp
 # does not depend on a live network lookup during package().
 _commit=d923a5eb487a17c0a68801bba9ef0f56c81040a8
-_commit_date=1760516492
+_commit_date=1792043576
 pkgver=0.22.2
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
