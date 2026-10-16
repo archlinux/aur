@@ -1,6 +1,8 @@
 post_install(){
 	udevadm control --reload-rules
 	udevadm trigger
+	# echo "To autostart the Swiftpoint X1 Control Panel on login, run:"
+    # echo "  mkdir -p ~/.config/autostart && cp /usr/share/applications/com.swiftpoint.X1_Control_Panel.desktop ~/.config/autostart/"
 }
 post_upgrade() {
 	post_install
