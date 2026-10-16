@@ -1,7 +1,7 @@
 # Maintainer: Crazybrain <crazybrain plus aur at tuta dot com>
 
 pkgname=ss14.launcher
-pkgver=0.40.2
+pkgver=0.40.3
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Lau
         "https://github.com/space-wizards/Robust.LoaderApi/archive/${_RobustLoaderApiVer}.zip"
         'spacestation14.svg' # Logo by Kanze, licensed CC BY-SA 4.0
         'ss14.launcher.desktop')
-sha256sums=('424bfda3f16fe726cdd5a67e31971db9a53e3cf4b51c201868923407cdb18b35'
+sha256sums=('d2a04c43085537fe0f3f1248b2e27f458700e06a5cd8ae58028f84a4570daf56'
             '363db87fc37a40affaf5eaba9f302d9d710cf5f1e5311503f060beb3b49e6c27'
             'd75d6d61398a34a3063a69354a645c369423ffe36a8e90a8fa7497b8212647f7'
             '53d7aa0900c8a68f7161a7865f10d09046ec33cb916dfd47659a27ed9864f049')
