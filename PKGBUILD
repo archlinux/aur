@@ -1,7 +1,7 @@
 # Maintainer: opecko <https://github.com/opecko>
 # AUR package: repackages the .deb from the GitHub release. Updated by scripts/aur.sh.
 pkgname=ytdesk-bin
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="YouTube Music desktop client (prebuilt)"
 url='https://github.com/opecko/ytdesk'
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 source=("https://github.com/opecko/ytdesk/releases/download/v$pkgver/ytdesk_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/opecko/ytdesk/v$pkgver/LICENSE")
 noextract=("ytdesk_${pkgver}_amd64.deb")
-sha256sums=('2d4e7436ac023af27c5a0067bf9b6ee6e076a9bc0f411f1e166da6ef7acc1324'
+sha256sums=('2cb480da37f5a39fc346be5e9da0ce78a0dbd0e4a869886c206267cba30ce51e'
             'd8246ddc68471e6f5d5eb2bc54b9fb5878d6c362a7d99df0dd8193ec48cbdcce')
 
 prepare() {
