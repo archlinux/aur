@@ -1,0 +1,20 @@
+pkgbase = battery-log-git
+	pkgdesc = What the battery did, and why: a sampler daemon and a desktop dashboard
+	pkgver = 0.1.0.r8.ga3e7a3f
+	pkgrel = 1
+	url = https://github.com/jaehho/battery-log
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = power-profiles-daemon: record which power profile each sample was taken under
+	provides = battery-log
+	conflicts = battery-log
+	options = !lto
+	options = !debug
+	source = git+https://github.com/jaehho/battery-log.git
+	sha256sums = SKIP
+
+pkgname = battery-log-git
