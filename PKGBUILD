@@ -2,7 +2,7 @@
 
 pkgname=bettbox-pre
 _pkgname=Bettbox
-pkgver=1.19.5
+pkgver=1.19.6
 pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
@@ -23,11 +23,10 @@ depends=(
 	'libkeybinder3'
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
-source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "99-bettbox.rules" "bettbox.install")
-sha256sums=('3900ff09e915a9ff08fded972159e9988c9f1b1ec6e31c9d47e67fb5effee590'
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "bettbox.install")
+sha256sums=('cbe3a49533ab4efbe7f5bfa18fc8b35306c1d62e0c219cc10120a01acbbe4578'
             '03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f'
-            'f1a21fce8675e6bd03565f56d21954e9c13991426bdc38368cd1b85f6893a593'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
 install=bettbox.install
 prepare() {
@@ -87,9 +86,10 @@ package () {
 	# Hook
 	install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
 
-	# Polkit rule for resolvectl command
-	install -Dm644 "${srcdir}/99-bettbox.rules" \
-		"${pkgdir}/usr/share/polkit-1/rules.d/99-bettbox.rules"
+	# Polkit rule for resolvectl command; upstream owns the file in the source
+	# tree (linux/packaging/polkit/), so the package ships it verbatim.
+	install -Dm644 "linux/packaging/polkit/90-bettbox.rules" \
+		"${pkgdir}/usr/share/polkit-1/rules.d/90-bettbox.rules"
 
 	# Desktop file
 	install -Dm644 "${srcdir}/bettbox.desktop" -t "${pkgdir}/usr/share/applications/"
