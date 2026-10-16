@@ -1,0 +1,5 @@
+[git-tree-bin]
+source = "github"
+github = "git-tree-app/gittree"
+use_latest_release = true
+prefix = "v"
