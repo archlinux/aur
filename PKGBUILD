@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=ECOSolveR
-_pkgver=0.6.1
+_pkgver=0.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('59c3857fa545cc08c4cd1c2b3fd9bacb')
-b2sums=('da13c68b7d13df8a7d59a7808dc68e353166cafb5389ee8bec55cf16dc7a6e9f7cb5fc9620af4c41434df1e598bbd01a78b83b2b0275c1835ea0a94d4e3cca2c')
+md5sums=('ba49d6523d1a49089f87e252cd8486d5')
+b2sums=('6400988f6231e7b6b1791942bb2e1797bf6b858d499f50619f91897b524b55822f04be4e310b92234878425a44dda3fad5fb7ecac2cc866139e0c8349b825c0e')
 
 build() {
   mkdir build
