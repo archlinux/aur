@@ -1,0 +1,27 @@
+pkgbase = disk-usage-bin
+	pkgdesc = Fast and lightweight disk usage analyzer written in Rust, with a simple visual representation of what takes up space on your disk
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/MarketKernel/disk-usage
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	provides = disk-usage
+	conflicts = disk-usage
+	options = !strip
+	source = LAUNCHER-0.2.0.desktop::https://raw.githubusercontent.com/MarketKernel/disk-usage/v0.2.0/assets/disk-usage.desktop
+	source = ICON_256-0.2.0.png::https://raw.githubusercontent.com/MarketKernel/disk-usage/v0.2.0/assets/icon-256.png
+	source = ICON_1024-0.2.0.png::https://raw.githubusercontent.com/MarketKernel/disk-usage/v0.2.0/assets/icon.png
+	source = README-0.2.0.md::https://raw.githubusercontent.com/MarketKernel/disk-usage/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/MarketKernel/disk-usage/v0.2.0/LICENSE
+	sha256sums = 8d7e526b9f599a90ef72e13c0ad4b23ad8af62422c00f79c757546635b339504
+	sha256sums = 5021972e84dc95e4c62e15e9271b7ee69a544bc6798908172d63ab77e1e94958
+	sha256sums = a77f8cf31c13e09f3521c37c388514cf6a726570c1bea606d287299fa715d9e9
+	sha256sums = 5faa2bac8ea965f25909a325b426eccde4f9b4cf18b1b77ced8233c85e00761f
+	sha256sums = 6340433613197bab9d5298318a673638e16e537e29ea9780133b8a72087f434e
+	source_x86_64 = disk-usage-x86_64-0.2.0.tgz::https://github.com/MarketKernel/disk-usage/releases/download/v0.2.0/disk-usage-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2022a260606e65f5fb8a6c8228d1e172c69dafbf9f555406d35611eeb049ade4
+
+pkgname = disk-usage-bin

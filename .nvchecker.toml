@@ -1,0 +1,5 @@
+[disk-usage-bin]
+source = "github"
+github = "MarketKernel/disk-usage"
+use_latest_release = true
+prefix = "v"
