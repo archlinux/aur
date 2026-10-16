@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.0.0_devel.214240.b2badb2b241.d41d8cd
+pkgver=27.0.0_devel.231759.b27cf4e6f67.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -75,12 +75,15 @@ conflicts=(
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
+        'venus-protocol-1.1::git+https://gitlab.freedesktop.org/virgl/venus-protocol.git'
         'LICENSE'
         'llvm32.native')
 md5sums=('SKIP'
+         'SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          '6b4a19068a323d7f90a3d3cd315ed1f9')
 sha512sums=('SKIP'
+            'SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
 
@@ -185,6 +188,7 @@ build () {
         -D b_ndebug=true \
         -D buildtype=plain \
         --wrap-mode=nofallback \
+        --force-fallback-for=venus-protocol \
         -D prefix=/usr \
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
