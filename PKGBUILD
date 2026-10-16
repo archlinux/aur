@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 pkgname=streamworks-bin
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Streaming Hub local-first para desktop, web e operações'
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=(
   'streamworks-512.png'
 )
 sha256sums=(
-  'c6025d0921bcab446e5af5134cc0c390f9934ef58ebe3456f6d28c07794a5bec'
+  '1ef540be65c584afa992bbf5fff39bfa5aa5c7cb906cc317f987a833d1539811'
   'SKIP'
   'acc50f91fb906893da66db639a7be7b6eb16869f4a72bedcff4be5c3f507dc15'
   'adb5560313a4503a634ac61dc73d397be6b3fa39603bc51ed0151dc36fdad943'
