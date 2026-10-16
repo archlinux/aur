@@ -16,7 +16,7 @@ pkgbase = newscid
 	optdepends = stockfish: strong default UCI chess engine
 	optdepends = fruit: legacy UCI chess engine
 	optdepends = scid: legacy database tools (tcscid)
-	source = git+https://github.com/chrisfair/newscid.git#tag=v1.3.0
-	sha256sums = SKIP
+	source = newscid-1.3.0.tar.gz::https://github.com/chrisfair/newscid/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 9400150436bd69bca8b709f84c8ff2c0d5d3b14124f0c0f56c34d4356ee10912
 
 pkgname = newscid
