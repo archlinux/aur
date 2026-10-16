@@ -9,7 +9,7 @@
 
 pkgname=tuxmix
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source TotalMix replacement for RME audio interfaces on Linux"
 arch=('x86_64')
 url="https://github.com/ismail-bahloul/TuxMix"
@@ -38,17 +38,22 @@ options=('!lto')
 # The three icon files are carried here instead of being taken from the
 # archive: v0.1.0 was tagged before the icon was redrawn, so its tree
 # still holds the placeholder that first release shipped, and pkgrel
-# exists exactly for this — packaging changes over unchanged binaries.
+# exists exactly for this -- packaging changes over unchanged binaries.
 # Drop them, and the ${srcdir} paths in package() below, at the next
 # version, where the archive brings all of it back.
+#
+# pkgrel 3 is the same files with the tile's light no longer clipped:
+# Qt's SVG engine ignores clip-path on a group, so the vignette and sheen
+# that were clipped to the tile painted the whole canvas, which showed as
+# a grey haze around the icon on KDE.
 source=("${url}/archive/v${pkgver}/TuxMix-${pkgver}.tar.gz"
         "tuxmix.svg"
         "tuxmix-128.png"
         "tuxmix-256.png")
 sha256sums=('62fc554fe8768295ce141cb344a5ca15cf1e03d925e51841071dc05135457bbc'
-            '7e9931e9ee8231de8ff3b7754767270297f22535fe9079742508bb69d1c7a6ee'
-            '597010272ea72ea330477d06286e31d5efd7a6a7164123b3dbba48dc8bae95ec'
-            '2bda7026de88b9c52c891b03be53ee787c474fe2c77e87bb971faab67b14495c')
+            'b92b5c496d58125c0d421181e496143f8a42bc0f8eb6e8c34f046d2a8278fa71'
+            '379887523c5754ffc8513b52035a9ac7f9c8888f97ed6afbc3b30da5c9e938d5'
+            '7f1656b0ff55fa85b0c8dbfdba980ffeaa62eb076fe6a6fcc27ff8b27607676d')
 
 build() {
     cd "${srcdir}/TuxMix-${pkgver}"

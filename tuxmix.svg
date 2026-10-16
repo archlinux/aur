@@ -36,14 +36,11 @@
     <filter id="soft" x="-0.10344828" y="-1.5" width="1.2068966" height="4">
       <feGaussianBlur stdDeviation="5" />
     </filter>
-    <clipPath id="tile">
-      <rect x="32" y="32" width="960" height="960" rx="224" />
-    </clipPath>
   </defs>
   <rect x="32" y="32" width="960" height="960" rx="224" fill="#000000" fill-opacity="1" />
-  <g clip-path="url(#tile)">
-    <rect width="1024" height="1024" fill="url(#vig)" x="0" y="0" />
-    <ellipse cx="520" cy="172.56964" rx="520" ry="360" fill="url(#sheen)" />
+  <g>
+    <rect fill="url(#vig)" x="32" y="32" width="960" height="960" rx="224" />
+    <rect fill="url(#sheen)" x="32" y="32" width="960" height="960" rx="224" />
   </g>
   <rect x="62" y="62" width="900" height="900" rx="196" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
   <rect x="33.5" y="33.5" width="957" height="957" rx="222.5" fill="none" stroke="url(#rim)" stroke-width="3" />
