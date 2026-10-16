@@ -1,0 +1,61 @@
+[Desktop Entry]
+Type=Application
+Name=Isai Studio Pro
+Name[hu_HU]=Isai Studio Pro
+Name[de_DE]=Isai Studio Pro
+Name[es_ES]=Isai Studio Pro
+Name[fr_FR]=Isai Studio Pro
+Name[it_IT]=Isai Studio Pro
+Name[pl_PL]=Isai Studio Pro
+Name[pt_BR]=Isai Studio Pro
+Name[ru_RU]=Isai Studio Pro
+Name[tr_TR]=Isai Studio Pro
+Name[zh_CN]=Isai Studio Pro
+Name[ja_JP]=Isai Studio Pro
+
+GenericName=Digital Audio Workstation
+GenericName[hu_HU]=Digitális audio munkaállomás
+GenericName[de_DE]=Digitale Audio-Workstation
+GenericName[es_ES]=Estación de trabajo de audio digital
+GenericName[fr_FR]=Station de travail audio numérique
+GenericName[it_IT]=Stazione di lavoro audio digitale
+GenericName[pl_PL]=Cyfrowa stacja robocza audio
+GenericName[pt_BR]=Estação de trabalho de áudio digital
+GenericName[ru_RU]=Цифровая звуковая рабочая станция
+GenericName[tr_TR]=Dijital Ses İş İstasyonu
+GenericName[zh_CN]=数字音频工作站
+GenericName[ja_JP]=デジタルオーディオワークステーション
+
+Comment=A free, open-source digital audio workstation for making music on low-spec computers
+Comment[hu_HU]=Ingyenes, nyílt forráskódú digitális audio munkaállomás akár gyengébb számítógépekhez is
+Comment[de_DE]=Eine kostenlose, quelloffene digitale Audio-Workstation zum Musikmachen auf leistungsschwachen Computern
+Comment[es_ES]=Una estación de trabajo de audio digital gratuita y de código abierto para hacer música en computadoras de bajas especificaciones
+Comment[fr_FR]=Une station de travail audio numérique gratuite et open source pour créer de la musique sur des ordinateurs peu puissants
+Comment[it_IT]=Una stazione di lavoro audio digitale gratuita e open source per creare musica su computer con specifiche basse
+Comment[pl_PL]=Bezpłatna, otwarta cyfrowa stacja robocza audio do tworzenia muzyki na komputerach o niskich parametrach
+Comment[pt_BR]=Uma estação de trabalho de áudio digital gratuita e de código aberto para fazer música em computadores de baixa configuração
+Comment[ru_RU]=Бесплатная цифровая звуковая рабочая станция с открытым исходным кодом для создания музыки на компьютерах с низкими характеристиками
+Comment[tr_TR]=Düşük özellikli bilgisayarlarda müzik yapmak için ücretsiz, açık kaynaklı dijital ses iş istasyonu
+Comment[zh_CN]=一款免费、开源的数字音频工作站，可在低配置电脑上制作音乐
+Comment[ja_JP]=低スペックのコンピュータで音楽制作ができる無料のオープンソースデジタルオーディオワークステーション
+
+Exec=/usr/bin/isai %u
+Icon=isai
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo;Audio;Music;Sequencer;
+
+X-GNOME-UsesNotifications=true
+
+Keywords=audio;daw;music;production;recording;mixing;mastering;sampler;synthesizer;piano roll;vst;
+Keywords[hu_HU]=audio;daw;zene;produkció;felvétel;keverés;mastering;sampler;szintetizátor;piano roll;vst;
+Keywords[de_DE]=audio;daw;musik;produktion;aufnahme;mischung;mastering;sampler;synthesizer;piano roll;vst;
+Keywords[es_ES]=audio;daw;música;producción;grabación;mezcla;masterización;muestreador;sintetizador;piano roll;vst;
+Keywords[fr_FR]=audio;daw;musique;production;enregistrement;mixage;mastering;échantillonneur;synthétiseur;piano roll;vst;
+Keywords[it_IT]=audio;daw;musica;produzione;registrazione;mixaggio;mastering;campionatore;sintetizzatore;piano roll;vst;
+Keywords[pl_PL]=audio;daw;muzyka;produkcja;nagrywanie;miksowanie;mastering;samplery;syntezator;piano roll;vst;
+Keywords[pt_BR]=áudio;daw;música;produção;gravação;mixagem;masterização;sampler;sintetizador;piano roll;vst;
+Keywords[ru_RU]=аудио;daw;музыка;продакшн;запись;сведение;мастеринг;сэмплер;синтезатор;piano roll;vst;
+Keywords[tr_TR]=ses;daw;müzik;prodüksiyon;kayıt;miksaj;mastering;örnekleme;sentetik;piano roll;vst;
+Keywords[zh_CN]=音频;数字音频工作站;音乐;制作;录音;混音;母带处理;采样器;合成器;钢琴卷帘;VST;
+Keywords[ja_JP]=オーディオ;DAW;音楽;プロダクション;録音;ミキシング;マスタリング;サンプラー;シンセサイザー;ピアノロール;VST;
