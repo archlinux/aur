@@ -1,8 +1,8 @@
 # Maintainer: Yangtse Su <yangtsesu at gmail dot com>
 
 pkgname=papers-ofd
-pkgver=51.1.1
-pkgrel=2
+pkgver=51.1.2
+pkgrel=1
 pkgdesc='OFD (GB/T 33190-2016) document backend for GNOME Papers, on the rofd-ffi C ABI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/YangtseSu/papers-ofd'
@@ -39,14 +39,15 @@ checkdepends=(
 )
 optdepends=('sushi: space-bar previews in GNOME Files')
 # The source is the release tag. Upstream versions the module by the Papers line
-# rather than by its own feature count (papers-ofd plan D13): 51.1.1 is the
-# Papers 51 line, verified against Papers 51.1, its first release for that
-# baseline. A release means a new tag plus a pkgver and checksum update here, and
+# rather than by its own feature count (papers-ofd plan D13): 51.1.2 is the
+# Papers 51 line, verified against Papers 51.1, the second release for that
+# baseline (51.1.1 was the first; 51.1.2 carries the review campaign's fixes).
+# A release means a new tag plus a pkgver and checksum update here, and
 # a published tag is never moved because this URL and its checksum pin it. This
 # file is the canonical recipe — the upstream project repository carries no
 # PKGBUILD copy.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/papers-ofd/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9c94f4e3804210bce1ec2cb2acfaa0774e9a8b18e71f59ee438314c29618d08')
+sha256sums=('f79eb7798d3a940c18e540bd3dcc2a23178fd151bf2473300036eef0855d9558')
 _dirname="papers-ofd-$pkgver"
 
 build() {

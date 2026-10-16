@@ -1,7 +1,7 @@
 pkgbase = papers-ofd
 	pkgdesc = OFD (GB/T 33190-2016) document backend for GNOME Papers, on the rofd-ffi C ABI
-	pkgver = 51.1.1
-	pkgrel = 2
+	pkgver = 51.1.2
+	pkgrel = 1
 	url = https://github.com/YangtseSu/papers-ofd
 	arch = x86_64
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = papers-ofd
 	depends = papers>=51
 	depends = papers<52
 	optdepends = sushi: space-bar previews in GNOME Files
-	source = papers-ofd-51.1.1.tar.gz::https://github.com/YangtseSu/papers-ofd/archive/refs/tags/v51.1.1.tar.gz
-	sha256sums = d9c94f4e3804210bce1ec2cb2acfaa0774e9a8b18e71f59ee438314c29618d08
+	source = papers-ofd-51.1.2.tar.gz::https://github.com/YangtseSu/papers-ofd/archive/refs/tags/v51.1.2.tar.gz
+	sha256sums = f79eb7798d3a940c18e540bd3dcc2a23178fd151bf2473300036eef0855d9558
 
 pkgname = papers-ofd
