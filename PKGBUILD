@@ -3,12 +3,12 @@
 # Regenerate .SRCINFO on any edit: makepkg --printsrcinfo > .SRCINFO
 pkgname=mantle-git
 pkgver=0.7.4.r0.g5ae47571
-pkgrel=1
+pkgrel=2
 pkgdesc='A Wayland shell engine that runs shells written in Lua'
 arch=('x86_64')
 url='https://github.com/anasgets111/mantle'
 license=('MIT')
-depends=('fontconfig' 'gcc-libs' 'glibc' 'libglvnd' 'libpipewire' 'libxkbcommon' 'mesa'
+depends=('fontconfig' 'libgcc' 'glibc' 'libglvnd' 'libpipewire' 'libxkbcommon' 'mesa'
          'pacman' 'pam' 'polkit' 'systemd-libs' 'wayland')
 # clang: pipewire bindgen
 makedepends=('cargo' 'clang' 'git')

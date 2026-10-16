@@ -1,7 +1,7 @@
 pkgbase = mantle-git
 	pkgdesc = A Wayland shell engine that runs shells written in Lua
 	pkgver = 0.7.4.r0.g5ae47571
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anasgets111/mantle
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = mantle-git
 	makedepends = clang
 	makedepends = git
 	depends = fontconfig
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	depends = libglvnd
 	depends = libpipewire
