@@ -1,6 +1,6 @@
 pkgbase = qrious-bin
 	pkgdesc = Generate QR codes for Wi-Fi, contacts, URLs, emails, and more
-	pkgver = 2026.10.2
+	pkgver = 2026.10.3
 	pkgrel = 1
 	url = https://github.com/Samwell9854/qrious
 	arch = x86_64
@@ -16,14 +16,15 @@ pkgbase = qrious-bin
 	depends = hicolor-icon-theme
 	depends = libepoxy
 	depends = libgcc
+	depends = librsvg
 	depends = libstdc++
 	depends = pango
 	depends = zlib
-	optdepends = wl-clipboard: copy the QR image on Wayland
-	optdepends = xclip: copy the QR image on X11
+	optdepends = wl-clipboard: copy and paste QR images on Wayland
+	optdepends = xclip: copy and paste QR images on X11
 	provides = qrious
 	conflicts = qrious
-	source_x86_64 = qrious-2026.10.2-linux-x86_64.tar.gz::https://github.com/Samwell9854/qrious/releases/download/v2026.10.2/qrious-2026.10.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 900bf906887f502eac42a06b57cf5fccf2aae40ae4186789d30b5d150485df72
+	source_x86_64 = qrious-2026.10.3-linux-x86_64.tar.gz::https://github.com/Samwell9854/qrious/releases/download/v2026.10.3/qrious-2026.10.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = be2740a2923da64bc1f461eae1a9bfe8cb3cf18ef04c75e1bd42d73eb07895f2
 
 pkgname = qrious-bin
