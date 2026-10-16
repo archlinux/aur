@@ -1,6 +1,6 @@
 # Maintainer: Matheus Vilano <aur.negotiate177@passinbox.com>
 pkgname=riftlift-bin
-pkgver=0.10.2.5
+pkgver=0.11.1.2
 pkgrel=1
 pkgdesc='Play owned Meta Rift and Oculus PC VR games on Linux'
 arch=('x86_64')
@@ -23,9 +23,9 @@ source=(
 )
 noextract=("riftlift-compat.zip" "riftlift-xrizer.tar.gz" "riftlift-dxvk.tar.gz")
 sha256sums=(
-  'e0acaecaa27769a84ed28a4f4cc28ed012b1834c7fce8e206fc813ff5f1a4653'  # wheel
-  '602a2f95132f9cc0dc2ad1af97011e51591c6bab69f80f7980d9ca2c5efcdd83'  # compat
-  '8fcd9dc9d417c37a67d75b06b8050598ee5ffd8a8426cf4b33e612c42135bb0e'  # xrizer
+  'a578fa34e31860427693e480e0964cc42b064962759f8d7fbe3a71d857e3910d'  # wheel
+  '9abc7f42a78eb2cf03d122b35871c47cd19132e7b4a20fccb55650abb8c2a9f5'  # compat
+  'ef0e17f96be6555fe41c9f574a9bfd6ac5d707437019d6a1aca514c8d4d5d0f1'  # xrizer
   '15d2625b9a7f0d01f5096c17211ff8e98ba238ddc0d39de03bb58c2277d7eedc'  # dxvk
   'SKIP'
   'SKIP'
