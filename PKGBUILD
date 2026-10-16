@@ -11,7 +11,7 @@
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
 _tag=v1.4.0.5660
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=07ed6411f35bfbfeee831e19a717a06a51d567da
+_launcher_commit=6344cadcdab279a918a9cc4ce3db267b49dcec72
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
 pkgver=1.4.0.5660
@@ -40,7 +40,7 @@ pkgver=1.4.0.5660
 # directory being written into the launcher binary.
 # 1.4.0.5660 rel 2: the same engine with the launcher's newer alpha and two
 # wrapper fixes, published by hand from this branch (docs/releasing.md):
-# - launcher 07ed641: archives can no longer write outside their folder (a
+# - launcher 6344cad: archives can no longer write outside their folder (a
 #   symlink chain in a Workshop item could reach $HOME), a corrupt download no
 #   longer crashes it, the pre-update save backup keeps every save, and
 #   PARCHMENT_MAP_FADE=ORIGINAL survives the settings dialog;
@@ -49,7 +49,10 @@ pkgver=1.4.0.5660
 #   the Dungeon Keeper files), and a launcher that updated itself is no longer
 #   replaced by the packaged copy on every start.
 # The engine tag is unchanged, so saved games are untouched.
-pkgrel=2
+# 1.4.0.5660 rel 3: the launcher repository's history was rewritten to correct
+# commit authorship, so rel 2's launcher commit (07ed641) is now 6344cad. Its
+# source tree is byte-identical; only the pin moves, so the package is the same.
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
