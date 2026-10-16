@@ -1,6 +1,6 @@
 pkgbase = clice-nightly-bin
 	pkgdesc = Nightly C++ language server and matching crash symbols
-	pkgver = 0.1.2026101507
+	pkgver = 0.1.2026101607
 	pkgrel = 1
 	url = https://github.com/clice-io/clice
 	arch = x86_64
@@ -11,27 +11,27 @@ pkgbase = clice-nightly-bin
 	makedepends = llvm
 	options = !strip
 	options = !debug
-	source = symbolize-0.1.2026101507.py::https://raw.githubusercontent.com/clice-io/clice/v0.1.2026101507/scripts/symbolize.py
+	source = symbolize-0.1.2026101607.py::https://raw.githubusercontent.com/clice-io/clice/v0.1.2026101607/scripts/symbolize.py
 	sha256sums = a77049dbaddd1a8438cbc61a0ddb5dfece58c5981a49193bb2e79c38a637a6d9
-	source_x86_64 = clice-0.1.2026101507.x86_64-unknown-linux-gnu.tar.gz::https://github.com/clice-io/clice/releases/download/v0.1.2026101507/clice-0.1.2026101507.x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = clice-0.1.2026101507.x86_64-unknown-linux-gnu.symbols.tar.xz::https://github.com/clice-io/clice/releases/download/v0.1.2026101507/clice-0.1.2026101507.x86_64-unknown-linux-gnu.symbols.tar.xz
-	sha256sums_x86_64 = 62d24ac34d89266a702775eb17b43de2465c9569c6c5329de6cde0e8e6da2340
-	sha256sums_x86_64 = eaca81e77abff147a9484e1356a70ce84c7b41560494122c7ba892b9752e9be6
-	source_aarch64 = clice-0.1.2026101507.aarch64-unknown-linux-gnu.tar.gz::https://github.com/clice-io/clice/releases/download/v0.1.2026101507/clice-0.1.2026101507.aarch64-unknown-linux-gnu.tar.gz
-	source_aarch64 = clice-0.1.2026101507.aarch64-unknown-linux-gnu.symbols.tar.xz::https://github.com/clice-io/clice/releases/download/v0.1.2026101507/clice-0.1.2026101507.aarch64-unknown-linux-gnu.symbols.tar.xz
-	sha256sums_aarch64 = 322d844bd24842737e271d1ce5b5a6c05837d11369819e2c386f82fcdbca3490
-	sha256sums_aarch64 = 525797f19ac91097d1988ddcbcf3aada01bca2f647af0d798da2ee1581e19f39
+	source_x86_64 = clice-0.1.2026101607.x86_64-unknown-linux-gnu.tar.gz::https://github.com/clice-io/clice/releases/download/v0.1.2026101607/clice-0.1.2026101607.x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = clice-0.1.2026101607.x86_64-unknown-linux-gnu.symbols.tar.xz::https://github.com/clice-io/clice/releases/download/v0.1.2026101607/clice-0.1.2026101607.x86_64-unknown-linux-gnu.symbols.tar.xz
+	sha256sums_x86_64 = 53a298778d88fe7d4adf899b89ca1fa1c0722b67c26659a472f216c7583cb62e
+	sha256sums_x86_64 = aa5ffb36c662d9d3cf7708d8f2fa2b22cbcc5cc4b584b18685b77b86221ebe24
+	source_aarch64 = clice-0.1.2026101607.aarch64-unknown-linux-gnu.tar.gz::https://github.com/clice-io/clice/releases/download/v0.1.2026101607/clice-0.1.2026101607.aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = clice-0.1.2026101607.aarch64-unknown-linux-gnu.symbols.tar.xz::https://github.com/clice-io/clice/releases/download/v0.1.2026101607/clice-0.1.2026101607.aarch64-unknown-linux-gnu.symbols.tar.xz
+	sha256sums_aarch64 = 0e58132a6fefee6a8910b51a72cf119964584a4c717edb03a7fd1433b48aff3e
+	sha256sums_aarch64 = fc3ea6cf11cbff8ebd2c7a582f2aa616353c33807bec6992b402fe5e32fb09d7
 
 pkgname = clice-nightly-bin
 	pkgdesc = Next-generation C++ language server (upstream nightly binary)
 	depends = glibc
-	provides = clice=0.1.2026101507
+	provides = clice=0.1.2026101607
 	conflicts = clice
 	conflicts = clice-bin
 	conflicts = clice-git
 
 pkgname = clice-nightly-bin-debug
 	pkgdesc = Matching GSYM crash symbols for clice nightly
-	depends = clice-nightly-bin=0.1.2026101507-1
+	depends = clice-nightly-bin=0.1.2026101607-1
 	depends = python
 	depends = llvm
