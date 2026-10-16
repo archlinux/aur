@@ -3,7 +3,7 @@
 pkgname=python-torchprofile
 _pkgname=torchprofile
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Profiler to count the number of MACs / FLOPs of PyTorch models"
 arch=('any')
 url="https://github.com/zhijian-liu/torchprofile"
@@ -23,8 +23,15 @@ checkdepends=(
   'python-torchvision'
   'python-transformers'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zhijian-liu/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ce1c4838cc70ce5e1f6d46913357bc302d49d80a45e0bf0fdf98213b34ee28de')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zhijian-liu/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+        'grouped-query-attention.patch')
+sha256sums=('ce1c4838cc70ce5e1f6d46913357bc302d49d80a45e0bf0fdf98213b34ee28de'
+            'a2b00ccb0680df41ff1deba1aceebc39fc05f8fd97214a46ab198b0b73226067')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch -Np1 -i "$srcdir/grouped-query-attention.patch"
+}
 
 build() {
   cd "$_pkgname-$pkgver"

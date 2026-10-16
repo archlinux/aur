@@ -1,0 +1,16 @@
+--- a/torchprofile/handlers.py
++++ b/torchprofile/handlers.py
+@@ -169,7 +169,12 @@
+     head_dim_v = v[-1]
+ 
+     assert batch == k[0] == v[0]
+-    assert heads == prod(k[1:-2]) == prod(v[1:-2])
++    kv_heads = prod(k[1:-2])
++    assert kv_heads == prod(v[1:-2])
++    # Grouped-query attention repeats K/V heads for each query-head group.
++    # FLOPs are therefore still counted using the number of query heads.
++    enable_gqa = len(node.inputs) > 7 and node.inputs[7].value == 1
++    assert heads == kv_heads or (enable_gqa and kv_heads > 0 and heads % kv_heads == 0)
+     assert head_dim == k[-1] and seq_kv == v[-2]
+ 
+     # Q @ K^T + attn @ V
