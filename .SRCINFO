@@ -1,19 +1,19 @@
 pkgbase = odinls-bin
 	pkgdesc = Language server and source code formatter for Odin
-	pkgver = dev_2026_05
-	pkgrel = 2
+	pkgver = dev_2026_10
+	pkgrel = 1
 	url = https://github.com/DanielGavin/ols
 	arch = x86_64
 	license = MIT
 	depends = odin
-	provides = odinls=dev_2026_05
-	provides = odinfmt=dev_2026_05
+	provides = ols=dev_2026_10
+	provides = odinfmt=dev_2026_10
 	conflicts = odinls
 	conflicts = ols
 	conflicts = odinfmt
-	source = https://github.com/DanielGavin/ols/releases/download/dev-2026-05/ols-x86_64-unknown-linux-gnu.zip
-	source = odinls_LICENSE::https://raw.githubusercontent.com/DanielGavin/ols/refs/tags/dev-2026-05/LICENSE
-	sha256sums = 3b0d3d37d681cab308f1e72195f3e2bca09d62a31425e61016958cd6982ddc34
+	source = https://github.com/DanielGavin/ols/releases/download/dev-2026-10/ols-x86_64-unknown-linux-gnu.zip
+	source = ols_LICENSE::https://raw.githubusercontent.com/DanielGavin/ols/refs/tags/dev-2026-10/LICENSE
+	sha256sums = 1ee224fcd7b0818acf2e2160e5d4e380d89261d9d96328c9b0a1cb8cc193bb7f
 	sha256sums = efa5894137f6f31af79aef423b8dc33a7709d14b2784f84ef2d04df6ebed82af
 
 pkgname = odinls-bin
