@@ -1,7 +1,7 @@
 pkgbase = meshtasticd-bin
 	pkgdesc = Meshtastic daemon for Linux systems.
 	pkgver = 2.7.26.61
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_13
 	arch = x86_64
 	arch = i686
@@ -16,12 +16,12 @@ pkgbase = meshtasticd-bin
 	conflicts = meshtasticd
 	conflicts = meshtasticd-git
 	source_x86_64 = https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_13/amd64/meshtasticd_2.7.26.61~obs54e0d8d~beta_amd64.deb
-	sha512sums_x86_64 = de9a944ce942683dc9837b59fd0c115ed22cb91c15ef6928e83b1a47832f89feeba859716d7473c6f856545db02923ebfb8b0846a75706126727726c21c9ac56
+	sha512sums_x86_64 = 76acbd5715f6453874718a7bb0abecc07997ccf9b24cf1e9dea7577dbd64bbecf8b841eb53148a92251231df08dbae18d8dadb1ddf227f290ac1372eb72f3bca
 	source_i686 = https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_13/i386/meshtasticd_2.7.26.61~obs54e0d8d~beta_i386.deb
-	sha512sums_i686 = cdc367513b1492c3f6d1ddd6d0df2afce76fe0dcb223c3a561eeef088f58aaa9e08697ff525d5ceeb0594438e31f9a9c55bbecd68494606bdccea0d6105a447c
+	sha512sums_i686 = d90f0bbcd05585984a2d9739bd413598dddc2d8a3e65152837734f637292e32fd16ec1860f8a3304b7567c4e0f3789bb1aa9001a0414426a30c18a20b10d33b7
 	source_armv7h = https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_13/armhf/meshtasticd_2.7.26.61~obs54e0d8d~beta_armhf.deb
-	sha512sums_armv7h = 996ce7fe29a84bb43c4a721930202a33ef606076b8481e6bbdfda651cc80c9b72cd678129b6e13e700c995a4dfb1649dd87a54e1e72574729db6362c7a412fab
+	sha512sums_armv7h = ae8e6862432a14e66b0e2f6e52b235731708a74063f5b5d15badb49adf372403d4cbfa34a193c79c14fa2ad7e0d96699b1e0bd3dfeed350776eee35b7269cee4
 	source_aarch64 = https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_13/arm64/meshtasticd_2.7.26.61~obs54e0d8d~beta_arm64.deb
-	sha512sums_aarch64 = d9dc3ebaacf2dc94a122a0a8af87ce6e61555b715d0ec8fc7f24d14361d46d2136b89469182f13c21669017369ef5d189e8276324fb07c35494782a1b58d829f
+	sha512sums_aarch64 = c427d9d3ea85adb68131696ffc7f55fbb207fa3b51efc4d3e2c0ee033c512f2e755f7fbafad8a2860a5a8bfc64d1ca4e6b07e7218da4e184cfa17bd7547581a0
 
 pkgname = meshtasticd-bin
