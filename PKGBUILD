@@ -3,7 +3,7 @@
 
 pkgname=giflib4
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading and writing gif images (version 4)"
 url="http://sourceforge.net/projects/giflib/"
 arch=('i686' 'x86_64')
@@ -12,6 +12,12 @@ depends=('glibc')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
 source=(http://downloads.sourceforge.net/sourceforge/giflib/giflib-${pkgver}.tar.bz2)
 md5sums=('be1f5749c24644257a88c9f42429343d')
+
+prepare() {
+  cd giflib-${pkgver}
+  # GCC 14+: implicit function declarations are errors
+  sed -i 's|#include "gif_lib_private.h"|#include <stdlib.h>\n&|' lib/gif_hash.c
+}
 
 build() {
   cd giflib-${pkgver}
