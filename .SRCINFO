@@ -1,6 +1,6 @@
 pkgbase = multiworld-gg-bin
 	pkgdesc = MultiworldGG Multi-Game Randomizer and Server - Fork of Archipelago
-	pkgver = 0.7.272
+	pkgver = 0.7.273
 	pkgrel = 1
 	url = https://github.com/MultiworldGG/MultiworldGG
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = multiworld-gg-bin
 	optdepends = xdg-terminal-exec: Better terminal support
 	provides = multiworld-gg
 	conflicts = multiworld-gg
-	source = https://github.com/MultiworldGG/MultiworldGG/releases/download/0.7.272/MultiworldGG_0.7.272_linux-x86_64.tar.gz
-	sha256sums = 01b31d9912233e7f94b944e143afb264b8cc2001b1ec94aa537cf1e97c55ae59
+	source = https://github.com/MultiworldGG/MultiworldGG/releases/download/0.7.273/MultiworldGG_0.7.273_linux-x86_64.tar.gz
+	sha256sums = cf2712b346f8a0c67edccc94b73e4a789e68f67df1fedecd7187f88b2a62b076
 
 pkgname = multiworld-gg-bin
