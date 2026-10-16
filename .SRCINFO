@@ -1,13 +1,13 @@
 pkgbase = plenti-bin
 	pkgdesc = Static Site Generator with Go backend and Svelte frontend
-	pkgver = 0.7.26
+	pkgver = 0.7.27
 	pkgrel = 1
 	url = https://github.com/plentico/plenti
 	arch = x86_64
 	license = Apache-2.0
 	provides = plenti
 	conflicts = plenti
-	source_x86_64 = plenti-x86_64-0.7.26.tgz::https://github.com/plentico/plenti/releases/download/v0.7.26/plenti_0.7.26_Linux_64-bit.tar.gz
-	sha256sums_x86_64 = dfb6790e386c974a16474a05b100d57134ef1e595d1618e78a12dc945863b47a
+	source_x86_64 = plenti-x86_64-0.7.27.tgz::https://github.com/plentico/plenti/releases/download/v0.7.27/plenti_0.7.27_Linux_64-bit.tar.gz
+	sha256sums_x86_64 = 1d875b10b56f37f2262f9c36ac5898997f7e0b8033871c3620b3918d630d59f9
 
 pkgname = plenti-bin
