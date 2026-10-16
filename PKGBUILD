@@ -5,7 +5,7 @@ pkgname=bluebubbles-beta-bin
 _pkgname=BlueBubbles
 pkgver=2.1.3+desktop.93
 _tagver="2.1.3%2Bdesktop.93"
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Linux, Android, and Windows (Beta Prebuilt Release)"
 arch=('x86_64' 'aarch64')
 url="https://bluebubbles.app/"
@@ -75,10 +75,22 @@ if [ ! -s "${_BB_FONT_DIR}/apple.ttf" ] && [ -f /usr/share/fonts/noto/NotoColorE
     cp -f /usr/share/fonts/noto/NotoColorEmoji.ttf "${_BB_FONT_DIR}/apple.ttf" 2>/dev/null || true
 fi
 
+# Stage runtime binary in XDG_RUNTIME_DIR so pacman upgrades never leave /proc/self/exe
+# pointing to a '(deleted)' inode (which breaks Dart GlobalIsolate / package_info_plus)
+_BB_RT_DIR="${XDG_RUNTIME_DIR:-/tmp}/bluebubbles-beta-${UID}"
+mkdir -p "${_BB_RT_DIR}" 2>/dev/null || true
+ln -sfn "/usr/lib/bluebubbles-beta/data" "${_BB_RT_DIR}/data"
+ln -sfn "/usr/lib/bluebubbles-beta/lib" "${_BB_RT_DIR}/lib"
+ln -sfn "/usr/lib/bluebubbles-beta/libmpv.so.1" "${_BB_RT_DIR}/libmpv.so.1"
+cp -f "/usr/lib/bluebubbles-beta/bluebubbles-beta.real" "${_BB_RT_DIR}/bluebubbles-beta.real.new" 2>/dev/null && \
+    mv -f "${_BB_RT_DIR}/bluebubbles-beta.real.new" "${_BB_RT_DIR}/bluebubbles-beta.real" 2>/dev/null || true
+_BB_BIN="${_BB_RT_DIR}/bluebubbles-beta.real"
+[ -x "${_BB_BIN}" ] || _BB_BIN="/usr/lib/bluebubbles-beta/bluebubbles-beta.real"
+
 if command -v prime-run >/dev/null 2>&1; then
-    exec prime-run "/usr/lib/bluebubbles-beta/bluebubbles-beta.real" --class=bluebubbles "$@"
+    exec prime-run "${_BB_BIN}" --class=bluebubbles "$@"
 else
-    exec -a bluebubbles "/usr/lib/bluebubbles-beta/bluebubbles-beta.real" --class=bluebubbles "$@"
+    exec -a bluebubbles "${_BB_BIN}" --class=bluebubbles "$@"
 fi
 EOF
     chmod 755 "${pkgdir}/usr/lib/bluebubbles-beta/bluebubbles-beta"
@@ -131,6 +143,43 @@ with open(p, "wb") as f:
     f.write(d)
 ' "${pkgdir}/usr/lib/bluebubbles-beta/lib/libflutter_linux_gtk.so"
     fi
+
+    # Install systemd user service and upgrade watcher units
+    install -dm755 "${pkgdir}/usr/lib/systemd/user"
+    cat <<'EOF' > "${pkgdir}/usr/lib/systemd/user/bluebubbles.service"
+[Unit]
+Description=BlueBubbles
+Documentation=https://bluebubbles.app/
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bluebubbles-beta
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=graphical-session.target
+EOF
+    cat <<'EOF' > "${pkgdir}/usr/lib/systemd/user/bluebubbles-upgrade-watcher.path"
+[Unit]
+Description=Watch BlueBubbles binary for package upgrades and restart bluebubbles.service
+
+[Path]
+PathChanged=/usr/lib/bluebubbles-beta/bluebubbles-beta.real
+Unit=bluebubbles-upgrade-watcher.service
+
+[Install]
+WantedBy=default.target graphical-session.target
+EOF
+    cat <<'EOF' > "${pkgdir}/usr/lib/systemd/user/bluebubbles-upgrade-watcher.service"
+[Unit]
+Description=Restart bluebubbles.service after package upgrade to prevent deleted /proc/self/exe
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user try-restart bluebubbles.service
+EOF
 
     install -Dm644 "${srcdir}/data/flutter_assets/assets/icon/icon.png" "${pkgdir}/usr/share/pixmaps/bluebubbles-beta.png"
     ln -sf "bluebubbles-beta.png" "${pkgdir}/usr/share/pixmaps/bluebubbles.png"
