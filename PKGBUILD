@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust; one install command for the repositories, the AUR, Flatpak and Snap. Arch Linux and Arch-based distributions; no desktop needed; works on a plain text console (tty)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ options=('!debug')
 # signed GitHub release tarball for the tag being packaged.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('ff56889c5ef099eb461bd20f653faabba109d5a65da856df4b6a7c20dab47093'
+sha256sums=('f985c183258ad8aa10246ed1e3ff7cf4e4255afb539543127b4256410eca7639'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import

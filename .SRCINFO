@@ -1,6 +1,6 @@
 pkgbase = nog
 	pkgdesc = A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust; one install command for the repositories, the AUR, Flatpak and Snap. Arch Linux and Arch-based distributions; no desktop needed; works on a plain text console (tty)
-	pkgver = 1.9.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/jetomev/nog
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = nog
 	options = !debug
 	backup = etc/nog/nog.conf
 	backup = etc/nog/tier-pins.toml
-	source = nog-1.9.0.tar.gz::https://github.com/jetomev/nog/releases/download/v1.9.0/nog-1.9.0.tar.gz
-	source = nog-1.9.0.tar.gz.asc::https://github.com/jetomev/nog/releases/download/v1.9.0/nog-1.9.0.tar.gz.asc
+	source = nog-2.0.0.tar.gz::https://github.com/jetomev/nog/releases/download/v2.0.0/nog-2.0.0.tar.gz
+	source = nog-2.0.0.tar.gz.asc::https://github.com/jetomev/nog/releases/download/v2.0.0/nog-2.0.0.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = ff56889c5ef099eb461bd20f653faabba109d5a65da856df4b6a7c20dab47093
+	sha256sums = f985c183258ad8aa10246ed1e3ff7cf4e4255afb539543127b4256410eca7639
 	sha256sums = SKIP
 
 pkgname = nog
