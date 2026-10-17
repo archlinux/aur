@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=k3d-gpu
-pkgver=0.1.40
+pkgver=0.1.41
 pkgrel=1
 pkgdesc="Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
     'k3d-git: k3d CLI to manage clusters'
     'kubectl: query and apply manifests'
     'nvidia-container-toolkit: GPU container runtime for Docker'
-    'python: k3d-gpu-mcp (the MCP server for AI agents), k3d-gpu facts, plan and audit'
+    'python: k3d-gpu-mcp (the MCP server for AI agents), k3d-gpu facts, plan, audit, tune and capacity'
 )
 source=("git+https://github.com/88plug/k3d-gpu.git#tag=aur-v${pkgver}")
 sha256sums=('SKIP')
@@ -42,8 +42,11 @@ package() {
         install -Dm644 "$f" "$pkgdir/usr/share/k3d-gpu/$f"
     done
     install -Dm644 images.lock "$pkgdir/usr/share/k3d-gpu/images.lock"
-    install -Dm755 -t "$pkgdir/usr/share/k3d-gpu/bench" bench/vs.py bench/llm_load.py
+    install -Dm755 -t "$pkgdir/usr/share/k3d-gpu/bench" bench/vs.py bench/llm_load.py bench/energy.sh
     install -Dm644 bench/competitors.lock "$pkgdir/usr/share/k3d-gpu/bench/competitors.lock"
+    for f in agent_trace.py agent_trace_gen.py apb/apb.py apb/capacity.py; do
+        install -Dm644 "bench/$f" "$pkgdir/usr/share/k3d-gpu/bench/$f"
+    done
     install -Dm644 share/agent-sandbox.yml      "$pkgdir/usr/share/k3d-gpu/agent-sandbox.yml"
     install -Dm644 share/agent-sandbox-k3d.yml  "$pkgdir/usr/share/k3d-gpu/agent-sandbox-k3d.yml"
     install -Dm644 share/model-share.yml        "$pkgdir/usr/share/k3d-gpu/model-share.yml"
