@@ -5,7 +5,7 @@
 
 pkgname=arsu-bin
 _pkgname=arsu
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Offline TOTP/HOTP authenticator with an encrypted local vault (prebuilt)'
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
   'libsoup3'
   'webkit2gtk-4.1'
 )
+optdepends=('bluez: Bluetooth sync between your devices')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 # The binary ships as released: don't strip it or split out debug symbols.
@@ -43,9 +44,9 @@ source=(
   "$pkgname-$pkgver-512.png::$_tree/src-tauri/icons/icon.png"
   'Arsu.desktop'
 )
-sha256sums=('4f4718a8e3649534c9a30e65eb61fa770e33e4cf55ea968c363f7537d1074c31'
-            '87f723f557255ad19bc29a090d6bfb197e17eeb18fa5f32b5a28db88cac6d70b'
-            'SKIP'
+sha256sums=('d5bd3b270f1e3cbaff55fac0d9104bcd4780398c738126778c2d1dc766bbaa30'
+            '86e0d8bf4ab5ff3aa885c3c67f52774fb3eb474e362ce69751e272c1acd0b9c7'
+            'edc9fac15927f84f4f3ccc153595ba74db617103b423afdeebb4ed944ad6706b'
             '083d1f47386dfb5ff3ced55505021ebb00dca5ee7438308ef7b898629c97b59c'
             '1e124c7ced39b868698ac8841ff5f577120c3ffa6812ddd629c7665f1bb7a3f9'
             'f1095a50dca1d94f8d9621fbfac032170e6c060c74092f1e371eaa71fbee4dfc'
