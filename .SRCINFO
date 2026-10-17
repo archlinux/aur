@@ -1,0 +1,20 @@
+pkgbase = rgmond
+	pkgdesc = Implementation of the Ganglia gmond monitoring agent, with BPF, PSI and cgroup metrics
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/l1n/rgmond
+	arch = x86_64
+	license = BSD-3-Clause
+	license = GPL-2.0-only
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libbpf
+	depends = glibc
+	depends = libgcc
+	optdepends = ganglia: gmetad, ganglia-web and the gmetric CLI
+	optdepends = python: rgmond-import-gmond-conf
+	backup = etc/rgmond/host.toml
+	source = rgmond-0.1.0.tar.gz::https://github.com/l1n/rgmond/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 59e64bba68d1d47383c9c3134daf06effd894861fe6c96543ee290bb1a3e981c
+
+pkgname = rgmond
