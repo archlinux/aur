@@ -4,7 +4,7 @@
 # (binary + LICENSE + .desktop + icons), i.e. releases after v0.2.2.
 
 pkgname=archtoys-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="System-wide color picker for Linux, inspired by PowerToys (precompiled binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("archtoys=${pkgver}")
 conflicts=('archtoys')
 options=('!debug')
 source=("archtoys-linux-x86_64-v${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
-sha256sums=('4237df719e55ab54c16a83d2ebb7745e255ba07b8afb926273a3480f18a18541')
+sha256sums=('68f598941c5b4cf20a2307b64567feae070fbc2504a48e379fe5ff0e4965383f')
 
 package() {
   cd "${srcdir}"
