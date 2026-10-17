@@ -1,49 +1,41 @@
-PKGNAME := kanata-switcher
-UPSTREAM := 7mind/kanata-switcher
+SHELL := /usr/bin/bash
+.DEFAULT_GOAL := check-update
+.NOTPARALLEL:
+.PHONY: check-update update lint srcinfo publish test
 
-CURRENT_VER := $(shell sed --quiet 's/^pkgver=//p' PKGBUILD)
-LATEST_VER := $(shell curl --silent https://api.github.com/repos/$(UPSTREAM)/releases/latest | jq --raw-output '.tag_name | ltrimstr("v")')
-
-.PHONY: check-update update build lint srcinfo clean publish
-
-check-update:
-	@echo "Current: $(CURRENT_VER)"
-	@echo "Latest:  $(LATEST_VER)"
-	@if [ "$(CURRENT_VER)" = "$(LATEST_VER)" ]; then \
-		echo "Up to date."; \
-	else \
-		echo "Update available: $(CURRENT_VER) -> $(LATEST_VER)"; \
-	fi
-
-update:
-	@if [ -z "$(LATEST_VER)" ]; then \
-		echo "ERROR: Could not fetch latest version from GitHub" >&2; \
-		exit 1; \
-	fi
-	@if [ "$(CURRENT_VER)" = "$(LATEST_VER)" ]; then \
-		echo "Already at $(CURRENT_VER), nothing to do."; \
-		exit 0; \
-	fi
-	sed --in-place "s/^pkgver=.*/pkgver=$(LATEST_VER)/" PKGBUILD
-	sed --in-place "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
-	updpkgsums
-	@echo "Updated to $(LATEST_VER)"
-
-build:
-	makepkg --syncdeps --force
+check-update update:
+	@release=$$(curl --fail --silent --show-error --location --max-time 60 https://api.github.com/repos/7mind/kanata-switcher/releases/latest) || exit 1; \
+	latest=$$(jq --slurp --exit-status --raw-output 'select(length == 1) | .[0].tag_name | select(type == "string" and test("^v[0-9]+([.][0-9]+)+$$")) | ltrimstr("v")' <<< "$$release") || exit 1; \
+	current=$$(sed --quiet 's/^pkgver=//p' PKGBUILD); \
+	printf 'Current: %s\nLatest:  %s\n' "$$current" "$$latest"; \
+	[[ $@ != check-update && $$current != "$$latest" ]] || exit 0; \
+	[[ $$(vercmp "$$latest" "$$current") == 1 ]] || { echo 'Refusing to downgrade' >&2; exit 1; }; \
+	git diff --quiet && git diff --cached --quiet || { echo 'Commit or stash local changes first' >&2; exit 1; }; \
+	work=$$(mktemp -d "$$PWD/.release.XXXXXX") || exit 1; \
+	trap 'rm -rf -- "$$work"' EXIT; \
+	trap 'exit 130' INT; trap 'exit 143' TERM HUP; \
+	cp -- PKGBUILD Makefile kanata-switcher.install "$$work/" || exit 1; \
+	( cd "$$work" || exit 1; \
+	  sed --in-place -e "s/^pkgver=.*/pkgver=$$latest/" -e 's/^pkgrel=.*/pkgrel=1/' PKGBUILD || exit 1; \
+	  SRCDEST="$$work" updpkgsums && env --unset=MAKEFLAGS make --no-print-directory lint srcinfo \
+	) || exit 1; \
+	mv -- "$$work/PKGBUILD" PKGBUILD && mv -- "$$work/.SRCINFO" .SRCINFO || exit 1; \
+	git add -- PKGBUILD .SRCINFO && git commit --message "feat: update to $$latest"
 
 lint:
-	namcap PKGBUILD
-	namcap $(PKGNAME)-$(CURRENT_VER)-*.pkg.tar.zst
+	@output=$$(namcap PKGBUILD) || exit 1; \
+	printf '%s\n' "$$output"; \
+	[[ $$output != *' E: '* ]]
 
 srcinfo:
-	makepkg --printsrcinfo > .SRCINFO
+	@tmp=$$(mktemp "$$PWD/.SRCINFO.XXXXXX") || exit 1; \
+	trap 'rm -f -- "$$tmp"' EXIT; \
+	trap 'exit 130' INT; trap 'exit 143' TERM HUP; \
+	makepkg --printsrcinfo > "$$tmp" && [[ -s $$tmp ]] && mv -- "$$tmp" .SRCINFO
 
-clean:
-	rm --recursive --force src/ pkg/ *.tar.gz *.pkg.tar.zst
+# Intentionally no build: the maintainer tests through the normal AUR user flow.
+publish: update lint
+	git push origin HEAD:master
 
-publish: clean update build lint srcinfo
-	$(MAKE) clean
-	git add PKGBUILD .SRCINFO
-	git commit --message "feat: update to $(LATEST_VER)"
-	git push
+test:
+	bash tests/release.sh
