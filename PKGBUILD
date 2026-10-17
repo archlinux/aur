@@ -1,28 +1,29 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="MVSEP GUI - Music separation desktop application (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/AntheaLaffy/mvsep-rs"
 license=('Apache-2.0')
-depends=('webkit2gtk' 'libappindicator-gtk3' 'librsvg' 'libvips')
+depends=('webkit2gtk' 'libappindicator-gtk3' 'librsvg' 'libvips' 'fuse2')
 makedepends=()
 optdepends=()
 conflicts=('mvsep-gui')
 replaces=()
 backup=()
-options=()
+options=('!strip' '!debug')
 install=
 changelog=
-source=("${url}/releases/download/v${pkgver}/mvsep-gui"
-        "${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP' 'SKIP')
+source=("MVSEP_${pkgver}_amd64.AppImage::${url}/releases/download/v${pkgver}/MVSEP_${pkgver}_amd64.AppImage"
+        "mvsep-rs-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7b65d530c84dcc65302bece7b8e27b242dad67ded49670b49c5f41d015f82a29'
+            'd7430664c1de1940399fae14afc57d9f88cd5e0bbe96eb9f5598850682bc8c63')
 
 package() {
   cd "${srcdir}"
   
-  install -Dm755 "mvsep-gui" "${pkgdir}/usr/bin/mvsep-gui"
+  install -Dm755 "MVSEP_${pkgver}_amd64.AppImage" "${pkgdir}/usr/bin/mvsep-gui"
   
   install -d "${pkgdir}/usr/share/applications"
   cat > "${pkgdir}/usr/share/applications/com.mvsep.app.desktop" <<EOF
