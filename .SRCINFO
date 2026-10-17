@@ -1,0 +1,18 @@
+pkgbase = qt5gtk3-git
+	pkgdesc = Qt 5 GTK 3 platform theme backported from Qt 6
+	pkgver = r14.5c856b9
+	pkgrel = 1
+	url = https://github.com/ahmubashshir/qt5gtk3
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = gtk3
+	provides = qt5gtk3
+	conflicts = qt5gtk3
+	source = qt5gtk3-git::git+https://github.com/ahmubashshir/qt5gtk3
+	sha256sums = SKIP
+
+pkgname = qt5gtk3-git
