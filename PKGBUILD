@@ -1,6 +1,6 @@
 # Maintainer: Kuokuo123 <kuoyu1204@gmail.com>
 pkgname="otter-launcher"
-pkgver=0.8.1
+pkgver=0.8.2
 # v0.8.0 is a generational update that comes with breaking changes. Check the github repo for config migration guide if you come from earlier versions: https://github.com/kuokuo123/otter-launcher/
 pkgrel=1
 pkgdesc="A rust-based cli/tui launcher built for keyboard-centric users, featuring vi & emacs keybinds, ascii decoration, etc"
@@ -23,4 +23,4 @@ package() {
 	install -Dm644 "$pkgname-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/ot"
 }
-sha256sums=('a06a7225d33257976d0824055535f9d6de63be9ee356120b6d2bbf13e331da61')
+sha256sums=('e40c2301a1e5b31998102d64431164b0d83d7f830904ccace32ae57354200b57')
