@@ -20,7 +20,7 @@ check-update update:
 	  SRCDEST="$$work" updpkgsums && env --unset=MAKEFLAGS make --no-print-directory lint srcinfo \
 	) || exit 1; \
 	mv -- "$$work/PKGBUILD" PKGBUILD && mv -- "$$work/.SRCINFO" .SRCINFO || exit 1; \
-	git add -- PKGBUILD .SRCINFO && git commit --message "feat: update to $$latest"
+	git add -- PKGBUILD .SRCINFO && git commit --gpg-sign --message "feat: update to $$latest"
 
 lint:
 	@output=$$(namcap PKGBUILD) || exit 1; \
@@ -35,6 +35,7 @@ srcinfo:
 
 # Intentionally no build: the maintainer tests through the normal AUR user flow.
 publish: update lint
+	git verify-commit HEAD
 	git push origin HEAD:master
 
 test:
