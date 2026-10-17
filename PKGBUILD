@@ -1,14 +1,14 @@
 # Maintainer: prankstr <prankstr@users.noreply.github.com>
 # Keep depends/optdepends/options in sync across vibepanel, vibepanel-bin, and vibepanel-git.
 pkgname=vibepanel
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A GTK4 panel for Wayland with notifications, OSD, and quick settings"
 arch=('x86_64' 'aarch64')
 url="https://github.com/prankstr/vibepanel"
 license=('MIT')
 # systemd-libs provides libudev used by the brightness service.
-depends=('gtk4' 'gtk4-layer-shell' 'libpulse' 'upower' 'networkmanager' 'bluez' 'systemd-libs')
+depends=('gtk4>=1:4.22' 'gtk4-layer-shell' 'libpulse' 'upower' 'networkmanager' 'bluez' 'systemd-libs')
 makedepends=('cargo' 'rust' 'pkg-config')
 optdepends=('power-profiles-daemon: power profile switching in battery popover'
             'modemmanager: cellular/mobile network support'
@@ -18,7 +18,7 @@ optdepends=('power-profiles-daemon: power profile switching in battery popover'
 options=(!lto !debug)
 conflicts=('vibepanel-bin' 'vibepanel-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/prankstr/vibepanel/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('31afa52fb692db7a12c26462cdca29c4df218ae520a36d7aa01f6a735cc7e610')
+sha256sums=('d64032b48e04254ab5ef92bc9a15af021faa1b394331eed66ca3b908080537e7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
