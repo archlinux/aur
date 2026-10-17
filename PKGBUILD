@@ -2,7 +2,7 @@
 
 pkgname=all-the-platforms-bin
 _pkgname=atp
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="One command for all the platforms: read, search, post, chat and download on 67 platforms, with JSON output and an MCP server"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=('all-the-platforms' 'all-the-platforms-git' 'atp-bin')
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('39b613ebbd0b9caa3a942f3aaecbe2c8d654ecd528fb81e4715a7fe2407ecd26')
-sha256sums_aarch64=('86b15fe90bce278efb41ba1967e4601825ea0770ad4315028ba36c9ccf02377e')
+sha256sums_x86_64=('e13cc6d10fca0c8b3dd242fbf383370a975db07e85dfeec86bba57c13270c3fe')
+sha256sums_aarch64=('ed78ce7bc1d97fe2dcfa10fff8b95e0a0f24c656e74ffdb7b71d0148ca451a7b')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-$CARCH-unknown-linux-gnu"
