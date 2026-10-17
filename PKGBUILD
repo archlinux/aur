@@ -1,9 +1,9 @@
 
-_prams=(fr_FR 7884 'Logiciel de création CEWE' 8.0.4 "CEWE France")
+_prams=(fr_FR 7884 'Logiciel de création CEWE' 8.1.3 "CEWE France")
 
 pkgname="cewe-france"
 pkgver=8.1.3
-pkgrel=1
+pkgrel=2
 
 ## Begin shared code ##
 pkgdesc="un client hors ligne pour créer des livres photo et d'autres produits photo et les commander auprès de CEWE ou de partenaires"
@@ -27,7 +27,7 @@ pkgname=${pkgname// /-}
 conflicts=(cewe-fotowelt cewe-fotobuch)
 conflicts=(${conflicts[@]/$pkgname/})
 
-url="http://www.cewe.de/"
+url="https://www.cewe.fr/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg-turbo' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('p7zip' 'xdg-utils')
