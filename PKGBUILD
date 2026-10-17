@@ -12,6 +12,8 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'libusb' 'hidapi-hotplug' 'mbedtls3' 'hicolor-icon-theme')
 makedepends=('qt6-tools')
 optdepends=('i2c-tools: mainboard & RAM access')
+provides=('openrgb')
+conflicts=('openrgb')
 source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/OpenRGB-release_${pkgver}.tar.gz"
         openrgb-modules-load.conf
         openrgb.tmpfiles
