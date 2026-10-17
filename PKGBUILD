@@ -4,7 +4,7 @@
 pkgname="orca-slicer-unstable-bin"
 pkgver=2.5.0alpha
 _pkgver=2.5.0-alpha
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (versions including beta, release candidates and stable versions)"
 arch=('x86_64')
 url="https://github.com/OrcaSlicer/OrcaSlicer"
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-	find squashfs-root/{resources,usr/share/icons}/ -type d -exec chmod 755 {} +
+	find squashfs-root/ -type d -exec chmod 755 {} +
 
 	install -d "$pkgdir/opt/${pkgname%-bin}/"
 	cp -a squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
