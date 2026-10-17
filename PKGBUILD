@@ -1,6 +1,6 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=castr
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Cast your Hyprland screen to an Apple TV or a Chromecast: mirror or extend, from a menu or the CLI"
 arch=('x86_64' 'aarch64')
@@ -45,7 +45,7 @@ options=('!debug')
 install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29804d2d87a9b2ca2ae80f20bf43c54c378b5f2707e1189db2eaf7eda364e8c3')
+sha256sums=('878121b30a81c8cc03be951ce3b225487b265b7b7514169679ff777bbda1eb3b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

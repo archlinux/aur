@@ -1,6 +1,6 @@
 pkgbase = castr
 	pkgdesc = Cast your Hyprland screen to an Apple TV or a Chromecast: mirror or extend, from a menu or the CLI
-	pkgver = 0.2.4
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/mrCode/castr
 	install = castr.install
@@ -23,7 +23,7 @@ pkgbase = castr
 	optdepends = quickshell: bar widget on Omarchy Quarto and later (see castr-indicator)
 	optdepends = waybar: bar indicator on earlier setups
 	options = !debug
-	source = castr-0.2.4.tar.gz::https://github.com/mrCode/castr/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = 29804d2d87a9b2ca2ae80f20bf43c54c378b5f2707e1189db2eaf7eda364e8c3
+	source = castr-0.2.6.tar.gz::https://github.com/mrCode/castr/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = 878121b30a81c8cc03be951ce3b225487b265b7b7514169679ff777bbda1eb3b
 
 pkgname = castr
