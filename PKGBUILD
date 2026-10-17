@@ -1,6 +1,6 @@
 pkgname=zulu-25-jdk-fx
 pkgver=25.36.205
-pkgrel=4
+pkgrel=5
 pkgdesc='Azul Zulu JDK 25 with JavaFX'
 arch=(
     'x86_64'
@@ -32,23 +32,23 @@ provides=(
 install="${pkgname}.install"
 options=('!strip')
 
+source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
+sha256sums_x86_64=("${_sha256_x86_64}")
+source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_aarch64.tar.gz")
+sha256sums_aarch64=("${_sha256_aarch64}")
+
 case "$CARCH" in
     x86_64)
         _filename="zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64"
-        _sha256="${_sha256_x86_64}"
         ;;
     aarch64)
         _filename="zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_aarch64"
-        _sha256="${_sha256_aarch64}"
         ;;
     *)
         printf 'Unsupported architecture: %s\n' "$CARCH" >&2
         exit 1
         ;;
 esac
-
-source=("https://cdn.azul.com/zulu/bin/${_filename}.tar.gz")
-sha256sums=("${_sha256}")
 
 package() {
     local install_dir="${pkgdir}/usr/lib/jvm/${_jvm}"
