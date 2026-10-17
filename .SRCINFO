@@ -1,6 +1,6 @@
 pkgbase = crux-shell-git
 	pkgdesc = A personal QuickShell desktop shell for Hyprland
-	pkgver = r1.0000000
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/teezlabs/crux-shell
 	arch = any

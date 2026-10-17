@@ -1,6 +1,6 @@
 # Maintainer: Teez <dmedoro13@gmail.com>
 pkgname=crux-shell-git
-pkgver=r1.0000000
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A personal QuickShell desktop shell for Hyprland"
 arch=('any')
@@ -44,7 +44,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
