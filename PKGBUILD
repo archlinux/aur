@@ -1,7 +1,7 @@
 # Maintainer: qubeck <qubeck [AT] disroot [DOT] org>
 
 pkgname=libpdfium
-pkgver=155.0.8059.79
+pkgver=155.0.8059.84
 pkgrel=1
 _pdfium_rev=39f0ed4a657e53ed743a16d10d77dec086a08e03
 pkgdesc='PDF rendering/manipulation library from Chromium'
@@ -38,7 +38,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'increase-fortify-level.patch'
         'chromium-153-hermetic-python.patch'
         'chromium-155-fix-gn-no-public_inputs.patch')
-sha256sums=('fcb5be44f1f5916ac23309c706146819c792c0d0e9c1a8220b7fbc046d79f15e'
+sha256sums=('2063834f528029ad02a6a3de6d229c3e8b19bc43864be397944cbda18d7ee680'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49'
@@ -238,9 +238,6 @@ build() {
 
   if (( _enable_js )); then
     _flags+=(
-      # --- libc++ (only meaningful with use_custom_libcxx) ---------------
-      'enable_safe_libcxx=true'               # hardened libc++ assertions
-
       # --- V8: linking / embedding ---------------------------------------
       'v8_monolithic=true'                    # single V8 archive instead of many targets
       'v8_monolithic_for_shared_library=true' # PIC + visibility suitable for linking into a .so
@@ -254,6 +251,7 @@ build() {
 
       # --- V8: disabled features -----------------------------------------
       'v8_enable_sandbox=false'               # PDFium's upstream configuration disables it
+      'v8_enable_test_features=false'
 
       # Temporal is a Rust crate that really is compiled; PDF JavaScript
       # has no use for it, and we never build Rust.
@@ -262,8 +260,6 @@ build() {
       'v8_use_metagen_instance_types=false'
 
       # --- V8: tracing / profiling ---------------------------------------
-      'enable_base_tracing=false'             # tracing instrumentation in //base
-      'use_perfetto_client_library=false'     # Perfetto as TRACE_EVENT implementation
       'v8_use_perfetto=false'                 # V8's Perfetto integration
     )
     # Jitless: interpreter only. No writable+executable pages, which suits a
