@@ -4,6 +4,7 @@ pkgbase = python-pytorch-tokenizers
 	pkgrel = 1
 	url = https://github.com/meta-pytorch/tokenizers
 	arch = x86_64
+	arch = aarch64
 	license = BSD-3-Clause
 	checkdepends = gtest
 	checkdepends = python-pytest
