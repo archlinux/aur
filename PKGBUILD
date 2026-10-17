@@ -30,7 +30,7 @@ sha256sums=(
   '9c49a8e082394114c49694bf86da118dcd1860791f3cfe23a8e3ac19bf4660bb'
 )
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-i686-w64-mingw32 x86_64-w64-mingw32}
 
 prepare() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
