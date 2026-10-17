@@ -24,13 +24,14 @@ pkgname='jdk11'
 #pkgver='11.0.25'; _build='9'; _hash='60e5d03cc24a4e1c8ab5d29303dbe066'
 #pkgver='11.0.26'; _build='7'; _hash='720377fa814b4b4491dea5837af261de'
 #pkgver='11.0.28'; _build='12'; _hash='b9df5b5128bc4f4fac0e12c356ea6ae3'
-pkgver='11.0.31'; _build='9'; _hash='ec89b195d0be4df08da18c8c76ca2174'
+#pkgver='11.0.31'; _build='9'; _hash='ec89b195d0be4df08da18c8c76ca2174'
+pkgver='11.0.32'; _build='7'; _hash='b8446df132c84ab496cc1dd7b984d37d'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
 pkgdesc+=' LTS'
 arch=('x86_64')
-url='https://www.oracle.com/java/technologies/downloads'
+url='https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html'
 license=('custom')
 depends=('java-environment-common' "jre${_major}>=${pkgver}" 'zlib' 'hicolor-icon-theme')
 provides=(
@@ -71,14 +72,14 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-md5sums=('ec4dc4ed666eabc9c04978a4142b5937'
+md5sums=('45ad07cbf79f48aea2f4af349995fed2'
          '985d0d81ece57d0ea633ccc1d3fd78ed'
          'fbd4ddd9069e48a65da6e0cb33db9bc1'
          'e59149780f4d1124f6e339611da9c70b'
          '6181f1ef1e5aeb637ef4cd593106beef'
          '1db7eb33e844d1a41bce196ab622da40'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('f779a84f3a003841a07eafb8566e4c48707be7f71a48b97bf05f846f45f03161'
+sha256sums=('a5c7180ade318db23972bcb9bd2f90d66efe507213c0079acc71ca8206690dd8'
             '1052634cdcbf50ca14b864b58f3afa53de1706bdc9c593667c29974146212c54'
             '9a84d1b4dd969e867b2dbb6df0d0c44814729e0f1d0c61ab6c54d676eae83b3b'
             '73d686fd6e478a887a51451d7ada7c045f31ce299f65f45e50a793820ee99d85'
