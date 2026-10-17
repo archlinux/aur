@@ -7,7 +7,7 @@
 
 pkgname=heatsync-tui
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='heat-sorted live multichat in the terminal — twitch + kick, real emotes, vim keys'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mellen9999/heatsync-tui'
@@ -42,6 +42,8 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  # short alias — no pacman package claims /usr/bin/hs
+  ln -s heatsync-tui "$pkgdir/usr/bin/hs"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
