@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-crap
-pkgver=0.6.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Change Risk Anti-Patterns (CRAP) metric for Rust projects"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/minikin/cargo-crap"
 license=('MIT')
 depends=('gcc-libs' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c7e023da800d05d47847a34f3ab2f3491eb56501e109ca351271721f9d737e12')
+sha256sums=('b260f09fdc837314f09eb8f52c4cddbf51fbb0b05ccb55ba06428720a9225e4a')
 
 prepare() {
   cd "$pkgname-$pkgver"
