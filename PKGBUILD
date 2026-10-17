@@ -2,7 +2,7 @@
 _name=certipy
 pkgname="python-$_name-nxc"
 pkgver=5.1.0.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for Active Directory Certificate Services enumeration and abuse, netexec fork"
 arch=('any')
 url="https://github.com/pennyw0rth/$_name"
@@ -20,7 +20,6 @@ depends=(
   'python-httpx>=0.28.1'
   'python-argcomplete>=3.6.2'
   'impacket>=0.13.0'
-  'python-pkg_resources'
   'python-importlib-metadata'
 )
 makedepends=(

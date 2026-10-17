@@ -1,7 +1,7 @@
 pkgbase = python-certipy-nxc
 	pkgdesc = Tool for Active Directory Certificate Services enumeration and abuse, netexec fork
 	pkgver = 5.1.0.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pennyw0rth/certipy
 	arch = any
 	license = MIT
@@ -22,7 +22,6 @@ pkgbase = python-certipy-nxc
 	depends = python-httpx>=0.28.1
 	depends = python-argcomplete>=3.6.2
 	depends = impacket>=0.13.0
-	depends = python-pkg_resources
 	depends = python-importlib-metadata
 	optdepends = python-neo4j>=5.28.1: BloodHound output
 	provides = certipy-ad=5.1.0.post1
