@@ -1,12 +1,14 @@
 pkgbase = splix-git
 	pkgdesc = CUPS drivers for SPL (Samsung Printer Language) printers
-	pkgver = r292.4c4cad5
+	pkgver = 2.0.2.r3.g7a80218
 	pkgrel = 1
 	url = https://openprinting.github.io/splix/
 	install = splix.install
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = krb5
+	makedepends = git
+	makedepends = cups
 	depends = libcups
 	depends = gcc-libs
 	depends = ghostscript
