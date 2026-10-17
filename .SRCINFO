@@ -1,0 +1,18 @@
+pkgbase = fsblame-bin
+	pkgdesc = Which command changed this file? Live eBPF attribution of file changes to the full process lineage
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Arinerron/fsblame
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fsblame=0.1.1
+	conflicts = fsblame
+	options = !debug
+	backup = etc/default/fsblame
+	source_x86_64 = https://github.com/Arinerron/fsblame/releases/download/v0.1.1/fsblame-v0.1.1-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = ffcfa0630fa4eeddeedecffeaad2954a1cfd341d1de4722e52d488b313a1535d
+	source_aarch64 = https://github.com/Arinerron/fsblame/releases/download/v0.1.1/fsblame-v0.1.1-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = 32b86075d8853860d84ab8b0201894ca9e52bad0f8c4414a04a261bab8eb28f6
+
+pkgname = fsblame-bin
