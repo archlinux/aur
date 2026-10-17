@@ -3,9 +3,9 @@
 pkgname=ymusic-cli
 _repo=ymusic
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal client for Yandex Music: My Wave, likes, stations (TUI); fork of https://github.com/Rexilone/yamusic-cli"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/iodnoorov/ymusic"
 license=('MIT')
 depends=('mpv' 'libgcc' 'glibc')
