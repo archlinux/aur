@@ -1,8 +1,8 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Emil Bay <archlinux@tixz.dk>
 pkgname=nethermind-ethereum-bin
-pkgver=2.1.0
-_commit=b3e7e84c
+pkgver=2.2.0
+_commit=1d2aff00
 pkgrel=1
 pkgdesc='A robust execution client for Ethereum node operators'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=(
   "https://github.com/NethermindEth/nethermind/releases/download/${pkgver}/nethermind-${pkgver}-${_commit}-linux-arm64.zip"
 )
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118')
-sha256sums_x86_64=('c26cb68ef376464695448959e2615ee233f3abcca15f0e437783fe9376459789')
-sha256sums_aarch64=('7f2c403ad6daf1609db68ca52f12b15e00212c92d426cd65d06095534cb5381c')
+sha256sums_x86_64=('5217a3b6fbd613696affd87cad595f0351cd9c5b68ddd4701bbcdf43f70ec55d')
+sha256sums_aarch64=('281f7e4cb8724492d872e46986c45e36529d7689441a271f3296fc221e60674b')
 
 prepare() {
   bsdtar -xf nethermind-${pkgver}-${_commit}-linux-*.zip
