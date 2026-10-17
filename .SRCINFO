@@ -18,6 +18,7 @@ pkgbase = tine-outliner
 	depends = cairo
 	depends = hicolor-icon-theme
 	conflicts = tine-outliner-bin
+	conflicts = tine-outliner-git
 	source = tine-outliner-0.7.4.tar.gz::https://github.com/martinkoutecky/tine/archive/refs/tags/v0.7.4.tar.gz
 	sha256sums = 1db6ae43191d89e43dcd2749a57f92d6804095630c515cedf17a0ee9f3036f09
 
