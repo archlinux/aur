@@ -1,0 +1,16 @@
+_preset_info() {
+    cat << 'EOF'
+==> NOTE: open-ag-dsp does not ship any presets.
+    Copy the preset CSV files of Yamaha's AG DSP Controller to one of:
+      /etc/open_ag_dsp                       (available to all users)
+      $XDG_DATA_HOME/open_ag_dsp/presets     (current user only)
+EOF
+}
+
+post_install() {
+    _preset_info
+}
+
+post_upgrade() {
+    _preset_info
+}

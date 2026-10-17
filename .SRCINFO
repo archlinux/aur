@@ -1,0 +1,17 @@
+pkgbase = open-ag-dsp
+	pkgdesc = [vibe coded alpha!] GUI/CLI applications to control Yamaha AG03/AG06 audio interfaces
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/NikolasK-source/open-ag-dsp
+	install = open-ag-dsp.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = cxxopts
+	makedepends = gtest
+	depends = portmidi
+	source = git+https://gitlab.com/NikolasK-source/open-ag-dsp.git#tag=v0.0.1
+	sha256sums = SKIP
+
+pkgname = open-ag-dsp
