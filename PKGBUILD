@@ -6,8 +6,6 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Adrien Wu <adrien.sf.wu@gmail.com>
 
-declare -r _tag="bbd6a81d16feaaae5ced689a33660d481517bddf"
-
 pkgname="mailio"
 pkgver="0.26.0"
 pkgrel="1"
@@ -18,13 +16,12 @@ license=("BSD-2-Clause")
 depends=("gcc-libs" "glibc" "openssl")
 makedepends=("boost" "cmake" "doxygen")
 checkdepends=("cmake")
-# source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz") TODO
-source=("${pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("4cf34c9c07c57d5996908646d5f305fd0a79f645b82724d8a833220b2556592e143a27a8c13dbb8d997b4ea2de2850ac378f85194a79140260210ea02e7f888e")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=("5a63eb87fdb2a583aaa1de5f8a02facceacaf4174cdb96faafed992899396921eb3b232359ca49bf40ce2cdb414113cb88bf8a71c69bbc2e74f56dab9e8ee06c")
 
 _compile()
 {
-    cmake -B "${srcdir}"/"${pkgname}"/build/ \
+    cmake -B "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ \
         -D BUILD_SHARED_LIBS=ON \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
@@ -33,9 +30,9 @@ _compile()
         -D MAILIO_BUILD_LATEX_DOCUMENTATION=OFF \
         -D MAILIO_BUILD_TESTS="$1" \
         -D MAILIO_DYN_LINK_TESTS=OFF \
-        -S "${srcdir}"/"${pkgname}"/ \
+        -S "${srcdir}"/"${pkgname}"-"${pkgver}"/ \
         -Wno-dev
-    cmake --build "${srcdir}"/"${pkgname}"/build/
+    cmake --build "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
 }
 
 build()
@@ -46,7 +43,7 @@ build()
 check()
 {
     _compile "ON"
-    ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"/build/
+    ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
     _compile "OFF"
 }
 
@@ -57,16 +54,16 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${pkgname}"/build/
+    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
-    cp -r "${srcdir}"/"${pkgname}"/build/docs/"${pkgname}"/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/build/docs/"${pkgname}"/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
