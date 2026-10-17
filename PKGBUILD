@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('MIT OR Apache-2.0')
 
 depends=('glibc' 'systemd')
-makedepends=('git' 'rust', 'protobuf')
+makedepends=('git' 'rust' 'protobuf')
 
 source=("git+https://github.com/ProxyCoreWrapper/backend.git#tag=$pkgver")
 sha256sums=('SKIP')
