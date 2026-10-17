@@ -1,6 +1,6 @@
 pkgbase = chrome-devtools-mcp
 	pkgdesc = MCP server for Chrome DevTools
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/ChromeDevTools/chrome-devtools-mcp
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = chrome-devtools-mcp
 	depends = nodejs
 	optdepends = ffmpeg: experimental screencast support
 	options = !debug
-	source = chrome-devtools-mcp-1.10.1.tgz::https://registry.npmjs.org/chrome-devtools-mcp/-/chrome-devtools-mcp-1.10.1.tgz
-	sha512sums = 2a5c3a1d60ea1c2fd74b527066575ddabe3d69485b50937d9bd32f731e1212e7883d7b73b905fe41e9710158a86eff185240d9ec7583ae656247a2de60ad3003
+	source = chrome-devtools-mcp-1.11.0.tgz::https://registry.npmjs.org/chrome-devtools-mcp/-/chrome-devtools-mcp-1.11.0.tgz
+	sha512sums = 0b2b49ff9b67ceb4be27fef86ded8fe5a08eb12fe6986447cacfd28be2180b8b9cadb9d6026112fdd61dc462637940840917281548a5640cac763970a948d720
 
 pkgname = chrome-devtools-mcp
