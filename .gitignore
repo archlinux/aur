@@ -10,3 +10,7 @@ uyapeditor_*.deb
 *.swp
 .*.swp
 .DS_Store
+
+# nvchecker local version records (not committed)
+oldver.json
+newver.json

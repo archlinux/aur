@@ -11,6 +11,7 @@ path = [
     "*.desktop",
     "uyap-editor.xml",
     "LicenseRef-proprietary.txt",
+    "nvchecker.toml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
