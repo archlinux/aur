@@ -1,7 +1,7 @@
 pkgbase = display-tui
 	pkgdesc = Minimalistic Hyprland monitor configuration TUI
-	pkgver = 0.9.6.3
-	pkgrel = 1
+	pkgver = 0.9.6
+	pkgrel = 4
 	url = https://github.com/Henriklmao/display-tui
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = display-tui
 	depends = gcc-libs
 	provides = display-tui
 	options = !lto
-	source = 0.9.6-3.tar.gz::https://github.com/Henriklmao/display-tui/archive/refs/tags/v0.9.6-3.tar.gz
-	sha256sums = afda7845bfa354385e1040d3c74b13103a2ba9e132d19002e103cc3dfbbe87f5
+	source = 0.9.6-4.tar.gz::https://github.com/Henriklmao/display-tui/archive/refs/tags/v0.9.6-4.tar.gz
+	sha256sums = 53fba34974c323ba8efabd1b35b30cb57aa057c92d9fe970840282c7be7740eb
 
 pkgname = display-tui
