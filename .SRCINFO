@@ -1,0 +1,20 @@
+pkgbase = cosmic-applet-mic
+	pkgdesc = COSMIC panel applet showing default microphone mute status
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fppn/cosmic-applet-mic
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = mold
+	depends = libpulse
+	depends = libxkbcommon
+	depends = wayland
+	options = !debug
+	options = !lto
+	source = cosmic-applet-mic-0.1.0.tar.gz::https://github.com/fppn/cosmic-applet-mic/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 230a8486a81054a57c27dc75d6b04c719d343228fac938f45e46615effdec0bf
+
+pkgname = cosmic-applet-mic
