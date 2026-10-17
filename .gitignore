@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/*.deb
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
+*~
