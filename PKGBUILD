@@ -1,7 +1,7 @@
 # Maintainer: Paolo De Donato <dedonato 95 at hotmail dot it>
 
 pkgname=tomloader
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Utility to create and manage systemd unit files"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://codeberg.org/Loara/tomloader"
 license=('EUPL-1.2')
 depends=('libgcc' 'glibc')
 makedepends=('cargo' 'texinfo')
-_tag=b5354c0a5ec072040123149edc6cb4fe641771c02c7fad88e943cd9d8bbf03e9
+_tag=4b6e396fcb7ebdfc8c2f0b75ef0cfe5386227bf1be841f55f5f19cf985fcde3d
 source=("$pkgname-$_tag::git+https://codeberg.org/Loara/tomloader.git#tag=$_tag")
-b2sums=('17896676114c6858bbcb6d1ce7ae627f80e86365a86b5a15a351329854dff6d5120a1112caeb5129906168523c9a28e039d7f483871035c21e1be75e2a8f4e49')
+b2sums=('44a97df2868a8cb71d33e7a5c12d0f855996b77d97ee49ef7651e20f6d284b9bcdd71f26c999a1577742b88037d759862958e077049291d5f717615ae3161458')
 
 pkgver() {
     cd "$srcdir/$pkgname-$_tag"
