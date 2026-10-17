@@ -1,6 +1,6 @@
 # Maintainer: Yasir Hassan <yasir@yaasir.dev>
 pkgname=soplang-git
-pkgver=0.1.0.r422.g2331f53
+pkgver=0.1.0.r591.g5ac2765
 pkgrel=1
 pkgdesc="The Somali Programming Language (Rust/Cranelift JIT implementation, tracks main)"
 arch=('x86_64' 'aarch64')
