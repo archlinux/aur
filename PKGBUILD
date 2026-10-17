@@ -1,6 +1,6 @@
 # Maintainer: Odin Vex <https://aur.archlinux.org/account/OdinVex/>
 pkgname=mint-artwork
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=0
 epoch=2
 pkgdesc="Linux Mint Artwork and Resources."
@@ -17,8 +17,8 @@ options=("!strip" "libtool" "staticlibs" "!zipman" "!ccache")
 install=mint-artwork.install
 changelog=CHANGELOG
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-md5sums=('a98eb45a7a791e75f2335e3fbd4c3f8c')
-sha256sums=('1a87e41a001a2ecbd9db331ed3cd0eab72529766759b92f5a0672dc3f2c52a1c')
+md5sums=('dd8d925f4fe37e241110db4dc9e95489')
+sha256sums=('9f9db75356aae6217c9b1bf7a810cdd92cee6834f6a2ce597c8d70242e6176c8')
 
 package() {
 
