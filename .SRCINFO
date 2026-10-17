@@ -1,6 +1,6 @@
 pkgbase = dsh-desktop-linux-bin
 	pkgdesc = Official DeepSeek Harness desktop packaging ported to Linux (prebuilt)
-	pkgver = 0.2.1alpha.4
+	pkgver = 0.2.1rc.2
 	pkgrel = 1
 	url = https://github.com/ffyfox/dsh-desktop-linux
 	install = dsh-desktop-linux-bin.install
@@ -26,9 +26,9 @@ pkgbase = dsh-desktop-linux-bin
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source = dsh-desktop-linux-bin-0.2.1alpha.4.tar.gz::https://github.com/ffyfox/dsh-desktop-linux/releases/download/v0.2.1alpha4/deepseek-harness-0.2.1-alpha.4-linux-amd64-unsigned.deb
+	source = dsh-desktop-linux-bin-0.2.1rc.2.tar.gz::https://github.com/ffyfox/dsh-desktop-linux/releases/download/v0.2.1rc2/deepseek-harness-0.2.1-rc.2-linux-amd64-unsigned.deb
 	source = LICENSE
-	sha256sums = bcf4e8cd665bdfd05d53c39dcdf0674a071fcb11eba05cbe2b4c2b4d3c1705e2
+	sha256sums = cc476677df73a405ac3f8cce2241f1b6ba124e3bc0b102ee62702fa9a039c9d4
 	sha256sums = ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be
 
 pkgname = dsh-desktop-linux-bin
