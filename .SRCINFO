@@ -1,6 +1,6 @@
 pkgbase = linux-cleaner
 	pkgdesc = Safe, configuration-driven cleaner for caches and temporary files
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/eserlxl/cleaner
 	install = linux-cleaner.install
@@ -11,7 +11,7 @@ pkgbase = linux-cleaner
 	depends = coreutils
 	optdepends = pacman-contrib: paccache-based package-cache actions
 	backup = etc/linux-cleaner/cleaner.conf
-	source = linux-cleaner-1.4.2.tar.gz::https://github.com/eserlxl/cleaner/archive/refs/tags/v1.4.2.tar.gz
-	sha256sums = 6ff00ba4c1bd162926fa62756570d9546fedaf614e4bfe9e76753379c878eed7
+	source = linux-cleaner-1.5.0.tar.gz::https://github.com/eserlxl/cleaner/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 0221620d52298aac163923f454bf0cd00e782709aade532b9998bc19a0c16c9f
 
 pkgname = linux-cleaner
