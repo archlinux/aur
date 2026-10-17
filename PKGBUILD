@@ -13,15 +13,10 @@ depends=(
     aria2
     python-pyqt6
     python-requests
-    python-appdirs
     python-keyring
-    python-websocket-client
-    python-cryptography
-    python-packaging
-    python-jaraco.context
-    python-jaraco.classes
-    python-jaraco.functools
+    python-platformdirs
     yt-dlp
+    ffmpeg
     papirus-icon-theme
 )
 makedepends=('git')
@@ -37,18 +32,12 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$srcdir/FelfelDM"
 
-    local _ver="$(git describe --long --tags 2>/dev/null | sed 's/^v//' | sed 's/\(.*\)-\([0-9]*\)-g\(.*\)/\1.r\2.g\3/')"
-    if [ -z "$_ver" ]; then
-        _ver="0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-    fi
-
-    local _date="$(git log -1 --format=%cd --date=format:%Y%m%d%H%M 2>/dev/null)"
-
-    if [ -n "$_date" ]; then
-        echo "${_ver}.${_date}"
-    else
-        echo "$_ver"
-    fi
+    git describe --long --tags 2>/dev/null \
+        | sed 's/^v//' \
+        | sed 's/\(.*\)-\([0-9]*\)-g\(.*\)/\1.r\2.g\3/' \
+        || printf "0.r%s.g%s" \
+            "$(git rev-list --count HEAD)" \
+            "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -57,14 +46,16 @@ package() {
 
     install -dm755 "$pkgdir/usr/share/felfeldm"
 
+    # No `|| true`: a failed copy must abort the build instead of shipping an
+    # install that is missing core/ or ui/ behind a green "success".
+    # ("icons" was never a top-level directory; logo/ is copied below.)
     cp -a \
         core \
         ui \
         utils \
-        icons \
         logo \
         FelfelDM-extension \
-        "$pkgdir/usr/share/felfeldm/" 2>/dev/null || true
+        "$pkgdir/usr/share/felfeldm/"
 
     install -Dm755 main.py \
         "$pkgdir/usr/share/felfeldm/main.py"
