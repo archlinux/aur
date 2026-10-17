@@ -1,0 +1,8 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+[zenmonitor3-git]
+source = "git"
+git = "https://github.com/detiam/zenmonitor3.git"
+use_commit = true

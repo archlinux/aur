@@ -1,0 +1,14 @@
+# makepkg build trees
+pkg/
+src/
+
+# VCS source clone dir
+/zenmonitor3/
+
+# Built packages
+*.pkg.tar*
+
+# nvchecker local version records (not committed)
+oldver.json
+newver.json
+oldver.json~
