@@ -1,7 +1,7 @@
 pkgbase = prism-harness-suite
 	pkgdesc = PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime
-	pkgver = 1.0.0_rc.3
-	pkgrel = 2
+	pkgver = 1.0.0_rc.6
+	pkgrel = 1
 	url = https://getharness.app
 	arch = x86_64
 	license = custom:LSL-1.0
@@ -9,16 +9,53 @@ pkgbase = prism-harness-suite
 	makedepends = bun
 	depends = bun
 	provides = prism-harness
+	provides = prism-mem
 	provides = prism-loop
 	provides = prism-proxy
 	provides = prism-route
 	provides = prism-sober
 	conflicts = prism-harness
+	conflicts = prism-mem
 	conflicts = prism-loop
 	conflicts = prism-proxy
 	conflicts = prism-route
 	conflicts = prism-sober
-	source = git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.3
-	sha256sums = SKIP
+	noextract = harness-noble-hashes-2.4.0.tgz
+	noextract = route-chevrotain-cst-dts-gen-11.2.0.tgz
+	noextract = route-chevrotain-gast-11.2.0.tgz
+	noextract = route-chevrotain-regexp-to-ast-11.2.0.tgz
+	noextract = route-chevrotain-types-11.2.0.tgz
+	noextract = route-chevrotain-utils-11.2.0.tgz
+	noextract = route-chevrotain-11.2.0.tgz
+	noextract = route-kdljs-0.3.0.tgz
+	noextract = route-lodash-es-4.17.23.tgz
+	source = prism-harness::git+https://git.sovereign-society.org/prism/prism-harness.git#commit=c707c39c90ba0538a9b21c4c2413a1a560ebf1dd
+	source = prism-loop::git+https://git.sovereign-society.org/prism/prism-loop.git#commit=5f5959acbc8912abd40b849b6f079614ee3cd6e1
+	source = prism-sober::git+https://git.sovereign-society.org/prism/prism-sober.git#commit=e29819e4754a53d13bf9815fa1f4c1f181e2fef3
+	source = prism-proxy::git+https://git.sovereign-society.org/prism/prism-proxy.git#commit=b04700c25d26cd59eb42ac8ffc7ed13a60b64411
+	source = prism-route::git+https://git.sovereign-society.org/prism/prism-route.git#commit=b8165936fd24439f6f15d11cdba2456d977c749e
+	source = harness-noble-hashes-2.4.0.tgz::https://registry.npmjs.org/@noble/hashes/-/hashes-2.4.0.tgz
+	source = route-chevrotain-cst-dts-gen-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/cst-dts-gen/-/cst-dts-gen-11.2.0.tgz
+	source = route-chevrotain-gast-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/gast/-/gast-11.2.0.tgz
+	source = route-chevrotain-regexp-to-ast-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/regexp-to-ast/-/regexp-to-ast-11.2.0.tgz
+	source = route-chevrotain-types-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/types/-/types-11.2.0.tgz
+	source = route-chevrotain-utils-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/utils/-/utils-11.2.0.tgz
+	source = route-chevrotain-11.2.0.tgz::https://registry.npmjs.org/chevrotain/-/chevrotain-11.2.0.tgz
+	source = route-kdljs-0.3.0.tgz::https://registry.npmjs.org/kdljs/-/kdljs-0.3.0.tgz
+	source = route-lodash-es-4.17.23.tgz::https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.23.tgz
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 5f95da5566480424fb1c76469b923b6505c3c0b1be6c65ee4ab310016fbb66f97cee1d6499cd5907555244972951fa14ac6429e05928c66e6467e32cf9a5be78
+	sha512sums = b2c245be7fd45e14107880b0dd247f7d93e66158fe24cda63fe2f1edb679d5c39e1da31638aa7701432ec8cdd047cd9a1455d37dc029ebb3f91a93e31a66d959
+	sha512sums = 73e2a80fa792235c630196683545be574975dd4127f9ae1286652b8c82acd417845828e2d0ac219aa9f9152c752b806158bec840a955ef02d1e2bf252c0ace45
+	sha512sums = 946ef7a4116a6d73834db5e1759c2fd28c94688fb722b9beb8ebf9fd6efd948de0e616ac61a2675493a6dc7d8d92103411fe172c153849cafb4c90c9c2016403
+	sha512sums = bc13128ff973fcbaa895b190107074b65a56e419e58c756da7e9338d07d053ee41b46313b9908f5606808ed2af4185e71dbffc8bfd362a28b4d32d2db2ec1fb3
+	sha512sums = fbbc21102838c8d587a2db63bebd93a36051c4be172558c8cb2bf9278f9b27488c39553c8fff27d6a3c32d94bff745bf04e6c347c54d2f8ea515bcd8fc7a2c9b
+	sha512sums = 9870874f1339d670a4954c3d4734557340cb8c087f48050f33893fccc227953228db995d597399a0fb7b5c4224fcbc284f894556625cbbd839307b71dfbd71dc
+	sha512sums = b4d6f9bd691ca2e40aa7c437089d01840e1385c9d6755718d19fb37abb4e7a533ccb01d539a6eedc565d0ca95d423f63fc266dd7b79be7e92aff51a0f460ed5e
+	sha512sums = 915238f2edcf66bdfc1dd633f7c5267cf9d79760d7ae975cb4bac52c277790ec75c5490e9a914fc7b80259633930f90bfdf0fccdbf8f8744338c616ce3e8475a
 
 pkgname = prism-harness-suite
