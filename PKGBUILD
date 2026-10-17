@@ -1,19 +1,71 @@
-# Maintainer: Dylan Turner dylantdmt@gmail.com
+# Maintainer: Paulo Fino (somepaulo)
+# Native Arch binaries built on OBS from tagged upstream GitHub releases:
+# https://build.opensuse.org/package/show/home:somepaulo:Audacity/audacity-bin
+# This is an unofficial community build, not an upstream Audacity binary.
+
 pkgname=audacity-bin
-pkgver=3.1.2
-pkgrel=3
-epoch=
-pkgdesc="Binary from GitHub Releases for the audio recording and processing software, Audacity, since Arch binary version is on 1.2 (via old audacity site) and audacity-git requires a lengthy building from source"
+pkgver=4.0.1
+pkgrel=2
+pkgdesc='Audio editor and recorder (Arch binaries of tagged Audacity GitHub releases, built on OBS)'
 arch=('x86_64')
-source=('https://github.com/audacity/audacity/releases/download/Audacity-3.1.2/audacity-linux-3.1.2-x86_64.AppImage')
-license=('GPL2')
-makedepends=('wget')
-md5sums=('SKIP')
+url='https://www.audacityteam.org/'
+license=('GPL-3.0-or-later')
+groups=('pro-audio')
+
+_obs_pkgrel=2
+_obs_url='https://download.opensuse.org/repositories/home:/somepaulo:/Audacity/Arch'
+_archive="${pkgname}-${pkgver}-${_obs_pkgrel}-x86_64.pkg.tar.zst"
+
+depends=(
+  'alsa-lib'
+  'expat'
+  'flac'
+  'freetype2'
+  'glibc'
+  'harfbuzz'
+  'hicolor-icon-theme'
+  'lame'
+  'libgcc'
+  'libogg'
+  'libpng'
+  'libsbsms'
+  'libsndfile'
+  'libsoxr'
+  'libstdc++'
+  'libvorbis'
+  'libx11'
+  'lilv'
+  'mpg123'
+  'opus'
+  'opusfile'
+  'portaudio'
+  'pugixml'
+  'qt6-5compat'
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-networkauth'
+  'qt6-svg'
+  'soundtouch'
+  'sqlite'
+  'suil'
+  'systemd-libs'
+  'twolame'
+  'wavpack'
+  'wxwidgets-common'
+  'zix'
+  'zlib'
+)
+provides=("audacity=${pkgver}" 'lv2-host' 'vst3-host')
+conflicts=('audacity' 'audacity-git' 'audacity4-bin' 'audacity4-nocloud-git')
+
+options=('!strip' '!debug')
+source_x86_64=("${_archive}::${_obs_url}/x86_64/${_archive}")
+sha256sums_x86_64=('ad4c047b00a4568ca08835538c7f977a5a3b48e4196cfffba4edb71aeb508262')
+noextract=("${_archive}")
 
 package() {
-    echo "Moving audacity binary."
-    mkdir -p "$pkgdir/usr/bin/"
-    chmod +x audacity-linux-$pkgver-x86_64.AppImage
-    mv audacity-linux-$pkgver-x86_64.AppImage "$pkgdir/usr/bin/audacity"
+  bsdtar -xpf "$srcdir/$_archive" -C "$pkgdir" \
+    --exclude='.PKGINFO' \
+    --exclude='.BUILDINFO' \
+    --exclude='.MTREE'
 }
-
