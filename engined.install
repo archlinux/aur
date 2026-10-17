@@ -1,10 +1,15 @@
 post_install() {
   cat <<'MSG'
-==> engined runs as a systemd --user service. As each user that wants it:
-      mkdir -p ~/.config/engined
-      cp /usr/share/engined/config.example.toml ~/.config/engined/config.toml
-      $EDITOR ~/.config/engined/config.toml
-      systemctl --user enable --now engined.service engined-probe.timer
+==> engined and engined-configsvc run as systemd --user services. As each
+    user that wants them:
+      systemctl --user enable --now engined.service engined-configsvc.service engined-probe.timer
+    Then configure it either way:
+      by hand: mkdir -p ~/.config/engined
+               cp /usr/share/engined/config.example.toml ~/.config/engined/config.toml
+               $EDITOR ~/.config/engined/config.toml
+               (schema for editors: /usr/share/engined/config.schema.json)
+      or in the Web UI: `engined --configsvc-url` prints its current URL with
+               the token (also in `journalctl --user -u engined-configsvc`).
 ==> Engine images are built locally, not pulled; the first request to a
     missing one names the `docker build` line. The shipped images target
     AMD Strix Halo. See /usr/share/doc/engined/HUMANS.md.
@@ -12,5 +17,5 @@ MSG
 }
 
 post_upgrade() {
-  echo '==> Restart it as each user running it: systemctl --user restart engined.service'
+  echo '==> Restart them as each user running them: systemctl --user restart engined.service engined-configsvc.service'
 }
