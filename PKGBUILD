@@ -1,7 +1,7 @@
 # Maintainer: dhor <dhor@toxic.net.pl>
 
 pkgname=happy-photon-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Happy Photon is a RAW photo editor designed with speed in mind."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "happy-photon.svg"
 )
 
-sha256sums=('a2cd91a7861d3bec8595e1dd031bacd181cb848c9237a8fd9a18c008dd25def7'
+sha256sums=('f07759643a371e5d28b1ee027514e75e0d698a40488af04428d64de2657eb8b8'
             'd7540b5a7947c7c2deed1112abf28750686a7bc2e5a57f88c4ec22e90be20471'
             '31cf9545f64a8e26b06512ae0d48d23727cdda8532c2bec5351d300fd2ca0423')
 
