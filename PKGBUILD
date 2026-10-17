@@ -2,7 +2,7 @@
 pkgname=electric
 _pkgver_out=9.09b
 pkgver="${_pkgver_out}.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="a sophisticated electrical CAD system for the design of \
         integrated circuits"
 arch=(any)
@@ -17,7 +17,7 @@ source=("svn://svn.savannah.gnu.org/electric"
         "electric.sh")
 sha512sums=('SKIP'
             '7c0d30876202dfad4f1297db49489e7e3b6bd49dfbbb2b6919cd2075a6285d71d6bde64834ced322af6bc14ee2b1503a65add7f3c48114edfc836202153bb9be'
-            'e478213c464ea098ec3e90005292bd61fb8959feb75a58271416f766d9bc8319b010cf46136b07f30064ff34a8bcf31d99b074f8191c784f3edc28eb8a2320a2'
+            '08364432f2161c59096e5d7b0087122b41e9a4b7aa66fdb041b1035020085a1929bc636ac811bac64bd1a1dd8dfb0cec50279b1481a6a2241d646fcba2e8fca9'
             '9fc25916ffa6536710016a313dfeab4a05de3d1a0818edb46a2e9c3c1eb850f82884383652e9ca1860c50ba6d4bab9cd818477606afffe522644f475ef22ba4b')
 
 build() {
@@ -32,7 +32,4 @@ package() {
         install -D -m 0444 "$pkgname.jpg" "$pkgdir/usr/share/icons/$pkgname.jpg"
         install -D -m 0555 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	install -D -m 0444 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	# Symlink required as the default desktop application expects the jar
-	# file in that location
-	ln -sr "$pkgdir/usr/share/java/$pkgname/$pkgname.jar" "$pkgdir/usr/bin/$pkgname.jar"
 }
