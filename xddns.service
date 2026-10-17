@@ -1,5 +1,5 @@
 [Unit]
-Description=Dynamic DNS updater
+Description=Dynamic DNS client
 Documentation=https://github.com/IceflowRE/xddns
 Wants=network-online.target
 After=network-online.target
