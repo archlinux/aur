@@ -1,0 +1,13 @@
+pkgbase = tapeback-llm-local
+	pkgdesc = Local LLM summaries for tapeback: llama.cpp's server, started for each summary
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/yastcher/tapeback
+	arch = any
+	license = Apache-2.0
+	depends = tapeback-llm
+	depends = llama-cpp
+	optdepends = ggml-cuda: run the model on an NVIDIA GPU
+	optdepends = ggml-vulkan: run the model on another GPU
+
+pkgname = tapeback-llm-local
