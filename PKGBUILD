@@ -1,24 +1,83 @@
 # Maintainer: thefangeddeity
-pkgname=ele-messenger
-pkgver=1.3.5
+pkgbase=ele-messenger
+pkgname=('ele-messenger' 'elemesh')
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Resilience-first household chat platform. Degrades gracefully from LAN to BLE when infrastructure fails."
-arch=('any')
+pkgdesc="Resilience-first household messenger: a server, and a mesh that works with no infrastructure"
+arch=('x86_64' 'aarch64')
 url="https://github.com/thefangeddeity/ele-messenger"
-license=('GPL3')
-install=ele-messenger.install
-depends=('python' 'python-fastapi' 'uvicorn' 'python-websockets' 'python-aiosqlite' 'nginx' 'avahi')
-optdepends=('tailscale: for Tailscale transport layer')
-backup=('usr/lib/ele-messenger/config.json')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz"
+license=('GPL-3.0-or-later')
+makedepends=('cargo' 'dbus')
+# makepkg's GCC LTO turns the bundled SQLite into objects the Rust linker can't read.
+options=('!lto')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz"
         "ele-messenger.install")
-sha256sums=('cb641859d0560e2de68de0b7637e4e350127ef6f25b2c5d6e01584eb7d49abd5'
+sha256sums=('42c199484365a0bed9165f508dd75c64549b26834fd2f8d8c0f87f49d34b6f96'
             'SKIP')
-package() {
-    cd "$srcdir/ele-messenger-$pkgver/pkg"
-    cp -r usr "$pkgdir/"
-    cp -r var "$pkgdir/"
-    cp -r etc "$pkgdir/"
+
+prepare() {
+    cd "$pkgbase-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$pkgbase-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release -p elemesh -p ele-client
+}
+
+check() {
+    cd "$pkgbase-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --release -p elemesh
+}
+
+package_ele-messenger() {
+    pkgdesc="ELE Messenger server: accounts, direct messages, groups and images over the LAN, with a web client"
+    arch=('any')
+    install=ele-messenger.install
+    depends=('python' 'python-fastapi' 'uvicorn' 'python-websockets' 'python-aiosqlite' 'python-bcrypt' 'nginx' 'avahi')
+    optdepends=('elemesh: make this server a node of the ELE Mesh too'
+                'tailscale: reach the server off-site')
+    # Host-specific: keep local edits on upgrade (pacman writes .pacnew).
+    backup=('usr/lib/ele-messenger/config.json'
+            'etc/avahi/services/ele-messenger.service'
+            'etc/nginx/sites-available/ele-messenger'
+            'etc/nginx/snippets/ele-messenger.conf')
+
+    cd "$srcdir/$pkgbase-$pkgver/pkg"
+    cp -r usr var etc "$pkgdir/"
     chmod 644 "$pkgdir/etc/systemd/system/ele-messenger.service"
     chmod 644 "$pkgdir/etc/nginx/sites-available/ele-messenger"
+}
+
+package_elemesh() {
+    pkgdesc="ELE Mesh: chat between nearby machines over Bluetooth and Wi-Fi, no router, server or internet; daemon and desktop client"
+    depends=('bluez' 'dbus' 'gcc-libs' 'glibc' 'libxkbcommon' 'libgl' 'hicolor-icon-theme')
+    optdepends=('libx11: desktop client on X11'
+                'wayland: desktop client on Wayland')
+    provides=('ele-messenger-client')
+    conflicts=('ele-messenger-client')
+    replaces=('ele-messenger-client')
+
+    cd "$srcdir/$pkgbase-$pkgver"
+    install -Dm755 target/release/elemesh "$pkgdir/usr/bin/elemesh"
+    install -Dm755 target/release/ele "$pkgdir/usr/bin/ele"
+    sed 's|^ExecStart=.*|ExecStart=/usr/bin/elemesh run|' mesh/dist/linux/elemesh.service \
+        | install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/elemesh.service"
+    install -Dm644 flutter/assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/ele.png"
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/ele.desktop" <<'DESKTOP'
+[Desktop Entry]
+Name=ELE
+GenericName=Mesh messenger
+Comment=Chat with the ELE machines around you, no internet needed
+Exec=ele
+Icon=ele
+Type=Application
+Categories=Network;InstantMessaging;
+DESKTOP
+    install -Dm644 mesh/README.md "$pkgdir/usr/share/doc/elemesh/README.md"
+    install -Dm644 client/README.md "$pkgdir/usr/share/doc/elemesh/client.md"
 }
