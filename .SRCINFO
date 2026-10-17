@@ -1,11 +1,11 @@
 pkgbase = vibepanel-bin
 	pkgdesc = A GTK4 panel for Wayland with notifications, OSD, and quick settings
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/prankstr/vibepanel
 	arch = x86_64
 	license = MIT
-	depends = gtk4
+	depends = gtk4>=1:4.22
 	depends = gtk4-layer-shell
 	depends = libpulse
 	depends = upower
@@ -20,9 +20,9 @@ pkgbase = vibepanel-bin
 	conflicts = vibepanel
 	conflicts = vibepanel-git
 	options = !debug
-	source = vibepanel-0.16.1::https://github.com/prankstr/vibepanel/releases/download/v0.16.1/vibepanel-x86_64-unknown-linux-gnu
-	source = LICENSE-0.16.1::https://raw.githubusercontent.com/prankstr/vibepanel/v0.16.1/LICENSE
-	sha256sums = 4b481abdba319773b669e263fcfb843dde9f9812a322a7d4f9d232e6c6f9815c
+	source = vibepanel-0.17.0::https://github.com/prankstr/vibepanel/releases/download/v0.17.0/vibepanel-x86_64-unknown-linux-gnu
+	source = LICENSE-0.17.0::https://raw.githubusercontent.com/prankstr/vibepanel/v0.17.0/LICENSE
+	sha256sums = 9d902e4e6f7eda46b3985314cdc318fc6af3ddccb68c35ffc75eb2739a7271ad
 	sha256sums = bd1e1e78cb74074a2d09d2a4e87675991cdfb45c90dd4746728d8daeb480f9ac
 
 pkgname = vibepanel-bin
