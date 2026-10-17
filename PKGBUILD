@@ -1,5 +1,5 @@
 pkgname=twintaillauncher
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='Your anime games, one launcher'
@@ -30,6 +30,7 @@ package() {
     install -Dm755 "$_dirname/src-tauri/target/release/resources/reaper" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
     install -Dm755 "$_dirname/src-tauri/target/release/resources/winetricks" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
     install -Dm644 "$_dirname/src-tauri/target/release/resources/hkrpg_patch.dll" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
+    install -Dm644 "$_dirname/src-tauri/target/release/resources/suspend_start.exe" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
     install -Dm755 "$_dirname/src-tauri/target/release/twintaillauncher" -t "$pkgdir/usr/bin"
     install -Dm644 "$_dirname/twintaillauncher.desktop" -t "$pkgdir/usr/share/applications"
     install -Dm644 "$_dirname/src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
