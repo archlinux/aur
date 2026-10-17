@@ -1,6 +1,6 @@
 # Maintainer: Frys (Frysuni)
 pkgname=rsdm
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Standalone Rust TTY/TUI Wayland display manager and screen locker'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ backup=('etc/rsdm.toml'
         'etc/logrotate.d/rsdm')
 install='rsdm.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Frysuni/rsdm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('84e8834f264c8f1f8ab4b5eba531db0fb7a39b1e1bc331918d6d261be28c62bb')
+sha256sums=('97e35ec94f7c1f401e6163b4823f999733f6c41112aa4957c4d83161814de401')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -40,6 +40,10 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 target/release/rsdm "$pkgdir/usr/bin/rsdm"
+  if [[ -f packaging/applications/org.rsdm.SessionManager.desktop ]]; then
+    install -Dm644 packaging/applications/org.rsdm.SessionManager.desktop \
+      "$pkgdir/usr/share/applications/org.rsdm.SessionManager.desktop"
+  fi
   install -Dm644 packaging/systemd/rsdm.service \
     "$pkgdir/usr/lib/systemd/system/rsdm.service"
   install -Dm644 packaging/systemd/rsdm@.service \

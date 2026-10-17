@@ -1,6 +1,6 @@
 pkgbase = rsdm
 	pkgdesc = Standalone Rust TTY/TUI Wayland display manager and screen locker
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/Frysuni/rsdm
 	install = rsdm.install
@@ -22,7 +22,7 @@ pkgbase = rsdm
 	backup = etc/pam.d/rsdm
 	backup = etc/pam.d/rsdm-lock
 	backup = etc/logrotate.d/rsdm
-	source = rsdm-2.3.0.tar.gz::https://github.com/Frysuni/rsdm/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = 84e8834f264c8f1f8ab4b5eba531db0fb7a39b1e1bc331918d6d261be28c62bb
+	source = rsdm-2.3.1.tar.gz::https://github.com/Frysuni/rsdm/archive/refs/tags/v2.3.1.tar.gz
+	sha256sums = 97e35ec94f7c1f401e6163b4823f999733f6c41112aa4957c4d83161814de401
 
 pkgname = rsdm
