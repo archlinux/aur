@@ -1,0 +1,31 @@
+# The package ships files only: the daemon runs inside the user's session, so
+# enabling it and binding the keys stays with that user.
+post_install() {
+    cat <<'EOF'
+appvol: enable the daemon for your user (it does not run system-wide):
+            systemctl --user daemon-reload
+            systemctl --user enable --now appvold
+        the shortcut entry "Appvol" appears in System Settings -> Shortcuts
+        while the daemon runs; it holds Volume up, Volume down, Toggle mute,
+        Next profile, Previous profile and one action per profile.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+appvol: version 0.1.0 kept the volume keys in a desktop file of their own,
+        which System Settings showed as a second entry, "appvol". If the keys
+        were bound there, bind them again under "Appvol"; the old file is gone
+        from the package, and a per-user copy, which install.sh left in
+            ~/.local/share/applications/org.appvol.desktop
+        should be removed as well.
+EOF
+    post_install
+}
+
+pre_remove() {
+    cat <<'EOF'
+appvol: remember to stop the user unit as well:
+            systemctl --user disable --now appvold
+EOF
+}
