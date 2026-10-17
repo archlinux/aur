@@ -2,12 +2,12 @@
 # Template rendered by scripts/render-manifests.sh and pushed to the AUR as texoria-bin by the
 # release workflow. Keep depends in sync with crates/texoria/packaging/linux/nfpm.yaml.
 pkgname=texoria-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='An elegant, fast LaTeX editor'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Herbrant/TeXoria'
-license=('Apache-2.0')
+license=('MIT')
 depends=('glibc' 'gcc-libs' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'fontconfig' 'freetype2'
   'wayland' 'vulkan-icd-loader' 'hicolor-icon-theme')
 optdepends=('git: source control'
@@ -19,8 +19,8 @@ conflicts=('texoria')
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/texoria-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/texoria-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('cf1d57ba846f7f9934a7b4e2d6c819413b2558d5f5d7f53204977353cc37452f')
-sha256sums_aarch64=('f7893cca4d3866109e1c629efc0ac94e47d2424a3c63d44b0f18a3f740aba37e')
+sha256sums_x86_64=('81c186a67bdf7738460dd998e92bf87aab92d58f3502b74d9794f179904b6bfb')
+sha256sums_aarch64=('987d80db3df7ce5e177ae9add075d7aaa475bd6361c62ed4899389dab5c42b84')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
