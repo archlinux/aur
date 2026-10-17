@@ -11,6 +11,7 @@ pkgbase = mvsep-gui-bin
 	depends = libvips
 	depends = fuse2
 	conflicts = mvsep-gui
+	replaces = mvsep-gui
 	options = !strip
 	options = !debug
 	source = MVSEP_1.3.0_amd64.AppImage::https://github.com/AntheaLaffy/mvsep-rs/releases/download/v1.3.0/MVSEP_1.3.0_amd64.AppImage
