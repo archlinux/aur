@@ -2,7 +2,7 @@
 
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -22,14 +22,14 @@ depends=(
 optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
 )
-provides=("voicefox=${epoch}:${pkgver}")
-conflicts=("voicefox" "voicefox-git")
+provides=("${_pkgname}=${epoch}:${pkgver}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("${_pkgname}-${pkgver}-src.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-x86_64.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-aarch64.zip")
-sha512sums=('17c50c0d9001735a60e21a063da3d711d7726e6d0e9abfae5e092b90c8b746cd01d8340f7532d6f8dcebbf7af5c7e52e8ceb6b577d1249356a705b3ab6fcd7d3')
-sha512sums_x86_64=('cbff90c26217f4820c27febf1b308454c1c51e9c98dd5aea66703183db0ba02c4bdbbd4d3ef91e25667824a6a553d21c00686bd06fc2935a10a139acbe2319ee')
-sha512sums_aarch64=('bbc29796f0f231779c17233c8a40cff1bb210462d5e66e5d125951c138a45d4a9c5d1cd87e2ebc6733a580b836aa9fc30db627348881c3d940cb2e34aa8f14f8')
+sha512sums=('52d128513149bed4c968edfbe8e8b13b33088dceb1840787e3d0e1d8fb9ff58de134e1bab5e84a46c735d1a1645d6797e8a2ac41575a8065627203ffc28acea3')
+sha512sums_x86_64=('f79079f077f540fa2fd03c5fdc636abcf2a9607903de1d2c69bb689310281a3d86d0f4df1eb12be965de9bc89089a52c4a236afe3145c8e44922a2a0a52e9629')
+sha512sums_aarch64=('dbac8027d5ec3f92a6681caca151f6bb386cbe9505fb52c790717c428b120132afc7bc8ed15dacfbbf9340f7abee170ec96363ca82231854c95d8d3d8b991497')
 
 check() {
 	"${srcdir}/${_pkgname}" --check-libmpv
