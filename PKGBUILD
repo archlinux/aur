@@ -2,7 +2,7 @@
 
 pkgbase=ttf-lxgw-wenkai-lite
 pkgname=(ttf-lxgw-wenkai-lite ttf-lxgw-wenkai-mono-lite)
-pkgver=1.522
+pkgver=1.530
 pkgrel=1
 url="https://github.com/lxgw/LxgwWenKai-Lite"
 makedepends=('fontconfig')
@@ -12,7 +12,7 @@ source=(
     "lxgw-wenkai-lite-v$pkgver.tar.gz::${url}/releases/download/v${pkgver}/lxgw-wenkai-lite-v${pkgver}.tar.gz"
 )
 
-sha256sums=('e724c8d540ebd525fd783931872a82a1a8a2202765672655957e4f1de1001543')
+sha256sums=('cc9870ba57d8093ed4469ac5c6b95c26a910a7f936c649c0d7d411e7ad85eb30')
 
 package_ttf-lxgw-wenkai-lite() {
     pkgdesc="LXGW WenKai Lite / 霞鹜文楷轻便版 An open-source Chinese font derived from Fontworks' Klee One. 一款基于 FONTWORKS 出品字体 Klee One 改造的开源中文字体。"
