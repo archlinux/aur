@@ -1,6 +1,6 @@
 pkgbase = gitea-mcp
 	pkgdesc = A Model Context Protocol (MCP) server for interacting with Gitea instances
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://gitea.com/gitea/gitea-mcp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gitea-mcp
 	makedepends = git
 	depends = glibc
 	options = !debug
-	source = git+https://gitea.com/gitea/gitea-mcp.git#tag=v1.8.1
-	sha256sums = e6f8740cf84eb9320c984de8c05ddb204c98a37184a05d43b634717ae4e3e948
+	source = git+https://gitea.com/gitea/gitea-mcp.git#tag=v1.9.0
+	sha256sums = d5ca77ad9fa85cc9df24bb8461724ace886375916962e8dce0378f151ba28cc3
 
 pkgname = gitea-mcp
