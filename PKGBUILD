@@ -5,7 +5,7 @@
 
 pkgname=whytime-bin
 _pkgname=whytime
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Explains where a command's wall-clock time went: off-CPU and on-CPU attribution from eBPF"
 arch=(x86_64 aarch64)
@@ -16,8 +16,8 @@ conflicts=("$_pkgname")
 options=(!debug)
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-linux-musl.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('95ef313bb5f710907e061876c0ab6314ebd579b7db97c770b440632c84f2c984')
-sha256sums_aarch64=('b326545b2a29b902dcdab51f8a26841fc44bab9e1c0b52e202651f479d333b1d')
+sha256sums_x86_64=('9fe0bcea11910e6fc8a1f83432fe14fd5ca814d4a894e0ea2c2c163aa14c8178')
+sha256sums_aarch64=('76a0ae749dc91cbb8b32dc7c04932f15911f460acc1ec1823f9d7f8268ae7484')
 
 package() {
   cd "$_pkgname-v$pkgver-$CARCH-linux-musl"
