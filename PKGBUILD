@@ -1,7 +1,7 @@
 # Maintainer: YOUR NAME <YOUR EMAIL>
 pkgname=kortix-desktop
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kortix desktop application (official binary)'
 arch=('x86_64')
 url='https://kortix.com'
@@ -28,6 +28,7 @@ prepare() {
 package() {
   install -dm755 "${pkgdir}/opt/kortix-desktop" "${pkgdir}/usr/bin"
   cp -a squashfs-root/. "${pkgdir}/opt/kortix-desktop/"
+  find "${pkgdir}/opt/kortix-desktop" -type d -exec chmod 755 {} +
 
   # Use Chromium's setuid sandbox, never --no-sandbox.
   if [[ -f "${pkgdir}/opt/kortix-desktop/chrome-sandbox" ]]; then

@@ -1,7 +1,7 @@
 pkgbase = kortix-desktop
 	pkgdesc = Kortix desktop application (official binary)
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kortix.com
 	arch = x86_64
 	license = Elastic-2.0
