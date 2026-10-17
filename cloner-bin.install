@@ -4,11 +4,11 @@ post_install() {
 Cloner needs write access to Ingenic SoC USB devices.
 udev rules were installed to /usr/lib/udev/rules.d/50-cloner.rules.
 
-Add yourself to the plugdev group to use the device without root:
+Add yourself to the uucp group to use the device without root:
 
-    sudo usermod -aG plugdev $USER
+    sudo usermod -aG uucp $USER
 
-Then log out and back in (or run: newgrp plugdev).
+Then log out and back in (or run: newgrp uucp).
 
 Launch the tool with:  cloner
 

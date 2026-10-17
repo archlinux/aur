@@ -3,7 +3,7 @@
 
 pkgname=cloner-bin
 pkgver=2.5.36.1
-pkgrel=2
+pkgrel=3
 pkgdesc='USB download/flashing tool for Ingenic SoCs — prebuilt binary, upstream provides no source code'
 arch=('x86_64')
 url='https://github.com/Ingenic-community/Cloner'
@@ -45,16 +45,18 @@ package() {
 
     # udev access rules shipped as a package file.
     # Upstream writes these via sudo tee at every launch, which a package must not do.
-    # GROUP is plugdev (upstream used $LOGNAME, which is invalid in udev rules).
+    # GROUP is "uucp": it is defined by systemd's sysusers.d and therefore always
+    # present. "plugdev" is NOT guaranteed to exist (udev silently drops rules whose
+    # group does not resolve), which left the device inaccessible.
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/50-cloner.rules" <<'EOF'
 # Ingenic SoC USB devices used by Cloner (vendor a108).
-SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="d002", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="1000", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="4775", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="4785", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="4780", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="c309", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="eaef", MODE="0660", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="d002", MODE="0660", GROUP="uucp"
+SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="1000", MODE="0660", GROUP="uucp"
+SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="4775", MODE="0660", GROUP="uucp"
+SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="4785", MODE="0660", GROUP="uucp"
+SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="4780", MODE="0660", GROUP="uucp"
+SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="c309", MODE="0660", GROUP="uucp"
+SUBSYSTEM=="usb", ATTR{idVendor}=="a108", ATTR{idProduct}=="eaef", MODE="0660", GROUP="uucp"
 EOF
 
     # Launcher replacing upstream's ./cloner script, which installs udev rules and
