@@ -1,6 +1,6 @@
 pkgbase = ntfysh-bin
 	pkgdesc = Send push notifications to your phone or desktop (upstream bin)
-	pkgver = 2.30.0
+	pkgver = 2.31.1
 	pkgrel = 1
 	url = https://github.com/binwiederhier/ntfy
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = ntfysh-bin
 	backup = etc/ntfy/server.yml
 	source = ntfy.sysusers
 	sha256sums = 0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f
-	source_x86_64 = https://github.com/binwiederhier/ntfy/releases/download/v2.30.0/ntfy_2.30.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5b552c33168d9befb9bfd0cb89f0cdb53fc4bdf24d1f3c5e936164c78cc23d65
-	source_aarch64 = https://github.com/binwiederhier/ntfy/releases/download/v2.30.0/ntfy_2.30.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = e4831dc048cd18529a6beb82a6894968a0c7dfb792aa49e1547d0fbd689ba469
-	source_armv7h = https://github.com/binwiederhier/ntfy/releases/download/v2.30.0/ntfy_2.30.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 9fc635eace8a2eeb3c07070864e0f61cf838140dcbded16c128fedeec5704667
+	source_x86_64 = https://github.com/binwiederhier/ntfy/releases/download/v2.31.1/ntfy_2.31.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2eda91800b93c882b489679d82b72e8cf3e003f008a88035054bf5bd560bd183
+	source_aarch64 = https://github.com/binwiederhier/ntfy/releases/download/v2.31.1/ntfy_2.31.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6ff52455d7bc48e250bccec5f9f2a6c5375899f66c484fac85db9fde961e3b43
+	source_armv7h = https://github.com/binwiederhier/ntfy/releases/download/v2.31.1/ntfy_2.31.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 4afbbbedf61c10d3885c1bf2a6a1c0341000c6a2864444d42a3b2deb6082d38d
 
 pkgname = ntfysh-bin
