@@ -16,43 +16,41 @@
 
 set -u
 pkgname='ghostpdl'
-pkgver='10.06.0'
+pkgver='10.08.0'
 pkgrel='1'
 pkgdesc='Ghostscript RIP for PS, PDF, PCL-5, PCL-XL, SVG and XPS.'
 arch=('i686' 'x86_64')
 url='https://www.ghostscript.com'
 license=('AGPL-3.0-or-later')
-depends=('ghostscript' 'glu' 'freeglut' 'libjpeg' 'libxt')
-depends+=('glibc' 'gcc-libs' 'perl' 'tcl' 'python' 'fontconfig' 'libcups' 'bash' 'libx11' 'libpaper')
+depends=('ghostscript' 'libxt')
+depends+=('libgcc' 'libstdc++' 'glibc' 'perl' 'tcl' 'python' 'fontconfig' 'libcups' 'bash' 'libx11' 'libpaper')
 #_verwatch=('http://downloads.ghostscript.com/public/' "${pkgname}-\(.*\)\.tar\.bz2" 'l')
 #source=("${_verwatch[0]}${pkgname}-${pkgver}.tar.bz2") # .gz and .bz2 are available. Unpacking .bz2 is a LOT slower so is not suited for package testing.
 _giturl="https://github.com/ArtifexSoftware/${pkgname}-downloads"
 #_verwatch=("${_giturl}/releases.atom" '\s\+<title>Ghostscript/GhostPDL \([0-9\.]\+\)</title>.*' 'f')
 source=("${_giturl}/releases/download/gs${pkgver//./}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('93be1cdd3d374953365ecf7f90afdb8f')
-sha256sums=('3602056368cf649026231e2d65250b5860c023f3d4a0d9c35e6605e28e543ec1')
+md5sums=('98960f12dbf9252c8ff8ec1741deb07f')
+sha256sums=('94943e3c4adb7115d132b3c28b913672f2e62e6a9d802f7e754e716b1634174a')
 
 prepare() {
-  set -u
+  local -; set -u
   cd "${pkgname}-${pkgver}"
   # get rid of a harmless shell warning
   sed -e 's:^\(if test \)\($ac_cv_c_compiler_gnu\)\( = yes; then\)$:\1"\2"\3:g' -i 'configure'
-  set +u
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${pkgname}-${pkgver}"
   if [ ! -s 'Makefile' ]; then
-    export CFLAGS="${CFLAGS} -std=gnu17"
+    #export CFLAGS="${CFLAGS} -std=gnu17"
     ./configure --prefix='/usr'
   fi
   nice make -s
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${pkgname}-${pkgver}"
   if [ -f 'COPYING' ]; then
     install -Dpm644 'COPYING' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -94,7 +92,5 @@ package() {
       install -Dpm644 "${_doc}" -t "${pkgdir}/usr/share/${pkgname}/doc/" || :
     done
   fi
-
-  set +u
 }
 set +u
