@@ -1,0 +1,9 @@
+# Build artifacts makepkg leaves in the package directory. None of this
+# belongs in the AUR git repository: only PKGBUILD, .SRCINFO and this file are
+# pushed.
+pkg/
+src/
+*.pkg
+*.pkg.tar.*
+*.pkg.tar.*.sig
+Cross-Cleaner/
