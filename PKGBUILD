@@ -3,7 +3,7 @@
 pkgbase=python-regions
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools-scm>=8.2'
              'python-build'
              'python-installer'
              'python-numpy>=2.0'
-             'python-extension-helpers>=1.3'
+             'python-extension-helpers>=1.4'
              'python-sphinx-astropy'
              'python-sphinx-copybutton'
              'python-sphinx_design'
@@ -28,7 +28,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
               'python-gwcs'
-              'python-matplotlib') # matplotlib, shapely already in makedepends
+              'python-matplotlib') # shapely already in makedepends
 #             'python-pytest-arraydiff'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://www.astropy.org/astropy-data/tutorials/FITS-images/HorseHead.fits"
@@ -36,7 +36,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://www.astropy.org/astropy-data/photometry/M6707HH.fits"
 #       'doc-use-local-fits.patch'
 #   )
-md5sums=('9a46adbbcb8d3cf17b24a53b126dbbe8')
+md5sums=('9e45729a6acdf1432bd3b774dda7e551')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -45,13 +45,14 @@ get_pyver() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
+#    sed -e "/error/a \    'ignore:Test functions should:pytest.PytestReturnNotNoneWarning'," \
+#        -e "/error/a \    'ignore:Setting the dtype on a NumPy array:DeprecationWarning'," \
+#        -e "/error/a \    'ignore:Setting the shape on a NumPy array:DeprecationWarning'," \
+#        -e "/error/a \    'ignore:The chararray class:DeprecationWarning'," \
     sed -e "/error/a \    'ignore:Test functions should:pytest.PytestReturnNotNoneWarning'," \
-        -e "/error/a \    'ignore:Setting the dtype on a NumPy array:DeprecationWarning'," \
-        -e "/error/a \    'ignore:Setting the shape on a NumPy array:DeprecationWarning'," \
-        -e "/error/a \    'ignore:The chararray class:DeprecationWarning'," -i pyproject.toml
+        -i pyproject.toml
 #   cp ${srcdir}/*.fits* docs/_static
 #   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
-
 }
 
 build() {
@@ -71,8 +72,8 @@ check() {
 }
 
 package_python-regions() {
-    depends=('python>=3.11' 'python-numpy>=2.0' 'python-astropy>=6.1.7')
-    optdepends=('python-matplotlib>=3.9: Plotting support'
+    depends=('python>=3.12' 'python-numpy>=2.0' 'python-astropy>=7.0')
+    optdepends=('python-matplotlib>=3.10: Plotting support'
                 'python-shapely>=2.1: Managing geometric objects'
                 'python-regions-doc: Documentation for AstroPy Regions')
     cd ${srcdir}/${_pyname}-${pkgver}
