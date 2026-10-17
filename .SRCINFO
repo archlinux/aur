@@ -1,6 +1,6 @@
 pkgbase = clarion-shell-bin
 pkgname = clarion-shell-bin
-pkgver = 0.1.0
+pkgver = 0.1.0.r4.gb584c83
 pkgrel = 1
 pkgdesc = Flutter desktop shell for the Clarion Wayland compositor (top bar, dock, launcher, control center)
 url = https://github.com/123llyrr/clarion
@@ -19,6 +19,6 @@ optdepends = xdg-desktop-portal-gtk: fallback portal implementation
 provides = clarion-shell
 conflicts = clarion-shell
 conflicts = clarion-shell-git
-noextract = clarion-shell-0.1.0-1-x86_64.pkg.tar.zst
-source = clarion-shell-0.1.0-1-x86_64.pkg.tar.zst::https://github.com/Become-ILLUSORY/clarion/releases/download/v0.1.0/clarion-shell-0.1.0-1-x86_64.pkg.tar.zst
-sha256sums = SKIP
+noextract = clarion-shell-0.1.0.r4.gb584c83-1-x86_64.pkg.tar.zst
+source = clarion-shell-0.1.0.r4.gb584c83-1-x86_64.pkg.tar.zst::https://github.com/Become-ILLUSORY/clarion/releases/download/v0.1.0.r4.gb584c83/clarion-shell-0.1.0.r4.gb584c83-1-x86_64.pkg.tar.zst
+sha256sums = 7d57ca65076c91609dd5cbbb65057bc556127b67b7221dbbd6ca6f12a821d8f6

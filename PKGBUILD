@@ -13,7 +13,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 pkgname=clarion-shell-bin
-pkgver=0.1.0
+pkgver=0.1.0.r4.gb584c83
 pkgrel=1
 pkgdesc='Flutter desktop shell for the Clarion Wayland compositor (top bar, dock, launcher, control center)'
 arch=('x86_64')
@@ -48,7 +48,7 @@ _archive="clarion-shell-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 noextract=("${_archive}")
 
 source=("${_archive}::https://github.com/${_repo}/releases/download/v${pkgver}/${_archive}")
-sha256sums=('SKIP')
+sha256sums=('7d57ca65076c91609dd5cbbb65057bc556127b67b7221dbbd6ca6f12a821d8f6')
 
 package() {
   bsdtar -xf "${srcdir}/${_archive}" -C "${pkgdir}" \
