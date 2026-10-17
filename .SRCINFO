@@ -1,6 +1,6 @@
 pkgbase = ur44-control
 	pkgdesc = Configure the DSP mixer and effects of the Steinberg UR44 audio interface
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Dethware/UR-44
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ur44-control
 	depends = qt6-base
 	depends = alsa-lib
 	depends = hicolor-icon-theme
-	source = ur44-control-0.1.0.tar.gz::https://github.com/Dethware/UR-44/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = ce39e218f4b52961469f5d99ffa298ab0924e046b72fc413a621d745af2b7ff4
+	source = ur44-control-0.1.1.tar.gz::https://github.com/Dethware/UR-44/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 35e6b2ded07a3cde807e51d5b4a609826df37077402a9a120d6ea99db6a8f816
 
 pkgname = ur44-control
