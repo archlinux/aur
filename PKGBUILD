@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-blur-my-shell-git
-pkgver=72.r1.g89599d7
+pkgver=75.r103.g1ac9280
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
@@ -11,7 +11,6 @@ makedepends=(
   'git'
   'jq'
 )
-optdepends=('gnome-rounded-blur: help fix the corners issue found while using dynamic blur')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/aunetx/blur-my-shell.git')
@@ -33,11 +32,11 @@ build() {
 
 package() {
   cd blur-my-shell
-   _uuid=$(jq -r .uuid metadata.json)
+  _uuid=$(jq -r .uuid metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
-  bsdtar xvf "build/${_uuid}.shell-extension.zip" \
-    -C "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
+  bsdtar xvf "build/${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
