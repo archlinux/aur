@@ -11,7 +11,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 pkgname=clarion-bin
-pkgver=0.1.0.r3.g705e7ff
+pkgver=0.1.0.r4.gb584c83
 pkgrel=1
 pkgdesc='Modern Wayland compositor with a native Vulkan backend and an independent desktop core (x86-64-v3 build)'
 arch=('x86_64' 'x86_64_v3')
@@ -62,7 +62,7 @@ _archive="clarion-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 noextract=("${_archive}")
 
 source=("${_archive}::https://github.com/${_repo}/releases/download/v${pkgver}/${_archive}")
-sha256sums=('b1afccb078664c390a70ae5f31a97a5b21a22041bf06c09d4a8a8970d8652b7a')
+sha256sums=('6e118535e5b5ccb1eba7c8aa71390e9af333a65c2478ec354a60a9840d4eecac')
 
 prepare() {
   # 二进制按 x86-64-v3 编译（AVX2/FMA/BMI2）。在这里明确报错，
