@@ -3,7 +3,7 @@
 pkgname=gogcli-bin
 _internalname=gogcli
 _pkgbin=gog
-pkgver=0.43.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="Google Suite CLI: Gmail, GCal, GDrive, GContacts."
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,10 @@ source=("${_internalname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/o
     "${_internalname}-${pkgver}-README.md::https://raw.githubusercontent.com/openclaw/gogcli/v$pkgver/README.md"
     "${_internalname}-${pkgver}-CHANGELOG.md::https://raw.githubusercontent.com/openclaw/gogcli/v$pkgver/CHANGELOG.md")
 sha256sums=('14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe'
-            'da2b312c243c4479a05da515352b6ac0d36b3bac6505a501670eb3785c4ad417'
-            '10ab69d1da61d260155c7e44a427532c22ee3e43882f6bb6ad828abfe5b4def9')
-sha256sums_x86_64=('a16d4b8b917e36b96b09b30ecb7a5049d06ff1e88b856a101eec12b86b33fe05')
-sha256sums_aarch64=('f66e3c9ab7664b7633d57d2d5303e0db75deb4045e1b32c3493c0d8ba68a70f7')
+            '54816eeede49786bcb41495c5846615185be33bc73a943e821a73dd00cfd48c1'
+            '9ee7be6854f73db604188dd7704379057fc0bc455cccd9cec4257877bfbeb880')
+sha256sums_x86_64=('aa39f6149d6a1482cd71b7baf21b9c7a4bf87fe9e9118439c4e97026063e915f')
+sha256sums_aarch64=('6eb4734b3a14a4c96f63c9747d06495265f3a4518a17dec0a4a4a710c76bcb2b')
 source_x86_64=("${_internalname}-${pkgver}-x86_64.tar.gz::$url/releases/download/v$pkgver/${_internalname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_internalname}-${pkgver}-aarch64.tar.gz::$url/releases/download/v$pkgver/${_internalname}_${pkgver}_linux_arm64.tar.gz")
 
