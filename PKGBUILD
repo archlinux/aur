@@ -5,7 +5,7 @@
 # Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=('x86_64')
