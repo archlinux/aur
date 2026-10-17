@@ -1,6 +1,6 @@
 pkgbase = lsi-bin
 	pkgdesc = Image thumbnail listing in Kitty-compatible terminals (standalone binary)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/serber-info/kitty-lsi
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = lsi-bin
 	license = ISC
 	license = NCSA
 	license = Apache-2.0 WITH LLVM-exception
-	provides = lsi=0.1.0
+	provides = lsi=0.2.0
 	conflicts = lsi
 	options = !strip
 	options = !debug
-	source = https://github.com/serber-info/kitty-lsi/releases/download/v0.1.0/lsi-0.1.0-linux-x86_64.tar.gz
-	sha256sums = 0e3b7a822e42ef832f167a5e65750c4ccfe6c59a78ade907501f9868fd00d37b
+	source = https://github.com/serber-info/kitty-lsi/releases/download/v0.2.0/lsi-0.2.0-linux-x86_64.tar.gz
+	sha256sums = 3eae87bd6bda1722e64bb91f1071a4ec4c86aba31676002274de7a62af0e5d97
 
 pkgname = lsi-bin
