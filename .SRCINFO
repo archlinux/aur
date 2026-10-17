@@ -1,7 +1,7 @@
 pkgbase = vgshell-git
 	pkgdesc = Desktop shell for Hyprland, built on Quickshell (development version)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vanillagreencom/vgshell
 	install = vgshell-git.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = vgshell-git
 	makedepends = git
 	depends = greetd
 	depends = glibc
-	depends = quickshell>=0.3.1
+	depends = vgshell-quickshell>=0.3.1
 	depends = hyprland>=0.56
 	depends = bash
 	depends = coreutils
