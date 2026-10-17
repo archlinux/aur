@@ -15,12 +15,15 @@ _opt_bits=64 # 32 or 64
 #comcom64
 #and possibly fdpp,dosemu2
 
+true "${QUIET:=}" "${logpipe:=}"
+
 set -u
 pkgname='comcom32'
 #pkgname+='-git'
-_pkgver='0.2'
+_pkgver='0.5'
+_opt_commit=''
 #_opt_commit="#tag=${_pkgver}" # only applies to non git
-_opt_commit='#commit=1ce86cee50940875dc7f6b74915faa01f6967097' # only applies to non git
+#_opt_commit='#commit=1ce86cee50940875dc7f6b74915faa01f6967097' # only applies to non git
 # pkgver="0.0.${_pkgver//-/_}" # copy this line and set _opt_commit
 pkgver="0.0.${_pkgver//-/_}"
 pkgrel=1
@@ -32,23 +35,28 @@ if [ "${_opt_bits}" -eq 32 ]; then
   makedepends=('djgpp-gcc' 'djgpp-djcrx')
   conflicts=('djgpp-djcrx-bootstrap')
 else
-  makedepends=('dj64' 'git' 'thunk_gen' 'djstub')
+  makedepends=('dj64' 'git' 'thunk_gen')
+  makedepends+=('djstub')
 fi
 conflicts+=("comcom64")
 provides+=("comcom64=${pkgver%%.r*}")
+#options=('!buildflags' '!lto')
 _srcdir="comcom64-${_pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-md5sums=('27cf34e6a38669fc53c5bfba9e81951a')
-sha256sums=('d57e81be2c901d3d69f1584b8db8a0482b776fe5b05ff56d69d46ffa5080a442')
-b2sums=('f820d1705a3cb728e2a32f1da35d388729244b1e82ca65edbf3724171a5f63c85d6a7d85c4cac686254587dfa5fc4c5e7ec6452f0f9abb78c80a898b6aa428ed')
+md5sums=('bcfbe063b1163ae2853680a9d3b8a11b')
+sha256sums=('7dd7f5db57309fdd25e13dc47f23eeeb5b85260aae9d9618ba6f1ea47c6fb13a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   _opt_commit=''
 fi
 if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_opt_commit}" -a "${_opt_commit/#tag/}" = "${_opt_commit}" ]; then
   source[0]="git+${url}.git${_opt_commit}"
+  #source[0]+="#commit=ba9908e6679844823517a1ba22b1e09a1aa5867e"
+  #source[0]+="#commit=5ab4c838a0d5e1a51bcc2f6d49fa7ec45ea46b7a"
+  #source[0]+="#commit=747d1bd757e2bb9fb9e1d90a7dfa4cddce7cca15"
+  #source[0]+="#commit=747d1bd757e2bb9fb9e1d90a7dfa4cddce7cca15"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
   b2sums[0]='SKIP'
@@ -71,7 +79,7 @@ else
 fi
 
 prepare() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   local _pt
@@ -83,6 +91,7 @@ prepare() {
     fi
   done
 
+if ! :; then
   if [ -d 'src' ]; then
     cd 'src'
   fi
@@ -91,26 +100,28 @@ prepare() {
     -e '/^prefix \?=/ s:/usr/local:/usr:g'
     -e 's:i586-pc:i686-pc:g'
   )
-  sed -E "${_seds[@]}" -i 'Makefile'
+  sed -E "${_seds[@]}" -i ?akefile
   if [ -d '../32' ]; then
-    sed -E "${_seds[@]}" -i '../32/Makefile'
+    sed -E "${_seds[@]}" -i ../32/?akefile
   fi
-  set +u
+fi
+  #sed -e 's:CPPFLAGS:CFLAGS:g' -i src/?akefile
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
-  if [ -s '32' ]; then
-    nice make "${_opt_bits}"
+  if [ "${_opt_bits}" -eq '32' ]; then
+    nice make "${_opt_bits}" prefix='/usr'
   else
+    unset CFLAGS CPPFLAGS LDFLAGS
+    export prefix='/usr' PREFIX='/usr'
     nice make
   fi
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ "${_opt_bits}" -eq 32 ]; then
     make -C '32' -j1 DESTDIR="${pkgdir}" install
@@ -118,5 +129,13 @@ package() {
     make -j1 DESTDIR="${pkgdir}" install
   fi
   set +u
+  #if [ ! -s "${pkgdir}/usr/share/comcom64/comcom64.exe" ]; then
+  #  printf 'Build failed missing comcom64.exe\n' 1>&2
+  #  false
+  #fi
+  if [ -d "${pkgdir}/usr/local" ]; then
+    printf 'Build failed with /usr/local\n' 1>&2
+    false
+  fi
 }
 set +u
