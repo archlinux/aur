@@ -23,12 +23,10 @@ _repo='Become-ILLUSORY/clarion'
 
 depends=(
   'cairo'
-  'fontconfig'
   'gcc-libs'
   'glib2'
   'glibc'
   'libdisplay-info'
-  'libdrm'
   'libglvnd'
   'libinput'
   'libpipewire'
@@ -49,10 +47,6 @@ optdepends=(
   'mako: notification daemon'
   'alacritty: terminal bound in the default configuration'
   'fuzzel: launcher bound in the default configuration'
-  'swaybg: wallpaper utility'
-  'swayidle: idle management'
-  'swaylock: screen locking'
-  'waybar: status bar (if not using Clarion Shell)'
 )
 provides=('clarion')
 conflicts=('clarion' 'clarion-git')
@@ -68,7 +62,7 @@ _archive="clarion-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 noextract=("${_archive}")
 
 source=("${_archive}::https://github.com/${_repo}/releases/download/v${pkgver}/${_archive}")
-sha256sums=('db3656b1449f457bffb903846c7fc5879414532d198077268867e6393e5d829a')
+sha256sums=('SKIP')
 
 prepare() {
   # 二进制按 x86-64-v3 编译（AVX2/FMA/BMI2）。在这里明确报错，
