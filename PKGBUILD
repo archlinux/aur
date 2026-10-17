@@ -1,7 +1,7 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="MVSEP GUI - Music separation desktop application"
 arch=('x86_64')
 url="https://github.com/AntheaLaffy/mvsep-rs"
@@ -16,7 +16,7 @@ options=()
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d7430664c1de1940399fae14afc57d9f88cd5e0bbe96eb9f5598850682bc8c63')
 
 prepare() {
   cd "${srcdir}/mvsep-rs-${pkgver}/src-tauri"
