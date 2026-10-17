@@ -42,26 +42,27 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
 
 --- a/wx+/darkmode.cpp
 +++ b/wx+/darkmode.cpp
-@@ -53,7 +53,7 @@ void zen::colorThemeInit(wxApp& app, Col
- {
+@@ -55,7 +55,7 @@ void zen::colorThemeInit(wxApp& app, ColorTheme colTheme) //throw FileError
      assert(!refGlobalColorHook());
+     assert(wxTopLevelWindows.empty());
  
 -    globalDefaultThemeIsDark = wxSystemSettings::GetAppearance().AreAppsDark();
 +    globalDefaultThemeIsDark = false;
-     ZEN_ON_SCOPE_EXIT(if (!refGlobalColorHook()) refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance() and despite errors
+     ZEN_ON_SCOPE_EXIT(if (!refGlobalColorHook()) refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance()
  
      //caveat: on macOS there are more themes than light/dark: https://developer.apple.com/documentation/appkit/nsappearance/name-swift.struct
-@@ -86,10 +86,6 @@ void zen::changeColorTheme(ColorTheme colTheme) //throw FileError
+@@ -87,11 +87,6 @@ void zen::changeColorTheme(ColorTheme colTheme) //throw ErrorRestartRequired, Fi
+ 
      try
      {
-         ZEN_ON_SCOPE_SUCCESS(refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance()
--        if (wxApp::AppearanceResult rv = wxTheApp->SetAppearance(colTheme);
+-        if (const wxApp::AppearanceResult rv = wxTheApp->SetAppearance(colTheme);
 -            rv != wxApp::AppearanceResult::Ok)
--            throw SysError(formatSystemError("wxApp::SetAppearance",
--                                             rv == wxApp::AppearanceResult::CannotChange ? L"CannotChange" : L"Failure", L"" /*errorMsg*/));
+-            assert(rv != wxApp::AppearanceResult::CannotChange), //unused since wx 3.3.4
+-                   throw SysError(formatSystemError("wxApp::SetAppearance", L"", L"" /*errorMsg*/));
+-                
+         refGlobalColorHook() = std::make_unique<SysColorsHook>();
      }
      catch (const SysError& e) { throw FileError(_("Failed to update the color theme."), e.toString()); }
- }
 --- a/wx+/darkmode.h
 +++ b/wx+/darkmode.h
 @@ -8,12 +8,14 @@
@@ -80,9 +81,9 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  
  void colorThemeInit(wxApp& app, ColorTheme colTheme); //throw FileError
  void colorThemeCleanup();
-@@ -21,3 +23,22 @@ void colorThemeCleanup();
- bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
- void changeColorTheme(ColorTheme colTheme); //throw FileError
+@@ -23,3 +25,22 @@ bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
+ DEFINE_NEW_FILE_ERROR(ErrorRestartRequired)
+ void changeColorTheme(ColorTheme colTheme); //throw ErrorRestartRequired, FileError
  }
 +struct wxColorHook
 +{
@@ -103,14 +104,22 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
 +        return wxSystemSettingsNative::GetColour(index);
 +    }
 +};
- #endif //DARKMODE_H_754298057018
 --- a/FreeFilesync/Source/ui/main_dlg.cpp
 +++ b/FreeFileSync/Source/ui/main_dlg.cpp
-@@ -1275,9 +1275,10 @@ void MainDialog::setGlobalCfgOnInit(const GlobalConfig& globalCfg)
+@@ -438,8 +438,6 @@ void updateTopButton(wxBitmapButton& btn,
+                      const wxColor& highlightCol /*optional*/)
+ {
+     wxColor backCol = highlightCol.IsOk() ? highlightCol : btn.GetBackgroundColour();
+-    if (backCol.IsTransparent()) //wxMAC: btn.GetBackgroundColour() == wxTransparentColor since wx 3.3.4!
+-        backCol = wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE);
+ 
+     wxImage iconImg = highlightCol.IsOk() ? img : greyScale(img);
+ 
+@@ -1278,9 +1278,10 @@ void MainDialog::setGlobalCfgOnInit(const GlobalConfig& globalCfg)
      m_checkBoxMatchCase->SetValue(globalCfg_.mainDlg.textSearchRespectCase);
  
-+    wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
      //work around wxAuiManager::LoadPerspective overwriting pane captions with old values (might be different language!)
++    wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
      std::vector<std::pair<wxAuiPaneInfo*, wxString>> paneCaptions;
 -    for (wxAuiPaneInfo& paneInfo : auiMgr_.GetAllPanes())
 -        paneCaptions.emplace_back(&paneInfo, paneInfo.caption);
@@ -119,17 +128,37 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  
      //compare progress dialog minimum sizes are layout-dependent + can't be changed by user => don't load stale values from config
      std::vector<std::tuple<wxAuiPaneInfo*, wxSize /*min size*/, wxSize /*best size*/>> paneConstraints;
-@@ -3143,6 +3144,7 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+@@ -3148,7 +3149,9 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+ 
      bool addedSeparator = false;
  
 -    for (wxAuiPaneInfo& paneInfo : auiMgr_.GetAllPanes())
 +    const wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
-+    for (size_t i = 0; i < paneArray.size(); ++i){ wxAuiPaneInfo& paneInfo = paneArray[i];
++    for (size_t i = 0; i < paneArray.size(); ++i) {
++        wxAuiPaneInfo& paneInfo = paneArray[i];
          if (!paneInfo.IsShown() &&
              paneInfo.window != compareStatus_->getAsWindow() &&
              paneInfo.window != m_panelLog                    &&
-@@ -3163,3 +3165,4 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
- 
+@@ -3166,6 +3169,7 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+                 this->auiMgr_.Update();
+             });
+         }
 +    }
+ 
      menu.popup(*this);
  }
+@@ -6036,12 +6038,12 @@ void MainDialog::updateGuiForFolderPair()
+     addPairCountLast_ = addPairCountOpt;
+ 
+     wxAuiPaneInfo& dirPane = auiMgr_.GetPane(m_panelDirectoryPairs);
+-    if (dirPane.IsHorizontal())
++    if (dirPane.dock_direction == wxAUI_DOCK_TOP || dirPane.dock_direction == wxAUI_DOCK_BOTTOM)
+     {
+         dirPane.min_size.x = dipToWxsize(100);
+         dirPane.min_size.y  = firstPairHeight + addPairCountMin * addPairHeight;
+         dirPane.best_size.y = firstPairHeight + addPairCountOpt * addPairHeight;
+-        dirPane.dock_size = 0; //triggers size re-calculate (alternative: set to = best_size.y since !dirPane.HasBorder())
++        //dirPane.dock_size = 0; //triggers size re-calculate (alternative: set to = best_size.y since !dirPane.HasBorder())
+ 
+         //########################################################################################################################
+         //wxAUI hack: call wxAuiPaneInfo::Fixed() to apply best size:
