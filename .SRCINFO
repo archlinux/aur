@@ -1,6 +1,6 @@
 pkgbase = sddm-theme-aurora-greeter-git
 	pkgdesc = A premium, dynamic SDDM greeter theme with hardware-accelerated video loops and companion CLI ctl tool.
-	pkgver = r7.0a1baf8
+	pkgver = r13.a579cd2
 	pkgrel = 1
 	url = https://github.com/Execorn/aurora-greeter
 	install = aurora-greeter.install

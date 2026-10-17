@@ -1,7 +1,7 @@
 # Maintainer: Biryukov Nikita <n.biryukov.04@gmail.com>
 pkgname=sddm-theme-aurora-greeter-git
 _pkgname=aurora-greeter
-pkgver=r7.0a1baf8
+pkgver=r13.a579cd2
 pkgrel=1
 pkgdesc="A premium, dynamic SDDM greeter theme with hardware-accelerated video loops and companion CLI ctl tool."
 arch=('any')
@@ -18,8 +18,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./g' \
-    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  if git describe --long --tags >/dev/null 2>&1; then
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+  else
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 package() {
