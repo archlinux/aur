@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.11.0.r55.g7d844a7
+pkgver=0.12.0.r534.g8123c25
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -26,7 +26,7 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # r
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package(){
   cd ${pkgname%-git}
-  export CARGOFLAGS+=" --features feat_systemd_logind,openssl"
+  export CARGOFLAGS+=" --features systemd_logind,openssl"
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y MANPAGES=y COMPLETIONS=y #LOCALES=n
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #expand factor hostid unexpand pinky ptx sum shred shuf"
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
