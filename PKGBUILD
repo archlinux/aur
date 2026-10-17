@@ -1,6 +1,6 @@
 # Maintainer: Kolimi contributors <chaitanyachowdary125@live.com>
 pkgname=kolimi-server
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="Pure-Rust, single-binary self-hosted cloud: files, WebDAV, CalDAV/CardDAV, sync"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('kolimi')
 conflicts=('kolimi-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('996f4c4e007d7511dc0142426ba1ec9d1b00615f0fd445bbccc3871687120a83')
+sha256sums=('15cf7d8857bbd69dcee1f50f11c34a228979bc3db49efdca6201531a39270f3e')
 
 build() {
     cd "kolimi-$pkgver"
