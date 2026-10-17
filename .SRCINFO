@@ -1,0 +1,28 @@
+pkgbase = zulu-8-jdk-fx
+	pkgdesc = Azul Zulu JDK 8 with JavaFX
+	pkgver = 8.96.0.205
+	pkgrel = 1
+	url = https://www.azul.com/downloads
+	install = zulu-8-jdk-fx.install
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-environment=8
+	provides = java-environment-openjdk=8
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	provides = java-openjfx=8
+	options = !strip
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-fx-jdk8.0.504-linux_x64.tar.gz
+	sha256sums_x86_64 = c5dcd67eac70e56154e06fa1dca88d27b5a66114835303155f3388e130bb430a
+	source_i686 = https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-fx-jdk8.0.504-linux_i686.tar.gz
+	sha256sums_i686 = 510631f9071876cc2f50bcbc629e5c865d4abd0ec470c6d516cb66c129feb79d
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-fx-jdk8.0.504-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 0b65b52711f00c616224d41742ace7e3a160042cb94c349272abee7b8dc4c814
+
+pkgname = zulu-8-jdk-fx
