@@ -1,6 +1,6 @@
 pkgbase = ganbaru-bin
 	pkgdesc = Local, privacy-first productivity app for reducing procrastination and burnout
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/opengrimoire/ganbaru
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = ganbaru-bin
 	depends = webkit2gtk-4.1
 	provides = ganbaru
 	conflicts = ganbaru
-	noextract = ganbaru_0.1.10_amd64.deb
+	noextract = ganbaru_0.1.11_amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = ganbaru_0.1.10_amd64.deb::https://github.com/opengrimoire/ganbaru/releases/download/app-v0.1.10/ganbaru_0.1.10_amd64.deb
-	sha256sums_x86_64 = 017a98e2da071be02359feee1301651b2117c35fa92c37d0b5be71a35094dbcb
+	source_x86_64 = ganbaru_0.1.11_amd64.deb::https://github.com/opengrimoire/ganbaru/releases/download/app-v0.1.11/ganbaru_0.1.11_amd64.deb
+	sha256sums_x86_64 = be40431389f3d688a1aba35e6b6b6f77cd04b984be116ac5496c8cec192449d2
 
 pkgname = ganbaru-bin
