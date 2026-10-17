@@ -8,7 +8,7 @@
 # `uur setup` (it is never redistributed by this package).
 
 pkgname=uur
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Native Linux companion for NetEase UU Remote (X11/Wayland input and capture bridge)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
     'nvidia-utils: NVENC and NVDEC capability diagnostics on NVIDIA GPUs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("a73583b225731552fea42cb94fe09f2ddb48b8687c13e5b26b3c4bc06db9b639")
+sha256sums=("2b9bc2ed93c61d8bf05fad3dd77a2938bd354003203e646d055673be11b93a51")
 install=uur.install
 
 build() {

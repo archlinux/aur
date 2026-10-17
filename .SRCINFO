@@ -1,6 +1,6 @@
 pkgbase = uur
 	pkgdesc = Native Linux companion for NetEase UU Remote (X11/Wayland input and capture bridge)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/panxuc/uur
 	install = uur.install
@@ -33,7 +33,7 @@ pkgbase = uur
 	optdepends = libva-utils: VA-API capability diagnostics
 	optdepends = vulkan-tools: Vulkan and Vulkan Video capability diagnostics
 	optdepends = nvidia-utils: NVENC and NVDEC capability diagnostics on NVIDIA GPUs
-	source = uur-0.1.5.tar.gz::https://github.com/panxuc/uur/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = a73583b225731552fea42cb94fe09f2ddb48b8687c13e5b26b3c4bc06db9b639
+	source = uur-0.1.6.tar.gz::https://github.com/panxuc/uur/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 2b9bc2ed93c61d8bf05fad3dd77a2938bd354003203e646d055673be11b93a51
 
 pkgname = uur
