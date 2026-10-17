@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=heft
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Read-only Linux TUI for application-weight process accounting"
 arch=('x86_64' 'aarch64')
@@ -11,12 +11,12 @@ license=('Apache-2.0')
 # to put in a debug package.
 options=('!strip' '!debug')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac0f6c1e87e9165de4a440f46779258b68d7a23835514faafe9cc04a6866ccec')
+makedepends=('cargo' 'git')
+source=("$pkgname::git+$url.git#tag=v$pkgver")
+sha256sums=('9da956e81fc842945b6f5599e64af54d2689d8f20bb44ba8c845444dbff8fdd1')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   # RUSTUP_TOOLCHAIN wins over the repository's rust-toolchain.toml, so a
   # maintainer who has rustup builds with the same stable this does.
   export RUSTUP_TOOLCHAIN=stable
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   # [profile.release] in Cargo.toml carries LTO, codegen-units = 1, strip and
   # panic = abort. Do not restate them here.
@@ -32,7 +32,7 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   # The suite reads the builder's own /proc, which a build chroot has; the
   # container and GPU paths are skipped when nothing answers them.
@@ -40,7 +40,7 @@ check() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   # Apache-2.0 is an SPDX common licence shipped in /usr/share/licenses/spdx
   # by the `licenses` package, so this installs no copy of it.
   install -Dm0755 target/release/heft "$pkgdir/usr/bin/heft"
