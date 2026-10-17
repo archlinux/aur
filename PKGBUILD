@@ -1,6 +1,6 @@
 # Maintainer: PapyElGringo <adrien@pesler.be>
 pkgname=veshell-git
-pkgver=v0.1.5.r0.gf63384e
+pkgver=v0.1.6.r0.ga88da8e
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
@@ -55,7 +55,12 @@ build() {
   # resolves Dart dependencies, runs code generation, builds the Flutter shell,
   # downloads the matching engine from free-explorers/flutter-engine and compiles
   # the compositor against the final /usr install paths.
+  #
+  # The VCS checkout is the provenance: embed its exact HEAD so
+  # `veshell --version` distinguishes this build from a release package.
   VESHELL_ENGINE_REPO=free-explorers/flutter-engine \
+    VESHELL_BUILD_COMMIT="$(git rev-parse HEAD)" \
+    VESHELL_BUILD_CHANNEL=git \
     make build PREFIX=/usr PROFILE=release
 }
 
