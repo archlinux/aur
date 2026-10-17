@@ -31,6 +31,10 @@
 #                          (default: /usr/lib/polkit-1/polkit-agent-helper-1)
 #   JOBS                   parallelism (default: number of CPUs)
 #   VESHELL_FLUTTER_ARCH   Flutter target directory (default: host: x64|arm64)
+#   VESHELL_BUILD_COMMIT   source revision embedded by `veshell --version`
+#                          (default: VESHELL_SRC's git HEAD, when available)
+#   VESHELL_BUILD_CHANNEL  release channel or prerelease id shown by
+#                          `veshell --version` (optional)
 #
 # Commands:
 #   build     compile the Dart shell and the Rust compositor
@@ -152,6 +156,24 @@ build_rust() {
     export VESHELL_DEFAULT_CONFIG_DIR="$PREFIX/share/veshell/settings/default"
     export VESHELL_POLKIT_HELPER_PATH="$POLKIT_HELPER_PATH"
     export CARGO_NET_OFFLINE=true
+    # Provenance for `veshell --version`. Older Veshell revisions ignore these.
+    # The source checkout is a pinned commit in every source recipe; fall back
+    # to it for direct helper invocations so `veshell-git` and local builds are
+    # identified without duplicating the revision in each recipe.
+    if [ -z "${VESHELL_BUILD_COMMIT:-}" ]; then
+      VESHELL_BUILD_COMMIT="$(git rev-parse HEAD 2>/dev/null || true)"
+    fi
+    if [ -n "${VESHELL_BUILD_COMMIT:-}" ]; then
+      export VESHELL_BUILD_COMMIT
+    else
+      unset VESHELL_BUILD_COMMIT
+    fi
+    if [ -n "${VESHELL_BUILD_CHANNEL:-}" ]; then
+      export VESHELL_BUILD_CHANNEL
+    else
+      unset VESHELL_BUILD_CHANNEL
+    fi
+    log "Build identity: commit=${VESHELL_BUILD_COMMIT:-unknown} channel=${VESHELL_BUILD_CHANNEL:-unknown}"
     cargo build --locked --offline --release -j "$JOBS"
   )
 }
