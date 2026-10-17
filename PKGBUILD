@@ -2,7 +2,7 @@
 pkgname=mopidy-goodies-git
 _pkgname=mopidy-goodies
 _pyname=mopidy_goodies
-pkgver=r9.a35a8d2
+pkgver=r45.2c78130
 pkgrel=1
 pkgdesc="HTTP companion endpoints for Mopidy: Tidal favorites, listening stats, audio chain info"
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   'mopidy'
   'python-tornado'
   'python-pykka'
+  'python-mutagen'
 )
 makedepends=(
   'git'
@@ -19,10 +20,10 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
-  'python-mutagen'
 )
 optdepends=(
-  'mopidy-tidal: required for /favorites endpoints (stats and audio work without it)'
+  'mopidy-local: local album metadata, artwork and library scans (AUR)'
+  'python-mopidy-tidal-git: Tidal favourites, credits, reviews, radio and playlists (AUR)'
 )
 provides=("${_pkgname}" 'mopidy-tidal-goodies')
 conflicts=("${_pkgname}" 'mopidy-tidal-goodies' 'mopidy-tidal-goodies-git')
