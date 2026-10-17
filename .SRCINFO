@@ -1,6 +1,6 @@
 pkgbase = nefercap-bin
 	pkgdesc = Screenshots and silent screen recording for Wayland, from one shortcut
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/bnema/nefercap
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = nefercap-bin
 	provides = nefercap
 	conflicts = nefercap
 	conflicts = nefercap-git
-	source_aarch64 = nefercap-bin_0.5.0_aarch64.tar.gz::https://github.com/bnema/nefercap/releases/download/v0.5.0/nefercap_0.5.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = c5b70bafedb79a058ee452d652c133727765825f5360fee28a0de50bbc9cd363
-	source_x86_64 = nefercap-bin_0.5.0_x86_64.tar.gz::https://github.com/bnema/nefercap/releases/download/v0.5.0/nefercap_0.5.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 550c512c5ca4b1952f43a2fba64cd56ac62ff889059f0176c8b014e03d9bfea6
+	source_aarch64 = nefercap-bin_0.5.1_aarch64.tar.gz::https://github.com/bnema/nefercap/releases/download/v0.5.1/nefercap_0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9ecd9a6fc0f12ce5f8644c54a282436014d64b8e89bd41d24520287261c46a91
+	source_x86_64 = nefercap-bin_0.5.1_x86_64.tar.gz::https://github.com/bnema/nefercap/releases/download/v0.5.1/nefercap_0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3f11f732f4d4d02da84753ff01b1547656d4d13c45264e4c47926e3df4cf3a49
 
 pkgname = nefercap-bin
