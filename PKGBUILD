@@ -1,7 +1,7 @@
 # Maintainer: Ivan Odnoorov <elcheshirecat at yandex dot ru>
 pkgname=ymusic-cli
 _repo=ymusic
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Terminal client for Yandex Music: My Wave, likes, stations (TUI)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('mpv' 'libgcc' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('30b08d739f3c5680dcdcf9f58f01818c40d3458fe46a596adc919a8d469c6219')
+sha256sums=('60f739b4fe8517f13f6ca34315010b1a4ee42dd73d882e1b08269fbb474c859a')
 
 prepare() {
   cd "$_repo-$pkgver"
