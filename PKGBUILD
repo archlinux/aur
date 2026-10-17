@@ -25,10 +25,11 @@
 
 pkgname=cross-cleaner-bin
 # Everything between the markers is rewritten by .github/workflows/aur.yml on
-# every publication -- the version, and one checksum per source -- so the block
-# deliberately contains nothing else. The checksums committed here are the
-# placeholders the workflow replaces: sha256sums accepts `SKIP` for a source
-# nothing has hashed yet, and the workflow refuses to push while a SKIP is left.
+# every publication -- the version, the pkgrel, and one checksum per source --
+# so the block deliberately contains nothing else. The checksums committed here
+# are the placeholders the workflow replaces: sha256sums accepts `SKIP` for a
+# source nothing has hashed yet, and the workflow refuses to push while a SKIP
+# is left.
 #
 # One source array per architecture, which is how makepkg chooses the right
 # upload: it reads the array named after the machine it runs on, and compares
@@ -43,7 +44,7 @@ pkgname=cross-cleaner-bin
 # v${pkgver}.tar.gz and ../PKGBUILD already established the longer name.
 # ---AUR-VERSION-BEGIN---
 pkgver=2.0.4.4
-pkgrel=1
+pkgrel=1.1
 source_x86_64=(
     "cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz"
     "https://github.com/Cross-Cleaner/Cross-Cleaner/releases/download/v${pkgver}/Linux-Cross_Cleaner_GUI-no-updater"
@@ -213,8 +214,16 @@ prepare() {
     local component asset desc canary
     for component in GUI TUI CLI; do
         asset="$srcdir/${prefix}-Cross_Cleaner_${component}-no-updater"
-        desc=$(file "$asset")
-        printf '%s\n' "$desc"
+        # -L is not decoration. makepkg does not copy a source into $srcdir, it
+        # symlinks it there -- the download stays in the directory holding the
+        # PKGBUILD -- and file(1) does not follow symlinks unless it is told to
+        # (that is its POSIXLY_CORRECT behaviour, not its default). Reading the
+        # link instead of the binary gives "symbolic link to ...", which matches
+        # neither architecture, so the check below rejected every build of the
+        # first published version of this package. -b drops the file name,
+        # which is printed here anyway.
+        desc=$(file -Lb "$asset")
+        printf '%s: %s\n' "${asset##*/}" "$desc"
         if [[ "$desc" != *"$elf_arch"* ]]; then
             printf '%s is not a %s binary\n' "$asset" "$elf_arch" >&2
             return 1
