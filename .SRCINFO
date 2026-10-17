@@ -1,0 +1,27 @@
+pkgbase = tuicode-bin
+	pkgdesc = A Visual Studio Code style code editor for the terminal, with LSP, git, debugging and an integrated terminal
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/LucasionGS/tuicode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = git: source control
+	optdepends = ripgrep: faster find in files
+	optdepends = wl-clipboard: clipboard on Wayland
+	optdepends = xclip: clipboard on X11
+	optdepends = delve: debugging Go
+	optdepends = gdb: debugging C, C++ and Rust
+	optdepends = gopls: Go language server
+	optdepends = typescript-language-server: TypeScript and JavaScript language server
+	provides = tuicode
+	conflicts = tuicode
+	options = !debug
+	options = !strip
+	source_x86_64 = tuicode-0.2.0-x86_64.pkg.tar.zst::https://github.com/LucasionGS/tuicode/releases/download/v0.2.0/tuicode-0.2.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = e892b1aec24e3a2441581d4f18f933a0c30023c739f87b61fe57fe009678e8b4
+	source_aarch64 = tuicode-0.2.0-aarch64.pkg.tar.zst::https://github.com/LucasionGS/tuicode/releases/download/v0.2.0/tuicode-0.2.0-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 777e9636a138fe0b43e66704d923930f478da415361fb574039788e98903a3ab
+
+pkgname = tuicode-bin
