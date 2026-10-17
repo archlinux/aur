@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=k3d-gpu
-pkgver=0.1.25
+pkgver=0.1.26
 pkgrel=1
 pkgdesc="Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
     'k3d-git: k3d CLI to manage clusters'
     'kubectl: query and apply manifests'
     'nvidia-container-toolkit: GPU container runtime for Docker'
-    'python: k3d-gpu-mcp (the MCP server for AI agents), k3d-gpu facts and plan'
+    'python: k3d-gpu-mcp (the MCP server for AI agents), k3d-gpu facts, plan and audit'
 )
 source=("git+https://github.com/88plug/k3d-gpu.git#tag=aur-v${pkgver}")
 sha256sums=('SKIP')
@@ -38,9 +38,10 @@ package() {
     for f in share/telemetry/*.yml share/telemetry/optional/*.yml; do
         install -Dm644 "$f" "$pkgdir/usr/share/k3d-gpu/${f#share/}"
     done
-    for f in facts.py plan.py report_html.py schema_check.py facts.v1.schema.json matrix.v1.json; do
+    for f in facts.py plan.py report_html.py audit.py schema_check.py facts.v1.schema.json matrix.v1.json; do
         install -Dm644 "console/$f" "$pkgdir/usr/share/k3d-gpu/console/$f"
     done
+    install -Dm644 images.lock "$pkgdir/usr/share/k3d-gpu/images.lock"
     install -Dm644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE.md    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
