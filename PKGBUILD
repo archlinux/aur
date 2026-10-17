@@ -59,7 +59,7 @@ package() {
   # Every top-level QML module directory has to be listed here. Missing one
   # doesn't fail the build — it fails at runtime, on the user's machine,
   # with `module "qs.<Name>" is not installed`.
-  cp -r shell.qml Commons Modules Widgets Assets bin "$dest/"
+  cp -r shell.qml Commons Services Modules Widgets Assets bin "$dest/"
 
   # bin/ holds a couple of Python/bash helper scripts crux shells out to
   # (matugen post-hooks, wallpaper-picker glue) — keep them executable.
