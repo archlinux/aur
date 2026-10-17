@@ -2,12 +2,14 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos-native
-_srctag=11.0-20261005
+_srctag=11.0-20261014
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.3.0
 _xaliaver=0.5.0
+_zludaver=v7-preview.15
+_zludasha=86ec0a9
 pkgrel=1
 epoch=1
 
@@ -16,6 +18,7 @@ source=(
   https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
   https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
   https://github.com/madewokherd/xalia/releases/download/xalia-${_xaliaver}/xalia-${_xaliaver}-net48-mono.zip
+  https://github.com/vosen/ZLUDA/releases/download/${_zludaver}/zluda-windows-${_zludasha}.zip
   compatibilitytool.vdf.template
   ntsync.conf
 )
@@ -112,6 +115,7 @@ makedepends=(
   glslang 
   gnutls
   gtk3
+  hip-runtime-amd
   libgphoto2
   libpulse
   libva
@@ -149,6 +153,7 @@ optdepends=(
   ffmpeg
   gnutls
   gtk3
+  hip-runtime-amd
   libgphoto2
   libpulse
   libva
@@ -217,6 +222,7 @@ prepare() {
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
     mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
     mv "$srcdir"/xalia-${_xaliaver}-net48-mono.zip contrib/
+    mv "$srcdir"/zluda-windows-${_zludasha}.zip contrib/
 
     _submodules=(
         OpenXR-SDK
@@ -255,6 +261,7 @@ prepare() {
         vklayers/pyroveil
         vklayers/vkbasalt
         wine
+        zluda-libs/hipwine
     )
 
     # Explicitly set origin URL for submodules using relative paths
@@ -297,6 +304,7 @@ build() {
         --proton-sdk-image="" \
         --build-name="${pkgname}" \
         --enable-wow64 \
+        --without-zluda-libs=rocm-systems \
         --without-steamrt-depends \
         --without-tts
 
@@ -347,10 +355,11 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('ab92aafe41177e4be81173681933c9bb8a756aabaed4c09532f0a8a957e76fc866ff190dd4dd648e079986094b713570aee44b00457f9fbe2442383fbc2ebcb3'
+b2sums=('42ea455612a90ee3f273000abb4c21af240cc6f23e439618e8a421955444d4aca03124b24b84e645de3fbaf1b1f738712e59402e08f0b53fca06c3ad5b245b03'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '230b9094049fc8b0c5600c44ad9514541f4bb21a75a0fd32e5025aa4c267f3b1d0032929d215688ed8ebe6c1b3ade93e3643272305f6f81b734d376cdea257c2'
         '3b1d5d974ae32849b8e74828b1a00475183bdb5a345e16699dbf88306787c95b3ab2f2ea6f53a19a074ac6e26f6f77c29edc2cbe24dce301522245112c5e1002'
+        'e0f5d428d0080c98ee9d68119ab5033b0b098f1709f5105c2e08106a5207c5f3d3f50a618e855d6d5fb89f2be5f2e8263c60a6b19cd80f3c6b201300b15e87b5'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b'
         '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
