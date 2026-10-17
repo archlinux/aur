@@ -1,6 +1,6 @@
 pkgbase = terax
 	pkgdesc = Lightweight AI-native terminal emulator (ADE) built with Tauri 2 and React
-	pkgver = 0.8.6
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/crynta/terax-ai
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = terax
 	options = !lto
 	options = !debug
 	options = !strip
-	source = terax-0.8.6.tar.gz::https://github.com/crynta/terax-ai/archive/refs/tags/v0.8.6.tar.gz
-	sha256sums = 47d0a40c58f923adff0bbe99650894567d2b45dd8a113bb269fad97832cbf7f5
+	source = terax-0.9.0.tar.gz::https://github.com/crynta/terax-ai/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 90b6fd0c4bcd9b7d0bc1e7883f4b80a20b3f50e1601ca5f21be3d0675323e8c6
 
 pkgname = terax

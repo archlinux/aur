@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=terax
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Lightweight AI-native terminal emulator (ADE) built with Tauri 2 and React"
 arch=('x86_64')
@@ -34,7 +34,7 @@ conflicts=('terax-bin')
 options=('!lto' '!debug' '!strip')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('47d0a40c58f923adff0bbe99650894567d2b45dd8a113bb269fad97832cbf7f5')
+sha256sums=('90b6fd0c4bcd9b7d0bc1e7883f4b80a20b3f50e1601ca5f21be3d0675323e8c6')
 
 prepare() {
     cd "${srcdir}/terax-ai-${pkgver}"
@@ -65,6 +65,11 @@ prepare() {
 build() {
     cd "${srcdir}/terax-ai-${pkgver}"
     export npm_config_cache="${srcdir}/.npm-cache"
+    # Keep cargo state in $srcdir rather than the builder's ~/.cargo, and strip
+    # the crate-registry, rustc-sysroot and source paths that panic messages
+    # would otherwise embed in the binary.
+    export CARGO_HOME="${srcdir}/.cargo"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/terax-ai-${pkgver}=/build/terax --remap-path-prefix=${CARGO_HOME}/registry=/cargo-registry --remap-path-prefix=${CARGO_HOME}/git=/cargo-git --remap-path-prefix=$(rustc --print sysroot)=/rust-toolchain"
     pnpm exec tauri build --no-bundle
 }
 
