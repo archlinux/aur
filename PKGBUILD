@@ -5,8 +5,8 @@
 # produces, i.e. a complete staged /usr tree built against glibc.
 
 pkgname=rozelynx-bin
-pkgver=158.0
-pkgrel=2
+pkgver=158.0.1
+pkgrel=1
 pkgdesc='RozeLynx Web Browser: Firefox fork with LibreWolf privacy patches and per-tab network interface binding (binary release; Wayland-only builds - build rozelynx-git for X11/XWayland)'
 arch=(x86_64)
 url='https://bytewheel.org/rozelynx'
@@ -59,7 +59,7 @@ conflicts=(rozelynx)
 install=rozelynx-bin.install
 _tag="v${pkgver}"
 source=("https://github.com/Bytewheel/RozeLynx/releases/download/${_tag}/rozelynx-${pkgver}-${CARCH}.tar.xz")
-sha256sums=('0e514b38a7364ee304c183afee519781a10b9d47a7fa55c5b9c6e3c3fe731d84')
+sha256sums=('eb51eb3d20eabf20fa399db69892a05107036178e9e98556637b7fa9564c4b78')
 
 package() {
   # the tarball contains a complete staged usr/ tree
