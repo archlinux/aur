@@ -1,6 +1,6 @@
 # Maintainer: Yaroslav Krytsun <slavko7 at gmail dot com>
 pkgname=dyedfox-radio
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Desktop internet radio player"
 arch=('any')
@@ -46,6 +46,8 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
     install -Dm644 "assets/icons/$pkgname-tray.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname-tray.svg"
+    install -Dm644 "assets/icons/$pkgname-symbolic.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname-symbolic.svg"
 
     install -Dm644 "$pkgname.desktop" \
         "$pkgdir/usr/share/applications/$pkgname.desktop"
