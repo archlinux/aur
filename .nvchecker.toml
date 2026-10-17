@@ -1,5 +1,5 @@
 [geist-font]
-source = "github"
-github = "vercel/geist-font"
-use_max_tag = true
+source = "git"
+git = "https://github.com/vercel/geist-font.git"
+prefix = "v"
 exclude_regex = ".*(alpha).*"
