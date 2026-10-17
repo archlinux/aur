@@ -1,16 +1,16 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest-git
-pkgver=1.50.0.r359.ga0039cd5
+pkgver=1.50.0.r360.ga28abe15
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation (git)"
 arch=('x86_64')
-url="https://github.com/praktimarc/kst4contest"
+url="https://github.com/HamRadioOnline/kst4contest"
 license=('GPL-3.0-only')
 depends=('gst-plugins-base' 'gst-plugins-good')
 makedepends=('java-environment=21' 'git')
 provides=('kst4contest')
 conflicts=('kst4contest' 'kst4contest-bin')
-source=("kst4contest::git+https://github.com/praktimarc/kst4contest.git")
+source=("kst4contest::git+https://github.com/HamRadioOnline/kst4contest.git")
 sha256sums=('SKIP')
 
 pkgver() {
