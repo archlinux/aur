@@ -1,6 +1,6 @@
 pkgbase = trufflehog-git
 	pkgdesc = Secrets scanner for repositories
-	pkgver = 3.97.5.r1.g288a8a864
+	pkgver = 3.99.2.r19.g31d730383
 	pkgrel = 1
 	url = https://trufflesecurity.com/trufflehog
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = trufflehog-git
 	makedepends = git
 	makedepends = go>=1.25.10
 	depends = glibc
-	provides = trufflehog=3.97.5.r1.g288a8a864
+	provides = trufflehog=3.99.2.r19.g31d730383
 	conflicts = trufflehog
+	conflicts = trufflehog-debug
 	source = git+https://github.com/trufflesecurity/trufflehog
 	b2sums = SKIP
 

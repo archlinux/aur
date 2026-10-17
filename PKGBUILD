@@ -1,14 +1,14 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name='trufflehog'
 pkgname="$_name-git"
-pkgver=3.97.5.r1.g288a8a864
+pkgver=3.99.2.r19.g31d730383
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
 url="https://trufflesecurity.com/$_name"
 license=('AGPL-3.0-only')
 provides=("$_name=$pkgver")
-conflicts=("$_name")
+conflicts=("$_name"{,-debug})
 depends=(
   'glibc'
 )
@@ -27,7 +27,7 @@ prepare() {
 
 pkgver() {
   cd "$_name"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
