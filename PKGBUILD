@@ -1,5 +1,5 @@
 pkgname=slskr
-pkgver=0.2.68
+pkgver=0.2.71
 pkgrel=3
 pkgdesc='Rust Soulseek daemon with bundled Web UI'
 arch=('x86_64' 'aarch64')
