@@ -1,7 +1,7 @@
 # Maintainer: Anton Reshetov
 
 pkgname=masscode
-pkgver=6.2.1
+pkgver=6.3.1
 _electron_exec=electron34
 pkgrel=1
 pkgdesc="Open-source developer workspace for code snippets, notes, and HTTP requests"
@@ -15,7 +15,7 @@ source=("https://github.com/massCodeIO/massCode/releases/download/v${pkgver}/mas
     "masscode.desktop"
     "masscode.sh"
 )
-sha256sums=('90038eaae905b85543955495f6476bace4d2dbadcc2839069f3c233b9afcf32a'
+sha256sums=('ab74444ef7999ee5679db40258fc0d2efe99bb5bfede0fc4691da8880c4d48e9'
             '61d5876d8cd9560e1c321a219e779111e0a9dc65bee596c459d1494fb4a57bb6'
             'a2e9a02993e1b8efc74fbee597219a84eeb776d41d1dcf0ae9742c2d9fcb9f15'
             '74aad10be03239734f7096833bb5c91c1f0e3d6a9d92bbd38f1d418efcd58b70')
