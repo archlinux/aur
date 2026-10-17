@@ -1,7 +1,7 @@
 # Maintainer: Petr Mrázek <peterix@gmail.com>
 
 pkgname=ur44-control
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Configure the DSP mixer and effects of the Steinberg UR44 audio interface"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MS-PL')
 depends=('qt6-base' 'alsa-lib' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('35e6b2ded07a3cde807e51d5b4a609826df37077402a9a120d6ea99db6a8f816')
+sha256sums=('5af09d5a418850bab9d3b947038f99643380608a56dbe71583e6c6ae3f9ae715')
 
 build() {
     cmake -B build -S "UR-44-$pkgver" -G Ninja \
