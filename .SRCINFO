@@ -1,6 +1,6 @@
 pkgbase = dane-without-root
 	pkgdesc = Provide multiples DANE tools that does not use the root '.' DNS server for validation
-	pkgver = 0.1.53
+	pkgver = 0.1.55
 	pkgrel = 1
 	url = https://sr.ht/~yukikoo/dane_without_root/
 	install = proxy_certificate.install
@@ -22,8 +22,8 @@ pkgbase = dane-without-root
 	depends = glibc
 	optdepends = start-stop-daemon: sysv support
 	backup = etc/dane-proxy/dane-proxy.conf
-	source = git+https://git.sr.ht/~yukikoo/dane_without_root?signed#tag=dane-0.1.53
+	source = git+https://git.sr.ht/~yukikoo/dane_without_root?signed#tag=dane-0.1.55
 	validpgpkeys = FB798BFB115895C9C95900649C2B29DD4A62ED27
-	sha256sums = b49baac343ddff8a1eeb9abcdeb93f8c7a1620a95891bbb932e7a27426a1d66c
+	sha256sums = a44a1d4df000371d45347e25bc0f53cd4908a6289468a211ef16882cbb84141f
 
 pkgname = dane-without-root
