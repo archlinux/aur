@@ -1,0 +1,17 @@
+_venv=/opt/tapeback
+
+post_install() {
+    echo "==> Installing CUDA 12 cuBLAS/cuDNN into tapeback venv (for GPU transcription)..."
+    "$_venv/bin/pip" install --no-cache-dir \
+        "nvidia-cublas-cu12" "nvidia-cudnn-cu12"
+    echo "==> Done. tapeback preloads these so ctranslate2 finds CUDA on CUDA 13 systems."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "==> Removing CUDA 12 libraries from tapeback venv..."
+    "$_venv/bin/pip" uninstall -y nvidia-cublas-cu12 nvidia-cudnn-cu12 2>/dev/null || true
+}

@@ -1,0 +1,12 @@
+pkgbase = tapeback-cuda
+	pkgdesc = CUDA 12 cuBLAS/cuDNN runtime for GPU-accelerated transcription in tapeback
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/yastcher/tapeback
+	install = tapeback-cuda.install
+	arch = any
+	license = Apache-2.0
+	depends = tapeback
+	optdepends = cuda: NVIDIA toolkit/driver for GPU access
+
+pkgname = tapeback-cuda
