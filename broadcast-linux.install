@@ -20,4 +20,7 @@ MSG
 
 post_upgrade() {
     echo "==> broadcast-linux: run 'systemctl --user restart broadcast-linux' to use the new version"
+    echo "    If the settings window then says NVIDIA's files have an update, click \"Download and"
+    echo "    install\" there, or run 'broadcast-linux setup'. Your effects keep working on the older"
+    echo "    files until then."
 }
