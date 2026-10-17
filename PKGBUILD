@@ -3,7 +3,7 @@
 pkgname=nginx-mainline-mod-websockify
 _commit=c11bc9a3862c53b3af814c3f7d213cc3d2939641
 pkgver=0.0.3.r14.gc11bc9a
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
@@ -30,12 +30,6 @@ build() {
 }
 
 package() {
-	# nginx refuses dynamic modules built for another version, so tie the
-	# package to the nginx it was built against.
-	local _nginxver
-	_nginxver=$(pacman -Q nginx-mainline-src | awk '{print $2}')
-	depends=("nginx-mainline=$_nginxver")
-
 	install -Dm644 "$srcdir/$_modname-nginx-module-$_commit/LICENSE" \
 	               "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
