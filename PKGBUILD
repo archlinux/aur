@@ -3,11 +3,11 @@
 pkgname=rill-git
 _pkgname=rill
 pkgdesc="A minimalist scrolling window manager for River"
-pkgver=0.6.0.r1.g81f3f39
+pkgver=0.7.0.r4.g8afe4c4
 pkgrel=1
 arch=('x86_64' 'aarch64')
-_zigwlver=0.6.0
-_xkbver=0.4.0
+_zigwlver=0.7.0
+_xkbver=0.5.0
 url="https://codeberg.org/lzj15/rill"
 license=('MIT')
 depends=('wayland' 'river' 'libxkbcommon')
@@ -20,8 +20,8 @@ source=(git+$url.git
 	zig-xkbcommon-$_xkbver.tar.gz::https://github.com/ifreund/zig-xkbcommon/archive/refs/tags/v$_xkbver.tar.gz
        )
 sha256sums=('SKIP'
-            'd9804e50f9fa549ad0aed751fbbb5fbc52110d57971b59ecab34ff11f08b0230'
-            'bff568b83a19630dc7cb27950e03337925d0d71b4fb0676bc6ebe2d31d1db032')
+            'cd94ef70ea67683be799aba3f9dc7df2a31ae77f6d192e04b5c1ac1569930c76'
+            '0d74afe38992032344ab6d4cb5dba6caa409b1c4b60dba157e15202bec94644b')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
