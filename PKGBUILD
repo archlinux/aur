@@ -1,33 +1,36 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box"
 arch=('any')
 url="https://github.com/Rethunk-Tech/engined"
 license=('MIT')
 depends=('bun')
-makedepends=('git')
 optdepends=(
   'docker: run the inference engines and the Cursor TLS bridge'
   'bubblewrap: read-only sandbox for the opencode engine'
 )
 install=engined.install
-source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('43c91653509375ccfd980c26dcf24e56832a1cc0d506178a1832d4243f6b802e')
-
-build() {
-  cd "$pkgname"
-  # The bundle has no runtime dependencies, so no `bun install` is needed.
-  ENGINED_COMMIT=$(git rev-parse HEAD) bun run build
-}
+# The release workflow builds this tarball once; nothing is built here.
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('3b55841e7b7cb87641e450aff190d88b7ac4f72b5216ca2de6b8d936ea4d4d25')
 
 package() {
-  cd "$pkgname"
-  install -Dm0644 dist/main.js "$pkgdir/usr/lib/engined/main.js"
+  cd "$pkgname-$pkgver"
+  # main.js and the config UI's assets beside it, which it finds by relative path.
+  install -d "$pkgdir/usr/lib/engined"
+  cp -r --no-preserve=ownership dist/. "$pkgdir/usr/lib/engined/"
   install -Dm0644 deploy/Caddyfile.cursor "$pkgdir/usr/lib/engined/Caddyfile.cursor"
   cp -r --no-preserve=ownership engines "$pkgdir/usr/lib/engined/engines"
+
+  # The CLI modes (--configsvc-url, --doctor, --hash-password) the install
+  # message names run through this.
+  install -Dm0755 /dev/stdin "$pkgdir/usr/bin/engined" <<'LAUNCHER'
+#!/bin/sh
+exec /usr/bin/bun /usr/lib/engined/main.js "$@"
+LAUNCHER
 
   # install.sh's own renderer, so the packaged units cannot drift from the
   # templates; only the paths differ. %S is the user's state directory.
@@ -35,9 +38,9 @@ package() {
     source scripts/install.sh
     resolve_paths
     BUN_PATH=/usr/bin/bun BUNX_PATH=/usr/bin/bunx DOCKER_PATH=/usr/bin/docker
-    UNIT_INSTALL_DIR=/usr/lib/engined UNIT_STATE_DIR=%S/engined
+    UNIT_INSTALL_DIR=/usr/lib/engined UNIT_STATE_DIR=%S/engined UNIT_CONFIG_DIR=%h/.config/engined
     install -d "$pkgdir/usr/lib/systemd/user"
-    for unit in engined.service engined-probe.service engined-probe.timer engined-tls.service; do
+    for unit in engined.service engined-configsvc.service engined-probe.service engined-probe.timer engined-tls.service; do
       render_unit_file "$unit.in" "$pkgdir/usr/lib/systemd/user/$unit"
     done
   )
@@ -45,6 +48,7 @@ package() {
   # Not under /usr/share/doc, which NoExtract commonly strips: the install
   # message tells every user to copy it.
   install -Dm0644 config.example.toml "$pkgdir/usr/share/engined/config.example.toml"
+  install -Dm0644 config.schema.json "$pkgdir/usr/share/engined/config.schema.json"
   install -Dm0644 HUMANS.md "$pkgdir/usr/share/doc/engined/HUMANS.md"
   cp -r --no-preserve=ownership docs/. "$pkgdir/usr/share/doc/engined/"
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/engined/LICENSE"
