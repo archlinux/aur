@@ -3,7 +3,7 @@
 # Maintainer: Damien Flament <damien dot flament at zoho dot com>
 
 pkgname='tine-outliner'
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A fast, local, Logseq-compatible outliner"
 url='https://tine.page/'
@@ -16,7 +16,7 @@ depends=('gtk3' 'gdk-pixbuf2' 'libgcc' 'libsoup3' 'webkit2gtk-4.1' 'dbus' 'libx1
 conflicts=('tine-outliner-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/martinkoutecky/tine/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ea9117a5a01cc17230ec95f6794193be1e366b537cf56e232dbbf3bff2876fd5')
+sha256sums=('1db6ae43191d89e43dcd2749a57f92d6804095630c515cedf17a0ee9f3036f09')
 
 function prepare {
   cd "tine-${pkgver}" || return
@@ -32,7 +32,7 @@ function build {
   export CFLAGS
 
   # Le drapeau `-flto=auto` dans les options de GCC semble générer une erreur
-  # lors de la création des liens dynamiques avec la bilbiothèque SQLite3. Il
+  # lors de la création des liens dynamiques avec la bibliothèque SQLite3. Il
   # est donc supprimé.
   CFLAGS=$(echo "$CFLAGS" | sed -E 's/-flto=auto//g')
 
