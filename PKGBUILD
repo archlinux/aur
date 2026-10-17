@@ -1,8 +1,8 @@
 # Maintainer: maci <maci.stgn@gmail.com>
 
 pkgname=mt7927-bt-firmware
-pkgver=20250606
-pkgrel=2
+pkgver=20260611
+pkgrel=1
 pkgdesc="Bluetooth firmware for MediaTek MT7927 (MT6639), extracted from the ASUS Windows driver"
 arch=('any')
 url='https://github.com/openwrt/mt76/issues/927'
@@ -13,27 +13,17 @@ source=('extract-bt-firmware.py')
 sha256sums=('013dff1981e158f28ef3db56775ad119bbefd8942d6c9387edfabf057f1fe6c6')
 
 _firmware='BT_RAM_CODE_MT6639_2_1_hdr.bin'
-_driver_zip='DRV_WiFi_MTK_MT7925_MT7927_TP_W11_64_V5603998_20250709R.zip'
-_driver_sha256='b377fffa28208bb1671a0eb219c84c62fba4cd6f92161b74e4b0909476307cc8'
-_cdn='https://dlcdnta.asus.com/pub/ASUS/mb/08WIRELESS'
-_model='ROG%20CROSSHAIR%20X870E%20HERO'
+_driver_zip='DRV_WiFi_MTK_MT7925_27_TP_W11_64_V5706054_20260706R.zip'
+_driver_sha256='f421e3e6ea7fa335ebb3fb70d76f550709fe2f8bd52633d518e4b42bfa0219cb'
+_cdn='https://dlcdnets.asus.com/pub/ASUS/mb/08WIRELESS'
 
 # linux-firmware ships only the WiFi blobs for mt7927, so the Bluetooth one has
-# to come out of the vendor driver. The ASUS CDN serves it behind a signed URL
-# from its token API, so the ZIP cannot be a source() entry.
+# to come out of the vendor driver (ASUS MediaTek WiFi driver V5.7.0.6054,
+# 2026/07/16). The ZIP is fetched in prepare() and checked against
+# _driver_sha256; if the download fails it can be dropped in manually.
 _download() {
-  local token expires signature key_pair
-  msg2 'Requesting a download token from the ASUS CDN...'
-  token=$(curl -sf -X POST -H 'Origin: https://rog.asus.com' \
-    "https://cdnta.asus.com/api/v1/TokenHQ?filePath=https:%2F%2Fdlcdnta.asus.com%2Fpub%2FASUS%2Fmb%2F08WIRELESS%2F${_driver_zip}%3Fmodel%3D${_model//%/%25}&systemCode=rog")
-
-  expires=${token#*\"expires\":\"};      expires=${expires%%\"*}
-  signature=${token#*\"signature\":\"};  signature=${signature%%\"*}
-  key_pair=${token#*\"keyPairId\":\"};   key_pair=${key_pair%%\"*}
-
   msg2 "Downloading ${_driver_zip}..."
-  curl -fL -o "$1" \
-    "${_cdn}/${_driver_zip}?model=${_model}&Signature=${signature}&Expires=${expires}&Key-Pair-Id=${key_pair}"
+  curl -fL -o "$1" "${_cdn}/${_driver_zip}"
 }
 
 prepare() {
