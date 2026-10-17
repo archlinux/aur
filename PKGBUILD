@@ -38,8 +38,7 @@ build() {
           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DBUILD_PRO=true \
           -DBUILD_PLAYER=true -DBUILD_TOOLS=true \
-          -DBUILD_WITH_ALL=true -DBUILD_STATIC=true \
-          -DBUILD_TOUCH_INPUT=true
+          -DBUILD_WITH_ALL=true -DBUILD_STATIC=true
     cmake --build build
 }
 
