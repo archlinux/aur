@@ -37,5 +37,6 @@ publish: update lint
 	git verify-commit HEAD
 	git push origin HEAD:master
 
-test:
-	bash tests/release.sh
+# Uncomment to test. No need to ship testing for the publishing process.
+# test:
+# 	bash tests/release.sh
