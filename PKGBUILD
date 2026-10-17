@@ -4,18 +4,18 @@
 _pkgbasename=hailort-drivers
 _pkgname=$_pkgbasename-8
 pkgname=$_pkgname-dkms
-pkgver=4.23.0
+pkgver=4.24.0
 pkgrel=1
 pkgdesc="Kernel drivers for HAILO-8 series accelerator cards"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/hailo-ai/hailort-drivers"
 license=('GPL2')
-depends=('dkms' 'hailort-firmware-8')
+depends=('dkms' "hailort-firmware-8-bin=$pkgver")
 provides=('hailort-drivers-8' 'hailort-drivers-8-dkms')
 conflicts=('hailort-drivers-8' 'hailort-drivers-8-dkms')
 source=("$_pkgbasename-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	'dkms.conf.in')
-sha256sums=('245c7157746c2fd48b2fab4a990c8fb3b786921dd72c9e5348f5b5619ee05ec3'
+sha256sums=('13b7d7dd8c70be52c772c00c8205e9e5cf191038826eaef35a6388aca1abed56'
 	'SKIP')
 
 prepare() {
