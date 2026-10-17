@@ -10,7 +10,7 @@
 # The folder is remembered after the first run.
 
 pkgname=openkingdoms-git
-pkgver=0.3.4.r0.g063166c
+pkgver=0.5.1.r0.g39a139e
 pkgrel=1
 pkgdesc='Open-source engine for Total Annihilation: Kingdoms (1999). Requires you own the original game.'
 arch=('x86_64')
