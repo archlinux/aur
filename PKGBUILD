@@ -2,7 +2,7 @@
 # Official downloads: https://apifox.com/download
 
 pkgname=api-fox-bin
-pkgver=2.8.50
+pkgver=2.8.51
 pkgrel=1
 pkgdesc="Apifox API documentation, debugging, mocking, and automated testing tool"
 arch=('x86_64' 'aarch64')
@@ -59,8 +59,8 @@ source_aarch64=(
   "${_zip_aarch64}::https://file-assets.apifox.com/download/Apifox-linux-arm64-deb-latest.zip?version=${pkgver}"
 )
 noextract=("${_zip_x86_64}" "${_zip_aarch64}")
-sha256sums_x86_64=('39f3e4a4134b976a6ffe2a6ad894f1ee209a3ebbde8584b15118f9eda59ca056')
-sha256sums_aarch64=('841d37f924e0bf859d99d0e2873a72fafb3fd3fdcf2347692c516fabb9e6505f')
+sha256sums_x86_64=('99d06abf33c9e7f8efad96a6014d44659a43ceed5cc8cdd06bf0a080613d418a')
+sha256sums_aarch64=('9248aa497b00d5f93e14a2fc0d0efe253950555b00d45202c9affb3a395c172b')
 
 package() {
   local zip_var="_zip_${CARCH}"
