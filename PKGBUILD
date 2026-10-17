@@ -21,13 +21,14 @@ source=(
 	'tmpfiles.d.conf')
 sha256sums=('048246d09cdfd7e8a9594af1c7afe6c7fe8fc90025edade7d03f7967d0a035c7'
             '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
-            'ad758b4064853620e2e213cb2af8d05caa3d7b6e4096f3223bf7ebd48d5abef5'
+            '207ff97d4c476984247a92fb2f04ead3715e210c8f190849ed6ad4a1dc4bd7a1'
             'e289bf838cf51eacfcee48bbe468139ea6b4df3fff97ac1618bb7ba0ac9afd7d'
             'd368d14e844f2dd6f5b2d04b31d9a70f0af6f3ec72669f5b6d98b161a8bec1d6'
             '4b5f470a64d44efea12d979340eba31225121100158b8c4409e1eca46c1cebd1')
 
 package() {
 	install -D ROMVault38.exe -t "$pkgdir/opt/$pkgname/"
+    install -dm777 "$pkgdir/opt/$pkgname/config"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -D "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
