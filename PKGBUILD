@@ -1,20 +1,19 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
 
 pkgname=kosmozoo-git
-_release_ver=0.1.0.r0
-pkgver=0.1.0.r3.g6d66ac0
+_release_ver=0.2.1.r0
+pkgver=0.2.1.r0.gaafea6a
 pkgrel=1
-pkgdesc="Local ComfyUI image review/curation tool — zero-build SPA + Python stdlib server (git main)"
-arch=('any')
+pkgdesc="Local review and curation app for ComfyUI image output"
+arch=('x86_64')
 url="https://github.com/alexindigo/kosmozoo"
 license=('LGPL-3.0-only')
-depends=('python')
+depends=('deno' 'sqlite' 'hicolor-icon-theme')
 makedepends=('git')
-optdepends=('python-pytorch: local anime face detection (run setup_facedetect.sh with KOZMOZOO_VENV)')
-provides=("kosmozoo")
-conflicts=("kosmozoo")
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+provides=('kosmozoo')
+conflicts=('kosmozoo' 'kosmozoo-bin')
+source=("$pkgname::git+$url.git" "kosmozoo.sh")
+sha256sums=('SKIP' 'd830038ed0bd18cd38b59e2d753a7389aaa926135818f48151d700976ba8d42e')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -30,23 +29,26 @@ pkgver() {
     fi
 }
 
+build() {
+  cd "$pkgname"
+  export DENO_DIR="$srcdir/deno-dir" DENO_NO_UPDATE_CHECK=1 DENO_SQLITE_PATH=/usr/lib/libsqlite3.so
+  deno cache --frozen src/main.mjs src/cli.mjs build.mjs plugins/*/plugin.mjs
+  deno run --frozen --allow-all build.mjs
+  deno task --frozen-lockfile setup
+}
 package() {
-    cd "${srcdir}/${pkgname}"
-
-    # app files (served from here; state lives in $XDG_STATE_HOME/kosmozoo
-    # because this dir is read-only)
-    install -Dm644 server.py index.html detect_worker.py \
-        logo-64.png logo-256.png logo-512.png \
-        -t "${pkgdir}/usr/lib/kosmozoo/"
-    install -Dm755 fetch_vendor.sh setup_facedetect.sh \
-        -t "${pkgdir}/usr/lib/kosmozoo/"
-    install -Dm644 README.md \
-        "${pkgdir}/usr/share/doc/kosmozoo/README.md"
-
-    # launcher + systemd --user unit
-    install -Dm755 "${srcdir}/../kosmozoo" "${pkgdir}/usr/bin/kosmozoo"
-    install -Dm644 "${srcdir}/../kosmozoo.service" \
-        "${pkgdir}/usr/lib/systemd/user/kosmozoo.service"
-
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$pkgname"; local app="$pkgdir/usr/lib/kosmozoo"
+  install -d "$app/plugins"
+  cp -a src client client-solid-dist deno.json deno.lock VERSION "$app/"
+  install -d "$app/packaging/linux"; cp -a packaging/linux/resources "$app/packaging/linux/"
+  for p in hello difference detector critic; do install -Dm644 plugins/$p/*.mjs -t "$app/plugins/$p/"; done
+  cp -a "$srcdir/deno-dir" "$app/deno-dir"
+  local revision; revision=$(git -C "$srcdir/$pkgname" rev-parse HEAD)
+  [[ $revision =~ ^[0-9a-f]{40}$ ]] || { echo "checkout has no commit" >&2; return 1; }
+  sed "s/@KOZMOZOO_REVISION@/$revision/" "$srcdir/kosmozoo.sh" > "$srcdir/kosmozoo-launcher"
+  install -Dm755 "$srcdir/kosmozoo-launcher" "$pkgdir/usr/bin/kosmozoo"
+  cd "$srcdir/$pkgname"
+  DENO_DIR="$srcdir/deno-dir" DENO_NO_UPDATE_CHECK=1 DENO_SQLITE_PATH=/usr/lib/libsqlite3.so \
+    deno run --frozen --cached-only --allow-read --allow-write --allow-env --config=deno.json \
+    src/cli.mjs package-resources --prefix=/usr --destdir="$pkgdir"
 }

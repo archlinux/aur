@@ -1,36 +1,35 @@
 # kosmozoo-git
 
 AUR package for [kosmozoo](https://github.com/alexindigo/kosmozoo) —
-local ComfyUI image review/curation tool (zero-build SPA + Python stdlib
-server), tracking git `main`.
+local review and curation app for ComfyUI image output, tracking git `main`.
+The Deno engine and Solid client run from source on Arch's `deno` and `sqlite`;
+this package is not the official compiled executable.
 
 ## Contents
 
 - `PKGBUILD` — Arch Linux package build script.
 - `.SRCINFO` — AUR package metadata (auto-generated from PKGBUILD).
-- `kosmozoo` — `/usr/bin` launcher (`python3 /usr/lib/kosmozoo/server.py`).
-- `kosmozoo.service` — systemd **user** unit (`systemctl --user enable --now kosmozoo`).
+- `kosmozoo.sh` — `/usr/bin/kosmozoo` launcher for the cached Deno application.
 
 ## What gets installed
 
-| Path | Purpose |
-|---|---|
-| `/usr/lib/kosmozoo/` | server.py, index.html, face-detection scripts, logos |
-| `/usr/bin/kosmozoo` | launcher (state auto-lives in `~/.local/state/kosmozoo`) |
-| `/usr/lib/systemd/user/kosmozoo.service` | optional autostart |
+| # | Path | Purpose |
+|---|---|---|
+| 1 | `/usr/lib/kosmozoo/` | application source, built client, plugins and cached Deno dependencies |
+| 2 | `/usr/bin/kosmozoo` | launcher (state defaults to `$XDG_STATE_HOME/kosmozoo` or `~/.local/state/kosmozoo`) |
+| 3 | `/usr/lib/systemd/user/kosmozoo-engine.service` | optional engine autostart |
+| 4 | `/usr/share/applications/kosmozoo.desktop` | desktop launcher |
+| 5 | `/usr/share/icons/hicolor/256x256/apps/kosmozoo.png` | application icon |
 
-Then open http://127.0.0.1:2084 and point it at your ComfyUI host(s)
+Run `kosmozoo serve`, then open http://127.0.0.1:2084 and point it at your ComfyUI host(s)
 (☰ menu, or `KOZMOZOO_HOSTS`).
 
-Face detection is optional: run
-`KOZMOZOO_VENV=~/.local/share/kosmozoo/venv /usr/lib/kosmozoo/setup_facedetect.sh`
-once, then start the server with the same `KOZMOZOO_VENV`.
+For optional autostart, use `systemctl --user enable --now kosmozoo-engine.service`.
 
 ## Dependencies
 
-- **Runtime**: `python`
+- **Runtime**: `deno`, `sqlite`, `hicolor-icon-theme`
 - **Build**: `git`
-- **Optional**: `python-pytorch` (local anime face detection)
 
 ## Building
 
