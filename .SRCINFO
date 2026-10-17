@@ -1,0 +1,20 @@
+pkgbase = we-proton
+	pkgdesc = 修复 WeGame 和其上游戏在 Linux 的兼容问题，支持游戏加速器。基于 GE-Proton，集成部分 DW-Proton 补丁。
+	pkgver = ge11.7.30
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/we-proton
+	arch = x86_64
+	license = BSD-3-Clause
+	license = LGPL-2.1-or-later
+	license = MIT
+	license = Zlib
+	license = OFL-1.1
+	license = custom
+	optdepends = steam: 在 Steam 里选用 WE-Proton
+	optdepends = wegame-launcher: 用 WE-Proton 运行 WeGame
+	options = !strip
+	options = !debug
+	source = https://github.com/SHORiN-KiWATA/we-proton/releases/download/we-proton-ge11-7-30/we-proton-ge11-7-30.tar.xz
+	sha512sums = 70ee73a688df3b22bbb0c03b43ca884b9b4c30a50f74dcd70cb8b90bfa09b1773771cadbaad20267b5b0defefcbb126d86bdfecfafe86ee1a5204c2a698901fc
+
+pkgname = we-proton
