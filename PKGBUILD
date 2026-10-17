@@ -2,7 +2,7 @@
 # Maintainer:  Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
 
 pkgname=rr-bin
-pkgver=5.9.0
+pkgver=5.10.0
 pkgrel=1
 pkgdesc="Binary record and replay framework: lightweight recording and deterministic debugging"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('gdb')
 source=("https://github.com/rr-debugger/rr/releases/download/$pkgver/rr-$pkgver-Linux-x86_64.tar.gz"
 	"https://raw.githubusercontent.com/rr-debugger/rr/$pkgver/LICENSE")
-sha256sums=('1e229f0b24ca4f6feb325895ae57eb8792b92c0250ec2e68d292d2fe97e71864'
+sha256sums=('55d9175d88139f775aca36981c55c2f3bca227434217750fc3ee2619501e269b'
             'aaec860979579376519b0bb376a317d0c52a7182f5dde5f362a8df3590312f9f')
 provides=('rr')
 conflicts=('rr' 'rr-git')
@@ -20,8 +20,6 @@ package() {
 	for i in 'rr' 'signal-rr-recording.sh' 'rr_exec_stub_32' 'rr_exec_stub'; do
 		install -Dm755 "rr-$pkgver-Linux-x86_64/bin/$i" "$pkgdir/usr/bin/$i"
 	done
-	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload.so" "$pkgdir/usr/lib/rr/librrpreload.so"
-	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload_32.so" "$pkgdir/usr/lib/rr/librrpreload_32.so"
 	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload.so" "$pkgdir/usr/lib/rr/librrpreload.so"
 	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload_32.so" "$pkgdir/usr/lib/rr/librrpreload_32.so"
 	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librraudit.so" "$pkgdir/usr/lib/rr/librraudit.so"
