@@ -1,7 +1,7 @@
 pkgbase = electric
 	pkgdesc = a sophisticated electrical CAD system for the design of integrated circuits
 	pkgver = 9.09b.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/electric/
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = electric
 	depends = java-environment
 	depends = bash
 	provides = gnu-electric
-	source = svn://svn.savannah.gnu.org/electric
+	source = electric::svn://svn.savannah.gnu.org/electric/trunk#revision=319
 	source = https://www.gnu.org/software/electric/electric.jpg
 	source = electric.desktop
 	source = electric.sh
