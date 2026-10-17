@@ -12,6 +12,7 @@ pkgbase = bws
 	depends = libgcc
 	provides = bws-bin
 	conflicts = bws-bin
+	options = !lto
 	source = bws-2.1.0.tar.gz::https://github.com/bitwarden/sdk-sm/archive/refs/tags/bws-v2.1.0.tar.gz
 	sha256sums = 3ea669ae57b1d3090f98ff2c09894b4da0bf2c700a4f8d79f70a0f96615cd9ed
 
