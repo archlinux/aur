@@ -1,12 +1,12 @@
 pkgbase = hipify-perl
 	pkgdesc = A perl-based script that heavily uses regular expressions, that is automatically generated from hipify-clang.
-	pkgver = 10.0
+	pkgver = 10.1
 	pkgrel = 1
 	url = https://github.com/ROCm/HIPIFY
 	arch = any
 	license = MIT
 	depends = perl
-	source = https://github.com/ROCm/HIPIFY/archive/refs/tags/therock-10.0.tar.gz
-	sha256sums = cd8c4722cddb4049ffb4240b3ad1aee85245abae4ccfac7d2d030e3546e72b46
+	source = https://github.com/ROCm/HIPIFY/archive/refs/tags/therock-10.1.tar.gz
+	sha256sums = 257f545d98e214599bdb372e40029f63ad2f5de6a6f890d27a4172d66d98f448
 
 pkgname = hipify-perl
