@@ -1,6 +1,11 @@
-post_install() {
+_g13_apply_udev() {
   udevadm control --reload-rules
   udevadm trigger --subsystem-match=usb --attr-match=idVendor=046d --attr-match=idProduct=c21c
+  udevadm trigger --subsystem-match=misc --sysname-match=uinput
+}
+
+post_install() {
+  _g13_apply_udev
   echo ":: Enable the driver for your user:  systemctl --user enable --now g13"
   echo ":: The tray icon starts automatically at the next login."
   echo "   To show it now:                   g13-gui --tray &"
@@ -8,7 +13,7 @@ post_install() {
 }
 
 post_upgrade() {
-  udevadm control --reload-rules
+  _g13_apply_udev
   echo ":: Restart the driver:  systemctl --user restart g13"
   echo ":: The tray icon starts automatically at the next login (or now: g13-gui --tray &)."
   echo ":: When upgrading from version 1.x (GTK tray / Java tool), remove leftovers of"
