@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Mayrink <vncsmyrnk@gmail.com>
 pkgname=gnome-shell-extension-gfs-git
-pkgver=r3.d7c85a5
+pkgver=r31.2229d05
 pkgrel=1
 pkgdesc="GNOME extension to fast switch between windows using keybindings."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glib2' 'gnome-shell')
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=unstable")
 sha256sums=('SKIP')
 
 pkgver() {

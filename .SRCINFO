@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gfs-git
 	pkgdesc = GNOME extension to fast switch between windows using keybindings.
-	pkgver = r3.d7c85a5
+	pkgver = r31.2229d05
 	pkgrel = 1
 	url = https://github.com/vncsmyrnk/gfs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-gfs-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-gfs
 	conflicts = gnome-shell-extension-gfs
-	source = git+https://github.com/vncsmyrnk/gfs.git
+	source = git+https://github.com/vncsmyrnk/gfs.git#branch=unstable
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gfs-git
