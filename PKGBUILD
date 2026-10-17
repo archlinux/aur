@@ -1,6 +1,6 @@
-pkgname=zulu-25-jdk-fx
+pkgname=jdk25-zulu-fx-bin
 pkgver=25.36.205
-pkgrel=5
+pkgrel=1
 pkgdesc='Azul Zulu JDK 25 with JavaFX'
 arch=(
     'x86_64'
