@@ -1,0 +1,27 @@
+# ltd.install — shared install scriptlets for linux-trackpad-driver{,-bin,-git}.
+# Policy: never enable or start the daemon on install (admin opts in with
+# `systemctl enable --now linux-trackpad-driver.service`, same as debian/).
+# Only reloads udev/systemd so hotplug works immediately after upgrade.
+# Kept POSIX sh, quoted, `|| true` guarded so failures never break transactions.
+
+post_install() {
+  udevadm control --reload-rules >/dev/null 2>&1 || true
+  udevadm trigger --subsystem-match=hidraw --action=add >/dev/null 2>&1 || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  cat <<'EOF'
+linux-trackpad-driver installed.
+Enable the daemon: sudo systemctl enable --now linux-trackpad-driver.service
+Config: /etc/linux-trackpad-driver/config.toml (preserved on upgrade/reinstall)
+Manual re-init: sudo ltd resume
+Hotplug reconnect is automatic via udev + linux-trackpad-driver-reconnect@.service.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  udevadm control --reload-rules >/dev/null 2>&1 || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}

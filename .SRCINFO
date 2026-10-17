@@ -1,0 +1,22 @@
+pkgbase = linux-trackpad-driver
+	pkgdesc = Userspace Rust driver for Apple Magic Trackpad 2 (USB/BT core-init)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aaronroquefonseca/linux-trackpad-driver
+	install = ltd.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd
+	optdepends = libinput: pointer/palm processing for passthrough events and hwdb quirks (see INSTALL.md "hwdb note")
+	conflicts = linux-trackpad-driver-bin
+	conflicts = linux-trackpad-driver-git
+	backup = etc/linux-trackpad-driver/config.toml
+	source = linux-trackpad-driver-0.1.0.tar.gz::https://github.com/aaronroquefonseca/linux-trackpad-driver/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e4397ff084017ab6718352704705f73807029ea4d959ca426d38d25c73a7b04b
+
+pkgname = linux-trackpad-driver
