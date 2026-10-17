@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=k3d-gpu
-pkgver=0.1.49
+pkgver=0.1.50
 pkgrel=1
 pkgdesc="Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker"
 arch=('any')
@@ -47,6 +47,9 @@ package() {
     install -Dm644 bench/competitors.lock "$pkgdir/usr/share/k3d-gpu/bench/competitors.lock"
     for f in agent_trace.py agent_trace_gen.py apb/apb.py apb/capacity.py; do
         install -Dm644 "bench/$f" "$pkgdir/usr/share/k3d-gpu/bench/$f"
+    done
+    for f in bundle.py project.py validate.py share.py schema/bundle-v1.json; do
+        install -Dm644 "oracle/$f" "$pkgdir/usr/share/k3d-gpu/oracle/$f"
     done
     install -Dm644 share/agent-sandbox.yml      "$pkgdir/usr/share/k3d-gpu/agent-sandbox.yml"
     install -Dm644 share/agent-sandbox-k3d.yml  "$pkgdir/usr/share/k3d-gpu/agent-sandbox-k3d.yml"
