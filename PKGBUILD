@@ -4,7 +4,7 @@
 pkgname=coolercontrol-bin
 _pkgname=${pkgname%-bin}
 _app_id="org.$_pkgname.CoolerControl"
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices (official, binary package)"
 arch=('x86_64')
@@ -29,8 +29,8 @@ source=(
     "https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/coolercontrol-$pkgver.tar.gz"
 )
 sha256sums=(
-  'e6aeb060c74455dd032861b86e317377c259bf4150e7e58c47238b5ff1cb8890'
-  '9239f628b35cd122b6c637402caedf4b3937dd073d02ebabe17af67a73b815fb'
+  'e0217e0dd60519be5f1345f7f1f4ea8cf31ec79ff6570a3d81a906171939c7ba'
+  '739e0be15de99830515d973bf3fdfc7f339f694cf1cc934540336d3883373b65'
 )
 
 check() {
