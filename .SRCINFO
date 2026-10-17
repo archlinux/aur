@@ -1,0 +1,28 @@
+pkgbase = zulu-11-jdk-fx
+	pkgdesc = Azul Zulu JDK 11 with JavaFX
+	pkgver = 11.90.205
+	pkgrel = 1
+	url = https://www.azul.com/downloads
+	install = zulu-11-jdk-fx.install
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-environment=11
+	provides = java-environment-openjdk=11
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-openjdk=11
+	provides = java-openjfx=11
+	options = !strip
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu11.90.205-ca-fx-jdk11.0.32.1-linux_x64.tar.gz
+	sha256sums_x86_64 = ee90afd42c2e3e2cab7e1f1d64c0ea8ff43064aa2caa9903fb305bedd6d41961
+	source_i686 = https://cdn.azul.com/zulu/bin/zulu11.90.205-ca-fx-jdk11.0.32.1-linux_i686.tar.gz
+	sha256sums_i686 = 714d619bd180eb8cf71e817bcffc3eadcdc2cd12d433fd940886fb506b16be79
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu11.90.205-ca-fx-jdk11.0.32.1-linux_aarch64.tar.gz
+	sha256sums_aarch64 = b6c9d7709660369e77d783aa6bcd88717c94b84914c5364e52a1e9f0d9ad4bf5
+
+pkgname = zulu-11-jdk-fx
