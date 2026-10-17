@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=YAQMC
+Exec=/opt/yaqmc/yaqmc %U
+Terminal=false
+Type=Application
+Icon=yaqmc
+StartupWMClass=org.yaqmc
+Comment=Unofficial QQ Music desktop client
+MimeType=x-scheme-handler/yaqmc;
+Categories=AudioVideo;
