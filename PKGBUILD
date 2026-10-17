@@ -1,7 +1,7 @@
 # Maintainer: gimletlove
 
 pkgname=imagecompare
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Image Compare is a desktop image comparison and visual diff tool.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   'kimageformats: AVIF, JPEG XL, HEIC/HEIF, and more'
 )
 source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('7f0ae6c18d2f4ea35707f16034ffca983690dc6f55dae9610aa9807d83ecaf8b')
+sha256sums=('dcfe9bc0de5408e5081700868fc147d2a004e4306e70e79c1dd596823c80b40e')
 
 build() {
   cmake -S "$srcdir/$pkgname-$pkgver" -B "$srcdir/$pkgname-$pkgver/build" \
