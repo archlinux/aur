@@ -1,7 +1,7 @@
 # Maintainer: Roman Vishnevsky <aka [dot] x0x01 [at] gmail [dot] com>
 
 pkgname=torrserver-bin
-pkgver=145.2
+pkgver=147
 pkgrel=1
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
@@ -18,10 +18,10 @@ source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/YouROK/TorrServer/
 source_i686=("$pkgname-$pkgver-i686::https://github.com/YouROK/TorrServer/releases/download/MatriX.$pkgver/TorrServer-linux-386")
 b2sums=('7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad'
         '20d847419c499b2286abe6d12113443446feff6aa6c2dac5e60d4c1bbfb0845d682761bde2880eacb2f9b29c12f3213ef6f9f3ae7e141586bd8483da00b9f440')
-b2sums_x86_64=('90c6c7854669c16c6f85795985edad7f47a2850be1bcd2293eff9830ea686365ebea6f9a9799905988b8ab83f5b8ecd7a23cebdd0ceb9f8cc39789839816802b')
-b2sums_armv7h=('01cd6eda81a8d85aec5385e6c6790ecedbe1d58650676657fa35cca42c0ad789fbea14f2a88e96afeb44527678feb1ccdce7e813a43cb79f1c98a5939ace30dd')
-b2sums_aarch64=('03c04f07449a6d29a1a6294727bffa158eda389e0ad636607d908af93af5bf23e28d92cb4a24dcfa68e96513560d293a62e4a23698190a3cb4ec5bd71c6486d8')
-b2sums_i686=('b49d855e578297faeb01dbb1f2e7529a43de54a12d1272b636b97e4db166b11009aabf6b21acb73fd22b1818613f29204fe9e2f0f7afd2c3a41e0f27617260b4')
+b2sums_x86_64=('a1a102462ee8bc4a857c9a970d9055392bc32fd7be56a52d2ed5abc36b1cb8cbfb0a8be6c228ea4352395d9c0d71bc90a7e9745135badb0423c1b8be784c53a0')
+b2sums_armv7h=('67ad00a10b9accc305dc223821fd532c69cfa02f35d4d0a1e3e5a1d5cc727dc5348913c30ce1393c3a79bcb2d8cceab6e5fbd884c1b28a8218a56837f528dacb')
+b2sums_aarch64=('25ad5d101a912eea94c95fe3b2e04ace3c2e5875de6cd2783ac564c6132164769a01a86d2b800ee61ea95c968c7ff66a8c9a3e3116ad03a66bc5e73f58e27e63')
+b2sums_i686=('f76d113e01db38a5f5c053917e05e54b1a44c7679bc1d72615d88be490878db54b5137b8aa579a519ffb2ad40fc9872fb74c05a417a52375cb46ce9420d28252')
 
 prepare() {
     patch -uN --follow-symlinks torrserver.service --input="${srcdir}/systemd.patch"
