@@ -77,6 +77,7 @@ pkgbase = vgshell-git
 	optdepends = kendex-bin: the mail tool Jarvis hands a request for your agent fleet with
 	optdepends = ydotool: Jarvis pointer fallback with an already running input service
 	optdepends = bluez-utils: bluetoothctl, the Bluetooth pairing agent that answers pairing prompts
+	optdepends = bluez: the Bluetooth service the Bluetooth plugin connects your devices through
 	optdepends = snapper: a snapshot before the update pipeline changes packages
 	optdepends = timeshift: a snapshot before the update pipeline changes packages, without snapper
 	optdepends = sudo: package installs and the browser policy writer in floating TUIs

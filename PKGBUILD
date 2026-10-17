@@ -84,6 +84,7 @@ optdepends=(
   'kendex-bin: the mail tool Jarvis hands a request for your agent fleet with'
   'ydotool: Jarvis pointer fallback with an already running input service'
   'bluez-utils: bluetoothctl, the Bluetooth pairing agent that answers pairing prompts'
+  'bluez: the Bluetooth service the Bluetooth plugin connects your devices through'
   'snapper: a snapshot before the update pipeline changes packages'
   'timeshift: a snapshot before the update pipeline changes packages, without snapper'
   'sudo: package installs and the browser policy writer in floating TUIs'
