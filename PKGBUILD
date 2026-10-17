@@ -6,14 +6,14 @@
 
 _pkgorg=codeberg.org/mipi
 pkgname=alise
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Declarative Arch Linux installer in Guile Scheme"
 arch=(any)
 url="https://${_pkgorg}/${pkgname}/"
 license=(GPL-3.0-or-later)
 source=("${pkgname}-${pkgver}.tar.gz::https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('02962a02dfe177e6f0ae1f7e248d9fad0853503fa5a396332e5f2db152d40da7')
+sha256sums=('73f9c3e3a90b0c3f8e977918392f2cb2ba0ae6e71010a508d960ee3bfec25467')
 conflicts=(alise-git)
 depends=(
   guile
