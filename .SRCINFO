@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher-git
 	pkgdesc = Your anime games, one launcher
-	pkgver = r1082.5d2ba53
+	pkgver = r1096.dd41682
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
