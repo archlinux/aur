@@ -2,7 +2,7 @@
 pkgname=vksumi
 pkgver=0.1.0
 pkgrel=1
-pkgdesc='Vulkan layer for runtime color grading on Linux (Adrenalin / Freestyle equivalent)'
+pkgdesc='Vulkan layer for in-game color grading on Linux (saturation, contrast, vibrance, colorblind filters, Adrenalin / Freestyle-like)'
 arch=('x86_64')
 url='https://github.com/reakjra/vkSumi'
 license=('MIT')
