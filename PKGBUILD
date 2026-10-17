@@ -1,14 +1,15 @@
 # Maintainer: thankarezos
 pkgname=libfprint-chipsailing-cs9711-git
 pkgver=r1867.ec3ad6e
-pkgrel=1
+pkgrel=2
 pkgdesc='Chipsailing CS9711 fingerprint driver based on libfprint'
 arch=('x86_64')
 url='https://github.com/thankarezos/libfprint-CS9711'
 license=('LGPL-2.1-or-later')
 depends=('glibc' 'gcc-libs' 'glib2' 'libgusb' 'opencv')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'doctest' 'gobject-introspection')
-optdepends=('fprintd: fingerprint enrollment and verification')
+optdepends=('fprintd: fingerprint enrollment and verification'
+            'fingerprint-manager-git: optional Qt fingerprint management GUI')
 provides=('libfprint' 'libfprint-2.so')
 conflicts=('libfprint' 'cs9711-fingerprint-git')
 source=('libfprint-CS9711::git+https://github.com/thankarezos/libfprint-CS9711.git#branch=cs9711-rebase')

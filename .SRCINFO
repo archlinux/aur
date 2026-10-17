@@ -1,7 +1,7 @@
 pkgbase = libfprint-chipsailing-cs9711-git
 	pkgdesc = Chipsailing CS9711 fingerprint driver based on libfprint
 	pkgver = r1867.ec3ad6e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thankarezos/libfprint-CS9711
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -17,6 +17,7 @@ pkgbase = libfprint-chipsailing-cs9711-git
 	depends = libgusb
 	depends = opencv
 	optdepends = fprintd: fingerprint enrollment and verification
+	optdepends = fingerprint-manager-git: optional Qt fingerprint management GUI
 	provides = libfprint
 	provides = libfprint-2.so
 	conflicts = libfprint
