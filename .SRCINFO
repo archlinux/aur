@@ -1,0 +1,20 @@
+pkgbase = ps5-payload-sdk-bin
+	pkgdesc = An SDK for PS5 payloads that uses dynamic linking
+	pkgver = 0.44
+	pkgrel = 1
+	url = https://github.com/ps5-payload-dev/sdk
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = curl
+	makedepends = jq
+	makedepends = sed
+	depends = bash
+	depends = clang
+	depends = lld
+	depends = wget
+	provides = ps5-payload-sdk
+	conflicts = ps5-payload-sdk
+	source = ps5-payload-sdk-0.44-1.zip::https://github.com/ps5-payload-dev/sdk/releases/download/v0.44/ps5-payload-sdk.zip
+	sha256sums = 4d06eab777bb135705b5a6816688c9132efb246093fe606ac488ab6cf65ca5b0
+
+pkgname = ps5-payload-sdk-bin
