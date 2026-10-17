@@ -20,6 +20,7 @@ pkgbase = crux-shell-git
 	optdepends = lm_sensors: CPU temperature in Control Center
 	optdepends = wf-recorder: Control Center RECORD action tile
 	optdepends = hyprpicker: Control Center COLOR action tile
+	optdepends = imagemagick: downscaled thumbnails so the wallpaper browser opens fast
 	optdepends = kitty: themed by the wallpaper-driven color pipeline
 	optdepends = gtk3: themed by the wallpaper-driven color pipeline
 	optdepends = gtk4: themed by the wallpaper-driven color pipeline

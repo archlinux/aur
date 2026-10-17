@@ -24,6 +24,7 @@ optdepends=(
   'lm_sensors: CPU temperature in Control Center'
   'wf-recorder: Control Center RECORD action tile'
   'hyprpicker: Control Center COLOR action tile'
+  'imagemagick: downscaled thumbnails so the wallpaper browser opens fast'
   'kitty: themed by the wallpaper-driven color pipeline'
   'gtk3: themed by the wallpaper-driven color pipeline'
   'gtk4: themed by the wallpaper-driven color pipeline'
