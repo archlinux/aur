@@ -54,6 +54,11 @@ print_migration_notice() {
     done
 }
 
+refresh_system_integrations() {
+    /usr/bin/kvn refresh --killswitch --polkit --if-outdated || \
+        echo "WARNING: could not update the kvn polkit or kill-switch files — run 'kvn doctor'"
+}
+
 print_service_enable_notice() {
     echo
     echo "======================================================================"
@@ -67,16 +72,40 @@ print_service_enable_notice() {
     echo
 }
 
+print_aur_package_rename_notice() {
+    [[ -e /usr/share/licenses/kvn-tui-bin/LICENSE ]] || return 0
+    echo
+    echo "======================================================================"
+    echo "  kvn-tui-bin is renamed to kvn-bin"
+    echo "======================================================================"
+    echo "kvn-tui-bin will stop receiving updates. Switch to the new package:"
+    echo
+    echo "  yay -S kvn-bin"
+    echo
+    echo "Confirm the removal of kvn-tui-bin when asked. Your profiles, settings"
+    echo "and daemon autostart are kept."
+    echo "======================================================================"
+    echo
+}
+
 post_install() {
+    local first_install=1
+    [[ ! -d /var/lib/kvn ]] || first_install=0
     seed_migration_baseline
     configure_sing_box_capabilities
-    print_service_enable_notice
+    if (( first_install )); then
+        print_service_enable_notice
+    else
+        refresh_system_integrations
+    fi
 }
 
 post_upgrade() {
     seed_migration_baseline "$2"
     configure_sing_box_capabilities
+    refresh_system_integrations
     print_migration_notice "$2"
+    print_aur_package_rename_notice
 }
 
 post_remove() {
