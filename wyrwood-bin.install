@@ -1,0 +1,118 @@
+pre_install() {
+  /bin/sh -c '#!/bin/sh
+# ---
+# relationships:
+#   implements:
+#     - linux-service
+#     - engine-proxy
+# ---
+set -eu
+
+# Stop the old cgroup before replacing files; its supplementary groups are
+# process credentials and survive account database changes.
+if [ -d /run/systemd/system ] && { [ -e /usr/lib/systemd/system/wyrwood-agent.service ] || [ -e /etc/systemd/system/wyrwood-agent.service ]; }; then
+ install -d -m 0700 -o root -g root /run/wyrwood-upgrade
+ properties=$(systemctl show --property=LoadState,ActiveState wyrwood-agent.service)
+ case "$properties" in
+ *ActiveState=active*|*ActiveState=reloading*|*ActiveState=activating*)
+  : > /run/wyrwood-upgrade/active
+  ;;
+ esac
+ systemctl stop wyrwood-agent.service
+fi
+' -- "$@"
+}
+
+pre_upgrade() {
+  /bin/sh -c '#!/bin/sh
+# ---
+# relationships:
+#   implements:
+#     - linux-service
+#     - engine-proxy
+# ---
+set -eu
+
+# Stop the old cgroup before replacing files; its supplementary groups are
+# process credentials and survive account database changes.
+if [ -d /run/systemd/system ] && { [ -e /usr/lib/systemd/system/wyrwood-agent.service ] || [ -e /etc/systemd/system/wyrwood-agent.service ]; }; then
+ install -d -m 0700 -o root -g root /run/wyrwood-upgrade
+ properties=$(systemctl show --property=LoadState,ActiveState wyrwood-agent.service)
+ case "$properties" in
+ *ActiveState=active*|*ActiveState=reloading*|*ActiveState=activating*)
+  : > /run/wyrwood-upgrade/active
+  ;;
+ esac
+ systemctl stop wyrwood-agent.service
+fi
+' -- "$@"
+}
+
+post_install() {
+  /bin/sh -c '#!/bin/sh
+# ---
+# relationships:
+#   implements:
+#     - linux-service
+#     - engine-proxy
+# ---
+set -eu
+
+# The same root-run account/unit transition serves package and archive installs.
+/usr/bin/wyrwood agent service package-install
+' -- "$@"
+}
+
+post_upgrade() {
+  /bin/sh -c '#!/bin/sh
+# ---
+# relationships:
+#   implements:
+#     - linux-service
+#     - engine-proxy
+# ---
+set -eu
+
+# The same root-run account/unit transition serves package and archive installs.
+/usr/bin/wyrwood agent service package-install
+' -- "$@"
+}
+
+pre_remove() {
+  /bin/sh -c '#!/bin/sh
+# ---
+# relationships:
+#   implements: linux-service
+# ---
+set -eu
+
+# Debian uses "remove", RPM uses 0; upgrades keep boot enablement intact.
+case "$1" in
+remove | 0)
+ if [ -d /run/systemd/system ]; then
+  systemctl disable --now wyrwood-agent.service
+  systemctl stop wyrwood-engine-proxy.service
+ fi
+ ;;
+esac
+' -- remove "$@"
+}
+
+post_remove() {
+  /bin/sh -c '#!/bin/sh
+# ---
+# relationships:
+#   implements: linux-service
+# ---
+set -eu
+
+case "${1:-}" in
+remove | purge | 0)
+ rm -f /etc/systemd/system/wyrwood-agent.service.d/10-wyrwood-engine-proxy.conf
+ ;;
+esac
+if [ -d /run/systemd/system ]; then
+ systemctl daemon-reload
+fi
+' -- remove "$@"
+}
