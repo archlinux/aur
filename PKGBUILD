@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.51
+pkgver=0.1.60
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: hardware controls, a PipeWire submixer and an OpenDeck plugin for the Elgato Wave XLR Pro, XLR Dock, Wave XLR, MK.2 family and Wave:3"
 arch=('x86_64')
@@ -25,7 +25,7 @@ if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     depends+=(qt6-websockets)
 fi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1431c1fadb0f1070be5dbc133b7b20729e011df6f1c6a2bb4f641ffa01a5d4cc')
+sha256sums=('be7582850535948cb51a4346c6a720703917e1a34a4dc1cf6056710ffce7e72f')
 
 build() {
   cd "$pkgname-$pkgver/src"
