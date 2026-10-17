@@ -116,7 +116,6 @@ makedepends=(
   glslang 
   gnutls
   gtk3
-  hip-runtime-amd
   libgphoto2
   libpulse
   libva
@@ -154,7 +153,6 @@ optdepends=(
   ffmpeg
   gnutls
   gtk3
-  hip-runtime-amd
   libgphoto2
   libpulse
   libva
@@ -262,7 +260,6 @@ prepare() {
         vklayers/pyroveil
         vklayers/vkbasalt
         wine
-        zluda-libs/hipwine
     )
 
     # Explicitly set origin URL for submodules using relative paths
@@ -305,7 +302,6 @@ build() {
         --proton-sdk-image="" \
         --build-name="${pkgname}" \
         --enable-wow64 \
-        --without-zluda-libs=rocm-systems \
         --without-steamrt-depends \
         --without-tts
 
