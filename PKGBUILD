@@ -6,7 +6,7 @@
  
 pkgname=thunderbird-esr-bin
 _pkgname=thunderbird
-pkgver=153.4.0
+pkgver=153.5.0
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - binary version"
 arch=('x86_64')
@@ -32,7 +32,7 @@ source_x86_64=(
 
 sha512sums=('510ac3042dffcaf40938047906f3beaf6d51f4d64e65ab302abe11e6a6018289a62586ee7b162ca6b587bd7390efe453f17919fcdbb940590334bc72c9d292b6'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('16063c8f71eda1de18dd5a1e350777250f802b51e7f2023dbdcb1bd0deba7fc343a4bdc4d32b1ca37cb99a0e9e1540a3c75a3b661b201a5d36ffc7f75a65e93f'
+sha512sums_x86_64=('4b5c4a988307876f861b3e40ece13a8fac4707347d573332b35319bf1d4d9f45534076decc34e23fee6de8e75f65eead4620ca435a8ab0f20dfcc6e2a6ec5850'
                    'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
