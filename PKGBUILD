@@ -6,8 +6,8 @@
 _cuda_arch=
 
 pkgname=openwhispr-cuda
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.10.3
+pkgrel=1
 pkgdesc="Voice-to-text dictation app with local Whisper/Parakeet and cloud models (NVIDIA CUDA GPU acceleration)"
 arch=(x86_64)
 url="https://github.com/OpenWhispr/openwhispr"
@@ -49,7 +49,7 @@ source=(
   "whisper.cpp-${_whisper_cpp_ver}.tar.gz::https://github.com/OpenWhispr/whisper.cpp/archive/refs/tags/${_whisper_cpp_ver}.tar.gz"
   openwhispr.service
 )
-sha256sums=('5bb5106da480bde6d867c671209ba47d3df94e97bc43115b8bdb4592e42a2a4b'
+sha256sums=('cb1015ecabd6235c37fb095bfe511f5c7d2cb3389b4d7dfa7ef684f2b8c13905'
             '9e57833a53fe706c6dca2c43417c786851f8a1af6dbe298224b2f84856b80c92'
             'afdee79b60ad4e7184b3f5b34d7c49a332cbfecf83336d918cb801554585f447')
 
