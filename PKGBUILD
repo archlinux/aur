@@ -8,7 +8,7 @@
 # - provides 'uboot' ?
 
 pkgname=uboot-rockchip-rk3566-powkiddy-x55
-pkgver=2026.04
+pkgver=2026.10
 pkgrel=1
 pkgdesc="U-Boot for the Powkiddy X55 handheld (rockchip rk3566 based)"
 arch=('x86_64' 'aarch64') # Should work on riscv64 too
@@ -20,7 +20,7 @@ source=("git+${url}.git#tag=v${pkgver}"
         "https://github.com/rockchip-linux/rkbin/raw/3e288fe814e059dd06833495f845cab04ac20a5c/bin/rk35/rk3568_ddr_1056MHz_v1.26.bin"
         "https://github.com/rockchip-linux/rkbin/raw/3e288fe814e059dd06833495f845cab04ac20a5c/bin/rk35/rk3568_bl31_v1.46.elf"
         "rkbin.LICENSE::https://raw.githubusercontent.com/rockchip-linux/rkbin/refs/heads/master/LICENSE")
-sha256sums=('4dae81ba4e943a4edda2850da41b35f3f03a5f9035a19d1a00c29bd71ec62b1a'
+sha256sums=('ead6c9d53c9c34a1154f8d797df9341533f5319cc367f79ce2848414899556ec'
             '1af305b6930af4d7afe3af8ddc88d1b353427dae451bfdb4a2e1dbc52488f725'
             'c81ac7e8e1fd727cf7f0db62a9aaea760bde2b270e34d98eb264a264b86df749'
             'd2765124a2c24d71aba3cbc6cdd6975a5a297821264eb6c26378a4c16cd16e92')
