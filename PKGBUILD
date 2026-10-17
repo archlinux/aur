@@ -62,7 +62,7 @@ _system_libs=(
 _enable_js=1
 if (( _enable_js )); then
   _is_jitless=1
-  license=('Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND MIT AND NCSA')
+  license=('Apache-2.0 AND MIT AND BSD-3-Clause AND (Apache-2.0 WITH LLVM-exception AND (MIT OR NCSA))')
   makedepends+=(
     highway
   )
@@ -327,10 +327,35 @@ EOF
 
   install -Dm644 third_party/pdfium/third_party/agg23/copying \
     -t "${pkgdir}/usr/share/licenses/${pkgname}/agg23"
+
   if (( _enable_js )); then
     install -Dm644 v8/LICENSE.v8 \
       -t "${pkgdir}/usr/share/licenses/${pkgname}/v8"
-    install -Dm644 third_party/libc++/src/LICENSE.txt \
+
+    # Original, unmodified
+    install -Dm644 third_party/libc++/src/LICENSE.TXT \
+      -t "${pkgdir}/usr/share/licenses/${pkgname}/libc++"
+
+    # Apache-2.0 with LLVM exceptions: between the 2nd and 3rd "=====" rules
+    awk '/^=+$/ { n++; if (n == 3) exit; next } n >= 2' \
+      third_party/libc++/src/LICENSE.TXT \
+      > "${srcdir}/LICENSE.Apache-2.0-with-LLVM-exception"
+
+    # University of Illinois/NCSA: from its title up to the next "=====" rule
+    awk '/^University of Illinois\/NCSA$/ { p = 1 } p && /^=+$/ { exit } p' \
+      third_party/libc++/src/LICENSE.TXT \
+      > "${srcdir}/LICENSE.NCSA"
+
+    # MIT: from its copyright line to end of file
+    awk '/^Copyright \(c\) 2009-2014 by the contributors/ { p = 1 } p' \
+      third_party/libc++/src/LICENSE.TXT \
+      > "${srcdir}/LICENSE.MIT"
+
+    install -Dm644 "${srcdir}/LICENSE.Apache-2.0-with-LLVM-exception" \
+      -t "${pkgdir}/usr/share/licenses/${pkgname}/libc++"
+    install -Dm644 "${srcdir}/LICENSE.NCSA" \
+      -t "${pkgdir}/usr/share/licenses/${pkgname}/libc++"
+    install -Dm644 "${srcdir}/LICENSE.MIT" \
       -t "${pkgdir}/usr/share/licenses/${pkgname}/libc++"
   fi
 }
