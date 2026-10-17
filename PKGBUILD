@@ -1,7 +1,7 @@
 # Maintainer: Aaron Friesen <aaron@frie.dev>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgname=rinklecate
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Rust implementation of inklecate - compile and play Ink stories from the command line'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 depends=(glibc libgcc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(9816a66fb64a8369f58d4d4880fb8a90285597d1142bae56ca7f134e1dfcc1a3)
+sha256sums=('b5c21703a22cebf058b2c33c67fbea1f2acfe85e12bb07924c51a79df09a852d')
 
 prepare() {
 	cd "$_srcname-$pkgver"
