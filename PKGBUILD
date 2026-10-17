@@ -66,7 +66,7 @@ package_appvol() {
 }
 
 package_appvol-gui() {
-    pkgdesc="Window for appvol (PySide6 and Kirigami)"
+    pkgdesc="Qt-based configurator for appvol (PySide6 and Kirigami)"
     depends=('appvol' 'pyside6' 'kirigami' 'qqc2-desktop-style' 'breeze-icons')
     optdepends=('plasma-desktop: the desktop whose shortcut dialog the window opens')
 

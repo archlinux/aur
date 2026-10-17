@@ -21,7 +21,7 @@ pkgname = appvol
 	optdepends = appvol-gui: the window for the profiles
 
 pkgname = appvol-gui
-	pkgdesc = Window for appvol (PySide6 and Kirigami)
+	pkgdesc = Qt-based configurator for appvol (PySide6 and Kirigami)
 	depends = appvol
 	depends = pyside6
 	depends = kirigami
