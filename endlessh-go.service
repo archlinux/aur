@@ -1,0 +1,29 @@
+[Unit]
+Description=Endlessh-go SSH tarpit
+Documentation=https://github.com/shizunge/endlessh-go
+After=network.target
+
+[Service]
+# Default: listen on port 2222, Prometheus metrics disabled.
+# To change flags (e.g. tarpit port 22, enable metrics), use a drop-in:
+#   /etc/systemd/system/endlessh-go.service.d/override.conf
+#   [Service]
+#   ExecStart=
+#   ExecStart=/usr/bin/endlessh-go -port 22 -prometheus_enabled -prometheus_port 2112 -logtostderr
+ExecStart=/usr/bin/endlessh-go -logtostderr
+Restart=on-failure
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+InaccessiblePaths=/var
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+MemoryDenyWriteExecute=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

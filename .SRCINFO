@@ -1,0 +1,16 @@
+pkgbase = endlessh-go
+	pkgdesc = SSH tarpit that slowly sends an endless banner, with Prometheus metrics (Go implementation)
+	pkgver = 2026.0730.0
+	pkgrel = 2
+	url = https://github.com/shizunge/endlessh-go
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	source = endlessh-go-2026.0730.0.tar.gz::https://github.com/shizunge/endlessh-go/archive/refs/tags/2026.0730.0.tar.gz
+	source = endlessh-go.service
+	sha256sums = 77a401ce3fdfb70e76312e5f1d57de877eb23ccfa58c8e2320b8da6d1b716f2c
+	sha256sums = f011c5c6955ebc74a3acf6a89c2bfff31af83da2b99f28290f7032d4471db0ca
+
+pkgname = endlessh-go
