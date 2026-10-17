@@ -2,7 +2,7 @@
 
 _pkgname=all-the-platforms
 pkgname=$_pkgname-git
-pkgver=0.1.0.r0.g6b233f3
+pkgver=0.1.1.r0.g9ebe637
 pkgrel=1
 pkgdesc="One command for all the platforms: read, search, post, chat and download on 67 platforms, with JSON output and an MCP server"
 arch=('x86_64' 'aarch64')
