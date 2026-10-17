@@ -8,8 +8,8 @@
 # tarball checksum below.
 
 pkgname=tuxmix
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Open-source TotalMix replacement for RME audio interfaces on Linux"
 arch=('x86_64')
 url="https://github.com/ismail-bahloul/TuxMix"
@@ -34,26 +34,9 @@ makedepends=(
 options=('!lto')
 # GitHub names the archive after the repo's real casing (TuxMix-*),
 # not the lowercase pkgname — build()/package() cd into that below.
-#
-# The three icon files are carried here instead of being taken from the
-# archive: v0.1.0 was tagged before the icon was redrawn, so its tree
-# still holds the placeholder that first release shipped, and pkgrel
-# exists exactly for this -- packaging changes over unchanged binaries.
-# Drop them, and the ${srcdir} paths in package() below, at the next
-# version, where the archive brings all of it back.
-#
-# pkgrel 3 is the same files with the tile's light no longer clipped:
-# Qt's SVG engine ignores clip-path on a group, so the vignette and sheen
-# that were clipped to the tile painted the whole canvas, which showed as
-# a grey haze around the icon on KDE.
-source=("${url}/archive/v${pkgver}/TuxMix-${pkgver}.tar.gz"
-        "tuxmix.svg"
-        "tuxmix-128.png"
-        "tuxmix-256.png")
-sha256sums=('62fc554fe8768295ce141cb344a5ca15cf1e03d925e51841071dc05135457bbc'
-            'b92b5c496d58125c0d421181e496143f8a42bc0f8eb6e8c34f046d2a8278fa71'
-            '379887523c5754ffc8513b52035a9ac7f9c8888f97ed6afbc3b30da5c9e938d5'
-            '7f1656b0ff55fa85b0c8dbfdba980ffeaa62eb076fe6a6fcc27ff8b27607676d')
+source=("${url}/archive/v${pkgver}/TuxMix-${pkgver}.tar.gz")
+# Filled in once the v0.2.0 tag exists (it hashes the GitHub archive).
+sha256sums=('7f056d9f26fd0e6f2a0c5e2a4022a11fa5eaf811080561024769f00ed7ec8eac')
 
 build() {
     cd "${srcdir}/TuxMix-${pkgver}"
@@ -70,11 +53,11 @@ package() {
 
     install -Dm644 "tuxmix-gui/assets/tuxmix.desktop" \
         "${pkgdir}/usr/share/applications/tuxmix.desktop"
-    install -Dm644 "${srcdir}/tuxmix.svg" \
+    install -Dm644 "tuxmix-gui/assets/tuxmix.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tuxmix.svg"
-    install -Dm644 "${srcdir}/tuxmix-128.png" \
+    install -Dm644 "tuxmix-gui/assets/tuxmix-128.png" \
         "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tuxmix.png"
-    install -Dm644 "${srcdir}/tuxmix-256.png" \
+    install -Dm644 "tuxmix-gui/assets/tuxmix-256.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/tuxmix.png"
 
     install -Dm644 "README.md" \
