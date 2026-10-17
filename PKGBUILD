@@ -1,6 +1,6 @@
 # Maintainer: WgpArch <wgparch@riseup.net>
 pkgname=qwen-minimal-desktop
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Single-file GTK4 chat client for Qwen and Kimi with local/cloud backends"
 arch=('any')
