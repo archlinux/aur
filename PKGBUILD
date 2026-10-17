@@ -4,12 +4,16 @@
 
 pkgname=lightscribe-labeler
 pkgver=1.18.15.1
-pkgrel=5
+pkgrel=6
 pkgdesc="LightScribe Simple Labeler"
-arch=('i686')
+arch=('x86_64')
 url="http://www.lightscribe.com/downloadSection/linux/index.aspx?id=815"
 license=('custom')
-depends=('lightscribe' 'libstdc++5' 'libxi' 'libxcursor' 'libpng' 'fontconfig' 'libsm' 'libxrandr')
+depends=('lib32-lightscribe' 'lib32-libstdc++5' 'lib32-libpng12' 'lib32-gcc-libs' 'lib32-glibc'
+         'lib32-zlib' 'lib32-freetype2' 'lib32-fontconfig' 'lib32-libx11' 'lib32-libxext'
+         'lib32-libxrender' 'lib32-libsm' 'lib32-libice' 'lib32-libxi' 'lib32-libxcursor'
+         'lib32-libxrandr')
+optdepends=('lib32-libxinerama: multi-monitor support')
 source=(http://files.jkvinge.net/packages/lightscribe/lightscribeApplications-1.18.15.1-linux-2.6-intel.rpm)
 options=('!strip')
 
