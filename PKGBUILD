@@ -7,7 +7,7 @@
 # Arch/Omarchy (Intel and NVIDIA).
 
 pkgname=audibleport-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Download and convert Audible audiobooks locally"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  '662a58a0abb7787e8e35499d935aa52b0d0818907e2b9cf4e7030880de7873c6'
+  'caa3d7ee892638e6a837e5b4f1bc4035b9113284df878d36ab3bc5334b36805d'
   'd7afd4229854d68a47e0cdadbbf4cd44a2cbef90b4104e30800557f6846cd3a0'
   'f306dfb5d537724f15d2af8c2bd81d8bf666c85c45e20aea6e8fb9cda2f4881e'
   'ab768f90de1bebd36122c52dce48305f9191660e017772cf7d852de9a6376594'
