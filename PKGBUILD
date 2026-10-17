@@ -1,7 +1,7 @@
 # Maintainer: ycna07 <aozakitouko at foxmail dot com>
 pkgname=reinamanager
 _pkgname=ReinaManager
-pkgver=0.31.1
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="A lightweight galgame/visual-novel manager,Under development..."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 options=('!lto' '!strip' '!emptydirs')
 source=("${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('0596a2c054e58213b881f1cfeb15721aefa4739cb661c2aea8ad8424b9f2cc9b')
+sha256sums=('8aff3ac964b7d499977accf76411c80f2f5671f3d3e5d0bb3736812bfcda5012')
 
 
 
