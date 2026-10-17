@@ -1,6 +1,6 @@
 pkgbase = subcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Substance Painter
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://aalzard.github.io/subcraft
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = subcraft
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/Aalzard/subcraft/archive/refs/tags/v0.1.5/subcraft-0.1.5.tar.gz
-	sha256sums = 1f82d561146906947f73c37d4df00c7fa2f3a13ee87234e24671723758901349
+	source = https://github.com/Aalzard/subcraft/archive/refs/tags/v0.1.6/subcraft-0.1.6.tar.gz
+	sha256sums = 81fca8068a25636be0b20bcd876debb94f166d9aacc05dc8daa762685477e216
 
 pkgname = subcraft
 	depends = glibc
