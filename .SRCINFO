@@ -1,6 +1,6 @@
 pkgbase = texoria-bin
 	pkgdesc = An elegant, fast LaTeX editor
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Herbrant/TeXoria
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = texoria-bin
 	conflicts = texoria
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Herbrant/TeXoria/releases/download/v0.4.0/texoria-0.4.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = ce016ccf4563c2ed366629faaf755f26589b653db2a143930843646ef5ab416b
-	source_aarch64 = https://github.com/Herbrant/TeXoria/releases/download/v0.4.0/texoria-0.4.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 99fa78309b65ea0fa4583c3fc01635ee2016436118cd0ef990c637244daa3cbc
+	source_x86_64 = https://github.com/Herbrant/TeXoria/releases/download/v0.4.1/texoria-0.4.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8534559acf0c84781b9dc7ba408310e06f259ba502d83c23564673b22d2e0c13
+	source_aarch64 = https://github.com/Herbrant/TeXoria/releases/download/v0.4.1/texoria-0.4.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = ac4e6225160bccdf21ba73eaec31e307a9cb7bd197eefd6bfd8e7670d54ee11e
 
 pkgname = texoria-bin
