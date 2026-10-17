@@ -2,10 +2,10 @@
 
 _name=jsonschema-rs
 pkgname=python-$_name
-pkgver=0.58.6
+pkgver=0.59.0
 pkgrel=1
 pkgdesc="A high-performance JSON Schema validator for Python."
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/Stranger6667/jsonschema'
 license=('MIT')
 depends=('python'
@@ -14,7 +14,6 @@ depends=('python'
 makedepends=('python-maturin'
              'python-build'
              'python-installer'
-             'python-wheel'
              'mold'
              'git')
 checkdepends=('python-flask'
@@ -22,18 +21,18 @@ checkdepends=('python-flask'
               'python-pytest')
 options=(!strip lto)
 source=("$_name::git+$url.git#tag=python-v$pkgver"
-        "git+https://github.com/json-schema-org/JSON-Schema-Test-Suite#commit=583d7c6")
-sha256sums=('e020e15800681f3c2937b36a337be1e1a0ecbdf73df2473243e033032710f577'
-            '7ccebd0988e5f5553be0cf64a2cdad14299abc73c58ee8d536b9d56da440ce1a')
+        "git+https://github.com/json-schema-org/JSON-Schema-Test-Suite#commit=5b0ee16")
+sha256sums=('2ec74c16b1b8c4db0c8694397b5520209c7bd4330e0cf5a5f16c46b76a58e5c1'
+            '5477d894cb15fc844862d0baf5d0dfbd26b5a5f112087350a6802289b089c3b1')
 
 prepare() {
-  cd "$srcdir"/$_name
+  cd "$_name"
   git submodule init crates/jsonschema/tests/suite
   git config submodule.testsuite.url "$srcdir"/JSON-Schema-Test-Suite
   git -c protocol.file.allow=always submodule update crates/jsonschema/tests/suite
 }
 build() {
-  cd "$srcdir"/$_name
+  cd "$_name"
   export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
   export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   python -m build --wheel --no-isolation crates/${_name//-rs/-py}
@@ -45,7 +44,7 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/$_name
+  cd "$_name"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer crates/${_name//-rs/-py}/dist/*.whl
   test-env/bin/python -m installer crates/${_name//-rs/-testsuite-pyo3}/dist/*.whl
@@ -53,6 +52,6 @@ check() {
 }
 
 package() {
-  cd "$srcdir"/$_name
+  cd "$_name"
   python -m installer --destdir="$pkgdir" crates/${_name//-rs/-py}/dist/*.whl
 }
