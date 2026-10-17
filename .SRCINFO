@@ -1,7 +1,7 @@
 pkgbase = soloistd
 	pkgdesc = Manage Spotify Soloist as a user service with automatic updates
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MopigamesYT/soloistd
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,6 @@ pkgbase = soloistd
 	depends = systemd
 	options = !debug
 	source = soloistd-0.2.0.tar.gz::https://github.com/MopigamesYT/soloistd/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 5e9ed72b4cffa21bdb81ae7de2b5606a9e8d8494222d4b1fb4fb0fdf77b21e5b
+	sha256sums = 69ee2e48fb4f01d0518418a2baecfb8bb87bf0c2de83bc6db94ed4074c7f054f
 
 pkgname = soloistd

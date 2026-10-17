@@ -3,7 +3,7 @@
 
 pkgname=soloistd
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage Spotify Soloist as a user service with automatic updates'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/MopigamesYT/soloistd'
@@ -12,7 +12,7 @@ depends=('glibc' 'systemd')
 makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5e9ed72b4cffa21bdb81ae7de2b5606a9e8d8494222d4b1fb4fb0fdf77b21e5b')
+sha256sums=('69ee2e48fb4f01d0518418a2baecfb8bb87bf0c2de83bc6db94ed4074c7f054f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -37,6 +37,7 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 build/soloistd "${pkgdir}/usr/bin/soloistd"
+  install -Dm644 doc/soloistd.1 "${pkgdir}/usr/share/man/man1/soloistd.1"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/soloistd/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/soloistd/LICENSE"
 }
