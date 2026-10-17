@@ -2,7 +2,7 @@ pkgbase = epy-ereader-mcepl-git
 	pkgdesc = fork of wustho/epy with continued development
 	pkgver = 2025.5.27.r5.g18f3f46
 	pkgrel = 1
-	url = https://git.sr.ht/~mcepl/epy
+	url = https://codefloe.com/mcepl/epy
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = epy-ereader-mcepl-git
 	conflicts = epy-ereader
 	conflicts = epy-ereader-git
 	conflicts = epy-ereader-mcepl
-	source = git+https://git.sr.ht/~mcepl/epy
+	source = git+https://codefloe.com/mcepl/epy
 	sha256sums = SKIP
 
 pkgname = epy-ereader-mcepl-git
