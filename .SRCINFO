@@ -1,0 +1,27 @@
+pkgbase = openvox8-agent-bin
+	pkgdesc = Agent of the OpenVox Automation Framework (non-modular)
+	pkgver = 8.31.0
+	pkgrel = 1
+	url = https://voxpupuli.org/openvox/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	depends = libxcrypt-compat
+	provides = puppet
+	provides = openvox
+	provides = openvox-agent
+	conflicts = puppet
+	conflicts = openvox
+	conflicts = openvox-agent
+	options = !debug
+	backup = etc/puppetlabs/puppet/puppet.conf
+	backup = etc/puppetlabs/puppet/hiera.yaml
+	source_x86_64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox8-agent_8.31.0-1+debian13_amd64.deb
+	b2sums_x86_64 = ce53f442cadebd033d91dbe20534c53074e1e1245551849c195052b8c6ee4bbdeb7bdb4d153928ef84b7f67c6104ecec4c1bdef4722555fe09f009faad71ae35
+	source_aarch64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox8-agent_8.31.0-1+debian13_arm64.deb
+	b2sums_aarch64 = 450b2436acab59528d7d5a6c986a92e6f0307ecd495ad4908e19e9fe1a9e8cf2e4880ef0cba968e78dd39f28e71ecfe29dcaf1ca08cd5e01813d9d32b6c9e526
+	source_armv7h = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox8-agent_8.31.0-1+debian13_armhf.deb
+	b2sums_armv7h = 67dfad036cdd2a75710abd6ff13d967ebab43ecf9f18a340797fd06d1f7cd70ef2fb264a627609600aa54ceacd262e9b6bdf119b9c2a49208149ade134b730ec
+
+pkgname = openvox8-agent-bin
