@@ -30,7 +30,7 @@ optdepends=(
 provides=("flowshot=$pkgver")
 conflicts=('flowshot' 'flowshot-git')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-1-x86_64-Arch.pkg.tar.zst")
-b2sums=('99a7a4794701cd41f421577ac3fbf14d8f4dcbfbf9d7f1e5ee53b21f35ba5db0764aee8b239f790086428f67d92e1e4783f758d8e8bf5bfc066aa55600c23231')
+b2sums=('ed6b059da85670715044a2a255d5db594d8eedb8025969b48abfde5026b281b56b0d4a16ec650933ce195c0147f99564faa9528d64e67556c050a59077b4369a')
 options=('!strip' '!lto' '!debug')
 
 package() {
