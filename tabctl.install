@@ -1,35 +1,20 @@
 post_install() {
-    echo "==> Setting up TabCtl native messaging..."
-    echo "==> Run 'tabctl install' to interactively configure browser native messaging"
-    echo "==> The install process will detect your browsers and let you select which to configure"
+    echo "==> Register the native-messaging host for your browsers (as your user):"
+    echo "==>   tabctl install"
     echo "==> "
-    echo "==> To use TabCtl, you need to load the browser extension:"
-    echo "==>   Chrome/Brave: Load unpacked from /usr/share/tabctl/extensions/chrome/"
-    echo "==>   Firefox: Load temporary from /usr/share/tabctl/extensions/firefox/"
-    echo "==> "
-    echo "==> The Chrome extension has a fixed ID for development builds"
-    echo "==> After loading the extension, restart the browser for native messaging to work"
-    echo "==> "
-    echo "==> Rofi integration scripts are available in /usr/share/tabctl/scripts/"
-    echo "==>   rofi-tabctl-wmctrl.sh - For X11 with wmctrl"
-    echo "==>   rofi-tabctl-hyprland.sh - For Hyprland/Wayland, with favicons"
-    echo "==> You can symlink them to your PATH or use them directly"
+    echo "==> Then install the browser extension from its store and restart the browser:"
+    echo "==>   Firefox / Zen:  https://addons.mozilla.org/en-US/firefox/addon/tabctl1/"
+    echo "==>   Chrome / Chromium / Brave / Helium:"
+    echo "==>     https://chromewebstore.google.com/detail/tabctl/baomblllgemcgbignhpbipgiofmjdhpn"
 }
 
 post_upgrade() {
-    echo "==> TabCtl has been upgraded"
-    echo "==> Run 'tabctl install' to update native messaging configuration"
-    echo "==> You may need to reload your browser extensions after the upgrade"
-    echo "==> The interactive installer will help you reconfigure browsers"
+    echo "==> Restart your browsers so they launch the upgraded tabctl-mediator."
+    echo "==> 'tabctl status' reports the running mediator and extension versions."
 }
 
 post_remove() {
-    echo "==> TabCtl has been removed"
-    echo "==> Native messaging configurations may still exist in:"
-    echo "==>   ~/.mozilla/native-messaging-hosts/tabctl_mediator.json"
-    echo "==>   ~/.config/google-chrome/NativeMessagingHosts/tabctl_mediator.json"
-    echo "==>   ~/.config/chromium/NativeMessagingHosts/tabctl_mediator.json"
-    echo "==>   ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts/tabctl_mediator.json"
-    echo "==>   ~/.zen/native-messaging-hosts/tabctl_mediator.json"
-    echo "==> You may want to remove these files manually if no longer needed"
+    echo "==> Native-messaging manifests are per user and are left in place."
+    echo "==> Run 'tabctl uninstall' before removing next time, or delete them with:"
+    echo "==>   find ~/.mozilla ~/.zen ~/.config -name tabctl_mediator.json -delete"
 }
