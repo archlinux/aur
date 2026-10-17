@@ -6,7 +6,7 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc="GPU terminal for developers: splits and sessions, command blocks, searchable history, AI help, inline images and Lua scripting (prebuilt)"
 arch=('x86_64' 'aarch64')
-url="https://cybercore-tech.github.io/cyberterm/"
+url="https://cybercoretech.github.io/cyberterm/"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'libxkbcommon' 'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr')
 optdepends=('vulkan-icd-loader: Vulkan rendering (falls back to OpenGL)'
@@ -15,9 +15,9 @@ optdepends=('vulkan-icd-loader: Vulkan rendering (falls back to OpenGL)'
             'libnotify: desktop notifications for long commands')
 provides=('cyberterm')
 conflicts=('cyberterm')
-_base="https://github.com/cybercore-tech/cyberterm"
-source=("LICENSE-$pkgver::https://raw.githubusercontent.com/cybercore-tech/cyberterm/v$pkgver/LICENSE"
-        "cyberterm-$pkgver.svg::https://raw.githubusercontent.com/cybercore-tech/cyberterm/v$pkgver/assets/brand/cyberterm-icon.svg"
+_base="https://github.com/cybercoretech/cyberterm"
+source=("LICENSE-$pkgver::https://raw.githubusercontent.com/cybercoretech/cyberterm/v$pkgver/LICENSE"
+        "cyberterm-$pkgver.svg::https://raw.githubusercontent.com/cybercoretech/cyberterm/v$pkgver/assets/brand/cyberterm-icon.svg"
         "cyberterm.desktop")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$_base/releases/download/v$pkgver/cyberterm-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$_base/releases/download/v$pkgver/cyberterm-aarch64-unknown-linux-gnu.tar.gz")
