@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 If this project saves you or your company time, consider [sponsoring](https://github.com/sponsors/plrigaux) ongoing maintenance.
 
-## [Unreleased]
+<!-- ## [Unreleased] -->
 
-- A mount wizard
+## [2.24.0] - 2026-10-16
+
+### Added
+- [Issue 80](https://github.com/plrigaux/sysd-manager/issues/80) Preserve Filters on the appplication restart
+
+### Changed
+- Filter Unit Panel UX
+
+### Fixed
+- [Issue 81](https://github.com/plrigaux/sysd-manager/issues/81) Flathub Image Title showcasing Status are labeled File
 
 ## [2.23.1] - 2026-10-08
 
