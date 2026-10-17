@@ -1,0 +1,23 @@
+pkgbase = figcraft-bin
+	pkgdesc = Open-source interface design and prototyping app, Figma alternative (prebuilt binary)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/storytold/figcraft
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	optdepends = vulkan-icd-loader: GPU-accelerated rendering
+	provides = figcraft
+	conflicts = figcraft
+	options = !strip
+	source_x86_64 = figcraft-0.6.0-linux-x86_64.tar.gz::https://github.com/storytold/figcraft/releases/download/v0.6.0/figcraft-0.6.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b66dfa68fa5ee54e275f9270168974d54cdbe8b1f431c8b0e962cb7b6baa0660
+	source_aarch64 = figcraft-0.6.0-linux-aarch64.tar.gz::https://github.com/storytold/figcraft/releases/download/v0.6.0/figcraft-0.6.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1bb4c2364c8ac5133b52db14f6a1314d5802df1e0ee87e8fb8893ae7d5b635cb
+
+pkgname = figcraft-bin
