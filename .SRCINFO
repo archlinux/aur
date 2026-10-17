@@ -1,6 +1,6 @@
 pkgbase = bawkterm-bin
 	pkgdesc = SSH, SFTP, Docker and Remote Desktop client with an encrypted vault
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/juddisjudd/bawkterm
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = bawkterm-bin
 	conflicts = bawkterm
 	options = !strip
 	options = !debug
-	source = bawkterm-0.9.5.tar.gz::https://github.com/juddisjudd/bawkterm/releases/download/v0.9.5/bawkterm-0.9.5.tar.gz
-	sha256sums = df5196f260eb7d2744eb77bbd7dc8624a3f02e017fd5250bd48a828dea504548
+	source = bawkterm-0.9.6.tar.gz::https://github.com/juddisjudd/bawkterm/releases/download/v0.9.6/bawkterm-0.9.6.tar.gz
+	sha256sums = 5342c4ee917e0698885ee3ac6d36f92e4fc43f6707237081bc10c8605eb64e84
 
 pkgname = bawkterm-bin
