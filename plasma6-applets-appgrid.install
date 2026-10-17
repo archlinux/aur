@@ -7,8 +7,7 @@ _restart_notice() {
     cat <<'MSG'
 ==> AppGrid is a compiled Plasma applet. Restart Plasma to load the new
 ==> version; the running session can freeze until you do:
-==>   Wayland:  systemctl --user restart plasma-plasmashell.service
-==>   X11:      kquitapp6 plasmashell && kstart plasmashell
+==>   systemctl --user restart plasma-plasmashell.service
 MSG
 }
 
