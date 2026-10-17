@@ -1,6 +1,6 @@
 pkgbase = git-tpl-bin
 	pkgdesc = Git-native project templates (prebuilt binary)
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/noirbizarre/git-tpl
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = git-tpl-bin
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
-	provides = git-tpl=0.14.1
+	provides = git-tpl=0.14.2
 	conflicts = git-tpl
 	options = !strip
 	options = !debug
-	source = LICENSE-0.14.1::https://github.com/noirbizarre/git-tpl/raw/0.14.1/LICENSE
+	source = LICENSE-0.14.2::https://github.com/noirbizarre/git-tpl/raw/0.14.2/LICENSE
 	sha256sums = 579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e
-	source_x86_64 = git-tpl-bin-0.14.1-x86_64.tar.gz::https://github.com/noirbizarre/git-tpl/releases/download/0.14.1/git-tpl_0.14.1_linux-amd64.tar.gz
-	sha256sums_x86_64 = 03a8e5ead2458a63732f654266d83916c6398a98dd5fdde8a3e801c1e1eca3c8
-	source_aarch64 = git-tpl-bin-0.14.1-aarch64.tar.gz::https://github.com/noirbizarre/git-tpl/releases/download/0.14.1/git-tpl_0.14.1_linux-arm64.tar.gz
-	sha256sums_aarch64 = 3cdd838ef66d5f79bc06081c50e08366201faff7b27990290acf758b022df947
+	source_x86_64 = git-tpl-bin-0.14.2-x86_64.tar.gz::https://github.com/noirbizarre/git-tpl/releases/download/0.14.2/git-tpl_0.14.2_linux-amd64.tar.gz
+	sha256sums_x86_64 = 3ba2f1c0c83de674c431f436ecfff72a53815033b44e524a594afe34f0ec156c
+	source_aarch64 = git-tpl-bin-0.14.2-aarch64.tar.gz::https://github.com/noirbizarre/git-tpl/releases/download/0.14.2/git-tpl_0.14.2_linux-arm64.tar.gz
+	sha256sums_aarch64 = a63af1ed55629c61b3cab4da4ea4d04cd33cc19d7b8d230750ac5b71a03a7b06
 
 pkgname = git-tpl-bin
