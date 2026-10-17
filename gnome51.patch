@@ -1,0 +1,38 @@
+diff -Npur a/extension.js b/extension.js
+--- a/extension.js	2026-10-17 10:02:12.943170777 -0600
++++ b/extension.js	2026-10-17 10:04:00.672901619 -0600
+@@ -326,7 +326,7 @@ export default class ShotzyExtension ext
+         });
+ 
+         this._lensSideBox = new St.BoxLayout({
+-            vertical: true,
++            orientation: Clutter.Orientation.VERTICAL,
+             y_align: Clutter.ActorAlign.CENTER,
+         });
+         this._lensSideBox.set_style('margin-left: 16px; padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.2);');
+Binary files a/.git/index and b/.git/index differ
+diff -Npur a/metadata.json b/metadata.json
+--- a/metadata.json	2026-10-17 10:02:12.943170777 -0600
++++ b/metadata.json	2026-10-17 10:02:44.682799041 -0600
+@@ -5,7 +5,8 @@
+   "settings-schema": "org.gnome.shell.extensions.shotzy",
+   "shell-version": [
+     "49",
+-    "50"
++    "50",
++    "51"
+   ],
+   "url": "https://github.com/SamkitJain660/Shotzy",
+   "version": 8,
+diff -Npur a/ocr.js b/ocr.js
+--- a/ocr.js	2026-10-17 10:02:12.944170765 -0600
++++ b/ocr.js	2026-10-17 10:04:44.218383082 -0600
+@@ -190,7 +190,7 @@ export class ScreenshotOCRController {
+             }));
+ 
+             this._copyMenu = new St.BoxLayout({
+-                vertical: false,
++                orientation: Clutter.Orientation.HORIZONTAL,
+                 visible: false,
+                 reactive: true,
+                 style: `

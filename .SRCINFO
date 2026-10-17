@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-shotzy-git
 	pkgdesc = Image search on Google Lens, OCR and QR scan directly from the built-in GNOME Screenshot tool
-	pkgver = r35.2a1b7bf
-	pkgrel = 1
+	pkgver = r54.ee1c95a
+	pkgrel = 2
 	url = https://github.com/SamkitJain660/Shotzy
 	arch = any
 	license = GPL-3.0-or-later
@@ -13,6 +13,8 @@ pkgbase = gnome-shell-extension-shotzy-git
 	provides = gnome-shell-extension-shotzy
 	conflicts = gnome-shell-extension-shotzy
 	source = git+https://github.com/SamkitJain660/Shotzy.git
+	source = gnome51.patch
 	sha256sums = SKIP
+	sha256sums = a1e55280da815f54d27bf99d48a986b72a0144de8b8e45b5b5ced54c791ebbbf
 
 pkgname = gnome-shell-extension-shotzy-git

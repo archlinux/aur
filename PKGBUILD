@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-shotzy-git
-pkgver=r35.2a1b7bf
-pkgrel=1
+pkgver=r54.ee1c95a
+pkgrel=2
 pkgdesc="Image search on Google Lens, OCR and QR scan directly from the built-in GNOME Screenshot tool"
 arch=('any')
 url="https://github.com/SamkitJain660/Shotzy"
@@ -17,12 +17,21 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/SamkitJain660/Shotzy.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/SamkitJain660/Shotzy.git'
+        'gnome51.patch')
+sha256sums=('SKIP'
+            'a1e55280da815f54d27bf99d48a986b72a0144de8b8e45b5b5ced54c791ebbbf')
 
 pkgver() {
   cd Shotzy
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  cd Shotzy
+
+  # GNOME 51 support
+  patch -Np1 -i ../gnome51.patch
 }
 
 build() {
