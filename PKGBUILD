@@ -1,6 +1,6 @@
 # Maintainer: Dany Thinnes <dany@projekt-hirnfrei.de>
 pkgname=hdmiviewer
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Schlanker Qt6/C++ Live-Viewer für HDMI-Grabber (V4L2 + ALSA), Companion zu OBS Studio"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'alsa-lib')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e7248a957ad7bc6410adf6c67b4b2abcbca6066dfc042164904db5884b960d2e')
+sha256sums=('0999f999f3b7cda71484c5d06074ba963406dc26dcc2928abbad1b94320cb809')
 
 build() {
     # Der Ordnername im Archiv hängt von der Gitea-Instanz ab (meist
