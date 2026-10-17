@@ -1,15 +1,15 @@
 pkgname=openvox8-agent-bin
 _pkgname=openvox8-agent-bin
 pkgver=8.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Agent of the OpenVox Automation Framework (non-modular)'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://voxpupuli.org/openvox/'
 license=('Apache-2.0')
 depends=('libxcrypt-compat')
 options=('!debug')
-conflicts=('puppet' 'openvox' 'openvox-agent')
-provides=('puppet' 'openvox' 'openvox-agent')
+conflicts=('puppet' 'openvox' 'openvox-agent-bin')
+provides=('puppet' 'openvox' 'openvox-agent-bin')
 backup=('etc/puppetlabs/puppet/puppet.conf' 'etc/puppetlabs/puppet/hiera.yaml')
 
 source_x86_64=("https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/${_pkgname}_${pkgver}-1+debian13_amd64.deb")
