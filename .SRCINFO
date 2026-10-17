@@ -1,0 +1,19 @@
+pkgbase = ilspy-bin
+	pkgdesc = .NET Decompiler with support for PDB generation, ReadyToRun, Metadata (&more)
+	pkgver = 11.1.0.9782
+	pkgrel = 1
+	url = https://github.com/icsharpcode/ILSpy
+	arch = x86_64
+	license = MIT
+	depends = dotnet-runtime-10.0
+	depends = fontconfig
+	depends = libx11
+	provides = ilspy
+	conflicts = ilspy
+	conflicts = ilspy-git
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/icsharpcode/ILSpy/releases/download/v11.1/ilspy_11.1.0.9782-1_amd64.deb
+	sha256sums_x86_64 = 726696d5a62146daf627d06d255fa3c18253f633b8615f48b31382ae88ef5141
+
+pkgname = ilspy-bin
