@@ -5,6 +5,7 @@ pkgdesc="Backend for ProxyCoreWrapper"
 url='https://github.com/ProxyCoreWrapper/backend'
 arch=('x86_64')
 license=('MIT OR Apache-2.0')
+options=('!debug')
 
 depends=('glibc' 'systemd')
 makedepends=('git' 'rust' 'protobuf')
