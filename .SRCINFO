@@ -1,0 +1,42 @@
+pkgbase = skwir-bin
+	pkgdesc = An augmented file manager, for humans and agents (the release build)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://skwir.org
+	arch = x86_64
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = GPL-3.0-only
+	license = AGPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libx11
+	depends = libxcb
+	depends = wayland
+	depends = libglvnd
+	depends = libdrm
+	depends = mesa
+	depends = alsa-lib
+	depends = vulkan-driver
+	depends = fontconfig
+	optdepends = bubblewrap: LibreOffice, ImageMagick and thumbnailers run isolated
+	optdepends = libreoffice-fresh: office documents shown as pages
+	optdepends = pandoc-cli: text documents read by Pandoc
+	optdepends = imagemagick: pictures no thumbnailer draws
+	optdepends = ffmpeg: still frames of films
+	optdepends = perl-image-exiftool: writing and removing pictures locations
+	optdepends = plocate: instant name searches over whole disks
+	optdepends = udisks2: unmounting volumes from the sidebar
+	provides = skwir=0.1.0
+	provides = skwir-mermaid=0.1.0
+	provides = skwir-mupdf=0.1.0
+	conflicts = skwir
+	conflicts = skwir-mermaid
+	conflicts = skwir-mupdf
+	options = !strip
+	options = !debug
+	source = skwir-0.1.0-linux-x86_64.tar.gz::https://github.com/skwir-org/skwir/releases/download/v0.1.0/skwir-0.1.0-linux-x86_64.tar.gz
+	sha256sums = fd00e6f715c762f03becbb49ee717f38d7ccec2c9df4d95902cbe892b4a2f7ef
+
+pkgname = skwir-bin
