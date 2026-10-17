@@ -1,7 +1,7 @@
 pkgbase = agent-box
 	pkgdesc = Run coding agents in rootless Podman workspace boxes
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rus364/agent-box
 	arch = any
 	license = MIT
