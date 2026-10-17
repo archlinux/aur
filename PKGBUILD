@@ -2,7 +2,7 @@
 # pkgver is a placeholder: publish-aur.yml rewrites it (and regenerates checksums via
 # updpkgsums) from the release tag before every AUR push.
 pkgname=wgtunnel-bin
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 install=wgtunnel-bin.install
 pkgdesc="An advanced, open-source client for WireGuard and AmneziaWG."
@@ -17,9 +17,9 @@ options=(!strip !emptydirs)
 
 # Nucleus artifact: ${name}-${version}-${os}-${arch}.pacman
 _src="wgtunnel-${pkgver}-linux-x64.pacman"
-_tag="v2.4.0"
+_tag="v2.4.1"
 source=("${_src}::https://github.com/wgtunnel/desktop/releases/download/${_tag}/${_src}")
-sha256sums=('548315671199a69ce0334a19244bfa0f15a1ca9fb469486804b4a5cfd12e49ef')
+sha256sums=('60a6fd06ecbef4d9711f17eea93595525dbf67aacb342b67d5ced5c8b7146884')
 
 package() {
   bsdtar -x -C "$pkgdir" -f "$srcdir/$_src"
