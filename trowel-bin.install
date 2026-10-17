@@ -1,0 +1,74 @@
+pre_install() {
+  /bin/sh -c '#!/bin/sh
+set -eu
+
+# Nothing to prepare. The unit runs as a systemd dynamic user, so no account
+# is created, and the operator owns everything under /etc/trowel.
+exit 0
+' -- "$@"
+}
+
+pre_upgrade() {
+  /bin/sh -c '#!/bin/sh
+set -eu
+
+# Nothing to prepare. The unit runs as a systemd dynamic user, so no account
+# is created, and the operator owns everything under /etc/trowel.
+exit 0
+' -- "$@"
+}
+
+post_install() {
+  /bin/sh -c '#!/bin/sh
+set -eu
+
+# Fresh installs stay stopped until /etc/trowel/config.yml exists and the
+# operator enables the unit. Upgrades restart a running relay on the new binary.
+if [ -d /run/systemd/system ]; then
+	systemctl daemon-reload
+	systemctl try-restart trowel.service
+fi
+' -- "$@"
+}
+
+post_upgrade() {
+  /bin/sh -c '#!/bin/sh
+set -eu
+
+# Fresh installs stay stopped until /etc/trowel/config.yml exists and the
+# operator enables the unit. Upgrades restart a running relay on the new binary.
+if [ -d /run/systemd/system ]; then
+	systemctl daemon-reload
+	systemctl try-restart trowel.service
+fi
+' -- "$@"
+}
+
+pre_remove() {
+  /bin/sh -c '#!/bin/sh
+set -eu
+
+# Debian and AUR pass "remove", RPM passes 0. Upgrades leave the unit alone.
+case "${1:-}" in
+remove | 0)
+	if [ -d /run/systemd/system ]; then
+		systemctl disable --now trowel.service
+	fi
+	;;
+esac
+' -- remove "$@"
+}
+
+post_remove() {
+  /bin/sh -c '#!/bin/sh
+set -eu
+
+case "${1:-}" in
+remove | purge | 0)
+	if [ -d /run/systemd/system ]; then
+		systemctl daemon-reload
+	fi
+	;;
+esac
+' -- remove "$@"
+}
