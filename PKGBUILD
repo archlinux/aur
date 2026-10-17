@@ -1,6 +1,6 @@
 pkgname=cloud-sql-proxy-bin
 pkgdesc="Google Cloud SQL Auth proxy"
-pkgver=2.26.0
+pkgver=2.26.2
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/GoogleCloudPlatform/cloudsql-proxy"
@@ -11,9 +11,9 @@ source_i686=($_bin_file-i686::https://storage.googleapis.com/cloud-sql-connector
 source_x86_64=($_bin_file-x86_64::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v$pkgver/cloud-sql-proxy.linux.amd64)
 source_aarch64=($_bin_file-aarch64::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v$pkgver/cloud-sql-proxy.linux.arm64)
 
-sha256sums_i686=('e5feaad5892fb0ae2409ef406ca27b2e80e0179e15ac5fc9c34525f6f6320b4a')
-sha256sums_x86_64=('a38fe97690a27490e60a7945a8a178186ff9464abb81fe2bc652a3f773443387')
-sha256sums_aarch64=('38a61b2d55ac5e0b3924561696f599003b50100baedbfe4730a0410713f3e2cd')
+sha256sums_i686=('29de8ad81a8a43cd8427927b023d8f2fe014ffd08cdc8773575aa321015a048f')
+sha256sums_x86_64=('787d23b4b396186f307b6b274c94099d25b15a81b7e60c91ceed18c07558e9d7')
+sha256sums_aarch64=('f93d277d7f14b973c1aa3e6b4727559712789e8a62ccaab89208955203af3de6')
 
 package() {
   install -Dm755 "$srcdir/$_bin_file-$CARCH" "$pkgdir/usr/bin/cloud-sql-proxy"
