@@ -1,14 +1,10 @@
 post_install() {
     echo ':: velogin installed.'
-    echo ':: Add your login user to the seat group before first boot into velogin:'
-    echo '     usermod -aG seat <your-user>'
-    echo ':: Enable the seat management daemon first:'
-    echo '     systemctl enable --now seatd.service'
-    echo ':: Disable the tty1 getty so velogin can own tty1:'
+    echo ':: Disable your current display manager (if any) and getty@tty1:'
+    echo '     systemctl disable <current-login-manager>.service'
     echo '     systemctl disable getty@tty1.service'
-    echo ':: Then enable the login manager:'
+    echo ':: Enable velogin login manager:'
     echo '     systemctl enable velogin.service'
-    echo ' reboot afterwards or it wont work'
 }
 
 post_upgrade() {
