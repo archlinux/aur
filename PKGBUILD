@@ -1,20 +1,14 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=tabctl-git
-pkgver=2.3.0.r139.g4936109
+pkgver=2.3.1.r161.g5a58e5e
 pkgrel=1
-pkgdesc="Command-line browser tab controller with rofi integration for multiple window managers (git version)"
+pkgdesc="Command-line browser tab controller (git version)"
 arch=('x86_64')
 url="https://github.com/slastra/tabctl"
 license=('MIT')
 depends=('dbus')
 makedepends=('go' 'git')
 optdepends=(
-    'rofi: rofi tab-switcher scripts'
-    'wmctrl: X11 window focusing (rofi-tabctl-wmctrl.sh)'
-    'hyprland: Wayland window focusing (rofi-tabctl-hyprland.sh)'
-    'jq: JSON parsing in the hyprland rofi script'
-    'curl: favicon fetching in the hyprland rofi script'
-    'imagemagick: favicon processing in the hyprland rofi script'
     'firefox: Firefox browser support'
     'brave-bin: Brave browser support'
     'chromium: Chromium browser support'
@@ -29,7 +23,7 @@ install=tabctl.install
 
 pkgver() {
     cd "tabctl"
-    printf "2.3.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "2.3.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -56,10 +50,6 @@ package() {
     # Install binaries
     install -Dm755 tabctl "$pkgdir/usr/bin/tabctl"
     install -Dm755 tabctl-mediator "$pkgdir/usr/bin/tabctl-mediator"
-
-    # Install rofi scripts
-    install -Dm755 scripts/rofi-tabctl-wmctrl.sh "$pkgdir/usr/share/tabctl/scripts/rofi-tabctl-wmctrl.sh"
-    install -Dm755 scripts/rofi-tabctl-hyprland.sh "$pkgdir/usr/share/tabctl/scripts/rofi-tabctl-hyprland.sh"
 
     # Install browser extensions
     install -dm755 "$pkgdir/usr/share/tabctl/extensions"
