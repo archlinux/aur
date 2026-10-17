@@ -2,7 +2,7 @@
 
 pkgname=axolotl-launcher
 pkgver=1.9.8
-pkgrel=2
+pkgrel=1
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Mystic-Stars/Axolotl'
