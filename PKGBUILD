@@ -2,26 +2,20 @@
 
 pkgname=plasma6-applets-mawaqit-prayer-times
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma 6 widget showing prayer times from your mosque on mawaqit.net"
 arch=('any')
 url='https://github.com/medaminezghal/plasma6-applets-mawaqit-prayer-times'
 license=('GPL-3.0-or-later')
 depends=('plasma-workspace')
-optdepends=('qt6-positioning: GPS-accurate location detection via GeoClue'
-            'geoclue: location service backend for qt6-positioning')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('74a2ef37765996d503dd0612f79944aa7a4b1b9f2281b426993eba7071ef6f43')
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
-  install -dm755 "$pkgdir/usr/share/plasma/plasmoids"
-  cp -r package \
-    "$pkgdir/usr/share/plasma/plasmoids/com.github.medaminezghal.mawaqit"
-
-  install -Dm644 package/contents/icons/mosque.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.medaminezghal.mawaqit.svg"
-
-  find "$pkgdir/usr/share/plasma/plasmoids" -type d -exec chmod 755 {} +
-  find "$pkgdir/usr/share/plasma/plasmoids" -type f -exec chmod 644 {} +
+  cd "$pkgname-$pkgver"
+  install -dm755 "$pkgdir"/usr/share/plasma/plasmoids
+  cp -r package "$pkgdir"/usr/share/plasma/plasmoids/com.github.medaminezghal.mawaqit
+  install -Dm644 package/contents/icons/mosque.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/com.github.medaminezghal.mawaqit.svg
+  find "$pkgdir"/usr/share/plasma/plasmoids -type d -exec chmod 755 {} +
+  find "$pkgdir"/usr/share/plasma/plasmoids -type f -exec chmod 644 {} +
 }
