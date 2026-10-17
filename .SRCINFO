@@ -1,0 +1,34 @@
+pkgbase = fontra-pak-bin
+	pkgdesc = Cross-platform bundled Fontra server and font editor for local desktop use (prebuilt binary)
+	pkgver = 2026.10.0
+	pkgrel = 1
+	url = https://github.com/fontra/fontra-pak
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libdrm
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = xcb-util
+	depends = xcb-util-cursor
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = zlib
+	optdepends = xdg-utils: open the font editor in the default web browser
+	provides = fontra-pak=2026.10.0
+	conflicts = fontra-pak
+	options = !strip
+	options = !debug
+	source = fontra-pak-bin-2026.10.0.tgz::https://github.com/fontra/fontra-pak/releases/download/2026.10.0/FontraPak-Ubuntu.tgz
+	source = FontraIcon-14c2a5fa6a8f397d4dd06643a4cb7ab0385f3600.svg::https://github.com/fontra/fontra-pak/raw/14c2a5fa6a8f397d4dd06643a4cb7ab0385f3600/icon/FontraIcon.svg
+	source = fontrapak.desktop
+	sha256sums = fcebe80d372d1457052f975261f59887b161bb2ada547e88f613941323eac961
+	sha256sums = 29e4375cb3ae4bf1ef62312089081c97e29633f41c076814c9116aa1577b646d
+	sha256sums = e4233a22a37cde64be1bc9b3639806e6cbb7bfc43857ea3e213761c05065b066
+
+pkgname = fontra-pak-bin

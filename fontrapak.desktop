@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Fontra Pak
+Comment=Font editor and design application
+Exec=fontrapak
+Icon=fontrapak
+Terminal=false
+Categories=Graphics;2DGraphics;VectorGraphics;
+StartupNotify=true
+StartupWMClass=fontrapak
