@@ -22,7 +22,7 @@ pkgname=cross-cleaner
 # nothing else -- regenerating it must not delete the explanation around it.
 # ---AUR-VERSION-BEGIN---
 pkgver=2.0.4.4
-pkgrel=1
+pkgrel=1.1
 source=("cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('86e98f694c97f518e573c267add2873fc91a751b7905a4a374d326b35b745af5')
 # ---AUR-VERSION-END---
