@@ -1,4 +1,4 @@
-# Maintainer: Fermín Olaiz <ferminolaiz@gmail.com>
+# Maintainer: Fermín Olaiz <fermin@olaiz.net>
 
 # Things to do research about:
 # - OP-TEE
@@ -17,12 +17,12 @@ license=('(GPL-2.0-or-later OR BSD-3-Clause) AND LicenseRef-scancode-rockchip-pr
 makedepends=('git' 'python3' 'python-pyelftools' 'python-setuptools' 'swig')
 makedepends_x86_64=('aarch64-linux-gnu-gcc')
 source=("git+${url}.git#tag=v${pkgver}"
-        "https://github.com/rockchip-linux/rkbin/raw/refs/heads/master/bin/rk35/rk3568_ddr_1056MHz_v1.23.bin"
-        "https://github.com/rockchip-linux/rkbin/raw/refs/heads/master/bin/rk35/rk3568_bl31_v1.45.elf"
+        "https://github.com/rockchip-linux/rkbin/raw/3e288fe814e059dd06833495f845cab04ac20a5c/bin/rk35/rk3568_ddr_1056MHz_v1.26.bin"
+        "https://github.com/rockchip-linux/rkbin/raw/3e288fe814e059dd06833495f845cab04ac20a5c/bin/rk35/rk3568_bl31_v1.46.elf"
         "rkbin.LICENSE::https://raw.githubusercontent.com/rockchip-linux/rkbin/refs/heads/master/LICENSE")
 sha256sums=('4dae81ba4e943a4edda2850da41b35f3f03a5f9035a19d1a00c29bd71ec62b1a'
-            '20e4bb076847bd019fcdeb7bdc15bd249890f07ecc76e9937101f22e50950982'
-            '76634f10e535bbe981fb9132fd6815a71586cc1b96aae1159bec6797579e5b9f'
+            '1af305b6930af4d7afe3af8ddc88d1b353427dae451bfdb4a2e1dbc52488f725'
+            'c81ac7e8e1fd727cf7f0db62a9aaea760bde2b270e34d98eb264a264b86df749'
             'd2765124a2c24d71aba3cbc6cdd6975a5a297821264eb6c26378a4c16cd16e92')
 
 prepare() {
@@ -35,7 +35,7 @@ build() {
     if [[ "${CARCH}" != "aarch64" ]]; then
         export CROSS_COMPILE=aarch64-linux-gnu-
     fi
-    make ROCKCHIP_TPL=../rk3568_ddr_1056MHz_v1.23.bin BL31=../rk3568_bl31_v1.45.elf
+    make ROCKCHIP_TPL=../rk3568_ddr_1056MHz_v1.26.bin BL31=../rk3568_bl31_v1.46.elf
 }
 
 package() {
