@@ -1,6 +1,6 @@
 pkgbase = framr-bin
 	pkgdesc = Wayland screenshot, annotation and screen recording tool with ShareX-compatible uploads (pre-compiled binary)
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/vMohammad24/framr
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = framr-bin
 	provides = framr
 	conflicts = framr
 	options = !lto
-	source = framr-bin-0.17.0.tar.gz::https://github.com/vMohammad24/framr/releases/download/v0.17.0/framr-v0.17.0-x86_64-linux.tar.gz
-	source = framr-0.17.0.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.17.0.tar.gz
-	sha256sums = d13cb2e9c92a8e8926bee389a11aae8d2b8bf680472fbc55b70c6cad639672e7
-	sha256sums = 8bae57668f46271596e35c4db0cc0e87cb66ab298e368909caccb8251612c813
+	source = framr-bin-0.17.1.tar.gz::https://github.com/vMohammad24/framr/releases/download/v0.17.1/framr-v0.17.1-x86_64-linux.tar.gz
+	source = framr-0.17.1.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.17.1.tar.gz
+	sha256sums = 7ff0677f736ae9de43a78746f61700d4b5deca81094bc559d74f455a45f5618f
+	sha256sums = 84ae0389b07f6f6c6218d85a3101515f047ed9b9a5aa376cbfce088e24844cf8
 
 pkgname = framr-bin
