@@ -1,11 +1,11 @@
 # Maintainer: Jason Scurtu <code@xarbit.dev>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 #
-# Canonical AUR PKGBUILD. CI renders 1.9.3 / 8c21c44477f3f252690eeee51d3d6ff0c88216386a91db9edc16e767459669a7 via envsubst
+# Canonical AUR PKGBUILD. CI renders 1.9.4 / 77c99ea500a752d356a370ecdaf7358c730e00cadaa3d80a2e1cc9828864c793 via envsubst
 # and pushes the result to the AUR on every stable release — see
 # .github/workflows/publish.yml. Edit this template, not the AUR repo.
 pkgname=plasma6-applets-appgrid
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="A modern application launcher for KDE Plasma"
 arch=('x86_64')
@@ -41,7 +41,7 @@ makedepends=(
     'extra-cmake-modules'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8c21c44477f3f252690eeee51d3d6ff0c88216386a91db9edc16e767459669a7')
+sha256sums=('77c99ea500a752d356a370ecdaf7358c730e00cadaa3d80a2e1cc9828864c793')
 
 build() {
     cmake -B build -S "plasma6-applet-appgrid-${pkgver}" \
