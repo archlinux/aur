@@ -1,0 +1,26 @@
+pkgbase = dp100-studio-git
+	pkgdesc = Control and monitor the ALIENTEK DP100 USB-C bench power supply (development version)
+	pkgver = 0.1.0.r0.gc299f33
+	pkgrel = 1
+	url = https://github.com/slastra/dp100-studio
+	install = dp100-studio-git.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = pango
+	depends = graphene
+	depends = libgcc
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = dp100-studio
+	conflicts = dp100-studio
+	source = git+https://github.com/slastra/dp100-studio.git
+	b2sums = SKIP
+
+pkgname = dp100-studio-git
