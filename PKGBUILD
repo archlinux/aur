@@ -1,7 +1,7 @@
 # Maintainer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname=relvi-git
-pkgver=0.1.2.r9.g37f6669
+pkgver=0.1.2.r10.ge04c5db
 pkgrel=1
 pkgdesc='A focused launcher for Wayland'
 arch=('x86_64')
