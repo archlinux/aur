@@ -3,13 +3,13 @@
 pkgname=kubefwd-bin
 _srcname=kubefwd
 pkgdesc="kubefwd is a command line utility built to port forward some or all pods within a Kubernetes namespace."
-pkgver=1.25.16
+pkgver=1.25.18
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/txn2/kubefwd"
 license=('apache')
 source=("${_srcname}-${pkgver}.tar.gz::https://github.com/txn2/kubefwd/releases/download/v${pkgver}/kubefwd_Linux_x86_64.tar.gz")
-sha256sums=('07275cad05b2427069071160125b8cb29e94dd44582f685ce6d966fa9e7fb7d7')
+sha256sums=('457988d3b8fb3b39889b680e44be3b3804c0ae739602361110a94643168975b9')
 
 package() {
     cd ${srcdir}
