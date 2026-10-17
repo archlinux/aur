@@ -8,13 +8,13 @@
 # itself is built.
 
 pkgname=jotawm-git
-pkgver=2026.10.12.r129.28b8450
+pkgver=2026.10.17.r132.ef7bb8b
 pkgrel=1
 pkgdesc="A minimal tiling window manager for X11"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/jotalea/jotawm"
 license=('BSD-3-Clause')
-depends=('libx11' 'libxinerama')
+depends=('libx11' 'libxinerama' 'libxrandr')
 makedepends=('git')
 optdepends=('jotawm-keybinds-git: on-screen keybind cheat-sheet')
 provides=('jotawm' 'jotawm-session')

@@ -1,6 +1,6 @@
 pkgbase = jotawm-git
 	pkgdesc = A minimal tiling window manager for X11
-	pkgver = 2026.10.12.r129.28b8450
+	pkgver = 2026.10.17.r132.ef7bb8b
 	pkgrel = 1
 	url = https://github.com/jotalea/jotawm
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = jotawm-git
 	makedepends = git
 	depends = libx11
 	depends = libxinerama
+	depends = libxrandr
 	optdepends = jotawm-keybinds-git: on-screen keybind cheat-sheet
 	provides = jotawm
 	provides = jotawm-session
