@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-gfs-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-gfs
 	conflicts = gnome-shell-extension-gfs
-	source = git+https://github.com/vncsmyrnk/gfs.git#branch=unstable
+	source = git+https://github.com/vncsmyrnk/gfs.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gfs-git

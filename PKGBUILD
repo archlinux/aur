@@ -10,7 +10,7 @@ depends=('glib2' 'gnome-shell')
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git#branch=unstable")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
