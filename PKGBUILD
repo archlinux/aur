@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-tilingshell
-pkgver=17.3
-pkgrel=2
+pkgver=18.0
+pkgrel=1
 _nodeversion=24
 pkgdesc="Extend GNOME Shell with advanced tiling window management."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'zip'
 )
 source=("git+https://github.com/domferr/tilingshell.git#tag=$pkgver")
-sha256sums=('9c307b719aafbbf4a6e8c1424584162505e1a9a9395306cf92d97e6ac1859e38')
+sha256sums=('676e4e9d81f8e8aa5697937352bedb09d21090911825332bc54188fd8e51ee16')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -29,18 +29,11 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd tilingshell
-
-  # add GNOME 50 support and update packages
-  git cherry-pick -n e7e40e76d25f7deceacb3327f1c91c25b1a5e981
-
-  # fix: restore Super key activation for tiling mode
-  # https://github.com/domferr/tilingshell/pull/506
-  git cherry-pick -n b44528cce32b0749e1b9abb53604bc26613b85f3
-
-  export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  cd tilingshell
+  export npm_config_cache="$srcdir/npm_cache"
   npm install
 }
 
