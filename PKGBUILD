@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=0.2.5
-pkgrel=5
+pkgver=0.2.6
+pkgrel=2
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
 url="https://github.com/adswill/OnAir"
@@ -32,8 +32,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/
         # installs 60-onair-sdr.rules and the modprobe blacklists, so reword
         # the hints to reload the installed rules instead
         "onair-package-hints.patch")
-sha256sums=('1b8ab526052feebb2c233b8e8ea24640a0694a2c5e399ff162b59ce05ea56b09'
-            '2c15b70147548b4c50575db6d31dd50b8864344cce0a3e36fd5b94777ecc86ee')
+sha256sums=('ca8f2a50ba3ad3c7e8a07c52519d97596f6667962266b6204d68574c5681d605'
+            '1e772949b8182e8994b31503ddcb93bb50f8cd525c445d03afcfb4e5243770be')
 
 prepare() {
     patch -Np1 -d "OnAir-$pkgver" -i "$srcdir/onair-package-hints.patch"
