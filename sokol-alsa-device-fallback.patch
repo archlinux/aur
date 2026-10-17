@@ -1,0 +1,17 @@
+--- a/vendor/sokol/sokol_audio.h
++++ b/vendor/sokol/sokol_audio.h
+@@ -1473,7 +1473,13 @@
+ 
+ _SOKOL_PRIVATE bool _saudio_alsa_backend_init(void) {
+     int dir; uint32_t rate;
+-    int rc = snd_pcm_open(&_saudio.backend.device, "default", SND_PCM_STREAM_PLAYBACK, 0);
++    int rc = snd_pcm_open(&_saudio.backend.device, "pipewire", SND_PCM_STREAM_PLAYBACK, 0);
++    if (rc < 0) {
++        rc = snd_pcm_open(&_saudio.backend.device, "pulse", SND_PCM_STREAM_PLAYBACK, 0);
++    }
++    if (rc < 0) {
++        rc = snd_pcm_open(&_saudio.backend.device, "default", SND_PCM_STREAM_PLAYBACK, 0);
++    }
+     if (rc < 0) {
+         _SAUDIO_ERROR(ALSA_SND_PCM_OPEN_FAILED);
+         return false;

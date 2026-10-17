@@ -2,7 +2,7 @@
 # Contributor: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=1.3.3182.05c5f4d
+pkgver=1.3.3184.692e7b8
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -14,9 +14,12 @@ provides=("tic-80")
 
 _gitname=TIC-80
 
-source=("git+https://github.com/nesbox/$_gitname.git" 'get_version.cmake')
+source=("git+https://github.com/nesbox/$_gitname.git"
+        'get_version.cmake'
+        'sokol-alsa-device-fallback.patch')
 sha256sums=('SKIP'
-            '4ab65f4733179a551a928a9e757ae6eab1681a6369ea3aa571d258ea1189697a')
+            '4ab65f4733179a551a928a9e757ae6eab1681a6369ea3aa571d258ea1189697a'
+            '2057ef4f0cad655a4d105e8c361e4f268d41d4a3000a090b55e71253cf52b6c3')
 
 pkgver() {
     cd "$srcdir/$_gitname"
@@ -25,7 +28,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    git submodule update --init --recursive --depth=1
+    git submodule update --init --recursive --force --depth=1
+    patch -Np1 -i "$srcdir/sokol-alsa-device-fallback.patch"
 }
 
 build() {
@@ -54,4 +58,3 @@ package() {
     cd "$srcdir/$_gitname"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
