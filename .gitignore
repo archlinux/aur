@@ -7,3 +7,8 @@ src/
 
 # Package files
 *.pkg.tar.*
+
+# nvchecker local version records (not committed)
+oldver.json
+newver.json
+oldver.json~

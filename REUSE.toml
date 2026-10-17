@@ -5,7 +5,7 @@ path = [
     "PKGBUILD",
     ".SRCINFO",
     ".gitignore",
-    ".nvchecker.toml",
+    "nvchecker.toml",
     "auggie.js",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
