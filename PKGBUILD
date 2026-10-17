@@ -5,7 +5,7 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc="GPU terminal for developers: splits and sessions, command blocks, searchable history, AI help, inline images and Lua scripting"
 arch=('x86_64' 'aarch64')
-url="https://cybercore-tech.github.io/cyberterm/"
+url="https://cybercoretech.github.io/cyberterm/"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'libxkbcommon' 'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr')
 makedepends=('cargo')
@@ -15,7 +15,7 @@ optdepends=('vulkan-icd-loader: Vulkan rendering (falls back to OpenGL)'
             'libnotify: desktop notifications for long commands')
 conflicts=('cyberterm-bin')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/cybercore-tech/cyberterm/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cybercoretech/cyberterm/archive/refs/tags/v$pkgver.tar.gz"
         "cyberterm.desktop")
 sha256sums=('2a66fa13cc651250dcf09c94d49f6a1861dc57126d782e7950d13482c45f8f21'
             '1e638aff925407a30963bd57a3a942831f5ea86b45a06941f88c23c5d684d0c3')
