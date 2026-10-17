@@ -1,6 +1,6 @@
 pkgbase = homebox-bin
 	pkgdesc = Inventory and organization system built for the Home User
-	pkgver = 0.26.2
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/sysadminsmedia/homebox
 	arch = aarch64
@@ -18,11 +18,11 @@ pkgbase = homebox-bin
 	source = homebox.default
 	sha256sums = bb759217a883f50712f98bbf2527136061a082ea5fd2c9db211ee15c98cb7150
 	sha256sums = 9955a5b215d040cbb71699cf0bd28a7386cc29ea3106c5a926c5d0fe79060443
-	source_aarch64 = homebox-0.26.2-aarch64.tar.gz::https://github.com/sysadminsmedia/homebox/releases/download/v0.26.2/homebox_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a7197a54b830a21be0142c5b4b3dd3a730d5d6a0599aa680d089b4e128d82f12
-	source_riscv64 = homebox-0.26.2-riscv64.tar.gz::https://github.com/sysadminsmedia/homebox/releases/download/v0.26.2/homebox_Linux_riscv64.tar.gz
-	sha256sums_riscv64 = 250c4436bb0a71196dd20fc2ef256cb45b2dc1f63bbc28210913212f78fa4a71
-	source_x86_64 = homebox-0.26.2-x86_64.tar.gz::https://github.com/sysadminsmedia/homebox/releases/download/v0.26.2/homebox_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 078f50ee25de546483d84c0f9ccc587edac6039cde87142fbea39c9ca87dcb05
+	source_aarch64 = homebox-0.27.0-aarch64.tar.gz::https://github.com/sysadminsmedia/homebox/releases/download/v0.27.0/homebox_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8d5b29866b4a27c159dfc93b2ff968ca7f2c6cf20b17a1c8943d55c6aec642da
+	source_riscv64 = homebox-0.27.0-riscv64.tar.gz::https://github.com/sysadminsmedia/homebox/releases/download/v0.27.0/homebox_Linux_riscv64.tar.gz
+	sha256sums_riscv64 = 7506e3156a56da6bb5678ce8c1d9e8b3fca2749f2e363413c959d4944d53b590
+	source_x86_64 = homebox-0.27.0-x86_64.tar.gz::https://github.com/sysadminsmedia/homebox/releases/download/v0.27.0/homebox_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a67e1a7277c3e1f20fc558b77c15b6674874d14410f20272a5536461b3061b51
 
 pkgname = homebox-bin
