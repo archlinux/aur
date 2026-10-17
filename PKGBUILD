@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot] codeberg[dot]org>
 
 pkgname=3utools-desktop-bin
-pkgver=9.02.009
+pkgver=9.03.003
 pkgrel=1
 pkgdesc="Apple Device Management Tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!debug' '!strip')
 provides=("3utools")
 replaces=("3utools-bin")
 source=("${pkgname}-${pkgver}.deb::https://dl.3u.com/update/v900/dl/linux/x64/com.3u.3utools_${pkgver}_amd64.deb")
-b2sums=("6f94cc3e2509ab256e8c731db655cd92fea2597996a12aed0abbf016fad7d428bad15983ce6efe783fda3ea77d2504f558a0694bc97c4f8a04f74f2688c69301")
+b2sums=("903c433933926639cf36af4af64a6869425b7750dd0073d7c54a963d2db736d949ed5ba38fb9875800ac40d6dae2c4a7d2fea4f080305e06a5917aa2a849692f")
 
 package() {
   # The .deb is automatically unpacked by makepkg, yielding data.tar.xz
