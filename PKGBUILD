@@ -1,13 +1,13 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=ls-lint
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc='directory and filename linter'
 arch=('x86_64')
 url="https://github.com/loeffel-io/ls-lint"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ea6b53fb2bf13055e1cd5eb4aeeddc883044e859a617adebd1802181cdb44b14')
+sha256sums=('018d9291f96e10386ee68ce7e12b830750c98b6939fb1d587a808d8509affcce')
 license=('MIT')
 depends=('glibc')
 makedepends=('go-pie' 'git')
