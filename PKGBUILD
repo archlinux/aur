@@ -1,28 +1,38 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
+
+# PKGBUILD for building on the Open Build Service.
+#
+# OBS build VMs have no network, so every source has to be present in the
+# package's OBS sources before the build starts. This consumes the Debian
+# native tarball that release builds commit to debs/ - it carries the complete
+# source tree - instead of fetching a GitHub tarball the way aur/PKGBUILD does.
+#
+# Keep pkgver in step with debian/changelog: it names the tarball.
+
 pkgname=mx-tools
-pkgver=26.09.11
-pkgrel=2
+pkgver=26.10
+pkgrel=1
 pkgdesc="MX Tools - Dashboard application launcher for various MX tools"
 arch=('x86_64')
-url="https://github.com/MX-Linux/mx-tools"
-license=('GPL3')
-depends=('qt6-base' 'qt6-declarative')
+url="https://mxlinux.org"
+license=('GPL-3.0-or-later')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg')
 makedepends=('cmake' 'ninja' 'qt6-declarative' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.09.11.tar.gz")
-sha256sums=('adfd67787f44dc35ef5a6daacd165d32f82c12106d12730b0e9f046a57eaff19')
+source=("https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.10.tar.gz")
+sha256sums=('9d7f0b3d239765898288a90ca72c7b93033bba98e8ea7479bb0d129c1a49cec0')
 
-_srcdir="${pkgname}-${pkgver}"
+# dpkg-source packed this tarball from a directory called "src", so that - not
+# ${pkgname}-${pkgver} - is what it unpacks to.
+_srcdir="mx-tools-26.10"
 
 build() {
     cd "${srcdir}/${_srcdir}"
-
-    rm -rf build
 
     cmake -G Ninja \
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+        -DMX_TOOLS_INSTALL_MENU=ON \
         -DPROJECT_VERSION_OVERRIDE="${pkgver}"
 
     cmake --build build --parallel
@@ -31,36 +41,8 @@ build() {
 package() {
     cd "${srcdir}/${_srcdir}"
 
-    install -Dm755 build/mx-tools "${pkgdir}/usr/bin/mx-tools"
-
-    install -dm755 "${pkgdir}/usr/share/mx-tools/locale"
-    install -Dm644 -t "${pkgdir}/usr/share/mx-tools/locale/" build/*.qm 2>/dev/null || true
-
-    install -Dm644 data/mx-tools.desktop "${pkgdir}/usr/share/applications/mx-tools.desktop"
-
-    # The "MX Tools" submenu. On Debian these come from desktop-defaults-mx-common;
-    # the file names differ from that package's so both can be installed without a
-    # pacman file conflict - menus sharing a <Name> are merged and their include
-    # rules accumulate.
-    install -Dm644 data/menu/mx-tools-menu.directory \
-        "${pkgdir}/usr/share/desktop-directories/mx-tools-menu.directory"
-    install -Dm644 data/menu/mx-tools-menu.menu \
-        "${pkgdir}/etc/xdg/menus/applications-merged/mx-tools-menu.menu"
-
-    install -Dm644 icons/mx-tools.png "${pkgdir}/usr/share/icons/hicolor/96x96/apps/mx-tools.png"
-    install -Dm644 icons/mx-tools.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-tools.svg"
-
-    install -dm755 "${pkgdir}/usr/share/doc/mx-tools"
-
-    install -dm755 "${pkgdir}/usr/share/man/man1"
-    install -Dm644 -t "${pkgdir}/usr/share/man/man1/" help/*.1 2>/dev/null || true
-    if [ -d help ]; then
-        for help_file in help/*.html help/*.jpg help/*.png help/*.css; do
-            [ -f "$help_file" ] && install -Dm644 "$help_file" "${pkgdir}/usr/share/doc/mx-tools/$(basename "$help_file")"
-        done
-    fi
-    install -Dm644 help/license.html "${pkgdir}/usr/share/doc/mx-tools/license.html"
-    gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-tools/changelog.gz"
-
+    # CMake installs the application's files; only Arch's own locations are added here.
+    DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    gzip -c debian/changelog > "${pkgdir}/usr/share/doc/${pkgname}/changelog.gz"
 }
