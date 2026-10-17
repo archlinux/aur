@@ -3,8 +3,9 @@ _venv=/opt/tapeback
 post_install() {
     echo "==> Installing LLM dependencies into tapeback venv..."
     "$_venv/bin/pip" install --no-cache-dir "anthropic>=0.40.0" "openai>=1.50.0"
-    echo "==> Done. Set an API key to enable summarization:"
-    echo "    ANTHROPIC_API_KEY, OPENAI_API_KEY, GEMINI_API_KEY, etc."
+    echo "==> Done. Pick the summary's provider in ~/.config/tapeback/.env, for one:"
+    echo "    TAPEBACK_LLM_PROVIDER=gemini and TAPEBACK_LLM_API_KEY=..., or"
+    echo "    TAPEBACK_LLM_PROVIDER=local with tapeback-llm-local, no key needed."
     echo "    See: https://github.com/yastcher/tapeback#llm-summarization"
 }
 
