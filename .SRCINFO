@@ -1,15 +1,19 @@
 pkgbase = python-flask-qrcode
 	pkgdesc = Flask-QRcode is a concise Flask extension to easily render QR codes on Jinja2 templates using python-qrcode.
-	pkgver = 3.2.0
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://marcoagner.github.io/Flask-QRcode/
 	arch = any
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
 	depends = python
 	depends = python-flask
 	depends = python-qrcode
 	depends = python-pillow
-	source = Flask-QRcode-3.2.0.tar.gz::https://github.com/marcoagner/Flask-QRcode/archive/v3.2.0.tar.gz
-	sha512sums = 3ebfc8e11da9f479679ce13ffaec830538dc10b3e3db3cafdd301ff1d8d87d0a07632a591d12395658c4ef3d9c4658f6320c3d3ca38ce7a5003f6498e71a1429
+	source = Flask-QRcode-3.2.2.tar.gz::https://github.com/marcoagner/Flask-QRcode/archive/v3.2.2.tar.gz
+	sha512sums = 6216b1856e6c904a0679cacb29ec29e5cc9c1561c86cb95dc3bf7ab54b438b4bbb03b59474af24b95c747e40792cbfa7d211d6d30e5e3ed70992353edbeeb455
 
 pkgname = python-flask-qrcode
