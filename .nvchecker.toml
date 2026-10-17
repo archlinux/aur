@@ -1,3 +1,7 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
 [command-code-desktop]
 source = "github"
 github = "CommandCodeAI/desktop"
