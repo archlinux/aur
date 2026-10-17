@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.47
-pkgver=1.0.0beta47
+_tag=v1.0.0-beta.48
+pkgver=1.0.0beta48
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -56,7 +56,8 @@ depends=(
     'tesseract'
     'tesseract-data-eng'
     'wl-screenrec'
-    # Audio: pw-play for the alarm, pw-record for the microphone.
+    # Audio: pw-play for the alarm and the sound effects, pw-record for the
+    # microphone.
     'pipewire'
     'pipewire-audio'
     # Connectivity: networks, Bluetooth, printers.
@@ -106,7 +107,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('9713e634d9e0c72ffe58bdd0d1b8abdab8f1fd5cf965881845540c2e3f51aa18')
+sha256sums=('c7c99a0dbb5cc5bfff1486a527b6878b10718e8657be74066da2a50d32cb2f7e')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
