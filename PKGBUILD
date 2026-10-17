@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codebase-memory-mcp
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="High-performance code intelligence MCP server with persistent knowledge graph"
 arch=('x86_64' 'aarch64')
@@ -12,19 +12,22 @@ optdepends=('git: git-history change-coupling analysis')
 conflicts=("${pkgname}-bin" "${pkgname}-ui-bin" "${pkgname}-git")
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7a292eb925640c1d254863733dd260911c94a5f3d1846b228ada685c2770b7ae')
+sha256sums=('1b4b1aa2857625dfedd3980cb297d155551ac7687e46111190498505c8b0b98b')
 
 build() {
     cd "${pkgname}-${pkgver}"
 
-    # LIBGIT2 forced off: the HAVE_LIBGIT2 path uses git_allocator without
-    # including <git2/sys/alloc.h> and won't compile. Upstream release binaries
-    # are static/zero-dep with libgit2 off too; git history parsing falls back
-    # to `git log`. -Wno-error: upstream's -Werror trips on benign warnings
-    # under Arch's newer GCC. CBM_VERSION stamps the --version string.
+    # -Wno-error: upstream's -Werror trips on benign warnings under Arch's
+    # newer GCC. CBM_VERSION stamps the --version string. Makefile.cbm no
+    # longer wires up libgit2 (0.12.0), so the old LIBGIT2_* overrides are gone.
+    # 0.12.0 also turned on mimalloc's global malloc override for Linux, whose
+    # upstream binaries are fully static. Linked dynamically, the system
+    # libstdc++'s own constructor reaches free() (glibc newlocale) before
+    # mimalloc is initialized and every run segfaults at startup, so keep the
+    # override off, as upstream does on macOS.
     make -j"$(nproc)" -f Makefile.cbm cbm \
         CFLAGS_EXTRA="-DCBM_VERSION=\"\\\"${pkgver}\\\"\" -Wno-error" \
-        LIBGIT2_LIBS= LIBGIT2_CFLAGS= LIBGIT2_FLAGS=
+        MIMALLOC_OVERRIDE_DEFINE= GLOBAL_OVERRIDE_DEFINE=
 }
 
 package() {
