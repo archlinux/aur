@@ -3,7 +3,7 @@
 # pkgver is rewritten from the release tag, and checksums by updpkgsums, by
 # packaging/aur/publish.sh on every release.
 pkgname=shan-shui-wallpaper
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Endless Chinese landscape painting that slowly scrolls across your Wayland desktop'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('deaf914887e6a4482d01fa4e50576e8d927c0f3ee7bfccb53424daa7cd690045')
+sha256sums=('8b8b776a29b15341c177acb30bbb734b1f6c42221c05ed605dab9606013a1766')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -38,6 +38,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "packaging/systemd/$pkgname.service" -t "$pkgdir/usr/lib/systemd/user/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

@@ -1,6 +1,6 @@
 pkgbase = shan-shui-wallpaper
 	pkgdesc = Endless Chinese landscape painting that slowly scrolls across your Wayland desktop
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/EldinBegano/shan-shui-wallpaper
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shan-shui-wallpaper
 	depends = glibc
 	depends = libgcc
 	options = !debug
-	source = shan-shui-wallpaper-0.1.2.tar.gz::https://github.com/EldinBegano/shan-shui-wallpaper/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = deaf914887e6a4482d01fa4e50576e8d927c0f3ee7bfccb53424daa7cd690045
+	source = shan-shui-wallpaper-0.2.0.tar.gz::https://github.com/EldinBegano/shan-shui-wallpaper/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 8b8b776a29b15341c177acb30bbb734b1f6c42221c05ed605dab9606013a1766
 
 pkgname = shan-shui-wallpaper
