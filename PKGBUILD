@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 )
 install=engined.install
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('7afbea4408001728f0d2fa24b89ed3ce8cadb95c542163c95bf5f9f252116b84')
+sha256sums=('43c91653509375ccfd980c26dcf24e56832a1cc0d506178a1832d4243f6b802e')
 
 build() {
   cd "$pkgname"
