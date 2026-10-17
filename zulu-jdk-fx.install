@@ -1,0 +1,37 @@
+_THIS_JVM='java-zulu-fx'
+
+_fix_default() {
+    if [[ ! -x /usr/bin/java ]]; then
+        /usr/bin/archlinux-java unset
+        printf ''
+    else
+        /usr/bin/archlinux-java get
+    fi
+}
+
+post_install() {
+    local default
+    default=$(_fix_default)
+
+    if [[ -z "$default" ]]; then
+        /usr/bin/archlinux-java set "$_THIS_JVM"
+    fi
+}
+
+post_upgrade() {
+    local default
+    default=$(_fix_default)
+
+    if [[ -z "$default" ]]; then
+        /usr/bin/archlinux-java set "$_THIS_JVM"
+    fi
+}
+
+pre_remove() {
+    local default
+    default=$(_fix_default)
+
+    if [[ "$default" == "$_THIS_JVM" ]]; then
+        /usr/bin/archlinux-java unset
+    fi
+}
