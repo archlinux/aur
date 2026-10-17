@@ -1,7 +1,7 @@
 all: build
 
 build:
-	@/usr/bin/makepkgmakepkg
+	@/usr/bin/makepkg
 
 build-all: build-x86_64 build-aarch64 build-armv7h
 
