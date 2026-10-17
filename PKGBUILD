@@ -1,7 +1,7 @@
 #Maintainer: Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mylibrary"
 pkgver="5.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Home librarian"
 arch=('x86_64')
 provides=("${pkgname}")
@@ -16,7 +16,7 @@ build() {
    local cmake_options=(
     -B build
     -S $pkgname-$pkgver
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
     -D BUILD_MLPLUGIN_DOCS=ON
