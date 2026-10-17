@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me?
 pkgname=kirigami-addons-git
 _pkgname=kirigami-addons
-pkgver=1.13.1.r1.gd2500d9
+pkgver=1.15.0.r22.gb701e38
 pkgrel=1
 pkgdesc="Add-ons for the Kirigami framework (Git version)"
 arch=(any)
