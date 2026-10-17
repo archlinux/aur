@@ -1,0 +1,17 @@
+# makepkg build trees
+pkg/
+src/
+
+# VCS source clone dir
+/threadstepper-git/
+
+# Downloaded upstream binaries
+*.AppImage
+
+# Built packages
+*.pkg.tar*
+
+# nvchecker local version records (not committed)
+oldver.json
+newver.json
+oldver.json~

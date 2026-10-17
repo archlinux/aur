@@ -1,0 +1,8 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+[threadstepper-git]
+source = "git"
+git = "https://github.com/gazpitchy92/threadstepper.git"
+use_commit = true
