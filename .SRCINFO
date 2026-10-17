@@ -1,6 +1,6 @@
 pkgbase = fcitx5-ainput-git
 	pkgdesc = Voice input addon for fcitx5: push-to-talk ASR via CapsLock
-	pkgver = 0.1.0.r161.e1f8af9
+	pkgver = 0.1.0.r163.6eb8728
 	pkgrel = 1
 	url = https://github.com/xander-lin/ainput
 	install = PKGBUILD.install
@@ -15,8 +15,6 @@ pkgbase = fcitx5-ainput-git
 	depends = curl
 	depends = speexdsp
 	depends = libsoxr
-	provides = fcitx5-ainput
-	conflicts = fcitx5-ainput
 	source = fcitx5-ainput::git+https://gitee.com/xander-lin/ainput.git
 	sha256sums = SKIP
 
