@@ -1,11 +1,11 @@
 pkgname=tts-helper
-pkgver=6.8.0
-pkgrel=1
+pkgver=6.7.0
+pkgrel=2
 pkgdesc="An application to help streamers manage TTS events."
 arch=('x86_64' 'aarch64')
 url="https://github.com/uhuh/tts-helper"
 license=('MIT')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/tts-helper-v${pkgver}/TTS.Helper_${pkgver}_amd64.deb")
