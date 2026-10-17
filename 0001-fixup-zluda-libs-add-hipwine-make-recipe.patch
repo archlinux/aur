@@ -1,0 +1,36 @@
+From be11d68605c1ca54abdb95843a65f7b7d253b671 Mon Sep 17 00:00:00 2001
+From: loathingKernel <142770+loathingKernel@users.noreply.github.com>
+Date: Sat, 17 Oct 2026 03:36:06 +0300
+Subject: [PATCH] fixup! zluda-libs: add hipwine make recipe
+
+---
+ configure.sh | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/configure.sh b/configure.sh
+index 96104b743..0659b3327 100755
+--- a/configure.sh
++++ b/configure.sh
+@@ -197,7 +197,7 @@ function configure() {
+       echo "WITHOUT_NVIDIA_LIBS := 1"
+     fi
+     if [[ -n "$arg_without_zluda_libs" ]]; then
+-      echo "WITHOUT_ZLUDA_LIBS := 1"
++      echo "WITHOUT_ZLUDA_LIBS := $arg_without_zluda_libs"
+     fi
+     if [[ -n "$arg_without_extras" ]]; then
+       echo "WITHOUT_EXTRAS := $arg_without_extras"
+@@ -295,7 +295,9 @@ function parse_args() {
+     elif [[ $arg = --without-nvidia-libs ]]; then
+       arg_without_nvidia_libs="1"
+     elif [[ $arg = --without-zluda-libs ]]; then
+-      arg_without_zluda_libs="1"
++      if [[ $val = all ]]; then val=1; fi
++      arg_without_zluda_libs="$val"
++      val_used=1
+     elif [[ $arg = --without-extras ]]; then
+       if [[ $val = all ]]; then val=1; fi
+       arg_without_extras="$val"
+-- 
+2.56.0
+
