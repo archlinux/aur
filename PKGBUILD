@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=k3d-gpu
-pkgver=0.1.29
+pkgver=0.1.30
 pkgrel=1
 pkgdesc="Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker"
 arch=('any')
@@ -38,7 +38,7 @@ package() {
     for f in share/telemetry/*.yml share/telemetry/optional/*.yml; do
         install -Dm644 "$f" "$pkgdir/usr/share/k3d-gpu/${f#share/}"
     done
-    for f in facts.py plan.py report_html.py audit.py schema_check.py facts.v1.schema.json matrix.v1.json; do
+    for f in facts.py plan.py report_html.py audit.py schema_check.py sku_model.py facts.v1.schema.json matrix.v1.json; do
         install -Dm644 "console/$f" "$pkgdir/usr/share/k3d-gpu/console/$f"
     done
     install -Dm644 images.lock "$pkgdir/usr/share/k3d-gpu/images.lock"
