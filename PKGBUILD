@@ -1,5 +1,5 @@
 pkgname=pcw-backend
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Backend for ProxyCoreWrapper"
 url='https://github.com/ProxyCoreWrapper/backend'
@@ -7,9 +7,9 @@ arch=('x86_64')
 license=('MIT OR Apache-2.0')
 
 depends=('glibc' 'systemd')
-makedepends=('git' 'rust')
+makedepends=('git' 'rust', 'protobuf')
 
-source=("git+https://github.com/ProxyCoreWrapper/backend.git")
+source=("git+https://github.com/ProxyCoreWrapper/backend.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
@@ -18,7 +18,7 @@ prepare() {
 }
 
 build() {
-  cd backend
+  cd "$srcdir/backend"
   cargo build --frozen --release
 }
 
@@ -51,5 +51,6 @@ EOF
 g pcw
 EOF
 
-  install -Dm644 "$srcdir/backend/LICENSE-MIT" "$srcdir/backend/LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$srcdir/backend/LICENSE-MIT" "$srcdir/backend/LICENSE-APACHE" \
+    -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
