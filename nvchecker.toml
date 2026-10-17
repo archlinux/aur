@@ -1,0 +1,7 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+[akia]
+source = "cmd"
+cmd = 'curl -fsSL "https://akiskart.bilgem.tubitak.gov.tr/destek/" 2>/dev/null | grep -oE "Akia_linux_[0-9]+_[0-9]+_[0-9]+\.deb_\.zip" | sed -E "s/Akia_linux_//; s/\.deb_\.zip//; s/_/./g" | sort -V | tail -n1'
