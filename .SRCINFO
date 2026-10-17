@@ -1,0 +1,42 @@
+pkgbase = vgshell-quickshell
+	pkgdesc = Flexible toolkit for making desktop shells with QtQuick
+	pkgver = 0.3.2.r7.g2b4501a
+	pkgrel = 1
+	url = https://git.outfoxxed.me/quickshell/quickshell
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = vulkan-headers
+	makedepends = spirv-tools
+	makedepends = qt6-shadertools
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = cli11
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = jemalloc
+	depends = qt6-svg
+	depends = libpipewire
+	depends = libxcb
+	depends = wayland
+	depends = libdrm
+	depends = mesa
+	depends = cpptrace
+	depends = polkit
+	provides = quickshell=0.3.2
+	conflicts = quickshell
+	conflicts = quickshell-git
+	options = !strip
+	source = quickshell::git+https://git.outfoxxed.me/quickshell/quickshell.git#commit=2b4501a282689792b62e94f3fb30d8f512324fe6
+	source = quickshell-check.hook
+	source = vgs-989-deletelater.patch
+	source = vgs-1109-log-filter-mutex.patch
+	sha256sums = SKIP
+	sha256sums = 8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083
+	sha256sums = df5e9c1ef8d2e1881f8781185c4285cd2ac6c8b1bd4fd3b6a3a7de236a40508a
+	sha256sums = 4e15375f9ac2b7a6c81b0bf494f462993d036214bed0d248b5fab5b154996513
+
+pkgname = vgshell-quickshell

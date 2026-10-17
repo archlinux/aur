@@ -1,0 +1,3 @@
+* text eol=lf
+# Unified diffs preserve the upstream context's leading space and tabs.
+*.patch whitespace=-blank-at-eol,-space-before-tab

@@ -1,0 +1,88 @@
+diff --git a/src/core/logging.cpp b/src/core/logging.cpp
+index 1dc4a56..b0a3bcf 100644
+--- a/src/core/logging.cpp
++++ b/src/core/logging.cpp
+@@ -216,8 +216,10 @@ void LogManager::messageHandler(
+ 
+ 	const auto* key = static_cast<const void*>(context.category);
+ 
+-	if (self->sparseFilters.contains(key)) {
+-		display = self->sparseFilters.value(key).shouldDisplay(type);
++	{
++		auto locker = QMutexLocker(&self->filterMutex);
++		auto filter = self->sparseFilters.constFind(key);
++		if (filter != self->sparseFilters.cend()) display = filter->shouldDisplay(type);
+ 	}
+ 
+ 	if (display) {
+@@ -247,8 +249,10 @@ void LogManager::filterCategory(QLoggingCategory* category) {
+ 	// We don't respect log filters for qs logs because some distros like to ship
+ 	// default configs that hide everything. QT_LOGGING_RULES is considered via the filter list.
+ 	if (isQs) {
++		auto locker = QMutexLocker(&instance->filterMutex);
+ 		// QtDebugMsg == 0, so default
+ 		auto defaultLevel = instance->defaultLevels.value(categoryName);
++		locker.unlock();
+ 
+ 		filter = CategoryFilter();
+ 		// clang-format off
+@@ -278,16 +282,22 @@ void LogManager::filterCategory(QLoggingCategory* category) {
+ 		filter.applyRule(categoryName, rule);
+ 	}
+ 
+-	if (isQs && !instance->sparse) {
+-		// We assume the category name pointer will always be the same and be comparable in the message handler.
+-		instance->sparseFilters.insert(static_cast<const void*>(category->categoryName()), filter);
++	auto sparseFilter = isQs && !instance->sparse;
+ 
++	if (sparseFilter) {
+ 		// all enabled by default
+ 		CategoryFilter().apply(category);
+ 	} else {
+ 		filter.apply(category);
+ 	}
+ 
++	auto locker = QMutexLocker(&instance->filterMutex);
++
++	if (sparseFilter) {
++		// We assume the category name pointer will always be the same and be comparable in the message handler.
++		instance->sparseFilters.insert(static_cast<const void*>(category->categoryName()), filter);
++	}
++
+ 	instance->allFilters.insert(categoryName, filter);
+ }
+ 
+@@ -355,7 +365,9 @@ void LogManager::initThreadLogging() {
+ }
+ 
+ void initLogCategoryLevel(const char* name, QtMsgType defaultLevel) {
+-	LogManager::instance()->defaultLevels.insert(QLatin1StringView(name), defaultLevel);
++	auto* instance = LogManager::instance();
++	auto locker = QMutexLocker(&instance->filterMutex);
++	instance->defaultLevels.insert(QLatin1StringView(name), defaultLevel);
+ }
+ 
+ void LogManager::initFs() {
+@@ -371,6 +383,7 @@ QtMsgType LogManager::defaultLevel() const { return this->mDefaultLevel; }
+ bool LogManager::isSparse() const { return this->sparse; }
+ 
+ CategoryFilter LogManager::getFilter(QLatin1StringView category) {
++	auto locker = QMutexLocker(&this->filterMutex);
+ 	return this->allFilters.value(category);
+ }
+ 
+diff --git a/src/core/logging.hpp b/src/core/logging.hpp
+index 37b8851..9841564 100644
+--- a/src/core/logging.hpp
++++ b/src/core/logging.hpp
+@@ -118,6 +118,10 @@ private:
+ 	QString mRulesString;
+ 	QList<qt_logging_registry::QLoggingRule>* rules = nullptr;
+ 	QtMsgType mDefaultLevel = QtWarningMsg;
++	// Guards defaultLevels, sparseFilters and allFilters. A category is created and
++	// filtered on whichever thread first uses it, while the message handler (any thread)
++	// and the logging thread read the filters.
++	QMutex filterMutex;
+ 	QHash<QLatin1StringView, QtMsgType> defaultLevels;
+ 	QHash<const void*, CategoryFilter> sparseFilters;
+ 	QHash<QLatin1StringView, CategoryFilter> allFilters;
