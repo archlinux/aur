@@ -1,0 +1,5 @@
+post_install() {
+    echo -e "This heavily relies on ImageMagick and you will likely need to modify the policy file at '/etc/ImageMagick-*/policy.xml' to increase the values of the following lines:
+    <policy domain="resource" name="memory" value="4096MiB"/>
+    <policy domain="resource" name="disk" value="20GiB"/>"
+}

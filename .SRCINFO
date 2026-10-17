@@ -1,0 +1,20 @@
+pkgbase = simple-scan-to-pdf-git
+	pkgdesc = A bash script for taking a folder of image files and outputting a PDF
+	pkgver = r22.19150f7
+	pkgrel = 1
+	url = https://github.com/AkBKukU/simple-scan-to-pdf
+	install = scan2pdf.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-wand
+	depends = ocrmypdf
+	provides = simple-scan-to-pdf
+	provides = scan2pdf
+	conflicts = simple-scan-to-pdf
+	conflicts = scan2pdf
+	source = git+https://github.com/AkBKukU/simple-scan-to-pdf.git
+	sha256sums = SKIP
+
+pkgname = simple-scan-to-pdf-git
