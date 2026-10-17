@@ -1,6 +1,6 @@
 #Maintainer: Sam Peters <dev at libertycloud dot de>
 pkgname=profex-bin
-pkgver=5.7.2
+pkgver=5.7.3
 pkgrel=1
 pkgdesc="A program for Rietveld refinement of powder X-ray diffraction data."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('bgmn: the needed backend for the program, not required to build or 
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://codeberg.org/libertycloud/profex/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
-sha256sums=('e55143c2632d748ad643df95dc88906e40807e5e8f43cac474a5902518c0efbc')
+sha256sums=('3c56e5796056c8fb1fe3567a97e1a47ea6510bb3583f2ad4d7c76eab146db334')
 
 package() {
 	install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" \
