@@ -1,6 +1,6 @@
 # Maintainer: Theodore Huang <teddyhuangnan@gmail.com>
 pkgname=sshping-rs-bin
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="SSH-based ping that measures interactive character echo latency and file transfer throughput. Pronounced \"shipping\"."
 arch=("x86_64" "aarch64")
@@ -19,8 +19,8 @@ source_aarch64=(
 )
 # checksum generate with 'makepkg -g'
 sha256sums=('dfe6a1167615268ed336d18cab68e90050311faa7cadc9ccb97de85ef3f7da97')
-sha256sums_x86_64=('3fb84e990099707bcaffdebc552939169beb5788bd8ea5cc4077194559f2cea6')
-sha256sums_aarch64=('cff910835de380f04b20206816dcc6e38e8b3ab75fb872fe1b614a1f4150eb87')
+sha256sums_x86_64=('8ea1b0fab3405d0a10a312d184718c9df456c3c683de0677267149a12ad52389')
+sha256sums_aarch64=('258f9766a8fa85b10c78f92e7a910c39bab49c34865ac3795db903fb335ed6f5')
 
 package() {
     cd "$srcdir/sshping-$CARCH-unknown-linux-musl/" || exit

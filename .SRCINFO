@@ -1,6 +1,6 @@
 pkgbase = sshping-rs-bin
 	pkgdesc = SSH-based ping that measures interactive character echo latency and file transfer throughput. Pronounced "shipping".
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/TeddyHuang-00/sshping
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sshping-rs-bin
 	license = MIT
 	provides = sshping
 	options = !debug
-	source = LICENSE-0.4.1::https://raw.githubusercontent.com/TeddyHuang-00/sshping/refs/tags/v0.4.1/LICENSE
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/TeddyHuang-00/sshping/refs/tags/v0.5.0/LICENSE
 	sha256sums = dfe6a1167615268ed336d18cab68e90050311faa7cadc9ccb97de85ef3f7da97
-	source_x86_64 = sshping-rs-bin-x86_64-0.4.1::https://github.com/TeddyHuang-00/sshping/releases/download/v0.4.1/sshping-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = 3fb84e990099707bcaffdebc552939169beb5788bd8ea5cc4077194559f2cea6
-	source_aarch64 = sshping-rs-bin-aarch64-0.4.1::https://github.com/TeddyHuang-00/sshping/releases/download/v0.4.1/sshping-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = cff910835de380f04b20206816dcc6e38e8b3ab75fb872fe1b614a1f4150eb87
+	source_x86_64 = sshping-rs-bin-x86_64-0.5.0::https://github.com/TeddyHuang-00/sshping/releases/download/v0.5.0/sshping-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 8ea1b0fab3405d0a10a312d184718c9df456c3c683de0677267149a12ad52389
+	source_aarch64 = sshping-rs-bin-aarch64-0.5.0::https://github.com/TeddyHuang-00/sshping/releases/download/v0.5.0/sshping-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 258f9766a8fa85b10c78f92e7a910c39bab49c34865ac3795db903fb335ed6f5
 
 pkgname = sshping-rs-bin
