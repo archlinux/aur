@@ -12,7 +12,7 @@ license=("CC-BY-SA-3.0")
 depends=('ncurses' 'libbacktrace' 'libgcc' 'libstdc++' 'zlib' 'glibc')
 makedepends=('freetype2' 'gettext' 'hicolor-icon-theme' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'curl' 'jq')
 provides=('cataclysm-tlg')
-conflicts=('cataclysm-tlg-bin')
+conflicts=('cataclysm-tlg')
 _gitbranch=master
 _ghrepo="Cataclysm-TLG/Cataclysm-TLG"
 # The git repo is ~10 GB so download a snapshot
