@@ -1,6 +1,6 @@
 pkgbase = akrasia
 	pkgdesc = CLI task manager inspired by Greek philosophy on self-control
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/luis-octavius/akrasia
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = akrasia
 	makedepends = git
 	makedepends = go
 	depends = sqlite
-	source = git+https://github.com/luis-octavius/akrasia.git#tag=v.1.1.0
-	sha256sums = 9c93841eefe7ff0fa3c62f66abdf8f99365d6e93d3975c05bc1b6da4f9eed625
+	source = git+https://github.com/luis-octavius/akrasia.git#tag=v.1.1.1
+	sha256sums = 2b1dc95188de8b7d1b692136cf6b1c6b92ae7d20241bb26345419bff3aa027fe
 
 pkgname = akrasia
