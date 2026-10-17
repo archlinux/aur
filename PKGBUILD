@@ -83,4 +83,7 @@ package() {
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  # pacman brings new releases, so the app never checks for them itself.
+  install -Dm644 /dev/null "$pkgdir/usr/share/proton-drive-linux/managed-updates"
 }
