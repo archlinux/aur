@@ -3,13 +3,16 @@
 # Contributor: Knight <anonymousknight96 at gmail dot com>
 pkgname=digilent.adept.utilities
 pkgver=2.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Digilent Adept Utilities."
 arch=('i686' 'x86_64' 'aarch64' 'armhf')
 url="https://digilent.com/reference/software/adept/start"
 license=('custom')
 depends=('digilent.adept.runtime>=2.21.2')
 options=('!strip' '!emptydirs')
+
+# Custom DLAGENTS to set user agent and prevent 403s
+DLAGENTS=('https::/usr/bin/curl -qg -A pacman -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
 source_i686=("https://files.digilent.com/Software/AdeptUtilities/${pkgver}/${pkgname}_${pkgver}-i386.deb")
 source_x86_64=("https://files.digilent.com/Software/AdeptUtilities/${pkgver}/${pkgname}_${pkgver}-amd64.deb")
