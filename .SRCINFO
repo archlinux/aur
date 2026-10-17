@@ -1,7 +1,7 @@
 pkgbase = pqp-crypto
 	pkgdesc = Quantum-resistant GPG emulation (ML-KEM + ML-DSA)
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajdiaz/pqp
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = pqp-crypto
 	depends = gcc-libs
 	options = !lto
 	source = pqp-crypto-0.1.1.tar.gz::https://github.com/ajdiaz/pqp/archive/refs/tags/v0.1.1.tar.gz
+	source = pqp-agent.service
 	sha256sums = d23ee685cee41cbfdea1ce1a2b6ed685bb5d64c51fa78763089015602042d340
+	sha256sums = ad4238f4bac892a60e39d80575735b4c3d4c8f312d4606734ed958d2466a7546
 
 pkgname = pqp-crypto

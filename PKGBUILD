@@ -3,7 +3,7 @@
 
 pkgname=pqp-crypto
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Quantum-resistant GPG emulation (ML-KEM + ML-DSA)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ajdiaz/pqp'
@@ -11,8 +11,10 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'rust')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ajdiaz/pqp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d23ee685cee41cbfdea1ce1a2b6ed685bb5d64c51fa78763089015602042d340')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ajdiaz/pqp/archive/refs/tags/v$pkgver.tar.gz"
+       'pqp-agent.service')
+sha256sums=('d23ee685cee41cbfdea1ce1a2b6ed685bb5d64c51fa78763089015602042d340'
+            'ad4238f4bac892a60e39d80575735b4c3d4c8f312d4606734ed958d2466a7546')
 
 build() {
     cd "$srcdir/pqp-$pkgver"
@@ -32,5 +34,10 @@ package() {
     install -Dm755 "target/release/pqp" "$pkgdir/usr/bin/pqp"
     install -Dm644 "man/pqp.1" "$pkgdir/usr/share/man/man1/pqp.1"
     install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    # systemd user unit for the passphrase-caching agent; enable with:
+    #   systemctl --user enable --now pqp-agent.service
+    install -Dm644 "$srcdir/pqp-agent.service" \
+        "$pkgdir/usr/lib/systemd/user/pqp-agent.service"
 }
-sha256sums=('d23ee685cee41cbfdea1ce1a2b6ed685bb5d64c51fa78763089015602042d340')
+sha256sums=('d23ee685cee41cbfdea1ce1a2b6ed685bb5d64c51fa78763089015602042d340'
+            'ad4238f4bac892a60e39d80575735b4c3d4c8f312d4606734ed958d2466a7546')

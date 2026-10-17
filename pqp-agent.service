@@ -1,0 +1,56 @@
+# pqp-agent.service — systemd *user* unit that keeps a pqp passphrase agent
+# running in the background.
+#
+# The agent caches private-key passphrases in memory so that `pqp decrypt`,
+# `pqp sign`, `pqp encrypt --sign` and `pqp edit-key` stop re-prompting.
+# Passphrases are never written to disk and are wiped on expiry, eviction or
+# shutdown. See pqp(1) and contrib/systemd/README.md for details.
+#
+# Install for the current user:
+#   mkdir -p ~/.config/systemd/user
+#   cp pqp-agent.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now pqp-agent.service
+#
+# If `pqp` is not installed at /usr/bin/pqp, edit the ExecStart/ExecStop paths
+# below (for example ~/.cargo/bin/pqp or ~/.local/bin/pqp) before installing.
+
+[Unit]
+Description=pqp passphrase-caching agent
+Documentation=man:pqp(1) https://github.com/ajdiaz/pqp
+
+[Service]
+Type=exec
+# The cache TTL is refreshed on every use; adjust --expire-time to taste
+# (the pqp default is 10m).
+ExecStart=/usr/bin/pqp agent --expire-time 1h
+# Graceful shutdown: wipe the in-memory cache and remove the socket. The
+# leading '-' ignores the error when the agent has already exited.
+ExecStop=-/usr/bin/pqp agent --stop
+Restart=on-failure
+RestartSec=2s
+
+# --- Hardening -------------------------------------------------------------
+# The agent keeps no secrets on disk: it only reads the keyring (under $HOME)
+# and writes its Unix socket into the per-user runtime directory (%t). It never
+# needs the network, so only AF_UNIX is allowed.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%t
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=default.target
