@@ -1,6 +1,6 @@
 # Maintainer: Paul Woisard <paulwoisard@gmail.com>
 pkgname=pdf-equilibrist
-pkgver=0.1.25
+pkgver=0.1.26
 pkgrel=1
 pkgdesc="Éditeur PDF de bureau, gratuit et open-source, construit avec PyQt6 et PyMuPDF"
 arch=('any')
@@ -60,7 +60,7 @@ source=(
   "rapidocr-3.10.0-py3-none-any.whl::https://files.pythonhosted.org/packages/59/07/203065283bba0c5e9c10af3602dc25ab3e59ee54dc2d1d22c8faeabf5ed8/rapidocr-3.10.0-py3-none-any.whl"
 )
 sha256sums=(
-  '2af1d2d767d2da569bc21930ca0b2d21bfc0710745df532415cdf626884a8e2f'
+  'bdff233c59c80138ab23f886ebb515b731f64b0a4ea3d52cf0a23bfc8954d733'
   '51e985d95bae29ed2c6fb94029f7d790d9edc8d6dfe20a6385e275670cb8c383'
   'c35f51471c5dc7b607724da79828f039b9a6649f12e1faae10053f5513e33002'
   '91debebf1a5663c6b52cb1ad101c023d6ce751d3773476448808ad50c63fc440'
