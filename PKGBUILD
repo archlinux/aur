@@ -1,6 +1,6 @@
 # Maintainer: aic0d3r <funforfreeapps@gmail.com>
 pkgname=z13-tablet-kit
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Posture-aware tablet mode for the ASUS ROG Flow Z13 (GZ302) on KDE Plasma 6 / Wayland'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('plasma-keyboard: on-screen keyboard in tablet posture'
             'z13gui-plus-bin: posture/health overlay and tablet settings')
 install=z13-tablet-kit.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aic0d3r/z13-tablet-kit/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f75ad2a1d529d6ac06764f6911fa2b4faf465d498b322faba2000ac666168b68')
+sha256sums=('7486ed2a95f7aa844ce285df23cfcc0828ca6ab7298c73a7e36457e58f9d0eee')
 
 package() {
     cd "${pkgname}-${pkgver}"
