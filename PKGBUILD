@@ -3,7 +3,7 @@
 # Contributor: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=pvs-studio
-pkgver=8.01.110581.857
+pkgver=8.01.110904.869
 pkgrel=1
 pkgdesc='Static code analyzer for C and C++'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${pkgname}-bin")
 options=('!debug')
 _name=${pkgname}-${pkgver}-x86_64
 source=("${_name}.tgz::https://files.${pkgname}.com/${_name}.tgz")
-sha256sums=('2633ac22f36202992e600c42334a91b8682c418100ca063db6778745582faf05')
+sha256sums=('ce5c005d5c0de6bdcdff18225f05e91a24ec3b9b18f950f1b19887cacf17d584')
 
 latestver() {
   local html ver
