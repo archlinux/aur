@@ -1,10 +1,9 @@
 # Maintainer: Ivan Odnoorov <elcheshirecat at yandex dot ru>
-# Fork of https://github.com/Rexilone/yamusic-cli
 pkgname=ymusic-cli
 _repo=ymusic
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Terminal client for Yandex Music: My Wave, likes, stations (TUI); fork of https://github.com/Rexilone/yamusic-cli"
+pkgdesc="Terminal client for Yandex Music: My Wave, likes, stations (TUI)"
 arch=('x86_64')
 url="https://github.com/iodnoorov/ymusic"
 license=('MIT')
@@ -12,7 +11,7 @@ depends=('mpv' 'libgcc' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('432f6f70754ac8a6f33ddf0d92e92cdd30a15230df25edd01a4a5598c4e93f71')
+sha256sums=('0b8c9e8a37879ae9adfa83d99983775af973740b1a079047159756e00f8bb980')
 
 prepare() {
   cd "$_repo-$pkgver"
