@@ -2,16 +2,18 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nogforge
-pkgver=1.4.0
-pkgrel=2
-pkgdesc="Packages the KognogOS way, in a terminal: what's installed, searching and installing, and updates you can read, on top of nog"
+pkgver=1.5.0
+pkgrel=1
+pkgdesc="Packages the KognogOS way, in a terminal, on top of nog: installed apps, search, install, readable updates and clean-up for repositories, AUR, Flatpak and Snap. Arch Linux / KognogOS, any desktop or none, works on a text console"
 arch=('any')
 url="https://github.com/jetomev/nogforge"
 license=('GPL3')
-# nog 1.6.1: the --json answers nogForge reads, and `nog update a b c` (only
-# the ticked ones). forgekit 0.5.2: the Forge Suite's shared base (the bottom
-# bar that follows the screen). Both must be on the AUR first: dependency order.
-depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'nog>=1.7.0')
+# nog 2.0.0: the every-source rows (`list`, `search --json`) and the maintenance
+# report (`clean --json`) nogForge 1.5.0 reads. forgekit 0.10.0: the menu's keys,
+# the run window. Both are on the AUR first: dependency order.
+depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'nog>=2.0.0')
+# 1.5.0 (#16): the launcher entry is validated in check()
+checkdepends=('desktop-file-utils')
 # v1.1.0: nog runs inside nogForge and the password is asked in its own box:
 # no desktop password window needed (forgekit 0.6.0); nog 1.7.0 reports its steps
 optdepends=('archlinux-appstream-data: app names and category badges'
@@ -19,7 +21,7 @@ optdepends=('archlinux-appstream-data: app names and category badges'
             'snapd: the Snap pages (shown only when it is installed)')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('dd1f2d6d2809bdea85ff518b7764868d4f0ee38938a70de9d1c28c7c3eb128db'
+sha256sums=('71196eb3c622fbafe0b03e23962a718b84de55ec7bd29cb87c4b032120fdd589'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -33,6 +35,7 @@ check() {
     # the source tree, so package() can't bundle them (the grubForge v1.0.2
     # install-conflict class).
     PYTHONDONTWRITEBYTECODE=1 python -m unittest discover tests
+    desktop-file-validate nogforge.desktop
 }
 
 package() {
@@ -51,5 +54,6 @@ LAUNCH
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
     install -Dm644 nogforge.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+    install -Dm644 nogforge.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
