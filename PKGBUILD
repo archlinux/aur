@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=rivulet-engine-bin
-pkgver=0.26.0 # renovate: datasource=github-releases depName=rivulet-kodi/rivulet-engine
+pkgver=0.27.0 # renovate: datasource=github-releases depName=rivulet-kodi/rivulet-engine
 pkgrel=1
 pkgdesc="IPv6-capable, pure-Go drop-in for Stremio's streaming server with HLS transcoding and DLNA casting"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -25,10 +25,10 @@ source_x86_64=("${pkgname%%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/downlo
 source_aarch64=("${pkgname%%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/rivulet-engine_Linux_arm64.tar.gz")
 source_armv7h=("${pkgname%%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/rivulet-engine_Linux_armv7.tar.gz")
 sha256sums=('4be5cac8078c2a1ef66b8412e3d266db4230ba7cd2abb85728eb04ad6c3a6c56'
-            '68eec26421b691c9776654b87957907e1835d5c315ef08079cbdc8f65af95e00')
-sha256sums_x86_64=('8d9136ed70fc5beebe086e107c4c93e22b28b400a22cfffd9a7fd0dbf26c4e76')
-sha256sums_aarch64=('ee5cde1e52864bdecf4ed240e85f4c4fd5575db00667f6045d4756ec34acb935')
-sha256sums_armv7h=('da4384f151cc29b98b6f796129b9e28c431e175170c12ab9bfa6a9eaa39327bf')
+            'ae5a48081960c4cb08b2c1ba005b817d8e0ddf18afcc00857de8b4cf75e4167f')
+sha256sums_x86_64=('f4e4683e27595514b06e03fc79ed4397a726d9ea2f21d6806a5fc57f353934d0')
+sha256sums_aarch64=('bc0df2af190d0489dae2fa6a3b9e3454b6a796896950f9f4431ab72785f88a94')
+sha256sums_armv7h=('5da815937d33c9441e00b3ad2913d070f493cb332a81953b3bce21d6acd418cb')
 
 package() {
   # Install binary
