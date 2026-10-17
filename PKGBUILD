@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnts
-pkgver=2.0.5
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="vnt server"
 arch=($CARCH)
@@ -31,7 +31,7 @@ source=(
     "${pkgname}::git+${url}.git#tag=v${pkgver}"
     "vnts.install"
 )
-sha256sums=('07651d1c022574389efac64717b12de2ca5609f749b07a925d53f6629eed22ea'
+sha256sums=('e98480b08b2dda6f556250a9b880fbbfe0fd2ea110dd203c25f919f151950d91'
             '5d3129ee455c0180ebd1ff15bd6765080db0206f01cc2a6559fc06c2704ff318')
 
 prepare() {
