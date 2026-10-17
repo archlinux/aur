@@ -1,7 +1,7 @@
-# Maintainer: Arunachalam <arunachalam@example.com>
+# Maintainer: Arunachalam <arunachalam.gojosaturo@gmail.com>
 pkgname=luna-ai
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Arunachalam's Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India."
 arch=('any')
 options=('!debug')
@@ -22,6 +22,7 @@ depends=(
     'python-websockets'
     'python-pyqt6'
     'python-pyqt6-webengine'
+    'python-qrcode'
     'mpv'
     'xdg-utils'
     'polkit'
@@ -33,8 +34,10 @@ optdepends=(
     'playerctl: Media playback automation'
     'zenity: Native GTK folder chooser dialog'
     'kdialog: Native KDE folder chooser dialog'
+    'wtype: Wayland keystroke automation for presentation macros'
+    'ffmpeg: Audio transcoding and WhatsApp Opus voice conversion'
 )
-source=("git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.1.0")
+source=("git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.2.0")
 sha256sums=('SKIP')
 
 build() {
@@ -54,7 +57,7 @@ package() {
     # Copy core codebase
     cp -r backend assets cli.py cli_config.py cli_examples.py cli_utils.py \
           generate_reports.py luna_cli_enhanced.py luna_desktop.py server.py \
-          package.json pyproject.toml requirements.txt public src dist node_modules "$pkgdir/opt/luna-ai/"
+          package.json pyproject.toml requirements.txt public src dist node_modules scripts "$pkgdir/opt/luna-ai/"
 
     # Install launcher script for GUI
     cat << 'EOF' > "$pkgdir/usr/bin/luna-ai"

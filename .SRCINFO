@@ -1,7 +1,7 @@
 pkgbase = luna-ai
 	pkgdesc = Arunachalam's Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India.
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/Luna-ai
 	arch = any
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = luna-ai
 	depends = python-websockets
 	depends = python-pyqt6
 	depends = python-pyqt6-webengine
+	depends = python-qrcode
 	depends = mpv
 	depends = xdg-utils
 	depends = polkit
@@ -28,8 +29,10 @@ pkgbase = luna-ai
 	optdepends = playerctl: Media playback automation
 	optdepends = zenity: Native GTK folder chooser dialog
 	optdepends = kdialog: Native KDE folder chooser dialog
+	optdepends = wtype: Wayland keystroke automation for presentation macros
+	optdepends = ffmpeg: Audio transcoding and WhatsApp Opus voice conversion
 	options = !debug
-	source = git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.1.0
+	source = git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.2.0
 	sha256sums = SKIP
 
 pkgname = luna-ai
