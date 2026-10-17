@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-skin
-pkgver=1.0.0
+pkgver=1.0
 pkgrel=1
 pkgdesc="Skin plugin for OpenRGB"
 arch=('any')
