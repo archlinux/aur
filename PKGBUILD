@@ -1,8 +1,9 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
+# Discontinued: source builds take too long; use mvsep-gui-bin instead.
 pkgname=mvsep-gui
 pkgver=1.3.0
-pkgrel=1
-pkgdesc="MVSEP GUI - Music separation desktop application"
+pkgrel=2
+pkgdesc="MVSEP GUI - Music separation desktop application (discontinued, use mvsep-gui-bin)"
 arch=('x86_64')
 url="https://github.com/AntheaLaffy/mvsep-rs"
 license=('Apache-2.0')
