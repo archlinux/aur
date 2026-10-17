@@ -1,6 +1,6 @@
 pkgbase = python-khidl
 	pkgdesc = A Simple CLI for downloading game soundtracks
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/qwerinope/khidl
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-khidl
 	depends = python-beautifulsoup4
 	depends = python-jsonschema
 	depends = python-prettytable
-	source = https://github.com/qwerinope/khidl/archive/refs/tags/v1.4.1.zip
-	sha256sums = 49940d2697b36aa6d7a6a4b9283166f07c90f0cf1550dfd63847f3aa312a7996
+	source = https://github.com/qwerinope/khidl/archive/refs/tags/v1.4.2.zip
+	sha256sums = 75e25225382d9847becb9886cc1ad085295a710bd17a67bf4f25df8874b291e1
 
 pkgname = python-khidl
