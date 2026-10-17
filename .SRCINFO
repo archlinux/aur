@@ -1,7 +1,7 @@
 pkgbase = psani-profi
 	pkgdesc = Program that will teach you touchtyping (czech)
 	pkgver = 3.4.01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sallyx.org/sally/psani-vsemi-deseti/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = psani-profi
 	source = http://www.sallyx.org/sally/download.php?file=psani-vsemi-deseti%2Fpsani-profi_3.4.01.tar.gz
 	source = psani
 	md5sums = 104efc83c44987416386ae6607c96537
-	md5sums = 0fca5f75d5166b2b44a8420217f3099e
+	md5sums = b80e5471e04a4dac63cffeae0587b6eb
 
 pkgname = psani-profi
-
