@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=RAD Debugger
+Comment=Native graphical debugger
+Exec=/usr/bin/raddbg
+Icon=raddbg
+Terminal=false
+Categories=Development;Debugger;
