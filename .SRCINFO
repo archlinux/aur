@@ -1,0 +1,20 @@
+pkgbase = replayer
+	pkgdesc = Video player for action cam footage with frame-by-frame and slow-motion playback
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BorisBrock/Replayer
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = qt6-svg
+	depends = ffmpeg
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	source = replayer-1.0.0.tar.gz::https://github.com/BorisBrock/Replayer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 587f92c7d1f2f1f92f5dd579330db3b923fdb961334e0c1aa90d8c1c5a55df96
+
+pkgname = replayer
