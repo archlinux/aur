@@ -1,0 +1,16 @@
+pkgbase = whytime
+	pkgdesc = Explains where a command's wall-clock time went: off-CPU and on-CPU attribution from eBPF
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Arinerron/whytime
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	depends = glibc
+	depends = libgcc
+	source = whytime-0.1.1.tar.gz::https://static.crates.io/crates/whytime/whytime-0.1.1.crate
+	sha256sums = 5f00f9fbeadef86a44d4c89249aaff1048afd9da08ad63fbd89ced13e2900467
+
+pkgname = whytime
