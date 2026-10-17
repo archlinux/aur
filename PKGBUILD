@@ -1,6 +1,6 @@
 # Maintainer: TheElevatedOne <adam.mlady@elevated.ovh>
 
-pkgname=blockfont
+pkgname=blockfont-git
 pkgver=0.1.0_0_g6d2a0df
 pkgrel=1
 pkgdesc="C shared library that renders text using a 6x5 grid of ASCII blocks, with scaling and ANSI colors"
