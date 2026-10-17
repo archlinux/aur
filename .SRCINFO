@@ -1,6 +1,6 @@
 pkgbase = heft
 	pkgdesc = Read-only Linux TUI for application-weight process accounting
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/Rethunk-Tech/heft
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = heft
 	depends = glibc
 	options = !strip
 	options = !debug
-	source = heft-0.12.1.tar.gz::https://github.com/Rethunk-Tech/heft/archive/refs/tags/v0.12.1.tar.gz
-	sha256sums = 188a381df10432f55f1efa66025af50acc58e26193e49710fb3b94a6535100d6
+	source = heft-0.12.2.tar.gz::https://github.com/Rethunk-Tech/heft/archive/refs/tags/v0.12.2.tar.gz
+	sha256sums = ac0f6c1e87e9165de4a440f46779258b68d7a23835514faafe9cc04a6866ccec
 
 pkgname = heft
