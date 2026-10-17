@@ -6,7 +6,7 @@
 # .github/workflows/publish.yml. Edit this template, not the AUR repo.
 pkgname=plasma6-applets-appgrid
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern application launcher for KDE Plasma"
 arch=('x86_64')
 url="https://appgrid.xarbit.dev"
@@ -40,7 +40,7 @@ makedepends=(
     'cmake'
     'extra-cmake-modules'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0c9c26ce32f48bce6a7e2b0dcbbb7e605eed23d9dc830ba0131ac72fa4a3b157')
 
 build() {
