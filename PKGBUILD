@@ -3,7 +3,7 @@
 
 pkgname=stable-diffusion.cpp-vulkan-git
 _pkgname=stable-diffusion.cpp
-pkgver=r970.2f016e8
+pkgver=r972.68285df
 pkgrel=1
 pkgdesc="Diffusion model (Flux, Ideogram, Krea, Lens, LTX, MiniMax, Qwen Image, SD, Wan, Z-Image...) inference in pure C/C++ (Vulkan version)"
 license=('MIT')
@@ -17,6 +17,7 @@ depends=(
 makedepends=(
     'cmake'
     'git'
+    'nodejs'
     'pnpm'
     'shaderc'
     'spirv-headers'
