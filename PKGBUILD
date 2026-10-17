@@ -1,10 +1,10 @@
 # Maintainer: kewl fft <kewl@alto.eu.org>
 
 pkgname=cursor-appimage
-pkgver=3.23.12
+pkgver=3.25.6
 pkgrel=1
-_ver=3.23
-_commit="2d29876d567da1607532b23bbf2cd5ddbca496fe"
+_ver=3.25
+_commit="f0df777c412b670d09e3eaf214967d779e67c088"
 pkgdesc="Cursor AI code editor (AppImage, extracted)"
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -22,7 +22,7 @@ source=(
   "Cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
 )
 
-sha512sums=('a2e266bb3d3875aa4ee8ddcd19d617a57f5d362606b498da629b7abdad928fa798e7365d6cb441aee0cd544fd3e1ab6948bda5ce128a0350e31cbc2c9e14d12b')
+sha512sums=('986d5d79d88286097b2a59b71aa9d9d8a14b75d911d1ceb638d88274c61edc473e0b26b4d478218bd8fcac6e9016dfbbda3277c651a271feed07c62969fd7260')
 
 prepare() {
   cd "${srcdir}"
