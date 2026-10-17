@@ -3,7 +3,7 @@
 pkgname=eccodes
 pkgver=2.49.0
 _attnum=45757960
-pkgrel=1
+pkgrel=2
 pkgdesc="ECMWF decoding library for GRIB, BUFR and GTS"
 arch=("i686" "x86_64")
 url="https://confluence.ecmwf.int/display/ECC/ecCodes+Home"
@@ -18,7 +18,7 @@ source=(
 )
 sha512sums=(
     "eab828b2e21024cf8d809d6ff07a21fb6cf6b768b72272f9ce3f60d2298e1b157a7fb14e784566aef76d5126122a93f75cffc24f301713ba9a821519ddd08e3c"
-    "c7fde9744f63d4329a8373ee034169df6162ccd00b7f51bd8e271747d961101eeb93d5ec2c5ed644bec5eb82f3967c29630ba7375197a3cb40e7148f8d8484f2"
+    "f03a1455e547bc14121066c4bd8b21d2617de22ad2f7956792b7ec58a5cab6008fd8a2e0772b3e0c5d6c0d4156adf268074ead66a6d44c380c13e064a29ed9ed"
 )
 
 build() {
