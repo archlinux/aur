@@ -1,12 +1,10 @@
 pkgbase = pg_sift
 	pkgdesc = CTID-bitmap full-text search index with BM25 ranking for PostgreSQL
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brauliobo/pg_sift
 	arch = x86_64
 	license = PostgreSQL
-	checkdepends = perl-ipc-run
-	checkdepends = python
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
