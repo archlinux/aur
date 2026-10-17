@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=gpur-bin
 _pkgname=gpur
-pkgver=0.13.6
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="btop-style GPU monitor TUI — NVIDIA, AMD, Intel, Apple Silicon (binary release)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("gpur-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/gpur/releases/download/v${pkgver}/gpur-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("gpur-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/gpur/releases/download/v${pkgver}/gpur-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('5f0fce33517285df755f0b62a20f2007100bf1f1e46161ff3f730631b3d54add')
-sha256sums_aarch64=('3f385df73a805a80de1fc3ffb35141d9d5568617d77e6ddcacf18dae3678b969')
+sha256sums_x86_64=('6e31259dde41208db7eb5ae7d1b39eaa57c7f31837a4fbb802950613ac361ef4')
+sha256sums_aarch64=('631322122794c03a4ea3968541a0cf7f857845ad86bbec1493d530b711487c98')
 
 package() {
     install -Dm755 "$srcdir/gpur" "$pkgdir/usr/bin/gpur"
