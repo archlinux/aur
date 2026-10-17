@@ -16,10 +16,10 @@ source_x86_64=("veil-host::https://github.com/viewerofall/veilTDC/releases/downl
 source_aarch64=("veil-host::https://github.com/viewerofall/veilTDC/releases/download/v${pkgver}/veil-host-aarch64-unknown-linux-gnu"
   "config.lua::https://raw.githubusercontent.com/viewerofall/veilTDC/v${pkgver}/config.lua")
 
-sha256sums_x86_64=('0a66d3a2e3646156b7c95c1c24321f2f93d27c7b184aca98b3d6ad47cb29a5d8'
-  '8576b875703d2869e5c1a21d1fa0bed1029ceb252c21f8b8d6801ed77ee02c3d')
-sha256sums_aarch64=('a29899d7fccd616848e64ad3a898ad8669cb684b82f366e83a0458adc3eaf09f'
-  '8576b875703d2869e5c1a21d1fa0bed1029ceb252c21f8b8d6801ed77ee02c3d')
+sha256sums_x86_64=('69827ba06bebd22a56bd95f44ab47eea3c96803cc84c3532aa5dff04bc10676e'
+  '2bba46096af82628264ac0c7812ca0fe4dd5a86a27d3480ffed9bd17c9157636')
+sha256sums_aarch64=('222328e4afcceaa6a7d25cc631d74839909bb1360ee6aac62041eb562e5667bf'
+  '2bba46096af82628264ac0c7812ca0fe4dd5a86a27d3480ffed9bd17c9157636')
 
 package() {
   install -Dm755 "${srcdir}/veil-host" "${pkgdir}/usr/bin/veil-host"
