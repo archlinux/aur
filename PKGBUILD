@@ -1,6 +1,6 @@
 # Maintainer: ftiasch <ftiasch0@gmail.com>
 pkgname=backlog.md
-pkgver=1.53.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc="Markdown-native Task Manager & Kanban visualizer for any Git repository"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('glibc')
 provides=('backlog')
 conflicts=('backlog')
 
-source=("$pkgname-$pkgver::https://github.com/MrLesk/Backlog.md/releases/download/v${pkgver}/backlog-bun-linux-x64-baseline")
-sha256sums=('4498537967de78a78c0df26f943145127584cb1404c484850b7c05adedafae00')
+source=("$pkgname-$pkgver::https://github.com/MrLesk/Backlog.md/releases/download/v${pkgver}/backlog-bun-linux-x64")
+sha256sums=('2d4af474d690cd0035b0506883dc6f278b0d74dcae0f518aceab66a8c137133a')
 
 # Stripping breaks the embedded Bun application.
 options=('!strip')
