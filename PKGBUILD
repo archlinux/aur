@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/Henriklmao/display-tui"
 license=('GPL-3.0')
 depends=('hyprland')
+provides=('display-tui')
 makedepends=('cargo' 'rust' 'git')
 install=display-tui.install
 source=('display-tui::git+https://github.com/Henriklmao/display-tui.git'

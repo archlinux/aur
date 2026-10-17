@@ -10,6 +10,7 @@ pkgbase = display-tui-git
 	makedepends = rust
 	makedepends = git
 	depends = hyprland
+	provides = display-tui
 	source = display-tui::git+https://github.com/Henriklmao/display-tui.git
 	source = display-tui.desktop
 	sha256sums = SKIP
