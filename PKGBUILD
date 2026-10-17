@@ -1,6 +1,6 @@
 pkgname=deepseek-harness-bin
-_npmver=0.2.0-rc.2
-pkgver=0.2.0rc.2
+_npmver=0.2.1-rc.2
+pkgver=0.2.1rc.2
 pkgrel=1
 pkgdesc='DeepSeek Harness CLI and agent harness'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ options=('!strip')
 provides=('deepseek-harness')
 conflicts=('deepseek-harness' 'deepseek-harness-git')
 source=("dsh-${_npmver}.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-${_npmver}.tgz")
-sha256sums=('bd27847c445cd68a565ac1f91c06bbbcc7639ef93071f678bb59c5ebaff38859')
+sha256sums=('40e3d025c0240c4316ff42dee9bedc7709c0fb38aea10543b47076ed2af52e1d')
 
 prepare() {
   rm -rf npm-root npm-cache
