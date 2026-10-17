@@ -2,8 +2,8 @@
 # Contributor: Legacy Installer <contact dot legacyinstaller at gmail dot com>
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=pcbox-qt5-git
-pkgver=r26638.c600438
-pkgrel=2
+pkgver=6.0
+pkgrel=3
 pkgdesc='An emulator for classic IBM PC clones (Built with qt5)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://pcbox-emu.xyz/'
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 build() {
-    LDFLAGS='-z now' cmake -S"${pkgname}" -Bbuild --preset regular -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=off -DNEW_DYNAREC=ON
+    LDFLAGS='-z now' cmake -S"${pkgname}" -Bbuild --preset regular -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=off
     cmake --build build
 }
 
