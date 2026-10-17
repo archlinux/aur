@@ -6,7 +6,7 @@
 
 pkgname=rozelynx-bin
 pkgver=158.0
-pkgrel=1
+pkgrel=2
 pkgdesc='RozeLynx Web Browser: Firefox fork with LibreWolf privacy patches and per-tab network interface binding (binary release; Wayland-only builds - build rozelynx-git for X11/XWayland)'
 arch=(x86_64)
 url='https://bytewheel.org/rozelynx'
@@ -59,7 +59,7 @@ conflicts=(rozelynx)
 install=rozelynx-bin.install
 _tag="v${pkgver}"
 source=("https://github.com/Bytewheel/RozeLynx/releases/download/${_tag}/rozelynx-${pkgver}-${CARCH}.tar.xz")
-sha256sums=('109734884e7b505bcf7fae711ff5c2689466d9d8b84ac51a0569b6010830a920')
+sha256sums=('0e514b38a7364ee304c183afee519781a10b9d47a7fa55c5b9c6e3c3fe731d84')
 
 package() {
   # the tarball contains a complete staged usr/ tree
