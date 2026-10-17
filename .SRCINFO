@@ -1,0 +1,20 @@
+pkgbase = sve
+	pkgdesc = Native Qt 6 video editor with trimming, filters and FFmpeg export
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yousefvand/SVE
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-multimedia
+	depends = qt6-multimedia-ffmpeg
+	depends = qt6-wayland
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	source = sve-0.1.0.tar.gz::https://github.com/yousefvand/SVE/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 0c34ba8e673982e3eaf60dc7bf3a5f764425975a5009e556f0881c08e5e27583
+
+pkgname = sve
