@@ -1,0 +1,14 @@
+pkgbase = nginx-mainline-mod-websockify
+	pkgdesc = WebSocket-to-TCP proxy ("websockify_pass"), as used by noVNC (module for mainline nginx)
+	pkgver = 0.0.3.r14.gc11bc9a
+	pkgrel = 1
+	url = https://github.com/tg123/websockify-nginx-module
+	arch = x86_64
+	license = MIT
+	makedepends = nginx-mainline-src
+	depends = nginx-mainline
+	source = websockify-0.0.3.r14.gc11bc9a.tar.gz::https://github.com/tg123/websockify-nginx-module/archive/c11bc9a3862c53b3af814c3f7d213cc3d2939641.tar.gz
+	sha256sums = 5e9c65916249a6b246ea7429e83f025d2ac5c24b60b89923016155268339587b
+
+pkgname = nginx-mainline-mod-websockify
+	depends = nginx-mainline=
