@@ -218,7 +218,7 @@ prepare() {
     [ ! -d build ] && mkdir build
 
     cd proton-cachyos
-    patch -Np1 -i "$scrdir"/0001-fixup-zluda-libs-add-hipwine-make-recipe.patch
+    patch -Np1 -i "$srcdir"/0001-fixup-zluda-libs-add-hipwine-make-recipe.patch
 
     [ ! -d contrib ] && mkdir -p contrib
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
