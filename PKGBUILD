@@ -2,12 +2,12 @@
 
 pkgname=typeaside-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Native voice dictation for Wayland'
 arch=('x86_64')
 url='https://typeaside.app'
 license=('LicenseRef-TypeAside')
-# GPUI loads Wayland, Vulkan, X11, udev and font libraries at runtime.
+# GPUI loads Wayland, Vulkan, X11, udev and font libraries at runtime; wl-clipboard pastes text.
 depends=(
   'alsa-lib'
   'fontconfig'
@@ -22,6 +22,7 @@ depends=(
   'systemd-libs'
   'vulkan-icd-loader'
   'wayland'
+  'wl-clipboard'
 )
 optdepends=('vulkan-driver: GPU rendering')
 provides=('typeaside')
