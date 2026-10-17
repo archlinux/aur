@@ -1,15 +1,15 @@
 # Maintainer: futpib-bot <futpib-bot@users.noreply.github.com>
 
 pkgname=slopd-git
-pkgver=r147.d5f84dd
-pkgrel=2
+pkgver=r349.125b3d9
+pkgrel=1
 pkgdesc="Claude agent session manager daemon"
 arch=('x86_64')
 url="https://github.com/futpib/slopd"
 license=('custom')
 depends=('tmux')
 makedepends=('rust' 'cargo')
-provides=('slopd' 'slopctl' 'iroh-slopctl' 'iroh-slopd')
+provides=('slopd' 'slopctl')
 conflicts=('slopd')
 source=("git+https://github.com/futpib/slopd.git")
 sha256sums=('SKIP')
@@ -39,8 +39,6 @@ package() {
     # Main user-facing executables
     install -Dm755 "target/release/slopd" "$pkgdir/usr/bin/slopd"
     install -Dm755 "target/release/slopctl" "$pkgdir/usr/bin/slopctl"
-    install -Dm755 "target/release/iroh-slopd" "$pkgdir/usr/bin/iroh-slopd"
-    install -Dm755 "target/release/iroh-slopctl" "$pkgdir/usr/bin/iroh-slopctl"
     # Test/helper executable (not in PATH)
     install -Dm755 "target/release/mock_claude" "$pkgdir/usr/lib/slopd/mock_claude"
     # Install user systemd service with corrected ExecStart path
