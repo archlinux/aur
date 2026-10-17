@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=teahouse-bin
-pkgver=0.61.2
+pkgver=0.61.4
 pkgrel=1
 pkgdesc='LAN-only instant messaging and file transfer tool (茶话间)'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ _deb_aarch64="Teahouse-${pkgver}-linux-arm64.deb"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_deb_x86_64}")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('fcc669e0d1aee58e2678bb26989fbc78fc11ccb1ab854f18dcbf68d0e4a4c48b')
-sha256sums_aarch64=('b3409d17d52be91a47ad8557472f4021fa447b47bccea1431fd661059a162da9')
+sha256sums_x86_64=('c737dfc346afde4266597e8db6485c7a202620acae27d473acf2f77b22e0115f')
+sha256sums_aarch64=('f7269c75b9dd3553e3a4fb4baa70f989e9a95de2463132456c88e371db97ab73')
 
 package() {
   local deb_var="_deb_${CARCH}"
