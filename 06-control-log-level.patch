@@ -1,0 +1,30 @@
+# Based on aunetx/deezer-linux commit 95b02d57381c4e55fedb0bf14066ff9edd7962ee,
+# patches/06-control-log-level.patch.
+--- a/build/main.js
++++ b/build/main.js
+@@ -3400,6 +3400,10 @@
+       this.appService.loadPage(this.deepLink.getPathFromArgv(process.argv));
+     }
+   })();
++  const logLevel =
++    (process.argv.find((arg) => arg.startsWith("--log-level=")) || "").split("=")[1] ||
++    process.env.DZ_LOG_LEVEL ||
++    "warn";
+   external_electron_settings_default().configure({
+     dir: external_path_default().join(
+       external_electron_namespaceObject.app.getPath("home"),
+@@ -3420,12 +3424,8 @@
+       processType: isProcessMain() ? "main" : process.type,
+     }),
+     (external_electron_log_default().transports.console.format = `{h}:{i}:{s}.{ms} ({processType}/{level}) ${isPlatform(PLATFORM.WINDOWS) ? ">" : "›"}  {text}`),
+-    (external_electron_log_default().transports.console.level = isDev
+-      ? "silly"
+-      : "warn"),
+-    (external_electron_log_default().transports.file.level = isDev
+-      ? "silly"
+-      : "warn"),
++    (external_electron_log_default().transports.console.level = logLevel),
++    (external_electron_log_default().transports.file.level = logLevel),
+     (external_electron_log_default().transports.sentry = function (msg) {
+       "error" === msg.level &&
+         (msg.data[0] instanceof Error

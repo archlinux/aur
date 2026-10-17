@@ -1,0 +1,33 @@
+# Deezer 8.0.0: sync theme.
+--- a/build/main.js
++++ b/build/main.js
+@@ -3379,6 +3379,29 @@
+         this.window.on("unresponsive", () => {
+           external_electron_log_default().warn("Window is not responsive");
+         });
++      if (process.argv.includes("--sync-theme") || process.env.DZ_SYNC_THEME === "yes") {
++        this.appService.getWebContents().on("did-finish-load", () => {
++          const contents = this.appService.getWebContents();
++          if (!contents.getURL().startsWith(`https://${this.domain}/`)) return;
++          contents.executeJavaScriptInIsolatedWorld(1001, [{ code: `
++          const preference = matchMedia("(prefers-color-scheme: dark)");
++          const root = document.documentElement;
++          const body = document.body;
++          function applyTheme() {
++            const theme = preference.matches ? "dark" : "light";
++            if (root.dataset.theme !== theme) root.dataset.theme = theme;
++            if (root.style.colorScheme !== theme) root.style.colorScheme = theme;
++            body.classList.toggle("chakra-ui-dark", preference.matches);
++            body.classList.toggle("chakra-ui-light", !preference.matches);
++          }
++          applyTheme();
++          preference.addEventListener("change", applyTheme);
++          const observer = new MutationObserver(applyTheme);
++          observer.observe(root, { attributes: true, attributeFilter: ["data-theme", "style"] });
++          observer.observe(body, { attributes: true, attributeFilter: ["class"] });
++          ` }]).catch(console.warn);
++        });
++      }
+     }
+     loadMenu() {
+       this.window.webContents.navigationHistory.clear(),

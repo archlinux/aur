@@ -1,0 +1,14 @@
+# Port of aunetx/deezer-linux patches/13-disable-hardware-acceleration.patch
+# at 95b02d57381c4e55fedb0bf14066ff9edd7962ee. Run during init, before ready.
+--- a/build/main.js
++++ b/build/main.js
+@@ -3057,6 +3057,9 @@
+           "autoplay-policy",
+           "no-user-gesture-required"
+         ),
++        (process.argv.includes("--disable-hardware-acceleration") ||
++          "yes" === process.env.DZ_DISABLE_HARDWARE_ACCELERATION) &&
++          external_electron_namespaceObject.app.disableHardwareAcceleration(),
+         external_electron_log_default().debug("Init App second instance"),
+         external_electron_namespaceObject.app.on(
+           "second-instance",

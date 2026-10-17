@@ -1,0 +1,21 @@
+# Deezer 8.0.0: hide offline banner.
+--- a/build/main.js
++++ b/build/main.js
+@@ -3305,6 +3305,17 @@
+         this.ipc.send("update-data", { canGoBack, canGoForward }),
+           this.history.setHistoryInfo({ canGoBack, canGoForward });
+       };
++      if (process.argv.includes("--hide-offline-banner") || process.env.DZ_HIDE_OFFLINE_BANNER === "yes") {
++        this.appService.getWebContents().on("did-finish-load", () => {
++          const contents = this.appService.getWebContents();
++          if (!contents.getURL().startsWith(`https://${this.domain}/`)) return;
++          contents.insertCSS(`
++          .alert-wrapper:has(> div[data-testid="alert-AppOffline"]) {
++            display: none !important;
++          }
++          `, { cssOrigin: "user" }).catch(console.warn);
++        });
++      }
+       this.appService.getWebContents().on("did-navigate-in-page", report),
+         this.appService.getWebContents().on("did-navigate", report),
+         this.appService

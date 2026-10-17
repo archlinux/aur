@@ -1,0 +1,27 @@
+# Port of aunetx/deezer-linux patches/04-remove-os-information.patch at
+# 95b02d57381c4e55fedb0bf14066ff9edd7962ee. In 8.0.0, environment info
+# comes from the main process; the old renderer/preload copies are gone.
+--- a/build/main.js
++++ b/build/main.js
+@@ -5,7 +5,20 @@
+       module.exports = require("macos-version");
+     },
+     857(module) {
+-      module.exports = require("os");
++      const os = require("os"),
++        release = os.release();
++      os.release = () => {
++        if (
++          process.argv.includes("--keep-kernel") ||
++          "yes" === process.env.DZ_KEEP_KERNEL
++        ) {
++          const matcher = /(\d+\.\d+\.\d+)\.*/;
++          var result = release.match(matcher);
++          return result ? result[1] : "6.4.0";
++        }
++        return "6.4.0";
++      };
++      module.exports = os;
+     },
+   };
+   const __webpack_module_cache__ = {};

@@ -1,0 +1,29 @@
+# Based on aunetx/deezer-linux commit 95b02d57381c4e55fedb0bf14066ff9edd7962ee,
+# patches/02-start-without-tray.patch. Also skip shutdown IPC after the window closes.
+--- a/build/main.js
++++ b/build/main.js
+@@ -3145,7 +3145,8 @@
+         external_electron_namespaceObject.app.on("before-quit", () => {
+           external_electron_log_default().debug("App on before quit"),
+             this.powerSave.stop(),
+-            this.ipc.send("history-closing-app"),
++            this.window && !this.window.isDestroyed() &&
++              this.ipc.send("history-closing-app"),
+             this.cookie.flushStore(),
+             external_electron_namespaceObject.session.defaultSession.flushStorageData();
+         }),
+@@ -3209,7 +3210,13 @@
+           this._adjustViewToContentSize(),
+           mainView.setAutoResize({ width: !0, height: !0 });
+       } else this.appService.setWindow(this.window, void 0);
+-      if ((this.appService.setUserAgent(), isPlatform(PLATFORM.DARWIN))) {
++      if (
++        (this.appService.setUserAgent(), isPlatform(PLATFORM.LINUX)) &&
++        !(
++          process.argv.includes("--disable-systray") ||
++          "yes" === process.env.DZ_DISABLE_SYSTRAY
++        )
++      ) {
+         let isQuitting = !1;
+         external_electron_namespaceObject.app.on(
+           "before-quit",

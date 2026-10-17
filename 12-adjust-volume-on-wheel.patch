@@ -1,0 +1,26 @@
+# Deezer 8.0.0: adjust volume on wheel.
+--- a/build/main.js
++++ b/build/main.js
+@@ -3360,6 +3360,22 @@
+             external_electron_namespaceObject.shell.openExternal(targetUrl);
+         }
+       };
++      this.appService.getWebContents().on("did-finish-load", () => {
++        const contents = this.appService.getWebContents();
++        if (!contents.getURL().startsWith(`https://${this.domain}/`)) return;
++        contents.executeJavaScript(`
++        document.addEventListener("wheel", (event) => {
++          if (!event.deltaY || !event.target.closest(
++            '#page_player [data-testid^="volume_button_"], #page_player [data-testid="volume_menu"]'
++          )) return;
++          event.preventDefault();
++          const player = window.dzPlayer;
++          player.control.setVolume(
++            Math.max(0, Math.min(1, player.volume - 0.05 * Math.sign(event.deltaY)))
++          );
++        }, { passive: false });
++        `).catch(console.warn);
++      });
+       this.appService
+         .getWebContents()
+         .setWindowOpenHandler(
