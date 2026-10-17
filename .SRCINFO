@@ -1,0 +1,25 @@
+pkgbase = we-linux-git
+	pkgdesc = Run the Steam copy of Wallpaper Engine as your KDE Plasma wallpaper, with its original UI
+	pkgver = r8.60cbbb2
+	pkgrel = 1
+	url = https://github.com/zHappySnake/we-linux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	depends = bash
+	depends = glibc
+	depends = kconfig
+	depends = kwin
+	depends = procps-ng
+	depends = steam
+	depends = systemd
+	depends = systemd-libs
+	depends = xorg-xprop
+	depends = xorg-xwininfo
+	provides = we-linux
+	conflicts = we-linux
+	source = git+https://github.com/zHappySnake/we-linux.git
+	sha256sums = SKIP
+
+pkgname = we-linux-git
