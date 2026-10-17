@@ -2,7 +2,7 @@
 # Unofficial native Epic Games Launcher Preview; upstream binaries are unmodified.
 pkgname=epic-games-launcher-proton-bin
 pkgver=0.97.0
-pkgrel=4
+pkgrel=5
 _epic_gitrev=4f63cc1
 pkgdesc='Native Epic Games Launcher Preview with per-game Proton selection'
 arch=('x86_64')
