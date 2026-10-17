@@ -1,0 +1,24 @@
+pkgbase = doukutsu-rs-git
+	pkgdesc = A faithful and open-source remake of Cave Story's engine written in Rust
+	pkgver = 1.0.0.r50.d05995b
+	pkgrel = 1
+	url = https://github.com/doukutsu-rs/doukutsu-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	optdepends = doukutsu: freeware Cave Story game assets
+	provides = doukutsu-rs
+	conflicts = doukutsu-rs
+	source = doukutsu-rs::git+https://github.com/doukutsu-rs/doukutsu-rs.git
+	sha256sums = SKIP
+
+pkgname = doukutsu-rs-git
