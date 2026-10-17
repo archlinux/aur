@@ -4,8 +4,8 @@
 pkgbase=coolercontrol
 pkgname=(coolercontrol coolercontrold)
 _app_id="org.$pkgbase.CoolerControl"
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 arch=("x86_64")
 url="https://gitlab.com/coolercontrol/coolercontrol"
 license=("GPL-3.0-or-later")
@@ -35,8 +35,8 @@ source=(
     "https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/coolercontrold-vendor-$pkgver.tar.gz"
 )
 sha256sums=(
-  '9239f628b35cd122b6c637402caedf4b3937dd073d02ebabe17af67a73b815fb'
-  '65cdc696c137409717e51b478778f39714e1179469d7fcf37408644118255d36'
+  '739e0be15de99830515d973bf3fdfc7f339f694cf1cc934540336d3883373b65'
+  'e510facacca774497635007ba8b115f2dcb5a46d014d96a0ceb4abafe642abe3'
 )
 
 build() {
