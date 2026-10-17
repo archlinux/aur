@@ -8,7 +8,7 @@
 # via `keeperfx-install` after installation.
 
 pkgname=keeperfx-git
-pkgver=1.4.0.r5491.gfb0ab7f4d
+pkgver=1.4.0.r5513.g54f9ee23d
 pkgrel=1
 pkgdesc='Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.'
 arch=('x86_64')
@@ -51,12 +51,15 @@ build() {
   # -ffile-prefix-map strips the build path from debug info / __FILE__ log strings, so the
   # package does not embed a reference to $srcdir (reproducible, avoids the namcap warning),
   # while keeping symbols for crash backtraces (the build is intentionally not stripped).
+  # CMake runs `git describe` in the current directory for the in-game version string,
+  # so configure from inside the checkout.
   local map="-ffile-prefix-map=$srcdir/$_srcname=."
-  cmake -S "$_srcname" -B build -G Ninja \
+  cd "$_srcname"
+  cmake -S . -B "$srcdir/build" -G Ninja \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_C_FLAGS="$CFLAGS $map" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS $map"
-  cmake --build build --target keeperfx
+  cmake --build "$srcdir/build" --target keeperfx
 }
 
 package() {
