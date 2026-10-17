@@ -1,0 +1,4 @@
+[crabz]
+source = "git"
+git = "https://github.com/sstadick/crabz.git"
+prefix = "v"
