@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - allow disabling omnibox auto completion
-	pkgver = 155.0.8059.39
+	pkgver = 155.0.8059.84
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -83,13 +83,13 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce
 	optdepends = upower: Battery Status API support
 	optdepends = chromium-extension-web-store: Web Store Functionality
-	provides = chromium=155.0.8059.39
-	provides = chromedriver=155.0.8059.39
+	provides = chromium=155.0.8059.84
+	provides = chromedriver=155.0.8059.84
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-155.0.8059.39-lite.tar.xz
-	source = ungoogled-chromium-155.0.8059.39-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/155.0.8059.39-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-155.0.8059.84-lite.tar.xz
+	source = ungoogled-chromium-155.0.8059.84-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/155.0.8059.84-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
@@ -112,8 +112,8 @@ pkgbase = ungoogled-chromium-xdg
 	source = use-oauth2-client-switches-as-default.patch
 	source = glibc-2.42-baud-rate-fix.patch
 	source = no-omnibox-suggestion-autocomplete.patch
-	sha256sums = d450182ea38a6485febfdfdad6f3a3f1d5d3408cc368329b94502c629ef8ec7e
-	sha256sums = b78481629051c33218ee23e63f358b1279079e37d03b752c3594e60f4332ab74
+	sha256sums = 2063834f528029ad02a6a3de6d229c3e8b19bc43864be397944cbda18d7ee680
+	sha256sums = 555c7547de4d7f82dbe54d943b7f47d7b6e693b7b92a6e86dec0eac98e8092a5
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
