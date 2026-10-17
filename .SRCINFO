@@ -1,6 +1,6 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk asynchronous downloader for multiple file hosts
-	pkgver = 10.11.1
+	pkgver = 10.12.0
 	pkgrel = 1
 	url = https://github.com/Cyberdrop-DL/cyberdrop-dl
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = cyberdropdownloader
 	depends = python-idna
 	depends = python-imagesize
 	depends = python-m3u8
+	depends = python-markdown
 	depends = python-multidict
 	depends = python-propcache
 	depends = python-psutil
@@ -43,7 +44,7 @@ pkgbase = cyberdropdownloader
 	optdepends = python-lxml: Faster HTML parsing
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
-	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl_patched/cyberdrop_dl_patched-10.11.1.tar.gz
-	sha256sums = 8901d3aede768cbab04c466f625dd620850f5c7e3d6631de85c23c92e311f424
+	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl_patched/cyberdrop_dl_patched-10.12.0.tar.gz
+	sha256sums = a25317895e542e05bc72cb9822131cb604c7dbad3d3beeb3eb68301b07628d14
 
 pkgname = cyberdropdownloader
