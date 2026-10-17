@@ -1,6 +1,6 @@
 pkgbase = nutmeg-git
 	pkgdesc = Play macOS Roblox on Linux.
-	pkgver = r23.3eff518
+	pkgver = r29.a687dfa
 	pkgrel = 1
 	url = https://github.com/frolleks/nutmeg.git
 	arch = any
@@ -20,8 +20,12 @@ pkgbase = nutmeg-git
 	source = git+https://github.com/frolleks/nutmeg.git
 	source = io.github.frolleks.Nutmeg.desktop
 	source = io.github.frolleks.Nutmeg.Settings.desktop
-	md5sums = SKIP
-	md5sums = 37a0c7731283b65fd56da7c6f66e59d5
-	md5sums = 9b22356068488149107a4505b9fc8ba7
+	source = https://raw.githubusercontent.com/frolleks/nutmeg/refs/heads/main/nutmeg/data/nutmeg.svg
+	source = roblox.svg
+	sha256sums = SKIP
+	sha256sums = d019f88a41f6e138197b15cd88e8971c7960d973913cff0682458d4bcfa509ef
+	sha256sums = 4446aa16166639754476effa6e956e48e449dfbf26bb09fe0ddda9e7960483a8
+	sha256sums = 08b7ed946c9aa02f4172f8156d150ff195cced82fc52bd34f0c8f331a07bfb42
+	sha256sums = 9898bd2dbc99a3d8ca2512af9094daa84878c7d42feedad49818de413ede46a9
 
 pkgname = nutmeg-git
