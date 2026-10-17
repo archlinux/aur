@@ -3,7 +3,7 @@
 
 pkgname=mathgl
 pkgver=8.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for making high-quality scientific graphics"
 arch=('x86_64')
 url="http://${pkgname}.sourceforge.net"
@@ -25,7 +25,7 @@ build() {
   local cmake_options=(
     -B build
     -S $pkgname-$pkgver
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
     -Denable-all-widgets=OFF
