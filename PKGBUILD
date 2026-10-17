@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer1@gmail.com>
 pkgname=openrgb-plugin-effects
-pkgver=1.0.0
+pkgver=1.1
 pkgrel=2
 pkgdesc="Effects plugin for OpenRGB"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('qt6-tools' 'qt6-5compat' 'openrgb' 'openal')
 makedepends=('git')
 provides=('openrgb-plugin-effects')
 conflicts=('openrgb-plugin-effects')
-source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git#tag=release_1.0")
+source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git#tag=release_1.1")
 sha256sums=('SKIP')
 
 build() {

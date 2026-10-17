@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-effects
 	pkgdesc = Effects plugin for OpenRGB
-	pkgver = 1.0.0
+	pkgver = 1.1
 	pkgrel = 2
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = openrgb-plugin-effects
 	depends = openal
 	provides = openrgb-plugin-effects
 	conflicts = openrgb-plugin-effects
-	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git#tag=release_1.0
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git#tag=release_1.1
 	sha256sums = SKIP
 
 pkgname = openrgb-plugin-effects
