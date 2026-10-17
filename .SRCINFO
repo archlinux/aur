@@ -1,7 +1,7 @@
 pkgbase = proton-cachyos-native
 	pkgdesc = A compatibility tool for Steam Play based on Wine and additional components, experimental branch with extra CachyOS flavour (native build)
 	pkgver = 11.0.20261014
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/CachyOS/proton-cachyos
 	install = proton-cachyos-native.install
@@ -156,7 +156,7 @@ pkgbase = proton-cachyos-native
 	source = https://github.com/vosen/ZLUDA/releases/download/v7-preview.15/zluda-windows-86ec0a9.zip
 	source = compatibilitytool.vdf.template
 	source = ntsync.conf
-	b2sums = 2fcf2caa61d3ec412c0294bdcde51b7e4a7ea5bdec3265699bc7859410a225924da2cdf51c8969bd907cc547af3d5a1f8e7ef4adc4033b4c2a856d1162b4f874
+	b2sums = 643b5396241257181c74afdaeb229f995fa43c76af837bb310785bc43fec60d305bb2757775ebfe87dbf078148a1f6fcf6a6595f1221d29d9a7594bb65c35236
 	b2sums = 2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9
 	b2sums = 62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0
 	b2sums = 230b9094049fc8b0c5600c44ad9514541f4bb21a75a0fd32e5025aa4c267f3b1d0032929d215688ed8ebe6c1b3ade93e3643272305f6f81b734d376cdea257c2
