@@ -1,7 +1,7 @@
 pkgbase = localwp
 	pkgdesc = The #1 local WordPress development tool. (Official .rpm repack)
-	pkgver = 10.1.2
-	pkgrel = 7004
+	pkgver = 10.2.0
+	pkgrel = 7022
 	url = https://localwp.com/
 	arch = x86_64
 	license = custom:proprietary
@@ -18,7 +18,7 @@ pkgbase = localwp
 	conflicts = local-by-flywheel-bin
 	options = !strip
 	options = emptydirs
-	source = local-10.1.2-linux.rpm::https://cdn.localwp.com/releases-stable/10.1.2+7004/local-10.1.2-linux.rpm
-	sha1sums = 9d909b09e8a40b58bafeff1d2a897165ae195f6a
+	source = local-10.2.0-linux.rpm::https://cdn.localwp.com/releases-stable/10.2.0+7022/local-10.2.0-linux.rpm
+	sha1sums = 30a6287a248390fba1d58a3d1462cf99abcde348
 
 pkgname = localwp
