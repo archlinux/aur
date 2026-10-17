@@ -10,27 +10,33 @@ arch=(
   aarch64
 )
 url=https://github.com/doukutsu-rs/doukutsu-rs
-license=(MIT)
+license=(
+  MIT
+  LicenseRef-freeware
+)
 depends=(
   alsa-lib
   gcc-libs
   glibc
-  hicolor-icon-theme
   libglvnd
 )
 makedepends=(
   cargo
   cmake
   git
-  pkgconf
-)
-optdepends=(
-  'doukutsu: freeware Cave Story game assets'
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($_pkgname::git+$url.git)
-sha256sums=(SKIP)
+source=(
+  "$_pkgname::git+$url.git"
+  "vanilla-extractor::git+https://github.com/doukutsu-rs/vanilla-extractor.git#tag=v1.0.2"
+  "https://www.cavestory.org/downloads/cavestoryen.zip"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'aa87fa30bee9b4980640c7e104791354e0f1f6411ee0d45a70af70046aa0685f'
+)
 
 pkgver() {
   git -C $_pkgname describe --long --tags |
@@ -38,22 +44,59 @@ pkgver() {
 }
 
 prepare() {
-  cd $_pkgname
   export RUSTUP_TOOLCHAIN=stable
+
+  cd "$srcdir/$_pkgname"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  cd "$srcdir/vanilla-extractor"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $_pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
+  cd "$srcdir/$_pkgname"
   cargo build --release --frozen --bin $_pkgname
+
+  cd "$srcdir/vanilla-extractor"
+  cargo build --release --frozen --bin vanilla-extractor
+
+  cd "$srcdir/CaveStory"
+  "$srcdir/vanilla-extractor/target/release/vanilla-extractor"
 }
 
 package() {
-  cd $_pkgname
+  install -Dm755 "$srcdir/$_pkgname/target/release/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname"
 
-  install -Dm755 target/release/$_pkgname -t "$pkgdir"/usr/bin
+  install -dm755 "$pkgdir/usr/bin"
+  cat <<'EOF' >"$pkgdir/usr/bin/$_pkgname"
+#!/bin/sh
+set -e
+
+USER_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/doukutsu-rs/data"
+SYS_DATA_DIR="/usr/share/doukutsu-rs/data"
+
+mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/doukutsu-rs"
+
+if [ -z "$CAVESTORY_DATA_DIR" ]; then
+  if [ -n "$(find "$USER_DATA_DIR" -mindepth 1 -print -quit 2>/dev/null)" ]; then
+    export CAVESTORY_DATA_DIR="$USER_DATA_DIR"
+  elif [ -d "$SYS_DATA_DIR" ]; then
+    export CAVESTORY_DATA_DIR="$SYS_DATA_DIR"
+  fi
+fi
+
+exec /usr/lib/doukutsu-rs/doukutsu-rs "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp -r "$srcdir/CaveStory/data" "$pkgdir/usr/share/$_pkgname/"
+  chmod -R u=rwX,go=rX "$pkgdir/usr/share/$_pkgname/data"
+
+  cd "$srcdir/$_pkgname"
 
   install -Dm644 res/flatpak/io.github.doukutsu_rs.doukutsu-rs.desktop \
     "$pkgdir"/usr/share/applications/io.github.doukutsu_rs.doukutsu-rs.desktop
@@ -75,4 +118,9 @@ package() {
 
   install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+  install -Dm644 "$srcdir/CaveStory/Readme.txt" "$pkgdir/usr/share/licenses/$pkgname/CaveStory-Readme.txt"
+  install -Dm644 "$srcdir/CaveStory/Manual.html" "$pkgdir/usr/share/doc/$pkgname/Manual.html"
+  cp -r "$srcdir/CaveStory/Manual" "$pkgdir/usr/share/doc/$pkgname/"
+  chmod -R u=rwX,go=rX "$pkgdir/usr/share/doc/$pkgname/Manual"
 }

@@ -6,19 +6,21 @@ pkgbase = doukutsu-rs-git
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = LicenseRef-freeware
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = git
-	makedepends = pkgconf
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	depends = hicolor-icon-theme
 	depends = libglvnd
-	optdepends = doukutsu: freeware Cave Story game assets
 	provides = doukutsu-rs
 	conflicts = doukutsu-rs
 	source = doukutsu-rs::git+https://github.com/doukutsu-rs/doukutsu-rs.git
+	source = vanilla-extractor::git+https://github.com/doukutsu-rs/vanilla-extractor.git#tag=v1.0.2
+	source = https://www.cavestory.org/downloads/cavestoryen.zip
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = aa87fa30bee9b4980640c7e104791354e0f1f6411ee0d45a70af70046aa0685f
 
 pkgname = doukutsu-rs-git
