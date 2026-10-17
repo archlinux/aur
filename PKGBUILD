@@ -1,6 +1,6 @@
 # Maintainer: Anıl Akpınar <4ni1ak@gmail.com>
 pkgname=openlogi
-pkgver=0.8.13
+pkgver=0.8.14
 pkgrel=1
 pkgdesc="Local-first companion for Logitech HID++ peripherals (native alternative to Logitech Options+)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('openlogi')
 conflicts=('openlogi-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AprilNEA/OpenLogi/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('75cf9da70b9c99b1ada1cbf4c007fc1a7d069967520b3ec250a6604326d5c8e0')
+sha256sums=('ce7d7a600609030feb07061184febf228e32d8c963e5dde3db93207e1f107c2d')
 
 prepare() {
   cd "OpenLogi-$pkgver"
