@@ -1,4 +1,4 @@
-pkgname=zulu-21-jdk-fx
+pkgname=jdk21-zulu-fx-bin
 pkgver=21.52.203
 pkgrel=1
 pkgdesc='Azul Zulu JDK 21 with JavaFX'
