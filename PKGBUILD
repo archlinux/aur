@@ -2,7 +2,7 @@
 # Contributor: falkTX <falktx@falktx.com>
 
 pkgname=clara-bin
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety - binary release)"
 arch=('x86_64')
@@ -38,9 +38,10 @@ optdepends=(
 )
 provides=('carla' 'carla-git' 'clara' 'clara-git' 'clap-host' 'dssi-host' 'ladspa-host' 'lv2-host' 'vst3-host' 'vst-host')
 conflicts=('carla' 'carla-git' 'clara' 'clara-git')
-source=("https://github.com/acropolis914/Clara/releases/download/v${pkgver}/clara-archlinux-${pkgver}.tar.zst")
+source=("https://github.com/acropolis914/Clara/releases/download/v${pkgver}/clara-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('SKIP')
 
 package() {
-  cp -dr --no-preserve=ownership "$srcdir/usr" "$pkgdir/"
+  bsdtar -xf "$srcdir/clara-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" \
+    --exclude '.PKGINFO' --exclude '.MTREE'
 }
