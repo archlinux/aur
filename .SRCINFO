@@ -1,0 +1,18 @@
+pkgbase = butaglyph-bin
+	pkgdesc = Fast prompt for bash, zsh, fish and PowerShell, with presets, gradients and its own git reader (prebuilt)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Huseynteymurzade28/butaglyph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = ttf-nerd-fonts-symbols: icons for the default look and most presets
+	provides = butaglyph
+	conflicts = butaglyph
+	options = !debug
+	source_x86_64 = buta-v0.2.1-x86_64-linux.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/releases/download/v0.2.1/buta-v0.2.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 9acc4dd9a55e5549b49ea43c5dd95f0a4829668177cc7bfb949edd8bc4248538
+	source_aarch64 = buta-v0.2.1-aarch64-linux.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/releases/download/v0.2.1/buta-v0.2.1-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 90b3f8203982ab86e8fc199609af9f9797425733f69aca68666fc5fdf4d6d6f8
+
+pkgname = butaglyph-bin
