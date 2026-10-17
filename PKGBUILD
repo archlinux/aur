@@ -3,7 +3,7 @@
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb-hotplug
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software.  Built with hotplug support"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/Op
         openrgb-modules-load.conf
         openrgb.tmpfiles
         openrgb.service)
-sha256sums=('e2ddfc6f1fd60405e9b3f16476c97fb5ce05f41f4585fc559bb21b82fb102f83'
+sha256sums=('5983cd8daf5fd0d56c83e3d0699bdb7429a69702d7147f8883a27c252dcc367d'
             'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2'
             'e86604e9604d59cddcc13de60b71c0e652cd1f9b56d89de36b2158509849e51c'
             'f53328babef392393ee44086f8897174232e863280a84266630a3cd92facc190')
