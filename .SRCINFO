@@ -78,6 +78,7 @@ pkgbase = proton-cachyos-native
 	depends = pipewire
 	depends = python
 	depends = python-six
+	depends = rtkit
 	depends = speex
 	depends = speexdsp
 	depends = atk

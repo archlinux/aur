@@ -63,6 +63,7 @@ depends=(
   pipewire
   python
   python-six
+  rtkit
   speex
   speexdsp
 # Start of old steam-native-runtime
