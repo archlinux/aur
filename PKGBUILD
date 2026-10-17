@@ -5,7 +5,7 @@
 pkgname=flea-git
 _pkgname=flea
 # The release workflow writes the tag's own pkgver() value here, and pushes only when the rest of this file changed.
-pkgver=0.3.11.r0.g8473e49
+pkgver=0.3.12.r0.gf21789e
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (git version)'
 arch=('x86_64' 'aarch64')
