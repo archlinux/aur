@@ -1,6 +1,6 @@
 # Maintainer: Yangtse Su <yangtsesu@gmail.com>
 pkgname=pixlay
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Native Linux photo collage maker designed for GNOME"
 # `aarch64` is the claim that this tree builds under Arch Linux ARM too, and that half of the
@@ -45,7 +45,7 @@ makedepends=('cargo' 'rust' 'meson')
 # first, because `updpkgsums` reads the file already in `SRCDEST` and would print the old tag's
 # sum (measured 2026-09-27). `.SRCINFO`, the AUR's own file, comes from `makepkg --printsrcinfo`.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YangtseSu/pixlay/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('97a3e83b589aa6bf5c658e0dec72a52ecd94a95342f5ed7a6f38441b7d976ab3')
+sha256sums=('d0cfd1fff56df73a839df1b6561758969cc9d7508a328a9849b22476c31330cb')
 
 # The vendored registry, and the `cargo vendor` that fills it: a download, and so `prepare()`'s
 # work and not `build()`'s — `makepkg -e` re-runs `build()` on a tree whose vendor directory is
