@@ -2,7 +2,7 @@
 pkgbase=d-lan
 pkgname=(d-lan-core
     d-lan-gui)
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 license=GPL-3.0-or-later
 arch=('x86_64')
@@ -18,8 +18,8 @@ makedepends=(
     qt6-svg
 )
 options=(strip)
-source=("git+https://github.com/Ummon/D-LAN.git#commit=87bee618b12e85b2dcb537994f8aa97865c90e0d")
-sha256sums=('12e9d1d3e42b10fd2ad9706592edaa7cf447b45a66d4c0c27423bc46d4ce2866')
+source=("git+https://github.com/Ummon/D-LAN.git#commit=24983644f4f3809eef7388e3a05b7690e0f556be")
+sha256sums=('5b219a4edbdb55a3f09899ee03bd19f3d36ee01c5022474d184cac1c352ca351')
 _appdir=${pkgbase^^}/application
 _instpath=/opt/$pkgbase
 prepare() {
