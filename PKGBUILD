@@ -1,46 +1,48 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends"
 arch=('x86_64')
 url="https://github.com/SaintFore/pomotui"
 license=('MIT')
 depends=('gcc-libs' 'sqlite')
-makedepends=('cargo')
+makedepends=('rustup')
 optdepends=(
     'libnotify: desktop notifications via notify-send'
     'pulseaudio: sound playback via paplay'
     'waybar: Waybar module integration'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b40f99eda8e403e7c8c32e6c340241709f441313f95d8e62f4fbf1145e1c9d5a')
+source=("pomotui-0.3.1.tar.gz::https://github.com/SaintFore/pomotui/releases/download/v0.3.1/pomotui-0.3.1-source.tar.gz")
+sha256sums=('3f6770cf19e14e2697e1e964966f8e467f1bcb1800b6497de0fb255e00e17976')
 options=('!lto')
 install=pomotui.install
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     cp packaging/aur/pomotui.install "$startdir/pomotui.install"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    rustup toolchain install 1.96.1 --profile minimal
+    rustup target add --toolchain 1.96.1 x86_64-unknown-linux-gnu
+    cargo +1.96.1 fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release --workspace
+    cargo +1.96.1 build --frozen --release --workspace --target x86_64-unknown-linux-gnu
 }
 
 check() {
     cd "${pkgname}-${pkgver}"
-    cargo test --frozen --workspace --all-targets --all-features
+    cargo +1.96.1 test --frozen --workspace --all-targets --all-features
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
 
     # Binaries
-    install -Dm755 "target/release/pomotui"        "${pkgdir}/usr/bin/pomotui"
-    install -Dm755 "target/release/pomotui-tui"     "${pkgdir}/usr/bin/pomotui-tui"
-    install -Dm755 "target/release/pomotui-service"  "${pkgdir}/usr/bin/pomotui-service"
+    install -Dm755 "target/x86_64-unknown-linux-gnu/release/pomotui"        "${pkgdir}/usr/bin/pomotui"
+    install -Dm755 "target/x86_64-unknown-linux-gnu/release/pomotui-tui"     "${pkgdir}/usr/bin/pomotui-tui"
+    install -Dm755 "target/x86_64-unknown-linux-gnu/release/pomotui-service"  "${pkgdir}/usr/bin/pomotui-service"
 
     # systemd user units — patch binary path for system-wide install
     sed 's|%h/.local/bin/pomotui-service|/usr/bin/pomotui-service|' \

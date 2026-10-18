@@ -1,19 +1,19 @@
 pkgbase = pomotui
 	pkgdesc = Terminal Pomodoro timer with TUI, CLI, and Waybar frontends
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/SaintFore/pomotui
 	install = pomotui.install
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = rustup
 	depends = gcc-libs
 	depends = sqlite
 	optdepends = libnotify: desktop notifications via notify-send
 	optdepends = pulseaudio: sound playback via paplay
 	optdepends = waybar: Waybar module integration
 	options = !lto
-	source = pomotui-0.3.0.tar.gz::https://github.com/SaintFore/pomotui/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = b40f99eda8e403e7c8c32e6c340241709f441313f95d8e62f4fbf1145e1c9d5a
+	source = pomotui-0.3.1.tar.gz::https://github.com/SaintFore/pomotui/releases/download/v0.3.1/pomotui-0.3.1-source.tar.gz
+	sha256sums = 3f6770cf19e14e2697e1e964966f8e467f1bcb1800b6497de0fb255e00e17976
 
 pkgname = pomotui

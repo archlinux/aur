@@ -1,53 +1,69 @@
 post_install() {
-    # Try to enable as the installing user (works with paru + lingering)
-    if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
-        sudo -u "$SUDO_USER" systemctl --user daemon-reload 2>/dev/null || true
-        sudo -u "$SUDO_USER" systemctl --user enable --now pomotui.socket 2>/dev/null && return
-    fi
+    # A stable ↔ Git replacement invokes post_install, not post_upgrade.
+    # Recover only users who already opted in; never enable a disabled socket.
+    post_upgrade
     echo ""
     echo "==> To start Pomotui, run:"
     echo "    systemctl --user daemon-reload && systemctl --user enable --now pomotui.socket"
     echo ""
 }
 
+pomotui_userctl() {
+    runuser -u "$pomotui_user" -- env XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" "$@"
+}
+
+pomotui_warning() {
+    echo "WARNING: Pomotui upgrade for $pomotui_user: $*" >&2
+}
+
 post_upgrade() {
-    # pacman runs as root, often without the installing user's session variables.
-    # Recover configured services even if they stopped during the upgrade.
     pomotui_users=$(loginctl list-users --no-legend --no-pager) || {
-        echo "WARNING: Pomotui was upgraded, but user services could not be discovered." >&2
-        echo "Run in your user session: systemctl --user daemon-reload && systemctl --user restart pomotui.service" >&2
+        echo "WARNING: Pomotui upgrade: user-manager discovery failed; inspect loginctl list-users and user@UID.service." >&2
         return 0
     }
     while read -r pomotui_uid pomotui_user pomotui_rest; do
         case "$pomotui_uid" in ''|*[!0-9]*|0) continue ;; esac
-        pomotui_restart=try-restart
-        # try-restart silently leaves failed/inactive units stopped. A configured
-        # or currently active socket means this user expects Pomotui available.
-        if runuser -u "$pomotui_user" -- env \
-            XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
-            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
-            systemctl --user is-enabled --quiet pomotui.socket \
-            || runuser -u "$pomotui_user" -- env \
-                XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
-                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
-                systemctl --user is-active --quiet pomotui.socket; then
-            pomotui_restart=restart
-        fi
-        if runuser -u "$pomotui_user" -- env \
-            XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
-            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
-            systemctl --user daemon-reload \
-            && runuser -u "$pomotui_user" -- env \
-                XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
-                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
-                systemctl --user "$pomotui_restart" pomotui.service; then
+        if ! pomotui_userctl systemctl --user daemon-reload; then
+            pomotui_warning "user-manager daemon-reload failed; inspect systemctl --user status and journalctl --user."
             continue
         fi
-        echo "WARNING: Pomotui was upgraded, but the Timer Service for $pomotui_user could not be restarted." >&2
-        echo "Run as $pomotui_user: systemctl --user daemon-reload && systemctl --user restart pomotui.service" >&2
-    done <<EOF
+        # Enablement is the durable opt-in. An active but disabled socket is not
+        # permission to opt the user back in; see tests/release/README.md for the intent boundary.
+        if ! pomotui_userctl systemctl --user is-enabled --quiet pomotui.socket; then
+            continue
+        fi
+        pomotui_conflict=
+        for pomotui_unit in pomotui.service pomotui.socket; do
+            pomotui_fragment=$(pomotui_userctl systemctl --user show "$pomotui_unit" -p FragmentPath --value)
+            pomotui_dropins=$(pomotui_userctl systemctl --user show "$pomotui_unit" -p DropInPaths --value)
+            if [ "$pomotui_fragment" != "/usr/lib/systemd/user/$pomotui_unit" ] || [ -n "$pomotui_dropins" ]; then
+                pomotui_warning "effective unit conflict: $pomotui_unit FragmentPath=$pomotui_fragment DropInPaths=$pomotui_dropins. Preserved configuration; inspect systemctl --user cat $pomotui_unit; move conflicting user units/drop-ins aside only after reviewing them, then daemon-reload and restart."
+                pomotui_conflict=yes
+            fi
+        done
+        [ -z "$pomotui_conflict" ] || continue
+        if ! pomotui_userctl systemctl --user reset-failed pomotui.service pomotui.socket; then
+            pomotui_warning "reset-failed failed; inspect systemctl --user status pomotui.service pomotui.socket."
+            continue
+        fi
+        if ! pomotui_userctl systemctl --user restart pomotui.service; then
+            pomotui_warning "service restart failed; inspect journalctl --user -u pomotui.service and systemctl --user status pomotui.socket; configuration and data were preserved."
+            continue
+        fi
+        if ! pomotui_status=$(pomotui_userctl timeout 10 /usr/bin/pomotui status --json) || ! printf '%s\n' "$pomotui_status" | grep -q '"durable_health"[[:space:]]*:[[:space:]]*{[[:space:]]*"state"[[:space:]]*:[[:space:]]*"healthy"'; then
+            pomotui_warning "public status health check failed; inspect journalctl --user -u pomotui.service; configuration and data were preserved."
+            continue
+        fi
+        pomotui_pid=$(pomotui_userctl systemctl --user show pomotui.service -p MainPID --value)
+        pomotui_expected=$(sha256sum /usr/bin/pomotui-service | cut -d' ' -f1)
+        pomotui_running=$(sha256sum "/proc/$pomotui_pid/exe" 2>/dev/null | cut -d' ' -f1)
+        if [ -z "$pomotui_running" ] || [ "$pomotui_running" != "$pomotui_expected" ]; then
+            pomotui_warning "running executable conflict: PID=$pomotui_pid expected /usr/bin/pomotui-service SHA256=$pomotui_expected actual SHA256=$pomotui_running; inspect /proc/$pomotui_pid/exe and systemctl --user cat pomotui.service; preserved configuration."
+        fi
+    done <<EOF_USERS
 $pomotui_users
-EOF
+EOF_USERS
     return 0
 }
 
