@@ -3,7 +3,7 @@
 pkgname=freshgram-bin
 pkgver=7.5.0
 pkgrel=1
-pkgdesc='Telegram Desktop fork with the AyuGram features and a Material look (prebuilt)'
+pkgdesc='Breaking Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (prebuilt)'
 arch=('x86_64')
 url='https://github.com/Snowy-Fluffy/freshGram'
 license=('GPL-3.0-or-later')
