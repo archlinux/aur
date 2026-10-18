@@ -1,7 +1,7 @@
 pkgbase = muse-code-bin
 	pkgdesc = Terminal-based AI coding agent powered by Meta's Muse Spark (dev.meta.ai)
-	pkgver = 1.4.7.r6101.1
-	pkgrel = 2
+	pkgver = 1.4.10.r6427.1
+	pkgrel = 1
 	url = https://dev.meta.ai
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = muse-code-bin
 	depends = ca-certificates
 	depends = python
 	optdepends = git: for workspace worktree isolation and version control operations
-	optdepends = qemu-user: to emulate AVX2 instructions on legacy CPUs (pre-Haswell)
+	optdepends = qemu-user: optional AVX2 emulation fallback (only used with MUSE_QEMU=1 or --qemu)
 	provides = muse-code
 	provides = musecode
 	provides = muse-bin
@@ -21,12 +21,12 @@ pkgbase = muse-code-bin
 	source = muse.sh
 	source = muse-session
 	source = muse-mcp
-	sha256sums = 76ad79c4a76a72369bf3cf1192392a21648081e6907d2fd3fdb6593ddc0c97a8
+	sha256sums = 3384970e5daa4ca8b2cf49c22a401301ef127aa52ffd9baa268c08b052349182
 	sha256sums = 2e37ab20bcbce1c5219164567d0e34ee09ddfc3cd761398855059d77af88f306
 	sha256sums = 65cff61e4bbb8939903c680f3cbf04d881214de23805d993c42eea2c5d1c82a7
-	source_x86_64 = muse-code-bin-1.4.7.r6101.1-x86_64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=1.4.7-R6101.1&file=muse-x86-linux
-	sha256sums_x86_64 = 36e3dac91f56c15572b95be55d70ee9fd9685cd9ab49f747bab4746c8d7c2518
-	source_aarch64 = muse-code-bin-1.4.7.r6101.1-aarch64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=1.4.7-R6101.1&file=muse-aarch64-linux
-	sha256sums_aarch64 = 48db3c7468cd4f401eff9b415fb7e0cdfe0351fb1730649ceae2a0f766e23b85
+	source_x86_64 = muse-code-bin-1.4.10.r6427.1-x86_64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=1.4.10-R6427.1&file=muse-x86-linux
+	sha256sums_x86_64 = decefc0fb33c48ee43419c3e72ac2dbc781743868611074c7292807f5960dfcf
+	source_aarch64 = muse-code-bin-1.4.10.r6427.1-aarch64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=1.4.10-R6427.1&file=muse-aarch64-linux
+	sha256sums_aarch64 = 2e5afa5e8560c1565185249af2d27b3e97aaf351d3d32275b8e410be702dce35
 
 pkgname = muse-code-bin

@@ -91,14 +91,24 @@ if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
   fi
 fi
 
-if [[ "$(uname -m)" == "x86_64" ]] && ! grep -q -m1 "avx2" /proc/cpuinfo 2>/dev/null; then
+# Recent upstream binaries run natively on pre-AVX2 CPUs, so native
+# execution is the default. AVX2 emulation under qemu-x86_64 is strictly
+# opt-in: set MUSE_QEMU=1 in the environment or pass --qemu as the first
+# argument to route execution through qemu-x86_64 -cpu max.
+USE_QEMU="${MUSE_QEMU:-0}"
+if [[ "${1:-}" == "--qemu" ]]; then
+  USE_QEMU=1
+  shift
+fi
+
+if [[ "${USE_QEMU}" == "1" ]]; then
   if command -v qemu-x86_64 >/dev/null 2>&1; then
     exec qemu-x86_64 -cpu max "$REAL_BIN" "$@"
   else
-    printf 'Error: Your CPU does not support AVX2 instructions required by Muse.\n' >&2
-    printf 'Please install qemu-user (sudo pacman -S qemu-user) to run Muse on legacy CPUs.\n' >&2
+    printf 'Error: QEMU emulation was requested (MUSE_QEMU=1 / --qemu) but qemu-x86_64 was not found.\n' >&2
+    printf 'Install it with: sudo pacman -S qemu-user\n' >&2
     exit 1
   fi
-else
-  exec "$REAL_BIN" "$@"
 fi
+
+exec "$REAL_BIN" "$@"
