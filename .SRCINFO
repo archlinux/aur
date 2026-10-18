@@ -1,6 +1,6 @@
 pkgbase = nefercap-git
 	pkgdesc = Screenshots and silent screen recording for Wayland, from one shortcut (git version)
-	pkgver = 0.5.1.r0.g1218e29
+	pkgver = 0.6.0.r0.g7d47882
 	pkgrel = 1
 	url = https://github.com/bnema/nefercap
 	arch = x86_64
