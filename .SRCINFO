@@ -1,0 +1,13 @@
+pkgbase = ttf-rysana
+	pkgdesc = Rysana Sans and Rysana Mono typefaces
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://rysana.com/type
+	arch = any
+	license = OFL-1.1-RFN
+	provides = ttf-font
+	source = ttf-rysana-1.0.0.zip::https://github.com/rysana-os/type/releases/download/v1.0.0/rysana-type.zip
+	sha256sums = 4888f504a9b4c13f12cea08112c3e463c6879ba439d4790216842ce8e0b35812
+	b2sums = a264386b2974853982ad57b214c19a15ffb2b065950f623c73f3dac42e2d98d193d8780113db396020b8bb885083d2aa63e33af60985c01f127b801fca4b67f2
+
+pkgname = ttf-rysana
