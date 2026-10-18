@@ -6,7 +6,7 @@ pkgdesc="A runit service manager with smart completions, scaffolding, and more"
 arch=('any')
 url="https://gitlab.com/runit-rsv/rsv-main"
 license=('GPL-2.0-only')
-depends=('runit' 'bash')
+depends=('runit')
 optdepends=('sudo: privilege escalation'
             'opendoas: privilege escalation (alternative to sudo)')
 makedepends=('git')

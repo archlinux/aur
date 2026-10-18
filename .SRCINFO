@@ -7,7 +7,6 @@ pkgbase = rsv-ng
 	license = GPL-2.0-only
 	makedepends = git
 	depends = runit
-	depends = bash
 	optdepends = sudo: privilege escalation
 	optdepends = opendoas: privilege escalation (alternative to sudo)
 	provides = rsv-ng
