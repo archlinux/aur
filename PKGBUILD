@@ -2,7 +2,7 @@
 # Contributor: aubree.wtf <https://aubree.wtf/>
 pkgname=macoblox-git
 _name=MacOBlox
-pkgver=r234.adc2591
+pkgver=r235.6fd68f1
 pkgrel=1
 pkgdesc="Run the macOS Roblox client on Linux through Darling"
 arch=('x86_64')
