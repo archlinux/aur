@@ -1,0 +1,14 @@
+pkgbase = linver-bin
+	pkgdesc = winver, but for Linux (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/itsflameee/linver
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base
+	provides = linver
+	conflicts = linver
+	source = linver-bin-1.0.0::https://github.com/itsflameee/linver/releases/download/v1.0.0/linver
+	sha256sums = f50cd11d8ecf513efbb40b01527ef3382027718c0785b9ccc12d66adfabd3455
+
+pkgname = linver-bin
