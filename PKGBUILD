@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Palencsar <moin@nerdbear.de>
 pkgname=bearwave-git
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Desktop internet radio app (Qt 6 / QML)"
 arch=('x86_64')
@@ -15,9 +15,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  # Letztes Tag (z.B. 1.3.0), Commits danach und Hash
+  # Letztes Tag (z.B. 1.3.1), Commits danach und Hash
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g' || \
-  printf "1.3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.3.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
