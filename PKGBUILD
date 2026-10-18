@@ -14,12 +14,12 @@ options=('!strip')
 
 source=("fluxer-canary.desktop")
 sha256sums=('0435d76ef93c99abd3f772984aa4d535149900c3a810ffba1676f3a4c98134ac')
-sha256sums_x86_64=('edb7f7622c75698d8b7e0b51c4103707f1c4d30c91976eef6086075a49ba3116')
-sha256sums_aarch64=('6efb42041b4d81a7ddfeb88b479eee12e2c3783905f34d003c17b0328b45a31b')
 
 source_x86_64=("fluxer-canary-${pkgver}-x64.tar.gz::https://pkgs.fluxer.com/desktop/canary/linux/x64/${pkgver}/tar_gz")
+sha256sums_x86_64=('edb7f7622c75698d8b7e0b51c4103707f1c4d30c91976eef6086075a49ba3116')
 
 source_aarch64=("fluxer-canary-${pkgver}-arm64.tar.gz::https://pkgs.fluxer.com/desktop/canary/linux/arm64/${pkgver}/tar_gz")
+sha256sums_aarch64=('6efb42041b4d81a7ddfeb88b479eee12e2c3783905f34d003c17b0328b45a31b')
 
 package() {
     local _dir
