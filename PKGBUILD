@@ -1,6 +1,6 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=openutau-bin
-pkgver=0.1.573
+pkgver=0.1.575
 pkgrel=1
 _tag=$pkgver-beta
 pkgdesc="Open source UTAU successor"
@@ -17,8 +17,8 @@ source_x86_64=("OpenUtau-linux-x86_64-$pkgver.tar.gz::https://github.com/openuta
 source_aarch64=("OpenUtau-linux-aarch64-$pkgver.tar.gz::https://github.com/openutau/OpenUtau/releases/download/$_tag/OpenUtau-linux-arm64.tar.gz")
 sha256sums=('490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b'
             '46cdff454ee6ea172ccdd912d64480a2ce7ffc123a89b183ffc74e314fc3c854')
-sha256sums_x86_64=('f105f6c67319382d2796d19989fca54007259d97b195024aab1f4f1c8a5cea7e')
-sha256sums_aarch64=('ab0dd66f8ce40074b4b38c7e7601afcb245f14c10a53994f57d64981b034be5f')
+sha256sums_x86_64=('927593be0a85c56ce45cae8c3ca6bdfad91356ed2013936c5007a0f334fcba42')
+sha256sums_aarch64=('416bbb301c8894e0cb750cccddaf73219d26c1d1d3ff7b2422692494ea8a0a65')
 noextract=("OpenUtau-linux-x86_64-$pkgver.tar.gz" "OpenUtau-linux-aarch64-$pkgver.tar.gz")
 options=(!strip)
 
