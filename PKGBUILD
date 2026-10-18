@@ -21,6 +21,10 @@ makedepends=(
   'dotnet-sdk-8.0'
   'git'
 )
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=('yelp: in-app help')
 conflicts=('nickvision-tagger')
 source=("git+https://github.com/NickvisionApps/Tagger.git#tag=$pkgver-1"
@@ -45,7 +49,7 @@ build() {
 check() {
   cd Tagger
   appstreamcli validate --no-net \
-    "_nickbuild/usr/share/metainfo/${_app_id}.metainfo.xml" || :
+    "_nickbuild/usr/share/metainfo/${_app_id}.metainfo.xml"
   desktop-file-validate "_nickbuild/usr/share/applications/${_app_id}.desktop"
 }
 
