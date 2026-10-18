@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=astrlink-bin
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="A local privacy gateway for AI agents"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('astrlink')
 options=('!strip' '!debug')
 
 source_x86_64=("AstrLink_${pkgver}_amd64.deb::https://github.com/Calcium-Ion/AstrLink/releases/download/v${pkgver}/AstrLink_${pkgver}_amd64.deb")
-sha256sums_x86_64=('63dd77fe2ad265e419a54488f6dcd94a7215c75925ca85a3c41060e02edf4e0d')
+sha256sums_x86_64=('862a21263307dd91250a7b15673279f26b51746bdaf213ba1b23bf32ff046bce')
 noextract=("AstrLink_${pkgver}_amd64.deb")
 
 package() {
