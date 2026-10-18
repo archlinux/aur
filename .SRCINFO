@@ -21,7 +21,7 @@ pkgbase = muse-code-bin
 	source = muse.sh
 	source = muse-session
 	source = muse-mcp
-	sha256sums = 3384970e5daa4ca8b2cf49c22a401301ef127aa52ffd9baa268c08b052349182
+	sha256sums = aac85fec4903d64cb26e076096b8029652ab0c116b0bd14dbbfc3b26cfdcebbe
 	sha256sums = 2e37ab20bcbce1c5219164567d0e34ee09ddfc3cd761398855059d77af88f306
 	sha256sums = 65cff61e4bbb8939903c680f3cbf04d881214de23805d993c42eea2c5d1c82a7
 	source_x86_64 = muse-code-bin-1.4.10.r6427.1-x86_64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=1.4.10-R6427.1&file=muse-x86-linux

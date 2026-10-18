@@ -82,8 +82,16 @@ if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
       [[ -d "/${d}" ]] && PROOT_ARGS+=("-b" "/${d}:/${d}")
     done
 
-    PROOT_ARGS+=("-r" "${PREFIX}/..")
-    PROOT_ARGS+=("--cwd=.")
+    # Canonicalize the proot root and map the current directory into the
+    # guest VFS: a raw --cwd=. leaks the host path (e.g. Termux's
+    # /data/data/... prefix) into the guest, which breaks workspace trust
+    # resolution ("target changed during startup"). Bind the invoking $HOME
+    # to /home while at it, since HOME is /home inside the guest.
+    PROOT_ROOT="$(cd "${PREFIX}/.." && pwd)"
+    PROOT_ARGS+=("-r" "${PROOT_ROOT}")
+    PROOT_ARGS+=("-b" "${HOME}:/home")
+    PROOT_CWD="${PWD#${PROOT_ROOT}}"
+    PROOT_ARGS+=("--cwd=${PROOT_CWD:-/home}")
 
     export PROOT_ACTIVE=1
     export HOME="/home"
