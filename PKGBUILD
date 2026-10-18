@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gridcraft
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('e79b5df21e3044d0dab835f17c7a47497d477bfae642e591e03810b428e60123')
+sha256sums=('55e9f6a89e02e49803475e01b3b4559e5448204128d2cc05100caad786580a1b')
 
 _srcenv() {
 	cd "$_archive"
