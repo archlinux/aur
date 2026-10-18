@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron /opt/kinopoisk-tv "$@"
+exec electron44-castlab /opt/kinopoisk-tv "$@"
