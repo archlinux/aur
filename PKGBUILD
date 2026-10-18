@@ -50,7 +50,7 @@ depends=(
 )
 makedepends=(
   git
-  clang
+  rocm-llvm
   cmake
   python-installer
   python-setuptools
@@ -105,12 +105,12 @@ build() {
     export PYTORCH_ROCM_ARCH
   fi
   echo "Building for ROCM=$PYTORCH_ROCM_ARCH"
-  # Build
-  CXX=clang++ python setup.py bdist_wheel --dist-dir=dist
-  #python -m build --wheel --no-isolation # this does not work currently
+  # Need to use exactly same compiler as ROCm's since otherwise LTO won't build
+  CXX=/opt/rocm/lib/llvm/bin/clang++ python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
+
