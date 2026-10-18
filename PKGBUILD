@@ -7,7 +7,7 @@ _electron=electron42
 _nodejs="24.18.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.135.06055
+pkgver=1.140.06880
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -38,7 +38,7 @@ source=(
 	"${_pkgname}.desktop"
 	"${_pkgname}-uri-handler.desktop"
 )
-sha256sums=('0e4a91130b1b1e631830f0156e0844105cb4356505ed23f0b758e368535361c5'
+sha256sums=('179acfacb8b0704a49173be09cb98558e149fadda112db067d30f7fb7a547592'
             'fafa705e51ed4d3044ab8fa2d7970efec8d0046883ebef1b86ebcef3394fa22d'
             '617591ac74e2ef1ab30425895a79be5580db3280e7e44cee56a7a809637d438f'
             '28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
@@ -133,7 +133,7 @@ build() {
 package() {
 	# Reference: https://aur.archlinux.org/packages/vscodium
 	install -d -m755 ${pkgdir}/usr/bin
-	install -d -m755 ${pkgdir}/usr/share/{${_pkgname},applications,pixmaps}
+	install -d -m755 ${pkgdir}/usr/share/{applications,pixmaps}
 	install -d -m755 ${pkgdir}/usr/share/licenses/${_pkgname}
 
 	# vscodium-electron modification: put resource files and vscodium.js under /usr/lib/
@@ -167,4 +167,8 @@ package() {
 
 	# Install license
 	install -Dm644 "$srcdir/${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Clean up sourcemaps
+	cd "$pkgdir/usr/lib/vscodium"
+	find . -type f -name *.map -exec rm {} \;
 }
