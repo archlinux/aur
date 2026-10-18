@@ -1,0 +1,5 @@
+[git-bonsai-bin]
+source = "github"
+github = "aymericbeaumet/bonsai"
+use_latest_release = true
+prefix = "v"

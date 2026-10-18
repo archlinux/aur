@@ -1,0 +1,23 @@
+pkgbase = git-bonsai-bin
+	pkgdesc = Git worktrees without the bookkeeping
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/aymericbeaumet/bonsai
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = bonsai
+	conflicts = git-bonsai
+	options = !strip
+	source = README-0.6.0.md::https://raw.githubusercontent.com/aymericbeaumet/bonsai/v0.6.0/readme.md
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/aymericbeaumet/bonsai/v0.6.0/LICENSE
+	sha256sums = 513ce5388dcd674c046f2350279582317b5064e5050bbe4311fed090cd40b957
+	sha256sums = 8dc6fe3a782b15f7686f446771ef05502a005d10731a0ff36a092674d7c1b7df
+	source_x86_64 = bonsai-x86_64-0.6.0.tgz::https://github.com/aymericbeaumet/bonsai/releases/download/v0.6.0/bonsai-linux-amd64.tar.gz
+	sha256sums_x86_64 = 4ba8a4bcff52f6a72efc740cb526683601cc43e6f5c9a415cd956a68aac63ece
+	source_aarch64 = bonsai-aarch64-0.6.0.tgz::https://github.com/aymericbeaumet/bonsai/releases/download/v0.6.0/bonsai-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3e047a79e5577e994bdc0a69a2b4a2abd05dba5eb4b4e7911ff0df2cdbe1d069
+
+pkgname = git-bonsai-bin
