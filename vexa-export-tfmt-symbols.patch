@@ -1,0 +1,17 @@
+--- a/scripts/vexa-dynamic.lua
++++ b/scripts/vexa-dynamic.lua
+@@ -11,6 +11,14 @@
+ 
+ includes("../vendor/tiny-fmt")
+ 
++-- tiny-fmt is statically linked into libvexa.so and vexa's public headers
++-- (vexa/core/log.hpp) are inline over its API, so its ABI must be exported;
++-- mode.release would otherwise compile static targets with -fvisibility=hidden,
++-- which breaks linking for every consumer of vexa/core/log.hpp
++target("tiny-fmt")
++    set_symbols("none")
++target_end()
++
+ target("vexa")
+     set_kind("shared")
+     set_languages("c++23")
