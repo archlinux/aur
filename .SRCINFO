@@ -1,0 +1,26 @@
+pkgbase = mingw-w64-python315-bin
+	pkgdesc = The Python programming language (native MSVC version) (mingw-w64)
+	pkgver = 3.15.0
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = any
+	license = PSF
+	makedepends = mingw-w64-tools
+	makedepends = mingw-w64-binutils
+	depends = mingw-w64-openssl
+	optdepends = mingw-w64-wine: runtime support
+	noextract = python-3.15.0-embed-win32.zip
+	noextract = python-3.15.0-embed-amd64.zip
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://www.python.org/ftp/python/3.15.0/python-3.15.0-embed-win32.zip
+	source = https://www.python.org/ftp/python/3.15.0/python-3.15.0-embed-amd64.zip
+	source = https://www.python.org/ftp/python/3.15.0/Python-3.15.0.tgz
+	source = wine-python.sh
+	sha256sums = da1ca8f1a491444b2a227b898caa9c44537ac27dcf27cff58347f3b4119f79ad
+	sha256sums = a6999bcbcbe56f937159ef79c2630260eca99f65f7860bc5cd20430324079a44
+	sha256sums = 438596cac081036d3c1d532ab7e7335eeb35567bc961749a0d5797176db0db68
+	sha256sums = a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae
+
+pkgname = mingw-w64-python315-bin
