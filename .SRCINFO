@@ -1,0 +1,20 @@
+pkgbase = tempest-cli-bin
+	pkgdesc = The all-platform terminal emulator CLI (official binary release)
+	pkgver = 3.17.2
+	pkgrel = 1
+	url = https://gotempest.app
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-proprietary
+	depends = systemd-libs
+	depends = zlib
+	provides = tempest-cli
+	conflicts = tempest-cli
+	options = !strip
+	options = !debug
+	source_x86_64 = tempest-cli_3.17.2-1_amd64.deb::https://download.gotempest.app/cli/tempest-cli_3.17.2-1_amd64.deb
+	sha256sums_x86_64 = f4c81834c44acd9d8802283ec8f183ba37a71e0baa05df3ab3f537cd275cad93
+	source_aarch64 = tempest-cli_3.17.2-1_arm64.deb::https://download.gotempest.app/cli/tempest-cli_3.17.2-1_arm64.deb
+	sha256sums_aarch64 = 1f04387d8d8f6f9317824ff980d1fd1095c3ae16fe2aba796c0fb12369ce3483
+
+pkgname = tempest-cli-bin
