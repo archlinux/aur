@@ -1,6 +1,6 @@
 pkgbase = wayscriber-configurator
 	pkgdesc = GUI configurator for wayscriber (GTK4/libadwaita)
-	pkgver = 0.9.26
+	pkgver = 0.9.27
 	pkgrel = 1
 	url = https://wayscriber.com
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wayscriber-configurator
 	depends = glibc
 	depends = libxkbcommon
 	optdepends = wayscriber: integrate with the running daemon and CLI
-	source = wayscriber-0.9.26.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v0.9.26.tar.gz
-	sha256sums = 2ff0c5d94b8bf89c1278cae7d75bca5177c5c72ef519a68ee68361e0a570488e
+	source = wayscriber-0.9.27.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v0.9.27.tar.gz
+	sha256sums = 334fc3d1dddeef55b147d0516242e9723eb84eb5d7f9dc594534ebbfb7017f24
 
 pkgname = wayscriber-configurator
