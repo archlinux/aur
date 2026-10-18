@@ -1,0 +1,33 @@
+pkgbase = rivu-git
+	pkgdesc = A local-first Linux music player with desktop, CLI, TUI and headless modes
+	pkgver = 0.2.0.r0.ba47f81
+	pkgrel = 1
+	url = https://github.com/rtgiskard/rivu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust>=1.99
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = ffmpeg>=9
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = libpipewire>=1.2
+	depends = libxkbcommon
+	depends = opus
+	depends = wayland
+	depends = libglvnd
+	depends = vulkan-icd-loader
+	depends = ttf-nerd-fonts-symbols-mono
+	depends = hicolor-icon-theme
+	optdepends = ffmpeg>=9: optional FFmpeg decoding
+	optdepends = xdg-desktop-portal: desktop file chooser
+	provides = rivu
+	conflicts = rivu
+	options = !lto
+	source = git+https://github.com/rtgiskard/rivu.git
+	b2sums = SKIP
+
+pkgname = rivu-git
