@@ -1,6 +1,6 @@
 post_install() {
     # Try to enable as the installing user (works with paru + lingering)
-    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+    if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
         sudo -u "$SUDO_USER" systemctl --user daemon-reload 2>/dev/null || true
         sudo -u "$SUDO_USER" systemctl --user enable --now pomotui.socket 2>/dev/null && return
     fi
@@ -11,13 +11,44 @@ post_install() {
 }
 
 post_upgrade() {
-    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
-        sudo -u "$SUDO_USER" systemctl --user daemon-reload 2>/dev/null || true
-        sudo -u "$SUDO_USER" systemctl --user try-restart pomotui.service 2>/dev/null || true
-    else
-        systemctl --user daemon-reload 2>/dev/null || true
-        systemctl --user try-restart pomotui.service 2>/dev/null || true
-    fi
+    # pacman runs as root, often without the installing user's session variables.
+    # Recover configured services even if they stopped during the upgrade.
+    pomotui_users=$(loginctl list-users --no-legend --no-pager) || {
+        echo "WARNING: Pomotui was upgraded, but user services could not be discovered." >&2
+        echo "Run in your user session: systemctl --user daemon-reload && systemctl --user restart pomotui.service" >&2
+        return 0
+    }
+    while read -r pomotui_uid pomotui_user pomotui_rest; do
+        case "$pomotui_uid" in ''|*[!0-9]*|0) continue ;; esac
+        pomotui_restart=try-restart
+        # try-restart silently leaves failed/inactive units stopped. A configured
+        # or currently active socket means this user expects Pomotui available.
+        if runuser -u "$pomotui_user" -- env \
+            XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
+            systemctl --user is-enabled --quiet pomotui.socket \
+            || runuser -u "$pomotui_user" -- env \
+                XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
+                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
+                systemctl --user is-active --quiet pomotui.socket; then
+            pomotui_restart=restart
+        fi
+        if runuser -u "$pomotui_user" -- env \
+            XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
+            systemctl --user daemon-reload \
+            && runuser -u "$pomotui_user" -- env \
+                XDG_RUNTIME_DIR="/run/user/$pomotui_uid" \
+                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$pomotui_uid/bus" \
+                systemctl --user "$pomotui_restart" pomotui.service; then
+            continue
+        fi
+        echo "WARNING: Pomotui was upgraded, but the Timer Service for $pomotui_user could not be restarted." >&2
+        echo "Run as $pomotui_user: systemctl --user daemon-reload && systemctl --user restart pomotui.service" >&2
+    done <<EOF
+$pomotui_users
+EOF
+    return 0
 }
 
 pre_remove() {

@@ -1,6 +1,6 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends"
 arch=('x86_64')
@@ -14,12 +14,13 @@ optdepends=(
     'waybar: Waybar module integration'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('df9fa0242d74b18eb2af980f8d68c0fdea33b54ac3193dccc45ac5a5c5ef328f')
+sha256sums=('b40f99eda8e403e7c8c32e6c340241709f441313f95d8e62f4fbf1145e1c9d5a')
 options=('!lto')
 install=pomotui.install
 
 prepare() {
     cd "${pkgname}-${pkgver}"
+    cp packaging/aur/pomotui.install "$startdir/pomotui.install"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
