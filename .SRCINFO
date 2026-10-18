@@ -1,6 +1,6 @@
 pkgbase = wipsync-bin
 	pkgdesc = Sync work-in-progress folders between machines, through restic and ssh
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/ahaltindis/wipsync
 	install = wipsync.install
@@ -13,7 +13,7 @@ pkgbase = wipsync-bin
 	provides = wipsync
 	conflicts = wipsync
 	options = !debug
-	source = wipsync-0.4.0-x86_64.tar.gz::https://github.com/ahaltindis/wipsync/releases/download/v0.4.0/wipsync-0.4.0-x86_64.tar.gz
-	sha256sums = d6cf2f96a329510b5f308e60972dc4651edbee240ca3a2403d60dbda43ccceac
+	source = wipsync-0.4.1-x86_64.tar.gz::https://github.com/ahaltindis/wipsync/releases/download/v0.4.1/wipsync-0.4.1-x86_64.tar.gz
+	sha256sums = d253a565e22e15dd401b76451503faacd735b377065198ece49a39e8f1605476
 
 pkgname = wipsync-bin
