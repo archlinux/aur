@@ -2,7 +2,7 @@
 pkgname=quick-lookup
 _app_id=com.github.johnfactotum.QuickLookup
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GTK dictionary application powered by Wiktionary"
 arch=('any')
 url="https://github.com/johnfactotum/quick-lookup"
@@ -14,6 +14,10 @@ depends=(
   'webkitgtk-6.0'
 )
 makedepends=('meson')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('040d3570e5799396ef728402242ab06d8b7dfda4f365a5ae9d20e28d95c4f701')
 

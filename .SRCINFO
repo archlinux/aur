@@ -1,10 +1,12 @@
 pkgbase = quick-lookup
 	pkgdesc = Simple GTK dictionary application powered by Wiktionary
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johnfactotum/quick-lookup
 	arch = any
 	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = meson
 	depends = gjs
 	depends = gtk4
