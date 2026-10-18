@@ -29,7 +29,7 @@ struct Range {
     end: i32,
 }
 
-extern "C" {
+unsafe extern "C" {
     fn atspi_init() -> c_int;
     fn atspi_set_timeout(timeout: c_int, startup: c_int);
     fn atspi_get_desktop(index: c_int) -> Ptr;
