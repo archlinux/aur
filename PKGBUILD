@@ -2,7 +2,7 @@
 
 _pkgname="kmux"
 pkgname="$_pkgname-git"
-pkgver=26.08.0.r278.g674abd5
+pkgver=26.08.2.r344.g29be3e7
 pkgrel=1
 pkgdesc='tmux client based on Konsole'
 url="https://github.com/futpib/$_pkgname"
@@ -64,7 +64,7 @@ pkgver() {
   cd "$_pkgsrc"
 
   _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)"\s.*/>$'
-  _file='desktop/org.kde.kmux.appdata.xml'
+  _file='desktop/org.kde.konsole.appdata.xml'
   _history_path=':(glob)desktop/*.appdata.xml'
 
   _line=$(grep -E "$_regex" "$_file" | head -1)

@@ -1,6 +1,6 @@
 pkgbase = kmux-git
 	pkgdesc = tmux client based on Konsole
-	pkgver = 26.08.0.r278.g674abd5
+	pkgver = 26.08.2.r344.g29be3e7
 	pkgrel = 1
 	url = https://github.com/futpib/kmux
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = kmux-git
 	depends = sh
 	depends = tmux
 	optdepends = keditbookmarks: to manage bookmarks
-	provides = kmux=26.08.0
+	provides = kmux=26.08.2
 	conflicts = kmux
 	source = kmux::git+https://github.com/futpib/kmux.git#branch=master
 	sha256sums = SKIP
