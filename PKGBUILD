@@ -3,18 +3,20 @@
 
 pkgname=gvolwheel
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a lightweight audio mixer which lets you control the audio volume through a tray icon"
 url="https://github.com/Junker/gvolwheel"
 arch=('i686' 'x86_64')
 license=('GPL-2')
 makedepends=('intltool')
-depends=('gtk3' 'libgee')
+depends=('alsa-lib' 'gtk3' 'libgee')
 source=("https://github.com/Junker/${pkgname}/archive/${pkgver}.zip")
 md5sums=('a38dbc459ae3ea659a49ab8aebc20535')
 
 build() {
     cd $srcdir/${pkgname}-$pkgver
+    # GCC 14+ makes implicit declarations and pointer mismatches errors (src/actions.c)
+    CFLAGS+=" -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types"
     ./autogen.sh --prefix=/usr
     ./configure --prefix=/usr
     make
