@@ -6,6 +6,7 @@ pkgbase = web-archives
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3

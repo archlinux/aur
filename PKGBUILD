@@ -22,7 +22,10 @@ makedepends=(
   'meson'
   'vala'
 )
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "https://github.com/birros/web-archives-darkreader/releases/download/v${_dr_ver}/web-archives-darkreader_v${_dr_ver}.js")
 sha256sums=('de473a1af35ce588f51020f6282652619019d84d70a8e74e57cfb3525337537d'
