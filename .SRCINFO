@@ -1,7 +1,7 @@
 pkgbase = libpdfium
 	pkgdesc = PDF rendering/manipulation library from Chromium
 	pkgver = 155.0.8059.84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pdfium.googlesource.com/pdfium/
 	arch = x86_64
 	license = Apache-2.0 AND MIT AND BSD-3-Clause AND (Apache-2.0 WITH LLVM-exception AND (MIT OR NCSA))

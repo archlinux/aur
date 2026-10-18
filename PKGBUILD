@@ -2,7 +2,7 @@
 
 pkgname=libpdfium
 pkgver=155.0.8059.84
-pkgrel=1
+pkgrel=2
 _pdfium_rev=39f0ed4a657e53ed743a16d10d77dec086a08e03
 pkgdesc='PDF rendering/manipulation library from Chromium'
 arch=(x86_64)
