@@ -2,8 +2,8 @@
 # Contributer: Chun Yu <junyussh@gmail.com>
 pkgname=verysync-bin
 _pkgname=verysync
-pkgver=2.21.3
-pkgrel=2
+pkgver=2.33.2
+pkgrel=1
 pkgdesc="微力同步 A P2P sync tool simliar to Resilio Sync that can be used in China, syncing files via secure, distributed technology. Support multi architectures."
 arch=("i386" "x86_64" "arm" "aarch64" "loong64" "riscv64")
 url="https://www.verysync.com/download.html"
@@ -21,12 +21,12 @@ source_aarch64=("${_pkgname}_arm64-${pkgver}.tar.gz::${_url}/${_pkgname}-linux-a
 source_loong64=("${_pkgname}_loong64-${pkgver}.tar.gz::${_url}/${_pkgname}-linux-loong64-v${pkgver}.tar.gz")
 source_riscv64=("${_pkgname}_riscv64-${pkgver}.tar.gz::${_url}/${_pkgname}-linux-riscv64-v${pkgver}.tar.gz")
 sha256sums=('6050e7d83e561a60f6e353e3cc85d90e0783cf9fbea543f21e4e85ca25bb3b3a')
-sha256sums_i386=('976210bf42da9b5a39ee8d41cce3b4edc3c1d9045192617a5b4b063f8182af74')
-sha256sums_x86_64=('340ef24c27e4aa4df5a52824c63f8fb407947e75174673d94c18df4a8664287b')
-sha256sums_arm=('33a1831fa26910a57a5fdf82ed2ba8ccf58bab41e10b989e546cfaf69371fccc')
-sha256sums_aarch64=('66bce5e9725969c4aa9ec057830f5197156526b2a2ff8ae92ae155cd4665fd8b')
-sha256sums_loong64=('c70ea700ebaad77c2d98ac9580191bd1bfaae4b0a5590382e29ffb8b73ab3550')
-sha256sums_riscv64=('348669525a5ef80b70ab3570d8bfc558bafdbbad6954fc2eeb3d55ab972be864')
+sha256sums_i386=('26a5230a414ffc82a3b63d82e2d3ca615784048a4cc8d06e1f8c17ea8beab26a')
+sha256sums_x86_64=('8a4b347669cd33def98b3bf1888576c8dc786ed77485080901bba0101c4413bd')
+sha256sums_arm=('005ace647231cc8714b8d944dc8bc4376f4d86dd1198eae61e25ef99112a31a6')
+sha256sums_aarch64=('708702fa19c321acb7e1aaa895a6f2cf8cb6189ab8ede6edf5049b61ad1f0ae0')
+sha256sums_loong64=('f7962ecc018e95aef29d36fd5066b757ce0e718895ef74fa625c80b598af5bd5')
+sha256sums_riscv64=('00700d8428856fd64f46cf4623a76ad39c31d3e391a7c948a12fd12c3ff1439d')
 
 package() {
 	# get the verysync directory name
