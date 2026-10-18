@@ -2,7 +2,7 @@
 # slskdn - Unofficial slskd fork with batteries-included Soulseek features
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=2026101222.slskdn.350
+pkgver=2026101723.slskdn.351
 pkgrel=4
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64')
