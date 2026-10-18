@@ -9,4 +9,4 @@ X-AppImage-Version={pkgversion}
 Comment=An Electron based application for interactive, high-fidelity web archiving.
 Categories=Archiving;Utility;
 StartupNotify=true
-Version={pkgversion}
+Version=1.5
