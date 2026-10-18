@@ -4,7 +4,7 @@
 # refs, missing deps, and missing options three times. Verify after publish:
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 pkgname=llama-launcher
-pkgver=26
+pkgver=27
 pkgrel=1
 pkgdesc="Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling"
 arch=(any)
@@ -12,7 +12,7 @@ url="https://codeberg.org/LuminaNAO/llama-launcher"
 license=(AGPL-3.0-only)
 depends=('bash' 'cmake' 'curl' 'git' 'jq' 'yq' 'bc' 'nodejs' 'openssh')
 optdepends=(
-    'llama-hdd: llama-server binary (required to launch models)'
+    'llama.cpp: system llama-server binary (otherwise build one with llama-build)'
 )
 source=(git+https://codeberg.org/LuminaNAO/${pkgname}.git#tag="v${pkgver}")
 sha256sums=(SKIP)
@@ -35,6 +35,7 @@ package() {
     install -Dm755 "${pkgname}/utils/vram-stress-test.sh" "${pkgdir}/usr/bin/llama-vram-stress-test"
     install -Dm755 "${pkgname}/llama-deep-proxy.mjs" "${pkgdir}/usr/lib/llama-launcher/llama-deep-proxy.mjs"
     install -Dm755 "${pkgname}/llama-waterfall.mjs" "${pkgdir}/usr/lib/llama-launcher/llama-waterfall.mjs"
+    install -Dm644 "${pkgname}/utils/tokentail-emit.mjs" "${pkgdir}/usr/lib/llama-launcher/utils/tokentail-emit.mjs"
     # Bundled tunes + chat templates, read from BUNDLED_MODEL_CONFIG_DIR
     install -Dm644 "${pkgname}"/model-configs/* -t "${pkgdir}/usr/share/llama-launcher/model-configs"
     install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"

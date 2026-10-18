@@ -1,6 +1,6 @@
 pkgbase = llama-launcher
 	pkgdesc = Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling
-	pkgver = 26
+	pkgver = 27
 	pkgrel = 1
 	url = https://codeberg.org/LuminaNAO/llama-launcher
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = llama-launcher
 	depends = bc
 	depends = nodejs
 	depends = openssh
-	optdepends = llama-hdd: llama-server binary (required to launch models)
-	source = git+https://codeberg.org/LuminaNAO/llama-launcher.git#tag=v26
+	optdepends = llama.cpp: system llama-server binary (otherwise build one with llama-build)
+	source = git+https://codeberg.org/LuminaNAO/llama-launcher.git#tag=v27
 	sha256sums = SKIP
 
 pkgname = llama-launcher
