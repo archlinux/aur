@@ -1,6 +1,6 @@
 pkgbase = frenfoil-bin
 	pkgdesc = e2e-only messenger on its own protocol, post-quantum
-	pkgver = 0.60.22
+	pkgver = 0.60.23
 	pkgrel = 1
 	url = https://git.josf.dev/josefandersson/frenfoil
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = frenfoil-bin
 	conflicts = frenfoil
 	options = !strip
 	options = !debug
-	source = frenfoil-0.60.22-linux-x64.zip::https://git.josf.dev/josefandersson/frenfoil/releases/download/v0.60.22/frenfoil-0.60.22-linux-x64.zip
-	source = frenfoil-0.60.22.desktop::https://git.josf.dev/josefandersson/frenfoil/raw/tag/v0.60.22/frenfoil.desktop
-	sha256sums = e941d2f72670b9c1e6d33b355793f2de76b64580137d336e3cb51aa3499a6a1a
+	source = frenfoil-0.60.23-linux-x64.zip::https://git.josf.dev/josefandersson/frenfoil/releases/download/v0.60.23/frenfoil-0.60.23-linux-x64.zip
+	source = frenfoil-0.60.23.desktop::https://git.josf.dev/josefandersson/frenfoil/raw/tag/v0.60.23/frenfoil.desktop
+	sha256sums = 6ad7fa5be4018db83d3a7013cb8e25d45434ba503240e9ce2c4fe3b765b49ef1
 	sha256sums = 75dbb90de272ebc99a4736598fe5e8a07f0a7fe7f276916a78481849bbacf143
 
 pkgname = frenfoil-bin
