@@ -1,6 +1,6 @@
 pkgname=vnt
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient VPN. 简便高效的异地组网、内网穿透工具"
 arch=(x86_64)
 url=https://rustvnt.com/
@@ -14,7 +14,7 @@ install=vnt.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vnt-dev/vnt/archive/refs/tags/v$pkgver.tar.gz"
         "vnt-cli@.service"
         "vnt-web@.service")
-sha256sums=('4cb4b6a77941230218cfba753b6fe216dab1c6501fb88a4dc23b84a63ffed923'
+sha256sums=('0dadfd4814d92156d3b640571ff4c8223a32a9ca9303ec9cc9e49a186adc8468'
             '0787b510c61595a498570f304ba9a6cdc690a879bbaab4838252968f6034e17a'
             '501ab93300adbb44e03d1f52b7c919e6857f0cdca3d23b69d6ed4498e164c78d')
 
