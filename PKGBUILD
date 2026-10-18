@@ -9,10 +9,6 @@ arch=(x86_64)
 url='https://aurora4x.com/'
 license=(LicenseRef-aurora-4x)
 depends=(wine wine-mono)
-
-# Google Drive's large-file confirmation page can be bypassed with the
-# drive.usercontent.google.com endpoint and confirm=t, so makepkg's normal
-# downloader can fetch the archive directly.
 _gdrive_id=1aW7Yra4MgWwr4UxFORwRT2scOCZoDFqX
 _archive="$pkgname-$pkgver.rar"
 _archive_url="https://drive.usercontent.google.com/download?id=$_gdrive_id&export=download&confirm=t"
