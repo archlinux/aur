@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
 pkgver=1.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
 url="https://github.com/Kesomannen/gale"
@@ -21,6 +21,7 @@ depends=(
 makedepends=(
   'cargo'
   'cargo-tauri'
+  'nodejs'
   'pnpm'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
