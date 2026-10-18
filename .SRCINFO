@@ -1,6 +1,6 @@
 pkgbase = newscid
 	pkgdesc = Modern Chess Information Database (Scid vs. PC Rewrite)
-	pkgver = 1.3.21
+	pkgver = 1.3.22
 	pkgrel = 1
 	url = https://github.com/chrisfair/newscid
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = newscid
 	optdepends = stockfish: strong default UCI chess engine
 	optdepends = fruit: legacy UCI chess engine
 	optdepends = scid: legacy database tools (tcscid)
-	source = newscid-1.3.21-1.tar.gz::https://github.com/chrisfair/newscid/archive/refs/tags/v1.3.21.tar.gz
-	sha256sums = b10b5c3285c588468c6b244f666960ed1faed1ebe2b7d6e27534446772e62cff
+	source = newscid-1.3.22-1.tar.gz::https://github.com/chrisfair/newscid/archive/refs/tags/v1.3.22.tar.gz
+	sha256sums = 4f28cebb8d67d1c721f39c9e4bd5dfa841044b69ce78b031774f4095302706ec
 
 pkgname = newscid
