@@ -1,12 +1,13 @@
 pkgbase = memstat
 	pkgdesc = Identify what's using up virtual memory
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://packages.debian.org/source/sid/memstat
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://ftp.de.debian.org/debian/pool/main/m/memstat/memstat_1.1.tar.gz
-	sha256sums = fb7e0b69b1b1173b0b0c735d58d2b7ebb50b3ca15cf9e386302700e408192b86
+	source = http://deb.debian.org/debian/pool/main/m/memstat/memstat_1.2.tar.xz
+	md5sums = 49bf5aa5f3006310e547a13b3275389a
+	sha256sums = 1c70e2108f2c2124b8423cc7588caa0c796fe5413061ae6558682ee3a9357165
 
 pkgname = memstat
