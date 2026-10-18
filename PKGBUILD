@@ -1,12 +1,12 @@
 pkgname=pollen-commit-bin
-pkgver=0.100.14.59
+pkgver=0.100.15.7
 pkgrel=1
 pkgdesc='Pollen'
 arch=('x86_64')
 url='https://github.com/tiouoo/Pollen'
 license=('AGPL-3.0-or-later')
 depends=('fuse2' 'hicolor-icon-theme' 'xdg-utils')
-provides=('pollen-commit=0.100.14.59')
+provides=('pollen-commit=0.100.15.7')
 conflicts=('pollen' 'pollen-mc' 'pollen-stable' 'pollen-stable-bin' 'pollen-commit' 'pollen-nightly')
 options=('!strip' '!emptydirs')
 _appimg="Pollen-${pkgver}.AppImage"

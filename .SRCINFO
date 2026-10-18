@@ -1,6 +1,6 @@
 pkgbase = pollen-commit-bin
 	pkgdesc = Pollen
-	pkgver = 0.100.14.59
+	pkgver = 0.100.15.7
 	pkgrel = 1
 	url = https://github.com/tiouoo/Pollen
 	arch = x86_64
@@ -8,17 +8,17 @@ pkgbase = pollen-commit-bin
 	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = xdg-utils
-	provides = pollen-commit=0.100.14.59
+	provides = pollen-commit=0.100.15.7
 	conflicts = pollen
 	conflicts = pollen-mc
 	conflicts = pollen-stable
 	conflicts = pollen-stable-bin
 	conflicts = pollen-commit
 	conflicts = pollen-nightly
-	noextract = Pollen-0.100.14.59.AppImage
+	noextract = Pollen-0.100.15.7.AppImage
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = Pollen-0.100.14.59.AppImage::https://github.com/tiouoo/Pollen/releases/download/publish-commit/Pollen.linux.x64.AppImage
+	source_x86_64 = Pollen-0.100.15.7.AppImage::https://github.com/tiouoo/Pollen/releases/download/publish-commit/Pollen.linux.x64.AppImage
 	source_x86_64 = pollen.png
 	source_x86_64 = pollen.desktop
 	source_x86_64 = LICENSE
