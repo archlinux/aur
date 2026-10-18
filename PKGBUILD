@@ -1,4 +1,5 @@
-# Maintainer: maryext <me@mary.my.id>
+# Maintainer: JJDizz1L <jjdizz1l@proton.me>
+# Contributor: maryext <me@mary.my.id>
 
 pkgname=helium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content (for Helium Browser)'
