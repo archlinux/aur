@@ -1,6 +1,6 @@
 pkgbase = dp100-studio
 	pkgdesc = Control and monitor the ALIENTEK DP100 USB-C bench power supply
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/slastra/dp100-studio
 	install = dp100-studio.install
@@ -17,7 +17,7 @@ pkgbase = dp100-studio
 	depends = libgcc
 	depends = glibc
 	depends = hicolor-icon-theme
-	source = dp100-studio-0.2.0.tar.gz::https://github.com/slastra/dp100-studio/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 9c6ea84421ceba6be8a7a0535913c31460b0ea95746c46594b796297d8ef895e
+	source = dp100-studio-0.2.1.tar.gz::https://github.com/slastra/dp100-studio/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 59287e8029bacec4d9e237c6720d07ecc032ce6b6be87abaf9157c55f04e3c87
 
 pkgname = dp100-studio

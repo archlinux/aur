@@ -1,7 +1,7 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 
 pkgname=dp100-studio
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Control and monitor the ALIENTEK DP100 USB-C bench power supply'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gtk4' 'libadwaita' 'glib2' 'pango' 'graphene' 'libgcc' 'glibc' 'hicolo
 makedepends=('cargo')
 install=dp100-studio.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9c6ea84421ceba6be8a7a0535913c31460b0ea95746c46594b796297d8ef895e')
+sha256sums=('59287e8029bacec4d9e237c6720d07ecc032ce6b6be87abaf9157c55f04e3c87')
 _srcdir="$pkgname-$pkgver"
 
 prepare() {
