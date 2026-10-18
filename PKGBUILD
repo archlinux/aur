@@ -1,5 +1,5 @@
 pkgname=mongodbtui
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A terminal UI for MongoDB written in Rust"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('1a34242a85130807e60a140d93ae35398c762dbdabd618027148c94016faa715')
+sha256sums=('6d406e09d552f8f3c63b2fa044a71574280f07e4a05f1aca13da3093ecbfcd73')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
