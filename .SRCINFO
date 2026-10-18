@@ -1,6 +1,6 @@
 pkgbase = eovpn
 	pkgdesc = Application to connect, manage and update OpenVPN configurations
-	pkgver = 1.33
+	pkgver = 1.34
 	pkgrel = 1
 	url = https://github.com/jkotra/eOVPN
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = eovpn
 	depends = networkmanager-openvpn
 	depends = python-gobject
 	optdepends = openvpn3
-	source = https://github.com/jkotra/eOVPN/archive/refs/tags/1.33.tar.gz
-	sha256sums = 24d899d9e1f1364ee45392bec02fa82c6caab76e114d59337a18c0d9d73a9675
+	source = https://github.com/jkotra/eOVPN/archive/refs/tags/1.34.tar.gz
+	sha256sums = 0a264ec809a7f56357ed4ba867918f93516564af7b3ab050c1ada0d6b92ac6f7
 
 pkgname = eovpn
