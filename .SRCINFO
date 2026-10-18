@@ -1,11 +1,14 @@
 pkgbase = ultima-ratio-regum
-	pkgdesc = A roguelike with procedurally generated civilizations, cultures, and religions
+	pkgdesc = Roguelike mystery game in a world of procedurally generated civilizations
 	pkgver = 0.10.4d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.markrjohnsongames.com/games/ultima-ratio-regum/
 	arch = x86_64
 	license = LicenseRef-ultima-ratio-regum
+	makedepends = icoutils
+	depends = hicolor-icon-theme
 	depends = wine
+	noextract = ultima-ratio-regum-0.10.4d.zip
 	source = ultima-ratio-regum-0.10.4d.zip::https://www.markrjohnsongames.com/wp-content/uploads/2026/01/URR0104d.zip
 	sha256sums = c24e86b2d8b6b27a33f53a085d0378112aab6954871608b76ac04cbf95125934
 
