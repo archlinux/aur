@@ -1,7 +1,7 @@
 pkgbase = gtrayicon
 	pkgdesc = A user configurable GTK2 status icon and menu for the system tray (notification area)
 	pkgver = 1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gtrayicon.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = gtrayicon
 	makedepends = libglade
 	depends = libglade
 	source = http://downloads.sourceforge.net/gtrayicon/gtrayicon-1.1.tar.gz
+	source = gtrayicon.patch
 	sha256sums = f29f702b97ee8a1e2d29c4a1c8f7b484b5ca588e3c25ff8242bcc920d7b98911
+	sha256sums = 22aac85a50320ee1e1e583e8ea94471430b869df799a32d68ae5325a73b2f759
 
 pkgname = gtrayicon

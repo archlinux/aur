@@ -3,18 +3,21 @@
 
 pkgname=gtrayicon
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A user configurable GTK2 status icon and menu for the system tray (notification area)"
 arch=('i686' 'x86_64')
 url="http://gtrayicon.sourceforge.net/"
 license=('GPL3')
 depends=('libglade')
 makedepends=('libglade')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f29f702b97ee8a1e2d29c4a1c8f7b484b5ca588e3c25ff8242bcc920d7b98911')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
+        "gtrayicon.patch")
+sha256sums=('f29f702b97ee8a1e2d29c4a1c8f7b484b5ca588e3c25ff8242bcc920d7b98911'
+            '22aac85a50320ee1e1e583e8ea94471430b869df799a32d68ae5325a73b2f759')
 
 prepare() {
   sed -i 's#INSTALL_PREFIX = /usr#INSTALL_PREFIX = $(DESTDIR)/usr#' "${srcdir}/${pkgname}-${pkgver}/Makefile"
+  patch "${srcdir}/${pkgname}-${pkgver}/gtrayicon.c" "${srcdir}/gtrayicon.patch"
 }
 
 build() {
