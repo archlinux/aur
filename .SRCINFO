@@ -1,6 +1,6 @@
 pkgbase = frank-geary-bin
 	pkgdesc = GNOME Geary email client with FrankGeary workflow improvements, prebuilt binary
-	pkgver = 46.0_frank.4
+	pkgver = 46.0_frank.5
 	pkgrel = 1
 	url = https://github.com/akitaonrails/frank_geary
 	arch = x86_64
@@ -41,10 +41,10 @@ pkgbase = frank-geary-bin
 	provides = frank-geary
 	conflicts = geary
 	conflicts = frank-geary
-	noextract = frank-geary-46.0_frank.4-x86_64.tar.zst
+	noextract = frank-geary-46.0_frank.5-x86_64.tar.zst
 	options = !strip
 	options = !debug
-	source = frank-geary-46.0_frank.4-x86_64.tar.zst::https://github.com/akitaonrails/frank_geary/releases/download/v46.0-frank.4/frank-geary-46.0_frank.4-x86_64.tar.zst
-	sha256sums = 470e9ad16ea1ff4c33217bf16bb9e7bdf923d9fad9b63ad9d09423f85b5bebda
+	source = frank-geary-46.0_frank.5-x86_64.tar.zst::https://github.com/akitaonrails/frank_geary/releases/download/v46.0-frank.5/frank-geary-46.0_frank.5-x86_64.tar.zst
+	sha256sums = 45ffaf75e170d7cbedf9f2dd71fc8c7a68f28b5ba45415411560afcfb300ad05
 
 pkgname = frank-geary-bin
