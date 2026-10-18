@@ -1,0 +1,19 @@
+diff --git a/tests/unit/CMakeLists.txt b/tests/unit/CMakeLists.txt
+index 8ed5ca9..7ab8184 100644
+--- a/tests/unit/CMakeLists.txt
++++ b/tests/unit/CMakeLists.txt
+@@ -60,12 +60,12 @@ endif()
+ catch_discover_tests(nekomote_unit_tests
+     TEST_SPEC "~[integration]"
+     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-    EXTRA_ARGS --colour-mode none
++    EXTRA_ARGS "--colour-mode none"
+     PROPERTIES SKIP_REGULAR_EXPRESSION "${NEKOMOTE_CATCH_SKIP_REPORT}")
+ catch_discover_tests(nekomote_unit_tests
+     TEST_SPEC "[integration]"
+     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-    EXTRA_ARGS --colour-mode none
++    EXTRA_ARGS "--colour-mode none"
+     PROPERTIES LABELS integration
+                SKIP_REGULAR_EXPRESSION "${NEKOMOTE_CATCH_SKIP_REPORT}")
+ 

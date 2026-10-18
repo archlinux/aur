@@ -1,0 +1,31 @@
+diff --git a/adapters/plasma/CMakeLists.txt b/adapters/plasma/CMakeLists.txt
+index b65590d..d406376 100644
+--- a/adapters/plasma/CMakeLists.txt
++++ b/adapters/plasma/CMakeLists.txt
+@@ -40,10 +40,10 @@ qt_add_qml_module(nekomote_plasma_qml
+ )
+ 
+ # QML plugin needs to find libnekomote_plasma_qml.so at runtime via relative RPATH.
+-# Install layout: <prefix>/qml/NekoMote/Wallpaper/plugin.so, <prefix>/lib/libnekomote_plasma_qml.so
+-# $ORIGIN/../../../lib resolves from qml/NekoMote/Wallpaper/ to <prefix>/lib/
++# Install layout: <prefix>/lib/qt6/qml/NekoMote/Wallpaper/plugin.so, <prefix>/lib/libnekomote_plasma_qml.so
++# $ORIGIN/../../../../../lib resolves from qml/NekoMote/Wallpaper/ to <prefix>/lib/
+ set_target_properties(nekomote_plasma_qmlplugin PROPERTIES
+-    INSTALL_RPATH "$ORIGIN/../../../lib")
++    INSTALL_RPATH "$ORIGIN/../../../../../lib")
+ 
+ # Limit the generated free-function exception to Qt registration output.
+ set_source_files_properties(
+@@ -118,10 +118,10 @@ install(TARGETS nekomote_plasma_qml
+ install(FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/NekoMote/Wallpaper/qmldir
+     ${CMAKE_CURRENT_BINARY_DIR}/NekoMote/Wallpaper/nekomote_plasma_qml.qmltypes
+-    DESTINATION qml/NekoMote/Wallpaper
++    DESTINATION lib/qt6/qml/NekoMote/Wallpaper
+     COMPONENT plasma)
+ install(TARGETS nekomote_plasma_qmlplugin
+-    LIBRARY DESTINATION qml/NekoMote/Wallpaper
++    LIBRARY DESTINATION lib/qt6/qml/NekoMote/Wallpaper
+     COMPONENT plasma)
+ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/wallpapers/uk.nekopara.nekomote
+     DESTINATION share/plasma/wallpapers

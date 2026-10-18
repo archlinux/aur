@@ -1,0 +1,34 @@
+diff --git a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
+index 019f7a7..b586f3f 100644
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -24,7 +24,8 @@ FetchContent_Declare(
+     nlohmann_json
+     GIT_REPOSITORY https://github.com/nlohmann/json.git
+     GIT_TAG        v3.11.3
+-    GIT_SHALLOW    TRUE)
++    GIT_SHALLOW    TRUE
++    FIND_PACKAGE_ARGS 3.11.3)
+ FetchContent_MakeAvailable(nlohmann_json)
+ 
+ # GCC 10 lacks floating-point std::from_chars. Use the same strict,
+@@ -51,7 +52,8 @@ FetchContent_Declare(
+     Catch2
+     GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+     GIT_TAG        v3.5.3
+-    GIT_SHALLOW    TRUE)
++    GIT_SHALLOW    TRUE
++    FIND_PACKAGE_ARGS 3.5.3)
+ if(NEKOMOTE_BUILD_TESTS)
+     FetchContent_MakeAvailable(Catch2)
+ endif()
+@@ -61,7 +63,8 @@ FetchContent_Declare(
+     glfw
+     GIT_REPOSITORY https://github.com/glfw/glfw.git
+     GIT_TAG        3.4
+-    GIT_SHALLOW    TRUE)
++    GIT_SHALLOW    TRUE
++    FIND_PACKAGE_ARGS 3.4 NAMES glfw3)
+ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)

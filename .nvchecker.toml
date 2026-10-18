@@ -1,0 +1,5 @@
+[nekomote]
+source = "github"
+github = "Chocola-X/NekoMote"
+prefix = "v"
+use_latest_release = true
