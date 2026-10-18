@@ -1,4 +1,6 @@
-/Linphone-*.AppImage
-/*.pkg.tar.zst
-/pkg
-/src
+# Ignore everything
+*
+# Except
+.gitignore
+PKGBUILD
+.SRCINFO
