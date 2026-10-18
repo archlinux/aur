@@ -1,12 +1,12 @@
 # Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 pkgname=cockpit-pacman-git
-pkgver=0.3.7.r84.gfd956d9
-pkgrel=3
+pkgver=0.3.8.r46.g41d6cf5
+pkgrel=1
 pkgdesc='Cockpit plugin for Arch Linux package management using alpm.rs'
 arch=('x86_64')
 url='https://github.com/pfeifferj/cockpit-pacman'
 license=('GPL-3.0-only')
-depends=('cockpit>=300' 'coreutils' 'glibc' 'libalpm.so' 'libgcc' 'pacman' 'pacman-mirrorlist' 'systemd')
+depends=('cockpit>=300' 'coreutils' 'glibc' 'libalpm.so' 'libcurl.so' 'libgcc' 'pacman' 'pacman-mirrorlist' 'systemd')
 makedepends=('cargo' 'git' 'npm' 'openssh')
 provides=("cockpit-pacman=${pkgver%%.r*}")
 conflicts=('cockpit-pacman')
@@ -38,9 +38,6 @@ prepare() {
     cd "${pkgname%-git}"
     export CARGO_TARGET_DIR="$srcdir/target"
     export RUSTUP_TOOLCHAIN=stable
-    sed -i "s|\$(PREFIX)/libexec/cockpit-pacman|\$(PREFIX)/lib/cockpit-pacman|g" Makefile
-    sed -i 's|/usr/libexec/cockpit-pacman|/usr/lib/cockpit-pacman|g' \
-        src/api.ts src/api.test.ts systemd/cockpit-pacman-scheduled.service
     sed -i -E \
         -e 's/cargo (build|clippy|test)/cargo \1 --frozen/g' \
         -e '/^[[:space:]]*npm ci/d' \
@@ -70,6 +67,6 @@ check() {
 
 package() {
     cd "${pkgname%-git}"
-    make DESTDIR="$pkgdir" PREFIX=/usr \
+    make DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib/cockpit-pacman \
         BACKEND_BIN="$srcdir/target/release/cockpit-pacman-backend" install
 }
