@@ -1,14 +1,14 @@
 # Maintainer: Sam M <contact@s-mc.io>
 pkgname=nuvio-desktop-git
 _pkgname=nuvio-desktop
-pkgver=0.1.30_alpha
+pkgver=0.1.31_alpha
 pkgrel=1
 pkgdesc="A modern media hub desktop application (built from git source)"
 arch=('x86_64')
 url="https://github.com/NuvioMedia/NuvioDesktop"
 license=("GPL-3.0-or-later")
 depends=('java-runtime>=17' 'mpv')
-makedepends=('git' 'java-environment>=17' 'patchelf' 'pkgconf')
+makedepends=('git' 'gtk3' 'java-environment>=17' 'patchelf' 'pkgconf')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "nuvio-desktop-bin" "nuvio" "nuvio-desktop")
 
