@@ -1,6 +1,6 @@
 pkgbase = r-rcppalgos
 	pkgdesc = High Performance Tools for Combinatorics and Computational Mathematics
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppAlgos
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-rcppalgos
 	optdepends = r-rcppbigintalgos
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/RcppAlgos_2.10.1.tar.gz
-	sha256sums = 0e89bc6337a8324ce0358b42b5c8ed6698ef73acc012ded1d05fa9fb988ca058
+	source = https://cran.r-project.org/src/contrib/RcppAlgos_2.10.2.tar.gz
+	sha256sums = adce4874a34c5e0f3b7d03877050dbae4e1494f65343b9bd72434cdf4200ce1b
 
 pkgname = r-rcppalgos
