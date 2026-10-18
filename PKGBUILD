@@ -2,10 +2,10 @@
 # based on the bugwarrior package by Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 _pkgname="bugwarrior"
 _branch="develop"
-# renovate: pkgName=https://github.com/ralphbean/bugwarrior depName=bugwarrior-git
-_commit=dd96577c77949c8f07852785a8c8def368391970
+# renovate: pkgName=https://github.com/GothenburgBitFactory/bugwarrior depName=bugwarrior-git branch=develop
+_commit=d166c3fe63bd541f72436d1d266bfdd43b76b87a
 pkgname="${_pkgname}-git"
-pkgver=1585.d166c3f
+pkgver=1690.4ed78ac
 pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
@@ -34,7 +34,8 @@ conflicts=( $_pkgname )
 provides=( $_pkgname )
 
 source=("$_pkgname::git+https://github.com/GothenburgBitFactory/$_pkgname.git#branch=$_branch")
-md5sums=('SKIP')
+sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
