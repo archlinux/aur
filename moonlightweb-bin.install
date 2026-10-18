@@ -1,8 +1,9 @@
-# The screen capture (KMS) needs CAP_SYS_ADMIN, carried as a file capability
-# by the launcher the .desktop entry and /usr/bin/moonlightweb point at — see
-# backend/packaging/linux/moonlightweb-launch.c for why it cannot sit on the
+# The screen capture (KMS) needs CAP_SYS_ADMIN, and a GPU context above normal
+# priority CAP_SYS_NICE, both carried as file capabilities by the launcher the
+# .desktop entry and /usr/bin/moonlightweb point at — see
+# backend/packaging/linux/moonlightweb-launch.c for why they cannot sit on the
 # MoonlightWeb binary itself. pacman does not restore file capabilities from
-# the .deb payload, so it is set here, on every install and upgrade.
+# the .deb payload, so they are set here, on every install and upgrade.
 #
 # pacman does not run the .deb's postinst either, so the firewall ports it
 # opens are opened here too: the same list, the same best-effort rules — see
@@ -59,10 +60,10 @@ _mw_reserve() { # add | remove
 }
 
 post_install() {
-    if ! setcap cap_sys_admin+p /opt/moonlightweb/bin/moonlightweb-launch 2>/dev/null; then
-        echo "warning: could not set cap_sys_admin on moonlightweb-launch — the host"
+    if ! setcap cap_sys_admin,cap_sys_nice+p /opt/moonlightweb/bin/moonlightweb-launch 2>/dev/null; then
+        echo "warning: could not set cap_sys_admin,cap_sys_nice on moonlightweb-launch — the host"
         echo "         cannot capture its screen until you run:"
-        echo "         sudo setcap cap_sys_admin+p /opt/moonlightweb/bin/moonlightweb-launch"
+        echo "         sudo setcap cap_sys_admin,cap_sys_nice+p /opt/moonlightweb/bin/moonlightweb-launch"
     fi
     _mw_firewall add
     _mw_reserve add

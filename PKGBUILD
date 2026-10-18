@@ -2,7 +2,7 @@
 # ============================================================================
 #  MoonlightWeb — AUR package (TEMPLATE, not a valid PKGBUILD as it stands).
 #
-#  0.3.1 / 2be743c6515cfe10f1e68e207e4855282db0557920f794b95d73ed059d92d44c are substituted by the `aur` job in
+#  0.4.0 / 2b45481913a32d3aee37943fc3f4862f3ca025e2296750dafa5eef639cb25cd0 are substituted by the `aur` job in
 #  .github/workflows/release.yml, which pushes the result — together with the
 #  matching .SRCINFO, rendered from the same values — to
 #  ssh://aur@aur.archlinux.org/moonlightweb-bin.git. Edit this file, not the
@@ -20,9 +20,9 @@
 #  single extraction and the app appears in KDE Discover like any other.
 # ============================================================================
 pkgname=moonlightweb-bin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Stream your Sunshine games to any device with a browser"
+pkgdesc="Stream your gaming PC to any device with a browser"
 arch=('x86_64')
 url="https://moonlightweb.top/"
 license=('GPL-3.0-only')
@@ -36,6 +36,11 @@ license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'libglvnd' 'libx11' 'libxkbcommon-x11'
          'fontconfig' 'freetype2' 'zlib' 'dbus'
          'libdrm' 'libva' 'mesa' 'pipewire' 'libcap')
+# Opened at run time, never linked: without it the host converts through GL
+# and encodes through VA-API, as it always has.
+optdepends=('vulkan-icd-loader: the Vulkan conversion and the Vulkan Video encoder'
+            'vulkan-radeon: the same on AMD'
+            'vulkan-intel: the same on Intel')
 
 provides=('moonlightweb')
 conflicts=('moonlightweb')
@@ -46,7 +51,7 @@ install=moonlightweb-bin.install
 options=('!strip' '!debug')
 
 source=("moonlightweb-${pkgver}.deb::https://github.com/linckosz/moonlight-web/releases/download/v${pkgver}/moonlightweb-${pkgver}-linux-x64.deb")
-sha256sums=('2be743c6515cfe10f1e68e207e4855282db0557920f794b95d73ed059d92d44c')
+sha256sums=('2b45481913a32d3aee37943fc3f4862f3ca025e2296750dafa5eef639cb25cd0')
 
 package() {
     # makepkg hands .deb to libarchive, which unpacks it into its ar members;
