@@ -9,6 +9,7 @@ pkgbase = btrfs-assistant-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt6-tools
+	makedepends = qt6-declarative
 	depends = qt6-base
 	depends = qt6-svg
 	depends = ttf-font
