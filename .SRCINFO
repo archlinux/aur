@@ -1,6 +1,6 @@
 pkgbase = obattery
 	pkgdesc = Simple linux battery check percentage calculator written in C
-	pkgver = 0.0.2b
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/spyflow/oBattery
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = obattery
 	license = GPL-3.0-or-later
 	makedepends = gcc
 	depends = glibc
-	source = obattery-0.0.2b.tar.gz::https://github.com/spyflow/oBattery/archive/refs/tags/v0.0.2b.tar.gz
-	sha256sums = SKIP
+	source = obattery-0.1.1.tar.gz::https://github.com/spyflow/oBattery/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = a6b441f033eb2e64a94eacd6b5c9c09ad570c51c282720568885f51657001c44
 
 pkgname = obattery

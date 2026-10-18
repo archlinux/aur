@@ -1,6 +1,6 @@
 # Maintainer: spyflow <https://github.com/spyflow>
 pkgname=obattery
-pkgver=0.0.2b
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Simple linux battery check percentage calculator written in C"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ keywords=('battery' 'percentage' 'calculator' 'cli' 'utilities' 'sysfs' 'power' 
 depends=('glibc')
 makedepends=('gcc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('772750c0c1b819e654546e40e303aa6b79ca9fe96e974bb4b0bced8c1eb6ca5d')
+sha256sums=('a6b441f033eb2e64a94eacd6b5c9c09ad570c51c282720568885f51657001c44')
 
 build() {
     cd "oBattery-${pkgver}"
