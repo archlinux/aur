@@ -2,7 +2,7 @@
 
 pkgname=dp100-studio-git
 _pkgname=dp100-studio
-pkgver=0.1.0.r0.gc299f33
+pkgver=0.2.0.r0.g1ccc408
 pkgrel=1
 pkgdesc='Control and monitor the ALIENTEK DP100 USB-C bench power supply (development version)'
 arch=('x86_64' 'aarch64')
