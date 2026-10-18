@@ -1,23 +1,34 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=blanket-git
-pkgver=0.7.0.r106.g2dfa3d3
+pkgver=0.8.0.r75.g775f2a7
 pkgrel=1
 pkgdesc="Improve focus and increase your productivity by listening to different sounds."
 arch=('any')
 url="https://apps.gnome.org/Blanket"
 license=('GPL-3.0-or-later')
 depends=(
+  'dconf'
+  'glib2'
   'gst-plugins-bad-libs'
   'gst-plugins-base'
   'gst-plugins-good'
   'gst-python'
+  'gstreamer'
+  'gtk4'
   'libadwaita'
+  'libportal'
+  'libportal-gtk4'
+  'python'
   'python-gobject'
 )
 makedepends=(
   'blueprint-compiler'
   'git'
   'meson'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
