@@ -8,5 +8,5 @@ path = [
     ".nvchecker.toml",
     "*.install",
 ]
-SPDX-FileCopyrightText = "Ismet Togay"
+SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
