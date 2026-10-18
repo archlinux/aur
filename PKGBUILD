@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-cli
 pkgdesc="Modern secure pastebin with a VS Code-like editor. Share code, text, and markdown securely with automatic expiry and burn-after-read options. (CLI)"
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ conflicts=("${pkgname}-bin")
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${_gitname}/archive/${_gitversion}.tar.gz")
-sha256sums=('180404470a6200eb97c7ee7871de7a27e0d429c602b708dbe05a1e127fcaafe7')
+sha256sums=('0c7431e286ef6b46420f11d7a042498ba91850d34fb06b5832a7429d3ecea9ee')
 
 
 prepare() {
