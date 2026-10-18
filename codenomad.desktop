@@ -7,4 +7,3 @@ Type=Application
 Categories=Development;IDE;
 Keywords=opencode;ai;coding;assistant;
 StartupWMClass=CodeNomad
-MimeType=x-scheme-handler/codenomad;

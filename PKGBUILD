@@ -1,13 +1,15 @@
-# Maintainer: robertfoster
+# Maintainer: Ismet Togay <ismet.togay at gmail dot com>
+# Contributor: robertfoster <morf3089 at gmail dot com>
 pkgname=codenomad-bin
-_pkgname=CodeNomad
-_binname='@neuralnomadscodenomad-electron-app'
-pkgver=0.15.0 # renovate: datasource=github-releases depName=NeuralNomadsAI/CodeNomad
+pkgver=0.20.1
 pkgrel=1
-pkgdesc="A fast, multi-instance workspace for running OpenCode sessions"
-arch=('x86_64' 'aarch64')
-url="https://github.com/NeuralNomadsAI/CodeNomad"
-license=('LicenseRef-unknown')
+pkgdesc='A fast, multi-instance workspace for running OpenCode sessions'
+arch=('x86_64') # upstream publishes no Linux arm64 build (Electron or Tauri) since 0.16
+url='https://github.com/NeuralNomadsAI/CodeNomad'
+license=('MIT')
+# Direct first-level deps of the shipped binaries. gdk-pixbuf2, libdrm and
+# hicolor-icon-theme are kept explicit because the runtime loads pixbuf
+# loaders, libgbm/libdrm and an icon theme beyond the linked sonames.
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -34,45 +36,53 @@ depends=(
   'nspr'
   'nss'
   'pango'
+  'systemd-libs' # libudev.so.1 is a direct NEEDED of the CodeNomad binary
 )
-optdepends=('opencode: OpenCode CLI for AI coding sessions')
-provides=('codenomad')
-conflicts=('codenomad' 'codenomad-git')
-options=('!strip' '!debug')
+optdepends=(
+  'opencode: OpenCode V2 CLI (>= 2.0.7) that drives the coding sessions'
+  'git: repository and worktree features'
+)
+provides=("codenomad=$pkgver")
+conflicts=('codenomad' 'codenomad-git' 'codenomad-tauri-bin')
+options=('!strip' '!debug') # the shipped Electron runtime must not be stripped
+
+_pkgname='CodeNomad'
+_distname="${_pkgname}-Electron-linux-x64-${pkgver}"
+
+source=("codenomad.desktop"
+        "${pkgname}.LICENSE::${url}/raw/v${pkgver}/LICENSE"
+        "${_distname}.tar.gz::${url}/releases/download/v${pkgver}/${_distname}.tar.gz")
+sha256sums=('2157689d529c07fb4c88629e8dee8b028e36a77388359dce30d3ccb1dbcc54d9'
+            '998529c4a806714b31c7445bd514ad3627350ae2381c8e070ec922460a9785e6'
+            '40fb620c639b09da533b6c6d4b9136ad515a54918f9eb28038301a4c64794d00')
 
 package() {
-  install -dm755 "${pkgdir}/opt/${pkgname}"
+  install -dm755 "$pkgdir/opt/$pkgname"
+  cp -a "$srcdir/$_distname/." "$pkgdir/opt/$pkgname/"
 
-  # Copy all files (zip extracts flat, not into a subdirectory)
-  cp -r "${srcdir}"/* "${pkgdir}/opt/${pkgname}/"
-  rm "${pkgdir}/opt/${pkgname}/codenomad.desktop"
+  # Chromium's setuid sandbox helper: what upstream's Linux packages configure
+  # at install time, done here at package time.
+  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
-  # Set permissions
-  chmod 755 "${pkgdir}/opt/${pkgname}/${_binname}"
-  chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
-
-  # Create wrapper script
-  install -dm755 "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/codenomad" << EOF
-#!/bin/bash
-exec /opt/${pkgname}/${_binname} "\$@"
+  # Launcher (the shipped executable is CodeNomad)
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/codenomad" <<'EOF'
+#!/bin/sh
+exec /opt/codenomad-bin/CodeNomad "$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/codenomad"
 
-  # Desktop entry
-  install -Dm644 "${srcdir}/codenomad.desktop" \
-    "${pkgdir}/usr/share/applications/codenomad.desktop"
+  install -Dm644 "$srcdir/codenomad.desktop" \
+    "$pkgdir/usr/share/applications/codenomad.desktop"
+  install -Dm644 "$srcdir/$_distname/resources/icon.png" \
+    "$pkgdir/usr/share/pixmaps/codenomad.png"
 
-  # Icon from resources
-  if [[ -f "${pkgdir}/opt/${pkgname}/resources/icon.png" ]]; then
-    install -Dm644 "${pkgdir}/opt/${pkgname}/resources/icon.png" \
-      "${pkgdir}/usr/share/pixmaps/codenomad.png"
-  fi
+  # License files: MIT is a BSD/MIT-family license, so the instance's own text
+  # ships as well; the other two come with the bundled Electron/Chromium runtime
+  install -Dm644 "$srcdir/${pkgname}.LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$_distname/LICENSE.electron.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
+  install -Dm644 "$srcdir/$_distname/LICENSES.chromium.html" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
-
-source=("codenomad.desktop")
-source_x86_64=("${pkgname}-${pkgver}.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip")
-source_aarch64=("${pkgname}-${pkgver}.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.zip")
-sha256sums=('099ff5f301ceebffbf8d386820bc8f4a9ab678d0f518fe5ef40aba32bf1f459f')
-sha256sums_x86_64=('395a354b0d49c7780b9816f7e8b6085f494e812a0595c45de576503fce3b3674')
-sha256sums_aarch64=('395a354b0d49c7780b9816f7e8b6085f494e812a0595c45de576503fce3b3674')
+# Node.js and npm are bundled in the archive (resources/node/linux-x64), so
+# namcap's "dependency nodejs detected and not included" is a false positive.

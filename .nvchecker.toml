@@ -1,0 +1,5 @@
+[codenomad-bin]
+source = "github"
+github = "NeuralNomadsAI/CodeNomad"
+use_latest_release = true
+prefix = "v"

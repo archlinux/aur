@@ -1,11 +1,10 @@
 pkgbase = codenomad-bin
 	pkgdesc = A fast, multi-instance workspace for running OpenCode sessions
-	pkgver = 0.15.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/NeuralNomadsAI/CodeNomad
 	arch = x86_64
-	arch = aarch64
-	license = LicenseRef-unknown
+	license = MIT
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
@@ -31,17 +30,20 @@ pkgbase = codenomad-bin
 	depends = nspr
 	depends = nss
 	depends = pango
-	optdepends = opencode: OpenCode CLI for AI coding sessions
-	provides = codenomad
+	depends = systemd-libs
+	optdepends = opencode: OpenCode V2 CLI (>= 2.0.7) that drives the coding sessions
+	optdepends = git: repository and worktree features
+	provides = codenomad=0.20.1
 	conflicts = codenomad
 	conflicts = codenomad-git
+	conflicts = codenomad-tauri-bin
 	options = !strip
 	options = !debug
 	source = codenomad.desktop
-	sha256sums = 099ff5f301ceebffbf8d386820bc8f4a9ab678d0f518fe5ef40aba32bf1f459f
-	source_x86_64 = codenomad-bin-0.15.0.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.15.0/CodeNomad-0.15.0-linux-x64.zip
-	sha256sums_x86_64 = 395a354b0d49c7780b9816f7e8b6085f494e812a0595c45de576503fce3b3674
-	source_aarch64 = codenomad-bin-0.15.0.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.15.0/CodeNomad-0.15.0-linux-arm64.zip
-	sha256sums_aarch64 = 395a354b0d49c7780b9816f7e8b6085f494e812a0595c45de576503fce3b3674
+	source = codenomad-bin.LICENSE::https://github.com/NeuralNomadsAI/CodeNomad/raw/v0.20.1/LICENSE
+	source = CodeNomad-Electron-linux-x64-0.20.1.tar.gz::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.20.1/CodeNomad-Electron-linux-x64-0.20.1.tar.gz
+	sha256sums = 2157689d529c07fb4c88629e8dee8b028e36a77388359dce30d3ccb1dbcc54d9
+	sha256sums = 998529c4a806714b31c7445bd514ad3627350ae2381c8e070ec922460a9785e6
+	sha256sums = 40fb620c639b09da533b6c6d4b9136ad515a54918f9eb28038301a4c64794d00
 
 pkgname = codenomad-bin
