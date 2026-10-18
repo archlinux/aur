@@ -2,7 +2,7 @@
 pkgname=tempest-cli-bin
 pkgver=3.17.2
 pkgrel=1
-pkgdesc="The all-platform terminal emulator CLI (official binary release)"
+pkgdesc="MCP CLI tool for AI-assisted remote access and automation (official binary)"
 arch=('x86_64' 'aarch64')
 url="https://gotempest.app"
 license=('LicenseRef-proprietary')
