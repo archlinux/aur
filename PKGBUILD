@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=gsconnect
-pkgver=73
+pkgver=74
 pkgrel=1
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(any)
@@ -45,7 +45,7 @@ source=(
   $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
   $pkgname.service
 )
-b2sums=('7b17ec43b696b6fb949fde9463b935f3a5bc0bbd94cab3289e719d0c11ebc9d9fdec6bb434007aaf4df7fe7795fb249a8faaf6bf258fbe24080f4394e6020620'
+b2sums=('b288507a9a2b71b4f2c1f6d8a3a626f32d842cf3167988a38cae34ba29f949c8a8614649aa0f9bea95b8e0b1a2ad19610ec2ce93bbe4238857ec22d583dbe06e'
         'ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4')
 
 build() {
