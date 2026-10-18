@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-o-tiling
 pkgver=2.12.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto-tiling extension for GNOME Shell with active hint border, customizable workspace overview and theme consistency."
 arch=('any')
 url="https://github.com/oliwebd/o-tiling"
@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=(
   'jq'
+  'nodejs'
   'pnpm'
   'zip'
 )
