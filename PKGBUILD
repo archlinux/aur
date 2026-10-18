@@ -16,7 +16,7 @@
 pkgname=sangfor-atrust-bin
 _pkgname=aTrust
 pkgver=2.5.16.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Sangfor aTrust SDP client (prebuilt, bundled Electron; postinst replicated, works out of the box)"
 arch=('x86_64')
 url="https://www.sangfor.com/"
@@ -35,6 +35,7 @@ depends=(
     'alsa-lib'
     'libxtst'
     'nodejs'
+    'dmidecode'
 )
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
@@ -45,13 +46,15 @@ source=(
     "atrust-loginctl"
     "atrust-daemon-path.conf"
     "atrust-daemon-shutdown.conf"
+    "atrust-daemon-libs.conf"
 )
 sha256sums=('aa8ba93532ae250dcab3d75d3b103fb01a93b97b49cbc6d9066c5ed1f70b75a6'
             'ae82a7e0575d2ed8778134fc7d5c9c85001c955a7d26710a13101ff2363c53e6'
             'c6f3e5b6da549ec3ad85f6721f72d058f94672b53e6e869dca27e8b8e6ff008b'
             'cceabc37c7ac5dcc1e0683478f0ee10b7dd5fe273f3ddb2a2797c31a7e04895c'
             'fe46dc7552321cdc01ccf90ca3acca81a155be51e8b487dfaa5cf984e2675412'
-            'ad0df6c189c831a189c415db0e968f297b2bdaa43176bc665a4f051a0f0e0b64')
+            '385b1ce8f40c9894d8264231efbb61323499d31bd915d88b488ac7773b2a7934'
+            'ec8886f502e2823b3d20f4e4fc75e6ff8c05df2724183b859b251cad51354af9')
 
 prepare() {
     # makepkg 已自动解开 deb, 此处解出 data 包
@@ -105,4 +108,10 @@ package() {
     # 关机卡住修复: KillMode=process 导致子进程残留, 拖住 /home /tmp 卸载
     install -Dm644 "${srcdir}/atrust-daemon-shutdown.conf" \
         "${pkgdir}/etc/systemd/system/aTrustDaemon.service.d/shutdown.conf"
+    # 频繁掉线/周期崩溃修复: 优先使用自带 curl + OpenSSL 1.1
+    install -Dm644 "${srcdir}/atrust-daemon-libs.conf" \
+        "${pkgdir}/etc/systemd/system/aTrustDaemon.service.d/libs.conf"
+    # libproxy 只认 libcurl.so.4; 补上该名字使其也解析到自带 curl
+    ln -sfn libcurl.so \
+        "${pkgdir}/usr/share/sangfor/${_pkgname}/resources/bin/libcurl.so.4"
 }
