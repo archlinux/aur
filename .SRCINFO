@@ -1,6 +1,6 @@
 pkgbase = fauxput
 	pkgdesc = Manage virtual displays on Linux
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/bdelwood/fauxput
 	install = fauxput.install
@@ -10,6 +10,8 @@ pkgbase = fauxput
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = rust
+	makedepends = clang
+	makedepends = llvm
 	depends = bash
 	depends = libcap
 	depends = libxcvt
@@ -19,7 +21,7 @@ pkgbase = fauxput
 	provides = fauxput
 	conflicts = fauxput-bin
 	options = !lto
-	source = fauxput-0.6.1.tar.gz::https://github.com/bdelwood/fauxput/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 016a1b0009295e57dc2662d197efc4b8b6149a48598f60632fcb15414f297674
+	source = fauxput-0.7.0.tar.gz::https://github.com/bdelwood/fauxput/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 07718a682444af49d529bab3cd3890bfe33e1d4e0ec8d1e0ee1f2050900e3215
 
 pkgname = fauxput

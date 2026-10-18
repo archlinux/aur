@@ -2,7 +2,7 @@
 #
 
 pkgname=fauxput
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Manage virtual displays on Linux'
 arch=('x86_64')
@@ -18,13 +18,13 @@ depends=(
 optdepends=(
   'sunshine: game-streaming server integration (see /usr/share/fauxput/)'
 )
-makedepends=('cargo' 'git' 'pkgconf' 'rust')
+makedepends=('cargo' 'git' 'pkgconf' 'rust' 'clang' 'llvm')
 provides=('fauxput')
 conflicts=('fauxput-bin')
 options=('!lto')
 install='fauxput.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('016a1b0009295e57dc2662d197efc4b8b6149a48598f60632fcb15414f297674')
+sha256sums=('07718a682444af49d529bab3cd3890bfe33e1d4e0ec8d1e0ee1f2050900e3215')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
