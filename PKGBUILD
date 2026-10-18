@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=7.2.10.zen1
-_kernver=7.2.10
+_pkgver=7.2.11.zen1
+_kernver=7.2.11
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=7.2.10-zen1-1-zen
+_KERNNAME=7.2.11-zen1-1-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-zen-7.2.10.zen1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-zen-headers-7.2.10.zen1-1-x86_64.pkg.tar.zst
-_docspkg=linux-zen-docs-7.2.10.zen1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-zen-7.2.11.zen1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-zen-headers-7.2.11.zen1-1-x86_64.pkg.tar.zst
+_docspkg=linux-zen-docs-7.2.11.zen1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('362f07b247a12d26a39e070a2596a49fbfaa622df18348217ee99c76a15586d9'
-            '88e25239cc4a5b6ecb649e5c02fe20871bcfda6fbac871222d9380a048644be8'
-            'fc7864c01175d0601dae59aa58abd9d41dffe8d4aca8d062940ac21628559a03')
+sha256sums=('a4707f15edb2210f931d835756b6998321413ba30a9550814ae759c6b125c239'
+            '5e0654cc564fea0eaa3afcc0e575c8a5de1f4c85bb4598e9c277b4a6e818440c'
+            '7fd208575183604dedacafe1aad8758355b01dd1a7c5da7523f749cc38584bfa')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux7.2.10.zen1-1-zen-bin() {
+package_linux7.2.11.zen1-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -71,7 +71,7 @@ package_linux7.2.10.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux7.2.10.zen1-1-zen-headers-bin() {
+package_linux7.2.11.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(binutils
            glibc
@@ -89,7 +89,7 @@ package_linux7.2.10.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux7.2.10.zen1-1-zen-docs-bin() {
+package_linux7.2.11.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
