@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: MIT
+# Only prints what to run: synaptics0078-setup downloads vendor files and
+# calibrates the reader, which needs the user at the machine.
+
+_synaptics0078_message() {
+  cat <<'MSG'
+==> Synaptics 06cb:0078 reader: if it is not set up yet, run
+      sudo synaptics0078-setup install
+    then enroll a finger with
+      fprintd-enroll
+MSG
+}
+
+post_install() {
+  _synaptics0078_message
+}
+
+post_upgrade() {
+  _synaptics0078_message
+}

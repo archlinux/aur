@@ -1,0 +1,46 @@
+pkgbase = libfprint-sigfm-0078
+	pkgdesc = Library for fingerprint readers, with the SIGFM matcher and the Synaptics 06cb:0078 driver
+	pkgver = 1.94.100.r25.gf9c60a2
+	pkgrel = 3
+	url = https://github.com/rsd/fingerprint-06cb-0078
+	install = libfprint-sigfm-0078.install
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	license = MIT
+	checkdepends = cairo
+	checkdepends = umockdev
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = systemd
+	depends = libgcc
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	depends = opencv
+	depends = libstdc++
+	depends = python
+	depends = python-pyusb
+	depends = curl
+	depends = libarchive
+	depends = util-linux
+	provides = libfprint=1.94.100
+	provides = libfprint-git=1.94.100
+	provides = libfprint-2.so
+	conflicts = libfprint
+	conflicts = libfprint-git
+	source = libfprint::git+https://github.com/rsd/libfprint.git#commit=f9c60a25c95b8fcf805812bae1ddb984e2e568d9
+	source = fp0078::git+https://github.com/rsd/fingerprint-06cb-0078.git#tag=v0.1.0
+	b2sums = 040fb63356af23dd30d14cab7c29c02cd64d7b8089c99380875da9b1fa7ee290df09dd06bd9606d682ac8f9b6f4770c139f52d7ca518182d9f984be186653cb6
+	b2sums = b1392843542f4b7e8387f24c2449f02183e04d3e42d1fd80499a554d93c4db70e818e9c8464545f9720bc79f1db518faec83e162e67739abc142ca8f1517c00e
+
+pkgname = libfprint-sigfm-0078
