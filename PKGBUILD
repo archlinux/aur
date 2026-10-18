@@ -9,8 +9,8 @@
 
 pkgname=linux-trackpad-driver-bin
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="Userspace Rust driver for Apple Magic Trackpad 2 (USB/BT core-init) — prebuilt binary"
+pkgrel=2
+pkgdesc="Extensible userspace Linux driver for enhanced trackpad functionality, currently supporting Apple Magic Trackpad 2 — prebuilt binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/aaronroquefonseca/linux-trackpad-driver"
 license=('MIT' 'Apache-2.0')
