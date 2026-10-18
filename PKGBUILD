@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A minimalistic terminal UI for everyday Docker operations"
 
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}")
 sha256sums=('df5270010006801533fb4c9509d935931bc1cbc21cd317a346aab182658a3115'
             'c99e2d2188bf75fa969cc9bc0d60e383785b0cc55d4dfc5ccf859ebe069f134e')
-sha256sums_x86_64=('321b1fbc1b83f252ae0a7e0cd643be0325fa784bae7d118ede031a3856c0f40e')
-sha256sums_aarch64=('1bce59f263e2974323b23df477a0ea8c7ee55409a197b740b7f989364771b1e2')
+sha256sums_x86_64=('7d668286667353d6ff210e28ec2c4a429bc468fa504ed7e1bbe38bc4a67df77d')
+sha256sums_aarch64=('0bd21144f3ba0882dad4b2535432c5d43f888a718a69dbeaff886ed3f421fa0f')
 
 
 package() {
