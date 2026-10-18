@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=music-assistant-tui-git
-pkgver=20261014.0.r226.gc7895ca
+pkgver=20261018.0.r235.g7f5b421
 pkgrel=1
 pkgdesc="Terminal UI for Music Assistant (git version)"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ provides=('music-assistant-tui')
 conflicts=('music-assistant-tui')
 options=('!strip' '!debug')
 source=("$pkgname::git+https://github.com/timmo001/music-assistant-tui.git")
-source_x86_64=('sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.8/sendspin-rs-cli-linux-amd64')
-source_aarch64=('sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.8/sendspin-rs-cli-linux-arm64')
+source_x86_64=('sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.10/sendspin-rs-cli-linux-amd64')
+source_aarch64=('sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.10/sendspin-rs-cli-linux-arm64')
 sha256sums=('SKIP')
-sha256sums_x86_64=('25c21b91b6a0b87f4773f4d70bfc224176646dce49aeba0dc9f16c1f59d198c7')
-sha256sums_aarch64=('34772305890323a54506f0ec979ae1aeecc4da10bb7da47901dd799a1a737b20')
+sha256sums_x86_64=('99e683fd9f50538f5afb418faac98d6e37048ba9943ec492bf5e8b0d892789e2')
+sha256sums_aarch64=('859c62d4dd1c3734d4b191ff878d6a7cedd86aa7b9ec5c53c82bd59094db0385')
 
 # Keep Bun's caches in $srcdir instead of the build user's home
 _bun_env() {
