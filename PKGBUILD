@@ -2,7 +2,7 @@
 
 _pkgname=matrix-reminder-bot
 pkgname=python-matrix-reminder-bot
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Matrix bot to remind you about stuff."
 url="https://github.com/anoadragon453/matrix-reminder-bot"
@@ -10,14 +10,15 @@ depends=('python' 'python-matrix-nio' 'python-markdown' 'python-yaml'
          'python-dateparser' 'python-readabledelta' 'python-apscheduler' 'python-pytz'
          'python-arrow' 'python-pretty-cron')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-optdepends=('python-psycopg2')
+optdepends=('python-psycopg2: PostgreSQL storage backend'
+            'python-olm: end-to-end encryption support')
 license=('Apache')
 arch=('any')
 backup=('etc/matrix-reminder-bot/config.yaml')
-source=("https://github.com/anoadragon453/${_pkgname}/archive/v${pkgver}.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/anoadragon453/${_pkgname}/archive/v${pkgver}.tar.gz"
         "matrix-reminder-bot.service")
 
-sha256sums=('53376614fb7c9061acf9b920ba00356fd0d0660d659bf829ed4323e1b7e17709'
+sha256sums=('cc39565fc35a229714a67f84b5b5cab3235780641f2952ee41f15004da450704'
             'ed58a6cb4c10418dfd32a306eba2a22909858881c2bb73eb49cbf7ecaad7bf7e')
 
 build() {
