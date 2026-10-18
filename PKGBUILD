@@ -4,7 +4,7 @@
 
 pkgname=(hledger-beta-bin hledger-ui-beta-bin hledger-web-beta-bin)
 pkgver=1.99.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy-to-use command-line/curses/web plaintext accounting tool'
 arch=('x86_64')
 url='http://hledger.org'
@@ -31,21 +31,21 @@ check() {
 
 package_hledger-beta-bin() {
     pkgdesc='Command-line interface for the hledger accounting system'
-    provides=(hledger="$pkgver")
+    provides=("hledger=$pkgver" "hledger-bin=$pkgver")
     conflicts=(hledger)
     _common_package hledger
 }
 
 package_hledger-ui-beta-bin() {
     pkgdesc='Curses-style terminal interface for the hledger accounting system'
-    provides=(hledger-ui="$pkgver")
+    provides=("hledger-ui=$pkgver" "hledger-ui-beta=$pkgver")
     conflicts=(hledger-ui)
     _common_package hledger-ui
 }
 
 package_hledger-web-beta-bin() {
     pkgdesc='Web-based user interface for the hledger accounting system'
-    provides=(hledger-web="$pkgver")
+    provides=("hledger-web=$pkgver" "hledger-web-beta=$pkgver")
     conflicts=(hledger-web)
     _common_package hledger-web
 }
