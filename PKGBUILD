@@ -1,6 +1,6 @@
 pkgname=snowflake-pt-client-bin
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable Transport using WebRTC, inspired by Flashproxy'
 url=https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake
 arch=(x86_64)
@@ -13,7 +13,7 @@ options=(!debug)
 source=(snowflake-v$pkgver.tar.gz::$url/-/jobs/1774608/artifacts/raw/snowflake-v$pkgver.tar.gz
 	snowflake)
 b2sums=(49e214165316d61bb05fdb7e2d2ed9fe0211d6b806ffe0c262f137b947205238e90a42e2802ead46648f4413fce530f69f3302d39b467511ff97f071392a3c3c
-	454c607e32d8b7d868dbe2237bfd006ca6399bac0200d5693906b4d6679e661e2b6fcf569ded7d198cc1e5c899d9bcb27c5c26ee354ad46bd27e020f9f4304a3)
+	07e13ed1a95751ec66396a9af1d5977dc6e5bc1a6cf10731819db16f40186778beac73fcd6cf09711326bbbf2fb185eb33f1798a670785474a6458ee2ce95fbe)
 
 package() {
 	install -Dm 755 snowflake-v$pkgver/client/client $pkgdir/usr/bin/snowflake-client
