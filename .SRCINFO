@@ -1,0 +1,33 @@
+pkgbase = colloid-icon-theme
+	pkgdesc = Icon theme for Linux desktops
+	pkgver = 2026.08.10
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Colloid-icon-theme
+	arch = any
+	license = GPL-3.0-or-later
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	options = !strip
+	source = colloid-icon-theme-2026.08.10.tar.gz::https://github.com/vinceliuice/Colloid-icon-theme/archive/refs/tags/2026-08-10.tar.gz
+	sha256sums = 367c3ce3ab85721e41ca9aa4fccd1761ec236d1b8cd7daf65f5e9ec88c1a8a15
+
+pkgname = colloid-icon-theme
+
+pkgname = colloid-catppuccin-theme
+	pkgdesc = Catppuccin icon theme for Linux desktops
+
+pkgname = colloid-dracula-theme
+	pkgdesc = Dracula icon theme for Linux desktops
+
+pkgname = colloid-everforest-theme
+	pkgdesc = Everforest icon theme for Linux desktops
+
+pkgname = colloid-gruvbox-theme
+	pkgdesc = Gruvbox icon theme for Linux desktops
+
+pkgname = colloid-nord-icon-theme
+	pkgdesc = Nord icon theme for Linux desktops
+
+pkgname = colloid-cursors
+	pkgdesc = An x-cursor theme inspired by Colloid theme and based on capitaine-cursors
+	depends = 
