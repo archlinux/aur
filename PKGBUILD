@@ -34,7 +34,8 @@ package() {
     install -Dm644 "retext.service" "$pkgdir/usr/lib/systemd/user/retext.service"
     install -Dm644 "${_name}_server.py" "$pkgdir/usr/share/$_name/${_name}_server.py"
     install -Dm644 "tamplate.html" "$pkgdir/usr/share/$_name/tamplate.html"
-    install -Dm644 "rename-links.lua" "$pkgdir/usr/share/$_name/rename-links.lua"
+    install -Dm644 "style.css" "$pkgdir/usr/share/$_name/style.css"
+    install -Dm644 "${_name}.lua" "$pkgdir/usr/share/$_name/${_name}.lua"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_name/LICENSE"
 
     # Manpage (falls vorhanden):
