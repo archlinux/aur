@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=goose-cli
-pkgver=1.54.0
+pkgver=1.55.0
 pkgrel=1
 pkgdesc='An open source, extensible AI agent that goes beyond code suggestions (CLI)'
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('!lto' '!debug')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/aaif-goose/goose/archive/refs/tags/v$pkgver.tar.gz"
 )
-b2sums=('13ec424b0391e5358955bad69cd54b9b1f78fbdb728195a80f5163d0a083c4018b7e6747c56dfd4ff37f3900007acaee61e1241e86a7147283ae552e241b4ca6')
+b2sums=('8857019c7e39693037366ef45741cc98b04bdfb5ca26026912f3c7b60939ba773cc63eadb545903c0e78e7679e404234928980823218ad5128603f895f327631')
 conflicts=('goose-desktop')
 
 prepare() {
