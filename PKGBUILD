@@ -1,14 +1,16 @@
 pkgname=nextor-ip-changer
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to change TOR IP instantly using a single click"
 arch=('any')
 url="https://github.com/0x5t4l1n/NexTOR_IP_CHANGER"
 license=('MIT')
 depends=('python' 'tor')
 makedepends=('git')
-source=("git+$url.git")
-md5sums=('SKIP')
+# Pin to the v2.0 tag commit so a fixed pkgver always builds the intended release.
+# Commit 90224542 is the HEAD of the annotated v2.0 tag.
+source=("NexTOR_IP_CHANGER::git+$url.git#commit=90224542b70f6384b41cc9ed9414e872ad0a0bec")
+sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/NexTOR_IP_CHANGER/Nex_Tor_IP_changer"
