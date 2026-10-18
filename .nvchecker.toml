@@ -1,0 +1,21 @@
+# 追踪上游 APT 仓库（https://download.gotempest.app/apt）中的新版本发布
+# 用法: nvchecker -c .nvchecker.toml
+#       更新 PKGBUILD 后记录基线: nvtake -c .nvchecker.toml <name>
+# 备注: 上游暂无明文 Release（只有 InRelease），故不能使用 source = "apt"；
+#       amd64 明文 Packages 缺失，因此走 Packages.gz + gzip + awk。
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+http_timeout = 30
+
+[tempest-desktop-bin]
+source = "cmd"
+cmd = '''curl -fsSL https://download.gotempest.app/apt/dists/stable/main/binary-amd64/Packages.gz | gzip -dc | awk '/^Package: tempest-desktop$/{getline; print substr($0,10)}' '''
+from_pattern = '-[0-9]+$'
+to_pattern = ''
+
+[tempest-cli-bin]
+source = "cmd"
+cmd = '''curl -fsSL https://download.gotempest.app/apt/dists/stable/main/binary-amd64/Packages.gz | gzip -dc | awk '/^Package: tempest-cli$/{getline; print substr($0,10)}' '''
+from_pattern = '-[0-9]+$'
+to_pattern = ''

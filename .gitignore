@@ -2,3 +2,5 @@
 /pkg/
 *.deb
 *.pkg.tar.*
+/oldver.json
+/newver.json
