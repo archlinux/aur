@@ -5,7 +5,7 @@ _pkgname=kata
 pkgname=${_pkgname}-bin
 pkgdesc="Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing TUI."
 
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,10 +26,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('6a3d81d02b8107efc48413b6a3c59f85882ed121364a3ec45d55a051b0c23866'
+sha256sums=('6c7a16b050ba7416f4410e9735dc3de33783499f0ceda5c0530756a97b3f60cb'
             '77b16a7a87405e03d51a356a8f15f4e6aeaa36a63ffa67a8f96df3c5a2f63a27')
-sha256sums_x86_64=('bda4a6a24b74c1ee71be1237ce2e16ff6f627c6e5bee67fcb97525d3b2abe052')
-sha256sums_aarch64=('16ddcb25df5212469fd49fd19c2e3d2f9e6d8d552ebe09824cf22b7135b80674')
+sha256sums_x86_64=('05e0dad288b0c9eee2d983db320ff5996d8bd142313bc00db34685c135c739b5')
+sha256sums_aarch64=('ecf99fd0b19f5336e49af680b800b5bc73116b5dd0f749295e5cb3b6bbb9d018')
 
 
 package() {
