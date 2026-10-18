@@ -1,0 +1,17 @@
+pkgbase = pathstr-git
+	pkgdesc = A small library for handling filesystem paths as strings for Qt
+	pkgver = r22.gad0373f4b
+	pkgrel = 1
+	url = https://github.com/artemvlas/pathstr
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	provides = pathstr
+	source = git+https://github.com/artemvlas/pathstr.git
+	source = shared.patch
+	sha256sums = SKIP
+	sha256sums = 6d85d12243dd53dca7481a6415b66377fa69e68b15ab8e9970ff25f288487055
+
+pkgname = pathstr-git
