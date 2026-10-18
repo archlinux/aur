@@ -1,0 +1,17 @@
+pkgbase = pollen-stable
+	pkgdesc = Pollen channel alias for pollen-bin
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/tiouoo/Pollen
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = pollen-bin
+	conflicts = pollen-commit-bin
+	conflicts = pollen-nightly-bin
+	conflicts = pollen
+	conflicts = pollen-mc
+	conflicts = pollen-stable-bin
+	conflicts = pollen-commit
+	conflicts = pollen-nightly
+
+pkgname = pollen-stable
