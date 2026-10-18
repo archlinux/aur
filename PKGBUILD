@@ -1,7 +1,7 @@
 # Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
 # Co-Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=wireview-linux
-pkgver=1.4.0.0
+pkgver=1.4.1.0
 pkgrel=1
 pkgdesc="Unofficial Linux port of the Thermal Grizzly WireView Pro II desktop application, with WireView Mini"
 arch=('x86_64')
@@ -76,6 +76,8 @@ package() {
   # Install the 128x128 icon shipped by upstream for the AUR
   install -Dm644 aur/wireview-linux.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
 
-  # Install the desktop file from the source array
+  # Desktop entries: the app's from the source array, WireView Mini's from the
+  # checkout (it uses the app's icon)
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 packaging/wireview-mini.desktop -t "$pkgdir/usr/share/applications/"
 }
