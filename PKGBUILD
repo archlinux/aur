@@ -6,7 +6,7 @@ _appname=Prism
 pkgname=${_gitname}-bin
 pkgdesc="The fast, beautiful, open-source download manager for Windows, macOS and Linux — Up to 32 connections, browser integration, video & MP3 downloads, crash-safe resume"
 
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,7 +32,7 @@ source_x86_64=("${_appname,,}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/downl
 sha256sums=('d832c25ccc300e8cc08d450354501cb1655091b39eede968bf5b26b4ed9816a3'
             'a1d7519d70851b7c7d94655fe8c59ce751dcb022acd9346a60d1f137c2c1480d'
             '25a36f52335b77308ed7ed587d1b70e074e1757d997686ef6eb936952c5da956')
-sha256sums_x86_64=('c92ae61f880b9b32d8326d7030fdb34fb0f188c76ad36a87ab75803ab41245d5')
+sha256sums_x86_64=('705ab5d69a6ef462c497d032fc9b06e90cd0141c55ee4aefb3d8bed7efac8dfb')
 
 
 package() {
