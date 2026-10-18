@@ -1,7 +1,7 @@
 # Maintainer: Samuel Mesa <samuel.mesa@linuxmail.org>
 
 pkgname=minke
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Minke desktop agent powered by DeepSeek Harness"
 arch=(x86_64)

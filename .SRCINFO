@@ -1,6 +1,6 @@
 pkgbase = minke
 	pkgdesc = Minke desktop agent powered by DeepSeek Harness
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/lencx/Minke
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = minke
 	depends = util-linux-libs
 	depends = wayland
 	depends = xdg-utils
-	source = Minke::git+https://github.com/lencx/Minke.git#tag=v0.8.0
+	source = Minke::git+https://github.com/lencx/Minke.git#tag=v0.9.0
 	source = minke.desktop
 	source = minke.tmpfiles
 	sha512sums = SKIP
