@@ -1,6 +1,6 @@
 pkgbase = carrier
 	pkgdesc = Distraction-free desktop client for Facebook Messenger
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/kristofferR/Carrier
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = carrier
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = LICENSE-2.0.4::https://raw.githubusercontent.com/kristofferR/Carrier/v2.0.4/LICENSE
+	source = LICENSE-2.0.5::https://raw.githubusercontent.com/kristofferR/Carrier/v2.0.5/LICENSE
 	sha256sums = 957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d
-	source_x86_64 = carrier-2.0.4-x86_64.deb::https://github.com/kristofferR/Carrier/releases/download/v2.0.4/Carrier_2.0.4_lin_x64.deb
-	sha256sums_x86_64 = 4cc69fc37a47abe29c3972e99380d15bf47f78f363054904ea59a6f6f22542dc
-	source_aarch64 = carrier-2.0.4-aarch64.deb::https://github.com/kristofferR/Carrier/releases/download/v2.0.4/Carrier_2.0.4_lin_arm.deb
-	sha256sums_aarch64 = 40b9381f886133ffe217b10ac319b5fbc7f3ec605238763101835389e361bfe4
+	source_x86_64 = carrier-2.0.5-x86_64.deb::https://github.com/kristofferR/Carrier/releases/download/v2.0.5/Carrier_2.0.5_lin_x64.deb
+	sha256sums_x86_64 = 17ec87a3f1d033ee8b1ae365717923179790478f19ae12c65063c9a068ce70e8
+	source_aarch64 = carrier-2.0.5-aarch64.deb::https://github.com/kristofferR/Carrier/releases/download/v2.0.5/Carrier_2.0.5_lin_arm.deb
+	sha256sums_aarch64 = 74ea0119ddb237fc2984443f011eb64aa798dc17687e9d5128708f35ba9f3042
 
 pkgname = carrier
