@@ -1,5 +1,5 @@
 pkgname=pollen-nightly
-pkgver=0.0.17.24
+pkgver=0.1.6.18
 pkgrel=1
 pkgdesc='Pollen channel alias for pollen-nightly-bin'
 arch=('any')
