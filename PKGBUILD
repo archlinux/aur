@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgbase=c47-bin
 pkgname=(c47-bin r47-bin)
-pkgver=00.109.05.00b0
+pkgver=00.109.05.00b2
 pkgrel=1
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=('x86_64')
@@ -17,8 +17,8 @@ conflicts=("${pkgname::-4}")
 source=("https://gitlab.com/api/v4/projects/14055190/packages/generic/${pkgname::-4}/${pkgver}/${pkgname::-4}-linux-${pkgver}.zip"
 	"https://gitlab.com/rpncalculators/c43/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 noextract=()
-sha256sums=('24a018d81000678904bca3026151223a0f072b3d747e45f602df26c4701eb96e'
-            'abd898b1817977f51f0af3e2db88716d38f515f3651f0b85eec1a8eac9ce8a00')
+sha256sums=('0ae4d1b01b8dbf9ecf6849701bdb5d4e143f3e7c67eb984e94491b3c78de5781'
+            'db4acf47adcba25b76060c64fbd0115ce9e8094bd80fb316148df5ce04153e7a')
 validpgpkeys=()
 
 prepare() {
