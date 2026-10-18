@@ -8,7 +8,7 @@ _name1=tasks
 _name0=fastmcp
 pkgbase=python-$_name0
 pkgname=(python-$_name0-$_name3 python-$_name0-$_name2 python-$_name0-$_name1 python-$_name0)
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 arch=('any')
 _repo='https://github.com/PrefectHQ/fastmcp'
@@ -57,7 +57,7 @@ makedepends=('python-hatchling'
 #               'python-cryptography'
 #               'python-pydocket')
 source=("$_name0::git+$_repo.git#tag=v$pkgver")
-sha256sums=('5cd4d9b415b00eac4a05106fed014671bd0dc8bcc8fbb78cb95efa815013a801')
+sha256sums=('77c8d1047da9d8b91ccdb9660ee2e28c0485f095ea2045a82b8744a5ba64745f')
 
 build() {
   cd "$srcdir"/$_name0
@@ -82,8 +82,7 @@ package_python-fastmcp-slim() {
             'python-pydantic'
             'python-email-validator'
             'python-pydantic-settings'
-            'python-dotenv'
-            'python-rich'
+            'python-dotenv' 'python-rich'
             'python-typing_extensions')
   optdepends=('python-anthropic: anthropic'
   
@@ -105,8 +104,6 @@ package_python-fastmcp-slim() {
               'python-cachetools: client'
               
               'python-pydantic-monty: code-mode'
-              
-              'python-typesafe-sdk: jev'
               
               'python-google-genai: gemini'
               'python-jsonref: gemini'
@@ -253,8 +250,6 @@ package_python-fastmcp() {
               'python-pyjwt: azure'
               
               'python-pydantic-monty: code-mode'
-              
-              'python-typesafe-sdk: jev'
               
               'python-google-genai: gemini'
               'python-jsonref: gemini'
