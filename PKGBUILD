@@ -6,13 +6,13 @@
 # regenerates .SRCINFO with `makepkg --printsrcinfo` on every release tag.
 # Keep the two PKGBUILDs in step by hand; the AUR one is what users see.
 pkgname=clockwork-orange-git
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Wallpaper manager and downloader with plugin support (Wallhaven, DuckDuckGo Images) for KDE Plasma 6"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ushineko/clockwork-orange"
 license=('MIT')
-depends=('libgl' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland' 'qt6-tools' 'kconfig')
+depends=('libgl' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland' 'kconfig')
 makedepends=('go' 'git' 'gcc' 'pkgconf' 'mesa' 'wayland-protocols')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
