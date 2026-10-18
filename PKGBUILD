@@ -1,7 +1,7 @@
 # Maintainer: Swen <enhaoswen@gmail.com>
 # Contributor: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.43
+pkgver=1.0.44
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
@@ -27,7 +27,7 @@ depends=(
     'upower'
     'bluez'
     'bluez-utils'
-    'quickshell'
+    'quickshell>=0.3.0'
     'cliphist'
     'wl-clipboard'
 )
@@ -57,7 +57,7 @@ optdepends=(
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.xz::https://github.com/enhaoswen/Tide-island/releases/download/$pkgver/tide-island-source.tar.xz")
-sha256sums=('7f099554569127c38fdec01f2a600c1e18e84980b4c41a8a7522e40e63804683')
+sha256sums=('c1b2703c4ca36d00eaeb3a813571a4de78d09dbff8629fff32a8acffd0bce746')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \

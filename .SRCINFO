@@ -1,6 +1,6 @@
 pkgbase = tide-island
 	pkgdesc = A dynamic island for Hyprland and niri using Quickshell
-	pkgver = 1.0.43
+	pkgver = 1.0.44
 	pkgrel = 1
 	url = https://github.com/enhaoswen/Tide-island
 	install = tide-island.install
@@ -25,7 +25,7 @@ pkgbase = tide-island
 	depends = upower
 	depends = bluez
 	depends = bluez-utils
-	depends = quickshell
+	depends = quickshell>=0.3.0
 	depends = cliphist
 	depends = wl-clipboard
 	optdepends = spotify: for Spotify Liked Songs integration
@@ -50,7 +50,7 @@ pkgbase = tide-island
 	conflicts = tide-island-git
 	options = !debug
 	options = !strip
-	source = tide-island-1.0.43.tar.xz::https://github.com/enhaoswen/Tide-island/releases/download/1.0.43/tide-island-source.tar.xz
-	sha256sums = 7f099554569127c38fdec01f2a600c1e18e84980b4c41a8a7522e40e63804683
+	source = tide-island-1.0.44.tar.xz::https://github.com/enhaoswen/Tide-island/releases/download/1.0.44/tide-island-source.tar.xz
+	sha256sums = c1b2703c4ca36d00eaeb3a813571a4de78d09dbff8629fff32a8acffd0bce746
 
 pkgname = tide-island
