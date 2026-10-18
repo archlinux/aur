@@ -1,6 +1,6 @@
 pkgbase = smart-dnd
 	pkgdesc = Automated Do Not Disturb based on schedules and calendar events for Linux desktops
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/keithvassallomt/smart-dnd-linux
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = smart-dnd
 	optdepends = swaync: control SwayNotificationCenter
 	optdepends = dunst: control Dunst
 	conflicts = smart-dnd-git
-	source = smart-dnd-0.1.0.tar.gz::https://github.com/keithvassallomt/smart-dnd-linux/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 1b1eeea3c0a9eca34b23642027e846135229cf0b8a3f06247543a85bd4c93b72
+	source = smart-dnd-0.1.1.tar.gz::https://github.com/keithvassallomt/smart-dnd-linux/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = e14ca5533555e2f477f266db1b22f3d78e3fa9e586a7bc851c588471f48cab22
 
 pkgname = smart-dnd
