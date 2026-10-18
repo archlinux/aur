@@ -5,7 +5,7 @@ _pkgname=xfr
 pkgname=${_pkgname}-bin
 pkgdesc="A modern iperf3 alternative with a live TUI, multi-client server, and QUIC support"
 
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,15 +29,15 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-MIT-${pkgver}::${_urlraw}/LICENSE-MIT")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
-sha256sums=('5f71b36e35d73f74eb7aa28148766350358f7b22ca499ab5410258611b88d6e5'
-            '9d8cb15b4b36b7d254ab593f4dd71d29b0d1b1528ec78a444ecc170bbd0c6ab8'
+sha256sums=('c4f72ba1d41bc4c6b224e05c3c1cf504ab38452fc57341bd6193afaf798aa018'
+            '48d346155f45caea9b685ae03bab0ca65b5b9e47a808da4109dbcf1543868f75'
             '85da7223f219783c1a79e7c544ec33fb477c3bf9b0f75bd16887c64de81a0fa9'
-            '1aa106232e798d7f30d4c87d3e6a083b59019d42fc37699be967fcc245ccf864'
-            '9a8003cf32d0dbd0b178ad88bb5746d7e6afd5b1fe366c76bc5649c34755590e'
+            'fcdcc8304e854780307768a2ade4d9ff4939dad0b544feb0345c02ea3989c501'
+            '1caa18194186e5bdfd9b1fef7cc52b3e266fa5ee70368e164fab3fb41e5a0cb9'
             'b3699bdf3129bcb12f559d6dcfa597cfae1e3d2b793e90de297f90c4d25cdea0'
             'a2b22ab13af7492f75197a7e5ce71ba8e0ae01f8f27154f8383c8e8ded29c9e0')
-sha256sums_x86_64=('69b444cfb0990cda192ed23961d06cb8bdbd7e7790e735efe95cd3754a748bc4')
-sha256sums_aarch64=('69b444cfb0990cda192ed23961d06cb8bdbd7e7790e735efe95cd3754a748bc4')
+sha256sums_x86_64=('0a65035a696bf93d00faa1996e1fed42dc9e95a1c88cf8e0e02b23a86497fbec')
+sha256sums_aarch64=('0a65035a696bf93d00faa1996e1fed42dc9e95a1c88cf8e0e02b23a86497fbec')
 
 build() {
 	cd "${srcdir}/" || exit
