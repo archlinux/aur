@@ -1,0 +1,15 @@
+pkgbase = tcl9
+	pkgdesc = Powerful, easy-to-learn dynamic programming language (version 9, parallel-installable with tcl 8.6)
+	pkgver = 9.1.0
+	pkgrel = 1
+	url = https://www.tcl-lang.org/
+	arch = x86_64
+	license = TCL
+	depends = glibc
+	depends = zlib
+	options = staticlibs
+	options = !lto
+	source = https://downloads.sourceforge.net/sourceforge/tcl/tcl9.1.0-src.tar.gz
+	sha256sums = 536c45543f64d6eb11832d97ba3494aacff046fbc5040273bd55258d0e448ff1
+
+pkgname = tcl9
