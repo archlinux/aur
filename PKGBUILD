@@ -1,7 +1,7 @@
 # Maintainer: FennecTECH <fennectech@gmail.com>
 pkgname=firestorm-bin
 pkgver=7.2.4.80712
-pkgrel=2
+pkgrel=3
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
@@ -28,7 +28,7 @@ source=("https://downloads.firestormviewer.org/release/linux/${tardir}.tar.xz"
         firestorm.launcher)
 b2sums=('b06c08f9d365501931e3553c4a52b11612c6c52797209166cc72e4be98daa80c7fce3728b68efe9b00e802a28c377b07feec49e55649469cfda6b7f5d7562963'
 	'225364d45839e61dd2ed3f3120e0c42111e72c07821180aa60de422731c61b3fc55cfb9977065d067e76a007461c05543441a30fcd8f9b1454f4b2e06e03a608'
-        '5b9342aa587e12bd03e8abd24e5d2d9c53cdddee949409045d20931b572d317de23c1eaea6efabe67683ca435bde428c0ab0706760eff0acf9b301f42abe38c4')
+        '681c0d8b4cb4324249ad4fd20e7d906e55595fac1658bafbe310195bcefa6783264900908ef4fdab59c71eb4d9e79deb6a0e270469f756e4a9f43b47eff5662d')
 
 prepare() {
   cd "${srcdir}/${tardir}"
