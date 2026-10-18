@@ -1,0 +1,32 @@
+pkgbase = tokativ-bin
+	pkgdesc = Local dictation that types into the focused app as you speak
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/nolight132/tokativ
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = alsa-lib
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
+	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
+	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
+	optdepends = pipewire-alsa: microphone input through PipeWire
+	optdepends = pulseaudio-alsa: microphone input through PulseAudio
+	provides = tokativ=0.4.0
+	conflicts = tokativ
+	options = !strip
+	options = !debug
+	source = https://github.com/nolight132/tokativ/archive/refs/tags/v0.4.0/tokativ-0.4.0.tar.gz
+	sha256sums = c32e59e2fcfcddfb3e9795fe586dfc76188f8b1a316a083ab2e6bbd7ca763f2e
+	source_x86_64 = tokativ-0.4.0-x86_64::https://github.com/nolight132/tokativ/releases/download/v0.4.0/tokativ-v0.4.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 43718c7eaee83dc4a5c579c24c09d0781f40d899b77e734a4089084e17a21f03
+	source_aarch64 = tokativ-0.4.0-aarch64::https://github.com/nolight132/tokativ/releases/download/v0.4.0/tokativ-v0.4.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 6c641d7fc9f02920879eec99c30667a6f4adfc574e4725f5d6f30dac61aaa112
+
+pkgname = tokativ-bin
