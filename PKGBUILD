@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=pyqt-feedback-flow
 pkgname=python-${_base}
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Show feedbacks in toast-like notifications"
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pyqt6 python-emoji)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest-qt)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('87d64beb600566e0469d169dd55a9f7e1b3eb923c3231016848ece7adc191c0aed3d3f9d19b549a412e97644c7d640994c762ea6c0f4d4b3558883c5b7ca7e71')
+sha512sums=('d1f32f767be892655c30fdf694c9ee069d6908a0fa46436acc4902866a42a2c258a665a04406b87bbe476d577ca89dc576d024ba830f7223163c7468467d808b')
 
 build() {
   cd ${_base}-${pkgver}
