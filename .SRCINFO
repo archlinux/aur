@@ -1,5 +1,5 @@
 pkgbase = freshgram-bin
-	pkgdesc = Breaking Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (prebuilt)
+	pkgdesc = Breaking ToS Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (prebuilt)
 	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://github.com/Snowy-Fluffy/freshGram
