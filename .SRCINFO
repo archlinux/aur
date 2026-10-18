@@ -1,9 +1,9 @@
-pkgbase = zulu-8-jdk-fx
+pkgbase = jdk8-zulu-fx-bin
 	pkgdesc = Azul Zulu JDK 8 with JavaFX
 	pkgver = 8.96.0.205
 	pkgrel = 1
 	url = https://www.azul.com/downloads
-	install = zulu-8-jdk-fx.install
+	install = jdk8-zulu-fx-bin.install
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -25,4 +25,4 @@ pkgbase = zulu-8-jdk-fx
 	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-fx-jdk8.0.504-linux_aarch64.tar.gz
 	sha256sums_aarch64 = 0b65b52711f00c616224d41742ace7e3a160042cb94c349272abee7b8dc4c814
 
-pkgname = zulu-8-jdk-fx
+pkgname = jdk8-zulu-fx-bin

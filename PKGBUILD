@@ -1,4 +1,4 @@
-pkgname=zulu-8-jdk-fx
+pkgname=jdk8-zulu-fx-bin
 pkgver=8.96.0.205
 pkgrel=1
 pkgdesc='Azul Zulu JDK 8 with JavaFX'
