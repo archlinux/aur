@@ -10,7 +10,8 @@ makedepends=(git cmake extra-cmake-modules nlohmann-json vulkan-headers glslang 
              libplasma fast_float stb glad)
 checkdepends=(catch2 python-pillow nodejs)
 optdepends=('libplasma: Use the KDE Wallpaper'
-            'python: Extract assets from Nekopara Game')
+            'python: Extract assets from Nekopara Game'
+            "nekomote-assets=${pkgver}: Managed assets")
 source=("git+https://github.com/Chocola-X/NekoMote.git#tag=v${pkgver}"
         "0003-fix-test-flags.diff")
 sha256sums=('3d7120e6b82c4062b5a33c0385416b0e7b34042322b53596ed35cc0c13e85699'

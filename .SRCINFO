@@ -32,6 +32,7 @@ pkgbase = nekomote
 	depends = glfw
 	optdepends = libplasma: Use the KDE Wallpaper
 	optdepends = python: Extract assets from Nekopara Game
+	optdepends = nekomote-assets=0.5.2: Managed assets
 	source = git+https://github.com/Chocola-X/NekoMote.git#tag=v0.5.2
 	source = 0003-fix-test-flags.diff
 	sha256sums = 3d7120e6b82c4062b5a33c0385416b0e7b34042322b53596ed35cc0c13e85699
