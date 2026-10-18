@@ -7,7 +7,7 @@
 # checksum yet.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.11.0
+_version=0.12.0
 pkgname=wikistow-cli-bin
 pkgver=${_version//-/}
 pkgrel=1
@@ -22,7 +22,7 @@ optdepends=("libsecret: keep an agent's key in the keyring (agent enroll --secre
 provides=('wikistow-cli')
 conflicts=('wikistow-cli')
 source=("https://github.com/skint007/wikistow/releases/download/v$_version/wikistow-cli-$_version.tar.gz")
-sha256sums=('e60b77e70e577db9975a180487885cd1cdbf3b6feea22d754bdd6bb3e8e0120c')
+sha256sums=('0ddd66800ca1fbb5539b2f35490dd95af310930b7ba0ba0fcdd39a20a9c9f6f9')
 
 package() {
     cd "wikistow-cli-$_version"
