@@ -1,6 +1,6 @@
 # Maintainer: mewset
 pkgname=better-iptv
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Modern, powerful IPTV player for Linux, Windows, and macOS (meta-package)"
 arch=('any')
