@@ -4,7 +4,7 @@
 pkgbase='python-common-ta-lib'
 pkgname=("python-ta-lib")
 _altpkgname='ta_lib'
-pkgver=0.7.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Python wrapper for TA-Lib"
 url="https://github.com/TA-Lib/ta-lib-python"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-numpy>2.0.0' 'python-numpy<3.0.0' 'cyth
 license=('BSD')
 arch=('any')
 source=("https://github.com/TA-Lib/ta-lib-python/releases/download/v$pkgver/$_altpkgname-$pkgver.tar.gz")
-sha256sums=('d28ec282d58294c6ed3c604c3b11cc3b5843cedd84bf3831c512ca4139d0caf4')
+sha256sums=('75f4d8d9c9e0273cf6086b3aefa33fd9a9a3e465fc38ab35d41ccd9fe539093e')
 
 build() {
     cd "$srcdir"/$_altpkgname-$pkgver
