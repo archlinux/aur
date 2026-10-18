@@ -7,7 +7,7 @@
 
 set -u
 pkgname='joomla'
-pkgver='5.4.1'
+pkgver='6.2.0'
 pkgrel='1'
 pkgdesc='a php Content Management System (CMS) which enables you to build websites and powerful online applications.'
 arch=('any')
@@ -30,19 +30,18 @@ _giturl="https://github.com/joomla/${pkgname}-cms"
 #_verwatch=("${_giturl}/releases.atom" '\s\+<title>Joomla! \([0-9.]\+\)<.*' 'f')
 _srcdir="Joomla_${pkgver}-Stable-Full_Package"
 source=("${_giturl}/releases/download/${pkgver}/${_srcdir}.tar.gz")
-md5sums=('1a8ccb982caa964e0dacf7c5b71def49')
-sha256sums=('7aafa6cb9e384206cc7b88b65f0121490a122e6d96f90f91496fafc52dad217d')
+md5sums=('6d620150bfb1ab9004c9156579d7f81a')
+sha256sums=('f7a4c3962c4a8682f5847ea9d47d2848f6eb475109805935c9e19a5c6511829d')
 noextract=("${source[0]##*/}")
 
 prepare() {
-  set -u
+  local -; set -u
   mkdir "${_srcdir}"
   bsdtar -C "${_srcdir}" -xf "${noextract[0]}"
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   install -dm755 "${pkgdir}/usr/share/webapps"
   cp -pr . "${pkgdir}/usr/share/webapps/joomla"
@@ -51,6 +50,5 @@ package() {
   find "${pkgdir}/usr/share/webapps/joomla" -type 'd' -exec chmod 0775 '{}' '+'
   chown -R 'root:root' "${pkgdir}/usr/share/webapps/joomla"
   install -D 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  set +u
 }
 set +u
