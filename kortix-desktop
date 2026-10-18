@@ -1,0 +1,3 @@
+#!/bin/sh
+export APPDIR=/opt/kortix-desktop
+exec /opt/kortix-desktop/AppRun "$@"
