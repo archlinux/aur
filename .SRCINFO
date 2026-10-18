@@ -1,0 +1,23 @@
+pkgbase = moss-os
+	pkgdesc = An agentic backend that *will* be the best. Free and open source, funded by donations: https://www.buymeacoffee.com/bingusfan360
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://gitlab.com/Bingusfan360/MahoragaOS
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = hicolor-icon-theme
+	replaces = mahoragaos
+	conflicts = mahoragaos
+	source = https://gitlab.com/Bingusfan360/MahoragaOS/-/archive/v0.7.2/MahoragaOS-v0.7.2.tar.gz
+	source = moss.svg
+	source = moss.fish
+	sha256sums = 2f54b2399d41857a566aa1f785a121a8a12c8624b3f5ff64112a19cc66a75a5c
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = moss-os

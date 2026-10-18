@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="url(#bg)"/>
+  <circle cx="64" cy="64" r="38" fill="none" stroke="url(#ring)" stroke-width="4"/>
+  <circle cx="64" cy="64" r="24" fill="none" stroke="#e94560" stroke-width="2" opacity="0.6"/>
+  <circle cx="64" cy="64" r="10" fill="#e94560"/>
+  <line x1="64" y1="26" x2="64" y2="40" stroke="#e94560" stroke-width="2" opacity="0.4"/>
+  <line x1="64" y1="88" x2="64" y2="102" stroke="#e94560" stroke-width="2" opacity="0.4"/>
+  <line x1="26" y1="64" x2="40" y2="64" stroke="#e94560" stroke-width="2" opacity="0.4"/>
+  <line x1="88" y1="64" x2="102" y2="64" stroke="#e94560" stroke-width="2" opacity="0.4"/>
+</svg>
