@@ -1,7 +1,7 @@
 pkgbase = xfce-winxp-tc-git
 	pkgdesc = Windows XP Total Conversion for XFCE
 	pkgver = r957.5adad1c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rozniak/xfce-winxp-tc
 	arch = x86_64
 	arch = aarch64
@@ -45,6 +45,7 @@ pkgbase = xfce-winxp-tc-git
 	optdepends = gst-plugins-base: OOBE setup
 	optdepends = gst-plugins-ugly: OOBE setup
 	optdepends = gst-plugin-gtk: OOBE setup
+	optdepends = gst-libav: OOBE setup
 	source = xfce-winxp-tc::git+https://github.com/rozniak/xfce-winxp-tc.git
 	md5sums = SKIP
 

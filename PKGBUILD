@@ -3,7 +3,7 @@
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
 pkgver=r957.5adad1c
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rozniak/xfce-winxp-tc"
@@ -52,6 +52,7 @@ optdepends=(
 	'gst-plugins-base: OOBE setup'
 	'gst-plugins-ugly: OOBE setup'
 	'gst-plugin-gtk: OOBE setup'
+	'gst-libav: OOBE setup'
 )
 source=("${_basename}"::"git+https://github.com/rozniak/xfce-winxp-tc.git")
 md5sums=('SKIP')
