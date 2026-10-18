@@ -2,13 +2,12 @@
 
 pkgname=gtools
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to read 2MGUI disks in Linux"
 arch=('x86_64')
 url="http://www.manty.net/www.geocities.com/SiliconValley/Lakes/1486/smanty.html"
 license=('GPL')
 depends=('glibc')
-source=("http://sourceforge.net/projects/gnochm/files/gnochm/0.9.11/gnochm-0.9.11.tar.gz" "Makefile.patch")
 source=('http://www.manty.net/www.geocities.com/SiliconValley/Lakes/1486/gtools-0_1_0.tgz'
         'errno.patch')
 
@@ -17,7 +16,8 @@ prepare() {
 }
 
 build() {
-  gcc gtools.c -o gtools
+  # the tarball ships prebuilt binaries; build ours with the makepkg flags
+  gcc $CPPFLAGS $CFLAGS $LDFLAGS gtools.c -o gtools
 }
 
 package() {
@@ -30,4 +30,4 @@ package() {
   install -Dm644 $srcdir/README $pkgdir/usr/share/doc/gtools/README
 }
 md5sums=('33c7806b35a99fb9dd95738f2017de83'
-         '5636003942f5c0de253b064c983f4f29')
+         '08e63059ab7b467345c6fe1fd4e0e3b1')
