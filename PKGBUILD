@@ -1,8 +1,8 @@
-# Maintainer: in6kiar
+# Maintainer: ix6kiar
 
 _pkgname=echoed
 pkgname="${_pkgname}-appimage"
-pkgver=1.7.10
+pkgver=1.7.15
 pkgrel=1
 pkgdesc="Lightweight Discord alternative — No Ads, No Tracking, Built on Tauri"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source_x86_64=(
 )
 
 noextract=("${_appimage}")
-sha256sums_x86_64=('9c6cda9338ca850d132424ade539dccf078696204174a34fac6921cefffc3608')
+sha256sums_x86_64=('e7d690de91f0fa18d744b6254745dff77fa2d94c02c9f8e5a652c0d7d69e33ae')
 
 prepare() {
   # Clean old paths
