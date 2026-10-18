@@ -1,4 +1,4 @@
-pkgname=zulu-17-jdk-fx
+pkgname=jdk17-zulu-fx-bin
 pkgver=17.68.203
 pkgrel=1
 pkgdesc='Azul Zulu JDK 17 with JavaFX'

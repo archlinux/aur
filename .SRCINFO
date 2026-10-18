@@ -1,9 +1,9 @@
-pkgbase = zulu-17-jdk-fx
+pkgbase = jdk17-zulu-fx-bin
 	pkgdesc = Azul Zulu JDK 17 with JavaFX
 	pkgver = 17.68.203
 	pkgrel = 1
 	url = https://www.azul.com/downloads
-	install = zulu-17-jdk-fx.install
+	install = jdk17-zulu-fx-bin.install
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -25,4 +25,4 @@ pkgbase = zulu-17-jdk-fx
 	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.68.203-ca-fx-jdk17.0.20.1-linux_aarch64.tar.gz
 	sha256sums_aarch64 = 9a216b82edc44f261224fd3d42c8c2b11dee794679c5e97a3aa221a4d7ea30f9
 
-pkgname = zulu-17-jdk-fx
+pkgname = jdk17-zulu-fx-bin
