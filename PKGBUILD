@@ -1,18 +1,18 @@
 # Maintainer: bromigOS <packages@bromigos.org>
 # Contributor: blackflame
 pkgname=mehshell
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Fast parallel zsh prompt engine for bromigOS'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bromigos-org/mehshell'
-license=('MIT')
+license=('MIT' 'Unicode-3.0')
 depends=('zsh')
 makedepends=('go')
 conflicts=('mehshell-bin')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('05034d01c0adde246d2e3d180aec8e01355db97bad85f6b511534ca4d7ab71c1')
+sha256sums=('56f807375795e5f4e4064012d81db012103a3a8add6e35b11212db7f7ae01791')
 build() {
   cd "$pkgname-$pkgver"
   CGO_ENABLED=0 go build -trimpath -ldflags="-s -w -X main.Version=$pkgver" -o mehshell .
@@ -26,4 +26,5 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 mehshell "$pkgdir/usr/bin/mehshell"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE-UNICODE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-UNICODE"
 }
