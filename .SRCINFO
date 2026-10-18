@@ -1,6 +1,6 @@
 pkgbase = rupu-bin
 	pkgdesc = Agentic code-development CLI (prebuilt binary)
-	pkgver = 0.82.0
+	pkgver = 0.84.0
 	pkgrel = 1
 	url = https://github.com/Section9Labs/rupu
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rupu-bin
 	provides = rupu
 	conflicts = rupu
 	options = !strip
-	source_x86_64 = rupu-0.82.0-x86_64::https://github.com/Section9Labs/rupu/releases/download/v0.82.0/rupu-linux-x64
-	sha256sums_x86_64 = 5ca1a87eda18c6463b0becdea33a97e63d5a9c4b71676c81037f1d1fe66436b7
-	source_aarch64 = rupu-0.82.0-aarch64::https://github.com/Section9Labs/rupu/releases/download/v0.82.0/rupu-linux-arm64
-	sha256sums_aarch64 = 912eb1af9e3012deb673c3aa02e2126ed46744ff006c8e7b36e19e152610e454
+	source_x86_64 = rupu-0.84.0-x86_64::https://github.com/Section9Labs/rupu/releases/download/v0.84.0/rupu-linux-x64
+	sha256sums_x86_64 = d703cc323d2c46989ba0d39fb805052855577c8763aae1ccd9d9982bb0976ff2
+	source_aarch64 = rupu-0.84.0-aarch64::https://github.com/Section9Labs/rupu/releases/download/v0.84.0/rupu-linux-arm64
+	sha256sums_aarch64 = cbf1919d5d373f55bd3731a13ff1ef5a5c3bace55d98873a18e751073f184879
 
 pkgname = rupu-bin
