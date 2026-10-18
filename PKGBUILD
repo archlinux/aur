@@ -1,8 +1,8 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined-git
-pkgver=0.2.6.r0.g3963770
-pkgrel=2
+pkgver=0.2.7.r0.g7204ea2
+pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box (git)"
 arch=('any')
 # Nothing here is a binary, so strip and the debug split have nothing to do, and
