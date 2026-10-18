@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=xerotty
+GenericName=Terminal Emulator
+Comment=SDL3 + Dear ImGui terminal emulator with daemon mode and SSH-backed sessions
+Exec=xerotty
+Icon=xerotty
+Terminal=false
+Categories=System;TerminalEmulator;
+Keywords=terminal;shell;ssh;multiplexer;daemon;
+StartupWMClass=xerotty

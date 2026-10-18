@@ -1,0 +1,25 @@
+pkgbase = xerotty-git
+	pkgdesc = Customizable terminal emulator in Go (SDL3 + Dear ImGui): multi-window, headless daemon mode, SSH-backed remote sessions, MCP server
+	pkgver = r521.62baf4c
+	pkgrel = 1
+	url = https://github.com/LXXero/xerotty
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = sdl3
+	depends = fontconfig
+	depends = freetype2
+	depends = libglvnd
+	depends = gcc-libs
+	depends = glibc
+	provides = xerotty
+	conflicts = xerotty
+	options = !lto
+	source = git+https://github.com/LXXero/xerotty.git
+	source = xerotty.desktop
+	sha256sums = SKIP
+	sha256sums = 25bfb5491cbe34f7a1ab466be75caa80238b6e91f17eeba1f9de76c6c8c948df
+
+pkgname = xerotty-git
