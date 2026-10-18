@@ -5,12 +5,12 @@
 
 pkgname=darkplaces
 pkgver=20140513
-pkgrel=6
+pkgrel=7
 pkgdesc="An advanced Quake 1 game engine"
 arch=('i686' 'x86_64')
 url="http://icculus.org/twilight/darkplaces/"
 license=('GPL-2.0-or-later')
-depends=('alsa-lib' 'hicolor-icon-theme' 'libjpeg-turbo' 'libxpm'
+depends=('alsa-lib' 'hicolor-icon-theme' 'libgl' 'libjpeg-turbo' 'libxpm'
          'libxxf86vm' 'sdl' 'zlib')
 install=$pkgname.install
 source=(http://icculus.org/twilight/$pkgname/files/darkplacesengine$pkgver.zip
