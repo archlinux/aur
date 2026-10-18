@@ -2,7 +2,7 @@ diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
 index 0f7c4c5b14b9..87ca0637732b 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -237,6 +237,16 @@ static const struct edid_quirk {
+@@ -237,6 +237,18 @@ static const struct edid_quirk {
  	EDID_QUIRK('S', 'E', 'C', 0x144a, BIT(EDID_QUIRK_NON_DESKTOP)),
 	EDID_QUIRK('A', 'U', 'S', 0xc102, BIT(EDID_QUIRK_NON_DESKTOP)),
  
