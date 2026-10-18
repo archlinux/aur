@@ -2,7 +2,7 @@
 
 pkgname=ai-usagebar-bin
 _pkgname=ai-usagebar
-pkgver=1.40.1
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="Omarchy/Waybar widgets + TUI for AI plan usage (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -39,8 +39,8 @@ source_aarch64=(
     "$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz"
     "$_pkgname-$pkgver-aarch64.tar.gz.sig::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz.sig"
 )
-sha256sums_x86_64=('f0b77f3e26f3d94de90ae99d876498b642ff379551ac055d338543915a51c984' 'SKIP')
-sha256sums_aarch64=('8a34e1a7f68077c5e7b83244e87d6c396268dd0400ab53311356e422e77fb63d' 'SKIP')
+sha256sums_x86_64=('7a0eb7cdc9760d28aeccabde13fa3854d36d6fba1f77aae6b6797aedf909cab2' 'SKIP')
+sha256sums_aarch64=('48a6a592c344724ad81f8d50bc5fc4a88185f370189e5d4d5068b329f0cb14c6' 'SKIP')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                "ai-usagebar"
