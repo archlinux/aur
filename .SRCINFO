@@ -1,6 +1,6 @@
 pkgbase = lomi
 	pkgdesc = A workspace for terminal-driven development
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/lomi-dev/lomi
 	arch = x86_64
@@ -13,9 +13,10 @@ pkgbase = lomi
 	depends = webkit2gtk-4.1
 	depends = hicolor-icon-theme
 	optdepends = git: source control and repository history
+	optdepends = org.freedesktop.secrets: remember account sessions and securely store AI API keys
 	provides = lomi
 	conflicts = lomi-bin
-	source = lomi-0.6.0.tar.gz::https://github.com/lomi-dev/lomi/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 0cf81cf9e3fa8cc1151df7e48565ad6fa442a743f971c5466d7aa72db3fea35d
+	source = lomi-0.6.1.tar.gz::https://github.com/lomi-dev/lomi/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 96338b04fc373d4518d22dbe97eb3e57dfaaf2030ad0e8b7d651d9f4053c7dd2
 
 pkgname = lomi
