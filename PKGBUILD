@@ -6,8 +6,8 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust
 pkgname=("$_obs_studio-rust" "$_obs_studio-rust-plugin-browser")
-pkgver=0.1.0beta.20261014
-pkgrel=2
+pkgver=0.1.0beta.20261018
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://github.com/$pkgbase"
@@ -28,7 +28,7 @@ source=(
   "${pkgbase}-obs-browser::git+$url/obs-browser.git"
   "${pkgbase}-obs-websocket::git+$url/obs-websocket.git"
 )
-sha256sums=('05ac0389bfab6a4a4ee313495743a82866d035adaf2655d018141954aa8634a1'
+sha256sums=('410a758634d5fed7bfb4423285f7efe2bca68e109bc2004d5dd2eefc017a6541'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -72,7 +72,7 @@ build() {
     -DENABLE_JACK=ON
     -DENABLE_LIBFDK=ON
     -DENABLE_WEBRTC=ON
-    -DOBS_VERSION_OVERRIDE="${_tag#*-v}"
+    -DOBS_RUST_VERSION="${_tag#*-v}"
     -DCALM_DEPRECATION=ON
     -DENABLE_WEBSOCKET=ON
     -DENABLE_RUST_LIBOBS=ON
@@ -81,6 +81,8 @@ build() {
   cmake "${cmake_options[@]}"
   cmake --build build
   pushd "$pkgbase"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
