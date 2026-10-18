@@ -1,6 +1,6 @@
 # Maintainer: w1zx1
 pkgname=screentaker
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="a lightweight and reliable screenshooter for Linux written in Rust"
 arch=('x86_64')
