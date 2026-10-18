@@ -1,6 +1,6 @@
 pkgbase = mekle-git
 	pkgdesc = Fast project discovery tool for developers (Git version)
-	pkgver = 0.2.0.r117.g872d258
+	pkgver = 0.2.0.r122.gf4c7ea2
 	pkgrel = 1
 	url = https://github.com/kristoferssolo/mekle
 	install = mekle.install
