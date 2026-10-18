@@ -1,6 +1,6 @@
 pkgbase = znapzend
 	pkgdesc = A ZFS centric backup tool to create snapshots and send them to backup locations.
-	pkgver = 0.23.2
+	pkgver = 0.23.6
 	pkgrel = 1
 	url = http://www.znapzend.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = znapzend
 	depends = perl
 	depends = zfs
 	optdepends = mbuffer: stream buffering
-	source = https://github.com/oetiker/znapzend/releases/download/v0.23.2/znapzend-0.23.2.tar.gz
-	sha256sums = 69928caacde7468e5154d81197e257cd0c85ee3eedb3192be67fdfe486defefe
+	source = https://github.com/oetiker/znapzend/releases/download/v0.23.6/znapzend-0.23.6.tar.gz
+	sha256sums = 2b8903544b4013e3f059afa4812d20bc9d889d7ffda5a8fc5b7728f36599767a
 
 pkgname = znapzend
