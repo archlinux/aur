@@ -1,0 +1,24 @@
+HUAWEI CLOUD CODEARTS AGENT SERVICE AGREEMENT AND LICENSE NOTICE
+
+CodeArts Agent (formerly CodeArts) is proprietary software provided by
+Huawei Cloud Computing Technologies Co., Ltd. ("Huawei Cloud").
+
+By downloading, installing, copying, or using this software, you agree
+to be bound by the terms and conditions of the Huawei Cloud User Agreement
+and the relevant service statements:
+
+1. Huawei Cloud User Agreement:
+   https://www.huaweicloud.com/declaration/sa_cua.html
+
+2. Huawei Cloud Privacy Statement:
+   https://www.huaweicloud.com/declaration/sa_prp.html
+
+3. CodeArts Product Service Terms & Documentation:
+   https://codearts.huaweicloud.com/
+   https://support.huaweicloud.com/productdesc-codeartsagent/codeartsagent_pd_0001.html
+
+Third-Party Component Notices:
+This software includes third-party open-source components (including Chromium
+and Visual Studio Code core components). Respective third-party licenses and
+copyright notices are distributed with the application under
+/usr/share/codearts-agent/LICENSES.chromium.html.
