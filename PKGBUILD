@@ -1,7 +1,7 @@
 # Maintainer: 0x5t4l1n <stalin@ideaboxai.com>
 pkgname=attackgraph-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graph-first application security testing platform — crawl, graph, analyze, report"
 arch=('x86_64')
 url="https://github.com/0x5t4l1n/Attackgraph"
@@ -27,9 +27,11 @@ noextract=("AttackGraph_${pkgver}_amd64.AppImage")
 
 source_x86_64=(
     "AttackGraph_${pkgver}_amd64.AppImage::https://github.com/0x5t4l1n/Attackgraph/releases/download/v${pkgver}/AttackGraph_${pkgver}_amd64.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/0x5t4l1n/Attackgraph/main/LICENSE"
 )
 sha256sums_x86_64=(
     '390abcf3aa5a3c73c3499a2e5db48452de10e6f51e4207dcc0a679bced92f5ef'
+    'cbbaea0974199099b60fa6b7ad97d9a529b4355f882c101fca97dae57d7207a5'
 )
 
 prepare() {
@@ -78,9 +80,7 @@ DESKTOP
     install -Dm644 AttackGraph.png \
         "${pkgdir}/usr/share/pixmaps/attackgraph.png"
 
-    # License
-    install -Dm644 /dev/stdin \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
-MIT License — see https://github.com/0x5t4l1n/Attackgraph/blob/main/LICENSE
-EOF
+    # Install the upstream AGPL-3.0-only license (consistent with license= metadata)
+    install -Dm644 "${srcdir}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

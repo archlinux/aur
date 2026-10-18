@@ -1,7 +1,7 @@
 pkgbase = attackgraph-bin
 	pkgdesc = Graph-first application security testing platform — crawl, graph, analyze, report
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x5t4l1n/Attackgraph
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -20,6 +20,8 @@ pkgbase = attackgraph-bin
 	noextract = AttackGraph_1.0.0_amd64.AppImage
 	options = !strip
 	source_x86_64 = AttackGraph_1.0.0_amd64.AppImage::https://github.com/0x5t4l1n/Attackgraph/releases/download/v1.0.0/AttackGraph_1.0.0_amd64.AppImage
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/0x5t4l1n/Attackgraph/main/LICENSE
 	sha256sums_x86_64 = 390abcf3aa5a3c73c3499a2e5db48452de10e6f51e4207dcc0a679bced92f5ef
+	sha256sums_x86_64 = cbbaea0974199099b60fa6b7ad97d9a529b4355f882c101fca97dae57d7207a5
 
 pkgname = attackgraph-bin
