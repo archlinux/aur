@@ -3,7 +3,7 @@
 
 pkgname=fauxput-bin
 _pkgname=fauxput
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Manage virtual displays on Linux (prebuilt binary)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install='fauxput.install'
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('e707538fb96f7a3ea9bd3b0671f6016c2fd272868dadc083d1d9e3848db5aa1e')
+sha256sums=('68df25d9fd8a18a857304f259a6274d59f79b7884ca213fbaafe852a1c1ace13')
 
 package() {
   cd "$srcdir"
