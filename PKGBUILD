@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='nefercap-bin'
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Screenshots and silent screen recording for Wayland, from one shortcut'
 url='https://github.com/bnema/nefercap'
@@ -14,10 +14,10 @@ depends=('glibc' 'wayland' 'libxkbcommon' 'vulkan-icd-loader' 'vulkan-driver')
 optdepends=('ffmpeg: screen recording (libx264)' 'wl-clipboard: copy screenshots to the clipboard' 'neferwl: hidden-workspace capture, HUD exclusion and capture indicator')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bnema/nefercap/releases/download/v${pkgver}/nefercap_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('9ecd9a6fc0f12ce5f8644c54a282436014d64b8e89bd41d24520287261c46a91')
+sha256sums_aarch64=('0ee08469b78c6647fbd0e0921fd0b477c7e2b52afb5853fcb112fc614dcd6d7f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bnema/nefercap/releases/download/v${pkgver}/nefercap_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3f11f732f4d4d02da84753ff01b1547656d4d13c45264e4c47926e3df4cf3a49')
+sha256sums_x86_64=('5fdca107cb40fadd031a65d8998ff4bc5ffed0eb6974520f22a37427c21411d7')
 
 package() {
   install -Dm755 ./nefercap "${pkgdir}/usr/bin/nefercap"
