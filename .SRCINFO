@@ -1,0 +1,21 @@
+pkgbase = ant-renamer-qt-git
+	pkgdesc = C++/Qt 6 port of Ant Renamer 2.13: batch file renaming (replace, enumerate, case, regex, EXIF, MP3 tags)
+	pkgver = 3.0.0.rc.15.r3.gb5afaec
+	pkgrel = 1
+	url = https://github.com/morfredus/ant-renamer-qt
+	arch = any
+	license = GPL-2.0
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = libglvnd
+	provides = ant-renamer-qt
+	source = git+https://github.com/morfredus/ant-renamer-qt.git
+	source = shared.patch
+	sha256sums = SKIP
+	sha256sums = 5e966bb76eb469f163c54ce8e38a9cc3d9df11d5d7b75012a7dc4867a46d8035
+
+pkgname = ant-renamer-qt-git
