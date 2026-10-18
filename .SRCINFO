@@ -1,7 +1,7 @@
 pkgbase = mahoragaos
-	pkgdesc = An agentic backend that *will* be the best. Free and open source, funded by donations: https://www.buymeacoffee.com/bingusfan360 · https://mediaserver.tail5cfbf6.ts.net/
+	pkgdesc = An agentic backend that *will* be the best. Free and open source, funded by donations: https://www.buymeacoffee.com/bingusfan360
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Bingusfan360/MahoragaOS
 	arch = any
 	license = AGPL-3.0-or-later

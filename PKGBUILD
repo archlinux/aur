@@ -4,7 +4,6 @@
 # entirely by donations — every contribution goes directly to keeping the
 # project running.
 # Donate (hosted, one-tap): https://www.buymeacoffee.com/bingusfan360
-# Bank transfer / card / PayPal / crypto: https://mediaserver.tail5cfbf6.ts.net/
 #
 # NOTE (BIN-949 / MOSS naming v1): the AUR package name stays `mahoragaos`
 # for this release. The upstream app is now `moss`; the wheel still ships a
@@ -12,8 +11,8 @@
 # package to `moss` is a Tier-3 board gate and is tracked separately.
 pkgname=mahoragaos
 pkgver=0.7.2
-pkgrel=1
-pkgdesc="An agentic backend that *will* be the best. Free and open source, funded by donations: https://www.buymeacoffee.com/bingusfan360 · https://mediaserver.tail5cfbf6.ts.net/"
+pkgrel=2
+pkgdesc="An agentic backend that *will* be the best. Free and open source, funded by donations: https://www.buymeacoffee.com/bingusfan360"
 arch=('any')
 url="https://gitlab.com/Bingusfan360/MahoragaOS"
 license=('AGPL-3.0-or-later')
