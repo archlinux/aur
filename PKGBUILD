@@ -1,6 +1,6 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (stable release, use 'neoarch-git' for latest dev builds)"
 arch=('any')
