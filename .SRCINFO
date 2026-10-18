@@ -1,6 +1,6 @@
 pkgbase = vitis-fs
 	pkgdesc = Semantic file system
-	pkgver = 0.32.1
+	pkgver = 0.33.0
 	pkgrel = 0
 	url = https://gitlab.com/os-18/vitis
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = vitis-fs
 	depends = amalthea-ldc2
 	depends = oxfuse-ldc2
 	depends = fuse3
-	source = vitis-0.32.1.tar.gz::https://gitlab.com/os-18/vitis/-/archive/v0.32.1/vitis-v0.32.1.tar.gz
-	sha256sums = afd9eed8a009980bcac969c3b2b5590502487471c61619e7974a6d0df93b4a42
+	source = vitis-0.33.0.tar.gz::https://gitlab.com/os-18/vitis/-/archive/v0.33.0/vitis-v0.33.0.tar.gz
+	sha256sums = 87fabb8f9eacb7f492b50f90e2bac7bf54b66c95ca3e52a973092d797ab0dc47
 
 pkgname = vitis-fs
