@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=goose-cli-bin
-pkgver=1.53.0
+pkgver=1.55.0
 pkgrel=1
 pkgdesc='An open source, extensible AI agent that goes beyond code suggestions (CLI)'
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=(
 	"goose-cli-${pkgver}.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose-${CARCH}-unknown-linux-gnu.tar.bz2"
 	'LICENSE::https://raw.githubusercontent.com/aaif-goose/goose/refs/heads/main/LICENSE'
 )
-b2sums=('f97cc036ecde3ef8659aa97cd927d839eff86c8289e254bfe6bed01a004d5b5de0f09b585106100900e68a068e78fe8cc0ff6a7514471e3dc39760f694013bc7'
-	'a29664104e1ee73ca0aee1d633e9095d92a57c92787f8d8740bdb7211ba3205782ed8677f539bdb8cae3dd75a3694be3132e185fa3fc4b3f401e1f88eb776101')
+b2sums=('86e015c5150c7f723cff140939672eeaf184c212c9da5bb00f5d0f0452a1ca14ac5828848eab742813a4f1abe15092bef0037d32abf33658f9b67979fd017a37'
+        'a29664104e1ee73ca0aee1d633e9095d92a57c92787f8d8740bdb7211ba3205782ed8677f539bdb8cae3dd75a3694be3132e185fa3fc4b3f401e1f88eb776101')
 
 build() { :; }
 
