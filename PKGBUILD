@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=dorcha-inc
+_pkgauthor=harvard-cns
 _pkgname=orla
 pkgname=${_pkgname}-bin
 pkgdesc="A dead-simple unix tool for lightweight open-source local agents"
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('74f95212a528c534ee5d6c47c3d806ff2966026f68e3f9dd642b4eb76f6e196c')
-sha256sums_aarch64=('218c428741c56a5fd16dfc0755d979e80431493906b8ee8d963cb5b1b4bf6aeb')
+sha256sums_x86_64=('210d7f177a9393b9e2a48b21c8d5f9d9e0c5dc168c854aee4192fec2ffd2f877')
+sha256sums_aarch64=('717ec7af19ac8dbc4362fb2136194982cbe8ad1c50ed41b6ae65d8806e2fe759')
 
 
 package() {
