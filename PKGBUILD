@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=suricata-exporter
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A Prometheus Exporter for Suricata using the unix socket"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('suricata: IDS engine to monitor')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/corelight/suricata_exporter/archive/refs/tags/v${pkgver}.tar.gz"
         "suricata_exporter.service")
-sha256sums=('304b43d61051db6f9aa8f58d21ffa65fc78a34ae5f63ff4efc60b2cb71e0f04c'
+sha256sums=('fddb078ae94b014a6f6b303c2d95e1c7e46d6094a3bbd885debeb0f29b4e319b'
             '8390f2d280b47dcd41e862daa7a83c92416e0e9c22d3a7efee4036cf790b9b54')
 
 build() {

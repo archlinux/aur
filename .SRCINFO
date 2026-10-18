@@ -1,6 +1,6 @@
 pkgbase = suricata-exporter
 	pkgdesc = A Prometheus Exporter for Suricata using the unix socket
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/corelight/suricata_exporter
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = suricata-exporter
 	makedepends = go
 	depends = glibc
 	optdepends = suricata: IDS engine to monitor
-	source = suricata-exporter-0.6.0.tar.gz::https://github.com/corelight/suricata_exporter/archive/refs/tags/v0.6.0.tar.gz
+	source = suricata-exporter-0.6.2.tar.gz::https://github.com/corelight/suricata_exporter/archive/refs/tags/v0.6.2.tar.gz
 	source = suricata_exporter.service
-	sha256sums = 304b43d61051db6f9aa8f58d21ffa65fc78a34ae5f63ff4efc60b2cb71e0f04c
+	sha256sums = fddb078ae94b014a6f6b303c2d95e1c7e46d6094a3bbd885debeb0f29b4e319b
 	sha256sums = 8390f2d280b47dcd41e862daa7a83c92416e0e9c22d3a7efee4036cf790b9b54
 
 pkgname = suricata-exporter
