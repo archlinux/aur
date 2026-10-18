@@ -1,13 +1,13 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui-git
-pkgver=r178.459f7a2
+pkgver=r234.g04e7fa2e13d3
 pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends (git build)"
 arch=('x86_64')
 url="https://github.com/SaintFore/pomotui"
 license=('MIT')
 depends=('gcc-libs' 'sqlite')
-makedepends=('cargo' 'git')
+makedepends=('rustup' 'git')
 provides=('pomotui')
 conflicts=('pomotui')
 optdepends=(
@@ -21,33 +21,35 @@ install=pomotui.install
 
 pkgver() {
     cd pomotui
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=12 HEAD)"
 }
 
 prepare() {
     cd pomotui
     # Keep the packaged hook in step with the application, even in an AUR cache.
     cp packaging/aur/pomotui.install "$startdir/pomotui.install"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    rustup toolchain install 1.96.1 --profile minimal
+    rustup target add --toolchain 1.96.1 x86_64-unknown-linux-gnu
+    cargo +1.96.1 fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
     cd pomotui
-    cargo build --frozen --release --workspace
+    cargo +1.96.1 build --frozen --release --workspace --target x86_64-unknown-linux-gnu
 }
 
 check() {
     cd pomotui
-    cargo test --frozen --workspace --all-targets --all-features
+    cargo +1.96.1 test --frozen --workspace --all-targets --all-features
 }
 
 package() {
     cd pomotui
 
     # Binaries
-    install -Dm755 "target/release/pomotui"        "${pkgdir}/usr/bin/pomotui"
-    install -Dm755 "target/release/pomotui-tui"     "${pkgdir}/usr/bin/pomotui-tui"
-    install -Dm755 "target/release/pomotui-service"  "${pkgdir}/usr/bin/pomotui-service"
+    install -Dm755 "target/x86_64-unknown-linux-gnu/release/pomotui"        "${pkgdir}/usr/bin/pomotui"
+    install -Dm755 "target/x86_64-unknown-linux-gnu/release/pomotui-tui"     "${pkgdir}/usr/bin/pomotui-tui"
+    install -Dm755 "target/x86_64-unknown-linux-gnu/release/pomotui-service"  "${pkgdir}/usr/bin/pomotui-service"
 
     # systemd user units — patch binary path for system-wide install
     sed 's|%h/.local/bin/pomotui-service|/usr/bin/pomotui-service|' \
