@@ -1,0 +1,45 @@
+pkgname=tamery-bin
+pkgver=0.99.0
+pkgrel=1
+pkgdesc="AI-powered tool for working with Postgres, MySQL, MSSQL, ClickHouse and SQLite."
+arch=('x86_64')
+url="https://tamery.app"
+license=('AGPL-3.0-or-later')
+depends=(
+  'alsa-lib'
+  'at-spi2-core'
+  'cairo'
+  'dbus'
+  'expat'
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
+  'systemd-libs'
+)
+provides=('tamery')
+conflicts=('tamery')
+options=('!strip' '!emptydirs')
+source_x86_64=("tamery-${pkgver}.deb::https://download.tamery.app/versions/${pkgver}/linux/deb/x64")
+sha256sums_x86_64=('267d0cbe76b623d13d9d4c15203f4362ae30ba7cff4b0a0cdfd78bc9b1d52f3e')
+
+package() {
+  bsdtar -xf data.tar.xz -C "${pkgdir}"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s /opt/Tamery/tamery-desktop "${pkgdir}/usr/bin/tamery"
+}
