@@ -1,20 +1,24 @@
 pkgbase = globus-cli
 	pkgdesc = A command line interface to Globus
-	pkgver = 3.38.0
+	pkgver = 3.43.0
 	pkgrel = 1
 	url = https://github.com/globus/globus-cli
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-responses
+	checkdepends = python-ruamel-yaml
 	makedepends = python-build
+	makedepends = python-flit-core
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-globus-sdk=3.65.0
-	depends = python-click<9
-	depends = python-jmespath=1.0.1
-	depends = python-packaging>=17.0
+	depends = python
+	depends = python-globus-sdk
+	depends = python-click
+	depends = python-jmespath
+	depends = python-packaging
 	depends = python-requests
-	provides = globus-cli
-	source = globus-cli-3.38.0.tar.gz::https://github.com/globus/globus-cli/archive/3.38.0.tar.gz
-	sha256sums = da2815c83a002189d6cba69e13f170b55fdacebbb354f7bd87266f4105aefa69
+	source = globus-cli-3.43.0.tar.gz::https://github.com/globus/globus-cli/archive/3.43.0.tar.gz
+	sha256sums = ee2c9efa7e45fcbcdf22538c32e5f014102bc1dc36859b4a41702f9b541af96b
 
 pkgname = globus-cli

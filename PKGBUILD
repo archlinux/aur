@@ -1,38 +1,50 @@
-# Maintainer: pychuang at pm dot me
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: pychuang at pm dot me
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.38.0
+pkgver=3.43.0
 pkgrel=1
 pkgdesc='A command line interface to Globus'
-arch=('any')
+arch=(any)
 url='https://github.com/globus/globus-cli'
-license=('Apache-2.0')
+license=(Apache-2.0)
 depends=(
-    'python-globus-sdk=3.65.0'
-    'python-click<9'
-    'python-jmespath=1.0.1'
-    'python-packaging>=17.0'
-    'python-requests'
+    python
+    python-globus-sdk
+    python-click
+    python-jmespath
+    python-packaging
+    python-requests
 )
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-wheel'
+    python-build
+    python-flit-core
+    python-installer
+    python-wheel
 )
-provides=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('da2815c83a002189d6cba69e13f170b55fdacebbb354f7bd87266f4105aefa69')
+checkdepends=(
+    python-pytest
+    python-responses
+    python-ruamel-yaml
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('ee2c9efa7e45fcbcdf22538c32e5f014102bc1dc36859b4a41702f9b541af96b')
 
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd "$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "$pkgname-$pkgver"
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -P -m pytest -o addopts="" -k "not test_list_runs_filter_by_flow_id and not test_list_runs_paginated_response"
+}
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd "$pkgname-$pkgver"
     python -m installer --destdir "$pkgdir" dist/*.whl
 }
