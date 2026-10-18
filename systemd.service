@@ -54,7 +54,7 @@ ProtectKernelModules=true
 ProtectControlGroups=true
 RestrictSUIDSGID=true
 RestrictRealtime=true
-ReadWritePaths=/data/rustfs /var/log/rustfs
+ReadWritePaths=/var/lib/rustfs /var/log/rustfs
 
 [Install]
 WantedBy=multi-user.target

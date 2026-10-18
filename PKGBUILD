@@ -2,7 +2,7 @@
 
 pkgname=rustfs-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="🚀 High-performance distributed object storage for MinIO alternative."
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustfs/rustfs"
@@ -19,10 +19,10 @@ options=('!strip' '!debug')
 
 source_x86_64=("rustfs-${pkgver//_/-}-x86_64.zip::https://github.com/rustfs/rustfs/releases/download/${pkgver//_/-}/rustfs-linux-x86_64-musl-v${pkgver//_/-}.zip")
 source_aarch64=("rustfs-${pkgver//_/-}-aarch64.zip::https://github.com/rustfs/rustfs/releases/download/${pkgver//_/-}/rustfs-linux-aarch64-musl-v${pkgver//_/-}.zip")
-sha256sums=('4a5c680acc023be08fd81b034a6febc13fb05bb1dc54c669984a61298d61ba49'
+sha256sums=('5c83598a815b65c882c4152f8f0920a463dcbcced40b7480f8ef1507c4cf5da6'
             '124262e1e75d7ed0d6e2eda762a809a3c75ed43a771c84302e61ace0eacb5adb'
             '981bebef4a2e535766f9385e508d8f241c694fe14ee1ee1a397c71d016c25c55'
-            '87ed9c7ed056a0d901d0ec4a22b6a14496c47e2fba10bcd82bf6a1c61d9749bc')
+            '7134c0135d5a68aeb6e6d3491c2db7141163f219acf7430bdd99014280f7eb66')
 sha256sums_x86_64=('29a083f156fe1a246f0336afe16ff77fffe587628e97339448d8f4fba38dba54')
 sha256sums_aarch64=('28e973c6e630dfa1c7a6d7af86b360e598a34c476d34a0dcbcfbeb70b1f06747')
 
