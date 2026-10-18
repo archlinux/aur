@@ -2,7 +2,7 @@
 # 打包说明见上游 docs/build_aur.md
 
 pkgname=micdn
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Beangle minimal CDN (static, Maven, npm, blob, www)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   "micdn.sysusers"
   "micdn.tmpfiles"
 )
-sha256sums=('SKIP'
+sha256sums=('488c9aa33c37fb62ff840cfd5bad2cd7359c189a8f7bbafd978fb3e27309ff6f'
             'c9af15c01fe7b5f0ee42ccc00e41c056c88525b06e90160716d0fd905fc4cfad'
             'abbeb4d5fc1c271a950d1bd9f8e316e0d696931a9cebbb56651186cc8ef148c6'
             'd80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f')

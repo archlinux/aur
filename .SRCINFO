@@ -1,6 +1,6 @@
 pkgbase = micdn
 	pkgdesc = Beangle minimal CDN (static, Maven, npm, blob, www)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/beangle/micdn
 	install = micdn.install
@@ -13,11 +13,11 @@ pkgbase = micdn
 	makedepends = openssl
 	depends = curl
 	optdepends = systemd: service unit micdn.service
-	source = git+https://github.com/beangle/micdn.git#tag=v0.4.0
+	source = git+https://github.com/beangle/micdn.git#tag=v0.4.1
 	source = micdn.install
 	source = micdn.sysusers
 	source = micdn.tmpfiles
-	sha256sums = SKIP
+	sha256sums = 488c9aa33c37fb62ff840cfd5bad2cd7359c189a8f7bbafd978fb3e27309ff6f
 	sha256sums = c9af15c01fe7b5f0ee42ccc00e41c056c88525b06e90160716d0fd905fc4cfad
 	sha256sums = abbeb4d5fc1c271a950d1bd9f8e316e0d696931a9cebbb56651186cc8ef148c6
 	sha256sums = d80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f
