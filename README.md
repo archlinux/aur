@@ -56,13 +56,61 @@ bridge override has been updated and tested for the next kernel series.
 The complete tested platform is:
 
 - `linux` and `linux-headers`: `>=7.2` and `<7.3`
-- `wireplumber` and `libwireplumber`: `0.5.15`
+- `wireplumber` and `libwireplumber`: `0.5.18` (`0.5.15` remains a known-good fallback)
 
 Pacman reports the Linux constraints directly if dependency resolution fails.
 WirePlumber remains optional so the V4L2 relay can be installed without a
 PipeWire camera session manager, but versions 0.5.16 and 0.5.17 are known not
-to export this camera correctly. Pacman displays the tested WirePlumber version
-as an unsatisfied optional dependency when another version is installed.
+to export this camera correctly. Version 0.5.18 fixes the stalled asynchronous
+transition when the raw IPU7 V4L2 device is disabled; camera frame delivery and
+microphone capture have been verified with the extracted Arch packages. Pacman
+displays the tested WirePlumber version as an unsatisfied optional dependency
+when another version is installed.
+
+### Test WirePlumber 0.5.18 Before Upgrading
+
+Run from a normal user terminal, with camera applications closed:
+
+```bash
+bash check-platform-upgrade.sh test
+```
+
+The helper preserves the project package archives and exact installed versions
+of Linux, headers, WirePlumber, and camera-stack packages under `rollback/`.
+Missing official rollback packages are fetched from the Arch Linux Archive;
+missing custom package archives stop the test before the service is changed.
+It also saves pacman configuration, package versions, WirePlumber state, and
+checksums.
+
+WirePlumber 0.5.18 and its matching library are downloaded, signature-checked
+against the installed Arch keyring, and extracted without installing packages.
+A temporary user-service override runs the new binary, modules, and scripts
+with the existing GPU settings and a private copy of WirePlumber state. Audio
+and camera sessions are interrupted briefly when the service restarts.
+
+Test browser camera capture, playback, and microphones while the helper waits.
+Press Enter to restore the installed service. Exit and interrupt handlers also
+restore it; the helper saves status output and service logs alongside the
+rollback packages. Review the results before changing the tested-version pin.
+
+To download and check the new binaries without restarting a service:
+
+```bash
+bash check-platform-upgrade.sh stage
+```
+
+The helper does not install packages or change pacman's `IgnorePkg` setting.
+
+To compile the three camera modules against extracted Linux 7.2.9 headers:
+
+```bash
+bash check-platform-upgrade.sh kernel-check
+```
+
+This uses private copies of the installed module sources and does not install
+or load modules. The IPU bridge override, Intel CVS driver, and V4L2 loopback
+driver have passed this build check. Kernel runtime validation requires booting
+the updated kernel.
 
 ## Licensing
 
@@ -117,6 +165,7 @@ releases it when the last client closes.
 ## Files
 
 - `PKGBUILD`: split Arch package build definition.
+- `check-platform-upgrade.sh`: preserves rollback archives and tests extracted platform packages.
 - `libcamera-ipu7-ov08x40.patch`: libcamera mode-selection and input hardening.
 - `libcamera-process-reap.patch`: bounded IPA proxy child cleanup.
 - `libcamera-configuration.yaml`: keeps standalone tools on CPU SoftISP.

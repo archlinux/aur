@@ -8,7 +8,7 @@ pkgname=(
   v4l2-relayd-ipu7-ov08x40
 )
 pkgver=0.7.2
-pkgrel=3.14
+pkgrel=3.15
 pkgdesc="Patched libcamera for Intel IPU7 with OV08X40"
 arch=(x86_64)
 url="https://libcamera.org/"
@@ -194,7 +194,7 @@ package_libcamera-ipu7-ov08x40() {
     'gst-plugin-libcamera: GStreamer plugin'
     'libcamera-tools: applications'
     'pipewire-libcamera: PipeWire camera integration'
-    'wireplumber=0.5.15: tested PipeWire camera export; requires matching libwireplumber'
+    'wireplumber=0.5.18: tested PipeWire camera export; requires matching libwireplumber'
   )
   provides=(
     libcamera="$pkgver"

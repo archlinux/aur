@@ -9,3 +9,4 @@ v4l2-relayd/
 libcamera-ipu7-ov08x40-debug/
 libcamera-ipu7-ov08x40-ipa-debug/
 /ipu-bridge-*.c
+/rollback/
