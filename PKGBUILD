@@ -1,7 +1,7 @@
 # Maintainer: FlowOSS <https://github.com/FlowOSS>
 pkgname=flowshot-git
 _pkgname=flowshot
-pkgver=0.4.1.r0.g924df7b
+pkgver=0.4.2.r0.gc962b11
 pkgrel=1
 pkgdesc='Screenshot and annotation tool for Wayland and X11 with mixed-DPI support'
 arch=('x86_64')
