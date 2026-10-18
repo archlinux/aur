@@ -13,7 +13,7 @@ sha512sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
