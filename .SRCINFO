@@ -11,7 +11,7 @@ pkgbase = kinopoisk-tv
 	source = kinopoisk-tv.desktop
 	source = kinopoisk-tv.png
 	sha256sums = 7a0b8d9fdadb5af91309d37135ae857f120beeed0e19d528518c446088ccebe8
-	sha256sums = 18d665161251e82ff99299bef9c4b11693fc967401f8198f5ae7cc4f7932d59a
+	sha256sums = 3275045ea877c67b0bca848b185fa9ac4fc12226fbdd4ed849e7b40b8b746b1f
 	sha256sums = dd9b169b5e95ffb18ef43bf92ff50d20d5e6c26c843709ab5145f6a412bb7991
 	sha256sums = a75a44afe6aa3313ad2ba385ac8dae28277ed7b9b73547c4a705218060a2ca81
 
