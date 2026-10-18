@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 install=engined.install
 # The release workflow builds this tarball once; nothing is built here.
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('10cfbfa9eaf94d1bf885780a90d3396099a7b9a5cd604f7d811c196e98784663')
+sha256sums=('77439d9647e92f0e7a23131306235f1fe41f3f168765c06deb9dc260ae9c2d4a')
 
 package() {
   cd "$pkgname-$pkgver"
