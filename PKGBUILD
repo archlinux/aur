@@ -5,12 +5,12 @@
 
 pkgname=glew1.5
 pkgver=1.5.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Legacy version of the OpenGL Extension Wrangler Library"
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/glew/"
 license=(BSD MIT GPL)
-depends=(glew)
+depends=(glew glu libxi libxmu)
 source=(http://downloads.sourceforge.net/glew/glew-$pkgver.tgz)
 md5sums=('342c8dc64fb9daa6af245b132e086bdd')
 
