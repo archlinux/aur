@@ -19,8 +19,8 @@ conflicts=('kiekje')
 options=('!strip' '!debug')
 source_x86_64=("kiekje-$_tag-x86_64-linux.tar.gz::$url/releases/download/v$_tag/kiekje-$_tag-x86_64-linux.tar.gz")
 source_aarch64=("kiekje-$_tag-aarch64-linux.tar.gz::$url/releases/download/v$_tag/kiekje-$_tag-aarch64-linux.tar.gz")
-sha256sums_x86_64=('47e929b31e05a0d22602bdb2a2f44614caf16a110ba294116abefc1afc4dd908')
-sha256sums_aarch64=('ce63723090b3a35c13bda3590d40f5bb726fef51ceedf1684ad1803fa97faa10')
+sha256sums_x86_64=('6b4df10a4227c964b9c77e53fdcd81a72ab66d456fc81d9e5fd5c164657ae1e5')
+sha256sums_aarch64=('e22b7acfd6fab353dbd42511670a79e06450febe825fa9c55c24a63f989c3eb4')
 
 package() {
     cd "kiekje-$_tag-$CARCH-linux"
