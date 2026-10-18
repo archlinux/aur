@@ -1,0 +1,18 @@
+pkgbase = negpy-bin
+	pkgdesc = Tool for processing film negatives
+	pkgver = 0.65.0
+	pkgrel = 1
+	url = https://github.com/marcinz606/NegPy
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = hicolor-icon-theme
+	optdepends = sane: film scanners with SANE support
+	optdepends = libgphoto2: tethered camera capture
+	optdepends = libusb: USB transport for scanners
+	provides = negpy
+	options = !strip
+	options = !debug
+	source = NegPy-0.65.0-x86_64.AppImage::https://github.com/marcinz606/NegPy/releases/download/0.65.0/NegPy-0.65.0-x86_64.AppImage
+	sha256sums = 5f391b9ad66815a891f70054a7a2b89e3d0f2b22a8777efaec8e2008fbedc043
+
+pkgname = negpy-bin
