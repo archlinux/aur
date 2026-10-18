@@ -1,8 +1,8 @@
 # Maintainer: Liviu Nicoara <lnicoara at thinkoid dot org>
 
 pkgname=edgcpp-git
-pkgver=r62403.f0e30b6
-pkgrel=4
+pkgver=r62435.3c62b61
+pkgrel=1
 pkgdesc="The EDG C/C++ front end with its C-generating back end (eccp), prelinker and runtime"
 arch=('x86_64' 'aarch64')
 url="https://edgcpp.org"
