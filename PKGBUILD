@@ -2,8 +2,8 @@
 
 pkgname='zulu-17-fx-bin'
 _javaver=17
-pkgver="$_javaver.0.20"
-_zuluver="$_javaver.68.17"
+pkgver="$_javaver.0.20.1"
+_zuluver="$_javaver.68.203"
 pkgrel=1
 pkgdesc='Azul Zulu Builds of OpenJDK With OpenJFX are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('x86_64')
@@ -39,7 +39,7 @@ backup=("etc/${pkgname%-bin}/logging.properties"
         "etc/${pkgname%-bin}/sound.properties")
 install="$pkgname.install"
 source=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jdk$pkgver-linux_x64.tar.gz")
-sha256sums=('fb2f3c814957ba33cc8535ff8b0cf2d4b7084dd69b56c7f1e311951130c3243f')
+sha256sums=('d9aee66304a647e0bac7f732624ffac2b0c52962389291c08eacf00bc3779443')
 
 # Based on java17-openjdk package
 # https://gitlab.archlinux.org/archlinux/packaging/packages/java17-openjdk/-/blob/582950f9492887cb1ff241e623067fd1f02dd35d/PKGBUILD#L258
