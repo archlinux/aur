@@ -2,7 +2,7 @@
 pkgname=r-quick-share
 _pkgname=rquickshare
 pkgver=0.11.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Martichou/rquickshare"
@@ -16,6 +16,7 @@ depends=(
 makedepends=(
   'cargo'
   # 'cargo-tauri'
+  'nodejs'
   'pnpm'
   'protobuf'
 )
