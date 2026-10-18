@@ -3,15 +3,15 @@
 
 pkgname=python-aiohttp-sse
 _pkgname=aiohttp-sse
-pkgver=2.2.0
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 pkgdesc="Server-sent events support for aiohttp"
 arch=('x86_64')
 url="https://github.com/aio-libs/aiohttp-sse"
 license=('Apache-2.0')
 depends=('python' 'python-aiohttp')
 optdepends=()
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-aiohttp' 'python-pytest-asyncio' 'python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
