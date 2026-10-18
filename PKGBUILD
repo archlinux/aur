@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=soldr
-pkgver=0.9.37
+pkgver=0.9.38
 pkgrel=1
 pkgdesc='leverage crgx and zccache to run Rust tools with cached results'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(cargo)
 checkdepends=(clang)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('5f0926d19f0e9c9f9fe3235fcc6b5b34a115f02f43184442390116eefc9d889b')
+sha256sums=('f31319c93d11718bc3062b59936e7b182abc98cf1141b617e41d38fe8c165dd0')
 
 _srcenv() {
 	cd "$_archive"
