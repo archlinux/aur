@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-electron
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
@@ -27,10 +27,10 @@ pkgbase = mihomo-party-electron
 	conflicts = mihomo-party-bin
 	conflicts = mihomo-party-electron-bin
 	options = !lto
-	source = mihomo-party-2.0.3.tar.gz::https://github.com/mihomo-party-org/mihomo-party/archive/refs/tags/v2.0.3.tar.gz
+	source = mihomo-party-2.0.4.tar.gz::https://github.com/mihomo-party-org/mihomo-party/archive/refs/tags/v2.0.4.tar.gz
 	source = mihomo-party.desktop
 	source = mihomo-party.sh
-	sha256sums = 20dc60007bc56ecf530507bfeae4f4884bd608d91238c7d935d5ef32bcf14205
+	sha256sums = 02c2ff3ebc7e5b0dcf1f5e6566eddd2909702f567de0f46dacc6172551a8d870
 	sha256sums = 96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844
 	sha256sums = 87fddbcd4a4cc7bda22ec4cadff0040e54395bb13184ee4688b58788c1fa7180
 
