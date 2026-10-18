@@ -1,0 +1,25 @@
+pkgbase = clipforge
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/ivanharvard/clipforge
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = qt6-base
+	options = !lto
+	source = clipforge-1.3.1.tar.gz::https://github.com/ivanharvard/clipforge/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = f5c62d3682b8182bae010f612a9d1fd0a5a84f75b5d04a4c00465a19c553e72f
+
+pkgname = clipforge
+	pkgdesc = Quick single-clip video trimmer
+	depends = ffmpeg
+	depends = mpv
+	conflicts = clipforge-kde
+
+pkgname = clipforge-kde
+	pkgdesc = Quick single-clip video trimmer, with native KDE Application Style controls
+	depends = ffmpeg
+	depends = mpv
+	depends = qt6-base
+	provides = clipforge
+	conflicts = clipforge
