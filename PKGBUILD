@@ -3,13 +3,13 @@
 #
 # 官方源码自 2026-09 已正式合入 Linux 支持（PR #90）：
 # 1. 源码直接使用官方仓库（qingjian-team/qingjian），全树构建。
-# 2. Rust Server 官方二进制名为 qingjian-linux-server（打包提供 qingjian-server 软链接兼容）。
-# 3. 数据包使用官方 release 发布的版本化 tag（data-v3），sha256 与官方 data.lock 一致。
+# 2. Rust Server 官方二进制名为 qingjian-linux-server（打包提供 qingjian-server 软链接兼容），并提供 qingjian-settings 设置程序。
+# 3. 数据包使用官方 release 发布的版本化 tag（data-v7），sha256 与官方 data.lock 一致，内置含章神经整句模型。
 # 4. 资源文件安装至 /usr/share/qingjian/resources/，匹配官方 paths.rs 自动发现机制。
 
 pkgname=fcitx5-qingjian-git
 _pkgname=fcitx5-qingjian
-pkgver=0.1.5.beta.1.r2.gc08ae57
+pkgver=0.2.1.r109.gc97ff2b6
 pkgrel=1
 pkgdesc="青简输入法 Linux/Fcitx5 官方支持版（Rust Server + Fcitx5 插件 + 离线数据模型）"
 arch=('x86_64')
@@ -23,14 +23,12 @@ install="${_pkgname}.install"
 
 source=(
   "qingjian::git+https://github.com/qingjian-team/qingjian.git"
-  "qingjian-data.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v3/qingjian-data.tar.gz"
-  "model.qjm::https://github.com/qingjian-team/qingjian/releases/download/data-v2/model.qjm"
+  "qingjian-data-v7.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v7/qingjian-data.tar.gz"
   "qingjian-server.service"
 )
-noextract=("qingjian-data.tar.gz")
+noextract=("qingjian-data-v7.tar.gz")
 sha256sums=('SKIP'
-            '42ad08fb2fe9f497c0ab191c120f05386f6adcc9d713c3283200aaed690e62f3'
-            'eed5bd0bda0c7bd8b43d1acb2dc4678d4bbe295bd47b2b0d4eeace0af9daff4d'
+            'e259f8bc2a5456c92484c5d4362ca56b3e46b3d2e1a0d463788091a039d79e40'
             '819c81dfaa4308ea9c3a84b16bcee5672ebc4d1c737a676cc42367ea929e4bd6')
 
 pkgver() {
@@ -48,8 +46,8 @@ prepare() {
 build() {
   cd "${srcdir}/qingjian"
 
-  # 1. 编译 Linux 后端 Server
-  cargo build --frozen --release -p qingjian-linux-server
+  # 1. 编译 Linux 后端 Server 与设置程序
+  cargo build --frozen --release -p qingjian-linux-server -p qingjian-settings
 
   # 2. 编译 Fcitx5 C++ 插件 (qingjian.so)
   cmake -B "${srcdir}/build-fcitx5" -S apps/linux/fcitx5 \
@@ -62,24 +60,22 @@ build() {
 package() {
   cd "${srcdir}/qingjian"
 
-  # 1. 安装 Rust Server 进程（保留 qingjian-server 软链接以保证兼容性）
+  # 1. 安装 Rust Server 与设置程序（保留 qingjian-server 软链接以保证兼容性）
   install -Dm755 "target/release/qingjian-linux-server" "${pkgdir}/usr/bin/qingjian-linux-server"
   ln -sf qingjian-linux-server "${pkgdir}/usr/bin/qingjian-server"
+  install -Dm755 "target/release/qingjian-settings" "${pkgdir}/usr/bin/qingjian-settings"
 
   # 2. 安装 Fcitx5 插件 (qingjian.so 与 qingjian.conf)
   DESTDIR="${pkgdir}" cmake --install "${srcdir}/build-fcitx5"
 
-  # 3. 安装资源（词库、整句模型、辅助资源）
+  # 3. 安装资源（词库、含章整句模型、辅助资源）
   # 官方 paths.rs 优先定位 /usr/share/qingjian/resources/
   local resdir="${pkgdir}/usr/share/qingjian/resources"
   install -dm755 "${resdir}"
 
-  # 解包词库并清理 macOS 隐藏元数据
-  bsdtar --no-xattrs --no-mac-metadata -xzf "${srcdir}/qingjian-data.tar.gz" -C "${resdir}"
-  find "${resdir}/data/generated" -name '._*' -delete
-
-  # 安装整句模型文件
-  install -Dm644 "${srcdir}/model.qjm" "${resdir}/data/model/model.qjm"
+  # 解包词库和模型数据并清理 macOS 隐藏元数据
+  bsdtar --no-xattrs --no-mac-metadata -xzf "${srcdir}/qingjian-data-v7.tar.gz" -C "${resdir}"
+  find "${resdir}/data" -name '._*' -delete
 
   # 复制辅助资源（表情、等级词典等）
   cp -r assets "${resdir}"
@@ -88,8 +84,17 @@ package() {
   ln -sf resources/data "${pkgdir}/usr/share/qingjian/data"
   ln -sf resources/assets "${pkgdir}/usr/share/qingjian/assets"
 
-  # 安装桌面图标
-  install -Dm644 "assets/icon/logo.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/qingjian.png"
+  # 安装桌面图标（各标准尺寸）
+  for size in 16 22 24 32 48 64 128 256; do
+    if [[ -f "assets/icon/linux/hicolor/${size}x${size}/apps/qingjian.png" ]]; then
+      install -Dm644 "assets/icon/linux/hicolor/${size}x${size}/apps/qingjian.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/qingjian.png"
+    fi
+  done
+
+  # 安装桌面应用入口（设置程序）
+  install -Dm644 apps/settings/linux/qingjian-settings.desktop \
+    "${pkgdir}/usr/share/applications/qingjian-settings.desktop"
 
   # 4. 安装 Systemd User 守护服务
   install -Dm644 "${srcdir}/qingjian-server.service" \
@@ -98,5 +103,7 @@ package() {
   # 5. 安装 License 许可协议
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 assets/stroke/LICENSE-CNS11643.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CNS11643.txt"
 }
 
