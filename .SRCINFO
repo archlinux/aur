@@ -1,0 +1,17 @@
+pkgbase = therapist
+	pkgdesc = A blazingly fast terminal log viewer: open multi-GB logs at once, move with vim keys, and narrow them down with cascading grep tabs, search, bookmarks and highlights
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/M-Komorek/therapist
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = thr
+	conflicts = therapist
+	source = therapist-0.1.1.crate::https://crates.io/api/v1/crates/therapist/0.1.1/download
+	sha256sums = f96734a6f547c30919997c500fd7e980f4ed0bd952b053990a832abf128ef8e2
+
+pkgname = therapist
