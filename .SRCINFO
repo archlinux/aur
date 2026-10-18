@@ -1,0 +1,25 @@
+pkgbase = arcanechat-tui
+	pkgdesc = ArcaneChat (Delta Chat) client for the command line (formerly deltachat-cursed)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/ArcaneChat/arcanechat-tui
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm>=8
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-deltachat2
+	depends = python-urwid
+	depends = python-urwid_readline
+	depends = python-appdirs
+	depends = deltachat-rpc-server
+	provides = deltachat-cursed
+	conflicts = deltachat-cursed
+	replaces = deltachat-cursed
+	source = https://files.pythonhosted.org/packages/source/a/arcanechat-tui/arcanechat_tui-0.12.0.tar.gz
+	sha256sums = bd78452ac05da78885eb1ede7f8b291a447d893a1fb826df7a6f117e6f06bfcd
+
+pkgname = arcanechat-tui
