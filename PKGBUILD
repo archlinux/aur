@@ -1,7 +1,7 @@
 # Maintainer: Deon Spengler <deon@spengler.co.za>
 
 pkgname=akp02d
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Themed system stats display for the Ajazz AKP02 panel, with a live theme editor"
 arch=('any')
@@ -15,7 +15,7 @@ install=akp02d.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/deonspengler/akp02d/archive/refs/tags/v$pkgver.tar.gz"
         "akp02d.service"
         "akp02d-edit.desktop")
-sha256sums=('ee1e9a0915b929715a24e1c4bf6f118f7c231ac93abe0aef6475abc3418818ab'
+sha256sums=('db4a7409ad45eeb5287eb56c7e44f2ac19217de5ee55abcf65688cab00feb2f1'
             'c0a3928970f8289cb652a5e96d39e74717c84f9f71549d8f818d00d9b2db0a9d'
             'c9a5b4839c4b1b21c925010a99c299345b1f66c4ca8493941bb4f3bb3a941c76')
 
