@@ -1,5 +1,5 @@
 pkgname=3dgenstudio-git
-pkgver=r3095871
+pkgver=r74d1890
 pkgrel=1
 pkgdesc="AI image-to-3D model generation studio (Vite UI + Node/Python backend)"
 arch=(x86_64)
