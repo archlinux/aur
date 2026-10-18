@@ -8,14 +8,13 @@ arch=(x86_64)
 url="https://sourceforge.net/projects/jdatestamp/"
 license=(LicenseRef-custom)
 depends=(freetype2 libjpeg9 glibc ttf-dejavu)
-source=("${pkgname}-${pkgver}-src.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
-        jpegtran_binary.patch)
-md5sums=('eaf9075f17780c6ef50f40e0865b28d1'
-         'e0036c42274bf6fd265fec8debd04803')
+source=("${pkgname}-${pkgver}-src.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}-src.tar.gz")
+md5sums=('eaf9075f17780c6ef50f40e0865b28d1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}-src"
-  patch -p2 -i "${srcdir}/jpegtran_binary.patch"
+  # call libjpeg9's jpegtran9 (jdatestamp.c has CRLF line endings, a patch file loses them in git)
+  sed -i 's/"jpegtran -/"jpegtran9 -/' jdatestamp.c
   # fixes for modern gcc (implicit int, missing ctype.h, format-security)
   sed -i 's/^const FILE_PATHS_BLOCK/const int FILE_PATHS_BLOCK/' jdatestamp.c
   sed -i '0,/^#include <stdio.h>/s//#include <stdio.h>\n#include <ctype.h>/' jdatestamp.c

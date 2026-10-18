@@ -10,8 +10,6 @@ pkgbase = jdatestamp
 	depends = glibc
 	depends = ttf-dejavu
 	source = jdatestamp-1.2-src.tar.gz::https://downloads.sourceforge.net/project/jdatestamp/jdatestamp/1.2/jdatestamp-1.2-src.tar.gz
-	source = jpegtran_binary.patch
 	md5sums = eaf9075f17780c6ef50f40e0865b28d1
-	md5sums = e0036c42274bf6fd265fec8debd04803
 
 pkgname = jdatestamp
