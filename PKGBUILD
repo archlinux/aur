@@ -2,13 +2,13 @@
 # Installs the prebuilt Linux binary from the GitHub release (no compiling).
 pkgname=unbloatedtube-bin
 _name=unbloatedtube
-pkgver=0.44.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc='Lightweight, configurable YouTube desktop client: GPUI, embedded mpv, yt-dlp (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/antlis/UnbloatedTube'
 license=('AGPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'wayland'
+depends=('gcc-libs' 'glibc' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libglvnd'
          'vulkan-icd-loader' 'vulkan-driver' 'mpv' 'yt-dlp' 'deno')
 # The package was unbloated-youtube-bin before 0.34.0; that name is now a transitional package
 # that depends on this one (packaging/aur/transitional), so this one must not conflict with it.
@@ -16,7 +16,7 @@ provides=("$_name" 'unbloated-youtube')
 conflicts=("$_name")
 options=('!strip')
 source=("$url/releases/download/v$pkgver/$_name-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('9e61c0557dcc53e70af2235510d8ef42c3d8064086e48b051ff4f9890dc3b058')
+sha256sums=('1a3a6de01f12b3a748bb52e6025bbdfc4aa049e36a38b1509b59f91d3fe4d70c')
 
 package() {
   cd "$_name-$pkgver-x86_64-linux"
