@@ -1,6 +1,6 @@
 pkgbase = carve-rs
 	pkgdesc = Rust parser and HTML renderer for the Carve markup language
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/markup-carve/carve-rs
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = carve-rs
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/markup-carve/carve-rs/archive/refs/tags/0.1.9/carve-rs-0.1.9.tar.gz
-	sha256sums = a7941d7cf45522a4cf1730ee51f9a2843a8ca1567eb67eaa253268ade7f1de8b
+	source = https://github.com/markup-carve/carve-rs/archive/refs/tags/0.1.10/carve-rs-0.1.10.tar.gz
+	sha256sums = 953128768cbac9ed8db76a593bc8a3b5e050ef48d45901a86b4e59f57a81a366
 
 pkgname = carve-rs
 	depends = glibc
