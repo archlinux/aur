@@ -38,13 +38,13 @@ pkgname=(
 	# TODO: the qt theme should, eventually, optionally depend on the seperately packaged gtk irix themes I may package later
 )
 pkgdesc="Modern take on Indigo Magic for Plasma"
-pkgver=r195.2384fae
-pkgrel=2
+pkgver=r196.c561dfe
+pkgrel=1
 _pkgverrel="$pkgver-$pkgrel"
 arch=('any')
 url="https://www.opencode.net/phob1an/irixium"
 licence=('GPL-3.0-only')
-source=("git+${url}")
+source=("git+${url}.git/")
 md5sums=( 'SKIP' )
 
 pkgver() {

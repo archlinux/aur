@@ -1,10 +1,10 @@
 pkgbase = irixium-theme-git
 	pkgdesc = Modern take on Indigo Magic for Plasma
-	pkgver = r195.2384fae
-	pkgrel = 2
+	pkgver = r196.c5d61dfe
+	pkgrel = 1
 	url = https://www.opencode.net/phob1an/irixium
 	arch = any
-	source = git+https://www.opencode.net/phob1an/irixium
+	source = git+https://www.opencode.net/phob1an/irixium.git/
 	md5sums = SKIP
 
 pkgname = irixium-plasma-colorscheme-git
@@ -28,13 +28,13 @@ pkgname = irixium-aurorae-theme-git
 pkgname = plasma6-theme-irixium-git
 	pkgdesc = Modern take on Indigo Magic for Plasma (Global Theme)
 	url = https://www.pling.com/p/2142966
-	depends = irixium-aurorae-theme-git=r195.2384fae-2
-	depends = irixium-plasma-colorscheme-git=r195.2384fae-2
-	depends = irixium-plasma-style-git=r195.2384fae-2
-	depends = irixium-icons-git=r195.2384fae-2
-	depends = irixium-backgrounds-git=r195.2384fae-2
-	depends = sddm-irixium-theme-git=r195.2384fae-2
-	depends = kvantum-theme-irixium-git=r195.2384fae-2
+	depends = irixium-aurorae-theme-git=r196.c5d61dfe-1
+	depends = irixium-plasma-colorscheme-git=r196.c5d61dfe-1
+	depends = irixium-plasma-style-git=r196.c5d61dfe-1
+	depends = irixium-icons-git=r196.c5d61dfe-1
+	depends = irixium-backgrounds-git=r196.c5d61dfe-1
+	depends = sddm-irixium-theme-git=r196.c5d61dfe-1
+	depends = kvantum-theme-irixium-git=r196.c5d61dfe-1
 	provides = plasma6-theme-irixium
 
 pkgname = kvantum-theme-irixium-git
