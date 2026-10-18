@@ -1,7 +1,7 @@
 # Maintainer: Bink
 pkgname=memerist
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="A simple and modern meme editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vani-tty1/memerist"
@@ -22,7 +22,7 @@ makedepends=(
   'ninja'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('19b2f9193629ccb44d2f398f0a5fa1e46dd9dee5cfaf2c3241de5ffc8103571d0ace49e3bea9a328bec08b700cb61a98db79231a752a5cf6810eaca30d3ed157')
+b2sums=('ba7ceddc455100c899b219066584fc83e379456646ae379d9c022ee08608f8aa6997fce27bf03c31409c1e87d377bcd2e2b003e7a400678aaff595ed5885d5a3')
 
 build() {
   cd "${pkgname}-${pkgver}" || exit
