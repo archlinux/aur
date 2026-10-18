@@ -2,7 +2,7 @@
 
 pkgname=trustsight
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
 arch=('any')
 url='https://github.com/emiliano-go/trustsight'
@@ -56,6 +56,11 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  # A stale 'pip install --user' package in ~/.local shadows the system
+  # package for a --system-site-packages venv, so the suite would test the
+  # builder's user install rather than the system python-pygit2 this
+  # PKGBUILD depends on.  Disable the user site so check() is reproducible.
+  export PYTHONNOUSERSITE=1
   rm -rf _test-env
   python -m venv --system-site-packages _test-env
   # Drop the system-installed trustsight so the fresh wheel installs
