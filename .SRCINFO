@@ -2,7 +2,7 @@ pkgbase = naevi-git
 	pkgdesc = Vi-like modal terminal text editor written in ANSI C.
 	pkgver = r18.3a5b92d
 	pkgrel = 1
-	url = https://github.com/defnae/naevi
+	url = https://tarxz.zip/defnae/naevi
 	arch = x86_64
 	license = custom:NPL
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = naevi-git
 	makedepends = coreutils
 	depends = glibc
 	provides = naevi
-	source = naevi-git::git+https://github.com/defnae/naevi
+	source = naevi-git::git+https://tarxz.zip/defnae/naevi
 	sha256sums = SKIP
 
 pkgname = naevi-git
