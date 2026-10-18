@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal LAN discovery that shows its work"
 
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('e0fcc699aa004728ca06767174dda0293d974daaab4adb9160a9d1483b583bcd')
-sha256sums_aarch64=('7cdf9919a945be522ebdd329fedbdb25d95d7a1e7c3469a02cba20f641063b41')
+sha256sums_x86_64=('3e529e529a330332cad11fe41c4371dcba3bc465bb2e8da4cfc4b78d07fda71c')
+sha256sums_aarch64=('9fc2f0c526f83c9850d0ad8a6a4b8ae35a6b9b4edc778511ed2dd320c4e1764b')
 
 
 case ${CARCH} in
