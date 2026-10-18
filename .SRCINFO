@@ -1,0 +1,20 @@
+pkgbase = girpe-v2
+	pkgdesc = Application Electron/React de gestion des feuilles de rencontre FFTT
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://www.fftt.com/deploiements/girpe-v2/#support
+	arch = x86_64
+	makedepends = npm
+	makedepends = 7zip
+	makedepends = asar
+	makedepends = jq
+	provides = girpe-v2
+	options = !strip
+	source = girpe-v2-2.2.3.zip::https://www.fftt.com/deploiements/girpe-v2/downloads/Girpe%20V2-2.2.3.zip
+	source = girpe-v2.desktop
+	source = girpe-v2
+	sha512sums = d122d27b703253c84a9c95b0f9d190e7652454b7d6ccc58842b8d46fe49d025d8ef0ce7f9bc50c53ffca095bbb12aa0feab04df913f81d1b9dffcc2bb553c843
+	sha512sums = bf16ea80bf5a593f25afcdc92aee4ed295ce377c911de75a96a39438f9fb8f0386fa1fc9445a48b0d2b0761acc3277cd4144d33cc3af3453875f326ffa37ee3c
+	sha512sums = f4771027bc967ffedc29ad98bdb28539527bdc3414d9f6f3b15946cf47bbb57a58c189c87080694bfe2e56d3a9e601d613efb4d8ddc9ba956e893b790dca8827
+
+pkgname = girpe-v2
