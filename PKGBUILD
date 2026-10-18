@@ -3,7 +3,7 @@
 
 pkgname=cobib
 pkgver=6.0.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=(
     'python'
@@ -41,7 +41,7 @@ conflicts=('cobib')
 pkgdesc="Console Bibliography"
 url="https://gitlab.com/cobib/${pkgname}"
 source=("https://gitlab.com/cobib/cobib/-/releases/v$pkgver/downloads/$pkgname-v$pkgver.tar.gz")
-sha512sums=('51502e0c4fbcff282a1a1f62c15b91a8ab3d0b237a4208d43a4694d0c31ae58dde2f08596a4504aacc2e568fb693cefa3c793a24d38f4a61c3014911e2d90fb6')
+sha512sums=('f88570f8cad84bf8c09d3a363fa9c962d934c92b7658d2bc16f1cd4ccf1488773a91b0527120d9dde68048c045129eec87388fcc02a782d9b119419ff6d53ea7')
 
 build() {
   cd "${srcdir}"
