@@ -1,6 +1,6 @@
 pkgbase = python-vllm-rocm
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)
-	pkgver = 0.24.0
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -64,8 +64,9 @@ pkgbase = python-vllm-rocm
 	optdepends = python-depyf: required for debugging and profiling with complilation config
 	optdepends = python-tiktoken: required for DBRX tokenizer
 	optdepends = python-lm-format-enforcer: required for JSON/REGEX llm output
+	optdepends = libkineto
 	provides = python-vllm
-	source = git+https://github.com/vllm-project/vllm.git#tag=v0.24.0
-	sha256sums = 6f502f1518363d7b4989a507cf92d161ce27aa0541137baacbf0464d773458e8
+	source = git+https://github.com/vllm-project/vllm.git#tag=v0.32.0
+	sha256sums = c807cb17a533bd8837875ff109551b1fb4670f9e411d3a2e8bb2386ad8893d57
 
 pkgname = python-vllm-rocm

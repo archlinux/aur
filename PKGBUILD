@@ -1,6 +1,6 @@
 pkgname=python-vllm-rocm
 _pkgname=vllm
-pkgver=0.24.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)"
 arch=('x86_64')
@@ -72,19 +72,15 @@ optdepends=(
   'python-depyf: required for debugging and profiling with complilation config'
   'python-tiktoken: required for DBRX tokenizer'
   'python-lm-format-enforcer: required for JSON/REGEX llm output'
+  'libkineto'
 )
 
 provides=('python-vllm')
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('6f502f1518363d7b4989a507cf92d161ce27aa0541137baacbf0464d773458e8')
+sha256sums=('c807cb17a533bd8837875ff109551b1fb4670f9e411d3a2e8bb2386ad8893d57')
 
 _jobs=$(($(nproc) / 2))
-prepare() {
-  cd "$srcdir/$_pkgname"
-  rm -f "dist"/*
-  sed -i 's/mwaitxintrin/x86intrin/' csrc/spinloop.cpp
-}
 
 build() {
   cd "$srcdir/$_pkgname"
