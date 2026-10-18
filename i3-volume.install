@@ -1,5 +1,6 @@
 post_install() {
-  echo "Refer to i3volume-alsa.conf and i3volume-pulseaudio.conf in /usr/share/doc/i3-volume for initial configuration"
+  echo "i3-volume now requires PipeWire/WirePlumber (ALSA and PulseAudio backends were removed upstream)."
+  echo "Refer to /usr/share/doc/i3-volume/examples for initial configuration"
 }
 
 post_upgrade() {
