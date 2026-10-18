@@ -16,10 +16,17 @@ license=('Apache')
 arch=('any')
 backup=('etc/matrix-reminder-bot/config.yaml')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/anoadragon453/${_pkgname}/archive/v${pkgver}.tar.gz"
-        "matrix-reminder-bot.service")
+        "matrix-reminder-bot.service"
+        "python314-event-loop.patch")
 
 sha256sums=('cc39565fc35a229714a67f84b5b5cab3235780641f2952ee41f15004da450704'
-            'ed58a6cb4c10418dfd32a306eba2a22909858881c2bb73eb49cbf7ecaad7bf7e')
+            'ed58a6cb4c10418dfd32a306eba2a22909858881c2bb73eb49cbf7ecaad7bf7e'
+            '1d8822c92fce59de8dc44d17f6cf4f0ab4ef95fa463b346ddeb8f6f71fc1d629')
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/python314-event-loop.patch"
+}
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"

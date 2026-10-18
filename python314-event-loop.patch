@@ -1,0 +1,19 @@
+Use asyncio.run() instead of the deprecated get_event_loop() pattern.
+
+Python 3.14 removed the implicit creation of an event loop in
+asyncio.get_event_loop(), so the launcher crashes on startup with:
+
+  RuntimeError: There is no current event loop in thread 'MainThread'.
+
+asyncio.run() is the supported replacement and creates/manages its own loop.
+
+--- a/matrix-reminder-bot
++++ b/matrix-reminder-bot
+@@ -5,6 +5,6 @@ try:
+     from matrix_reminder_bot import main
+ 
+     # Run the main function of the bot
+-    asyncio.get_event_loop().run_until_complete(main.main())
++    asyncio.run(main.main())
+ except ImportError as e:
+     print("Unable to import matrix_reminder_bot.main:", e)

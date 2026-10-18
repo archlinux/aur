@@ -24,7 +24,9 @@ pkgbase = python-matrix-reminder-bot
 	backup = etc/matrix-reminder-bot/config.yaml
 	source = matrix-reminder-bot-0.4.0.tar.gz::https://github.com/anoadragon453/matrix-reminder-bot/archive/v0.4.0.tar.gz
 	source = matrix-reminder-bot.service
+	source = python314-event-loop.patch
 	sha256sums = cc39565fc35a229714a67f84b5b5cab3235780641f2952ee41f15004da450704
 	sha256sums = ed58a6cb4c10418dfd32a306eba2a22909858881c2bb73eb49cbf7ecaad7bf7e
+	sha256sums = 1d8822c92fce59de8dc44d17f6cf4f0ab4ef95fa463b346ddeb8f6f71fc1d629
 
 pkgname = python-matrix-reminder-bot
