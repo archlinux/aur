@@ -3,14 +3,24 @@
 # Contributor: MatejSpindler <spindler.matej@gmail.com>
 
 pkgname=esptool-git
-pkgver=5.0.dev0.r2.g6f0d779
+pkgver=5.6.0.r1.gaf1ed102
 pkgrel=1
 pkgdesc="A cute Python utility to communicate with the ROM bootloader in Espressif ESP8266"
 arch=('any')
 url="https://github.com/espressif/esptool"
 license=('GPL2')
-makedepends=('git' 'python-setuptools' 'python-wheel')
-depends=('python-pyserial' 'python-ecdsa' 'python-cryptography' 'python-bitstring' 'python-reedsolo' 'python-rich-click' 'python-intelhex')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+depends=(
+    'python'
+    'python-click'
+    'python-cryptography'
+    'python-esp-pylib'
+    'python-intelhex'
+    'python-pyserial'
+    'python-reedsolo'
+    'python-rich-click'
+    'python-yaml'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/espressif/esptool")
@@ -23,11 +33,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python3 setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
