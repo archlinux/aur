@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=foxguard-bin
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Fast universal code security scanner with built-in rules and external YAML support"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('foxguard')
 options=('!debug')
 source=("LICENSE::https://raw.githubusercontent.com/0sec-labs/foxguard/v$pkgver/LICENSE")
 sha256sums=('7c4f23d521b8c2e512af730ef2081c533c2c7e1438143b04758ad4bc9373fb97')
-sha256sums_x86_64=('ef56a4d5cfc4cc4462e435bf31ca0f90694f47df1384772361a67828427db3d9')
-sha256sums_aarch64=('7d5c7263d71089eb06113a634aa3394ab8b54782b16e67a349693fedbb598120')
+sha256sums_x86_64=('10a531279f7f3e9dcd01996e5e288309cd6d7d2bb2b7fa35de583d0bbe715bc2')
+sha256sums_aarch64=('f374bb1b81ffcb01aa5446719dee199245c673fffc9c659e985bbabe0faaa032')
 
 source_x86_64=("foxguard-$pkgver-x86_64::https://github.com/0sec-labs/foxguard/releases/download/v$pkgver/foxguard-linux-x86_64")
 
