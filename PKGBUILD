@@ -2,7 +2,7 @@
 pkgname=appmanager
 _app_id=com.github.AppManager
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MacOS style AppImage installer and management application"
 arch=('x86_64')
 url="https://github.com/kem-a/AppManager"
@@ -23,6 +23,10 @@ depends=(
 makedepends=(
   'meson'
   'vala'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
 )
 optdepends=('appimage-thumbnailer: generate thumbnails for AppImages')
 source=("AppManager-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
