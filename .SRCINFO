@@ -1,6 +1,6 @@
 pkgbase = husk-lang
 	pkgdesc = A lightweight Haskell implementation compiled to Chez Scheme
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/SoleSoul/husk
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = husk-lang
 	provides = husk
 	conflicts = husk
 	options = !strip
-	source = husk-0.1.1.tar.gz::https://github.com/SoleSoul/husk/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 64c023f6c944798d195ffa97c462e2ff05fcb834d3ee220bdd39f9f5eb6b0b15
+	source = husk-0.2.0.tar.gz::https://github.com/SoleSoul/husk/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e5f424d7cb8ab3a013f65df456c1537f22c40ce48d3f550adc8d89e5252c7e5c
 
 pkgname = husk-lang

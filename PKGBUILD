@@ -2,7 +2,7 @@
 
 pkgname=husk-lang
 _name=husk
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A lightweight Haskell implementation compiled to Chez Scheme"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('husk')
 conflicts=('husk')
 options=('!strip')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('64c023f6c944798d195ffa97c462e2ff05fcb834d3ee220bdd39f9f5eb6b0b15')
+sha256sums=('e5f424d7cb8ab3a013f65df456c1537f22c40ce48d3f550adc8d89e5252c7e5c')
 
 build() {
   cd "$_name-$pkgver"
