@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=soundcraft-bin
 _pkgname=soundcraft
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Open-source native digital audio workstation, Pro Tools alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('8d7afbe5fe433cb338b7ccee0820285d6ce1bfc8c006d551ca8840c27a911ab2')
-sha256sums_aarch64=('5b5152464bd6a3ae6c48be026d80e0c4e0da58d581a45fe4b5803d6fcfbbe006')
+sha256sums_x86_64=('57a2b8776d51880cee69118568a396c09faca6949dcbf50f19879d71d596f5cc')
+sha256sums_aarch64=('611f8474ef0403d71dfd41151d7a0363166c3eb970999f993ffed0c582a734f8')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
