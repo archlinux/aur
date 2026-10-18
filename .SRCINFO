@@ -1,0 +1,22 @@
+pkgbase = mercurio-bin
+	pkgdesc = Apprise-compatible Rust library, CLI and HTTP server to send notifications to 150+ services via a single URL.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/AlphaJack/mercurio
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	provides = mercurio
+	conflicts = mercurio
+	options = !strip
+	options = !debug
+	backup = etc/mercurio/mercurio.env
+	source_x86_64 = https://github.com/AlphaJack/mercurio/releases/download/v0.0.1/mercurio-cli-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/AlphaJack/mercurio/releases/download/v0.0.1/mercurio-cli-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = SKIP
+	source_armv7h = https://github.com/AlphaJack/mercurio/releases/download/v0.0.1/mercurio-cli-armv7-unknown-linux-musleabihf.tar.xz
+	sha256sums_armv7h = SKIP
+
+pkgname = mercurio-bin
