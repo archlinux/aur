@@ -1,6 +1,6 @@
 pkgbase = stasis-git
 	pkgdesc = A modern Wayland idle manager designed for simplicity and effectiveness (git version)
-	pkgver = 1.6.3.r15.g820ea3b
+	pkgver = 1.7.0.r0.g6bdcd34
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/stasis
 	arch = x86_64

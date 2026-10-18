@@ -3,7 +3,7 @@
 # License: GPL-3.0-only
 
 pkgname=stasis-git
-pkgver=1.6.3.r15.g820ea3b
+pkgver=1.7.0.r0.g6bdcd34
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness (git version)"
 arch=('x86_64')
@@ -42,7 +42,7 @@ package() {
   cd "$srcdir/stasis"
 
   # Binary
-  install -Dm755 "target/release/stasis" "$pkgdir/usr/bin/stasis"
+  install -Dm755 "${CARGO_TARGET_DIR:-target}/release/stasis" "$pkgdir/usr/bin/stasis"
 
   # Application and tray icons
   for icon in stasis stasis-tray; do
