@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Leafsmith
+Comment=Local-first document and media tools
+Exec=leafsmith
+Icon=leafsmith
+Terminal=false
+Categories=Office;
+StartupWMClass=leafsmith
