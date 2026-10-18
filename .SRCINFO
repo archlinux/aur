@@ -1,7 +1,7 @@
 pkgbase = dufs-bin
 	pkgdesc = Dufs is a distinctive utility file server that supports static serving, uploading, searching, accessing control, webdav...
-	pkgver = 0.46.0
-	pkgrel = 2
+	pkgver = 0.47.0
+	pkgrel = 1
 	url = https://github.com/sigoden/dufs
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = dufs-bin
 	conflicts = dufs
 	source = https://raw.githubusercontent.com/sigoden/dufs/main/LICENSE-MIT
 	sha256sums = 4623d04ec401ec83c94b935d75d8b4329e860580e91ed777ef03a0aa3b31bb04
-	source_x86_64 = https://github.com/sigoden/dufs/releases/download/v0.46.0/dufs-v0.46.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 817769f726613194bcff9d0e3e481eaccc86ac11208857614f36a8c02f410977
-	source_aarch64 = https://github.com/sigoden/dufs/releases/download/v0.46.0/dufs-v0.46.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 1472123ae3aa07e49404d16b20305c2dec90c59883ebda9308717f7205e6511b
+	source_x86_64 = https://github.com/sigoden/dufs/releases/download/v0.47.0/dufs-v0.47.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = c715c44b195f6133ca0f47e6fdc8d6015ec64b7fd9ac8e1c578ca23a92206aa4
+	source_aarch64 = https://github.com/sigoden/dufs/releases/download/v0.47.0/dufs-v0.47.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = faf1c961ad47c5d636b14956b6279e1278453517cd5d3c274d21d522b495800a
 
 pkgname = dufs-bin
