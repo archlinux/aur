@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="The Linux root filesystem super-tool"
 
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc' 'libgcc' 'libstdc++' 'libarchive' 'shadow')
 options=('!lto' '!strip')
 
 source=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}.tar.xz")
-sha256sums=('24730bf857807d20ea9ea4ad3fcbedc7df3e0809c9b5c0f4d2ffd4aa21fa91f0')
+sha256sums=('f54987328cf0e6b961bac1d656c26bdc4b6dba0eb8e6d1a4666d4c1462720416')
 
 
 build() {
