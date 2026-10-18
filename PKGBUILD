@@ -2,7 +2,7 @@
 pkgname=receiver
 _app_id=io.github.meehow.Receiver
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Discover 30,000+ verified radio stations from around the world"
 arch=('x86_64')
 url="https://github.com/meehow/receiver"
@@ -25,6 +25,10 @@ depends=(
 makedepends=(
   'meson'
   'vala'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('321e889eabdea2a688da5b5bd41cc1b7bebb36417bf4c7bd605da8e197d46b15')

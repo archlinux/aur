@@ -1,10 +1,12 @@
 pkgbase = receiver
 	pkgdesc = Discover 30,000+ verified radio stations from around the world
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meehow/receiver
 	arch = x86_64
 	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = meson
 	makedepends = vala
 	depends = glib-networking
