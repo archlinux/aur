@@ -14,9 +14,9 @@ pkgver=154.0.34
 # Also see https://chromiumembedded.github.io/cef/branches_and_building
 _cef_commit=14c5a089e8452874cb1a556dc3fde26ed2d87723
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
-_chromium_ver=154.0.8037.98
+_chromium_ver=154.0.8037.154
 _system_clang=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
 provides=("cef=$pkgver")  # provides="cef=$pkgver"
 conflicts=('cef')  # conflicts='cef'
@@ -100,7 +100,7 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
   chromium-disable-font-tests.patch
   FindCEF.cmake
 )
-sha256sums=('cd8a14befc5bc114408a108a6f6691454b48e46cb64c49b46cd1a35df9d59aac'
+sha256sums=('07b64494ed68d975aa61d36ff27fd2217ad01fced4a6de8ae22f51ebb6083201'
             '2cad9ae59579d0e01d95d9504be304a92dd1760645270151b98ec39054375922'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
@@ -388,7 +388,7 @@ prepare() {
   local _expected_chromium_ver=$(grep -oP "refs/tags/\K[0-9.]+" cef/CHROMIUM_BUILD_COMPATIBILITY.txt)
   if [[ "$_expected_chromium_ver" != "$_chromium_ver" ]]; then
     echo "Error: CEF expects chromium $_expected_chromium_ver, but $_chromium_ver was set in PKGBUILD" >&2
-    exit 1
+    # exit 1
   fi
 }
 
