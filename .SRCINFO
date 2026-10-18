@@ -1,0 +1,24 @@
+pkgbase = margin-bin
+	pkgdesc = A terminal tool for reviewing markdown and handing the comments back to an agent (a launcher plus a seed build: margin updates itself in ~/.local/margin with margin update)
+	pkgver = 26.10.03
+	pkgrel = 1
+	url = https://github.com/neuroplastio/margin
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = github-cli: margin import-pr
+	optdepends = neovim: the composer in margin 26.10.03, whose composer is nvim
+	provides = margin
+	conflicts = margin
+	options = !strip
+	options = !debug
+	source_x86_64 = margin-launcher-26.10.03-x86_64::https://github.com/neuroplastio/margin/releases/download/26.10.03/margin-launcher_linux_amd64
+	source_x86_64 = margin-26.10.03-x86_64::https://github.com/neuroplastio/margin/releases/download/26.10.03/margin_linux_amd64
+	sha256sums_x86_64 = d63a8d0c7fc1bd1a43978462ff92034389f280ddbf93a5897f79ee91e116367e
+	sha256sums_x86_64 = 44ea7919c5797d09606ee989c6e8577f0893adadff286149b1bd6d6f8c48db00
+	source_aarch64 = margin-launcher-26.10.03-aarch64::https://github.com/neuroplastio/margin/releases/download/26.10.03/margin-launcher_linux_arm64
+	source_aarch64 = margin-26.10.03-aarch64::https://github.com/neuroplastio/margin/releases/download/26.10.03/margin_linux_arm64
+	sha256sums_aarch64 = f57c1483648ac05a1ec1e63afaa86afed19cd33bf84ebf291c81c84679e745ef
+	sha256sums_aarch64 = 518253268d26ed052c639e2bc2dfd0a12835613e1c615ae0f532da9bb72b4c13
+
+pkgname = margin-bin
