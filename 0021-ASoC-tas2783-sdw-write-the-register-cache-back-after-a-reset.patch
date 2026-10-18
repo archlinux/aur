@@ -1,0 +1,100 @@
+From 0021000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: distsystem <dev@dist.systems>
+Date: Mon, 05 Oct 2026 12:00:00 +0800
+Subject: [PATCH] ASoC: tas2783-sdw: write the register cache back after a
+ reset
+
+After s2idle the amp has lost power, and tas_io_init() resets it and
+downloads the firmware again. What userspace and DAPM configured before
+the suspend lives only in the register cache: the 'Speaker Playback
+Volume' that PipeWire uses as the hardware volume, the 'Channel Playback'
+selection, the FU21 and FU23 mutes and the PDE23 power state. Keep the
+cache across the re-attach and write it back once tas_io_init() has
+succeeded.
+
+The cache is marked dirty before the sync, which limits the sync to
+values that differ from the register defaults. That limit is what lets
+the sync finish. regmap is configured with val_bits = 8 while
+tas2783_sdca_mbq_size() reports 2 or 4 bytes for some Controls that have
+defaults in the cache, and regmap-sdw-mbq rejects those with -EINVAL. A
+sync that also writes defaults stops at the first of them, the FU21
+volume, before it reaches the FU23 mute and the PDE23 power state.
+
+A failed sync is reported and leaves the regmap out of cache-only mode.
+
+Signed-off-by: distsystem <dev@dist.systems>
+---
+diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
+index 066b1c5..1717ba5 100644
+--- a/sound/soc/codecs/tas2783-sdw.c
++++ b/sound/soc/codecs/tas2783-sdw.c
+@@ -1077,6 +1077,23 @@ static s32 tas_init(struct tas2783_prv *tas_dev)
+ 	return ret;
+ }
+ 
++/*
++ * Write the cached Controls to an amp that was reset or held in cache-only
++ * mode. Marking the cache dirty limits the sync to values that differ from
++ * the register defaults. A full sync would reach the Controls wider than
++ * val_bits, which regmap-sdw-mbq rejects with -EINVAL, and stop there.
++ */
++static void tas2783_restore_cache(struct tas2783_prv *tas_dev)
++{
++	int ret;
++
++	regcache_mark_dirty(tas_dev->regmap);
++	regcache_cache_only(tas_dev->regmap, false);
++	ret = regcache_sync(tas_dev->regmap);
++	if (ret)
++		dev_warn(tas_dev->dev, "regcache sync failed: %d\n", ret);
++}
++
+ static s32 tas2783_sdca_dev_suspend(struct device *dev)
+ {
+ 	struct tas2783_prv *tas_dev = dev_get_drvdata(dev);
+@@ -1116,14 +1133,7 @@ static s32 tas2783_sdca_dev_resume(struct device *dev)
+ 		return ret;
+ 	}
+ 
+-	regcache_cache_only(tas_dev->regmap, false);
+-	ret = regcache_sync(tas_dev->regmap);
+-	if (ret) {
+-		regcache_cache_only(tas_dev->regmap, true);
+-		regcache_mark_dirty(tas_dev->regmap);
+-		return ret;
+-	}
+-
++	tas2783_restore_cache(tas_dev);
+ 	return 0;
+ }
+ 
+@@ -1270,28 +1280,13 @@ static s32 tas_update_status(struct sdw_slave *slave,
+ 
+ 	regcache_cache_only(tas_dev->regmap, false);
+ 
+-	/*
+-	 * The device is attaching uninitialized: either this is the first
+-	 * attach, or it lost power (and with it all register and DSP state)
+-	 * while the controller was power-gated during system suspend. The
+-	 * cache still holds the pre-suspend values, and tas_io_init() below
+-	 * resets the device via TAS2783_SW_RESET anyway, so syncing it back
+-	 * is both useless and harmful: later read-modify-write updates would
+-	 * compare against stale data and skip the hardware write.
+-	 *
+-	 * Drop the cache instead, so that subsequent accesses see the real
+-	 * hardware state. Syncing after the reset is not an option either:
+-	 * the cache accepts registers for which tas2783_sdca_mbq_size()
+-	 * returns 0, and writing those back fails with -EINVAL.
+-	 */
+-	regcache_drop_region(tas_dev->regmap, 0, UINT_MAX);
+-
+ 	/* perform I/O transfers required for Slave initialization */
+ 	ret = tas_io_init(&slave->dev, slave);
+ 	if (ret)
+ 		return ret;
+ 
+ 	slave->unattach_request = 0;
++	tas2783_restore_cache(tas_dev);
+ 	schedule_work(&tas_dev->stream_restart_work);
+ 	return 0;
+ }

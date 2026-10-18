@@ -39,7 +39,8 @@
 : "${_localmodcfg:=no}"
 
 # Path to the list of used modules
-: "${_localmodcfg_path:="$HOME/.config/modprobed.db"}"
+: "${_localmodcfg_path:="$XDG_DATA_HOME/modprobed-db/modprobed.db"}"
+
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
@@ -174,13 +175,13 @@ else
 fi
 
 pkgbase="linux-$_pkgsuffix"
-_major=7.1
-_minor=8
+_major=7.2
+_minor=9
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=1
-pkgrel=1
+_tagrel=2
+pkgrel=3
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.'
 _kernver="$pkgver-$pkgrel"
@@ -212,7 +213,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=610.57.04
+_nv_ver=615.71.09
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -244,14 +245,14 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=c681af76c5a6a15caada25eb13090e41218c7831")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=71a9f9578616a90c3c14bb59629fb4d31bfd68d1")
 fi
 
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "${_patchsource}/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
-             "${_patchsource}/misc/nvidia/0004-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
+             "${_patchsource}/misc/nvidia/0003-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -820,9 +821,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('6a198c07f5b3ff24e35972c0c25a30f4ec72ec4b986a926ec57aa3fa045bd72dc15845a3651b134715a1cd5efb62a1bb8800a19dc80cef2e0de70d01245e5eb0'
+b2sums=('8a545c8da5cc1e0d803db9f761ee159733c963b40c594ba74f3723eab68abfd7e7a4ac92139a064cff65b0a0c742bf6989c5d05cd98f057a2ad9efd154c7df25'
         'SKIP'
-        'a81b1a49b7fd277a8a1395e38696c435489808399527dc49436c9b36940d5c652c523622efe68d34dd191669d8838ab4c041000331279ccf77cdc11dc4baaca2'
+        '21343697f5f1647aadbdec8a4aa477b10622e5ae04fa07fcf6f9bab67dece7180872676bdc49a90de5d273c2c13127c5812a7ca67dbd9edce3e26e8c38d358d1'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
 
 # ============================================================================
@@ -832,7 +833,7 @@ b2sums=('6a198c07f5b3ff24e35972c0c25a30f4ec72ec4b986a926ec57aa3fa045bd72dc15845a
 
 pkgdesc="${pkgdesc} + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA)"
 
-# nealstar's 16 codec patches from CachyOS issue 737
+# nealstar's codec patches from CachyOS issue 737
 # https://github.com/CachyOS/linux-cachyos/issues/737#issuecomment-2832947040
 source+=(
     0001-ALSA-tas2783-sdw-add-Playback-to-volume-control.patch
@@ -840,16 +841,12 @@ source+=(
     0003-removed-unused-fields.patch
     0004-SOC_SINGLE_RANGE_TLV-uses-snd_soc_get_volsw-snd_soc_.patch
     0005-dev_set_drvdata-already-called-intas_sdw_probe.patch
-    0006-refactor-setting-sa_func_data.patch
     0007-check-AF01-for-init-data.patch
     0008-setup-ports.patch
     0009-Already-set-by-SOC_SINGLE_RANGE_TLV-Speaker-Playback.patch
     0010-control-to-set-channel.patch
     0011-mute-unmute-using-SND_SOC_DAPM_SWITCH.patch
     0012-use-SND_SOC_DAPM_REG-to-power-on-off.patch
-    0013-reattach-after-resume.patch
-    0014-defer-check.patch
-    0015-to-help-alsa-find-them.patch
     0016-cleanup-controls.patch
     0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
     0018-async-codec-resume.patch
@@ -859,9 +856,10 @@ source+=(
     # replacing the original 0019 (raise VPE_IDLE_TIMEOUT to 2s).
     0019-drm-amdgpu-vpe-keep-dpm0-idle-gate-on-strix-halo.patch
     0020-usb-xhci-pci-reset-on-resume-quirk-for-amd-strix-halo.patch
+    0021-ASoC-tas2783-sdw-write-the-register-cache-back-after-a-reset.patch
+    0022-drm-amd-display-guard-NULL-DDC-pins.patch
 )
 b2sums+=(
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-    SKIP SKIP
 )

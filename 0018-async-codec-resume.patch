@@ -1,73 +1,58 @@
 From 0018000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: distsystem <dev@dist.systems>
 Date: Sat, 06 Jun 2026 12:00:00 +0800
-Subject: [PATCH] ASoC: rt721-sdca, tas2783: defer power-off resume to a worker
+Subject: [PATCH] ASoC: rt721-sdca, tas2783: keep power-off re-attach out of
+ dpm_resume
 
 On AMD Strix Halo (ACP70) s2idle the BIOS keeps SoundWire in
 amd-sdw-power-mode = POWER_OFF, so on resume the whole bus is torn down
-and must re-enumerate. The codec resume callbacks take the power-off
-re-attach path (slave->unattach_request set) and block in
-wait_for_completion_timeout(&slave->initialization_complete, 5s) until
-the manager's async work finishes bringing the bus back up.
+and re-enumerates. The stock codec resume callbacks wait for that inside
+dpm_resume (sdw_slave_wait_for_init(), up to 5s). dpm_resume is a barrier:
+the desktop does not thaw until every resume callback has returned, so
+whichever codec resumes first absorbs the full bus bring-up. Measured:
+rt721-sdca dev_resume = 2.53s.
 
-Because dpm_resume has a barrier (userspace/desktop does not thaw until
-every device resume callback returns), whichever codec resumes first in
-dpm order absorbs the full ~2.5s bus bring-up and stalls the desktop
-coming back. Measured: rt721-sdca dev_resume = 2.53s, the two tas2783 =
-9ms each (they find the bus already up).
+Return from dev_resume at once when slave->unattach_request is set.
 
-Make the slow path non-blocking: when slave->unattach_request is set,
-schedule a work_struct that does the wait + regcache_cache_only(false) +
-regcache_sync() and return 0 immediately, so dpm_resume does not block
-and the desktop thaws right away. The codecs finish re-attaching in the
-background. The fast path (no power loss) stays inline and unchanged.
+rt721-sdca hands the wait and the regcache sync to a work item.
 
-This is done for BOTH codecs because either may resume first in dpm
-order. The worker runs in process context after the PM callback has
-returned (no PM lock held), so the completion wait and regmap I/O are
-safe there. The worker is cancelled with cancel_work_sync() in
-dev_suspend (covering runtime + system suspend, since the latter calls
-the former) and in remove, so a pending resume worker cannot race a
-following suspend or teardown.
+tas2783 needs no wait at all: tas_update_status() already initialises the
+amp whenever it attaches, including the retries after a firmware request
+timeout, so a successful tas_io_init() is the point where the amp is back.
 
-Tradeoff: in the ~2.5s window the codec is "resumed" per PM but its
-regmap is still cache-only, so userspace audio started in that window
-may error/retry until the worker completes. This is intended.
+Userspace runs again while the codecs are still coming back, and PipeWire
+prepares its open streams again about 0.4s after the thaw. The bus skips
+peripherals that are not enumerated yet ("Not enumerated, skip programming
+BUSCLOCK_SCALE") and the amp reset drops the port setup, so such a stream
+runs without the codec: the PCM is RUNNING and the speakers are silent.
+Once a codec is back, stop the running streams it takes part in with XRUN;
+userspace recovers by preparing them again, this time with the codec
+attached. snd_soc_component_stop_xrun() is added to the ASoC core for
+that. tas2783 calls it from a work item, because the component lookup
+takes the ASoC client mutex, which must stay out of update_status().
+
+The work items are cancelled in dev_suspend (covering runtime and system
+suspend, since the latter calls the former) and in remove.
 
 Signed-off-by: distsystem <dev@dist.systems>
 ---
-diff --git a/sound/soc/codecs/rt721-sdca.c b/sound/soc/codecs/rt721-sdca.c
---- a/sound/soc/codecs/rt721-sdca.c
-+++ b/sound/soc/codecs/rt721-sdca.c
-@@ -1488,6 +1488,7 @@
+diff --git a/include/sound/soc.h b/include/sound/soc.h
+index 1d27727..be5ce2f 100644
+--- a/include/sound/soc.h
++++ b/include/sound/soc.h
+@@ -467,6 +467,7 @@ struct snd_soc_component *snd_soc_lookup_component_nolocked(struct device *dev,
+ struct snd_soc_component *snd_soc_lookup_component(struct device *dev,
+ 						   const char *driver_name);
+ struct snd_soc_component *snd_soc_lookup_component_by_name(const char *component_name);
++void snd_soc_component_stop_xrun(struct snd_soc_component *component);
  
- 	INIT_DELAYED_WORK(&rt721->jack_detect_work, rt721_sdca_jack_detect_handler);
- 	INIT_DELAYED_WORK(&rt721->jack_btn_check_work, rt721_sdca_btn_check_handler);
-+	INIT_WORK(&rt721->resume_attach_work, rt721_sdca_resume_attach_handler);
- 
- 	/*
- 	 * Mark hw_init to false
-diff --git a/sound/soc/codecs/rt721-sdca.h b/sound/soc/codecs/rt721-sdca.h
---- a/sound/soc/codecs/rt721-sdca.h
-+++ b/sound/soc/codecs/rt721-sdca.h
-@@ -32,6 +32,7 @@
- 	struct snd_soc_jack *hs_jack;
- 	struct delayed_work jack_detect_work;
- 	struct delayed_work jack_btn_check_work;
-+	struct work_struct resume_attach_work;
- 	int jack_type;
- 	int jd_src;
- 	bool fu0f_dapm_mute;
-@@ -271,4 +272,5 @@
- int rt721_sdca_io_init(struct device *dev, struct sdw_slave *slave);
- int rt721_sdca_init(struct device *dev, struct regmap *regmap,
- 			struct regmap *mbq_regmap, struct sdw_slave *slave);
-+void rt721_sdca_resume_attach_handler(struct work_struct *work);
- #endif /* __RT721_H__ */
+ int soc_new_pcm(struct snd_soc_pcm_runtime *rtd);
+ #ifdef CONFIG_SND_SOC_COMPRESS
 diff --git a/sound/soc/codecs/rt721-sdca-sdw.c b/sound/soc/codecs/rt721-sdca-sdw.c
+index 7f6b99e..df81f03 100644
 --- a/sound/soc/codecs/rt721-sdca-sdw.c
 +++ b/sound/soc/codecs/rt721-sdca-sdw.c
-@@ -435,6 +435,7 @@
+@@ -434,6 +434,7 @@ static void rt721_sdca_sdw_remove(struct sdw_slave *slave)
  		cancel_delayed_work_sync(&rt721->jack_detect_work);
  		cancel_delayed_work_sync(&rt721->jack_btn_check_work);
  	}
@@ -75,7 +60,7 @@ diff --git a/sound/soc/codecs/rt721-sdca-sdw.c b/sound/soc/codecs/rt721-sdca-sdw
  
  	if (rt721->first_hw_init)
  		pm_runtime_disable(&slave->dev);
-@@ -458,6 +459,8 @@
+@@ -457,6 +458,8 @@ static int rt721_sdca_dev_suspend(struct device *dev)
  
  	cancel_delayed_work_sync(&rt721->jack_detect_work);
  	cancel_delayed_work_sync(&rt721->jack_btn_check_work);
@@ -84,48 +69,21 @@ diff --git a/sound/soc/codecs/rt721-sdca-sdw.c b/sound/soc/codecs/rt721-sdca-sdw
  
  	regcache_cache_only(rt721->regmap, true);
  	regcache_cache_only(rt721->mbq_regmap, true);
-@@ -497,36 +500,61 @@
+@@ -496,25 +499,11 @@ static int rt721_sdca_dev_system_suspend(struct device *dev)
  
  #define RT721_PROBE_TIMEOUT 5000
  
-+/*
-+ * Slow resume path worker (power-off re-attach). Runs in process context after
-+ * dev_resume has already returned, so it may block on the bus re-enumeration
-+ * without stalling the dpm_resume barrier. While this is pending the device is
-+ * reported "resumed" to PM but the regmap stays cache-only, so audio that
-+ * starts in this window may error/retry until the sync below completes.
-+ */
-+void rt721_sdca_resume_attach_handler(struct work_struct *work)
-+{
-+	struct rt721_sdca_priv *rt721 =
-+		container_of(work, struct rt721_sdca_priv, resume_attach_work);
-+	struct sdw_slave *slave = rt721->slave;
-+	unsigned long time;
-+
-+	time = wait_for_completion_timeout(&slave->initialization_complete,
-+				msecs_to_jiffies(RT721_PROBE_TIMEOUT));
-+	if (!time) {
-+		dev_err(&slave->dev, "Initialization not complete, timed out\n");
-+		sdw_show_ping_status(slave->bus, true);
-+		return;
-+	}
-+
-+	slave->unattach_request = 0;
-+	regcache_cache_only(rt721->regmap, false);
-+	regcache_sync(rt721->regmap);
-+	regcache_cache_only(rt721->mbq_regmap, false);
-+	regcache_sync(rt721->mbq_regmap);
-+}
-+
- static int rt721_sdca_dev_resume(struct device *dev)
+-static int rt721_sdca_dev_resume(struct device *dev)
++static int rt721_sdca_resume_sync(struct rt721_sdca_priv *rt721)
  {
- 	struct sdw_slave *slave = dev_to_sdw_dev(dev);
- 	struct rt721_sdca_priv *rt721 = dev_get_drvdata(dev);
--	unsigned long time;
+-	struct sdw_slave *slave = dev_to_sdw_dev(dev);
+-	struct rt721_sdca_priv *rt721 = dev_get_drvdata(dev);
++	struct sdw_slave *slave = rt721->slave;
+ 	int ret;
  
- 	if (!rt721->first_hw_init)
- 		return 0;
- 
+-	if (!rt721->first_hw_init)
+-		return 0;
+-
 -	if (!slave->unattach_request) {
 -		mutex_lock(&rt721->disable_irq_lock);
 -		if (rt721->disable_irq == true) {
@@ -134,7 +92,45 @@ diff --git a/sound/soc/codecs/rt721-sdca-sdw.c b/sound/soc/codecs/rt721-sdca-sdw
 -			rt721->disable_irq = false;
 -		}
 -		mutex_unlock(&rt721->disable_irq_lock);
--		goto regmap_sync;
+-	}
+-
+ 	ret = sdw_slave_wait_for_init(slave, RT721_PROBE_TIMEOUT);
+ 	if (ret) {
+ 		sdw_show_ping_status(slave->bus, true);
+@@ -528,6 +517,57 @@ static int rt721_sdca_dev_resume(struct device *dev)
+ 	return 0;
+ }
+ 
++/*
++ * Slow resume path worker (power-off re-attach). Runs in process context after
++ * dev_resume has already returned, so it may block on the bus re-enumeration
++ * without stalling the dpm_resume barrier.
++ */
++void rt721_sdca_resume_attach_handler(struct work_struct *work)
++{
++	struct rt721_sdca_priv *rt721 =
++		container_of(work, struct rt721_sdca_priv, resume_attach_work);
++
++	if (rt721_sdca_resume_sync(rt721))
++		return;
++
++	/*
++	 * Userspace is running again by now and may have prepared a stream
++	 * while the codec was still unattached. The bus skips unattached
++	 * peripherals, so such a stream runs without this codec.
++	 */
++	if (rt721->component)
++		snd_soc_component_stop_xrun(rt721->component);
++}
++
++static int rt721_sdca_dev_resume(struct device *dev)
++{
++	struct sdw_slave *slave = dev_to_sdw_dev(dev);
++	struct rt721_sdca_priv *rt721 = dev_get_drvdata(dev);
++
++	if (!rt721->first_hw_init)
++		return 0;
++
 +	if (slave->unattach_request) {
 +		/*
 +		 * Defer the bus re-enumeration wait + regcache sync to a worker
@@ -143,119 +139,198 @@ diff --git a/sound/soc/codecs/rt721-sdca-sdw.c b/sound/soc/codecs/rt721-sdca-sdw
 +		 */
 +		schedule_work(&rt721->resume_attach_work);
 +		return 0;
- 	}
- 
--	time = wait_for_completion_timeout(&slave->initialization_complete,
--				msecs_to_jiffies(RT721_PROBE_TIMEOUT));
--	if (!time) {
--		dev_err(&slave->dev, "Initialization not complete, timed out\n");
--		sdw_show_ping_status(slave->bus, true);
--
--		return -ETIMEDOUT;
++	}
++
 +	mutex_lock(&rt721->disable_irq_lock);
 +	if (rt721->disable_irq == true) {
 +		sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK1, SDW_SCP_SDCA_INTMASK_SDCA_0);
 +		sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK2, SDW_SCP_SDCA_INTMASK_SDCA_8);
 +		rt721->disable_irq = false;
- 	}
++	}
 +	mutex_unlock(&rt721->disable_irq_lock);
++
++	return rt721_sdca_resume_sync(rt721);
++}
++
+ static const struct dev_pm_ops rt721_sdca_pm = {
+ 	SYSTEM_SLEEP_PM_OPS(rt721_sdca_dev_system_suspend, rt721_sdca_dev_resume)
+ 	RUNTIME_PM_OPS(rt721_sdca_dev_suspend, rt721_sdca_dev_resume, NULL)
+diff --git a/sound/soc/codecs/rt721-sdca.c b/sound/soc/codecs/rt721-sdca.c
+index eae7d2f..ace51f9 100644
+--- a/sound/soc/codecs/rt721-sdca.c
++++ b/sound/soc/codecs/rt721-sdca.c
+@@ -1488,6 +1488,7 @@ int rt721_sdca_init(struct device *dev, struct regmap *regmap,
  
--regmap_sync:
- 	slave->unattach_request = 0;
- 	regcache_cache_only(rt721->regmap, false);
- 	regcache_sync(rt721->regmap);
+ 	INIT_DELAYED_WORK(&rt721->jack_detect_work, rt721_sdca_jack_detect_handler);
+ 	INIT_DELAYED_WORK(&rt721->jack_btn_check_work, rt721_sdca_btn_check_handler);
++	INIT_WORK(&rt721->resume_attach_work, rt721_sdca_resume_attach_handler);
+ 
+ 	/*
+ 	 * Mark hw_init to false
+diff --git a/sound/soc/codecs/rt721-sdca.h b/sound/soc/codecs/rt721-sdca.h
+index 24ce188..0c670a9 100644
+--- a/sound/soc/codecs/rt721-sdca.h
++++ b/sound/soc/codecs/rt721-sdca.h
+@@ -32,6 +32,7 @@ struct  rt721_sdca_priv {
+ 	struct snd_soc_jack *hs_jack;
+ 	struct delayed_work jack_detect_work;
+ 	struct delayed_work jack_btn_check_work;
++	struct work_struct resume_attach_work;
+ 	int jack_type;
+ 	int jd_src;
+ 	bool fu0f_dapm_mute;
+@@ -271,4 +272,5 @@ enum {
+ int rt721_sdca_io_init(struct device *dev, struct sdw_slave *slave);
+ int rt721_sdca_init(struct device *dev, struct regmap *regmap,
+ 			struct regmap *mbq_regmap, struct sdw_slave *slave);
++void rt721_sdca_resume_attach_handler(struct work_struct *work);
+ #endif /* __RT721_H__ */
 diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
+index 0d3caee..066b1c5 100644
 --- a/sound/soc/codecs/tas2783-sdw.c
 +++ b/sound/soc/codecs/tas2783-sdw.c
-@@ -95,6 +95,8 @@
- 	wait_queue_head_t fw_wait;
- 	bool fw_dl_task_done;
+@@ -97,6 +97,7 @@ struct tas2783_prv {
  	bool fw_dl_success;
-+	/* deferred slow-path resume (power-off re-attach) */
-+	struct work_struct resume_attach_work;
+ 	/* use fallback fw name */
+ 	bool fw_use_fallback;
++	struct work_struct stream_restart_work;
  };
  
  static const struct reg_default tas2783_reg_default[] = {
-@@ -1084,6 +1086,9 @@
+@@ -1083,6 +1084,8 @@ static s32 tas2783_sdca_dev_suspend(struct device *dev)
  	if (!tas_dev->hw_init)
  		return 0;
  
-+	/* a pending resume worker would otherwise race this suspend */
-+	cancel_work_sync(&tas_dev->resume_attach_work);
++	cancel_work_sync(&tas_dev->stream_restart_work);
 +
  	regcache_cache_only(tas_dev->regmap, true);
  	return 0;
  }
-@@ -1093,26 +1098,48 @@
- 	return tas2783_sdca_dev_suspend(dev);
+@@ -1098,6 +1101,15 @@ static s32 tas2783_sdca_dev_resume(struct device *dev)
+ 	struct tas2783_prv *tas_dev = dev_get_drvdata(dev);
+ 	int ret;
+ 
++	/*
++	 * Power-off re-attach: the amp comes back through tas_update_status()
++	 * once the bus has re-enumerated it. Waiting for that here would hold
++	 * the dpm_resume barrier, and with it the desktop thaw, for the whole
++	 * bring-up.
++	 */
++	if (slave->unattach_request)
++		return 0;
++
+ 	ret = sdw_slave_wait_for_init(slave, TAS2783_PROBE_TIMEOUT);
+ 	if (ret) {
+ 		sdw_show_ping_status(slave->bus, true);
+@@ -1217,11 +1229,30 @@ static s32 tas_io_init(struct device *dev, struct sdw_slave *slave)
+ 	return ret;
  }
  
--static s32 tas2783_sdca_dev_resume(struct device *dev)
 +/*
-+ * Slow resume path worker (power-off re-attach). Runs in process context after
-+ * dev_resume has already returned, so it may block on the bus re-enumeration
-+ * without stalling the dpm_resume barrier. While this is pending the device is
-+ * reported "resumed" to PM but the regmap stays cache-only, so audio that
-+ * starts in this window may error/retry until the sync below completes.
++ * The amp was just reset and initialised. A stream that userspace prepared
++ * before that, while the amp was unattached or mid-initialisation, runs
++ * without it: the bus skips unattached peripherals and the reset drops the
++ * port setup. The lookup takes the ASoC client mutex, which must stay out of
++ * the update_status() path, hence the work.
 + */
-+static void tas2783_resume_attach_handler(struct work_struct *work)
- {
--	struct sdw_slave *slave = dev_to_sdw_dev(dev);
--	struct tas2783_prv *tas_dev = dev_get_drvdata(dev);
++static void tas2783_stream_restart_handler(struct work_struct *work)
++{
 +	struct tas2783_prv *tas_dev =
-+		container_of(work, struct tas2783_prv, resume_attach_work);
-+	struct sdw_slave *slave = tas_dev->sdw_peripheral;
- 	unsigned long t;
- 
--	if (!slave->unattach_request)
--		goto regmap_sync;
--
- 	t = wait_for_completion_timeout(&slave->initialization_complete,
- 					msecs_to_jiffies(TAS2783_PROBE_TIMEOUT));
- 	if (!t) {
- 		dev_err(&slave->dev, "resume: initialization timed out\n");
- 		sdw_show_ping_status(slave->bus, true);
--		return -ETIMEDOUT;
-+		return;
- 	}
- 
- 	slave->unattach_request = 0;
-+	regcache_cache_only(tas_dev->regmap, false);
-+	regcache_sync(tas_dev->regmap);
++		container_of(work, struct tas2783_prv, stream_restart_work);
++	struct snd_soc_component *component;
++
++	component = snd_soc_lookup_component(tas_dev->dev, NULL);
++	if (component)
++		snd_soc_component_stop_xrun(component);
 +}
 +
-+static s32 tas2783_sdca_dev_resume(struct device *dev)
-+{
-+	struct sdw_slave *slave = dev_to_sdw_dev(dev);
-+	struct tas2783_prv *tas_dev = dev_get_drvdata(dev);
-+
-+	if (slave->unattach_request) {
-+		/*
-+		 * Defer the bus re-enumeration wait + regcache sync to a worker
-+		 * and return immediately so the dpm_resume barrier (and thus the
-+		 * desktop thaw) is not blocked for the full bring-up time.
-+		 */
-+		schedule_work(&tas_dev->resume_attach_work);
-+		return 0;
-+	}
+ static s32 tas_update_status(struct sdw_slave *slave,
+ 			     enum sdw_slave_status status)
+ {
+ 	struct tas2783_prv *tas_dev = dev_get_drvdata(&slave->dev);
+ 	struct device *dev = &slave->dev;
++	s32 ret;
  
--regmap_sync:
- 	regcache_cache_only(tas_dev->regmap, false);
- 	regcache_sync(tas_dev->regmap);
- 	return 0;
-@@ -1368,6 +1395,7 @@
+ 	dev_dbg(dev, "Peripheral status = %s",
+ 		status == SDW_SLAVE_UNATTACHED ? "unattached" :
+@@ -1256,7 +1287,13 @@ static s32 tas_update_status(struct sdw_slave *slave,
+ 	regcache_drop_region(tas_dev->regmap, 0, UINT_MAX);
+ 
+ 	/* perform I/O transfers required for Slave initialization */
+-	return tas_io_init(&slave->dev, slave);
++	ret = tas_io_init(&slave->dev, slave);
++	if (ret)
++		return ret;
++
++	slave->unattach_request = 0;
++	schedule_work(&tas_dev->stream_restart_work);
++	return 0;
+ }
+ 
+ /*
+@@ -1396,6 +1433,7 @@ static s32 tas_sdw_probe(struct sdw_slave *peripheral,
  		return ret;
  
  	init_waitqueue_head(&tas_dev->fw_wait);
-+	INIT_WORK(&tas_dev->resume_attach_work, tas2783_resume_attach_handler);
++	INIT_WORK(&tas_dev->stream_restart_work, tas2783_stream_restart_handler);
  	dev_set_drvdata(dev, tas_dev);
  	regmap = devm_regmap_init_sdw_mbq_cfg(&peripheral->dev,
  					      peripheral,
-@@ -1388,6 +1416,7 @@
+@@ -1416,6 +1454,7 @@ static void tas_sdw_remove(struct sdw_slave *peripheral)
  	struct tas2783_prv *tas_dev = dev_get_drvdata(&peripheral->dev);
  
  	pm_runtime_disable(tas_dev->dev);
-+	cancel_work_sync(&tas_dev->resume_attach_work);
++	cancel_work_sync(&tas_dev->stream_restart_work);
  	tas_remove(tas_dev);
  	mutex_destroy(&tas_dev->calib_lock);
  	mutex_destroy(&tas_dev->pde_lock);
+diff --git a/sound/soc/soc-core.c b/sound/soc/soc-core.c
+index 44f9bb4..6fbe150 100644
+--- a/sound/soc/soc-core.c
++++ b/sound/soc/soc-core.c
+@@ -406,6 +406,45 @@ struct snd_soc_component *snd_soc_lookup_component_by_name(const char *component
+ }
+ EXPORT_SYMBOL_GPL(snd_soc_lookup_component_by_name);
+ 
++/**
++ * snd_soc_component_stop_xrun - stop the running streams of a component
++ * @component: component whose hardware lost its stream configuration
++ *
++ * Every running PCM stream the component takes part in is stopped in the
++ * XRUN state, so that userspace prepares it again.
++ */
++void snd_soc_component_stop_xrun(struct snd_soc_component *component)
++{
++	struct snd_soc_pcm_runtime *rtd;
++	struct snd_soc_component *c;
++	int i, stream;
++
++	guard(mutex)(&client_mutex);
++
++	if (!component->card)
++		return;
++
++	for_each_card_rtds(component->card, rtd) {
++		if (!rtd->pcm)
++			continue;
++
++		for_each_rtd_components(rtd, i, c) {
++			if (c != component)
++				continue;
++
++			for_each_pcm_streams(stream) {
++				struct snd_pcm_substream *substream =
++					rtd->pcm->streams[stream].substream;
++
++				if (substream)
++					snd_pcm_stop_xrun(substream);
++			}
++			break;
++		}
++	}
++}
++EXPORT_SYMBOL_GPL(snd_soc_component_stop_xrun);
++
+ struct snd_soc_pcm_runtime
+ *snd_soc_get_pcm_runtime(struct snd_soc_card *card,
+ 			 struct snd_soc_dai_link *dai_link)

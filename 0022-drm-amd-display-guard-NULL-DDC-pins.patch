@@ -1,0 +1,47 @@
+From: Dennis Thomsen
+Date: Mon, 31 Aug 2026 00:00:00 +0000
+Subject: [PATCH] drm/amd/display: Guard NULL DDC pins
+
+[Why]
+dal_gpio_open_ex() can return GPIO_RESULT_OK while leaving gpio->pin
+NULL: a concurrent HPD vs display power-down race closes the pin after
+the open succeeds and before FROM_HW_GPIO_PIN(). dal_ddc_open() then
+dereferences pin_clock->pin->store.en (NULL+0x28) and the kworker dies
+with IRQs off, hard-wedging the machine.
+
+Observed on Radeon 890M (DCN 3.5, Strix/Kraken) after DPMS-off when the
+DP sinks drop their links.
+
+[How]
+If either pin is NULL after a successful open, close what was opened and
+return GPIO_RESULT_OPEN_FAILED so AUX fails instead of oopsing.
+
+This does not serialize HPD detect against DPMS-off; it only stops the
+NULL deref turning that race into a hang.
+
+Closes: https://gitlab.freedesktop.org/drm/amd/-/issues/5716
+Link: https://ratatoskr.run/amd-gfx/2026/08/17487504
+Signed-off-by: Dennis Thomsen
+
+PX13 note: the same oops hits here with pin_data->pin NULL instead, when
+a userspace DDC probe on "AMDGPU DM i2c hw bus N" (amdgpu_dm_i2c_xfer,
+the one DDC-pin user not serialized by aux.hw_mutex) races the HPD
+worker's link_detect on a flapping USB-C DP sink. Not merged upstream as
+of 2026-10-12 (absent from master, linux-next and amd-staging-drm-next).
+
+--- a/drivers/gpu/drm/amd/display/dc/gpio/gpio_service.c
++++ b/drivers/gpu/drm/amd/display/dc/gpio/gpio_service.c
+@@ -577,6 +577,13 @@
+ 		goto failure;
+ 	}
+
++	if (!ddc->pin_data->pin || !ddc->pin_clock->pin) {
++		BREAK_TO_DEBUGGER();
++		result = GPIO_RESULT_OPEN_FAILED;
++		dal_gpio_close(ddc->pin_clock);
++		goto failure;
++	}
++
+ 	/* DDC clock and data pins should belong
+ 	 * to the same DDC block id,
+ 	 * we use the data pin to set the pad mode. */

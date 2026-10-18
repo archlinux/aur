@@ -35,7 +35,7 @@ cat >> PKGBUILD.new <<'CUSTOM'
 
 pkgdesc="${pkgdesc} + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA)"
 
-# nealstar's 16 codec patches from CachyOS issue 737
+# nealstar's codec patches from CachyOS issue 737
 # https://github.com/CachyOS/linux-cachyos/issues/737#issuecomment-2832947040
 source+=(
     0001-ALSA-tas2783-sdw-add-Playback-to-volume-control.patch
@@ -43,16 +43,12 @@ source+=(
     0003-removed-unused-fields.patch
     0004-SOC_SINGLE_RANGE_TLV-uses-snd_soc_get_volsw-snd_soc_.patch
     0005-dev_set_drvdata-already-called-intas_sdw_probe.patch
-    0006-refactor-setting-sa_func_data.patch
     0007-check-AF01-for-init-data.patch
     0008-setup-ports.patch
     0009-Already-set-by-SOC_SINGLE_RANGE_TLV-Speaker-Playback.patch
     0010-control-to-set-channel.patch
     0011-mute-unmute-using-SND_SOC_DAPM_SWITCH.patch
     0012-use-SND_SOC_DAPM_REG-to-power-on-off.patch
-    0013-reattach-after-resume.patch
-    0014-defer-check.patch
-    0015-to-help-alsa-find-them.patch
     0016-cleanup-controls.patch
     0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
     0018-async-codec-resume.patch
@@ -62,11 +58,12 @@ source+=(
     # replacing the original 0019 (raise VPE_IDLE_TIMEOUT to 2s).
     0019-drm-amdgpu-vpe-keep-dpm0-idle-gate-on-strix-halo.patch
     0020-usb-xhci-pci-reset-on-resume-quirk-for-amd-strix-halo.patch
+    0021-ASoC-tas2783-sdw-write-the-register-cache-back-after-a-reset.patch
+    0022-drm-amd-display-guard-NULL-DDC-pins.patch
 )
 b2sums+=(
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-    SKIP SKIP
 )
 CUSTOM
 

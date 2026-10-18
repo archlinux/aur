@@ -1,25 +1,27 @@
 diff --git a/include/sound/soc_sdw_utils.h b/include/sound/soc_sdw_utils.h
-index 227347c8f0b3..9d8a13ca9139 100644
+index 9b28e9a..bc8ea43 100644
 --- a/include/sound/soc_sdw_utils.h
 +++ b/include/sound/soc_sdw_utils.h
-@@ -267,7 +267,5 @@ int asoc_sdw_ti_amp_init(struct snd_soc_card *card,
- 			 struct asoc_sdw_codec_info *info,
- 			 bool playback);
+@@ -286,8 +286,6 @@ int asoc_sdw_ti_amp_init(struct snd_soc_card *card,
  int asoc_sdw_ti_spk_rtd_init(struct snd_soc_pcm_runtime *rtd, struct snd_soc_dai *dai);
+ int asoc_sdw_ti_tac5xx2_spk_rtd_init(struct snd_soc_pcm_runtime *rtd,
+ 				     struct snd_soc_dai *dai);
 -int asoc_sdw_ti_amp_initial_settings(struct snd_soc_card *card,
 -				     const char *name_prefix);
- 
- #endif
+ int asoc_sdw_ti_dmic_rtd_init(struct snd_soc_pcm_runtime *rtd, struct snd_soc_dai *dai);
+ int asoc_sdw_ti_sdca_jack_rtd_init(struct snd_soc_pcm_runtime *rtd, struct snd_soc_dai *dai);
+ int asoc_sdw_es9356_rtd_init(struct snd_soc_pcm_runtime *rtd, struct snd_soc_dai *dai);
 diff --git a/sound/soc/sdw_utils/soc_sdw_ti_amp.c b/sound/soc/sdw_utils/soc_sdw_ti_amp.c
-index 488ef2ef45d4..e26462c87261 100644
+index d0ae5d7..3356bae 100644
 --- a/sound/soc/sdw_utils/soc_sdw_ti_amp.c
 +++ b/sound/soc/sdw_utils/soc_sdw_ti_amp.c
-@@ -12,31 +12,6 @@
- #include <sound/soc-dai.h>
+@@ -14,32 +14,8 @@
+ #include <sound/soc.h>
  #include <sound/soc_sdw_utils.h>
  
 -#define TIAMP_SPK_VOLUME_0DB		200
--
+ #define TAC5XX2_WIDGET_NAME_MAX		32
+ 
 -int asoc_sdw_ti_amp_initial_settings(struct snd_soc_card *card,
 -				     const char *name_prefix)
 -{
@@ -46,7 +48,7 @@ index 488ef2ef45d4..e26462c87261 100644
  int asoc_sdw_ti_spk_rtd_init(struct snd_soc_pcm_runtime *rtd,
  			     struct snd_soc_dai *dai)
  {
-@@ -69,9 +44,6 @@ int asoc_sdw_ti_spk_rtd_init(struct snd_soc_pcm_runtime *rtd,
+@@ -72,9 +48,6 @@ int asoc_sdw_ti_spk_rtd_init(struct snd_soc_pcm_runtime *rtd,
  		}
  
  		snprintf(widget_name, sizeof(widget_name), "%s SPK", prefix);
@@ -56,6 +58,3 @@ index 488ef2ef45d4..e26462c87261 100644
  
  		ret = snd_soc_dapm_add_routes(dapm, &route, 1);
  		if (ret)
--- 
-2.54.0
-

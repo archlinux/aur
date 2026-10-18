@@ -1,5 +1,5 @@
 diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
-index 34c4850347fd..ad37a8acd5ca 100644
+index 8dd9d12..80087ff 100644
 --- a/sound/soc/codecs/tas2783-sdw.c
 +++ b/sound/soc/codecs/tas2783-sdw.c
 @@ -79,7 +79,6 @@ struct calibration_data {
@@ -22,25 +22,30 @@ index 34c4850347fd..ad37a8acd5ca 100644
  	bool hw_init;
  	/* wq for firmware download */
  	wait_queue_head_t fw_wait;
-@@ -1010,7 +1005,6 @@ static s32 tas_component_probe(struct snd_soc_component *component)
- 	struct tas2783_prv *tas_dev =
- 		snd_soc_component_get_drvdata(component);
+@@ -1014,26 +1009,7 @@ static struct snd_soc_dai_driver tas_dai_driver[] = {
+ 	},
+ };
  
+-static s32 tas_component_probe(struct snd_soc_component *component)
+-{
+-	struct tas2783_prv *tas_dev =
+-		snd_soc_component_get_drvdata(component);
+-
 -	tas_dev->component = component;
- 	tas25xx_register_misc(tas_dev->sdw_peripheral);
- 
- 	return 0;
-@@ -1018,10 +1012,7 @@ static s32 tas_component_probe(struct snd_soc_component *component)
- 
- static void tas_component_remove(struct snd_soc_component *codec)
- {
+-
+-	return 0;
+-}
+-
+-static void tas_component_remove(struct snd_soc_component *codec)
+-{
 -	struct tas2783_prv *tas_dev =
 -			snd_soc_component_get_drvdata(codec);
- 	tas25xx_deregister_misc();
 -	tas_dev->component = NULL;
- }
- 
+-}
+-
  static const struct snd_soc_component_driver soc_codec_driver_tasdevice = {
--- 
-2.54.0
-
+-	.probe = tas_component_probe,
+-	.remove = tas_component_remove,
+ 	.controls = tas2783_snd_controls,
+ 	.num_controls = ARRAY_SIZE(tas2783_snd_controls),
+ 	.dapm_widgets = tas_dapm_widgets,
