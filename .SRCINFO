@@ -1,6 +1,6 @@
 pkgbase = fdpp
 	pkgdesc = 64 bit FreeDOS++ for dosemu2
-	pkgver = 1.10.r45.gc6c5a89c
+	pkgver = 1.11
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/dosemu2/fdpp
@@ -15,18 +15,15 @@ pkgbase = fdpp
 	makedepends = nasm
 	makedepends = meson
 	makedepends = git
-	makedepends = git
 	depends = libgcc
 	depends = libstdc++
 	depends = glibc
 	depends = libelf
-	provides = fdpp=1.10
-	conflicts = fdpp
 	options = !strip
 	options = !buildflags
 	options = !lto
-	source = git+https://github.com/dosemu2/fdpp.git#commit=c6c5a89c47511582a45b0ac9593f571381992375
-	md5sums = SKIP
-	sha256sums = SKIP
+	source = fdpp-1.11.tar.gz::https://github.com/dosemu2/fdpp/archive/1.11.tar.gz
+	md5sums = ae7a23fe713ac84b7e2742cde6a84bd6
+	sha256sums = 66a66103847ed33167c9d869c9272d6a96613489b381060e61f84e385e8a3db5
 
 pkgname = fdpp

@@ -3,14 +3,14 @@
 
 _opt_meson=1
 _opt_commit=''
-_opt_commit='#commit=c6c5a89c47511582a45b0ac9593f571381992375'
+#_opt_commit='#commit=c6c5a89c47511582a45b0ac9593f571381992375'
 
 set -u
 _pkgname='fdpp'
 pkgname='fdpp'
 #pkgname+='-git'
 epoch=0
-pkgver=1.10.r45.gc6c5a89c
+pkgver=1.11
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=(
@@ -50,8 +50,8 @@ _srcdir="${pkgname%-git}-${pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz"
 )
-md5sums=('5f9c5c7bfa7514f41512f38d894668da')
-sha256sums=('b2e036c19f7b02f8ef4d2254f3cc6f7d9a3462d582621e6b2e9cc4fc1623f17a')
+md5sums=('ae7a23fe713ac84b7e2742cde6a84bd6')
+sha256sums=('66a66103847ed33167c9d869c9272d6a96613489b381060e61f84e385e8a3db5')
 
 prepare() {
   local -; set -u
