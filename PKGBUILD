@@ -9,7 +9,7 @@ _pkgname=therapist
 _cratename=${_pkgname}
 _execname=thr
 pkgname=${_cratename}
-pkgdesc="A blazingly fast terminal log viewer: open multi-GB logs at once, move with vim keys, and narrow them down with cascading grep tabs, search, bookmarks and highlights"
+pkgdesc="A blazingly fast terminal log viewer"
 
 pkgver=0.1.1
 pkgrel=1
@@ -23,30 +23,29 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
 
 makedepends=('rust')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 
 provides=("${_execname}")
-conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('f96734a6f547c30919997c500fd7e980f4ed0bd952b053990a832abf128ef8e2')
 
 
 prepare() {
-	cd "${pkgname}-${pkgver}" || exit
+	cd "${_cratename}-${pkgver}" || exit
 
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-	cd "${pkgname}-${pkgver}" || exit
+	cd "${_cratename}-${pkgver}" || exit
 
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release
 }
 
 check() {
-	cd "${pkgname}-${pkgver}" || exit
+	cd "${_cratename}-${pkgver}" || exit
 
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release -- \
@@ -55,7 +54,7 @@ check() {
 }
 
 package() {
-	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
+	cd "${_cratename}-${pkgver}" || exit
 
 	install -Dm755 "target/release/${_execname}" "${pkgdir}/usr/bin/${_execname}"
 
