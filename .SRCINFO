@@ -1,0 +1,23 @@
+pkgbase = httprunner
+	pkgdesc = Execute HTTP requests from .http files (CLI, TUI and GUI)
+	pkgver = 1.2.55
+	pkgrel = 1
+	url = https://github.com/christianhelle/httprunner
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	optdepends = libxkbcommon: required by httprunner-gui
+	optdepends = wayland: httprunner-gui on Wayland
+	optdepends = libx11: httprunner-gui on X11
+	optdepends = libglvnd: OpenGL rendering for httprunner-gui
+	source = httprunner-1.2.55.tar.gz::https://github.com/christianhelle/httprunner/archive/refs/tags/1.2.55.tar.gz
+	source = httprunner-gui.desktop
+	sha256sums = 3d9ec0e996cb4f561022478eee6f75dc61c59e9be70f22b77be610c1fd36600d
+	sha256sums = 630c69eed75b0ac17c11789ae1f629c496bcfa0e79fea5aad6b88cf48377bfca
+
+pkgname = httprunner
