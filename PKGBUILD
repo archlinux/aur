@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=xodopdfreader
-pkgver=2026.2.0
+pkgver=2026.3.0
 pkgrel=1
 pkgdesc='Open, view, annotate, fill out forms, and sign PDF documents'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=('dpkg' 'desktop-file-utils' 'gendesk' 'libarchive')
 _deb="${pkgname}-${pkgver}_linux64.deb"
 noextract=("${_deb}")
 source=("${_deb}::https://getpdfstudio.xodo.com/${pkgname}/XodoPDFReader_linux64.deb")
-b2sums=('34dc07644c774d40ddfda8d3d631a682b086d791dece39f9b7080bb264be5e86f6ba8515234345bf22bab175428299780c05e0127b6fee8be19261d052ee1410')
+b2sums=('faf629c9f5dd3dd1fc018ffb3badd354969c51373bf1442d5b870628b297c287fd956dd05ee1299297366a3d4f04f6f4ecb64525891569910f97e07667dd4760')
 
 # Pin the Java version to 25 (OpenJDK). (Java versions >= 26 are not compatible.)
 _jre_version=25
