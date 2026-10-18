@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.1.r6694.6a42a7b
+pkgver=3.11.1.r6700.10f1967
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -44,12 +44,6 @@ build() {
 
 check() {
   cd nuclei
-  export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
-  export CGO_CXXFLAGS="$CXXFLAGS"
-  export CGO_LDFLAGS="$LDFLAGS"
-  export GOPATH="$srcdir"
-  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
   local _skip=(
     'lib' # Connects to an external host and gets an unexpected result
     'pkg/operators/common/dsl' # Always returns nil, but expects an error
