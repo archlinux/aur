@@ -1,6 +1,6 @@
 # Maintainer: CastSound Team <ci@castsound.app>
 pkgname=castsound-bin
-pkgver=1.0.28
+pkgver=1.0.29
 pkgrel=1
 pkgdesc="Use your phone as a wireless speaker, microphone and webcam for your computer"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=('.managed_by_aur')
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 source_x86_64=("CastSound-${pkgver}-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("CastSound-${pkgver}-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('429e9942a325d86186c441e23b4a1c25d06d63640f9f202500565ed8c4de28db')
-sha256sums_aarch64=('e9bf4061b794418f634e78d178a72a564c851f704ed557db613b3a5fa86f9836')
+sha256sums_x86_64=('03b58ef575898f3417a4bf10523c9a13f4347ad160871131ca750a6fa73975dc')
+sha256sums_aarch64=('12a9896efa47d871ca2ebf5284501d9843a1ca2c6514ccae21773654ca7a8207')
 
 package() {
   cd "${srcdir}"
