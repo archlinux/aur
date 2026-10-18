@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=('start-stop-daemon: sysv support')
 makedepends=(cargo git curl pkgconf openssl)
-sha256sums=('a44a1d4df000371d45347e25bc0f53cd4908a6289468a211ef16882cbb84141f')
+sha256sums=('1b4c34e042231f60ae32051b981835a41c31020de5766cb1044329959deec83d')
 source=("git+https://git.sr.ht/~yukikoo/dane_without_root?signed#tag=dane-${pkgver}")
 validpgpkeys=('FB798BFB115895C9C95900649C2B29DD4A62ED27')
 backup=(
