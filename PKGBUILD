@@ -2,7 +2,7 @@
 pkgname=thiefmd
 _app_id="com.github.kmwallio.$pkgname"
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
 url="https://thiefmd.com"
@@ -26,6 +26,10 @@ makedepends=(
   'git'
   'meson'
   'vala'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
 )
 source=("git+https://github.com/kmwallio/ThiefMD.git#tag=v$pkgver"
         'git+https://github.com/ThiefMD/libwritegood-vala.git'
