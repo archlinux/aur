@@ -1,6 +1,6 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=2.14.3
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux: instant replay, session recording, and one-click sharing"
 arch=('x86_64')
@@ -36,6 +36,9 @@ depends=(
 optdepends=(
     'wf-recorder: Wayland fallback recording backend'
     'kdotool: game detection on KDE Plasma Wayland'
+    'python-gobject: keyboard overlay'
+    'python-cairo: keyboard overlay'
+    'gtk-layer-shell: keyboard overlay on Wayland'
 )
 makedepends=(
     'python-build'
