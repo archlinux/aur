@@ -6,7 +6,7 @@ pkgbase = ecapp
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/missercatos/ecapp/releases/download/v0.3.1/ecapp-v0.3.1-x86_64-linux.tar.gz
+	source = https://github.com/missercatos/ecapp/releases/download/v0.3.2/ecapp-v0.3.2-x86_64-linux.tar.gz
 	sha256sums = 6eb5ff78fc5b21e879213efdf64188845c57b2d77393e598059365d7ac5e808f
 
 pkgname = ecapp
