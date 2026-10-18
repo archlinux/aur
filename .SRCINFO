@@ -6,6 +6,7 @@ pkgbase = libpdfium
 	arch = x86_64
 	license = Apache-2.0 AND MIT AND BSD-3-Clause AND (Apache-2.0 WITH LLVM-exception AND (MIT OR NCSA))
 	makedepends = clang
+	makedepends = compiler-rt
 	makedepends = fast_float
 	makedepends = gn
 	makedepends = lld

@@ -22,6 +22,7 @@ depends=(
 )
 makedepends=(
   clang
+  compiler-rt
   fast_float
   gn
   lld
