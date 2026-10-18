@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=marker-git
-pkgver=2023.05.02.r27.g5866118
+pkgver=2023.05.02.r41.g150d4e7
 pkgrel=1
 pkgdesc="Markdown editor for linux made with Gtk+-3.0"
 arch=('x86_64')
-url="https://fabiocolacio.xyz/Marker"
+url="https://github.com/fabiocolacio/Marker"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
-  'gtksourceview3'
+  'gtksourceview4'
   'gtkspell3'
   'webkit2gtk-4.1'
 )
@@ -18,10 +18,13 @@ makedepends=(
   'itstool'
   'meson'
 )
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=(
   'mathjax2: alternative backend for rendering formulas'
-  'pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX'
+  'pandoc-cli: export to HTML, PDF, RTF, OTF, DOCX, LaTeX'
   'yelp: in-app help'
 )
 provides=("${pkgname%-*}")
@@ -29,13 +32,11 @@ conflicts=("${pkgname%-*}")
 source=('git+https://github.com/fabiocolacio/Marker.git'
         'git+https://github.com/Mandarancio/scidown.git'
         'git+https://github.com/Mandarancio/charter.git'
-        'git+https://github.com/codeplea/tinyexpr.git'
-        'add_gi18n_h.patch')
+        'git+https://github.com/codeplea/tinyexpr.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'a549a622d3d58936643f4932235711c03a38550d09266e1863a936e41618b661')
+            'SKIP')
 
 pkgver() {
   cd Marker
@@ -50,11 +51,11 @@ prepare() {
 
   # Update version
   sed -i "s/2020.04.04/${pkgver%%.r*}/g" meson.build
- 
-  # Unbundle mathjax
-  sed -i 's|file:///usr/share/javascript/mathjax/MathJax.js|file:///usr/share/mathjax2/MathJax.js|' src/marker-markdown.c
 
-  patch -Np1 -i ../add_gi18n_h.patch
+  # Set path for MathJax
+  sed -i \
+    's|file:///usr/share/javascript/mathjax/MathJax.js|file:///usr/share/mathjax/tex-chtml.js|' \
+      src/marker-markdown.c
 
   cd src/scidown
   git submodule init
@@ -68,10 +69,6 @@ prepare() {
 }
 
 build() {
-
-  # Remove optimalization as it breaks charter
-  export CFLAGS=${CFLAGS/ -O2}
-
   arch-meson Marker build
   meson compile -C build
 }
