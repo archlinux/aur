@@ -7,7 +7,7 @@
 # `sha256sums` here are updated per release by scripts/release.sh.
 
 pkgname=paruguard
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Zero-trust AUR installer: hardened, auditable wrapper around paru/pacman"
 arch=('any')
@@ -40,7 +40,7 @@ conflicts=('paruguard-git')
 options=('!strip')  # nothing to strip; pure Bash
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jesse-osiecki/paruguard/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('34354cf968623c3841ef2f7122bb5e598905dcee150b45f4921cf798cf994d3f')
+sha256sums=('22c794f83eaf938657beb5b87af85b0aaf9c2b3c6c11a61d5cafff5632f12755')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
