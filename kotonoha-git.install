@@ -1,0 +1,7 @@
+post_remove() {
+    # Only remove files owned by the rebuild helper; preserve unexpected state.
+    rm -f /var/lib/kotonoha/libkoto-layer.so /var/lib/kotonoha/build.lock
+    if [[ -d /var/lib/kotonoha ]]; then
+        rmdir /var/lib/kotonoha
+    fi
+}

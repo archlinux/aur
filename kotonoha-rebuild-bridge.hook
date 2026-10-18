@@ -1,0 +1,16 @@
+# Package targets coalesce into one build after all libraries are installed.
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = kotonoha-git
+Target = qt6-base
+Target = qt6-wayland
+Target = layer-shell-qt
+Target = python-pyqt6
+
+[Action]
+Description = Rebuilding Kotonoha native bridge against system Qt...
+When = PostTransaction
+Depends = kotonoha-git
+Exec = /usr/lib/kotonoha/rebuild-bridge
