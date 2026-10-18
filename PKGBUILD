@@ -1,6 +1,6 @@
 # Maintainer: stevedefacto (https://aur.archlinux.org/account/stevedefacto)
 pkgname=enclavedns
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="EnclaveDNS client: DNS through EnclaveDNS (DNSSEC validated in an attested enclave), and .eth sites in the browser"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ install=enclavedns.install
 # ring's C code built with makepkg's -flto is GCC bytecode the Rust linker cannot read
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3e7317cf11013882f6bb199a9c5471034ff7204c1054b6abcfbe1921720e496')
+sha256sums=('188d549114383e8dd43cbe517313786646deb715e87732d636d5979a5f1e7642')
 
 prepare() {
   cd "enclavedns-client-$pkgver"
