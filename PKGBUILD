@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=system-monitoring-center
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-featured system monitor"
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
@@ -21,6 +21,10 @@ depends=(
   'util-linux'
 )
 makedepends=('meson')
+checkdepends=(
+  # 'appstream-glib'  ## test commented out in data/meson.build
+  'desktop-file-utils'
+)
 optdepends=(
   'amdgpu_top: for video engine load on GPU tab and per-process GPU usage, GPU memory columns on Processes tab'
   'raspberrypi-utils: for physical RAM size, GPU frequency and video memory information on Raspberry Pi devices'
@@ -36,9 +40,6 @@ build() {
 
 check() {
   meson test -C build --no-rebuild --print-errorlogs
-
-  appstreamcli validate --no-net \
-    "build/data/io.github.hakandundar34coding.$pkgname.appdata.xml"
 }
 
 package() {

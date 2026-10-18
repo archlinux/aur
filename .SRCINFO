@@ -1,10 +1,11 @@
 pkgbase = system-monitoring-center
 	pkgdesc = Multi-featured system monitor
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
 	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
 	makedepends = meson
 	depends = dmidecode
 	depends = gtk4
