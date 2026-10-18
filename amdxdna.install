@@ -1,0 +1,34 @@
+post_install() {
+  local datadir=/opt/xilinx/xrt/share/amdxdna
+
+  # Install DKMS module
+  if [ -x "$datadir/dkms_driver.sh" ]; then
+    "$datadir/dkms_driver.sh" --install
+  else
+    echo "WARNING: $datadir/dkms_driver.sh not found, skipping DKMS install." >&2
+  fi
+
+  # Load module
+  rmmod amdxdna > /dev/null 2>&1 || true
+  modprobe amdxdna || echo "WARNING: Failed to load amdxdna. Check dmesg." >&2
+
+  echo ""
+  echo "AMD XDNA installed. Test with:"
+  echo "  source /opt/xilinx/xrt/setup.sh && xrt-smi validate"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  local datadir=/opt/xilinx/xrt/share/amdxdna
+
+  if lsmod | grep -q "^amdxdna "; then
+    rmmod amdxdna
+  fi
+
+  if [ -x "$datadir/dkms_driver.sh" ]; then
+    "$datadir/dkms_driver.sh" --remove
+  fi
+}
