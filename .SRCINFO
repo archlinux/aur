@@ -1,0 +1,11 @@
+pkgbase = linux-cachyos-dbg-link
+	pkgdesc = Build-id store link for the CachyOS kernel debug image
+	pkgver = 7.2.9_2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = linux-cachyos-dbg
+	options = !strip
+	options = !debug
+
+pkgname = linux-cachyos-dbg-link
