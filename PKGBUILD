@@ -1,8 +1,8 @@
 # Maintainer: nopw <aur@n0.pw>
 
 pkgname=stremio-linux-shell-git
-pkgver=v1.2.2.r18.g0ac526a
-pkgrel=2
+pkgver=v1.2.2.r36.gd7b2c91
+pkgrel=1
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
 url="https://github.com/Stremio/stremio-linux-shell"
@@ -37,8 +37,8 @@ makedepends=(
 provides=('stremio-linux-shell' 'stremio')
 conflicts=('stremio' 'stremio-linux-shell')
 options=(!lto)
-source=("git+https://github.com/Stremio/stremio-linux-shell.git" "patch-server-path-env.patch" "fix-mpv-locale.patch")
-sha256sums=('SKIP' 'c20584d54991c6efc9d1dcdb0192e5a5b604c0bc85eeff224d62645af6e97c8d' '43adf37f945378793a666b4891cd3d5d721b98a83c21a961c685bec8ddd1c7e9')
+source=("git+https://github.com/Stremio/stremio-linux-shell.git" "patch-server-path-env.patch")
+sha256sums=('SKIP' 'c20584d54991c6efc9d1dcdb0192e5a5b604c0bc85eeff224d62645af6e97c8d')
 
 pkgver() {
   cd "stremio-linux-shell"
@@ -49,7 +49,6 @@ prepare() {
   cd "stremio-linux-shell"
 
   patch -Np1 -i ../patch-server-path-env.patch 
-  patch -Np1 -i ../fix-mpv-locale.patch
 
   cargo fetch --locked
 }
