@@ -1,0 +1,25 @@
+pkgbase = gtaiv-eflc-fusionfix-bin
+	pkgdesc = Mod that fixes and improves Grand Theft Auto IV: The Complete Edition, for Proton and Wine (upstream binary)
+	pkgver = 5.1.2
+	pkgrel = 1
+	url = https://github.com/ThirteenAG/GTAIV.EFLC.FusionFix
+	install = gtaiv-eflc-fusionfix-bin.install
+	arch = any
+	license = GPL-3.0-only
+	license = MIT
+	license = Zlib
+	optdepends = protontricks: installs d3dx9_43 into the game's Proton prefix, which upstream asks for
+	provides = gtaiv-eflc-fusionfix
+	conflicts = gtaiv-eflc-fusionfix
+	noextract = gtaiv-eflc-fusionfix-bin-5.1.2.zip
+	options = !strip
+	source = gtaiv-eflc-fusionfix-bin-5.1.2.zip::https://github.com/ThirteenAG/GTAIV.EFLC.FusionFix/releases/download/v5.1.2/GTAIV.EFLC.FusionFix.zip
+	source = gtaiv-eflc-fusionfix-bin-5.1.2-license::https://raw.githubusercontent.com/ThirteenAG/GTAIV.EFLC.FusionFix/v5.1.2/license
+	source = dxvk-3.1.1-LICENSE::https://raw.githubusercontent.com/doitsujin/dxvk/v3.1.1/LICENSE
+	source = ultimate-asi-loader-d124a34-license::https://raw.githubusercontent.com/ThirteenAG/Ultimate-ASI-Loader/d124a3459a50fcccc0ab4a01bd0925825605e0c2/license
+	sha256sums = 138f4067a2d2f09df2df80c4378407ad7c742be0e3b99f090633d50820bb2450
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = a5cb1a6ded7d2d7e92d550ba28edd21be2d1d4044662b399887351023e30ce64
+	sha256sums = ceca73c504e39084b0b80d2a437aea9988313d1915418d3c629c3e4a8313f5a1
+
+pkgname = gtaiv-eflc-fusionfix-bin

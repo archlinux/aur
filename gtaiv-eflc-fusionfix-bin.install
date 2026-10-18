@@ -1,0 +1,28 @@
+post_install() {
+  cat <<'MSG'
+
+  FusionFix is installed but not active yet. Copy it into the game folder,
+  the one with GTAIV.exe:
+
+    gtaiv-eflc-fusionfix-install "/path/to/GTAIV"
+
+  Under Proton or Wine the game must load dinput8.dll from that folder. Set
+  this as the game's Steam launch options:
+
+    WINEDLLOVERRIDES="dinput8=n,b" %command%
+
+  Upstream also asks for d3dx9_43 in the game's prefix:
+
+    protontricks 12210 d3dx9_43
+
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+
+  Run gtaiv-eflc-fusionfix-install again to update the copy in your game
+  folder.
+
+MSG
+}
