@@ -1,7 +1,7 @@
 pkgbase = gtaiv-eflc-fusionfix-bin
 	pkgdesc = Mod that fixes and improves Grand Theft Auto IV: The Complete Edition, for Proton and Wine (upstream binary)
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ThirteenAG/GTAIV.EFLC.FusionFix
 	install = gtaiv-eflc-fusionfix-bin.install
 	arch = any

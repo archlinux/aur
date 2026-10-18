@@ -4,7 +4,7 @@
 
 pkgname=gtaiv-eflc-fusionfix-bin
 pkgver=5.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Mod that fixes and improves Grand Theft Auto IV: The Complete Edition, for Proton and Wine (upstream binary)"
 # Windows DLLs and game data, loaded by the game under Proton or Wine
 arch=('any')
@@ -35,24 +35,12 @@ package() {
   local share="$pkgdir/usr/share/gtaiv-eflc-fusionfix"
 
   # The game only loads the mod from its own folder, so the files are kept
-  # here and copied over by the helper below. Upstream's install guide is
-  # the same: unpack the zip next to GTAIV.exe.
+  # here and the install hooks copy them into each Steam copy of the game.
+  # Upstream's install guide is the same: unpack the zip next to GTAIV.exe.
   install -d "$share"
   bsdtar -xf "$srcdir/$pkgname-$pkgver.zip" -C "$share"
   find "$share" -type d -exec chmod 755 {} +
   find "$share" -type f -exec chmod 644 {} +
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/gtaiv-eflc-fusionfix-install" <<'EOF'
-#!/bin/sh
-# Copies FusionFix into a GTA IV: The Complete Edition folder.
-set -e
-if [ "$#" -ne 1 ] || [ ! -f "$1/GTAIV.exe" ]; then
-  echo "usage: ${0##*/} <game folder with GTAIV.exe>" >&2
-  exit 1
-fi
-cp -r /usr/share/gtaiv-eflc-fusionfix/. "$1/"
-echo "FusionFix copied to $1"
-EOF
 
   install -Dm644 "$srcdir/$pkgname-$pkgver-license" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

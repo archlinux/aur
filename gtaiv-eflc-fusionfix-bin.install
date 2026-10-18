@@ -1,13 +1,64 @@
+# The game only loads FusionFix from its own folder. So these hooks copy the
+# files from /usr/share/gtaiv-eflc-fusionfix into every Steam copy of GTA IV
+# on this machine, and take them out again on removal. An upgrade does both,
+# so files a new release drops do not stay behind. FusionFix's own settings
+# (d3d9.cfg, plugins/GTAIV.EFLC.FusionFix.cfg) are never touched.
+
+_src=/usr/share/gtaiv-eflc-fusionfix
+
+# game folders in every user's Steam libraries, native and Flatpak
+_games() {
+  getent passwd | while IFS=: read -r _ _ uid _ _ home _; do
+    [ "$uid" -ge 1000 ] 2>/dev/null || continue
+    for vdf in "$home/.local/share/Steam/steamapps/libraryfolders.vdf" \
+               "$home/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/libraryfolders.vdf"; do
+      [ -f "$vdf" ] && sed -n 's/^[[:space:]]*"path"[[:space:]]*"\(.*\)"$/\1/p' "$vdf"
+    done
+  done | sort -u | while IFS= read -r lib; do
+    game="$lib/steamapps/common/Grand Theft Auto IV/GTAIV"
+    [ -f "$game/GTAIV.exe" ] && echo "$game"
+  done
+}
+
+# runs a script as the folder's owner, so nothing in it ends up owned by root
+_as_owner() {
+  runuser -u "$(stat -c %U "$1")" -- sh -c "$2" _ "$_src" "$1"
+}
+
+_copy() {
+  games="$(_games)"
+  if [ -z "$games" ]; then
+    cat <<'MSG'
+
+  No Steam copy of GTA IV: The Complete Edition found. Reinstall this
+  package after installing the game. For other copies, put the contents of
+  /usr/share/gtaiv-eflc-fusionfix into the folder with GTAIV.exe.
+
+MSG
+    return
+  fi
+  printf '%s\n' "$games" | while IFS= read -r game; do
+    _as_owner "$game" 'cp -r "$1/." "$2/"' && echo "  FusionFix copied to $game"
+  done
+}
+
+# files first, then the directories that are left empty
+_remove() {
+  _games | while IFS= read -r game; do
+    _as_owner "$game" 'cd "$1" &&
+      find . -type f -exec rm -f "$2/{}" \; &&
+      find . -mindepth 1 -depth -type d -exec rmdir "$2/{}" \; 2>/dev/null'
+    echo "  FusionFix removed from $game"
+  done
+}
+
 post_install() {
+  _copy
   cat <<'MSG'
 
-  FusionFix is installed but not active yet. Copy it into the game folder,
-  the one with GTAIV.exe:
-
-    gtaiv-eflc-fusionfix-install "/path/to/GTAIV"
-
-  Under Proton or Wine the game must load dinput8.dll from that folder. Set
-  this as the game's Steam launch options:
+  Under Proton or Wine the game must load dinput8.dll from its folder. If
+  FusionFix does not show up in the game's menu, set this as the Steam
+  launch options:
 
     WINEDLLOVERRIDES="dinput8=n,b" %command%
 
@@ -18,11 +69,14 @@ post_install() {
 MSG
 }
 
+pre_upgrade() {
+  _remove
+}
+
 post_upgrade() {
-  cat <<'MSG'
+  _copy
+}
 
-  Run gtaiv-eflc-fusionfix-install again to update the copy in your game
-  folder.
-
-MSG
+pre_remove() {
+  _remove
 }
