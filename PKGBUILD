@@ -6,7 +6,7 @@
 
 pkgname=autopano-sift-c
 pkgver=2.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Identify key feature points within arbitrary images"
 arch=('i686' 'x86_64')
 url="http://hugin.sourceforge.net/"
@@ -21,8 +21,9 @@ md5sums=('b9bade07e8c4f2ea383c22a082c260e0')
 
 build() {
   cd "${srcdir}/autopano-sift-C-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  sed -i 's/-lz/-lz -lm/' CMakeFiles/{autopano,generatekeys}.dir/link.txt
+  # CMake 4 refuses projects that require CMake < 3.5; the programs use libm without linking it
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_C_STANDARD_LIBRARIES=-lm .
   make
 }
 
