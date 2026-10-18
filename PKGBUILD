@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 
 options=('!strip')
 
-source=("${_ghurlraw}/readme.md")
+source=("README-${pkgver}.md::${_ghurlraw}/readme.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.gz")
 sha256sums=('22c0ad6369e8b6fb7ffd6e7c2e737f0c55e6e4bb148f86025bc215a30e4d1b46')
@@ -39,7 +39,7 @@ package() {
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
