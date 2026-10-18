@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fotema
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Photo gallery for Linux"
 arch=('x86_64')
@@ -40,7 +40,7 @@ checkdepends=(
   'desktop-file-utils'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2422758d4d0721dc146e30707d410d36d1ea6d1020fa7b0f162d7e1b03c36aad')
+sha256sums=('285987f44fccae02f81d085c2d927a5570d25f943dffab788981033ca3b3e113')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -51,10 +51,6 @@ prepare() {
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-
-  # https://github.com/aws/aws-lc-rs/issues/1097
-  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
-
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
