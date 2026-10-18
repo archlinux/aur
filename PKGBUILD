@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.1.r6653.59dad1b
+pkgver=3.11.1.r6694.6a42a7b
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -14,7 +14,7 @@ makedepends=(
   'go>=1.27.1'
 )
 provides=("nuclei=$pkgver")
-conflicts=("nuclei")
+conflicts=("nuclei"{,-debug})
 source=("git+https://github.com/projectdiscovery/nuclei")
 b2sums=('SKIP')
 
