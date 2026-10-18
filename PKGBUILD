@@ -2,7 +2,8 @@
 
 pkgname=styx-go-git
 _pkgname=styx
-# renovate: datasource=github-releases depName=mikefarah/yq
+# renovate: pkgName=https://github.com/go-pluto/styx depName=styx-go-git
+_commit=da5d264310b8c062c3426bf8f8524e53396fe39a
 pkgver=r30.da5d264
 pkgrel=1
 pkgdesc='Export Prometheus data as CSV or directly plot with gnuplot & matplotlib'
