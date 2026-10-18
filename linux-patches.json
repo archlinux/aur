@@ -1,0 +1,333 @@
+[
+  {
+    "id": "linux-log-directory",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function va($DIR) { $$$BODY }"},
+    "fix": "function va($DIR) { $DIR = $DIR || require(\"./linux.cjs\").logDir(); $$$BODY }"
+  },
+  {
+    "id": "linux-crash-directory",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function Ta($$$ARGS) { $$$BODY }"},
+    "fix": "function Ta($$$ARGS) { return require(\"./linux.cjs\").crashDir(); }"
+  },
+  {
+    "id": "linux-start-helper",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function ka($CALLBACK) { $$$BODY }"},
+    "fix": "function ka($CALLBACK) { Dt = $CALLBACK; Ye = true; require(\"./linux.cjs\").start(Wd, Y, c); }"
+  },
+  {
+    "id": "linux-send-helper",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function _e($MESSAGE) { $$$BODY }"},
+    "fix": "function _e($MESSAGE) { return require(\"./linux.cjs\").send($MESSAGE); }"
+  },
+  {
+    "id": "linux-stop-helper",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function gi() { $$$BODY }"},
+    "fix": "function gi() { require(\"./linux.cjs\").stop(); Ye = false; }"
+  },
+  {
+    "id": "linux-check-updates",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "async function Di($$$ARGS) { $$$BODY }"},
+    "fix": "async function Di($$$ARGS) { return require(\"./linux.cjs\").updates(); }"
+  },
+  {
+    "id": "linux-install-updates",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "async function Ii($$$ARGS) { $$$BODY }"},
+    "fix": "async function Ii($$$ARGS) { return require(\"./linux.cjs\").updates(); }"
+  },
+  {
+    "id": "linux-disable-update-timer",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function sn($$$ARGS) { $$$BODY }"},
+    "fix": "function sn($$$ARGS) {}"
+  },
+  {
+    "id": "linux-disable-update-notifications",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function nl($$$ARGS) { $$$BODY }"},
+    "fix": "function nl($$$ARGS) {}"
+  },
+  {
+    "id": "linux-disable-staged-update",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function ct() { $$$BODY }"},
+    "fix": "function ct() { return null; }"
+  },
+  {
+    "id": "linux-autostart-status",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "async function Ic() { $$$BODY }"},
+    "fix": "async function Ic() { return require(\"./linux.cjs\").autostartStatus(); }"
+  },
+  {
+    "id": "linux-location-status",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "async function fr() { $$$BODY }"},
+    "fix": "async function fr() { return false; }"
+  },
+  {
+    "id": "linux-reserved-shortcuts",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function ws() { $$$BODY }"},
+    "fix": "function ws() { return []; }"
+  },
+  {
+    "id": "linux-shortcut-validation",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "function _s($$$ARGS) { $$$BODY }"},
+    "fix": "function _s($$$ARGS) { return false; }"
+  },
+  {
+    "id": "linux-default-shortcut",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": {"context": "({ shortcut: \"Alt+Space\" })", "selector": "pair"}},
+    "fix": "shortcut: \"Ctrl+Alt+G\""
+  },
+  {
+    "id": "linux-desktop-identity",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "$ELECTRON.app.setAppUserModelId($ID)"},
+    "fix": "$ELECTRON.app.setDesktopName(\"com.google.Gemini.desktop\")"
+  },
+  {
+    "id": "linux-package-manager-updates",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "let $DISABLED = I === \"dev\""},
+    "fix": "let $DISABLED = true;"
+  },
+  {
+    "id": "linux-autostart-not-blocked",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "$WINDOW.webContents.send(\"settings:open-at-login-status\", {enabled: $ENABLED, blocked: !$ENABLED})"},
+    "fix": "$WINDOW.webContents.send(\"settings:open-at-login-status\", {enabled: $ENABLED, blocked: false})"
+  },
+  {
+    "id": "linux-close-to-tray",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "pattern": "$WINDOW.on(\"close\", () => { $$$BODY })",
+      "inside": {"pattern": "function Ys() { $$$INIT }", "stopBy": "end"}
+    },
+    "fix": "$WINDOW.on(\"close\", event => { if (require(\"./linux.cjs\").closeToTray(event)) return; $$$BODY })"
+  },
+  {
+    "id": "linux-require-target-focus",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "pattern": "$TARGET && Xi($TARGET);",
+      "inside": {"pattern": "async function oc($$$ARGS) { $$$BODY }", "stopBy": "end"}
+    },
+    "fix": "if ($TARGET && !Xi($TARGET)) return false;"
+  },
+  {
+    "id": "linux-microphone-settings",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "2"},
+    "rule": {"pattern": "$ELECTRON.shell.openExternal(\"ms-settings:privacy-microphone\")"},
+    "fix": "require(\"./linux.cjs\").openSettings(\"privacy-microphone\")"
+  },
+  {
+    "id": "linux-camera-settings",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "2"},
+    "rule": {"pattern": "$ELECTRON.shell.openExternal(\"ms-settings:privacy-webcam\")"},
+    "fix": "require(\"./linux.cjs\").openSettings(\"privacy-webcam\")"
+  },
+  {
+    "id": "linux-location-settings",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "2"},
+    "rule": {"pattern": "$ELECTRON.shell.openExternal(\"ms-settings:privacy-location\")"},
+    "fix": "require(\"./linux.cjs\").openSettings(\"privacy-location\")"
+  },
+  {
+    "id": "linux-startup-settings",
+    "language": "JavaScript",
+    "files": ["src/main.js"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "$ELECTRON.shell.openExternal(\"ms-settings:startupapps\")"},
+    "fix": "require(\"./linux.cjs\").openSettings(\"startupapps\")"
+  },
+  {
+    "id": "linux-package-metadata",
+    "language": "Json",
+    "files": ["package.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "object",
+      "all": [
+        {"has": {"pattern": {"context": "{\"name\": \"$NAME\"}", "selector": "pair"}, "stopBy": "end"}},
+        {"has": {"pattern": {"context": "{\"version\": \"$VERSION\"}", "selector": "pair"}, "stopBy": "end"}},
+        {"has": {"pattern": {"context": "{\"main\": \"$MAIN\"}", "selector": "pair"}, "stopBy": "end"}},
+        {"has": {"pattern": {"context": "{\"author\": \"$AUTHOR\"}", "selector": "pair"}, "stopBy": "end"}},
+        {"has": {"pattern": {"context": "{\"license\": \"$LICENSE\"}", "selector": "pair"}, "stopBy": "end"}}
+      ]
+    },
+    "fix": "{\n  \"name\": \"$NAME\",\n  \"version\": \"$VERSION\",\n  \"description\": \"Google Gemini desktop client with Linux integration\",\n  \"main\": \"$MAIN\",\n  \"private\": true,\n  \"author\": \"$AUTHOR\",\n  \"license\": \"$LICENSE\",\n  \"desktopName\": \"com.google.Gemini.desktop\",\n  \"productName\": \"Gemini\"\n}"
+  },
+  {
+    "id": "linux-narrow-settings-layout",
+    "language": "Html",
+    "files": ["src/settings/settings.html"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {"pattern": "<style>$CSS</style>"},
+    "fix": "<style>$CSS\n@media (max-width:760px){.setting-item{flex-direction:column;align-items:stretch}.select-container{width:100%}.setting-select,.shortcut-recorder-box{width:100%;min-width:0}}</style>"
+  },
+  {
+    "id": "linux-update-message-en",
+    "language": "Json",
+    "files": ["src/_locales/en/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_update_unavailable\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"Updates are managed by your system package manager.\""
+  },
+  {
+    "id": "linux-autostart-message-en",
+    "language": "Json",
+    "files": ["src/_locales/en/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_open_at_login_windows_warning\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"Automatic startup is disabled in desktop settings.\""
+  },
+  {
+    "id": "linux-shortcut-message-en",
+    "language": "Json",
+    "files": ["src/_locales/en/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_shortcut_reserved\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"This shortcut is not available. Select another shortcut.\""
+  },
+  {
+    "id": "linux-update-message-zh-cn",
+    "language": "Json",
+    "files": ["src/_locales/zh_CN/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_update_unavailable\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"请使用系统包管理器更新 Gemini。\""
+  },
+  {
+    "id": "linux-autostart-message-zh-cn",
+    "language": "Json",
+    "files": ["src/_locales/zh_CN/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_open_at_login_windows_warning\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"桌面设置已禁用自动启动。\""
+  },
+  {
+    "id": "linux-shortcut-message-zh-cn",
+    "language": "Json",
+    "files": ["src/_locales/zh_CN/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_shortcut_reserved\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"此快捷键不可用。请选择其他快捷键。\""
+  },
+  {
+    "id": "linux-update-message-zh-tw",
+    "language": "Json",
+    "files": ["src/_locales/zh_TW/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_update_unavailable\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"請使用系統套件管理器更新 Gemini。\""
+  },
+  {
+    "id": "linux-autostart-message-zh-tw",
+    "language": "Json",
+    "files": ["src/_locales/zh_TW/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_open_at_login_windows_warning\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"桌面設定已停用自動啟動。\""
+  },
+  {
+    "id": "linux-shortcut-message-zh-tw",
+    "language": "Json",
+    "files": ["src/_locales/zh_TW/messages.json"],
+    "metadata": {"expectedMatches": "1"},
+    "rule": {
+      "kind": "pair",
+      "has": {"field": "key", "regex": "^\"message\"$", "stopBy": "end"},
+      "inside": {"kind": "pair", "has": {"field": "key", "regex": "^\"settings_shortcut_reserved\"$", "stopBy": "end"}, "stopBy": "end"}
+    },
+    "fix": "\"message\": \"此快捷鍵無法使用。請選擇其他快捷鍵。\""
+  }
+]

@@ -1,0 +1,17 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+set -e
+
+flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/gemini-desktop-flags.conf"
+flags=()
+if [[ -r $flags_file ]]; then
+    while IFS= read -r flag || [[ -n $flag ]]; do
+        if [[ $flag =~ ^[[:space:]]*$ || $flag =~ ^[[:space:]]*\# ]]; then
+            continue
+        fi
+        flags+=("$flag")
+    done < "$flags_file"
+fi
+
+export ELECTRON_FORCE_IS_PACKAGED=true
+exec "${GEMINI_ELECTRON:-/usr/bin/electron44}" /usr/lib/gemini-desktop "${flags[@]}" "$@"

@@ -1,0 +1,25 @@
+[package]
+name = "gemini-native-linux"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[lib]
+name = "gemini_native"
+path = "native.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+arboard = { version = "3.6", default-features = false, features = ["wayland-data-control"] }
+napi = { version = "3", default-features = false, features = ["napi6"] }
+napi-derive = { version = "3", default-features = false }
+x11rb = { version = "0.13", features = ["xtest"] }
+
+[build-dependencies]
+napi-build = "2"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "abort"

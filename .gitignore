@@ -1,0 +1,13 @@
+/analysis/
+/bin/
+/pkg/
+/src/
+/target/
+/cargo-home/
+/*.exe
+/*.7z
+/*.crx3
+/*.pkg.tar.*
+/*.src.tar.*
+/.cargo-home/
+__pycache__/

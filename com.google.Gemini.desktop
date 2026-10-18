@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Gemini
+Comment=Google Gemini desktop client
+Comment[zh_CN]=Google Gemini 桌面客户端
+Exec=gemini-desktop %U
+Icon=gemini-desktop
+Terminal=false
+Categories=Network;Chat;
+StartupWMClass=Gemini
+Actions=Settings;
+
+[Desktop Action Settings]
+Name=Settings
+Name[zh_CN]=设置
+Exec=gemini-desktop --open-settings
