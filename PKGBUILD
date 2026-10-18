@@ -1,7 +1,7 @@
 # Maintainer: l1ngus
 pkgname=lucid-spell-bin
 _pkgname=lucid-spell
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="LLM-powered desktop translator. (Binary)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
 
 # На этапе настройки оставь SKIP. Мы сгенерируем актуальный хэш автоматически.
-sha256sums=('e9a9582cbb8af72ef915a6f653174bd8287cdff9319596319ddab932b2bf94f6')
+sha256sums=('09d244c92997cfcc500fec7cf713413e23677e997c49e51bc9fa56468494378a')
 
 package() {
   # При сборке makepkg автоматически скачивает .deb и распаковывает его базовую структуру в папку src/.
