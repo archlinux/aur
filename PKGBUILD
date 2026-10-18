@@ -1,12 +1,13 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
 url="https://github.com/Lucia7Lunadottir/Image-Finish"
 license=('MIT')
-depends=('python' 'python-pyqt6' 'python-numpy')
+depends=('python' 'python-pyqt6' 'python-numpy' 'python-opengl' 'python-scipy')
+optdepends=('python-psd-tools: opening .psd files (AUR)')
 makedepends=('git')
 
 # ВАЖНО: жестко привязываем ветку исходников к текущему тегу версии
@@ -29,14 +30,14 @@ package() {
 
     install -m644 main.py         "$pkgdir/usr/share/$pkgname/"
     install -m644 settings.json   "$pkgdir/usr/share/$pkgname/"
-    install -m644 $pkgname.png    "$pkgdir/usr/share/$pkgname/$pkgname.png"
+    install -Dm644 packaging/$pkgname.png "$pkgdir/usr/share/$pkgname/packaging/$pkgname.png"
 
     # Иконка системы
-    install -Dm644 $pkgname.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    install -Dm644 $pkgname.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 packaging/$pkgname.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 packaging/$pkgname.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
     # .desktop файл
-    install -Dm644 imagefinish.desktop \
+    install -Dm644 packaging/imagefinish.desktop \
         "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     # Бинарник-лаунчер в /usr/bin
