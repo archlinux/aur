@@ -1,0 +1,26 @@
+pkgbase = veretino-git
+	pkgdesc = Folder integrity checker
+	pkgver = 0.7.0.r38.gbcf6e8d
+	pkgrel = 1
+	url = https://github.com/artemvlas/veretino
+	arch = any
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = make
+	makedepends = svgo
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = vulkan-headers
+	makedepends = miniz
+	depends = qt6-base
+	depends = qt6-svg
+	depends = libglvnd
+	depends = qmicroz
+	depends = pathstr-git
+	provides = veretino
+	source = git+https://github.com/artemvlas/veretino.git
+	source = systemlibs.patch
+	sha256sums = SKIP
+	sha256sums = 40b471e9f8ebc1280af16bc8e00ab3ba232406ece72d133f3b01c6f35467927c
+
+pkgname = veretino-git

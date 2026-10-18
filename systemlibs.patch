@@ -1,0 +1,42 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,37 @@
+ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Svg)
+ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Svg)
+ 
+-add_subdirectory(submodules)
++find_package(miniz CONFIG REQUIRED)
++
++find_path(QMICROZ_INCLUDE_DIR
++    NAMES qmicroz.h QMicroz.h
++    PATH_SUFFIXES qmicroz QMicroz
++)
++find_library(QMICROZ_LIBRARY NAMES qmicroz QMicroz)
++
++if(NOT QMICROZ_INCLUDE_DIR OR NOT QMICROZ_LIBRARY)
++    message(FATAL_ERROR "Could not find qmicroz headers or library")
++endif()
++
++add_library(QMicroz::QMicroz UNKNOWN IMPORTED)
++set_target_properties(QMicroz::QMicroz PROPERTIES
++    IMPORTED_LOCATION "${QMICROZ_LIBRARY}"
++    INTERFACE_INCLUDE_DIRECTORIES "${QMICROZ_INCLUDE_DIR}"
++)
++
++find_path(PATHSTR_INCLUDE_DIR NAMES pathstr.h)
++find_library(PATHSTR_LIBRARY NAMES pathstr)
++
++if(NOT PATHSTR_INCLUDE_DIR OR NOT PATHSTR_LIBRARY)
++    message(FATAL_ERROR "Could not find pathstr.h or libpathstr on the system")
++endif()
++
++add_library(pathstr::pathstr UNKNOWN IMPORTED)
++set_target_properties(pathstr::pathstr PROPERTIES
++    IMPORTED_LOCATION "${PATHSTR_LIBRARY}"
++    INTERFACE_INCLUDE_DIRECTORIES "${PATHSTR_INCLUDE_DIR}"
++)
++
+ add_subdirectory(src)
+ 
+ # Post target stuff
+
