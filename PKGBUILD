@@ -1,14 +1,14 @@
 ###
  # @Date: 2026-10-18 15:57:46
  # @LastEditors: Wang Xiaomei XianYuPigeon@outlook.com
- # @LastEditTime: 2026-10-18 16:09:00
- # @FilePath: /tempest-desktop/PKGBUILD
+ # @LastEditTime: 2026-10-18 17:17:42
+ # @FilePath: /tempest-desktop-bin/PKGBUILD
 ### 
 # Maintainer: Ganyu_Genshin XianYuPigeon@outlook.com
 pkgname=tempest-desktop-bin
 pkgver=3.17.2
 pkgrel=1
-pkgdesc="The all-platform terminal emulator for the modern age (official binary release)"
+pkgdesc="Cross-platform remote access client for SSH, RDP, VNC, SFTP and K8s (official binary)"
 arch=('x86_64' 'aarch64')
 url="https://gotempest.app"
 license=('LicenseRef-proprietary')

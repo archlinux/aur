@@ -1,5 +1,5 @@
 pkgbase = tempest-desktop-bin
-	pkgdesc = The all-platform terminal emulator for the modern age (official binary release)
+	pkgdesc = Cross-platform remote access client for SSH, RDP, VNC, SFTP and K8s (official binary)
 	pkgver = 3.17.2
 	pkgrel = 1
 	url = https://gotempest.app
