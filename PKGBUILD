@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'json-glib')
 provides=('pacmang')
 conflicts=('pacmang')
 options=(!debug !strip)
-source=('pacmang'
+source=('https://github.com/dexield/pacmang/releases/download/v$pkgver/pacmang'
         'LICENSE')
 sha256sums=('2fc456b05521baa5f3a17db64034f54bfee5a38e0e9fb8237d16212ed1a7dfca'
             'SKIP')
