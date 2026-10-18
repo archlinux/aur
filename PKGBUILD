@@ -1,5 +1,5 @@
 pkgname=dsd-neo
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc="Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 conflicts=('dsd-neo-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b8ebc51d717d9f44a0399557000b0066a1aaa13dffffbca13dd126b5573b217')
+sha256sums=('3523bc02159d20aa30f13b07eda5ed441c30f34ba81131fb4338afd68852f8f2')
 
 # BEGIN pinned PFFFT (tools/update_aur_pffft.py)
 _pffft_sha=94d3c8323a530c5e60a2535505166366171c1fdb
