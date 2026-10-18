@@ -1,6 +1,6 @@
 pkgbase = ymir-emu-git
 	pkgdesc = Sega Saturn emulator
-	pkgver = 0.3.3.r311.g3e3e781
+	pkgver = 0.4.0.r3.ga52bcd8
 	pkgrel = 1
 	url = https://github.com/StrikerX3/Ymir
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = ymir-emu-git
 	makedepends = spirv-tools
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
+	depends = hicolor-icon-theme
 	depends = libcurl.so
 	depends = liblz4.so
 	depends = librtmidi.so
@@ -28,9 +29,7 @@ pkgbase = ymir-emu-git
 	conflicts = ymir-emu
 	source = ymir-emu::git+https://github.com/StrikerX3/Ymir.git
 	source = neargye-semver::git+https://github.com/Neargye/semver.git#tag=v1.0.1
-	source = 0001_fix_for_semver_1.0.0.patch
 	sha256sums = SKIP
 	sha256sums = 16f7b5086b6223bf0aa057f198b77fe50672f279869f0914fddf53c1439319f0
-	sha256sums = 08b47f2a3f149b144908febe4ffda18f24419494011b1a72ee584a9396993f0d
 
 pkgname = ymir-emu-git

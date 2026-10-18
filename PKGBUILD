@@ -2,7 +2,7 @@
 
 _pkgname="ymir-emu"
 pkgname="$_pkgname-git"
-pkgver=0.3.3.r311.g3e3e781
+pkgver=0.4.0.r3.ga52bcd8
 pkgrel=1
 pkgdesc="Sega Saturn emulator"
 url="https://github.com/StrikerX3/Ymir"
@@ -10,6 +10,7 @@ license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
+  hicolor-icon-theme
   libcurl.so
   liblz4.so
   librtmidi.so
@@ -43,12 +44,10 @@ _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
   "neargye-semver"::"git+https://github.com/Neargye/semver.git#tag=v1.0.1"
-  '0001_fix_for_semver_1.0.0.patch'
 )
 sha256sums=(
   'SKIP'
   '16f7b5086b6223bf0aa057f198b77fe50672f279869f0914fddf53c1439319f0'
-  '08b47f2a3f149b144908febe4ffda18f24419494011b1a72ee584a9396993f0d'
 )
 
 prepare() {
@@ -187,7 +186,7 @@ build() {
   )
 
   # Edit /etc/makepkg.conf to enable AVX2
-  if g++ -x c++ - $CXXFLAGS -o /dev/null &> /dev/null << 'END'; then
+  if g++ -x c++ - $CXXFLAGS -o /dev/null &> /dev/null << 'END'
 #include <immintrin.h>
 int main() {
   __m256i v = _mm256_add_epi32(_mm256_set1_epi32(1), _mm256_set1_epi32(2));
@@ -195,6 +194,7 @@ int main() {
   return 0;
 }
 END
+  then
     _cmake_options+=(-DYmir_AVX2=ON)
   else
     _cmake_options+=(-DYmir_AVX2=OFF)
@@ -212,7 +212,7 @@ package() {
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 
   # icon
-  install -Dm644 "$_pkgsrc"/apps/ymir-sdl3/res/ymir.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 "$_pkgsrc"/apps/ymir-sdl3/res/ymir.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 
   # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
