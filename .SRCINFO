@@ -1,6 +1,6 @@
 pkgbase = omo-bin
 	pkgdesc = OmO Native - standalone omo coding-agent CLI
-	pkgver = 5.1.23
+	pkgver = 5.1.35
 	pkgrel = 1
 	url = https://github.com/code-yeongyu/oh-my-openagent
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = omo-bin
 	provides = omo
 	conflicts = omo
 	options = !strip
-	source = omo-linux-x64::https://github.com/code-yeongyu/oh-my-openagent/releases/download/v5.1.23/omo-linux-x64
-	source = LICENSE.md::https://github.com/code-yeongyu/oh-my-openagent/raw/v5.1.23/LICENSE.md
-	sha256sums = c98b3e9fd44c5ac1a60187212820dfb886240af60489171ee0851c6b7300f4c3
+	source = omo-linux-x64::https://github.com/code-yeongyu/oh-my-openagent/releases/download/v5.1.35/omo-linux-x64
+	source = LICENSE.md::https://github.com/code-yeongyu/oh-my-openagent/raw/v5.1.35/LICENSE.md
+	sha256sums = 2c1fc9b76ce40c8011c4d0938ebd54c77f71c731639d063deeb1875387787bbe
 	sha256sums = b61ac928f152d13517328263e6bee9175b928f9ab696a2d2ca2b6cfd961ddc32
 
 pkgname = omo-bin
