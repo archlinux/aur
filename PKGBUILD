@@ -2,10 +2,10 @@
 _appname=freeshow
 pkgname=freeshow-electron-bin
 _pkgname=FreeShow
-pkgver=1.6.5
-_tag=v1.6.5
-_assetver=1.6.5
-_assetname=FreeShow-1.6.5-amd64.deb
+pkgver=1.6.6
+_tag=v1.6.6
+_assetver=1.6.6
+_assetname=FreeShow-1.6.6-amd64.deb
 _electronversion=37
 pkgrel=1
 pkgdesc="FreeShow with system-wide Electron"
@@ -42,7 +42,7 @@ source=(
 )
 sha256sums=(
     'e08b8699c47bfa38365f7194d2dce675b3f36ef36235be993579db8647a8b307'
-    'b522f149ea07ec63f37728573a48ad339680d219468f40a8841dde77fe879424'
+    '62f2ac002bcc340ceaa8c2e2f3056eba03cf309fd48a7abe318d8e55e8d5bf91'
 )
 _get_electron_version() {
     _binary_path="${srcdir}/opt/FreeShow/FreeShow"
