@@ -1,5 +1,5 @@
 pkgbase = linux-trackpad-driver-git
-	pkgdesc = Userspace Rust driver for Apple Magic Trackpad 2 (USB/BT core-init) — git snapshot
+	pkgdesc = Extensible userspace Linux driver for enhanced trackpad functionality, currently supporting Apple Magic Trackpad 2 — git snapshot
 	pkgver = r214.b01ae61
 	pkgrel = 1
 	url = https://github.com/aaronroquefonseca/linux-trackpad-driver
