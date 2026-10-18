@@ -2,7 +2,7 @@
 # Auto-updated by the release workflow in ractive/ff-rdp.
 pkgname=ff-rdp-bin
 _bin=ff-rdp
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="CLI for Firefox Remote Debugging Protocol"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ url="https://github.com/ractive/ff-rdp"
 license=('MIT')
 provides=("$_bin")
 conflicts=("$_bin")
-source_x86_64=("https://github.com/ractive/ff-rdp/releases/download/v${pkgver}/ff-rdp-v0.4.1-x86_64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('73e3e881a8aec62b3d10d5956051179389f5ad5d84ac748b12ba211bde2b9ea8')
-source_aarch64=("https://github.com/ractive/ff-rdp/releases/download/v${pkgver}/ff-rdp-v0.4.1-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_aarch64=('20bbc313d906e7948da6441b792601fd3ec85ad2bfd907917a5f8957de73b8f1')
+source_x86_64=("https://github.com/ractive/ff-rdp/releases/download/v${pkgver}/ff-rdp-v0.4.2-x86_64-unknown-linux-musl.tar.gz")
+sha256sums_x86_64=('fc2d095f4d38c9470107473eedaff4a5f091cd7c7d009f581dac0d3297687f82')
+source_aarch64=("https://github.com/ractive/ff-rdp/releases/download/v${pkgver}/ff-rdp-v0.4.2-aarch64-unknown-linux-musl.tar.gz")
+sha256sums_aarch64=('2224a5cd759867793b7974b62e24f3d364c5ee5551827b671e78a25344df1320')
 
 package() {
   install -Dm755 "$_bin" "$pkgdir/usr/bin/$_bin"
