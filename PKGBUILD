@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A fast, memory-efficient, developer-focused desktop SQL client"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('5b27f44e3e8ea19eaf7f0cc4697659a7f614e243cf91be81c6af21f8535644a4'
+sha256sums=('76835d062985d3a6b0b890d1e2828c74f816717bddbd1e9d111b8875b25c2455'
             '51c7b772f15a83ac914c7c506fb6efa05b19ec0f340f9c1b5ef67fbaa4317e56')
-sha256sums_x86_64=('2640d48f6967b68f61f72f90ffb276d7630b2f0f08063dfbbc01125da0f51859')
+sha256sums_x86_64=('4f3c1d268a8374a197649f8e3669ce8e42c5c11aff6ad6a6bdf84656c3299072')
 
 
 package() {
