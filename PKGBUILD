@@ -32,6 +32,8 @@ makedepends=(
 	'gstreamer'
 	'gst-plugins-base-libs'
 	'libdbusmenu-gtk3'
+	'fontconfig'
+	'vte3'
 )
 optdepends=(
 	'lightdm: LightDM theme'
@@ -43,6 +45,7 @@ optdepends=(
 	'networkmanager: Network status in tray'
 	'libdbusmenu-gtk3: Tray icon menus'
 	'gvfs: Virtual filesystems in Windows Explorer'
+	'vte3: Command Prompt'
 	'plymouth: Boot screen and OOBE setup (wsetupx --aur)'
 	'grub: OOBE setup (wsetupx --aur)'
 	'gstreamer: OOBE setup'
