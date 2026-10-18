@@ -1,4 +1,4 @@
-# Maintainer: Luis Batalha <lfrb25 at gmail dot com>
+# Maintainer: Laura Batalha <lfrb25 at gmail dot com>
 
 commit_hash=5a6cf1f99b1b922ad21f4f6dff9d0ce99cc686cc
 source_dir='ek-loop-connect'
