@@ -1,6 +1,6 @@
 pkgbase = zerus
 	pkgdesc = Agent development environment for AI coding agents across your machines
-	pkgver = 0.45.0
+	pkgver = 0.45.1
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = zerus
 	conflicts = zerus-ade-bin
 	options = !lto
 	options = !debug
-	source = https://github.com/ufna/zerus/releases/download/v0.45.0/zerus-0.45.0-source.tar.gz
-	sha256sums = 99f53e734afceaaa4d7aefaae8e9f735528b065f51fda66dbee6f5854a3e7645
+	source = https://github.com/ufna/zerus/releases/download/v0.45.1/zerus-0.45.1-source.tar.gz
+	sha256sums = 2aa2ba662b9ac7232ecd88ae6b0dac894415195dd9adb625693b840361c3375d
 
 pkgname = zerus
