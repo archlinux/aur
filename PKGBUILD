@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="vLLM optimized for Intel Arc GPUs"
 arch=('x86_64')
 url="https://github.com/vllm-project/vllm"
-license=('Apache-2.0')
+license=('MIT')
 # python311 is required because vLLM and Triton XPU explicitly reject Python 3.14
 depends=('python311' 'intel-compute-runtime' 'level-zero-loader' 'intel-gmmlib' 'intel-deep-learning-essentials')
 makedepends=('python311' 'cmake' 'ninja' 'gcc' 'curl')
@@ -13,6 +13,7 @@ provides=('vllm')
 conflicts=('vllm')
 source=("vllm-${pkgver}.tar.gz::https://github.com/vllm-project/vllm/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bf592c132f27bbb5f65cff0bbd2ee873eae722b79c8286934fd5b5cf88b43d61')
+install=$pkgname.install
 
 build() {
   cd "vllm-${pkgver}"
@@ -76,18 +77,27 @@ package() {
   # Build and install vLLM
   $_pip install -v --extra-index-url https://wheels.vllm.ai/xpu/ .
 
+  # Fix shebang paths that were hardcoded to the build directory.
+  # During package creation, pip writes shebangs pointing to the build tree
+  # (e.g., /home/user/.../pkg/vllm-xpu/opt/vllm-xpu/bin/python), which no longer
+  # exists after installation. Rewrite them to point to the final install location.
+  local _build_python="$pkgdir/opt/vllm-xpu/bin/python"
+  local _final_python="/opt/vllm-xpu/bin/python"
+  find "$pkgdir/opt/vllm-xpu/bin" -type f -print0 | \
+    xargs -0 sed -i "s|#!${_build_python}|#!${_final_python}|g"
+
   # Create wrapper scripts in /usr/bin
   install -d "$pkgdir/usr/bin"
 
-  # Wrapper for OpenAI API server
+  # Wrapper for OpenAI API server (legacy entry point alias)
   cat <<'EOF' > "$pkgdir/usr/bin/vllm-xpu"
 #!/bin/bash
 [ -f /opt/intel/oneapi/setvars.sh ] && source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1 || true
-exec /opt/vllm-xpu/bin/python -m vllm.entrypoints.openai.api_server "$@"
+exec /opt/vllm-xpu/bin/vllm serve "$@"
 EOF
   chmod +x "$pkgdir/usr/bin/vllm-xpu"
 
-  # Wrapper for vllm CLI (e.g. vllm serve)
+  # Wrapper for vllm CLI (e.g. vllm serve, vllm bench)
   cat <<'EOF' > "$pkgdir/usr/bin/vllm-serve-xpu"
 #!/bin/bash
 [ -f /opt/intel/oneapi/setvars.sh ] && source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1 || true

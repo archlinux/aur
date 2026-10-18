@@ -1,0 +1,15 @@
+# vllm-xpu.install
+
+post_install() {
+    echo "========================================================================"
+    echo " Installation successful!"
+    echo " Please read the Codeberg README at:"
+    echo " https://codeberg.org/cantosun/vllm-xpu"
+    echo " The use of vLLM with the XPU backend has some unique quirks."
+    echo "========================================================================"
+}
+
+# Trigger the same success message on package upgrades
+post_upgrade() {
+    post_install
+}
