@@ -1,0 +1,20 @@
+post_install() {
+  cat <<'EOF'
+==> reims-vgpu: VMs need /dev/kvm. Add yourself to the kvm group, then log in again:
+      sudo usermod -aG kvm $USER
+==> The bundled sysctl, udev and module-load settings are applied by pacman's hooks.
+    If /dev/udmabuf already existed before this install, give it the new permissions with:
+      sudo udevadm trigger --subsystem-match=misc
+==> Then run:  reims-ctl doctor
+    Its "checkout" line reports a failure on a packaged install, and `reims-ctl update`
+    does not work: update this package with your AUR helper instead.
+EOF
+}
+
+post_upgrade() {
+  echo "==> reims-vgpu: a VM that was running keeps its old QEMU only until it is restarted; stop VMs before upgrading when you can."
+}
+
+post_remove() {
+  echo "==> reims-vgpu: your VMs and downloaded installers (~/.local/share/reims-ctl) and settings (~/.config/reims-ctl) are not pacman's and were kept."
+}
