@@ -1,0 +1,21 @@
+pkgbase = xerotop-git
+	pkgdesc = A gkrellm-style, battery-conscious Wayland (wlroots/layer-shell) system monitor bar in Rust + GTK4
+	pkgver = 0.1.0.r195.g82f4ab9
+	pkgrel = 1
+	url = https://github.com/LXXero/xerotop
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = ttf-firacode-nerd
+	optdepends = brightnessctl: brightness panel adjustment
+	provides = xerotop
+	conflicts = xerotop
+	options = !lto
+	options = !debug
+	source = git+https://github.com/LXXero/xerotop.git
+	sha256sums = SKIP
+
+pkgname = xerotop-git
