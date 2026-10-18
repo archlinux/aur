@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# We have to force the LANG here to ensure date pickers work
+/usr/bin/env LANG=fr_FR /usr/lib/girpe-v2/electron-girpe-v2 "$@"

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GIRPE v2 
+Comment=Encounter manager for the FFTT
+GenericName=girpe-v2
+Exec=girpe-v2 %U
+Icon=girpe-v2-logo
+Type=Application
+StartupNotify=true
