@@ -1,7 +1,7 @@
 # Maintainer: nopw <aur@n0.pw>
 
 pkgname=stremio-linux-shell-git
-pkgver=v1.2.0.r0.gc6e7cd2
+pkgver=v1.2.2.r18.g0ac526a
 pkgrel=2
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
@@ -74,6 +74,8 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.stremio.Stremio.svg"
   install -Dm644 "data/com.stremio.Stremio.metainfo.xml" \
     "$pkgdir/usr/share/metainfo/com.stremio.Stremio.metainfo.xml"
+  install -Dm644 "data/com.stremio.Stremio.gschema.xml" \
+    "$pkgdir/usr/share/glib-2.0/schemas/com.stremio.Stremio.gschema.xml"
 
   install -Dm644 /usr/share/licenses/spdx/GPL-3.0-only.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
