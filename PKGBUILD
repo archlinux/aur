@@ -1,7 +1,7 @@
 pkgname=9now
 _pkgname=9Now
 pkgver=1.0.5
-pkgrel=2
+pkgrel=1
 pkgdesc="Unofficial 9 Now desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/9now"
