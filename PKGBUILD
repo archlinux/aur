@@ -5,7 +5,7 @@
 # Contributor: Kurnevsky Evgeny <kurnevsky@gmail.com>
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 pkgname=scilab
-pkgver=2026.1.0
+pkgver=2027.0.0
 pkgrel=1
 pkgdesc="A scientific software package for numerical computations"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ makedepends=(ant curl gcc-fortran libxml2 ocaml-num ocaml-findlib pcre pkgconf r
 source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
   local://${pkgname}-num.patch
   local://libxml.patch) # hdf5-api.patch ${pkgname}-strict-jar.patch
-sha512sums=('7312b266e844fdcaba31aae3746d158d1d4418ae127c53cdf18f6dcaaf2a10a38bbe901ce92a9cc4d00585ed4e0ba65d193961980926e32040994cf8f1d99551'
+sha512sums=('a661577e7456a2c057438d531b8ea99e6155eab7419c3d5a5c8902e9bd0bec31501645602dffa1cb9b4c5d634de2af6d90b3bb89634d3ffabb2269af3f301c5a'
             '6d2e2548e2d33e830dba4a479787cd3f642afa63439d56cee650c50c49d980af9b50b4090732d9ca536322a6ff4a6763d015344f693d7e1d487e37dfb73d9605'
             'dc067645fd1712733e9283585107191bb787cec3888109707a9ae146c27dca2be5e14790d84dd778705cad78d3d5def869a69628caf1c40059126f4c62b9dfee')
 
