@@ -1,6 +1,6 @@
 # Maintainer: detestern <detestern@proton.me>
 pkgname=karincore-git
-pkgver=1.5.5.r53.cd9f7e3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="KarinCore - Modern and secure proxy client"
 arch=('x86_64')
@@ -16,7 +16,8 @@ options=('!debug')
 
 source=("KarinCore::git+https://github.com/detestern/KarinCore.git"
 "karin-proxy-daemon.service")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '311fe87274a68e4df31012fdf83e30d27e9efec8d144642873b56e757dc898a5')
 
 pkgver() {
     cd "$srcdir/KarinCore"
