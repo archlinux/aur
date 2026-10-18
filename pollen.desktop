@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Pollen
+Comment=Pollen
+Exec=pollen %U
+Icon=pollen
+Terminal=false
+Categories=Game;
