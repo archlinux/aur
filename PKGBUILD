@@ -2,7 +2,7 @@
 
 pkgname=archstore-git
 _pkgname=AURHub
-pkgver=v0.2.r0.g6e020a9
+pkgver=0.2.r0.g6e020a9
 pkgrel=1
 pkgdesc="Classic Arch Linux package manager client combining pacman and AUR"
 arch=('x86_64')
@@ -41,7 +41,7 @@ sha256sums=(
 pkgver() {
   cd "$srcdir/$_pkgname"
   if git describe --long --tags >/dev/null 2>&1; then
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
     printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
@@ -49,7 +49,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname/frontend"
-  npm ci || npm install
+  npm ci
 }
 
 build() {
