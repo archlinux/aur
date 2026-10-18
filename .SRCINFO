@@ -1,13 +1,15 @@
 pkgbase = protonplus
 	pkgdesc = A modern compatibility tools manager
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vysp3r/ProtonPlus
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
 	makedepends = meson
 	makedepends = vala
+	depends = appstream
 	depends = gtk4
 	depends = json-glib
 	depends = libadwaita

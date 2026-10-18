@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonplus
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern compatibility tools manager"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vysp3r/ProtonPlus"
 license=('GPL-3.0-or-later')
 depends=(
+  'appstream'
   'gtk4'
   'json-glib'
   'libadwaita'
@@ -20,6 +21,7 @@ makedepends=(
   'meson'
   'vala'
 )
+checkdepends=('desktop-file-utils')
 optdepends=(
   'gamemode'
   'gamescope'
