@@ -1,0 +1,17 @@
+# libalpm hooks for nyxuri-git — install-time hints only; touches no files.
+# T1 contract: pacman swaps the blueprint tree under /usr/share/nyxuri, the
+# engine's transactions own ~/.config — upgrade never silently redeploys.
+
+post_install() {
+    echo "nyxuri-git: engine runs in system package mode (pacman manages updates)."
+    echo "  Deploy units:   nyxuri install full   (or: nyxuri on <unit>)"
+    echo "  Health check:   nyxuri doctor"
+    echo "  Nyxuri Shell:   /usr/bin/nyxuri-shell  (quickshell is an optional dep)"
+}
+
+post_upgrade() {
+    echo "nyxuri-git: blueprints under /usr/share/nyxuri were updated."
+    echo "  Deployed configs in ~/.config are NOT touched automatically —"
+    echo "  reconcile with 'nyxuri list' (Synced/Drifted/Ghost), then apply"
+    echo "  via 'nyxuri install full' when YOU decide to."
+}
