@@ -3,14 +3,15 @@
 _hkgname=hsemail
 pkgname=haskell-hsemail
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet Message Parsers"
 url="http://hackage.haskell.org/package/$_hkgname"
 _licensefile=LICENSE
 license=("BSD3")
 arch=('i686' 'x86_64')
 makedepends=('ghc')
-depends=("haskell-base" "sh" "haskell-mtl" "haskell-old-time" "haskell-parsec")
+# base, parsec and time come with ghc-libs; time-compat (== 1.9.*) is a separate package
+depends=("ghc-libs" "haskell-time-compat")
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
