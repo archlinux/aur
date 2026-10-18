@@ -1,7 +1,7 @@
 # Maintainer: Pink Pixel <admin@pinkpixel.dev>
 pkgname=slate-editor
 _name=slate
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A fast, minimal text editor for Linux, built with GPUI Kit"
 arch=('x86_64')
