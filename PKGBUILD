@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-cli-bin
 pkgdesc="Modern secure pastebin with a VS Code-like editor. Share code, text, and markdown securely with automatic expiry and burn-after-read options. (CLI)"
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('2c8cb7beaab8e17b275b4eafa1414560afc4b6b4b83a0c0d17c5a60be808f2e2')
-sha256sums_aarch64=('85119c897f208eca025a86b4b58a987c7fd82d20474249f4ad7dde452ac74660')
+sha256sums_x86_64=('84a418eb21807e0936c210c21792456e41f50f9893a55eef28471e59c687246b')
+sha256sums_aarch64=('5de15838d7ad94eb25c4928893c88c8eab97c47deceadee490b9179e08f913c9')
 
 
 package() {
