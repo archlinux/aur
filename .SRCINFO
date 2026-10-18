@@ -1,7 +1,7 @@
 pkgbase = notebook
 	pkgdesc = Markdown Desktop Wiki
 	pkgver = 0.9
-	pkgrel = 8
+	pkgrel = 9
 	url = https://codeberg.org/tuxnix/notebook
 	arch = any
 	license = GPL-2.0-only
@@ -17,7 +17,7 @@ pkgbase = notebook
 	optdepends = python-flask: For serving sides from browser to editor
 	optdepends = nodejs: JavaScript-functions browser like search
 	backup = etc/notebook.conf
-	backup = etc/$notebook.conf.py
+	backup = etc/notebook.conf.py
 	source = git+https://codeberg.org/tuxnix/notebook
 	sha512sums = SKIP
 

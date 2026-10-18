@@ -3,14 +3,14 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 pkgver="0.9"
-pkgrel="8"
+pkgrel="9"
 _name="notebook"
 pkgname="$_name"
 pkgdesc='Markdown Desktop Wiki'
 url='https://codeberg.org/tuxnix/notebook'
 arch=('any')
 license=('GPL-2.0-only')
-backup=('etc/notebook.conf' 'etc/$notebook.conf.py')
+backup=('etc/notebook.conf' 'etc/notebook.conf.py')
 depends=('inotify-tools' 'pandoc' 'python' 'retext')
 optdepends=(
     'python-pyenchant: Spell checking for ReText'
@@ -31,6 +31,7 @@ package() {
     install -Dm644 "${_name}.conf" "$pkgdir/etc/${_name}.conf"
     install -Dm644 "${_name}.service" "$pkgdir/usr/lib/systemd/user/${_name}.service"
     install -Dm644 "${_name}-watcher.service" "$pkgdir/usr/lib/systemd/user/${_name}-watcher.service"
+    #install -Dm644 "retext.service" "$pkgdir/usr/lib/systemd/user/retext.service"
     install -Dm644 "${_name}_server.py" "$pkgdir/usr/share/$_name/${_name}_server.py"
     install -Dm644 "tamplate.html" "$pkgdir/usr/share/$_name/tamplate.html"
     install -Dm644 "style.css" "$pkgdir/usr/share/$_name/style.css"
