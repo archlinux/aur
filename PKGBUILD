@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-o-tiling-git
-pkgver=2.8.0.r13.g1feb45c
+pkgver=2.12.01.r3.g30de81d
 pkgrel=1
 pkgdesc="Auto-tiling extension for GNOME Shell with active hint border, customizable workspace overview and theme consistency."
 arch=('any')
@@ -10,6 +10,7 @@ depends=('gnome-shell')
 makedepends=(
   'git'
   'jq'
+  'nodejs'
   'pnpm'
   'zip'
 )
