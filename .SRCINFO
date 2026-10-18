@@ -1,6 +1,6 @@
 pkgbase = pollen-commit
 	pkgdesc = Pollen channel alias for pollen-commit-bin
-	pkgver = 0.0.17.15
+	pkgver = 0.0.17.37
 	pkgrel = 1
 	url = https://github.com/tiouoo/Pollen
 	arch = any
