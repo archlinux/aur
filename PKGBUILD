@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=redmine-tui
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Terminal UI for Redmine: kanban board, time logging, status updates"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bb3c67d4a01f9a93302d9fb6c7cfde72177ee6873baaaa4b0ec6afdd77f1cd35')
+sha256sums=('b23bd4b2231e16f02938a2232ae53ce71868691729ff8ac12c727df322413d36')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
