@@ -2,9 +2,9 @@
 
 pkgname=grok-bot-desktop
 _debname=grok-bot
-pkgver=0.68.1
+pkgver=0.71.2
 pkgrel=1
-_commit=33103062f95061ccf9c81c5b365d37ab152c3b66
+_commit=92808c0ad869b2e3725dbc3b8fa2fcc991687502
 pkgdesc='Desktop agent app from xAI (official .deb, app files unmodified)'
 arch=('x86_64')
 url='https://x.ai/bot'
@@ -49,11 +49,11 @@ conflicts=('grok-bot' 'sand' 'grok-bot-bin' 'grokbot-linux-port' 'grokbot-linux-
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=("${_debname}_${pkgver}_amd64.deb::https://downloads.cursor.com/grokbot/stable/${_commit}/linux/x64/${_debname}_${pkgver}_amd64.deb")
-sha256sums=('b2be8106d2b3eae07d983d5f1ca77b657accde666dc440db2a409421ecff3359')
+sha256sums=('a0526d75a3e852ed59e507889bc3aa6a5185a8d043632ce8deca98b04ab06348')
 noextract=("${_debname}_${pkgver}_amd64.deb")
 
 package() {
-    bsdtar -O -xf "${_debname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    bsdtar -O -xf "${_debname}_${pkgver}_amd64.deb" 'data.tar.*' | bsdtar -C "${pkgdir}" -xf -
 
     # The Debian postinst creates this link; pacman does not run postinst.
     install -dm755 "${pkgdir}/usr/bin"
