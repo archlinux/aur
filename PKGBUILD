@@ -2,7 +2,7 @@
 _java=25
 _pkgname=galleon
 pkgname="${_pkgname}-bin"
-# renovate: datasource=github-releases depName=wildfly/galleon
+# renovate: datasource=github-releases depName=wildfly/galleon extractVersion=^(?<version>.*)\.Final$
 pkgver=7.0.10
 pkgrel=1
 pkgdesc="Provisioning tool designed to create and maintain software distributions that consist of one or more products"
