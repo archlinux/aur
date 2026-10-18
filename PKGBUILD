@@ -4,13 +4,14 @@
 #
 # Plasma Fusion for Arch Linux (the AUR package plasma-fusion; this file in the Plasma Fusion
 # repository is its source of truth, docs/RELEASING.md). One split package: the shared themes,
-# widgets, icons, fonts and setup tools (any) and the three compiled parts (x86_64), built from the
+# widgets, icons, fonts and setup tools (any) and the five compiled parts (x86_64), built from the
 # signed release tag. The compiled parts use KWin's and KDecoration's API of the installed Plasma:
 # rebuild this package after every kwin or kdecoration update (a pacman hook says so; until then the
 # Plasma Fusion login check keeps the version-bound parts off).
 pkgbase=plasma-fusion
-pkgname=(plasma-fusion plasma-fusion-decoration plasma-fusion-settings plasma-fusion-navigation)
-pkgver=0.5.0
+pkgname=(plasma-fusion plasma-fusion-decoration plasma-fusion-settings plasma-fusion-navigation plasma-fusion-quicklook
+         plasma-fusion-copytext)
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Plasma Fusion desktop for KDE Plasma 6"
 arch=(x86_64)
@@ -19,8 +20,8 @@ license=('GPL-2.0-or-later' 'CC-BY-SA-4.0' 'OFL-1.1')
 makedepends=(git python python-pillow python-numpy pyside6 qt6-shadertools librsvg libxml2
              desktop-file-utils cmake ninja extra-cmake-modules qt6-base qt6-declarative kwin
              kdecoration plasma-activities kcoreaddons kconfig kconfigwidgets kglobalaccel ki18n
-             kwindowsystem kpackage kcolorscheme kcmutils vulkan-headers libepoxy libdrm
-             plasma-workspace plasma-desktop plasma5support systemsettings)
+             kwindowsystem kpackage kcolorscheme kcmutils kio kdbusaddons kservice vulkan-headers libepoxy libdrm
+             plasma-workspace plasma-desktop plasma5support systemsettings layer-shell-qt tesseract)
 source=("plasma-fusion::git+https://github.com/archledger/plasma-fusion.git#tag=v${pkgver}?signed")
 sha256sums=('SKIP')
 validpgpkeys=('F35053398E3C80FE20891B82C10B8492BD7F30C6') # Wisbendji Fimerlus (release key)
@@ -32,11 +33,16 @@ build() {
     STAGE="$srcdir/stage" bash tools/build.sh
   QT_QPA_PLATFORM=offscreen bash generators/plymouth/build.sh "$srcdir/plymouth/plasma-fusion"
   local p
-  for p in decoration kcm navigation; do
+  for p in decoration kcm navigation quicklook; do
     cmake -S packages/$p-cpp -B "$srcdir/build-$p" -G Ninja -DCMAKE_BUILD_TYPE=None \
       -DCMAKE_INSTALL_PREFIX=/usr -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_TESTING=OFF
     cmake --build "$srcdir/build-$p"
   done
+  # The copy-text overlay goes to the helper directory, which on Arch is /usr/lib/plasma-fusion.
+  cmake -S packages/copytext-cpp -B "$srcdir/build-copytext" -G Ninja -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_TESTING=OFF \
+    -DPF_HELPER_DIR=/usr/lib/plasma-fusion
+  cmake --build "$srcdir/build-copytext"
 }
 
 package_plasma-fusion() {
@@ -47,6 +53,8 @@ package_plasma-fusion() {
            fontconfig glib2)
   optdepends=('plasma-fusion-decoration: the Plasma Fusion window decoration'
               'plasma-fusion-settings: the Plasma Fusion page in System Settings'
+              'plasma-fusion-quicklook: Quick Look (Space in Dolphin previews files)'
+              'plasma-fusion-copytext: copy text from the screen with an instant selection'
               'plasma-fusion-navigation: tablet navigation gestures (convertibles)'
               'pyside6: draw app icons with QtSvg (else librsvg)'
               'librsvg: draw app icons when pyside6 is missing'
@@ -54,6 +62,7 @@ package_plasma-fusion() {
               'xournalpp: notes and whiteboard tiles of the pen menu'
               'kate: the design'\''s Code app' 'marknote: the design'\''s Notes app' 'konsole: terminal theme'
               'libnotify: login check notification'
+              'tesseract: copy text from the screen in one step (with a tesseract-data-* language)'
               'plasma-nm: network tile' 'plasma-pa: volume tile' 'bluedevil: Bluetooth tile'
               'powerdevil: brightness, battery and power profile tiles' 'kdeconnect: phone tile')
   cd plasma-fusion
@@ -89,4 +98,26 @@ package_plasma-fusion-navigation() {
   depends=("plasma-fusion=$pkgver" kwin plasma-activities kconfigwidgets kglobalaccel ki18n kcoreaddons
            kwindowsystem qt6-declarative gcc-libs glibc)
   DESTDIR="$pkgdir" cmake --install "$srcdir/build-navigation"
+}
+
+package_plasma-fusion-quicklook() {
+  license=('GPL-2.0-or-later')
+  pkgdesc="Plasma Fusion Quick Look: preview files without opening them (Space in Dolphin)"
+  depends=("plasma-fusion=$pkgver" kio kdbusaddons kservice kwindowsystem ki18n kcoreaddons kirigami
+           qqc2-desktop-style syntax-highlighting qt6-declarative qt6-multimedia qt6-base gcc-libs glibc)
+  # Arch ships Qt PDF inside qt6-webengine; without it a PDF shows its thumbnail.
+  optdepends=('qt6-webengine: PDF pages'
+              'kio-extras: thumbnails of other files'
+              'kimageformats: more picture formats'
+              'qt6-imageformats: WebP, TIFF and other pictures'
+              'qt6-svg: SVG pictures'
+              'dolphin: Space in Dolphin opens Quick Look')
+  DESTDIR="$pkgdir" cmake --install "$srcdir/build-quicklook"
+}
+
+package_plasma-fusion-copytext() {
+  license=('GPL-2.0-or-later')
+  pkgdesc="Plasma Fusion copy text: its own selection overlay (instead of Spectacle's)"
+  depends=("plasma-fusion=$pkgver" layer-shell-qt ki18n qt6-declarative qt6-base tesseract gcc-libs glibc)
+  DESTDIR="$pkgdir" cmake --install "$srcdir/build-copytext"
 }

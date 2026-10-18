@@ -1,6 +1,6 @@
 pkgbase = plasma-fusion
 	pkgdesc = Plasma Fusion desktop for KDE Plasma 6
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/archledger/plasma-fusion
 	arch = x86_64
@@ -33,6 +33,9 @@ pkgbase = plasma-fusion
 	makedepends = kpackage
 	makedepends = kcolorscheme
 	makedepends = kcmutils
+	makedepends = kio
+	makedepends = kdbusaddons
+	makedepends = kservice
 	makedepends = vulkan-headers
 	makedepends = libepoxy
 	makedepends = libdrm
@@ -40,7 +43,9 @@ pkgbase = plasma-fusion
 	makedepends = plasma-desktop
 	makedepends = plasma5support
 	makedepends = systemsettings
-	source = plasma-fusion::git+https://github.com/archledger/plasma-fusion.git#tag=v0.5.0?signed
+	makedepends = layer-shell-qt
+	makedepends = tesseract
+	source = plasma-fusion::git+https://github.com/archledger/plasma-fusion.git#tag=v0.6.0?signed
 	validpgpkeys = F35053398E3C80FE20891B82C10B8492BD7F30C6
 	sha256sums = SKIP
 
@@ -67,6 +72,8 @@ pkgname = plasma-fusion
 	depends = glib2
 	optdepends = plasma-fusion-decoration: the Plasma Fusion window decoration
 	optdepends = plasma-fusion-settings: the Plasma Fusion page in System Settings
+	optdepends = plasma-fusion-quicklook: Quick Look (Space in Dolphin previews files)
+	optdepends = plasma-fusion-copytext: copy text from the screen with an instant selection
 	optdepends = plasma-fusion-navigation: tablet navigation gestures (convertibles)
 	optdepends = pyside6: draw app icons with QtSvg (else librsvg)
 	optdepends = librsvg: draw app icons when pyside6 is missing
@@ -76,6 +83,7 @@ pkgname = plasma-fusion
 	optdepends = marknote: the design's Notes app
 	optdepends = konsole: terminal theme
 	optdepends = libnotify: login check notification
+	optdepends = tesseract: copy text from the screen in one step (with a tesseract-data-* language)
 	optdepends = plasma-nm: network tile
 	optdepends = plasma-pa: volume tile
 	optdepends = bluedevil: Bluetooth tile
@@ -85,7 +93,7 @@ pkgname = plasma-fusion
 pkgname = plasma-fusion-decoration
 	pkgdesc = Plasma Fusion window decoration (KDecoration3 plugin)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.5.0
+	depends = plasma-fusion=0.6.0
 	depends = kdecoration
 	depends = kcoreaddons
 	depends = kconfig
@@ -98,7 +106,7 @@ pkgname = plasma-fusion-settings
 	pkgdesc = Plasma Fusion settings page for System Settings
 	license = GPL-2.0-or-later
 	license = CC-BY-SA-4.0
-	depends = plasma-fusion=0.5.0
+	depends = plasma-fusion=0.6.0
 	depends = systemsettings
 	depends = plasma-workspace
 	depends = kirigami
@@ -114,7 +122,7 @@ pkgname = plasma-fusion-settings
 pkgname = plasma-fusion-navigation
 	pkgdesc = Plasma Fusion tablet navigation gestures (KWin effect; rebuild after every kwin update)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.5.0
+	depends = plasma-fusion=0.6.0
 	depends = kwin
 	depends = plasma-activities
 	depends = kconfigwidgets
@@ -123,5 +131,42 @@ pkgname = plasma-fusion-navigation
 	depends = kcoreaddons
 	depends = kwindowsystem
 	depends = qt6-declarative
+	depends = gcc-libs
+	depends = glibc
+
+pkgname = plasma-fusion-quicklook
+	pkgdesc = Plasma Fusion Quick Look: preview files without opening them (Space in Dolphin)
+	license = GPL-2.0-or-later
+	depends = plasma-fusion=0.6.0
+	depends = kio
+	depends = kdbusaddons
+	depends = kservice
+	depends = kwindowsystem
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kirigami
+	depends = qqc2-desktop-style
+	depends = syntax-highlighting
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = qt6-base
+	depends = gcc-libs
+	depends = glibc
+	optdepends = qt6-webengine: PDF pages
+	optdepends = kio-extras: thumbnails of other files
+	optdepends = kimageformats: more picture formats
+	optdepends = qt6-imageformats: WebP, TIFF and other pictures
+	optdepends = qt6-svg: SVG pictures
+	optdepends = dolphin: Space in Dolphin opens Quick Look
+
+pkgname = plasma-fusion-copytext
+	pkgdesc = Plasma Fusion copy text: its own selection overlay (instead of Spectacle's)
+	license = GPL-2.0-or-later
+	depends = plasma-fusion=0.6.0
+	depends = layer-shell-qt
+	depends = ki18n
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = tesseract
 	depends = gcc-libs
 	depends = glibc
