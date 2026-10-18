@@ -1,0 +1,157 @@
+--- /home/paul/build/AUR/gtrayicon/1.1 -PREV/gtrayicon.c
++++ /home/paul/build/AUR/gtrayicon/1.1 -PREV/gtrayicon-new.c
+@@ -54,11 +54,11 @@
+ }
+ 
+ /* interface callbacks */
+-void main_quit() {
++void main_quit(int signal_number) {
+ 	gtk_main_quit();
+ 	exit(0);
+ }
+-	
++
+ void menu_popup(GtkStatusIcon *status_icon, gint button, gint activate_time, gpointer data) {
+ 	GtkWidget *menu;
+ 
+@@ -68,12 +68,12 @@
+ }
+ 
+ void on_quit_item_activate(GtkWidget *menu, gpointer data) {
+-	main_quit();
++	main_quit(SIGTERM);
+ }
+ 
+ void on_about_item_activate(GtkWidget *widget, gpointer data) {
+ 	GtkWidget *about;
+-	
++
+ 	about = glade_xml_get_widget(xml, "aboutdialog1");
+ 	gtk_widget_show(about);
+ }
+@@ -101,7 +101,7 @@
+ 	gint group_pos, key_pos, value_pos, menu_pos, main_menu_pos;
+ 	GtkWidget *image, *item, *parent, *popup_menu;
+ 	gboolean main_section = FALSE;
+-	
++
+ 	keyfile = g_key_file_new();
+ 	if (g_key_file_load_from_file(keyfile, menu_file, G_KEY_FILE_NONE, error) == FALSE) {
+ 		return -1;
+@@ -113,13 +113,13 @@
+ 	if (groups_size == 0) {
+ 		return -1;
+ 	}
+-	
++
+ 	popup_menu = glade_xml_get_widget(xml, "popup_menu");
+ 	gtk_menu_shell_insert((GtkMenuShell*)popup_menu, gtk_separator_menu_item_new(), 0);
+ 	main_menu_pos = 0;
+-	
++
+ 	for(group_pos = 0; group_pos < groups_size; group_pos++) {
+-	
++
+ 		if (g_strcmp0(groups[group_pos], "main") == 0) { /* main group */
+ 			main_section = TRUE;
+ 			parent = popup_menu;
+@@ -137,7 +137,7 @@
+ 
+ 		for(key_pos = 0; key_pos < keys_size; key_pos++) {
+ 			values = g_key_file_get_string_list(keyfile, groups[group_pos], keys[key_pos], &values_size, NULL);
+-			
++
+ 			if (values_size == 1) { /* no icon */
+ 				item = gtk_menu_item_new_with_label(keys[key_pos]);
+ 			} else if (values_size == 2) { /* command and icon */
+@@ -145,16 +145,16 @@
+ 				image = gtk_image_new_from_file(values[1]);
+ 				gtk_image_menu_item_set_image((GtkImageMenuItem*)item, image);
+ 			}
+-			
++
+ 			g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(run_cmd_signal_wrapper), g_strdup(values[0]));
+-			
++
+ 			if (main_section)
+ 				gtk_menu_shell_insert((GtkMenuShell*)parent, item, main_menu_pos++);
+ 			else
+ 				gtk_menu_shell_insert((GtkMenuShell*)parent, item, menu_pos++);
+ 		}
+ 	}
+-	
++
+ 	g_key_file_free(keyfile);
+ 	return 0;
+ }
+@@ -162,12 +162,12 @@
+ int main(int argc, char *argv[]) {
+ 	GError *error = NULL;
+ 	GOptionContext *context;
+-	
++
+ 	/* parse command line options */
+ 	context = g_option_context_new ("- Generic tray icon");
+ 	g_option_context_add_main_entries (context, entries, "");
+ 	g_option_context_add_group (context, gtk_get_option_group (TRUE));
+-	
++
+ 	if (!g_option_context_parse (context, &argc, &argv, &error)) {
+ 		fprintf(stderr, "gtrayicon: option parsing failed > %s\n", error->message);
+ 		exit(1);
+@@ -177,7 +177,7 @@
+ 		perror("gtrayicon: you must provide activate/deactivate commands. Use '--help' parameter for more information.\n");
+ 		exit(1);
+ 	}
+-	
++
+     /* load the interface */
+ 	gtk_init(&argc, &argv);
+     xml = glade_xml_new(GLADE_APP, NULL, NULL);
+@@ -186,29 +186,29 @@
+     	perror("gtrayicon: error loading glade file.");
+     	exit(1);
+     }
+-	
++
+ 	/* connect the signals in the interface */
+     glade_xml_signal_autoconnect(xml);
+-    
++
+     /* initialize status icon */
+ 	icon = gtk_status_icon_new();
+     gtk_status_icon_set_visible(icon, TRUE);
+-    
++
+ 	if (tooltip)
+ 	    gtk_status_icon_set_tooltip(icon, tooltip);
+ 
+ 	if (!activate_icon)
+ 		activate_icon = DEFAULT_ACTIVATE_ICON;
+-		
++
+ 	if (!deactivate_icon)
+ 		deactivate_icon = DEFAULT_DEACTIVATE_ICON;
+-	
+-	/* check for user supplied menu and parse it */	
++
++	/* check for user supplied menu and parse it */
+ 	if (menu_file) {
+ 		if (populate_popup_menu_from_file(menu_file, &error) != 0)
+ 			fprintf(stderr, "gtrayicon: warning loading menu file > %s\n", error->message);
+ 	}
+-	
++
+ 	/* check initial state */
+ 	if (state == ON)
+ 		change_state(ON); /* execute activate cmd */
+@@ -218,7 +218,7 @@
+ 	/* trap some signals */
+ 	signal(SIGINT, main_quit);
+ 	signal(SIGTERM, main_quit);
+-	signal(SIGQUIT, main_quit);	
++	signal(SIGQUIT, main_quit);
+ 
+     g_signal_connect(G_OBJECT(icon), "popup-menu", G_CALLBACK(menu_popup), NULL);
+     g_signal_connect(G_OBJECT(icon), "activate", G_CALLBACK(icon_activate), NULL);
+
