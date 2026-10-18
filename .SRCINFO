@@ -1,6 +1,6 @@
 pkgbase = pdfcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Acrobat
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/pdfcraft
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = pdfcraft
 	provides = printcraft
 	conflicts = printcraft
 	replaces = printcraft
-	source = https://github.com/storytold/pdfcraft/archive/refs/tags/v0.8.0/pdfcraft-0.8.0.tar.gz
-	sha256sums = 64c32b6cdab2d6334d16ac8c65b3425718cb88594e6347ebe25efc1aaf5e0bae
+	source = https://github.com/storytold/pdfcraft/archive/refs/tags/v0.9.0/pdfcraft-0.9.0.tar.gz
+	sha256sums = 38476e8448e0941d8e243ee7413ad410bde54085140a24733d211ff1b6117b2e
 
 pkgname = pdfcraft
 	depends = glibc
