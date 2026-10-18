@@ -1,7 +1,7 @@
 pkgname=9now
 _pkgname=9Now
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial 9 Now desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/9now"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('f642854b699369d6a6fb303239e40cf488bebb5bd004c456cdfbc3418cad74c3')
+sha256sums=('6375a957264f366ab1c6a34f3fc9bf36bbe433c9c30dd8493dea0b638047a8a1')
 
 package() {
     cd "$srcdir/application-$pkgver"
