@@ -1,6 +1,6 @@
 pkgbase = uu-remote-linux
 	pkgdesc = Unofficial Linux host for NetEase UU Remote (remote desktop)
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/VallierDev/uu-remote-linux
 	arch = x86_64
@@ -30,10 +30,10 @@ pkgbase = uu-remote-linux
 	optdepends = xdg-desktop-portal-gnome: GNOME Wayland capture and input backend
 	optdepends = xdg-desktop-portal-kde: KDE Wayland capture and input backend
 	options = !lto
-	source = uu-remote-linux-0.2.9.tar.gz::https://github.com/VallierDev/uu-remote-linux/archive/refs/tags/v0.2.9.tar.gz
+	source = uu-remote-linux-0.2.10.tar.gz::https://github.com/VallierDev/uu-remote-linux/archive/refs/tags/v0.2.10.tar.gz
 	source = uuremote-native.service
 	source = 60-uu-remote-linux-uinput.rules
-	sha256sums = 63dccf572a2f886c57264ef85e5940bb50d2bdd800bff4db9d564056ae7625d6
+	sha256sums = 71439dc7785829749b64eed167e2b098e722148f13d9b1f5089b4121859d280a
 	sha256sums = 3cff7ebb654c1f9a2434bc80ce4442d5fd0b0e6ff79462f7e3a20271d05d3c98
 	sha256sums = 2752412c9c2ddbffa4d5882be06a2f10d7ee590c3d1f3b16bf37ea5c1b8d1f34
 

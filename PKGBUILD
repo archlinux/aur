@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=uu-remote-linux
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc='Unofficial Linux host for NetEase UU Remote (remote desktop)'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'uuremote-native.service'
         '60-uu-remote-linux-uinput.rules')
-sha256sums=('63dccf572a2f886c57264ef85e5940bb50d2bdd800bff4db9d564056ae7625d6'
+sha256sums=('71439dc7785829749b64eed167e2b098e722148f13d9b1f5089b4121859d280a'
             '3cff7ebb654c1f9a2434bc80ce4442d5fd0b0e6ff79462f7e3a20271d05d3c98'
             '2752412c9c2ddbffa4d5882be06a2f10d7ee590c3d1f3b16bf37ea5c1b8d1f34')
 options=('!lto')
@@ -70,6 +70,8 @@ package() {
 
   install -Dm644 contrib/desktop/uu-remote-linux.desktop \
     "${pkgdir}/usr/share/applications/uu-remote-linux.desktop"
+  install -Dm644 contrib/desktop/uu-remote-linux-viewer.desktop \
+    "${pkgdir}/usr/share/applications/uu-remote-linux-viewer.desktop"
   install -Dm644 contrib/desktop/uu-remote-linux.svg \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/uu-remote-linux.svg"
 
