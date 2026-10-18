@@ -1,13 +1,15 @@
 post_install() {
 cat << END
-If you own original assets from purchased version,
-copy the following directories into /usr/share/freegish:
+If you own original assets from purchased version, you can add them
+as a datapack: create /usr/share/freegish/datapacks/<name> and copy
+the following directories into it:
  * animation
  * level
  * music
  * sound
  * texture
  * tile01 ... tile07
+Then select the datapack in the game options.
 END
 }
 

@@ -4,25 +4,21 @@
 
 pkgname=freegish-git
 _pkgname=freegish
-pkgver=1.60.219.0ab2e82
+pkgver=1.60.409.7403066
 pkgrel=1
 pkgdesc="Free version of gish, a physics platformer"
 arch=('x86_64' 'i686')
-url="http://github.com/freegish/freegish"
-license=('GPL')
-depends=('sdl' 'openal' 'libvorbis' 'libpng' 'libgl')
+url="https://github.com/freegish/freegish"
+license=('GPL-2.0-or-later' 'CC-BY-SA-3.0')
+depends=('sdl2' 'openal' 'libvorbis' 'libpng' 'libgl' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 provides=('freegish')
 conflicts=('freegish')
 install=freegish.install
 
-source=("git+https://github.com/${_pkgname}/${_pkgname}"
-        'freegish.desktop'
-        'cmakelists.patch')
+source=("git+https://github.com/jose1711/${_pkgname}#branch=fix-modern-build")
 
-md5sums=('SKIP'
-         '45a57af69e7e6becdac80ed85d87f871'
-         'ff6e826443f1c6ef3a9813bd7a09f88a')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -31,25 +27,20 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  patch -p2 < $srcdir/cmakelists.patch
+  # game data moved into datapacks/, but CMakeLists.txt still installs the old dirs
+  sed -i '/^install(DIRECTORY \(animation\|level\|sound\|texture\) /d' CMakeLists.txt
+  sed -i 's|^install(FILES "freegish.bmp"|install(DIRECTORY datapacks DESTINATION share/freegish)\n&|' CMakeLists.txt
+  # TYPE MAN installs into share/man without the section subdirectory
+  sed -i 's|TYPE MAN)|DESTINATION share/man/man6)|' CMakeLists.txt
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  mkdir -p build
-  cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B build -S "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_FHS=ON
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  cd build
-  make install DESTDIR="$pkgdir"
-
-  cd "$srcdir/$_pkgname"
-  cp -r music "$pkgdir/usr/share/$_pkgname"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim: sw=2:ts=2 et:
