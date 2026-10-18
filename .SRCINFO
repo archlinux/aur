@@ -1,10 +1,9 @@
 pkgbase = 9now
 	pkgdesc = Unofficial 9 Now desktop application.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/9now
 	arch = x86_64
-	arch = arm7h
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
@@ -14,7 +13,7 @@ pkgbase = 9now
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/9now/application/-/archive/1.0.4/application-1.0.4.tar.bz2
-	sha256sums = 2775cb1e0c8331f57952828ccef8acd5d2976003e74f5b2d86410fbbee93b239
+	source = https://gitlab.com/linuxbombay/9now/application/-/archive/1.0.5/application-1.0.5.tar.bz2
+	sha256sums = f642854b699369d6a6fb303239e40cf488bebb5bd004c456cdfbc3418cad74c3
 
 pkgname = 9now
