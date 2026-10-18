@@ -36,13 +36,11 @@ options=('!lto')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}-lite.tar.xz"
         'compiler-rt-adjust-paths.patch'
         'increase-fortify-level.patch'
-        'chromium-153-hermetic-python.patch'
-        'chromium-155-fix-gn-no-public_inputs.patch')
+        'chromium-153-hermetic-python.patch')
 sha256sums=('2063834f528029ad02a6a3de6d229c3e8b19bc43864be397944cbda18d7ee680'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49'
-            '81a9014afff7e2a836c2ba2da69a9023d42d2f69a46cb91a0504642c480f6cc7')
+            'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49')
 
 # Chromium unbundle shims relevant to pdfium's dependency closure
 # (see build/linux/unbundle/replace_gn_files.py; abseil is deliberately absent).
@@ -95,8 +93,6 @@ prepare() {
   # Use system python3 instead of the hermetic cpython3 interpreter
   # https://github.com/ungoogled-software/ungoogled-chromium/pull/3946
   patch -Np1 -i ../chromium-153-hermetic-python.patch
-
-  patch -Np1 -i ../chromium-155-fix-gn-no-public_inputs.patch
 
   # Unbundle fast_float
   mkdir -p pdfium/third_party/fast_float/src/include

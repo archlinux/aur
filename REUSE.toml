@@ -35,7 +35,6 @@ SPDX-License-Identifier = "BSD-3-Clause"
 [[annotations]]
 path = [
     "chromium-153-hermetic-python.patch",
-    "chromium-155-fix-gn-no-public_inputs.patch",
 ]
 SPDX-FileCopyrightText = "2015-2026 The ungoogled-chromium Authors"
 SPDX-License-Identifier = "BSD-3-Clause"
