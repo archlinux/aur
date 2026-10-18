@@ -5,17 +5,15 @@ _name1=runtime
 _name0=pydantic-monty
 pkgbase=python-$_name0
 pkgname=(python-$_name0-$_name2 python-$_name0-$_name1 python-$_name0)
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-arch=('any')
-_repo='https://github.com/pydantic/monty'
+arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('python')
 makedepends=('python-maturin'
              'python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 checkdepends=('python-anyio'
               'python-dirty-equals'
               'python-inline-snapshot'
@@ -24,11 +22,12 @@ checkdepends=('python-anyio'
               'python-pytest-examples'
               'python-websockets')
 options=(!lto)
+_repo='https://github.com/pydantic/monty'
 source=("$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ff642b2a64246433cae8f2c99e1bdbaf3db4cf0d08e6cbffc0ae400513e4b3a')
+sha256sums=('f01afc6e4da9de1aaf680f61e2ee06f397cc5c6db46196bb2dcc85d3a8a4e57d')
 
 prepare() {
-  cd "$srcdir"/${_name0//pydantic-/}-$pkgver
+  cd "${_name0//pydantic-/}-$pkgver"
   # ruff >= 0.16 enables SIM117/B018/DTZ001 by default; docs examples predate that
   sed -i "s/ruff_ignore=\['FA102'\]/ruff_ignore=['FA102', 'SIM117', 'B018', 'DTZ001']/" crates/${_name0//pydantic-/}-python/tests/test_readme_examples.py
   # anyio >= 4.12 parametrizes anyio_backend over every importable backend;
@@ -41,10 +40,9 @@ def anyio_backend():
 EOF
 }
 
-
 build() {
+  cd "${_name0//pydantic-/}-$pkgver"
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  cd "$srcdir"/${_name0//pydantic-/}-$pkgver
   python -m build --wheel --no-isolation crates/${_name0//pydantic-/}-python
   python -m build --wheel --no-isolation crates/${_name0//pydantic-/}-$_name1
   python -m build --wheel --no-isolation packages/$_name0
@@ -56,12 +54,13 @@ check() {
     --disable-warnings
     -W "ignore::pytest.PytestRemovedIn10Warning"
   )
-  cd "$srcdir"/${_name0//pydantic-/}-$pkgver
+  cd "${_name0//pydantic-/}-$pkgver"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer crates/${_name0//pydantic-/}-python/dist/*.whl
   test-env/bin/python -m installer crates/${_name0//pydantic-/}-$_name1/dist/*.whl
   test-env/bin/python -m installer packages/$_name0/dist/*.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" crates/${_name0//pydantic-/}-python/tests
+  export CARGO_PROFILE_RELEASE_LTO=off
   cargo test --locked --release -j 2 -p ${_name0//pydantic-/}-$_name1
 }
 
@@ -72,8 +71,9 @@ package_python-pydantic-monty-client() {
             'libgcc')
   optdepends=('python-opentelemetry-api: opentelemetry')
   url="$_repo/tree/main/crates/${_name0//pydantic-/}-python"
-  cd "$srcdir"/${_name0//pydantic-/}-$pkgver
+  cd "${_name0//pydantic-/}-$pkgver"
   python -m installer --destdir="$pkgdir" crates/${_name0//pydantic-/}-python/dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 package_python-pydantic-monty-runtime() {
@@ -81,16 +81,19 @@ package_python-pydantic-monty-runtime() {
   depends=('glibc'
            'libgcc')
   url="$_repo/tree/main/crates/${_name0//pydantic-/}-$_name1"
-  cd "$srcdir"/${_name0//pydantic-/}-$pkgver
+  cd "${_name0//pydantic-/}-$pkgver"
   python -m installer --destdir="$pkgdir" crates/${_name0//pydantic-/}-$_name1/dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 package_python-pydantic-monty() {
+  arch=('any')
   pkgdesc='The Monty sandboxed Python interpreter: bindings plus the worker binary.'
   depends+=('python-pydantic-monty-client'
             'python-pydantic-monty-runtime')
   optdepends=('python-opentelemetry-api: opentelemetry')
   url="$_repo/tree/main/packages/$_name0"
-  cd "$srcdir"/${_name0//pydantic-/}-$pkgver
+  cd "${_name0//pydantic-/}-$pkgver"
   python -m installer --destdir="$pkgdir" packages/$_name0/dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
