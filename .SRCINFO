@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ga-ie
 	pkgdesc = Irish language pack for Firefox Nightly
-	pkgver = 160.0a1.20261017.210336
+	pkgver = 160.0a1.20261018.094310
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ga-ie
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ga-IE-160.0a1.20261017.210336.xpi
-	source = firefox-nightly-i18n-ga-IE-160.0a1.20261017.210336.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-160.0a1.ga-IE.langpack.xpi
-	sha256sums = 2bdb21077bb786712b67c32bdf15645b063e7e80acec45d85db772033769f0b0
+	noextract = firefox-nightly-i18n-ga-IE-160.0a1.20261018.094310.xpi
+	source = firefox-nightly-i18n-ga-IE-160.0a1.20261018.094310.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-160.0a1.ga-IE.langpack.xpi
+	sha256sums = fcb4a4b62908f20192885e6e3270f68546836a3c7f586d67507237a0730ae46b
 
 pkgname = firefox-nightly-i18n-ga-ie
