@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=redmine-tui-bin
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Terminal UI for Redmine: kanban board, time logging, status updates"
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ source_aarch64=(
   ${pkgname%-bin}-$pkgver-arm64::$url/releases/download/v$pkgver/${pkgname%-bin}-linux-arm64
 )
 sha256sums=('fa6e367c84868f077317c6826b12a66e47ed688d5944666b5ff26b3a2f4ea3c3'
-            'd18848c3ed13b00c7135368c5e6aadc033470907e6517d8a424be4c3c8833f6f')
-sha256sums_x86_64=('e5a46f9b0170b23b6040077be1eea7b815a1dc03737f442c249484b90344818c')
-sha256sums_aarch64=('9f74de3a305ffe8954805d2059227d2c7132cf8900904df8d273052e98c8714d')
+            'c9e913c848baeb62c26b47e826a6724bcbc064b9de0aae4f7ba621a5d33dfe1a')
+sha256sums_x86_64=('79dd3d4fcca6106c6b5daeaf1269906bcaace3813744701df2ae7f26187fa283')
+sha256sums_aarch64=('ade8d377ae26569e4a838897140a47c211bfc0aaa1fada4fbb3468b76bfac1ca')
 
 package() {
   case "$CARCH" in
