@@ -1,6 +1,6 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=pg_flame
-# renovate: datasource=github-releases depName=mgartner/pg_flame
+# renovate: datasource=github-releases depName=mgartner/pg_flame versioning=loose
 pkgver=1.2
 pkgrel=3
 pkgdesc="A flamegraph generator for Postgres EXPLAIN ANALYZE output."
