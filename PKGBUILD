@@ -1,4 +1,9 @@
 # Maintainer: redxherring
+# Update instructions (stolen from aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=open-webui-desktop-bin):
+#   1. Update pkgver to the new version
+#   2. Update sha512sums_x86_64 (run: updpkgsums)
+#   3. Regenerate .SRCINFO (run: makepkg --printsrcinfo > .SRCINFO)
+#   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
 pkgver=1.8.1.r0
