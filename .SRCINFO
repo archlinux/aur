@@ -1,0 +1,23 @@
+pkgbase = tk9
+	pkgdesc = A windowing toolkit for use with tcl (version 9, parallel-installable with tk 8.6)
+	pkgver = 9.1.0
+	pkgrel = 1
+	url = https://www.tcl-lang.org/
+	arch = x86_64
+	license = TCL
+	depends = tcl9
+	depends = at-spi2-core
+	depends = fontconfig
+	depends = glib2
+	depends = harfbuzz
+	depends = libcups
+	depends = libx11
+	depends = libxext
+	depends = libxft
+	depends = libxrender
+	depends = libxss
+	options = staticlibs
+	source = https://downloads.sourceforge.net/sourceforge/tcl/tk9.1.0-src.tar.gz
+	sha256sums = 772ce7a97c07c2db4c957c93af7ab4dff4bd3037772836b6afbcd0974023b3d6
+
+pkgname = tk9
