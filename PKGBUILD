@@ -1,6 +1,6 @@
 # Maintainer: Music Player Contributors <https://github.com/selfAnnihilator/kaze>
 pkgname=kaze
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A calm, intelligent local music player"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
     "kaze.desktop"
 )
 sha256sums=(
-    'cf65f79037d858ccb2ad46e4f148d6c09b95842e218cf67102a58c3db8245eef'
+    'ee8057b075c9b0bf29bee45d17c2e26116c2e5f4e18ed63e2b2b411ebf319654'
     'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c'
 )
 
@@ -48,7 +48,7 @@ build() {
     cd "$pkgname-$pkgver"
     npm ci
     npm run build
-    cargo build --release --locked
+    cargo build --release --locked --features tauri/custom-protocol
 }
 
 package() {
