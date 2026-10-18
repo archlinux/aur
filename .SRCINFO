@@ -1,0 +1,20 @@
+pkgbase = bwaudit-git
+	pkgdesc = Checks the passwords of a Bitwarden vault for compromise (Have I Been Pwned) and reuse
+	pkgver = 0.1.0.r1.g3164db4
+	pkgrel = 1
+	url = https://codeberg.org/mipi/bwaudit/
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	optdepends = bitwarden-cli: read the vault directly via bw instead of --input
+	provides = bwaudit
+	conflicts = bwaudit
+	options = !debug
+	options = !lto
+	source = git+https://codeberg.org/mipi/bwaudit.git
+	md5sums = SKIP
+
+pkgname = bwaudit-git
