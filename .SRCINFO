@@ -1,0 +1,18 @@
+pkgbase = linver-git
+	pkgdesc = winver, but for Linux (VCS master branch)
+	pkgver = r1.a1b2c3d
+	pkgrel = 1
+	url = https://github.com/itsflameee/linver
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	provides = linver
+	conflicts = linver
+	conflicts = linver-bin
+	source = git+https://github.com/itsflameee/linver.git#branch=master
+	sha256sums = SKIP
+
+pkgname = linver-git
