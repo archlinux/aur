@@ -1,6 +1,6 @@
 pkgbase = dosierskanilo
 	pkgdesc = Blob-centric media and archive file scanner
-	pkgver = 26.9.2
+	pkgver = 26.11.2
 	pkgrel = 1
 	url = https://github.com/cschlote/DosierSkanilo
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = dosierskanilo
 	depends = tar
 	depends = unrar
 	depends = p7zip
-	source = dosierskanilo-26.9.2.tar.gz::https://github.com/cschlote/DosierSkanilo/archive/refs/tags/v26.9.2.tar.gz
-	sha256sums = SKIP
+	source = dosierskanilo-26.11.2.tar.gz::https://github.com/cschlote/DosierSkanilo/archive/refs/tags/v26.11.2.tar.gz
+	sha256sums = 42da120431ea584fafd15d8b43755a1b877ea64f1366f824abd485aa779ac90c
 
 pkgname = dosierskanilo
