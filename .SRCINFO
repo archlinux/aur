@@ -1,6 +1,6 @@
 pkgbase = wakatime
 	pkgdesc = Command line interface used by all WakaTime text editor plugins
-	pkgver = 2.27.8
+	pkgver = 2.27.13
 	pkgrel = 1
 	url = https://github.com/wakatime/wakatime-cli
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = wakatime
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = wakatime-cli-2.27.8.tar.gz::https://github.com/wakatime/wakatime-cli/archive/refs/tags/v2.27.8.tar.gz
-	sha512sums = 793724a4591ca81226e3a66d2aa36ee21e9e51aec4ed3e86a1339c08b701810725a247b24b0a134f33790274fceeea490daddcc5663cfb8793850a0958b69a0c
-	b2sums = 0f9845cf09056f4d698f833de74d4413e3b89db70a09398c241e2cb23332f29ebd692b1111026dea1329413f04752e7f06aeaa6a69d90df0211242a935fa3cdc
+	source = wakatime-cli-2.27.13.tar.gz::https://github.com/wakatime/wakatime-cli/archive/refs/tags/v2.27.13.tar.gz
+	sha512sums = 739fd4706128a94854dc053a9dc90f3a28888e863a1fca2a8b39bd1804203d28e1191b3456deaa25653f7f22968073aa7647985892efd93dfb674d15e2793ab5
+	b2sums = 331428a9ab514785d141834f2ae30402452e85022e41431d5fd15ce996e118195b735e581d8b09487832c730109ed809a2bb4d5c13f8ac1f667147e827d8e813
 
 pkgname = wakatime
