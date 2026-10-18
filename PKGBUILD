@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=searchmonkey
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time search for real files. No index. No daemon. No stale results."
 arch=('x86_64')
 url="https://searchmonkey.dev"
@@ -16,6 +16,7 @@ depends=(
 makedepends=(
   'cargo'
   'cargo-tauri'
+  'nodejs'
   'pnpm'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v$pkgver.tar.gz"

@@ -1,12 +1,13 @@
 pkgbase = searchmonkey
 	pkgdesc = Real-time search for real files. No index. No daemon. No stale results.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://searchmonkey.dev
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = cargo-tauri
+	makedepends = nodejs
 	makedepends = pnpm
 	depends = gtk3
 	depends = libsoup3
