@@ -1,12 +1,13 @@
 # Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager-git
 pkgver=1.0.0.r16.g2868189
-pkgrel=3
+pkgrel=4
 pkgdesc='A mod manager for the Valve game Deadlock (git)'
 arch=('x86_64')
 url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
 license=('GPL-3.0-only')
-makedepends=('git' 'cargo' 'cargo-tauri' 'nodejs' 'pnpm' 'protobuf')
+makedepends=('git' 'cargo' 'cargo-tauri' 'nodejs' 'pnpm' 'protobuf'
+             'libayatana-appindicator')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
          'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme'
          'gst-plugins-good' 'glibc' 'libgcc' 'libstdc++' 'dbus')
