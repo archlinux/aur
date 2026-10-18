@@ -22,6 +22,6 @@ pkgbase = unbloatedtube-bin
 	conflicts = unbloatedtube
 	options = !strip
 	source = https://github.com/antlis/UnbloatedTube/releases/download/v0.45.0/unbloatedtube-0.45.0-x86_64-linux.tar.gz
-	sha256sums = 1a3a6de01f12b3a748bb52e6025bbdfc4aa049e36a38b1509b59f91d3fe4d70c
+	sha256sums = 1db57f7c8a1bb18385f8734dca57c2908c966791f48ce2c396d46163689a9fdf
 
 pkgname = unbloatedtube-bin
