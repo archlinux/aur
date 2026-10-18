@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Mayrink <vncsmyrnk@gmail.com>
 pkgname=gnome-shell-extension-gfs-git
-pkgver=r31.2229d05
+pkgver=r12.0f788a6
 pkgrel=1
 pkgdesc="GNOME extension to fast switch between windows using keybindings."
 arch=('x86_64')
@@ -21,7 +21,8 @@ pkgver() {
 build() {
   cd gfs || return
   autoreconf -fi
-  ./configure
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
