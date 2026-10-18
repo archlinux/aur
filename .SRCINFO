@@ -1,7 +1,7 @@
 pkgbase = sjmcl-bin
 	pkgdesc = 🌟 A Minecraft launcher from @SJMC-Dev
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UNIkeEN/SJMCL
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = sjmcl-bin
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = libsoup
+	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
 	provides = sjmcl
