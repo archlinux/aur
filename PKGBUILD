@@ -1,7 +1,7 @@
 # Maintainer: Autumn (Bee) <10378052+bee-san at users dot noreply dot github dot com>
 
 pkgname=mangatan-extension-server
-pkgver=1.0.6.7
+pkgver=1.0.7.0
 pkgrel=1
 pkgdesc="Headless Mihon extension server for Mangatan (Mihon bridge)"
 # The JAR is byte-identical in the upstream Linux, macOS and Windows bundles and
@@ -31,7 +31,7 @@ source=(
 noextract=("${_bundle}")
 
 sha256sums=(
-  '92e306333b3eeeed592ea1abfb1cb85f2dd21ee9937f031ab7c21bb2feac1e3d'
+  '2b6c9786bf7e5270809f7162e26552862aaa14f4e9a158859faa105efa694655'
   '3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04'
 )
 
