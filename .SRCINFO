@@ -1,7 +1,7 @@
 pkgbase = lm-studio-bin
 	pkgdesc = Discover, download, and run LLMs locally. Use the chat UI or local server to experiment and develop with local LLMs (Official binary package with bundled Electron)
-	pkgver = 0.4.25
-	pkgrel = 1
+	pkgver = 0.4.26
+	pkgrel = 4
 	url = https://lmstudio.ai
 	install = lm-studio.install
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = lm-studio-bin
 	conflicts = lmstudio-bin
 	options = !strip
 	source = lm-studio
-	source = https://installers.lmstudio.ai/linux/x64/0.4.25-1/LM-Studio-0.4.25-1-x64.deb
+	source = https://installers.lmstudio.ai/linux/x64/0.4.26-4/LM-Studio-0.4.26-4-x64.deb
 	sha256sums = f36b30a1c02919f7fa1831406da8695c888588099d1ceb69efc326bd73d38f29
-	sha256sums = 394dbff57c55cbb4f3bc8ca951b0afceffff25ebfdaf6a789e8611c6c132baca
+	sha256sums = 1a8c981b69704bb1a1068ae35700cf25ce48b2d1b10cbc7722f85fd8f5db461a
 
 pkgname = lm-studio-bin
