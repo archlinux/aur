@@ -1,6 +1,6 @@
 pkgbase = syncclipboard-desktop
 	pkgdesc = Cross-Platform Cipboard Syncing Solution (Desktop)
-	pkgver = 3.3.1
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/Jeric-X/SyncClipboard
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = syncclipboard-desktop
 	makedepends = dotnet-sdk-10.0
 	makedepends = librsvg
 	depends = aspnet-runtime-10.0
-	source = syncclipboard-3.3.1.tar.gz::https://github.com/Jeric-X/SyncClipboard/archive/refs/tags/v3.3.1.tar.gz
+	source = syncclipboard-3.3.3.tar.gz::https://github.com/Jeric-X/SyncClipboard/archive/refs/tags/v3.3.3.tar.gz
 	source = syncclipboard.desktop
-	sha256sums = 69b8db10ee0d46de1524d99818b11c8fe3740b3c3e753c8b6bb7e06911c56203
+	sha256sums = ae3ca12042f069f58e495b3aa76bb5f1a3ec522d1199c123b936e04a6b5ee85b
 	sha256sums = 77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75
 
 pkgname = syncclipboard-desktop
