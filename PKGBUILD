@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.3.1.r1.gbc6a819
+pkgver=2.3.1.r36.gea0f4f3
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -35,7 +35,10 @@ makedepends=(
   'shaderc'
   'vulkan-headers'
 )
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=(
   'apcupsd: apcaccess is used for UPS/battery information'
   'freeipmi: Show ipmi sensors for Workstations/Servers'
@@ -60,7 +63,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
     -DHARDINFO2_QT6='1' \
-    -Wno-dev
+    -Wno-author
   cmake --build build
 }
 
