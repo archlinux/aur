@@ -3,7 +3,7 @@
 pkgname=rustfs
 pkgver=1.0.3
 _console_ver=0.1.37
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance distributed object storage for MinIO alternative."
 url='https://rustfs.com/en/'
 arch=('x86_64')
@@ -32,14 +32,16 @@ prepare() {
 	cd ${pkgname}-${pkgver//_/-}
 
 	RUSTC_BOOTSTRAP=1 cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+	cd ${srcdir}/console-${_console_ver}
+
+	# Avoid hitting OS thread limits in Next.js builds by disabling worker threads
+	sed -i 's/images: {/experimental: { workerThreads: false, cpus: 1 }, images: {/' next.config.ts
 }
 
 build() {
 	# build embedded console assets
 	cd console-${_console_ver}
-
-	# Avoid hitting OS thread limits in Next.js builds by disabling worker threads
-	sed -i 's/images: {/experimental: { workerThreads: false, cpus: 1 }, images: {/' next.config.ts
 
 	pnpm --pm-on-fail=ignore i --dangerously-allow-all-builds
 	pnpm --pm-on-fail=ignore build
