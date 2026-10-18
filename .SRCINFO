@@ -1,6 +1,6 @@
 pkgbase = portop
 	pkgdesc = 🔌 What's really using your ports? htop-style TUI, one keypress to kill it
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/padovanl/portop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = portop
 	makedepends = go
 	provides = portop
 	options = !strip
-	source = portop-0.2.1.tgz::https://github.com/padovanl/portop/archive/v0.2.1.tar.gz
-	sha256sums = 4fb55f6146fd85fe1a05af00b1281f123025e29e1b9ba3f165d2413ce0a02343
+	source = portop-0.3.0.tgz::https://github.com/padovanl/portop/archive/v0.3.0.tar.gz
+	sha256sums = e84d56316ae48ebef064d1f8e995885e93ecd2d4d3abb3ba0e8e8bfec91b939a
 
 pkgname = portop
