@@ -1,0 +1,9 @@
+post_install() {
+	echo ":: crab-on-desk: on GNOME (Wayland) log out and in once so the shell finds the extension, then run:"
+	echo "     gnome-extensions enable crab-on-desk@supernovatux"
+	echo "   Without it crab-widget exits with \"The Crab on Desk GNOME Shell extension does not answer\"."
+}
+
+post_upgrade() {
+	echo ":: crab-on-desk: if you use GNOME, log out and in again so the shell loads the updated extension."
+}

@@ -14,9 +14,11 @@ options=('!lto')
 optdepends=('crab-on-desk-themes: Themes from rullerzhou-afk/clawd-on-desk ported for this proj'
             'hyprland: cursor tracking (roam, dizzy, eye tracking), permission prompt placement and focusing the terminal from it'
             'kwin: cursor tracking (roam, dizzy, eye tracking) and permission prompt placement on KDE Plasma (Wayland)'
+            'gnome-shell: GNOME Wayland support (the crab-on-desk shell extension is installed with this package)'
             'picom: per-pixel transparency on X11 window managers that do not composite themselves'
             'xdg-desktop-portal: system accent colour and light/dark scheme in the settings and permission windows'
             'claude-code: the agent whose hooks drive the pet')
+install="${_pkgname}.install"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git")
