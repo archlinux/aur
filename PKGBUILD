@@ -2,7 +2,7 @@
 _base=rocket-fft
 pkgname=python-${_base}
 pkgdesc="Rocket-FFT extends Numba by scipy.fft and numpy.fft"
-pkgver=0.3.3
+pkgver=0.4.1
 pkgrel=1
 arch=(any)
 url="https://github.com/styfenschaer/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numba)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-scipy)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('acd7542349f1786b1b32b930b45c75dc57e248aa633a03c6498c9151d2c90be028a12820a8243ef1e370fd315e5787465f10b598df62daa64ec6aec8c8b9b3a2')
+sha512sums=('87737ea5e6654f4b7c049a9e669a9528867635dca47ed4801e9efe1bad1d4350af3d95161eb0a9cb62d3f2190d7694a46edc444ed8133828c6c21a08f120c644')
 
 build() {
   cd ${_base}-${pkgver}
