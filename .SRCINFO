@@ -1,6 +1,6 @@
 pkgbase = mehshell
 	pkgdesc = Fast parallel zsh prompt engine for bromigOS
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/bromigos-org/mehshell
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mehshell
 	depends = zsh
 	conflicts = mehshell-bin
 	options = !debug
-	source = mehshell-0.2.3.tar.gz::https://github.com/bromigos-org/mehshell/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = ea22a478be7b8b07e542475aff8fb7cf63dd16ed31bf15498a4439512369b0d4
+	source = mehshell-0.2.4.tar.gz::https://github.com/bromigos-org/mehshell/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 05034d01c0adde246d2e3d180aec8e01355db97bad85f6b511534ca4d7ab71c1
 
 pkgname = mehshell
