@@ -5,16 +5,12 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.105.1
+pkgver=1.106.0
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/BerriAI/litellm'
 license=('MIT')
-makedepends=('python-maturin'
-             'python-build'
-             'python-installer'
-             'python-wheel')
 depends=('python'
          'python-fastuuid'
          'python-filelock'
@@ -35,8 +31,12 @@ depends=('python'
          'python-pydantic-settings'
          'python-jsonschema'
          'python-boto3'
+         'python-typing_extensions'
          'glibc'
          'libgcc')
+makedepends=('python-maturin'
+             'python-build'
+             'python-installer')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-granian: proxy'
@@ -138,15 +138,15 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f1a274db0b2bcc78c34ed34c06df2c1dcd0dc038469193684927f6bb2cab2d97')
+sha256sums=('5c84cc7d928cdb6ec57c5d87f221e3d27ca755958ebae389d5663f822b6f7a19')
 
 prepare() {
-  cd "${srcdir}"/${pkgname}-${pkgver}/
+  cd "$pkgname-$pkgver"
   sed -i 's/maturin==[0-9.]*/maturin/g' pyproject.toml
 }
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}/
+  cd "$pkgname-$pkgver"
   export PYO3_PYTHON=/usr/bin/python
   export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
   export CARGO_PROFILE_RELEASE_LTO=off
@@ -155,8 +155,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}/
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "README.md" "$pkgdir"/usr/share/doc/$pkgname/README.md
+  install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
