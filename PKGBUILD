@@ -2,7 +2,7 @@
 
 _appname=pastevault
 pkgname=${_appname}-server
-pkgver=0.1.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Modern secure pastebin with a VS Code-like editor. Share code, text, and markdown securely with automatic expiry and burn-after-read options. (SERVER)"
 
@@ -26,7 +26,7 @@ noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz"
 		"${_appname}.service" "${_appname}.env" "${_appname}.sysusers" "${_appname}.tmpfiles")
-b2sums=('8266dfcc4613a030fa26b18f6d204e4207cc837179da1e93b89640066b2e217bf05e8a7239b6ccf361b0efd1db8ebc73586b1fcf7ded01b5dd94d0e9ceb3de67'
+b2sums=('9bb62df0f532189b5fc84be85e6b3c2212b24d153e028358ea99fc0e8f43659cef4868ecb8b4495004ccf13e7f8fceebd860ded6c75eccefdec9efa2ed42474b'
         '266caf60954c157beecb65786beac41a31f2f887e434e7158a54c28d39c67251012e59d53e359ac5db24353c4edc373b2e87e865e87e6ac3e2507640cc393332'
         'b1d5e38794d04a798d3a667307f4ca5e131c8c647494e980c5be69f15dc9cd69f4e47c3b4843976f081621e48720b8ce9eeb7ac00653ad5c5e3bb2b48234445b'
         '14f96390c7a0f12ed66bf4fb016002cb60109a43886a65e327df68662da6764498ac1efe548eb864c50896a4f8a56fb14b9040c6588d0d9693ca4d62129e78a5'
