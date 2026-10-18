@@ -1,0 +1,23 @@
+pkgbase = lazy-store
+	pkgdesc = GTK4 app store for the Arch repos and AUR, part of LazyOS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Halespider396/lazy-store
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	depends = gtk4
+	depends = polkit
+	depends = pacman
+	depends = curl
+	depends = tar
+	depends = gzip
+	optdepends = swww: wallpaper-based theming
+	optdepends = hyprpaper: wallpaper-based theming
+	options = !debug
+	source = lazy-store-0.1.0.tar.gz::https://github.com/Halespider396/lazy-store/archive/v0.1.0.tar.gz
+	sha256sums = 210331cea1d62736e950eba7efacf8f59c313e7c9a7609ef6e88bc316c9c4e06
+
+pkgname = lazy-store
