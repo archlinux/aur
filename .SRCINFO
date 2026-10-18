@@ -1,0 +1,46 @@
+pkgbase = morgan-git
+	pkgdesc = Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo
+	pkgver = 0.1.0.r0.ge30ec2e
+	pkgrel = 1
+	url = https://github.com/ImJustDoingMyPart/morgan
+	install = morgan.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = hyprland-protocols
+	depends = hyprland>=0.56
+	depends = gtk4>=1:4.22
+	depends = gtk4-layer-shell
+	depends = libpulse
+	depends = glib2
+	depends = pam
+	depends = systemd
+	depends = curl
+	depends = wl-clipboard
+	optdepends = matugen: temas (también los curados: las plantillas pasan por matugen)
+	optdepends = awww: fondos de pantalla
+	optdepends = libvips: miniaturas de la banda de fondos
+	optdepends = hyprsunset: luz nocturna
+	optdepends = ddcutil: brillo de monitores externos (DDC/CI)
+	optdepends = hyprshot: capturas de pantalla
+	optdepends = cliphist: launcher, portapapeles
+	optdepends = wtype: launcher, escribir símbolos
+	optdepends = libqalculate: calculadora
+	optdepends = rofimoji: launcher, datos de los símbolos
+	optdepends = libcanberra: sonidos del sistema
+	optdepends = uwsm: lanzar apps como unidades de systemd
+	optdepends = gpu-screen-recorder-ui: indicador y control de grabación
+	optdepends = papirus-folders: color de las carpetas del tema de íconos
+	optdepends = jq: morgan-cuota (cuotas de Claude Code y Antigravity)
+	provides = morgan
+	provides = notification-daemon
+	conflicts = morgan
+	conflicts = morgan-bin
+	backup = etc/pam.d/morgan-lock
+	source = morgan::git+https://github.com/ImJustDoingMyPart/morgan.git
+	sha256sums = SKIP
+
+pkgname = morgan-git
