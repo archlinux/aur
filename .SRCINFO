@@ -1,0 +1,15 @@
+pkgbase = samsung-tvcam-fwloader
+	pkgdesc = Firmware loader for Samsung TV cameras (VG-STC2000/3000/4000/5000) so they work as UVC webcams
+	pkgver = 0.20250519
+	pkgrel = 1
+	url = https://github.com/ondrej-zary/samsung-tvcam-fwloader
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LicenseRef-Samsung-firmware
+	depends = glibc
+	depends = libusb
+	depends = systemd
+	source = samsung-tvcam-fwloader-0.20250519.tar.gz::https://github.com/ondrej-zary/samsung-tvcam-fwloader/archive/31588de7a27bfa670df82adeed568b47af6466ef.tar.gz
+	sha256sums = 79f502a13d0349a756c26ae5872d60adf24bc0737f7fa147b4990739c204a2c5
+
+pkgname = samsung-tvcam-fwloader
