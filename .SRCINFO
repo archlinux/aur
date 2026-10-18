@@ -1,0 +1,30 @@
+pkgbase = freshgram-bin
+	pkgdesc = Telegram Desktop fork with the AyuGram features and a Material look (prebuilt)
+	pkgver = 7.5.0
+	pkgrel = 1
+	url = https://github.com/Snowy-Fluffy/freshGram
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxcb
+	depends = pango
+	optdepends = xdg-desktop-portal: file dialogs and screen sharing
+	provides = freshgram=7.5.0
+	conflicts = freshgram
+	conflicts = freshgram-git
+	noextract = freshGram-linux-x86_64-7.5.0.tar.gz
+	options = !strip
+	options = !debug
+	source = freshGram-linux-x86_64-7.5.0.tar.gz::https://github.com/Snowy-Fluffy/freshGram/releases/download/v7.5.0/freshGram-linux-x86_64.tar.gz
+	source = LICENSE-7.5.0::https://raw.githubusercontent.com/Snowy-Fluffy/freshGram/v7.5.0/LICENSE
+	sha256sums = 9fc2ba9627e7776fad2d4f1c6f5289f50076979607ac871ffcf75beb6864ba31
+	sha256sums = a728b65d02eeaf6b50c075a33b76107c652c3e5a12ff67f53682c83d47a23e1e
+
+pkgname = freshgram-bin
