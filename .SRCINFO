@@ -1,6 +1,6 @@
 pkgbase = ymusic-cli
 	pkgdesc = Terminal client for Yandex Music: My Wave, likes, stations (TUI)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/iodnoorov/ymusic
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ymusic-cli
 	depends = libgcc
 	depends = glibc
 	options = !lto
-	source = ymusic-cli-1.4.0.tar.gz::https://github.com/iodnoorov/ymusic/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 90fcbabd39600c3726488ff2859517f99886fe1e7dcf5a73204ea43076929f9f
+	source = ymusic-cli-1.4.1.tar.gz::https://github.com/iodnoorov/ymusic/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 7bb5532eae5e6c853ea4e14b9236b3f9a7d84ec83ef141e1bda3cdf2f041e5ee
 
 pkgname = ymusic-cli
