@@ -3,7 +3,7 @@
 set -u
 _pybase='cement'
 pkgname="python-${_pybase}"
-pkgver='3.0.14'
+pkgver='3.0.16'
 #pkgver='2.8.2' # for aws-eb-cli
 pkgrel='1'
 pkgdesc='CLI application framework for Python'
@@ -25,23 +25,21 @@ makedepends+=('python-pdm-backend')
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("https://pypi.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-md5sums=('ee6ffab6dd3073855c0b2639a8f9d699')
-sha256sums=('0a8efc10646bd9a68d5cc5d2b69cfa0d9b3c186ce5d268497e3bbfc823dcb525')
+md5sums=('827f85a1808cc59afd7e2a36cc16a62a')
+sha256sums=('7b56202c3c254dcf64aacdb6b3275a8fe08f50aac8a6c082d30d7860d490378e')
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   python -m build --wheel --no-isolation
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dpm '644' 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dpm '644' 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  set +u
 }
 set +u
 # vim:set ts=2 sw=2 et:
