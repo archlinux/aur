@@ -1,6 +1,6 @@
 pkgbase = fingerprint-manager-git
 	pkgdesc = Qt 6 and Kirigami fingerprint manager for fprintd
-	pkgver = 0.1.0.r1.g032d445
+	pkgver = 0.1.0.r2.gb4704d2
 	pkgrel = 1
 	url = https://github.com/thankarezos/fingerprint-manager
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = fingerprint-manager-git
 	depends = polkit
 	optdepends = kconfig: KDE fingerprint authenticator preference tools
 	optdepends = coreutils: unbuffered fingerprint operation progress
-	provides = fingerprint-manager=0.1.0.r1.g032d445
+	provides = fingerprint-manager=0.1.0.r2.gb4704d2
 	conflicts = fingerprint-manager
 	source = fingerprint-manager::git+https://github.com/thankarezos/fingerprint-manager.git#branch=main
 	sha256sums = SKIP

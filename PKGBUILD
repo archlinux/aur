@@ -1,7 +1,7 @@
 # Maintainer: thankarezos
 pkgname=fingerprint-manager-git
 _pkgname=fingerprint-manager
-pkgver=0.1.0.r1.g032d445
+pkgver=0.1.0.r2.gb4704d2
 pkgrel=1
 pkgdesc='Qt 6 and Kirigami fingerprint manager for fprintd'
 arch=('any')
