@@ -8,7 +8,7 @@
 pkgname=mautrix-signal-bin
 provides=('mautrix-signal')
 conflicts=('mautrix-signal')
-pkgver="0.2609.0"
+pkgver="0.2610.0"
 pkgrel=2
 pkgdesc="A Matrix-Signal puppeting bridge (Golang version)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ depends=()
 options=(!debug)
 url="https://github.com/mautrix/signal"
 _ci_job_url="https://mau.dev/mautrix/signal/-/jobs"
-source_x86_64=("$pkgname"::"${url}/releases/download/v${pkgver}/mautrix-signal-amd64")
-source_aarch64=("$pkgname"::"${url}/releases/download/v${pkgver}/mautrix-signal-arm64")
+source_x86_64=("${pkgname}-x86_64"::"${url}/releases/download/v${pkgver}/mautrix-signal-amd64")
+source_aarch64=("${pkgname}-aarch64"::"${url}/releases/download/v${pkgver}/mautrix-signal-arm64")
 source=(
           "sysusers-${pkgname/-bin}.conf"
           "${pkgname/-bin}.tmpfiles"
@@ -28,17 +28,19 @@ backup=("etc/${pkgname/-bin}/config.yaml")
 sha256sums=('3384dd44aa72937047f03f4a524efdf92162029ab85e830f5c7d4747b40359d8'
             '2515ba90e73c054289c3877a86b01ae57117aaa8096348e69d4d0cbe01304a9d'
             '2582791c2210b568afcb916112299a929424c18b381ae8b6b57a2144d0f18b63')
-sha256sums_x86_64=('e4481d0abb0e8cd98eba54d3d42e119cd2bd03faac3885c544286e602b5f7b06')
-sha256sums_aarch64=('48c00d37c4e67434770db3e462295f26f676f6ce8cc67cc9c417ec8f85a1e665')
+sha256sums_x86_64=('13867e87604464b7ca848bd0e4b6afdb013710f021cc7477007629d1585f3b5f')
+sha256sums_aarch64=('b2bafd1796866eb793f5447e15ff9a9cb6577f15279b9d7772d043cc58502739')
 
 prepare() {
   cd "${srcdir}/"
-  chmod u+x ./mautrix-signal-bin
-  ./mautrix-signal-bin --generate-example-config
+  local _binary="${pkgname}-${CARCH}"
+  chmod u+x "./${_binary}"
+  ./"${_binary}" --generate-example-config
 }
 
 package() {
-  install -Dm755 "$srcdir/${pkgname}" "$pkgdir/usr/bin/${pkgname/-bin}"
+  local _binary="${pkgname}-${CARCH}"
+  install -Dm755 "$srcdir/${_binary}" "$pkgdir/usr/bin/${pkgname/-bin}"
 
   install -Dm644 "$srcdir/sysusers-${pkgname/-bin}.conf" "$pkgdir/usr/lib/sysusers.d/${pkgname/-bin}.conf"
   install -Dm644 "$srcdir/${pkgname/-bin}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${pkgname/-bin}.conf"
