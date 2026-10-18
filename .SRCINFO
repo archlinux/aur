@@ -1,0 +1,16 @@
+pkgbase = moss-language
+	pkgdesc = The MOSS language: compiler, runtime, and adaptation system (standard-library-only). Companion to the moss application.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://gitlab.com/Bingusfan360/mahoraga-language
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://gitlab.com/Bingusfan360/mahoraga-language/-/archive/v0.3.1/mahoraga-language-v0.3.1.tar.gz
+	sha256sums = 5a8f15202c262b6ba1d2829b355d11db08fd5b9a566de5a2909d9cc6d5ea96d1
+
+pkgname = moss-language
