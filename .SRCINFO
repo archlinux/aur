@@ -1,0 +1,17 @@
+pkgbase = pollen-nightly
+	pkgdesc = Pollen channel alias for pollen-nightly-bin
+	pkgver = 0.0.17.24
+	pkgrel = 1
+	url = https://github.com/tiouoo/Pollen
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = pollen-nightly-bin
+	conflicts = pollen-bin
+	conflicts = pollen-commit-bin
+	conflicts = pollen
+	conflicts = pollen-mc
+	conflicts = pollen-stable
+	conflicts = pollen-stable-bin
+	conflicts = pollen-commit
+
+pkgname = pollen-nightly
