@@ -4,3 +4,5 @@
 !/.SRCINFO
 !/*.install
 !/nvchecker.toml
+!/Exclude-test-suite-from-wheel.patch
+!/Build-portable-CPU-kernels.patch

@@ -1,0 +1,7 @@
+--- a/setup.py
++++ b/setup.py
+@@ -891 +891,3 @@ setup(
+-    packages=find_packages(exclude=["benchmarks", "benchmarks.*"]),
++    packages=find_packages(
++        exclude=["benchmarks", "benchmarks.*", "test", "test.*"]
++    ),

@@ -1,0 +1,42 @@
+--- a/setup.py
++++ b/setup.py
+@@ -460,37 +460,2 @@ def add_options_for_x86(extra_compile_args):
+-    if use_cpu_kernels and is_linux:
+-        if hasattr(torch._C._cpu, "_is_avx512_supported"):
+-            is_avx512_supported = torch._C._cpu._is_avx512_supported()
+-        elif hasattr(torch.cpu, "_is_avx512_supported"):
+-            is_avx512_supported = torch.cpu._is_avx512_supported()
+-        else:
+-            is_avx512_supported = False
+-        if is_avx512_supported:
+-            extra_compile_args["cxx"].extend(
+-                [
+-                    "-DCPU_CAPABILITY_AVX512",
+-                    "-march=native",
+-                    "-mfma",
+-                    "-fopenmp",
+-                ]
+-            )
+-        else:
+-            print(
+-                "[WARNING] AVX512 not supported, CPU kernels will be built without AVX512 optimizations"
+-            )
+-        # note the different API name for vnni (vnni vs avx512_vnni)
+-        if hasattr(torch._C._cpu, "_is_avx512_vnni_supported"):
+-            is_avx512_vnni_supported = torch._C._cpu._is_avx512_vnni_supported()
+-        elif hasattr(torch.cpu, "_is_vnni_supported"):
+-            is_avx512_vnni_supported = torch.cpu._is_vnni_supported()
+-        else:
+-            is_avx512_vnni_supported = False
+-        if is_avx512_vnni_supported:
+-            extra_compile_args["cxx"].extend(
+-                [
+-                    "-DCPU_CAPABILITY_AVX512_VNNI",
+-                ]
+-            )
+-        else:
+-            print(
+-                "[WARNING] AVX512 VNNI not supported, CPU kernels will be built without AVX512 VNNI optimizations"
+-            )
++    if use_cpu_kernels and is_linux:
++        extra_compile_args["cxx"].extend(["-DGLOG_USE_GLOG_EXPORT", "-fopenmp"])
