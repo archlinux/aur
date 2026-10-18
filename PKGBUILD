@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.2.5
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64' 'aarch64')
@@ -33,6 +33,7 @@ makedepends=(
     'git'
     # Vulkan SDK for GPU acceleration
     'vulkan-headers'
+    'vulkan-icd-loader'
     'shaderc'
     # SPIRV-Headers cmake config - required by whisper.cpp >= v1.8.5 Vulkan backend
     'spirv-headers'
@@ -46,7 +47,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    'dce4a1f2b342045e2b21a3f9f6f346ad2f5bfa91cbcfa98c62c1f0eb49adb24c'
+    'ab9970b83b353e47826a8510af2cb8e9808e5172606f067e61730c459bc7a7d0'
     'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
 )
 
@@ -65,12 +66,6 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
 
-    # x86-only ISA extensions; on aarch64 whisper.cpp auto-detects NEON/dotprod
-    local ggml_arch_flags=()
-    if [[ "$CARCH" == "x86_64" ]]; then
-        ggml_arch_flags=(-DGGML_AVX=ON -DGGML_AVX2=ON -DGGML_FMA=ON -DGGML_F16C=ON)
-    fi
-
     # Build whisper.cpp libraries
     pushd build/whisper.cpp
     cmake -B build \
@@ -79,8 +74,10 @@ build() {
         -DCMAKE_INSTALL_RPATH="/usr/lib/${pkgname}" \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DGGML_NATIVE=OFF \
-        "${ggml_arch_flags[@]}" \
-        -DGGML_VULKAN=ON
+        -DGGML_VULKAN=ON \
+        -DGGML_BACKEND_DL=ON \
+        -DGGML_CPU_ALL_VARIANTS=ON \
+        -DGGML_BACKEND_DIR="/usr/lib/${pkgname}"
     cmake --build build --parallel
     popd
 
@@ -91,13 +88,15 @@ build() {
     cp build/whisper.cpp/include/whisper.h lib/
     cp build/whisper.cpp/ggml/include/*.h lib/ 2>/dev/null || :
     cp build/whisper.cpp/build/bin/libggml*.so* lib/
+    # The Go bindings link -lggml-cpu, which is a runtime module with GGML_CPU_ALL_VARIANTS
+    ar rcs lib/libggml-cpu.a
 
     # Build Go binary with systray support
     export CGO_ENABLED=1
     export C_INCLUDE_PATH="${PWD}/lib"
     export LIBRARY_PATH="${PWD}/lib"
     export CGO_CFLAGS="-I${PWD}/lib"
-    export CGO_LDFLAGS="-L${PWD}/lib -lwhisper -lggml -lggml-cpu -lggml-vulkan"
+    export CGO_LDFLAGS="-L${PWD}/lib"
     export LD_LIBRARY_PATH="${PWD}/lib"
 
     go build -v \
@@ -124,7 +123,7 @@ package() {
     # Install only versioned .so files and create symlinks to avoid duplicating large binaries
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
 
-    for lib in lib/libwhisper.so lib/libggml.so lib/libggml-base.so lib/libggml-cpu.so lib/libggml-vulkan.so; do
+    for lib in lib/libwhisper.so lib/libggml.so lib/libggml-base.so lib/libggml-cpu-*.so lib/libggml-vulkan.so; do
         [[ ! -f "$lib" ]] && continue
         base=$(basename "$lib" .so)
         # Find the fully versioned file (e.g., libwhisper.so.1.8.3)
