@@ -3,12 +3,13 @@
 
 pkgname=aurora-4x
 pkgver=2.7.1
-pkgrel=1
-pkgdesc='A space strategy game with a focus on realism and depth'
+pkgrel=2
+pkgdesc='4X space strategy game with realistic physics and detailed ship design'
 arch=(x86_64)
 url='https://aurora4x.com/'
 license=(LicenseRef-aurora-4x)
-depends=(wine wine-mono)
+depends=(hicolor-icon-theme wine wine-mono)
+makedepends=(icoutils)
 _gdrive_id=1aW7Yra4MgWwr4UxFORwRT2scOCZoDFqX
 _archive="$pkgname-$pkgver.rar"
 _archive_url="https://drive.usercontent.google.com/download?id=$_gdrive_id&export=download&confirm=t"
@@ -17,12 +18,30 @@ sha256sums=('5cf4b7ee6965a6e05b96538c8a9762b8b2de63dd535ca74cfec46977e5d1b174')
 noextract=("$_archive")
 
 prepare() {
-	mkdir -p "$srcdir/$pkgname-$pkgver"
-	bsdtar --no-same-owner -xf "$srcdir/$_archive" -C "$srcdir/$pkgname-$pkgver"
+	# Keep a fixed build directory: pkgver() runs after this and may change
+	# $pkgver, which would otherwise rename the directory out from under build().
+	mkdir -p "$srcdir/$pkgname"
+	bsdtar --no-same-owner -xf "$srcdir/$_archive" -C "$srcdir/$pkgname"
+}
+
+pkgver() {
+	# The PE version resource is stale (1.0.0.0), but the assembly carries the
+	# real version as a UTF-16 string literal.
+	strings -a -el "$srcdir/$pkgname/Aurora.exe" |
+		grep -m1 -E '^[0-9]+\.[0-9]+\.[0-9]+$'
+}
+
+build() {
+	cd "$pkgname"
+
+	# Upstream ships no icon file; extract the icon set from the executable.
+	wrestool -x --output="$srcdir/icon.ico" -t14 Aurora.exe
+	mkdir -p "$srcdir/icons"
+	icotool -x --output="$srcdir/icons/" "$srcdir/icon.ico"
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	install -dm755 "$pkgdir/usr/share/$pkgname"
 	cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname/"
@@ -37,13 +56,35 @@ package() {
 	# Upstream publishes no license, so ship a notice for the LicenseRef id.
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	cat >"$pkgdir/usr/share/licenses/$pkgname/LicenseRef-$pkgname.txt" <<'EOF'
-Aurora 4X is freeware developed by Steve Walmsley.
+Aurora 4x is freeware developed by Steve Walmsley.
 
 Upstream publishes no license text, so the game remains all rights reserved
 by its author. This package does not redistribute the game: it downloads the
 unmodified archive from the official distribution channel at build time.
 
 Official site: https://aurora4x.com/
+EOF
+
+	# Install the icon set extracted in build().
+	local icon dims size
+	for icon in "$srcdir"/icons/icon_*.png; do
+		dims=${icon##*_}
+		size=${dims%.png}
+		size=${size%x*}
+		install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
+	done
+
+	install -dm755 "$pkgdir/usr/share/applications"
+	cat >"$pkgdir/usr/share/applications/$pkgname.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Aurora 4x
+Comment=4X space strategy game with realistic physics and detailed ship design
+Exec=aurora-4x
+Icon=aurora-4x
+Terminal=false
+Categories=Game;StrategyGame;
+Keywords=aurora;4x;space;strategy;
 EOF
 
 	# Aurora reads its data and writes AuroraDB.db (the save game) relative to

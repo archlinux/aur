@@ -1,10 +1,12 @@
 pkgbase = aurora-4x
-	pkgdesc = A space strategy game with a focus on realism and depth
+	pkgdesc = 4X space strategy game with realistic physics and detailed ship design
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aurora4x.com/
 	arch = x86_64
 	license = LicenseRef-aurora-4x
+	makedepends = icoutils
+	depends = hicolor-icon-theme
 	depends = wine
 	depends = wine-mono
 	noextract = aurora-4x-2.7.1.rar
