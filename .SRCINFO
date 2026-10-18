@@ -1,6 +1,6 @@
 pkgbase = enclavedns
 	pkgdesc = EnclaveDNS client: DNS through EnclaveDNS (DNSSEC validated in an attested enclave), and .eth sites in the browser
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/EnclaveHost/enclavedns-client
 	install = enclavedns.install
@@ -17,7 +17,7 @@ pkgbase = enclavedns
 	optdepends = networkmanager: handled by `enclavedns enable`
 	options = !lto
 	backup = etc/enclavedns/config.toml
-	source = enclavedns-0.1.0.tar.gz::https://github.com/EnclaveHost/enclavedns-client/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 0dac6c27b0561e176113ce8548b350be09088b327c11f2b09ff15ceaa2e57ce1
+	source = enclavedns-0.1.1.tar.gz::https://github.com/EnclaveHost/enclavedns-client/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 55f3267e43d89bd37d119d90c2d3d80622f4ed6bcb8f40ce2d88e7a28258f30a
 
 pkgname = enclavedns

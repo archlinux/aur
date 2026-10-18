@@ -17,5 +17,5 @@ pre_remove() {
   if [ -f /var/lib/enclavedns-system/state.json ]; then
     /usr/bin/enclavedns disable || true
   fi
-  systemctl disable --now enclavedns.service 2>/dev/null || true
+  systemctl disable --now enclavedns-watchdog.timer enclavedns.service 2>/dev/null || true
 }

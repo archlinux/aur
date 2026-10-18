@@ -1,6 +1,6 @@
 # Maintainer: stevedefacto (https://aur.archlinux.org/account/stevedefacto)
 pkgname=enclavedns
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="EnclaveDNS client: DNS through EnclaveDNS (DNSSEC validated in an attested enclave), and .eth sites in the browser"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ install=enclavedns.install
 # ring's C code built with makepkg's -flto is GCC bytecode the Rust linker cannot read
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0dac6c27b0561e176113ce8548b350be09088b327c11f2b09ff15ceaa2e57ce1')
+sha256sums=('55f3267e43d89bd37d119d90c2d3d80622f4ed6bcb8f40ce2d88e7a28258f30a')
 
 prepare() {
   cd "enclavedns-client-$pkgver"
@@ -40,6 +40,8 @@ package() {
   cd "enclavedns-client-$pkgver"
   install -Dm755 target/release/enclavedns "$pkgdir/usr/bin/enclavedns"
   install -Dm644 packaging/linux/enclavedns.service "$pkgdir/usr/lib/systemd/system/enclavedns.service"
+  install -Dm644 packaging/linux/enclavedns-watchdog.service "$pkgdir/usr/lib/systemd/system/enclavedns-watchdog.service"
+  install -Dm644 packaging/linux/enclavedns-watchdog.timer "$pkgdir/usr/lib/systemd/system/enclavedns-watchdog.timer"
   install -Dm644 packaging/linux/enclavedns.sysusers "$pkgdir/usr/lib/sysusers.d/enclavedns.conf"
   install -Dm644 packaging/linux/config.toml "$pkgdir/etc/enclavedns/config.toml"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
