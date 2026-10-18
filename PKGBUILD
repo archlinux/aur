@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=git-statuses-bin
-pkgver=0.8.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A command-line tool to display the status of multiple Git repositories.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "LICENSE_$pkgver::$_rawurl/LICENSE"
 )
 
-sha256sums=('a42b809b4073f3abc0a6aed9ed629ef6cffc2354ecb7a6a3282712bf8c39a504'
+sha256sums=('bd82e6116ed80397942da47370fdd08b7d084bd805863c2970f423e1197237a2'
             'cbe4e9b21763ba9a7cb13d61ca20026d7b8f1a92b9257d76b579639f44793e1a')
 
 package() {
