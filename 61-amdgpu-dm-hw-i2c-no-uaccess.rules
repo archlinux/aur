@@ -1,0 +1,12 @@
+# ddcutil's 60-ddcutil-i2c.rules tags every i2c-dev node under a display-class
+# PCI device with uaccess, so the seat user can probe all of them. On a DP/eDP
+# link the "AMDGPU DM i2c hw bus" shares its DDC GPIO pins with the AUX engine,
+# and amdgpu_dm_i2c_xfer is the one pin user the kernel does not serialize with
+# aux.hw_mutex. A DDC/CI probe on that bus (dms, ddcutil) racing an HPD
+# link_detect closes the pin under the HPD worker, which then oopses in
+# dal_ddc_open holding dm.dc_lock and wedges the machine
+# (https://gitlab.freedesktop.org/drm/amd/-/issues/5716). Monitors on DP links
+# answer DDC/CI on "AMDGPU DM aux hw bus N", so those keep uaccess. HDMI has no
+# AUX engine and its hw bus is the real DDC channel; on the PX13 that is hw bus
+# 1 (link index order: eDP 0, HDMI 1, DP 2..8), so it is exempt.
+SUBSYSTEM=="i2c-dev", ATTR{name}=="AMDGPU DM i2c hw bus *", ATTR{name}!="AMDGPU DM i2c hw bus 1", TAG-="uaccess"

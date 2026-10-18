@@ -5,9 +5,9 @@ pkgname=asus-proart-px13-quirks
 # not in a DKMS module here). Bump pkgver alongside the kernel; pkgrel for
 # packaging-only changes. epoch=1 supersedes the short-lived date-based pkgver.
 epoch=1
-pkgver=7.1.8
-pkgrel=1
-pkgdesc="Userspace quirks for ASUS ProArt PX13 (HN7306EA): TAS2783/ACP UCM + PipeWire/WirePlumber drop-ins + MT7925 btusb autosuspend + thermal cpufreq-cooling clamp fix + amdgpu PSR disable"
+pkgver=7.2.9
+pkgrel=2
+pkgdesc="Userspace quirks for ASUS ProArt PX13 (HN7306EA): TAS2783/ACP UCM + PipeWire/WirePlumber drop-ins + MT7925 btusb autosuspend + thermal cpufreq-cooling clamp fix + amdgpu PSR disable + amdgpu hw-i2c bus uaccess removal"
 arch=('any')
 url="https://aur.archlinux.org/packages/asus-proart-px13-quirks"
 license=('CC0-1.0')
@@ -42,6 +42,7 @@ source=(
     'amdgpu-psr.conf'
     'rt721-sdw-no-autosuspend.rules'
     '99-thermal-cpufreq-fix.rules'
+    '61-amdgpu-dm-hw-i2c-no-uaccess.rules'
 )
 sha256sums=('8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372'
             '674154c05efa457991654fbb5c09bd0eb40139d8e22fd0b0e971500baf8eb012'
@@ -51,7 +52,8 @@ sha256sums=('8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372'
             '289f0457bebb51a1a6e2f6a555ebea829b484be837361afc71f7a81fee1e323c'
             '6847fc95711d55ff848ac3cf96d2ac609443076ffe697049ea3b5f8d43e58586'
             'aa36adef4d19feb795c68324276896bc710767b80820957d76f75911d151e755'
-            '270374808d15c4b235d2fe772f9f402f2ac4db7c9f341e6347d4c10ec42f5a69')
+            '270374808d15c4b235d2fe772f9f402f2ac4db7c9f341e6347d4c10ec42f5a69'
+            'db3d78ba32d640a829573b99150d3a4f61f9691a1f03add10a0f106767e8ec2b')
 
 package() {
     # ALSA UCM device files for tas2783 (alsa-ucm-conf ships no tas2783 support).
@@ -101,4 +103,9 @@ package() {
     # asusd.
     install -Dm644 "${srcdir}/99-thermal-cpufreq-fix.rules" \
         "${pkgdir}/usr/lib/udev/rules.d/99-thermal-cpufreq-fix.rules"
+
+    # Keep the seat user off the DP/eDP "AMDGPU DM i2c hw bus" nodes: a DDC
+    # probe there races HPD link_detect on the shared DDC pins (see the rule).
+    install -Dm644 "${srcdir}/61-amdgpu-dm-hw-i2c-no-uaccess.rules" \
+        "${pkgdir}/usr/lib/udev/rules.d/61-amdgpu-dm-hw-i2c-no-uaccess.rules"
 }
