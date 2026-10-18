@@ -1,8 +1,8 @@
 # Maintainer: SerShef <SerShef@users.noreply.github.com>
 pkgname=beammp-launcher4linux
 pkgver=2.8.1
-pkgrel=3
-pkgdesc='BeamMP Launcher for Linux, (GamePath config/CLI switch override for non-Steam installs), prebuilt vcpkg included (no dependency).'
+pkgrel=4
+pkgdesc='BeamMP Launcher for Linux, (GamePath override for non-Steam installs, launcher port passed to game), prebuilt vcpkg included (no dependency).'
 arch=(x86_64)
 url='https://github.com/SerShef/BeamMP-Launcher4Linux'
 # Original upstream project also at: https://github.com/BeamMP/BeamMP-Launcher
@@ -17,7 +17,7 @@ source=("${_srcbase}/BeamMP-Launcher"
         "beammp.sh"
         "beammp.desktop")
 sha256sums=(
-  '3f1603a7d698bbca3f726ac52de2749c847f82c200c0f87493ad60fbbb872d2e'
+  'a26b5f5055497d84d0a83aecbe02b76fc49f6f88317961502adac751bb96ce25'
   '44f6abc02214a249d32ecea8fb62f308885ce24516427877badd10f3284442af'
   '616f8bbeca9e62cbb95b6785dd7b95f5afcb190c819ef9b6ac7ca1bc5c9c3df3'
 )
