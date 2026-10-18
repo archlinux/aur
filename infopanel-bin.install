@@ -1,4 +1,24 @@
+_trigger_lcds() {
+  [ -S /run/udev/control ] || return 0
+  udevadm control --reload-rules || :
+  # Apply permissions to already-connected Valkyrie/shared MS9132 LCDs.
+  # Reloading rules alone only affects the next plug-in event.
+  for device in /sys/bus/usb/devices/*; do
+    [ -r "$device/idVendor" ] && [ -r "$device/idProduct" ] || continue
+    vendor="$(cat "$device/idVendor")"
+    product="$(cat "$device/idProduct")"
+    case "$vendor:$product" in
+      345f:9132|374a:a021)
+        udevadm trigger --action=change "$device" || :
+        udevadm trigger --action=change --subsystem-match=hidraw --parent-match="$(readlink -f "$device")" || :
+        ;;
+    esac
+  done
+  udevadm settle --timeout=5 || :
+}
+
 post_install() {
+  _trigger_lcds
   cat <<'EOF'
 ==> InfoPanel setup:
     USB panels: replug the panel once (or run: udevadm trigger) so the
@@ -14,5 +34,5 @@ EOF
 }
 
 post_upgrade() {
-  return 0
+  _trigger_lcds
 }
