@@ -1,0 +1,19 @@
+pkgbase = kodi-addon-visualization-lactea
+	pkgdesc = Lactea visualizer for Kodi: MilkDrop 2/3 and projectM-compatible presets rendered by a pure-Rust engine on wgpu
+	pkgver = 21.0.0
+	pkgrel = 1
+	url = https://github.com/M0Rf30/visualization.lactea
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = kodi-dev
+	depends = gcc-libs
+	depends = glibc
+	depends = lactea
+	depends = libgl
+	optdepends = projectm-presets-m0rf30-git: preset collection
+	optdepends = projectm-presets: preset collection
+	source = kodi-addon-visualization-lactea-21.0.0.tar.gz::https://github.com/M0Rf30/visualization.lactea/archive/refs/tags/v21.0.0.tar.gz
+	sha256sums = ae6d8e1546d510db7531b27d5c3cd0eb6829fe8409aa6f59fa8b44b34624f667
+
+pkgname = kodi-addon-visualization-lactea
