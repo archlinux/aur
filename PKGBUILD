@@ -35,7 +35,7 @@ source=(
     "${pkgname}-${pkgver}.deb.zip::${url%/destek/}/wp-content/uploads/sites/33/${_debyear}/${_debmonth}/Akia_linux_${_debver}.deb_.zip"
     'akia.sh'
     'akia.desktop'
-    'LICENSE'
+    'LICENSE-akia'
 )
 b2sums=('1d87b4f6ab75875636ca2141f505a18ff29f0f72df24a55bde4cf07d769b6df30fca252b6985c3685b283a7ee2be7a08df97aa85457496f854b8425a83e97890'
         'bbce8a6c1f30cd4cdf9ebb6261a7c3d31eca35ce143285aa8d77f3d7c6a2651000c30c06e29438f2b15b23a732a711f6f3d07b41a1de6f76a9f0366311e35705'
@@ -87,6 +87,6 @@ package() {
     install -m644 "opt/Akia/docs/AkilliKartTeknolojisi.pdf" \
         "${pkgdir}/usr/share/doc/${pkgname}/smartcard-technology.pdf"
 
-    install -Dm644 "${srcdir}/LICENSE" \
+    install -Dm644 "${srcdir}/LICENSE-akia" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

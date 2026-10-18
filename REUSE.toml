@@ -1,0 +1,18 @@
+version = 1
+
+# Package source files written by the maintainer.
+# LICENSE-akia is the upstream TÜBİTAK license redistributed as the installed
+# license; as a LICENSE* file REUSE treats it as a license file itself.
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    "README.md",
+    "akia.sh",
+    "akia.desktop",
+    "akia.install",
+    "nvchecker.toml",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
