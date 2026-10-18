@@ -1,5 +1,5 @@
 pkgbase = freshgram-git
-	pkgdesc = Telegram Desktop fork with the AyuGram features and a Material look (git version)
+	pkgdesc = Breaking Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (git version)
 	pkgver = 7.5.5.r85.g26d2291
 	pkgrel = 1
 	url = https://github.com/Snowy-Fluffy/freshGram
