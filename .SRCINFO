@@ -1,0 +1,19 @@
+pkgbase = linux-boot-analyzer-bin
+	pkgdesc = A terminal UI that analyses boot time and manages systemd services
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/06ergin06/linux_boot_analyzer_tui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = sudo
+	provides = linux-boot-analyzer
+	conflicts = linux-boot-analyzer
+	conflicts = linux-boot-analyzer-git
+	options = !strip
+	source_x86_64 = https://github.com/06ergin06/linux_boot_analyzer_tui/releases/download/v1.0.0/linux-boot-analyzer-1.0.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 6c459f6edcbd5fe9f757f09162a824b2fe5d841d90e8cb612f74d0c95544e34c
+	source_aarch64 = https://github.com/06ergin06/linux_boot_analyzer_tui/releases/download/v1.0.0/linux-boot-analyzer-1.0.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = e1dc1618b7f55480d71fb4d9f5302b9fdf49f89ea1e74c39230f1efaf73ac274
+
+pkgname = linux-boot-analyzer-bin
