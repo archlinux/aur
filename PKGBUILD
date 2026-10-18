@@ -7,7 +7,7 @@ pkgname=(
   networkmanager-vpn-plugin-openvpn
 )
 pkgver=1.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
