@@ -1,7 +1,7 @@
 # Maintainer: Supun Sasanka <asce4s@gmail.com>
 pkgname=lightbox-git
 pkgver=r78.3c08b7d
-pkgrel=1
+pkgrel=2
 pkgdesc="Local-first photo manager and non-destructive editor"
 arch=('x86_64')
 url="https://github.com/asce4s/lightbox"
@@ -19,7 +19,7 @@ depends=(
   'hicolor-icon-theme'
 )
 makedepends=(
-  'cargo'
+  'rustup'
   'clang'
   'git'
   'pkgconf'
@@ -32,6 +32,12 @@ options=('!lto')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
+_setup_rust() {
+  export RUSTUP_HOME="${srcdir}/.rustup"
+  export CARGO_HOME="${srcdir}/.cargo"
+  export RUSTUP_TOOLCHAIN="$(awk -F'"' '/^channel / { print $2 }' "${srcdir}/${pkgname}/rust-toolchain.toml")"
+}
+
 pkgver() {
   cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -39,13 +45,14 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
+  _setup_rust
+  rustup toolchain install "${RUSTUP_TOOLCHAIN}" --profile minimal --no-self-update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
+  _setup_rust
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release -p lightbox -p lb-cli
 }
