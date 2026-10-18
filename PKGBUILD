@@ -7,7 +7,7 @@
 
 pkgname=paruguard-git
 _pkgname=paruguard
-pkgver=1.1.0.r0.ga0a796d
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Zero-trust AUR installer: hardened, auditable wrapper around paru/pacman"
 arch=('any')
