@@ -1,6 +1,6 @@
 pkgbase = ryu-bin
 	pkgdesc = Collection of Qt6 QML plugins for ryu.. (prebuilt)
-	pkgver = 0.0.22
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://github.com/Happilli/ryu
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = ryu-bin
 	depends = cliphist
 	depends = wl-clipboard
 	depends = pipewire
-	provides = ryu=0.0.22
+	provides = ryu=0.0.23
 	conflicts = ryu
 	options = !strip
 	options = !debug
-	source = ryu-0.0.22-x86_64.tar.gz::https://github.com/Happilli/ryu/releases/download/v0.0.22/ryu-0.0.22-x86_64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/Happilli/ryu/v0.0.22/LICENSE
-	sha256sums = e87f62f7a0c1d66aed15bf8a16c16f023a538aca51b90bbed4c374763c2a086c
+	source = ryu-0.0.23-x86_64.tar.gz::https://github.com/Happilli/ryu/releases/download/v0.0.23/ryu-0.0.23-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/Happilli/ryu/v0.0.23/LICENSE
+	sha256sums = 8ba45deaa32bb1a444634397b8683837f2792907f8a24332b41f5fa7b64edf48
 	sha256sums = 47eb383c5eadf7ad1499b981bd842679d7a73275801c83a24035b7e09e7c5b83
 
 pkgname = ryu-bin
