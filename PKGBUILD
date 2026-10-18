@@ -1,7 +1,7 @@
 # Maintainer: Aditya Miskin <adityamiskin98@gmail.com>
 
 pkgname=typeaside-bin
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc='Native voice dictation for Wayland'
 arch=('x86_64')
@@ -30,7 +30,7 @@ conflicts=('typeaside')
 options=('!debug' '!strip')
 source=("typeaside-${pkgver}.deb::https://typeaside.app/releases/v${pkgver}/typeaside.deb")
 noextract=("typeaside-${pkgver}.deb")
-sha256sums=('1aa8e85a40daca8665a30f6d9c3d8ffac465c43056ec60aeab5d79de0c5ba292')
+sha256sums=('408cae1ed6f03bb4f1420c3585a9a99d3780f3da55568d406f3d9d06100d4498')
 
 package() {
   bsdtar -xOf "typeaside-${pkgver}.deb" 'data.tar*' | bsdtar -xf - -C "$pkgdir"

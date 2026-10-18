@@ -1,6 +1,6 @@
 pkgbase = typeaside-bin
 	pkgdesc = Native voice dictation for Wayland
-	pkgver = 0.2.12
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://typeaside.app
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = typeaside-bin
 	optdepends = vulkan-driver: GPU rendering
 	provides = typeaside
 	conflicts = typeaside
-	noextract = typeaside-0.2.12.deb
+	noextract = typeaside-0.2.13.deb
 	options = !debug
 	options = !strip
-	source = typeaside-0.2.12.deb::https://typeaside.app/releases/v0.2.12/typeaside.deb
-	sha256sums = 1aa8e85a40daca8665a30f6d9c3d8ffac465c43056ec60aeab5d79de0c5ba292
+	source = typeaside-0.2.13.deb::https://typeaside.app/releases/v0.2.13/typeaside.deb
+	sha256sums = 408cae1ed6f03bb4f1420c3585a9a99d3780f3da55568d406f3d9d06100d4498
 
 pkgname = typeaside-bin
