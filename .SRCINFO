@@ -4,11 +4,12 @@ pkgbase = spoti-git
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/spoti
 	arch = x86_64
+	arch = aarch64
 	license = MIT AND Zlib AND ISC AND OFL-1.1 AND Unicode-3.0
 	makedepends = git
 	makedepends = just
 	makedepends = odin>=dev_2026_10
-	depends = curl>=7.86
+	depends = curl
 	depends = fontconfig
 	depends = glib2
 	depends = glibc
@@ -16,8 +17,8 @@ pkgbase = spoti-git
 	depends = libsecret
 	depends = libvorbis
 	depends = libwebp
-	depends = sdl3>=3.4
-	depends = sdl3_ttf>=3.2.2
+	depends = sdl3
+	depends = sdl3_ttf
 	depends = systemd-libs
 	depends = xdg-utils
 	optdepends = noto-fonts: additional script and symbol coverage

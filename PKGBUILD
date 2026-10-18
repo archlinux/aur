@@ -3,11 +3,11 @@ pkgname=spoti-git
 pkgver=0.1.0.r0
 pkgrel=1
 pkgdesc='lightweight native Spotify client'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/hyperpuncher/spoti'
 license=('MIT AND Zlib AND ISC AND OFL-1.1 AND Unicode-3.0')
-depends=('curl>=7.86' 'fontconfig' 'glib2' 'glibc' 'hicolor-icon-theme'
-	'libsecret' 'libvorbis' 'libwebp' 'sdl3>=3.4' 'sdl3_ttf>=3.2.2'
+depends=('curl' 'fontconfig' 'glib2' 'glibc' 'hicolor-icon-theme'
+	'libsecret' 'libvorbis' 'libwebp' 'sdl3' 'sdl3_ttf'
 	'systemd-libs' 'xdg-utils')
 optdepends=('noto-fonts: additional script and symbol coverage'
 	'noto-fonts-cjk: CJK characters'
