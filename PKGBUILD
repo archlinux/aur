@@ -1,7 +1,7 @@
 # Maintainer: evv1e <evv1e@archlinux.org>
 pkgname="intiface-central-bin"
 pkgver="3.2.2"
-pkgrel=1
+pkgrel=2
 _ghtag="v$pkgver+46" # tag in github
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(
 	'gtk3'
 	'bash'
 )
-makedepends=('hicolor-icon-theme')
+makedepends=('hicolor-icon-theme' 'unzip')
 provides=('intiface-central')
 conflicts=('intiface-central')
 source=(intiface_central.desktop
