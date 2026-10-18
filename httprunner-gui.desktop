@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=HTTP File Runner
+Comment=Execute HTTP requests from .http files
+Exec=httprunner-gui
+Icon=httprunner-gui
+Terminal=false
+Categories=Development;WebDevelopment;
+Keywords=http;rest;api;request;
+StartupWMClass=httprunner-gui
