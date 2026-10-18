@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -17,10 +17,12 @@ depends=(
 )
 makedepends=('cmake>=3.21' 'extra-cmake-modules' 'ninja')
 checkdepends=(
+  'git'
   'python' 'python-pytest' 'python-cryptography' 'breeze-icons' 'desktop-file-utils'
   'libarchive' '7zip' 'ttf-dejavu' 'dbus' 'mesa' 'xorg-server-xvfb' 'xorg-xauth'
 )
 optdepends=(
+  'git: local repository status badges'
   'python-cryptography: standalone vault recovery tool'
   'qt6-wayland: Wayland desktop sessions'
   'qt6-imageformats: additional image formats'
@@ -42,7 +44,7 @@ optdepends=(
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar.gz")
-sha256sums=('70593b9638f36162190c56cb6dee4a935e2bd5835e0b6a6c483a14af9bd54373')
+sha256sums=('ffa1449126c93864379d82f2d85524d42633780ac317256a20ef99c2fc1ba93f')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
@@ -56,6 +58,14 @@ prepare() {
     -e 's|(root / "libexec").mkdir()|(root / "lib/lurviko").mkdir(parents=True)|' \
     -e 's|root / "libexec/lurviko-access-helper"|root / "lib/lurviko/lurviko-access-helper"|' \
     "Lurviko-${pkgver}/tests/run-properties-tests.py"
+
+  # v1.3.1 added runners that still assume an in-source build directory.
+  # Use the same external build override as the other packaging test runners.
+  sed -i \
+    's|build = repo / "build"|build = Path(os.environ.get("LURVIKO_TEST_BUILD_DIR", str(repo / "build"))).resolve()|' \
+    "Lurviko-${pkgver}/tests/run-columns-tests.py" \
+    "Lurviko-${pkgver}/tests/run-search-tests.py" \
+    "Lurviko-${pkgver}/tests/run-thumbnail-tests.py"
 }
 
 build() {
