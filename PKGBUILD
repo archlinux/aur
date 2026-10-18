@@ -1,7 +1,7 @@
 
 
 pkgname=uutils-sed
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Rust implementation of sed"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust)
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('4f264ffc87c433136a170484372f47a5ada0d44a8666381aed653eb18968e847ef92cd6d9910ca42f7a6f373d27254cd4b76b05f7ceae901df5f2991f60fd5bb')
+b2sums=('c5cf64ca6874d93e65e1197fe50c8c9650c52b6104621fb72436f208f4ece52e73fc58593d0e995cdf6ef1e745594144564df5ed1768a0abd5ccaf66044685eb')
 
 build(){
   cd sed-$pkgver
