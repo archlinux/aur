@@ -1,0 +1,19 @@
+pkgbase = starling-office-bin
+	pkgdesc = Documents, presentations, and spreadsheets in one free, open source suite
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://starling.build
+	arch = x86_64
+	license = Apache-2.0
+	depends = bash
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libinput
+	depends = wayland
+	depends = zlib
+	source = https://github.com/starling-build/starling/releases/download/office-v0.1.0/starling-office_0.1.0_amd64.deb
+	b2sums = cc276fa98cc94ed49a8826d69fc471478cdd9d8d0241640bcc67b04ae162c0e50856802429aa8ece1224f850ee67887fcb845bfbbbe5ee3e86d62f706d43613e
+
+pkgname = starling-office-bin
