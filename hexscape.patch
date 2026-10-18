@@ -1,0 +1,12 @@
+--- a/tests/TestIoAudit.cpp
++++ b/tests/TestIoAudit.cpp
+@@ -1842,7 +1842,7 @@
+     // is not decodable is refused with a message rather than crashing or importing nothing silently.
+     QTemporaryDir dir; QVERIFY(dir.isValid());
+     const QString path = dir.filePath(QStringLiteral("photo.heic"));
+-    { QFile f(path); QVERIFY(f.open(QIODevice::WriteOnly)); f.write("\x00\x00\x00\x18ftypheic not really"); }
++    { QFile f(path); QVERIFY(f.open(QIODevice::WriteOnly)); f.write("\x00\x00\x00\x18" "ftypheic not really"); }
+     QString error;
+     QVERIFY(ImageImporter::read(path, &error).isNull());
+     QVERIFY2(!error.isEmpty(), "a HEIC that cannot be decoded reports why");
+

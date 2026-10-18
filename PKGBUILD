@@ -1,0 +1,86 @@
+# Maintainer: kekmacska
+
+_gitname=compositorLX
+pkgname=compositor-lx-git
+pkgver=0.5.3.r0.gb1a8196
+pkgrel=1
+pkgdesc='Native Linux port of Compositor — a layer-based raster image editor with masks, adjustments, and local subject removal'
+arch=('any')
+license=('GPL-3.0')
+url='https://github.com/ClaudiuJitea/compositorLX'
+source=("git+$url.git" "hexscape.patch" "system-onnx.patch")
+makedepends=(cmake make oxipng pkgconf git vulkan-headers)
+depends=(qt6-base libglvnd lensfun openexr imath lcms2 libjpeg-turbo libtiff openmp zlib libheif onnxruntime libraw)
+provides=("${pkgname%-*}")
+sha256sums=('SKIP' '51a2d9f6123e645ca648c39de29ec3e17c1e03d6711aaa0a3a138f65aaa4346f' 'SKIP')
+
+pkgver() {
+    cd $_gitname
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+}
+
+prepare() {
+    cd "$srcdir/$_gitname"
+
+    oxipng -o max -r -p -s -v -t "$(nproc)" -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 packaging
+
+    patch -Np1 -i "$srcdir/system-onnx.patch"
+    patch -Np1 -i "$srcdir/hexscape.patch"
+
+    git submodule update --init --recursive
+    rm -rf vendor/libraw
+}
+
+build() {
+    cd $_gitname
+
+    BASE_CFLAGS="-O3 -march=native -mtune=native \
+            -falign-functions=32 -falign-loops=32 \
+            -fno-math-errno -fno-trapping-math \
+            -fno-semantic-interposition \
+            -fomit-frame-pointer -fno-plt \
+            -pipe -flto -Wall -Wno-unused \
+            -fstrict-aliasing \
+            -fmerge-all-constants -ffunction-sections \
+            -fdata-sections -fvisibility=hidden"
+
+    BASE_CXXFLAGS="$BASE_CFLAGS"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
+
+    # Clang-only flags
+    CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
+    CLANG_EXTRA_CXXFLAGS="$CLANG_EXTRA_CFLAGS"
+    CLANG_EXTRA_LDFLAGS="-fuse-ld=lld"
+
+    # Detect compiler
+    if command -v clang >/dev/null 2>&1; then
+        export CC=clang
+        export CXX=clang++
+        export CFLAGS="$BASE_CFLAGS $CLANG_EXTRA_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS $CLANG_EXTRA_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS $CLANG_EXTRA_LDFLAGS"
+    else
+        export CC=gcc
+        export CXX=g++
+        export CFLAGS="$BASE_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS"
+    fi
+
+    cmake -B build -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_MANDIR=share/man \
+        -DCMAKE_INSTALL_DATAROOTDIR=share \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_BINDIR=bin
+
+    cmake --build build --parallel "$(nproc)"
+}
+
+package(){
+    cd "$srcdir/$_gitname"
+
+    DESTDIR="$pkgdir" cmake --install build --component Unspecified
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
+}
