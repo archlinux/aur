@@ -3,11 +3,11 @@
 
 set -u
 pkgname='sflowtool'
-pkgver='6.09'
+pkgver='6.11'
 pkgrel='1'
 pkgdesc='CLI utility and scripts for analyzing sFlow data'
 arch=('i686' 'x86_64')
-url='http://www.inmon.com/technology/sflowTools.php'
+url='https://www.inmon.com/technology/sflowTools.php'
 license=('LicenseRef-custom')
 depends=('glibc' 'perl' 'awk')
 #optdepends=('perl: scripts support')
@@ -21,15 +21,15 @@ source=("${pkgname}-${pkgver}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz"
         #"http://www.inmon.com/bin/${pkgname}-${pkgver}.tar.gz"
         'http://www.inmon.com/bin/sflowutils.tar.gz'
         'LICENSE')
-md5sums=('80fe39f7916a8a093b68de4ed870738d'
+md5sums=('b710916cfd43d0b8b1e5cca770d3cbad'
          '644ef83ca05c9446ebce60302a03a33b'
          'd3dc05048a11e4ca3b5a7940d0552d07')
-sha256sums=('8fbf22e5ed5279ba06a9aef50aebc892e109dc6e3c36b420fb086a4e2d4ed901'
+sha256sums=('67f6d177bd793e6f998296284bfe96c82fa22adecf5e4f37db0f3514b0a2ef5f'
             '45f6a0f96bdb6a1780694b9a4ef9bbd2fd719b9f7f3355c6af1427631b311d56'
             '863b86b7a4fc7632cfc3f9ead7e76f6e7751aca8b64030ff97b3b46f991c6482')
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ ! -s 'Makefile' ]; then
     sed -e 's:^#!/bin/awk:#!/usr/bin/awk:g' -i '../utils/ipTrafficMatrix' '../utils/ipTopTalkers'
@@ -41,11 +41,10 @@ build() {
     ./configure --prefix='/usr' --mandir='/usr/share/man'
   fi
   make -s
-  set +u
 }
 
 package(){
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   make -j1 DESTDIR="${pkgdir}" install
   install -d "${pkgdir}/usr/share/${pkgname}"/{utils,contrib}
@@ -53,7 +52,6 @@ package(){
   install -Dpm644 "${srcdir}/README" -t "${pkgdir}/usr/share/${pkgname}/"
   install -Dpm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   sed -e 's:\r::g' -i "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  set +u
 }
 
 set +u
