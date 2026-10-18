@@ -78,5 +78,5 @@ package(){
 
     DESTDIR="$pkgdir" cmake --install build
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
 }
