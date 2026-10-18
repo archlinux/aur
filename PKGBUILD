@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=euro-office-lite
 pkgname=${_pkgname}-bin
-pkgver=0.17.31
+pkgver=0.17.34
 pkgrel=1
 pkgdesc='Lightweight desktop office suite built on Tauri v2 and Euro-Office editors. No cloud, no telemetry.'
 arch=(x86_64)
@@ -31,7 +31,7 @@ source_x86_64=(
 	"${pkgname}-${pkgver}.deb::https://github.com/delmarguillen/${_pkgname}/releases/download/v${pkgver}-alpha/Euro-Office-Lite_${pkgver}-alpha_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/delmarguillen/euro-office-lite/refs/heads/main/LICENSE"
 )
-b2sums_x86_64=('f74e7d1985d0fca81ddf4c876cafd0805b0d2a308477160e5cec2244c6845be732393c9e891a983c5b15919671ec253b81b151091461ed7fdc805a7550c624b2'
+b2sums_x86_64=('fdb68903ede04a85795fce44ce11ec431894714b005abd94e9443fb09eada36a4b406b73e75f670b9cff02542ab2749e074a173ed3a56439bb02ef75d34883a5'
                '25ff89b638fae6a63641f5196157086bdcb76c6f1d4c49470551a3cfd131951d2b7c40c48a9380fa4569b725e43e57e85d48df4a56abf9a119ddcd1b11d2a897')
 
 prepare() {
@@ -40,7 +40,7 @@ prepare() {
 
 pkgver() {
 	local _tagver
-	_tagver=$(curl -s GET https://api.github.com/repos/delmarguillen/euro-office-lite/tags | jq -r '.[].name' | head -n1 | sed 's/^v//') 
+	_tagver=$(git -c 'versionsort.suffix=-' ls-remote --exit-code --refs --sort=-v:refname --tags https://github.com/delmarguillen/euro-office-lite.git '*.*.*' | head -1 | sed 's/.*\///' | sed 's/^v//')
 	printf "%s" "${_tagver%-alpha}"
 }
 
