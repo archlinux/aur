@@ -2,14 +2,14 @@
 
 _name=dz6
 pkgname=dz6-bin
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Fast Vim-inspired TUI hex editor"
 arch=('x86_64')
 url="https://github.com/mentebinaria/dz6"
 license=("GPL-3.0")
 source=("https://github.com/mentebinaria/${_name}/releases/download/v${pkgver}/${_name}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('6ee1b16cdf5ee4429ae70ccfd1681c5856ba0b7a9934efdd0dfe665d07dd316e')
+sha256sums=('4d4e1862f90ee787f04e29da5fd48bfd90729f2584fbd8922ee5a41d1c74c528')
 
 package() {
   cd "${srcdir}"
