@@ -1,7 +1,7 @@
 pkgbase = jvgs
 	pkgdesc = minimalistic platform game loosely based on xkcd webcomic
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://jvgs.sourceforge.net/
 	arch = i686
 	arch = x86_64

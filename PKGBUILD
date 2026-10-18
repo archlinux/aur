@@ -3,7 +3,7 @@
 
 pkgname=jvgs
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="minimalistic platform game loosely based on xkcd webcomic"
 arch=('i686' 'x86_64')
 url="http://jvgs.sourceforge.net/"
@@ -17,8 +17,9 @@ source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver%.*
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}-src
-  cmake .
-  sed -i 's%LUA_INCLUDE_DIR:PATH=/usr/include%LUA_INCLUDE_DIR:PATH=/usr/include/lua5.1%' CMakeCache.txt
+  # CMake 4 refuses projects that require CMake < 3.5
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DLUA_INCLUDE_DIR=/usr/include/lua5.1 -DLUA_LIBRARY=/usr/lib/liblua5.1.so .
   make
 }
 
