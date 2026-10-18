@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
-_name='trufflehog'
+_name=trufflehog
 pkgname="$_name-git"
-pkgver=3.99.2.r19.g31d730383
+pkgver=3.99.2.r20.g048de9ff0
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
@@ -43,12 +43,6 @@ build() {
 
 check() {
   cd "$_name"
-  export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
-  export CGO_CXXFLAGS="$CXXFLAGS"
-  export CGO_LDFLAGS="$LDFLAGS"
-  export GOPATH="$srcdir"
-  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
   # make test-community
   go test -timeout=5m $(go list ./... | grep -v '/vendor/\|pkg/sources\|pkg/analyzer/analyzers')
 }
