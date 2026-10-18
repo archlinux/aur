@@ -6,7 +6,7 @@
 # values here are the release this copy was last checked against.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.9.0
+_version=0.10.0
 pkgname=wikistow-desktop-bin
 pkgver=${_version//-/}
 pkgrel=1
@@ -24,7 +24,7 @@ optdepends=('gnome-keyring: keep the sign-in and a remembered unlock between lau
 provides=('wikistow-desktop')
 conflicts=('wikistow-desktop')
 source=("https://github.com/skint007/wikistow/releases/download/v$_version/wikistow-desktop-$_version.tar.gz")
-sha256sums=('65ccaa06bfd88953bed231726947e6de56a3322836592c25d0bed4304536449b')
+sha256sums=('ad6743c67a37d43b87fbd07f315c6fdd5502a13c9d1aa94266ef047f92146506')
 
 package() {
     cd "wikistow-desktop-$_version"
