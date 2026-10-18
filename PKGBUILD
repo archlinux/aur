@@ -9,7 +9,7 @@
 
 pkgname=morgan-bin
 _nombre=morgan
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo (binario)'
 arch=('x86_64')
@@ -50,7 +50,7 @@ backup=('etc/pam.d/morgan-lock')
 options=('!strip' '!debug')
 install=morgan.install
 source=("$_nombre-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_nombre-$pkgver-x86_64.tar.gz")
-sha256sums=('6c84a3d98bc3303a1277dd9e0dfbd6d4ca67ca5ff739b7cf0dacdce4b8eadd88')
+sha256sums=('4d300ee404cc634ee8d012e436d31e9723cb6dabe664d066c14531df76a5e4eb')
 
 package() {
     cp -a --no-preserve=ownership "$_nombre-$pkgver-x86_64"/. "$pkgdir/"
