@@ -1,6 +1,6 @@
 # Maintainer: va2bbw <antelaurijssen@gmail.com>
 pkgname=open-sstv-bin
-pkgver=0.6.15
+pkgver=0.6.16
 pkgrel=1
 pkgdesc="Open-source cross-platform SSTV transceiver for amateur radio (prebuilt binary, GUI only)"
 arch=('x86_64' 'aarch64')
@@ -33,5 +33,5 @@ Type=Application
 Categories=HamRadio;AudioVideo;
 EOF
 }
-sha256sums_x86_64=('7192b832bb6a431d64db6e75186c103de12e0a606ec2f0ae5457c26117ba8c67')
-sha256sums_aarch64=('986db259f55aa3e9add99e31b9f09199905d2bce70d55e6491cda6648b942fd3')
+sha256sums_x86_64=('8135a33bd2cc74a88f197d221a90ef5c68d8681c0549fd21f323dd83f481a3a4')
+sha256sums_aarch64=('ee72f946dd7a4ca8790e3f4ee805255c94137267b564d3f154ac2135a2861f19')
