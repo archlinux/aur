@@ -1,0 +1,27 @@
+pkgbase = pollen-bin
+	pkgdesc = Pollen
+	pkgver = 0.0.0
+	pkgrel = 2
+	url = https://github.com/tiouoo/Pollen
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	conflicts = pollen-commit-bin
+	conflicts = pollen-nightly-bin
+	conflicts = pollen-commit
+	conflicts = pollen-nightly
+	noextract = Pollen-0.0.0.AppImage
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = Pollen-0.0.0.AppImage::https://github.com/tiouoo/Pollen/releases/download/v0.0.0/Pollen.linux.x64.AppImage
+	source_x86_64 = pollen.png
+	source_x86_64 = pollen.desktop
+	source_x86_64 = LICENSE
+	sha256sums_x86_64 = 2d07bbc535f7f80da2287d72632d6c83a8b15e4600ca569008f1d8256831dd0f
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = pollen-bin
