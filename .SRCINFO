@@ -1,0 +1,20 @@
+pkgbase = dirt
+	pkgdesc = k9s-style TUI for libvirt / KVM virtual machines, with htop-style live stats
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/llcoolkm/dirt
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = libvirt
+	depends = glibc
+	optdepends = virt-install: clone VMs (virt-clone)
+	optdepends = virt-viewer: graphical console
+	optdepends = openssh: SSH into guests
+	optdepends = qemu-img: disk image info
+	options = !lto
+	source = dirt-0.10.1.tar.gz::https://github.com/llcoolkm/dirt/archive/refs/tags/v0.10.1.tar.gz
+	sha256sums = 3cd988413adb033ee2380bb2baa17b0db87a2ac90a756d93d2b0d5c7a65cb282
+
+pkgname = dirt
