@@ -1,0 +1,19 @@
+pkgbase = edamame-bin
+	pkgdesc = A Terminal Markdown editor that stays rendered while you edit
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/mijowi/edamame
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = edamame
+	conflicts = edamame
+	options = !strip
+	source_x86_64 = edamame-x86_64-0.1.6.txz::https://github.com/mijowi/edamame/releases/download/v0.1.6/edamame-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 81db5aa77387e2c9c9e7a3e7f8648ca42b12ca02463e18b732863fef16a4a105
+	source_aarch64 = edamame-aarch64-0.1.6.txz::https://github.com/mijowi/edamame/releases/download/v0.1.6/edamame-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 425fa2d71740ebab319340b888fdb87f58f0ed16079b80bbf10a327c554e2835
+
+pkgname = edamame-bin

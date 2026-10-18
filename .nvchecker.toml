@@ -1,0 +1,5 @@
+[edamame-bin]
+source = "github"
+github = "mijowi/edamame"
+use_latest_release = true
+prefix = "v"
