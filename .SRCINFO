@@ -1,0 +1,14 @@
+pkgbase = libcmap
+	pkgdesc = Unicode character data library
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libcmap
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = custom:ISC
+	makedepends = curl
+	source = libcmap-0.1.tar.gz::https://codeberg.org/maandree/libcmap/archive/0.1.tar.gz
+	sha256sums = a1661248303478f0e66ca2aa456f4d717fd7b5ab9790a6c155e1ccc5ab3499a1
+
+pkgname = libcmap
