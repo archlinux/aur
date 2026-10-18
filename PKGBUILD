@@ -2,7 +2,7 @@
 pkgname=espanso-gui
 _app_id=io.unobserved.espansoGUI
 pkgver=24.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI frontend for espanso"
 arch=('x86_64')
 url="https://github.com/unobserved-io/espanso-gui"
@@ -15,14 +15,17 @@ makedepends=(
   'cargo'
   'meson'
 )
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('041646c7af49163dbfc9377a41ce8836e0c3191a9f5ee68cba2a7f26282aec07')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 }
 
 build() {

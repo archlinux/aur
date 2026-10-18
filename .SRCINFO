@@ -1,11 +1,12 @@
 pkgbase = espanso-gui
 	pkgdesc = GUI frontend for espanso
 	pkgver = 24.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unobserved-io/espanso-gui
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = cargo
 	makedepends = meson
 	depends = espanso
