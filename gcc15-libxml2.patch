@@ -1,0 +1,192 @@
+diff --color -ru orig/src/callbacks.c byojeopardy-1.2.14/src/callbacks.c
+--- a/src/callbacks.c	2026-10-18 13:37:34.702109585 +0200
++++ b/src/callbacks.c	2026-10-18 13:59:49.924275634 +0200
+@@ -22,6 +22,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include "callbacks.h"
++#include <glib/gprintf.h>
+ #include "interface.h"
+ #include "export.h"
+ #include "byojundo.h"
+@@ -1229,49 +1230,21 @@
+ static xmlChar *
+ byoj_convert_input(const char *in, const char *encoding)
+ {
++	/* libxml2 2.14 made xmlCharEncodingHandler private; convert with GLib instead */
++	gchar *conv;
+ 	xmlChar *out;
+-	int ret;
+-	int size;
+-	int out_size;
+-	int temp;
+-	xmlCharEncodingHandlerPtr handler;
+ 
+ 	if (in == 0)
+ 		return 0;
+ 
+-	handler = xmlFindCharEncodingHandler(encoding);
+-
+-	if (!handler) {
+-		printf("ConvertInput: no encoding handler found for '%s'\n",
++	conv = g_convert(in, -1, "UTF-8", encoding, NULL, NULL, NULL);
++	if (conv == NULL) {
++		printf("ConvertInput: conversion from '%s' wasn't successful.\n",
+ 		encoding ? encoding : "");
+ 		return 0;
+ 	}
+-
+-	size = (int) strlen(in) + 1;
+-	out_size = size * 2 - 1;
+-	out = (unsigned char *) xmlMalloc((size_t) out_size);
+-
+-	if (out != 0) {
+-		temp = size - 1;
+-		ret = handler->input(out, &out_size, (const xmlChar *) in, &temp);
+-		if ((ret < 0) || (temp - size + 1)) {
+-			if (ret < 0) {
+-				//printf("ConvertInput: conversion wasn't successful.\n");
+-			} else {
+-				//printf
+-						("ConvertInput: conversion wasn't successful. converted: %i octets.\n",
+-						temp);
+-			}
+-
+-			xmlFree(out);
+-			out = 0;
+-		} else {
+-			out = (unsigned char *) xmlRealloc(out, out_size + 1);
+-			out[out_size] = 0;  /*null terminating out */
+-		}
+-	} else {
+-		//printf("ConvertInput: no mem\n");
+-	}
++	out = xmlStrdup((const xmlChar *) conv);
++	g_free(conv);
+ 	return out;
+ }
+ 
+diff --color -ru orig/xhtmlite/xhtmlite_module/xhtmlbuffer.c byojeopardy-1.2.14/xhtmlite/xhtmlite_module/xhtmlbuffer.c
+--- a/xhtmlite/xhtmlite_module/xhtmlbuffer.c	2026-10-18 13:37:34.702546549 +0200
++++ b/xhtmlite/xhtmlite_module/xhtmlbuffer.c	2026-10-18 13:59:49.923489891 +0200
+@@ -32,6 +32,8 @@
+ #include "xhtmlundo.h"
+ 
+ #include <string.h>
++#include <ctype.h>
++#include <glib/gprintf.h>
+ #include <gdk-pixbuf/gdk-pixdata.h>
+ 
+ //for xml
+@@ -348,7 +350,7 @@
+ 		printf("fontfamily tag not found: %s\n", fontfamily);
+ 		tag = gtk_text_tag_new (fontfamily);
+ 		xhtmlite_setup_tag(tagtable,tag);
+-		g_object_set (tag, "family", attribute, NULL);
++		g_object_set (tag, "family", face, NULL);
+ 	}
+ 	if(tag != NULL)
+ 	{
+@@ -693,51 +695,21 @@
+ xmlChar* 
+ xhtmlite_convert_xml_input(const char *in, const char *encoding)
+ {
++	/* libxml2 2.14 made xmlCharEncodingHandler private; convert with GLib instead */
++	gchar *conv;
+ 	xmlChar *out;
+-	int ret;
+-	int size;
+-	int out_size;
+-	int temp;
+-	xmlCharEncodingHandlerPtr handler;
+ 
+ 	if (in == 0)
+ 		return 0;
+ 
+-	handler = xmlFindCharEncodingHandler(encoding);
+-
+-	if (!handler) {
+-		printf("ConvertInput: no encoding handler found for '%s'\n",
+-		       encoding ? encoding : "");
++	conv = g_convert(in, -1, "UTF-8", encoding, NULL, NULL, NULL);
++	if (conv == NULL) {
++		printf("ConvertInput: conversion from '%s' wasn't successful.\n",
++		encoding ? encoding : "");
+ 		return 0;
+ 	}
+-
+-	size = (int) g_str_get_length(in) + 1;
+-	out_size = size * 2 - 1;
+-	out = (unsigned char *) xmlMalloc((size_t) out_size);
+-
+-	if (out != 0) {
+-		temp = size - 1;
+-		ret = handler->input(out, &out_size, (const xmlChar *) in, &temp);
+-		if ((ret < 0) || (temp - size + 1)) {
+-			if (ret < 0) {
+-				printf("ConvertInput: conversion wasn't successful.\n");
+-			} else {
+-				printf
+-						("ConvertInput: conversion wasn't successful. converted: %i octets.\n",
+-						temp);
+-			}
+-
+-			xmlFree(out);
+-			out = 0;
+-		}
+-		else {
+-			out = (unsigned char *) xmlRealloc(out, out_size + 1);
+-			out[out_size] = 0;  /*null terminating out */
+-		}
+-	} else {
+-		printf("ConvertInput: no mem\n");
+-	}
+-
++	out = xmlStrdup((const xmlChar *) conv);
++	g_free(conv);
+ 	return out;
+ }
+ 
+diff --color -ru orig/xhtmlite/xhtmlite_module/xhtmlcallbacks.c byojeopardy-1.2.14/xhtmlite/xhtmlite_module/xhtmlcallbacks.c
+--- a/xhtmlite/xhtmlite_module/xhtmlcallbacks.c	2026-10-18 13:59:49.890526279 +0200
++++ b/xhtmlite/xhtmlite_module/xhtmlcallbacks.c	2026-10-18 13:59:49.923736246 +0200
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <gtk/gtk.h>
++#include <ctype.h>
+ 
+ #include "support.h"
+ #include "base64.h"
+diff --color -ru orig/xhtmlite/xhtmlite_module/xhtmlmenu.c byojeopardy-1.2.14/xhtmlite/xhtmlite_module/xhtmlmenu.c
+--- a/xhtmlite/xhtmlite_module/xhtmlmenu.c	2026-10-18 13:37:34.702693176 +0200
++++ b/xhtmlite/xhtmlite_module/xhtmlmenu.c	2026-10-18 13:59:49.923631118 +0200
+@@ -30,6 +30,7 @@
+ #include "xhtmlbuffer.h"
+ #include "xhtmlwidget.h"
+ #include "support.h"
++#include "base64.h"
+   /* TODO (#1#): Add default menu for editing and formatting and 
+                  inserting */
+   
+diff --color -ru orig/xhtmlite/xhtmlite_module/xhtmlundo.c byojeopardy-1.2.14/xhtmlite/xhtmlite_module/xhtmlundo.c
+--- a/xhtmlite/xhtmlite_module/xhtmlundo.c	2026-10-18 13:59:49.891771579 +0200
++++ b/xhtmlite/xhtmlite_module/xhtmlundo.c	2026-10-18 13:59:49.924087910 +0200
+@@ -23,6 +23,8 @@
+ 
+ #include <gtk/gtk.h>
+ #include "xhtmlundo.h"
++#include "xhtmlbuffer.h"
++#include "xhtmlwidget.h"
+ 
+ /*TODO: Fix Bug: Spaces are not properly undoed and redoed*/
+ static void
+@@ -187,7 +189,7 @@
+ 		case(XHTMLITE_UNDO_INSERT):
+ 			data->start = gtk_text_iter_get_offset (start);
+ 			printf("data->start:%d\n", data->start);
+-			data->end = gtk_text_iter_get_offset (start) + g_str_get_length(text,-1);
++			data->end = gtk_text_iter_get_offset (start) + g_str_get_length(text);
+ 			printf("data->end:%d\n", data->end);
+ 			data->text = g_strdup(text);
+ 			printf("data->text:%s\n", data->text);
