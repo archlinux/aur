@@ -2,9 +2,12 @@
 
 pkgname=engined-git
 pkgver=0.2.6.r0.g3963770
-pkgrel=1
+pkgrel=2
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box (git)"
 arch=('any')
+# Nothing here is a binary, so strip and the debug split have nothing to do, and
+# running them only invites fakeroot noise from the host's toolchain.
+options=('!strip' '!debug')
 url="https://github.com/Rethunk-Tech/engined"
 license=('MIT')
 depends=('bun')

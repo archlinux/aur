@@ -1,7 +1,7 @@
 pkgbase = engined-git
 	pkgdesc = Local model door: one OpenAI-shaped endpoint that owns every inference container on the box (git)
 	pkgver = 0.2.6.r0.g3963770
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rethunk-Tech/engined
 	install = engined.install
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = engined-git
 	optdepends = bubblewrap: read-only sandbox for the opencode engine
 	provides = engined=0.2.6.r0.g3963770
 	conflicts = engined
+	options = !strip
+	options = !debug
 	source = engined-git::git+https://github.com/Rethunk-Tech/engined.git
 	sha256sums = SKIP
 
