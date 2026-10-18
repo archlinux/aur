@@ -1,0 +1,17 @@
+pkgbase = t_trace
+	pkgdesc = High-performance, command-line statistics tracker for your shell
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/M-Komorek/t_trace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = t_trace
+	conflicts = t_trace
+	source = t_trace-0.1.3.crate::https://crates.io/api/v1/crates/t_trace/0.1.3/download
+	sha256sums = b129a1c85a439fa08babad73b794dc97c5f2522a2c074f2cf71d265a0c2df2e0
+
+pkgname = t_trace
