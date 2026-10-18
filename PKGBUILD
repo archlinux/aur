@@ -1,6 +1,6 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui-git
-pkgver=r0.1.0
+pkgver=r178.459f7a2
 pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends (git build)"
 arch=('x86_64')
@@ -26,6 +26,8 @@ pkgver() {
 
 prepare() {
     cd pomotui
+    # Keep the packaged hook in step with the application, even in an AUR cache.
+    cp packaging/aur/pomotui.install "$startdir/pomotui.install"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
