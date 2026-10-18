@@ -1,6 +1,6 @@
 pkgbase = clodex
 	pkgdesc = Claude Code launchers for Codex subscriptions and the DeepSeek API
-	pkgver = r37.8f1f386
+	pkgver = r39.4b0bffe
 	pkgrel = 1
 	url = https://github.com/Shiro836/clodex
 	arch = x86_64
