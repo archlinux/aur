@@ -12,7 +12,7 @@ makedepends=('npm')
 options=(!strip)
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
-        "LICENSE")
+        "LICENSE-command-code")
 sha512sums=('2e205305823b985d1199d91896a9bedb212c7e83163c3724069099cc5db6af136e54e94a013899ed4c0e87e1bd7320e03b334bfacd05837d726f54cfe79b33c8'
             '3a21c0ece6566af238a2f34cf9ca9a5453b992e828a09bbe1a9c5ce0fda8d7ba382bcbdf7b2eb5563009af6f8ba71f2dbeca7b66ac9bcb148ef0dca25788ad13')
 
@@ -45,6 +45,6 @@ COMMANDCODE_SKIP_UPDATES=1 exec ${entry} "\$@"
 WRAPPER
     done
 
-    install -Dm644 "${srcdir}/LICENSE" \
+    install -Dm644 "${srcdir}/LICENSE-command-code" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

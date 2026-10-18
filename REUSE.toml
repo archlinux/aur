@@ -1,0 +1,15 @@
+version = 1
+
+# Package source files written by the maintainer.
+# LICENSE-command-code is the upstream Terms & Conditions of Langbase, Inc.
+# d/b/a Command Code, redistributed as the installed license; as a LICENSE*
+# file REUSE treats it as a license file itself.
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    "nvchecker.toml",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
