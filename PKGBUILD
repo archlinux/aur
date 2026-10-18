@@ -2,7 +2,7 @@
 pkgname=reel
 _app_id=dev.arsfeld.Reel
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern GTK frontend for Plex and other media servers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arsfeld/reel"
@@ -30,6 +30,10 @@ makedepends=(
   'clang'
   'git'
   'mold'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
 )
 source=("git+https://github.com/arsfeld/reel.git#tag=v$pkgver")
 sha256sums=('0fe08da7f2df104de883f41aa9aef522087a906f3ba24ecfa6df10e795fbaeca')

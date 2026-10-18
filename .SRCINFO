@@ -1,11 +1,13 @@
 pkgbase = reel
 	pkgdesc = A modern GTK frontend for Plex and other media servers
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arsfeld/reel
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = clang
