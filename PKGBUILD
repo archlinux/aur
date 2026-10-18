@@ -1,9 +1,9 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://git.disroot.org/trougnouf/cfait"
 license=('GPL-3.0-or-later')
 depends=(
@@ -28,7 +28,7 @@ optdepends=(
 
 options=('!lto' '!strip' '!debug')
 source=("cfait-source-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/cfait-source-v${pkgver}.tar.gz")
-sha256sums=('8e8e5895ead03bf8f32dcdf3286dac230933eeab29db85471d6ccb17b6cfa858')
+sha256sums=('70b9909fdadb65e92c21b64cbc4c983c6768dfe5a808a9413ea9af469d9eda88')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
