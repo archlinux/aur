@@ -12,7 +12,7 @@
 # does not claim to provide `joy`.
 
 pkgname=joyint-joy-bin
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='Joy, product management that lives in your Git repository (CLI)'
 arch=('x86_64' 'aarch64')
@@ -21,10 +21,10 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'zlib')
 conflicts=('joy')
 options=('!strip' '!debug')
-source_x86_64=("joy-cli-x86_64-0.23.1.tar.xz::https://github.com/joyint/joy/releases/download/v0.23.1/joy-cli-x86_64-unknown-linux-gnu.tar.xz")
-source_aarch64=("joy-cli-aarch64-0.23.1.tar.xz::https://github.com/joyint/joy/releases/download/v0.23.1/joy-cli-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('1c214b001c10acbd6a32736472df88814b206361c4bcd8d00c35ed653ef59ea4')
-sha256sums_aarch64=('b5404843a0238c6c8b4dc1053aff015e705d1a741e06ecc80f12cc5670a6701b')
+source_x86_64=("joy-cli-x86_64-0.24.0.tar.xz::https://github.com/joyint/joy/releases/download/v0.24.0/joy-cli-x86_64-unknown-linux-gnu.tar.xz")
+source_aarch64=("joy-cli-aarch64-0.24.0.tar.xz::https://github.com/joyint/joy/releases/download/v0.24.0/joy-cli-aarch64-unknown-linux-gnu.tar.xz")
+sha256sums_x86_64=('b7d5ab78008929f3a09bb7fa82619a66fdf861cbc998920e4a9933ee255adef6')
+sha256sums_aarch64=('e66c8592216c807f69490c65e3cd2706ac3e5d6f1b1db468304e94c84dc52c0c')
 
 package() {
   cd "joy-cli-${CARCH}-unknown-linux-gnu"
