@@ -2,7 +2,7 @@
 pkgname=vinyl-player
 _app_id=page.codeberg.M23Snezhok.Vinyl
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Elegant music player"
 arch=('x86_64')
 url="https://codeberg.org/M23Snezhok/Vinyl"
@@ -17,6 +17,10 @@ depends=(
 makedepends=(
   'cargo'
   'git'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
 )
 optdepends=('gst-plugins-bad')
 source=("git+https://codeberg.org/M23Snezhok/Vinyl.git#tag=v$pkgver")
