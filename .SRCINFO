@@ -1,7 +1,7 @@
 pkgbase = epub-tools
 	pkgdesc = Command line utilities for working with epub files
 	pkgver = 4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/dinofp/epub-tools
 	arch = x86_64
 	license = ISC
@@ -12,6 +12,6 @@ pkgbase = epub-tools
 	provides = epub-tools
 	conflicts = epub-tools
 	source = epub-tools-4.0.tar.gz::https://codeberg.org/dinofp/epub-tools/archive/4.0.tar.gz
-	sha256sums = 210791e8837287f889ff7eaf6426925760aeac17c02459810001441f0ff5e845
+	sha256sums = 550db9e7ab13d1c5355f30ebfec13175461a1ceb0dd366126ac726992c10b620
 
 pkgname = epub-tools
