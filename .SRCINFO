@@ -1,14 +1,13 @@
 pkgbase = plymouth-theme-arch-os
-	pkgdesc = Arch OS Theme for Plymouth
-	pkgver = r29.17edba0
+	pkgdesc = Boot splash of Arch OS for Plymouth
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/murkl/plymouth-theme-arch-os
 	arch = any
-	license = GPL2
-	makedepends = git
+	license = GPL-2.0-or-later
 	depends = plymouth
-	depends = cantarell-fonts
-	source = plymouth-theme-arch-os::git+https://github.com/murkl/plymouth-theme-arch-os.git
-	sha256sums = SKIP
+	depends = adwaita-fonts
+	source = https://github.com/murkl/plymouth-theme-arch-os/releases/download/1.0.0/plymouth-theme-arch-os-1.0.0.tar.gz
+	sha256sums = 4f9a0846a0ae7e75f4488a55fb65443fd34cee56e430d66d00a3f86d3332c864
 
 pkgname = plymouth-theme-arch-os
