@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=git-statuses
-pkgver=0.8.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A command-line tool to display the status of multiple Git repositories.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(cargo)
 conflicts=("$pkgname-bin")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('dda812c0f6e92f661779d7562751d77752de3c3e1df0592dc1055dd96ed7cc37')
+sha256sums=('8259234a45822abbd2c1c2c8e8f0d06b16ef909175be8a945a44b58a52e582e3')
 
 prepare() {
   cd $pkgname-$pkgver
