@@ -1,7 +1,7 @@
 pkgbase = notebook
 	pkgdesc = Markdown Desktop Wiki
 	pkgver = 0.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://codeberg.org/tuxnix/notebook
 	arch = any
 	license = GPL-2.0-only
