@@ -2,7 +2,7 @@
 # Co-maintainer: holaguz <agustin dot catellani at gmail dot com>
 pkgname=tlescope-bin
 pkgver=3.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="TLEscope is a satellite visualization tool designed to transform Two-Line Element (TLE) sets into intuitive, interactive data."
 arch=(x86_64)
 url="https://github.com/aweeri/TLEscope"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 package() {
 	cd "$srcdir/TLEscope-Linux-Portable"
     
-    make
+    make linux
 
     make DESTDIR=$pkgdir/ install
 #	install -d "$pkgdir/opt/TLEscope"
