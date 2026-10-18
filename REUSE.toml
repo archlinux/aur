@@ -5,5 +5,5 @@ SPDX-PackageDownloadLocation = "https://aur.archlinux.org/packages/playwright"
 
 [[annotations]]
 path = ["PKGBUILD", "playwright.install", ".SRCINFO", "LICENSE", "REUSE.toml", ".gitignore", "nvchecker.toml"]
-SPDX-FileCopyrightText = "Arch Linux Contributors"
+SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
