@@ -1,0 +1,21 @@
+post_install() {
+  cat <<'MSG'
+==> EnclaveDNS client installed. To use it:
+      sudo systemctl enable --now enclavedns
+      sudo enclavedns enable      # this machine's DNS + the .eth CA for HTTPS
+    then restart your browser. Check with: enclavedns status
+    Undo: sudo enclavedns disable
+MSG
+}
+
+post_upgrade() {
+  systemctl try-restart enclavedns.service 2>/dev/null || true
+}
+
+pre_remove() {
+  # never leave the system pointing at a client that is about to disappear
+  if [ -f /var/lib/enclavedns-system/state.json ]; then
+    /usr/bin/enclavedns disable || true
+  fi
+  systemctl disable --now enclavedns.service 2>/dev/null || true
+}

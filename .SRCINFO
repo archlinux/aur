@@ -1,0 +1,23 @@
+pkgbase = enclavedns
+	pkgdesc = EnclaveDNS client: DNS through EnclaveDNS (DNSSEC validated in an attested enclave), and .eth sites in the browser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/EnclaveHost/enclavedns-client
+	install = enclavedns.install
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Enclave-Source-Available
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = ca-certificates
+	depends = p11-kit
+	optdepends = kubo: open .eth sites on IPFS
+	optdepends = tor: open .eth sites that are Tor onion services
+	optdepends = networkmanager: handled by `enclavedns enable`
+	options = !lto
+	backup = etc/enclavedns/config.toml
+	source = enclavedns-0.1.0.tar.gz::https://github.com/EnclaveHost/enclavedns-client/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0dac6c27b0561e176113ce8548b350be09088b327c11f2b09ff15ceaa2e57ce1
+
+pkgname = enclavedns
