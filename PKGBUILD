@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -64,6 +64,7 @@ optdepends=(
     'gst-plugin-pipewire: clip capture — pipewiresrc, the portal screen stream'
     'gst-plugins-base: clip capture — appsrc, audioconvert/audioresample, opusenc'
     'gst-plugins-good: clip capture — pulsesrc, matroskamux'
+    'gst-plugins-bad-libs: clip capture — h264parse, after every encoder'
     'gst-plugins-ugly: clip capture — x264enc, the software encoder fallback'
     'ffmpeg: clip thumbnails, track levels and export'
     # Hardware H.264 encoders. Purely a performance choice on top of that: the
@@ -75,7 +76,7 @@ optdepends=(
 makedepends=('python-installer' 'uv' 'python-ruamel-yaml')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('74ba1369f1d3f5769a9268c83f098ebf118314b3d35c3e9510ee07753812884d')
+sha256sums=('35a946340bb9bb20e0fa6c036f9a3bc0f69f35b98144391f46bb694cb337699a')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
