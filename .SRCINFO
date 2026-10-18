@@ -1,0 +1,18 @@
+pkgbase = runx
+	pkgdesc = Native governed runtime for agent skills, tools, graphs, and packets.
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/runxhq/runx
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	conflicts = runx-bin
+	options = !debug
+	options = !lto
+	source = runx-0.10.2.tar.gz::https://github.com/runxhq/runx/archive/refs/tags/cli-v0.10.2.tar.gz
+	sha256sums = aafca4abd3b2acebcd825c34195711159292bdd41a569f5fc7fe69f2d099b8da
+
+pkgname = runx
