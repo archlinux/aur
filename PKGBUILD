@@ -5,7 +5,7 @@ pkgname=freetube
 _pkgname=FreeTube
 pkgver=0.25.3
 _electron=electron42
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('AGPL-3.0-or-later')
@@ -41,5 +41,5 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   cd ..
-  install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
