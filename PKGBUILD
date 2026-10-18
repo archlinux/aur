@@ -1,8 +1,8 @@
 # Maintainer: redxherring
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=1.7.0.r2
-pkgrel=1
+pkgver=1.8.1.r0
+pkgrel=2
 pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)"
 arch=('x86_64')
 url="https://codeberg.org/StillDeadcode/radiance"
@@ -21,6 +21,8 @@ sha256sums=('SKIP' 'cf695b19ebdc371c8894710ea0dea831507ac4618aaeb7d5b458f14d4cb3
 
 # Edit for other hardware: run `offload-arch`.
 _hip_archs='gfx1201'
+# VOPD pairing arm for the shadow-toolchain A/B: OFF or ON. Flip with the pkgrel bump.
+_rad_vopd='ON'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -34,13 +36,23 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  # Shadow toolchain (Path 2 same-dylib A/B, 2026-10-18): both arms MUST compile with the
+  # user-space patched libLLVM in $TC/lib so pairing ON/OFF is the only difference. Dies if
+  # missing or built for a different clang commit (ROCm update => marker rev mismatch).
+  local TC="${RAD_VOPD_TOOLCHAIN:-$HOME/radiance-toolchain}"
+  local rev; rev=$(/opt/rocm/lib/llvm/bin/clang --version | sed -n 's|.*ROCm/llvm-project.git \([0-9a-f]\{40\}\).*|\1|p')
+  [[ -f "$TC/lib/.vopd-patched" && "$(cat "$TC/lib/.vopd-patched")" == "$rev"* ]] \
+    || die "shadow toolchain missing/stale: $TC/lib not marked for clang rev $rev (rebuild it after ROCm updates)"
+  export LD_LIBRARY_PATH="$TC/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+  msg2 "shadow libLLVM active: $TC/lib (rev ${rev:0:12}, pairing=${_rad_vopd})"
   cmake -S . -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DRAD_WITH_HIP=ON \
     -DRAD_GPU_TARGETS="${_hip_archs}" \
     -DRAD_WITH_FFMPEG=ON \
-    -DRAD_BUILD_TESTS=OFF
+    -DRAD_BUILD_TESTS=OFF \
+    -DRAD_HIP_VOPD_REPEATABLE="${_rad_vopd}"
   cmake --build build --parallel
 }
 
