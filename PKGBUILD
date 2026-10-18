@@ -2,7 +2,7 @@
 pkgname=zeroclawlabs
 _reponame=zeroclaw
 # >>> generated:pkgbuild-version by `cargo generate installers` - do not edit <<<
-pkgver=0.8.5
+pkgver=0.8.6
 # >>> end generated:pkgbuild-version <<<
 pkgrel=1
 pkgdesc="Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant."
@@ -14,7 +14,7 @@ makedepends=('cargo' 'git' 'nodejs' 'npm')
 provides=('zeroclaw' 'zerocode')
 conflicts=('zeroclaw' 'zerocode')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4991b28f10ad82fcdbeda499c7312d41d90e6ae18ee38339c7a3867d3dd80756')
+sha256sums=('ffef623e3b6b83ea1a95fa2ea454e6986ed9f827736e99f114b5b3694fb89008')
 
 prepare() {
   cd "${_reponame}-${pkgver}"
@@ -33,7 +33,7 @@ build() {
   cargo web build
 
   # >>> generated:pkgbuild-build by `cargo generate installers` - do not edit <<<
-  cargo build --frozen --profile dist --features acp-bridge,agent-runtime,channel-acp-server,channel-discord,channel-email,channel-filesystem,channel-git,channel-lark,channel-matrix,channel-telegram,channel-webhook,gateway,observability-prometheus,schema-export,whatsapp-web
+  cargo build --frozen --profile dist --features acp-bridge,agent-runtime,channel-acp-server,channel-discord,channel-email,channel-filesystem,channel-git,channel-lark,channel-matrix,channel-telegram,channel-webhook,gateway,observability-prometheus,plugins-wasm-cranelift,schema-export,tool-claude-code,tool-claude-code-runner,tool-codex-cli,tool-composio,tool-gemini-cli,tool-google-workspace,tool-jira,tool-linkedin,tool-microsoft365,tool-notion,tool-opencode-cli,tool-project-intel,tools-external,whatsapp-web
 # >>> end generated:pkgbuild-build <<<
   cargo build --frozen --profile dist -p zerocode
 }
