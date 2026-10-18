@@ -1,0 +1,22 @@
+pkgbase = appletalk-dkms-git
+	pkgdesc = AppleTalk (DDP/AARP) kernel module removed in Linux 7.2, built out of tree from linux-netdev/mod-orphan (DKMS)
+	pkgver = r60.82c9c7b
+	pkgrel = 1
+	url = https://github.com/linux-netdev/mod-orphan
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	optdepends = netatalk: atalkd, papd, pap and AFP over AppleTalk
+	provides = appletalk-dkms
+	conflicts = appletalk-dkms
+	source = mod-orphan::git+https://github.com/linux-netdev/mod-orphan.git
+	source = Kbuild
+	source = Makefile
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 52308791169f2c122a626597f928184091dfac54063fa125c01935d11f2b4da9
+	sha256sums = d18197a185d520d814ef0b158c283aed833aa21d9fe24ad849785df0d2756e0b
+	sha256sums = b4a21ad8322010a7fd42aeb1190029e80d5327c43da9a4a5962627a80407d29c
+
+pkgname = appletalk-dkms-git
