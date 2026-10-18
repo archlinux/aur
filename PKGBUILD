@@ -29,7 +29,7 @@ source=(
   'linux-integration-fixes.patch'
   'form-control-theme.patch'
 )
-sha256sums=('19f62f82284a7c8d7fb35aff70c6203af956205d7ae919c5848a2da0804eacd7'
+sha256sums=('2434032dd5126f2d4c6b1684482881dbea4d62a65bb2baf0bbc006acf053822b'
             'f1eb85aacb293e1f72e7c68d156e733185081b92c2d1ae44a62966041a629e78'
             'ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd'
             '01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169')
