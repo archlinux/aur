@@ -1,7 +1,7 @@
 pkgbase = cross-cleaner
 	pkgdesc = Addon-style system cleanup tool that removes temporary files, cache and other system junk
-	pkgver = 2.0.4.4
-	pkgrel = 1.1
+	pkgver = 2.0.4.5
+	pkgrel = 1
 	url = https://github.com/Cross-Cleaner/Cross-Cleaner
 	arch = x86_64
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = cross-cleaner
 	depends = libxkbcommon-x11
 	depends = fontconfig
 	optdepends = gtk-update-icon-cache: update the icon cache without restarting the session
-	source = cross-cleaner-v2.0.4.4.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v2.0.4.4.tar.gz
-	sha256sums = 86e98f694c97f518e573c267add2873fc91a751b7905a4a374d326b35b745af5
+	source = cross-cleaner-v2.0.4.5.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v2.0.4.5.tar.gz
+	sha256sums = a92767e403a4e7dd020508faf569ae6d6a7cf43c6b62c527030364a9d10db740
 
 pkgname = cross-cleaner

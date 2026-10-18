@@ -21,10 +21,10 @@ pkgname=cross-cleaner
 # .github/workflows/aur.yml rewrites, and the block deliberately contains
 # nothing else -- regenerating it must not delete the explanation around it.
 # ---AUR-VERSION-BEGIN---
-pkgver=2.0.4.4
-pkgrel=1.1
+pkgver=2.0.4.5
+pkgrel=1
 source=("cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('86e98f694c97f518e573c267add2873fc91a751b7905a4a374d326b35b745af5')
+sha256sums=('a92767e403a4e7dd020508faf569ae6d6a7cf43c6b62c527030364a9d10db740')
 # ---AUR-VERSION-END---
 pkgdesc='Addon-style system cleanup tool that removes temporary files, cache and other system junk'
 arch=('x86_64' 'aarch64')
