@@ -1,0 +1,14 @@
+pkgbase = aurora-4x
+	pkgdesc = A space strategy game with a focus on realism and depth
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://aurora4x.com/
+	arch = x86_64
+	license = LicenseRef-aurora-4x
+	depends = wine
+	depends = wine-mono
+	noextract = aurora-4x-2.7.1.rar
+	source = aurora-4x-2.7.1.rar::https://drive.usercontent.google.com/download?id=1aW7Yra4MgWwr4UxFORwRT2scOCZoDFqX&export=download&confirm=t
+	sha256sums = 5cf4b7ee6965a6e05b96538c8a9762b8b2de63dd535ca74cfec46977e5d1b174
+
+pkgname = aurora-4x
