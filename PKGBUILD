@@ -2,8 +2,8 @@
 # Contributor: jorge_barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=akari
-pkgver=1.0.54
-_timestamp=20260415
+pkgver=1.0.55
+_timestamp=20260928
 _ccstoolsver=1.8.5
 pkgrel=1
 pkgdesc='TOMOYO Linux 1.8.x Module for the Linux kernel'
@@ -16,7 +16,7 @@ install=${pkgname}.install
 source=("https://sourceforge.net/projects/tomoyo/files/akari-patch/${pkgname}-${pkgver}-${_timestamp}.tar.gz"
         "https://sourceforge.net/projects/tomoyo/files/akari-patch/${pkgname}-${pkgver}-${_timestamp}.tar.gz.asc"
         activation_trigger.patch)
-sha256sums=('ef8ef57967f383e2eed460cd766daae6ac0d4a8771071266d1e955926852a6c3'
+sha256sums=('8145c81eeb102b2a3a36f147322e0955c1ca747bfb85fc95574fc003a7a11b04'
             'SKIP'
             '55d86a0d602631129298887fa63c1396ed6c6229965efcdbdc549ee159a39702')
 noextract=("${pkgname}-${pkgver}-${_timestamp}.tar.gz")
