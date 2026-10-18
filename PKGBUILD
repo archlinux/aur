@@ -1,6 +1,6 @@
 # Maintainer: Lu Xu <oliver_lew at outlook dot com>
 pkgname=javinizer-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A metadata scraper and file organizer for JAV, with CLI, TUI, REST API, and a web UI"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ source_x86_64=(
 source_aarch64=(
     "${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/javinizer-linux-arm64"
     "LICENSE::https://raw.githubusercontent.com/javinizer/javinizer-go/v${pkgver}/LICENSE")
-sha256sums_x86_64=('f5ef979d4ec8f051df493b25f9ed881eeca80456ba4e96a732355869b5cadd79'
+sha256sums_x86_64=('28d74462abf267d56719dec8373e6487ecef50849e129aaffc29a8fe0de3d9fc'
                    'bc81733f13dea3d54a631b130ef44b513669de176868f26431d923921480a4f3')
-sha256sums_aarch64=('71430604c94bee076d6349e6934e3bbeaa2a3dd92251a21478136af649960a34'
+sha256sums_aarch64=('c183d25e6964a5963e989c8fabd9ed17e1a670a1ef823820e13e6f384ff5dc28'
                     'bc81733f13dea3d54a631b130ef44b513669de176868f26431d923921480a4f3')
 
 package() {
