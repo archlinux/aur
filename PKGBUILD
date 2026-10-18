@@ -1,10 +1,10 @@
 # Maintainer: Ron Brand <ronb1964@gmail.com>
 pkgname=tuxtalk-appimage
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Voice dictation for Linux: hold a key, talk, and your words are typed for you"
 arch=('x86_64')
-url="https://github.com/ronb1964/TuxTalk"
+url="https://tuxtalk.app/"
 license=('MIT')
 # The AppImage itself bundles libayatana-appindicator3 with its dbusmenu
 # libraries, and ydotool, ydotoold and wl-clipboard, so those depends are
@@ -25,7 +25,7 @@ replaces=('talktype-appimage')
 options=('!strip')
 source=("TuxTalk-v${pkgver}-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v${pkgver}/TuxTalk-v${pkgver}-x86_64.AppImage"
         "tuxtalk.desktop")
-sha256sums=('be40dd581bd5db8cf871817b6c2b177df8339de8f5c2d8387ee7a78c1a1829da'
+sha256sums=('33938df9481b3c4d65a2c363f0fc3d91d5f3ec94c74c6a2158b8c59cfdd33a3d'
             'SKIP')
 noextract=("TuxTalk-v${pkgver}-x86_64.AppImage")
 

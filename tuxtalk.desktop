@@ -8,3 +8,20 @@ Type=Application
 Categories=Utility;Accessibility;AudioVideo;
 Keywords=voice;dictation;speech;transcription;whisper;
 StartupNotify=true
+Actions=Preferences;TranscribeFile;Help;Quit;
+
+[Desktop Action Preferences]
+Name=Preferences
+Exec=tuxtalk --open preferences
+
+[Desktop Action TranscribeFile]
+Name=Transcribe a File
+Exec=tuxtalk --open transcribe
+
+[Desktop Action Help]
+Name=Help
+Exec=tuxtalk --open help
+
+[Desktop Action Quit]
+Name=Quit TuxTalk
+Exec=tuxtalk --quit
