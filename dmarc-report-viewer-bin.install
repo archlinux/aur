@@ -1,0 +1,18 @@
+post_install() {
+    cat << 'EOF'
+
+==> dmarc-report-viewer configuration
+Add the following to your ~/.bashrc to configure dmarc-report-viewer:
+
+# dmarc-report-viewer
+export IMAP_HOST=some.mail.server
+export IMAP_USER=email@mail.server
+export IMAP_PASSWORD='someAccountPassword'
+export HTTP_SERVER_PASSWORD='somePassword'
+
+Then reload your shell with: source ~/.bashrc
+
+For more configuration options, run: dmarc-report-viewer --help
+
+EOF
+}

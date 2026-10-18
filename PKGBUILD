@@ -1,35 +1,20 @@
 # Maintainer: Bink
 pkgname=dmarc-report-viewer-bin
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Standalone DMARC and SMTP TLS report viewer with embedded HTTP server"
 arch=('x86_64')
 url="https://github.com/cry-inc/dmarc-report-viewer"
 license=('MIT')
-depends=()
-source=("${url}/releases/download/${pkgver}/linux-x86_64.zip")
-sha256sums=('f02827a170c82ad15c6aa685ed66a2659d90fe87a9655ad11fa4c6191164d2c5')
-b2sums=('46b4a4c6eb06651400e143ad25dd7773a95c1ffacaf4cb621c915b06c0b83010fc008b05d8640f56f2f9af772b26a42d91d4d33923ebfdfef993a9b56ac282b9')
+install=dmarc-report-viewer-bin.install
+source=("${url}/releases/download/${pkgver}/linux-${CARCH}.zip"
+        'LICENSE')
+sha256sums=('12314245ff6f230303ae3c88c6795ddf3019dcd312fb49f502e4351996914e9b'
+            'd535da0d08dad6a00ce7a905f72aa497682409916005dea60e940ae454138d66')
+b2sums=('718954d3b285765c6bd18860e725db4f268e242b2caef2b94c3541a034c9df04619ca6c239bb2a4513a7957fb0c43aef41fc01491851d4ab4249357c90c84d40'
+        '6ce77c7aa5aa6136c651ce6256de2c18ef66fa00e55f8347857787e3f3fb8430b18a0ced8f1a78fe141e48f05669fa9ce326e62c8cf241818ac6e7765c73658d')
 
 package() {
-    install -Dm755 "${srcdir}/linux-x86_64/dmarc-report-viewer" "${pkgdir}/usr/bin/dmarc-report-viewer"
-}
-
-post_install() {
-    cat << 'EOF'
-
-==> dmarc-report-viewer configuration
-Add the following to your ~/.bashrc to configure dmarc-report-viewer:
-
-# dmarc-report-viewer
-export IMAP_HOST=some.mail.server
-export IMAP_USER=email@mail.server
-export IMAP_PASSWORD='someAccountPassword'
-export HTTP_SERVER_PASSWORD='somePassword'
-
-Then reload your shell with: source ~/.bashrc
-
-For more configuration options, run: dmarc-report-viewer --help
-
-EOF
+    install -Dm755 "${srcdir}/linux-${CARCH}/dmarc-report-viewer" "${pkgdir}/usr/bin/dmarc-report-viewer"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
