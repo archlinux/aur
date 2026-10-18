@@ -1,0 +1,5 @@
+[prism-download-manager-bin]
+source = "github"
+github = "FortoGraphy/prism-download-manager"
+use_latest_release = true
+prefix = "v"
