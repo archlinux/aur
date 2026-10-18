@@ -1,0 +1,21 @@
+[Unit]
+Description=UU Remote Linux host (unofficial)
+Documentation=https://github.com/VallierDev/uu-remote-linux
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+Environment=RUST_LOG=info
+# Desktop environments normally import DISPLAY/XAUTHORITY/WAYLAND_DISPLAY into
+# the systemd user manager. On a bare X11 session run
+#   systemctl --user import-environment DISPLAY XAUTHORITY
+# before starting the unit, or uncomment the next line for a single-seat box.
+#Environment=DISPLAY=:0
+PassEnvironment=DISPLAY XAUTHORITY WAYLAND_DISPLAY XDG_SESSION_TYPE
+ExecStart=/usr/bin/uuremote-server
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

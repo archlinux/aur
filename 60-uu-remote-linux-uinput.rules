@@ -1,0 +1,3 @@
+# Lets the locally logged-in user open /dev/uinput, so the host can use kernel
+# virtual keyboard/mouse devices (needed for correct key symbols on Wayland).
+KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
