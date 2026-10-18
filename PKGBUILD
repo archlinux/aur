@@ -1,15 +1,15 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=plasma6-applets-mawaqit-prayer-times
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Plasma 6 widget showing prayer times from your mosque on mawaqit.net"
 arch=('any')
 url='https://github.com/medaminezghal/plasma6-applets-mawaqit-prayer-times'
 license=('GPL-3.0-or-later')
 depends=('plasma-workspace')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('74a2ef37765996d503dd0612f79944aa7a4b1b9f2281b426993eba7071ef6f43')
+sha256sums=('93a5b3b7729289e6b1385592d234cf655adb37c1271363e3ddefdd2fe9f149d5')
 
 package() {
   cd "$pkgname-$pkgver"
