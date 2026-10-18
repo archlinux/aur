@@ -1,0 +1,22 @@
+pkgbase = bakajiten-git
+	pkgdesc = Japanese dictionary with handwriting recognition
+	pkgver = 0.1.0.r0.g7bf2048
+	pkgrel = 1
+	url = https://github.com/bakatrouble/bakajiten
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = rust
+	depends = qt6-base
+	depends = qt6-svg
+	depends = yaml-cpp
+	depends = hicolor-icon-theme
+	depends = noto-fonts-cjk
+	provides = bakajiten
+	conflicts = bakajiten
+	source = git+https://github.com/bakatrouble/bakajiten.git
+	sha256sums = SKIP
+
+pkgname = bakajiten-git
