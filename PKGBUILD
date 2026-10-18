@@ -3,7 +3,7 @@
 #             adapted from package python2-scikit-rf
 _name="scikit-rf"
 pkgname="python-${_name}"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
@@ -37,7 +37,7 @@ checkdepends=(
   "python-pytest"
 )
 
-b2sums=('346ac2def403fdc8ea69169b2d7e4c21bbdf3476a2f36dc6073b8260833d86dcf66d5216081530cfe4aabddbbaf1f98c1535f5c32d1020c333820a17ce31cc78')
+b2sums=('4a89b83a59c2d0a69c52f581f3855bbd9996bc96fd3a030b422e559d94f293226333c10c214328047abd56e5d18fcd437b13ef037f576b207bf66a739175a85f')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 
 prepare() {
