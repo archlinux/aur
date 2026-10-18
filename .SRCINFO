@@ -1,11 +1,11 @@
 pkgbase = drop-oss-app-bin
 	pkgdesc = The client application for the open-source, self-hosted game distribution platform Drop
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://droposs.org/
 	arch = any
 	license = LicenseRef-GPL-3.0
-	makedepends = unzip
+	makedepends = libarchive
 	depends = glib2
 	depends = glibc
 	depends = gcc-libs
@@ -14,7 +14,7 @@ pkgbase = drop-oss-app-bin
 	depends = libappindicator
 	depends = libayatana-appindicator
 	conflicts = drop-oss-app
-	source = https://github.com/Drop-OSS/drop-app/releases/download/v0.3.4/Drop.Desktop.Client_0.3.4_amd64.deb
-	sha256sums = c40a9e37db92614396af4eee811e00d268150314b644fef839de8d4b7b8b3963
+	source = https://github.com/Drop-OSS/drop/releases/download/v0.4.0-rc-6/Drop.Desktop.Client_0.4.0_amd64.deb
+	sha256sums = 2a0941263a06162868045ed51476b4cf6cc8a67337368cedc293df58ece20807
 
 pkgname = drop-oss-app-bin
