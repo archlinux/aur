@@ -1,6 +1,6 @@
 # Maintainer: Scott Stavinoha <scottstavinoha@gmail.com>
 pkgname=aside
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="LLM assistant for Wayland desktops — overlay, voice, tools, any model"
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('14ea5f29f63d1569816f1e68682f3e5bbe7365a1575996c11bd1a3c3ef619e65')
+sha256sums=('064227d3a1730863189dac5c4b882fea617d01774c9b2ba8f63d72f13b7f8c25')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -44,7 +44,10 @@ build() {
     "$_pip" install --no-cache-dir --no-deps \
         "$srcdir/$pkgname-$pkgver/dist/aside_assistant-"*.whl
 
-    "$_pip" install --no-cache-dir litellm mistune
+    # Pinned: a new litellm ships only through a deliberate bump that passes
+    # the live query in dev/release.sh. Unpinned, 0.8.2 got 1.106.0, which
+    # imports mcp without installing it and broke every query.
+    "$_pip" install --no-cache-dir "litellm==1.93.0" mistune
 }
 
 package() {
