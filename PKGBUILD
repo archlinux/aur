@@ -31,7 +31,7 @@ makedepends=(
   python
   rust
 )
-provides=(${pkgname}.so=${pkgname}.so-64)
+provides=(${pkgname}.so)
 options=('!lto')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}-lite.tar.xz"
         'compiler-rt-adjust-paths.patch'

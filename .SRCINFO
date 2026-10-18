@@ -26,7 +26,7 @@ pkgbase = libpdfium
 	depends = libjpeg.so=8-64
 	depends = libz.so=1-64
 	depends = openjpeg2
-	provides = libpdfium.so=libpdfium.so-64
+	provides = libpdfium.so
 	options = !lto
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-155.0.8059.84-lite.tar.xz
 	source = compiler-rt-adjust-paths.patch
