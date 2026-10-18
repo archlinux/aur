@@ -78,7 +78,6 @@ build() {
   pnpm config set cache-dir "$SRCDEST/pnpm-cache"
 
   pnpm install
-  pnpm run chore:update-version
   pnpm run --filter desktop electron-forge:package
 }
 
