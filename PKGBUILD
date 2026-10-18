@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
-pkgver=2.0.1.r0.gbac599ca
+pkgver=2.0.5.r0.g9d8c9a47
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
@@ -32,7 +32,10 @@ makedepends=(
   'meson'
   'polkit'
 )
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -59,7 +62,6 @@ build() {
     -Dbundle-landlock=false
   meson compile -C build
 }
-
 
 check() {
   desktop-file-validate "build/data/${_desktop_id}.desktop"

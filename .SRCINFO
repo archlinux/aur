@@ -1,11 +1,12 @@
 pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN
-	pkgver = 2.0.1.r0.gbac599ca
+	pkgver = 2.0.5.r0.g9d8c9a47
 	pkgrel = 1
 	url = https://github.com/linuxmint/warpinator
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = git
 	makedepends = meson
 	makedepends = polkit
