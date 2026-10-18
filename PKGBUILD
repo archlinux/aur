@@ -2,7 +2,7 @@
 
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
-pkgver=r4296.g8d30bab4
+pkgver=r4315.g0dd592aa
 pkgrel=1
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64' 'aarch64')
@@ -41,11 +41,11 @@ build() {
 #    do
 #     sed -i 's/<TargetFramework>net8.0<\/TargetFramework>/<TargetFramework>net10.0<\/TargetFramework>/g' "${pp}"
 #    done
-    for pp in $(grep -Rl "<TargetFramework>net9.0</TargetFramework>")
-    do
-     sed -i 's/<TargetFramework>net9.0<\/TargetFramework>/<TargetFramework>net10.0<\/TargetFramework>/g' "${pp}"
-    done
-    
+#    for pp in $(grep -Rl "<TargetFramework>net9.0</TargetFramework>")
+#    do
+#     sed -i 's/<TargetFramework>net9.0<\/TargetFramework>/<TargetFramework>net10.0<\/TargetFramework>/g' "${pp}"
+#    done
+ 
     echo "::: Building TechnitiumLibrary binaries"
     LDFLAGS+=' -Wl,-z,cet-report=error'
     
