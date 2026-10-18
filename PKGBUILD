@@ -2,7 +2,7 @@
 
 pkgname=gpmd85emulator-data
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Misc programming languages, games and programs for gpmd85emulator"
 arch=('any')
 url="https://pmd85.borik.net/wiki/Download"
@@ -65,4 +65,6 @@ cd $srcdir/
 mkdir -p $pkgdir/usr/share/gpmd85emu
 cp -r .  $pkgdir/usr/share/gpmd85emu
 find $pkgdir/usr/share/gpmd85emu -type l -delete
+# already provided by gpmd85emulator
+rm -f $pkgdir/usr/share/gpmd85emu/mrs2.rmm
 }

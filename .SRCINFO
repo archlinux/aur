@@ -1,7 +1,7 @@
 pkgbase = gpmd85emulator-data
 	pkgdesc = Misc programming languages, games and programs for gpmd85emulator
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pmd85.borik.net/wiki/Download
 	arch = any
 	license = unknown
