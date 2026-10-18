@@ -1,6 +1,6 @@
-# vim: ts=2 sw=2 et:
 post_install() {
-  grep -qe '^/usr/bin/pwsh$' etc/shells || echo '/usr/bin/pwsh' >> etc/shells
+  grep -Fqx /bin/pwsh /etc/shells || echo /bin/pwsh >> /etc/shells
+  grep -Fqx /usr/bin/pwsh /etc/shells || echo /usr/bin/pwsh >> /etc/shells
 }
 
 post_upgrade() {
@@ -8,5 +8,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  sed -ri '\|^/usr/bin/pwsh$|d' etc/shells
+  sed -i -r '/^(\/usr)?\/bin\/pwsh$/d' /etc/shells
 }
+
+# vim: ts=2 sw=2 et:
