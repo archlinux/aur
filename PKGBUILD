@@ -1,12 +1,12 @@
 # Maintainer: stevedefacto (https://aur.archlinux.org/account/stevedefacto)
 pkgname=enclavedns
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="EnclaveDNS client: DNS through EnclaveDNS (DNSSEC validated in an attested enclave), and .eth sites in the browser"
 arch=('x86_64' 'aarch64')
 url="https://github.com/EnclaveHost/enclavedns-client"
 license=('LicenseRef-Enclave-Source-Available')
-depends=('gcc-libs' 'glibc' 'ca-certificates' 'p11-kit')
+depends=('gcc-libs' 'glibc' 'ca-certificates' 'p11-kit' 'nss')
 makedepends=('cargo')
 optdepends=('kubo: open .eth sites on IPFS'
             'tor: open .eth sites that are Tor onion services'
@@ -16,7 +16,7 @@ install=enclavedns.install
 # ring's C code built with makepkg's -flto is GCC bytecode the Rust linker cannot read
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('188d549114383e8dd43cbe517313786646deb715e87732d636d5979a5f1e7642')
+sha256sums=('55b6c58dee04335da8bd1b862735903dd1b7fcb6b21a11a8890462423f8841b1')
 
 prepare() {
   cd "enclavedns-client-$pkgver"
