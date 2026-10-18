@@ -43,8 +43,8 @@ pkgname=cross-cleaner-bin
 # name. Only the archive is renamed, because GitHub calls it
 # v${pkgver}.tar.gz and ../PKGBUILD already established the longer name.
 # ---AUR-VERSION-BEGIN---
-pkgver=2.0.4.4
-pkgrel=1.1
+pkgver=2.0.4.5
+pkgrel=1
 source_x86_64=(
     "cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz"
     "https://github.com/Cross-Cleaner/Cross-Cleaner/releases/download/v${pkgver}/Linux-Cross_Cleaner_GUI-no-updater"
@@ -52,10 +52,10 @@ source_x86_64=(
     "https://github.com/Cross-Cleaner/Cross-Cleaner/releases/download/v${pkgver}/Linux-Cross_Cleaner_CLI-no-updater"
 )
 sha256sums_x86_64=(
-    '86e98f694c97f518e573c267add2873fc91a751b7905a4a374d326b35b745af5'
-    '7c9dc68b71d0b60dd2cf251f58aabb2354af39bf60e1926d3d9b541b7365e6ef'
-    '6de6ddeff5e974ca314499b883712c0129f382c3ae369699225abdee06aa2f8c'
-    'dc7eb1005a10e2e5243f9d964e9d2fb17876c4bed28f36447822c2c15aec0733'
+    'a92767e403a4e7dd020508faf569ae6d6a7cf43c6b62c527030364a9d10db740'
+    '2d7b1650906c4e90c04238928af6a90f5f140740f8f7a3e9308da7f488acddbf'
+    '9cc022bae1fd28600357e741596a2d6df58a2b1315584816648a01f200388fd7'
+    '8086027a1db38579135c3200caf84157ac09917659291b882fca90c629702cd9'
 )
 source_aarch64=(
     "cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz"
@@ -64,10 +64,10 @@ source_aarch64=(
     "https://github.com/Cross-Cleaner/Cross-Cleaner/releases/download/v${pkgver}/Linux-Arm64-Cross_Cleaner_CLI-no-updater"
 )
 sha256sums_aarch64=(
-    '86e98f694c97f518e573c267add2873fc91a751b7905a4a374d326b35b745af5'
-    '680ce1839a926410dee0a2c3fff10b33e456f89b2604a2072f761d87a68acb67'
-    '86b24c2e7a2ff5b3b22cf66f0139219acd0eb6aa90928773bc51b6d705fec3b3'
-    '08f793954d8d247174ecfbb2a86f0689d3cbf1ca1d021cfa5cf8cc036814707d'
+    'a92767e403a4e7dd020508faf569ae6d6a7cf43c6b62c527030364a9d10db740'
+    '3669980550ea9e9f3a59b5532bbcae57c99c0912f642a31712e2fae890415059'
+    '23946f09635f2fd7fbc8ecd2deaeaebed29006a442a8f6019bd6297f46c1dbbc'
+    '18b8a1d2684640178b5532c441f1f4c359c6a01d690cfacb616773635718b0d7'
 )
 # ---AUR-VERSION-END---
 pkgdesc='Addon-style system cleanup tool that removes temporary files, cache and other system junk (prebuilt binaries)'
