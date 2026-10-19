@@ -2,7 +2,7 @@
 
 pkgname=workmux-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.1.273
+pkgver=0.1.276
 pkgrel=1
 pkgdesc='git worktrees + tmux windows for zero-friction parallel dev (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source=("LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-arm64.tar.gz")
 sha256sums=('7a87de55d7cb84a5f017db6da9a58e4a7bba563253e9a821a384bb2900fccdf3')
-sha256sums_x86_64=('b7bea005b56c91745480d727f39cdf8a14bc1aaf6ca0f9474f1e84d9c7682554')
-sha256sums_aarch64=('1b52e24edcea5c6f5a52ca9a9022c42b3acdb9693a928ffe1f8fff4ab05c760c')
+sha256sums_x86_64=('723188028dae85648f0cc9c687d0ddfa4fb2ac94dc913b9c4cd23d22a03766c0')
+sha256sums_aarch64=('300caf13714e938943ff71ba5f8078098fc818207834df69fb4ca0170a0b5042')
 
 build() {
   for sh in bash zsh fish; do
