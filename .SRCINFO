@@ -1,7 +1,7 @@
 pkgbase = yaabsa-bin
 	pkgdesc = Unofficial feature rich, responsive, modern client for Audiobookshelf
-	pkgver = 1.14.1
-	pkgrel = 3
+	pkgver = 1.15.0
+	pkgrel = 1
 	url = https://github.com/Vito0912/yaabsa
 	install = yaabsa.install
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = yaabsa-bin
 	options = !libtool
 	options = !staticlibs
 	options = !emptydirs
-	source_x86_64 = yaabsa-bin-1.14.1-x86_64.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.14.1/linux-deb-x86_64-yaabsa_v1.14.1_amd64.deb
-	sha256sums_x86_64 = c4a8e36f50d7a263b7782a4f889e3e8f89aa1b8f2e2c50ba1319c3f690c72e11
-	source_aarch64 = yaabsa-bin-1.14.1-aarch64.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.14.1/linux-deb-aarch64-yaabsa_v1.14.1_arm64.deb
-	sha256sums_aarch64 = 43fa167afeb05d962d4746bbe60bcedbc52088dbe1ba488d763d8f455717119b
+	source_x86_64 = yaabsa-bin-1.15.0-x86_64.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.15.0/linux-deb-x86_64-yaabsa_v1.15.0_amd64.deb
+	sha256sums_x86_64 = 93ab3f6e9704ad9cafe692d38e6ffce25e4bcaffdd19d87510092b6a0fda2b2a
+	source_aarch64 = yaabsa-bin-1.15.0-aarch64.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.15.0/linux-deb-aarch64-yaabsa_v1.15.0_arm64.deb
+	sha256sums_aarch64 = c9b4664748eaa6833557be2657b152b943437faea9454c51af6c3a3703ce822f
 
 pkgname = yaabsa-bin

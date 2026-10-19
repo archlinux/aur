@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=yaabsa-bin
-pkgver=1.14.1
-pkgrel=3
+pkgver=1.15.0
+pkgrel=1
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vito0912/yaabsa"
@@ -30,5 +30,5 @@ package() {
   install -dm755 "${pkgdir}/usr/bin/"
 }
 
-sha256sums_x86_64=('c4a8e36f50d7a263b7782a4f889e3e8f89aa1b8f2e2c50ba1319c3f690c72e11')
-sha256sums_aarch64=('43fa167afeb05d962d4746bbe60bcedbc52088dbe1ba488d763d8f455717119b')
+sha256sums_x86_64=('93ab3f6e9704ad9cafe692d38e6ffce25e4bcaffdd19d87510092b6a0fda2b2a')
+sha256sums_aarch64=('c9b4664748eaa6833557be2657b152b943437faea9454c51af6c3a3703ce822f')
