@@ -1,0 +1,32 @@
+pkgbase = akyuu
+	pkgdesc = Anime list tracker with media player and web browser detection
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ligneo/akyuu
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-svg
+	depends = systemd-libs
+	depends = hicolor-icon-theme
+	source = akyuu::git+https://github.com/ligneo/akyuu.git#commit=df4452622ed5b40d18888ef46c27cd0f8d8e9a79
+	source = akyuu-anime-relations::git+https://github.com/erengy/anime-relations.git#commit=51aa60e27f75baf95f522ed8abebf08e35b6d5b8
+	source = akyuu-anisthesia::git+https://github.com/ligneo/anisthesia.git#commit=38c1472785d58797ca9717108a6b687820965a02
+	source = akyuu-anitomy::git+https://github.com/ligneo/anitomy.git#commit=dbe7169aaf3a4b3f2a4af40dd156f6e91811df2f
+	source = akyuu-nstd::git+https://github.com/erengy/nstd.git#commit=a8c5ff1bf46b1dfd7a2d98f2516bdeb81942c55a
+	source = akyuu-semaver::git+https://github.com/erengy/semaver.git#commit=8775c316a8ebd204cf322eadc778459b99e8d49f
+	source = akyuu-utf8proc::git+https://github.com/JuliaStrings/utf8proc.git#commit=e5e799221b45bbb90f5fdc5c69b6b8dfbf017e78
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = akyuu
