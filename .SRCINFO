@@ -15,6 +15,6 @@ pkgbase = mootool-next-bin
 	source = mootool-next.sh
 	sha256sums = 685f48cd43f3843eb68f912925911a92cbf31ad452180ca8dfd41d9c55d7ada9
 	sha256sums = 91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = mootool-next-bin
