@@ -1,14 +1,14 @@
 # Maintainer: Aaron Roque Fonseca <https://github.com/aaronroquefonseca>
 # TEMPLATE for AUR `linux-trackpad-driver-bin` (prebuilt stable binaries).
 #
-# DO NOT publish this file directly. Placeholders 0.1.1 / f9f56a899ed9af92764bb837ce02caa636d9cdca8221a46ec5c4673798b6503a /
-# 46cda7ac0a3143e489ad2572d122d87f78748940d4653cfd3071169a141a3039 are filled by packaging/arch/render-aur.sh once tag vX.Y.Z
+# DO NOT publish this file directly. Placeholders 0.1.2 / 46d0507de93975c09ef6b0db9d59af1151f747116bd0ef94b292067809fbac37 /
+# 5746977c78574b7f2b14cd80082b1f6e85ffe7c518448c9bfc892ef2b9c8f205 are filled by packaging/arch/render-aur.sh once tag vX.Y.Z
 # exists and both per-arch release tarball digests are known. Each arch uses
 # its own release asset; publishing SKIP for immutable release archives is
 # forbidden. See packaging/arch/README.md for the contract.
 
 pkgname=linux-trackpad-driver-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=2
 pkgdesc="Extensible userspace Linux driver for enhanced trackpad functionality, currently supporting Apple Magic Trackpad 2 — prebuilt binary"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ backup=('etc/linux-trackpad-driver/config.toml')
 install=ltd.install
 source_x86_64=("https://github.com/aaronroquefonseca/linux-trackpad-driver/releases/download/v$pkgver/linux-trackpad-driver-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/aaronroquefonseca/linux-trackpad-driver/releases/download/v$pkgver/linux-trackpad-driver-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('f9f56a899ed9af92764bb837ce02caa636d9cdca8221a46ec5c4673798b6503a')
-sha256sums_aarch64=('46cda7ac0a3143e489ad2572d122d87f78748940d4653cfd3071169a141a3039')
+sha256sums_x86_64=('46d0507de93975c09ef6b0db9d59af1151f747116bd0ef94b292067809fbac37')
+sha256sums_aarch64=('5746977c78574b7f2b14cd80082b1f6e85ffe7c518448c9bfc892ef2b9c8f205')
 
 package() {
   cd "linux-trackpad-driver-v${pkgver}-${CARCH}-unknown-linux-gnu"

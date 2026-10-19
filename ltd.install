@@ -1,19 +1,23 @@
 # ltd.install — shared install scriptlets for linux-trackpad-driver{,-bin,-git}.
 # Policy: never enable or start the daemon on install (admin opts in with
 # `systemctl enable --now linux-trackpad-driver.service`, same as debian/).
-# Only reloads udev/systemd so hotplug works immediately after upgrade.
+# Activation contract (finding #14): installed-but-stopped (socket absent)
+# is off, so this scriptlet must never touch trackpad hardware. Only
+# reloads udev/systemd; it deliberately does NOT `udevadm trigger
+# --action=add` (that would queue reconnect one-shots at install time).
+# Background one-shots without a live daemon are inactive no-ops anyway;
+# the admin replugs or enables the service to bring the device up.
 # Kept POSIX sh, quoted, `|| true` guarded so failures never break transactions.
 
 post_install() {
   udevadm control --reload-rules >/dev/null 2>&1 || true
-  udevadm trigger --subsystem-match=hidraw --action=add >/dev/null 2>&1 || true
   systemctl daemon-reload >/dev/null 2>&1 || true
   cat <<'EOF'
 linux-trackpad-driver installed.
 Enable the daemon: sudo systemctl enable --now linux-trackpad-driver.service
 Config: /etc/linux-trackpad-driver/config.toml (preserved on upgrade/reinstall)
-Manual re-init: sudo ltd resume
-Hotplug reconnect is automatic via udev + linux-trackpad-driver-reconnect@.service.
+Manual re-init while stopped: sudo ltd resume -f (or: sudo ltd reconnect /dev/hidrawN -f)
+Hotplug reconnect is automatic via udev + linux-trackpad-driver-reconnect@.service once the main service runs.
 EOF
   if [ -f /etc/linux-trackpad-driver/config.toml.pacsave ]; then
     echo "Variant switch parked previous config at /etc/linux-trackpad-driver/config.toml.pacsave; restore with: sudo cp /etc/linux-trackpad-driver/config.toml.pacsave /etc/linux-trackpad-driver/config.toml && sudo systemctl restart linux-trackpad-driver.service"
