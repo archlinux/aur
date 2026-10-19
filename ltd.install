@@ -15,6 +15,9 @@ Config: /etc/linux-trackpad-driver/config.toml (preserved on upgrade/reinstall)
 Manual re-init: sudo ltd resume
 Hotplug reconnect is automatic via udev + linux-trackpad-driver-reconnect@.service.
 EOF
+  if [ -f /etc/linux-trackpad-driver/config.toml.pacsave ]; then
+    echo "Variant switch parked previous config at /etc/linux-trackpad-driver/config.toml.pacsave; restore with: sudo cp /etc/linux-trackpad-driver/config.toml.pacsave /etc/linux-trackpad-driver/config.toml && sudo systemctl restart linux-trackpad-driver.service"
+  fi
 }
 
 post_upgrade() {
