@@ -1,6 +1,6 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=5
 pkgdesc='HorneroOS SDDM greeter theme (Argentina footage, offline)'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('hornero-greeter-media-base: Argentina video pack')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#tag=v1.0.3")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=179a99bc637f0c9bc615c30bee3f926975da77ba")
 sha256sums=('SKIP')
 
 package() {
@@ -29,6 +29,12 @@ package() {
   for f in theme.conf metadata.desktop background.jpg; do
     install -Dm644 "$src/$f" "${dest}$f"
   done
+  # Golden-hour and night have licensed local still fallbacks. Video remains
+  # an optional offline media pack; these compact images ship with the theme.
+  install -Dm644 "$src/media/stills/ar-ba-nocturno.jpg" \
+    "${dest}media/stills/ar-ba-nocturno.jpg"
+  install -Dm644 "$src/media/stills/ar-er-el-palmar-golden-hour.jpg" \
+    "${dest}media/stills/ar-er-el-palmar-golden-hour.jpg"
   cp -a "$src/components" "$dest"
   # Runtime video catalog (generated from media/catalog.json, committed):
   # entries resolve clips under media/base/ relative to the theme root.

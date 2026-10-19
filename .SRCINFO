@@ -1,6 +1,6 @@
 pkgbase = hornero-greeter
 	pkgdesc = HorneroOS SDDM greeter theme (Argentina footage, offline)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 5
 	url = https://github.com/HorneroOS/greeter
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = hornero-greeter
 	depends = gst-plugins-good
 	depends = ttf-rubik-vf
 	optdepends = hornero-greeter-media-base: Argentina video pack
-	source = hornero-greeter::git+https://github.com/HorneroOS/greeter.git#tag=v1.0.3
+	source = hornero-greeter::git+https://github.com/HorneroOS/greeter.git#commit=179a99bc637f0c9bc615c30bee3f926975da77ba
 	sha256sums = SKIP
 
 pkgname = hornero-greeter
