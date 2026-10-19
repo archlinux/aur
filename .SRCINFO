@@ -1,7 +1,7 @@
 pkgbase = ratiomaster.net-bin
 	pkgdesc = Fake the upload and download a BitTorrent tracker sees, without a client (prebuilt)
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NikolayIT/RatioMaster.NET
 	arch = x86_64
 	arch = aarch64
