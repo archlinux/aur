@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="bentopdf"
-pkgver=2.8.9
+pkgver=2.8.10
 pkgrel=1
 pkgdesc="A powerful, privacy-first, client-side PDF toolkit that is self hostable and allows you to manipulate, edit, merge, and process PDF files directly in your browser."
 arch=("any")
@@ -13,7 +13,7 @@ optdepends=("caddy: for serving bentopdf"
             "nginx: for serving bentopdf"
             "traefik: for serving bentopdf")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e8bd1013f90908180a0bcf47d7e3742228e27fd033e803caba3aafa453aa4967')
+sha256sums=('88876c75a16539630df01e3e9030185b2b94e50e9075c440fac969b5249352d0')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
