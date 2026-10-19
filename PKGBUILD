@@ -23,9 +23,9 @@ source_x86_64=(
 source_aarch64=(
     "resonance-$pkgver-arm64.deb::https://github.com/db-mobile/resonance/releases/download/v$pkgver/resonance_${pkgver}_arm64.deb"
 )
-sha256sums=('0784d6829814fbad4b9a5d9ecca3f140a7db3e924248c3550e9f3e9dd959c6df')
-sha256sums_x86_64=('9fc91c95010328fa80d0a5b3f476788c5fb10212188aa26d000ce735156216d3')
-sha256sums_aarch64=('40a0af300356d3dd1e351d181f60da9819e99f4e662a01fade4924eb46ae6356')
+sha256sums=('aab76e41f228137048adc97102816004a2bb3f164cfe9769cc37ecdae1ad1e0d')
+sha256sums_x86_64=('bc1566a308b5c7682caba1885f4224068c17852360e8411be064d06aab3ebe05')
+sha256sums_aarch64=('2f60393f227582b3c99386afc3749836b77e56a675986e973348bd067caa2ccf')
 
 package() {
     # Detect architecture-specific .deb filename
