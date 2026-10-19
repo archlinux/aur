@@ -5,7 +5,7 @@
 
 _pkgname=dislocker
 pkgname=dislocker-patched
-pkgver=0.7.3.r85.g0706462
+pkgver=0.7.3.r91.g6d8be24
 pkgrel=1
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes. May include patches from Issues and PRs from official Aorimn/dislocker. Added aarch64."
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,9 +17,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 optdepends=('ntfs-3g: NTFS file system support')
 source=(
-  'git+https://github.com/Aorimn/dislocker.git#commit=0706462db88efe8df88150e4c3e4332b808f4581'
+  'git+https://github.com/Aorimn/dislocker.git#commit=6d8be248896fceb728e9aa5c6da64fca246c3a31'
 )
-sha512sums=('49d4761e07e79ba83efb9dddedbfe335a5e25889b83a3a8f202fd85d362261f2caaf778265f051685ce804133c20dc8ece1a07166afd1f832ac1f1a588acf75b')
+sha512sums=('fd5bee749ee4fd140763be05592a21cb4c2129d5124f2f24e70ec0253cd06f795a40e4ead44cd5dd1f6daf7f162e579f2c1d522fab359fc170ce11cc5f0fba8c')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -37,6 +37,10 @@ build() {
   #sed -i 's/^#include "mbedtls\/config.h"/#include "mbedtls\/mbedtls_config.h"/;' include/dislocker/ssl_bindings.h
   #sed -i 's/^#    define SHA256(input, len, output)         mbedtls_sha256_ret(input, len, output, 0)/#    define SHA256(input, len, output)         mbedtls_sha256(input, len, output, 0)/' include/dislocker/ssl_bindings.h
   make
+}
+
+check() {
+  ctest --test-dir "$srcdir/${_pkgname}" --output-on-failure
 }
 
 package() {
