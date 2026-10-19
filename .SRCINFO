@@ -1,6 +1,6 @@
 pkgbase = heft-git
 	pkgdesc = Read-only Linux TUI for application-weight process accounting (git)
-	pkgver = 0.12.4.r0.gf44e3af
+	pkgver = 0.12.5.r0.ga40d74c
 	pkgrel = 1
 	url = https://github.com/Rethunk-Tech/heft
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = heft-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	provides = heft=0.12.4.r0.gf44e3af
+	provides = heft=0.12.5.r0.ga40d74c
 	conflicts = heft
 	options = !strip
 	options = !debug
