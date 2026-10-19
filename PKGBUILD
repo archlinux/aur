@@ -4,7 +4,7 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 _binaryname=ToDesk
-pkgver=4.9.6.0
+pkgver=4.9.7.0
 pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ source_x86_64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-amd64.deb")
 source_aarch64=("https://dl.todesk.com/linux/${_pkgname}-v4.8.5.1-arm64.deb")
 source_armv7h=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-armv7l.deb")
 sha256sums=('402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b')
-sha256sums_x86_64=('b7e2a0894996ee4e34fcb3ddfb39692c72943c05b133a73af49f48043d7dac16')
+sha256sums_x86_64=('e6aee6f7fecd67a9bcec00b763afa2e2b663c5b9b9375db9d60a9081c09acf4b')
 sha256sums_aarch64=('0c3a78f52df7b2d7877f05cb0ed9a112607be5976e09c01527cacfe3fb8dc2fc')
 
 _install() {
@@ -38,10 +38,13 @@ _install() {
 }
 
 build() {
-  mkdir -p ${srcdir}/build
+  mkdir -p "${srcdir}/build"
 
-  [ -f "${srcdir}/data.tar.xz"  ] && tar -xf ${srcdir}/data.tar.xz -C ${srcdir}/build 
-  [ -f "${srcdir}/data.tar.zst"  ] && tar -xf ${srcdir}/data.tar.zst -C ${srcdir}/build 
+  # 4.9.7.0 起上游把 data.tar.zst 换成了 data.tar.xz，这里不再写死压缩格式
+  local _data
+  for _data in "${srcdir}"/data.tar.*; do
+    tar -xf "${_data}" -C "${srcdir}/build"
+  done
 }
 
 package() {
