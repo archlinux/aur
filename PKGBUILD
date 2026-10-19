@@ -8,7 +8,7 @@
 
 _pack=femoctave
 pkgname=octave-$_pack
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="A simple FEM package for solving scalar problems in one or two space dimensions"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=$pkgname.install
 _archive=v.$pkgver.tar.gz
 source=("https://github.com/AndreasStahel/FEMoctave/archive/refs/tags/$_archive")
 noextract=("$_archive")
-sha256sums=('2f22d25206a296870b02d0b32ae8f9173eaf3e612860a74ce7da2b11029e208b')
+sha256sums=('94e9076ec46a524d3941649ccbb4069409319cd83b3ce8c2f5a187c6555caa6d')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
