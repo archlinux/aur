@@ -3,7 +3,7 @@ _sourceName="HyperHeadset"
 
 pkgname="hyper-headset-git"
 pkgver=1.10.2.r1.g71c3067
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
 arch=('x86_64')
 url="https://github.com/LennardKittner/HyperHeadset"
@@ -43,7 +43,7 @@ build() {
     export CARGO_TARGET_DIR=target
     export CFLAGS="${CFLAGS//-flto=auto/}"
     export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
-    cargo build --frozen --release --bin hyper_headset --bin hyper_headset_cli
+    cargo build --frozen --release --bin hyper_headset --bin hyper_headset_cli --all-features
 }
 
 check() {
