@@ -2,7 +2,7 @@
 
 pkgauthor="hcgatewood"
 pkgname="vis-cli"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="🔬 Visualize fuzzy tabular data without leaving the terminal"
 
@@ -22,7 +22,7 @@ depends=('python' 'python-click' 'python-dateutil' 'python-dateparser' 'python-h
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz"
         "fix_warning.patch")
-sha256sums=('e25cf4b6cf7878d16d0a56e5f5a717ce2d3248f953fc966be73f2091440f0440'
+sha256sums=('0d219783d680c4e4d6076e6aa10bc98d6f3ad36936bf8d616466c60353a18ab3'
             'f56b2a0f75f997f223dd54fd777ce52aab3627bbc60b4a725c9863bdc295b42d')
 
 
