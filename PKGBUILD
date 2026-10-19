@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.9.8
+pkgver=1.9.9
 _electronversion=40
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration."
@@ -27,7 +27,8 @@ source=(
 sha256sums=('6d1e027eeb458331f1dc2522f6b1c7551ed87001e82ddcdcf78a1286b706911d'
             'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -41,7 +42,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -51,24 +51,25 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    local _app_dir="$(_get_app_dir)"
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Audio/AudioVideo/g
-    " "${_app_dir}/${pkgname%-bin}.desktop"
-    find "${_app_dir}/resources/" -type d -exec chmod 755 {} +
-    find "${_app_dir}/resources/app" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
-    ln -sf "/usr/bin/ffprobe" "${_app_dir}/resources/app/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
-    ln -sf "/usr/bin/yt-dlp" "${_app_dir}/resources/bin/yt-dlp_linux"
-    rm -rf "${_app_dir}/resources/app/node_modules/ffprobe-static/bin/"{darwin,linux/ia32}
+    " "$(_get_app_dir)/${pkgname%-bin}.desktop"
+    find "$(_get_app_dir)/resources/" -type d -exec chmod 755 {} +
+    find "$(_get_app_dir)/resources/app" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    ln -sf "/usr/bin/ffmpeg" "$(_get_app_dir)/resources/app/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "$(_get_app_dir)/resources/app/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
+    ln -sf "/usr/bin/yt-dlp" "$(_get_app_dir)/resources/bin/yt-dlp_linux"
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${_app_dir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
