@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-gui10
-pkgver=10.1.0
+pkgver=10.1.1
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -34,7 +34,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('43089a424c2e71038676710cdb3c9f71fcf4f788aeb426be36de102f541585b4')
+sha256sums=('cd315b50c2080a112d6d75c9df6b7e7dfcffe7ddd27f186084075a2dc17414f4')
 
 prepare() {
   cd "${_pkgbase}-${pkgname}_${pkgver}"
