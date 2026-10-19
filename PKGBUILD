@@ -1,11 +1,11 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cnmplayer-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, lyrics support. (Prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/professor-lee/CNMPlayer"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('alsa-lib' 'chafa' 'glib2' 'openssl' 'pipewire')
 optdepends=(
   'ttf-nerd-fonts-symbols: For icons and spectrum visualizer'
@@ -14,18 +14,19 @@ optdepends=(
 provides=("cnmplayer=${pkgver}")
 conflicts=('cnmplayer' 'cnmplayer-git')
 
-# release 资产按架构分别下载：tarball 内为平铺的 cnmplayer + LICENSE（无顶层目录）。
-# 资产名用的是 amd64/aarch64，与 CARCH 的 x86_64/aarch64 不同，故 URL 里直接写死
-# 资产名而不引用 CARCH —— makepkg 只会取当前架构对应的 source_* 数组。
+# Release tarballs contain flat cnmplayer, LICENSE and THIRD_PARTY_NOTICES.md files.
+# Asset names use amd64/aarch64, whereas Arch uses x86_64/aarch64.
+# makepkg selects only the source_* array for the current architecture.
 _url_base="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${_url_base}/CNMPlayer_v${pkgver}_linux_amd64.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${_url_base}/CNMPlayer_v${pkgver}_linux_aarch64.tar.xz")
 
-# pkgver 与下面两行 sha256 由 GitHub Actions 的 aur_sync.sh 每版自动重算
-sha256sums_x86_64=('cbcf5bb054ca31313b850637a00a5e4314a5f99dc0a9ca8b4cd608bedf540544')
-sha256sums_aarch64=('ddd1c114a7cb6c72296cbeb23280b5f8cbfe65a251a3988ecd96d482c4f102bc')
+# The release sync renders the version and asset checksums into this template.
+sha256sums_x86_64=('441fb06afa9525b8120e8155a687ff50ccfbc98e4600d73d2c2d00eec9d5e3c2')
+sha256sums_aarch64=('3908edd5ac46c84d0e0f50f7b4cce37ad6727d1f07e0d1dccd7182347a562799')
 
 package() {
   install -Dm755 "cnmplayer" "${pkgdir}/usr/bin/cnmplayer"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "THIRD_PARTY_NOTICES.md" "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.md"
 }
