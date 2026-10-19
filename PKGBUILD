@@ -6,7 +6,7 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2"
         "sidplay-rom-paths.patch")
-sha256sums=('22e58a8a2c3f3caa9687434353618c822963cc8846cd239de36d4e8e5bd166a6'
+sha256sums=('c295c65bdaae71775b4fa9eb206799c627b383c4f45444d637c714196daf8077'
             '5740193b5fc5844a8144bdfbba32f67eee5701bc0e4dc94cea00b6680516322e')
 
 prepare() {
