@@ -29,6 +29,6 @@ pkgbase = kernel-panic-bin
 	sha256sums = 87ba1150c3ecf72958ce4017352081d1ed93affa3703eb8805960cd0b5f82fee
 	sha256sums = 3ae4de57c34e4917bc5baf93a5973f7785703c0abd85c036dc0bce8646f5ce39
 	source_x86_64 = kernel-panic-4.0.0-linux-x86_64-player.tar.gz::https://github.com/mafuzyk/kernel-panic/releases/download/v4.0.0/kernel-panic-4.0.0-linux-x86_64-player.tar.gz
-	sha256sums_x86_64 = 713cb0146e59d475b100d7f7cc62187dc84987c2a2b60a9420e85b465b76e287
+	sha256sums_x86_64 = 3f4a5c9ead6765ee5853fd60d5c15f57889a7e6856c8be8fc6b5e5fc655025bf
 
 pkgname = kernel-panic-bin
