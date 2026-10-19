@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_appname}-bin
 pkgdesc="Fast, beautiful diffs in a single local binary"
 
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('115beb0aa42114290a061b95424126602a4608c5d11eda297a0b4311e1b6a7db')
-sha256sums_aarch64=('a5a84c0f8d4fe5577e9eb6306b6cfd0456e01dd007bd65f6653b3124dd9393da')
+sha256sums_x86_64=('46f2f93f2bd98727128ed6df62052f667e5ddd70e82e57723fa8c6dbbf8597bb')
+sha256sums_aarch64=('510a25bb9e29a8b04aecd7ed7ec6777262e582e9235c7ed490d08e920f550110')
 
 
 package() {
