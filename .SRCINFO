@@ -1,0 +1,16 @@
+pkgbase = typepper
+	pkgdesc = A spicy little typing game for your terminal and browser
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://typepper.com/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = typepper-0.2.0.tar.gz::https://github.com/leodiegues/typepper/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = typepper
