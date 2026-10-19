@@ -1,6 +1,6 @@
 pkgbase = zfs-dkms-staging-compat-git
 	pkgdesc = Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel.
-	pkgver = 2.4.4.r0.g71a9f95786
+	pkgver = 2.4.4.r10.geb011f2aff
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = any
@@ -16,11 +16,21 @@ pkgbase = zfs-dkms-staging-compat-git
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	source = 69-zfs-dkms-check.hook
 	source = zfs-dkms-check
+	source = linux730-bvec_iter-bi_bvec_done_is_now_bi_offset.patch::https://github.com/openzfs/zfs/commit/d966f3dd8c2e4eb04e52227b7a87f5828924f89c.patch?full_index=1
+	source = linux730-cpu_feature_enabled_instead_of_static_cpu_has.patch
+	source = linux730-iops_create_dropped_flag_arg.patch
+	source = linux730-make_host_filesystem_available_to_kernel_threads.patch::https://github.com/openzfs/zfs/commit/cd3699d308e1b37dcdd0d5a9a8c3624deb5fc3e9.patch?full_index=1
+	source = linux730-META.patch
 	source = zoned_uid-additive-least-privilege-authorization.patch::https://github.com/darkbasic/zfs/commit/caf10661b301bf6d3b83bd33cf6c37500ddec0e3.patch?full_index=1
 	sha256sums = SKIP
 	sha256sums = 8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5
 	sha256sums = 6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875
 	sha256sums = 59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f
+	sha256sums = cc895dc1cf0784e0657b46d2168f16571b9620b0e60d259a1524d4195b6443fb
+	sha256sums = b5c570f6a86dc01a4782ba52edcec333e1af6cd53409a3e18cb06a1009742b15
+	sha256sums = 7b4b9a348299f7dd84a75ff7af1175c4784beb62b13b889693c9fcde1b107b33
+	sha256sums = 74fbf3d3517285881f1b9c7c64d906869346157cf8c306866761fffdaaa748a0
+	sha256sums = 2ff43599e2b1e5536b79fbff274a7c67cfa1181afd189d7208d10505bf8c4c76
 	sha256sums = 63c0327c7a8a312a1c7fd6db4c4218829edc3639ec1717e789e5145520705673
 
 pkgname = zfs-dkms-staging-compat-git

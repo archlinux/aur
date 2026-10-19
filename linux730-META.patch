@@ -1,0 +1,36 @@
+From 5288e53653e6abbfeee241de1e67f55b5c89dd6d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Niccol=C3=B2=20Belli?= <niccolo.belli@linuxsystems.it>
+Date: Mon, 19 Oct 2026 08:26:33 +0000
+Subject: [PATCH 4/4] Linux 7.3 compat: META
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bump Linux-Maximum to 7.3.
+
+Upstream has not done this yet (master is still at 7.2), so this only
+documents what the compat patches in this package already provide.  It
+matters for two consumers of META: zfs-dkms-check would otherwise warn
+that 7.3 is unsupported on every install, and ZFS_META_KVER_MAX ends up
+in zfs_config.h.  DKMS builds themselves are unaffected either way,
+since the PKGBUILD passes --enable-linux-experimental.
+
+Signed-off-by: Niccolò Belli <niccolo.belli@linuxsystems.it>
+---
+ META | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/META b/META
+index 8133bf1e3..2ae2e5777 100644
+--- a/META
++++ b/META
+@@ -6,5 +6,5 @@ Release:       1
+ Release-Tags:  relext
+ License:       CDDL
+ Author:        OpenZFS
+-Linux-Maximum: 7.2
++Linux-Maximum: 7.3
+ Linux-Minimum: 4.18
+-- 
+2.55.0
+
