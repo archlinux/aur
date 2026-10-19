@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=GalTransl
+GenericName=Game Translation Tool
+GenericName[zh_CN]=游戏翻译工具
+Comment=Automated translation solution for visual novels supporting GPT/Claude/Deepseek/Sakura
+Comment[zh_CN]=支持GPT/Claude/Deepseek/Sakura等大语言模型的Galgame自动化翻译解决方案
+Exec=gal-transl
+Icon=gal-transl
+Terminal=false
+Categories=Utility;
+Keywords=Galgame;Visual Novel;Translation;LLM;
+StartupNotify=true
+StartupWMClass=Gal-transl
