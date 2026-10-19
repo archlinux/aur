@@ -1,8 +1,8 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: vaishnav <vaishnav.sabari.girish@gmail.com>
 
 pkgname=typepper
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A spicy little typing game for your terminal and browser'
 arch=('x86_64' 'aarch64')
 url='https://typepper.com/'

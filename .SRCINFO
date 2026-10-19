@@ -1,7 +1,7 @@
 pkgbase = typepper
 	pkgdesc = A spicy little typing game for your terminal and browser
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typepper.com/
 	arch = x86_64
 	arch = aarch64
