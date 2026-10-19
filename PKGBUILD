@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pi-harness-bin
 _pkgname=Pi-Harness
-pkgver=2.0.0
+pkgver=2.2.1
 _electronversion=44
 pkgrel=1
 pkgdesc="Operational Superset Harness and Desktop Control Plane for Pi Coding Agent."
@@ -15,6 +15,8 @@ depends=(
     'nodejs'
     'npm'
     'pi-coding-agent'
+    'python'
+    'python-packaging'
 )
 makedepends=(
     'asar'
@@ -23,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('294abe652853e5d1a6f8ec6ed1423693dbba89f5076ab20de117c93cd47b1747'
+sha256sums=('537f1253a608e92564b1766f4cf4cb76b1798ae8ed61115c0211774a6fb02f26'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
