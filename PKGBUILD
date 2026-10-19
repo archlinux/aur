@@ -2,7 +2,7 @@
 
 pkgbase=shelly-cli
 pkgname=('shelly-cli' 'shelly-cli-flatpak-backend')
-pkgver='3.1.8r4957.gb758758'
+pkgver='3.1.8r4961.gd94d4e3'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
