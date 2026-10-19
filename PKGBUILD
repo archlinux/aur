@@ -1,7 +1,7 @@
 #Maintainer: Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="crengine-ng"
 pkgver="0.9.14.1"
-pkgrel="1"
+pkgrel="2"
 conflicts=('crengine-ng-git')
 pkgdesc="crengine-ng is cross-platform library designed to implement text viewers and e-book readers"
 arch=('x86_64')
@@ -17,7 +17,7 @@ build() {
   local cmake_options=(
     -B build
     -S $pkgname-$pkgver
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
     -D BUILD_SHARED_LIBS=ON
