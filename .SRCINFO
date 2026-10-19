@@ -1,0 +1,30 @@
+pkgbase = anime-manager-git
+	pkgdesc = Scan an anime collection, play episodes in mpv and track what you have watched (git)
+	pkgver = 0.12.4.r1.g6ccc544
+	pkgrel = 1
+	url = https://github.com/quinnjr/anime-manager
+	arch = x86_64
+	license = MIT
+	license = CC-BY-3.0
+	makedepends = git
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = mpv
+	provides = anime-manager
+	conflicts = anime-manager
+	options = !lto
+	source = anime-manager::git+https://github.com/quinnjr/anime-manager.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = anime-manager-git
