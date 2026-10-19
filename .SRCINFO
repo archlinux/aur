@@ -1,7 +1,7 @@
 pkgbase = swiftpoint-x1-control-panel
 	pkgdesc = Control panel for Swiftpoint devices
 	pkgver = 3.1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://support.swiftpoint.com/portal/en/kb/articles/swiftpoint-x1-control-panel-download
 	install = Swiftpoint_X1_Control_Panel.install
 	arch = x86_64

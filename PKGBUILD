@@ -2,7 +2,7 @@
 
 pkgname=swiftpoint-x1-control-panel
 pkgver=3.1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Control panel for Swiftpoint devices"
 arch=('x86_64')
 url="https://support.swiftpoint.com/portal/en/kb/articles/swiftpoint-x1-control-panel-download"
@@ -40,6 +40,7 @@ package() {
 	cp -r plugins "$pkgdir/usr/lib/swiftpoint/plugins"
 	cp -r translations "$pkgdir/usr/lib/swiftpoint/translations"
 	cp -r profiles "$pkgdir/usr/lib/swiftpoint/profiles"
+	cp -r fw "$pkgdir/usr/lib/swiftpoint/fw"
 
 	# Create a wrapper script to ensure libaries load correctly
 	install -Dm755 /dev/stdin "$pkgdir/usr/bin/swiftpoint-x1-control-panel" <<EOF
@@ -59,6 +60,8 @@ EOF
 		"$pkgdir/usr/share/applications/com.swiftpoint.X1_Control_Panel.desktop"
 	install -Dm644 "Swiftpoint X1 Control Panel Licence.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "THIRD-PARTY-NOTICES.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-NOTICES"
 
 	#The custom service was removed as of package ver 3.1.4.0-2. If you want autostart, copy the .desktop file
 	#To your ~/.config/autostart directory.
