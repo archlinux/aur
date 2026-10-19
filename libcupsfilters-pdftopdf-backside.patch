@@ -1,0 +1,33 @@
+--- a/cupsfilters/pdftopdf.c
++++ b/cupsfilters/pdftopdf.c
+@@ -3039,8 +3039,28 @@
+   cf_filter_options_t *filter_options;
+   xform_document_t file;
+ 
+-  //not confirmed
+-  const char         *sheet_back = "rotated";
++  // Determine how the back sides of duplex sheets have to be transformed.
++  // IPP Everywhere/AirPrint printers do the duplex imposition themselves and
++  // report "normal" (URF "DM1"), so no back side rotation may be added here -
++  // otherwise the back side comes out upside down.  Only printers which ask
++  // for a rotated/flipped/manual-tumble back side need the transform.
++  const char         *sheet_back = "normal";
++  int                backside;
++
++  if ((backside = cfGetBackSideOrientation(data)) >= 0)
++    switch (backside & 7)
++    {
++      case CF_BACKSIDE_FLIPPED :
++	  sheet_back = "flipped";
++	  break;
++      case CF_BACKSIDE_ROTATED :
++	  sheet_back = "rotated";
++	  break;
++      case CF_BACKSIDE_MANUAL_TUMBLE :
++	  sheet_back = "manual-tumble";
++	  break;
++    }
++
+   unsigned           pdf_pages;
+ 
+   memset(&file, 0, sizeof(file));

@@ -1,0 +1,30 @@
+pkgbase = libcupsfilters-duplexfix
+	pkgdesc = OpenPrinting CUPS Filters - contains all the code of the filters of the former cups-filters package as library functions
+	pkgver = 2.2.1.r32.gd49e9284
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/libcupsfilters
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	checkdepends = ttf-dejavu
+	makedepends = ghostscript
+	makedepends = git
+	depends = libcups
+	depends = libexif
+	depends = pdfio
+	depends = libjxl
+	depends = poppler
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libtiff
+	depends = lcms2
+	depends = fontconfig
+	depends = glibc
+	depends = dbus
+	provides = libcupsfilters
+	conflicts = libcupsfilters
+	source = git+https://github.com/OpenPrinting/libcupsfilters#commit=d49e92848060d6d9d2e95679a115a8da5102f1de
+	source = libcupsfilters-pdftopdf-backside.patch
+	sha256sums = 4136e3d0bc8ef8e881818cf62be67d2486361025200627c22233a7a40b8ec989
+	sha256sums = 825ab878dd4dd4806478705b44a687fcee4a41353f75f65033d9f126335cf514
+
+pkgname = libcupsfilters-duplexfix
