@@ -1,0 +1,29 @@
+DevList: build the devicelist.json path inside main()
+
+kUSBDescriptorPath was a global initialized from tacConfigRoot(), which reads
+kAppName, a global in another translation unit (ConsoleApplicationEnhancements.cpp).
+C++ does not order static initialization across translation units, so kAppName
+could still be empty, the installed path was missed, and DevList fell back to
+../../../../configurations/devicelist.json.
+
+diff --git a/src/applications/devlist/main.cpp b/src/applications/devlist/main.cpp
+index 41aa6b1..7b451f8 100644
+--- a/src/applications/devlist/main.cpp
++++ b/src/applications/devlist/main.cpp
+@@ -13,12 +13,14 @@
+ #include <iostream>
+ #include <iomanip>
+ 
+-const QString kUSBDescriptorPath = tacConfigRoot() + "devicelist.json";
+-
+ int main(int argc, char *argv[])
+ {
+ 	QCoreApplication a(argc, argv);
+ 
++	// Built here rather than as a global: tacConfigRoot() reads globals from
++	// QCommonConsole that may not be initialized yet during static init
++	const QString kUSBDescriptorPath = tacConfigRoot() + "devicelist.json";
++
+ 	USBDescriptors usbDescriptors;
+ 
+ 	if (usbDescriptors.load(kUSBDescriptorPath) == true)

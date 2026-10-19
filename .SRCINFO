@@ -1,7 +1,7 @@
 pkgbase = qcom-test-automation-controller-git
 	pkgdesc = Qualcomm Test Automation Controller (QTAC) - control Qualcomm devices through a debug board
 	pkgver = 6.9.0.r0.g954c804
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qualcomm/qcom-test-automation-controller
 	install = qcom-test-automation-controller-git.install
 	arch = x86_64
@@ -28,8 +28,10 @@ pkgbase = qcom-test-automation-controller-git
 	source = git+https://github.com/qualcomm/qcom-test-automation-controller.git
 	source = https://web.archive.org/web/20250822044524/https://ftdichip.com/wp-content/uploads/2025/03/libftd2xx-linux-x86_64-1.4.33.tgz
 	source = LICENSE.FTDI
+	source = devlist-static-init.patch
 	sha256sums = SKIP
 	sha256sums = e260a4594a313583b87bf230c79cec9d46f11db6dcfd7c7d4f963279703214d3
 	sha256sums = 4b080f7fa03bc5a2448b0d7dfcf9e7f2837ca89b008d0c474bd5044441b4a5fa
+	sha256sums = bf2099ddc56b5505dca549163a8a5f447b6545118491f50d21fda82beadfc384
 
 pkgname = qcom-test-automation-controller-git

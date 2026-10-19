@@ -3,7 +3,7 @@
 _pkgname=qcom-test-automation-controller
 pkgname=$_pkgname-git
 pkgver=6.9.0.r0.g954c804
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualcomm Test Automation Controller (QTAC) - control Qualcomm devices through a debug board"
 arch=('x86_64')
 url="https://github.com/qualcomm/qcom-test-automation-controller"
@@ -31,11 +31,13 @@ install="$pkgname.install"
 _ftdi=libftd2xx-linux-x86_64-1.4.33.tgz
 source=("git+$url.git"
         "https://web.archive.org/web/20250822044524/https://ftdichip.com/wp-content/uploads/2025/03/$_ftdi"
-        LICENSE.FTDI)
+        LICENSE.FTDI
+        devlist-static-init.patch)
 noextract=("$_ftdi")
 sha256sums=('SKIP'
             'e260a4594a313583b87bf230c79cec9d46f11db6dcfd7c7d4f963279703214d3'
-            '4b080f7fa03bc5a2448b0d7dfcf9e7f2837ca89b008d0c474bd5044441b4a5fa')
+            '4b080f7fa03bc5a2448b0d7dfcf9e7f2837ca89b008d0c474bd5044441b4a5fa'
+            'bf2099ddc56b5505dca549163a8a5f447b6545118491f50d21fda82beadfc384')
 
 # Paths are hardcoded in the sources (TACDev.py, ApplicationEnhancements.cpp, ...)
 _prefix=/opt/qcom/QTAC
@@ -55,6 +57,12 @@ prepare() {
     return 1
   fi
   ln -sf "$srcdir/$_ftdi" third-party/
+
+  # DevList misses the installed devicelist.json (static init order bug);
+  # skipped automatically once upstream moves the global into main()
+  if grep -q '^const QString kUSBDescriptorPath' src/applications/devlist/main.cpp; then
+    patch -Np1 -i "$srcdir/devlist-static-init.patch"
+  fi
 
   # Arch has no 'dialout' group; serial devices belong to 'uucp'
   sed -i 's/GROUP="dialout"/GROUP="uucp"/' udev-rules/*.rules
