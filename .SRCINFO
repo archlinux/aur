@@ -1,6 +1,6 @@
 pkgbase = python-slycot-mkl
 	pkgdesc = A wrapper for the SLICOT control and systems library. Built against Intel MKL
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/python-control/slycot
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = python-slycot-mkl
 	makedepends = gcc-fortran
 	makedepends = intel-oneapi-mkl
 	depends = python-numpy
-	provides = python-slycot=0.7.0
+	provides = python-slycot=0.7.1
 	conflicts = python-slycot
-	source = https://pypi.org/packages/source/s/slycot/slycot-0.7.0.tar.gz
-	sha512sums = 174bf0a0285b66f24b7b20d5dbe24a22aa82015324195a8ef392bc55583876e260d570f46d76b234c97d2b04090f2df8b38b81d31b830bc1954ff392e2f5f629
+	source = https://pypi.org/packages/source/s/slycot/slycot-0.7.1.tar.gz
+	sha512sums = 083dbc7510b7e0c8dd7918220b06632149aaaae80584373f3907f23a829f87b4e8bd97fbdd3de74804054d2206f4386997a6eec406d27b102251ec69639f9b63
 
 pkgname = python-slycot-mkl
