@@ -1,7 +1,7 @@
 # Maintainer: Ulises Jeremias Cornejo Fandos <ulisescf.24@gmail.com>
 # Native V binary from GitHub Releases (canonical). Not a Python wheel.
 pkgname=agent-toolkit-bin
-pkgver=1.47.2
+pkgver=1.47.3
 pkgrel=1
 pkgdesc="Composable AI agent toolkit — native V CLI (prebuilt GitHub Release binary)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('agent-toolkit')
 options=('!strip')
 source_x86_64=("agent-toolkit::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v${pkgver}/agent-toolkit-linux-x86_64")
 source_aarch64=("agent-toolkit::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v${pkgver}/agent-toolkit-linux-arm64")
-sha256sums_x86_64=('dba7bab0c3e9f9232a7d08de27c21178f909e75bb3d4bbf7cd5f87e963021989')
-sha256sums_aarch64=('21ea75226d3f015daa13197ea04314349229e2c548c8a990cc1d1c2a906d4bb7')
+sha256sums_x86_64=('c20e8022f648c8dc93882bb8d14a2b35eb2c15945e69e4e6a821424265461cde')
+sha256sums_aarch64=('61e7a5d2b815e0885d038a2f4fb5e5c411ec158216952ff45736830c07e1a8c1')
 
 package() {
     install -Dm755 "${srcdir}/agent-toolkit" "${pkgdir}/usr/bin/agent-toolkit"
