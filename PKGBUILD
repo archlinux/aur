@@ -1,7 +1,7 @@
 # Maintainer: Dan Griffiths <me at evertiro dot com>
 
 pkgname=astra-atlas
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Fast, lightweight Material Design 3 file manager'
 arch=('x86_64')
@@ -46,7 +46,7 @@ conflicts=(
 	'astra-atlas-git'
 )
 sha256sums=(
-	'dc178e86b2fa94891452d7faa85a93e5d58a98d6731d083225d724cf6d53485f'
+	'42cffffab212cd6cf9fbc28bbaea24f56bf7283846aa3ec28708902050598604'
 )
 build()
 {
@@ -59,6 +59,6 @@ package()
 {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	DESTDIR="${pkgdir}" cmake --install build
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
