@@ -25,7 +25,7 @@ checkdepends=('python-pytest'
               'openssh')
 conflicts=('simple_backup')
 provides=('simple_backup')
-source=("git+$url.git?signed#branch=master")
+source=("git+$url.git?signed#branch=main")
 validpgpkeys=('7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514')
 sha256sums=('SKIP')
 
