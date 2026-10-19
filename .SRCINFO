@@ -21,12 +21,12 @@ pkgbase = akyuu
 	source = akyuu-nstd::git+https://github.com/erengy/nstd.git#commit=a8c5ff1bf46b1dfd7a2d98f2516bdeb81942c55a
 	source = akyuu-semaver::git+https://github.com/erengy/semaver.git#commit=8775c316a8ebd204cf322eadc778459b99e8d49f
 	source = akyuu-utf8proc::git+https://github.com/JuliaStrings/utf8proc.git#commit=e5e799221b45bbb90f5fdc5c69b6b8dfbf017e78
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 856fa2d3f0e4a1f777115c0cb5a904053e3c0b4376ae2dae26c206f7b0f2803d
+	sha256sums = 9b69c2d94ae28c12647e3d1ebb2c238ff9ae16626483656f2fe8d6747a742f78
+	sha256sums = 73f2598e65349876713d382e904cf263013dc844e07f049c82164b0b49b89bd0
+	sha256sums = 240b177000691eba2be682cfd232e3c14b4e8e70af50bba269a5ed4b13bd77ff
+	sha256sums = 7b7a92b750c5940ec8cc500a964526bcedad6e7a6d51ca6f877f767e5178017f
+	sha256sums = 116831f7cc655779914254c1ca65c31dc9356f79ed2a5042c5604d4df022fddb
+	sha256sums = 97f05a7ce1fd416c896fde94a12b658a27635bbebc3d60c4129db19f6bf53ac1
 
 pkgname = akyuu
