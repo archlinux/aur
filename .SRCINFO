@@ -1,6 +1,6 @@
 pkgbase = pg_sift
 	pkgdesc = CTID-bitmap full-text search index with BM25 ranking for PostgreSQL
-	pkgver = 2.0.3
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/brauliobo/pg_sift
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = pg_sift
 	makedepends = gcc
 	depends = postgresql>=18
 	depends = postgresql<19
-	source = pg_sift::git+https://github.com/brauliobo/pg_sift.git#tag=v2.0.3
+	depends = lz4
+	depends = zstd
+	source = pg_sift::git+https://github.com/brauliobo/pg_sift.git#tag=v3.0.0
 	sha256sums = SKIP
 
 pkgname = pg_sift
