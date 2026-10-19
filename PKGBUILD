@@ -1,7 +1,7 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mlfbdplugin"
 pkgver="2.0.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="MyLibrary plugin for fbd format files creation"
 arch=('x86_64')
 provides=("${pkgname}")
@@ -16,7 +16,7 @@ build() {
    local cmake_options=(
         -B build
         -S $pkgname-$pkgver
-        -W no-dev
+        -W no-author
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_INSTALL_PREFIX=/usr
     )

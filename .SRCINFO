@@ -1,7 +1,7 @@
 pkgbase = mlfbdplugin
 	pkgdesc = MyLibrary plugin for fbd format files creation
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProfessorNavigator/mlfbdplugin
 	arch = x86_64
 	license = GPL-3.0-only
