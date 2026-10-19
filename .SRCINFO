@@ -1,11 +1,17 @@
 pkgbase = purl-bin
-	pkgdesc = A curl-esque CLI for making HTTP requests that require payment. Designed for humans and agents alike.
-	pkgver = 0.1.0
+	pkgdesc = A curl-esque CLI for making HTTP requests that require payment
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/stripe/purl
 	arch = x86_64
 	license = MIT
-	source_x86_64 = purl::https://github.com/stripe/purl/releases/download/v0.1.0/purl-linux-amd64
-	sha256sums_x86_64 = 21476a9bd0d455b86b75cd5292e6f28bf91694d94832c7b5059ea3f55881eea4
+	depends = glibc
+	depends = libgcc
+	source = README-0.2.12.md::https://github.com/stripe/purl/raw/v0.2.12/README.md
+	source = LICENSE-0.2.12::https://github.com/stripe/purl/raw/v0.2.12/LICENSE
+	sha256sums = 55f2e071ea2d7416ec27128f0b8aa7613da37f5eaec496c69fdd3e854a0f42f6
+	sha256sums = 2a961afed23e7b11ee7505b86e60162448f4264e98559eb5071f285e78441ac7
+	source_x86_64 = purl-bin-0.2.12::https://github.com/stripe/purl/releases/download/v0.2.12/purl-linux-amd64
+	sha256sums_x86_64 = 89fac86fdbb7864340c2440764a269a8afa1b29547aec556ab695940191b9366
 
 pkgname = purl-bin

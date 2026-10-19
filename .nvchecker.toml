@@ -1,0 +1,4 @@
+[purl-bin]
+source = "git"
+git = "https://github.com/stripe/purl.git"
+prefix = "v"
