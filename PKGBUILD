@@ -1,7 +1,7 @@
-# Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
+# Maintainer: Javier Castro <dev@javiercastro.xyz>
 _pkgname=affine
 pkgname=python-${_pkgname}
-pkgver=2.4.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Python package for matrices describing affine transformation of the plane"
 url='https://github.com/rasterio/affine'
@@ -15,7 +15,17 @@ optdepends=()
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/a/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a24d818d6a836c131976d22f8c27b8d3ca32d0af64c1d8d29deb7bafa4da1eea')
+sha256sums=('e1b3c38c5d4d3ef5024a182a6d1bf1e0c51ab221825781c741aeb4d0c079a7e2')
+
+prepare() {
+    cd "$srcdir/${_pkgname}-$pkgver"
+
+    # Allow building with `flit_core` 4; Upstream git branch for `affine`
+    # already allows `flit_core` <5, but release version 3.0.1 does not;
+    # presumably this will get fixed in the next release. But until then, this
+    # temporary fix gets the job done.
+    sed -i 's/flit_core >=3.11,<4/flit_core >=3.11,<5/' pyproject.toml
+}
 
 build() {
     cd "$srcdir/${_pkgname}-$pkgver"
