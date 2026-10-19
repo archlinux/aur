@@ -1,0 +1,9 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -21,6 +21,5 @@ color-eyre = "0.6"
+ # release optimizations: must be used for builds
+ [profile.release]
+ strip = true
+-lto = true
+ codegen-units = 1
+ panic = "abort"
