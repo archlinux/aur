@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=flyline
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A Bash plugin to replace readline for a modern line editing experience"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash' 'glibc' 'libgcc')
 makedepends=('cargo')
 install="$pkgname.install"
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7d0af846bbfaa48f4ebe3c78f24135f3a6298990cd98903c39601be89e510b71')
+sha256sums=('3da007554eed359ef8a0e05875ac9a3c5d251dbce8f50cdc0e864e72a54b3199')
 
 # c.f. https://gitlab.archlinux.org/archlinux/rfcs/-/merge_requests/69
 _srcenv() {
