@@ -2,7 +2,7 @@
 _appname=silence_speedup
 pkgname="${_appname//_/-}-bin"
 _pkgname=Silence-SpeedUp
-pkgver=3.0.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Shorten lectures, interviews and tutorials by speeding up or cutting the silences. Flutter desktop app with FFmpeg built in."
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6e134b04b8d3106a93abac00e8418739234567d73ead6ce8c711d914d4bc4b03'
+sha256sums=('89ab2d96b893967e3d5613f8087359632f931d1258406876351ca7f8709bd2df'
             'f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5')
 _get_app_dir() {
 	find "${srcdir}" -type d -name "data" -printf '%h\n' 2>/dev/null \
