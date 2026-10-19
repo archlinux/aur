@@ -1,7 +1,7 @@
 pkgbase = lenovo-legion-linux-toolkit-release
 	pkgdesc = Lenovo Legion Linux Toolkit - for Lenovo Legion laptops
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/1.5.4
 	install = default.install
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = lenovo-legion-linux-toolkit-release
 	depends = pkgconf
 	depends = rust
 	source = lenovo-legion-linux-toolkit-release-1.5.4::git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/1.5.4
-	sha256sums = ca20c9ed416488b1ad331db4cd5f8ebc2ff54d5cf533c2852ce06bffe0ae48ad
+	sha256sums = SKIP
 
 pkgname = lenovo-legion-linux-toolkit-release

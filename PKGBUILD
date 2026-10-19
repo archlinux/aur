@@ -2,14 +2,14 @@
 pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
 url="git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/${pkgver}"
 license=('GPL3')
 depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-charts" "protobuf" "cuda" "pkgconf" "rust")
 source=("$pkgname-$pkgver::$url")
-sha256sums=('ca20c9ed416488b1ad331db4cd5f8ebc2ff54d5cf533c2852ce06bffe0ae48ad')
+sha256sums=('SKIP')
 install=default.install
 qmake=qmake6
 
