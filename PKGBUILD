@@ -1,7 +1,7 @@
 #Maintainer: Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="stirlitz"
 pkgver="1.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Text and files encryption program"
 arch=('x86_64')
 provides=("${pkgname}")
@@ -16,7 +16,7 @@ build() {
    local cmake_options=(
     -B build
     -S $pkgname-$pkgver
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CREATE_HTML_DOCS=ON
