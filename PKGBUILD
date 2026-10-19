@@ -3,14 +3,14 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>, Martin Merget <mergetmartin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=26.0.1.RC5.release.26.0.1.0
+pkgver=26.2.0.RC2.release.26.2.0.RC2.0
 pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
 license=('custom:fs2_open')
 depends=('libjpeg.so' 'libpng' 'libtheora' 'libvorbis' 'lua51' 'mesa' 'openal' 'sdl' 'libxkbcommon')
-makedepends=('git' 'cmake' 'freetype2' 'doxygen' 'ffmpeg')
+makedepends=('git' 'cmake' 'freetype2' 'doxygen' 'ffmpeg' 'vulkan-headers')
 conflicts=('fs2_open')
 provides=('fs2_open')
 install=fs2_open-git.install
