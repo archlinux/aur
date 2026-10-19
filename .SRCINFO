@@ -1,6 +1,6 @@
 pkgbase = surrealdb-studio-bin
 	pkgdesc = SurrealDB Studio, the new official app of SurrealDB
-	pkgver = 1.7.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://studio.surrealdb.com
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = surrealdb-studio-bin
 	depends = hicolor-icon-theme
 	optdepends = surrealdb: non-sandboxed SurrealDB instance
 	provides = surrealdb-studio
-	source_x86_64 = https://download.surrealdb.com/studio/v1.7.2/surrealdb-studio_1.7.2_amd64.deb
-	sha256sums_x86_64 = 73f03f894bfa67535983074e55ec28bf4e59b6899d289b1829e08c171e15130e
-	source_aarch64 = https://download.surrealdb.com/studio/v1.7.2/surrealdb-studio_1.7.2_arm64.deb
-	sha256sums_aarch64 = 8552b6e3a0c5897ee57250e42881c8d7f5704e14198663de60f3fa03a0fb18ca
+	source_x86_64 = https://download.surrealdb.com/studio/v1.10.0/surrealdb-studio_1.10.0_amd64.deb
+	sha256sums_x86_64 = 29aea1586611df94311f5f35cfa5ab78beef8382654c2add6c81a08efc48faf0
+	source_aarch64 = https://download.surrealdb.com/studio/v1.10.0/surrealdb-studio_1.10.0_arm64.deb
+	sha256sums_aarch64 = 73055f4ba7651294c322b91c6d0f5d76b2ae7c4af383496dc0ef2f3c9a24cd78
 
 pkgname = surrealdb-studio-bin
