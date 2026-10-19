@@ -1,14 +1,13 @@
 pkgname=libuncso2
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Backend for UnCSO2"
 url="https://github.com/harmonytf/libuncso2"
 license=(GPL-3.0-only)
 arch=(any)
 makedepends=(cmake)
-_commit=5dd3a97fcbfd14247c6d9f7d76bd18e4fbbacdc5
 _dirname="$pkgname"
-source=("$_dirname::git+$url.git#commit=$_commit")
+source=("$_dirname::git+$url.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 prepare() {
