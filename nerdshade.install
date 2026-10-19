@@ -1,0 +1,7 @@
+post_install() {
+    cat <<EOF
+:: nerdshade ships a systemd user unit but does not enable it automatically.
+   To run it now and on every boot:
+       systemctl --user enable --now nerdshade.service
+EOF
+}
