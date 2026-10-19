@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile_patched
+index 0a614e7..3ffabe7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ .DEFAULT_GOAL := all
+ CC := cc
+ CFLAGS := -Wall -W -O2 -Iinclude
+-LDFLAGS := -lm
++LDFLAGS := -lm -Wl,-z,relro -Wl,-z,now
+ 
+ SRC_DIR := src
+ OBJ_DIR := obj
+

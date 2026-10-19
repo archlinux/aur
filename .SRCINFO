@@ -1,0 +1,18 @@
+pkgbase = cq-csv-git
+	pkgdesc = High-Performance SQL Query Engine for CSV Files (bleeding-edge version)
+	pkgver = 1.2.0.r7.g80cacbb
+	pkgrel = 1
+	url = https://github.com/baldimario/cq
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	conflicts = cq-csv
+	source = git+https://github.com/baldimario/cq#branch=main
+	source = LICENSE
+	source = force_full_relro.patch
+	sha256sums = SKIP
+	sha256sums = ba6588e9527848b8eb57c0c09727cd3e981167fef72ad53575b5c8bacd8a39b7
+	sha256sums = 1a0cd057b465a2f53e127b253506ef3fa79014677a4cb02d26d6481022fc9f22
+
+pkgname = cq-csv-git
