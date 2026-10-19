@@ -17,7 +17,7 @@
 # Maintainer: Zhou Qiankang <wszqkzqk@qq.com>
 
 pkgname=chem-grub
-pkgver=r15.20261019.db7926b
+pkgver=r16.20261020.02ea6ac
 pkgrel=1
 pkgdesc='Chemistry-inspired GRUB2 theme with native localization and CJK support'
 arch=('any')

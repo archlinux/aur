@@ -1,6 +1,6 @@
 pkgbase = chem-grub
 	pkgdesc = Chemistry-inspired GRUB2 theme with native localization and CJK support
-	pkgver = r15.20261019.db7926b
+	pkgver = r16.20261020.02ea6ac
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/chem-grub
 	arch = any
