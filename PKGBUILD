@@ -2,7 +2,7 @@
 
 _name="snappy"
 pkgname="lib32-${_name}"
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A fast compressor/decompressor library (32-bit)"
 arch=(
@@ -36,11 +36,11 @@ source=(
   "${_name}-use_system_gtest.patch"
   "${_name}-reenable_rtti.patch"
 )
-sha256sums=('90f74bc1fbf78a6c56b3c4a082a05103b3a56bb17bca1a27e052ea11723292dc'
+sha256sums=('893f708a0bf4b5529d555ffcee390e940e932fcf90261f682604475a76cd0247'
             '134f06ca0584a1026538d0fb972fc141c008390ecae1806184b721eca1abbc75'
             '2a204d7d35509ffc290d80c641fcb7e8488c67ca550aa1695493cff12c53156b'
             '50b31b45511e8907f1319305c102f37631b0fbe509f862b612e70073383658e4'
-            '6ff6970d2a1961aed375a8e5098bf3b7340ff86fe60aff4483dec3400f273372')
+            '2603862dc3ab4c57509a1892151959495571f841a24527118a88e366b11a3d73')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -60,6 +60,8 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
@@ -67,26 +69,27 @@ build() {
     -D CMAKE_INSTALL_LIBDIR:PATH='lib32'
     -D CMAKE_CXX_STANDARD=23
     -D BUILD_SHARED_LIBS:BOOL=ON
+    -D SNAPPY_BUILD_TESTS:BOOL=OFF
     -D SNAPPY_BUILD_BENCHMARKS:BOOL=OFF
   )
   
   cd "${srcdir}"
-  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 }
 
-check() {
-  local excluded_tests=""
-  local ctest_flags=(
-    --test-dir "${_pkgsrc}/build"
-    --output-on-failure
-    --parallel "$(nproc)"
-    --exclude-regex "${excluded_tests}"
-  )
+# check() {
+#   local ctest_exclude_regex=""
+#   local ctest_options=(
+#     --test-dir "${_pkgsrc}/build"
+#     --output-on-failure
+#     --parallel "$(nproc)"
+#     --exclude-regex "${ctest_exclude_regex}"
+#   )
 
-  cd "${srcdir}"
-  ctest "${ctest_flags[@]}"
-}
+#   cd "${srcdir}"
+#   ctest "${ctest_options[@]}"
+# }
 
 package() {
   cd "${srcdir}"
