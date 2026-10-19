@@ -1,0 +1,15 @@
+--- a/scripts/pdf-export.mjs
++++ b/scripts/pdf-export.mjs
+@@ -14,10 +14,10 @@
+   } else if (platform === 'darwin') {
+     candidates.push('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/Applications/Chromium.app/Contents/MacOS/Chromium');
+   } else {
+-    candidates.push('/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome');
++    candidates.push('/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/brave', '/usr/bin/brave-browser', '/usr/bin/brave-browser-stable');
+   }
+   const found = candidates.find(candidate => candidate && existsSync(candidate));
+-  if (!found) throw new Error('No se encontró el navegador PDF. Ejecuta bun run tauri:prepare.');
++  if (!found) throw new Error('Para exportar PDF instala Chromium, Google Chrome o Brave, o configura LIBRIA_PDF_BROWSER con la ruta de un navegador compatible.');
+   return found;
+ }
+ 
