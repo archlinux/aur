@@ -15,7 +15,7 @@ optdepends=(
     'wl-clipboard: Clipboard support on Wayland'
     'xclip: Clipboard support on X11'
 )
-makedepends=('cargo' 'rust' 'git' 'pkgconf')
+makedepends=('cargo' 'rust' 'git' 'pkgconf' 'cmake')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kristoferlund/ostt/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e3a794867deb1ea810d92d7f181e21bf9a290ea5136680f77a2fe46273a8faa1')

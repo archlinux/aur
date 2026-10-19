@@ -10,6 +10,7 @@ pkgbase = ostt
 	makedepends = rust
 	makedepends = git
 	makedepends = pkgconf
+	makedepends = cmake
 	depends = alsa-lib
 	depends = openssl
 	depends = ffmpeg
