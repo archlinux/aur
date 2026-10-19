@@ -64,7 +64,7 @@ check() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo test --frozen --all-features
+  cargo test --frozen --release --all-features
 }
 
 package() {
