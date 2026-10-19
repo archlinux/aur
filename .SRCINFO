@@ -1,6 +1,6 @@
 pkgbase = kastrup-rs-bin
 	pkgdesc = Unified messaging hub written in Rust
-	pkgver = 0.3.80
+	pkgver = 0.3.81
 	pkgrel = 1
 	url = https://github.com/isene/kastrup
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = kastrup-rs-bin
 	provides = kastrup
 	conflicts = kastrup-rs
 	options = !strip
-	source = README-0.3.80.md::https://raw.githubusercontent.com/isene/kastrup/v0.3.80/README.md
+	source = README-0.3.81.md::https://raw.githubusercontent.com/isene/kastrup/v0.3.81/README.md
 	sha256sums = 6cc6d67151f5ce7f62353eb364f47ca671213732740fedf233408b734ab10f35
-	source_x86_64 = kastrup-x86_64-0.3.80::https://github.com/isene/kastrup/releases/download/v0.3.80/kastrup-linux-x86_64
-	sha256sums_x86_64 = 1d336f074a7da06cfc11dd12232b47c57c77eb7118281fbbb9b0bccc118255e6
-	source_aarch64 = kastrup-aarch64-0.3.80::https://github.com/isene/kastrup/releases/download/v0.3.80/kastrup-linux-aarch64
-	sha256sums_aarch64 = baa8b14689c446342a150b2d64226e2a98b5da3ec41d5ce666a3fe4ce85adc32
+	source_x86_64 = kastrup-x86_64-0.3.81::https://github.com/isene/kastrup/releases/download/v0.3.81/kastrup-linux-x86_64
+	sha256sums_x86_64 = 3e5b4986da9dddc2dce00796ae0167070627643e8c99494d4a1a0e339619016d
+	source_aarch64 = kastrup-aarch64-0.3.81::https://github.com/isene/kastrup/releases/download/v0.3.81/kastrup-linux-aarch64
+	sha256sums_aarch64 = 2806f7b7796e83274304a65e1ce78f3ce3d285ac7d7ba47ec8fa949a89e94c26
 
 pkgname = kastrup-rs-bin
