@@ -5,12 +5,12 @@ pkgname=freetube
 _pkgname=FreeTube
 pkgver=0.25.3
 _electron=electron42
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('AGPL-3.0-or-later')
 depends=($_electron)
-makedepends=('pnpm')
+makedepends=('pnpm' 'nodejs>=20.0.0')
 url=https://freetubeapp.io
 source=(https://github.com/FreeTubeApp/FreeTube/archive/v$pkgver-beta.tar.gz
         freetube.desktop
