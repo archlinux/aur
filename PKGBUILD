@@ -1,7 +1,7 @@
 # Maintainer: Bruno Ancona <brunoanconasala at gmail dot com>
 
 pkgname=eternalmodmanager
-pkgver=4.2.2
+pkgver=4.2.4
 pkgrel=1
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "EternalModManager"
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -31,5 +32,5 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/io.github.brunoanc.eternalmodmanager.desktop"
     install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/io.github.brunoanc.eternalmodmanager.appdata.xml"
     install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/io.github.brunoanc.eternalmodmanager.png"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/io.github.brunoanc.eternalmodmanager" LICENSE
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname/" LICENSE
 }
