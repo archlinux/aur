@@ -1,6 +1,6 @@
 pkgbase = sysclet-git
 	pkgdesc = Generate ANSI text headers from TheDraw TDF fonts
-	pkgver = r6.gc8d8fb9
+	pkgver = r7.gfcce737
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/sysclet
 	arch = x86_64
