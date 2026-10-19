@@ -1,6 +1,6 @@
 # Maintainer: FatDawlf <zazaguichi@outlook.com>
 pkgname=lupa-git
-pkgver=r72.ed68ddd
+pkgver=r75.bfda211
 pkgrel=1
 pkgdesc="A minimalist launcher built on gtk4-layer-shell."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ options=(!debug !lto)
 
 depends=(
 	'gtk4' 'gtk4-layer-shell' 'libadwaita'
-	'xdg-utils' 'localsearch' 'lua'
+	'xdg-utils' 'localsearch' 'luajit'
 )
 
 source=("$pkgname::git+$url")
