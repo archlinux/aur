@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=wgo
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=(${url}/archive/v${pkgver}/$pkgname-$pkgver.tar.gz)
-sha256sums=('4d70bdd313600df64927928dc767c1e1ba980dcbb0da1cf03e9fa8bf4fdc5d55')
+sha256sums=('71fe38b652f2a9f89f8ba18dbdd5381b35b8f5d3f7dd7eb5c382908a69ff6f93')
 
 prepare() {
   cd $pkgname-$pkgver
