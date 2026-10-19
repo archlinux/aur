@@ -1,6 +1,6 @@
 pkgbase = ember-p2p-bin
 	pkgdesc = Modern eMule KAD client built with Rust and Tauri
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/untaimed18/Ember-P2P
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = ember-p2p-bin
 	optdepends = xdg-utils: open folders and links from the app
 	provides = ember-p2p
 	conflicts = ember-p2p
-	noextract = Ember_1.7.3_amd64.deb
+	noextract = Ember_1.7.4_amd64.deb
 	options = !debug
-	source = LICENSE-1.7.3::https://raw.githubusercontent.com/untaimed18/Ember-P2P/v1.7.3/LICENSE
+	source = LICENSE-1.7.4::https://raw.githubusercontent.com/untaimed18/Ember-P2P/v1.7.4/LICENSE
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = https://github.com/untaimed18/Ember-P2P/releases/download/v1.7.3/Ember_1.7.3_amd64.deb
-	sha256sums_x86_64 = 228d2220a7df162b3a7767bc9a74c711f55fea15993e98a2397bf94c5acb741a
+	source_x86_64 = https://github.com/untaimed18/Ember-P2P/releases/download/v1.7.4/Ember_1.7.4_amd64.deb
+	sha256sums_x86_64 = 49f34d600d6edf37345917d40f1cbc83e0506736b970a6a1596b19a0c99a1cd6
 
 pkgname = ember-p2p-bin
