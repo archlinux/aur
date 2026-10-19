@@ -1,0 +1,25 @@
+pkgbase = gnotes-gtk
+	pkgdesc = Native GNOME client for Gnotes, self-hosted Markdown notes with live shared editing
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/justinmdickey/gnotes
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gstreamer
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libgcc
+	depends = pango
+	options = !lto
+	source = gnotes-1.8.0.tar.gz::https://github.com/justinmdickey/gnotes/archive/v1.8.0.tar.gz
+	sha256sums = 44172ac8dc6a6f5a61794d050534e9dfdd5acfc034574a6120ad3d1effbffb0f
+
+pkgname = gnotes-gtk
