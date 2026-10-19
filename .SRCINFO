@@ -1,6 +1,6 @@
 pkgbase = dimcode-bin
 	pkgdesc = AI coding agent CLI and terminal coding assistant
-	pkgver = 0.5.18
+	pkgver = 0.5.20
 	pkgrel = 1
 	url = https://github.com/arcships/dimcode
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = dimcode-bin
 	options = !strip
 	options = !debug
 	options = !lto
-	source = LICENSE-0.5.18::https://github.com/arcships/dimcode/releases/download/v0.5.18/LICENSE
+	source = LICENSE-0.5.20::https://github.com/arcships/dimcode/releases/download/v0.5.20/LICENSE
 	sha256sums = 207c5f7b94bab2649590458fb3d54d2c53db886536a8da0ca4207d96eb332f08
-	source_x86_64 = dimcode-0.5.18-linux-x64.tar.gz::https://github.com/arcships/dimcode/releases/download/v0.5.18/dimcode-0.5.18-linux-x64.tar.gz
-	sha256sums_x86_64 = d3e9ce0ac6da4dffd3884c84c80b9fe5385d41835b0f4cde0616c477909e7506
-	source_aarch64 = dimcode-0.5.18-linux-arm64.tar.gz::https://github.com/arcships/dimcode/releases/download/v0.5.18/dimcode-0.5.18-linux-arm64.tar.gz
-	sha256sums_aarch64 = 709d560ef3dab92ea5d57c15047b4ab88971bb728999122fefb08cb78901eb90
+	source_x86_64 = dimcode-0.5.20-linux-x64.tar.gz::https://github.com/arcships/dimcode/releases/download/v0.5.20/dimcode-0.5.20-linux-x64.tar.gz
+	sha256sums_x86_64 = 99b789d6f9f09a57539f1a3ffb9892e2eac302ce47d89ca3edd59b320d97149d
+	source_aarch64 = dimcode-0.5.20-linux-arm64.tar.gz::https://github.com/arcships/dimcode/releases/download/v0.5.20/dimcode-0.5.20-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9e48b1dea4bbf4ed31db0d2f16311ef6671eaa941475be4cd134a4a2007888a3
 
 pkgname = dimcode-bin
