@@ -1,18 +1,19 @@
 pkgbase = diffimg-git
 	pkgdesc = Qt based GUI to diff images
-	pkgver = r64.f4dacb6
+	pkgver = r74.aeb23c2
 	pkgrel = 1
 	url = https://github.com/sandsmark/diffimg
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
+	makedepends = qt5-tools
 	depends = qt5-base
-	depends = qwt
+	depends = qwt-qt5
 	provides = diffimg
 	conflicts = diffimg
-	source = git://github.com/sandsmark/diffimg.git
-	md5sums = SKIP
+	source = git+https://github.com/sandsmark/diffimg.git
+	source = fix-missing-includes.patch
+	sha256sums = SKIP
+	sha256sums = 7a97529d988c064bd39e2f2f7f3205e9e09ee67f82ef18138e15c826d316252c
 
 pkgname = diffimg-git
-

@@ -1,0 +1,13 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index d868e7d..82f3e8f 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -23,6 +23,8 @@
+ #include <QMessageBox>
+ #include <QDesktopWidget>
+ #include <QtCore/QFileInfo>
++#include <QtCore/QTextStream>
++#include <QtCore/QDebug>
+ 
+ #include "DiffImgWindow.h"
+ #include "AppSettings.h"
