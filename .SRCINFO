@@ -1,5 +1,5 @@
 pkgbase = mustang-bin
-	pkgdesc = New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)
+	pkgdesc = New full-featured desktop email, chat and video conference client.
 	pkgver = 0.9.39
 	pkgrel = 1
 	url = https://parula.app/
@@ -12,7 +12,7 @@ pkgbase = mustang-bin
 	source = LICENSE-0.9.39::https://raw.githubusercontent.com/mustang-im/mustang/v0.9.39/LICENSE
 	source = mustang.sh
 	sha256sums = b235d2b5410c8a5f6d176a8dfbf3afaadb7165d27659285d1916fe7e0044aa89
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 	source_aarch64 = mustang-0.9.39-aarch64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.39/mustang-0.9.39-aarch64.pacman
 	sha256sums_aarch64 = 5fc4b78a2e1352966ea720b6e894d137fd0273de7292b430f6db17aebbc3bf20
 	source_x86_64 = mustang-0.9.39-x86_64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.39/mustang-0.9.39.pacman
