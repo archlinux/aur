@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=gnome-shell-extension-emoji-copy
-pkgver=39
+pkgver=40
 pkgrel=1
 pkgdesc="simplify emoji selection and clipboard management"
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(gnome-shell)
 makedepends=(python python-requests zip)
 source=(emoji-copy-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz)
-sha256sums=('5d7e950d3917a9d520370cdffa66ecf0a2e1eaa1b889c0018bd33fa317db97e2')
+sha256sums=('394abc57820191a1d2b41112ce5ae417e8af714cb45fa127f7cc1434975b461b')
 
 build() {
   cd Emoji-Copy-$pkgver
