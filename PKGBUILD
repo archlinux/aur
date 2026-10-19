@@ -1,5 +1,5 @@
 pkgname=ww-manager
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="ww-manager (A Wuthering Waves CLI Manager)"
 arch=('any')
@@ -14,8 +14,8 @@ depends=(
   'python-typing_extensions'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timetetng/wutheringwaves-cli-manager/archive/refs/tags/v2.3.0.tar.gz")
-sha256sums=('ab3fe755d34810de2f135b9638c9e0ed623642c0eb24ab7175e090cebcaa31c1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timetetng/wutheringwaves-cli-manager/archive/refs/tags/v2.3.1.tar.gz")
+sha256sums=('70e285a2a95d3261ee4a45d9f9efaa83ea53ced09003b5ec41855ee65d872833')
 
 build() {
   cd "${srcdir}/wutheringwaves-cli-manager-$pkgver"
