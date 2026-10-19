@@ -1,7 +1,7 @@
 # Maintainer: Limux contributors
 # Contributor: Anton Barchukov <anton@barchukov.com>
 pkgname=limux-bin
-pkgver=0.1.32
+pkgver=0.1.33
 pkgrel=1
 pkgdesc="GPU-accelerated terminal workspace manager for Linux, powered by Ghostty's rendering engine (cmux port)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('limux')
 conflicts=('limux' 'limux-debug')
 options=(!debug !strip)
 source=("limux-${pkgver}.tar.gz::https://github.com/am-will/limux/releases/download/v${pkgver}/limux-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('48a7f5a276fdf138e0a28e1abc1ad0fb4af21e86f252b58792e4fbc1fe887736')
+sha256sums=('6ed67810806789bdc7deadb0f6dc2c5f063173ced1a7cfc6aa5d6475d7cfa6ec')
 
 package() {
     cd "limux-${pkgver}-linux-x86_64"
