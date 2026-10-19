@@ -1,6 +1,6 @@
 pkgbase = friendly
 	pkgdesc = Spotlight-style overlay that rewrites a dictated/typed message in a chosen tone via Claude Code (claude -p), then copies it to the clipboard
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/KannarFr/friendly
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = friendly
 	optdepends = handy: speech-to-text backend for built-in dictation, --dictate (AUR: handy or handy-bin)
 	optdepends = whisper.cpp-git: alternative speech-to-text backend, --stt whisper (AUR; plus a ggml model)
 	optdepends = pipewire-audio: mic recording for --dictate (pw-record; falls back to parecord/arecord)
-	source = friendly-0.2.0.tar.gz::https://github.com/KannarFr/friendly/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 92462b4f6cdd6bf7734a73f6ccdbf2d8396cb9a6fcfaae8d077f25866f0066ce
+	source = friendly-0.3.0.tar.gz::https://github.com/KannarFr/friendly/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = d626520733e9e33183c8e0394b666dbae7cc5c9dfca53c6008a4175823c5668a
 
 pkgname = friendly
