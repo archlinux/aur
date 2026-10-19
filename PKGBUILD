@@ -1,33 +1,26 @@
 # Maintainer: Sebastian Kremiec <sebastian.kremiec at gmail dot com>
-pkgname=gnome-shell-extension-quick-settings-audio-panel
-pkgver=102
+
+_name=quick-settings-audio-panel
+_uuid=$_name@rayzeq.github.io
+
+pkgname=gnome-shell-extension-$_name
+pkgver=106
 pkgrel=1
 pkgdesc='Quick Settings Audio Panel GNOME Extension'
 arch=('any')
 url=https://github.com/Rayzeq/quick-settings-audio-panel
 license=('GPL-3.0-or-later')
-source=("$pkgname-v$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('713ff55f7476baaa3b52de148286bfaab142b17a814dd768e959aa8597f49046')
+source=("v$pkgver.zip::https://github.com/Rayzeq/$_name/releases/download/v$pkgver/$_uuid.shell-extension.zip")
+sha256sums=('ea71844e212938e889c8ecc4ae75a92513def9318e20818a3073c4e9e2546e24')
 depends=('gnome-shell')
 makedepends=('glib2' 'npm')
 
-build() {
-  cd $pkgname-v$pkgver
-
-  make pack
-}
-
 package() {
-  cd $pkgname-v$pkgver
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar xf "v$pkgver.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  _uuid=quick-settings-audio-panel@rayzeq.github.io
-  _extdir=$pkgdir/usr/share/gnome-shell/extensions/$_uuid
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
-  install -d $_extdir
-  unzip dist/$_uuid.shell-extension.zip -d $_extdir
-  sed -i 's/@libpanel/.\/libs\/libpanel/g' $(find $_extdir -type f -name '*.js')
-  glib-compile-schemas $_extdir/schemas
-
-  find $_extdir -type f -exec chmod 644 {} +
-  find $_extdir -type d -exec chmod 755 {} +
+  install -Dm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -r "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
