@@ -1,7 +1,7 @@
 pkgbase = iso-commander-bin
 	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
 	pkgver = 7.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/siyia2/iso-commander
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = iso-commander-bin
 	conflicts = iso-commander
 	source = isocmd::https://github.com/siyia2/iso-commander/releases/download/v7.8.0/isocmd
 	source = isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/tags/v7.8.0/man/isocmd.1
-	md5sums = d812bfdab1d99f5bf93f048242f2ae6c
+	md5sums = 6dd557188543672b2873d3b3e7c25f92
 	md5sums = f4c2577f885166ea6f409f83a605afc8
 
 pkgname = iso-commander-bin
