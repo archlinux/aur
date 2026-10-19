@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=eccodes
 pkgname=python-${_name}
-pkgver=2.49.0
+pkgver=2.50.0
 pkgrel=1
 pkgdesc="Python interface to the ecCodes GRIB/BUFR decoder/encoder"
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=($_name::git+https://github.com/ecmwf/$_name-python.git#tag=$pkgver)
-b2sums=('9674f66facd1c6ab650e6e74da18cb4e04687c248236b47c703a788b35af1261fc7a073429e583fd6f89b0e262e0892f13c9bf330617ed0cfa16cf195bf14a60')
+b2sums=('b5bd3e70b24d3656278a7e1786e607da52916c31f471bc7f3e74498076dc94ad9aaba676b2c081aa6dabf5bef34d059002122e12e3a9bcb6ebee39cddf3b0499')
 
 build() {
     cd $_name
