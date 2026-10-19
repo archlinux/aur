@@ -8,19 +8,22 @@
 #
 # BIN-1711: AUR publication was approved by the board (approval
 # 5f810f99-4954-4611-bc68-cfcbd55c0a54). sha256sums is the real hash of the
-# public v0.3.1 archive. license=unknown until the maintainer declares one
-# (the repo currently has no LICENSE file / SPDX in pyproject).
+# public v0.3.1 archive. License declared AGPL-3.0-or-later by the board
+# (BIN-1711 distribution decision, 2026-10-19); the LICENSE file is shipped
+# alongside the package until the next upstream tag includes it.
 pkgname=moss-language
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The MOSS language: compiler, runtime, and adaptation system (standard-library-only). Companion to the moss application."
 arch=('any')
 url="https://gitlab.com/Bingusfan360/mahoraga-language"
-license=('unknown')
+license=('AGPL-3.0-or-later')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$url/-/archive/v0.3.1/mahoraga-language-v0.3.1.tar.gz")
-sha256sums=('5a8f15202c262b6ba1d2829b355d11db08fd5b9a566de5a2909d9cc6d5ea96d1')
+source=("$url/-/archive/v0.3.1/mahoraga-language-v0.3.1.tar.gz"
+        "LICENSE")
+sha256sums=('5a8f15202c262b6ba1d2829b355d11db08fd5b9a566de5a2909d9cc6d5ea96d1'
+            'SKIP')
 
 build() {
   cd "mahoraga-language-v0.3.1"
@@ -30,4 +33,5 @@ build() {
 package() {
   cd "mahoraga-language-v0.3.1"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
