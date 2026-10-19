@@ -1,6 +1,6 @@
 pkgbase = paseo-desktop-git-bin
-	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-18 @7c7b655)
-	pkgver = 0.12.0.beta.3.r6.g7c7b6555f
+	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-19 @f0acc2c)
+	pkgver = 0.12.0.beta.3.r11.gf0acc2c72
 	pkgrel = 2
 	url = https://paseo.sh
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = paseo-desktop-git-bin
 	depends = expat
 	depends = libstdc++
 	depends = libxfixes
-	provides = paseo=0.12.0.beta.3.r6.g7c7b6555f
+	provides = paseo=0.12.0.beta.3.r11.gf0acc2c72
 	provides = paseo-desktop-git
 	conflicts = paseo
 	conflicts = paseo-bin
@@ -46,8 +46,8 @@ pkgbase = paseo-desktop-git-bin
 	conflicts = paseo-cli-git-bin
 	options = !strip
 	source = Paseo-git-bin.tar.gz::https://github.com/xpufx/xpufx-pkgs/releases/download/arch-x86_64-current/Paseo-0.12.0-beta.3-x64.tar.gz
-	source = icon.png::https://raw.githubusercontent.com/getpaseo/paseo/7c7b6555f17a88cffddf484129cd04ad79704f59/packages/desktop/assets/icon.png
-	sha256sums = 10434486377c34e1da5f74400874cf0382e7cb7c688192db92b5d3e3a5913ca8
+	source = icon.png::https://raw.githubusercontent.com/getpaseo/paseo/f0acc2c72b60c052cf4f9c5099f2a58f2c25a082/packages/desktop/assets/icon.png
+	sha256sums = e835f8030bd4e61fa4d3a6a254edacbd40eaee9916019093e8a91f6cb2bde374
 	sha256sums = 585d202ff6a6e41bcd5c7464a1c4889b78977cea000f7b88ba1f67f3d9fff0bd
 
 pkgname = paseo-desktop-git-bin
