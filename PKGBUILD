@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=2.0.9.r873.g725ab34
+pkgver=2.0.9.r1070.g68e4e77
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -39,7 +39,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -47,13 +47,28 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 --match 'v*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)"
+	set -o pipefail
+	git describe --long --tags --abbrev=7 --match '[0-9]*' --match 'v[0-9]*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+_ensure_local_nvm() {
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
+}
+_get_electron_version() {
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -oE '[0-9]+' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -91,27 +106,12 @@ _set_build_env() {
 			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
 }
-_ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
-}
-_get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -oE '[0-9]+' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	(( _elec_ver == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
-}
 prepare() {
     cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -195,21 +195,19 @@ with open('electron-builder.yml', 'w') as f:
 PYTHON_EOF
     pnpm exec dotenv pnpm run build
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
-    local _app_dir="$(_get_app_dir)"
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
 	case "${CARCH}" in
 		aarch64)	_archrem=x64	;;
 		x86_64)		_archrem=arm	;;
 	esac
-	find "${_app_dir}/resources/app.asar.unpacked" -depth \
+	find "$(_get_app_dir)/resources/app.asar.unpacked" -depth \
 		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
 		-exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     local _arch_name
     case "${CARCH}" in
@@ -224,8 +222,7 @@ package() {
     ln -sf /usr/bin/uv "${_binaries_dir}/uv"
     ln -sf /usr/bin/uvx "${_binaries_dir}/uvx"
     ln -sf /usr/bin/rg "${_binaries_dir}/rg"
-    local _src="$(_get_project_dir)"
-    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_src}/build/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/build/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
