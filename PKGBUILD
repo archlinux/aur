@@ -1,7 +1,7 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=trizbort-qt
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="C++/Qt port of Trizbort, an interactive fiction Mapper"
 arch=("x86_64")
 url="https://jxself.org/trizbort-qt.shtml"
@@ -10,7 +10,7 @@ depends=('qt6-base' 'hicolor-icon-theme')
 makedepends=('cmake')
 provides=("trizbort-qt")
 source=("https://jxself.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("7b66ab351ae037727df8ca133bb95613348e141eeb5645c44915d9df8e081620")
+sha256sums=("65de8340920426cd8db688b245182f94908d0b21d96b5d688688f64b4f92da08")
 
 build() {
   local cmake_options=(
