@@ -1,0 +1,17 @@
+pkgbase = libbgp
+	pkgdesc = A C++ BGP library.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/Nat-Lab/libbgp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	source = libbgp-0.6.3.tar.gz::https://github.com/Nat-Lab/libbgp/archive/refs/tags/0.6.3.tar.gz
+	b2sums = 9207b8e01e6aa91d74ff1b1c4a91b6b8e0121b53a6d65c406a27a83b7b8eb5eaa16587a644b682724e97dde7c5d7f931c47e842d8be79890c669630b38e6f351
+
+pkgname = libbgp
