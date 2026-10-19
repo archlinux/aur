@@ -1,0 +1,4 @@
+[mailcraft]
+source = "git"
+git = "https://github.com/UCS-Care-Group/mailcraft.git"
+prefix = "v"
