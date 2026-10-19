@@ -1,6 +1,6 @@
 pkgbase = ahriman
 	pkgdesc = ArcH linux ReposItory MANager
-	pkgver = 2.22.2
+	pkgver = 2.23.1
 	pkgrel = 1
 	url = https://ahriman.readthedocs.io/
 	arch = any
@@ -18,20 +18,21 @@ pkgbase = ahriman
 	depends = python-inflection
 	depends = python-pyelftools
 	depends = python-requests
-	source = https://github.com/arcan1s/ahriman/releases/download/2.22.2/ahriman-2.22.2.tar.gz
+	depends = python-tree-sitter-bash
+	source = https://github.com/arcan1s/ahriman/releases/download/2.23.1/ahriman-2.23.1.tar.gz
 	source = ahriman.sysusers
 	source = ahriman.tmpfiles
 	source = sudoers.conf
-	sha256sums = ee60bf3f0ccdb379271a90979f6f4be52166991ab960f211a133304b7bc2b0aa
+	sha256sums = d7d3a050f7c6842c6b067427c016329a1ff0797aa70d517e89432db8d1c28749
 	sha256sums = 0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8
 	sha256sums = 720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013
 	sha256sums = 93771f1059a184635ccbec731130db6b2704533df76923f5b0b6a4cf3d0a3f9d
 
 pkgname = ahriman
 	pkgdesc = ArcH linux ReposItory MANager (meta package)
-	depends = ahriman-core=2.22.2
-	depends = ahriman-triggers=2.22.2
-	depends = ahriman-web=2.22.2
+	depends = ahriman-core=2.23.1
+	depends = ahriman-triggers=2.23.1
+	depends = ahriman-web=2.23.1
 
 pkgname = ahriman-core
 	install = ahriman.install
@@ -51,12 +52,12 @@ pkgname = ahriman-core
 
 pkgname = ahriman-triggers
 	pkgdesc = ArcH linux ReposItory MANager, additional extensions
-	depends = ahriman-core=2.22.2
+	depends = ahriman-core=2.23.1
 	backup = etc/ahriman.ini.d/00-triggers.ini
 
 pkgname = ahriman-web
 	pkgdesc = ArcH linux ReposItory MANager, web server
-	depends = ahriman-core=2.22.2
+	depends = ahriman-core=2.23.1
 	depends = python-aiohttp-cors
 	depends = python-aiohttp-jinja2
 	depends = python-aiohttp-sse-git

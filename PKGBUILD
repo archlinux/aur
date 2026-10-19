@@ -2,13 +2,13 @@
 
 pkgbase='ahriman'
 pkgname=('ahriman' 'ahriman-core' 'ahriman-triggers' 'ahriman-web')
-pkgver=2.22.2
+pkgver=2.23.1
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://ahriman.readthedocs.io/"
 license=('GPL-3.0-or-later')
-depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-bcrypt' 'python-filelock' 'python-inflection' 'python-pyelftools' 'python-requests')
+depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-bcrypt' 'python-filelock' 'python-inflection' 'python-pyelftools' 'python-requests' 'python-tree-sitter-bash')
 makedepends=('npm' 'python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("https://github.com/arcan1s/ahriman/releases/download/$pkgver/$pkgbase-$pkgver.tar.gz"
         "$pkgbase.sysusers"
@@ -95,7 +95,7 @@ package_ahriman-web() {
 
     install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/00-web.ini" "$pkgdir/etc/ahriman.ini.d/00-web.ini"
 }
-sha256sums=('ee60bf3f0ccdb379271a90979f6f4be52166991ab960f211a133304b7bc2b0aa'
+sha256sums=('d7d3a050f7c6842c6b067427c016329a1ff0797aa70d517e89432db8d1c28749'
             '0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8'
             '720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013'
             '93771f1059a184635ccbec731130db6b2704533df76923f5b0b6a4cf3d0a3f9d')
