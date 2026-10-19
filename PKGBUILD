@@ -1,5 +1,5 @@
 pkgname=verde-bin
-pkgver=0.1.126
+pkgver=0.1.127
 pkgrel=1
 pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
@@ -13,9 +13,7 @@ depends=(
   'glib2'
   'libglvnd'
   'libsoup3'
-  'libwpe'
-  'wpebackend-fdo'
-  'wpewebkit'
+  'wpewebkit>=2.52'
 )
 optdepends=(
   'codex: local Codex CLI integration'
@@ -30,7 +28,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'c16716e4357df35e5908721abb10f8fc8af221c93565f5ef474d4c80d4520b6b'
+  '8fc69caeb2609ed934b97252cfc37d0c1b9f0426a011dba069c2621e7b4a23cd'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
