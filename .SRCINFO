@@ -1,5 +1,5 @@
 pkgbase = voicenux-bin
-	pkgdesc = Real-time voice changer and soundboard for PipeWire (upstream binary)
+	pkgdesc = VoiceMod for Linux. Real-time voice changer and soundboard for PipeWire (upstream binary)
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/voicenux/voicenux

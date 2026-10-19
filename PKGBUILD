@@ -5,7 +5,7 @@
 pkgname=voicenux-bin
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Real-time voice changer and soundboard for PipeWire (upstream binary)"
+pkgdesc="VoiceMod for Linux. Real-time voice changer and soundboard for PipeWire (upstream binary)"
 arch=('x86_64')
 url="https://github.com/voicenux/voicenux"
 license=('BSD-3-Clause' 'MIT' 'ISC' 'CC0-1.0')
