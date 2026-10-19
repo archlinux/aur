@@ -1,6 +1,6 @@
 pkgbase = msodbcsql17
 	pkgdesc = Microsoft® ODBC Driver 17 for SQL Server®
-	pkgver = 17.10.2.1
+	pkgver = 17.11.1.1
 	pkgrel = 1
 	url = https://techcommunity.microsoft.com/t5/sql-server-blog/bg-p/SQLServer/label-name/SQLServerDrivers
 	install = msodbcsql17.install
@@ -9,9 +9,9 @@ pkgbase = msodbcsql17
 	depends = unixodbc
 	depends = krb5
 	depends = curl
-	provides = msodbcsql=17.10.2.1
+	provides = msodbcsql=17.11.1.1
 	options = !strip
-	source = https://packages.microsoft.com/rhel/8/prod/msodbcsql17-17.10.2.1-1.x86_64.rpm
-	sha256sums = c3adf8bae5bc2f771c7d40b9805b38539294ad0b3a654bf9f3d40d93365a5f7d
+	source = https://packages.microsoft.com/rhel/10/prod/Packages/m/msodbcsql17-17.11.1.1-1.x86_64.rpm
+	sha256sums = bc5760dbc37220d92d566e8f6006a7167e8bbc9da4cb2c3da268a8f9af1d70b9
 
 pkgname = msodbcsql17
