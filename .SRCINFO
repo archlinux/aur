@@ -1,12 +1,13 @@
 pkgbase = hmmer
 	pkgdesc = Profile hidden Markov models (HMMs) for database searching using consensus sequences
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hmmer.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	source = https://github.com/EddyRivasLab/hmmer/archive/refs/tags/hmmer-3.4.tar.gz
-	sha256sums = 298cbe76ccc516a86a85cbe2e91690074deed1d66b19d88ff6829a837befd85e
+	license = BSD-3-Clause
+	checkdepends = python
+	source = hmmer-3.4-release.tar.gz::https://eddylab.org/software/hmmer/hmmer-3.4.tar.gz
+	sha256sums = ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3
 
 pkgname = hmmer
