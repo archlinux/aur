@@ -1,4 +1,4 @@
 [cadcraft-studio]
 source = "git"
-git = "https://github.com/getcadcraft/cadcraft.git"
-prefix = 'cadcraft-v'
+git = "https://github.com/getcadcraft/studio.git"
+prefix = 'studio-v'

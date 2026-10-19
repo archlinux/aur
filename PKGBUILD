@@ -2,7 +2,7 @@
 
 pkgname=cadcraft-studio
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 url="https://getcadcraft.com/studio"
 _url="https://github.com/getcadcraft"
 pkgdesc='Every CadCraft app in one desktop install, on one license'
@@ -26,7 +26,6 @@ depends=(alsa-lib
 makedepends=(cargo
              clang
              cmake
-             git
              nodejs
              php
              python-pillow)
@@ -39,31 +38,28 @@ _apps=(cadcraft
        modelcraft
        partcraft
        takeoffcraft)
-_appver=0.4.0
-_build=0.4
-_studio=57640c4a050843d44abf6abf694ed7543b5a5065
-_shell=d132555bd0bc191c8045eefa12ccd4a8dad6ce02
-source=(studio::git+$_url/studio#commit=$_studio
-        desktop-shell::git+$_url/desktop-shell#commit=$_shell
+_shell=76a91514559efa77a5c8bf7cd5e894f76322ea2c
+source=("$_url/studio/archive/refs/tags/studio-v$pkgver.tar.gz"
+        "$_url/desktop-shell/archive/$_shell/desktop-shell-$pkgver.tar.gz"
         site-bootstrap.php
         site-edition.php
         $pkgname.desktop)
-for _a in "${_apps[@]}"; do
-	source+=("$pkgname-$_a-$_appver.tar.gz::$_url/$_a/archive/refs/tags/$_a-v$_appver.tar.gz")
-done
-sha256sums=('2bdc69d33cacb8297517454d232c3a48d9fba4d2058d699bd41dd3809d0b09e9'
-            '33b463e05ce1e02eff8f5c57b6fb65741c7bf8c3e2585bb5b254335864e99b3c'
+for _a in "${_apps[@]}"; do source+=("$_url/$_a/archive/refs/tags/$_a-v$pkgver/$_a-$_a-$pkgver.tar.gz"); done
+sha256sums=('95499d3648b4949400b1033d98e59781cd0ebbeabf52b07eab0b90fb817ee75d'
+            '8abb21c877eae1342bf22a09d898684bdfc00de2ea43dd3a4c344b5813213865'
             'b571def5924d57801bd2225b0e57667ae805e669ced070d6ae571c14c24b2dfb'
             'c4347169c28ae2205218df6ca3d1d8761a27e9fcd9a8775a51442c6259cb5dc7'
             '6d078b7f042dbe7ca89c42021b39339d4e8c5d2f9baf9dbc13accf0642d9db4f'
-            '427b4b165544d9a299ddc1cd886a2d714a1082d08727c7e433a2e843fd6a4569'
-            '9683fb3bc45baba6cf7f570d41703ee0432d0d07e5c83c489b86076cfa66f09b'
-            'd4dd8f8e939c99763217f6cc23b2c605f3377aa413a8227de43db479c23244dd'
-            '11c32ac84230c008e45199a1857fd68274849f55d38f4ef06972f7cf69ad642a'
-            'a9b274dfc3cd8b03ad4cfd2e8731d35bd7c0be7eef2447f61084c30a6e139ebd'
-            '6559d2e6e7f78a1de97a499074b629a778944f73bc76cf4f107f5238ad635c92'
-            'ea4a2e11b481695e272c99f4bda81af17c8706a329d1732a4801d7acc54c4a91'
-            'a8124d6ca0be3ec778da3006240419461a4612ce95adc1dc6f5c72466c810d57')
+            '8fbbfdaf58ca7886ce83e7dd26f4d1fb419ff0e89989c4e1b2ccafcc9729d89b'
+            '8864f9b5f47b0b0b881121323582be6d7d0efbc97d234c22bcfdfa4c64448b6e'
+            '3eb5a151d802d1d19f457d2f692d6c312f0d1820e817d780c2889913a09c922a'
+            '532878545db4ee63f6d98a7d518d2b9db4c5673280012b949d1ebbb6cd9a8b78'
+            '4a1bcc8120e1efd6ecd1d20594dd5f41d292bdeb125d402d36c50d06b706e05a'
+            '0c11009f8a4141a0d9e3779f164b32284caf917d5d4c2601ed26cd81656c62a9'
+            '281d00df6cfe829665c9591c5337fef1822bc6e107c184d1857cff09c84218c7'
+            'd5d988848e7f2716c64aee2e6ad1104487419754c241fa2c2eaa3b8a99014ae5')
+
+_build=${pkgver%%.[0-9]}
 
 _srcenv() {
 	cd "${1:-$srcdir/desktop-shell}"
@@ -80,7 +76,7 @@ _srcenv() {
 }
 
 _site() {
-	local site="$srcdir/site" app="$srcdir/cadcraft-cadcraft-v$_appver"
+	local site="$srcdir/site" app="$srcdir/cadcraft-cadcraft-v$pkgver"
 	install -d "$site"/{bin,devshell} \
 	           "$site/public_html/core/classes" \
 	           "$site/public_html/core/components" \
@@ -140,16 +136,17 @@ _icon() {
 }
 
 prepare() {
+	set -x
 	local slug
 	for slug in "${_apps[@]}"; do
 		install -d "editions/$slug/browser-edition"
 		rm -rf "editions/$slug/browser-edition/v$_build"
-		cp -a "$slug-$slug-v$_appver/web/v$_build" "editions/$slug/browser-edition/v$_build"
+		cp -a "$slug-$slug-v$pkgver/web/v$_build" "editions/$slug/browser-edition/v$_build"
 	done
 	for slug in "${_apps[@]}"; do
 		install -d "builds/$slug"
-		ln -sf "$srcdir/$slug-$slug-v$_appver/app" "builds/$slug/$_build"
-		ln -sf "$srcdir/$slug-$slug-v$_appver/devshell" "builds/$slug/devshell"
+		ln -sf "$srcdir/$slug-$slug-v$pkgver/app" "builds/$slug/$_build"
+		ln -sf "$srcdir/$slug-$slug-v$pkgver/devshell" "builds/$slug/devshell"
 	done
 	_site
 	_srcenv "$srcdir/desktop-shell/src-tauri"
@@ -185,7 +182,7 @@ package() {
 	# The apps' shared-mime-info definitions for the types the desktop entry declares.
 	local m slug
 	for slug in "${_apps[@]}"; do
-		for m in "$srcdir/$slug-$slug-v$_appver"/linux/flathub/*.mime.xml; do
+		for m in "$srcdir/$slug-$slug-v$pkgver"/linux/flathub/*.mime.xml; do
 			[[ -e $m ]] || continue
 			install -Dm0644 "$m" "$pkgdir/usr/share/mime/packages/$slug.xml"
 		done
