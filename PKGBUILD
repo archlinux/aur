@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=bazel-remote
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc='A remote cache server for Bazel (and other build systems)'
 url=https://github.com/buchgr/bazel-remote
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 		bazel-remote.conf
 		sysusers.conf
 		tmpfiles.conf)
-b2sums=('8a1165cf2f265b6ebc52a3f24a880b6bb04ed2b782515e358653a8983508344aadd1e8496eaec423dd13d2926930366ae71f800dfdd402eef6a5915d408ff1c2'
+b2sums=('996cf268db24096e49bb5b9048525182d0c477b62bf4a714c83a3adf052f904ce98fada8e134c14500d724298750bd4504885bbc0902bbb718ed5009166f9968'
         '99940252528b14b66d1f64b6da918d126ec5d7cb480567f7941a527761970754cfa20e3928fd6041196e51d34facc48652a0ff1021926609df8715ea63be6ac4'
         '7ac4524785343a45e649806fb19e648cbc3128cb658528b20503a71cd5cf3e0e77dd6d2811f5caa467e9254dc446b9c8cbaa98f12d3139c77718d0d057d4b137'
         'f3899570f3cbe5c36344cadd3b23be36cc0e87e18c66758f64f9ae6152126c08b695311239c9833dcf6c8512eb384537805e5b9a22c1a4076073ecd1d2268184'
