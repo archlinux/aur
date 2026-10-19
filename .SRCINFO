@@ -1,6 +1,6 @@
 pkgbase = sapling-scm-bin
 	pkgdesc = A user friendly, scalable and Git compatible source control system.
-	pkgver = 0.2.20260522.084851+1e764c94
+	pkgver = 0.2.20260929.102736+288e0c2d
 	pkgrel = 1
 	epoch = 1
 	url = https://sapling-scm.com/
@@ -15,7 +15,7 @@ pkgbase = sapling-scm-bin
 	conflicts = sapling-scm
 	conflicts = sl
 	options = !strip
-	source = https://github.com/facebook/sapling/releases/download/0.2.20260522-084851+1e764c94/sapling-0.2.20260522-084851+1e764c94-linux-x64.tar.xz
-	sha256sums = 72552ab655c0c8cd315b93ac9fc902de7281ce57eb5e39da97939c34b93480bc
+	source = https://github.com/facebook/sapling/releases/download/0.2.20260929-102736+288e0c2d/sapling-0.2.20260929-102736+288e0c2d-linux-x64.tar.xz
+	sha256sums = f296b4b7d598dc099d4000e9f2ef656e366b63986db69c8910fe6d85e72d073c
 
 pkgname = sapling-scm-bin
