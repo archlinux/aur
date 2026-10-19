@@ -14,7 +14,7 @@ pkgbase = gz-rendering10
 	depends = gz-math=9
 	depends = gz-plugin=4
 	depends = gz-utils=4
-	depends = ogre-next
+	depends = ogre-next2
 	optdepends = optix: Nvidia OptiX rendering engine plugin
 	optdepends = ogre-1.9: Ogre 1.x rendering enging plugin
 	provides = gz-rendering=10

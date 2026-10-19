@@ -14,7 +14,7 @@ depends=(
   'gz-math=9'
   'gz-plugin=4'
   'gz-utils=4'
-  'ogre-next'
+  'ogre-next2'
   )
 makedepends=(
   'cmake'
