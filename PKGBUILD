@@ -8,14 +8,14 @@
 
 pkgname=xpadneo-dkms
 pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 url='https://github.com/atar-axis/xpadneo'
 arch=(any)
 license=('GPL-2.0-only AND GPL-3.0-or-later')
 checkdepends=('dkms' 'fakeroot' 'LINUX-HEADERS')
 source=("xpadneo-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('2858e466c5fde7e3d06d878dd7fb695751375e11a112bd3d389f9db5a82ef3ffcc1e3431b213f4807aeb8f05fd4280c7ca2a0a56305b0e984eb9b70df4843735')
+b2sums=('b980c98a92c64dafd459ac98783d2cc2bf4a4af2fef6e72dc89adac0bf304c1c6a1449a40639b4dc75d0ae4733d4d98f6a28d70d992d07053514a04862ddcb25')
 
 build() {
   cd "xpadneo-${pkgver}"
@@ -66,6 +66,6 @@ package() {
 
   # Module source
   cd hid-xpadneo
-  find src/ -type f -not -name '.*' \
+  find src/ -type f -not -name '.*' -not -name 'AGENTS.md' \
     -exec install -vD -m644 {} -T "${target_dir}/{}" \;
 }
