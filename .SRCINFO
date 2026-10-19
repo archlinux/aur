@@ -1,12 +1,12 @@
 pkgbase = maki-bin
 	pkgdesc = An efficient AI coding agent
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/tontinton/maki
 	arch = x86_64
 	license = MIT
 	options = !debug
-	source = https://github.com/tontinton/maki/releases/download/v0.6.3/maki-v0.6.3-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 55c81674e9671d03aacc984af26bb63b9c33721b26521d5c1fe44bcb09aab0e4
+	source = https://github.com/tontinton/maki/releases/download/v0.6.4/maki-v0.6.4-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 1c02315bb5aa59f1fabbf15734e9a8c234e9ea6083f2788b769347f7bd94e87a
 
 pkgname = maki-bin
