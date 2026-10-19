@@ -1,0 +1,38 @@
+_reload() {
+	systemd-sysusers lconnect.conf >/dev/null 2>&1 || systemd-sysusers
+	systemd-tmpfiles --create lconnect.conf >/dev/null 2>&1 || true
+	udevadm control --reload >/dev/null 2>&1 || true
+	udevadm trigger --subsystem-match=hidraw --action=add >/dev/null 2>&1 || true
+	udevadm trigger --subsystem-match=usb --attr-match=idVendor=0416 --action=add >/dev/null 2>&1 || true
+	udevadm trigger --subsystem-match=usb --attr-match=idVendor=04fc --action=add >/dev/null 2>&1 || true
+	udevadm trigger --subsystem-match=usb --attr-match=idVendor=0cf2 --action=add >/dev/null 2>&1 || true
+}
+
+post_install() {
+	_reload
+	cat <<'EOF'
+==> lconnect-linux installed. Next steps:
+  1. Give your user access:            sudo usermod -aG lconnect "$USER"   (then log out and back in)
+  2. Import Lian Li's LCD assets (sensor screens, animations, logo) from your Windows install, e.g.:
+       lconnectctl assets import --from "/mnt/windows/Program Files/Lian-Li/L-Connect 3"
+  3. Optionally import your Windows settings:
+       lconnectctl import --from "/mnt/windows/Program Files/Lian-Li/L-Connect 3/appdata"
+  4. Start the service:                sudo systemctl enable --now lconnectd
+  5. Open the GUI:                     lconnect-ui
+  For LCD sensor screens install 'chromium'; for NVIDIA GPU sensors 'nvidia-utils'.
+EOF
+}
+
+post_upgrade() {
+	_reload
+	systemctl try-restart lconnectd.service >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+	systemctl disable --now lconnectd.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+	udevadm control --reload >/dev/null 2>&1 || true
+	echo "==> Settings and imported assets are kept in /var/lib/lconnect (remove manually if no longer needed)."
+}
