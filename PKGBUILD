@@ -2,7 +2,7 @@
 _appname=cline
 pkgname="${_appname}-desktop-bin"
 _pkgname=Cline
-pkgver=0.0.46
+pkgver=0.0.48
 pkgrel=1
 pkgdesc="Cline AI coding agent."
 arch=(
@@ -12,8 +12,11 @@ arch=(
 url="https://cline.bot/"
 _ghurl="https://github.com/cline/cline"
 license=('Apache-2.0')
-conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${_appname}-cli"
+)
 depends=(
     'gtk3'
     'gdk-pixbuf2'
@@ -23,8 +26,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/desktop-v${pkgver}/${_pkgname}_${pkgver}_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/desktop-v${pkgver}/${_pkgname}_${pkgver}_x86_64.rpm")
-sha256sums_aarch64=('2a81223e6ff4854a02146446d277fa60847c31e3ff2ed4fc9f48c5f2372ce956')
-sha256sums_x86_64=('af41241eb11d720333256de651881a40b855eb72b829499a5fb2a7090c09780b')
+sha256sums_aarch64=('d1bed427fda95e71eff13d5221928721d254e82b5ea8c3034c48b40c65127040')
+sha256sums_x86_64=('c553a5b41435c3516cb639bda09b9dcd0cd6ffd6b574c9528f31fc52c2f81310')
 prepare() {
     sed -i -e "
         s/Exec=${_appname}-app/Exec=${pkgname%-bin}/g
@@ -36,7 +39,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_appname}-app" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/usr/bin/code-sidecar" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/usr/bin/${_appname}-cli" -t "${pkgdir}/usr/bin"
     [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
