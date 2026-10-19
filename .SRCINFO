@@ -1,6 +1,6 @@
 pkgbase = mindforge
 	pkgdesc = A working agreement between you and your AI assistant that does not decay: tiered context, explicit triggers, a closeout that can't be forgotten. Any Linux distribution, no desktop needed: a terminal tool (bash)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/jetomev/mindforge
 	arch = any
@@ -17,10 +17,10 @@ pkgbase = mindforge
 	optdepends = python: the tie alert, mindforge tone (a Stop hook)
 	optdepends = libpulse: the chime sound (paplay)
 	optdepends = pipewire: the chime sound (pw-play)
-	source = mindforge-0.1.9.tar.gz::https://github.com/jetomev/mindforge/releases/download/v0.1.9/mindforge-0.1.9.tar.gz
-	source = mindforge-0.1.9.tar.gz.asc::https://github.com/jetomev/mindforge/releases/download/v0.1.9/mindforge-0.1.9.tar.gz.asc
+	source = mindforge-0.1.10.tar.gz::https://github.com/jetomev/mindforge/releases/download/v0.1.10/mindforge-0.1.10.tar.gz
+	source = mindforge-0.1.10.tar.gz.asc::https://github.com/jetomev/mindforge/releases/download/v0.1.10/mindforge-0.1.10.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = 4849d9bc6f0a0261a108a3fba9b3bcb4766e80b341fac336d65dc9406998dfd0
+	sha256sums = c2448ecf89bab8cc013e2633502a640d8052763ade50d9ff6c1a7e1a82db4da6
 	sha256sums = SKIP
 
 pkgname = mindforge
