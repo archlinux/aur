@@ -3,7 +3,7 @@
 pkgname=insensical-bin
 _pkgname=insensical
 _repo=mah3uz/insensical-release
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A terminal multiplexer with a window of its own, for supervising many terminals and coding agents (prebuilt)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('insensical')
 conflicts=('insensical')
 options=('!strip' '!debug')
 source=("https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('199e2847c8e6190d3f4d9936c3a9966bb4f3611945a3e1f25ab035bb1636662e')
+sha256sums=('ae585a1e74bdd306f096b6eac4ffb5d618246111020530f06e2004947ccbe2b9')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
@@ -26,7 +26,7 @@ package() {
   cp -r --no-preserve=ownership icons/hicolor "$pkgdir/usr/share/icons/"
   # For what looks for an icon by its file and knows no themes.
   install -Dm644 icons/hicolor/256x256/apps/insensical.png -t "$pkgdir/usr/share/pixmaps"
-  install -Dm644 insensical.service insensical-web.service -t "$pkgdir/usr/lib/systemd/user"
+  install -Dm644 insensical.service insensical-hub.service -t "$pkgdir/usr/lib/systemd/user"
   install -Dm644 completions/isc.bash "$pkgdir/usr/share/bash-completion/completions/isc"
   install -Dm644 completions/isc.zsh "$pkgdir/usr/share/zsh/site-functions/_isc"
   install -Dm644 completions/isc.fish -t "$pkgdir/usr/share/fish/vendor_completions.d"
