@@ -1,6 +1,6 @@
 pkgbase = context7-mcp
 	pkgdesc = MCP server providing up-to-date library documentation for LLMs and AI code editors
-	pkgver = 4.4.2
+	pkgver = 4.4.4
 	pkgrel = 1
 	url = https://context7.com
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = context7-mcp
 	makedepends = npm
 	depends = nodejs
 	options = !debug
-	source = context7-mcp-4.4.2.tgz::https://registry.npmjs.org/@upstash/context7-mcp/-/context7-mcp-4.4.2.tgz
-	sha256sums = aaaa96e8b6fbeb63f496ef560f0dd96c6774a6a97580378d53ab63ccc5850d2e
+	source = context7-mcp-4.4.4.tgz::https://registry.npmjs.org/@upstash/context7-mcp/-/context7-mcp-4.4.4.tgz
+	sha256sums = 2ae37c3a2b41ff4d591a275ff1dc56883cb60bfc71e34c399c14ebd38837bb38
 
 pkgname = context7-mcp
