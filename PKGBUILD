@@ -3,7 +3,7 @@
 arch=('x86_64')
 
 pkgname=wayland-boomer-git
-pkgver=r30.36e3d9a
+pkgver=r41.6c412b1
 pkgrel=1
 
 pkgdesc="zoomer application for linux, wayland alternative for tsoding's X11 boomer"
@@ -18,7 +18,9 @@ optdepends=(
     'grim: one example of a screenshot tool'
     'wl-clipboard: for clipboard screenshot support'
 )
-makedepends=('git' 'clang')
+makedepends=('git' 'clang' 'make')
+provides=('wayland-boomer')
+conflicts=('wayland-boomer')
 
 pkgver() {
   cd "$srcdir/wayland-boomer"
@@ -27,12 +29,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/wayland-boomer"
-
-  clang ./src/main.c ./src/globals.c ./src/args.c ./src/controls.c ./src/image.c ./src/draw.c \
-    -o wayland-boomer \
-    -std=c23 -pedantic -Wall -Wextra -Wpedantic -ggdb -O3 -Wno-gnu \
-    -flto -lm -lglfw -I./vendor/ -L./vendor/ -lraylib \
-    -DVERSION="\"$(git rev-parse HEAD)\""
+  make build
 }
 
 package() {
