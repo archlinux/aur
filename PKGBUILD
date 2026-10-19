@@ -3,7 +3,7 @@
 
 pkgname='aimp-skin-k-2'
 pkgdesc='AIMP skin: K-2 v1.15 (by McClaud)'
-pkgver=20261014
+pkgver=20261019
 pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
