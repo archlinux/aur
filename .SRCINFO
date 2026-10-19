@@ -1,17 +1,17 @@
 pkgbase = drawpen-bin
 	pkgdesc = An open-source screen annotation tool.
-	pkgver = 0.0.59
+	pkgver = 0.0.60
 	pkgrel = 1
 	url = https://drawpen.app/
 	arch = x86_64
 	license = MIT
 	depends = electron44
-	provides = drawpen=0.0.59
+	provides = drawpen=0.0.60
 	conflicts = drawpen
 	options = !emptydirs
-	source = drawpen-0.0.59.rpm::https://github.com/DmytroVasin/DrawPen/releases/download/v0.0.59/drawpen-0.0.59-1.x86_64.rpm
+	source = drawpen-0.0.60.rpm::https://github.com/DmytroVasin/DrawPen/releases/download/v0.0.60/drawpen-0.0.60-1.x86_64.rpm
 	source = drawpen.sh
-	sha256sums = 6647e29331d0ac674afc0a202da45fd8d67c97fba2e66f76e5fd5dfd82bddf4d
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = ee632b454e7d6ae73c67c80d26dbb18753840190dfb7bd94fbe84790e0b4729b
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = drawpen-bin
