@@ -1,0 +1,18 @@
+pkgbase = chem-grub
+	pkgdesc = Chemistry-inspired GRUB2 theme with native localization and CJK support
+	pkgver = r15.20261019.db7926b
+	pkgrel = 1
+	url = https://github.com/wszqkzqk/chem-grub
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = librsvg
+	makedepends = make
+	makedepends = python
+	makedepends = python-fonttools
+	makedepends = python-pillow
+	depends = grub
+	source = chem-grub::git+https://github.com/wszqkzqk/chem-grub.git
+	sha256sums = SKIP
+
+pkgname = chem-grub
