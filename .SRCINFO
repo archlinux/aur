@@ -1,6 +1,6 @@
 pkgbase = butaglyph-bin
 	pkgdesc = Fast prompt for bash, zsh, fish and PowerShell, with presets, gradients and its own git reader (prebuilt)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Huseynteymurzade28/butaglyph
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = butaglyph-bin
 	provides = butaglyph
 	conflicts = butaglyph
 	options = !debug
-	source_x86_64 = buta-v0.3.0-x86_64-linux.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/releases/download/v0.3.0/buta-v0.3.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 5e73e1c5c7e1c5812dc5bf5042522805acafb9e35d19129ccd297a820a119eee
-	source_aarch64 = buta-v0.3.0-aarch64-linux.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/releases/download/v0.3.0/buta-v0.3.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = bb5ccc28564a0517732afd16a6c807605ba29b520f39eb1c145f81c18221dcb3
+	source_x86_64 = buta-v0.4.0-x86_64-linux.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/releases/download/v0.4.0/buta-v0.4.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 693a1165a9708205b3187c71071267b7c8eb962a4f94c4ca3ecd64d831d928be
+	source_aarch64 = buta-v0.4.0-aarch64-linux.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/releases/download/v0.4.0/buta-v0.4.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = f05bc96e896db77b0da0d0c73d5ceed7053ea6ccd0697ce0b644f0a4a943f7cc
 
 pkgname = butaglyph-bin
