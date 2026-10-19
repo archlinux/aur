@@ -1,6 +1,6 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=ripencli
-pkgver=1.4.9
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Update npm, pnpm, yarn, and bun dependencies interactively from your terminal."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=(npm jq)
 conflicts=('nodejs-ripencli')
 provides=('nodejs-ripencli')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('fa24f3abec25b0f11bb5d61db27383c3faa9ed4021f174c02decb4f5e36c8e53')
+sha256sums=('1670cabd884995a39ba0551283641ec9a848e49b6aa3a44e4231203934def634')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
