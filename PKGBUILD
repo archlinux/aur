@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.39
+pkgver=0.1.40
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/package_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9a353649ba0910137f5e68ea6446d3da2cb028abd6997b12e3f91c2c55b2f4e8')
+sha256sums=('704313c3ea7074e35f84f1902ab708b70c7e923e7ba05781c0591f39a82462db')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -46,6 +46,12 @@ package() {
   # Desktop entry launching the interactive menu
   install -Dm644 configs/archcanary.desktop \
     "$pkgdir/usr/share/applications/archcanary.desktop"
+
+  # Icons (app + notification variants)
+  install -dm755 "$pkgdir/usr/share/icons"
+  cp -r configs/icons/hicolor "$pkgdir/usr/share/icons/"
+  find "$pkgdir/usr/share/icons" -type d -exec chmod 755 {} +
+  find "$pkgdir/usr/share/icons" -type f -exec chmod 644 {} +
 
   # Man page
   install -Dm644 man/archcanary.1 "$pkgdir/usr/share/man/man1/archcanary.1"
@@ -142,7 +148,7 @@ EOF
   cat > "$pkgdir/etc/archcanary/autostart_allowlist.conf" << 'EOF'
 # Names to skip during the XDG autostart check (--check-autostart),
 # system-wide allowlist. One entry per line. Everything after # is a
-# comment. Covers two separate findings within the same check, each with
+# comment. Covers three separate findings within the same check, each with
 # its own matching rule:
 #
 # 1. .desktop Exec= names that are known-good but can't be resolved via
@@ -159,6 +165,12 @@ EOF
 #    ships its user unit via /etc/skel (copied into ~/.config/systemd/user/
 #    at account creation, so pacman never tracks that specific copy even
 #    though the binary itself is a normal pacman-owned file).
+#
+# 3. A sudo/su/doas/pkexec/run0 file in a user bin dir (~/.local/bin,
+#    ~/bin, ~/.npm-global/bin, ~/.cargo/bin, ~/go/bin, ~/.bun/bin) that
+#    you created yourself. Matched against its exact, full path;
+#    --allowlist-add appends a sha256: pin, and the finding returns if the
+#    file's content later changes.
 #
 # Examples:
 # zeitgeist-datahub               # desktop activity logging, ships in a non-PATH libdir
