@@ -1,7 +1,7 @@
 # Maintainer: w568w <w568w at outlook dot com>
 
 pkgname=qqtui-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Terminal frontend using the native Linux QQ service'
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=("qqtui=$pkgver")
 conflicts=('qqtui')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/qqtui-$pkgver-linux-$CARCH.tar.gz")
-sha256sums=('2037762de18abbf843a93446235a8513b630c1729671b0c779c71b43bf88392b')
+sha256sums=('84950a104df5392fba46378a3ee5ce8492fafb99b0ba873a382c45f90d78618d')
 
 package() {
   cd "qqtui-$pkgver-linux-$CARCH"
