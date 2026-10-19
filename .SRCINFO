@@ -1,6 +1,6 @@
 pkgbase = librsvg-noglycin
 	pkgdesc = SVG rendering library, compatible with gdk-pixbuf2-noglycin
-	pkgver = 2.62.3
+	pkgver = 2.63.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/librsvg
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = librsvg-noglycin
 	depends = libgcc
 	depends = libxml2
 	depends = pango
-	source = git+https://gitlab.gnome.org/GNOME/librsvg.git#tag=2.62.3
-	b2sums = 63d921e517bb95362259f477cacfbafcf788ed9f40fe15697f10b0dfdff32831c7963eb4fce65ab03ad94790555741f6450f275713a9ae9aca7ceb27af653e85
+	source = git+https://gitlab.gnome.org/GNOME/librsvg.git#tag=2.63.3
+	b2sums = d08fb8e0c79e96a80ec420a33ba891e0c0cea510ed0d46e94085b74e436413db14d5dde03ab8da2306c0014eec5887149d19e80876752d5bec2f8e76446fc72d
 
 pkgname = librsvg-noglycin
 	install = librsvg-noglycin.install
