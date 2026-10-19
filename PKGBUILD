@@ -74,6 +74,7 @@ optdepends=(
   'wlrctl: Jarvis desktop input'
   'ttfx: animates the Screensaver text art'
   'power-profiles-daemon: switches the power profile in the Power plugin'
+  'hdparm: lets idle hard disks stop spinning in the Power plugin'
   'bandwhich: See all network traffic in the Network Traffic plugin'
   'libcap: check and allow traffic capture in the Network Traffic plugin'
   'btop: all processes and system readings from the System monitor panel'
