@@ -1,6 +1,6 @@
 # Maintainer: Douglas de Moura <douglasdemoura@users.noreply.github.com>
 pkgname=disktree-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A treemap for finding and removing what fills your disk, for Omarchy. Rust + GPUI (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=("disktree=$pkgver")
 conflicts=('disktree')
 source_x86_64=("$pkgname-$pkgver-x86_64-linux.tar.gz::https://github.com/tobi/disktree/releases/download/v$pkgver/disktree-$pkgver-x86_64-linux.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-linux.tar.gz::https://github.com/tobi/disktree/releases/download/v$pkgver/disktree-$pkgver-aarch64-linux.tar.gz")
-sha256sums_x86_64=('d3055705b4c9d9aee5b54fa3fb774bf5d54dbbfddb6f6850f077a4634936a6e9')
-sha256sums_aarch64=('bd7e2bce950c1d3e33e73ef640e950cac88998b540f326cccb6be87436bc47e8')
+sha256sums_x86_64=('7e75afa2283c8b4f9290d52eadbfc00d9f14c13aed2d224ccdf0f7826fcc05b2')
+sha256sums_aarch64=('3c75f9c82069e40310c821357a52aee2f11a9c3e2b45452c9893dbf7cb5e454a')
 
 package() {
   cd "disktree-$pkgver-$CARCH-linux"

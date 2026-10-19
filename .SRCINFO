@@ -1,6 +1,6 @@
 pkgbase = disktree-bin
 	pkgdesc = A treemap for finding and removing what fills your disk, for Omarchy. Rust + GPUI (prebuilt binary)
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/tobi/disktree
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = disktree-bin
 	optdepends = mesa: GL driver for rendering (or your GPU vendor driver)
 	optdepends = trash-cli: move marked files to the trash with trash-put
 	optdepends = glib2: move marked files to the trash with gio trash
-	provides = disktree=0.10.0
+	provides = disktree=0.11.0
 	conflicts = disktree
-	source_x86_64 = disktree-bin-0.10.0-x86_64-linux.tar.gz::https://github.com/tobi/disktree/releases/download/v0.10.0/disktree-0.10.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = d3055705b4c9d9aee5b54fa3fb774bf5d54dbbfddb6f6850f077a4634936a6e9
-	source_aarch64 = disktree-bin-0.10.0-aarch64-linux.tar.gz::https://github.com/tobi/disktree/releases/download/v0.10.0/disktree-0.10.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = bd7e2bce950c1d3e33e73ef640e950cac88998b540f326cccb6be87436bc47e8
+	source_x86_64 = disktree-bin-0.11.0-x86_64-linux.tar.gz::https://github.com/tobi/disktree/releases/download/v0.11.0/disktree-0.11.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 7e75afa2283c8b4f9290d52eadbfc00d9f14c13aed2d224ccdf0f7826fcc05b2
+	source_aarch64 = disktree-bin-0.11.0-aarch64-linux.tar.gz::https://github.com/tobi/disktree/releases/download/v0.11.0/disktree-0.11.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 3c75f9c82069e40310c821357a52aee2f11a9c3e2b45452c9893dbf7cb5e454a
 
 pkgname = disktree-bin
