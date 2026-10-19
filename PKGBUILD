@@ -6,7 +6,7 @@
 _pkgname=dislocker
 pkgname=dislocker-patched
 pkgver=0.7.3.r91.g6d8be24
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes. May include patches from Issues and PRs from official Aorimn/dislocker. Added aarch64."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Aorimn/dislocker"
@@ -32,10 +32,11 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DMbedTLS_DIR=/usr/lib/mbedtls3/cmake/MbedTLS \
         -Dlibdir=/usr/lib \
-        -D WARN_FLAGS:STRING="-Wall -Wextra" \
+        -DCRYPTO_BACKEND=mbedtls \
+        -DWITH_RUBY=ON \
+        -DBUILD_TESTING=ON \
+        -DWARN_FLAGS:STRING="-Wall -Wextra" \
         .
-  #sed -i 's/^#include "mbedtls\/config.h"/#include "mbedtls\/mbedtls_config.h"/;' include/dislocker/ssl_bindings.h
-  #sed -i 's/^#    define SHA256(input, len, output)         mbedtls_sha256_ret(input, len, output, 0)/#    define SHA256(input, len, output)         mbedtls_sha256(input, len, output, 0)/' include/dislocker/ssl_bindings.h
   make
 }
 
@@ -47,7 +48,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
 
-  install -Dm644 README.md ${pkgdir}/usr/share/doc/${_pkgname}/README
-  install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG
-  install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
