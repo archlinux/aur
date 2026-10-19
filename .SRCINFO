@@ -1,13 +1,17 @@
 pkgbase = python-cgen
 	pkgdesc = A C/C++ source generation from an AST
 	pkgver = 2025.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inducer/cgen
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-numpy
 	depends = python-pytools
+	depends = python-typing_extensions
 	source = cgen-2025.1.tar.gz::https://github.com/inducer/cgen/archive/v2025.1.tar.gz
 	sha256sums = c456dba68c4b69e28ec0f6bf88a746b09fd2d7fc4f29c5479a256800dfe4fb33
 
