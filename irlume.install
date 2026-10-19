@@ -1,0 +1,100 @@
+post_install() {
+    systemctl daemon-reload
+    # Create the setgid lock directory (#542) BEFORE the daemon starts: the
+    # first lock the daemon creates sets the group it will keep, and a fresh
+    # install has had no boot to apply the tmpfiles.d rule yet.
+    systemd-tmpfiles --create irlume.conf || true
+    # Load the AppArmor profile before the daemon starts, but only if this box
+    # actually runs AppArmor (Arch does not by default). apparmor_parser is
+    # absent unless the user opted in, so this is a no-op on a stock install.
+    if command -v apparmor_parser >/dev/null 2>&1; then
+        apparmor_parser -r /etc/apparmor.d/usr.bin.irlumed 2>/dev/null || true
+    fi
+    # The socket first: it is what makes /run/irlume.sock exist before the
+    # greeter authenticates (#244).
+    systemctl enable --now irlumed.socket irlumed.service 2>/dev/null || true
+    # Watches greeter PAM files and re-applies irlume wiring after a distro
+    # update strips it; idle until `irlume login enable` runs. The .service also
+    # runs at boot to catch an offline strip and to adopt an existing wiring on
+    # upgrade; --now runs one reconcile immediately.
+    systemctl enable --now irlume-reconcile.path 2>/dev/null || true
+    systemctl enable --now irlume-reconcile.timer 2>/dev/null || true
+    systemctl enable --now irlume-reconcile.service 2>/dev/null || true
+    cat <<'EOF'
+irlume installed. Next steps:
+  irlume tui                      # enroll your face + configure
+  sudo irlume login enable --apply   # opt-in: wire greeter/lock screen
+(most Hello cameras need no emitter step; if IR frames stay dark,
+ sudo irlume ir-setup writes to the camera and tells you so first)
+Arch runs no LSM policy by default; SO_PEERCRED authorizes every daemon
+request. If you boot with AppArmor, the bundled profile
+(/etc/apparmor.d/usr.bin.irlumed) is loaded automatically.
+Password is always the fallback.
+EOF
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    # Apply the tmpfiles.d rule on upgrade too (#542): the dir may not exist
+    # yet, and the restarted daemon below must find it group-video setgid.
+    systemd-tmpfiles --create irlume.conf || true
+    if command -v apparmor_parser >/dev/null 2>&1; then
+        apparmor_parser -r /etc/apparmor.d/usr.bin.irlumed 2>/dev/null || true
+    fi
+    # The socket first shipped in 0.8.1. Migrate older releases only: repeating
+    # this on modern upgrades would undo an administrator's socket disable/stop.
+    if [ "$(vercmp "$2" 0.8.1)" -lt 0 ] &&
+        systemctl is-enabled --quiet irlumed.service 2>/dev/null; then
+        # An enabled service can still be deliberately stopped. Preserve that
+        # runtime choice while enabling its new socket for the next boot.
+        if systemctl is-active --quiet irlumed.service 2>/dev/null; then
+            systemctl enable --now irlumed.socket 2>/dev/null || true
+        else
+            systemctl enable irlumed.socket 2>/dev/null || true
+        fi
+    fi
+    systemctl try-restart irlumed.service 2>/dev/null || true
+    # The self-heal units are enabled on first install. An upgrade from before
+    # 0.6.1 (the release that adopts an already-wired install into the marker)
+    # enables them once here. Any other upgrade leaves an administrator's
+    # disable or mask in place, as the Debian and Fedora hooks do, and runs one
+    # reconcile only when its service is enabled, to re-apply wiring the same
+    # transaction may have stripped. Reconcile also stays idle until
+    # `irlume login enable` has run.
+    if [ "$(vercmp "$2" 0.6.1)" -lt 0 ]; then
+        systemctl enable --now irlume-reconcile.path 2>/dev/null || true
+        systemctl enable --now irlume-reconcile.service 2>/dev/null || true
+    elif systemctl is-enabled --quiet irlume-reconcile.service 2>/dev/null; then
+        systemctl start irlume-reconcile.service 2>/dev/null || true
+    fi
+    # The timer is NEW in 0.7.0; arm it once for upgraders from an older
+    # release too, recorded by a marker so a later deliberate disable is
+    # respected. post_install enables the timer and writes no marker, so the
+    # version check keeps the first upgrade of a newer install from taking
+    # the missing marker for an old install and undoing a disable.
+    if [ "$(vercmp "$2" 0.7.0)" -lt 0 ] &&
+        [ ! -e /var/lib/irlume/.reconcile-timer-armed ]; then
+        # /var/lib is system-owned and already exists; only the leaf is ours.
+        # shellcheck disable=SC2174
+        mkdir -p -m 0700 /var/lib/irlume
+        systemctl enable --now irlume-reconcile.timer 2>/dev/null || true
+        : > /var/lib/irlume/.reconcile-timer-armed
+    fi
+    # 0.1.x -> 0.2.0 removed the IR adapter; IR templates enrolled before 0.2.0
+    # no longer match. Bright-light (RGB) login still works; the password is
+    # unaffected. Compare the just-installed version against the old one.
+    if [ "$(vercmp "$2" 0.2.0)" -lt 0 ]; then
+        cat <<'EOF'
+irlume 0.2.0: the IR adapter was removed. If you enrolled before 0.2.0,
+dark/dim face login needs a re-enroll:  irlume enroll
+Bright-light login keeps working and your password is unaffected.
+EOF
+    fi
+}
+
+pre_remove() {
+    systemctl disable --now irlumed.socket irlumed.service 2>/dev/null || true
+    systemctl disable --now irlume-reconcile.path 2>/dev/null || true
+    systemctl disable --now irlume-reconcile.timer 2>/dev/null || true
+    systemctl disable --now irlume-reconcile.service 2>/dev/null || true
+}
