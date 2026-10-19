@@ -9,7 +9,8 @@ url='https://invent.kde.org/plasma/lightdm-kde-greeter'
 license=('GPL-3.0-or-later')
 depends=(lightdm kdeclarative qt6-5compat kiconthemes kcmutils kpackage kconfig kconfigwidgets networkmanager-qt kcoreaddons ki18n kauth kservice libei libplasma)
 makedepends=(git cmake extra-cmake-modules qt6-tools gtk2-compat vulkan-headers)
-optdepends=('orca: screen reader support')
+optdepends=('orca: screen reader support'
+            'xorg-server: for lightdm-kde-greeter-x11')
 source=("git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v${pkgver}")
 sha512sums=('a24a83eff17d83c0288c33a51a8c5c06e072db42015f9458fbbbddbed2ccda7fceae64975ae71a801ca3c06008237e6fa0809a9a736175550941d852d4581258')
 backup=('etc/lightdm/lightdm-kde-greeter.conf')

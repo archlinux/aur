@@ -27,6 +27,7 @@ pkgbase = lightdm-kde-greeter
 	depends = libei
 	depends = libplasma
 	optdepends = orca: screen reader support
+	optdepends = xorg-server: for lightdm-kde-greeter-x11
 	backup = etc/lightdm/lightdm-kde-greeter.conf
 	source = git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v6.1.7
 	sha512sums = a24a83eff17d83c0288c33a51a8c5c06e072db42015f9458fbbbddbed2ccda7fceae64975ae71a801ca3c06008237e6fa0809a9a736175550941d852d4581258
