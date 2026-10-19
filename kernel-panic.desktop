@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=KERNEL PANIC
+StartupWMClass=KERNEL PANIC
 Comment=Neon arena shooter about keeping one process alive
 Exec=kernel-panic
 Icon=kernel-panic
