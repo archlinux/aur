@@ -1,6 +1,6 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 pkgname=linux-tmpcleaner
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Systemd timer that deletes old /tmp entries while protecting files in use"
 arch=('any')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Pinned sha256 of the v$pkgver release tarball. The tarball holds this file,
 # so after each version bump run `updpkgsums` once the tag is pushed and commit
 # the pin separately; never publish with 'SKIP'.
-sha256sums=('33496b3df13b3593de83d41e1c2a151dbe520e9375f8405da4d8a8b4a0fa8764')
+sha256sums=('423613df3b4aa4a37e9224d2da969468d2b535e7448bbd12d43c1c4d60d53394')
 
 check() {
   cd "$srcdir/tmpCleaner-$pkgver"
