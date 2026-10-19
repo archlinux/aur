@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oxideterm-bin
 _pkgname=OxideTerm
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="AI-native workspace for local shells and remote machines.Zero Webview, zero OpenSSL, zero telemetry, and no app subscription."
 arch=(
@@ -26,8 +26,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.rpm")
-sha256sums_aarch64=('49e2a892f606e02cc7425b43c5543026501b05dfe14b32646bba7c8245a2ab4f')
-sha256sums_x86_64=('30d9f3b490a90382e6ea606e43f2654fbc396ce2da1f18d3dfb6ad20bd4659cf')
+sha256sums_aarch64=('ecc93326fb82a582535a865b6a5fdb1cf99afdab6f67b303eab621831958084d')
+sha256sums_x86_64=('bf115995f07f001d698a50be17554a9c0d9c793edfd3807945b4bbf4f087a75a')
 prepare() {
     sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}-native/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop"
 }
