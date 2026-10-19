@@ -1,0 +1,27 @@
+pkgbase = lconnect-linux
+	pkgdesc = Unofficial Lian Li L-Connect 3 port: UNI FAN TL / TL LCD / SL Infinity fan speed, RGB and LCD control
+	pkgver = 2.0.11.1
+	pkgrel = 1
+	url = https://github.com/koenhendriks/lian-li-lconnect-linux
+	install = lconnect.install
+	arch = x86_64
+	license = LicenseRef-L-Connect-derived
+	makedepends = dotnet-sdk-10.0
+	makedepends = aspnet-targeting-pack-10.0
+	depends = dotnet-runtime-10.0
+	depends = aspnet-runtime-10.0
+	depends = hidapi
+	depends = ffmpeg
+	depends = systemd
+	depends = fontconfig
+	depends = libx11
+	depends = libice
+	depends = libsm
+	optdepends = chromium: render LCD sensor screens (CPU/GPU temperature and load gauges)
+	optdepends = nvidia-utils: NVIDIA GPU temperature/load for fan curves and sensor screens
+	options = !strip
+	options = !debug
+	source = https://github.com/koenhendriks/lian-li-lconnect-linux/releases/download/v2.0.11.1/lconnect-linux-2.0.11.1.tar.gz
+	sha256sums = e2141e582e16f9f27b00b9b16e1b4a9ab81d9c09f3617544c6c9db9bcf8b0563
+
+pkgname = lconnect-linux
