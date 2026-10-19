@@ -1,6 +1,6 @@
 pkgbase = spdk
 	pkgdesc = libraries for high performance storage IO
-	pkgver = 26.05
+	pkgver = 26.09
 	pkgrel = 1
 	url = https://spdk.io/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = spdk
 	makedepends = patchelf
 	makedepends = python-jinja
 	makedepends = python-tabulate
+	makedepends = python-yaml
 	makedepends = uv
 	depends = dpdk
 	depends = fuse3
@@ -20,7 +21,8 @@ pkgbase = spdk
 	optdepends = python-grpcio
 	optdepends = python-ipaddress
 	optdepends = python-pyparsing
-	source = https://github.com/spdk/spdk/archive/refs/tags/v26.05.tar.gz
-	b2sums = 54f6ae3d3f8fd0e4ed90f15ae0208c3bf6b37dfff0f5cc57a1f8702f4ae18e3d3b263437259c1aad96f24aaa58cf246013654d51eb2a191e336400a7f7855ebb
+	optdepends = python-yaml
+	source = https://github.com/spdk/spdk/archive/refs/tags/v26.09.tar.gz
+	b2sums = fbf3808c212ec7e83a6cf7f8eb1c27243101d0608619781d51c1e4ace6d2bfd041a98be6629c6719424ba7f33596d7e2a768a8426ddc2cbbabdbe59dfcc5557d
 
 pkgname = spdk

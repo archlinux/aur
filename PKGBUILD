@@ -2,22 +2,22 @@
 # Contributor: CyanWoods <i at cyanwoods dot com>
 
 pkgname='spdk'
-pkgver=26.05
+pkgver=26.09
 pkgrel=1
 pkgdesc='libraries for high performance storage IO'
 arch=('x86_64')
 license=('BSD-3-Clause')
 url='https://spdk.io/'
 depends=('dpdk' 'fuse3' 'isa-l' 'isa-l_crypto' 'libaio' 'liburing')
-optdepends=('python' 'python-configshell-fb' 'python-grpcio' 'python-ipaddress' 'python-pyparsing') # for spdk-cli and spdk-rpc
-makedepends=('patchelf' 'python-jinja' 'python-tabulate' 'uv')
+optdepends=('python' 'python-configshell-fb' 'python-grpcio' 'python-ipaddress' 'python-pyparsing' 'python-yaml') # for spdk-cli and spdk-rpc
+makedepends=('patchelf' 'python-jinja' 'python-tabulate' 'python-yaml' 'uv')
 
 source=(
   "https://github.com/spdk/spdk/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 b2sums=(
-  '54f6ae3d3f8fd0e4ed90f15ae0208c3bf6b37dfff0f5cc57a1f8702f4ae18e3d3b263437259c1aad96f24aaa58cf246013654d51eb2a191e336400a7f7855ebb'
+  'fbf3808c212ec7e83a6cf7f8eb1c27243101d0608619781d51c1e4ace6d2bfd041a98be6629c6719424ba7f33596d7e2a768a8426ddc2cbbabdbe59dfcc5557d'
 )
 
 prepare() {
