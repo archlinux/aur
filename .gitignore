@@ -2,5 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!python-finalize-before-viewer-reset.patch
 !lichtfeld-studio.desktop
