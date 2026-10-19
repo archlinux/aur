@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=hyprmoncfg
-pkgver=1.24.1
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -13,16 +13,16 @@ optdepends=('systemd: user service for automatic profile switching')
 conflicts=('hyprmoncfg-bin' 'hyprmoncfg-git')
 options=('!debug')
 # The deps archive holds the release's Go module cache, so the build is offline.
-source=("hyprmoncfg-1.24.1.tar.gz::https://github.com/crmne/hyprmoncfg/archive/refs/tags/v1.24.1.tar.gz"
-        "hyprmoncfg-1.24.1-deps.tar.xz::https://github.com/crmne/hyprmoncfg/releases/download/v1.24.1/hyprmoncfg-1.24.1-deps.tar.xz")
-sha256sums=('37c33ac0bc8cda9b08fdf47a565336b965e44e97498029e91f81528b572371e2'
-            'c480987103e9973fa2525b4b76bd63b5f0d97f66fa57c8defee95acb451f883b')
+source=("hyprmoncfg-1.25.0.tar.gz::https://github.com/crmne/hyprmoncfg/archive/refs/tags/v1.25.0.tar.gz"
+        "hyprmoncfg-1.25.0-deps.tar.xz::https://github.com/crmne/hyprmoncfg/releases/download/v1.25.0/hyprmoncfg-1.25.0-deps.tar.xz")
+sha256sums=('57dbdb4500b4c1bf872db6ba9ed63e80d49e40d786b8547d712bc5395bef67c7'
+            'b52226874f87cbf6eaeb6c6d88ce08125db1425aa2f6955be2b07dd23e6900b4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # r<commit count>.<short commit> of the release tag; keep the commit.
-  local commit="r374.aebfb7e"
+  local commit="r380.9d89e94"
   commit="${commit##*.}"
   local build_date
   build_date="$(date -u +%FT%TZ)"
