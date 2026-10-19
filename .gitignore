@@ -1,0 +1,8 @@
+# AUR repo tracks only the package sources
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!comfyui-manager.install
+!cm-cli.sh
+!comfyui-manager.conf

@@ -1,0 +1,81 @@
+# Resolve the install prefix of the "comfyui" package from its launcher so
+# that builds of comfyui with a custom _prefix are honoured automatically.
+_prefix() {
+    local p
+    p=$(sed -n 's/^_prefix="\(.*\)"$/\1/p' /usr/bin/comfyui 2>/dev/null | head -n1)
+    echo "${p:-/opt/comfyui}"
+}
+
+_manager_setup() {
+    local prefix pip whls whl
+    prefix=$(_prefix)
+    pip="$prefix/venv/bin/pip"
+    whls=(/usr/share/comfyui-manager/comfyui_manager-*.whl)
+    whl="${whls[0]}"
+
+    if [ ! -x "$pip" ]; then
+        echo ":: ERROR: ComfyUI venv not found at $prefix/venv."
+        echo ":: The comfyui post-install setup may have failed."
+        echo ":: Reinstall comfyui first, then reinstall comfyui-manager."
+        return 1
+    fi
+
+    # pip runs as root while the venv belongs to comfy, so a cache below the
+    # prefix would be refused anyway; nearly all dependencies are already
+    # present from the comfyui package.
+    export PIP_NO_CACHE_DIR=1
+
+    echo ":: Installing ComfyUI-Manager into $prefix/venv ..."
+    # Always replace the manager itself, then let pip resolve its dependencies
+    # from PyPI (same approach as the comfyui package for PyTorch).
+    if ! "$pip" install --no-deps --force-reinstall "$whl" || ! "$pip" install "$whl"; then
+        echo ""
+        echo ":: ERROR: ComfyUI-Manager installation failed."
+        echo ":: To retry, reinstall the package."
+        return 1
+    fi
+
+    echo ":: Setting ownership of the venv to comfy:comfy ..."
+    chown -R comfy:comfy "$prefix/venv"
+
+    return 0
+}
+
+post_install() {
+    if _manager_setup; then
+        echo ""
+        echo ":: ComfyUI-Manager installed successfully."
+        echo ":: comfyui.service now starts ComfyUI with --enable-manager"
+        echo ":: (drop-in /usr/lib/systemd/system/comfyui.service.d/comfyui-manager.conf)."
+        echo ":: Restart the service to activate it:"
+        echo "::   systemctl restart comfyui"
+        echo "::"
+        echo ":: When starting ComfyUI manually, pass the flag yourself:"
+        echo "::   comfyui --enable-manager"
+        echo "::"
+        echo ":: Command line interface (runs as the service user):"
+        echo "::   sudo -u comfy cm-cli show installed"
+    fi
+}
+
+post_upgrade() {
+    if _manager_setup; then
+        echo ":: ComfyUI-Manager upgraded successfully."
+        echo ":: Restart the service to activate the new version:"
+        echo "::   systemctl restart comfyui"
+    fi
+}
+
+pre_remove() {
+    local prefix pip
+    prefix=$(_prefix)
+    pip="$prefix/venv/bin/pip"
+
+    if [ -x "$pip" ]; then
+        echo ":: Removing ComfyUI-Manager from $prefix/venv ..."
+        "$pip" uninstall -y comfyui-manager >/dev/null 2>&1 || true
+    fi
+
+    echo ":: Python dependencies pulled in by ComfyUI-Manager were kept in the venv."
+    echo ":: Manager settings and snapshots in $prefix/user/ have been preserved."
+}

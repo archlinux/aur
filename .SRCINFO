@@ -1,0 +1,21 @@
+pkgbase = comfyui-manager
+	pkgdesc = Custom node, model and dependency manager for ComfyUI (installed into the comfyui venv)
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/ComfyUI-Manager
+	install = comfyui-manager.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = comfyui
+	depends = git
+	source = ComfyUI-Manager-4.3.tar.gz::https://github.com/Comfy-Org/ComfyUI-Manager/archive/refs/tags/4.3.tar.gz
+	source = cm-cli.sh
+	source = comfyui-manager.conf
+	sha256sums = 299581296f802c22c5ccf2f04a7e86a2d80f3fab82d386c68e6b04d3565500fe
+	sha256sums = 3186ab5255845d850db3f5253bc8c9e71e8ebb04c104efe2a1cc0c03e396396c
+	sha256sums = 44abcd9bf5ab6bcaf50f9b4ee93c245dad4a5b383c52fb9e37aab7dabc37865d
+
+pkgname = comfyui-manager
