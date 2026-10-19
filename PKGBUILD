@@ -1,23 +1,23 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cnmplayer-git
 pkgver=preview
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, lyrics support. (Development version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/professor-lee/CNMPlayer"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('alsa-lib' 'chafa' 'glib2' 'openssl' 'pipewire')
 optdepends=(
   'ttf-nerd-fonts-symbols: For icons and spectrum visualizer'
   'ttf-jetbrains-mono-nerd: Recommended monospace font'
 )
-# 必须添加 git 以便拉取仓库
-makedepends=('cargo' 'cmake' 'pkgconf' 'git')
+# clang supplies libclang for bindgen; git is required by the VCS source.
+makedepends=('cargo' 'clang' 'cmake' 'pkgconf' 'git')
 provides=("cnmplayer")
 conflicts=("cnmplayer")
 options=(!lto)
 
-# 仅修改仓库地址，指向 develop 分支
+# Track development commits; recipe changes, not each upstream commit, are synced to AUR.
 source=("${pkgname}::git+https://github.com/professor-lee/CNMPlayer.git#branch=develop")
 sha256sums=('SKIP')
 
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd "${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  # 使用仓库内 Cargo.lock，保证 -git 构建可复现（不重新生成 lockfile）
+  # Use the committed Cargo.lock without regenerating it.
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -45,8 +45,10 @@ package() {
   cd "${pkgname}"
   install -Dm755 "target/release/cnmplayer" "$pkgdir/usr/bin/cnmplayer"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "THIRD_PARTY_NOTICES.md" "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
 
-  # Copy default config and themes if present
+  # Reference defaults; the runtime seeds its writable asset root from embedded copies.
   if [ -d "config" ]; then
     install -Dm644 config/default.toml "$pkgdir/usr/share/cnmplayer/config/default.toml"
   fi
