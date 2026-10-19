@@ -1,37 +1,34 @@
+# Original Maintainer: bko <aur at bil dot co dot ua>
+# Maintainer: higorslva <higor.slva at outlook dot com>
+
 pkgname=pgadmin4-desktop
-pkgver=9.14
+pkgver=9.18
 pkgrel=1
-pkgdesc='The desktop user interface for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
+pkgdesc='The desktop user interface for pgAdmin (binary from Ubuntu). pgAdmin is the most popular administration platform for PostgreSQL.'
 arch=('x86_64')
-license=('PostgreSQL')
 url='https://www.pgadmin.org/'
-depends=("pgadmin4-server>=${pkgver}-1" 'xdg-utils' 'python-dbus')
-makedepends=("nodejs" "corepack" "npm" "wget" "unzip" "syft")
-provides=('pgadmin4-desktop')
-source=("pgadmin4-${pkgver}.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/pgadmin4-${pkgver}.tar.gz")
-sha256sums=('b8ebfa7afe41da6c2e46c12ae53e5cbbe3b3864cd91e8d5b0d79fdc51ff5c9d3')
+license=('PostgreSQL')
+makedepends=('libarchive' 'tar' 'zstd')
+depends=("pgadmin4-server" 'xdg-utils' 'python-dbus')
 
-build() {
-  cd "$srcdir/pgadmin4-${pkgver}"
+source=(
+  "pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}-1.noble_amd64.deb"
+)
 
-  export COREPACK_HOME="$srcdir/corepack_home"
-  mkdir -p "$COREPACK_HOME/bin"
-  corepack enable --install-directory "$COREPACK_HOME/bin"
-  export PATH="$COREPACK_HOME/bin:$PATH"
-  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-  corepack prepare yarn@stable --activate
+sha256sums=(
+  'aad3e46f433ad5d05d0966df1a9b76a9f9047a42d5afb547fcb9db1dc4e190db'
+)
 
-  source pkg/linux/build-functions.sh
+prepare() {
+  msg2 "Extracting the debian package..."
+  mkdir -p "${srcdir}/deb-content"
 
-  _setup_env "${PWD}/pkg/linux/DUMMY" "arch"
-  _cleanup "pkg.tar.zst"
-  _setup_dirs
-  _build_runtime
-  syft "${DESKTOPROOT}/" -o cyclonedx-json > "${DESKTOPROOT}/usr/${APP_NAME}/sbom-desktop.json"
+  bsdtar -xf "pgadmin4-desktop-${pkgver}-x86_64.deb" -C "${srcdir}"
+  tar -x --zstd -f "${srcdir}/data.tar.zst" -C "${srcdir}/deb-content"
 }
 
 package() {
-  cp -r "${srcdir}/pgadmin4-${pkgver}/arch-build/desktop/usr" "${pkgdir}/"
-
-  # no need to install the license, since pgadmin4-server has already done it
+  msg2 "Installing files into the package..."
+  cp -r "${srcdir}/deb-content/usr" "${pkgdir}/"
+  cp -r "${srcdir}/deb-content/etc" "${pkgdir}/"
 }
