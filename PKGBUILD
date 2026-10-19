@@ -1,32 +1,37 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 #
-# The command-line client from a GitHub Release, the bundle CI built and
-# tested (docs/releasing.md). The release workflow sets the maintainer's
-# email, _version, pkgrel and the checksum when it publishes this to the AUR.
-# The first release with the CLI's archive is 0.6.0, so this copy has no
-# checksum yet.
+# The command-line client from a GitHub Release: the binary CI built for
+# this architecture from the bundle it tested (docs/releasing.md). The
+# release workflow sets the maintainer's email, _version, pkgrel and the
+# checksums when it publishes this to the AUR. The binaries start with the
+# release after 0.12.0, so this copy's version and checksums are only where
+# publishing starts.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.12.0
+_version=0.13.0
 pkgname=wikistow-cli-bin
 pkgver=${_version//-/}
 pkgrel=1
 pkgdesc="Command-line client for your family's encrypted wiki, for people and their agents"
-# One JavaScript file, run on the system Node.
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/skint007/wikistow"
 license=('MIT')
-# The bundle targets Node 26.
-depends=('nodejs>=26')
+# Bun's runtime is inside the binary; it links only glibc.
+depends=('glibc')
 optdepends=("libsecret: keep an agent's key in the keyring (agent enroll --secret-store)")
 provides=('wikistow-cli')
 conflicts=('wikistow-cli')
-source=("https://github.com/skint007/wikistow/releases/download/v$_version/wikistow-cli-$_version.tar.gz")
-sha256sums=('0ddd66800ca1fbb5539b2f35490dd95af310930b7ba0ba0fcdd39a20a9c9f6f9')
+# Stripping would cut off the program Bun appends to its runtime.
+options=('!strip' '!debug')
+_download="https://github.com/skint007/wikistow/releases/download/v$_version"
+source=("LICENSE-$_version::$_download/LICENSE")
+source_x86_64=("wikistow-$_version-x86_64::$_download/wikistow-linux-x64")
+source_aarch64=("wikistow-$_version-aarch64::$_download/wikistow-linux-arm64")
+sha256sums=('49e9b16003c5e96891265ca2f912087102de955704eda32482dfe2c4b8fbafd6')
+sha256sums_x86_64=('383da213381b63b51db4a94e53b8f6ef3b5a084609b6e01b0344bbf963724be0')
+sha256sums_aarch64=('fb68fb04d9f98aeeaeb532cab112863b5f92c3f92a7f3e97666229ce5db07ebf')
 
 package() {
-    cd "wikistow-cli-$_version"
-    install -Dm644 wikistow.mjs "$pkgdir/usr/lib/wikistow-cli/wikistow.mjs"
-    install -Dm755 wikistow "$pkgdir/usr/bin/wikistow"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "wikistow-$_version-$CARCH" "$pkgdir/usr/bin/wikistow"
+    install -Dm644 "LICENSE-$_version" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
