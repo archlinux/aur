@@ -1,6 +1,6 @@
 pkgbase = ait-bin
 	pkgdesc = Local-first multi-agent manager with an Electron desktop and Rust daemon
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/ait-app/ait
 	arch = x86_64
@@ -39,14 +39,14 @@ pkgbase = ait-bin
 	depends = xdg-utils
 	optdepends = libsecret: desktop credential storage
 	optdepends = org.freedesktop.secrets: Secret Service provider for credential storage
-	provides = ait=0.1.10
+	provides = ait=0.1.11
 	conflicts = ait
-	noextract = Ait-0.1.10-linux-x86_64.AppImage
+	noextract = Ait-0.1.11-linux-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = Ait-0.1.10-linux-x86_64.AppImage::https://github.com/ait-app/ait/releases/download/v0.1.10/Ait-linux-x86_64.AppImage
+	source = Ait-0.1.11-linux-x86_64.AppImage::https://github.com/ait-app/ait/releases/download/v0.1.11/Ait-linux-x86_64.AppImage
 	source = ait.desktop
-	sha256sums = fe6100e2bb0cce04b4f0c8cda3a924c84f07dc9216a5e885e6a9ec9cd4e591e8
+	sha256sums = f40b636569e335b16562eda750fb1801932cc58d02000e3243c4d0b1b8324a16
 	sha256sums = c046b482bf9d9ba6ce161a6b242fa506798e908b5b5dfbf5e27776558e803cc0
 
 pkgname = ait-bin
