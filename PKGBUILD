@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Git-native feed reader"
 
-pkgver=1.12.0
+pkgver=2.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/readme.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.gz")
-sha256sums=('22c0ad6369e8b6fb7ffd6e7c2e737f0c55e6e4bb148f86025bc215a30e4d1b46')
-sha256sums_x86_64=('f4d1be4f2199f548475aba47182f590c5d217222d554cf831e97147ca80ddee8')
-sha256sums_aarch64=('0c3b5d482f5b9c76816d9fd1bb675490a32ad3752919cb3fd9f9d447e439696b')
+sha256sums=('36fa82436da4f91097b779ba518ca3b8253b4ace7efcd43ac120f303f2d96e50')
+sha256sums_x86_64=('bb0e039f907cfe18d97a36b3d24578d0325d05b4c23e65a462e1aa53b0d63fe8')
+sha256sums_aarch64=('c00bf545a8e4738e91c02ad1b8cfd1138d275688c306b817b4674503aa6b0e5b')
 
 
 package() {
