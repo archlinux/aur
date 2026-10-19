@@ -1,13 +1,12 @@
 pkgbase = cq-csv
 	pkgdesc = High-Performance SQL Query Engine for CSV Files
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baldimario/cq
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = cq
 	conflicts = cq-csv-git
 	source = git+https://github.com/baldimario/cq#tag=v1.2.0
 	source = LICENSE
