@@ -6,6 +6,6 @@ Operation = Remove
 Target = usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.so
 
 [Action]
-Description = Probing GDK-Pixbuf loader modules...
+Description = Updating GDK-Pixbuf loader cache...
 When = PostTransaction
 Exec = /usr/bin/gdk-pixbuf-query-loaders --update-cache

@@ -7,7 +7,7 @@ pkgname=(
   gdk-pixbuf2-noglycin
   gdk-pixbuf2-noglycin-docs
 )
-pkgver=2.44.7
+pkgver=2.44.8
 pkgrel=1
 pkgdesc="An image loading library, without glycin"
 url="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
@@ -33,8 +33,8 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gdk-pixbuf.git#tag=$pkgver"
   gdk-pixbuf-query-loaders.hook
 )
-b2sums=('0a0c801939c6cc6f647714962491bc0d4673349899fb99c4760782c99f56ca3cc16c1159a2de389372f5b6eab12ad9eb7c9f6521ee9b983a4c8435a70da22639'
-        '5a00d34888e207d70d02369015d029f4c0450fc5a02b4b257de8e5df04380dc550723f351433859224c96c3c6390896f2166673af65e8a09eb57024f5a34301b')
+b2sums=('d553cb0654965cb153cd38385d39d6edafc5b9890661a7fce14713d40f53129057c4ba81970774bd449029a52aa3b06033a22dc9cfe5c263eb87f35095251340'
+        '4f355d2059b4ca21ea1c26d0ff8696206ee28cc06564bc5a3bbbff44b5146df2eb52bee91f02a1129b582db8e78bb5b6824ee4080d8df6a0aaf7b6db018caf31')
 
 prepare() {
   cd gdk-pixbuf
