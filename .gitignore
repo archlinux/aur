@@ -1,0 +1,7 @@
+# Only the AUR files: everything else here is makepkg output (downloads, src/, pkg/, packages).
+*
+!.gitignore
+!.gdignore
+!.SRCINFO
+!PKGBUILD
+!OpenGuimo.desktop

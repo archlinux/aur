@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OpenGuimo
+GenericName=Platform Game
+Comment=Open-source remake of the 1997 DOS platformer GUIMO
+Exec=openguimo
+Icon=openguimo
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=Guimo;platformer;retro;DOS;
+StartupWMClass=OpenGuimo
