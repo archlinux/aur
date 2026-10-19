@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Bolek <jarris@post.cz>
 pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release
 license=('GPL3')
 depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-charts" "protobuf" "cuda" "pkgconf" "rust")
 source=("$pkgname-$pkgver::$url")
-sha256sums=('SKIP')
+sha256sums=('ca20c9ed416488b1ad331db4cd5f8ebc2ff54d5cf533c2852ce06bffe0ae48ad')
 install=default.install
 qmake=qmake6
 
@@ -20,6 +20,7 @@ package() {
   mkdir -p $pkgdir/usr/src/$pkgname-$pkgver
   mkdir -p $pkgdir/usr/lib/systemd/system/
   mkdir -p $pkgdir/usr/lib/sysusers.d/
+  mkdir -p $pkgdir/usr/lib/tmpfiles.d/
   mkdir -p $pkgdir/etc/modprobe.d/
   mkdir -p $pkgdir/etc/modules-load.d/
   mkdir -p $pkgdir/usr/share/applications/
@@ -44,8 +45,10 @@ package() {
 
   #daemon, gui, dkms
   cp -r $srcdir/$pkgname-$pkgver/$srcname/Installation/* $pkgdir/opt/$pkgname-$pkgver
-  chmod 777 $pkgdir/opt/$pkgname-$pkgver/log
-  chmod 777 $pkgdir/opt/$pkgname-$pkgver/data
+  # log, data are shared with group legion (root:legion 2770), set by systemd-tmpfiles after the group is created
+  chmod 750 $pkgdir/opt/$pkgname-$pkgver/log
+  chmod 750 $pkgdir/opt/$pkgname-$pkgver/data
+  printf 'd /opt/%s/log  2770 root legion -\nd /opt/%s/data 2770 root legion -\n' "$pkgname-$pkgver" "$pkgname-$pkgver" > $pkgdir/usr/lib/tmpfiles.d/lenovo-legion.conf
 
   #daemon setings
   cp $srcdir/$pkgname-$pkgver/$srcname/$srcname-Daemon/lenovo-legion-daemon.service $pkgdir/usr/lib/systemd/system/
