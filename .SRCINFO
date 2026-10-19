@@ -1,7 +1,7 @@
 pkgbase = gz-rendering9
 	pkgdesc = C++ library designed to provide an abstraction for different rendering engines.
-	pkgver = 9.5.0
-	pkgrel = 3
+	pkgver = 9.6.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-rendering
 	arch = any
 	license = Apache-2.0
@@ -16,7 +16,7 @@ pkgbase = gz-rendering9
 	depends = gz-utils=3
 	depends = ogre-next2
 	provides = gz-rendering=9
-	source = https://github.com/gazebosim/gz-rendering/archive/gz-rendering9_9.5.0.tar.gz
-	sha256sums = 5b52dd3990ed45f3e731845fb1c14e7825b910017a61776de29a1e0fa24f5d5c
+	source = https://github.com/gazebosim/gz-rendering/archive/gz-rendering9_9.6.0.tar.gz
+	sha256sums = d1ae03a8c41afc68375e1ae1df225148ef564c27b37b08834b318a06737b5a8c
 
 pkgname = gz-rendering9
