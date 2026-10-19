@@ -1,4 +1,4 @@
-[rubick]
+[rubick-kubernetes-bin]
 source = "github"
 github = "Dudude-bit/rubick"
 prefix = "v"
