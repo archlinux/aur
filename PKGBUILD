@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 _pkgname="extension-manager"
 pkgname="$_pkgname-git"
-pkgver=0.5.1.r121.g74f8bd9
+pkgver=0.6.5.r280.g43a5460
 pkgrel=1
 pkgdesc="A native tool for browsing, installing, and managing GNOME Shell Extensions"
 url="https://github.com/mjakeman/extension-manager"
@@ -11,10 +11,13 @@ license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 
 depends=(
+  'glycin'
+  'glycin-gtk4'
+  'gtk4'
   'json-glib'
   'libadwaita'
   'libsoup3'
-  'text-engine-git' # AUR
+  'libxml2'
 )
 makedepends=(
   'blueprint-compiler'
