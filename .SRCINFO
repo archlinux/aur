@@ -1,7 +1,7 @@
 pkgbase = refindplus-bin
 	pkgdesc = A fork of rEFInd with additional Mac and UEFI-PC functionality (upstream x64 binary)
-	pkgver = 0.14.2.AE
-	pkgrel = 5
+	pkgver = 0.14.2.AF
+	pkgrel = 1
 	url = https://github.com/RefindPlusRepo/RefindPlus
 	arch = x86_64
 	license = BSD-2-Clause
@@ -14,14 +14,14 @@ pkgbase = refindplus-bin
 	depends = bash
 	optdepends = efibootmgr: register RefindPlus as a UEFI boot entry with refindplus-install --register
 	optdepends = sbsigntools: sign EFI binaries for Secure Boot
-	provides = refindplus=0.14.2.AE
+	provides = refindplus=0.14.2.AF
 	conflicts = refindplus
 	options = !strip
-	source = x64-RefindPlus_001402-AE.zip::https://github.com/RefindPlusRepo/RefindPlus/releases/download/v0.14.2.AE/x64-RefindPlus_001402-AE.zip
-	source = RefindPlus-v0.14.2.AE.tar.gz::https://github.com/RefindPlusRepo/RefindPlus/archive/refs/tags/v0.14.2.AE.tar.gz
+	source = x64-RefindPlus_001402-AF.zip::https://github.com/RefindPlusRepo/RefindPlus/releases/download/v0.14.2.AF/x64-RefindPlus_001402-AF.zip
+	source = RefindPlus-v0.14.2.AF.tar.gz::https://github.com/RefindPlusRepo/RefindPlus/archive/refs/tags/v0.14.2.AF.tar.gz
 	source = refindplus-install
-	sha256sums = d60e6157fa1d7bdb7e14ffafa77b2cd8f99c5ded8b08b1732d6b5f4913d4ee89
-	sha256sums = bcf0a843c1c7593361f3d67736dcfd89c001a93009ea5949073082febd85642c
+	sha256sums = 8e3aae2fd622e5f5632ef57f6cf8b692c14d278416c936da535779d2e4133434
+	sha256sums = 64b1579bd09ee2f7a9e6462dabe7a01d4a30a2754d4729809de46c9596bf5bf1
 	sha256sums = 5f894b5806a09e278530d593202f00ae38e397d8531eb20abf4c244f19848807
 
 pkgname = refindplus-bin

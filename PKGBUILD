@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Binet <gbin@gootz.net>
 
 pkgname=refindplus-bin
-pkgver=0.14.2.AE
-pkgrel=5
+pkgver=0.14.2.AF
+pkgrel=1
 pkgdesc='A fork of rEFInd with additional Mac and UEFI-PC functionality (upstream x64 binary)'
 arch=('x86_64')
 url='https://github.com/RefindPlusRepo/RefindPlus'
@@ -24,8 +24,8 @@ provides=("refindplus=${pkgver}")
 conflicts=('refindplus')
 options=('!strip')
 
-_release_archive='x64-RefindPlus_001402-AE.zip'
-_release_dir='x64-RefindPlus_001402-AE'
+_release_archive='x64-RefindPlus_001402-AF.zip'
+_release_dir='x64-RefindPlus_001402-AF'
 _source_dir="RefindPlus-${pkgver}"
 
 source=(
@@ -34,8 +34,8 @@ source=(
   'refindplus-install'
 )
 sha256sums=(
-  'd60e6157fa1d7bdb7e14ffafa77b2cd8f99c5ded8b08b1732d6b5f4913d4ee89'
-  'bcf0a843c1c7593361f3d67736dcfd89c001a93009ea5949073082febd85642c'
+  '8e3aae2fd622e5f5632ef57f6cf8b692c14d278416c936da535779d2e4133434'
+  '64b1579bd09ee2f7a9e6462dabe7a01d4a30a2754d4729809de46c9596bf5bf1'
   '5f894b5806a09e278530d593202f00ae38e397d8531eb20abf4c244f19848807'
 )
 
