@@ -1,18 +1,23 @@
 pkgbase = omofun
 	pkgdesc = Desktop anime streaming client repackaged to run with system Electron
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://omofun.tv/
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = asar
 	makedepends = libarchive
+	makedepends = patch
 	depends = bash
 	depends = electron40
 	depends = gcc-libs
 	depends = glibc
-	noextract = omofun-2.0.1-setup1.exe
-	source = omofun-2.0.1-setup1.exe::file:///home/w/aur/omofun/omofun-2.0.1-setup1.exe
-	sha256sums = cf38f6e717831202df7e51ad1c3babfda2dfbc1f0af0533b955f4bb2862860de
+	noextract = omofun-2.0.2-setup.exe
+	source = file://omofun-2.0.2-setup.exe
+	source = download-selector.patch
+	source = system-electron.patch
+	sha256sums = d4472bcd965350d43b66e7df02fe142214d8e9f35e6ccf70f1d50306d76705eb
+	sha256sums = b95804d2de3c5e9741c857ef83f4836e52d1a81524b12befb244f3b6966511fa
+	sha256sums = ba59532862d78b90bde3a1ec74055b5ca27725e7290d321ded27c2bef56c9b26
 
 pkgname = omofun

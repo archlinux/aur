@@ -1,0 +1,20 @@
+--- DownloadSelectorView.js.orig
++++ DownloadSelectorView.js
+@@ -75,7 +75,7 @@
+     const { unwrapResponse, handleError } = useApiErrorHandler();
+     const { profile, refreshProfile } = useUserSession();
+     const hasVipBasic = computed(
+-      () => (profile.value?.identities ?? []).some((item) => item.code === "vip_basic")
++      () => true
+     );
+     function ensureSelectionSet(player) {
+       if (!selections[player]) {
+@@ -248,7 +248,7 @@
+         statusText.value = "请先登录后再缓存";
+         return;
+       }
+-      if (!hasVipBasic.value) {
++      if (false) {
+         statusText.value = "";
+         vipPromptVisible.value = true;
+         return;

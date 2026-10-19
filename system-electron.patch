@@ -1,0 +1,10 @@
+--- out/main/index.js.orig
++++ out/main/index.js
+@@ -18604,6 +18604,7 @@
+ const grpcCertFile = "server.crt";
+ function resolveAppIcon() {
+   const candidates = electron.app.isPackaged ? [
++    path$1.join(electron.app.getAppPath(), "resources", "icon.png"),
+     path$1.join(process.resourcesPath, "resources", "icon.png"),
+     path$1.join(process.resourcesPath, "app.asar.unpacked", "resources", "icon.png"),
+     path$1.join(process.resourcesPath, "icon.png")
