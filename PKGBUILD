@@ -1,6 +1,6 @@
-# Contributor: Lucas van Leijen <lvanl at tuta dot io>
 # Maintainer: tee < teeaur at duck dot com >
 # Maintainer: mcck < m.ckk at tuta dot io >
+# Contributor: Lucas van Leijen <lvanl at tuta dot io>
 
 pkgname=appflowy-bin
 pkgver=0.14.9
