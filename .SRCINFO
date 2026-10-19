@@ -1,6 +1,6 @@
 pkgbase = voicenux
 	pkgdesc = VoiceMod for Linux. Real-time voice changer and soundboard for PipeWire
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/voicenux/voicenux
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = voicenux
 	depends = hicolor-icon-theme
 	optdepends = xdg-desktop-portal: global shortcuts
 	options = !lto
-	source = voicenux-0.1.0.tar.gz::https://github.com/voicenux/voicenux/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 93180b3e7823f1da7dece65b4b360f11b8d5934d00c34dd9f68951d3572dce23
+	source = voicenux-0.2.0.tar.gz::https://github.com/voicenux/voicenux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 6ba081030185096e2310b308a14c12d21e17467610ee109fecd58d0c2d618943
 
 pkgname = voicenux
