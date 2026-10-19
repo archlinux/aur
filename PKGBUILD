@@ -4,7 +4,7 @@
 _highlightver=11.11.1
 
 pkgname=gnome-shell-extension-copyous
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Modern Clipboard Manager for GNOME"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(gnome-shell libgda6 gsound)
 makedepends=(git jq meson nodejs pnpm uv)
 source=("$pkgname::git+$url.git#tag=v$pkgver"
   https://cdnjs.cloudflare.com/ajax/libs/highlight.js/${_highlightver}/es/highlight.min.js)
-sha256sums=('33fef54b2ae2508b4d42e61dd60f2926a3a3a626a2fc58e9f145fecee302e0bd'
+sha256sums=('68a75670457a0fc1ddc6333fc943a106c3a54e1a504e048743a10ac8356ea2c5'
             '7865839949f0764d9e0a21e311a4e2c42633eeaee8ca5ec127b86438565731fe')
 
 prepare() {
