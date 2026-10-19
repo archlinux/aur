@@ -7,7 +7,7 @@ post_install() {
   echo "(for example ~/.config/opencode/opencode.json):"
   echo ""
   echo "  {"
-  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-claude-auth\"]"
+  echo "    \"plugins\": [\"file:///usr/lib/opencode/plugins/opencode-claude-auth\"]"
   echo "  }"
   echo ""
   echo "Make sure Claude Code is already installed and authenticated"
