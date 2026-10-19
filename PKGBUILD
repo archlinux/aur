@@ -3,11 +3,12 @@ pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
 _pkgver=1.1.0
 pkgver=${_pkgver}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
 license=('GPL-3.0-only')
-makedepends=('cargo' 'cargo-tauri' 'pnpm' 'protobuf')
+makedepends=('cargo' 'cargo-tauri' 'nodejs' 'pnpm' 'protobuf'
+             'libayatana-appindicator')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
          'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme'
          'gst-plugins-good' 'glibc' 'libgcc' 'libstdc++' 'dbus')
@@ -22,7 +23,13 @@ prepare() {
     # into the deadlock-api monorepo (same rev). Drop once _pkgver moves past 1.1.0.
     sed -i 's#deadlock-api/valveprotos-rs#deadlock-api/deadlock-api#' src-tauri/Cargo.toml Cargo.lock
 
-    pnpm install
+    # v1.1.0's desktop install still pulls sharp via better-auth's next peer, and a
+    # system libvips makes sharp build from source with npm. Drop once _pkgver moves
+    # past 1.1.0.
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+    # The root impeccable devDependency pulls puppeteer, whose postinstall downloads Chrome.
+    export PUPPETEER_SKIP_DOWNLOAD=1
+    pnpm install --frozen-lockfile --filter @deadlock-mods/desktop...
 
     cd src-tauri
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
