@@ -1,6 +1,6 @@
 pkgbase = aimp-skin-kantaris-teyp
 	pkgdesc = AIMP skin: Kantaris-Teyp v2.1.2.1 (by memo-se)
-	pkgver = 20261014
+	pkgver = 20261019
 	pkgrel = 1
 	url = https://github.com/badcast/aimpskins
 	arch = any
