@@ -13,7 +13,7 @@
 
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.3.0_devel.231539.d44453ce07b.d41d8cd
+pkgver=27.0.0_devel.231964.44fd0fde818.d41d8cd
 pkgrel=1
 arch=($CARCH)
 makedepends=(
@@ -85,6 +85,8 @@ conflicts=(
     'mesa-libgl'
     'mesa'
     'mesa-git'
+    'vulkan-gfxstream'
+    'vulkan-panfrost'
 )
 url="https://www.mesa3d.org"
 license=('custom')

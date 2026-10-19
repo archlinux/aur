@@ -1,6 +1,6 @@
 pkgbase = mesa-rk35xx-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 26.3.0_devel.231539.d44453ce07b.d41d8cd
+	pkgver = 27.0.0_devel.231964.44fd0fde818.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = aarch64
@@ -80,6 +80,8 @@ pkgbase = mesa-rk35xx-git
 	conflicts = mesa-libgl
 	conflicts = mesa
 	conflicts = mesa-git
+	conflicts = vulkan-gfxstream
+	conflicts = vulkan-panfrost
 	conflicts = opencl-rusticl-mesa
 	options = !lto
 	options = !debug
