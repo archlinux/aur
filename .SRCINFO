@@ -1,6 +1,6 @@
 pkgbase = eidos-lite-bin
 	pkgdesc = A single-file relational spreadsheet for you and your agent, built on standard SQLite
-	pkgver = 0.23.1
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://eidos.space
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = eidos-lite-bin
 	depends = cairo
 	depends = gtk3
 	depends = hicolor-icon-theme
-	source = https://github.com/mayneyao/eidos/releases/download/lite-v0.23.1/Eidos.Lite-0.23.1-linux-amd64.deb
-	b2sums = a6abd477f362a5eccc4fd2e156f920f9318a3cd615a8b1947359abe0fb2682eab4190f8e741083c49e82ef9844f69bfba592717d378958e5d3909cc02df09cb4
+	source = https://github.com/mayneyao/eidos/releases/download/lite-v0.25.1/Eidos.Lite-0.25.1-linux-amd64.deb
+	b2sums = 8fa68d53d8dd289c7ca3d337942e0d9dc636bfe451d2da1008a8cd2111b47b586d6164abdf245c907c54f61bf08fb536fa11473368bf78a69323c3935ee98235
 
 pkgname = eidos-lite-bin
