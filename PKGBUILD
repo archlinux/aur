@@ -1,7 +1,7 @@
 # Maintainer: Mikele <mikele@gmail.com>
 
 pkgname=cdduck-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="TUI file browser that replaces cd in the terminal"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('cdduck')
 install=cdduck.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/cdduck-${pkgver}-linux-x86_64.tar.gz")
 # Placeholder checksum; scripts/aur-update.sh replaces this before publishing to AUR.
-sha256sums=('3da366819804e47f16fb3eee450e9e2a82537cb7d56b05a06a98c13d8f5171c8')
+sha256sums=('79b451fdbeb83cd10ac2c9582c4fd859aee810377f16c909bc83bec26012abb0')
 
 package() {
   cd "${srcdir}"
