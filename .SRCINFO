@@ -1,6 +1,6 @@
 pkgbase = procinsh
 	pkgdesc = A web-based process inspector for Linux
-	pkgver = 0.1.13
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/akawashiro/procinsh
 	install = procinsh.install
@@ -17,7 +17,7 @@ pkgbase = procinsh
 	depends = zlib
 	provides = procinsh
 	conflicts = procinsh
-	source = procinsh-0.1.13.crate::https://crates.io/api/v1/crates/procinsh/0.1.13/download
-	sha256sums = a9d4958596580430e668ddbc3b0f15877c6179bbef1b7079f70c432f51ae59a0
+	source = procinsh-0.1.17.crate::https://crates.io/api/v1/crates/procinsh/0.1.17/download
+	sha256sums = 6604e8092313f87d5afd78cdff06da1ed940200f9f11c4994acd5591aad4ef3c
 
 pkgname = procinsh
