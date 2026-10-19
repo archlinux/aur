@@ -2,15 +2,16 @@
 pkgname=python-bioservices
 _name=${pkgname#python-}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers"
 arch=('any')
 license=('GPL-3.0-only')
 url="https://github.com/cokelaer/bioservices"
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-poetry-core)
 depends=(
     'python-click'
     'python-appdirs'
+    'python-colorlog'
     'python-matplotlib'
     'python-easydev'
     'python-tqdm>=4.67.1'
