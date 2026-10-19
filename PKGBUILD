@@ -4,7 +4,7 @@
 # aur-publish.yml) does that on every release; see packaging/aur/README.md to
 # render it by hand.
 pkgname=grunden-work-bin
-pkgver=0.17.81
+pkgver=0.17.82
 pkgrel=1
 pkgdesc="Grunden Cowork desktop - sovereign AI workbench (prebuilt release)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('grunden-work')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://work.grunden.ai/installers/grunden-work-linux-x64-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://work.grunden.ai/installers/grunden-work-linux-x64-$pkgver.tar.gz.asc")
-sha256sums=('741bb1d9103e7a8f18ad2dbb7a81090e3eec0ad88657ffd0c15466742548920e'
+sha256sums=('ee2deff558e7b323875b351e1e4d5a38df7fdff8c060e8d8a31796281936409b'
             'SKIP')
 # Grunden's Linux release key (ADR 0123 Amendment 2); makepkg refuses a tarball
 # whose signature it cannot check against it. The key is also in this
