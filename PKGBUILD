@@ -2,7 +2,7 @@
 # Template rendered by scripts/render-manifests.sh and pushed to the AUR as texoria-bin by the
 # release workflow. Keep depends in sync with crates/texoria/packaging/linux/nfpm.yaml.
 pkgname=texoria-bin
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='An elegant, fast LaTeX editor'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ conflicts=('texoria')
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/texoria-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/texoria-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('b3153ea9a7297be4fcd43b6b0988a12998d3f26284d1579faf3cb0fcf767aa79')
-sha256sums_aarch64=('fb8a4507d461f491e0c4f8715e6b6b8fdbaa0288aa5aac9503f73956e589d6b3')
+sha256sums_x86_64=('8d7f1120a9e055122d29294ad3d1f06f24e762ff9efa115bfbe67a86bda0d195')
+sha256sums_aarch64=('2f904682b5d4b098238352335c4140269edb8408bdb56563f6ce8bae6bd52592')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
