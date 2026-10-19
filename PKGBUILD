@@ -3,7 +3,7 @@
 pkgname=owbox
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="Openbox for Wayland: a stacking compositor with Openbox's config, themes and behavior"
+pkgdesc="Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SoleSoul/owbox"
 license=('GPL-2.0-or-later')
