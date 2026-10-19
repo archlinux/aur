@@ -1,21 +1,19 @@
 pkgbase = ccgui-bin
-	pkgdesc = Next-generation VibeCoding editor (prebuilt binary)
-	pkgver = 0.9.4
+	pkgdesc = Multi-engine AI coding desktop client (prebuilt binary)
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/zhukunpenglinyutong/desktop-cc-gui
 	arch = x86_64
-	license = MIT
+	license = NOASSERTION
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = gst-plugins-base-libs
 	depends = gst-plugins-good
 	provides = ccgui
 	conflicts = ccgui
-	noextract = ccgui_0.9.4_amd64.AppImage
+	noextract = ccgui_1.1.5_amd64.AppImage
 	options = !strip
-	source = ccgui_0.9.4_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v0.9.4/ccgui_0.9.4_amd64.AppImage
-	source = LICENSE
-	sha256sums = fef0e2d41eab28fea9074d1be9cc4d18178236fb6b3a4cec3e97403b3cd54ab4
-	sha256sums = 7ee7adbd9c6ba3df8397de73285eeac6d21f9692482c0dc92d5c3f11884dae49
+	source = ccgui_1.1.5_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v1.1.5/CC.GUI_1.1.5_amd64.AppImage
+	sha256sums = 137fadc0d589d7105b003da3a62edf5bc44c7cc35a0f916aef95100b079d7de6
 
 pkgname = ccgui-bin
