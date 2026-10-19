@@ -3,7 +3,7 @@
 _reponame="OpenViking"
 _cmdname="ov"
 pkgname="${_reponame,,}-cli"
-pkgver=0.4.23
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Rust CLI client for OpenViking"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ conflicts=("${_cmdname}")
 depends=("bzip2" "glibc" "libgcc" "xz")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/cli@${pkgver}.tar.gz")
-sha256sums=('e710dbf736d981bfd8dcae7d39fa9d9ed97431616bfd0639bc8c6f045be294f1')
+sha256sums=('ab1574b9bb06a0cc8cc94f7d54efb4a68f194898bdea32295b47ad5eef8dc30a')
 
 prepare() {
     cd "${_reponame}-cli-${pkgver}"
