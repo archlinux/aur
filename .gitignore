@@ -10,3 +10,5 @@ libcamera-ipu7-ov08x40-debug/
 libcamera-ipu7-ov08x40-ipa-debug/
 /ipu-bridge-*.c
 /rollback/
+/cs35l56-*.c
+/cs35l56-*.h

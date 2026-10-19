@@ -1,0 +1,3 @@
+obj-m += snd-soc-cs35l56.o snd-soc-cs35l56-sdw.o
+snd-soc-cs35l56-y := sound/soc/codecs/cs35l56.o
+snd-soc-cs35l56-sdw-y := sound/soc/codecs/cs35l56-sdw.o

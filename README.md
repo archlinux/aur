@@ -19,6 +19,8 @@ camera. It replaces the stock `libcamera` and `libcamera-ipa` packages.
   preventing zombie processes from accumulating across capture sessions.
 - Restores the direct OV08X40 media topology on Linux 7.2 through a patched
   DKMS replacement for the modular IPU bridge.
+- Restores built-in SoundWire audio on Linux 7.2.11 by supplying the missing
+  Cirrus OT25 codec interface required by that kernel's machine driver.
 
 The package provides `libcamera`, `libcamera-ipa`, and the versioned
 `libcamera.so=0.7-64` and `libcamera-base.so=0.7-64` interfaces, so existing
@@ -36,6 +38,8 @@ PipeWire and application dependencies remain satisfied.
 
 - libcamera: `191e202178f02430b5942397c70d215cdd2056fa` (`v0.7.2`)
 - Intel vision drivers: `845d6f8bdf66ff1f455901da9de5e00a53a83dce`
+- Cirrus audio codec sources: Linux `v7.2.11`, verified by SHA-256, with
+  upstream OT25 prerequisite `86c8360c97f66fa7830fd930e2dc69374007284b`
 
 The repository intentionally does not follow mutable branches or tags. Update
 these commits and rebuild deliberately when testing newer dependencies.
@@ -66,6 +70,40 @@ transition when the raw IPU7 V4L2 device is disabled; camera frame delivery and
 microphone capture have been verified with the extracted Arch packages. Pacman
 displays the tested WirePlumber version as an unsatisfied optional dependency
 when another version is installed.
+
+### Linux 7.2.11 SoundWire Audio Fix
+
+Linux 7.2.11 backports a machine-driver change that requests `cs35l56-ot25`
+without the corresponding codec interface. This prevents the internal
+`sof-soundwire` sound card from registering and leaves PipeWire with Dummy
+Output. The main `libcamera-ipu7-ov08x40` package includes the missing upstream
+codec prerequisite, its private header, and the two-module DKMS build.
+
+The normal package upgrade installs this fix automatically through Arch's
+post-transaction DKMS hook, after the package files have been installed.
+It replaces the earlier standalone `cs35l56-ot25-dkms` package in the same
+transaction; no separate audio package or manual installation step is needed.
+
+`BUILD_EXCLUSIVE_KERNEL` restricts the override to exactly
+`7.2.11-arch1-1`. Other kernel versions retain their own Cirrus modules. The
+camera stack's existing Linux 7.2 compatibility bounds remain in effect;
+review the upstream prerequisite before updating this audio restriction.
+
+Installing modules does not replace copies already loaded in memory. After
+the first installation on an affected system, reboot or reload the audio
+modules when applications are idle. Speaker playback has been confirmed on
+the current kernel after a live reload, with all four amplifiers reporting
+firmware and calibration loaded.
+
+```bash
+dkms status -m cs35l56-ot25
+modinfo -F filename snd_soc_cs35l56
+aplay -l
+wpctl status
+```
+
+The replacement modules should resolve under `updates/dkms`, and the
+`sof-soundwire` speaker should be available.
 
 ### Test WirePlumber 0.5.18 Before Upgrading
 
@@ -116,7 +154,8 @@ the updated kernel.
 
 Repository-authored packaging, documentation, and configuration use MIT.
 Patches retain the upstream code license: LGPL-2.1-or-later for libcamera and
-GPL-2.0-only for v4l2-relayd. See `LICENSE`, `REUSE.toml`, and `LICENSES/`.
+GPL-2.0-only for v4l2-relayd and the Cirrus audio codec. See `LICENSE`,
+`REUSE.toml`, and `LICENSES/`.
 
 ## Build And Install
 
@@ -177,3 +216,6 @@ releases it when the last client closes.
 - `v4l2loopback-ipu7.conf`: creates the Chromium-compatible loopback device.
 - `ipu7-legacy-cvs.patch`: restores the direct sensor-to-IPU media topology.
 - `ipu-bridge-dkms.conf`: limits the bridge override to Linux 7.2 kernels.
+- `cs35l56-ot25.patch`: backports the missing upstream OT25 codec interface.
+- `cs35l56-ot25-Makefile`: builds the two replacement Cirrus audio modules.
+- `cs35l56-ot25-dkms.conf`: limits the audio override to `7.2.11-arch1-1`.

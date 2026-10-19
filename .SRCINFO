@@ -1,11 +1,12 @@
 pkgbase = libcamera-ipu7-ov08x40
 	pkgdesc = Patched libcamera for Intel IPU7 with OV08X40
 	pkgver = 0.7.2
-	pkgrel = 3.15
+	pkgrel = 3.16
 	url = https://libcamera.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	license = GPL-2.0-or-later
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = autoconf
 	makedepends = automake
@@ -15,6 +16,7 @@ pkgbase = libcamera-ipu7-ov08x40
 	makedepends = libyaml
 	makedepends = libyuv
 	makedepends = meson
+	makedepends = patch
 	makedepends = libtool
 	makedepends = pkgconf
 	makedepends = python-jinja
@@ -39,6 +41,14 @@ pkgbase = libcamera-ipu7-ov08x40
 	source = ipu7-legacy-cvs.patch
 	source = ipu-bridge-Makefile
 	source = ipu-bridge-dkms.conf
+	source = cs35l56-7.2.11.c::https://raw.githubusercontent.com/gregkh/linux/v7.2.11/sound/soc/codecs/cs35l56.c
+	source = cs35l56-sdw-7.2.11.c::https://raw.githubusercontent.com/gregkh/linux/v7.2.11/sound/soc/codecs/cs35l56-sdw.c
+	source = cs35l56-private-7.2.11.h::https://raw.githubusercontent.com/gregkh/linux/v7.2.11/sound/soc/codecs/cs35l56.h
+	source = cs35l56-wm-adsp-7.2.11.h::https://raw.githubusercontent.com/gregkh/linux/v7.2.11/sound/soc/codecs/wm_adsp.h
+	source = cs35l56-registers-7.2.11.h::https://raw.githubusercontent.com/gregkh/linux/v7.2.11/include/sound/cs35l56.h
+	source = cs35l56-ot25.patch
+	source = cs35l56-ot25-Makefile
+	source = cs35l56-ot25-dkms.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -56,6 +66,14 @@ pkgbase = libcamera-ipu7-ov08x40
 	sha256sums = a926313180a96bc7d9f16920dbc269aed78bdd63796d8602996d88f79e3b7939
 	sha256sums = d0372ef887d9029177bc4ba9a2dcd4a26e4dc454d85313185c211023ccffb507
 	sha256sums = 3c520c0c2da92a8bbaaa3328839ebc54f08ff71fd9b0284307ddcdbcd57e8a64
+	sha256sums = 63286d6f510c9477ca357b58904391388d5df483148bd68d4dca37f69bc83df5
+	sha256sums = 0b6b514e9f9582c350b7fe7bd266e53676925c03ffb057777a0dd84eeab3ff3b
+	sha256sums = b521db7e5e67fafa2f6fa474be5d636a8ea45d513ae85d856acec6de565797eb
+	sha256sums = 71050cae977ac594abfcbf8f7394c603c84a25976cb183a011c8dd3cb7fff297
+	sha256sums = 39111edf383772627dcc51ab42dcd85cf24269cc6d591aec7041ab2917a50201
+	sha256sums = edf3c367927627e84e90a92785d364f6f3d28bbf71de2fc2ed3c7eead6daf911
+	sha256sums = df2c7ab82f3e01d13ff9e70e98c6e0ca9d81dc598772ca53798ffce62ca75083
+	sha256sums = 334503d13dfffcc7f8593f7527d93ca18da0ac837efe443cd4ac864901109b4a
 
 pkgname = intel-vision-drivers-dkms-ipu7-ov08x40
 	pkgdesc = Internal vision-driver DKMS dependency for libcamera-ipu7-ov08x40
@@ -66,6 +84,7 @@ pkgname = intel-vision-drivers-dkms-ipu7-ov08x40
 
 pkgname = libcamera-ipu7-ov08x40
 	pkgdesc = Native libcamera and PipeWire camera stack for Intel IPU7 OV08X40
+	depends = dkms
 	depends = glibc
 	depends = gnutls
 	depends = intel-vision-drivers-dkms-ipu7-ov08x40
@@ -84,10 +103,13 @@ pkgname = libcamera-ipu7-ov08x40
 	optdepends = libcamera-tools: applications
 	optdepends = pipewire-libcamera: PipeWire camera integration
 	optdepends = wireplumber=0.5.18: tested PipeWire camera export; requires matching libwireplumber
+	provides = cs35l56-ot25-dkms=7.2.11
 	provides = libcamera=0.7.2
 	provides = libcamera.so=0.7-64
 	provides = libcamera-base.so=0.7-64
 	conflicts = libcamera
+	conflicts = cs35l56-ot25-dkms
+	replaces = cs35l56-ot25-dkms
 	backup = etc/libcamera/configuration.yaml
 
 pkgname = libcamera-ipu7-ov08x40-ipa

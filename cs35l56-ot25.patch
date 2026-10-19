@@ -1,0 +1,150 @@
+From: Richard Fitzgerald <rf@opensource.cirrus.com>
+Subject: [PATCH] ASoC: cs35l56: Add DAI for SDCA OT25 stream (7.2.11 backport)
+
+Backport upstream 86c8360c97f66fa7830fd930e2dc69374007284b.
+Retain the 7.2.11 SoundWire interrupt API. Include the private patched
+register header rather than modifying the installed kernel headers.
+
+--- a/include/sound/cs35l56.h
++++ b/include/sound/cs35l56.h
+@@ -312,6 +312,7 @@
+ 
+ #define CS35L56_SDW1_PLAYBACK_PORT			1
+ #define CS35L56_SDW1_CAPTURE_PORT			3
++#define CS35L56_OT25_CAPTURE_PORT				4
+ 
+ #define CS35L56_NUM_BULK_SUPPLIES			3
+ #define CS35L56_NUM_DSP_REGIONS				5
+--- a/sound/soc/codecs/cs35l56.h
++++ b/sound/soc/codecs/cs35l56.h
+@@ -14,7 +14,7 @@
+ #include <linux/regulator/consumer.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/workqueue.h>
+-#include <sound/cs35l56.h>
++#include "../../../include/sound/cs35l56.h"
+ #include "wm_adsp.h"
+ 
+ #define CS35L56_SDW_GEN_INT_STAT_1	0xc0
+--- a/sound/soc/codecs/cs35l56-sdw.c
++++ b/sound/soc/codecs/cs35l56-sdw.c
+@@ -265,7 +265,7 @@
+-	ports = devm_kcalloc(cs35l56->base.dev, 2, sizeof(*ports), GFP_KERNEL);
++	ports = devm_kcalloc(cs35l56->base.dev, 3, sizeof(*ports), GFP_KERNEL);
+ 	if (!ports)
+ 		return -ENOMEM;
+ 
+-	prop->source_ports = BIT(CS35L56_SDW1_CAPTURE_PORT);
++	prop->source_ports = BIT(CS35L56_SDW1_CAPTURE_PORT) | BIT(CS35L56_OT25_CAPTURE_PORT);
+ 	prop->sink_ports = BIT(CS35L56_SDW1_PLAYBACK_PORT);
+ 	prop->paging_support = true;
+@@ -286,6 +286,11 @@
+ 	ports[1].num = CS35L56_SDW1_CAPTURE_PORT;
+ 	ports[1].type = SDW_DPN_FULL;
+ 	ports[1].ch_prep_timeout = 10;
++
++	/* DP4 - capture */
++	ports[2].num = CS35L56_OT25_CAPTURE_PORT;
++	ports[2].type = SDW_DPN_FULL;
++	ports[2].ch_prep_timeout = 10;
+ 	prop->src_dpn_prop = &ports[1];
+ 
+ 	dev_dbg(&peripheral->dev, "clock stop mode 1 supported: %s\n",
+--- a/sound/soc/codecs/cs35l56.c
++++ b/sound/soc/codecs/cs35l56.c
+@@ -32,6 +32,7 @@
+ #include <sound/cs-amp-lib.h>
+ #include <sound/pcm.h>
+ #include <sound/pcm_params.h>
++#include <sound/sdw.h>
+ #include <sound/soc.h>
+ #include <sound/soc-dapm.h>
+ #include <sound/tlv.h>
+@@ -324,6 +325,7 @@
+ 	SND_SOC_DAPM_SIGGEN("VDDBMON ADC"),
+ 	SND_SOC_DAPM_SIGGEN("VBSTMON ADC"),
+ 	SND_SOC_DAPM_SIGGEN("TEMPMON ADC"),
++	SND_SOC_DAPM_SIGGEN("OT25 Reference"),
+ 
+ 	SND_SOC_DAPM_INPUT("Calibrate"),
+ };
+@@ -388,6 +390,8 @@
+ 	{ "SDW1 Capture", NULL, "SDW1 TX2 Source" },
+ 	{ "SDW1 Capture", NULL, "SDW1 TX3 Source" },
+ 	{ "SDW1 Capture", NULL, "SDW1 TX4 Source" },
++
++	{ "OT25", NULL, "OT25 Reference" },
+ };
+ 
+ static int cs35l56_dsp_event(struct snd_soc_dapm_widget *w,
+@@ -712,6 +716,37 @@
+ 	return 0;
+ }
+ 
++static int cs35l56_ot25_dai_hw_params(struct snd_pcm_substream *substream,
++				      struct snd_pcm_hw_params *params,
++				      struct snd_soc_dai *dai)
++{
++	struct cs35l56_private *cs35l56 = snd_soc_component_get_drvdata(dai->component);
++	struct sdw_stream_runtime *sdw_stream = snd_soc_dai_get_dma_data(dai, substream);
++	struct sdw_stream_config sconfig = { };
++	struct sdw_port_config pconfig = { };
++	int ret;
++
++	dev_dbg(cs35l56->base.dev, "%s: rate %d\n", __func__, params_rate(params));
++
++	if (!cs35l56->base.init_done)
++		return -ENODEV;
++
++	if (!sdw_stream)
++		return -EINVAL;
++
++	snd_sdw_params_to_config(substream, params, &sconfig, &pconfig);
++	pconfig.num = CS35L56_OT25_CAPTURE_PORT;
++
++	ret = sdw_stream_add_slave(cs35l56->sdw_peripheral, &sconfig, &pconfig,
++				   1, sdw_stream);
++	if (ret) {
++		dev_err(dai->dev, "Failed to add OT25 stream: %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++
+ static const struct snd_soc_dai_ops cs35l56_sdw_dai_ops = {
+ 	.set_tdm_slot = cs35l56_sdw_dai_set_tdm_slot,
+ 	.shutdown = cs35l56_sdw_dai_shutdown,
+@@ -720,6 +755,13 @@
+ 	.set_stream = cs35l56_sdw_dai_set_stream,
+ };
+ 
++static const struct snd_soc_dai_ops cs35l56_ot25_dai_ops = {
++	.shutdown = cs35l56_sdw_dai_shutdown,
++	.hw_params = cs35l56_ot25_dai_hw_params,
++	.hw_free = cs35l56_sdw_dai_hw_free,
++	.set_stream = cs35l56_sdw_dai_set_stream,
++};
++
+ static struct snd_soc_dai_driver cs35l56_dai[] = {
+ 	{
+ 		.name = "cs35l56-asp1",
+@@ -768,6 +810,18 @@
+ 		.symmetric_rate = 1,
+ 		.ops = &cs35l56_sdw_dai_ops,
+ 	},
++	{
++		.name = "cs35l56-ot25",
++		.id = 3,
++		.capture = {
++			.stream_name = "OT25",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = CS35L56_RATES,
++			.formats = CS35L56_TX_FORMATS,
++		},
++		.ops = &cs35l56_ot25_dai_ops,
++	},
+ };
+ 
+ static int cs35l56_write_cal(struct cs35l56_private *cs35l56)
