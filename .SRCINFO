@@ -1,0 +1,25 @@
+pkgbase = ddc-controls-bin
+	pkgdesc = GTK3 monitor control panel for DDC/CI (libddcci) and backlights, with a waybar module (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/ddc-controls
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = atkmm
+	depends = glib2
+	depends = glibc
+	depends = glibmm
+	depends = gtkmm3
+	depends = libgcc
+	depends = libsigc++
+	depends = libstdc++
+	optdepends = brightnessctl: control backlight panels without DDC/CI
+	optdepends = i2c-tools: i2c group and /dev/i2c-* permissions for DDC/CI
+	optdepends = waybar: status bar module (ddc-controls waybar)
+	provides = ddc-controls=0.1.0
+	conflicts = ddc-controls
+	options = !debug
+	source = ddc-controls-0.1.0-x86_64-linux.tar.gz::https://github.com/TheElevatedOne/ddc-controls/releases/download/v0.1.0/ddc-controls-0.1.0-x86_64-linux.tar.gz
+	sha256sums = 9ec3c88f3f2cac670d95f03dd6d0b9ddfc353aca6c4a1e26235448d730d871be
+
+pkgname = ddc-controls-bin
