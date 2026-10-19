@@ -6,7 +6,7 @@
 # separately by mxcli only when a user explicitly requests them.
 
 pkgname=mxcli-nightly-bin
-pkgver=20261017.3d3bb3e3
+pkgver=20261018.80b1b8d0
 pkgrel=1
 pkgdesc="Unofficial nightly binary of the mxcli Mendix development CLI"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=("mxcli=$pkgver")
 conflicts=('mxcli')
 options=('!debug')
 
-_commit=3d3bb3e3f22e04c9a1b1567b6f026ac337eca44b
-_nightly_version=nightly-20261017-3d3bb3e3
+_commit=80b1b8d0de3b059fbffbd7a7f20d5e3c2349883c
+_nightly_version=nightly-20261018-80b1b8d0
 
 source=(
   "LICENSE-$_commit::$url/raw/$_commit/LICENSE"
@@ -36,10 +36,10 @@ sha256sums=(
   'ef7c3df7f13cadf99b64c3538db8b70ad59a9e11de89770eb52a92ef4becdb52'
 )
 sha256sums_x86_64=(
-  '4a4223a74a7f3e8400f02a3301fe264895f3ea4808dfca0e1a38298f94e09e36'
+  'e61b3124d4943168e9523eca4acd3617416caa32c090c346d189f487e5d9ae9d'
 )
 sha256sums_aarch64=(
-  '45678582e2504d06acada374da523312a7a6d1fb7423d7f24404ad1b5bf94714'
+  '059aa15ff80e132d59e18b820f89c37e93ac6705bb6d8b6fa1eac1ffd55c5661'
 )
 
 _binary() {
