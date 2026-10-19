@@ -1,11 +1,11 @@
 pkgbase = noctalia-legacy-v4
 	pkgdesc = Community-maintained legacy Noctalia v4 desktop shell for Wayland, built with Quickshell
 	pkgver = 4.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DBeidachazi/noctalia-shell
 	arch = any
 	license = MIT
-	depends = noctalia-qs
+	depends = noctalia-qs-legacy-v4>=0.0.13
 	depends = qt6-declarative>=6.11
 	depends = qt6-multimedia
 	depends = imagemagick

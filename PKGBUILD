@@ -3,13 +3,13 @@
 pkgname=noctalia-legacy-v4
 _pkgname=noctalia-shell
 pkgver=4.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained legacy Noctalia v4 desktop shell for Wayland, built with Quickshell"
 arch=('any')
 url="https://github.com/DBeidachazi/noctalia-shell"
 license=('MIT')
 depends=(
-  'noctalia-qs'
+  'noctalia-qs-legacy-v4>=0.0.13'
   'qt6-declarative>=6.11'
   'qt6-multimedia'
   'imagemagick'
