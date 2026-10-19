@@ -1,7 +1,7 @@
 # Maintainer: ivanmara
 # Contributor: ivanmara
 pkgname=gentoo-color-bash
-pkgver=2025.08.18 # 2025-05-04 size: 2190
+pkgver=2026.10.19 # 2025-05-04 size: 2190
 #_id=b39e66dce51adbe2ccef98dbd7e321c6c2e6b835
 pkgrel=1
 
@@ -16,23 +16,25 @@ source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/
 sha256sums=('189766ac49f48880ce2507971fc3d8e15449976042d938bf6c6ad77e73793958')
 install=${pkgname}.install.sh
 
-_usage='
-    USAGE:
-        after install, you can enable it:
-        A. for local users:
-               add line:
-                   source /usr/share/gentoo-color-bash/10-gentoo-color.bash
-               to users: ~/.bashrc and /etc/skel/.bashrc
-        B. for system globaly:
-            1. in users: ~/.bashrc and /etc/skel/.bashrc remove\comment var PS1 or empty this files
-            2. add line:
-                   source /usr/share/gentoo-color-bash/10-gentoo-color.bash
-               to global: /etc/bash.bashrc
-            3. relogin
+IFS= read -r -d '' _usage << 'EOF'
 
-        Now you can add (if needed) you own ~/.dir_colors or /etc/DIR_COLORS for perfect ls.
-        See arch wiki or github for examples.
-'
+        # USAGE:
+        # after install package, you can enable it in two steps
+
+        # step 1. system integration (run once, copy/paste block)
+        sudo cp -n /etc/skel/.bashrc{,.default.bak}
+        sudo cp -n /etc/bash.bashrc{,.default.bak}
+        sudo sed -i '/PS1.*/s/^#*/#/' /etc/skel/.bashrc /root/.bashrc > /dev/null 2>&1
+        echo '# --- my addons----------------------------' | sudo tee -a /etc/bash.bashrc
+        echo 'source /usr/share/gentoo-color-bash/10-gentoo-color.bash' | sudo tee -a /etc/bash.bashrc
+
+        # step 2. for every exist user after login run once (copy/paste block)
+        cp -n ~/.bashrc{,.default.bak}
+        sed -i '/PS1.*/s/^#*/#/' ~/.bashrc
+
+        # Now you can add (if needed) you own ~/.dir_colors or /etc/DIR_COLORS for perfect ls.
+        # See arch wiki or github for examples.
+EOF
 
 package() {
 
