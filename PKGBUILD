@@ -7,13 +7,15 @@ arch=('x86_64')
 url="https://github.com/Okazakee/tuxfans"
 license=('MIT')
 depends=()
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Okazakee/tuxfans/archive/v$pkgver.tar.gz")
 sha256sums=('bfaa4adcf32b18628b7055123b0236c81904da03de6f1a036294c805bc3fa4fc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release --frozen
+  # --locked uses the shipped Cargo.lock; not --frozen, so a clean chroot
+  # (empty cargo cache) can still fetch its dependencies.
+  cargo build --release --locked
 }
 
 package() {
