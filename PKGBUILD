@@ -13,7 +13,7 @@ pkgname=genoffice-electron
 _pkgname=genoffice
 _dist_name="GenOffice"
 _electronversion=43
-pkgver=0.11.505
+pkgver=0.11.829
 pkgrel=1
 pkgdesc="Free, open-source AI office suite by Genspark — docs, sheets, slides, PDF and Markdown (system Electron)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source_x86_64=("https://github.com/genspark-ai/genoffice/releases/download/v${pk
 source=("${_pkgname}.sh")
 
 sha256sums=('67b5d78fb2ecdc193068957df2cf90cd96352f854b7dbf1bd882e69fbe8907b6')
-sha256sums_x86_64=('cf91b8c316c08ca65e0387258014e14b17bbcec5a375a6be01181583ad4b3add')
+sha256sums_x86_64=('181dd06d86123f5d38db8c0276e487fd20dc9676c88b843da74488df6033bd67')
 
 prepare() {
     # 解压 deb 数据归档
@@ -75,7 +75,7 @@ package() {
     # 使用修补后的 app.asar，同时拷贝其余资源（native、wasm、modules、gsk 等）
     install -Dm644 "${srcdir}/app.asar" "${_lib_dir}/app.asar"
     find "${srcdir}/opt/${_dist_name}/resources" -mindepth 1 -maxdepth 1 ! -name "app.asar" \
-        -exec cp -a {} "${_lib_dir}/" \;
+        -exec cp -a --no-preserve=ownership {} "${_lib_dir}/" \;
 
     # 确保原生辅助程序有执行权限
     chmod +x "${_lib_dir}/native/xlsx-sidecar"
@@ -86,7 +86,7 @@ package() {
 
     # 安装图标
     install -d "${pkgdir}/usr/share/icons/hicolor"
-    cp -a "${srcdir}/usr/share/icons/hicolor/." "${pkgdir}/usr/share/icons/hicolor/"
+    cp -a --no-preserve=ownership "${srcdir}/usr/share/icons/hicolor/." "${pkgdir}/usr/share/icons/hicolor/"
 
     # 安装 MIME 类型定义
     install -Dm644 "${srcdir}/usr/share/mime/packages/${_pkgname}.xml" \
