@@ -2,7 +2,7 @@
 
 pkgname=chiasmus
 pkgver=0.1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="MCP server for formal verification with Z3, Prolog, and tree-sitter"
 arch=('x86_64')
 url="https://github.com/yogthos/chiasmus"
@@ -26,11 +26,13 @@ build() {
 
   local node_root="${srcdir}/staging/lib/node_modules/${pkgname}"
 
-  # npm >=12 refuses to run a dependency's install script, and neither of these
-  # addons ships a linux-x64 prebuild, so nothing ever compiles their bindings.
-  # npm only warns, so the absence surfaces at runtime rather than here.
+  # npm >=12 refuses to run a dependency's install script, and this addon
+  # ships no prebuild, so nothing compiles its binding. npm only warns, so the
+  # absence surfaces at runtime rather than here. (better-sqlite3 needs no
+  # rebuild: it ships prebuilds/linux-x64.node and its loader prefers that
+  # over any build/Release copy npm's implicit gyp step may have made.)
   local addon
-  for addon in better-sqlite3 @yogthos/tree-sitter-clojure; do
+  for addon in @yogthos/tree-sitter-clojure; do
     ( cd "${node_root}/node_modules/${addon}" &&
       npm_config_nodedir=/usr node-gyp rebuild --release &&
       find build -mindepth 1 -maxdepth 1 ! -name Release -exec rm -rf {} + &&
@@ -60,8 +62,22 @@ package() {
 
   install -Dm644 "${node_root}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+  # node-llama-cpp's optional platform packages: npm installs linux-armv7l on
+  # x86_64 because upstream declares cpu as ["arm","x64"], but it is only
+  # imported when buildOptions.arch is "arm". The cuda, cuda-ext, vulkan, and
+  # cpu x64 variants are all load-bearing here: cuda (statically linked,
+  # needs only the NVIDIA driver) is the primary GPU backend on NVIDIA
+  # machines, cuda-ext is its fallback, and vulkan covers non-NVIDIA GPUs.
+  rm -rf "${node_root}/node_modules/@node-llama-cpp/linux-armv7l"
+
+  # better-sqlite3's loader prefers prebuilds/linux-x64.node over any
+  # build/Release copy, so the other prebuilds are dead weight; keep only
+  # what this arch/libc actually loads.
+  find "${node_root}/node_modules/better-sqlite3/prebuilds" \
+    -mindepth 1 -maxdepth 1 ! -name linux-x64.node -delete 2>/dev/null || true
+
   find "${node_root}" -type f -name '*.node' \
-    \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*-musl*' \) \
+    \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*musl*' \) \
     -delete 2>/dev/null || true
 
   find "${node_root}" -type d \( -name darwin-arm64 -o -name darwin-x64 -o -name win32-arm64 -o -name win32-x64 \) \
