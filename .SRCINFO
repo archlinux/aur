@@ -1,6 +1,6 @@
 pkgbase = lody
 	pkgdesc = Lody Desktop - run AI coding agents in parallel with isolated Git worktrees, live diff review and GitHub integration
-	pkgver = 0.106.0
+	pkgver = 0.107.2
 	pkgrel = 1
 	url = https://lody.ai/home
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = lody
 	depends = util-linux-libs
 	depends = libsecret
 	optdepends = libappindicator: system tray support
-	source = Lody-0.106.0-amd64.deb::https://updates.lody.ai/production/Lody-0.106.0-amd64.deb
-	sha256sums = c471fef58d09651bf9aa27ed890ba01edd9c401d7acdd8b075f61a646dc5d7b5
+	source = Lody-0.107.2-amd64.deb::https://updates.lody.ai/production/Lody-0.107.2-amd64.deb
+	sha256sums = ab8184068691ecb8b8ebebba31af2862ddb8d5ca48896cc4be9a2e680c253c54
 
 pkgname = lody
