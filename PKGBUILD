@@ -1,7 +1,7 @@
 # Maintainer: Koen Hendriks <info@koenhendriks.nl>
 
 pkgname=lconnect-linux
-pkgver=2.0.11.1
+pkgver=2.0.11.2
 pkgrel=1
 pkgdesc="Unofficial Lian Li L-Connect 3 port: UNI FAN TL / TL LCD / SL Infinity fan speed, RGB and LCD control"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 install=lconnect.install
 _src="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e2141e582e16f9f27b00b9b16e1b4a9ab81d9c09f3617544c6c9db9bcf8b0563')
+sha256sums=('b929e19a6c550b12f18e4c8bc371c5fb1d6a5410f82c716dcfa72e057e752735')
 
 build() {
 	cd "$_src"
