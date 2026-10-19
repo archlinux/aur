@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#commit=e49340a71d87ad0cac7b6ab6184463158cebb69b")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=797db9411027cd4a8db50fb513c871db232f9724")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
