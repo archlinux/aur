@@ -3,7 +3,7 @@
 _pkgname=cq
 pkgname="$_pkgname"-csv
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-Performance SQL Query Engine for CSV Files"
 arch=('x86_64')
 url="https://github.com/baldimario/$_pkgname"
@@ -11,7 +11,6 @@ license=('MIT')
 
 depends=('glibc')
 makedepends=('git')
-provides=("$_pkgname")
 conflicts=("$pkgname"-git)
 
 source=(
