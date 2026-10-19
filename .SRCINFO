@@ -1,0 +1,23 @@
+pkgbase = sox-vulkan-bin
+	pkgdesc = Sound eXchange (sox) with Vulkan acceleration
+	pkgver = 16.2.2
+	pkgrel = 1
+	url = https://github.com/simonefil/sox-vulkan
+	arch = aarch64
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libasound.so
+	depends = libgomp.so
+	depends = libvulkan.so
+	provides = sox-vulkan=16.2.2
+	conflicts = sox-vulkan
+	source_aarch64 = sox-vulkan-bin-16.2.2-aarch64::https://github.com/simonefil/sox-vulkan/releases/download/sox-16.2.2/sox-vulkan-linux-aarch64.zip
+	sha256sums_aarch64 = 213bb1f7958a9a4c084578c814ecd8ad47174c1de440403e9659cc9f5fac4b1e
+	source_x86_64 = sox-vulkan-bin-16.2.2-x86_64::https://github.com/simonefil/sox-vulkan/releases/download/sox-16.2.2/sox-vulkan-linux-amd64.zip
+	sha256sums_x86_64 = 262e0a0dc1b8bc8deeec0f9e7869c1626dbf6f115a6a73d59b3976e32c95b0f0
+
+pkgname = sox-vulkan-bin
