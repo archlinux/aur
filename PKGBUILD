@@ -15,7 +15,8 @@ optdepends=(
   'xdg-utils: open links and attachments'
   'mpv: play voice notes (or ffmpeg, pipewire, alsa-utils)'
   'ffmpeg: read voice notes that are not WAV'
-  'whisper.cpp: transcribe voice notes locally'
+  'python-openai-whisper: transcribe voice notes locally (the default command)'
+  'whisper-cpp: transcribe voice notes locally (whisper-cli)'
   'libsecret: read the remote transcription API key from the keyring'
 )
 provides=("$_pkgname")
