@@ -1,6 +1,6 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
-pkgver=b11707
+pkgver=v0.7.0
 pkgrel=1
 pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI. Please read the README on Codeberg before use."
 arch=('x86_64')
@@ -52,10 +52,20 @@ options=(!strip !buildflags)
 source=(
     "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('30959b330db5037216c4d295f04cb1a55f1a2e4d73b813feae6e1166b9b6a6c8')
+sha256sums=('55d67acf3ad2ad747a9bbeb75f9f0e173dbcc0d1753a471038a90c819421c5e1')
 
 prepare() {
-    ln -sf "llama.cpp-${pkgver}" llama.cpp
+    # GitHub tarballs extract to <repo>-<sanitized ref>, and the leading 'v' is
+    # stripped (tag v0.7.0 -> llama.cpp-0.7.0, tag b11707 -> llama.cpp-b11707),
+    # so the directory name does not always match pkgver. Symlink whatever was
+    # extracted to a stable name that build()/package() can use.
+    local extracted
+    extracted="$(find . -mindepth 1 -maxdepth 1 -type d -name 'llama.cpp-*' | head -n1)"
+    if [[ -z "${extracted}" ]]; then
+        echo "Error: no extracted llama.cpp-* directory found in ${srcdir}" >&2
+        return 1
+    fi
+    ln -snf "$(basename "${extracted}")" llama.cpp
 }
 
 build() {
