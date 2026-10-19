@@ -1,6 +1,6 @@
 pkgbase = python-mthds
 	pkgdesc = The Python interface for methods — base structures for structured outputs and the base runner for executing methods via API
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://pypi.org/project/mthds/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-mthds
 	depends = python-tomlkit
 	depends = python-httpx
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/m/mthds/mthds-0.24.0.tar.gz
-	sha256sums = a491838a0c1d2710dcabba2b7cb81cce687e0c4c4943f37a0e39fdc768f08bb3
+	source = https://files.pythonhosted.org/packages/source/m/mthds/mthds-0.25.0.tar.gz
+	sha256sums = 924aa73e4bccbc29859048468d7a68f4fa8c61f738fda13fd857775893ef4187
 
 pkgname = python-mthds
