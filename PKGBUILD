@@ -1,4 +1,5 @@
-# Maintainer: nopw <aur@n0.pw>
+# Maintainer: Thomas LECLERCQ <thomasle@mailbox.org>
+# Contributor: nopw <aur@n0.pw>
 
 pkgname=stremio-linux-shell-git
 pkgver=1.2.2.r36.gd7b2c91
