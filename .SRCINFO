@@ -1,0 +1,22 @@
+pkgbase = registry-spy
+	pkgdesc = Windows registry browser.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://ajsmith.org/projects/registry-spy/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	source = git+https://github.com/andyjsmith/Registry-Spy.git#tag=v1.1.0
+	source = registry-spy-desktop.patch::https://github.com/andyjsmith/Registry-Spy/pull/10.patch
+	sha256sums = fc126bf6f2fb320cd1fce39ebe85f5ab292e8c09309e8a2863133f4e71af1037
+	sha256sums = f6613e257c1e59b9ac630b2dd968ce1d7b84ea1b540611cb49d728e55a8a52bc
+
+pkgname = registry-spy
+	depends = python
+	depends = python-registry
+	depends = pyside6
