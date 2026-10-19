@@ -1,6 +1,6 @@
 pkgbase = llamastash-bin
 	pkgdesc = Zero-overhead, terminal-native local-LLM manager (prebuilt)
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/llamastash/llamastash
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = llamastash-bin
 	provides = llamastash
 	conflicts = llamastash
 	conflicts = llamastash-git
-	source_x86_64 = https://github.com/llamastash/llamastash/releases/download/v0.9.0/llamastash-0.9.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = d74c643014b0d627c7966f88010945e01e313751c77a14c0cd0ae3cae4f380c8
-	source_aarch64 = https://github.com/llamastash/llamastash/releases/download/v0.9.0/llamastash-0.9.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4b09a37b4a3f8dbda29e65de7bfd349619b9ed2ba8dc1f1a423d681c72d7cf71
+	source_x86_64 = https://github.com/llamastash/llamastash/releases/download/v0.9.1/llamastash-0.9.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d8c140843f9c82176ef811a6ab18d8dbce0979e1184a6557cafbe65acd082801
+	source_aarch64 = https://github.com/llamastash/llamastash/releases/download/v0.9.1/llamastash-0.9.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f921a7ad07f8d108706a8e6c0a28a881a73c95c9b7633344eae2d74d4c084811
 
 pkgname = llamastash-bin
