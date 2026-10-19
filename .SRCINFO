@@ -1,6 +1,6 @@
 pkgbase = xpt
 	pkgdesc = a package-management suite for .xpt packages
-	pkgver = 0.12.0
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://sr.ht/~juanvel400/xpt
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xpt
 	depends = libarchive
 	depends = zstd
 	depends = sqlite3
-	source = https://dl.juanvel400.com/xpt/xpt-0.12.0.tar.xz
-	sha256sums = 9d9a2faa9f49acb91b09218f0e24574d0017917bdb32d3ac92ef93211e575476
+	source = https://dl.juanvel400.com/xpt/xpt-0.13.2.tar.xz
+	sha256sums = f5eccb12539183021fb90b94ca55d3a6f6a604df16fa043e54333e6e176f156c
 
 pkgname = xpt

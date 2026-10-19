@@ -1,6 +1,6 @@
 # Maintainer: juanvel400 <me@juanvel400.com>
 pkgname=xpt
-pkgver=0.12.0
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="a package-management suite for .xpt packages"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=(openssl libarchive zstd sqlite3)
 makedepends=(pkg-config meson ninja)
 source=("https://dl.juanvel400.com/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('9d9a2faa9f49acb91b09218f0e24574d0017917bdb32d3ac92ef93211e575476')
+sha256sums=('f5eccb12539183021fb90b94ca55d3a6f6a604df16fa043e54333e6e176f156c')
 
 build() {
     cd "$pkgname-$pkgver"
