@@ -1,17 +1,16 @@
 # Maintainer: gergi
 pkgname=python-xknx
-pkgver=3.16.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="An Asynchronous Library for the KNX protocol"
 arch=('any')
 url="https://github.com/XKNX/xknx"
 license=('MIT')
-depends=('python>=3.10' 'python-cryptography' 'python-ifaddr')
+depends=('python>=3.11' 'python-cryptography>=35.0.0' 'python-ifaddr>=0.1.7')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('python-async-timeout: for Python < 3.11'
-            'python-typing_extensions: for Python < 3.11')
+optdepends=('python-typing_extensions: required for Python < 3.13')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XKNX/xknx/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8fad8c5b0829ce76db6686f7bf74dc8b8d33b1e360a260bf41f8193a2a6266f2')
+sha256sums=('d968548f9dd0a820535905e3ccbb7b37ada76fefc3109920f8fde05bba2b1f6a')
 
 build() {
     cd "$srcdir/xknx-$pkgver"
@@ -21,4 +20,5 @@ build() {
 package() {
     cd "$srcdir/xknx-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
