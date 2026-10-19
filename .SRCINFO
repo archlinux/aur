@@ -1,0 +1,17 @@
+pkgbase = hifox-cli-bin
+	pkgdesc = HiFox CLI: terminal client for the HiFox human and AI agent collaboration platform (prebuilt binary)
+	pkgver = 0.4.432
+	pkgrel = 1
+	url = https://hifox.com/
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Proprietary
+	provides = hifox-cli
+	conflicts = hifox-cli
+	options = !strip
+	source_x86_64 = hifox-cli_linux_amd64-0.4.432.tar.gz::https://file-assets.hifox.com/download/0.4.432/linux/HiFox-cli_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9e802f6005aedff8e368a1f66ed8375caaecc6562c2308d4404d0bf242c19c88
+	source_aarch64 = hifox-cli_linux_arm64-0.4.432.tar.gz::https://file-assets.hifox.com/download/0.4.432/linux/HiFox-cli_linux_arm64.tar.gz
+	sha256sums_aarch64 = fb19169267112e4e3f12e35e9f9869e10fcac7279902a1bccee97f8d22f73f91
+
+pkgname = hifox-cli-bin
