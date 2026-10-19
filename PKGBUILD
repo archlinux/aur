@@ -29,7 +29,7 @@ source=(
   "galtransl-${pkgver}.png::https://raw.githubusercontent.com/GalTransl/GalTransl/${pkgver}/desktop/src-tauri/icons/128x128@2x.png"
 )
 sha256sums=(
-  '1957c2696e51108785454b4f4e1952fc96a7fe5873a84cbea7046ffb9c823d84'
+  'f60fc08a26f3635bbf8f7385f294c5f60e203dd84357ad7222b4bc703c213f63'
   '9d0829dd6777484355b9c0d567d708e802852380b278e8407fa03c408cfec85f'
 )
 source_x86_64=(
