@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=blender-mcp-git
-pkgver=r244.7a0373e
+pkgver=r246.25e1fe0
 pkgrel=1
 pkgdesc="Connect Blender to Claude AI via Model Context Protocol for prompt-assisted 3D modeling"
 arch=('any')
