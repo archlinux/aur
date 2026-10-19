@@ -1,6 +1,6 @@
 pkgbase = pipelex-tools
 	pkgdesc = MTHDS/TOML formatter, linter, and LSP
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/Pipelex/pipelex
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = pipelex-tools
 	depends = libgcc
 	optdepends = python-pipelex-tools
 	provides = plxt
-	source = https://files.pythonhosted.org/packages/source/p/pipelex_tools/pipelex_tools-0.12.0.tar.gz
-	sha256sums = b056623d5b400c303ff51b1d3bf016b963024dd2aa1b48a89edecc0c63ff1c89
+	source = https://files.pythonhosted.org/packages/source/p/pipelex_tools/pipelex_tools-0.13.0.tar.gz
+	sha256sums = 79b1cc7aced68adaff2432bdab8931d1b3a3153842f457a09bcf1f429d70945a
 
 pkgname = pipelex-tools
