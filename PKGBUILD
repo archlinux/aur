@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Botropolis-City/botropolis"
-license=('MIT')
+license=('MIT' 'OFL-1.1' 'CC0-1.0')
 # Ebitengine reaches GL and X11 through dlopen rather than linking them, so the
 # binaries' only NEEDED entry is libc and namcap reports every one of these as
 # possibly unneeded. They are needed: the sonames are in the binaries' string
@@ -54,7 +54,7 @@ package() {
     # The Kenney atlases and the Inter typeface are compiled into the binaries,
     # so their licences ship with the package rather than only with the source.
     #
-    # Under ${pkgname}, not ${_pkgname}: a licence audit looks for license=MIT
+    # Under ${pkgname}, not ${_pkgname}: a licence audit looks for each declared licence
     # beneath /usr/share/licenses/<the installed package>. The docs above stay
     # under botropolis, where the program's name puts them either way.
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
