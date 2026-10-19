@@ -1,6 +1,6 @@
 pkgbase = butaglyph
 	pkgdesc = Fast prompt for bash, zsh, fish and PowerShell, with presets, gradients and its own git reader
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Huseynteymurzade28/butaglyph
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = butaglyph
 	provides = butaglyph
 	conflicts = butaglyph-bin
 	options = !debug
-	source = butaglyph-0.3.0.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = c41bb5ba56ae0931840974bc40c6c845fb6b0c84f3f2d0df8eb2c5f0103e9fa2
+	source = butaglyph-0.4.0.tar.gz::https://github.com/Huseynteymurzade28/butaglyph/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = d9c492cfce631d17cd307b6b23cd2296e5e19dd4ee7ac4ec7c0e69dfbacc7ace
 
 pkgname = butaglyph
