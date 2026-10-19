@@ -3,7 +3,7 @@
 
 pkgname='aimp-skin-kantaris-teyp-lite'
 pkgdesc='AIMP skin: Kantaris-Teyp Lite v2.0.0.1 (by memo-se)'
-pkgver=20261014
+pkgver=20261019
 pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
