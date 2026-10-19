@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cadcraft-studio
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 url="https://getcadcraft.com/studio"
 _url="https://github.com/getcadcraft"

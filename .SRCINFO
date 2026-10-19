@@ -1,6 +1,6 @@
 pkgbase = cadcraft-studio
 	pkgdesc = Every CadCraft app in one desktop install, on one license
-	pkgver = 0.4.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://getcadcraft.com/studio
 	arch = x86_64
