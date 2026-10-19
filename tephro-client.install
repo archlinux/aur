@@ -1,0 +1,23 @@
+post_install() {
+  _fix_sandbox
+}
+
+post_upgrade() {
+  _fix_sandbox
+}
+
+_fix_sandbox() {
+  # Mirrors the .deb postinst's check: Chromium's own sandbox works without
+  # SUID when the kernel allows unprivileged user namespaces (the Arch
+  # default). Only fall back to setuid-root if this machine has them
+  # disabled (sysctl kernel.unprivileged_userns_clone=0, or a kernel built
+  # without CONFIG_USER_NS).
+  if { [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; }; then
+    chmod 0755 /opt/Tephro/chrome-sandbox 2>/dev/null || true
+  else
+    chmod 4755 /opt/Tephro/chrome-sandbox 2>/dev/null || true
+    echo 'tephro-client: unprivileged user namespaces are unavailable on this'
+    echo 'kernel; chrome-sandbox was made setuid-root so Electron can still'
+    echo 'sandbox its renderer processes.'
+  fi
+}
