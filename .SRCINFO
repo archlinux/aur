@@ -1,6 +1,6 @@
 pkgbase = cordial-bin
 	pkgdesc = Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one (prebuilt)
-	pkgver = 0.25.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/luohoa97/cordial
 	install = cordial-bin.install
@@ -28,7 +28,7 @@ pkgbase = cordial-bin
 	conflicts = cordial-git
 	options = !strip
 	options = !debug
-	source = cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v0.25.0/cordial-0.25.0.r0.g3e5f66d-1-x86_64.pkg.tar.zst
-	sha256sums = 144543017ba4f5f625f5550f5df9df1aeb95ea7ea6e7112b1ef6ff0a1840443e
+	source = cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v0.34.0/cordial-0.34.0.r0.gfe20025-1-x86_64.pkg.tar.zst
+	sha256sums = d1a72ea80a2ee936ae129c904b9f3274eeba1bb5f0d4c0467dc3c6e575dc8f88
 
 pkgname = cordial-bin
