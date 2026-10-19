@@ -2,7 +2,7 @@
 
 pkgname='zoi'
 _tag="Prod-Release-$pkgver"
-pkgver=1.29.2
+pkgver=1.29.3
 pkgrel=1
 pkgdesc="Advanced Package Manager & Environment Orchestrator"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ source=("$url/-/archive/$_tag/Zoi-Prod-Release-$pkgver.tar.gz"
   "zoi.1::$_downloads/zoi.1"
   "zoi-rs.3::$_downloads/zoi-rs.3"
   "zoi-lua.5::$_downloads/zoi-lua.5")
-sha512sums=('0b4786ebe08466e083dca8625c714ba5ae9e132a9d9f399113ddeb21498ca27e94cf95d08b81db415a9dd96b043ec7c34b699eb57ccdcaef65f2476e96ac58bb'
+sha512sums=('a63a5bc764564e1f50478cbc8054ae7d39b7a4d3483114540a4c4983338e5bfb70e949098bb410fbe620af9acb5255974d2d0df84546dd5aec7e015ed2b3e40e'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea'
   'e981e54d67aa7dcb3197b826e3167054acf6cec2e318a90d3ab4b1818423a2f36e2df8e9263a84bc77ba62aa128c3f7dffc383263f0cfe90c979409159793714'
   '0de4f97e67bd2937f282605f888b4564673673fe6500beb06f2e4e3e9c1edf16786e30a2ea814c1e0de84a2b04f7b0c70cfbc2d54cbca7772e3afda77187d244'
