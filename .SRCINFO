@@ -1,0 +1,21 @@
+pkgbase = cbirds-bin
+	pkgdesc = A flock of birds in your terminal
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/clainstone/cbirds
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cbirds
+	conflicts = cbirds
+	options = !strip
+	source = README-1.7.0.md::https://raw.githubusercontent.com/clainstone/cbirds/v1.7.0/README.md
+	source = LICENSE-1.7.0::https://raw.githubusercontent.com/clainstone/cbirds/v1.7.0/LICENSE
+	sha256sums = 9e506cf361ef9b8a65a8ad15aecffe306535dbb9646efe6758c95e3cf1334865
+	sha256sums = ce43414abce90c24554e5a903c3a2cfa8112deb380b7842daa91b481ef33e444
+	source_x86_64 = cbirds-x86_64-1.7.0.deb::https://github.com/clainstone/cbirds/releases/download/v1.7.0/cbirds_1.7.0-1_amd64.deb
+	sha256sums_x86_64 = ed83085bd148c9d0dd5ad98b32d86fb1c39b6a997b10d5dcc0877a5765bdf950
+	source_aarch64 = cbirds-aarch64-1.7.0.deb::https://github.com/clainstone/cbirds/releases/download/v1.7.0/cbirds_1.7.0-1_arm64.deb
+	sha256sums_aarch64 = e130f264b59ceb3a4bc57674a5c4f46df5b052e60916acef320543c5ebce7802
+
+pkgname = cbirds-bin

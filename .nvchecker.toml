@@ -1,0 +1,5 @@
+[cbirds-bin]
+source = "github"
+github = "clainstone/cbirds"
+use_latest_release = true
+prefix = "v"
