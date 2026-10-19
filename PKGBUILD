@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
-pkgver=0.5.4
+pkgver=0.5.4.1
 pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
@@ -49,6 +49,7 @@ makedepends=(
     'pkgconf'
     'python'
     'robin-map'
+    'stb'  # external/stb_truetype.h for the training module (see prepare())
     'tar'
     'unzip'
     'volk'  # find_package(volk CONFIG); header-only loader
@@ -68,7 +69,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio
         "libvterm-${_libvtermcommit}.tar.gz::https://github.com/neovim/libvterm/archive/${_libvtermcommit}.tar.gz"
         "nanobind-${_nanobind_ver}.tar.gz::https://github.com/wjakob/nanobind/archive/refs/tags/v${_nanobind_ver}.tar.gz"
         'lichtfeld-studio.desktop')
-sha256sums=('83186ff8d85d44284e6c23c9c9333d6c73a94c2e52bbd35134f2d011cf45fb74'
+sha256sums=('48466aa1e8feabfd06e70d42dc6cf110004f2c1670ad1b7ca87be25b63a0b079'
             'SKIP'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
             '01f1f0cd0398743c18f33d07ae36ad410bd7f4a1e90683b508504de897d6e629'
@@ -86,6 +87,14 @@ prepare() {
     # Populate libvterm (submodule not included in release tarball)
     rm -rf external/libvterm
     cp -a "$srcdir/libvterm-${_libvtermcommit}" external/libvterm
+
+    # The release tarball ships stb_image.h but not stb_truetype.h, which
+    # src/training/metrics/eval_image_labels.cpp includes. Upstream only gets the
+    # header because vcpkg's assimp pulls the vcpkg stb port, whose headers land
+    # in the include root assimp's exported target exposes; we build against
+    # system assimp, so link it in from the stb package. external/ is already an
+    # include dir of the training module.
+    ln -sf /usr/include/stb/stb_truetype.h external/stb_truetype.h
 
     # Bootstrap vcpkg (makepkg manages clone/fetch via source array).
     # Copy instead of symlink: bootstrap downloads binary to vcpkg/vcpkg
@@ -122,6 +131,29 @@ EOF
     # already getResourceBaseDir()/shaders/vulkan_rasterizer via FHS).
     sed -i 's|LFS_VULKAN_RASTERIZER_DEV_SPV_DIR="\${LFS_VULKAN_RASTERIZER_SPV_DIR}/"|LFS_VULKAN_RASTERIZER_DEV_SPV_DIR="/usr/share/LichtFeld-Studio/shaders/vulkan_rasterizer/"|' \
         src/rendering/rasterizer/vulkan/CMakeLists.txt
+
+    # Two install rules resolve their paths from CMAKE_INSTALL_PREFIX alone, so
+    # under makepkg they act on the host's /usr instead of the staged payload:
+    # the third-party notice check then rejects the system's own CUDA/NVIDIA
+    # files, and the nvjpeg2k SONAME symlinks are created outside the package.
+    /usr/bin/python -c '
+from pathlib import Path
+
+path = Path("CMakeLists.txt")
+text = path.read_text()
+replacements = [
+    (r"--install-prefix \"\${CMAKE_INSTALL_PREFIX}\"",
+     r"--install-prefix \"\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}\"", 1),
+    (r"WORKING_DIRECTORY \"\${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}\"",
+     r"WORKING_DIRECTORY \"\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}\"", 2),
+]
+for old, new, expected in replacements:
+    if text.count(old) == expected:
+        text = text.replace(old, new)
+    elif new not in text:
+        raise SystemExit(f"install rule no longer matches: {old}")
+path.write_text(text)
+'
 
     # Trim vcpkg.json to only deps without system equivalents.
     # Everything else comes from Arch packages (faster build, smaller footprint).
@@ -213,6 +245,13 @@ package() {
     # needed at runtime by the main binary and the python module). No Arch package.
     install -Dm755 build/Build/lib/libOpenMeshCore.so.11.0 \
         build/Build/lib/libOpenMeshTools.so.11.0 -t "$pkgdir/usr/lib/"
+
+    # Upstream's install rule creates these SONAME links (see prepare()); fail
+    # loudly if it stops matching rather than shipping a versioned-only library.
+    for _link in libnvjpeg2k.so.0 libnvjpeg2k.so; do
+        [[ -e "$pkgdir/usr/lib/$_link" ]] ||
+            { echo "ERROR: $_link missing from the package"; return 1; }
+    done
 
     # Fix RUNPATH: replace vcpkg build paths with /usr/lib
     for f in $(find "$pkgdir" -type f \( -name '*.so' -o -name '*.so.*' -o -executable \)); do
