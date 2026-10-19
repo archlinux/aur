@@ -1,13 +1,13 @@
 pkgbase = ttf-lxgw-wenkai-mono-nerd
 	pkgdesc = LXGW WenKai Mono patched with Nerd Font glyphs
-	pkgver = 1.522
+	pkgver = 1.530
 	pkgrel = 1
 	url = https://github.com/Yikai-Liao/LxgwWenKaiNerdFont
 	arch = any
 	license = OFL
-	source = ttf-lxgw-wenkai-mono-nerd-1.522.zip::https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/v1.522/lxgw-wenkai-nerd-mono-1.522.zip
-	source = OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/v1.522/OFL.txt
-	sha256sums = 43d5224d420935ab0ffad15f24517a0d898180bd6d0da7a7be6df15d41a05631
+	source = ttf-lxgw-wenkai-mono-nerd-1.530.zip::https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/v1.530/lxgw-wenkai-nerd-mono-1.530.zip
+	source = OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/v1.530/OFL.txt
+	sha256sums = f9dbf521dc799ab328ef4dc3a69222a2e425928dee047ead120fe2c3968c9cd6
 	sha256sums = ef535bf1a3c546928f8e97570f2c72603185f88fa4d82a6df6708348ad4c7614
 
 pkgname = ttf-lxgw-wenkai-mono-nerd
