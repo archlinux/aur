@@ -26,8 +26,8 @@ source=(
   "LICENSE.upstream::https://raw.githubusercontent.com/NikolayIT/RatioMaster.NET/v${pkgver}/LICENSE"
 )
 sha256sums=('8b061698df912d3d7700fdd8a9ffb2b23e0c881bb41805394baf1790f47ad2dc')
-sha256sums_x86_64=('3bed88b85fb0287463f664951f76a203b6feaa448250168eb307cea4c93c0907')
-sha256sums_aarch64=('44e076025e77e5c51b995839332fb164bb50dd47ee06ba2ed6e0eac7e9044664')
+sha256sums_x86_64=('a499241aedcffbb4258f9045c07bf03eff28a50fb691f3ba5624beff45d5ec71')
+sha256sums_aarch64=('a26d43fd484020e26d68e7788dc1111bc60abcfcec40c27192727341d7ed7220')
 
 source_x86_64=("${_pkgname}-linux-x64.tar.gz::https://github.com/NikolayIT/RatioMaster.NET/releases/download/v${pkgver}/${_pkgname}-linux-x64.tar.gz")
 source_aarch64=("${_pkgname}-linux-arm64.tar.gz::https://github.com/NikolayIT/RatioMaster.NET/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.gz")
