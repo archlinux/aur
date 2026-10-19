@@ -1,8 +1,8 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 
 pkgname=bclone
-pkgver=1.75.2
-pkgrel=3
+pkgver=1.75.3
+pkgrel=1
 pkgdesc="rclone with Alist, Alldebrid, iCloud Photos, Teldrive, Terabox, Tmpfs, and unofficial Google Photos (gotohp) support"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/BenjiThatFoxGuy/bclone"
@@ -14,7 +14,7 @@ provides=(rclone)
 conflicts=(rclone)
 options=(!strip)
 source=("git+https://github.com/BenjiThatFoxGuy/bclone.git#tag=v${pkgver}")
-sha256sums=('904f79d06781a78bf572117fd693f8c53dde57560d7dc33a8628363edfc42fd3')
+sha256sums=('6b8bf060759ccd2282c7acbfd33b64f19046ec40a0c29f10a1f2b5e05f6ba517')
 
 build() {
     cd "$srcdir/$pkgname"
