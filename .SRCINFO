@@ -1,6 +1,6 @@
 pkgbase = python-qiskit
 	pkgdesc = An open-source SDK for working with (IBM) quantum computers
-	pkgver = 2.5.2
+	pkgver = 2.6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Qiskit/qiskit
@@ -42,7 +42,7 @@ pkgbase = python-qiskit
 	optdepends = python-z3-solver: theorem prover
 	provides = libqiskit.so
 	conflicts = python-qiskit-terra
-	source = qiskit::git+https://github.com/Qiskit/qiskit#tag=2.5.2
-	b2sums = 9af18913cf85f69de7eb8151f36dc670e33fcbf92c6a654fe1890310d8423567691bee8a33a0943f095c51aeb36750c61373fb16bab16bdba5fa1755537098ee
+	source = qiskit::git+https://github.com/Qiskit/qiskit#tag=2.6.0
+	b2sums = c7bf5fdfbb538421b891bc066102ae3d770fba65ad753c9cd1a6a007990f440c5ef82dbcc76a207bd416d1b1beb7edcdaf92090bb083690f0966ca8ca3f43185
 
 pkgname = python-qiskit
