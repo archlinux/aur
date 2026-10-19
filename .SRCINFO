@@ -1,0 +1,17 @@
+pkgbase = voidal
+	pkgdesc = 4x strategy game inspired by Aurora 4x
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://voidal.net
+	arch = x86_64
+	license = LicenseRef-voidal
+	depends = glu
+	depends = libglvnd
+	depends = sdl2-compat
+	options = !debug
+	source = voidal-0.4.0.zip::https://voidal.net/voidal_builds/v0.4.0/VoidalLinux.zip
+	source = LICENSE_THIRD_PARTY.txt::https://raw.githubusercontent.com/jensaly/voidal/3a3d79ae244a973c6e1440a16d2402d86eb3a0a7/LICENSE_THIRD_PARTY.txt
+	sha256sums = cc91af5c3eb845d4ad62dce84dbcdb54efbbf1c522ba6e9756287039b2491002
+	sha256sums = 78bbc7558a5c88adc8f65454098c706e3c7602ebf45ff8fce27392149838ae43
+
+pkgname = voidal
