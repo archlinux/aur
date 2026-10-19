@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=CVXR
-_pkgver=1.9.2
+_pkgver=1.9.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('94fd108c9ed312b782a8c45f1282cf3c')
-b2sums=('30b07ebc2adb0bb9e9276f9ab295b584a0d9129ffc4963956bda0dca8f0a092accbc3540e02ce316870d5e02d50692e1ed22063309fbce12f0fbcaf51cf2345a')
+md5sums=('d794b01fc66baf6f199ebdf539138a83')
+b2sums=('8fa02743ba90604165be9a00a267e6427164bcf7d4ea8f343f5401ef147303941ae09cc073e4dc2daf7f4a74790369c1fcc90d3d37632c22a5584b23f8b8da69')
 
 build() {
   mkdir build
