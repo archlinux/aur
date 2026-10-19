@@ -1,0 +1,11 @@
+# Ignore downloaded AppImages, archives, and packages
+*.AppImage
+*.tgz
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# Ignore build directories and upstream readme
+src/
+pkg/
+squashfs-root/
+README.txt

@@ -1,0 +1,12 @@
+post_install() {
+    echo "==> HueForge notes:"
+    echo "  - If you use a TD1 USB serial device, add your user to the 'uucp' group:"
+    echo "      sudo usermod -aG uucp \$USER"
+    echo "    (Log out and log back in for changes to take effect)"
+    echo "  - For optional Vulkan rendering backend support, install 'vulkan-icd-loader':"
+    echo "      sudo pacman -S vulkan-icd-loader"
+}
+
+post_upgrade() {
+    post_install
+}

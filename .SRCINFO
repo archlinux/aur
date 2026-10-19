@@ -1,0 +1,23 @@
+pkgbase = hueforge-bin
+	pkgdesc = Color filament painting software for 3D printing
+	pkgver = 0.9.4.4
+	pkgrel = 1
+	url = https://thehueforge.com
+	install = hueforge.install
+	arch = x86_64
+	license = custom:proprietary
+	depends = fuse2
+	depends = libxcb
+	depends = xcb-util-cursor
+	depends = libxkbcommon-x11
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = vulkan-icd-loader: for Vulkan rendering backend support
+	optdepends = uucp: group membership required for TD1 USB serial access
+	provides = hueforge=0.9.4.4
+	conflicts = hueforge
+	options = !strip
+	source = local://HueForge_Linux_v0.9.4.4.AppImage
+	sha256sums = f35fce870ec9939a8116b0ffd447561c4e0c76c89943b9d19c3d320178e8c649
+
+pkgname = hueforge-bin
