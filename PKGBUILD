@@ -3,7 +3,7 @@
 
 pkgname=mirai-git
 _repo=mirai
-pkgver=r470.c73dc75
+pkgver=0.1.0.r0.g76ce40a
 pkgrel=1
 pkgdesc='GTK4/libadwaita Go board for analysis, review and play with KataGo'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_repo"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  # A prerelease joins its version without the hyphen: vercmp orders 0.1.0rc.1 before 0.1.0.
+  git describe --long --tags --abbrev=7 --match 'v[0-9]*' |
+    sed 's/^v//;s/^\([0-9.]*\)-\([A-Za-z]\)/\1\2/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
