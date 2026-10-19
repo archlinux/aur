@@ -2,7 +2,7 @@
 
 pkgauthor="hcgatewood"
 pkgname="pdate-cli"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="🔮 Human-readable dates and times"
 
@@ -22,7 +22,7 @@ depends=('python' 'python-click' 'python-dateutil' 'python-dateparser' 'python-h
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz"
         "fix_warning.patch")
-sha256sums=('353aa843199832eb8dd90a8217f4205535025689c5df1be2d26135fffe90e774'
+sha256sums=('852a530a683b6d324abbd713fc91e737055e1a8417a1e12901950c9cd03063ec'
             '153ff393a47300a285f7f79c29cdd63039c9bbdce43f6651f3a92ec5625a03a5')
 
 
