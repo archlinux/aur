@@ -15,7 +15,7 @@ declare -Ag _arch=(
 
 _pkgname="zls"
 pkgname="${_pkgname}-bin"
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
@@ -26,7 +26,7 @@ license=(
   'MIT'
 )
 depends=(
-  "zig>=${pkgver}"
+  "zig>=${pkgver%.*}"
 )
 makedepends=(
   'minisign'
@@ -44,19 +44,19 @@ source_${_carch}=(
   'https://builds.zigtools.org/${_pkgname}-${_arch[${_carch}]}-linux-${pkgver}.tar.xz.minisig'
 )"
 done
-sha256sums_aarch64=('430cd293d201eb70ae2519dbc96c854bf8791b8df7fc9392e8d2dc9680a2bed7'
+sha256sums_aarch64=('5ac32eed4110105fbd1a43995d71c319200db8d6a3dcc43a3f74f29b4f0eca5a'
                     'SKIP')
-sha256sums_i686=('2f7965da884d74d9f7e8b8ef1208ae137084680ddf8580473ff412f62a4051a8'
+sha256sums_i686=('cc993590d33951a970467101f9d9c17a18d05d11fe7718d1a777391e95c7b662'
                  'SKIP')
-sha256sums_riscv64=('2764ac1303a5b398569df0e8702c6f6ef86da915aeff4bf9dd0c22bc55324288'
+sha256sums_riscv64=('8fcb9f2bdde7f0d765912ee124986195b2f9529d9ae8469acdad6d95c60ac705'
                     'SKIP')
-sha256sums_x86_64=('ded6d562a0b86ee878b1ddf70ffab2797ce3cdca3b02d6077548f9d56dff96b6'
+sha256sums_x86_64=('33193a6c951cf20edbfd0dd7f54669255cd0e822722bdedb1e782827a44b2a9b'
                    'SKIP')
-sha256sums_powerpc64le=('d51289187aaa892eb266baaa6c1d7f2a30f6d195eaa295c6f54eef17214f03fa'
+sha256sums_powerpc64le=('6d69d4cc3ccc84137ca80582d5155a4ef5f2478cd92c6db0f142904e63def2d5'
                         'SKIP')
-sha256sums_loong64=('91128eb73e475cb85f81c40182cb6ce24457b29c857ceb8619205e6cc4bc7b96'
+sha256sums_loong64=('4ee4f4eb560f415b599d5eb19dfadd9276de7eba424e35a6efc35051e191de57'
                     'SKIP')
-sha256sums_armv7h=('7cf8d11f914127809b89254ad97e4b96d84294370418954a49b78bd623d3c55e'
+sha256sums_armv7h=('7e31f1b46e46186733448f7f2ae41b7dc29268fffd09c66890ac9b386a0da8f6'
                    'SKIP')
 
 verify() {
