@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = GE_Proton11_10
+	pkgver = GE_Proton11_11
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -28,7 +28,7 @@ pkgbase = proton-ge-custom-bin
 	optdepends = lapack: Vosk speech recognition support
 	optdepends = lib32-lapack: Vosk speech recognition support for 32bit applications
 	provides = proton
-	provides = proton-ge-custom=GE.Proton11_10
+	provides = proton-ge-custom=GE.Proton11_11
 	conflicts = proton-ge-custom
 	conflicts = proton-ge-bin
 	options = !strip
@@ -40,9 +40,9 @@ pkgbase = proton-ge-custom-bin
 	sha512sums = 5d1a841d3f8f65f9e62742f84eeccfb198a0292a97ba9109f377a550a4de0e2913d1e17b3d90ecd37ac09411dc67e54662dc1be301554ce05fd128d842252deb
 	sha512sums = 78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd
 	sha512sums = 60bcb1ad899d108fca9c6267321d11871feae96b696e44607ef533becc6decb493e93cbe699382e8163ad83f35cfa003a059499c37278f31afeba4700be6e356
-	source_x86_64 = GE-Proton11-10_1-x86_64.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-10/GE-Proton11-10-x86_64.tar.gz
-	sha512sums_x86_64 = 389d15b55dc30e5e7e4779eaa1c6195365a0055fb590db170505707aa95b3518c4c65e3888cfec2aea7be1ce218309557370724d2275520a7e76360a55bdfe95
-	source_aarch64 = GE-Proton11-10_1-aarch64.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-10/GE-Proton11-10-aarch64.tar.gz
-	sha512sums_aarch64 = f71902406074d4e8ba49ae55a46177f92616f284fad5b52d8b35770daa896bc5860f165b9517d7a1db736165903d966023b651eb10f04f27db33d82df98c323c
+	source_x86_64 = GE-Proton11-11_1-x86_64.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-11/GE-Proton11-11-x86_64.tar.gz
+	sha512sums_x86_64 = 45721a7b625b2404d8896bb5e2a8b87fc9623a394873a6dd6b900c839681d5c01ec694ca00d003fc9c733c5f6c5648af8171985656f9fa47e20999fbebdbe235
+	source_aarch64 = GE-Proton11-11_1-aarch64.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-11/GE-Proton11-11-aarch64.tar.gz
+	sha512sums_aarch64 = 4863f86773514ce7cc2c7867d393b725fcd9e32f7948a3b4035ae67a84b3e0ff4b179c479079a0dcf141c159faa19f67e7b82b3ed4c4b0ef9720226d55594661
 
 pkgname = proton-ge-custom-bin
