@@ -1,14 +1,14 @@
 # Maintainer: John Wason <wason@wasontech.com>
 pkgbase=robotraconteur
 pkgname=(librobotraconteurcore1 librobotraconteur-devel python-robotraconteur robotraconteurgen)
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="Robot Raconteur is a communication framework for Robotics and Automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/robotraconteur/robotraconteur"
 license=('Apache-2.0')
 source=("https://github.com/robotraconteur/robotraconteur/releases/download/v${pkgver}/RobotRaconteur-${pkgver}-Source.tar.gz")
-sha256sums=('f77bbaa1f31cd1ee96db62926bba468e92edf35be8fd483139444f6a2dc956bc')
+sha256sums=('e60cae8feff2e2eee0e6c9ca965055ebd36a7f4583dc4465e07c8c02a8b4c0bb')
 makedepends=(
   'cmake>=3.5.1'
   'boost>=1.58.0'
@@ -24,7 +24,7 @@ makedepends=(
   'gtest'
   'base-devel'
 )
-_libdepends=('bluez-libs' 'dbus' 'libusb')
+_libdepends=('bluez-libs' 'dbus' 'libusb' 'boost-libs')
 _pythondepends=('python' 'python-numpy')
 
 prepare() {
@@ -79,7 +79,7 @@ package_python-robotraconteur() {
 
 package_robotraconteurgen() {
   pkgdesc="RobotRaconteurGen tool"
-  depends=('librobotraconteurcore1')
+  depends=('librobotraconteurcore1' 'boost-libs')
   cd "$srcdir/RobotRaconteur-${pkgver}-Source/build"
   DESTDIR="$pkgdir" cmake --install .
   # Keep only the generator binary and man page (if present)
