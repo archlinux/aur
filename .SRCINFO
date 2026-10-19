@@ -1,6 +1,6 @@
 pkgbase = gz-rendering8
 	pkgdesc = C++ library designed to provide an abstraction for different rendering engines.
-	pkgver = 8.2.3
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-rendering
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = gz-rendering8
 	optdepends = optix: Nvidia OptiX rendering engine plugin
 	optdepends = ogre-1.9: Ogre 1.x rendering enging plugin
 	provides = gz-rendering=8
-	source = https://github.com/gazebosim/gz-rendering/archive/gz-rendering8_8.2.3.tar.gz
+	source = https://github.com/gazebosim/gz-rendering/archive/gz-rendering8_8.3.0.tar.gz
 	source = https://github.com/gazebosim/gz-rendering/pull/1128.patch
-	sha256sums = 5bfe18d164414e098b2ba6ef81bf9391f7ff8f2c39b8a4fa9f8543f778e921c8
+	sha256sums = 4ea8ebc394432cf782b7c0659c961bbb4e531a0cdb6953ee3acf86698ea58b9e
 	sha256sums = 2c9939d6d5eeb4b669267d09266e45a7dc0d387bf3e1b01510acc5090a6be92d
 
 pkgname = gz-rendering8
