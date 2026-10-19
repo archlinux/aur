@@ -1,7 +1,7 @@
 pkgbase = ii
 	pkgdesc = A minimalist FIFO and filesystem-based IRC client
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2.1
 	url = http://tools.suckless.org/ii
 	arch = i686
 	arch = x86_64

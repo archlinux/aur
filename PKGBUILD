@@ -4,7 +4,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 pkgname=ii
 pkgver=2.0
-pkgrel=1
+pkgrel=2.1
 pkgdesc="A minimalist FIFO and filesystem-based IRC client"
 license=('MIT')
 arch=('i686' 'x86_64')
