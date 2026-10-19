@@ -28,7 +28,7 @@ pkgbase = cordial-bin
 	conflicts = cordial-git
 	options = !strip
 	options = !debug
-	source = cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v0.34.0/cordial-0.34.0.r0.gfe20025-1-x86_64.pkg.tar.zst
+	source = cordial-0.34.0.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v0.34.0/cordial-0.34.0.r0.gfe20025-1-x86_64.pkg.tar.zst
 	sha256sums = d1a72ea80a2ee936ae129c904b9f3274eeba1bb5f0d4c0467dc3c6e575dc8f88
 
 pkgname = cordial-bin

@@ -24,6 +24,16 @@
 # case), so a release bump touches both $pkgver and the pinned URL below. The
 # -x86_64 token is $CARCH for the day aarch64 artifacts exist upstream, so a
 # future release slots in here without editing the arch.
+#
+# One local-name difference from upstream's packaging/aur/cordial-bin copy:
+# the source file alias embeds $pkgver (cordial-${pkgver}.pkg.tar.zst) where
+# theirs is the bare cordial.pkg.tar.zst. Deliberate: AUR helpers keep
+# $SRCDEST between releases, and with a shared alias makepkg "finds" the
+# previous release's download there and fails on the new checksum (seen
+# 2026-10-19: a v0.17.0-era cache file silently failing after the 0.34.0
+# bump). With a $pkgver-unique alias each release downloads under its own
+# name, and a bump touches pkgver, the alias, the URL and the checksum --
+# four spots on the one line pair.
 
 pkgname=cordial-bin
 pkgver=0.34.0
@@ -57,11 +67,11 @@ install="$pkgname.install"
 # The binaries in the artifact were already stripped by CI's own makepkg;
 # stripping them again fails and would not make them byte-identical.
 options=('!strip' '!debug')
-source=("cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v$pkgver/cordial-0.34.0.r0.gfe20025-1-$CARCH.pkg.tar.zst")
+source=("cordial-${pkgver}.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v$pkgver/cordial-0.34.0.r0.gfe20025-1-$CARCH.pkg.tar.zst")
 sha256sums=('d1a72ea80a2ee936ae129c904b9f3274eeba1bb5f0d4c0467dc3c6e575dc8f88')
 
 package() {
-  bsdtar -xf "$srcdir/cordial.pkg.tar.zst" -C "$pkgdir"
+  bsdtar -xf "$srcdir/cordial-${pkgver}.pkg.tar.zst" -C "$pkgdir"
   # The artifact is itself a pacman package; makepkg regenerates these as the
   # cordial-bin package's own instead of letting them leak through.
   rm -f "$pkgdir"/.BUILDINFO "$pkgdir"/.INSTALL "$pkgdir"/.MTREE "$pkgdir"/.PKGINFO
