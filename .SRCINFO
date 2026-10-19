@@ -1,0 +1,17 @@
+pkgbase = ely-office-bin
+	pkgdesc = Ely Office - offline-first word processor, spreadsheet, presentation, PDF, Markdown and Git suite (metapackage)
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://git.zacharyzhang.com/ZacharyZhang-NY/ElyOffice
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = ely-doc-bin
+	depends = ely-mark-bin
+	depends = ely-pdf-bin
+	depends = ely-show-bin
+	depends = ely-table-bin
+	depends = ely-tree-bin
+	options = !strip
+	options = !debug
+
+pkgname = ely-office-bin
