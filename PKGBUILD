@@ -1,7 +1,7 @@
 # Maintainer: qwjyh <urataw421@gmail.com>
 
 pkgname=redu
-pkgver=0.2.15
+pkgver=0.2.16
 pkgrel=1
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
@@ -11,7 +11,7 @@ url="https://github.com/drdo/redu/"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 options=(!lto)
 license=('MIT')
-sha512sums=('e38cd87301ef963b9dc3946fd8df0f41066f03aff0489215011d2ecb5bfecd59a4fcb3cf7a64c835014408262b5afe6f92a01431d325cef885779b578fd6b6b6')
+sha512sums=('f211460b629d839e95db1c56fbbe8a35661665ab7e3751cc34e31d158fa7d7f46cdc8c009e3986c0090923c22813a1a2bae0ee5c8fd8f35a294bd6b54ff4a683')
 
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
 # Might require further modification depending on the package involved.

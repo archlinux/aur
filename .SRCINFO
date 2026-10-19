@@ -1,6 +1,6 @@
 pkgbase = redu
 	pkgdesc = ncdu for your restic repository
-	pkgver = 0.2.15
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/drdo/redu/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = redu
 	depends = glibc
 	depends = gcc-libs
 	options = !lto
-	source = redu-0.2.15.tar.gz::https://static.crates.io/crates/redu/redu-0.2.15.crate
-	sha512sums = e38cd87301ef963b9dc3946fd8df0f41066f03aff0489215011d2ecb5bfecd59a4fcb3cf7a64c835014408262b5afe6f92a01431d325cef885779b578fd6b6b6
+	source = redu-0.2.16.tar.gz::https://static.crates.io/crates/redu/redu-0.2.16.crate
+	sha512sums = f211460b629d839e95db1c56fbbe8a35661665ab7e3751cc34e31d158fa7d7f46cdc8c009e3986c0090923c22813a1a2bae0ee5c8fd8f35a294bd6b54ff4a683
 
 pkgname = redu
