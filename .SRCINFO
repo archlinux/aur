@@ -10,7 +10,7 @@ pkgbase = mind-elixir
 	depends = webkit2gtk-4.1
 	provides = mind-elixir-bin=1.11.2
 	options = !strip
-	source = Mind.Elixir_1.11.2_amd64.deb::https://github.com/SSShooter/Mind-Elixir-Desktop-Release/releases/download/app-v1.11.2/Mind.Elixir_1.11.2_amd64.deb
+	source = Mind.Elixir_1.11.2_amd64.deb::https://github.com/SSShooter/Mind-Elixir-App-Release/releases/download/app-v1.11.2/Mind.Elixir_1.11.2_amd64.deb
 	sha256sums = 015f91571a3f7366666177240394df085c5dd864f70c402aa8fa589964e9b3b8
 
 pkgname = mind-elixir

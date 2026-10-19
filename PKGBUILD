@@ -11,7 +11,7 @@ license=('NOASSERTION')
 depends=('gtk3' 'hicolor-icon-theme' 'webkit2gtk-4.1')
 provides=("mind-elixir-bin=${pkgver}")
 options=('!strip')
-source=("Mind.Elixir_${pkgver}_amd64.deb::https://github.com/SSShooter/Mind-Elixir-Desktop-Release/releases/download/app-v${pkgver}/Mind.Elixir_${pkgver}_amd64.deb")
+source=("Mind.Elixir_${pkgver}_amd64.deb::https://github.com/SSShooter/Mind-Elixir-App-Release/releases/download/app-v${pkgver}/Mind.Elixir_${pkgver}_amd64.deb")
 sha256sums=('015f91571a3f7366666177240394df085c5dd864f70c402aa8fa589964e9b3b8')
 
 package() {
