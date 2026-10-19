@@ -1,6 +1,6 @@
 pkgbase = ecsterm-bin
 	pkgdesc = Execute commands or open a shell on ECS tasks with simple TUI
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/aronjohanns/ecsterm
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ecsterm-bin
 	provides = ecsterm
 	conflicts = ecsterm
 	options = !strip
-	source_x86_64 = ecsterm-x86_64-0.1.1.txz::https://github.com/aronjohanns/ecsterm/releases/download/v0.1.1/ecsterm-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 808e79e4915901cf8969533057c843eef383d804c2faed00a92107702d494db7
-	source_aarch64 = ecsterm-aarch64-0.1.1.txz::https://github.com/aronjohanns/ecsterm/releases/download/v0.1.1/ecsterm-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 03721366d0b7e403c97ec4f8e0ea563c60b0dafc4588dc2dc569d638e07efaef
+	source_x86_64 = ecsterm-x86_64-0.2.0.txz::https://github.com/aronjohanns/ecsterm/releases/download/v0.2.0/ecsterm-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4eaefa324661da4c73f6bd1ea3fa68fbb1eaa35772552cdb3b2b5f397ea80a56
+	source_aarch64 = ecsterm-aarch64-0.2.0.txz::https://github.com/aronjohanns/ecsterm/releases/download/v0.2.0/ecsterm-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = dfe4b21e92c404eaeccee4fecab982337443f1f91d716b282450a539549959cd
 
 pkgname = ecsterm-bin

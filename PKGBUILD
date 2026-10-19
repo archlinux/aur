@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Execute commands or open a shell on ECS tasks with simple TUI"
 
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('808e79e4915901cf8969533057c843eef383d804c2faed00a92107702d494db7')
-sha256sums_aarch64=('03721366d0b7e403c97ec4f8e0ea563c60b0dafc4588dc2dc569d638e07efaef')
+sha256sums_x86_64=('4eaefa324661da4c73f6bd1ea3fa68fbb1eaa35772552cdb3b2b5f397ea80a56')
+sha256sums_aarch64=('dfe4b21e92c404eaeccee4fecab982337443f1f91d716b282450a539549959cd')
 
 
 case ${CARCH} in
