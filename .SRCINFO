@@ -1,7 +1,7 @@
 pkgbase = gcmap
 	pkgdesc = GTK+ 2 character map utility
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/maandree/gcmap
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = gcmap
 	depends = libsimple
 	depends = gtk2
 	depends = libcmap
+	depends = libgrapheme
 	depends = pango
 	source = gcmap-0.1.tar.gz::https://codeberg.org/maandree/gcmap/archive/0.1.tar.gz
 	sha256sums = 7a261c59e65aa48315dbfff578b8eaa4478428ade8c370bd9dc5971611f13b55
