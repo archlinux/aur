@@ -6,19 +6,19 @@
 # Contributor: dpeukert
 
 pkgname=marktext
-pkgver=0.21.2
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A simple and elegant open-source markdown editor that focused on speed and usability"
 arch=('x86_64' 'aarch64')
 url="https://marktext.me/"
 license=('MIT')
 _electron=electron42
-depends=('bash' "$_electron" 'glib2' 'glibc' 'libgcc' 'libsecret' 'libstdc++' 'libx11' 'libxkbfile')
-makedepends=('pnpm')
+depends=('bash' "${_electron}" 'glib2' 'glibc' 'libgcc' 'libsecret' 'libstdc++' 'libx11' 'libxkbfile')
+makedepends=('nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
         "${pkgname}-arg-handling.patch"
         "${pkgname}.sh")
-sha256sums=('89b0ae1b592f7bad2a79eb8ef4073212977602da10c216797e270f331b1bfda4'
+sha256sums=('e47e9568e6bad138ce6dbf3503d2755482604ed209ef50d9664310db0896380f'
             '3f7b433eb1e2e9c70bcd9b4c02bb6d92d77f39e5c0790677f43ae9615091e53d'
             '0f1ce8eb888caada8e7774cbc89d81f2b62eb143fe3d185d009d42584cbe501b')
 
