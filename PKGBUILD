@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=note-gen-bin
 _pkgname=NoteGen
-pkgver=0.38.2
+pkgver=0.38.3
 pkgrel=1
 pkgdesc="A local-first Markdown app that helps you collect scattered information and organize it into clear notes with AI.一款本地优先、以 Markdown 为核心，帮助你收集碎片信息，并借助 AI 将它们整理成清晰笔记的跨平台应用。"
 arch=('x86_64')
@@ -16,18 +16,17 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('f42266b346b960b3a3651a35debd783a7b7cb45d7a4bd52c3020986ca1d8c57d')
+sha256sums=('dff999490e861f10977edefb779b6d670ee43764a8e7e6a539b9d983a37998b9')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
         s/Categories=/Categories=Utility;/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
+    [[ -d "${srcdir}/usr/share/icons/hicolor/256x256@2" ]] && mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -a "${srcdir}/usr/lib/${_pkgname}" "${pkgdir}/usr/lib"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
