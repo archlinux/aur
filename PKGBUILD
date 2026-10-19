@@ -3,13 +3,12 @@
 
 pkgname=gvfs-googledrive
 pkgver=1.61.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual filesystem implementation for GIO (with Google Drive backend) - all backends"
 url="https://gitlab.gnome.org/fluhus/gvfs"
 arch=(x86_64 aarch64)
 license=(LGPL-2.0-only)
 depends=(
-  avahi
   dconf
   fuse3
   gcr-4
@@ -22,36 +21,33 @@ depends=(
   libcdio-paranoia
   libgcc
   libgcrypt
-  libgoa
-  libgphoto2
   libgudev
-  libimobiledevice
-  libmtp
-  libnfs
-  libplist
   libsecret
   libsoup3
-  libusb
-  libxml2
-  msgraph
   polkit
   procps-ng
-  'smbclient>=4.12.0'
   systemd
   systemd-libs
   udisks2
-  usbmuxd
-  wsdd
 )
 makedepends=(
+  avahi
   dbus
   docbook-xsl
   git
   glib2-devel
+  libgoa
+  libgphoto2
+  libimobiledevice
+  libmtp
+  libnfs
+  libxml2
   meson
+  msgraph
   openssh
   python
   smbclient
+  wsdd
 )
 provides=(
   "gvfs=$pkgver"
@@ -77,7 +73,7 @@ replaces=(
 groups=(gnome)
 install=gvfs-nfs.install
 source=(
-  "git+https://gitlab.gnome.org/fluhus/gvfs.git"
+  "git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=8230b9046fced5e772665f750af6301e4c35e056"
   gvfsd.hook
 )
 b2sums=('SKIP'
