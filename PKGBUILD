@@ -1,8 +1,8 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 pkgname=bclone-bin
-pkgver=1.75.2
+pkgver=1.75.3
 pkgrel=1
-pkgdesc="rclone with Alist, Alldebrid, iCloud Photos, Teldrive and Terabox support"
+pkgdesc="rclone with Alist, Alldebrid, iCloud Photos, Teldrive, Terabox, Tmpfs and unofficial Google Photos support"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/BenjiThatFoxGuy/bclone"
 license=(MIT)
@@ -14,10 +14,10 @@ source=("https://raw.githubusercontent.com/BenjiThatFoxGuy/bclone/refs/tags/v${p
 source_aarch64=("${url}/releases/download/v${pkgver}/rclone-v${pkgver}-linux-arm64.zip")
 source_armv7h=("${url}/releases/download/v${pkgver}/rclone-v${pkgver}-linux-arm-v7.zip")
 source_x86_64=("${url}/releases/download/v${pkgver}/rclone-v${pkgver}-linux-amd64.zip")
-sha256sums=("8cd2e9e750b90a04b7d82dbbca3930c696ae0309d7c10464f90a44f45754cd04")
-sha256sums_aarch64=("d5e41aac1ac6a8906adc5da681e0435a6e106a964008185da316ba0bf200c9c8")
-sha256sums_armv7h=("40000b10f7703767f10508d35670b2c1f0a9d09774e483b2b9c557d43772f76f")
-sha256sums_x86_64=("52f426f6a2411291b9fdc9894e18bb01193762ead9fd20d55c05e2a691cbae32")
+sha256sums=('8cd2e9e750b90a04b7d82dbbca3930c696ae0309d7c10464f90a44f45754cd04')
+sha256sums_x86_64=('cd078b4383ad0004c3d50c50f1da7e7cd45685c3b61ce68ba6c136b830ac9104')
+sha256sums_aarch64=('1631e54879205eddaf6280dd4202ef0b467267325b28ee74512f5f3c0afdf50b')
+sha256sums_armv7h=('482543c1e56d5218391451902ac1f0659124bec746d9c7912976ae046a5607ed')
 
 prepare() {
 	cd "$(find . -type d -regex ".*/rclone-v${pkgver}-linux-\(amd64\|arm64\|arm-v7\)")"
