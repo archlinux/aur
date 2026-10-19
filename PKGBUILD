@@ -3,7 +3,7 @@
 pkgname=insensical-bin
 _pkgname=insensical
 _repo=mah3uz/insensical-release
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A terminal multiplexer with a window of its own, for supervising many terminals and coding agents (prebuilt)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('insensical')
 conflicts=('insensical')
 options=('!strip' '!debug')
 source=("https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('ae585a1e74bdd306f096b6eac4ffb5d618246111020530f06e2004947ccbe2b9')
+sha256sums=('878b33c80501479facd5f4c1225679eb1324ec6e5fc5e9d05b481c9018c29f27')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
@@ -34,4 +34,6 @@ package() {
   install -Dm644 LICENSE THIRD-PARTY-LICENSES.txt -t "$pkgdir/usr/share/licenses/$pkgname"
   # Only a package made from a working tree holds it: a release's is fetched when it is wanted.
   [ ! -f isc-x86_64-linux ] || install -Dm755 isc-x86_64-linux -t "$pkgdir/usr/share/insensical"
+  install -d "$pkgdir/usr/share/insensical"
+  echo aur > "$pkgdir/usr/share/insensical/installed-by"
 }
