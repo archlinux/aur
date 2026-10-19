@@ -3,7 +3,7 @@
 
 pkgname='aimp-skin-dual-c828'
 pkgdesc='AIMP skin: Dual C828 v1.01 (by McClaud)'
-pkgver=20261014
+pkgver=20261019
 pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
