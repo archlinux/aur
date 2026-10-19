@@ -3,20 +3,21 @@
 
 _pkgbase=jan
 pkgname=${_pkgbase}
-pkgver=0.8.4
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
 arch=('x86_64')
 license=('Apache-2.0')
 source=("$_pkgbase::git+https://github.com/menloresearch/jan.git#tag=v$pkgver")
-sha256sums=('4895f288f51d4e616038497eee237ad904204f0c9ce445722b737f53247ad43d')
+sha256sums=('a8f83919587088000ab93397473f935ab3952c75483c26a93e6ee448303ac8cb')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 options=(!lto)
 depends=(
 	'gtk3'
 	'webkit2gtk-4.1'
+	'vulkan-icd-loader'
 )
 optdepends=(
 	'libappindicator-gtk3: for tray icon support'
@@ -28,6 +29,10 @@ makedepends=(
 	'nvm'
 	'yarn'
 	'cargo'
+	'cmake'
+	'shaderc'
+	'spirv-headers'
+	'vulkan-headers'
 	'libappindicator-gtk3'
 )
 
@@ -87,7 +92,7 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 
 	cd src-tauri/target/release/bundle/deb/Jan_*/data/usr
-	install -Dm755 bin/Jan -t "$pkgdir"/usr/bin
+	install -Dm755 bin/Jan-Desktop -t "$pkgdir"/usr/bin
 
 	install -dm755 "$pkgdir"/usr/share
 	cp -r share/* "$pkgdir"/usr/share
