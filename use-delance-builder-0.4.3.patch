@@ -1,0 +1,46 @@
+Bump @delance/builder to 0.4.3. Pylance 2026.3.102 no longer emits the
+deprecation warning array that builder 0.4.2 requires, which makes its
+antifeature transform fail with "Unfamillar entrypoint chunk".
+
+--- a/deno.json
++++ b/deno.json
+@@ -3,7 +3,7 @@
+   "version": "2026.3.102",
+   "license": "0BSD",
+   "imports": {
+-    "@delance/builder": "jsr:@delance/builder@^0.4.2",
++    "@delance/builder": "jsr:@delance/builder@^0.4.3",
+     "@deno/esbuild-plugin": "jsr:@deno/esbuild-plugin@^1.2.1",
+     "@std/assert": "jsr:@std/assert@^1.0.19",
+     "@std/async": "jsr:@std/async@^1.5.0",
+--- a/deno.lock
++++ b/deno.lock
+@@ -5,7 +5,7 @@
+     "jsr:@codemod/parser@^2.1.0": "2.1.0",
+     "jsr:@codemod/utils@^2.2.0": "2.2.1",
+     "jsr:@codemod/utils@^2.2.1": "2.2.1",
+-    "jsr:@delance/builder@~0.4.2": "0.4.2",
++    "jsr:@delance/builder@~0.4.3": "0.4.3",
+     "jsr:@deno/esbuild-plugin@^1.2.1": "1.2.1",
+     "jsr:@deno/loader@~0.3.10": "0.3.14",
+     "jsr:@std/assert@^1.0.19": "1.0.19",
+@@ -58,8 +58,8 @@
+         "npm:@babel/types"
+       ]
+     },
+-    "@delance/builder@0.4.2": {
+-      "integrity": "271aca579d68359e745840860858f2ea114cb31efd7c8489318808a2cbe4f597",
++    "@delance/builder@0.4.3": {
++      "integrity": "0d389ee16796b6d4bce78a9a6b858c373ca119df77d3e1f69bebd92081b7c332",
+       "dependencies": [
+         "jsr:@codemod/matchers",
+         "jsr:@codemod/parser",
+@@ -589,7 +589,7 @@
+   },
+   "workspace": {
+     "dependencies": [
+-      "jsr:@delance/builder@~0.4.2",
++      "jsr:@delance/builder@~0.4.3",
+       "jsr:@deno/esbuild-plugin@^1.2.1",
+       "jsr:@std/assert@^1.0.19",
+       "jsr:@std/async@^1.5.0",

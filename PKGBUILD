@@ -1,9 +1,9 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 _pkgname=delance-runtime
-_pylance_sha256=1658b9309a1baece010bac3eb5aaa3c5924d6a5f1eab65bd9f23bc0d99d04cef
+_pylance_sha256=5e3900dfddad61f8830cf7d7fab08b06d07f18d3ddc953662c851e518cc6d3f1
 pkgname=delance-langserver
-pkgver=2026.2.108
+pkgver=2026.3.102
 pkgrel=1
 pkgdesc="A spear to the Python language server built with black magic"
 arch=('x86_64')
@@ -16,8 +16,17 @@ optdepends=(
     'python-numpy: NumPy type stubs support'
 )
 makedepends=(deno npm)
-source=("${_pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~self/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2603946aa6b6c036326f3b58357af797f25b948db580d3ee4a802402cc1b55ac')
+source=("${_pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~self/${_pkgname}/archive/v${pkgver}.tar.gz"
+	'use-delance-builder-0.4.3.patch')
+sha256sums=('fa74bd430fd9ce01698ccfeaee157f0c3ac1d1857061c15c2c10b415b35de7ef'
+	'2ad42544fb9b04c588de011d45d618ecde7363082a918c221c897da4db58b56d')
+
+prepare() {
+	cd "$_pkgname-v$pkgver"
+	# Pylance 2026.3.102 dropped the deprecation warning array that
+	# @delance/builder 0.4.2 expects; 0.4.3 handles both layouts.
+	patch -Np1 -i "${srcdir}/use-delance-builder-0.4.3.patch"
+}
 
 build() {
 	cd "$_pkgname-v$pkgver"
