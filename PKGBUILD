@@ -1,6 +1,6 @@
 # Maintainer: neomoth <admin@neomoth.dev>
 pkgname=ss14-starlight-launcher-bin
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Starlight Launcher for Space Station 14"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 source=("Starlight.Launcher-linux-x64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Starlight.Launcher-linux-x64-${pkgver}.tar.gz"
         "starlight-launcher-${pkgver}.png::https://raw.githubusercontent.com/ss14Starlight/Starlight.Launcher/v${pkgver}/PublishFiles/icon.png")
 noextract=("Starlight.Launcher-linux-x64-${pkgver}.tar.gz")
-sha256sums=('63e1912c7b5c30cc3fcfe250ca1ce324e0596c9a9ebec42c30600a53a7a3c7d1'
+sha256sums=('df43cc98a49b74775a17d7abeac1eecc3549f162d810b585b14cdc6a1d33ddfa'
             '1c11bfa0cd5484c807ec2f8f0a2658e4c5383566d5050d8b6fc4ddec5a925471')
 
 package() {
