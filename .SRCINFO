@@ -1,25 +1,25 @@
 pkgbase = dotnet-core-9.0-bin
-	pkgver = 9.0.20.sdk318
+	pkgver = 9.0.21.sdk319
 	pkgrel = 1
 	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	noextract = dotnet-sdk-9.0.318-linux-arm64.tar.gz
-	noextract = dotnet-sdk-9.0.318-linux-x64.tar.gz
-	noextract = dotnet-sdk-9.0.318-linux-arm.tar.gz
+	noextract = dotnet-sdk-9.0.319-linux-arm64.tar.gz
+	noextract = dotnet-sdk-9.0.319-linux-x64.tar.gz
+	noextract = dotnet-sdk-9.0.319-linux-arm.tar.gz
 	options = staticlibs
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.318/dotnet-sdk-9.0.318-linux-arm64.tar.gz
-	sha512sums_aarch64 = f9c957867bddea8f82ec0459432ce7ddff8fafc846537b8003eb9f239d9c2e38586031a15954e74691c5a8cf5b3ab125d99bca85c74ca45dc8745071ca81e7ff
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.318/dotnet-sdk-9.0.318-linux-x64.tar.gz
-	sha512sums_x86_64 = e8685293a3512178e0de1bb3c1663e31fdf9d761af705094bf833cc1ff6b9a18c543aa4141f0216503c98039c719585a6d32905b0bbb3279e93b7e7616e047c3
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.318/dotnet-sdk-9.0.318-linux-arm.tar.gz
-	sha512sums_armv7h = 28d4135fa01cc7fc5383ceea55f0bf07496e608375b8075c0852445f8649365c64754bd50fa620db05ec9b793f8f6afc50e18d8a3ffafc477887ebd38e24a1b3
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.319/dotnet-sdk-9.0.319-linux-arm64.tar.gz
+	sha512sums_aarch64 = 940b056511b078c4ab15318f3a7a6114c57c6c636ab32027e90129e3f8b205236a1c6af794eb35a887d7bf3219ff49522da2cb9f9a6d5d26e390909c25536ed2
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.319/dotnet-sdk-9.0.319-linux-x64.tar.gz
+	sha512sums_x86_64 = ed080b81dd2cca56a453c939468b0061a60a083a87eaf21e035794cd28a14fc00faf52d96a4e4116f3cc1de40e6289cd0f08a8fd478d49e4dc4f28570e2f602c
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.319/dotnet-sdk-9.0.319-linux-arm.tar.gz
+	sha512sums_armv7h = bc28bcd0e796b2ea5ebcf0f0787b7f7c3581202bbebc2a0172d87c0bb51f66bbd61a13fd6cec300151613c51604758be1d544b23153a30f4fdabbfade8afe93e
 
 pkgname = dotnet-runtime-9.0-bin
 	pkgdesc = The .NET Core runtime
-	depends = dotnet-host>=9.0.20.sdk318
+	depends = dotnet-host>=9.0.21.sdk319
 	depends = glibc
 	depends = icu
 	depends = krb5
@@ -29,36 +29,36 @@ pkgname = dotnet-runtime-9.0-bin
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust2.12: CoreCLR tracing
-	provides = dotnet-runtime-9.0=9.0.20.sdk318
+	provides = dotnet-runtime-9.0=9.0.21.sdk319
 	provides = dotnet-runtime=9.0
 	conflicts = dotnet-runtime-9.0
 
 pkgname = aspnet-runtime-9.0-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-9.0-bin>=9.0.20.sdk318-1
-	provides = aspnet-runtime-9.0=9.0.20.sdk318
+	depends = dotnet-runtime-9.0-bin>=9.0.21.sdk319-1
+	provides = aspnet-runtime-9.0=9.0.21.sdk319
 	provides = aspnet-runtime=9.0
 	conflicts = aspnet-runtime-9.0
 
 pkgname = dotnet-targeting-pack-9.0-bin
 	pkgdesc = The .NET Core targeting pack
 	depends = netstandard-targeting-pack
-	provides = dotnet-targeting-pack-9.0=9.0.20.sdk318
+	provides = dotnet-targeting-pack-9.0=9.0.21.sdk319
 	provides = dotnet-targeting-pack=9.0
 	conflicts = dotnet-targeting-pack-9.0
 
 pkgname = aspnet-targeting-pack-9.0-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-9.0-bin>=9.0.20.sdk318-1
-	provides = aspnet-targeting-pack-9.0=9.0.20.sdk318
+	depends = dotnet-targeting-pack-9.0-bin>=9.0.21.sdk319-1
+	provides = aspnet-targeting-pack-9.0=9.0.21.sdk319
 	provides = aspnet-targeting-pack=9.0
 	conflicts = aspnet-targeting-pack-9.0
 
 pkgname = dotnet-sdk-9.0-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-9.0-bin>=9.0.20.sdk318-1
-	depends = dotnet-targeting-pack-9.0-bin>=9.0.20.sdk318-1
+	depends = dotnet-runtime-9.0-bin>=9.0.21.sdk319-1
+	depends = dotnet-targeting-pack-9.0-bin>=9.0.21.sdk319-1
 	optdepends = aspnet-targeting-pack-9.0-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk-9.0=9.0.20.sdk318
+	provides = dotnet-sdk-9.0=9.0.21.sdk319
 	provides = dotnet-sdk=9.0
 	conflicts = dotnet-sdk-9.0
