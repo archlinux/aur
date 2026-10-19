@@ -1,7 +1,8 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cnmplayer-git
-pkgver=preview
-pkgrel=3
+_basever=0.7.2
+pkgver=$_basever
+pkgrel=4
 pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, lyrics support. (Development version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/professor-lee/CNMPlayer"
@@ -14,17 +15,21 @@ optdepends=(
 # clang supplies libclang for bindgen; git is required by the VCS source.
 makedepends=('cargo' 'clang' 'cmake' 'pkgconf' 'git')
 provides=("cnmplayer")
-conflicts=("cnmplayer")
+conflicts=("cnmplayer" "cnmplayer-bin")
 options=(!lto)
 
 # Track development commits; recipe changes, not each upstream commit, are synced to AUR.
 source=("${pkgname}::git+https://github.com/professor-lee/CNMPlayer.git#branch=develop")
 sha256sums=('SKIP')
 
-# AUR 页面展示占位版本；实际构建时由 pkgver() 计算真实版本（如 0.5.1.rN.gHASH）
+# AUR 展示与排序基准；每次发布新 tag 时同步递增 _basever。
+# 实际构建时由 pkgver() 追加 develop 提交数与哈希（如 0.7.2.r314.gHASH）。
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//'
+  printf '%s.r%s.g%s' \
+    "$_basever" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
