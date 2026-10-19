@@ -1,6 +1,6 @@
 pkgbase = slate-editor
 	pkgdesc = A fast, minimal text editor for Linux, built with GPUI Kit
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/pinkpixel-dev/slate
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = slate-editor
 	conflicts = slate-git
 	conflicts = slate-bin
 	options = !lto
-	source = slate-1.0.1.tar.gz::https://github.com/pinkpixel-dev/slate/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 74bf4569f94e8a088508d513a96aca03b3bfc2625d4b639e5dfdeb988de01ad8
+	source = slate-1.1.0.tar.gz::https://github.com/pinkpixel-dev/slate/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 6781e9f7407a28f45d60bc1d053d251bcef1b4c79084dab4a48fd4f2546233c7
 
 pkgname = slate-editor

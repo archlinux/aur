@@ -1,7 +1,7 @@
 # Maintainer: Pink Pixel <admin@pinkpixel.dev>
 pkgname=slate-editor
 _name=slate
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A fast, minimal text editor for Linux, built with GPUI Kit"
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=('slate' 'slate-git' 'slate-bin')
 options=('!lto')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Run `updpkgsums` after the v$pkgver tag is on GitHub to fill this in.
-sha256sums=('74bf4569f94e8a088508d513a96aca03b3bfc2625d4b639e5dfdeb988de01ad8')
+sha256sums=('6781e9f7407a28f45d60bc1d053d251bcef1b4c79084dab4a48fd4f2546233c7')
 
 prepare() {
   cd "$_name-$pkgver"
