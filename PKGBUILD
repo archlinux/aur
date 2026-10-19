@@ -2,7 +2,7 @@
 _base=MPSPlots
 pkgname=python-${_base,,}
 pkgdesc="A matplotlib wrapper for defered plots and plotting styles"
-pkgver=1.8.9
+pkgver=1.9.1
 pkgrel=1
 arch=(any)
 url="https://github.com/MartinPdeS/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pyvista)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9c93bb6f4436e743d210df128a6d3db25f4d1c02ea0179c5477940243eec8c2f73ea03dc2278e1cba8786b152e64b66e86472b5d0f0dd8531a15cfdc5ca5c3bb')
+sha512sums=('88e41095e5c2f6c286130cef4ddfb3636db31be67099e82ba3b3ff0528c0c2f8de1eb2e79e7bd8cf9a5c86087d10b94456538452b9993c530e5b0b3f6efddec8')
 
 build() {
   cd ${_base}-${pkgver}
