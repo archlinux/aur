@@ -3,7 +3,7 @@
 
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
-pkgver=5.20.0
+pkgver=5.20.1
 pkgrel=1
 pkgdesc='State-of-the-art pretrained models for inference and training'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
 source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('be914160b3e266db25c2f642a3333a5d69914e6d0ec748493a7298d4651c619a')
+sha256sums=('5a6b684fb12f97031a45f1af21ab69484d2535af415740c590b99ce5160b4df6')
 
 prepare() {
   cd "transformers-$pkgver"
