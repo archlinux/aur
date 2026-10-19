@@ -2,7 +2,7 @@
 
 pkgname="merlin-commit"
 pkgdesc="🧙‍♂️ Magical, interactive CLI for creating conventional commits"
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 arch=("x86_64")
 license=("MIT")
@@ -20,7 +20,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('47f1b76d277917346f57765a089a864a2d9eae4303e978e8b4aea6d8499b8e8252ce84c9014e9f536593e6f55fed8cf971f9d01655ca27977377c7e449c63b42')
+b2sums=('2af33db47a48669669af2360deede0c4e0295b4f7ccc3e8e46f3dbcb3f663971240ec8e6d0a248689dcbba7ed492fb7dedaa0cdef561865b42b4cd4171a3e64f')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
