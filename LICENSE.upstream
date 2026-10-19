@@ -1,0 +1,14 @@
+Perplexity is proprietary software, copyright Perplexity AI.
+
+This package downloads the unmodified Linux application from the vendor's
+public repository at https://packages.perplexity.ai/deb/.
+The vendor's Debian metadata identifies the application license as "unknown"
+and does not include a separate application license. No application license
+or redistribution rights are granted by this packaging project.
+
+Consult the vendor's terms at:
+https://www.perplexity.ai/hub/legal/terms-of-service
+
+Bundled Electron, Chromium, and native dependencies retain their respective
+licenses. The upstream license files are preserved in /opt/Perplexity.
+The 0BSD LICENSE in this repository covers only our packaging and scripts.
