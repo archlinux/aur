@@ -1,6 +1,6 @@
 pkgbase = thurbox
 	pkgdesc = TUI for orchestrating multiple coding-agent CLI sessions in persistent tmux panels
-	pkgver = 2.62.0
+	pkgver = 2.62.1
 	pkgrel = 1
 	url = https://github.com/Thurbeen/thurbox
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = thurbox
 	optdepends = opencode-bin: opencode agent CLI
 	provides = thurbox
 	conflicts = thurbox-bin
-	source = thurbox-2.62.0.tar.gz::https://github.com/Thurbeen/thurbox/archive/refs/tags/v2.62.0.tar.gz
-	sha256sums = f1e5ec501729312d3460482d9f3ac2eb7756ef8b6bc16780135c33103be981f3
+	source = thurbox-2.62.1.tar.gz::https://github.com/Thurbeen/thurbox/archive/refs/tags/v2.62.1.tar.gz
+	sha256sums = d17bb185577c5b0a687f6372d12e1bc9092426f04ecde20fe39d4c1c39dbd389
 
 pkgname = thurbox
