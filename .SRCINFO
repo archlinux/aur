@@ -1,12 +1,12 @@
 pkgbase = shipyard-bin
 	pkgdesc = Run coding agents on your dev boxes: worktrees, terminals, orchestration, kits and automations, with a desktop app.
-	pkgver = 0.3.26
+	pkgver = 0.3.27
 	pkgrel = 1
 	url = https://github.com/cosscom/shipyard
 	arch = x86_64
 	license = MIT
 	options = !debug
-	source = https://github.com/cosscom/shipyard/releases/download/v0.3.26/Berth-linux-x86_64-alpha.deb
-	sha256sums = d44d8b06fdd845c33a2e9d2f67cfc2ba98b3889ded9db9fbd1898346120c820a
+	source = https://github.com/cosscom/shipyard/releases/download/v0.3.27/Berth-linux-x86_64-alpha.deb
+	sha256sums = d436f8deb3e3768cac08e08483b1e616a0e6f9517bd64fc74a88a6c354afe272
 
 pkgname = shipyard-bin
