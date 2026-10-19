@@ -1,6 +1,6 @@
 pkgbase = lightdm-kde-greeter
 	pkgdesc = LightDM Greeter for KDE
-	pkgver = 6.1.6
+	pkgver = 6.1.7
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/lightdm-kde-greeter
 	arch = x86_64
@@ -26,8 +26,9 @@ pkgbase = lightdm-kde-greeter
 	depends = kservice
 	depends = libei
 	depends = libplasma
+	optdepends = orca: screen reader support
 	backup = etc/lightdm/lightdm-kde-greeter.conf
-	source = git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v6.1.6
-	sha512sums = b08b58c5d7daaaa4d947e9c4f07a973fa8299ea646cb98178247e2688b0075dbb8e7564e208fda81d6626e752ab0c9216a9c17bfc4f6e0c455523c6ece272c85
+	source = git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v6.1.7
+	sha512sums = a24a83eff17d83c0288c33a51a8c5c06e072db42015f9458fbbbddbed2ccda7fceae64975ae71a801ca3c06008237e6fa0809a9a736175550941d852d4581258
 
 pkgname = lightdm-kde-greeter
