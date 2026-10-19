@@ -2,7 +2,7 @@
 
 pkgname=faro
 _pkgname=faro
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Terminal client for Signal, built for people who live in tmux'
 arch=('x86_64' 'aarch64')
@@ -17,13 +17,14 @@ optdepends=(
   'xdg-utils: open links and attachments'
   'mpv: play voice notes (or ffmpeg, pipewire, alsa-utils)'
   'ffmpeg: read voice notes that are not WAV'
-  'whisper.cpp: transcribe voice notes locally'
+  'python-openai-whisper: transcribe voice notes locally (the default command)'
+  'whisper-cpp: transcribe voice notes locally (whisper-cli)'
   'libsecret: read the remote transcription API key from the keyring'
 )
 # The release profile strips the binary, so a -debug package would be empty.
 options=('!lto' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/harababurel/faro/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('294b909287dd4605d0c4ebc05600382becc02c2371d4fc3e4eef502e9a46743d')
+sha256sums=('a0c0eba6c468ce560e55148ddaa1a355ca1148f51946b1b048b84da68eed21ec')
 
 # The GitHub tarball has no .git, so build.rs falls back to the bare
 # version line ("0.1.0"); set FARO_BUILD_COMMIT/FARO_BUILD_DATE in build()
