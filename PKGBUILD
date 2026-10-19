@@ -1,6 +1,6 @@
 # Maintainer: Oliver Gasser <oliver@flowriver.net>
 pkgname=bgpkit-parser
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="bgpkit-parser is a simple cli tool that allow parsing of individual MRT files"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/bgpkit/bgpkit-parser"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bgpkit/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('1c94f5cfa6303ad3bd71a0e1f2dd2a5d4d54aef11bde3f3398f7700028da12db03efc00a11cd791b943a5f609c5235242a5fbfe6a8277cc45a169ec84f01e5e4')
+sha512sums=('e60f7fc54b3ddec3a8d956346ee39d2d36d5d9d078f802a717a9c3a5f02ce498c0cb038d4f70f9d93250d26740558cc9879a1c77ff6994f723331c8f152b1bc3')
 # Disable buildflags in /etc/makepkg.conf to ensure build success
 options=('!buildflags')
 
