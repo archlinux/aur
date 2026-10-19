@@ -3,7 +3,7 @@
 
 pkgname=ingenic-cloner-bin
 pkgver=2.5.80.1
-pkgrel=1
+pkgrel=2
 pkgdesc='USB download tool for the Ingenic SoCs — prebuilt binary, upstream provides no source code'
 arch=('x86_64')
 url='https://github.com/guglovich/Ingenic-Cloner'
@@ -92,9 +92,8 @@ fi
 # this with "sudo killall" in its launcher script; here we clean up only our own
 # leftovers, matching the resolved executable path and the file owner so that
 # nothing else is ever touched.
-uid=$(id -u)
 stale=()
-for pid in $(pgrep -u "$uid" -f "core_${arch}" 2>/dev/null || true); do
+for pid in $(pgrep -f "$COREBIN" 2>/dev/null || true); do
     if [[ "$(readlink -f "/proc/$pid/exe" 2>/dev/null || true)" == "$COREBIN" ]]; then
         stale+=("$pid")
     fi
@@ -114,25 +113,41 @@ fi
 # Stale single-instance IPC markers left behind by a previous crash.
 for f in /tmp/qipc_*ingenicburner*; do
     [[ -e "$f" ]] || continue
-    [[ "$(stat -c %u "$f" 2>/dev/null || echo 0)" == "$uid" ]] || continue
+    owner=$(stat -c %u "$f" 2>/dev/null || echo 0)
+    [[ "$owner" == "$(id -u)" || $EUID -eq 0 ]] || continue
     rm -f "$f" 2>/dev/null || true
 done
 
 # The tool resolves configs/, ddrs/ and firmwares/ relative to the working directory.
 cd "$CLONER_DIR"
 
+# Since 2.5.80 the core program enumerates USB devices itself at startup and
+# needs raw access to the device node: libusb has to claim the interface and
+# detach the kernel driver, which requires privileges. Upstream therefore always
+# ran the binaries through sudo. Without them the board is not listed at all.
+# Upstream additionally installed a permanent sudoers credential cache
+# (timestamp_timeout=-1); a package must not do that, so the password is simply
+# asked for when it is needed.
+run() {
+    if [[ $EUID -ne 0 ]] && command -v sudo >/dev/null 2>&1; then
+        exec sudo env "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" "$@"
+    else
+        exec env "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" "$@"
+    fi
+}
+
 case "${1:-}" in
     no-gui)
         shift
-        exec "$COREBIN" "$@"
+        run "$COREBIN" "$@"
         ;;
     factory)
         shift
-        exec "$BINDIR/USBClonerFactoryTool_${arch}" "$@"
+        run "$BINDIR/USBClonerFactoryTool_${arch}" "$@"
         ;;
     cfgcli)
         shift
-        exec "$BINDIR/cfgcli_${arch}" "$@"
+        run "$BINDIR/cfgcli_${arch}" "$@"
         ;;
     help|-h|--help)
         echo "Usage: cloner [command] [options]"
@@ -148,7 +163,7 @@ case "${1:-}" in
             echo "$0: missing $GUIBIN" >&2
             exit 1
         fi
-        exec "$GUIBIN" "$@"
+        run "$GUIBIN" "$@"
         ;;
 esac
 EOF

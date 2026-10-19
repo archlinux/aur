@@ -1,7 +1,7 @@
 pkgbase = ingenic-cloner-bin
 	pkgdesc = USB download tool for the Ingenic SoCs — prebuilt binary, upstream provides no source code
 	pkgver = 2.5.80.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guglovich/Ingenic-Cloner
 	install = ingenic-cloner-bin.install
 	arch = x86_64
