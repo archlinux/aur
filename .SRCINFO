@@ -1,6 +1,6 @@
 pkgbase = vtm-bin
 	pkgdesc = A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH.
-	pkgver = 2026.10.10
+	pkgver = 2026.10.12
 	pkgrel = 1
 	url = https://github.com/directvt/vtm
 	arch = aarch64
@@ -8,18 +8,18 @@ pkgbase = vtm-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = vtm=2026.10.10
+	provides = vtm=2026.10.12
 	conflicts = vtm
 	backup = etc/vtm/settings.xml
-	source = LICENSE-2026.10.10::https://raw.githubusercontent.com/directvt/vtm/v2026.10.10/LICENSE
+	source = LICENSE-2026.10.12::https://raw.githubusercontent.com/directvt/vtm/v2026.10.12/LICENSE
 	sha256sums = b7d69c3a45e98eb80ff9cd48d00334d72002d9d0f96b523f8feb33263af22e12
-	source_aarch64 = vtm-2026.10.10-aarch64.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.10/vtm_linux_arm64.tar.7z
-	sha256sums_aarch64 = b7e63de506e6d6fe15d0e723fc2d4be2507711767a5a8acde118c2eae690d4e8
-	source_armv7h = vtm-2026.10.10-armv7h.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.10/vtm_linux_arm32.tar.7z
-	sha256sums_armv7h = ad264c450bed676e9248da3d76eb8f15e148726e1c6c0197f6795a96ea5f688d
-	source_i686 = vtm-2026.10.10-i686.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.10/vtm_linux_x86.tar.7z
-	sha256sums_i686 = 8a7e862c3881df687a50ff763b8b72130799c77f676bcc5cfd051bba14b5dd5a
-	source_x86_64 = vtm-2026.10.10-x86_64.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.10/vtm_linux_x86_64.tar.7z
-	sha256sums_x86_64 = c7d970ee426b0717cac2ff71e9b972a5212989c7047b9c4960dd2e0d27015a92
+	source_aarch64 = vtm-2026.10.12-aarch64.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.12/vtm_linux_arm64.tar.7z
+	sha256sums_aarch64 = a349281938d698c0c267f1168efa2b2266d8635420cd7c9652ddb50a226c92ee
+	source_armv7h = vtm-2026.10.12-armv7h.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.12/vtm_linux_arm32.tar.7z
+	sha256sums_armv7h = 1e8615e729aa8f8517edd99ec09ba340ba519ef1e41e05a7d208e785da08955b
+	source_i686 = vtm-2026.10.12-i686.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.12/vtm_linux_x86.tar.7z
+	sha256sums_i686 = f9762b250520e813f3280a22d0399a296971b3399236b99a2983cb8934ef17a9
+	source_x86_64 = vtm-2026.10.12-x86_64.tar.7z::https://github.com/directvt/vtm/releases/download/v2026.10.12/vtm_linux_x86_64.tar.7z
+	sha256sums_x86_64 = 237cc57adcc38af5a638146cdb5fd3a86f9715fab01f9b076a2b3962c88bbf3f
 
 pkgname = vtm-bin
