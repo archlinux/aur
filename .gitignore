@@ -1,0 +1,8 @@
+gigacode-desktop-linux-*.zip
+gigacode-desktop-linux-*.zip.part
+*.sh
+*.md
+.update.*/
+*.pkg.tar.*
+src/
+pkg/
