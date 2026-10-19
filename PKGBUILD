@@ -3,8 +3,8 @@
 pkgname=next-ai-draw-io-bin
 _pkgname=next-ai-draw-io
 _dist_name="Next AI Draw.io"
-pkgver=0.4.16
-_pkgver=0.4.16
+pkgver=0.5.0
+_pkgver=0.5.0
 _electronversion=39
 pkgrel=1
 pkgdesc="Next AI Powered Draw.io (Desktop version). Built for system-wide electron."
@@ -21,9 +21,9 @@ source_x86_64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_amd6
 source_aarch64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_arm64.deb")
 source=("${_pkgname}.sh")
 
-sha256sums_x86_64=('0d3c1989fafca493d89eef8d45e04cbe25afb37d5532d014ce8e70c9c4d9e5fb')
-sha256sums_aarch64=('35913e14150e1d9e409e2ece4a7b3e10b62a30e2a769d0f231ec2f0452752e83')
 sha256sums=('6dec33b7b4169f695f1ff02a9e55a6ce93b421b20177f051b29223911b8d0a8a')
+sha256sums_x86_64=('d205d744efa68f584fb60c3e63dbd6289cdd37c6875e7abc03d05ccd9703314e')
+sha256sums_aarch64=('d1422a593ced7e0d81d8b7f1cb601365900e012a3e3371bc2be24b0e68deffd9')
 
 prepare() {
     sed -i -e "
