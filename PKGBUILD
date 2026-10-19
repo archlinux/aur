@@ -2,7 +2,7 @@
 
 pkgname=rustfs-bin
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="🚀 High-performance distributed object storage for MinIO alternative."
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustfs/rustfs"
