@@ -1,8 +1,9 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
-_upver='1.0.0-nightly.20261014.58'
 pkgname=serein-bin
-pkgver="${_upver/-/pre.}"
+pkgver=1.0.0pre.nightly.20261017.60
+# Upstream tags the same release without the pkgver prefix mangling.
+_upver="${pkgver/pre./-}"
 pkgrel=1
 pkgdesc='Unofficial native Discord client (prebuilt binary)'
 arch=('x86_64')
@@ -30,7 +31,7 @@ options=('!strip' '!debug')
 # Upstream ships a ready Arch package per nightly; repack it instead of rebuilding.
 _asset="serein-v${_upver}-Linux-arch-serein-${pkgver}-1-${CARCH}.pkg.tar.zst"
 source=("serein-${pkgver}-${CARCH}.pkg.tar.zst::${url}/releases/download/v${_upver}/${_asset}")
-sha256sums=('df7ea65d5e047adcd3c9cdc7555b78c84a5c85f6aa312eeaf2a36864f1157a0d')
+sha256sums=('9f2c1b2c8261ac04a0df51bdfc5ea231bf62387b1b07d5bbf97571300e5945b0')
 
 latestver() {
     gh api repos/ViceVerse-cz/Serein/releases?per_page=10 \
