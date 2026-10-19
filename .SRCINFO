@@ -1,0 +1,21 @@
+pkgbase = ant-browser-bin
+	pkgdesc = Multi-profile anti-detect browser launcher with proxy management
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/black-ant/Ant-Browser
+	arch = x86_64
+	license = custom
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = ant-browser
+	conflicts = ant-browser
+	options = !strip
+	options = !debug
+	source = ant-browser-bin-1.8.0.zip::https://github.com/black-ant/Ant-Browser/releases/download/V1.8.0/ant-browser-linux-amd64.zip
+	sha256sums = 79aa5a51e7fd30ea9f783e0f8d53ab49d3e630243056f8d14b8f40a24cf66d25
+
+pkgname = ant-browser-bin
