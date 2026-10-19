@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=agentsight
-pkgver=1.0.31
+pkgver=1.0.34
 pkgrel=1
 pkgdesc="eBPF-based observability for AI agent sessions, prompts, process trees, files, network activity, and token usage"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     'system-libsqlite3.patch'
 )
 sha256sums=(
-    '249842b182bb9f0df9335e66defa77bc20ab17deb1bb6bb5d52c2d09dfd7e142'
+    '37fb8032ba8783074ad0823a3802041eaa7ecf7851d745040a339f57bc62b957'
     '9634b66ec7cb3384e2812000b4a3dcdf62bf01d7e28b93c8e85d85ffac563a08'
 )
 
@@ -31,6 +31,8 @@ build() {
     cd "${pkgname}-${pkgver}/collector"
     # Force zstd-sys to use system libzstd via pkg-config
     export ZSTD_SYS_USE_PKG_CONFIG=1
+    # Panic locations otherwise embed the absolute build directory.
+    export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}"
     cargo build --frozen --release
 }
 
