@@ -3,7 +3,7 @@
 # Update pkgver + sha256sums (run: updpkgsums) for each new release.
 
 pkgname=paintfe
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Fast, GPU-accelerated raster image editor"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ makedepends=(
     'dotnet-sdk-8.0'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ebffeef23c9684199e5af4e8d4324d78c880ce97dec25982b8bcd9ba37b6724f')
+sha256sums=('03b1b46883998c2d98dae7c344052fcde32def39823fb6ec59fe3a31e97ba055')
 
 prepare() {
     cd "PaintFE-$pkgver"
