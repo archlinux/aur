@@ -2,21 +2,22 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=mindforge
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A working agreement between you and your AI assistant that does not decay: tiered context, explicit triggers, a closeout that can't be forgotten. Any Linux distribution, no desktop needed: a terminal tool (bash)"
 arch=('any')
 url="https://github.com/jetomev/mindforge"
-license=('GPL3')
+license=('MIT')
 depends=('bash' 'git' 'coreutils' 'grep' 'sed' 'gawk')
 optdepends=('github-cli: checks that a queued task'"'"'s issue is still open (rot check R8)'
             'libnotify: a desktop notification when a session needs you'
-            'python: the brief'"'"'s project table'
+            'python: the tie alert, mindforge tone (a Stop hook)'
             'libpulse: the chime sound (paplay)'
             'pipewire: the chime sound (pw-play)')
+checkdepends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('7965348ccadd34f203e13d7380471af4fb783ac924e398c426ce1b59bda87fc8'
+sha256sums=('4849d9bc6f0a0261a108a3fba9b3bcb4766e80b341fac336d65dc9406998dfd0'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -24,7 +25,7 @@ validpgpkeys=('32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E')
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    # 180 checks in a sandbox (its own HOME and state; gh stubbed, no network); the builder's files untouched
+    # 258 checks in a sandbox (its own HOME and state; gh stubbed, no network); the builder's files untouched
     bash testing/run-tests.sh
 }
 
