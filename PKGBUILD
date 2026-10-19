@@ -1,7 +1,10 @@
 # Maintaner: Sergey A. <murlakatamenka@disroot.org>
+#
+# shellcheck shell=bash
+# shellcheck disable=SC2034,SC2164
 
 pkgname=xiu
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Simple, fast and secure live media server in pure Rust'
 arch=('x86_64' 'aarch64')
@@ -11,7 +14,7 @@ depends=('gcc-libs' 'opus')
 makedepends=('cargo' 'mold')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a842ce4e11d32b62b2f9e8604751e18b533edc2307864bcc1c6acfe2e710f2da')
+sha256sums=('556a22760b37c761180ed530a11c80bebe6118aae7963354f124a40f1d42baa7')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -34,8 +37,7 @@ build() {
   # - https://github.com/lakelezz/audiopus_sys?tab=readme-ov-file#pre-installed-opus
   export OPUS_LIB_DIR=/usr/include/opus
 
-  # `cargo build --release --frozen` fails due to `aesni` crate
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
