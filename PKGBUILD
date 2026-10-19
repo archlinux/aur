@@ -1,6 +1,6 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname=springro-launcher
-pkgver=0.1.11
+pkgver=2.1
 pkgrel=1
 pkgdesc='SpringRO launcher for Ragnarok Online'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('wine: run the Windows game client (alternatively, use Proton)')
 provides=('springro')
 conflicts=('springro')
 source=(
-  "springro-launcher-${pkgver}.deb::https://patches.springro.com/launcher/SpringRO_Linux_Launcher2.1.deb"
+  "springro-launcher-${pkgver}.deb::https://patches.springro.com/launcher/SpringRO_Linux_Launcher${pkgver}.deb"
   'springro.desktop'
 )
 noextract=("springro-launcher-${pkgver}.deb")
