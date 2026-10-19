@@ -6,7 +6,7 @@
 
 pkgname=python-pycaption
 _pkg="${pkgname#python-}"
-pkgver=2.3.13
+pkgver=2.3.14
 pkgrel=1
 pkgdesc="Python module to read/write popular video caption formats"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-beautifulsoup4' 'python-lxml' 'python-cssutils')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-lazy-fixture')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('834b859a18124cd805b2b1b3e101d989d26e027059b1d620eaaa924d0af52fb4d35a2a90c7475f59f25931e933129b0e1fb0d4258fcffeccd26bf135bccd08d3')
+sha512sums=('2fa95cfbbfb606a13952b583c69bced0936f4d8de3d2cacf05890fec8ac82c359e746ddca43b6c1cb28aedf5ad5ca1cd8824e1b1bc73c44e1c472b7d8eac64c9')
 
 prepare() {
 	cd "$_pkg-$pkgver"
