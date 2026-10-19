@@ -1,22 +1,22 @@
 pkgbase = k86-software-bin
 	pkgdesc = Configuration software for the Attack Shark K86 keyboard (CLI and GTK 3 GUI, prebuilt)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/TheElevatedOne/AttackSharkKeyboardSoftware
+	url = https://github.com/TheElevatedOne/K86-Software-Linux
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	depends = gcc-libs
 	depends = glibc
 	depends = gtk3
-	provides = k86-software=0.1.1
+	provides = k86-software=0.2.0
 	conflicts = k86-software
 	conflicts = attackshark-k86
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/TheElevatedOne/AttackSharkKeyboardSoftware/releases/download/0.1.1/attackshark-k86-0.1.1-linux-x86_64.tar.gz
+	source_x86_64 = https://github.com/TheElevatedOne/K86-Software-Linux/releases/download/0.2.0/attackshark-k86-0.2.0-linux-x86_64.tar.gz
 	sha256sums_x86_64 = 6bece6a2f26d25eac98c317459819fd8facb9d44380904ce39d557a93f9b13db
-	source_aarch64 = https://github.com/TheElevatedOne/AttackSharkKeyboardSoftware/releases/download/0.1.1/attackshark-k86-0.1.1-linux-aarch64.tar.gz
+	source_aarch64 = https://github.com/TheElevatedOne/K86-Software-Linux/releases/download/0.2.0/attackshark-k86-0.2.0-linux-aarch64.tar.gz
 	sha256sums_aarch64 = 18f98ff7f0c9da6d60f67ecb823f278208ec584c00b6cc60f7697ab0a55a8f22
 
 pkgname = k86-software-bin

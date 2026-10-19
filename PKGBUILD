@@ -3,11 +3,11 @@
 pkgname=k86-software-bin
 _pkgname=k86-software
 _tarname=attackshark-k86
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Configuration software for the Attack Shark K86 keyboard (CLI and GTK 3 GUI, prebuilt)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/TheElevatedOne/AttackSharkKeyboardSoftware'
+url='https://github.com/TheElevatedOne/K86-Software-Linux'
 license=('GPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'gtk3')
 provides=("$_pkgname=$pkgver")
