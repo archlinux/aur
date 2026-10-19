@@ -19,8 +19,8 @@ pkgver=17.10.2857
 #     for the newest MAJOR.MINOR.
 # When chocolatey's minor matches upstream's, the mirror is current → return the
 # full version. When upstream is strictly newer, chocolatey is stale/frozen →
-# return the bare MAJOR.MINOR so check-updates reports asset-missing (loud) rather
-# than silently trusting a frozen mirror. See manual-hint for the build number.
+# return the bare MAJOR.MINOR, which no asset exists for, so the stale mirror
+# surfaces loudly instead of being trusted silently. See manual-hint for the build number.
 latestver() {
     local choco upstream_mm choco_mm newer_mm
     choco=$(curl -fsSL "https://community.chocolatey.org/api/v2/FindPackagesById()?id='fileoptimizer'" \
