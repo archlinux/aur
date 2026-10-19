@@ -3,43 +3,21 @@
 pkgname=fileoptimizer-bin
 _pkgname=fileoptimizer
 
-# manual-hint: FileOptimizer ships only on SourceForge, whose files listing
-# and best_release.json are now Cloudflare-gated (curl gets a challenge page).
-# Every downstream packager (Scoop, Chocolatey) scrapes that same listing, so
-# none exposes a Cloudflare-free authoritative feed. If latestver() ever emits
-# a bare MAJOR.MINOR (chocolatey mirror lagging upstream), read the build
-# number from https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/
-# in a browser (curl is challenged) and set pkgver to MAJOR.MINOR.BUILD.
+# manual-hint: version comes from SourceForge's best_release.json, whose
+# release.filename path embeds MAJOR.MINOR.BUILD. Plain curl reaches it;
+# browser-like UAs get a Cloudflare 403. If it ever 404s or only yields a
+# bare MAJOR.MINOR, read the build number from
+# https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/ in a
+# browser and set pkgver to MAJOR.MINOR.BUILD.
 pkgver=17.10.2857
 
-# No Cloudflare-free authoritative source exists, so combine two:
-#   * Chocolatey's community feed re-publishes the full MAJOR.MINOR.BUILD over a
-#     non-Cloudflare API — the only machine-readable source for the build number.
-#   * The upstream FlatPress product page (not Cloudflare-gated) is authoritative
-#     for the newest MAJOR.MINOR.
-# When chocolatey's minor matches upstream's, the mirror is current → return the
-# full version. When upstream is strictly newer, chocolatey is stale/frozen →
-# return the bare MAJOR.MINOR, which no asset exists for, so the stale mirror
-# surfaces loudly instead of being trusted silently. See manual-hint for the build number.
+# SourceForge's own best_release.json is the authoritative single source:
+# release.filename embeds the full MAJOR.MINOR.BUILD path of the current
+# release. Plain curl gets 200; do not send a browser User-Agent.
 latestver() {
-    local choco upstream_mm choco_mm newer_mm
-    choco=$(curl -fsSL "https://community.chocolatey.org/api/v2/FindPackagesById()?id='fileoptimizer'" \
-        | grep -oE '<d:Version>[0-9]+\.[0-9]+\.[0-9]+</d:Version>' \
-        | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -1)
-    upstream_mm=$(curl -fsSL "https://nikkhokkho.sourceforge.io/?page=FileOptimizer" \
-        | grep -aoE '[0-9]+\.[0-9]+ - 20[0-9]{2}/[0-9]{2}/[0-9]{2}' \
-        | head -1 | grep -oE '^[0-9]+\.[0-9]+')
-    if [ -z "$choco" ]; then
-        [ -n "$upstream_mm" ] && printf '%s\n' "$upstream_mm"
-        return
-    fi
-    choco_mm=${choco%.*}
-    newer_mm=$(printf '%s\n%s\n' "$choco_mm" "$upstream_mm" | sort -V | tail -1)
-    if [ -n "$upstream_mm" ] && [ "$newer_mm" != "$choco_mm" ]; then
-        printf '%s\n' "$upstream_mm"
-    else
-        printf '%s\n' "$choco"
-    fi
+    curl -fsSL "https://sourceforge.net/projects/nikkhokkho/best_release.json" \
+        | grep -oE 'FileOptimizer/[0-9]+\.[0-9]+\.[0-9]+/' \
+        | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'
 }
 
 pkgrel=5
