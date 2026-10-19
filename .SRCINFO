@@ -1,5 +1,5 @@
 pkgbase = owbox-git
-	pkgdesc = Openbox for Wayland: a stacking compositor with Openbox's config, themes and behavior (latest commit)
+	pkgdesc = Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself; latest commit)
 	pkgver = 0.3.0.r0.fc013a7
 	pkgrel = 1
 	url = https://github.com/SoleSoul/owbox
