@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 28 Early-Access Build
-	pkgver = 28b19
+	pkgver = 28b20
 	pkgrel = 1
 	url = https://jdk.java.net/28
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=28
 	provides = java-runtime-headless=28
 	provides = java-runtime-headless-openjdk=28
-	source = https://download.java.net/java/early_access/jdk28/19/GPL/openjdk-28-ea+19_linux-x64_bin.tar.gz
-	sha256sums = f885d924e3a7a9847572aef6a99561f93b31680951c8bdcc1b29b67bc4bc74e3
+	source = https://download.java.net/java/early_access/jdk28/20/GPL/openjdk-28-ea+20_linux-x64_bin.tar.gz
+	sha256sums = fd0b94162fede0e2f7a31106a38d0105b23e96521d8c61c0f1a0967e1383b59d
 
 pkgname = java-openjdk-ea-bin
