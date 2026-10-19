@@ -1,6 +1,6 @@
 pkgbase = qqm-bin
 	pkgdesc = go-musicfox style QQ Music terminal player with background daemon and MPRIS support (prebuilt binary)
-	pkgver = 0.0.2
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/jinzhongjia/QQMusicApi-rs
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = qqm-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = alsa-lib
-	provides = qqm=0.0.2
+	provides = qqm=0.0.4
 	conflicts = qqm
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/jinzhongjia/QQMusicApi-rs/releases/download/v0.0.2/qqm-v0.0.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 54181afea290790fa1d5f9f8e55c38990fbf181ee8088acde036a7504547aa26
-	source_aarch64 = https://github.com/jinzhongjia/QQMusicApi-rs/releases/download/v0.0.2/qqm-v0.0.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d92773fd526d4f8555321416731a451b3d5535a3c869940fd74bb42b9a24eaaa
+	source_x86_64 = https://github.com/jinzhongjia/QQMusicApi-rs/releases/download/v0.0.4/qqm-v0.0.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a76024d973e25a5360f3582998d011c97a5937cbe6a3f7934fc8b00d6f0e2508
+	source_aarch64 = https://github.com/jinzhongjia/QQMusicApi-rs/releases/download/v0.0.4/qqm-v0.0.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = aafe6c67d9d9145676a55367b4bf6edeac45650e25dbd85857e51b8148cfe1bc
 
 pkgname = qqm-bin
