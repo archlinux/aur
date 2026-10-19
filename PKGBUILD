@@ -1,12 +1,13 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
 url="https://github.com/Lucia7Lunadottir/Image-Finish"
 license=('MIT')
-depends=('python' 'python-pyqt6' 'python-numpy' 'python-opengl' 'python-scipy')
+depends=('python' 'python-pyqt6' 'python-numpy' 'python-opengl' 'python-scipy' 'qt6-imageformats')
+optdepends=('kimageformats: open/save AVIF, JPEG XL, HEIF, OpenEXR, QOI, PCX and more')
 makedepends=('git')
 
 # ВАЖНО: жестко привязываем ветку исходников к текущему тегу версии
