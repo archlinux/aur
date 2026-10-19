@@ -2,7 +2,7 @@
 
 pkgname=openpets-bin
 _pkgname=openpets
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Local-first desktop companion with animated pets, plugin SDK and coding-agent integrations"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("https://github.com/OpenPetsHQ/openpets/releases/download/v${pkgver}/OpenPets-${pkgver}-linux-amd64.deb"
         "LICENSE-${pkgver}::https://github.com/OpenPetsHQ/openpets/raw/v${pkgver}/LICENSE")
-sha256sums=('9d0f9c4883af78fd54522d1f280f5ef356d7c696b8af63fa16e22000d09d106e'
+sha256sums=('6278ae956e30ba2be6434a7382e840ac99dd468b38a00e3303605733b6f4f1d8'
             'ff1965c8f5bdebfb28f63b208ee8e0fa381ae5e9be4146e12206bf3eeeeb72ed')
 
 package() {
