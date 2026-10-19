@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=dbx-mcp-server-bin
-pkgver=0.4.122
+pkgver=0.4.124
 pkgrel=1
 pkgdesc="MCP server for DBX — query databases from Claude Code, Cursor, and other AI agents"
 arch=('x86_64' 'aarch64')
@@ -28,9 +28,9 @@ source=("${pkgname}-${pkgver}-license.tgz::${_npm}/mcp-server/-/mcp-server-${pkg
 # instead of reusing a stale cached tarball ([[pkgbuild-source-filename-versioned]]).
 source_x86_64=("${pkgname}-${pkgver}-x64.tgz::${_npm}/mcp-linux-x64-gnu/-/mcp-linux-x64-gnu-${pkgver}.tgz")
 source_aarch64=("${pkgname}-${pkgver}-arm64.tgz::${_npm}/mcp-linux-arm64-gnu/-/mcp-linux-arm64-gnu-${pkgver}.tgz")
-sha256sums=('6cabd287eea5c6e55936099cdb61dbfc66b50242656a81026c796819dbadfef2')
-sha256sums_x86_64=('d93ca2e4732c6d7992c6cbe9d20836452cc1e119eb187b1682d6bee78af49649')
-sha256sums_aarch64=('b88bad9eb13764f4540bbeb3b654c981c7055bc98109923de8d0d495c7178e1a')
+sha256sums=('c89060b8e9972c1e99e2d2aacfe6ec86425e9dc2a5803b5d1ac96f366048b5b5')
+sha256sums_x86_64=('438659a12b9dcf46fca1f3643e89fd62d7c00ef78d3d596032a611fd4a0424e1')
+sha256sums_aarch64=('55eb14515215a15834e0eb5460bf5968599f2893076f02101fecf8f23e64faed')
 
 package() {
     # Both tarballs unpack under srcdir/package/; the files we consume
