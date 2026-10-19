@@ -1,0 +1,21 @@
+pkgbase = ingenic-cloner-bin
+	pkgdesc = USB download tool for the Ingenic SoCs — prebuilt binary, upstream provides no source code
+	pkgver = 2.5.80.1
+	pkgrel = 1
+	url = https://github.com/guglovich/Ingenic-Cloner
+	install = ingenic-cloner-bin.install
+	arch = x86_64
+	license = LicenseRef-Unfree
+	depends = libx11
+	depends = fontconfig
+	depends = freetype2
+	depends = zlib
+	depends = systemd-libs
+	depends = glib2
+	optdepends = android-tools: bundled adb support for connected targets
+	options = !strip
+	options = !debug
+	source = cloner-2.5.80.1-ubuntu_alpha.tar.gz::https://github.com/guglovich/Ingenic-Cloner/releases/download/v2.5.80.1/cloner-2.5.80.1-ubuntu_alpha.tar.gz
+	sha256sums = 8951251f348269cb54cb04a1b75e153a786466dfb521fc69bea745b0f6befb86
+
+pkgname = ingenic-cloner-bin
