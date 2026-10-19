@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=manggo
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Desktop translation and screenshot OCR assistant'
 arch=('x86_64' 'aarch64')
@@ -60,9 +60,9 @@ optdepends=(
 # Preserve bundled libraries, Qt plugins, models, and relative library paths.
 options=('!strip' '!debug')
 source_x86_64=("manggo_${pkgver}_amd64.deb::https://gitcode.com/Pylogmon/Manggo/releases/download/${pkgver}/manggo_${pkgver}_amd64.deb")
-sha256sums_x86_64=('e87ddf5fa75323bfcffae6786616a89f18fff09f4d9ff5156e2447d63eb82343')
+sha256sums_x86_64=('31cd8d9f29ce0a5fb8244b406d9be954ec8910f0c57d664fac256a64f92fb261')
 source_aarch64=("manggo_${pkgver}_arm64.deb::https://gitcode.com/Pylogmon/Manggo/releases/download/${pkgver}/manggo_${pkgver}_arm64.deb")
-sha256sums_aarch64=('7dec16e6cdaebc3f3bc50b9142f651e0290cd00911f59a41663574fc58bcdc6e')
+sha256sums_aarch64=('6731a54ceb91527515ae5e6f8693d616ca3bcc7961ab735b3d4defcda4bea4fd')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
