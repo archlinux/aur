@@ -2,16 +2,14 @@
 
 pkgname=gulchce-bin
 _pkgname=gulchce
-pkgver=196
-_commit=97274a4fb5edcc1f78b58923005f78d622821fc9 # the commit tagged build-$pkgver
+pkgver=210
+_commit=04508a4b5cc80789d7cb1ef2d0fa688e1d42894c # the commit tagged build-$pkgver
 pkgrel=1
 pkgdesc='OpenCE fork with experimental features such as Halo MCC custom maps (needs your own Xbox disc image)'
 arch=('x86_64')
 url='https://github.com/chestahh/GulchCE'
 
-# The port is CC0; the rest are the libraries built into it, whose license
-# files come with the release.
-license=('CC0-1.0' 'Apache-2.0' 'BSD-3-Clause' 'BSD-4-Clause' 'ISC' 'MIT' 'OFL-1.1' 'Zlib')
+license=('AGPL-3.0-or-later' 'Apache-2.0' 'BSD-3-Clause' 'BSD-4-Clause' 'ISC' 'MIT' 'OFL-1.1' 'Zlib')
 # The game is 32-bit x86 code (its data has 32-bit pointers, as on the Xbox).
 # The release brings its own SDL3, which loads the rest when it starts.
 depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-libxext' 'lib32-mesa'
@@ -32,16 +30,14 @@ options=('!strip' '!debug')
 install="$pkgname.install"
 _raw="https://raw.githubusercontent.com/chestahh/GulchCE/$_commit"
 source=("halo-linux-release-$pkgver.zip::$url/releases/download/build-$pkgver/halo-linux-release.zip"
-        "LICENSE-$pkgver.md::$_raw/LICENSE.md"
         "LINUX-$pkgver.md::$_raw/port/linux/README.md"
         "MCC-$pkgver.md::$_raw/docs/mcc_maps.md"
         "icon-256-$pkgver.png::$_raw/port/assets/icon/opence-icon-256.png"
         "icon-512-$pkgver.png::$_raw/port/assets/icon/opence-icon.png"
         'gulchce.sh'
         'gulchce.desktop')
-sha256sums=('0ece2787082c298da9b9c58078bd00c754cce4657ccbadabea6eb38a1c724f08'
-            'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499'
-            '4e78f56b322d9115e305d1d071cc96c649ee6fe2c8e4fbe9b709fae40294cfe0'
+sha256sums=('2559c6aeb75b15762d8c5e74a50be13862a48ba0f6c8118540c74ac7aacfe8c8'
+            '01d79da41514da37f0ba4f99ed18731796c76d8d2079c97e3cfbd922960a18f8'
             '0edb41208e75b8bd7c2f439c35aca99fd9ec00c7e74b35e0da3af9b385d31fd2'
             '800572a2fdb7ad2521522b2a0a11d31f13f8dd9183a4314ff0849209f8732509'
             '4bfa804c3d8ee9d382cf05d5446d2fc6b01b40d2a047b1b76d897c96f9a8c74d'
@@ -62,6 +58,6 @@ package() {
   install -Dm644 "LINUX-$pkgver.md" "$pkgdir/usr/share/doc/$_pkgname/LINUX.md"
   install -Dm644 "MCC-$pkgver.md" "$pkgdir/usr/share/doc/$_pkgname/MCC.md"
 
-  install -Dm644 "LICENSE-$pkgver.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" ./*-LICENSE.txt ./*-COPYING.txt ./*-OFL.txt
 }
