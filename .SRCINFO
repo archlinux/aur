@@ -1,0 +1,31 @@
+pkgbase = neiro-git
+	pkgdesc = Laptop speaker enhancement for PipeWire, using the laptop's own Dolby DAX3 tuning
+	pkgver = r17.b0c951b
+	pkgrel = 1
+	url = https://gitlab.com/wolf-yuan/neiro
+	install = neiro.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = ffmpeg
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libpipewire
+	depends = pipewire
+	depends = pipewire-audio
+	depends = wireplumber
+	optdepends = ffmpeg: play the bundled samples and your own music in the A/B tuner
+	optdepends = 7zip: unpack ASUS and Framework driver downloads for neiro import
+	optdepends = innoextract: unpack Lenovo driver downloads for neiro import
+	optdepends = msitools: unpack Microsoft Surface driver downloads for neiro import
+	optdepends = unzip: unpack Samsung driver downloads for neiro import
+	provides = neiro=r17.b0c951b
+	conflicts = neiro
+	source = neiro::git+https://gitlab.com/wolf-yuan/neiro.git
+	source = neiro.service
+	sha256sums = SKIP
+	sha256sums = c5803193eafe16c331ac282cf6111c2eef547b81f70575057dfc049678a9a4b0
+
+pkgname = neiro-git

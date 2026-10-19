@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!neiro.install
+!neiro.service

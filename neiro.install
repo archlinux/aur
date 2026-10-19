@@ -1,0 +1,7 @@
+post_install() {
+  echo "==> neiro needs your laptop's Dolby speaker tuning before it can run:"
+  echo "==>   neiro import <mounted Windows partition | unpacked driver | tuning XML>"
+  echo "==> Then start it for your user, now and at login:"
+  echo "==>   systemctl --user enable --now neiro.service"
+  echo "==> See /usr/share/doc/neiro/docs/getting-your-tuning.md for details."
+}
