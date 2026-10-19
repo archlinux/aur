@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#commit=797db9411027cd4a8db50fb513c871db232f9724")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=76a552f7ec56f00ed52e122150f27639a3a8d70a")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -224,7 +224,7 @@ package() {
   # exclusively — the recipe JSONs above own /usr/share/hornero/themes and
   # no file is shipped twice. Dev-only sources (src/, build.sh, gallery.py)
   # never enter the stage, so they cannot leak into the package.
-  for variant in Dark Light Pampa; do
+  for variant in Dark Light Pampa Nocturno FinDelMundo Ibera Iguazu Patagonia 199X Cuyo Quebrada Sierras; do
     if [[ ! -f "$stage/.local/share/themes/Hornero-$variant/gtk-3.0/gtk.css" ]] \
         || [[ ! -f "$stage/.local/share/themes/Hornero-$variant/gtk-4.0/gtk.css" ]] \
         || [[ ! -f "$stage/.local/share/themes/Hornero-$variant/index.theme" ]]; then
@@ -233,9 +233,7 @@ package() {
     fi
   done
   mkdir -p "$pkgdir/usr/share/themes"
-  cp -a "$stage/.local/share/themes/Hornero-Dark" \
-        "$stage/.local/share/themes/Hornero-Light" \
-        "$stage/.local/share/themes/Hornero-Pampa" \
+  cp -a "$stage/.local/share/themes"/Hornero-* \
         "$pkgdir/usr/share/themes/"
   # Flagship wallpaper rasters (rendered by materialize.sh from vector
   # sources): the apply chain resolves them under hornero/wallpapers/.
