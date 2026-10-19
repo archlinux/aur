@@ -1,0 +1,57 @@
+pkgbase = ait-git
+	pkgdesc = Local-first multi-agent manager with an Electron desktop and Rust daemon (Git main)
+	pkgver = 0.1.9.r648.g808b9bc
+	pkgrel = 1
+	url = https://github.com/ait-app/ait
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = nodejs>=22.22.2
+	makedepends = npm
+	makedepends = python
+	makedepends = cmake
+	makedepends = clang
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = bash
+	depends = cairo
+	depends = coreutils
+	depends = dbus
+	depends = expat
+	depends = libgcc
+	depends = libstdc++
+	depends = git
+	depends = glib2
+	depends = glibc
+	depends = grep
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libcups
+	depends = libnotify
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = libx11
+	depends = mesa
+	depends = nspr
+	depends = nss
+	depends = pango
+	depends = systemd-libs
+	depends = util-linux
+	depends = xdg-utils
+	optdepends = libsecret: desktop credential storage
+	optdepends = org.freedesktop.secrets: Secret Service provider for credential storage
+	provides = ait=0.1.9.r648.g808b9bc
+	conflicts = ait
+	options = !strip
+	options = !debug
+	options = !lto
+	source = ait::git+https://github.com/ait-app/ait.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ait-git
