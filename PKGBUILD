@@ -1,6 +1,6 @@
 pkgname=mbelib-neo-git
 pkgver=2.6.1.r0.ge28828d
-pkgrel=1
+pkgrel=2
 pkgdesc="IMBE, AMBE and AMBE+2 vocoder library with TETRA ACELP decoding. Supports P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA, ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
 url="https://github.com/arancormonk/mbelib-neo"
@@ -41,6 +41,8 @@ build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DMBELIB_ENABLE_FAST_MATH=ON \
+        -DMBELIB_ENABLE_NATIVE=OFF \
         -DFETCHCONTENT_SOURCE_DIR_MBELIB_PFFFT="$srcdir/pffft-$_pffft_sha" \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
         -DMBELIB_BUILD_TESTS=OFF \
