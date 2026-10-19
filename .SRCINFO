@@ -1,6 +1,6 @@
 pkgbase = bakajiten-git
 	pkgdesc = Japanese dictionary with handwriting recognition
-	pkgver = 0.1.0.r0.g7bf2048
+	pkgver = 0.1.0.r6.g8f52fbe
 	pkgrel = 1
 	url = https://github.com/bakatrouble/bakajiten
 	arch = x86_64

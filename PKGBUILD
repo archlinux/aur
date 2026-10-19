@@ -1,7 +1,7 @@
 # Maintainer: bakatrouble <bakatrouble@gmail.com>
 pkgname=bakajiten-git
 _pkgname=bakajiten
-pkgver=0.1.0.r1.g402b4bc
+pkgver=0.1.0.r6.g8f52fbe
 pkgrel=1
 pkgdesc='Japanese dictionary with handwriting recognition'
 arch=('x86_64')
@@ -29,7 +29,7 @@ build() {
     --git https://github.com/NordSecurity/uniffi-bindgen-cpp \
     --tag v0.10.0+v0.31.0
 
-  cmake -S "$_pkgname/frontends/frontend_qt" -B build -G Ninja \
+  cmake -S "$_pkgname/frontends/qt" -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_QT_TESTS=OFF \
     -DDEV_UILOADER=OFF
