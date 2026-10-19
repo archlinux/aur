@@ -9,7 +9,7 @@ _pkgname=fileoptimizer
 # bare MAJOR.MINOR, read the build number from
 # https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/ in a
 # browser and set pkgver to MAJOR.MINOR.BUILD.
-pkgver=17.10.2857
+pkgver=17.20.2876
 
 # SourceForge's own best_release.json is the authoritative single source:
 # release.filename embeds the full MAJOR.MINOR.BUILD path of the current
@@ -20,7 +20,7 @@ latestver() {
         | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'
 }
 
-pkgrel=5
+pkgrel=1
 pkgdesc="Lossless file size optimizer supporting multiple formats"
 arch=('x86_64')
 url="https://nikkhokkho.sourceforge.io/?page=FileOptimizer"
@@ -33,7 +33,7 @@ conflicts=("${_pkgname}")
 # the file directly. ?viasf=1 marks the request as SourceForge-originated.
 source=("$_pkgname-$pkgver.7z.exe::https://master.dl.sourceforge.net/project/nikkhokkho/FileOptimizer/${pkgver}/FileOptimizerFull.7z.exe?viasf=1"
         "$_pkgname.desktop")
-sha256sums=('5fe38b7848fc5dac00aa063ce67cdd956c43913420cef8851aed846182ff3dce'
+sha256sums=('9f0a3aef27adece2ab3cedbb004c084ad9e1a36f79155dd3e0e2d7fc0182fb72'
             'a84498b533c5acff60d98cd413df3c63f4408fddd9eb235e6c25c58931655ff5')
 options=(!strip !debug)
 
