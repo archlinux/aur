@@ -1,0 +1,24 @@
+pkgbase = ely-table-bin
+	pkgdesc = ElyTable, part of Ely Office - spreadsheet editor (prebuilt upstream package)
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://git.zacharyzhang.com/ZacharyZhang-NY/ElyOffice
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	depends = krb5
+	depends = libgcc
+	depends = libstdc++
+	depends = libxcb
+	depends = vulkan-icd-loader
+	depends = wayland
+	provides = ely-table
+	conflicts = ely-table
+	options = !strip
+	options = !debug
+	source = LICENSE::https://git.zacharyzhang.com/ZacharyZhang-NY/ElyOffice/raw/tag/v0.1.8/LICENSE
+	sha256sums = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
+	source_x86_64 = ely-table-0.1.8-1-x86_64.pkg.tar.zst::https://git.zacharyzhang.com/ZacharyZhang-NY/ElyOffice/releases/download/v0.1.8/ely-table-0.1.8-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 3b72073cbd32fef6ed9773ad6c5bcc46bef7857b240d635e55d61c56067b2e51
+
+pkgname = ely-table-bin
