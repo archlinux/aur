@@ -6,8 +6,8 @@
 # drops a matching local tarball so the in-workflow build (which runs before
 # that release exists) skips the network fetch.
 pkgname=daily-you-bin
-pkgver=3.6.1
-pkgrel=3
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Every day is worth remembering... (mood tracking, journaling)"
 arch=('x86_64')
 url="https://github.com/BigWebstas/Daily_You"
