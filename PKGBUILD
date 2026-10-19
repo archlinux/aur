@@ -2,7 +2,7 @@
 # makepkg reads these variables and supplies $pkgdir/$srcdir.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=thurbox-bin
-pkgver=2.63.5
+pkgver=2.64.0
 pkgrel=1
 pkgdesc="TUI for orchestrating multiple coding-agent CLI sessions in persistent tmux panels (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Thurbeen/thurbox/v$p
 source_x86_64=("thurbox-$pkgver-x86_64.tar.gz::https://github.com/Thurbeen/thurbox/releases/download/v$pkgver/thurbox-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("thurbox-$pkgver-aarch64.tar.gz::https://github.com/Thurbeen/thurbox/releases/download/v$pkgver/thurbox-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
 sha256sums=('6c24e78d9603d3f074127a789b3c913ea7b5f18900816af16194f7abbef9275e')
-sha256sums_x86_64=('0cc8e59b1efef2101dcd33ede4a7e94c9b89021f02095e7997a3d55154654f29')
-sha256sums_aarch64=('7a7cab33d726911c51b878ec069432f738b75942f2e097176b4340a1f77d5d7a')
+sha256sums_x86_64=('2915c30d376ef6d63a5c9c60d7a8685270d6ca3dcb89ed5ae6a8b9571c1d071b')
+sha256sums_aarch64=('558317b8ab3a67043f0891e53c7bb950ee3491858ac6374619535ee03231b6ed')
 
 package() {
     # The tarball may also contain a legacy thurbox-mcp binary; we install
