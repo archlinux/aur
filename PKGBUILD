@@ -9,7 +9,7 @@
 
 pkgname=lsw-bin
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU"
 arch=('x86_64')
 url="https://github.com/acceleration3/linux-subsystem-windows"
@@ -59,7 +59,7 @@ install=lsw-bin.install
 # makepkg to strip, and a debug package would be empty.
 options=('!strip' '!debug')
 source=("https://github.com/acceleration3/linux-subsystem-windows/releases/download/v${pkgver}/lsw-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('1a7d1b42e1f464e001565a3c33bae1224981a80c56d9db2e1f48fcd73ebd37c1')
+sha256sums=('b42d4209ada01de9418f05a7d8e5d55159eede3d16f8836fc81c643ef59592c2')
 
 package() {
     cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
