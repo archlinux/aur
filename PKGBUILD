@@ -9,7 +9,7 @@
 
 _pkgname=cordial
 pkgname=cordial-git
-pkgver=0.25.0.r3.g94c4b97
+pkgver=0.34.0.r2.gcf8aa92
 pkgrel=1
 pkgdesc="Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one"
 arch=('x86_64')
@@ -192,9 +192,10 @@ build() {
   # the WebKit window and cordial-runtime holds the presenter that calls it, so
   # one without the other leaves the caller cfg'd out and the feature silently
   # absent. The Flatpak shipped that way once and it was reported as "webview
-  # doesnt work in cordial flatpak".
+  # doesnt work in cordial flatpak". `cordial-runtime/vr` is Play in VR
+  # (ADR-053), and the reason boost, lld and llvm are in makedepends.
   cargo build --frozen --release \
-    --features cordial-shell/webview,cordial-runtime/webview
+    --features cordial-shell/webview,cordial-runtime/webview,cordial-runtime/vr
 }
 
 check() {
@@ -247,7 +248,7 @@ check() {
   # rather than papered over: the comment in deep_link.rs attributes the
   # reshaping to GIO when it belongs to gvfs.
   cargo test --frozen --release --workspace \
-    --features cordial-shell/webview,cordial-runtime/webview -- \
+    --features cordial-shell/webview,cordial-runtime/webview,cordial-runtime/vr -- \
     --skip secrets::tests::a_session_survives_the_round_trip_through_the_service \
     --skip secrets::tests::a_plaintext_store_is_adopted_and_destroyed \
     --skip deep_link::tests::gio_reshapes_a_roblox_link_and_is_therefore_not_where_the_string_comes_from
