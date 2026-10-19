@@ -1,6 +1,6 @@
 pkgbase = python-wifit3
 	pkgdesc = A standalone USB Wi-Fi auditor
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/derv82/wifit3
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-wifit3
 	depends = python-libusb-package
 	provides = python-wifit3
 	conflicts = python-wifit3
-	source = wifit3::git+https://github.com/derv82/wifit3.git#tag=v0.5.0
-	sha256sums = 3ec8c14bc98fac6bd5885fac79e6eabc8ec8a7cbc722a1e69dbfa20b9af8f277
+	source = wifit3::git+https://github.com/derv82/wifit3.git#tag=v0.5.1
+	sha256sums = dc9d50038f05535f548f34d74808de975f3e26121879d8b930c63fe96710751c
 
 pkgname = python-wifit3
