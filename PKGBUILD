@@ -1,6 +1,6 @@
 # Maintainer: Douglas de Moura <douglasdemoura@users.noreply.github.com>
 pkgname=disktree
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A treemap for finding and removing what fills your disk, for Omarchy. Rust + GPUI"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('mesa: GL driver for rendering (or your GPU vendor driver)'
             'trash-cli: move marked files to the trash with trash-put'
             'glib2: move marked files to the trash with gio trash')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tobi/disktree/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('417322c206fee9383af938731919876e866c7910d8ff4fb9a43b6b8cbf5ad54e')
+sha256sums=('b7a3c173dd7e95f5258eaddb146dd8503e97c171e5318baa9962eabf8ee64913')
 
 prepare() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = disktree
 	pkgdesc = A treemap for finding and removing what fills your disk, for Omarchy. Rust + GPUI
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/tobi/disktree
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = disktree
 	optdepends = trash-cli: move marked files to the trash with trash-put
 	optdepends = glib2: move marked files to the trash with gio trash
 	options = !lto
-	source = disktree-0.10.0.tar.gz::https://github.com/tobi/disktree/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 417322c206fee9383af938731919876e866c7910d8ff4fb9a43b6b8cbf5ad54e
+	source = disktree-0.11.0.tar.gz::https://github.com/tobi/disktree/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = b7a3c173dd7e95f5258eaddb146dd8503e97c171e5318baa9962eabf8ee64913
 
 pkgname = disktree
