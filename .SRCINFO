@@ -1,6 +1,6 @@
 pkgbase = linux-trackpad-driver
 	pkgdesc = Extensible userspace Linux driver for enhanced trackpad functionality, currently supporting Apple Magic Trackpad 2
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 2
 	url = https://github.com/aaronroquefonseca/linux-trackpad-driver
 	install = ltd.install
@@ -16,7 +16,7 @@ pkgbase = linux-trackpad-driver
 	conflicts = linux-trackpad-driver-bin
 	conflicts = linux-trackpad-driver-git
 	backup = etc/linux-trackpad-driver/config.toml
-	source = linux-trackpad-driver-0.1.1.tar.gz::https://github.com/aaronroquefonseca/linux-trackpad-driver/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 59e766467bcdf2ca884ccd718d3c3fdde08d85990ac0aefda2b4e08ba3cfdd50
+	source = linux-trackpad-driver-0.1.2.tar.gz::https://github.com/aaronroquefonseca/linux-trackpad-driver/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 64051b80169ec8b9c0bcf960edf2cfe5f01651d172a6664716a163017e510850
 
 pkgname = linux-trackpad-driver
