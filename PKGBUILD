@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=fbarcalc
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="calculate the maximum account value"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(cargo)
 depends=(glibc libgcc)
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('e19ea6eb55cf86454cb7d8156d9b182e8668e39013e7df3fd0a88433efe75ca2')
+sha256sums=('32ccebb11ac8ec1c00a6696831427ad9d040229c736b70c85461625e60d81530')
 
 prepare() {
   cd $pkgname-$pkgver
