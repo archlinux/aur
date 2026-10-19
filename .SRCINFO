@@ -1,10 +1,10 @@
 pkgbase = cataclysm-dda-ncurses
 	pkgdesc = A post-apocalyptic roguelike (ncurses only)
 	pkgver = 0.I
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cataclysmdda.org/
 	arch = x86_64
-	license = CC-BY-NC-SA-3.0
+	license = CC-BY-SA-3.0
 	makedepends = astyle
 	depends = ncurses
 	depends = libbacktrace
