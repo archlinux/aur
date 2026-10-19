@@ -4,7 +4,7 @@
 
 pkgname=rust-yak
 _pkgname=yak
-pkgver=0.4.6
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A plugin-based harness for LLMs in Rust'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('yak' 'yak-bin' 'yak-git' 'rust-yak-bin' 'rust-llm' 'rust-llm-bin')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('2f0d79261102eab8e9019e655b7a4fcbd170ebd7fa53709458211211c9226052')
+sha256sums=('3a46a306615c83333a26a75771d93424e5bd68bf1bdaa24ca8023455a17dc4ea')
 
 # Release profile already sets lto=thin and strip=true. crates.io is reached
 # during build() (small four-crate dependency set), matching the common
