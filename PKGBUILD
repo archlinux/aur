@@ -2,8 +2,8 @@
 pkgname=codex-acp
 _npmname=codex-acp
 _npmscope=agentclientprotocol
-pkgver=1.1.4
-pkgrel=3
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="ACP adapter for OpenAI Codex"
 arch=('x86_64' 'aarch64')
 url="https://github.com/agentclientprotocol/codex-acp"
@@ -15,7 +15,7 @@ makedepends=('npm')
 options=('!debug')
 source=("https://registry.npmjs.org/@${_npmscope}/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('a12269b45c7bb6f625f3d22e0e1eec72d38ca23b856b06bbbc38b52a0ed49a42')
+sha256sums=('5f4fa33c94959c928db11687376a050e9a5e7b72dba51963b571fa55ddb86168')
 
 package() {
   npm install \
