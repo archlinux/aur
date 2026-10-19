@@ -1,0 +1,20 @@
+pkgbase = aurora-cli
+	pkgdesc = Lightweight CLI for maintaining AUR packages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JohnChiao75/aurora
+	arch = any
+	license = MIT
+	depends = python
+	depends = git
+	depends = pacman
+	optdepends = base-devel
+	optdepends = paru
+	optdepends = yay
+	optdepends = sudo
+	conflicts = aurutils
+	options = !strip
+	source = aurora-cli-0.1.0.tar.gz::https://github.com/JohnChiao75/aurora/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aurora-cli
