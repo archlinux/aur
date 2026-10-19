@@ -6,12 +6,12 @@
 
 _pkgname=audacious
 pkgname=$_pkgname-gtk3
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('gtk3' 'glib2')
 makedepends=('meson' 'glib2-devel') # for gdbus-codegen
 optdepends=('unzip: zipped skins support')
@@ -19,7 +19,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('62a5a609267eca7f6e3ce52ef6f42d5618d2961e3b4ddc227c6a5859026965d9')
+sha256sums=('af4c68b7dd09304d382df18616aecd843c8efa4e4eef31bfc76abce465271c83')
 
 build() {
   arch-meson $_pkgname-$pkgver build \
