@@ -1,13 +1,13 @@
 pkgbase = sable-web
 	pkgdesc = A Matrix client built to enhance user experience
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://git.sable.moe/SableClient/sable-next
 	arch = any
 	license = AGPL-3.0
 	makedepends = mise
-	source = sable-2.0.2.tar.gz::https://git.sable.moe/SableClient/sable-next/archive/v2.0.2.tar.gz
-	sha512sums = 55c8cb266964182a22235e232c07c3a0eb08d6f81afb05e461ea2ea194df55b92a4d91a4d07bd524f34d060a21b47f2a70499b8de8fe671ae5e7b4ff4ca87ea8
+	source = sable-2.0.3.tar.gz::https://git.sable.moe/SableClient/sable-next/archive/v2.0.3.tar.gz
+	sha512sums = 6da145d631420a250e8bb3aec68033e67d94c686bda5b76d1b0b9a4f335422adc65dc0acdb2450c17675f8e02b40304ce4ff2f43391584e025359b11aa3a2294
 
 pkgname = sable-web
 	backup = etc/webapps/sable/config.json
