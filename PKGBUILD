@@ -1,8 +1,8 @@
 # Maintainer: Rashesh Padia
 pkgname=collabora-office-bin
-pkgver=26.04.3.3
+pkgver=26.04.5.1
 pkgrel=1
-_source_tag=cp-26.04.3-3
+_source_tag=cp-26.04.5-1
 pkgdesc='Collabora Office - Qt6 desktop document editor powered by Collabora Online'
 arch=('x86_64')
 url='https://collaboraoffice.com'
@@ -24,6 +24,7 @@ depends=(
     'qt6-websockets'
     'fontconfig'
     'hicolor-icon-theme'
+    'libcap'
     'mpdecimal'
     'nspr'
     'nss'
@@ -47,7 +48,7 @@ options=('!strip' '!debug')
 # This package only unpacks that asset.
 # https://github.com/Rash419/collabora-office-asset
 source=("collabora-office-${_source_tag}-x86_64.tar.zst::https://github.com/Rash419/collabora-office-asset/releases/download/${_source_tag}/collabora-office-${_source_tag}-x86_64.tar.zst")
-sha256sums=('f1830f3ac5f384d9c2e6347748a0bd967a301253dc4c8c664f0397a8639ab968')
+sha256sums=('a91172712e9574614072e575e0c82c5f6739228cf131d6bb2497c3675319c85b')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
