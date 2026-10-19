@@ -2,7 +2,7 @@
 # Maintainer: Microck <microck at users dot noreply dot github dot com>
 
 pkgname='wallapop-cli-bin'
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Terminal CLI for Wallapop'
 url='https://github.com/Microck/wallapop-cli'
@@ -13,10 +13,10 @@ conflicts=('wallapop-cli')
 depends=('ca-certificates')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v${pkgver}/wallapop_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7b53771ea9441f0484b7e8fbcbe0a910176e989c3ee2c47b94007e612a0120e4')
+sha256sums_aarch64=('7b6cf8503b05595f6fbd43d0ee41fd3d3cf3213ce4662a67a7a66d6ac59ac950')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v${pkgver}/wallapop_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('37b6fe1cb13b36cc8a11c02ea0eb73d5981bb0baf42c03ea450d260d55107308')
+sha256sums_x86_64=('8c8519fe517d997f1bebdcded5a1a2728db50063a454a17ba78328c4de65f891')
 
 package() {
   install -Dm755 "./wallapop" "${pkgdir}/usr/bin/wallapop"
