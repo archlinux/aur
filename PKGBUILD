@@ -6,7 +6,7 @@
 
 pkgname=xscreensaver-arch-logo
 pkgver=6.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen saver and locker for the X Window System with Arch Linux branding"
 url="https://www.jwz.org/${pkgname%%-*}/"
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=('fontconfig'
          'gtk3'
          'libxmu'
          'perl-libwww'
+         'wayland'
          'xdg-utils'
          'xorg-appres') 
 makedepends=('bc'
@@ -45,7 +46,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.jwz.org/${pkgname%%-*}/${pkgna
         logo-50.xpm
         logo-180.xpm
 		logo-360.xpm)
-        #"${pkgname%%-*}-${pkgver}-configure-gettext.patch")
 sha512sums=('236dd14fe63b568063b69ddf79f438c398e725aa1789c1062203c6523867bdd06303ace5a169e308b8b93bff2d1a594973eccc9f6106df12777a2278f41056f2'
             '529ed9b7904631989803a4e1f306a0f3e496e50a123ebbd6ff77058e52aeb1b2328148d8224e54b547faff14e9d591146b9849c5fb9d1063e6db41f295f3074e'
             'a63d93f148500eb8ae4a011286c1e762a38575773381d33fa1c79cb1b94df8bdba54b40c52c5861ab865934f1d3a3a225c1ef5758a698a9e587b0779d76a0a34'
@@ -87,10 +87,6 @@ prepare() {
   for _file in "${logos[@]}"; do
 	install -Dm0644 "${_file}" "${srcdir}/${pkgname%%-*}-${pkgver}/utils/images/${_file}"
   done
-
-  # Fix xscreensaver-6.16 configure file issue
-  #cd "${pkgname%%-*}-${pkgver}"
-  #patch -p1 -i "../${pkgname%%-*}-${pkgver}-configure-gettext.patch"
 }
 
 build() {
@@ -109,8 +105,7 @@ build() {
       --without-gle \
       --with-pixbuf \
       --with-jpeg \
-      --with-systemd \
-      --with-wayland=no
+      --with-systemd
   make
 }
 
