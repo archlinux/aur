@@ -1,7 +1,7 @@
 # Maintainer: safalski
 pkgname=ryuski-bin
 _pkgname=ryuski
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Local, trainable command assistant with a CLI and QML plugin (prebuilt binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug')
 source=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('c69fe12e1b2ec5856e0f2aa8e510d67c55add6775821226b9c9076ca7bdfc1fb')
+sha256sums=('ad700c820991d6ff1f859669417912ad0b937e70850957eb7a3b87a5aedb993d')
 
 package() {
   cp -a usr "$pkgdir/"
