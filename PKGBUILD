@@ -1,7 +1,7 @@
 # Maintainer: Maverick <owsmyf@gmail.com>
 
 pkgname=ai-toolbox-appimage
-pkgver=1.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="AI Toolbox 是一个跨平台桌面应用，旨在帮助开发者高效管理各类 AI 编程助手的配置。"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "ai-toolbox.png"
 )
 sha256sums=(
-    '84899880c672b79ea8dd0f10c2917fcbed5986304c5cbab4f5b99e2bd8d47c37'
+    '200bb271b1030e43828eab29232f636fea3d89fc040392dd4594cafd16cd1c15'
     'c46aa7b5143e820fbbaafad346a73a951271728c2e3d8c77d656870ac7b05810'
     '3866168546a4b43df7c9024fa72dd5fba4c20c3e4372165bc29b525570e1a9e7'
 )
