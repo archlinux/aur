@@ -1,6 +1,6 @@
 pkgbase = cdduck-bin
 	pkgdesc = TUI file browser that replaces cd in the terminal
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/mikelexp/CDDuck
 	install = cdduck.install
@@ -9,7 +9,7 @@ pkgbase = cdduck-bin
 	depends = glibc
 	provides = cdduck
 	conflicts = cdduck
-	source = cdduck-bin-1.0.2.tar.gz::https://github.com/mikelexp/CDDuck/releases/download/v1.0.2/cdduck-1.0.2-linux-x86_64.tar.gz
-	sha256sums = be58fcded7304523e933d659742811d86e2e3f706d98fbcefc773cefb1c5ca61
+	source = cdduck-bin-1.1.0.tar.gz::https://github.com/mikelexp/CDDuck/releases/download/v1.1.0/cdduck-1.1.0-linux-x86_64.tar.gz
+	sha256sums = 3da366819804e47f16fb3eee450e9e2a82537cb7d56b05a06a98c13d8f5171c8
 
 pkgname = cdduck-bin
