@@ -1,6 +1,6 @@
 pkgbase = imagefinish
 	pkgdesc = A PyQt6 image editor inspired by Photoshop
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/Lucia7Lunadottir/Image-Finish
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = imagefinish
 	depends = python-scipy
 	depends = qt6-imageformats
 	optdepends = kimageformats: open/save AVIF, JPEG XL, HEIF, OpenEXR, QOI, PCX and more
-	source = imagefinish::git+https://github.com/Lucia7Lunadottir/Image-Finish.git#tag=v2.2.2
+	source = imagefinish::git+https://github.com/Lucia7Lunadottir/Image-Finish.git#tag=v2.2.3
 	sha256sums = SKIP
 
 pkgname = imagefinish
