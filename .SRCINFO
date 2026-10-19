@@ -1,5 +1,5 @@
 pkgbase = collabora-office-bin
-	pkgdesc = Collabora Office - Qt6 desktop document editor powered by Collabora Online
+	pkgdesc = Collabora Office - Qt6 desktop document editor powered by Collabora Online (unofficial third-party build, not provided by Collabora)
 	pkgver = 26.04.5.1
 	pkgrel = 1
 	url = https://collaboraoffice.com
