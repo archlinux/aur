@@ -1,0 +1,18 @@
+pkgbase = gdot-bin
+	pkgdesc = Modular, versioned dotfile manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/geoffjay/dot
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = dot
+	conflicts = dot
+	conflicts = dot-git
+	source_aarch64 = https://github.com/geoffjay/dot/releases/download/v0.1.0/dot-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d349ca12c23119c98b8ea439448607ba3208aba52d090a31c5abcf5009ef4d6e
+	source_x86_64 = https://github.com/geoffjay/dot/releases/download/v0.1.0/dot-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6af5cfc1ad1f1e360e0f173f514dcbc5a1b0812692db18c6ad4523e0da0aeb2e
+
+pkgname = gdot-bin
