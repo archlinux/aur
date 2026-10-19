@@ -8,7 +8,7 @@
 
 pkgname=niri-shorin-fork-git
 _pkgname=niri
-pkgver=26.04.r457.g16b26ee
+pkgver=26.04.r458.gc5c36de
 pkgrel=1
 pkgdesc="Niri fork with built-in screencast portal, grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc."
 arch=(x86_64 aarch64)
