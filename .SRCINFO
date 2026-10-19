@@ -14,9 +14,9 @@ pkgbase = koreader-nightly-bin
 	conflicts = koreader-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = koreader-nightly-x86_64-2026.07.2_254_g4efb11d86.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17262368587/artifacts/raw/koreader/koreader_2026.07.2-254-g4efb11d86-1_amd64.deb
-	sha256sums_x86_64 = cc0f5b5d7ad2783706067dd69b827cdee4c4581c928fb6bfda6ef7ac7bb5fecf
-	source_aarch64 = koreader-nightly-aarch64-2026.07.2_254_g4efb11d86.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17262368588/artifacts/raw/koreader/koreader_2026.07.2-254-g4efb11d86-1_arm64.deb
-	sha256sums_aarch64 = b25045a63b775ea046fe4ee882a4861a37f119e185f7279c0de0bc0bc034c643
+	source_x86_64 = koreader-nightly-x86_64-2026.07.2_254_g4efb11d86.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17274006334/artifacts/raw/koreader/koreader_2026.07.2-254-g4efb11d86-1_amd64.deb
+	sha256sums_x86_64 = f690f7e0ca36e949829dc0b71c31cfb43ccbd4d91d76a07c40f1ecc63b9ecb2e
+	source_aarch64 = koreader-nightly-aarch64-2026.07.2_254_g4efb11d86.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17274006335/artifacts/raw/koreader/koreader_2026.07.2-254-g4efb11d86-1_arm64.deb
+	sha256sums_aarch64 = 58639c8f001d8d5cde58c7f15a998714eeda7c2a44b5eac4511efb9081b633dc
 
 pkgname = koreader-nightly-bin
