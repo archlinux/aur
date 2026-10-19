@@ -1,7 +1,7 @@
 pkgbase = crengine-ng
 	pkgdesc = crengine-ng is cross-platform library designed to implement text viewers and e-book readers
 	pkgver = 0.9.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolreader-ng/crengine-ng
 	arch = x86_64
 	license = GPL-2.0-or-later
