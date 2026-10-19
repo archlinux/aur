@@ -1,0 +1,19 @@
+pkgbase = typepper-bin
+	pkgdesc = A spicy little typing game for your terminal and browser (prebuilt binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://typepper.com/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	provides = typepper=0.2.0
+	conflicts = typepper
+	options = !strip
+	source_x86_64 = typepper-0.2.0-x86_64.tar.xz::https://github.com/leodiegues/typepper/releases/download/v0.2.0/typepper-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a72622c63dc5a82f545bd57755625c29444b5cac0f6947a35b3ab6f08d9e7dfa
+	source_aarch64 = typepper-0.2.0-aarch64.tar.xz::https://github.com/leodiegues/typepper/releases/download/v0.2.0/typepper-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 5c986dc87ee0f747aa4308848a775c2d962cbd42c4c858af3df9826d65d03e5b
+
+pkgname = typepper-bin
