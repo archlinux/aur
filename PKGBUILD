@@ -1,6 +1,6 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
-pkgver=r232.6fb25fd
+pkgver=r245.61fee13
 pkgrel=1
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
     'bash' 'curl'
     'niri-shorin-fork-git' 'nirius' 'mako' 'polkit-gnome' 'xwayland-satellite' 'swayidle'
     'fuzzel' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
-    'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'cliphist-tui-git'
+    'grim' 'slurp' 'hyprlock' 'swayosd' 'awww' 'waybar' 'matugen' 'cliphist-tui-git'
 )
 
 # 可选依赖：仅供 pacman 和网页展示参考，实际由 shorinniri 脚本全自动比对安装

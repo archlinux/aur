@@ -1,6 +1,6 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
-	pkgver = r232.6fb25fd
+	pkgver = r245.61fee13
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
@@ -23,7 +23,6 @@ pkgbase = shorin-niri-git
 	depends = grim
 	depends = slurp
 	depends = hyprlock
-	depends = hyprpicker
 	depends = swayosd
 	depends = awww
 	depends = waybar
