@@ -1,6 +1,6 @@
 pkgbase = sysman
 	pkgdesc = System monitor for Linux: a metrics collector daemon with crash log and history, and a GPUI app
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mah3uz/sysman
 	install = sysman.install
@@ -26,7 +26,7 @@ pkgbase = sysman
 	optdepends = nvidia-utils: NVIDIA GPU metrics through NVML
 	optdepends = smartmontools: SATA drive health
 	options = !lto
-	source = https://github.com/mah3uz/sysman/releases/download/v0.1.0/sysman-0.1.0.tar.gz
-	sha256sums = fec84307990f7286c11b20aecb933d1aef1b7b74da15473d4ce0a7bc92b0b514
+	source = sysman-0.2.0.tar.gz::https://github.com/mah3uz/sysman/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 6c4ea3ef36944bb942138220d537ec6ea6a055e29757f29b8b5daa3e7eab797d
 
 pkgname = sysman
