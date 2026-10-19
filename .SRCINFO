@@ -1,0 +1,22 @@
+pkgbase = terrascope-git
+	pkgdesc = Braille-rendered terminal world map with live weather and aircraft (git)
+	pkgver = 0.3.0.r0.ga904987
+	pkgrel = 1
+	url = https://github.com/a-shygun/terrascope
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-yaml
+	depends = python-pyshp
+	provides = terrascope
+	conflicts = terrascope
+	source = terrascope-git::git+https://github.com/a-shygun/Terrascope.git#branch=main
+	sha256sums = SKIP
+
+pkgname = terrascope-git
