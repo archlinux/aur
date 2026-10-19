@@ -3,7 +3,7 @@
 
 pkgname='aimp-skin-a4'
 pkgdesc='AIMP skin: A4 3.2 (by ELECTRON!CK)'
-pkgver=20261014
+pkgver=20261019
 pkgrel=1
 arch=('any')
 url='https://github.com/badcast/aimpskins'
