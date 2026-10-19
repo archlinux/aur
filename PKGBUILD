@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
@@ -17,10 +17,10 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
 provides=('wingdrive')
 conflicts=('wingdrive')
 options=('!strip' '!debug')
-_upstream_version=2.0.0
-source=("WingDrive-2.0.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.0-x86_64.AppImage"
+_upstream_version=2.0.1
+source=("WingDrive-2.0.1-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.0.1-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('791ba03da0eb4183b003da91bb3236a1085b150718abbe6a4d2d240adc8062a5' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('60b425a0120da9c4d2b7f96e550f6ec647aa42f69df3cdb2bb2c65d0aaa9afaa' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -29,8 +29,8 @@ sha256sums=('791ba03da0eb4183b003da91bb3236a1085b150718abbe6a4d2d240adc8062a5' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-2.0.0-x86_64.AppImage"
-  "./WingDrive-2.0.0-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-2.0.1-x86_64.AppImage"
+  "./WingDrive-2.0.1-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
@@ -38,12 +38,13 @@ package() {
   local app="$pkgdir/opt/wingdrive"
   install -Dm755 squashfs-root/usr/bin/WingDrive "$app/usr/bin/WingDrive"
   install -Dm755 squashfs-root/usr/bin/wing-daemon "$app/usr/bin/wing-daemon"
+  install -Dm755 squashfs-root/usr/bin/wing "$app/usr/bin/wing"
   install -d "$app/usr/lib"
   cp -a squashfs-root/usr/lib/WingDrive "$app/usr/lib/"
   (cd squashfs-root/usr/lib && cp -a $_bundled_libs "$app/usr/lib/")
 
   local missing
-  missing="$(ldd "$app/usr/bin/WingDrive" "$app/usr/bin/wing-daemon" "$app"/usr/lib/*.so.* | grep 'not found' | sort -u || true)"
+  missing="$(ldd "$app/usr/bin/WingDrive" "$app/usr/bin/wing-daemon" "$app/usr/bin/wing" "$app"/usr/lib/*.so.* | grep 'not found' | sort -u || true)"
   if [[ -n "$missing" ]]; then
     printf 'Unresolved libraries:
 %s
@@ -53,6 +54,8 @@ package() {
 
   install -d "$pkgdir/usr/bin"
   ln -s /opt/wingdrive/usr/bin/WingDrive "$pkgdir/usr/bin/wingdrive"
+  # The CLI finds wing-daemon next to its resolved path, so a symlink works.
+  ln -s /opt/wingdrive/usr/bin/wing "$pkgdir/usr/bin/wing"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/wingdrive.desktop" <<'DESKTOP'
 [Desktop Entry]
 Type=Application
