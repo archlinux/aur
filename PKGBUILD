@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.2.7
+pkgver=1.2.9
 _electronversion=44
 pkgrel=1
 pkgdesc="Desktop app for Jasper Knowledge Management."
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cjmalloy/jasper-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('66da31def0d9ae53a3769bbfe6ee435c2be59d302d1d596f5b9738fb5c2f23f6'
+sha256sums=('5dd3389e002c560691188557da75b6839cf2fda7a9dd5301777525bb9a693d7e'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
