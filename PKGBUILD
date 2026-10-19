@@ -1,6 +1,6 @@
 pkgname=dsd-neo-git
 pkgver=2.11.3.r0.g85a9497
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
 url="https://github.com/arancormonk/dsd-neo"
@@ -73,6 +73,8 @@ build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DDSD_ENABLE_FAST_MATH=ON \
+        -DDSD_ENABLE_NATIVE=OFF \
         -DFETCHCONTENT_SOURCE_DIR_DSD_TETRA_CRYPTO="$srcdir/TETRA_crypto-$_tetra_crypto_sha" \
         -DFETCHCONTENT_SOURCE_DIR_DSD_PFFFT="$srcdir/pffft-$_pffft_sha" \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
