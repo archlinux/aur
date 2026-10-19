@@ -1,58 +1,60 @@
+# Original Maintainer: bko <aur at bil dot co dot ua>
+# Maintainer: higorslva <higor.slva at outlook dot com>
+
 pkgname=pgadmin4-server
-pkgver=9.14
+pkgver=9.18
 pkgrel=1
-pkgdesc='The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
+pkgdesc='The core server package for pgAdmin (binary from Ubuntu). pgAdmin is the most popular administration platform for PostgreSQL.'
 arch=('x86_64')
-license=('PostgreSQL')
 url='https://www.pgadmin.org/'
-depends=('postgresql-libs' 'krb5' 'python-dbus')
-makedepends=("python" "python-pip" "postgresql-libs" "gcc" "nodejs" "corepack" "pkgconf" "cmake" "dbus" "npm" "wget" "unzip" "syft" "patch")
-provides=('pgadmin4-server')
-source=("pgadmin4-${pkgver}.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/pgadmin4-${pkgver}.tar.gz"
-  "server.patch")
-sha256sums=('b8ebfa7afe41da6c2e46c12ae53e5cbbe3b3864cd91e8d5b0d79fdc51ff5c9d3'
-  'd276423ab3eaa7abaf14e720c51f49cc18a528d2e1b6324d4d05257d5d58f556')
+license=('PostgreSQL')
+makedepends=('python-pip' 'libarchive' 'tar' 'zstd')
+depends=('python' 'libedit' 'krb5' 'sqlite' 'postgresql-libs')
+
+# The requirements URL points to the released tag, with '.' replaced by '_' in the version
+source=(
+  "pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}-1.noble_amd64.deb"
+  "requirements-${pkgver}.txt::https://raw.githubusercontent.com/pgadmin-org/pgadmin4/refs/tags/REL-${pkgver//./_}/requirements.txt"
+)
+
+# Real SHA256 of the pinned requirements file (maintained by the update script)
+sha256sums=(
+  '242ff77edfa1a380fdbd26bab10495608ecfc9d9332b503ec3b37b909160c12c'
+  'a4927028b94ac02664c1184c70f9c13e3f155d7a7c164f4ff9e7c117635abcbf'
+)
 
 prepare() {
-  cd "$srcdir/pgadmin4-${pkgver}"
-  patch -p1 <"../server.patch"
+  msg2 "Extracting the debian package..."
+  mkdir -p "${srcdir}/deb-content"
+  
+  bsdtar -xf "pgadmin4-server-${pkgver}-x86_64.deb" -C "${srcdir}"
+  tar -x --zstd -f "${srcdir}/data.tar.zst" -C "${srcdir}/deb-content"
+
+  sed -i "s|ALLOW_SAVE_TUNNEL_PASSWORD = False|ALLOW_SAVE_TUNNEL_PASSWORD = True|" "${srcdir}/deb-content/usr/pgadmin4/web/config.py"
 }
 
 build() {
-  cd "$srcdir/pgadmin4-${pkgver}"
-
-  export COREPACK_HOME="$srcdir/corepack_home"
-  mkdir -p "$COREPACK_HOME/bin"
-  corepack enable --install-directory "$COREPACK_HOME/bin"
-  export PATH="$COREPACK_HOME/bin:$PATH"
-  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-  corepack prepare yarn@stable --activate
-
-  pushd . && cd web
-  yarn install && yarn run bundle
-  popd
+  msg2 "Creating isolated Python virtual environment..."
+  cd "${srcdir}/deb-content/usr/pgadmin4"
+  
+  rm -rf venv
   python -m venv venv
-  venv/bin/python3 -m pip install --no-cache-dir -r requirements.txt
-  venv/bin/python3 -m pip install --no-cache-dir sphinx sphinxcontrib-youtube
-  source venv/bin/activate
 
-  export PYTHONDONTWRITEBYTECODE=1
-
-  source pkg/linux/build-functions.sh
-
-  _setup_env "${PWD}/pkg/linux/DUMMY" "arch"
-  _cleanup "pkg.tar.zst"
-  _setup_dirs
-  _create_python_virtualenv "arch"
-  _build_docs "arch"
-  _copy_code "arch"
-  _generate_sbom
+  msg2 "Installing dependencies via pip (exact version ${pkgver})..."
+  ./venv/bin/python -m pip install --upgrade pip setuptools wheel
+  ./venv/bin/python -m pip install --no-cache-dir -r "${srcdir}/requirements-${pkgver}.txt"
 }
 
 package() {
-  cp -r "${srcdir}/pgadmin4-${pkgver}/arch-build/server/usr"  "${pkgdir}/"
+  msg2 "Installing files into the package..."
+  cp -r "${srcdir}/deb-content/usr" "${pkgdir}/"
 
-  # Install license
-  install -Dm644 "$srcdir/pgadmin4-${pkgver}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  msg2 "Safely cleaning absolute VENV paths..."
+  ln -sf python "${pkgdir}/usr/pgadmin4/venv/bin/python3"
+  
+  # Only alter text files inside the virtual environment
+  find "${pkgdir}/usr/pgadmin4/venv/bin" -type f -executable -exec grep -Il '' {} + | xargs sed -i "s|${srcdir}/deb-content||g"
+  
+  install -dm755 "${pkgdir}/var/lib/pgadmin"
+  install -dm755 "${pkgdir}/var/log/pgadmin"
 }
