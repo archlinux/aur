@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
+# shellcheck shell=bash
 # pacman install scriptlet: print an opt-in hint only. It must never enable,
 # start or reload any unit; upgrades stay quiet.
 
@@ -9,6 +10,8 @@ post_install() {
     Optional daily cleanup (03:00), per user:
       systemctl --user enable --now linux-cleaner-clean.timer
     Cleanup deletes permanently unless LINUX_CLEANER_TRASH=1 is set in
-    ~/.config/linux-cleaner/env (see man cleaner).
+    ~/.config/linux-cleaner/env (see man cleaner). If you set it, also enable
+    linux-cleaner-retention.timer (or LINUX_CLEANER_TRASH_KEEP_DAYS) so the
+    quarantine stays bounded; cleaner --doctor checks this.
 EOF
 }
