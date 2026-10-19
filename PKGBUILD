@@ -1,34 +1,29 @@
 # Maintainer: Asakura Mizu <asakuramizu111@gmail.com>
-_sha1=a81dbb0478e8b73931dc2d671563204f6ac0ef82
+_sha1=d295ed4edff2e49072719835713e625f409849f1
 _channel=stable
 pkgname=defold-bin
-pkgver=1.14.0.a81dbb0
-pkgrel=3
-epoch=
+pkgver=1.14.0.d295ed4
+pkgrel=1
 pkgdesc='Defold is a completely free to use game engine for development of desktop, mobile and web games.'
 arch=('x86_64')
 url='https://defold.com/'
-license=('custom')
-groups=()
+license=('LicenseRef-Defold')
 depends=('glu')
-optdepends=()
 provides=('defold')
 conflicts=('defold')
 replaces=('defold')
 options=('!strip')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://d.defold.com/archive/${_channel}/${_sha1}/${_channel}/editor2/Defold-x86_64-linux.tar.gz"
-        'https://github.com/defold/defold/raw/refs/heads/dev/LICENSE.txt'
+source=("${pkgname}-${pkgver}.tar.gz::https://d.defold.com/archive/${_channel}/${_sha1}/${_channel}/editor2/Defold-x86_64-linux.tar.gz"
+        "${pkgname}-${pkgver}-LICENSE.txt::https://github.com/defold/defold/raw/${_sha1}/LICENSE.txt"
         'Defold.desktop')
-sha256sums=('cf2d8bcb3cc816c5ba4b966e579828b6c3cfbf97fed1657f71408744f9838a64'
+sha256sums=('9fdb9d22fe6d970a27a705b5cf20a7e29db18521c12190be82c28fd6cf1579eb'
             'be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a'
             '915892954b9156c9cd8e8b85b959de897e240d438289192d973804c4cf04f9bf')
 
 package() {
-    cd "$srcdir"
-
     bsdtar -xf Defold/packages/defold-${_sha1}.jar --strip-components 2 icons/document.iconset
 
-    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 "${pkgname}-${pkgver}-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     install -Dm644 Defold.desktop -t "$pkgdir/usr/share/applications"
     install -Dm644 icon_16x16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/defold.png"
     install -Dm644 icon_16x16@2x.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/defold.png"
