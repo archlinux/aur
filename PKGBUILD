@@ -23,7 +23,7 @@
 # dependencies — statically linked single-file executable.
 
 pkgname=lumina-code-cef-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A Tauri + React desktop GUI for OpenCode — CEF (Chromium) rendering variant, bundling its own pinned server binary"
 arch=('x86_64' 'aarch64')
@@ -59,13 +59,13 @@ optdepends=(
 #   x86_64  -> Lumina.Code.CEF_<ver>_amd64.deb
 #   aarch64 -> Lumina.Code.CEF_<ver>_arm64.deb
 #
-# The URL's tag segment is the v0.6.0 placeholder (the release TAG verbatim,
+# The URL's tag segment is the v0.6.1 placeholder (the release TAG verbatim,
 # e.g. "v0.1.2-2"), NOT "v${pkgver}": republished releases carry a suffix in
 # the tag while the assets stay named after the plain app version.
-source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v0.6.0/Lumina.Code.CEF_${pkgver}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v0.6.0/Lumina.Code.CEF_${pkgver}_arm64.deb")
-sha256sums_x86_64=('65e366d3d06f5845068135aa63405c96b070282ece9e1ddfeabde27833037332')
-sha256sums_aarch64=('3467b62a80294a961516c2faeec9afbb7e040057e19e05dabecbf193fc6486cb')
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v0.6.1/Lumina.Code.CEF_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v0.6.1/Lumina.Code.CEF_${pkgver}_arm64.deb")
+sha256sums_x86_64=('371e2f15b49c808ec931be00a0387af5b6f5b6c319e2d42914490374871af6aa')
+sha256sums_aarch64=('fc17580676ea12709ee7d2d8c1a1094d878f631100e411db2fa9d1d8f8b4c6c7')
 
 # No arch-independent sources — empty arrays keep makepkg's parser happy.
 source=()
