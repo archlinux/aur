@@ -1,13 +1,12 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
 url="https://github.com/Lucia7Lunadottir/Image-Finish"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-numpy' 'python-opengl' 'python-scipy')
-optdepends=('python-psd-tools: opening .psd files (AUR)')
 makedepends=('git')
 
 # ВАЖНО: жестко привязываем ветку исходников к текущему тегу версии
