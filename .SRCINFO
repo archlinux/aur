@@ -1,6 +1,6 @@
 pkgbase = sysman-bin
 	pkgdesc = System monitor for Linux: a metrics collector daemon with crash log and history, and a GPUI app (prebuilt)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mah3uz/sysman
 	install = sysman.install
@@ -22,7 +22,7 @@ pkgbase = sysman-bin
 	optdepends = smartmontools: SATA drive health
 	provides = sysman
 	conflicts = sysman
-	source_x86_64 = https://github.com/mah3uz/sysman/releases/download/v0.1.0/sysman-0.1.0-x86_64.tar.gz
-	sha256sums_x86_64 = 7cb0b6a2f8effb926c599d1aad0cc66d9459ad95b19974e97f77bd437bda9505
+	source_x86_64 = https://github.com/mah3uz/sysman/releases/download/v0.2.0/sysman-0.2.0-arch-x86_64.tar.gz
+	sha256sums_x86_64 = 140ec4dd48f36bad335c7cc86a3f35e6e6c10e597c5fc8589821ef4112836695
 
 pkgname = sysman-bin
