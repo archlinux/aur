@@ -1,6 +1,6 @@
 pkgbase = modcrawl
 	pkgdesc = Detect, inspect, and analyze Minecraft mods and plugins from JARs
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/SirCesarium/modcrawl
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = modcrawl
 	depends = glibc
 	provides = libmodcrawl
 	options = !lto
-	source = modcrawl-0.7.0.tar.gz::https://github.com/SirCesarium/modcrawl/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = f40c6f85fe777ac24dcb8cd751c21c15cf87dca7f10663c682ef0b8c6070dc1f
+	source = modcrawl-0.8.0.tar.gz::https://github.com/SirCesarium/modcrawl/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 310b6acfa94eb876276722c59e47b12cab6a7c2872eb2691c5b3846382a1a4b9
 
 pkgname = modcrawl
