@@ -1,6 +1,6 @@
 # Maintainer: flear <teymurzadehuseyn14 at gmail dot com>
 pkgname=butaglyph
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Fast prompt for bash, zsh, fish and PowerShell, with presets, gradients and its own git reader'
 arch=('x86_64' 'aarch64')
@@ -8,11 +8,11 @@ url='https://github.com/Huseynteymurzade28/butaglyph'
 license=('MIT')
 options=('!debug')
 makedepends=('zig>=0.16.0' 'zig<0.17.0')
-optdepends=('ttf-nerd-fonts-symbols: icons for the default look and most presets')
+optdepends=('ttf-nerd-fonts-symbols: icons with .glyphs = .nerd')
 provides=('butaglyph')
 conflicts=('butaglyph-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d0dec1e07dbb1d8646a776191327866a1cf129e85cae11e06b9af0d4f975f873')
+sha256sums=('c41bb5ba56ae0931840974bc40c6c845fb6b0c84f3f2d0df8eb2c5f0103e9fa2')
 
 build() {
   cd "$pkgname-$pkgver"
