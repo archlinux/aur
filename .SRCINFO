@@ -1,6 +1,6 @@
 pkgbase = nodejs-n
 	pkgdesc = Node version management
-	pkgver = 10.2.0
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = https://github.com/tj/n
 	install = nodejs-n.install
@@ -8,7 +8,7 @@ pkgbase = nodejs-n
 	license = MIT
 	depends = bash
 	optdepends = jq: faster package.json lookups
-	source = https://github.com/tj/n/archive/v10.2.0/n-10.2.0.tar.gz
-	sha256sums = 5914f0d5e89aadaaaeb803baa89a7582747b0c57ad30201b3522cd76f504c7d9
+	source = https://github.com/tj/n/archive/v11.0.0/n-11.0.0.tar.gz
+	sha256sums = 44e0bfd66aadff042817d1da90adaf5dfd16d269aefb4f0c79b5a4da23bd0abd
 
 pkgname = nodejs-n
