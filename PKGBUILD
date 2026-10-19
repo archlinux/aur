@@ -2,7 +2,7 @@
 
 pkgname=kwin-effects-better-blur-dx-x11-git
 pkgver=r552.089a158
-pkgrel=1
+pkgrel=2
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (X11)"
 arch=('x86_64')
 url="https://github.com/xarblu/kwin-effects-better-blur-dx"
