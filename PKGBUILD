@@ -3,11 +3,11 @@
 _pkgname='pixora-icons'
 pkgname="$_pkgname-git"
 pkgdesc='16-bit icons theme for Linux desktops. (GIT version)'
-pkgver=1.0.0.r302.g8359016
-pkgrel=62
+pkgver=1.0.0.r533.g117816f
+pkgrel=1
 url='https://github.com/tsora1603/pixora-icons'
 arch=('any')
-license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later 
+license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 makedepends=('findutils' 'git')
 provides=('pixora-icons')
 conflicts=("${provides[@]}")
@@ -24,7 +24,7 @@ pkgver() {
 
 package() {
   install -dm755 "$pkgdir/usr/share/icons/pixora"
-  cp -fa "$srcdir/$_pkgname/pixora/"* "$pkgdir/usr/share/icons/pixora/"  
+  cp -fa "$srcdir/$_pkgname/pixora/"* "$pkgdir/usr/share/icons/pixora/"
   find "$pkgdir/usr/share/icons/pixora" -type d -print0 \
     | xargs -r0 chmod 0755
   find "$pkgdir/usr/share/icons/pixora" -type f -print0 \
@@ -35,6 +35,13 @@ package() {
   find "$pkgdir/usr/share/icons/pixora-dark" -type d -print0 \
     | xargs -r0 chmod 0755
   find "$pkgdir/usr/share/icons/pixora-dark" -type f -print0 \
+    | xargs -r0 chmod 0644
+
+  install -dm755 "$pkgdir/usr/share/icons/pixora-accent"
+  cp -fa "$srcdir/$_pkgname/pixora-accent/"* "$pkgdir/usr/share/icons/pixora-accent/"
+  find "$pkgdir/usr/share/icons/pixora-accent" -type d -print0 \
+    | xargs -r0 chmod 0755
+  find "$pkgdir/usr/share/icons/pixora-accent" -type f -print0 \
     | xargs -r0 chmod 0644
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
