@@ -2,7 +2,7 @@
 # Maintainer: Microck <microck at users dot noreply dot github dot com>
 
 pkgname='vinted-cli-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Terminal CLI for Vinted'
 url='https://github.com/Microck/vinted-cli'
@@ -13,10 +13,10 @@ conflicts=('vinted-cli')
 depends=('ca-certificates')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Microck/vinted-cli/releases/download/v${pkgver}/vinted_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('f3aad0b21a98e711238b3c720c66a9d5ccf7c695373faf22e9d1f29083d011bd')
+sha256sums_aarch64=('11336c7e843567ac98e6e84da9b8104940d0c7a05ec275cfdc695fdcf887cc0a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Microck/vinted-cli/releases/download/v${pkgver}/vinted_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('95b5438b844a5ddae5f5a8eb18c3dab66309c7b11bea46d0aa3a6183f0a34a62')
+sha256sums_x86_64=('39bfcc3421dd8126315940d12fe3e5e2bdbd78d5a731a2d9498793e6a42ab067')
 
 package() {
   install -Dm755 "./vinted" "${pkgdir}/usr/bin/vinted"
