@@ -1,7 +1,7 @@
 # Maintainer: Koen Hendriks <info@koenhendriks.nl>
 
 pkgname=lconnect-linux
-pkgver=2.0.11.2
+pkgver=2.0.11.3
 pkgrel=1
 pkgdesc="Unofficial Lian Li L-Connect 3 port: UNI FAN TL / TL LCD / SL Infinity fan speed, RGB and LCD control"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 install=lconnect.install
 _src="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b929e19a6c550b12f18e4c8bc371c5fb1d6a5410f82c716dcfa72e057e752735')
+sha256sums=('87b05fe6ca360dd9c6a5ef465958aa2f0cac9ec4b84df7d5e04493dab7157fa9')
 
 build() {
 	cd "$_src"
@@ -35,10 +35,11 @@ check() {
 
 package() {
 	cd "$_src"
-	local pk="$srcdir/$_src/packaging/arch"
+	# Binaries and system files; tools/aur-pkgbuild.sh --bin points both into the release's binary tarball.
+	local lib="$srcdir/publish" sys="$srcdir/$_src/packaging/arch"
 
 	install -dm755 "$pkgdir/usr/lib/lconnect"
-	cp -a "$srcdir/publish/." "$pkgdir/usr/lib/lconnect/"
+	cp -a "$lib/." "$pkgdir/usr/lib/lconnect/"
 	chmod 755 "$pkgdir/usr/lib/lconnect"
 	chmod 755 "$pkgdir/usr/lib/lconnect/lconnectd" "$pkgdir/usr/lib/lconnect/lconnectctl" "$pkgdir/usr/lib/lconnect/lconnect-ui"
 
@@ -46,12 +47,12 @@ package() {
 	ln -s /usr/lib/lconnect/lconnectctl "$pkgdir/usr/bin/lconnectctl"
 	ln -s /usr/lib/lconnect/lconnect-ui "$pkgdir/usr/bin/lconnect-ui"
 
-	install -Dm644 "$pk/lconnectd.service" "$pkgdir/usr/lib/systemd/system/lconnectd.service"
-	install -Dm644 "$pk/lconnect.sysusers" "$pkgdir/usr/lib/sysusers.d/lconnect.conf"
-	install -Dm644 "$pk/lconnect.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/lconnect.conf"
-	install -Dm644 "$pk/60-lconnect.rules" "$pkgdir/usr/lib/udev/rules.d/60-lconnect.rules"
-	install -Dm755 "$pk/lconnect.sleep" "$pkgdir/usr/lib/systemd/system-sleep/lconnect"
-	install -Dm644 "$pk/lconnect-ui.desktop" "$pkgdir/usr/share/applications/lconnect-ui.desktop"
-	install -Dm644 "$pk/lconnect-ui-autostart.desktop" "$pkgdir/etc/xdg/autostart/lconnect-ui.desktop"
+	install -Dm644 "$sys/lconnectd.service" "$pkgdir/usr/lib/systemd/system/lconnectd.service"
+	install -Dm644 "$sys/lconnect.sysusers" "$pkgdir/usr/lib/sysusers.d/lconnect.conf"
+	install -Dm644 "$sys/lconnect.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/lconnect.conf"
+	install -Dm644 "$sys/60-lconnect.rules" "$pkgdir/usr/lib/udev/rules.d/60-lconnect.rules"
+	install -Dm755 "$sys/lconnect.sleep" "$pkgdir/usr/lib/systemd/system-sleep/lconnect"
+	install -Dm644 "$sys/lconnect-ui.desktop" "$pkgdir/usr/share/applications/lconnect-ui.desktop"
+	install -Dm644 "$sys/lconnect-ui-autostart.desktop" "$pkgdir/etc/xdg/autostart/lconnect-ui.desktop"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/lconnect-linux/README.md"
 }
