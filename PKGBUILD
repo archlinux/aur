@@ -4,7 +4,7 @@
 
 pkgname=rust-yak-bin
 _pkgname=yak
-pkgver=0.4.6
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A plugin-based harness for LLMs in Rust'
 arch=('x86_64' 'aarch64')
