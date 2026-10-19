@@ -1,14 +1,13 @@
 pkgbase = otf-antykwa-poltawskiego
-	pkgdesc = Open Type Antiqua Półtawskiego, a typeface designed by Adam Połtawski
-	pkgver = 1.03
+	pkgdesc = A typeface designed by Adam Półtawski. It was widely used by Polish printing houses as long as metal types were in use (until ca the sixties).
+	pkgver = 1.101
 	pkgrel = 1
 	url = http://jmn.pl/en/antykwa-poltawskiego
 	arch = any
-	license = CUSTOM
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = ap1.101otf.zip::http://jmn.pl/download/ap1.101otf.zip
+	license = custom:GUST-FONT-LICENSE
+	source = ap1.101otf.zip::https://jmn.pl/download/ap1.101otf.zip
+	source = GUST-FONT-LICENSE.txt::https://jmn.pl/GUST-FONT-LICENSE.txt
 	sha256sums = 0e13bd202a95da792fc9147c53b69b57b6d67fcd02d9412a74e87360b4f669c9
+	sha256sums = a746108477b2fa685845e7596b7ad8342bc358704b2b7da355f2df0a0cb8ad85
 
 pkgname = otf-antykwa-poltawskiego
-
