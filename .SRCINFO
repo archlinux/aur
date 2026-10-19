@@ -1,6 +1,6 @@
 pkgbase = gear-terminal-bin
 	pkgdesc = AI-native developer terminal built on Tauri and Rust
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://gear.kyere.me
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gear-terminal-bin
 	depends = gtk3
 	provides = gear-terminal
 	conflicts = gear-terminal
-	source_x86_64 = https://github.com/cLLeB/gear/releases/download/v0.1.7/Gear_0.1.7_amd64.deb
-	sha256sums_x86_64 = 973e0cd961176b6a366ef6977840bd0614d34d886e6c16d890afe347c94efd9d
+	source_x86_64 = https://github.com/cLLeB/gear/releases/download/v0.1.8/Gear_0.1.8_amd64.deb
+	sha256sums_x86_64 = 91b955e3c0a0dc86ecef4ae794edcba61a9884521b97647735b0c0b1c44abd6d
 
 pkgname = gear-terminal-bin
