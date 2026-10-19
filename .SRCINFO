@@ -1,0 +1,20 @@
+pkgbase = wayrcursor-git
+	pkgdesc = Shows where the cursor is on Wayland
+	pkgver = 1.0.0.r32.gafa6dfc
+	pkgrel = 1
+	url = https://github.com/cmvanb/wayrcursor
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = wayland
+	provides = wayrcursor
+	conflicts = wayrcursor
+	source = git+https://github.com/cmvanb/wayrcursor.git
+	sha256sums = SKIP
+
+pkgname = wayrcursor-git
