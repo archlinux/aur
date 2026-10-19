@@ -1,7 +1,7 @@
 pkgbase = moss-os
-	pkgdesc = An agentic backend that *will* be the best. Free and open source, funded by donations: https://www.buymeacoffee.com/bingusfan360
+	pkgdesc = DEPRECATED: use the 'moss' package instead. Agentic backend funded by donations: https://www.buymeacoffee.com/bingusfan360
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Bingusfan360/MahoragaOS
 	arch = any
 	license = AGPL-3.0-or-later
@@ -13,6 +13,7 @@ pkgbase = moss-os
 	depends = hicolor-icon-theme
 	replaces = mahoragaos
 	conflicts = mahoragaos
+	conflicts = moss
 	source = https://gitlab.com/Bingusfan360/MahoragaOS/-/archive/v0.7.2/MahoragaOS-v0.7.2.tar.gz
 	source = moss.svg
 	source = moss.fish
