@@ -2,7 +2,7 @@
 
 pkgname=tokativ-bin
 _pkgname=tokativ
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Local dictation that types into the focused app as you speak'
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/tokativ-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/tokativ-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('2bfe85996598076bf94fca6e64b722169f688fe8bf08bae0e7f7275296205b57')
-sha256sums_x86_64=('8118594ad43f7fd810c7d6caed2c4757602114d26aca1c96eac43baf6f83dd95')
-sha256sums_aarch64=('88170b067b42d2dcf3193c85707a7c279743e96e4a7ed306c3677328155dcdeb')
+sha256sums=('3e8d5ba381588a6d33be08a63d55905abe9c20a90f7c934a7b9d68ff946063bb')
+sha256sums_x86_64=('f23c013496ba8baaba596a7a1f43c47ccfbb1a5f255153b63ba084bd8182c486')
+sha256sums_aarch64=('5f4f1b92dfa10d9d47b8017bbee08e6678f7359097f8126dbe0c6efa084800c2')
 
 package() {
   cd "${_pkgname}-${pkgver}"
