@@ -2,8 +2,8 @@
 
 _pkgname="rustatio"
 pkgname="$_pkgname-bin"
-pkgver="2.11.0"
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc="Modern cross-platform BitTorrent ratio management tool that emulates popular torrent clients (prebuilt)"
 url="https://github.com/takitsu21/rustatio"
 license=('MIT')
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('f6788a3a6fc81be8fd0afb7a279245ab7c9931aea951f26b27ffcf0b8118ee70'
             'dc64e0264fbaf1e95054cd6bce050fbefc630f5e9db6e73bcdb7d03240c36d65')
-sha256sums_x86_64=('b1a53d89458e3057dff3b9d56f6a5a8d3fa2de376b16a5d23c6ede0b16a22c89')
+sha256sums_x86_64=('34b95eb8de0195f0909944d7d239371964a8425846a7a35538509781c129b2ef')
 
 source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/takitsu21/rustatio/releases/download/v${pkgver}/Rustatio_${pkgver}_amd64.deb")
 
