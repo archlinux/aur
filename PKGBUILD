@@ -3,8 +3,8 @@
 # Repository: https://github.com/minpeter/aur-epic-games-launcher-bin
 
 pkgname=epic-games-launcher-bin
-pkgver=0.97.0
-_commit=g4f63cc1
+pkgver=0.98.1
+_commit=gd6c4f03
 pkgrel=1
 pkgdesc="Official Epic Games Store launcher (Preview)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ options=('!debug' '!strip')
 _appimage="EpicGamesLauncher-${pkgver}-${_commit}-x86_64.AppImage"
 source=("${_appimage}::https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${pkgver}%2B${_commit}/Linux/EpicGamesLauncher-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums=('5cf8607bb0a8f29a9887249d491c3c41ea3d0e8ed06a86695aa8e3b6000edae6')
+sha256sums=('355d4336435dde07388a3b296946edb501f1f1f59e78fc150003eccb30ec68aa')
 
 prepare() {
   rm -rf "${srcdir}/squashfs-root"
