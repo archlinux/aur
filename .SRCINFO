@@ -1,6 +1,6 @@
 pkgbase = godoist
 	pkgdesc = Todoist TUI and CLI for the terminal
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/biomassa/godoist
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = godoist
 	makedepends = go
 	provides = godoist
 	options = !strip
-	source = godoist-0.7.0.tgz::https://github.com/biomassa/godoist/archive/v0.7.0.tar.gz
-	sha256sums = 9d2f9d524aace8171deb17b58b06c665d2e5200088005e42c86fc0e88c03038e
+	source = godoist-0.8.0.tgz::https://github.com/biomassa/godoist/archive/v0.8.0.tar.gz
+	sha256sums = 2f86504d914344cf304d47bdfbe8d640c890838b0e61fe4d69d60c5fa1e14bfc
 
 pkgname = godoist
