@@ -3,7 +3,7 @@
 pkgname=zcode
 _pkgname=zcode
 _appdir=ZCode
-pkgver=3.15.3
+pkgver=3.16.1
 pkgrel=1
 pkgdesc='ZCode desktop app repackaged from official Linux release'
 arch=('x86_64' 'aarch64')
@@ -34,8 +34,8 @@ source_x86_64=("ZCode-${pkgver}-linux-x64.deb::https://cdn-zcode.z.ai/zcode/elec
 source_aarch64=("ZCode-${pkgver}-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/linux-arm64/ZCode-${pkgver}-linux-arm64.deb")
 noextract=("ZCode-${pkgver}-linux-x64.deb" "ZCode-${pkgver}-linux-arm64.deb")
 sha256sums=('510fb413274334e05901d65b28df618b1fb7216d690c136ab55173f9bf1a75e6')
-sha256sums_x86_64=('bcb36cc5b64b3899129e0ca520901e8ee996f81c07288d86808be96f56d66015')
-sha256sums_aarch64=('5b0d39e8ed352f8dc96fd9d406c0e64fe622e570673e78db2f29a81122c69d15')
+sha256sums_x86_64=('95c131ffb6a095d41237bf746402c2f0b31c5bbdf8d9db03db3f0606568005d8')
+sha256sums_aarch64=('4f2b4df2d220b93a3c14a556b5ed0c184fc861b7c64b0d32e42837da5e21d26c')
 
 package() {
   local _extractdir _deb_arch
