@@ -1,6 +1,6 @@
 pkgbase = youtube-music-for-desktop-bin
 	pkgdesc = Beautiful Youtube Music desktop app with customizations for users and developers.
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = youtube-music-for-desktop-bin
 	license = CC0-1.0
 	depends = electron43
 	depends = nodejs
-	provides = youtube-music-for-desktop=1.8.1
+	provides = youtube-music-for-desktop=1.8.3
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-1.8.1::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.8.1/LICENSE
+	source = LICENSE-1.8.3::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.8.3/LICENSE
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = youtube-music-for-desktop-1.8.1-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.1/YouTube-Music-for-Desktop-1.8.1-arm64.AppImage
-	sha256sums_aarch64 = 5122030aede06ee0bdb7f4676b4d9dac28878537f64616d65c15d77a9dba95c0
-	source_x86_64 = youtube-music-for-desktop-1.8.1-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.1/YouTube-Music-for-Desktop-1.8.1.AppImage
-	sha256sums_x86_64 = 319c373c97422fae5ffefa97db6e6d2b078b9f85d07da09666d16ee6ef4e74ba
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	source_aarch64 = youtube-music-for-desktop-1.8.3-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.3/YouTube-Music-for-Desktop-1.8.3-arm64.AppImage
+	sha256sums_aarch64 = 61d0e23b93f7e43db8e161c3d7b680c5730e3677e0f1fd9133f5277c8fda80b3
+	source_x86_64 = youtube-music-for-desktop-1.8.3-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.3/YouTube-Music-for-Desktop-1.8.3.AppImage
+	sha256sums_x86_64 = a84b59bbbcd4331bfa4337e024899bf6f0ca5d8d7aa1c15123cfb727d0d1ddbb
 
 pkgname = youtube-music-for-desktop-bin
