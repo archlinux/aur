@@ -1,6 +1,6 @@
 pkgbase = nota-daw
 	pkgdesc = Modern digital audio workstation (DAW) (Built from source)
-	pkgver = 0.55.1
+	pkgver = 0.56.1
 	pkgrel = 1
 	url = https://github.com/nota-daw/nota
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = nota-daw
 	provides = nota
 	conflicts = nota
 	options = !strip
-	source = nota::git+https://github.com/nota-daw/nota.git#tag=v0.55.1
+	source = nota::git+https://github.com/nota-daw/nota.git#tag=v0.56.1
 	sha256sums = SKIP
 
 pkgname = nota-daw
