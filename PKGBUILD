@@ -1,5 +1,5 @@
 pkgname=bashd-ls
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Bash language server"
 arch=(x86_64)
@@ -9,7 +9,7 @@ depends=(glibc)
 makedepends=(go)
 optdepends=('shellcheck: The shellcheck integration')
 source=("${pkgname%-ls}-$pkgver.tar.gz::https://github.com/matkrin/bashd/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dcd7f252e41f221d59506fdee44c7fa5a344aef3bd42ce66be4ba26ac3a48057')
+sha256sums=('648e28e36d0344f765088c3a5171b239afd933f94413bdc70d852dfa519c92fe')
 
 prepare() {
     cd "${pkgname%-ls}-$pkgver"
