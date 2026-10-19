@@ -2,7 +2,7 @@
 
 pkgname=kwin-effects-better-blur-dx
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (Wayland)"
 arch=('x86_64')
 url="https://github.com/xarblu/kwin-effects-better-blur-dx"
