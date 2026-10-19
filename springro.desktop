@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SpringRO
+Comment=SpringRO Launcher
+Exec=/usr/bin/springro
+Icon=springro
+StartupWMClass=Springro
+Categories=Game;
+Terminal=false
