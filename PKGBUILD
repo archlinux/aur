@@ -1,4 +1,4 @@
-# Maintainer: Karthik <karthik at deepnight dot ai>
+# Maintainer: Karthik Jayakumar <valliyilkarthik@gmail.com>
 
 _pkgname=qcom-test-automation-controller
 pkgname=$_pkgname-git
