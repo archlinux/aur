@@ -1,11 +1,11 @@
 pkgbase = render-cli-bin
 	pkgdesc = The Official Render CLI (binary release)
-	pkgver = 2.29.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://github.com/render-oss/cli
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/render-oss/cli/releases/download/v2.29.0/cli_2.29.0_linux_amd64.zip
-	sha256sums = fd8b6e73390cf26b80c5def38a4d6ba9d64de6c5e7b37a9f28b7eb46ae0b4ead
+	source = https://github.com/render-oss/cli/releases/download/v2.30.0/cli_2.30.0_linux_amd64.zip
+	sha256sums = cfc477b4daad0e47a0f6c587f434c18157ee64c6f76bd63551abf2bbb5863824
 
 pkgname = render-cli-bin
