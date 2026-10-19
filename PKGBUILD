@@ -1,15 +1,16 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=libsedml
 _pkgname=libSEDML
-pkgver=2.0.33
+pkgver=2.0.34
 pkgrel=1
 pkgdesc="Simulation Experiment Description - Markup Language"
 url=https://github.com/fbergmann/libSEDML
-license=('BSD')
+license=('BSD-2-Clause')
 arch=('x86_64')
-depends=('libnuml')
+depends=('libnuml' 'libsbml' 'libgcc' 'libstdc++' 'zlib')
+makedepends=('cmake')
 source=($_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('a3f69ecb5dc1084343d4de5dc0990bdd9def2f7eb819986015d33ca9735dbe76')
+sha256sums=('e2214b6fcf6360391c383f58c4198877819c45a483fe1eb4ab1cfa2e0c3fcac1')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -17,16 +18,17 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
-  mkdir -p build && cd build
-  cmake \
+  cmake -S "$_pkgname-$pkgver" -B build \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    ..
-  make
+    -DCMAKE_INSTALL_LIBDIR:PATH=lib \
+    -DLIBNUML_SHARED=ON \
+    -DLIBSBML_SHARED=ON \
+    -DWITH_SWIG=OFF \
+    -DWITH_ZLIB=ON
+  cmake --build build
 }
 
 package() {
-  cd "$_pkgname-$pkgver/build"
-  DESTDIR="$pkgdir" cmake -P cmake_install.cmake
-  rm -rf "$pkgdir"/libnuml/usr/share/cmake
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
