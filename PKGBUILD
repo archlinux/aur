@@ -14,8 +14,10 @@ license=('AGPL-3.0-or-later')
 depends=('python' 'hicolor-icon-theme')
 # AUR rename mahoragaos -> moss (Tier-3 gate, BIN-949/BIN-1711): the old
 # package builds the same wheel, so it must be replaced, not co-installed.
-replaces=('mahoragaos')
-conflicts=('mahoragaos')
+# moss-os was the temporary fallback published while the moss name was held
+# by the old orphan; it ships the same files, so replace it too.
+replaces=('mahoragaos' 'moss-os')
+conflicts=('mahoragaos' 'moss-os')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$url/-/archive/v0.7.2/MahoragaOS-v0.7.2.tar.gz"
         "moss.svg"
