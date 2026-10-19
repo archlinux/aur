@@ -1,6 +1,6 @@
 pkgbase = ktabletop-git
 	pkgdesc = A boardgame platform based on Qt/QML and KDE Frameworks, using Lua for scripting
-	pkgver = r1.0000000
+	pkgver = r283.d316e71
 	pkgrel = 1
 	url = https://invent.kde.org/notifyctrl/ktabletop
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ktabletop-git
 	depends = kconfig
 	depends = ki18n
 	depends = kcolorscheme
-	provides = ktabletop=r1.0000000
+	provides = ktabletop=r283.d316e71
 	conflicts = ktabletop
 	source = ktabletop::git+https://invent.kde.org/notifyctrl/ktabletop.git
 	sha256sums = SKIP

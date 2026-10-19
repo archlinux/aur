@@ -1,7 +1,7 @@
 # Maintainer: Notify Ctrl <notify-ctrl@qq.com>
 pkgname=ktabletop-git
 _pkgname=ktabletop
-pkgver=r1.0000000
+pkgver=r283.d316e71
 pkgrel=1
 pkgdesc="A boardgame platform based on Qt/QML and KDE Frameworks, using Lua for scripting"
 arch=('x86_64' 'aarch64')
