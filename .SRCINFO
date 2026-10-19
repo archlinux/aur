@@ -1,0 +1,29 @@
+pkgbase = pig
+	pkgdesc = Pi coding agent ported to Go
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/MichaelKinsy/PiG
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.27.1
+	depends = bash
+	depends = ca-certificates
+	depends = fd
+	depends = glibc
+	depends = ripgrep
+	optdepends = git: Git package sources and repository status
+	optdepends = go: Go extensions and native Piglet builds
+	optdepends = nodejs>=22.13.0: JavaScript and TypeScript extensions
+	optdepends = npm: npm package sources
+	optdepends = python: Python extensions
+	optdepends = rust: Rust extensions
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = xdg-utils: open browser links
+	options = !strip
+	options = !emptydirs
+	source = pig-0.4.1-source.tar.gz::https://github.com/MichaelKinsy/PiG/releases/download/v0.4.1/pig-0.4.1-source.tar.gz
+	sha256sums = d2c7bcc58baa50faf2579fcf0d04b6679eece55385c0fc7618cd2ad841aaa733
+
+pkgname = pig
