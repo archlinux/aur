@@ -1,14 +1,17 @@
-# Maintainer: traumweh <contact@traumweh.dev>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: traumweh <contact@traumweh.dev>
 
 pkgname="duckypad_daemon"
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A profile autoswitcher daemon for dekuNukem's duckypad"
 arch=("x86_64")
 url="https://github.com/traumweh/duckypad_daemon"
-license=("GPL-3-or-later")
-depends=("libusb" "duckypad-udev")
+license=("GPL-3.0-or-later")
+depends=("duckypad-udev" "libxcb" "systemd-libs")
 makedepends=("cargo")
+# hidapi builds its C code as GCC LTO bitcode, which rust-lld cannot link
+options=("!lto")
 source=("https://github.com/traumweh/duckypad_daemon/releases/download/$pkgver/$pkgname-$pkgver-$arch.tar.gz")
 sha512sums=("343a7f61d6a6f956b6e62c6662bcac305632d8b59eb88b0de591040903cc3e081ac18e7416abdfa83276e017abab74ca5b76e794cb971aaeeaa74f2754db37fe")
 
