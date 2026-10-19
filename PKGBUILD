@@ -5,7 +5,7 @@
 pkgname=voicenux
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Real-time voice changer and soundboard for PipeWire"
+pkgdesc="VoiceMod for Linux. Real-time voice changer and soundboard for PipeWire"
 arch=('x86_64')
 url="https://github.com/voicenux/voicenux"
 # BSD: the program. MIT: the Fluent Emoji pictures, ISC: the Lucide icons,
