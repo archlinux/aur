@@ -15,8 +15,8 @@ pkgbase = k86-software-bin
 	options = !debug
 	options = !strip
 	source_x86_64 = https://github.com/TheElevatedOne/K86-Software-Linux/releases/download/0.2.0/attackshark-k86-0.2.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6bece6a2f26d25eac98c317459819fd8facb9d44380904ce39d557a93f9b13db
+	sha256sums_x86_64 = 111abf6a85482e4c8e7f54cadf0b50b53be65a2d5cfaf39d9f8149c1c72e1dcc
 	source_aarch64 = https://github.com/TheElevatedOne/K86-Software-Linux/releases/download/0.2.0/attackshark-k86-0.2.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 18f98ff7f0c9da6d60f67ecb823f278208ec584c00b6cc60f7697ab0a55a8f22
+	sha256sums_aarch64 = eb150ab528204b15629afcab86549655a87fb706e9ad72fa92cf97cb8a068403
 
 pkgname = k86-software-bin
