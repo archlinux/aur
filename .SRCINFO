@@ -1,0 +1,24 @@
+pkgbase = kisel
+	pkgdesc = Efficient launch of Windows programs
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/seinedkoda/kisel
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = python
+	depends = icoutils
+	optdepends = winetricks: Additional scripts for working with Wine prefix
+	optdepends = mangohud: Overlay for monitoring FPS, temperature, CPU/GPU load
+	optdepends = obs-vkcapture: Vulkan game capture plugin for OBS
+	optdepends = gamescope: SteamOS session compositing window manager
+	options = !debug
+	options = strip
+	source = kisel-1.5.1.tar.gz::https://github.com/seinedkoda/kisel/archive/v1.5.1.tar.gz
+	sha256sums = 8f69c1b40d89162961c798d5b11e65aa3a4c6a8317eb97a2a1a6c27ac7578946
+
+pkgname = kisel
