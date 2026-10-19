@@ -2,17 +2,18 @@
 # Stamped by tools/aur.sh at a release; the placeholders are filled there.
 
 pkgname=arch-os-manager
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Update, maintain and repair Arch Linux from one place'
 arch=('x86_64')
 url='https://github.com/murkl/arch-os-manager'
 # The program, then Fira Code and the Nerd Fonts symbols it carries.
 license=('GPL-3.0-or-later' 'OFL-1.1' 'MIT')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc' 'sudo')
 makedepends=('cargo')
 optdepends=(
     'pacman-contrib: lists updates, trims the cache and finds configuration updates'
+    'fakeroot: lets pacman-contrib list updates without root'
     'paru: builds and updates packages from the AUR'
     'yay: builds and updates packages from the AUR'
     'flatpak: updates and cleans up Flatpak apps'
@@ -26,7 +27,7 @@ provides=('system-manager')
 conflicts=('system-manager')
 install=arch-os-manager.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b864db04d50fff5e6389e3e39f52e545ebf411f7f5a4a189f68d6de4eb4c54f9')
+sha256sums=('e4335840a587bd42c4fa7237760a7607f9c0b36dc2c6c22df0a4fbfed650ddbf')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
