@@ -1,6 +1,6 @@
 pkgbase = incy-bin
 	pkgdesc = Cross-platform proxy client built on Xray-core
-	pkgver = 3.8.10
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://incy.cc/
 	install = incy-bin.install
@@ -27,9 +27,9 @@ pkgbase = incy-bin
 	provides = incy
 	conflicts = incy
 	options = !strip
-	source = incy-3.8.10-linux-x64.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v3.8.10/incy-linux-x64.pkg.tar.zst
+	source = incy-3.9.0-linux-x64.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v3.9.0/incy-linux-x64.pkg.tar.zst
 	source = fix-xatom.c
-	sha256sums = e28960fe964e1d88866d34e3006220468a6ddbda5ab14e6bdc124d618e422e03
+	sha256sums = 661ec59d5cba1534ccc7bbe1ecfdfa99f0deeaa5a212e0f19097614c41b6acb7
 	sha256sums = d821ef0eb09c7868faae25390dad7d847cc1d94fbb6d5432b09ae965068466cc
 
 pkgname = incy-bin
