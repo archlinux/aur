@@ -1,5 +1,5 @@
-[ratiomaster.net-bin]
+["ratiomaster.net-bin"]
 source = "github"
 github = "NikolayIT/RatioMaster.NET"
-use_latest_release = "true"
+use_latest_release = true
 prefix = "v"
