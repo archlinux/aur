@@ -60,8 +60,6 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-# Tests are currently broken, because package requires python-huggingface-hub<2.0,
-# while ArchLinux provides python-huggingface-hub=2.1.1. Build with --nocheck.
 check() {
   cd "${_name}-${pkgver}"
   pytest
