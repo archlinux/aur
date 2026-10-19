@@ -50,7 +50,7 @@ prepare() {
     local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
 	find "$(_get_app_dir)" -type d \
 		\( -name 'darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*${_archrem}*" \) \
-		-prune -exec rm -rf {} 
+		-prune -exec rm -rf {}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
