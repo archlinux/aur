@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animu-bin
 _pkgname=Animu
-pkgver=0.8.1
+pkgver=0.8.2
 _electronversion=44
 pkgrel=1
 pkgdesc="An easy to use desktop application for watching anime."
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ee40699bf858d23281af7a0b096d15c8facd6867730b9539079be0041ae7cdc2'
+sha256sums=('4040daf1443b80c5bbb834628921499b9559c2c7b78b381adf933418cbc4b443'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
