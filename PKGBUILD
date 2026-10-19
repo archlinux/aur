@@ -8,7 +8,7 @@ url="https://github.com/Botropolis-City/botropolis"
 # The Go module path, which -X needs to stamp the version. Not derived from url:
 # since 0.1.5 the module is the vanity path, and a wrong path here is silent.
 _module="botropolis.city/botropolis"
-license=('MIT')
+license=('MIT' 'OFL-1.1' 'CC0-1.0')
 # Ebitengine dlopens GL and X11 rather than linking them, so the binary's only
 # NEEDED entry is libc and namcap reports every one of these as possibly
 # unneeded. They are needed: the sonames are in the binary's string table.
