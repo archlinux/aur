@@ -1,24 +1,20 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=libsbml
-pkgver=5.21.0
+pkgver=5.21.2
 pkgrel=1
 pkgdesc="XML-based description language for computational models in systems biology"
 url="https://github.com/sbmlteam/libsbml"
-license=('LGPL')
+license=('LGPL-2.1-or-later' 'Zlib')
 arch=('i686' 'x86_64')
-depends=('libxml2')
-optdepends=('bzip2' 'python' 'perl' 'ruby' 'java-runtime') # 'octave' 'mono'
-makedepends=('cmake' 'swig' 'python' 'perl' 'ruby' 'java-environment') # 'octave', 'mono'
+depends=('bzip2' 'libgcc' 'libstdc++' 'libxml2' 'zlib')
+optdepends=('python: Python bindings') # 'perl' 'ruby' 'java-runtime' 'octave' 'mono'
+makedepends=('cmake' 'swig' 'python') # 'perl' 'ruby' 'java-environment' 'octave' 'mono'
 options=('!libtool')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('95236a4c6f9f117b8692d4c0721c592c6e3f726cd1ca4f3d8c2af5ab047ddcb7')
+sha256sums=('7649262405660a16161db8324ae817e3509fca072c6a06a80d6487d30f97d3be')
 
 build() {
-  cd $pkgname-$pkgver
-  ./autogen.sh
-
-  mkdir -p "$srcdir"/build-$pkgver && cd "$srcdir"/build-$pkgver
-  cmake ../$pkgname-$pkgver \
+  cmake -S "$pkgname-$pkgver" -B "build-$pkgver" \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_INSTALL_LIBDIR:PATH=lib \
     -DWITH_LIBXML=ON \
@@ -34,12 +30,13 @@ build() {
     -DENABLE_FBC=ON \
     -DENABLE_GROUPS=ON
 
-  make
+  cmake --build "build-$pkgver"
 }
 
 package() {
-  cd build-$pkgver
-  DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_PREFIX=/usr -P cmake_install.cmake
+  DESTDIR="$pkgdir" cmake --install "build-$pkgver"
 
   rm "$pkgdir"/usr/share/cmake/Modules/Find{ZLIB,LIBXML,BZ2}.cmake
+  install -Dm644 "$pkgname-$pkgver/src/sbml/compress/00README.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/minizip.LICENSE"
 }
