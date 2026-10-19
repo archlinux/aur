@@ -25,8 +25,8 @@ pkgver() {
 prepare() {
   cd diffimg
   patch -Np1 -i ../fix-missing-includes.patch
-  # Arch's qwt is built against Qt6, link the Qt5 variant
-  sed -i 's/-lqwt$/-lqwt-qt5/' diffimg.pro
+  # use qwt's qmake feature, so qmake-qt5 picks the Qt5 build (qwt-qt5)
+  sed -i -e '/^INCLUDEPATH += \/usr\/include\/qwt$/d' -e 's/^LIBS += -lqwt$/CONFIG += qwt/' diffimg.pro
 }
 
 build() {
