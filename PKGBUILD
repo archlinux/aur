@@ -1,46 +1,37 @@
 # Maintainer: David Kantun <dkantun@gmail.com>
 
 pkgname=libria
-pkgver=1.10.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
 arch=('x86_64')
 url="https://github.com/Gargadon/libria"
 license=('AGPL-3.0-only')
-depends=('electron' 'ghostscript')
-makedepends=('bun' 'python')
+depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libsecret' 'ghostscript' 'nss' 'alsa-lib')
+makedepends=('bun' 'rust' 'nodejs' 'npm' 'python' 'pkgconf')
 provides=("${pkgname}")
+# GCC LTO objects from ring cannot be linked by Rust's lld linker.
+options=('!lto')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8667dbc1acd407e5e32a2837ab98104f429d108244d9ff77cdc83a8f0d12b992')
+sha256sums=('34c3ba9494e721f9d8b293b10216b03253e916d92b56ad8521147ad916378dbe')
 
 prepare() {
   cd "${srcdir}/libria-${pkgver}"
-  bun install
+  bun install --frozen-lockfile
 }
 
 build() {
   cd "${srcdir}/libria-${pkgver}"
-  bun run build
+  bun run tauri:build -- --no-bundle
 }
 
 package() {
   cd "${srcdir}/libria-${pkgver}"
 
   # Aplicación
-  local _dest="${pkgdir}/opt/libria"
-  install -dm755 "${_dest}/dist/libria"
-  cp -r dist/libria/browser/. "${_dest}/dist/libria/browser/"
-  cp main.js preload.js package.json "${_dest}/"
-  cp -r build/licenses "${_dest}/licenses"
-  install -Dm644 build/icon.png "${_dest}/build/icon.png"
-
-  # Script de lanzamiento
-  install -dm755 "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/libria" << 'SCRIPT'
-#!/bin/bash
-exec /usr/bin/electron /opt/libria/main.js "$@"
-SCRIPT
-  chmod 755 "${pkgdir}/usr/bin/libria"
+  install -Dm755 src-tauri/target/release/libria "${pkgdir}/usr/bin/libria"
+  install -dm755 "${pkgdir}/usr/lib/libria/runtime"
+  cp -r build/tauri-resources/. "${pkgdir}/usr/lib/libria/runtime/"
 
   # Desktop entry
   install -dm755 "${pkgdir}/usr/share/applications"
