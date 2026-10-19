@@ -30,7 +30,7 @@ else
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.4.4.r0.g71a9f95786
+pkgver=2.4.4.r10.geb011f2aff
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
@@ -44,11 +44,21 @@ source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "0001-only-build-the-module-in-dkms.conf.patch"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check"
+        "linux730-bvec_iter-bi_bvec_done_is_now_bi_offset.patch::https://github.com/openzfs/zfs/commit/d966f3dd8c2e4eb04e52227b7a87f5828924f89c.patch?full_index=1"
+        "linux730-cpu_feature_enabled_instead_of_static_cpu_has.patch"
+        "linux730-iops_create_dropped_flag_arg.patch"
+        "linux730-make_host_filesystem_available_to_kernel_threads.patch::https://github.com/openzfs/zfs/commit/cd3699d308e1b37dcdd0d5a9a8c3624deb5fc3e9.patch?full_index=1"
+        "linux730-META.patch"
 )
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f'
+            'cc895dc1cf0784e0657b46d2168f16571b9620b0e60d259a1524d4195b6443fb'
+            'b5c570f6a86dc01a4782ba52edcec333e1af6cd53409a3e18cb06a1009742b15'
+            '7b4b9a348299f7dd84a75ff7af1175c4784beb62b13b889693c9fcde1b107b33'
+            '74fbf3d3517285881f1b9c7c64d906869346157cf8c306866761fffdaaa748a0'
+            '2ff43599e2b1e5536b79fbff274a7c67cfa1181afd189d7208d10505bf8c4c76'
 )
 
 prepare() {
