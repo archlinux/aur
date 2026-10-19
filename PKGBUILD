@@ -2,8 +2,8 @@
 
 pkgname=asix-ax88179-dkms
 _pkgname="${pkgname%-*}"
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='A kernel module for ASIX AX88179B USB network adapters'
 url="https://www.asix.com.tw/en/product/USBEthernet/Super-Speed_USB_Ethernet/AX88179B"
 license=('GPL-2.0-or-later')
@@ -15,21 +15,18 @@ source=(
     "${_archivename}.tar.bz2::https://www.asix.com.tw/en/support/download/file/2151"
     'dkms.conf'
     'modprobe.conf'
-    '0001-Fix-building-on-7.2.patch'
     '0002-Complete-TX-NAPI-on-early-exit.patch'
 )
 sha256sums=(
-    'fd650b715ee41d2a871e7a1c5ab5c42e01aa5a252cc9a4b4fcdb89f1287482b6'
+    'dc8d89b1060ac2b0a4829d862f1cb39fbcb9fa5876746f8ff7b187567d237cfc'
     '280c3fd129bb3ac8b763e65dbbe7383ca795a435021f4c978a7f6b03d696b616'
     '652e3715724de0c1893ffbdfc48a66c7c09e82015429f10254869934dea40b55'
-    '7e6f20f508d3beb63c9feab449e3f990abb46c33e5ad61d4d0d5b20e05691819'
     '5ba79ac2d61ea9ece2ecb5c5219b109411d87e86b567b95511213de6571adf5d'
 )
 
 package() {
     find . -type f -exec chmod 644 {} +
 
-    patch --binary -p2 -d "${_archivename}" <0001-Fix-building-on-7.2.patch
     patch --binary -p2 -d "${_archivename}" <0002-Complete-TX-NAPI-on-early-exit.patch
 
     mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
