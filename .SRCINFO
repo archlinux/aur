@@ -1,6 +1,6 @@
 pkgbase = gvfs-googledrive
 	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - all backends
-	pkgver = 1.61.2
+	pkgver = 1.61.3
 	pkgrel = 3
 	url = https://gitlab.gnome.org/fluhus/gvfs
 	install = gvfs-nfs.install
@@ -8,23 +8,15 @@ pkgbase = gvfs-googledrive
 	arch = aarch64
 	groups = gnome
 	license = LGPL-2.0-only
-	makedepends = avahi
 	makedepends = dbus
 	makedepends = docbook-xsl
 	makedepends = git
 	makedepends = glib2-devel
-	makedepends = libgoa
-	makedepends = libgphoto2
-	makedepends = libimobiledevice
-	makedepends = libmtp
-	makedepends = libnfs
-	makedepends = libxml2
 	makedepends = meson
-	makedepends = msgraph
 	makedepends = openssh
 	makedepends = python
 	makedepends = smbclient
-	makedepends = wsdd
+	depends = avahi
 	depends = dconf
 	depends = fuse3
 	depends = gcr-4
@@ -37,25 +29,37 @@ pkgbase = gvfs-googledrive
 	depends = libcdio-paranoia
 	depends = libgcc
 	depends = libgcrypt
+	depends = libgoa
+	depends = libgphoto2
 	depends = libgudev
+	depends = libimobiledevice
+	depends = libmtp
+	depends = libnfs
+	depends = libplist
 	depends = libsecret
 	depends = libsoup3
+	depends = libusb
+	depends = libxml2
+	depends = msgraph
 	depends = polkit
 	depends = procps-ng
+	depends = smbclient>=4.12.0
 	depends = systemd
 	depends = systemd-libs
 	depends = udisks2
-	provides = gvfs=1.61.2
-	provides = gvfs-afc=1.61.2
-	provides = gvfs-dnssd=1.61.2
-	provides = gvfs-goa=1.61.2
-	provides = gvfs-google=1.61.2
-	provides = gvfs-gphoto2=1.61.2
-	provides = gvfs-mtp=1.61.2
-	provides = gvfs-nfs=1.61.2
-	provides = gvfs-onedrive=1.61.2
-	provides = gvfs-smb=1.61.2
-	provides = gvfs-wsdd=1.61.2
+	depends = usbmuxd
+	depends = wsdd
+	provides = gvfs=1.61.3
+	provides = gvfs-afc=1.61.3
+	provides = gvfs-dnssd=1.61.3
+	provides = gvfs-goa=1.61.3
+	provides = gvfs-google=1.61.3
+	provides = gvfs-gphoto2=1.61.3
+	provides = gvfs-mtp=1.61.3
+	provides = gvfs-nfs=1.61.3
+	provides = gvfs-onedrive=1.61.3
+	provides = gvfs-smb=1.61.3
+	provides = gvfs-wsdd=1.61.3
 	conflicts = gvfs
 	conflicts = gvfs-afc
 	conflicts = gvfs-dnssd
