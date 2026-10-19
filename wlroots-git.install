@@ -1,0 +1,14 @@
+post_upgrade() {
+	# pkgver is MAJOR.MINOR.PATCH.rCOUNT.HASH and the library is named
+	# libwlroots-MAJOR.MINOR.so, so a MAJOR.MINOR change replaces the library.
+	local new=${1%-*} old=${2%-*}
+	new=${new%.*.*.*}
+	old=${old%.*.*.*}
+	if [ "${new}" != "${old}" ]; then
+		cat <<EOF
+==> libwlroots-${old}.so has been replaced by libwlroots-${new}.so.
+    Rebuild sway-git and any other package built against wlroots-git,
+    otherwise they will fail to start.
+EOF
+	fi
+}

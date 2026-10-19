@@ -1,79 +1,76 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: GreyXor <greyxor@protonmail.com>
-# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.21.0.r7488.62c86fb9
+pkgver=0.21.0.r7943.f9d2520
 pkgrel=1
 pkgdesc='Modular Wayland compositor library (git development version)'
 arch=(x86_64)
 url=https://gitlab.freedesktop.org/wlroots/wlroots
 license=(MIT)
-options=(debug)
 depends=(
 	glibc
+	lcms2
+	libdisplay-info
 	libdrm
+	libglvnd
 	libinput
 	libliftoff
 	libxcb
-	libglvnd
-	lcms2
 	libxkbcommon
-	systemd-libs
+	mesa
 	opengl-driver
 	pixman
+	seatd
+	systemd-libs
+	vulkan-icd-loader
 	wayland
+	wayland-protocols
 	xcb-util-errors
 	xcb-util-renderutil
 	xcb-util-wm
-	seatd
-	glslang
-	vulkan-icd-loader
-	libdisplay-info)
+)
 makedepends=(
 	git
+	glslang
+	hwdata
 	meson
 	vulkan-headers
-	wayland-protocols
-	xorgproto
 	xorg-xwayland
 )
 optdepends=(
+	'vulkan-validation-layers: debug the Vulkan renderer'
 	'xorg-xwayland: enable X11 support'
 )
-provides=("lib${pkgname%-git}-${pkgver%.*.*.*}.so")
+provides=(
+	"wlroots${pkgver%.*.*.*}=${pkgver}"
+	"libwlroots-${pkgver%.*.*.*}.so"
+)
+conflicts=("wlroots${pkgver%.*.*.*}")
+install="${pkgname}.install"
 source=("${pkgname}::git+${url}.git")
 b2sums=('SKIP')
-_builddir="build"
-_builddir_pkgver="build-pkgver"
-
-_meson_setup() {
-	arch-meson \
-		--buildtype=debug \
-		-Dwerror=false \
-		-Dexamples=false \
-		"${pkgname}" "$1"
-}
-
-prepare() {
-	_meson_setup "${_builddir_pkgver}"
-}
 
 pkgver() {
-	(
-		set -o pipefail
-		meson introspect --projectinfo "${_builddir_pkgver}" |
-		awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)-(dev|rc[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
-	)
 	cd "${pkgname}"
-	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	local ver
+	ver=$(meson introspect --projectinfo meson.build 2>/dev/null |
+		python -c 'import json, sys; print(json.load(sys.stdin)["version"].split("-")[0])') || return
+	printf '%s.r%s.%s' "${ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	_meson_setup "${_builddir}"
-	meson compile -C "${_builddir}"
+	arch-meson "${pkgname}" build \
+		-D examples=false \
+		-D werror=false
+	meson compile -C build
+}
+
+check() {
+	meson test -C build --print-errorlogs
 }
 
 package() {
-	meson install -C "${_builddir}" --destdir="${pkgdir}"
-	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	meson install -C build --destdir "${pkgdir}"
+	install -Dm644 "${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
