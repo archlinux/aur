@@ -1,5 +1,5 @@
 pkgname=dsd-neo-git
-pkgver=2.11.2.r5.gaf4527d
+pkgver=2.11.2.r6.g85a9497
 pkgrel=1
 pkgdesc="Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
@@ -42,9 +42,9 @@ pkgver() {
 }
 
 # BEGIN pinned PFFFT (tools/update_aur_pffft.py)
-_pffft_sha=0ac3d3907ca37226a0516bc97050aa4b80819804
+_pffft_sha=77a7ecda1f58f041168636c99be3e6e968d984d7
 source+=("pffft-$_pffft_sha.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/$_pffft_sha")
-sha256sums+=('1105f82ddb0db044a3c2c16f32ddbfdce3de125c31f5e4a8d51abb1c63cab500')
+sha256sums+=('4de67b1d528d48e52921c3a821d1cff9de2c4ff99ff7affcb67e2b9e47a88422')
 # END pinned PFFFT
 
 # BEGIN pinned TETRA_crypto (tools/update_aur_tetra_crypto.py)
