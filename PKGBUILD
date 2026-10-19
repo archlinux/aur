@@ -2,7 +2,7 @@
 
 pkgname=browser-use-cli
 _pyname=browser_use
-pkgver=0.13.10
+pkgver=0.13.11
 pkgrel=1
 pkgdesc='CLI for browser automation with AI agents'
 arch=(any)
@@ -70,7 +70,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/b/browser_harness/browser_harness-0.1.13.tar.gz"
   "https://files.pythonhosted.org/packages/source/f/fetch_use/fetch_use-0.4.0.tar.gz"
 )
-sha256sums=('f0e97fcad3319bc7a19ef7bb27eadf2e0824def0a916fd1988557dab9267cb17'
+sha256sums=('abec8573ebc9f8801b688c38b5988d90bb030d1448b8760f37f85f68a0ed7812'
             '1a5456f0a576e86613a7bd66e819891b677778320b6e291094e339b0d9df2e0d'
             '0da3a32df46336a03ff5a22bc6bc442cd7d2f2d50a118fd4856f29d37f6d26a0'
             'be050bc803b31ec4e9f23dfd71d9dc5f1160d7dec0b962327915caf743a10208'
