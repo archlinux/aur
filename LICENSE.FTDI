@@ -1,0 +1,12 @@
+The QTAC binaries in this package statically link libftd2xx 1.4.33
+(libftd2xx-static.a from libftd2xx-linux-x86_64-1.4.33.tgz), the FTDI D2XX
+driver library from Future Technology Devices International Ltd.
+
+libftd2xx is proprietary software distributed under the FTDI Driver Licence
+Terms:
+
+    https://ftdichip.com/driver-licence-terms-details/
+
+libftd2xx in turn contains an unmodified copy of libusb (https://libusb.info),
+distributed under the terms of the GNU Lesser General Public License, version
+2.1 or later.

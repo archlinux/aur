@@ -1,0 +1,5 @@
+post_install() {
+  echo ":: Re-plug any connected debug board (or run 'udevadm trigger') so the"
+  echo "   QTAC udev rule in /usr/lib/udev/rules.d/99-QTAC-USB.rules applies."
+  echo ":: The Python interface lives in /opt/qcom/QTAC/python; add it to PYTHONPATH."
+}
