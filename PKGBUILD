@@ -1,7 +1,7 @@
 # Maintainer: w568w <w568w at outlook dot com>
 
 pkgname=qqtui
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Terminal frontend using the native Linux QQ service'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('kitty: inline images and animations'
             'xclip: X11 clipboard'
             'xdg-utils: open files and links in external applications')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('adf256c36ee77a9a3f3ed0d595e013614ed46898b2565708b9475f8fb87ce3ca')
+sha256sums=('547a17809985529df3b5c74f56c1e49891c9f8724b882d62a3aec55be135ab44')
 
 prepare() {
   cd "qqtui-$pkgver"
