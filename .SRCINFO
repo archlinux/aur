@@ -1,0 +1,27 @@
+pkgbase = lorenz
+	pkgdesc = Local file conversion with radial wheels
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Chaos-Tic/Lorenz
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cmake
+	depends = qt6-base
+	depends = gcc-libs
+	depends = glibc
+	optdepends = ffmpeg: video and audio
+	optdepends = imagemagick: images
+	optdepends = pandoc-cli: documents
+	optdepends = poppler: PDF text and pages
+	optdepends = qpdf: merge and split PDF
+	optdepends = ghostscript: compress PDF
+	optdepends = libarchive: archives
+	optdepends = libreoffice-fresh: Word, PowerPoint and spreadsheet files
+	optdepends = libnotify: notifications
+	optdepends = wl-clipboard: copy files on Wayland
+	optdepends = xclip: copy files on X11
+	source = lorenz-1.0.0.tar.gz::https://github.com/Chaos-Tic/Lorenz/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = acea6989860a3ebc433c7146251d1593ece2db8c728956dc9e1adfe11cb4eb46
+
+pkgname = lorenz
