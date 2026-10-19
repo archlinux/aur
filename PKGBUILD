@@ -9,8 +9,9 @@ url="https://github.com/pinkpixel-dev/slate"
 license=('Apache-2.0')
 depends=(
   'fontconfig'
-  'gcc-libs'
   'glibc'
+  'hicolor-icon-theme'
+  'libgcc'
   'libxcb'
   'libxkbcommon'
   'libxkbcommon-x11'
@@ -26,7 +27,7 @@ conflicts=('slate' 'slate-git' 'slate-bin')
 options=('!lto')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Run `updpkgsums` after the v$pkgver tag is on GitHub to fill this in.
-sha256sums=('6781e9f7407a28f45d60bc1d053d251bcef1b4c79084dab4a48fd4f2546233c7')
+sha256sums=('af6676818a55843ece0998f15b73783cc71511b67e848c1fa21a32bb96a3e3f6')
 
 prepare() {
   cd "$_name-$pkgver"
