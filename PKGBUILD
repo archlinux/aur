@@ -1,7 +1,7 @@
 # Maintainer: Christoph Brill <aur@christophbrill.de>
 
 pkgname=gitea-mcp
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A Model Context Protocol (MCP) server for interacting with Gitea instances"
 arch=('x86_64' 'aarch64' 'i686')
@@ -13,7 +13,7 @@ options=('!debug')
 # The Gitea source archive endpoint requires authentication and does not serve
 # anonymous tarballs/zips, so the source is fetched via git pinned to the tag.
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('d5ca77ad9fa85cc9df24bb8461724ace886375916962e8dce0378f151ba28cc3')
+sha256sums=('5e47c819477f77ddcda51807e7c352acdfad61530455459158ad725ec2cad394')
 
 build() {
   cd "${srcdir}/${pkgname}"
