@@ -1,0 +1,4 @@
+[commafeed]
+source = "github"
+github = "Athou/commafeed"
+use_max_tag = true
