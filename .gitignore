@@ -1,4 +1,4 @@
-*.gz
+*.tar*
 *.xz
 *.bz2
 /pkg

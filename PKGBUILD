@@ -2,7 +2,7 @@
 # Contributor: eolianoe <eolianoe At gmail DoT com>
 
 pkgname=f90cache
-pkgver=0.99c
+pkgver=0.99h
 pkgrel=1
 pkgdesc="Caching pre-processor for Fortran compilers"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://perso.univ-rennes1.fr/edouard.canot//f90cache/"
 license=('GPL')
 depends=('glibc')
 source=("${url}${pkgname}-${pkgver}.tar.gz")
-sha256sums=('13f8297ecba73671d43376b71ef0e453bd9d6677a901d1c95f01f16cc33776e1')
+sha256sums=('5da807fc6a3b9a402854911921948afb3213ce720425be61119ef6757de1e19c')
 
 build(){
   cd ${srcdir}/${pkgname}-${pkgver}
