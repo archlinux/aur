@@ -13,7 +13,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=2.31.0
+pkgver=2.32.0
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=(
@@ -36,10 +36,10 @@ for _name in "${_binname[@]}"; do
 done
 sha256sums=('6dcf81c7466d78141a69097bf1ea7c61365d2b7be7e0d208990d9aa2dc189a9d'
             'a15b1d1b168954c92ff7fb1620382418f7c72f4f4d251ee791d1098ad68ab0c4')
-sha256sums_aarch64=('bcf366d865e822d5f8e7fefbad3fef2e5e3480e83213de78e1023cb2430c3696'
-                    '6240a03543695ed7dfad404765cc681c7bcc7760773c479d37cdd80f7840e000')
-sha256sums_x86_64=('e838187e09a8fb6fcd3236854552bd28522891712c95e83d2c1b6e87cee9acba'
-                   'a05f17a2a934692cc9d0b46a5a597f23cf2f1e34c76e0a457943aa5afffa33ba')
+sha256sums_aarch64=('d282f2f67c57d104f380518ba5250338926c6a765508477272068aaf05d4c2eb'
+                    '5228b2588b4892994b31195a646bfd14196ad7fe2cc1e90ca0725030d99eb00f')
+sha256sums_x86_64=('8280ca4c6255714346915535aeb86e588c4525a7e1b49d94ae7a0966761d5da4'
+                   'a41111bb4fefc8320f6a68b128cb0f6b0c78b4f94b40354d3bbc3b4f74c52977')
 
 package_grpc-gateway-common-bin() {
   pkgdesc+=" (common files)"
