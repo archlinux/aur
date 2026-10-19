@@ -1,7 +1,8 @@
 pkgbase = fido2-token2-git
-	pkgdesc = TOKEN2 FIDO2 management CLI with wrapper and GUI
-	pkgver = r185.fc825a3
+	pkgdesc = TOKEN2 FIDO2 management CLI with wrapper and GUI (upstream legacy branch)
+	pkgver = r185.bff7dae
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Token2/fido2-manage
 	arch = x86_64
 	license = BSD-2-Clause
@@ -20,15 +21,18 @@ pkgbase = fido2-token2-git
 	depends = tk
 	depends = python-pexpect
 	depends = hicolor-icon-theme
+	optdepends = python-gobject: optional GUI tray icon
+	optdepends = gtk3: optional GUI tray icon
+	optdepends = libappindicator: optional GUI tray icon
 	provides = fido2-token2
 	conflicts = fido2-token2
-	source = fido2-manage-upstream::git+https://github.com/Token2/fido2-manage.git
+	source = fido2-manage-upstream::git+https://github.com/Token2/fido2-manage.git#branch=legacy
 	source = prepare-overlay.sh
 	source = fido2-manage.desktop
 	source = fido2-manage.png
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ef632de7a23f6bde07c4a59b07cea7fd9b1e74f45fac4135231482f272de3dd1
+	sha256sums = 30d3625846f30ac7d3ad7936d78a7747cf00fd37cd73e6c2b025fc575c159f26
+	sha256sums = b8201c640ae084a9c88537a5922c0ec4b8b7e3cb7de9b1ea990a8a5a7a9062e1
 
 pkgname = fido2-token2-git

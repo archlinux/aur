@@ -1,27 +1,30 @@
 # Maintainer: Marat Bakeev <hawara@gmail.com>
 
 pkgname=fido2-token2-git
-pkgver=r185.fc825a3
+pkgver=r185.bff7dae
 pkgrel=1
-pkgdesc='TOKEN2 FIDO2 management CLI with wrapper and GUI'
+# The preserved legacy branch has a lower version than the former main HEAD.
+epoch=1
+pkgdesc='TOKEN2 FIDO2 management CLI with wrapper and GUI (upstream legacy branch)'
 arch=('x86_64')
 url='https://github.com/Token2/fido2-manage'
 license=('BSD-2-Clause')
 depends=('bash' 'openssl' 'libcbor' 'pcsclite' 'systemd-libs' 'zlib' 'python' 'tk' 'python-pexpect' 'hicolor-icon-theme')
+optdepends=('python-gobject: optional GUI tray icon' 'gtk3: optional GUI tray icon' 'libappindicator: optional GUI tray icon')
 makedepends=('git' 'cmake' 'pkgconf' 'gcc' 'make')
 provides=('fido2-token2')
 conflicts=('fido2-token2')
 source=(
-  'fido2-manage-upstream::git+https://github.com/Token2/fido2-manage.git'
+  'fido2-manage-upstream::git+https://github.com/Token2/fido2-manage.git#branch=legacy'
   'prepare-overlay.sh'
   'fido2-manage.desktop'
   'fido2-manage.png'
 )
 sha256sums=(
   'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
+  'ef632de7a23f6bde07c4a59b07cea7fd9b1e74f45fac4135231482f272de3dd1'
+  '30d3625846f30ac7d3ad7936d78a7747cf00fd37cd73e6c2b025fc575c159f26'
+  'b8201c640ae084a9c88537a5922c0ec4b8b7e3cb7de9b1ea990a8a5a7a9062e1'
 )
 
 pkgver() {
