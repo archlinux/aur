@@ -6,8 +6,12 @@ pkgbase = otf-antykwa-poltawskiego
 	arch = any
 	license = custom:GUST-FONT-LICENSE
 	source = ap1.101otf.zip::https://jmn.pl/download/ap1.101otf.zip
+	source = ap1.101ttf.zip::https://jmn.pl/download/ap1.101ttf.zip
 	source = GUST-FONT-LICENSE.txt::https://jmn.pl/GUST-FONT-LICENSE.txt
 	sha256sums = 0e13bd202a95da792fc9147c53b69b57b6d67fcd02d9412a74e87360b4f669c9
+	sha256sums = 386bd2345fc21749eafd50e041ea4e3f0dc1744286245aa10b8365dca4507ba0
 	sha256sums = a746108477b2fa685845e7596b7ad8342bc358704b2b7da355f2df0a0cb8ad85
 
 pkgname = otf-antykwa-poltawskiego
+
+pkgname = ttf-antykwa-poltawskiego
