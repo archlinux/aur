@@ -1,7 +1,7 @@
 pkgbase = nsis
 	pkgdesc = A professional open source system to create Windows installers
 	pkgver = 3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nsis.sourceforge.net
 	arch = x86_64
 	license = LicenseRef-nsis

@@ -1,6 +1,6 @@
 pkgname=nsis
 pkgver=3.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A professional open source system to create Windows installers'
 arch=('x86_64')
 url='http://nsis.sourceforge.net'
@@ -17,11 +17,11 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-src"
-  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false ZLIB_W32=/usr/i686-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes
+  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false TARGET_ARCH=amd64 ZLIB_W32=/usr/x86_64-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes ${MAKEFLAGS}
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver-src"
-  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false ZLIB_W32=/usr/i686-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes PREFIX_DEST="$pkgdir" install
+  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false TARGET_ARCH=amd64 ZLIB_W32=/usr/x86_64-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes PREFIX_DEST="$pkgdir" install
   install -Dm644 ${srcdir}/$pkgname-$pkgver-src/Docs/src/license.but "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
