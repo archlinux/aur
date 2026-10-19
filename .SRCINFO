@@ -1,8 +1,9 @@
 pkgbase = xodus-nexus-bin
 	pkgdesc = Xbox-inspired launcher for Microsoft Store PC games on Linux, built on Xodus
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/domsvoboda/xodus-nexus
+	install = xodus-nexus-bin.install
 	arch = x86_64
 	license = MIT
 	depends = alsa-lib

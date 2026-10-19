@@ -3,7 +3,7 @@
 pkgname=xodus-nexus-bin
 _pkgname=xodus-nexus
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 _appimage="Xodus-Nexus-${pkgver}-x86_64.AppImage"
 pkgdesc='Xbox-inspired launcher for Microsoft Store PC games on Linux, built on Xodus'
 arch=(x86_64)
@@ -17,6 +17,7 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!strip !debug)
+install=$pkgname.install
 source=(
   "${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/domsvoboda/xodus-nexus/v${pkgver}/LICENSE"

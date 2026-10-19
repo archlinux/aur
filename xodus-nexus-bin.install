@@ -1,0 +1,4 @@
+post_install() {
+  echo "Xodus Nexus needs its Wine/Proton runtime, which is installed and updated per user from the app:"
+  echo "  Settings > Nexus runtime > Install Nexus runtime"
+}
