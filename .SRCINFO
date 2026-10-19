@@ -1,0 +1,20 @@
+pkgbase = elyterminal-bin
+	pkgdesc = A GPU-accelerated terminal emulator built on GPUI
+	pkgver = 0.1.4
+	pkgrel = 2
+	url = https://git.zacharyzhang.com/ZacharyZhang-NY/ELYTerminal
+	arch = x86_64
+	license = MIT
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	depends = gcc-libs
+	depends = glibc
+	provides = elyterminal
+	conflicts = elyterminal
+	options = !strip
+	options = !debug
+	source_x86_64 = ELYTerminal-0.1.4-linux-x86_64.tar.gz::https://git.zacharyzhang.com/ZacharyZhang-NY/ELYTerminal/releases/download/v0.1.4/ELYTerminal-0.1.4-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ff737bcebb12bc5fb4bb94f2001cb9d3c78bce220c6d9a3c3f3dfc65080fb24f
+
+pkgname = elyterminal-bin
