@@ -1,7 +1,7 @@
 pkgbase = shortwave-mpris-bin
 	pkgdesc = Internet radio player with tray icon, media casting and MPRIS integration. Device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ixnewton/Shortwave-MPRIS
 	install = shortwave-mpris-bin.install
 	arch = x86_64
