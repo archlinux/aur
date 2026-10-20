@@ -1,14 +1,14 @@
 pkgbase = xddns
 	pkgdesc = Dynamic DNS client
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IceflowRE/xddns
 	install = xddns.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = MIT
-	makedepends = go
+	makedepends = go>=1.27.3
 	options = !debug
 	backup = etc/xddns.yaml
 	source = xddns-0.2.1.tar.gz::https://github.com/IceflowRE/xddns/archive/refs/tags/v0.2.1.tar.gz

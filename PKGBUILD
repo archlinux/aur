@@ -2,12 +2,12 @@
 
 pkgname=xddns
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic DNS client"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/IceflowRE/xddns"
 license=("MIT")
-makedepends=("go")
+makedepends=("go>=1.27.3")
 options=("!debug")
 backup=("etc/${pkgname}.yaml")
 install="${pkgname}.install"
