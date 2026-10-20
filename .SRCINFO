@@ -1,7 +1,7 @@
 pkgbase = libria
 	pkgdesc = Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Gargadon/libria
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -21,11 +21,13 @@ pkgbase = libria
 	optdepends = chromium: PDF export (one compatible browser required)
 	optdepends = google-chrome: PDF export (alternative browser)
 	optdepends = brave-bin: PDF export (alternative browser)
+	optdepends = opera: PDF export (alternative browser)
+	optdepends = vivaldi: PDF export (alternative browser)
 	provides = libria
 	options = !lto
 	source = https://github.com/Gargadon/libria/archive/v2.1.0.tar.gz
 	source = system-browser.patch
 	sha256sums = 34c3ba9494e721f9d8b293b10216b03253e916d92b56ad8521147ad916378dbe
-	sha256sums = 8c44c1372abf054df056139c37d32b83c6c7fef29014a87c5eb58f8d734bcd9d
+	sha256sums = a42cb5f76fe73df5c4db57ad5a82a0dae1e506dc6567ef702a847ae93c9f2446
 
 pkgname = libria

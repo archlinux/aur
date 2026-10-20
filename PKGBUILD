@@ -2,7 +2,7 @@
 
 pkgname=libria
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
 arch=('x86_64')
 url="https://github.com/Gargadon/libria"
@@ -11,13 +11,15 @@ depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libsecret' 'ghostscript' 'nodejs' 'n
 makedepends=('bun' 'rust' 'npm' 'python' 'pkgconf')
 optdepends=('chromium: PDF export (one compatible browser required)'
             'google-chrome: PDF export (alternative browser)'
-            'brave-bin: PDF export (alternative browser)')
+            'brave-bin: PDF export (alternative browser)'
+            'opera: PDF export (alternative browser)'
+            'vivaldi: PDF export (alternative browser)')
 provides=("${pkgname}")
 # GCC LTO objects from ring cannot be linked by Rust's lld linker.
 options=('!lto')
 source=("${url}/archive/v${pkgver}.tar.gz" 'system-browser.patch')
 sha256sums=('34c3ba9494e721f9d8b293b10216b03253e916d92b56ad8521147ad916378dbe'
-            '8c44c1372abf054df056139c37d32b83c6c7fef29014a87c5eb58f8d734bcd9d')
+            'a42cb5f76fe73df5c4db57ad5a82a0dae1e506dc6567ef702a847ae93c9f2446')
 
 prepare() {
   cd "${srcdir}/libria-${pkgver}"

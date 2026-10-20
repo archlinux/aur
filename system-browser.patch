@@ -5,11 +5,11 @@
      candidates.push('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/Applications/Chromium.app/Contents/MacOS/Chromium');
    } else {
 -    candidates.push('/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome');
-+    candidates.push('/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/brave', '/usr/bin/brave-browser', '/usr/bin/brave-browser-stable');
++    candidates.push('/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/brave', '/usr/bin/brave-browser', '/usr/bin/brave-browser-stable', '/usr/bin/opera', '/usr/bin/opera-stable', '/usr/bin/vivaldi', '/usr/bin/vivaldi-stable');
    }
    const found = candidates.find(candidate => candidate && existsSync(candidate));
 -  if (!found) throw new Error('No se encontró el navegador PDF. Ejecuta bun run tauri:prepare.');
-+  if (!found) throw new Error('Para exportar PDF instala Chromium, Google Chrome o Brave, o configura LIBRIA_PDF_BROWSER con la ruta de un navegador compatible.');
++  if (!found) throw new Error('Para exportar PDF instala Chromium, Google Chrome, Brave, Opera o Vivaldi, o configura LIBRIA_PDF_BROWSER con la ruta de un navegador compatible.');
    return found;
  }
  
