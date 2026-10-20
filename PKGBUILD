@@ -1,53 +1,46 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-keychron-bin
-pkgver=0.5.8
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Pipette — Vial-compatible keyboard configurator (AppImage). Keychron fork"
 arch=("x86_64")
 url="https://github.com/Tymon3310/pipette-desktop"
-license=('MIT')
+license=('GPL-3.0-or-later')
 provides=('pipette-desktop')
-conflicts=('pipette-desktop-git')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'mesa' 'libappindicator-gtk3')
-options=('!strip')
+conflicts=('pipette-desktop-git' 'pipette-desktop-keychron-git' 'pipette-desktop-bin')
+# The app binary is taken out of the release AppImage and runs on the
+# system's WebKitGTK instead of the copy bundled in the AppImage.
+depends=('webkit2gtk-4.1' 'libsoup3' 'gtk3' 'glib2' 'cairo' 'gdk-pixbuf2' 'libayatana-appindicator' 'systemd-libs' 'dbus' 'hicolor-icon-theme')
+optdepends=('dfu-util: flash Keychron firmware')
+options=('!strip' '!debug')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/Tymon3310/pipette-desktop/releases/download/v${pkgver}/Pipette-linux-x86_64.AppImage")
-sha256sums=('74c4a4036e8e05fdddcdc42d5e0ad83e77f1cb507411167f9418e3248354f3f3')
+sha256sums=('22cb23998676e735fe2eb42abf0f6a6ab313870a7822287efed668f6ab419aeb')
 
 prepare() {
   cd "$srcdir"
+  rm -rf squashfs-root
   chmod +x "./${_appimage}"
-  ./${_appimage} --appimage-extract >/dev/null
+  "./${_appimage}" --appimage-extract >/dev/null
 }
 
 package() {
-  local _install_path="/opt/${pkgname}"
-
-  install -dm755 "${pkgdir}${_install_path}"
-  cp -r --no-preserve=mode,ownership "$srcdir/squashfs-root/"* "${pkgdir}${_install_path}/"
-
-  chmod 4755 "${pkgdir}${_install_path}/chrome-sandbox"
-  chmod -R 755 "${pkgdir}${_install_path}"
-
-  install -dm755 "$pkgdir/usr/bin"
-  cat >"$pkgdir/usr/bin/pipette-desktop" <<EOF
-#!/bin/sh
-export APPDIR="${_install_path}"
-exec "${_install_path}/AppRun" "\$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/pipette-desktop"
-
-  install -Dm644 "${pkgdir}${_install_path}/pipette-desktop.desktop" \
-    "$pkgdir/usr/share/applications/pipette-desktop.desktop"
-
-  sed -i "s|^Exec=.*|Exec=pipette-desktop --no-sandbox %U|" \
-    "$pkgdir/usr/share/applications/pipette-desktop.desktop"
-
-  local _icon_src="${pkgdir}${_install_path}/usr/share/icons/hicolor/1024x1024/apps/pipette-desktop.png"
-
-  install -Dm644 "$_icon_src" \
+  cd "$srcdir/squashfs-root"
+  install -Dm755 usr/bin/pipette "$pkgdir/usr/bin/pipette-desktop"
+  install -Dm644 usr/lib/Pipette/udev/99-vial.rules "$pkgdir/usr/lib/udev/rules.d/70-pipette-desktop.rules"
+  install -Dm644 usr/share/icons/hicolor/1024x1024/apps/pipette.png \
     "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/pipette-desktop.png"
 
-  install -Dm644 "$_icon_src" \
-    "$pkgdir/usr/share/pixmaps/pipette-desktop.png"
+  install -dm755 "$pkgdir/usr/share/applications"
+  cat >"$pkgdir/usr/share/applications/pipette-desktop.desktop" <<EOF
+[Desktop Entry]
+Name=Pipette
+Exec=pipette-desktop %U
+Terminal=false
+Type=Application
+Icon=pipette-desktop
+StartupWMClass=pipette
+Comment=Vial-compatible keyboard configurator
+Categories=Utility;HardwareSettings;
+EOF
 }
