@@ -6,8 +6,8 @@
 #   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=1.8.1.r0
-pkgrel=2
+pkgver=1.10.0.r0
+pkgrel=1
 pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)"
 arch=('x86_64')
 url="https://codeberg.org/StillDeadcode/radiance"
