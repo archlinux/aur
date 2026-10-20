@@ -4,7 +4,7 @@
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
 pkgname=firebase-tools
-pkgver=15.28.1
+pkgver=15.34.0
 pkgrel=1
 pkgdesc='The Firebase Command Line Tools'
 arch=('x86_64')
@@ -13,13 +13,15 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('jq' 'npm' 'node-gyp' 'python')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('c4b6dec1e0a9effe4b7777ec4cd0e9dec516ebd744d37355ab8ed6a706530b64')
+sha256sums=('9b62d1d317064360f5a521be91249f3df2b29441445f433b1f6ab6a58913323f')
 
 prepare() {
+  # remove re2 override incompatible with Node.js 26
   # ignore dependencies specific to Bare runtime as they contain prebuilt binaries
   # devendor node-gyp
   cd package
-  jq '.overrides += {
+  jq -e '.overrides.re2 == "1.24.0"' package.json >/dev/null || { echo 'unexpected re2 override'; exit 1; }
+  jq 'del(.overrides.re2) | .overrides += {
     "bare-events": "/dev/null",
     "bare-fs": "/dev/null",
     "node-gyp": "/usr/lib/node_modules/node-gyp",
