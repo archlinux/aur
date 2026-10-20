@@ -1,0 +1,4 @@
+[thesauromatic]
+source = "git"
+git = "https://github.com/cjrh/thesauromatic.git"
+prefix = "v"
