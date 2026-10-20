@@ -1,0 +1,5 @@
+[diskpush-bin]
+source = "github"
+github = "profullstack/diskpush"
+use_latest_release = true
+prefix = "v"
