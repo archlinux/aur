@@ -4,7 +4,7 @@
 
 pkgname=compressonator-git
 pkgdesc='Tool suite for Texture and 3D Model Compression, Optimization and Analysis'
-pkgver=4.5.52.r21.gf4b53d79
+pkgver=4.6.0.r0.g095a143a
 pkgrel=1
 url='https://github.com/GPUOpen-Tools/Compressonator'
 arch=(x86_64)
@@ -34,7 +34,7 @@ source=("git+${url}.git"
 b2sums=('SKIP'
         '090558b7e5eb691f94b46980ca28af752eb72213643800d548e71630e5515a0fef36964a444cc99f89c63094e8d7cc392ae6cb1639281d5f24adf33aebeca8fa'
         '29858a71b07730919d90299b134ae6a20e8f0de7b5bc5dfce4b329e97a433ef57c4086b6342c1b9bd32f278aa56dd5d54a2ece8cf63f428113b2d5c1581cf93d'
-        '4113114bcb94365d5028bd1cb5bf4b974a16ac195f22a2c8431f0ea05509470c2a2c05bb7758fc37327142cfb9955ab8b8dddf3fca9d16288996182ed335c40a'
+        '34eac2dfe301b989780cc9564eeefe142971b90fbe4b8c7d86457a802bfc13133d2e024e94dd7e3f0a3b18bcd4e5a3a1da5130a65c66dc7173146130d792cc77'
         'e3bac2494483dfba5b3b6a8f75075d3cade85c2047cf79c4d99bf147fe3ca519311f75d4a13a4327786ec328a2881265e6db8f1bd57d25040bd49a85609980a6'
         'e65a411abf594ca0c198dd8c329cdedfdfa79349e2149251d5c318249e4f21af1e402cf8831415714ed801c24dcf09d654f072038488097805173e37cc722f36')
 
@@ -58,10 +58,6 @@ prepare() {
 build() {
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   local cmake_options=(
-    -D CMAKE_INSTALL_PREFIX=/usr
-    -D CMAKE_INSTALL_LIBDIR=lib
-    -D CMAKE_INSTALL_SBINDIR=bin
-    -D CMAKE_INSTALL_SYSCONFDIR=/etc
     -D CMAKE_BUILD_TYPE=None
     -D BUILD_SHARED_LIBS=ON
     -D OPTION_ENABLE_ALL_APPS=OFF

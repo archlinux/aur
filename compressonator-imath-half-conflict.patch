@@ -11,7 +11,7 @@ Index: b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
 ===================================================================
 --- a/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
 +++ b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
-@@ -258,7 +258,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+@@ -282,7 +282,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
              {
                  CMP_HALF srcpix                         = p_source_pixels[srcOffset + srcidx++];
                  BC6HEncode_local.din[i * BlockX + j][0] = (srcpix).bits();
@@ -20,7 +20,7 @@ Index: b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
                  {
                      if (g_BC6HEncode.m_isSigned)
                          BC6HEncode_local.din[i * BlockX + j][0] = -BC6HEncode_local.din[i * BlockX + j][0];
-@@ -268,7 +268,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+@@ -292,7 +292,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
  
                  srcpix                                  = p_source_pixels[srcOffset + srcidx++];
                  BC6HEncode_local.din[i * BlockX + j][1] = (srcpix).bits();
@@ -29,7 +29,7 @@ Index: b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
                  {
                      if (g_BC6HEncode.m_isSigned)
                          BC6HEncode_local.din[i * BlockX + j][1] = -BC6HEncode_local.din[i * BlockX + j][1];
-@@ -278,7 +278,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+@@ -302,7 +302,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
  
                  srcpix                                  = p_source_pixels[srcOffset + srcidx++];
                  BC6HEncode_local.din[i * BlockX + j][2] = (srcpix).bits();
@@ -38,7 +38,7 @@ Index: b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
                  {
                      if (g_BC6HEncode.m_isSigned)
                          BC6HEncode_local.din[i * BlockX + j][2] = -BC6HEncode_local.din[i * BlockX + j][2];
-@@ -305,7 +305,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+@@ -329,7 +329,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
              {
                  CMP_HALF srcpix                         = p_source_pixels[srcIndex + BYTEPP * i];
                  BC6HEncode_local.din[j * BlockX + i][0] = (srcpix).bits();
@@ -47,7 +47,7 @@ Index: b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
                  {
                      if (g_BC6HEncode.m_isSigned)
                          BC6HEncode_local.din[j * BlockX + i][0] = -BC6HEncode_local.din[j * BlockX + i][0];
-@@ -315,7 +315,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+@@ -339,7 +339,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
  
                  srcpix                                  = p_source_pixels[srcIndex + BYTEPP * i + 1];
                  BC6HEncode_local.din[j * BlockX + i][1] = (srcpix).bits();
@@ -56,7 +56,7 @@ Index: b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
                  {
                      if (g_BC6HEncode.m_isSigned)
                          BC6HEncode_local.din[j * BlockX + i][1] = -BC6HEncode_local.din[j * BlockX + i][1];
-@@ -325,7 +325,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+@@ -349,7 +349,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
  
                  srcpix                                  = p_source_pixels[srcIndex + BYTEPP * i + 2];
                  BC6HEncode_local.din[j * BlockX + i][2] = (srcpix).bits();
