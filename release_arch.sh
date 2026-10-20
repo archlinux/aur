@@ -26,7 +26,11 @@ die() { printf '\nFAILED: %s\n' "$*" >&2; exit 1; }
 say "Checking v$VER is published"
 git -C "$SRC" rev-parse -q --verify "refs/tags/v$VER" >/dev/null \
     || die "v$VER is not tagged in $SRC"
-git -C "$SRC" ls-remote --tags origin "refs/tags/v$VER" | grep -q . \
+# Captured rather than piped into `grep -q .`, which exits on the first line
+# and can leave git writing into a closed pipe -- under pipefail that is a
+# 141 for a tag that exists.
+REMOTE_TAG="$(git -C "$SRC" ls-remote --tags origin "refs/tags/v$VER")"
+[ -n "$REMOTE_TAG" ] \
     || die "v$VER is not pushed to origin -- makepkg fetches the GitHub tarball for it"
 COMMIT="$(git -C "$SRC" rev-parse --short "v$VER^{commit}")"
 echo "v$VER -> $COMMIT"
@@ -118,8 +122,16 @@ for f in usr/share/hls-livecam-server/cv_notify.py \
          usr/share/hls-livecam-server/hls-livecam-suite \
          usr/share/hls-livecam-server/hls-livecam.target \
          usr/share/hls-livecam-server/home.html; do
-    printf '%s\n' "$PKG_FILES" | grep -qxF "$f" \
-        || die "$PKG is missing $f"
+    # Whole-line containment in pure bash: no pipe, so nothing can be
+    # killed mid-write. The earlier `tar | grep -q` here returned 141 on a
+    # correct package for precisely that reason, and piping the captured
+    # listing instead would only have narrowed the window, not closed it --
+    # PKG_FILES is around a hundred lines and a match on line 39 leaves the
+    # producer sixty lines to write into a pipe grep has already left.
+    case $'\n'"$PKG_FILES"$'\n' in
+        *$'\n'"$f"$'\n'*) : ;;
+        *) die "$PKG is missing $f" ;;
+    esac
 done
 echo "  payload spot-checks present"
 
