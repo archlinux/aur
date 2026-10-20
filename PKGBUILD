@@ -1,5 +1,5 @@
 pkgname='zshell'
-pkgver=0.4.0.r77.g0486965
+pkgver=0.5.0.r1.g6781078
 pkgrel=1
 pkgdesc='ZShell desktop shell'
 arch=('any')
