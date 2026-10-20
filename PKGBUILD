@@ -1,37 +1,64 @@
-pkgname='isc-stork'
-pkgver='1.8.0'
+pkgbase='isc-stork'
+pkgname=('isc-stork-agent' 'isc-stork-server')
+pkgver='2.6.0'
 pkgrel='1'
-pkgdesc="A dashboard for BIND 9 and Kea DHCP."
-arch=('x86_64')
+pkgdesc="A web dashboard for ISC BIND 9 DNS, ISC Kea DHCP, PowerDNS, and other services."
+arch=('any')
+conflicts=('stork-agent' 'stork-server')
 url='https://gitlab.isc.org/isc-projects/stork'
 license=('MPL2')
-depends=('glibc')
-makedepends=('git' 'java-environment' 'python' 'rake' 'unzip' 'wget')
-backup=('etc/stork')
-_pkgname='stork'
-_pkg="${_pkgname}-v${pkgver}"
-source=("https://gitlab.isc.org/isc-projects/${_pkgname}/-/archive/v${pkgver}/${_pkg}.tar.gz"
-        "isc-stork.sysuser")
-sha512sums=('8c86eac4fe54052bc7e9570617105bd31499e4c7f5a89fb2b0f859367591de1fb320f43cdeedb3c6ef004e1f785545a8ec12ac7bd37cac8c15706a3e182d8bfd'
-            '524a319ab3b938bdab902b82c99744dcbf90cf5b44dc2bc7003b5fac7b77f6bb07d260c7f5cdd3fee8d3f673ca23611b00d1ded27a96da6fcb85d16e70b7a580')
+depends=()
+makedepends=('go' 'java-runtime' 'nodejs' 'protoc-gen-go' 'protoc-gen-go-grpc' 'python' 'rake' 'sed' 'tar' 'unzip' 'wget')
+backup=('etc/stork/agent.env' 'etc/stork/server.env')
+_repo='stork'
+source=(
+  "https://downloads.isc.org/isc/${_repo}/${pkgver}/${_repo}-${pkgver}.tar.gz"
+  "https://downloads.isc.org/isc/${_repo}/${pkgver}/${_repo}-server-ldap-${pkgver}.tar.gz"
+  "isc-stork-agent.sysuser"
+  "isc-stork-server.sysuser"
+)
+  # "https://gitlab.isc.org/isc-projects/${_repo}/-/archive/v${pkgver}/${_pkg}.tar.gz"
+  # "https://gitlab.isc.org/isc-projects/stork-hook-ldap/-/archive/v${pkgver}/stork-hook-ldap-v${pkgver}.tar.gz"
+sha512sums=(
+  '845ebc0ea2b9365a844b9124deb570d61ffe537c402ba16583081bd2e98a5e1a00c0a054a061fb610eaabb676aa58604c053c1218cb1bd4201e30ec2c07c4f29'
+  'fe7f16f4a26348a78db67791aaa0280ba6c26376a409a78468f7be03928a122c1e025077c43564a27ecdd1256284011e1f0aefb2d13e395cb981463864cf7e93'
+  '5a1ff88f2e64db884696c7c86aa0d119caa9a7ae3dd0d9ab9c750281353100af7f96ff0af642489002e2d01fa623fd173762078b27b9caf5e7f4aacee08eea48'
+  '7bc58bdea15aebe457bebb2fb69d5ac4585e5dc6f5697e41f446860d418601ae9652a886f81b2e0d7c085ee643395d3aeabf88bdacbb3d1e41464162f17ab9dd'
+)
 
 build() {
-  tar -xzf "${_pkg}.tar.gz"
-  cd "${_pkg}"
+  tar -xzf "${_repo}-${pkgver}.tar.gz"
+  tar -xzf "${_repo}-server-ldap-${pkgver}.tar.gz"
+  cd "${_repo}-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
-  rake build
+  export GOFLAGS='-buildmode=pie -ldflags=-linkmode=external -mod=readonly -modcacherw -trimpath'
+  rm -rf ./hooks/stork-server-ldap
+  cp -rf "../${_repo}-server-ldap-${pkgver}/" ./hooks/stork-server-ldap
+  rake build:agent
+  rake build:server
+  rake hook:build
+  cd ..
 }
 
-package() {
-  cd "${_pkg}"
-  rake install:server DEST="${pkgdir}"
-  mkdir -p "${pkgdir}/usr/share"
-  mv "${pkgdir}/man" "${pkgdir}/usr/share"
+package_isc-stork-agent() {
+  cd "${_repo}-${pkgver}"
+  rake install:agent DEST="${pkgdir}"
   mv "${pkgdir}/lib" "${pkgdir}/usr"
-  install -Dm644 "${srcdir}/isc-stork.sysuser" "${pkgdir}/usr/lib/sysusers.d/isc-stork.conf"
+  install -Dm644 "${srcdir}/${pkgname}.sysuser" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  cd ..
 }
 
+package_isc-stork-server() {
+  cd "${_repo}-${pkgver}"
+  rake install:server DEST="${pkgdir}"
+  mv "${pkgdir}/lib" "${pkgdir}/usr"
+  mkdir -p "${pkgdir}/usr/lib/stork-server/hooks"
+  mkdir -p "${pkgdir}/usr/share"
+  rmdir "${pkgdir}/hooks"
+  install -Dm644 "./hooks/stork-server-ldap/build/stork-server-ldap.so" "${pkgdir}/usr/lib/stork-server/hooks/stork-server-ldap.so"
+  install -Dm644 "${srcdir}/${pkgname}.sysuser" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  cd ..
+}
