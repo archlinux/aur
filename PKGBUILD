@@ -1,6 +1,6 @@
 # Maintainer: Lecer69 <https://github.com/Lecer69>
 pkgname=lssh
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Simple SSH server manager with a live stats bar"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Unlicense')
 depends=('openssh' 'dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/LSSH/archive/v$pkgver.tar.gz")
-sha256sums=('26bb4df2091ea445d3cbc9c646e6b9f8e69d6b5e8c1377c37446aee33e1132a1')
+sha256sums=('384e0b5feec4b9b57517cb5681e693c8de103c572e004c6e7470b42db3552ea2')
 
 build() {
     cd "LSSH-$pkgver"
