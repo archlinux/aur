@@ -6,3 +6,4 @@
 !grok-bot.sh
 !linux-tray.cjs
 !extract-asar.py
+!update-pkgbuild.sh
