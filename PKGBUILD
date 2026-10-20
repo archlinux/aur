@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=deepseek-reasonix-studio
 _pkgname=reasonix-studio
-pkgver=2.45.0
+pkgver=2.46.0
 pkgrel=1
 pkgdesc="Reasonix Studio - desktop window around the DeepSeek-native AI coding agent (2.x line)"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/studio-v$pkgver.tar.gz"
         "$_pkgname.sh"
         "$_pkgname.desktop")
-sha256sums=('f2ee2a56dfd77e9e5081ebd651ef70a8c310c04e915dd2a633d4fe04ae6d261f'
+sha256sums=('6173ae2db138e357463c00468e3b5224775215a9f502c42e7e5e83e2601706f1'
             '052e14d748355592e4b60f3e81f87537daf3cf18082be73ff7e1a3e80233f806'
             '87b009437ac5b35743a9624da2b1598623a15c89dfc2c1c62409a8baaf8137e7')
 
