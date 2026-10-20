@@ -1,6 +1,6 @@
 pkgbase = sqlmux-bin
 	pkgdesc = A tmux-style terminal database client with vim keys
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/kackerx/sqlmux
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = sqlmux-bin
 	provides = sqlmux
 	conflicts = sqlmux
 	options = !strip
-	source_x86_64 = sqlmux-x86_64-0.5.1.tgz::https://github.com/kackerx/sqlmux/releases/download/v0.5.1/sqlmux_0.5.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 94bd3f05c40e8cfbe867944cb08a564aa208a7f9d5c030b1a362ae2a5dd71ccf
-	source_aarch64 = sqlmux-aarch64-0.5.1.tgz::https://github.com/kackerx/sqlmux/releases/download/v0.5.1/sqlmux_0.5.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = a7e0246932ef6c9043c5ed33567a6d42887e6a01a5d5f645ec489c0f64727f48
+	source_x86_64 = sqlmux-x86_64-0.6.0.tgz::https://github.com/kackerx/sqlmux/releases/download/v0.6.0/sqlmux_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = addb8b93dd06226209db8edd8fd02fe53519dad53ef99563bf28c034cf14c72f
+	source_aarch64 = sqlmux-aarch64-0.6.0.tgz::https://github.com/kackerx/sqlmux/releases/download/v0.6.0/sqlmux_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5c898f215957eae3c2d833530103eeb03e829f13d892e692cd133291f4ff0447
 
 pkgname = sqlmux-bin
