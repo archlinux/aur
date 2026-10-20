@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pixelviewer-bin
 _pkgname=PixelViewer
-pkgver=2026.1.3
+pkgver=2026.1.4
 pkgrel=1
 pkgdesc="A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it."
 arch=(
@@ -29,8 +29,8 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             'f96446b452c48cb8b0306c4f999ab6729927c8b3a27f2355abbb484e3e63cf6f')
-sha256sums_aarch64=('c1a1c16bd15f99da00374849fef156a60d833926897ecd5c20e2777052229e5a')
-sha256sums_x86_64=('01c95b1a37cd099a2c25478923918e7cdd3227d414739d2c4fb57702618ab711')
+sha256sums_aarch64=('8135f8d398784be4795002174e6075f7c9310d250f223394ad8a077713227853')
+sha256sums_x86_64=('1015d96315b2aecd5f14abf4898c1a2952d8d15f2c8a25cca8a126e0cd268d51')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -45,7 +45,8 @@ prepare() {
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/__MACOSX"
-    chmod 644 "${srcdir}/usr/lib/${pkgname%-bin}/"*
+    find "${srcdir}/usr/lib/${pkgname%-bin}/" -type d -exec chmod 755 {} +
+    find "${srcdir}/usr/lib/${pkgname%-bin}/" -type f -exec chmod 644 {} +
     chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/"{createdump,"${_pkgname}"}
 }
 package() {
