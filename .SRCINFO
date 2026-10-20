@@ -1,0 +1,24 @@
+pkgbase = rust-discord-overlay
+	pkgdesc = Lightweight Discord voice/text overlay for Linux (Wayland, GTK4 layer-shell), written in Rust
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/deddroid/rust-discord-overlay
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = librsvg
+	depends = cairo
+	depends = dbus
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libadwaita
+	depends = openssl
+	depends = pango
+	optdepends = libpulse: sync system mic/speaker mute with Discord (pactl)
+	source = rust-discord-overlay-0.2.0.tar.gz::https://github.com/deddroid/rust-discord-overlay/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5aac1835cc98cacd316b38aa916bb9b649f26d9ec53254347df4f31975f8b0c5
+
+pkgname = rust-discord-overlay
