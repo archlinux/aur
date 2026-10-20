@@ -1,73 +1,11 @@
 post_install() {
-    echo ""
-    echo "==> duckwm installed."
-
-    for user_home in /home/*; do
-        username=$(basename "$user_home")
-
-        [ -d "$user_home" ] || continue
-        id "$username" &>/dev/null || continue
-
-        config_dir="$user_home/.config/duckwm"
-        meta_dir="$config_dir/meta"
-        docs_dir="$config_dir/docs"
-
-        mkdir -p "$meta_dir" "$docs_dir"
-
-        if [ ! -f "$config_dir/config.lua" ]; then
-            cp /etc/duckwm/config.lua "$config_dir/config.lua"
-            chown "$username:" "$config_dir/config.lua"
-            echo "==> Created default config for $username"
-        fi
-
-        cp /usr/share/duckwm/meta/wm.lua "$meta_dir/wm.lua"
-
-        if [ -f /usr/share/doc/duckwm/API.md ]; then
-            cp /usr/share/doc/duckwm/API.md   "$docs_dir/API.md"
-            cp /usr/share/doc/duckwm/API.norg  "$docs_dir/API.norg"
-        fi
-
-        if [ -f /usr/share/duckwm/luarc.json ]; then
-            cp /usr/share/duckwm/luarc.json "$config_dir/.luarc.json"
-            chown "$username:" "$config_dir/.luarc.json"
-            echo "==> Installed .luarc.json for $username"
-        fi
-
-        chown -R "$username:" "$config_dir"
-        echo "==> Configured duckwm for $username"
-    done
-
-    echo ""
-    echo "==> Add to ~/.xinitrc:  exec duckwm"
-    echo ""
-}
-
-post_upgrade() {
-    for user_home in /home/*; do
-        username=$(basename "$user_home")
-
-        [ -d "$user_home" ] || continue
-        id "$username" &>/dev/null || continue
-
-        config_dir="$user_home/.config/duckwm"
-
-        # Skip users who haven't got duckwm configured at all
-        [ -d "$config_dir" ] || continue
-
-        # Ensure directories exist
-        mkdir -p "$config_dir/meta" "$config_dir/docs"
-
-        cp /usr/share/duckwm/meta/wm.lua "$config_dir/meta/wm.lua"
-        cp /usr/share/doc/duckwm/API.md   "$config_dir/docs/API.md"
-        cp /usr/share/doc/duckwm/API.norg  "$config_dir/docs/API.norg"
-
-        if [ ! -f "$config_dir/.luarc.json" ]; then
-            cp /usr/share/duckwm/luarc.json "$config_dir/.luarc.json"
-            chown "$username:" "$config_dir/.luarc.json"
-            echo "==> Installed .luarc.json for $username"
-        fi
-
-        chown -R "$username:" "$config_dir/meta" "$config_dir/docs"
-        echo "==> Refreshed meta and docs for $username"
-    done
+  cat <<'MSG'
+==> duckwm runs /etc/duckwm/config.lua until you have ~/.config/duckwm/config.lua.
+    To start one of your own from it:
+      mkdir -p ~/.config/duckwm && cp /etc/duckwm/config.lua ~/.config/duckwm/
+==> For completion and docs in your editor (lua-language-server):
+      cp /usr/share/duckwm/luarc.json ~/.config/duckwm/.luarc.json
+    It points at /usr/share/duckwm/meta, so upgrades keep it current.
+==> Guide and API reference: /usr/share/doc/duckwm
+MSG
 }
