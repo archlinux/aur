@@ -57,7 +57,7 @@ package() {
   echo 'Compressing and fixing multiply (hard-)linked files...'
   local -a sources
   local inode path sOurce
-  sed -ne 's/^gzip: \(.*\) has [^ ]\{1,\} other link.*$/\1/p' log |
+  sed -ne "s/^gzip: '\{,1\}\([^']*\)'\{,1\} has [^ ]\{1,\} other link.*$/\1/p" log |
     while IFS= read -r path; do
       inode=$(stat --printf='%i' "$path")
       sOurce=${sources[$inode]}
