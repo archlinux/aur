@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=claudectl-bin
-pkgver=0.80.0
+pkgver=0.91.1
 pkgrel=1
 pkgdesc="Auto-pilot for Claude Code — local LLM watches sessions and decides what to approve"
 arch=('x86_64' 'aarch64')
@@ -9,11 +9,11 @@ url="https://github.com/mercurialsolo/claudectl"
 license=('MIT')
 provides=('claudectl')
 conflicts=('claudectl' 'claudectl-git')
-options=('!strip')
+options=('!strip' '!debug')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/mercurialsolo/claudectl/v${pkgver}/LICENSE")
 sha256sums=('c7335fce47998935bbe76ef2fe9dfeb0ba7b7fb8f0edec16127a0a370f6c8b80')
-sha256sums_x86_64=('79e20ef60cf8ad758c220f0fd74e8b34a642c0d4d6d4791bba53a86b52863046')
-sha256sums_aarch64=('e22c6be45f863d4e0fc7dcdda8a6650d5b9ce8cee5a20963cd7f4a833012a1e5')
+sha256sums_x86_64=('8c83954de98923ce61d761b8ab3414702237313377d340365e67b219af08f49d')
+sha256sums_aarch64=('fa81ec92754eb19a503dbc960fc71120a78855063fca4a9e510890dd43e362e6')
 
 _base_url="https://github.com/mercurialsolo/claudectl/releases/download/v${pkgver}"
 
