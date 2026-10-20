@@ -1,53 +1,49 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=soredowe-bin
 _pkgname=soredowe
-pkgver=0.4.4
-_tag=v0.4.4
+pkgver=0.5.1
+_tag=v0.5.1
 pkgrel=1
-pkgdesc="Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)"
+pkgdesc='Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/soredowe"
-license=('GPL3')
-depends=('polkit' 'wayland' 'vulkan-icd-loader' 'fontconfig' 'hicolor-icon-theme' 'git')
+license=('GPL-3.0-only')
+depends=(polkit wayland vulkan-icd-loader fontconfig hicolor-icon-theme git)
 optdepends=(
   'yay: for installing from AUR'
 )
-provides=('soredowe')
-conflicts=('soredowe')
-options=('!strip')
-
-source_x86_64=("${_pkgname}-${_tag}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/${_tag}/${_pkgname}-${_tag}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_pkgname}-${_tag}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/${_tag}/${_pkgname}-${_tag}-aarch64-unknown-linux-gnu.tar.gz")
-# Icon
-source=("icon.svg::https://raw.githubusercontent.com/mlm-games/soredowe/refs/heads/main/packaging/icons/hicolor/scalable/apps/soredowe.svg")
-
-sha256sums_x86_64=('50228051b956a24424e4b095e51b89788b52aee29a20dddb337d6d14aa95594d')
-sha256sums_aarch64=('df372cc836f46eb88ea9fc829249c94dbb99415223d032e63c978cf7d1813a0e')
-sha256sums=('SKIP') # for icon.svg
+provides=(soredowe)
+conflicts=(soredowe)
+options=(!strip)
+source_x86_64=("soredowe-0.5.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/${_tag}/soredowe-0.5.1-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("soredowe-0.5.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/${_tag}/soredowe-0.5.1-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('8aa9ad82f81a17e7bcd2237c645eb9cb5c61ddd9eedcbfde5f948080342f588e')
+sha256sums_aarch64=('0de494fd994e784827e2afa7b32fdd77b16110ee91360e4e6e686cd571172dce')
+source+=("icon.svg::https://raw.githubusercontent.com/mlm-games/soredowe/main/packaging/icons/hicolor/scalable/apps/soredowe.svg")
+sha256sums+=('SKIP')
 
 package() {
-  local target
+  local dir
   if [[ "$CARCH" == "x86_64" ]]; then
-    target="x86_64-unknown-linux-gnu"
+    dir="${srcdir}/soredowe-0.5.1-x86_64-unknown-linux-gnu"
   else
-    target="aarch64-unknown-linux-gnu"
+    dir="${srcdir}/soredowe-0.5.1-aarch64-unknown-linux-gnu"
   fi
+  install -Dm755 "${dir}/soredowe" "${pkgdir}/usr/bin/soredowe"
 
-  local dir="${srcdir}/${_pkgname}-${_tag}-${target}"
-  install -Dm755 "${dir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << DESKTOP_EOF
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/soredowe.desktop" << DESKTOP_EOF
 [Desktop Entry]
-Name=soredowe
-Comment=GUI for pacman/AUR users who prefer it (Wayland/Vulkan)
-Exec=${_pkgname}
-Icon=${_pkgname}
-Terminal=false
 Type=Application
+Name=soredowe
+GenericName=Package Manager
+Comment=Browse and install packages from repositories and AUR
+Exec=soredowe
+Icon=soredowe
+Terminal=false
 Categories=System;PackageManager;
 StartupNotify=true
 DESKTOP_EOF
 
-  # Icon
-  install -Dm644 "${srcdir}/icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+  install -Dm644 "${srcdir}/icon.svg" "${pkgdir}/usr/share/pixmaps/soredowe.svg"
+  install -Dm644 "${srcdir}/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/soredowe.svg"
 }
