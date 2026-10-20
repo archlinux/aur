@@ -1,0 +1,20 @@
+pkgbase = pg_sift-git
+	pkgdesc = PostgreSQL full-text and column indexes with aggregate pushdown (development version)
+	pkgver = 3.1.0.r209.g72aa970
+	pkgrel = 1
+	url = https://github.com/brauliobo/pg_sift
+	arch = x86_64
+	license = PostgreSQL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = postgresql>=18
+	depends = postgresql<19
+	depends = lz4
+	depends = zstd
+	provides = pg_sift=3.1.0.r209.g72aa970
+	conflicts = pg_sift
+	source = pg_sift::git+https://github.com/brauliobo/pg_sift.git#branch=main
+	sha256sums = SKIP
+
+pkgname = pg_sift-git
