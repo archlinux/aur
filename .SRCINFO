@@ -1,0 +1,28 @@
+pkgbase = ak820-bin
+	pkgdesc = Configurator for the AJAZZ AK820 Pro keyboard: lighting, per-key RGB, key remapping, macros, TFT screen (GUI + CLI, prebuilt)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/deddroid/ak820-rs
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = wayland
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	optdepends = xdg-desktop-portal: file picker in the GUI
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
+	provides = ak820=0.1.1
+	conflicts = ak820
+	options = !strip
+	options = !debug
+	source = https://github.com/deddroid/ak820-rs/releases/download/v0.1.1/ak820-v0.1.1-linux-x86_64.tar.gz
+	sha256sums = b576fbf04214a301f153a6f75ccdf175f430d8cb651488613514df15738680c4
+
+pkgname = ak820-bin
