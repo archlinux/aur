@@ -1,6 +1,6 @@
 pkgbase = tde-session-bin
 	pkgdesc = The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/zskamljic/tde-session
 	arch = x86_64
@@ -40,10 +40,10 @@ pkgbase = tde-session-bin
 	optdepends = gnome-keyring: remembering the passphrases of SSH keys
 	optdepends = fprintd: unlocking the screen with a finger
 	optdepends = brightnessctl: the keyboard light keys, where the keyboard does not change it itself
-	provides = tde-session=0.3.5
+	provides = tde-session=0.3.6
 	conflicts = tde-session
-	noextract = tde-session-0.3.5-x86_64.tar.zst
-	source = tde-session-0.3.5-x86_64.tar.zst::https://github.com/zskamljic/tde-session/releases/download/v0.3.5/tde-session-0.3.5-x86_64.tar.zst
-	sha256sums = 7d037e26bed86e3113b18931511249e2989ff9757f807131b6933468762442af
+	noextract = tde-session-0.3.6-x86_64.tar.zst
+	source = tde-session-0.3.6-x86_64.tar.zst::https://github.com/zskamljic/tde-session/releases/download/v0.3.6/tde-session-0.3.6-x86_64.tar.zst
+	sha256sums = a4f74368858e0e41d19b55ebfb735d9493d8cb62832ca5fc5414a5b95275dd30
 
 pkgname = tde-session-bin
