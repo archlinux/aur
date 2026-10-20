@@ -1,8 +1,9 @@
-# Maintainer: Alex Hirzel <alex at hirzel period us>
+# Maintainer: Javier Castro <dev at javiercastro period xyz>
+# Contributor: Alex Hirzel <alex at hirzel period us>
 
 pkgname='python-wagtail'
 _name=${pkgname#python-}
-pkgver='6.2.2'
+pkgver='8.0'
 pkgrel=1
 pkgdesc="A Django content management system."
 url="https://wagtail.org/"
@@ -31,8 +32,8 @@ checkdepends=(
 )
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('cd3da0ab6c128790c16a388f648d07ea499b803e33bc7cd6370d869e5f7f10144b9081a7998765c4eb12c7dacc9eb488f48dff713c88ef304e212d0f777f4ecc')
+source=("https://github.com/${_name}/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('867bec35efc557cdb90560548012e2302c1e89da42ace29b4a6ea38255d4f647b8fa57bf8d0739fe1751c1ed945a9f72ec1fde81eccda7a247bd2208e9be3ca4')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
