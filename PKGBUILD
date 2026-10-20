@@ -34,7 +34,7 @@ sha256sums=('7d5963773e334a775e904384620be8e15deb4954c904f330904b238dafa716da')
 
 package() {
   # Install the binary
-  install -Dm755 "$srcdir/shortwave-mpris_5.1.0_linux-amd64" "$pkgdir/usr/bin/shortwave"
+  install -Dm755 "$srcdir/shortwave-mpris_${pkgver}_linux-amd64" "$pkgdir/usr/bin/shortwave"
   
   # Install desktop file
   install -Dm644 "$srcdir/de.haeckerfelix.Shortwave.desktop" \
