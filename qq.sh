@@ -54,12 +54,16 @@ if command -v bwrap >/dev/null 2>&1; then
         --proc /proc
         --ro-bind-try /sys /sys
         --tmpfs /tmp
+        --bind-try /tmp/.X11-unix /tmp/.X11-unix
         --bind /run /run
         --bind "${HOME}" "${HOME}"
         --tmpfs "${HOME}/.ssh"
         --tmpfs "${HOME}/.gnupg"
         --unshare-pid
     )
+    if [[ -n "${XAUTHORITY}" && -f "${XAUTHORITY}" ]]; then
+        BWRAP_ARGS+=(--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}")
+    fi
     for dev_node in /dev/video*; do
         [[ -e "$dev_node" ]] && BWRAP_ARGS+=(--dev-bind "$dev_node" "$dev_node")
     done

@@ -3,7 +3,7 @@
 pkgname=tencent-qq
 _base_pkgver=3.2.33-52892
 pkgver=3.2.33_52892
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent QQ for Linux with native Wayland auto-detection and secure Bubblewrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://im.qq.com/linuxqq/"
@@ -38,7 +38,7 @@ source_loong64=("${pkgname}-${pkgver}-loongarch64.deb::${_url_prefix}/linuxqq_${
 noextract=("${pkgname}-${pkgver}-"{amd64,arm64,loongarch64}.deb)
 
 sha256sums=(
-    '0ba550960aaf275d0a896bdf31ccc888cdfd5e20f4ba66b28e1e229f2f391be8'
+    'aeff82a282e0f5f68b070b07627b0c0597d80eb217da29828d3ce168a89038cd'
     'a06f6e4f1674de4bc4895d8e499d83814b2fefea88b3c1cbf49621c137495ba9'
     '74ebe2e5775c75d1e62a76ea0304bc77851ee5db92e539b94af264d25ac184dc'
 )
