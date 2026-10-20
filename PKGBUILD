@@ -2,7 +2,7 @@
 # Contributor: Hanju Liu <u03168314376@126.com>
 
 pkgname='ibus-daemon'
-pkgver='0.0.6'
+pkgver='0.0.7'
 pkgrel='1'
 pkgdesc='SystemD user service for IBus'
 arch=('any')
