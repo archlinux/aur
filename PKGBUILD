@@ -2,7 +2,7 @@
 
 pkgname=python-diffsynth
 _pkgname=diffsynth
-pkgver=2.1.9
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team"
 arch=('any')
@@ -59,7 +59,7 @@ optdepends=(
     'python-xformers: xFormers attention acceleration'
     'python-opencv: face restoration and image-processing pipelines'
 )
-_commit=4e3496991455b300fd60ab023113422cd16899f5
+_commit=6b3c254299ec4031cb60ff5ecce18272a2646ea6
 _archive=DiffSynth-Studio
 source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
