@@ -38,11 +38,14 @@ prepare() {
     cd "${srcdir}"
     ar x barracudavpn_${_fullgpgver}_amd64.deb data.tar.xz
     tar -xf data.tar.xz
+	sed -i 's@/usr/local/bin/barracudavpn-daemon@/usr/bin/barracudavpn-daemon@g' usr/lib/systemd/system/barracudavpn.service
+	cat usr/lib/systemd/system/barracudavpn.service
 }
 
 package() {
     echo "${pkgdir}"
     install -Dm 4755 ${srcdir}/usr/local/bin/barracudavpn ${pkgdir}/usr/bin/barracudavpn
     install -Dm 4755 ${srcdir}/usr/local/bin/barracudavpn-daemon ${pkgdir}/usr/bin/barracudavpn-daemon
+    install -Dm 4644 ${srcdir}/usr/lib/systemd/system/barracudavpn.service ${pkgdir}/usr/lib/systemd/system/barracudavpn.service
     install -Dm 4755 ${srcdir}/usr/local/lib/barracudavpn/setup-groups ${pkgdir}/usr/lib/barracudavpn/setup-groups
 }
