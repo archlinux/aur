@@ -1,7 +1,7 @@
 pkgbase = dudenbib
 	pkgdesc = Utility to view books from Duden, Brockhaus and some others
 	pkgver = 6.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.duden.de/digitales/duden-bibliothek
 	install = duden.install
 	arch = x86_64
