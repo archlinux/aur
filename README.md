@@ -82,7 +82,7 @@ cd amdgpu-fan-ctl-tyan-s8030gm2ne && makepkg -si
 
 ```bash
 sudoedit /etc/gpu-fan-ctl/config.toml   # 确认 pwm_id / 曲线
-sudo python3 /usr/lib/gpu-fan-ctl/gpu_fan_ctl.py -c /etc/gpu-fan-ctl/config.toml --status
+sudo gpu-fan-ctl -c /etc/gpu-fan-ctl/config.toml --status
 sudo systemctl enable --now gpu-fan-ctl
 journalctl -u gpu-fan-ctl -f
 ```
@@ -92,7 +92,7 @@ journalctl -u gpu-fan-ctl -f
 | 内容 | 路径 |
 | --- | --- |
 | 命令 | `/usr/bin/gpu-fan-ctl` |
-| 程序 | `/usr/lib/gpu-fan-ctl/gpu_fan_ctl.py` |
+| 程序 | `/usr/lib/amdgpu-fan-ctl-tyan-s8030gm2ne/gpu_fan_ctl.py` |
 | 配置 | `/etc/gpu-fan-ctl/config.toml` |
 | systemd unit | `/usr/lib/systemd/system/gpu-fan-ctl.service` |
 | 文档 | `/usr/share/doc/amdgpu-fan-ctl-tyan-s8030gm2ne/` |
