@@ -8,11 +8,11 @@
 # archlinux:base-devel container, with `cargo build --release --locked`.
 #
 #   build recipe:  https://gitea.weircon.dk/agw/ubl-tools
-#   download:      https://asger.weirsoe.dk/tarballz/ubl-tools-0.3.0-d608f44fa566-x86_64.tar.zst
+#   download:      https://asger.weirsoe.dk/tarballz/ubl-tools-0.4.0-3dd6cf1433ff-x86_64.tar.zst
 
 pkgname=ubl-tools-bin
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Read UBL e-invoices (Peppol BIS 3.0, OIOUBL) offline, in the terminal or as a printable page (prebuilt binary)"
 arch=('x86_64')
 url="https://asger.weirsøe.dk/en/projects/ubl-tools"
@@ -21,8 +21,8 @@ depends=('glibc' 'gcc-libs')
 provides=("ubl-tools=$pkgver")
 conflicts=('ubl-tools')
 options=('!strip' '!debug')
-source=("https://asger.weirsoe.dk/tarballz/ubl-tools-0.3.0-d608f44fa566-x86_64.tar.zst")
-sha256sums=('d608f44fa5667cb5243426c217ac74d50473621aaac92f24ee8d88b8529b3b1b')
+source=("https://asger.weirsoe.dk/tarballz/ubl-tools-0.4.0-3dd6cf1433ff-x86_64.tar.zst")
+sha256sums=('3dd6cf1433ffd28a2f7245235fdc9f82b5c2982f8286a37ebb284691e2696bec')
 
 package() {
     # The tarball is a staged tree: usr/ at its root.

@@ -1,17 +1,17 @@
 pkgbase = ubl-tools-bin
 	pkgdesc = Read UBL e-invoices (Peppol BIS 3.0, OIOUBL) offline, in the terminal or as a printable page (prebuilt binary)
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://asger.weirsøe.dk/en/projects/ubl-tools
 	arch = x86_64
 	license = MIT OR Apache-2.0
 	depends = glibc
 	depends = gcc-libs
-	provides = ubl-tools=0.3.0
+	provides = ubl-tools=0.4.0
 	conflicts = ubl-tools
 	options = !strip
 	options = !debug
-	source = https://asger.weirsoe.dk/tarballz/ubl-tools-0.3.0-d608f44fa566-x86_64.tar.zst
-	sha256sums = d608f44fa5667cb5243426c217ac74d50473621aaac92f24ee8d88b8529b3b1b
+	source = https://asger.weirsoe.dk/tarballz/ubl-tools-0.4.0-3dd6cf1433ff-x86_64.tar.zst
+	sha256sums = 3dd6cf1433ffd28a2f7245235fdc9f82b5c2982f8286a37ebb284691e2696bec
 
 pkgname = ubl-tools-bin
