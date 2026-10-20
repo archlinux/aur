@@ -1,12 +1,12 @@
 pkgbase = drawio-bin
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 32.4.1
+	pkgver = 32.5.5
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio
 	arch = any
 	license = Apache
 	options = !strip
-	source = drawio-32.4.1.war::https://github.com/jgraph/drawio/releases/download/v32.4.1/draw.war
-	sha512sums = bbe8ec5f610809cbd24d4962f5f98d5fe0e821fd8140efdcade6a014e2b2598aaab38616f59d4470c367b871e634c358f9561276dba9dbc69487ea8a0984ede9
+	source = drawio-32.5.5.war::https://github.com/jgraph/drawio/releases/download/v32.5.5/draw.war
+	sha512sums = dd94ed321f058502f25d074be10e984475485c47ac63dce5c15a228aff9555a4bd202e92b82e15334aa2812f625f408eb3fc8d1385f9d3bfdff37f262d650ce4
 
 pkgname = drawio-bin
