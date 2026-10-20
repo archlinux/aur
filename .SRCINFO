@@ -3,7 +3,7 @@ pkgbase = greetd-dms-greeter-git
 	pkgver = 0.0.0.r28.ge957e43
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/AvengeMedia/dank-greeter
+	url = https://github.com/duxlabs-dev/dux-greeter
 	install = greetd-dms-greeter.install
 	arch = x86_64
 	arch = aarch64
@@ -21,7 +21,7 @@ pkgbase = greetd-dms-greeter-git
 	conflicts = greetd-dms-greeter
 	conflicts = greetd-dms-greeter-bin
 	conflicts = dms-greeter
-	source = dank-greeter::git+https://github.com/AvengeMedia/dank-greeter.git
+	source = dux-greeter::git+https://github.com/duxlabs-dev/dux-greeter.git
 	sha256sums = SKIP
 
 pkgname = greetd-dms-greeter-git
