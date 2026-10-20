@@ -1,0 +1,1 @@
+SUBSYSTEM=="ipmi", KERNEL=="ipmi*", GROUP="amdgpu-fan-ctl", MODE="0660"

@@ -1,3 +1,5 @@
 pkg/
 src/
 *.pkg.tar.zst
+__pycache__/
+*.pyc

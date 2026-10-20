@@ -7,8 +7,10 @@ mode = "control"          # observe | assist | control（本板无硬件自动�
 dry_run = false
 poll_interval = 2.0       # 采样周期（秒）；实际周期还受 ipmitool sensor 耗时影响
 log_level = "info"
-state_dir = "/var/lib/gpu-fan-ctl"
-metrics_file = ""         # 例如 "/run/gpu-fan-ctl.prom"（给 node_exporter 用）
+# 必须与 service 的 StateDirectory 一致（由 systemd 创建并 chown 给服务用户）
+state_dir = "/var/lib/amdgpu-fan-ctl-tyan-s8030gm2ne"
+# 需要启用时，路径要位于 service 的 RuntimeDirectory 下，否则 ProtectSystem=strict 无法写入
+metrics_file = ""         # 例如 "/run/amdgpu-fan-ctl-tyan-s8030gm2ne/metrics.prom"
 
 [gpu]
 rocm_smi = "/opt/rocm/bin/rocm-smi"   # 必须绝对路径：systemd 的 PATH 里没有 /opt/rocm/bin
@@ -37,15 +39,17 @@ max_consecutive_errors = 8
 
 [fan]
 min_pwm = 20
-max_pwm = 100             # 交还/无快照时写回的值
+max_pwm = 100             # 上限；交还 / 无快照时也写回这个值
 ramp_down_step = 5        # 每次最多降这么多（降噪）；升温不限速
 
 [assist]
-# 仅 assist 模式使用。本板没有硬件自动模式，所以"交还"= 写回 100%。
-trigger_temp = 78         # 结温到 78°C 接管风扇
-trigger_pwm = 45          # 接管瞬间的 PWM 下限
-release_temp = 62         # 降到 62°C 以下开始计时交还
-release_cycles = 10       # 连续 10 个周期都够凉就交还
+# 仅 assist 模式使用。本板没有硬件自动模式，所以"交还"= 写回 100%，不推荐。
+# trigger_temp / release_temp 必须低于 gpu.critical_temp（60），否则会被临界保护抢先。
+# trigger_pwm 在 control 模式下仍作为连续读不到 GPU 温度时的 fail-safe 下限。
+trigger_temp = 55
+trigger_pwm = 45
+release_temp = 50
+release_cycles = 10
 
 [restore]
 on_exit = true            # 退出 / SIGTERM 时恢复接管前的 PWM

@@ -113,7 +113,7 @@ DEFAULTS: dict = {
         "dry_run": True,
         "poll_interval": 2.0,
         "log_level": "info",
-        "state_dir": "/var/lib/gpu-fan-ctl",
+        "state_dir": "/var/lib/amdgpu-fan-ctl-tyan-s8030gm2ne",
         "metrics_file": "",
     },
     "gpu": {
@@ -922,7 +922,8 @@ def _pick_state_dir(configured: str) -> Path:
     for fallback in candidates:
         if _dir_writable(fallback):
             LOG.warning(
-                "state_dir %s 不可写，临时改用 %s（systemd 下请用 root 跑，别让它落到临时目录）",
+                "state_dir %s 不可写，临时改用 %s"
+                "（systemd 下检查 StateDirectory 是否已创建且属于服务用户，别让它落到临时目录）",
                 path, fallback,
             )
             return fallback

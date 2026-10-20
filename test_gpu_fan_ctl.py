@@ -95,7 +95,11 @@ class FakeBmc:
 
 
 def make(mode="assist", temps=None, use=0.0, sensors=None, dry_run=True):
-    cfg = Config({"general": {"mode": mode, "dry_run": dry_run}})
+    cfg = Config({"general": {
+        "mode": mode,
+        "dry_run": dry_run,
+        "state_dir": tempfile.mkdtemp(prefix="gpu-fan-ctl-test-"),
+    }})
     gpu = FakeGpu(temps or {}, use)
     bmc = FakeBmc(sensors)
     return cfg, Controller(cfg, gpu, bmc, dry_run=dry_run), gpu, bmc
@@ -582,7 +586,7 @@ class TestStateDir(unittest.TestCase):
     def test_readonly_dir_falls_back_to_tmp(self):
         """只读挂载下 os.access 会误报可写，必须靠真写探针发现——这条锁住该行为。"""
         with mock.patch("gpu_fan_ctl._dir_writable", side_effect=[False, False, True]):
-            picked = _pick_state_dir("/var/lib/gpu-fan-ctl")
+            picked = _pick_state_dir("/var/lib/amdgpu-fan-ctl-tyan-s8030gm2ne")
         self.assertEqual(picked, Path(tempfile.gettempdir()) / f"gpu-fan-ctl-{os.getuid()}")
 
     def test_dir_writable_rejects_missing_path(self):

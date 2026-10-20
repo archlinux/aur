@@ -50,7 +50,7 @@ S8030 的 PWM 通道：`0=CPU_FAN`、`2=SYS_FAN_1`、`3=SYS_FAN_2`、`4=SYS_FAN_
 
 - Python 3.11+
 - `/opt/rocm/bin/rocm-smi`
-- `/usr/bin/ipmitool`，且能访问 `/dev/ipmi0`（通常需要 root）
+- `/usr/bin/ipmitool`；服务通过包内 udev 规则以 `amdgpu-fan-ctl` 组访问 `/dev/ipmi0`，不需要 root
 
 ## 使用
 
@@ -67,6 +67,9 @@ sudo python3 gpu_fan_ctl.py -c config.toml --restore  # 恢复快照 PWM
 
 配置文件查找顺序：`-c 路径` → `./config.toml` → 脚本同目录的 `config.toml`。
 
+安装后调试时请用 `sudo -u amdgpu-fan-ctl` 运行会写快照的命令（`--selftest --live`、`--live`、
+`--restore`）；直接用 root 运行会让 `state_dir` 和快照文件变成 root 属主，服务用户之后无法覆盖。
+
 ## 安装
 
 AUR 包名：`amdgpu-fan-ctl-tyan-s8030gm2ne`
@@ -81,11 +84,21 @@ cd amdgpu-fan-ctl-tyan-s8030gm2ne && makepkg -si
 安装后：
 
 ```bash
+# 新装 / 升级后把 udev 规则应用到已存在的 /dev/ipmi0（重启也行）
+sudo udevadm trigger --subsystem-match=ipmi
+
 sudoedit /etc/gpu-fan-ctl/config.toml   # 确认 pwm_id / 曲线
-sudo gpu-fan-ctl -c /etc/gpu-fan-ctl/config.toml --status
-sudo systemctl enable --now gpu-fan-ctl
-journalctl -u gpu-fan-ctl -f
+sudo -u amdgpu-fan-ctl gpu-fan-ctl -c /etc/gpu-fan-ctl/config.toml --status
+sudo systemctl enable --now amdgpu-fan-ctl-tyan-s8030gm2ne
+journalctl -u amdgpu-fan-ctl-tyan-s8030gm2ne -f
 ```
+
+服务以专用系统用户 `amdgpu-fan-ctl`（无登录 shell）运行：
+
+- `/usr/lib/sysusers.d/amdgpu-fan-ctl-tyan-s8030gm2ne.conf` 在安装时自动创建用户和同名组。
+- `/usr/lib/udev/rules.d/90-amdgpu-fan-ctl-tyan-s8030gm2ne.rules` 把 `/dev/ipmi0` 设为
+  `amdgpu-fan-ctl:amdgpu-fan-ctl 0660`，避免用 root 跑整个服务。
+- 服务单元额外加入 `render` / `video` 组，便于读取 GPU 传感器。
 
 包内路径：
 
@@ -94,7 +107,11 @@ journalctl -u gpu-fan-ctl -f
 | 命令 | `/usr/bin/gpu-fan-ctl` |
 | 程序 | `/usr/lib/amdgpu-fan-ctl-tyan-s8030gm2ne/gpu_fan_ctl.py` |
 | 配置 | `/etc/gpu-fan-ctl/config.toml` |
-| systemd unit | `/usr/lib/systemd/system/gpu-fan-ctl.service` |
+| 状态目录 | `/var/lib/amdgpu-fan-ctl-tyan-s8030gm2ne` |
+| systemd unit | `/usr/lib/systemd/system/amdgpu-fan-ctl-tyan-s8030gm2ne.service` |
+| sysusers | `/usr/lib/sysusers.d/amdgpu-fan-ctl-tyan-s8030gm2ne.conf` |
+| udev 规则 | `/usr/lib/udev/rules.d/90-amdgpu-fan-ctl-tyan-s8030gm2ne.rules` |
+| 许可证 | `/usr/share/licenses/amdgpu-fan-ctl-tyan-s8030gm2ne/LICENSE` |
 | 文档 | `/usr/share/doc/amdgpu-fan-ctl-tyan-s8030gm2ne/` |
 
 ## 调参
