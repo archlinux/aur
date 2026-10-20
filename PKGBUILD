@@ -2,7 +2,7 @@
 
 pkgname=wooting-bg-service
 pkgdesc='Wooting Background Service for Wootility'
-_pkgver=0.5.0 # renovate: datasource=custom.wooting-bg-service depName=wooting-bg-service versioning=semver
+_pkgver=0.5.1 # renovate: datasource=custom.wooting-bg-service depName=wooting-bg-service versioning=semver
 pkgver=${_pkgver//-/_}
 pkgrel=2
 arch=('x86_64')
@@ -18,7 +18,7 @@ _desktopFile="Wooting Background Service.desktop"
 
 noextract=("${_appImageFile}")
 source=("${_appImageFile}::https://api.wooting.io/public/bg-service/download-installer?target=linux&version=${_pkgver}")
-sha256sums=('7b9350f6b131766be86d73044037eb9d4d287c80ce775e0011f1fb4a4442e955')
+sha256sums=('8b0858b2f7e52837c8d912e2c51990a084a00bf1feaa972dda0ed29313bb4f89')
 
 prepare() {
   # create copy of appimage file in case the build dir is mounted with noexec
