@@ -1,7 +1,7 @@
 # Maintainer: Koen Hendriks <info@koenhendriks.nl>
 
 pkgname=lconnect-linux-bin
-pkgver=2.0.11.3
+pkgver=2.0.11.4
 pkgrel=1
 pkgdesc="Unofficial Lian Li L-Connect 3 port: UNI FAN TL / TL LCD / SL Infinity fan speed, RGB and LCD control (prebuilt binaries)"
 arch=('x86_64')
@@ -10,13 +10,12 @@ license=('LicenseRef-L-Connect-derived')
 provides=('lconnect-linux')
 conflicts=('lconnect-linux')
 depends=('dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'hidapi' 'ffmpeg' 'systemd' 'fontconfig' 'libx11' 'libice' 'libsm')
-optdepends=('chromium: render LCD sensor screens (CPU/GPU temperature and load gauges)'
-            'nvidia-utils: NVIDIA GPU temperature/load for fan curves and sensor screens')
+optdepends=('nvidia-utils: NVIDIA GPU temperature/load for fan curves and sensor screens')
 options=('!strip' '!debug')
 install=lconnect.install
 _src="lconnect-linux-$pkgver-linux-x64"
 source=("$_src.tar.gz::$url/releases/download/v$pkgver/$_src.tar.gz")
-sha256sums=('c090d75c3931d59903126dde62feafdaed4fca101ba309f9f064ee39b9b17b50')
+sha256sums=('5564bdfdb61129632a37b12b2614472ed9cfd4e0d4d16780fdaaacba563985c9')
 
 package() {
 	cd "$_src"
