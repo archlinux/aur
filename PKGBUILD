@@ -1,5 +1,5 @@
 pkgname=plasma6-applets-eventcalendar
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="KDE Plasma 6 plasmoid for a calendar+agenda with weather that syncs to Google Calendar"
 arch=('x86_64')
@@ -32,14 +32,15 @@ makedepends=(
 optdepends=(
   'plasma-nm: network connectivity monitoring integration'
   'akonadi-calendar-tools: local Akonadi event create/edit support via konsolekalendar'
+  'kdepim-addons: Local Calendars config page'
   'python-icalendar: iCal calendar source support'
   'python-gobject: notification helper script backend'
   'libnotify: desktop notifications for notification helper'
   'libcanberra: notification sound playback'
-  'pipewire-audio: sound preview via pw-play'
-  'libpulse: sound preview via paplay'
-  'alsa-utils: sound preview via aplay'
-  'ffmpeg: sound preview via ffplay'
+  'pipewire-audio: sound playback fallback via pw-play'
+  'libpulse: sound playback fallback via paplay'
+  'qt6-positioning: weather location detection'
+  'geoclue: weather location detection'
 )
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
