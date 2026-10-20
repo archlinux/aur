@@ -1,0 +1,15 @@
+# TuxTalk's first run sets up a hotkey helper service and udev rules outside
+# the package. pre_remove runs only on removal (an upgrade calls
+# pre_upgrade), so they go with the package and stay through updates.
+# The same as packaging/before-remove.sh in the TuxTalk repository.
+pre_remove() {
+    systemctl disable --now tuxtalk-hotkeys.service >/dev/null 2>&1 || true
+    rm -f /etc/systemd/system/tuxtalk-hotkeys.service \
+          /usr/local/libexec/tuxtalk/tuxtalk-hotkeys \
+          /etc/udev/rules.d/70-tuxtalk-uinput.rules \
+          /etc/udev/rules.d/99-talktype-uinput.rules
+    rmdir /usr/local/libexec/tuxtalk 2>/dev/null || true
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    udevadm control --reload-rules >/dev/null 2>&1 || true
+    udevadm trigger --action=change --sysname-match=uinput >/dev/null 2>&1 || true
+}
