@@ -96,7 +96,7 @@ optdepends=(
   'uwsm: the Hyprland (uwsm-managed) session the login screen starts first'
   'xorg-xinit: startx, for X11 sessions on the login screen'
   'polkit: pkexec, so applications can ask for administrator access'
-  'tailscale: the Tailscale connection in the VPN plugin'
+  'tailscale: the Tailscale plugin'
   'cups: lpstat and ipptool, which list your printers and their changes in the Printers plugin'
   'cups-pk-helper: adds, removes and sets the default printer in the Printers plugin'
   'system-config-printer: Print Settings, for drivers, paper size and quality in the Printers plugin'
