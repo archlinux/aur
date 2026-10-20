@@ -2,8 +2,8 @@
 # Ely Office desktop apps. Named *-app-bin because the standard ely-*-bin
 # names are already taken on AUR by another maintainer.
 pkgname=ely-doc-app-bin
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="ElyDoc - Word document editor from the Ely Office suite"
 arch=('x86_64')
 url="https://office.elygpui.com"
@@ -15,7 +15,7 @@ conflicts=('ely-doc' 'ely-doc-bin')
 
 options=('!strip' '!debug')
 source_x86_64=("ely-doc_${pkgver}-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v${pkgver}/ely-doc_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('5f43732349182ae9445658b8c83052d3538c5c76f97d57ff79991d58f765f42c')
+sha256sums_x86_64=('a2817c1268ee55842cc90849cf6d357372adc45d42dcd5c1f1bcaa2917e9e04e')
 
 package() {
     local _deb="ely-doc_${pkgver}-1_amd64.deb"
