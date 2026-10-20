@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=appattic-qt
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Leftovers, stale apps, unused packages, and disk usage"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "https://github.com/bytecodealliance/wasmtime/releases/download/v28.0.0/wasmtime-v28.0.0-x86_64-linux-c-api.tar.xz"
 )
 sha256sums=(
-  '9da91b25123a807abbd6458564a5f9de0dac5ac7baf4ca314727280618c6d8eb'
+  '2ab4bedc3e9a2aef72759ac4515d4bb6f139925564e6b7e3b835814664cfb301'
   '1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026'
   '23f282f333f07ec82a838928cbc86355cc4978c3618080d1a2e5714fec8411bf'
 )
