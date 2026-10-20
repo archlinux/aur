@@ -68,7 +68,6 @@ EnvironmentFile=-%E/comfykick/environment.conf
 ## See <https://www.reddit.com/r/LocalLLM/comments/1wehgvc/huggingface_hub_silently_fingerprints_which_ai/>
 ##
 Environment=HF_HUB_DISABLE_TELEMETRY=1
-Environment=HF_HUB_OFFLINE=1
 Environment=TRANSFORMERS_OFFLINE=1
 
 [Install]
