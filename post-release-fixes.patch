@@ -86,8 +86,8 @@ diff -up src/libumem-3.3.1/umem-malloc.pc.in.orig src/libumem-3.3.1/umem-malloc.
 +Cflags: -I${includedir}
 diff -up src/libumem-3.3.1/umem.pc.in.orig src/libumem-3.3.1/umem.pc.in
 --- src/libumem-3.3.1/umem.pc.in.orig	2026-10-20 16:06:43.539999999 -0600
-+++ src/libumem-3.3.1/umem.pc.in	2026-10-20 16:11:52.039999999 -0600
-@@ -0,0 +1,11 @@
++++ src/libumem-3.3.1/umem.pc.in	2026-10-20 16:35:44.539999999 -0600
+@@ -0,0 +1,12 @@
 +prefix=@prefix@
 +exec_prefix=@exec_prefix@
 +libdir=@libdir@
@@ -97,5 +97,6 @@ diff -up src/libumem-3.3.1/umem.pc.in.orig src/libumem-3.3.1/umem.pc.in
 +Version: @PACKAGE_VERSION@
 +Description: Port of Solaris's slab allocator.
 +URL: https://github.com/gburd/libumem
++Requires.private: numa
 +Cflags: -I${includedir}
 +Libs: -L${libdir} -lumem

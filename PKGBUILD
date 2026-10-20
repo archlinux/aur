@@ -3,7 +3,7 @@
 
 pkgname=libumem
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="slab and magazine allocator with built-in debugging"
 arch=('x86_64' 'aarch64')
 url='https://github.com/gburd/libumem/'
@@ -39,3 +39,5 @@ package() {
   make DESTDIR="$pkgdir" install
   install -vDm644 -t "$pkgdir"/usr/share/licenses/$pkgname/ {COPYRIGHT,OPENSOLARIS.LICENSE}
 }
+b2sums=('3ecc562f7cb6be3b5319058bd80edcc177525b21d743e030406d3d0da60278d0f117bb5ced69b86637b0e14b2b3a0914e22638008fbefb055fe132ff9b7791ea'
+        '592760725001e19d39453c774a75c0f053f7abcc76d0fa48ac9d92f01545c998471079e548c2307fd325748b86321cf9c7f1e11a3a9de57c750f4109f3b7c486')
