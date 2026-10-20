@@ -1,0 +1,117 @@
+diff --git a/indicator/plugin.c b/indicator/plugin.c
+index cc70a19..d2c8966 100644
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -176,12 +176,58 @@ indicator_preferences_cb(GtkWidget *widget, MultiloadPlugin *ma)
+ static gint opt_icon_height = -1; // -1 = ключ не задан
+ static gint icon_height = 22;     // действующее значение
+ 
++static gchar *opt_label = NULL;
++
+ static GOptionEntry indicator_entries[] = {
+ 	{ "icon-height", 'H', 0, G_OPTION_ARG_INT, &opt_icon_height, "Tray icon height in pixels, saved for next runs (default: 22)", "N" },
+ 	{ "split",       's', 0, G_OPTION_ARG_NONE, &opt_split,      "Show every graph as its own tray icon", NULL },
++	{ "label",       'L', 0, G_OPTION_ARG_STRING, &opt_label,    "Show text next to the icon: comma separated graph names (cpu,mem,net,swap,load,disk,temp,bat,parm)", "LIST" },
+ 	{ NULL }
+ };
+ 
++//NOTE: the text travels as XAyatanaLabel, which only Ayatana aware panels draw
++//(sfwbar does, waybar does not), and the full set of graphs does not fit a
++//panel, so the user picks the graphs worth showing
++static gboolean
++label_wanted (guint id)
++{
++	const gchar *p;
++	size_t len;
++
++	if (opt_label == NULL)
++		return FALSE;
++
++	len = strlen(graph_types[id].name);
++	for (p=opt_label; (p = strstr(p, graph_types[id].name)) != NULL; p += len) {
++		if ((p == opt_label || p[-1] == ',') && (p[len] == '\0' || p[len] == ','))
++			return TRUE;
++	}
++
++	return FALSE;
++}
++
++//NOTE: the panel reserves room for the guide, so digits are masked to keep the
++//width steady, and the widest guide seen is kept so the item never shrinks back
++static void
++label_set (AppIndicator *ind, const gchar *text, gchar *guide, size_t guide_size)
++{
++	gchar buf[128];
++	guint i;
++
++	if (ind == NULL)
++		return;
++
++	g_strlcpy(buf, text, sizeof(buf));
++	for (i=0; buf[i] != '\0'; i++) {
++		if (g_ascii_isdigit(buf[i]))
++			buf[i] = '0';
++	}
++	if (strlen(buf) > strlen(guide))
++		g_strlcpy(guide, buf, guide_size);
++
++	app_indicator_set_label (ind, text, guide);
++}
++
+ //NOTE: icon height lives in its own file: multiload_ui_save() rewrites
+ //indicator.conf from an empty GKeyFile, so any foreign key there is lost
+ static gchar *
+@@ -235,7 +281,11 @@ indicator_update_menu(MultiloadPlugin *ma)
+ 	gchar title[98], text[800], label[900];
+ 
+ 	GString *all = g_string_new(NULL);
++	GString *bar = g_string_new(NULL);
+ 	static gchar last_title[GRAPH_MAX][sizeof(label)];
++	static gchar last_label[GRAPH_MAX][128];
++	static gchar label_guide[128];
++	static gchar split_guide[GRAPH_MAX][64];
+ 
+ 	//NOTE: same order as the icon and the menu, otherwise the tooltip lines
+ 	//would not match what is drawn
+@@ -258,6 +308,27 @@ indicator_update_menu(MultiloadPlugin *ma)
+ 			if (g_strcmp0(gtk_menu_item_get_label(GTK_MENU_ITEM(graphs_menu_items[i])), label) != 0)
+ 				gtk_menu_item_set_label(GTK_MENU_ITEM(graphs_menu_items[i]), label);
+ 
++			if (label_wanted(i)) {
++				gchar brief[128], name[16];
++				guint c;
++
++				graph_types[i].tooltip_update(title, sizeof(title), brief, sizeof(brief), ma->graphs[i], ma->extra_data[i], MULTILOAD_TOOLTIP_STYLE_SIMPLE);
++				g_strlcpy(name, graph_types[i].name, sizeof(name));
++				for (c=0; name[c] != '\0'; c++)
++					name[c] = g_ascii_toupper(name[c]);
++
++				if (opt_split) {
++					if (strcmp(last_label[i], brief) != 0) {
++						label_set(split_ind[i], brief, split_guide[i], sizeof(split_guide[i]));
++						g_strlcpy(last_label[i], brief, sizeof(last_label[i]));
++					}
++				} else {
++					if (bar->len > 0)
++						g_string_append_c(bar, ' ');
++					g_string_append_printf(bar, "%s %s", name, brief);
++				}
++			}
++
+ 			//NOTE: libayatana exposes no ToolTip property, panels fall back to
+ 			//Title, so the graph text goes there
+ 			if (opt_split) {
+@@ -279,7 +350,13 @@ indicator_update_menu(MultiloadPlugin *ma)
+ 		g_strlcpy(last_title[0], all->str, sizeof(label));
+ 	}
+ 
++	if (opt_label != NULL && !opt_split && strcmp(last_label[0], bar->str) != 0) {
++		label_set(indicator, bar->str, label_guide, sizeof(label_guide));
++		g_strlcpy(last_label[0], bar->str, sizeof(last_label[0]));
++	}
++
+ 	g_string_free(all, TRUE);
++	g_string_free(bar, TRUE);
+ }
+ 
+ static void

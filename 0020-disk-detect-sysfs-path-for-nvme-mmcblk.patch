@@ -1,0 +1,117 @@
+diff --git a/common/graph-disk.c b/common/graph-disk.c
+index 675dbc7..da8e4a8 100644
+--- a/common/graph-disk.c
++++ b/common/graph-disk.c
+@@ -36,6 +36,37 @@
+ static const char *fstype_ignore_list[] = { "rootfs", "smbfs", "nfs", "cifs", "fuse.", NULL };
+ 
+ 
++//NOTE: cutting the name at the first digit only works for sdX/hdX: nvme0n1p2
++//became prefix "nvme" and mmcblk0p1 became "mmcblk", the sysfs path never
++//opened and those disks were silently skipped. Ask sysfs instead of guessing.
++static gboolean
++disk_sysfs_stat_path (const char *device, char *path, size_t path_size)
++{
++	char parent[20];
++	size_t i;
++
++	//NOTE: loop devices repeat I/O that is already counted on the disk holding
++	//the image file, so they stay out, exactly as they were before
++	if (strncmp(device, "loop", 4) == 0)
++		return FALSE;
++
++	g_snprintf(path, path_size, "/sys/block/%s/stat", device);
++	if (access(path, R_OK) == 0)
++		return TRUE; // whole device: sda, nvme0n1, mmcblk0, md0, dm-0
++
++	g_strlcpy(parent, device, sizeof(parent));
++	for (i=strlen(parent); i>0 && isdigit(parent[i-1]); i--)
++		; // strip the partition number
++	if (i>1 && parent[i-1] == 'p' && isdigit(parent[i-2]))
++		i--; // nvme0n1p2, mmcblk0p1, loop0p1
++
++	parent[i] = '\0';
++	g_snprintf(path, path_size, "/sys/block/%s/%s/stat", parent, device);
++
++	return TRUE;
++}
++
++
+ MultiloadFilter *
+ multiload_graph_disk_get_filter (LoadGraph *g, DiskData *xd)
+ {
+@@ -43,8 +74,7 @@ multiload_graph_disk_get_filter (LoadGraph *g, DiskData *xd)
+ 	size_t n = 0;
+ 
+ 	guint64 blocks;
+-	char device[20], prefix[20], label[30];
+-	guint i;
++	char device[20], label[30];
+ 
+ 	MultiloadFilter *filter = multiload_filter_new();
+ 
+@@ -54,23 +84,10 @@ multiload_graph_disk_get_filter (LoadGraph *g, DiskData *xd)
+ 		if (2 != fscanf(f, "%*u %*u %"G_GUINT64_FORMAT" %s", &blocks, device))
+ 			continue;
+ 
+-		// extract block device and partition names
+-		gboolean is_partition = FALSE;
+-		g_strlcpy(prefix, device, sizeof(prefix));
+-		for (i=0; prefix[i] != '\0'; i++) {
+-			if (isdigit(prefix[i])) {
+-				prefix[i] = '\0';
+-				is_partition = TRUE;
+-				break;
+-			}
+-		}
+-
+ 		// generate sysfs path
+ 		char sysfs_path[PATH_MAX];
+-		if (is_partition)
+-			g_snprintf(sysfs_path, PATH_MAX, "/sys/block/%s/%s/stat", prefix, device);
+-		else
+-			g_snprintf(sysfs_path, PATH_MAX, "/sys/block/%s/stat", device);
++		if (!disk_sysfs_stat_path(device, sysfs_path, PATH_MAX))
++			continue;
+ 
+ 		if (access(sysfs_path, R_OK) != 0)
+ 			continue;
+@@ -103,7 +120,6 @@ multiload_graph_disk_get_data (int Maximum, int data [2], LoadGraph *g, DiskData
+ 
+ 	char sysfs_path[PATH_MAX];
+ 	char *device;
+-	char prefix[20];
+ 	guint64 read, write;
+ 	guint64 read_total = 0, write_total = 0;
+ 	guint64 readdiff, writediff;
+@@ -132,17 +148,7 @@ multiload_graph_disk_get_data (int Maximum, int data [2], LoadGraph *g, DiskData
+ 		if (ignore)
+ 			continue;
+ 
+-		// extract block device and partition names
+-		gboolean is_partition = FALSE;
+ 		device = &mnt->mnt_fsname[5];
+-		g_strlcpy(prefix, device, sizeof(prefix));
+-		for (i=0; prefix[i] != '\0'; i++) {
+-			if (isdigit(prefix[i])) {
+-				prefix[i] = '\0';
+-				is_partition = TRUE;
+-				break;
+-			}
+-		}
+ 
+ 		// filter
+ 		if (g->config->filter_enable) {
+@@ -163,10 +169,8 @@ multiload_graph_disk_get_data (int Maximum, int data [2], LoadGraph *g, DiskData
+ 			continue;
+ 
+ 		// generate sysfs path
+-		if (is_partition)
+-			g_snprintf(sysfs_path, PATH_MAX, "/sys/block/%s/%s/stat", prefix, device);
+-		else
+-			g_snprintf(sysfs_path, PATH_MAX, "/sys/block/%s/stat", device);
++		if (!disk_sysfs_stat_path(device, sysfs_path, PATH_MAX))
++			continue;
+ 
+ 		// read data from sysfs
+ 		f_stat = fopen(sysfs_path, "r");

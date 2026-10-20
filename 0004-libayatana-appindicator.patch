@@ -1,0 +1,25 @@
+diff --git a/indicator/configure.m4 b/indicator/configure.m4
+index 6e5bd4e..68295fb 100644
+--- a/indicator/configure.m4
++++ b/indicator/configure.m4
+@@ -1,6 +1,6 @@
+ AC_ARG_WITH([indicator], AS_HELP_STRING([--with-indicator], [Build plugin for libindicator]), [], [with_indicator="check"])
+ AS_IF([test "x$with_indicator" != "xno"], [
+-	AS_IF([test "x$GTK_API" = "x2"], [LIBNAME=appindicator], [LIBNAME=appindicator3])
++	AS_IF([test "x$GTK_API" = "x2"], [LIBNAME=appindicator], [LIBNAME=ayatana-appindicator3])
+ 
+ 	PKG_CHECK_MODULES(APPINDICATOR, [$LIBNAME-0.1 >= 0.4.92], [
+ 		AC_DEFINE([HAVE_APPINDICATOR], [1], [Support for libappindicator])
+diff --git a/indicator/plugin.c b/indicator/plugin.c
+index b97bde5..b920145 100644
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -28,7 +28,7 @@
+ #include <sys/time.h>
+ #include <gtk/gtk.h>
+ #include <glib/gi18n-lib.h>
+-#include <libappindicator/app-indicator.h>
++#include <libayatana-appindicator/app-indicator.h>
+ 
+ #include "common/about-data.h"
+ #include "common/multiload.h"

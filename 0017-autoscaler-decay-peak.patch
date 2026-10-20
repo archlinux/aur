@@ -1,0 +1,24 @@
+--- a/common/autoscaler.c
++++ b/common/autoscaler.c
+@@ -61,7 +61,7 @@
+ 			g_debug("[autoscaler] Recalculated max for graph '%s': %d", graph_types[g->id].name, s->max);
+ 		}
+ 
+-		s->max = MAX(s->max, current);
++		s->max = MAX((int)(s->max * AUTOSCALER_DECAY), current);
+ 		s->max = MAX(s->max, s->min);
+ 	}
+ 
+--- a/common/autoscaler.h
++++ b/common/autoscaler.h
+@@ -32,6 +32,10 @@
+ 
+ #define AUTOSCALER_MIN_DEFAULT 20
+ 
++// fraction of the peak kept at every update, so a spike fades out in about
++// fifteen updates instead of holding the scale down until the next average
++#define AUTOSCALER_DECAY 0.95f
++
+ typedef struct {
+ 	gboolean enable;
+ 	int max;

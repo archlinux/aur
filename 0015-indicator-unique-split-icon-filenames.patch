@@ -1,0 +1,61 @@
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -57,8 +57,8 @@
+ static GtkWidget *graphs_menu_items[GRAPH_MAX];
+ static gboolean opt_split = FALSE;
+ static AppIndicator *split_ind[GRAPH_MAX];
+-static gchar split_filename[GRAPH_MAX][2][PATH_MAX];
+-static int split_current_index[GRAPH_MAX];
++static gchar split_filename[GRAPH_MAX][PATH_MAX];
++static gchar split_filename_prev[GRAPH_MAX][PATH_MAX];
+ static gint split_full_menu_owner = -1;
+ 
+ static char **saved_argv = NULL;   // копия argv до разбора ключей
+@@ -78,8 +78,8 @@
+ 	remove(icon_filename);
+ 	remove(icon_filename_prev);
+ 	for (guint i=0; i<GRAPH_MAX; i++) {
+-		remove(split_filename[i][0]);
+-		remove(split_filename[i][1]);
++		remove(split_filename[i]);
++		remove(split_filename_prev[i]);
+ 	}
+ 	remove(icon_directory);
+ 
+@@ -433,10 +433,20 @@
+ 	cairo_set_source_surface (cr, g->surface, ma->padding, ma->padding);
+ 	cairo_paint (cr);
+ 
+-	if (cairo_surface_write_to_png (surface, split_filename[id][split_current_index[id]]) == CAIRO_STATUS_SUCCESS)
+-		app_indicator_set_icon (split_ind[id], split_filename[id][split_current_index[id]]);
++	//NOTE: same reason as the combined icon - a panel keyed on the path never
++	//reloads an icon written back to the same file
++	gchar fname[PATH_MAX];
++	g_snprintf(fname, sizeof(fname), "%s/graph%u_%u.png", icon_directory, id,
++			icon_serial++);
+ 
+-	split_current_index[id] = 1 - split_current_index[id];
++	if (cairo_surface_write_to_png (surface, fname) == CAIRO_STATUS_SUCCESS) {
++		app_indicator_set_icon (split_ind[id], fname);
++
++		if (split_filename_prev[id][0])
++			remove(split_filename_prev[id]);
++		g_strlcpy(split_filename_prev[id], split_filename[id], PATH_MAX);
++		g_strlcpy(split_filename[id], fname, PATH_MAX);
++	}
+ 	cairo_surface_destroy (surface);
+ 	cairo_destroy (cr);
+ }
+@@ -505,12 +515,6 @@
+ 	} else {
+ 		strncpy(icon_directory, dirname, PATH_MAX);
+ 		g_debug("Using this directory for buffers: %s", icon_directory);
+-
+-		for (guint i=0; i<GRAPH_MAX; i++) {
+-			g_snprintf(split_filename[i][0], PATH_MAX, "%s/graph%u_0.png", icon_directory, i);
+-			g_snprintf(split_filename[i][1], PATH_MAX, "%s/graph%u_1.png", icon_directory, i);
+-		}
+-
+ 	}
+ 
+ 	g_free(template); // apparently mkdtemp uses template buffer, so free it after its use

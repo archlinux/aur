@@ -1,0 +1,37 @@
+--- a/common/graph-net.c
++++ b/common/graph-net.c
+@@ -147,7 +147,7 @@
+ 		// lookup existing data and create it if necessary
+ 		d_ptr = (if_data*)g_hash_table_lookup(table, d.name);
+ 		if (d_ptr == NULL) {
+-			d_ptr = g_new(if_data,1);
++			d_ptr = g_new0(if_data,1);
+ 			strcpy(d_ptr->name, d.name);
+ 
+ 			sprintf(d_ptr->path_address, "/sys/class/net/%s/address", d_ptr->name);
+@@ -161,15 +161,21 @@
+ 			g_hash_table_insert(table, d_ptr->name, d_ptr);
+ 		}
+ 
++		//NOTE: address and ifindex are fixed while the interface lives, so read
++		//them once instead of every update - a counter going backwards means
++		//the name was reused by a new interface, then they are read again
++		if (d_ptr->ifindex == 0 || d.rx_bytes < d_ptr->rx_bytes || d.tx_bytes < d_ptr->tx_bytes) {
++			if (!info_file_read_string_s(d_ptr->path_address, d_ptr->address, sizeof(d_ptr->address), NULL))
++				continue;
++			if (!info_file_read_uint64(d_ptr->path_ifindex, &d_ptr->ifindex))
++				continue;
++		}
++
+ 		d_ptr->rx_bytes = d.rx_bytes;
+ 		d_ptr->tx_bytes = d.tx_bytes;
+ 
+ 		if (!info_file_read_hex64(d_ptr->path_flags, &d_ptr->flags))
+ 			continue;
+-		if (!info_file_read_string_s(d_ptr->path_address, d_ptr->address, sizeof(d_ptr->address), NULL))
+-			continue;
+-		if (!info_file_read_uint64(d_ptr->path_ifindex, &d_ptr->ifindex))
+-			continue;
+ 
+ 		if (!(d_ptr->flags & IFF_UP))
+ 			continue; // device is down, ignore

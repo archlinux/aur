@@ -1,0 +1,85 @@
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -91,10 +91,58 @@
+ 	);
+ }
+ 
++static gint opt_icon_height = -1; // -1 = ключ не задан
++static gint icon_height = 22;     // действующее значение
++
++static GOptionEntry indicator_entries[] = {
++	{ "icon-height", 'H', 0, G_OPTION_ARG_INT, &opt_icon_height, "Tray icon height in pixels, saved for next runs (default: 22)", "N" },
++	{ NULL }
++};
++
++//NOTE: icon height lives in its own file: multiload_ui_save() rewrites
++//indicator.conf from an empty GKeyFile, so any foreign key there is lost
++static gchar *
++icon_height_filename()
++{
++	return g_build_filename(MULTILOAD_CONFIG_PATH, "indicator-icon-height", NULL);
++}
++
++static void
++icon_height_load()
++{
++	gchar *fname = icon_height_filename();
++	gchar *data = NULL;
++
++	if (g_file_get_contents(fname, &data, NULL, NULL)) {
++		gint v = (gint)g_ascii_strtoll(data, NULL, 10);
++		if (v > 0)
++			icon_height = v;
++		g_free(data);
++	}
++
++	g_free(fname);
++}
++
++static void
++icon_height_save()
++{
++	gchar *fname = icon_height_filename();
++	gchar *data = g_strdup_printf("%d\n", icon_height);
++
++	g_mkdir_with_parents(MULTILOAD_CONFIG_PATH, 0700);
++	if (!g_file_set_contents(fname, data, -1, NULL))
++		g_warning("Cannot save icon height to %s", fname);
++
++	g_free(data);
++	g_free(fname);
++}
++
+ static int
+ indicator_get_icon_height()
+ {
+-	return 22; // seems to be a fixed size (it's hardcoded in libappindicator source)
++	//NOTE: upstream hardcoded 22 to match libappindicator; panels with taller
++	//bars need a bigger icon, so it is a command line option now
++	return CLAMP(icon_height, 8, 128);
+ }
+ 
+ static void
+@@ -283,7 +331,7 @@
+ {
+ 	guint i;
+ 
+-	MultiloadOptions *options = multiload_ui_parse_cmdline (&argc, &argv, NULL); //TODO put this in Porting Wiki page
++	MultiloadOptions *options = multiload_ui_parse_cmdline (&argc, &argv, indicator_entries);
+ 	MultiloadPlugin *multiload = multiload_new();
+ 
+ 	if (options->reset_settings)
+@@ -291,6 +339,13 @@
+ 	else
+ 		multiload_ui_read (multiload);
+ 
++	//NOTE: must run after multiload_new(), which sets MULTILOAD_CONFIG_PATH
++	icon_height_load();
++	if (opt_icon_height > 0) {
++		icon_height = opt_icon_height;
++		icon_height_save();
++	}
++
+ 	multiload_start(multiload);
+ 
+ 	// create offscreen window to keep widget drawing

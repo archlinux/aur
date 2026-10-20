@@ -1,0 +1,59 @@
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -160,7 +160,6 @@
+ 	gtk_window_present(GTK_WINDOW(dialog));
+ 
+ 	multiload_preferences_disable_settings(
+-		MULTILOAD_SETTINGS_TOOLTIPS |
+ 		MULTILOAD_SETTINGS_DBLCLICK_POLICY
+ 	);
+ }
+@@ -226,6 +225,9 @@
+ 	guint i;
+ 	gchar title[98], text[800], label[900];
+ 
++	GString *all = g_string_new(NULL);
++	static gchar last_title[GRAPH_MAX][sizeof(label)];
++
+ 	for (i=0; i<GRAPH_MAX; i++) {
+ 		ma->graphs[i]->tooltip_update = ma->graph_config[i].visible;
+ 
+@@ -239,9 +241,29 @@
+ 			graph_types[i].tooltip_update(title, sizeof(title), text, sizeof(text), ma->graphs[i], ma->extra_data[i], ma->graph_config[i].tooltip_style);
+ 			g_snprintf(label, sizeof(label), "%s: %s", graph_types[i].label, text);
+ 			gtk_menu_item_set_label(GTK_MENU_ITEM(graphs_menu_items[i]), label);
++
++			//NOTE: libayatana exposes no ToolTip property, panels fall back to
++			//Title, so the graph text goes there
++			if (opt_split) {
++				if (split_ind[i] != NULL && strcmp(last_title[i], label) != 0) {
++					app_indicator_set_title (split_ind[i], label);
++					g_strlcpy(last_title[i], label, sizeof(label));
++				}
++			} else {
++				if (all->len > 0)
++					g_string_append_c(all, '\n');
++				g_string_append(all, label);
++			}
+ 		}
+ 
+ 	}
++
++	if (!opt_split && indicator != NULL && strcmp(last_title[0], all->str) != 0) {
++		app_indicator_set_title (indicator, all->str);
++		g_strlcpy(last_title[0], all->str, sizeof(label));
++	}
++
++	g_string_free(all, TRUE);
+ }
+ 
+ static void
+@@ -423,7 +445,7 @@
+ 	guint i;
+ 
+ 	for (i=0; i<GRAPH_MAX; i++) {
+-		ma->graph_config[i].tooltip_style = MULTILOAD_TOOLTIP_STYLE_SIMPLE;
++		//NOTE: tooltip style is a user choice now that the text goes into Title
+ 		ma->graph_config[i].dblclick_policy = DBLCLICK_POLICY_DONOTHING;
+ 	}
+ 

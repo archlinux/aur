@@ -1,0 +1,194 @@
+diff --git a/common/filter.c b/common/filter.c
+index 84954d0..777787a 100644
+--- a/common/filter.c
++++ b/common/filter.c
+@@ -76,7 +76,7 @@ multiload_filter_append(MultiloadFilter *filter, char *data)
+ 	MultiloadFilterElement element;
+ 	memset(&element, 0, sizeof(element));
+ 
+-	strncpy(element.data, data, sizeof(element.data));
++	g_strlcpy(element.data, data, sizeof(element.data));
+ 	element.state = MULTILOAD_FILTER_STATE_UNSELECTED;
+ 
+ 	g_array_append_val(filter->array, element);
+@@ -93,7 +93,7 @@ multiload_filter_append_with_label(MultiloadFilter *filter, char *data, char *la
+ 	guint n = multiload_filter_append(filter, data);
+ 
+ 	MultiloadFilterElement *element = multiload_filter_get_element(filter, n);
+-	strncpy(element->label, label, sizeof(element->label));
++	g_strlcpy(element->label, label, sizeof(element->label));
+ 	return n;
+ }
+ 
+diff --git a/common/graph-bat.c b/common/graph-bat.c
+index d02ef0b..c1eadc3 100644
+--- a/common/graph-bat.c
++++ b/common/graph-bat.c
+@@ -257,7 +257,7 @@ multiload_graph_bat_tooltip_update (char *buf_title, size_t len_title, char *buf
+ 	if (style == MULTILOAD_TOOLTIP_STYLE_DETAILED) {
+ 		gchar *status = (battery->is_charging? _("Charging") : _("Discharging"));
+ 
+-		strncpy(buf_title, battery->name_label, len_title);
++		g_strlcpy(buf_title, battery->name_label, len_title);
+ 		if (battery->is_critical)
+ 			g_snprintf(buf_text, len_text, "%s %.1f%% (%s)\n%s", _("Current charge:"), battery->percentage, _("Critical level"), status);
+ 		else
+diff --git a/common/graph-cpu.c b/common/graph-cpu.c
+index 36db617..404a770 100644
+--- a/common/graph-cpu.c
++++ b/common/graph-cpu.c
+@@ -127,7 +127,7 @@ multiload_graph_cpu_tooltip_update (char *buf_title, size_t len_title, char *buf
+ {
+ 	if (style == MULTILOAD_TOOLTIP_STYLE_DETAILED) {
+ 		gchar *uptime = format_time_duration(xd->uptime);
+-		strncpy(buf_title, xd->cpu0_name, len_title);
++		g_strlcpy(buf_title, xd->cpu0_name, len_title);
+ 		g_snprintf(buf_text, len_text, _(	"%lu processors  -  %.2f GHz  -  Governor: %s\n"
+ 											"%.1f%% in use by programs\n"
+ 											"%.1f%% in use by low priority programs\n"
+diff --git a/common/graph-load.c b/common/graph-load.c
+index 734ce43..4ee3be7 100644
+--- a/common/graph-load.c
++++ b/common/graph-load.c
+@@ -89,7 +89,7 @@ multiload_graph_load_tooltip_update (char *buf_title, size_t len_title, char *bu
+ {
+ 	if (style == MULTILOAD_TOOLTIP_STYLE_DETAILED) {
+ 		if (xd->uname[0] != 0)
+-			strncpy(buf_title, xd->uname, len_title);
++			g_strlcpy(buf_title, xd->uname, len_title);
+ 		g_snprintf(buf_text, len_text, _(	"Last minute: %0.02f\n"
+ 											"Last 5 minutes: %0.02f\n"
+ 											"Last 15 minutes: %0.02f\n"
+diff --git a/common/graph-parm.c b/common/graph-parm.c
+index 819fa34..9577f5f 100644
+--- a/common/graph-parm.c
++++ b/common/graph-parm.c
+@@ -131,7 +131,7 @@ multiload_graph_parm_tooltip_update (char *buf_title, size_t len_title, char *bu
+ 												xd->command, xd->message);
+ 		else {
+ 			if (xd->message[0] != '\0')
+-				strncpy(buf_title, xd->message, len_title);
++				g_strlcpy(buf_title, xd->message, len_title);
+ 			g_snprintf(buf_text, len_text, _(	"Command: %s\n"
+ 												"Results: (%.3lf, %.3lf, %.3lf, %.3lf)"),
+ 												xd->command, xd->result[0], xd->result[1],
+@@ -141,7 +141,7 @@ multiload_graph_parm_tooltip_update (char *buf_title, size_t len_title, char *bu
+ 		if (xd->error)
+ 			g_snprintf(buf_text, len_text, _(	"ERROR: %s"), xd->message);
+ 		else if (xd->message[0] != '\0')
+-			strncpy(buf_text, xd->message, len_text);
++			g_strlcpy(buf_text, xd->message, len_text);
+ 		else
+ 			g_snprintf(buf_text, len_text, "(%lf, %lf, %lf, %lf)",
+ 										xd->result[0], xd->result[1],
+diff --git a/common/graph-temp.c b/common/graph-temp.c
+index 477363a..a6909e0 100644
+--- a/common/graph-temp.c
++++ b/common/graph-temp.c
+@@ -114,9 +114,9 @@ list_temp_acpitz(TemperatureSourceData **list, gboolean init)
+ 
+ 				// remove leading path prefix
+ 				if (strncmp(buf, "\\_TZ_.", 6) == 0)
+-					strncpy(li->name, buf+6, sizeof(li->name));
++					g_strlcpy(li->name, buf+6, sizeof(li->name));
+ 				else
+-					strncpy(li->name, buf, sizeof(li->name));
++					g_strlcpy(li->name, buf, sizeof(li->name));
+ 			}
+ 			if (li->name[0] == '\0')
+ 				g_snprintf(li->name, sizeof(li->name), "thermal_zone%d (ACPI)", i);
+@@ -405,7 +405,7 @@ void
+ multiload_graph_temp_tooltip_update (char *buf_title, size_t len_title, char *buf_text, size_t len_text, LoadGraph *g, TemperatureData *xd, gint style)
+ {
+ 	if (style == MULTILOAD_TOOLTIP_STYLE_DETAILED) {
+-		strncpy(buf_title, xd->name, len_title);
++		g_strlcpy(buf_title, xd->name, len_title);
+ 
+ 		//NOTE: hosts that show only the text part (tray indicator) would lose
+ 		//the sensor name if it lived in the title alone
+diff --git a/common/multiload.c b/common/multiload.c
+index cb85044..4d94015 100644
+--- a/common/multiload.c
++++ b/common/multiload.c
+@@ -284,7 +284,7 @@ void multiload_defaults(MultiloadPlugin *ma)
+ 	ma->padding = DEFAULT_PADDING;
+ 	ma->spacing = DEFAULT_SPACING;
+ 	ma->size_format_iec = DEFAULT_SIZE_FORMAT_IEC;
+-	strncpy(ma->color_scheme, DEFAULT_COLOR_SCHEME, sizeof(ma->color_scheme));
++	g_strlcpy(ma->color_scheme, DEFAULT_COLOR_SCHEME, sizeof(ma->color_scheme));
+ 	for ( i = 0; i < GRAPH_MAX; i++ ) {
+ 		conf = &ma->graph_config[i];
+ 		conf->border_width = DEFAULT_BORDER_WIDTH;
+diff --git a/common/preferences.c b/common/preferences.c
+index f8aab70..bf5a3f2 100644
+--- a/common/preferences.c
++++ b/common/preferences.c
+@@ -513,7 +513,7 @@ multiload_preferences_dblclick_command_changed_cb (GtkEntry *entry, MultiloadPlu
+ {
+ 	guint i = multiload_preferences_get_graph_index(GTK_BUILDABLE(entry), entry_dblclick_command_names);
+ 
+-	strncpy(ma->graph_config[i].dblclick_cmdline, gtk_entry_get_text(entry), sizeof(ma->graph_config[i].dblclick_cmdline));
++	g_strlcpy(ma->graph_config[i].dblclick_cmdline, gtk_entry_get_text(entry), sizeof(ma->graph_config[i].dblclick_cmdline));
+ }
+ 
+ static void
+@@ -646,9 +646,9 @@ multiload_preferences_color_scheme_selected_cb (GtkTreeSelection *sel, Multiload
+ 		scheme = &multiload_builtin_color_schemes[ii[0]];
+ 
+ 		if (scheme->name[0] == '\0') {
+-			strncpy(ma->color_scheme, "-", sizeof(ma->color_scheme));
++			g_strlcpy(ma->color_scheme, "-", sizeof(ma->color_scheme));
+ 		} else {
+-			strncpy(ma->color_scheme, scheme->name, sizeof(ma->color_scheme));
++			g_strlcpy(ma->color_scheme, scheme->name, sizeof(ma->color_scheme));
+ 			multiload_color_scheme_apply(scheme, ma);
+ 			multiload_preferences_update_color_buttons(ma);
+ 		}
+@@ -669,7 +669,7 @@ static void
+ multiload_preferences_parm_command_changed_cb (GtkEntry *entry, MultiloadPlugin *ma)
+ {
+ 	ParametricData *xd = (ParametricData*)ma->extra_data[GRAPH_PARAMETRIC];
+-	strncpy(xd->command, gtk_entry_get_text(entry), sizeof(xd->command));
++	g_strlcpy(xd->command, gtk_entry_get_text(entry), sizeof(xd->command));
+ }
+ 
+ static void
+diff --git a/common/ps-settings-impl-gkeyfile.inc b/common/ps-settings-impl-gkeyfile.inc
+index dab3836..8436b37 100644
+--- a/common/ps-settings-impl-gkeyfile.inc
++++ b/common/ps-settings-impl-gkeyfile.inc
+@@ -141,7 +141,7 @@ multiload_ps_settings_get_string(gpointer settings, const gchar *key, gchar *des
+ 
+ 	temp = g_key_file_get_string ((GKeyFile*)settings, G_KEY_GROUP_NAME, key, &err);
+ 	if (G_LIKELY((err == NULL || err->code == 0) && temp != NULL)) {
+-		strncpy(destination, temp, maxlen);
++		g_strlcpy(destination, temp, maxlen);
+ 		ret = TRUE;
+ 	} else {
+ 		ret = FALSE;
+diff --git a/common/ps-settings-impl-gsettings.inc b/common/ps-settings-impl-gsettings.inc
+index 7bb88b1..2afcae3 100644
+--- a/common/ps-settings-impl-gsettings.inc
++++ b/common/ps-settings-impl-gsettings.inc
+@@ -76,7 +76,7 @@ multiload_ps_settings_get_string(gpointer settings, const gchar *key, gchar *des
+ {
+ 	const gchar* temp = g_settings_get_string((GSettings*)settings, key);
+ 	if (G_LIKELY(temp != NULL))
+-		strncpy(destination, temp, maxlen);
++		g_strlcpy(destination, temp, maxlen);
+ 	return TRUE;
+ }
+ 
+diff --git a/indicator/plugin.c b/indicator/plugin.c
+index 16dfd0f..cc70a19 100644
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -512,7 +512,7 @@ create_buffer_files()
+ 	if (dirname == NULL) {
+ 		g_error("Unable to create buffer directory.");
+ 	} else {
+-		strncpy(icon_directory, dirname, PATH_MAX);
++		g_strlcpy(icon_directory, dirname, PATH_MAX);
+ 		g_debug("Using this directory for buffers: %s", icon_directory);
+ 	}
+ 

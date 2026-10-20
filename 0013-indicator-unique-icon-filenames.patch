@@ -1,0 +1,109 @@
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -46,8 +46,13 @@
+ static AppIndicator *indicator;
+ static GtkWidget *offscr;
+ static gchar icon_directory[PATH_MAX];
+-static gchar icon_filename[2][PATH_MAX];
+-static int icon_current_index=0;
++//NOTE: the tray icon is published as a file path, and panels reload it only
++//when that path changes (sfwbar compares the string and skips equal ones), so
++//every write needs a fresh name
++static gchar icon_filename[PATH_MAX];
++static gchar icon_filename_prev[PATH_MAX];
++static guint icon_serial = 0;
++static guint icon_update_id = 0;
+ static gboolean indicator_connected;
+ static GtkWidget *graphs_menu_items[GRAPH_MAX];
+ static gboolean opt_split = FALSE;
+@@ -70,8 +75,8 @@
+ 		sprintf(signame, "Signal %d", sig);
+ 
+ 	printf("Received %s, cleaning up...\n", signame);
+-	remove(icon_filename[0]);
+-	remove(icon_filename[1]);
++	remove(icon_filename);
++	remove(icon_filename_prev);
+ 	for (guint i=0; i<GRAPH_MAX; i++) {
+ 		remove(split_filename[i][0]);
+ 		remove(split_filename[i][1]);
+@@ -310,19 +315,40 @@
+ 		}
+ 	}
+ 
+-	status = cairo_surface_write_to_png (surface, icon_filename[icon_current_index]);
++	gchar fname[PATH_MAX];
++	g_snprintf(fname, sizeof(fname), "%s/mapped_icon%u.png", icon_directory,
++			icon_serial++);
++
++	status = cairo_surface_write_to_png (surface, fname);
+ 	g_assert(status == CAIRO_STATUS_SUCCESS);
+ 	if (error != NULL) {
+ 		g_error("Cannot save Multiload-ng window to temporary buffer: %s\n", error->message);
+ 		g_clear_error(&error);
+-	} else
+-		app_indicator_set_icon(indicator, icon_filename[icon_current_index]);
++	} else {
++		app_indicator_set_icon(indicator, fname);
++
++		//NOTE: keep one older file around, a panel may still be reading it
++		if (icon_filename_prev[0])
++			remove(icon_filename_prev);
++		g_strlcpy(icon_filename_prev, icon_filename, PATH_MAX);
++		g_strlcpy(icon_filename, fname, PATH_MAX);
++	}
+ 
+-	icon_current_index = 1-icon_current_index;
+ 	cairo_surface_destroy (surface);
+ 	cairo_destroy (cr);
+ }
+ 
++//NOTE: every visible graph fires its own update, and the composite icon is the
++//same for all of them - collapse the burst into one redraw per main loop pass
++static gboolean
++indicator_update_pixbuf_idle(gpointer data)
++{
++	icon_update_id = 0;
++	indicator_update_pixbuf((MultiloadPlugin*)data);
++
++	return G_SOURCE_REMOVE;
++}
++
+ static void build_menu_for(MultiloadPlugin *ma, AppIndicator *target, gint only_id, gboolean full);
+ static void indicator_connection_changed_cb (AppIndicator *indicator, gboolean connected, MultiloadPlugin *ma);
+ 
+@@ -445,8 +471,8 @@
+ 
+ 	if (opt_split)
+ 		indicator_update_pixbuf_single(g);
+-	else
+-		indicator_update_pixbuf(g->multiload);
++	else if (!icon_update_id)
++		icon_update_id = g_idle_add(indicator_update_pixbuf_idle, g->multiload);
+ }
+ 
+ static void
+@@ -471,8 +497,6 @@
+ static void
+ create_buffer_files()
+ {
+-	gchar *tmp;
+-
+ 	gchar *template = g_build_filename(g_get_tmp_dir(), "multiload-ng.XXXXXX", NULL);
+ 	char *dirname = mkdtemp(template);
+ 
+@@ -482,14 +506,6 @@
+ 		strncpy(icon_directory, dirname, PATH_MAX);
+ 		g_debug("Using this directory for buffers: %s", icon_directory);
+ 
+-		tmp = g_build_filename(icon_directory, "mapped_icon0.png", NULL);
+-		strncpy(icon_filename[0], tmp, PATH_MAX);
+-		g_free(tmp);
+-
+-		tmp = g_build_filename(icon_directory, "mapped_icon1.png", NULL);
+-		strncpy(icon_filename[1], tmp, PATH_MAX);
+-		g_free(tmp);
+-
+ 		for (guint i=0; i<GRAPH_MAX; i++) {
+ 			g_snprintf(split_filename[i][0], PATH_MAX, "%s/graph%u_0.png", icon_directory, i);
+ 			g_snprintf(split_filename[i][1], PATH_MAX, "%s/graph%u_1.png", icon_directory, i);

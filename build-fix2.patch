@@ -1,0 +1,39 @@
+From e92a166da3f9dc070be5687d8a7a9a15c50dd217 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Hrotk=C3=B3=20G=C3=A1bor?= <hrotkogabor@gmail.com>
+Date: Mon, 7 Jul 2025 17:40:14 +0200
+Subject: [PATCH] FIX #86
+
+---
+ common/preferences.c | 4 ++++
+ common/util.h        | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/common/preferences.c b/common/preferences.c
+index f27d804..f8aab70 100644
+--- a/common/preferences.c
++++ b/common/preferences.c
+@@ -1566,7 +1566,11 @@ multiload_preferences_fill_dialog (GtkWidget *dialog, MultiloadPlugin *ma)
+ 	multiload_preferences_update_dynamic_widgets(ma);
+ 
+ 	// other stuff
++#ifdef MULTILOAD_DEVELOPER_MODE
+ 	multiload_developer_buttons(ma);
++#else
++        multiload_developer_buttons();
++#endif
+ 
+ 	#if GTK_API == 3 && GTK_CHECK_VERSION(3,16,0)
+ 	if (gtk_check_version(3,16,0) == NULL)
+diff --git a/common/util.h b/common/util.h
+index 23ef306..aa3855e 100644
+--- a/common/util.h
++++ b/common/util.h
+@@ -49,7 +49,7 @@ show_modal_info_dialog(GtkWindow *parent, GtkMessageType type, const gchar *mess
+ G_GNUC_INTERNAL gchar*
+ get_system_monitor_executable();
+ G_GNUC_INTERNAL void
+-xdg_open_url();
++xdg_open_url(const gchar* url);
+ 
+ G_GNUC_INTERNAL GdkPixbuf*
+ cairo_surface_to_gdk_pixbuf(cairo_surface_t *surface, guint width, guint height);

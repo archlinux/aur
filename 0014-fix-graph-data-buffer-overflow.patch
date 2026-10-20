@@ -1,0 +1,102 @@
+--- a/common/graph-load.c
++++ b/common/graph-load.c
+@@ -69,7 +69,7 @@
+ 
+ 	int max = autoscaler_get_max(&xd->scaler, g, rint(xd->loadavg[LOADAVG_1]));
+ 	if (max == 0) {
+-		memset(data, 0, 4*sizeof(data[0]));
++		data[0] = 0;
+ 	} else {
+ 		data [0] = rint ((float) Maximum * xd->loadavg[LOADAVG_1] / max);
+ 	}
+--- a/common/graph-disk.c
++++ b/common/graph-disk.c
+@@ -197,7 +197,8 @@
+ 		max = autoscaler_get_max(&xd->scaler, g, readdiff + writediff);
+ 
+ 		if (max == 0) {
+-			memset(data, 0, 4*sizeof(data[0]));
++			data[0] = 0;
++			data[1] = 0;
+ 		} else {
+ 			data[0] = (float)Maximum *  readdiff / (float)max;
+ 			data[1] = (float)Maximum * writediff / (float)max;
+--- a/common/graph-net.c
++++ b/common/graph-net.c
+@@ -260,7 +260,7 @@
+ 		xd->local_speed	= calculate_speed(delta[NET_LOCAL],	g->config->interval);
+ 
+ 		if (max == 0) {
+-			memset(data, 0, 4*sizeof(data[0]));
++			memset(data, 0, NET_MAX * sizeof data[0]);
+ 		} else {
+ 			for (i=0; i<NET_MAX; i++)
+ 				data[i] = rint (Maximum * (float)delta[i] / max);
+--- a/common/graph-data.h
++++ b/common/graph-data.h
+@@ -117,14 +117,14 @@
+ G_GNUC_INTERNAL void
+ multiload_graph_cpu_init (LoadGraph *g, CpuData *xd);
+ G_GNUC_INTERNAL void
+-multiload_graph_cpu_get_data (int Maximum, int data [5], LoadGraph *g, CpuData *xd, gboolean first_call);
++multiload_graph_cpu_get_data (int Maximum, int data [4], LoadGraph *g, CpuData *xd, gboolean first_call);
+ G_GNUC_INTERNAL void
+ multiload_graph_cpu_cmdline_output (LoadGraph *g, CpuData *xd);
+ G_GNUC_INTERNAL void
+ multiload_graph_cpu_tooltip_update (char *buf_title, size_t len_title, char *buf_text, size_t len_text, LoadGraph *g, CpuData *xd, gint style);
+ 
+ G_GNUC_INTERNAL void
+-multiload_graph_mem_get_data (int Maximum, int data [4], LoadGraph *g, MemoryData *xd, gboolean first_call);
++multiload_graph_mem_get_data (int Maximum, int data [3], LoadGraph *g, MemoryData *xd, gboolean first_call);
+ G_GNUC_INTERNAL void
+ multiload_graph_mem_cmdline_output (LoadGraph *g, MemoryData *xd);
+ G_GNUC_INTERNAL void
+@@ -135,7 +135,7 @@
+ G_GNUC_INTERNAL MultiloadFilter *
+ multiload_graph_net_get_filter (LoadGraph *g, NetData *xd);
+ G_GNUC_INTERNAL void
+-multiload_graph_net_get_data (int Maximum, int data [4], LoadGraph *g, NetData *xd, gboolean first_call);
++multiload_graph_net_get_data (int Maximum, int data [3], LoadGraph *g, NetData *xd, gboolean first_call);
+ G_GNUC_INTERNAL void
+ multiload_graph_net_cmdline_output (LoadGraph *g, NetData *xd);
+ G_GNUC_INTERNAL void
+@@ -151,7 +151,7 @@
+ G_GNUC_INTERNAL void
+ multiload_graph_load_init (LoadGraph *g, LoadData *xd);
+ G_GNUC_INTERNAL void
+-multiload_graph_load_get_data (int Maximum, int data [2], LoadGraph *g, LoadData *xd, gboolean first_call);
++multiload_graph_load_get_data (int Maximum, int data [1], LoadGraph *g, LoadData *xd, gboolean first_call);
+ G_GNUC_INTERNAL void
+ multiload_graph_load_cmdline_output (LoadGraph *g, LoadData *xd);
+ G_GNUC_INTERNAL void
+@@ -160,7 +160,7 @@
+ G_GNUC_INTERNAL MultiloadFilter *
+ multiload_graph_disk_get_filter (LoadGraph *g, DiskData *xd);
+ G_GNUC_INTERNAL void
+-multiload_graph_disk_get_data (int Maximum, int data [3], LoadGraph *g, DiskData *xd, gboolean first_call);
++multiload_graph_disk_get_data (int Maximum, int data [2], LoadGraph *g, DiskData *xd, gboolean first_call);
+ G_GNUC_INTERNAL void
+ multiload_graph_disk_cmdline_output (LoadGraph *g, DiskData *xd);
+ G_GNUC_INTERNAL void
+--- a/common/graph-mem.c
++++ b/common/graph-mem.c
+@@ -34,7 +34,7 @@
+ #define PATH_MEMINFO "/proc/meminfo"
+ 
+ void
+-multiload_graph_mem_get_data (int Maximum, int data [4], LoadGraph *g, MemoryData *xd, gboolean first_call)
++multiload_graph_mem_get_data (int Maximum, int data [3], LoadGraph *g, MemoryData *xd, gboolean first_call)
+ {
+ 	// displayed keys
+ 	static guint64 kb_main_total = 0;
+--- a/common/graph-data.h
++++ b/common/graph-data.h
+@@ -142,7 +142,7 @@
+ multiload_graph_net_tooltip_update (char *buf_title, size_t len_title, char *buf_text, size_t len_text, LoadGraph *g, NetData *xd, gint style);
+ 
+ G_GNUC_INTERNAL void
+-multiload_graph_swap_get_data (int Maximum, int data [2], LoadGraph *g, SwapData *xd, gboolean first_call);
++multiload_graph_swap_get_data (int Maximum, int data [1], LoadGraph *g, SwapData *xd, gboolean first_call);
+ G_GNUC_INTERNAL void
+ multiload_graph_swap_cmdline_output (LoadGraph *g, SwapData *xd);
+ G_GNUC_INTERNAL void

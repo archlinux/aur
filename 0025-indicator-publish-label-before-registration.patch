@@ -1,0 +1,25 @@
+diff --git a/indicator/plugin.c b/indicator/plugin.c
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -739,6 +739,21 @@
+ 	if (!opt_split)
+ 		build_menu_for(multiload, indicator, -1, TRUE);
+ 
++	//NOTE: stock sfwbar reads XAyatanaLabelGuide only when the item registers,
++	//and libayatana registers from the main loop, a second before the first
++	//graph tick. Sample the graphs once now and publish the label, so the guide
++	//is on the bus in time. The sample goes to a scratch array, and on the first
++	//call rate graphs only store their baseline, as the first tick does again
++	if (opt_label != NULL) {
++		gint unused[4];
++
++		for (i=0; i<GRAPH_MAX; i++) {
++			if (multiload->graph_config[i].visible)
++				graph_types[i].get_data(0, unused, multiload->graphs[i], multiload->extra_data[i], TRUE);
++		}
++		indicator_update_menu(multiload);
++	}
++
+ 	// cleanup on SIGTERM
+ 	signal(SIGINT, indicator_cleanup);
+ 	signal(SIGTERM, indicator_cleanup);

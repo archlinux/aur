@@ -1,0 +1,93 @@
+--- a/common/ui.c
++++ b/common/ui.c
+@@ -405,6 +405,7 @@
+ 		{ "about",			'a', 0, G_OPTION_ARG_NONE, &options->show_about,			"Open about dialog on startup", NULL },
+ 		{ "preferences",	'p', 0, G_OPTION_ARG_NONE, &options->show_preferences,		"Open preferences editor on startup", NULL },
+ 		{ "reset",			'r', 0, G_OPTION_ARG_NONE, &options->reset_settings,		"Reset to default settings", NULL },
++		{ "config-dir",		'c', 0, G_OPTION_ARG_FILENAME, &multiload_config_dir_override,	"Use another settings directory (default: ~/.config/multiload-ng)", "DIR" },
+ 		{ NULL }
+ 	};
+ 	GOptionContext *context = g_option_context_new (NULL);
+--- a/common/ui.h
++++ b/common/ui.h
+@@ -46,6 +46,7 @@
+ multiload_ui_print_notice();
+ 
+ extern const char* MULTILOAD_CONFIG_PATH;
++extern gchar* multiload_config_dir_override;
+ 
+ G_END_DECLS
+ 
+--- a/common/multiload.c
++++ b/common/multiload.c
+@@ -39,6 +39,7 @@
+ 
+ 
+ const char* MULTILOAD_CONFIG_PATH;
++gchar* multiload_config_dir_override = NULL;
+ 
+ void
+ multiload_tooltip_update (LoadGraph *g)
+@@ -252,6 +253,11 @@
+ 	initialized = TRUE;
+ 
+ 
++	//NOTE: --config-dir lets several instances keep separate settings, which
++	//is the only way to show two sensors of the same kind at once
++	if (multiload_config_dir_override != NULL)
++		MULTILOAD_CONFIG_PATH = g_strdup(multiload_config_dir_override);
++	else
+ 	MULTILOAD_CONFIG_PATH = g_build_filename(
+ 			g_get_home_dir (),
+ 			".config",
+--- a/standalone/plugin.c
++++ b/standalone/plugin.c
+@@ -29,6 +29,7 @@
+ #include "common/about-data.h"
+ #include "common/gtk-compat.h"
+ #include "common/multiload.h"
++#include "common/multiload-config.h"
+ #include "common/preferences.h"
+ #include "common/ui.h"
+ 
+@@ -152,9 +153,11 @@
+ #endif
+ 
+ static gboolean opt_no_button = FALSE;
++static gboolean opt_labels = FALSE;
+ 
+ static GOptionEntry standalone_entries[] = {
+ 	{ "no-button",   'B', 0, G_OPTION_ARG_NONE, &opt_no_button,   "Hide settings button (menu is on right click)", NULL },
++	{ "labels",      'L', 0, G_OPTION_ARG_NONE, &opt_labels,      "Show graph names under the graphs", NULL },
+ 	{ NULL }
+ };
+ 
+@@ -253,6 +256,7 @@
+ }
+ 
+ int main(int argc, char *argv[]) {
++	guint i;
+ 	MultiloadOptions *options = multiload_ui_parse_cmdline (&argc, &argv, standalone_entries);
+ 	MultiloadPlugin *multiload = multiload_new();
+ 
+@@ -263,6 +267,20 @@
+ 
+ 	multiload_start(multiload);
+ 
++	//NOTE: static captions under each graph; the numbers already live in the
++	//tooltip, so the label stays constant and does not flicker
++	for (i=0; opt_labels && i<GRAPH_MAX; i++) {
++		GtkWidget *caption = gtk_label_new (graph_types[i].label);
++		PangoAttrList *attrs = pango_attr_list_new ();
++
++		pango_attr_list_insert (attrs, pango_attr_scale_new (PANGO_SCALE_SMALL));
++		gtk_label_set_attributes (GTK_LABEL(caption), attrs);
++		pango_attr_list_unref (attrs);
++
++		gtk_box_pack_start (GTK_BOX(multiload->graphs[i]->main_widget), caption, FALSE, FALSE, 0);
++		gtk_widget_show (caption);
++	}
++
+ 	GtkWindow *w = GTK_WINDOW(gtk_window_new (GTK_WINDOW_TOPLEVEL));
+ 	gtk_window_set_title (w, about_data_progname);
+ 	gtk_window_set_decorated (w, TRUE);

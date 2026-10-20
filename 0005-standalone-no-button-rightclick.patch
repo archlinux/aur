@@ -1,0 +1,81 @@
+diff --git a/standalone/plugin.c b/standalone/plugin.c
+index 5dd6b51..d5be9a7 100644
+--- a/standalone/plugin.c
++++ b/standalone/plugin.c
+@@ -151,6 +151,23 @@ standalone_half_transparent_cb (GtkCheckMenuItem *item, GtkWindow *window)
+ 
+ #endif
+ 
++static gboolean opt_no_button = FALSE;
++
++static GOptionEntry standalone_entries[] = {
++	{ "no-button",   'B', 0, G_OPTION_ARG_NONE, &opt_no_button,   "Hide settings button (menu is on right click)", NULL },
++	{ NULL }
++};
++
++static gboolean
++standalone_rightclick_cb (GtkWidget *widget, GdkEventButton *event, GtkMenu *menu)
++{
++	if (event->button != 3)
++		return GDK_EVENT_PROPAGATE;
++
++	gtk_menu_popup_at_pointer (menu, (GdkEvent*)event);
++	return GDK_EVENT_STOP;
++}
++
+ static void
+ build_menu(MultiloadPlugin *ma, GtkWidget *button_config)
+ {
+@@ -228,11 +245,15 @@ build_menu(MultiloadPlugin *ma, GtkWidget *button_config)
+ 
+ 	gtk_widget_show_all(GTK_WIDGET(menu));
+ 
+-	g_signal_connect (G_OBJECT(button_config), "clicked", G_CALLBACK(standalone_settingsmenu_cb), menu);
++	gtk_widget_add_events (GTK_WIDGET(ma->panel_data), GDK_BUTTON_PRESS_MASK);
++	g_signal_connect (G_OBJECT(ma->panel_data), "button-press-event", G_CALLBACK(standalone_rightclick_cb), menu);
++
++	if (button_config != NULL)
++		g_signal_connect (G_OBJECT(button_config), "clicked", G_CALLBACK(standalone_settingsmenu_cb), menu);
+ }
+ 
+ int main(int argc, char *argv[]) {
+-	MultiloadOptions *options = multiload_ui_parse_cmdline (&argc, &argv, NULL);
++	MultiloadOptions *options = multiload_ui_parse_cmdline (&argc, &argv, standalone_entries);
+ 	MultiloadPlugin *multiload = multiload_new();
+ 
+ 	if (options->reset_settings)
+@@ -245,6 +266,10 @@ int main(int argc, char *argv[]) {
+ 	GtkWindow *w = GTK_WINDOW(gtk_window_new (GTK_WINDOW_TOPLEVEL));
+ 	gtk_window_set_title (w, about_data_progname);
+ 	gtk_window_set_decorated (w, TRUE);
++	if (opt_no_button)
++		//NOTE: graphs request width only (load_graph_resize), the settings
++		//button was the sole source of window height - replace it
++		gtk_window_set_default_size (w, -1, 32);
+ 	gtk_window_set_keep_above (w, TRUE);
+ 	gtk_window_set_icon_name (w, about_data_icon);
+ 	multiload->panel_data = w;
+@@ -252,8 +277,11 @@ int main(int argc, char *argv[]) {
+ 	GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 1);
+ 	gtk_widget_show (hbox);
+ 
+-	GtkWidget *btnConfig = gtk_button_new_from_icon_name("preferences-system", GTK_ICON_SIZE_LARGE_TOOLBAR);
+-	gtk_widget_show (btnConfig);
++	GtkWidget *btnConfig = NULL;
++	if (!opt_no_button) {
++		btnConfig = gtk_button_new_from_icon_name("preferences-system", GTK_ICON_SIZE_LARGE_TOOLBAR);
++		gtk_widget_show (btnConfig);
++	}
+ 
+ 	#ifdef MULTILOAD_EXPERIMENTAL
+ 	GtkWidget *handle = gtk_event_box_new();
+@@ -264,7 +292,8 @@ int main(int argc, char *argv[]) {
+ 	#endif
+ 
+ 	gtk_box_pack_start(GTK_BOX(hbox), GTK_WIDGET(multiload->container), TRUE, TRUE, 0);
+-	gtk_box_pack_start(GTK_BOX(hbox), btnConfig, FALSE, FALSE, 0);
++	if (btnConfig != NULL)
++		gtk_box_pack_start(GTK_BOX(hbox), btnConfig, FALSE, FALSE, 0);
+ 
+ 	gtk_container_add(GTK_CONTAINER(w), hbox);
+ 

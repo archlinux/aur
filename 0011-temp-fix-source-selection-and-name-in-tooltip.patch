@@ -1,0 +1,67 @@
+--- a/common/graph-temp.c
++++ b/common/graph-temp.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ 
+ #include "graph-data.h"
++#include "filter.h"
+ #include "autoscaler.h"
+ #include "info-file.h"
+ #include "preferences.h"
+@@ -343,14 +344,26 @@
+ 
+ 	// select phase: choose which source to show
+ 	if (g->config->filter_enable && g->config->filter[0] != '\0') {
+-		for (i=0; sources_list[i].temp_path[0]!='\0'; i++) {
+-			if (strcmp(sources_list[i].name, g->config->filter) == 0) {
+-				use = &sources_list[i];
+-				g_debug("[graph-temp] Using source '%s' (selected by filter)", sources_list[i].name);
+-				break;
++		//NOTE: filter holds a separator joined list, like net and disk do, so
++		//it has to be parsed - a plain strcmp against the whole string never
++		//matched and selection silently fell back to automatic
++		MultiloadFilter *filter = multiload_filter_new_from_existing(g->config->filter);
++		guint j;
++
++		for (i=0; use == NULL && sources_list[i].temp_path[0]!='\0'; i++) {
++			for (j=0; j<multiload_filter_get_length(filter); j++) {
++				if (strcmp(multiload_filter_get_element_data(filter, j), sources_list[i].name) == 0) {
++					use = &sources_list[i];
++					g_debug("[graph-temp] Using source '%s' (selected by filter)", sources_list[i].name);
++					break;
++				}
+ 			}
+-			g_debug("[graph-temp] No source found for filter '%s'", g->config->filter);
+ 		}
++
++		if (use == NULL)
++			g_debug("[graph-temp] No source found for filter '%s'", g->config->filter);
++
++		multiload_filter_free(filter);
+ 	}
+ 	if (use == NULL) { // filter disabled or filter value not found - auto selection
+ 		for (i=1, m=0; sources_list[i].temp_path[0]!='\0'; i++) {
+@@ -394,14 +407,18 @@
+ 	if (style == MULTILOAD_TOOLTIP_STYLE_DETAILED) {
+ 		strncpy(buf_title, xd->name, len_title);
+ 
++		//NOTE: hosts that show only the text part (tray indicator) would lose
++		//the sensor name if it lived in the title alone
+ 		if (xd->max > 0)
+-			g_snprintf(buf_text, len_text, _(	"Current: %.1f °C\n"
++			g_snprintf(buf_text, len_text, _(	"Sensor: %s\n"
++												"Current: %.1f °C\n"
+ 												"Critical: %.1f °C"),
+-												xd->value, xd->max);
++												xd->name, xd->value, xd->max);
+ 		else
+-			g_snprintf(buf_text, len_text, _(	"Current: %.1f °C"),
+-												xd->value);
++			g_snprintf(buf_text, len_text, _(	"Sensor: %s\n"
++												"Current: %.1f °C"),
++												xd->name, xd->value);
+ 	} else {
+-		g_snprintf(buf_text, len_text, "%.1f °C", xd->value);
++		g_snprintf(buf_text, len_text, "%s: %.1f °C", xd->name, xd->value);
+ 	}
+ }

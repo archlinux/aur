@@ -1,0 +1,41 @@
+diff --git a/common/graph-mem.c b/common/graph-mem.c
+index 70530ec..4275d98 100644
+--- a/common/graph-mem.c
++++ b/common/graph-mem.c
+@@ -45,22 +45,29 @@ multiload_graph_mem_get_data (int Maximum, int data [3], LoadGraph *g, MemoryDat
+ 	// auxiliary keys
+ 	static guint64 kb_main_free = 0;
+ 	static guint64 kb_page_cache = 0;
+-	static guint64 kb_slab = 0;
++	static guint64 kb_reclaimable = 0;
++	static guint64 kb_shmem = 0;
+ 
++	//NOTE: keys are matched by prefix, so the colon is required: plain "Shmem"
++	//would also match ShmemHugePages and ShmemPmdMapped
+ 	static const InfoFileMappingEntry table[] = {
+ 		{ "MemTotal",		'u',	&kb_main_total },
+ 		{ "MemFree",		'u',	&kb_main_free},
+ 		{ "Buffers",		'u',	&kb_main_buffers },
+-		{ "Cached",			'u',	&kb_page_cache },
+-		{ "Slab",			'u',	&kb_slab }
++		{ "Cached:",		'u',	&kb_page_cache },
++		{ "SReclaimable:",	'u',	&kb_reclaimable },
++		{ "Shmem:",			'u',	&kb_shmem }
+ 	};
+ 
+-	gint r = info_file_read_keys (PATH_MEMINFO, table, 5);
+-	g_assert_cmpint(r, ==, 5);
++	gint r = info_file_read_keys (PATH_MEMINFO, table, 6);
++	g_assert_cmpint(r, ==, 6);
+ 
+-	kb_main_cached = kb_page_cache;
++	//NOTE: tmpfs and shared pages sit inside Cached but are not reclaimable
++	//cache, and whole Slab includes SUnreclaim, so the old math overstated the
++	//cache and understated what programs really occupy. This matches htop.
++	kb_main_cached = kb_page_cache > kb_shmem ? kb_page_cache - kb_shmem : 0;
+ 	if (xd->procps_compliant)
+-		kb_main_cached += kb_slab;
++		kb_main_cached += kb_reclaimable;
+ 
+ 	kb_main_used = kb_main_total - kb_main_free - kb_main_cached - kb_main_buffers;
+ 	if (kb_main_used < 0)

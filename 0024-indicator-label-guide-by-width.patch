@@ -1,0 +1,106 @@
+diff --git a/indicator/plugin.c b/indicator/plugin.c
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -206,26 +206,61 @@
+ 	return FALSE;
+ }
+ 
+-//NOTE: the panel reserves room for the guide, so digits are masked to keep the
+-//width steady, and the widest guide seen is kept so the item never shrinks back
++//NOTE: the panel reserves room for the guide, so digits are masked as '0' and
++//every integer part gets at least 3 of them: 5% and 100% take the same room
++//from the first update
++static gchar *
++label_mask (const gchar *text)
++{
++	GString *buf = g_string_new(NULL);
++	const gchar *p;
++	gsize len;
++
++	for (p=text; *p != '\0'; p++) {
++		if (g_ascii_isdigit(*p) && (p == text || strchr("0123456789.,", p[-1]) == NULL)) {
++			for (len=strspn(p, "0123456789"); len < 3; len++)
++				g_string_append_c(buf, '0');
++		}
++		g_string_append_c(buf, g_ascii_isdigit(*p) ? '0' : *p);
++	}
++
++	return g_string_free(buf, FALSE);
++}
++
++//NOTE: pixels, in this process's font. The byte length says nothing about the
++//width: "0.0 KiB/s" holds a 2 byte no-break space, it is longer in bytes than
++//"000 bytes/s" and narrower
++static gint
++label_width (const gchar *text)
++{
++	PangoLayout *layout = gtk_widget_create_pango_layout(offscr, text);
++	gint width;
++
++	pango_layout_get_pixel_size(layout, &width, NULL);
++	g_object_unref(layout);
++
++	return width;
++}
++
++//NOTE: a wider text widens the guide, and the guide never gets narrower,
++//otherwise the tray item grows and shrinks back with the text
+ static void
+-label_set (AppIndicator *ind, const gchar *text, gchar *guide, size_t guide_size)
++label_set (AppIndicator *ind, const gchar *text, gchar **guide)
+ {
+-	gchar buf[128];
+-	guint i;
++	gchar *mask;
+ 
+ 	if (ind == NULL)
+ 		return;
+ 
+-	g_strlcpy(buf, text, sizeof(buf));
+-	for (i=0; buf[i] != '\0'; i++) {
+-		if (g_ascii_isdigit(buf[i]))
+-			buf[i] = '0';
++	mask = label_mask(text);
++	if (*guide == NULL || label_width(mask) > label_width(*guide)) {
++		g_free(*guide);
++		*guide = mask;
++	} else {
++		g_free(mask);
+ 	}
+-	if (strlen(buf) > strlen(guide))
+-		g_strlcpy(guide, buf, guide_size);
+ 
+-	app_indicator_set_label (ind, text, guide);
++	app_indicator_set_label (ind, text, *guide);
+ }
+ 
+ //NOTE: icon height lives in its own file: multiload_ui_save() rewrites
+@@ -284,8 +319,8 @@
+ 	GString *bar = g_string_new(NULL);
+ 	static gchar last_title[GRAPH_MAX][sizeof(label)];
+ 	static gchar last_label[GRAPH_MAX][128];
+-	static gchar label_guide[128];
+-	static gchar split_guide[GRAPH_MAX][64];
++	static gchar *label_guide;
++	static gchar *split_guide[GRAPH_MAX];
+ 
+ 	//NOTE: same order as the icon and the menu, otherwise the tooltip lines
+ 	//would not match what is drawn
+@@ -319,7 +354,7 @@
+ 
+ 				if (opt_split) {
+ 					if (strcmp(last_label[i], brief) != 0) {
+-						label_set(split_ind[i], brief, split_guide[i], sizeof(split_guide[i]));
++						label_set(split_ind[i], brief, &split_guide[i]);
+ 						g_strlcpy(last_label[i], brief, sizeof(last_label[i]));
+ 					}
+ 				} else {
+@@ -351,7 +386,7 @@
+ 	}
+ 
+ 	if (opt_label != NULL && !opt_split && strcmp(last_label[0], bar->str) != 0) {
+-		label_set(indicator, bar->str, label_guide, sizeof(label_guide));
++		label_set(indicator, bar->str, &label_guide);
+ 		g_strlcpy(last_label[0], bar->str, sizeof(last_label[0]));
+ 	}
+ 

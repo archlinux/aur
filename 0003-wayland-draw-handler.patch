@@ -1,0 +1,53 @@
+diff --git a/common/load-graph.c b/common/load-graph.c
+index f647a20..dd67fcf 100644
+--- a/common/load-graph.c
++++ b/common/load-graph.c
+@@ -190,10 +190,8 @@ load_graph_draw (LoadGraph *g)
+ 
+ 	cairo_destroy (cr);
+ 
+-	cr = gdk_cairo_create (gtk_widget_get_window (g->disp));
+-	cairo_set_source_surface (cr, g->surface, 0, 0);
+-	cairo_paint (cr);
+-	cairo_destroy (cr);
++	// Wayland: painting outside the draw handler is a no-op; request a redraw instead
++	gtk_widget_queue_draw (g->disp);
+ }
+ 
+ /* Rotates graph data to the right */
+@@ -309,16 +307,20 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event, LoadGraph *g)
+ 
+ 	return TRUE;
+ }
+-/*
+ static gboolean
+ load_graph_draw_cb (GtkWidget *widget, cairo_t *cr, LoadGraph *g)
+ {
++	if (g->surface == NULL)
++		return FALSE;
++
+ 	cairo_set_source_surface (cr, g->surface, 0, 0);
+ 	cairo_paint (cr);
+ 
+ 	return FALSE;
+ }
+ 
++/*
++
+ #if GTK_API == 2
+ static gboolean
+ load_graph_expose (GtkWidget *widget, GdkEventExpose *event, LoadGraph *g)
+@@ -440,12 +442,7 @@ load_graph_new (MultiloadPlugin *ma, guint id)
+ 						GDK_LEAVE_NOTIFY_MASK |
+ 						GDK_BUTTON_PRESS_MASK);
+ 
+-/*	//TODO: is this really needed? Works perfectly without (as drawing is done through timers)
+-	#if GTK_API == 2
+-		g_signal_connect (G_OBJECT(g->disp), "expose_event", G_CALLBACK (load_graph_expose), g);
+-	#elif GTK_API == 3
+-		g_signal_connect (G_OBJECT(g->disp), "draw", G_CALLBACK (load_graph_draw_cb), g);
+-	#endif */
++	g_signal_connect (G_OBJECT(g->disp), "draw", G_CALLBACK (load_graph_draw_cb), g);
+ 	g_signal_connect (G_OBJECT(g->disp), "configure_event", G_CALLBACK (load_graph_configure), g);
+ 	g_signal_connect (G_OBJECT(g->main_widget), "destroy", G_CALLBACK (load_graph_destroy), g);
+ 	g_signal_connect (G_OBJECT(g->disp), "button-press-event", G_CALLBACK (load_graph_clicked), g);

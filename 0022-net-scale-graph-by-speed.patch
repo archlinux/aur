@@ -1,0 +1,51 @@
+diff --git a/common/graph-net.c b/common/graph-net.c
+index 52e6767..3b8e828 100644
+--- a/common/graph-net.c
++++ b/common/graph-net.c
+@@ -121,6 +121,7 @@ multiload_graph_net_get_data (int Maximum, int data [3], LoadGraph *g, NetData *
+ 
+ 	guint64 present[NET_MAX] = { 0, 0, 0 };
+ 	gint64 delta[NET_MAX];
++	guint64 speed[NET_MAX] = { 0, 0, 0 };
+ 	gint64 total = 0;
+ 
+ 	if_data d;
+@@ -249,27 +250,33 @@ multiload_graph_net_get_data (int Maximum, int data [3], LoadGraph *g, NetData *
+ 
+ 		memset(data, 0, NET_MAX * sizeof data[0]);
+ 	} else {
++		//NOTE: the ceiling and the autoscaler are labelled "Bps", so they have
++		//to be fed bytes per second. Feeding them the raw per-tick delta made
++		//the very same ceiling value mean a different rate for every interval,
++		//and made the graph disagree with the speeds shown in the tooltip
+ 		for (i = 0; i < NET_MAX; i++) {
+ 			delta[i] = present[i] - xd->last[i];
+ 			if (delta[i] < 0) {
+ 				const char *traffic_names[NET_MAX] = {"input", "output", "local"};
+ 				g_debug("[graph-net] Measured negative delta for %s traffic. This is a bug, but it is harmless.", traffic_names[i]);
++				speed[i] = 0;
+ 				continue;
+ 			}
+-			total += delta[i];
++			speed[i] = calculate_speed(delta[i], g->config->interval);
++			total += speed[i];
+ 		}
+ 
+ 		int max = autoscaler_get_max(&xd->scaler, g, total);
+ 
+-		xd->in_speed	= calculate_speed(delta[NET_IN], 	g->config->interval);
+-		xd->out_speed	= calculate_speed(delta[NET_OUT],	g->config->interval);
+-		xd->local_speed	= calculate_speed(delta[NET_LOCAL],	g->config->interval);
++		xd->in_speed	= speed[NET_IN];
++		xd->out_speed	= speed[NET_OUT];
++		xd->local_speed	= speed[NET_LOCAL];
+ 
+ 		if (max == 0) {
+ 			memset(data, 0, NET_MAX * sizeof data[0]);
+ 		} else {
+ 			for (i=0; i<NET_MAX; i++)
+-				data[i] = rint (Maximum * (float)delta[i] / max);
++				data[i] = rint (Maximum * (float)speed[i] / max);
+ 		}
+ 	}
+ 

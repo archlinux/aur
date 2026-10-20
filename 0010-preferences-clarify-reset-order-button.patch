@@ -1,0 +1,60 @@
+--- a/data/preferences_gtk3.ui
++++ b/data/preferences_gtk3.ui
+@@ -3936,6 +3936,7 @@
+                     <child>
+                       <object class="GtkToolButton" id="toolbar_reorder_btn_up">
+                         <property name="visible">True</property>
++                        <property name="tooltip_text" translatable="yes">Move selected graph up</property>
+                         <property name="can_focus">False</property>
+                         <property name="use_underline">True</property>
+                         <property name="stock_id">gtk-go-up</property>
+@@ -3948,6 +3949,7 @@
+                     <child>
+                       <object class="GtkToolButton" id="toolbar_reorder_btn_down">
+                         <property name="visible">True</property>
++                        <property name="tooltip_text" translatable="yes">Move selected graph down</property>
+                         <property name="can_focus">False</property>
+                         <property name="use_underline">True</property>
+                         <property name="stock_id">gtk-go-down</property>
+@@ -3970,9 +3972,10 @@
+                     <child>
+                       <object class="GtkToolButton" id="toolbar_reorder_btn_reset">
+                         <property name="visible">True</property>
++                        <property name="tooltip_text" translatable="yes">Reset to default order</property>
+                         <property name="can_focus">False</property>
+                         <property name="use_underline">True</property>
+-                        <property name="stock_id">gtk-revert-to-saved</property>
++                        <property name="stock_id">gtk-undo</property>
+                       </object>
+                       <packing>
+                         <property name="expand">False</property>
+--- a/data/preferences_gtk2.ui
++++ b/data/preferences_gtk2.ui
+@@ -4239,6 +4239,7 @@
+                     <child>
+                       <object class="GtkToolButton" id="toolbar_reorder_btn_up">
+                         <property name="visible">True</property>
++                        <property name="tooltip_text" translatable="yes">Move selected graph up</property>
+                         <property name="can_focus">False</property>
+                         <property name="use_underline">True</property>
+                         <property name="stock_id">gtk-go-up</property>
+@@ -4251,6 +4252,7 @@
+                     <child>
+                       <object class="GtkToolButton" id="toolbar_reorder_btn_down">
+                         <property name="visible">True</property>
++                        <property name="tooltip_text" translatable="yes">Move selected graph down</property>
+                         <property name="can_focus">False</property>
+                         <property name="label" translatable="yes">toolbutton1</property>
+                         <property name="use_underline">True</property>
+@@ -4274,9 +4276,10 @@
+                     <child>
+                       <object class="GtkToolButton" id="toolbar_reorder_btn_reset">
+                         <property name="visible">True</property>
++                        <property name="tooltip_text" translatable="yes">Reset to default order</property>
+                         <property name="can_focus">False</property>
+                         <property name="use_underline">True</property>
+-                        <property name="stock_id">gtk-revert-to-saved</property>
++                        <property name="stock_id">gtk-undo</property>
+                       </object>
+                       <packing>
+                         <property name="expand">False</property>

@@ -1,0 +1,142 @@
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -55,6 +55,7 @@
+ static gchar split_filename[GRAPH_MAX][2][PATH_MAX];
+ static int split_current_index[GRAPH_MAX];
+ static gint split_full_menu_owner = -1;
++
+ static char **saved_argv = NULL;   // копия argv до разбора ключей
+ 
+ static void
+@@ -159,8 +160,11 @@
+ 	gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
+ 	gtk_window_present(GTK_WINDOW(dialog));
+ 
++	//NOTE: in split mode each graph is its own tray item and the panel decides
++	//where to put it, so the reorder list would promise something we cannot do
+ 	multiload_preferences_disable_settings(
+-		MULTILOAD_SETTINGS_DBLCLICK_POLICY
++		MULTILOAD_SETTINGS_DBLCLICK_POLICY |
++		(opt_split ? MULTILOAD_SETTINGS_REORDER : 0)
+ 	);
+ }
+ 
+@@ -222,13 +226,17 @@
+ static void
+ indicator_update_menu(MultiloadPlugin *ma)
+ {
+-	guint i;
++	guint i, n;
+ 	gchar title[98], text[800], label[900];
+ 
+ 	GString *all = g_string_new(NULL);
+ 	static gchar last_title[GRAPH_MAX][sizeof(label)];
+ 
+-	for (i=0; i<GRAPH_MAX; i++) {
++	//NOTE: same order as the icon and the menu, otherwise the tooltip lines
++	//would not match what is drawn
++	for (n=0; n<GRAPH_MAX; n++) {
++		i = ma->graph_order[n];
++
+ 		ma->graphs[i]->tooltip_update = ma->graph_config[i].visible;
+ 
+ 		//NOTE: in split mode every menu holds only its own graph item
+@@ -276,7 +284,7 @@
+ 	cairo_surface_t *surface;
+ 	cairo_t *cr;
+ 
+-	int i;
++	int i, n;
+ 	double x=ma->padding, y=ma->padding;
+ 
+ 	gtk_widget_get_allocation (GTK_WIDGET(ma->container), &allocation);
+@@ -286,7 +294,11 @@
+ 	cr = cairo_create (surface);
+ 	cairo_set_antialias(cr, CAIRO_ANTIALIAS_NONE);
+ 
+-	for (i=0; i<GRAPH_MAX; i++) {
++	//NOTE: multiload_set_order() only reorders GTK widgets, which does nothing
++	//for an icon composed by hand - walk graph_order instead of the plain index
++	for (n=0; n<GRAPH_MAX; n++) {
++		i = ma->graph_order[n];
++
+ 		if (ma->graph_config[i].visible) {
+ 			cairo_set_source_surface (cr, ma->graphs[i]->surface, x, y);
+ 			cairo_paint (cr);
+@@ -338,13 +350,17 @@
+ static void
+ indicator_sync_split(MultiloadPlugin *ma)
+ {
+-	guint i;
++	guint i, n;
+ 
+-	for (i=0; i<GRAPH_MAX; i++) {
+-		gboolean vis = ma->graph_config[i].visible;
++	for (n=0; n<GRAPH_MAX; n++) {
++		gboolean vis;
++
++		i = ma->graph_order[n];
++		vis = ma->graph_config[i].visible;
+ 
+-		if (vis && split_ind[i] == NULL)
++		if (vis && split_ind[i] == NULL) {
+ 			indicator_create_split (ma, i);
++		}
+ 
+ 		if (split_ind[i] != NULL)
+ 			app_indicator_set_status (split_ind[i],
+@@ -478,6 +494,7 @@
+ 			g_snprintf(split_filename[i][0], PATH_MAX, "%s/graph%u_0.png", icon_directory, i);
+ 			g_snprintf(split_filename[i][1], PATH_MAX, "%s/graph%u_1.png", icon_directory, i);
+ 		}
++
+ 	}
+ 
+ 	g_free(template); // apparently mkdtemp uses template buffer, so free it after its use
+@@ -487,7 +504,7 @@
+ static void
+ build_menu_for(MultiloadPlugin *ma, AppIndicator *target, gint only_id, gboolean full)
+ {
+-	guint i;
++	guint i, n;
+ 	GtkWidget *menuitem;
+ 	GtkWidget *menu = gtk_menu_new();
+ 
+@@ -497,7 +514,9 @@
+ 
+ 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), gtk_separator_menu_item_new());
+ 
+-	for (i=0; i<GRAPH_MAX; i++) {
++	for (n=0; n<GRAPH_MAX; n++) {
++		i = ma->graph_order[n];
++
+ 		if (only_id >= 0 && (gint)i != only_id)
+ 			continue;
+ 		graphs_menu_items[i] = gtk_menu_item_new_with_label (graph_types[i].label);
+@@ -534,7 +553,7 @@
+ 
+ int main (int argc, char **argv)
+ {
+-	guint i;
++	guint i, n;
+ 
+ 	saved_argv = g_strdupv(argv);
+ 
+@@ -563,10 +582,13 @@
+ 
+ 	// create indicator(s)
+ 	if (opt_split) {
+-		//NOTE: menus are built here too, so the build_menu block below is skipped
+-		for (i=0; i<GRAPH_MAX; i++) {
+-			if (multiload->graph_config[i].visible)
+-				indicator_create_split (multiload, i);
++		//NOTE: menus are built inside indicator_create_split(), so the
++		//build_menu block below is skipped in split mode
++		for (n=0; n<GRAPH_MAX; n++) {
++			guint id = multiload->graph_order[n];
++
++			if (multiload->graph_config[id].visible)
++				indicator_create_split (multiload, id);
+ 		}
+ 	} else {
+ 		indicator = app_indicator_new ("indicator-multiload-ng", about_data_icon, APP_INDICATOR_CATEGORY_HARDWARE);

@@ -1,0 +1,36 @@
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -253,7 +253,10 @@
+ 		if (ma->graph_config[i].visible) {
+ 			graph_types[i].tooltip_update(title, sizeof(title), text, sizeof(text), ma->graphs[i], ma->extra_data[i], ma->graph_config[i].tooltip_style);
+ 			g_snprintf(label, sizeof(label), "%s: %s", graph_types[i].label, text);
+-			gtk_menu_item_set_label(GTK_MENU_ITEM(graphs_menu_items[i]), label);
++			//NOTE: every graph tick refreshes all labels, and setting the same
++			//text still pushes a DBusMenu property update, so compare first
++			if (g_strcmp0(gtk_menu_item_get_label(GTK_MENU_ITEM(graphs_menu_items[i])), label) != 0)
++				gtk_menu_item_set_label(GTK_MENU_ITEM(graphs_menu_items[i]), label);
+ 
+ 			//NOTE: libayatana exposes no ToolTip property, panels fall back to
+ 			//Title, so the graph text goes there
+@@ -283,8 +286,6 @@
+ indicator_update_pixbuf(MultiloadPlugin *ma)
+ {
+ 	GtkAllocation allocation;
+-	GError *error = NULL;
+-
+ 	cairo_status_t status;
+ 	cairo_surface_t *surface;
+ 	cairo_t *cr;
+@@ -320,10 +321,8 @@
+ 			icon_serial++);
+ 
+ 	status = cairo_surface_write_to_png (surface, fname);
+-	g_assert(status == CAIRO_STATUS_SUCCESS);
+-	if (error != NULL) {
+-		g_error("Cannot save Multiload-ng window to temporary buffer: %s\n", error->message);
+-		g_clear_error(&error);
++	if (status != CAIRO_STATUS_SUCCESS) {
++		g_warning("Cannot write tray icon '%s': %s", fname, cairo_status_to_string(status));
+ 	} else {
+ 		app_indicator_set_icon(indicator, fname);
+ 

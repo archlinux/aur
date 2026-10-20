@@ -1,0 +1,343 @@
+--- a/indicator/plugin.c
++++ b/indicator/plugin.c
+@@ -26,6 +26,8 @@
+ #include <stdlib.h>
+ #include <signal.h>
+ #include <sys/time.h>
++#include <errno.h>
++#include <unistd.h>
+ #include <gtk/gtk.h>
+ #include <glib/gi18n-lib.h>
+ #include <libayatana-appindicator/app-indicator.h>
+@@ -48,6 +50,12 @@
+ static int icon_current_index=0;
+ static gboolean indicator_connected;
+ static GtkWidget *graphs_menu_items[GRAPH_MAX];
++static gboolean opt_split = FALSE;
++static AppIndicator *split_ind[GRAPH_MAX];
++static gchar split_filename[GRAPH_MAX][2][PATH_MAX];
++static int split_current_index[GRAPH_MAX];
++static gint split_full_menu_owner = -1;
++static char **saved_argv = NULL;   // копия argv до разбора ключей
+ 
+ static void
+ indicator_cleanup(int sig)
+@@ -63,6 +71,10 @@
+ 	printf("Received %s, cleaning up...\n", signame);
+ 	remove(icon_filename[0]);
+ 	remove(icon_filename[1]);
++	for (guint i=0; i<GRAPH_MAX; i++) {
++		remove(split_filename[i][0]);
++		remove(split_filename[i][1]);
++	}
+ 	remove(icon_directory);
+ 
+ 	exit(0);
+@@ -76,11 +88,73 @@
+ 	indicator_cleanup (0);
+ }
+ 
++//NOTE: one-shot options must not survive a restart: -p would reopen the
++//dialog every time and -r would wipe the settings on every restart
++static const char *one_shot[] = {
++	"-a", "--about", "-p", "--preferences", "-r", "--reset", NULL
++};
++
++static void
++indicator_restart(void)
++{
++	GPtrArray *args = g_ptr_array_new();
++	gchar *exe;
++	guint i, j;
++
++	for (i=0; saved_argv[i] != NULL; i++) {
++		gboolean skip = FALSE;
++
++		for (j=0; i > 0 && one_shot[j] != NULL; j++) {
++			if (strcmp(saved_argv[i], one_shot[j]) == 0) {
++				skip = TRUE;
++				break;
++			}
++		}
++
++		if (!skip)
++			g_ptr_array_add(args, saved_argv[i]);
++	}
++	g_ptr_array_add(args, NULL);
++
++	//NOTE: exec the resolved path, not /proc/self/exe, otherwise the kernel
++	//sets the process name to "exe" and pgrep/pkill stop finding it
++	exe = g_file_read_link("/proc/self/exe", NULL);
++	execv(exe ? exe : "/proc/self/exe", (char **)args->pdata);
++
++	g_warning("Cannot restart: %s", g_strerror(errno));
++	g_free(exe);
++	g_ptr_array_free(args, TRUE);
++}
++
++//NOTE: a hidden graph leaves its tray item registered as Passive, and panels
++//may keep an empty slot for it. Enabling works live, so restart only when the
++//set of graphs shrinks. Runs on dialog destroy, after multiload_ui_save().
++static void
++indicator_prefs_destroy_cb(GtkWidget *dialog, MultiloadPlugin *ma)
++{
++	guint i;
++
++	//NOTE: compare against live indicators, not against the set seen when the
++	//dialog opened: a graph enabled and disabled within one session also leaves
++	//a Passive item behind, and panels may keep an empty slot for it
++	for (i=0; i<GRAPH_MAX; i++) {
++		if (split_ind[i] != NULL && !ma->graph_config[i].visible) {
++			g_message("Graph removed, restarting to drop its tray icon");
++			indicator_restart();
++			return;
++		}
++	}
++}
++
+ static void
+ indicator_preferences_cb(GtkWidget *widget, MultiloadPlugin *ma)
+ {
+ 	GtkWidget *window = gtk_widget_get_toplevel (widget);
++	gboolean is_new = (ma->pref_dialog == NULL);
+ 	GtkWidget *dialog = multiload_ui_configure_dialog_new(ma, GTK_WINDOW(window));
++
++	if (opt_split && is_new)
++		g_signal_connect (G_OBJECT(dialog), "destroy", G_CALLBACK(indicator_prefs_destroy_cb), ma);
+ 	gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(dialog));
+ 	gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
+ 	gtk_window_present(GTK_WINDOW(dialog));
+@@ -96,6 +170,7 @@
+ 
+ static GOptionEntry indicator_entries[] = {
+ 	{ "icon-height", 'H', 0, G_OPTION_ARG_INT, &opt_icon_height, "Tray icon height in pixels, saved for next runs (default: 22)", "N" },
++	{ "split",       's', 0, G_OPTION_ARG_NONE, &opt_split,      "Show every graph as its own tray icon", NULL },
+ 	{ NULL }
+ };
+ 
+@@ -153,6 +228,11 @@
+ 
+ 	for (i=0; i<GRAPH_MAX; i++) {
+ 		ma->graphs[i]->tooltip_update = ma->graph_config[i].visible;
++
++		//NOTE: in split mode every menu holds only its own graph item
++		if (graphs_menu_items[i] == NULL)
++			continue;
++
+ 		gtk_widget_set_visible(graphs_menu_items[i], ma->graph_config[i].visible);
+ 
+ 		if (ma->graph_config[i].visible) {
+@@ -209,6 +289,94 @@
+ 	cairo_destroy (cr);
+ }
+ 
++static void build_menu_for(MultiloadPlugin *ma, AppIndicator *target, gint only_id, gboolean full);
++static void indicator_connection_changed_cb (AppIndicator *indicator, gboolean connected, MultiloadPlugin *ma);
++
++static void
++indicator_create_split(MultiloadPlugin *ma, guint i)
++{
++	gchar *id = g_strdup_printf("indicator-multiload-ng-%s", graph_types[i].name);
++	split_ind[i] = app_indicator_new (id, about_data_icon, APP_INDICATOR_CATEGORY_HARDWARE);
++	g_free(id);
++
++	app_indicator_set_status (split_ind[i], APP_INDICATOR_STATUS_ACTIVE);
++	g_signal_connect (G_OBJECT(split_ind[i]), "connection-changed", G_CALLBACK(indicator_connection_changed_cb), ma);
++	g_object_get(G_OBJECT(split_ind[i]), "connected", &indicator_connected, NULL);
++
++	// полное меню (с Quit) держит ровно один значок
++	gboolean full = (split_full_menu_owner < 0);
++	build_menu_for (ma, split_ind[i], (gint)i, full);
++	if (full)
++		split_full_menu_owner = (gint)i;
++}
++
++//NOTE: visibility can change at runtime through Preferences, which only starts
++//or stops the graph timer. At least one graph is always visible, so this sweep
++//always has a live timer to run on.
++static void
++indicator_sync_split(MultiloadPlugin *ma)
++{
++	guint i;
++
++	for (i=0; i<GRAPH_MAX; i++) {
++		gboolean vis = ma->graph_config[i].visible;
++
++		if (vis && split_ind[i] == NULL)
++			indicator_create_split (ma, i);
++
++		if (split_ind[i] != NULL)
++			app_indicator_set_status (split_ind[i],
++					vis ? APP_INDICATOR_STATUS_ACTIVE : APP_INDICATOR_STATUS_PASSIVE);
++	}
++
++	// владелец полного меню скрыт - передать Quit другому видимому значку
++	if (split_full_menu_owner >= 0 && !ma->graph_config[split_full_menu_owner].visible) {
++		gint prev = split_full_menu_owner;
++		split_full_menu_owner = -1;
++
++		for (i=0; i<GRAPH_MAX; i++) {
++			if (split_ind[i] != NULL && ma->graph_config[i].visible) {
++				build_menu_for (ma, split_ind[i], (gint)i, TRUE);
++				split_full_menu_owner = (gint)i;
++				break;
++			}
++		}
++
++		// снять Quit с прежнего владельца, иначе после его повторного
++		// показа пунктов Quit стало бы два
++		if (split_full_menu_owner != prev && split_ind[prev] != NULL)
++			build_menu_for (ma, split_ind[prev], prev, FALSE);
++	}
++}
++
++static void
++indicator_update_pixbuf_single(LoadGraph *g)
++{
++	MultiloadPlugin *ma = g->multiload;
++	guint id = g->id;
++	cairo_surface_t *surface;
++	cairo_t *cr;
++
++	if (split_ind[id] == NULL)
++		return;
++
++	surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
++			g->draw_width + 2*ma->padding, g->draw_height + 2*ma->padding);
++	g_assert (surface != NULL);
++	cr = cairo_create (surface);
++	cairo_set_antialias (cr, CAIRO_ANTIALIAS_NONE);
++
++	cairo_set_source_surface (cr, g->surface, ma->padding, ma->padding);
++	cairo_paint (cr);
++
++	if (cairo_surface_write_to_png (surface, split_filename[id][split_current_index[id]]) == CAIRO_STATUS_SUCCESS)
++		app_indicator_set_icon (split_ind[id], split_filename[id][split_current_index[id]]);
++
++	split_current_index[id] = 1 - split_current_index[id];
++	cairo_surface_destroy (surface);
++	cairo_destroy (cr);
++}
++
+ static void
+ indicator_graph_update_cb(LoadGraph *g, gpointer user_data)
+ {
+@@ -216,6 +384,9 @@
+ 
+ 	indicator_update_menu(g->multiload);
+ 
++	if (opt_split)
++		indicator_sync_split(g->multiload);
++
+ 	if (!g->config->visible)
+ 		return;
+ 
+@@ -234,7 +405,10 @@
+ 	gtk_widget_get_allocation (GTK_WIDGET(g->multiload->container), &allocation);
+ 	gtk_window_resize(GTK_WINDOW(offscr), allocation.width, allocation.height);
+ 
+-	indicator_update_pixbuf(g->multiload);
++	if (opt_split)
++		indicator_update_pixbuf_single(g);
++	else
++		indicator_update_pixbuf(g->multiload);
+ }
+ 
+ static void
+@@ -277,6 +451,11 @@
+ 		tmp = g_build_filename(icon_directory, "mapped_icon1.png", NULL);
+ 		strncpy(icon_filename[1], tmp, PATH_MAX);
+ 		g_free(tmp);
++
++		for (guint i=0; i<GRAPH_MAX; i++) {
++			g_snprintf(split_filename[i][0], PATH_MAX, "%s/graph%u_0.png", icon_directory, i);
++			g_snprintf(split_filename[i][1], PATH_MAX, "%s/graph%u_1.png", icon_directory, i);
++		}
+ 	}
+ 
+ 	g_free(template); // apparently mkdtemp uses template buffer, so free it after its use
+@@ -284,7 +463,7 @@
+ 
+ 
+ static void
+-build_menu(MultiloadPlugin *ma)
++build_menu_for(MultiloadPlugin *ma, AppIndicator *target, gint only_id, gboolean full)
+ {
+ 	guint i;
+ 	GtkWidget *menuitem;
+@@ -297,6 +476,8 @@
+ 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), gtk_separator_menu_item_new());
+ 
+ 	for (i=0; i<GRAPH_MAX; i++) {
++		if (only_id >= 0 && (gint)i != only_id)
++			continue;
+ 		graphs_menu_items[i] = gtk_menu_item_new_with_label (graph_types[i].label);
+ 		gtk_widget_set_sensitive(graphs_menu_items[i], FALSE);
+ 		gtk_menu_shell_append (GTK_MENU_SHELL(menu), graphs_menu_items[i]);
+@@ -318,12 +499,14 @@
+ 	g_signal_connect (G_OBJECT(menuitem), "activate", G_CALLBACK(multiload_ui_show_about), NULL);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
+ 
+-	menuitem = gtk_menu_item_new_with_mnemonic (_("_Quit"));
+-	g_signal_connect (G_OBJECT(menuitem), "activate", G_CALLBACK(indicator_destroy_cb), ma);
+-	gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
++	if (full) {
++		menuitem = gtk_menu_item_new_with_mnemonic (_("_Quit"));
++		g_signal_connect (G_OBJECT(menuitem), "activate", G_CALLBACK(indicator_destroy_cb), ma);
++		gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
++	}
+ 
+ 	gtk_widget_show_all(menu);
+-	app_indicator_set_menu (indicator, GTK_MENU (menu));
++	app_indicator_set_menu (target, GTK_MENU (menu));
+ }
+ 
+ 
+@@ -331,6 +514,8 @@
+ {
+ 	guint i;
+ 
++	saved_argv = g_strdupv(argv);
++
+ 	MultiloadOptions *options = multiload_ui_parse_cmdline (&argc, &argv, indicator_entries);
+ 	MultiloadPlugin *multiload = multiload_new();
+ 
+@@ -354,13 +539,21 @@
+ 	gtk_container_add(GTK_CONTAINER(offscr), GTK_WIDGET(multiload->container));
+ 	gtk_widget_show(offscr);
+ 
+-	// create indicator
+-	indicator = app_indicator_new ("indicator-multiload-ng", about_data_icon, APP_INDICATOR_CATEGORY_HARDWARE);
+-	app_indicator_set_status (indicator, APP_INDICATOR_STATUS_ACTIVE);
+-
+-	// "connected" property means a visible indicator, otherwise could be hidden. or fall back to GtkStatusIcon
+-	g_signal_connect (G_OBJECT(indicator), "connection-changed", G_CALLBACK(indicator_connection_changed_cb), multiload);
+-	g_object_get(G_OBJECT(indicator), "connected", &indicator_connected, NULL);
++	// create indicator(s)
++	if (opt_split) {
++		//NOTE: menus are built here too, so the build_menu block below is skipped
++		for (i=0; i<GRAPH_MAX; i++) {
++			if (multiload->graph_config[i].visible)
++				indicator_create_split (multiload, i);
++		}
++	} else {
++		indicator = app_indicator_new ("indicator-multiload-ng", about_data_icon, APP_INDICATOR_CATEGORY_HARDWARE);
++		app_indicator_set_status (indicator, APP_INDICATOR_STATUS_ACTIVE);
++
++		// "connected" property means a visible indicator, otherwise could be hidden. or fall back to GtkStatusIcon
++		g_signal_connect (G_OBJECT(indicator), "connection-changed", G_CALLBACK(indicator_connection_changed_cb), multiload);
++		g_object_get(G_OBJECT(indicator), "connected", &indicator_connected, NULL);
++	}
+ 
+ 	// set update callback
+ 	for (i=0; i<GRAPH_MAX; i++)
+@@ -368,7 +561,8 @@
+ 
+ 	set_defaults(multiload);
+ 	create_buffer_files();
+-	build_menu(multiload);
++	if (!opt_split)
++		build_menu_for(multiload, indicator, -1, TRUE);
+ 
+ 	// cleanup on SIGTERM
+ 	signal(SIGINT, indicator_cleanup);

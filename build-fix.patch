@@ -1,0 +1,24 @@
+diff -Naur a/common/multiload-config.c b/common/multiload-config.c
+--- a/common/multiload-config.c	2016-12-05 17:13:59.000000000 +0100
++++ b/common/multiload-config.c	2020-07-30 21:18:03.568945194 +0200
+@@ -26,6 +26,8 @@
+ #include "graph-data.h"
+ #include "multiload-config.h"
+ 
++GraphType graph_types[GRAPH_MAX];
++
+ guint multiload_config_get_num_colors(guint id)
+ {
+ 	g_assert_cmpuint (graph_types[id].num_colors, <=, MAX_COLORS);
+diff -Naur a/common/multiload-config.h b/common/multiload-config.h
+--- a/common/multiload-config.h	2016-12-05 17:13:59.000000000 +0100
++++ b/common/multiload-config.h	2020-07-30 21:18:21.685273529 +0200
+@@ -56,7 +56,7 @@
+ 
+ 
+ // global variable
+-GraphType graph_types[GRAPH_MAX];
++extern GraphType graph_types[GRAPH_MAX];
+ 
+ 
+ G_GNUC_INTERNAL guint
