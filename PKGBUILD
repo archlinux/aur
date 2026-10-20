@@ -1,12 +1,12 @@
 # Maintainer: Lecer69 <https://github.com/Lecer69>
 pkgname=lssh
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Simple SSH server manager"
+pkgdesc="Simple SSH server manager with a live stats bar"
 arch=('x86_64')
 url="https://github.com/Lecer69/LSSH"
 license=('Unlicense')
-depends=('openssh' 'sshpass')
+depends=('openssh' 'dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/LSSH/archive/v$pkgver.tar.gz")
 sha256sums=('26bb4df2091ea445d3cbc9c646e6b9f8e69d6b5e8c1377c37446aee33e1132a1')
@@ -20,4 +20,11 @@ package() {
     cd "LSSH-$pkgver"
     install -Dm755 target/release/lssh "$pkgdir/usr/bin/lssh"
     install -Dm644 README.md "$pkgdir/usr/share/doc/lssh/README.md"
+
+    local completions="$pkgdir/usr/share"
+    install -dm755 "$completions/bash-completion/completions" \
+        "$completions/zsh/site-functions" "$completions/fish/vendor_completions.d"
+    target/release/lssh completions bash > "$completions/bash-completion/completions/lssh"
+    target/release/lssh completions zsh > "$completions/zsh/site-functions/_lssh"
+    target/release/lssh completions fish > "$completions/fish/vendor_completions.d/lssh.fish"
 }
