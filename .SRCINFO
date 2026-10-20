@@ -1,0 +1,15 @@
+pkgbase = bash-autosuggestions-git
+	pkgdesc = IDE-style type-ahead completion for Zsh
+	pkgver = r1.9267715
+	pkgrel = 1
+	url = https://github.com/yogeek/bash-autosuggestions
+	arch = any
+	license = MIT
+	depends = git
+	depends = bash
+	provides = bash-autosuggestions
+	conflicts = bash-autosuggestions
+	source = bash-autosuggestions-git::git+https://github.com/yogeek/bash-autosuggestions
+	sha256sums = SKIP
+
+pkgname = bash-autosuggestions-git
