@@ -1,0 +1,24 @@
+pkgbase = ely-show-app-bin
+	pkgdesc = ElyShow - presentation app from the Ely Office suite
+	pkgver = 0.1.8
+	pkgrel = 2
+	url = https://office.elygpui.com
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	optdepends = vulkan-icd-loader: GPU accelerated rendering
+	optdepends = wayland: Wayland session support
+	provides = ely-show
+	conflicts = ely-show
+	conflicts = ely-show-bin
+	options = !strip
+	options = !debug
+	source_x86_64 = ely-show_0.1.8-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.8/ely-show_0.1.8-1_amd64.deb
+	sha256sums_x86_64 = 72e34d43d26aa26b383722850c7b45ad4eebf6ce2b56bfd3106ffebb81efbe35
+
+pkgname = ely-show-app-bin
