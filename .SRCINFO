@@ -1,8 +1,8 @@
 pkgbase = polify-git
 	pkgdesc = Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing
-	pkgver = 1.0.0.r0.gfa12101
+	pkgver = 1.0.1.r1.ge6d8c7d
 	pkgrel = 1
-	url = https://buildhut.fly.dev/apps/Polify
+	url = https://hut.buildr.fun/apps/Polify
 	arch = x86_64
 	arch = aarch64
 	license = MIT
