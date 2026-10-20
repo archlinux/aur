@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Lucas Oskorep <lucas.oskorep@gmail.com>
+# SPDX-License-Identifier: 0BSD
+
+src/
+pkg/
+*.tar.gz
+*.pkg.tar.zst
