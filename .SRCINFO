@@ -1,6 +1,6 @@
 pkgbase = python-benedict
 	pkgdesc = Dict subclass with keylist/keypath support, built-in I/O operations (base64, csv, html, ini, json, pickle, plist, query-string, toml, xls, xml, yaml), s3 support and many utilities.
-	pkgver = 0.40.0
+	pkgver = 0.40.1
 	pkgrel = 1
 	url = https://github.com/fabiocaccamo/python-benedict
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-benedict
 	optdepends = python-tomli: TOML support
 	optdepends = python-tomli-w: TOML support
 	optdepends = python-pydantic: Schema support
-	source = python-benedict-0.40.0.tar.gz::https://github.com/fabiocaccamo/python-benedict/archive/0.40.0.tar.gz
-	sha512sums = 615ed38c40db3d7a6e45748f0c2224ddde58155068bdc2d090a1b6faef124358d1fb13e02727a66ff1c1b13c2049d0acba924cc07fdae535ab16060f933d2a14
+	source = python-benedict-0.40.1.tar.gz::https://github.com/fabiocaccamo/python-benedict/archive/0.40.1.tar.gz
+	sha512sums = db8f92d541da5b31fd77b844394da95c34dc7d1550679300bc0271a7878af46d53d6cccc83a7943a745162531dbf4f4e98056f8dd155d9ed66e9bde1563b25ed
 
 pkgname = python-benedict
