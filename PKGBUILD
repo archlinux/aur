@@ -1,6 +1,6 @@
 # Maintainer: Luke Simpson <luke@s4solutions.ai>
 pkgname=nexis
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Linux system optimizer and monitoring tool"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ options=('!lto')
 # release that ships the asset (> 2.8.2); aur.yml's updpkgsums regenerates
 # sha256sums at publish time.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/releases/download/v$pkgver/nexis-$pkgver-source.tar.gz")
-sha256sums=('fc89cdefe800872f8a5c78a08299bf0550287fc58abc669e3ff72bff86b76995')
+sha256sums=('f937ea93466e849040250f6eeaa3a23f0bc4a193aa100e1ffad383de352b7a13')
 
 build() {
     # GH#82: in-tree LLD auto-selection is now OFF by default (see

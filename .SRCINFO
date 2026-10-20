@@ -1,6 +1,6 @@
 pkgbase = nexis
 	pkgdesc = Linux system optimizer and monitoring tool
-	pkgver = 2.13.0
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://github.com/s4solutionsllc/Nexis
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nexis
 	depends = qt6-svg
 	depends = xdg-utils
 	options = !lto
-	source = nexis-2.13.0.tar.gz::https://github.com/s4solutionsllc/Nexis/releases/download/v2.13.0/nexis-2.13.0-source.tar.gz
-	sha256sums = fc89cdefe800872f8a5c78a08299bf0550287fc58abc669e3ff72bff86b76995
+	source = nexis-2.13.1.tar.gz::https://github.com/s4solutionsllc/Nexis/releases/download/v2.13.1/nexis-2.13.1-source.tar.gz
+	sha256sums = f937ea93466e849040250f6eeaa3a23f0bc4a193aa100e1ffad383de352b7a13
 
 pkgname = nexis
