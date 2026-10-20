@@ -1,6 +1,7 @@
 # Maintainer: Bart Libert <aur@bart.libert.email>
 pkgname=barracudavpn-bin
-pkgver=5.3.6
+pkgver=5.3.10
+_fullgpgver=${pkgver}-1196.20260929
 pkgrel=1
 pkgdesc="Barracuda VPN Client for Linux - needs original download from Barracuda"
 arch=("i386" "x86_64")
@@ -29,17 +30,19 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 source=("local://${_pkg_file_name}")
-sha256sums=('bec85b2297ee588bf3c82e8e945245eb9755bcbf49d2af68eb857b2e61875699')
+sha256sums=('db493451d64dbade574040a26b4c7a826526aa6fdfa9f6b2e6f7d58f6697cd4c')
 
 options=(debug !strip)
 
 prepare() {
     cd "${srcdir}"
-    ar x barracudavpn_${pkgver}_amd64.deb data.tar.zst
-    tar -xf data.tar.zst
+    ar x barracudavpn_${_fullgpgver}_amd64.deb data.tar.xz
+    tar -xf data.tar.xz
 }
 
 package() {
     echo "${pkgdir}"
     install -Dm 4755 ${srcdir}/usr/local/bin/barracudavpn ${pkgdir}/usr/bin/barracudavpn
+    install -Dm 4755 ${srcdir}/usr/local/bin/barracudavpn-daemon ${pkgdir}/usr/bin/barracudavpn-daemon
+    install -Dm 4755 ${srcdir}/usr/local/lib/barracudavpn/setup-groups ${pkgdir}/usr/lib/barracudavpn/setup-groups
 }
