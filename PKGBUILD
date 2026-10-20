@@ -1,6 +1,6 @@
 # Maintainer: Boris Brock <gabrielborisbrock@gmail.com>
 pkgname=replayer
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Video player for action cam footage with frame-by-frame and slow-motion playback'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('ffmpeg' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'qt6-base')
 makedepends=('cmake' 'qt6-svg')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('36bc260e3771aa8f68e43b3b28b92baedbf69a2bdf04b1f241434e35c5059d56')
+sha256sums=('0cace81655fff459ce8921353dfb6ed3a790486ae9e38e89638f4e8d8b9c7f24')
 
 build() {
   cmake -B build -S "Replayer-$pkgver" \
