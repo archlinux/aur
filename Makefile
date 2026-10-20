@@ -1,7 +1,7 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL=/bin/bash
 
-REPO = "https://github.com/BetterDiscord/Installer"
+REPO = BetterDiscord/Installer
 VERSION = $(shell grep pkgver .SRCINFO | cut -d '=' -f 2 | tr -d '[:space:]')
 TRASH = $(shell git check-ignore * | tr '\n' ' ')
 
@@ -48,16 +48,12 @@ endif
 
 # generate `changelog.md`
 log:
-	@echo "wait, it will take some time"
-	$(eval NAME := $(shell gh release --repo $(REPO) view --json name | jq -r .name))
-	echo "# Name: $(NAME) " >changelog.md
-	$(eval URL := $(shell gh release --repo $(REPO) view --json url | jq -r .url))
-	echo "### URL: $(URL)" >>changelog.md
-	$(eval PUBLISHED_AT := $(shell gh release --repo $(REPO) view --json publishedAt | jq -r .publishedAt))
-	$(eval AUTHOR := $(shell gh release --repo $(REPO) view --json author | jq -r .author.login))
-	echo "### published at '$(PUBLISHED_AT)' by $(AUTHOR)" >>changelog.md
-	echo "---" >>changelog.md
-	gh release --repo $(REPO) view --json body | jq -r .body >>changelog.md
+	@set -euo pipefail; \
+	tmp=$$(mktemp changelog.md.XXXXXX); \
+	trap 'rm -f "$$tmp"' EXIT; \
+	gh release --repo $(REPO) view --json name,url,publishedAt,author,body \
+		--jq '["# Name: " + .name, "### URL: " + .url, "### published at \u0027" + .publishedAt + "\u0027 by " + .author.login, "---", .body] | join("\n")' > "$$tmp"; \
+	mv "$$tmp" changelog.md
 
 # prepare for commit
 pre:
