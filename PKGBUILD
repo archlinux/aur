@@ -3,7 +3,7 @@
 # Template: the release workflow sets pkgver, pkgrel and the checksums from
 # the release's archives, then publishes it to the AUR.
 pkgname=rimor-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Terminal workbench for PostgreSQL, SQL Server and SQLite (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=('!debug' '!strip')
 _release="https://github.com/alchemy/rimor/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_release}/rimor-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_release}/rimor-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('4e14b3a81ca7f4e52e5bdd0bc6668708ee445e81e71420d925e8e96cbcde5325')
-sha256sums_aarch64=('f5566973dc63a0e1e1adef6de18f3fb02450eb7cdfc4272f465f3e67234a6d0b')
+sha256sums_x86_64=('1bcc5d0b9cad057acac5bb99fd904fc8440ad555662d987604fa420b909e8225')
+sha256sums_aarch64=('401b9c7468c56bb858cca159bf314774c599c6591e891f9c30dfe0e982098b77')
 
 package() {
   install -Dm755 rimor "${pkgdir}/usr/bin/rimor"
