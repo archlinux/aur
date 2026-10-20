@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="TouchFish V5 官方支持的现代化客户端，基于 Flutter 构建"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JohnChiao75/TouchFish-Client"
+provides=('touchfish')
 license=('AGPL-3.0')
 depends=(
     'gtk3'
