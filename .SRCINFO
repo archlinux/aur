@@ -1,0 +1,24 @@
+pkgbase = zeroconnect-bin
+	pkgdesc = File exchange application for Zero calculators (ZGC4)
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://zerocalculators.com/downloads
+	install = zeroconnect-bin.install
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-serialport
+	provides = zeroconnect
+	conflicts = zeroconnect
+	options = !strip
+	options = !debug
+	source = https://storage.googleapis.com/zerocalculators-downloads/zeroconnect_2.6.1_amd64.deb
+	sha256sums = 47f597e863a84216feba6cc855532d94a99d4510cb133c52ad2d1dcb6f029a2c
+
+pkgname = zeroconnect-bin

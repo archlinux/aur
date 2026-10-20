@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>> To talk to the calculator over USB serial, your user must be in the 'uucp' group:"
+  echo ">>>   sudo usermod -aG uucp \$USER   (then log out and back in)"
+}
+
+post_upgrade() {
+  :
+}
