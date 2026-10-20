@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=ramcleaner
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Find processes holding unused memory, attribute them to their owner, and stop them only after approval'
 arch=('any')
@@ -17,7 +17,7 @@ license=('GPL-3.0-or-later')
 validpgpkeys=('2B0541BF62E91D538C55739DF677BC1E3BD7246E')
 depends=('python>=3.11')
 makedepends=('git')
-optdepends=('libnotify: Stop/Later/Hide desktop notifications for ramcleaner watch' 'zenity: Hide duration menu for ramcleaner watch')
+optdepends=('libnotify: Stop/Later/Hide/Details desktop notifications for ramcleaner watch' 'zenity: Hide duration menu and Details checklist for ramcleaner watch')
 install='ramcleaner.install'
 source=("$pkgname::git+$url.git#tag=v$pkgver?signed")
 b2sums=('SKIP')
