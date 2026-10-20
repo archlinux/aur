@@ -1,0 +1,24 @@
+pkgbase = python-ffsim
+	pkgdesc = Faster simulation of fermionic quantum circuits
+	pkgver = 0.0.84
+	pkgrel = 1
+	url = https://github.com/qiskit-community/ffsim
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	depends = python-jax
+	depends = python-numpy
+	depends = python-opt_einsum
+	depends = python-orjson
+	depends = python-pyscf
+	depends = python-qiskit
+	depends = python-scipy
+	depends = python-typing_extensions
+	source = ffsim::git+https://github.com/qiskit-community/ffsim#tag=v0.0.84
+	b2sums = 1c26f5386d99f2905152605e152fb9f42ad92902df075248aae220438785ec339253eca67e560daeb5d56cacbeca4ad5aad2c0c72a2b43b3c00b13584af0b11c
+
+pkgname = python-ffsim
