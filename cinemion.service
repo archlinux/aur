@@ -1,0 +1,39 @@
+[Unit]
+Description=Cinemion media server
+Documentation=https://github.com/LucasionGS/cinemion
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=cinemion
+Group=cinemion
+# GPUs for video conversion
+SupplementaryGroups=video render
+Environment=APP_ENV=production
+Environment=CONFIG_DIR=/var/lib/cinemion
+Environment=CACHE_DIR=/var/cache/cinemion
+EnvironmentFile=-/etc/cinemion/cinemion.env
+ExecStart=/usr/bin/cinemion
+Restart=on-failure
+RestartSec=5
+# Lets the server finish streams and close the database cleanly
+TimeoutStopSec=20
+
+# Data in /var/lib/cinemion, conversions and thumbnails in /var/cache/cinemion
+StateDirectory=cinemion
+CacheDirectory=cinemion
+
+# Everything else is read-only, so media folders are never changed; subtitle downloads go to the data folder then
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

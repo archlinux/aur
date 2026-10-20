@@ -1,0 +1,5 @@
+# The user the Cinemion service runs as. Its home is the data folder.
+u cinemion - "Cinemion media server" /var/lib/cinemion
+# Access to GPUs for video conversion
+m cinemion video
+m cinemion render
