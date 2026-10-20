@@ -1,0 +1,30 @@
+--- a/tests/test_python_api.py
++++ b/tests/test_python_api.py
+@@ -1486,17 +1486,23 @@
+         )
+         total_mib = total_bytes / 1024 / 1024
+ 
+-        # Measured in a fresh child process: resource.getrusage(RUSAGE_SELF)'s
+-        # ru_maxrss is a process-lifetime high-water mark, so it must be read from
+-        # a process that only ever does this one simplify() call.
++        # Linux ru_maxrss can retain the parent's high-water mark across
++        # fork/exec, including earlier multi-GB tests. VmHWM belongs to the
++        # child's current address space and still measures the entire simplify
++        # call. Keep the same model, operation, and 1.5x regression threshold.
+         child_script = os.path.join(tmpdir, "child.py")
+         with open(child_script, "w") as f:
+             f.write(
+                 "import resource, sys\n"
++                "from pathlib import Path\n"
+                 "import onnx, onnxsim\n"
+                 "model_opt, ok = onnxsim.simplify(sys.argv[1], check_n=0)\n"
+                 "assert ok\n"
+-                "print(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)\n"
++                "peak_kib = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n"
++                "if sys.platform.startswith('linux'):\n"
++                "    lines = Path('/proc/self/status').read_text().splitlines()\n"
++                "    peak_kib = int(next(line for line in lines if line.startswith('VmHWM:')).split()[1])\n"
++                "print(peak_kib)\n"
+             )
+         proc = subprocess.run(
+             [sys.executable, child_script, model_path],
