@@ -6,7 +6,7 @@
 # exists; the release pins the tarball's sum.
 
 pkgname=vgshell
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Desktop shell for Hyprland, built on Quickshell'
 arch=('any')
@@ -43,7 +43,6 @@ depends=(
   'iproute2'
   'less'
   'libnotify'
-  'power-profiles-daemon'
   'libpulse'
   'libsecret'
   'mise'
@@ -75,6 +74,8 @@ optdepends=(
   'agent-browser-bin: Jarvis browser actions'
   'wlrctl: Jarvis desktop input'
   'ttfx: animates the Screensaver text art'
+  'power-profiles-daemon: switches the power profile in the Power plugin'
+  'hdparm: lets idle hard disks stop spinning in the Power plugin'
   'bandwhich: See all network traffic in the Network Traffic plugin'
   'libcap: check and allow traffic capture in the Network Traffic plugin'
   'btop: all processes and system readings from the System monitor panel'
@@ -109,7 +110,7 @@ optdepends=(
   'microsoft-edge-stable-bin: opens a calendar day in a Microsoft Edge profile'
 )
 source=("vgshell-$pkgver.tar.gz::$url/releases/download/v$pkgver/vgshell-$pkgver.tar.gz")
-sha256sums=('55bc005fa39c9077e5c0e824838d176a4fa681a292fa91510352f1642a767d6e')
+sha256sums=('45b1358972f7fc0ec25688462bbd585953a4980fef35142be96067f1a5b6c06e')
 install=vgshell.install
 
 package() {
