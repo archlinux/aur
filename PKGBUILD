@@ -45,6 +45,10 @@ source=(
   https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar.gz{,.sig}
   # https://lists.gnu.org/archive/html/coreutils/2026-09/msg00064.html
   0001-env-printenv-only-quote-when-outputting-to-terminals.patch
+  # https://github.com/coreutils/coreutils/commit/19ebb3e1a7a645d97f39473e6e323a6946af4945
+  0002-tests-ls-replace-LD_PRELOAD-of-getxattr-speedup.sh-w.patch
+  # https://github.com/coreutils/coreutils/commit/ce0f62f6088f206cc3f60504a7c0695bc89fb636
+  0003-tests-avoid-skipping-a-test-on-non-SELinux-builds.patch
 )
 validpgpkeys=(
  6C37DC12121A5006BC1DB804DF6FD971306037D9 # Pádraig Brady
@@ -54,7 +58,9 @@ b2sums=('b893b993f6ee1f71939e1b54c3bde44eb0ad6d777e466125090488b082637539cbb07d1
         'SKIP'
         'c125cc479e4eec0178e49a1dffa975fb5d7753a5f04d3bb695d0e8043c05d76fb07c9595db20e9df5c359fdbbb326acb976d5bec7bd1771da22840156bb66369'
         'SKIP'
-        '97619b6af8bdb4e18d1a895f52e72af8e2fd2dc0afda8f724a70c9b68cdc31470398101012cc4452ab5142defe55956fd9bc8f87d71ea11ff87cb2147e122d10')
+        '97619b6af8bdb4e18d1a895f52e72af8e2fd2dc0afda8f724a70c9b68cdc31470398101012cc4452ab5142defe55956fd9bc8f87d71ea11ff87cb2147e122d10'
+        '79f240d16f75aab9e6cb7b3a2fdd8399cb9199b28d6306f54e3c0f3167613d26145f4b3d6d711091dd63a314ae9cd8041b1589d315562c89a89b97546aebb21f'
+        '6a0426ef4c623f73a6f57153052980d0bf8ce5bd341e0c3c5dd237d3019bbc8ec41f9cf6adef692e0650a56eb5a40b48d3884daa6f2017fca9d973b62838c136')
 
 prepare() {
   cd "${pkgname/-selinux}"

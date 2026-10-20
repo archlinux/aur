@@ -24,6 +24,8 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "0001-env-printenv-only-quote-when-outputting-to-terminals.patch",
+    "0002-tests-ls-replace-LD_PRELOAD-of-getxattr-speedup.sh-w.patch",
+    "0003-tests-avoid-skipping-a-test-on-non-SELinux-builds.patch",
 ]
 SPDX-FileCopyrightText = "coreutils contributors"
 SPDX-License-Identifier = "GPL-3.0-or-later"
