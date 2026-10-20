@@ -1,6 +1,7 @@
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.18.0.2494.g29dc5537
+pkgver=0.18.0.2495.g54214706
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -16,37 +17,39 @@ source=("$_pkgname::git+https://github.com/alacritty/alacritty.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname/alacritty
+	cd "$_pkgname/alacritty"
 	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build(){
   cd "$_pkgname"
-  env CARGO_INCREMENTAL=0 cargo build --release
+  cargo build --release
 }
 
 check(){
   cd "$_pkgname"
-  env CARGO_INCREMENTAL=0 cargo test --release
+  cargo test --release
 }
 
 package_alacritty-git() {
-	cd $_pkgname
+	cd "$_pkgname"
 
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "extra/linux/Alacritty.desktop"
+	install -Dm755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
+	install -Dm644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
+	install -Dm644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
+	install -Dm644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
+	install -Dm644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
+	install -Dm644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
+	install -Dm644 "extra/logo/compat/alacritty-term.png" "$pkgdir/usr/share/pixmaps/Alacritty.png"
 
-	mkdir -p "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/man/man5"
+  for i in 1 5 7;
+    do mkdir -p "$pkgdir/usr/share/man/man$i"; done
+
+  cd extra/man
 	scdoc < extra/man/alacritty.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.1.gz" > /dev/null
 	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty.5.gz" > /dev/null
 	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
 	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
 	scdoc < extra/man/alacritty-escapes.7.scd | gzip -c | tee "$pkgdir/usr/share/man/man7/alacritty-escapes.7.gz" > /dev/null
-
-	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
-	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
-	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
-	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
-	install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
-	install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
-	install -D -m644 "extra/logo/compat/alacritty-term.png" "$pkgdir/usr/share/pixmaps/Alacritty.png"
 }
