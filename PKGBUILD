@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=intelis-interfacing-bin
 _pkgname='InteLIS Interfacing'
-pkgver=4.8.1
+pkgver=4.8.2
 _electronversion=44
 pkgrel=1
 pkgdesc="A standalone Electron application that receives test results from laboratory analyzers and stores them where a laboratory information system can pick them up."
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9f577bead71fa16e477e09f821b5bcae12afded853508422f9ff7cb36b640f87'
+sha256sums=('06b65f67499768a158bf0cf8c78d038277e784b6c47b34e0ad9aa86526ce8c4f'
             '90e8f1d7651f22d814f741854e325de31508a7d77cdc512f7244b87961612e41'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
