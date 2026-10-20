@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Ultimate File Manager Pro Companion
+GenericName=File Manager
+Comment=Native Wayland-first Linux companion for Ultimate File Manager Pro — dual-pane file browser, Wi-Fi transfer and remote APK/XAPK sideloading
+Exec=/opt/ufm-companion/ufm-companion.AppImage
+Icon=za.kilowatch.ufm-companion
+Terminal=false
+Categories=Utility;FileTools;
+Keywords=file;manager;android;sideload;apk;wifi;transfer;
+StartupWMClass=za.kilowatch.ufm-companion
+StartupNotify=true
