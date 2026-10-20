@@ -1,6 +1,6 @@
 pkgname=xfce4-diskperf-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=xfce4.diskperf.plugin.2.8.0.r124.g6d2e0ee
+pkgver=2.8.0.r201.gfb45c01
 pkgrel=1
 pkgdesc='Plugin for the Xfce4 panel displaying instant disk/partition performance'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	  cd "$_pkgname"
-	    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	    git describe --long --tags | sed 's/^xfce4-diskperf-plugin-//;s/\([^-]*-g\)/r\1/;s/-/./g'
     }
 
 build() {
