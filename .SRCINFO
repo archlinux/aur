@@ -1,7 +1,7 @@
 pkgbase = pyrite64-bin
 	pkgdesc = N64 Game-Engine and Editor using libdragon & tiny3d
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HailToDodongo/pyrite64
 	install = pyrite64-bin.install
 	arch = x86_64

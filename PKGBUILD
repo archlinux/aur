@@ -2,7 +2,7 @@
 
 pkgname=pyrite64-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="N64 Game-Engine and Editor using libdragon & tiny3d"
 arch=('x86_64')
 url="https://github.com/HailToDodongo/pyrite64"
@@ -162,6 +162,8 @@ package() {
     for dir in n64 data; do
          if [ -d "${appdir}/bin/$dir" ]; then
              cp -r "${appdir}/bin/$dir" "${pkgdir}/opt/pyrite64/"
+             # AppImage extraction leaves owner-only directories, use chmod to fix permissions
+             chmod -R a+rX "${pkgdir}/opt/pyrite64/$dir"
          fi
     done
 
