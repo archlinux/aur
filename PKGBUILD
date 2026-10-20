@@ -1,14 +1,16 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
 
 pkgname=kosmozoo-git
-_release_ver=0.2.1.r0
-pkgver=0.2.1.r0.gaafea6a
-pkgrel=1
+_release_ver=0.2.2.r0
+pkgver=0.2.2.r0.g79ef2d4
+pkgrel=2
 pkgdesc="Local review and curation app for ComfyUI image output"
 arch=('x86_64')
 url="https://github.com/alexindigo/kosmozoo"
 license=('LGPL-3.0-only')
 depends=('deno' 'sqlite' 'hicolor-icon-theme')
+optdepends=('chromium: app window' 'google-chrome: app window' 'brave-bin: app window' 'firefox: app window')
+install=kosmozoo.install
 makedepends=('git')
 provides=('kosmozoo')
 conflicts=('kosmozoo' 'kosmozoo-bin')
