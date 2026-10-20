@@ -2,9 +2,9 @@
 
 pkgname=stm32cubemonucpd
 _pkgname=STM32CubeMonUCPD
-_pkg_file_name=en.stm32cubemonucpd-lin.zip
+_pkg_file_name=stm32cubemonucpd-lin.zip
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Monitoring and configuration software tool for STM32 USB-C and Power Delivery 3.0 applications"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemonucpd.html"
