@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=appattic-bin
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Leftovers, stale apps, unused packages, and disk usage (AppImage)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "wasmtime-LICENSE::https://raw.githubusercontent.com/bytecodealliance/wasmtime/v28.0.0/LICENSE"
 )
 sha256sums=(
-  '222425282fd2aadbc93546539004f4e69666e284a96348efbf706ae059cf5e98'
+  '38550f642100a86cc31a86470a838e067fa13d8413e98081024e3ceae30ffddf'
   '268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5'
 )
 
