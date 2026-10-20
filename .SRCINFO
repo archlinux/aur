@@ -1,0 +1,33 @@
+pkgbase = purrtop
+	pkgdesc = A colorful system monitor and task manager for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pinkpixel-dev/purrtop
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = freetype2
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = polkit
+	depends = systemd
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = elfutils: create process samples (eu-stack)
+	optdepends = glib2: Move to Trash on the Disk Space page (gio)
+	optdepends = hwdata: GPU names
+	optdepends = iproute2: find hidden port owners (ss)
+	optdepends = iw: Wi-Fi details on System Info
+	optdepends = nvidia-utils: NVIDIA details (NVML)
+	options = !lto
+	source = git+https://github.com/pinkpixel-dev/purrtop.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = purrtop
