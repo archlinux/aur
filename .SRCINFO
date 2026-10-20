@@ -1,7 +1,7 @@
 pkgbase = google-chat-linux-bin
 	pkgdesc = Unofficial electron-based desktop client for Google Chat, electron included
 	pkgver = 5.39.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/squalou/google-chat-linux.git
 	install = google-chat-linux-bin.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = google-chat-linux-bin
 	makedepends = binutils
 	depends = xdg-desktop-portal
 	conflicts = google-chat-linux-electron7-git
-	source = https://github.com/squalou/google-chat-linux/releases/download/5.39.29-1/google-chat-linux_5.39.29-1_amd64.deb
-	sha512sums = b342908a6c7bc59bc8f4663277894e1b4137ef9684fcb1c07139c9ae7d7c9ded434564df4280eeb45795003364bd17fd7d2cf5d21e0a7f7b3236cebf2a509bcf
+	source = https://github.com/squalou/google-chat-linux/releases/download/5.39.29-2/google-chat-linux_5.39.29-2_amd64.deb
+	sha512sums = 1f62cae7b087c982057a032bf4a3fa69bcbf7b68cc0d2e3d2b311598b9cf24d033e4c8f33643572f0a7a38b9cd207b0b899bfb174b8a6622da8994999c3e31e1
 
 pkgname = google-chat-linux-bin
