@@ -1,11 +1,11 @@
 # maintainer: verse <versedev.store@proton.me>
 _pkgname=ClakIME
 pkgname=clak
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Fast and highly stable Vietnamese input method for Fcitx5 and Wayland"
 arch=('x86_64' 'aarch64')
-url="https://github.com/versenilvis/clak"
+url="https://github.com/versenilvis/ClakIME"
 license=('0BSD')
 depends=('fcitx5' 'hicolor-icon-theme' 'libinput' 'systemd-libs')
 makedepends=('cmake' 'ninja' 'extra-cmake-modules' 'rust' 'cargo')
