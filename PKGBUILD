@@ -3,7 +3,7 @@
 
 pkgname=notion-calendar-electron-fixed
 pkgver=1.141.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Notion Calendar Desktop Client - your calendar, tasks, and schedule in one place (official installer, electron41)"
 arch=(x86_64)
 url=https://www.notion.so/product/calendar
