@@ -1,7 +1,7 @@
 pkgbase = gpu-screen-recorder-gpui
 	pkgdesc = GPUI (Rust) frontend for gpu-screen-recorder
 	pkgver = 5.7.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Coobyk/gpu-screen-recorder-gpui
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,6 +19,7 @@ pkgbase = gpu-screen-recorder-gpui
 	depends = libxcb
 	depends = libxau
 	depends = libxdmcp
+	conflicts = gpu-screen-recorder-gpui-bin
 	options = !lto
 	source = gpu-screen-recorder-gpui-5.7.10.tar.gz::https://github.com/Coobyk/gpu-screen-recorder-gpui/archive/v5.7.10.tar.gz
 	sha256sums = b92de7aff6ec31bca982f0952e55eef81ffdf56240a8300aa622843bc36d10f6

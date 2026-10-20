@@ -2,7 +2,7 @@
 
 pkgname=gpu-screen-recorder-gpui
 pkgver=5.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="GPUI (Rust) frontend for gpu-screen-recorder"
 arch=('x86_64')
 url="https://github.com/Coobyk/gpu-screen-recorder-gpui"
@@ -31,7 +31,9 @@ makedepends=(
     'freetype2'
     'libx11'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Coobyk/$pkgname/archive/v$pkgver.tar.gz")
+# Mutually exclusive with the prebuilt package.
+conflicts=('gpu-screen-recorder-gpui-bin')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b92de7aff6ec31bca982f0952e55eef81ffdf56240a8300aa622843bc36d10f6')
 
 build() {
