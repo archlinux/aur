@@ -28,7 +28,6 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-Wl,-z,relro,-z,now"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_INCREMENTAL=0
   export CARGO_TARGET_DIR="${srcdir}/target"
