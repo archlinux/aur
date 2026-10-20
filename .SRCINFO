@@ -1,0 +1,12 @@
+pkgbase = lola-retro
+	pkgdesc = CRT shader for RetroArch
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = https://github.com/zoran123456/lola-retro
+	arch = any
+	license = MIT
+	makedepends = git
+	source = lola-retro::https://github.com/zoran123456/lola-retro/releases/download/v1.11.2/lola-retro-v1.11.2.zip
+	sha256sums = 5902bcc972cc51047316ab46431e27556c960341c2591352a5d4293599984495
+
+pkgname = lola-retro
