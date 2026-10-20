@@ -1,14 +1,17 @@
 pkgbase = gopro-utils-git
-	pkgdesc = Tools to parse metadata from GoPro Hero 5 & 6 cameras
-	pkgver = r41.e0a6514
+	pkgdesc = Tools to parse GPMF telemetry (GPS, accelerometer, gyro) from GoPro cameras
+	pkgver = r51.cfaf1ce
 	pkgrel = 1
-	url = https://github.com/mlouielu/gopro-utils
+	url = https://github.com/KonradIT/gopro-utils
 	arch = x86_64
 	arch = i686
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = go
-	source = gopro-utils::git+https://github.com/mlouielu/gopro-utils
+	makedepends = git
+	depends = glibc
+	provides = gopro-utils
+	conflicts = gopro-utils
+	source = gopro-utils::git+https://github.com/KonradIT/gopro-utils
 	md5sums = SKIP
 
 pkgname = gopro-utils-git
-
