@@ -1,21 +1,21 @@
 # Maintainer: Your Name <you@example.com>
 
 pkgname=dankcalendar-git
-_pkgname=dankcalendar
+_pkgname=dux-calendar
 _binname=dcal
-_iconname=com.danklinux.dankcalendar
-_desktopid=com.danklinux.dankcalendar
+_iconname=dev.duxlabs.calendar
+_desktopid=dev.duxlabs.calendar
 pkgver=0.3.1.r29.g29bf555
 pkgrel=1
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)'
 arch=('x86_64' 'aarch64')
-url="https://github.com/AvengeMedia/$_pkgname"
+url="https://github.com/duxlabs-dev/$_pkgname"
 license=('MIT')
 depends=('quickshell' 'qt6-declarative')
-optdepends=('dms-shell: dynamic theming via DankMaterialShell colors')
+optdepends=('dms-shell: dynamic theming via Dux Shell colors')
 makedepends=('git' 'go')
-provides=("$_binname=$pkgver" "$_pkgname=$pkgver")
-conflicts=("$_binname" "$_pkgname" 'dankcalendar-bin')
+provides=("$_binname=$pkgver" "dankcalendar=$pkgver")
+conflicts=("$_binname" "dankcalendar" 'dankcalendar-bin')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
