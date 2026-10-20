@@ -1,6 +1,6 @@
 # Maintainer: Lecer69 <https://github.com/Lecer69>
 pkgname=lssh
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Simple SSH server manager"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Unlicense')
 depends=('openssh' 'sshpass')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/LSSH/archive/v$pkgver.tar.gz")
-sha256sums=('a6389296ea082ef4ea3e28360d03ca716a6d7fc4416777fbdf298844acc5b72c')
+sha256sums=('26bb4df2091ea445d3cbc9c646e6b9f8e69d6b5e8c1377c37446aee33e1132a1')
 
 build() {
     cd "LSSH-$pkgver"
