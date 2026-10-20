@@ -2,7 +2,7 @@
 
 pkgname=maki
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='An efficient AI coding agent extendable by neovim like Lua plugins'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tontinton/maki'
@@ -12,14 +12,17 @@ depends=('gcc-libs' 'glibc' 'zlib')
 optdepends=('rtk: for reduced token consumption')
 conflicts=('maki-bin')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}-pr1287.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1287.patch")
+        "${pkgname}-pr1287.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1287.patch"
+        "${pkgname}-pr1292.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1292.patch")
 sha256sums=('6c4161c5e6e72668dd6141cae627bb59664fe8cc934325f1818cadfa4852c795'
+            'SKIP'
             'SKIP')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/${pkgname}-pr1287.patch"
+    patch -Np1 -i "${srcdir}/${pkgname}-pr1292.patch"
     cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
