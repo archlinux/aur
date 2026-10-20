@@ -16,7 +16,7 @@ pkgbase = chayuan-wps-addon-bin
 	source = arch-user-init.sh
 	source = chayuan-mcp.service
 	sha256sums = 878d3ff844b596e355f7c5f306daa2236b396ebfa7f592eacc59e21dcade2759
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = c12f0d995db23e8a0c8671a93ac4dd1ef82f5f4c6ba9ce69cb742badc589859a
+	sha256sums = 513e0763021d301f6cf618705c554cf280c7432988924df6238bf98acda29738
 
 pkgname = chayuan-wps-addon-bin
