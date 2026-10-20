@@ -14,7 +14,7 @@
 # there and no WebKit is compiled here.
 
 pkgname=viewport-wpe
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Wayland compositor whose entire shell is a web page — the Smithay rewrite'
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ license=('GPL-3.0-or-later')
 # how many commits past it, and which one — because naming a stale tag would be
 # a lie about what was built. At a release the two say the same thing and the
 # tag is the one anybody can check.
-_tag=v0.3.0
+_tag=v0.4.0
 
 depends=(
   'wayland'
@@ -102,6 +102,8 @@ provides=("viewport=$pkgver")
 conflicts=('viewport' 'viewport-webkitgtk' 'viewport-chromium')
 options=('!lto')
 
+# makepkg skips checksums for VCS sources by design; the tag in `#tag=` is
+# the pin, not a tarball hash.
 source=("git+https://github.com/codebam/viewport.git#tag=$_tag")
 sha256sums=('SKIP')
 
