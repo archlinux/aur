@@ -2,7 +2,7 @@
 
 pkgname=miru-zoom
 _pkgname=miru
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A Wayland-based zoom daemon and control utility"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('wayland' 'mesa' 'libffi')
 makedepends=('cmake' 'ninja' 'pkgconf' 'wayland-protocols')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3beafd2ee7993c99820759f5e5ef46bc20c9db842be6f2f3437e2ca2bbd528ab')
+sha256sums=('7f58c75d0843159240fd9c22a27cc2208c2b825fd46893d702a4737e49b8f221')
 
 build() {
   cmake -B build -S "${_pkgname}" \
