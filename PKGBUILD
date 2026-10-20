@@ -3,7 +3,7 @@ pkgname=bluebubbles-desktop-app
 _pkgname=BlueBubbles
 pkgver=2.1.3+desktop.93
 _tagver="2.1.3+desktop.93"
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Linux, Android, and Windows (Beta Release, Compiled From Source)"
 arch=('x86_64' 'aarch64')
 url="https://bluebubbles.app/"
@@ -131,6 +131,24 @@ with open(p, "wb") as f:
 ' "${pkgdir}/usr/lib/${pkgname}/lib/libflutter_linux_gtk.so"
     fi
 
+    # Patch libmedia_kit_video_plugin.so on aarch64 so portrait videos (w < h, e.g. 720x1280)
+    # multiply before dividing ((w * 1080) // h instead of (w // h) * 1080 = 0)
+    if [[ "$CARCH" == "aarch64" ]] && [ -f "${pkgdir}/usr/lib/${pkgname}/lib/libmedia_kit_video_plugin.so" ]; then
+        python3 -c '
+import struct, sys
+p = sys.argv[1]
+with open(p, "rb") as f:
+    d = f.read()
+w_old = struct.pack("<III", 2596801544, 1384154889, 2601090304)
+w_new = struct.pack("<III", 1384154889, 2601090048, 2596801536)
+h_old = struct.pack("<III", 2596801544, 3547713801, 3406306592)
+h_new = struct.pack("<III", 1384181769, 2601090048, 2596801536)
+d = d.replace(w_old, w_new, 1).replace(h_old, h_new, 1)
+with open(p, "wb") as f:
+    f.write(d)
+' "${pkgdir}/usr/lib/${pkgname}/lib/libmedia_kit_video_plugin.so"
+    fi
+
     # Launcher wrapper script
     install -d "${pkgdir}/usr/bin"
     cat <<EOF > "${pkgdir}/usr/bin/${pkgname}"
@@ -154,9 +172,39 @@ _BB_RT_DIR="\${XDG_RUNTIME_DIR:-/tmp}/${pkgname}-\${UID}"
 mkdir -p "\${_BB_RT_DIR}" 2>/dev/null || true
 ln -sfn "/usr/lib/${pkgname}/data" "\${_BB_RT_DIR}/data"
 ln -sfn "/usr/lib/${pkgname}/lib" "\${_BB_RT_DIR}/lib"
-ln -sfn "/usr/lib/${pkgname}/libmpv.so.1" "\${_BB_RT_DIR}/libmpv.so.1"
 cp -f "/usr/lib/${pkgname}/bluebubbles" "\${_BB_RT_DIR}/bluebubbles.new" 2>/dev/null && \\
     mv -f "\${_BB_RT_DIR}/bluebubbles.new" "\${_BB_RT_DIR}/bluebubbles" 2>/dev/null || true
+if [ -f /usr/lib/libmpv.so.2 ]; then
+    if [ ! -f "\${_BB_RT_DIR}/libmpv.so.2" ] || [ /usr/lib/libmpv.so.2 -nt "\${_BB_RT_DIR}/libmpv.so.2" ]; then
+        cp -f /usr/lib/libmpv.so.2 "\${_BB_RT_DIR}/libmpv.so.2.tmp" 2>/dev/null || true
+        chmod 755 "\${_BB_RT_DIR}/libmpv.so.2.tmp" 2>/dev/null || true
+        python3 - "\${_BB_RT_DIR}/libmpv.so.2.tmp" <<'PYEOF' 2>/dev/null || true
+import struct, sys
+p = sys.argv[1]
+with open(p, "rb") as f:
+    d = bytearray(f.read())
+desc_off = d.find(b"render API for libmpv\x00")
+if desc_off >= 0:
+    target = struct.pack("<II", 0, 65)
+    idx = 0
+    while True:
+        idx = d.find(target, idx)
+        if idx < 0:
+            break
+        if idx + 24 <= len(d) and struct.unpack_from("<Q", d, idx + 16)[0] == desc_off:
+            struct.pack_into("<II", d, idx, 0, 64)
+        idx += 4
+    with open(p, "wb") as f:
+        f.write(d)
+PYEOF
+        mv -f "\${_BB_RT_DIR}/libmpv.so.2.tmp" "\${_BB_RT_DIR}/libmpv.so.2" 2>/dev/null || true
+    fi
+    ln -sf libmpv.so.2 "\${_BB_RT_DIR}/libmpv.so.1"
+    ln -sf libmpv.so.2 "\${_BB_RT_DIR}/libmpv.so"
+else
+    ln -sfn "/usr/lib/${pkgname}/libmpv.so.1" "\${_BB_RT_DIR}/libmpv.so.1"
+fi
+export LD_LIBRARY_PATH="\${_BB_RT_DIR}:/usr/lib/${pkgname}/lib\${LD_LIBRARY_PATH:+:\$LD_LIBRARY_PATH}"
 _BB_BIN="\${_BB_RT_DIR}/bluebubbles"
 [ -x "\${_BB_BIN}" ] || _BB_BIN="/usr/lib/${pkgname}/bluebubbles"
 
