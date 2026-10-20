@@ -15,6 +15,6 @@ pkgbase = abb-agent
 	options = !lto
 	backup = etc/abb-agent.toml
 	source = abb-agent-0.2.0.tar.gz::https://github.com/rylos/abb-agent/archive/v0.2.0.tar.gz
-	sha256sums = 87792e8b4737863bdd80065e344ce8b0636fc12809813bf6fb864b3125300cb4
+	sha256sums = 0b20649496a134fcbb72fe3594627bc811b65303092a7e6518f1886deac092fa
 
 pkgname = abb-agent

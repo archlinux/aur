@@ -15,7 +15,7 @@ backup=('etc/abb-agent.toml')
 options=('!lto')
 install=abb-agent.install
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('87792e8b4737863bdd80065e344ce8b0636fc12809813bf6fb864b3125300cb4')
+sha256sums=('0b20649496a134fcbb72fe3594627bc811b65303092a7e6518f1886deac092fa')
 
 prepare() {
   cd "$_pkgname-$pkgver"
