@@ -1,0 +1,5 @@
+[templum-bin]
+source = "github"
+github = "KingDasWinx/Templum"
+use_latest_release = true
+prefix = "v"
