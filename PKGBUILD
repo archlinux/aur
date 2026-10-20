@@ -10,7 +10,8 @@ arch=('x86_64')
 url="https://osmocom.org/projects/libosmo-dsp"
 license=('GPL-2.0-or-later')
 conflicts=("${pkgname%-git}")
-provides=('libosmodsp.so=0-64')
+provides=("${pkgname%-git}=${pkgver}"
+          'libosmodsp.so=0-64')
 depends=('fftw')
 makedepends=('git')
 source=("git+https://gitea.osmocom.org/sdr/${pkgname%-git}.git")

@@ -7,6 +7,7 @@ pkgbase = libosmo-dsp-git
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = fftw
+	provides = libosmo-dsp=0.4.0.r10.gdce124d
 	provides = libosmodsp.so=0-64
 	conflicts = libosmo-dsp
 	source = git+https://gitea.osmocom.org/sdr/libosmo-dsp.git
