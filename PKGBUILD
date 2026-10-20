@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=ceasta
 pkgver=0.12.0 # renovate: datasource=github-tags depName=ngwg/ceasta
-pkgrel=1
+pkgrel=2
 pkgdesc="Disassembler, decompiler and debugger with a built-in MCP server (experimental glfw GUI + CLI)"
 arch=('x86_64')
 url="https://github.com/ngwg/ceasta"
@@ -13,10 +13,16 @@ optdepends=('ttf-dejavu: DejaVu Sans Mono for the listing (falls back to the img
 provides=("${pkgname}-cli")
 conflicts=("${pkgname}-cli" "${pkgname}-bin" "${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  "${pkgname}.desktop")
+  "${pkgname}.desktop"
+  "gui-init-backends-before-scale.patch") # https://github.com/ngwg/ceasta/pull/15
 sha256sums=('60e73513884ebff1e6db80f7912cee0eba762e91cf0687b7c72d3472de79f258'
   '4ea9ee523b63d0a9fb3ff2082ef008044dc7d5915a73a9c310231b7420b85ddc'
+  'e751615f6a4637d5ca6e2df517316747ce8a38d4d00a7f720594ca434ba79e95'
 )
+
+prepare() {
+  patch -d "${pkgname}-${pkgver}" -Np1 -i ../gui-init-backends-before-scale.patch
+}
 
 build() {
   cmake -S "${pkgname}-${pkgver}" -B build \

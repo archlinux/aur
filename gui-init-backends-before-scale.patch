@@ -1,0 +1,44 @@
+From 2686b2c144a67a1653490d06dd2aa67a7543562a Mon Sep 17 00:00:00 2001
+From: Gianluca Boiano <morf3089@gmail.com>
+Date: Wed, 7 Oct 2026 12:17:28 +0200
+Subject: [PATCH] linux gui: init the imgui backends before asking for the
+ content scale
+
+On a glfw built with wayland (3.4, e.g. arch), ImGui_ImplGlfw_GetContentScaleForWindow()
+looks the window up in the backend's window -> context map, which only
+ImGui_ImplGlfw_InitForOpenGL() fills. Called before it, it hands a null context to
+ImGui::GetIO() and the gui aborts at startup:
+
+  imgui.cpp:5388: ImGuiIO& ImGui::GetIO(ImGuiContext*): Assertion `ctx != __null' failed.
+
+Init the glfw and opengl3 backends right after the context, before the scale query.
+---
+ src/main_glfw.cpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/main_glfw.cpp b/src/main_glfw.cpp
+index 6cb5395..a9eaa68 100644
+--- a/src/main_glfw.cpp
++++ b/src/main_glfw.cpp
+@@ -182,6 +182,11 @@ int main(int argc, char** argv)
+     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+     io.IniFilename = nullptr; // our own settings.ini lives in the user folder
+ 
++    // the backends first: on a glfw built with wayland, the content scale helper looks the window
++    // up in the backend's window -> context map, which only init fills (an assert otherwise)
++    ImGui_ImplGlfw_InitForOpenGL(window, true);
++    ImGui_ImplOpenGL3_Init(glsl_version);
++
+     // 1 on macos, where the window works in points and a retina screen just has more pixels per
+     // point (imgui draws its fonts at that density); the monitor's scale on x11
+     float scale = ImGui_ImplGlfw_GetContentScaleForWindow(window);
+@@ -194,9 +199,6 @@ int main(int argc, char** argv)
+     style.FontScaleDpi = scale;
+     theme::load_fonts();
+ 
+-    ImGui_ImplGlfw_InitForOpenGL(window, true);
+-    ImGui_ImplOpenGL3_Init(glsl_version);
+-
+     static app_state state;
+     state.dpi_scale = scale;
+     glfwSetWindowUserPointer(window, &state);
