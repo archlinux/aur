@@ -1,12 +1,16 @@
 # Maintainer: RAMA <143774106+Nomadcxx@users.noreply.github.com>
 pkgname=sysclet-git
-pkgver=r7.gfcce737
+pkgver=r15.g092b2cd
 pkgrel=1
 pkgdesc="Generate ANSI text headers from TheDraw TDF fonts"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysclet"
-license=('GPL-3.0-only')
+# The GPL applies to sysclet code; bundled TDF fonts have separate terms.
+license=('GPL-3.0-only' 'custom')
 makedepends=('git' 'go')
+optdepends=('wl-clipboard: copy snippets from Wayland sessions'
+            'xclip: copy snippets from X11 sessions'
+            'xsel: copy snippets from X11 sessions')
 provides=('sysclet')
 conflicts=('sysclet')
 options=('!debug')
@@ -28,5 +32,7 @@ package() {
 	cd "$srcdir/sysclet"
 	install -Dm755 sysclet "$pkgdir/usr/bin/sysclet"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 THIRD-PARTY-NOTICES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-NOTICES.md"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 THIRD-PARTY-NOTICES.md "$pkgdir/usr/share/doc/$pkgname/THIRD-PARTY-NOTICES.md"
 }
