@@ -1,6 +1,6 @@
 pkgbase = ears-bin
 	pkgdesc = Voice dictation: press a hotkey, speak, and ears types what you said
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/dvjn/ears
 	install = ears-bin.install
@@ -18,9 +18,9 @@ pkgbase = ears-bin
 	provides = ears
 	conflicts = ears
 	options = !debug
-	source = ears_0.2.0_amd64.deb::https://github.com/dvjn/ears/releases/download/v0.2.0/ears_0.2.0_amd64.deb
-	source = LICENSE-0.2.0::https://raw.githubusercontent.com/dvjn/ears/v0.2.0/LICENSE
-	sha256sums = 29ff5297355ebf5d34a1de3abd77fc8529c7a474fd55336ff5b35728f07116fb
+	source = ears_0.2.1_amd64.deb::https://github.com/dvjn/ears/releases/download/v0.2.1/ears_0.2.1_amd64.deb
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/dvjn/ears/v0.2.1/LICENSE
+	sha256sums = edcc671008cc2c82f64f5a74e89845d3ac643e79630045ae0c53f9e7583e7a20
 	sha256sums = 8130265ac5f616e5ea648f8f93e2f8c332f90fb95ab898fe9175367abac2daf7
 
 pkgname = ears-bin
