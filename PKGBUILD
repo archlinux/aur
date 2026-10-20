@@ -1,7 +1,7 @@
 # Maintainer: Music Player Contributors <https://github.com/selfAnnihilator/kaze>
 pkgname=kaze
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="A calm, intelligent local music player"
 arch=('x86_64')
 url="https://github.com/selfAnnihilator/kaze"
@@ -24,11 +24,11 @@ makedepends=(
 )
 options=(!lto)
 source=(
-    "$pkgname-c40329f55003d5276f26033642e7c5ef032e8196.tar.gz::$url/archive/c40329f55003d5276f26033642e7c5ef032e8196.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "kaze.desktop"
 )
 sha256sums=(
-    '1fcf299c9cdecbe153aa810bf0a72205bb2eb3feaeb2b39e9c09e71cc2c9ade6'
+    '2d82b342545b2b95a54082562e0baeb5aef6ea7801e19066c52149f6de86d57c'
     'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c'
 )
 
@@ -45,14 +45,14 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-c40329f55003d5276f26033642e7c5ef032e8196"
+    cd "$pkgname-$pkgver"
     npm ci
     npm run build
     cargo build --release --locked --features tauri/custom-protocol
 }
 
 package() {
-    cd "$pkgname-c40329f55003d5276f26033642e7c5ef032e8196"
+    cd "$pkgname-$pkgver"
     local bin_dir="target/release"
     if [ ! -f "$bin_dir/kaze" ]; then
         bin_dir="src-tauri/target/release"
