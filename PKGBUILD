@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=strumpack
 pkgname="${_pkgname}-git"
-pkgver=8.0.0.r31.g5bbe389
+pkgver=8.1.0.r5.ge40a15c
 pkgrel=1
 pkgdesc="Library providing linear algebra routines and linear system solvers for spare and for dense rank-structured linear systems."
 arch=('x86_64')
@@ -55,20 +55,6 @@ pkgver() {
 prepare() {
     cd "${_pkgname}"
 
-    # Make all of the header files respect CMAKE_INSTALL_INCLUDEDIR
-    for f in $(find . -name CMakeLists.txt); do
-        sed -i \
-        -e 's|DESTINATION include|DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}|g' \
-        -e 's|$<INSTALL_INTERFACE:include>|$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>|g' \
-        "$f"
-    done
-
-    # In the tests, remove all of the hardcoded OMP_NUM_THREADS
-    sed -i '/OMP_NUM_THREADS/d' test/CMakeLists.txt
-
-    # Set the maximum amount of MPI ranks according to what CMake finds
-    sed -i 's|${MPIEXEC_NUMPROC_FLAG} [0-9]\+|${MPIEXEC_NUMPROC_FLAG} ${MPI_MAX_NUMPROCS}|g' test/CMakeLists.txt
-
     # For ButterFlyPack, we have one "super" library rather than individual targets
     patch -Np1 < ../"0001-link-butterflypack.patch"
 
@@ -80,7 +66,7 @@ build() {
     local cmake_options=(
         -B build
         -S ${_pkgname}
-        -W no-dev
+        -W no-author
         -D CMAKE_BUILD_TYPE=None
         -D BUILD_SHARED_LIBS=ON
         -D CMAKE_PREFIX_PATH=/usr
