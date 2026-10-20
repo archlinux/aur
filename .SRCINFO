@@ -1,6 +1,6 @@
 pkgbase = grok-bot-cursor
 	pkgdesc = Grok Bot desktop agent
-	pkgver = 0.71.2
+	pkgver = 0.72.0
 	pkgrel = 1
 	url = https://cursor.com
 	arch = x86_64
@@ -30,12 +30,12 @@ pkgbase = grok-bot-cursor
 	conflicts = grokbot-linux-port-bin
 	replaces = grok-bot
 	replaces = grok-bot-bin
-	noextract = grok-bot_0.71.2_amd64.deb
+	noextract = grok-bot_0.72.0_amd64.deb
 	options = !strip
 	options = !debug
-	source = grok-bot_0.71.2_amd64.deb::https://downloads.cursor.com/grokbot/stable/92808c0ad869b2e3725dbc3b8fa2fcc991687502/linux/x64/grok-bot_0.71.2_amd64.deb
+	source = grok-bot_0.72.0_amd64.deb::https://downloads.cursor.com/grokbot/stable/6a17bb448f856a2390dd63ba42bf6e80e63b08fd/linux/x64/grok-bot_0.72.0_amd64.deb
 	source = grok-bot.sh
-	sha256sums = a0526d75a3e852ed59e507889bc3aa6a5185a8d043632ce8deca98b04ab06348
+	sha256sums = f79aff93ecb923c44ce240b435ccd91b7144081738ae6e207e94ab9eadd710dd
 	sha256sums = 9b3cccfada1dbe44ce794177181515aaf328603484327ef72a914234544bfbf8
 
 pkgname = grok-bot-cursor
