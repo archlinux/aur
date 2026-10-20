@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-aer
 	pkgdesc = A high performance simulator for quantum circuits that includes noise models
-	pkgver = 0.17.2
-	pkgrel = 3
+	pkgver = 0.18.0
+	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-aer
 	arch = x86_64
 	license = Apache-2.0
@@ -12,8 +12,10 @@ pkgbase = python-qiskit-aer
 	checkdepends = python-seaborn
 	checkdepends = python-stestr
 	makedepends = cmake
+	makedepends = git
 	makedepends = ipython
 	makedepends = ninja
+	makedepends = nlohmann-json
 	makedepends = pybind11
 	makedepends = python-build
 	makedepends = python-installer
@@ -30,9 +32,11 @@ pkgbase = python-qiskit-aer
 	optdepends = python-cvxpy: support convex optimization
 	optdepends = python-dask: parallel computing with task scheduling
 	optdepends = python-distributed: distributed task scheduler for Dask
-	source = qiskit-aer-0.17.2.tar.gz::https://github.com/Qiskit/qiskit-aer/archive/0.17.2.tar.gz
-	source = nlohmann-json-3.10.2.tar.gz::https://github.com/nlohmann/json/archive/refs/tags/v3.10.2.tar.gz
-	b2sums = 49dafc4cba948b7e3d474b0b8c73075cc5135a7c8559eebc2c0d5578c19868b4dc0a1dd4e6ab199f67a3996eb35ea11c9e0d8da9d49835bd2d7119774f64d954
-	b2sums = e7da213fb75d528b1f5425822f5b598e882f232a67670aaae2d8f89c76e72ee23fa3344d1acfef2b0338a6a423d17b231b7e047ff064c984c2ec7783b721a22c
+	source = qiskit-aer::git+https://github.com/Qiskit/qiskit-aer.git#tag=0.18.0
+	source = fix-test-pauli-noise-with-shot-branching.patch
+	source = fix-test-mps-options.patch
+	b2sums = b6649e5078a58e61ddb56954622ab615ec7ff0a8bab7896caec99021197452490bfce18a93d1407a74fafa97f748eb679a4df06d2e90353fee3b059ca2bcaa54
+	b2sums = 6d622f326380020e8810cc727b760093d9abdc76a9e857f258bd0bab4354b4ebb1c44889013f66b4ff7ac73362d8b4d898c36c12e99dae1799b7342a81494f4d
+	b2sums = 5696c4848440b432348b8c6d51ed29d4640a50aea5df14904c4f216a76e67722251bef7b27f630aed4d82bca7fd3869240be8b252478325e0d971e78d364137b
 
 pkgname = python-qiskit-aer
