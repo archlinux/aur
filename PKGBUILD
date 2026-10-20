@@ -42,7 +42,7 @@ depends=(
   'pango'
   'pixman'
   'systemd-libs'
-  'vulkan-loader'
+  'vulkan-icd-loader'
   'wayland'
   'wayland-protocols'
 )
