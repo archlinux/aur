@@ -1,6 +1,6 @@
 # Maintainer: cLLeB <kyereboatengcaleb@gmail.com>
 pkgname=gear-terminal-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="AI-native developer terminal built on Tauri and Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3')
 provides=('gear-terminal')
 conflicts=('gear-terminal')
 source_x86_64=("https://github.com/cLLeB/gear/releases/download/v${pkgver}/Gear_${pkgver}_amd64.deb")
-sha256sums_x86_64=('91b955e3c0a0dc86ecef4ae794edcba61a9884521b97647735b0c0b1c44abd6d')
+sha256sums_x86_64=('fdab6012cc6280d216ea5e7bb14ff0e2a911c45a4442a64c6983742811b2c3de')
 
 package() {
   cd "$srcdir"
