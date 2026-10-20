@@ -1,5 +1,5 @@
 pkgbase = wnr-bin
-	pkgdesc = Work/Rest Timer. Stricter. Prettier. More features.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Work/Rest Timer. Stricter. Prettier. More features.
 	pkgver = 1.35.0
 	pkgrel = 1
 	url = https://getwnr.com/
