@@ -3,7 +3,7 @@
 
 pkgname='perl-css-sass'
 pkgver='3.6.4'
-pkgrel='3'
+pkgrel='4'
 pkgdesc=""
 arch=('i686' 'x86_64')
 license=('Artistic-1.0')
