@@ -1,7 +1,7 @@
 # Maintainer: thefangeddeity
 pkgbase=ele-messenger
 pkgname=('ele-messenger' 'elemesh')
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Resilience-first household messenger: a server, and a mesh that works with no infrastructure"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'dbus')
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz"
         "ele-messenger.install")
-sha256sums=('42c199484365a0bed9165f508dd75c64549b26834fd2f8d8c0f87f49d34b6f96'
+sha256sums=('d976b7b38dff1f9484b71bf8e6e297468018f0583315e0324af158d2ea7f7174'
             'SKIP')
 
 prepare() {
