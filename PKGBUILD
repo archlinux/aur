@@ -3,7 +3,7 @@
 # Contributor: Rene Hickersberger <r@renehsz.com>
 # Contributor: Dimitri Kaparis <dimitri@kaparis.name>
 
-_zig=0.14
+_zig=zig-0.14
 pkgname="mepo"
 pkgver=1.3.4
 pkgrel=1
@@ -35,8 +35,7 @@ depends=(
   'zenity'
 )
 makedepends=(
-  # "zig${_zig}"
-  "zig${_zig}-bin"
+  "${_zig//-}"
 )
 _pkgsrc="${pkgname}-${pkgver}"
 source=(
@@ -58,7 +57,7 @@ build() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" "zig${_zig}" build "${zig_options[@]}"
+  DESTDIR="build" "${_zig}" build "${zig_options[@]}"
   find "build" -type f -name '*.sh' -exec \
     sed -i 's|libexec|lib|g' "{}" +
 
@@ -79,14 +78,13 @@ check() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="check" "zig${_zig}" build test "${zig_options[@]}"
+  DESTDIR="check" "${_zig}" build test "${zig_options[@]}"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
   cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
-  install -vDm644 "MANUAL.md" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "MANUAL.md" "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
