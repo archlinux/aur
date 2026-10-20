@@ -1,0 +1,29 @@
+pkgbase = addwater-git
+	pkgdesc = Installer and configuration tool for the Firefox GNOME theme (Git version)
+	pkgver = 1.3.r64.g09ca91a
+	pkgrel = 1
+	url = https://github.com/largestgithubuseronearth/addwater
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = appstream
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = libxml2
+	makedepends = meson
+	depends = glib2
+	depends = gtk4>=4.22
+	depends = libadwaita>=1.9.0
+	depends = libportal>=0.9.1
+	depends = libportal-gtk4>=0.9.1
+	depends = python
+	depends = python-gobject
+	depends = python-packaging
+	depends = python-requests
+	provides = addwater=1.3.r64.g09ca91a
+	conflicts = addwater
+	source = addwater::git+https://github.com/largestgithubuseronearth/addwater.git#branch=main
+	sha256sums = SKIP
+
+pkgname = addwater-git
