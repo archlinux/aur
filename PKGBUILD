@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Derumigny <nderumigny@gmail.com>
 pkgname=slang-server
-pkgver=0.3.0
-pkgrel=1
+pkgver=0.3.1
+pkgrel=0
 epoch=
 pkgdesc="SystemVerilog Slang Language Server Protocol"
 arch=('x86_64')
