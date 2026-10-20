@@ -50,6 +50,13 @@ EOF
         chmod 0644 /var/www/hls-livecam/index.html
         [ -f /usr/share/hls-livecam-server/brand.png ] && \
             cp /usr/share/hls-livecam-server/brand.png /var/www/hls-livecam/brand.png
+        # The home page is served from the web root too -- nginx resolves /
+        # to home.html -- and refreshing index.html while leaving it behind
+        # is the same staleness this block exists to prevent, one page over.
+        if [ -f /usr/share/hls-livecam-server/home.html ]; then
+            cp /usr/share/hls-livecam-server/home.html /var/www/hls-livecam/home.html
+            chmod 0644 /var/www/hls-livecam/home.html
+        fi
         echo "  viewer refreshed: /var/www/hls-livecam/index.html"
     fi
     echo ""
@@ -65,11 +72,17 @@ pre_remove() {
     systemctl disable mediamtx   2>/dev/null || true
     systemctl stop broadcast-api 2>/dev/null || true
     systemctl disable broadcast-api 2>/dev/null || true
-    systemctl stop nginx         2>/dev/null || true
-    systemctl disable nginx      2>/dev/null || true
     systemctl daemon-reload      2>/dev/null || true
     rm -f /etc/sudoers.d/hls-livecam-dark
     rm -f /etc/sudoers.d/hls-livecam-services
     rm -f /etc/sudoers.d/camdash-smart
+    # NEVER stop or disable nginx. It is a system-wide service shared with
+    # every other site on the host -- ele-messenger is on the same nginx on
+    # both nodes -- so removing this package was taking those down with it.
+    # The Debian prerm carries the same warning from when its v2.0.0 did
+    # exactly this; the Arch side was never corrected to match. Remove our
+    # own config and reload, which is the most a package may do to a service
+    # it does not own, and keep going if nginx -t fails for unrelated reasons.
     rm -f /etc/nginx/conf.d/hls-livecam.conf
+    nginx -t 2>/dev/null && systemctl reload nginx 2>/dev/null || true
 }

@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=laptop-livecam
-pkgver=7.0.4
+pkgver=7.0.7
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -20,8 +20,8 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=laptop-livecam.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livecam/archive/refs/tags/v$pkgver.tar.gz"
         "laptop-livecam.install")
-sha256sums=('ac8add79fd63b0563856735fc055b316449c198e53a3a511a2434b27c9ae257d'
-            'SKIP')
+sha256sums=('5a9ee3e8f1b7fcb81e9704153baa6c5a6047b688a04386516764726e400ef170'
+            '2e5b91aca68ee1d281dedb7a7936bd71e56664e5e4d229189ca1e537f2566918')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -114,6 +114,30 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/cams/cams.html"
     install -Dm644 pkg/usr/share/hls-livecam-server/ffmpeg-cam.service \
                    "$pkgdir/usr/share/hls-livecam-server/ffmpeg-cam.service"
+
+    # ── The camera suite ─────────────────────────────────────────────────────
+    # hls-livecam-setup-arch runs `sh /usr/share/hls-livecam-server/\
+    # hls-livecam-suite` as its last service step, and the suite's own line 16
+    # installs hls-livecam.target from this same directory. The package shipped
+    # NEITHER, so a fresh Arch install ran the wizard to the end and then
+    # failed to put anything under the target -- the switch camdash --start /
+    # --yield / --status operates. The .deb never showed it, because pkg/ is
+    # packaged wholesale there and both files came along for free. Third time
+    # this payload has been enumerated short; see cv_persist and vendor/
+    # hls.min.js above.
+    install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-suite \
+                   "$pkgdir/usr/share/hls-livecam-server/hls-livecam-suite"
+    install -Dm644 pkg/usr/share/hls-livecam-server/hls-livecam.target \
+                   "$pkgdir/usr/share/hls-livecam-server/hls-livecam.target"
+
+    # ── Home page ────────────────────────────────────────────────────────────
+    # The nginx config this package installs serves / from the web root's
+    # home.html (`try_files /home.html =404`), so without this file / is a 404
+    # on a fresh install. It is live on both nodes today only because somebody
+    # copied it there by hand on Oct 15. post_upgrade refreshes it alongside
+    # index.html.
+    install -Dm644 pkg/usr/share/hls-livecam-server/home.html \
+                   "$pkgdir/usr/share/hls-livecam-server/home.html"
 
     # NOTE: var/www/hls-livecam/index.html is NOT installed here.
     # hls-livecam-setup populates /var/www/hls-livecam/ at configure time,
