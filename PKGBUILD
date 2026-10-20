@@ -48,11 +48,20 @@ build() {
   local rev; rev=$(/opt/rocm/lib/llvm/bin/clang --version | sed -n 's|.*ROCm/llvm-project.git \([0-9a-f]\{40\}\).*|\1|p')
   [[ -f "$TC/lib/.vopd-patched" && "$(cat "$TC/lib/.vopd-patched")" == "$rev"* ]] \
     || die "shadow toolchain missing/stale: $TC/lib not marked for clang rev $rev (rebuild it after ROCm updates)"
-  export LD_LIBRARY_PATH="$TC/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-  msg2 "shadow libLLVM active: $TC/lib (rev ${rev:0:12}, pairing=${_rad_vopd})"
+  # Scope the shadow env to the HIP compiler via a launcher (2026-10-20): a global
+  # LD_LIBRARY_PATH makes /usr/bin/ld resolve libamd_comgr's libLLVM.so.24.0git dep
+  # against the patched copy, which re-exports none of the libstdc++ symbols stock
+  # ROCm leaks under LLVM_24.0 — v1.10.0's r4d_selftest links comgr, so the whole
+  # build died in build() (makepkg exit 4). GCC host compiles never need the patch.
+  local launcher="${srcdir}/rad-shadow-launch"
+  printf '#!/bin/sh\nLD_LIBRARY_PATH="%s${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" exec "$@"\n' \
+    "$TC/lib/" > "$launcher"
+  chmod +x "$launcher"
+  msg2 "shadow libLLVM active: $TC/lib (rev ${rev:0:12}, pairing=${_rad_vopd}, launcher-scoped)"
   cmake -S . -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_HIP_COMPILER_LAUNCHER="$launcher" \
     -DRAD_WITH_HIP=ON \
     -DRAD_GPU_TARGETS="${_hip_archs}" \
     -DRAD_WITH_FFMPEG=ON \
