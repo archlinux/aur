@@ -1,0 +1,19 @@
+pkgbase = wifi-heatmapper-bin
+	pkgdesc = Measure Wi-Fi signal strength and throughput and draw heat maps on a floor plan (prebuilt AppImage)
+	pkgver = 0.6.0
+	pkgrel = 2
+	url = https://github.com/hnykda/wifi-heatmapper
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = webkit2gtk-4.1
+	depends = networkmanager
+	depends = iw
+	optdepends = iperf3: throughput (speed) measurement against an iperf3 server
+	provides = wifi-heatmapper
+	conflicts = wifi-heatmapper
+	options = !strip
+	source_x86_64 = wifi-heatmapper-bin-0.6.0.AppImage::https://github.com/hnykda/wifi-heatmapper/releases/download/v0.6.0/WiFi.Heatmapper_0.6.0_amd64.AppImage
+	sha256sums_x86_64 = e43c5311baa827daa09af323bbce1f22fecbdbfa05ff39b8e3cc935c2561fbd5
+
+pkgname = wifi-heatmapper-bin
