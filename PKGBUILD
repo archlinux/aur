@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=typephp
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='AOT compiler that compiles PHP to native binaries'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ source=(
   'php-config.sh'
   'typephp-runtime-root.patch'
 )
-b2sums=('c578bb678d509a352a7c05e4cbca67817db8d79893b295eea636d2c4ca371c5547762f90e836ce9324e637e42ddba24d8ca46f973bb90c049a13be947e1f3b0c'
+b2sums=('ee11679359eb4dfe59319d0bec6373319addb9fd5303068baa4a726642e190c729eb1ad056534f01fabee721ff4d0f667263bbad7ebd6bdd2f578ccb909731e2'
         '1054bbbf7ca92037dbbc6306509ea9079f5bfe787aac50dec325f900ec1ef3d58ec4c84ae9a4a4d3d58f2acba8431a221cb69a04cfc92984ae9e3c1a5c914b4e'
         'ecc44f15abc5a0ef0519fb53b6e8fbe7b1c1c54ee78395e69e6df9a23e9cf911453aacd10a44cd301fda21a25537038fe2640aa8edc2867125082796edabd500'
         '0fb3520559f06c333b67894671815fb570ee7b5ffa3f1d1b2f6176a87dd123534457a66fb1a7fa69c7021421126faff0522237b8b8802056f6cea8e88e9b27d3'
