@@ -1,6 +1,6 @@
 pkgbase = chatterino2-7tv-bin
 	pkgdesc = A fork of Chatterino2 with built-in support for 7tv emotes
-	pkgver = 7.5.5
+	pkgver = 2.5.6
 	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = chatterino2-7tv-bin
 	optdepends = gst-plugins-good: For audio output
 	provides = chatterino
 	conflicts = chatterino
-	source_x86_64 = chatterino2-7tv-7.5.5_x64.deb::https://github.com/Seventv/chatterino7/releases/download/v7.5.5/Chatterino-Ubuntu-22.04-Qt6.deb
-	sha256sums_x86_64 = e5bbe1ac07f1d869316cbac72aeffe53f95039c3bd3f1bca94f262eab63ed843
+	source_x86_64 = chatterino2-7tv-2.5.6_x64.deb::https://github.com/Seventv/chatterino7/releases/download/v2.5.6/Chatterino-Ubuntu-26.04-x86_64.deb
+	sha256sums_x86_64 = 4d1b03a69aa2ba059ebf213d78b7ef7ea003f074e57ba6f8bc49ce0d36ab142d
 
 pkgname = chatterino2-7tv-bin
