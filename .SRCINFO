@@ -5,11 +5,8 @@ pkgbase = omriss
 	url = https://github.com/nabbisen/omriss
 	arch = x86_64
 	license = Apache-2.0
-	depends = gcc-libs
-	depends = glibc
-	depends = fontconfig
-	depends = libxkbcommon
-	depends = vulkan-icd-loader
+	depends = webkit2gtk-4.1
+	depends = gtk3
 	source = omriss-0.0.0.tar.gz::https://github.com/nabbisen/omriss/archive/refs/tags/0.0.0.tar.gz
 	sha256sums = DUMMY-FOR-INITIALIZATION
 
