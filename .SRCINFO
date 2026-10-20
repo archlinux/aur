@@ -1,6 +1,6 @@
 pkgbase = xfce4-fsguard-plugin-git
 	pkgdesc = File system usage monitor plugin for the Xfce4 panel
-	pkgver = xfce4.fsguard.plugin.1.2.0.r15.gbdf46d8
+	pkgver = 1.2.0.r21.g289fd3d
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-fsguard-plugin
 	install = xfce4-fsguard-plugin.install

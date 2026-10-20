@@ -1,6 +1,6 @@
 pkgname=xfce4-fsguard-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=xfce4.fsguard.plugin.1.2.0.r15.gbdf46d8
+pkgver=1.2.0.r21.g289fd3d
 pkgrel=1
 pkgdesc='File system usage monitor plugin for the Xfce4 panel'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	  cd "$_pkgname"
-	    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	    git describe --long --tags | sed 's/^xfce4-fsguard-plugin-//;s/\([^-]*-g\)/r\1/;s/-/./g'
     }
 
 build() {
