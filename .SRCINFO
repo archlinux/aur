@@ -1,6 +1,6 @@
 pkgbase = vantage-browser-appimage
 	pkgdesc = Vantage 浏览器 - 基于 Firefox ESR (AppImage 封装) - 非官方社区打包
-	pkgver = 153.4.0
+	pkgver = 153.5.0
 	pkgrel = 1
 	url = https://github.com/asystech-chen/Vantage
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = vantage-browser-appimage
 	provides = vantage-browser
 	conflicts = vantage-browser
 	conflicts = vantage-browser-bin
-	noextract = vantage-153.4.0-1.x86_64.AppImage
-	noextract = vantage-153.4.0-1.aarch64.AppImage
-	source_x86_64 = https://github.com/asystech-chen/Vantage/releases/download/v153.4.0-1/vantage-153.4.0-1.x86_64.AppImage
-	sha256sums_x86_64 = 2cf5ea29b91bd2d79fc8c9ff1b777a862c9cf778ae4799fdfd7845769e84df72
-	source_aarch64 = https://github.com/asystech-chen/Vantage/releases/download/v153.4.0-1/vantage-153.4.0-1.aarch64.AppImage
-	sha256sums_aarch64 = cdbd0a05dee6506ae8b7e2179f20a156b8891a9d0eefb8585c59ece207883986
+	noextract = vantage-153.5.0-1.x86_64.AppImage
+	noextract = vantage-153.5.0-1.aarch64.AppImage
+	source_x86_64 = https://github.com/asystech-chen/Vantage/releases/download/v153.5.0-1/vantage-153.5.0-1.x86_64.AppImage
+	sha256sums_x86_64 = 4488f263724a1ea3417fc7096640855881c14e128b23aa03b9fbd40a69db5695
+	source_aarch64 = https://github.com/asystech-chen/Vantage/releases/download/v153.5.0-1/vantage-153.5.0-1.aarch64.AppImage
+	sha256sums_aarch64 = 7f12aad0c50c5d9608ddf6f02460025241d2b8b99ba59d3fe151401766b4945e
 
 pkgname = vantage-browser-appimage
