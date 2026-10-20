@@ -1,0 +1,18 @@
+pkgbase = slack-mcp-server-bin
+	pkgdesc = MCP server for Slack — enables LLM agents to read channels, threads, and DMs via browser or bot tokens
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/korotovsky/slack-mcp-server
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = slack-mcp-server
+	conflicts = slack-mcp-server
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/korotovsky/slack-mcp-server/v1.3.0/LICENSE
+	sha256sums = c9c83612abe6c352b95a2fc1146638accdd5b348b21cdef333cc78f756e22397
+	source_x86_64 = slack-mcp-server-bin-1.3.0-x86_64::https://github.com/korotovsky/slack-mcp-server/releases/download/v1.3.0/slack-mcp-server-linux-amd64
+	sha256sums_x86_64 = d1525962e9b9dbfdd2eaf48d0a81ca1eca7d8f1862b8d34931b812c850b3e568
+	source_aarch64 = slack-mcp-server-bin-1.3.0-aarch64::https://github.com/korotovsky/slack-mcp-server/releases/download/v1.3.0/slack-mcp-server-linux-arm64
+	sha256sums_aarch64 = a307a48d16c2261346bdc257274cdcdb8b2027c867dc971b41d52cef36472c88
+
+pkgname = slack-mcp-server-bin
