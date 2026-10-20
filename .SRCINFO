@@ -1,6 +1,6 @@
 pkgbase = replayer
 	pkgdesc = Video player for action cam footage with frame-by-frame and slow-motion playback
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/BorisBrock/Replayer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = replayer
 	depends = libgcc
 	depends = libstdc++
 	depends = qt6-base
-	source = replayer-1.4.0.tar.gz::https://github.com/BorisBrock/Replayer/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 0cace81655fff459ce8921353dfb6ed3a790486ae9e38e89638f4e8d8b9c7f24
+	source = replayer-1.5.0.tar.gz::https://github.com/BorisBrock/Replayer/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 3b8f88870b4b4bf3b1c23f92a6c6fb2d4ecf85c5d7a237a472815c2c542ff068
 
 pkgname = replayer
