@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
-pkgname="rusthound-ce"
-pkgver=2.5.26
+pkgname=rusthound-ce
+pkgver=2.5.27
 pkgrel=1
 pkgdesc="BloodHound CE collector written in Rust"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=(
   'git'
 )
 source=("git+$url#tag=v$pkgver")
-b2sums=('15249c259ae1003cec17e1e7678273d8baf57f4a016c8920f5815ef94a39b96b37a996d759b1e92d4a1a520006bb3ec0746570692898f74258de2a4998c7dbb4')
+b2sums=('9ca49b479c74f05e07a3b19f04b6bf2360af7fc1d0e3e548a0fcf77d4f6fdf09972b31c197177d9f8a5f6f88fdfbb7ea939fd8158718fe6a763c130b3c2815b9')
 options=('!lto')
 
 prepare() {
@@ -29,13 +29,13 @@ build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo b --frozen -r
+  cargo b -r --frozen
 }
 
 check() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo t --frozen --no-fail-fast -r
+  cargo t -r --frozen --no-fail-fast
 }
 
 package() {
