@@ -3,7 +3,7 @@
 pkgname=nono-ai
 _pkgname=nono
 pkgver=0.80.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nolabs-ai/nono'
