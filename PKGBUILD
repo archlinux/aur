@@ -4,7 +4,7 @@
 
 pkgname=perl-libapreq2
 pkgver=2.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A safe, standards-compliant, high-performance library used for parsing HTTP cookies, query-strings and POST data."
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/libapreq2"
@@ -23,8 +23,14 @@ prepare() {
 }
 
 build() {
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
+         PERL_AUTOINSTALL=--skipdeps                            \
+         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+         MODULEBUILDRC=/dev/null
+
   cd  $srcdir/libapreq2-$pkgver
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL --with-apache2-apxs=/usr/bin/apxs --with-mm-opts="INSTALLDIRS=vendor"
+  perl Makefile.PL --with-apache2-apxs=/usr/bin/apxs --with-mm-opts="INSTALLDIRS=vendor"
   find . -type f -name Makefile -exec sed -i 's#-ldb-5.1#-ldb-5.2#' {} \;
   sed -i 's#-ldb-5.1#-ldb-5.2#' apreq2-config
   make LD_RUN_PATH="/usr/lib"  # build sets RPATH to non-sanitized path, force correct rpath
