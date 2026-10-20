@@ -1,6 +1,6 @@
 pkgbase = quillscribe
 	pkgdesc = Beautiful Voice-to-Text Transcription App with local and cloud speech-to-text support
-	pkgver = 0.3.23
+	pkgver = 0.3.24
 	pkgrel = 1
 	url = https://github.com/theguy000/QuillScribe
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = quillscribe
 	depends = libgl
 	depends = dbus
 	options = !lto
-	source = quillscribe-0.3.23.tar.gz::https://github.com/theguy000/QuillScribe/archive/refs/tags/v0.3.23.tar.gz
-	sha256sums = a40fb0669009e0f1da2a17900357416ab8df98f3f92d78f2c996823f90e7e801
+	source = quillscribe-0.3.24.tar.gz::https://github.com/theguy000/QuillScribe/archive/refs/tags/v0.3.24.tar.gz
+	sha256sums = e4ba1c8ab7fcf84446239a1a2d7865efa9152c917a8c6109ae6eff6395a144cc
 
 pkgname = quillscribe
