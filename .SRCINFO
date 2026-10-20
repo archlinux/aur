@@ -1,6 +1,6 @@
 pkgbase = hypr-rdp
 	pkgdesc = Native RDP server for Hyprland
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/MuNeNICK/hypr-rdp
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = hypr-rdp
 	makedepends = cargo
 	makedepends = clang
 	makedepends = cmake
+	depends = pam
 	depends = fuse3
 	depends = libpulse
 	depends = libva
@@ -18,7 +19,8 @@ pkgbase = hypr-rdp
 	optdepends = intel-media-driver: VA-API hardware encoding for Intel GPUs
 	optdepends = libva-mesa-driver: VA-API hardware encoding for AMD GPUs
 	options = !debug
-	source = hypr-rdp-0.1.6.tar.gz::https://github.com/MuNeNICK/hypr-rdp/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 6857d170da5d678211eb5318bb03c1bd3ff9503f5c26cf0ea05755fa63ff1d13
+	backup = etc/pam.d/hypr-rdp
+	source = hypr-rdp-0.1.7.tar.gz::https://github.com/MuNeNICK/hypr-rdp/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 0035e9321478c1a9caf2bb6d69adb1e5da69eb995d5227d9fb0b5b58c625d54f
 
 pkgname = hypr-rdp
