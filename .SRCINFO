@@ -5,14 +5,14 @@ pkgbase = perl-curses-panels-menus-forms
 	url = https://metacpan.org/dist/Curses
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	depends = perl
 	depends = ncurses
+	depends = glibc
 	provides = perl-curses
 	conflicts = perl-curses
 	options = !emptydirs
 	source = https://www.cpan.org/authors/id/G/GI/GIRAFFED/Curses-1.46.tar.gz
-	md5sums = a170d6e3ef0db20144c338dff52d8b09
+	sha256sums = 9631d6e3e2859c85913d8b8724f61fbebb9e932e9e50aa0493a4e0276660a3f9
 
 pkgname = perl-curses-panels-menus-forms
