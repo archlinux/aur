@@ -1,7 +1,7 @@
 # Maintainer: TTsdzb <ttsdzb at outlook dot com>
 
 pkgname=heroic-games-launcher-proxy-bin
-pkgver=2.22.3
+pkgver=2.22.4
 pkgrel=1
 pkgdesc="An Open source Launcher for Epic, Amazon and GOG Games. Patched for proxy envs support."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/TTsdzb/HeroicGamesLauncher/"
 license=('GPL-3.0-only')
 source=("https://github.com/TTsdzb/HeroicGamesLauncher/releases/download/v${pkgver}/Heroic-${pkgver}-linux-x64.pacman")
 noextract=("Heroic-${pkgver}-linux-x64.pacman")
-sha256sums=(9c924a0328e57903dd423e7154695064811921da735b1d18a5799f6e3ff623dc)
+sha256sums=(865bf4632f0f1926af46f02b7468bbcddd3c2851f46dc61961a306aff63531ff)
 options=(!strip)
 depends=(
   which
