@@ -1,0 +1,16 @@
+pkgbase = tekstide-bin
+	pkgdesc = A placeholder package for tekstide-bin
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/nabbisen/tekstide
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	source = tekstide-bin-0.0.0.tar.gz::https://github.com/nabbisen/tekstide/archive/refs/tags/0.0.0.tar.gz
+	sha256sums = DUMMY-FOR-INITIALIZATION
+
+pkgname = tekstide-bin
