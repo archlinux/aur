@@ -10,7 +10,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing"
 arch=('x86_64')
-url="https://buildhut.fly.dev/apps/Polify"
+url="https://hut.buildr.fun/apps/Polify"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
          'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav'
@@ -19,11 +19,11 @@ makedepends=('patchelf')
 provides=('polify')
 conflicts=('polify' 'polify-git')
 validpgpkeys=('EF27591A48D4B6F7C7E55F49EC8E0E98E7C13D19')
-source=("polify-${pkgver}-linux-x86_64.tar.zst::https://buildhut.fly.dev/api/apps/Polify/latest/linux/x86_64/tar.zst"
-        "polify-${pkgver}-linux-x86_64.tar.zst.sig::https://buildhut.fly.dev/api/apps/Polify/latest/linux/x86_64/tar.zst/signature")
-sha256sums=('SKIP'
+source=("polify-${pkgver}-linux-x86_64.tar.zst::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst"
+        "polify-${pkgver}-linux-x86_64.tar.zst.sig::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst/signature")
+sha256sums=('58f41983f4ad33a794781a1314a812889e7f357493c4de9c9e5a816293072904'
             'SKIP')
-b2sums=('SKIP'
+b2sums=('e123e10117960b55eaecbb1f8f68b6875ca290298ce04b6daba8218922369ae3af110168f3af6b7eac88f3ec764e86d1524e6c583d3c58b785870119f48d67b6'
         'SKIP')
 
 # Expected tarball layout (from make release):
