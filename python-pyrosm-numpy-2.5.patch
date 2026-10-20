@@ -1,0 +1,12 @@
+diff --unified --recursive --text a/pyrosm/utils/__init__.py b/pyrosm/utils/__init__.py
+--- a/pyrosm/utils/__init__.py	2026-10-17 23:20:12.999453500 +0200
++++ b/pyrosm/utils/__init__.py	2026-10-20 17:39:44.773738438 +0200
+@@ -299,7 +299,7 @@
+ 
+ 
+ def datetime_to_unix_time(dt):
+-    return (dt - pd.Timestamp("1970-01-01", tz="UTC")) // pd.Timedelta("1s")
++    return (dt - pd.Timestamp("1970-01-01", tz="UTC")) // pd.Timedelta(1, "second")
+ 
+ 
+ def unix_time_to_datetime(unix_time):
