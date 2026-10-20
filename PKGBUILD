@@ -31,7 +31,7 @@ check(){
   cargo test --release
 }
 
-package_alacritty-git() {
+package() {
 	cd "$_pkgname"
 
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "extra/linux/Alacritty.desktop"
