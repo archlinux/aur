@@ -1,0 +1,24 @@
+pkgbase = ely-doc-app-bin
+	pkgdesc = ElyDoc - Word document editor from the Ely Office suite
+	pkgver = 0.1.8
+	pkgrel = 2
+	url = https://office.elygpui.com
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	optdepends = vulkan-icd-loader: GPU accelerated rendering
+	optdepends = wayland: Wayland session support
+	provides = ely-doc
+	conflicts = ely-doc
+	conflicts = ely-doc-bin
+	options = !strip
+	options = !debug
+	source_x86_64 = ely-doc_0.1.8-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.8/ely-doc_0.1.8-1_amd64.deb
+	sha256sums_x86_64 = 5f43732349182ae9445658b8c83052d3538c5c76f97d57ff79991d58f765f42c
+
+pkgname = ely-doc-app-bin
