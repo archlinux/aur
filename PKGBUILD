@@ -2,12 +2,12 @@
 
 pkgname=cc-clip
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipboard bridge for pasting images into AI coding agents over SSH"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShunmeiCho/cc-clip"
 license=('MIT')
-depends=('openssh')
+depends=('glibc' 'openssh')
 makedepends=('go')
 optdepends=('xclip: X11 clipboard support'
             'wl-clipboard: Wayland clipboard support'
@@ -20,7 +20,7 @@ sha256sums=('aa06022eb029b2e0e57ef6160c10f7addbf57689ea2280535eb93166888ad686')
 prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {

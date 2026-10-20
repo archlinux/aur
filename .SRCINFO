@@ -1,12 +1,13 @@
 pkgbase = cc-clip
 	pkgdesc = Clipboard bridge for pasting images into AI coding agents over SSH
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShunmeiCho/cc-clip
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	depends = openssh
 	optdepends = xclip: X11 clipboard support
 	optdepends = wl-clipboard: Wayland clipboard support
