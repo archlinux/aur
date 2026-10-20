@@ -10,7 +10,7 @@
 # end-user application. arch=('any') — pure Python, no compiled extension.
 
 pkgname=jellytoast
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Audio-first native Jellyfin / Subsonic desktop music client with bit-perfect mpv playback'
 arch=('any')
@@ -60,7 +60,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 # cut). The value below matches the $pkgver tag archive, so a direct
 # `makepkg` of this checkout works.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('83b9ff94d7a65d691929cd14480322a90e2ed2b550b2cdb6d3ade756ad1dcb8e')
+sha256sums=('5e9255f1d307c6d781adf80296c9f3b71f5ad3e9bdc18c4aeb0a8b87cf0c262f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

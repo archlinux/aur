@@ -1,6 +1,6 @@
 pkgbase = jellytoast
 	pkgdesc = Audio-first native Jellyfin / Subsonic desktop music client with bit-perfect mpv playback
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/wolfgangwarehaus/jellytoast
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = jellytoast
 	optdepends = python-numpy: audio visualizer
 	optdepends = python-async-upnp-client: DLNA casting (AUR; app targets >=0.47 — older may misbehave)
 	optdepends = python-soco: Sonos casting (AUR)
-	source = jellytoast-0.2.2.tar.gz::https://github.com/wolfgangwarehaus/jellytoast/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 83b9ff94d7a65d691929cd14480322a90e2ed2b550b2cdb6d3ade756ad1dcb8e
+	source = jellytoast-0.2.3.tar.gz::https://github.com/wolfgangwarehaus/jellytoast/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 5e9255f1d307c6d781adf80296c9f3b71f5ad3e9bdc18c4aeb0a8b87cf0c262f
 
 pkgname = jellytoast
