@@ -1,7 +1,7 @@
 pkgbase = synergy1-bin
 	pkgdesc = Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux.
-	pkgver = 1.22.2
-	pkgrel = 2
+	pkgver = 1.22.3
+	pkgrel = 1
 	url = https://symless.com/synergy
 	arch = x86_64
 	license = custom:Proprietary
