@@ -44,7 +44,7 @@ prepare_staging() {
 package_fcitx5-lotus-git() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
-    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libevdev' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
+    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libevdev' 'libinput' 'libnotify' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
     optdepends=(
         'fcitx5-lotus-openrc-git: OpenRC init script for fcitx5-lotus'
         'fcitx5-lotus-runit-git: Runit service for fcitx5-lotus'
