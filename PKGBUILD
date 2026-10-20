@@ -2,15 +2,15 @@
 
 pkgname=opence-bin
 _pkgname=opence
-pkgver=235
-_commit=c2086635394d78279e8c2653312d3ffa1446c9de # the commit tagged build-$pkgver
+pkgver=244
+_commit=6ec42856d73e258e5a8c7e9cd19161f46d89d0e4 # the commit tagged build-$pkgver
 pkgrel=1
 pkgdesc='Halo: Combat Evolved ported from the Xbox decompilation (needs your own Xbox disc image)'
 arch=('x86_64')
 url='https://github.com/OpenCommunityEdition/OpenCE'
-# The port is CC0; the rest are the libraries built into it, whose license
+# The port is AGPL-3.0-or-later (CC0 before its relicensing); the rest are the libraries built into it, whose license
 # files come with the release.
-license=('CC0-1.0' 'Apache-2.0' 'BSD-3-Clause' 'BSD-4-Clause' 'ISC' 'MIT' 'OFL-1.1' 'Zlib')
+license=('AGPL-3.0-or-later' 'Apache-2.0' 'BSD-3-Clause' 'BSD-4-Clause' 'ISC' 'MIT' 'OFL-1.1' 'Zlib')
 # The game is 32-bit x86 code (its data has 32-bit pointers, as on the Xbox).
 # The release brings its own SDL3, which loads the rest when it starts.
 depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-libxext' 'lib32-mesa'
@@ -23,7 +23,7 @@ optdepends=('lib32-pipewire: sound through PipeWire (one of the sound libraries 
             'lib32-libdecor: window borders on GNOME under Wayland'
             'zenity: the disc image picker at the first start, where there is no desktop portal'
             'xdg-utils: invite links that open the game'
-	    'lib32-nvidia-uitils: graphics on NVIDIA cards')
+            'lib32-nvidia-utils: graphics on NVIDIA cards')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 # Upstream's files as they are: its crash reports name addresses in this build.
@@ -33,15 +33,13 @@ install="$pkgname.install"
 # this release and its tag are gone and pkgver must be bumped (update.sh).
 _raw="https://raw.githubusercontent.com/OpenCommunityEdition/OpenCE/$_commit"
 source=("halo-linux-release-$pkgver.zip::$url/releases/download/build-$pkgver/halo-linux-release.zip"
-        "LICENSE-$pkgver.md::$_raw/LICENSE.md"
         "LINUX-$pkgver.md::$_raw/port/linux/README.md"
         "opence-icon-256-$pkgver.png::$_raw/port/assets/icon/opence-icon-256.png"
         "opence-icon-512-$pkgver.png::$_raw/port/assets/icon/opence-icon.png"
         'opence.sh'
         'opence.desktop')
-sha256sums=('c54ef6610128a4de68606837cfc3f22a1ed9167e16298b5b45e44b0e286564d7'
-            'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499'
-            '78a557805b9b07567f9278f6bd79548e0f00e33f410ae58229fbcf7b0850c2c7'
+sha256sums=('592d32efbd9d06c88484837f7a602518616e8cc72849492bf821e30687534326'
+            '3406e0ed5ef6c5e9373b0a67cbb8b46161386ad76d72d23ca87ba6bdd024cf3a'
             '800572a2fdb7ad2521522b2a0a11d31f13f8dd9183a4314ff0849209f8732509'
             '4bfa804c3d8ee9d382cf05d5446d2fc6b01b40d2a047b1b76d897c96f9a8c74d'
             '1f0340a31cecf5f42e86979a333b6cf2faba3805a58553861fe9aaf76de9461a'
@@ -60,6 +58,6 @@ package() {
   # The controls, the settings and multiplayer
   install -Dm644 "LINUX-$pkgver.md" "$pkgdir/usr/share/doc/$_pkgname/LINUX.md"
 
-  install -Dm644 "LICENSE-$pkgver.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" ./*-LICENSE.txt ./*-COPYING.txt ./*-OFL.txt
 }
