@@ -1,0 +1,7 @@
+# Build artifacts (never commit these)
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+notion-calendar-electron-fixed/
+smoke.log

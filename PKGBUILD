@@ -19,6 +19,7 @@ makedepends=(
 	7zip
 	asar
 	curl
+	electron41
 	python
 )
 provides=('notion-calendar-electron')
@@ -86,6 +87,77 @@ prepare() {
 
 	# repacking asar with all the patches
 	asar p "$srcdir/asar_patched" "$srcdir/app.asar" --unpack *.node
+
+	# --- runtime smoke test ---------------------------------------------
+	# The 1.141.0 bundle initialises Sentry with an undefined DSN and
+	# enableNative defaults to true, so @sentry/electron throws during
+	# startup and the app never opens a window. The patch above fixes it,
+	# but a future upstream re-minify could reintroduce it (or break
+	# something else) without the build noticing. So: actually RUN the
+	# patched app and require that it starts and stays up.
+	#
+	# --headless runs the real electron runtime with no display server,
+	# which is what a build sandbox has. The signal we need is exact: the
+	# Sentry throw happens during startup, before any window would exist,
+	# so "the process reached its event loop and stayed alive" means the
+	# startup path is clean.
+	echo "==> smoke test: launching the patched app (headless)"
+	local _log="$srcdir/smoke.log"
+	local _pid
+	env -u DISPLAY -u WAYLAND_DISPLAY \
+		electron41 --headless "$srcdir/app.asar" >"$_log" 2>&1 &
+	_pid=$!
+
+	# Give it time to start. If the Sentry bug is present the process dies
+	# within a second or two.
+	local _i
+	for _i in $(seq 1 20); do
+		sleep 0.5
+		kill -0 "$_pid" 2>/dev/null || break
+	done
+
+	local _alive=0
+	kill -0 "$_pid" 2>/dev/null && _alive=1
+
+	if [[ $_alive -eq 0 ]]; then
+		echo "SMOKE TEST FAILED: the app exited during startup" >&2
+		cat "$_log" >&2
+		exit 1
+	fi
+
+	# It is running. Now check it did not log the fatal startup errors.
+	# NOTE: makepkg runs PKGBUILD functions under `set -e`, and `wait` returns
+	# 143 when the process was killed by SIGTERM. Without the `|| true` here
+	# the whole prepare() aborts silently with no diagnostic.
+	kill -TERM "$_pid" 2>/dev/null || true
+	wait "$_pid" 2>/dev/null || true
+
+	if grep -qE "Attempted to enable Electron native crash reporter|SentryError" "$_log"; then
+		echo "SMOKE TEST FAILED: a fatal startup error was logged" >&2
+		grep -E "SentryError|Attempted to enable" "$_log" >&2
+		exit 1
+	fi
+
+	# A syntax error in the patched bundle means the app cannot even load.
+	if grep -qE "SyntaxError|Uncaught Exception" "$_log"; then
+		echo "SMOKE TEST FAILED: the app threw during load" >&2
+		grep -E "SyntaxError|Uncaught Exception" "$_log" >&2
+		exit 1
+	fi
+
+	# The patched main.js must actually be in the asar we are about to ship.
+	# (A patch script that silently did nothing must not pass the build.)
+	if ! asar e "$srcdir/app.asar" "$srcdir/.verify" 2>/dev/null; then
+		echo "SMOKE TEST FAILED: could not read back the repacked asar" >&2
+		exit 1
+	fi
+	if ! grep -q "enableNative:!1" "$srcdir/.verify/build/main/main.js"; then
+		echo "SMOKE TEST FAILED: the sentry guard is missing from the packed asar" >&2
+		exit 1
+	fi
+	rm -rf "$srcdir/.verify"
+
+	echo "==> smoke test passed"
 }
 
 package() {
