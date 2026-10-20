@@ -1,6 +1,6 @@
 pkgbase = kappa-file-manager
 	pkgdesc = Brutalist file manager for Ryoku OS (Rust core, Quickshell UI); independent community project
-	pkgver = 0.1.0_beta.2
+	pkgver = 0.1.1_beta
 	pkgrel = 1
 	url = https://github.com/satodu/kappa-file-manager
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kappa-file-manager
 	optdepends = matugen: Kappa-only color schemes (Appearance)
 	optdepends = swww: set an image as wallpaper from the details panel
 	optdepends = ghostty: default terminal for "Open terminal here" (any terminal in $TERMINAL also works)
-	source = kappa-file-manager-0.1.0_beta.2.tar.gz::https://github.com/satodu/kappa-file-manager/archive/refs/tags/v0.1.0-beta.2.tar.gz
-	sha256sums = 59dd958e43bafe37765070df79919b903f2d81965655b07749b08a206f52dd3f
+	source = kappa-file-manager-0.1.1_beta.tar.gz::https://github.com/satodu/kappa-file-manager/archive/refs/tags/v0.1.1-beta.tar.gz
+	sha256sums = 0ab87916a8eda22fb3ea0d5060f01fb25fa6730ff60320da2995991efbb8375a
 
 pkgname = kappa-file-manager
