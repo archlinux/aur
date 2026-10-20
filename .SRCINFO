@@ -1,0 +1,15 @@
+pkgbase = mitos-editor-bin
+	pkgdesc = A fast and minimal modal text editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mitos-editor/mitos
+	arch = x86_64
+	license = MPL-2.0
+	depends = gcc-libs
+	depends = glibc
+	options = !strip
+	options = !debug
+	source = https://github.com/mitos-editor/mitos/releases/download/v0.1.0/mitos_0.1.0-1_amd64.deb
+	sha256sums = d7abfee78ede9f7e88022e9146f5938eac89642f0d454025d24fb2058a853aee
+
+pkgname = mitos-editor-bin
