@@ -14,7 +14,7 @@
 # above the release it came after and says on sight what it is.
 
 pkgname=viewport-chromium-git
-pkgver=0.2.0.r43.gb7b0dc5
+pkgver=0.3.0.r267.g1d3e860
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — Chromium, driven as a child process (git)'
 arch=('x86_64' 'aarch64')
@@ -81,6 +81,9 @@ conflicts=('viewport'
            'viewport-chromium')
 options=('!lto')
 
+# A VCS source, deliberately: this is the development package and follows
+# `main`, so there is no immutable revision to name. makepkg skips checksums
+# for VCS sources; the moving branch is the point.
 source=("viewport::git+https://github.com/codebam/viewport.git")
 sha256sums=('SKIP')
 
