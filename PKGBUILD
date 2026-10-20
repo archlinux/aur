@@ -2,12 +2,15 @@
 
 pkgname=scc
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sloc, Cloc and Code: a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go'
 arch=('x86_64' 'i386')
 url="https://github.com/boyter/scc"
 license=('MIT')
 depends=('glibc')
+optdepends=('bash: bash completion'
+            'fish: fish completion'
+            'zsh: zsh completion')
 makedepends=('go')
 source=("$pkgname-$pkgver::https://github.com/boyter/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('4f3cf36010c542b10d5582afb91c668b26889160b184deee21b4319347030a7c')
@@ -36,6 +39,16 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
+
   install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Generate completion files.
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  build/$pkgname completion --shell bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+  build/$pkgname completion --shell fish > "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+  build/$pkgname completion --shell zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
