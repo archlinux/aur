@@ -1,0 +1,21 @@
+pkgbase = ears-llm-bin
+	pkgdesc = OpenAI-compatible transcript clean-up server for ears, backed by llama.cpp
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dvjn/ears
+	install = ears-llm-bin.install
+	arch = x86_64
+	license = MIT
+	depends = llama-cpp=0.6.0
+	depends = ggml=0.26.0
+	depends = gcc-libs
+	depends = glibc
+	optdepends = ggml-cuda: NVIDIA GPU acceleration
+	optdepends = ggml-vulkan: Vulkan GPU acceleration
+	provides = ears-llm
+	conflicts = ears-llm
+	options = !debug
+	source = https://github.com/dvjn/ears/releases/download/v0.2.0/ears-llm-0.2.0-x86_64.tar.gz
+	sha256sums = 8a8496d6c4ec417d3030791cefe9734027504acc9ff678f990ea1652ee8b429c
+
+pkgname = ears-llm-bin
