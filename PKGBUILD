@@ -1,17 +1,16 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=harrypotter
-_pkgver=2.1.1
+_pkgver=2.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Palettes Generated from All \"Harry Potter\" Movies"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
   r-ggplot2
-  r-gridextra
 )
 checkdepends=(
   r-testthat
@@ -21,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f032c91d396ce69e965431316883473d')
-b2sums=('dbfb77a38a4028d011aa8e36ee744e34ef5a0d75b59aedaff28b3328704ab19b125b480b567bdc8022180665a9534c51cad653c58f334ead2127480015d4ba5c')
+md5sums=('8f953dc04e88e7723019bb17db132a71')
+b2sums=('7a603a723969d5c29a65b8eb5a73eed5f6dfc218f95af7c0b9e0f9f7318ca3c0cf2eabef741f7ee352aa7e6cdf1b6c13ab98750715f057269c9d778bc6722b8f')
 
 build() {
   mkdir build
