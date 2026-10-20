@@ -1,6 +1,6 @@
 pkgbase = llm-sessions
 	pkgdesc = TUI explorer for LLM coding-agent sessions
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://gitlab.com/wykwit/llm-sessions
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = llm-sessions
 	makedepends = rust
 	depends = git
 	options = !lto
-	source = llm-sessions-0.4.0.tar.gz::https://gitlab.com/wykwit/llm-sessions/-/archive/v0.4.0/llm-sessions-v0.4.0.tar.gz
-	sha256sums = e72ab8b40a666b1b6bc404133a8438781f926cb615da6a36b86fda89b0446482
+	source = llm-sessions-0.5.0.tar.gz::https://gitlab.com/wykwit/llm-sessions/-/archive/v0.5.0/llm-sessions-v0.5.0.tar.gz
+	sha256sums = e86d213e0f70aeac616d54cd0cbcfde79c6679feee99281361182c01f236622a
 
 pkgname = llm-sessions
