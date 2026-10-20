@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=letos-bin
 _pkgname=Letos
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A free, open source, multi-platform SQLite database manager.(Prebuilt version)"
 arch=(
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('20628dc9251146409d2631a161d7e7e24d40e5c2555a5d170914c44420b40aea')
-sha256sums_aarch64=('daf3401c88c92c1d7103ab7bbc59089cb704c5a0d1c801a417431b90c71d14e9')
-sha256sums_x86_64=('498332084a1bd2bf711bc4e98a9bb7415c31afda969d2bf7240f92991e6abf26')
+sha256sums_aarch64=('a517f68c5eadfdf8b0d5afbfba5febb6ccdad4504fdf18f1a36ee41400cb1e96')
+sha256sums_x86_64=('368cdfd904878dd1f9ed92403b6cc8fb2c8d876b17ae62bb8c2f56064bcfd9dc')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
@@ -40,6 +40,7 @@ prepare() {
         rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
