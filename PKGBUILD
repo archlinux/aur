@@ -9,11 +9,10 @@ arch=(x86_64)
 url=https://xemu.app/
 license=("GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-QEMUDistributionLicense")
 depends=(
-	gcc-libs
 	glibc
 	glslang
 	hicolor-icon-theme
-	sdl3
+	'sdl3>=3.4'
 )
 makedepends=(
 	cmake
@@ -21,12 +20,14 @@ makedepends=(
 	git
 	glib2
 	glu
-	gtk3
-	keyutils
+	libatomic
 	libepoxy
+	libgcc
 	libpcap
 	libsamplerate
 	libslirp
+	libstdc++
+	libusb
 	meson
 	nlohmann-json
 	python-distlib
@@ -74,14 +75,17 @@ build() {
 
 package() {
 	depends+=(
+		'libatomic.so'
 		'libcurl.so'
 		'libepoxy.so'
+		'libgcc_s.so'
 		'libglib-2.0.so'
 		'libpcap.so'
-		'libusb-1.0.so'
 		'libsamplerate.so'
 		'libslirp.so'
+		'libstdc++.so'
 		'libtomlplusplus.so'
+		'libusb-1.0.so'
 		'libxxhash.so'
 		'libz.so'
 	)

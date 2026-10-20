@@ -11,12 +11,14 @@ pkgbase = xemu
 	makedepends = git
 	makedepends = glib2
 	makedepends = glu
-	makedepends = gtk3
-	makedepends = keyutils
+	makedepends = libatomic
 	makedepends = libepoxy
+	makedepends = libgcc
 	makedepends = libpcap
 	makedepends = libsamplerate
 	makedepends = libslirp
+	makedepends = libstdc++
+	makedepends = libusb
 	makedepends = meson
 	makedepends = nlohmann-json
 	makedepends = python-distlib
@@ -26,29 +28,30 @@ pkgbase = xemu
 	makedepends = vulkan-icd-loader
 	makedepends = xxhash>=0.8
 	makedepends = zlib
-	depends = gcc-libs
 	depends = glibc
 	depends = glslang
 	depends = hicolor-icon-theme
-	depends = sdl3
+	depends = sdl3>=3.4
 	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
 	optdepends = zenity: file open dialog fallback
 	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.8.138
 	b2sums = 7cfba418805873013ff0315c8b7cd960896ac752214dc170273f1ec58515381753a7b86f82442c75f20c9d24015d39b329b2a285e3e3e1fbeebb3e8b9510311a
 
 pkgname = xemu
-	depends = gcc-libs
 	depends = glibc
 	depends = glslang
 	depends = hicolor-icon-theme
-	depends = sdl3
+	depends = sdl3>=3.4
+	depends = libatomic.so
 	depends = libcurl.so
 	depends = libepoxy.so
+	depends = libgcc_s.so
 	depends = libglib-2.0.so
 	depends = libpcap.so
-	depends = libusb-1.0.so
 	depends = libsamplerate.so
 	depends = libslirp.so
+	depends = libstdc++.so
 	depends = libtomlplusplus.so
+	depends = libusb-1.0.so
 	depends = libxxhash.so
 	depends = libz.so
