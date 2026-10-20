@@ -9,6 +9,7 @@ url='https://github.com/Humblemonk/shurectl'
 license=('GPL-3.0-only')
 depends=('libgcc' 'glibc' 'alsa-lib' 'systemd-libs')
 makedepends=('cargo')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('59c3c0964d80d6b56b3736b6156e163bfa5342a11ee2b0dfb66d713416fb3672')
 
