@@ -3,7 +3,7 @@
 
 pkgname=libumem
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="slab and magazine allocator with built-in debugging"
 arch=('x86_64' 'aarch64')
 url='https://github.com/gburd/libumem/'
