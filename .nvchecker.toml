@@ -1,0 +1,5 @@
+[musql-bin]
+source = "github"
+github = "samyfodil/musql"
+use_latest_release = true
+prefix = "v"
