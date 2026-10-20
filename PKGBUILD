@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2-7tv'
 pkgname="${_pkgname}-bin"
-pkgver=7.5.5
+pkgver=2.5.6
 pkgrel=1
 scdir=$_pkgname
 _pkgver="${pkgver//_/-}"
@@ -17,7 +17,7 @@ optdepends=('streamlink: For piping streams to video players'
             'gst-plugins-good: For audio output')
 provides=(chatterino)
 conflicts=(chatterino)
-source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Seventv/chatterino7/releases/download/v$pkgver/Chatterino-Ubuntu-22.04-Qt6.deb")
+source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Seventv/chatterino7/releases/download/v$pkgver/Chatterino-Ubuntu-26.04-x86_64.deb")
 
 package() {
 	tar xf data.tar.zst -C "${pkgdir}"
@@ -26,4 +26,4 @@ package() {
         nm -D "$pkgdir/usr/bin/chatterino"|grep _70|awk '{print $2 " " $2 | "sed s/70$/76/"}' > map.txt
         patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.70,} --replace-needed libicui18n.so{.70,}
 }
-sha256sums_x86_64=('e5bbe1ac07f1d869316cbac72aeffe53f95039c3bd3f1bca94f262eab63ed843')
+sha256sums_x86_64=('4d1b03a69aa2ba059ebf213d78b7ef7ea003f074e57ba6f8bc49ce0d36ab142d')
