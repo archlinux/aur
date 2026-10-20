@@ -1,0 +1,12 @@
+pkgbase = bebisfetch
+	pkgdesc = A lightweight, colorful, and fast system information tool written in Go.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bebisland/bebisfetch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = bebisfetch-0.1.0.tar.gz::https://github.com/bebisland/bebisfetch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9ee69474f45796e304c4b0595f7a91da871fc6128876731c538c7821c10ff15d
+
+pkgname = bebisfetch
