@@ -1,60 +1,107 @@
 # Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Anatol Pomozov
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=libsigrok-chromium-twinkie
 _pkgname=libsigrok
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=('x86_64')
 url='https://www.sigrok.org/wiki/Libsigrok'
-license=('GPL3')
-depends=('libftdi' 'libserialport' 'glibmm' 'libzip' 'libieee1284' 'bluez-libs' 'hidapi' 'libudev.so')
-makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools' 'autoconf-archive')
-optdepends=('python' 'ruby' 'jdk8-openjdk'
-            'sigrok-firmware-fx2lafw: Cypress FX2-based device support')
+license=('GPL-3.0-or-later')
+depends=(
+  'bluez-libs'
+  'glib2'
+  'glibc'
+  'glibmm'
+  'hidapi'
+  'libftdi'
+  'libgcc'
+  'libieee1284'
+  'libserialport'
+  'libsigc++'
+  'libstdc++'
+  'libusb'
+  'libzip'
+)
+makedepends=(
+  'autoconf-archive'
+  'cmake'
+  'doxygen'
+  'git'
+  'jdk8-openjdk'
+  'python'
+  'python-gobject'
+  'python-numpy'
+  'python-setuptools'
+  'ruby'
+  'swig'
+)
+optdepends=(
+  'jdk8-openjdk'
+  'python'
+  'ruby'
+  'sigrok-firmware-fx2lafw: Cypress FX2-based device support'
+)
 options=(!lto) # FS#78381
 conflicts=(libsigrok)
 provides=(libsigrok)
-source=("https://sigrok.org/download/source/$_pkgname/$_pkgname-$pkgver.tar.gz"
-        "fix_swig4_java_bindings.patch"
-        "libsigrok-0.5.2-swig-4.1.patch"
-	    "fix_ruby_bindings.patch::https://sigrok.org/bugzilla/attachment.cgi?id=640"
-        "chromium-twinkie-driver.patch"
-        "chromium-twinkie-vbus-channels.patch")
-sha512sums=('cf673dad6280302d69050c29490621f66c6d6a73932d019a53ec3501316d3f2e23e7667a04f866dbe6ed73f86a63de73d2173e2b6cea563631d705e06f887092'
-            '0e6bdddb2dcc03d76e5d16708bb127ec8a9207fba0e04b436ac92e370618cc0b1bc9d3e2c86a0878783626f2a8b59961c3a1a52a1e180e69005e3585e5766a89'
-            '7a1e35b6b268d117e67dff55c2ff1320257525eedb7454a068732d79074b6d743036ab2c11043952738dd3990ca084782feeb15ad92a306b3b58c73ecc530154'
-            '0e5b9ed566605acac02de6f559f9029929be7ca34d9688ed35d24d66c1b014f89a16902a4de79d0a1ef6347be257f24f77ea37b880aab757b2c338497de23030'
-            'd5b20497be7d295b0b4cb7f254c279bddaaf598d222b2c6062450f1c5326defdf50ba53d88539b2c01dba01c978170e582deba5793cd00cfd2c7a2ba5e854208'
-            '44737ff60df9b3c42ae5068b8c13c8a14ad02e483ebf2d8ca40f39bedad1f5d4804740c3b143d30f1fdaa8dc4cba3074f4fe37428717bea6fa787bbfc1331a0e')
+source=(
+  "git+git://sigrok.org/libsigrok#tag=libsigrok-$pkgver"
+  "$_pkgname-swig-4.1.patch"
+  "$_pkgname-fix-ruby-binding-location.patch"
+  "$_pkgname-python-3.14.patch"
+  "$_pkgname-python-3.14-PyInt.patch"
+  "chromium-twinkie-driver.patch"
+  "chromium-twinkie-vbus-channels.patch"
+)
+b2sums=('SKIP'
+        '4dfed37681870e312acf8844aed8a69ef4998f446b8565552258c38d824f566257e559e5d909282bf2d8f1202019bcfc070722abba6b34ff36c4b81b6ffccc04'
+        '348ba0e8615b81001444d6888eb392bfd5cc07fd71adff4bd65b6525a29cbf0cb76dd7b3aadd0971865a8fa482769d624d632c6fdd3e17b6fcaf2c75dff5aaab'
+        '9141203f928d6152f04b3962015645369cfbc72e3b7649b34c6fc2e385ee0f47c120063148e2edb699f0e494b19a09a3e3a780630786bbd3266fc82d7902a446'
+        '3b22ab62c5edaef0c19fd6891cae8d056013e24c96972398859b9c043f4b717a139e89dad21159a4516ef18db0b330586a51eb4f1d32d316e5cd1048d1798cd8'
+        'b6566f39b00f832f4a947f7a4a3e4d1a0febabc85d8e6f082e08ee13140f4e6c44d68eb66bbc913b506fe5c9c4a36cf5ae3296a585f9814f7aa77c5bebee45c1'
+        '51387ffdc9a9448a34b58fbcbf96c48cfeff1c0d11083c81374d0637547e1b19259b741cde5396b8cb4dff540dea72fb5a75b719bf02e8f7c012ced38d6542c6')
 
 prepare() {
-  cd $_pkgname-$pkgver
-  patch -p1 < ../fix_swig4_java_bindings.patch # https://sigrok.org/bugzilla/show_bug.cgi?id=1527
-  patch -p1 < ../fix_ruby_bindings.patch # https://sigrok.org/bugzilla/show_bug.cgi?id=1526
-  patch -p1 < ../libsigrok-0.5.2-swig-4.1.patch # https://sigrok.org/bugzilla/show_bug.cgi?id=1827
+  cd $_pkgname
+  git config user.name builduser
+  git config user.email builduser@archlinux
+
+  # bindings/java: Fix build issue with SWIG 4.x.
+  git cherry-pick e803574173bdac8a7f33085a648c29eaf248a394
+  # bindings/ruby: Fix ruby SWIG bindings generation
+  git cherry-pick 2e199405e53fee2fb3cad72858ebe7af6990bce0
+  # bindings/python: rephrase for Python 3.9 deprecation (call API)
+  git cherry-pick 5bc8174531df86991ba8aa6d12942923925d9e72 # Oct 2 18:33:08 2023
+
+  # https://sigrok.org/bugzilla/show_bug.cgi?id=1827
+  patch -p1 < ../$_pkgname-swig-4.1.patch
+
+  patch -p1 < ../$_pkgname-fix-ruby-binding-location.patch
+  patch -p1 < ../$_pkgname-python-3.14.patch
+  patch -p1 < ../$_pkgname-python-3.14-PyInt.patch
+
   patch -p1 < ../chromium-twinkie-driver.patch
   patch -p1 < ../chromium-twinkie-vbus-channels.patch
 
   # regenerate ./configure so it can detect Python 3.10
-  autoreconf -vi
+  autoreconf -fiv
 }
 
 build() {
-  cd $_pkgname-$pkgver
-
+  cd $_pkgname
   ./configure --prefix=/usr --enable-ruby
-
   make
 }
 
 package() {
-  cd libsigrok-$pkgver
-
-  make DESTDIR="$pkgdir" PREFIX=/usr install
-
-  install -m644 -D contrib/60-libsigrok.rules "$pkgdir"/usr/lib/udev/rules.d/60-libsigrok.rules
-  install -m644 -D contrib/61-libsigrok-uaccess.rules "$pkgdir"/usr/lib/udev/rules.d/61-libsigrok-uaccess.rules
+  cd $_pkgname
+  make DESTDIR="$pkgdir" PREFIX=/usr INSTALL_EXTRA= install
+  make DESTDIR="$pkgdir" PREFIX=/usr python-install
+  install -vDm644 -t "$pkgdir/usr/lib/udev/rules.d" \
+    contrib/60-libsigrok.rules \
+    contrib/61-libsigrok-uaccess.rules
 }
-

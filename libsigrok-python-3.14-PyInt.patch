@@ -1,0 +1,61 @@
+From d5f36cf9f6116efcb7544eb521aad3d6b7ffe7e3 Mon Sep 17 00:00:00 2001
+From: builduser <builduser@archlinux>
+Date: Tue, 20 Oct 2026 21:02:22 +0000
+Subject: [PATCH] bindings/python: replace PyInt_* with PyLong_* for Python
+ 3.14 compatibility
+
+---
+ bindings/python/sigrok/core/classes.i | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/bindings/python/sigrok/core/classes.i b/bindings/python/sigrok/core/classes.i
+index 97898405..cc7d0639 100644
+--- a/bindings/python/sigrok/core/classes.i
++++ b/bindings/python/sigrok/core/classes.i
+@@ -325,8 +325,8 @@ Glib::VariantBase python_to_variant_by_key(PyObject *input, const sigrok::Config
+ {
+     enum sr_datatype type = (enum sr_datatype) key->data_type()->id();
+ 
+-    if (type == SR_T_UINT64 && PyInt_Check(input))
+-        return Glib::Variant<guint64>::create(PyInt_AsLong(input));
++    if (type == SR_T_UINT64 && PyLong_Check(input))
++        return Glib::Variant<guint64>::create(PyLong_AsLong(input));
+     if (type == SR_T_UINT64 && PyLong_Check(input))
+         return Glib::Variant<guint64>::create(PyLong_AsLong(input));
+     else if (type == SR_T_STRING && string_check(input))
+@@ -335,8 +335,8 @@ Glib::VariantBase python_to_variant_by_key(PyObject *input, const sigrok::Config
+         return Glib::Variant<bool>::create(input == Py_True);
+     else if (type == SR_T_FLOAT && PyFloat_Check(input))
+         return Glib::Variant<double>::create(PyFloat_AsDouble(input));
+-    else if (type == SR_T_INT32 && PyInt_Check(input))
+-        return Glib::Variant<gint32>::create(PyInt_AsLong(input));
++    else if (type == SR_T_INT32 && PyLong_Check(input))
++        return Glib::Variant<gint32>::create(PyLong_AsLong(input));
+     else
+         throw sigrok::Error(SR_ERR_ARG);
+ }
+@@ -347,8 +347,8 @@ Glib::VariantBase python_to_variant_by_option(PyObject *input,
+ {
+     GVariantType *type = option->default_value().get_type().gobj();
+ 
+-    if (type == G_VARIANT_TYPE_UINT64 && PyInt_Check(input))
+-        return Glib::Variant<guint64>::create(PyInt_AsLong(input));
++    if (type == G_VARIANT_TYPE_UINT64 && PyLong_Check(input))
++        return Glib::Variant<guint64>::create(PyLong_AsLong(input));
+     if (type == G_VARIANT_TYPE_UINT64 && PyLong_Check(input))
+         return Glib::Variant<guint64>::create(PyLong_AsLong(input));
+     else if (type == G_VARIANT_TYPE_STRING && string_check(input))
+@@ -357,8 +357,8 @@ Glib::VariantBase python_to_variant_by_option(PyObject *input,
+         return Glib::Variant<bool>::create(input == Py_True);
+     else if (type == G_VARIANT_TYPE_DOUBLE && PyFloat_Check(input))
+         return Glib::Variant<double>::create(PyFloat_AsDouble(input));
+-    else if (type == G_VARIANT_TYPE_INT32 && PyInt_Check(input))
+-        return Glib::Variant<gint32>::create(PyInt_AsLong(input));
++    else if (type == G_VARIANT_TYPE_INT32 && PyLong_Check(input))
++        return Glib::Variant<gint32>::create(PyLong_AsLong(input));
+     else
+         throw sigrok::Error(SR_ERR_ARG);
+ }
+-- 
+2.56.0
+
