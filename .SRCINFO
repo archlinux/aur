@@ -1,6 +1,6 @@
 pkgbase = keywisp-git
 	pkgdesc = A small Wayland keystroke visualizer
-	pkgver = 0.3.0.r0.g539b333
+	pkgver = 0.3.0.r2.g60909dd
 	pkgrel = 1
 	url = https://github.com/happystraw/keywisp
 	arch = x86_64
