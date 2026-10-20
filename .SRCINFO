@@ -1,6 +1,6 @@
 pkgbase = kopuz-bin
 	pkgdesc = A modern music player (pre-built binary)
-	pkgver = 0.19.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/Kopuz-org/kopuz
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kopuz-bin
 	optdepends = ffmpeg: converting YouTube downloads to MP3, FLAC or WAV
 	provides = kopuz
 	conflicts = kopuz
-	source = kopuz-bin-0.19.0.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v0.19.0/kopuz_v0.19.0_x86_64-linux.tar.gz
-	sha256sums = 0c3ce1be7f14003086cf081c502d355543c7b664f3228552805206b5171a5c0b
+	source = kopuz-bin-0.22.0.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v0.22.0/kopuz_v0.22.0_x86_64-linux.tar.gz
+	sha256sums = 6fd2079f49a7e9c8fb85d39be1947339b0304e69e0a8ba99529cdf00c0b872eb
 
 pkgname = kopuz-bin
