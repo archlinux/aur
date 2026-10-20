@@ -27,9 +27,11 @@ if ! docker run --rm "$IMAGE" --help >/dev/null 2>&1; then
     exit 1
 fi
 
-echo "$(date): Image updated, recreating containers"
+echo "$(date): Image updated, recreating the containers that use it"
 cd "$COMPOSE_DIR"
-docker compose up -d --force-recreate
+# Plain up -d recreates only the containers whose image changed. --force-recreate
+# also restarted redis and postgres on every pull, failing the services using them.
+docker compose up -d
 
 # Reap dangling images left behind by retag-on-pull. Without this,
 # every successful pull-and-recreate cycle leaves the previous image's

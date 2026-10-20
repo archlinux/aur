@@ -1,7 +1,7 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 source PKGBUILD
 pkgname=skywire-docker-autopull
-pkgdesc="Skywire Docker deployment auto-updater: pulls latest image and recreates containers"
+pkgdesc="Skywire Docker deployment auto-updater: pulls the latest image and recreates the containers using it"
 arch=('any')
 depends=('docker' 'docker-compose')
 optdepends=('skywire-bin: for skywire.conf configuration')
@@ -16,7 +16,7 @@ _scripts=("docker-autopull.sh")
 _services=("docker-autopull.service")
 _timers=("docker-autopull.timer")
 source=("${_scripts[@]}" "${_services[@]}" "${_timers[@]}")
-sha256sums=('6f7255aee752fe7f888d95e66c49eb706bc7a45566d528de9afe911b1267332f'
+sha256sums=('4bb6689e9ef2d11048536cdfe278d7d1e6c035e37bfecbc5617a59a038cca662'
             '22c40f57c7ecd3f34758abc89d34164e6e1836d663c34692b2f2938b00cccb71'
             'db7f0de63785507c4e67f0037ef44ca6be00e0b123cc1ac156d52e45c6f867e9')
 

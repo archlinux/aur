@@ -68,9 +68,10 @@ echo "Updating deployment from $CURRENT to $SHORT"
 runuser -u "$BUILD_USER" -- docker pull "skycoin/skywire:${SHORT}"
 runuser -u "$BUILD_USER" -- docker tag "skycoin/skywire:${SHORT}" skycoin/skywire:test
 
-# Recreate containers
 cd "$DEPLOY_DIR"
-runuser -u "$BUILD_USER" -- docker compose up -d --force-recreate
+# Plain up -d recreates only the containers whose image changed. --force-recreate
+# also restarted redis and postgres on every update, failing the services using them.
+runuser -u "$BUILD_USER" -- docker compose up -d
 
 echo "$SHORT" > "$COMMIT_FILE"
 echo "Deployment updated to $SHORT"
