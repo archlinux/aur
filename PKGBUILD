@@ -58,24 +58,22 @@
 #                                 old-tarball reason
 #
 # sha256sums pins that exact asset. AUR requires a real sha256 (no SKIP):
-# the pin below is the real sha256 of the published v2.4.16 release tarball,
-# finalized at the v2.4.16 post-release re-cut (it replaced the v2.4.14
-# placeholder pin, which carried the v2.4.14 asset's sha256 until the
-# v2.4.16 asset existed; that replaced the v2.4.13 pin, re-cut at the
-# v2.4.13 release; it replaced the v2.4.12 pin, re-cut at the v2.4.12
-# release; that replaced the v2.4.11 pin, re-cut at the v2.4.11 release;
-# that replaced the v2.4.10 pin, re-cut at the v2.4.10 release; that
-# replaced the v2.4.9 pin, re-cut at the v2.4.9 release; that replaced the
-# v2.4.8 pin, re-cut at the v2.4.8 release; that replaced the v2.4.7 pin,
-# re-cut at the v2.4.7 release; that replaced the v2.4.6 pin, re-cut at the
-# v2.4.6 release; that replaced the v2.4.5 pin, re-cut at the v2.4.5
-# release; that replaced the v2.2.1 pin, finalized in C21-24b; that
-# replaced the v2.1.1 pin, finalized in C20-06). The three
+# the pin below is the real sha256 of the published v2.4.13 release tarball,
+# re-cut to the v2.4.13 asset (the v2.4.12 pin, re-cut at the v2.4.12
+# release, is replaced by this re-cut; it replaced the v2.4.11 pin,
+# re-cut at the v2.4.11 release; that replaced the v2.4.10 pin, re-cut at
+# the v2.4.10 release; that replaced the v2.4.9 pin, re-cut at the
+# v2.4.9 release; that replaced the v2.4.8 pin, re-cut at the v2.4.8
+# release; that replaced the v2.4.7 pin, re-cut at the v2.4.7 release;
+# that replaced the v2.4.6 pin, re-cut at the v2.4.6 release; that
+# replaced the v2.4.5 pin, re-cut at the v2.4.5 release; that replaced
+# the v2.2.1 pin, finalized in C21-24b; that replaced the v2.1.1 pin,
+# finalized in C20-06). The three
 # new top-level entries (ramsleuth-setup.sh, 90-ramsleuth-setup.policy,
-# icons/) are in the v2.4.16 tarball by the C21-17/C21-27 contract;
+# icons/) are in the v2.4.13 tarball by the C21-17/C21-27 contract;
 # package() installs them
 # only when present (the guard — an old-tarball build skips them cleanly).
-# The Intel helper is present in the v2.4.16 tarball (added by the 2.3.0
+# The Intel helper is present in the v2.4.13 tarball (added by the 2.3.0
 # re-cut per the INTEL-14 contract), so package() installs it from the
 # current tarball; it is still guarded with an existence test for a build
 # against a pre-2.3.0 tarball (the no-panic contract).
@@ -94,19 +92,21 @@
 # daemon starts and serves N/A (DriverMissing) sections with exit 0.
 
 pkgname=ramsleuth-bin
-pkgver=2.4.16   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
+pkgver=2.4.17   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT GPL-2.0-only)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
-# v2.4.16: FINALIZED pin — the real sha256 of the published v2.4.16 release
-# tarball, taken from the published .sha256 sidecar at the post-release
-# re-cut (it replaces the v2.4.14 placeholder pin; AUR requires a real
-# sha256, no SKIP).
+# v2.4.17: FINAL pin — the sha256 of the published v2.4.17 release
+# tarball (the release workflow's ramsleuth-2.4.17-x86_64.tar.zst
+# asset, verified two ways: its .sha256 sidecar and a direct download
+# + sha256sum; both agree). Replaces the v2.4.16 placeholder (the
+# published v2.4.14 asset's hash, carried until a v2.4.16 asset
+# existed — that asset predates the v2.4.17 changes).
 #
-sha256sums=('251a23c6c8e9b9d6137d3a5eef293fb0e34d45ae7a1307b2aa62e29fa24f5948')
+sha256sums=('d080ef039a3842b11d5a21af3fab0eb9115e0626b0be30d14019fe5532b0feb0')
 install=ramsleuth-bin.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
