@@ -1,6 +1,6 @@
 pkgbase = spotifast
 	pkgdesc = Native Spotify client
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/crmne/spotifast
 	install = spotifast.install
@@ -23,7 +23,7 @@ pkgbase = spotifast
 	conflicts = spotifast-git
 	options = !debug
 	options = !lto
-	source = spotifast-0.14.0.tar.gz::https://github.com/crmne/spotifast/releases/download/v0.14.0/spotifast-v0.14.0-source.tar.gz
-	sha256sums = de8e2234dd6637276cd36bc4889ed9cd7a60d6a05b1be956261ad3a1af3894b3
+	source = spotifast-0.14.1.tar.gz::https://github.com/crmne/spotifast/releases/download/v0.14.1/spotifast-v0.14.1-source.tar.gz
+	sha256sums = 3cc9b80f1029bbafce630802809770a090fe7922f359df36cce46b6003fb20b4
 
 pkgname = spotifast
