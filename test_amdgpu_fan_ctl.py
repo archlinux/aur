@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""gpu-fan-ctl 的离线逻辑自测：不碰硬件。
+"""amdgpu-fan-ctl 的离线逻辑自测：不碰硬件。
 
-运行: python3 test_gpu_fan_ctl.py
+运行: python3 test_amdgpu_fan_ctl.py
 """
 
 import io
@@ -13,7 +13,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from gpu_fan_ctl import (
+from amdgpu_fan_ctl import (
     Config,
     Controller,
     Curve,
@@ -40,7 +40,7 @@ def load_config(**overrides):
     """加载仓库里的 config.toml，但把 state_dir 指到临时目录（测试不写 /var/lib）。"""
     cfg = Config.load(str(HERE / "config.toml"))
     general = cfg.raw.setdefault("general", {})
-    general["state_dir"] = tempfile.mkdtemp(prefix="gpu-fan-ctl-test-")
+    general["state_dir"] = tempfile.mkdtemp(prefix="amdgpu-fan-ctl-test-")
     general.update(overrides)
     return cfg
 
@@ -85,7 +85,7 @@ class FakeBmc:
 
     def set_pwm(self, pwm):
         if self.fail:
-            from gpu_fan_ctl import BmcError
+            from amdgpu_fan_ctl import BmcError
 
             raise BmcError("模拟失败")
         self.calls.append(pwm)
@@ -94,11 +94,11 @@ class FakeBmc:
         self.calls.append("hand_back")
 
 
-def make(mode="assist", temps=None, use=0.0, sensors=None, dry_run=True):
+def make(mode="control", temps=None, use=0.0, sensors=None, dry_run=True):
     cfg = Config({"general": {
         "mode": mode,
         "dry_run": dry_run,
-        "state_dir": tempfile.mkdtemp(prefix="gpu-fan-ctl-test-"),
+        "state_dir": tempfile.mkdtemp(prefix="amdgpu-fan-ctl-test-"),
     }})
     gpu = FakeGpu(temps or {}, use)
     bmc = FakeBmc(sensors)
@@ -123,34 +123,12 @@ class TestDecision(unittest.TestCase):
     def test_idle_gpu_stays_low(self):
         _, ctrl, _, _ = make(temps={"junction": 45.0, "edge": 43.0, "mem": 44.0}, use=0)
         d = ctrl.decide()
-        self.assertFalse(d.desired_manual, "空闲时不该接管风扇")
         self.assertLessEqual(d.target_pwm, 28, "空闲时应当维持在低转速")
 
-    def test_hot_gpu_engages(self):
+    def test_hot_gpu_raises_pwm(self):
         _, ctrl, _, _ = make(temps={"junction": 80.0, "edge": 70.0, "mem": 60.0}, use=50)
         d = ctrl.decide()
-        self.assertTrue(d.desired_manual, "结温 80°C 应当接管")
         self.assertGreaterEqual(d.target_pwm, 65)
-
-    def test_release_after_n_cool_cycles(self):
-        _, ctrl, gpu, _ = make(temps={"junction": 80.0}, use=50)
-        self.assertTrue(ctrl.decide().desired_manual)
-        gpu.temps = {"junction": 58.0}
-        for _ in range(9):
-            self.assertTrue(ctrl.decide().desired_manual, "冷却不足 10 个周期不应交还")
-        self.assertFalse(ctrl.decide().desired_manual, "连续 10 个周期够凉后应当交还默认全速")
-
-    def test_release_counter_resets_on_reheat(self):
-        _, ctrl, gpu, _ = make(temps={"junction": 80.0}, use=50)
-        ctrl.decide()
-        gpu.temps = {"junction": 58.0}
-        for _ in range(5):
-            ctrl.decide()
-        gpu.temps = {"junction": 70.0}
-        ctrl.decide()          # 重新变热 -> 计数器归零
-        gpu.temps = {"junction": 58.0}
-        for _ in range(9):
-            self.assertTrue(ctrl.decide().desired_manual)
 
     def test_gpu_critical_forces_max(self):
         _, ctrl, _, _ = make(temps={"junction": 60.0}, use=50)
@@ -188,8 +166,8 @@ class TestDecision(unittest.TestCase):
         gpu.temps = {}
         for _ in range(3):
             d = ctrl.decide()
-        self.assertTrue(d.desired_manual, "读不到 GPU 温度应当 fail-safe 接管")
         self.assertGreaterEqual(d.target_pwm, 45)
+        self.assertIn("fail-safe", " ".join(d.reasons))
 
     def test_idle_floor_does_not_mask_hot_cpu(self):
         hot = dict(SENSORS)
@@ -214,14 +192,14 @@ class TestDecision(unittest.TestCase):
 class TestConfigDiscovery(unittest.TestCase):
     """`-c` 没给的时候必须能找到 ./config.toml。
 
-    回归的是真实踩过的坑：`-c` 原本没有默认值，`python3 gpu_fan_ctl.py`（不带 -c）
+    回归的是真实踩过的坑：`-c` 原本没有默认值，`python3 amdgpu_fan_ctl.py`（不带 -c）
     会静默使用内置默认值 mode=observe/dry_run=true，于是同目录下改好的
     config.toml 根本没被读 —— 表现就是"我把 mode 改成 control、dry_run 改成 false，
     怎么不生效"。
     """
 
     def setUp(self):
-        self.tmp = Path(tempfile.mkdtemp(prefix="gpu-fan-ctl-cfg-"))
+        self.tmp = Path(tempfile.mkdtemp(prefix="amdgpu-fan-ctl-cfg-"))
         self._old = os.getcwd()
 
     def tearDown(self):
@@ -244,12 +222,12 @@ class TestConfigDiscovery(unittest.TestCase):
 
     def test_falls_back_to_script_dir_config(self):
         os.chdir(self.tmp)  # 这里故意没有 config.toml
-        with mock.patch("gpu_fan_ctl.__file__", str(HERE / "gpu_fan_ctl.py")):
+        with mock.patch("amdgpu_fan_ctl.__file__", str(HERE / "amdgpu_fan_ctl.py")):
             self.assertEqual(resolve_config_path(None), str(HERE / "config.toml"))
 
     def test_empty_when_no_config_anywhere(self):
         os.chdir(self.tmp)
-        with mock.patch("gpu_fan_ctl.__file__", str(self.tmp / "nowhere" / "gpu_fan_ctl.py")):
+        with mock.patch("amdgpu_fan_ctl.__file__", str(self.tmp / "nowhere" / "amdgpu_fan_ctl.py")):
             self.assertEqual(resolve_config_path(None), "")
 
     def test_no_config_means_builtin_defaults_observe_and_dry_run(self):
@@ -319,16 +297,6 @@ class TestApply(unittest.TestCase):
         ctrl.step()
         self.assertEqual(bmc.calls, [], "dry-run 必须一个字节都不写 PWM")
 
-    def test_dry_run_handback_does_not_touch_bmc(self):
-        """回归：交还分支曾经在 dry-run 判断之前就写 PWM。"""
-        _, ctrl, gpu, bmc = make(mode="assist", temps={"junction": 80.0}, use=50, dry_run=True)
-        ctrl.step()                                   # 模拟接管
-        self.assertEqual(bmc.calls, [])
-        gpu.temps = {"junction": 40.0}
-        for _ in range(11):
-            ctrl.step()                               # 模拟交还
-        self.assertEqual(bmc.calls, [], "dry-run 下交还也不能写 PWM")
-
     def test_observe_mode_never_touches_bmc(self):
         _, ctrl, _, bmc = make(mode="observe", temps={"junction": 95.0}, use=50, dry_run=False)
         for _ in range(3):
@@ -384,7 +352,7 @@ class TestGpuSource(unittest.TestCase):
 
     def test_reads_json_and_expands_every_sensor(self):
         reader = RocmSmiGpuReader("rocm-smi", 1.0)
-        with mock.patch("gpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.ROCM_JSON)):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.ROCM_JSON)):
             self.assertEqual(
                 reader.read(),
                 {"edge": 39.0, "junction": 42.0, "mem": 38.0, "hbm_0": 37.0, "hbm_3": 36.0},
@@ -394,10 +362,10 @@ class TestGpuSource(unittest.TestCase):
         """曲线用平滑值，但 60°C 硬阈值必须看瞬时值。"""
         reader = RocmSmiGpuReader("rocm-smi", 0.5)
         hot_json = '{"card0": {"Temperature (Sensor junction) (C)": "52.0"}}'
-        with mock.patch("gpu_fan_ctl.subprocess.run", return_value=FakeCompleted(self.ROCM_JSON)):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", return_value=FakeCompleted(self.ROCM_JSON)):
             reader.read()
         self.assertEqual(reader.last_raw["junction"], 42.0)
-        with mock.patch("gpu_fan_ctl.subprocess.run", return_value=FakeCompleted(hot_json)):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", return_value=FakeCompleted(hot_json)):
             smoothed = reader.read()
         self.assertEqual(reader.last_raw["junction"], 52.0, "last_raw 必须是瞬时值")
         self.assertEqual(smoothed["junction"], 47.0, "返回的仍是平滑值")
@@ -435,13 +403,13 @@ class TestGpuSource(unittest.TestCase):
 
     def test_gpu_use_reads_showuse_json(self):
         reader = RocmSmiGpuReader("rocm-smi", 1.0)
-        with mock.patch("gpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.ROCM_JSON)):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.ROCM_JSON)):
             self.assertEqual(reader.gpu_use(), 7.0)
 
     def test_gpu_use_is_unknown_when_rocm_smi_fails(self):
         reader = RocmSmiGpuReader("rocm-smi", 1.0)
         with mock.patch(
-            "gpu_fan_ctl.subprocess.run",
+            "amdgpu_fan_ctl.subprocess.run",
             return_value=FakeCompleted("", returncode=1, stderr="boom"),
         ):
             self.assertEqual(reader.gpu_use(), -1.0)
@@ -450,7 +418,7 @@ class TestGpuSource(unittest.TestCase):
         """rocm-smi 报错时不能把 stderr 里的 '{' 当 JSON 解析。"""
         reader = RocmSmiGpuReader("rocm-smi", 0.3)
         with mock.patch(
-            "gpu_fan_ctl.subprocess.run",
+            "amdgpu_fan_ctl.subprocess.run",
             return_value=FakeCompleted("", returncode=1, stderr='{"error": "no such file"}'),
         ):
             self.assertEqual(reader.read(), {})
@@ -460,7 +428,7 @@ class TestGpuSource(unittest.TestCase):
         """read() 会把 GpuError 吞成 {}（这是设计：读不到就该走 fail-safe），
         所以直接测底层 _run。"""
         reader = RocmSmiGpuReader("/nonexistent/rocm-smi", 1.0)
-        with mock.patch("gpu_fan_ctl.subprocess.run", side_effect=FileNotFoundError):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=FileNotFoundError):
             with self.assertRaises(GpuError):
                 reader._run("-t")
 
@@ -469,7 +437,7 @@ class TestGpuSource(unittest.TestCase):
 
         reader = RocmSmiGpuReader("/opt/rocm/bin/rocm-smi", 1.0)
         with mock.patch(
-            "gpu_fan_ctl.subprocess.run",
+            "amdgpu_fan_ctl.subprocess.run",
             side_effect=subprocess.TimeoutExpired(cmd="rocm-smi", timeout=1),
         ):
             with self.assertRaises(GpuError):
@@ -485,7 +453,7 @@ class TestGpuSource(unittest.TestCase):
     # --- 守卫：通用温度源必须真的从代码里消失 -----------------------------
 
     def test_no_sysfs_or_kfd_left_in_source(self):
-        src = (Path(__file__).resolve().parent / "gpu_fan_ctl.py").read_text(encoding="utf-8")
+        src = (Path(__file__).resolve().parent / "amdgpu_fan_ctl.py").read_text(encoding="utf-8")
         for marker in ("/sys/class/drm", "/sys/class/kfd", "PCI_ID=", "nvidia-smi", "REMOTE_PROBE"):
             self.assertNotIn(marker, src, f"通用温度源残留：{marker}")
 
@@ -526,7 +494,7 @@ class TestIpmiBackend(unittest.TestCase):
             calls.append(argv)
             return FakeCompleted(" fd 19 00\n")
 
-        with mock.patch("gpu_fan_ctl.subprocess.run", side_effect=fake_run):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=fake_run):
             bmc.set_pwm(60)
         self.assertEqual(
             calls[0],
@@ -541,9 +509,9 @@ class TestIpmiBackend(unittest.TestCase):
             calls.append(argv)
             return FakeCompleted("")
 
-        with mock.patch("gpu_fan_ctl.subprocess.run", side_effect=fake_run):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=fake_run):
             bmc.hand_back()
-        self.assertEqual(calls[0][-2:], ["0x01", "0x50"], "交还时写回 80%")
+        self.assertEqual(calls[0][-2:], ["0x01", "0x50"], "无快照恢复时写回 80%")
 
     def test_fan_info_reads_duty_and_rpm(self):
         bmc = self._client()
@@ -557,7 +525,7 @@ class TestIpmiBackend(unittest.TestCase):
                 "SYS_FAN_4        | 8142 RPM          | ok\n"
             )
 
-        with mock.patch("gpu_fan_ctl.subprocess.run", side_effect=fake_run):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=fake_run):
             info = bmc.fan_info()
         self.assertEqual(info["PWMValue"], 100)
         self.assertEqual(info["Fan0_Reading"], 1242)
@@ -571,7 +539,7 @@ class TestIpmiBackend(unittest.TestCase):
             "SYS_Air_Inlet    | na         | degrees C  | na    | na | na | na | na | 40.000 | na\n"
             "MB_Air_Inlet     | 28.000     | degrees C  | ok    | na | na | na | na | 50.000 | na\n"
         )
-        with mock.patch("gpu_fan_ctl.subprocess.run", return_value=FakeCompleted(out)):
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", return_value=FakeCompleted(out)):
             sensors = bmc.sensors()
         self.assertEqual(sensors["CPU_Tctl_Value"]["reading"], 35.0)
         self.assertEqual(sensors["CPU_Tctl_Value"]["higher_critical_threshold"], 95.0)
@@ -580,14 +548,14 @@ class TestIpmiBackend(unittest.TestCase):
 
 class TestStateDir(unittest.TestCase):
     def test_writable_dir_used_as_is(self):
-        d = tempfile.mkdtemp(prefix="gpu-fan-ctl-state-")
+        d = tempfile.mkdtemp(prefix="amdgpu-fan-ctl-state-")
         self.assertEqual(_pick_state_dir(d), Path(d))
 
     def test_readonly_dir_falls_back_to_tmp(self):
         """只读挂载下 os.access 会误报可写，必须靠真写探针发现——这条锁住该行为。"""
-        with mock.patch("gpu_fan_ctl._dir_writable", side_effect=[False, False, True]):
-            picked = _pick_state_dir("/var/lib/amdgpu-fan-ctl-tyan-s8030gm2ne")
-        self.assertEqual(picked, Path(tempfile.gettempdir()) / f"gpu-fan-ctl-{os.getuid()}")
+        with mock.patch("amdgpu_fan_ctl._dir_writable", side_effect=[False, False, True]):
+            picked = _pick_state_dir("/var/lib/amdgpu-fan-ctl")
+        self.assertEqual(picked, Path(tempfile.gettempdir()) / f"amdgpu-fan-ctl-{os.getuid()}")
 
     def test_dir_writable_rejects_missing_path(self):
         self.assertFalse(_dir_writable(Path("/proc/definitely/not/here")))

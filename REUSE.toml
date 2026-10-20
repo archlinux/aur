@@ -4,6 +4,6 @@ SPDX-FileCopyrightText = "2026 lucas007"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
-path = ["LICENSE-MIT", "README.md", "config.toml", "gpu_fan_ctl.py", "test_gpu_fan_ctl.py"]
+path = ["LICENSE-MIT", "README.md", "config.toml", "amdgpu_fan_ctl.py", "test_amdgpu_fan_ctl.py"]
 SPDX-FileCopyrightText = "2026 lucas007"
 SPDX-License-Identifier = "MIT"

@@ -1,6 +1,6 @@
 [Unit]
 Description=AMD GPU temperature driven fan control for Tyan S8030GM2NE
-Documentation=file:/usr/share/doc/amdgpu-fan-ctl-tyan-s8030gm2ne/README.md
+Documentation=file:/usr/share/doc/amdgpu-fan-ctl/README.md
 
 [Service]
 Type=simple
@@ -10,10 +10,10 @@ User=amdgpu-fan-ctl
 Group=amdgpu-fan-ctl
 SupplementaryGroups=render video
 
-ExecStart=/usr/bin/gpu-fan-ctl --config /etc/gpu-fan-ctl/config.toml
+ExecStart=/usr/bin/amdgpu-fan-ctl --config /etc/amdgpu-fan-ctl/config.toml
 
 # 无论怎么退出（正常 / 崩溃 / 被 kill）都尝试恢复接管前的 PWM
-ExecStopPost=/usr/bin/gpu-fan-ctl --config /etc/gpu-fan-ctl/config.toml --restore
+ExecStopPost=/usr/bin/amdgpu-fan-ctl --config /etc/amdgpu-fan-ctl/config.toml --restore
 
 Restart=on-failure
 RestartSec=10s
@@ -24,9 +24,9 @@ NoNewPrivileges=yes
 ProtectSystem=strict
 PrivateTmp=yes
 # 由 systemd 创建并 chown 给专用用户，替代宽泛的 ReadWritePaths=/run
-StateDirectory=amdgpu-fan-ctl-tyan-s8030gm2ne
+StateDirectory=amdgpu-fan-ctl
 StateDirectoryMode=0750
-RuntimeDirectory=amdgpu-fan-ctl-tyan-s8030gm2ne
+RuntimeDirectory=amdgpu-fan-ctl
 RuntimeDirectoryMode=0750
 # 只读 /sys 与 /proc 的子集即可，其余全部只读
 ProtectKernelTunables=yes

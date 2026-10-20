@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-gpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的闭环控制器
+amdgpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的闭环控制器
 
 拓扑
     程序与 MI210 跑在同一台机器上（本机 rocm-smi）。
@@ -16,9 +16,8 @@ gpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的闭
     （小写、非字母数字转下划线）。没有同名曲线的传感器走 `gpu_default`，
     不会被静默忽略。
 
-三种工作模式
+两种工作模式
     observe  只读、只打印决策，一个字节都不写（最安全的观察模式）
-    assist   GPU 变热时接管；冷却后写回 100%（本板没有硬件自动模式）
     control  一直由本程序接管（推荐）
 
 安全设计
@@ -54,7 +53,7 @@ import tomllib
 from dataclasses import dataclass, field
 from pathlib import Path
 
-LOG = logging.getLogger("gpu-fan-ctl")
+LOG = logging.getLogger("amdgpu-fan-ctl")
 
 # 泰安 S8030 / BMC 6.02 的默认传感器名（可在 config.toml 的 [bmc] 里覆盖）
 BMC_CPU_SENSORS = ("CPU_Tctl_Value",)
@@ -113,7 +112,7 @@ DEFAULTS: dict = {
         "dry_run": True,
         "poll_interval": 2.0,
         "log_level": "info",
-        "state_dir": "/var/lib/amdgpu-fan-ctl-tyan-s8030gm2ne",
+        "state_dir": "/var/lib/amdgpu-fan-ctl",
         "metrics_file": "",
     },
     "gpu": {
@@ -141,12 +140,12 @@ DEFAULTS: dict = {
         "critical_sensors": ["CPU_Tctl_Value", "MB_Air_Inlet", "SYS_Air_Outlet", "CPU_MOSFET"],
         "max_consecutive_errors": 8,
     },
-    "fan": {"min_pwm": 20.0, "max_pwm": 100.0, "ramp_down_step": 5.0},
-    "assist": {
-        "trigger_temp": 78.0,
-        "trigger_pwm": 45.0,
-        "release_temp": 62.0,
-        "release_cycles": 10,
+    "fan": {
+        "min_pwm": 20.0,
+        "max_pwm": 100.0,
+        "ramp_down_step": 5.0,
+        # 连续读不到 GPU 温度时的 fail-safe 下限
+        "fail_safe_pwm": 45.0,
     },
     "restore": {"on_exit": True},
 }
@@ -218,7 +217,7 @@ def resolve_config_path(explicit: str | None = None) -> str:
     没给就依次找：`./config.toml` → 脚本自己所在目录的 `config.toml`。
 
     之所以要这层兜底：以前 `-c` 没有默认值，`Config.load(None)` 直接返回内置默认值
-    （mode=observe、dry_run=true），于是 `python3 gpu_fan_ctl.py` 会**静默忽略**
+    （mode=observe、dry_run=true），于是 `python3 amdgpu_fan_ctl.py` 会**静默忽略**
     同目录下改得好好的 config.toml —— 表现就是"配置改了却不生效"。
     """
     if explicit:
@@ -534,11 +533,12 @@ class Controller:
         self.gpu = gpu
         self.bmc = bmc
         self.mode = str(cfg["general"]["mode"]).lower()
+        if self.mode not in ("observe", "control"):
+            LOG.warning("未知模式 %s，按 observe 处理", self.mode)
+            self.mode = "observe"
         self.dry_run = bool(dry_run)
         self.state_dir = _pick_state_dir(str(cfg["general"]["state_dir"]))
         self.snapshot_path = self.state_dir / "original_mode.json"
-        self.engaged = self.mode == "control"
-        self.release_count = 0
         self.last_written_pwm: float | None = None
         self.last_write_ts = 0.0
         self.consecutive_errors = 0
@@ -600,7 +600,7 @@ class Controller:
             self.gpu_missing_cycles = 0
         readings: dict[str, float] = {f"gpu_{k}": v for k, v in gpu_temps.items()}
         if gpu_temps:
-            # 最热的那一路：接管/交还、临界判定、空闲判定都看它，
+            # 最热的那一路：接管、临界判定、空闲判定都看它，
             # 这样不依赖某张卡一定叫 "junction"
             readings["gpu_hottest"] = max(gpu_temps.values())
             # 显存域：memory 与所有 HBM 堆取最大，统一喂给 gpu_mem 曲线
@@ -685,7 +685,7 @@ class Controller:
         if critical:
             target = max_pwm
         elif fail_safe:
-            target = max(min_pwm, float(c["assist"]["trigger_pwm"]))
+            target = max(min_pwm, float(c["fan"]["fail_safe_pwm"]))
         elif demands:
             best_name = max(demands, key=lambda k: demands[k])
             target = demands[best_name]
@@ -695,34 +695,8 @@ class Controller:
 
         target = min(max(target, min_pwm), max_pwm)
 
-        # 6) 模式：assist 只在热的时候接管
-        desired_manual = False
-        if self.mode == "control":
-            desired_manual = True
-        elif self.mode == "observe":
-            desired_manual = False
-        elif self.mode == "assist":
-            if not self.engaged:
-                hot = hottest is not None and hottest >= float(c["assist"]["trigger_temp"])
-                if critical or fail_safe or hot:
-                    self.engaged = True
-                    self.release_count = 0
-                    why = "GPU 过热" if hot else ("临界越线" if critical else "GPU 温度连续读不到")
-                    reasons.append(f"{why} → 接管风扇")
-            else:
-                cool = hottest is not None and hottest <= float(c["assist"]["release_temp"])
-                if cool and not critical and not fail_safe:
-                    self.release_count += 1
-                    if self.release_count >= int(c["assist"]["release_cycles"]):
-                        self.engaged = False
-                        self.release_count = 0
-                        reasons.append("GPU 已冷却 → 交还默认全速")
-                else:
-                    self.release_count = 0
-            desired_manual = self.engaged
-
-        if desired_manual and self.mode == "assist":
-            target = max(target, float(c["assist"]["trigger_pwm"]))
+        # 6) 模式：control 一直接管；observe 只读
+        desired_manual = self.mode == "control"
 
         self.last_readings = readings
         return Decision(target_pwm=target, desired_manual=desired_manual, reasons=reasons, critical=critical)
@@ -735,21 +709,7 @@ class Controller:
         simulate = self.dry_run or self.mode == "observe"
 
         if not decision.desired_manual:
-            if simulate:
-                if self.last_written_pwm is not None:
-                    LOG.info("[dry-run] 将交还默认全速")
-                self.last_written_pwm = None
-                return
-            if self.bmc and self.last_written_pwm is not None:
-                LOG.info("交还默认全速")
-                try:
-                    self.bmc.hand_back()
-                except BmcError as exc:
-                    self.consecutive_errors += 1
-                    LOG.error("交还默认全速失败(%d): %s", self.consecutive_errors, exc)
-                    return
-                self.last_written_pwm = None
-                self.last_write_ts = now
+            # observe 模式：只读，不写 BMC
             return
 
         current = self.last_written_pwm
@@ -785,14 +745,14 @@ class Controller:
     def write_metrics(self) -> None:
         if not self.metrics_file or not self.last_decision:
             return
-        lines = ["# HELP gpu_fan_ctl_pwm 当前下发的 PWM 百分比", "# TYPE gpu_fan_ctl_pwm gauge"]
-        lines.append(f"gpu_fan_ctl_pwm {self.last_decision.target_pwm:g}")
+        lines = ["# HELP amdgpu_fan_ctl_pwm 当前下发的 PWM 百分比", "# TYPE amdgpu_fan_ctl_pwm gauge"]
+        lines.append(f"amdgpu_fan_ctl_pwm {self.last_decision.target_pwm:g}")
         for key, value in sorted(self.last_readings.items()):
-            lines.append(f'gpu_fan_ctl_temp_celsius{{sensor="{key}"}} {value:g}')
+            lines.append(f'amdgpu_fan_ctl_temp_celsius{{sensor="{key}"}} {value:g}')
         snap = self.original or {}
-        lines.append(f"gpu_fan_ctl_engaged {1 if self.engaged else 0}")
+        lines.append(f"amdgpu_fan_ctl_engaged {1 if self.mode == 'control' else 0}")
         if "pwm" in snap:
-            lines.append(f"gpu_fan_ctl_original_pwm {float(snap['pwm']):g}")
+            lines.append(f"amdgpu_fan_ctl_original_pwm {float(snap['pwm']):g}")
         try:
             Path(self.metrics_file).write_text("\n".join(lines) + "\n")
         except OSError as exc:
@@ -825,7 +785,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="TOML/JSON 配置文件。不给就依次找 ./config.toml 和脚本同目录的 config.toml；"
              "都没有则用内置默认值（mode=observe, dry_run=true）",
     )
-    p.add_argument("--mode", choices=["observe", "assist", "control"], help="覆盖配置里的工作模式")
+    p.add_argument("--mode", choices=["observe", "control"], help="覆盖配置里的工作模式")
     p.add_argument("--dry-run", action="store_true", help="只打印决策，不写 PWM")
     p.add_argument("--live", action="store_true", help="关闭 dry_run（真的会写 PWM！）")
     p.add_argument("--once", action="store_true", help="只跑一个周期就退出")
@@ -893,7 +853,7 @@ def _dir_writable(path: Path) -> bool:
     注意不能用 os.access(W_OK)：它只看权限位，**不会**发现只读挂载
     （例如把 /var/lib 挂成只读时仍然返回 True）。
     """
-    probe = path / ".gpu-fan-ctl-write-test"
+    probe = path / ".amdgpu-fan-ctl-write-test"
     try:
         path.mkdir(parents=True, exist_ok=True)
         probe.touch()
@@ -909,15 +869,15 @@ def _dir_writable(path: Path) -> bool:
 def _pick_state_dir(configured: str) -> Path:
     """配置的 state_dir 不可写时（非 root 手动跑、或 /var/lib 被挂成只读）挑一个能写的。
 
-    顺序：配置值 → $XDG_STATE_HOME|~/.local/state/gpu-fan-ctl → $TMPDIR/gpu-fan-ctl-<uid>。
+    顺序：配置值 → $XDG_STATE_HOME|~/.local/state/amdgpu-fan-ctl → $TMPDIR/amdgpu-fan-ctl-<uid>。
     落到临时目录只影响 --restore 的兜底快照，正常退出仍用内存里的快照还原。
     """
     path = Path(configured)
     if _dir_writable(path):
         return path
     candidates = [
-        Path(os.environ.get("XDG_STATE_HOME") or (Path.home() / ".local" / "state")) / "gpu-fan-ctl",
-        Path(tempfile.gettempdir()) / f"gpu-fan-ctl-{os.getuid()}",
+        Path(os.environ.get("XDG_STATE_HOME") or (Path.home() / ".local" / "state")) / "amdgpu-fan-ctl",
+        Path(tempfile.gettempdir()) / f"amdgpu-fan-ctl-{os.getuid()}",
     ]
     for fallback in candidates:
         if _dir_writable(fallback):
@@ -1074,12 +1034,10 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     LOG.info(
-        "启动：模式=%s dry_run=%s 轮询=%.1fs 接管/交还阈值=%.0f/%.0f°C",
+        "启动：模式=%s dry_run=%s 轮询=%.1fs",
         ctrl.mode,
         ctrl.dry_run,
         float(cfg["general"]["poll_interval"]),
-        float(cfg["assist"]["trigger_temp"]),
-        float(cfg["assist"]["release_temp"]),
     )
     if ctrl.mode == "observe":
         LOG.info("observe 模式：只读观察，不会写 PWM")
