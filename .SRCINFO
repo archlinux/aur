@@ -1,6 +1,6 @@
 pkgbase = skwir-git
 	pkgdesc = An augmented file manager, for humans and agents (its last commit)
-	pkgver = 0.1.0.r51.g17cf86d
+	pkgver = 0.2.0.r0.g083f928
 	pkgrel = 1
 	url = https://skwir.org
 	arch = x86_64
@@ -66,7 +66,7 @@ pkgname = skwir-git
 	optdepends = perl-image-exiftool: writing and removing pictures locations
 	optdepends = plocate: instant name searches over whole disks
 	optdepends = udisks2: unmounting volumes from the sidebar
-	provides = skwir=0.1.0.r51.g17cf86d
+	provides = skwir=0.2.0.r0.g083f928
 	conflicts = skwir
 
 pkgname = skwir-mermaid-git
@@ -74,7 +74,7 @@ pkgname = skwir-mermaid-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mermaid=0.1.0.r51.g17cf86d
+	provides = skwir-mermaid=0.2.0.r0.g083f928
 	conflicts = skwir-mermaid
 
 pkgname = skwir-mupdf-git
@@ -83,5 +83,5 @@ pkgname = skwir-mupdf-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mupdf=0.1.0.r51.g17cf86d
+	provides = skwir-mupdf=0.2.0.r0.g083f928
 	conflicts = skwir-mupdf
