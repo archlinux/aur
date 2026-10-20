@@ -3,7 +3,7 @@
 # Contributor: Kure Fukumakoto <kure.fukumakoto@gmail.com>
 # Contributor: Xiezuo Team <xiezuo@wps.cn>
 pkgname=xiezuo-bin
-pkgver=5.54.0
+pkgver=5.55.0
 pkgrel=1
 pkgdesc="WPS一站式企业沟通与协作平台. 整合即时沟通、文档协作、精选应用功能于一体，让办公更高效、更愉悦"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("xiezuo-linux-x64-stable-${pkgver}.deb::https://woa.wps.cn/download/deb-X64")
 source_aarch64=("xiezuo-linux-arm64-stable-${pkgver}.deb::https://woa.wps.cn/download/deb-Arm64")
-sha256sums_x86_64=('49c5963354c4c4786d2341ef0d44e5ba5c16c070308e41ddc4d2fd1b4b4e07b5')
-sha256sums_aarch64=('bd7b950fbb38d5d04f476185eaf364c3a366bc4665b94f64e8bd01600aef30e5')
+sha256sums_x86_64=('f7f3f06b3514a57721b9b2e1d076012f0f085f5cb8fc462b3db91d623c823e41')
+sha256sums_aarch64=('f2cbd2df2ef6328145c61bd72a64c1a65eaacb540f5cc8cf66c2a067fd2724f5')
 
 
 package(){
