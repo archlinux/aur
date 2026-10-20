@@ -1,0 +1,26 @@
+pkgbase = pdf-math-reader-bin
+	pkgdesc = Read scientific documents in your language, in realtime, on any platform
+	pkgver = 0.1.13
+	pkgrel = 2
+	url = https://github.com/PDFMathTranslate/PDFMathReader
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = alsa-lib
+	depends = avahi
+	depends = dbus
+	depends = gtk3
+	depends = gnutls
+	depends = mesa
+	depends = nss
+	depends = xdg-utils
+	provides = pdf-math-reader
+	conflicts = pdf-math-reader
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source_x86_64 = PDFMathReader-linux-x64.tar.gz::https://github.com/PDFMathTranslate/PDFMathReader/releases/download/v0.1.13/PDFMathReader-linux-x64.tar.gz
+	source_x86_64 = pdf-math-reader.png
+	sha256sums_x86_64 = 65a1a6a4263c9b4e90a6922c7de1b93951c5ad21f9fb22a1ea8af91650135474
+	sha256sums_x86_64 = 710e0cde4e5a31a846f358ce702b68d84385c1282017bda83fc547e36726bb91
+
+pkgname = pdf-math-reader-bin
