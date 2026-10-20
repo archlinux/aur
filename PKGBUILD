@@ -1,26 +1,26 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-ai-dynamo
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
-_commit=b83b1d9304ebfc624709ac46db32b1b6f1ff1615
+_commit=2093662a4d4e5fd318732935213dde08dc7be818
 pkgdesc='NVIDIA Dynamo: datacenter-scale distributed inference serving framework (Python)'
 arch=('any')
 url='https://github.com/ai-dynamo/dynamo'
 license=('Apache-2.0')
 depends=(
   'python'
-  'python-ai-dynamo-runtime=1.5.0'
-  'python-aiohttp>=3.13.5'
+  'python-ai-dynamo-runtime=1.5.1'
+  'python-aiohttp>=3.14.3'
   'python-aiohttp<4.0'
   'python-httpx=0.28.1'
   'python-kubernetes>=32.0.1'
-  'python-kubernetes<37.0.0'
+  'python-kubernetes<38.0.0'
   'python-msgspec>=0.19.0'
   'python-prometheus_client>=0.23.1'
   'python-prometheus_client<1.0'
   'python-pydantic>=2.10.6'
-  'python-pydantic<2.14'
+  'python-pydantic<2.15'
   'python-pyzmq>=26.0.0'
   'python-transformers>=4.56.0'
   'python-uvloop>=0.21.0'
@@ -66,7 +66,7 @@ optdepends=(
   'python-safetensors: multimodal tensor serialization'
 
   # Backend stacks are shipped in the wheel but remain optional.  Keep the
-  # current upstream 1.5.0 targets. Pins describe upstream GPU configurations;
+  # current upstream 1.5.1 targets. Pins describe upstream GPU configurations;
   # they are not evidence that newer backend versions are incompatible.
   'python-accelerate>=0.17.0: SGLang diffusion backend runtime support'
   'python-blake3>=1.0.0: vLLM and TensorRT-LLM multimodal hashing (requires <2.0.0)'
@@ -74,7 +74,7 @@ optdepends=(
   'python-cupy>=13.6.0: SGLang multimodal CUDA array support'
   'python-diffusers: vLLM-Omni diffusion and video export helpers'
   'python-gpu-memory-service=0.9.0: optional GMS loading for vLLM, SGLang, and TensorRT-LLM (currently unavailable in Arch/AUR)'
-  'python-kvbm=1.5.0: KVBM connectors for vLLM and TensorRT-LLM (currently unavailable in Arch/AUR)'
+  'python-kvbm=1.5.1: KVBM connectors for vLLM and TensorRT-LLM (currently unavailable in Arch/AUR)'
   'python-librosa>=0.10.0: vLLM-Omni audio processing'
   'python-modelexpress=0.5.0: vLLM and SGLang P2P model loading (currently unavailable in Arch/AUR)'
   'python-omegaconf: vLLM-Omni stage configuration'
@@ -163,12 +163,8 @@ pkgver() { echo "$pkgver"; }
 
 prepare() {
   cd dynamo
-  # Allow Arch's stable aiohttp series for the compatibility trial. This does
-  # not backport the response-parser fix in GHSA-cq5v-8q36-5273.
-  sed -i 's/aiohttp>=3\.14\.3,<4\.0/aiohttp>=3.13.5,<4.0/' pyproject.toml
-  # Arch currently packages Kubernetes 36.  The planner uses stable client
-  # surfaces covered by the upstream connector tests; accept that API series.
-  sed -i 's/kubernetes>=32\.0\.1,<33\.0\.0/kubernetes>=32.0.1,<37.0.0/' pyproject.toml
+  # Trial Arch's Kubernetes 37 client against the retained connector suite.
+  sed -i 's/kubernetes>=32\.0\.1,<33\.0\.0/kubernetes>=32.0.1,<38.0.0/' pyproject.toml
   # Retain explicit resource cleanup and realistic mocks with Python 3.14.
   patch -Np1 --fuzz=0 -i "$srcdir/python314-test-lifecycle.patch"
   # Match the other optional AISimulate suites when the plugin is absent.
@@ -493,21 +489,22 @@ PY
   _run_manifest() {
     local label="$1"
     local manifest="$2"
-    local -a nodes=()
-    mapfile -t nodes < "$manifest"
-    ((${#nodes[@]})) || return 0
+    [[ -s $manifest ]] || return 0
     rm -rf "$pytest_tmp/$label" "$pytest_tmp/$label-cache"
     install -d "$pytest_tmp"
     # The collected CPU suite declares one Hugging Face model.  Upstream's
     # session fixtures download it once, under a file lock, and immediately
     # switch all test processes to offline mode.  Give that lifecycle a clean,
     # private cache and permit network access only during fixture setup.
+    # Read every collected node ID inside Python: expanded parametrizations
+    # can exceed the kernel's command-line size limit if passed through exec.
     env -u HF_HUB_OFFLINE -u TRANSFORMERS_OFFLINE \
       GRPC_PYTHON_DISABLE_ABSL_INIT_LOG=1 HF_HOME="$hf_home" \
       PYTHONPATH="$test_root$site_packages:$PWD" \
-      python -c 'import torch._dynamo; import pytest; raise SystemExit(pytest.main())' -s -n 0 --continue-on-collection-errors -vv --tb=short \
+      python -c 'import sys; from pathlib import Path; import torch._dynamo; import pytest; raise SystemExit(pytest.main([*sys.argv[2:], *Path(sys.argv[1]).read_text().splitlines()]))' \
+        "$manifest" -s -n 0 --continue-on-collection-errors -vv --tb=short \
         --basetemp="$pytest_tmp/$label" -o cache_dir="$pytest_tmp/$label-cache" \
-        --durations=10 "${nodes[@]}" || test_failure=1
+        --durations=10 || test_failure=1
   }
 
   _collect_manifest canonical "$marker_all"
@@ -591,7 +588,7 @@ if len(site_packages) != 1:
 site = site_packages[0]
 
 dist_infos = list(site.glob("ai_dynamo-*.dist-info"))
-if len(dist_infos) != 1 or dist_infos[0].name != "ai_dynamo-1.5.0.dist-info":
+if len(dist_infos) != 1 or dist_infos[0].name != "ai_dynamo-1.5.1.dist-info":
     raise SystemExit(f"unexpected dist-info roots: {dist_infos}")
 dist_info = dist_infos[0]
 record = dist_info / "RECORD"
