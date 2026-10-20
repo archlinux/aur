@@ -1,4 +1,4 @@
-# amdgpu-fan-ctl 配置（泰安 S8030 + 本机 MI210）
+# amdgpu-fan-ctl 配置（泰安 S8030 + 本机 AMD GPU）
 #
 # dry_run=true 时只打印决策，绝不写 PWM。改成 false 或启动加 --live 才会真正下发。
 
@@ -13,8 +13,8 @@ state_dir = "/var/lib/amdgpu-fan-ctl"
 metrics_file = ""         # 例如 "/run/amdgpu-fan-ctl/metrics.prom"
 
 [gpu]
-rocm_smi = "/opt/rocm/bin/rocm-smi"   # 必须绝对路径：systemd 的 PATH 里没有 /opt/rocm/bin
-timeout = 20              # 单次 rocm-smi 调用的超时（秒）
+amd_smi = "/opt/rocm/bin/amd-smi"   # 必须绝对路径：systemd 的 PATH 里没有 /opt/rocm/bin
+timeout = 20              # 单次 amd-smi 调用的超时（秒）
 smoothing = 0.35          # 温度指数平滑系数，越小越平滑
 critical_temp = 60        # GPU 曲线的 100% 点；任一路瞬时值 ≥ 此温度也直接 100%
                           # 改这个值，下面所有 gpu_* 曲线会整体伸缩（不用手改曲线）
@@ -49,8 +49,8 @@ fail_safe_pwm = 45        # 连续读不到 GPU 温度时的 fail-safe 下限
 on_exit = true            # 退出 / SIGTERM 时恢复接管前的 PWM
 
 # --- 风扇曲线：points = [[温度°C, PWM%], ...]，分段线性插值 -------------------
-# 温度源只有 GPU（rocm-smi），不读取 BMC 的 CPU / 主板 / 进风传感器。
-# 曲线名 = 温度读数的名字。rocm-smi 的传感器自动变成 gpu_<名字>，
+# 温度源只有 GPU（amd-smi），不读取 BMC 的 CPU / 主板 / 进风传感器。
+# 曲线名 = 温度读数的名字。amd-smi 的传感器自动变成 gpu_<名字>，
 # 名字对不上就用 gpu_default；gpu_mem 喂进去的是 max(memory, 所有 HBM 堆)。
 #
 # GPU 曲线（gpu_junction / gpu_edge / gpu_mem / gpu_default）不需要在这里写：

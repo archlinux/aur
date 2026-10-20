@@ -1,12 +1,12 @@
 # amdgpu-fan-ctl
 
-用 `rocm-smi` 读到的 AMD GPU 温度，通过本机 `ipmitool` 控制泰安 S8030 机箱风扇的闭环控制器。
+用 `amd-smi` 读到的 AMD GPU 温度，通过本机 `ipmitool` 控制泰安 S8030 机箱风扇的闭环控制器。
 
 当前拓扑（程序、GPU、BMC 在同一台机器上）：
 
 | 项目 | 值 |
 | --- | --- |
-| GPU | AMD Instinct MI210（`gfx90a`），温度来自 `rocm-smi -t --json` |
+| GPU | AMD GPU，温度来自 `amd-smi metric --temperature --json` |
 | 主板 | 泰安 S8030，BMC 固件 6.02 |
 | 受控风扇 | `SYS_FAN4` = PWM 通道 **5** |
 | 控制通道 | 本机 `/dev/ipmi0`，不依赖 BMC 网络 |
@@ -51,7 +51,7 @@ S8030 / BMC 6.02 的 fan table 与主板丝印不是一一对应的（PWM0/PWM1 
 ## 安全设计
 
 1. **GPU 任一路传感器瞬时值 ≥ `gpu.critical_temp` → 立即 100%**，不受温度平滑延迟影响。
-2. 温度源只有 GPU（`rocm-smi`），不读取 BMC 的 CPU / 主板 / 进风传感器；只写 SYS_FAN 通道，不碰 CPU 风扇。
+2. 温度源只有 GPU（`amd-smi`），不读取 BMC 的 CPU / 主板 / 进风传感器；只写 SYS_FAN 通道，不碰 CPU 风扇。
 3. 升温不限速，降温按 `ramp_down_step` 限速。
 4. 连续 3 次读不到 GPU 温度 → fail-safe 拉高到 `fan.fail_safe_pwm`。
 5. 写 PWM 失败会重试；连续失败超过 `max_consecutive_errors` 则退出，交由 systemd 重启。
@@ -62,7 +62,7 @@ S8030 / BMC 6.02 的 fan table 与主板丝印不是一一对应的（PWM0/PWM1 
 ## 依赖
 
 - Python 3.11+
-- `/opt/rocm/bin/rocm-smi`
+- `/opt/rocm/bin/amd-smi`
 - `/usr/bin/ipmitool`；服务通过包内 udev 规则以 `amdgpu-fan-ctl` 组访问 `/dev/ipmi0`，不需要 root
 
 ## 使用
@@ -70,7 +70,7 @@ S8030 / BMC 6.02 的 fan table 与主板丝印不是一一对应的（PWM0/PWM1 
 ```bash
 python3 -m unittest test_amdgpu_fan_ctl                 # 离线单元测试
 python3 amdgpu_fan_ctl.py -c config.toml --simulate      # 离线看曲线
-python3 amdgpu_fan_ctl.py -c config.toml --print-curves  # 确认 rocm-smi 和传感器
+python3 amdgpu_fan_ctl.py -c config.toml --print-curves  # 确认 amd-smi 和传感器
 sudo python3 amdgpu_fan_ctl.py -c config.toml --status   # 风扇 + GPU 读数
 sudo python3 amdgpu_fan_ctl.py -c config.toml --selftest # 只读自检
 sudo python3 amdgpu_fan_ctl.py -c config.toml --selftest --live --delta -20 --seconds 15
@@ -131,9 +131,9 @@ journalctl -u amdgpu-fan-ctl -f
 
 - GPU 曲线（`gpu_junction` / `gpu_edge` / `gpu_mem` / `gpu_default`）由 `gpu.critical_temp` 自动生成：从 `min_pwm` 起步，在 `critical_temp` 处到 100%。改这个值，曲线整体伸缩，不用手改 points；它同时也是硬阈值（瞬时值越线直接 100%）。
 - `[curves.*]` 是分段线性曲线，最终 PWM 取所有曲线中的最大值；显式写 `[curves.gpu_xxx]` 会覆盖自适应曲线。
-- GPU 传感器名自动展开为 `gpu_<名字>`；没有同名曲线的走 `gpu_default`。
+- GPU 传感器名自动展开为 `gpu_<名字>`；AMD SMI 的 hotspot 对应 `gpu_junction`，HBM 堆对应 `gpu_hbm_<序号>`；没有同名曲线的走 `gpu_default`。
 - `gpu_mem` 吃的是 `max(memory, 所有 HBM 堆)`。
-- `idle_pwm` 是 GPU 空闲时的封顶值，要求最热一路 ≤ `idle_max_temp` 且**算力**和**显存**利用率都 ≤ `idle_max_gpu_use`（显存取的是读写活动率，不是 VRAM 占用率）。
+- `idle_pwm` 是 GPU 空闲时的封顶值，要求最热一路 ≤ `idle_max_temp` 且**算力**和**显存**活动率都 ≤ `idle_max_gpu_use`（显存取的是 UMC 活动率，不是 VRAM 占用率）。
 - `fail_safe_pwm` 是连续读不到 GPU 温度时的兜底 PWM。
 
 ## 已知限制
@@ -141,4 +141,4 @@ journalctl -u amdgpu-fan-ctl -f
 - 主板无法从硬件读取 GPU 温度，SYS_FAN4 没有硬件自动控制，转速完全由本程序写 PWM。
 - 本机 BMC 的 `ipmitool sensor` / `ipmitool sdr` 单次约 5–6 秒，因此实际控制周期约 6 秒。
 - S8030 没有软件层的“自动模式”开关：退出/`--restore` 写回快照里的原始 PWM；没有快照时写回 `fan.max_pwm`。AC 掉电或 `mc reset cold` 后由 BIOS 默认策略接管。
-- BMC 读不到 MI210 的 GPU 温度，本程序只是把 GPU 温度代管进风扇决策。
+- BMC 读不到 AMD GPU 温度，本程序只是把 GPU 温度代管进风扇决策。

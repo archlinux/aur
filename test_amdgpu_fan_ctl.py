@@ -19,7 +19,7 @@ from amdgpu_fan_ctl import (
     Curve,
     GpuError,
     IpmiClient,
-    RocmSmiGpuReader,
+    AmdSmiGpuReader,
     cmd_selftest,
     cmd_status,
     make_gpu_reader,
@@ -31,7 +31,7 @@ from amdgpu_fan_ctl import (
 
 HERE = Path(__file__).resolve().parent
 
-# 用例里故意造失败路径（远程 rc=255、rocm-smi 不存在、state_dir 只读），
+# 用例里故意造失败路径（远程 rc=255、amd-smi 不存在、state_dir 只读），
 # 这些 ERROR/WARNING 日志会盖住 unittest 结果，测试期间静音。
 logging.disable(logging.CRITICAL)
 
@@ -355,36 +355,33 @@ class FakeCompleted:
 
 
 class TestGpuSource(unittest.TestCase):
-    """温度源只有一个：rocm-smi -t。这些是本项目最容易出静默错数据的地方。"""
+    """温度源只有 amd-smi metric --temperature。"""
 
-    ROCM_JSON = (
-        '{"card0": {"Temperature (Sensor edge) (C)": "39.0",'
-        ' "Temperature (Sensor junction) (C)": "42.0",'
-        ' "Temperature (Sensor memory) (C)": "38.0",'
-        ' "Temperature (Sensor HBM 0) (C)": "37.0",'
-        ' "Temperature (Sensor HBM 3) (C)": "36.0"}}'
+    AMD_JSON = (
+        '[{"temperature": {"edge": {"value": 39.0, "unit": "C"},'
+        ' "hotspot": {"value": 42.0, "unit": "C"},'
+        ' "mem": {"value": 38.0, "unit": "C"},'
+        ' "hbm_stacks": [{"value": 37.0, "unit": "C"},'
+        ' {"value": 36.0, "unit": "C"}]}}]'
     )
-    PROD_JSON = '{"card0": {"Card Series": "AMD Instinct MI210", "GFX Version": "gfx90a"}}'
+    PROD_JSON = '[{"asic": {"market_name": "AMD GPU model"}}]'
+    USE_JSON = '[{"usage": {"gfx_activity": 7, "umc_activity": 13}}]'
 
     @classmethod
     def _fake_run(
         cls,
         temp_json,
         prod_json=None,
-        use_json=(
-            '{"card0": {"GPU use (%)": "7",'
-            ' "GPU Memory Allocated (VRAM%)": "91",'
-            ' "GPU Memory Read/Write Activity (%)": "13"}}'
-        ),
+        use_json=None,
     ):
-        """按 argv 尾部把三种 rocm-smi 子命令分派开。"""
+        """按 amd-smi 子命令分派模拟输出。"""
         prod_json = prod_json or cls.PROD_JSON
+        use_json = use_json or cls.USE_JSON
 
         def fake_run(argv, **kw):
-            tail = " ".join(str(a) for a in argv)
-            if "--showproductname" in tail:
+            if "static" in argv:
                 return FakeCompleted(prod_json)
-            if "--showuse" in tail:
+            if "--usage" in argv:
                 return FakeCompleted(use_json)
             return FakeCompleted(temp_json)
 
@@ -399,22 +396,44 @@ class TestGpuSource(unittest.TestCase):
         self.assertEqual(temp_label("Temperature (Sensor HBM 0) (C)"), "hbm_0")
         self.assertEqual(temp_label("Temperature (Sensor HBM 10) (C)"), "hbm_10")
         self.assertEqual(temp_label("Temperature (Sensor GFX) (C)"), "gfx")
+        self.assertEqual(temp_label("hotspot"), "junction")
+        self.assertEqual(temp_label("temperature_hbm_stacks"), "hbm")
         self.assertIsNone(temp_label("GPU use (%)"))
         self.assertIsNone(temp_label("Temperature (Sensor edge)"))
 
     def test_reads_json_and_expands_every_sensor(self):
-        reader = RocmSmiGpuReader("rocm-smi", 1.0)
-        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.ROCM_JSON)):
+        reader = AmdSmiGpuReader("amd-smi", 1.0)
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.AMD_JSON)):
             self.assertEqual(
                 reader.read(),
-                {"edge": 39.0, "junction": 42.0, "mem": 38.0, "hbm_0": 37.0, "hbm_3": 36.0},
+                {"edge": 39.0, "junction": 42.0, "mem": 38.0, "hbm_0": 37.0, "hbm_1": 36.0},
             )
+
+    def test_temperature_uses_amd_smi_metric_command(self):
+        reader = AmdSmiGpuReader("/opt/rocm/bin/amd-smi", 1.0)
+        with mock.patch(
+            "amdgpu_fan_ctl.subprocess.run",
+            return_value=FakeCompleted(self.AMD_JSON),
+        ) as run:
+            reader.read()
+        self.assertEqual(
+            run.call_args.args[0],
+            ["/opt/rocm/bin/amd-smi", "metric", "--temperature", "--json"],
+        )
+
+    def test_cards_displays_model_reported_by_amd_smi(self):
+        reader = AmdSmiGpuReader("amd-smi", 1.0)
+        with mock.patch(
+            "amdgpu_fan_ctl.subprocess.run",
+            side_effect=self._fake_run(self.AMD_JSON),
+        ):
+            self.assertEqual(reader.cards(), {"card0": "AMD GPU model"})
 
     def test_read_keeps_raw_values_for_safety_threshold(self):
         """曲线用平滑值，但 60°C 硬阈值必须看瞬时值。"""
-        reader = RocmSmiGpuReader("rocm-smi", 0.5)
-        hot_json = '{"card0": {"Temperature (Sensor junction) (C)": "52.0"}}'
-        with mock.patch("amdgpu_fan_ctl.subprocess.run", return_value=FakeCompleted(self.ROCM_JSON)):
+        reader = AmdSmiGpuReader("amd-smi", 0.5)
+        hot_json = '[{"temperature": {"hotspot": {"value": 52.0, "unit": "C"}}}]'
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", return_value=FakeCompleted(self.AMD_JSON)):
             reader.read()
         self.assertEqual(reader.last_raw["junction"], 42.0)
         with mock.patch("amdgpu_fan_ctl.subprocess.run", return_value=FakeCompleted(hot_json)):
@@ -432,7 +451,7 @@ class TestGpuSource(unittest.TestCase):
         self.assertAlmostEqual(d.target_pwm, cfg.curves["gpu_default"].eval(59.0), places=1)
 
     def test_gpu_mem_curve_sees_the_hottest_hbm_stack(self):
-        """gpu_mem 喂进去的是 max(memory, 所有 HBM 堆)——rocm-smi 的细节全用上。"""
+        """gpu_mem 喂进去的是 max(memory, 所有 HBM 堆)。"""
         _, ctrl, _, _ = make(mode="observe", temps={"mem": 45.0, "hbm_0": 40.0, "hbm_3": 92.0}, use=50)
         d = ctrl.decide()
         self.assertEqual(ctrl.last_readings["gpu_mem"], 92.0)
@@ -455,16 +474,16 @@ class TestGpuSource(unittest.TestCase):
                 "GPU 空闲", " ".join(ctrl.decide().reasons), "任一利用率读不到时不能当空闲"
             )
 
-    # --- rocm-smi 本身：利用率、报错、二进制缺失 -------------------------
+    # --- amd-smi 本身：利用率、报错、二进制缺失 -------------------------
 
     def test_usage_reads_compute_and_memory_activity(self):
-        """算力和显存利用率要分开取；显存取 Read/Write Activity，不是 VRAM 占用率。"""
-        reader = RocmSmiGpuReader("rocm-smi", 1.0)
-        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.ROCM_JSON)):
+        """算力和显存控制器活动率要分开取。"""
+        reader = AmdSmiGpuReader("amd-smi", 1.0)
+        with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.AMD_JSON)):
             self.assertEqual(reader.usage(), (7.0, 13.0))
 
-    def test_usage_is_unknown_when_rocm_smi_fails(self):
-        reader = RocmSmiGpuReader("rocm-smi", 1.0)
+    def test_usage_is_unknown_when_amd_smi_fails(self):
+        reader = AmdSmiGpuReader("amd-smi", 1.0)
         with mock.patch(
             "amdgpu_fan_ctl.subprocess.run",
             return_value=FakeCompleted("", returncode=1, stderr="boom"),
@@ -472,38 +491,38 @@ class TestGpuSource(unittest.TestCase):
             self.assertEqual(reader.usage(), (-1.0, -1.0))
 
     def test_error_output_is_not_mistaken_for_data(self):
-        """rocm-smi 报错时不能把 stderr 里的 '{' 当 JSON 解析。"""
-        reader = RocmSmiGpuReader("rocm-smi", 0.3)
+        """amd-smi 非零退出时不能把 stderr 里的 '{' 当成功数据。"""
+        reader = AmdSmiGpuReader("amd-smi", 0.3)
         with mock.patch(
             "amdgpu_fan_ctl.subprocess.run",
             return_value=FakeCompleted("", returncode=1, stderr='{"error": "no such file"}'),
         ):
             self.assertEqual(reader.read(), {})
-            self.assertIn("没返回 JSON", reader.last_error)
+            self.assertIn("执行失败", reader.last_error)
 
     def test_missing_binary_raises_gpu_error(self):
         """read() 会把 GpuError 吞成 {}（这是设计：读不到就该走 fail-safe），
         所以直接测底层 _run。"""
-        reader = RocmSmiGpuReader("/nonexistent/rocm-smi", 1.0)
+        reader = AmdSmiGpuReader("/nonexistent/amd-smi", 1.0)
         with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=FileNotFoundError):
             with self.assertRaises(GpuError):
-                reader._run("-t")
+                reader._run("metric", "--temperature")
 
     def test_timeout_raises_gpu_error(self):
         import subprocess
 
-        reader = RocmSmiGpuReader("/opt/rocm/bin/rocm-smi", 1.0)
+        reader = AmdSmiGpuReader("/opt/rocm/bin/amd-smi", 1.0)
         with mock.patch(
             "amdgpu_fan_ctl.subprocess.run",
-            side_effect=subprocess.TimeoutExpired(cmd="rocm-smi", timeout=1),
+            side_effect=subprocess.TimeoutExpired(cmd="amd-smi", timeout=1),
         ):
             with self.assertRaises(GpuError):
-                reader._run("-t")
+                reader._run("metric", "--temperature")
 
     def test_make_gpu_reader_uses_config(self):
-        cfg = Config({"gpu": {"rocm_smi": "/tmp/rocm-smi", "timeout": 5, "smoothing": 0.5}})
+        cfg = Config({"gpu": {"amd_smi": "/tmp/amd-smi", "timeout": 5, "smoothing": 0.5}})
         reader = make_gpu_reader(cfg)
-        self.assertEqual(reader.binary, "/tmp/rocm-smi")
+        self.assertEqual(reader.binary, "/tmp/amd-smi")
         self.assertEqual(reader.timeout, 5.0)
         self.assertEqual(reader.alpha, 0.5)
 

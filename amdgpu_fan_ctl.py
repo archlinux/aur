@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-amdgpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的闭环控制器
+amdgpu-fan-ctl —— 用 amd-smi 读到的 AMD GPU 温度驱动机箱风扇的闭环控制器
 
 拓扑
-    程序与 MI210 跑在同一台机器上（本机 rocm-smi）。
+    程序与 AMD GPU 跑在同一台机器上（本机 amd-smi）。
     风扇由泰安 S8030 的 BMC 控制，程序通过本机 ipmitool 走 /dev/ipmi0
     直接写 PWM 通道（默认 pwm_id=5 = SYS_FAN4），不依赖 BMC 网络。
 
@@ -16,8 +16,8 @@ amdgpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的
     实测依据：把 PWM5 从 31% 拉到 100%，SYS_FAN_4 从 4692 升到 8142 RPM，
     而 CPU_FAN 始终是 1242 RPM。
 
-温度源：只有 GPU（rocm-smi）
-    `rocm-smi -t --json` 是 ROCm 自己维护的接口，读数最全
+温度源：只有 GPU（amd-smi）
+    `amd-smi metric --temperature --json` 读取 GPU 温度
     （edge / junction / memory / HBM 0..3 ...）。本程序**只**认这一种温度源，
     不读取 BMC 的 CPU / 主板 / 进风温度传感器。
 
@@ -42,7 +42,7 @@ amdgpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的
     7. 只在需要时写（死区 write_deadband + 最小间隔 min_write_interval）。
 
 依赖
-    Python 3.11+ 标准库、rocm-smi、ipmitool。
+    Python 3.11+ 标准库、amd-smi、ipmitool。
 """
 
 from __future__ import annotations
@@ -118,7 +118,7 @@ DEFAULTS: dict = {
     },
     "gpu": {
         # 必须绝对路径：/opt/rocm/bin 不在 systemd 的 PATH 里
-        "rocm_smi": "/opt/rocm/bin/rocm-smi",
+        "amd_smi": "/opt/rocm/bin/amd-smi",
         "timeout": 20.0,
         "smoothing": 0.35,
         "critical_temp": 60.0,
@@ -248,15 +248,19 @@ def resolve_config_path(explicit: str | None = None) -> str:
 
 
 # --------------------------------------------------------------------------- #
-# GPU 温度：只走 rocm-smi
+# GPU 温度：只走 amd-smi
 # --------------------------------------------------------------------------- #
 class GpuError(RuntimeError):
-    """rocm-smi 相关的错误。"""
+    """amd-smi 相关的错误。"""
 
 
 # `Temperature (Sensor XXX) (C)` 里的名字 -> 内部标签
 _TEMP_KEY_RE = re.compile(r"^Temperature \(Sensor (.+?)\) \(C\)$")
-_LABEL_ALIASES = {"memory": "mem"}   # rocm-smi 叫 memory，曲线里习惯叫 mem
+_LABEL_ALIASES = {
+    "memory": "mem",
+    "hotspot": "junction",
+    "hbm_stacks": "hbm",
+}
 
 
 def temp_label(key: str) -> str | None:
@@ -265,21 +269,18 @@ def temp_label(key: str) -> str | None:
     故意用正则 + 别名，而不是写死的映射表：换一张卡、或 ROCm 多报一个传感器
     （HBM 4、GFX、SOC...）都能自动跟上，不用改代码。
     """
-    match = _TEMP_KEY_RE.match(str(key).strip())
-    if not match:
+    text = str(key).strip()
+    match = _TEMP_KEY_RE.match(text)
+    name = match.group(1) if match else text.lower().removeprefix("temperature_")
+    if not match and name not in {
+        "edge", "hotspot", "memory", "mem", "hbm_stacks", "mid", "aid", "xcd",
+        "gfx", "vrgfx", "vrmem", "vrsoc",
+    }:
         return None
-    name = re.sub(r"[^a-z0-9]+", "_", match.group(1).strip().lower()).strip("_")
+    name = re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
     if not name:
         return None
     return _LABEL_ALIASES.get(name, name)
-
-
-def percent(value) -> float:
-    """rocm-smi 的百分比字段 -> float；读不到返回 -1（不要据此判断空闲）。"""
-    try:
-        return float(str(value).strip())
-    except (TypeError, ValueError):
-        return -1.0
 
 
 def _fmt_pct(value: float) -> str:
@@ -287,14 +288,14 @@ def _fmt_pct(value: float) -> str:
 
 
 # --------------------------------------------------------------------------- #
-# rocm-smi 读取器
+# amd-smi 读取器
 # --------------------------------------------------------------------------- #
-class RocmSmiGpuReader:
-    """用本机 `rocm-smi` 读 GPU 温度、利用率和型号。这是唯一的 GPU 数据来源。
+class AmdSmiGpuReader:
+    """用本机 `amd-smi` 读 GPU 温度、利用率和型号。这是唯一的 GPU 数据来源。
 
-        rocm-smi -t --json                        温度
-        rocm-smi --showuse --showmemuse --json    算力 + 显存利用率（判断"是不是真闲着"）
-        rocm-smi --showproductname --json         型号（只用于显示）
+        amd-smi metric --temperature --json          温度
+        amd-smi metric --usage --mem-usage --json    算力 + 显存利用率
+        amd-smi static --asic --json                型号（只用于显示）
 
     多卡时每个标签取最热的那张 —— 风扇只能往快了吹，取最热是安全方向。
     """
@@ -307,110 +308,166 @@ class RocmSmiGpuReader:
         self.last_raw: dict[str, float] = {}               # 最近一次未平滑的读数
         self.last_error = ""
 
-    def _run(self, *args: str) -> dict:
+    def _run(self, *args: str):
         cmd = [self.binary, *args, "--json"]
         try:
             proc = subprocess.run(cmd, capture_output=True, text=True, timeout=self.timeout)
         except FileNotFoundError as exc:
             raise GpuError(f"找不到 {cmd[0]}") from exc
         except subprocess.TimeoutExpired as exc:
-            raise GpuError(f"rocm-smi 超时(>{self.timeout:.0f}s)") from exc
+            raise GpuError(f"amd-smi 超时(>{self.timeout:.0f}s)") from exc
+        if proc.returncode != 0:
+            detail = (proc.stderr or proc.stdout or "").strip().replace("\n", " ")[:200]
+            raise GpuError(f"amd-smi 执行失败(rc={proc.returncode}): {detail}")
         text = proc.stdout or ""
-        start = text.find("{")
+        start = min((pos for pos in (text.find("{"), text.find("[")) if pos >= 0), default=-1)
         if start < 0:
             detail = (proc.stderr or text).strip().replace("\n", " ")[:200]
-            raise GpuError(f"rocm-smi 没返回 JSON(rc={proc.returncode}): {detail}")
+            raise GpuError(f"amd-smi 没返回 JSON: {detail}")
         try:
             return json.loads(text[start:])
         except json.JSONDecodeError as exc:
-            raise GpuError(f"rocm-smi 的 JSON 解析失败: {exc}") from exc
+            raise GpuError(f"amd-smi 的 JSON 解析失败: {exc}") from exc
+
+    @staticmethod
+    def _sections(data, name: str, card: str = "0"):
+        """在 amd-smi 的单卡或多卡 JSON 响应中找到指定数据段。"""
+        if isinstance(data, dict):
+            card = str(data.get("gpu", data.get("gpu_id", data.get("id", card))))
+            if name in data:
+                yield card, data[name]
+                return
+            for key, value in data.items():
+                nested_card = str(key) if re.fullmatch(
+                    r"(?:card|gpu)[ _-]?\d+", str(key), re.IGNORECASE
+                ) else card
+                yield from AmdSmiGpuReader._sections(value, name, nested_card)
+        elif isinstance(data, list):
+            for index, value in enumerate(data):
+                yield from AmdSmiGpuReader._sections(value, name, str(index))
+
+    @staticmethod
+    def _number(value) -> float | None:
+        if isinstance(value, dict):
+            value = value.get("value")
+        try:
+            number = float(str(value).strip())
+        except (TypeError, ValueError):
+            return None
+        return number if number >= 0 else None
+
+    @staticmethod
+    def _temperature_values(temperatures) -> dict[str, float]:
+        if not isinstance(temperatures, dict):
+            return {}
+        out: dict[str, float] = {}
+        for key, value in temperatures.items():
+            label = temp_label(key)
+            if label is None:
+                continue
+            if isinstance(value, list):
+                for index, item in enumerate(value):
+                    raw = AmdSmiGpuReader._number(item)
+                    if raw is not None:
+                        out[f"{label}_{index}"] = raw
+            elif isinstance(value, dict) and "value" not in value:
+                for index, item in enumerate(value.values()):
+                    raw = AmdSmiGpuReader._number(item)
+                    if raw is not None:
+                        out[f"{label}_{index}"] = raw
+            else:
+                raw = AmdSmiGpuReader._number(value)
+                if raw is not None:
+                    out[label] = raw
+        return out
 
     # -- 卡的身份（只用于显示） --------------------------------------------- #
     def cards(self) -> dict[str, str]:
-        """cardN -> 'AMD Instinct MI210 (gfx90a)'。读不到返回 {}。"""
+        """cardN -> 'AMD GPU 型号'。读不到返回 {}。"""
         try:
-            data = self._run("--showproductname")
+            data = self._run("static", "--asic")
         except (GpuError, OSError) as exc:
             self.last_error = str(exc)
-            LOG.warning("rocm-smi 读型号失败：%s", exc)
+            LOG.warning("amd-smi 读型号失败：%s", exc)
             return {}
         out: dict[str, str] = {}
-        for card, info in data.items():
+        for card, info in self._sections(data, "asic"):
             if not isinstance(info, dict):
                 continue
-            series = str(info.get("Card Series") or "?")
-            gfx = str(info.get("GFX Version") or "")
-            out[str(card)] = f"{series} ({gfx})" if gfx else series
+            series = str(info.get("market_name") or info.get("product_name") or info.get("name") or "?")
+            gfx = str(info.get("target_graphics_version") or info.get("gfx_version") or "")
+            out[f"card{card}"] = f"{series} ({gfx})" if gfx else series
         return out
 
     # -- 温度 --------------------------------------------------------------- #
     def read(self) -> dict[str, float]:
         """返回平滑后的温度；未平滑的瞬时值留在 `last_raw`（安全阈值用它）。"""
         try:
-            data = self._run("-t")
+            data = self._run("metric", "--temperature")
         except (GpuError, OSError) as exc:
             self.last_error = str(exc)
             self.last_raw = {}
-            LOG.warning("rocm-smi 读温度失败：%s", exc)
+            LOG.warning("amd-smi 读温度失败：%s", exc)
             return {}
         out: dict[str, float] = {}
         raw_out: dict[str, float] = {}
-        for card, temps in data.items():
-            if not isinstance(temps, dict):
-                continue
-            for key, val in temps.items():
-                label = temp_label(key)
-                if label is None:
-                    continue
-                try:
-                    raw = float(str(val).strip())
-                except ValueError:
-                    continue
+        for card, temps in self._sections(data, "temperature"):
+            for label, raw in self._temperature_values(temps).items():
                 raw_out[label] = max(raw_out.get(label, raw), raw)
                 # 平滑状态按 (卡, 标签) 分开存，多卡互不污染
-                slot = (str(card), label)
+                slot = (card, label)
                 prev = self.smoothed.get(slot)
                 value = raw if prev is None else prev + self.alpha * (raw - prev)
                 self.smoothed[slot] = value
                 value = round(value, 1)
                 out[label] = max(out.get(label, value), value)
         self.last_raw = raw_out
+        if not raw_out:
+            self.last_error = "amd-smi 返回的 JSON 中没有可用的温度数据"
+            LOG.warning("%s", self.last_error)
         return out
 
     def raw_labels(self) -> list[str]:
-        """rocm-smi 报出来的所有温度标签（--print-curves / describe 用）。"""
+        """amd-smi 报出来的所有温度标签（--print-curves / describe 用）。"""
         try:
-            data = self._run("-t")
+            data = self._run("metric", "--temperature")
         except (GpuError, OSError) as exc:
             self.last_error = str(exc)
             return [f"错误：{exc}"]
-        labels = []
-        for temps in data.values():
-            if isinstance(temps, dict):
-                labels.extend(lbl for lbl in (temp_label(k) for k in temps) if lbl)
-        return sorted(set(labels))
+        return sorted({
+            label
+            for _, temperatures in self._sections(data, "temperature")
+            for label in self._temperature_values(temperatures)
+        })
 
     # -- 利用率 ------------------------------------------------------------- #
     def usage(self) -> tuple[float, float]:
         """所有卡的（算力利用率, 显存利用率）最大值，单位 %。
 
-        显存取的是 `GPU Memory Read/Write Activity (%)`（带宽活动），
-        不是 `GPU Memory Allocated (VRAM%)`（占用比例）。
+        显存取的是 UMC（显存控制器）活动率，不是 VRAM 分配占用比例。
         任一值 -1 = 读不到，**不要**据此判断空闲。
         """
         try:
-            data = self._run("--showuse", "--showmemuse")
+            data = self._run("metric", "--usage", "--mem-usage")
         except (GpuError, OSError) as exc:
             self.last_error = str(exc)
-            LOG.debug("rocm-smi 读利用率失败：%s", exc)
+            LOG.debug("amd-smi 读利用率失败：%s", exc)
             return -1.0, -1.0
         compute = -1.0
         memory = -1.0
-        for info in data.values():
-            if not isinstance(info, dict):
+        for _, usage in self._sections(data, "usage"):
+            if not isinstance(usage, dict):
                 continue
-            compute = max(compute, percent(info.get("GPU use (%)")))
-            memory = max(memory, percent(info.get("GPU Memory Read/Write Activity (%)")))
+            for key in ("gfx_activity", "gpu_activity", "gpu_use"):
+                value = self._number(usage.get(key))
+                if value is not None:
+                    compute = max(compute, value)
+                    break
+            for key in ("umc_activity", "memory_activity", "mem_activity"):
+                value = self._number(usage.get(key))
+                if value is not None:
+                    memory = max(memory, value)
+                    break
         return compute, memory
 
     # -- 状态 --------------------------------------------------------------- #
@@ -422,16 +479,16 @@ class RocmSmiGpuReader:
         identity = "，".join(f"{c}={n}" for c, n in sorted(cards.items())) or "（读不到型号）"
         tail = f"  [最后错误：{self.last_error}]" if self.last_error else ""
         return (
-            f"rocm-smi 本机（{self.binary}）"
+            f"amd-smi 本机（{self.binary}）"
             f"\n  卡：{identity}"
             f"\n  传感器：{self.raw_labels()}{tail}"
         )
 
 
-def make_gpu_reader(cfg: Config) -> RocmSmiGpuReader:
+def make_gpu_reader(cfg: Config) -> AmdSmiGpuReader:
     g = dict(cfg.raw.get("gpu") or {})
-    return RocmSmiGpuReader(
-        binary=str(g.get("rocm_smi", "/opt/rocm/bin/rocm-smi")),
+    return AmdSmiGpuReader(
+        binary=str(g.get("amd_smi", "/opt/rocm/bin/amd-smi")),
         smoothing=float(g.get("smoothing", 0.35)),
         timeout=float(g.get("timeout", 20.0)),
     )
@@ -550,7 +607,7 @@ class Decision:
 
 
 class Controller:
-    def __init__(self, cfg: Config, gpu: RocmSmiGpuReader, bmc: IpmiClient | None, dry_run: bool):
+    def __init__(self, cfg: Config, gpu: AmdSmiGpuReader, bmc: IpmiClient | None, dry_run: bool):
         self.cfg = cfg
         self.gpu = gpu
         self.bmc = bmc
@@ -826,7 +883,7 @@ def setup_logging(level: str) -> None:
     )
 
 
-def cmd_status(cfg: Config, gpu: RocmSmiGpuReader, bmc: IpmiClient) -> int:
+def cmd_status(cfg: Config, gpu: AmdSmiGpuReader, bmc: IpmiClient) -> int:
     print(
         f"配置：{cfg.path or '（未找到配置文件，全部用内置默认值）'}"
         f"  模式={cfg['general']['mode']}  dry_run={cfg['general']['dry_run']}"
@@ -903,9 +960,9 @@ def _avg_rpm(info: dict) -> float:
 
 
 def cmd_selftest(
-    cfg: Config, gpu: RocmSmiGpuReader, bmc: IpmiClient, live: bool, delta: float, seconds: float
+    cfg: Config, gpu: AmdSmiGpuReader, bmc: IpmiClient, live: bool, delta: float, seconds: float
 ) -> int:
-    print("=== 1) GPU 温度源（rocm-smi）===")
+    print("=== 1) GPU 温度源（amd-smi）===")
     print(f"  {gpu.describe()}")
     temps = gpu.read()
     print(f"  读数：{temps if temps else '拿不到（看上面的 WARNING）'}")
