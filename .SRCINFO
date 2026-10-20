@@ -2,7 +2,7 @@ pkgbase = nono-ai
 	pkgdesc = Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock
 	pkgver = 0.80.0
 	pkgrel = 1
-	url = https://github.com/always-further/nono
+	url = https://github.com/nolabs-ai/nono
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
@@ -11,11 +11,11 @@ pkgbase = nono-ai
 	depends = glibc
 	optdepends = libsecret: keyring credential storage via Secret Service API
 	optdepends = gnome-keyring: GNOME-based credential storage
-	provides = nono
+	provides = nono=0.80.0
 	conflicts = nono
 	conflicts = nono-ai-bin
 	options = !lto
-	source = nono-0.80.0.tar.gz::https://github.com/always-further/nono/archive/refs/tags/v0.80.0.tar.gz
+	source = nono-0.80.0.tar.gz::https://github.com/nolabs-ai/nono/archive/refs/tags/v0.80.0.tar.gz
 	sha256sums = d216e714883f237a5bac468a0141dc781a979eab2535957f63ecf27a1fffdc09
 
 pkgname = nono-ai

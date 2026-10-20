@@ -14,7 +14,7 @@ optdepends=(
   'libsecret: keyring credential storage via Secret Service API'
   'gnome-keyring: GNOME-based credential storage'
 )
-provides=('nono')
+provides=("${_pkgname}=${pkgver}")
 conflicts=('nono' 'nono-ai-bin')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
