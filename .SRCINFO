@@ -1,6 +1,6 @@
 pkgbase = masscode-git
 	pkgdesc = A free, open-source developer workspace. Snippets, notes, HTTP requests, calculations, and dev tools in one local-first app.
-	pkgver = 6.2.1.r0.g9699535
+	pkgver = 6.3.1.r1.g5ea8aca
 	pkgrel = 1
 	url = https://masscode.io/
 	arch = any
