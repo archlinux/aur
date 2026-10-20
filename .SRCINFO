@@ -1,6 +1,6 @@
 pkgbase = jan-bin
 	pkgdesc = Jan is bringing the best of open-source AI in an easy-to-use product. Download and run LLMs with full control and privacy.
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = jan-bin
 	depends = bun
 	depends = uv
 	depends = libayatana-appindicator
-	provides = jan=0.8.6
+	provides = jan=0.8.7
 	conflicts = jan
 	options = !strip
 	options = !emptydirs
-	source = jan-0.8.6.deb::https://github.com/janhq/jan/releases/download/v0.8.6/Jan_0.8.6_amd64.deb
+	source = jan-0.8.7.deb::https://github.com/janhq/jan/releases/download/v0.8.7/Jan_0.8.7_amd64.deb
 	source = jan.sh
-	sha256sums = 0065da1757c63bb8727c9c489bedeb696446f57bf0001800375a750f2dbd4c5e
+	sha256sums = a414913bf0c3057b97cfe7a8b48674425318ff2e23a5aded5630ba2607697378
 	sha256sums = 5111c45e21dd8590d5b44093045778946195d3036c83416db69498a12be0e912
 
 pkgname = jan-bin

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jan-bin
 _pkgname=Jan
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Jan is bringing the best of open-source AI in an easy-to-use product. Download and run LLMs with full control and privacy."
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0065da1757c63bb8727c9c489bedeb696446f57bf0001800375a750f2dbd4c5e'
+sha256sums=('a414913bf0c3057b97cfe7a8b48674425318ff2e23a5aded5630ba2607697378'
             '5111c45e21dd8590d5b44093045778946195d3036c83416db69498a12be0e912')
 prepare() {
     sed -i -e "
@@ -43,12 +43,13 @@ prepare() {
         s/Categories=/Categories=Utility;/g
         s/Icon=${_pkgname}-Desktop/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
+    [[ -d "${srcdir}/usr/share/icons/hicolor/256x256@2" && ! -d "${srcdir}/usr/share/icons/hicolor/512x512" ]] \
+        && mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}-Desktop" -t "${pkgdir}/usr/lib/${_pkgname}"
-    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
+    [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
