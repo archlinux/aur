@@ -17,18 +17,20 @@ source=("git+https://gitea.osmocom.org/sdr/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "$srcdir/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR=$pkgdir install
+  cd "$srcdir/${pkgname%-git}"
+  make DESTDIR=$pkgdir install
 }
+
+# vim:set ts=2 sw=2 et:
