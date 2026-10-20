@@ -61,6 +61,11 @@ build() {
   make -j$(nproc)
 }
 
+check() {
+  cd "$srcdir/wak"
+  make test
+}
+
 package() {
   cd "$srcdir/wak"
 
@@ -68,7 +73,7 @@ package() {
   install -Dm755 wak "$pkgdir/usr/bin/wak"
 
   # Install manpage
-  install -Dm644 wak.man.xz "$pkgdir/usr/share/man/man1/wak.1.gz"
+  install -Dm644 wak.man.xz "$pkgdir/usr/share/man/man1/wak.1.xz"
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
