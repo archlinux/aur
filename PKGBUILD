@@ -22,7 +22,7 @@ sha256sums=('ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e'
 # validpgpkeys=('5D46CB0F763405A7053556F47A75A648B3F9220C') # "Zoltan Fridrich <zfridric@redhat.com>"
 validpgpkeys=('E987AB7F7E89667776D05B3BB0E9DD20B29F1432') # Alexander Sosedkin <monk@unboiled.info>
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "${srcdir}/gnutls-${pkgver}"
