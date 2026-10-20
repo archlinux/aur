@@ -1,0 +1,9 @@
+# Ignore everything, so that makepkg build artefacts, logs and its VCS
+# cache (src/, pkg/) can never end up in the AUR commit.
+*
+
+# The AUR package itself.
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!.gitignore
