@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Gils <dmitry.gils@makersite.de>
+# Maintainer: Dmitriy Geels <dmitriy.geels@gmailcom>
 pkgname=slack-mcp-server-bin
 pkgver=1.3.0
 pkgrel=1
