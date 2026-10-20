@@ -10,4 +10,4 @@ Target = usr/share/dbus-1/system-services/*.service
 [Action]
 Description = Reloading system bus configuration...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/systemd-hook reload dbus
+Exec = /usr/share/libalpm/scripts/systemd-hook reload dbus.service

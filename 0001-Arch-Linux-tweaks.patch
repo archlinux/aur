@@ -32,12 +32,12 @@ index 176894d62c2e..0fffe8c18dbf 100644
          get_option('datadir') / 'dbus-1' / 'system-services',
      ]
 diff --git a/bus/sysusers.d/dbus.conf.in b/bus/sysusers.d/dbus.conf.in
-index fb35702ddfb7..f01000b83158 100644
+index 92c815d5d00f..01d4e74b44eb 100644
 --- a/bus/sysusers.d/dbus.conf.in
 +++ b/bus/sysusers.d/dbus.conf.in
 @@ -2,4 +2,4 @@
  # at boot on systemd-based systems that ship with an unpopulated
  # /etc. See sysusers.d(5) for details.
  
--u @DBUS_USER@ - "System Message Bus"
-+u @DBUS_USER@ 81 "System Message Bus"
+-u@DBUS_USER_LOCK@ @DBUS_USER@ - "System Message Bus"
++u@DBUS_USER_LOCK@ @DBUS_USER@ 81 "System Message Bus"
