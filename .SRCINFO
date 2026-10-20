@@ -1,6 +1,6 @@
 pkgbase = python-unsloth-zoo
 	pkgdesc = Utility functions for Unsloth fine-tuning framework
-	pkgver = 2026.10.6
+	pkgver = 2026.10.7
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth-zoo
 	arch = any
@@ -56,11 +56,13 @@ pkgbase = python-unsloth-zoo
 	optdepends = python-bitsandbytes: 4-bit/8-bit quantization and LoRA merging
 	optdepends = python-fastapi: diffusion-studio HTTP service
 	optdepends = uvicorn: diffusion-studio HTTP service
-	source = unsloth-zoo-9e560677fbe7460cf9d2e047d8825689cacb02b7.tar.gz::https://github.com/unslothai/unsloth-zoo/archive/9e560677fbe7460cf9d2e047d8825689cacb02b7.tar.gz
-	source = unsloth-983226fa739a3d00836d4d77b94390bebe144781.tar.gz::https://github.com/unslothai/unsloth/archive/983226fa739a3d00836d4d77b94390bebe144781.tar.gz
+	source = unsloth-zoo-2086b298d23778a18209b0004e81336660566215.tar.gz::https://github.com/unslothai/unsloth-zoo/archive/2086b298d23778a18209b0004e81336660566215.tar.gz
+	source = unsloth-7b577a921cc730d584679dd3ac070c12436e3a76.tar.gz::https://github.com/unslothai/unsloth/archive/7b577a921cc730d584679dd3ac070c12436e3a76.tar.gz
 	source = trl-import-utils-compat.patch
-	sha256sums = 8c7195183889bfdce670d85f0d987af11398d871f6e6c0978df09e8fc89dd28b
-	sha256sums = d6f3ab919bf0e2cbebbae89633b21bc08cb0d277e32d8f5890d8d22d516fa82a
+	source = preserve-installed-triton.patch
+	sha256sums = 5cd1347f44ec1b331596d27fbbaec405789cbf3004e14afa55299180d238a7d9
+	sha256sums = 504c2246b50f1ebd85bbf425d01a0ff680a844a8f5e092264a6a56b35805e9a2
 	sha256sums = ddc0c8a0dddae64bdd1f94351b6d86682eae9774fa304a05a84bb6088709ac89
+	sha256sums = ace48f2fa70e1ac0d88e832587733dd6955eac7a3831a28a1a896f2b60ff62e8
 
 pkgname = python-unsloth-zoo

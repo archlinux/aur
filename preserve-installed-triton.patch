@@ -1,0 +1,14 @@
+--- a/unsloth_zoo/__init__.py
++++ b/unsloth_zoo/__init__.py
+@@ -208,7 +208,10 @@
+ # normal CUDA/CPU run _SKIP_GPU_INIT is False and the real modules are untouched.
+ if _SKIP_GPU_INIT:
+     from unsloth_zoo.stubs.triton_stub import inject_into_sys_modules as _inject_triton
+-    _inject_triton()
++    # Preserve an installed compiler when only the heavy GPU init is skipped.
++    # MLX keeps its stubs even if a Triton installation is discoverable.
++    if DEVICE_TYPE == "mlx" or find_spec("triton") is None:
++        _inject_triton()
+     # bitsandbytes, unlike triton, ships a working arm64 macOS wheel, and shadowing a
+     # real install makes bnb-quantized checkpoints unloadable. Locating it imports
+     # nothing, so the download-only child can take this path too.

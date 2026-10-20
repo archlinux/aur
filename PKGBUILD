@@ -3,12 +3,12 @@
 pkgname=python-unsloth-zoo
 _pkgname=unsloth_zoo
 _archive=unsloth-zoo
-pkgver=2026.10.6
+pkgver=2026.10.7
 # Upstream does not tag releases. This is the version-bump commit immediately
 # preceding the PyPI upload.
-_commit=9e560677fbe7460cf9d2e047d8825689cacb02b7
-# Match the Unsloth 2026.10.6 source release used as the staged test companion.
-_unsloth_commit=983226fa739a3d00836d4d77b94390bebe144781
+_commit=2086b298d23778a18209b0004e81336660566215
+# Match the Unsloth 2026.10.7 source release used as the staged test companion.
+_unsloth_commit=7b577a921cc730d584679dd3ac070c12436e3a76
 _source="${_archive}-${_commit}"
 _unsloth_source="unsloth-${_unsloth_commit}"
 pkgrel=1
@@ -81,21 +81,26 @@ source=(
     "${_archive}-${_commit}.tar.gz::$url/archive/${_commit}.tar.gz"
     "unsloth-${_unsloth_commit}.tar.gz::https://github.com/unslothai/unsloth/archive/${_unsloth_commit}.tar.gz"
     'trl-import-utils-compat.patch'
+    'preserve-installed-triton.patch'
 )
-sha256sums=('8c7195183889bfdce670d85f0d987af11398d871f6e6c0978df09e8fc89dd28b'
-            'd6f3ab919bf0e2cbebbae89633b21bc08cb0d277e32d8f5890d8d22d516fa82a'
-            'ddc0c8a0dddae64bdd1f94351b6d86682eae9774fa304a05a84bb6088709ac89')
+sha256sums=('5cd1347f44ec1b331596d27fbbaec405789cbf3004e14afa55299180d238a7d9'
+            '504c2246b50f1ebd85bbf425d01a0ff680a844a8f5e092264a6a56b35805e9a2'
+            'ddc0c8a0dddae64bdd1f94351b6d86682eae9774fa304a05a84bb6088709ac89'
+            'ace48f2fa70e1ac0d88e832587733dd6955eac7a3831a28a1a896f2b60ff62e8')
 
 prepare() {
     cd "$_source"
-    # Use Arch's setuptools-scm while preserving the upstream minimum.
+    # Preserve the real Triton compiler for standalone GPU loss utilities.
+    patch -Np1 --fuzz=0 -i "$srcdir/preserve-installed-triton.patch"
+    # Use Arch's build backends while preserving the upstream minimums.
+    sed -i 's/setuptools==84.0.0/setuptools>=84.0.0/' pyproject.toml
     sed -i 's/setuptools-scm==9.2.0/setuptools-scm>=9.2.0/' pyproject.toml
     # Validate Arch's Transformers 5.19 and Datasets 5 with the retained
     # CPU compatibility suite before widening these upstream ceilings.
     sed -i 's/<=5.17.0/<6/g; s/<5.0.0/<6/g' pyproject.toml
 
     cd "$srcdir/$_unsloth_source"
-    sed -i 's/setuptools==82.0.1/setuptools>=82.0.1/' pyproject.toml
+    sed -i 's/setuptools==84.0.0/setuptools>=84.0.0/' pyproject.toml
     sed -i 's/setuptools-scm==9.2.2/setuptools-scm>=9.2.2/' pyproject.toml
     patch -Np1 -i "$srcdir/trl-import-utils-compat.patch"
 }
@@ -131,7 +136,7 @@ check() {
     export UNSLOTH_COMPILE_DISABLE=1
     export UNSLOTH_IS_PRESENT=1
     export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
-    export HOME="$test_home"
+    export XDG_CACHE_HOME="$test_home/cache"
     export PYTHONPATH="$staged"
 
     cd "$_source"
