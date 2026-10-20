@@ -1,105 +1,89 @@
-# Maintainer: redponike <proton (dot) me>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: redponike <proton (dot) me>
 
-_pyname=xgboost
 pkgname=python-xgboost-cuda
-pkgver=3.0.0
+pkgver=3.4.1
 pkgrel=1
-pkgdesc="Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library. Compiled with CUDA support."
+pkgdesc='Scalable gradient boosting library with CUDA and NCCL support'
 arch=('x86_64')
-url="https://xgboost.ai"
+url='https://xgboost.ai'
 license=('Apache-2.0')
-provides=('python-xgboost')
+provides=("python-xgboost=$pkgver")
 conflicts=('python-xgboost' 'python-xgboost-git')
-depends=(
-  'python-numpy'
-  'python-scipy'
-  'python-hypothesis'
-  'cuda'
-  'nccl'
-)
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-wheel'
-  'python-hatchling'
-  'python-setuptools'
-  'python-packaging'
-  'cmake'
-  'ninja'
-  'git'
-)
-checkdepends=('python-pytest' 'python-loky')
+depends=('python' 'python-numpy' 'python-scipy' 'cuda' 'nccl' 'gcc-libs' 'glibc')
+makedepends=('git' 'cmake' 'ninja' 'gcc15' 'python-build' 'python-installer'
+             'python-scikit-build-core')
+checkdepends=('python-pytest' 'python-pytest-timeout' 'python-hypothesis'
+              'python-loky' 'python-scikit-learn' 'python-pandas'
+              'python-graphviz' 'python-pyarrow' 'python-matplotlib')
 optdepends=(
-  'apache-spark: Distributed training support'
-  'python-pyspark: Distributed training support with PySpark'
-  'python-matplotlib: Plotting with matplotlib'
-  'python-graphviz: Plotting with graphviz'
-  'python-dask: Dask support - Needs python-pandas and python-distributed'
-  'python-pandas: Dask support dependency'
-  'python-distributed: Dask support dependency'
-  'python-cloudpickle: PySpark support dependency'
-  'python-scikit-learn'
-  'python-pyarrow'
+  'python-scikit-learn: scikit-learn estimators and model selection'
+  'python-pandas: DataFrame input and tabular cross-validation results'
+  'python-dask: distributed training with Dask'
+  'python-distributed: Dask distributed scheduler'
+  'python-pyspark: distributed training with Spark'
+  'python-cloudpickle: Spark model serialization'
+  'python-matplotlib: plotting'
+  'python-graphviz: tree visualization'
+  'python-pyarrow: Arrow input'
 )
-source=(
-  $_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
-  git+https://github.com/dmlc/dmlc-core.git#commit=13341857549852a9a86b1894b5ba84c6276ab381
-  git+https://github.com/rapidsai/gputreeshap.git#commit=40eae8c4c45974705f8053e4d3d05b88e3cfaefd
-)
-sha256sums=('4b8775e3fcf17d9b2e7b458ca1f37a93706aa6959c2e0c64672e6e4974660f45'
-            '8608303201f07bf3f7f8809e6db5bd64fbfcf964c0aceabbc4cf891271011cf7'
-            '0850233f9f4433bc2af8330a5c464a2cf8c43d2e46eaab875753157a100d8039')
+_commit=6fe8c547bdd21c73e4555d85b087d9260595d30d
+_dmlc_commit=4baa84e627849e675a3f99c92990ef9c39e4269e
+source=("xgboost::git+https://github.com/dmlc/xgboost.git#commit=$_commit"
+        "dmlc-core::git+https://github.com/dmlc/dmlc-core.git#commit=$_dmlc_commit"
+        'cccl-quantile-scan.patch')
+sha256sums=('SKIP' 'SKIP' '3fff6c1e75a1a16d8f2f8a1cf93d3fcfd07e6dc73f70bd3b9f36b30ef30adf64')
 
 prepare() {
-  cd "$srcdir/$_pyname-$pkgver"
+  cd xgboost
+  git submodule init
+  git config submodule.dmlc-core.url "$srcdir/dmlc-core"
+  git -c protocol.file.allow=always submodule update dmlc-core
+  # CCCL 3.5 needs the device scan's return type visible to the host compiler,
+  # and a raw iterator avoids its reverse_iterator/device_ptr arrow mismatch.
+  patch -Np1 --fuzz=0 -i "$srcdir/cccl-quantile-scan.patch"
 
-  rm -rf dmlc-core
-  ln -sf "$srcdir/dmlc-core" \
-    "$srcdir/$_pyname-$pkgver/dmlc-core"
-
-  rm -rf gputreeshap
-  ln -sf "$srcdir/gputreeshap" \
-    "$srcdir/$_pyname-$pkgver/gputreeshap"
+  # Link the system NCCL declared in depends instead of requesting NVIDIA's
+  # separately bundled PyPI distribution in the wheel metadata.
+  sed -i '/"nvidia-nccl-cu13 ; platform_system ==/d' python-package/pyproject.toml
 }
 
 build() {
-  cd "$srcdir"
-  cmake -B build -S $_pyname-$pkgver \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D BUILD_DEPRECATED_CLI=ON \
-    -D USE_CXX14_IF_AVAILABLE=ON \
-    -D FORCE_COLORED_OUTPUT=ON \
-    -D USE_OPENMP=ON \
-    -D USE_NCCL=ON \
-    -D USE_CUDA=ON \
-    -G Ninja \
-    -W no-dev
+  cd xgboost
+  # CUDA supports GCC 15; Arch's default compiler is newer. Keep upstream's
+  # complete CUDA architecture selection, including its forward-compatible PTX.
+  export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
+  export CUDAHOSTCXX=/usr/bin/g++-15 NVCC_CCBIN=/usr/bin/g++-15
+  cmake -S . -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-15 \
+    -DUSE_OPENMP=ON \
+    -DUSE_CUDA=ON \
+    -DUSE_NCCL=ON \
+    -DBUILD_WITH_SHARED_NCCL=ON
   cmake --build build
 
-  cd $_pyname-$pkgver/python-package
-  python \
-    -m build \
-    --wheel \
-    --no-isolation \
-    --skip-dependency-check
+  # The upstream wheel backend packages the library just compiled above.
+  cd python-package
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_pyname-$pkgver
+  cd xgboost
+  python -m installer --destdir="$srcdir/check-install" python-package/dist/*.whl
+  local site_packages
+  site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  export PYTHONPATH="$srcdir/check-install$site_packages"
+  export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1
 
-  python -m venv --system-site-packages test-env
-  source test-env/bin/activate
-  python -m installer python-package/dist/*.whl
-
+  # Retain the upstream CPU suite and the package's existing IPv6 exclusion.
+  # Device tests are validated separately using an allocated GPU.
   python -m pytest -v tests/python -k 'not test_rabit_ops_ipv6'
-
-  deactivate
 }
 
 package() {
-  cd "$srcdir/$_pyname-$pkgver/python-package"
-  python \
-    -m installer dist/*.whl \
-    --destdir="$pkgdir" \
-    --compile-bytecode=2
+  cd xgboost/python-package
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
