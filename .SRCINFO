@@ -1,0 +1,21 @@
+pkgbase = memex-bin
+	pkgdesc = Search and resume Claude Code, Codex, Pi, OpenCode, Copilot and Cursor transcripts (prebuilt binary)
+	pkgver = 0.29.1
+	pkgrel = 1
+	url = https://github.com/nicosuave/memex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	provides = memex
+	conflicts = memex
+	source = LICENSE-0.29.1::https://raw.githubusercontent.com/nicosuave/memex/v0.29.1/LICENSE
+	sha256sums = 9a5ac0bc0f2967d314a6b4d69e503a90660b24ef145fc465d80b49906ddfd11b
+	source_x86_64 = memex-bin-0.29.1-x86_64.tar.gz::https://github.com/nicosuave/memex/releases/download/v0.29.1/memex-0.29.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 72acecb9a74de80e9ea5c421947c812727730301bfad6db53ec3b5bd9f3b4048
+	source_aarch64 = memex-bin-0.29.1-aarch64.tar.gz::https://github.com/nicosuave/memex/releases/download/v0.29.1/memex-0.29.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = e07aa09a0bd77ab3ed1b442bba5ba107a8889272ede8fe70d7deb3dbfb518d70
+
+pkgname = memex-bin
