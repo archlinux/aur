@@ -1,11 +1,13 @@
 pkgbase = perl-audio-flac-header
 	pkgdesc = Audio::FLAC::Header - Access to FLAC audio metadata
 	pkgver = 2.4
-	pkgrel = 12
+	pkgrel = 13
 	url = https://metacpan.org/release/Audio-FLAC-Header
 	arch = any
 	license = GPL-1.0-or-later
 	license = Artistic-1.0-Perl
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
 	makedepends = perl-module-install
 	depends = perl
 	options = !emptydirs
