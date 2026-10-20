@@ -1,0 +1,5 @@
+post_install() {
+    echo "==> Configure:  install -Dm600 /usr/share/doc/ears-stt/env.example ~/.config/ears-stt/env"
+    echo "==> Start:      systemctl --user enable --now ears-stt"
+    echo "==> GPU: install ggml-cuda or ggml-vulkan. The first start downloads the model."
+}
