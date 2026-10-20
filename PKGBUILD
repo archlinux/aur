@@ -6,7 +6,7 @@
 pkgname=browseros-neo-bin
 _pkgname=browserclaw
 pkgver=0.51.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)"
 arch=('x86_64')
 url="https://github.com/browseros-ai/BrowserOS"
@@ -93,6 +93,50 @@ prepare() {
     if [[ $_fetched -eq 0 ]]; then echo "ERROR: Failed to fetch $_deb" >&2; exit 1; fi
   fi
   bsdtar -xf "$srcdir/$_deb" -C "$srcdir"
+
+  # --- runtime smoke test ---------------------------------------------
+  # A repacked browser that builds but cannot start is worthless, and the
+  # failure is invisible to a build that only compiles. The upstream deb
+  # ships a Chromium bundle; if the payload is wrong, truncated, or missing
+  # a shared library, the binary either fails to start or prints a linker
+  # error. Require that it starts and reports a version.
+  #
+  # --headless needs no display server, which is what a build sandbox has.
+  echo "==> smoke test: launching the packaged browser (headless)"
+  local _log="$srcdir/smoke.log"
+  # The payload lives in data.tar.zst, which package() unpacks. Extract it
+  # here so the binary can be tested.
+  if [[ ! -f "$srcdir/data.tar.zst" ]]; then
+    echo "SMOKE TEST FAILED: data.tar.zst missing from the extracted deb" >&2
+    exit 1
+  fi
+  local _bin="$srcdir/usr/lib/browserclaw/browserclaw"
+  if [[ ! -x "$_bin" ]]; then
+    bsdtar -xf "$srcdir/data.tar.zst" -C "$srcdir" || {
+      echo "SMOKE TEST FAILED: could not unpack data.tar.zst" >&2
+      exit 1
+    }
+  fi
+  if [[ ! -x "$_bin" ]]; then
+    echo "SMOKE TEST FAILED: browser binary missing at $_bin" >&2
+    exit 1
+  fi
+  # A missing shared library makes the dynamic loader fail before main().
+  if ! ldd "$_bin" 2>/dev/null | grep -q "not found"; then
+    :
+  else
+    echo "SMOKE TEST FAILED: unresolved shared libraries:" >&2
+    ldd "$_bin" 2>/dev/null | grep "not found" >&2
+    exit 1
+  fi
+
+  env -u DISPLAY -u WAYLAND_DISPLAY "$_bin" --headless --version >"$_log" 2>&1 || true
+  if ! grep -qiE "chrom(e|ium)|browserclaw|browseros" "$_log"; then
+    echo "SMOKE TEST FAILED: the browser did not report a version" >&2
+    cat "$_log" >&2
+    exit 1
+  fi
+  echo "==> smoke test passed: $(head -1 "$_log")"
 }
 
 package() {
