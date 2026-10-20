@@ -4,10 +4,9 @@
 
 [Unit]
 After=network.target sshdgenkeys.service
-Before=ssh-access.target
 Description=OpenSSH Per-Connection Server Daemon
 Documentation=man:sshd(8) man:sshd_config(5)
-Wants=sshdgenkeys.service ssh-access.target
+Wants=sshdgenkeys.service
 
 [Service]
 ExecStart=-/usr/bin/sshd -i -o "AuthorizedKeysFile ${CREDENTIALS_DIRECTORY}/ssh.ephemeral-authorized_keys-all .ssh/authorized_keys"
