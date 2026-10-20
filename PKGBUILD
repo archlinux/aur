@@ -1,7 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=2.23.0.r54.g37ea347
+pkgver=2.23.0.r68.g002df7b
 pkgrel=1
 pkgdesc='A modern Plex client for desktop and mobile'
 arch=('x86_64')
