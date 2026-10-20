@@ -1,0 +1,11 @@
+pkgbase = stikk-bin
+	pkgdesc = A placeholder package for stikk-bin
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/prikk-vcs/stikk
+	arch = x86_64
+	license = Apache-2.0
+	source = stikk-bin-0.0.0.tar.gz::https://github.com/prikk-vcs/stikk/archive/refs/tags/0.0.0.tar.gz
+	sha256sums = DUMMY-FOR-INITIALIZATION
+
+pkgname = stikk-bin
