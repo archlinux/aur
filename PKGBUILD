@@ -11,8 +11,7 @@ license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 optdepends=(
-  'libsecret: keyring credential storage via Secret Service API'
-  'gnome-keyring: GNOME-based credential storage'
+  'gnome-keyring: Secret Service credential storage (or any org.freedesktop.secrets provider)'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=('nono' 'nono-ai-bin')

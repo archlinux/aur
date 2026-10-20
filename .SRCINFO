@@ -9,8 +9,7 @@ pkgbase = nono-ai
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	optdepends = libsecret: keyring credential storage via Secret Service API
-	optdepends = gnome-keyring: GNOME-based credential storage
+	optdepends = gnome-keyring: Secret Service credential storage (or any org.freedesktop.secrets provider)
 	provides = nono=0.80.0
 	conflicts = nono
 	conflicts = nono-ai-bin
