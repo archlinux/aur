@@ -1,12 +1,13 @@
 pkgbase = cosmic-tasks
+	pkgdesc = A simple task management application for the COSMIC desktop
 	pkgver = 0.3.1
 	pkgrel = 1
-	pkgname = cosmic-tasks
-	pkgdesc = A simple task management application for the COSMIC desktop
 	url = https://github.com/cosmic-utils/tasks
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = cargo
 	makedepends = git
 	depends = alsa-lib
@@ -26,12 +27,12 @@ pkgbase = cosmic-tasks
 	depends = libxrandr
 	depends = libcosmic-git
 	depends = mesa
+	depends = vulkan-icd-loader
 	depends = nspr
 	depends = nss
 	depends = pango
 	depends = systemd-libs
-	depends = vulkan-icd-loader
-	checkdepends = appstream
-	checkdepends = desktop-file-utils
 	source = git+https://github.com/cosmic-utils/tasks.git#tag=0.3.1
 	sha256sums = SKIP
+
+pkgname = cosmic-tasks
