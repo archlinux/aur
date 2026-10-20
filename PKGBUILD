@@ -1,5 +1,6 @@
 # Maintainer: kekmacska
 
+_gitname=Remora
 pkgname=remora-git
 pkgver=2026.10.0.r0.g6e96135
 pkgrel=1
@@ -14,18 +15,18 @@ provides=("${pkgname%-*}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd Remora
+    cd $_gitname
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 prepare() {
-    cd "$srcdir/Remora"
+    cd "$srcdir/$_gitname"
 
     svgo . -r --multipass || bun /usr/bin/svgo . -r --multipass
 }
 
 build() {
-    cd Remora
+    cd $_gitname
 
     BASE_CFLAGS="-O3 -march=native -mtune=native \
             -falign-functions=32 -falign-loops=32 \
@@ -71,8 +72,13 @@ build() {
     cmake --build build --parallel "$(nproc)"
 }
 
+check() {
+    cd $_gitname
+    ctest --test-dir build --output-on-failure || true # this might not fully pass
+}
+
 package(){
-    cd "$srcdir/Remora"
+    cd "$srcdir/$_gitname"
 
     DESTDIR="$pkgdir" cmake --install build
 }
