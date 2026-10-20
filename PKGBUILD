@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.9.0.r4.g9e7a41b
+pkgver=1.10.0.r3.g8844464
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,9 @@ depends=(
   'libinput'
   'libpipewire'
   'libpulse'
-  'playerctl'
+  'libxkbcommon'
+  'openssl'
+  'pipewire-pulse'
   'systemd-libs'
   'wireplumber'
   'xdg-utils'
@@ -23,13 +25,14 @@ makedepends=(
   'clang'
   'git'
   'just'
-  'libxkbcommon'
   'mold'
 )
 optdepends=(
-  'breeze-icons'
-  'qt5ct'
-  'qt6ct'
+  'breeze-icons: Dark icon theme support for Qt apps'
+  'cutecosmic: Theming support for Qt6 apps'
+  'playerctl: Media keys support'
+  'qt5ct: Theming support for Qt5 apps'
+  'qt6ct: Theming support for Qt6 apps'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
