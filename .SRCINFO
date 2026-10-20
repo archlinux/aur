@@ -1,14 +1,18 @@
 pkgbase = python-qiskit-fermions
 	pkgdesc = A toolkit for working with fermionic systems
 	pkgver = 0.2.0
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-fermions
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = ipython
-	checkdepends = python-ddt
-	checkdepends = python-stestr
+	checkdepends = python-sybil
+	checkdepends = python-highspy
+	checkdepends = python-pylatexenc
+	checkdepends = python-pytest-subtests
+	checkdepends = python-rustworkx
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -20,6 +24,7 @@ pkgbase = python-qiskit-fermions
 	depends = python-typing_extensions
 	optdepends = python-ffsim: required for ansatz gates of the circuit library
 	optdepends = python-pyomo: support for optimization modeling
+	provides = libqiskit_fermions_cext.so
 	source = qiskit-fermions::git+https://github.com/Qiskit/qiskit-fermions#tag=0.2.0
 	b2sums = 1144116d7ec2ff32b7fa36aff9565f5444b318dc41fe7373c801337cae55b0e383138aad1ae1a395e13273e763ba62d93acbd2b0989acf0115f2aa5ef5d4685b
 
