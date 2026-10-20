@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MiniMax Design
+Comment=Multimodal AI agent desktop app
+Exec=minimax-design %U
+Icon=minimax-design
+Terminal=false
+StartupNotify=true
+StartupWMClass=MiniMaxHub
+Categories=Development;Graphics;AudioVideo;
+Keywords=AI;MiniMax;Design;Hailuo;Agent;Video;Image;Audio;
+MimeType=x-scheme-handler/minimax-hub-cn;

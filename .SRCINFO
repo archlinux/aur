@@ -1,0 +1,43 @@
+pkgbase = minimax-design
+	pkgdesc = MiniMax Design desktop app repackaged from the official macOS release
+	pkgver = 2.0.15
+	pkgrel = 1
+	url = https://design.minimax.cn/
+	install = minimax-design.install
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Proprietary
+	makedepends = 7zip
+	makedepends = asar
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = python
+	depends = electron39
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	depends = nodejs
+	depends = xdg-utils
+	optdepends = opencode: OpenCode runtime from the Arch repositories
+	optdepends = npm: install opencode-ai globally as an alternative OpenCode runtime
+	provides = minimax-hub=2.0.15
+	provides = minimax-hub-bin=2.0.15
+	noextract = MiniMax-Design-2.0.15-mac-x64.zip
+	noextract = MiniMax-Design-2.0.15-mac-arm64.zip
+	options = !strip
+	options = !lto
+	source = minimax-design.sh
+	source = minimax-design.desktop
+	source = patch-linux-runtime.mjs
+	source = minimax-design.install
+	source = LICENSE
+	sha256sums = def0923a361edfd578f0a11861032724e2b95ac04e9f4833caeaf5f6a315367c
+	sha256sums = 04eaa2c9557b58eb738976a3680b5c2150edc6df5773be3e02ee24c8a53a1ca9
+	sha256sums = 9d78784df2f0854fdf08d436c22501adff17068de77ae584254045e51c041490
+	sha256sums = 89b42c67b2ecc25a0603eb43d1f5ee43e2c715623b32de16b6caa6860d0ad99c
+	sha256sums = a95f4a1bb7d5ba464ca8503549fa98a6d6bdfc667af0a9265f6b01416f85de96
+	source_x86_64 = MiniMax-Design-2.0.15-mac-x64.zip::https://filecdn.minimax.chat/public/minimax-hub/release/domestic/builds/2.0.15/hilo-desktop-870/MiniMax%20Design-2.0.15-mac.zip
+	sha256sums_x86_64 = c3b2487920da71ee6e5242077d0fa79012f990f69a9325f57d1e285bac153a11
+	source_aarch64 = MiniMax-Design-2.0.15-mac-arm64.zip::https://filecdn.minimax.chat/public/minimax-hub/release/domestic/builds/2.0.15/hilo-desktop-870/MiniMax%20Design-2.0.15-arm64-mac.zip
+	sha256sums_aarch64 = 64e4cdaa0f094ffb59cb913ff4af026874df3fb9d78ce9015a91882d9fe26538
+
+pkgname = minimax-design
