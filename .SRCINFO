@@ -1,0 +1,24 @@
+pkgbase = gpu-screen-recorder-gpui-bin
+	pkgdesc = GPUI (Rust) frontend for gpu-screen-recorder (prebuilt binary)
+	pkgver = 5.7.10
+	pkgrel = 1
+	url = https://github.com/Coobyk/gpu-screen-recorder-gpui
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gpu-screen-recorder
+	depends = libglvnd
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	provides = gpu-screen-recorder-gpui
+	conflicts = gpu-screen-recorder-gpui
+	options = !debug
+	options = !strip
+	source = gpu-screen-recorder-gpui-bin-5.7.10-x86_64.tar.gz::https://github.com/Coobyk/gpu-screen-recorder-gpui/releases/download/v5.7.10/gpu-screen-recorder-gpui-5.7.10-x86_64-archlinux.tar.gz
+	sha256sums = 5a0968651777f6593748448d4cd4c1aa43e9c92d4438d13895aefce69e7773dd
+
+pkgname = gpu-screen-recorder-gpui-bin
