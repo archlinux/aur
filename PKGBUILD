@@ -1,6 +1,6 @@
 # Maintainer: Axel Valens (chomiam) <axel.valens@gmail.com>
 pkgname=noos-win-installer
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Modern Bootable USB Creator for Linux (DD) & Windows 10/11 UEFI with Unattended Debloat Studio (Rust + Tauri v2)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
 )
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Chomiam/noos_win_installer/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db6ce34b1240442178aef768afe85b4e198a02cb9eb8bd87e3675bada244cbb4')
+sha256sums=('1bc2f8d3c44520a9ff7babfd37bbea7dbb678cff8b0714612a8ee3380c977466')
 
 prepare() {
   cd "${srcdir}/noos_win_installer-${pkgver}/src-tauri"
