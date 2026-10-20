@@ -1,3 +1,5 @@
+# Maintainer: qinhulin <qinhulin@gmail.com>
+
 pkgbase = songloft-player
 	pkgdesc = Cross-platform music player client for Songloft servers (Flutter)
 	pkgver = 2.13.4

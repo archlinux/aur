@@ -1,4 +1,4 @@
-# Maintainer: hurleychin <qinhulin@gmail.com>
+# Maintainer: qinhulin <qinhulin@gmail.com>
 
 pkgname=songloft-player
 pkgver=2.13.4
