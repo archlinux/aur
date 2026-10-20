@@ -1,6 +1,6 @@
 # Maintainer: dvjn <git@dvjn.dev>
 pkgname=ears-stt-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="OpenAI-compatible speech-to-text server for ears, backed by whisper.cpp"
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('ears-stt')
 options=('!debug')
 install=ears-stt-bin.install
 source=("$url/releases/download/v$pkgver/ears-stt-$pkgver-x86_64.tar.gz")
-sha256sums=('f1af76b3d7f1b73448b2312e6659a38b7216a81c2ed0ceb38b8a7ec432bace54')
+sha256sums=('1c09d6a48a34b03422dcd0671005f6d257542e5557dac5751f6535c2ddd58170')
 
 package() {
     cd "ears-stt-$pkgver-x86_64"
