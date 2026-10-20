@@ -1,0 +1,3 @@
+[colloid-gtk-theme]
+source = "git"
+git = "https://github.com/vinceliuice/Colloid-gtk-theme.git"

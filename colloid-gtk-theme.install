@@ -1,0 +1,17 @@
+post_install() {
+  echo ""
+  echo "To force Libadwaita applications to use the gtk-4.0 theme,"
+  echo "symlink the gtk-4.0 theme to config folder"
+  echo "(replace Colloid-Dark with chosen theme variant):"
+  echo ""
+  echo "mkdir -p ~/.config/gtk-4.0/"
+  echo "ln -sf /usr/share/themes/Colloid-Dark/gtk-4.0/{assets,gtk.css,gtk-dark.css} ~/.config/gtk-4.0/"
+  echo ""
+  echo "Install Firefox theme - copy or symlink from /usr/share/doc/colloid-gtk-theme/firefox/:"
+  echo "https://github.com/vinceliuice/Colloid-gtk-theme/tree/main/src/other/firefox#installation"
+  echo ""
+}
+
+post_upgrade() {
+   post_install
+}
