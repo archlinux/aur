@@ -1,6 +1,6 @@
 # Maintainer: Geoff Clements <ro2kz0@gmail.com>
 pkgname=vibe_player
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A music player for the Lyrion music server'
 url='https://github.com/GeoffClements/lms-player'
@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 makedepends=('cargo' 'clang')
 depends=('libdbus' 'libpipewire')
-sha256sums=('a60485440e097bc936a383c09318009df13665ec994ff58c5a582705d2df1880')
+sha256sums=('bde0c8e42b67d261921dc7d7dd9523e510902d0d88188d720d9e48a694411add')
 
 _pkg_alt_name="lms-player-vibe"
 _vibe_features="--no-default-features --features=pipewire,notify"
