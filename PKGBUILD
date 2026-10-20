@@ -1,0 +1,41 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# vim:set ts=2 sw=2 et:
+
+pkgname=libumem
+pkgver=3.3.1
+pkgrel=1
+pkgdesc="slab and magazine allocator with built-in debugging"
+arch=('x86_64' 'aarch64')
+url='https://github.com/gburd/libumem/'
+license=('LicenseRef-custom')
+depends=('glibc' 'libelf' 'numactl')
+optdepends=('python: for debugging tools')
+makedepends=('git')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gburd/libumem/archive/refs/tags/v${pkgver}.tar.gz"
+        post-release-fixes.patch)
+b2sums=('3ecc562f7cb6be3b5319058bd80edcc177525b21d743e030406d3d0da60278d0f117bb5ced69b86637b0e14b2b3a0914e22638008fbefb055fe132ff9b7791ea'
+        '60b338693b395920d2cfec0ce45b9af6189c16673ebb8e6c982fed47b0e562176192aac31017fe3c77ddc75e0930632ee8a73a13ac992ee5e12fd570dadfb9bc')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np2 -b -z .orig <../post-release-fixes.patch
+  ./autogen.sh
+}
+
+build() {
+  cd $pkgname-$pkgver
+  ./configure \
+    --prefix=/usr \
+    --enable-shared \
+    --disable-static \
+    --enable-pic \
+    --enable-numa
+# --enable-avx2 when building on x86_64 ABI V3
+  make V=0
+}
+
+package() {
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -vDm644 -t "$pkgdir"/usr/share/licenses/$pkgname/ {COPYRIGHT,OPENSOLARIS.LICENSE}
+}
