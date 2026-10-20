@@ -2,7 +2,7 @@
 
 pkgname=python-apache-tvm-ffi
 _pkgname=tvm-ffi
-pkgver=0.1.14.post1
+pkgver=0.1.15.post0
 _srcver=${pkgver/.post/-post}
 pkgrel=1
 pkgdesc="TVM Foreign Function Interface - core bindings for Apache TVM"
@@ -48,7 +48,7 @@ source=(
     'use-system-gtest.patch'
     'cxx20-json-test-literals.patch'
 )
-sha256sums=('3f227b04c1b0ef8b1dd958f4b0db23ba6e9cffe8ac45a353674ba014578322d9'
+sha256sums=('c517a993bc858bb214dd9d5e4a6d207dc7894f93ace84e79ec7f4ebb23283d9d'
             'SKIP'
             'SKIP'
             '382afb7a81168c122b4ae869d99a139d93919aa020dfb74ebc56f11c1bba1059'
@@ -110,7 +110,8 @@ exec /usr/bin/c++ -DGLOG_USE_GLOG_EXPORT "$@"
 SH
     CXX="$srcdir/tvm-ffi-check-cxx" \
     PYTHONPATH="$srcdir/tvm-ffi-check$site_packages" \
-        pytest -v --basetemp="$srcdir/tvm-ffi-pytest" tests/python
+        pytest -v -n "${CMAKE_BUILD_PARALLEL_LEVEL:-2}" \
+        --basetemp="$srcdir/tvm-ffi-pytest" tests/python
 
     # Representative CPU workflow: marshal containers and callbacks through the
     # FFI, then perform a zero-copy NumPy/DLPack round trip.
