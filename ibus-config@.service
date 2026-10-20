@@ -4,5 +4,5 @@ Description=Intelligent Input Bus Config Daemon
 [Service]
 Slice=ibus.slice
 ExecStartPre=/bin/sleep 2
-ExecStart=/usr/lib/ibus/ibus-dconf
+ExecStart=/usr/bin/ibus-daemon-run-with-env /usr/lib/ibus/ibus-dconf
 Environment=DISPLAY="%I" GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS="@im=ibus"

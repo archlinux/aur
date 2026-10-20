@@ -1,0 +1,33 @@
+#!/bin/sh
+set -o errexit -o nounset
+
+# Run a command with the session's display environment fully populated.
+#
+# ibus records its address per display server in ~/.config/ibus/bus/:
+#   <machine-id>-unix-<DISPLAY>          for X11
+#   <machine-id>-unix-<WAYLAND_DISPLAY>  for Wayland
+#
+# WAYLAND_DISPLAY takes precedence over DISPLAY and only one such file is ever
+# written, so every process that has to agree on the daemon's address -- the
+# daemon itself, `ibus exit`, `ibus restart` and ibus-dconf -- must see the
+# same variables. The units route all of their Exec* lines through this
+# wrapper for that reason; exporting WAYLAND_DISPLAY for ExecStart alone would
+# move the address file out from under the others.
+#
+# Hybrid sessions (WSLg, XWayland, nested compositors) have GUI clients that
+# read the Wayland address, but the units only pass DISPLAY, so the daemon
+# writes the X11 address alone and native Wayland clients cannot reach it.
+# Detect the compositor socket instead of hardcoding wayland-0 so that pure
+# X11 sessions behave exactly as before.
+
+if [ -z "${WAYLAND_DISPLAY:-}" ] && [ -n "${XDG_RUNTIME_DIR:-}" ]; then
+	for socket in "$XDG_RUNTIME_DIR"/wayland-[0-9]*; do
+		if [ -S "$socket" ]; then
+			WAYLAND_DISPLAY=${socket##*/}
+			export WAYLAND_DISPLAY
+			break
+		fi
+	done
+fi
+
+exec "$@"
