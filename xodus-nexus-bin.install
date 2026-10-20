@@ -1,4 +1,12 @@
 post_install() {
-  echo "Xodus Nexus needs its Wine/Proton runtime, which is installed and updated per user from the app:"
+  echo "Xodus Nexus needs its Wine/Proton runtime (~335 MiB download), which is"
+  echo "installed and updated per user from the app:"
   echo "  Settings > Nexus runtime > Install Nexus runtime"
+}
+
+post_upgrade() {
+  echo "The Xodus backend and the Nexus runtime are updated per user from the app,"
+  echo "not by pacman. Use \"Check for updates\" in:"
+  echo "  Settings > Xodus backend"
+  echo "  Settings > Nexus runtime"
 }
