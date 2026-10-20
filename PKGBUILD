@@ -2,8 +2,8 @@
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
 pkgver=5.0.0
-pkgrel=1
-_fc_ver=0.1.1
+pkgrel=2
+_fc_ver=0.2.0
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('x86_64' 'aarch64')
 url="https://bytedz.com/products/pclink"
@@ -52,7 +52,6 @@ depends=(
 makedepends=(
   'cargo'
   'clang'
-  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -71,13 +70,13 @@ optdepends=(
   'wl-clipboard: Clipboard support on Wayland'
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
-        "git+https://github.com/BYTEDz/FerrumCast.git#tag=v${_fc_ver}")
+        "FerrumCast-${_fc_ver}.tar.gz::https://github.com/BYTEDz/FerrumCast/archive/refs/tags/v${_fc_ver}.tar.gz")
 sha256sums=('f74750523b46626caf4860f9d05ce713bcab39e5baef6f60eb40b63225ab8c5f'
-            '4656592fed83256d0127454f0502b55c76e086ec235a9236a67716f84d449da0')
+            '3b58bc84b95f1491eefb24f9e1ada197bc5fb6fb3c4579de3f4417a94f1f7cae')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --manifest-path FerrumCast/Cargo.toml --locked --target host-tuple
+  cargo fetch --manifest-path "FerrumCast-${_fc_ver}/Cargo.toml" --locked --target host-tuple
 
   cd "PCLink-$pkgver"
 
@@ -91,7 +90,7 @@ prepare() {
 }
 
 build() {
-  pushd "FerrumCast"
+  pushd "FerrumCast-${_fc_ver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
@@ -111,7 +110,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -Dm755 "$srcdir/FerrumCast/target/release/ferrumcast" -t \
+  install -Dm755 "$srcdir/FerrumCast-${_fc_ver}/target/release/ferrumcast" -t \
     "${pkgdir}${site_packages}/$pkgname/assets/bin/"
 
   install -Dm755 "scripts/linux/$pkgname-power-wrapper" -t "$pkgdir/usr/bin/"
@@ -126,6 +125,6 @@ package() {
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "scripts/linux/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-PCLink"
-  install -Dm644 "$srcdir/FerrumCast/LICENSE" \
+  install -Dm644 "$srcdir/FerrumCast-${_fc_ver}/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE-FerrumCast"
 }

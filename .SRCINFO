@@ -1,7 +1,7 @@
 pkgbase = pclink
 	pkgdesc = Desktop app for secure remote PC control and management
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bytedz.com/products/pclink
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = pclink
 	license = PolyForm-Noncommercial-1.0.0
 	makedepends = cargo
 	makedepends = clang
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -61,8 +60,8 @@ pkgbase = pclink
 	optdepends = speedtest-cli: Required for Network Speed Engine Extension
 	optdepends = wl-clipboard: Clipboard support on Wayland
 	source = PCLink-5.0.0.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v5.0.0.tar.gz
-	source = git+https://github.com/BYTEDz/FerrumCast.git#tag=v0.1.1
+	source = FerrumCast-0.2.0.tar.gz::https://github.com/BYTEDz/FerrumCast/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = f74750523b46626caf4860f9d05ce713bcab39e5baef6f60eb40b63225ab8c5f
-	sha256sums = 4656592fed83256d0127454f0502b55c76e086ec235a9236a67716f84d449da0
+	sha256sums = 3b58bc84b95f1491eefb24f9e1ada197bc5fb6fb3c4579de3f4417a94f1f7cae
 
 pkgname = pclink
