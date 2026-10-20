@@ -1,7 +1,7 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
 pkgname=lazbuild
-pkgver=4.8
-_lazarus_tag=4_8
+pkgver=5.0RC1
+_lazarus_tag=5_0_RC1
 pkgrel=1
 pkgdesc="Build lazarus applications for any widgetset"
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('lazarus' 'lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 provides=( 'lazarus' 'lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 options=(!makeflags libtool staticlibs !strip)
 source=("https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_${_lazarus_tag}/lazarus-lazarus_${_lazarus_tag}.tar.bz2")
-sha256sums=('fcdaa4b6c2675bc89d1d9ececa549401c8688f99b61650b1b766b9b3528de490')
+sha256sums=('50639285e569c4c47165f22337fa729f7a9d14d3e35e103d80b7ddbf9077a75c')
 
 build() {
     cd "lazarus-lazarus_${_lazarus_tag}"

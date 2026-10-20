@@ -1,6 +1,6 @@
 pkgbase = lazbuild
 	pkgdesc = Build lazarus applications for any widgetset
-	pkgver = 4.8
+	pkgver = 5.0RC1
 	pkgrel = 1
 	url = http://www.lazarus.freepascal.org/
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = lazbuild
 	options = libtool
 	options = staticlibs
 	options = !strip
-	source = https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_4_8/lazarus-lazarus_4_8.tar.bz2
-	sha256sums = fcdaa4b6c2675bc89d1d9ececa549401c8688f99b61650b1b766b9b3528de490
+	source = https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_5_0_RC1/lazarus-lazarus_5_0_RC1.tar.bz2
+	sha256sums = 50639285e569c4c47165f22337fa729f7a9d14d3e35e103d80b7ddbf9077a75c
 
 pkgname = lazbuild
