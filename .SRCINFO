@@ -1,0 +1,22 @@
+pkgbase = edikt-bin
+	pkgdesc = Lossless, format-preserving editor for configuration files
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/jhheider/edikt
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	provides = edikt=0.8.1
+	conflicts = edikt
+	options = !strip
+	options = !debug
+	source = edikt-0.8.1-LICENSE-MIT::https://raw.githubusercontent.com/jhheider/edikt/v0.8.1/LICENSE-MIT
+	source = edikt-0.8.1-LICENSE-APACHE::https://raw.githubusercontent.com/jhheider/edikt/v0.8.1/LICENSE-APACHE
+	sha256sums = 00ec7c3870c5123baf6812024c02736f69d156a3634b1a57cfd754e873148f44
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = edikt-0.8.1-linux-x86_64.tar.gz::https://github.com/jhheider/edikt/releases/download/v0.8.1/edikt-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c9609b32596c47443c0849b8215a75c7c5e8e8c0ad707b009a8dd24fcbd88602
+	source_aarch64 = edikt-0.8.1-linux-aarch64.tar.gz::https://github.com/jhheider/edikt/releases/download/v0.8.1/edikt-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0d1194bda0b91a17fe992d015b26eddf80352213e8312cdae4a46e263dfc6986
+
+pkgname = edikt-bin
