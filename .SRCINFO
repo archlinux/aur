@@ -1,6 +1,6 @@
 pkgbase = horneroctl-bin
 	pkgdesc = HorneroOS system CLI (native binary)
-	pkgver = 0.2.0_preview21
+	pkgver = 0.2.0_preview22
 	pkgrel = 1
 	url = https://github.com/HorneroOS/hornero
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = horneroctl-bin
 	optdepends = git: install community Shell plugin packages from HTTPS repositories
 	optdepends = hornero-shell: validate community plugin packages with the Shell-owned contract checker
 	options = !strip
-	source_x86_64 = horneroctl-0.2.0_preview21::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview21/horneroctl-linux-x86_64
-	sha256sums_x86_64 = 0c975551194f8140ce2b5a95b8afe9e5633f8839378cce5b10b92ebb78851836
-	source_aarch64 = horneroctl-0.2.0_preview21::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview21/horneroctl-linux-arm64
-	sha256sums_aarch64 = e60e4ffe4b0ddcea42091393e48618468859c203b0af1313140900ec2456621f
+	source_x86_64 = horneroctl-0.2.0_preview22::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview22/horneroctl-linux-x86_64
+	sha256sums_x86_64 = 5211f6e5654af4f68db95328ae9f1271b3668d37f05364e531f39b2b89fdf15b
+	source_aarch64 = horneroctl-0.2.0_preview22::https://github.com/HorneroOS/hornero/releases/download/horneroctl-v0.2.0-preview22/horneroctl-linux-arm64
+	sha256sums_aarch64 = 96578578767fe4d41c375c688acb44f97785c750bfb8605e89f5cb87f1826edd
 
 pkgname = horneroctl-bin
