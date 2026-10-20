@@ -3,7 +3,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=faas-cli
-pkgver=0.18.16
+pkgver=0.18.17
 pkgrel=1
 pkgdesc="Official CLI for OpenFaaS"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/openfaas/faas-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='9e9b014aaf03cae10b49edf7a093e6ddfb7ea903'
+_commit='74d945365aa86c53755498525187976bad047bd0'
 source=("git+https://github.com/openfaas/faas-cli.git#commit=$_commit")
 sha256sums=('SKIP')
 
