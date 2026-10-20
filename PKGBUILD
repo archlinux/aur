@@ -1,5 +1,5 @@
 pkgname=sfptool
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
@@ -10,17 +10,17 @@ makedepends=('cargo' 'cmake' 'conan' 'desktop-file-utils' 'emscripten' 'fmt' 'gi
 provides=('sfptool')
 conflicts=('sfptool-bin')
 source=(
-  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.6.2/sfp-tool-v1.6.2.tar.gz"
-  "transceivertool-7ba6762349a6ac9ad73f4c1a4d7d67bdfc966986.tar.gz::https://github.com/robinchrist/TransceiverTool/archive/7ba6762349a6ac9ad73f4c1a4d7d67bdfc966986.tar.gz"
+  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.6.4/sfp-tool-v1.6.4.tar.gz"
+  "transceivertool-811da32d7b3bc7b8138fee5b18ae847da470c161.tar.gz::https://github.com/robinchrist/TransceiverTool/archive/811da32d7b3bc7b8138fee5b18ae847da470c161.tar.gz"
   "cppcodec-v0.2.tar.gz::https://github.com/tplgy/cppcodec/archive/refs/tags/v0.2.tar.gz"
 )
-sha256sums=('ff6fdfbc0d567d988f0a2374709b7bca955259ae0e8603e96a5e2a4251d4219c' '73639400c97390ec24ffc3fd566f877bf06064ea961278f555c9d6c8fee49bb8' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
+sha256sums=('d2874f8fcce16ebfc158bca3858d0bbb19feabfecf8a2d63acec89afb4801d32' 'f1e568c1e4dcf1e8e02d4e90d53e285457a8a77db7c39a54ba3ea6106545f6d0' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
 
 prepare() {
   cd "$srcdir/sfp-tool-v${pkgver}"
   rm -rf external/TransceiverTool external/cppcodec
   mkdir -p external
-  mv "$srcdir/TransceiverTool-7ba6762349a6ac9ad73f4c1a4d7d67bdfc966986" external/TransceiverTool
+  mv "$srcdir/TransceiverTool-811da32d7b3bc7b8138fee5b18ae847da470c161" external/TransceiverTool
   mv "$srcdir/cppcodec-0.2" external/cppcodec
 }
 
@@ -37,7 +37,7 @@ from pathlib import Path
 
 config_path = Path("src-tauri/tauri.conf.json")
 config = json.loads(config_path.read_text())
-config["version"] = "1.6.2"
+config["version"] = "1.6.4"
 config.setdefault("bundle", {})["createUpdaterArtifacts"] = False
 config_path.write_text(json.dumps(config, indent=2))
 PY
