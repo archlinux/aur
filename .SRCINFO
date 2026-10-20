@@ -1,0 +1,23 @@
+pkgbase = amdgpu-fan-ctl-tyan-s8030gm2ne
+	pkgdesc = AMD GPU temperature driven fan control for Tyan S8030GM2NE via local ipmitool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/amdgpu-fan-ctl-tyan-s8030gm2ne
+	arch = any
+	license = custom
+	depends = python>=3.11
+	depends = ipmitool
+	depends = rocm-smi-lib
+	backup = etc/gpu-fan-ctl/config.toml
+	source = gpu_fan_ctl.py
+	source = config.toml
+	source = gpu-fan-ctl.service
+	source = README.md
+	source = test_gpu_fan_ctl.py
+	sha256sums = 341e9fb2cfc5958271977eef5ff3c31a6cdfd50f564129a464b5ffaf3d3e2b81
+	sha256sums = ef5788e89e4ee31f0aca546ed5de4e32ae6897ae5365bd7690850fcb8ea016cf
+	sha256sums = eeb73d5ecd53a636e38d0fa95933234feec3af031736a72def33e98a049a2683
+	sha256sums = 345bb612f33f79895173768930d89c7f81c4f6c451e4a5a5ab5d09193478116d
+	sha256sums = 54cad3f1f5f5c9ae5192262a3bf0728b5f8f773a756dba56009ca41177ce129c
+
+pkgname = amdgpu-fan-ctl-tyan-s8030gm2ne

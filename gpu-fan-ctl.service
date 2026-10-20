@@ -1,0 +1,30 @@
+[Unit]
+Description=gpu-fan-ctl — AMD GPU 温度驱动的机箱风扇闭环控制
+Documentation=file:/usr/share/doc/amdgpu-fan-ctl-tyan-s8030gm2ne/README.md
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/gpu-fan-ctl --config /etc/gpu-fan-ctl/config.toml
+
+# 无论怎么退出（正常 / 崩溃 / 被 kill）都尝试恢复接管前的 PWM
+ExecStopPost=/usr/bin/gpu-fan-ctl --config /etc/gpu-fan-ctl/config.toml --restore
+
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=20s
+
+# --- 权限收窄：只需要 /dev/ipmi0 和 state_dir -------------------------
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+ReadWritePaths=/var/lib/gpu-fan-ctl /run
+# 只读 /sys 与 /proc 的子集即可，其余全部只读
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+
+[Install]
+WantedBy=multi-user.target

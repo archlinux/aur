@@ -1,0 +1,77 @@
+# gpu-fan-ctl 配置（泰安 S8030 + 本机 MI210）
+#
+# dry_run=true 时只打印决策，绝不写 PWM。改成 false 或启动加 --live 才会真正下发。
+
+[general]
+mode = "control"          # observe | assist | control（本板无硬件自动，推荐 control）
+dry_run = false
+poll_interval = 2.0       # 采样周期（秒）；实际周期还受 ipmitool sensor 耗时影响
+log_level = "info"
+state_dir = "/var/lib/gpu-fan-ctl"
+metrics_file = ""         # 例如 "/run/gpu-fan-ctl.prom"（给 node_exporter 用）
+
+[gpu]
+rocm_smi = "/opt/rocm/bin/rocm-smi"   # 必须绝对路径：systemd 的 PATH 里没有 /opt/rocm/bin
+timeout = 20              # 单次 rocm-smi 调用的超时（秒）
+smoothing = 0.35          # 温度指数平滑系数，越小越平滑
+critical_temp = 60        # 任一路 GPU 传感器（瞬时值）≥ 此温度 → 100%
+idle_max_temp = 55        # 最热一路低于此值、且利用率也够低时，GPU 项封顶
+idle_max_gpu_use = 0      # 还要求 GPU 利用率 <= 此值；填 100 就退化成"只看温度"
+idle_pwm = 22
+
+[bmc]
+ipmitool = "/usr/bin/ipmitool"
+timeout = 15
+# S8030 的 PWM 通道：0=CPU_FAN, 2=SYS_FAN_1, 3=SYS_FAN_2, 4=SYS_FAN_3, 5=SYS_FAN_4
+pwm_id = 5
+
+# 传感器名 -> 曲线名（换主板只改这里）
+cpu_sensors = ["CPU_Tctl_Value"]
+mb_sensors = ["SYS_Air_Outlet"]
+inlet_sensors = ["MB_Air_Inlet", "SYS_Air_Inlet"]
+critical_sensors = ["CPU_Tctl_Value", "MB_Air_Inlet", "SYS_Air_Outlet", "CPU_MOSFET"]
+
+min_write_interval = 5.0  # 两次写 PWM 的最小间隔（秒）
+write_deadband = 3        # PWM 变化小于此值就不写
+max_consecutive_errors = 8
+
+[fan]
+min_pwm = 20
+max_pwm = 100             # 交还/无快照时写回的值
+ramp_down_step = 5        # 每次最多降这么多（降噪）；升温不限速
+
+[assist]
+# 仅 assist 模式使用。本板没有硬件自动模式，所以"交还"= 写回 100%。
+trigger_temp = 78         # 结温到 78°C 接管风扇
+trigger_pwm = 45          # 接管瞬间的 PWM 下限
+release_temp = 62         # 降到 62°C 以下开始计时交还
+release_cycles = 10       # 连续 10 个周期都够凉就交还
+
+[restore]
+on_exit = true            # 退出 / SIGTERM 时恢复接管前的 PWM
+
+# --- 风扇曲线：points = [[温度°C, PWM%], ...]，分段线性插值 -------------------
+# 最终 PWM = 所有曲线在该时刻的最大值（再被 min_pwm/max_pwm 夹住）。
+# 曲线名 = 温度读数的名字。rocm-smi 的传感器自动变成 gpu_<名字>，
+# 名字对不上就用 gpu_default；gpu_mem 喂进去的是 max(memory, 所有 HBM 堆)。
+
+[curves.gpu_junction]
+points = [[40,20],[55,25],[65,35],[75,50],[80,65],[85,80],[88,100]]
+
+[curves.gpu_edge]
+points = [[45,20],[65,30],[78,50],[88,100]]
+
+[curves.gpu_mem]
+points = [[45,20],[65,30],[80,45],[90,70],[95,100]]
+
+[curves.gpu_default]
+points = [[50,20],[70,35],[85,70],[95,100]]
+
+[curves.cpu_max]
+points = [[45,20],[60,28],[70,38],[80,55],[90,80],[97,100]]
+
+[curves.mb]
+points = [[30,20],[45,30],[55,50],[62,100]]
+
+[curves.inlet]
+points = [[25,20],[32,35],[38,60],[45,100]]
