@@ -19,7 +19,7 @@ post_install() {
        lconnectctl import --from "/mnt/windows/Program Files/Lian-Li/L-Connect 3/appdata"
   4. Start the service:                sudo systemctl enable --now lconnectd
   5. Open the GUI:                     lconnect-ui
-  For LCD sensor screens install 'chromium'; for NVIDIA GPU sensors 'nvidia-utils'.
+  For NVIDIA GPU sensors install 'nvidia-utils'.
 EOF
 }
 
