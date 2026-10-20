@@ -1,6 +1,6 @@
 # Maintainer: f02xygen <i@f02xy.ru>
 pkgname=xrat
-pkgver=0.31.1
+pkgver=0.31.2
 pkgrel=1
 pkgdesc="Rust CLI/TUI proxy manager for Xray-core, V2Ray-core, and sing-box"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0c8c089ecccad494185c555f43d3246f2213f75091219c8415243b3d25f783f')
+sha256sums=('4bc526f1173d375e4082d755b8c2071b1ef85199bb26cd2d00d61c55ce42a363')
 
 prepare() {
   cd "$pkgname-$pkgver"
