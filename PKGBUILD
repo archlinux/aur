@@ -3,7 +3,7 @@
 _pkgauthor=wcampbell0x2a
 _pkgname=zerus
 pkgname=${_pkgname}-bin
-pkgver=0.16.1
+pkgver=0.16.2
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Lightweight binary to download only project required crates for offline crates.io mirror"
@@ -20,10 +20,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-MIT-${pkgver}::${_urlraw}/LICENSE-MIT"
 		"LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-musl.tar.gz")
-sha256sums=('d804b18bee9eea554a17665bbbaf8222c7daf0686465c4e2426fce0cd5d2e8ef'
+sha256sums=('18164a67977691b57bad6d17c135d77038d2b71fdd2fe9611d3f82f02f9a1cc8'
             '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3'
             'fd26644b0118c8ae84a8770bdbbe18f7db14387b5cc19d1de670ad2d98a7ad42')
-sha256sums_x86_64=('ec3fd8226a60593b6752058e7a7e06a640d1b3d5bc71026f4391f36522f47cdc')
+sha256sums_x86_64=('6d78103e162260da40c174b23f8e57989e02602ce74c2059063fd9816218d098')
 
 
 package() {

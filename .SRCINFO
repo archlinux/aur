@@ -1,6 +1,6 @@
 pkgbase = zerus-bin
 	pkgdesc = Lightweight binary to download only project required crates for offline crates.io mirror
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/wcampbell0x2a/zerus
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = zerus-bin
 	license = MIT
 	provides = zerus
 	conflicts = zerus
-	source = README-0.16.1.md::https://raw.githubusercontent.com/wcampbell0x2a/zerus/v0.16.1/README.md
-	source = LICENSE-MIT-0.16.1::https://raw.githubusercontent.com/wcampbell0x2a/zerus/v0.16.1/LICENSE-MIT
-	source = LICENSE-APACHE-0.16.1::https://raw.githubusercontent.com/wcampbell0x2a/zerus/v0.16.1/LICENSE-APACHE
-	sha256sums = d804b18bee9eea554a17665bbbaf8222c7daf0686465c4e2426fce0cd5d2e8ef
+	source = README-0.16.2.md::https://raw.githubusercontent.com/wcampbell0x2a/zerus/v0.16.2/README.md
+	source = LICENSE-MIT-0.16.2::https://raw.githubusercontent.com/wcampbell0x2a/zerus/v0.16.2/LICENSE-MIT
+	source = LICENSE-APACHE-0.16.2::https://raw.githubusercontent.com/wcampbell0x2a/zerus/v0.16.2/LICENSE-APACHE
+	sha256sums = 18164a67977691b57bad6d17c135d77038d2b71fdd2fe9611d3f82f02f9a1cc8
 	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
 	sha256sums = fd26644b0118c8ae84a8770bdbbe18f7db14387b5cc19d1de670ad2d98a7ad42
-	source_x86_64 = zerus-x86_64-0.16.1.tar.gz::https://github.com/wcampbell0x2a/zerus/releases/download/v0.16.1/zerus-v0.16.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = ec3fd8226a60593b6752058e7a7e06a640d1b3d5bc71026f4391f36522f47cdc
+	source_x86_64 = zerus-x86_64-0.16.2.tar.gz::https://github.com/wcampbell0x2a/zerus/releases/download/v0.16.2/zerus-v0.16.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 6d78103e162260da40c174b23f8e57989e02602ce74c2059063fd9816218d098
 
 pkgname = zerus-bin
