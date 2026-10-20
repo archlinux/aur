@@ -11,9 +11,10 @@ pkgbase = display-tui-git
 	makedepends = git
 	depends = hyprland
 	provides = display-tui
+	conflicts = display-tui
+	conflicts = display-tui-bin
 	source = display-tui::git+https://github.com/Henriklmao/display-tui.git
 	source = display-tui.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = display-tui-git
