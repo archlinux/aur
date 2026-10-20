@@ -1,0 +1,26 @@
+pkgbase = ttf-furifont
+	pkgdesc = Japanese variable fonts with built-in furigana
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://furifont.antfu.me
+	arch = any
+	license = OFL-1.1
+	provides = ttf-font
+	source = FurifontSansVF-0.6.1.ttf::https://github.com/antfu/furifont/releases/download/v0.6.1/FurifontSansVF.ttf
+	source = FurifontSerifVF-0.6.1.ttf::https://github.com/antfu/furifont/releases/download/v0.6.1/FurifontSerifVF.ttf
+	source = FurifontSansRomajiVF-0.6.1.ttf::https://github.com/antfu/furifont/releases/download/v0.6.1/FurifontSansRomajiVF.ttf
+	source = FurifontSerifRomajiVF-0.6.1.ttf::https://github.com/antfu/furifont/releases/download/v0.6.1/FurifontSerifRomajiVF.ttf
+	source = OFL-0.6.1.txt::https://github.com/antfu/furifont/releases/download/v0.6.1/OFL.txt
+	source = DATA-LICENSE-0.6.1.md::https://github.com/antfu/furifont/releases/download/v0.6.1/DATA-LICENSE.md
+	sha256sums = 9d86d5f2893803d910ac1667e886881a4475e2132066b9f03e03440776b4bbe5
+	sha256sums = d63c8c0849c6ca92b4e63bf5f3d69e66fa6087e44abc58ef8ff357e083e12bf3
+	sha256sums = 4113e8977a64ea1f9af47c59cce2da53f505b222de2234c7b1a40918bfbe6bb8
+	sha256sums = ff44113025ac06d3d83c3c1a1366fd094c25f196389828426f13afb8b26860ae
+	sha256sums = fcac737e761ec63dbfbdce11030a1780161920d80315edba9c8beff1c2bac5a2
+	sha256sums = 28989f9dfb9ee3d81f814efdf7d0c1d0bb750ba45ea1d908c93260dfd920f607
+
+pkgname = ttf-furifont-hiragana
+	pkgdesc = Furifont Sans and Serif variable fonts with hiragana furigana
+
+pkgname = ttf-furifont-romaji
+	pkgdesc = Furifont Sans and Serif variable fonts with romaji furigana
