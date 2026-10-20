@@ -2,7 +2,7 @@
 
 pkgname=framework-control-beta
 pkgver=0.5.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight control surface for Framework laptops (Fan, Battery, Power, LEDs) - beta/pre-release"
 arch=('x86_64')
 url="https://github.com/ozturkkl/framework-control"
@@ -17,7 +17,7 @@ provides=('framework-control')
 install=framework-control-beta.install
 _pkgname=framework-control
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/ozturkkl/framework-control/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('69e81a61213454cb20b83bd944fdf71919878a8cb9f72b37e3b870ea3a6c0403')
+sha256sums=('f4247a5b1466ce76f2f203600ca0526cde6d1654df80261c6b2dfefb3da84754')
 
 _port=30912
 
