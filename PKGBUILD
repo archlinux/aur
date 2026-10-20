@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=euro-office-lite
 pkgname=${_pkgname}-bin
-pkgver=0.17.37
+pkgver=0.17.39
 pkgrel=1
 pkgdesc='Lightweight desktop office suite built on Tauri v2 and Euro-Office editors. No cloud, no telemetry.'
 arch=(x86_64)
@@ -31,7 +31,7 @@ source_x86_64=(
 	"${pkgname}-${pkgver}.deb::https://github.com/delmarguillen/${_pkgname}/releases/download/v${pkgver}-alpha/Euro-Office-Lite_${pkgver}-alpha_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/delmarguillen/euro-office-lite/refs/heads/main/LICENSE"
 )
-b2sums_x86_64=('08429ee72c613ab36a7021acebc397eda684a01f5f9c7bf9f7b48e1480a9cf7ff0fe76ace727cd26fdf2bca43ff6f244d7ff09c70be19f04d6d78fc34ee5d680'
+b2sums_x86_64=('c3d333883430f72f3fe1626c9b415aeb31cc8dedcdf58596e5b676ab99cad2937babb7b4200c2c2fe3a90fc0674dbf32f97c193b68c480d3987e5bcae2da4c6d'
                '25ff89b638fae6a63641f5196157086bdcb76c6f1d4c49470551a3cfd131951d2b7c40c48a9380fa4569b725e43e57e85d48df4a56abf9a119ddcd1b11d2a897')
 
 prepare() {
