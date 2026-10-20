@@ -44,25 +44,19 @@ def load_config(**overrides):
     general.update(overrides)
     return cfg
 
-SENSORS = {
-    "CPU_Tctl_Value": {"name": "CPU_Tctl_Value", "reading": 35, "higher_critical_threshold": 95},
-    "CPU_MOSFET": {"name": "CPU_MOSFET", "reading": 38, "higher_critical_threshold": 110},
-    "MB_Air_Inlet": {"name": "MB_Air_Inlet", "reading": 28, "higher_critical_threshold": 50},
-    "SYS_Air_Outlet": {"name": "SYS_Air_Outlet", "reading": 30, "higher_critical_threshold": 70},
-}
-
 
 class FakeGpu:
-    def __init__(self, temps, use=0.0):
+    def __init__(self, temps, use=0.0, mem_use=0.0):
         self.temps = temps
         self.use = use
+        self.mem_use = mem_use
         self.last_raw = {}
 
     def read(self):
         return dict(self.temps)
 
-    def gpu_use(self):
-        return self.use
+    def usage(self):
+        return self.use, self.mem_use
 
     def raw_labels(self):
         return list(self.temps)
@@ -72,16 +66,12 @@ class FakeGpu:
 
 
 class FakeBmc:
-    def __init__(self, sensors=None):
-        self.sensors_map = dict(sensors or SENSORS)
+    def __init__(self):
         self.calls = []
         self.fail = False
 
     def fan_info(self):
-        return {"PWMValue": 25, "Fan0_Reading": 4560, "Fan0_Name": "CPU_FAN"}
-
-    def sensors(self):
-        return self.sensors_map
+        return {"PWMValue": 25, "Fan5_Reading": 4560, "Fan5_Name": "SYS_FAN_4"}
 
     def set_pwm(self, pwm):
         if self.fail:
@@ -94,14 +84,14 @@ class FakeBmc:
         self.calls.append("hand_back")
 
 
-def make(mode="control", temps=None, use=0.0, sensors=None, dry_run=True):
+def make(mode="control", temps=None, use=0.0, mem_use=0.0, dry_run=True):
     cfg = Config({"general": {
         "mode": mode,
         "dry_run": dry_run,
         "state_dir": tempfile.mkdtemp(prefix="amdgpu-fan-ctl-test-"),
     }})
-    gpu = FakeGpu(temps or {}, use)
-    bmc = FakeBmc(sensors)
+    gpu = FakeGpu(temps or {}, use, mem_use)
+    bmc = FakeBmc()
     return cfg, Controller(cfg, gpu, bmc, dry_run=dry_run), gpu, bmc
 
 
@@ -117,6 +107,55 @@ class TestCurve(unittest.TestCase):
     def test_unsorted_input_is_sorted(self):
         c = Curve("t", [[80, 80], [40, 20]])
         self.assertEqual(c.eval(60), 50)
+
+
+class TestAdaptiveGpuCurves(unittest.TestCase):
+    """GPU 曲线必须跟着 critical_temp 伸缩，且 100% 正好落在临界点上。"""
+
+    def _cfg(self, critical, min_pwm=20, max_pwm=100):
+        return Config({
+            "gpu": {"critical_temp": critical},
+            "fan": {"min_pwm": min_pwm, "max_pwm": max_pwm},
+        })
+
+    def test_100_percent_lands_exactly_on_critical_temp(self):
+        for critical in (45, 60, 75, 88, 95, 110):
+            curve = self._cfg(critical).curves["gpu_junction"]
+            self.assertEqual(curve.eval(critical), 100, f"critical_temp={critical}")
+            self.assertLess(curve.eval(critical * 0.99), 100, "临界点之前不能提前满速")
+
+    def test_starts_at_min_pwm(self):
+        for critical in (60, 95):
+            curve = self._cfg(critical).curves["gpu_junction"]
+            self.assertEqual(curve.eval(critical * 0.45), 20)
+            self.assertEqual(curve.eval(10), 20)
+
+    def test_is_monotonic_without_cliffs(self):
+        for critical in (60, 95):
+            curve = self._cfg(critical).curves["gpu_junction"]
+            values = [curve.eval(critical * i / 100) for i in range(30, 101)]
+            self.assertEqual(values, sorted(values), "曲线必须单调")
+            self.assertLessEqual(
+                max(b - a for a, b in zip(values, values[1:])), 5,
+                "critical_temp 之前不允许出现大台阶（否则观感就是跳变）",
+            )
+
+    def test_min_and_max_pwm_are_respected(self):
+        curve = self._cfg(90, min_pwm=30, max_pwm=90).curves["gpu_junction"]
+        self.assertEqual(curve.eval(0), 30)
+        self.assertEqual(curve.eval(90), 90)
+
+    def test_all_gpu_sensors_share_the_adaptive_shape(self):
+        curves = self._cfg(95).curves
+        for name in ("gpu_junction", "gpu_edge", "gpu_mem", "gpu_default"):
+            self.assertEqual(curves[name].eval(95), 100, name)
+
+    def test_explicit_curve_override_wins(self):
+        cfg = Config({
+            "gpu": {"critical_temp": 95},
+            "curves": {"gpu_junction": {"points": [[50, 30], [70, 60]]}},
+        })
+        self.assertEqual(cfg.curves["gpu_junction"].eval(70), 60)
 
 
 class TestDecision(unittest.TestCase):
@@ -150,16 +189,6 @@ class TestDecision(unittest.TestCase):
         self.assertTrue(d.critical)
         self.assertEqual(d.target_pwm, 100)
 
-    def test_cpu_critical_forces_max(self):
-        hot = dict(SENSORS)
-        hot["CPU_Tctl_Value"] = {
-            "name": "CPU_Tctl_Value", "reading": 96, "higher_critical_threshold": 95,
-        }
-        _, ctrl, _, _ = make(temps={"junction": 40.0}, use=0, sensors=hot)
-        d = ctrl.decide()
-        self.assertTrue(d.critical, "CPU 越临界阈值必须被抓住")
-        self.assertEqual(d.target_pwm, 100)
-
     def test_gpu_unreadable_failsafe(self):
         _, ctrl, gpu, _ = make(temps={"junction": 50.0}, use=50)
         ctrl.decide()
@@ -169,24 +198,9 @@ class TestDecision(unittest.TestCase):
         self.assertGreaterEqual(d.target_pwm, 45)
         self.assertIn("fail-safe", " ".join(d.reasons))
 
-    def test_idle_floor_does_not_mask_hot_cpu(self):
-        hot = dict(SENSORS)
-        hot["CPU_Tctl_Value"] = {
-            "name": "CPU_Tctl_Value", "reading": 85, "higher_critical_threshold": 95,
-        }
-        _, ctrl, _, _ = make(mode="control", temps={"junction": 40.0}, use=0, sensors=hot)
-        d = ctrl.decide()
-        self.assertGreater(d.target_pwm, 60, "GPU 空闲不能把 CPU 的高转速需求压下去")
-
     def test_observe_mode_never_engages(self):
         _, ctrl, _, _ = make(mode="observe", temps={"junction": 95.0}, use=50)
         self.assertFalse(ctrl.decide().desired_manual)
-
-    def test_sensor_without_threshold_is_not_treated_as_critical(self):
-        hot = dict(SENSORS)
-        hot["MB_Air_Inlet"] = {"name": "MB_Air_Inlet", "reading": 49}
-        _, ctrl, _, _ = make(mode="control", temps={"junction": 40.0}, use=0, sensors=hot)
-        self.assertFalse(ctrl.decide().critical)
 
 
 class TestConfigDiscovery(unittest.TestCase):
@@ -236,33 +250,36 @@ class TestConfigDiscovery(unittest.TestCase):
         self.assertEqual(cfg["general"]["mode"], "observe")
         self.assertIs(cfg["general"]["dry_run"], True)
 
+    def test_cpu_fan_channels_are_rejected(self):
+        """PWM0/PWM1 是 CPU 风扇通道，绝不允许写。"""
+        for pwm_id in (0, 1):
+            with self.assertRaises(ValueError):
+                Config({"bmc": {"pwm_id": pwm_id}})
+
+    def test_sys_fan_channels_are_accepted(self):
+        for pwm_id in (2, 3, 4, 5):
+            self.assertEqual(Config({"bmc": {"pwm_id": pwm_id}})["bmc"]["pwm_id"], pwm_id)
+
 
 class TestStatusOutput(unittest.TestCase):
-    """--status 的显示：风扇、GPU、BMC 传感器和阈值都要能看到。"""
+    """--status 的显示：风扇和 GPU 读数。"""
 
-    def _run(self, sensors) -> str:
+    def _run(self) -> str:
         cfg = load_config()
         buf = io.StringIO()
         with mock.patch("sys.stdout", buf):
-            cmd_status(cfg, FakeGpu({"junction": 41.0}, 0.0), FakeBmc(sensors))
+            cmd_status(cfg, FakeGpu({"junction": 41.0}, 0.0), FakeBmc())
         return buf.getvalue()
 
-    def test_shows_fan_and_sensor_readings(self):
-        out = self._run(SENSORS)
+    def test_shows_fan_and_gpu_readings(self):
+        out = self._run()
         self.assertIn("PWM=25%", out)
-        self.assertIn("CPU_FAN=4560rpm", out)
-        self.assertIn("CPU_Tctl_Value", out)
-        self.assertIn("临界 95°C", out)
-
-    def test_unknown_threshold_is_marked(self):
-        sensors = dict(SENSORS)
-        sensors["SYS_Air_Inlet"] = {"name": "SYS_Air_Inlet", "reading": 25}
-        line = [x for x in self._run(sensors).splitlines() if "SYS_Air_Inlet" in x][0]
-        self.assertIn("NA（BMC 未提供）", line)
+        self.assertIn("SYS_FAN_4=4560rpm", out)
+        self.assertIn("junction", out)
 
     def test_first_line_says_which_config_and_mode_is_in_use(self):
         """「改了配置不生效」时，第一眼就该能确认到底读了哪个文件、什么模式。"""
-        first = self._run(SENSORS).splitlines()[0]
+        first = self._run().splitlines()[0]
         self.assertIn("配置：", first)
         self.assertIn("config.toml", first)
         self.assertIn("模式=", first)
@@ -304,6 +321,32 @@ class TestApply(unittest.TestCase):
         self.assertEqual(bmc.calls, [], "observe 模式必须只读")
 
 
+class TestLogging(unittest.TestCase):
+    def _step_log(self, ctrl) -> str:
+        logging.disable(logging.NOTSET)
+        try:
+            with self.assertLogs("amdgpu-fan-ctl", level="INFO") as captured:
+                ctrl.step()
+        finally:
+            logging.disable(logging.CRITICAL)
+        return "\n".join(captured.output)
+
+    def test_step_always_logs_hottest_and_utilisation(self):
+        """低于 critical_temp 且 GPU 不空闲时，也必须打印温度和两种利用率。"""
+        _, ctrl, _, _ = make(mode="observe", temps={"junction": 50.0}, use=42, mem_use=7)
+        line = self._step_log(ctrl)
+        self.assertIn("GPU 最高 50°C", line)
+        self.assertIn("算力 42%", line)
+        self.assertIn("显存 7%", line)
+
+    def test_step_logs_unreadable_temperature(self):
+        _, ctrl, _, _ = make(mode="observe", temps={}, use=-1, mem_use=-1)
+        line = self._step_log(ctrl)
+        self.assertIn("GPU 温度读不到", line)
+        self.assertIn("算力 读不到", line)
+        self.assertIn("显存 读不到", line)
+
+
 class FakeCompleted:
     def __init__(self, stdout="", returncode=0, stderr=""):
         self.stdout = stdout
@@ -324,7 +367,16 @@ class TestGpuSource(unittest.TestCase):
     PROD_JSON = '{"card0": {"Card Series": "AMD Instinct MI210", "GFX Version": "gfx90a"}}'
 
     @classmethod
-    def _fake_run(cls, temp_json, prod_json=None, use_json='{"card0": {"GPU use (%)": "7"}}'):
+    def _fake_run(
+        cls,
+        temp_json,
+        prod_json=None,
+        use_json=(
+            '{"card0": {"GPU use (%)": "7",'
+            ' "GPU Memory Allocated (VRAM%)": "91",'
+            ' "GPU Memory Read/Write Activity (%)": "13"}}'
+        ),
+    ):
         """按 argv 尾部把三种 rocm-smi 子命令分派开。"""
         prod_json = prod_json or cls.PROD_JSON
 
@@ -374,11 +426,10 @@ class TestGpuSource(unittest.TestCase):
 
     def test_unknown_sensor_falls_back_to_gpu_default_curve(self):
         """新传感器（这里是 gfx）没有同名曲线时走 gpu_default，不能被静默丢掉。"""
-        _, ctrl, _, _ = make(mode="observe", temps={"gfx": 59.0}, use=50)
+        cfg, ctrl, _, _ = make(mode="observe", temps={"gfx": 59.0}, use=50)
         d = ctrl.decide()
         self.assertIn("gpu_gfx", " ".join(d.reasons))
-        self.assertGreaterEqual(d.target_pwm, 26.0)
-        self.assertLessEqual(d.target_pwm, 28.0)
+        self.assertAlmostEqual(d.target_pwm, cfg.curves["gpu_default"].eval(59.0), places=1)
 
     def test_gpu_mem_curve_sees_the_hottest_hbm_stack(self):
         """gpu_mem 喂进去的是 max(memory, 所有 HBM 堆)——rocm-smi 的细节全用上。"""
@@ -389,30 +440,36 @@ class TestGpuSource(unittest.TestCase):
         self.assertEqual(d.target_pwm, 100.0)
 
     def test_idle_cap_also_requires_low_utilisation(self):
-        """凉 + 没活儿才算空闲；只看温度会把正在跑的活儿热死。"""
-        _, busy, _, _ = make(mode="observe", temps={"junction": 50.0}, use=20)
-        self.assertNotIn("GPU 空闲", " ".join(busy.decide().reasons))
-        _, idle, _, _ = make(mode="observe", temps={"junction": 50.0}, use=0)
+        """凉 + 算力和显存都没活儿才算空闲；只看温度会把正在跑的活儿热死。"""
+        _, compute_busy, _, _ = make(mode="observe", temps={"junction": 50.0}, use=20)
+        self.assertNotIn("GPU 空闲", " ".join(compute_busy.decide().reasons))
+        _, mem_busy, _, _ = make(mode="observe", temps={"junction": 50.0}, use=0, mem_use=20)
+        self.assertNotIn("GPU 空闲", " ".join(mem_busy.decide().reasons))
+        _, idle, _, _ = make(mode="observe", temps={"junction": 50.0}, use=0, mem_use=0)
         self.assertIn("GPU 空闲", " ".join(idle.decide().reasons))
 
     def test_unreadable_utilisation_is_not_treated_as_idle(self):
-        _, ctrl, _, _ = make(mode="observe", temps={"junction": 50.0}, use=-1.0)
-        self.assertNotIn("GPU 空闲", " ".join(ctrl.decide().reasons), "读不到利用率时不能当空闲")
+        for use, mem_use in ((-1.0, 0.0), (0.0, -1.0), (-1.0, -1.0)):
+            _, ctrl, _, _ = make(mode="observe", temps={"junction": 50.0}, use=use, mem_use=mem_use)
+            self.assertNotIn(
+                "GPU 空闲", " ".join(ctrl.decide().reasons), "任一利用率读不到时不能当空闲"
+            )
 
     # --- rocm-smi 本身：利用率、报错、二进制缺失 -------------------------
 
-    def test_gpu_use_reads_showuse_json(self):
+    def test_usage_reads_compute_and_memory_activity(self):
+        """算力和显存利用率要分开取；显存取 Read/Write Activity，不是 VRAM 占用率。"""
         reader = RocmSmiGpuReader("rocm-smi", 1.0)
         with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=self._fake_run(self.ROCM_JSON)):
-            self.assertEqual(reader.gpu_use(), 7.0)
+            self.assertEqual(reader.usage(), (7.0, 13.0))
 
-    def test_gpu_use_is_unknown_when_rocm_smi_fails(self):
+    def test_usage_is_unknown_when_rocm_smi_fails(self):
         reader = RocmSmiGpuReader("rocm-smi", 1.0)
         with mock.patch(
             "amdgpu_fan_ctl.subprocess.run",
             return_value=FakeCompleted("", returncode=1, stderr="boom"),
         ):
-            self.assertEqual(reader.gpu_use(), -1.0)
+            self.assertEqual(reader.usage(), (-1.0, -1.0))
 
     def test_error_output_is_not_mistaken_for_data(self):
         """rocm-smi 报错时不能把 stderr 里的 '{' 当 JSON 解析。"""
@@ -528,22 +585,9 @@ class TestIpmiBackend(unittest.TestCase):
         with mock.patch("amdgpu_fan_ctl.subprocess.run", side_effect=fake_run):
             info = bmc.fan_info()
         self.assertEqual(info["PWMValue"], 100)
-        self.assertEqual(info["Fan0_Reading"], 1242)
+        self.assertNotIn("Fan0_Reading", info, "CPU_FAN 不属于本程序的管理范围")
         self.assertEqual(info["Fan5_Reading"], 8142, "SYS_FAN_4 -> Fan5，与 PWM id 对齐")
         self.assertEqual(info["Fan5_Name"], "SYS_FAN_4")
-
-    def test_sensors_parse_reading_and_critical_threshold(self):
-        bmc = self._client()
-        out = (
-            "CPU_Tctl_Value   | 35.000     | degrees C  | ok    | na | na | na | na | 95.000 | na\n"
-            "SYS_Air_Inlet    | na         | degrees C  | na    | na | na | na | na | 40.000 | na\n"
-            "MB_Air_Inlet     | 28.000     | degrees C  | ok    | na | na | na | na | 50.000 | na\n"
-        )
-        with mock.patch("amdgpu_fan_ctl.subprocess.run", return_value=FakeCompleted(out)):
-            sensors = bmc.sensors()
-        self.assertEqual(sensors["CPU_Tctl_Value"]["reading"], 35.0)
-        self.assertEqual(sensors["CPU_Tctl_Value"]["higher_critical_threshold"], 95.0)
-        self.assertNotIn("SYS_Air_Inlet", sensors, "na 读数不能当成 0")
 
 
 class TestStateDir(unittest.TestCase):

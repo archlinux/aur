@@ -16,24 +16,26 @@ metrics_file = ""         # 例如 "/run/amdgpu-fan-ctl/metrics.prom"
 rocm_smi = "/opt/rocm/bin/rocm-smi"   # 必须绝对路径：systemd 的 PATH 里没有 /opt/rocm/bin
 timeout = 20              # 单次 rocm-smi 调用的超时（秒）
 smoothing = 0.35          # 温度指数平滑系数，越小越平滑
-critical_temp = 60        # 任一路 GPU 传感器（瞬时值）≥ 此温度 → 100%
-idle_max_temp = 55        # 最热一路低于此值、且利用率也够低时，GPU 项封顶
-idle_max_gpu_use = 0      # 还要求 GPU 利用率 <= 此值；填 100 就退化成"只看温度"
+critical_temp = 60        # GPU 曲线的 100% 点；任一路瞬时值 ≥ 此温度也直接 100%
+                          # 改这个值，下面所有 gpu_* 曲线会整体伸缩（不用手改曲线）
+idle_max_temp = 40        # 最热一路低于此值、且利用率也够低时，GPU 项封顶
+idle_max_gpu_use = 0      # 算力和显存利用率都必须 <= 此值；填 100 就退化成"只看温度"
 idle_pwm = 22
 
 [bmc]
 ipmitool = "/usr/bin/ipmitool"
 timeout = 15
-# S8030 的 PWM 通道：0=CPU_FAN, 2=SYS_FAN_1, 3=SYS_FAN_2, 4=SYS_FAN_3, 5=SYS_FAN_4
+# S8030 / BMC 6.02 的 fan table（实测）：
+#   PWM0 = CPU0_FAN      PWM1 = CPU1_FAN
+#   PWM2 = SYS_FAN_1     PWM3 = SYS_FAN_2
+#   PWM4 = SYS_FAN_3     PWM5 = SYS_FAN_4
+# 所以 pwm_id = SYS_FAN 序号 + 1，默认 5 = SYS_FAN4。
+# 实测依据：PWM5 由 31% 拉到 100% 时 SYS_FAN_4 从 4692 升到 8142 RPM，
+# 而 CPU_FAN 始终 1242 RPM。
+# PWM0/PWM1 是 CPU 风扇通道，填 0 或 1 会直接拒绝启动。
 pwm_id = 5
 
-# 传感器名 -> 曲线名（换主板只改这里）
-cpu_sensors = ["CPU_Tctl_Value"]
-mb_sensors = ["SYS_Air_Outlet"]
-inlet_sensors = ["MB_Air_Inlet", "SYS_Air_Inlet"]
-critical_sensors = ["CPU_Tctl_Value", "MB_Air_Inlet", "SYS_Air_Outlet", "CPU_MOSFET"]
-
-min_write_interval = 5.0  # 两次写 PWM 的最小间隔（秒）
+min_write_interval = 3  # 两次写 PWM 的最小间隔（秒）
 write_deadband = 3        # PWM 变化小于此值就不写
 max_consecutive_errors = 8
 
@@ -47,27 +49,11 @@ fail_safe_pwm = 45        # 连续读不到 GPU 温度时的 fail-safe 下限
 on_exit = true            # 退出 / SIGTERM 时恢复接管前的 PWM
 
 # --- 风扇曲线：points = [[温度°C, PWM%], ...]，分段线性插值 -------------------
-# 最终 PWM = 所有曲线在该时刻的最大值（再被 min_pwm/max_pwm 夹住）。
+# 温度源只有 GPU（rocm-smi），不读取 BMC 的 CPU / 主板 / 进风传感器。
 # 曲线名 = 温度读数的名字。rocm-smi 的传感器自动变成 gpu_<名字>，
 # 名字对不上就用 gpu_default；gpu_mem 喂进去的是 max(memory, 所有 HBM 堆)。
-
-[curves.gpu_junction]
-points = [[40,20],[55,25],[65,35],[75,50],[80,65],[85,80],[88,100]]
-
-[curves.gpu_edge]
-points = [[45,20],[65,30],[78,50],[88,100]]
-
-[curves.gpu_mem]
-points = [[45,20],[65,30],[80,45],[90,70],[95,100]]
-
-[curves.gpu_default]
-points = [[50,20],[70,35],[85,70],[95,100]]
-
-[curves.cpu_max]
-points = [[45,20],[60,28],[70,38],[80,55],[90,80],[97,100]]
-
-[curves.mb]
-points = [[30,20],[45,30],[55,50],[62,100]]
-
-[curves.inlet]
-points = [[25,20],[32,35],[38,60],[45,100]]
+#
+# GPU 曲线（gpu_junction / gpu_edge / gpu_mem / gpu_default）不需要在这里写：
+# 程序按 [gpu] critical_temp 自动生成——min_pwm 起步、critical_temp 处到 100%，
+# 中间平滑过渡。改 critical_temp 曲线就跟着伸缩。
+# 只有想写死某一路时才显式写 [curves.gpu_xxx]，那样它就不再自适应了。

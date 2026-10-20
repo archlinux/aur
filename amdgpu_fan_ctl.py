@@ -8,9 +8,18 @@ amdgpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的
     风扇由泰安 S8030 的 BMC 控制，程序通过本机 ipmitool 走 /dev/ipmi0
     直接写 PWM 通道（默认 pwm_id=5 = SYS_FAN4），不依赖 BMC 网络。
 
-温度源：只有 rocm-smi
+    S8030 / BMC 6.02 的 fan table（实测）：
+        PWM0 = CPU0_FAN      PWM1 = CPU1_FAN
+        PWM2 = SYS_FAN_1     PWM3 = SYS_FAN_2
+        PWM4 = SYS_FAN_3     PWM5 = SYS_FAN_4
+    即 pwm_id = SYS_FAN 序号 + 1；前两路是 CPU 通道，本程序绝不写。
+    实测依据：把 PWM5 从 31% 拉到 100%，SYS_FAN_4 从 4692 升到 8142 RPM，
+    而 CPU_FAN 始终是 1242 RPM。
+
+温度源：只有 GPU（rocm-smi）
     `rocm-smi -t --json` 是 ROCm 自己维护的接口，读数最全
-    （edge / junction / memory / HBM 0..3 ...）。本程序**只**认这一种温度源。
+    （edge / junction / memory / HBM 0..3 ...）。本程序**只**认这一种温度源，
+    不读取 BMC 的 CPU / 主板 / 进风温度传感器。
 
     传感器名不写死：`Temperature (Sensor XXX) (C)` 会被自动展开成 `xxx`
     （小写、非字母数字转下划线）。没有同名曲线的传感器走 `gpu_default`，
@@ -21,17 +30,16 @@ amdgpu-fan-ctl —— 用 rocm-smi 读到的 AMD GPU 温度驱动机箱风扇的
     control  一直由本程序接管（推荐）
 
 安全设计
-    1. 接管期间主板自己的温控曲线不再起作用 -> 本程序**同时**监控
-       CPU/主板/排风/进风温度，各自有独立曲线，最终取所有曲线的最大值。
-    2. GPU 任一路传感器的**瞬时值** ≥ `gpu.critical_temp`（默认 60°C）→ 直接 100%，
-       不受温度平滑延迟影响。
-    3. BMC 传感器的临界阈值取每个传感器自带的 higher_critical_threshold，
-       任何被监控传感器越线直接拉满。
-    4. 升温不限速（安全优先），降温按 ramp_down_step 限速（降噪）。
-    5. 读不到 GPU 温度 -> fail-safe 拉高，而不是维持低转速。
-    6. 写 PWM 失败 -> 重试；连续失败超过阈值则退出，交给 systemd 重启。
-    7. 退出时恢复接管前的 PWM（快照落盘，--restore 可手动恢复）。
-    8. 只在需要时写（死区 write_deadband + 最小间隔 min_write_interval）。
+    1. 只写 SYS_FAN 通道（2=SYS_FAN_1 … 5=SYS_FAN_4）；0/1 是 CPU 风扇通道，
+       配置成这些值会直接拒绝启动。
+    2. GPU 曲线按 `gpu.critical_temp` 自适应生成：100% 恰好落在该温度上，
+       曲线本身是连续的，不会在中间被硬阈值截断；同时任一路传感器的**瞬时值**
+       ≥ 该温度 → 直接 100%，不受温度平滑延迟影响。
+    3. 升温不限速（安全优先），降温按 ramp_down_step 限速（降噪）。
+    4. 读不到 GPU 温度 -> fail-safe 拉高，而不是维持低转速。
+    5. 写 PWM 失败 -> 重试；连续失败超过阈值则退出，交给 systemd 重启。
+    6. 退出时恢复接管前的 PWM（快照落盘，--restore 可手动恢复）。
+    7. 只在需要时写（死区 write_deadband + 最小间隔 min_write_interval）。
 
 依赖
     Python 3.11+ 标准库、rocm-smi、ipmitool。
@@ -55,19 +63,12 @@ from pathlib import Path
 
 LOG = logging.getLogger("amdgpu-fan-ctl")
 
-# 泰安 S8030 / BMC 6.02 的默认传感器名（可在 config.toml 的 [bmc] 里覆盖）
-BMC_CPU_SENSORS = ("CPU_Tctl_Value",)
-BMC_MB_SENSORS = ("SYS_Air_Outlet",)
-BMC_INLET_SENSORS = ("MB_Air_Inlet", "SYS_Air_Inlet")
-
-
-def sensor_list(cfg: dict, key: str, default: tuple[str, ...]) -> tuple[str, ...]:
-    """取配置里的传感器名列表；没配/配成空就用默认值。"""
-    values = cfg.get(key)
-    if isinstance(values, str):
-        values = [values]
-    items = tuple(str(v) for v in (values or []) if str(v).strip())
-    return items or default
+# S8030 / BMC 6.02 的 fan table（实测）：
+#   PWM0 = CPU0_FAN      PWM1 = CPU1_FAN
+#   PWM2 = SYS_FAN_1     PWM3 = SYS_FAN_2
+#   PWM4 = SYS_FAN_3     PWM5 = SYS_FAN_4
+# 即 pwm_id = SYS_FAN 序号 + 1。前两路是 CPU 通道，本程序绝不写。
+SYS_FAN_PWM_BASE = 2
 
 
 # --------------------------------------------------------------------------- #
@@ -129,15 +130,11 @@ DEFAULTS: dict = {
     },
     "bmc": {
         "ipmitool": "/usr/bin/ipmitool",
-        # S8030: 0=CPU_FAN, 2=SYS_FAN_1 ... 5=SYS_FAN_4
+        # 2=SYS_FAN_1、3=SYS_FAN_2、4=SYS_FAN_3、5=SYS_FAN_4（0/1 是 CPU 通道，禁止选）
         "pwm_id": 5,
         "timeout": 15.0,
         "min_write_interval": 5.0,
         "write_deadband": 3.0,
-        "cpu_sensors": list(BMC_CPU_SENSORS),
-        "mb_sensors": list(BMC_MB_SENSORS),
-        "inlet_sensors": list(BMC_INLET_SENSORS),
-        "critical_sensors": ["CPU_Tctl_Value", "MB_Air_Inlet", "SYS_Air_Outlet", "CPU_MOSFET"],
         "max_consecutive_errors": 8,
     },
     "fan": {
@@ -150,18 +147,31 @@ DEFAULTS: dict = {
     "restore": {"on_exit": True},
 }
 
-DEFAULT_CURVES: dict[str, list[list[float]]] = {
-    # 曲线名 = 温度读数的名字（gpu_<传感器>、cpu_max、mb、inlet）
-    "gpu_junction": [[40, 20], [55, 25], [65, 35], [75, 50], [80, 65], [85, 80], [88, 100]],
-    "gpu_edge": [[45, 20], [65, 30], [78, 50], [88, 100]],
-    # 显存域：喂进来的是 max(mem, HBM 0..N)，所以一张曲线管住所有显存堆
-    "gpu_mem": [[45, 20], [65, 30], [80, 45], [90, 70], [95, 100]],
-    # 兜底：rocm-smi 报出来但没有同名曲线的传感器走这条，免得被静默忽略
-    "gpu_default": [[50, 20], [70, 35], [85, 70], [95, 100]],
-    "cpu_max": [[45, 20], [60, 28], [70, 38], [80, 55], [90, 80], [97, 100]],
-    "mb": [[30, 20], [45, 30], [55, 50], [62, 100]],
-    "inlet": [[25, 20], [32, 35], [38, 60], [45, 100]],
-}
+# GPU 曲线不再写死温度点，而是按（critical_temp 的比例, PWM 区间比例）生成。
+# 100% 一定落在 critical_temp 上，所以硬阈值和曲线在同一个点收口，中间不会出现台阶；
+# 用户把 critical_temp 填成 60 还是 110，形状不变、温度范围整体伸缩。
+GPU_CURVE_SHAPE: tuple[tuple[float, float], ...] = (
+    (0.45, 0.000),   # critical_temp 的 45% 处：min_pwm
+    (0.60, 0.125),
+    (0.72, 0.3125),
+    (0.83, 0.525),
+    (0.92, 0.775),
+    (1.00, 1.000),   # critical_temp 处：max_pwm
+)
+
+# 这几条 GPU 曲线全部由 critical_temp 生成；config 里显式写同名曲线可覆盖
+GPU_CURVE_NAMES = ("gpu_junction", "gpu_edge", "gpu_mem", "gpu_default")
+
+
+def adaptive_gpu_points(critical: float, fan: dict) -> list[list[float]]:
+    """按 critical_temp 生成 GPU 曲线：低端是 min_pwm，critical_temp 处是 max_pwm。"""
+    critical = float(critical)
+    if critical <= 0:
+        raise ValueError(f"gpu.critical_temp 必须大于 0，当前是 {critical:g}")
+    low = float(fan.get("min_pwm", 20.0))
+    high = float(fan.get("max_pwm", 100.0))
+    span = high - low
+    return [[round(critical * t, 2), round(low + duty * span, 2)] for t, duty in GPU_CURVE_SHAPE]
 
 
 def deep_merge(base: dict, override: dict) -> dict:
@@ -190,12 +200,21 @@ class Config:
         # （mode=observe、dry_run=true）。这个字段存在的唯一目的就是能把它打出来：
         # 否则"改了 config.toml 却没生效"会看起来毫无头绪。
         self.path = str(path or "")
+        # PWM0/PWM1 是 CPU 通道：本程序只控制机箱风扇，绝不允许碰 CPU 风扇
+        pwm_id = int(self.raw["bmc"]["pwm_id"])
+        if pwm_id < SYS_FAN_PWM_BASE:
+            raise ValueError(
+                f"bmc.pwm_id={pwm_id} 是 CPU 风扇通道（S8030: 0=CPU0_FAN、1=CPU1_FAN），"
+                "本程序只允许 SYS_FAN 通道（2=SYS_FAN_1 … 5=SYS_FAN_4）"
+            )
         self.curves: dict[str, Curve] = {}
-        for name, pts in DEFAULT_CURVES.items():
-            self.curves[name] = Curve(name, curve_points(self.raw.get("curves", {}).get(name, pts)))
+        # GPU 曲线跟着 critical_temp 走：改阈值，整条曲线自动伸缩
+        gpu_points = adaptive_gpu_points(self.raw["gpu"]["critical_temp"], self.raw["fan"])
+        for name in GPU_CURVE_NAMES:
+            self.curves[name] = Curve(name, gpu_points)
+        # config 里显式写的曲线（包括 gpu_*）优先级最高
         for name, value in (self.raw.get("curves") or {}).items():
-            if name not in self.curves:
-                self.curves[name] = Curve(name, curve_points(value))
+            self.curves[name] = Curve(name, curve_points(value))
 
     def __getitem__(self, key: str) -> dict:
         return self.raw[key]
@@ -255,15 +274,27 @@ def temp_label(key: str) -> str | None:
     return _LABEL_ALIASES.get(name, name)
 
 
+def percent(value) -> float:
+    """rocm-smi 的百分比字段 -> float；读不到返回 -1（不要据此判断空闲）。"""
+    try:
+        return float(str(value).strip())
+    except (TypeError, ValueError):
+        return -1.0
+
+
+def _fmt_pct(value: float) -> str:
+    return "读不到" if value < 0 else f"{value:g}%"
+
+
 # --------------------------------------------------------------------------- #
 # rocm-smi 读取器
 # --------------------------------------------------------------------------- #
 class RocmSmiGpuReader:
     """用本机 `rocm-smi` 读 GPU 温度、利用率和型号。这是唯一的 GPU 数据来源。
 
-        rocm-smi -t --json                  温度
-        rocm-smi --showuse --json           利用率（判断"是不是真闲着"）
-        rocm-smi --showproductname --json   型号（只用于显示）
+        rocm-smi -t --json                        温度
+        rocm-smi --showuse --showmemuse --json    算力 + 显存利用率（判断"是不是真闲着"）
+        rocm-smi --showproductname --json         型号（只用于显示）
 
     多卡时每个标签取最热的那张 —— 风扇只能往快了吹，取最热是安全方向。
     """
@@ -360,23 +391,27 @@ class RocmSmiGpuReader:
         return sorted(set(labels))
 
     # -- 利用率 ------------------------------------------------------------- #
-    def gpu_use(self) -> float:
-        """所有卡的 GPU 利用率最大值（%）。-1 = 读不到，**不要**据此判断空闲。"""
+    def usage(self) -> tuple[float, float]:
+        """所有卡的（算力利用率, 显存利用率）最大值，单位 %。
+
+        显存取的是 `GPU Memory Read/Write Activity (%)`（带宽活动），
+        不是 `GPU Memory Allocated (VRAM%)`（占用比例）。
+        任一值 -1 = 读不到，**不要**据此判断空闲。
+        """
         try:
-            data = self._run("--showuse")
+            data = self._run("--showuse", "--showmemuse")
         except (GpuError, OSError) as exc:
             self.last_error = str(exc)
             LOG.debug("rocm-smi 读利用率失败：%s", exc)
-            return -1.0
-        best = -1.0
+            return -1.0, -1.0
+        compute = -1.0
+        memory = -1.0
         for info in data.values():
             if not isinstance(info, dict):
                 continue
-            try:
-                best = max(best, float(str(info.get("GPU use (%)", "")).strip()))
-            except ValueError:
-                continue
-        return best
+            compute = max(compute, percent(info.get("GPU use (%)")))
+            memory = max(memory, percent(info.get("GPU Memory Read/Write Activity (%)")))
+        return compute, memory
 
     # -- 状态 --------------------------------------------------------------- #
     def found(self) -> bool:
@@ -416,7 +451,15 @@ class IpmiClient:
     OEM 命令是：
         raw 0x2e 0x44 0xfd 0x19 0x00 <pwm_id> 0x01 <duty 0-100>   # 设置
         raw 0x2e 0x45 0xfd 0x19 0x00 <pwm_id>                     # 读回
-    S8030 上 pwm_id 5 = SYS_FAN4。
+
+    S8030 的 fan table 与丝印不是一一对应的（PWM0/1 被两个 CPU 通道占用）：
+        PWM0 = CPU0_FAN      PWM1 = CPU1_FAN
+        PWM2 = SYS_FAN_1     PWM3 = SYS_FAN_2
+        PWM4 = SYS_FAN_3     PWM5 = SYS_FAN_4
+    所以 pwm_id = SYS_FAN 序号 + 1，默认 5 = SYS_FAN4。实测：PWM5 从 31%
+    拉到 100% 时 SYS_FAN_4 由 4692 升到 8142 RPM，CPU_FAN 保持 1242 RPM。
+
+    读回的倒数第二字节是模式（00=auto、01=manual），最后一字节是占空比。
 
     没有软件层的 "自动模式" 开关，所以 hand_back() 写回 max_pwm（默认 100%），
     等价于主板默认全速；正常退出时 Controller 会用快照里的原始占空比还原。
@@ -469,44 +512,19 @@ class IpmiClient:
             if len(parts) < 2:
                 continue
             name = parts[0]
-            if "FAN" not in name.upper():
+            # CPU 风扇不在本程序的管理范围内，连显示都跳过
+            if "FAN" not in name.upper() or "CPU" in name.upper():
                 continue
             match = re.match(r"(\d+)\s*RPM", parts[1], re.I)
             if not match:
                 continue
-            # 编号跟 PWM 通道对齐：CPU_FAN -> 0，SYS_FAN_n -> n+1
+            # 编号跟 PWM 通道对齐：SYS_FAN_n -> n+1
             sys_match = re.match(r"SYS_FAN_(\d+)$", name, re.I)
-            if name.upper() == "CPU_FAN":
-                idx = 0
-            elif sys_match:
-                idx = int(sys_match.group(1)) + 1
-            else:
-                idx = index
+            idx = int(sys_match.group(1)) + 1 if sys_match else index
             info[f"Fan{idx}_Reading"] = int(match.group(1))
             info[f"Fan{idx}_Name"] = name
             index += 1
         return info
-
-    def sensors(self) -> dict[str, dict]:
-        """`ipmitool sensor` -> {名字: {reading, higher_critical_threshold}}"""
-        out: dict[str, dict] = {}
-        for line in self._run(["sensor"]).splitlines():
-            parts = [p.strip() for p in line.split("|")]
-            if len(parts) < 3:
-                continue
-            name = parts[0]
-            try:
-                reading = float(parts[1])
-            except ValueError:
-                continue  # na / disabled / Not Readable
-            entry: dict = {"name": name, "reading": reading}
-            if len(parts) >= 9:
-                try:
-                    entry["higher_critical_threshold"] = float(parts[8])
-                except ValueError:
-                    pass
-            out[name] = entry
-        return out
 
     def set_pwm(self, pwm: float) -> None:
         self._write_duty(pwm)
@@ -525,6 +543,10 @@ class Decision:
     desired_manual: bool
     reasons: list[str] = field(default_factory=list)
     critical: bool = False
+    # 每轮都要能打日志：GPU 最高温（瞬时值）、算力/显存利用率（-1 = 读不到）
+    gpu_temp: float | None = None
+    gpu_use: float = -1.0
+    gpu_mem_use: float = -1.0
 
 
 class Controller:
@@ -547,9 +569,6 @@ class Controller:
         self.metrics_file = str(cfg["general"].get("metrics_file") or "")
         self.last_decision: Decision | None = None
         self.last_readings: dict[str, float] = {}
-        self.cpu_sensors = sensor_list(cfg["bmc"], "cpu_sensors", BMC_CPU_SENSORS)
-        self.mb_sensors = sensor_list(cfg["bmc"], "mb_sensors", BMC_MB_SENSORS)
-        self.inlet_sensors = sensor_list(cfg["bmc"], "inlet_sensors", BMC_INLET_SENSORS)
 
     # -- 原始 PWM 快照 / 恢复 ---------------------------------------------- #
     def snapshot(self) -> None:
@@ -608,35 +627,8 @@ class Controller:
             if mem_domain:
                 readings["gpu_mem"] = max(mem_domain)
 
-        # 1) BMC 传感器（也是接管期间唯一能保护 CPU 的信息源）
-        if self.bmc:
-            try:
-                sensors = self.bmc.sensors()
-                cpu = [float(sensors[n]["reading"]) for n in self.cpu_sensors if n in sensors]
-                mb = [float(sensors[n]["reading"]) for n in self.mb_sensors if n in sensors]
-                inlet = [float(sensors[n]["reading"]) for n in self.inlet_sensors if n in sensors]
-                if cpu:
-                    readings["cpu_max"] = max(cpu)
-                if mb:
-                    readings["mb"] = max(mb)
-                if inlet:
-                    readings["inlet"] = max(inlet)
-                for name in c["bmc"]["critical_sensors"]:
-                    s = sensors.get(name)
-                    if not s:
-                        continue
-                    thr = s.get("higher_critical_threshold")
-                    if not isinstance(thr, (int, float)):
-                        continue
-                    if float(s.get("reading", 0)) >= float(thr):
-                        critical = True
-                        reasons.append(f"{name} {s.get('reading')}°C ≥ 临界 {float(thr):g}°C")
-            except BmcError as exc:
-                self.consecutive_errors += 1
-                LOG.warning("读取 BMC 传感器失败(%d): %s", self.consecutive_errors, exc)
-
-        # 2) 各曲线求值，取最大
-        #    - 名字对得上就用同名曲线（gpu_junction / gpu_edge / cpu_max / ...）
+        # 1) 各曲线求值，取最大
+        #    - 名字对得上就用同名曲线（gpu_junction / gpu_edge / gpu_mem / ...）
         #    - 其它 gpu_* 传感器（新卡上多出来的 HBM 堆、GFX、SOC...）走 gpu_default，
         #      免得因为"没配曲线"而被静默忽略
         demands: dict[str, float] = {}
@@ -651,24 +643,28 @@ class Controller:
                 continue
             demands[name] = curve.eval(temp)
 
-        # 3) GPU 空闲时压低 GPU 项（但不影响 CPU/主板项）
+        # 2) GPU 空闲时压低 GPU 项
+        #    算力和显存利用率每轮都读，日志里任何时候都能看到
         hottest = readings.get("gpu_hottest")
-        if hottest is not None:
-            use = self.gpu.gpu_use()
-            # use < 0 = 读不到利用率 -> 不当作空闲（宁可多吹一点）
-            if (
-                hottest <= float(c["gpu"]["idle_max_temp"])
-                and 0 <= use <= float(c["gpu"]["idle_max_gpu_use"])
-            ):
-                idle_pwm = float(c["gpu"]["idle_pwm"])
-                for key in [k for k in demands if k.startswith("gpu_")]:
-                    demands[key] = min(demands[key], idle_pwm)
-                reasons.append(
-                    f"GPU 空闲(最热 {hottest:g}°C, 利用率 {use:g}%) → GPU 项封顶 {idle_pwm:g}%"
-                )
+        use, mem_use = self.gpu.usage()
+        idle_max_use = float(c["gpu"]["idle_max_gpu_use"])
+        # 任一利用率 < 0 = 读不到 -> 不当作空闲（宁可多吹一点）
+        if (
+            hottest is not None
+            and hottest <= float(c["gpu"]["idle_max_temp"])
+            and 0 <= use <= idle_max_use
+            and 0 <= mem_use <= idle_max_use
+        ):
+            idle_pwm = float(c["gpu"]["idle_pwm"])
+            for key in [k for k in demands if k.startswith("gpu_")]:
+                demands[key] = min(demands[key], idle_pwm)
+            reasons.append(
+                f"GPU 空闲(最热 {hottest:g}°C, 算力 {use:g}%, 显存 {mem_use:g}%)"
+                f" → GPU 项封顶 {idle_pwm:g}%"
+            )
 
-        # 4) 任何一路 GPU 传感器达到上限温度就直接拉满
-        #    用未平滑的瞬时值，避免平滑延迟导致 60°C 以上还停在低转速。
+        # 3) 任何一路 GPU 传感器达到上限温度就直接拉满
+        #    用未平滑的瞬时值，避免平滑延迟导致越线后还停在低转速。
         limit = float(c["gpu"]["critical_temp"])
         raw_values = getattr(self.gpu, "last_raw", None) or {}
         guard_temp = max(raw_values.values()) if raw_values else hottest
@@ -676,7 +672,7 @@ class Controller:
             critical = True
             reasons.append(f"GPU 最高温 {guard_temp:g}°C ≥ {limit:g}°C")
 
-        # 5) 读不到 GPU 温度 -> fail-safe
+        # 4) 读不到 GPU 温度 -> fail-safe
         fail_safe = False
         if self.gpu_missing_cycles >= 3:
             fail_safe = True
@@ -695,11 +691,19 @@ class Controller:
 
         target = min(max(target, min_pwm), max_pwm)
 
-        # 6) 模式：control 一直接管；observe 只读
+        # 5) 模式：control 一直接管；observe 只读
         desired_manual = self.mode == "control"
 
         self.last_readings = readings
-        return Decision(target_pwm=target, desired_manual=desired_manual, reasons=reasons, critical=critical)
+        return Decision(
+            target_pwm=target,
+            desired_manual=desired_manual,
+            reasons=reasons,
+            critical=critical,
+            gpu_temp=guard_temp,
+            gpu_use=use,
+            gpu_mem_use=mem_use,
+        )
 
     # -- 执行 --------------------------------------------------------------- #
     def apply(self, decision: Decision) -> None:
@@ -761,11 +765,20 @@ class Controller:
     def step(self) -> None:
         decision = self.decide()
         self.last_decision = decision
+        # 每轮都打印 GPU 最高温和利用率，不依赖是否临界 / 是否空闲
+        temp = (
+            "GPU 温度读不到"
+            if decision.gpu_temp is None
+            else f"GPU 最高 {decision.gpu_temp:g}°C"
+        )
         LOG.info(
-            "目标 %.0f%% | %s%s | %s",
+            "目标 %.0f%% | %s%s | %s 算力 %s 显存 %s | %s",
             decision.target_pwm,
             "接管" if decision.desired_manual else "不接管",
             " [临界]" if decision.critical else "",
+            temp,
+            _fmt_pct(decision.gpu_use),
+            _fmt_pct(decision.gpu_mem_use),
             "；".join(decision.reasons) or "-",
         )
         self.apply(decision)
@@ -829,21 +842,8 @@ def cmd_status(cfg: Config, gpu: RocmSmiGpuReader, bmc: IpmiClient) -> int:
     print("转速：" + " ".join(fans))
     print(f"GPU：{gpu.describe()}")
     print(f"  读数：{gpu.read() or '拿不到（看上面的 WARNING）'}")
-    use = gpu.gpu_use()
-    print(f"  GPU 利用率：{f'{use:g}%' if use >= 0 else '读不到'}")
-    sensors = bmc.sensors()
-    bmc_cfg = cfg["bmc"]
-    for name in (
-        *sensor_list(bmc_cfg, "cpu_sensors", BMC_CPU_SENSORS),
-        *sensor_list(bmc_cfg, "mb_sensors", BMC_MB_SENSORS),
-        *sensor_list(bmc_cfg, "inlet_sensors", BMC_INLET_SENSORS),
-    ):
-        s = sensors.get(name)
-        if not s:
-            continue
-        thr = s.get("higher_critical_threshold")
-        shown = f"{float(thr):g}°C" if isinstance(thr, (int, float)) else "NA（BMC 未提供）"
-        print(f"  {name:16} {s.get('reading')}°C  临界 {shown}")
+    compute, memory = gpu.usage()
+    print(f"  GPU 利用率：算力 {_fmt_pct(compute)}  显存 {_fmt_pct(memory)}")
     return 0
 
 
@@ -909,8 +909,8 @@ def cmd_selftest(
     print(f"  {gpu.describe()}")
     temps = gpu.read()
     print(f"  读数：{temps if temps else '拿不到（看上面的 WARNING）'}")
-    use = gpu.gpu_use()
-    print(f"  GPU 利用率：{f'{use:g}%' if use >= 0 else '读不到'}")
+    compute, memory = gpu.usage()
+    print(f"  GPU 利用率：算力 {_fmt_pct(compute)}  显存 {_fmt_pct(memory)}")
 
     print("\n=== 2) 风扇现状 ===")
     info = bmc.fan_info()
@@ -979,7 +979,7 @@ def main(argv: list[str] | None = None) -> int:
     cfg_path = resolve_config_path(args.config)
     try:
         cfg = Config.load(cfg_path)
-    except (OSError, tomllib.TOMLDecodeError) as exc:
+    except (OSError, tomllib.TOMLDecodeError, ValueError) as exc:
         print(f"读取配置失败 {cfg_path or '(未指定配置文件)'}: {exc}", file=sys.stderr)
         return 2
     if args.mode:

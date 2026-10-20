@@ -24,7 +24,22 @@ ipmitool raw 0x2e 0x44 0xfd 0x19 0x00 0x05 0x01 0x3c   # PWM5 = 60%
 ipmitool raw 0x2e 0x45 0xfd 0x19 0x00 0x05
 ```
 
-S8030 的 PWM 通道：`0=CPU_FAN`、`2=SYS_FAN_1`、`3=SYS_FAN_2`、`4=SYS_FAN_3`、`5=SYS_FAN_4`。
+S8030 / BMC 6.02 的 fan table 与主板丝印不是一一对应的（PWM0/PWM1 被两个 CPU 通道占用）：
+
+| PWM id | 主板标签 |
+| --- | --- |
+| 0 | CPU0_FAN |
+| 1 | CPU1_FAN |
+| 2 | SYS_FAN_1 |
+| 3 | SYS_FAN_2 |
+| 4 | SYS_FAN_3 |
+| 5 | SYS_FAN_4 |
+
+即 `pwm_id = SYS_FAN 序号 + 1`。单 CPU 的板子只接了 CPU0_FAN，SDR 里也只有 `CPU_FAN` 一个 CPU 传感器，但 PWM1 仍是 fan table 里的 CPU1 槽位（没有风扇/传感器），所以这个偏移与 CPU 数量无关。
+
+实测验证：把 PWM5 从 31% 拉到 100%，`SYS_FAN_4` 从 4692 升到 8142 RPM，`CPU_FAN` 始终 1242 RPM。
+
+本程序只写 SYS_FAN 通道，`pwm_id = 0` 或 `1` 会被拒绝启动。
 
 ## 两种模式
 
@@ -35,15 +50,14 @@ S8030 的 PWM 通道：`0=CPU_FAN`、`2=SYS_FAN_1`、`3=SYS_FAN_2`、`4=SYS_FAN_
 
 ## 安全设计
 
-1. **GPU 任一路传感器瞬时值 ≥ 60°C → 立即 100%**，不受温度平滑延迟影响。
-2. 接管期间同时监控 CPU / 主板排风 / 进风温度，各自有曲线，最终取所有曲线的最大值。
-3. BMC 传感器的临界阈值取每个传感器自带的 `higher_critical_threshold`，越线直接拉满。
-4. 升温不限速，降温按 `ramp_down_step` 限速。
-5. 连续 3 次读不到 GPU 温度 → fail-safe 拉高到 `fan.fail_safe_pwm`。
-6. 写 PWM 失败会重试；连续失败超过 `max_consecutive_errors` 则退出，交由 systemd 重启。
-7. 启动时把原始 PWM 落盘到 `state_dir`，退出 / SIGTERM 时恢复；`--restore` 可手动兜底。
-8. 死区 `write_deadband` + 最小写入间隔 `min_write_interval`，避免高频写 BMC。
-9. `dry_run = true` 时绝不写 PWM。
+1. **GPU 任一路传感器瞬时值 ≥ `gpu.critical_temp` → 立即 100%**，不受温度平滑延迟影响。
+2. 温度源只有 GPU（`rocm-smi`），不读取 BMC 的 CPU / 主板 / 进风传感器；只写 SYS_FAN 通道，不碰 CPU 风扇。
+3. 升温不限速，降温按 `ramp_down_step` 限速。
+4. 连续 3 次读不到 GPU 温度 → fail-safe 拉高到 `fan.fail_safe_pwm`。
+5. 写 PWM 失败会重试；连续失败超过 `max_consecutive_errors` 则退出，交由 systemd 重启。
+6. 启动时把原始 PWM 落盘到 `state_dir`，退出 / SIGTERM 时恢复；`--restore` 可手动兜底。
+7. 死区 `write_deadband` + 最小写入间隔 `min_write_interval`，避免高频写 BMC。
+8. `dry_run = true` 时绝不写 PWM。
 
 ## 依赖
 
@@ -57,7 +71,7 @@ S8030 的 PWM 通道：`0=CPU_FAN`、`2=SYS_FAN_1`、`3=SYS_FAN_2`、`4=SYS_FAN_
 python3 -m unittest test_amdgpu_fan_ctl                 # 离线单元测试
 python3 amdgpu_fan_ctl.py -c config.toml --simulate      # 离线看曲线
 python3 amdgpu_fan_ctl.py -c config.toml --print-curves  # 确认 rocm-smi 和传感器
-sudo python3 amdgpu_fan_ctl.py -c config.toml --status   # 风扇 + GPU + BMC 传感器
+sudo python3 amdgpu_fan_ctl.py -c config.toml --status   # 风扇 + GPU 读数
 sudo python3 amdgpu_fan_ctl.py -c config.toml --selftest # 只读自检
 sudo python3 amdgpu_fan_ctl.py -c config.toml --selftest --live --delta -20 --seconds 15
 sudo python3 amdgpu_fan_ctl.py -c config.toml --live     # 正式控制
@@ -115,12 +129,12 @@ journalctl -u amdgpu-fan-ctl -f
 
 ## 调参
 
-- `[curves.*]` 是分段线性曲线，最终 PWM 取所有曲线中的最大值；`gpu.critical_temp` 是独立的硬阈值（默认 60°C）。
+- GPU 曲线（`gpu_junction` / `gpu_edge` / `gpu_mem` / `gpu_default`）由 `gpu.critical_temp` 自动生成：从 `min_pwm` 起步，在 `critical_temp` 处到 100%。改这个值，曲线整体伸缩，不用手改 points；它同时也是硬阈值（瞬时值越线直接 100%）。
+- `[curves.*]` 是分段线性曲线，最终 PWM 取所有曲线中的最大值；显式写 `[curves.gpu_xxx]` 会覆盖自适应曲线。
 - GPU 传感器名自动展开为 `gpu_<名字>`；没有同名曲线的走 `gpu_default`。
 - `gpu_mem` 吃的是 `max(memory, 所有 HBM 堆)`。
-- `idle_pwm` 是 GPU 空闲时的封顶值，要求最热一路 ≤ `idle_max_temp` 且利用率 ≤ `idle_max_gpu_use`。
+- `idle_pwm` 是 GPU 空闲时的封顶值，要求最热一路 ≤ `idle_max_temp` 且**算力**和**显存**利用率都 ≤ `idle_max_gpu_use`（显存取的是读写活动率，不是 VRAM 占用率）。
 - `fail_safe_pwm` 是连续读不到 GPU 温度时的兜底 PWM。
-- `[bmc] cpu_sensors / mb_sensors / inlet_sensors / critical_sensors` 是传感器名映射，换主板只改这里。
 
 ## 已知限制
 
