@@ -1,6 +1,6 @@
 pkgbase = techdoro-bin
 	pkgdesc = A desktop Pomodoro timer with a to-do list.
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/Zelchi/techdoro
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = techdoro-bin
 	depends = libxcb
 	depends = libgcc
 	depends = libxkbcommon
-	provides = techdoro=4.0.3
+	provides = techdoro=4.0.4
 	conflicts = techdoro
-	source = techdoro-4.0.3.rpm::https://github.com/Zelchi/techdoro/releases/download/v4.0.3/Techdoro-4.0.3-1.x86_64.rpm
-	source = LICENSE-4.0.3::https://raw.githubusercontent.com/Zelchi/techdoro/v4.0.3/LICENSE
-	sha256sums = f8102c6dd59de4ed26198d55f389bf9f91e23bbec4c840e7220289945252948e
+	source = techdoro-4.0.4.rpm::https://github.com/Zelchi/techdoro/releases/download/v4.0.4/Techdoro-4.0.4-1.x86_64.rpm
+	source = LICENSE-4.0.4::https://raw.githubusercontent.com/Zelchi/techdoro/v4.0.4/LICENSE
+	sha256sums = a063383df9d522b2a048eaebfc2be4d7dee86ae7be6bd5efc3290a7ed84fd25c
 	sha256sums = a73b41d88cfe4bee23d9346f42a139fc66c97370432ed4fbcd1ae5b6b1ad7127
 
 pkgname = techdoro-bin

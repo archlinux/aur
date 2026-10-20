@@ -2,7 +2,7 @@
 pkgname=techdoro-bin
 _pkgname=Techdoro
 _debname=com.zelchi.techdoro
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A desktop Pomodoro timer with a to-do list."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Zelchi/techdoro/v${pkgver}/LICENSE"
 )
-sha256sums=('f8102c6dd59de4ed26198d55f389bf9f91e23bbec4c840e7220289945252948e'
+sha256sums=('a063383df9d522b2a048eaebfc2be4d7dee86ae7be6bd5efc3290a7ed84fd25c'
             'a73b41d88cfe4bee23d9346f42a139fc66c97370432ed4fbcd1ae5b6b1ad7127')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
