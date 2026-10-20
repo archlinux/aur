@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Lightweight Discord voice/text overlay for Linux (Wayland, GTK4 layer-shell), written in Rust"
 arch=('x86_64')
 url="https://github.com/deddroid/rust-discord-overlay"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=(
     'cairo'
     'dbus'
