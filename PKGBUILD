@@ -1,33 +1,41 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-piou-git'
+pkgdesc='A CLI tool to build rich text command-line interfaces with type validation (development version)'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=0.22.0.r0.g3c6c768
+pkgver=0.38.2.r1.gd5ab1de
 pkgrel=1
-pkgdesc='A CLI tool to build rich text command-line interfaces with type validation (development version)'
-arch=('any')
 url="https://github.com/Andarius/$_srcname"
-license=('MIT')  # SPDX-License-Identifier: MIT
+arch=('any')
+license=('MIT')
 makedepends=(
   'git'
   'python-build'
   'python-hatchling'
   'python-installer'
-  #'python-poetry'
   'python-wheel'
 )
 depends=(
-  'python>=3.10'
+  'python'
   'python-rich'
   'python-typing_extensions'
 )
-source=("git+$url.git")
+optdepends=(
+  'python-textual: for an optional interactive TUI (Text User Interface)'
+  'python-watchfiles: for auto-reload support for development'
+  'python-aiohttp: needed for one or more of the examples'
+  'python-httpx: needed for one or more of the examples'
+  'python-niquests: needed for one or more of the examples'
+)
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
+options=('!strip')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -48,15 +56,15 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     README.md
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
     examples/*.py
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
   for _dir in doc licenses; do
-    cd "$pkgdir/usr/share/$_dir" && ln -vsrf "$pkgname" "$_pkgname"
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
   done
 }
 

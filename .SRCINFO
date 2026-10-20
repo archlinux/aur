@@ -1,6 +1,6 @@
 pkgbase = python-piou-git
 	pkgdesc = A CLI tool to build rich text command-line interfaces with type validation (development version)
-	pkgver = 0.22.0.r0.g3c6c768
+	pkgver = 0.38.2.r1.gd5ab1de
 	pkgrel = 1
 	url = https://github.com/Andarius/piou
 	arch = any
@@ -10,11 +10,17 @@ pkgbase = python-piou-git
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.10
+	depends = python
 	depends = python-rich
 	depends = python-typing_extensions
+	optdepends = python-textual: for an optional interactive TUI (Text User Interface)
+	optdepends = python-watchfiles: for auto-reload support for development
+	optdepends = python-aiohttp: needed for one or more of the examples
+	optdepends = python-httpx: needed for one or more of the examples
+	optdepends = python-niquests: needed for one or more of the examples
 	provides = python-piou
 	conflicts = python-piou
+	options = !strip
 	source = git+https://github.com/Andarius/piou.git
 	sha256sums = SKIP
 
