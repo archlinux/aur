@@ -1,6 +1,6 @@
 pkgbase = plain-bin
 	pkgdesc = Compile, test and deploy EVM smart contracts with a single binary that needs no setup
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://getplain.org
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = plain-bin
 	conflicts = plain
 	options = !strip
 	options = !debug
-	source = LICENSE-0.3.2::https://raw.githubusercontent.com/backmeupplz/plain/v0.3.2/LICENSE
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/backmeupplz/plain/v0.4.0/LICENSE
 	sha256sums = 33114a696d51853ad80231c4402b355e0c145f37b6ead0020fd0c9285f68626d
-	source_x86_64 = plain-0.3.2-x86_64.tar.gz::https://github.com/backmeupplz/plain/releases/download/v0.3.2/plain-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9efe4982a314623ae0f12d7b86c24039163f063f899ed9c509ab9a94fec26793
+	source_x86_64 = plain-0.4.0-x86_64.tar.gz::https://github.com/backmeupplz/plain/releases/download/v0.4.0/plain-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 128e55f95b3b8689c3f5d53ff68be5bc64f676bdd55c3e6150b91f24b949dd65
 
 pkgname = plain-bin
