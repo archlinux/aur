@@ -1,5 +1,5 @@
 pkgbase = dexo-bin
-	pkgdesc = A terminal database workbench for PostgreSQL and MySQL
+	pkgdesc = A terminal database workbench with guardrails for AI agents.
 	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/KingDasWinx/Dexo

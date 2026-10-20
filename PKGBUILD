@@ -4,7 +4,7 @@ _gitauthor=KingDasWinx
 _gitname=Dexo
 _appname=${_gitname,,}
 pkgname=${_appname}-bin
-pkgdesc="A terminal database workbench for PostgreSQL and MySQL"
+pkgdesc="A terminal database workbench with guardrails for AI agents."
 
 pkgver=1.4.3
 pkgrel=1
