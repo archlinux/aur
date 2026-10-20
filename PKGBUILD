@@ -1,16 +1,16 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-bin
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/spotifast"
 license=('MIT')
 install="${pkgname}.install"
-# alsa-lib and libpulse are linked directly; the rest are dlopened by winit
+# alsa-lib and libpipewire are linked directly; the rest are dlopened by winit
 # and glutin at startup, and this is a GUI-only application, so all of them
 # have to be there for it to run at all.
-depends=('dbus' 'alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+depends=('dbus' 'alsa-lib' 'libpipewire' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
 provides=("spotifast=$pkgver")
@@ -19,8 +19,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/spotifast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('3412306e41b2cae2f7554bf973e442cf5dcef1f69e4c24045f2317ce80d24970')
-sha256sums_aarch64=('32b557445847167b56f203e84288c79ec885e58ed5167a9875b03da60d7d5c04')
+sha256sums_x86_64=('2adc849ec7d05a3f789e41fec3ae32993758c75a10838fc3c9771233bb14e6f9')
+sha256sums_aarch64=('eb36bb0b6ee5ce6ea6b6caba6dda36b4970d9a6e456b2ee20c66d943b26c3958')
 
 package() {
   local target
