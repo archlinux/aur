@@ -12,7 +12,10 @@ pkgbase = abb-agent-bin
 	conflicts = abb-agent
 	conflicts = abb-agent-git
 	backup = etc/abb-agent.toml
+	validpgpkeys = B903BF2CD82C9EA45C9FB35DE2E8944F09676A61
 	source_x86_64 = abb-agent-0.2.0-x86_64.tar.gz::https://github.com/rylos/abb-agent/releases/download/v0.2.0/abb-agent-0.2.0-x86_64.tar.gz
+	source_x86_64 = abb-agent-0.2.0-x86_64.tar.gz.asc::https://github.com/rylos/abb-agent/releases/download/v0.2.0/abb-agent-0.2.0-x86_64.tar.gz.asc
 	sha256sums_x86_64 = 4f295f9ba3e0463e2edea8f4ed1afedfb7195c5e5007756fdae238657f006637
+	sha256sums_x86_64 = SKIP
 
 pkgname = abb-agent-bin

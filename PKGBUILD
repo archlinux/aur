@@ -12,8 +12,11 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 backup=('etc/abb-agent.toml')
 install=abb-agent.install
-source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('4f295f9ba3e0463e2edea8f4ed1afedfb7195c5e5007756fdae238657f006637')
+source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz"
+               "$_pkgname-$pkgver-x86_64.tar.gz.asc::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz.asc")
+sha256sums_x86_64=('4f295f9ba3e0463e2edea8f4ed1afedfb7195c5e5007756fdae238657f006637' 'SKIP')
+# Release signing key: https://github.com/rylos.gpg
+validpgpkeys=('B903BF2CD82C9EA45C9FB35DE2E8944F09676A61')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH"
