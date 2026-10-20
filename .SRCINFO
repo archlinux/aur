@@ -12,9 +12,8 @@ pkgbase = cockpit-pacman-git
 	makedepends = openssh
 	depends = cockpit>=300
 	depends = coreutils
+	depends = curl
 	depends = glibc
-	depends = libalpm.so
-	depends = libcurl.so
 	depends = libgcc
 	depends = pacman
 	depends = pacman-mirrorlist
@@ -32,3 +31,13 @@ pkgbase = cockpit-pacman-git
 	sha256sums = 0b4e67bb18e34100caecd5583194f023be6c72c470fc9dbee9f88755ad1d9aff
 
 pkgname = cockpit-pacman-git
+	depends = cockpit>=300
+	depends = coreutils
+	depends = curl
+	depends = glibc
+	depends = libgcc
+	depends = pacman
+	depends = pacman-mirrorlist
+	depends = systemd
+	depends = libalpm.so
+	depends = libcurl.so

@@ -6,7 +6,7 @@ pkgdesc='Cockpit plugin for Arch Linux package management using alpm.rs'
 arch=('x86_64')
 url='https://github.com/pfeifferj/cockpit-pacman'
 license=('GPL-3.0-only')
-depends=('cockpit>=300' 'coreutils' 'glibc' 'libalpm.so' 'libcurl.so' 'libgcc' 'pacman' 'pacman-mirrorlist' 'systemd')
+depends=('cockpit>=300' 'coreutils' 'curl' 'glibc' 'libgcc' 'pacman' 'pacman-mirrorlist' 'systemd')
 makedepends=('cargo' 'git' 'npm' 'openssh')
 provides=("cockpit-pacman=${pkgver%%.r*}")
 conflicts=('cockpit-pacman')
@@ -66,6 +66,7 @@ check() {
 }
 
 package() {
+    depends+=('libalpm.so' 'libcurl.so')
     cd "${pkgname%-git}"
     make DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib/cockpit-pacman \
         BACKEND_BIN="$srcdir/target/release/cockpit-pacman-backend" install
