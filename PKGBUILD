@@ -84,6 +84,11 @@ build() {
     cmake --build build --parallel "$(nproc)"
 }
 
+check() {
+    cd ${pkgname%-*}
+    ctest --test-dir build --output-on-failure
+}
+
 package(){
     cd "$srcdir/${pkgname%-*}"
 
