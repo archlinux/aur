@@ -3,7 +3,7 @@
 # Contributor: vryali@gmail.com
 pkgname=google-chat-linux
 _pkgname='Google Chat Linux'
-pkgver=5.39.29_1
+pkgver=5.39.29_2
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -24,10 +24,10 @@ makedepends=(
     'jq'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=${pkgver//_/-}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c1b23c685bbb7bc2df63dd0686260c83c90066b5080131308683beca09d9b14c'
+sha256sums=('77ac6c7e531362c1f003569d98c07dec7c8110fa442f77612ec3c17ee4f847ee'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_project_dir() {
 	local d
