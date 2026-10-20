@@ -1,7 +1,7 @@
 # Maintainer: WindustH <windusth2006@gmail.com>
 
 pkgname=all-the-platforms
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="One command for all the platforms: read, search, post, chat and download on 67 platforms, with JSON output and an MCP server"
 arch=('x86_64' 'aarch64')

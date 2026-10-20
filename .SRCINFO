@@ -1,6 +1,6 @@
 pkgbase = all-the-platforms
 	pkgdesc = One command for all the platforms: read, search, post, chat and download on 67 platforms, with JSON output and an MCP server
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/WindustH/atp
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = all-the-platforms
 	conflicts = all-the-platforms-bin
 	conflicts = atp-bin
 	options = !lto
-	source = all-the-platforms::git+https://github.com/WindustH/atp.git#tag=v0.2.0
+	source = all-the-platforms::git+https://github.com/WindustH/atp.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = all-the-platforms
