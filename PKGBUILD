@@ -51,6 +51,15 @@ prepare() {
   sed -i "/win64/d" pyproject.toml
   sed -i "/windows/d" pyproject.toml
   sed -i "/sundials_/d" pyproject.toml
+
+  # load system sundials libs
+  sed -i "s|LoadLibrary(str(library_dir / f'sundials_|LoadLibrary(str(f'/usr/lib/libsundials_|g" src/fmpy/sundials/libraries.py
+
+  # system sundials-seq is built with 32-bit indices (SUNDIALS_INT32_T),
+  # while fmpy hardcodes sunindextype=c_int64: _N_VectorContent_Serial
+  # would read data at offset 16 instead of 8 and segfault in CVode
+  sed -i "s/from ctypes import c_double, c_int64,/from ctypes import c_double, c_int64, c_int32,/" src/fmpy/sundials/sundials_types.py
+  sed -i "s/^sunindextype = c_int64$/sunindextype = c_int32/" src/fmpy/sundials/sundials_types.py
 }
 
 build() {
