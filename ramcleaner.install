@@ -1,0 +1,15 @@
+post_install() {
+    cat <<'AURGEN_MESSAGES'
+ramcleaner: the watch timer is a per-user unit and is not enabled automatically.
+  Look first:  ramcleaner report
+  Then enable: systemctl --user enable --now ramcleaner-watch.timer
+AURGEN_MESSAGES
+}
+
+pre_remove() {
+    cat <<'AURGEN_MESSAGES'
+ramcleaner: users who enabled the watch timer should run
+  systemctl --user disable --now ramcleaner-watch.timer
+AURGEN_MESSAGES
+}
+
