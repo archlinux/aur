@@ -16,7 +16,7 @@ conflicts=('rusty-psn-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "rusty-psn.desktop"
         "playstation-store.svg")
-sha256sums=('db1c60ee06478c0319c538ec4c69c271f915b960df492f6d8feb2f48aacb750a'
+sha256sums=('0d29f7347dce324bc031edfd8fe35941803bb58ea0e216e2cf7e512b39a800b5'
             '2cb6715bb0cf3646091369385e285c92a2573f1602580f60a51d5c0ea8e638a5'
             '4c6f59e5d15a93b76fc1a90ca4f8283193a870627a958eff62cda952474d089b')
 
