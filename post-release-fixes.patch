@@ -1,6 +1,27 @@
+diff -up src/libumem-3.3.1/configure.ac.orig src/libumem-3.3.1/configure.ac
+--- src/libumem-3.3.1/configure.ac.orig	2026-10-20 15:57:53.279999999 -0600
++++ src/libumem-3.3.1/configure.ac	2026-10-20 16:02:56.789999999 -0600
+@@ -2,6 +2,8 @@ AC_INIT([umem], [3.3.1], [], [umem])
+ AM_INIT_AUTOMAKE([dist-bzip2])
+ AC_CONFIG_MACRO_DIRS([m4])
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ AC_PROG_CC
+ 
+ # Require C17 standard (ISO/IEC 9899:2018)
+@@ -502,7 +504,7 @@ elif test "x$pgo" = "xuse"; then
+ fi
+ 
+ AC_CONFIG_HEADERS([config.h])
+-AC_CONFIG_FILES([Makefile Doxyfile umem.spec])
++AC_CONFIG_FILES([Makefile Doxyfile umem.pc umem-malloc.pc umem.spec])
+ 
+ AC_OUTPUT
+ 
 diff -up src/libumem-3.3.1/envvar.c.orig src/libumem-3.3.1/envvar.c
---- src/libumem-3.3.1/envvar.c.orig	2026-10-20 03:33:53.909999999 -0600
-+++ src/libumem-3.3.1/envvar.c	2026-10-20 03:34:13.949999999 -0600
+--- src/libumem-3.3.1/envvar.c.orig	2026-09-26 06:34:02.000000000 -0600
++++ src/libumem-3.3.1/envvar.c	2026-10-20 15:57:18.059999999 -0600
 @@ -239,7 +239,7 @@ static umem_env_item_t umem_options_item
  		    "MADV_DONTNEED'd, which returns the pages equally but does "
  		    "not split the mapping into a new VMA.  Default 16M; 0 = "
@@ -10,9 +31,22 @@ diff -up src/libumem-3.3.1/envvar.c.orig src/libumem-3.3.1/envvar.c
  		/* SECURE-UNSAFE (P5.14).  The comment this replaces said "not
  		 * secure-unsafe in either direction ... neither is a file,
  		 * socket, exec or disclosure side effect".  That was the wrong
+diff -up src/libumem-3.3.1/Makefile.am.orig src/libumem-3.3.1/Makefile.am
+--- src/libumem-3.3.1/Makefile.am.orig	2026-10-20 16:03:29.139999999 -0600
++++ src/libumem-3.3.1/Makefile.am	2026-10-20 16:05:46.579999999 -0600
+@@ -185,6 +185,9 @@ libumem_malloc_la_SOURCES = malloc_inter
+ libumem_malloc_la_LDFLAGS = -lpthread -ldl -R$(libdir) -version-info 1:0:0
+ libumem_malloc_la_LIBADD = libumem.la
+ 
++pkgconfigdir = $(libdir)/pkgconfig
++dist_pkgconfig_DATA = umem.pc umem-malloc.pc
++
+ # Initialize flags unconditionally to avoid += errors
+ #
+ # -fno-builtin-calloc/-malloc/-realloc/-free: these files DEFINE the
 diff -up src/libumem-3.3.1/test/unit/test_reclaim.c.orig src/libumem-3.3.1/test/unit/test_reclaim.c
---- src/libumem-3.3.1/test/unit/test_reclaim.c.orig	2026-10-20 03:45:30.329999999 -0600
-+++ src/libumem-3.3.1/test/unit/test_reclaim.c	2026-10-20 03:45:51.979999999 -0600
+--- src/libumem-3.3.1/test/unit/test_reclaim.c.orig	2026-09-26 06:34:02.000000000 -0600
++++ src/libumem-3.3.1/test/unit/test_reclaim.c	2026-10-20 15:57:18.139999999 -0600
 @@ -18,6 +18,7 @@
  #include "../munit.h"
  
@@ -22,8 +56,8 @@ diff -up src/libumem-3.3.1/test/unit/test_reclaim.c.orig src/libumem-3.3.1/test/
  #include <string.h>
  #include <sys/wait.h>
 diff -up src/libumem-3.3.1/umem.c.orig src/libumem-3.3.1/umem.c
---- src/libumem-3.3.1/umem.c.orig	2026-10-20 03:41:56.559999999 -0600
-+++ src/libumem-3.3.1/umem.c	2026-10-20 03:42:58.089999999 -0600
+--- src/libumem-3.3.1/umem.c.orig	2026-09-26 06:34:02.000000000 -0600
++++ src/libumem-3.3.1/umem.c	2026-10-20 15:57:18.199999999 -0600
 @@ -442,6 +442,9 @@
  #ifdef UMEM_NUMA_AVAILABLE
  #include "umem_numa.h"
@@ -34,3 +68,34 @@ diff -up src/libumem-3.3.1/umem.c.orig src/libumem-3.3.1/umem.c
  
  /*
   * Include rseq support when available.
+diff -up src/libumem-3.3.1/umem-malloc.pc.in.orig src/libumem-3.3.1/umem-malloc.pc.in
+--- src/libumem-3.3.1/umem-malloc.pc.in.orig	2026-10-20 16:06:34.959999999 -0600
++++ src/libumem-3.3.1/umem-malloc.pc.in	2026-10-20 16:09:44.029999999 -0600
+@@ -0,0 +1,12 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: umem-malloc
++Version: @PACKAGE_VERSION@
++Description: Port of Solaris's slab allocator. Libc malloc replacement.
++URL: https://github.com/ghurd/libumem
++Requires.private: umem = @PACKAGE_VERSION@
++Libs: -L${libdir} -lumem_alloc
++Cflags: -I${includedir}
+diff -up src/libumem-3.3.1/umem.pc.in.orig src/libumem-3.3.1/umem.pc.in
+--- src/libumem-3.3.1/umem.pc.in.orig	2026-10-20 16:06:43.539999999 -0600
++++ src/libumem-3.3.1/umem.pc.in	2026-10-20 16:11:52.039999999 -0600
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: umem
++Version: @PACKAGE_VERSION@
++Description: Port of Solaris's slab allocator.
++URL: https://github.com/gburd/libumem
++Cflags: -I${includedir}
++Libs: -L${libdir} -lumem
