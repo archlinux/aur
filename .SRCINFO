@@ -1,0 +1,22 @@
+pkgbase = generic-daw-git
+	pkgdesc = An early-in-development, open source, cross-platform digital audio workstation (DAW) built in Rust.
+	pkgver = r1934.33f3ecb6
+	pkgrel = 1
+	url = https://github.com/generic-daw/generic-daw
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = alsa-lib
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = libpipewire
+	provides = generic-daw
+	provides = clap-host
+	conflicts = generic-daw
+	options = !lto
+	source = git+https://github.com/generic-daw/generic-daw.git
+	source = lucide-static-1.33.0.ttf::https://unpkg.com/lucide-static@1.33.0/font/Lucide.ttf
+	sha256sums = SKIP
+	sha256sums = ef5dcd7e5d79d3d1ac729615f7d2672eab02adb5915054ab0b6545563a730248
+
+pkgname = generic-daw-git
