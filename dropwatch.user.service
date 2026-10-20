@@ -1,0 +1,17 @@
+[Unit]
+Description=dropwatch
+Documentation=https://github.com/carnager/dropwatch
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Environment=DROPWATCH_ADDR=127.0.0.1:8080
+EnvironmentFile=-%E/dropwatch.env
+ExecStartPre=/usr/bin/mkdir -p %h/.local/share/dropwatch
+ExecStart=/usr/bin/dropwatch -addr ${DROPWATCH_ADDR} -db %h/.local/share/dropwatch/dropwatch.db -dump-dir %h/.local/share/dropwatch/dumps
+WorkingDirectory=%h
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
