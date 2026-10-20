@@ -1,17 +1,17 @@
 # Maintainer: dvhar <jnk at davosaur dot com>
 
 pkgname=pikeru
-pkgver=1.17
+pkgver=1.18
 pkgrel=2
 pkgdesc="A system file picker with proper thumbnails and search"
 arch=('x86_64')
 url="https://github.com/dvhar/pikeru"
 license=('GPLv3')
 depends=('xdg-desktop-portal' 'poppler')
-makedepends=('cargo' 'clang' 'scdoc' 'nasm' 'make' 'pkgconf')
+makedepends=('cargo' 'clang' 'scdoc' 'nasm' 'make' 'pkgconf' 'meson' 'ninja')
 optdepends=('epub-thumbnailer-git: epub thumbnail support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dvhar/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('d669a425398d975ad0dcb3ea0542eee49d7708970438379202a80c4a8e46042062fd7cbe22147d1130f40bf9616b4711c0bcb1a6e7430533df1f7ac8cc5db9d1')
+sha512sums=('dd1b32083d3b6861fbea48dca0b1ec26eb458201f873d6fa6e191ae6ae5664ae0fe84415d93b6db2e2404cc86eb2c716860e8dc39f59090c9f9e41fd9c9c3fc6')
 options=(!debug !lto)
 install="${pkgname}.install"
 

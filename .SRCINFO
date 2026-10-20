@@ -1,6 +1,6 @@
 pkgbase = pikeru
 	pkgdesc = A system file picker with proper thumbnails and search
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 2
 	url = https://github.com/dvhar/pikeru
 	install = pikeru.install
@@ -12,12 +12,14 @@ pkgbase = pikeru
 	makedepends = nasm
 	makedepends = make
 	makedepends = pkgconf
+	makedepends = meson
+	makedepends = ninja
 	depends = xdg-desktop-portal
 	depends = poppler
 	optdepends = epub-thumbnailer-git: epub thumbnail support
 	options = !debug
 	options = !lto
-	source = pikeru-1.17.tar.gz::https://github.com/dvhar/pikeru/archive/refs/tags/1.17.tar.gz
-	sha512sums = d669a425398d975ad0dcb3ea0542eee49d7708970438379202a80c4a8e46042062fd7cbe22147d1130f40bf9616b4711c0bcb1a6e7430533df1f7ac8cc5db9d1
+	source = pikeru-1.18.tar.gz::https://github.com/dvhar/pikeru/archive/refs/tags/1.18.tar.gz
+	sha512sums = dd1b32083d3b6861fbea48dca0b1ec26eb458201f873d6fa6e191ae6ae5664ae0fe84415d93b6db2e2404cc86eb2c716860e8dc39f59090c9f9e41fd9c9c3fc6
 
 pkgname = pikeru
