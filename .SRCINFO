@@ -1,15 +1,15 @@
 pkgbase = dsearch-git
 	pkgdesc = Fast filesystem search service
-	pkgver = 0.0.7.r0.g24ea202
-	pkgrel = 2
-	url = https://github.com/AvengeMedia/danksearch
+	pkgver = 0.0.7.r6.gdb48a1c
+	pkgrel = 1
+	url = https://github.com/duxlabs-dev/dux-search
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	provides = dsearch=0.0.7.r0.g24ea202
+	provides = dsearch=0.0.7.r6.gdb48a1c
 	conflicts = dsearch
-	source = git+https://github.com/AvengeMedia/danksearch.git
+	source = git+https://github.com/duxlabs-dev/dux-search.git
 	source = dsearch.service
 	sha256sums = SKIP
 	sha256sums = SKIP

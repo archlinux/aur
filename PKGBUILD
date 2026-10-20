@@ -1,13 +1,13 @@
 # Maintainer: Your Name <you@example.com>
 
 pkgbase=dsearch-git
-_pkgname=danksearch
+_pkgname=dux-search
 pkgname=("$pkgbase")
 pkgver=0.0.7.r6.gdb48a1c
 pkgrel=1
 pkgdesc='Fast filesystem search service'
 arch=('x86_64')
-url="https://github.com/AvengeMedia/$_pkgname"
+url="https://github.com/duxlabs-dev/$_pkgname"
 license=('MIT')
 makedepends=(git go)
 provides=("dsearch=$pkgver")
