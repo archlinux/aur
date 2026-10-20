@@ -1,0 +1,26 @@
+pkgbase = openartifact-bin
+	pkgdesc = Free-as-in-freedom artifact repository manager (Maven, npm, PyPI, OCI, Helm, ...) - prebuilt binaries
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/openartifact/openartifact
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	provides = openartifact=0.2.0
+	provides = oa-cli=0.2.0
+	conflicts = openartifact
+	noextract = openartifact-bin-0.2.0-x86_64.tar.gz
+	noextract = oa-0.2.0-x86_64.tar.gz
+	backup = etc/openartifact/openartifact.yaml
+	source = openartifact.service
+	sha256sums = bc1ec1cb88982f5c3bfc5a86505bcc8b87e6e83541609526b90b298ea2c473cb
+	source_x86_64 = openartifact-bin-0.2.0-x86_64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.2.0/openartifact_0.2.0_linux_amd64.tar.gz
+	source_x86_64 = oa-0.2.0-x86_64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.2.0/oa_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6c618b0a3e279e89ed4d1e19fdaa0d6707edddcb62207b5246f554e1cf8fd126
+	sha256sums_x86_64 = 07b2ed73c3bc2b6a2d6dde9ab0c8db2c0185f4c7e5dc97675706eecbaa99dde8
+	source_aarch64 = openartifact-bin-0.2.0-aarch64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.2.0/openartifact_0.2.0_linux_arm64.tar.gz
+	source_aarch64 = oa-0.2.0-aarch64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.2.0/oa_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a85124768b994c5a2883bc5667194dbf5a21915d643e50d30bb5a2923d371bee
+	sha256sums_aarch64 = 7ce447fe7339637e26370bd063ff37c7b955fd8d2d3683a19c733e7cddc2e983
+
+pkgname = openartifact-bin

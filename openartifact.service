@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenArtifact artifact repository manager
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=openartifact
+WorkingDirectory=/var/lib/openartifact
+ExecStart=/usr/bin/openartifact -config /etc/openartifact/openartifact.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
