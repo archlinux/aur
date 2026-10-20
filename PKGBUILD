@@ -1,4 +1,5 @@
 # Maintainer: tee < teeaur at duck dot com >
+# Co-maintainer: robertfoster
 pkgname=rayfish-bin
 pkgver=0.5.10
 pkgrel=1
