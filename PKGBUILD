@@ -1,36 +1,47 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-codetiming
-_pkg="${pkgname#python-}"
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Flexible, customizable timer for your Python code"
 license=('MIT')
 arch=('any')
 url='https://github.com/realpython/codetiming'
 depends=('python')
-makedepends=('python-flit-core' 'python-build' 'python-installer')
+makedepends=('git' 'python-flit-core' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('f8a4ed71042a571e9863022573b76036d3efed726f2bb99a3536e56c201da49c')
+source=('source::git+https://github.com/realpython/codetiming.git#commit=bb707ca838799c8308ff6679f647c35965132baf')
+sha256sums=('SKIP')
+
+prepare() {
+	cd source
+	# Flit 4 supports this metadata; retain the lower bound and dependency checks.
+	sed -i 's/flit_core >=3.2,<4/flit_core >=3.2,<5/' pyproject.toml
+}
 
 build() {
-	cd "$_pkg-$pkgver"
+	cd source
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	PYTHONPATH="$PWD" pytest -x
+	cd source
+	local _site
+	_site=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')
+	python -m installer --destdir="$srcdir/check-root" dist/*.whl
+	mkdir -p "$srcdir/test-run"
+	cp -a tests pyproject.toml "$srcdir/test-run/"
+	cd "$srcdir/test-run"
+	PYTHONPATH="$srcdir/check-root$_site" \
+		python -m pytest --import-mode=importlib -o addopts='' -q tests
 }
 
 package() {
-	cd "$_pkg-$pkgver"
+	cd source
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md AUTHORS.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
