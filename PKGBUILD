@@ -1,18 +1,18 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-git
-pkgver=0.3.1.r3.gc15f8ee
+pkgver=0.5.0.r0.g5c0160ee
 pkgrel=1
 pkgdesc="Pipette — Vial-compatible keyboard configurator (Git version)"
 arch=('x86_64')
 url="https://github.com/darakuneko/pipette-desktop"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=('pipette-desktop')
-conflicts=('pipette-desktop-bin')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'mesa')
-makedepends=('git' 'pnpm' 'python' 'make' 'gcc')
-options=('!strip')
+conflicts=('pipette-desktop-bin' 'pipette-desktop-keychron-bin' 'pipette-desktop-keychron-git')
+depends=('webkit2gtk-4.1' 'libsoup3' 'gtk3' 'glib2' 'cairo' 'gdk-pixbuf2' 'libayatana-appindicator' 'systemd-libs' 'dbus' 'hicolor-icon-theme')
+makedepends=('git' 'nodejs' 'corepack' 'cargo')
+options=('!lto')
 
-source=("git+https://github.com/darakuneko/pipette-desktop.git")
+source=("git+https://github.com/darakuneko/pipette-desktop.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,54 +21,48 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+# The repo pins its pnpm version (packageManager), which corepack provides;
+# the Tauri build calls `pnpm` itself, so a wrapper goes first on PATH. The
+# Rust toolchain is the system one (rustup follows src-tauri/rust-toolchain.toml).
+_env() {
+  export COREPACK_HOME="$srcdir/corepack"
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/build"
+  mkdir -p "$srcdir/bin"
+  printf '#!/bin/sh\nexec corepack pnpm "$@"\n' > "$srcdir/bin/pnpm"
+  chmod +x "$srcdir/bin/pnpm"
+  export PATH="$srcdir/bin:$PATH"
+}
+
 prepare() {
   cd "pipette-desktop"
-  rm -f pnpm-workspace.yaml
+  _env
   pnpm install --frozen-lockfile
 }
 
 build() {
   cd "pipette-desktop"
-  pnpm build
-  pnpm exec electron-builder --linux dir
+  _env
+  pnpm exec tauri build --no-bundle
 }
 
 package() {
   cd "pipette-desktop"
-  local _install_path="/opt/pipette-desktop"
-
-  install -dm755 "${pkgdir}${_install_path}"
-
-  local _unpacked_dir=$(find . -type d -name "linux-unpacked" | head -n 1)
-  cp -r --no-preserve=mode,ownership "${_unpacked_dir}/"* "${pkgdir}${_install_path}/"
-
-  chmod 4755 "${pkgdir}${_install_path}/chrome-sandbox"
-  chmod -R u=rwX,go=rX "${pkgdir}${_install_path}"
-
-  install -dm755 "$pkgdir/usr/bin"
-  cat >"$pkgdir/usr/bin/pipette-desktop" <<EOF
-#!/bin/sh
-export APPDIR="${_install_path}"
-exec "${_install_path}/pipette-desktop" "\$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/pipette-desktop"
+  install -Dm755 src-tauri/target/release/pipette "$pkgdir/usr/bin/pipette-desktop"
+  install -Dm644 scripts/99-vial.rules "$pkgdir/usr/lib/udev/rules.d/70-pipette-desktop.rules"
+  install -Dm644 build/icon.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/pipette-desktop.png"
 
   install -dm755 "$pkgdir/usr/share/applications"
   cat >"$pkgdir/usr/share/applications/pipette-desktop.desktop" <<EOF
 [Desktop Entry]
 Name=Pipette
-Exec=pipette-desktop --no-sandbox %U
+Exec=pipette-desktop %U
 Terminal=false
 Type=Application
 Icon=pipette-desktop
-StartupWMClass=Pipette
+StartupWMClass=pipette
 Comment=Vial-compatible keyboard configurator
 Categories=Utility;HardwareSettings;
 EOF
-
-  if [ -f "build/icon.png" ]; then
-    install -Dm644 "build/icon.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/pipette-desktop.png"
-    install -Dm644 "build/icon.png" "$pkgdir/usr/share/pixmaps/pipette-desktop.png"
-  fi
-  chmod +x "$pkgdir/opt/pipette-desktop/pipette-desktop"
 }
