@@ -10,7 +10,7 @@ url="https://droposs.org/"
 license=('AGPL-3.0-only')
 depends=('glib2' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'umu-launcher' 'libappindicator' 'libayatana-appindicator')
 makedepends=('pnpm' 'cargo-nightly' 'gcc' 'pkgconf')
-source=("git+https://github.com/Drop-OSS/drop.git#tag=v0.4.0-rc-6")
+source=("git+https://github.com/Drop-OSS/drop.git#tag=v0.4.0-test-flatpak-2")
 sha256sums=('SKIP')
 
 _desktop="

@@ -16,7 +16,7 @@ pkgbase = drop-oss-app
 	depends = umu-launcher
 	depends = libappindicator
 	depends = libayatana-appindicator
-	source = git+https://github.com/Drop-OSS/drop.git#tag=v0.4.0-rc-6
+	source = git+https://github.com/Drop-OSS/drop.git#tag=v0.4.0-test-flatpak-2
 	sha256sums = SKIP
 
 pkgname = drop-oss-app
