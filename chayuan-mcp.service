@@ -5,8 +5,12 @@ After=default.target
 [Service]
 Type=simple
 WorkingDirectory=%h
+Environment=CHAYUAN_MCP_DATA_DIR=%h/.config/chayuan-wps/mcp
+Environment=DISPLAY=:0
+
 ExecStartPre=/usr/bin/bash /opt/chayuan-wps-addon/arch-user-init.sh
 ExecStart=/usr/bin/bash -c 'cd %h/.config/chayuan-wps/mcp/runtime && exec ./start-mcp.sh'
+
 Restart=always
 RestartSec=3
 

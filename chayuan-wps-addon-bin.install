@@ -25,6 +25,6 @@ pre_remove() {
     echo -e " 如需彻底清理个人空间，用户可自行运行: "
     echo -e "   \e[1;31msystemctl --user daemon-reload\e[0m"
     echo -e "   \e[1;31mrm -rf ~/.config/chayuan-wps\e[0m"
-    echo -e "   \e[1;31mrm -rf ~/.local/share/Kingsoft/wps/jsaddons/chayuan_*\e[0m"
+    echo -e "   \e[1;31mrm -rf ~/.local/share/Kingsoft/wps/jsaddons/chayuan*\e[0m"
     echo -e "\e[1;33m======================================================================\e[0m"
 }
