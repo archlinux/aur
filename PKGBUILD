@@ -1,13 +1,13 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r611.3f8e17c
+pkgver=r822.8e34700
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('BSD-2-Clause')
-makedepends=(clang cmake git libc++ rust)
+makedepends=(clang cmake git jq libc++ rust)
 depends=(
 	gcc-libs
 	glibc
@@ -16,6 +16,7 @@ depends=(
 	mesa
 	opus
 	wayland
+	xorg-xwayland
 )
 provides=(moonshine)
 conflicts=(moonshine)
@@ -35,6 +36,8 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	cargo build --release --workspace
+	# ferriscope's WSI layer, from the ferriscope revision in Cargo.lock.
+	DESTDIR="$srcdir/wsi" dist/install-wsi.sh
 }
 
 package() {
@@ -47,6 +50,5 @@ package() {
 	install -Dm644 dist/moonshine-modules.conf "$pkgdir/usr/lib/modules-load.d/moonshine.conf"
 	install -Dm644 dist/50-moonshine-inhibit-sleep.rules "$pkgdir/usr/share/polkit-1/rules.d/50-moonshine-inhibit-sleep.rules"
 	install -Dm644 dist/moonshine-sysusers.conf "$pkgdir/usr/lib/sysusers.d/moonshine.conf"
-	install -Dm644 dist/VkLayer_moonshine_wsi.json "$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_moonshine_wsi.json"
-	install -Dm755 target/release/libmoonshine_wsi.so "$pkgdir/usr/lib/moonshine/vulkan-layers/libmoonshine_wsi.so"
+	cp -a "$srcdir/wsi/usr" "$pkgdir/"
 }
