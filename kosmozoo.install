@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> Start Kosmozoo with 'kosmozoo' (opens an app window in an installed browser),"
+  echo "==> or run the engine as a user service: systemctl --user enable --now kosmozoo-engine.service"
+}

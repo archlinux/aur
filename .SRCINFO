@@ -1,19 +1,24 @@
 pkgbase = kosmozoo
 	pkgdesc = Local review and curation app for ComfyUI image output
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/alexindigo/kosmozoo
+	install = kosmozoo.install
 	arch = x86_64
 	license = LGPL-3.0-only
 	makedepends = git
 	depends = deno
 	depends = sqlite
 	depends = hicolor-icon-theme
+	optdepends = chromium: app window
+	optdepends = google-chrome: app window
+	optdepends = brave-bin: app window
+	optdepends = firefox: app window
 	conflicts = kosmozoo-bin
 	conflicts = kosmozoo-git
-	source = kosmozoo-0.2.1.tar.gz::https://github.com/alexindigo/kosmozoo/archive/refs/tags/v0.2.1.tar.gz
+	source = kosmozoo-0.2.2.tar.gz::https://github.com/alexindigo/kosmozoo/archive/refs/tags/v0.2.2.tar.gz
 	source = kosmozoo.sh
-	sha256sums = 1de688a44da2e4709791b47f3a36657a50ced90d785b7b3ed84412ded1c97967
+	sha256sums = bcf48d68278de4108a3d266439d78971f6c74b20819b4ab512ee1a6a8aeb7ec3
 	sha256sums = d830038ed0bd18cd38b59e2d753a7389aaa926135818f48151d700976ba8d42e
 
 pkgname = kosmozoo
