@@ -2,7 +2,7 @@
 
 pkgname=shuck-bin
 pkgdesc='A lightning fast shell linter/formatter/LSP server'
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 url='https://ewhauser.github.io/shuck/'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!debug' '!strip')
 source_x86_64=("shuck-cli-v${pkgver}-x86_64-unknown-linux-gnu.tar.xz::https://github.com/ewhauser/shuck/releases/download/v${pkgver}/shuck-cli-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('b55fa946ed069b5b83bc17f5f2f3b264e0667c3e340c9baa19e3f72aae9da59c')
+sha256sums_x86_64=('3f12467bcebd198e2ec97a81cc6dd2bd10240dc81b7d1a976e51e2c1c943c930')
 
 package() {
   cd "${srcdir}/shuck-cli-x86_64-unknown-linux-gnu"
