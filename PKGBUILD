@@ -11,10 +11,11 @@ optdepends=('pacman-contrib: rankmirrors script')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 
-_appimage="plexo_${pkgver}-x86_64.AppImage"
+_upver='1.0.0-rc.15'
+_appimage="plexo-${_upver}-x86_64.AppImage"
 
-source=("https://github.com/anmolkapil/plexo/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('ac9a826b68837d49f65a13e76690f84fbf66785e839f1728f673fe1a3b9eb930')
+source=("https://github.com/anmolkapil/plexo/releases/download/v${_upver}/${_appimage}")
+sha256sums=('b90e9b3b852140f5031623fc85c6d6a2939b04da50b1127d51fd9880a57d275c')
 
 package() {
     install -Dm755 "${_appimage}" \
