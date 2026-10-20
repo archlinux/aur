@@ -1,6 +1,6 @@
 # Maintainer: Infinispan Team <aur@infinispan.org>
 pkgname=infinispan-cli-bin
-pkgver=16.3.0
+pkgver=16.3.1
 pkgrel=1
 pkgdesc='Command-line interface for Infinispan data grid'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('infinispan-cli')
 conflicts=('infinispan-cli')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/infinispan/infinispan/releases/download/${pkgver}/infinispan-cli-${pkgver}-linux-x86_64.zip")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/infinispan/infinispan/releases/download/${pkgver}/infinispan-cli-${pkgver}-linux-aarch_64.zip")
-sha256sums_x86_64=('3467cdc7470447dfc1ebe11197665d519ee7df766e8e57c786d755c82a02eecf')
-sha256sums_aarch64=('962f8a20e7c1845787a2f389c102e525b26e728f55e7199527837d2278671755')
+sha256sums_x86_64=('f6313dd97180e3dae706b20300bf041d96279fb41a408f3c6ff26f28c6e0b72e')
+sha256sums_aarch64=('cb6a92c794a2ee10f2926ae1a8260bd4a6f29741040dbb2563a47097ad16567d')
 
 package() {
   if [[ "$CARCH" == "x86_64" ]]; then
