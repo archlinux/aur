@@ -1,8 +1,8 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname='gcc17'
-pkgver='17.0.0.snapshot20261004'
-_snapshot='17-20261004'
+pkgver='17.0.0.snapshot20261011'
+_snapshot='17-20261011'
 pkgrel=1
 pkgdesc='GNU Compiler Collection 17 C/C++ development snapshot for parallel compiler validation'
 arch=('x86_64')
@@ -43,53 +43,17 @@ _libdir="usr/lib/gcc/${CHOST}/${pkgver%%.snapshot*}"
 source=(
 	"gcc-${_snapshot}.tar.xz::https://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.xz"
 	'check-memlock.py'
+	'known-testsuite-results.txt'
 )
 sha512sums=(
-	'0b033d6a618594bd70eb887e79affb9a7c77427438afdb3bd42286be4ad2231c2238d65c6e632e7e75d3869cd471185e49d4148455d7982b264b937539aae5d2'
+	'f097861da66891e3d802057f515fd56418eac7e061c4b9b2f301f457222ff58e6adf6f63e88ae9fb70563084771ab58165b7b0d4e47a0a9371df7b195b6955bd'
+	'SKIP'
 	'SKIP'
 )
 b2sums=(
 	'SKIP'
 	'bc20b249bc2aaf014832e3cb4f57e4d2b2be6b386ace28d561d4370587770ef667b0aa5063ac49bd5d222b2e1bbc81f3815e16906d5a02c7e3a661e98cae8b39'
-)
-
-_expected_failure_tests=(
-	# GCC PR testsuite/125766 and other known guality failures.
-	'gcc.dg/guality/loop-1.c'
-	'gcc.dg/guality/pr43051-1.c'
-	'gcc.dg/guality/pr43593.c'
-	'gcc.dg/guality/pr54519-1.c'
-	'gcc.dg/guality/pr54519-2.c'
-	'gcc.dg/guality/pr54519-3.c'
-	'gcc.dg/guality/pr54519-4.c'
-	'gcc.dg/guality/pr54519-5.c'
-	'gcc.dg/guality/pr54519-6.c'
-	'gcc.dg/guality/pr54693-2.c'
-	'gcc.dg/guality/pr54796.c'
-	'gcc.dg/guality/pr56154-1.c'
-	'gcc.dg/guality/pr59776.c'
-	'gcc.dg/guality/sra-1.c'
-	'gcc.dg/guality/vla-1.c'
-	'gcc.dg/guality/vla-2.c'
-	'g++.dg/guality/pr55665.C'
-	'g++.dg/guality/pr86687.C'
-
-	# GCC PR diagnostics/121876.
-	'gcc.dg/plugin/crash-test-nested-ice.c'
-	'gcc.dg/plugin/crash-test-nested-write-through-null.c'
-
-	# Known upstream x86_64 failures.
-	'c-c++-common/analyzer/omp-parallel-for-1.c'
-	'gcc.target/i386/pr115102.c'
-	'gcc.target/i386/xchg-4.c'
-	'gcc.dg/tree-ssa/ssa-sink-18.c'
-
-	# Reproduced by GCC's official 2026-10-06 x86_64-pc-linux-gnu results:
-	# https://gcc.gnu.org/pipermail/gcc-testresults/2026-October/888761.html
-	'g++.dg/tree-ssa/ssa-dse-1.C'
-
-	# Known libstdc++ pretty-printer failure on some test environments.
-	'libstdc++-prettyprinters/chrono.cc'
+	'88b4717391f775013da9af22c8da8152c16c2acd83e13d221bf3173d8b764fd272e3747cca3f6606967c45bc3efbf91eab61babe6eeb4fdb8423057b5ccb0c5a'
 )
 
 _insert_test_skip() {
@@ -126,7 +90,7 @@ _insert_test_additional_options() {
 }
 
 prepare() {
-	local _default_option_test _fixinc_count _has_include_error_line _libbacktrace_count _libbacktrace_file _multilib_count
+	local _default_option_test _fixinc_count _libbacktrace_count _libbacktrace_file _multilib_count
 	local _libbacktrace_assignment='strippedtest_LDFLAGS = $(libbacktrace_testing_ldflags) -static -Wl,-Bstatic'
 	local _default_pie_options='/* { dg-additional-options "-fno-pie -no-pie" } */'
 	local _default_pie_ssp_options='/* { dg-additional-options "-fno-pie -no-pie -fno-stack-protector" } */'
@@ -228,23 +192,6 @@ prepare() {
 		sed -i '/strippedtest_LDFLAGS = /s/$/ -no-pie/' "${_libbacktrace_file}" || return 1
 	done
 
-	# PR preprocessor/121508 can cause spurious test failures while
-	# builtin_has_include_1 returns immediately after diagnosing use outside a
-	# directive, leaving parser state uninitialized. Skip only while that exact
-	# buggy early-return shape is present. Once upstream removes the return, the
-	# test automatically runs again and becomes the verification of the fix.
-	# Proposed upstream fix:
-	# https://gcc.gnu.org/pipermail/gcc-patches/2026-September/733109.html
-	_has_include_error_line=$(grep -nF '"%qs used outside of preprocessing directive", name);' libcpp/macro.cc | cut -d: -f1)
-	if [[ ${_has_include_error_line} =~ ^[0-9]+$ ]] \
-		&& sed -n "$((_has_include_error_line + 1))p" libcpp/macro.cc | grep -qxF '      return NULL;'; then
-		_insert_test_skip \
-			'/* { dg-skip-if "spurious test failures; include after upstream patch is merged" { *-*-* } } */' \
-			gcc/testsuite/c-c++-common/cpp/has-include-1.c || return 1
-	else
-		printf 'PR preprocessor/121508 early-return marker absent; running has-include-1.c\n' >&2
-	fi
-
 	# This compiler intentionally enables default PIE and SSP. A small set of
 	# upstream tests assumes those defaults are off when checking exact assembly
 	# or stack layout. Adapt only those tests; a global TEST_ALWAYS_FLAGS override
@@ -271,6 +218,8 @@ prepare() {
 
 _build_gcc() {
 	local _file_prefix_map="-ffile-prefix-map=${srcdir}=/usr/src/debug/${pkgname}"
+	local _flag
+	local -a _cxxflags_parts _retained_cxxflags
 	local _confflags=(
 		'--prefix=/usr'
 		'--libdir=/usr/lib'
@@ -308,11 +257,21 @@ _build_gcc() {
 	cd -- "${srcdir}/gcc-build" || return 1
 
 	CFLAGS=${CFLAGS/-Werror=format-security/}
-	CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
-	# GCC runtimes such as libitm and libsanitizer deliberately add
-	# -fno-exceptions. A global -fexceptions appears later in their compile
-	# command and overrides that component-specific requirement.
-	CXXFLAGS=${CXXFLAGS/-fexceptions/}
+	# GCC runtimes such as libitm and libsanitizer deliberately use
+	# -fno-exceptions. Remove every exact -fexceptions token so a duplicate
+	# global flag cannot override their component-specific setting.
+	read -r -a _cxxflags_parts <<< "${CXXFLAGS}"
+	_retained_cxxflags=()
+	for _flag in "${_cxxflags_parts[@]}"; do
+		case ${_flag} in
+			'-Werror=format-security'|'-fexceptions')
+				;;
+			*)
+				_retained_cxxflags+=("${_flag}")
+				;;
+		esac
+	done
+	CXXFLAGS="${_retained_cxxflags[*]}"
 	CFLAGS+=" ${_file_prefix_map}"
 	CXXFLAGS+=" ${_file_prefix_map}"
 
@@ -337,7 +296,8 @@ build() {
 
 check() {
 	local _check_cflags _check_cxxflags _check_target_cflags _check_target_cxxflags
-	local _automake_log _entry _expected_test _known_failure _memlock_status _result _sum _symbols
+	local _automake_log _entry _memlock_status _result _sum _symbols
+	local _known_results="${srcdir}/known-testsuite-results.txt"
 	local _libbacktrace_summary='libbacktrace/test-suite.log'
 	local -a _automake_logs _suites _unexpected_results
 	local _memlock_skip='/* { dg-skip-if "mlock unavailable in test environment" { *-*-* } } */'
@@ -375,6 +335,15 @@ check() {
 	)
 
 	cd -- "${srcdir}/gcc-build" || return 1
+
+	if [[ ! -s "${_known_results}" ]]; then
+		printf 'Missing reviewed GCC testsuite baseline: %s\n' "${_known_results}" >&2
+		return 1
+	fi
+	if grep -nEv '^(#|FAIL:|XPASS:)' "${_known_results}"; then
+		printf 'Unexpected entry in GCC testsuite baseline\n' >&2
+		return 1
+	fi
 
 	# The pinned allocator tests require a working mlock syscall. Sandboxes such
 	# as makechrootpkg's systemd-nspawn can deny @memlock via seccomp even when
@@ -514,21 +483,22 @@ check() {
 			return 1
 		fi
 
+		# Compare the entire DejaGNU result, including flags and assertion.
+		# File-level exceptions would hide new failures in known test files.
 		while IFS= read -r _result; do
-			_known_failure=0
-			if [[ ${_result} == FAIL:* ]]; then
-				for _expected_test in "${_expected_failure_tests[@]}"; do
-					if [[ ${_result} == "FAIL: ${_expected_test}" || ${_result} == "FAIL: ${_expected_test}"[[:space:]]* ]]; then
-						_known_failure=1
-						printf 'Accepting known GCC testsuite failure: %s\n' "${_result}" >&2
-						break
+			case ${_result} in
+				FAIL:*|XPASS:*)
+					if grep -qxF -- "${_result}" "${_known_results}"; then
+						printf 'Accepting reviewed GCC testsuite result: %s\n' "${_result}" >&2
+					else
+						_unexpected_results+=("${_sum}: ${_result}")
 					fi
-				done
-			fi
-			if (( ! _known_failure )); then
-				_unexpected_results+=("${_sum}: ${_result}")
-			fi
-		done < <(grep -E '^(FAIL|ERROR|UNRESOLVED):' "${_sum}" || true)
+					;;
+				ERROR:*|UNRESOLVED:*)
+					_unexpected_results+=("${_sum}: ${_result}")
+					;;
+			esac
+		done < <(grep -E '^(FAIL|XPASS|ERROR|UNRESOLVED):' "${_sum}" || true)
 	done
 
 	if (( ${#_unexpected_results[@]} != 0 )); then

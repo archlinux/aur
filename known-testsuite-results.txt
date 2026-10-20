@@ -1,0 +1,131 @@
+# Observed GCC 17-20261011 test results from the verified Bragi clean-chroot run.
+# Exact DejaGNU result lines only; new FAIL/XPASS results require maintainer review.
+# No wildcard, regex, filename-prefix, ERROR or UNRESOLVED exemptions.
+FAIL: c-c++-common/analyzer/omp-parallel-for-1.c (test for excess errors)
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto -fno-use-linker-plugin -flto-partition=none  line 23 p == 40
+FAIL: g++.dg/guality/pr86687.C   -O1  line 16 dir_hint.p == 3
+FAIL: g++.dg/guality/pr86687.C   -O2  line 16 dir_hint.p == 3
+FAIL: g++.dg/guality/pr86687.C   -O2 -flto -fno-use-linker-plugin -flto-partition=none  line 16 dir_hint.p == 3
+FAIL: g++.dg/guality/pr86687.C   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  line 16 dir_hint.p == 3
+FAIL: g++.dg/guality/pr86687.C   -O3 -g  line 16 dir_hint.p == 3
+FAIL: g++.dg/guality/pr86687.C   -Os  line 16 dir_hint.p == 3
+FAIL: g++.dg/guality/pr86687.C  -Og  line 16 dir_hint.p == 3
+FAIL: g++.dg/tree-ssa/ssa-dse-1.C   scan-tree-dump-times dse1 "MEM <char\\[[0-9]+]> \\[\\(struct FixBuf \\*\\)&<retval> \\+ [0-9]+B\\] = {}" 1
+FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/pr43051-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 34 c == &a[0]
+FAIL: gcc.dg/guality/pr43051-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 39 c == &a[0]
+FAIL: gcc.dg/guality/pr43593.c   -O2  -DPREVENT_OPTIMIZATION  line 16 j == &i
+FAIL: gcc.dg/guality/pr43593.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 16 j == &i
+FAIL: gcc.dg/guality/pr43593.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 16 j == &i
+FAIL: gcc.dg/guality/pr43593.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 16 j == &i
+FAIL: gcc.dg/guality/pr43593.c   -Os  -DPREVENT_OPTIMIZATION  line 16 j == &i
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-6.c   -Os  -DPREVENT_OPTIMIZATION  line 11 x == 2
+FAIL: gcc.dg/guality/pr54693-2.c   -O2  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 21 y == 20 - 2 * i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 21 z == 30 - 3 * i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 17 c == 5
+FAIL: gcc.dg/guality/pr56154-1.c  -Og -DPREVENT_OPTIMIZATION  line pr56154-1.c:20 x.a == 6
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s2.f == 0.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/sra-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 43 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.j == 14
+FAIL: gcc.dg/guality/vla-1.c   -O2  -DPREVENT_OPTIMIZATION  line 24 sizeof (a) == 17 * sizeof (short)
+FAIL: gcc.dg/guality/vla-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 24 sizeof (a) == 17 * sizeof (short)
+FAIL: gcc.dg/guality/vla-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 24 sizeof (a) == 17 * sizeof (short)
+FAIL: gcc.dg/guality/vla-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 24 sizeof (a) == 17 * sizeof (short)
+FAIL: gcc.dg/guality/vla-1.c   -Os  -DPREVENT_OPTIMIZATION  line 24 sizeof (a) == 17 * sizeof (short)
+FAIL: gcc.dg/guality/vla-2.c   -O2  -DPREVENT_OPTIMIZATION  line 16 sizeof (a) == 5 * sizeof (int)
+FAIL: gcc.dg/guality/vla-2.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 16 sizeof (a) == 5 * sizeof (int)
+FAIL: gcc.dg/guality/vla-2.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 16 sizeof (a) == 5 * sizeof (int)
+FAIL: gcc.dg/guality/vla-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 16 sizeof (a) == 5 * sizeof (int)
+FAIL: gcc.dg/guality/vla-2.c   -Os  -DPREVENT_OPTIMIZATION  line 16 sizeof (a) == 5 * sizeof (int)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  dg-regexp 14 not found: "during GIMPLE pass: crash_test"
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c crash-test-nested-ice-html.py::test_results - xml.etree.ElementTree.ParseError: no element found: li..
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c crash-test-nested-ice-sarif.py::test_execution_failed - json.decoder.JSONDecodeError: Expecting value..
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c crash-test-nested-ice-sarif.py::test_notification - json.decoder.JSONDecodeError: Expecting value: li..
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  dg-regexp 14 not found: "during GIMPLE pass: crash_test"
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c crash-test-nested-write-through-null-html.py::test_results - xml.etree.ElementTree.ParseError: no element found: li..
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c crash-test-nested-write-through-null-sarif.py::test_execution_failed - json.decoder.JSONDecodeError: Expecting value..
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c crash-test-nested-write-through-null-sarif.py::test_notification - json.decoder.JSONDecodeError: Expecting value: li..
+FAIL: gcc.dg/tree-ssa/ssa-sink-18.c scan-tree-dump-times sink2 "Sunk statements: 5" 1
+FAIL: gcc.target/i386/pr115102.c scan-assembler bswaphisi2_lowpart
+FAIL: gcc.target/i386/xchg-4.c scan-assembler rolw
+FAIL: gcc.target/i386/xchg-4.c scan-assembler-not mov
+FAIL: libstdc++-prettyprinters/chrono.cc -flto print hms
+FAIL: libstdc++-prettyprinters/chrono.cc -flto print hms_nano
+FAIL: libstdc++-prettyprinters/chrono.cc print hms
+FAIL: libstdc++-prettyprinters/chrono.cc print hms_nano
+XPASS: gcc.dg/guality/example.c   -O0  execution test
+XPASS: gcc.dg/guality/example.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/example.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O0  execution test
+XPASS: gcc.dg/guality/guality.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/pr41353-1.c   -O1  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -Os  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c  -Og -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (internal compiler error)
+XPASS: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (internal compiler error)
+XPASS: gcc.target/i386/pr89618-2.c scan-tree-dump vect "loop vectorized using 16 byte vectors"
