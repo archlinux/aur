@@ -1,7 +1,7 @@
 pkgbase = nono-ai
 	pkgdesc = Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock
 	pkgver = 0.80.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nolabs-ai/nono
 	arch = x86_64
 	arch = aarch64
