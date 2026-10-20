@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=amber-git
-pkgver=1.7.10.r11.g2f8329f93
+pkgver=1.7.10.r199.gb7012c196
 pkgrel=1
 pkgdesc='Amber Video Editor — free open-source non-linear video editor (Qt 6, FFmpeg, Qt RHI: Vulkan/Metal/D3D/OpenGL)'
 arch=('any')
@@ -71,6 +71,11 @@ build() {
         -DQT_NO_PRIVATE_MODULE_WARNING=ON
 
     cmake --build build --parallel "$(nproc)"
+}
+
+check() {
+    cd ${pkgname%-*}/src
+    ctest --test-dir build --output-on-failure
 }
 
 package(){
