@@ -1,0 +1,20 @@
+pkgbase = tailbridge-git
+	pkgdesc = Expose individual devices across a LAN and a Tailscale tailnet (IPv4 aliases, NAT and per-device /32 routes)
+	pkgver = r20.a0617d9
+	pkgrel = 1
+	url = https://github.com/jamezrin/tailbridge
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = nftables
+	depends = tailscale
+	provides = tailbridge
+	conflicts = tailbridge
+	source = tailbridge::git+https://github.com/jamezrin/tailbridge.git
+	sha256sums = SKIP
+
+pkgname = tailbridge-git
