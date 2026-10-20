@@ -1,7 +1,7 @@
 pkgbase = deepseek-harness-eac-bin
 	pkgdesc = DeepSeek Harness EAC - desktop workbench for DSH plugins (upstream Debian build)
 	pkgver = 5.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ebony-Vinyl/EAC-Desktop
 	arch = x86_64
 	license = MIT
