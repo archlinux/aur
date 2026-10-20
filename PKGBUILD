@@ -2,7 +2,7 @@
 pkgname=smartsub-git
 _pkgname=SmartSub
 _zhsname='妙幕'
-pkgver=3.9.0.r0.ga2b164b
+pkgver=3.10.1.r19.gc13bdbd
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -24,7 +24,6 @@ makedepends=(
     'npm'
     'nvm'
     'git'
-    'curl'
     'yarn'
     'jq'
 )
@@ -33,59 +32,36 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-pkgver() {
-    cd "${srcdir}/${pkgname%-git}.git"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
 		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
+pkgver() {
+	cd "$(_get_project_dir)"
+	set -o pipefail
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+_ensure_local_nvm() {
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
+}
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+		| grep -oE '[0-9]+' | head -1)
 	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
-}
-_set_build_env() {
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	local HOME="${srcdir}/.electron-gyp"
-    local electronDist="/usr/lib/electron${_electronversion}"
-	mkdir -p "${srcdir}/.electron-gyp"
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export YARN_REGISTRY="https://registry.npmmirror.com"
-			export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-			export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-			export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
-			export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
-			export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-			export YARN_USE_HARDLINKS=true
-			# export YARN_BUILD_FROM_SOURCE=true
-			export YARN_LINK_WORKSPACE_PACKAGES=true
-			export YARN_FETCH_RETRIES=3
-			export YARN_FETCH_RETRY_TIMEOUT=10000
-			export YARN_NETWORK_CONCURRENCY=32
-		}
-		find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-	fi
-}
-_ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -103,7 +79,7 @@ _set_build_env() {
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
 	local _yarnver _yarnmajor=0
-	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
+	_yarnver="$(node -p "try { require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || '' } catch { '' }" 2>/dev/null || true)"
 	_yarnmajor="${_yarnver%%.*}"
 	_yarnmajor="${_yarnmajor:-0}"
 	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
@@ -118,7 +94,12 @@ _set_build_env() {
 		export YARN_HTTP_TIMEOUT=600000
 		export YARN_HTTP_RETRY=5
 		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}"
+		local _yarnhome="${HOME}/.yarn/install"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}" "${_yarnhome}"
+		if [[ -n "${_yarnver}" ]]; then
+			npm install -g "@yarnpkg/cli-dist@${_yarnver}" --prefix "${_yarnhome}" --registry "${npm_config_registry}"
+			export PATH="${_yarnhome}/bin:${PATH}"
+		fi
 	else
 		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
 		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
@@ -131,6 +112,7 @@ _set_build_env() {
 		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
 	fi
 	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
+	export YARN_REGISTRY="${_reg}"
 	_reg="${_reg%/}"
 	if [[ -f .yarnrc ]]; then
 		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
@@ -144,8 +126,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-git}.sh"
     _get_electron_version
     gendesk -q -f -n \
@@ -155,12 +135,14 @@ prepare() {
         --name="${_pkgname}" \
         --custom=Name[zh_CN]="${_zhsname}" \
         --exec="${pkgname%-git} %U"
-    _set_build_env
     _ensure_local_nvm
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+	_set_build_env
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     find main -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=development    yarn sherpa:fetch
+	find ./ -type f \( -name "package-lock.json" -o -name "yarn.lock" \) -exec rm -rf {} +
+    export NODE_ENV=development
+	yarn install
+    yarn sherpa:fetch
     curl -L -o "${srcdir}/addon-linux-x64.node" \
         "https://github.com/buxuku/whisper.cpp/releases/download/latest/addon-linux-x64.node"
     curl -L -o "${srcdir}/addon-linux-vulkan.node.gz" \
@@ -171,21 +153,18 @@ prepare() {
 }
 build() {
     cd "$(_get_project_dir)"
-    _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config=electron-builder.yml
-    local _app_dir=$(_get_app_dir)
-    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
-    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
+	_set_build_env
+    export NODE_ENV=production
+	yarn run build
+    yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config=electron-builder.yml
+    ln -sf "/usr/bin/ffmpeg" "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
 }
 package() {
-    local _src="$(_get_project_dir)"
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_src}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
