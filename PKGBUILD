@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ordoñez <guitaripod@gmail.com>
 pkgname=tailscode
-pkgver=1.78
+pkgver=1.79
 pkgrel=1
 pkgdesc="Coding agents over Tailscale — a GTK4 client for Claude Code and opencode"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 # terminal, video and browser slots need are real runtime dependencies of the binary this package
 # produces rather than optdepends: the loader resolves them before main and the app never starts
 # without them.
-depends=('gtk4' 'libadwaita' 'glib2' 'gdk-pixbuf2' 'libepoxy' 'vte4' 'mpv' 'webkitgtk-6.0'
+depends=('gtk4' 'libadwaita' 'glib2' 'gdk-pixbuf2' 'libepoxy' 'vte4' 'mpv' 'webkitgtk-6.0' 'libpulse'
          'curl')
 # swift-bin is the AUR toolchain; a swiftly install on PATH satisfies this too.
 makedepends=('swift-bin' 'git')
