@@ -1,9 +1,9 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 # Contributor: Felix Häcker <haeckerfelix@gnome.org>
 pkgname=shortwave-mpris-bin
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
-pkgdesc="Internet radio player with extended MPRIS support, device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams"
+pkgdesc="Internet radio player with tray icon, media casting and MPRIS integration. Device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ixnewton/Shortwave-MPRIS"
 license=('GPL3')
@@ -29,8 +29,8 @@ provides=('shortwave' 'shortwave-mpris')
 conflicts=('shortwave' 'shortwave-mpris' 'shortwave-mpris-git')
 options=('!lto')
 install=shortwave-mpris-bin.install
-source=("https://github.com/ixnewton/Shortwave-MPRIS/releases/download/v5.1.0/shortwave-mpris-5.1.0-linux-amd64.tar.gz")
-sha256sums=('c3e7a957cd3c023e354307c2ec531744f4d8beecd46d90d8550a1c32ab90f597')
+source=("https://github.com/ixnewton/Shortwave-MPRIS/releases/download/v5.2.0/shortwave-mpris-5.2.0-linux-amd64.tar.gz")
+sha256sums=('7d5963773e334a775e904384620be8e15deb4954c904f330904b238dafa716da')
 
 package() {
   # Install the binary

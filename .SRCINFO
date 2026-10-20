@@ -1,6 +1,6 @@
 pkgbase = shortwave-mpris-bin
-	pkgdesc = Internet radio player with extended MPRIS support, device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams
-	pkgver = 5.1.0
+	pkgdesc = Internet radio player with tray icon, media casting and MPRIS integration. Device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/ixnewton/Shortwave-MPRIS
 	install = shortwave-mpris-bin.install
@@ -29,7 +29,7 @@ pkgbase = shortwave-mpris-bin
 	conflicts = shortwave-mpris
 	conflicts = shortwave-mpris-git
 	options = !lto
-	source = https://github.com/ixnewton/Shortwave-MPRIS/releases/download/v5.1.0/shortwave-mpris-5.1.0-linux-amd64.tar.gz
-	sha256sums = c3e7a957cd3c023e354307c2ec531744f4d8beecd46d90d8550a1c32ab90f597
+	source = https://github.com/ixnewton/Shortwave-MPRIS/releases/download/v5.2.0/shortwave-mpris-5.2.0-linux-amd64.tar.gz
+	sha256sums = 7d5963773e334a775e904384620be8e15deb4954c904f330904b238dafa716da
 
 pkgname = shortwave-mpris-bin
