@@ -1,10 +1,10 @@
-# Maintainer: fibsussy <fibsussy@tuta.io>
+# Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=crosshair-maker
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Crosshair overlay creator with SVG rendering and preview"
 arch=('x86_64' 'aarch64')
-url="https://github.com/fibsussy/crosshair-maker"
+url="https://github.com/noahlyk/crosshair-maker"
 license=('GPL-3.0-only')
 depends=('libx11' 'libxcb' 'wayland' 'libxkbcommon' 'vulkan-icd-loader')
 makedepends=()
@@ -19,11 +19,11 @@ elif [ "$_arch" = "aarch64" ]; then
 fi
 
 source=(
-    "https://github.com/fibsussy/crosshair-maker/releases/download/v${pkgver}/crosshair-maker-${pkgver}-${_arch}.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/LICENSE"
-    "crosshair-maker.desktop::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/assets/crosshair-maker.desktop"
-    "crosshair-maker.png::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/assets/crosshair-maker.png"
-    "crosshair-maker.install::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/crosshair-maker.install"
+    "https://github.com/noahlyk/crosshair-maker/releases/download/v${pkgver}/crosshair-maker-${pkgver}-${_arch}.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/noahlyk/crosshair-maker/v${pkgver}/LICENSE"
+    "crosshair-maker.desktop::https://raw.githubusercontent.com/noahlyk/crosshair-maker/v${pkgver}/assets/crosshair-maker.desktop"
+    "crosshair-maker.png::https://raw.githubusercontent.com/noahlyk/crosshair-maker/v${pkgver}/assets/crosshair-maker.png"
+    "crosshair-maker.install::https://raw.githubusercontent.com/noahlyk/crosshair-maker/v${pkgver}/crosshair-maker.install"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
