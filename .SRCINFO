@@ -1,6 +1,6 @@
 pkgbase = kytyps5-nightly-bin
 	pkgdesc = PlayStation 5 emulator (upstream nightly binary release)
-	pkgver = 2026.10.19.e5f0ee7
+	pkgver = 2026.10.20.f492027
 	pkgrel = 1
 	url = https://github.com/KytyPS5/KytyPS5
 	arch = x86_64
@@ -48,15 +48,15 @@ pkgbase = kytyps5-nightly-bin
 	optdepends = konsole: show emulator output in a terminal window
 	optdepends = kitty: show emulator output in a terminal window
 	optdepends = xterm: show emulator output in a terminal window
-	provides = kytyps5=2026.10.19.e5f0ee7
+	provides = kytyps5=2026.10.20.f492027
 	conflicts = kytyps5
 	options = !strip
 	options = !debug
-	source = kytyps5-nightly-bin-2026.10.19.e5f0ee7.tar.gz::https://github.com/KytyPS5/KytyPS5/releases/download/KytyPS5-2026-10-19-e5f0ee7/KytyPS5-2026-10-19-e5f0ee7-Linux-x86_64.tar.gz
-	source = LICENSE-2026.10.19.e5f0ee7::https://raw.githubusercontent.com/KytyPS5/KytyPS5/e5f0ee7fc2fb4ce88c6abb2fa02296404e2fe2a6/LICENSE
-	source = Kyty-MIT-2026.10.19.e5f0ee7.txt::https://raw.githubusercontent.com/KytyPS5/KytyPS5/e5f0ee7fc2fb4ce88c6abb2fa02296404e2fe2a6/LICENSES/Kyty-MIT.txt
+	source = kytyps5-nightly-bin-2026.10.20.f492027.tar.gz::https://github.com/KytyPS5/KytyPS5/releases/download/KytyPS5-2026-10-20-f492027/KytyPS5-2026-10-20-f492027-Linux-x86_64.tar.gz
+	source = LICENSE-2026.10.20.f492027::https://raw.githubusercontent.com/KytyPS5/KytyPS5/f492027be26db4222eb7cf19eea5536dab2e5f9d/LICENSE
+	source = Kyty-MIT-2026.10.20.f492027.txt::https://raw.githubusercontent.com/KytyPS5/KytyPS5/f492027be26db4222eb7cf19eea5536dab2e5f9d/LICENSES/Kyty-MIT.txt
 	source = kytyps5.desktop
-	sha256sums = c18c6b1c281ee5f3fc31b4aae84b4eebcb41889ec2a3ca0ecc35bf0779f04064
+	sha256sums = f7fcc09ca915e231a54ec7cfdd0181bdf54d1f4a068d468c6378c66bdfc923bb
 	sha256sums = f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505
 	sha256sums = 1bbcea0e75b3ac77b4711a12eefa3a3b7dfea43528fc0730af3178ba5cd55396
 	sha256sums = 8eeeacccbbbb858724dbaf5e40a25f0718aa2a7ab75937b3da2652cb16e85103
