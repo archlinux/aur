@@ -1,17 +1,17 @@
 pkgbase = icecat-bin
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 153.5.0
+	pkgver = 153.5.1
 	pkgrel = 1
 	url = https://codeberg.org/jessienab/icecat-bin
 	arch = x86_64
 	license = MPL-2.0
 	provides = icecat
 	conflicts = icecat
-	noextract = https://codeberg.org/jessienab/icecat-bin/releases/download/153.5.0//icecat-153.5.0.en-US.linux-x86_64.tar.xz
+	noextract = https://codeberg.org/jessienab/icecat-bin/releases/download/153.5.1//icecat-153.5.1.en-US.linux-x86_64.tar.xz
 	options = !strip
 	options = !debug
-	source = https://codeberg.org/jessienab/icecat-bin/releases/download/153.5.0//icecat-153.5.0.en-US.linux-x86_64.tar.xz
-	sha256sums = 22767047cffa46e6e924e608a181256c1311a27383d27d4ac41251feb2d59873
+	source = https://codeberg.org/jessienab/icecat-bin/releases/download/153.5.1//icecat-153.5.1.en-US.linux-x86_64.tar.xz
+	sha256sums = e4fa39e0b61e9f110706b1a0438dd9467803f97dc441011dacac45ad5aaabe0c
 
 pkgname = icecat-bin
 	depends = alsa-lib
