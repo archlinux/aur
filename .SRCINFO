@@ -1,6 +1,6 @@
 pkgbase = ears-llm-bin
 	pkgdesc = OpenAI-compatible transcript clean-up server for ears, backed by llama.cpp
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/dvjn/ears
 	install = ears-llm-bin.install
@@ -15,7 +15,7 @@ pkgbase = ears-llm-bin
 	provides = ears-llm
 	conflicts = ears-llm
 	options = !debug
-	source = https://github.com/dvjn/ears/releases/download/v0.2.0/ears-llm-0.2.0-x86_64.tar.gz
-	sha256sums = 8a8496d6c4ec417d3030791cefe9734027504acc9ff678f990ea1652ee8b429c
+	source = https://github.com/dvjn/ears/releases/download/v0.2.1/ears-llm-0.2.1-x86_64.tar.gz
+	sha256sums = 1abe1d0a2c06b0f50d32a1c7ace0389654bec34badc473d8fa316489e1c90d11
 
 pkgname = ears-llm-bin
