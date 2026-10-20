@@ -2,7 +2,7 @@
 # Contributor: falkTX <falktx@falktx.com>
 
 pkgname=clara-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety - binary release)"
 arch=('x86_64')
