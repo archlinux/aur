@@ -3,7 +3,7 @@
 
 pkgname=include-what-you-use
 pkgver=0.27
-pkgrel=1
+pkgrel=2
 _clang_major=23
 _clang_minor=1
 _clang_ver="${_clang_major}.${_clang_minor}"
@@ -15,8 +15,8 @@ sha512sums=('82c04eaee610488a266938ef050fc169c66ac7624a12ec40afbfbeabcd7aedcf138
 arch=('x86_64')
 _min="${_clang_ver}"
 _max=$((_clang_major + 1)).0
-depends=("clang>=${_min}" "clang<${_max}" python3 gcc-libs glibc llvm-libs)
-makedepends=("cmake" "llvm>=${_min}" "llvm<${_max}" "ninja")
+depends=("clang-libs>=${_min}" "clang-libs<${_max}" python3 libstdc++ glibc llvm-libs)
+makedepends=("cmake" "clang>=${_min}" "clang<${_max}" "llvm>=${_min}" "llvm<${_max}" "ninja")
 install=iwyu.install
 
 build() {
