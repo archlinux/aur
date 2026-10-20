@@ -1,0 +1,4 @@
+[aaphoto]
+source = "git"
+git = "https://github.com/log69/aaphoto.git"
+prefix = "v"
