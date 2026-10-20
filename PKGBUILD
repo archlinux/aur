@@ -1,7 +1,7 @@
 # Maintainer: <b.j.corrigan@gmail.com>
 
 pkgname=mime-tui
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Keyboard-driven terminal UI for managing MIME-type to application associations'
 arch=('x86_64' 'aarch64')
