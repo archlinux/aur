@@ -1,12 +1,12 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 pkgname=codexbar-cli
-pkgver=0.77.0
+pkgver=0.78.0
 pkgrel=1
 pkgdesc='AI coding provider usage tracker CLI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/steipete/CodexBar'
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'curl' 'sqlite')
+depends=('glibc' 'gcc-libs' 'curl' 'sqlite' 'libxml2-legacy')
 # Prebuilt upstream binary: stripping it yields a broken debug package
 options=('!strip' '!debug')
 
@@ -18,8 +18,8 @@ source_x86_64=("CodexBarCLI-v${pkgver}-linux-x86_64.tar.gz::https://github.com/s
 source_aarch64=("CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v${pkgver}/CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz")
 
 sha256sums=('14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe')
-sha256sums_x86_64=('a9c30b8b56ec2fc8526b63ba472f31989605c7e01c2c65ac95b4abf20b7e54d4')
-sha256sums_aarch64=('8c8708e18a27223aa4fa0abe7b0d3b88400355c45c89a6d7b6c7109bc54dfdf3')
+sha256sums_x86_64=('13a331f917a1bf60a26089b59d902087ad650d84797a654d52139429adc80f2d')
+sha256sums_aarch64=('90c62ab55a4c7c1b5e940c5b87c959f9564e57568513d2f6ff2856306c32e0f9')
 package() {
     # Binary crashes when argv[0] has no directory component (Swift Foundation
     # bug: uses argv[0] to resolve its own path for resource lookup).
