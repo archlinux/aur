@@ -1,9 +1,10 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-ai-dynamo-runtime
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
-_commit=b83b1d9304ebfc624709ac46db32b1b6f1ff1615
+_commit=2093662a4d4e5fd318732935213dde08dc7be818
+_kernel_commit=b83b1d9304ebfc624709ac46db32b1b6f1ff1615
 pkgdesc='NVIDIA Dynamo inference framework runtime (Rust/pyo3 core)'
 arch=('x86_64')
 url='https://github.com/ai-dynamo/dynamo'
@@ -16,7 +17,7 @@ options=('!lto')
 depends=(
   'python'
   'python-pydantic>=2.10.6'
-  'python-pydantic<2.14'
+  'python-pydantic<2.15'
   'python-uvloop>=0.21.0'
   'nixl'
   'openucx'
@@ -77,10 +78,12 @@ checkdepends=(
 )
 source=(
   "git+https://github.com/ai-dynamo/dynamo.git#commit=${_commit}"
+  "vectorized_copy-${_kernel_commit}.fatbin::https://raw.githubusercontent.com/ai-dynamo/dynamo/${_kernel_commit}/lib/llm/src/block_manager/block/transfer/kernels/vectorized_copy.fatbin"
   'python314-test-cleanup.patch'
 )
 sha256sums=(
   'SKIP'
+  'b2119000573efab28d15b7fddd9a48816ad545e199ec821e9092dd0bd69c1508'
   '25350951a0d4d333243087226ba944af2ff4e31dc5d68bb7cc6a1deab3c432ec'
 )
 
@@ -88,6 +91,11 @@ pkgver() { echo "$pkgver"; }
 
 prepare() {
   cd dynamo
+  # Preserve the single approved binary from its original, explicitly pinned
+  # source revision. Reject any change to the copy bundled by this release.
+  local kernel=lib/llm/src/block_manager/block/transfer/kernels/vectorized_copy.fatbin
+  cmp "$kernel" "$srcdir/vectorized_copy-${_kernel_commit}.fatbin"
+  install -m644 "$srcdir/vectorized_copy-${_kernel_commit}.fatbin" "$kernel"
   # 1.4.2 replaced the eager generator adapter with a demand-driven stream.
   # Drop the obsolete Rust/cancellation-test patch and keep resource cleanup.
   patch -Np1 --fuzz=0 -i "$srcdir/python314-test-cleanup.patch"
@@ -96,11 +104,10 @@ prepare() {
   # maturin's build-requires lists the pip 'patchelf'; Arch provides the binary
   # (makedepends), so drop it so the --no-isolation build-dep check passes.
   sed -i 's/, "patchelf"//' pyproject.toml
-  # Upstream's <=2.13 excludes bug-fix releases such as Arch's 2.13.4.
-  # Preserve the intended 2.13-series ceiling while accepting patch releases.
-  sed -i 's/pydantic>=2\.10\.6,<=2\.13/pydantic>=2.10.6,<2.14/' pyproject.toml
+  # Trial Arch's Pydantic 2.14 with the retained binding and runtime suites.
+  sed -i 's/pydantic>=2\.10\.6,<=2\.13/pydantic>=2.10.6,<2.15/' pyproject.toml
   # Match the feature set used by upstream's production runtime wheel.  Cargo
-  # defaults to an intentionally lean library build. Match the common 1.5.0
+  # defaults to an intentionally lean library build. Match the common 1.5.1
   # production flags in container/templates/wheel_builder.Dockerfile, including
   # the renamed mm-routing feature and the slot/selection/AIC services.
   python - <<'PY'
