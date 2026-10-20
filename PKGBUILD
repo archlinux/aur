@@ -1,6 +1,6 @@
 # Maintainer: Shorin <shorin@example.com>
 pkgname=linuxqq-wayland-fix
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 pkgdesc="修复 Linux QQ 在 Wayland 下的屏幕共享、共享电脑声音、剪贴板和截图问题"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ options=('!debug')
 optdepends=('xdg-desktop-portal: 屏幕录制（需要合成器对应的后端）')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SHORiN-KiWATA/linuxqq-wayland-fix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('45dd5d3a14b14d3636e85af2ef11a976c681e8d8b0cf3ebfa40576f30ec40111')
+sha256sums=('5004b815f3acea6774b4ab0e7e9366da5bc01181d740cb2eb2a4f0480f62a708')
 
 build() {
     cd "$pkgname-$pkgver"
