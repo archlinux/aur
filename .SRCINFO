@@ -1,0 +1,11 @@
+pkgbase = brygge-bin
+	pkgdesc = A placeholder package for brygge-bin
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/prikk-vcs/brygge
+	arch = x86_64
+	license = Apache-2.0
+	source = brygge-bin-0.0.0.tar.gz::https://github.com/prikk-vcs/brygge/archive/refs/tags/0.0.0.tar.gz
+	sha256sums = DUMMY-FOR-INITIALIZATION
+
+pkgname = brygge-bin
