@@ -1,6 +1,7 @@
 /src/
 /pkg/
 /nautilus/
+/libgxdp/
 /libgd/
 *.pkg.tar
 *.pkg.tar.xz
