@@ -1,6 +1,6 @@
 pkgbase = sparkle-rolling-bin
 	pkgdesc = Another Mihomo GUI (rolling binary release)
-	pkgver = 1.26.10.r1333.3defc86
+	pkgver = 1.26.10.r1334.f6e6df1
 	pkgrel = 1
 	url = https://github.com/xishang0128/sparkle
 	install = sparkle.install
@@ -31,7 +31,7 @@ pkgbase = sparkle-rolling-bin
 	depends = nss
 	depends = pango
 	depends = systemd-libs
-	provides = sparkle=1.26.10.r1333.3defc86
+	provides = sparkle=1.26.10.r1334.f6e6df1
 	conflicts = sparkle
 	conflicts = sparkle-bin
 	conflicts = sparkle-git
@@ -41,9 +41,9 @@ pkgbase = sparkle-rolling-bin
 	options = !debug
 	source = sparkle.sh
 	sha256sums = 68c3b948301007f29e4f0db9b1b413766c2bcacf7eaf5305c7e7b83f547df3b5
-	source_x86_64 = sparkle-1.26.10-rolling-3defc86-x86_64.deb::https://github.com/xishang0128/sparkle/releases/download/rolling/sparkle-linux-1.26.10-rolling-3defc86-amd64.deb
-	sha256sums_x86_64 = 684e37f6bc9d14fd7d6f9a54956c4cfe814c1b47b1c84becb0116722966d24ee
-	source_aarch64 = sparkle-1.26.10-rolling-3defc86-aarch64.deb::https://github.com/xishang0128/sparkle/releases/download/rolling/sparkle-linux-1.26.10-rolling-3defc86-arm64.deb
-	sha256sums_aarch64 = 0a9ea7c3bda19e433c820ab1da3cc98b550c821a7930f9f4cbcbb9b0dd091888
+	source_x86_64 = sparkle-1.26.10-rolling-f6e6df1-x86_64.deb::https://github.com/xishang0128/sparkle/releases/download/rolling/sparkle-linux-1.26.10-rolling-f6e6df1-amd64.deb
+	sha256sums_x86_64 = bb555c760528eb98143f13c4a0df8fa14dcc42c4af622249f345b202f5abb92c
+	source_aarch64 = sparkle-1.26.10-rolling-f6e6df1-aarch64.deb::https://github.com/xishang0128/sparkle/releases/download/rolling/sparkle-linux-1.26.10-rolling-f6e6df1-arm64.deb
+	sha256sums_aarch64 = f7d24b7c700ce56bd9dde07dfb2dbbe29ac44b75602647be94fc268d1a6501ef
 
 pkgname = sparkle-rolling-bin
