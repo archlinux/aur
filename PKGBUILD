@@ -1,6 +1,6 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-keychron-git
-pkgver=0.5.9.r6.ge2b44217
+pkgver=0.5.9.r9.ga5d83447
 pkgrel=1
 pkgdesc="Pipette — Vial-compatible keyboard configurator (Git version). Keychron fork"
 arch=('x86_64')
@@ -8,10 +8,10 @@ url="https://github.com/tymon3310/pipette-desktop"
 license=('GPL-3.0-or-later')
 provides=('pipette-desktop')
 conflicts=('pipette-desktop-bin' 'pipette-desktop-keychron-bin' 'pipette-desktop-git')
-depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'systemd-libs' 'dbus')
+depends=('webkit2gtk-4.1' 'libsoup3' 'gtk3' 'glib2' 'cairo' 'gdk-pixbuf2' 'libayatana-appindicator' 'systemd-libs' 'dbus' 'hicolor-icon-theme')
 optdepends=('dfu-util: flash Keychron firmware')
 makedepends=('git' 'nodejs' 'corepack' 'cargo')
-options=('!strip' '!lto')
+options=('!lto')
 
 source=("git+https://github.com/tymon3310/pipette-desktop.git#branch=vial-keychron")
 sha256sums=('SKIP')
