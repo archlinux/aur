@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=NGLVieweR
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Interactive 3D Visualization of Molecular Structures'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ea34e4d6a5ae9ef5ef5eb0471c0a624c9425194408214bee237750db16e4c0c')
+sha256sums=('69d675108f7c04f2ff6bdaa7c6f3649abfeba33d0c099d419f02777e1bcc5aee')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
