@@ -1,6 +1,6 @@
 pkgbase = isai-studio-pro-git
 	pkgdesc = An unofficial, native, cross-platform Proton Mail desktop client written in Rust
-	pkgver = 0.0.1.r13.1ecaeb9
+	pkgver = 0.0.1.r28.eeb7666
 	pkgrel = 1
 	url = https://github.com/DhineshKrishnan1206/isai-studio-pro
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = isai-studio-pro-git
 	makedepends = clang
 	makedepends = lld
 	makedepends = imagemagick
+	makedepends = oxipng
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = libxcb

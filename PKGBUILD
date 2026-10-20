@@ -3,14 +3,14 @@
 execname=isai
 
 pkgname=isai-studio-pro-git
-pkgver=0.0.1.r13.1ecaeb9
+pkgver=0.0.1.r28.eeb7666
 pkgrel=1
 pkgdesc="An unofficial, native, cross-platform Proton Mail desktop client written in Rust"
 arch=('any')
 url="https://github.com/DhineshKrishnan1206/isai-studio-pro"
 license=('GPL-3.0')
 depends=(qt6-base qt6-declarative libxcb alsa-lib)
-makedepends=('git' 'rust' 'cargo' 'clang' 'lld' 'imagemagick')
+makedepends=('git' 'rust' 'cargo' 'clang' 'lld' 'imagemagick' 'oxipng')
 source=("git+$url.git" "$execname.desktop")
 b2sums=('SKIP'
         '9eb0f5158c9aae2b8480c3eab0e9ec7fe7d6cb6406f1bc269c14da2e05193fc70e7bf6d567fdcccd207132f986b5ea419b211b2dde5944c9b25d85f8b306a305')
@@ -68,6 +68,11 @@ build() {
     "
 
     cargo build --release || printf "\x1b[38;2;213;0;50mYou might need to update your system's LLVM and Rust version to match:\nsudo pacman -Syu cargo rustup llvm clang && rustup update\x1b[0m\n"
+}
+
+check() {
+  cd "${pkgname%-*}"
+  cargo test
 }
 
 package() {
