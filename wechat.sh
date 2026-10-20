@@ -104,6 +104,11 @@ EOF
         --ro-bind "${PORTAL_OPEN_WRAPPER}" /usr/bin/xdg-open
         --unshare-pid
     )
+    # Pass X11 authority cookie when stored under /tmp (e.g., SDDM X11 uses /tmp/xauth_XXXXXX),
+    # which would otherwise be hidden by --tmpfs /tmp above.
+    if [[ -n "${XAUTHORITY}" && -f "${XAUTHORITY}" ]]; then
+        BWRAP_ARGS+=(--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}")
+    fi
     for dev_node in /dev/video*; do
         [[ -e "$dev_node" ]] && BWRAP_ARGS+=(--dev-bind "$dev_node" "$dev_node")
     done
