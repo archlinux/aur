@@ -1,6 +1,6 @@
 pkgbase = lyapunov
 	pkgdesc = Save an activity as a card and resume it later
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Chaos-Tic/Lyapunov
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lyapunov
 	depends = glibc
 	optdepends = xdg-utils: open folders and documents with their usual application
 	optdepends = qt6-wayland: native Wayland window
-	source = lyapunov-0.1.0.tar.gz::https://github.com/Chaos-Tic/Lyapunov/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 10537cfa612062a9817b9e909113036ab6700938026c44c2e483bf115c7d1358
+	source = lyapunov-0.2.0.tar.gz::https://github.com/Chaos-Tic/Lyapunov/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = f05b78ff8607f3101f5a5b3aea522424019e7a843bab09e8ad6e74c296799f03
 
 pkgname = lyapunov
