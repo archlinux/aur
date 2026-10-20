@@ -1,7 +1,7 @@
 # Maintainer: guglovich <https://github.com/guglovich>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Space Bunny Free.
 pkgname=transmission-remote-slint
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ provides=("$pkgname")
 conflicts=('transmission-remote-slint-bin')
 options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a642e8dc30cc15fa069e26791f6a4fe93362896a12e44615a74c571f21b03684')
+sha256sums=('d194f92b33712711352ae34ac30b008817baebb0b9b4731a815d14282d2e79a8')
 
 prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"
