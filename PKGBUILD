@@ -240,12 +240,12 @@ else
 fi
 
 pkgbase="linux-$_pkgsuffix"
-_major=7.2
-_minor=11
+_major=7.3
+_minor=0
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=1
+_tagrel=2
 # Pinned to match the distro package's pkgrel (linux-cachyos 7.1.5-1) rather
 # than tracking upstream's PKGBUILD pkgrel. This fork exists to be compared
 # against the stock kernel, so the version string should differ ONLY by the
@@ -266,7 +266,7 @@ _tagrel=1
 # install) installs as a new version and leaves the running kernel's module
 # tree alone. `uname -r` reads 7.2.9-3-cachyos-jetm until the next upstream tag
 # resets it via update-version.sh.
-pkgrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -942,8 +942,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('7d109d528db5d5d746f6c4c21e7f46ca7ade14fb7474e12fb39ce64369b71c7be92715db86b48823cdf0670b86d41d1f633a69d2e87038f2800b756d1b375842'
+b2sums=('de863b0d5ab80a456292e154e70c6ef5108740f15218da96e057bea8814ba0c186d3752a1fae20bb80a3e0dc7620d3a34e4a18b66385b3e634185e16faf9d8e9'
         'SKIP'
         '475ed83f3a10cfeb9624a65b8deae00f171bfbc04b92a4aa80c546264393b6374acaa001ab19e24c1bf0adc891ac7a32af1b03476ae4d976ce16de34eb51235d'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
-        '03b6d236610ae00db9395819aa7578860f45ce10839fbdcee80fb8e9e9c8810896d20680c63e43c416ae23b371efd737bc0a14831e1f7d8111578c1f65bda68f')
+        'acaf7cab034098f8728089921ce7ccadd66157e28d6910063e62df59f1fec11546909c36b2cfbde5d3673529d937f40e0b7d38427e64d11dacc33e73c0e3b6d8')
