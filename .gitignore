@@ -3,3 +3,8 @@
 !.SRCINFO
 !.gitignore
 !.pre-commit-config.yaml
+!LICENSE
+!LICENSES/0BSD.txt
+!REUSE.toml
+!barracudavpn-bin.install
+!barracudavpn.conf
