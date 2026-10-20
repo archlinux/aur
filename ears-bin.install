@@ -1,0 +1,5 @@
+post_install() {
+    echo "==> Start ears with your session:  systemctl --user enable --now ears"
+    echo "==> Bind 'ears toggle' to a hotkey in your compositor."
+    echo "==> Then pick providers in Settings (ears-stt / ears-llm or any OpenAI-compatible API)."
+}
