@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=ymir-emu
-pkgver=0.3.3
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
