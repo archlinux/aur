@@ -1,11 +1,11 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Avenge Media <avengemediallc at gmail dot com>
 
 pkgname=dankcalendar-git
 _pkgname=dux-calendar
 _binname=dcal
 _iconname=dev.duxlabs.calendar
 _desktopid=dev.duxlabs.calendar
-pkgver=0.3.1.r29.g29bf555
+pkgver=2.0.0.r2.g39a31cb
 pkgrel=1
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)'
 arch=('x86_64' 'aarch64')
