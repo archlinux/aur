@@ -1,7 +1,7 @@
 # Maintainer: Markus Maiwald <markus@maiwald.tk>
 pkgname=prism-harness-suite
 pkgver=1.0.0_rc.7
-pkgrel=1
+pkgrel=2
 pkgdesc="PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime"
 arch=('x86_64')
 url=https://getharness.app
@@ -19,13 +19,13 @@ conflicts=('prism-harness' 'prism-mem' 'prism-loop' 'prism-proxy' 'prism-route' 
 # points to (the in-repo copy cannot contain its own commit).
 _forge=https://git.sovereign-society.org/prism
 _tag=v1.0.0-rc.7
-# loop, proxy, route: v1.0.0-rc.6; sober: v1.2.0-rc.6 (signed tags at these commits)
+# loop, proxy, route: v1.0.0-rc.7; sober: v1.2.0-rc.7 (signed tags at these commits)
 _components=(prism-harness prism-loop prism-sober prism-proxy prism-route)
 source=("prism-harness::git+${_forge}/prism-harness.git#commit=26af5354888fd74a2fe28a59e57762499f3a5d65"
-        "prism-loop::git+${_forge}/prism-loop.git#commit=5f5959acbc8912abd40b849b6f079614ee3cd6e1"
-        "prism-sober::git+${_forge}/prism-sober.git#commit=e29819e4754a53d13bf9815fa1f4c1f181e2fef3"
-        "prism-proxy::git+${_forge}/prism-proxy.git#commit=b04700c25d26cd59eb42ac8ffc7ed13a60b64411"
-        "prism-route::git+${_forge}/prism-route.git#commit=b8165936fd24439f6f15d11cdba2456d977c749e"
+        "prism-loop::git+${_forge}/prism-loop.git#commit=4da3ba6db232f72075b5188c06bf75d9b7f686e0"
+        "prism-sober::git+${_forge}/prism-sober.git#commit=cde931ad34ff9475d860bc9a3ad0cb1a7849bdf0"
+        "prism-proxy::git+${_forge}/prism-proxy.git#commit=86614d687f1adb84a0b8c988b3892e1ef1ed932c"
+        "prism-route::git+${_forge}/prism-route.git#commit=c7458e54c6bb1db7fe17747f6e9770a48d83febe"
         "harness-noble-hashes-2.4.0.tgz::https://registry.npmjs.org/@noble/hashes/-/hashes-2.4.0.tgz"
         "route-chevrotain-cst-dts-gen-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/cst-dts-gen/-/cst-dts-gen-11.2.0.tgz"
         "route-chevrotain-gast-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/gast/-/gast-11.2.0.tgz"

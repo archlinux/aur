@@ -1,7 +1,7 @@
 pkgbase = prism-harness-suite
 	pkgdesc = PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime
 	pkgver = 1.0.0_rc.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getharness.app
 	arch = x86_64
 	license = custom:LSL-1.0
@@ -30,10 +30,10 @@ pkgbase = prism-harness-suite
 	noextract = route-kdljs-0.3.0.tgz
 	noextract = route-lodash-es-4.17.23.tgz
 	source = prism-harness::git+https://git.sovereign-society.org/prism/prism-harness.git#commit=26af5354888fd74a2fe28a59e57762499f3a5d65
-	source = prism-loop::git+https://git.sovereign-society.org/prism/prism-loop.git#commit=5f5959acbc8912abd40b849b6f079614ee3cd6e1
-	source = prism-sober::git+https://git.sovereign-society.org/prism/prism-sober.git#commit=e29819e4754a53d13bf9815fa1f4c1f181e2fef3
-	source = prism-proxy::git+https://git.sovereign-society.org/prism/prism-proxy.git#commit=b04700c25d26cd59eb42ac8ffc7ed13a60b64411
-	source = prism-route::git+https://git.sovereign-society.org/prism/prism-route.git#commit=b8165936fd24439f6f15d11cdba2456d977c749e
+	source = prism-loop::git+https://git.sovereign-society.org/prism/prism-loop.git#commit=4da3ba6db232f72075b5188c06bf75d9b7f686e0
+	source = prism-sober::git+https://git.sovereign-society.org/prism/prism-sober.git#commit=cde931ad34ff9475d860bc9a3ad0cb1a7849bdf0
+	source = prism-proxy::git+https://git.sovereign-society.org/prism/prism-proxy.git#commit=86614d687f1adb84a0b8c988b3892e1ef1ed932c
+	source = prism-route::git+https://git.sovereign-society.org/prism/prism-route.git#commit=c7458e54c6bb1db7fe17747f6e9770a48d83febe
 	source = harness-noble-hashes-2.4.0.tgz::https://registry.npmjs.org/@noble/hashes/-/hashes-2.4.0.tgz
 	source = route-chevrotain-cst-dts-gen-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/cst-dts-gen/-/cst-dts-gen-11.2.0.tgz
 	source = route-chevrotain-gast-11.2.0.tgz::https://registry.npmjs.org/@chevrotain/gast/-/gast-11.2.0.tgz
