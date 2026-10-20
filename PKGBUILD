@@ -1,6 +1,6 @@
 # Maintainer: Loek Le Blansch <loek dot le-blansch dot pv at renesas dot com>
 pkgname=e2-studio-bin
-pkgver=2026.07
+pkgver=2026.10
 pkgrel=1
 epoch=1
 pkgdesc="Eclipse-based IDE for Renesas MCUs"
@@ -19,7 +19,7 @@ source=(
 	"e2-studio.desktop"
 )
 sha256sums=(
-	'760d166dfda097eb2d00598bae29e75525785c208b70ee88b6c5ff6bc2afa7b7'
+	'dc5e8c21c4324300dbb06ebbef0fe367253d304f45f328a2fdaa392189575af3'
 	'722d40188bbbc7925aa7b264d79817548edbf0e3d01f8195eea2880bc60a1c95'
 )
 
