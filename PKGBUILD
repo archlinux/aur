@@ -38,7 +38,7 @@ check() {
   cd "${_pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="${srcdir}/target"
-  cargo test --frozen --lib
+  cargo test --frozen --lib --release
 }
 
 package() {
