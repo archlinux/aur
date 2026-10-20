@@ -1,6 +1,6 @@
 pkgbase = wayleaf-4d
 	pkgdesc = KDE Plasma 6 Wayland tray applet for Nanoleaf 4D screen-edge color sync
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/avitretiak/wayleaf-4d
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wayleaf-4d
 	depends = qt6-declarative
 	optdepends = gpu-screen-recorder: screen capture for 2D, 3D, and 4D modes
 	optdepends = avahi: mDNS device discovery
-	source = https://github.com/avitretiak/wayleaf-4d/releases/download/v0.4.1/wayleaf-4d-0.4.1.tar.gz
-	sha256sums = a55c820e7c91f9ef64eeb09bbc2eb7bec27968e8b102446ada0ef0a7c01816b2
+	source = https://github.com/avitretiak/wayleaf-4d/releases/download/v0.4.2/wayleaf-4d-0.4.2.tar.gz
+	sha256sums = 20ae2a5d7a0e995cae3a8c8fb7e2433fba0d935e6c96a0c330307e35f96e8d77
 
 pkgname = wayleaf-4d
