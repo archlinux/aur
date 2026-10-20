@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.8.7
+pkgver=3.8.8
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('83e2165d574944eb6cd945cba68ba60cc3cccadc948470303697098832290841'
+sha256sums=('dc527e9c24af29e98d61b627bbefa30d0fd4a9faccd43f2a0e8844f5729f0358'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_project_dir() {
 	local d
