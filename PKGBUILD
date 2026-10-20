@@ -1,19 +1,19 @@
 # Maintainer: Henriklmao
 pkgname=display-tui-bin
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalistic Hyprland monitor configuration TUI (pre-built binary)"
 arch=('x86_64')
 url="https://github.com/Henriklmao/display-tui"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 provides=('display-tui')
-conflicts=('display-tui')
+conflicts=('display-tui' 'display-tui-git')
 options=('!strip' '!lto')
 source=(
-  "display-tui-v0.9.7-x86_64-linux-gnu::https://github.com/Henriklmao/display-tui/releases/download/v0.9.7/display-tui-v0.9.7-x86_64-linux-gnu"
-  "https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.7/assets/display-tui.desktop"
-  "https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.7/assets/desktop-icon.png"
+  "display-tui-v0.9.7-2-x86_64-linux-gnu::https://github.com/Henriklmao/display-tui/releases/download/v0.9.7-2/display-tui-v0.9.7-2-x86_64-linux-gnu"
+  "https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.7-2/assets/display-tui.desktop"
+  "https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.7-2/assets/desktop-icon.png"
 )
 sha256sums=(
   '084519764f9f1c0ea9ae86fe4fb0a1b99fafa13262bfe0790288a463d9386bbd'
@@ -22,7 +22,7 @@ sha256sums=(
 )
 
 package() {
-  install -Dm755 "display-tui-v0.9.7-x86_64-linux-gnu" "${pkgdir}/usr/bin/display-tui"
+  install -Dm755 "display-tui-v0.9.7-2-x86_64-linux-gnu" "${pkgdir}/usr/bin/display-tui"
   install -Dm644 display-tui.desktop "${pkgdir}/usr/share/applications/display-tui.desktop"
   install -Dm644 desktop-icon.png "${pkgdir}/usr/share/pixmaps/display-tui.png"
 }
