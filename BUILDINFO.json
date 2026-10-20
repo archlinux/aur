@@ -1,16 +1,16 @@
 {
   "architectures": {
     "x86_64": {
-      "archive": "lmm-core-0.1.0-rc.1-linux-amd64.tar.gz",
-      "sha256": "236de67add7f5dcf088d45e01e85a14b58aae65291451a36de19bac6fe855490"
+      "archive": "lmm-core-0.1.0-rc.2-linux-amd64.tar.gz",
+      "sha256": "0af14525649e30d8e6a4e12ed9eb9ff075b82b506c4505dabb56e54454d2cf29"
     }
   },
   "package": "lmm-api-core-bin",
   "pkgrel": "1",
-  "pkgver": "0.1.0rc1",
+  "pkgver": "0.1.0rc2",
   "program": "lmm-core",
-  "release_tag": "microservices-v0.1.0-rc.1",
+  "release_tag": "core-v0.1.0-rc.2",
   "schema_version": 1,
-  "source_revision": "7509254bde18a8e8bf1bf85bcca041f23a2c050d",
-  "version": "0.1.0-rc.1"
+  "source_revision": "760b0b9d02973264c172509658058c6be4ef1adb",
+  "version": "0.1.0-rc.2"
 }

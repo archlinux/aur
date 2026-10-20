@@ -1,12 +1,12 @@
 pkgbase = lmm-api-core-bin
 	pkgdesc = LMM API Rust core (prebuilt binary)
-	pkgver = 0.1.0rc1
+	pkgver = 0.1.0rc2
 	pkgrel = 1
 	url = https://github.com/TokenNotIncluded/lmm-api
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	provides = lmm-api-core=0.1.0rc1
-	provides = lmm-core=0.1.0rc1
+	provides = lmm-api-core=0.1.0rc2
+	provides = lmm-core=0.1.0rc2
 	conflicts = lmm-core
 	conflicts = lmm-core-bin
 	conflicts = lmm-api-core
@@ -22,12 +22,12 @@ pkgbase = lmm-api-core-bin
 	sha256sums = 15f74a9cb20c8fb741a9569e04ad1b5be19c5e2f64c791a86c6e0a401513fa7a
 	sha256sums = 2d9551ba23cf16a583aa695e3139515d316085bbdfc396abb6c05a5ccf27abc3
 	sha256sums = 1ead7a8a27e1ff40b11153084cd3f3b00267247e832b760f78b148328815aaa4
-	sha256sums = 766dd7249591fd4531a84556a424968aed3c466e12d9aa991c65b020eef46086
-	source_x86_64 = https://github.com/TokenNotIncluded/lmm-api/releases/download/microservices-v0.1.0-rc.1/lmm-core-0.1.0-rc.1-linux-amd64.tar.gz
+	sha256sums = 5c3f10c4b1a7e0bcc264b80f87e1a1af11eaabd0712550cad1f6d85f13c7d486
+	source_x86_64 = https://github.com/TokenNotIncluded/lmm-api/releases/download/core-v0.1.0-rc.2/lmm-core-0.1.0-rc.2-linux-amd64.tar.gz
 	depends_x86_64 = ca-certificates
 	depends_x86_64 = gcc-libs
 	depends_x86_64 = glibc>=2.34
 	depends_x86_64 = systemd>=247
-	sha256sums_x86_64 = 236de67add7f5dcf088d45e01e85a14b58aae65291451a36de19bac6fe855490
+	sha256sums_x86_64 = 0af14525649e30d8e6a4e12ed9eb9ff075b82b506c4505dabb56e54454d2cf29
 
 pkgname = lmm-api-core-bin
