@@ -1,8 +1,8 @@
 # Maintainer: Sierra S. <sscoolqaz at protonmail dot com>
 
 pkgname=proton-ge-git
-pkgver=GE.Proton11.9.r0.g01bfbf6
-pkgrel=3
+pkgver=GE.Proton11.11.r1.g98efe1c
+pkgrel=1
 pkgdesc='Custom distribution of Valves Proton with various patches (built from git)'
 arch=('x86_64')
 url='https://github.com/GloriousEggroll/proton-ge-custom'

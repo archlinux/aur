@@ -1,7 +1,7 @@
 pkgbase = proton-ge-git
 	pkgdesc = Custom distribution of Valves Proton with various patches (built from git)
-	pkgver = GE.Proton11.9.r0.g01bfbf6
-	pkgrel = 3
+	pkgver = GE.Proton11.11.r1.g98efe1c
+	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	install = proton-ge-git.install
 	arch = x86_64
