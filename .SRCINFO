@@ -1,5 +1,5 @@
 pkgbase = scuffed-stat-tracker-bin
-	pkgdesc = Overwatch 2 personal stats tracker for Scuffed Crew (capture daemon and desktop app)
+	pkgdesc = Overwatch personal stats tracker for Scuffed Crew (capture daemon and desktop app)
 	pkgver = 0.5.0rc2
 	pkgrel = 1
 	url = https://github.com/FrozenTear/scuffed-crew
