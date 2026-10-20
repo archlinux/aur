@@ -1,0 +1,21 @@
+pkgbase = hmcl-no-download-restriction
+	pkgdesc = A Minecraft launcher with the mainland China game download restriction removed
+	pkgver = 3.17.0.361.r1.g583e004d7
+	pkgrel = 1
+	url = https://github.com/HMCL-dev/HMCL
+	install = hmcl-no-download-restriction.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = java-environment-openjdk=17
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	source = hmcl-launch-script
+	source = hmcl-no-download-restriction.desktop
+	source = revert-583e004.patch
+	source = hmcl-no-download-restriction-3.17.0.361.r1.g583e004d7.tar.gz::https://github.com/HMCL-dev/HMCL/archive/583e004d718102ae4489aa3f64bcde0c0161d000.tar.gz
+	b2sums = 72e2f9aa78f7755cbb6b25854111d5f8ca68cf6135de570782fff15303cd55bb7d4a9377aa2272bcf445ad8e352e455ad75f7c2f69e06cf38e80d86fe1482426
+	b2sums = db6a4afbe8a5b9698d160a0f31eb91c8c727eb9f5c2742f15366443537b30b11dd3f25d6598cc01fbc362ab249deccc5d94f338f39bd60ab09e8b5480b4d3fd7
+	b2sums = fa3cd15df62613086917aa2270a0ccad957e547b8eb59516aea056b75764f76e18ccf07631caef60ac379b246184eb4cab6071b96df3f28140658efa4a746159
+	b2sums = f6903d4b349053177df76f87f935731eb703c19b9ded3b51b62c9fbdd044b5d598d8038954c229e801967aac8332580cf026cb35766501bb6648f610632c7f89
+
+pkgname = hmcl-no-download-restriction

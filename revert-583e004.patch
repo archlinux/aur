@@ -1,0 +1,538 @@
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
+index e7f426140..229a48a36 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
+@@ -142,7 +142,6 @@ public final class Launcher extends Application {
+                 Platform.setImplicitExit(false);
+                 Controllers.initialize(primaryStage);
+ 
+-                RegionUtils.init();
+                 UpdateChecker.init();
+ 
+                 primaryStage.show();
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/download/HMCLDownloadProvider.java b/HMCL/src/main/java/org/jackhuang/hmcl/download/HMCLDownloadProvider.java
+index 17d35e857..9c982c8ed 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/download/HMCLDownloadProvider.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/download/HMCLDownloadProvider.java
+@@ -29,7 +29,7 @@ import org.jackhuang.hmcl.game.GameComponentType;
+ import org.jackhuang.hmcl.game.HMCLCacheRepository;
+ import org.jackhuang.hmcl.setting.DownloadSource;
+ import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.util.RegionUtils;
++import org.jackhuang.hmcl.util.i18n.LocaleUtils;
+ import org.jackhuang.hmcl.util.versioning.GameVersionNumber;
+ import org.jetbrains.annotations.NotNullByDefault;
+ import org.jetbrains.annotations.Nullable;
+@@ -46,7 +46,7 @@ public final class HMCLDownloadProvider extends DownloadProvider {
+             DownloadSource source,
+             WebURL defaultUrl, WebURL bmclapiUrl
+     ) {
+-        if (RegionUtils.isIsChinaMainlandMachine()) {
++        if (LocaleUtils.IS_CHINA_MAINLAND) {
+             return switch (source) {
+                 case DEFAULT, OFFICIAL -> DownloadCandidates.of(defaultUrl, bmclapiUrl);
+                 case MIRROR -> DownloadCandidates.of(bmclapiUrl, defaultUrl);
+@@ -66,7 +66,7 @@ public final class HMCLDownloadProvider extends DownloadProvider {
+ 
+         // true means prefer mirror, false means prefer official, null means do not use mirror
+         @Nullable Boolean mirrorFirst;
+-        if (RegionUtils.isIsChinaMainlandMachine()) {
++        if (LocaleUtils.IS_CHINA_MAINLAND) {
+             mirrorFirst = switch (source) {
+                 case DEFAULT, MIRROR -> true;
+                 case OFFICIAL -> false;
+@@ -158,7 +158,7 @@ public final class HMCLDownloadProvider extends DownloadProvider {
+                 Task<ComponentRemoteVersionList<ForgeRemoteVersion>> fetchOfficial = ForgeRemoteVersion.fetchAsync(this, gameVersion);
+ 
+                 DownloadSource source = versionListSource;
+-                if (source == DownloadSource.DEFAULT || source == DownloadSource.OFFICIAL) {
++                if (!LocaleUtils.IS_CHINA_MAINLAND && (source == DownloadSource.DEFAULT || source == DownloadSource.OFFICIAL)) {
+                     return fetchOfficial;
+                 }
+ 
+@@ -173,7 +173,7 @@ public final class HMCLDownloadProvider extends DownloadProvider {
+                 Task<ComponentRemoteVersionList<NeoForgeRemoteVersion>> fetchOfficial = NeoForgeRemoteVersion.fetchAsync(this, gameVersion);
+ 
+                 DownloadSource source = versionListSource;
+-                if (source == DownloadSource.DEFAULT || source == DownloadSource.OFFICIAL) {
++                if (!LocaleUtils.IS_CHINA_MAINLAND && (source == DownloadSource.DEFAULT || source == DownloadSource.OFFICIAL)) {
+                     return fetchOfficial;
+                 }
+                 Task<ComponentRemoteVersionList<NeoForgeRemoteVersion>> fetchBMCL = NeoForgeRemoteVersion.fetchBMCLAsync(bmclRoot, gameVersion);
+@@ -224,7 +224,7 @@ public final class HMCLDownloadProvider extends DownloadProvider {
+ 
+     @Override
+     public DownloadCandidates getCleanroomVersionListCandidates() {
+-        return RegionUtils.isIsChinaMainlandMachine()
++        return LocaleUtils.IS_CHINA_MAINLAND
+                 ? DownloadCandidates.of(CleanroomRemoteVersion.LOADER_LIST_URL, WebURL.parse("https://alist.8mi.tech/d/mirror/HMCL-Metadata/Auto/cleanroom/index.json"))
+                 : DownloadCandidates.of(CleanroomRemoteVersion.LOADER_LIST_URL);
+     }
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java
+index 90a010bc0..dd65c0a8f 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java
+@@ -24,9 +24,9 @@ import org.jackhuang.hmcl.task.FileDownloadTask;
+ import org.jackhuang.hmcl.terracotta.provider.AbstractTerracottaProvider;
+ import org.jackhuang.hmcl.terracotta.provider.GeneralProvider;
+ import org.jackhuang.hmcl.terracotta.provider.MacOSProvider;
+-import org.jackhuang.hmcl.util.RegionUtils;
+ import org.jackhuang.hmcl.util.gson.JsonSerializable;
+ import org.jackhuang.hmcl.util.gson.JsonUtils;
++import org.jackhuang.hmcl.util.i18n.LocaleUtils;
+ import org.jackhuang.hmcl.util.i18n.LocalizedText;
+ import org.jackhuang.hmcl.util.io.FileUtils;
+ import org.jackhuang.hmcl.util.io.NetworkUtils;
+@@ -91,7 +91,7 @@ public final class TerracottaMetadata {
+             }
+ 
+             Stream<String> stream = downloads.stream(), streamCN = downloadsCN.stream();
+-            @Unmodifiable List<WebURL> links = (RegionUtils.isIsChinaMainlandMachine() ? Stream.concat(streamCN, stream) : Stream.concat(stream, streamCN))
++            @Unmodifiable List<WebURL> links = (LocaleUtils.IS_CHINA_MAINLAND ? Stream.concat(streamCN, stream) : Stream.concat(stream, streamCN))
+                     .map(link -> WebURL.parse(options.replace(link)))
+                     .toList();
+ 
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNodeList.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNodeList.java
+index 6eb90ae55..d0b2c8d61 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNodeList.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNodeList.java
+@@ -19,12 +19,12 @@ package org.jackhuang.hmcl.terracotta;
+ 
+ import com.google.gson.JsonParseException;
+ import org.glavo.url.WebURL;
+-import org.jackhuang.hmcl.util.RegionUtils;
+ import org.jackhuang.hmcl.util.StringUtils;
+ import org.jackhuang.hmcl.util.gson.JsonSerializable;
+ import org.jackhuang.hmcl.util.gson.JsonUtils;
+ import org.jackhuang.hmcl.util.gson.TolerableValidationException;
+ import org.jackhuang.hmcl.util.gson.Validation;
++import org.jackhuang.hmcl.util.i18n.LocaleUtils;
+ import org.jackhuang.hmcl.util.io.HttpRequest;
+ import org.jetbrains.annotations.Nullable;
+ import org.jetbrains.annotations.Unmodifiable;
+@@ -84,7 +84,7 @@ public final class TerracottaNodeList {
+                                     return false;
+                                 }
+ 
+-                                return StringUtils.isBlank(node.region) || RegionUtils.isIsChinaMainlandMachine() == "CN".equalsIgnoreCase(node.region);
++                                return StringUtils.isBlank(node.region) || LocaleUtils.IS_CHINA_MAINLAND == "CN".equalsIgnoreCase(node.region);
+                             })
+                             .map(it -> WebURL.parse(it.url()))
+                             .toList();
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/AccountListPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/AccountListPage.java
+index 3cf047441..72c869ec6 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/AccountListPage.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/AccountListPage.java
+@@ -40,7 +40,7 @@ import org.jackhuang.hmcl.ui.construct.AdvancedListItem;
+ import org.jackhuang.hmcl.ui.construct.ClassTitle;
+ import org.jackhuang.hmcl.ui.decorator.DecoratorAnimatedPage;
+ import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
+-import org.jackhuang.hmcl.util.RegionUtils;
++import org.jackhuang.hmcl.util.i18n.LocaleUtils;
+ import org.jackhuang.hmcl.util.javafx.BindingMapping;
+ import org.jackhuang.hmcl.util.javafx.MappedObservableList;
+ 
+@@ -57,7 +57,7 @@ public final class AccountListPage extends DecoratorAnimatedPage implements Deco
+         String property = System.getProperty("hmcl.offline.auth.restricted", "auto");
+ 
+         if ("false".equals(property)
+-                || "auto".equals(property) && RegionUtils.isIsChinaMainlandMachine()
++                || "auto".equals(property) && LocaleUtils.IS_CHINA_MAINLAND
+                 || SettingsManager.userSettings().enableOfflineAccountProperty().get())
+             RESTRICTED.set(false);
+         else
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
+index 9b44c06a7..7cc1fb085 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
+@@ -52,12 +52,14 @@ import org.jackhuang.hmcl.ui.FXUtils;
+ import org.jackhuang.hmcl.ui.SVG;
+ import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
+ import org.jackhuang.hmcl.ui.animation.TransitionPane;
+-import org.jackhuang.hmcl.ui.construct.*;
++import org.jackhuang.hmcl.ui.construct.ComponentList;
++import org.jackhuang.hmcl.ui.construct.RipplerContainer;
++import org.jackhuang.hmcl.ui.construct.SpinnerPane;
++import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+ import org.jackhuang.hmcl.ui.wizard.Navigation;
+ import org.jackhuang.hmcl.ui.wizard.Refreshable;
+ import org.jackhuang.hmcl.ui.wizard.WizardPage;
+ import org.jackhuang.hmcl.util.NativePatcher;
+-import org.jackhuang.hmcl.util.RegionUtils;
+ import org.jackhuang.hmcl.util.StringUtils;
+ import org.jackhuang.hmcl.util.i18n.I18n;
+ import org.jackhuang.hmcl.util.platform.OperatingSystem;
+@@ -453,23 +455,7 @@ public final class VersionsPage extends Control implements WizardPage, Refreshab
+                 root.setCenter(transitionPane);
+             }
+ 
+-            if (RegionUtils.isIsChinaMainlandNetwork()) {
+-                BorderPane wrapper = new BorderPane();
+-
+-                HintPane hint = new HintPane(MessageDialogPane.MessageType.WARNING);
+-                hint.setSegment(i18n("download.china"));
+-
+-                BorderPane.setMargin(hint, new Insets(10, 10, 0, 10));
+-
+-                wrapper.setTop(hint);
+-
+-                root.setDisable(true);
+-                wrapper.setCenter(root);
+-
+-                this.getChildren().setAll(wrapper);
+-            } else {
+-                this.getChildren().setAll(root);
+-            }
++            this.getChildren().setAll(root);
+         }
+ 
+         private void updateList() {
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/instances/DownloadListPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/instances/DownloadListPage.java
+index 4df469099..6dff5ce9d 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/instances/DownloadListPage.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/instances/DownloadListPage.java
+@@ -628,23 +628,7 @@ public class DownloadListPage extends Control implements DecoratorPage {
+                 });
+             }
+ 
+-            if (RegionUtils.isIsChinaMainlandNetwork()) {
+-                BorderPane wrapper = new BorderPane();
+-
+-                HintPane hint = new HintPane(MessageDialogPane.MessageType.WARNING);
+-                hint.setSegment(i18n("download.china"));
+-
+-                BorderPane.setMargin(hint, new Insets(10, 10, 0, 10));
+-
+-                wrapper.setTop(hint);
+-
+-                pane.setDisable(true);
+-                wrapper.setCenter(pane);
+-
+-                this.getChildren().setAll(wrapper);
+-            } else {
+-                this.getChildren().setAll(pane);
+-            }
++            getChildren().setAll(pane);
+         }
+ 
+         private record CategoryIndented(int indent, RemoteAddonRepository.Category category) {
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java
+index 2430d494b..6a513447e 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java
+@@ -53,8 +53,8 @@ import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
+ import org.jackhuang.hmcl.ui.animation.TransitionPane;
+ import org.jackhuang.hmcl.ui.construct.*;
+ import org.jackhuang.hmcl.ui.instances.Instances;
+-import org.jackhuang.hmcl.util.RegionUtils;
+ import org.jackhuang.hmcl.util.i18n.I18n;
++import org.jackhuang.hmcl.util.i18n.LocaleUtils;
+ import org.jackhuang.hmcl.util.io.FileUtils;
+ import org.jackhuang.hmcl.util.io.Zipper;
+ import org.jackhuang.hmcl.util.javafx.BindingMapping;
+@@ -540,7 +540,7 @@ public class TerracottaControllerPage extends StackPane {
+ 
+         VBox content = new VBox(10);
+         content.getChildren().add(ComponentList.createComponentListTitle(i18n("terracotta.status")));
+-        if (!RegionUtils.isIsChinaMainlandMachine()) {
++        if (!LocaleUtils.IS_CHINA_MAINLAND) {
+             HintPane hintPane = new HintPane(MessageDialogPane.MessageType.WARNING);
+             hintPane.setText(i18n("terracotta.unsupported.region"));
+             content.getChildren().add(hintPane);
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/util/RegionUtils.java b/HMCL/src/main/java/org/jackhuang/hmcl/util/RegionUtils.java
+deleted file mode 100644
+index 00f6c1475..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/util/RegionUtils.java
++++ /dev/null
+@@ -1,116 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2026 huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.util;
+-
+-import org.jackhuang.hmcl.task.Schedulers;
+-import org.jackhuang.hmcl.util.gson.JsonSerializable;
+-import org.jackhuang.hmcl.util.gson.JsonUtils;
+-import org.jackhuang.hmcl.util.i18n.LocaleUtils;
+-import org.jackhuang.hmcl.util.io.NetworkUtils;
+-import org.jackhuang.hmcl.util.platform.NativeUtils;
+-import org.jackhuang.hmcl.util.platform.OperatingSystem;
+-import org.jackhuang.hmcl.util.platform.windows.Kernel32;
+-import org.jackhuang.hmcl.util.platform.windows.WinConstants;
+-import org.jetbrains.annotations.NotNullByDefault;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.time.Duration;
+-import java.time.ZoneId;
+-import java.time.ZonedDateTime;
+-
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
+-
+-@NotNullByDefault
+-public final class RegionUtils {
+-
+-    /// Pre-check if the network is in China Mainland to avoid blocking the UI thread.
+-    public static void init() {
+-        if (IS_CHINA_MAINLAND_MACHINE) {
+-            Schedulers.io().execute(RegionUtils::isIsChinaMainlandNetwork);
+-        }
+-    }
+-
+-    private static final boolean IS_CHINA_MAINLAND_MACHINE = checkMachineIsChinaMainland();
+-
+-    private static boolean checkMachineIsChinaMainland() {
+-        if ("Asia/Shanghai".equals(ZoneId.systemDefault().getId()))
+-            return true;
+-
+-        // Check if the time zone is UTC+8
+-        if (ZonedDateTime.now().getOffset().getTotalSeconds() == Duration.ofHours(8).toSeconds()) {
+-            if ("CN".equals(LocaleUtils.SYSTEM_DEFAULT.getCountry()))
+-                return true;
+-
+-            if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS && NativeUtils.USE_JNA) {
+-                Kernel32 kernel32 = Kernel32.INSTANCE;
+-
+-                // https://learn.microsoft.com/windows/win32/intl/table-of-geographical-locations
+-                if (kernel32 != null && kernel32.GetUserGeoID(WinConstants.GEOCLASS_NATION) == 45) // China
+-                    return true;
+-            }
+-        }
+-
+-        return false;
+-    }
+-
+-    public static boolean isIsChinaMainlandMachine() {
+-        return IS_CHINA_MAINLAND_MACHINE;
+-    }
+-
+-    private static volatile @Nullable Boolean isChinaMainlandNetwork;
+-
+-    private static boolean checkChinaMainlandNetwork() {
+-        @NotNullByDefault
+-        @JsonSerializable
+-        record IpWhoIsResponse(boolean success, String country_code) {
+-        }
+-
+-        try {
+-            LOG.info("Fetching network information");
+-            IpWhoIsResponse result = JsonUtils.fromNonNullJson(NetworkUtils.doGet("https://ipwho.is"), IpWhoIsResponse.class);
+-            return !result.success || "CN".equalsIgnoreCase(result.country_code);
+-        } catch (Throwable e) {
+-            LOG.warning("Failed to get the network information", e);
+-            return true;
+-        }
+-    }
+-
+-    public static boolean isIsChinaMainlandNetwork() {
+-        if (!IS_CHINA_MAINLAND_MACHINE) {
+-            return false;
+-        }
+-
+-        Boolean value = isChinaMainlandNetwork;
+-        if (value != null)
+-            return value;
+-
+-        synchronized (RegionUtils.class) {
+-            value = isChinaMainlandNetwork;
+-
+-            if (value != null)
+-                return value;
+-
+-            boolean result = checkChinaMainlandNetwork();
+-            isChinaMainlandNetwork = result;
+-            return result;
+-        }
+-    }
+-
+-    private RegionUtils() {
+-    }
+-}
+diff --git a/HMCL/src/main/resources/assets/lang/I18N.properties b/HMCL/src/main/resources/assets/lang/I18N.properties
+index 0655922e9..320864f6c 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N.properties
+@@ -382,7 +382,6 @@ curse.category.6555=Vanilla
+ datetime.format=MMM d, yyyy, h\:mm\:ss a
+ 
+ download=Download
+-download.china=Due to relevant laws and regulations, HMCL does not currently support downloading game-related content in Chinese Mainland. Please visit the <a href="https://mc.163.com/">official Minecraft website</a> to download Minecraft China Edition.
+ download.code.404=File "%s" not found on the remote server.
+ download.content=Addons
+ download.shader=Shaders
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_ar.properties b/HMCL/src/main/resources/assets/lang/I18N_ar.properties
+index ff0bf399b..78b9afb94 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_ar.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_ar.properties
+@@ -384,7 +384,6 @@ curse.category.4552=سكريبتات
+ datetime.format=MMM d, yyyy, h\:mm\:ss a
+ 
+ download=تنزيل
+-# download.china=
+ download.code.404=الملف "%s" غير موجود على الخادم البعيد.
+ download.content=الإضافات
+ download.shader=الظلال
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_de.properties b/HMCL/src/main/resources/assets/lang/I18N_de.properties
+index f6edfbf50..9aa2fe9dd 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_de.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_de.properties
+@@ -381,7 +381,6 @@ curse.category.6555=Vanilla
+ datetime.format=dd.MM.yyyy, HH\:mm\:ss
+ 
+ download=Herunterladen
+-# download.china=
+ download.code.404=Datei "%s" wurde nicht auf dem Remote-Server gefunden.
+ download.content=Addons
+ download.shader=Shaderpakete
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_es.properties b/HMCL/src/main/resources/assets/lang/I18N_es.properties
+index 61be9e28b..2a6c5374a 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_es.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_es.properties
+@@ -382,7 +382,6 @@ curse.category.4552=Scripts
+ datetime.format=d MMM yyyy, H\:mm\:ss
+ 
+ download=Descargar
+-# download.china=
+ download.code.404=Archivo no encontrado en el servidor remoto: %s
+ download.content=Complementos
+ download.shader=Sombreadores
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_ja.properties b/HMCL/src/main/resources/assets/lang/I18N_ja.properties
+index 924514f45..3c474168e 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_ja.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_ja.properties
+@@ -370,7 +370,6 @@ curse.category.4552=スクリプト
+ datetime.format=yyyy/MM/dd H:mm:ss
+ 
+ download=ダウンロード
+-# download.china=
+ download.code.404=リモートサーバーにファイルが見つかりません：%s
+ download.content=ゲームコンテンツ
+ download.shader=シェーダー
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_lzh.properties b/HMCL/src/main/resources/assets/lang/I18N_lzh.properties
+index 19cd22952..0bbd74c61 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_lzh.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_lzh.properties
+@@ -381,7 +381,6 @@ curse.category.4552=角本
+ datetime.format=yyyy 年 MM 月 dd 日 HH:mm:ss
+ 
+ download=引
+-# download.china=
+ download.code.404=伺服器無案曰：%s\n君可求助於右上之鈕。
+ download.content=戲案
+ download.shader=光影
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_ru.properties b/HMCL/src/main/resources/assets/lang/I18N_ru.properties
+index 17c873a1b..531a8304a 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_ru.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_ru.properties
+@@ -378,7 +378,6 @@ curse.category.6555=Ванильный
+ datetime.format=d MMM yyyy г., HH\:mm\:ss
+ 
+ download=Скачать
+-# download.china=
+ download.code.404=Файл «%s» не найден на удаленном сервере.
+ download.content=Аддоны
+ download.shader=Шейдеры
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_uk.properties b/HMCL/src/main/resources/assets/lang/I18N_uk.properties
+index 42c9e90f7..70a6e5d12 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_uk.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_uk.properties
+@@ -378,7 +378,6 @@ curse.category.6555=Ваніла
+ datetime.format=dd.MM.yyyy, HH:mm:ss
+ 
+ download=Завантажити
+-# download.china=
+ download.code.404=Файл "%s" не знайдено на віддаленому сервері.
+ download.content=Додатки
+ download.shader=Шейдери
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_zh_Hans.properties b/HMCL/src/main/resources/assets/lang/I18N_zh_Hans.properties
+index 33b86f976..d9a4c480f 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_zh_Hans.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_zh_Hans.properties
+@@ -382,7 +382,6 @@ curse.category.6555=原生
+ datetime.format=yyyy 年 MM 月 dd 日 HH:mm:ss
+ 
+ download=下载
+-download.china=根据相关法律法规，HMCL 在中国大陆地区暂不支持下载游戏相关内容。请前往<a href="https://mc.163.com/">我的世界官方网站</a>下载我的世界中国版。
+ download.code.404=远程服务器不包含需要下载的文件: %s\n你可以点击右上角帮助按钮进行求助。
+ download.content=游戏内容
+ download.shader=光影
+diff --git a/HMCL/src/main/resources/assets/lang/I18N_zh_Hant.properties b/HMCL/src/main/resources/assets/lang/I18N_zh_Hant.properties
+index e9163abcd..0c671b697 100644
+--- a/HMCL/src/main/resources/assets/lang/I18N_zh_Hant.properties
++++ b/HMCL/src/main/resources/assets/lang/I18N_zh_Hant.properties
+@@ -380,7 +380,6 @@ curse.category.6555=原生
+ datetime.format=yyyy 年 MM 月 dd 日 HH:mm:ss
+ 
+ download=下載
+-download.china=根據相關法律法規，HMCL 在中國大陸地區暫不支援下載遊戲相關內容。請前往<a href="https://mc.163.com/">我的世界官方網站</a>下載我的世界中國版。
+ download.code.404=遠端伺服器沒有需要下載的檔案：%s
+ download.content=遊戲內容
+ download.shader=光影
+diff --git a/HMCLCore/src/main/java/org/jackhuang/hmcl/util/i18n/LocaleUtils.java b/HMCLCore/src/main/java/org/jackhuang/hmcl/util/i18n/LocaleUtils.java
+index b61cf3633..7cf7ece16 100644
+--- a/HMCLCore/src/main/java/org/jackhuang/hmcl/util/i18n/LocaleUtils.java
++++ b/HMCLCore/src/main/java/org/jackhuang/hmcl/util/i18n/LocaleUtils.java
+@@ -18,6 +18,10 @@
+ package org.jackhuang.hmcl.util.i18n;
+ 
+ import org.jackhuang.hmcl.util.StringUtils;
++import org.jackhuang.hmcl.util.platform.NativeUtils;
++import org.jackhuang.hmcl.util.platform.OperatingSystem;
++import org.jackhuang.hmcl.util.platform.windows.Kernel32;
++import org.jackhuang.hmcl.util.platform.windows.WinConstants;
+ import org.jetbrains.annotations.NotNull;
+ import org.jetbrains.annotations.Nullable;
+ import org.jetbrains.annotations.Unmodifiable;
+@@ -27,6 +31,9 @@ import java.io.InputStream;
+ import java.nio.charset.StandardCharsets;
+ import java.nio.file.Files;
+ import java.nio.file.Path;
++import java.time.Duration;
++import java.time.ZoneId;
++import java.time.ZonedDateTime;
+ import java.util.*;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.concurrent.ConcurrentMap;
+@@ -41,6 +48,29 @@ public final class LocaleUtils {
+ 
+     public static final Locale SYSTEM_DEFAULT = Locale.getDefault();
+ 
++    public static final boolean IS_CHINA_MAINLAND = isChinaMainland();
++
++    private static boolean isChinaMainland() {
++        if ("Asia/Shanghai".equals(ZoneId.systemDefault().getId()))
++            return true;
++
++        // Check if the time zone is UTC+8
++        if (ZonedDateTime.now().getOffset().getTotalSeconds() == Duration.ofHours(8).toSeconds()) {
++            if ("CN".equals(LocaleUtils.SYSTEM_DEFAULT.getCountry()))
++                return true;
++
++            if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS && NativeUtils.USE_JNA) {
++                Kernel32 kernel32 = Kernel32.INSTANCE;
++
++                // https://learn.microsoft.com/windows/win32/intl/table-of-geographical-locations
++                if (kernel32 != null && kernel32.GetUserGeoID(WinConstants.GEOCLASS_NATION) == 45) // China
++                    return true;
++            }
++        }
++
++        return false;
++    }
++
+     public static final Locale LOCALE_ZH_HANS = Locale.forLanguageTag("zh-Hans");
+     public static final Locale LOCALE_ZH_HANT = Locale.forLanguageTag("zh-Hant");
+ 

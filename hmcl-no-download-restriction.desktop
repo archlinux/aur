@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=HMCL (No Download Restriction)
+Comment=Hello Minecraft! Launcher, a powerful Minecraft launcher, without the China mainland download restriction.
+Exec=hmcl-no-download-restriction
+Icon=hmcl-no-download-restriction
+Terminal=false
+StartupNotify=false
+Categories=Game;
