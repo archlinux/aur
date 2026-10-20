@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=repath-studio-bin
-pkgver=0.4.24
+pkgver=0.4.26
 _electronversion=44
 pkgrel=1
 pkgdesc="A web-based vector graphics editor that combines procedural tooling with traditional design workflows."
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aa3ed9c5c5fc131965ea2540db9876f3797e9e9120bb203981f4bb7a3fe6bed4'
+sha256sums=('524e742700590958d111275566f86e3cd8df78eccdf00f3b9c3fcf000f30171f'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
