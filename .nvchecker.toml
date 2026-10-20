@@ -1,4 +1,0 @@
-[conversejs]
-source = "git"
-git = "https://github.com/conversejs/converse.js.git"
-prefix = "v"
