@@ -1,6 +1,6 @@
 # Maintainer: satodu <sato.du@gmail.com>
 pkgname=kappa-file-manager
-pkgver=0.1.0_beta
+pkgver=0.1.0_beta.1
 pkgrel=1
 pkgdesc='Brutalist file manager for Ryoku OS (Rust core, Quickshell UI); independent community project'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('kdeconnect: phone pairing, ping, ring and sharing'
             'ghostty: default terminal for "Open terminal here" (any terminal in $TERMINAL also works)')
 _tag="v${pkgver//_/-}"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('ff124a3f4f2d92f70b3fa34ad6aeede0d5e89617c5c403df581905a112b98c2e')
+sha256sums=('27c43d7f9c0879073f6c9bc04fd2454eb1b634c23399d12e07410180c754bd33')
 
 prepare() {
   cd "$pkgname-${pkgver//_/-}"
@@ -54,5 +54,6 @@ package() {
   install -Dm755 "packaging/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "packaging/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "packaging/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+  install -Dm644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
