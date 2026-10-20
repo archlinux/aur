@@ -1,23 +1,19 @@
 pkgbase = hmcl-java-run
-	pkgdesc = An unofficial build of HMCL that use aur/archlinux-java-run to select java version with javaFX (with aur/hmcl-new changes)
-	pkgver = 3.6.20
+	pkgdesc = An unofficial build of HMCL that uses aur/archlinux-java-run to select java versions
+	pkgver = 3.16.4
 	pkgrel = 1
 	url = https://github.com/HMCL-dev/HMCL
 	arch = any
 	license = GPL3
-	makedepends = java-environment>=24
+	makedepends = java-environment>=17
 	makedepends = gradle
-	depends = java-runtime>=24
+	depends = java-runtime>=17
 	depends = hicolor-icon-theme
 	depends = archlinux-java-run
-	optdepends = java-openjfx>=24: Require a Java version that support openjfx
+	optdepends = java-openjfx>=17: Java that supports javaFX
 	provides = hmcl
 	conflicts = hmcl
-	source = HMCL-release-3.6.20.tar.gz::https://github.com/HMCL-dev/HMCL/archive/refs/tags/release-3.6.20.tar.gz
-	source = 0001-Target-Java-21.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-Target-Java-21.patch?h=hmcl-new&id=7360c04f6630aba6699fcc904946722e785f3520
-	source = 0002-Cleanup.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-Cleanup.patch?h=hmcl-new&id=7360c04f6630aba6699fcc904946722e785f3520
-	sha256sums = 1b1ca436bb027e712eaca15f93468d992535f61d1cc25743dedd4369e573aa1e
-	sha256sums = c41660be2585c6feae10e6edd40d1c9cddffe8dae99b784f54624b5bbdf6208f
-	sha256sums = 1a75f0f5aaa498287c44bc6232a96c2c95f5daccbafb2456a001f8c7dacb9c66
+	source = HMCL-release-3.16.4.tar.gz::https://github.com/HMCL-dev/HMCL/archive/refs/tags/release-3.16.4.tar.gz
+	sha256sums = f2846ee8167f8128ebebf9ad64c8b1c07a939cd816f6eeb8be0cc271a340dd94
 
 pkgname = hmcl-java-run

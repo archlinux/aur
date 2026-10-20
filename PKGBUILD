@@ -5,28 +5,24 @@
 
 pkgname=hmcl-java-run
 _pkgname=HMCL
-_ver=3.6
-_build=20
+_ver=3.16
+_build=4
 _pkgver=release-$_ver.$_build
-_java_version=21
+_java_version=17
 _jar_path="/usr/share/java/$pkgname.jar"
 pkgver=$_ver.$_build
 pkgrel=1
-pkgdesc='An unofficial build of HMCL that use aur/archlinux-java-run to select java version with javaFX (with aur/hmcl-new changes)'
+pkgdesc='An unofficial build of HMCL that uses aur/archlinux-java-run to select java versions'
 arch=('any')
 url='https://github.com/HMCL-dev/HMCL'
 license=('GPL3')
 depends=("java-runtime>=$_java_version" 'hicolor-icon-theme' 'archlinux-java-run')
 makedepends=("java-environment>=$_java_version" 'gradle')
-optdepends=("java-openjfx>=$_java_version: Require a Java version that support openjfx")
+optdepends=("java-openjfx>=$_java_version: Java that supports javaFX")
 provides=('hmcl')
 conflicts=('hmcl')
-source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
-		"0001-Target-Java-21.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-Target-Java-21.patch?h=hmcl-new&id=7360c04f6630aba6699fcc904946722e785f3520"
-		"0002-Cleanup.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-Cleanup.patch?h=hmcl-new&id=7360c04f6630aba6699fcc904946722e785f3520")
-sha256sums=('1b1ca436bb027e712eaca15f93468d992535f61d1cc25743dedd4369e573aa1e'
-            'c41660be2585c6feae10e6edd40d1c9cddffe8dae99b784f54624b5bbdf6208f'
-            '1a75f0f5aaa498287c44bc6232a96c2c95f5daccbafb2456a001f8c7dacb9c66')
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('f2846ee8167f8128ebebf9ad64c8b1c07a939cd816f6eeb8be0cc271a340dd94')
 
 prepare() {
 	for patch in "${source[@]%%::*}"; do
@@ -51,12 +47,10 @@ build() {
 check() {
 	cd "$_pkgname-$_pkgver"
 	gradle test --no-daemon \
-		-D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m' || true
+		-D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m'
 }
 
 package() {
-	install -Dm644 "$_pkgname-$_pkgver/HMCL/build/libs/$_pkgname-$pkgver.jar" "$pkgdir/$_jar_path"
-	install -Dm644 "$_pkgname-$_pkgver/HMCL/image/hmcl.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
 	install -Dm644 "$_pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	install -Dm755 <(cat <<- SCRIPT
@@ -83,7 +77,7 @@ package() {
 		    print_usage
 		    ;;
 		  --hmcl-global)
-		    printf 'Global mode\n\n'
+		    printf 'Global mode\n'
 		    WORKDIR=\${XDG_DATA_HOME:-\$HOME/.local/share}/hmcl
 		    mkdir -p "\$WORKDIR"
 		    cd "\$WORKDIR" || exit 2
@@ -94,7 +88,11 @@ package() {
 		  esac
 		done
 
-		env GDK_CORE_DEVICE_EVENTS=1 archlinux-java-run -f 'javafx' -a '$_java_version' -- -jar '$_jar_path' "\$args"
+		if archlinux-java-run -f 'javafx' -a '$_java_version' -- -d javafx.base 1>/dev/null 2>&1; then
+		  exec archlinux-java-run -f 'javafx' -a '$_java_version' -- -jar '$_jar_path' "\$args"
+		else
+		  exec archlinux-java-run -a '$_java_version' -- -jar '$_jar_path' "\$args"
+		fi
 
 		SCRIPT
 	) "$pkgdir/usr/bin/$pkgname"
@@ -114,4 +112,16 @@ package() {
 
 		DESKTOP
 	) "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+	cd "$_pkgname-$_pkgver/HMCL/build"
+
+	# install jar
+	install -Dm644 "libs/$_pkgname-$pkgver.jar" "$pkgdir/$_jar_path"
+	# install icons
+	local _icon _iconfile
+	for _icon in 32:icon.png 64:icon@2x.png 128:icon@4x.png 256:icon@8x.png; do
+		_iconfile=${_icon#*:}
+		_icon=${_icon%:*}
+		install -Dm644 "resources/main/assets/img/${_iconfile}" "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname}.png"
+	done
 }
