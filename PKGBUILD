@@ -1,7 +1,7 @@
 pkgbase=credentialsd
 pkgname=(credentialsd firefox-extension-credentialsd)
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proposal for a Linux credential management xdg portal D-Bus specification, including webauthn/passkey support"
 arch=(x86_64)
 url=https://github.com/linux-credentials/credentialsd
@@ -30,6 +30,7 @@ build() {
     meson compile -C build
 }
 package_credentialsd() {
+    depends+=(publicsuffix-list)
     meson install -C build --destdir "$pkgdir"
 }
 package_firefox-extension-credentialsd() {

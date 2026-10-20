@@ -1,7 +1,7 @@
 pkgbase = credentialsd
 	pkgdesc = Proposal for a Linux credential management xdg portal D-Bus specification, including webauthn/passkey support
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-credentials/credentialsd
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -24,6 +24,12 @@ pkgbase = credentialsd
 	sha256sums = e482662ce56195b3d7a35bac76a897010489cd47e0bfc937c1135217269e70a0
 
 pkgname = credentialsd
+	depends = gtk4
+	depends = dbus
+	depends = systemd-libs
+	depends = libnfc
+	depends = pcsclite
+	depends = publicsuffix-list
 
 pkgname = firefox-extension-credentialsd
 	pkgdesc = Firefox helper extension for credentialsd
