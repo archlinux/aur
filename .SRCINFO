@@ -1,0 +1,24 @@
+pkgbase = ely-tree-app-bin
+	pkgdesc = ElyTree - file tree and document organizer from the Ely Office suite
+	pkgver = 0.1.8
+	pkgrel = 2
+	url = https://office.elygpui.com
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	optdepends = vulkan-icd-loader: GPU accelerated rendering
+	optdepends = wayland: Wayland session support
+	provides = ely-tree
+	conflicts = ely-tree
+	conflicts = ely-tree-bin
+	options = !strip
+	options = !debug
+	source_x86_64 = ely-tree_0.1.8-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.8/ely-tree_0.1.8-1_amd64.deb
+	sha256sums_x86_64 = d15d6779de554777972d9cffa0c219f2be272a6732b876ba350f44307da9ea85
+
+pkgname = ely-tree-app-bin
