@@ -3,13 +3,14 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r522.gb5762c5ee
+pkgver=1.1.4.r18.ge9cd670d9
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
 license=('GPL-2.0-only')
 depends=(
+  bpf-linker
   libelf
   libseccomp
   protobuf
