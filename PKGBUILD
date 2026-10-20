@@ -1,7 +1,7 @@
 # Maintainer: Lucasion <lucasion@hotmail.com>
 pkgname=cinemion-bin
 # The release name, which may hold a dash (2.0.0-alpha.0); pacman versions can't, so pkgver swaps it for an underscore
-_version=0.1.0
+_version=0.2.0
 pkgver=${_version//-/_}
 pkgrel=1
 pkgdesc="Self-hosted media server and player for movies, shows and home videos"
@@ -14,6 +14,7 @@ optdepends=(
   'vpl-gpu-rt: video conversion on Intel GPUs (Quick Sync)'
   'libva-mesa-driver: video conversion on AMD GPUs'
   'nvidia-utils: video conversion on NVIDIA GPUs (NVENC)'
+  'poppler: covers for PDF books'
 )
 provides=('cinemion')
 conflicts=('cinemion')
@@ -27,8 +28,8 @@ source_aarch64=("cinemion-$_version-linux_arm64.tar.gz::$url/releases/download/v
 sha256sums=('a2d5d91910dc5cf6e4bc458b1d5c1ea5ffb75d6e58a3f9949bf5e009f99c4191'
             '50583e653975c3d49f6d5fa3524318789eba9e6889d74520345fb2aae40c4d6b'
             '62d15bd61e114e83c21bbd54d30b7bc48a0c68a52ed33c7a1353adfa44c5a634')
-sha256sums_x86_64=('dddeac7d13cefbe648f25a2295889d807a6a032c349eeb51a4e26121a7ccbb0d')
-sha256sums_aarch64=('50a8ef15156621cf0fa5f3f5549c1b8b9175668148957e4b24f2f9e7dd219be8')
+sha256sums_x86_64=('f9211864ffdbf4b637bacdea7c1933c8f69ee78b137be786974b305864dec526')
+sha256sums_aarch64=('02bd437e66e61ca6fe29f58c7a97c7f3b0b2f09fd60fd2df58ed34f1a5998e8f')
 
 check() {
   [[ "$("$srcdir/cinemion" version)" == "$_version" ]]
