@@ -2,7 +2,7 @@
 # Built by packaging/linux/build-package.sh arch, which sets pkgver from
 # Cargo.toml. For the AUR, replace SKIP with the release tarball's checksum.
 pkgname=lorenz
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Local file conversion with radial wheels'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
     'xclip: copy files on X11'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('acea6989860a3ebc433c7146251d1593ece2db8c728956dc9e1adfe11cb4eb46')
+sha256sums=('db05818f3f05d985fe97ff8b96e7ff223fdb1635de1247352b3ac8073f6e0c85')
 
 build() {
     cd "Lorenz-$pkgver"
@@ -36,5 +36,5 @@ build() {
 
 package() {
     cd "Lorenz-$pkgver"
-    sh packaging/linux/stage.sh "$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build --prefix /usr --strip
 }
