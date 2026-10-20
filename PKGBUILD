@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cutecosmic-git
-pkgver=0.1.r1.g1469fa3
+pkgver=0.2.0.r1.g5fa7c22
 pkgrel=1
 pkgdesc="Qt platform theme for the COSMIC™ Desktop environment"
 arch=('x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}/bindings"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 }
 
 build() {
@@ -36,7 +36,7 @@ build() {
   cmake -B build -S "${pkgname%-git}" \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev
+    -Wno-author
   cmake --build build
 }
 

@@ -1,6 +1,6 @@
 pkgbase = cutecosmic-git
 	pkgdesc = Qt platform theme for the COSMIC™ Desktop environment
-	pkgver = 0.1.r1.g1469fa3
+	pkgver = 0.2.0.r1.g5fa7c22
 	pkgrel = 1
 	url = https://github.com/IgKh/cutecosmic
 	arch = x86_64
