@@ -1,0 +1,25 @@
+pkgbase = opto-bin
+	pkgdesc = See how busy your machine has been, and why
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kevinmcconnell/opto
+	install = opto.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libadwaita
+	depends = libgcc
+	depends = pango
+	depends = sqlite
+	optdepends = openssh: read other machines over ssh
+	provides = opto
+	conflicts = opto
+	options = !debug
+	options = !strip
+	source = https://github.com/kevinmcconnell/opto/releases/download/v0.1.0/opto-0.1.0-x86_64.tar.gz
+	sha256sums = 00ff4194b23e4f3bdc0d9cc3021d1d5f8272748f85846aced70053e182ff2bee
+
+pkgname = opto-bin

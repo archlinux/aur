@@ -1,0 +1,15 @@
+post_install() {
+  echo "To start the collector and connect Claude Code, run as your user:"
+  echo "  opto setup"
+}
+
+post_upgrade() {
+  echo "To restart the collector on the new version, run as your user:"
+  echo "  opto setup service"
+}
+
+pre_remove() {
+  echo "If you have not already, run this as your user to stop the collector"
+  echo "and remove the Claude Code status line:"
+  echo "  opto remove"
+}
