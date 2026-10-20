@@ -1,7 +1,7 @@
 pkgbase = proton-cachyos-native
 	pkgdesc = A compatibility tool for Steam Play based on Wine and additional components, experimental branch with extra CachyOS flavour (native build)
-	pkgver = 11.0.20261014
-	pkgrel = 2
+	pkgver = 11.0.20261015
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/CachyOS/proton-cachyos
 	install = proton-cachyos-native.install
@@ -146,7 +146,7 @@ pkgbase = proton-cachyos-native
 	options = emptydirs
 	options = pestrip
 	backup = usr/share/steam/compatibilitytools.d/proton-cachyos-native/user_settings.py
-	source = proton-cachyos::git+https://github.com/CachyOS/proton-cachyos.git#tag=cachyos-11.0-20261014-native
+	source = proton-cachyos::git+https://github.com/CachyOS/proton-cachyos.git#tag=cachyos-11.0-20261015-native
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-11.3.0/wine-mono-11.3.0-x86.tar.xz
@@ -154,7 +154,7 @@ pkgbase = proton-cachyos-native
 	source = https://github.com/vosen/ZLUDA/releases/download/v7-preview.15/zluda-windows-86ec0a9.zip
 	source = compatibilitytool.vdf.template
 	source = ntsync.conf
-	b2sums = 643b5396241257181c74afdaeb229f995fa43c76af837bb310785bc43fec60d305bb2757775ebfe87dbf078148a1f6fcf6a6595f1221d29d9a7594bb65c35236
+	b2sums = d55b53d0c81283038fadc4074ca590f0bc7dfbfd458a58589dbeda11c07dac58171fc403ca8611af0ad2b9f4f39bb064902970a1ca6065b865eaef214738db08
 	b2sums = 2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9
 	b2sums = 62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0
 	b2sums = 230b9094049fc8b0c5600c44ad9514541f4bb21a75a0fd32e5025aa4c267f3b1d0032929d215688ed8ebe6c1b3ade93e3643272305f6f81b734d376cdea257c2
