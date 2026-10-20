@@ -19,7 +19,7 @@
 # rename (verified against the 0164 worktree). If the dist name ever changes,
 # update `_bitty_asset` here and in `release.yml` together.
 pkgname=bitty-bin
-pkgver=0.0.23
+pkgver=0.0.24
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source_x86_64=(
   "bitty-${pkgver}.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums_x86_64=(
-  '007bc150ddd5aab6f5dfde6c2ba38699e6ba05dc8f3f131c438a235bb8d38855'
+  '7d434129ea171a0b73a4d207197ae1d673824af74a2119ec7b90d64d2b2343b6'
   'SKIP'
 )
 

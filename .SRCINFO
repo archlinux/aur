@@ -1,6 +1,6 @@
 pkgbase = bitty-bin
 	pkgdesc = Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)
-	pkgver = 0.0.23
+	pkgver = 0.0.24
 	pkgrel = 1
 	url = https://github.com/bitty-terminal/bitty
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = bitty-bin
 	conflicts = bitty
 	conflicts = bitty-nightly
 	conflicts = bitty-git
-	source_x86_64 = bitty-x86_64-unknown-linux-gnu::https://github.com/bitty-terminal/bitty/releases/download/v0.0.23/bitty-x86_64-unknown-linux-gnu
-	source_x86_64 = bitty-0.0.23.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v0.0.23.tar.gz
-	sha256sums_x86_64 = 007bc150ddd5aab6f5dfde6c2ba38699e6ba05dc8f3f131c438a235bb8d38855
+	source_x86_64 = bitty-x86_64-unknown-linux-gnu::https://github.com/bitty-terminal/bitty/releases/download/v0.0.24/bitty-x86_64-unknown-linux-gnu
+	source_x86_64 = bitty-0.0.24.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v0.0.24.tar.gz
+	sha256sums_x86_64 = 7d434129ea171a0b73a4d207197ae1d673824af74a2119ec7b90d64d2b2343b6
 	sha256sums_x86_64 = SKIP
 
 pkgname = bitty-bin
