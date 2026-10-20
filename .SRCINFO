@@ -1,6 +1,6 @@
 pkgbase = stm32cubemonitor
 	pkgdesc = Monitoring tool to test STM32 applications at run-time
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubemonitor.html
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = stm32cubemonitor
 	depends = util-linux-libs
 	depends = stlink
 	options = !strip
-	source = local://stm32cubemon-lin-v-1-12-0.zip
+	source = local://STM32CubeMonitor_lin.zip
 	source = http_headers
-	sha256sums = f9596c0d33e5376d7fa0c6f94cd4009cd201f3e67e16f6ee0b96529bc5c22fe1
+	sha256sums = 2dfd7b7929a51d79c23904d8dfcd77dfac9e8ee70f3551510545267c9950382c
 	sha256sums = 177c920f68668f7a435e952b265163fe25376ae6332dcb4f924931370b113fed
 
 pkgname = stm32cubemonitor

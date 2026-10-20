@@ -3,8 +3,8 @@
 
 pkgname="stm32cubemonitor"
 _pkgname="STM32CubeMon"
-_pkg_file_name="stm32cubemon-lin-v-1-12-0.zip"
-pkgver=1.12.0
+_pkg_file_name="STM32CubeMonitor_lin.zip"
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Monitoring tool to test STM32 applications at run-time"
 arch=('x86_64')
@@ -26,7 +26,7 @@ DLAGENTS=("https::/usr/bin/curl -gqb '' --retry 3 --retry-delay 3 -H "@${srcdir}
               
 source=("local://${_pkg_file_name}"
       	"http_headers")
-sha256sums=('f9596c0d33e5376d7fa0c6f94cd4009cd201f3e67e16f6ee0b96529bc5c22fe1'
+sha256sums=('2dfd7b7929a51d79c23904d8dfcd77dfac9e8ee70f3551510545267c9950382c'
             '177c920f68668f7a435e952b265163fe25376ae6332dcb4f924931370b113fed')
 
 prepare() {
