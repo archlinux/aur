@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=ripwire-bin
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="C++23 CLI and MCP server providing ranked repository context, blast radius, tests-to-run and quality deltas for AI agents"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ _archive_x86_64="ripwire-${pkgver}-linux-x64.tar.gz"
 _archive_aarch64="ripwire-${pkgver}-linux-arm64.tar.gz"
 source_x86_64=("${_archive_x86_64}::${url}/releases/download/v${pkgver}/${_archive_x86_64}")
 source_aarch64=("${_archive_aarch64}::${url}/releases/download/v${pkgver}/${_archive_aarch64}")
-sha256sums_x86_64=('9a1b44da5d17464518be25539354c931499d2b008ff94096384f211d18814755')
-sha256sums_aarch64=('4510ad5ce1f03f1206e3743c32977b5155db21aaa7e4e8fb91fe9bd0b0f60830')
+sha256sums_x86_64=('aa09e8c43acd2104db91a80f2824a36c314ea4a72fd565cd2e579e043e09b03b')
+sha256sums_aarch64=('9015c41ac80af640cda54d98f69b68973e18f5b1c7c3c1116d80f81989513276')
 
 package() {
   local archive_var="_archive_${CARCH}"
