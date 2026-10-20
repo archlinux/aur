@@ -1,38 +1,41 @@
-# Maintainer: Maxim Logaev <maximlogaev2001ezro@gmail.com>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: Maxim Logaev <maximlogaev2001ezro@gmail.com>
 
-pkgname=zasm-git
-_name=zasm
-pkgver=4.4.13.r0.gb91d51d
+_pkgname=zasm
+pkgname="$_pkgname"-git
+pkgver=4.5.0.r3.g3580ebb
 pkgrel=1
-pkgdesc='Z80/8080/Z180 assembler'
-arch=('any')
+pkgdesc="Z80/8080/Z180 assembler (bleeding edge)"
+arch=('x86_64')
 url="https://k1.spdns.de/Develop/Projects/zasm/Distributions/"
-license=('BSD')
-provides=('zasm')
-depends=('zlib')
+license=('BSD-2-Clause')
+depends=('libstdc++' 'libgcc' 'glibc' 'zlib')
 makedepends=('git')
+provides=('zasm')
 conflicts=('zasm')
 
-source=("git+https://github.com/Megatokio/zasm")
+source=("git+https://github.com/Megatokio/zasm#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_name
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_name
+  cd "$_pkgname"
   git submodule init
   git submodule update
 }
 
 build() {
-  cd $_name
+  cd "$_pkgname"
   make
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  install -Dm755 $_name/zasm $pkgdir/usr/bin/zasm
+  cd "$_pkgname"
+  
+  install -Dm755 zasm "$pkgdir"/usr/bin/zasm
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
