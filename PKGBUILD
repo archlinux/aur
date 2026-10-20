@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Arrieta <sarrietav.dev@gmail.com>
 pkgname=omaread-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A fast, keyboard-first EPUB reader for Omarchy (prebuilt)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('omaread')
 conflicts=('omaread')
 options=('!debug')
 source=("$url/releases/download/v$pkgver/omaread-$pkgver-x86_64.tar.gz")
-sha256sums=('2218b783ec0e92538b88a46bf4426241354fbbd741483ce022d4bccba9074725')
+sha256sums=('017710b6dd2a6b6826ec1ab70524fb056f6b52790dd67c8c8d74cb6c75cb1367')
 
 package() {
   cd "omaread-$pkgver-x86_64"
