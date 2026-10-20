@@ -1,0 +1,15 @@
+_notice() {
+  echo -e "\e[1;33m$1\e[0m"
+}
+
+post_install() {
+  _notice 'You have to start the barracudavpn-daemon as root'
+  _notice '(you can use the include barracudavpn.service for this)'
+  _notice ''
+  _notice 'You have to add the user using the vpn to vpnusers group and'
+  _notice 'optionally the tss group to use TPM credential storage'
+}
+
+post_upgrade() {
+  post_install
+}

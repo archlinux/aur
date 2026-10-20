@@ -7,6 +7,7 @@ pkgdesc="Barracuda VPN Client for Linux - needs original download from Barracuda
 arch=("i386" "x86_64")
 conflicts=('barracudavpn')
 provides=('barracudavpn')
+install=${pkgname}.install
 
 url="https://campus.barracuda.com/product/networkaccessclient"
 _download_url="http://dlportal.barracudanetworks.com/"

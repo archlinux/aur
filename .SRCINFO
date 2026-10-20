@@ -3,6 +3,7 @@ pkgbase = barracudavpn-bin
 	pkgver = 5.3.10
 	pkgrel = 1
 	url = https://campus.barracuda.com/product/networkaccessclient
+	install = barracudavpn-bin.install
 	arch = i386
 	arch = x86_64
 	license = LicenseRef-FortiClientSSLVPN
