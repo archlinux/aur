@@ -4,7 +4,7 @@
 
 _pkgname='caelestia-shell'
 pkgname="$_pkgname-git"
-pkgver=2.4.0.r0.g24aa15e
+pkgver=2.5.0.r31.g5dec9b5
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64' 'aarch64')
@@ -38,6 +38,7 @@ depends=(
     'qt6-base'
     'qt6-declarative'
     'qt6-imageformats'
+    'qt6-multimedia'
     'qt6-m3shapes-git' # We use -git explicitly to because midnight-shell provides the normal package
 
     # Extra functionality
