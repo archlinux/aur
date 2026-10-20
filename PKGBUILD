@@ -2,7 +2,7 @@
 
 _pkgname=engram
 pkgname=engram-bin
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Persistent memory system for AI coding agents - SQLite + FTS5 with MCP server, HTTP API, CLI, and TUI"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Gentleman-Programmin
 source_x86_64=("$_pkgname-$pkgver-linux-amd64.tar.gz::https://github.com/Gentleman-Programming/$_pkgname/releases/download/v$pkgver/engram_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/Gentleman-Programming/$_pkgname/releases/download/v$pkgver/engram_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('09608597ddda4e5f9033ac407a0d401986d96376c47f6d46789ca38db672dc15')
-sha256sums_x86_64=('715fda625556e46d65ddb4526bb7f88a3fee5339ca3c44ce44cc652f17fa57f1')
-sha256sums_aarch64=('3309e9c0bbb539d183fd5aa9f9a13cd7aa0e81ec2512b5bedefb8b2bdd35b3e5')
+sha256sums_x86_64=('739d188cb03634a77d435ad4a8039de30e599b0e696256ebf7118b29675307ca')
+sha256sums_aarch64=('a79faa012efe201a2c29daccf6273c073553e78f717fdc5fe08206ad3540b45a')
 options=('!debug')
 
 package() {
