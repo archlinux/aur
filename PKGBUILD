@@ -4,14 +4,14 @@
 pkgname='sqlpage'
 _pkgname='SQLPage'
 pkgver=0.47.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast SQL-only data application builder. Automatically build a UI on top of SQL queries'
 url='https://sql-page.com'
 _srcurl='https://github.com/sqlpage/SQLPage'
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'npm')
 source=("$pkgname-$pkgver.tar.gz::${_srcurl}/archive/v$pkgver.tar.gz")
 b2sums=('4d77f0cacb381c1beb9d37b4991d353795b1a2d964722d949a0473cd50c97319659ce1b2e94034e3f1553540d2382e4acb43b9d1213f2eda7506815a6775b44d')
 options=(!lto)
@@ -19,10 +19,12 @@ options=(!lto)
 prepare() {
   cd "${_pkgname}-${pkgver}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  npm ci
 }
 
 build() {
   cd "${_pkgname}-${pkgver}"
+  npm run build
   cargo build --frozen --release --all-features
 }
 
