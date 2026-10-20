@@ -2,7 +2,7 @@
 
 pkgname=hypr-kblayoutd-git
 _pkgname=hypr-kblayoutd
-pkgver=0.3.1.r0.g9621c86
+pkgver=0.4.0.r0.g8eeb6e9
 pkgrel=1
 pkgdesc="Small Hyprland daemon that remembers keyboard layout per window"
 arch=('x86_64' 'aarch64')
@@ -50,6 +50,9 @@ package() {
 
   install -Dm644 README.md \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  install -Dm644 CHANGELOG.md \
+    "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
   install -Dm644 docs/benchmarks.md \
     "$pkgdir/usr/share/doc/$pkgname/benchmarks.md"
