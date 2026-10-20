@@ -1,6 +1,6 @@
 pkgbase = owmods-gui-bin
 	pkgdesc = A GUI To Manage Outer Wilds Mods
-	pkgver = 0.15.7
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/ow-mods/ow-mod-man/tree/main/owmods_gui
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = owmods-gui-bin
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = libsoup
+	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source = owmods_gui-0.15.7-x86_64.deb::https://github.com/ow-mods/ow-mod-man/releases/download/gui_v0.15.7/Outer.Wilds.Mod.Manager_0.15.7_amd64.deb
-	sha256sums = 07398d39144d65651c3e07a0d51e835674b1d0091c7fb65bc64749b6060e75c3
+	source = owmods_gui-0.16.0-x86_64.deb::https://github.com/ow-mods/ow-mod-man/releases/download/gui_v0.16.0/Outer.Wilds.Mod.Manager_0.16.0_amd64.deb
+	sha256sums = 81ae56bd19f3341a319ce11c3ca6dfac2e413488f6b6fd8e98066c2b695d3764
 
 pkgname = owmods-gui-bin
