@@ -1,13 +1,13 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-git
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/spotifast"
 license=('MIT')
 install="${pkgname}.install"
-depends=('dbus' 'alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+depends=('dbus' 'alsa-lib' 'libpipewire' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 # MilkDrop builds libprojectM from source at compile time: cmake drives
 # that build, and clang carries the libclang bindgen reads its headers
 # with. Build with --no-default-features to leave the visualiser out.
