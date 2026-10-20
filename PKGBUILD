@@ -1,7 +1,7 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-git
 pkgver=r1211.4254d16
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An open source UTAU successor"
 arch=('x86_64')
@@ -10,9 +10,11 @@ license=('MIT')
 depends=('dotnet-host' 'dotnet-runtime' 'dotnet-targeting-pack' 'dotnet-sdk' 'fuse2' 'fuse3' 'fuse-common')
 options=(staticlibs)
 source=("git+https://github.com/stakira/OpenUtau.git"
-        "OpenUtau-git.desktop")
+        "openutau.desktop"
+        "openutau.svg")
 sha256sums=('SKIP'
-            'da52ea07cc3507d8bfead0df5c955dc66265acade1c2fc1821816319c09e8b15')
+            '46cdff454ee6ea172ccdd912d64480a2ce7ffc123a89b183ffc74e314fc3c854'
+            '490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b')
 
 pkgver() {
     cd "$srcdir"/OpenUtau
@@ -40,8 +42,8 @@ package() {
     install -Dm755 "$srcdir"/openutau "$pkgdir"/usr/bin/openutau
 
     # Icon
-    install -Dm644 "$srcdir"/OpenUtau/Logo/openutau.svg "$pkgdir"/usr/share/pixmaps/openutau.svg
+    install -Dm644 "$srcdir"/openutau.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/openutau.svg
 
     # Desktop file
-    install -Dm644 "$srcdir"/OpenUtau-git.desktop "$pkgdir"/usr/share/applications/OpenUtau-git.desktop
+    install -Dm644 "$srcdir"/openutau.desktop "$pkgdir"/usr/share/applications/openutau.desktop
 }
