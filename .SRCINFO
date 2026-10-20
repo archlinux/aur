@@ -1,6 +1,6 @@
 pkgbase = gcopy
 	pkgdesc = A clipboard synchronization service for different devices that can synchronize text, screenshots, and files
-	pkgver = 2.1.4
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://github.com/llaoj/gcopy
 	install = gcopy.install
@@ -21,9 +21,9 @@ pkgbase = gcopy
 	conflicts = gcopy-web
 	replaces = gcopy-web
 	backup = etc/conf.d/gcopy
-	source = gcopy-2.1.4.tar.gz::https://github.com/llaoj/gcopy/archive/refs/tags/v2.1.4.tar.gz
+	source = gcopy-2.1.6.tar.gz::https://github.com/llaoj/gcopy/archive/refs/tags/v2.1.6.tar.gz
 	source = gcopy.service
-	sha256sums = 07703c61c76490c68c13f9e230cbb46127af70a5d2e2ccb33f7cbf26865d36fa
+	sha256sums = 304410be9daa6728dd487efdc95701fd415c23324b5887e7a66a879804554b09
 	sha256sums = 03d17f7cf39eaf04d36ab8defb1f14effb33eb061b52c4ab64f401d3ce2b8934
 
 pkgname = gcopy
