@@ -4,3 +4,7 @@
 src/
 pkg/
 *.log
+
+# downloaded sources
+app-icon.png
+transmission-remote-slint-v*-linux-x64
