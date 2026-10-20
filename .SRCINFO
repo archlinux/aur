@@ -1,6 +1,6 @@
 pkgbase = agent-glovebox
 	pkgdesc = Hardware-isolated, allowlist-firewalled sandbox for running Claude Code
-	pkgver = 0.88.0
+	pkgver = 0.88.1
 	pkgrel = 1
 	url = https://github.com/AlexanderMattTurner/agent-glovebox
 	install = agent-glovebox.install
@@ -17,7 +17,7 @@ pkgbase = agent-glovebox
 	optdepends = npm: package manager backing the in-image install
 	conflicts = claude-guard
 	replaces = claude-guard
-	source = agent-glovebox-0.88.0.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/archive/refs/tags/v0.88.0.tar.gz
-	sha256sums = 560f33ce4a12928dd4875c4a1e0928d82a479e7f88ba01b687339b3d287772cc
+	source = agent-glovebox-0.88.1.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/archive/refs/tags/v0.88.1.tar.gz
+	sha256sums = 9012ac82c4df4e39e8ca7d8d79d57ce3651ef9e9f7cc7f93bfb99beb3266aa35
 
 pkgname = agent-glovebox
