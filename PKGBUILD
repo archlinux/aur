@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=msime-bin
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="MSIME (Metasequoia) Linux input method: IBus host, desktop tools and a Fcitx5 addon"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ _upstream_deb="msime-linux_${pkgver}"
 
 source_x86_64=("${_upstream_deb}_amd64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v${pkgver}/${_upstream_deb}_amd64.deb")
 source_aarch64=("${_upstream_deb}_arm64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v${pkgver}/${_upstream_deb}_arm64.deb")
-sha256sums_x86_64=('61b21629d0dea5c5d3bc6e5196d03d462de3b5309467d8bbfc21800398d96037')
-sha256sums_aarch64=('999a36db680d427812ad821950646493245b3a6543af7e1f5951f0d905adca2b')
+sha256sums_x86_64=('84b023a69689a4493b70f36c1af3e27cb186bcbacc4ae2d5424f45f83208a5d6')
+sha256sums_aarch64=('4240ad172a73771f7ba598cef9aba2e219358cc9867306ffef859686f815a71d')
 noextract=(
     "${_upstream_deb}_amd64.deb"
     "${_upstream_deb}_arm64.deb"
