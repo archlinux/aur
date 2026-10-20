@@ -1,6 +1,6 @@
 pkgbase = spotifast
 	pkgdesc = Native Spotify client
-	pkgver = 0.13.3
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/crmne/spotifast
 	install = spotifast.install
@@ -12,7 +12,7 @@ pkgbase = spotifast
 	makedepends = clang
 	depends = dbus
 	depends = alsa-lib
-	depends = libpulse
+	depends = libpipewire
 	depends = libglvnd
 	depends = libxkbcommon
 	depends = wayland
@@ -23,7 +23,7 @@ pkgbase = spotifast
 	conflicts = spotifast-git
 	options = !debug
 	options = !lto
-	source = spotifast-0.13.3.tar.gz::https://github.com/crmne/spotifast/releases/download/v0.13.3/spotifast-v0.13.3-source.tar.gz
-	sha256sums = 3b4b4da00185f8d2601153c1d5a27e3e6e1c6f85af9bf5fdedb24436125d4126
+	source = spotifast-0.14.0.tar.gz::https://github.com/crmne/spotifast/releases/download/v0.14.0/spotifast-v0.14.0-source.tar.gz
+	sha256sums = de8e2234dd6637276cd36bc4889ed9cd7a60d6a05b1be956261ad3a1af3894b3
 
 pkgname = spotifast

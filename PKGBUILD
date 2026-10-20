@@ -1,13 +1,13 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/spotifast"
 license=('MIT')
 install="${pkgname}.install"
-depends=('dbus' 'alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+depends=('dbus' 'alsa-lib' 'libpipewire' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 makedepends=('cargo' 'cmake' 'clang')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
@@ -17,7 +17,7 @@ conflicts=('spotifast-bin' 'spotifast-git')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spotifast-v${pkgver}-source.tar.gz")
-sha256sums=('3b4b4da00185f8d2601153c1d5a27e3e6e1c6f85af9bf5fdedb24436125d4126')
+sha256sums=('de8e2234dd6637276cd36bc4889ed9cd7a60d6a05b1be956261ad3a1af3894b3')
 
 _source_dir() {
   printf '%s\n' "${srcdir}/spotifast-${pkgver}"
