@@ -64,7 +64,10 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/ -DDISTRIBUTOR="AUR (package: $pkgname)"
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/ \
+        -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
 }
 
