@@ -1,4 +1,5 @@
 [azion-cli-bin]
 source = "github"
 github = "aziontech/azion"
-use_latest_release = true
+use_max_release = true
+include_regex = '(\d)+\.(\d)+\.(\d)+'
