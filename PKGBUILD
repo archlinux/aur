@@ -3,7 +3,7 @@
 pkgname=flow-control-git
 _pkgname=flow-control
 __pkgname=flow
-pkgver=r1908.5c84441
+pkgver=r4568.262f4041
 pkgrel=1
 pkgdesc="a programmer's text editor"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 build() {
     cd "${__pkgname}"
 
-    zig build -Doptimize=ReleaseFast
+    zig build -Doptimize=fast
 }
 
 package() {
@@ -34,6 +34,5 @@ package() {
     install -Dm755 "zig-out/bin/${__pkgname}" "${pkgdir}/usr/bin/${__pkgname}"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    install -Dm644 "contrib/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "contrib/icons/192x192/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -dDm644 "contrib/share" "${pkgdir}/usr/share"
 }

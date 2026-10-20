@@ -1,6 +1,6 @@
 pkgbase = flow-control-git
 	pkgdesc = a programmer's text editor
-	pkgver = r1908.5c84441
+	pkgver = r4568.262f4041
 	pkgrel = 1
 	url = https://github.com/neurocyte/flow
 	arch = x86_64
