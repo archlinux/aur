@@ -1,41 +1,37 @@
+# ele-messenger-server
+
+# True when some enabled nginx config already serves the messenger, by any
+# route: the packaged snippet, the locations file, or its own /ele-api block.
+_ele_nginx_wired() {
+    grep -rqsE 'ele-messenger(\.conf)?;|location /ele-api/' \
+        /etc/nginx/nginx.conf /etc/nginx/sites-enabled /etc/nginx/conf.d 2>/dev/null
+}
+
 post_install() {
     useradd -r -s /sbin/nologin -d /usr/lib/ele-messenger ele-messenger 2>/dev/null || true
     mkdir -p /var/lib/ele-messenger
     chown ele-messenger:ele-messenger /var/lib/ele-messenger
 
-    SNIPPET="    include /etc/nginx/sites-available/ele-messenger;"
-    INJECTED=0
-
-    if [ -d /etc/nginx/sites-enabled ]; then
-        for f in /etc/nginx/sites-enabled/*; do
-            [ -f "$f" ] || continue
-            if grep -q 'listen 80' "$f" && ! grep -qF "$SNIPPET" "$f"; then
-                sed -i "$(grep -n '^}' "$f" | tail -1 | cut -d: -f1)i\\$SNIPPET" "$f"
-                INJECTED=1
-                echo "==> Injected ELE nginx snippet into $f"
-                break
-            fi
-        done
-    fi
-
-    if [ "$INJECTED" = "0" ]; then
-        if ! grep -rqF "$SNIPPET" /etc/nginx/sites-enabled/ 2>/dev/null; then
-            cat > /etc/nginx/sites-available/ele-messenger-standalone << 'NGEOF'
+    # Only when nothing serves it yet: a block of its own on port 80. Other
+    # sites' files are never edited, and running this again changes nothing.
+    if ! _ele_nginx_wired; then
+        mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
+        cat > /etc/nginx/sites-available/ele-messenger-standalone << 'NGEOF'
 server {
     listen 80;
     include /etc/nginx/sites-available/ele-messenger;
 }
 NGEOF
-            ln -sf /etc/nginx/sites-available/ele-messenger-standalone \
-                /etc/nginx/sites-enabled/ele-messenger-standalone
-            echo "==> Created standalone nginx block on port 80"
-        fi
+        ln -sf /etc/nginx/sites-available/ele-messenger-standalone \
+            /etc/nginx/sites-enabled/ele-messenger-standalone
+        echo "==> Serving ELE Messenger on port 80 (nginx: sites-enabled/ele-messenger-standalone)."
+        echo "==> Make sure nginx.conf includes sites-enabled/*."
     fi
 
-    nginx -t && systemctl reload nginx || echo "==> nginx reload failed — check config"
+    nginx -t && systemctl reload nginx || echo "==> nginx reload failed; check its config"
     systemctl daemon-reload
     systemctl enable --now ele-messenger
-    echo "==> ELE Messenger started."
+    echo "==> ELE Messenger server started."
 }
 
 post_upgrade() {

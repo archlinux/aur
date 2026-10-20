@@ -1,0 +1,16 @@
+# ele-messenger (the app and mesh service)
+
+post_install() {
+    echo "==> Start the mesh service for your user (once):"
+    echo "      systemctl --user enable --now elemesh"
+    echo "==> Then open ELE Messenger and enter your mesh passphrase."
+}
+
+post_upgrade() {
+    # Until 1.4.2 this package name was the server.
+    if [ "$(vercmp "$2" 1.4.2)" -lt 0 ] && ! pacman -Qq ele-messenger-server >/dev/null 2>&1; then
+        echo "==> ele-messenger is now the app and mesh service every machine installs."
+        echo "==> The server moved to ele-messenger-server: install it to keep this machine serving."
+    fi
+    echo "==> Restart the mesh service to use the new version: systemctl --user restart elemesh"
+}
