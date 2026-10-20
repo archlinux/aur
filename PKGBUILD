@@ -2,8 +2,8 @@
 
 pkgname=zashterminal
 # NOTE: CI updates this value automatically based on
-# locale/src/zashterminal/settings/config.py (APP_VERSION).
-pkgver=0.8.10
+# src/zashterminal/settings/config.py (APP_VERSION).
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="A modern GTK4/Adwaita terminal emulator with advanced session management, SSH integration, and security features."
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
     'python-pywal16>=3.8' 'imagemagick'
     'gtk4' 'libadwaita' 'libsecret' 'python' 'python-cairo' 'python-py7zr'
     'python-gobject' 'python-setproctitle' 'python-requests' 'python-psutil'
+    'python-pycryptodomex'
     'sshpass' 'rsync' 'vte4' 'gobject-introspection' 'python-regex' 'python-pygments'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'uv' 'gettext')
