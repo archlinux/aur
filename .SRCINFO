@@ -1,0 +1,16 @@
+pkgbase = ivi-cli
+	pkgdesc = Integrated CLI for managing, diagnosing, and operating VISA/IVI instruments
+	pkgver = 0.5.0beta.1
+	pkgrel = 1
+	url = https://github.com/ShortArrow/ivi-cli
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = dotnet-sdk
+	depends = aspnet-runtime
+	conflicts = ivi-cli-bin
+	options = !debug
+	source = ivi-cli-0.5.0beta.1.tar.gz::https://github.com/ShortArrow/ivi-cli/archive/refs/tags/v0.5.0-beta.1.tar.gz
+	sha256sums = 805e39fc2b66bc71d568c7725866e112845d85cbab155c252085569232581dd3
+
+pkgname = ivi-cli
