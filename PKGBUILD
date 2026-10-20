@@ -1,8 +1,8 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=openutau
-pkgver=0.1.575
+pkgver=0.1.576
 pkgrel=1
-_tag=$pkgver-beta
+_tag=$pkgver
 pkgdesc="Open source UTAU successor"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/openutau/OpenUtau"
@@ -13,7 +13,7 @@ options=(!strip)
 source=("OpenUtau-$_tag.tar.gz::https://github.com/openutau/OpenUtau/archive/refs/tags/$_tag.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.svg")
-sha256sums=('6b87460731189076cf266bc98733082f27cb9e78fbf4b3c6b4252b79fa143921'
+sha256sums=('2cb4d47660d1b657cc3c5847f1a7ac135ad21400c84ce16cbbd5d7929e349393'
             '46cdff454ee6ea172ccdd912d64480a2ce7ffc123a89b183ffc74e314fc3c854'
             '490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b')
 
