@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux
 	pkgdesc = Unofficial Microsoft Teams client for Linux using Electron.
-	pkgver = 2.25.0
+	pkgver = 2.26.0
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = teams-for-linux
 	depends = libxss
 	depends = nss
 	optdepends = libfido2: WebAuthn with FIDO2 devices
-	source = teams-for-linux-2.25.0.tar.gz::https://github.com/IsmaelMartinez/teams-for-linux/archive/v2.25.0.tar.gz
+	source = teams-for-linux-2.26.0.tar.gz::https://github.com/IsmaelMartinez/teams-for-linux/archive/v2.26.0.tar.gz
 	source = teams-for-linux.desktop
-	sha256sums = 2b689746c2acbbce7c8425bd9fccaee0022b0d0b7947db83213502661ca29c6d
+	sha256sums = c2273777f044eb1ce0debd3252945f15fe09623fab9e82272a3b2d3c4a37aa6d
 	sha256sums = e67c98084736f797c575970935dd773b5c348ea3d9522bc5db733a92361fc05e
 
 pkgname = teams-for-linux
