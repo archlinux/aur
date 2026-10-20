@@ -1,21 +1,21 @@
 pkgbase = sdkman-bin
 	pkgdesc = The Software Development Kit Manager Command Line Interface
-	pkgver = 5.22.5
-	pkgrel = 3
+	pkgver = 5.23.2
+	pkgrel = 1
 	url = https://sdkman.io/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = curl
-	provides = sdkman=5.22.5
+	provides = sdkman=5.23.2
 	conflicts = sdkman
-	source_x86_64 = sdkman-5.22.5.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.22.5/sdkman-cli-5.22.5.zip
+	source_x86_64 = sdkman-5.23.2.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.23.2/sdkman-cli-5.23.2.zip
 	source_x86_64 = sdkman-native-0.7.35.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.35/sdkman-cli-native-0.7.35-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 301de44c2455c061c8ac40fae194dd9287251115e34f8d86de68914510eb12c9
+	sha256sums_x86_64 = d5ab363da944ad803b42470f73dd1b7beabad7d7b18f9eb2252ed485aabefbb5
 	sha256sums_x86_64 = d5130a98a6bfbda78dbfe50515996c40f53fce99c5d62748a80ca901d81163b3
-	source_aarch64 = sdkman-5.22.5.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.22.5/sdkman-cli-5.22.5.zip
+	source_aarch64 = sdkman-5.23.2.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.23.2/sdkman-cli-5.23.2.zip
 	source_aarch64 = sdkman-native-0.7.35.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.35/sdkman-cli-native-0.7.35-x86_64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 301de44c2455c061c8ac40fae194dd9287251115e34f8d86de68914510eb12c9
+	sha256sums_aarch64 = d5ab363da944ad803b42470f73dd1b7beabad7d7b18f9eb2252ed485aabefbb5
 	sha256sums_aarch64 = 5f8645c47e06ddf34f8925fe799f1d87c382689893dca839145051a30c462fa5
 
 pkgname = sdkman-bin
