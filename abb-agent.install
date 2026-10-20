@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'MSG'
+==> abb-agent is installed but does nothing yet. To set it up:
+    1. Pair with the NAS:  sudo abb-agent connect -a <nas> -u <dsm user>
+    2. Edit /etc/abb-agent.toml: it contains only comments; choose the disks
+       (e.g. disks = ["system"]), schedule, excluded subvolumes and hooks.
+    3. Start the service:  sudo systemctl enable --now abb-agent
+       and, if you exclude subvolumes:  sudo systemctl enable abb-agent-fixup
+    abb-restore (bare-metal restore) is in /usr/bin as well.
+    Documentation: https://github.com/rylos/abb-agent
+MSG
+}
+
+post_upgrade() {
+  echo "==> abb-agent: restart the service to use the new version: sudo systemctl restart abb-agent"
+}
