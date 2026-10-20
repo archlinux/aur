@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="mcuviewer-bin"
-pkgver=1.2.7
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Real-time embedded variable & trace viewer "
 arch=("x86_64")
@@ -13,8 +13,8 @@ url="https://mcuviewer.com"
 license=('comercial')
 options=(!strip)
 
-source=(${pkgname}_${pkgver}.zip::https://download.mcuviewer.com/releases/stable/1.2.7_fa2999b/MCUViewer_Linux_${pkgver}.zip)
-sha256sums=('844a6226e8a90522ef691287d9154960c0fea01db1300690e9833a3016f2c400')
+source=(${pkgname}_${pkgver}.zip::https://download.mcuviewer.com/releases/stable/1.3.0_13757d9/MCUViewer_Linux_${pkgver}.zip)
+sha256sums=('ee6aba6b33343353ccd95f4f308053086f86fc6a675c089db867f8f679c61798')
 
 prepare()
 {
