@@ -26,6 +26,7 @@ depends=(
   'libxrandr'
   'libcosmic-git'
   'mesa'
+  'vulkan-icd-loader'
   'nspr'
   'nss'
   'pango'

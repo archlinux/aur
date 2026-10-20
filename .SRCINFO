@@ -30,6 +30,7 @@ pkgbase = cosmic-tasks
 	depends = nss
 	depends = pango
 	depends = systemd-libs
+	depends = vulkan-icd-loader
 	checkdepends = appstream
 	checkdepends = desktop-file-utils
 	source = git+https://github.com/cosmic-utils/tasks.git#tag=0.3.1
