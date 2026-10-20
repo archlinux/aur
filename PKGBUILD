@@ -1,9 +1,9 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 # Contributor: Felix Häcker <haeckerfelix@gnome.org>
 pkgname=shortwave-mpris-git
-pkgver=5.1.0.r9.g9586a15
+pkgver=5.2.0.r0.g2698206
 pkgrel=1
-pkgdesc="Internet radio player with extended MPRIS support, device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams"
+pkgdesc="Internet radio player with tray icon, media casting and MPRIS integration. Device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ixnewton/Shortwave-MPRIS"
 license=('GPL3')
@@ -25,7 +25,7 @@ depends=(
     'lcms2>=2.12.0'
     'libseccomp>=2.5.0'
 )
-makedepends=('git' 'rust>=1:1.82.0' 'cargo' 'pkgconf' 'meson' 'ninja' 'blueprint-compiler' 'desktop-file-utils' 'appstream-glib' 'glib2')
+makedepends=('git' 'rust>=1:1.82.0' 'cargo' 'pkgconf' 'meson' 'ninja' 'desktop-file-utils' 'appstream' 'glib2')
 provides=('shortwave' 'shortwave-mpris')
 conflicts=('shortwave' 'shortwave-mpris' 'shortwave-mpris-bin')
 options=('!lto')

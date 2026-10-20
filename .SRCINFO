@@ -1,6 +1,6 @@
 pkgbase = shortwave-mpris-git
-	pkgdesc = Internet radio player with extended MPRIS support, device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams
-	pkgver = 5.1.0.r9.g9586a15
+	pkgdesc = Internet radio player with tray icon, media casting and MPRIS integration. Device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams
+	pkgver = 5.2.0.r0.g2698206
 	pkgrel = 1
 	url = https://github.com/ixnewton/Shortwave-MPRIS
 	install = shortwave-mpris-git.install
@@ -13,9 +13,8 @@ pkgbase = shortwave-mpris-git
 	makedepends = pkgconf
 	makedepends = meson
 	makedepends = ninja
-	makedepends = blueprint-compiler
 	makedepends = desktop-file-utils
-	makedepends = appstream-glib
+	makedepends = appstream
 	makedepends = glib2
 	depends = gtk4>=4.18.0
 	depends = libadwaita>=1.8.0
