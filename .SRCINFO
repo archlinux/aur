@@ -1,6 +1,6 @@
 pkgbase = prism-harness-suite
 	pkgdesc = PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime
-	pkgver = 1.0.0_rc.6
+	pkgver = 1.0.0_rc.7
 	pkgrel = 1
 	url = https://getharness.app
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = prism-harness-suite
 	noextract = route-chevrotain-11.2.0.tgz
 	noextract = route-kdljs-0.3.0.tgz
 	noextract = route-lodash-es-4.17.23.tgz
-	source = prism-harness::git+https://git.sovereign-society.org/prism/prism-harness.git#commit=c707c39c90ba0538a9b21c4c2413a1a560ebf1dd
+	source = prism-harness::git+https://git.sovereign-society.org/prism/prism-harness.git#commit=26af5354888fd74a2fe28a59e57762499f3a5d65
 	source = prism-loop::git+https://git.sovereign-society.org/prism/prism-loop.git#commit=5f5959acbc8912abd40b849b6f079614ee3cd6e1
 	source = prism-sober::git+https://git.sovereign-society.org/prism/prism-sober.git#commit=e29819e4754a53d13bf9815fa1f4c1f181e2fef3
 	source = prism-proxy::git+https://git.sovereign-society.org/prism/prism-proxy.git#commit=b04700c25d26cd59eb42ac8ffc7ed13a60b64411

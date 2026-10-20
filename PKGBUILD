@@ -1,6 +1,6 @@
 # Maintainer: Markus Maiwald <markus@maiwald.tk>
 pkgname=prism-harness-suite
-pkgver=1.0.0_rc.6
+pkgver=1.0.0_rc.7
 pkgrel=1
 pkgdesc="PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime"
 arch=('x86_64')
@@ -15,13 +15,13 @@ conflicts=('prism-harness' 'prism-mem' 'prism-loop' 'prism-proxy' 'prism-route' 
 # npm tarball verified against the sha512 its project lockfile records; nothing
 # is cloned or resolved in build(). Components are pinned by the commit their
 # signed release tag points to, so a moved tag cannot change the build.
-# This AUR copy also pins prism-harness to the commit its v1.0.0-rc.6 tag
+# This AUR copy also pins prism-harness to the commit its v1.0.0-rc.7 tag
 # points to (the in-repo copy cannot contain its own commit).
 _forge=https://git.sovereign-society.org/prism
-_tag=v1.0.0-rc.6
+_tag=v1.0.0-rc.7
 # loop, proxy, route: v1.0.0-rc.6; sober: v1.2.0-rc.6 (signed tags at these commits)
 _components=(prism-harness prism-loop prism-sober prism-proxy prism-route)
-source=("prism-harness::git+${_forge}/prism-harness.git#commit=c707c39c90ba0538a9b21c4c2413a1a560ebf1dd"
+source=("prism-harness::git+${_forge}/prism-harness.git#commit=26af5354888fd74a2fe28a59e57762499f3a5d65"
         "prism-loop::git+${_forge}/prism-loop.git#commit=5f5959acbc8912abd40b849b6f079614ee3cd6e1"
         "prism-sober::git+${_forge}/prism-sober.git#commit=e29819e4754a53d13bf9815fa1f4c1f181e2fef3"
         "prism-proxy::git+${_forge}/prism-proxy.git#commit=b04700c25d26cd59eb42ac8ffc7ed13a60b64411"
