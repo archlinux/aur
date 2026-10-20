@@ -1,0 +1,19 @@
+pkgbase = sq-system-one-bin
+	pkgdesc = Streaming System One decisions for shell pipelines (Jev, Drex, Laya)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/sq
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sq-system-one=0.1.1
+	conflicts = sq-system-one
+	conflicts = sq
+	conflicts = sequoia-sq
+	options = !strip
+	source_x86_64 = https://github.com/LIghtJUNction/sq/releases/download/v0.1.1/sq-v0.1.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 9d71e9fc9ae419403d795e4594054377f7aadd808187dd2f6175842f2e54cf4b
+	source_aarch64 = https://github.com/LIghtJUNction/sq/releases/download/v0.1.1/sq-v0.1.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = d3032b4c691763e86e1c343414e9468a07c3f6708370b5d68941c377d56f649c
+
+pkgname = sq-system-one-bin
