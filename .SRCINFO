@@ -1,6 +1,6 @@
 pkgbase = caelestia-cli-git
 	pkgdesc = The main cli for the Caelestia dotfiles
-	pkgver = 1.1.2.r0.g0a3a4bb
+	pkgver = 1.1.3.r31.g40fb35b
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/cli
 	install = message.install
@@ -24,6 +24,7 @@ pkgbase = caelestia-cli-git
 	depends = cliphist
 	depends = fuzzel
 	depends = git
+	depends = ffmpeg
 	optdepends = caelestia-shell: shell control and screenshot function
 	provides = caelestia-cli
 	conflicts = caelestia-cli
