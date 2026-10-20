@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=5.6.0.r1.g14d8dc1
+pkgver=5.6.10.r5.g07c7e5d33
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -39,16 +39,28 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)"
+	set -o pipefail
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
+}
+_get_app_dir() {
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
+}
+_get_electron_version() {
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -oE '[0-9]+' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -67,17 +79,6 @@ _set_build_env() {
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
-_get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
-}
-_get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -oE '[0-9]+' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	(( _elec_ver == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
-}
 prepare() {
     cd "$(_get_project_dir)"
     _get_electron_version
@@ -94,7 +95,7 @@ prepare() {
     _ensure_local_nvm
     _set_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    rm -rf package-lock.json
+    find ./ -type f -name "package-lock.json" -exec rm {} +
     export NODE_ENV=development
     npm config set legacy-peer-deps true
     npm install --legacy-peer-deps
@@ -110,19 +111,15 @@ build() {
     npm run prepare-file
     WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config src/build/electron-builder.json"
     find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
-    case "${CARCH}" in
-        aarch64)    _archrem=x64        ;;
-        armv7h)     _archrem=64         ;;
-        x86_64)     _archrem=arm        ;;
-    esac
-    find "$(_get_app_dir)/resources/app.asar.unpacked" -type d \
-        \( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
-        -exec rm -rf {} +
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+    rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
     cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
 	for _icons in "${_icon_sizes[@]}";do

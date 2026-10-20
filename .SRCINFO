@@ -1,6 +1,6 @@
 pkgbase = electerm-git
 	pkgdesc = Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client.
-	pkgver = 5.6.0.r1.g14d8dc1
+	pkgver = 5.6.10.r5.g07c7e5d33
 	pkgrel = 1
 	url = https://electerm.html5beta.com/
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = electerm-git
 	makedepends = python-setuptools
 	makedepends = jq
 	depends = electron44
-	provides = electerm=5.6.0
+	provides = electerm=5.6.10
 	conflicts = electerm
 	source = electerm.git::git+https://github.com/electerm/electerm.git
 	source = electerm.sh
