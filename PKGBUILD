@@ -1,7 +1,7 @@
 # Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.18.0.2495.g54214706
+pkgver=0.17.0.2561.g3d658d2e
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -47,9 +47,9 @@ package_alacritty-git() {
     do mkdir -p "$pkgdir/usr/share/man/man$i"; done
 
   cd extra/man
-	scdoc < extra/man/alacritty.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.1.gz" > /dev/null
-	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty.5.gz" > /dev/null
-	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
-	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
-	scdoc < extra/man/alacritty-escapes.7.scd | gzip -c | tee "$pkgdir/usr/share/man/man7/alacritty-escapes.7.gz" > /dev/null
+	scdoc < alacritty.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.1.gz" > /dev/null
+	scdoc < alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty.5.gz" > /dev/null
+	scdoc < alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
+	scdoc < alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
+	scdoc < alacritty-escapes.7.scd | gzip -c | tee "$pkgdir/usr/share/man/man7/alacritty-escapes.7.gz" > /dev/null
 }
