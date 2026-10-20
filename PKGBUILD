@@ -1,19 +1,22 @@
 # skwir's Arch packages, for the AUR (ADR-040, ADR-041): built from a
 # release's source with Arch's own Rust, PDFium from the release
 # tools/package/pdfium.lock pins (aur/build.sh checks they agree). skwir
-# carries its helpers, the Poppler reader's and the player's libraries
-# left optional (skwir says the engine is not installed without them);
+# carries its helpers, the Poppler and DjVuLibre readers' and the
+# player's libraries left optional (skwir says the engine is not installed
+# without them);
 # Mermaid and MuPDF are packages of their own. The files are those of the
-# Debian and RPM packages (crates/skwir/Cargo.toml). `just package-aur`
-# writes .SRCINFO beside this file. `just aur-prepare <tag>` fills the
-# source checksum in a separate checkout; `just aur-publish <tag>` pushes
-# its reviewed PKGBUILD and .SRCINFO to the AUR (docs/RELEASING.md).
+# Debian and RPM packages (crates/skwir/Cargo.toml). skwir-git/ builds
+# the same packages from main, skwir-bin/ installs the release's portable
+# tarball. `just package-aur` writes each .SRCINFO beside its PKGBUILD.
+# `just aur-prepare <tag>` fills the source checksums in separate
+# checkouts; `just aur-publish <tag>` pushes their reviewed PKGBUILD and
+# .SRCINFO to the AUR (docs/RELEASING.md).
 # Maintainer: venator <venator at tutamail dot com>
 
 pkgbase=skwir
 pkgname=(skwir skwir-mermaid skwir-mupdf)
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents'
 arch=('x86_64' 'aarch64')
 url='https://skwir.org'
@@ -22,9 +25,9 @@ license=('Apache-2.0')
 # The libraries every helper links, to build them all, and what the
 # packages depend on (a split PKGBUILD names it here too).
 makedepends=(
-  'cargo' 'clang' 'cmake' 'cargo-about' 'python'
+  'cargo' 'clang' 'cmake' 'python'
   'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'sqlite' 'libarchive'
-  'cairo' 'glib2' 'poppler-glib' 'gstreamer' 'gst-plugins-base-libs'
+  'cairo' 'glib2' 'poppler-glib' 'djvulibre' 'gstreamer' 'gst-plugins-base-libs'
   'fontconfig' 'vulkan-icd-loader' 'vulkan-driver'
 )
 # makepkg's LTO compiles the C that crates build (MuPDF) into GCC's
@@ -36,17 +39,14 @@ source_x86_64=("pdfium-linux-x64-$_pdfium.tgz::https://github.com/bblanchon/pdfi
 source_aarch64=("pdfium-linux-arm64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-arm64.tgz")
 # skwir's: filled by aur-prepare after the release tag is pushed; PDFium's: as
 # tools/package/pdfium.lock pins them.
-sha256sums=('4cd2ea398e5a7116e5f4195bca3b7f69b94fc7769bccc810feaff125f2910ded')
+sha256sums=('98f917e0103aef7ec08a7d67563eeff9872bce6a6d26e8a1f4d1ee8930a02936')
 sha256sums_x86_64=('588577cf52dabc1a444988bac841920df54cc2f141801424de97ab04f4fbb935')
 sha256sums_aarch64=('e7e2fe4686925618330103cb167950aca5a84bb00fd977a41b86be59dd1480a2')
 
 prepare() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  # Every platform's crates, not only this one's: cargo-about, which makes
-  # the notices in build(), reads every crate Cargo.lock names, offline.
-  # From 0.1.1 on, the notices come with the source (ADR-063).
-  cargo fetch --locked
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -55,9 +55,6 @@ build() {
   export CARGO_TARGET_DIR=target
   # shellcheck disable=SC2046 # one `-p name` per program
   cargo build --frozen --profile dist $(sed 's/^/-p /' tools/package/programs)
-  # What each package's programs link, and their notices: Mermaid's and
-  # MuPDF's helpers apart, the others skwir's.
-  tools/package/notices.py skwir-mermaid-worker skwir-mupdf-worker
 }
 
 package_skwir() {
@@ -76,6 +73,7 @@ package_skwir() {
     'gst-plugins-ugly: more audio and video formats'
     'gst-libav: more audio and video formats'
     'poppler-glib: PDFs through Poppler, beside the PDFium skwir carries'
+    'djvulibre: DjVu through DjVuLibre, beside the djvu-rs reader skwir carries'
     'skwir-mermaid: Mermaid diagrams drawn in Markdown previews'
     'skwir-mupdf: the MuPDF engine, PDFs and books laid out into pages'
     'bubblewrap: LibreOffice, ImageMagick and thumbnailers run isolated'
@@ -87,9 +85,9 @@ package_skwir() {
     'plocate: instant name searches over whole disks'
     'udisks2: unmounting volumes from the sidebar'
   )
-  # skwir's own, PDFium's, and the Poppler reader's: a program linking
-  # Poppler, whose core is GPL v2 or v3, with code under Apache-2.0 is
-  # under the GPL v3 (ADR-042).
+  # skwir's own, PDFium's, and the Poppler and DjVuLibre readers': a
+  # program linking Poppler (GPL v2 or v3) or DjVuLibre (GPL v2 or later)
+  # with code under Apache-2.0 is under the GPL v3 (ADR-042, ADR-061).
   license=('Apache-2.0' 'BSD-3-Clause' 'GPL-3.0-only')
   cd "$pkgbase-$pkgver"
   install -Dm755 target/dist/skwir "$pkgdir/usr/bin/skwir"
@@ -100,13 +98,17 @@ package_skwir() {
     esac
   done < tools/package/programs
   install -Dm755 "$srcdir/lib/libpdfium.so" -t "$pkgdir/usr/lib/skwir/"
-  install -Dm644 "$srcdir/LICENSE" "$srcdir"/licenses/* -t "$pkgdir/usr/share/licenses/$pkgbase/pdfium/"
+  # skwir's folders, which it looks in for its licences
+  # (crates/platform/src/about.rs) whichever package holds it.
+  install -Dm644 "$srcdir/LICENSE" "$srcdir"/licenses/* -t "$pkgdir/usr/share/licenses/skwir/pdfium/"
   install -Dm644 tools/package/linux/org.skwir.skwir.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 tools/package/linux/org.skwir.skwir.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 crates/ui/assets/org.skwir.skwir.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgbase/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgbase/"
-  install -Dm644 target/notices/skwir/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/skwir/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/skwir/"
+  # The notices of what its programs link, the source's (ADR-063): Arch's
+  # skwir holds helpers Debian's ships apart.
+  install -Dm644 tools/package/notices/arch/skwir/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir/"
 }
 
 package_skwir-mermaid() {
@@ -115,7 +117,7 @@ package_skwir-mermaid() {
   cd "$pkgbase-$pkgver"
   install -Dm755 target/dist/skwir-mermaid-worker -t "$pkgdir/usr/lib/skwir/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/skwir-mermaid/"
-  install -Dm644 target/notices/skwir-mermaid/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-mermaid/"
+  install -Dm644 tools/package/notices/skwir-mermaid/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-mermaid/"
 }
 
 package_skwir-mupdf() {
@@ -125,5 +127,5 @@ package_skwir-mupdf() {
   license=('AGPL-3.0-or-later')
   cd "$pkgbase-$pkgver"
   install -Dm755 target/dist/skwir-mupdf-worker -t "$pkgdir/usr/lib/skwir/"
-  install -Dm644 target/notices/skwir-mupdf/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-mupdf/"
+  install -Dm644 tools/package/notices/skwir-mupdf/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-mupdf/"
 }
