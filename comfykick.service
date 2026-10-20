@@ -23,7 +23,6 @@ ProtectSystem=full
 ProtectHome=tmpfs
 RuntimeDirectory=comfykick
 ConfigurationDirectory=comfykick
-ConfigurationDirectory=comfykick
 CacheDirectory=comfykick
 ExecStartPre=+/usr/bin/mkdir -p %D/comfykick
 BindPaths=%D/comfykick
