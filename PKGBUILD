@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=shuvarie
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 epoch=
 pkgdesc="Blazingly fast AI coding TUI for chivalrous people"
@@ -25,7 +25,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "e3beb82be9f57c6d8de027313d4d41ae23d56bc04b0663ef3f06b598a2e3a1f1"
+    "b5ca43e1683fcbe8b30d84a95211b8517122a02e1182173ebbd32c120584a4c2"
 )
 validpgpkeys=()
 
