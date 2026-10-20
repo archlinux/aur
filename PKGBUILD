@@ -1,10 +1,10 @@
 # Maintainer: Avenge Media <avengemediallc at gmail dot com>
-_pkgauthor=AvengeMedia
-_repo=danksearch
+_pkgauthor=duxlabs-dev
+_repo=dux-search
 _binname=dsearch
 
 pkgname=${_binname}-bin
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Fast filesystem search service"
 arch=('x86_64' 'aarch64')
@@ -24,15 +24,23 @@ source_x86_64=("${_binname}-${arch[0]}-${pkgver}.gz::${url}/releases/download/v$
 source_aarch64=("${_binname}-${arch[1]}-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_binname}-linux-${_barch[1]}.gz")
 
 sha256sums=('4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa'
-            'b99cd31bc10e7b07e90907c70c92a42427f240ee7ad3d9c5b57acd4938077cb2'
-            '6908e1e996cf4c457543dbf108e70c9dda7b03229dd11badd3a28598373e5b4b')
-sha256sums_x86_64=('e7ebc1d3032ef89006ab8a43746bf503f387decd018ff3977bb1550cb2c5b36a')
-sha256sums_aarch64=('cd36a8e0e1e45a72a580335ed9246d450579c73e78cf2d1375f1ade1abd23ff5')
+            '061aff88c1f93bea87d705221482a55c2a4ec093d410785e7e8c44c99a1409d8'
+            '4203149be986e77617da42b0c7297e268b5daf89bf796ecbc41263e7746b031d')
+sha256sums_x86_64=('c46f6ce6f58e39e3d1c125aa4466034c9fd4402756b3f5438317d19ec3f820a0')
+sha256sums_aarch64=('ac9fdf6fc94048fc3fe190326f93df5b6a2b85a2482df13d4a34956268e94535')
+
+# makepkg's mime sniffing does not reliably detect a gzipped ELF, so decompress it ourselves
+noextract=("${_binname}-${arch[0]}-${pkgver}.gz" "${_binname}-${arch[1]}-${pkgver}.gz")
+
+prepare() {
+  cd "${srcdir}" || exit 1
+
+  gzip -dcf "${_binname}-${CARCH}-${pkgver}.gz" > "${_binname}-${CARCH}-${pkgver}"
+}
 
 package() {
   cd "${srcdir}" || exit 1
 
-  # makepkg auto-ungzips the aliased sources to "${_binname}-${CARCH}-${pkgver}"
   install -Dm755 "${_binname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_binname}"
 
   # systemd user unit (same path as your -git package)

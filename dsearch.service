@@ -1,6 +1,6 @@
 [Unit]
 Description=dsearch - Fast filesystem search service
-Documentation=https://github.com/AvengeMedia/dsearch
+Documentation=https://github.com/duxlabs-dev/dux-search
 After=network.target
 
 [Service]
