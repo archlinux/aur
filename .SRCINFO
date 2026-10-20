@@ -1,6 +1,6 @@
 pkgbase = rimor-bin
 	pkgdesc = Terminal workbench for PostgreSQL, SQL Server and SQLite (prebuilt)
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://rimor.dev
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rimor-bin
 	conflicts = rimor
 	options = !debug
 	options = !strip
-	source_x86_64 = rimor-bin-0.7.1-x86_64.tar.gz::https://github.com/alchemy/rimor/releases/download/v0.7.1/rimor-v0.7.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 52d97afdb00418324cd615adab8f407244f3a6147028ff4dd096637b6416d563
-	source_aarch64 = rimor-bin-0.7.1-aarch64.tar.gz::https://github.com/alchemy/rimor/releases/download/v0.7.1/rimor-v0.7.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = a563202dc467c89f490ac7cc60d628d8c7ff43e9ca527ea601450a82c301312a
+	source_x86_64 = rimor-bin-0.8.0-x86_64.tar.gz::https://github.com/alchemy/rimor/releases/download/v0.8.0/rimor-v0.8.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 4e14b3a81ca7f4e52e5bdd0bc6668708ee445e81e71420d925e8e96cbcde5325
+	source_aarch64 = rimor-bin-0.8.0-aarch64.tar.gz::https://github.com/alchemy/rimor/releases/download/v0.8.0/rimor-v0.8.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = f5566973dc63a0e1e1adef6de18f3fb02450eb7cdfc4272f465f3e67234a6d0b
 
 pkgname = rimor-bin
