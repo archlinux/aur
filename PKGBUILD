@@ -1,8 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=posthog-cli
-pkgver=0.18.10
+pkgver=0.18.11
 pkgrel=1
-_commit=e519ba6304903b31e5e3d74c6d1a5fe9a96c745e
+_commit=410e5067ec932b3d5f2855d8ccd3c294f2ec87f4
 pkgdesc="The command line interface for PostHog"
 arch=('x86_64' 'aarch64')
 url="https://github.com/PostHog/posthog"
@@ -13,7 +13,7 @@ makedepends=('cargo' 'nodejs-lts-krypton' 'pnpm')
 optdepends=('nodejs: required for the posthog-cli api command')
 options=('!lto')
 source=("$pkgname-v$pkgver-$_commit.tar.gz::https://github.com/PostHog/posthog/archive/$_commit.tar.gz")
-sha256sums=('1ab2ebb1a112451bab491f1a29fd177943ac90ea7004d9599c812e30f57cda6e')
+sha256sums=('5835311c567c07f8f5fa7135ebca36bf6087329f9034557d5befba5d0934d2ee')
 
 _srcdir="posthog-$_commit"
 
