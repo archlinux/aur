@@ -1,4 +1,4 @@
-pkgbase = touchfish
+pkgbase = touchfish-v4
 	pkgdesc = FOSS multi-distribution LAN chatting tool
 	pkgver = 4.11.0
 	pkgrel = 1
@@ -6,7 +6,8 @@ pkgbase = touchfish
 	arch = any
 	license = MIT
 	depends = python
-	source = touchfish-4.11.0.tar.gz::https://github.com/touchfish-devs/TouchFish-AUR/archive/refs/tags/v4.11.0.tar.gz
+	provides = touchfish
+	source = touchfish-v4-4.11.0.tar.gz::https://github.com/touchfish-devs/TouchFish-AUR/archive/refs/tags/v4.11.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = touchfish
+pkgname = touchfish-v4

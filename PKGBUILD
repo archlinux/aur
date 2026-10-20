@@ -1,5 +1,5 @@
 # Maintainer: TouchFish Community <johnchiao@outlook.com>
-pkgname=touchfish
+pkgname=touchfish-v4
 pkgver=4.11.0
 pkgrel=1
 pkgdesc="FOSS multi-distribution LAN chatting tool"
@@ -11,6 +11,7 @@ makedepends=()
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/touchfish-devs/TouchFish-AUR/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+provides=('touchfish')
 
 prepare() {
     cd "$srcdir/TouchFish-AUR-$pkgver"
