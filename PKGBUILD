@@ -47,10 +47,4 @@ package() {
   install -Dm755 "${srcdir}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  # Install built-in profile data if present
-  if [ -d data ]; then
-    find data -type f -exec install -Dm644 '{}' \
-      "${pkgdir}/usr/share/${_pkgname}/{}" \;
-  fi
 }
