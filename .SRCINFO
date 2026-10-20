@@ -1,0 +1,17 @@
+pkgbase = nordwand-mono
+	pkgdesc = Compact monospace neo-grotesque font designed for developers
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/tywr/Nordwand-Mono
+	arch = any
+	license = OFL-1.1
+	source = NordwandMono-TTF-1.3.1.zip::https://github.com/tywr/Nordwand-Mono/releases/download/1.3.1/NordwandMono-TTF.zip
+	source = NordwandMono-OTF-1.3.1.zip::https://github.com/tywr/Nordwand-Mono/releases/download/1.3.1/NordwandMono-OTF.zip
+	source = LICENSE-FONT-1.3.1.txt::https://raw.githubusercontent.com/tywr/Nordwand-Mono/1.3.1/LICENSE-FONT.txt
+	sha256sums = 9725cfd15e21dede25c64c80aab54dcc3f27c4a127d20f13478c121aee5ae6c5
+	sha256sums = e303bd136196132aa627a628f2e0911d9efc2f381c1cb1560540d18373f18106
+	sha256sums = e0e493edae714ad5bb243a346f3fd45ecdd94a00584118297f2d05e0f6187d38
+
+pkgname = ttf-nordwand-mono
+
+pkgname = otf-nordwand-mono
