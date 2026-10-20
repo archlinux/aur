@@ -1,0 +1,7 @@
+*
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!.justfile
+!PKGBUILD
+!LICENSE

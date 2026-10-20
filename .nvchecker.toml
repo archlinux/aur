@@ -1,0 +1,5 @@
+["crit.md-bin"]
+source = "github"
+github = "tomasz-tomczyk/crit"
+prefix = "v"
+use_max_release = true
