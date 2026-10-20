@@ -1,6 +1,6 @@
 pkgbase = renesas-flash-programmer-bin
 	pkgdesc = Renesas Flash Programmer
-	pkgver = 3.24.00
+	pkgver = 3.25.00
 	pkgrel = 1
 	url = https://www.renesas.com/rfp
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = renesas-flash-programmer-bin
 	optdepends = fsp-bin: Flexible Software Package (FSP) for Renesas RA MCU Family
 	provides = renesas-flash-programmer
 	conflicts = renesas-flash-programmer
-	noextract = RFP_CLI_Linux_V32400_x64.tgz
+	noextract = RFP_CLI_Linux_V32500_x64.tgz
 	options = !strip
 	options = !debug
 	options = !lto
-	source = file:///RFP_CLI_Linux_V32400_x64.tgz
-	sha256sums = 61338e57c10d9f8c1178074c5bdb0b3a7575900a29d4ae1994aa4ff83f24a509
+	source = file:///RFP_CLI_Linux_V32500_x64.tgz
+	sha256sums = aaa7cd9af665a1b8cad7d3b37c9dff42e1c5050245cda3e3a403b90442678e0f
 
 pkgname = renesas-flash-programmer-bin

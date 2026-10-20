@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=renesas-flash-programmer-bin
-pkgver=3.24.00
+pkgver=3.25.00
 pkgrel=1
 epoch=
 pkgdesc="Renesas Flash Programmer"
@@ -27,7 +27,7 @@ _installer="RFP_CLI_Linux_V${pkgver//./}_x64.tgz"
 source=(
 	"file:///$_installer"
 )
-sha256sums=('61338e57c10d9f8c1178074c5bdb0b3a7575900a29d4ae1994aa4ff83f24a509')
+sha256sums=('aaa7cd9af665a1b8cad7d3b37c9dff42e1c5050245cda3e3a403b90442678e0f')
 noextract=(
 	$_installer
 )
