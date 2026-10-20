@@ -1,7 +1,7 @@
 pkgbase = soundcloud-bin
 	pkgdesc = 🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS
 	pkgver = 8.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zxcloli666/SoundCloud-Desktop
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = soundcloud-bin
 	depends = gtk3
 	depends = libappindicator
 	depends = webkit2gtk-4.1
+	depends = opus
+	depends = alsa-lib
 	provides = soundcloud-desktop=8.6.0
 	conflicts = soundcloud-desktop
 	noextract = soundcloud-8.6.0-x86_64.deb

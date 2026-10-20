@@ -4,12 +4,12 @@
 # keep those four assignments one-line and at column 0.
 pkgname=soundcloud-bin
 pkgver=8.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zxcloli666/SoundCloud-Desktop"
 license=('MIT')
-depends=('gtk3' 'libappindicator' 'webkit2gtk-4.1')
+depends=('gtk3' 'libappindicator' 'webkit2gtk-4.1' 'opus' 'alsa-lib')
 provides=("soundcloud-desktop=${pkgver}")
 conflicts=('soundcloud-desktop')
 options=('!strip' '!debug')
