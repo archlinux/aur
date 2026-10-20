@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=veyon-bin
-pkgver=4.11.3
+pkgver=4.11.4
 pkgrel=1
 pkgdesc="Cross-platform computer monitoring and classroom management."
 arch=('x86_64')
@@ -24,15 +24,13 @@ depends=(
     'qt6-base'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}.0-ubuntu.26.04_amd64.deb")
-sha256sums=('ad63aeb19fb61463ac414518b961113a4d01ffcb94b9c460ac1647b41587e6ec')
+sha256sums=('f9a3ddcb58a6fea67fd2490bffe51b4f3f88a100a9e48685b1b86e4f4a7a5183')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/usr\/bin\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}-"{master,configurator}.desktop
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/lib/systemd/system/${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "${srcdir}/usr/lib/${CARCH}-linux-gnu/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share" "${pkgdir}/usr"
+    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
+    cp -a "${srcdir}/usr/share" "${pkgdir}/usr"
 }
