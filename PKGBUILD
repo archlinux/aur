@@ -3,7 +3,7 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com>
 
 pkgname=libosmo-dsp-git
-pkgver=0.4.0.r10.gdce124d
+pkgver=0.5.0.r2.gf6f4d4a
 pkgrel=1
 pkgdesc="Osmocom library with SDR DSP primitives"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
