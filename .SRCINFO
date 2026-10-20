@@ -1,0 +1,31 @@
+pkgbase = lmm-api-extensions-bin
+	pkgdesc = LMM API Go extensions (prebuilt binary)
+	pkgver = 0.1.0rc1
+	pkgrel = 1
+	url = https://github.com/TokenNotIncluded/lmm-api
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	provides = lmm-api-extensions=0.1.0rc1
+	provides = lmm-extensions=0.1.0rc1
+	conflicts = lmm-extensions
+	conflicts = lmm-extensions-bin
+	conflicts = lmm-api-extensions
+	options = !strip
+	options = !debug
+	backup = etc/lmm.conf.d/extensions.toml
+	source = lmm-extensions.service
+	source = lmm-extensions.sysusers
+	source = rpc.service.conf.example
+	source = INSTALL.md
+	source = BUILDINFO.json
+	sha256sums = 2432fdc4eb930b7bb8d8bc2064c5761474233053447c99b897ee7dc35251128d
+	sha256sums = b82f0b580e7ef2969d7e3974610645caa4eef4f33307efb39054c1dc5b338718
+	sha256sums = c80c85d66cc714016011061f1dacc7139f7b55b5efde4e3213e1f57a2de531d6
+	sha256sums = a755121cff20075f8dc9ae1658ef9ef92c90c1b28f1bdcce1eb243d1e1f2b487
+	sha256sums = 34e6cfa713db704750c264a7c2e9c03be39d8898b472fa3e23f7bf863e46ea52
+	source_x86_64 = https://github.com/TokenNotIncluded/lmm-api/releases/download/microservices-v0.1.0-rc.1/lmm-extensions-0.1.0-rc.1-linux-amd64.tar.gz
+	depends_x86_64 = ca-certificates
+	depends_x86_64 = systemd>=247
+	sha256sums_x86_64 = 3622f8b0374f037c5bb4e7c60a19be14906df4790ecb978273ff8f464b68afb3
+
+pkgname = lmm-api-extensions-bin

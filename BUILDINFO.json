@@ -1,0 +1,16 @@
+{
+  "architectures": {
+    "x86_64": {
+      "archive": "lmm-extensions-0.1.0-rc.1-linux-amd64.tar.gz",
+      "sha256": "3622f8b0374f037c5bb4e7c60a19be14906df4790ecb978273ff8f464b68afb3"
+    }
+  },
+  "package": "lmm-api-extensions-bin",
+  "pkgrel": "1",
+  "pkgver": "0.1.0rc1",
+  "program": "lmm-extensions",
+  "release_tag": "microservices-v0.1.0-rc.1",
+  "schema_version": 1,
+  "source_revision": "7509254bde18a8e8bf1bf85bcca041f23a2c050d",
+  "version": "0.1.0-rc.1"
+}
