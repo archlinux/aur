@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=solitaire
-pkgver=51.0
+pkgver=51.1
 pkgrel=1
 pkgdesc="Play patience games"
 arch=('x86_64')
@@ -22,7 +22,7 @@ checkdepends=(
   'appstream'
 )
 source=("$url/-/archive/$pkgver/Solitaire-$pkgver.tar.gz")
-sha256sums=('14e37c6ae8ddc9b8fb16604b4c5e50f3f5fb8e9733f965b05a11aed7dfe5ea38')
+sha256sums=('32bc708a16b898ef0427224d8fe5b835d69bd707a63f81b8d5f34c03cf8ba9e3')
 
 prepare() {
   cd "Solitaire-$pkgver"
