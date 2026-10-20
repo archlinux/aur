@@ -1,7 +1,7 @@
 pkgbase = latex-slabikar-font
 	pkgdesc = Handwritten Czech/Slovak font slabikar
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://petr.olsak.net/ftp/olsak/slabikar/
 	install = latex-slabikar-font.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = latex-slabikar-font
 	source = http://petr.olsak.net/ftp/olsak/slabikar/slabikar.pfb
 	source = http://petr.olsak.net/ftp/olsak/slabikar/slabikar.tfm
 	source = http://petr.olsak.net/ftp/olsak/slabikar/ukazka.tex
-	md5sums = 41593108e2283ea64c035892833bfb0e
+	md5sums = 21348e16f061f93d6da1ddd4725730c5
 	md5sums = a88d137e93bde8f82fd906d16e5e7bf7
 	md5sums = 2e90a35b1ad670787d4b08bb76f1fbd4
 	md5sums = a3de7b231767f054bad252f6726ae99c

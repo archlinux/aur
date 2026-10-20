@@ -2,7 +2,7 @@
 _pkgname=slabikar
 pkgname=latex-${_pkgname}-font
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Handwritten Czech/Slovak font slabikar"
 arch=('any')
 url="http://petr.olsak.net/ftp/olsak/slabikar/"
@@ -29,7 +29,7 @@ package() {
     install -Dm644 ukazka.tex slabi.pdf README ${pkgdir}/usr/share/doc/${_pkgname}/
     install -Dm644 README ${pkgdir}/usr/share/licenses/${pkgname}/README
 }
-md5sums=('41593108e2283ea64c035892833bfb0e'
+md5sums=('21348e16f061f93d6da1ddd4725730c5'
          'a88d137e93bde8f82fd906d16e5e7bf7'
          '2e90a35b1ad670787d4b08bb76f1fbd4'
          'a3de7b231767f054bad252f6726ae99c'
