@@ -1,13 +1,13 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.4.1` and the `@SHA256_*@` placeholders are
+# Prebuilt binary package. `0.5.0` and the `@SHA256_*@` placeholders are
 # substituted by .github/workflows/aur.yaml from the published release
 # assets, and the result is pushed to the AUR. Edit this template, never the
 # PKGBUILD in the AUR repository: that one is regenerated at every release.
 
 pkgname=memcastle-bin
 _pkgname=memcastle
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Local-first, always-on memory server for AI coding agents over MCP/HTTP (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -30,9 +30,9 @@ options=('!strip' '!debug')
 # leaves an unrecognised extension alone rather than trying to extract it, so
 # these name it plainly and `package()` installs it directly.
 source_x86_64=("memcastle-$pkgver-x86_64::$url/releases/download/$pkgver/memcastle_${pkgver}_linux-amd64")
-sha256sums_x86_64=('b16bf4f04b0ba24606837da0ba0ed3c720300270ab2fbd9f15aa5c7880786eb0')
+sha256sums_x86_64=('f59bc6ab60635d9bb7f3eeee58c409111db6a002d61dcf4f7ae4fd281099c06d')
 source_aarch64=("memcastle-$pkgver-aarch64::$url/releases/download/$pkgver/memcastle_${pkgver}_linux-arm64")
-sha256sums_aarch64=('ec9178704b2623a1ed3e8a914d30d9536cd4a452106d144c79cb6fe9a70aeaae')
+sha256sums_aarch64=('bf55c773c32612584767e517972d4ea2ff0af3b0f9be8b66b5fba8fc5d840d90')
 
 # Fetched separately: the raw binary asset carries no licence file, and MIT
 # is not one of the licences Arch keeps in /usr/share/licenses/common.
@@ -52,9 +52,9 @@ source=("LICENSE-$pkgver::$url/raw/$pkgver/LICENSE"
         "memcastle-web-$pkgver.tar.gz::$url/releases/download/$pkgver/memcastle_${pkgver}_web.tar.gz")
 sha256sums=('579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e'
             'f97fe1b55d4357513a21820bb2b6b50c0ac6c70304bcece919e8ba8bec97fa2b'
-            'ca1e1858a12534e9e6bb766a6a2a29f1dfb989dd62126b18b17a11dcfe4080f0'
-            'f9bdc3607e097b7544660b9008a2a12a327c6164173e1c67f1bf561f44c64930'
-            '915d4ae38536990f4510c7fd31d5f51b52bf1e5232668d871f7a99d12d8adeda')
+            '5dea902ca42106629dbc35399f7e408997f5bfddf18512426588682b2dbf2fa2'
+            '000866c4e4513bcb0b91c9290a5c08b19a27a834d98abcd6acf7ad252a7bf79f'
+            '288b671a2f843cf52c45b4629ef0063731119bb41b1659bfbfed543a9960ffd7')
 
 package() {
 	install -Dm755 "$srcdir/memcastle-$pkgver-$CARCH" "$pkgdir/usr/bin/memcastle"
