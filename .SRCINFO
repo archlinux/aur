@@ -1,6 +1,6 @@
 pkgbase = veshell
 	pkgdesc = An innovative Not-Desktop environment for Linux built with Flutter and Rust
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/free-explorers/veshell
 	arch = x86_64
@@ -66,10 +66,10 @@ pkgbase = veshell
 	noextract = linux-x64-profile_flutter-gtk.zip
 	noextract = linux-x64-release_flutter-gtk.zip
 	noextract = linux-engine-sdk-release-x86_64-deb287481e3ce9468f3434937ced4240a70539ca.tar.gz
-	noextract = veshell-cargo-vendor-0.1.6.tar.zst
-	noextract = veshell-pubcache-0.1.6.tar.zst
+	noextract = veshell-cargo-vendor-0.1.7.tar.zst
+	noextract = veshell-pubcache-0.1.7.tar.zst
 	options = !lto
-	source = veshell::git+https://github.com/free-explorers/veshell.git#commit=a88da8e987907cf6f2041e7f25c8c6b39970a71e
+	source = veshell::git+https://github.com/free-explorers/veshell.git#commit=022539915144bed4f9275d9e8394c6df77543ef0
 	source = build-veshell.sh
 	source = flutter_linux_3.47.7-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.7-stable.tar.xz
 	source = flutter_patched_sdk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/flutter_patched_sdk.zip
@@ -79,8 +79,8 @@ pkgbase = veshell
 	source = linux-x64-profile_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/linux-x64-profile/linux-x64-flutter-gtk.zip
 	source = linux-x64-release_flutter-gtk.zip::https://storage.googleapis.com/flutter_infra_release/flutter/deb287481e3ce9468f3434937ced4240a70539ca/linux-x64-release/linux-x64-flutter-gtk.zip
 	source = linux-engine-sdk-release-x86_64-deb287481e3ce9468f3434937ced4240a70539ca.tar.gz::https://github.com/free-explorers/flutter-engine/releases/download/linux-engine-sdk-release-x86_64-deb287481e3ce9468f3434937ced4240a70539ca/linux-engine-sdk-release-x86_64-deb287481e3ce9468f3434937ced4240a70539ca.tar.gz
-	source = veshell-cargo-vendor-0.1.6.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.6/veshell-cargo-vendor-0.1.6.tar.zst
-	source = veshell-pubcache-0.1.6.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.6/veshell-pubcache-0.1.6.tar.zst
+	source = veshell-cargo-vendor-0.1.7.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.7/veshell-cargo-vendor-0.1.7.tar.zst
+	source = veshell-pubcache-0.1.7.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/packaging-inputs-v0.1.7/veshell-pubcache-0.1.7.tar.zst
 	sha256sums = SKIP
 	sha256sums = f60220a1ec5b5d6a71c79532ec009e28d0d6d7cd9ccdd5046721758c964542a8
 	sha256sums = af7455f540df951184c7953fbe3cf884766e7541dacf8571f9f582db03dd6230
@@ -92,6 +92,6 @@ pkgbase = veshell
 	sha256sums = a6da7b0d57c82519d7b901462344676fe089068caca336466dcf3e1c270e9aa8
 	sha256sums = 7f111525f32a590d1f00526758f1fecb520424b98aecc6afac82d5014a1684c7
 	sha256sums = 1c1863bdf68ca0f3cb6640b8f512f000ad3e1af034feef3a7603b34e654ad703
-	sha256sums = 2496caa2a44301d8b8775716778a6fc72920cf80158b797e6d6ce0af088ecc5f
+	sha256sums = 706214a8698f663a79bc8aba582a730ac8529ff3a76e596cdd95cd6934c2482b
 
 pkgname = veshell
