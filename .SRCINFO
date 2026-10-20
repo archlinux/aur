@@ -1,6 +1,6 @@
 pkgbase = folo-git
 	pkgdesc = Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.
-	pkgver = 1.15.0.r16.g0dca01f
+	pkgver = 0.6.1.r2.gb3c75ca
 	pkgrel = 1
 	url = https://app.folo.is/
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = folo-git
 	makedepends = jq
 	makedepends = zip
 	depends = electron44
-	provides = folo=1.15.0
+	provides = folo=0.6.1
 	conflicts = folo
 	source = folo.git::git+https://github.com/RSSNext/Folo
 	source = folo.sh
 	sha256sums = SKIP
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
 pkgname = folo-git
