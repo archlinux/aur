@@ -1,6 +1,6 @@
 pkgbase = token-monitor-bin
 	pkgdesc = Real-time token, cost, and AI limits widget with multi-device sync for Claude Code, Codex, OpenCode and more
-	pkgver = 0.75.0
+	pkgver = 0.76.0
 	pkgrel = 1
 	url = https://github.com/Javis603/token-monitor
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = token-monitor-bin
 	depends = pango
 	provides = token-monitor
 	conflicts = token-monitor
-	noextract = Token-Monitor-0.75.0.AppImage
+	noextract = Token-Monitor-0.76.0.AppImage
 	options = !strip
 	options = !debug
-	source = https://github.com/Javis603/token-monitor/releases/download/v0.75.0/Token-Monitor-0.75.0.AppImage
-	sha256sums = 52623b5f3bd38b49f82931f0b0b922c6dad2b09daf7f833b4f258925f9f6a8d9
+	source = https://github.com/Javis603/token-monitor/releases/download/v0.76.0/Token-Monitor-0.76.0.AppImage
+	sha256sums = ef0149336acabfc9d0f8f27c205913d4b4d7935396c1112d3eb052b47f3c9920
 
 pkgname = token-monitor-bin
