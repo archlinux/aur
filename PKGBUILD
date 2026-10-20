@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ferrum-bin
 _pkgname=Ferrum
-pkgver=1.3.0
+pkgver=1.3.2
 _electronversion=37
 pkgrel=1
 pkgdesc="Music library app."
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f16efc816fb678eb46c619674e43dfaeaac6c042f03488288973971c64d7c286'
+sha256sums=('1bdadb8704b6b82bd6c15c65f0f29b714a0b2296aa36ed57fd1b6f9b7b102e2c'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
@@ -39,15 +39,15 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i -e "
-        s/\/opt\/${_pkgname}\///g
+        s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
         s/Audio/AudioVideo/g
-    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
