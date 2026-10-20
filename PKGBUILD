@@ -5,7 +5,7 @@
 _pkgname=mfem
 pkgname=${_pkgname}-palace
 pkgver=4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods - With Palace EM Solver patches"
 arch=(x86_64)
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -94,14 +94,11 @@ build() {
   )
 
   local mfem_external=(
+    -D HYPRE_DIR=/usr/include/hypre
+    -D SuiteSparse_DIR=/usr/include/suitesparse
     -D SuperLUDist_DIR=/usr/include/superlu_dist
     -D STRUMPACK_DIR=/usr/include/strumpack
     -D Scotch_DIR=/usr/include/scotch
-    -D HYPRE_DIR=/usr/include/hypre
-    -D ScaLAPACK_DIR=/usr/include/
-    -D METIS_DIR=/usr/include/
-    -D SuiteSparse_DIR=/usr/include/suitesparse
-    -D ParMETIS_DIR=/usr/include/
   )
 
   local cmake_options=(
