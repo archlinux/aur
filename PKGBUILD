@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <sihaogang at gmail dot com>
 pkgname=xfce4-smartbookmark-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=xfce4.smartbookmark.plugin.0.6.0.r119.g592b830
+pkgver=0.6.0.r123.g700eb23
 pkgrel=1
 pkgdesc='Plugin for the Xfce4 panel that lets you quicksearch from selected websites'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	  cd "$_pkgname"
-	    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	    git describe --long --tags | sed 's/^xfce4-smartbookmark-plugin-//;s/\([^-]*-g\)/r\1/;s/-/./g'
     }
 
 build() {
