@@ -5,7 +5,7 @@ pkgname=clash-party-bin
 _appname='Clash Party'
 pkgver=2.0.4
 _electronversion=43
-pkgrel=1
+pkgrel=2
 pkgdesc=":electron: Another Mihomo GUI."
 arch=(
     'aarch64'
@@ -61,7 +61,7 @@ prepare() {
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     _check_electron_version
     asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     sed -i -e "
         s/Name=${_pkgname}/Name=${_appname}/g
         s/Exec=\${exePath()}/Exec=${pkgname%-bin}/g
