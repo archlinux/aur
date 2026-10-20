@@ -1,0 +1,26 @@
+pkgbase = frameport-bin
+	pkgdesc = Port games and apps to work with the Valve Steam Frame
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/spoopyghosty0/frameport
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = libepoxy
+	depends = libpng
+	depends = zlib
+	optdepends = mpv: live view player for Linux
+	provides = frameport
+	conflicts = frameport
+	options = !strip
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/spoopyghosty0/frameport/v1.3.0/LICENSE
+	source = THIRD_PARTY_NOTICES-1.3.0.md::https://raw.githubusercontent.com/spoopyghosty0/frameport/v1.3.0/THIRD_PARTY_NOTICES.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 7ff2de3077a117e1afa4dba1e52f0a07fec3e2952ee0fce57619291ca2d2a8c1
+	source_x86_64 = frameport-bin-1.3.0-x86_64.tar.gz::https://github.com/spoopyghosty0/frameport/releases/download/v1.3.0/FramePort-linux-x64.tar.gz
+	sha256sums_x86_64 = 4b1eaa0165533163a09efcba6326b8a0796effaa77cae49279365559ef8feff9
+	source_aarch64 = frameport-bin-1.3.0-aarch64.tar.gz::https://github.com/spoopyghosty0/frameport/releases/download/v1.3.0/FramePort-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9cc39a55181fe76ba896e0b39f421391bd5922e97cff0c95c66ddcc426e82682
+
+pkgname = frameport-bin
