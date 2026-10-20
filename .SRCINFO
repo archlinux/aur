@@ -1,6 +1,6 @@
 pkgbase = insta360-link-controller-bin
 	pkgdesc = Pure-Rust cross-platform controller suite (GUI, CLI, HTTP/WS server) for Insta360 Link webcams
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/lucasoskorep/insta360-link-controller
 	arch = x86_64
@@ -11,12 +11,13 @@ pkgbase = insta360-link-controller-bin
 	depends = gcc-libs
 	depends = ffmpeg
 	depends = libxkbcommon
+	depends = hicolor-icon-theme
 	provides = insta360-link-controller
 	conflicts = insta360-link-controller
 	options = !strip
-	source_x86_64 = insta360-link-controller-bin-0.1.0-x86_64.tar.gz::https://github.com/lucasoskorep/insta360-link-controller/releases/download/v0.1.0/insta360-link-controller-v0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 9e566a07fe5a1874758fe139deea82b54d71b25e4eaa075f8036bab9fa522756
-	source_aarch64 = insta360-link-controller-bin-0.1.0-aarch64.tar.gz::https://github.com/lucasoskorep/insta360-link-controller/releases/download/v0.1.0/insta360-link-controller-v0.1.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1d491fd659462e14bbf217a1c870b945bab42b1991425a12cfada7b3b32a5343
+	source_x86_64 = insta360-link-controller-bin-0.1.1-x86_64.tar.gz::https://github.com/lucasoskorep/insta360-link-controller/releases/download/v0.1.1/insta360-link-controller-v0.1.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f87c01e824896e446f45853b7f40dbab0fc78c8ea2744769f193de5c4d44fcbe
+	source_aarch64 = insta360-link-controller-bin-0.1.1-aarch64.tar.gz::https://github.com/lucasoskorep/insta360-link-controller/releases/download/v0.1.1/insta360-link-controller-v0.1.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 71ef14d8438983c85a7c092fda121c37c7ff5a3b80e1cf19f7a3b6ec0ec8b658
 
 pkgname = insta360-link-controller-bin
