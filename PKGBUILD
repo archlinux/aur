@@ -20,14 +20,10 @@ depends=(
 	'libayatana-indicator'
 	'libappindicator'
 )
-source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/trueleaf/apiflow/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh"
-)
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/trueleaf/apiflow/v${pkgver}/LICENSE")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums=('1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+sha256sums=('1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5')
 sha256sums_aarch64=('293449c4d414c3bb985eec40d5c70ce3dc3fd48529a1736cbd744250447e27fc')
 sha256sums_x86_64=('8c69958f84d36febafc8f2980ff201326684b851b8bc280b9c337f78d0432c05')
 prepare() {

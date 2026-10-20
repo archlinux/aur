@@ -14,9 +14,7 @@ pkgbase = apiflow-bin
 	provides = apiflow=0.9.83
 	conflicts = apiflow
 	source = LICENSE-0.9.83::https://raw.githubusercontent.com/trueleaf/apiflow/v0.9.83/LICENSE
-	source = apiflow.sh
 	sha256sums = 1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 	source_aarch64 = apiflow-0.9.83-aarch64.rpm::https://github.com/trueleaf/apiflow/releases/download/v0.9.83/ApiFlow-0.9.83-1.aarch64.rpm
 	sha256sums_aarch64 = 293449c4d414c3bb985eec40d5c70ce3dc3fd48529a1736cbd744250447e27fc
 	source_x86_64 = apiflow-0.9.83-x86_64.rpm::https://github.com/trueleaf/apiflow/releases/download/v0.9.83/ApiFlow-0.9.83-1.x86_64.rpm
