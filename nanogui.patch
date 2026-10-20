@@ -1,0 +1,47 @@
+--- a/dependencies/nanogui/src/widget.cpp
++++ b/dependencies/nanogui/src/widget.cpp
+@@ -17,6 +17,7 @@
+ #include <nanogui/screen.h>
+ 
+ #include <algorithm>
++#include <exception>
+ 
+ /* Uncomment the following definition to draw red bounding
+    boxes around widgets (useful for debugging drawing code) */
+--- a/dependencies/nanogui/src/common.cpp
++++ b/dependencies/nanogui/src/common.cpp
+@@ -15,6 +15,7 @@
+ 
+ #include <tsl/robin_map.h>
+ 
++#include <cstdlib>
+ #include <mutex>
+ #include <cstring>
+ #include <clocale>
+@@ -429,7 +430,7 @@
+                 fprintf(stderr,
+                         "Object::dec_ref(%p): reference count underflow!",
+                         this);
+-                abort();
++                std::abort();
+             } else if (value == 3) {
+                 delete this;
+             } else {
+@@ -456,7 +457,7 @@
+         uintptr_t o_i = (uintptr_t) o;
+         if (o_i & 1) {
+             fprintf(stderr, "Object::set_self_py(%p): invalid pointer alignment!", this);
+-            abort();
++            std::abort();
+         }
+ 
+         m_state.store(o_i);
+@@ -464,7 +465,7 @@
+         fprintf(stderr,
+                 "Object::set_self_py(%p): a Python object was already present!",
+                 this);
+-        abort();
++        std::abort();
+     }
+ }
+ 

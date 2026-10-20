@@ -4,7 +4,7 @@
 
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="High dynamic range (HDR) image viewer for people who care about colors"
 arch=("i686" "x86_64" "arm")
@@ -14,12 +14,15 @@ depends=("hicolor-icon-theme" "libc++" "libc++abi" "libglvnd" "libxrandr" "libxi
 makedepends=("clang" "cmake" "git" "ninja" "wayland-protocols")
 provides=("tev")
 conflicts=("tev")
-source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
-md5sums=("SKIP")
+source=("${_pkgname}::git+${url}.git#tag=v${pkgver}"
+        "nanogui.patch")
+md5sums=("SKIP"
+         "905bd839435e19dfed377059fef27bc6")
 options=(!lto)
 
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
+  patch -Np1 -d "${_pkgname}" < "${srcdir}/nanogui-.patch"
   mkdir -p "${_pkgname}/build"
 }
 
@@ -28,7 +31,6 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -GNinja \
     ..
   cmake --build .

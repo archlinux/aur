@@ -1,6 +1,6 @@
 pkgbase = tev
 	pkgdesc = High dynamic range (HDR) image viewer for people who care about colors
-	pkgver = 2.13.1
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://github.com/Tom94/tev
 	arch = i686
@@ -25,7 +25,9 @@ pkgbase = tev
 	provides = tev
 	conflicts = tev
 	options = !lto
-	source = tev::git+https://github.com/Tom94/tev.git#tag=v2.13.1
+	source = tev::git+https://github.com/Tom94/tev.git#tag=v2.14.0
+	source = nanogui.patch
 	md5sums = SKIP
+	md5sums = 905bd839435e19dfed377059fef27bc6
 
 pkgname = tev
