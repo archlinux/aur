@@ -1,6 +1,6 @@
 pkgbase = grok-bot-desktop
 	pkgdesc = Desktop agent app from xAI (official .deb, app files unmodified)
-	pkgver = 0.71.2
+	pkgver = 0.72.0
 	pkgrel = 1
 	url = https://x.ai/bot
 	install = grok-bot-desktop.install
@@ -46,10 +46,10 @@ pkgbase = grok-bot-desktop
 	conflicts = grok-bot-bin
 	conflicts = grokbot-linux-port
 	conflicts = grokbot-linux-port-bin
-	noextract = grok-bot_0.71.2_amd64.deb
+	noextract = grok-bot_0.72.0_amd64.deb
 	options = !strip
 	options = !debug
-	source = grok-bot_0.71.2_amd64.deb::https://downloads.cursor.com/grokbot/stable/92808c0ad869b2e3725dbc3b8fa2fcc991687502/linux/x64/grok-bot_0.71.2_amd64.deb
-	sha256sums = a0526d75a3e852ed59e507889bc3aa6a5185a8d043632ce8deca98b04ab06348
+	source = grok-bot_0.72.0_amd64.deb::https://downloads.cursor.com/grokbot/stable/6a17bb448f856a2390dd63ba42bf6e80e63b08fd/linux/x64/grok-bot_0.72.0_amd64.deb
+	sha256sums = f79aff93ecb923c44ce240b435ccd91b7144081738ae6e207e94ab9eadd710dd
 
 pkgname = grok-bot-desktop
