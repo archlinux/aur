@@ -1,0 +1,24 @@
+# pacman install script for the AUR packages gpwebcam and gpwebcam-bin.
+# It only prints what to do next, like packaging/scripts/postinstall.sh
+# for the other packages; keep the two messages in step.
+
+post_install() {
+  cat <<'MSG'
+gpwebcam: to use a GoPro as a webcam:
+  1. Make sure the v4l2loopback module is installed (v4l2loopback-dkms or
+     your distribution's module package). /usr/lib/modprobe.d/99-gpwebcam.conf
+     sets it up with /dev/video42 "GoPro". If the module was already loaded
+     before this installation, reboot, or reload it while no program uses it.
+  2. As your user: systemctl --user enable --now gpwebcam.service
+  3. On the camera, set Preferences > Connections > USB Connection to
+     GoPro Connect, then plug it in.
+  4. Check the setup: gpwebcam doctor
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+gpwebcam: as your user, run: systemctl --user daemon-reload
+and then: systemctl --user restart gpwebcam
+MSG
+}

@@ -1,0 +1,21 @@
+pkgbase = gpwebcam
+	pkgdesc = Use a GoPro connected over USB as a Linux webcam
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/darkodemic/gpwebcam
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	optdepends = v4l2loopback-dkms: the loopback device that applications read
+	optdepends = libnotify: desktop notifications
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	makedepends = go
+	conflicts = gpwebcam-bin
+	provides = gpwebcam
+	install = gpwebcam.install
+	
+	source = gpwebcam_0.3.1.tar.gz::https://github.com/darkodemic/gpwebcam/releases/download/v0.3.1/gpwebcam-0.3.1.tar.gz
+	sha256sums = 33c476ef457ad8ca0cf5d151570d6c03538e14f576c9a4c7ee9da0d560db631e
+	
+pkgname = gpwebcam
