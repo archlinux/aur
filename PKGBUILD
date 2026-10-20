@@ -1,6 +1,6 @@
 # Maintainer: Novaturiente
 pkgname=novabrowser-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="AVX2-optimized keyboard-driven web browser on Chromium (CEF), configured in TypeScript (prebuilt)"
 arch=(x86_64)
@@ -18,7 +18,7 @@ conflicts=(novabrowser novabrowser-git)
 options=(!strip !debug)
 # The /usr tree of the `novabrowser` package, built by packaging/release.sh
 source=("novabrowser-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/novabrowser-$pkgver-x86_64.tar.zst")
-sha256sums=('ad99072bac7aedf3da2a502ef38703bc20faac8a698c40ab33e2a36f537be261')
+sha256sums=('de32e0076705338944b896148197041e0ef9a32406f508f3ef8d19bae7802836')
 
 prepare() {
   /lib/ld-linux-x86-64.so.2 --help 2>/dev/null | grep -q 'x86-64-v3 (supported' || {
