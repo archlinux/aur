@@ -1,5 +1,5 @@
 # Maintainer: Yulliil <yulliil@qq.com>
-# Maintainer: Echoes678 <echoes678@example.com>
+# Maintainer: Echoes678 <wrdu678@outlook.com>
 # nyxuri-git — rolling AUR package: engine + unit blueprints + Nyxuri Shell
 # in one ship. Dependency policy (T1): `depends` is the engine runtime only;
 # every unit's packages are `optdepends` — `nyxuri on <unit>` discloses and
