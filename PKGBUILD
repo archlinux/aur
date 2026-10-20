@@ -5,8 +5,8 @@
 
 pkgname=browseros-neo-bin
 _pkgname=browserclaw
-pkgver=0.50.5
-pkgrel=5
+pkgver=0.51.1.2
+pkgrel=1
 pkgdesc="BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)"
 arch=('x86_64')
 url="https://github.com/browseros-ai/BrowserOS"
@@ -27,11 +27,30 @@ source=("browseros-neo::git+https://aur.archlinux.org/browseros-neo-bin.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  _latest=$(curl -sL "https://api.github.com/repos/browseros-ai/BrowserOS/releases?per_page=20" \
-    | jq -r '[.[] | select(.tag_name | startswith("browserclaw/"))][0].tag_name' 2>/dev/null \
-    | sed 's|^browserclaw/v||')
-  if [[ -n "$_latest" && "$_latest" != "null" ]]; then
-    printf "%s" "$_latest"
+  # Resolve the newest browserclaw/* release WITHOUT the GitHub API.
+  # The API allows only 60 requests/hour per IP unauthenticated; when that
+  # quota is exhausted it returns a JSON error instead of a tag, and the old
+  # implementation silently fell back to the hardcoded version. The
+  # releases/latest redirect needs no auth and consumes no quota.
+  #
+  # Fallback chain: redirect -> API (with token if available) -> hardcoded.
+  local _tag
+
+  _tag=$(curl -fsSL -o /dev/null -w '%{url_effective}' \
+    "https://github.com/browseros-ai/BrowserOS/releases/latest" 2>/dev/null \
+    | sed -n 's|.*/tag/browserclaw/v||p')
+
+  if [[ -z "$_tag" ]]; then
+    local _hdr=()
+    [[ -n "${GH_TOKEN:-}" ]] && _hdr=(-H "Authorization: Bearer $GH_TOKEN")
+    _tag=$(curl -fsSL "${_hdr[@]}" \
+      "https://api.github.com/repos/browseros-ai/BrowserOS/releases?per_page=20" 2>/dev/null \
+      | jq -r '[.[] | select(.tag_name | startswith("browserclaw/"))][0].tag_name' 2>/dev/null \
+      | sed 's|^browserclaw/v||')
+  fi
+
+  if [[ -n "$_tag" && "$_tag" != "null" ]]; then
+    printf "%s" "$_tag"
   else
     printf "%s" "0.50.5"
   fi
@@ -39,7 +58,11 @@ pkgver() {
 
 prepare() {
   _deb="BrowserOS_neo_v${pkgver}_amd64.deb"
-  _url_api=$(curl -sL "https://api.github.com/repos/browseros-ai/BrowserOS/releases/tags/browserclaw%2Fv${pkgver}" \
+  # The API lookup is best-effort only: it can be rate-limited. The direct
+  # download URLs below always work and are tried first when the API fails.
+  _hdr=()
+  [[ -n "${GH_TOKEN:-}" ]] && _hdr=(-H "Authorization: Bearer $GH_TOKEN")
+  _url_api=$(curl -fsSL "${_hdr[@]}" "https://api.github.com/repos/browseros-ai/BrowserOS/releases/tags/browserclaw%2Fv${pkgver}" \
     | jq -r '.assets[] | select(.name=="'"$_deb"'") | .browser_download_url' 2>/dev/null)
   _urls=()
   [[ -n "$_url_api" && "$_url_api" != "null" ]] && _urls+=("$_url_api")
