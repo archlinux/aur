@@ -12,7 +12,7 @@
 # version text with a legal separator, and vercmp keeps it monotonic (and orders
 # every preview before a later plain 0.1.0).
 pkgname=fcitx5-chengyin
-pkgver=0.1.0.preview36
+pkgver=0.1.0.preview37
 pkgrel=1
 pkgdesc="Chengyin IME (preview) - Fcitx 5 full-pinyin input method with a bundled lexicon"
 arch=('x86_64')
@@ -35,7 +35,7 @@ options=('!debug')
 # were byte-identical, so the checksum is verifiable rather than a one-off capture.
 _tag="v${pkgver/.preview/-preview}"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zzttzzmyswy/chengyin-ime/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('82419270821b9bbb28b3f7289ed201de83de486da63feb769d7b3b211d7e7179')
+sha256sums=('55ff3721e92f62325ff8eed6ef90be5e0b550ed6a0a162404ea110b9388ed3b0')
 
 prepare() {
   cd "$srcdir/chengyin-ime-${_tag#v}"
