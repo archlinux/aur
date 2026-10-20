@@ -47,8 +47,8 @@ source=(
     "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
     "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
-            'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
+sha256sums=('b481dcaa07d8b912b32066da4ee48341cb521852eb16d76a6cf7a8216402e101'
+            'bd43b307d55a74bc64b88d95e1f37d0b12ddd2935563fc893835a91e2b8c10b5')
 
 prepare() {
     cd "$srcdir"
