@@ -2,13 +2,13 @@
 
 pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
-_pkgname=DankMaterialShell
+_pkgname=dux-shell
 pkgname=($_pkgbase-git)
 pkgver=1.6.0.r118.g0784bdb
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
-url="https://github.com/AvengeMedia/$_pkgname"
+url="https://github.com/duxlabs-dev/$_pkgname"
 license=(MIT)
 depends=(dgop
          quickshell
@@ -69,9 +69,9 @@ package_dms-shell-git() {
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 	install -Dm0644 assets/systemd/dms.service "$pkgdir/usr/lib/systemd/user/dms.service"
 	install -Dm0644 assets/dms-open.desktop "$pkgdir/usr/share/applications/dms-open.desktop"
-	install -Dm0644 assets/com.danklinux.dms.desktop "$pkgdir/usr/share/applications/com.danklinux.dms.desktop"
-	install -Dm0644 assets/com.danklinux.dms.notepad.desktop "$pkgdir/usr/share/applications/com.danklinux.dms.notepad.desktop"
-	install -Dm0644 assets/com.danklinux.dms.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.danklinux.dms.svg"
+	install -Dm0644 assets/dev.duxlabs.shell.desktop "$pkgdir/usr/share/applications/dev.duxlabs.shell.desktop"
+	install -Dm0644 assets/dev.duxlabs.shell.notepad.desktop "$pkgdir/usr/share/applications/dev.duxlabs.shell.notepad.desktop"
+	install -Dm0644 assets/dev.duxlabs.shell.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/dev.duxlabs.shell.svg"
 
 	install -d "$pkgdir/usr/share/bash-completion/completions" \
 	           "$pkgdir/usr/share/zsh/site-functions" \

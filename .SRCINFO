@@ -2,7 +2,7 @@ pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 1.6.0.r118.g0784bdb
 	pkgrel = 1
-	url = https://github.com/AvengeMedia/DankMaterialShell
+	url = https://github.com/duxlabs-dev/dux-shell
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = dms-shell-git
 	optdepends = cups-pk-helper: Printer Management
 	provides = dms-shell=1.6.0.r118.g0784bdb
 	conflicts = dms-shell
-	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
+	source = git+https://github.com/duxlabs-dev/dux-shell.git
 	sha256sums = SKIP
 
 pkgname = dms-shell-git
