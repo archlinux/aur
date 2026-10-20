@@ -1,6 +1,6 @@
 pkgbase = python-asdf
 	pkgdesc = A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files
-	pkgver = 5.4.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://asdf.readthedocs.io
 	arch = any
@@ -21,11 +21,11 @@ pkgbase = python-asdf
 	makedepends = python-setuptools-scm>=8
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-5.4.0.tar.gz
-	md5sums = e959675b916ea83c2cef3ef119cfd874
+	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-6.0.0.tar.gz
+	md5sums = ec9ec1aa4348b854b701d50f2a2ac7df
 
 pkgname = python-asdf
-	depends = python>=3.10
+	depends = python>=3.11
 	depends = python-numpy>=1.22
 	depends = python-jmespath>=0.6.2
 	depends = python-attrs>=22.2.0
