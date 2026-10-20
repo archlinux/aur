@@ -1,13 +1,13 @@
 pkgbase = upm
 	pkgdesc = A fast, tiny package manager for the npm registry, written in TypeScript.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/unjs/upm
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = nodejs>=22.3
-	source = git+https://github.com/unjs/upm.git#tag=v1.4.0
-	b2sums = 54220161ed1364fe6c245a375fb071fdd3d0acea1486fd6c90b4e186380d91333edf1df30894a3083eefecde1e981b588871822ff62268f7d9693f0a9e1a53c9
+	source = git+https://github.com/unjs/upm.git#tag=v1.5.0
+	b2sums = 0ad5ff4fdf04d95f22f02e3b41916bb10cecc5aad439ea6eecc029a476c2ee683d48975695042b549ba3bddae8efaeca43b6d5801039676a5b30667a48ae0f8c
 
 pkgname = upm
