@@ -45,4 +45,11 @@ package() {
   install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  for shell in bash zsh fish; do
+    "target/release/${_pkgname}" completion "$shell" > "completion.$shell"
+  done
+  install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 }
