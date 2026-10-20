@@ -2,7 +2,7 @@
 _appname=sharefi
 pkgname="${_appname}-electron-bin"
 _pkgname=Sharefi
-pkgver=1.0.2
+pkgver=1.0.3
 _electronversion=44
 pkgrel=1
 pkgdesc="Effortlessly share files and folders across your local network. It is fast, secure, free, easy to use and cross platform."
@@ -24,11 +24,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lucafornerone/sharefi-electron/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f268ecaf79d53d0b07f931656d08c9e36011e85f4bc6a7c2c9e01e3c7ae6c91a'
+sha256sums=('ab17cd407791b9c6bc641fa2d05ceabc355c358b4d96d4abc6fe0f3846defab7'
             '2b0d534627dfbc884d4fbb0fbbaea1c1d5d2ff12d7b3e71b2faffd12cf990f47'
             'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \

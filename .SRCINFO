@@ -1,19 +1,19 @@
 pkgbase = sharefi-electron-bin
 	pkgdesc = Effortlessly share files and folders across your local network. It is fast, secure, free, easy to use and cross platform.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://sharefi.app
 	arch = x86_64
 	license = MIT
 	depends = electron44
 	depends = wireless_tools
-	provides = sharefi-electron=1.0.2
+	provides = sharefi-electron=1.0.3
 	conflicts = sharefi-electron
 	conflicts = sharefi
-	source = sharefi-electron-1.0.2.rpm::https://github.com/lucafornerone/sharefi-electron/releases/download/1.0.2/sharefi-1.0.2.x86_64.rpm
-	source = LICENSE-1.0.2::https://raw.githubusercontent.com/lucafornerone/sharefi-electron/1.0.2/LICENSE
+	source = sharefi-electron-1.0.3.rpm::https://github.com/lucafornerone/sharefi-electron/releases/download/1.0.3/sharefi-1.0.3.x86_64.rpm
+	source = LICENSE-1.0.3::https://raw.githubusercontent.com/lucafornerone/sharefi-electron/1.0.3/LICENSE
 	source = sharefi-electron.sh
-	sha256sums = f268ecaf79d53d0b07f931656d08c9e36011e85f4bc6a7c2c9e01e3c7ae6c91a
+	sha256sums = ab17cd407791b9c6bc641fa2d05ceabc355c358b4d96d4abc6fe0f3846defab7
 	sha256sums = 2b0d534627dfbc884d4fbb0fbbaea1c1d5d2ff12d7b3e71b2faffd12cf990f47
 	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
 
