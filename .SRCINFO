@@ -1,7 +1,7 @@
 pkgbase = libcosmic-git
-	pkgname = libcosmic-git
 	pkgver = 1.0.0.r1034.46fcb08
 	pkgrel = 1
+	pkgname = libcosmic-git
 	pkgdesc = GUI platform toolkit for developing COSMIC applications and applets
 	url = https://github.com/pop-os/libcosmic
 	arch = x86_64
