@@ -1,0 +1,5 @@
+["ruvio-bin"]
+source = "github"
+github = "salihcantekin/ruvio"
+use_latest_release = true
+prefix = "ruvio-"

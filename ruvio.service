@@ -1,0 +1,22 @@
+[Unit]
+Description=Ruvio key-value server (RESP2)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ruvio
+Group=ruvio
+ExecStart=/usr/bin/ruvio --config /etc/ruvio/ruvio.toml --data-dir /var/lib/ruvio
+Restart=on-failure
+LimitNOFILE=65536
+
+# Security hardening — test with: systemctl start ruvio && journalctl -u ruvio
+# If the server writes elsewhere (e.g. auto-generates ruvio.toml), loosen as needed.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/ruvio /etc/ruvio
+
+[Install]
+WantedBy=multi-user.target
