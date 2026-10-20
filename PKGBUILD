@@ -1,7 +1,7 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 epoch=1
 pkgdesc="Nexus Mods' mod manager - native Linux build"
 arch=('x86_64')
@@ -18,9 +18,9 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "vortex.desktop"
   "vortex.sh")
 
-sha256sums=('7c5d0fc8e79230401aeebf6edbb65ae16b39d6c5d41ce48d3a6086e7a48b495e'
-  '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
-  'b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e')
+sha256sums=('2a331830b3e7d56340b12002bdc3476b4f03b7d64cb4f0f7dc47f6d7978afea6'
+            '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
+            'b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e')
 
 options=('!strip' '!debug')
 
