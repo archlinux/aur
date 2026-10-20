@@ -1,0 +1,24 @@
+pkgbase = ely-pdf-app-bin
+	pkgdesc = ElyPDF - PDF viewer from the Ely Office suite
+	pkgver = 0.1.8
+	pkgrel = 2
+	url = https://office.elygpui.com
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	optdepends = vulkan-icd-loader: GPU accelerated rendering
+	optdepends = wayland: Wayland session support
+	provides = ely-pdf
+	conflicts = ely-pdf
+	conflicts = ely-pdf-bin
+	options = !strip
+	options = !debug
+	source_x86_64 = ely-pdf_0.1.8-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.8/ely-pdf_0.1.8-1_amd64.deb
+	sha256sums_x86_64 = 90fe12cd7385f7854e531f9807d44697d3ab565efc449adf657a7f1ce1cd1c59
+
+pkgname = ely-pdf-app-bin
