@@ -5,8 +5,8 @@
 _pkgname="heptabase"
 _pkgname_capital="Heptabase"
 pkgname="$_pkgname-bin"
-_pkgext="AppImage"
-pkgver="1.96.3"
+_pkgext="appimage"
+pkgver="1.112.7"
 pkgrel=1
 pkgdesc="A visual note-taking tool for learning complex topics."
 url="https://heptabase.com"
@@ -15,15 +15,15 @@ license=('custom')
 source=(
     "https://github.com/heptameta/project-meta/releases/download/v$pkgver/$_pkgname_capital-$pkgver.$_pkgext"
 )
-sha512sums=('86305303f1d4f256ba673bd624bc8aff85f5b0b19ebe384b0c041058a11a9ecdff752d1da1adb6d7ce7febe6610342201a9780ca50619c215a8aff25a888af71')
+sha512sums=('e56674e2b00cce82fa3f12265d0d073b3969761a6cfd63e3d8665cf64ef1d1a7595fdae8f39d69b3c220e8ca83b6d5fd296aefc9f9960a705583e7193c435ff9')
 options=(!debug)
 
 prepare() {
     _gen_script
-    if [[ "${_pkgext::1}" == "A" ]] ; then
+    if [[ "${_pkgext,,}" == "appimage" ]] ; then
         chmod +x "$_pkgname_capital-$pkgver.$_pkgext"
         "./$_pkgname_capital-$pkgver.$_pkgext" --appimage-extract
-        ln -sf "squashfs-root" "$_pkgname"
+        ln -sfn "squashfs-root" "$_pkgname"
     fi
 }
 
