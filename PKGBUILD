@@ -1,32 +1,62 @@
-# Maintainer: ThePirate42 <aur at thepirate42 dot org>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: ThePirate42 <aur at thepirate42 dot org>
 
 pkgname=datamodel-code-generator
-pkgver=0.32.0
+pkgver=0.86.0
 pkgrel=1
-pkgdesc="Pydantic model and dataclasses.dataclass generator for easy conversion of JSON, OpenAPI, JSON Schema, and YAML data sources"
+pkgdesc='Generate Python models from JSON Schema, OpenAPI, JSON, and YAML'
 arch=('any')
-url="https://github.com/koxudaxi/${pkgname}"
+url='https://github.com/datamodel-code-generator/datamodel-code-generator'
 license=('MIT')
-provides=(python-${pkgname})
-conflicts=(python-${pkgname})
-depends=(python python-argcomplete python-black python-genson python-inflect python-isort python-packaging python-jinja python-pydantic python-yaml python-tomli python-typing_extensions python-pydantic-core)
-makedepends=(python-build python-installer python-hatchling python-hatch-vcs)
-source=(${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('fd25c39baa343320352fd04480674aa221b5fec479b94fdafdb6e93535a26fa8c2b81f9ece248ec2bb7739e3ef29161f54f509ac9c831fc0867d84e061bf68d4')
+provides=("python-datamodel-code-generator=$pkgver")
+conflicts=('python-datamodel-code-generator')
+depends=('python' 'python-argcomplete' 'python-black' 'python-genson'
+         'python-inflect' 'python-isort' 'python-jinja' 'python-pydantic>=2.12'
+         'python-pydantic-core' 'python-yaml' 'python-typing_extensions>=4.16')
+# GenSON declares these wheel tools in PKGBUILD but omits them from .SRCINFO.
+# Declare them here too so the public helper can provision its build inputs.
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel'
+             'python-hatchling' 'python-hatch-vcs')
+checkdepends=('python-pytest' 'python-pytest-mock' 'python-time-machine'
+              'python-inline-snapshot' 'python-msgspec' 'python-packaging'
+              'python-httpx' 'python-jsonschema')
+optdepends=(
+  'python-graphql-core: GraphQL input'
+  'python-httpx: remote schema retrieval'
+  'python-grpcio-tools: Protocol Buffers input'
+  'ruff: Ruff output formatter'
+  'python-watchfiles: watch mode'
+  'python-msgspec: use generated msgspec models'
+  'python-openapi-spec-validator: optional OpenAPI validation'
+  'python-prance: optional OpenAPI validation'
+)
+_commit=361e17d6e2005e68848c99e1830605fbe904ae28
+source=("source::git+${url}.git#commit=$_commit")
+sha256sums=('SKIP')
 
-build(){
-  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
-
-  cd "${srcdir}/${pkgname}-${pkgver}"
+build() {
+  cd source
+  export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
   python -m build --wheel --no-isolation
 }
 
-package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+check() {
+  cd source
+  python -m installer --destdir="$srcdir/check-install" dist/*.whl
+  local site_packages
+  site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  # Run upstream reference/type handling and representative schema generation
+  # against the wheel. Network services and exhaustive output-backend matrices
+  # are outside this offline packaging check.
+  PYTHONPATH="$srcdir/check-install$site_packages:$PWD" python -m pytest -v \
+    tests/test_reference.py tests/test_types.py tests/test_util.py \
+    tests/parser/test_jsonschema.py::test_parser_template_data_reuse \
+    tests/parser/test_jsonschema.py::test_parser_template_data_root_cycle \
+    tests/parser/test_jsonschema.py::test_schema_validator_root_alias_uses_output_model_capability
+}
 
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${site_packages}/datamodel_code_generator-${pkgver}.dist-info/licenses/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+  cd source
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

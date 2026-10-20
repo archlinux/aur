@@ -1,12 +1,22 @@
 pkgbase = datamodel-code-generator
-	pkgdesc = Pydantic model and dataclasses.dataclass generator for easy conversion of JSON, OpenAPI, JSON Schema, and YAML data sources
-	pkgver = 0.32.0
+	pkgdesc = Generate Python models from JSON Schema, OpenAPI, JSON, and YAML
+	pkgver = 0.86.0
 	pkgrel = 1
-	url = https://github.com/koxudaxi/datamodel-code-generator
+	url = https://github.com/datamodel-code-generator/datamodel-code-generator
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-time-machine
+	checkdepends = python-inline-snapshot
+	checkdepends = python-msgspec
+	checkdepends = python-packaging
+	checkdepends = python-httpx
+	checkdepends = python-jsonschema
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
 	depends = python
@@ -15,16 +25,22 @@ pkgbase = datamodel-code-generator
 	depends = python-genson
 	depends = python-inflect
 	depends = python-isort
-	depends = python-packaging
 	depends = python-jinja
-	depends = python-pydantic
-	depends = python-yaml
-	depends = python-tomli
-	depends = python-typing_extensions
+	depends = python-pydantic>=2.12
 	depends = python-pydantic-core
-	provides = python-datamodel-code-generator
+	depends = python-yaml
+	depends = python-typing_extensions>=4.16
+	optdepends = python-graphql-core: GraphQL input
+	optdepends = python-httpx: remote schema retrieval
+	optdepends = python-grpcio-tools: Protocol Buffers input
+	optdepends = ruff: Ruff output formatter
+	optdepends = python-watchfiles: watch mode
+	optdepends = python-msgspec: use generated msgspec models
+	optdepends = python-openapi-spec-validator: optional OpenAPI validation
+	optdepends = python-prance: optional OpenAPI validation
+	provides = python-datamodel-code-generator=0.86.0
 	conflicts = python-datamodel-code-generator
-	source = datamodel-code-generator.tar.gz::https://github.com/koxudaxi/datamodel-code-generator/archive/refs/tags/0.32.0.tar.gz
-	sha512sums = fd25c39baa343320352fd04480674aa221b5fec479b94fdafdb6e93535a26fa8c2b81f9ece248ec2bb7739e3ef29161f54f509ac9c831fc0867d84e061bf68d4
+	source = source::git+https://github.com/datamodel-code-generator/datamodel-code-generator.git#commit=361e17d6e2005e68848c99e1830605fbe904ae28
+	sha256sums = SKIP
 
 pkgname = datamodel-code-generator
