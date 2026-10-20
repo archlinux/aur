@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/bin/redragon
+Icon=/usr/share/pixmaps/redragon.png
+Name=redragon
+Terminal=false
+Type=Application
+Categories=Utility
+Encoding=UTF-8
+Comment=Leds programmer for keyboard redragon K686BG-RGB-M
