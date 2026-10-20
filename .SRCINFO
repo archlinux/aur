@@ -1,0 +1,19 @@
+pkgbase = ibus-table-zhengma-git
+	pkgdesc = ZhengMa input method table for IBus (git version)
+	pkgver = 1.1.0.20261020.r0.gf3c7069
+	pkgrel = 1
+	url = https://github.com/uzvg/ibus-table-zhengma
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = ibus-table
+	provides = ibus-table-zhengma
+	conflicts = ibus-table-zhengma
+	replaces = ibus-table-zhengma
+	source = git+https://github.com/uzvg/ibus-table-zhengma.git
+	sha256sums = SKIP
+
+pkgname = ibus-table-zhengma-git
