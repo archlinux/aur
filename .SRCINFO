@@ -1,10 +1,10 @@
 pkgbase = ely-doc-bin
 	pkgdesc = ElyDoc, part of Ely Office - offline-first word processor (prebuilt upstream package)
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
-	url = https://git.zacharyzhang.com/ZacharyZhang-NY/ElyOffice
+	url = https://github.com/ELY-Open-Source/ElyOffice
 	arch = x86_64
-	license = AGPL-3.0-or-later
+	license = MIT
 	depends = glibc
 	depends = krb5
 	depends = libgcc
@@ -16,9 +16,9 @@ pkgbase = ely-doc-bin
 	conflicts = ely-doc
 	options = !strip
 	options = !debug
-	source = LICENSE::https://git.zacharyzhang.com/ZacharyZhang-NY/ElyOffice/raw/tag/v0.1.8/LICENSE
-	sha256sums = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
-	source_x86_64 = ely-doc-0.1.8-1-x86_64.pkg.tar.zst::https://git.zacharyzhang.com/ZacharyZhang-NY/ElyOffice/releases/download/v0.1.8/ely-doc-0.1.8-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = aa084e661b210ca7fd99c86beacc4399e8af82040027b0303cfb3f29351c0a55
+	source = LICENSE::https://github.com/ELY-Open-Source/ElyOffice/raw/v0.1.9/LICENSE
+	sha256sums = 6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1
+	source_x86_64 = ely-doc-0.1.9-1-x86_64.pkg.tar.zst::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.9/ely-doc-0.1.9-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 7f4648df9fa1ea820edbfd01da00a4901b76355b38c130f38ad87f342a8cb1ac
 
 pkgname = ely-doc-bin
