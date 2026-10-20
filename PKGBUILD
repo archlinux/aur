@@ -2,7 +2,7 @@
 # Automation: https://github.com/its-me/aur.linkerd-edge-recommended-bin
 
 pkgname=linkerd-edge-recommended-bin
-pkgver=26.7.2
+pkgver=26.8.4
 pkgrel=1
 pkgdesc="Ultralight, security-first service mesh for Kubernetes. Recommended edge release."
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=('linkerd-bin' 'linkerd-edge-bin')
 source_x86_64=("linkerd-${pkgver}-x86_64::https://github.com/linkerd/linkerd2/releases/download/edge-${pkgver}/linkerd2-cli-edge-${pkgver}-linux-amd64")
 source_aarch64=("linkerd-${pkgver}-aarch64::https://github.com/linkerd/linkerd2/releases/download/edge-${pkgver}/linkerd2-cli-edge-${pkgver}-linux-arm64")
 
-sha256sums_x86_64=('3eac4af49e67e69883cbf4cfe2b59d8b0caa3a493921b3d45b59051ae1ba4196')
-sha256sums_aarch64=('882ac7907e8d4d8f3ee1ec159f3dc7be9bfb0824d66fb7d566b9d2e8564e34ff')
+sha256sums_x86_64=('49b9c1fd51634e98b7f5d37cc5652995c787a5abbf2fde29304dfc3cf956550c')
+sha256sums_aarch64=('1bc2371988ebf6addc3d0b00a782bdbc26980c4096bf0f6781f742f6a9706b3b')
 
 package() {
     install -Dm755 linkerd-${pkgver}-${arch} "${pkgdir}/usr/bin/linkerd"
