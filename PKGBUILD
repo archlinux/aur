@@ -3,17 +3,19 @@
 # Scope: the KDE Plasma 6 applet only. Upstream's standalone frontends are not
 # packaged or supported here.
 
-_gitname=ai-usage-widget
+_gitname=tidesi
 # KPlugin.Id from hosts/kde/metadata.json — the plasmoid install dir, the icon
-# name and the kpackagetool6 removal id all derive from it.
-_plasmoid=org.muddyblack.aiUsageWidget
+# name and the kpackagetool6 removal id all derive from it. 4.0.0 renamed the
+# project (AI Usage Widget -> Tidesi) and with it the id, which used to be
+# org.muddyblack.aiUsageWidget; see the .install notice.
+_plasmoid=org.muddyblack.tidesi
 
 pkgname=plasma6-applets-ai-usage
-pkgver=3.3.1
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers"
+pkgdesc="Tidesi (formerly AI Usage Widget) - KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers"
 arch=('any')
-url="https://github.com/Muddyblack/ai-usage-widget"
+url="https://github.com/Muddyblack/tidesi"
 license=('MIT')
 # The backend is stdlib-only Python driven by bash launchers; the widget reaches
 # it through plasma5support's executable DataEngine.
@@ -28,7 +30,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0a8d2c4b8e743fa03669126340ad9cf6e5b4eb6045b0dc2bd8c9b02feae7564e')
+sha256sums=('dc78c0235df595d5ccc51f9387945eeecef3051d49ca82ad7c704a8dda1c4f40')
 
 build() {
     cd "${_gitname}-${pkgver}"
@@ -50,7 +52,7 @@ check() {
     python - <<'PY'
 import sys, unittest
 suite = unittest.defaultTestLoader.discover("tests/python")
-from aiusage import detect
+from tidesi import detect
 detect._SYSTEM_BIN_DIRS = ()
 sys.exit(not unittest.TextTestRunner().run(suite).wasSuccessful())
 PY
@@ -69,13 +71,13 @@ package() {
     # cp carries the tarball's group-writable bits over; normalise, then put the
     # exec bit back on the launchers. main.qml drives get-ai-usage,
     # export-snapshot and history-io through the executable DataEngine;
-    # ai-usage-cli is left runnable because the widget's own settings page
+    # tidesi-cli is left runnable because the widget's own settings page
     # prints its in-package path, and a 644 file there would just fail for
     # anyone who follows that hint. python-interp.sh stays 644 — it is sourced,
     # never executed.
     find "${_root}" -type d -exec chmod 755 {} +
     find "${_root}" -type f -exec chmod 644 {} +
-    chmod 755 "${_root}"/contents/backend/sh/{ai-usage-cli,get-ai-usage,export-snapshot,history-io}
+    chmod 755 "${_root}"/contents/backend/sh/{tidesi-cli,get-ai-usage,export-snapshot,history-io}
 
     # plasmashell inherits the systemd user session's PATH, not a login shell's
     # — a `python3` that only exists via a shell rc file makes every provider

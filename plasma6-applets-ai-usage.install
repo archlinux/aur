@@ -1,8 +1,8 @@
 post_install() {
     cat <<'EOF'
-==> AI Usage Monitor installed system-wide.
+==> Tidesi (formerly AI Usage Widget) installed system-wide.
 
-    Add it: right-click the panel -> Add Widgets -> search "AI Usage".
+    Add it: right-click the panel -> Add Widgets -> search "Tidesi".
     If it does not show up yet, restart the shell:  plasmashell --replace &
 
     Credentials and per-provider toggles live in the widget's config dialog
@@ -13,6 +13,19 @@ EOF
 }
 
 post_upgrade() {
+    if (( $(vercmp "$2" 4.0.0) < 0 )); then
+        cat <<'EOF'
+==> The widget was renamed to Tidesi and got a new id
+    (org.muddyblack.aiUsageWidget -> org.muddyblack.tidesi), so Plasma treats
+    it as a new widget and the old one on your panel stops loading:
+      1. plasmashell --replace &
+      2. remove the old "AI Usage Monitor" entry from the panel
+      3. right-click the panel -> Add Widgets -> search "Tidesi"
+    Settings, history and caches move to the new tidesi/ folders the first
+    time it runs, so nothing is lost.
+EOF
+        return
+    fi
     cat <<'EOF'
 ==> Restart plasmashell to pick up the new widget version:
         plasmashell --replace &

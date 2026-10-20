@@ -1,8 +1,8 @@
 pkgbase = plasma6-applets-ai-usage
-	pkgdesc = KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers
-	pkgver = 3.3.1
+	pkgdesc = Tidesi (formerly AI Usage Widget) - KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = https://github.com/Muddyblack/ai-usage-widget
+	url = https://github.com/Muddyblack/tidesi
 	install = plasma6-applets-ai-usage.install
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = plasma6-applets-ai-usage
 	optdepends = kiro: Kiro monthly credit tracking
 	optdepends = antigravity: Antigravity/Google AI Studio quota tracking
 	optdepends = nodejs: run the antigravity-usage CLI for richer Antigravity data
-	source = plasma6-applets-ai-usage-3.3.1.tar.gz::https://github.com/Muddyblack/ai-usage-widget/archive/refs/tags/v3.3.1.tar.gz
-	sha256sums = 0a8d2c4b8e743fa03669126340ad9cf6e5b4eb6045b0dc2bd8c9b02feae7564e
+	source = plasma6-applets-ai-usage-4.0.0.tar.gz::https://github.com/Muddyblack/tidesi/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = dc78c0235df595d5ccc51f9387945eeecef3051d49ca82ad7c704a8dda1c4f40
 
 pkgname = plasma6-applets-ai-usage
