@@ -1,7 +1,7 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.2.35
+pkgver=1.2.36
 pkgrel=1
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
@@ -44,7 +44,7 @@ optdepends=(
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=3dff1708061a4f31208d8ad6535b2629922b41ab")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=10b45e2f573d55c386e6aed23edb3b09b418e729")
 sha256sums=('SKIP')
 
 build() {
