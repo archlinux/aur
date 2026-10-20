@@ -1,6 +1,6 @@
 # Maintainer: Lu Xu <oliver_lew at outlook dot com>
 pkgname=javinizer
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A metadata scraper and file organizer for JAV, with CLI, TUI, REST API, and a web UI"
 arch=('x86_64' 'aarch64')
