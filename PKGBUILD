@@ -2,7 +2,7 @@
 
 pkgname=neiro-git
 _pkgname=neiro
-pkgver=r17.b0c951b
+pkgver=0.1.0.r0.g9a3148e
 pkgrel=1
 pkgdesc="Laptop speaker enhancement for PipeWire, using the laptop's own Dolby DAX3 tuning"
 arch=('x86_64')
