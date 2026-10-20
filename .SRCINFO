@@ -1,6 +1,6 @@
 pkgbase = microsoft-edge-canary-bin
 	pkgdesc = A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
-	pkgver = 157.0.4337.0
+	pkgver = 158.0.4350.0
 	pkgrel = 1
 	url = https://www.microsoftedgeinsider.com/en-us/download
 	arch = x86_64
@@ -22,14 +22,14 @@ pkgbase = microsoft-edge-canary-bin
 	optdepends = libunity: for download progress on KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs - CRBug #369991
 	optdepends = xdg-utils
-	provides = microsoft-edge=157.0.4337.0
+	provides = microsoft-edge=158.0.4350.0
 	conflicts = microsoft-edge
 	options = !strip
 	options = !zipman
-	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-canary/microsoft-edge-canary_157.0.4337.0-1_amd64.deb
+	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-canary/microsoft-edge-canary_158.0.4350.0-1_amd64.deb
 	source = microsoft-edge-canary.sh
 	source = Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf
-	sha256sums = 707b54d76faaa34e2579d12377efc30674750832e6ead4a077b99a4e3ce6c980
+	sha256sums = 26b7579af9c41b581b63a4b975d0b2afa4bcbbd91d293b61b0939dc142e084cc
 	sha256sums = 94d18bb414adb7693c4234ce5d0eac1e04caf98dc197ff8247ac5e84ea42f2d1
 	sha256sums = edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e
 
