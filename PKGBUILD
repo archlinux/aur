@@ -2,11 +2,13 @@
 pkgbase=nordwand-mono
 pkgname=('ttf-nordwand-mono' 'otf-nordwand-mono')
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Compact monospace neo-grotesque font designed for developers"
 arch=('any')
 url="https://github.com/tywr/Nordwand-Mono"
 license=('OFL-1.1')
+depends=('fontconfig')
+install=nordwand-mono.install
 
 source=(
   "NordwandMono-TTF-$pkgver.zip::$url/releases/download/$pkgver/NordwandMono-TTF.zip"
