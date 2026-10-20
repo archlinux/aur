@@ -1,7 +1,7 @@
 pkgbase = cosmic-tasks
-	pkgname = cosmic-tasks
 	pkgver = 0.3.1
 	pkgrel = 1
+	pkgname = cosmic-tasks
 	pkgdesc = A simple task management application for the COSMIC desktop
 	url = https://github.com/cosmic-utils/tasks
 	arch = x86_64
