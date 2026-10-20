@@ -6,7 +6,7 @@ pkgver=0.80.0
 pkgrel=1
 pkgdesc='Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock'
 arch=('x86_64' 'aarch64')
-url='https://github.com/always-further/nono'
+url='https://github.com/nolabs-ai/nono'
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
@@ -17,7 +17,7 @@ optdepends=(
 provides=('nono')
 conflicts=('nono' 'nono-ai-bin')
 options=(!lto)
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/always-further/nono/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d216e714883f237a5bac468a0141dc781a979eab2535957f63ecf27a1fffdc09')
 
 prepare() {
