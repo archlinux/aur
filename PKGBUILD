@@ -1,22 +1,17 @@
-# Maintainer: Damglador <vse.stopchanskyi@gmail.com>
+# Maintainer: Damglador <damglador@gmail.com>
 pkgname=vscodium-xdg-dir-patch
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Patch for VSCodium to store data in ~/.local/share/codium"
 arch=(any)
 license=('GPL-3.0-only')
-depends=(
-	codium
-)
+depends=(codium)
 install=post.install
-source=(
-    vscodium-xdg-dir-patch.sh
-    vscodium-xdg-dir-patch.hook
-)
-sha256sums=(
-	7153a3e0bf835aa3f6c5251b387c6807ce35abe5290b8eac3ffd5cd0e2532d3e
-	26090e6baec7fa8ca2d6bb594109590407ce7747e995e06fc85d78714c2ee93c
-)
+
+source=('vscodium-xdg-dir-patch.sh'
+        'vscodium-xdg-dir-patch.hook')
+sha256sums=('199b7e4a68918ce9be49433726d6b8b52bcfc0715994780887179ab1d6c23355'
+            '26090e6baec7fa8ca2d6bb594109590407ce7747e995e06fc85d78714c2ee93c')
 
 package() {
 	install -Dm 644 vscodium-xdg-dir-patch.hook \

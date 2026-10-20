@@ -1,3 +1,9 @@
 post_install() {
-    /usr/bin/vscodium-xdg-dir-patch
+  /usr/bin/vscodium-xdg-dir-patch
+}
+post_upgrade() {
+  /usr/bin/vscodium-xdg-dir-patch
+}
+post_remove() {
+  echo "==> NOTE: Reinstall your vscodium package to revert patches applied by this package"
 }
