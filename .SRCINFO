@@ -1,6 +1,6 @@
 pkgbase = suwayomi-server-bin
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
-	pkgver = 2.3.2243
+	pkgver = 2.4.2366
 	pkgrel = 1
 	url = https://github.com/Suwayomi/Suwayomi-Server
 	arch = any
@@ -17,13 +17,13 @@ pkgbase = suwayomi-server-bin
 	provides = tachidesk-server
 	conflicts = tachidesk
 	conflicts = suwayomi-server-preview-bin
-	noextract = suwayomi-server-v2.3.2243.jar
+	noextract = suwayomi-server-v2.4.2366.jar
 	backup = etc/suwayomi/server.conf
-	source = https://github.com/Suwayomi/Suwayomi-Server/releases/download/v2.3.2243/suwayomi-server-v2.3.2243.jar
-	source = https://github.com/Suwayomi/Suwayomi-Server/releases/download/v2.3.2243/Suwayomi-Server-v2.3.2243-linux-assets.tar.gz
-	source = https://raw.githubusercontent.com/Suwayomi/Suwayomi-Server/refs/tags/v2.3.2243/scripts/resources/catch_abort.c
-	sha256sums = 821141b32e170d4a02d3cbdfed577ed8f07bd22383ff5f4132ebb5ae40e98dd5
-	sha256sums = 6cc75b16d8c627c5bff5cacb418f4c42172a1da4cc54315fc5577601934c4d92
+	source = https://github.com/Suwayomi/Suwayomi-Server/releases/download/v2.4.2366/suwayomi-server-v2.4.2366.jar
+	source = https://github.com/Suwayomi/Suwayomi-Server/releases/download/v2.4.2366/Suwayomi-Server-v2.4.2366-linux-assets.tar.gz
+	source = https://raw.githubusercontent.com/Suwayomi/Suwayomi-Server/refs/tags/v2.4.2366/scripts/resources/catch_abort.c
+	sha256sums = af9feb20af9d7ebe9e30769e6c6ebc7fc7ab1c447388d42e0280b1da5fe07bfd
+	sha256sums = 2cca571b0880fc91639a7ce4213535646d38a96a4520e2cb5bcf14a799d4bbad
 	sha256sums = 9077b3cdaf76df7179e80033fb471ae5c42698a4f6f93802e26779b04c638c0a
 
 pkgname = suwayomi-server-bin
