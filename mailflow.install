@@ -33,4 +33,6 @@ post_install() {
 post_upgrade() {
     echo "MailFlow upgraded. Migrations run on the next start:"
     echo "  systemctl restart mailflow"
+    echo "Fitted images are cached in /var/cache/mailflow/images (512 MB)."
+    echo "IMAGE_CACHE_DIR and IMAGE_CACHE_MAX_MB in /etc/mailflow/mailflow.env override that."
 }

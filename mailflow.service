@@ -9,18 +9,26 @@ Type=simple
 User=mailflow
 Group=mailflow
 Environment=NODE_ENV=production
+# Fitted-image cache. EnvironmentFile below can override either value.
+# PrivateTmp would throw away the default directory under /tmp on every restart.
+Environment=IMAGE_CACHE_DIR=/var/cache/mailflow/images
+Environment=IMAGE_CACHE_MAX_MB=512
 EnvironmentFile=/etc/mailflow/mailflow.env
 WorkingDirectory=/usr/share/webapps/mailflow
 ExecStart=/usr/lib/mailflow/node src/index.js
 Restart=on-failure
 RestartSec=5
 
-# Hardening. V8 needs writable executable pages, so MemoryDenyWriteExecute stays off.
+# Hardening. V8 and libvips need writable executable pages, so
+# MemoryDenyWriteExecute stays off. CacheDirectory is writable despite
+# ProtectSystem=strict, and systemd creates it owned by the service user.
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
 PrivateTmp=true
 PrivateDevices=true
+CacheDirectory=mailflow/images
+CacheDirectoryMode=0750
 
 [Install]
 WantedBy=multi-user.target

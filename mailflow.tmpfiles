@@ -1,1 +1,3 @@
 d /var/lib/mailflow 0750 mailflow mailflow -
+d /var/cache/mailflow 0750 mailflow mailflow -
+d /var/cache/mailflow/images 0750 mailflow mailflow -
