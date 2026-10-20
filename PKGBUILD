@@ -2,18 +2,19 @@
 
 pkgname=dgop-git
 _pkgname=${pkgname%-git}
-pkgver=1.6.2.r4.gea79945
+_repo=dux-gop
+pkgver=2.0.0.r0.g43a2952
 pkgrel=1
 pkgdesc='System monitoring CLI + REST API (git snapshot)'
 arch=(x86_64 aarch64 armv7h)
-url="https://github.com/AvengeMedia/$_pkgname"
+url="https://github.com/duxlabs-dev/$_repo"
 license=(MIT)
 depends=(glibc)
 makedepends=(git
              go)
 provides=("dgop=$pkgver")
 conflicts=(dgop)
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {

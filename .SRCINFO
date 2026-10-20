@@ -1,8 +1,8 @@
 pkgbase = dgop-git
 	pkgdesc = System monitoring CLI + REST API (git snapshot)
-	pkgver = 1.6.2.r4.gea79945
+	pkgver = 2.0.0.r0.g43a2952
 	pkgrel = 1
-	url = https://github.com/AvengeMedia/dgop
+	url = https://github.com/duxlabs-dev/dux-gop
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -10,9 +10,9 @@ pkgbase = dgop-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = dgop=1.6.2.r4.gea79945
+	provides = dgop=2.0.0.r0.g43a2952
 	conflicts = dgop
-	source = git+https://github.com/AvengeMedia/dgop.git
+	source = dgop::git+https://github.com/duxlabs-dev/dux-gop.git
 	sha256sums = SKIP
 
 pkgname = dgop-git
