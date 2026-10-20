@@ -1,12 +1,14 @@
 pkgbase = persistent-evdev-rs-git
 	pkgdesc = Persistent proxy for evdev devices
-	pkgver = 0.1.0
+	pkgver = r9.a39594a
 	pkgrel = 1
-	url = https://github.com/FlorianNAdam/persistent-input-rs
+	url = https://github.com/FlorianNAdam/persistent-evdev-rs
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	provides = persistent-evdev-rs
 	conflicts = persistent-evdev-rs
+	backup = etc/persistent-evdev-rs/config.json
 	source = git+https://github.com/FlorianNAdam/persistent-evdev-rs
 	sha256sums = SKIP
 
