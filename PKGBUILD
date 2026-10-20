@@ -3,7 +3,7 @@
 
 pkgname=dudenbib
 pkgver=6.5.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="Utility to view books from Duden, Brockhaus and some others"
 url="https://www.duden.de/digitales/duden-bibliothek"
@@ -23,5 +23,6 @@ package() {
   chmod -R 755 "${pkgdir}/usr"
 
   install -Dm755 "${srcdir}/postinst" "${pkgdir}/usr/share/dudenbib/postinst"
-}
 
+  sed -i 's|^export LD_LIBRARY_PATH$|export LD_LIBRARY_PATH\nexport QT_QPA_PLATFORM=xcb|' "${pkgdir}/opt/dudenbibliothek6/dudenbib.sh"
+}
