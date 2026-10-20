@@ -1,6 +1,6 @@
 pkgbase = hypr-kblayoutd-bin
 	pkgdesc = Small Hyprland daemon that remembers keyboard layout per window (prebuilt binary)
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/kengzzzz/hypr-kblayoutd
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = hypr-kblayoutd-bin
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
-	provides = hypr-kblayoutd=0.3.1
+	provides = hypr-kblayoutd=0.4.0
 	conflicts = hypr-kblayoutd
 	options = !strip
 	options = !debug
-	source_x86_64 = hypr-kblayoutd-0.3.1-x86_64.tar.gz::https://github.com/kengzzzz/hypr-kblayoutd/releases/download/v0.3.1/hypr-kblayoutd-0.3.1-x86_64.tar.gz
-	sha256sums_x86_64 = 688296712f97955d741ac31d2efbb198fa6acbf1c6d4fdfe0ec95708fd802cea
-	source_aarch64 = hypr-kblayoutd-0.3.1-aarch64.tar.gz::https://github.com/kengzzzz/hypr-kblayoutd/releases/download/v0.3.1/hypr-kblayoutd-0.3.1-aarch64.tar.gz
-	sha256sums_aarch64 = db744e15373ca5a199ff429241225ca0c2c254e26187730ccefe21b977c7e422
+	source_x86_64 = hypr-kblayoutd-0.4.0-x86_64.tar.gz::https://github.com/kengzzzz/hypr-kblayoutd/releases/download/v0.4.0/hypr-kblayoutd-0.4.0-x86_64.tar.gz
+	sha256sums_x86_64 = a5fcb6b1ce0fbfd5d9927d6d833aa19efa09fbe04b37a8eb226e92ac51bac246
+	source_aarch64 = hypr-kblayoutd-0.4.0-aarch64.tar.gz::https://github.com/kengzzzz/hypr-kblayoutd/releases/download/v0.4.0/hypr-kblayoutd-0.4.0-aarch64.tar.gz
+	sha256sums_aarch64 = 6aa9f208acf760be57682f8dc3878aa19c2c7f5ac6e993d03fe3af3008e948db
 
 pkgname = hypr-kblayoutd-bin

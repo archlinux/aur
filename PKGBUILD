@@ -2,7 +2,7 @@
 
 pkgname=hypr-kblayoutd-bin
 _pkgname=hypr-kblayoutd
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Small Hyprland daemon that remembers keyboard layout per window (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!strip' '!debug')
 _url_base="$url/releases/download/v$pkgver"
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$_url_base/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$_url_base/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('688296712f97955d741ac31d2efbb198fa6acbf1c6d4fdfe0ec95708fd802cea')
-sha256sums_aarch64=('db744e15373ca5a199ff429241225ca0c2c254e26187730ccefe21b977c7e422')
+sha256sums_x86_64=('a5fcb6b1ce0fbfd5d9927d6d833aa19efa09fbe04b37a8eb226e92ac51bac246')
+sha256sums_aarch64=('6aa9f208acf760be57682f8dc3878aa19c2c7f5ac6e993d03fe3af3008e948db')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH"
@@ -31,6 +31,9 @@ package() {
 
   install -Dm644 README.md \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  install -Dm644 CHANGELOG.md \
+    "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
   install -Dm644 docs/benchmarks.md \
     "$pkgdir/usr/share/doc/$pkgname/benchmarks.md"
