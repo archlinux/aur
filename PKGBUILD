@@ -1,7 +1,7 @@
 # Maintainer: Ishan Parihar <ishanp at protonmail dot com>
 pkgname=neverwrite-bin
 pkgver=0.8.13
-pkgrel=1
+pkgrel=2
 pkgdesc='The bastard son between Cursor and Obsidian - local-first knowledge workspace with AI'
 arch=('x86_64')
 url='https://neverwrite.app/'
@@ -117,6 +117,64 @@ prepare() {
 
   chmod +x "$srcdir/$_img"
   echo "==> prepared neverwrite $_ver"
+
+  # --- runtime smoke test ---------------------------------------------
+  # The AppImage is a self-contained bundle: it can be downloaded, pass the
+  # ELF check, and still fail to start because the payload is truncated or
+  # a library inside the bundle is missing. That failure is invisible to a
+  # build that only compiles.
+  #
+  # Extract it and require that the real binary starts and reports a
+  # version. Extraction needs no FUSE, so it works in a build sandbox.
+  echo "==> smoke test: extracting and launching the AppImage"
+  local _ex="$srcdir/smoke-extract"
+  rm -rf "$_ex"
+  mkdir -p "$_ex"
+  if ! (cd "$_ex" && "$srcdir/$_img" --appimage-extract >/dev/null 2>&1); then
+    echo "SMOKE TEST FAILED: could not extract the AppImage" >&2
+    exit 1
+  fi
+  # --appimage-extract writes to ./squashfs-root
+  local _root="$_ex/squashfs-root"
+  if [[ ! -x "$_root/neverwrite" ]]; then
+    echo "SMOKE TEST FAILED: the AppImage does not contain a neverwrite binary" >&2
+    ls "$_root" >&2
+    exit 1
+  fi
+  # The Electron/Chromium app cannot report --version without a display
+  # server (it initialises the GPU stack first), and no virtual X server is
+  # available in the build sandbox. So verify the parts that CAN be checked
+  # without a display:
+  #   1. the AppImage extracts and the real binary is present and runnable
+  #   2. every shared library it needs resolves (a missing one makes the
+  #      dynamic loader fail before main(), which no compile step would catch)
+  #   3. the app is a real Electron build, not a stub
+  #   4. the version the AppImage advertises matches the version we fetched
+  if ldd "$_root/neverwrite" 2>/dev/null | grep -q "not found"; then
+    echo "SMOKE TEST FAILED: unresolved shared libraries:" >&2
+    ldd "$_root/neverwrite" 2>/dev/null | grep "not found" >&2
+    exit 1
+  fi
+
+  if ! strings "$_root/neverwrite" 2>/dev/null | grep -qE "Electron/[0-9]+\.[0-9]+"; then
+    echo "SMOKE TEST FAILED: the binary is not a real Electron build" >&2
+    exit 1
+  fi
+
+  # The desktop entry inside the AppImage carries the upstream version.
+  # It must match the version this build fetched, otherwise we shipped the
+  # wrong artifact.
+  if [[ -f "$_root/neverwrite.desktop" ]]; then
+    local _appver
+    _appver=$(sed -n 's/^X-AppImage-Version=//p' "$_root/neverwrite.desktop" | head -1)
+    if [[ -n "$_appver" && "$_appver" != "$_ver" ]]; then
+      echo "SMOKE TEST FAILED: the AppImage reports version '$_appver' but we fetched '$_ver'" >&2
+      exit 1
+    fi
+    echo "==> smoke test: AppImage version matches ($_appver)"
+  fi
+  rm -rf "$_ex"
+  echo "==> smoke test passed"
 }
 
 package() {

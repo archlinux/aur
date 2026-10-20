@@ -1,7 +1,7 @@
 pkgbase = neverwrite-bin
 	pkgdesc = The bastard son between Cursor and Obsidian - local-first knowledge workspace with AI
 	pkgver = 0.8.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neverwrite.app/
 	arch = x86_64
 	license = Apache-2.0
