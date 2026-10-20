@@ -10,8 +10,9 @@ pkgbase = barracudavpn-bin
 	conflicts = barracudavpn
 	options = debug
 	options = !strip
+	source = local://VPNClient_5.3.10_Linux.tar.gz
+	source = barracudavpn.conf
 	sha256sums = db493451d64dbade574040a26b4c7a826526aa6fdfa9f6b2e6f7d58f6697cd4c
-	source = local://VPNClient_5.3.6_Linux.tar.gz
-	sha256sums = bec85b2297ee588bf3c82e8e945245eb9755bcbf49d2af68eb857b2e61875699
+	sha256sums = eb7193369cb43a88e4ce66823195e2dadd4285a48641b2150e0dba148785a717
 
 pkgname = barracudavpn-bin

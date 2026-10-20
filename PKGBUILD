@@ -29,8 +29,10 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 	fi
 fi
 
-source=("local://${_pkg_file_name}")
-sha256sums=('db493451d64dbade574040a26b4c7a826526aa6fdfa9f6b2e6f7d58f6697cd4c')
+source=("local://${_pkg_file_name}"
+		"barracudavpn.conf")
+sha256sums=('db493451d64dbade574040a26b4c7a826526aa6fdfa9f6b2e6f7d58f6697cd4c'
+            'eb7193369cb43a88e4ce66823195e2dadd4285a48641b2150e0dba148785a717')
 
 options=(debug !strip)
 
@@ -48,4 +50,5 @@ package() {
     install -Dm 4755 ${srcdir}/usr/local/bin/barracudavpn-daemon ${pkgdir}/usr/bin/barracudavpn-daemon
     install -Dm 4644 ${srcdir}/usr/lib/systemd/system/barracudavpn.service ${pkgdir}/usr/lib/systemd/system/barracudavpn.service
     install -Dm 4755 ${srcdir}/usr/local/lib/barracudavpn/setup-groups ${pkgdir}/usr/lib/barracudavpn/setup-groups
+    install -Dm 4644 ${srcdir}/barracudavpn.conf ${pkgdir}/usr/lib/sysusers.d/barracudavpn.conf
 }
