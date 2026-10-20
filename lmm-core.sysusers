@@ -1,0 +1,2 @@
+u lmm-core - "lmm-core service" /var/lib/lmm/core
+g lmm-rpc -

@@ -1,0 +1,42 @@
+[Unit]
+Description=lmm-core (preview)
+Documentation=https://github.com/TokenNotIncluded/lmm-api
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=exec
+User=lmm-core
+Group=lmm-core
+StateDirectory=lmm/core
+StateDirectoryMode=0700
+RuntimeDirectory=lmm/core
+RuntimeDirectoryMode=0700
+WorkingDirectory=/var/lib/lmm/core
+ExecStart=/usr/bin/lmm-core --config /etc/lmm.conf.d/core.toml
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30min
+SendSIGKILL=no
+KillMode=mixed
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+MemoryMax=256M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

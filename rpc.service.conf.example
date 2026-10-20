@@ -1,0 +1,5 @@
+# Opt-in only: copy to /etc/systemd/system/lmm-core.service.d/rpc.conf.
+# Set rpc.shared_group_id to the numeric GID of lmm-rpc in core.toml first.
+[Service]
+Group=lmm-rpc
+RuntimeDirectoryMode=0750
