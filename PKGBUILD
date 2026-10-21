@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-09-04.
+# PKGBUILD last time manually edited: At least on 2026-10-21.
 
 _pkgname=idos-timetable-data-chaps-trains-europe-2016
 pkgname="${_pkgname}-latest"
@@ -40,10 +40,10 @@ optdepends=(
 
 provides=(
   "${_pkgname}=${pkgver}"
-  
+
   "idos-timetable-data=${pkgver}"
   "idos-timetable-data-trains=${pkgver}"
-  
+
   "idos-timetable-data-trains-europe=${pkgver}"
   "idos-timetable-data-trains-europe-2016=${pkgver}"
 )
@@ -62,6 +62,8 @@ source=(
   "IDOS-Licence.pdf::https://web.archive.org/web/20160806152205/http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
+
+noextract=("${_target}")
 
 sha256sums=(
   'be895b093a2989b999624b7749268ca40b4316d72235d497ace2ce382e307aec'
