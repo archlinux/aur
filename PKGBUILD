@@ -2,7 +2,7 @@
 
 _pkgname='noita_proxy'
 pkgname="${_pkgname}-bin"
-pkgver=1.6.6
+pkgver=1.6.8
 pkgrel=1
 pkgdesc='Noita Entangled Worlds mod'
 url='https://github.com/IntQuant/noita_entangled_worlds'
@@ -26,7 +26,7 @@ source=(
     "${_rawurl}/v${pkgver}/LICENSE-MIT"
     "noita_proxy.desktop"
 )
-sha256sums=('ede876ea46d5cd1a5dd84391267978c5ab4e3a47637c64acfbf5ac4669bb3d57'
+sha256sums=('8387aec3567a9c7f89d7d7c5845b4f4ee17d815d16fb67ddf1ec4af597c6ba81'
             'ecd4f95a07f388e6e393feb79146ce4ae97604646d22e9698253995898a3343c'
             '59899c6091b540582ed617e8eeaac4919dc985ccfc35459ee9752b699be5205b'
             'c97af108287fce52a6e0d1197ad8bc92a9a470b484942c0bbb74469d8475e2d4'
@@ -52,6 +52,6 @@ package() {
     install -Dm 644 noita_proxy.desktop \
         -t "$pkgdir/usr/share/applications"
 
-    printf '#!/usr/bin/env sh\nexec /usr/lib/noita_proxy/noita_proxy $@' | \
+    printf '#!/usr/bin/env sh\nexec /usr/lib/noita_proxy/noita_proxy "$@"' | \
         install -Dm 755 /dev/stdin "$pkgdir/usr/bin/noita_proxy"
 }
