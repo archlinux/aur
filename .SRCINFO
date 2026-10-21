@@ -1,6 +1,6 @@
 pkgbase = tailbridge-git
 	pkgdesc = Expose individual devices across a LAN and a Tailscale tailnet (IPv4 aliases, NAT and per-device /32 routes)
-	pkgver = r20.a0617d9
+	pkgver = r24.c6853e7
 	pkgrel = 1
 	url = https://github.com/jamezrin/tailbridge
 	arch = x86_64

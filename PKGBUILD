@@ -1,6 +1,6 @@
 # Maintainer: Jaime Martínez Rincón <mrjaime1999@gmail.com>
 pkgname=tailbridge-git
-pkgver=r20.a0617d9
+pkgver=r24.c6853e7
 pkgrel=1
 pkgdesc='Expose individual devices across a LAN and a Tailscale tailnet (IPv4 aliases, NAT and per-device /32 routes)'
 arch=('x86_64' 'aarch64' 'armv7h')
