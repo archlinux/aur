@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=multiqc
-pkgver=1.33
+pkgver=1.35
 pkgrel=1
 pkgdesc="Aggregate results from bioinformatics analyses across many samples into a single report"
 arch=('any')
@@ -17,14 +17,12 @@ depends=(
     python-jsonschema
     python-kaleido-bin
     python-markdown
-    python-matplotlib
     python-natsort
     python-numpy
     python-requests
     python-pillow
     python-plotly
     python-yaml
-    python-pyaml-env
     python-rich
     python-rich-click
     python-spectra
@@ -33,11 +31,15 @@ depends=(
     python-pydantic
     python-typeguard
     python-polars
-    python-arrow
+    python-pyarrow
 )
-makedepends=(python-build python-installer python-wheel)
+optdepends=(
+    'chromium: Static plot export with Kaleido 1.x'
+    'ipython: Display reports and plots in notebooks'
+)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 source=($pkgname-$pkgver.tar.gz::https://github.com/MultiQC/MultiQC/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('d7ff73deaeaa1b6ebf09c4ec37ea7ede9e06bbea0e13e57d83c3f0b447827b75')
+sha256sums=('b76fa0562b5720fe338f19dc03a3043f6f1fad310315470dccc7b41ccf54cd1a')
 
 build() {
   cd MultiQC-$pkgver
