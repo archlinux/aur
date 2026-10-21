@@ -1,6 +1,6 @@
 pkgbase = liquid-dsp-git
 	pkgdesc = Digital signal processing library for software-defined radios
-	pkgver = 1.8.2+84.r8801.20260912.d61cf506d
+	pkgver = 1.8.3.r8802.20260926.10041f70c
 	pkgrel = 1
 	url = http://liquidsdr.org
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = liquid-dsp-git
 	makedepends = make
 	depends = glibc
 	optdepends = fftw: efficient FFT
-	provides = liquid-dsp=1.8.2+84.r8801.20260912.d61cf506d
+	provides = liquid-dsp=1.8.3.r8802.20260926.10041f70c
 	conflicts = liquid-dsp
 	source = liquid-dsp::git+https://github.com/jgaeddert/liquid-dsp.git
 	sha256sums = SKIP
