@@ -1,6 +1,6 @@
 # Maintainer: Chomiam <axel.valens@ik.me>
 pkgname=noos-package-manager
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Gestionnaire de paquets GTK4/Libadwaita (Pacman, AUR, Flatpak et AppImages)"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ optdepends=(
   'paru: Assistant AUR alternatif pour installer et mettre a jour les paquets AUR'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('17d812850fced2641fed6537e6c5aaf225f2424b47c5f69b76b69c6e7e6196a8')
+sha256sums=('9593248cd45283e7b09f1c90e0d057742e839076198e4d37cd5045855eb4967d')
 
 prepare() {
   cd "$pkgname-$pkgver"
