@@ -45,7 +45,7 @@ options=(!lto !buildflags !makeflags)
 prepare() {
     cd $srcdir/$_pkgname
     rm -f Makefile.personal
-    echo "STRIP := touch -c" >> Makefile.personal
+    echo "STRIP := :" >> Makefile.personal
     echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
     echo "JDKDIR := /usr/lib/jvm/default" >> Makefile.personal
 }
