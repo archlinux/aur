@@ -2,7 +2,7 @@
 # Maintainer: alcxyz <alcxyz@users.noreply.github.com>
 
 pkgname='t3rry-bin'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Move T3 Code projects and threads between server instances'
 url='https://github.com/alcxyz/t3rry'
@@ -12,10 +12,10 @@ provides=('t3rry')
 conflicts=('t3rry')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/alcxyz/t3rry/releases/download/v${pkgver}/t3rry_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d8e0e626e63393a2001529b5ba88beb95d3d3dd309397ca227c272537dc85c55')
+sha256sums_aarch64=('3b421b4273fb9351b51284ad3ae37e77b186521f9e58654fb429daffff6457de')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/alcxyz/t3rry/releases/download/v${pkgver}/t3rry_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ee5bf135d13d997d4e04b532af76570bde583d08d2d819cd038bd650b1d7d292')
+sha256sums_x86_64=('ed59a37b72f22209d8dc7abb0ceabe706dcf051365d33766828d254a247abff7')
 
 package() {
   install -Dm755 "./t3rry" "${pkgdir}/usr/bin/t3rry"
