@@ -12,7 +12,7 @@
 # come from.
 pkgname=margin-bin
 _pkgname=margin
-pkgver=26.10.03
+pkgver=26.10.21
 pkgrel=1
 pkgdesc="A terminal tool for reviewing markdown and handing the comments back to an agent (a launcher plus a seed build: margin updates itself in ~/.local/margin with margin update)"
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_x86_64=("margin-launcher-${pkgver}-x86_64::${_release}/margin-launcher_li
                "margin-${pkgver}-x86_64::${_release}/margin_linux_amd64")
 source_aarch64=("margin-launcher-${pkgver}-aarch64::${_release}/margin-launcher_linux_arm64"
                 "margin-${pkgver}-aarch64::${_release}/margin_linux_arm64")
-sha256sums_x86_64=('d63a8d0c7fc1bd1a43978462ff92034389f280ddbf93a5897f79ee91e116367e' '44ea7919c5797d09606ee989c6e8577f0893adadff286149b1bd6d6f8c48db00')
-sha256sums_aarch64=('f57c1483648ac05a1ec1e63afaa86afed19cd33bf84ebf291c81c84679e745ef' '518253268d26ed052c639e2bc2dfd0a12835613e1c615ae0f532da9bb72b4c13')
+sha256sums_x86_64=('6528a5fd2a91574d6f1854807441a1bf4c6af2dd2c51bc4eef30cd20a1341a65' '31893be542f4ae94143714f458c798e6f84616920683dda175722c1318902d3a')
+sha256sums_aarch64=('2bd279f77fa85fec76544440917af1423aa17a86e869cf32a0da9f230188bbf6' 'ba592ca636599ad60b05517977247f01b92477ad0d38efd674c9534b318751f2')
 
 package() {
   install -Dm755 "margin-launcher-${pkgver}-${CARCH}" "$pkgdir/usr/bin/$_pkgname"
