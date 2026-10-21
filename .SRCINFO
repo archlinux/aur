@@ -1,7 +1,7 @@
 pkgbase = perplexity-bin
 	pkgdesc = Official Perplexity desktop app and Portable Computer for Linux
 	pkgver = 26.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.perplexity.ai/hub/products/portable-computer
 	arch = x86_64
 	license = LicenseRef-Proprietary
@@ -48,10 +48,10 @@ pkgbase = perplexity-bin
 	conflicts = perplexity
 	options = !strip
 	options = !debug
-	source = perplexity-26.10.2-117519-amd64.deb::https://packages.perplexity.ai/deb/pool/main/p/perplexity/perplexity_26.10.2%2Bbuild117519_amd64.deb
+	source = perplexity-26.10.2-122020-amd64.deb::https://packages.perplexity.ai/deb/pool/main/p/perplexity/perplexity_26.10.2%2Bbuild122020_amd64.deb
 	source = perplexity.sh
 	source = LICENSE.upstream
-	sha256sums = e32f2ece9e3482655ba8b279ce4fcad833f4bb8703b2b7049a293f9ee1077935
+	sha256sums = b822c81624be379a0694bcdb9c1e06f7c1b142ce4bcd97a5c35605227b6e98dc
 	sha256sums = 22691a4a1e35211bf91be48da130b577a8a7bac86d4f239f112d478d6130ebef
 	sha256sums = 7b1ee6559351f65e1ff609b329b3c5023d4e293b1044003995fe05b8f4831e04
 

@@ -2,9 +2,9 @@
 
 pkgname=perplexity-bin
 pkgver=26.10.2
-pkgrel=1
-_build=117519
-_sha256=e32f2ece9e3482655ba8b279ce4fcad833f4bb8703b2b7049a293f9ee1077935
+pkgrel=2
+_build=122020
+_sha256=b822c81624be379a0694bcdb9c1e06f7c1b142ce4bcd97a5c35605227b6e98dc
 pkgdesc='Official Perplexity desktop app and Portable Computer for Linux'
 arch=('x86_64')
 url='https://www.perplexity.ai/hub/products/portable-computer'
