@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=mercurygram-desktop-bin
 _pkgname=mercurygram
-pkgver=7.3.1.1
+pkgver=7.3.2.1
 pkgrel=1
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
@@ -56,8 +56,8 @@ sha256sums=('e94a745912b7c9852d3f9cda31056af33375a3915f3182a6126ab114f78de847'
             'e7b1f3fdc5b92977f29eb08b6936dd94539da928bac4253ccbc53d9110a4252b'
             '64650964193d328389b2cf4be9fdfb6ccc56b17fb932e46d0589a8c0f779f3cf'
             '3cd0d6b3d46b406e8f2458e744a87d22713f049cf1615269347697e1282577d0')
-sha256sums_x86_64=('4444f7178c3e8a8835969f47fad9590d1bc8439fff2a7b05b5f26f5826bce11f')
-sha256sums_aarch64=('b44668c148a79c7fbd512eaa0687012368cecda746273c30f4094a241605ea91')
+sha256sums_x86_64=('ba1edd4a42d98deca81aebd4044a16fe4cd10ae1b6eda60c4a8b5d23351b4653')
+sha256sums_aarch64=('be94a0427996a7049401498dffea955bff19136b5bdf48ea6ca2c16b273c04e7')
 
 package() {
   install -Dm755 "${_pkgname^}" "$pkgdir/usr/bin/${_pkgname^}"
