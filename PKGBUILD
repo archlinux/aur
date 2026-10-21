@@ -6,8 +6,8 @@ pkgdesc="Feature rich Discord TUI client. Lite version without media and call su
 arch=('any')
 url="https://github.com/sparklost/endcord"
 license=('LicenseRef-SparkLost')
-provides=('endcord-lite')
-conflicts=('endcord-lite')
+provides=('endcord')
+conflicts=('endcord')
 depends=()
 makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf' 'wget')
 optdepends=('xclip: clipboard support on X11'
