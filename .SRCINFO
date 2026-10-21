@@ -1,0 +1,13 @@
+pkgbase = nvbandwidth
+	pkgdesc = Bandwidth measurements on NVIDIA GPUs, including device-to-device P2P
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nvbandwidth
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = cuda
+	source = nvbandwidth-0.10.0.tar.gz::https://github.com/NVIDIA/nvbandwidth/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 37fc32ef8b2b6c3f08591b7564c497cb501d8899badf72b4c73753c51230cb70
+
+pkgname = nvbandwidth
