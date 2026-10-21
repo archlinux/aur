@@ -4,14 +4,16 @@ pkgrel=1
 pkgdesc='A launcher for Ahwoo games'
 arch=('x86_64')
 url='https://neutrino.ahwoo.com'
-license=('custom')
+license=('LicenseRef-custom')
+depends=('glibc' 'bash' 'fontconfig')
 source=('https://neutrino.ahwoo.com/download/linux')
 sha256sums=('SKIP')
+
 options=(!strip)
 
 pkgver() {
 	cd "$srcdir/ahwoo"
-	./ahwoo --version
+	AHWOO_DISABLE_BOOTSTRAPPER_AUTO_UPDATE=1 ./ahwoo --version
 }
 
 package() {
