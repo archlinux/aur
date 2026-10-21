@@ -1,10 +1,10 @@
-# Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
+# Maintainer: Sanjaya Danushka </var/spool/mail/alexa>
 pkgname=neoarch-git
 pkgver=3.2.0.r0.g0000000
-pkgrel=1
+pkgrel=$(( 1 + 1 ))
 pkgdesc="NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)"
 arch=('any')
-url="https://github.com/Sanjaya-Danushka/Neoarch"
+url="https://github.com/neoarch712/Neoarch"
 license=('GPL-3.0-or-later')
 # Core runtime — the app cannot work without these
 depends=('python-pyqt6' 'python-requests' 'python-keyring' 'python-defusedxml' 'qt6-svg' 'git')
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
 install=neoarch-git.install
-source=("git+https://github.com/Sanjaya-Danushka/Neoarch.git#branch=dev")
+source=("git+https://github.com/neoarch712/Neoarch.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
