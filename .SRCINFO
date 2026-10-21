@@ -1,6 +1,6 @@
 pkgbase = onedev-tod
 	pkgdesc = TheOneDev CLI: OneDev issues, pull requests, builds and CI/CD jobs against local changes
-	pkgver = 4.3.5
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://code.onedev.io/onedev/tod
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = onedev-tod
 	makedepends = go
 	depends = glibc
 	conflicts = tod
-	source = tod-4.3.5.tar.gz::https://github.com/theonedev/tod/archive/refs/tags/v4.3.5.tar.gz
-	b2sums = 9f97c962aec99a65d977eaf12243c25254b93eb6cc2d6e6147698e0d4a84c26db537bb67c3062988cdd234da058c0ddd38ab3bbb30f736c71f0a994679757898
+	source = tod-4.4.0.tar.gz::https://github.com/theonedev/tod/archive/refs/tags/v4.4.0.tar.gz
+	b2sums = b77f2d042d437bcbbd3b9e269a0fedeacdcf2139f430787c5799e9ebbaa54a6a24d222a2c3fb12600766e5b0f111f0bead05dd2db2652438764c792358f5fbfc
 
 pkgname = onedev-tod
