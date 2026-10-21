@@ -1,13 +1,14 @@
 pkgbase = diakonos-git
 	pkgdesc = A Linux console text editor for the masses.
 	pkgver = 0.10.0.r42.gfe8991c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~pistos/diakonos
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = ruby
 	depends = ruby-curses
+	depends = ruby-language_server-protocol
 	provides = diakonos
 	conflicts = diakonos
 	source = git+https://git.sr.ht/~pistos/diakonos#branch=master
