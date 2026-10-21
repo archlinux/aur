@@ -1,0 +1,16 @@
+pkgbase = t3rry-bin
+	pkgdesc = Move T3 Code projects and threads between server instances
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/alcxyz/t3rry
+	license = MIT
+	conflicts = t3rry
+	provides = t3rry
+	arch = aarch64
+	source_aarch64 = t3rry-bin_0.1.4_aarch64.tar.gz::https://github.com/alcxyz/t3rry/releases/download/v0.1.4/t3rry_0.1.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = d8e0e626e63393a2001529b5ba88beb95d3d3dd309397ca227c272537dc85c55
+	arch = x86_64
+	source_x86_64 = t3rry-bin_0.1.4_x86_64.tar.gz::https://github.com/alcxyz/t3rry/releases/download/v0.1.4/t3rry_0.1.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = ee5bf135d13d997d4e04b532af76570bde583d08d2d819cd038bd650b1d7d292
+	
+pkgname = t3rry-bin
