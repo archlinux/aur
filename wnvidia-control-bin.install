@@ -1,0 +1,11 @@
+post_install() {
+  echo "==> Enable the service to change GPU settings:"
+  echo "==>   sudo systemctl enable --now wnvctl"
+  echo "==> Users in 'wheel' or 'wnvctl' may use it (usermod -aG wnvctl \$USER)."
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet wnvctl; then
+    echo "==> Restart the service to use the new version: sudo systemctl restart wnvctl"
+  fi
+}
