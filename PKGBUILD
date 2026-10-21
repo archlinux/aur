@@ -20,7 +20,7 @@ arch=(
 license=('BSD-3-Clause')
 
 depends=(
-  # (Almost) surely needed (2026-10-21):
+  ## (Almost) surely needed (2026-10-21):
   glibc
   imath
   libdbus-1.so
@@ -68,12 +68,12 @@ makedepends=(
   #x265
 
 
-  # Needed for build system itself (2026-10-21):
+  ## Needed for build system itself (2026-10-21):
   cmake
   git
   ninja
 
-  # (Almost) surely needed (2026-10-21):
+  ## (Almost) surely needed (2026-10-21):
   cli11
   dav1d
   egl-wayland
@@ -97,7 +97,6 @@ makedepends=(
   libxext
   libxkbcommon
   nlohmann-json
-  #opengl
   sdl
   spdlog
   wayland
