@@ -1,6 +1,6 @@
 pkgbase = ytmgo
 	pkgdesc = A terminal-based YouTube Music client — search, download, queue, and play music from the keyboard
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/anas1412/ytmgo
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ytmgo
 	depends = yt-dlp
 	depends = ffmpeg
 	depends = cava
-	source = https://github.com/anas1412/ytmgo/archive/v1.6.2.tar.gz
-	sha256sums = 2f9bad35c7c35b233dd005e04e3973e6d0a123d879627f41dab37379d01666eb
+	source = https://github.com/anas1412/ytmgo/archive/v1.6.3.tar.gz
+	sha256sums = c654d3fb4f53c14919a1609027d52e6840e1f7450598321f62d0fd7a10f07df7
 
 pkgname = ytmgo
