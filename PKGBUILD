@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=profilarr
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Configuration Management Platform for Radarr/Sonarr"
 arch=('x86_64')
 url="https://github.com/Dictionarry-Hub/profilarr"
@@ -18,7 +18,7 @@ source=(
   profilarr.sysusers
   profilarr.tmpfiles
 )
-sha256sums=('45e70ddfdca57c929e9df61b8c41d4c6ee465412c85a133e77c9d9d0de5d4283'
+sha256sums=('b81cf3d2fa1a04b5737e5cfeed5ef3c5c13ca1226731604e49d6e197dd90d6a2'
             '78e0fc2bb22b9d68a45451eb1c5fba394c0bb90e20d3a11e215dddd3a6463976'
             '7129166a5a4d5b08d830c9556252eaf7f05d0a4f31b0da708d8d4bccfea78d2d'
             '111c8a11133470edb6b155a5e42aec7d904176e7f633d8f1922f1b1b57daade2'
