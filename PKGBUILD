@@ -1,6 +1,6 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui
-pkgver=5.4.1
+pkgver=6.0.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
@@ -11,7 +11,7 @@ makedepends=('fvm' 'cmake' 'ninja' 'clang')
 options=('!debug')
 source=("${pkgname}-${pkgver}::https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${pkgver}.tar.gz"
 		"nordvpn-gui.desktop")
-sha256sums=('cd77ebcae9eb0603183125bdbcb42321e470bfe8a82a63c67e95ec7cd4044ee6'
+sha256sums=('4185919aff43270e5170feb8f123c456954260961cf2265aaa5e5376b97c1997'
             'a9db53b6c1b5894bf8acf1dac3b63031377fcad3f9695ad190cce8e7d3032705')
 fvmversion=3.44.9
 build() {
