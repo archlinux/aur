@@ -1,14 +1,13 @@
 pkgbase = python-kitcat
 	pkgdesc = Matplotlib backend for direct plotting in the terminal using Kitty graphics protocol
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mil-ad/kitcat
 	arch = any
 	license = MIT
-	makedepends = python-hatchling
+	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python-matplotlib
 	source = kitcat-2.0.2.tar.gz::https://github.com/mil-ad/kitcat/archive/refs/tags/v2.0.2.tar.gz
 	sha256sums = 21a09d2ec322f46019d7a4a3fea64fba816bf631250e013f50944a1c42e09c0c
