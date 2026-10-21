@@ -9,7 +9,7 @@
 # branch, and pkgver() below derives the version from git, so no checksums or
 # `updpkgsums` step is needed.
 pkgname=deadband-git
-pkgver=r170.02c5810
+pkgver=r181.370d3a8
 pkgrel=1
 pkgdesc="Configure game controller lighting, sticks, triggers and buttons on Linux"
 arch=('any')
@@ -61,6 +61,14 @@ package() {
 exec python3 /usr/share/deadband/deadband.py "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/deadband"
+
+  # shell completions (deadband --help / --doctor / --probe / --version)
+  install -Dm644 completions/bash/deadband \
+    "$pkgdir/usr/share/bash-completion/completions/deadband"
+  install -Dm644 completions/zsh/_deadband \
+    "$pkgdir/usr/share/zsh/site-functions/_deadband"
+  install -Dm644 completions/fish/deadband.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/deadband.fish"
 
   # licence: MIT is not one of Arch's "common" licences, so the package must ship
   # its own copy under /usr/share/licenses/<pkgname>/
