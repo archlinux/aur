@@ -1,5 +1,5 @@
 pkgname=lyx-bin
-pkgver=2.5.1
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Document processor (Debian testing binary build)"
 arch=('x86_64')
@@ -29,14 +29,14 @@ provides=('lyx')
 conflicts=('lyx')
 options=('!strip')
 
-_debver=2.5.1-1
+_debver=2.5.3-2
 source=(
   "https://deb.debian.org/debian/pool/main/l/lyx/lyx_${_debver}_amd64.deb"
   "https://deb.debian.org/debian/pool/main/l/lyx/lyx-common_${_debver}_all.deb"
 )
 sha256sums=(
-  '529bca4034933caab943282b21883b5aa03a1caeb7017ece8e9d6e37598d1bf2'
-  '54c64013bb8f523ed5dbd2d5b201cebad06a841a5a8267199b81e21800254e03'
+  'e568495ef76d40ee1300f8c917f5b889d53d55905d140eb24ae5dae8436bf6c5'
+  'ad8f68b4377862e3b0f39344441a9c66366a3d7496677894ad609f3a2b08f737'
 )
 
 package() {
