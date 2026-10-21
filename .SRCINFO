@@ -1,6 +1,6 @@
 pkgbase = eqy-nightly
 	pkgdesc = Equivalence Checking with Yosys
-	pkgver = 20261020_v0.70
+	pkgver = 20261021_v0.70_1_gfb8b211
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/eqy
@@ -15,7 +15,7 @@ pkgbase = eqy-nightly
 	depends = python-click
 	provides = eqy
 	options = !strip
-	source = eqy::git+https://github.com/YosysHQ/eqy.git#commit=7a92d84
+	source = eqy::git+https://github.com/YosysHQ/eqy.git#commit=fb8b211
 	sha256sums = SKIP
 
 pkgname = eqy-nightly
