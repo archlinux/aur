@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=jam-cli-bin
-pkgver=1.28.0
+pkgver=1.28.2
 pkgrel=1
 pkgdesc="CLI for reading and creating Jam bug reports (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ optdepends=('xdg-utils: browser-based authentication')
 provides=('jam-cli')
 conflicts=('jam' 'jam-cli')
 options=('!debug' '!strip')
-# The terms page is unversioned upstream and changes over time. $pkgver in its name
-# keeps a build host's persistent SRCDEST from serving a copy saved for an older
-# release, which then fails the new checksum.
-source=("jam-terms-$pkgver.html::https://jam.dev/legal/terms")
+# LICENSE points at the Jam Terms of Service rather than a downloaded copy: the
+# terms page is unversioned and Jam revises it, so a pinned checksum breaks the
+# build on each revision.
+source=('LICENSE')
 # Per-arch sources need DISTINCT output filenames. A shared name makes makepkg
 # (and updpkgsums, which runs `makepkg -g`) fetch only the first, then reuse that
 # file for the second arch — silently copying the x86_64 hash into
@@ -23,11 +23,11 @@ source=("jam-terms-$pkgver.html::https://jam.dev/legal/terms")
 # arch for both arrays during checksum generation) keep the two downloads separate.
 source_x86_64=("$pkgname-$pkgver-x86_64::https://native.jam.dev/download/linux/x64?version=$pkgver")
 source_aarch64=("$pkgname-$pkgver-aarch64::https://native.jam.dev/download/linux/arm64?version=$pkgver")
-sha256sums=('21caa0b3ebbf268502e44b7efffd83ff50f852dfae2d48a89e396f21df45445b')
-sha256sums_x86_64=('57adc3a6773b32819d9518ff1744276ea62b044ac2d2adaa3cc3e8f8ff7b1137')
-sha256sums_aarch64=('57a73e08f8fad4196dbb394dcf3b6473740dd00b8d4f5bbc5bbbbfa29b894b3f')
+sha256sums=('e43a27568e11ed5a4f72ab661e3380e8a3366e023a7296874a71211ccc4a5af8')
+sha256sums_x86_64=('49145d1dee68b678dde127741fb117fc3282b7eb063546b49212281f7395e543')
+sha256sums_aarch64=('47c28159a39f4c67e5c868d904b39f0429c99f73801db7b549ece4e302d3b5a8')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/jam"
-  install -Dm644 "jam-terms-$pkgver.html" "$pkgdir/usr/share/licenses/$pkgname/TERMS.html"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
