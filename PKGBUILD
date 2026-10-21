@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=solidcraft
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
 url="https://bherbruck.github.io/$pkgname"
 _url="https://github.com/bherbruck/$pkgname"
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('cda522e772807fde59aa259f503376d777f73f808a4b8aa1efa7423ffcb7ee52')
+sha256sums=('3e3cfb1bf35947753953ca7d622f5080a5963aa18f1a8fa4d3091ac885b9d9cc')
 
 _srcenv() {
 	cd "$_archive"
