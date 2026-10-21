@@ -1,7 +1,7 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=vinculum-bin
 _pkgname=vinculum
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Manage Wi-Fi, wired and VPN connections (NetworkManager GUI, prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,16 @@ license=('AGPL-3.0-or-later' 'OFL-1.1')
 # The libraries for X11, Wayland and OpenGL are loaded at runtime (winit, glutin).
 depends=('fontconfig' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libx11' 'libxcursor' 'libxi'
          'libxkbcommon' 'libxkbcommon-x11' 'libxrandr' 'networkmanager' 'wayland')
+optdepends=('networkmanager-openvpn: OpenVPN connections'
+            'xdg-desktop-portal: file dialogs for certificates and VPN files'
+            'gnome-keyring: passwords kept "for me only" (or KWallet)')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug') # the release binary is already stripped
 source_x86_64=("$url/releases/download/v$pkgver/Vinculum-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/Vinculum-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('3405f414a0914e6151404b96aec00a89e9fdf2bcf463d70127e9adc7f3a3433a')
-sha256sums_aarch64=('e0730ab826818dfde3e05fc2a98c1122c03c1f4c9583f56190a25363aaed7b17')
+sha256sums_x86_64=('d7c8a736a2e4b6fb691f940eafc33ac79e6acb9c40d1d7b2e9908cbe784d46a1')
+sha256sums_aarch64=('4af89c35f2e659361c1bd3cb6a762abfc60448eac9d8c895a5b3366140c16f2f')
 
 package() {
   case "$CARCH" in

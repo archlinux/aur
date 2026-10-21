@@ -1,6 +1,6 @@
 pkgbase = vinculum-bin
 	pkgdesc = Manage Wi-Fi, wired and VPN connections (NetworkManager GUI, prebuilt binary)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/giosuel/vinculum
 	arch = x86_64
@@ -20,12 +20,15 @@ pkgbase = vinculum-bin
 	depends = libxrandr
 	depends = networkmanager
 	depends = wayland
-	provides = vinculum=0.1.0
+	optdepends = networkmanager-openvpn: OpenVPN connections
+	optdepends = xdg-desktop-portal: file dialogs for certificates and VPN files
+	optdepends = gnome-keyring: passwords kept "for me only" (or KWallet)
+	provides = vinculum=0.2.0
 	conflicts = vinculum
 	options = !debug
-	source_x86_64 = https://github.com/giosuel/vinculum/releases/download/v0.1.0/Vinculum-0.1.0-linux-x64.tar.gz
-	sha256sums_x86_64 = 3405f414a0914e6151404b96aec00a89e9fdf2bcf463d70127e9adc7f3a3433a
-	source_aarch64 = https://github.com/giosuel/vinculum/releases/download/v0.1.0/Vinculum-0.1.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = e0730ab826818dfde3e05fc2a98c1122c03c1f4c9583f56190a25363aaed7b17
+	source_x86_64 = https://github.com/giosuel/vinculum/releases/download/v0.2.0/Vinculum-0.2.0-linux-x64.tar.gz
+	sha256sums_x86_64 = d7c8a736a2e4b6fb691f940eafc33ac79e6acb9c40d1d7b2e9908cbe784d46a1
+	source_aarch64 = https://github.com/giosuel/vinculum/releases/download/v0.2.0/Vinculum-0.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4af89c35f2e659361c1bd3cb6a762abfc60448eac9d8c895a5b3366140c16f2f
 
 pkgname = vinculum-bin
