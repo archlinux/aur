@@ -1,8 +1,8 @@
 pkgbase = neoarch
 	pkgdesc = NeoArch Package Manager for Arch Linux (stable release, use 'neoarch-git' for latest dev builds)
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
-	url = https://github.com/Sanjaya-Danushka/Neoarch
+	url = https://github.com/neoarch712/Neoarch
 	install = neoarch.install
 	arch = any
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = neoarch
 	optdepends = npm: Discover page (npm)
 	provides = neoarch
 	conflicts = neoarch-git
-	source = https://github.com/Sanjaya-Danushka/Neoarch/archive/refs/tags/v3.4.2.tar.gz
+	source = https://github.com/neoarch712/Neoarch/archive/refs/tags/v3.4.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = neoarch
