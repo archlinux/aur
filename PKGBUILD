@@ -9,6 +9,7 @@ arch=(x86_64)
 license=('custom:BSD-2-clause')
 conflicts=("python-fmpy")
 provides=("python-fmpy")
+options=(!lto)
 depends=(python-attrs python-jinja python-lark python-lxml python-msgpack python-numpy sundials)
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git python-hatchling python-toml rust)
 # checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
@@ -42,12 +43,6 @@ prepare() {
   # sed -i "s/, platform_tuple//" ${_base}/${_base,,}/sundials/libraries.py
   # sed -i "s/'s/'libs/" ${_base}/${_base,,}/sundials/libraries.py
   # sed -i '/if major/,+1 s/^/#/' ${_base}/${_base,,}/sundials/__init__.py
-
-  # `cargo test` only exercises dev-dependencies (zip, reqwest, ...) over the
-  # network and is already skipped upstream on Darwin; it is not needed for
-  # the libcontainer_fmu shared library shipped in the wheel, and its link
-  # of the test binaries fails when the bundled zstd objects are unavailable.
-  sed -i 's|^\( *\)check_call(\["cargo", "test"|\1# check_call(["cargo", "test"|' native/build_container_fmu.py
 
   sed -i "s/open(lockFilePath, O_CREAT | O_EXCL)/open(lockFilePath, O_CREAT | O_EXCL, 0600)/g" native/remoting/client_tcp.cpp
 

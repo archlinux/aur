@@ -33,6 +33,7 @@ pkgbase = python-fmpy-sundials6
 	optdepends = python-pyqtgraph: for graphical user interface
 	provides = python-fmpy
 	conflicts = python-fmpy
+	options = !lto
 	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=5823133022409b08e13d3164b06374a4e5e56af8
 	source = git+https://github.com/ludocode/mpack.git
 	source = git+https://github.com/modelica/Reference-FMUs.git
