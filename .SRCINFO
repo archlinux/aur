@@ -1,6 +1,6 @@
 pkgbase = openlogi
 	pkgdesc = Local-first companion for Logitech HID++ peripherals (native alternative to Logitech Options+)
-	pkgver = 0.8.14
+	pkgver = 0.8.16
 	pkgrel = 1
 	url = https://github.com/AprilNEA/OpenLogi
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = openlogi
 	provides = openlogi
 	conflicts = openlogi-bin
 	options = !lto
-	source = openlogi-0.8.14.tar.gz::https://github.com/AprilNEA/OpenLogi/archive/refs/tags/v0.8.14.tar.gz
-	sha256sums = ce7d7a600609030feb07061184febf228e32d8c963e5dde3db93207e1f107c2d
+	source = openlogi-0.8.16.tar.gz::https://github.com/AprilNEA/OpenLogi/archive/refs/tags/v0.8.16.tar.gz
+	sha256sums = 41de36fddd3adbcd4b1cf5e9bcf1ddcebfda959be9f7855188af46d95a661bc1
 
 pkgname = openlogi
