@@ -1,9 +1,9 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=pideck-bin
-_pkgname=pi-desktop
 _appname=PiDeck
-pkgver=0.8.0
+_binname=pideck
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Desktop workbench for managing local AI coding agent sessions (prebuilt binary)'
 arch=('x86_64')
@@ -47,14 +47,14 @@ optdepends=(
   'libappindicator: system tray support'
   'org.freedesktop.secrets: secret storage backend'
 )
-provides=("pideck=${pkgver}" "${_pkgname}=${pkgver}")
+provides=("pideck=${pkgver}" "pi-desktop=${pkgver}")
 conflicts=('pideck' 'pi-desktop')
 options=('!strip')
 source=('LICENSE')
-source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-noextract=("${_pkgname}_${pkgver}_amd64.deb")
+source_x86_64=("${_appname}_${pkgver}_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
+noextract=("${_appname}_${pkgver}_amd64.deb")
 sha256sums=('032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab')
-sha256sums_x86_64=('c65ae564382b48c96ae95c7e963b0e317dac95b484bea93a21608a7483794a83')
+sha256sums_x86_64=('35862087fd52c8b5f498a3f629ecad1eeb8b24c1bc6a39b916eca18435d29bb7')
 
 package() {
   local extract_dir="${srcdir}/deb-extract"
@@ -62,7 +62,7 @@ package() {
 
   rm -rf "${extract_dir}"
   install -dm755 "${extract_dir}"
-  bsdtar -C "${extract_dir}" -xf "${srcdir}/${_pkgname}_${pkgver}_amd64.deb"
+  bsdtar -C "${extract_dir}" -xf "${srcdir}/${_appname}_${pkgver}_amd64.deb"
 
   data_archives=("${extract_dir}"/data.tar.*)
   if (( ${#data_archives[@]} != 1 )) || [[ ! -f "${data_archives[0]}" ]]; then
@@ -72,8 +72,9 @@ package() {
   bsdtar -C "${pkgdir}" -xf "${data_archives[0]}"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${_appname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  ln -s "${_pkgname}" "${pkgdir}/usr/bin/pideck"
+  ln -s "/opt/${_appname}/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  # 保留旧命令名 pi-desktop，老用户脚本不断档
+  ln -s "${_binname}" "${pkgdir}/usr/bin/pi-desktop"
 
   chmod 0755 "${pkgdir}/opt/${_appname}/chrome-sandbox"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
