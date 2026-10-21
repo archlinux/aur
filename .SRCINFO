@@ -1,10 +1,11 @@
 pkgbase = ttf-kreativekorp-apple2
 	pkgdesc = KreativeKorp's Apple II-themed font bundle: Print Char 21, PR Number 3, Shaston, Berkelium II, and BLoad, with their respective variations.
 	pkgver = 2020.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kreativekorp.com/software/fonts/apple2/
 	arch = any
 	license = custom:relay-fonts-1.2f
+	makedepends = wget
 	depends = xorg-fonts-encodings
 	source = pr.zip::https://www.kreativekorp.com/swdownload/fonts/retro/pr.zip
 	source = shaston.zip::https://www.kreativekorp.com/swdownload/fonts/retro/shaston.zip

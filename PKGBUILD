@@ -3,12 +3,16 @@
 pkgbase=ttf-kreativekorp-apple2
 pkgname=('ttf-kreativekorp-apple2-pr' 'ttf-kreativekorp-apple2-shaston' 'ttf-kreativekorp-apple2-berkeliumii' 'ttf-kreativekorp-apple2-bload')
 pkgver=2020.04
-pkgrel=1
+pkgrel=2
 pkgdesc="KreativeKorp's Apple II-themed font bundle: Print Char 21, PR Number 3, Shaston, Berkelium II, and BLoad, with their respective variations."
 arch=('any')
 url='https://www.kreativekorp.com/software/fonts/apple2/'
 license=('custom:relay-fonts-1.2f')
 depends=('xorg-fonts-encodings')
+
+# Patch taken from 'ttf-petme'.
+makedepends=('wget')
+DLAGENTS=('https::/usr/bin/wget -O %o %u')
 
 source=(
     'pr.zip::https://www.kreativekorp.com/swdownload/fonts/retro/pr.zip'
