@@ -1,7 +1,7 @@
 # Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 
 pkgname=open-design-desktop
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 _tag="open-design-v${pkgver}"
 # Upstream's pack step copies the node binary that runs the build into the
@@ -38,7 +38,7 @@ source=(
   "open-design-desktop.desktop"
   "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.xz"
 )
-sha256sums=('f1421c076d6f033642949f793814fc84a04d1a11c6169b7581df6abc93745ea6'
+sha256sums=('d1db8ad141fe053401467d1da1e59c75f72eb188225bf6c2900d1f3b7c114dcf'
             '5ae2dfc1943cd7ec376a5c42086cb76b618f14e10c7e92ecbf901f376b6eea6e'
             '7f86112fce365ab0bc6cc5f7cd415b4bace62c1c2d6252584100b7580290ddd6'
             'fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6')
