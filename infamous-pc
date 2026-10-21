@@ -1,0 +1,16 @@
+#!/bin/sh
+# Launcher for the inFAMOUS Second Son package.
+#
+# The port keeps its own settings in ~/.config/infamous-launcher/settings.json
+# (game_dir, upscaler flags, readback mode), so nothing game-specific is set
+# here beyond the flags the old shortcut used to pass.
+export ISS_UPSCALER="${ISS_UPSCALER:-fsr4}"
+export TLG_UPSCALER="${TLG_UPSCALER:-fsr4}"
+export TLG_BLOCK1D="${TLG_BLOCK1D:-1}"
+export TLG_BC_TINY="${TLG_BC_TINY:-1}"
+export TLG_BP07="${TLG_BP07:-1}"
+export TLG_BP08="${TLG_BP08:-1}"
+export TLG_BP12="${TLG_BP12:-1}"
+
+cd /opt/ports/infamous-pc || exit 1
+exec "./inFAMOUS Second Son" "$@"

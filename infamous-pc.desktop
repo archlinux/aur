@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=inFAMOUS Second Son
+Comment=inFAMOUS Second Son native PC port
+Exec=infamous-pc
+Icon=infamous-pc
+Terminal=false
+Categories=Game;
+StartupWMClass=infamous-pc
+NoDisplay=true
