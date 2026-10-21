@@ -19,10 +19,10 @@ commit:
 
 .PHONY: push
 push:
-	@echo '================================================= Push to AUR ==='
-	source PKGBUILD && git push "ssh://aur@aur.archlinux.org/$$pkgname.git" "$$( git symbolic-ref HEAD ):master"
 	@echo '============================================ Push to upstream ==='
 	git push
+	@echo '================================================= Push to AUR ==='
+	source PKGBUILD && git push "ssh://aur@aur.archlinux.org/$$pkgname.git" "$$( git symbolic-ref HEAD ):master"
 	@echo '================================================================='
 
 .PHONY: pkgver
