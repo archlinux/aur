@@ -1,0 +1,26 @@
+pkgbase = system-health
+	pkgdesc = Read-only health report for Arch Linux and CachyOS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ajsem1337/system-health
+	arch = any
+	license = MIT
+	depends = python>=3.9
+	depends = systemd
+	depends = pacman
+	depends = util-linux
+	depends = pacutils
+	depends = rebuild-detector
+	depends = pacman-contrib
+	depends = lm_sensors
+	depends = smartmontools
+	depends = sudo
+	optdepends = gsmartcontrol: graphical disk inspection and self-tests
+	source = system-health-0.1.0::https://raw.githubusercontent.com/ajsem1337/system-health/133be9c72efe407491a4ef67699de924a06d083a/system-health
+	source = system-health.desktop::https://raw.githubusercontent.com/ajsem1337/system-health/133be9c72efe407491a4ef67699de924a06d083a/system-health.desktop
+	source = LICENSE::https://raw.githubusercontent.com/ajsem1337/system-health/133be9c72efe407491a4ef67699de924a06d083a/LICENSE
+	sha256sums = 7713e5c90ca356ac18e2d08e010a4a9d90dbcb6c0c87e58c81c7eb002133f801
+	sha256sums = 957b5c22e576ddd92b91278c135ce9f69f5a81602f8c0683748590a704bc4ac6
+	sha256sums = 35fb3b11a39d4f2583dca02d38fee84cb4f30b059abe5111f050cfee74b33142
+
+pkgname = system-health
