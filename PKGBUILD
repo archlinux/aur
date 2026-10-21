@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL-3.0')
 url='https://github.com/S-poony/Animage'
 source=('git+https://github.com/S-poony/Animage.git' 'executable-name.patch')
-makedepends=(cmake make svgo oxipng pkgconf git)
+makedepends=(cmake make svgo pkgconf git)
 depends=(qt6-base libglvnd glibc)
 provides=(animage)
 sha256sums=('SKIP' 'b53b18e8a1b7aad2ba910169ab68e47c721ca4450162aa941e270435137af313')
@@ -72,6 +72,11 @@ build() {
 
     cmake --build build --parallel "$(nproc)"
 
+}
+
+check() {
+    cd "$srcdir/Animage"
+    ctest --test-dir build --output-on-failure
 }
 
 package(){
