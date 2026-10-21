@@ -2,7 +2,7 @@
 
 pkgname='python-letterboxdpy'
 _name=${pkgname#python-}
-pkgver=6.6.0
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="A Python library for Letterboxd data."
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('e46c70070c36de2d33c19846bdb8cb77cd3f66d4e38dd4ac636139286675fa4ae72437ae14b3827492981b7686bb87ab8aa17c63757b47e5884e01555d19873b')
+sha512sums=('a60e041fd98b6eb371cd3ca28fdd51202e600892349eebcb03dcb16b3f142d09d2b3a1f37baf9deae5348932d479bf061e57d3ff9e1bafe39b9bbe41826f2a56')
 
 build() {
     cd $_name-$pkgver
