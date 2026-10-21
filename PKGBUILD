@@ -4,7 +4,7 @@ _gitname="ffmpeg_split"
 _pyname="${_gitname}"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=1.0.r24.20250811.5979ae8
+pkgver=1.0.r24.20250811.75ab33e
 pkgrel=1
 pkgdesc="Split a media file by embedded chapter information, using ffmpeg."
 arch=(
@@ -32,14 +32,22 @@ conflicts=(
 
 source=(
   "${_pkgname}::git+https://${_githost}/${_gituser}/${_pyname}.git"
+  #"${_pkgname}_multi-stream-support.patch::https://github.com/harryjackson/ffmpeg_split/pull/18.patch"
 )
 sha256sums=(
   'SKIP'
+  #'9b138eb915b76bf48ea6fd2ebc81e8ef45883d8a1d79dd5a781edbb0182b6032'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git log > "${srcdir}/git.log"
+
+  local _patch
+  #for _patch in "${_pkgname}_multi-stream-support.patch"; do
+  #  printf '%s\n' "  --> Applying patch '${_patch}' ..."
+  #  patch -Np1 --follow-symlinks -i "${srcdir}/${_patch}"
+  #done
 }
 
 pkgver() {
