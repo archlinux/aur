@@ -3,7 +3,7 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare
-pkgver=4.61.0
+pkgver=4.62.0
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
@@ -18,9 +18,9 @@ optdepends=('calibre: use FanFicFare as a calibre plugin'
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "0001-makeplugin-do-not-bundle-system-dependencies.patch")
-sha256sums=('30d645aa1677e42429f6e5753f668e35b071293e04c637f7ff105af9c97a8341'
+sha256sums=('4cdf9f65293d979b434d8b4359f2d10f986f0e1f25a033b1fe61e1bb010fe555'
             'e694544ba755c1605e978e8c61d5a48996d4487421392c8c2c5a975b02473c14')
-b2sums=('c6867512c6a7e5819614de484273d43f30ef972b454ab743e917f51c9db2ef07828ba3d2b7a8bf24427e808281a0dbdb00fc8b1260b83f4837d53bab38ac1434'
+b2sums=('d10a574132cb64c1bf530688d3e739e9488f6fdcee2b8bdf3280b1376f749eacb96ff32da5e1981469c109fcfd0fdd92564afb675ae3d914ffa77ae8d74d1f41'
         '312c6a031d9fd100f9e28d2b771ae6e760e5511f9ea39954227a8dde4a8bec5f51ef5f743d133e1a76cc67171ab474fdc55c5497bc34c11eb59d5126903cba0d')
 
 prepare() {
