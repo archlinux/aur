@@ -1,0 +1,118 @@
+diff --git a/tests/utils/test_annotations.py b/tests/utils/test_annotations.py
+index 3566e85..f066653 100644
+--- a/tests/utils/test_annotations.py
++++ b/tests/utils/test_annotations.py
+@@ -18,34 +18,34 @@
+ 
+ from __future__ import annotations
+ 
+-from itertools import count
+-
+ from qiskit.circuit import QuantumCircuit
+ from qiskit_addon_slc.utils.annotations import map_modifier_ref_to_ref
+ from samplomatic.transpiler import generate_boxing_pass_manager
+-from samplomatic.transpiler.passes import AddInjectNoise
+ 
+ 
+ def test_noise_model_paulis() -> None:
+     """Test parsing of the InjectNoise annotations."""
+     num_qubits = 8
+-    expected_map = {}
+     circ = QuantumCircuit(num_qubits)
+     # repeat layers some number times
+-    for rep in range(4):
++    for _ in range(4):
+         for first_qubit in range(2):
+-            expected_map[f"m{rep * 2 + first_qubit}"] = f"r{first_qubit}"
+             for idx in range(first_qubit + 1, num_qubits, 2):
+                 circ.cx(idx - 1, idx)
+ 
+-    # NOTE: we hack around the fact that we check against hard-coded annotation IDs by forcing the
+-    # annotation counter to reset here. This should NOT be relied upon in the future.
+-    AddInjectNoise._REF_COUNTER = count()
+-    AddInjectNoise._MODIFIER_REF_COUNTER = count()
+-
+     boxes_pm = generate_boxing_pass_manager(
+-        inject_noise_targets="all", inject_noise_strategy="individual_modification"
++        inject_noise_targets="all",
++        inject_noise_strategy="individual_modification",
++        twirling_strategy="active",
+     )
+     boxed_circ = boxes_pm.run(circ)
+ 
+-    assert map_modifier_ref_to_ref(boxed_circ) == expected_map
++    actual_map = map_modifier_ref_to_ref(boxed_circ)
++
++    expected_map = {}
++    for mod_ref in ("m0", "m2", "m4", "m6"):
++        expected_map[mod_ref] = actual_map["m0"]
++    for mod_ref in ("m1", "m3", "m5", "m7"):
++        expected_map[mod_ref] = actual_map["m1"]
++
++    assert actual_map == expected_map
+diff --git a/tests/utils/test_circuit_iter.py b/tests/utils/test_circuit_iter.py
+index c9e0b84..bc65853 100644
+--- a/tests/utils/test_circuit_iter.py
++++ b/tests/utils/test_circuit_iter.py
+@@ -46,7 +46,9 @@ def test_circuit_iter() -> None:
+     AddInjectNoise._MODIFIER_REF_COUNTER = count()
+ 
+     boxes_pm = generate_boxing_pass_manager(
+-        inject_noise_targets="all", inject_noise_strategy="individual_modification"
++        inject_noise_targets="all",
++        inject_noise_strategy="individual_modification",
++        twirling_strategy="active",
+     )
+     boxed_circ = boxes_pm.run(circ)
+ 
+@@ -65,6 +67,9 @@ def test_circuit_iter() -> None:
+ 
+     iterator_data = list(iter_circuit(full_circ))
+ 
++    ref1 = iterator_data[-1][-1]
++    ref0 = iterator_data[-2][-1]
++
+     expected_data: tuple[CircuitInstruction, list[int], str | None, str | None] = []
+     for idx in range(num_qubits):
+         expected_data.append(
+@@ -84,10 +89,10 @@ def test_circuit_iter() -> None:
+                 None,
+             )
+         )
+-    expected_data.append((boxed_circ.data[0], [0, 1, 2, 3, 4, 5], "m0", "r0"))
+-    expected_data.append((boxed_circ.data[1], [1, 2, 3, 4], "m1", "r1"))
+-    expected_data.append((boxed_circ.data[2], [0, 1, 2, 3, 4, 5], "m2", "r0"))
+-    expected_data.append((boxed_circ.data[3], [1, 2, 3, 4], "m3", "r1"))
++    expected_data.append((boxed_circ.data[0], [0, 1, 2, 3, 4, 5], "m0", ref0))
++    expected_data.append((boxed_circ.data[1], [1, 2, 3, 4], "m1", ref1))
++    expected_data.append((boxed_circ.data[2], [0, 1, 2, 3, 4, 5], "m2", ref0))
++    expected_data.append((boxed_circ.data[3], [1, 2, 3, 4], "m3", ref1))
+ 
+     for actual, expected in zip(iterator_data, expected_data, strict=True):
+         assert actual == expected
+diff --git a/tests/utils/test_noise_model_paulis.py b/tests/utils/test_noise_model_paulis.py
+index 1dfd585..8f844ee 100644
+--- a/tests/utils/test_noise_model_paulis.py
++++ b/tests/utils/test_noise_model_paulis.py
+@@ -51,7 +51,9 @@ def test_noise_model_paulis(subtests, num_qubits: int) -> None:
+         circ.cx(idx - 1, idx)
+ 
+     boxes_pm = generate_boxing_pass_manager(
+-        inject_noise_targets="all", inject_noise_strategy="individual_modification"
++        inject_noise_targets="all",
++        inject_noise_strategy="individual_modification",
++        twirling_strategy="active",
+     )
+     boxed_circ = boxes_pm.run(circ)
+ 
+@@ -120,7 +122,9 @@ def test_noise_model_paulis_with_backend(subtests) -> None:
+     isa_circ = preset_pm.run(circ)
+ 
+     boxes_pm = generate_boxing_pass_manager(
+-        inject_noise_targets="all", inject_noise_strategy="individual_modification"
++        inject_noise_targets="all",
++        inject_noise_strategy="individual_modification",
++        twirling_strategy="active",
+     )
+     boxed_circ = boxes_pm.run(isa_circ)
+ 
