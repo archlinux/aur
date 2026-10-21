@@ -1,0 +1,19 @@
+pkgbase = onair-dra
+	pkgdesc = DRA/DRA+ audio decoder add-on for OnAir (CDR sound)
+	pkgver = 0.2.8
+	pkgrel = 2
+	url = https://github.com/adswill/OnAir
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = python
+	depends = glibc
+	source = OnAir-0.2.8.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v0.2.8.tar.gz
+	source = ffmpeg-7.1.2_cavs_dra.patch::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/eb94ceb887b47b6ecfbda9da43273dd65246df1e/ffmpeg-7.1.2_cavs_dra.patch
+	source = LICENSE::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/eb94ceb887b47b6ecfbda9da43273dd65246df1e/LICENSE
+	sha256sums = 31526fc45e3b359572993b88ab5448b4cba298d2226befec9934de0e2410a62a
+	sha256sums = 1d1cac53cc2d19af39de854db186985fb653e820b0d071844a1e529550c08e40
+	sha256sums = cac0ae34bd88bc4347c3901c3d6e9715ee64ae9b2ec8e027b0892ecd67db98f4
+
+pkgname = onair-dra
