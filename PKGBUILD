@@ -1,7 +1,7 @@
 # Maintainer: Sable Maintainers <https://git.sable.moe/SableClient/sable-next>
 
 pkgname=sable-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A Matrix client"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('sable' 'sable-nightly-bin')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/sable-electron-${pkgver}-amd64.deb")
-sha256sums_x86_64=('e9605679925063f46d6018554d2d800b7acf706b2d4cdfe7ded3962ce5c817c7')
+sha256sums_x86_64=('a92f35d6b85c9fc2bbdb13a4aed090a2ea2ed68aba422851a655397a514c49a5')
 
 package() {
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-amd64.deb" 'data.tar*' \
