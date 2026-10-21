@@ -9,8 +9,8 @@ pkgname=(
 pkgbase=vencord-git
 _pkgname=Vencord
 _dirname=vencord
-pkgver=1.13.5.r0.gc9ebece
-pkgrel=3
+pkgver=1.15.12.r0.gb0e636d
+pkgrel=1
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -18,6 +18,7 @@ _ghurl="https://github.com/Vendicated/Vencord"
 license=(GPL3)
 makedepends=(
     git
+    nodejs
     pnpm
 )
 source=("git+$_ghurl.git")
