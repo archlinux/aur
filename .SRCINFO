@@ -1,7 +1,7 @@
 pkgbase = alacrium-browser-bin
 	pkgdesc = Performance-focused Chromium browser tracking stable releases (prebuilt)
 	pkgver = 155.0.8059.84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brauliobo/alacrium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -39,8 +39,8 @@ pkgbase = alacrium-browser-bin
 	options = !debug
 	options = !strip
 	source = https://github.com/brauliobo/alacrium/releases/download/M155.0.8059.84/alacrium-browser_155.0.8059.84_AVX.deb
-	source = LICENSE-08c1798d9fb541497630078322aa86d3b2e7ca18.md::https://raw.githubusercontent.com/brauliobo/alacrium/08c1798d9fb541497630078322aa86d3b2e7ca18/LICENSE.md
-	sha256sums = fed77799bbb38cf04c843db8714987ad5c6d605dd33b9cc434cef480c7707718
+	source = LICENSE-e1d0ebc8b2a2225627f9e698e81b54bc15aa861b.md::https://raw.githubusercontent.com/brauliobo/alacrium/e1d0ebc8b2a2225627f9e698e81b54bc15aa861b/LICENSE.md
+	sha256sums = c0ea00e1d51f3f2bbfff1f1d83f17cc12c71940e7339b5ff48814024c91ca8ed
 	sha256sums = 1d43c681d483ed1bf2e88507be7368eea8d1dedc503d39b8e17e701d0be00fe2
 
 pkgname = alacrium-browser-bin
