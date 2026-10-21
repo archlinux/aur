@@ -2,11 +2,11 @@
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=libosmocore-git
-pkgver=1.10.0.r17.cc16f2be0
+pkgver=1.14.2.r11.4ba7d4d33
 pkgrel=1
-pkgdesc="Osmocom core library"
-arch=('x86_64' 'i686')
-url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
+pkgdesc="Osmocom core libraries"
+arch=('armv7h' 'i686' 'x86_64')
+url="https://osmocom.org/projects/libosmocore/"
 license=('GPL-2.0-or-later')
 depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs' 'liburing')
 makedepends=('git' 'python')
