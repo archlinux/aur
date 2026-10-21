@@ -3,7 +3,7 @@
 
 _pkgname=cmap
 pkgname=python-${_pkgname}
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Scientific colormaps for python, with only numpy dependency'
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD 3-Clause')
 depends=('python-numpy')
 makedepends=('python-build' 'python-hatch-vcs' 'python-installer')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4895f54f91807687ebfc27b488c6da4092e8caa66224b89127e51e66516f5f20')
+sha256sums=('fc70e047d3a17543c56493110d6606a92aec7b3e32c4775c00c9c063b1d50347')
 
 build() {
     cd "${_pkgname}-${pkgver}" || exit
