@@ -1,0 +1,9 @@
+#!/bin/sh
+# Launcher for the Driveclub PC port, installed as a pacman package.
+#
+# The game dump (the folder containing eboot.bin) is picked in the port's own
+# settings window and remembered in ~/.local/share/shadPS4/driveclub_pc.ini, so
+# nothing game-specific is hardcoded here. Override the binary if you want to
+# run a local build instead:
+#   DRIVECLUB_APPIMAGE=/path/to/Driveclub-PC ./driveclub-pc
+exec "${DRIVECLUB_APPIMAGE:-/opt/ports/driveclub-pc/Driveclub-PC.AppImage}" "$@"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Driveclub
+GenericName=Racing game
+Comment=Driveclub PC wrapper (native Linux build)
+Exec=driveclub-pc
+Icon=driveclub-pc
+Terminal=false
+Categories=Game;
+StartupNotify=false
