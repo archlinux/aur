@@ -1,7 +1,7 @@
 # Maintainer: qinhulin <qinhulin@gmail.com>
 
 pkgname=songloft-player
-pkgver=2.13.4
+pkgver=2.13.5
 pkgrel=1
 pkgdesc="Cross-platform music player client for Songloft servers (Flutter)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=('imagemagick')
 _ghurl="https://github.com/songloft-org/songloft-player/releases/download/v${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/songloft-linux-x64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/songloft-org/songloft-player/v${pkgver}/LICENSE")
-sha256sums=('c31091bde0eb263622bf9068e6dd2e8378a9d30ed1646d5f16a7c99485471688'
+sha256sums=('69a04c75b5a53e8ac380575bdf801518879e515f5df139a2bd2cedba045ab44d'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 package() {
