@@ -4,8 +4,8 @@
 
 pkgname=libosmo-netif
 pkgver=1.8.0
-pkgrel=2
-pkgdesc="Osmocom library for muxed audio"
+pkgrel=3
+pkgdesc="Osmocom's abstract network interfacing library"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://osmocom.org/projects/libosmo-netif"
 license=('GPL-2.0-or-later')

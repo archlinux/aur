@@ -1,7 +1,7 @@
 pkgbase = libosmo-netif
-	pkgdesc = Osmocom library for muxed audio
+	pkgdesc = Osmocom's abstract network interfacing library
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osmocom.org/projects/libosmo-netif
 	arch = i686
 	arch = x86_64
