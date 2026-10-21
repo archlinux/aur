@@ -72,15 +72,6 @@ ci/user:
 	echo 'builder ALL=(ALL) ALL' >> /etc/sudoers
 	chown -R builder:builder -- "$$GITHUB_WORKSPACE"
 
-.PHONY: ci/ssh
-ci/ssh:
-	@echo '=========================================== CI: configure SSH ==='
-	mkdir -p /home/builder/.ssh/
-	echo 'StrictHostKeyChecking no' > /home/builder/.ssh/config
-	echo "$$SSH_KEY" > /home/builder/.ssh/id_ed25519
-	chown -R builder:builder /home/builder/.ssh
-	chmod 0600 /home/builder/.ssh/id_ed25519
-
 # See https://github.com/actions/checkout#push-a-commit-using-the-built-in-token
 .PHONY: ci/git
 ci/git:
@@ -91,7 +82,6 @@ ci/git:
 .PHONY: ci/setup
 ci/setup: ci/deps
 ci/setup: ci/user
-ci/setup: ci/ssh
 ci/setup: ci/git
 
 .PHONY: ci
