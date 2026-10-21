@@ -1,18 +1,18 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=quickbox
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4 GUI for managing QEMU virtual machines via quickemu"
 arch=('any')
-url="https://github.com/musqz/quickbox"
+url="https://codeberg.org/linux-bird/quickbox"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk4' 'quickemu')
 optdepends=('libnotify: desktop notifications')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('24a9b0a8939184c0b432f5a1b8a9d0955a216b59a6f3c690c8ca8e11798e965c')
+source=("${pkgname}-${pkgver}-codeberg.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('aed39f836d289988a458d8756d9b25753a9d291afc144f1e2c8aadeff1dc17e0')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     # Main executable
     install -Dm755 quickbox "${pkgdir}/usr/bin/quickbox"
