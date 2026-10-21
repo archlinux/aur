@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=soredowe
-pkgver=0.4.4
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 "target/release/app_shell" "${pkgdir}/usr/bin/soredowe"
+  install -Dm755 "target/release/soredowe-desktop" "${pkgdir}/usr/bin/soredowe"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/soredowe.desktop" << DESKTOP_EOF
 [Desktop Entry]
