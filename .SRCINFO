@@ -1,0 +1,20 @@
+pkgbase = python-qiskit-paulice
+	pkgdesc = Embedding spacetime Pauli checks into Clifford circuits
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Qiskit/qiskit-paulice
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-qiskit-ibm-runtime
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	depends = python-numpy
+	depends = python-qiskit
+	depends = python-qiskit-aer
+	source = qiskit-paulice::git+https://github.com/Qiskit/qiskit-paulice#tag=0.2.1
+	b2sums = b82b294922cade06e10f6de968522e2fc48d36dd7fc1e933032b3a03f171691ccf912aaa03e28e1f3f5a602f169fc167261ede5e9ae194f97c1774fc9c8e214b
+
+pkgname = python-qiskit-paulice
