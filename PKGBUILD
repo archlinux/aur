@@ -2,7 +2,7 @@
 # Contributor: Maria <maria@kuuro.net>
 
 pkgname=zerobrew-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='A drop-in, 5-20x faster, experimental Homebrew alternative'
 
@@ -34,10 +34,10 @@ source_aarch64=(
 sha256sums=('15ce32f1792f63c0fca75928fa65924434b559dbc8a52c789ff40f606c7a039f'
             'c5a4b4e7f1475fe021600420ddfd2c553fb3a0439863bce2188396a92ce69069'
             '58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
-sha256sums_x86_64=('471b4735efbb07ff6affb985df455d6c8e67a292878c3d00912ad7942639002d'
-                   '7ae8a38c679efc95a3b90620e5549b51fae5af0b3bc358b092b889dbb6c3df8f')
-sha256sums_aarch64=('fb3d5f44fd2d6fb6dea6bb303f665f8fbb683ef06791313414de1d4487d56a96'
-                    'eed2e11c2b827f24b4074d81f5f58291eaba2e0d44fd72501819e63752d2b0e1')
+sha256sums_x86_64=('a70770ec75e124b43b91e90828d1e60c03a6361c47f5a35ed2ad3eb1051fb014'
+                   'e3af1bfb92113ee66515a1f99eb96bb93a564472ce270467d9f2087062fbb510')
+sha256sums_aarch64=('5a3c3d37884bfd2e3c4283f28432543826e2e350c309c579d93c4cd735348374'
+                    '12fc260ca93deaf19de6b86fd496d32dcd94268ac05410f75fe3bac9c9ac1340')
 
 
 package() {
