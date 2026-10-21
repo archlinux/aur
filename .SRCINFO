@@ -9,8 +9,10 @@ pkgbase = ahwoo-bin
 	depends = bash
 	depends = fontconfig
 	options = !strip
-	source = https://neutrino.ahwoo.com/download/linux
+	source = Ahwoo.tar.gz::https://neutrino.ahwoo.com/download/linux
 	source = ahwoo.png::https://neutrino.ahwoo.com/favicon.png
+	source = version.json::https://install.ahwoo.com/linux-x64/tar/version.json
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
