@@ -1,0 +1,12 @@
+pkgbase = hydrascale-bin
+	pkgdesc = Run multiple Tailscale tailnets simultaneously on a single Linux machine.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/Crank-Git/Hydrascale
+	arch = x86_64
+	license = MIT
+	options = !debug
+	source = https://github.com/Crank-Git/Hydrascale/releases/download/v1.7.0/hydrascale_1.7.0_linux_amd64.tar.gz
+	sha256sums = 2dee9f318c2d8658319f4903b4be9f9d3910870fbd2a1fa9a19ff913b03a4021
+
+pkgname = hydrascale-bin

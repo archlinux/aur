@@ -1,0 +1,4 @@
+[hydrascale-bin]
+source = "git"
+git = "https://github.com/Crank-Git/Hydrascale.git"
+prefix = "v"
