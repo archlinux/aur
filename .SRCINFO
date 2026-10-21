@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-ibm-runtime
 	pkgdesc = IBM Client for Qiskit Runtime
 	pkgver = 0.50.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-ibm-runtime
 	arch = any
 	license = Apache-2.0
@@ -14,7 +14,6 @@ pkgbase = python-qiskit-ibm-runtime
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	depends = blas-openblas
 	depends = python-dateutil
 	depends = python-ibm-platform-services
 	depends = python-ibm-quantum-schemas
