@@ -2,7 +2,7 @@
 
 _pname=python_blazarclient
 pkgname=python-blazarclient
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc='Client library for the Blazar API'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(python-pbr python-cliff python-prettytable python-oslo-i18n
 checkdepends=(python-oslotest python-fixtures python-stestr
               python-testtools)
 source=("https://tarballs.opendev.org/openstack/$pkgname/$_pname-$pkgver.tar.gz")
-sha512sums=('404b14b14ca8dee67ee44b8b10ad7711279cacd2495c9dcb0ab9f7e33057791994c254590ae4d63d4a96dc8a908ed222b3bbea2e9c9e0ac4a097043eb500b2b7')
+sha512sums=('3bdb4c6fb2ed71d81241c1f936cdf090624f2a744f9d713498c81b4bf7723ab315eaf614aba61d655b1e2612c9a52690d0ba04973904520183cfabd1279194f7')
 
 export PBR_VERSION=$pkgver
 
