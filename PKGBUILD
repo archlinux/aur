@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-gapk-git
-pkgver=v1.1.1.r0.4b1abf3
+pkgver=1.1.2.r2.beabd02
 pkgrel=1
 pkgdesc="Osmocom GSM Audio Pocket Knife"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
