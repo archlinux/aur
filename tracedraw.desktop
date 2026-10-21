@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=TraceDraw
+Comment=Vector illustration editor
+Exec=tracedraw %f
+Icon=tracedraw
+Terminal=false
+Categories=Graphics;2DGraphics;VectorGraphics;
+MimeType=application/x-tdraw;application/x-cdr;
+StartupWMClass=tracedraw

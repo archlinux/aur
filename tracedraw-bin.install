@@ -1,0 +1,13 @@
+post_install() {
+  gtk-update-icon-cache -f -t "$(find "$pkgdir/usr/share/icons/hicolor" -mindepth 1 -maxdepth 1 -type d)" || true
+  update-desktop-database "$pkgdir/usr/share/applications" || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  gtk-update-icon-cache -f -t "$(find "$pkgdir/usr/share/icons/hicolor" -mindepth 1 -maxdepth 1 -type d)" || true
+  update-desktop-database "$pkgdir/usr/share/applications" || true
+}

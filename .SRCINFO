@@ -1,0 +1,25 @@
+pkgbase = tracedraw-bin
+	pkgdesc = Vector illustration, page layout and print: an open-source vector editor (prebuilt binary)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/igtoth/tracedraw
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = fontconfig
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxi
+	depends = libxkbcommon
+	depends = mesa
+	depends = wayland
+	optdepends = xdg-desktop-portal: native file dialogs
+	optdepends = hicolor-icon-theme: standard icon theme
+	provides = tracedraw
+	conflicts = tracedraw
+	options = !debug
+	source = tracedraw-0.10.0-linux-x86_64.tar.gz::https://github.com/igtoth/tracedraw/releases/download/v0.10.0/tracedraw-0.10.0-linux-x86_64.tar.gz
+	sha256sums = 92aa4ee1553cfe0ef97bc165451c915e238afb71b1953cf860b2d7a2f61c1f35
+
+pkgname = tracedraw-bin
