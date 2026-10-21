@@ -1,7 +1,7 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/codearts-agent-bin
 pkgname=codearts-agent-bin
-pkgver=26.9.902
+pkgver=26.10.0
 pkgrel=1
 pkgdesc=AI-powered\ coding\ assistant\ and\ IDE\ by\ Huawei\ Cloud
 arch=(x86_64 aarch64 )
@@ -18,10 +18,10 @@ validpgpkeys=()
 
 source=(LICENSE )
 sha256sums=('e106bf05e0a1abbbcaa65d1d8f9d67ab1c020ee623dfcab780ff05a8e91ba117')
-sha256sums_x86_64=('f3add76553a5e958f3fe629949e7b8f54297f78e6c6bef3a2da864cf6aafeb5f')
-sha256sums_aarch64=('1e3ca272c1c5b851f949b6542a4589553fd2ad8196236b3a512361666c7afc5f')
-source_x86_64=(codearts-agent-bin-26.9.902-x86_64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-x64-26.9.902-eea7a9e.deb )
-source_aarch64=(codearts-agent-bin-26.9.902-aarch64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-arm64-26.9.902-eea7a9e.deb )
+sha256sums_x86_64=('8dcf38cc36a82d8466d16893a37b82692ad670e1d6bfdbf9f0060b590e1da180')
+sha256sums_aarch64=('e374a7a16d3c341e9ff769d60ef538e87482e5e431ed6046fab71ce2fac6d4e1')
+source_x86_64=(codearts-agent-bin-26.10.0-x86_64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-x64-26.10.0-1abecd4.deb )
+source_aarch64=(codearts-agent-bin-26.10.0-aarch64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-arm64-26.10.0-1abecd4.deb )
 
 _deb_relocate_usr_local=false
 _install_bin_path=/usr/bin/codearts-agent
@@ -35,8 +35,8 @@ _license_files=(LICENSE )
 prepare() {
     local _deb_source_file
     case "$CARCH" in
-        x86_64) _deb_source_file=codearts-agent-bin-26.9.902-x86_64.deb ;;
-        aarch64) _deb_source_file=codearts-agent-bin-26.9.902-aarch64.deb ;;
+        x86_64) _deb_source_file=codearts-agent-bin-26.10.0-x86_64.deb ;;
+        aarch64) _deb_source_file=codearts-agent-bin-26.10.0-aarch64.deb ;;
         *)
             echo "Unsupported architecture: $CARCH" >&2
             return 1
