@@ -1,14 +1,15 @@
 pkgbase = overlayfs-tools-git
 	pkgdesc = Tools for overlay filesystem
-	pkgver = 2025.01.r1.g1ccb445
+	pkgver = 2025.01.r5.g6bb0304
 	pkgrel = 1
 	url = https://github.com/kmxz/overlayfs-tools
 	arch = x86_64
 	license = WTFPL
-	makedepends = attr
 	makedepends = git
 	makedepends = meson
+	depends = attr
 	depends = glibc
+	optdepends = rsync: merge --use-rsync
 	provides = overlayfs-tools
 	conflicts = overlayfs-tools
 	source = overlayfs-tools::git+https://github.com/kmxz/overlayfs-tools.git

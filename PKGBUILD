@@ -3,7 +3,7 @@
 
 _pkgname="overlayfs-tools"
 pkgname="$_pkgname-git"
-pkgver=2025.01.r1.g1ccb445
+pkgver=2025.01.r5.g6bb0304
 pkgrel=1
 pkgdesc="Tools for overlay filesystem"
 url="https://github.com/kmxz/overlayfs-tools"
@@ -11,10 +11,13 @@ license=('WTFPL')
 arch=('x86_64')
 
 depends=(
+  'attr' # setfattr: called by merge scripts; meson configure requires it
   'glibc'
 )
+optdepends=(
+  'rsync: merge --use-rsync' # called by merge scripts
+)
 makedepends=(
-  'attr'
   'git'
   'meson'
 )
