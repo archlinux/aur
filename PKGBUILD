@@ -1,16 +1,16 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 # AUR package `bitty-bin`: prebuilt release binary, no user-side compile.
 # Keep `bitty` as the source package per Arch convention; this `-bin`
-# variant downloads the release asset published by
-# `.github/workflows/release.yml` ("Rename artifact" step) and installs it
-# to `/usr/bin/bitty` together with the `.desktop` entry and icons from the
-# release source tarball.
+# variant downloads the release asset mirrored to the R2-backed CDN by
+# `.github/workflows/release.yml` ("Rename artifact" plus `r2-mirror` steps)
+# and installs it to `/usr/bin/bitty` together with the `.desktop` entry and
+# icons from the release source tarball.
 #
 # Template note: the release workflow (`aur-bin` job) copies this file to the
 # AUR `bitty-bin` repository as `PKGBUILD`, substitutes `pkgver` with the
-# release tag version, and replaces `_bitty_bin_sha256` below with the real
-# sha256 from the published `.sha256` asset. The binary checksum must never
-# be `SKIP` in a published package.
+# release tag version, and replaces `b0b2efd40a663838701fa36fe2a994f18fcf447c7ff8ee035f6db780c4d795ed` below with
+# the real sha256 from the published `.sha256` asset. The binary checksum must
+# never be `SKIP` in a published package.
 #
 # Asset-name dependency (CTX-0164, issue #264): the inner binary rename
 # `bitty-terminal` -> `bitty` changes `target/<triple>/release/<name>` inside the
@@ -18,8 +18,16 @@
 # the release workflow (`dist/bitty-${TARGET}`) and stays stable across that
 # rename (verified against the 0164 worktree). If the dist name ever changes,
 # update `_bitty_asset` here and in `release.yml` together.
+#
+# Download source (CTX-1413, #1847): the release binary comes from the
+# R2-backed CDN, which is the preferred source for every package-manager
+# channel. Every mirrored asset is byte-identical to GitHub Releases, which
+# stays the documented fallback:
+#   https://github.com/bitty-terminal/bitty/releases/download/v${pkgver}/${_bitty_asset}
+# The metadata tarball below is not mirrored (only dist/* is), so it keeps the
+# GitHub archive URL. The binary sha256 is always verified by makepkg.
 pkgname=bitty-bin
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -31,17 +39,20 @@ optdepends=('noto-fonts: fallback font')
 provides=('bitty')
 conflicts=('bitty' 'bitty-nightly' 'bitty-git')
 _bitty_asset="bitty-x86_64-unknown-linux-gnu"
+# Version the local cached filename so package managers cannot reuse a
+# previous release's download when the published asset name is stable.
+_bitty_src="bitty-${pkgver}-x86_64-unknown-linux-gnu"
 source_x86_64=(
-  "${_bitty_asset}::https://github.com/bitty-terminal/bitty/releases/download/v${pkgver}/${_bitty_asset}"
+  "${_bitty_src}::https://cdn.bitty.run/releases/v${pkgver}/${_bitty_asset}"
   "bitty-${pkgver}.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums_x86_64=(
-  '7d434129ea171a0b73a4d207197ae1d673824af74a2119ec7b90d64d2b2343b6'
+  'b0b2efd40a663838701fa36fe2a994f18fcf447c7ff8ee035f6db780c4d795ed'
   'SKIP'
 )
 
 package() {
-  install -Dm755 "${srcdir}/${_bitty_asset}" "${pkgdir}/usr/bin/bitty"
+  install -Dm755 "${srcdir}/${_bitty_src}" "${pkgdir}/usr/bin/bitty"
   cd "${srcdir}/bitty-${pkgver}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
