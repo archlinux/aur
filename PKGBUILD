@@ -2,7 +2,7 @@
 # Maintainer: Infisical, Inc <support@infisical.com>
 
 pkgname='infisical-bin'
-pkgver=0.44.3
+pkgver=0.44.4
 pkgrel=1
 pkgdesc='The official Infisical CLI'
 url='https://infisical.com'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('cli')
 conflicts=('cli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.3/cli_0.44.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('5f57ea29490a1711995ab4c935849ae844d0373d9f3e22ed5c833b5a7e33cd90')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.4/cli_0.44.4_linux_arm64.tar.gz")
+sha256sums_aarch64=('6aae6f2ff524ce8b0affceadc2510625c77c6a864539dbcaeaf36c289bc06f7b')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.3/cli_0.44.3_linux_armv7.tar.gz")
-sha256sums_armv7h=('173d7c566e3ac2ad0f2c89a6f0acef58f669415523bc21d21ea539ba28dfcada')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.4/cli_0.44.4_linux_armv7.tar.gz")
+sha256sums_armv7h=('25cd960ce337d0d22ee3c7648cfb2624df9d4a1c22af893bd80e62edb27aca69')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.3/cli_0.44.3_linux_386.tar.gz")
-sha256sums_i686=('1aede03a79b1341414312c19117210bdfbe1e0639a1567e75ea969d65c977f9e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.4/cli_0.44.4_linux_386.tar.gz")
+sha256sums_i686=('c736cfdc94cbd670821f3ee26fffdafef6d2fc8b00913bda9c423e4f18c3ef41')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.3/cli_0.44.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('d1f802e5e7f27aa8d5408146629a700518c7f40bceaf0c39cc5cc87d856b6c54')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.44.4/cli_0.44.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('8849a2e7d8e6fbd1ab01e9088e0690c50f58e5ff1ba9d0cc2a55de2762bd543c')
 
 package() {
   # bin
