@@ -1,6 +1,6 @@
 pkgbase = cubeb
 	pkgdesc = Cross platform audio library
-	pkgver = 20260827
+	pkgver = 20261012
 	pkgrel = 1
 	url = https://github.com/mozilla/cubeb
 	arch = aarch64
@@ -19,12 +19,12 @@ pkgbase = cubeb
 	makedepends = speexdsp
 	makedepends = cargo
 	conflicts = cubeb-git
-	source = git+https://github.com/mozilla/cubeb#commit=0ef8af5f07ec5ea965a000045ff83249f8b6add4
+	source = git+https://github.com/mozilla/cubeb#commit=2e87c6335573f61ca430bd3e91bb5e8bc76699d3
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/mozilla/cubeb-coreaudio-rs.git
 	source = git+https://github.com/mozilla/cubeb-pulse-rs.git
-	b2sums = 0252856ad23982605b85830511a3c60533f0339b88f187a24ff62c15c05a2a47b248a7071979fad96996c0e011239336fd2cbc19fb5a8e60e92596de78cf105f
+	b2sums = 366eb6faf6198575c786fc5501e877b775fbdf01c19608d4b8d2772ccbb40257202460309f2d26f718beb85493e6ea5f96cae39971fd756bf24fad88a457b91b
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -39,7 +39,7 @@ pkgname = cubeb
 	optdepends = alsa-lib: for ALSA backend
 	optdepends = jack: for JACK backend
 	optdepends = sndio: for sndio backend
-	provides = cubeb=20260827
+	provides = cubeb=20261012
 	provides = libcubeb.so
 
 pkgname = cubeb-docs
