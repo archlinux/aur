@@ -1,1 +1,6 @@
 *
+!LICENSE
+!jemalloc-gcc16.patch
+!ray-jemalloc-patch-hook.patch
+!dlmalloc-gcc16.patch
+!ray-no-ci-pypi.patch
