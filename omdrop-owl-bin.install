@@ -1,0 +1,80 @@
+# owly.install and omdrop-owl.install together, for the package that has
+# both their files. post_upgrade is owly's and _migrate_settings
+# omdrop-owl's, unchanged: packaging/arch/aur.sh checks they still are.
+# omdrop-owl's pre_upgrade and post_upgrade only act on an upgrade from
+# 0.3.0 or older, which this package never had.
+
+post_install() {
+  # As owly's.
+  if systemctl is-active --quiet NetworkManager 2>/dev/null; then
+    nmcli general reload conf >/dev/null 2>&1 \
+      || echo "  Could not reload NetworkManager's configuration. Run: sudo nmcli general reload conf"
+  fi
+  # This replaces omdrop-owl rather than upgrading it, so settings from
+  # 0.3.0 and older move here.
+  _migrate_settings
+  cat <<'MSG'
+  omdrop-owl is Omdrop's radio backend for Wi-Fi cards without Apple's
+  Broadcom firmware, on Owly's radio service, owlyd, which starts when
+  something asks for the radio. Omdrop runs on it with or without
+  omdrop-core. If Omdrop isn't installed yet:
+
+      omarchy plugin add https://github.com/netmojo-systems/omdrop-plugin.git
+
+  Then turn Omdrop on from its icon in the bar. `owly doctor` says whether
+  this Wi-Fi card can do AirDrop and what, if anything, is in the way.
+MSG
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet NetworkManager 2>/dev/null; then
+    nmcli general reload conf >/dev/null 2>&1 || true
+  fi
+  # A running owlyd keeps the old binary until it next starts. Restart it
+  # now only when it has no session, so an upgrade doesn't end a window.
+  if [ "$(busctl get-property io.github.t4t5.Owly /io/github/t4t5/Owly \
+      io.github.t4t5.Owly.Radio1 State 2>/dev/null)" = 's "idle"' ]; then
+    systemctl try-restart owlyd.service || true
+  fi
+}
+
+# 0.3.0 and older read one setting a file in /etc/omdrop; Owly reads
+# /etc/owly/radio.toml. Carry them over once, unless that file exists.
+_migrate_settings() {
+  local old=/etc/omdrop new=/etc/owly/radio.toml v c channels= toml=
+  [ -e "$new" ] && return 0
+  _knob() { head -n 1 "$old/$1" 2>/dev/null | tr -d '[:space:]'; }
+  v=$(_knob infra-iface)
+  [ -n "$v" ] && toml+="station = \"$v\"\n"
+  [ "$(_knob allow-untested)" = 1 ] && toml+="allow_untested = true\n"
+  case "$(_knob reconnect-after)" in
+    1) toml+="reconnect_after = true\n" ;;
+    0) toml+="reconnect_after = false\n" ;;
+  esac
+  case "$(_knob aggregation)" in
+    1) toml+="aggregation = true\n" ;;
+    0) toml+="aggregation = false\n" ;;
+  esac
+  for c in $(cat "$old/channels" 2>/dev/null); do
+    case "$c" in 6|44|149) channels+="${channels:+, }$c" ;; esac
+  done
+  [ -n "$channels" ] && toml+="channels = [$channels]\n"
+  if [ -n "$toml" ]; then
+    mkdir -p /etc/owly
+    printf '# Carried over from %s by the omdrop-owl 0.4.0 upgrade.\n%b' "$old" "$toml" > "$new"
+    echo "  Your settings in $old are now in $new."
+  fi
+  if [ -e "$old/owl-profiles" ]; then
+    echo "  $old/owl-profiles isn't read any more: driver settings go in"
+    echo "  /etc/owly/drivers.toml, in the format of Owly's drivers.toml."
+  fi
+}
+
+pre_remove() {
+  # omdrop-owl's: don't leave a window running on a helper or hooks about
+  # to disappear.
+  /usr/lib/omdrop/omdrop-discoverable stop >/dev/null 2>&1 || true
+  /usr/lib/omdrop/radio/down stopped >/dev/null 2>&1 || true
+  # Then owly's, which gives Wi-Fi back if a session is still up.
+  systemctl stop owlyd.service 2>/dev/null || true
+}

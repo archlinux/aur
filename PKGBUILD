@@ -1,0 +1,43 @@
+# Maintainer: T4T5 <t4t5@hey.com>
+
+# omdrop-owl-bin: omdrop-owl and the owly it runs on, prebuilt, so that
+# installing them needs no Rust toolchain and no build. The same files as
+# the owly and omdrop-owl packages, from the tarball packaging/package.sh tar
+# makes for each release, which .github/workflows/aur-release.yml adds to
+# that release on GitHub.
+#
+# This is the AUR's PKGBUILD as it stands, but for the tarball's checksum,
+# which packaging/arch/aur-publish.sh fills in. packaging/arch/aur.sh only
+# checks that it's still owly's and omdrop-owl's together, at their
+# version, so bump pkgver with theirs. Change it in
+# packaging/arch/omdrop-owl-bin in https://github.com/t4t5/owly.
+pkgname=omdrop-owl-bin
+pkgver=0.4.0
+pkgrel=1
+pkgdesc="AirDrop radio backend for Omdrop on non-Broadcom Wi-Fi, on Owly (prebuilt)"
+arch=('x86_64')
+url="https://github.com/t4t5/owly"
+# omdrop-awdl's tools are GPL-2.0-only.
+license=('MIT' 'GPL-2.0-only')
+# owly's, then what omdrop-awdl's tools need: packaging/arch/owly and
+# packaging/arch/omdrop-owl say what each is for.
+depends=('glibc' 'gcc-libs' 'dbus' 'systemd' 'polkit' 'networkmanager' 'iproute2' 'iputils' 'util-linux'
+         'python' 'keyutils' 'bluez' 'python-dbus' 'python-gobject'
+         'python-ifaddr' 'python-libarchive-c' 'python-pillow' 'python-zeroconf')
+optdepends=('hostapd: exclusive mode on cards without ad-hoc mode')
+provides=('owly' "omdrop-owl=${pkgver}")
+# It has their files; and one radio backend at a time.
+conflicts=('owly' 'omdrop-owl' 'brcmfmac-awdl-dkms')
+# The binaries come stripped, with no debug info to split off.
+options=('!strip' '!debug')
+install="${pkgname}.install"
+_tarball="omdrop-owl-${pkgver}-x86_64.tar.gz"
+source_x86_64=("${url}/releases/download/v${pkgver}/${_tarball}")
+noextract=("${_tarball}")
+sha256sums_x86_64=('229617d237c207c7d70ec49dd76caf34859c07960beafecfc585f71d07f6cc59')
+
+# Unpacked here rather than by makepkg, so that the files are root's, as
+# the tarball has them, and not the builder's.
+package() {
+  tar -xzf "${srcdir}/${_tarball}" -C "${pkgdir}" --strip-components=1
+}
