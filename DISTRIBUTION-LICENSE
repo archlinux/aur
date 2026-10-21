@@ -1,0 +1,9 @@
+The official openSUSE Tumbleweed netinstall ISO is an aggregate containing software and other works
+under multiple copyright and license terms.
+
+No single license applies to all contents. The applicable terms belong to
+the individual components and are documented by their respective upstream
+projects and openSUSE RPM package metadata.
+
+This AUR package redistributes the official ISO content unchanged. It grants no
+rights beyond those provided by the licenses of the included components.
