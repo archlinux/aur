@@ -1,12 +1,12 @@
 # Maintainer: Vinicius Moura Longaray <vmouralongaray@gmail.com>
 pkgname=spectrum-git
-pkgver=r284.8a9b03d
+pkgver=r285.0d07917
 pkgrel=1
 pkgdesc="Console-based music player with equalizer written in C++."
 arch=("x86_64")
 url="https://github.com/v1nns/spectrum"
 license=("MIT")
-depends=("alsa-lib" "ffmpeg" "fftw" "curl" "libxml++")
+depends=("alsa-lib" "ffmpeg" "fftw" "curl" "libxml++" "systemd-libs")
 makedepends=("git" "cmake" "ninja")
 optdepends=("yt-dlp: play songs from YouTube")
 provides=("spectrum")
