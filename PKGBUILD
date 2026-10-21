@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 pkgname=visual-studio-code-autoupdate
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Direct Microsoft VS Code updater with a twice-daily user timer'
 arch=('x86_64')
 url='https://github.com/jjunho/visual-studio-code-autoupdate'
@@ -39,9 +39,9 @@ sha256sums=('ed0f4ad06e7a67892b73a4e326e4d857347983d17aa83365a9c61d69976bc76f'
             '6e1be6dc797966af296216fd08cf16d521786cef059c2f8d0198d3197009c158'
             'a06f8d3e435e40fe1ae4ac3782edb782ffb51993d73b612ed9cd2054d1a0e57f'
             '5121967943ebabe4ce7f783593b44633fc86f936c802206e85c4a60c2cc99cae'
-            '4b4dd724a8a78993a36fb79f617db4adaa46615b4ab3e57095f588b2e01cf757'
+            'f937363f66610cf8437b7484814ecae5d7411be7e7ff57760c15f57d310c9ee5'
             '6668196519d52d349278e9b272ec3751aeb50d29a688a0eec45b3caae11b7159'
-            '77828472203a1a24c840547d22986e97caa6ace7f57491efe696f9773150aa77'
+            'afdf418e16f12bfdec266abc128791c4c81ffc93b1e451131fdc182452f80b03'
             'cf8fb4657850204bbe349e7d87f69e77fb49fd4361250edae7a7d634b5ab1587'
             '3c01a6da00a4445a0f3260b78114f841c4a2d9a719261b0b9bad88b6d7668ac9')
 

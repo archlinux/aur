@@ -23,6 +23,16 @@ class UpdateSafety(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory(prefix='vscode-update-test-')
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
+        self.proc = self.root / 'proc'
+        self.proc.mkdir()
+        # Keep real process entries only when a test explicitly adds them.
+        # Unrelated host PIDs may disappear and legitimately defer collection.
+        paths = patch.object(
+            updater, 'Path',
+            side_effect=lambda value: self.proc if str(value) == '/proc' else Path(value),
+        )
+        paths.start()
+        self.addCleanup(paths.stop)
         self.previous = self.root / ('release-' + '1' * 40)
         self.previous.mkdir()
         (self.root / 'current').symlink_to(self.previous.name)
@@ -140,11 +150,13 @@ class UpdateSafety(unittest.TestCase):
         shutil.copy2('/usr/bin/sleep', active / 'code')
         process = subprocess.Popen([str(active / 'code'), '60'])
         try:
+            (self.proc / str(process.pid)).symlink_to(Path('/proc') / str(process.pid))
             updater.prune()
             self.assertTrue(active.is_dir())
         finally:
             process.terminate()
             process.wait(timeout=5)
+            (self.proc / str(process.pid)).unlink(missing_ok=True)
         updater.prune()
         self.assertFalse(active.exists())
         self.assertEqual((self.root / 'current').resolve(), self.previous)

@@ -52,6 +52,8 @@ makepkg -si
 Para apenas compilar, use `makepkg`. O `check()` executa testes sem rede para
 integridade, extração segura, troca de versões, preservação de versões em execução
 e recuperação de temporários abandonados.
+A visão de processos dos testes é isolada: processos reais de teste são incluídos
+explicitamente, sem depender de processos externos que podem terminar durante o build.
 
 O `namcap` emite avisos de pacote sem ELF em `x86_64` e de dependências que não
 consegue inferir. O payload baixado é exclusivamente x86_64; as dependências
