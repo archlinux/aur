@@ -3,7 +3,7 @@
 _projectname="xasm"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=3.2.1+27.r169.20260918.5526357
+pkgver=3.2.1+37.r179.20261018.1a3ae56
 pkgrel=1
 pkgdesc="6502 cross-assembler with original syntax extensions. By default it generates binaries for Atari 8-bit computers."
 arch=(
