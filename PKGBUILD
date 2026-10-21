@@ -1,30 +1,30 @@
 # lito.lock
-_spirv_reflect_commit=355785128c1b6ba808e3a7d0e344814fe6cff502
-_wavsen_commit=73be92f4f9db0179e93e3f28d62077a2aed77a8e
-_vrento_commit=a781859c940325a909c77613b5b2795cc3d65e48
+_wavsen_commit=756437443d84905a027f115c75ec6ae6b19692e7
+_vrento_commit=11f19089b51acd71c5e4e9a4248bfc39927c47e4
+_vectext_commit=d918972da5c08b5afc73b812062e855fce2d847d
 
 pkgname=open-wallpaper-engine
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
 depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
-         "waywallen>=0.3.8" cef glslang fontconfig quickjs-ng glfw wayland)
+         "waywallen>=0.5.0" cef glslang fontconfig quickjs-ng glfw wayland)
 makedepends=(lito "cmake>4.3.1" ninja git "clang>=22" lld llvm eigen vulkan-headers
              waywallen-display)
 options=(!lto)
 source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
-        "git+https://github.com/hypengw/SPIRV-Reflect.git#commit=$_spirv_reflect_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/vecren/vrento.git#commit=$_vrento_commit"
+        "git+https://github.com/vecren/vectext.git#commit=$_vectext_commit"
         "0001-lito-Use-system-cef.patch")
-sha256sums=('7891af872de820cb8d427f9b4086f7849a1528d0dac1f96ecd81a336e17ec1d3'
-            'c033a38ac4e58e4a87ad43a84eb5e0fbe312c82b161a1fe5e38890751636f63f'
-            '9f9212efdaab0379701eab6634cfd1c051ffe875f4a60b8d7a11d1c99540f85b'
-            'f2f5c212bfae9f6331d25840f76ddd903ae6c22a772ae536b362c36b5bbaa3d2'
-            '1e2c6bfb4883389b61af805586ebbbf4576aa08c87bad2fd4afdac98e393fc85')
+sha256sums=('44bf9906d1a46b4015b598f9d0335de64e38a25ae26693439184c1e499be064b'
+            'c3eb7d0d83a534f2ab489bb6dbadfc208cf735ba7d31b4d4bdbdaa5d2e75dc26'
+            'b3b2f2b9f45d08e20854d6bc104598937b5407d1a0b65815cd4f03f7af46cdbc'
+            'bded207cedf409fb14dfc8218ac501a5f4d7cd8e09f08c7d05655f68f0a17f0a'
+            '3629af4ae0b17d055fa869f3613f9dc975e4c5e084fa9fc0e993f2f27d812212')
 
 prepare() {
     cd "$srcdir/$pkgname"
@@ -34,11 +34,11 @@ prepare() {
 [patch."https://github.com/hypengw/wavsen.git"]
 path = "../wavsen"
 
-[patch."https://github.com/hypengw/SPIRV-Reflect.git"]
-path = "../SPIRV-Reflect"
-
 [patch."https://github.com/vecren/vrento.git"]
 path = "../vrento"
+
+[patch."https://github.com/vecren/vectext.git"]
+path = "../vectext"
 
 [tools.cmake.overrides.Eigen3]
 source = "installed"
