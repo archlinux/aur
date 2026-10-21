@@ -4,13 +4,13 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=openvox-server
-pkgver=8.15.2
+pkgver=9.1.0
 pkgrel=1
 pkgdesc='Server automation framework and application'
 arch=('any')
 url='https://github.com/OpenVoxProject/openvox-server'
 license=('APACHE')
-depends=('ruby' 'puppet>=6' 'java-runtime-headless=21' 'logrotate' 'jruby'
+depends=('ruby' 'puppet>=6' 'java-runtime-headless=25' 'logrotate' 'jruby'
          'openfact' 'net-tools')
 conflicts=('puppetserver')
 provides=('puppetserver')
@@ -26,8 +26,10 @@ backup=('etc/default/puppetserver'
         'etc/puppetlabs/puppetserver/services.d/ca.cfg')
 install="${pkgname}.install"
 _hiera_eyaml_ver=5.0.1
-source=("${pkgname}-${pkgver}.tar.gz::https://artifacts.voxpupuli.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d6608696ca642e0dd2c33a35ae6d4c55ceb8c7eefdcdbcebb0ed6cd7e892dfe5fe049649fe5166f8ac601f6eeb6116eeefc8d4dc96ae81a751116bc0f05dd177')
+source=("${pkgname}-${pkgver}.tar.gz::https://artifacts.voxpupuli.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        'puppetserver.tmpfiles')
+sha512sums=('2515ef857603b85b593dee12b4b51620ba71c1d1532d7d0600433648b6e508ab04c5d1933a618a60105da4000a3c7bccce5faa05d183b10d5ae0f9bfb0dd31e5'
+            'd6266c1f9710fd948f94e1bb085e44fbaffd9bdc2215d610071ca41fa3f8d86af08d34cd746c5f2353b4e5a3ee2adb226ca23617c49d65855078ce5077efa30c')
 
 prepare() {
   cd "puppetserver-${pkgver}"
@@ -77,6 +79,5 @@ _app_logdir=${_app_logdir:=/var/log/puppetlabs/${_real_name}}
     install -d -m 0755 "${pkgdir}/usr/bin"
     ln -s "${_symbindir}/${_real_name}" "${pkgdir}/usr/bin/${_real_name}"
     install -d "${pkgdir}"/opt/puppetlabs/server/data/puppetserver/jruby-gems
-    rm -r "${pkgdir}"/var/run
-    sed -i 's/\/var\/run/\/run/g' "${pkgdir}/usr/lib/tmpfiles.d/puppetserver.conf"
+    install -vDm 644 "${srcdir}/puppetserver.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/puppetserver.conf"
 }
