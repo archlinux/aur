@@ -1,7 +1,7 @@
 # Maintainer: jagrat7
 pkgname=linux-wallpaper-engine-ux
 _pkgname=linux-wallpaper-engine
-pkgver=0.4.11
+pkgver=0.4.12
 pkgrel=1
 pkgdesc="Modern desktop GUI for linux-wallpaperengine"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   'ffmpeg: video wallpaper support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4a46cc31bf1a74cb580d47f067a311f06150e2d4343fea3ae29c7ae4e9760bec')
+sha256sums=('1bbe42032fe40578bd7e4a285057fd84a3dff2e03de86399420581a4f8af65e9')
 
 
 prepare() {
