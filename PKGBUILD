@@ -2,7 +2,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-text-csv-xs
-pkgver=1.64
+pkgver=1.65
 pkgrel=1
 pkgdesc="Comma-separated values manipulation routines"
 _dist=Text-CSV_XS
@@ -12,7 +12,7 @@ license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 depends=('perl')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/${_dist}-${pkgver}.tgz")
-sha512sums=('bc4f980755e1d25200298b9ba0375fa7a1cd92760c59c17f23978c8d57ea2f0721e9a05e7f4a4593cbfda8e498b87c5f3d412c7627d22db4630d1079c515f8b6')
+sha512sums=('12ad8335643c07243923463697db92eb8923337a9debb30eb84d5f2abcc1571ac75596e296a1344b0a12994498fcb32b085e5b1338690cfecc6a3354fd8408e7')
 
 build() {
   cd "${srcdir}/${_dist}-${pkgver}"
