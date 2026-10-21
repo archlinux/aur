@@ -2,7 +2,7 @@
 
 pkgbase=computer-use-linux
 pkgname=('computer-use-linux' 'gnome-shell-extension-computer-use-linux')
-pkgver=0.7.20
+pkgver=0.7.22
 pkgrel=1
 pkgdesc="Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo')
 checkdepends=('dbus')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('72627c510f9252f3330f3d38aa41a2c27d76bce95a92f1d2c349d3eba7f2d947')
+sha256sums=('f95612c0c854d89e2537cf7f80f68c20fd88f877a32d0d98ef437fc5ecd77bd7')
 
 _uuid=computer-use-linux@avifenesh.dev
 
