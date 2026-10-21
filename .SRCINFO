@@ -1,0 +1,25 @@
+pkgbase = tinyxbox360backupmanager-git
+	pkgdesc = A tiny game backup manager for the Xbox 360 (Aurora)
+	pkgver = 0.18.0.r3618.g3059f881
+	pkgrel = 1
+	url = https://github.com/jeanmatthieud/TinyXbox360BackupManager
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = lld
+	depends = gcc-libs
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = wayland
+	depends = libx11
+	depends = libglvnd
+	optdepends = xdg-desktop-portal: native file picker dialogs
+	provides = tinyxbox360backupmanager
+	conflicts = tinyxbox360backupmanager
+	options = !lto
+	source = TinyXbox360BackupManager::git+https://github.com/jeanmatthieud/TinyXbox360BackupManager.git
+	sha256sums = SKIP
+
+pkgname = tinyxbox360backupmanager-git
