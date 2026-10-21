@@ -1,6 +1,6 @@
 pkgbase = socialstreamninja
 	pkgdesc = Standalone version of Social Stream Ninja - Electron-based application for capturing social media streams
-	pkgver = 0.4.18
+	pkgver = 0.4.40
 	pkgrel = 1
 	url = https://github.com/steveseguin/ssn_app
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = socialstreamninja
 	provides = socialstreamninja
 	conflicts = socialstreamninja-bin
 	conflicts = socialstreamninja-git
-	noextract = socialstreamninja-0.4.18.AppImage
+	noextract = socialstreamninja-0.4.40.AppImage
 	options = !strip
-	source = socialstreamninja-0.4.18.AppImage::https://github.com/steveseguin/social_stream/releases/download/v0.4.18/socialstreamninja_linux_v0.4.18_x86_64.AppImage
+	source = socialstreamninja-0.4.40.AppImage::https://github.com/steveseguin/social_stream/releases/download/v0.4.40/socialstreamninja_linux_v0.4.40_x86_64.AppImage
 	source = socialstreamninja.desktop
-	sha256sums = 1ed1406de5a75faae6bb3fc4572ac76bde44f78585c01f77c2eb888d98ff8c14
+	sha256sums = 4211ab5058bf948754683dbfb1bb388c465aa62ce51dd809b140f578683ddedd
 	sha256sums = ccfc7e5ee7217e07c94fb008f9631b1747a53d54a362841bc3f412999be611c7
 
 pkgname = socialstreamninja
