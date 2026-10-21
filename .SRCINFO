@@ -1,0 +1,18 @@
+pkgbase = thrapl-git
+	pkgdesc = Easily adjust the PL2 (Turbo) wattage using the intel_rapl driver
+	pkgver = 0.0.1.r1.2b7da63
+	pkgrel = 1
+	url = https://github.com/pyamsoft/thrapl.git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = coreutils
+	provides = thrapl
+	conflicts = thrapl
+	source = thrapl::git+https://github.com/pyamsoft/thrapl.git#branch=main
+	source = 00-fix-prefix.patch
+	sha256sums = SKIP
+	sha256sums = e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d
+
+pkgname = thrapl-git
