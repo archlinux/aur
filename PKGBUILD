@@ -2,7 +2,7 @@
 pkgname=wnvidia-control-bin
 _pkgname=wnvidia-control
 _bin=wnvctl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Overclock, undervolt, power limit and fan curves for NVIDIA GPUs (Wayland/X11 GUI, CLI and service) (prebuilt)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ backup=('etc/wnvctl/daemon.toml')
 install=wnvidia-control-bin.install
 options=('!lto' '!strip' '!debug')
 source=("$url/releases/download/v$pkgver/$_bin-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('fff3a94c5821adf1d99a0ae1924bf795ed033f89d0b2693afb53e379d076fac0')
+sha256sums=('90597cbaf18e625bb487f67d0d34483d87f5f7cf85f09961c95dc3f96ddcf684')
 
 package() {
   cd "$_bin-$pkgver-linux-x86_64"
