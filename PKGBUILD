@@ -1,4 +1,5 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
@@ -7,23 +8,30 @@
 
 _gemname_="curses"
 pkgname="ruby-${_gemname_}"
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Ruby binding for curses, ncurses, and PDCurses"
 arch=("x86_64")
 url="https://github.com/ruby/curses"
 license=("BSD-2-Clause OR Ruby")
-depends=("glibc" "ncurses" "ruby")
+depends=("glibc" "ncurses" "ruby" "bash")
 makedepends=("ruby-rdoc")
 options=(!emptydirs)
+
 source=("https://rubygems.org/downloads/${_gemname_}-${pkgver}.gem")
+sha256sums=('c524ff30704bbd136d68d2731263b31edaf4f236b0cbb9b8dd6c802de3317057')
 
-package() {
-	local _gemdir_="$(ruby -e'puts Gem.default_dir')"
-
-	gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir_}" -n "${pkgdir}/usr/bin" "${_gemname_}-${pkgver}.gem"
-
-	rm "${pkgdir}/${_gemdir_}/cache/${_gemname_}-${pkgver}.gem"
+prepare() {
+    bsdtar -O -xf "${_gemname_}-${pkgver}.gem" data.tar.gz | bsdtar -xf - BSDL
 }
 
-sha256sums=('86d219442e7fe78e68c609e6884f08b439b7508cf3f9d5b914f75c106e77bf7c')
+package() {
+    local _gemdir_="$(ruby -e'puts Gem.default_dir')"
+
+    gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir_}" -n "${pkgdir}/usr/bin" "${_gemname_}-${pkgver}.gem"
+
+    rm "${pkgdir}/${_gemdir_}/cache/${_gemname_}-${pkgver}.gem"
+
+    install -Dm644 BSDL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
