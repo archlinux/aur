@@ -1,0 +1,5 @@
+# The downloads and the build outputs of makepkg.
+*.tar.gz
+*.pkg.tar.*
+/src/
+/pkg/

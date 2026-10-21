@@ -1,0 +1,13 @@
+pkgbase = hmcl-region-patch
+	pkgdesc = Unofficial tool that patches HMCL so that it no longer treats the machine as mainland China
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xuanxuan1231/hmcl-region-patch
+	arch = any
+	license = GPL-3.0-or-later
+	depends = java-runtime
+	options = !strip
+	source = hmcl-region-patch-1.0.0.tar.gz::https://github.com/xuanxuan1231/hmcl-region-patch/releases/download/v1.0.0/hmcl-region-patch-1.0.0.tar.gz
+	sha256sums = 89c6da7b5727f85b331d89d02e5a4c0edc605a281f25d38676decc9a215d9fd4
+
+pkgname = hmcl-region-patch
