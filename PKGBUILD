@@ -10,13 +10,13 @@ pkgname=proxybridge-git
 # shellcheck disable=SC2034
 pkgdesc="Proxifier Alternative to redirect any TCP and UDP traffic to HTTP/Socks5 proxy (Unofficial PKGBUILD)"
 # shellcheck disable=SC2034
-pkgver=r290.51d9b17
+pkgver=r542.ccfd858
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=1
 # shellcheck disable=SC2034
 arch=('x86_64')
 # shellcheck disable=SC2034
-makedepends=('git')
+makedepends=('git' 'clang' 'bpf')
 # shellcheck disable=SC2034
 depends=('libnetfilter_queue' 'libnfnetlink' 'gtk3' 'pkg-config')
 # shellcheck disable=SC2034
@@ -48,6 +48,20 @@ pkgver() {
   }
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  # shellcheck disable=SC2154
+  cd "${srcdir}/${_gitname}" || {
+    msg "Failed to cd into ${srcdir}/${_gitname}"
+    return 1
+  }
+
+  # Fix the build pipeline complaint:
+  #
+  # binary audit: 1 check(s) failed
+  # Audit failed: the binaries are not portable/hardened enough to ship.
+  sed -i 's|CFLAGS="-O2 -fPIC -include|CFLAGS="-O2 -fPIC -fcf-protection=full -fstack-protector-strong -fstack-clash-protection -include|' "Linux/src/Makefile"
 }
 
 package() {
