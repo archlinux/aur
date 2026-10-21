@@ -2,7 +2,7 @@
 # Maintainer: alcxyz <alcxyz@users.noreply.github.com>
 
 pkgname='grove-tui-bin'
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Terminal UI for monitoring git forge repositories'
 url='https://github.com/alcxyz/grove'
@@ -10,16 +10,16 @@ arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('grove')
 conflicts=('grove')
-depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/alcxyz/grove/releases/download/v${pkgver}/grove_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('2af46aa5fd6452608ffb7324d8b3c9c11d7ae0d9c33b96955ca457bb591f1764')
+sha256sums_aarch64=('8f6e852b177d87642b0cd861fccaefa340ad4c1919ae161a5cc2a8710d3c9419')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/alcxyz/grove/releases/download/v${pkgver}/grove_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ae02844dbfca5caec48eb8457afabbffdb3f6334fc5398caf45cf56e5858eb9f')
+sha256sums_x86_64=('b6d8962c85d5bfeefabb8003ea4ad4c2c86ba63c12ffd5b141da04cfcfff29ec')
 
 package() {
   install -Dm755 "./grove" "${pkgdir}/usr/bin/grove"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/grove/README.md"
   install -Dm644 "./config.example.yaml" "${pkgdir}/usr/share/doc/grove/config.example.yaml"
 }
