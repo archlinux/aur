@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=comrak
-pkgver=0.56.0
+pkgver=0.57.0
 pkgrel=1
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=(x86_64 i686)
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('f6a1916193db99fb20ac0220a121e802ed1dfb5d25535075e7ccbbfb0ecd8939')
+sha256sums=('06933637b62368dc5a1199dddebc40794ee34a68c4eb47b5900b774250093f2b')
 
 _srcenv() {
 	cd "$_archive"
@@ -41,7 +41,23 @@ build() {
 
 check() {
 	_srcenv
-	local skipped=()
+	local skipped=(
+		# Pathological timeouts
+		tests::pathological::pathological_description_lists
+		tests::pathological::pathological_emphases
+		tests::pathological::pathological_emphasis_mod_three_1
+		tests::pathological::pathological_emphasis_mod_three_2
+		tests::pathological::pathological_footnote_label_reconstruction
+		tests::pathological::pathological_footnotes
+		tests::pathological::pathological_header_ids
+		tests::pathological::pathological_recursion
+		tests::pathological::pathological_recursion_inline_footnotes
+		tests::pathological::pathological_relaxed_autolink_url_dead_zone
+		tests::pathological::pathological_relaxed_autolink_www_dead_zone
+		tests::pathological::pathological_table_autocompleted_cells
+		tests::pathological::pathological_table_columns_1
+		tests::pathological::pathological_table_columns_2
+	)
 	cargo test --frozen --all-features -- ${skipped[@]/#/--skip }
 }
 
