@@ -6,7 +6,7 @@ _webui_cid='bafybeiciqeyipumpmhxzlxnbqdbbv6u5uij4hy4wax64dmj7kvrhusiq6y'
 
 pkgname='ipfs-desktop'
 pkgver='0.50.1'
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Desktop client for the InterPlanetary File System'
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 )
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"webui-${_webui_cid}.car::https://trustless-gateway.link/ipfs/${_webui_cid}?format=car"
+	"webui-${_webui_cid}.car::https://github.com/ipfs/ipfs-webui/releases/download/v4.13.0/ipfs-webui%40v4.13.0.car"
 	"${pkgname}.desktop"
 	"${pkgname}-startup.sh"
 	'Inter-LICENSE.txt::https://raw.githubusercontent.com/rsms/inter/3ac1bd32a473ea60d40d8f444820247e96dd7e70/LICENSE.txt'
