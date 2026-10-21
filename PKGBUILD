@@ -5,7 +5,7 @@
 pkgname=titan-git
 _pkgname=titan.core
 pkgver=10.1.2.r15.ge86dfd732
-pkgrel=1
+pkgrel=2
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
@@ -35,12 +35,10 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# Currently we cannot build even old versions due to broken dependencies in
-# the TITAN's hand-written Makefiles.  Building the 'dep' target first helps
-# to overcome the majority of them, but it still does not compile due to
-# various compilation errors.  Disabling 'buildflags' and 'makeflags' helps.
-# See also https://gitlab.eclipse.org/eclipse/titan/titan.core/-/issues/595.
-options=(!lto !buildflags !makeflags)
+# LTO breaks linking: create_legacy_logger is declared as a variable in
+# LoggerPluginManager.cc, but defined as a function in LegacyLogger.cc.
+# See https://gitlab.eclipse.org/eclipse/titan/titan.core/-/work_items/815.
+options=(!lto)
 
 prepare() {
     cd $srcdir/$_pkgname
@@ -48,10 +46,23 @@ prepare() {
     echo "STRIP := :" >> Makefile.personal
     echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
     echo "JDKDIR := /usr/lib/jvm/default" >> Makefile.personal
+    # TITAN uses CCFLAGS (not CFLAGS) for C sources
+    echo 'CCFLAGS += $(ARCH_CFLAGS)' >> Makefile.personal
+    echo 'CXXFLAGS += $(ARCH_CXXFLAGS)' >> Makefile.personal
+    echo 'CPPFLAGS += $(ARCH_CPPFLAGS)' >> Makefile.personal
+    echo 'LDFLAGS += $(ARCH_LDFLAGS)' >> Makefile.personal
 }
 
 build() {
     cd $srcdir/$_pkgname
+    # TITAN's Makefiles append per-directory flags to CXXFLAGS & co. and then
+    # spawn sub-makes in other directories; if these variables come from the
+    # environment, make exports the modified values and they leak across
+    # directories (e.g. -fno-exceptions, -DTITAN_RUNTIME_2).  Pass makepkg's
+    # flags under different names instead.
+    export ARCH_CFLAGS="$CFLAGS" ARCH_CXXFLAGS="$CXXFLAGS"
+    export ARCH_CPPFLAGS="$CPPFLAGS" ARCH_LDFLAGS="$LDFLAGS"
+    unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
     make dep
     make
 }
