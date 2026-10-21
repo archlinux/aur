@@ -1,0 +1,25 @@
+pkgbase = python-qiskit-addon-opt-mapper
+	pkgdesc = Mapping combinatorial optimization problems to quantum computers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Qiskit/qiskit-addon-opt-mapper
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-ddt
+	checkdepends = python-pytest
+	checkdepends = python-pytest-subtests
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-cvxpy
+	depends = python-docplex
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-qiskit
+	depends = python-rustworkx
+	depends = python-scipy
+	source = qiskit-addon-opt-mapper::git+https://github.com/Qiskit/qiskit-addon-opt-mapper.git#tag=0.1.0
+	b2sums = 2aed23e47dbcab281543137d0cafce89a5e3e6a5a910635afcfdd68cd84f6bf730a21b2e1e12f2993d4df70e98f82bb594b25063d7fa5dc148f90013c9f1c948
+
+pkgname = python-qiskit-addon-opt-mapper
