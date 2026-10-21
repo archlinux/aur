@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-git
-pkgver=0.43.0.r1475.g48dff262
+pkgver=0.46.0.r2319.g61278175
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/ufna/zerus'
 license=('MIT')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
          'tmux>=3.7' 'openssh' 'python' 'curl' 'procps-ng' 'libgcc' 'libstdc++' 'glibc' 'hicolor-icon-theme' 'bash' 'tar')
-makedepends=('git' 'rust' 'cmake' 'ninja' 'qt6-webengine')
+makedepends=('git' 'rust' 'cmake' 'ninja' 'qt6-tools' 'qt6-webengine')
 optdepends=('konsole: external KDE terminal integration'
             'qt6-webengine: embedded DeepSeek Native UI'
             'wl-clipboard: clipboard transfers on Wayland'
