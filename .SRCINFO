@@ -1,0 +1,22 @@
+pkgbase = gutenprint-printer-app-git
+	pkgdesc = PostScript Printer Application
+	pkgver = 1.0+r78.20260109.8712a9f
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/gutenprint-printer-app
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = cups
+	depends = glibc
+	depends = libcups
+	depends = libcupsfilters
+	depends = libppd
+	depends = pappl
+	depends = pappl-retrofit
+	provides = gutenprint-printer-app=1.0+r78.20260109.8712a9f
+	conflicts = gutenprint-printer-app
+	options = emptydirs
+	source = git+https://github.com/OpenPrinting/gutenprint-printer-app.git
+	sha256sums = SKIP
+
+pkgname = gutenprint-printer-app-git
