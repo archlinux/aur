@@ -1,0 +1,31 @@
+[Unit]
+Description=Toonflow AI 创作平台服务端
+Documentation=https://github.com/HBAI-Ltd/Toonflow-app
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# 专用系统账户（由 /usr/lib/sysusers.d/toonflow.conf 创建，无需手动 useradd）
+User=toonflow
+Group=toonflow
+# 状态目录：systemd 创建 /var/lib/toonflow 并归属上述账户
+StateDirectory=toonflow
+StateDirectoryMode=0750
+# 端口、数据目录等可在 /etc/conf.d/toonflow 中修改（该文件属于 pacman backup）
+EnvironmentFile=-/etc/conf.d/toonflow
+ExecStart=/usr/bin/toonflow
+Restart=on-failure
+RestartSec=5
+# 安全加固
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/toonflow
+PrivateTmp=true
+# 上游服务端默认监听 0.0.0.0 且无内置鉴权。若只允许本机访问，
+# 可取消下面一行的注释（同一主机上的反向代理走 127.0.0.1 仍然可用）。
+# IPAddressAllow=localhost
+
+[Install]
+WantedBy=multi-user.target

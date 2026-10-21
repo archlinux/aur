@@ -1,0 +1,18 @@
+#!/bin/sh
+# Toonflow 启动入口（Web/服务端）
+#
+# 可通过环境变量覆盖默认行为：
+#   TOONFLOW_DATA_DIR     数据目录（默认 ~/.local/share/toonflow）
+#   TOONFLOW_SERVER_PORT  监听端口（默认 3000）
+#
+# 注意：仅当这些变量未被设置时才会使用默认值；systemd 服务中已显式设置，
+# 因此本脚本不会覆盖服务侧配置。
+
+: "${TOONFLOW_DATA_DIR:=${XDG_DATA_HOME:-${HOME:-/tmp}/.local/share}/toonflow}"
+: "${TOONFLOW_SERVER_PORT:=3000}"
+export TOONFLOW_DATA_DIR TOONFLOW_SERVER_PORT
+
+# 生产模式（与上游 Dockerfile 保持一致）
+export NODE_ENV="${NODE_ENV:-production}"
+
+exec bun /usr/lib/toonflow/build/server/index.js

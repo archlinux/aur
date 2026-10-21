@@ -1,0 +1,7 @@
+# makepkg 构建产物
+src/
+pkg/
+*.pkg.tar.zst
+*.tar.gz
+*.src.tar.gz
+toonflow-src/

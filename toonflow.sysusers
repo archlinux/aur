@@ -1,0 +1,3 @@
+# 创建 Toonflow 服务专用系统账户。
+# 由 pacman 的 systemd 钩子在安装/升级时自动执行 systemd-sysusers。
+u toonflow - "Toonflow service account" /var/lib/toonflow /usr/bin/nologin

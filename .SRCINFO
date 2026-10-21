@@ -1,0 +1,22 @@
+pkgbase = toonflow
+	pkgdesc = AI 驱动的短剧 / 漫剧创作平台（Web 界面 + 本地服务端）
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/HBAI-Ltd/Toonflow-app
+	arch = x86_64
+	license = MIT
+	depends = bun
+	optdepends = ffmpeg: 在设置中选择“系统”模式以复用系统 FFmpeg
+	backup = etc/conf.d/toonflow
+	source = toonflow-2.0.7.tar.gz::https://github.com/HBAI-Ltd/Toonflow-app/archive/refs/tags/v2.0.7.tar.gz
+	source = toonflow
+	source = toonflow.service
+	source = toonflow.sysusers
+	source = toonflow.conf
+	sha256sums = 855cab916ac0163c3d39b944b52c3729605d36493a00a3ec7391ca34d00acccb
+	sha256sums = c8c2a793076815c041c6e48d46da6a2c58d086dd1fb7240286ae7a4ded423f27
+	sha256sums = 68eae09d3142f626cde943801fa2d1499bb23ec0bd2d87d7667d4ad63d28b9b0
+	sha256sums = 807edaa2f8fdc12d64efea06a59d49a4e9ada7a27eb95dd761a246de67a3ebb2
+	sha256sums = 8d9bf4cd8ddf67b9e9f6f35f825e1162eb42b876a4b237692722dc4f87447194
+
+pkgname = toonflow
