@@ -19,11 +19,12 @@ url=${_ghurl}
 
 license=('MIT')
 
-depends=('git')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
-options=(!strip)
+depends=('git')
+
+options=('!strip')
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
