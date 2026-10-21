@@ -4,6 +4,7 @@ pkgbase = sicth-bin
 	pkgrel = 1
 	url = https://github.com/reekta92/sicth
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0
 	depends = glibc
 	depends = libgcc
@@ -12,5 +13,7 @@ pkgbase = sicth-bin
 	options = !strip
 	source_x86_64 = sicth-x86_64-1.1.1.txz::https://github.com/reekta92/sicth/releases/download/v1.1.1/sicth-x86_64-unknown-linux-gnu.tar.xz
 	sha256sums_x86_64 = 2e73af2a00576697fc930878ee543ba58fadfa1a33ca6c702be75a9f1fefc079
+	source_aarch64 = sicth-aarch64-1.1.1.txz::https://github.com/reekta92/sicth/releases/download/v1.1.1/sicth-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 46c9e2c1613ff35df3bbf94aa4835c8dff1d217b8ac01d714f0e284b6e25b4f9
 
 pkgname = sicth-bin
