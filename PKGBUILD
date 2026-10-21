@@ -3,7 +3,7 @@
 
 pkgname=clara-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety - binary release)"
 arch=('x86_64')
 url="https://github.com/acropolis914/Clara"
@@ -42,6 +42,9 @@ source=("https://github.com/acropolis914/Clara/releases/download/v${pkgver}/clar
 sha256sums=('SKIP')
 
 package() {
+  # The upstream release asset is itself a pacman package, so it carries pacman's own
+  # metadata files. They must be stripped out: leaving .BUILDINFO in the package root makes
+  # makepkg abort with "Dotfile found in package root" and the AUR build never completes.
   bsdtar -xf "$srcdir/clara-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" \
-    --exclude '.PKGINFO' --exclude '.MTREE'
+    --exclude '.PKGINFO' --exclude '.MTREE' --exclude '.BUILDINFO'
 }
