@@ -1,6 +1,6 @@
 pkgbase = paintdotjs-bin
 	pkgdesc = An open source general-purpose raster graphics editor program.
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://paintjs.net/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = paintdotjs-bin
 	provides = paintdotjs
 	conflicts = paintdotjs
 	options = !strip
-	noextract = paintdotjs-2.4.4.AppImage
-	source = paintdotjs-2.4.4-source.tar.gz::https://github.com/LabyStudio/paintdotjs/archive/refs/tags/v2.4.4.tar.gz
-	sha256sums = 1e294596689c066d5b99c26b083ad0e348f3678fd362fdd4b6d5963919a9cab5
-	source_x86_64 = paintdotjs-2.4.4.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v2.4.4/paintdotjs-2.4.4-linux-x86_64.AppImage
-	sha256sums_x86_64 = eca74d5de7e4102b32e56038b55ae01c5e9ccb675a12ad8c65ce29662313049e
+	noextract = paintdotjs-2.4.5.AppImage
+	source = paintdotjs-2.4.5-source.tar.gz::https://github.com/LabyStudio/paintdotjs/archive/refs/tags/v2.4.5.tar.gz
+	sha256sums = 1e8359396717b49229ec7df9141817e713e25706800545e325a6a5c674cf232c
+	source_x86_64 = paintdotjs-2.4.5.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v2.4.5/paintdotjs-2.4.5-linux-x86_64.AppImage
+	sha256sums_x86_64 = e33115ea99d12719f810c99af1dad17f238376d8069ae91a6d127f8b8c3ea9b0
 
 pkgname = paintdotjs-bin
