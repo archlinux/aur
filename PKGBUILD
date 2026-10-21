@@ -3,7 +3,7 @@
 _pyname="sandwine"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=8.0.1+24.r498.20260920.934e7d9
+pkgver=8.0.1+33.r507.20261018.7c37e05
 pkgrel=1
 pkgdesc="A command-line tool to run Windows applications on GNU/Linux that offers more isolation than raw Wine and more convenience than raw bubblewrap. (Uses bubblewrap.)"
 arch=(
