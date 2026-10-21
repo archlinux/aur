@@ -1,7 +1,7 @@
 pkgbase = alacrium-browser
 	pkgdesc = Performance-focused Chromium browser tracking stable releases
-	pkgver = 155.0.8059.84
-	pkgrel = 3
+	pkgver = 156.0.8078.47
+	pkgrel = 1
 	url = https://github.com/brauliobo/alacrium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -52,7 +52,7 @@ pkgbase = alacrium-browser
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	options = !debug
 	options = !strip
-	source = alacrium::git+https://github.com/brauliobo/alacrium.git#commit=809201efd7149fb49ea2a2addcd84c8770a7cd26
+	source = alacrium::git+https://github.com/brauliobo/alacrium.git#commit=d8a004be31e6af45d27a96cec066c866417763bf
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=7bd73dcd391b3f83437f2bd50724c04044806728
 	sha256sums = SKIP
 	sha256sums = SKIP
