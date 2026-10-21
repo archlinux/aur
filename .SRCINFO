@@ -1,6 +1,6 @@
 pkgbase = plico
 	pkgdesc = Editor PDF nativo per Linux: pagine, cancellazione vera, moduli, OCR, firma (PySide6/Qt)
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/gradia64/Plico
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = plico
 	noextract = pyhanko-0.37.0-py3-none-any.whl
 	noextract = pyhanko_certvalidator-0.32.1-py3-none-any.whl
 	noextract = uritools-6.1.3-py3-none-any.whl
-	source = plico::git+https://github.com/gradia64/Plico.git#tag=v0.1.4?signed
+	source = plico::git+https://github.com/gradia64/Plico.git#tag=v0.1.5?signed
 	source = https://files.pythonhosted.org/packages/1c/6e/e6dfe44b6669574cf37f37efbe67cc969cb69e27620ac5e5ff7b45bab607/pyhanko-0.37.0-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/f4/49/81f92016547077d004a883864da9148e725741f365064a1c9dfe5558f49a/pyhanko_certvalidator-0.32.1-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/ac/76/e9bb35862bcc5b82218d2c017b1eacdcfeb3ba46ce0c0ca8ffc4db80ddbe/uritools-6.1.3-py3-none-any.whl
