@@ -3,7 +3,7 @@
 # Submit by pushing this and the generated .SRCINFO (makepkg --printsrcinfo > .SRCINFO) to
 #   ssh://aur@aur.archlinux.org/wicked-ide-bin.git
 pkgname=wicked-ide-bin
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Code editor that runs AI models on your own machine"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('fontconfig' 'freetype2' 'libglvnd' 'libx11' 'libxi' 'libxcursor' 'libx
 optdepends=('vulkan-icd-loader: run models on the GPU through the Vulkan engine')
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/WickedIDE-$pkgver-linux-x64.tar.gz")
-sha256sums=('33c0a0d56125d3163fd5876f15ba4a63e9a7f6ecab27f23841a9e9d8cd38c78d')
+sha256sums=('8b43b77fd0c85ed34140a5c859471c6d216a3282b2c328e394954ac647091728')
 # The tarball unpacks flat ("./"); stage it in its own folder so package() copies the payload wholesale.
 noextract=("WickedIDE-$pkgver-linux-x64.tar.gz")
 
