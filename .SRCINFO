@@ -1,6 +1,6 @@
 pkgbase = edentext-bin
 	pkgdesc = Powerful local Word Processor for docx and odt
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/stffnb/edentext
 	arch = x86_64
@@ -32,11 +32,11 @@ pkgbase = edentext-bin
 	provides = EdenText
 	conflicts = edentext
 	options = !strip
-	source = README-0.10.1.md::https://raw.githubusercontent.com/stffnb/edentext/v0.10.1/README.md
-	source = LICENSE-0.10.1::https://raw.githubusercontent.com/stffnb/edentext/v0.10.1/LICENSE
-	sha256sums = 75389d98dc01826291889499f5fab48480f005ee04891ae37cbc8212ca738cd5
+	source = README-0.11.0.md::https://raw.githubusercontent.com/stffnb/edentext/v0.11.0/README.md
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/stffnb/edentext/v0.11.0/LICENSE
+	sha256sums = 61625454d1ff53b9f487ae47f464e552425fce8c3207c9827d5105e5593b1a09
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	source_x86_64 = EdenText-x86_64-0.10.1.deb::https://github.com/stffnb/edentext/releases/download/v0.10.1/edentext_0.10.1_amd64.deb
-	sha256sums_x86_64 = 494678ec49c3af6d9dca2939233f45ecc00d4225cf0cc3a5eb623c449732b609
+	source_x86_64 = EdenText-x86_64-0.11.0.deb::https://github.com/stffnb/edentext/releases/download/v0.11.0/edentext_0.11.0_amd64.deb
+	sha256sums_x86_64 = 35f7aa42ffba959823e1d3eae5169934c6606b76618cf46410fb3bff47b68677
 
 pkgname = edentext-bin
