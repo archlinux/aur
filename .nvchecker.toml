@@ -1,0 +1,5 @@
+[open-git-control-bin]
+source = "github"
+github = "timbornemann/Open-Git-Control"
+use_latest_release = true
+prefix = "v"
