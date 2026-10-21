@@ -1,6 +1,6 @@
 pkgbase = python-zarr
 	pkgdesc = An implementation of chunked, compressed, N-dimensional arrays for Python
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/zarr-developers/zarr-python
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-zarr
 	depends = python-google-crc32c
 	depends = python-typing_extensions
 	depends = python-donfig
-	source = https://files.pythonhosted.org/packages/source/z/zarr/zarr-3.4.0.tar.gz
-	sha256sums = b68676576a6fc42683dfcc0daeb3c0e994f71e1680696990bde056bd3acf3542
+	source = https://files.pythonhosted.org/packages/source/z/zarr/zarr-3.4.1.tar.gz
+	sha256sums = b34bda11ceb199c81ee78ecd42cd02f46c7f67a6d8a1e9bc501cafd5a1795356
 
 pkgname = python-zarr
