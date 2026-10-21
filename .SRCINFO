@@ -1,6 +1,6 @@
 pkgbase = purple-gowhatsapp-git
 	pkgdesc = A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow
-	pkgver = 1.21.0_396_20260216124546
+	pkgver = 1.27.0_433_20261017175727
 	pkgrel = 1
 	url = https://github.com/hoehermann/purple-gowhatsapp
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = purple-gowhatsapp-git
 	optdepends = opusfile: Upload opus audio as PTT voice message
 	provides = purple-gowhatsapp
 	conflicts = purple-gowhatsapp
+	conflicts = purple-gowhatsapp-debug
 	source = purple-gowhatsapp::git+https://github.com/hoehermann/purple-gowhatsapp.git
 	sha256sums = SKIP
 

@@ -1,18 +1,18 @@
 # Maintainer: Hermann Höhne <hoehermann@gmx.de>
 pkgname=purple-gowhatsapp-git
 _pkgnam=${pkgname%-git}
-pkgver=1.21.0_396_20260216124546
+pkgver=1.27.0_433_20261017175727
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow"
 arch=('x86_64' 'i686')
 url="https://github.com/hoehermann/purple-gowhatsapp"
 license=('GPLv3')
 groups=()
-depends=('libpurple')
+depends=('libpurple') # 'libpurple>=2' 'libpurple<3' would be more specific, but AUR pidgin-mini does not seem to specify the libpurple version provided
 optdepends=('webp-pixbuf-loader: Stickers' 'gdk-pixbuf2: Stickers' 'opusfile: Upload opus audio as PTT voice message')
 makedepends=('git' 'go' 'cmake' 'make' 'pkg-config')
 provides=("${_pkgnam}")
-conflicts=("${_pkgnam}")
+conflicts=("${_pkgnam}" "${_pkgnam}-debug")
 install=
 source=("${_pkgnam}::git+https://github.com/hoehermann/purple-gowhatsapp.git")
 noextract=()
