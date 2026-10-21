@@ -1,6 +1,6 @@
 pkgbase = mise-musl-bin
 	pkgdesc = Portable musl build of mise: dev tools, env vars, task runner
-	pkgver = 2026.10.15
+	pkgver = 2026.10.17
 	pkgrel = 1
 	url = https://github.com/jdx/mise
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = mise-musl-bin
 	conflicts = rtx
 	replaces = rtx
 	options = !debug
-	source_x86_64 = https://github.com/jdx/mise/releases/download/v2026.10.15/mise-v2026.10.15-linux-x64-musl.tar.xz
-	sha256sums_x86_64 = a48530b3c7f389522566fddea9e3a4f80bae00a0045561382324bf2a300fbe6b
-	source_aarch64 = https://github.com/jdx/mise/releases/download/v2026.10.15/mise-v2026.10.15-linux-arm64-musl.tar.xz
-	sha256sums_aarch64 = 5deccb8e11f0876db767e9ece8793876c08f90b9ed21595e3c6e6706ee5aa1f4
+	source_x86_64 = https://github.com/jdx/mise/releases/download/v2026.10.17/mise-v2026.10.17-linux-x64-musl.tar.xz
+	sha256sums_x86_64 = da0d9ace5d5b3321e391f15fbf8b53fcd65b9024e673ea51c5515189e5810416
+	source_aarch64 = https://github.com/jdx/mise/releases/download/v2026.10.17/mise-v2026.10.17-linux-arm64-musl.tar.xz
+	sha256sums_aarch64 = 566e04044756bfb5bf2ddd4d3d16172f5f4979e02d88cef7fbac726f9f59cf5f
 
 pkgname = mise-musl-bin
