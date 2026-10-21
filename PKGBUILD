@@ -97,6 +97,7 @@ optdepends=(
   'xorg-xinit: startx, for X11 sessions on the login screen'
   'polkit: pkexec, so applications can ask for administrator access'
   'tailscale: the Tailscale plugin'
+  'nm-connection-editor: adds and changes VPN profiles in NetworkManager'
   'cups: lpstat and ipptool, which list your printers and their changes in the Printers plugin'
   'cups-pk-helper: adds, removes and sets the default printer in the Printers plugin'
   'system-config-printer: Print Settings, for drivers, paper size and quality in the Printers plugin'
