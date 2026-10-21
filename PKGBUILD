@@ -5,12 +5,12 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=mercurygram-desktop
-pkgver=7.3.1.1
+pkgver=7.3.2.1
 # tde2e, wallet-engine and desktop-app/patches pins from snap/snapcraft.yaml
 # at the v${pkgver} tag.
 _td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
 _wallet_engine_commit=e59e0d89d7ee90c388bf36e3334c5b276f396697
-_patches_commit=aec474953ff7ee9b6e4cd9b8658288ea86d124f3
+_patches_commit=fe957833b84525e634a8d776a7f834ed536d9a21
 pkgrel=1
 pkgdesc='Privacy-focused Telegram Desktop fork'
 arch=('x86_64')
@@ -59,6 +59,8 @@ depends=(
   'qt6-imageformats'
   'qt6-svg'
   'qt6-wayland'
+  'qt6-webchannel'
+  'qt6-webengine'
   'rnnoise'
   'tlottie'
   'xxhash'
@@ -86,8 +88,6 @@ makedepends=(
 optdepends=(
   'geoclue: geoinformation support'
   'crow-translate: translation provider'
-  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)'
-  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)'
   'xdg-desktop-portal: desktop integration'
 )
 source=(
@@ -97,7 +97,7 @@ source=(
   "wallet-engine-${_wallet_engine_commit}.tar.gz::https://github.com/i582/wallet-engine/archive/${_wallet_engine_commit}.tar.gz"
   "wallet-engine-${_patches_commit}.patch::https://github.com/desktop-app/patches/raw/${_patches_commit}/wallet-engine.patch"
 )
-sha512sums=('93264bab9a183adcac3f11cf1dc48eee9ce1330c8b535e6e2bd068e1b6c135dd7302881ea3e0f9f9b0d1fdf5652b5a4e3a680b93e3e9deb89fb50e1e683c753a'
+sha512sums=('05108dced96a481492f4caeb62ff2d1777675b76efc304794043f49c96a0ecf90c6e0b9b88fd0f587a25858afd75b96448c1dcba9c9ef6abf5405fd8b3ddb82f'
             'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0'
             '750a03d429e838b80068c8f608cf7ce3d6550a914b33fd4e1300b6d3eb1e4be7dbcc798b1a998f41930c45efbab147938eb9e257694b19e495f9642838151686'
             '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b')
@@ -129,6 +129,7 @@ build() {
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
     -DCMAKE_PREFIX_PATH="$PWD/wallet-engine-${_wallet_engine_commit}/install" \
     -DCMAKE_BUILD_TYPE=None \
+    -DDESKTOP_APP_USE_QTWEBENGINE=ON \
     -DTDESKTOP_API_ID=575730 \
     -DTDESKTOP_API_HASH=723c7927097f8487d229438af766e329
   cmake --build build
