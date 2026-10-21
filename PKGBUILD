@@ -1,7 +1,7 @@
 # Maintainer: ThePanz <thepanz@gmail.com>
 
 pkgname=zedis-bin
-pkgver=0.12.4
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Zedis: A blazing-fast, native Redis GUI built with Rust and GPUI."
 arch=('x86_64')
@@ -33,7 +33,7 @@ package() {
     install -D -m 0644 "${srcdir}/zedis-icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zedis.svg"
 }
 
-b2sums_x86_64=('5d2236f7af987f9ca5fd29b556cf3e838293a966c0d7eb33dd188cb6cb77969e4093e1d3454fbe51622372471e9ec7b297ac3182fe26f33aa9dc009667562942'
+b2sums_x86_64=('95a8f196b9582f1937a2f31e5d30c2ae2f64458ff4c91b31b3f1cbc94c0286ec8263da355b825e8f987b147ab6611041556b7e33a87bda37440638e7e95bee73'
                '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85'
                'b52ca9b0fe8b182548305f753f26977f6a4e600b71821bc286b0dab8e205ad0271f5cd8b9d845908b29adeb2ddb391a8d77f41a69ac3ce4c401166967886cd30'
                'ca5077322de36a5c4078f851e96eaee1f66edf630c2a2eaa47be12289d18c3730e8b66ff22556ff464073bb042a6b7a5c0a74bfa7bcc4b5ac077031c979a52ce')
