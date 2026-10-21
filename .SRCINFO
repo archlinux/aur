@@ -1,13 +1,13 @@
 pkgbase = mpv-jamak
 	pkgdesc = Interactive OpenSubtitles downloader for mpv in pure Lua
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/arrufat/mpv-jamak
 	arch = any
 	license = MIT
 	depends = mpv
 	depends = curl
-	source = mpv-jamak-0.5.0.tar.gz::https://github.com/arrufat/mpv-jamak/archive/0.5.0.tar.gz
-	sha256sums = fc13742371166e5aea2a218f41e28987dcf6966ededd64329e965a9d6ecb7b1d
+	source = mpv-jamak-0.6.0.tar.gz::https://github.com/arrufat/mpv-jamak/archive/0.6.0.tar.gz
+	sha256sums = 1879aad6f17baaf790e82310c2d17044adb11479e1d1e792bb13bb717090ed4a
 
 pkgname = mpv-jamak
