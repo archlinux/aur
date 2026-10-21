@@ -1,0 +1,25 @@
+pkgbase = python-pauli-prop
+	pkgdesc = Rust-accelerated Python interface for performing Pauli propagation
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Qiskit/pauli-prop
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-qiskit-addon-utils
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	depends = python-numpy
+	depends = python-qiskit
+	depends = python-qiskit-aer
+	optdepends = jupyterlab-widgets: notebook dependencies
+	optdepends = python-matplotlib: notebook dependencies
+	optdepends = python-pylatexenc: notebook dependencies
+	optdepends = python-qiskit-ibm-runtime: notebook dependencies
+	optdepends = python-rustworkx: notebook dependencies
+	source = pauli-prop::git+https://github.com/Qiskit/pauli-prop.git#tag=0.2.1
+	b2sums = 6f0a94816a1a00fdb5533e9981d6a43d8efa6c77ca772bac70d1b20a57d716db4e2fdc8cb7e29559a039045ebc87e9eeb45a4c53c2c07859834cf321b5d2ecfd
+
+pkgname = python-pauli-prop
