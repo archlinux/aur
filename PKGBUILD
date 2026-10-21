@@ -1,6 +1,6 @@
 # Maintainer: QiE2035 <qie2035@qq.com>
 pkgname=filmcraft-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Video editor: edit video, color and sound — a clean-room Premiere-style editor in Rust (official binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('filmcraft')
 conflicts=('filmcraft')
 options=('!strip')
 source=("https://github.com/storytold/filmcraft/releases/download/v$pkgver/filmcraft-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('ea67953cc754bfd8272e0e5fa940518e16068ae96f6b72a2dce566ed69a61632')
+sha256sums=('95d7a1afcb9e2021d3371a011700af6ce2ffe1af0e1cfe99c6fb98b3aa320f80')
 
 package() {
   cd "filmcraft-$pkgver-linux-x86_64"
