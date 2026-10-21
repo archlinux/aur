@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=effectcraft
-pkgver=0.11.1
+pkgver=0.13.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('fb70627d112825cd0412d37784b55ae8b87f128abfab30b26a7759a42518015a')
+sha256sums=('53034e0864671d50e97f100a21a34f38f230f5ac654592156be7ec2c46d491cc')
 
 _srcenv() {
 	cd "$_archive"
