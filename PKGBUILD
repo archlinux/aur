@@ -13,7 +13,7 @@ _pkgname="${pkgname}"
 __pkgname=konform
 : ${_ffsrcvername:=140.17.0esr}
 : ${_ffbuild:=1}
-: ${_lwrelver:=101}
+: ${_lwrelver:=102}
 : ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
@@ -154,13 +154,13 @@ source=(
   "0004-skia-m142-update.patch.xz"
 )
 noextract=("security-state--intermediates-${_tag}.zip")
-sha256sums=('dee823dca30b14eb11b6f0a47aef859873268987a0010c744719f3f5b56bd64b'
+sha256sums=('ff4405c4749cef5b9fca926c4ab7579e87e451736dff25712d6ceda678644757'
             '4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33'
             'SKIP'
             '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
-            'd1f99233d709d6bbd8e5008821cef8bf2b6c998fa8787863fa8786b854725c61'
+            '2fe9151f44f1da557deb1bb33c03984afd9f685a92960cd67c028be6c8e7be43'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
             'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
             '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
