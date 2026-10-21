@@ -1,15 +1,23 @@
 post_install() {
-    python3 - << 'EOF'
-import glob
-for path in glob.glob('/usr/lib/python3*/site-packages/pyfakewebcam/pyfakewebcam.py'):
-    with open(path, 'r') as f:
-        s = f.read()
-    if 'tostring()' in s:
-        s = s.replace('self._buffer.tostring()', 'self._buffer.tobytes()')
-        with open(path, 'w') as f:
-            f.write(s)
-        print(f'pyfakewebcam: tobytes() fix applied to {path}')
-EOF
+
+    # The state directory, writable by the service.
+    #
+    # Nothing created this before 7.0.13, so it arrived as root:root 755 from
+    # whatever ran first, and the service (http) could write a file that
+    # already existed but could not CREATE one. Every new state file hit that:
+    # detect_roi in 7.0.11, notify_presence_pause in 7.0.13, and the next one
+    # too. setgid so files created in here inherit the group rather than
+    # depending on the umask of whoever wrote first.
+    install -d -o root -g http -m 2775 /var/lib/hls-livecam
+    # Existing files predate the rule and keep root:root.
+    find /var/lib/hls-livecam -maxdepth 1 -type f ! -group http \
+         -exec chgrp http {} + -exec chmod g+rw {} + 2>/dev/null || true
+    # 7.0.12 removed the Debian copy of this; this one outlived it by a
+    # release. It rewrote /usr/lib/python3*/site-packages/pyfakewebcam, a
+    # file the python-pyfakewebcam PACKAGE owns, so pacman -Qkk would report
+    # the package as modified and the next upgrade would silently revert it.
+    # It was also a no-op: upstream pyfakewebcam has used tobytes() since
+    # before this package declared the dependency.
     echo ""
     echo "  hls-livecam-server installed."
     echo ""
@@ -23,17 +31,21 @@ EOF
 }
 
 post_upgrade() {
-    python3 - << 'EOF'
-import glob
-for path in glob.glob('/usr/lib/python3*/site-packages/pyfakewebcam/pyfakewebcam.py'):
-    with open(path, 'r') as f:
-        s = f.read()
-    if 'tostring()' in s:
-        s = s.replace('self._buffer.tostring()', 'self._buffer.tobytes()')
-        with open(path, 'w') as f:
-            f.write(s)
-        print(f'pyfakewebcam: tobytes() fix applied to {path}')
-EOF
+
+    # The state directory, writable by the service.
+    #
+    # Nothing created this before 7.0.13, so it arrived as root:root 755 from
+    # whatever ran first, and the service (http) could write a file that
+    # already existed but could not CREATE one. Every new state file hit that:
+    # detect_roi in 7.0.11, notify_presence_pause in 7.0.13, and the next one
+    # too. setgid so files created in here inherit the group rather than
+    # depending on the umask of whoever wrote first.
+    install -d -o root -g http -m 2775 /var/lib/hls-livecam
+    # Existing files predate the rule and keep root:root.
+    find /var/lib/hls-livecam -maxdepth 1 -type f ! -group http \
+         -exec chgrp http {} + -exec chmod g+rw {} + 2>/dev/null || true
+    # The pyfakewebcam source patch lived here too; removed with its twin
+    # in post_install. See the note there.
     # Refresh the served viewer from the packaged copy.
     #
     # The package installs index.html to /usr/share and hls-livecam-setup
