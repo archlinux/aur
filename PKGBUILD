@@ -3,7 +3,7 @@
 _pkgname=qcom-test-automation-controller
 pkgname=$_pkgname-git
 pkgver=6.9.0.r0.g954c804
-pkgrel=2
+pkgrel=3
 pkgdesc="Qualcomm Test Automation Controller (QTAC) - control Qualcomm devices through a debug board"
 arch=('x86_64')
 url="https://github.com/qualcomm/qcom-test-automation-controller"
@@ -32,12 +32,14 @@ _ftdi=libftd2xx-linux-x86_64-1.4.33.tgz
 source=("git+$url.git"
         "https://web.archive.org/web/20250822044524/https://ftdichip.com/wp-content/uploads/2025/03/$_ftdi"
         LICENSE.FTDI
-        devlist-static-init.patch)
+        devlist-static-init.patch
+        tac-library-paths.patch)
 noextract=("$_ftdi")
 sha256sums=('SKIP'
             'e260a4594a313583b87bf230c79cec9d46f11db6dcfd7c7d4f963279703214d3'
             '4b080f7fa03bc5a2448b0d7dfcf9e7f2837ca89b008d0c474bd5044441b4a5fa'
-            'bf2099ddc56b5505dca549163a8a5f447b6545118491f50d21fda82beadfc384')
+            'bf2099ddc56b5505dca549163a8a5f447b6545118491f50d21fda82beadfc384'
+            '4fc09f5c5a4f6cfb10ba0da816451b67190315c400cb5245c939407b9730559b')
 
 # Paths are hardcoded in the sources (TACDev.py, ApplicationEnhancements.cpp, ...)
 _prefix=/opt/qcom/QTAC
@@ -62,6 +64,12 @@ prepare() {
   # skipped automatically once upstream moves the global into main()
   if grep -q '^const QString kUSBDescriptorPath' src/applications/devlist/main.cpp; then
     patch -Np1 -i "$srcdir/devlist-static-init.patch"
+  fi
+
+  # TAC replaces Qt's plugin search paths with a nonexistent directory, so KIO
+  # (file dialogs: "Unknown protocol 'file'") and QtMultimedia find no plugins
+  if grep -q 'QCoreApplication::setLibraryPaths' src/applications/test-automation-controller/main.cpp; then
+    patch -Np1 -i "$srcdir/tac-library-paths.patch"
   fi
 
   # Arch has no 'dialout' group; serial devices belong to 'uucp'

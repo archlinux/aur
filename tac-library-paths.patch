@@ -1,0 +1,32 @@
+TAC: keep Qt's default plugin search paths
+
+main() replaced QCoreApplication::libraryPaths() with only
+<bindir>/platforms, which does not exist in this install. Plugins that load
+after startup then cannot be found: KIO's file worker (the KDE file dialog
+logs "Unknown protocol 'file'" and cannot browse) and the QtMultimedia
+backend. The platform plugin is already loaded by then, and Qt looks for
+platform plugins in <path>/platforms, so the override never helped.
+
+diff --git a/src/applications/test-automation-controller/main.cpp b/src/applications/test-automation-controller/main.cpp
+index ccea554..c5fe2ce 100644
+--- a/src/applications/test-automation-controller/main.cpp
++++ b/src/applications/test-automation-controller/main.cpp
+@@ -21,7 +21,6 @@ int main
+ )
+ {
+ 	int result{0};
+-    QStringList libPaths;
+ 
+ 	TACApplication a(argc, argv);
+ 
+@@ -30,10 +29,6 @@ int main
+     QApplication::setFont(font);
+ #endif
+ 
+-    QString appPath = QDir::cleanPath(a.applicationDirPath() + "/platforms");
+-    libPaths.append(appPath);
+-	QCoreApplication::setLibraryPaths(libPaths);
+-
+ 	InitializeQCommon();
+ 
+ 	if (a.openLastDevice() == false)
