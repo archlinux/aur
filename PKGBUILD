@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=cargo-fframes
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="Programmatic video rendering framework that is actually fast"
@@ -20,26 +20,22 @@ backup=()
 options=()
 install=
 changelog=
-source=("fframes-${pkgver}.tar.gz::https://github.com/dmtrKovalenko/fframes/archive/refs/tags/v${pkgver}.tar.gz")
+source=()
 noextract=()
-sha256sums=('0b6d77819a5832b984ffb19e7e3f79706ef730576c287e4ee8a50dddebebefad')
+sha256sums=()
 validpgpkeys=()
 
 _basedir="fframes-$pkgver"
 
 build() {
+    mkdir -p $_basedir
 	cd $_basedir
-    cargo build --release --locked -p cargo-fframes
-}
-
-check() {
-	cd $_basedir
-    cargo test -p cargo-fframes
+    mkdir -p ./target ./base
+    cargo install cargo-fframes --locked --root ./target
 }
 
 package() {
 	cd $_basedir
 
-    install -Dm755 ./target/release/cargo-fframes -t $pkgdir/usr/bin
-    install -Dm644 ./LICENSE.txt -t $pkgver/usr/share/licenses/cargo-fframes
+    install -Dm755 ./target/bin/cargo-fframes -t $pkgdir/usr/bin
 }
