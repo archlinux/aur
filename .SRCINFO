@@ -1,6 +1,6 @@
 pkgbase = solidcraft-bin
 	pkgdesc = Open-source parametric 3D CAD (binary release)
-	pkgver = 0.17.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/tangency-labs/solidcraft
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = solidcraft-bin
 	conflicts = solvecraft
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.17.0/solidcraft-0.17.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4032f1e7da8519982580dbcb2cd87d0906d49781293f466e78751f891e0ea614
-	source_aarch64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.17.0/solidcraft-0.17.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 997c1630de9f5ce25ad539d87b3c0b4d973ae567e7a60db9306e58d244711a1f
+	source_x86_64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.18.1/solidcraft-0.18.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 86ed5170d455e6debc62e6f4f4497cae98010cb6de74b22c0323c9775f449f3e
+	source_aarch64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.18.1/solidcraft-0.18.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 15c6ad1f9d968787ee9f89b974873f2898f1fa7e72ac9f4c63f42fa4cdf19fd1
 
 pkgname = solidcraft-bin
