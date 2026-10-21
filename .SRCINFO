@@ -1,0 +1,31 @@
+pkgbase = ravel-git
+	pkgdesc = Read-only JSON, JSON Lines, YAML and Markdown viewer for GNOME
+	pkgver = r22.7761e45
+	pkgrel = 1
+	url = https://github.com/ReadyPlayerNaN/ravel
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-unknown
+	checkdepends = jq
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk4>=4.12
+	depends = libadwaita>=1.6
+	depends = gtksourceview5>=5.4
+	depends = webkitgtk-6.0
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	optdepends = jq: run structural queries from the context menu
+	optdepends = gst-libav: additional audio and video codecs
+	optdepends = gst-plugins-bad: additional media formats
+	optdepends = gst-plugins-ugly: additional media codecs
+	provides = ravel
+	conflicts = ravel
+	options = !lto
+	source = ravel::git+https://github.com/ReadyPlayerNaN/ravel.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ravel-git
