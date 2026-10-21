@@ -1,5 +1,5 @@
 diff --git a/Telegram/SourceFiles/export/export_api_wrap.cpp b/Telegram/SourceFiles/export/export_api_wrap.cpp
-index b004843..f2786c8 100644
+index 6ebc6e4..d6710d9 100644
 --- a/Telegram/SourceFiles/export/export_api_wrap.cpp
 +++ b/Telegram/SourceFiles/export/export_api_wrap.cpp
 @@ -11,20 +11,48 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
@@ -458,7 +458,7 @@ index b004843..f2786c8 100644
  	base::take(_fileProcess)->done(QString());
  }
  
-@@ -3286,11 +3585,14 @@ bool ApiWrap::processFileLoad(
+@@ -3275,11 +3574,14 @@ bool ApiWrap::processFileLoad(
  	} else if ((_settings->media.types & policy.type) != policy.type) {
  		file.skipReason = SkipReason::FileType;
  		return true;
@@ -474,7 +474,7 @@ index b004843..f2786c8 100644
  	}
  	loadFile(file, origin, std::move(progress), std::move(done));
  	return false;
-@@ -3335,10 +3637,12 @@ bool ApiWrap::processFileLoad(
+@@ -3324,10 +3626,12 @@ bool ApiWrap::processFileLoad(
  	} else if (!story && (_settings->media.types & type) != type) {
  		file.skipReason = SkipReason::FileType;
  		return true;
@@ -488,7 +488,7 @@ index b004843..f2786c8 100644
  	}
  	loadFile(file, origin, std::move(progress), std::move(done));
  	return false;
-@@ -3367,6 +3671,82 @@ bool ApiWrap::writePreloadedFile(
+@@ -3356,6 +3660,82 @@ bool ApiWrap::writePreloadedFile(
  	return false;
  }
  
@@ -571,7 +571,7 @@ index b004843..f2786c8 100644
  void ApiWrap::loadFile(
  		const Data::File &file,
  		const Data::FileOrigin &origin,
-@@ -3390,9 +3770,10 @@ void ApiWrap::loadFile(
+@@ -3379,9 +3759,10 @@ void ApiWrap::loadFile(
  		}
  	}
  
@@ -583,7 +583,7 @@ index b004843..f2786c8 100644
  }
  
  auto ApiWrap::prepareFileProcess(
-@@ -3416,51 +3797,299 @@ auto ApiWrap::prepareFileProcess(
+@@ -3405,51 +3786,299 @@ auto ApiWrap::prepareFileProcess(
  }
  
  void ApiWrap::loadFilePart() {
@@ -908,7 +908,7 @@ index b004843..f2786c8 100644
  			return;
  		}
  		const auto result = _fileProcess->file.writeBlock({});
-@@ -3483,6 +4112,7 @@ void ApiWrap::filePartDone(int64 offset, const MTPupload_File &result) {
+@@ -3472,6 +4101,7 @@ void ApiWrap::filePartDone(int64 offset, const MTPupload_File &result) {
  		while (!requests.empty() && !requests.front().bytes.isEmpty()) {
  			const auto &bytes = requests.front().bytes;
  			if (const auto result = file.writeBlock(bytes); !result) {
@@ -916,7 +916,7 @@ index b004843..f2786c8 100644
  				ioError(result);
  				return;
  			}
-@@ -3506,6 +4136,7 @@ void ApiWrap::filePartDone(int64 offset, const MTPupload_File &result) {
+@@ -3495,6 +4125,7 @@ void ApiWrap::filePartDone(int64 offset, const MTPupload_File &result) {
  	auto process = base::take(_fileProcess);
  	const auto relativePath = process->relativePath;
  	_fileCache->save(process->location, relativePath);
@@ -924,7 +924,7 @@ index b004843..f2786c8 100644
  	process->done(process->relativePath);
  }
  
-@@ -3518,56 +4149,54 @@ QString ApiWrap::filePartMediaFolder() const {
+@@ -3507,56 +4138,54 @@ QString ApiWrap::filePartMediaFolder() const {
  	return QString();
  }
  
@@ -1003,7 +1003,7 @@ index b004843..f2786c8 100644
  				origin.customEmojiId,
  				folder,
  				result);
-@@ -3580,17 +4209,17 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
+@@ -3569,17 +4198,17 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
  			return;
  		}
  		const auto folder = filePartMediaFolder();
@@ -1028,7 +1028,7 @@ index b004843..f2786c8 100644
  				origin,
  				folder,
  				result);
-@@ -3598,7 +4227,7 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
+@@ -3587,7 +4216,7 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
  		return;
  	}
  	if (!origin.messageId) {
@@ -1037,7 +1037,7 @@ index b004843..f2786c8 100644
  		return;
  	}
  	if (origin.peer.type() == mtpc_inputPeerChannel
-@@ -3611,21 +4240,21 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
+@@ -3600,21 +4229,21 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
  				origin.peer.c_inputPeerChannelFromMessage().vpeer(),
  				origin.peer.c_inputPeerChannelFromMessage().vmsg_id(),
  				origin.peer.c_inputPeerChannelFromMessage().vchannel_id());
@@ -1064,7 +1064,7 @@ index b004843..f2786c8 100644
  			origin.split,
  			MTPmessages_GetMessages(
  				MTP_vector<MTPInputMessage>(
-@@ -3633,23 +4262,22 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
+@@ -3622,23 +4251,22 @@ void ApiWrap::filePartRefreshReference(int64 offset) {
  					MTP_inputMessageID(MTP_int(origin.messageId)))
  			)
  		).fail([=](const MTP::Error &error) {
@@ -1092,7 +1092,7 @@ index b004843..f2786c8 100644
  	Expects(_selfId.has_value());
  
  	auto context = Data::ParseMediaContext();
-@@ -3687,16 +4315,15 @@ void ApiWrap::filePartExtractCustomEmojiReference(
+@@ -3676,16 +4304,15 @@ void ApiWrap::filePartExtractCustomEmojiReference(
  		filePartUnavailable();
  		return;
  	}
@@ -1111,7 +1111,7 @@ index b004843..f2786c8 100644
  	Expects(_selfId.has_value());
  
  	const auto richMessage = ExtractFullRichMessage(
-@@ -3724,14 +4351,13 @@ void ApiWrap::filePartExtractRichReference(
+@@ -3713,14 +4340,13 @@ void ApiWrap::filePartExtractRichReference(
  		filePartUnavailable();
  		return;
  	}
@@ -1128,7 +1128,7 @@ index b004843..f2786c8 100644
  
  	const auto folder = filePartMediaFolder();
  	result.match([&](const MTPDmessages_messagesNotModified &data) {
-@@ -3756,9 +4382,7 @@ void ApiWrap::filePartExtractReference(
+@@ -3745,9 +4371,7 @@ void ApiWrap::filePartExtractReference(
  					|| Data::RefreshFileReference(
  						refreshed,
  						message.thumb().file.location)) {
@@ -1139,7 +1139,7 @@ index b004843..f2786c8 100644
  					return;
  				}
  			}
-@@ -3768,10 +4392,9 @@ void ApiWrap::filePartExtractReference(
+@@ -3757,10 +4381,9 @@ void ApiWrap::filePartExtractReference(
  }
  
  void ApiWrap::filePartExtractReference(
@@ -1151,7 +1151,7 @@ index b004843..f2786c8 100644
  
  	const auto stories = Data::ParseStoriesSlice(
  		result.data().vstories(),
-@@ -3785,9 +4408,7 @@ void ApiWrap::filePartExtractReference(
+@@ -3774,9 +4397,7 @@ void ApiWrap::filePartExtractReference(
  				|| Data::RefreshFileReference(
  					refreshed,
  					story.thumb().file.location)) {
@@ -1162,7 +1162,7 @@ index b004843..f2786c8 100644
  				return;
  			}
  		}
-@@ -3797,10 +4418,10 @@ void ApiWrap::filePartExtractReference(
+@@ -3786,10 +4407,10 @@ void ApiWrap::filePartExtractReference(
  
  void ApiWrap::filePartUnavailable() {
  	Expects(_fileProcess != nullptr);
@@ -1175,7 +1175,7 @@ index b004843..f2786c8 100644
  }
  
 diff --git a/Telegram/SourceFiles/export/export_api_wrap.h b/Telegram/SourceFiles/export/export_api_wrap.h
-index c82e171..42e6ab9 100644
+index f56f009..e064c43 100644
 --- a/Telegram/SourceFiles/export/export_api_wrap.h
 +++ b/Telegram/SourceFiles/export/export_api_wrap.h
 @@ -123,6 +123,7 @@ public:
@@ -1186,7 +1186,7 @@ index c82e171..42e6ab9 100644
  	struct StartProcess;
  	struct ContactsProcess;
  	struct UserpicsProcess;
-@@ -283,35 +284,47 @@ private:
+@@ -282,35 +283,47 @@ private:
  	bool writePreloadedFile(
  		Data::File &file,
  		const Data::FileOrigin &origin);
@@ -1246,7 +1246,7 @@ index c82e171..42e6ab9 100644
  
  	template <typename Request>
  	class RequestBuilder;
-@@ -324,13 +337,16 @@ private:
+@@ -323,13 +336,16 @@ private:
  
  	[[nodiscard]] auto fileRequest(
  		const Data::FileLocation &location,
@@ -1264,7 +1264,7 @@ index c82e171..42e6ab9 100644
  	std::optional<uint64> _takeoutId;
  	std::optional<UserId> _selfId;
  	Output::Stats *_stats = nullptr;
-@@ -340,12 +356,16 @@ private:
+@@ -339,12 +355,16 @@ private:
  
  	std::unique_ptr<StartProcess> _startProcess;
  	std::unique_ptr<LoadedFileCache> _fileCache;
@@ -1628,7 +1628,7 @@ index 8f255a3..1418912 100644
  		not_null<Ui::VerticalLayout*> container);
  	void addFormatAndLocationLabel(
 diff --git a/Telegram/SourceFiles/storage/storage_account.cpp b/Telegram/SourceFiles/storage/storage_account.cpp
-index 5203607..05fc4ba 100644
+index afe6f61..b5d7bb9 100644
 --- a/Telegram/SourceFiles/storage/storage_account.cpp
 +++ b/Telegram/SourceFiles/storage/storage_account.cpp
 @@ -66,6 +66,12 @@ constexpr auto kSinglePeerTypeChat = qint32(8 + 2);
@@ -1644,7 +1644,7 @@ index 5203607..05fc4ba 100644
  constexpr auto kMultiDraftTagOld = quint64(0xFFFF'FFFF'FFFF'FF01ULL);
  constexpr auto kMultiDraftCursorsTagOld = quint64(0xFFFF'FFFF'FFFF'FF02ULL);
  constexpr auto kMultiDraftTag = quint64(0xFFFF'FFFF'FFFF'FF03ULL);
-@@ -3002,6 +3008,8 @@ void Account::writeExportSettings(const Export::Settings &settings) {
+@@ -2998,6 +3004,8 @@ void Account::writeExportSettings(const Export::Settings &settings) {
  		&& settings.fullChats == check.fullChats
  		&& settings.media.types == check.media.types
  		&& settings.media.sizeLimit == check.media.sizeLimit
@@ -1653,7 +1653,7 @@ index 5203607..05fc4ba 100644
  		&& settings.path == check.path
  		&& settings.format == check.format
  		&& settings.availableAt == check.availableAt
-@@ -3019,7 +3027,10 @@ void Account::writeExportSettings(const Export::Settings &settings) {
+@@ -3015,7 +3023,10 @@ void Account::writeExportSettings(const Export::Settings &settings) {
  	}
  	quint32 size = sizeof(quint32) * 6
  		+ Serialize::stringSize(settings.path)
@@ -1665,7 +1665,7 @@ index 5203607..05fc4ba 100644
  	EncryptedDescriptor data(size);
  	data.stream
  		<< quint32(settings.types)
-@@ -3053,6 +3064,17 @@ void Account::writeExportSettings(const Export::Settings &settings) {
+@@ -3049,6 +3060,17 @@ void Account::writeExportSettings(const Export::Settings &settings) {
  	data.stream << qint32(settings.singlePeerFrom);
  	data.stream << qint32(settings.singlePeerTill);
  
@@ -1683,7 +1683,7 @@ index 5203607..05fc4ba 100644
  	FileWriteDescriptor file(_exportSettingsKey, _basePath);
  	file.writeEncrypted(data, _localKey);
  }
-@@ -3108,11 +3130,40 @@ Export::Settings Account::readExportSettings() {
+@@ -3104,11 +3126,40 @@ Export::Settings Account::readExportSettings() {
  	if (!file.stream.atEnd()) {
  		file.stream >> singlePeerFrom >> singlePeerTill;
  	}

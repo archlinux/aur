@@ -1,14 +1,14 @@
 # Maintainer: Remenod <remenod@gmail.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
-# Generated from Arch Linux's extra/telegram-desktop 7.3.1-1
+# Generated from Arch Linux's extra/telegram-desktop 7.3.2-1
 # by https://github.com/Remenod/telegram-desktop-export (packaging branch).
 
 pkgname=telegram-desktop-export
-pkgver=7.3.1
+pkgver=7.3.2
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
-pkgrel=1.2
+pkgrel=1
 pkgdesc='Telegram Desktop with export patches: media reused between exports, size limits per media type, no hangs on lost media'
 arch=('x86_64')
 url="https://github.com/Remenod/telegram-desktop-export"
@@ -99,11 +99,11 @@ source=(
   https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
   export-patches.patch
 )
-sha512sums=('da4d47678692a01acf8b84ce66a8530897853b2b94c9e77b40a3d179fd1657a08b9fd6cfc6999490cf77f0dbb9bae39e774374b391d0a85cf3318429bcd2a0bb'
+sha512sums=('27bcf431bb4435304b4be1846b9f14ea5cfcd6a60788a78129a78cc8b5a70444d8d91f0beac7757b30df7e384452317b4aa2e809131c13d31d84db4392b6c8ea'
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
             '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
-            '9b58aad5c530ad824654543a22c8e8a84f556cd02b1f126eb8d8022c2a8f3932dcb3ae02a5ae80a06cb20cfbaf2a8d0dc5fd927f9c204c304a78efbf5adc2a1f')
+            'a68f0622ea83eedf49c7d3e43909d20552a52848d5be987a650267a9827347af47654b93ed9926c2a429bfa6eb9666eaf8a21d4c4c6fcedca269d4a6d4d67f9b')
 
 prepare() {
   patch -Np1 -d "$srcdir/tdesktop-$pkgver-full" -i "$srcdir/export-patches.patch"
@@ -116,9 +116,8 @@ build() {
   cd wallet-engine-${_wallet_engine_ver}
   just build
   just bindings-cpp
-  mkdir -p install/lib install/include/wallet_engine
-  cp target/release/libwallet_engine.a install/lib/
-  cp bindings/cpp-experimental/* install/include/wallet_engine/
+  install -Dm644 target/release/libwallet_engine.a -t install/lib/
+  install -Dm644 bindings/cpp-experimental/* -t install/include/wallet_engine/
   cd ..
 
   # Build td
