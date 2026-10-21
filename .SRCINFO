@@ -1,0 +1,20 @@
+pkgbase = saiku
+	pkgdesc = DSH-powered coding agent with a terminal UI and headless workers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ProjectArcturius/saiku
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = nodejs>=24
+	depends = npm
+	depends = git
+	options = !lto
+	source = saiku-1.0.0-source.tar.gz::https://github.com/ProjectArcturius/saiku/releases/download/v1.0.0/saiku-1.0.0-source.tar.gz
+	sha256sums = d9a9898c3702249e348e5c315fde7acdea8f95432bbcb8bdecd6a7044b4aa01f
+
+pkgname = saiku
