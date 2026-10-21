@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: crazykay  <mail@crazykay.dev>
 #
 # xTool Studio is a proprietary Electron application that upstream ships for
 # Windows and macOS only. This package repacks the *official* Windows installer
@@ -23,6 +23,7 @@ pkgname=xtool-studio
 pkgver=1.9.11
 pkgrel=1
 pkgdesc='Design and control software for xTool laser machines (Linux port of the official Windows build)'
+keywords=('xtool' 'xsc' 'laser' 'engraver' 'cutter')
 arch=('x86_64')
 url='https://www.xtool.com/pages/software'
 license=('LicenseRef-proprietary')
