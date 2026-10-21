@@ -1,0 +1,27 @@
+pkgbase = ambience
+	pkgdesc = Unofficial Philips Hue app: rooms, scenes and screen/music sync (not affiliated with Signify)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/broroeror/ambience
+	arch = any
+	license = MIT
+	depends = python
+	depends = pyside6
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = python-keyring
+	depends = python-cryptography
+	depends = python-numpy
+	depends = python-gobject
+	depends = openssl
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugin-pipewire
+	depends = xdg-desktop-portal
+	optdepends = avahi: find the bridge on the local network without asking Signify
+	optdepends = kwallet: store the bridge keys (or any other Secret Service provider)
+	source = ambience-0.1.0.tar.gz::https://github.com/broroeror/ambience/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f92c528a4c468916edb616c6f1b9e24b2a0082aeb67581cde392ab18d1c672a9
+
+pkgname = ambience
