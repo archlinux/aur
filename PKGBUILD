@@ -2,13 +2,12 @@
 _name=qiskit-addon-cutting
 pkgname=python-${_name}
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reduce width and depth of quantum circuits by cutting gates and wires"
 arch=(any)
 url=https://github.com/Qiskit/qiskit-addon-cutting
 license=(Apache-2.0)
 depends=(
-    blas-openblas
     python-numpy
     python-qiskit
     python-rustworkx
