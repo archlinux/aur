@@ -1,6 +1,6 @@
 pkgbase = vicine
 	pkgdesc = Search, stream, and download movies, series and anime from the terminal (POSIX shell)
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 2
 	url = https://github.com/spaciousejar/vicine-cli
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = vicine
 	optdepends = ffmpeg: fallback downloader when yt-dlp is absent
 	optdepends = rofi: alternative selection menu
 	optdepends = dmenu: alternative selection menu
-	source = https://github.com/spaciousejar/vicine-cli/archive/v1.7.1.tar.gz
-	sha256sums = ef4cda057ab7a0b1d060ddeaf7e95a9c6ddc4721ed3876474bfafe7be96b944e
+	source = https://github.com/spaciousejar/vicine-cli/archive/v1.7.2.tar.gz
+	sha256sums = 0d9b271f632ce9dceba6f1391f39db21c9b17865706a88f1e90df01f94a8ed1c
 
 pkgname = vicine
