@@ -1,0 +1,24 @@
+# pacman 安装/升级/卸载时打印到终端的提示（PKGBUILD 的 install= 引用）。
+# 只提示不代做：脚本以 root 运行，够不到用户级 systemd 会话。
+
+post_install() {
+    echo "==> presenced 已安装，还需两步启用："
+    echo "    1) 让 udev 放权规则立即生效（不做这步服务采不到数据）："
+    echo "       sudo udevadm control --reload"
+    echo "       sudo udevadm trigger --subsystem-match=iio --attr-match=name=prox"
+    echo "    2) 启动用户服务："
+    echo "       systemctl --user enable --now presenced"
+    echo "==> 强烈建议跑一遍部署自检（规则写错不报错、只静默失效，必须眼见为实）："
+    echo "    ls -l /sys/bus/iio/devices/iio:device*/scan_elements/in_proximity0_en"
+    echo "    （期望 0666；详细步骤与故障排查见 /usr/share/doc/presenced/README.md）"
+}
+
+post_upgrade() {
+    echo "==> presenced 已升级，重启用户服务生效："
+    echo "    systemctl --user restart presenced"
+}
+
+pre_remove() {
+    echo "==> 卸载前建议先停用户服务：systemctl --user disable --now presenced"
+    echo "    卸载后收尾：systemctl --user daemon-reload（清理已删除的 unit）"
+}

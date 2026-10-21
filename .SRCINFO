@@ -1,0 +1,13 @@
+pkgbase = presenced
+	pkgdesc = ThinkPad X1C Gen14 ToF presence daemon: inhibit idle while present, auto-lock on leave, wake to greeter on return (tested only on X1 Carbon Gen 14)
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/Nk-YMZ/thinkpad-x1c-gen14-presenced
+	install = presenced.install
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source = https://github.com/Nk-YMZ/thinkpad-x1c-gen14-presenced/releases/download/v0.1.0/presenced-0.1.0-2-x86_64.pkg.tar.zst
+	sha256sums = cf9fffab3bfb5e62e1c7ffd10f274cadaf2cf91d3687797d600118e52a9c2c4a
+
+pkgname = presenced
