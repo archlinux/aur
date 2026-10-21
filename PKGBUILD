@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc='Extract contents of a container image in a local folder'
 
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('b45d480250159a6baa4c71f9b54d708c02421a3ada71475ec4417b421fc574db'
             'fd1639a860063a0d9caff4ae03d967ad1852b634c89e26583ef48a64d8397b94')
-sha256sums_x86_64=('25d99376c951c849cbba65a27cc186c03ae1a2792284040018cbb786e359edf6')
-sha256sums_aarch64=('84a2d6db94169c2d9e903ae4b31d7e554a26ae0626534cba8419a747f239ccf8')
+sha256sums_x86_64=('a22f95237ac3cb91c929353801740e480cb36611c6a7cc557eaff68f02289259')
+sha256sums_aarch64=('6c93d6fdf50beee0018870b3f8271b876a96e2fa1de76ad43644b9b20def2e8b')
 
 
 package() {
