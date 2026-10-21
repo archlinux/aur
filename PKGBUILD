@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=uniclipboard-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('uniclipboard')
 conflicts=('uniclipboard')
 source_x86_64=("uniclipboard_${pkgver}_amd64.deb::https://github.com/UniClipboard/UniClipboard/releases/download/v${pkgver}/UniClipboard_${pkgver}_amd64.deb")
 source_aarch64=("uniclipboard_${pkgver}_arm64.deb::https://github.com/UniClipboard/UniClipboard/releases/download/v${pkgver}/UniClipboard_${pkgver}_arm64.deb")
-sha256sums_x86_64=('2fa9fdc728c049097fc1c6ef87c48cd71ff51912d1c84390aa8470fe39b2a2a6')
-sha256sums_aarch64=('3268f15f7c19aad72b8b251fb7e28275e4851b12305bb983e872f8b250f43d4b')
+sha256sums_x86_64=('6f52662cf71f3a5cc859a1dc1bb65a1570cc24c4ab1a0cb379c6130c8f4d43f5')
+sha256sums_aarch64=('e713565862665878a7c398817e3949cf035305d27f4c2c6ab856842668030c93')
 
 package() {
     local _debfile
