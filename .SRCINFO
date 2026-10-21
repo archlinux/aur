@@ -1,0 +1,25 @@
+pkgbase = libvirt-iso-systemrescue-bin
+	pkgdesc = Official SystemRescue live recovery ISO for libvirt
+	pkgver = 13.02
+	pkgrel = 1
+	url = https://www.system-rescue.org/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	makedepends = gnupg
+	noextract = systemrescue-13.02-amd64.iso
+	source = systemrescue-13.02-amd64.iso::https://fastly-cdn.system-rescue.org/releases/13.02/systemrescue-13.02-amd64.iso
+	source = systemrescue-13.02-amd64.iso.signature::https://www.system-rescue.org/releases/13.02/systemrescue-13.02-amd64.iso.asc
+	source = systemrescue-release-key.pem::https://www.system-rescue.org/security/signing-keys/gnupg-pubkey-fdupoux-20210704-v001.pem
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 0FF11AF081E98345594812037091115F8320B897
+	sha512sums = 76bd250b478cbfedf407c721a79270b1615f26ec486dbd7c8b78d7e1034853f2c31cc664752dce1678485bb1e7045167e5114802d5e28a84d29481854f8854b8
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
+	b2sums = 1709f92610b9a2e2e20d7232065b2792036791ef2163c45b1f656eb783772b85bcadaa4cb875e4e7c8719acb7070450496c2454184e69af29353eefb9cefe639
+	b2sums = a842fdcf8944a0d064e9b21f103ba3b29c74f9ab2024aa064b9ea2573b5329dc67e770a89154e6086e2e3dccd5fa4b809c24072ea079672f663b3b13f71c585f
+	b2sums = 49664b7a5aefd8e40cb9c41ea8d28d9df61d2d04067eeca446a24b6f6c6658eddcd87458cd3c9b58def7cd7aa80a35992217a8de12f37bb022785db1d11af445
+
+pkgname = libvirt-iso-systemrescue-bin
