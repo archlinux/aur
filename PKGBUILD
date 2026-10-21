@@ -1,9 +1,9 @@
-# Maintainer: John Karpn <johnkarpn@gmail.com>
+# Maintainer: jnkrpn
 
 pkgname=php84-memcached
 _pkgname=php-memcached
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension for interfacing with memcached via libmemcached library"
 arch=('x86_64')
 url="https://github.com/php-memcached-dev/php-memcached"
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  depends+=('php84')
+  depends+=('php84' 'php84-igbinary')
   backup=('etc/php84/conf.d/memcached.ini')
 
   cd "$srcdir/$_pkgname"
