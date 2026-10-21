@@ -9,7 +9,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname=('anyrun' 'anyrun-provider')
 pkgname="$_pkgname"
-pkgver=26.6.1
+pkgver=26.10.0
 pkgrel=1
 pkgdesc="A wayland native, highly customizable runner"
 _url=(
@@ -43,10 +43,8 @@ source=(
   "${_pkgsrc[0]}.$_pkgext"::"${_url[0]}/archive/refs/tags/v$pkgver.$_pkgext"
   "${_pkgsrc[1]}.$_pkgext"::"${_url[1]}/archive/refs/tags/v${_pkgver_provider}.$_pkgext"
 )
-sha256sums=(
-  '0b2abc1da9fdea12a753ca3024d5ede62209b82837d49eb5da35d99ba22a5790'
-  'd9b4afcb7bafc4e4d43c64bd6ec8110ae3b858964d68d164c24c0c6505831dd6'
-)
+sha256sums=('d7c32956b97654340f64f532177bc255c27d448382495f16a364986bbad03188'
+  'd9b4afcb7bafc4e4d43c64bd6ec8110ae3b858964d68d164c24c0c6505831dd6')
 
 prepare() {
   for ((i = ${#_pkgsrc[@]} - 1; i >= 0; i--)); do

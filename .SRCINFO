@@ -1,6 +1,6 @@
 pkgbase = anyrun
 	pkgdesc = A wayland native, highly customizable runner
-	pkgver = 26.6.1
+	pkgver = 26.10.0
 	pkgrel = 1
 	url = https://github.com/anyrun-org/anyrun
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = anyrun
 	conflicts = anyrun-provider
 	options = !lto
 	options = !strip
-	source = anyrun-26.6.1.tar.gz::https://github.com/anyrun-org/anyrun/archive/refs/tags/v26.6.1.tar.gz
+	source = anyrun-26.10.0.tar.gz::https://github.com/anyrun-org/anyrun/archive/refs/tags/v26.10.0.tar.gz
 	source = anyrun-provider-25.12.0.tar.gz::https://github.com/anyrun-org/anyrun-provider/archive/refs/tags/v25.12.0.tar.gz
-	sha256sums = 0b2abc1da9fdea12a753ca3024d5ede62209b82837d49eb5da35d99ba22a5790
+	sha256sums = d7c32956b97654340f64f532177bc255c27d448382495f16a364986bbad03188
 	sha256sums = d9b4afcb7bafc4e4d43c64bd6ec8110ae3b858964d68d164c24c0c6505831dd6
 
 pkgname = anyrun
