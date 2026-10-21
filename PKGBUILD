@@ -1,7 +1,7 @@
 # Maintainer: eltonff <https://github.com/eltonfabricio10/>
 _pkgname=freeshow
 pkgname=${_pkgname}-bin
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="FreeShow is a free and open-source, user-friendly presenter software."
 arch=("x86_64")
@@ -20,7 +20,7 @@ depends=("gtk3"
          "libsecret")
 optdepends=("libappindicator-gtk3")
 source_x86_64=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/${provides}-${pkgver}-amd64.deb")
-sha256sums_x86_64=('62f2ac002bcc340ceaa8c2e2f3056eba03cf309fd48a7abe318d8e55e8d5bf91')
+sha256sums_x86_64=('b060639665c7df1f3bfafa76259272cb3c336fb05923f8c377f61ed5e4e8f02e')
 
 install=${pkgname}.install
 
