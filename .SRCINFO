@@ -1,7 +1,7 @@
 pkgbase = cua-driver-bin
 	pkgdesc = Desktop control daemon (cua-driver-rs) from trycua/cua — background window driving, clicks, typing, browser automation via MCP
 	pkgver = 0.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trycua/cua
 	install = cua-driver-bin.install
 	arch = x86_64

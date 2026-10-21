@@ -22,7 +22,7 @@
 
 pkgname=cua-driver-bin
 pkgver=0.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop control daemon (cua-driver-rs) from trycua/cua — background window driving, clicks, typing, browser automation via MCP"
 arch=('x86_64')
 url="https://github.com/trycua/cua"

@@ -9,7 +9,19 @@ Type=simple
 ExecStart=/usr/bin/cua-driver serve
 Restart=on-failure
 RestartSec=5
-Environment=DISPLAY=:0
+
+# Upstream ships `Environment=DISPLAY=:0` here. A unit-level Environment= OVERRIDES
+# the systemd user session's own DISPLAY, and :0 is only correct on a plain X11
+# login. When the display manager owns :0 (e.g. sddm's Xorg, whose xauth file
+# /run/sddm/xauth_* is root-only) and the real session is Wayland with Xwayland on
+# another display, the daemon cannot reach X11 at all:
+#     cua-driver call health_report
+#       fail ax_capability             "X11 is not reachable"
+#       fail screen_capture_capability "X11 is not reachable"
+# The systemd user manager already carries the session's DISPLAY, XAUTHORITY and
+# WAYLAND_DISPLAY, so the right thing is to inherit them and set nothing here.
+# Do not hardcode a display number or an xauth path instead: Xwayland's display
+# number and the xauth file name change between logins.
 Environment=XDG_RUNTIME_DIR=/run/user/%U
 
 NoNewPrivileges=yes
