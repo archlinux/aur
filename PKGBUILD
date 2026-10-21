@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=ramcleaner
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Find processes holding unused memory, attribute them to their owner, and stop them only after approval'
 arch=('any')
@@ -30,37 +30,7 @@ build() {
 
 check() {
     cd "$srcdir/$pkgname"
-    make test
-}
-# Helper function to copy and rebase paths with optional exclusions
-copy_tree() {
-    local src="$1" destbase="$2" mode="$3"
-    shift 3
-    [[ -d "$src" ]] || return 0
-
-    local abs_src
-    abs_src="$(realpath "$src" 2>/dev/null)" || return 0
-
-    # Patterns stay find arguments so install-YAML metacharacters are not executed.
-    local -a find_cmd=(find "$abs_src" -maxdepth 5 -type f)
-    local exclude
-    for exclude in "$@"; do
-        # Trim whitespace
-        exclude="${exclude#"${exclude%%[! ]*}"}"
-        exclude="${exclude%"${exclude##*[! ]}"}"
-        if [[ -n "$exclude" ]]; then
-            find_cmd+=(-not -path "$abs_src/$exclude/*")
-        fi
-    done
-    find_cmd+=(-print0)
-
-    mapfile -d '' -t files < <("${find_cmd[@]}") || return 0
-
-    for file in "${files[@]}"; do
-        local relpath
-        relpath="$(realpath --relative-to="$abs_src" "$file")"
-        install -Dm"$mode" "$file" "$pkgdir/$destbase/$relpath"
-    done
+    make check-package
 }
 
 package() {
@@ -69,8 +39,6 @@ package() {
     for name in LICENSE LICENSE.txt COPYING; do
         [[ -f "$name" ]] && install -Dm644 "$name" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" && break
     done
-
-    # Copy sections based on configuration
     # Install Make build artifacts
     make install DESTDIR="$pkgdir" PREFIX=/usr
     python -m compileall -q -o 0 -o 1 -d /usr/lib/ramcleaner "$pkgdir/usr/lib/ramcleaner"
