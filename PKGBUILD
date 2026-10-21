@@ -1,6 +1,6 @@
 # Maintainer: Lewis Flames <57636993+lewisflames@users.noreply.github.com>
 pkgname=spendo-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Local-first personal finance manager'
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('spendo')
 options=('!strip' '!debug')
 install=spendo-bin.install
 source_x86_64=("${url}/releases/download/v${pkgver}/Spendo_${pkgver}_amd64.deb")
-sha256sums_x86_64=('732df6a05ef373ab2875d86ad0405a021e35d87c125b8a730e56cde85d82c010')
+sha256sums_x86_64=('59cfa4877901eec4bc5a3e75f7d0b5fe8c6e53cceba23dbc8d5540181e72742b')
 
 package() {
   bsdtar -xf "$srcdir/Spendo_${pkgver}_amd64.deb" data.tar.gz
