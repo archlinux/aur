@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.13.0
-pkgver=0.13.0.r2475.g7e1ae5115f
+pkgver=0.13.0.r2887.gd9a842e291
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -27,7 +27,7 @@ depends=(
     tree-sitter
     unibilium
 )
-makedepends=('git' 'zig>=0.16.0')
+makedepends=('git' 'zig>=0.17.0')
 optdepends=(
     'python-pynvim: for Python plugin support (see :help python)'
     'tree-sitter-bash: tree-sitter parser for bash'
@@ -44,17 +44,16 @@ source=(
     nvimdoc{,.hook}
 
     # zig build dependencies
-    'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/9ae39fa50b1ab8427d35f963216116d7bff1e584.tar.gz'
-    'translate_c.tar.gz::https://codeberg.org/ziglang/translate-c/archive/46b5609b5ac4c0a896217d1d984f3ae50e4810b5.tar.gz'
-    'aro.tar.gz::https://github.com/Vexu/arocc/archive/5f5a050569a95ecc40a426f0c3666ae7ef987ede.tar.gz'
+    'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/89b445c92113170c4ca2ff16b256cd24f300c743.tar.gz'
+    'translate_c.tar.gz::https://codeberg.org/ziglang/translate-c/archive/38d8339d9050eafe5dcf85b4fc9368576ca967e1.tar.gz'
+    'aro.tar.gz::https://codeberg.org/ziglang/arocc/archive/d0c8c4d9c55daa7ef6e40cf0f630a5b5e900989b.tar.gz'
     'https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz'
-    'uncrustify_zig.tar.gz::https://codeberg.org/allyourcodebase/uncrustify/archive/2cdf880e4ffbe438a7946368cd45fca2df9f0f7a.tar.gz'
+    'uncrustify_zig.tar.gz::https://codeberg.org/allyourcodebase/uncrustify/archive/ac65f4ab0786196f89ff03a3fc6328315edae29b.tar.gz'
     'uncrustify.tar.gz::https://github.com/uncrustify/uncrustify/releases/download/uncrustify-0.83.0/uncrustify-0.83.0.tar.gz'
-    'zig-compile-commands.tar.gz::https://github.com/the-argus/zig-compile-commands/archive/9400cd1963ea6bb58fe47ba7d9700075b808cdd2.tar.gz'
 
     # parsers
-    'tree-sitter-c.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/b780e47fc780ddc8da13afa35a3f4ed5c157823d.tar.gz'
-    'tree-sitter-markdown.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/archive/f969cd3ae3f9fbd4e43205431d0ae286014c05b5.tar.gz'
+    'tree-sitter-c.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/f3202ac4f1041e0b0a2b908147d5dd0e951da7b1.tar.gz'
+    'tree-sitter-markdown.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/archive/41ff24a6c775492c543b09228aeb98d1cd2b3a0f.tar.gz'
     'tree-sitter-lua.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/10fe0054734eec83049514ea2e718b2a56acd0c9.tar.gz'
     'tree-sitter-vim.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-vim/archive/3092fcd99eb87bbd0fc434aa03650ba58bd5b43b.tar.gz'
     'tree-sitter-vimdoc.tar.gz::https://github.com/neovim/tree-sitter-vimdoc/archive/f061895a0eff1d5b90e4fb60d21d87be3267031a.tar.gz'
@@ -74,7 +73,6 @@ sha256sums=(
     '49f8399e453103064a23c65534f266f3067cda716b6502f016bfafeed5799354'
     'SKIP'
     '0aed2c5df101d5108b9cc8d6da0dddfad1286a66b49c794e38b2a6d0d868393e'
-    'SKIP'
 
     # parsers
     'SKIP'
@@ -102,7 +100,7 @@ noextract=(
     'tree-sitter-query.tar.gz'
     'tree-sitter-diff.tar.gz'
 )
-_zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-path=/usr)
+_zig_options=(--system zig_deps -Doptimize=fast -Dcpu=native -Dinstall-path=/usr)
 
 pkgver() {
     local nvim_version_git
@@ -114,15 +112,14 @@ pkgver() {
 
 prepare() {
     local -A deps=(
-        [ziglua.tar.gz]='zlua-0.1.0-hGRpC1mUBQCNQf4CnmRTM4I7gxE3YpCvZ-p2EarlcyER'
-        [translate_c.tar.gz]='translate_c-0.0.0-Q_BUWpf0BgAwrh5AM-acJcslN_YPEhcoCVKbbNjwuUTJ'
-        [aro.tar.gz]='aro-0.0.0-JSD1Qi7QNgDnfcrdEJf82v3o6MhZySjYVrtdfEf3E4Se'
-        [uncrustify_zig.tar.gz]='uncrustify-0.83.0-qkVd7cVCAADAg1kS3ctVBhY2gkxEIs-W8wgurLadbgC-'
+        [ziglua.tar.gz]='zlua-0.1.0-hGRpC1yrBQD9E43yOh9oeuNDrmg2hQwCD_3GmJdI1bCn'
+        [translate_c.tar.gz]='translate_c-0.0.0-Q_BUWoROBwAyokT5SJSw4YIrwdLd1w53i-pEYwBDqXZt'
+        [aro.tar.gz]='aro-0.0.0-JSD1QtuBNwCASyBtNF3pqTl_W3oAJQGEVyFAtrBSE_Pa'
+        [uncrustify_zig.tar.gz]='uncrustify-0.83.0-qkVd7WhCAACgSQizwSXaihK0_y8RYtX8kgEeKR4-aXNi'
         [uncrustify.tar.gz]='N-V-__8AAHtpjADYwuwWGmuD_g-_sfCssv0hLN0zgXCSHeux'
-        [zig-compile-commands.tar.gz]='zig_compile_commands-0.0.1-OZg5-e_JAAAGg1WHAePtq4l4Uvjs34BexnFFCZk63EaG'
 
-        [tree-sitter-c.tar.gz]='tree_sitter_c-0.24.2-y5boS-ptQADHoCoVfjGT_nFtFQ5LbomIkW0fxG3_cmdB'
-        [tree-sitter-markdown.tar.gz]='N-V-__8AAOphUwCl_jXY5BvJ_I-kB6cZuE48ZpMar9Gq2SiD'
+        [tree-sitter-c.tar.gz]='N-V-__8AAKCLSADrSe-FxKXKw7DrCFBZb78ggafFhppAxuQC'
+        [tree-sitter-markdown.tar.gz]='N-V-__8AAP9XVABr5KsZTXvcDyJk7qu2PQc0r4e1uFczkpyy'
         [tree-sitter-lua.tar.gz]='N-V-__8AAE5ZCQA-BW5BOioWVkGcPTjhC5x1Qv07BH3Xt3dR'
         [tree-sitter-vim.tar.gz]='N-V-__8AAPWmVADyg5WrfQyap9wVnE7y5EYV7I3MNEocN96-'
         [tree-sitter-vimdoc.tar.gz]='N-V-__8AAI7VCgBqRcQ-vIxB8DJJFhmLG42p6rfwCWIdypSJ'
@@ -148,9 +145,9 @@ prepare() {
 }
 
 build() {
+    export ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache"
     cd "${srcdir}/neovim"
     zig build "${_zig_options[@]}" \
-        --global-cache-dir "${srcdir}/zig-global-cache" \
         --cache-dir "${srcdir}/zig-local-cache"
 }
 
@@ -161,13 +158,13 @@ check() {
 }
 
 package() {
+    export ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache"
     install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks/" nvimdoc.hook
     install -Dt "$pkgdir/usr/share/libalpm/scripts/" nvimdoc
 
     cd "${srcdir}/neovim"
     zig build install "${_zig_options[@]}" \
         --prefix "${pkgdir}/usr" \
-        --global-cache-dir "${srcdir}/zig-global-cache" \
         --cache-dir "${srcdir}/zig-local-cache"
     rm -r "${pkgdir}/usr/runtime"
 
