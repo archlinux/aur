@@ -1,6 +1,6 @@
 pkgbase = python-cpplint
 	pkgdesc = Command-line tool to check C/C++ files for style issues following Google's C++ style guide.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/cpplint/cpplint
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-cpplint
 	provides = cpplint-py3
 	conflicts = cpplint
 	replaces = cpplint-py3
-	source = python-cpplint-2.0.1.tar.gz::https://github.com/cpplint/cpplint/archive/2.0.1.tar.gz
-	b2sums = ff7096c5b81be824ff6a79ad5ab5de070bf9da56d3bb9174b81d5a7684ab77669c4de250de902fc9adae90d57e79e9646922fa876e29d978a2307ff88cd11631
+	source = python-cpplint-2.0.2.tar.gz::https://github.com/cpplint/cpplint/archive/2.0.2.tar.gz
+	b2sums = 1de48a65e4b990cc8be920a10e9db9c4c87fec9940a8be325eed13a2af596944298f718140ba2448843b48d8be67b49f033ffb0e04c95950cf8e2977cccdaccb
 
 pkgname = python-cpplint

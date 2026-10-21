@@ -3,7 +3,7 @@
 # Contributor: Liganic <liganic-aur@gmx.net>
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
@@ -27,7 +27,7 @@ provides=('cpplint' 'cpplint-py3')
 replaces=('cpplint-py3')
 conflicts=('cpplint')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('ff7096c5b81be824ff6a79ad5ab5de070bf9da56d3bb9174b81d5a7684ab77669c4de250de902fc9adae90d57e79e9646922fa876e29d978a2307ff88cd11631')
+b2sums=('1de48a65e4b990cc8be920a10e9db9c4c87fec9940a8be325eed13a2af596944298f718140ba2448843b48d8be67b49f033ffb0e04c95950cf8e2977cccdaccb')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
