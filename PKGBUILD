@@ -12,7 +12,7 @@
 # Keep the build steps here in sync with vega-nostr-git's. They are the same
 # build; only the source ref differs.
 pkgname=vega-nostr
-pkgver=0.16.3
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="Cross-platform Nostr desktop client with Lightning integration"
 arch=('x86_64')
@@ -59,6 +59,11 @@ build() {
     # scripts run as the building user. This package builds on the user's
     # own machine, so that gap is theirs, not CI's.
     npm ci --ignore-scripts
+
+    # Tells Vega who built it, so the update banner names this package's
+    # own update command instead of guessing `yay -S vega-nostr-git` for
+    # every pacman install.
+    export VEGA_PACKAGED_BY=aur
 
     # `-- --locked` forwards to cargo (the Tauri CLI passes trailing args
     # through). Cargo's equivalent of `npm ci`: refuse to re-resolve, fail
