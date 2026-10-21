@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=0.2.8
-pkgrel=2
+pkgver=0.2.9
+pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
 url="https://github.com/adswill/OnAir"
@@ -23,10 +23,11 @@ makedepends=('cmake' 'pkgconf' 'rust')  # rust: core protocol/FEC/file/net layer
 optdepends=('zenity: file dialogs'
             'soapyrtlsdr: RTL-SDR support through SoapySDR'
             'soapyairspy: Airspy support through SoapySDR'
-            'soapysdrplay: SDRplay support through SoapySDR')
+            'soapysdrplay: SDRplay support through SoapySDR'
+            'onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('31526fc45e3b359572993b88ab5448b4cba298d2226befec9934de0e2410a62a')
+sha256sums=('9d4655e1635b0be6b92b851d8b01f00dccc03ebcc71e6de542c10c0700a292d4')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
