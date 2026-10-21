@@ -1,6 +1,6 @@
 pkgbase = omni-launcher
 	pkgdesc = Application launcher overlay built on Quickshell, with calculator, unit/currency conversion, unicode search and Giphy search. Installable as a Quickshell QML module (OmniLauncher) for embedded use or standalone via omni-launcher.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://git.macocian.com/radumaco/omni-launcher
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = omni-launcher
 	depends = glib2
 	depends = inotify-tools
 	optdepends = hyprland: close-on-workspace-change and focus-grab integration
-	source = omni-launcher-0.0.7.tar.gz::https://git.macocian.com/radumaco/omni-launcher/archive/v0.0.7.tar.gz
-	sha256sums = ca88ce5cca16566659095bb607b62b60be1d7bbeba5d9fe880607c91f43e3763
+	source = omni-launcher-0.0.8.tar.gz::https://git.macocian.com/radumaco/omni-launcher/archive/v0.0.8.tar.gz
+	sha256sums = ddf20c66aaa0cfe6063fffff7d2d391e4b7c8fd19c6863c7fe2ad07920239163
 
 pkgname = omni-launcher
