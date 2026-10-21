@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.2.9
+pkgver=1.2.11
 _electronversion=44
 pkgrel=1
 pkgdesc="Desktop app for Jasper Knowledge Management."
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cjmalloy/jasper-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5dd3389e002c560691188557da75b6839cf2fda7a9dd5301777525bb9a693d7e'
+sha256sums=('08ce4b9031807a4dc5d72d1db62a0dfc053c4982584bf4c0e4e928f46eae8028'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            'a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
