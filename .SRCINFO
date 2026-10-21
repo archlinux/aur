@@ -1,6 +1,6 @@
 pkgbase = redress-bin
 	pkgdesc = A tool for analyzing stripped Go binaries
-	pkgver = 1.2.97
+	pkgver = 1.2.98
 	pkgrel = 1
 	url = https://github.com/goretk/redress
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = redress-bin
 	depends = glibc
 	provides = redress
 	conflicts = redress
-	source_x86_64 = redress-x86_64-1.2.97.tar.gz::https://github.com/goretk/redress/releases/download/v1.2.97/redress-v1.2.97-linux-amd64.tar.gz
-	sha256sums_x86_64 = ac793c9b86de2b0c8ad3861c679a9a5aecf67fdf6eec71f49a393c46363a75ae
+	source_x86_64 = redress-x86_64-1.2.98.tar.gz::https://github.com/goretk/redress/releases/download/v1.2.98/redress-v1.2.98-linux-amd64.tar.gz
+	sha256sums_x86_64 = ed7fbcb58b27747b03028c2c7ff9ce88c5fc096128690b7731e8ac72a07f06d4
 
 pkgname = redress-bin
