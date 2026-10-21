@@ -1,0 +1,19 @@
+pkgbase = bitchx-modern
+	pkgdesc = BitchX IRC client - modernized with TLS 1.3 and SASL
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/prime001/BitchX
+	arch = x86_64
+	license = BSD
+	makedepends = base-devel
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	depends = ncurses
+	depends = openssl
+	source = https://github.com/prime001/BitchX.git
+	source = servers.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bitchx-modern
