@@ -6,13 +6,38 @@ from pathlib import Path
 import subprocess
 import sys
 
+def initialize(root):
+    uid = os.getuid()
+    if root.is_symlink():
+        raise SystemExit('/opt/vscode must not be a symbolic link.')
+    if not root.exists():
+        print('Preparing /opt/vscode; system authorization may be requested.', flush=True)
+        subprocess.run([
+            '/usr/bin/pkexec',
+            '/usr/lib/visual-studio-code-autoupdate/create-directory',
+        ], check=True)
+    if root.is_symlink() or not root.is_dir() or root.stat().st_uid != uid:
+        raise SystemExit('/opt/vscode belongs to another user; refusing to change it.')
+    if not (root / 'current/bin/code').is_file():
+        print('Installing VS Code directly from Microsoft...', flush=True)
+        subprocess.run(['/usr/bin/vscode-update'], check=True)
+    subprocess.run(['/usr/bin/systemctl', '--user', 'daemon-reload'], check=True)
+    subprocess.run([
+        '/usr/bin/systemctl', '--user', 'enable', '--now', 'vscode-update.timer',
+    ], check=True)
+    (root / '.initialized').touch()
+
+
 
 def main():
     if os.geteuid() == 0:
         raise SystemExit('Do not run this user-managed VS Code installation as root.')
     root = Path('/opt/vscode')
-    if not (root / 'current/bin/code').is_file():
-        raise SystemExit('VS Code is not installed yet. See /usr/share/doc/visual-studio-code-autoupdate/README.md.')
+    if not (root / 'current/bin/code').is_file() or not (root / '.initialized').is_file():
+        try:
+            initialize(root)
+        except subprocess.CalledProcessError as error:
+            raise SystemExit(error.returncode)
     with (root / '.update.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_SH)
         release = (root / 'current').resolve(strict=True)

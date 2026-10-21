@@ -1,20 +1,17 @@
 post_install() {
   cat <<'EOF'
-This package installs a downloader, not a pacman-managed copy of VS Code.
-As the desktop user who will own /opt/vscode, run once:
-  sudo install -d -m 0755 -o "$USER" -g "$(id -gn)" /opt/vscode
-  systemctl --user daemon-reload
-  systemctl --user start vscode-update.service
-  systemctl --user enable --now vscode-update.timer
+Run code (or open Visual Studio Code from the application menu).
+On first launch it prepares /opt/vscode, downloads the official editor and
+enables the user update timer automatically. System authorization may be
+requested once to create /opt/vscode; downloads and updates run as your user.
 
-The user timer checks at 00:00 and 12:00, with up to 15 minutes of jitter.
-Read /usr/share/doc/visual-studio-code-autoupdate/README.md before migrating
-an existing manual installation. Do not run vscode-update as root.
+The timer checks at 00:00 and 12:00, with up to 15 minutes of jitter.
+No manual setup commands are required. Do not run code or vscode-update as root.
 EOF
 }
 
 post_upgrade() {
-  printf '%s\n' 'Run systemctl --user daemon-reload in the owning user session.'
+  printf '%s\n' 'The next code launch completes any pending first-time setup automatically.'
 }
 
 pre_remove() {

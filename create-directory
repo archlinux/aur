@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+"""Create the fixed VS Code directory for the user authenticated by pkexec."""
+import os
+from pathlib import Path
+import pwd
+
+
+def create_directory(root, uid):
+    if uid <= 0:
+        raise SystemExit('A non-root invoking user is required.')
+    gid = pwd.getpwuid(uid).pw_gid
+    try:
+        root.mkdir(mode=0o755)
+    except FileExistsError:
+        # Another launch may have created it while authorization was pending.
+        # The unprivileged launcher validates ownership; never take it over.
+        return
+    os.chown(root, uid, gid)
+
+
+if __name__ == '__main__':
+    if os.geteuid() != 0:
+        raise SystemExit('This helper must be run through pkexec.')
+    try:
+        uid = int(os.environ['PKEXEC_UID'])
+    except (KeyError, ValueError):
+        raise SystemExit('Missing authenticated pkexec user.')
+    create_directory(Path('/opt/vscode'), uid)

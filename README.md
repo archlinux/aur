@@ -63,19 +63,22 @@ de `code --version` a partir de uma instalação isolada, sem modificar os dados
 pessoais do usuário. Os testes não substituem a manutenção das dependências
 quando a Microsoft altera os requisitos do editor.
 
-Depois da instalação, execute na sessão gráfica do usuário que será o dono do
-diretório. Se `/opt/vscode` já existir, confirme que não é um link simbólico e que
-pertence à instalação que pretende manter; não tome o diretório de outro usuário.
+Depois de instalar, execute `code` normalmente ou abra Visual Studio Code no menu.
+A primeira execução:
 
-```sh
-sudo install -d -m 0755 -o "$USER" -g "$(id -gn)" /opt/vscode
-systemctl --user daemon-reload
-systemctl --user start vscode-update.service
-systemctl --user enable --now vscode-update.timer
-```
+1. Cria `/opt/vscode` para o usuário atual, pedindo autorização pelo sistema via
+   Polkit quando o diretório ainda não existe.
+2. Baixa e valida o editor oficial da Microsoft, sem executar o download como root.
+3. Habilita o timer do usuário e inicia o editor com os argumentos solicitados.
 
-A primeira execução baixa o editor. A ativação é explícita: instalar o pacote não
-habilita serviços automaticamente nem altera arquivos pessoais do usuário.
+Não há comandos manuais de configuração. Se a autorização, o download ou a
+ativação do timer falhar, a inicialização não é marcada como concluída; a próxima
+execução tenta novamente. Um diretório pertencente a outro usuário ou um link
+simbólico é recusado, sem trocar seu proprietário.
+
+É necessária uma sessão systemd do usuário; a autorização inicial exige um agente
+Polkit da sessão gráfica ou a autenticação oferecida por `pkexec` no terminal.
+Depois da primeira configuração, as atualizações continuam sem sudo ou prompts.
 
 ## migrar a instalação manual criada nesta sessão
 
