@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Bloodborne
+GenericName=bbport
+Comment=Bloodborne (CUSA03173) running natively via bbport
+Exec=bloodborne-pc
+Icon=bloodborne-pc
+Terminal=false
+Categories=Game;
+Keywords=bloodborne;bbport;ps4;fromsoftware;
+StartupNotify=true
