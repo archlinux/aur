@@ -107,8 +107,6 @@ EOF
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/concat.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 LICENSE-EXCEPTIONS.md \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-EXCEPTIONS.md"
   install -Dm644 THIRD_PARTY_NOTICES.md \
     "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
 }
