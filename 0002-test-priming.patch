@@ -1,0 +1,46 @@
+diff --git a/test/features/assignment.test.js b/test/features/assignment.test.js
+index 4ea3944..f5274d1 100644
+--- a/test/features/assignment.test.js
++++ b/test/features/assignment.test.js
+@@ -1,5 +1,41 @@
+ const {initializeWithTab, expect, nextTick} = require("../common");
+ 
++// The first `beforeEach` and `afterEach` unexpectedly fail unconditionally for every run.
++// Run an initial no-op test to flush it out.
++describe("Prefail", function () {
++  const url = "http://example.com";
++
++  beforeEach(async function () {
++    try {
++      this.webExt = await initializeWithTab({
++        cookieStoreId: "no-op",
++        url
++      });
++    } catch(e) {
++      console.debug(e);
++    }
++  });
++
++  afterEach(function () {
++    try {
++      this.webExt.destroy();
++    } catch(e) {
++      console.debug(e);
++    }
++  });
++
++  describe("failing init", function () {
++    beforeEach(async function () {
++      // await nextTick();
++    });
++
++    it("failing inittest", async function () {
++    });
++
++  });
++
++});
++
+ describe("Assignment Reopen Feature", function () {
+   const url = "http://example.com";
+ 

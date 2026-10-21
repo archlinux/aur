@@ -1,0 +1,361 @@
+diff --git a/package.json b/package.json
+index 8a990c6..c4937f7 100644
+--- a/package.json
++++ b/package.json
+@@ -28,7 +28,7 @@
+     "json": ">=10.0.0",
+     "mocha": "^11.7.5",
+     "npm-run-all": "^4.0.0",
+-    "nyc": "^15.0.0",
++    "nyc": "^18.0.0",
+     "sinon": "^17.0.2",
+     "sinon-chai": "^3.7.0",
+     "stylelint": "^16.13.0",
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 2326cb9..b064f78 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -48,8 +48,8 @@ importers:
+         specifier: ^4.0.0
+         version: 4.1.5
+       nyc:
+-        specifier: ^15.0.0
+-        version: 15.1.0
++        specifier: ^18.0.0
++        version: 18.0.0
+       sinon:
+         specifier: ^17.0.2
+         version: 17.0.2
+@@ -613,6 +613,10 @@ packages:
+   balanced-match@2.0.0:
+     resolution: {integrity: sha512-1ugUSr8BHXRnK23KfuYS+gVMC3LB8QGH9W1iGtDPsNWoQbgtXSExkBu2aDR4epiGWZOjZsj6lDl/N/AqqTC3UA==}
+ 
++  balanced-match@4.0.4:
++    resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
++    engines: {node: 18 || 20 || >=22}
++
+   base64-js@1.5.1:
+     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+ 
+@@ -649,6 +653,10 @@ packages:
+   brace-expansion@2.0.1:
+     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
+ 
++  brace-expansion@5.0.12:
++    resolution: {integrity: sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==}
++    engines: {node: 20 || >=22}
++
+   braces@2.3.2:
+     resolution: {integrity: sha512-aNdbnj9P8PjdXU4ybaWLK2IF3jc/EoDYbC7AazW6to3TRsfXxscC9UXOB5iDiEQrkyIbWp2SLQda4+QAa7nc3w==}
+     engines: {node: '>=0.10.0'}
+@@ -1562,6 +1570,10 @@ packages:
+     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+     hasBin: true
+ 
++  glob@13.0.6:
++    resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
++    engines: {node: 18 || 20 || >=22}
++
+   glob@7.2.3:
+     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+     deprecated: Glob versions prior to v9 are no longer supported
+@@ -2085,13 +2097,13 @@ packages:
+     resolution: {integrity: sha512-Pt/uge1Q9s+5VAZ+pCo16TYMWPBIl+oaNIjgLQxcX0itS6ueeaA+pEfThZpH8WxhFgCiEb8sAJY6MdUKgiIWaQ==}
+     engines: {node: '>=8'}
+ 
+-  istanbul-lib-instrument@4.0.3:
+-    resolution: {integrity: sha512-BXgQl9kf4WTCPCCpmFGoJkz/+uhvm7h7PFKUYxh7qarQd3ER33vHG//qaE8eN25l07YqZPpHXU9I09l/RD5aGQ==}
+-    engines: {node: '>=8'}
++  istanbul-lib-instrument@6.0.3:
++    resolution: {integrity: sha512-Vtgk7L/R2JHyyGW07spoFlB8/lpjiOLTjMdms6AFMraYt3BaJauod/NGrfnVG/y4Ix1JEuMRPDPEj2ua+zz1/Q==}
++    engines: {node: '>=10'}
+ 
+-  istanbul-lib-processinfo@2.0.3:
+-    resolution: {integrity: sha512-NkwHbo3E00oybX6NGJi6ar0B29vxyvNwoC7eJ4G4Yq28UfY758Hgn/heV8VRFhevPED4LXfFz0DQ8z/0kw9zMg==}
+-    engines: {node: '>=8'}
++  istanbul-lib-processinfo@3.0.1:
++    resolution: {integrity: sha512-s3mX05h5wGZeScG6XnOanygPh4SJu5ujMc9YbvpnLGXWy1cRiGbp0NdVcjHxgoZt3WfQppfBsa0y+gWdYJ2pGQ==}
++    engines: {node: 20 || >=22}
+ 
+   istanbul-lib-report@3.0.1:
+     resolution: {integrity: sha512-GCfE1mtsHGOELCU8e/Z7YWzpmybrx/+dSTfLrvY8qRmaY6zXTKWn6WQIjaAFw069icm6GVMNkgu0NzI4iPZUNw==}
+@@ -2298,6 +2310,10 @@ packages:
+   lru-cache@10.4.3:
+     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
+ 
++  lru-cache@11.5.3:
++    resolution: {integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==}
++    engines: {node: 20 || >=22}
++
+   lru-cache@5.1.1:
+     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+ 
+@@ -2377,6 +2393,10 @@ packages:
+     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
+     engines: {node: '>=6'}
+ 
++  minimatch@10.2.6:
++    resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
++    engines: {node: 18 || 20 || >=22}
++
+   minimatch@3.1.2:
+     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
+ 
+@@ -2391,6 +2411,10 @@ packages:
+     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
+     engines: {node: '>=16 || 14 >=14.17'}
+ 
++  minipass@7.1.3:
++    resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==}
++    engines: {node: '>=16 || 14 >=14.17'}
++
+   mixin-deep@1.3.2:
+     resolution: {integrity: sha512-WRoDn//mXBiJ1H40rqa3vH0toePwSsGb45iInWlTySa+Uu4k3tYUSxa2v1KqAiLtvlrSzaExqS1gtk96A9zvEA==}
+     engines: {node: '>=0.10.0'}
+@@ -2477,9 +2501,9 @@ packages:
+   nwsapi@2.2.18:
+     resolution: {integrity: sha512-p1TRH/edngVEHVbwqWnxUViEmq5znDvyB+Sik5cmuLpGOIfDf/39zLiq3swPF8Vakqn+gvNiOQAZu8djYlQILA==}
+ 
+-  nyc@15.1.0:
+-    resolution: {integrity: sha512-jMW04n9SxKdKi1ZMGhvUTHBN0EICCRkHemEoE5jm6mTYcqcdas0ATzgUgejlQUHMvpnOZqGB5Xxsv9KxJW1j8A==}
+-    engines: {node: '>=8.9'}
++  nyc@18.0.0:
++    resolution: {integrity: sha512-G5UyHinFkB1BxqGTrmZdB6uIYH0+v7ZnVssuflUDi+J+RhKWyAhRT1RCehBSI6jLFLuUUgFDyLt49mUtdO1XeQ==}
++    engines: {node: 20 || >=22}
+     hasBin: true
+ 
+   object-copy@0.1.0:
+@@ -2678,6 +2702,10 @@ packages:
+     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
+     engines: {node: '>=16 || 14 >=14.18'}
+ 
++  path-scurry@2.0.2:
++    resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
++    engines: {node: 18 || 20 || >=22}
++
+   path-to-regexp@6.3.0:
+     resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
+ 
+@@ -2942,6 +2970,11 @@ packages:
+     deprecated: Rimraf versions prior to v4 are no longer supported
+     hasBin: true
+ 
++  rimraf@6.1.3:
++    resolution: {integrity: sha512-LKg+Cr2ZF61fkcaK1UdkH2yEBBKnYjTyWzTJT6KNPcSPaiT7HSdhtMXQuN5wkTX0Xu72KQ1l8S42rlmexS2hSA==}
++    engines: {node: 20 || >=22}
++    hasBin: true
++
+   run-applescript@7.1.0:
+     resolution: {integrity: sha512-DPe5pVFaAsinSaV6QjQ6gdiedWDcRCbUuiQfQa2wmWV7+xC9bGulGI8+TdRmoFkAPaBXk8CrAbnlY2ISniJ47Q==}
+     engines: {node: '>=18'}
+@@ -3135,8 +3168,8 @@ packages:
+   spawn-sync@1.0.15:
+     resolution: {integrity: sha512-9DWBgrgYZzNghseho0JOuh+5fg9u6QWhAWa51QC7+U5rCheZ/j1DrEZnyE0RBBRqZ9uEXGPgSSM0nky6burpVw==}
+ 
+-  spawn-wrap@2.0.0:
+-    resolution: {integrity: sha512-EeajNjfN9zMnULLwhZZQU3GWBoFNkbngTUPfaawT4RkMiviTxcX0qfhVbGey39mfctfDHkWtuecgQ8NJcyQWHg==}
++  spawn-wrap@3.0.0:
++    resolution: {integrity: sha512-z+s5vv4KzFPJVddGab0xX2n7kQPGMdNUX5l9T8EJqsXdKTWpcxmAqWHpsgHEXoC1taGBCc7b79bi62M5kdbrxQ==}
+     engines: {node: '>=8'}
+ 
+   spdx-correct@3.2.0:
+@@ -3323,9 +3356,9 @@ packages:
+     resolution: {integrity: sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==}
+     engines: {node: '>=10.0.0'}
+ 
+-  test-exclude@6.0.0:
+-    resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
+-    engines: {node: '>=8'}
++  test-exclude@8.0.0:
++    resolution: {integrity: sha512-ZOffsNrXYggvU1mDGHk54I96r26P8SyMjO5slMKSc7+IWmtB/MQKnEC2fP51imB3/pT6YK5cT5E8f+Dd9KdyOQ==}
++    engines: {node: 20 || >=22}
+ 
+   text-table@0.2.0:
+     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
+@@ -4351,6 +4384,8 @@ snapshots:
+ 
+   balanced-match@2.0.0: {}
+ 
++  balanced-match@4.0.4: {}
++
+   base64-js@1.5.1: {}
+ 
+   base@0.11.2:
+@@ -4400,6 +4435,10 @@ snapshots:
+     dependencies:
+       balanced-match: 1.0.2
+ 
++  brace-expansion@5.0.12:
++    dependencies:
++      balanced-match: 4.0.4
++
+   braces@2.3.2:
+     dependencies:
+       arr-flatten: 1.1.0
+@@ -5507,6 +5546,12 @@ snapshots:
+       package-json-from-dist: 1.0.1
+       path-scurry: 1.11.1
+ 
++  glob@13.0.6:
++    dependencies:
++      minimatch: 10.2.6
++      minipass: 7.1.3
++      path-scurry: 2.0.2
++
+   glob@7.2.3:
+     dependencies:
+       fs.realpath: 1.0.0
+@@ -6008,23 +6053,23 @@ snapshots:
+     dependencies:
+       append-transform: 2.0.0
+ 
+-  istanbul-lib-instrument@4.0.3:
++  istanbul-lib-instrument@6.0.3:
+     dependencies:
+       '@babel/core': 7.26.10
++      '@babel/parser': 7.26.10
+       '@istanbuljs/schema': 0.1.3
+       istanbul-lib-coverage: 3.2.2
+-      semver: 6.3.1
++      semver: 7.7.3
+     transitivePeerDependencies:
+       - supports-color
+ 
+-  istanbul-lib-processinfo@2.0.3:
++  istanbul-lib-processinfo@3.0.1:
+     dependencies:
+       archy: 1.0.0
+       cross-spawn: 7.0.6
+       istanbul-lib-coverage: 3.2.2
+       p-map: 3.0.0
+-      rimraf: 3.0.2
+-      uuid: 8.3.2
++      rimraf: 6.1.3
+ 
+   istanbul-lib-report@3.0.1:
+     dependencies:
+@@ -6262,6 +6307,8 @@ snapshots:
+ 
+   lru-cache@10.4.3: {}
+ 
++  lru-cache@11.5.3: {}
++
+   lru-cache@5.1.1:
+     dependencies:
+       yallist: 3.1.1
+@@ -6341,6 +6388,10 @@ snapshots:
+ 
+   mimic-fn@2.1.0: {}
+ 
++  minimatch@10.2.6:
++    dependencies:
++      brace-expansion: 5.0.12
++
+   minimatch@3.1.2:
+     dependencies:
+       brace-expansion: 1.1.11
+@@ -6353,6 +6404,8 @@ snapshots:
+ 
+   minipass@7.1.2: {}
+ 
++  minipass@7.1.3: {}
++
+   mixin-deep@1.3.2:
+     dependencies:
+       for-in: 1.0.2
+@@ -6479,7 +6532,7 @@ snapshots:
+ 
+   nwsapi@2.2.18: {}
+ 
+-  nyc@15.1.0:
++  nyc@18.0.0:
+     dependencies:
+       '@istanbuljs/load-nyc-config': 1.1.0
+       '@istanbuljs/schema': 0.1.3
+@@ -6488,13 +6541,13 @@ snapshots:
+       decamelize: 1.2.0
+       find-cache-dir: 3.3.2
+       find-up: 4.1.0
+-      foreground-child: 2.0.0
++      foreground-child: 3.3.1
+       get-package-type: 0.1.0
+-      glob: 7.2.3
++      glob: 13.0.6
+       istanbul-lib-coverage: 3.2.2
+       istanbul-lib-hook: 3.0.0
+-      istanbul-lib-instrument: 4.0.3
+-      istanbul-lib-processinfo: 2.0.3
++      istanbul-lib-instrument: 6.0.3
++      istanbul-lib-processinfo: 3.0.1
+       istanbul-lib-report: 3.0.1
+       istanbul-lib-source-maps: 4.0.1
+       istanbul-reports: 3.1.7
+@@ -6503,10 +6556,10 @@ snapshots:
+       p-map: 3.0.0
+       process-on-spawn: 1.1.0
+       resolve-from: 5.0.0
+-      rimraf: 3.0.2
++      rimraf: 6.1.3
+       signal-exit: 3.0.7
+-      spawn-wrap: 2.0.0
+-      test-exclude: 6.0.0
++      spawn-wrap: 3.0.0
++      test-exclude: 8.0.0
+       yargs: 15.4.1
+     transitivePeerDependencies:
+       - supports-color
+@@ -6714,6 +6767,11 @@ snapshots:
+       lru-cache: 10.4.3
+       minipass: 7.1.2
+ 
++  path-scurry@2.0.2:
++    dependencies:
++      lru-cache: 11.5.3
++      minipass: 7.1.3
++
+   path-to-regexp@6.3.0: {}
+ 
+   path-type@3.0.0:
+@@ -6973,6 +7031,11 @@ snapshots:
+     dependencies:
+       glob: 7.2.3
+ 
++  rimraf@6.1.3:
++    dependencies:
++      glob: 13.0.6
++      package-json-from-dist: 1.0.1
++
+   run-applescript@7.1.0: {}
+ 
+   run-parallel@1.2.0:
+@@ -7186,12 +7249,13 @@ snapshots:
+       concat-stream: 1.6.2
+       os-shim: 0.1.3
+ 
+-  spawn-wrap@2.0.0:
++  spawn-wrap@3.0.0:
+     dependencies:
++      cross-spawn: 7.0.6
+       foreground-child: 2.0.0
+       is-windows: 1.0.2
+       make-dir: 3.1.0
+-      rimraf: 3.0.2
++      rimraf: 6.1.3
+       signal-exit: 3.0.7
+       which: 2.0.2
+ 
+@@ -7436,11 +7500,11 @@ snapshots:
+       string-width: 4.2.3
+       strip-ansi: 6.0.1
+ 
+-  test-exclude@6.0.0:
++  test-exclude@8.0.0:
+     dependencies:
+       '@istanbuljs/schema': 0.1.3
+-      glob: 7.2.3
+-      minimatch: 3.1.2
++      glob: 13.0.6
++      minimatch: 10.2.6
+ 
+   text-table@0.2.0: {}
+ 

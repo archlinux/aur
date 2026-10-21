@@ -13,7 +13,11 @@ pkgbase = multi-account-containers-lite
 	makedepends = strip-nondeterminism
 	makedepends = zip
 	source = mac::git+https://codeberg.org/Konsortium/multi-account-containers-lite#commit=b6c9007467b8e60c255e767bd1f7acc0850676f8
+	source = 0001-test-nyc-18.patch
+	source = 0002-test-priming.patch
 	sha512sums = bc9bb6fab04db1a9e2bb2b63eede314e29190d74fb56fa1a5840bbbba7272e75e4f5e4cc19c0dca4335f0b2f5b4c26d939288331b596b433002011e9940851cc
+	sha512sums = 35690941f17e3960571e748e0752a8413d7117e7488c9f982c97b3a1f843f747a4eda7a865e46e2b1f5c3209ae6f4cc7beb0525987c529077bda388ceda4ffe3
+	sha512sums = 0de8914b79d0de4467dc6e139dd2be43296db2fc87e27140813d8af30d6126bc9567e6867a07f68fef1d421b435dd8c8b1c04fa126f6ff9e16a642b2b561eac3
 
 pkgname = multi-account-containers-lite
 
