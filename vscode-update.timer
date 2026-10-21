@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for official VS Code updates twice a day
+
+[Timer]
+OnCalendar=*-*-* 00,12:00:00
+Persistent=true
+RandomizedDelaySec=15min
+
+[Install]
+WantedBy=timers.target

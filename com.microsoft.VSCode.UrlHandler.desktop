@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Visual Studio Code - URL Handler
+Exec=/usr/bin/code --open-url %U
+Icon=/opt/vscode/current/resources/app/resources/linux/code.png
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Development;IDE;TextEditor;
+MimeType=x-scheme-handler/vscode;

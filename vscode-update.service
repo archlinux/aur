@@ -1,0 +1,12 @@
+[Unit]
+Description=Update VS Code in /opt/vscode directly from Microsoft
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/vscode-update
+TimeoutStartSec=15min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/opt/vscode

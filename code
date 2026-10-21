@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ "$(id -u)" -eq 0 ]; then
+    printf '%s\n' 'Do not run this user-managed VS Code installation as root.' >&2
+    exit 1
+fi
+if [ ! -x /opt/vscode/current/bin/code ]; then
+    printf '%s\n' 'VS Code is not installed yet. See /usr/share/doc/visual-studio-code-autoupdate/README.md.' >&2
+    exit 1
+fi
+exec /opt/vscode/current/bin/code "$@"

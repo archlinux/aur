@@ -1,0 +1,99 @@
+#!/usr/bin/python3
+"""Update /opt/vscode directly from Microsoft; usage: vscode-update.
+
+vscode-update.timer checks twice a day. Updates are atomic and do not restart
+open windows. Releases still in use are kept until a later check. User settings
+and extensions are not modified. Run this as the owner of /opt/vscode, not root.
+"""
+import fcntl
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import sys
+import tarfile
+import tempfile
+from urllib.parse import urlparse
+from urllib.request import urlopen
+
+ROOT = Path('/opt/vscode')
+API = 'https://update.code.visualstudio.com/api/update/linux-x64/stable/latest'
+
+
+def fetch(url):
+    response = urlopen(url, timeout=120)
+    if urlparse(response.url).scheme != 'https':
+        response.close()
+        raise ValueError('Download redirected outside HTTPS')
+    return response
+
+
+def prune():
+    current = (ROOT / 'current').resolve()
+    running = set()
+    for entry in Path('/proc').iterdir():
+        if entry.name.isdigit():
+            try:
+                running.add((entry / 'exe').resolve(strict=True))
+            except (OSError, RuntimeError):
+                pass
+    for release in ROOT.glob('release-*'):
+        if (re.fullmatch(r'release-[0-9a-f]{40}', release.name)
+                and release.is_dir() and not release.is_symlink()
+                and release != current and release / 'code' not in running):
+            shutil.rmtree(release)
+
+
+def main():
+    if len(sys.argv) != 1:
+        print(__doc__)
+        return
+    if os.geteuid() == 0:
+        raise SystemExit('Run vscode-update as the owner of /opt/vscode, not root.')
+    if not ROOT.is_dir() or ROOT.is_symlink() or ROOT.stat().st_uid != os.getuid():
+        raise SystemExit('Create /opt/vscode owned by your user; see the package README.')
+    with (ROOT / '.update.lock').open('w') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        prune()
+        with fetch(API) as response:
+            info = json.load(response)
+        commit, checksum = info['version'], info['sha256hash']
+        url = urlparse(info['url'])
+        if not (re.fullmatch(r'[0-9a-f]{40}', commit)
+                and re.fullmatch(r'[0-9a-f]{64}', checksum)
+                and url.scheme == 'https'
+                and url.hostname == 'vscode.download.prss.microsoft.com'):
+            raise ValueError('Invalid download metadata')
+        release = ROOT / ('release-' + commit)
+        current = ROOT / 'current'
+        if current.resolve() == release:
+            print(f"VS Code {info['productVersion']} is up to date.")
+            return
+        with tempfile.TemporaryDirectory(prefix='.update-', dir=ROOT) as tmp:
+            tmp = Path(tmp)
+            archive = tmp / 'code.tar.gz'
+            print(f"Downloading VS Code {info['productVersion']} from Microsoft...", flush=True)
+            with fetch(info['url']) as response, archive.open('wb') as output:
+                shutil.copyfileobj(response, output)
+            with archive.open('rb') as downloaded:
+                if hashlib.file_digest(downloaded, 'sha256').hexdigest() != checksum:
+                    raise ValueError('Download SHA-256 mismatch')
+            with tarfile.open(archive) as bundle:
+                bundle.extractall(tmp / 'unpacked', filter='data')
+            app = tmp / 'unpacked' / 'VSCode-linux-x64'
+            product = json.loads((app / 'resources/app/product.json').read_text())
+            if product['commit'] != commit or not os.access(app / 'bin/code', os.X_OK):
+                raise ValueError('Archive does not match the advertised release')
+            if not release.exists():
+                app.rename(release)
+            link = tmp / 'current'
+            link.symlink_to(release.name)
+            link.replace(current)
+        prune()
+        print(f"VS Code {info['productVersion']} installed. Reopen the editor to use it.")
+
+
+if __name__ == '__main__':
+    main()
