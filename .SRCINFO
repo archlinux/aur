@@ -1,7 +1,7 @@
 pkgbase = cyberterm-bin
 	pkgdesc = GPU terminal for developers: splits and sessions, command blocks, searchable history, AI help, inline images and Lua scripting (prebuilt)
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cybercoretech.github.io/cyberterm/
 	arch = x86_64
 	arch = aarch64
@@ -28,8 +28,8 @@ pkgbase = cyberterm-bin
 	sha256sums = a686c4e5a39510488c378dc1820304b4d4827b1cd9bcfefe1a25eb7bf53925d1
 	sha256sums = 1e638aff925407a30963bd57a3a942831f5ea86b45a06941f88c23c5d684d0c3
 	source_x86_64 = cyberterm-0.4.0-x86_64.tar.gz::https://github.com/cybercoretech/cyberterm/releases/download/v0.4.0/cyberterm-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = db645fcd2b6f5287545a6154c11b1fc8f4732a44de25c5def9f8140f80f40e24
+	sha256sums_x86_64 = 830aa876f116d514216a118136428a9a1b21fd38970a187e8ff1ef8440313ed5
 	source_aarch64 = cyberterm-0.4.0-aarch64.tar.gz::https://github.com/cybercoretech/cyberterm/releases/download/v0.4.0/cyberterm-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0534b4b8e656cd2a864d4a8eea1f7b88f773f4e9c69afa0ed8d4d5c83a074e22
+	sha256sums_aarch64 = 1b22deb4512c99091a49264dae457b69a6ef0a287e58a3745f046261fa65fcdd
 
 pkgname = cyberterm-bin
