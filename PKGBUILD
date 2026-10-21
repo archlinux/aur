@@ -1,6 +1,6 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=crosshair-maker
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Crosshair overlay creator with SVG rendering and preview"
 arch=('x86_64' 'aarch64')
