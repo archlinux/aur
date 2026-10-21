@@ -1,0 +1,32 @@
+pkgbase = linux-passkey
+	pkgdesc = Passkeys for Linux (FIDO2 / WebAuthn authenticator)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/HaythmKenway/Linux-Passkey
+	arch = any
+	license = GPL-3.0-or-later
+	source = https://github.com/HaythmKenway/Linux-Passkey/releases/download/v0.1.0/linux-passkey-0.1.0.tar.gz
+	sha256sums = 93146fd59aec59f623801baf47fa23933fea4586365de2cfcd031e34c3e190a0
+
+pkgname = linux-passkey
+	install = linux-passkey.install
+	depends = python
+	depends = python-cryptography
+	depends = python-gobject
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita>=1:1.5
+	depends = hicolor-icon-theme
+	depends = libsecret
+	depends = publicsuffix-list
+	depends = polkit
+	depends = systemd
+	optdepends = gnome-shell-extension-linux-passkey: approval prompts as GNOME Shell dialogs
+	optdepends = gnome-keyring: a login keyring for the master key
+	conflicts = passkeyd
+	conflicts = passkeyd-bin
+
+pkgname = gnome-shell-extension-linux-passkey
+	pkgdesc = GNOME Shell integration for Linux Passkey
+	depends = linux-passkey=0.1.0-1
+	depends = gnome-shell>=1:45

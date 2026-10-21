@@ -1,0 +1,18 @@
+_load_uhid() {
+  # Load the user-space HID driver now; modules-load.d covers later boots.
+  if ! modprobe uhid 2>/dev/null && [ ! -e /dev/uhid ]; then
+    echo "linux-passkey: the running kernel has no uhid module; if the kernel was just updated, restart."
+  fi
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --subsystem-match=misc --sysname-match=uhid 2>/dev/null || true
+}
+
+post_install() {
+  _load_uhid
+  echo "linux-passkey: start the service for your user, then log out and back in:"
+  echo "    systemctl --user enable --now linux-passkey.service"
+}
+
+post_upgrade() {
+  _load_uhid
+}
