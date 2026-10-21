@@ -1,6 +1,6 @@
 pkgbase = crcbl-bin
 	pkgdesc = Crucible engine's headless control CLI (binary release)
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/kryptic-sh/crcbl
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = crcbl-bin
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	provides = crcbl=0.8.0
+	provides = crcbl=0.8.1
 	conflicts = crcbl
-	source_x86_64 = crcbl-v0.8.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v0.8.0/crcbl-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4f65ac50d68baad3f8e9cbc639dda3707c1c725a0c962b1f3b1f92e40f11e534
-	source_aarch64 = crcbl-v0.8.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v0.8.0/crcbl-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 74e37546f68751707c5ba13cb61336057a28b2f60bd76a523131ed08397f9469
+	source_x86_64 = crcbl-v0.8.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v0.8.1/crcbl-v0.8.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1de1f4283bdc6caca35787cb2cc704ad03bdefaf9888fb0874950d4f4ad8f144
+	source_aarch64 = crcbl-v0.8.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v0.8.1/crcbl-v0.8.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6aed15668195241299b53706163d3be65a3264df612bc813346ca847a070b8cb
 
 pkgname = crcbl-bin
