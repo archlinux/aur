@@ -47,7 +47,7 @@ prepare() {
     rm -f Makefile.personal
     echo "STRIP := touch -c" >> Makefile.personal
     echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
-    echo "JDKDIR := /usr/lib/jvm/$(archlinux-java get)" >> Makefile.personal
+    echo "JDKDIR := /usr/lib/jvm/default" >> Makefile.personal
 }
 
 build() {
