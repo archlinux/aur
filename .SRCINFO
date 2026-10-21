@@ -1,0 +1,21 @@
+pkgbase = canopy-bin
+	pkgdesc = Terminal UI for tracking tasks across work management backends
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/alcxyz/canopy
+	license = MIT
+	optdepends = azure-cli: Azure DevOps sign-in
+	optdepends = xdg-utils: open items in the browser
+	optdepends = wl-clipboard: copy to the clipboard on Wayland
+	optdepends = xclip: copy to the clipboard on X11
+	optdepends = xsel: copy to the clipboard on X11
+	conflicts = canopy
+	provides = canopy
+	arch = aarch64
+	source_aarch64 = canopy-bin_0.2.3_aarch64.tar.gz::https://github.com/alcxyz/canopy/releases/download/v0.2.3/canopy_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = a0917a152e0e965fe9078ca80e9759d95c7fe31a22ad50014e2a0f5ba42dbcb2
+	arch = x86_64
+	source_x86_64 = canopy-bin_0.2.3_x86_64.tar.gz::https://github.com/alcxyz/canopy/releases/download/v0.2.3/canopy_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 291ff49a235a9429fe7a7115ecc3dd0ae957a369ab4f9ffc22865255063a8645
+	
+pkgname = canopy-bin
