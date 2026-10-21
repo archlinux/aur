@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Render JSON Schema for humans"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('21811d3977c007c991a3d243606015344e21da45565b8948471026007ae0697f'
+sha256sums=('fd8d715054f58db7fe9fc26c3d0eccfa175b4781614bd727eac437c8a21c874a'
             '3b607b61bbba8e9b3bd2528080993dc454268b7b3c185ae98d02057ac5ddcc3f')
-sha256sums_x86_64=('272e536d8bfbc6dbef0641b293238ccbf48458a22155f8671b71536a122d63b3')
-sha256sums_aarch64=('f0c249cabd6128fac47b977196c2ac2b6728ccd32a9882ce6afed07d66a0972b')
+sha256sums_x86_64=('594ad2e2f1968f5f6b2210201a6078570e958d1f1ae14310939677498ef9d071')
+sha256sums_aarch64=('1d995389ab7dba36c138baa29436f8137e4d9e263490701abd101244c1fc7d50')
 
 
 package() {
