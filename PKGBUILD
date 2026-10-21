@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Local-first cross-platform diff and merge tool"
 
-pkgver=0.193.0
+pkgver=0.194.0
 pkgrel=1
 
 arch=('x86_64')
@@ -37,7 +37,7 @@ sha256sums=('720e9852dc03d0f7241160a598785cf64a7001ea83be0e2ce127d886488d1b95'
             'e17e218744dd4f2ebb9c6b9635b8e50aebc1370a7fd5c009e0fb72297baf1c0c'
             'f651689716d7e61870c050334baf1bfc0e44a2fb8f39c68b2a1412de140f97fe'
             '8aa452d4de64938dbe60eb883a57780f7cb889a96db3c29aaa5fb9b9966de004')
-sha256sums_x86_64=('67dfbbad06405c4e93ad9c78644b9141dfeea817b89bd1a7ccfcae0ff255b79f')
+sha256sums_x86_64=('4ba10cc2add82c4337b5a82241d6bc13d48436d215d7cfce627053b833f41ce3')
 
 
 prepare() {
