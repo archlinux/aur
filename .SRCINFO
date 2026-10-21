@@ -1,7 +1,7 @@
 pkgbase = ahwoo-bin
 	pkgdesc = Launcher for Ahwoo games
 	pkgver = 2026.10.17.1348
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neutrino.ahwoo.com
 	arch = x86_64
 	license = LicenseRef-custom

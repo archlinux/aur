@@ -1,6 +1,6 @@
 pkgname=ahwoo-bin
 pkgver=2026.10.17.1348
-pkgrel=1
+pkgrel=2
 pkgdesc='Launcher for Ahwoo games'
 arch=('x86_64')
 url='https://neutrino.ahwoo.com'
