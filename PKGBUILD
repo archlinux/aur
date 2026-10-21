@@ -1,7 +1,7 @@
 # Maintainer: Emmy D'Anello <emmy.danello@luemy.eu>
 
 pkgname=olvid
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=0
 epoch=1
 pkgdesc="French instant, private and secure messenger"
@@ -11,7 +11,7 @@ license=('custom')
 provides=('olvid')
 source=("https://static.olvid.io/linux/olvid-${pkgver}.tar.gz")
 
-sha256sums=("738b872b3b1c026b7f17edbd5b6be168880c9e5b1f0df6b10c037bd4cf14d5bf")
+sha256sums=("c97cd2283e2d7ad40d54a06131fc40ccf7a74c946b24a79202881243be472c8e")
 
 package() {
   mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
