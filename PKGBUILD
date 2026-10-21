@@ -12,7 +12,7 @@ depends=('libosmocore'
          'libgtpnl'
          'nftables'
          'talloc')
-conflicts=("${pkgname%}-git")
+conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-upf.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('122ff0be5747718a469b13734a3b4bc1f6e2ebae527e2b0ed03f79954572d273')
