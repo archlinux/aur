@@ -1,0 +1,24 @@
+pkgbase = crit
+	pkgdesc = Review AI coding agents' plans, diffs and running apps in the browser, local-first
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/tomasz-tomczyk/crit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = git
+	makedepends = go>=2:1.26
+	depends = glibc
+	depends = git
+	optdepends = github-cli: GitHub PR comment sync
+	optdepends = glab: GitLab MR comment sync
+	optdepends = jujutsu: jj repository support
+	optdepends = sapling-scm: Sapling repository support
+	optdepends = xdg-utils: open reviews in the browser
+	optdepends = libnotify: desktop notifications
+	optdepends = xdg-user-dirs: locate Documents dir for crit install
+	options = !lto
+	source = crit-0.23.0.tar.gz::https://github.com/tomasz-tomczyk/crit/archive/refs/tags/v0.23.0.tar.gz
+	sha256sums = 4b1c0f9835f752ac07014ef306a60051f4fb1839f1911f8916eceff0938f2383
+
+pkgname = crit
