@@ -1,7 +1,7 @@
 # Maintainer: jmx4013 <jmx4013@proton.me>
 
 pkgname=fushi
-pkgver=2.9.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Immersion language-learning suite: EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining'
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('GPL-3.0-or-later')
 depends=('gtk3' 'libkeybinder3' 'mpv' 'wpewebkit')
 makedepends=('clang' 'cmake' 'ninja' 'pkg-config' 'unzip' 'libwpe' 'wpebackend-fdo')
 optdepends=('qbittorrent: fallback torrent engine when the bundled libtorrent is unavailable')
-source=("https://github.com/hajisensai/Fushi/archive/refs/tags/v2.9.1.tar.gz#/fushi-2.9.1.tar.gz"
+source=("https://github.com/hajisensai/Fushi/archive/refs/tags/v3.0.0.tar.gz#/fushi-3.0.0.tar.gz"
         'https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.44.0-stable.tar.xz'
         'fix-fushidicts-cstdint.patch'
         'wpe-inappwebview-linux.patch'
         'fushi.desktop')
-sha256sums=('2a97c7e4cd4d96b5d41e48574003864957fab8b2243d232fcd900d9814404133'
+sha256sums=('6222e9e6118626e22176af925f1e97f6425f4d5063fc3ecca9214f3e7a33c483'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
             '8334fd0a75f8cfdfff0873b3c9ae9f0d19acfffdf59c07d4cb4d95b1e3ed2391'
             'e610eb1629f86bb8812402681bd68503ca038423a684cb5fb037b4914450d83e'
@@ -39,7 +39,7 @@ prepare() {
 # to mirror the official desktop release: version=<pkgver>, build_number=<seq>
 # (the releaseSequence of latest-stable-fushi.json, which the in-app updater
 # compares). Bump _release_seq together with pkgver when updating.
-_release_seq=16909
+_release_seq=19763
 build() {
   export FLUTTER_ROOT="${srcdir}/flutter"
   export PATH="${FLUTTER_ROOT}/bin:${PATH}"
@@ -60,7 +60,7 @@ package() {
   ln -s /usr/lib/fushi/fushi "${pkgdir}/usr/bin/fushi"
   # Linux has no version pipeline: overwrite the pubspec-derived version.json
   # so PackageInfo (and thus the in-app updater) reports the real release.
-  printf '{"app_name":"fushi","version":"2.9.1","build_number":"16909","package_name":"fushi"}' > "${dest}/data/flutter_assets/version.json"
+  printf '{"app_name":"fushi","version":"3.0.0","build_number":"19763","package_name":"fushi"}' > "${dest}/data/flutter_assets/version.json"
   install -Dm644 "${srcdir_app}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/fushi.desktop" "${pkgdir}/usr/share/applications/fushi.desktop"
   install -Dm644 "${srcdir_app}/fushi/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" \
