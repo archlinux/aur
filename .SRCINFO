@@ -1,6 +1,6 @@
 pkgbase = ryuski
 	pkgdesc = Local, trainable command assistant with a CLI and QML plugin
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/RyuZinOh/ryuSki
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ryuski
 	depends = sqlite
 	depends = qt6-declarative
 	optdepends = kitty: default terminal for "go to <folder>" (override with $TERMINAL)
-	source = ryuski-0.0.3.tar.gz::https://github.com/RyuZinOh/ryuSki/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = f76ea746785f392969257270130fe8d42cdb953c55c2cebe2d44e48f67e48f74
+	source = ryuski-0.0.4.tar.gz::https://github.com/RyuZinOh/ryuSki/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 839486c3514df255947847606d87604f6894863a564098e2e8d889d21b07202d
 
 pkgname = ryuski
