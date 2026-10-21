@@ -1,7 +1,7 @@
 pkgbase = openlogi
 	pkgdesc = Local-first companion for Logitech HID++ peripherals (native alternative to Logitech Options+)
 	pkgver = 0.8.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AprilNEA/OpenLogi
 	arch = x86_64
 	arch = aarch64

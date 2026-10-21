@@ -1,7 +1,7 @@
 # Maintainer: Anıl Akpınar <4ni1ak@gmail.com>
 pkgname=openlogi
 pkgver=0.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Local-first companion for Logitech HID++ peripherals (native alternative to Logitech Options+)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AprilNEA/OpenLogi"
@@ -42,7 +42,7 @@ package() {
   done
 
   install -Dm644 packaging/linux/desktop/openlogi.desktop \
-    "$pkgdir/usr/share/applications/openlogi.desktop"
+    "$pkgdir/usr/share/applications/org.openlogi.openlogi.desktop"
 
   install -Dm644 design/icon/openlogi.png \
     "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/openlogi.png"
