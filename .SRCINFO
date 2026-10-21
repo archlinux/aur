@@ -1,6 +1,6 @@
 pkgbase = deltoids-bin
 	pkgdesc = Tools for reviewing code in the agentic era
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/juanibiapina/deltoids
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = deltoids-bin
 	provides = deltoids
 	conflicts = deltoids
 	options = !strip
-	source_x86_64 = deltoids-x86_64-0.15.0.tgz::https://github.com/juanibiapina/deltoids/releases/download/v0.15.0/deltoids-cli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9ecb6d89e11c724a16215ec925eb912735169882507098c0ef122654dab62749
-	source_aarch64 = deltoids-aarch64-0.15.0.tgz::https://github.com/juanibiapina/deltoids/releases/download/v0.15.0/deltoids-cli-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 63e31796ca85614887d91c87358a33db8c51ddaeebc21451cee336ccb55ad10c
+	source_x86_64 = deltoids-x86_64-0.16.0.tgz::https://github.com/juanibiapina/deltoids/releases/download/v0.16.0/deltoids-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a669371c74a6419cdc31b36d559f162eb8cf17e732a9a934d0ef09e9b861e1fc
+	source_aarch64 = deltoids-aarch64-0.16.0.tgz::https://github.com/juanibiapina/deltoids/releases/download/v0.16.0/deltoids-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7d0746a1aaeb8637f5836ced660c48a74bf322ada0c962995da6265ee3d69f89
 
 pkgname = deltoids-bin
