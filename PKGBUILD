@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Viewer, editor, CLI and MCP server for tabular data: 30+ formats, SQL, databases, cloud"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo' 'clang' 'cmake' 'nasm' 'pkgconf' 'asciidoctor')
 conflicts=('octa-bin')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2cce72e570d7f4b6687db067058b7e3d6099a32034e7d8acb8046c480f9a1472')
+sha256sums=('00c3ee5e8e3573528a5c687ddc222947baaa27d5aef745d175f33e0e638b6e3a')
 
 prepare() {
     cd "$pkgname-$pkgver"
