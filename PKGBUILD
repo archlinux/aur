@@ -4,7 +4,7 @@
 _pyname="geobug"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=0.9.1+6.r177.20260814.ebff821
+pkgver=0.9.2.r183.20261005.3d875ef
 pkgrel=1
 pkgdesc="Client for GeoClue. It can display your location information and save a track of your movements to a GPX-file."
 arch=(
