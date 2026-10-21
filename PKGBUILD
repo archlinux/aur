@@ -3,7 +3,7 @@
 pkgname=thunderbird-eas-4-tbsync
 _file=1032036
 _name=provider_fur_exchange_activesync
-pkgver=5.3.10
+pkgver=5.3.11
 pkgrel=1
 pkgdesc='Provider for Exchange ActiveSync Version History'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/jobisoft/EAS-4-TbSync'
 license=('MPL2')
 groups=('office')
 depends=(
-  'thunderbird>=128'
+  'thunderbird>=153'
 )
 source=("https://addons.thunderbird.net/thunderbird/downloads/file/${_file}/${_name}-${pkgver}-tb.xpi")
 noextract=("${_name}-${pkgver}-tb.xpi")
