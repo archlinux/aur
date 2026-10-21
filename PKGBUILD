@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-pdf-studio-bin
 _pkgname=Open.PDF.Studio
-pkgver=2026.43.0
+pkgver=2026.43.4
 pkgrel=1
 pkgdesc="a lightweight, native desktop application that provides professional-grade PDF annotation, markup, and editing tools without subscriptions, telemetry, or bloatware. "
 arch=('x86_64')
@@ -15,11 +15,12 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('098323d8883750acfee78519817c6ea9687ad5d51361e4070dbe5d24f1ce6bd6')
+sha256sums=('fef90e35ae2f98e3fbeeffde98faeb171fe2ec6e29854bf9cff20d866aa653da')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=Office;/" "${srcdir}/usr/share/applications/${_pkgname//./ }.desktop"
-    [[ -d "${srcdir}/usr/share/icons/hicolor/256x256@2" ]] && mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
+    local _icon_dir="${srcdir}/usr/share/icons/hicolor"
+	[[ -d "${_icon_dir}/256x256@2" && ! -d "${_icon_dir}/512x512" ]] && mv "${_icon_dir}/256x256@2" "${_icon_dir}/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
