@@ -2,7 +2,7 @@
 
 _zig=zig
 pkgname="anyzig"
-pkgver=2026_10_13
+pkgver=2026_10_20
 pkgrel=1
 pkgdesc="One zig to rule them all"
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('8fec29a1f24f31ff4d4a62918c6a4f834322a3035c6f7d49ec45bf3268c20755c0e4ff413121936d1da3f0ebde353b9d8e2879125ea9b428d4c2dbdcb37428bc')
+b2sums=('90fd49f7b67c2e5c2c06841b089cef45b24e2f3962fb5eafc3d92f029cac43b65e530678dd5d3b90abfa6f4ce0a4ba13f5473e85fa467fd3b3a2c71b994bad0d')
 
 build() {
   local zig_options=(
