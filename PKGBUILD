@@ -3,8 +3,8 @@
 
 _pkgname="fsearch"
 pkgname="$_pkgname-git"
-pkgver=0.3.r43.g975be2f
-pkgrel=2
+pkgver=0.3.r91.gc20e6b1
+pkgrel=1
 pkgdesc="A fast graphical file search utility"
 url="https://github.com/cboxdoerfer/fsearch"
 license=('GPL-2.0-or-later')
@@ -26,27 +26,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-  '0001-fix_new_window.patch'
-)
-sha256sums=(
-  'SKIP'
-  '66b92a2bcba6006469d8aecb94612d4f633f47800bbe502d6e2061d5218478b1'
-)
-
-prepare() {
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
-      patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
-    fi
-  done
-}
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
