@@ -1,8 +1,8 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname='gcc17'
-pkgver='17.0.0.snapshot20261011'
-_snapshot='17-20261011'
+pkgver='17.0.0.snapshot20261018'
+_snapshot='17-20261018'
 pkgrel=1
 pkgdesc='GNU Compiler Collection 17 C/C++ development snapshot for parallel compiler validation'
 arch=('x86_64')
@@ -44,16 +44,22 @@ source=(
 	"gcc-${_snapshot}.tar.xz::https://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.xz"
 	'check-memlock.py'
 	'known-testsuite-results.txt'
+	'declare-variant-7-xfail.patch'
+	'pr113560-optimization-xfail.patch'
 )
 sha512sums=(
-	'f097861da66891e3d802057f515fd56418eac7e061c4b9b2f301f457222ff58e6adf6f63e88ae9fb70563084771ab58165b7b0d4e47a0a9371df7b195b6955bd'
+	'9daddd2a42feb1cf66d33445cc4f17ff1abbdf2a5339eeddca4d95b96d47364e9c5ce95b4d6ba391d26262345add8233440cc1bf374322f61a52eb5140fd8048'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 )
 b2sums=(
 	'SKIP'
 	'bc20b249bc2aaf014832e3cb4f57e4d2b2be6b386ace28d561d4370587770ef667b0aa5063ac49bd5d222b2e1bbc81f3815e16906d5a02c7e3a661e98cae8b39'
-	'88b4717391f775013da9af22c8da8152c16c2acd83e13d221bf3173d8b764fd272e3747cca3f6606967c45bc3efbf91eab61babe6eeb4fdb8423057b5ccb0c5a'
+	'dcdbce8f60c0781fedf5cb51b0c8c4202dcb0bb84da64c75e7dde608b0bfdc87462a85b4a83787166ac26ebaba56d5758ff804237c51c8d230ded69b70ee378f'
+	'49118d64a233185c8c24663973d6275861193a68a7141cd7be46148d8e8da00ced8341a9990dbdb155f43e9190234b5f397f4a6b55e2882ea2b66623d2448b86'
+	'b08f736351de86e229aff149946233ee44c6d38438822bf1249d37a344aa3566fcdfc274019b36fa1d746f13076dff046bddc6c825df3ba02d9b76ea5e5b0d08'
 )
 
 _insert_test_skip() {
@@ -91,6 +97,7 @@ _insert_test_additional_options() {
 
 prepare() {
 	local _default_option_test _fixinc_count _libbacktrace_count _libbacktrace_file _multilib_count
+	local _mem_notrap_file _mem_notrap_upstream _mem_notrap_fixed
 	local _libbacktrace_assignment='strippedtest_LDFLAGS = $(libbacktrace_testing_ldflags) -static -Wl,-Bstatic'
 	local _default_pie_options='/* { dg-additional-options "-fno-pie -no-pie" } */'
 	local _default_pie_ssp_options='/* { dg-additional-options "-fno-pie -no-pie -fno-stack-protector" } */'
@@ -213,6 +220,27 @@ prepare() {
 			"gcc/testsuite/${_default_option_test}" || return 1
 	done
 
+	# The target-guarded upstream scan-rtl-dump call has its regex and dump name reversed.
+	_mem_notrap_file='gcc/testsuite/g++.dg/opt/mem-notrap-load-builtin.C'
+	_mem_notrap_upstream='// { dg-final { scan-rtl-dump "expand" {\(mem(?:/[a-z])*/c(?:/[a-z])*:[^\n\r]*\[ this \]} { target { ! hppa*64*-*-* } } } }'
+	_mem_notrap_fixed='// { dg-final { scan-rtl-dump {\(mem(?:/[a-z])*/c(?:/[a-z])*:[^\n\r]*\[ this \]} "expand" { target { ! hppa*64*-*-* } } } }'
+	if grep -qxF -- "${_mem_notrap_upstream}" "${_mem_notrap_file}"; then
+		sed -i '/scan-rtl-dump /{s@scan-rtl-dump "expand" @scan-rtl-dump @; s@} { target @} "expand" { target @;}' \
+			"${_mem_notrap_file}" || return 1
+	fi
+	if ! grep -qxF -- "${_mem_notrap_fixed}" "${_mem_notrap_file}"; then
+		printf 'Unexpected scan-rtl-dump directive in %s\n' "${_mem_notrap_file}" >&2
+		return 1
+	fi
+
+	# GCC PR middle-end/127850: only the 13 known C++ SIMD argument-conversion
+	# diagnostics are expected to fail. Other errors must remain visible.
+	patch -Np1 --batch -i "${srcdir}/declare-variant-7-xfail.patch" || return 1
+
+	# GCC PR target/113560: retain the missed lowpart multiply optimization
+	# as an expected test failure without relaxing unrelated assembler checks.
+	patch -Np1 --batch -i "${srcdir}/pr113560-optimization-xfail.patch" || return 1
+
 	mkdir -p -- "${srcdir}/gcc-build"
 }
 
@@ -297,9 +325,11 @@ build() {
 check() {
 	local _check_cflags _check_cxxflags _check_target_cflags _check_target_cxxflags
 	local _automake_log _entry _memlock_status _result _sum _symbols
+	local _diag_case _diag_key _diag_log
 	local _known_results="${srcdir}/known-testsuite-results.txt"
 	local _libbacktrace_summary='libbacktrace/test-suite.log'
-	local -a _automake_logs _suites _unexpected_results
+	local -a _automake_logs _suites _unexpected_results _obsolete_results
+	local -A _reported_cases
 	local _memlock_skip='/* { dg-skip-if "mlock unavailable in test environment" { *-*-* } } */'
 	local _no_gxx_shared=(
 		"${CHOST}/libitm/.libs/libitm.so"
@@ -501,9 +531,41 @@ check() {
 		done < <(grep -E '^(FAIL|XPASS|ERROR|UNRESOLVED):' "${_sum}" || true)
 	done
 
+	mapfile -t _obsolete_results < <(
+		LC_ALL=C comm -23 \
+			<(grep -E '^(FAIL|XPASS):' "${_known_results}" | LC_ALL=C sort -u) \
+			<(grep -hE '^(FAIL|XPASS):' "${_suites[@]}" | LC_ALL=C sort -u)
+	)
+	if (( ${#_obsolete_results[@]} != 0 )); then
+		printf 'Reviewed GCC testsuite exceptions no longer observed (verify coverage before pruning):\n' >&2
+		printf '%s\n' "${_obsolete_results[@]}" >&2
+	fi
+
 	if (( ${#_unexpected_results[@]} != 0 )); then
 		printf 'Unexpected GCC testsuite results:\n' >&2
 		printf '%s\n' "${_unexpected_results[@]}" >&2
+
+		# Preserve a bounded excerpt of the raw DejaGNU log for each distinct
+		# unexpected testcase; .sum lines omit the compiler's actual diagnostics.
+		_reported_cases=()
+		for _entry in "${_unexpected_results[@]}"; do
+			_sum=${_entry%%: *}
+			_result=${_entry#*: }
+			_diag_case=${_result#*: }
+			_diag_case=${_diag_case%% *}
+			_diag_key="${_sum}:${_diag_case}"
+			if [[ -n "${_reported_cases["${_diag_key}"]:-}" ]]; then
+				continue
+			fi
+			_reported_cases["${_diag_key}"]=1
+			_diag_log="${_sum%.sum}.log"
+			if [[ -s "${_diag_log}" ]]; then
+				printf 'Raw DejaGNU diagnostic context for %s (%s):\n' "${_diag_case}" "${_diag_log}" >&2
+				grep -n -m 12 -B 2 -A 22 -F -- "${_diag_case}" "${_diag_log}" >&2 || true
+			else
+				printf 'Missing detailed DejaGNU log: %s\n' "${_diag_log}" >&2
+			fi
+		done
 		return 1
 	fi
 

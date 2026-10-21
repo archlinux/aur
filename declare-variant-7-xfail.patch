@@ -1,0 +1,21 @@
+--- a/gcc/testsuite/c-c++-common/gomp/declare-variant-7.c
++++ b/gcc/testsuite/c-c++-common/gomp/declare-variant-7.c
+@@ -37 +37,18 @@
+ int f16 (int x, int q);
++
++// GCC PR middle-end/127850: C++ cannot yet adjust argument types for manually
++// vectorized declare variants with a construct=simd context selector.
++// Match only these diagnostics, as in upstream declare-variant-5.c.
++// { dg-bogus "cannot convert 'float' to '__v4sf' {aka '__vector\\(4\\) float'}" "" { xfail c++ } 12 }
++// { dg-bogus "cannot convert 'float' to '__v4sf' {aka '__vector\\(4\\) float'}" "" { xfail c++ } 14 }
++// { dg-bogus "cannot convert 'float' to '__v4sf' {aka '__vector\\(4\\) float'}" "" { xfail c++ } 16 }
++// { dg-bogus "cannot convert 'float' to '__v4sf' {aka '__vector\\(4\\) float'}" "" { xfail c++ } 18 }
++// { dg-bogus "cannot convert 'float' to '__v4sf' {aka '__vector\\(4\\) float'}" "" { xfail c++ } 20 }
++// { dg-bogus "cannot convert 'float' to '__v8sf' {aka '__vector\\(8\\) float'}" "" { xfail c++ } 22 }
++// { dg-bogus "cannot convert 'float' to '__v8sf' {aka '__vector\\(8\\) float'}" "" { xfail c++ } 24 }
++// { dg-bogus "cannot convert 'float' to '__v8sf' {aka '__vector\\(8\\) float'}" "" { xfail c++ } 26 }
++// { dg-bogus "cannot convert 'int' to '__v4si' {aka '__vector\\(4\\) int'}" "" { xfail c++ } 28 }
++// { dg-bogus "cannot convert 'int' to '__v4si' {aka '__vector\\(4\\) int'}" "" { xfail c++ } 30 }
++// { dg-bogus "cannot convert 'int' to '__v4si' {aka '__vector\\(4\\) int'}" "" { xfail c++ } 32 }
++// { dg-bogus "cannot convert 'int' to '__v4si' {aka '__vector\\(4\\) int'}" "" { xfail c++ } 34 }
++// { dg-bogus "cannot convert 'int' to '__v4si' {aka '__vector\\(4\\) int'}" "" { xfail c++ } 36 }

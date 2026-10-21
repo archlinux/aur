@@ -1,7 +1,6 @@
-# Observed GCC 17-20261011 test results from the verified Bragi clean-chroot run.
-# Exact DejaGNU result lines only; new FAIL/XPASS results require maintainer review.
+# Reviewed GCC 17 DejaGNU FAIL/XPASS exceptions.
+# Exact result lines only; new failures and unexpected successes require review.
 # No wildcard, regex, filename-prefix, ERROR or UNRESOLVED exemptions.
-FAIL: c-c++-common/analyzer/omp-parallel-for-1.c (test for excess errors)
 FAIL: g++.dg/guality/pr55665.C   -O2 -flto -fno-use-linker-plugin -flto-partition=none  line 23 p == 40
 FAIL: g++.dg/guality/pr86687.C   -O1  line 16 dir_hint.p == 3
 FAIL: g++.dg/guality/pr86687.C   -O2  line 16 dir_hint.p == 3
@@ -10,7 +9,6 @@ FAIL: g++.dg/guality/pr86687.C   -O2 -flto -fuse-linker-plugin -fno-fat-lto-obje
 FAIL: g++.dg/guality/pr86687.C   -O3 -g  line 16 dir_hint.p == 3
 FAIL: g++.dg/guality/pr86687.C   -Os  line 16 dir_hint.p == 3
 FAIL: g++.dg/guality/pr86687.C  -Og  line 16 dir_hint.p == 3
-FAIL: g++.dg/tree-ssa/ssa-dse-1.C   scan-tree-dump-times dse1 "MEM <char\\[[0-9]+]> \\[\\(struct FixBuf \\*\\)&<retval> \\+ [0-9]+B\\] = {}" 1
 FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
 FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
 FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  -DPREVENT_OPTIMIZATION line 20 i == 1

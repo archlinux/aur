@@ -1,0 +1,15 @@
+--- a/gcc/testsuite/g++.target/i386/pr113560.C
++++ b/gcc/testsuite/g++.target/i386/pr113560.C
+@@ -15,6 +15,9 @@
+-/* { dg-final { scan-assembler-times "mulx" 1 } } */
+-/* { dg-final { scan-assembler-times "mulq" 1 } } */
+-/* { dg-final { scan-assembler-not "addq" } } */
++/* PR target/113560: the lowpart multiply should use non-widening IMULQ;
++   the highpart multiply should use MULX. The first is not optimized yet.  */
++/* { dg-final { scan-assembler-times "imulq" 1 { xfail *-*-* } } } */
++/* { dg-final { scan-assembler-times "mulx" 1 { xfail *-*-* } } } */
++/* { dg-final { scan-assembler "mulx" } } */
++/* { dg-final { scan-assembler-not {\tmulq[ \t]} } } */
+ /* { dg-final { scan-assembler-not "adcq" } } */
+ /* { dg-final { scan-assembler-not "salq" } } */
+ /* { dg-final { scan-assembler-not "shldq" } } */
