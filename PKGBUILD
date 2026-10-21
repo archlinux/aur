@@ -11,7 +11,7 @@
 # Von dort wird gepusht — nicht von hier.
 
 pkgname=openxr-vr-control
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Controller bindings for OpenVR and OpenXR games on Linux (obah + xrBinder) with a GUI"
 arch=('any')
@@ -29,7 +29,7 @@ conflicts=('openxr-vr-control-git')
 # OpenXR-VR-Control-<version> (Repo-Name, nicht pkgname).
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Wird von 'updpkgsums' im AUR-Ordner gesetzt — NICHT von Hand eintragen.
-sha256sums=('417109af27d81dadc08e57746802dca7c0c48172c15b036007b423f2e26b1884')
+sha256sums=('99e73f00465969fc652e777c981f277a3133615dbecf457b37239a8c42cb8dc4')
 
 package() {
     cd "$srcdir/OpenXR-VR-Control-$pkgver"
