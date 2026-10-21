@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.124.4
+pkgver=0.124.20
 _electronversion=44
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker."
@@ -29,9 +29,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('7b754b7d06f0fc6ed7a69a4baa751c2e27b556bab8389a3bea5ad61ec379d34f')
-sha256sums_x86_64=('f68a18b3986cba72439634a674605e936c5169342c7d78fd989c8a0b6629141a')
+            'a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953')
+sha256sums_aarch64=('76430179b09a678a3977bcf6b0478d3d801e6ce8f66995effd569ba8c37f95a4')
+sha256sums_x86_64=('f8591d2efcc4a16655a66f308ed085fb5e4734fdfbe030667e04cab2eb244dc1')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
