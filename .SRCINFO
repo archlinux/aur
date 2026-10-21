@@ -1,6 +1,6 @@
 pkgbase = lfk-bin
 	pkgdesc = Lightning Fast Kubernetes navigator - keyboard-focused TUI for managing K8s clusters
-	pkgver = 0.19.10
+	pkgver = 0.19.11
 	pkgrel = 1
 	url = https://github.com/janosmiko/lfk
 	license = Apache-2.0
@@ -10,10 +10,10 @@ pkgbase = lfk-bin
 	conflicts = lfk
 	provides = lfk
 	arch = aarch64
-	source_aarch64 = lfk-bin_0.19.10_aarch64.tar.gz::https://github.com/janosmiko/lfk/releases/download/v0.19.10/lfk_0.19.10_linux_arm64.tar.gz
-	sha256sums_aarch64 = d516e3c1073eacb67ee4ca107250d168188fe6faca82233a2e009ffcaadfddc1
+	source_aarch64 = lfk-bin_0.19.11_aarch64.tar.gz::https://github.com/janosmiko/lfk/releases/download/v0.19.11/lfk_0.19.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3791b663b12b3f6a7729fbf9a31c5bb57ee767b72ca3ba977178415a95186410
 	arch = x86_64
-	source_x86_64 = lfk-bin_0.19.10_x86_64.tar.gz::https://github.com/janosmiko/lfk/releases/download/v0.19.10/lfk_0.19.10_linux_amd64.tar.gz
-	sha256sums_x86_64 = 05d8ed6baa066562894f77932bcac205cb1960a7108692a2b17995664ae8a085
+	source_x86_64 = lfk-bin_0.19.11_x86_64.tar.gz::https://github.com/janosmiko/lfk/releases/download/v0.19.11/lfk_0.19.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9c53461b67d5a1f994ba66fc613afb24884158392747094df931b996e2074750
 	
 pkgname = lfk-bin
