@@ -1,10 +1,10 @@
-# Maintainer: fibsussy <noahlykins@gmail.com>
+# Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=krosshair
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Crosshair overlay for games on linux using Vulkan"
 arch=('x86_64' 'aarch64')
-url="https://github.com/fibsussy/krosshair"
+url="https://github.com/noahlyk/krosshair"
 license=('GPL3')
 depends=('vulkan-icd-loader' 'libgl' 'libx11')
 makedepends=()
@@ -19,8 +19,8 @@ elif [ "$_arch" = "aarch64" ]; then
 fi
 
 source=(
-    "krosshair-${pkgver}-linux-${_arch}.tar.gz::https://github.com/fibsussy/krosshair/releases/download/v${pkgver}/krosshair-linux-${_arch}.tar.gz"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/fibsussy/krosshair/v${pkgver}/LICENSE"
+    "krosshair-${pkgver}-linux-${_arch}.tar.gz::https://github.com/noahlyk/krosshair/releases/download/v${pkgver}/krosshair-linux-${_arch}.tar.gz"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/noahlyk/krosshair/v${pkgver}/LICENSE"
 )
 sha256sums=('SKIP' 'SKIP')
 
