@@ -1,0 +1,25 @@
+pkgbase = libvirt-iso-alpine-virt-bin
+	pkgdesc = Official Alpine Linux virtualization ISO for libvirt
+	pkgver = 3.24.2
+	pkgrel = 1
+	url = https://www.alpinelinux.org/downloads/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	makedepends = gnupg
+	noextract = alpine-virt-3.24.2-x86_64.iso
+	source = alpine-virt-3.24.2-x86_64.iso::https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.2-x86_64.iso
+	source = alpine-virt-3.24.2-x86_64.iso.signature::https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.2-x86_64.iso.asc
+	source = alpine-release-key.pubkey::https://www.alpinelinux.org/keys/ncopa.asc
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 0482D84022F52DF1C4E7CD43293ACD0907D9495A
+	sha512sums = 7563011cefca3f84c77ddab032d47448216e1fc9b730b7d09be9cc26c8d5a69c1b75c9a404f5168654c76128fa231d83b248e24466d6c5dd2655696f44220aba
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
+	b2sums = b4490820dbd0e3d62356670b10ea36b2fedf091641ca574da2bcacf564e36e246c559c5ac6753f1849b170f7a297669e459e8ac385b31418dde9e9a7d843ca41
+	b2sums = a0df34a1645d2c21a80dff3776a53fe8b71d1daae06f11fa6f0f5446a496caa42b4d5c2365d5b6f8efcc2460f9c3182c77f0204783ff45cba43201c18ae12057
+	b2sums = 6ca732810a034a28e8297a022a7bbcef378ce5534c21d772bed0fe1668046df0594e2c6c66638efd23a894eb59990c6ed34c10e4f7653ceb25f2b9843365b8b7
+
+pkgname = libvirt-iso-alpine-virt-bin
