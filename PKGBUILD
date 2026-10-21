@@ -4,8 +4,8 @@ _pyname="iksemel"
 _gitname="${_pyname}"
 _pkgname="lib${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=1.6.2.r177.20240917.5abdbce
-pkgrel=2
+pkgver=1.6.2+2.r179.20261009.0952acd
+pkgrel=1
 pkgdesc="XML parser library mainly designed for Jabber applications. It provides SAX, DOM, and special Jabber stream APIs."
 arch=(
   'i686'
