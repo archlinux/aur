@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.70
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: hardware controls, a PipeWire submixer and an OpenDeck plugin for the Elgato Wave XLR Pro, XLR Dock, Wave XLR, MK.2 family and Wave:3"
 arch=('x86_64')
@@ -11,7 +11,9 @@ depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' '
 makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf' 'python')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
-            'opendeck: Stream Deck control through the bundled plugin')
+            'opendeck: Stream Deck control through the bundled plugin'
+            'gdk-pixbuf2: SVG application icons in the UI'
+            'librsvg: SVG application icons in the UI')
 install=openxlr.install
 # The receipt below hashes the payload; makepkg must not strip it afterwards.
 options=('!strip')
@@ -25,7 +27,7 @@ if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     depends+=(qt6-websockets)
 fi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('832c5bf85bf5684652863530300d9d222f4b9508252abc59f96abd0499c70773')
+sha256sums=('21e6f24d2b4902aaf93ae74cdaf1107c4add192bce65cd437026e69526ca68cb')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -66,6 +68,8 @@ WRAP
     "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/51-openxlr-pro-raw-names.conf"
   install -Dm644 packaging/52-openxlr-mk1-capture-hold.conf \
     "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/52-openxlr-mk1-capture-hold.conf"
+  install -Dm644 packaging/53-openxlr-wave3-capture-hold.conf \
+    "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/53-openxlr-wave3-capture-hold.conf"
 
   # The reference unit points into a source checkout; the package runs the wrapper.
   sed 's|^ExecStart=.*|ExecStart=/usr/bin/openxlr-daemon|' packaging/openxlr-daemon.service |
