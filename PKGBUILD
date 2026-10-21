@@ -1,7 +1,7 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=ani2xcursor
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5426f8e775b10c2b4c7f8d4758377755fadeb91e31b15cad35ed9a2a434bc9a4')
+sha256sums=('312324813f67648599cbe997f54641637e27b2c425fe5b12564e3ed912e62d1a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
