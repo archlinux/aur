@@ -1,21 +1,25 @@
 pkgbase = blend2d-git
 	pkgdesc = A high-performance 2D vector graphics engine written in C++
-	pkgver = r87.592d1ba
+	pkgver = 0.21.3.r308.20260905.58ca946
 	pkgrel = 1
 	url = https://blend2d.com
 	arch = i686
 	arch = x86_64
-	license = custom:zlib
+	license = Zlib
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
+	makedepends = asmjit
+	makedepends = libstdc++
+	makedepends = python3
 	depends = glibc
-	provides = blend2d
+	depends = libasmjit.so
+	depends = libstdc++.so
+	provides = blend2d=0.21.3.r308.20260905.58ca946
+	provides = libblend2d.so
 	conflicts = blend2d
+	conflicts = libblend2d.so
 	source = blend2d::git+https://github.com/blend2d/blend2d
-	source = asmjit::git+https://github.com/asmjit/asmjit
-	sha1sums = SKIP
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = blend2d-git
-
