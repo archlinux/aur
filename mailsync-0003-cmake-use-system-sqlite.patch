@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Wed, 21 Oct 2026 09:08:34 +0300
+Subject: [PATCH 3/3] cmake: use system sqlite
+
+---
+ CMakeLists.txt | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 030b0c0..675fefd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,7 +44,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+   include_directories(Vendor)
+   include_directories(/usr/include/nlohmann)
+   include_directories(Vendor/icalendarlib)
+-  include_directories(Vendor/SQLiteCpp/include Vendor/SQLiteCpp/sqlite3)
++  include_directories(Vendor/SQLiteCpp/include)
+   include_directories(Vendor/StanfordCPPLib)
+   include_directories(MailSync MailSync/Models)
+ 
+@@ -53,7 +53,6 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+     MailSync/*.[ch]pp
+     MailSync/Models/*.h
+     MailSync/Models/*.[ch]pp
+-    Vendor/SQLiteCpp/sqlite3/*.[ch]
+     Vendor/SQLiteCpp/src/*.[ch]pp
+     Vendor/icalendarlib/*.h
+     Vendor/icalendarlib/*.cpp
+@@ -119,6 +118,6 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+   # Note: libtidy is loaded dynamically at runtime via dlopen() to support
+   # different sonames across Linux distributions (Debian/Ubuntu use
+   # libtidy.so.5deb1, Fedora uses libtidy.so.5, etc.)
+-  target_link_libraries(mailsync pthread sasl2 ssl crypto curl dl)
++  target_link_libraries(mailsync pthread sqlite3 sasl2 ssl crypto curl dl)
+ 
+ ENDIF()

@@ -35,6 +35,7 @@ depends=(
   'libstdc++'
   'libxml2'
   'openssl'
+  'sqlite'
   'tidy' # dlopen()ed by mailsync
   'util-linux-libs'
   'zlib'
@@ -47,6 +48,7 @@ makedepends=(
   'automake'
   'libtool'
   'c-ares'
+  'nlohmann-json'
   'xz'
   'nodejs'
   'npm'
@@ -65,13 +67,17 @@ source=(
   "$pkgname.sh.in"
   "mailspring-0001-build-take-Electron-zip-from-ELECTRON_ZIP_DIR.patch"
   "mailsync-0001-cmake-link-against-shared-system-libraries.patch"
+  "mailsync-0002-cmake-use-system-nlohmann-json.patch"
+  "mailsync-0003-cmake-use-system-sqlite.patch"
 )
 sha256sums=('6a225d223c439a39ffe31bd28debd983c1e3d3f44f87bb01cc4ac52f5ffbcc92'
             'SKIP'
             '761d2595a05d3d41b129d8fd9b7ad45a6175a0ccce311fe20341d21f8275007a'
             'ca87bb310800d33f29c3afca818bd93f96f1dfd88ca22402bc0e9cbbdc6a2d14'
             'ab90583d28509b05d39a43698bada97a34aa62a94d5f292daff1f52a337b7d35'
-            'c75cb94e5a272d7a3f4b506285b7ded0ee0a390c42fd43984bf3868d0907a1e0')
+            'c75cb94e5a272d7a3f4b506285b7ded0ee0a390c42fd43984bf3868d0907a1e0'
+            '2195d736ad8177281dbd132476bf51ccf38ce3025e68b5eb9cfb46bea407f38e'
+            'bd6711ffafb42ea5eb36b94d9d152b80a297ed7b59d4afca5e723aa374f9f0bd')
 
 _check_electron() {
   local _expected
@@ -123,6 +129,19 @@ prepare() {
   rm -rf \
     mailsync/Vendor/libetpan/third-party \
     mailsync/Vendor/mailcore2/Externals \
+
+  # use system nlohmann-json and sqlite
+  rm -rf \
+    mailsync/Vendor/nlohmann \
+    mailsync/Vendor/SQLiteCpp/sqlite3 \
+
+  # still vendored:
+  # - better-sqlite3's bundled sqlite: it's compiled with settings that change behaviour
+  #   (SQLITE_DEFAULT_FOREIGN_KEYS=1, SQLITE_DQS=0, UPDATE_DELETE_LIMIT), and Arch's sqlite
+  #   doesn't have them
+  # - spdlog: mailsync uses version 0.13, whose API doesn't match Arch's 1.x
+  # - libetpan and mailcore2: they're forks
+  # - SQLiteCpp, icalendarlib, StanfordCPPLib: not packaged in Arch
 
   (
     cd mailsync/Vendor/libetpan
