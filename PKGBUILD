@@ -2,8 +2,8 @@
 
 _pkgname="RatioMaster.NET"
 pkgname="ratiomaster.net-bin"
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Fake the upload and download a BitTorrent tracker sees, without a client (prebuilt)"
 url="https://github.com/NikolayIT/RatioMaster.NET"
 license=('MIT')
