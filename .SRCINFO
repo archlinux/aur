@@ -6,11 +6,11 @@ pkgbase = ziggity
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = zig
+	makedepends = zig=0.17.0
 	depends = git
 	provides = ziggity
 	options = !strip
-	source_x86_64 = ziggity-x86_64-0.54.0::https://github.com/simoarpe/ziggity/archive/v0.54.0.tar.gz
+	source_x86_64 = ziggity-x86_64-0.54.0.tgz::https://github.com/simoarpe/ziggity/archive/v0.54.0.tar.gz
 	sha256sums_x86_64 = 5533033ae4bc6a7ba166a999ebd00e3ddf0833d4e78194e3cc7c5d67348ee15b
 
 pkgname = ziggity

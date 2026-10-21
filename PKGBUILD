@@ -19,12 +19,13 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-makedepends=('zig')
+
+makedepends=('zig=0.16.0')
 depends=('git')
 
 options=(!strip)
 
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/archive/${_gitversion}.tar.gz")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
 sha256sums_x86_64=('5533033ae4bc6a7ba166a999ebd00e3ddf0833d4e78194e3cc7c5d67348ee15b')
 
 
