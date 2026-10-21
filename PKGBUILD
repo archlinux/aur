@@ -15,7 +15,7 @@ export DEBUG_CXXFLAGS="-g1"
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=7.3.1
+pkgver=7.3.2
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -91,12 +91,10 @@ source=(
   "$_pkgsrc_wallet_engine.$_pkgext"::"https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.$_pkgext"
   "$_wallet_engine_patch"::"https://github.com/desktop-app/patches/raw/$_wallet_engine_patch_commit/wallet-engine.patch"
 )
-sha256sums=(
-  '25b7193e84f936ecb73a7f5b06980bb3b3e138b744634d21616261e5541614b0'
+sha256sums=('77b78ca11aa88277cd73ac4fe991c821959c5a25ab770fde93e72228b5174639'
   'SKIP'
   '96600a6f393a27a0f84a41ad1d6d69f96014edc29e4d907c05e965666b0a66cf'
-  'b40aba82c39a42d0526a85ecfa40d613baa57b1a2d6600e601a42a1576b3b822'
-)
+  'b40aba82c39a42d0526a85ecfa40d613baa57b1a2d6600e601a42a1576b3b822')
 
 prepare() {
   # fix cmake patching for non-git sources
