@@ -3,7 +3,7 @@
 _gitauthor=reekta92
 _gitname=pinstar
 _appname=${_gitname}
-pkgname=${_gitname}-bin
+pkgname=${_appname}-bin
 pkgdesc="Canvas file editor compatible with Obsidian .canvas files"
 
 pkgver=1.1.3
