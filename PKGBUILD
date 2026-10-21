@@ -1,16 +1,16 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=kasetto
-pkgver=3.10.1
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="A declarative AI agent environment manager, written in Rust"
 arch=('x86_64')
 url="https://github.com/pivoshenko/kasetto"
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pivoshenko/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('4d8548304c0a2c6193756b3c892b00a955a64767d50baf92f268c0ee98e01f76')
+sha256sums=('df60c08057787dc896c039e9994cad6a1272694e46ed000d0b2579f3739aced5')
 
 prepare() {
   cd "$pkgname-$pkgver"
