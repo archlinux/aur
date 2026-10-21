@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=rv
-pkgver=0.23.2 # renovate: datasource=github-tags depName=a2-ai/rv
+pkgver=0.23.3 # renovate: datasource=github-releases depName=a2-ai/rv
 pkgrel=1
 pkgdesc="A declarative R package manager"
 url="https://github.com/a2-ai/rv"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('88b5171bacb9dff70fe9d5a944175bd7b2e1cb926a2c002d532befa1bf2dfb09eee9e9ee8cd4088991e3cc9aaa9c8397dbaf3f719147ea5735117a45bcbdf6b0')
+sha512sums=('fc710256aba03d891bc3afe7444b4fc7e9b71efa7e96932c90f009ee55f9d40f88968b998e00ee085eab36f9c605618a7a1f288e6b05802c787ecc60e745df0d')
