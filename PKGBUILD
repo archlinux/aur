@@ -1,6 +1,6 @@
 # Maintainer: Chomiam <axel.valens@ik.me>
 pkgname=noos-firewall
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Gestion graphique native et moderne du pare-feu UFW en Rust (GTK4 / Libadwaita)"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ makedepends=(
   'git'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chomiam/noos-firewall/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a1138642139e91e511fb9fdb023e93e4a2e3f880381e0a3e9fb01773af78861')
+sha256sums=('1e0bfd57000f7f1daf284950393d27138eb405e5c33fadee0b879e7b930db52c')
 
 prepare() {
   cd "$pkgname-$pkgver"
