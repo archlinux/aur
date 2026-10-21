@@ -1,6 +1,6 @@
 pkgbase=lua-cjson
 pkgname=(lua-cjson lua54-cjson lua53-cjson lua52-cjson lua51-cjson)
-pkgver=2.1.0.19
+pkgver=2.1.0.20
 pkgrel=1
 pkgdesc='A fast JSON parsing and encoding support for Lua.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/openresty/lua-cjson'
 license=('MIT')
 makedepends=('lua' 'lua54' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("https://github.com/openresty/$pkgbase/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d1aded44b4cfe5ec6b395e178902aba3eed1dbe7999a753c0662222de2890ec0')
+sha256sums=('a99fb872aa731274ac70453cd4e6b2e0e8fb978893063d512ca67c7c332510e1')
 
 _build() {
 	mkdir -p $1
