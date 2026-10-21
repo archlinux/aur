@@ -1,7 +1,7 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 
 pkgname=we-proton
-pkgver=ge11.7.30
+pkgver=ge11.11.31
 pkgrel=1
 _tag="we-proton-${pkgver//./-}"
 pkgdesc='修复 WeGame 和其上游戏在 Linux 的兼容问题，支持游戏加速器。基于 GE-Proton，集成部分 DW-Proton 补丁。'
@@ -12,7 +12,7 @@ optdepends=('steam: 在 Steam 里选用 WE-Proton'
             'wegame-launcher: 用 WE-Proton 运行 WeGame')
 options=('!strip' '!debug')
 source=("$url/releases/download/$_tag/$_tag.tar.xz")
-sha512sums=('70ee73a688df3b22bbb0c03b43ca884b9b4c30a50f74dcd70cb8b90bfa09b1773771cadbaad20267b5b0defefcbb126d86bdfecfafe86ee1a5204c2a698901fc')
+sha512sums=('bf3c34a2cc460877c02e343f3a86a9da94772cf4d8ea0f7639aec1acd4ee6883e3f346cdd8b560b3d83cdab53b3def2bb226d66965e6c253347dc5039f65de50')
 
 package() {
     local _name='WE-Proton Latest'
