@@ -1,7 +1,7 @@
-# Maintainer: xuanxuan1231 <xuanxuan1231 at helloswx dot top>
+# Maintainer: HelloSWX <i at helloswx dot top>
 
 pkgname=hmcl-region-patch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unofficial tool that patches HMCL so that it no longer treats the machine as mainland China"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!strip')
 # The archive is built and uploaded by the GitHub workflow that runs when a tag is pushed, so
 # the package only installs it: everything the tool needs, including the ASM library, is inside.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xuanxuan1231/hmcl-region-patch/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('89c6da7b5727f85b331d89d02e5a4c0edc605a281f25d38676decc9a215d9fd4')
+sha256sums=('f7207724e3ef44f1ac68256531b2e052a1c080cf4d7b6b681e4f643ff1336b3d')
 
 package() {
     install -Dm644 "$srcdir/$pkgname-$pkgver/lib/$pkgname.jar" \
