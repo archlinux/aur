@@ -2,7 +2,7 @@
 # Old Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=jfrog-cli
-pkgver=2.127.0
+pkgver=2.128.0
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('jfrog-cli-go')
 replaces=('jfrog-cli-go')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('0475e1487360329193f39e97dd981693c722a0d4e4131582b07f0c27c46d13c4581c719558ff9fdd37de36d3036d252152feced7dcee17ddde66391925d3dfa3')
+sha512sums=('f3471f49cbe2923ef62b239245a3a0760685d336fd7d082cdb43ec37ba8ea0737056671328b79f4cb7998c40163d677eae5b92b248a17fe183913d43b1fb5e6c')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
