@@ -2,7 +2,7 @@
 # Contributor: Anthony Wang <ta180m@gmail.com>
 _name=jupyterlab-git
 pkgname=jupyterlab-extension-jupyterlab_git
-pkgver=0.54.1
+pkgver=0.55.0
 pkgrel=1
 pkgdesc='Git extension for JupyterLab'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(jupyterlab jupyter-server python-nbdime jupyter-nbformat python-packagi
 makedepends=(npm python-hatchling python-hatch-jupyter-builder python-hatch-nodejs-version python-build python-installer)
 provides=(jupyterlab-extension-git python-jupyterlab-git)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b51cd170e0a939bbaa51ae59ea55d06bfe701d067dc90e57e59c51f8e2126866')
+sha256sums=('80f8922c1af676e4079545bd3f7bd974d1557386d1f8fbed3e360342bba43913')
 
 
 build() {
