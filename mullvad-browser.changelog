@@ -1,3 +1,7 @@
+Mullvad Browser 15.0.26 - October 20 2026
+ * All Platforms
+   * Bug 45397: Update CA intermediates and other settings dumps [tor-browser]
+
 Mullvad Browser 15.0.25 - October 13 2026
  * All Platforms
    * Updated NoScript to 13.6.36.1984
