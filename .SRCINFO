@@ -1,6 +1,6 @@
 pkgbase = zux
 	pkgdesc = mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte
-	pkgver = 1.21.4
+	pkgver = 1.21.5
 	pkgrel = 1
 	url = https://github.com/hrzlgnm/zux
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = zux
 	conflicts = zux-bin
 	options = !strip
 	options = !emptydirs
-	source = zux-v1.21.4.tar.gz::https://github.com/hrzlgnm/zux/archive/refs/tags/v1.21.4.tar.gz
-	sha256sums = ffb1f4143b2e305942e149c443ed2a6a348ef805cc350b6a6fe8995e17c099fc
+	source = zux-v1.21.5.tar.gz::https://github.com/hrzlgnm/zux/archive/refs/tags/v1.21.5.tar.gz
+	sha256sums = ab502df720a467958e8c056d69bacd656a807f54fa8ae0601dd5480d1226ef75
 
 pkgname = zux
