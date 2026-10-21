@@ -18,8 +18,8 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine-src-5.8
-pkgver=5.8.3
-pkgrel=3
+pkgver=5.8.4
+pkgrel=1
 _uetag="${pkgver}-release"
 _ueminor="5.8"
 _ueminor_us="5_8"

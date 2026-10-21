@@ -48,7 +48,7 @@ fi
 # engine, right-click -> Generate Project Files. Stamped per version so it only
 # runs on first launch after install/upgrade.
 UE5uvsBin="/opt/unreal-engine-src-5.8/Engine/Binaries/Linux/UnrealVersionSelector-Linux-Shipping"
-UE5uvsStamp="${HOME}/.config/Epic/UnrealEngine/5.8/.uvs-registered-5.8.3"
+UE5uvsStamp="${HOME}/.config/Epic/UnrealEngine/5.8/.uvs-registered-5.8.4"
 if [ -x "${UE5uvsBin}" ] && [ ! -f "${UE5uvsStamp}" ]; then
     if "${UE5uvsBin}" -register -unattended > /dev/null 2>&1; then
         touch "${UE5uvsStamp}"
