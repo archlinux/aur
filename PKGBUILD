@@ -4,7 +4,7 @@ _pkgauthor=drunkleen
 _pkgname=leenfetch
 
 pkgname=${_pkgname}
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="modern, minimal, and the fastest neofetch like system information tool with remote fetch ability, written in Rust."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 depends=('libx11' 'libxrandr' 'glibc' 'gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5f908f53cd0ec4a7d287164e103f880846b774d69cad24c9388b712204a79dc')
+sha256sums=('8afa5058be3c6c061fd943ba749a7b6f6e9d5924c42b557b96c27340c6706bcf')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
