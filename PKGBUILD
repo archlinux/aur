@@ -3,7 +3,7 @@
 # sha256 tarbala i .SRCINFO se popunjavaju u AUR klonu pri izdanju
 # (docs/RELEASE-CHECKLIST.md 3h).
 pkgname=mdai-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Local-first Markdown editor with BYOK AI (proprietary, binary)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=(mdai)
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://dl.mdai.me/mdai_${pkgver}_x86_64-linux.tar.gz"
         mdai.sh)
-sha256sums=(5fa3ef338a4a5447eb6c68d36cf8359dda9ed18a261d8fcfcd5a4626430e15ef
+sha256sums=(248292b673ec1880711bc331d9b02064556d666c76acf7c0a3d4657388e366df
             f72eed84ccf15e7bbbefa8f64eb3203bbdaeb26dd6b8ed645e299ea83050c1e2)
 package() {
   # pravi binar u /usr/lib/mdai, a /usr/bin/mdai je omotac (mdai.sh)
