@@ -2,8 +2,8 @@
 
 pkgname=cyberterm-bin
 _pkgname=cyberterm
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="GPU terminal for developers: splits and sessions, command blocks, searchable history, AI help, inline images and Lua scripting (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://cybercoretech.github.io/cyberterm/"
@@ -21,11 +21,11 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/cybercoretech/cybert
         "cyberterm.desktop")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$_base/releases/download/v$pkgver/cyberterm-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$_base/releases/download/v$pkgver/cyberterm-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('ec5af8d1007d65d5fa144c2e1658a09fb900d3ccff926a306ebc950e40115337'
+sha256sums=('808117a1a2d3742aa134cb34ee78a109596fe7f9a29f42288aca788a090316f2'
             'a686c4e5a39510488c378dc1820304b4d4827b1cd9bcfefe1a25eb7bf53925d1'
             '1e638aff925407a30963bd57a3a942831f5ea86b45a06941f88c23c5d684d0c3')
-sha256sums_x86_64=('830aa876f116d514216a118136428a9a1b21fd38970a187e8ff1ef8440313ed5')
-sha256sums_aarch64=('1b22deb4512c99091a49264dae457b69a6ef0a287e58a3745f046261fa65fcdd')
+sha256sums_x86_64=('fc485ce1d3b8a85f02a1f736fe15d66979be5db880081c610d34c3f6b299b14c')
+sha256sums_aarch64=('96719668bd57597314224891d8f0f1a0689f375fb6b0909294a1b441e22096bc')
 
 package() {
   install -Dm755 "$srcdir/cyberterm" "$pkgdir/usr/bin/cyberterm"
