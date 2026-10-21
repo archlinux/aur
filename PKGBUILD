@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rime-llm-translator-git
-pkgver=r66.132454f
+pkgver=r70.54dc629
 pkgrel=1
 pkgdesc="给Rime输入法接入大模型进行拼音联想，支持TUI图形化配置"
 arch=('any')
