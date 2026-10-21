@@ -3,11 +3,11 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=concat
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine"
 arch=('x86_64')
-url="https://github.com/jub0t/concat"
+url="https://github.com/jub0t/Concat"
 license=('AGPL-3.0-or-later')
 # Nothing is spawned at run time: FFmpeg is linked, whisper.cpp, sherpa-onnx
 # and Skia are compiled in. alsa-lib is cpal's playback backend;
@@ -34,7 +34,7 @@ options=('!debug' '!lto')
 # Only tags that start with a version are packaged, and pkgver drops their
 # hyphens (v0.2.2-alpha.1 -> 0.2.2alpha.1), which pacman sorts older than a
 # later plain 0.2.2, so no epoch is needed. See pkg.sh.
-_tag="v0.2.7"
+_tag="v0.2.8"
 # sherpa-onnx-sys (the text-to-speech backend) does not build its C++ side:
 # it downloads a prebuilt static-lib archive from its own release page unless
 # it is handed one. Handing it one keeps that binary under makepkg's
@@ -47,14 +47,17 @@ _sherpa="1.13.7"
 # are synced by pkg.sh.
 _skia="0.153.3"
 _skia_key="b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/concat/archive/refs/tags/${_tag}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/${_tag}.tar.gz"
         "https://github.com/k2-fsa/sherpa-onnx/releases/download/v${_sherpa}/sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
         "https://github.com/rust-skia/skia-binaries/releases/download/${_skia}/skia-binaries-${_skia_key}.tar.gz")
 noextract=("sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
            "skia-binaries-${_skia_key}.tar.gz")
-sha256sums=('1c7a388a2bb43f9f4bfddfb00ba9ab359dff37669040ec22b33152f6b155d5ef' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
+sha256sums=('b253b43ac2d56f78e389d16ee5f3efb8ad9f0dc008b9f1378026954d1859ab45' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
 
-_srcname="concat-${_tag#v}"
+# GitHub names the tarball's top folder after the repository, so it carries
+# upstream's capitalisation: "Concat" since the repository was renamed after
+# 0.2.7. Synced by pkg.sh from the tarball.
+_srcname="Concat-${_tag#v}"
 
 prepare() {
   cd "$_srcname/src"
@@ -119,8 +122,6 @@ EOF
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/concat.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 LICENSE-EXCEPTIONS.md \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-EXCEPTIONS.md"
   install -Dm644 THIRD_PARTY_NOTICES.md \
     "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
 }

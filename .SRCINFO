@@ -1,8 +1,8 @@
 pkgbase = concat
 	pkgdesc = Free and open-source CapCut replacement, a video editor with a Rust engine
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
-	url = https://github.com/jub0t/concat
+	url = https://github.com/jub0t/Concat
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = rust
@@ -31,10 +31,10 @@ pkgbase = concat
 	noextract = skia-binaries-b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan.tar.gz
 	options = !debug
 	options = !lto
-	source = concat-0.2.7.tar.gz::https://github.com/jub0t/concat/archive/refs/tags/v0.2.7.tar.gz
+	source = concat-0.2.8.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/v0.2.8.tar.gz
 	source = https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.7/sherpa-onnx-v1.13.7-linux-x64-static-lib.tar.bz2
 	source = https://github.com/rust-skia/skia-binaries/releases/download/0.153.3/skia-binaries-b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan.tar.gz
-	sha256sums = 1c7a388a2bb43f9f4bfddfb00ba9ab359dff37669040ec22b33152f6b155d5ef
+	sha256sums = b253b43ac2d56f78e389d16ee5f3efb8ad9f0dc008b9f1378026954d1859ab45
 	sha256sums = d1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6
 	sha256sums = 9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3
 
