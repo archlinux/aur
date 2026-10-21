@@ -1,4 +1,4 @@
-# Maintainer: Andrea Richiardi <a.richiardi.work@gmail.com>
+# Maintainer: Andrea Richiardi <a.richiardi.work at gmail dot com>
 #
 # nvbandwidth replaces the cuda-samples p2pBandwidthLatencyTest sample, which
 # NVIDIA removed in the CUDA 13.4 samples update.
