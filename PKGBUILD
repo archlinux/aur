@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="An infinite canvas for your terminals and your AI coding agents."
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
         "ICON-${pkgver}.svg::${_ghurlraw}/crates/templum/icons/icon.svg")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('99311e13725bcf0b7df27f47d20115b0a68616b850dc5744da814c1a5427303a'
+sha256sums=('853c6ef3e3f091222ed9b3d65b622aab25c5db1479ad0b11f8a2b64c5ca71cb9'
             '44636def9e9ab73158a63fd2acaad2bee92fc6be8678a54076aa93168e2fef1d')
-sha256sums_x86_64=('13755360cb18f1aaeb330ccc3c2590682cc7255e8b3520d7f7db0c8c8f7c5f93')
-sha256sums_aarch64=('b2615ff08e5793fd196775595c64dd11ec08a556b55881fe444d6746f9e93c8b')
+sha256sums_x86_64=('45ccc511e98124c183e1dc91203d9eb43857791d6fe84044564720e22ddf85fb')
+sha256sums_aarch64=('dc152310bca9992e257c125a7e25846e18d80cd2e8278c84d7b975392adc1dc5')
 
 
 case ${CARCH} in
