@@ -1,0 +1,3 @@
+#!/bin/sh
+export SUPER_PASTE_EXECUTABLE=/usr/bin/super-paste
+exec /opt/SuperPaste/com.v2dawn.sp "$@"

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=SuperPaste
+Comment=Clipboard manager with local OCR and synchronization
+Comment[zh_CN]=支持本地文字识别和同步的剪贴板管理器
+Exec=super-paste %U
+Icon=com.v2dawn.sp
+Type=Application
+Categories=Utility;
+Keywords=clipboard;paste;OCR;
+Terminal=false
+StartupNotify=true
+StartupWMClass=SuperPaste
