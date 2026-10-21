@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=2
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -11,32 +11,58 @@ license=('GPL-3.0-or-later')
 # are searched in /usr/lib), so the system packages from [extra] are used instead of
 # the vendored copies. The two do not conflict with the vendored ones either way:
 # the vendored codec2 is installed as a private libcodec2.so.1.2 under /usr/lib/onair
-# (merely shadowing the system one at run time) and the vendored mbelib is linked
-# statically, installing no files at all. If the system libraries ever prove
-# unusable, fall back to the vendored ones: drop the codec2/mbelib depends and
-# remove -DDECT2_BUNDLE_CODEC2=OFF and -DDECT2_BUNDLE_MBELIB=OFF below.
+# (merely shadowing the system one at run time), and since 0.2.8 upstream no longer
+# bundles mbelib at all (dlopen is the only way). If the system libraries ever prove
+# unusable, fall back to the vendored codec2: drop the codec2 depend and remove
+# -DDECT2_BUNDLE_CODEC2=OFF below.
 depends=('ffmpeg' 'glibc' 'libgcc' 'libstdc++' 'glfw' 'hackrf' 'hicolor-icon-theme' 'libusb' 'soapysdr'
          # dlopen'd at run time, so namcap reports them as "may not be needed" - that is expected
          'codec2'   # FreeDV / M17 voice (dlopen'd, replaces vendored third_party/codec2)
-         'mbelib')  # DMR / P25 / NXDN / dPMR / D-STAR voice (dlopen'd, replaces vendored third_party/mbelib)
-makedepends=('cmake' 'pkgconf')
+         'mbelib')  # DMR / P25 / NXDN / dPMR / D-STAR voice (dlopen'd, upstream ships no copy since 0.2.8)
+makedepends=('cmake' 'pkgconf' 'rust')  # rust: core protocol/FEC/file/net layers are Rust-only since 0.2.8
 optdepends=('zenity: file dialogs'
             'soapyrtlsdr: RTL-SDR support through SoapySDR'
             'soapyairspy: Airspy support through SoapySDR'
             'soapysdrplay: SDRplay support through SoapySDR')
 conflicts=('onair-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz"
-        # the udev-rule / blacklist fix-it hints tell the user to run
-        # install-udev-rules.sh, which only exists in the source tree (the
-        # official .deb has the same dangling hint); the package already
-        # installs 60-onair-sdr.rules and the modprobe blacklists, so reword
-        # the hints to reload the installed rules instead
-        "onair-package-hints.patch")
-sha256sums=('ca8f2a50ba3ad3c7e8a07c52519d97596f6667962266b6204d68574c5681d605'
-            '1e772949b8182e8994b31503ddcb93bb50f8cd525c445d03afcfb4e5243770be')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('31526fc45e3b359572993b88ab5448b4cba298d2226befec9934de0e2410a62a')
 
 prepare() {
-    patch -Np1 -d "OnAir-$pkgver" -i "$srcdir/onair-package-hints.patch"
+    # The udev-rule / blacklist fix-it hints tell the user to run
+    # install-udev-rules.sh, which only exists in the source tree (the official
+    # .deb has the same dangling hint). The package already installs
+    # 60-onair-sdr.rules and the modprobe blacklists, so reword the hints to
+    # reload the installed rules instead (mirrors the .deb postinst).
+    # String-based (not a context diff) so it survives upstream churn: 0.2.7
+    # touched the lines and 0.2.8 moved the files (app/fixit.cpp ->
+    # app/panels/fixit.cpp), breaking the patch each release. Fails loudly if
+    # dangling script references remain that we do not know how to rewrite.
+    local src="OnAir-$pkgver"
+    grep -rq 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h' || {
+        echo 'onair: no dangling udev-script hints found, nothing to rewrite'
+        return 0
+    }
+    local cmd='sudo udevadm control --reload-rules \&\& sudo udevadm trigger --subsystem-match=usb'
+    local f
+    while IFS= read -r f; do
+        sed -i \
+            -e "s|sudo ./install-udev-rules.sh   # in the OnAir folder; then unplug and replug the radio|$cmd   # the onair package already installed the udev rules; then unplug and replug the radio|g" \
+            -e "s|Install OnAir's udev rules (install-udev-rules.sh), then unplug and replug the radio.|Reload the udev rules installed by the onair package, then unplug and replug the radio.|g" \
+            -e "s|Install the udev rules (install-udev-rules.sh), then unplug and replug the radio.|Reload the udev rules installed by the onair package, then unplug and replug the radio.|g" \
+            -e "s|Install the udev rules: run install-udev-rules.sh from the OnAir folder (the .deb package does it for you).|Reload the udev rules installed by the onair package: $cmd.|g" \
+            -e "s|Install the udev rules: run install-udev-rules.sh from the OnAir folder (the .deb does it).|Reload the udev rules installed by the onair package ($cmd).|g" \
+            -e "s|Or install OnAir's blacklist file (the .deb package does it).|OnAir's blacklist file is already installed by the onair package.|g" \
+            -e "s|Install OnAir's blacklist file (the .deb package does it), or run: sudo systemctl restart sdrplay|OnAir's blacklist file is already installed by the onair package; or run: sudo systemctl restart sdrplay|g" \
+            -e "s|unplug and replug it after installing OnAir's blacklist file (the .deb does it), or restart the SDRplay API service|unplug and replug it (OnAir's blacklist file is already installed by the onair package), or restart the SDRplay API service|g" \
+            -e "s|install OnAir's udev rules (the .deb does it, or run install-udev-rules.sh from the portable folder), then unplug and replug it|reload OnAir's udev rules (already installed by the onair package) with $cmd, then unplug and replug it|g" \
+            "$f"
+    done < <(grep -rl 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h')
+    if grep -rq 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h'; then
+        echo 'onair: dangling install-udev-rules.sh references remain after rewrite;' >&2
+        echo 'upstream changed the hint strings, the rewrite rules need a review' >&2
+        return 1
+    fi
 }
 
 build() {
@@ -49,7 +75,6 @@ build() {
         -DDECT2_BUILD_APP=ON \
         -DDECT2_BUILD_TESTS=ON \
         -DDECT2_BUNDLE_CODEC2=OFF \
-        -DDECT2_BUNDLE_MBELIB=OFF \
         -DCMAKE_SKIP_INSTALL_ALL_DEPENDENCY=ON \
         -DONAIR_VERSION="$pkgver" \
         -Wno-dev
