@@ -1,12 +1,16 @@
 [Unit]
-Description=Update VS Code in /opt/vscode directly from Microsoft
+Description=Update Microsoft Visual Studio Code
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/vscode-update
+User=vscode-autoupdate
+Group=vscode-autoupdate
+StateDirectory=visual-studio-code-autoupdate
+StateDirectoryMode=0755
+UMask=0022
+ExecStart=/usr/lib/visual-studio-code-autoupdate/vscode-update
 TimeoutStartSec=15min
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
-ProtectHome=read-only
-ReadWritePaths=/opt/vscode
+ProtectHome=true

@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Update /opt/vscode directly from Microsoft; usage: vscode-update.
+"""Update the system VS Code installation directly from Microsoft.
 
-vscode-update.timer checks twice a day. Updates are atomic and do not restart
-open windows. Releases still in use are kept until a later check. User settings
-and extensions are not modified. Run this as the owner of /opt/vscode, not root.
+Invoked by vscode-update.service as the dedicated vscode-autoupdate account.
+Updates are atomic and do not restart open windows. User settings and extensions
+are not modified. To check manually: sudo systemctl start vscode-update.service.
 """
 import fcntl
 import hashlib
@@ -18,7 +18,7 @@ import tempfile
 from urllib.parse import urlparse
 from urllib.request import urlopen
 
-ROOT = Path('/opt/vscode')
+ROOT = Path('/var/lib/visual-studio-code-autoupdate')
 API = 'https://update.code.visualstudio.com/api/update/linux-x64/stable/latest'
 
 
@@ -30,19 +30,17 @@ def fetch(url):
     return response
 
 
-def prune():
-    for staging in ROOT.glob('.update-*'):
+def prune(root):
+    for staging in root.glob('.update-*'):
         if staging.is_symlink():
             staging.unlink()
         elif staging.is_dir():
             shutil.rmtree(staging)
-    current = (ROOT / 'current').resolve()
+    current = (root / 'current').resolve()
     running = set()
     for entry in Path('/proc').iterdir():
         if entry.name.isdigit():
             try:
-                if entry.stat().st_uid != os.getuid():
-                    continue
                 running.add((entry / 'exe').resolve(strict=True))
             except (OSError, RuntimeError):
                 # Protected non-editor daemons (agents, systemd) are common.
@@ -53,24 +51,21 @@ def prune():
                     return
                 if name.startswith(('code', 'electron')):
                     return
-    for release in ROOT.glob('release-*'):
+    for release in root.glob('release-*'):
         if (re.fullmatch(r'release-[0-9a-f]{40}', release.name)
                 and release.is_dir() and not release.is_symlink()
                 and release != current and release / 'code' not in running):
             shutil.rmtree(release)
 
 
-def main():
-    if len(sys.argv) != 1:
-        print(__doc__)
-        return
+def update(root):
     if os.geteuid() == 0:
-        raise SystemExit('Run vscode-update as the owner of /opt/vscode, not root.')
-    if not ROOT.is_dir() or ROOT.is_symlink() or ROOT.stat().st_uid != os.getuid():
-        raise SystemExit('Create /opt/vscode owned by your user; see the package README.')
-    with (ROOT / '.update.lock').open('w') as lock:
+        raise SystemExit('Run the updater as its unprivileged service account, not root.')
+    if not root.is_dir() or root.is_symlink() or root.stat().st_uid != os.getuid():
+        raise SystemExit(f'{root} must be a directory owned by your user.')
+    with (root / '.update.lock').open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
-        prune()
+        prune(root)
         with fetch(API) as response:
             info = json.load(response)
         commit, checksum = info['version'], info['sha256hash']
@@ -80,12 +75,12 @@ def main():
                 and url.scheme == 'https'
                 and url.hostname == 'vscode.download.prss.microsoft.com'):
             raise ValueError('Invalid download metadata')
-        release = ROOT / ('release-' + commit)
-        current = ROOT / 'current'
-        if current.resolve() == release:
+        release = root / ('release-' + commit)
+        current = root / 'current'
+        if current.resolve().name == release.name:
             print(f"VS Code {info['productVersion']} is up to date.")
             return
-        with tempfile.TemporaryDirectory(prefix='.update-', dir=ROOT) as tmp:
+        with tempfile.TemporaryDirectory(prefix='.update-', dir=root) as tmp:
             tmp = Path(tmp)
             archive = tmp / 'code.tar.gz'
             print(f"Downloading VS Code {info['productVersion']} from Microsoft...", flush=True)
@@ -105,8 +100,15 @@ def main():
             link = tmp / 'current'
             link.symlink_to(release.name)
             link.replace(current)
-        prune()
+        prune(root)
         print(f"VS Code {info['productVersion']} installed. Reopen the editor to use it.")
+
+
+def main():
+    if len(sys.argv) != 1:
+        print(__doc__)
+        return
+    update(ROOT)
 
 
 if __name__ == '__main__':

@@ -82,6 +82,25 @@ class UpdateSafety(unittest.TestCase):
             self.assertEqual(protected.read_bytes(), b'not updater data')
         self.assertEqual((self.root / 'current').resolve(), self.previous)
 
+    def test_packaged_release_is_not_downloaded_again(self):
+        with tempfile.TemporaryDirectory(prefix='vscode-bundled-') as bundled:
+            release = Path(bundled) / self.previous.name
+            release.mkdir()
+            (self.root / 'current').unlink()
+            (self.root / 'current').symlink_to(release)
+            metadata = {
+                'version': '1' * 40, 'sha256hash': '0' * 64,
+                'url': 'https://vscode.download.prss.microsoft.com/test.tar.gz',
+                'productVersion': 'test',
+            }
+            with patch.object(updater, 'fetch', side_effect=[
+                io.BytesIO(json.dumps(metadata).encode()),
+                AssertionError('Packaged release must not be downloaded again'),
+            ]):
+                updater.main()
+            self.assertEqual((self.root / 'current').resolve(), release)
+            self.assertTrue(release.is_dir())
+
     def test_verified_release_replaces_current_and_removes_unused_previous(self):
         archive = io.BytesIO()
         with tarfile.open(fileobj=archive, mode='w:gz') as bundle:
@@ -128,7 +147,7 @@ class UpdateSafety(unittest.TestCase):
         (proc / '123').mkdir(parents=True)
         # The PID was enumerated, but its executable disappeared during handoff.
         with patch.object(updater, 'Path', return_value=proc):
-            updater.prune()
+            updater.prune(self.root)
         self.assertTrue(old.is_dir())
         self.assertEqual((self.root / 'current').resolve(), self.previous)
 
@@ -140,7 +159,7 @@ class UpdateSafety(unittest.TestCase):
         daemon.mkdir(parents=True)
         (daemon / 'comm').write_text('gpg-agent\n')
         with patch.object(updater, 'Path', return_value=proc):
-            updater.prune()
+            updater.prune(self.root)
         self.assertFalse(old.exists())
         self.assertEqual((self.root / 'current').resolve(), self.previous)
 
@@ -151,13 +170,15 @@ class UpdateSafety(unittest.TestCase):
         process = subprocess.Popen([str(active / 'code'), '60'])
         try:
             (self.proc / str(process.pid)).symlink_to(Path('/proc') / str(process.pid))
-            updater.prune()
+            # The service account must also preserve editors run by desktop users.
+            with patch.object(updater.os, 'getuid', return_value=process.pid + 100000):
+                updater.prune(self.root)
             self.assertTrue(active.is_dir())
         finally:
             process.terminate()
             process.wait(timeout=5)
             (self.proc / str(process.pid)).unlink(missing_ok=True)
-        updater.prune()
+        updater.prune(self.root)
         self.assertFalse(active.exists())
         self.assertEqual((self.root / 'current').resolve(), self.previous)
 

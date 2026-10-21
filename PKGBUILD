@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: 0BSD
 pkgname=visual-studio-code-autoupdate
 pkgver=1.0
-pkgrel=3
-pkgdesc='Direct Microsoft VS Code updater with a twice-daily user timer'
+pkgrel=5
+pkgdesc='Microsoft Visual Studio Code with automatic twice-daily updates'
 arch=('x86_64')
 url='https://github.com/jjunho/visual-studio-code-autoupdate'
-license=('0BSD')
-depends=('python>=3.12' 'systemd' 'ca-certificates' 'bash' 'coreutils' 'util-linux' 'polkit'
+license=('0BSD' 'LicenseRef-Microsoft')
+depends=('python>=3.12' 'systemd' 'ca-certificates' 'bash' 'coreutils' 'util-linux' 'shadow'
          'libxkbfile' 'gnupg' 'gtk3' 'libsecret' 'nss' 'gcc-libs'
          'libnotify' 'libxss' 'glibc' 'lsof' 'shared-mime-info' 'xdg-utils' 'alsa-lib')
 optdepends=('glib2: move files to trash'
@@ -17,6 +17,7 @@ optdepends=('glib2: move files to trash'
             'socat: agent host sandboxing')
 provides=('code' 'vscode')
 conflicts=('code' 'visual-studio-code-bin')
+options=('!strip')
 install=visual-studio-code-autoupdate.install
 source=('vscode-update'
         'code'
@@ -30,31 +31,55 @@ source=('vscode-update'
         'LICENSE'
         'test_vscode_update.py'
         'test_code_setup.py'
-        'create-directory')
-sha256sums=('ed0f4ad06e7a67892b73a4e326e4d857347983d17aa83365a9c61d69976bc76f'
-            '241a462e6f212e4a8a1485d04ec160db8606db500927cce7ae432bf4c59350f6'
-            '98b0f14f6e4450b60d93f40856c2cd594778027c67b6cd3f478256df603effeb'
+        'vscode-update.sysusers'
+        'vscode-update.tmpfiles')
+sha256sums=('499c5bef6e5e2b5750105ed8b662c398923124d4277f33549f714aa47af67ad3'
+            '73dd0a026b3fce68c621d34242ee7763c637c87493f235aade639641cab25e1f'
+            '0f7c1ac0b96159d837f4ea49e99574987308f3779bdf39538ebc662aa3cc8165'
             'b78b77f72580b2fa0a10e693267c5b0400ce935e3fbb99f8aeb2424d9cc42ec6'
-            'ec91701af331a1631c45d79b7eebe4706fab2119d838845de48c431da1b29da7'
-            '6e1be6dc797966af296216fd08cf16d521786cef059c2f8d0198d3197009c158'
+            'a84273a40dd5dfc0b9064b46a464957fbce02cf9feb46731cd01ab7e51508341'
+            '180e06b990323feb014224bcfb570e3091e4fcaa06c9618345c74b5e583febdb'
             'a06f8d3e435e40fe1ae4ac3782edb782ffb51993d73b612ed9cd2054d1a0e57f'
-            '5121967943ebabe4ce7f783593b44633fc86f936c802206e85c4a60c2cc99cae'
-            'f937363f66610cf8437b7484814ecae5d7411be7e7ff57760c15f57d310c9ee5'
+            'b0ce17e2b01922111bee95175cd6381fa988b7d1bb78d8492e1ebf7ee8120e3e'
+            '239245a4b8f84e1d3bce573838fbbcf0fee5d227f8d60cba431de8ff932200d6'
             '6668196519d52d349278e9b272ec3751aeb50d29a688a0eec45b3caae11b7159'
-            'afdf418e16f12bfdec266abc128791c4c81ffc93b1e451131fdc182452f80b03'
-            'cf8fb4657850204bbe349e7d87f69e77fb49fd4361250edae7a7d634b5ab1587'
-            '3c01a6da00a4445a0f3260b78114f841c4a2d9a719261b0b9bad88b6d7668ac9')
+            '7d31dd06af62d95d9b40302c1e3bbdb0f2fe2a126cfee0f1f2d636d0ec63abdb'
+            '87fda4db99bbaddb572dc0b5214a99f1b423a34d3e05af925f93a19fd56b7fbb'
+            '38e22b99526bed1245241187c273d318e6cc704440d5c94dd973b5059c6d7d8a'
+            'c5d4035169cf61506fd5bfb050ea0a4f7e05840700c952e34e1c81169b735c9f')
+
+prepare() {
+  # Fetch latest metadata on every build, not a cached "latest" archive.
+  python -B - <<'PY'
+from pathlib import Path
+import runpy
+
+root = Path('editor').resolve()
+root.mkdir(exist_ok=True)
+runpy.run_path('vscode-update')['update'](root)
+PY
+}
 
 check() {
   python -B -m unittest discover -p 'test_*.py'
 }
 
 package() {
-  install -Dm755 vscode-update "$pkgdir/usr/bin/vscode-update"
+  local release
+  release=$(readlink editor/current)
+  install -d "$pkgdir/usr/lib/$pkgname"
+  cp -a "editor/$release" "$pkgdir/usr/lib/$pkgname/$release"
+  ln -s "$release" "$pkgdir/usr/lib/$pkgname/bundled"
+  install -Dm644 editor/current/resources/app/resources/linux/code.png \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/visual-studio-code.png"
+  install -Dm644 editor/current/resources/app/LICENSE.rtf \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rtf"
+  install -Dm755 vscode-update "$pkgdir/usr/lib/$pkgname/vscode-update"
   install -Dm755 code "$pkgdir/usr/bin/code"
-  install -Dm755 create-directory "$pkgdir/usr/lib/$pkgname/create-directory"
-  install -Dm644 vscode-update.service "$pkgdir/usr/lib/systemd/user/vscode-update.service"
-  install -Dm644 vscode-update.timer "$pkgdir/usr/lib/systemd/user/vscode-update.timer"
+  install -Dm644 vscode-update.service "$pkgdir/usr/lib/systemd/system/vscode-update.service"
+  install -Dm644 vscode-update.timer "$pkgdir/usr/lib/systemd/system/vscode-update.timer"
+  install -Dm644 vscode-update.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 vscode-update.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   install -Dm644 com.microsoft.VSCode.desktop \
     "$pkgdir/usr/share/applications/com.microsoft.VSCode.desktop"
   install -Dm644 com.microsoft.VSCode.UrlHandler.desktop \

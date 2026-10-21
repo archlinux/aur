@@ -1,20 +1,19 @@
 post_install() {
-  cat <<'EOF'
-Run code (or open Visual Studio Code from the application menu).
-On first launch it prepares /opt/vscode, downloads the official editor and
-enables the user update timer automatically. System authorization may be
-requested once to create /opt/vscode; downloads and updates run as your user.
-
-The timer checks at 00:00 and 12:00, with up to 15 minutes of jitter.
-No manual setup commands are required. Do not run code or vscode-update as root.
-EOF
+  systemd-sysusers /usr/lib/sysusers.d/visual-studio-code-autoupdate.conf || return
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/visual-studio-code-autoupdate.conf || return
+  systemctl --no-reload enable vscode-update.timer || return
+  if [[ -d /run/systemd/system ]]; then
+    systemctl daemon-reload || return
+    systemctl start vscode-update.timer || return
+  fi
+  printf '%s\n' 'VS Code and automatic updates are ready. Open Visual Studio Code from the menu or run code.'
 }
 
-post_upgrade() {
-  printf '%s\n' 'The next code launch completes any pending first-time setup automatically.'
-}
-
-pre_remove() {
+pre_upgrade() {
+  # Retire the per-user timer from releases before 1.0-5 while its unit still exists.
+  if (( $(vercmp "$2" '1.0-5') >= 0 )); then
+    return
+  fi
   local uid user
   if [[ -d /opt/vscode && ! -L /opt/vscode ]]; then
     uid=$(stat -c %u -- /opt/vscode) || return
@@ -28,12 +27,35 @@ pre_remove() {
         runuser -u "$user" -- env \
           XDG_RUNTIME_DIR="/run/user/$uid" \
           DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+          systemctl --user daemon-reload
+        runuser -u "$user" -- env \
+          XDG_RUNTIME_DIR="/run/user/$uid" \
+          DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
           systemctl --user stop vscode-update.timer vscode-update.service
       fi
     fi
   fi
 }
 
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  systemctl --no-reload disable vscode-update.timer
+  if [[ -d /run/systemd/system ]]; then
+    systemctl daemon-reload
+    systemctl stop vscode-update.timer vscode-update.service
+  fi
+}
+
 post_remove() {
-  rm -rf --one-file-system -- /opt/vscode
+  rm -rf --one-file-system -- /var/lib/visual-studio-code-autoupdate /opt/vscode
+  rm -f -- /var/lib/systemd/timers/stamp-vscode-update.timer
+  if getent passwd vscode-autoupdate >/dev/null; then
+    userdel vscode-autoupdate || return
+  fi
+  if getent group vscode-autoupdate >/dev/null; then
+    groupdel vscode-autoupdate
+  fi
 }

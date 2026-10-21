@@ -1,149 +1,125 @@
 # visual-studio-code-autoupdate
 
-Pacote Arch/AUR para atualizar o VS Code Stable x86_64 diretamente da Microsoft,
-sem aguardar uma nova versão do PKGBUILD a cada lançamento do editor.
-Não é um pacote oficial da Microsoft.
+Pacote Arch/AUR do VS Code Stable x86_64 com atualização automática diretamente
+da Microsoft. Não é um pacote oficial da Microsoft.
 
-## funcionamento e limites
-
-- Instala `code`, `vscode-update`, integração gráfica e unidades systemd do usuário.
-- Consulta `https://update.code.visualstudio.com/api/update/linux-x64/stable/latest`.
-- Confere o SHA-256 anunciado pela Microsoft antes de extrair o `.tar.gz`.
-- Mantém versões em `/opt/vscode/release-<commit>` e troca `current` atomicamente.
-- Não fecha janelas. Conserva uma versão antiga enquanto seu executável está rodando;
-  uma verificação posterior remove essa versão quando não estiver mais em uso.
-- Novas aberturas pelo comando `code` aguardam uma atualização em andamento
-  terminar. O lançador e o atualizador compartilham a mesma trava para impedir
-  que a limpeza remova uma versão enquanto ela está sendo iniciada.
-  A trava de lançamento é liberada após iniciar o processo da release; opções
-  como `--wait` não bloqueiam as atualizações durante a edição.
-  Se a varredura de processos ficar inconclusiva durante uma troca de processos,
-  a remoção de releases antigas é adiada para uma verificação posterior.
-- Downloads interrompidos são recolhidos na próxima verificação, sob essa trava,
-  sem seguir links simbólicos deixados entre os temporários.
-- Verifica às 00h e 12h, no fuso local, com atraso aleatório de até 15 minutos.
-  `Persistent=true` recupera uma verificação perdida quando o timer volta a funcionar.
-- O timer depende da sessão do usuário. Não habilita linger nem roda como root.
-- Não altera `~/.config/Code` nem `~/.vscode`.
-
-O `pacman` controla o atualizador e sua integração, **não** as versões baixadas do
-VS Code. A versão do atualizador é `1.0`, não a versão do editor.
-No Arch, `pkgrel=1` identifica a revisão do empacotamento; a versão pública
-do programa permanece `1.0`. Ajustes antes da publicação não mudam essa versão.
-As versões do editor não aparecem no histórico de transações do pacman e não
-podem ser revertidas por ele. As dependências do editor ainda podem exigir
-manutenção deste pacote no futuro.
-
-O destino é exclusivo de **um usuário atualizador**. Não é uma solução multiusuário:
-seu conteúdo é gravável por esse usuário, embora seja legível no sistema.
-Não execute o editor nem o atualizador como root. O pacote não inclui os binários
-da Microsoft; a licença comercial acompanha cada download em
-`/opt/vscode/current/resources/app/LICENSE.rtf`. A licença 0BSD aplica-se somente
-aos scripts e arquivos deste projeto.
-
-## compilar e instalar
-
-Na pasta do projeto, como usuário comum:
+## instalar e abrir
 
 ```sh
 makepkg -si
 ```
 
-Para apenas compilar, use `makepkg`. O `check()` executa testes sem rede para
-integridade, extração segura, troca de versões, preservação de versões em execução
-e recuperação de temporários abandonados.
-A visão de processos dos testes é isolada: processos reais de teste são incluídos
-explicitamente, sem depender de processos externos que podem terminar durante o build.
+A instalação pelo pacman entrega o editor completo, os ícones, os atalhos e a
+atualização automática configurada. Depois, abra Visual Studio Code no menu ou
+execute `code`. **A primeira abertura não pede sudo/Polkit, não configura serviços
+e não baixa o editor.** Não execute o editor como root.
 
-O `namcap` emite avisos de pacote sem ELF em `x86_64` e de dependências que não
-consegue inferir. O payload baixado é exclusivamente x86_64; as dependências
-atendem esse payload, o systemd, HTTPS, o lançador e os hooks de integração MIME.
-Não devem ser removidas apenas para silenciar esses avisos.
+O instalador usa os privilégios que o pacman já possui para:
 
-A verificação de execução também inclui download real da Microsoft e execução
-de `code --version` a partir de uma instalação isolada, sem modificar os dados
-pessoais do usuário. Os testes não substituem a manutenção das dependências
-quando a Microsoft altera os requisitos do editor.
+1. Criar a conta de sistema sem login `vscode-autoupdate`.
+2. Preparar `/var/lib/visual-studio-code-autoupdate`, a trava e o link para o editor
+   incluído no pacote.
+3. Habilitar e iniciar o timer do sistema. Em uma instalação offline/chroot,
+   habilita o timer para o próximo boot.
 
-Depois de instalar, execute `code` normalmente ou abra Visual Studio Code no menu.
-A primeira execução:
+Não escolhe um usuário de desktop, não depende de `SUDO_USER` e não exige uma
+sessão systemd de usuário. Os downloads agendados rodam como `vscode-autoupdate`,
+**não como root**. Usuários de desktop podem executar o editor, mas não modificar
+os binários compartilhados. Configurações e extensões continuam individuais em
+`~/.config/Code` e `~/.vscode`, sem alterações pelo instalador ou atualizador.
 
-1. Cria `/opt/vscode` para o usuário atual, pedindo autorização pelo sistema via
-   Polkit quando o diretório ainda não existe.
-2. Baixa e valida o editor oficial da Microsoft, sem executar o download como root.
-3. Habilita o timer do usuário e inicia o editor com os argumentos solicitados.
+## versão inicial e integridade
 
-Não há comandos manuais de configuração. Se a autorização, o download ou a
-ativação do timer falhar, a inicialização não é marcada como concluída; a próxima
-execução tenta novamente. Um diretório pertencente a outro usuário ou um link
-simbólico é recusado, sem trocar seu proprietário.
+Cada build consulta
+`https://update.code.visualstudio.com/api/update/linux-x64/stable/latest`, baixa
+exatamente a URL retornada e valida seu SHA-256 e o commit do conteúdo antes de
+empacotar. Erros de rede, integridade ou extração interrompem o build: não geram
+um pacote sem editor. O mesmo código de verificação é usado nas atualizações.
 
-É necessária uma sessão systemd do usuário; a autorização inicial exige um agente
-Polkit da sessão gráfica ou a autenticação oferecida por `pkexec` no terminal.
-Depois da primeira configuração, as atualizações continuam sem sudo ou prompts.
-
-## migrar a instalação manual criada nesta sessão
-
-Mantenha `/opt/vscode` e seus dados. Depois de instalar o pacote, retire apenas as
-cópias locais criadas para essa instalação; elas têm prioridade sobre os arquivos
-instalados pelo pacman. Não remova arquivos de outra origem.
-O bloco verifica primeiro se o pacote e suas unidades estão instalados. Os `&&`
-interrompem a migração em caso de falha, antes de remover as cópias locais.
+A receita não fixa a versão nem o hash do editor. Os hashes dos scripts locais
+continuam em `sha256sums`. Dois builds da mesma revisão podem incluir versões
+diferentes do VS Code. Um pacote binário reutilizado do cache contém a versão
+do seu build, não necessariamente a mais recente no momento da instalação.
+Para reconstruir consultando a versão atual:
 
 ```sh
-pacman -Q visual-studio-code-autoupdate &&
-test -x /usr/bin/vscode-update &&
-test -f /usr/lib/systemd/user/vscode-update.service &&
-test -f /usr/lib/systemd/user/vscode-update.timer &&
-systemctl --user daemon-reload &&
-systemctl --user disable --now vscode-update.timer &&
-rm -f -- ~/.config/systemd/user/vscode-update.service \
-  ~/.config/systemd/user/vscode-update.timer \
-  ~/.local/bin/vscode-update ~/.local/bin/code \
-  ~/.local/share/applications/com.microsoft.VSCode.desktop \
-  ~/.local/share/applications/com.microsoft.VSCode.UrlHandler.desktop &&
-systemctl --user daemon-reload &&
-systemctl --user start vscode-update.service &&
-systemctl --user enable --now vscode-update.timer &&
-update-desktop-database ~/.local/share/applications &&
-hash -r
+makepkg --cleanbuild --force
 ```
 
-Não há necessidade de mover configurações ou reinstalar extensões.
+Não use `--noextract` nessa reconstrução: ele pula `prepare()`, que consulta a
+Microsoft. A revisão `1.0-5` identifica este empacotamento, não a versão do editor.
 
-## operação e desinstalação
+O pacman controla o editor inicial em
+`/usr/lib/visual-studio-code-autoupdate/release-<commit>`, o lançador e a integração.
+As versões posteriores ficam em `/var/lib/visual-studio-code-autoupdate` e não
+são controladas nem revertidas pelo pacman. As dependências do editor ainda
+podem exigir manutenção do pacote quando a Microsoft mudar seus requisitos.
+
+## atualização automática
+
+- O timer do sistema verifica às 00h e 12h, com atraso aleatório de até 15 minutos.
+  `Persistent=true` recupera verificações perdidas enquanto o sistema estava desligado.
+- A versão incluída no pacote não é baixada de novo se ainda for a atual.
+- A troca do link `current` é atômica. Falhas de download preservam a release atual.
+- O atualizador e o lançador compartilham uma trava. Novas aberturas podem aguardar
+  uma atualização em andamento; `code --wait` não mantém essa trava durante a edição.
+- Não reinicia janelas. A limpeza considera processos de todos os usuários;
+  quando não pode descartar um editor em execução, conserva as releases antigas.
+- Downloads temporários interrompidos são removidos na próxima verificação.
+- O serviço só pode escrever no seu diretório de estado e não acessa as pastas pessoais.
+
+Operação administrativa opcional; nenhum destes comandos é necessário para abrir o editor:
 
 ```sh
-vscode-update                                      # verificar agora
-systemctl --user list-timers vscode-update.timer   # próxima execução
-journalctl --user -u vscode-update.service         # resultados
-systemctl --user disable --now vscode-update.timer # desativar automação
+systemctl list-timers vscode-update.timer
+journalctl -u vscode-update.service
+sudo systemctl start vscode-update.service         # verificar agora
+sudo systemctl disable --now vscode-update.timer   # desativar automação
 ```
 
-Salve e feche o editor e execute:
+## migração de versões anteriores
+
+Ao atualizar de `1.0-4` ou anterior, o instalador desabilita o timer do antigo
+usuário dono de `/opt/vscode` e para o serviço antigo quando sua sessão está ativa.
+As unidades por usuário e o helper Polkit deixam de fazer parte do pacote.
+A nova instalação usa o serviço do sistema e o editor incluído no pacote.
+
+O conteúdo antigo de `/opt/vscode` é preservado durante a atualização para não
+apagar releases que possam estar em execução; ele será removido na desinstalação.
+Não é usado pelo novo lançador nem copiado para o estado do serviço: executáveis
+antes graváveis por um usuário não devem virar binários compartilhados.
+Cópias manuais em `~/.local/bin` não pertencem ao pacote e podem continuar tendo
+prioridade sobre `/usr/bin/code`; o instalador não remove arquivos pessoais.
+
+## desinstalar
+
+Feche o editor e execute:
 
 ```sh
 sudo pacman -R visual-studio-code-autoupdate
 ```
 
-A desinstalação desabilita o timer do usuário dono de `/opt/vscode`, para o timer
-e o serviço se a sessão estiver ativa e apaga `/opt/vscode` inteiro, incluindo
-versões antigas, downloads temporários, o link `current` e a trava de atualização.
-Não segue links simbólicos dentro desse diretório nem remove dados em outros
-sistemas de arquivos montados ali. Não mantenha projetos ou arquivos pessoais
-em `/opt/vscode`: esse diretório é exclusivamente o payload descartável do pacote.
-Configurações e extensões em `~/.config/Code` e `~/.vscode` são preservadas.
+A desinstalação desabilita o timer, para o serviço e remove
+`/var/lib/visual-studio-code-autoupdate`, `/opt/vscode`, a marca persistente do timer,
+a conta `vscode-autoupdate` e seu grupo. Os arquivos empacotados são removidos pelo
+pacman. Não guarde projetos nesses diretórios de binários descartáveis.
+Configurações, extensões e projetos pessoais são preservados.
 
-## publicação no AUR
+## verificação e publicação
 
-O diretório contém `PKGBUILD`, `.SRCINFO` e fontes locais. Binários `.pkg.tar.zst`
-não devem ser enviados ao AUR. Para publicar é preciso usar uma conta AUR com
-chave SSH cadastrada, confirmar nome/e-mail de mantenedor e enviar os fontes pelo
-Git do AUR. Nenhum envio é feito ao compilar este projeto.
+O `check()` executa testes sem rede de integridade, extração segura, troca atômica,
+proteção de releases em execução e lançamento sem preparação privilegiada.
+A verificação de instalação usa namespaces isolados: executa os hooks e as
+ferramentas reais de criação de conta, diretórios e habilitação do timer; roda o
+atualizador como a conta de serviço e abre o editor como outro usuário, sem rede
+e com Polkit indisponível. A ativação em um systemd de sistema já rodando depende
+do ambiente de instalação; a habilitação para boot é verificada separadamente.
 
-O pacote usa um nome próprio porque distribui um atualizador com agendamento,
-não uma cópia versionada do editor como `visual-studio-code-bin`.
-As regras de admissão do AUR continuam sob decisão dos mantenedores do serviço.
+O AUR recebe `PKGBUILD`, `.SRCINFO` e os fontes locais, não os arquivos
+`.pkg.tar.zst`. Compilar não publica nem envia nada ao AUR.
+A licença comercial da Microsoft acompanha o editor e é instalada em
+`/usr/share/licenses/visual-studio-code-autoupdate/LICENSE.rtf`.
+A licença 0BSD aplica-se apenas aos scripts e arquivos deste projeto.
 
 Referências: [regras de empacotamento](https://wiki.archlinux.org/title/Arch_package_guidelines),
 [envio ao AUR](https://wiki.archlinux.org/title/AUR_submission_guidelines) e

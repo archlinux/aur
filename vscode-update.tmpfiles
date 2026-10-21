@@ -1,0 +1,3 @@
+d /var/lib/visual-studio-code-autoupdate 0755 vscode-autoupdate vscode-autoupdate -
+f /var/lib/visual-studio-code-autoupdate/.update.lock 0644 vscode-autoupdate vscode-autoupdate -
+L /var/lib/visual-studio-code-autoupdate/current - - - - /usr/lib/visual-studio-code-autoupdate/bundled
