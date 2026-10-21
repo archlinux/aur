@@ -2,9 +2,9 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sgsn-git
-pkgver=1.12.0.r87.g3408e4879
+pkgver=1.12.0.r113.gcef3c8112
 pkgrel=1
-pkgdesc="Osmocom's  Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
+pkgdesc="Osmocom's Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
 url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
