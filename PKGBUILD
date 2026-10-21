@@ -2,7 +2,7 @@
 # Maintainer: alcxyz <alcxyz@users.noreply.github.com>
 
 pkgname='paperflow-bin'
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='File organizer and Paperless-ngx ingestion tool'
 url='https://github.com/alcxyz/paperflow'
@@ -13,12 +13,13 @@ conflicts=('paperflow')
 depends=('libnotify')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/alcxyz/paperflow/releases/download/v${pkgver}/paperflow_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('9ba3027dd2e71d4974d8cea7ea3df1f1f74917b317788d24500481c5323f3cec')
+sha256sums_aarch64=('99a93108cfdfa8ede58e58fc869d94dd7c0d304357c6b6b9f969d18ad2484c74')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/alcxyz/paperflow/releases/download/v${pkgver}/paperflow_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6da09914bce5f6c042c3713c304a56b93d21a8f94d018bfee779aa6b4ec481f9')
+sha256sums_x86_64=('9033f73f57d4c95549d1e77e393ebf44e9dcd6e33726d863012f554fe7ea3330')
 
 package() {
   install -Dm755 "./paperflow" "${pkgdir}/usr/bin/paperflow"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/paperflow/README.md"
 }
