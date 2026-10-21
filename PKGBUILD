@@ -2,7 +2,7 @@
 # Contributor: xeptore <hello [ at ] xeptore [ dot ] dev>
 
 pkgname=docker-credential-pass-bin
-pkgver=0.9.10
+pkgver=0.9.12
 pkgrel=1
 pkgdesc='Store docker credentials using the Standard Unix Password Manager (pass)'
 arch=('x86_64')
@@ -13,11 +13,11 @@ makedepends=()
 provides=("docker-credential-pass")
 conflicts=("docker-credential-pass")
 source_x86_64=(
-  "docker-credential-pass-v${pkgver}.linux-amd64::https://github.com/docker/docker-credential-helpers/releases/download/v0.9.10/docker-credential-pass-v0.9.10.linux-amd64"
-  'LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.9.10/LICENSE'
+  "docker-credential-pass-v${pkgver}.linux-amd64::https://github.com/docker/docker-credential-helpers/releases/download/v0.9.12/docker-credential-pass-v0.9.12.linux-amd64"
+  'LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.9.12/LICENSE'
 )
 sha256sums_x86_64=(
-  '32ebf7948b801621237b2ce81a6a0b8097e78c15a6f223b9af8d551161f17552'
+  '0369caf75820b2a927b8f7435cdd6b447583e0bb30f2b0633ed83f24b4d59a37'
   'a6c2a5fdf40879f644bdb0da9042f245e7e263237d623264aafcf2470610ad8c'
 )
 
