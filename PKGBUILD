@@ -1,9 +1,9 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname=lighthouse-ethereum
-pkgver=8.2.3
+pkgver=8.3.0
 _pkgname=lighthouse
-pkgrel=1
+pkgrel=2
 pkgdesc='Ethereum consensus client in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sigp/lighthouse'
@@ -22,7 +22,7 @@ source=(
   "validator_registration.json::https://raw.githubusercontent.com/ethereum/eth2.0-specs/v0.12.1/deposit_contract/contracts/validator_registration.json"
   "unsafe_validator_registration.json::https://raw.githubusercontent.com/sigp/unsafe-eth2-deposit-contract/v0.9.2.1/unsafe_validator_registration.json"
 )
-sha256sums=('b958c73ce18cdb9175c8122097dcf381f550fd50b02fe7fcb4b884fe59cba249'
+sha256sums=('d1ae3aac69b14c174deea0e80d54deac9da150c89aa705a4d70485c5541acbb5'
             'SKIP'
             'bdcc56b10425e5e280d60f26a579b2f8ccc8c40fa88480922ee992f6cacbabd2'
             '66c9407b5c249a483c4ee6bf0269847c19a3a8c55c1888981f08be5acb04c1af'
@@ -62,6 +62,10 @@ build() {
     case "${CARCH}" in
         aarch64) export JEMALLOC_SYS_WITH_LG_PAGE=16 ;; # 64 KiB pages on some arm64 hosts
     esac
+
+    # aws-lc-sys jitterentropy must be -O0; makepkg CFLAGS -O2 is appended by cc-rs and wins
+    # (EnvGuard ineffective with cc 1.6 env cache). Skip that entropy source instead.
+    export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 
     export RUSTFLAGS="${RUSTFLAGS:-} -C linker=gcc -C link-arg=-fuse-ld=lld -C link-arg=-Wl,--no-gc-sections -C link-arg=-Wl,--no-as-needed -C link-arg=-lzstd"
 
