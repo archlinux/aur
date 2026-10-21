@@ -1,0 +1,5 @@
+[cemu]
+source = "github"
+github = "cemu-project/Cemu"
+use_max_tag = true
+prefix = "v"
