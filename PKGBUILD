@@ -4,7 +4,7 @@ _appauthor="NSPC911"
 _appname="pytrash"
 
 pkgname="python-${_appname}"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A high level api for handling recycle bins across platforms"
 
@@ -23,7 +23,7 @@ depends=('python')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('74557aa6f021e8ed11aea46b6489320cc8113a04a91fcbaaaf70f0473c524682')
+sha256sums=('7d76a18430d67b45cc1d0eb9132db1cdafa1cdb055bc858da0b696095e2a1245')
 
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
