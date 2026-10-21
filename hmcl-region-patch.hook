@@ -1,0 +1,17 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/share/java/hmcl/hmcl.jar
+Target = usr/share/java/hmcl-bin/hmcl-bin.jar
+Target = usr/share/java/hmcl-dev/hmcl-dev.jar
+Target = opt/hmcl/hmcl.jar
+Target = opt/hmcl-dev/hmcl.jar
+Target = usr/share/java/hmcl*/*.jar
+Target = opt/hmcl*/*.jar
+
+[Action]
+Description = Patching HMCL so that it no longer treats this machine as mainland China...
+When = PostTransaction
+Exec = /usr/bin/hmcl-region-patch apply --from-stdin --state-dir /var/lib/hmcl-region-patch --yes
+NeedsTargets
