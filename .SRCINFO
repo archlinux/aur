@@ -1,6 +1,6 @@
 pkgbase = python-dateutil-git
 	pkgdesc = Provides powerful extensions to the standard datetime module
-	pkgver = 2.9.0.post0.r7.ge081f67
+	pkgver = 2.9.0.post0.r95.g21b6862
 	pkgrel = 1
 	url = https://github.com/dateutil/dateutil
 	arch = any
@@ -17,6 +17,6 @@ pkgbase = python-dateutil-git
 	source = git+https://github.com/dateutil/dateutil.git
 	source = 0001-fix-many-deprecation-errors.patch
 	sha256sums = SKIP
-	sha256sums = 194d049af0b3756748e04f614333740216e6078d8a1742099ee2cb69fc5e7633
+	sha256sums = 8ad1b10ac18d06ff8200c670e7e0d2bc1ed2a0afc5288bdc0c02aabad8068c45
 
 pkgname = python-dateutil-git

@@ -1,6 +1,6 @@
 
 pkgname=python-dateutil-git
-pkgver=2.9.0.post0.r7.ge081f67
+pkgver=2.9.0.post0.r95.g21b6862
 pkgrel=1
 pkgdesc="Provides powerful extensions to the standard datetime module"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=("git+$url.git"
         "0001-fix-many-deprecation-errors.patch")
 sha256sums=('SKIP'
-            '194d049af0b3756748e04f614333740216e6078d8a1742099ee2cb69fc5e7633')
+            '8ad1b10ac18d06ff8200c670e7e0d2bc1ed2a0afc5288bdc0c02aabad8068c45')
 
 pkgver() {
     cd dateutil
@@ -23,7 +23,6 @@ pkgver() {
 prepare() {
     cd dateutil
     git apply ../0001-fix-many-deprecation-errors.patch
-    PYTHONPATH=src python updatezinfo.py
 }
 
 build() {
