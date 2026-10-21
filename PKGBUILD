@@ -3,8 +3,8 @@
 _pyname="meshcore-cli"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=1.6.4.r624.20260919.2ae6100
-pkgrel=2
+pkgver=1.6.6.r632.20261014.dfcc74e
+pkgrel=1
 pkgdesc="Command line interface to MeshCore node."
 groups=("meshcore")
 arch=(
