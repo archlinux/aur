@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+#
+# algo-server Linux launcher shim.
+#
+# xTool Studio's algorithm worker (`algo-server`) is a closed-source Rust binary
+# that upstream ships for Windows and macOS only, and its Windows build speaks
+# HTTP over a Win32 *named pipe* (`\\.\pipe\...`). The Linux build of the app
+# expects the same HTTP API on an AF_UNIX socket.
+#
+# This shim starts the Windows binary under Wine on a named pipe and runs a
+# small mingw helper (algo-ipc-bridge.exe) that binds the AF_UNIX socket path
+# the app handed us in ALGO_SERVER_ENDPOINT and tunnels it, one pipe instance
+# per client connection, to the algo-server. The app itself is unmodified.
+#
+# Contract (set by the app in src/main/services/algo):
+#   ALGO_SERVER_ENDPOINT     AF_UNIX socket path to listen on
+#   ALGO_SERVER_PLUGIN_DIR   directory holding the algo plugins
+#   ALGO_SERVER_TOKEN        shared bearer token expected by the server
+#   ALGO_SERVER_MAX_WORKERS  worker pool size
+#   ALGO_SERVER_LOG_LEVEL    log level
+#   ALGO_SERVER_LOG_PATH     log directory
+#   ALGO_SERVER_MODE         server mode (e.g. "electron")
+#   ALGO_SERVER_CORS         enable CORS
+
+set -u
+
+here="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+server_exe="$here/algo-server-win32-x64.exe"
+bridge_exe="$here/algo-ipc-bridge.exe"
+
+unix_sock="${ALGO_SERVER_ENDPOINT:-}"
+if [ -z "$unix_sock" ]; then
+	echo "algo-server-linux-x64: ALGO_SERVER_ENDPOINT is not set" >&2
+	exit 2
+fi
+
+if ! command -v wine >/dev/null 2>&1; then
+	echo "algo-server-linux-x64: wine is required to run the algorithm worker" >&2
+	exit 3
+fi
+
+# Wine has to be told the endpoint as a Windows named pipe; the app's AF_UNIX
+# path is served by the bridge instead.
+pipe_path="\\\\.\\pipe\\xtool-algo-server-$$-$RANDOM$RANDOM"
+
+# Translate the Linux paths the app passes into Wine DOS paths (Z: == /).
+algo_env=(
+	"ALGO_SERVER_ENDPOINT=$pipe_path"
+	"ALGO_SERVER_PLUGIN_DIR=Z:${ALGO_SERVER_PLUGIN_DIR:-}"
+	"ALGO_SERVER_TOKEN=${ALGO_SERVER_TOKEN:-}"
+	"ALGO_SERVER_MAX_WORKERS=${ALGO_SERVER_MAX_WORKERS:-1}"
+)
+[ -n "${ALGO_SERVER_LOG_LEVEL:-}" ] && algo_env+=("ALGO_SERVER_LOG_LEVEL=$ALGO_SERVER_LOG_LEVEL")
+if [ -n "${ALGO_SERVER_LOG_PATH:-}" ]; then
+	# The Windows server cannot handle a log path containing spaces (the app's
+	# log directory is "xTool Studio"), so point it at a space-free sibling.
+	log_dir="${ALGO_SERVER_LOG_PATH// /_}"
+	mkdir -p "$log_dir" 2>/dev/null
+	algo_env+=("ALGO_SERVER_LOG_PATH=Z:$log_dir")
+fi
+[ -n "${ALGO_SERVER_MODE:-}" ] && algo_env+=("ALGO_SERVER_MODE=$ALGO_SERVER_MODE")
+[ -n "${ALGO_SERVER_CORS:-}" ] && algo_env+=("ALGO_SERVER_CORS=$ALGO_SERVER_CORS")
+[ -n "${ALGO_SERVER_PROCESS_MODE:-}" ] && algo_env+=("ALGO_SERVER_PROCESS_MODE=$ALGO_SERVER_PROCESS_MODE")
+
+cleanup() {
+	trap - TERM INT EXIT
+	kill "$bridge_pid" 2>/dev/null
+	kill "$server_pid" 2>/dev/null
+	wait 2>/dev/null
+	exit 0
+}
+trap cleanup TERM INT EXIT
+
+env "${algo_env[@]}" wine "$server_exe" &
+server_pid=$!
+
+# The bridge retries opening the pipe itself, so it can start immediately.
+wine "$bridge_exe" "$unix_sock" "$pipe_path" &
+bridge_pid=$!
+
+# Exit when either side dies so the app's supervisor notices.
+wait -n "$server_pid" "$bridge_pid"
+cleanup

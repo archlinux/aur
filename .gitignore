@@ -1,0 +1,20 @@
+# build outputs and scratch
+/src/
+/pkg/
+/dist/
+/work/
+/aurpkg/
+
+# makepkg download cache / build products
+*.pkg.tar
+*.pkg.tar.*
+*.src.tar.gz
+
+# the upstream installer is downloaded by makepkg, never committed
+xTool-Studio-x64-*.exe
+xTool-Creative-Space-*.exe
+
+# downloaded sources (Electron runtime, npm tarballs)
+electron-v*-linux-x64.zip
+usb-*.tgz
+serialport-bindings-cpp-*.tgz

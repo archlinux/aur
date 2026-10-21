@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=xTool Studio
+GenericName=Laser Engraver & Cutter Software
+Comment=Design and control software for xTool machines (Linux port)
+Exec=xtool-studio %U
+Icon=xtool-studio
+Terminal=false
+Categories=Graphics;Engineering;2DGraphics;VectorGraphics;
+Keywords=laser;engraver;cutter;xtool;xcs;
+StartupWMClass=xTool Studio
+MimeType=application/x-xtool-studio;
