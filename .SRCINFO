@@ -1,6 +1,6 @@
 pkgbase = backlog.md
 	pkgdesc = Markdown-native Task Manager & Kanban visualizer for any Git repository
-	pkgver = 1.55.0
+	pkgver = 1.55.1
 	pkgrel = 1
 	url = https://github.com/MrLesk/Backlog.md
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = backlog.md
 	provides = backlog
 	conflicts = backlog
 	options = !strip
-	source = backlog.md-1.55.0::https://github.com/MrLesk/Backlog.md/releases/download/v1.55.0/backlog-bun-linux-x64
-	sha256sums = d845a698c7c4d92b30d9e3a0cef2bb61a5821993b470c9e59a1491f02e27459e
+	source = backlog.md-1.55.1::https://github.com/MrLesk/Backlog.md/releases/download/v1.55.1/backlog-bun-linux-x64
+	sha256sums = e100a5ee0030beccc4920ff182871e792c3455e3228a4077ef2471f52b981a89
 
 pkgname = backlog.md
