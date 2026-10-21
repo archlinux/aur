@@ -3,7 +3,7 @@
 _gitname="freetz-ng"
 _pkgname='fritzbox-push-firmware'
 pkgname="${_pkgname}-git"
-pkgver=ng26020+1806.r29437.20260922.f1eb488898
+pkgver=ng26090+298.r29765.20261021.5c5b2d0fb9
 pkgrel=1
 pkgdesc="Pushes firmware files to AVM Fritz!Box routers via their bootloader FTP interface. Tool taken from the \"Freetz-NG\" project."
 arch=(
