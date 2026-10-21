@@ -1,7 +1,7 @@
 # Note: After installation must me enabled service 'sudo systemctl enable --now vpnagentd.service'
 pkgname=cisco-secure-client
 pkgver=5.1.17.3394
-pkgrel=1
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
 arch=('x86_64')
@@ -35,6 +35,8 @@ package() {
     else
         bsdtar -xf "$srcdir"/data.tar.xz -C "$pkgdir/"
     fi
+
+    sed -i '\|<AppDir>/usr/share/applications</AppDir>|d' "$pkgdir/etc/xdg/menus/applications-merged/cisco-secure-client.menu"
 
     mv -f "$pkgdir/lib" "$pkgdir/usr"
 }
