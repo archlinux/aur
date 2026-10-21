@@ -23,12 +23,12 @@
 # system-tools.py / keep-venv-interpreter.patch adapted from jabla's
 # hermes-agent-bin (thanks).
 pkgname=hermes-agent
-# Peeled v0.22.2 tag object (git rev-parse v0.22.2^{}); pin so the stamp
+# Peeled v0.22.4 tag object (git rev-parse v0.22.4^{}); pin so the stamp
 # does not depend on a live network lookup during package().
 _commit=4d04303818b61bf3aa09278af48356315515965b
-_commit_date=1792420047
+_commit_date=1792599405
 pkgver=0.22.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
