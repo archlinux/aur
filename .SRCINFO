@@ -1,0 +1,34 @@
+pkgbase = super-paste-git
+	pkgdesc = Clipboard manager with local OCR and synchronization (Git version)
+	pkgver = 1.0.0.r98.gf927451
+	pkgrel = 1
+	url = https://github.com/Teddy-Zhu/super_paste_app
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs>=22.14.0
+	makedepends = pnpm>=11.4.0
+	makedepends = python
+	makedepends = rust>=1.88
+	makedepends = pkgconf
+	depends = electron44
+	depends = libx11
+	depends = cairo
+	depends = pango
+	depends = libjpeg-turbo
+	depends = giflib
+	depends = librsvg
+	depends = xdg-utils
+	optdepends = kwin: active-window detection on KDE Plasma 6 Wayland
+	optdepends = xorg-xwayland: panel positioning on Wayland
+	optdepends = xdg-desktop-portal: global shortcuts on Wayland
+	optdepends = libappindicator-gtk3: tray integration on supported desktops
+	provides = super-paste=1.0.0.r98.gf927451
+	conflicts = super-paste
+	conflicts = super_paste_app
+	conflicts = super-paste-app
+	options = !debug
+	source = super-paste-git::git+https://github.com/Teddy-Zhu/super_paste_app.git
+	sha256sums = SKIP
+
+pkgname = super-paste-git
