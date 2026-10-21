@@ -1,9 +1,12 @@
 pkgbase = libosmo-netif
 	pkgdesc = Osmocom library for muxed audio
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/libosmo-netif
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL-2.0-or-later
 	depends = lksctp-tools
 	depends = libpcap
