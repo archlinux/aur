@@ -3,7 +3,7 @@
 # Contributor: bgh <aur at bgh dot io>
 
 pkgname=ib-tws
-pkgver=10.51.1c
+pkgver=10.51.1d
 pkgrel=1
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers (IBKR)'
@@ -30,7 +30,7 @@ sha256sums=('4b65b33dc88d77fef6e7ba1bdc1ae88b149296d3e1eb87db251bfcdf119a1f22'
             '467980a76c604f0e5932c234ff7b81d3e71f5d7ba3ace5e0a8740e2579b6d1f6'
             '21070fa89c9053dff06ba799b6f9838bfd5ff209fd8dd710c5a97c3fc684af44'
             '9f74a204c45d47f551861cb231de89f2536f9966942da41f95d8f0ce5bcd13a4'
-            '7e95d6b4614f9d27efdcfdec4dc427b80b4ed9c74d41598edfe8fd441ee3a6f3')
+            '19f8003156e0e82a7f18f5f4dcf16689fdcd2818dbb30d8df759b88fe59acc25')
 
 build() {
   cd ${srcdir}
