@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=aurgen
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Generate, test and publish AUR packages for GitHub projects'
 arch=('any')
@@ -17,8 +17,8 @@ license=('GPL-3.0-or-later')
 validpgpkeys=('2B0541BF62E91D538C55739DF677BC1E3BD7246E')
 depends=('curl' 'jq' 'util-linux' 'bash' 'coreutils' 'diffutils' 'findutils' 'gawk' 'git' 'gnupg' 'grep' 'gzip' 'make' 'pacman' 'pacman-contrib' 'sed' 'tar')
 optdepends=('github-cli: create GitHub releases and upload assets in aur mode' 'shellcheck: lint mode' 'namcap: PKGBUILD checks in test mode' 'bubblewrap: sandboxed make install for runtime dependency detection')
-source=("https://github.com/eserlxl/aurgen/releases/download/v1.10.1/aurgen-1.10.1.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.10.1/aurgen-1.10.1.tar.gz.sig")
-b2sums=('3eff2df95d4c622ec603ad937b40401cc1c5a5a0dc6ea8bc6ec1bc5cfe7b3bf02d3025721f0bb6a69dcd1c9c513b253a0f841265c11b7a66b2cd9791922391a9'
+source=("https://github.com/eserlxl/aurgen/releases/download/v1.10.2/aurgen-1.10.2.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.10.2/aurgen-1.10.2.tar.gz.sig")
+b2sums=('7592e69d6775144e39a59a833e1a17bb06f8f787974aad7088de7f3323c20c2611c8025470308b8884ce5cd1c3ad8fa4c396271248b80ff5a6d39b46c4d12213'
         'SKIP')
 
 build() {

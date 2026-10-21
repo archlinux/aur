@@ -1,6 +1,6 @@
 pkgbase = aurgen
 	pkgdesc = Generate, test and publish AUR packages for GitHub projects
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/eserlxl/aurgen
 	arch = any
@@ -26,10 +26,10 @@ pkgbase = aurgen
 	optdepends = shellcheck: lint mode
 	optdepends = namcap: PKGBUILD checks in test mode
 	optdepends = bubblewrap: sandboxed make install for runtime dependency detection
-	source = https://github.com/eserlxl/aurgen/releases/download/v1.10.1/aurgen-1.10.1.tar.gz
-	source = https://github.com/eserlxl/aurgen/releases/download/v1.10.1/aurgen-1.10.1.tar.gz.sig
+	source = https://github.com/eserlxl/aurgen/releases/download/v1.10.2/aurgen-1.10.2.tar.gz
+	source = https://github.com/eserlxl/aurgen/releases/download/v1.10.2/aurgen-1.10.2.tar.gz.sig
 	validpgpkeys = 2B0541BF62E91D538C55739DF677BC1E3BD7246E
-	b2sums = 3eff2df95d4c622ec603ad937b40401cc1c5a5a0dc6ea8bc6ec1bc5cfe7b3bf02d3025721f0bb6a69dcd1c9c513b253a0f841265c11b7a66b2cd9791922391a9
+	b2sums = 7592e69d6775144e39a59a833e1a17bb06f8f787974aad7088de7f3323c20c2611c8025470308b8884ce5cd1c3ad8fa4c396271248b80ff5a6d39b46c4d12213
 	b2sums = SKIP
 
 pkgname = aurgen
