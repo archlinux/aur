@@ -1,18 +1,18 @@
 # Maintainer: latte_macchiato <contact@lattemacchiato.dev>
 
 pkgname=late-sh-cli
-pkgver=0.48.6_cli
-_tag=v0.48.6-cli
+pkgver=0.50.1_cli
+_tag=v0.50.1-cli
 pkgrel=1
 pkgdesc='Companion CLI for late.sh terminal clubhouse'
 arch=('x86_64')
 url='https://github.com/mpiorowski/late-sh'
 license=('LicenseRef-FSL-1.1-MIT')
-depends=('alsa-lib' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'webkit2gtk-4.1')
+depends=('alsa-lib' 'gcc-libs' 'glib2' 'glibc' 'gst-plugins-good' 'gtk3' 'webkit2gtk-4.1')
 makedepends=('cargo' 'cmake' 'git' 'mold' 'nasm')
 options=('!debug' '!lto')
 source=("git+https://github.com/mpiorowski/late-sh.git#tag=${_tag}")
-sha256sums=('4d903ae13006b6a2f457e692beacae54692d90348825f5fffab47acebc5f1409')
+sha256sums=('b9a39bf10ccba5b963407004cb7a7b262763c34d21d903ded317b476f7762629')
 
 prepare() {
   cd late-sh
@@ -29,6 +29,8 @@ build() {
   export LATE_CLI_VERSION="${pkgver}"
   export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold --remap-path-prefix=${srcdir}=/"
   cargo build --frozen --release --bin late
+  # Upstream ships a separate Linux webview helper next to the CLI.
+  cargo build --frozen --release -p late-webview --bin late-webview
 }
 
 check() {
@@ -38,12 +40,13 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export LATE_CLI_VERSION="${pkgver}"
   export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold --remap-path-prefix=${srcdir}=/"
-  cargo test --frozen -p late-cli
+  cargo test --frozen -p late-cli -p late-webview
 }
 
 package() {
   cd late-sh
   install -Dm755 target/release/late "${pkgdir}/usr/bin/late"
+  install -Dm755 target/release/late-webview "${pkgdir}/usr/bin/late-webview"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 late-cli/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
