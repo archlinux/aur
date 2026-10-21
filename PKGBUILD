@@ -2,19 +2,24 @@
 pkgname=latex-media9
 _pkgname=${pkgname#latex-}
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Embed video/sound (SWF, MP4, FLV, MP3) files in PDFs"
 arch=(any)
-url="http://www.ctan.org/pkg/media9"
-license=(LPPL)
-depends=(texlive-core)
-makedepends=(unzip)
-source=($_pkgname-$pkgver.zip::http://mirror.ctan.org/macros/latex/contrib/$_pkgname.zip)
+url="https://ctan.org/pkg/media9"
+license=(LPPL-1.3c BSD-3-Clause MPL-1.1 OFL-1.1)
+depends=(texlive-latexextra)
+source=($_pkgname-$pkgver.zip::https://mirrors.ctan.org/macros/latex/contrib/$_pkgname.zip)
 install=$pkgname.install
-noextract=($_pkgname.zip)
 sha256sums=('5ba1eafac310f7f6fd108f8cde216831c4b0653e75f8c957670fcd423c107d78')
 
 package() {
-  install -dm755 "$pkgdir"/usr/share/texmf
-  unzip -d "$pkgdir"/usr/share/texmf $_pkgname-$pkgver.zip
+  cd "$_pkgname"
+  local texdir="$pkgdir/usr/share/texmf/tex/latex/$_pkgname"
+  local docdir="$pkgdir/usr/share/texmf/doc/latex/$_pkgname"
+  install -Dm644 -t "$texdir" *.sty
+  cp -r players javascript "$texdir/"
+  install -dm755 "$docdir"
+  cp -r doc/* "$docdir/"
+  install -m644 README.md ChangeLog "$docdir/"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" players/BSD-License players/StrobeMediaPlayback-license
 }
