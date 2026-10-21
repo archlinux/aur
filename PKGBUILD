@@ -7,7 +7,7 @@
 # Contributor: Jelle van der Waa <jellevdwaa@gmail.com>
 
 pkgname=xmind
-_pkgver=26.05.01107-202609082028
+_pkgver=27.01.05085-202610202029
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
@@ -23,7 +23,7 @@ source_x86_64=(
   "${pkgname}.sh"
 )
 
-sha256sums_x86_64=('cc2bcbde53d2d23f2c990ff30712c25b3f7b152c9a460c7e5ddfebcb83f0e780'
+sha256sums_x86_64=('2cb104954bb4f737775f13e3494d11a2eb8595a96c37a6f294d18c52daaae09f'
                    '26e0a8e4c7e7bd7f9c46e52f5a80de808566d9619a3df1a83fb4dda916172bae'
                    '686e5f4c0f4b26c9e66903d18550730b7496a155cfe46e2361b7293dd20677eb')
 
