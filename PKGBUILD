@@ -2,7 +2,7 @@
 
 # release.yml's aur job sets pkgver and sha256sums from each tag and pushes this to the AUR.
 pkgname=mantle-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Wayland shell engine: bars, panels and lock screens written in Lua (release binaries)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ backup=('etc/pam.d/mantle')
 # The release build already strips its binaries.
 options=('!debug' '!strip')
 source=("$url/releases/download/v$pkgver/mantle-$pkgver-$CARCH-linux.tar.gz")
-sha256sums=('03829e6d3990d01020c5cd8ceb2271cdd655da5dc97f7bba03348947e06814df')
+sha256sums=('9387b5a356134dc60681393b9d7311f04d5558dba32397dd2b1500b77b9dff67')
 
 # The tarball installs under /usr/local; its relative symlink and stub lookup work under /usr too.
 package() {
