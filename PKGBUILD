@@ -3,7 +3,7 @@
 
 pkgname='ipfs-cluster-bin'
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='ipfs-cluster-service, ipfs-cluster-ctl, ipfs-cluster-follow'
 arch=('x86_64')
@@ -15,18 +15,18 @@ optdepends=(
 )
 license=('MIT OR Apache-2.0')
 source=(
-	"https://dist.ipfs.io/ipfs-cluster-service/v${pkgver}/ipfs-cluster-service_v${pkgver}_linux-amd64.tar.gz"
-	"https://dist.ipfs.io/ipfs-cluster-ctl/v${pkgver}/ipfs-cluster-ctl_v${pkgver}_linux-amd64.tar.gz"
-	"https://dist.ipfs.io/ipfs-cluster-follow/v${pkgver}/ipfs-cluster-follow_v${pkgver}_linux-amd64.tar.gz"
+	"${url}/releases/download/v${pkgver}/ipfs-cluster-service_v${pkgver}_linux-amd64.tar.gz"
+	"${url}/releases/download/v${pkgver}/ipfs-cluster-ctl_v${pkgver}_linux-amd64.tar.gz"
+	"${url}/releases/download/v${pkgver}/ipfs-cluster-follow_v${pkgver}_linux-amd64.tar.gz"
 	'ipfs-cluster@.service'
 	'ipfs-cluster.tmpfiles'
 )
-b2sums=(
-	'f7fa61c2472218717ba672a6235c17703eb35f1e1e61899c519707a28dfcbcecfbcb5ed044469f4db202672374fc67cf492020a91d56c3413836c30e65d187c2'
-	'9483f70f71913fec3407667f79dd367a3c87158f71fbd7fc3ba61ff8345c648eed22dde2c7d907efe89a8b8e7e00b4dd98696562d5ed0363bfd931d690c9155c'
-	'a76159865d4fdf7f2806da47817ff2017c259c7f6f068f6df5e32a47cbb1f55834cac9e63c5c993ac162294dd54e53da6831107cdde53a844cf8b14e8c50caba'
-	'a09b83bd6b98be11c374bbed61957435bd0638f02b1358f0521e72d76a14d5ed9d8070bddb3e132521382cd2f988d7183f52373b03b395bfe78851650c6be9b6'
-	'17bde89012302c85f5e6f6c1a3d4f14a577543fb1746f3f427e2713f62f5c26bc0c12207bdf8e3c655f530c9509bddfa2bb005019c5a7002ff8702973e1b249e'
+sha256sums=(
+	'813a5d9f51359b0a55961f57f5e4d92de8031835502c9fa69821ef89d87ef584'
+	'fe31c22d7ebeee33bc7e7d63941d4a31e6c96a42e297c890b834d25e1f7a52e2'
+	'73d2fb7de6b4162393fac64281915648041add895815c3edd4afa6f8abc4b020'
+	'402389b18c44c7aea8a19bb77f6e0b18bc8ec3f3eb860e6cd14ad0b093c92652'
+	'e92e5087532737c0e6e10a0f262f2eace5ab8bf6e1d6cbcc37d34b239fabc32c'
 )
 
 package() {
