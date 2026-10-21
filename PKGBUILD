@@ -48,8 +48,8 @@ check() {
 package() {
     cd "$srcdir/ravel" || return
     install -Dm755 target/release/ravel "$pkgdir/usr/bin/ravel"
-    install -Dm644 data/io.github.ravel.Ravel.desktop \
-        "$pkgdir/usr/share/applications/io.github.ravel.Ravel.desktop"
+    install -Dm644 data/global.zak.ravel.desktop \
+        "$pkgdir/usr/share/applications/global.zak.ravel.desktop"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 crates/ravel-desktop/assets/markdown/katex/LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/KaTeX-LICENSE"
