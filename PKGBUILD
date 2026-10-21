@@ -5,7 +5,7 @@
 # Contributor: Armin Schrenk <armin.schrenk@skymatic.de>
 
 pkgname=cryptomator
-pkgver=1.19.3
+pkgver=1.19.4
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
@@ -24,7 +24,7 @@ source_x86_64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin${_jdk
 source_aarch64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin${_jdkver:0:2}-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK${_jdkver:0:2}U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz"
                 "openjfx-${_jfxver}.zip::https://download2.gluonhq.com/openjfx/${_jfxver}/openjfx-${_jfxver}_linux-aarch64_bin-jmods.zip")
 noextract=("jdk-${_jdkver}.tar.gz" "openjfx-${_jfxver}.zip")
-sha256sums=('88475df07a49a321863d8753fdb99ad77d0afae7d26628dfbbb21ec9a4717204'
+sha256sums=('57cc7424023b27382b4d9cd169111ee27cbc82bb796ac7ef442c3bbbe5f87d63'
             'SKIP')
 sha256sums_x86_64=('8e512f13e575a43655fc92319436c94890c137b9035cc6bd6f9cf24239704d3a'
                    '47035c653863a8e4be3dc6f142b8dbd84b4bb1efc9a8cbc68413e6a5ff5e9f50')
@@ -65,6 +65,8 @@ build() {
     --no-man-pages \
     --strip-debug \
     --compress=zip-0
+
+  "$JAVA_HOME/bin/java" ../dist/common/RemoveDistrustedCaCerts.java runtime/lib/security/cacerts
 
   ##Note: jpackage does not allow -beta suffixes, have to strip those
   "$JAVA_HOME/bin/jpackage" \
