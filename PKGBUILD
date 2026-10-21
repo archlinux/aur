@@ -5,7 +5,7 @@ _pkgname=jn
 pkgname=${_pkgname}-bin
 pkgdesc="A filebased CLI notetaker"
 
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux")
-sha256sums=('b77fa0ca55af20ceedd4cbe061916c03fa0e51cabd70f86cfde02494d46b120c')
-sha256sums_x86_64=('58a42e89ffb042cebece1035f1766c242720de649eca58c6c3e877c1a51425ee')
+sha256sums=('a3ac2a08de2c34e95d877161eebef850240af10ee2e079273414b6bdbae2ad18')
+sha256sums_x86_64=('8764ed88f45f8216eedc75932d617cc3d31bc3eba3f2b155147e37c15809ecf5')
 
 
 package() {
