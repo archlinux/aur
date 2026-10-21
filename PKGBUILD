@@ -2,7 +2,7 @@
 
 pkgname=gui.for.clash
 _name=GUI.for.Clash
-pkgver=1.28.0
+pkgver=1.28.1
 pkgrel=1
 pkgdesc="GUI.for.Clash Modern A GUI program developed by vue3 + wails."
 arch=($CARCH)
@@ -37,7 +37,7 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('d8fd4fa49ef7defdba299492eba409f713433f52c6215da5d99fc65ef6643048'
+sha256sums=('702297c284e55cde70b1bb4fb73f1b28947e2384e83dd7cf721bbbdc45b2aacf'
             'e24b2134498ae4b46b297b637684a66669cb18ed7f0600f7183e4c6d955f785d'
             '9282f9ebf164e1f7f2c312eb2d7eb6f53bb2ce52765a51bfc1999d05846cccf0'
             'adcad01703f4359470a14d2817303ce242fb1cc7d729cdd3da04df642b1ed501')
