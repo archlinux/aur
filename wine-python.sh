@@ -16,6 +16,4 @@ then
   export PYTHON_PATHCONFIG_WARNINGS=0
 fi
 
-# https://bugs.winehq.org/show_bug.cgi?id=51813
-set -o pipefail
-@TRIPLE@-wine /usr/@TRIPLE@/bin/python@PYVER@.exe "$@" | tee
+@TRIPLE@-wine /usr/@TRIPLE@/bin/python@PYVER@.exe "$@"
