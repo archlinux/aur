@@ -1,6 +1,6 @@
 pkgbase = tde-ariadne-bin
 	pkgdesc = A Nautilus-style file manager built with Qt 6
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/zskamljic/tde-ariadne
 	install = ariadne.install
@@ -24,10 +24,10 @@ pkgbase = tde-ariadne-bin
 	optdepends = qt6-imageformats: thumbnails for WebP, TIFF and other image formats
 	optdepends = adwaita-icon-theme: fallback for icons missing from the icon theme
 	optdepends = xdg-desktop-portal: picking files for other applications
-	provides = tde-ariadne=0.3.1
+	provides = tde-ariadne=0.3.2
 	conflicts = tde-ariadne
-	noextract = tde-ariadne-0.3.1-x86_64.tar.zst
-	source = tde-ariadne-0.3.1-x86_64.tar.zst::https://github.com/zskamljic/tde-ariadne/releases/download/v0.3.1/tde-ariadne-0.3.1-x86_64.tar.zst
-	sha256sums = 623598bb9f167e4c5401a7b9eb5f2a5ca83a24d6a7a6e23caba19ea0a071fc7e
+	noextract = tde-ariadne-0.3.2-x86_64.tar.zst
+	source = tde-ariadne-0.3.2-x86_64.tar.zst::https://github.com/zskamljic/tde-ariadne/releases/download/v0.3.2/tde-ariadne-0.3.2-x86_64.tar.zst
+	sha256sums = de60e870aa894ceb549ca0e518ba022a0da7e8eaeee3c1175613e8c2f482200b
 
 pkgname = tde-ariadne-bin
