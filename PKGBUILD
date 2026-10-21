@@ -2,7 +2,7 @@
 
 _pkgname=gnome-shell-extension-app-folder-grid-dimensions
 pkgname=$_pkgname-git
-pkgver=20261021.3.e621f28
+pkgver=20261021.4.db15549
 pkgrel=1
 pkgdesc='Customize the number of rows and columns in the GNOME app folder grid (git)'
 arch=('any')
