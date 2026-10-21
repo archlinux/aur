@@ -1,0 +1,6 @@
+diff --git a/wandb/env.py b/wandb/env.py
+--- a/wandb/env.py
++++ b/wandb/env.py
+@@ -169 +169 @@
+-    return _env_as_bool(ERROR_REPORTING, default="True")
++    return _env_as_bool(ERROR_REPORTING, default="False")

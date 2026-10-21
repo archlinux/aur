@@ -1,0 +1,9 @@
+diff --git a/hatch_build.py b/hatch_build.py
+index 98e4928..ba73534 100644
+--- a/hatch_build.py
++++ b/hatch_build.py
+@@ -316 +316,3 @@
+-    return any(pathlib.Path("/lib").glob("ld-musl-*.so.1"))
++    # A glibc system may also have the musl loader installed. Detect the libc
++    # used by Python, which is the one this wheel is built for.
++    return platform.libc_ver()[0] != "glibc"
