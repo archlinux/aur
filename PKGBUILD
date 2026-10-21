@@ -4,7 +4,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=cinnamon-session-git
-pkgver=6.7.3.unstable.r0.ga307edd
+pkgver=6.7.6.unstable.r3.g2f256e0
 pkgrel=1
 pkgdesc="The Cinnamon Session Handler"
 arch=('i686' 'x86_64')
