@@ -1,7 +1,7 @@
 # Maintainer: Daniel Perez
 
 pkgname=entire-cli-bin
-pkgver=0.11.5
+pkgver=0.11.6
 pkgrel=1
 pkgdesc='Git-native AI agent session tracking'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('entire-cli')
 options=('!debug')
 source_x86_64=("entire-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/entire_linux_amd64.tar.gz")
 source_aarch64=("entire-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/entire_linux_arm64.tar.gz")
-sha256sums_x86_64=('c20476c4ba9689b1800fe8d590601792e2b6f3c89d03a95280d88484029d7eba')
-sha256sums_aarch64=('bcd3b4997ef1ed191d38c6d98586cf4b1eafcce11d9adba9e06ec670bb1dbdf2')
+sha256sums_x86_64=('1272cf16a81d30678dd9cf2597e9298dbf6481ada9b81215dc746afb0e79cab0')
+sha256sums_aarch64=('2f70f50dc9a0f519c3e5a8080218caf035d9c6442c9502bde971734373952e11')
 
 package() {
   install -Dm755 entire "$pkgdir/usr/bin/entire"
