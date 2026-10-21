@@ -75,6 +75,15 @@ is_excused() {
         # cambrian's state out of /dev/shm as a one-way read and imports
         # nothing from here, so shipping it would be dead weight.
         pkg/usr/share/hls-livecam-server/vendor/cambrian/*) return 0 ;;
+        # Vendored pyfakewebcam, which exists for Debian only: Debian and
+        # Ubuntu do not package it, so the .deb carries this copy instead of
+        # pip-installing it as root at install time. Arch declares
+        # python-pyfakewebcam as a dependency and broadcast-api prefers the
+        # distro copy, so the fallback never fires here and shipping it would
+        # be dead weight. If that dependency ever leaves the repos, package
+        # these instead of excusing them.
+        pkg/usr/share/hls-livecam-server/vendor/pyfakewebcam/*) return 0 ;;
+        pkg/usr/share/hls-livecam-server/vendor/README.md) return 0 ;;
         # The timer has no .service in the tree -- systemd would default to
         # livecam-sync.service, which pkg/ does not contain. Packaging the
         # timer alone would ship a unit that cannot fire. Tracked as a gap
