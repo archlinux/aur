@@ -1,6 +1,6 @@
 pkgbase = hubble.md-bin
 	pkgdesc = Local-first Markdown editor (Hubble desktop app) — prebuilt binary
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://hubble.md
 	arch = x86_64
@@ -16,17 +16,17 @@ pkgbase = hubble.md-bin
 	depends = util-linux-libs
 	depends = libsecret
 	optdepends = libappindicator-gtk3: system tray icon support
-	provides = hubble.md=0.3.0
-	provides = hubble-md=0.3.0
+	provides = hubble.md=0.3.1
+	provides = hubble-md=0.3.1
 	conflicts = hubble.md
 	conflicts = hubble-md
 	options = !strip
 	options = !debug
-	source = hubble.md-0.3.0-LICENSE::https://raw.githubusercontent.com/bholmesdev/hubble.md/desktop-v0.3.0/LICENSE
+	source = hubble.md-0.3.1-LICENSE::https://raw.githubusercontent.com/bholmesdev/hubble.md/desktop-v0.3.1/LICENSE
 	sha256sums = 86ee45fc09f4b8b03eb68e2ba5fbb3eca0ace3e5ece46f805d8c6103266230b4
-	source_x86_64 = hubble.md-0.3.0-x86_64.deb::https://github.com/bholmesdev/hubble.md/releases/download/desktop-v0.3.0/hubble_0.3.0_amd64.deb
-	sha256sums_x86_64 = 0b08b4275a33e30d6913fb151288b8accc2c7658cbba41c4e3ae39ec38982e8e
-	source_aarch64 = hubble.md-0.3.0-aarch64.deb::https://github.com/bholmesdev/hubble.md/releases/download/desktop-v0.3.0/hubble_0.3.0_arm64.deb
-	sha256sums_aarch64 = be8a6e5d3f3aff0e66dd11ede9173c4456c99cbe73a21671995a74208dcfbbfc
+	source_x86_64 = hubble.md-0.3.1-x86_64.deb::https://github.com/bholmesdev/hubble.md/releases/download/desktop-v0.3.1/hubble_0.3.1_amd64.deb
+	sha256sums_x86_64 = f9bc4cb8df6898c706544884c4856e8025a08a62f80805d526d3cc3126786b6d
+	source_aarch64 = hubble.md-0.3.1-aarch64.deb::https://github.com/bholmesdev/hubble.md/releases/download/desktop-v0.3.1/hubble_0.3.1_arm64.deb
+	sha256sums_aarch64 = 58fd3a51b47cf99e093e201f31b279dcb43fef1e0f74b7863fc8385b9cc48b0d
 
 pkgname = hubble.md-bin
