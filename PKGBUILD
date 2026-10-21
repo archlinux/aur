@@ -6,13 +6,15 @@
 
 pkgname=diakonos
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux console text editor for the masses."
 arch=('any')
 url="https://git.sr.ht/~pistos/diakonos"
 license=('MIT')
 depends=('ruby' 'ruby-curses')
 makedepends=('git')
+provides=('diakonos')
+conflicts=('diakonos-git')
 
 source=("git+$url#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -24,7 +26,8 @@ prepare() {
 
 package() {
   cd "$pkgname"
-  ruby install.rb --dest-dir "$pkgdir" --prefix /usr --conf-dir /etc
+  ruby=$(test -x /usr/bin/ruby && echo /usr/bin/ruby || which ruby)
+  $ruby install.rb --dest-dir "$pkgdir" --prefix /usr --conf-dir /etc
   install -D -m644 LICENCE "$pkgdir"/usr/share/licenses/"$pkgname"/MIT
 }
 
