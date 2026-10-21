@@ -1,8 +1,8 @@
 # Maintainer: Chomiam <axel.valens@ik.me>
 pkgname=noos-package-manager
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="Gestionnaire de paquets GTK4/Libadwaita (Pacman, AUR, Flatpak et AppImages)"
+pkgdesc="Gestionnaire de paquets GTK4/Libadwaita et outil CLI (noos-up) pour Arch Linux (Pacman, AUR via Yay, Flatpak et AppImages)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Chomiam/noos-package-manager"
 license=('GPL-3.0-or-later')
@@ -13,6 +13,7 @@ depends=(
   'gcc-libs'
   'pacman'
   'pacman-contrib'
+  'yay'
   'flatpak'
   'polkit'
   'hicolor-icon-theme'
@@ -21,12 +22,8 @@ makedepends=(
   'cargo'
   'git'
 )
-optdepends=(
-  'yay: Assistant AUR pour installer et mettre a jour les paquets AUR'
-  'paru: Assistant AUR alternatif pour installer et mettre a jour les paquets AUR'
-)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('363a1e785e15c8c44f63f4d380bbbf728dbf879094ce837ae170c62546dec347')
+sha256sums=('b008d3b8cea792005f2d68411df997d6b7326e917ba36fcadd827dfb1f80ab1c')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -50,6 +47,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/noos-up" "$pkgdir/usr/bin/noos-up"
   install -Dm644 "assets/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "assets/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
