@@ -1,0 +1,31 @@
+pkgbase = vinculum-bin
+	pkgdesc = Manage Wi-Fi, wired and VPN connections (NetworkManager GUI, prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/giosuel/vinculum
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	license = OFL-1.1
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxrandr
+	depends = networkmanager
+	depends = wayland
+	provides = vinculum=0.1.0
+	conflicts = vinculum
+	options = !debug
+	source_x86_64 = https://github.com/giosuel/vinculum/releases/download/v0.1.0/Vinculum-0.1.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 3405f414a0914e6151404b96aec00a89e9fdf2bcf463d70127e9adc7f3a3433a
+	source_aarch64 = https://github.com/giosuel/vinculum/releases/download/v0.1.0/Vinculum-0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = e0730ab826818dfde3e05fc2a98c1122c03c1f4c9583f56190a25363aaed7b17
+
+pkgname = vinculum-bin
