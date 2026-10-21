@@ -1,15 +1,17 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=appa
-_npmver=0.0.14
-
-pkgname=${_npmname}
+pkgauthor="hcgatewood"
+pkgname="appa"
 pkgdesc="☁️ Markdown previews with live reload"
-pkgver=${_npmver}
+pkgver=0.0.15
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/hcgatewood/appa"
+url="https://github.com/${pkgauthor}/${pkgname}"
 license=("MIT")
+
+_npmauthor=@${pkgauthor}
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs" "python")
@@ -19,8 +21,8 @@ provides=("${_npmname}")
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
-source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/@hcgatewood/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('74fd05037d360e92631d184455dda614b77fed95cbc7339870f2ce4f160549ceabc3ced5551e95a199df84d56d48878bae52157aa42d773fbeaaf6b5298934a2')
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+b2sums=('06ceedf79a3c0b99c1dbbd9d186820a5b9e30a67afb369d82bda2a6a598120780192fc48048d7c09940444220ad4a352c03fd1577d348bcfb8daf42a7e6c1c83')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -38,7 +40,7 @@ package() {
 	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
 	local tmppackage="$(mktemp)"
-	local pkgjson="${pkgdir}/usr/lib/node_modules/@hcgatewood/${_npmname}/package.json"
+	local pkgjson="${pkgdir}/usr/lib/node_modules/${_npmauthor}/${_npmname}/package.json"
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
 	mv "${tmppackage}" "${pkgjson}"
 	chmod 644 "${pkgjson}"
@@ -52,5 +54,5 @@ package() {
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-	ln -sf "/usr/lib/node_modules/@hcgatewood/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	ln -sf "/usr/lib/node_modules/${_npmauthor}/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
