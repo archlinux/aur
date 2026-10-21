@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=rv-bin
-pkgver=0.23.2 # renovate: datasource=github-tags depName=a2-ai/rv
+pkgver=0.23.3 # renovate: datasource=github-releases depName=a2-ai/rv
 pkgrel=1
 pkgdesc="A declarative R package manager"
 arch=('x86_64')
@@ -22,5 +22,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('d5f9f8b06efc6a4505490b6f06a68c90082f53516acc734dc695feda29a18ac7'
+sha256sums_x86_64=('749ffd6cfd78b10834e11074f62e347e7d214b50ee1356de557733633aa5cf87'
                    '74fe1333138eafb27da61b5066f2f8039448ab87df0ce2d07982629c2195a520')
