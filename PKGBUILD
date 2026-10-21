@@ -2,7 +2,7 @@
 
 pkgname=rwpm-bin
 _name=rwpm
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Separate RimWorld profiles, each with its own saves, settings and mod list (prebuilt release)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=("$_name=$pkgver")
 conflicts=("$_name")
 options=('!strip' '!debug')
 source=("$_name-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_name-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('1387053155d287377086cd27e2a9e59b6fb8e1a4adcfadfce5aca5e147471ffc')
+sha256sums=('225f0b50ec1e652f302316f7b689ce5b1df38101f17c1cce46cfb627bc3515a5')
 
 package() {
   cd "$srcdir/$_name-$pkgver-linux-x86_64"
