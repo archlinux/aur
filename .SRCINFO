@@ -1,6 +1,6 @@
 pkgbase = gecko-git
 	pkgdesc = Modern cross-platform Fallout 2 map editor
-	pkgver = 1.0.0.r486.g39092141b
+	pkgver = 1.0.0.r515.g468ce3afa
 	pkgrel = 1
 	url = https://github.com/JanSimek/gecko
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=gecko-git
-pkgver=1.0.0.r486.g39092141b
+pkgver=1.0.0.r515.g468ce3afa
 pkgrel=1
 pkgdesc='Modern cross-platform Fallout 2 map editor'
 arch=('any')
@@ -93,6 +93,11 @@ build() {
         -DCMAKE_INSTALL_BINDIR=bin
 
     cmake --build build --parallel "$(nproc)"
+}
+
+check() {
+    cd ${pkgname%-*}
+    ctest --test-dir build --output-on-failure
 }
 
 package(){
