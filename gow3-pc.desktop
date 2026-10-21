@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=God of War III Remastered
+Comment=God of War III Remastered native PC port (spartanport)
+Exec=gow3-pc
+Icon=gow3-pc
+Terminal=false
+Categories=Game;
+StartupWMClass=gow3

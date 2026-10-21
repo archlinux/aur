@@ -1,0 +1,4 @@
+#!/bin/sh
+# Launcher for the God of War III Remastered package.
+# Settings live in ~/.local/share/gow3/gow3.ini and are not touched by updates.
+exec /opt/ports/gow3-pc/spartanport.AppImage "$@"

@@ -1,0 +1,27 @@
+pkgbase = gow3-pc-bin
+	pkgdesc = God of War III Remastered native PC port (SpartanPort, requires your own game dump)
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/FelipePrado0/SpartanPort
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = vulkan-icd-loader
+	depends = fuse2
+	provides = gow3-pc
+	conflicts = gow3-pc
+	options = !strip
+	source = spartanport-x86_64.AppImage::https://github.com/FelipePrado0/SpartanPort/releases/download/windows-v2.6.0/spartanport-x86_64.AppImage
+	source = LICENSE
+	source = gow3-pc
+	source = gow3-pc.desktop
+	source = gow3-pc.png
+	sha256sums = 0b3a09e301065dc2fe87b2b47166dd6747d51a35295b2baebc2e4e082350cec1
+	sha256sums = edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6
+	sha256sums = 7fe0c2c08d62206e23a2e100a4494d59f457d02b7b93b3ebe2914f7f43a2d68d
+	sha256sums = 355fba0cdf552e38fe876d2a74eccb3cbc23189fc31ff5910b42415e5e3e3078
+	sha256sums = 6bed8f45886e9c2ee18f8102b23cf72e50cb068c57c52f8c67121a6ef7d55d66
+
+pkgname = gow3-pc-bin
