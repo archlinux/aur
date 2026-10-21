@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <Capricornus007 at proton dot me>
 # Co-Maintainer: nardholio <email hidden>
 pkgname=muffin-git
-pkgver=6.6.3.r57.g262554d3
+pkgver=6.6.3.r193.g2a1cf56d
 pkgrel=1
 pkgdesc="Cinnamon window manager and compositor forked from Mutter (git version)"
 arch=(x86_64)
