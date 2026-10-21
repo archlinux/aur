@@ -6,8 +6,7 @@
 pkgname=python-cohere
 pkgdesc='Python Library for Accessing the Cohere API'
 pkgver=7.2.0
-_commit=0eacfe77e1710322b355928574cfec18f6791c42 # only released via PyPI
-pkgrel=1
+pkgrel=2
 url='https://github.com/cohere-ai/cohere-python'
 arch=(any)
 license=('MIT')
@@ -37,17 +36,17 @@ optdepends=(
   'python-boto3: AWS client'
   'python-botocore: AWS client'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
-b2sums=('557c3df9506680045f8373df6174a6774a3f1dec767d6b1925445f95c0626b3504ee787defc7233f21b20bcf8dd7d9251c6e21aafba5836ffc4f6f85bab34ff2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+b2sums=('02908ae7b08338f3f4626f4066f67162182e0a8e4ad81e791488cfc45c70eff3ea233f8608eb6902a3ecde916972436a8277df28fd74d7e6ba1e722f4441d0bd')
 
 build() {
-  cd "cohere-python-${_commit}"
+  cd "cohere-python-${pkgver}"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "cohere-python-${_commit}"
+  cd "cohere-python-${pkgver}"
 
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
@@ -72,7 +71,7 @@ check() {
 }
 
 package() {
-  cd "cohere-python-${_commit}"
+  cd "cohere-python-${pkgver}"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
