@@ -26,7 +26,7 @@ optdepends=(
   'paru: Assistant AUR alternatif pour installer et mettre a jour les paquets AUR'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('34fb1f98c340739c929a4927732f4a9c394266beda71dfb58dc0145d25ef2675')
+sha256sums=('8566e527ec7f47ba2f9db3a73b6a3b5b0ce9cca577812dc0661bbe3f42d30799')
 
 prepare() {
   cd "$pkgname-$pkgver"
