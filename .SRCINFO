@@ -1,0 +1,20 @@
+pkgbase = krunner-scrivener
+	pkgdesc = KRunner plugin to search Scrivener favorite and recent projects (Plasma 6)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yaoyaozijing/Krunner-Scrivener
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = kcoreaddons
+	depends = ki18n
+	depends = krunner
+	depends = kcmutils
+	optdepends = baloo: search .scrivx files outside favorites/recent via the file index
+	source = Krunner-Scrivener-0.1.0.tar.gz::https://github.com/yaoyaozijing/Krunner-Scrivener/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = a9184098042ba256a98f809e99fbf207d8a264455341cba0229e8edfac3e8f98
+
+pkgname = krunner-scrivener
