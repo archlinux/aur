@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-optimization
 	pkgdesc = Quantum Optimization package for IBM qiskit framework
 	pkgver = 0.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/qiskit-community/qiskit-optimization
 	arch = any
 	license = Apache-2.0
@@ -12,7 +12,6 @@ pkgbase = python-qiskit-optimization
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = blas-openblas
 	depends = python-docplex
 	depends = python-networkx
 	depends = python-numpy
