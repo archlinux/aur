@@ -1,0 +1,17 @@
+post_install() {
+    cat <<'AURGEN_MESSAGES'
+tmpcleaner: the timer is not enabled automatically.
+  Preview first: sudo tmpcleaner --dry-run
+  Keep paths:    sudo tmpcleaner --suggest-exclusions | sudo tee -a /etc/tmpcleaner/tmpcleaner.conf.d/50-keep.conf
+                 then delete the rules for anything you do not need kept
+  Then enable:   sudo systemctl enable --now tmpcleaner.timer
+AURGEN_MESSAGES
+}
+
+pre_remove() {
+    cat <<'AURGEN_MESSAGES'
+==> linux-tmpcleaner: disable the units you enabled before removing:
+sudo systemctl disable --now tmpcleaner.timer
+AURGEN_MESSAGES
+}
+
