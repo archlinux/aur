@@ -2,7 +2,7 @@
 # Maintainer: Andrej Mihajlov <andrej@nymtech.net>
 
 pkgname=nym-vpnc
-pkgver=2026.13.1
+pkgver=2026.14.0
 pkgrel=1
 pkgdesc='NymVPN command-line client'
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ makedepends=('rust' 'cargo' 'protobuf')
 provides=('nym-vpnc')
 conflicts=('nym-vpnc')
 options=(!debug)
-source=("$url/archive/refs/tags/nym-vpn-v2026.13.1.tar.gz")
-sha256sums=(e4b6c70e8d2c20b5fc7fbd51757decf0a7b7f060d69e8f0e9f06a8cf816ff2d3)
-_srcdir="nym-vpn-client-nym-vpn-v2026.13.1"
+source=("$url/archive/refs/tags/nym-vpn-v2026.14.0.tar.gz")
+sha256sums=(e4c00f89e7d35be34c4ad3258d6675c04d5f61cfbd99e52917b8bcc33b933c9b)
+_srcdir="nym-vpn-client-nym-vpn-v2026.14.0"
 
 prepare() {
   pushd "$_srcdir"
@@ -38,11 +38,20 @@ build() {
   # 2. aws-lc-sys v0.38: build issues related to optimizations (fixed in newer versions)
   # see: https://github.com/aws/aws-lc-rs/pull/1064
   CFLAGS+=" -ffat-lto-objects -O0" cargo build --release --locked -p nym-vpnc --verbose
+
+  mkdir -p target/completions
+  target/release/nym-vpnc completions bash > target/completions/nym-vpnc.bash
+  target/release/nym-vpnc completions zsh > target/completions/_nym-vpnc
+  target/release/nym-vpnc completions fish > target/completions/nym-vpnc.fish
   popd
 
   popd # _srcdir
 }
 
 package() {
-  install -Dm755 "$_srcdir/nym-vpn-core/target/release/nym-vpnc" "$pkgdir/usr/bin/nym-vpnc"
+  local target="$_srcdir/nym-vpn-core/target"
+  install -Dm755 "$target/release/nym-vpnc" "$pkgdir/usr/bin/nym-vpnc"
+  install -Dm644 "$target/completions/nym-vpnc.bash" "$pkgdir/usr/share/bash-completion/completions/nym-vpnc"
+  install -Dm644 "$target/completions/_nym-vpnc" "$pkgdir/usr/share/zsh/site-functions/_nym-vpnc"
+  install -Dm644 "$target/completions/nym-vpnc.fish" "$pkgdir/usr/share/fish/vendor_completions.d/nym-vpnc.fish"
 }
