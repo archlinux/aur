@@ -1,6 +1,6 @@
 pkgbase = lianli-linux-git
 	pkgdesc = Open-source Linux replacement for L-Connect 3 for Lian Li devices
-	pkgver = 1.2.0.r5.gca531d9
+	pkgver = 1.2.2.r4.g7e3a42c
 	pkgrel = 1
 	url = https://github.com/sgtaziz/lian-li-linux
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = lianli-linux-git
 	provides = lianli-linux
 	conflicts = lianli-linux
 	options = !lto
+	options = !debug
 	source = git+https://github.com/sgtaziz/lian-li-linux.git
 	sha256sums = SKIP
 

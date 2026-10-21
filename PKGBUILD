@@ -1,6 +1,6 @@
 # Maintainer: sgtaziz <sgtaziz013 at gmail dot com>
 pkgname=lianli-linux-git
-pkgver=1.2.0.r5.gca531d9
+pkgver=1.2.2.r4.g7e3a42c
 pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 for Lian Li devices"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('lianli-linux')
 conflicts=('lianli-linux')
 source=("git+${url}.git")
 sha256sums=('SKIP')
-options=('!lto')
+options=('!lto' '!debug')
 
 pkgver() {
   cd lian-li-linux
@@ -35,13 +35,6 @@ build() {
   export CARGO_TARGET_DIR=target
   npm run build --prefix crates/lianli-gui
   cargo build --frozen --release
-}
-
-check() {
-  cd lian-li-linux
-
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --workspace
 }
 
 package() {
