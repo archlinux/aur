@@ -1,8 +1,8 @@
 # Maintainer: Jaroslav Bolek <jarris@post.cz>
 pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
-pkgver=1.5.4
-pkgrel=2
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
 url="git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/${pkgver}"
