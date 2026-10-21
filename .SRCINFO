@@ -1,0 +1,35 @@
+pkgbase = mongodb90-bin
+	pkgdesc = A high-performance, open source, schema-free document-oriented database
+	pkgver = 9.0.4
+	pkgrel = 1
+	url = https://www.mongodb.com/
+	arch = x86_64
+	arch = aarch64
+	license = SSPL-1.0
+	makedepends = chrpath
+	depends = mongosh-bin
+	depends = curl
+	depends = openssl
+	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
+	provides = mongodb=9.0.4
+	conflicts = mongodb
+	conflicts = mongodb-shell-bin
+	noextract = mongodb-org-server_9.0.4_x86_64.deb
+	noextract = mongodb-org-mongos_9.0.4_x86_64.deb
+	backup = etc/mongodb.conf
+	source = mongodb.sysusers
+	source = mongodb.tmpfiles
+	source = LICENSE
+	sha256sums = 47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b
+	sha256sums = 51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac
+	sha256sums = 09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27
+	source_x86_64 = mongodb-org-server_9.0.4_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/resolute/mongodb-org/9.0/multiverse/binary-amd64/mongodb-org-server_9.0.4_amd64.deb
+	source_x86_64 = mongodb-org-mongos_9.0.4_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/resolute/mongodb-org/9.0/multiverse/binary-amd64/mongodb-org-mongos_9.0.4_amd64.deb
+	sha256sums_x86_64 = b70284cda1682f3013c6941fec480833fb6cc3a13f20d12d96b163c59409daaf
+	sha256sums_x86_64 = e5e8de048d408cd2585df91bfc28af3cded6536b920251d1845e3f0e800b75b4
+	source_aarch64 = mongodb-org-server_9.0.4_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/resolute/mongodb-org/9.0/multiverse/binary-arm64/mongodb-org-server_9.0.4_arm64.deb
+	source_aarch64 = mongodb-org-mongos_9.0.4_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/resolute/mongodb-org/9.0/multiverse/binary-arm64/mongodb-org-mongos_9.0.4_arm64.deb
+	sha256sums_aarch64 = faba92b12c3e8289a4f4cbd7c66f89ee4c69538a57820181ef77a342a86cbb08
+	sha256sums_aarch64 = 35ac17be33f728aa1712bed764234575cafeb29cde9a83bbd6beffedbabaa01b
+
+pkgname = mongodb90-bin
