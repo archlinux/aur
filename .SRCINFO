@@ -1,5 +1,5 @@
 pkgbase = ahwoo-bin
-	pkgdesc = A launcher for Ahwoo games
+	pkgdesc = Launcher for Ahwoo games
 	pkgver = 2026.10.17.1348
 	pkgrel = 1
 	url = https://neutrino.ahwoo.com
@@ -10,6 +10,8 @@ pkgbase = ahwoo-bin
 	depends = fontconfig
 	options = !strip
 	source = https://neutrino.ahwoo.com/download/linux
+	source = ahwoo.png::https://neutrino.ahwoo.com/favicon.png
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ahwoo-bin
