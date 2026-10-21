@@ -2,8 +2,8 @@
 
 _pkgbase=adskiller
 pkgname=$_pkgbase-desktop
-pkgver=1.3.12
-pkgrel=2
+pkgver=1.3.13
+pkgrel=1
 pkgdesc="Client for Android/iOS cleaner and multi-tool GUI utility"
 arch=('x86_64')
 url="https://github.com/badcast/$_pkgbase"
@@ -19,7 +19,7 @@ source=(
   "$_pkgbase-gui.desktop"
   "$_pkgbase-gui-desktop.png"
 )
-sha256sums=('693ffe885d510b0a1c9ac81487f3fcc844a7f0afe1442e7ec08d4f552fc1e0f8'
+sha256sums=('1f6b4e56f82068700f176955687ae3bea421186d00e9e69876ebe171ff7d52d0'
             '8e4a856343906a93e7b5196dd3d91e2be6add4f10c4694b0bfec9fa68f4ff151'
             '7fe93ed4e349b7904e28e3c4a83934a143858105c91fa3c0c3bbaf5de8e43d9f')
 
