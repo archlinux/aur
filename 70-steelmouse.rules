@@ -1,0 +1,3 @@
+# Let the logged-in user read SteelSeries HID devices (vendor 0x1038) without root.
+# Must sort before 73-seat-late.rules so the uaccess tag is applied.
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1038", TAG+="uaccess"

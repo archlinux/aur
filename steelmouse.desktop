@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=SteelMouse
+GenericName=Mouse Battery Monitor
+Comment=Show your SteelSeries mouse battery level in the system tray
+Exec=steelmouse
+Icon=steelmouse
+Terminal=false
+Categories=Utility;System;
+Keywords=steelseries;mouse;battery;tray;
+StartupNotify=false
