@@ -1,7 +1,7 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 
 pkgname=pyroscope-bin
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Continuous Profiling Platform. Debug performance issues down to a single line of code."
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ md5sums=('cb684c030b5bd8f92c3b64911db192c5'
          'd98aaa4ae2dbaea28343ad42d922c3fe'
          '8cb46a866f2680d864bbd3aa64798254'
          '0a98aed9b037471a85bf8ef909cd4dc1')
-md5sums_x86_64=('a7c69a0ae963897e2456a2e403ccfad7')
-md5sums_aarch64=('73c421c097e6592461d7b0632b7a7579')
+md5sums_x86_64=('3d5afc5110c80b76f45050e129390ef3')
+md5sums_aarch64=('77f3bc43113b376cb15d99dd2db662a8')
 
 package() {
 	install -Dm644 "${pkgname%-bin}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname%-bin}.conf"
