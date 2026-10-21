@@ -1,6 +1,6 @@
 pkgbase = bitbox-wallet-app-rpm
 	pkgdesc = BitBox Wallet App for managing digital assets
-	pkgver = 4.51.0
+	pkgver = 4.52.0
 	pkgrel = 1
 	url = https://bitbox.swiss/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bitbox-wallet-app-rpm
 	makedepends = curl
 	depends = libxcb
 	options = strip
-	source = https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v4.51.0/bitbox-4.51.0-1.x86_64.rpm
-	sha256sums = afa9460cd1de7838de3e5d3309cb8303a515764be69897eca3eb7cf7eccfc8c8
+	source = https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v4.52.0/bitbox-4.52.0-1.x86_64.rpm
+	sha256sums = 057ce18bca16cfd40d4f00dcc04e7908373660d78a746407d9572399313af52f
 
 pkgname = bitbox-wallet-app-rpm
