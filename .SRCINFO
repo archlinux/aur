@@ -10,6 +10,6 @@ pkgbase = mitos-editor-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/mitos-editor/mitos/releases/download/v0.1.1/mitos_0.1.1-1_amd64.deb
-	sha256sums = 5e37027f19c8b712a6b3284c42d84f93a6ec9acbdb0a74e6bae4d1afa16fb668
+	sha256sums = 6426527dd580232c6e8eb231c011a7c1d02c415db4da49655b7007b4e50ed43f
 
 pkgname = mitos-editor-bin
