@@ -4,6 +4,10 @@
 pkgname=clara-bin
 pkgver=1.1.1
 pkgrel=2
+# The release workflow always builds the Arch asset with pkgrel=1, so the asset name must not be
+# derived from this package's own pkgrel (which is free to be bumped whenever the PKGBUILD
+# changes). Using ${pkgrel} here made the download 404 as soon as pkgrel was bumped.
+upstream_rel=1
 pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety - binary release)"
 arch=('x86_64')
 url="https://github.com/acropolis914/Clara"
@@ -38,13 +42,13 @@ optdepends=(
 )
 provides=('carla' 'carla-git' 'clara' 'clara-git' 'clap-host' 'dssi-host' 'ladspa-host' 'lv2-host' 'vst3-host' 'vst-host')
 conflicts=('carla' 'carla-git' 'clara' 'clara-git')
-source=("https://github.com/acropolis914/Clara/releases/download/v${pkgver}/clara-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("https://github.com/acropolis914/Clara/releases/download/v${pkgver}/clara-bin-${pkgver}-${upstream_rel}-x86_64.pkg.tar.zst")
 sha256sums=('SKIP')
 
 package() {
   # The upstream release asset is itself a pacman package, so it carries pacman's own
   # metadata files. They must be stripped out: leaving .BUILDINFO in the package root makes
   # makepkg abort with "Dotfile found in package root" and the AUR build never completes.
-  bsdtar -xf "$srcdir/clara-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" \
+  bsdtar -xf "$srcdir/clara-bin-${pkgver}-${upstream_rel}-x86_64.pkg.tar.zst" -C "$pkgdir" \
     --exclude '.PKGINFO' --exclude '.MTREE' --exclude '.BUILDINFO'
 }
