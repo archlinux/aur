@@ -1,6 +1,6 @@
 pkgbase = tock-rs-bin
 	pkgdesc = Terminal calendar app written in Rust
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/isene/tock
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = tock-rs-bin
 	provides = tock
 	conflicts = tock-rs
 	options = !strip
-	source = README-0.2.0.md::https://raw.githubusercontent.com/isene/tock/v0.2.0/README.md
-	sha256sums = 0dacaced8593cc1b27f631ec42bf58c765472b6b87c95c2958a111fd48bfe80c
-	source_x86_64 = tock-x86_64-0.2.0::https://github.com/isene/tock/releases/download/v0.2.0/tock-linux-x86_64
-	sha256sums_x86_64 = a54c621a1f54726b12d0c7c501a704fa2c64774b0a2c4ea0eef7149f5c2790e3
-	source_aarch64 = tock-aarch64-0.2.0::https://github.com/isene/tock/releases/download/v0.2.0/tock-linux-aarch64
-	sha256sums_aarch64 = 8ee949eaa9b26449183591730c1112154b6440baee958b3e2e159bd47e116df3
+	source = README-0.2.1.md::https://raw.githubusercontent.com/isene/tock/v0.2.1/README.md
+	sha256sums = a73fb441b580ef17b1ec55fb1825972a9871694c9c420649770473032b180f91
+	source_x86_64 = tock-x86_64-0.2.1::https://github.com/isene/tock/releases/download/v0.2.1/tock-linux-x86_64
+	sha256sums_x86_64 = ae6ae0922e37d18255123847d7033cd6be846307031938d088ac67af140d26f5
+	source_aarch64 = tock-aarch64-0.2.1::https://github.com/isene/tock/releases/download/v0.2.1/tock-linux-aarch64
+	sha256sums_aarch64 = c0774f888dd5c795d605fa918818da633dbb6b1f762606bbd0e1ae3a768bd06e
 
 pkgname = tock-rs-bin
