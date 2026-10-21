@@ -6,8 +6,8 @@
 
 _pkgname='beartype'
 pkgname="python-${_pkgname}"
-pkgver=0.22.9
-pkgrel=4
+pkgver=0.23.1
+pkgrel=1
 pkgdesc='Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python'
 arch=('any')
 url="https://github.com/beartype/${_pkgname}"
@@ -20,33 +20,35 @@ makedepends=(
 	'python-wheel'
 )
 checkdepends=(
-	'python-pytest'
-	'python-numpy'
-	'python-xarray'
+	'mypy'
+	'nuitka>=1.2.6'
+	'pyinstaller'
+	'pyright>=1.1.370'
 	'python-click'
-	'python-rich-click'
+	'python-coverage'
+	'python-docutils>=1:0.22.0'
+	'python-jax'
+	'python-jaxtyping'
+	'python-langchain'
+	'python-langchain-core'
+	'python-numba'
+	'python-numpy'
+	'python-polars'
+	'python-polars-runtime-compat'
+	'python-poetry'
+	'python-pydantic'
 	'python-pygments'
+	'python-pytest'
+	'python-pytorch'
+	'python-redis'
+	'python-rich-click'
+	'python-sqlalchemy'
+	'python-typer'
 	'python-typing_extensions'
+	'python-xarray'
 )
-source=(
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-	'numpy-2.5-backport.patch'
-	'ee167cf-idempotence-backport.patch'
-	'c70d84f-click-8.5-backport.patch'
-)
-b2sums=(
-	'a5433abbf101609fb40644951f39f326fc177dcf75160064e602478e1a5aec41b0c16317fb7172e2500bdf1d81b964ac1c23113a37aed51f8e4ab88c896b2694'
-	'd7580f1a8df0311d32132dadc2f7549902e9fe5f9d1419fcbc9b19199175a5011349331860f9171a9c1772788ff387bbfe61b360400dee72e3792741c0aea266'
-	'64f2ceb9a2544db5a4ff1c72a683e6c60037bd43c0444d9827554b42a1fc8f5e023beb42f5d9ad2278e832e3cff7c66064dab0a16ccea9cea5b4db076196bcfe'
-	'65271a1348313d69012e7087db353818d07e83a16e3237b69f2f2efce3adef03ba4c65dc1cd4e3bcdbacd23bf757cc978936b6aeaf1e0ce330fc046dc5992bc1'
-)
-
-prepare() {
-	cd -- "${srcdir}/${_pkgname}-${pkgver}" || return 1
-	patch -Np1 -i "${srcdir}/numpy-2.5-backport.patch"
-	patch -Np1 -i "${srcdir}/ee167cf-idempotence-backport.patch"
-	patch -Np1 -i "${srcdir}/c70d84f-click-8.5-backport.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+b2sums=('800fdfa4511ba00f3fe683e83df49e663c583948de0c99159d56acfba104027c1a5926da69b9d0ce15998779d72c371ecf67b591069b907bcf27169cc7cf7f90')
 
 build() {
 	cd -- "${srcdir}/${_pkgname}-${pkgver}" || return 1
@@ -65,10 +67,80 @@ check() {
 		return 1
 	fi
 
-	PYTHONPATH="${site_packages[0]}" pytest \
-		--deselect 'beartype_test/a90_func/pep/test_pep561_static.py' \
-		--deselect 'beartype_test/a90_func/a40_claw/external/test_claw_fastmcp.py::test_claw_fastmcp' \
-		-p asyncio
+	# Keep the tested wheel ahead of the test suite; do not let pytest prepend the source tree.
+	local test_pythonpath="${site_packages[0]}:${PWD}"
+	local import_log="${srcdir}/test-import.log"
+	if ! PYTHONPATH="${test_pythonpath}" python -P -m pydoc beartype >"${import_log}" 2>&1; then
+		cat -- "${import_log}" >&2
+		return 1
+	fi
+	if ! grep -Fxq -- "    ${site_packages[0]}/beartype/__init__.py" "${import_log}"; then
+		printf 'beartype was not imported from the installed test wheel.\n' >&2
+		grep -A 1 '^FILE$' "${import_log}" >&2 || true
+		return 1
+	fi
+	printf 'Verified wheel import from %s\n' "${site_packages[0]}/beartype/__init__.py"
+
+	# These AUR integration dependencies are currently unbuildable in a clean chroot:
+	# FastMCP requires python-beartype through python-py-key-value-aio;
+	# Celery depends on a failing Kombu build and a cyclic pytest-celery dependency.
+	# Verify the exact upstream test nodes before excluding them.
+	local excluded_tests=(
+		'beartype_test/a90_func/a40_claw/external/test_claw_celery.py::test_claw_celery'
+		'beartype_test/a90_func/a40_claw/external/test_claw_fastmcp.py::test_claw_fastmcp'
+	)
+	local collection_log="${srcdir}/test-excluded-collection.log"
+	if ! PYTHONPATH="${test_pythonpath}" pytest --collect-only -qq --import-mode=append "${excluded_tests[@]}" >"${collection_log}" 2>&1; then
+		cat -- "${collection_log}" >&2
+		return 1
+	fi
+
+	local excluded_test
+	local pytest_options=()
+	for excluded_test in "${excluded_tests[@]}"; do
+		if ! grep -Fxq -- "${excluded_test}" "${collection_log}"; then
+			printf 'Excluded integration test no longer exists: %s\n' "${excluded_test}" >&2
+			cat -- "${collection_log}" >&2
+			return 1
+		fi
+		pytest_options+=("--deselect=${excluded_test}")
+	done
+
+	# Run all remaining tests against the installed wheel, including the PEP 561 type checkers.
+	local test_log="${srcdir}/test-pytest.log"
+	if ! PYTHONPATH="${test_pythonpath}" pytest -v -ra --import-mode=append "${pytest_options[@]}" >"${test_log}" 2>&1; then
+		cat -- "${test_log}"
+		return 1
+	fi
+	cat -- "${test_log}"
+
+	if ! grep -Eq '[,[:space:]]2 deselected([,[:space:]]|$)' "${test_log}"; then
+		printf 'Expected exactly two excluded integration tests.\n' >&2
+		return 1
+	fi
+
+	local required_test
+	for required_test in \
+		'beartype_test/a90_func/a90_pep/test_pep561_mypy.py::test_pep561_mypy' \
+		'beartype_test/a90_func/a90_pep/test_pep561_pyright.py::test_pep561_pyright_self' \
+		'beartype_test/a90_func/a90_pep/test_pep561_pyright.py::test_pep561_pyright_others'; do
+		if ! grep -F -- "${required_test}" "${test_log}" | grep -Eq '[[:space:]]+PASSED'; then
+			printf 'Required integration test did not pass: %s\n' "${required_test}" >&2
+			return 1
+		fi
+	done
+
+	# CrossHair and Pandera are not available as usable stable Arch packages.
+	# Both Sphinx tests are explicitly disabled upstream regardless of Sphinx availability.
+	# All other missing test integrations must cause an error, not a silent skip.
+	local missing_skips="${srcdir}/test-missing-dependency-skips.log"
+	if grep -E '^SKIPPED.*(could not import|Command .* not found)' "${test_log}" |
+		grep -Ev "could not import '(crosshair|pandera)'" |
+		grep -vF 'beartype_test/a90_func/a50_external/a00_sphinx/test_sphinx.py:' >"${missing_skips}"; then
+		printf 'Unexpected missing integration test dependencies:\n' >&2
+		cat -- "${missing_skips}" >&2
+		return 1
+	fi
 }
 
 package() {

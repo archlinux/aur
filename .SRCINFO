@@ -1,29 +1,42 @@
 pkgbase = python-beartype
 	pkgdesc = Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python
-	pkgver = 0.22.9
-	pkgrel = 4
+	pkgver = 0.23.1
+	pkgrel = 1
 	url = https://github.com/beartype/beartype
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-numpy
-	checkdepends = python-xarray
+	checkdepends = mypy
+	checkdepends = nuitka>=1.2.6
+	checkdepends = pyinstaller
+	checkdepends = pyright>=1.1.370
 	checkdepends = python-click
-	checkdepends = python-rich-click
+	checkdepends = python-coverage
+	checkdepends = python-docutils>=1:0.22.0
+	checkdepends = python-jax
+	checkdepends = python-jaxtyping
+	checkdepends = python-langchain
+	checkdepends = python-langchain-core
+	checkdepends = python-numba
+	checkdepends = python-numpy
+	checkdepends = python-polars
+	checkdepends = python-polars-runtime-compat
+	checkdepends = python-poetry
+	checkdepends = python-pydantic
 	checkdepends = python-pygments
+	checkdepends = python-pytest
+	checkdepends = python-pytorch
+	checkdepends = python-redis
+	checkdepends = python-rich-click
+	checkdepends = python-sqlalchemy
+	checkdepends = python-typer
 	checkdepends = python-typing_extensions
+	checkdepends = python-xarray
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.10
-	source = python-beartype-0.22.9.tar.gz::https://github.com/beartype/beartype/archive/v0.22.9.tar.gz
-	source = numpy-2.5-backport.patch
-	source = ee167cf-idempotence-backport.patch
-	source = c70d84f-click-8.5-backport.patch
-	b2sums = a5433abbf101609fb40644951f39f326fc177dcf75160064e602478e1a5aec41b0c16317fb7172e2500bdf1d81b964ac1c23113a37aed51f8e4ab88c896b2694
-	b2sums = d7580f1a8df0311d32132dadc2f7549902e9fe5f9d1419fcbc9b19199175a5011349331860f9171a9c1772788ff387bbfe61b360400dee72e3792741c0aea266
-	b2sums = 64f2ceb9a2544db5a4ff1c72a683e6c60037bd43c0444d9827554b42a1fc8f5e023beb42f5d9ad2278e832e3cff7c66064dab0a16ccea9cea5b4db076196bcfe
-	b2sums = 65271a1348313d69012e7087db353818d07e83a16e3237b69f2f2efce3adef03ba4c65dc1cd4e3bcdbacd23bf757cc978936b6aeaf1e0ce330fc046dc5992bc1
+	source = python-beartype-0.23.1.tar.gz::https://github.com/beartype/beartype/archive/v0.23.1.tar.gz
+	b2sums = 800fdfa4511ba00f3fe683e83df49e663c583948de0c99159d56acfba104027c1a5926da69b9d0ce15998779d72c371ecf67b591069b907bcf27169cc7cf7f90
 
 pkgname = python-beartype
