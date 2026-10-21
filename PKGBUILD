@@ -4,7 +4,7 @@ BASE_NAME=vitis
 DESCR="Semantic file system"
 makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "oxfuse-ldc2" "fuse3" "ldc")
 depends=("ufo" "pageguard" "mediafragmenter" "glib2" "amalthea-ldc2" "oxfuse-ldc2" "fuse3")
-pkgver=0.33.1
+pkgver=0.33.2
 pkgrel=0
 license=("BSL-1.0 or GPL-3+")
 
@@ -17,7 +17,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=${BASE_NAME}-${pkgver}.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v${pkgver}.tar.gz")
-sha256sums=("255e17965d4f3164eb739d446fb8487051d5027104429a39fe29d755613cd7e7")
+sha256sums=("8908b1ff511aaa82fd22d5133c5256f29634d3036d706d55dd69876c9c9e8375")
 
 build() {
     cd "${PROJECT}-v${pkgver}"
