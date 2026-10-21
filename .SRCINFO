@@ -1,7 +1,7 @@
 pkgbase = mlterm-fb
 	pkgdesc = Framebuffer-only mlterm: truecolor + sixel + multilingual UTF-8 terminal on /dev/fb0 (no X/GTK)
 	pkgver = 3.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arakiken/mlterm
 	arch = x86_64
 	license = BSD-3-Clause

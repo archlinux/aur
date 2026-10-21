@@ -8,7 +8,7 @@
 pkgname=mlterm-fb
 _srcname=mlterm
 pkgver=3.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Framebuffer-only mlterm: truecolor + sixel + multilingual UTF-8 terminal on /dev/fb0 (no X/GTK)'
 arch=('x86_64')
 url='https://github.com/arakiken/mlterm'
@@ -33,15 +33,10 @@ build() {
 
   # Only the framebuffer frontend — no xlib/gtk/wayland frontends are built.
   #
-  # --disable-image drops mlimgloader, which configure adds by default. With
-  # --with-imagelib left at its default of no, that helper has no gdk-pixbuf
-  # backend and loads images through libX11 instead — so on the bare console
-  # this package targets, it links a library that need not be installed and
-  # could not display anything if it were. namcap sees only the undeclared
-  # libx11; the deeper point is that the binary cannot work here at all.
-  #
-  # Sixel is unaffected: mlterm decodes it in the terminal itself rather than
-  # through the image loader.
+  # Image support stays enabled: --disable-image defines NO_IMAGE, which
+  # compiles out the DCS-q handler in vt_parser.c, so sixel arrives, is
+  # swallowed by the generic DCS branch, and draws blank cells. The unwanted
+  # mlimgloader helper that configure builds alongside is removed in package().
   ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
@@ -50,7 +45,6 @@ build() {
     --with-type-engines=cairo \
     --enable-fribidi \
     --enable-optimize-redrawing \
-    --disable-image \
     --disable-static
   make
 }
@@ -61,6 +55,14 @@ package() {
 
   # libtool archives are not needed at runtime
   find "$pkgdir" -name '*.la' -delete
+
+  # configure always builds mlimgloader when images are enabled, and on fb it
+  # links libX11: a library this console package does not depend on. Sixel
+  # never reaches it; the terminal decodes DCS-q in-process (BUILTIN_SIXEL in
+  # uitoolkit/fb/ui_imagelib.c). What is lost is non-sixel inline images
+  # (OSC 1337, wallpaper files), which fail quietly without the helper.
+  # No -f: if upstream moves the helper, the build says so.
+  rm "$pkgdir/usr/lib/mlterm/mlimgloader"
 
   # Upstream spells it LICENCE, at the root. This used to try doc/en/COPYING,
   # fall back to LICENSE, and end in `|| true` — three guesses, none of them the
