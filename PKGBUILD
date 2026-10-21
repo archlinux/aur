@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.4.4
+pkgver=0.4.8
 _electronversion=43
 pkgrel=1
 pkgdesc="Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle."
@@ -29,11 +29,13 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/qoder-app/releases/latest/${_pkgname}-linux-${CARCH}.rpm"
     "LICENSE.html"
+    "resources-path-override.js"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8'
+            '5754f1e135cc5783c57aaf0a4e10c73c18325422ab637d5e5b2cdf599409c1c8')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -54,20 +56,15 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/resources-path-override.js"
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked" || true
-    grep '"version":' "${srcdir}/app.asar.unpacked/package.json" | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"' > "${srcdir}/.pkgver"
-    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    find "${srcdir}/" -type d \
-        \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) \
-        -exec rm -rf {} +
-    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
+    ( cd "${srcdir}" && asar ef "$(_get_app_dir)/resources/app.asar" package.json )
+    grep -oP '"version":\s*"\K[^"]+' "${srcdir}/package.json" > "${srcdir}/.pkgver"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/resources-path-override.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    local _app_dir="$(_get_app_dir)"
     cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     ln -sf "/usr/lib/${pkgname%-bin}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libvips-cpp.so.8.17.3"
