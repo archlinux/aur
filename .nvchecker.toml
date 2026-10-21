@@ -1,3 +1,5 @@
 [johnnydep]
-source = "pypi"
-pypi = "johnnydep"
+source = "github"
+github = "wimglenn/johnnydep"
+use_latest_release = true
+prefix = "w"

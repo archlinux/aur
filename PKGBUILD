@@ -2,7 +2,7 @@
 # Contributor: Pierre Chapuis <arch@catwell.info>
 
 pkgname="johnnydep"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Display dependency tree of Python distribution"
 
@@ -38,8 +38,8 @@ depends=(
 
 options=(!emptydirs)
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('09a5d04c21af762a0abc498c50b291d37824c03bf54e89efab193dee4df1ee39')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/w${pkgver}.tar.gz")
+sha256sums=('ac6f1d63d805c928f922d0f7c6f9fea76d276347fe9e27920709cdea54704d70')
 
 
 build () {
