@@ -2,7 +2,7 @@
 
 pkgname=reasonix-desktop-bin
 _pkgname=reasonix-desktop
-pkgver=1.39.8
+pkgver=1.39.9
 pkgrel=1
 pkgdesc='Terminal-native AI coding agent with DeepSeek API (Electron desktop GUI, repackaged from .deb)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('reasonix-desktop' 'deepseek-reasonix-desktop' 'deepseek-reasonix-des
 options=('!strip' '!debug')
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/desktop-v${pkgver}/Reasonix-linux-amd64.deb")
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('52f46765dd95c03a6d332dbe92ef2291644b6e2745117305d694ccba076de8e5')
+sha256sums=('8d9d59c1f479bd6d40c769dba8acf3017a8ca8308615e8d03c3514011cf5de2d')
 
 prepare() {
   mkdir -p "${srcdir}/debroot"
