@@ -1,7 +1,7 @@
 pkgbase = things3-cloud
 	pkgdesc = Command-line client for Things 3 using the Things Cloud API
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 1
 	url = https://github.com/evanpurkhiser/things3-cloud
 	arch = x86_64
 	arch = aarch64
@@ -10,10 +10,10 @@ pkgbase = things3-cloud
 	depends = glibc
 	depends = gcc-libs
 	options = !lto
-	source = things3-cloud-0.10.0.tar.gz::https://github.com/evanpurkhiser/things3-cloud/archive/refs/tags/v0.10.0.tar.gz
+	source = things3-cloud-0.10.1.tar.gz::https://github.com/evanpurkhiser/things3-cloud/archive/refs/tags/v0.10.1.tar.gz
 	source = things3-server.service
 	source = 70-things3-cloud-restart.hook
-	sha256sums = a8746472d594500ed366a233fbea2cc74645ea619ad539be22ef12c44c2dc255
+	sha256sums = ea5257cc444c4436bb8aea85d55890532c69801f3bf9d5afcb0e96ed059ca346
 	sha256sums = 129ebb7615a0d26cb900f511e708910e471ee15af6f3b1735afe11fbc7d9c5e6
 	sha256sums = b2668bec2eb6dbb39480a699c25b557ff83f0a19e29526bf8879abf3316314da
 
