@@ -3,13 +3,14 @@
 _pkgname='caelestia-shell-plugins'
 pkgname="$_pkgname-git"
 pkgver=2.5.0.r100.gcff5226
-pkgrel=1
+pkgrel=2
 pkgdesc='Caelestia Shell with the plugin system (git)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/deeadly137/caelestia-plugins'
 license=('GPL-3.0-only')
 depends=(
     'caelestia-cli'
+    'git'
     'quickshell-git'
     'glibc'
     'gcc-libs'
@@ -48,8 +49,9 @@ optdepends=(
     'asdbctl: controlling the brightness of Apple Studio Displays'
     'fprintd: fingerprint unlock for the lock screen'
     'howdy-next: face unlock for the lock screen'
+    'unzip: extracting zipped Shimeji frame packs'
 )
-makedepends=('git' 'cmake' 'ninja' 'qt6-shadertools')
+makedepends=('cmake' 'ninja' 'qt6-shadertools')
 provides=('caelestia-shell' 'caelestia-shell-git')
 conflicts=('caelestia-shell' 'caelestia-shell-git' 'midnight-shell' 'midnight-shell-git')
 source=("$pkgname::git+$url.git")
