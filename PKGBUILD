@@ -2,8 +2,8 @@
 
 _pkgname='caelestia-shell-plugins'
 pkgname="$_pkgname-git"
-pkgver=2.5.0.r100.gcff5226
-pkgrel=2
+pkgver=2.5.0.r101.gd69c37a
+pkgrel=1
 pkgdesc='Caelestia Shell with the plugin system (git)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/deeadly137/caelestia-plugins'
