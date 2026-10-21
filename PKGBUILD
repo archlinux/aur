@@ -1,7 +1,7 @@
 # Maintainer: Lucas Oskorep <lucas.oskorep@gmail.com>
 pkgname=insta360-link-controller-bin
 _pkgname=insta360-link-controller
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Pure-Rust cross-platform controller suite (GUI, CLI, HTTP/WS server) for Insta360 Link webcams"
 arch=(x86_64 aarch64)
@@ -21,8 +21,8 @@ options=(!strip)
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/lucasoskorep/insta360-link-controller/releases/download/v${pkgver}/insta360-link-controller-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/lucasoskorep/insta360-link-controller/releases/download/v${pkgver}/insta360-link-controller-v${pkgver}-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('e46c0f536e98ba54d04b8a8b23d36fe6e14f2d0002bd9d15af283530bfdd73fe')
-sha256sums_aarch64=('48b2234d69cad389d698315774bc0dbb2235d6e6ee51807ceb8f5be8fed6d075')
+sha256sums_x86_64=('282a67a5d592c05b61389adf9b2a0ba87e1691630bbb08eb9b03f7c07661bdf5')
+sha256sums_aarch64=('3a7b1974b79cfc2b714738d684057ce3cfce5d9286cdd572edde5f95168ba2a7')
 
 package() {
   local _arch_suffix
