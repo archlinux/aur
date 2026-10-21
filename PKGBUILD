@@ -2,8 +2,9 @@
 _appname="youtube music for desktop"
 pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
-_binname=ytmdesktop2
-pkgver=1.8.3
+_shortname=ytmdesktop2
+_debname="net.venipa.${_shortname%2}"
+pkgver=1.8.6
 _electronversion=43
 pkgrel=1
 pkgdesc="Beautiful Youtube Music desktop app with customizations for users and developers."
@@ -27,9 +28,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('61d0e23b93f7e43db8e161c3d7b680c5730e3677e0f1fd9133f5277c8fda80b3')
-sha256sums_x86_64=('a84b59bbbcd4331bfa4337e024899bf6f0ca5d8d7aa1c15123cfb727d0d1ddbb')
+            'a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953')
+sha256sums_aarch64=('3aad8f9d2846841d60ee5cdb95ba51030405872b23971661af19d5b56dc63d85')
+sha256sums_x86_64=('2911cbc762df93e8c85181b98b8e65b207028747647785ec7d0817d1db5847d8')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -62,9 +63,9 @@ prepare() {
     find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
-        s/Icon=${_binname}/Icon=${pkgname%-bin}/g
+        s/Icon=${_shortname}/Icon=${pkgname%-bin}/g
         s/Categories=Music/Categories=AudioVideo;Music/g
-    " "$(_get_app_dir)/${_binname}.desktop"
+    " "$(_get_app_dir)/${_debname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -76,6 +77,6 @@ package() {
         _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "$(_get_app_dir)/${_binname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "$(_get_app_dir)/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
