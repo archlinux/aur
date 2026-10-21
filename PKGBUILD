@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=laptop-livecam
-pkgver=7.0.33
+pkgver=7.0.34
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=laptop-livecam.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livecam/archive/refs/tags/v$pkgver.tar.gz"
         "laptop-livecam.install")
-sha256sums=('faac9d3c66d6b0f59853361f09e7a5d6eea5cee4b66dce2ba4cd8520db2fdf9c'
+sha256sums=('b48909eeef0d6510ea623f4499d24ee4a0cba38a1a306c831af802c76b191b83'
             '1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c')
 
 package() {
