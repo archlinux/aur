@@ -7,7 +7,7 @@
 _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
-pkgver=5.0.0+32.r6868.20260922.7b8a95bba
+pkgver=5.0.0+280.r7116.20261021.b5d0aeb5b
 pkgrel=1
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
