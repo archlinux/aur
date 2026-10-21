@@ -1,6 +1,6 @@
 # Maintainer: AUR package maintainer
 pkgname=opencodex-bin
-pkgver=2.89.0
+pkgver=2.90.0
 pkgrel=1
 pkgdesc='Universal provider proxy for OpenAI Codex and Claude Code (prebuilt Bun binary)'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("ocx-${pkgver}-bun-linux-x64.tar.gz::https://github.com/lidge-jun
 source_aarch64=("ocx-${pkgver}-bun-linux-arm64.tar.gz::https://github.com/lidge-jun/opencodex/releases/download/v${pkgver}/ocx-${pkgver}-bun-linux-arm64.tar.gz")
 sha256sums=('e0a6be04768d456556e6dc180daeebd82a6416ae576b1948f1a4cb85607e87f5'
             '34012a5529ad1e574e84457a609f9ea3df03c63d7c42c7e5f74ec14f438ed346')
-sha256sums_x86_64=('5de0beedbcabc1f160a98f4d0302c5c92ea9cb19812098a342bace3e55099dff')
-sha256sums_aarch64=('5296e9e855315e81baee098c509d01a4df0d7058fd4a234fc06cc54ed1a7a3fb')
+sha256sums_x86_64=('5c888b96696cc47ca0cd83f11f2dba4e811d3219166816bde47be95d2fccb91b')
+sha256sums_aarch64=('7d240a1c64f40c00c2ea2d41358a9dee34f0e298bdb7f908fd940d3562707af6')
 
 prepare() {
   local _platform
