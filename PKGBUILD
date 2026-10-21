@@ -4,9 +4,9 @@
 
 pkgname=libosmo-sigtran
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom SIGTRAN (SCCP/SUA/M3UA) library as well as OsmoSTP"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://osmocom.org/projects/libosmo-sccp"
 license=('GPL-2.0-or-later')
 depends=('libosmocore>=1.14.2'
