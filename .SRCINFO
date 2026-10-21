@@ -1,6 +1,6 @@
 pkgbase = wnvidia-control
 	pkgdesc = Overclock, undervolt, power limit and fan curves for NVIDIA GPUs (Wayland/X11 GUI, CLI and service)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/deddroid/wnvidia-control
 	install = wnvidia-control.install
@@ -18,7 +18,7 @@ pkgbase = wnvidia-control
 	conflicts = wnvctl
 	options = !lto
 	backup = etc/wnvctl/daemon.toml
-	source = wnvidia-control-0.1.0.tar.gz::https://github.com/deddroid/wnvidia-control/archive/v0.1.0.tar.gz
-	sha256sums = 1a50b9d0dc0e1d02b1c8876b7634b3676dc17293f4213b0400ad1173a3c2dc19
+	source = wnvidia-control-0.1.1.tar.gz::https://github.com/deddroid/wnvidia-control/archive/v0.1.1.tar.gz
+	sha256sums = b0dcb4e8073138526ae7ba4b85c93d28b61267c0f1b60c63581abab877f48f67
 
 pkgname = wnvidia-control

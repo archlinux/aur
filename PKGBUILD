@@ -1,7 +1,7 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=wnvidia-control
 _bin=wnvctl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Overclock, undervolt, power limit and fan curves for NVIDIA GPUs (Wayland/X11 GUI, CLI and service)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ backup=('etc/wnvctl/daemon.toml')
 install=wnvidia-control.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1a50b9d0dc0e1d02b1c8876b7634b3676dc17293f4213b0400ad1173a3c2dc19')
+sha256sums=('b0dcb4e8073138526ae7ba4b85c93d28b61267c0f1b60c63581abab877f48f67')
 
 prepare() {
   cd "$pkgname-$pkgver"
