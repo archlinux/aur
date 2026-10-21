@@ -6,8 +6,8 @@ pkgdesc="Feature rich Discord 'TUI' client. Windowed 'GUI' version using GTK3."
 arch=('any')
 url="https://github.com/sparklost/endcord"
 license=('LicenseRef-SparkLost')
-provides=('endcord-gui')
-conflicts=('endcord-gui')
+provides=('endcord')
+conflicts=('endcord')
 depends=('gtk3')
 makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf' 'wget' 'libgirepository')
 optdepends=('xclip: clipboard support on X11'
@@ -32,7 +32,7 @@ build() {
 
 package() {
 	cd endcord
-	install -Dm755 ./dist/endcord "$pkgdir/usr/bin/endcord"
+	install -Dm755 ./dist/endcord-gui "$pkgdir/usr/bin/endcord"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/endcord/README.md"
 	install -Dm644 ./docs/commands.md "$pkgdir/usr/share/doc/endcord/commands.md"
 	install -Dm644 ./docs/configuration.md "$pkgdir/usr/share/doc/endcord/configuration.md"
