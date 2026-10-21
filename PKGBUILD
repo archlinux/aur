@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The fastest blade for your git history. Fuzzy search for you, plain text for your agents."
 
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('2046ec04b844a323e07bd532f39e0b3edc3d43ec303a7ecdfe6297444ecc275b')
-sha256sums_aarch64=('4c95f3cb71338b506d6583313f0510b98465bbba6d24ea619f79e23cde7cc3c5')
+sha256sums_x86_64=('bc52cb73a6e533570f37d12a53c841a21ae5bd2f7cccf7c8d912dc92cf48b98f')
+sha256sums_aarch64=('03bb9d79331e41f5b57df92d2ee6b2dedc1cd56a6dcf919d57d1012621b87a23')
 
 
 case ${CARCH} in
