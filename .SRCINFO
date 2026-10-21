@@ -1,5 +1,5 @@
-pkgbase = mailspring
-	pkgdesc = A beautiful and fast mail client
+pkgbase = mailspring-electron
+	pkgdesc = A beautiful and fast mail client (system Electron)
 	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://github.com/Foundry376/Mailspring
@@ -56,7 +56,7 @@ pkgbase = mailspring
 	sha256sums = 2195d736ad8177281dbd132476bf51ccf38ce3025e68b5eb9cfb46bea407f38e
 	sha256sums = bd6711ffafb42ea5eb36b94d9d152b80a297ed7b59d4afca5e723aa374f9f0bd
 
-pkgname = mailspring
+pkgname = mailspring-electron
 	depends = bash
 	depends = ctemplate
 	depends = curl

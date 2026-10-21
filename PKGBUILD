@@ -1,4 +1,5 @@
-# Maintainer: aur.chaotic.cx
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: aur.chaotic.cx
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Eric S. Londres <ericlondres@protonmail.com>
 # Contributor: Mandeep Sangwan <mandeep@sangwan.me>
@@ -7,10 +8,10 @@
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 _pkgname=mailspring
-pkgname=mailspring
+pkgname=mailspring-electron
 pkgver=1.26.1
 pkgrel=1
-pkgdesc="A beautiful and fast mail client"
+pkgdesc="A beautiful and fast mail client (system Electron)"
 url="https://github.com/Foundry376/Mailspring"
 license=(
   'GPL-3.0-only'
