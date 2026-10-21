@@ -1,6 +1,6 @@
 pkgbase = asap-chiptunes-player-git
 	pkgdesc = Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC.
-	pkgver = 8.0.0+28.r1765.20260922.28af663
+	pkgver = 8.0.0+34.r1771.20261016.b773ed7
 	pkgrel = 1
 	url = http://asap.sourceforge.net
 	arch = aarch64
@@ -30,17 +30,17 @@ pkgbase = asap-chiptunes-player-git
 	optdepends = moc>=2.4: For the moc plugin.
 	optdepends = xmms2: For the XMMS2 plugin.
 	optdepends = vlc: For the VLC plugin.
-	provides = asap=8.0.0+28.r1765.20260922.28af663
-	provides = asap-chiptunes-player=8.0.0+28.r1765.20260922.28af663
-	provides = asapconv=8.0.0+28.r1765.20260922.28af663
-	provides = asap2wav=8.0.0+28.r1765.20260922.28af663
-	provides = asap-sdl=8.0.0+28.r1765.20260922.28af663
-	provides = asapscan=8.0.0+28.r1765.20260922.28af663
-	provides = asapcl=8.0.0+28.r1765.20260922.28af663
-	provides = asapweb=8.0.0+28.r1765.20260922.28af663
-	provides = python-asap=8.0.0+28.r1765.20260922.28af663
-	provides = vlc-asap=8.0.0+28.r1765.20260922.28af663
-	provides = xmms2-asap=8.0.0+28.r1765.20260922.28af663
+	provides = asap=8.0.0+34.r1771.20261016.b773ed7
+	provides = asap-chiptunes-player=8.0.0+34.r1771.20261016.b773ed7
+	provides = asapconv=8.0.0+34.r1771.20261016.b773ed7
+	provides = asap2wav=8.0.0+34.r1771.20261016.b773ed7
+	provides = asap-sdl=8.0.0+34.r1771.20261016.b773ed7
+	provides = asapscan=8.0.0+34.r1771.20261016.b773ed7
+	provides = asapcl=8.0.0+34.r1771.20261016.b773ed7
+	provides = asapweb=8.0.0+34.r1771.20261016.b773ed7
+	provides = python-asap=8.0.0+34.r1771.20261016.b773ed7
+	provides = vlc-asap=8.0.0+34.r1771.20261016.b773ed7
+	provides = xmms2-asap=8.0.0+34.r1771.20261016.b773ed7
 	conflicts = asap-chiptunes-player
 	conflicts = asapconv
 	conflicts = asap2wav
@@ -52,8 +52,6 @@ pkgbase = asap-chiptunes-player-git
 	conflicts = vlc-asap
 	replaces = asap<=5.3.0
 	source = asap-chiptunes-player::git+git://git.code.sf.net/p/asap/code
-	source = cflags_ldflags_append.patch
 	sha256sums = SKIP
-	sha256sums = 3e13b4e98debe50daf77472839826b6917982a764a0c1e46180da8585c3d1a6b
 
 pkgname = asap-chiptunes-player-git

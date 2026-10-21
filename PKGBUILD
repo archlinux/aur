@@ -5,7 +5,7 @@ _pyname="${_origname}"
 _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
-pkgver=8.0.0+28.r1765.20260922.28af663
+pkgver=8.0.0+34.r1771.20261016.b773ed7
 pkgrel=1
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC."
 arch=(
@@ -79,18 +79,15 @@ replaces=(
 
 source=(
   "${_pkgname}::${_gitprotocol}://${_giturl}"
-  "cflags_ldflags_append.patch"
 )
 sha256sums=(
   'SKIP'                                                              # main upstream source
-  '3e13b4e98debe50daf77472839826b6917982a764a0c1e46180da8585c3d1a6b'  # cflags_ldflags_append.patch
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
   git log > "${srcdir}/git.log"
-  patch -Np1 --follow-symlinks -i "${srcdir}/cflags_ldflags_append.patch"
 }
 
 pkgver() {
