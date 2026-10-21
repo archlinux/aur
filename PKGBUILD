@@ -1,6 +1,6 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 pkgname=shorin-proton-wrapper-git
-pkgver=r72.5677457
+pkgver=r77.d8ca9e7
 pkgrel=1
 pkgdesc="Simple Proton wrapper for running Windows executables"
 arch=('any')
@@ -14,6 +14,7 @@ optdepends=(
   'libnotify: desktop notifications during first run'
   'wget: alternative downloader'
   'passt: separate network namespace for game accelerators (--netns)'
+  'gcc: Steam overlay for games in the separate network'
   'lib32-cairo: 32-bit programs with PROTON_USE_WOW64=0'
 )
 makedepends=('git')
