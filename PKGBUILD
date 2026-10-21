@@ -2,20 +2,22 @@
 
 pkgname=sapmachine17-jdk
 _majorver=17
-pkgver=17.0.20.1
+pkgver=17.0.21
 pkgrel=1
 pkgdesc="SAP's patched build of OpenJDK 17"
 arch=('x86_64')
 url="https://sapmachine.io"
 license=('GPL-2.0-only WITH Classpath-exception-2.0')
-depends=('java-runtime-common' 'java-environment-common' 'glibc' 'zlib')
+# Full JDK: AWT and Java Sound need these libraries even on a minimal Arch install.
+depends=('java-runtime-common' 'java-environment-common' 'glibc' 'zlib'
+         'alsa-lib' 'fontconfig' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst')
 provides=("java-runtime=${_majorver}" "java-runtime-headless=${_majorver}" "java-environment=${_majorver}")
 conflicts=("java-runtime<=${_majorver}" "java-environment<=${_majorver}")
 backup=()
 options=(!strip)
 install=sapmachine-jdk.install
 source=("https://github.com/SAP/SapMachine/releases/download/sapmachine-${pkgver}/sapmachine-jdk-${pkgver}_linux-x64_bin.tar.gz")
-sha256sums=('86d8c30a4dcc31921b921deb872b2217364e3bbf695f3a854feeac12ec628eb9')
+sha256sums=('e22bdf0a7ae1bbaf4a1d377f4958285a5c299f0f56da074f861d9e3a16729c1d')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-sapmachine
 
