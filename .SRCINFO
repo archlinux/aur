@@ -1,0 +1,33 @@
+pkgbase = libsigrok-nemanjan00-git
+	pkgdesc = Client software that supports various hardware logic analyzers, core library (nemanjan00 fork: one fork with upstream plus pending hardware support: DSLogic U3Pro16/32, Sipeed SLogic, Saleae Logic Pro, Rigol MHO900 and more)
+	pkgver = 0.6.2.r600.g6753ab7
+	pkgrel = 1
+	url = https://github.com/nemanjan00/libsigrok
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = autoconf-archive
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = bluez-libs
+	depends = glibmm
+	depends = hicolor-icon-theme
+	depends = hidapi
+	depends = libftdi
+	depends = libieee1284
+	depends = libserialport
+	depends = libsigc++
+	depends = libusb
+	depends = libzip
+	depends = nettle
+	optdepends = sigrok-firmware-fx2lafw: Cypress FX2-based device support
+	provides = libsigrok
+	provides = libsigrok-git
+	conflicts = libsigrok
+	conflicts = libsigrok-git
+	conflicts = sigrok-slogic-git
+	options = !lto
+	source = libsigrok::git+https://github.com/nemanjan00/libsigrok.git#branch=master
+	sha256sums = SKIP
+
+pkgname = libsigrok-nemanjan00-git
