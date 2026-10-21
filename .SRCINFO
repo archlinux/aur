@@ -1,6 +1,6 @@
 pkgbase = localist-bin
 	pkgdesc = A local project organizer for folders, repositories, and work in progress
-	pkgver = 1.21.4
+	pkgver = 1.21.5
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/localist
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = localist-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
-	provides = localist=1.21.4
+	provides = localist=1.21.5
 	conflicts = localist
 	options = !strip
 	options = !debug
-	source = https://github.com/skorotkiewicz/localist/releases/download/v1.21.4/localist_1.21.4_amd64.deb
-	sha256sums = a5cd35508781b8a06403212ab16f8c242001fd6103d001b5dfedcdfc292c0e78
+	source = https://github.com/skorotkiewicz/localist/releases/download/v1.21.5/localist_1.21.5_amd64.deb
+	sha256sums = 6f960141e7c36ec107489acf3cae5f72276b412c4360f32c458f8eeecf994dd5
 
 pkgname = localist-bin

@@ -1,5 +1,5 @@
 pkgname=localist-bin
-_version=1.21.4
+_version=1.21.5
 pkgver=${_version//-/}
 pkgrel=1
 pkgdesc='A local project organizer for folders, repositories, and work in progress'
@@ -12,7 +12,7 @@ provides=("localist=${pkgver}")
 conflicts=('localist')
 options=('!strip' '!debug')
 source=("https://github.com/skorotkiewicz/localist/releases/download/v${_version}/localist_${_version}_amd64.deb")
-sha256sums=('a5cd35508781b8a06403212ab16f8c242001fd6103d001b5dfedcdfc292c0e78')
+sha256sums=('6f960141e7c36ec107489acf3cae5f72276b412c4360f32c458f8eeecf994dd5')
 
 package() {
   bsdtar -xf "$srcdir"/data.tar.* -C "$pkgdir"
