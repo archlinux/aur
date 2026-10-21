@@ -1,10 +1,5 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
-# shellcheck shell=bash
-# pacman install scriptlet: print an opt-in hint only. It must never enable,
-# start or reload any unit; upgrades stay quiet.
-
 post_install() {
-  cat <<'EOF'
+    cat <<'AURGEN_MESSAGES'
 ==> linux-cleaner: nothing was enabled.
     Preview what would be removed:  cleaner --dry-run
     Optional daily cleanup (03:00), per user:
@@ -13,5 +8,15 @@ post_install() {
     ~/.config/linux-cleaner/env (see man cleaner). If you set it, also enable
     linux-cleaner-retention.timer (or LINUX_CLEANER_TRASH_KEEP_DAYS) so the
     quarantine stays bounded; cleaner --doctor checks this.
-EOF
+AURGEN_MESSAGES
 }
+
+pre_remove() {
+    cat <<'AURGEN_MESSAGES'
+==> linux-cleaner: disable the units you enabled before removing:
+systemctl --user disable --now linux-cleaner-clean.timer
+systemctl --user disable --now linux-cleaner-monitor.timer
+systemctl --user disable --now linux-cleaner-retention.timer
+AURGEN_MESSAGES
+}
+
