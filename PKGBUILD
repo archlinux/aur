@@ -4,7 +4,7 @@ _appauthor="NSPC911"
 _appname="textual-drivers"
 
 pkgname="python-${_appname}"
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Drop-in Textual drivers with lock_stdin, register_event_handler, and kitty DnD support"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-textual')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('57ed4247dbd19361a7a4d58e368aa4195263af2c34de017569ce743f18321e10')
+sha256sums=('3b76952e679ef1cb054538e49055721befa4534207b452bdbf102d23c00d7fb0')
 
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
