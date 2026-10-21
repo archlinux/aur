@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=designcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Page layout and desktop publishing (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ sha256sums=('f0d8dafbdaf24f3a096dad1f83c5aae601ba6eca8e6670a438bd7ae0a2ec6951'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464')
-sha256sums_x86_64=('9c57880889d6b5c399c450b5321ba6c37c9e54e58ac08161d7857a1115d89755')
-sha256sums_aarch64=('8ba293ae78d76d990684fe407382e1f848bd06b91f65917593a08911d7c82de1')
+sha256sums_x86_64=('4a3708fa878daf5188aa2ba66fd7cd186bf38690a6c15246ec83d853e0deeb94')
+sha256sums_aarch64=('a232ffcd89c840bdcccfc4911efa43a6211c26d39a341a91c075093597439bd4')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
