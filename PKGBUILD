@@ -1,6 +1,6 @@
 # Maintainer: Eugene Gershnik <gershnik@hotmail.com>
 pkgname='wsdd-native'
-pkgver='1.27'
+pkgver='1.28'
 pkgrel=1
 pkgdesc='WS-Discovery Host Daemon. Makes your machine visible in the Network view of Windows Explorer'
 arch=('x86_64' 'aarch64')
@@ -33,4 +33,4 @@ package() {
 
 }
 
-sha256sums=('be374039ca4650cc8207c0655064b18d5cd640acee7d8376bde37944b73ab8ff')
+sha256sums=('c8731f31c122e33e56532514515be17b8b0a2501642d76116bc832e8dd279b3d')
