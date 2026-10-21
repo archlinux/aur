@@ -148,7 +148,23 @@ echo "  payload spot-checks present"
 say "Installing on $(hostname)"
 sudo pacman -U --noconfirm "$PKG"
 sudo systemctl restart broadcast-api
-sleep 5
+
+# WAIT FOR READY, do not guess at it. `sleep 5` was a guess, and on 7.0.19 it
+# lost the race: the API answered before Flask had its routes up, the version
+# check got a non-JSON body, and the script reported FAILED for an install
+# that was correct. A verification gate that cries wolf is worse than none --
+# the next real failure gets waved through as "probably the usual flake".
+# Polls for the answer it is about to assert on, and still fails loudly if it
+# never arrives.
+printf '  waiting for the API'
+for _ in $(seq 1 40); do
+    if curl -fsS --max-time 2 http://localhost:5000/api/info 2>/dev/null \
+       | python3 -c 'import sys,json; sys.exit(0 if json.load(sys.stdin).get("version") else 1)' 2>/dev/null; then
+        printf ' ready\n'; break
+    fi
+    printf '.'; sleep 1
+done
+printf '\n'
 
 say "Verification"
 FAIL=0
