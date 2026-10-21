@@ -1,6 +1,6 @@
 pkgbase = siyuan-unlock-bin
 	pkgdesc = Privacy-first personal knowledge management software (prebuilt binary)
-	pkgver = 3.8.7
+	pkgver = 3.8.8
 	pkgrel = 1
 	url = https://b3log.org/siyuan/en/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = siyuan-unlock-bin
 	conflicts = siyuan
 	conflicts = siyuan-unlock
 	options = !strip
-	source_x86_64 = https://github.com/appdev/siyuan-unlock/releases/download/v3.8.7/siyuan-3.8.7-linux.tar.gz
-	sha256sums_x86_64 = b15f0c26d1794e96228dfef69deed0f23328d9619b31ec04a2872521a5c4019f
-	source_aarch64 = https://github.com/appdev/siyuan-unlock/releases/download/v3.8.7/siyuan-3.8.7-linux-arm64.tar.gz
-	sha256sums_aarch64 = 2772fa9d195f8863856739751c71346af8010ac47951b712a8e0fe343f77a886
+	source_x86_64 = https://github.com/appdev/siyuan-unlock/releases/download/v3.8.8/siyuan-3.8.8-linux.tar.gz
+	sha256sums_x86_64 = 4f0d0c13ffe5b513bdd0eaf68e42a453073f70a81ba4aee70964b9aeb1c7ff1f
+	source_aarch64 = https://github.com/appdev/siyuan-unlock/releases/download/v3.8.8/siyuan-3.8.8-linux-arm64.tar.gz
+	sha256sums_aarch64 = e41ac2a7cf65a0e99cd00391e403be68ad6cc0db5621c6f912457d6d13cd986e
 
 pkgname = siyuan-unlock-bin
