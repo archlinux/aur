@@ -1,15 +1,15 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=quickbox
-pkgver=1.3.8
-pkgrel=2
+pkgver=1.3.9
+pkgrel=1
 pkgdesc="GTK4 GUI for managing QEMU virtual machines via quickemu"
 arch=('any')
 url="https://codeberg.org/linux-bird/quickbox"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk4' 'quickemu')
 optdepends=('libnotify: desktop notifications')
-source=("${pkgname}-${pkgver}-codeberg.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aed39f836d289988a458d8756d9b25753a9d291afc144f1e2c8aadeff1dc17e0')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5731693bfb9f566ff14ebee4bfffb2c561be098243073d69ff03afc2817c3aa9')
 
 package() {
     cd "${srcdir}/${pkgname}"

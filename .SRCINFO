@@ -1,7 +1,7 @@
 pkgbase = quickbox
 	pkgdesc = GTK4 GUI for managing QEMU virtual machines via quickemu
-	pkgver = 1.3.8
-	pkgrel = 2
+	pkgver = 1.3.9
+	pkgrel = 1
 	url = https://codeberg.org/linux-bird/quickbox
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = quickbox
 	depends = gtk4
 	depends = quickemu
 	optdepends = libnotify: desktop notifications
-	source = quickbox-1.3.8-codeberg.tar.gz::https://codeberg.org/linux-bird/quickbox/archive/refs/tags/v1.3.8.tar.gz
-	sha256sums = aed39f836d289988a458d8756d9b25753a9d291afc144f1e2c8aadeff1dc17e0
+	source = quickbox-1.3.9.tar.gz::https://codeberg.org/linux-bird/quickbox/archive/refs/tags/v1.3.9.tar.gz
+	sha256sums = 5731693bfb9f566ff14ebee4bfffb2c561be098243073d69ff03afc2817c3aa9
 
 pkgname = quickbox
