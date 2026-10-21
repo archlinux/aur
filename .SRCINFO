@@ -1,12 +1,11 @@
 pkgbase = neoarch-git
+	pkgver = 3.4.3.r832.g3ad801e
+	pkgrel = 1
 	pkgdesc = NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)
-	pkgver = 3.2.0.r0.g0000000
-	pkgrel = 2
 	url = https://github.com/neoarch712/Neoarch
 	install = neoarch-git.install
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = git
 	depends = python-pyqt6
 	depends = python-requests
 	depends = python-keyring
@@ -16,9 +15,9 @@ pkgbase = neoarch-git
 	optdepends = flatpak: Flatpak installs and updates
 	optdepends = nodejs: Discover page (npm)
 	optdepends = npm: Discover page (npm)
+	makedepends = git
 	provides = neoarch
 	conflicts = neoarch
 	source = git+https://github.com/neoarch712/Neoarch.git#branch=dev
 	sha256sums = SKIP
-
-pkgname = neoarch-git
+	pkgname = neoarch-git

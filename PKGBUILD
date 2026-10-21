@@ -1,7 +1,7 @@
-# Maintainer: Sanjaya Danushka </var/spool/mail/alexa>
+# Maintainer: Sanjaya Danushka <neoarch.app@gmail.com>
 pkgname=neoarch-git
 pkgver=3.2.0.r0.g0000000
-pkgrel=2
+pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)"
 arch=('any')
 url="https://github.com/neoarch712/Neoarch"
