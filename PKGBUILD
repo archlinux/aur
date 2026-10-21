@@ -1,21 +1,21 @@
 # Maintainer: mak <mak@localhost>
 pkgname=bloodborne-pc-bin
-pkgver=0.6
+pkgver=0.6.2
 pkgrel=1
-pkgdesc="Bloodborne native PC port (bbport, requires your own game dump)"
+pkgdesc="Bloodborne native PC port (bbport, SrShadowy build, requires your own game dump)"
 arch=('x86_64')
-url="https://github.com/deadinside28/bloodborne_pc"
+url="https://github.com/SrShadowy/bloodborne_pc"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'gcc-libs' 'systemd-libs' 'vulkan-icd-loader')
 provides=('bloodborne-pc')
 conflicts=('bloodborne-pc')
 options=('!strip')
-source=("Bloodborne-bbport-x86_64.AppImage::https://github.com/deadinside28/bloodborne_pc/releases/download/${pkgver}/Bloodborne-bbport-x86_64.AppImage"
+source=("Bloodborne-bbport-x86_64.AppImage::https://github.com/SrShadowy/bloodborne_pc/releases/download/${pkgver}/Bloodborne-bbport-x86_64.AppImage"
         'LICENSE'
         'bloodborne-pc'
         'bloodborne-pc.desktop'
         'bloodborne-pc.png')
-sha256sums=('a28f87543d3e6d316ad158525333be08f9c7c362ed19b57c5f3550c69d058f62'
+sha256sums=('da4232b6a83d2a3340323fea35448aee542014c9f8f857e68726a6373858a899'
             'edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6'
             '05d3255417a62c47655215e333b916a680a80a62c90e75e7a3345b66a270fbfa'
             'dda96dd4187d0443828073f3ab5670c3e5226713c86e00dd59c821f7b72866a6'
