@@ -43,6 +43,12 @@ prepare() {
   # sed -i "s/'s/'libs/" ${_base}/${_base,,}/sundials/libraries.py
   # sed -i '/if major/,+1 s/^/#/' ${_base}/${_base,,}/sundials/__init__.py
 
+  # `cargo test` only exercises dev-dependencies (zip, reqwest, ...) over the
+  # network and is already skipped upstream on Darwin; it is not needed for
+  # the libcontainer_fmu shared library shipped in the wheel, and its link
+  # of the test binaries fails when the bundled zstd objects are unavailable.
+  sed -i 's|^\( *\)check_call(\["cargo", "test"|\1# check_call(["cargo", "test"|' native/build_container_fmu.py
+
   sed -i "s/open(lockFilePath, O_CREAT | O_EXCL)/open(lockFilePath, O_CREAT | O_EXCL, 0600)/g" native/remoting/client_tcp.cpp
 
   # drop foreign binaries
