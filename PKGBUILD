@@ -1,6 +1,6 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-git
-pkgver=0.1.0.r0.g7b06aa4
+pkgver=0.2.0.r0.gdcf5a9b
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), built from git'
 arch=('x86_64')
@@ -23,11 +23,13 @@ build() {
   cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}" GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o spot .
+  go build -ldflags "-X main.version=$pkgver" -o spot .
 }
 
 package() {
   cd "$pkgname"
   install -Dm755 spot "$pkgdir/usr/bin/spot"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/spot/README.md"
+  install -Dm644 -t "$pkgdir/usr/share/doc/spot/examples" examples/*
 }
