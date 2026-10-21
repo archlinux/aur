@@ -5,7 +5,7 @@
 # Contributor: Sauyon Lee <me at sjl dot re>
 
 pkgname=codeql
-pkgver=2.27.2
+pkgver=2.27.3
 pkgrel=1
 pkgdesc="CLI tool for GitHub's CodeQL, including the standard query packs"
 arch=(
@@ -47,9 +47,9 @@ conflicts=('codeql-cli-bin')
 replaces=('codeql-cli-bin')
 options=('!strip')
 source_aarch64=("${pkgname}-bundle-${pkgver}-aarch64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux-arm64.tar.zst")
-sha256sums_aarch64=('05edcc33992b383aa8daeea1c45e7b3192a95ff4a63883563b41ead6386f7d89')
+sha256sums_aarch64=('82a7828e050573e885ba96620c5b72db985ef4a88118dd2baf14ae7b325064d7')
 source_x86_64=("${pkgname}-bundle-${pkgver}-x86_64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux64.tar.zst")
-sha256sums_x86_64=('f24406b1557c506133db1f972758ee64f14eb3587a53367a1bd737f24495ea97')
+sha256sums_x86_64=('5e7607e1b721728955e31f5402d460ad227cbd2ffed0d4cc610116755796150e')
 
 check() {
 	local codeql="${srcdir}/codeql/codeql"
@@ -127,7 +127,7 @@ check() {
 			return 1
 		}
 
-		resolved_queries="$("${codeql}" resolve queries --format=text -- "${suite_path}")"
+		resolved_queries="$("${codeql}" resolve queries --format=text -- "${suite_path}")" || return 1
 		[[ -n "${resolved_queries}" ]] || {
 			printf 'CodeQL C++ query suite resolves to no queries: %s\n' "${suite}" >&2
 			return 1
