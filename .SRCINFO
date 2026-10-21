@@ -1,6 +1,6 @@
 pkgbase = kwin-osd-bottom
 	pkgdesc = An easy to use, but flexible, Wayland compositor
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -76,14 +76,14 @@ pkgbase = kwin-osd-bottom
 	optdepends = plasma-keyboard: virtual keyboard
 	provides = kwin
 	conflicts = kwin
-	source = https://download.kde.org/stable/plasma/6.8.0/kwin-6.8.0.tar.xz
-	source = https://download.kde.org/stable/plasma/6.8.0/kwin-6.8.0.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.8.1/kwin-6.8.1.tar.xz
+	source = https://download.kde.org/stable/plasma/6.8.1/kwin-6.8.1.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 4bfaf31e29a8f9fdf231dc3bbb9b09b0ce07cae9fee7a01cfc86425ece796258
+	sha256sums = f3d725f81061c1ba97fdef8aeb2101a5c5e03c77f11e9a2abaa1dfed4489d3b6
 	sha256sums = SKIP
 
 pkgname = kwin-osd-bottom
