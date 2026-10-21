@@ -1,0 +1,23 @@
+pkgbase = network-manager-amneziawg
+	pkgdesc = NetworkManager VPN plugin for AmneziaWG
+	pkgver = 0.9.12
+	pkgrel = 1
+	url = https://github.com/vovochka404/network-manager-amneziawg
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = gettext
+	makedepends = git
+	makedepends = intltool
+	makedepends = pkgconf
+	depends = glib2
+	depends = gtk4
+	depends = libnm
+	depends = libnma-gtk4
+	depends = networkmanager
+	optdepends = amneziawg-tools: userspace awg-quick backend
+	optdepends = amneziawg-dkms: direct kernel netlink backend
+	source = network-manager-amneziawg::git+https://github.com/vovochka404/network-manager-amneziawg.git#tag=v0.9.12
+	sha256sums = SKIP
+
+pkgname = network-manager-amneziawg
