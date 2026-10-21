@@ -1,6 +1,6 @@
 pkgbase = uniffi-bindgen-git
 	pkgdesc = A multi-language bindings generator for Rust.
-	pkgver = 0.32.1+79.r2255.20260918.aea52cbe2
+	pkgver = 0.32.1+97.r2273.20261015.c31f4bc02
 	pkgrel = 1
 	url = https://github.com/mozilla/uniffi-rs
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = uniffi-bindgen-git
 	makedepends = cargo-nightly
 	depends = glibc
 	depends = libgcc_s.so
-	provides = uniffi-bindgen=0.32.1+79.r2255.20260918.aea52cbe2
+	provides = uniffi-bindgen=0.32.1+97.r2273.20261015.c31f4bc02
 	conflicts = uniffi-bindgen
 	conflicts = uniffi-bindgen-bin
 	source = uniffi-bindgen::git+https://github.com/mozilla/uniffi-rs.git
