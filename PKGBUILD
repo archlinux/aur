@@ -6,19 +6,25 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=pikr-bin
 _pkgname=pikr
-pkgver=0.8.13
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="Vim-modal application launcher — rofi replacement built on floem. (binary release)"
+pkgdesc="Vim-modal application launcher — rofi replacement. (binary release)"
 arch=('x86_64')
 url="https://pikr.kryptic.sh/"
 license=('MIT')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+# Loaded with dlopen at run time, so namcap cannot see them.
+depends=('libxkbcommon' 'wayland' 'vulkan-icd-loader' 'fontconfig')
+optdepends=('vulkan-driver: a Vulkan driver for the loader to use (e.g. vulkan-radeon, vulkan-intel, nvidia-utils)'
+            'libxcb: the X11 fallback'
+            'libxkbcommon-x11: keymaps under the X11 fallback'
+            'xcb-util-cursor: themed pointer cursors under the X11 fallback')
 
 # aarch64 source / sha lines will be restored when #31 lands
 # `aarch64-unknown-linux-gnu` back in the binary build matrix.
 source_x86_64=("pikr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v${pkgver}/pikr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('d0d09cfdd42808e2944580c5b24d807e27c1d4e50c69422f10c767aa9b645ad9')
+sha256sums_x86_64=('1779c86162d65c30316431ddea978f09a2c45f2945676f4e93f37ae1ebc5b932')
 
 package() {
     install -Dm755 "$srcdir/pikr" "$pkgdir/usr/bin/pikr"
