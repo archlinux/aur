@@ -4,11 +4,12 @@
 # every file and the app cannot replace itself underneath the package.
 pkgname=thinkwatch-lite-bin
 pkgver=2026.10.25
-pkgrel=1
+pkgrel=2
 pkgdesc="A local gateway for Claude Code, Codex and other AI clients"
 arch=('x86_64')
 url="https://github.com/ThinkWatchProject/ThinkWatch-Lite"
 license=('MIT')
+options=('!debug')
 depends=('e2fsprogs' 'expat' 'fontconfig' 'freetype2' 'fribidi' 'harfbuzz'
          'hicolor-icon-theme' 'libdrm' 'libglvnd' 'libgpg-error' 'libx11'
          'libxcb' 'mesa' 'wayland' 'zlib')
