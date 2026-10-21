@@ -2,13 +2,13 @@
 
 _pkgname=gritql
 pkgname=gritql-git
-pkgver=0.5.1.r379.4ca28348
+pkgver=0.5.1.r384.257e516f
 pkgrel=1
 pkgdesc="GritQL query language for searching, linting, and modifying source code (builds the 'grit' CLI)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/biomejs/gritql"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib')
 makedepends=('git' 'cargo')
 provides=("$_pkgname")
 # The upstream binary is /usr/bin/grit, which collides with the unrelated
