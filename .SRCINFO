@@ -1,6 +1,6 @@
 pkgbase = python-fintech
 	pkgdesc = Finance tech: SEPA, EBICS & more
-	pkgver = 7.10.0
+	pkgver = 7.10.1
 	pkgrel = 1
 	url = https://www.joonis.de/en/fintech/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-fintech
 	depends = python-certifi
 	depends = python-fpdf2
 	depends = python-defusedxml
-	noextract = fintech-7.10.0-cp314-none-any.whl
-	source = https://files.pythonhosted.org/packages/cp314/f/fintech/fintech-7.10.0-cp314-none-any.whl
-	sha256sums = a4f5c8db520807707033450bf22255dd3742e90dbb8826b0a813046b28798bdc
+	noextract = fintech-7.10.1-cp314-none-any.whl
+	source = https://files.pythonhosted.org/packages/cp314/f/fintech/fintech-7.10.1-cp314-none-any.whl
+	sha256sums = d106ad5e6f39bbf8171ca267123f6f74e480b5b81a22ecc2456c17392c50574f
 
 pkgname = python-fintech
