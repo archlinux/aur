@@ -1,0 +1,19 @@
+pkgbase = bticino-easykit-bin
+	pkgdesc = Unofficial client for the BTicino EASYKIT WiFi video door entry kit (prebuilt binaries)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/deddroid/bticino-easykit
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = bticino-easykit=0.1.0
+	conflicts = bticino-easykit
+	options = !lto
+	options = !strip
+	source = bticino-easykit-0.1.0-linux-x86_64.tar.gz::https://github.com/deddroid/bticino-easykit/releases/download/v0.1.0/bticino-easykit-v0.1.0-linux-x86_64.tar.gz
+	sha256sums = 6812e24f0076bc672b4206d644e7aa584c7c192a6b8dbe32089815fa7278183f
+
+pkgname = bticino-easykit-bin
