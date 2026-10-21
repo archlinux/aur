@@ -1,10 +1,11 @@
-# Maintainer: aksr <aksr at t-com dot me>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: aksr <aksr at t-com dot me>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgname=diakonos
 pkgname="$_pkgname"-git
 pkgver=0.10.0.r42.gfe8991c
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux console text editor for the masses."
 arch=('any')
 url="https://git.sr.ht/~pistos/diakonos"
