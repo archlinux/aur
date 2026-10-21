@@ -1,7 +1,7 @@
 # Maintainer: ParticleG <particle_g@outlook.com>
 
 pkgname=akagi-bin
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc='Mahjong AI assistant for Majsoul, Tenhou, Riichi City, and Amatsuki (binary release)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   'akagi.desktop'
 )
 sha256sums=(
-  'e877478d766fca34dd53708c995785863681599b25bf9fb2e49511a1a5394f82'
+  '6016c660916ed1b781effe8b5972d370e9dbc790bac2f8b7ce97da5c7210e999'
   '8087dbf92eee0fdd0a9d47d69b2c4a1408f29e052dc1a0be48f31f00b0cd7a09'
   'c8c8424b5cf8d312dd5bc4d58a59fa8661f35a6578b3a3c18143cfe6384fff40'
   '22325ed20f35b87db18d58dfa290886d4f96567e4ca2925136d35f48d1b84eb2'
