@@ -1,0 +1,46 @@
+# State shared by Qualcomm Software Center, qsc-cli and QIK, as upstream's
+# prepare_qsc.sh and "qikv3 prepare" create it. It is world-writable because
+# the same files are written by root (sudo qsc-cli tool ...) and by the user;
+# qik itself resets these modes whenever it runs as root.
+
+d /var/tmp/qcom                                   0777 root root -
+d /var/tmp/qcom/qik                               0777 root root -
+d /var/tmp/qcom/qik/cache                         0777 root root -
+d /var/tmp/qcom/qik/instanceLogs                  0777 root root -
+d /var/tmp/qcom/qik/logs                          0777 root root -
+d /var/tmp/qcom/softwarecenter                    0777 root root -
+d /var/tmp/qcom/softwarecenter/logs               0777 root root -
+d /var/tmp/qcom/softwarecenter/logs/launcher      0777 root root -
+d /var/tmp/qcom/softwarecenter/logs/qik           0777 root root -
+d /var/tmp/qcom/softwarecenter/logs/qsc-cli       0777 root root -
+d /var/tmp/qcom/softwarecenter/logs/qsc-ui        0777 root root -
+
+d /var/lib/qcom                                   0777 root root -
+d /var/lib/qcom/data                              0777 root root -
+d /var/lib/qcom/data/catalog                      0777 root root -
+d /var/lib/qcom/data/catalog/component            0777 root root -
+d /var/lib/qcom/data/catalog/product              0777 root root -
+d /var/lib/qcom/data/catalog/productFeatureMap    0777 root root -
+d /var/lib/qcom/data/catalog/productV3            0777 root root -
+d /var/lib/qcom/data/lime                         0777 root root -
+d /var/lib/qcom/data/lime2                        0777 root root -
+d /var/lib/qcom/data/lime2/ChipDetails            0777 root root -
+d /var/lib/qcom/data/qik                          0777 root root -
+d /var/lib/qcom/data/qik/components               0777 root root -
+d /var/lib/qcom/data/qik/packages                 0777 root root -
+d /var/lib/qcom/data/QikQscUpdates                0777 root root -
+f /var/lib/qcom/data/QikQscUpdates/qscupdates.txt 0666 root root -
+d /var/lib/qcom/data/telematics                   0777 root root -
+d /var/lib/qcom/data/token                        0777 root root -
+
+d /var/lib/qcom/data/softwarecenter               0777 root root -
+d /var/lib/qcom/data/softwarecenter/launcher      0777 root root -
+d /var/lib/qcom/data/softwarecenter/launcher/.workspace_config             0777 root root -
+d /var/lib/qcom/data/softwarecenter/launcher/.workspace_config/.git_config 0777 root root -
+d /var/lib/qcom/data/softwarecenter/launcher/eula 0777 root root -
+d /var/lib/qcom/data/softwarecenter/launcher/eula/launcher_agreement           0777 root root -
+f /var/lib/qcom/data/softwarecenter/launcher/eula/launcher_agreement/users.txt 0666 root root -
+d /var/lib/qcom/data/softwarecenter/launcher/licenses          0777 root root -
+d /var/lib/qcom/data/softwarecenter/launcher/qsc_docker_config 0777 root root -
+f /var/lib/qcom/data/softwarecenter/launcher/qsc_docker_image_details.json 0666 root root -
+f /var/lib/qcom/data/softwarecenter/launcher/workspaces2.json  0666 root root -

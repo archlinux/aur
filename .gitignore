@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.tmpfiles
+!LICENSE.Qualcomm

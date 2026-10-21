@@ -1,0 +1,30 @@
+_records=/usr/share/qsc-cli/qik-components
+_components=/var/lib/qcom/data/qik/components
+
+_setup() {
+  # The tmpfiles hook only runs after the transaction; the record needs the dirs now
+  systemd-tmpfiles --create qsc-cli.conf
+  install -m644 "$_records"/*.dat -t "$_components/"
+}
+
+post_install() {
+  _setup
+  cat <<EOF
+:: Use of the Qualcomm Software Center tools is subject to the terms in
+   /usr/share/licenses/qsc-cli/LICENSE.Qualcomm
+:: Log in with: qsc-cli login
+:: chip-software compile and open-build-env need docker, with your user in
+   the docker group.
+EOF
+}
+
+post_upgrade() {
+  _setup
+}
+
+pre_remove() {
+  local _f
+  for _f in "$_records"/*.dat; do
+    rm -f "$_components/${_f##*/}"
+  done
+}
