@@ -62,6 +62,10 @@ prepare() {
   # binary audit: 1 check(s) failed
   # Audit failed: the binaries are not portable/hardened enough to ship.
   sed -i 's|CFLAGS="-O2 -fPIC -include|CFLAGS="-O2 -fPIC -fcf-protection=full -fstack-protector-strong -fstack-clash-protection -include|' "Linux/src/Makefile"
+
+  # Set the cache instead of using ${HOME}/.cache
+  export LIBBPF_CACHE="${srcdir}/libbpf-cache"
+  rm -rf "${LIBBPF_CACHE}"
 }
 
 package() {
