@@ -1,6 +1,6 @@
 pkgbase = krosshair
 	pkgdesc = Crosshair overlay for games on linux using Vulkan
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/noahlyk/krosshair
 	install = krosshair.install
@@ -11,8 +11,8 @@ pkgbase = krosshair
 	depends = libgl
 	depends = libx11
 	options = !debug
-	source = krosshair-0.3.1-linux-x86_64.tar.gz::https://github.com/noahlyk/krosshair/releases/download/v0.3.1/krosshair-linux-x86_64.tar.gz
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/noahlyk/krosshair/v0.3.1/LICENSE
+	source = krosshair-0.4.0-linux-x86_64.tar.gz::https://github.com/noahlyk/krosshair/releases/download/v0.4.0/krosshair-linux-x86_64.tar.gz
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/noahlyk/krosshair/v0.4.0/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
