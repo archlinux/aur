@@ -59,7 +59,7 @@ EOF
   for size in 16 24 32 48 64 128 256 512; do
     install -Dm644 "${srcdir}/data/flutter_assets/assets/icons/app_icon.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/songloft.png"
-    convert "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/songloft.png" \
+    magick "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/songloft.png" \
       -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/songloft.png"
   done
 
