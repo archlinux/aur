@@ -2,13 +2,12 @@
 _name=qiskit-addon-utils
 pkgname=python-${_name}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities to support workflows leveraging Qiskit addons"
 arch=(any)
 url=https://github.com/Qiskit/qiskit-addon-utils/
 license=(Apache-2.0)
 depends=(
-    blas-openblas
     python-numpy
     python-qiskit
     python-rustworkx
