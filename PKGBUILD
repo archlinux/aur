@@ -3,7 +3,7 @@
 
 _pkgname=appcsxcad
 pkgname="$_pkgname"
-pkgver=0.2.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Minimal GUI Application using the QCSXCAD library"
 url="https://github.com/thliebig/AppCSXCAD"
@@ -31,7 +31,7 @@ makedepends=(
 _pkgsrc="AppCSXCAD-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('b15d0a1a221725dc2ac8d6c26828a0761183b7ef36021732c3063f76544d3ea9')
+sha256sums=('134e735fe56a6ccc3dda44dfc92f428c4aa815ddc449a534e8e01b9ae4a14234')
 
 prepare() {
   sed -E -e '/cmake_policy/d' -i "$_pkgsrc/CMakeLists.txt"

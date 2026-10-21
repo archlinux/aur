@@ -1,6 +1,6 @@
 pkgbase = appcsxcad
 	pkgdesc = Minimal GUI Application using the QCSXCAD library
-	pkgver = 0.2.3
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/thliebig/AppCSXCAD
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = appcsxcad
 	depends = csxcad
 	depends = openems
 	depends = qcsxcad
-	source = appcsxcad-0.2.3.tar.gz::https://github.com/thliebig/AppCSXCAD/archive/v0.2.3.tar.gz
-	sha256sums = b15d0a1a221725dc2ac8d6c26828a0761183b7ef36021732c3063f76544d3ea9
+	source = appcsxcad-0.7.0.tar.gz::https://github.com/thliebig/AppCSXCAD/archive/v0.7.0.tar.gz
+	sha256sums = 134e735fe56a6ccc3dda44dfc92f428c4aa815ddc449a534e8e01b9ae4a14234
 
 pkgname = appcsxcad
