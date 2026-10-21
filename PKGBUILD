@@ -3,7 +3,7 @@
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 pkgname=python-arc4
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and insanely fast ARCFOUR (RC4) cipher implementation for Python"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/manicmaniac/arc4"
@@ -33,7 +33,9 @@ build() {
 
 check() {
   cd arc4
-  python -m unittest
+  python -m venv .venv --system-site-packages
+  .venv/bin/python -m installer dist/*.whl
+  .venv/bin/python -P -m unittest
 }
 
 package() {
