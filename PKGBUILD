@@ -1,0 +1,21 @@
+# Maintainer: tee < teeaur at duck dot com >
+pkgname=brainrot-bin
+pkgver=0.5.4
+pkgrel=1
+pkgdesc='Brainrot programming language interpreter'
+arch=(x86_64)
+url='https://brainrotlang.com'
+license=(GPL-3.0-or-later)
+depends=(glibc openssl)
+provides=(brainrot)
+conflicts=(brainrot)
+source=("https://github.com/Brainrotlang/brainrot/raw/v$pkgver/LICENSE")
+source_x86_64=("https://github.com/Brainrotlang/brainrot/releases/download/v$pkgver/brainrot-v$pkgver-linux-amd64.tar.gz")
+b2sums=('74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd')
+b2sums_x86_64=('f489e7c41f7881b73ca6c14afe84171180a1042a1aaf51f65c552bf1490adcbe10ffb7da53aabe7f8ab2424f6e68844527c044acd43b3297718f51869c901ae1')
+
+package() {
+  install -Dm755 brainrot -t "$pkgdir/usr/bin/"
+  install -Dm755 libstdrot.so -t "$pkgdir/usr/lib/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
