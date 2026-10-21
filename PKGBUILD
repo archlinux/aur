@@ -24,8 +24,8 @@ for ftype in "${_ftype[@]}"; do
 done
 
 pkgname=(misans ${_pkgbase[@]} misans-fontconfig)
-pkgver=4.003
-pkgrel=2
+pkgver=4.009
+pkgrel=1
 pkgdesc="MiSans Global is a global language font customization project led by Xiaomi and co-created with Mona font and Han Yi font."
 arch=(any)
 url='https://hyperos.mi.com/font/download'
@@ -40,6 +40,24 @@ source=("${_zipname}-${pkgver}.zip::https://hyperos.mi.com/font-download/MiSans_
 
 sha256sums=('2322a01e3138661a3d76980cfd8167f704bbea60445df94a00c79d3d6ae85b57'
             '4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86')
+
+####
+
+_ms_lang="${LC_ALL:-${LC_MESSAGES:-${LANG:-}}}"
+
+if [[ ${_ms_lang,,} == zh* ]]; then
+    printf '\033[1;33m==> ttf-misans:\033[0m 字体包由小米服务器提供，多线程下载可能受限。\n' >&2
+    printf '    若下载失败，请在 ~/.config/paru/paru.conf 设置 ParallelDownloads = 1，\n' >&2
+    printf "    或用浏览器/代理手动下载字体包，放入 ${SRCDEST}/${_zipname}-${pkgver}.zip 后重新构建。\n\n" >&2
+else
+    printf '\033[1;33m==> ttf-misans:\033[0m Fonts are hosted on Xiaomi servers; parallel downloads may be rate-limited.\n' >&2
+    printf '    If the download fails, set ParallelDownloads = 1 in ~/.config/paru/paru.conf,\n' >&2
+    printf "    or download the archive via a browser/proxy, put it in ${SRCDEST}/${_zipname}-${pkgver}.zip, and rebuild.\n\n" >&2
+fi
+
+unset _ms_lang
+
+####
 
 build() {
     rm -rf ${_zipname}
