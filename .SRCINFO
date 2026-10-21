@@ -1,6 +1,6 @@
 pkgbase = libresplit-git
 	pkgdesc = Free speedrun timer with auto splitting and load removal.
-	pkgver = r621.d760edfd3
+	pkgver = r631.e0528fc04
 	pkgrel = 1
 	url = https://libresplit.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libresplit-git
 	makedepends = meson
 	depends = gtk4
 	depends = jansson
-	depends = luajit
+	depends = lua54
 	provides = libresplit
 	conflicts = libresplit
 	source = libresplit::git+https://github.com/LibreSplit/LibreSplit.git
