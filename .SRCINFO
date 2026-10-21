@@ -1,5 +1,5 @@
 pkgbase = r8152-dkms
-	pkgdesc = A kernel module for Realtek RTL8152/RTL8153/RTL8154/RTL8156 Based USB Ethernet Adapters
+	pkgdesc = A kernel module for Realtek RTL8152/RTL8153/RTL8154/RTL8156/RTL8157/RTL8159 Based USB Ethernet Adapters
 	pkgver = 2.22.1.20261021
 	pkgrel = 1
 	url = http://www.realtek.com
