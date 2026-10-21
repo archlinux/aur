@@ -1,6 +1,6 @@
 pkgbase = qqtui
 	pkgdesc = Terminal frontend using the native Linux QQ service
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/w568w/qqtui
 	arch = x86_64
@@ -25,7 +25,8 @@ pkgbase = qqtui
 	optdepends = wl-clipboard: Wayland clipboard
 	optdepends = xclip: X11 clipboard
 	optdepends = xdg-utils: open files and links in external applications
-	source = qqtui-0.1.3.tar.gz::https://github.com/w568w/qqtui/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 547a17809985529df3b5c74f56c1e49891c9f8724b882d62a3aec55be135ab44
+	options = !lto
+	source = qqtui-0.1.4.tar.gz::https://github.com/w568w/qqtui/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 27f981dc7d1f5a416efc4ccbc8375600e1c04802004ad04385b27757d788911f
 
 pkgname = qqtui

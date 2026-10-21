@@ -1,7 +1,7 @@
 # Maintainer: w568w <w568w at outlook dot com>
 
 pkgname=qqtui
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Terminal frontend using the native Linux QQ service'
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('MPL-2.0')
 depends=('glibc' 'gcc-libs' 'sqlite>=3.51.2' 'systemd' 'dbus' 'xorg-server-xvfb'
          'xorg-xauth' 'xorg-xkbcomp' 'tigervnc' 'novnc'
          'linuxqq=5:3.2.34_53644')
+options=('!lto')
 makedepends=('cargo')
 checkdepends=('nodejs' 'python')
 optdepends=('kitty: inline images and animations'
@@ -19,7 +20,7 @@ optdepends=('kitty: inline images and animations'
             'xclip: X11 clipboard'
             'xdg-utils: open files and links in external applications')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('547a17809985529df3b5c74f56c1e49891c9f8724b882d62a3aec55be135ab44')
+sha256sums=('27f981dc7d1f5a416efc4ccbc8375600e1c04802004ad04385b27757d788911f')
 
 prepare() {
   cd "qqtui-$pkgver"
@@ -37,7 +38,7 @@ check() {
   cd "qqtui-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --release --frozen
-  node --test tests/native.test.cjs tests/journal.test.cjs
+  node --test tests/native.test.cjs tests/journal.test.cjs tests/desktop.test.cjs
   python tests/loader.test.py
 }
 
