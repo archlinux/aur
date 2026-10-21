@@ -2,7 +2,7 @@
 _pkgname=WiiUDownloader
 pkgname=wiiudownloader
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to download encrypted wiiu files from nintendo's official servers"
 arch=('x86_64')
 url="https://github.com/Xpl0itU/WiiUDownloader"
@@ -11,11 +11,15 @@ depends=('glibc' 'glib2' 'hicolor-icon-theme' 'gtk4' 'gdk-pixbuf2' 'cairo' 'pang
 	 'graphene')
 makedepends=('go' 'gendesk' 'python')
 options=('!debug')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7a085bd6f7f7a1680d8d10af9625a1d925f1f0fe9f3cf8d5c030e331ba6902a9')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+	"fix-python.patch::$url/commit/a3fd6ea62449e98b4fa11299dca2f5991363051a.patch"
+	)
+sha256sums=('7a085bd6f7f7a1680d8d10af9625a1d925f1f0fe9f3cf8d5c030e331ba6902a9'
+            '6051ee8945de260e6a0ad7c0cc2db282cc47122ca20e9675101320b084bb5802')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
+	patch -Np1 < "$srcdir/fix-python.patch"
 	mkdir -p "$srcdir/$_pkgname-$pkgver/build"
 	gendesk -n \
 	-f \
