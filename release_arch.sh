@@ -166,4 +166,8 @@ check "cv_notify matches tag" \
 
 say "Done"
 echo "laptop-livecam $VER-1 installed from v$VER ($COMMIT)."
-echo "Commit PKGBUILD/.SRCINFO here; pushing to AUR is a separate, deliberate step."
+echo "Next: commit PKGBUILD/.SRCINFO here, then publish the update:"
+echo "    git -C \"$PWD\" push aur HEAD:master"
+echo "This package is already published on the AUR. Pushing the bump is"
+echo "the release, not a decision -- leaving it unpushed just means every"
+echo "AUR user stays on the last version that was."
