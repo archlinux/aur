@@ -1,0 +1,12 @@
+#!/bin/sh
+# Launcher for the Uncharted: The Nathan Drake Collection package.
+#
+# This is the upstream directory build, not the AppImage. The launcher keeps its
+# settings in ~/.config/uncharted-launcher/settings.json (game folder, saves,
+# graphics), the game dump stays wherever it is, and the built-in self-updater only
+# runs when APPIMAGE is set (it is not), so pacman/ports-refresh owns updates.
+#
+# The port writes out/, bbport.ini, input.ini, user/ and logs beside itself unless
+# BB_DATA_DIR says otherwise. /opt is root-owned, so send them to the home dir.
+export BB_DATA_DIR="${BB_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/uncharted-pc}"
+exec /opt/ports/uncharted-pc/Uncharted "$@"

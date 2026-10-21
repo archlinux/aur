@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Uncharted: The Nathan Drake Collection
+Comment=Uncharted 1-3 native PC port
+Exec=uncharted-pc
+Icon=uncharted-pc
+Terminal=false
+Categories=Game;
+StartupWMClass=Uncharted
+NoDisplay=true
