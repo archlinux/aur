@@ -1,6 +1,6 @@
 pkgbase = python-pybigwig
 	pkgdesc = A Python extension for quick access to bigWig and bigBed files
-	pkgver = 0.3.26
+	pkgver = 0.3.28
 	pkgrel = 1
 	url = https://github.com/deeptools/pyBigWig
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-pybigwig
 	depends = python-numpy
 	depends = zlib
 	options = !emptydirs
-	source = pyBigWig-0.3.26.tar.gz::https://github.com/deeptools/pyBigWig/archive/refs/tags/0.3.26.tar.gz
-	sha256sums = 057a8b260ef78399cfcee0516e1c17a4a68e52d7865566b7859485de39269ed3
+	source = pyBigWig-0.3.28.tar.gz::https://github.com/deeptools/pyBigWig/archive/refs/tags/0.3.28.tar.gz
+	sha256sums = 7133f728f4f13f5767c9798180470cf43f77859f113b58cbb0421ac9039e10a5
 
 pkgname = python-pybigwig
