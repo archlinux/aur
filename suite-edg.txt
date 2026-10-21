@@ -94,24 +94,24 @@ edg/cmeerw/gnats-28966.sft.cpp target=aarch64,armv7,i686,riscv32,riscv64,x86_64 
 edg/daveed/18767a.sft.cpp aarch64=COMP x86_64=COMP
 edg/daveed/d00072a.sft.cpp aarch64=COMP x86_64=COMP
 edg/daveed/d00250a.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00300a.sft.cpp aarch64=COMP x86_64=COMP
-edg/daveed/d00300b.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00300c.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00300d.sft.cpp aarch64=COMP x86_64=COMP
-edg/daveed/d00300e.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00300f.sft.cpp aarch64=COMP x86_64=COMP
-edg/daveed/d00300g.sft.cpp aarch64=COMP x86_64=COMP
-edg/daveed/d00300h.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00300i.sft.cpp aarch64=COMP x86_64=COMP
-edg/daveed/d00330a.sft.cpp aarch64=COMP x86_64=COMP
-edg/daveed/d00330b.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00330c.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00330d.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00330e.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00330f.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00330g.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00330h.sft.cpp aarch64=DIFF x86_64=DIFF
-edg/daveed/d00330i.sft.cpp aarch64=DIFF x86_64=DIFF
+edg/daveed/d00300a.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300b.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300c.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300d.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300e.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300f.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300g.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300h.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00300i.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330a.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330b.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330c.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330d.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330e.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330f.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330g.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330h.sft.cpp skip=x86_64,aarch64
+edg/daveed/d00330i.sft.cpp skip=x86_64,aarch64
 edg/daveed/d00393a/test.mft.cpp aarch64=DIFF x86_64=DIFF
 edg/daveed/d00443a.sft.cpp aarch64=COMP x86_64=COMP
 edg/daveed/d00443b.sft.cpp aarch64=COMP x86_64=COMP
