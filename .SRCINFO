@@ -1,0 +1,14 @@
+pkgbase = csleep
+	pkgdesc = Chunked sleep with a smooth progress bar and remaining-time countdown
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CowGivesMilk/csleep
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = csleep-1.0.0.tar.gz::https://github.com/CowGivesMilk/csleep/archive/refs/tags/V1.tar.gz
+	sha256sums = 9f4a04d7a1041a49dc4c688a1c5d49f5d6b2a6432584eade48fb5982efe4b9ac
+
+pkgname = csleep
