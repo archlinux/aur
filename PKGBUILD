@@ -1,6 +1,6 @@
 # Maintainer: Jaime Martínez Rincón <mrjaime1999@gmail.com>
 pkgname=tailbridge-git
-pkgver=r24.c6853e7
+pkgver=0.1.0.r0.g387eaf2
 pkgrel=1
 pkgdesc='Expose individual devices across a LAN and a Tailscale tailnet (IPv4 aliases, NAT and per-device /32 routes)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -55,8 +55,7 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	install -Dm755 build/tailbridge "${pkgdir}/usr/bin/tailbridge"
-	sed 's|/usr/local/bin/tailbridge|/usr/bin/tailbridge|' contrib/systemd/tailbridge.service |
-		install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/tailbridge.service"
+	install -Dm644 contrib/systemd/tailbridge.service "${pkgdir}/usr/lib/systemd/system/tailbridge.service"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 docs/USAGE.md "${pkgdir}/usr/share/doc/${pkgname}/USAGE.md"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
