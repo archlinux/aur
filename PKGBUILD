@@ -1,6 +1,6 @@
 pkgname=xfce4-volumed-pulse-git
 pkgdesc='A volume keys control daemon for Xfce using pulseaudio'
-pkgver=r183.fea9100
+pkgver=r189.1e2f2c5
 pkgrel=1
 arch=('x86_64')
 license=('GPL3')
