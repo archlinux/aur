@@ -1,6 +1,6 @@
 pkgbase = wordcraft-bin
 	pkgdesc = Open-source native word processor, Word alternative (prebuilt binary)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/storytold/wordcraft
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = wordcraft-bin
 	provides = wordcraft
 	conflicts = wordcraft
 	options = !strip
-	source_x86_64 = wordcraft-0.8.0-linux-x86_64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.8.0/wordcraft-0.8.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 0ece07cf3d91b923dfd80f90310e04983bde66f0279c6b60ddce89596dde0ddf
-	source_aarch64 = wordcraft-0.8.0-linux-aarch64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.8.0/wordcraft-0.8.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = a862de2256e43c987dc8ea009ba52ac25db34091fd649b666133931ac68e02cc
+	source_x86_64 = wordcraft-0.9.0-linux-x86_64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.9.0/wordcraft-0.9.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8f507802e971b16afa1b6dc565317eb30885ffb2aec2e976d3a1ddaa47c529d4
+	source_aarch64 = wordcraft-0.9.0-linux-aarch64.tar.gz::https://github.com/storytold/wordcraft/releases/download/v0.9.0/wordcraft-0.9.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 580abb0ff237d331e287523dda85f5dc5532e2f9b89676c8d64aaead0294061b
 
 pkgname = wordcraft-bin
