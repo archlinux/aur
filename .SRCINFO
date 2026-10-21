@@ -1,6 +1,6 @@
 pkgbase = adcode-bin
 	pkgdesc = An ad-supported, AI-native IDE
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/bluethenics/adcode
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = adcode-bin
 	optdepends = libappindicator: system tray integration
 	provides = adcode
 	conflicts = adcode
-	noextract = adcode-bin-2.3.2.deb
-	source = adcode-bin-2.3.2.deb::https://github.com/bluethenics/adcode/releases/download/v2.3.2/ADCode-amd64.deb
-	sha256sums = ccf5d983ede02f9e35236503993890ad4302f9a5af5a466c4454fc2dd6424ce3
+	noextract = adcode-bin-2.4.0.deb
+	source = adcode-bin-2.4.0.deb::https://github.com/bluethenics/adcode/releases/download/v2.4.0/ADCode-amd64.deb
+	sha256sums = 094299af1ac273d5266bef35b087124ce8f023426e2600c11d0a0bb1f0c15b31
 
 pkgname = adcode-bin
