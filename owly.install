@@ -1,0 +1,31 @@
+post_install() {
+  # NetworkManager reads conf.d only at startup or on a reload, so keeping
+  # Owly's interfaces unmanaged isn't in force until something rereads it.
+  # `reload conf` touches no connection.
+  if systemctl is-active --quiet NetworkManager 2>/dev/null; then
+    nmcli general reload conf >/dev/null 2>&1 \
+      || echo "  Could not reload NetworkManager's configuration. Run: sudo nmcli general reload conf"
+  fi
+  cat <<'MSG'
+  Owly's radio service, owlyd, starts when something asks for the radio.
+  `owly doctor` says whether this Wi-Fi card can do AirDrop and what, if
+  anything, is in the way. On Omarchy, install omdrop-owl for Omdrop.
+MSG
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet NetworkManager 2>/dev/null; then
+    nmcli general reload conf >/dev/null 2>&1 || true
+  fi
+  # A running owlyd keeps the old binary until it next starts. Restart it
+  # now only when it has no session, so an upgrade doesn't end a window.
+  if [ "$(busctl get-property io.github.t4t5.Owly /io/github/t4t5/Owly \
+      io.github.t4t5.Owly.Radio1 State 2>/dev/null)" = 's "idle"' ]; then
+    systemctl try-restart owlyd.service || true
+  fi
+}
+
+pre_remove() {
+  # Gives Wi-Fi back if a session is up.
+  systemctl stop owlyd.service 2>/dev/null || true
+}
