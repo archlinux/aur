@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=splashboard
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc='A customizable terminal splash screen with plugin-based data sources'
 arch=(
@@ -21,7 +21,7 @@ options=(!lto !debug)
 provides=('splashboard')
 conflicts=('splashboard-git' 'splashboard-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9fe2ecbd1f5d4cc953e0cbe2bca755905aa6e05865b6150c6cfbebbdcb331506')
+sha256sums=('31062162eddf624449e826141b2f61d1ffeea0fb6cb50384547305010bdcf9c8')
 
 prepare() {
     cd "$pkgname-$pkgver"
