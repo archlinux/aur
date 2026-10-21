@@ -1,7 +1,7 @@
 # Maintainer: FrogSnot
 pkgname=solidcraft-bin
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.18.3
+pkgrel=1
 pkgdesc='Open-source parametric 3D CAD (binary release)'
 arch=(x86_64 aarch64)
 url='https://github.com/tangency-labs/solidcraft'
@@ -19,8 +19,8 @@ provides=("solidcraft=$pkgver" solvecraft)
 conflicts=(solidcraft solvecraft)
 source_x86_64=("https://github.com/tangency-labs/solidcraft/releases/download/v$pkgver/solidcraft-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/tangency-labs/solidcraft/releases/download/v$pkgver/solidcraft-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('9d0c922ac72204f34ad22ca7a171be78016ab002e304ace3c07d34d187d830ff')
-sha256sums_aarch64=('d07eaed0ef4fc2feed7ee66837894d8b00135ea7de6fdf6a71c67975a583b0c3')
+sha256sums_x86_64=('660a907257dfc03feef1cbea7e87f9ace207c5e1c5fcd84acde6d982685fcd1a')
+sha256sums_aarch64=('fa3a7b0e56484bcb8261fa43c1b5e82ef1f5b6300a6e3fa5567706290f93f790')
 
 package() {
   cd "solidcraft-$pkgver-linux-$CARCH"
