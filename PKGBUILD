@@ -1,7 +1,7 @@
 # Maintainer: thelooter <evekolb2204@gmail.com>
 
 pkgname=gcx-git
-pkgver=0.4.0.r6.gf28846f
+pkgver=1.7.1.r1.g9b403e7
 pkgrel=1
 pkgdesc='A CLI for managing Grafana Cloud resources, optimized for agentic usage (VCS, builds the main branch)'
 arch=('x86_64' 'aarch64')
