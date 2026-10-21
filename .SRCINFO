@@ -1,0 +1,21 @@
+pkgbase = bivrost-bin
+	pkgdesc = Local Azure Bastion sessions for Kubernetes and Podman workflows
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/alcxyz/bivrost
+	license = MIT
+	optdepends = kubectl: Kubernetes access
+	optdepends = azure-kubelogin: Kubernetes access
+	optdepends = podman: registry access
+	depends = azure-cli
+	depends = openssh
+	conflicts = bivrost
+	provides = bivrost
+	arch = aarch64
+	source_aarch64 = bivrost-bin_0.4.1_aarch64.tar.gz::https://github.com/alcxyz/bivrost/releases/download/v0.4.1/bivrost_0.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8cabd1ada73e6413d1c1aa7cad49069726e8f1e4cf37ab3b0b23790cf559ac94
+	arch = x86_64
+	source_x86_64 = bivrost-bin_0.4.1_x86_64.tar.gz::https://github.com/alcxyz/bivrost/releases/download/v0.4.1/bivrost_0.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = a2b2a49522c03d7c9a0a373364cca73d0136431383c9cda2002bc090e71772eb
+	
+pkgname = bivrost-bin
