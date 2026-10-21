@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-pcu-git
-pkgver=1.5.0.r4.g8734f176
+pkgver=1.5.3.r1.g379d7468
 pkgrel=1
 pkgdesc="Osmocom's GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface"
 url="https://osmocom.org/projects/osmopcu"
@@ -32,6 +32,11 @@ build() {
               --sysconfdir=/etc \
               --localstatedir=/var
   make
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make check
 }
 
 package() {
