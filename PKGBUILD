@@ -1,5 +1,5 @@
 pkgname=atproto-pds
-pkgver=0.4.5037
+pkgver=0.4.5044
 pkgrel=1
 pkgdesc='AT Protocol PDS (Personal Data Server)'
 url='https://github.com/bluesky-social/pds'
@@ -16,7 +16,7 @@ source=(
   pds.tmpfiles
   pds.env
 )
-sha256sums=('ac73649dbf510a420b697673f766fdf935c1d67484de542584065258d39159a6'
+sha256sums=('e8b34b4d857cc4c9ac2167d96d9ca95ddb64d77913a2a724cd60cd548d909e6e'
             '8db83f5e10377fe00577e68c96281a1d1a4ae727e0bc4cca106f8b2785d93ee7'
             '7e4472e1daf25a384726ff725371db3c3ceca09804553043039d9605d7408f38'
             'dc420b300e9c691b5d01a5a384acd9a7e0afe3777b5a97ecd0e0ff07c80b9edc'
