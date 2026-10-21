@@ -1,10 +1,35 @@
-#!/bin/sh
-if [ "$(id -u)" -eq 0 ]; then
-    printf '%s\n' 'Do not run this user-managed VS Code installation as root.' >&2
-    exit 1
-fi
-if [ ! -x /opt/vscode/current/bin/code ]; then
-    printf '%s\n' 'VS Code is not installed yet. See /usr/share/doc/visual-studio-code-autoupdate/README.md.' >&2
-    exit 1
-fi
-exec /opt/vscode/current/bin/code "$@"
+#!/usr/bin/python3
+"""Launch one immutable VS Code release while coordinating with its updater."""
+import fcntl
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+
+def main():
+    if os.geteuid() == 0:
+        raise SystemExit('Do not run this user-managed VS Code installation as root.')
+    root = Path('/opt/vscode')
+    if not (root / 'current/bin/code').is_file():
+        raise SystemExit('VS Code is not installed yet. See /usr/share/doc/visual-studio-code-autoupdate/README.md.')
+    with (root / '.update.lock').open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_SH)
+        release = (root / 'current').resolve(strict=True)
+        environment = os.environ.copy()
+        environment['ELECTRON_RUN_AS_NODE'] = '1'
+        # Popen returns after exec: /proc now exposes this release's executable.
+        # close_fds prevents --wait or an editor child from retaining our lock.
+        child = subprocess.Popen(
+            [str(release / 'code'), str(release / 'resources/app/out/cli.js'), *sys.argv[1:]],
+            env=environment, close_fds=True,
+        )
+    try:
+        status = child.wait()
+    except KeyboardInterrupt:
+        return 130
+    return status if status >= 0 else 128 - status
+
+
+if __name__ == '__main__':
+    sys.exit(main())

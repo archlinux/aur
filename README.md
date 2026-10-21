@@ -12,14 +12,24 @@ Não é um pacote oficial da Microsoft.
 - Mantém versões em `/opt/vscode/release-<commit>` e troca `current` atomicamente.
 - Não fecha janelas. Conserva uma versão antiga enquanto seu executável está rodando;
   uma verificação posterior remove essa versão quando não estiver mais em uso.
+- Novas aberturas pelo comando `code` aguardam uma atualização em andamento
+  terminar. O lançador e o atualizador compartilham a mesma trava para impedir
+  que a limpeza remova uma versão enquanto ela está sendo iniciada.
+  A trava de lançamento é liberada após iniciar o processo da release; opções
+  como `--wait` não bloqueiam as atualizações durante a edição.
+  Se a varredura de processos ficar inconclusiva durante uma troca de processos,
+  a remoção de releases antigas é adiada para uma verificação posterior.
+- Downloads interrompidos são recolhidos na próxima verificação, sob essa trava,
+  sem seguir links simbólicos deixados entre os temporários.
 - Verifica às 00h e 12h, no fuso local, com atraso aleatório de até 15 minutos.
   `Persistent=true` recupera uma verificação perdida quando o timer volta a funcionar.
 - O timer depende da sessão do usuário. Não habilita linger nem roda como root.
 - Não altera `~/.config/Code` nem `~/.vscode`.
 
 O `pacman` controla o atualizador e sua integração, **não** as versões baixadas do
-VS Code. A versão `0.0-3` identifica o desenvolvimento ainda não publicado deste
-atualizador, não a versão do editor. A primeira publicação será `1.0`.
+VS Code. A versão do atualizador é `1.0`, não a versão do editor.
+No Arch, `pkgrel=1` identifica a revisão do empacotamento; a versão pública
+do programa permanece `1.0`. Ajustes antes da publicação não mudam essa versão.
 As versões do editor não aparecem no histórico de transações do pacman e não
 podem ser revertidas por ele. As dependências do editor ainda podem exigir
 manutenção deste pacote no futuro.
@@ -40,18 +50,18 @@ makepkg -si
 ```
 
 Para apenas compilar, use `makepkg`. O `check()` executa testes sem rede para
-verificação de integridade, extração segura e preservação de versões em execução.
+integridade, extração segura, troca de versões, preservação de versões em execução
+e recuperação de temporários abandonados.
 
 O `namcap` emite avisos de pacote sem ELF em `x86_64` e de dependências que não
 consegue inferir. O payload baixado é exclusivamente x86_64; as dependências
 atendem esse payload, o systemd, HTTPS, o lançador e os hooks de integração MIME.
 Não devem ser removidas apenas para silenciar esses avisos.
 
-Na verificação local, o pacote foi compilado com os três testes aprovados.
-O atualizador extraído do pacote baixou e instalou o VS Code `1.143.0` em um
-diretório temporário, executou `code --version` e confirmou uma segunda execução
-sem reinstalação. Esse teste não instalou o pacote no sistema nem alterou a
-instalação existente em `/opt/vscode`.
+A verificação de execução também inclui download real da Microsoft e execução
+de `code --version` a partir de uma instalação isolada, sem modificar os dados
+pessoais do usuário. Os testes não substituem a manutenção das dependências
+quando a Microsoft altera os requisitos do editor.
 
 Depois da instalação, execute na sessão gráfica do usuário que será o dono do
 diretório. Se `/opt/vscode` já existir, confirme que não é um link simbólico e que

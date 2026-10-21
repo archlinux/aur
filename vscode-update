@@ -31,14 +31,28 @@ def fetch(url):
 
 
 def prune():
+    for staging in ROOT.glob('.update-*'):
+        if staging.is_symlink():
+            staging.unlink()
+        elif staging.is_dir():
+            shutil.rmtree(staging)
     current = (ROOT / 'current').resolve()
     running = set()
     for entry in Path('/proc').iterdir():
         if entry.name.isdigit():
             try:
+                if entry.stat().st_uid != os.getuid():
+                    continue
                 running.add((entry / 'exe').resolve(strict=True))
             except (OSError, RuntimeError):
-                pass
+                # Protected non-editor daemons (agents, systemd) are common.
+                # An editor or a vanished PID can be a CLI-to-GUI handoff.
+                try:
+                    name = (entry / 'comm').read_text().strip()
+                except OSError:
+                    return
+                if name.startswith(('code', 'electron')):
+                    return
     for release in ROOT.glob('release-*'):
         if (re.fullmatch(r'release-[0-9a-f]{40}', release.name)
                 and release.is_dir() and not release.is_symlink()

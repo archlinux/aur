@@ -1,11 +1,11 @@
-# Maintainer: jjunho
+# Maintainer: Juliano Paiva Junho <jjunho at gmail dot com>
 # SPDX-License-Identifier: 0BSD
 pkgname=visual-studio-code-autoupdate
-pkgver=0.0
-pkgrel=3
+pkgver=1.0
+pkgrel=1
 pkgdesc='Direct Microsoft VS Code updater with a twice-daily user timer'
 arch=('x86_64')
-url='https://code.visualstudio.com/'
+url='https://github.com/jjunho/visual-studio-code-autoupdate'
 license=('0BSD')
 depends=('python>=3.12' 'systemd' 'ca-certificates' 'bash' 'coreutils' 'util-linux'
          'libxkbfile' 'gnupg' 'gtk3' 'libsecret' 'nss' 'gcc-libs'
@@ -29,17 +29,17 @@ source=('vscode-update'
         'README.md'
         'LICENSE'
         'test_vscode_update.py')
-sha256sums=('aa9f34269d31e79986f2926d2d10b0f11bc1e798b5bc06c9c8eea78a81ae53ae'
-            '5a7e39e4ac75500228403d663574f4a63a968b2af8c7a43038fd85921215c144'
+sha256sums=('ed0f4ad06e7a67892b73a4e326e4d857347983d17aa83365a9c61d69976bc76f'
+            '6f7887d88eed8a7a36d4127c8c466b4b500d0fc59a10d867f2c69b52353a9d9d'
             '98b0f14f6e4450b60d93f40856c2cd594778027c67b6cd3f478256df603effeb'
             'b78b77f72580b2fa0a10e693267c5b0400ce935e3fbb99f8aeb2424d9cc42ec6'
             'ec91701af331a1631c45d79b7eebe4706fab2119d838845de48c431da1b29da7'
             '6e1be6dc797966af296216fd08cf16d521786cef059c2f8d0198d3197009c158'
             'a06f8d3e435e40fe1ae4ac3782edb782ffb51993d73b612ed9cd2054d1a0e57f'
             'b0b21cf9b72d6017cff9b2b246fc13eef26dbd5aea984ef2fdac37e866fe0575'
-            '956719da28beae08d451591051bef26127335296c1a47c4c45931394a0e80a45'
+            '33f141c06370f0a4c2fffcc70d97cd98c13c6d75b9eaefc8a16b90ef50ff926e'
             '6668196519d52d349278e9b272ec3751aeb50d29a688a0eec45b3caae11b7159'
-            'c1ef08c7abce1cb7c12594e08ea3697c539f71c3799113de8f065b07d9309179')
+            '77828472203a1a24c840547d22986e97caa6ace7f57491efe696f9773150aa77')
 
 check() {
   python -B test_vscode_update.py
