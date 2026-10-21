@@ -1,6 +1,6 @@
 # Maintainer: zhitong <dev@solomd.local>
 pkgname=solomd-bin
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc='A lightweight Markdown and plain text editor built with Tauri 2'
 arch=('x86_64')
