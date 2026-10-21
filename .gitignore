@@ -1,0 +1,9 @@
+# makepkg working directories and artifacts.
+src/
+pkg/
+*.pkg.tar.*
+*.src.tar.gz
+*.log
+
+# Bare source mirror created by makepkg for the git source.
+/gnome-shell-extension-app-folder-grid-dimensions/

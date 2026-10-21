@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-app-folder-grid-dimensions-git
+	pkgdesc = Customize the number of rows and columns in the GNOME app folder grid (git)
+	pkgver = 20261021.3.e621f28
+	pkgrel = 1
+	url = https://github.com/luanrz/gnome-shell-extension-app-folder-grid-dimensions
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = glib2
+	depends = gnome-shell
+	source = git+https://github.com/luanrz/gnome-shell-extension-app-folder-grid-dimensions.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-app-folder-grid-dimensions-git
