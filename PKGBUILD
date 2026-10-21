@@ -16,7 +16,12 @@ depends=(glibc libgcc libstdc++ libxcrypt-compat psmisc python python-aiohttp
 makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazelisk unzip git)
 checkdepends=(python-cryptography python-grpcio python-numpy python-prometheus_client
   python-pytest python-pytest-asyncio python-pytest-timeout)
-optdepends=('python-pandas: for ray[data, tune, rllib]'
+optdepends=('python-cryptography: for TLS certificates and autoscaler SSH keys'
+  'python-grpcio: for ray[client, default, serve]'
+  'python-numpy: for ray[data, tune, rllib]'
+  'python-typing_extensions: for ray[data, serve, rllib]'
+  'python-pytest: for bundled test helpers'
+  'python-pandas: for ray[data, tune, rllib]'
   'python-fsspec: for ray[data, tune, rllib]'
   'python-aiohttp-cors: for ray[default, serve]'
   'python-colorful: for ray[default, serve]'
@@ -72,7 +77,10 @@ prepare() {
 build() {
   cd ${_base}-${_base}-${pkgver}/python
   export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
-  export BAZEL_ARGS="${BAZEL_ARGS:---jobs=${MAX_JOBS:-$(env -u OMP_NUM_THREADS -u OMP_THREAD_LIMIT nproc)}}"
+  local _jobs=${MAX_JOBS:-$(env -u OMP_NUM_THREADS -u OMP_THREAD_LIMIT nproc)}
+  export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-$_jobs}
+  # Bazel otherwise drops the parallelism limit for RocksDB's nested CMake build.
+  export BAZEL_ARGS="${BAZEL_ARGS:---jobs=$_jobs} --action_env=CMAKE_BUILD_PARALLEL_LEVEL"
   SKIP_THIRDPARTY_INSTALL_CONDA_FORGE=1 python -m build --wheel --skip-dependency-check --no-isolation
 }
 
