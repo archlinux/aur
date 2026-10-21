@@ -1,6 +1,6 @@
 pkgbase = tephro-server-bin
 	pkgdesc = Self-hosted group chat server: text, voice, video and screen sharing in one binary (release build)
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://tephro.chat
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = tephro-server-bin
 	sha256sums = cc33d30fe1efec74ef78c23e6f574feaf7335519504365e6084215c4643b83be
 	sha256sums = 244b6d13190d4fdc1c92fee072484fad83a4f4bcbc7d3ba29ce683a3a6dd4d57
 	sha256sums = d2058578c4b27880a4fd6cedfe3956e9591c7afd240e11f8c78b55b4f3ceb57e
-	source_x86_64 = tephro-0.13.1-linux-amd64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv0.13.1/downloads/tephro-0.13.1-linux-amd64
-	sha256sums_x86_64 = a2c7b089d4c9ed38da08a4994603541315f4ce6c341c1bdbd5a1e42b38b7daea
-	source_aarch64 = tephro-0.13.1-linux-arm64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv0.13.1/downloads/tephro-0.13.1-linux-arm64
-	sha256sums_aarch64 = 61f74ed559df43022c69c8155711fb16d3393bcd8403b0a7592c24a8d3c304b7
+	source_x86_64 = tephro-0.13.2-linux-amd64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv0.13.2/downloads/tephro-0.13.2-linux-amd64
+	sha256sums_x86_64 = 0bb6b9dadeeeaac2c26c4890de54d8da7c64a08860063f2c69884c03c12620e1
+	source_aarch64 = tephro-0.13.2-linux-arm64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv0.13.2/downloads/tephro-0.13.2-linux-arm64
+	sha256sums_aarch64 = 28bf19dab5523e5399f69ca2ea4559178d91ed2e559d5de9e3fa66f84a973b77
 
 pkgname = tephro-server-bin
