@@ -4,7 +4,7 @@
 # Edit the template in the tidemail repository, not this file.
 
 pkgname=tidemail-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Keyboard-first terminal email client with multi-account mail, a unified inbox, drafts, contacts, search, and optional AI tools"
 arch=('x86_64' 'aarch64')
@@ -31,12 +31,17 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgve
 sha256sums=('7ded3abde5f4be92306e0ee24c6db97b1825e4eaa1b8fd473669c521f5a409dd'
             'a2510a7a5185a520ea815f8c19799055a363e2cd9c98e7c9d8ce748a703db0b6'
             '65217068259c58ac622c1ceb73acf33c96eaa0f1905a936410ac7936853d2b44')
-sha256sums_x86_64=('57d1b76166cdf9a0470a815de22a8b28fdf287765e046da93d7a1d81eff55d45')
-sha256sums_aarch64=('397bfa33df976959e3b679ab2ec7bc223ff4037fc27b4514aa5e18cb47a90f27')
+sha256sums_x86_64=('ad356d589c72bab2c5bb05208415af3d95fc84105663e10e0d140b029cc71e25')
+sha256sums_aarch64=('cbd9c2398247f02529204e16a9a55f690946e3ea94e05df2dfed19eb8a5ca3e3')
 
 package() {
   install -Dm755 "$srcdir/tidemail-linux-$CARCH" "$pkgdir/usr/bin/tidemail"
   install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/tidemail-$pkgver.png" "$pkgdir/usr/share/pixmaps/tidemail.png"
   install -Dm644 "$srcdir/tidemail-$pkgver.desktop" "$pkgdir/usr/share/applications/tidemail.desktop"
+  # The manual page is embedded in the binary, so it matches this release.
+  # Releases that predate `tidemail man` simply ship without one.
+  if "$srcdir/tidemail-linux-$CARCH" man > "$srcdir/tidemail.1" 2>/dev/null && [ -s "$srcdir/tidemail.1" ]; then
+    install -Dm644 "$srcdir/tidemail.1" "$pkgdir/usr/share/man/man1/tidemail.1"
+  fi
 }
