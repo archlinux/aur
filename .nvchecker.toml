@@ -1,0 +1,4 @@
+[trccd]
+source = "git"
+git = "https://github.com/Jontos/trccd.git"
+prefix = "v"

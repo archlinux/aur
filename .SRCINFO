@@ -1,0 +1,16 @@
+pkgbase = trccd
+	pkgdesc = lightweight daemon for controlling Thermalright LCD displays
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jontos/trccd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libusb
+	depends = glibc
+	depends = libgcc
+	depends = ffmpeg
+	backup = etc/trccd/trccd.conf
+	source = trccd-0.1.0.tar.gz::https://github.com/Jontos/trccd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3bd51544a8a6071175e19a767bd4da5290d7e20e0c0009d605dc8ea5007ae95b
+
+pkgname = trccd
