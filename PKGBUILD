@@ -2,7 +2,7 @@
 
 _zig=anyzig
 pkgname="zine"
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Fast, Scalable, Flexible Static Site Generator (SSG)"
 arch=(
@@ -26,14 +26,13 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
 )
-b2sums=('9937d81297f2c8f78f4f03b60df8438333f7e13750dbbdfa31c020279a4f1b956f6e8a9e8e28a902ab1832e45012ca5073185b0573bcc06d6184a562cba73b54')
+b2sums=('6025cd420991dd05db995143e4fb26ea2e79c52a9952fffc210e768be7f9192bb8a61be6640f488cfcfc06c10565ee4328fe1deb093e8fe726fb64f8e700db55')
 
 build() {
   local zig_options=(
     --summary all
     --prefix /usr
     --search-prefix /usr
-    --global-cache-dir "${srcdir}/zig-global-cache"
     # --system "${srcdir}/zig-global-cache/p"
     --verbose
     -Dtarget=native-linux.6.15-gnu.2.41
@@ -51,7 +50,6 @@ build() {
 #     --summary all
 #     --prefix /usr
 #     --search-prefix /usr
-#     --global-cache-dir "${srcdir}/zig-global-cache"
 #     # --system "${srcdir}/zig-global-cache/p"
 #     --verbose
 #     -Dtarget=native-linux.6.15-gnu.2.41
