@@ -12,7 +12,7 @@ pkgbase = ceres-solver-lgpl
 	optdepends = openmp
 	provides = ceres-solver
 	conflicts = ceres-solver
-	source = http://ceres-solver.org/ceres-solver-2.2.0.tar.gz
-	sha256sums = 48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d
+	source = https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = 12efacfadbfdc1bbfa203c236e96f4d3c210bed96994288b3ff0c8e7c6f350d4
 
 pkgname = ceres-solver-lgpl

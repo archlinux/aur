@@ -10,8 +10,9 @@ makedepends=('cmake' 'eigen')
 optdepends=('openmp')
 conflicts=('ceres-solver')
 provides=('ceres-solver')
-source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
-sha256sums=('48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d')
+source=("https://github.com/ceres-solver/ceres-solver/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('12efacfadbfdc1bbfa203c236e96f4d3c210bed96994288b3ff0c8e7c6f350d4')
+
 
 prepare() {
   cd $srcdir/ceres-solver-$pkgver
