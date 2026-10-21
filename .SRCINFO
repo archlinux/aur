@@ -1,6 +1,6 @@
 pkgbase = java-openjfx-bin
-	pkgdesc = Java OpenJFX 27 client application platform (Gluon build).
-	pkgver = 27
+	pkgdesc = Java OpenJFX 27.0.1 client application platform (Gluon build).
+	pkgver = 27.0.1
 	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
@@ -24,15 +24,15 @@ pkgbase = java-openjfx-bin
 	depends = pango
 	depends = qt5-base
 	depends = webkit2gtk-4.1
-	provides = java-openjfx=27
+	provides = java-openjfx=27.0.1
 	conflicts = java-openjfx
 	options = !strip
 	options = !debug
-	source = https://download2.gluonhq.com/openjfx/27/openjfx-27_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/27/openjfx-27_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/27/openjfx-27-javadoc.zip
-	sha256sums = 36857953977bf43f4b2c287f9431de884536431b502ac0edc0c6fcca0274e234
-	sha256sums = ea169b02460a38a2b44acf595e28c7abd3d1ab23075e4b03f324ebaf33920c5b
-	sha256sums = 7d21ad30abb8d1d169d7789e99d698d5d0049386d0e8d1646560e9e058ac23f9
+	source = https://download2.gluonhq.com/openjfx/27.0.1/openjfx-27.0.1_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/27.0.1/openjfx-27.0.1_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/27.0.1/openjfx-27.0.1-javadoc.zip
+	sha256sums = 732d816289e31fd59c612a0d4d6f1a5fc2749f1567d584f18b6b15e6636d9e38
+	sha256sums = 323ceb45b938485f6921d7c31c994cc649adb1f75b16192580ff84a3119694ba
+	sha256sums = 6d9bf6154d04bf538669412eb3925d737fec4105039eecfb27d2de5cd7fb48aa
 
 pkgname = java-openjfx-bin
