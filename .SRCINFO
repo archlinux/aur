@@ -1,6 +1,6 @@
 pkgbase = python-aardwolf-git
 	pkgdesc = Asynchronous RDP protocol implementation for python.
-	pkgver = 0.2.14+14.r168.20260816.115f1cc
+	pkgver = 0.2.16+2.r180.20261018.cdbe186
 	pkgrel = 1
 	url = https://github.com/skelsec/aardwolf
 	arch = aarch64
@@ -12,14 +12,15 @@ pkgbase = python-aardwolf-git
 	license = MIT
 	makedepends = cython
 	makedepends = git
+	makedepends = libgcc
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools>=62.4
 	makedepends = python-setuptools-rust>=1.5.2
 	makedepends = rust
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc_s.so
 	depends = python>=3.7
 	depends = python-unicrypto>=0.0.10
 	depends = python-asyauth>=0.0.13
@@ -33,10 +34,10 @@ pkgbase = python-aardwolf-git
 	depends = python-arc4>=0.3.0
 	depends = python-pillow>=9.0.0
 	optdepends = python-pyqt5
-	provides = ardpscan=0.2.14+14.r168.20260816.115f1cc
-	provides = python-aardwolf=0.2.14+14.r168.20260816.115f1cc
-	provides = aardwolf=0.2.14+14.r168.20260816.115f1cc
-	provides = aardwolf-git=0.2.14+14.r168.20260816.115f1cc
+	provides = ardpscan=0.2.16+2.r180.20261018.cdbe186
+	provides = python-aardwolf=0.2.16+2.r180.20261018.cdbe186
+	provides = aardwolf=0.2.16+2.r180.20261018.cdbe186
+	provides = aardwolf-git=0.2.16+2.r180.20261018.cdbe186
 	conflicts = ardpscan
 	conflicts = python-aardwolf
 	conflicts = aardwolf

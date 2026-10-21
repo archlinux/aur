@@ -3,7 +3,7 @@
 _pyname="aardwolf"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=0.2.14+14.r168.20260816.115f1cc
+pkgver=0.2.16+2.r180.20261018.cdbe186
 pkgrel=1
 pkgdesc="Asynchronous RDP protocol implementation for python."
 arch=(
@@ -19,8 +19,8 @@ _gituser='skelsec'
 url="https://${_githost}/${_gituser}/${_pyname}"
 license=("MIT")
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc_s.so'
   'python>=3.7'
   'python-unicrypto>=0.0.10'
   'python-asyauth>=0.0.13'
@@ -37,6 +37,7 @@ depends=(
 makedepends=(
   'cython'
   'git'
+  'libgcc'
   'python-build'
   'python-installer'
   'python-wheel'
@@ -73,7 +74,7 @@ prepare() {
 
   git log > "${srcdir}/git.log"
 
-  cd aardwolf/utils/rlers
+  cd rust/
   cargo fetch -v
 }
 
