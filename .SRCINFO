@@ -1,6 +1,6 @@
 pkgbase = iceshrimp-bin
 	pkgdesc = YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023
-	pkgver = v2026.5.4
+	pkgver = v2026.5.5
 	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp
 	install = iceshrimp.install
@@ -13,9 +13,9 @@ pkgbase = iceshrimp-bin
 	conflicts = iceshrimp
 	options = !strip
 	backup = etc/iceshrimp/configuration.yml
-	source = https://repo.iceshrimp.dev/archlinux/iceshrimp/os/x86_64/iceshrimp-v2026.5.4-1-x86_64.pkg.tar.zst
+	source = https://repo.iceshrimp.dev/archlinux/iceshrimp/os/x86_64/iceshrimp-v2026.5.5-1-x86_64.pkg.tar.zst
 	source = iceshrimp.hook
-	sha512sums = b478b8adc04fd8d6cc47910002be4a45953180e7163b0ef896943635ffec1f3b1807d272a530978f0c8ae1775391a7620a234f7369b4d4ec86d56b17ddb73ea1
+	sha512sums = 89c1322a1d117c74b9265856332b8eac0a5aec34823837388ea72c13e7b50003ec00446e8c2ba06fcae72a173dedd47d0e7eab6745b0387cc1d898158d06941c
 	sha512sums = 91c456bda5c14b01cbf770a2e9e57425ac5e82226799d39e11cc6e83b219a0559eeed8693c5eb051fffb28cdd23d4682ee40f46372117880aeeddb00ecb8726f
 
 pkgname = iceshrimp-bin
