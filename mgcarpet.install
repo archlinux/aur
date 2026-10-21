@@ -1,0 +1,10 @@
+post_install() {
+  cat <<EOF
+
+Copy your GOG installs of Magic Carpet Plus and/or Magic Carpet 2 to
+~/.local/share/mgcarpet/gamedata/, or set the "gamedata" key of
+~/.config/mgcarpet/mgcarpet.json to the absolute path of an install or of their parent directory
+(see /usr/share/doc/mgcarpet/gamedata.md).
+The game data is converted on first start, and after upgrades that change the converted format.
+EOF
+}

@@ -1,0 +1,15 @@
+#!/bin/bash -eu
+
+# mgcarpet resolves its game data, baked data and saves relative to the working directory
+readonly DATA_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/mgcarpet"
+readonly CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/mgcarpet"
+readonly CONFIG_FILEPATH="${CONFIG_DIR}/mgcarpet.json"
+
+mkdir -p "${DATA_DIR}" "${CONFIG_DIR}"
+# an explicit config path must exist
+if [ ! -f "${CONFIG_FILEPATH}" ]
+then
+    echo '{}' > "${CONFIG_FILEPATH}"
+fi
+cd "${DATA_DIR}"
+exec /usr/lib/mgcarpet/mgcarpet --config "${CONFIG_FILEPATH}" "$@"

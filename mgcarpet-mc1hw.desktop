@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Magic Carpet: Hidden Worlds
+Exec=mgcarpet --campaign mc1hw
+Categories=Game;ActionGame;

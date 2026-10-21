@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=mgcarpet
+Comment=Choose a Magic Carpet game to play
+Exec=mgcarpet
+Categories=Game;ActionGame;

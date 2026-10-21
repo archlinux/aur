@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Magic Carpet 2: The Netherworlds
+Exec=mgcarpet --campaign mc2
+Categories=Game;ActionGame;
