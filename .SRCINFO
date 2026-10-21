@@ -1,7 +1,7 @@
 pkgbase = alcom
 	pkgdesc = A fast open-source alternative of VRChat Creator Companion (VCC)
 	pkgver = 1.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vrc-get/vrc-get
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,9 @@ pkgbase = alcom
 	options = !lto
 	source = alcom-1.1.8.tar.gz::https://github.com/vrc-get/vrc-get/archive/refs/tags/gui-v1.1.8.tar.gz
 	source = build.patch
+	source = rustls-webpki-0.103.16-gui-v1.1.8.patch
 	sha256sums = 6b5b65a5d8e4eaaceab4f8b3ccb241d5b3f43fa2b9f514893403e0665f7643bc
 	sha256sums = 4aab543caa7554ab0ab3434bc3ea9af185abc7c8614c5c4e15b1ede1269126a9
+	sha256sums = ec0635f2e3288b87d3787c717fbaf68158fd8f7322313fb4745144e5891391ce
 
 pkgname = alcom

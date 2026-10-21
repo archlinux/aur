@@ -2,7 +2,7 @@
 _pkgname='vrc-get'
 pkgname=alcom
 pkgver=1.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast open-source alternative of VRChat Creator Companion (VCC)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/vrc-get/vrc-get'
@@ -11,13 +11,14 @@ depends=(gtk3 openssl webkit2gtk-4.1)
 makedepends=(cargo nodejs npm)
 optdepends=('unityhub: Used to open created projects and migrate projects from older versions of Unity.' 'libxml2-legacy: Fix the issue of the missing libxml2.so.2 error in Unity for Linux.')
 options+=(!lto)
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/gui-v${pkgver}.tar.gz" "build.patch")
-sha256sums=('6b5b65a5d8e4eaaceab4f8b3ccb241d5b3f43fa2b9f514893403e0665f7643bc' '4aab543caa7554ab0ab3434bc3ea9af185abc7c8614c5c4e15b1ede1269126a9')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/gui-v${pkgver}.tar.gz" "build.patch" "rustls-webpki-0.103.16-gui-v1.1.8.patch")
+sha256sums=('6b5b65a5d8e4eaaceab4f8b3ccb241d5b3f43fa2b9f514893403e0665f7643bc' '4aab543caa7554ab0ab3434bc3ea9af185abc7c8614c5c4e15b1ede1269126a9' 'ec0635f2e3288b87d3787c717fbaf68158fd8f7322313fb4745144e5891391ce')
 
 prepare() {
     cd "$_pkgname-gui-v$pkgver"
 
     patch -p 1 -i "${srcdir}/build.patch"
+    patch -i "${srcdir}/rustls-webpki-0.103.16-gui-v1.1.8.patch"
 
     cd "$_pkgname-gui"
 
