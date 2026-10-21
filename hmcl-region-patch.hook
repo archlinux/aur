@@ -1,17 +1,27 @@
+# The hook that patches HMCL.
+#
+# It is triggered by the files of the packages that provide HMCL and by the package of the
+# patcher itself, so that it runs after every transaction that installs or updates one of them.
+# A hook runs at most once per transaction, so the archives are patched exactly once, no matter
+# whether HMCL and the patcher are installed together or not.
+
 [Trigger]
 Operation = Install
 Operation = Upgrade
 Type = Path
 Target = usr/share/java/hmcl/hmcl.jar
 Target = usr/share/java/hmcl-bin/hmcl-bin.jar
-Target = usr/share/java/hmcl-dev/hmcl-dev.jar
-Target = opt/hmcl/hmcl.jar
 Target = opt/hmcl-dev/hmcl.jar
 Target = usr/share/java/hmcl*/*.jar
 Target = opt/hmcl*/*.jar
 
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = hmcl-region-patch-auto
+
 [Action]
 Description = Patching HMCL so that it no longer treats this machine as mainland China...
 When = PostTransaction
-Exec = /usr/bin/hmcl-region-patch apply --from-stdin --state-dir /var/lib/hmcl-region-patch --yes
-NeedsTargets
+Exec = /usr/bin/hmcl-region-patch-auto-hook

@@ -1,37 +1,42 @@
-# Maintainer: xuanxuan1231 <xuanxuan1231 at helloswx dot top>
+# Maintainer: HelloSWX <i at helloswx dot top>
 
 pkgname=hmcl-region-patch-auto
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Unofficial tool that patches the HMCL installed by the AUR, so that it no longer treats the machine as mainland China"
+pkgdesc="Alpm hook that patches the HMCL installed by the AUR, so that it no longer treats the machine as mainland China"
 arch=('any')
 url="https://github.com/xuanxuan1231/hmcl-region-patch"
 license=('GPL-3.0-or-later')
-depends=('java-runtime' 'hmcl')
-options=('!strip')
 install="$pkgname.install"
-conflicts=('hmcl-region-patch')
 
-# The archive is built and uploaded by the GitHub workflow that runs when a tag is pushed, so
-# the package only installs it: everything the tool needs, including the ASM library, is inside.
-source=("hmcl-region-patch-$pkgver.tar.gz::https://github.com/xuanxuan1231/hmcl-region-patch/releases/download/v$pkgver/hmcl-region-patch-$pkgver.tar.gz"
-        "hmcl-region-patch.hook")
-sha256sums=('89c6da7b5727f85b331d89d02e5a4c0edc605a281f25d38676decc9a215d9fd4'
-            '572e7c76fdb1ca83ef188883ce91ba2d9123b4ced0bc6eeec2cf475c42534862')
+# The patcher itself is not shipped here, it comes from hmcl-region-patch: this package only
+# contains the hook that runs it and the script that the hook calls.
+depends=('hmcl-region-patch')
+
+# The hook patches the archive of whichever of these packages is installed. They are listed here
+# so that it is clear which ones are supported. None of them is required: the hook simply does
+# nothing when no HMCL is installed at all. They cannot be put into depends, because pacman
+# would install all of them, and "hmcl-dev-bin" does not even provide "hmcl".
+optdepends=('hmcl: patch the HMCL of the package "hmcl"'
+            'hmcl-bin: patch the HMCL of the package "hmcl-bin"'
+            'hmcl-dev: patch the HMCL of the package "hmcl-dev"'
+            'hmcl-dev-bin: patch the HMCL of the package "hmcl-dev-bin"')
+
+source=("hmcl-region-patch.hook"
+        "hmcl-region-patch-auto-hook")
+sha256sums=('ba0b1d4573bebf847821359b7572d74a09d312f38fa51b1abb4c684cdf4156d0'
+            '4d62ab96bcda8a101240ae7f4a024fe9e52bad6ebdf5c887d102d9d023caa2f1')
 
 package() {
-    install -Dm644 "$srcdir/hmcl-region-patch-$pkgver/lib/hmcl-region-patch.jar" \
-        "$pkgdir/usr/share/java/$pkgname/hmcl-region-patch.jar"
-    install -Dm755 "$srcdir/hmcl-region-patch-$pkgver/bin/hmcl-region-patch" \
-        "$pkgdir/usr/bin/hmcl-region-patch"
-    install -Dm644 "$srcdir/hmcl-region-patch-$pkgver/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/hmcl-region-patch-$pkgver/licenses/ASM-LICENSE.txt" \
-        "$pkgdir/usr/share/licenses/$pkgname/ASM-LICENSE.txt"
-
-    # The hook that patches HMCL again whenever it is installed or updated.
+    # The hook that patches HMCL whenever it is installed or updated, and whenever the package
+    # of the patcher itself is installed or updated.
     install -Dm644 "$srcdir/hmcl-region-patch.hook" \
         "$pkgdir/usr/share/libalpm/hooks/hmcl-region-patch.hook"
+
+    # The script that the hook runs: it patches HMCL and then prints the hint. The hint itself
+    # is written in that script.
+    install -Dm755 "$srcdir/hmcl-region-patch-auto-hook" \
+        "$pkgdir/usr/bin/hmcl-region-patch-auto-hook"
 
     # The directory that holds the backups and the state of the patched archives.
     install -dm755 "$pkgdir/var/lib/hmcl-region-patch"

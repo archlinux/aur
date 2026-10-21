@@ -1,0 +1,45 @@
+#!/bin/sh
+# The script that the alpm hook of the package runs.
+#
+# It patches the HMCL installations of the system and then prints a hint, so that the user knows
+# what the patch did and what to expect from HMCL afterwards.
+
+set -u
+
+# The patcher itself. It only looks at the HMCL installations of the system, and it does not ask
+# pacman for the files of the packages, because pacman still holds the lock of its database while
+# a hook runs.
+/usr/bin/hmcl-region-patch apply \
+    --all --system-only --no-pacman \
+    --state-dir /var/lib/hmcl-region-patch \
+    --yes
+status=$?
+
+if [ "$status" -eq 0 ]; then
+    # ==========================================================================
+    # 提示信息
+    #
+    # 下面这段内容会在打补丁成功后原样打印出来，随便改，也可以整段删掉。
+    # ==========================================================================
+    cat <<'HMCL_REGION_PATCH_MESSAGE'
+
+hmcl-region-patch-auto: 修补完成。如果你要使用镜像站下载，则需要手动调整设置。
+
+HMCL_REGION_PATCH_MESSAGE
+elif [ "$status" -eq 3 ]; then
+    # ==========================================================================
+    # 没有需要打补丁的 HMCL 时的提示。可能已经打过补丁了，也可能系统里没有装
+    # HMCL，或者装的版本太老（地区检测是 3.17.0.362 才引入的）。这种情况不是
+    # 错误，具体看上面补丁器自己的输出。这一行也可以改。
+    # ==========================================================================
+    echo "hmcl-region-patch-auto: 没有需要打补丁的 HMCL，请查看上面的输出。" >&2
+else
+    # ==========================================================================
+    # 打补丁失败时的提示，具体原因看上面补丁器自己的输出。这一行也可以改。
+    # ==========================================================================
+    echo "hmcl-region-patch-auto: 打补丁时出错（退出码 $status），请查看上面的输出。" >&2
+fi
+
+# The exit status of a hook that runs after the transaction does not change anything, but the
+# script always ends successfully so that pacman does not complain about it.
+exit 0

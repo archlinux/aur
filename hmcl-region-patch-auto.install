@@ -1,21 +1,30 @@
-post_install() {
-    # Patch the HMCL installations that are installed system wide. The detection does not ask
-    # pacman for the files of the packages that provide HMCL, because pacman still holds the
-    # lock of its database while this script runs.
-    /usr/bin/hmcl-region-patch apply \
-        --all --system-only --no-pacman \
-        --state-dir /var/lib/hmcl-region-patch \
-        --yes || true
-}
-
-post_upgrade() {
-    post_install
-}
+# The patching itself is done by the alpm hook of the package: it runs after every transaction
+# that installs or updates HMCL, and also after the installation of the package itself, so that
+# the archives are patched exactly once.
 
 pre_remove() {
     # Restore the archives that were patched, so that the system is left as it was.
     /usr/bin/hmcl-region-patch revert \
         --state-dir /var/lib/hmcl-region-patch \
-        --yes || true
-    rm -rf /var/lib/hmcl-region-patch/backups /var/lib/hmcl-region-patch/state.properties
+        --yes
+    status=$?
+
+    # The archives that could not be restored keep their record in the state file, so it tells
+    # whether everything could be restored. The backups are only thrown away when that is the
+    # case, so that they are still there when something went wrong.
+    restored=yes
+    if [ "$status" -ne 0 ]; then
+        restored=no
+    elif [ -f /var/lib/hmcl-region-patch/state.properties ] \
+        && grep -qE '^count=[1-9][0-9]*$' /var/lib/hmcl-region-patch/state.properties
+    then
+        restored=no
+    fi
+
+    if [ "$restored" = yes ]; then
+        rm -rf /var/lib/hmcl-region-patch/backups /var/lib/hmcl-region-patch/state.properties
+    else
+        echo "hmcl-region-patch-auto: some archives could not be restored, their backups are kept in /var/lib/hmcl-region-patch" >&2
+    fi
+    return 0
 }
