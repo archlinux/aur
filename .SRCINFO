@@ -1,6 +1,6 @@
 pkgbase = peersky-browser
 	pkgdesc = A local-first, peer-to-peer web browser for a surveillance-free internet.
-	pkgver = 1.0.0_beta.30
+	pkgver = 1.0.0_beta.31
 	pkgrel = 1
 	url = https://peersky.p2plabs.xyz/
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = peersky-browser
 	conflicts = peersky-browser
 	options = !emptydirs
 	options = !strip
-	source = peersky-browser-1.0.0_beta.30.tar.gz::https://github.com/p2plabsxyz/peersky-browser/archive/refs/tags/v1.0.0-beta.30.tar.gz
+	source = peersky-browser-1.0.0_beta.31.tar.gz::https://github.com/p2plabsxyz/peersky-browser/archive/refs/tags/v1.0.0-beta.31.tar.gz
 	source = peersky-browser.sh
-	sha256sums = c9b9ef1b3392b1f50029f54b3a5303406d901293a969bdb456a16a2c21bafa57
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = 4376ea45ec89f620eabd948463e6cb58decf9ddeceb64b40a24993af017024dd
+	sha256sums = a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953
 
 pkgname = peersky-browser
