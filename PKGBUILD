@@ -2,7 +2,7 @@
 # Co-maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=cloudflare-warp-minimal-bin
-pkgver=2026.8.2110
+pkgver=2026.8.2115
 pkgrel=1
 pkgdesc="Minimal Cloudflare WARP client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('cloudflare-warp-bin' 'cloudflare-warp')
 conflicts=('cloudflare-warp-bin' 'cloudflare-warp')
 source=("https://pkg.cloudflareclient.com/pool/trixie/main/c/cloudflare-warp/cloudflare-warp_${pkgver}.0_amd64.deb")
 #Debian Package Index: https://pkg.cloudflareclient.com/dists/trixie/main/binary-amd64/Packages
-sha256sums=('2b3558ed92abe01e1b08019ba0be578541644690d623ff4b8cc5beaeae802efb')
+sha256sums=('9b0c913a7e6e90a2fa4f83bf23cefa5e4996993cbdf85dc249cc14c2cac5c9ab')
 
 prepare() {
     bsdtar -xzf data.tar.gz -C "$srcdir"
