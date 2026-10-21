@@ -6,18 +6,18 @@
 #   2) scripts/publish-aur.sh --push   → 自动算 sha256 + 生成 .SRCINFO + 推送 AUR ✓
 #   sha256sums 里的 PLACEHOLDER 必须在发布前替换，否则 makepkg 会校验失败 ✗（这是故意的 ✗ 防误发）
 pkgname=hov-qt
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Aggregated YouTube/Bilibili/NetEase/QQ Music client (Qt6 desktop)"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/HougeLangley/HyperOnlineVideo"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'Apache-2.0')
 depends=('qt6-base' 'qt6-declarative' 'qt6-webengine' 'mpv' 'ffmpeg' 'yt-dlp')
 # KWindowSystem（玻璃质感）是可选依赖：CMake 找不到就降级 ✓ 故不进 depends ✓
 makedepends=('cmake' 'ninja' 'pkgconf')
 # clang/lld 仅在 HOV_OPTIMIZED=1（LTO+PGO 优化构建）时需要 → 作为可选说明 ✓ 不进 makedepends ✓
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HougeLangley/HyperOnlineVideo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('882bd1ccf3e128370e88841b8a0c97b6148474f9ff68333fff2fbbf0708773b5')
+sha256sums=('9c32eb4ab4e1b692742304c5092d6f70488ef4f79aaf4ac6a75ca88be48ff6ab')
 
 build() {
   cd "$srcdir/HyperOnlineVideo-$pkgver/desktop"
@@ -50,6 +50,7 @@ package() {
   cd "$srcdir/HyperOnlineVideo-$pkgver/desktop"
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 resources/icons/LICENSE-material-symbols.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-material-symbols.txt"
 }
 
 # 说明：
