@@ -24,7 +24,7 @@ conflicts=('sable' 'sable-nightly-bin')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/sable-electron-${pkgver}-amd64.deb")
-sha256sums_x86_64=('21bef0fb860e3ab09559f0fcf125cddccb6de4c7cf7e1e7314d4124ac4179913')
+sha256sums_x86_64=('e9605679925063f46d6018554d2d800b7acf706b2d4cdfe7ded3962ce5c817c7')
 
 package() {
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-amd64.deb" 'data.tar*' \
