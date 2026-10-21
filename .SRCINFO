@@ -1,20 +1,21 @@
 pkgbase = paintdotnet-wine-experimental
 	pkgdesc = Experimental Paint.NET with wine specific changes
-	pkgver = 5.200.9785.36400
+	pkgver = 5.200.9790.504
 	pkgrel = 1
 	url = https://github.com/paintdotnet/Paint.NET-on-WINE
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = icoutils
-	depends = wine>=11.9
+	depends = wine>=11.20
 	depends = winetricks
 	depends = bash
-	noextract = paintdotnet-wine-experimental-5.200.9785.36400.zip
-	source = paintdotnet-wine-experimental-5.200.9785.36400.zip::https://github.com/paintdotnet/Paint.NET-on-Wine/releases/download/v5.200.9785.36400/paint.net.5.200.9785.36400.portable.x64.wine.EXPERIMENTAL.zip
+	depends = mesa
+	noextract = paintdotnet-wine-experimental-5.200.9790.504.zip
+	source = paintdotnet-wine-experimental-5.200.9790.504.zip::https://github.com/paintdotnet/Paint.NET-on-Wine/releases/download/v5.200.9790.504/paint.net.5.200.9790.504.portable.x64.wine.EXPERIMENTAL.zip
 	source = paintdotnet-wine-experimental.sh
 	source = paintdotnet-wine-experimental.desktop
-	sha256sums = b5e636ff864221e2d7b960b0679868727565f0c0ce8d2d5815a5ef5187ece449
-	sha256sums = 9fa34474da5247ff154aff6538db793bdd924d4608deb5486a2478586a83835d
+	sha256sums = f21a63c2c27d5295146dd74c0782615c4325020f0d1f30b3bd308ac76c24155f
+	sha256sums = 99427d61744e6f7f80a6b6f32a80d31c36e629c100b5eee385034dd525c0a213
 	sha256sums = 2344898406e25f5d8f2fef4ecb4313bbb48ffd69eb85983e32209ba19b5cecff
 
 pkgname = paintdotnet-wine-experimental

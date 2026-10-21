@@ -3,6 +3,9 @@ set -euo pipefail
 # match the DIR and PREFIX from official install.sh
 DIR="$HOME/.local/share/paintdotnet"
 PREFIX="$DIR/wineprefix"
+
+INSTALLED_DIR="/usr/share/pkgname"
+
 # if something need to be added to prefix (like another winetricks) changing this allows me to redo "prefix creation"
 UPDATE_FILE="$PREFIX/update1"
 
@@ -26,10 +29,9 @@ if [[ ! -f "$UPDATE_FILE" ]]; then
   touch "$UPDATE_FILE"
 fi
 
-# I don't like that but... portable Paint.NET like to write to it's instalation directory (CrashLogs)
+# I don't like that but... portable Paint.NET like to write to it's instalation directory (PaintDotNet.AppSettings.json)
 # And also make plugin and stuff easier to install as do not requrie root
 # But... we need to run it every time in case there was an update
-INSTALLED_DIR="/usr/share/pkgname"
 TARGET="$DIR/paintdotnet"
 
 # create equivalent folder
@@ -45,6 +47,7 @@ while IFS= read -r -d '' f; do
     GOAL="$TARGET/${f#"$INSTALLED_DIR"/}"
     [[ -e "$GOAL" || -L "$GOAL" ]] || ln -s "$f" "$GOAL"
 done
+
 
 # This is kind of a workaround
 # This disable logic of VK_LAYER_MND_enable_timeline_semaphore which seems to cause issue with vulkan device creation for some users
