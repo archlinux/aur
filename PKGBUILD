@@ -6,6 +6,7 @@
 # Contributor: Rashintha Maduneth <rashinthamaduneth@gmail.com>
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
+_pkgname=mailspring
 pkgname=mailspring
 pkgver=1.26.1
 pkgrel=1
@@ -54,6 +55,7 @@ makedepends=(
   'npm'
   'node-gyp'
   'python'
+  'jq'
 )
 optdepends=(
   'org.freedesktop.secrets: credential storage (e.g. gnome-keyring or keepassxc)'
@@ -64,7 +66,7 @@ source=(
   "git+$url.git#tag=$pkgver"
   "git+https://github.com/Foundry376/Mailspring-Sync.git"
   "electron-v$_electron_headers-headers.tar.gz::https://artifacts.electronjs.org/headers/dist/v$_electron_headers/node-v$_electron_headers-headers.tar.gz"
-  "$pkgname.sh.in"
+  "$_pkgname.sh.in"
   "mailspring-0001-build-take-Electron-zip-from-ELECTRON_ZIP_DIR.patch"
   "mailsync-0001-cmake-link-against-shared-system-libraries.patch"
   "mailsync-0002-cmake-use-system-nlohmann-json.patch"
@@ -81,7 +83,7 @@ sha256sums=('6a225d223c439a39ffe31bd28debd983c1e3d3f44f87bb01cc4ac52f5ffbcc92'
 
 _check_electron() {
   local _expected
-  _expected="electron$(node -p 'require("./mailspring/package.json").dependencies.electron.split(".")[0]')"
+  _expected="electron$(node -p 'require("./package.json").dependencies.electron.split(".")[0]')"
   if [[ "$_electron" != "$_expected" ]]; then
     error "Using $_electron but upstream specifies $_expected"
     return 1
@@ -102,16 +104,16 @@ _npm_ci() {
 }
 
 prepare() {
-  _check_electron
-
   # prepare launcher script
   sed -r \
-    -e "s|@PKGNAME@|${pkgname}|g" \
+    -e "s|@PKGNAME@|${_pkgname}|g" \
     -e "s|@ELECTRON@|${_electron}|g" \
-    "$pkgname.sh.in" \
-    >"$pkgname.sh"
+    "$_pkgname.sh.in" \
+    >"$_pkgname.sh"
 
   cd Mailspring
+
+  _check_electron
 
   git submodule init mailsync
   git config submodule.mailsync.url "$srcdir/Mailspring-Sync"
@@ -211,6 +213,10 @@ _build_better_sqlite3() (
   rm better_sqlite3.node
 )
 
+_inplace() {
+  "$@" >"${!#}.tmp" && mv -T -- "${!#}.tmp" "${!#}"
+}
+
 _build_app() {
   # we only need the electron packager to build app.asar
   # inject a stub electron zip to avoid downloading a prebuilt blob
@@ -225,8 +231,15 @@ _build_app() {
   local -x TMPDIR="$srcdir/tmp"
   mkdir -p "$TMPDIR"
 
-  node app/build/build.js --skip-installers
+  # update package identification to a known string
+  _inplace jq \
+    ". + {
+      name: \"$_pkgname\",
+      desktopName: \"$_pkgname.desktop\",
+    }" \
+    app/package.json
 
+  # substitute package identification into template files
   node -e '
     const fs = require("fs");
     const _ = require("underscore");
@@ -245,6 +258,7 @@ _build_app() {
     app/build/resources/linux/Mailspring.desktop.in \
     app/build/resources/linux/mailspring.metainfo.xml.in \
 
+  node app/build/build.js --skip-installers
 }
 
 build() {
@@ -267,22 +281,22 @@ package() {
     "$_electron"
   )
 
-  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
   cd Mailspring
 
-  install -dm755 "$pkgdir/usr/lib/$pkgname"
+  install -dm755 "$pkgdir/usr/lib/$_pkgname"
   cp -dR --preserve=timestamps,links \
     app/dist/mailspring-linux-x64/resources/app.asar \
     app/dist/mailspring-linux-x64/resources/app.asar.unpacked \
-    -t "$pkgdir/usr/lib/$pkgname"
+    -t "$pkgdir/usr/lib/$_pkgname"
 
   local _linux=app/build/resources/linux
-  install -Dm644 "$_linux/Mailspring.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "$_linux/mailspring.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
+  install -Dm644 "$_linux/Mailspring.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "$_linux/mailspring.metainfo.xml" "$pkgdir/usr/share/metainfo/${_pkgname}.metainfo.xml"
   local _size
   for _size in 16 32 64 128 256 512; do
-    install -Dm644 "$_linux/icons/$_size.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$pkgname.png"
+    install -Dm644 "$_linux/icons/$_size.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${_pkgname}.png"
   done
 
   install -Dm644 mailsync/Vendor/libetpan/COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/libetpan.txt"

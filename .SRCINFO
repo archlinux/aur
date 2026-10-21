@@ -19,6 +19,7 @@ pkgbase = mailspring
 	makedepends = npm
 	makedepends = node-gyp
 	makedepends = python
+	makedepends = jq
 	depends = bash
 	depends = ctemplate
 	depends = curl
