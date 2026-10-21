@@ -2,7 +2,7 @@
 
 pkgname=songloft-player
 pkgver=2.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform music player client for Songloft servers (Flutter)"
 arch=('x86_64')
 url="https://songloft.hanxi.cc/"
