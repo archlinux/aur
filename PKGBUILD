@@ -10,8 +10,8 @@ depends=('mingw-w64-lapack' 'mingw-w64-google-glog' 'mingw-w64-metis' 'mingw-w64
 provides=('mingw-w64-ceres-solver')
 conflicts=('mingw-w64-ceres-solver')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
-sha256sums=('48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d')
+source=("https://github.com/ceres-solver/ceres-solver/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('12efacfadbfdc1bbfa203c236e96f4d3c210bed96994288b3ff0c8e7c6f350d4')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
