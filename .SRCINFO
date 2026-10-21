@@ -1,8 +1,8 @@
 pkgbase = jumpapp-ng
 	pkgdesc = A run-or-raise application switcher for X11 and Wayland (labwc)
 	pkgver = 1.3.0
-	pkgrel = 1
-	url = https://github.com/musqz/jumpapp
+	pkgrel = 2
+	url = https://codeberg.org/linux-bird/jumpapp
 	arch = any
 	license = MIT
 	depends = bash
@@ -14,7 +14,7 @@ pkgbase = jumpapp-ng
 	provides = jumpapp
 	conflicts = jumpapp
 	conflicts = jumpapp-git
-	source = jumpapp-ng-1.3.0.tar.gz::https://github.com/musqz/jumpapp/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = e16269f1a81eb6fbb4ea331842d385df15718ea2b8366d5f79a45964cc0ea2c5
+	source = jumpapp-ng-1.3.0-codeberg.tar.gz::https://codeberg.org/linux-bird/jumpapp/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = f2b32848c9aa679ee5d5d868597ce8e94dcebec67759f5562274cdb13e5826cc
 
 pkgname = jumpapp-ng
