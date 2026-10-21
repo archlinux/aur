@@ -1,6 +1,6 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-git
-pkgver=0.2.0.r0.gdcf5a9b
+pkgver=0.2.1.r0.g64cccbb
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), built from git'
 arch=('x86_64')
@@ -31,5 +31,7 @@ package() {
   install -Dm755 spot "$pkgdir/usr/bin/spot"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/spot/README.md"
-  install -Dm644 -t "$pkgdir/usr/share/doc/spot/examples" examples/*
+  # examples/ has a demo/ subdirectory, which `install -t ... examples/*` would refuse
+  cp -r examples "$pkgdir/usr/share/doc/spot/"
+  [ ! -d docs ] || cp -r docs "$pkgdir/usr/share/doc/spot/"   # absent before v0.2.1
 }
