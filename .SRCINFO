@@ -1,7 +1,7 @@
 pkgbase = noita_proxy-bin
 	pkgdesc = Noita Entangled Worlds mod
 	pkgver = 1.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IntQuant/noita_entangled_worlds
 	install = noita_proxy.install
 	arch = x86_64

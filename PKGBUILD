@@ -3,7 +3,7 @@
 _pkgname='noita_proxy'
 pkgname="${_pkgname}-bin"
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Noita Entangled Worlds mod'
 url='https://github.com/IntQuant/noita_entangled_worlds'
 _rawurl='https://raw.githubusercontent.com/IntQuant/noita_entangled_worlds'
@@ -32,6 +32,10 @@ sha256sums=('8387aec3567a9c7f89d7d7c5845b4f4ee17d815d16fb67ddf1ec4af597c6ba81'
             'c97af108287fce52a6e0d1197ad8bc92a9a470b484942c0bbb74469d8475e2d4'
             '512c06c20b86cd51188f883904efc7f48d59b852ee5607a80b11337a92ca1899')
 install=${_pkgname}.install
+
+check() {
+    desktop-file-validate $srcdir/noita_proxy.desktop
+}
 
 package() {
     install -Dm 644 LICENSE-APACHE \
