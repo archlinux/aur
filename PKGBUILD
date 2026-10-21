@@ -1,6 +1,6 @@
 # Submitter: Eric Rodrigues Pires <archlinux@ericpires.com.br>
 pkgname='sandhole'
-pkgver='0.10.1'
+pkgver='0.10.4'
 pkgrel=1
 pkgdesc='Expose HTTP/SSH/TCP services through SSH port forwarding'
 arch=('x86_64' 'aarch64')
@@ -11,17 +11,17 @@ makedepends=('cargo' 'cmake' 'clang' 'perl')
 checkdepends=('cargo-nextest')
 provides=('sandhole')
 conflicts=('sandhole-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/EpicEric/sandhole/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1d229e38893e5328ba6f07b2752f5005099cd89e1fd500533a7f61608a76e502')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/sandhole/sandhole/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2f8fc353aa4a3fbc77feca7dfcc32986577e66834ad9262bc9724786b8919517')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
 
     export CARGO_TARGET_DIR=target
     export CC=clang
@@ -31,7 +31,7 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
 
     export CARGO_TARGET_DIR=target
 
@@ -39,7 +39,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
