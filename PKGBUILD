@@ -6,8 +6,8 @@
 # _reltag carries the real GitHub tag because pkgver must be
 # makepkg-safe (no hyphens), while tags use hyphens (v0.2.0-preview2).
 pkgname=horneroctl-bin
-_reltag=horneroctl-v0.2.0-preview23
-pkgver=0.2.0_preview23
+_reltag=horneroctl-v0.2.0-preview24
+pkgver=0.2.0_preview24
 pkgrel=1
 pkgdesc='HorneroOS system CLI (native binary)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ optdepends=(
 )
 source_x86_64=("horneroctl-${pkgver}::https://github.com/HorneroOS/hornero/releases/download/${_reltag}/horneroctl-linux-x86_64")
 source_aarch64=("horneroctl-${pkgver}::https://github.com/HorneroOS/hornero/releases/download/${_reltag}/horneroctl-linux-arm64")
-sha256sums_x86_64=('605e43fbbd0a5ef7756638f781019bee37a4b0fd0db77255e9b0bd3c24dfc456')
-sha256sums_aarch64=('d897dd874bf67418e0e9455fcfca4d7f043c9e55024121f3cdf1e00f506cca06')
+sha256sums_x86_64=('7ebc6a359043e92506e1d1044f2a9567172b75aa80be43bf99c34ebf0d91bc4a')
+sha256sums_aarch64=('76eda9f85da206f2bdeb814779fd8e2b8febc5499e80a3fed56310f53ce4a660')
 
 package() {
   install -Dm755 "${srcdir}/horneroctl-${pkgver}" "${pkgdir}/usr/bin/horneroctl"
