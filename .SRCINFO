@@ -1,6 +1,6 @@
 pkgbase = resyctl
 	pkgdesc = Automation-friendly Resy command-line client
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/evanpurkhiser/resyctl
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = resyctl
 	depends = glibc
 	depends = gcc-libs
 	options = !lto
-	source = resyctl-0.2.3.tar.gz::https://github.com/evanpurkhiser/resyctl/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = 85b2ba0337647831d9d34de51eb5de789c9e28ea57d5e8b43142bc544e4b0342
+	source = resyctl-0.2.4.tar.gz::https://github.com/evanpurkhiser/resyctl/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 90a69d47a7111843c55152bc2083bb7656eebe2205e428b4cb169d299e0b8685
 
 pkgname = resyctl
 
