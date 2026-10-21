@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Voice Desktop
+Comment=An electron shell wrapper for the google voice app
+Exec=/usr/bin/google-voice-desktop
+Icon=google-voice
+Terminal=false
+StartupWMClass=voice-desktop-app
+Categories=Office;Network;InstantMessaging;
+MimeType=text/html;
