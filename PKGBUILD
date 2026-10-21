@@ -2,7 +2,7 @@
 _appname=qoder-cn
 pkgname="${_appname}-ide-bin"
 _pkgname='Qoder IDE'
-pkgver=1.33.0
+pkgver=1.35.0
 _electronversion=42
 pkgrel=1
 pkgdesc="面向真实软件开发的 AI 原生 Qoder CN IDE。"
@@ -29,12 +29,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::https://qoder-ide-cn.oss-cn-hangzhou.aliyuncs.com/qoder/release/lastest/${pkgname%-bin}_${CARCH}.rpm"
     "LICENSE.html"
     "${pkgname%-bin}.js"
+    "resources-path-override.js"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            '6b73e24e50a54c5451b5d19b6ebc6ea941a8611fe14a1eef5e5d9a2aa8bb84aa'
-            'f7ce9ccdc0c41dd0201c410889a8049a34b772047d7689fee8a193b9746767bb')
+            'dc6e622af50c366f1713adfa1de690bbee9af76c8fec1d4dccddadffc9bdf2ba'
+            '7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8'
+            '523a9e7294fb8d0611611db823288e3dc38ae021eceb3067791dc0c4ff3b0d15')
 pkgver() {
     cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -57,11 +59,7 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}.js/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i -e "
-        s/@ELECTRON@/electron${_electronversion}/g
-        s/@name@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.js"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     sed -i "s/\/usr\/share\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}"*.desktop
     find "$(_get_app_dir)/resources/app" -type d \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) -exec rm -rf {} +
     rm -rf \
@@ -71,6 +69,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/resources-path-override.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -a "$(_get_app_dir)/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}"* -t "${pkgdir}/usr/share/applications"
