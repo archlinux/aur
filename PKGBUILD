@@ -1,7 +1,7 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 
 pkgname=wegame-launcher
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='开箱即用的简易 WeGame 启动器，使用 WE-Proton 运行'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('vulkan-driver: 显卡的 Vulkan 驱动（DXVK 渲染需要）'
             'mangohud: performance overlay'
             'passt: 独立网络命名空间，TUN 模式的加速器需要')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b5bd51917394a8379e739e5f5d7aaace22ba797e2bced15716f4a5c07cb05df4')
+sha256sums=('63e1a60ec02a994c8e07c5fb918a627983531ed4e18d93eed54a54a6a4efb724')
 
 package() {
     cd "$pkgname-$pkgver"
