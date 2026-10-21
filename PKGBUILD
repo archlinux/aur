@@ -1,7 +1,7 @@
 # Maintainer: RainyPixel <me@bobchenkov.ru>
 
 pkgname=wallpaper-engine-kde-plugin-git
-pkgver=0.6.1.r741.gb9fd9b3
+pkgver=0.7.1.r757.g5500218
 pkgrel=1
 pkgdesc="Wallpaper Engine integration for KDE Plasma 6 (native C++, no Python)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "0.6.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.7.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
