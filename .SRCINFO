@@ -1,6 +1,6 @@
 pkgbase = jarl
 	pkgdesc = Fast linter for the R language
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/etiennebacher/jarl
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = jarl
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
-	provides = jarl=0.6.0
+	provides = jarl=0.7.1
 	conflicts = jarl-bin
 	options = !lto
 	options = !debug
-	source = jarl-0.6.0.tar.gz::https://github.com/etiennebacher/jarl/archive/0.6.0.tar.gz
-	sha256sums = 86620fcdb654d18be5f9fc62257ff577eade56cb1a6d9a3bc7d6e6857006a8a7
+	source = jarl-0.7.1.tar.gz::https://github.com/etiennebacher/jarl/archive/0.7.1.tar.gz
+	sha256sums = f1974b1f8082fcfa44b5e9a755e8787f9fedd6aac63147714a46a29b80d85ffe
 
 pkgname = jarl
