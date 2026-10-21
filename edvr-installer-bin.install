@@ -1,0 +1,17 @@
+post_install() {
+  echo "==> EDVR is not applied to the game yet. As your normal user (not root, no sudo):"
+  echo "      1. Launch Elite Dangerous once from Steam, then close it."
+  echo "      2. Run: edvr-installer"
+  echo "    To see the install plan without changing anything: edvr-installer --preview"
+  echo "    More options: /usr/share/doc/edvr-installer-bin/README-linux.txt"
+}
+
+post_upgrade() {
+  echo "==> The EDVR installer was updated, but the game folder was not touched."
+  echo "    Run 'edvr-installer' as your normal user to update EDVR in the game."
+}
+
+pre_remove() {
+  echo "==> Removing this package does not remove EDVR from the game."
+  echo "    To do that first, run as your normal user: edvr-installer --uninstall"
+}
