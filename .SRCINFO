@@ -1,7 +1,7 @@
 pkgbase = quickbox-qt
 	pkgdesc = Qt6/PySide6 GUI front-end for quickemu
-	pkgver = 1.3.2
-	pkgrel = 2
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://codeberg.org/linux-bird/quickbox-qt
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = quickbox-qt
 	optdepends = virt-viewer: SPICE display backend support
 	provides = quickbox
 	conflicts = quickbox
-	source = quickbox-qt-1.3.2-codeberg.tar.gz::https://codeberg.org/linux-bird/quickbox-qt/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = b1daf0435568da17c2952fa28d0889eb8d2505de2d218cad69d522c6d8d0871b
+	source = quickbox-qt-1.3.3.tar.gz::https://codeberg.org/linux-bird/quickbox-qt/archive/refs/tags/v1.3.3.tar.gz
+	sha256sums = bcb3f2e5ee0af82c63421b0591b93173ba558f43ffbc558360fcc686b4b9e772
 
 pkgname = quickbox-qt

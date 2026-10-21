@@ -1,7 +1,7 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=quickbox-qt
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="Qt6/PySide6 GUI front-end for quickemu"
 arch=('any')
 url="https://codeberg.org/linux-bird/quickbox-qt"
@@ -18,8 +18,8 @@ optdepends=(
 )
 conflicts=('quickbox')
 provides=('quickbox')
-source=("$pkgname-$pkgver-codeberg.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b1daf0435568da17c2952fa28d0889eb8d2505de2d218cad69d522c6d8d0871b')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('bcb3f2e5ee0af82c63421b0591b93173ba558f43ffbc558360fcc686b4b9e772')
 
 package() {
     cd "$srcdir/$pkgname"
