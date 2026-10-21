@@ -1,0 +1,26 @@
+pkgbase = eprofiler-tui
+	pkgdesc = eBPF profiler flamegraph based TUI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rogercoll/eprofiler-tui
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = protobuf
+	makedepends = clang
+	makedepends = lld
+	makedepends = zstd
+	provides = eprofiler-tui
+	conflicts = eprofiler-tui-git
+	options = !debug
+	source = eprofiler-tui-0.3.0.tar.gz::https://github.com/rogercoll/eprofiler-tui/archive/refs/tags/v0.3.0.tar.gz
+	source = opentelemetry-ebpf-profiler-0.3.0.tar.gz::https://github.com/open-telemetry/opentelemetry-ebpf-profiler/archive/3d56377fd84c840755842cc3c13dca3560cc5814.tar.gz
+	source = opentelemetry-proto-0.3.0.tar.gz::https://github.com/open-telemetry/opentelemetry-proto/archive/7a9057485b350d3021400d4f1e60d768383ca42e.tar.gz
+	sha256sums = bba7219c30125e4e3d23af1321c1600066382e3744e6bf698fb1e598bf4b9b83
+	sha256sums = 429b1516413bd332542ff18de8260d25793d43bd8e03a2d4b9cab672e300b8a8
+	sha256sums = dd6dcc642345e092e7c8e90560df4b0ff9f9aa513638c9ca2e4b40559a6ecadc
+
+pkgname = eprofiler-tui
