@@ -18,11 +18,6 @@ arch=(
   'armv7h'
 )
 license=('BSD-3-Clause')
-#Cloning into '/var/cache/makepkg/build/hdrview-git/src/build/_deps/jxl-src/third_party/libjpeg-turbo'...
-#Cloning into '/var/cache/makepkg/build/hdrview-git/src/build/_deps/jxl-src/third_party/libpng'...
-#Cloning into '/var/cache/makepkg/build/hdrview-git/src/build/_deps/jxl-src/third_party/sjpeg'...
-#Cloning into '/var/cache/makepkg/build/hdrview-git/src/build/_deps/jxl-src/third_party/skcms'...
-#Cloning into '/var/cache/makepkg/build/hdrview-git/src/build/_deps/jxl-src/third_party/zlib'...
 
 depends=(
   # (Almost) surely needed (2026-10-21):
@@ -276,38 +271,6 @@ package() {
 
   ## Add a lowercase executable symlink
   ln -svr "${pkgdir}/usr/bin/HDRView" "${pkgdir}/usr/bin/hdrview"
-
-  ## Clean up stuff we do not want to install locally
-  #rm -Rf "${pkgdir}/opt/hdrview/lib"
-#   rm -Rf "${pkgdir}/usr/include/glad"
-#   rm -Rf "${pkgdir}/usr/include/hello_imgui"
-#   rm -Rf "${pkgdir}/usr/include/jxl"
-#   rm -Rf "${pkgdir}/usr/include/KHR"
-#   rm -Rf "${pkgdir}/usr/include/libexif"
-#   rm -Rf "${pkgdir}/usr/include/libheif"
-#   rm -Rf "${pkgdir}/usr/include/plutovg"
-#   rm -f  "${pkgdir}/usr/include"/imconfig.h
-#   rm -f  "${pkgdir}/usr/include"/imgui*.h
-#   rm -f  "${pkgdir}/usr/include"/stb_image*.h
-#   rm -f  "${pkgdir}/usr/include"/zconf.h
-#   rm -f  "${pkgdir}/usr/include"/zlib.h
-#   rm -f  "${pkgdir}/usr/lib"/*.a
-#   rm -Rf "${pkgdir}/usr/lib/cmake/hello_imgui"
-#   rm -Rf "${pkgdir}/usr/lib/cmake/libheif"
-#   rm -Rf "${pkgdir}/usr/lib/cmake/plutovg"
-#   rm -Rf "${pkgdir}/usr/lib/cmake/zlib"
-#   rm -Rf "${pkgdir}/usr/lib/libheif"
-#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/libexif.pc
-#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/libheif.pc
-#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/libjxl*.pc
-#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/zlib.pc
-
-  #rm -Rf "${pkgdir}/usr"/{include,lib}
-
-  #rm -Rf "${pkgdir}/usr/assets"
-  #rm -Rf "${pkgdir}/usr/share/hello-imgui"
-  #rm -f  "${pkgdir}/usr"/hello_* rm -f "${pkgdir}/usr"/Hello_*
-
 
   ## Install documentation and license
   for _docfile in README.md TODO.md CLAUDE.md git.log; do
