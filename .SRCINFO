@@ -1,6 +1,6 @@
 pkgbase = spot-bin
 	pkgdesc = TOML+CSS dialog runtime for Wayland (layer-shell overlays), prebuilt binary
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/KopyTKG/spot
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = spot-bin
 	provides = spot
 	conflicts = spot
 	conflicts = spot-git
-	noextract = spot-0.1.0
-	source = spot-0.1.0::https://github.com/KopyTKG/spot/releases/download/v0.1.0/spot-linux-x64
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/KopyTKG/spot/v0.1.0/LICENSE
-	sha256sums = 4eba039285c5563741a510a66eb8485811e6d5b38203ec612665c6162e3fbe43
-	sha256sums = e41890a77c45861b0d2213e1c192b441725327e8bea70d7ffc3d3618c2f65bdf
+	noextract = spot-linux-x64-0.2.0
+	source = spot-linux-x64-0.2.0::https://github.com/KopyTKG/spot/releases/download/v0.2.0/spot-linux-x64
+	source = spot-0.2.0.tar.gz::https://github.com/KopyTKG/spot/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 2da3946b21a06d4c7ab3cc02a77410e6739dc77ecca3031bb19fce06412f46c1
+	sha256sums = 662ed1fd34b93727558364d20bafce7758f1901dcf4b52a987f3d7236602e415
 
 pkgname = spot-bin
