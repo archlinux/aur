@@ -1,10 +1,10 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=libosmo-pfcp-git
-pkgver=0.5.0.r1.g771ba85
+pkgver=0.7.0.r0.g0e8a021
 pkgrel=1
 pkgdesc="PFCP protocol encoding and decoding, and generic PFCP endpoint implementation"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://osmocom.org/projects/libosmo-pfcp"
 license=('GPL-2.0-or-later')
 depends=('libosmocore-git')
