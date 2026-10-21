@@ -5,7 +5,7 @@
 
 _pkgname='headsetcontrol'
 pkgname="${_pkgname}-git"
-pkgver=4.0.0.r9.g512fd00
+pkgver=4.2.0.r0.g91ee690
 pkgrel=1
 pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro) in Linux and MacOSX'
 arch=('x86_64')
@@ -28,13 +28,6 @@ pkgver() {
     git describe --long --abbrev=7 --exclude 'continuous*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${_pkgname}"
-
-    # Change version to match PKGBUILD
-    sed -i 's/COMMAND git describe --tags --dirty=-modified/COMMAND git describe --long --abbrev=7/' CMakeLists.txt
-}
-
 build() {
     cd "${_pkgname}"
 
@@ -45,7 +38,8 @@ build() {
       -DCMAKE_INSTALL_PREFIX='/usr' \
       -DBUILD_SHARED_LIBRARY=ON \
       -DBUILD_UNIT_TESTS=ON \
-      -Wno-dev
+      -DHEADSETCONTROL_VERSION="$pkgver" \
+      -Wno-author
 
     cmake --build build
 }
