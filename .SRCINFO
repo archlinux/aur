@@ -1,0 +1,15 @@
+pkgbase = kg-git
+	pkgdesc = A tiny, lightning-fast UTF-8 text editor with pure Emacs keybindings (fork of kilo, spiritual successor to mg)
+	pkgver = r165.449fac2
+	pkgrel = 1
+	url = https://github.com/troglobit/kg
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = glibc
+	provides = kg
+	conflicts = kg
+	source = git+https://github.com/troglobit/kg.git
+	sha256sums = SKIP
+
+pkgname = kg-git
