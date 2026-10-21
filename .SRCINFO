@@ -1,6 +1,6 @@
 pkgbase = peersky-browser-bin
 	pkgdesc = A local-first, peer-to-peer web browser for a surveillance-free internet.
-	pkgver = 1.0.0_beta.30
+	pkgver = 1.0.0_beta.31
 	pkgrel = 1
 	url = https://peersky.p2plabs.xyz/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = peersky-browser-bin
 	license = MIT
 	depends = electron43
 	depends = nodejs
-	provides = peersky-browser=1.0.0_beta.30
+	provides = peersky-browser=1.0.0_beta.31
 	conflicts = peersky-browser
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-1.0.0_beta.30::https://raw.githubusercontent.com/p2plabsxyz/peersky-browser/v1.0.0-beta.30/LICENSE
+	source = LICENSE-1.0.0_beta.31::https://raw.githubusercontent.com/p2plabsxyz/peersky-browser/v1.0.0-beta.31/LICENSE
 	source = peersky-browser.sh
 	sha256sums = 4a67a49c9cb2c0a80dcb67bb35bb7c10691b1460200398866df24cd0b8e00cab
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
-	source_aarch64 = peersky-browser-1.0.0_beta.30-aarch64.deb::https://github.com/p2plabsxyz/peersky-browser/releases/download/v1.0.0-beta.30/peersky-browser-1.0.0-beta.30-linux-arm64.deb
-	sha256sums_aarch64 = 441bc06bdc68a5b8dbe8c62de250f6f1ac14ad170ed6d8e20630d9b2a22b094a
-	source_x86_64 = peersky-browser-1.0.0_beta.30-x86_64.deb::https://github.com/p2plabsxyz/peersky-browser/releases/download/v1.0.0-beta.30/peersky-browser-1.0.0-beta.30-linux-amd64.deb
-	sha256sums_x86_64 = 742f043013011e2f64e53a06acae861d4ef176ea9537b47f62dd8dd4daab4ed4
+	sha256sums = a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953
+	source_aarch64 = peersky-browser-1.0.0_beta.31-aarch64.deb::https://github.com/p2plabsxyz/peersky-browser/releases/download/v1.0.0-beta.31/peersky-browser-1.0.0-beta.31-linux-arm64.deb
+	sha256sums_aarch64 = 78a98b5510a35d50696c4c7e1e93fd2bcae73f72e65f10d5668dee8f01bfa757
+	source_x86_64 = peersky-browser-1.0.0_beta.31-x86_64.deb::https://github.com/p2plabsxyz/peersky-browser/releases/download/v1.0.0-beta.31/peersky-browser-1.0.0-beta.31-linux-amd64.deb
+	sha256sums_x86_64 = e05d5a60f64d3e7689aa990df38966aa37eca9dd8cd6db4c489441f671159287
 
 pkgname = peersky-browser-bin

@@ -2,7 +2,7 @@
 pkgname=peersky-browser-bin
 _pkgname='Peersky Browser'
 _mainver=1.0.0
-_subver=beta.30
+_subver=beta.31
 pkgver="${_mainver}_${_subver}"
 _electronversion=43
 pkgrel=1
@@ -31,11 +31,12 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${_mainver}-${_subver}/${pkgname%-bin}-${_mainver}-${_subver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${_mainver}-${_subver}/${pkgname%-bin}-${_mainver}-${_subver}-linux-amd64.deb")
 sha256sums=('4a67a49c9cb2c0a80dcb67bb35bb7c10691b1460200398866df24cd0b8e00cab'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
-sha256sums_aarch64=('441bc06bdc68a5b8dbe8c62de250f6f1ac14ad170ed6d8e20630d9b2a22b094a')
-sha256sums_x86_64=('742f043013011e2f64e53a06acae861d4ef176ea9537b47f62dd8dd4daab4ed4')
+            'a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953')
+sha256sums_aarch64=('78a98b5510a35d50696c4c7e1e93fd2bcae73f72e65f10d5668dee8f01bfa757')
+sha256sums_x86_64=('e05d5a60f64d3e7689aa990df38966aa37eca9dd8cd6db4c489441f671159287')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -49,21 +50,18 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir="$(_get_app_dir)"
-    find "${_app_dir}/resources/app.asar.unpacked" -type d \
+    find "$(_get_app_dir)/resources/app.asar.unpacked" -type d \
         \( -name "*android*" -o -name "*arm*" -o -name "*darwin*" -o -name "*win32*" -o -name "*ios*" \) \
         -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
