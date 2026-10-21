@@ -5,7 +5,7 @@
 
 pkgname=perl-authen-pam
 pkgver=0.16
-pkgrel=14
+pkgrel=15
 pkgdesc="Perl interface to PAM library"
 _dist=Authen-PAM
 arch=('any')
