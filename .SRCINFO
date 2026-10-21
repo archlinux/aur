@@ -1,0 +1,26 @@
+pkgbase = rwpm
+	pkgdesc = Separate RimWorld profiles, each with its own saves, settings and mod list
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://github.com/keyz182/rimworld-profile-manager
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = dotnet-sdk
+	depends = glibc
+	depends = gcc-libs
+	optdepends = vulkan-icd-loader: GPU drawing for the app window
+	optdepends = libxkbcommon: keyboard input
+	optdepends = wayland: Wayland window support
+	optdepends = libx11: X11 window support
+	optdepends = libxcursor: X11 mouse pointer
+	optdepends = libxi: X11 input
+	optdepends = libxcb: X11 connection
+	optdepends = dbus: desktop dialogs
+	conflicts = rwpm-bin
+	options = !lto
+	options = !strip
+	source = rwpm-1.14.0.tar.gz::https://github.com/keyz182/rimworld-profile-manager/archive/refs/tags/v1.14.0.tar.gz
+	sha256sums = 2e5d7cacb653347067a8a391f78a3ccace2b40766a9cd4342b3ad407c9fd783e
+
+pkgname = rwpm
