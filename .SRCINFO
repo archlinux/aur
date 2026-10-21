@@ -1,6 +1,6 @@
 pkgbase = linux-g13-driver-git
 	pkgdesc = User-space driver and Qt6 configuration tool for the Logitech G13 gameboard (Modernized Fork)
-	pkgver = 2.6.1.r0.g80a17b6
+	pkgver = 2.6.2.r0.g75cb184
 	pkgrel = 1
 	url = https://github.com/Lordbooker/linux-g13-driver
 	install = linux-g13-driver-git.install

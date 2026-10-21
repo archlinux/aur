@@ -1,6 +1,6 @@
 # Maintainer: Booker <lordbooker@gmail.com>
 pkgname=linux-g13-driver-git
-pkgver=2.6.1.r0.g80a17b6
+pkgver=2.6.2.r0.g75cb184
 pkgrel=1
 pkgdesc="User-space driver and Qt6 configuration tool for the Logitech G13 gameboard (Modernized Fork)"
 arch=('x86_64')
