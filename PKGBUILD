@@ -1,5 +1,5 @@
 pkgname=aibox-bin
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="AI in a box. Run Claude in a secure microvm environment."
 arch=('x86_64')
@@ -11,13 +11,13 @@ conflicts=(aibox)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/The127/aibox/releases/download/v${pkgver}/aibox_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums=('71fa6ba468b1b79a834e8eb2e770bbbfb2c11c1c61216f927063aa89ad059394')
+sha256sums=('fe92f134f088ef77456990672a97e26a157f97f7c3f8af83df0e97e7eb2f541a')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm 755 aibox -t "$pkgdir/usr/bin"
-    install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    cd "${srcdir}"
+    install -Dm 755 aibox -t "${pkgdir}/usr/bin"
+    install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=4 sw=4 et:

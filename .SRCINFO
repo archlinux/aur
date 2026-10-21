@@ -1,6 +1,6 @@
 pkgbase = aibox-bin
 	pkgdesc = AI in a box. Run Claude in a secure microvm environment.
-	pkgver = 2.0.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://the127.github.io/aibox/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = aibox-bin
 	depends = bubblewrap
 	provides = aibox
 	conflicts = aibox
-	source = aibox-bin-2.0.1.tar.gz::https://github.com/The127/aibox/releases/download/v2.0.1/aibox_2.0.1_linux_amd64.tar.gz
-	sha256sums = 71fa6ba468b1b79a834e8eb2e770bbbfb2c11c1c61216f927063aa89ad059394
+	source = aibox-bin-2.1.1.tar.gz::https://github.com/The127/aibox/releases/download/v2.1.1/aibox_2.1.1_linux_amd64.tar.gz
+	sha256sums = fe92f134f088ef77456990672a97e26a157f97f7c3f8af83df0e97e7eb2f541a
 
 pkgname = aibox-bin
