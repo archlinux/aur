@@ -1,6 +1,6 @@
 pkgbase = super-trouper-bin
 	pkgdesc = MCP server for Frida
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/crissyfield/super-trouper
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = super-trouper-bin
 	provides = super-trouper
 	conflicts = super-trouper
 	options = !debug
-	source_x86_64 = super-trouper-0.5.0-x86_64.tar.xz::https://github.com/crissyfield/super-trouper/releases/download/v0.5.0/super-trouper-0.5.0-linux-amd64-musl.tar.xz
-	sha256sums_x86_64 = e9f6c9d900c905f8695c2e1153ad5d95b2b21afad10c38cc8d325a21d9daf5e8
-	source_aarch64 = super-trouper-0.5.0-aarch64.tar.xz::https://github.com/crissyfield/super-trouper/releases/download/v0.5.0/super-trouper-0.5.0-linux-arm64-musl.tar.xz
-	sha256sums_aarch64 = dcf4a7a6bbd3626de1eba1ac823cb79ad717763122eb23de0e7aeeee99c2ba43
+	source_x86_64 = super-trouper-0.5.1-x86_64.tar.xz::https://github.com/crissyfield/super-trouper/releases/download/v0.5.1/super-trouper-0.5.1-linux-amd64-musl.tar.xz
+	sha256sums_x86_64 = 2a1cb5a1d52efe69816179604b4e3b0c054b69d773829fa8efe3bc4dcba9f124
+	source_aarch64 = super-trouper-0.5.1-aarch64.tar.xz::https://github.com/crissyfield/super-trouper/releases/download/v0.5.1/super-trouper-0.5.1-linux-arm64-musl.tar.xz
+	sha256sums_aarch64 = 1f3b1b106d82f1f65ffe50b5d9b61d4b10ed82574c3a73a1755abc1bc4f71ce2
 
 pkgname = super-trouper-bin
