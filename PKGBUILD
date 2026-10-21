@@ -6,154 +6,267 @@
 # Contributor: Rashintha Maduneth <rashinthamaduneth@gmail.com>
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
-: ${_install_path:=usr/lib}
-
-_pkgname="mailspring"
-pkgname="$_pkgname"
+pkgname=mailspring
 pkgver=1.26.1
 pkgrel=1
 pkgdesc="A beautiful and fast mail client"
 url="https://github.com/Foundry376/Mailspring"
-license=('GPL-3.0-only')
+license=(
+  'GPL-3.0-only'
+  'BSD-3-Clause' # libetpan, mailcore2
+  'MIT' # SQLiteCpp, spdlog, icalendarlib, better-sqlite3 and most node modules
+)
 arch=('x86_64')
 
+_electron=electron44
+# headers for building native node modules, must match the major version of $_electron
+_electron_headers=44.9.1
+
 depends=(
-  'db5.3'
-  'gnome-keyring'
+  'bash'
+  'ctemplate'
+  'curl'
+  'glib2'
+  'glibc'
+  'hicolor-icon-theme'
+  'icu'
+  'libgcc'
+  'libsasl'
+  'libstdc++'
+  'libxml2'
+  'openssl'
+  'tidy' # dlopen()ed by mailsync
+  'util-linux-libs'
+  'zlib'
+  # runtime dependencies are added in package() because we do not need them to build
 )
 makedepends=(
   'git'
-  'nvm'
+  'cmake'
+  'autoconf'
+  'automake'
+  'libtool'
+  'c-ares'
+  'xz'
+  'nodejs'
+  'npm'
+  'node-gyp'
   'python'
-  'patchelf'
 )
+optdepends=(
+  'org.freedesktop.secrets: credential storage (e.g. gnome-keyring or keepassxc)'
+  'cyrus-sasl-gssapi: Kerberos authentication'
+  'binutils: symbolized mailsync crash backtraces'
+)
+source=(
+  "git+$url.git#tag=$pkgver"
+  "git+https://github.com/Foundry376/Mailspring-Sync.git"
+  "electron-v$_electron_headers-headers.tar.gz::https://artifacts.electronjs.org/headers/dist/v$_electron_headers/node-v$_electron_headers-headers.tar.gz"
+  "$pkgname.sh.in"
+  "mailspring-0001-build-take-Electron-zip-from-ELECTRON_ZIP_DIR.patch"
+  "mailsync-0001-cmake-link-against-shared-system-libraries.patch"
+)
+sha256sums=('6a225d223c439a39ffe31bd28debd983c1e3d3f44f87bb01cc4ac52f5ffbcc92'
+            'SKIP'
+            '761d2595a05d3d41b129d8fd9b7ad45a6175a0ccce311fe20341d21f8275007a'
+            'ca87bb310800d33f29c3afca818bd93f96f1dfd88ca22402bc0e9cbbdc6a2d14'
+            'ab90583d28509b05d39a43698bada97a34aa62a94d5f292daff1f52a337b7d35'
+            'c75cb94e5a272d7a3f4b506285b7ded0ee0a390c42fd43984bf3868d0907a1e0')
 
-_pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+$url.git#tag=$pkgver")
-sha256sums=('6a225d223c439a39ffe31bd28debd983c1e3d3f44f87bb01cc4ac52f5ffbcc92')
-
-_nvm_env() {
-  [ -n "$NVM_DIR" ] && return
-  export NVM_DIR="$SRCDEST/node-nvm"
-
-  # set up nvm
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install node
-  nvm use node
+_check_electron() {
+  local _expected
+  _expected="electron$(node -p 'require("./mailspring/package.json").dependencies.electron.split(".")[0]')"
+  if [[ "$_electron" != "$_expected" ]]; then
+    error "Using $_electron but upstream specifies $_expected"
+    return 1
+  fi
+  if [[ "${_electron#electron}" != "${_electron_headers%%.*}" ]]; then
+    error "Using $_electron but headers are for electron${_electron_headers%%.*}"
+    return 1
+  fi
 }
 
-_electron_env() {
-  [ -n "$ELECTRON_SKIP_BINARY_DOWNLOAD" ] && return
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-
-  local _electron_version=$(grep -Pom1 '^\s*"electron":\s*"\K[0-9.]+' "$srcdir/$_pkgsrc/package.json")
-  : ${_electron_version:?}
-
-  export SYSTEM_ELECTRON_VERSION=$(LC_ALL=C pacman -Si "electron${_electron_version%%.*}" | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])')
-  : ${SYSTEM_ELECTRON_VERSION:?}
-
-  export ELECTRON_VERSION=$(sed -E 's&\..*&&' <<< "${SYSTEM_ELECTRON_VERSION%%.*}")
-  : ${ELECTRON_VERSION:?}
+_npm_ci() {
+  npm ci \
+    --ignore-scripts \
+    --allow-git=root \
+    --no-audit \
+    --no-fund \
+    "$@"
 }
 
 prepare() {
-  _electron_env
+  _check_electron
 
-  cd "$_pkgsrc"
+  # prepare launcher script
+  sed -r \
+    -e "s|@PKGNAME@|${pkgname}|g" \
+    -e "s|@ELECTRON@|${_electron}|g" \
+    "$pkgname.sh.in" \
+    >"$pkgname.sh"
 
-  # set electron version
-  sed -E \
-    -e 's&^(\s*)("electron"): "(.*)"(,?)$&\1\2: "'"$SYSTEM_ELECTRON_VERSION"'"\4&' \
-    -i "package.json" "app/package.json"
+  cd Mailspring
 
-  # allow any npm version
-  sed -E \
-    -e 's&^(\s*)"(node|npm)": "(.*)"(,?)$&\1"\2": ">=1.0.0"\4&' \
-    -i "package.json"
+  git submodule init mailsync
+  git config submodule.mailsync.url "$srcdir/Mailspring-Sync"
+  git -c protocol.file.allow=always submodule update mailsync
 
-  # don't try to create deb or rpm
-  sed -E -e "/await (createRpmInstaller|createDebInstaller)/d" -i app/build/build.js
-}
-
-build() (
-  _nvm_env
-  _electron_env
-
-  cd "$_pkgsrc"
-  npm install --no-audit --no-fund
-  npm run-script build
-)
-
-package() {
-  _electron_env
-  depends+=("electron${ELECTRON_VERSION:-}")
-
-  cd "$_pkgsrc"
-
-  # resources
-  mkdir -pm755 "${pkgdir}/$_install_path/$_pkgname"
-  cp -r app/dist/mailspring-linux-x64/resources/* "$pkgdir/$_install_path/$_pkgname/"
-
-  # fix rpath
-  patchelf --set-rpath '$ORIGIN' "$pkgdir/$_install_path/$_pkgname/app.asar.unpacked/mailsync.bin"
-
-  # icon
-  install -Dm0644 "app/build/resources/linux/icons/512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-
-  # launcher and metainfo
-  local _from_path="app/build/resources/linux"
-
-  local _regex=""
-  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'productName' "${_pkgname^}")"
-  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'description' "${pkgdesc}")"
-  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'name' "$_pkgname")"
-  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'desktopName' "$_pkgname.desktop")"
-
-  local _from_file _to_file _to_path _files=(
-    "Mailspring.desktop.in":"${_pkgname^}.desktop":'usr/share/applications'
-    "mailspring.metainfo.xml.in":"$_pkgname.metainfo.xml":'usr/share/metainfo'
-  )
-  for i in "${_files[@]}"; do
-    _from_file="$(cut -d: -f1 <<< "$i")"
-    _to_file="$(cut -d: -f2 <<< "$i")"
-    _to_path="$(cut -d: -f3 <<< "$i")"
-
-    echo ":: processing '${_to_file:?}'..."
-    sed -E -e "$_regex" "$_from_path/${_from_file:?}" > "$_to_file"
-    install -Dm644 "$_to_file" -t "$pkgdir/${_to_path:?}/"
-
-    if grep -Po '<%=[^>]+%>' "$_to_file"; then
-      >&2 echo ":: unresolved template tags in $_to_file"
-      return 1
-    fi
+  local _patch
+  for _patch in "${source[@]}"; do
+    case "$_patch" in
+    mailspring-*.patch) patch -Np1 -i "$srcdir/$_patch" ;;
+    mailsync-*.patch) patch -d mailsync -Np1 -i "$srcdir/$_patch" ;;
+    esac
   done
 
-  # script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/usr/bin/env bash
+  # remove prebuilt Windows and macOS libraries
+  rm -rf \
+    mailsync/Vendor/libetpan/third-party \
+    mailsync/Vendor/mailcore2/Externals \
 
-set -euo pipefail
+  (
+    cd mailsync/Vendor/libetpan
+    NOCONFIGURE=1 ./autogen.sh
+  )
 
-name=$_pkgname
-flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
+  # install node modules, skipping the postinstall script that downloads
+  # a prebuilt mailsync and fetches prebuilt native modules
+  _npm_ci
+  (
+    cd app
+    _npm_ci
+  )
 
-lines=()
-if [[ -f "\${flags_file}" ]]; then
-  mapfile -t lines < "\${flags_file}"
-fi
+  # Windows-only native module
+  rm -rf app/node_modules/windows-focus-assist
+  # prebuilt Java archives
+  rm -rf app/node_modules/jasmine-reporters/ext
+}
 
-flags=()
-for line in "\${lines[@]}"; do
-  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
-    flags+=("\${line}")
-  fi
-done
+_build_libetpan() (
+  cd mailsync/Vendor/libetpan
+  ./configure \
+    --prefix="$srcdir/libetpan" \
+    --enable-static \
+    --disable-shared \
+    --disable-db \
+    --with-openssl \
+    --without-gnutls \
 
-: \${ELECTRON_IS_DEV:=0}
-export ELECTRON_IS_DEV
-: \${ELECTRON_FORCE_IS_PACKAGED:=true}
-export ELECTRON_FORCE_IS_PACKAGED
+  make
+  make install
+)
 
-exec electron${ELECTRON_VERSION:-} "\${flags[@]}" "/$_install_path/$_pkgname/app.asar" --password-store="gnome-libsecret" "\$@"
-END
+_build_mailcore2() {
+  cmake \
+    -S mailsync/Vendor/mailcore2 \
+    -B mailsync/Vendor/mailcore2/build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_PREFIX_PATH="$srcdir/libetpan" \
+    -Wno-dev \
+
+  cmake --build mailsync/Vendor/mailcore2/build --target MailCore
+}
+
+_build_mailsync() {
+  cmake \
+    -S mailsync \
+    -B mailsync/build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_PREFIX_PATH="$srcdir/libetpan" \
+    -Wno-dev \
+
+  cmake --build mailsync/build --target mailsync
+}
+
+_build_better_sqlite3() (
+  cd app/node_modules/better-sqlite3
+
+  node-gyp rebuild --release --nodedir="$srcdir/node_headers"
+
+  # keep only the addon itself
+  mv build/Release/better_sqlite3.node .
+  rm -rf build deps src binding.gyp
+  install -Dm755 better_sqlite3.node -t build/Release
+  rm better_sqlite3.node
+)
+
+_build_app() {
+  # we only need the electron packager to build app.asar
+  # inject a stub electron zip to avoid downloading a prebuilt blob
+  local _electron_ver
+  _electron_ver="$(node -p 'require("electron/package.json").version')"
+  local -x ELECTRON_ZIP_DIR="$srcdir/electron-stub"
+  rm -rf "$ELECTRON_ZIP_DIR"
+  mkdir -p "$ELECTRON_ZIP_DIR/dist"
+  install -m755 /dev/null "$ELECTRON_ZIP_DIR/dist/electron"
+  bsdtar -C "$ELECTRON_ZIP_DIR/dist" -a -cf "$ELECTRON_ZIP_DIR/electron-v$_electron_ver-linux-x64.zip" electron
+
+  local -x TMPDIR="$srcdir/tmp"
+  mkdir -p "$TMPDIR"
+
+  node app/build/build.js --skip-installers
+
+  node -e '
+    const fs = require("fs");
+    const _ = require("underscore");
+    const pkg = require("./app/package.json");
+    const data = {
+      name: pkg.name,
+      productName: pkg.productName,
+      description: pkg.description,
+      desktopName: pkg.desktopName,
+    };
+    for (const file of process.argv.slice(1)) {
+      const template = _.template(fs.readFileSync(file, "utf8"));
+      fs.writeFileSync(file.replace(/\.in$/, ""), template(data));
+    }
+  ' \
+    app/build/resources/linux/Mailspring.desktop.in \
+    app/build/resources/linux/mailspring.metainfo.xml.in \
+
+}
+
+build() {
+  cd Mailspring
+
+  local -x CFLAGS="$CFLAGS -I$srcdir/libetpan/include"
+  local -x CXXFLAGS="$CXXFLAGS -I$srcdir/libetpan/include"
+
+  _build_libetpan
+  _build_mailcore2
+  _build_mailsync
+  install -Dm755 mailsync/build/mailsync -t app
+
+  _build_better_sqlite3
+  _build_app
+}
+
+package() {
+  depends+=(
+    "$_electron"
+  )
+
+  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+
+  cd Mailspring
+
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
+  cp -dR --preserve=timestamps,links \
+    app/dist/mailspring-linux-x64/resources/app.asar \
+    app/dist/mailspring-linux-x64/resources/app.asar.unpacked \
+    -t "$pkgdir/usr/lib/$pkgname"
+
+  local _linux=app/build/resources/linux
+  install -Dm644 "$_linux/Mailspring.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$_linux/mailspring.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
+  local _size
+  for _size in 16 32 64 128 256 512; do
+    install -Dm644 "$_linux/icons/$_size.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$pkgname.png"
+  done
+
+  install -Dm644 mailsync/Vendor/libetpan/COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/libetpan.txt"
+  install -Dm644 mailsync/Vendor/mailcore2/LICENSE "$pkgdir/usr/share/licenses/$pkgname/mailcore2.txt"
+  install -Dm644 mailsync/Vendor/SQLiteCpp/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/SQLiteCpp.txt"
 }

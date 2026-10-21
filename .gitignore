@@ -2,3 +2,5 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!mailspring.sh.in
+!*.patch

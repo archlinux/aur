@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+	echo ":: $*" >&2
+}
+
+err() {
+	echo "E: $*" >&2
+}
+
+add_env() {
+	local file name
+
+	for name; do
+		file="${XDG_CONFIG_HOME:-"$HOME/.config"}/${name}.conf"
+		if ! [[ -f "${file}" ]]; then
+			continue
+		fi
+		source "${file}"
+	done
+}
+
+add_flags() {
+	declare -g -a flags
+	local file name
+
+	for name; do
+		file="${XDG_CONFIG_HOME:-"$HOME/.config"}/${name}-flags.conf"
+		if ! [[ -f "${file}" ]]; then
+			continue
+		fi
+		while IFS='' read -r line; do
+			if ! [[ "${line}" =~ ^[[:space:]]*(#|$) ]]; then
+				flags+=("${line}")
+			fi
+		done <"${file}"
+	done
+}
+
+# Credentials are encrypted with a key kept in the Secret Service keyring.
+# Pin the backend so that the key stays retrievable regardless of the desktop
+# environment; this can be overridden in any of the flags files below.
+flags=(
+	--password-store=gnome-libsecret
+)
+
+add_env @PKGNAME@
+add_flags electron
+add_flags @ELECTRON@
+add_flags @PKGNAME@
+
+exec /usr/lib/@ELECTRON@/electron \
+	/usr/lib/@PKGNAME@/app.asar \
+	"${flags[@]}" "$@"
