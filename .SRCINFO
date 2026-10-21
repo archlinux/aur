@@ -1,0 +1,23 @@
+pkgbase = noos-firewall
+	pkgdesc = Gestion graphique native et moderne du pare-feu UFW en Rust (GTK4 / Libadwaita)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Chomiam/noos-firewall
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = glibc
+	depends = gcc-libs
+	depends = ufw
+	depends = polkit
+	depends = systemd
+	depends = iproute2
+	depends = hicolor-icon-theme
+	source = noos-firewall-0.1.0.tar.gz::https://github.com/Chomiam/noos-firewall/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8a1138642139e91e511fb9fdb023e93e4a2e3f880381e0a3e9fb01773af78861
+
+pkgname = noos-firewall
