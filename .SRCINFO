@@ -1,6 +1,6 @@
 pkgbase = canopy-bin
 	pkgdesc = Terminal UI for tracking tasks across work management backends
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/alcxyz/canopy
 	license = MIT
@@ -12,10 +12,10 @@ pkgbase = canopy-bin
 	conflicts = canopy
 	provides = canopy
 	arch = aarch64
-	source_aarch64 = canopy-bin_0.2.3_aarch64.tar.gz::https://github.com/alcxyz/canopy/releases/download/v0.2.3/canopy_0.2.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = a0917a152e0e965fe9078ca80e9759d95c7fe31a22ad50014e2a0f5ba42dbcb2
+	source_aarch64 = canopy-bin_0.2.4_aarch64.tar.gz::https://github.com/alcxyz/canopy/releases/download/v0.2.4/canopy_0.2.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3fc5c24e365ca41192b74f5f20633e6232e4214f9ff5668b4fc3172104936e34
 	arch = x86_64
-	source_x86_64 = canopy-bin_0.2.3_x86_64.tar.gz::https://github.com/alcxyz/canopy/releases/download/v0.2.3/canopy_0.2.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 291ff49a235a9429fe7a7115ecc3dd0ae957a369ab4f9ffc22865255063a8645
+	source_x86_64 = canopy-bin_0.2.4_x86_64.tar.gz::https://github.com/alcxyz/canopy/releases/download/v0.2.4/canopy_0.2.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 84f5d55c6590bce972292b08ad3b2ae9cfd9d7a88a518c728c5dc13b117e3dc7
 	
 pkgname = canopy-bin
