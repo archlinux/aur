@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 # Contributor: Felix Häcker <haeckerfelix@gnome.org>
 pkgname=shortwave-mpris-git
-pkgver=5.2.0.r0.g2698206
+pkgver=5.2.1.r0.g6ab16ae
 pkgrel=1
 pkgdesc="Internet radio player with tray icon, media casting and MPRIS integration. Device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams"
 arch=('x86_64' 'aarch64')
