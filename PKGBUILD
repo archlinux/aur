@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Lefranc <guillaume@signal18.io>
 pkgname=firezone-client-gui-bin
-pkgver=1.5.18
+pkgver=1.5.19
 pkgrel=1
 pkgdesc="Firezone GUI client for Linux - WireGuard-based VPN client"
 arch=('x86_64')
@@ -39,4 +39,4 @@ package() {
         desktop-file-validate "$pkgdir/usr/share/applications/firezone-client-gui.desktop" 2>/dev/null || true
     fi
 }
-sha256sums=('e7cf6711703df6f60fa7dac8a33dba340f1d61d2f1166045321dde5dff27ca41')
+sha256sums=('521fafa18f5d167825566e9dd99b346ed495768c58bf41a32ef1c62cae7ab386')
