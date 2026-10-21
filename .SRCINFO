@@ -1,0 +1,15 @@
+pkgbase = plasmic-cli
+	pkgdesc = Plasmic CLI for syncing local code with Plasmic designs (wraps @plasmicapp/cli)
+	pkgver = 0.1.382
+	pkgrel = 1
+	url = https://github.com/plasmicapp/plasmic
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	conflicts = plasmic
+	noextract = plasmic-cli-0.1.382.tgz
+	source = plasmic-cli-0.1.382.tgz::https://registry.npmjs.org/@plasmicapp/cli/-/cli-0.1.382.tgz
+	sha256sums = bb9b5cfb55a5e9c165fbd5efd675428f0471e3844fe33c193d9e6d38acc2a923
+
+pkgname = plasmic-cli
