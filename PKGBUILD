@@ -1,7 +1,7 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=bticino-easykit-bin
 _pkgname=bticino-easykit
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Unofficial client for the BTicino EASYKIT WiFi video door entry kit (prebuilt binaries)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!lto' '!strip')
 source=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('6812e24f0076bc672b4206d644e7aa584c7c192a6b8dbe32089815fa7278183f')
+sha256sums=('4d42265494a89fb439bef6e928707d5d57054293178a9bbd6d58e9618a76bf17')
 
 package() {
   cd "$_pkgname-v$pkgver-linux-x86_64"
