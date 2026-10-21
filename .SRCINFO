@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-imageinfo
 	pkgdesc = Cross platform super fast single header c++ library to get image size and format without loading/decoding (mingw-w64)
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaozhuai/imageinfo
 	arch = any
 	license = MIT
