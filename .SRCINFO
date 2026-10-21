@@ -1,6 +1,6 @@
 pkgbase = aurelia-tui
 	pkgdesc = Terminal UI for the Aurelia Steam CLI - browse, install, update, and launch Steam games
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Drackrath/Aurelia-TUI
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = aurelia-tui
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
-	depends = aurelia>=0.1.11
-	source = aurelia-tui-0.1.3.tar.gz::https://github.com/Drackrath/Aurelia-TUI/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 17e53ffb325f92cd285a5d1c817784103644ab3250f68f9fee9fc4c25aafffe5
+	depends = aurelia>=0.1.40
+	source = aurelia-tui-0.1.4.tar.gz::https://github.com/Drackrath/Aurelia-TUI/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = b48555d45192b7e23f10b4917d5494beba0d884684f0e062943edd65272a82f0
 
 pkgname = aurelia-tui
