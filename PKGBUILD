@@ -1,6 +1,6 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), prebuilt binary'
 arch=('x86_64')
@@ -15,13 +15,15 @@ _release="$url/releases/download/v$pkgver"
 source=("spot-linux-x64-$pkgver::$_release/spot-linux-x64"
         "spot-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("spot-linux-x64-$pkgver")
-sha256sums=('2da3946b21a06d4c7ab3cc02a77410e6739dc77ecca3031bb19fce06412f46c1'
-            '662ed1fd34b93727558364d20bafce7758f1901dcf4b52a987f3d7236602e415')
+sha256sums=('23dfd8d215736a1a69a2b74d97a53b5f28fc8667b21a92d7b5a52d94dcd4f22b'
+            'b02545b12debfe64e31da5a8ba88f3b07a7635cb53ab8cc41011cd8f2e70da1e')
 
 package() {
   install -Dm755 "$srcdir/spot-linux-x64-$pkgver" "$pkgdir/usr/bin/spot"
   cd "$srcdir/spot-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/spot/README.md"
-  install -Dm644 -t "$pkgdir/usr/share/doc/spot/examples" examples/*
+  # examples/ has a demo/ subdirectory, which `install -t ... examples/*` would refuse
+  cp -r examples "$pkgdir/usr/share/doc/spot/"
+  [ ! -d docs ] || cp -r docs "$pkgdir/usr/share/doc/spot/"   # absent before v0.2.1
 }
