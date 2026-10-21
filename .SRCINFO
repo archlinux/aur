@@ -1,6 +1,6 @@
 pkgbase = ostt-bin
 	pkgdesc = Open Speech-to-Text: terminal app for recording and transcribing audio (prebuilt CPU binary)
-	pkgver = 0.0.29
+	pkgver = 0.0.30
 	pkgrel = 1
 	url = https://github.com/kristoferlund/ostt
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ostt-bin
 	optdepends = wl-clipboard: clipboard support on Wayland
 	optdepends = xclip: clipboard support on X11
 	optdepends = mpv: better audio playback for `ostt replay`
-	provides = ostt=0.0.29
+	provides = ostt=0.0.30
 	conflicts = ostt
 	source = ostt.bash
 	source = _ostt
@@ -22,9 +22,9 @@ pkgbase = ostt-bin
 	sha256sums = ca1e19b9f5580b1a9eec2813f5af9c41ea6aac4aa3ee2bedf85effe0399fd4c5
 	sha256sums = eee8a731da1c24283ae7de21f6f748cf1c02c3e17eb38ccbd4b0aebcd93cf9a0
 	sha256sums = ac85f0c45978d869da155fc6735a56030b865d16ed5f03d999197c7c6a96e83a
-	source_x86_64 = ostt-0.0.29-x86_64.tar.gz::https://github.com/kristoferlund/ostt/releases/download/v0.0.29/ostt-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ddfe16c9cddcfa700fede42f1b973605571058a8436124913bdd275cbc9f0f24
-	source_aarch64 = ostt-0.0.29-aarch64.tar.gz::https://github.com/kristoferlund/ostt/releases/download/v0.0.29/ostt-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = bb5abd7eaec4b2bcaf1ffb918bc9612b11c8ca2301967569ddff3b9ca6d567d5
+	source_x86_64 = ostt-0.0.30-x86_64.tar.gz::https://github.com/kristoferlund/ostt/releases/download/v0.0.30/ostt-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 33c96e017a8ad87faeb7cd4bde9d80841ec614cf4de5601814fd8d0131a4a891
+	source_aarch64 = ostt-0.0.30-aarch64.tar.gz::https://github.com/kristoferlund/ostt/releases/download/v0.0.30/ostt-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ef338717859e38e2c48e953d32f0edb8b3fdfdfb9eead7af14a75f96b4234b71
 
 pkgname = ostt-bin
