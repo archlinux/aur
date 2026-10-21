@@ -1,7 +1,7 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Desktop control surface for local coding agents'
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=(
   "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'e38d9c5fb513b1ece0a708b906d3383b5b47ed199575b39a31e41ab8834eb744' # AppImage
+  'f8ab52fe10ef3cb872a083d038fd120dd1ec5b498fef568d04b28b7a72c60c37' # AppImage
   '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
 )
 
