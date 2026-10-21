@@ -1,0 +1,21 @@
+pkgbase = batticonplus-ayatana-gtk3-git
+	pkgdesc = Lightweight battery status icon for the tray with Ayatana Indicators support (Resurrection Mirror)
+	pkgver = 2.0.1
+	pkgrel = 3
+	url = https://github.com/sfs-pra/batticonplus
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = gtk3
+	depends = libnotify
+	depends = libayatana-indicator
+	provides = batticonplus
+	provides = batticonplus-ayatana
+	provides = batticonplus-git
+	conflicts = batticonplus
+	conflicts = batticonplus-ayatana
+	conflicts = batticonplus-git
+	source = git+https://github.com/sfs-pra/batticonplus.git#branch=main
+	sha256sums = SKIP
+
+pkgname = batticonplus-ayatana-gtk3-git
