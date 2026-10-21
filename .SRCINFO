@@ -1,6 +1,6 @@
 pkgbase = noos-package-manager
 	pkgdesc = Gestionnaire de paquets GTK4/Libadwaita (Pacman, AUR, Flatpak et AppImages)
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Chomiam/noos-package-manager
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = noos-package-manager
 	depends = hicolor-icon-theme
 	optdepends = yay: Assistant AUR pour installer et mettre a jour les paquets AUR
 	optdepends = paru: Assistant AUR alternatif pour installer et mettre a jour les paquets AUR
-	source = noos-package-manager-0.1.3.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 965814e8b6a3acb2f7dca147325fd340c5ffa2186c8dfc2e767123b9679dbbfd
+	source = noos-package-manager-0.1.4.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 363a1e785e15c8c44f63f4d380bbbf728dbf879094ce837ae170c62546dec347
 
 pkgname = noos-package-manager
