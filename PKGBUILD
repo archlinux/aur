@@ -4,7 +4,7 @@
 # (archlinux container, non-root makepkg). The artifact is the finished Arch
 # package; this PKGBUILD only re-wraps it, nothing is compiled here.
 pkgname=hermes-agent-bin
-pkgver=0.22.2
+pkgver=0.22.4
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation (prebuilt binary, CI-built)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ options=('!debug' '!strip')
 _artifact="${pkgname}-${pkgver}-${pkgrel}-prebuilt.tar.zst"
 source=("${_artifact}::https://github.com/jabla/hermes-agent-bin/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_artifact}")
-sha256sums=('49b66a8b5a9ebfd5cc089be46c434a73bc97d04f90e0be8aa956a58540ba004d')
+sha256sums=('87b8bf92209ac019009caa850fb34ea3252cd72489a972cd60e87562d4996228')
 
 # The downloaded source is itself a complete Arch package. Extract its whole
 # payload: the application in opt/hermes-agent/ and the launcher and license
