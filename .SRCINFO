@@ -1,6 +1,6 @@
 pkgbase = bluestar-manager-bin
 	pkgdesc = A powerful mod manager for Sonic Racing: CrossWorlds on PC
-	pkgver = 1.1.4.1
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/Red1Fouad/Crossworlds-mod-manager-RED1
 	install = bluestar.install
@@ -13,10 +13,10 @@ pkgbase = bluestar-manager-bin
 	optdepends = steam: for Sonic Racing: CrossWorlds
 	optdepends = heroic-games-launcher: for Sonic Racing: CrossWorlds
 	options = !strip
-	source = bluestar-manager-1.1.4.1.AppImage::https://github.com/Red1Fouad/Crossworlds-mod-manager-RED1/releases/download/1.1.4.1/Bluestar.Manager.V1.1.4.1Linux.AppImage
+	source = bluestar-manager-1.1.6.AppImage::https://github.com/Red1Fouad/Crossworlds-mod-manager-RED1/releases/download/1.1.6/Bluestar.Manager.V1.1.6Linux.AppImage
 	source = bluestar.desktop
 	source = bluestar-manager
-	sha256sums = b51ee4394faa31e7f7a26352d35ee26d56e4d0cd895a60094827a8c4fb2b198d
+	sha256sums = 5d79dab51dccbac675f2db4439393c6c9ae2efa28cc62aef54e35fa64f1676b3
 	sha256sums = SKIP
 	sha256sums = SKIP
 
