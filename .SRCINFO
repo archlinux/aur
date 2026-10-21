@@ -1,0 +1,29 @@
+pkgbase = galleoncore
+	pkgdesc = Corsair Galleon Stream Deck daemon, Bosun settings, widgets and wallpapers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Paullux/GalleonCore
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = LGPL-3.0-or-later
+	license = CC-BY-SA-4.0
+	checkdepends = dbus
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	depends = qt6-base>=6.4
+	depends = qt6-declarative>=6.4
+	depends = hidapi
+	depends = systemd
+	depends = glib2
+	depends = xdg-utils
+	depends = ttf-dejavu
+	optdepends = ffmpeg: video thumbnails and screensavers
+	optdepends = wireplumber: system volume
+	optdepends = openrgb: dial rings
+	source = galleoncore-0.1.0.tar.gz::https://github.com/Paullux/GalleonCore/releases/download/v0.1.0/galleoncore-0.1.0.tar.gz
+	sha256sums = be2fd1703a1d2a0eac6653aacba70bf0da3ed0a43537718dd7cb1ff679ced9a4
+
+pkgname = galleoncore
