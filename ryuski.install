@@ -1,0 +1,9 @@
+post_install() {
+  echo "ryuSki speaks only if a Piper voice exists at:"
+  echo "  ~/.local/share/ryuski/voice/ryuski.onnx (+ ryuski.onnx.json)"
+  echo "Install piper-tts and libpulse to enable it."
+}
+
+post_upgrade() {
+  post_install
+}

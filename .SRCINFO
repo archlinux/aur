@@ -1,17 +1,20 @@
 pkgbase = ryuski-bin
 	pkgdesc = Local, trainable command assistant with a CLI and QML plugin (prebuilt binary)
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/RyuZinOh/ryuSki
+	install = ryuski.install
 	arch = x86_64
 	license = BSD-2-Clause
 	depends = sqlite
 	depends = qt6-declarative
 	optdepends = kitty: default terminal for "go to <folder>" (override with $TERMINAL)
-	provides = ryuski=0.0.3
+	optdepends = libpulse: paplay, needed for spoken replies
+	optdepends = piper-tts: spoken replies (AUR, needs a Piper voice at ~/.local/share/ryuski/voice/ryuski.onnx)
+	provides = ryuski=0.0.4
 	conflicts = ryuski
 	options = !debug
-	source = ryuski-0.0.3-x86_64.tar.gz::https://github.com/RyuZinOh/ryuSki/releases/download/v0.0.3/ryuski-0.0.3-x86_64.tar.gz
-	sha256sums = b3ede700bbf757ae6f875550f93982c989509cdcf4da086711df678bd3cfbf48
+	source = ryuski-0.0.4-x86_64.tar.gz::https://github.com/RyuZinOh/ryuSki/releases/download/v0.0.4/ryuski-0.0.4-x86_64.tar.gz
+	sha256sums = 53c54dc59a0f7fdafd2090272201ca246f332126ba3ea651692f67638f9d5062
 
 pkgname = ryuski-bin

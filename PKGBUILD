@@ -1,19 +1,24 @@
 # Maintainer: safalski
 pkgname=ryuski-bin
 _pkgname=ryuski
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Local, trainable command assistant with a CLI and QML plugin (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/RyuZinOh/ryuSki"
 license=('BSD-2-Clause')
 depends=('sqlite' 'qt6-declarative')
-optdepends=('kitty: default terminal for "go to <folder>" (override with $TERMINAL)')
+optdepends=(
+  'kitty: default terminal for "go to <folder>" (override with $TERMINAL)'
+  'libpulse: paplay, needed for spoken replies'
+  'piper-tts: spoken replies (AUR, needs a Piper voice at ~/.local/share/ryuski/voice/ryuski.onnx)'
+)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug')
+install=ryuski.install
 source=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('b3ede700bbf757ae6f875550f93982c989509cdcf4da086711df678bd3cfbf48')
+sha256sums=('53c54dc59a0f7fdafd2090272201ca246f332126ba3ea651692f67638f9d5062')
 
 package() {
   cp -a usr "$pkgdir/"
