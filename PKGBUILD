@@ -3,8 +3,8 @@
 # Contributor: MrHacker <kmunoz@condorbs.net>
 
 pkgname=mssql-server-fts
-pkgver=17.0.5015.4
-_remRevision=1
+pkgver=17.0.5035.5
+_remRevision=3
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc="Microsoft SQL Server 2025 Full Text Search"
@@ -21,7 +21,7 @@ license=('LicenseRef-Microsoft-SQL-Server-EULA')
 _debfile="${pkgname}_${_prodver}_amd64.deb"
 source=("https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/${pkgname}/${_debfile}")
 noextract=("${_debfile}")
-sha256sums=('fa1e3e5e3073937fdaf4c9865b47aa2bf483d8da0a760674a5de1a9bea49ee3a')
+sha256sums=('0244c8a8476c6e6c5b1da475b6d8c3917f156bcc18726d50bf79ca4500ddff81')
 
 # The .sfp is loaded into the engine process, so it has to match the engine
 # build exactly. Declared at the top level, not inside package(), so that
