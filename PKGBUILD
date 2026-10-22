@@ -2,7 +2,7 @@
 
 pkgname=k86-software-git
 _pkgname=k86-software
-pkgver=0.2.1.r0.gd063668
+pkgver=0.2.1.r1.g12318ea
 pkgrel=1
 pkgdesc='Configuration software for the Attack Shark K86 keyboard (CLI, GTK 3 GUI and C library, git version)'
 arch=('x86_64' 'aarch64')
