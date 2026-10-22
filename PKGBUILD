@@ -2,7 +2,7 @@
 
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
-pkgver=3.1.0.r4.gdfab388
+pkgver=3.2.0.r4.g3a8080e
 pkgrel=1
 pkgdesc="A GUI client for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
