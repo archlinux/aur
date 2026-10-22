@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
-pkgver=0.0.0.r1837.g7d50081
+pkgver=0.0.0.r1890.ge7a272f
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -32,6 +32,21 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
+_srcenv() {
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+}
+
 prepare() {
   cd "$pkgbase"
 
@@ -49,6 +64,7 @@ prepare() {
   # set rpath to /usr/lib/cef for obs-browser plugin
   sed -e 's|INSTALL_RPATH ".*"|INSTALL_RPATH "/usr/lib/cef/"|' -i plugins/obs-browser/cmake/os-linux.cmake
 
+  _srcenv
   cargo fetch --locked --target host-tuple
 }
 
@@ -64,14 +80,7 @@ build() {
   local _cef_api_version=$(grep -oP 'CEF_API_VERSION_LAST CEF_API_VERSION\_\K[0-9]+' /usr/include/cef/include/cef_api_versions.h)
   echo Setting CEF_API_VERSION to $_cef_api_version
 
-  export CARGO_PROFILE_RELEASE_DEBUG=2
-  export CARGO_PROFILE_RELEASE_STRIP=false
-  export CARGO_PROFILE_RELEASE_LTO=true
-  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-  export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
-
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
+  _srcenv
 
   local cmake_options=(
     -B build
