@@ -1,7 +1,7 @@
 pkgbase = soldr
 	pkgdesc = leverage crgx and zccache to run Rust tools with cached results
 	pkgver = 0.9.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zackees/soldr
 	arch = x86_64
 	license = AGPL-3.0-only

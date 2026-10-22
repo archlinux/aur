@@ -2,7 +2,7 @@
 
 pkgname=soldr
 pkgver=0.9.38
-pkgrel=1
+pkgrel=2
 pkgdesc='leverage crgx and zccache to run Rust tools with cached results'
 arch=(x86_64)
 url="https://github.com/zackees/$pkgname"
@@ -19,10 +19,14 @@ sha256sums=('f31319c93d11718bc3062b59936e7b182abc98cf1141b617e41d38fe8c165dd0')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
 	export RUSTUP_TOOLCHAIN=stable
