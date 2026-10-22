@@ -1,0 +1,20 @@
+pkgbase = edamame
+	pkgdesc = A Terminal Markdown editor that stays rendered while you edit
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/mijowi/edamame
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	options = !debug
+	source = edamame-0.1.6::git+https://github.com/mijowi/edamame.git#branch=main
+	sha256sums = SKIP
+
+pkgname = edamame

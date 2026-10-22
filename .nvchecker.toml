@@ -1,0 +1,4 @@
+[edamame]
+source = "git"
+git = "https://github.com/mijowi/edamame.git"
+prefix = "v"
