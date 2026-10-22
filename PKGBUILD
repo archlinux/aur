@@ -1,9 +1,9 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname=lighthouse-ethereum
-pkgver=8.3.0
+pkgver=8.3.1
 _pkgname=lighthouse
-pkgrel=2
+pkgrel=1
 pkgdesc='Ethereum consensus client in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sigp/lighthouse'
@@ -22,7 +22,7 @@ source=(
   "validator_registration.json::https://raw.githubusercontent.com/ethereum/eth2.0-specs/v0.12.1/deposit_contract/contracts/validator_registration.json"
   "unsafe_validator_registration.json::https://raw.githubusercontent.com/sigp/unsafe-eth2-deposit-contract/v0.9.2.1/unsafe_validator_registration.json"
 )
-sha256sums=('d1ae3aac69b14c174deea0e80d54deac9da150c89aa705a4d70485c5541acbb5'
+sha256sums=('9ca5e412a11cbbf25eff642f56b337c26704d56212fe37d6244928060b8f936d'
             'SKIP'
             'bdcc56b10425e5e280d60f26a579b2f8ccc8c40fa88480922ee992f6cacbabd2'
             '66c9407b5c249a483c4ee6bf0269847c19a3a8c55c1888981f08be5acb04c1af'
