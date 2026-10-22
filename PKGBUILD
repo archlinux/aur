@@ -1,19 +1,31 @@
-# shellcheck disable=2034,SC2164
 # Maintainer: Andres Rodriguez Michel <andresmichelrodriguez@gmail.com>
 pkgname=bullseye
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Control mouse cursor using your keyboard"
 arch=(any)
 url="https://github.com/Dosx001/bullseye"
-source=("https://github.com/Dosx001/bullseye/releases/download/${pkgver}/bullseye_${pkgver}_amd64.deb")
-md5sums=("6e83ba989f9b6319f57c99990fbfd615")
+makedepends=(zvm)
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=("136d0135c1fa983d7b0512c409a5f97cd860fcef2be78c97f06a5318a6f65641")
+
+prepare() {
+  zvm i 0.17.0
+}
+
+build() {
+  cd $pkgname-$pkgver
+  zvm run build -Drelease
+}
 
 package() {
-  tar xzf data.tar.gz
-  for i in 32x32 128x128 256x256@2; do
-    install -Dm644 usr/share/icons/hicolor/$i/apps/bullseye.png "$pkgdir/usr/share/icons/hicolor/$i/apps/bullseye.png"
+  cd $pkgname-$pkgver
+  for i in 32x32 128x128 256x256; do
+    install -Dm644 pkg/assets/$i.png "$pkgdir/usr/share/icons/hicolor/$i/apps/bullseye.png"
   done
-  install -Dm644 usr/share/applications/bullseye.desktop "$pkgdir/usr/share/applications/bullseye.desktop"
-  install -Dm755 usr/bin/bullseye "$pkgdir/usr/bin/bullseye"
+  install -Dm644 pkg/bullseye.desktop "$pkgdir/usr/share/applications/bullseye.desktop"
+  install -Dm644 pkg/completion/bullseye "$pkgdir/usr/share/bash-completion/completions/bullseye"
+  install -Dm644 pkg/completion/bullseye.fish "$pkgdir/usr/share/fish/vendor_completions.d/bullseye.fish"
+  install -Dm644 pkg/completion/_bullseye "$pkgdir/usr/share/zsh/site-functions/_bullseye"
+  install -Dm755 zig-out/bin/bullseye "$pkgdir/usr/bin/bullseye"
 }
