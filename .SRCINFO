@@ -1,7 +1,7 @@
 pkgbase = hatoba-bin
 	pkgdesc = Open-source desktop SSH client with an AI assistant and end-to-end encrypted sync through your own Cloudflare account
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://hatoba.fog.moe
 	arch = x86_64
 	license = MIT

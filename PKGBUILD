@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=hatoba-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Open-source desktop SSH client with an AI assistant and end-to-end encrypted sync through your own Cloudflare account"
 arch=('x86_64')
 url="https://hatoba.fog.moe"
@@ -25,4 +25,9 @@ package() {
         bsdtar --no-same-owner -xf - -C "${pkgdir}"
 
     chmod -R u=rwX,go=rX "${pkgdir}"
+
+    # Marker that makes Hatoba leave updates to pacman instead of running its
+    # own updater (which would call dpkg).
+    install -dm755 "${pkgdir}/usr/lib/Hatoba"
+    printf 'aur\n' > "${pkgdir}/usr/lib/Hatoba/managed-by-package-manager"
 }
