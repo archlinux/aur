@@ -1,6 +1,6 @@
 pkgbase = rayburst-bin
 	pkgdesc = Redefining the open-source download manager.
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://rayburst.pages.dev/
 	arch = aarch64
@@ -9,15 +9,16 @@ pkgbase = rayburst-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	depends = libayatana-indicator
+	depends = libayatana-appindicator
 	depends = libappindicator
-	provides = rayburst=4.0.1
+	depends = hicolor-icon-theme
+	provides = rayburst=4.1.0
 	conflicts = rayburst
-	source = LICENSE-4.0.1::https://raw.githubusercontent.com/AnInsomniacy/rayburst/v4.0.1/LICENSE
+	source = LICENSE-4.1.0::https://raw.githubusercontent.com/AnInsomniacy/rayburst/v4.1.0/LICENSE
 	sha256sums = 82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e
-	source_aarch64 = rayburst-4.0.1-aarch64.rpm::https://github.com/AnInsomniacy/rayburst/releases/download/v4.0.1/Rayburst-4.0.1-1.aarch64.rpm
-	sha256sums_aarch64 = 858ed354697afbe0435d91c1c91bbcf2332842f4d2fe32b566094b75e5f63927
-	source_x86_64 = rayburst-4.0.1-x86_64.rpm::https://github.com/AnInsomniacy/rayburst/releases/download/v4.0.1/Rayburst-4.0.1-1.x86_64.rpm
-	sha256sums_x86_64 = 06b08d124fa1f487c7450a2cc720eb9b9299f621ebb3db4213b77fb3e99b6633
+	source_aarch64 = rayburst-4.1.0-aarch64.rpm::https://github.com/AnInsomniacy/rayburst/releases/download/v4.1.0/Rayburst-4.1.0-1.aarch64.rpm
+	sha256sums_aarch64 = b6d0e61d7786473abaab819d7a186fdba0d238b3b759e1d0ffae1716dfff89ad
+	source_x86_64 = rayburst-4.1.0-x86_64.rpm::https://github.com/AnInsomniacy/rayburst/releases/download/v4.1.0/Rayburst-4.1.0-1.x86_64.rpm
+	sha256sums_x86_64 = d48046b70422f01efc4ff71a133883a283c0386df4924162a5e56122a3af822e
 
 pkgname = rayburst-bin

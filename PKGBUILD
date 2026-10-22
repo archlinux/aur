@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rayburst-bin
 _pkgname=Rayburst
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Redefining the open-source download manager."
 arch=(
@@ -17,18 +17,20 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
-    'libayatana-indicator'
+    'libayatana-appindicator'
     'libappindicator'
+    'hicolor-icon-theme'
 )
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/AnInsomniacy/rayburst/v${pkgver}/LICENSE")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e')
-sha256sums_aarch64=('858ed354697afbe0435d91c1c91bbcf2332842f4d2fe32b566094b75e5f63927')
-sha256sums_x86_64=('06b08d124fa1f487c7450a2cc720eb9b9299f621ebb3db4213b77fb3e99b6633')
+sha256sums_aarch64=('b6d0e61d7786473abaab819d7a186fdba0d238b3b759e1d0ffae1716dfff89ad')
+sha256sums_x86_64=('d48046b70422f01efc4ff71a133883a283c0386df4924162a5e56122a3af822e')
 prepare() {
     sed -i "s/Categories=/Categories=Network;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    [ -d "${srcdir}/usr/share/icons/hicolor/256x256@2" ] && mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
+    local _icon_dir="${srcdir}/usr/share/icons/hicolor"
+    [[ -d "${_icon_dir}/256x256@2" && ! -d "${_icon_dir}/512x512" ]] && mv "${_icon_dir}/256x256@2" "${_icon_dir}/512x512" || true
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/lib/${_pkgname}/bin"
