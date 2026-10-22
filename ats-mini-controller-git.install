@@ -1,0 +1,38 @@
+# install scriptlet for ats-mini-controller-git (Arch: no auto-enable, just set up).
+_service_user=atsradio
+_service_group=plugdev
+_app_dir=/opt/ats-mini-controller
+
+_create_user() {
+  getent group "$_service_group" >/dev/null || groupadd -r "$_service_group"
+  if ! id "$_service_user" >/dev/null 2>&1; then
+    useradd -r -d "$_app_dir" -s /usr/bin/nologin -G "$_service_group" "$_service_user"
+  else
+    usermod -a -G "$_service_group" "$_service_user" 2>/dev/null || true
+  fi
+  mkdir -p "$_app_dir/data/recordings" /etc/ats-mini-controller
+  chown -R "$_service_user:$_service_group" "$_app_dir/data"
+  chmod 2750 "$_app_dir/data"
+}
+
+post_install() {
+  _create_user
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --subsystem-match=usb --action=change 2>/dev/null || true
+  systemctl daemon-reload 2>/dev/null || true
+  echo "==> ats-mini-controller installed. Enable it with:"
+  echo "      sudo systemctl enable --now ats-mini-controller.service"
+  echo "==> Then open http://<host>:8731 on your LAN."
+  echo "==> First install usually needs one reboot to release the DVB kernel modules."
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if [ -d /run/systemd/system ]; then
+    systemctl stop ats-mini-controller.service 2>/dev/null || true
+    systemctl disable ats-mini-controller.service 2>/dev/null || true
+  fi
+}

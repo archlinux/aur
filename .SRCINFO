@@ -1,0 +1,22 @@
+pkgbase = ats-mini-controller-git
+	pkgdesc = RTL-SDR station browser, live signal scanner and automatic CW decoder (web UI)
+	pkgver = 2.12.0.r27.g834e4c8
+	pkgrel = 1
+	url = https://github.com/jsawyerdev/ats-mini-controller
+	install = ats-mini-controller-git.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = python-virtualenv
+	makedepends = python-pip
+	depends = python
+	depends = libusb
+	depends = rtl-sdr
+	provides = ats-mini-controller
+	conflicts = ats-mini-controller
+	source = git+https://github.com/9M2PJU/ats-mini-controller.git#branch=packaging/native-packages
+	sha256sums = SKIP
+
+pkgname = ats-mini-controller-git
