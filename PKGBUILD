@@ -1,7 +1,7 @@
 # Maintainer: TheElevatedOne <adam.mlady@elevated.ovh>
 pkgname=rossat-swarm-git
 _pkgname=rossat-swarm
-pkgver=1.0.1.r1.gc708dc6
+pkgver=1.0.1.r2.g02bb424
 pkgrel=1
 pkgdesc="Open re-implementation of ROCCAT Swarm (GUI, CLI, library) for the Kone AIMO Remastered (git version)"
 arch=('x86_64')
