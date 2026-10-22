@@ -1,6 +1,6 @@
 # Maintainer: Kolimi <ci@kolimi.local>
 pkgname=kolimi-desktop
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Kolimi desktop client: browse, share, and keep a local folder in sync"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 makedepends=('rust' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chaitanyayeleti/kolimi/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('b180b450035900fa04ae26a7923c481928053b40fd18b9965c5480ed718a26ab')
+sha256sums=('6a72e763f59785dd1c970d3520ad259511460e978374a8dd7a7d3c96367650ee')
 
 build() {
   cd "kolimi-desktop-v$pkgver/apps/kolimi-desktop"
