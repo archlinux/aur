@@ -2,7 +2,7 @@
 
 pkgbase=python-cudf
 pkgname=(python-cudf python-dask-cudf python-cudf-polars python-cudf-streaming)
-pkgver=26.10.00
+pkgver=26.10.02
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/NVIDIA/cudf"
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=(cuda gcc python-setuptools cmake python-scikit-build-core python-rapids-build-backend ninja cython libcudf-streaming python-rapidsmpf)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "missing-pkg.patch" "system-cccl.patch" "missing-pkg-streaming.patch")
-sha256sums=('bfd7789bdea61ed92666ca059003fcb1b107cd1ba7dd241a1887e3c510d2d8da'
+sha256sums=('d184028ca8347573c053202d7cc08ac1be750cef8a096c71ee3a0aca2b103a9e'
             '72618631b71f51c4d0773f6964bb9bfe3a92ba0ebe5351fd7baedb56f833fcfa'
             '1d05ed0fdd36bbf5d45017cab988dc43fd1016547c13948205d99d9f456aef03'
             '62846468452defffd2d268327e62db30e9f1c4c7a9dc102b551347747d31a2a1')
