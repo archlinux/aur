@@ -1,6 +1,6 @@
 pkgbase = tieba-cloud-sign
 	pkgdesc = Baidu Tieba Cloud Sign | 百度贴吧云签到
-	pkgver = 20261013.164553
+	pkgver = 20261022.005652
 	pkgrel = 1
 	url = https://github.com/MoeNetwork/Tieba-Cloud-Sign
 	arch = any
