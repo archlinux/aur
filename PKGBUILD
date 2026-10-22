@@ -3,7 +3,7 @@
 pkgname=isocast-git
 _pkgname=${pkgname%-git}
 pkgver=0.0.8.r1.g74a13d2
-pkgrel=1
+pkgrel=2
 url="https://$_pkgname.xyz"
 _url="https://github.com/R44VC0RP/$_pkgname"
 pkgdesc='OBS alternative that records every source as its own file (Git HEAD'
@@ -23,10 +23,14 @@ sha256sums=('SKIP')
 _srcenv() {
 	cd "$_pkgname"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
