@@ -1,0 +1,23 @@
+pkgbase = hireferry-server-git
+	pkgdesc = Self-hosted recruitment server with an embedded web UI
+	pkgver = 0.1.0.r38.gd3c1214
+	pkgrel = 1
+	url = https://github.com/TokenNotIncluded/hireferry
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = ca-certificates
+	depends = systemd
+	provides = hireferry-server
+	conflicts = hireferry-server
+	options = !lto
+	source = hireferry::git+https://github.com/TokenNotIncluded/hireferry.git#branch=main
+	sha256sums = SKIP
+
+pkgname = hireferry-server-git
