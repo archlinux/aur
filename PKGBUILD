@@ -1,4 +1,5 @@
-# Maintainer: Amir Shygun <a-shygun@users.noreply.github.com>
+# Maintainer: 9M2PJU <9m2pju@gmail.com>
+# Contributor: Amir Shygun <a-shygun@users.noreply.github.com>
 pkgname=terrascope
 pkgver=0.3.0
 pkgrel=1
