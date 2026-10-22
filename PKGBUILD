@@ -3,7 +3,7 @@
 # CI workspace and pushes the result to aur.archlinux.org only. Edit this
 # file for packaging logic changes; never commit a real version here.
 pkgname=openwork
-pkgver=0.18.59
+pkgver=0.18.60
 pkgrel=1 # pkgrel should change when PKGBUILD does. Standard is to change back to 1 next time. Any interger is valid.
 pkgdesc="An Open source alternative to Claude Cowork"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ options=(!strip)
 
 # Architecture-specific sources and checksums
 source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-x64-${pkgver}.tar.gz")
-sha256sums_x86_64=('c3a4d6c42593f9db42780edb20652622627dfb0518ff84dd21646357aba3b333')
+sha256sums_x86_64=('21fc19c7000b877b545f4bfdab52b7ef8112dfba66b89f9788d9033ccf71ea10')
 
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-arm64-${pkgver}.tar.gz")
-sha256sums_aarch64=('f72a6ed40f471f760d8e34deed0673e024f1412af90235237258d45e508cc4eb')
+sha256sums_aarch64=('0138e5466e7fcc9a32e4ff96077bc2ae201a25a27d9f20bcbc45a6a8f4505b53')
 
 package() {
   cd "${srcdir}"
