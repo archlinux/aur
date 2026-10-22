@@ -1,6 +1,6 @@
 pkgbase = marktext
 	pkgdesc = A simple and elegant open-source markdown editor that focused on speed and usability
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://marktext.me/
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = marktext
 	depends = libstdc++
 	depends = libx11
 	depends = libxkbfile
-	source = marktext-0.22.0.tar.gz::https://github.com/marktext/marktext/archive/v0.22.0.tar.gz
+	source = marktext-0.23.0.tar.gz::https://github.com/marktext/marktext/archive/v0.23.0.tar.gz
 	source = marktext-arg-handling.patch
 	source = marktext.sh
-	sha256sums = e47e9568e6bad138ce6dbf3503d2755482604ed209ef50d9664310db0896380f
+	sha256sums = 47bb35ec6dfea331fe116e28d3b03dfeac06106e78c935820f7edd07ce580751
 	sha256sums = 3f7b433eb1e2e9c70bcd9b4c02bb6d92d77f39e5c0790677f43ae9615091e53d
 	sha256sums = 0f1ce8eb888caada8e7774cbc89d81f2b62eb143fe3d185d009d42584cbe501b
 

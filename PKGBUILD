@@ -6,7 +6,7 @@
 # Contributor: dpeukert
 
 pkgname=marktext
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="A simple and elegant open-source markdown editor that focused on speed and usability"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=('nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
         "${pkgname}-arg-handling.patch"
         "${pkgname}.sh")
-sha256sums=('e47e9568e6bad138ce6dbf3503d2755482604ed209ef50d9664310db0896380f'
+sha256sums=('47bb35ec6dfea331fe116e28d3b03dfeac06106e78c935820f7edd07ce580751'
             '3f7b433eb1e2e9c70bcd9b4c02bb6d92d77f39e5c0790677f43ae9615091e53d'
             '0f1ce8eb888caada8e7774cbc89d81f2b62eb143fe3d185d009d42584cbe501b')
 
