@@ -1,0 +1,27 @@
+pkgbase = rossat-swarm-git
+	pkgdesc = Open re-implementation of ROCCAT Swarm (GUI, CLI, library) for the Kone AIMO Remastered (git version)
+	pkgver = 1.0.0.r1.gdffde2e
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/rossat-swarm
+	install = rossat-swarm.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = hidapi
+	depends = gtk3
+	depends = glib2
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libayatana-appindicator
+	provides = rossat-swarm
+	conflicts = rossat-swarm
+	conflicts = rossat-swarm-bin
+	source = rossat-swarm::git+https://github.com/TheElevatedOne/rossat-swarm.git
+	sha256sums = SKIP
+
+pkgname = rossat-swarm-git
