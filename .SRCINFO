@@ -1,6 +1,6 @@
 pkgbase = innex
 	pkgdesc = Extract Inno Setup installers
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/russellbanks/inno
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = innex
 	makedepends = rust
 	depends = libgcc
 	depends = glibc
-	source = inno-0.7.0.tar.gz::https://github.com/russellbanks/inno/archive/refs/tags/v0.7.0.tar.gz
-	b2sums = 9243da2f098d9624f40df996465a2f8c7f34c2d3e34fd2dbffd99bd7ccbf51a4ea6c5b98f71ad4393039d9e79a33d600c3d5180df7b9dc7869afe2fbb7dca259
+	source = inno-0.7.1.tar.gz::https://github.com/russellbanks/inno/archive/refs/tags/v0.7.1.tar.gz
+	b2sums = bf4b4fe4e27a427a68b8d1bce160ad0193226caede4a005c4bec42fb98a7259cbaef59c6aa22cdbb9540f1b31661b66b15f192c901c1442d5788b9d920c2d10f
 
 pkgname = innex
