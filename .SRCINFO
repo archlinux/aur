@@ -1,6 +1,6 @@
 pkgbase = waycentral-git
 	pkgdesc = Centalized Program for Waybar Custom Modules
-	pkgver = 1.1.4_0_g8d67c1e
+	pkgver = 1.1.4_r0_g8d67c1e
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/waycentral
 	arch = any

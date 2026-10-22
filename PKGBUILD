@@ -1,7 +1,7 @@
 # Maintainer: Adam Mladý <admin@elevated.ovh>
 
 pkgname=waycentral-git
-pkgver=1.1.4_0_g8d67c1e
+pkgver=1.1.4_r0_g8d67c1e
 pkgrel=1
 pkgdesc="Centalized Program for Waybar Custom Modules"
 arch=('any')
