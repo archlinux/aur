@@ -1,7 +1,7 @@
 pkgbase = xee
 	pkgdesc = CLI frontent to XML Execution Engine, a modern XPath and XSLT processor
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Paligo/xee
 	arch = x86_64
 	license = MIT

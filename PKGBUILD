@@ -3,7 +3,7 @@
 
 pkgname=xee
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI frontent to XML Execution Engine, a modern XPath and XSLT processor'
 arch=(x86_64)
 url=https://github.com/Paligo/xee
@@ -15,16 +15,28 @@ makedepends=(cargo
 source=("git+$url.git#tag=xee-v$pkgver")
 sha256sums=('916ea97376f4e50c58b0f334865305e3db19d766185f089a5b72f3457d08fcf8')
 
-prepare() {
-	cd "$pkgname"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
-}
-
 _srcenv() {
 	cd "$pkgname"
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	CFLAGS+=' -ffat-lto-objects'
+	CFLAGS+=' -fno-lto'
+}
+
+prepare() {
+	_srcenv
+	# Upstream lockfile is broken
+	cargo update
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
