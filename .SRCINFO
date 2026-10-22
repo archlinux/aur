@@ -1,7 +1,7 @@
 pkgbase = dux-files-git
 	pkgdesc = File manager for Wayland from Dux Labs (git)
 	pkgver = 2.0.0.r1.gf646769
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duxlabs-dev/dux-files
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = dux-files-git
 	optdepends = bubblewrap: run external thumbnailers in a sandbox
 	optdepends = ffmpegthumbnailer: video thumbnails
 	optdepends = poppler: pdf thumbnails
+	optdepends = qt6-webengine: pdf previews
 	optdepends = gvfs: network shares and the trash on removable drives
 	optdepends = udisks2: the devices sidebar
 	optdepends = polkit: retry denied operations as administrator

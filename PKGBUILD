@@ -5,7 +5,7 @@ _pkgname=dux-files
 _binname=dfiles
 _appid=dev.duxlabs.files
 _portalservice=org.freedesktop.impl.portal.desktop.dfiles.service
-pkgver=2.0.0.r1.gf646769
+pkgver=2.0.0.r12.g1d5944f
 pkgrel=1
 pkgdesc='File manager for Wayland from Dux Labs (git)'
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ optdepends=('dms-shell: dynamic theming via Dux Shell colors'
             'bubblewrap: run external thumbnailers in a sandbox'
             'ffmpegthumbnailer: video thumbnails'
             'poppler: pdf thumbnails'
+            'qt6-webengine: pdf previews'
             'gvfs: network shares and the trash on removable drives'
             'udisks2: the devices sidebar'
             'polkit: retry denied operations as administrator'
