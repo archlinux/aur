@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=LOOP
+Comment=Desktop client for the Loop team messenger
+Exec=loop-desktop %U
+Terminal=false
+Type=Application
+Icon=loop-desktop
+StartupWMClass=LOOP
+# Upstream .deb also registers http, https, ftp, mailto and tel, which would
+# take over the default handlers. Only Loop's own schemes belong here.
+MimeType=x-scheme-handler/loop;x-scheme-handler/ru.loop.app;x-scheme-handler/ru.loop.app.beta;
+Categories=Network;InstantMessaging;
+StartupNotify=true
