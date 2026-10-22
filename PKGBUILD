@@ -1,7 +1,6 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=bookstack
-_camelname=BookStack
 pkgver=26.09.2
 pkgrel=2
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
@@ -24,13 +23,13 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://codeberg.org/bookstack/bookstack/archive/v${pkgver}.tar.gz"
 	'bookstack.conf'
 )
-sha256sums=('63d6be10b6d2db89a5f82c439e478480fc12daaaca0de9a88a700b583e1d2c65'
+sha256sums=('177de3a2490eff753fbbe2f471a279ca1794d347ef42de3858848458d4e4d7cd'
             '82152fc91366d1bd623c559c03240f070e08d45a084a4c6e2e211f671bee8c78')
 options=('!strip')
 backup=("etc/webapps/${pkgname}/config.env")
 
 package() {
-	cd "${srcdir}/${_camelname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --ignore-platform-reqs --no-interaction
 
 	install -d \
@@ -40,7 +39,7 @@ package() {
 		"${pkgdir}/var/lib" \
 		"${pkgdir}/var/cache/${pkgname}"
 	cp -r * "${pkgdir}/usr/share/webapps/${pkgname}"
-	install -D "${srcdir}/${_camelname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -D "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 
 	install -Dm644 .env.example "${pkgdir}/etc/webapps/${pkgname}/config.env"
 
