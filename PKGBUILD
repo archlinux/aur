@@ -2,7 +2,7 @@
 # Contributor: falkTX <falktx@falktx.com>
 
 pkgname=clara-git
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=4
 pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety)"
 arch=('x86_64')
