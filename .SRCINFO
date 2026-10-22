@@ -1,7 +1,7 @@
 pkgbase = fnt
 	pkgdesc = The missing font manager for Linux
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexmyczko/fnt
 	arch = any
 	license = MIT

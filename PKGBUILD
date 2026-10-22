@@ -2,7 +2,7 @@
 
 pkgname=fnt
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The missing font manager for Linux'
 arch=('any')
 url='https://github.com/alexmyczko/fnt'
@@ -19,6 +19,11 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	# install the zsh completion into /usr/share, not /usr/local
 	sed -i 's|ZCOMPDIR=/usr/local/share/zsh/site-functions|ZCOMPDIR=/usr/share/zsh/site-functions|' Makefile
+	# the 1.9.2 tag forgot to bump the displayed version (Debian ships the
+	# same fix as debian/patches/fix-version); sed rather than a patch file
+	# so tags that do bump it stay buildable
+	sed -i "s/^VERSION=.*/VERSION=$pkgver/" fnt
+	sed -i "s|^\.TH man 1 .*|.TH man 1 \"12 Aug 2023\" \"$pkgver\" \"font downloader and manager\"|" fnt.1
 }
 
 package() {
