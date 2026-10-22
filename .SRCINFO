@@ -1,6 +1,6 @@
 pkgbase = rettui-bin
 	pkgdesc = Reticulum client for the terminal and the browser: LXMF messaging, NomadNet browsing and hosting, and RRC chat
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/zevaryx/rettui
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rettui-bin
 	depends = gcc-libs
 	provides = rettui
 	conflicts = rettui
-	source_x86_64 = https://github.com/zevaryx/rettui/releases/download/v1.8.0/rettui-v1.8.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e9f848913b7d46e1ec4dd684f54aa8d3865a6cf35f6883cca888efd2ade20430
-	source_aarch64 = https://github.com/zevaryx/rettui/releases/download/v1.8.0/rettui-v1.8.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 7c61b198b681f633b8a5f2f9888ac6a76eebc275df5224a98c3d44fe81446521
+	source_x86_64 = https://github.com/zevaryx/rettui/releases/download/v1.9.0/rettui-v1.9.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 290fef0ee96d79d5ddee190198c9144d6a5b7ac9340390b0e324a6675b54b0cd
+	source_aarch64 = https://github.com/zevaryx/rettui/releases/download/v1.9.0/rettui-v1.9.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6a837b978fa3f1921638178ccbd8416f9f5706a7006bd6c5a4f102521493b764
 
 pkgname = rettui-bin
