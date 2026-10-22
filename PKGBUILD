@@ -1,9 +1,9 @@
 # Maintainer: Kévin Unger <kevin.unger@proton.me>
-# Template — 0.45.0 and 2dd6eb77fd44e42478c3614a255d9a4c2b60d4a011126a613c31cf75bbaa4caa are substituted by .github/workflows/aur.yml
+# Template — 0.46.0 and b1ed58fc7397d1761c69e916d58fe87b7eedf22031aa8c15d513bc0ec1371e11 are substituted by .github/workflows/aur.yml
 # (or scripts/aur-publish.sh) before pushing to the AUR.
 pkgname=blunderdb-bin
 _appname=blunderdb
-pkgver=0.45.0
+pkgver=0.46.0
 pkgrel=1
 pkgdesc="Backgammon blunder analysis tool (precompiled, webkit2gtk-4.1)"
 # Two architectures since H.14 (#256): the arm64 build is native (the release
@@ -20,9 +20,9 @@ provides=('blunderdb')
 conflicts=('blunderdb')
 options=('!strip')
 source_x86_64=("blunderdb-${pkgver}-x86_64.tar.gz::https://github.com/kevung/blunderDB/releases/download/${pkgver}/blunderDB-linux-webkit2gtk-4.1-${pkgver}.tar.gz")
-sha256sums_x86_64=('2dd6eb77fd44e42478c3614a255d9a4c2b60d4a011126a613c31cf75bbaa4caa')
+sha256sums_x86_64=('b1ed58fc7397d1761c69e916d58fe87b7eedf22031aa8c15d513bc0ec1371e11')
 source_aarch64=("blunderdb-${pkgver}-aarch64.tar.gz::https://github.com/kevung/blunderDB/releases/download/${pkgver}/blunderDB-linux-arm64-webkit2gtk-4.1-${pkgver}.tar.gz")
-sha256sums_aarch64=('5dab221181122367bae3477415e53a86e8f8f9140565b62169dabc31a9ab968d')
+sha256sums_aarch64=('e6dc744a18239244b35218ea1691942730840687c4a0b10cd051aa232ba44f0c')
 
 # The two tarballs unpack into directories named after the asset, so the
 # directory to install from depends on the architecture being built.
