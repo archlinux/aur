@@ -1,5 +1,5 @@
 pkgname=tempesta
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="The fastest and lightest bookmark manager CLI written in Rust"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("3f3a5fd86cdb9dbc537dc2cebc71229727a0c57c9eca2e4b12c607b1bebccbb5")
+sha256sums=("c623728c5ae249ff24fa2dbee390535b7857cc57cca19360e33832f53a46a8dd")
 
 prepare() {
   cd "$pkgname-$pkgver"
