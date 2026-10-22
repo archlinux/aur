@@ -1,12 +1,13 @@
 pkgbase = git-monitor-git
 	pkgdesc = Monitor Git repositories for new commits
 	pkgver = r46.4322bcd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kriechi/git-monitor
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	provides = git-monitor
 	conflicts = git-monitor
 	source = git+https://github.com/Kriechi/git-monitor.git#branch=master
