@@ -1,50 +1,65 @@
-# Maintainer: Axel Haustant <noirbizarre@gmail.com>
+# Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.5.0`, `18fbb9ec2f3918f5a7deafaa5d87b7551d051c7e45c4beb1f274ab2866271104` and `41dcdde22ea5ad64e1b2cbe83bef232b4d96d3d92d816fce54b348a19c845ba4`
-# are substituted by .github/workflows/aur.yml from the published release
-# assets.
+# Prebuilt binary package. `0.6.0` and the `@SHA256_*@` placeholders are
+# substituted by .github/workflows/aur.yaml from the published release
+# assets, and the result is pushed to the AUR. Edit this template, never the
+# PKGBUILD in the AUR repository: that one is regenerated at every release.
 
 pkgname=git-wipe-bin
 _pkgname=git-wipe
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/noirbizarre/git-wipe"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'git')
+
 provides=("$_pkgname=$pkgver")
-# `replaces`/`conflicts` on the pre-rename name so `pacman -Syu` migrates
-# anyone still on git-synchronizer-bin instead of leaving both installed.
-conflicts=("$_pkgname" 'git-synchronizer-bin')
-replaces=('git-synchronizer-bin')
+conflicts=("$_pkgname")
+
+# !strip because the release profile already sets `strip = true`, and !debug
+# for the same reason: there is no debug data left to split into a -debug
+# package, so building one would produce an empty package and a namcap
+# warning.
 options=('!strip' '!debug')
-# The upstream archives are named after the target only — the tag in the URL is
-# what pins the version — so they are renamed here to keep makepkg's source
-# cache unambiguous across releases.
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/git-wipe-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/git-wipe-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('18fbb9ec2f3918f5a7deafaa5d87b7551d051c7e45c4beb1f274ab2866271104')
-sha256sums_aarch64=('41dcdde22ea5ad64e1b2cbe83bef232b4d96d3d92d816fce54b348a19c845ba4')
+
+# The `gnu` asset, not `musl`: an AUR package targets Arch's own glibc.
+# This project tags without a `v` prefix, so the tag is `$pkgver` as-is.
+#
+# The release archive, not the raw executable: it carries the man pages,
+# completions and service unit the bare binary cannot. makepkg extracts it into
+# `$srcdir/<crate>-$pkgver-<asset>/`, laid out as a prefix.
+source_x86_64=("git-wipe-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/git-wipe_${pkgver}_linux-amd64.tar.gz")
+sha256sums_x86_64=('51be3e1f3a4210b14095b314d28ea860fd8c0a9abc7d8807fd9d97f246b9702c')
+source_aarch64=("git-wipe-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/git-wipe_${pkgver}_linux-arm64.tar.gz")
+sha256sums_aarch64=('210bfd020ca7eb15d81af716417cf528933ed8ed11b2bb1d422d2c31a90aa92a')
 
 package() {
-  # The archives carry no leading directory, so their contents — `git-wipe`,
-  # `man/`, `completions/`, LICENSE and README.md — land straight in $srcdir.
-  cd "$srcdir"
+	case "$CARCH" in
+		x86_64) _asset=linux-amd64 ;;
+		aarch64) _asset=linux-arm64 ;;
+	esac
+	cd "$srcdir/git-wipe-$pkgver-$_asset"
 
-  install -Dm755 git-wipe "$pkgdir/usr/bin/git-wipe"
-
-  # The man pages are not a nicety: git rewrites `git wipe --help` into
-  # `git help wipe`, which runs `man git-wipe` and fails without them.
-  install -Dm644 -t "$pkgdir/usr/share/man/man1" man/*.1
-
-  install -Dm644 completions/git-wipe.bash \
-    "$pkgdir/usr/share/bash-completion/completions/git-wipe"
-  install -Dm644 completions/_git-wipe \
-    "$pkgdir/usr/share/zsh/site-functions/_git-wipe"
-  install -Dm644 completions/git-wipe.fish \
-    "$pkgdir/usr/share/fish/vendor_completions.d/git-wipe.fish"
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm755 bin/git-wipe "$pkgdir/usr/bin/git-wipe"
+	# The rest of the archive is already laid out as `/usr`: man pages,
+	# completions and the service unit land where they belong, and only what
+	# the project actually ships is there to copy.
+	[ -d share ] && cp -a share "$pkgdir/usr/"
+	[ -d lib ] && cp -a lib "$pkgdir/usr/"
+	# MIT is not one of the licences Arch keeps in /usr/share/licenses/common.
+	install -Dm644 share/doc/git-wipe/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# --- project-specific ---------------------------------------------------
+#
+# `depends=(...)` belongs here once `namcap` on a built package says what the
+# binary actually links: a vendored dependency needs nothing declared, a
+# dynamically linked one (a system OpenSSL, for example) does.
+
+# `git` is a runtime dependency: every operation shells out to it.
+depends=('gcc-libs' 'glibc' 'git')
+# `replaces`/`conflicts` on the pre-rename name so `pacman -Syu` migrates
+# anyone still on git-synchronizer-bin instead of leaving both installed.
+conflicts+=('git-synchronizer-bin')
+replaces=('git-synchronizer-bin')
