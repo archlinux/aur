@@ -3,9 +3,9 @@
 pkgname=relic-material-gtk-theme
 _repo=Material-GTK-Themes
 _commit=55f4639ad6a9128f885305a60d230c5842711259
-_fixes=2026.10.22
+_fixes=2026.10.22.1
 pkgver=2025.10.23
-pkgrel=3
+pkgrel=4
 pkgdesc='Material GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('ac2ebe17d88623b49ea28b644fe3e11add4fb16e5e898595356e762cce44f53d'
-            'c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb')
+            '3c203a956f4148230177eb925916ad8eddb75c98dd2212368b40df5e52d889d0')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
