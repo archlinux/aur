@@ -5,18 +5,18 @@
 # Upstream JASP publishes installers for Windows and macOS only; the official
 # Linux channel is Flathub. The binary this package installs is therefore NOT an
 # upstream release artifact. It is compiled from the tagged JASP sources
-# (v0.98.8, commit b6cd3b0310be4e18e1b673ac11f14e55615c8fa1) against an Arch Linux userland, in an
+# (v0.99.0, commit 1204d1892b1233af145bb548fe80719f331ea693) against an Arch Linux userland, in an
 # archlinux:base-devel container, by an automated pipeline:
 #
 #   build recipe:  https://gitea.weircon.dk/agw/jasp-desktop-bin
-#   download:      https://asger.weirsoe.dk/tarballz/jasp-desktop-0.98.8-4b07f349b04b-x86_64.tar.zst
+#   download:      https://asger.weirsoe.dk/tarballz/jasp-desktop-0.99.0-e4f1bafa3b31-x86_64.tar.zst
 #
 # It bundles its own R 4.5.3 and the non-system libraries it links against
 # under /opt/jasp-desktop, so it does not constrain the versions of anything on
 # your system. Built against Qt 6.12.
 
 pkgname=jasp-desktop-bin
-pkgver=0.98.8
+pkgver=0.99.0
 pkgrel=1
 pkgdesc="JASP Desktop - a fresh way to do statistics (prebuilt binary)"
 arch=('x86_64')
@@ -54,8 +54,8 @@ options=('!strip' '!debug' '!libtool' '!staticlibs' '!zipman' '!purge' '!emptydi
 # The remote name is content-addressed, so it is kept as the local name too: a
 # stale download left in the build directory can never be mistaken for the
 # current tarball and fail the checksum.
-source=("https://asger.weirsoe.dk/tarballz/jasp-desktop-0.98.8-4b07f349b04b-x86_64.tar.zst")
-sha256sums=('4b07f349b04b258798301f83076484dfe24a1ed28a98e5cdf27b870908658f2c')
+source=("https://asger.weirsoe.dk/tarballz/jasp-desktop-0.99.0-e4f1bafa3b31-x86_64.tar.zst")
+sha256sums=('e4f1bafa3b31557d064d213a522acbef953fd2f52d064ceee94236c8e8434884')
 
 package() {
   cp -a "${srcdir}/opt" "${pkgdir}/opt"
