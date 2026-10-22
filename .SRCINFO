@@ -1,0 +1,24 @@
+pkgbase = ssv-network
+	pkgdesc = Secret-Shared-Validator (SSV) node for Ethereum staking
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://ssv.network
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = ssvnode
+	conflicts = ssvnode
+	backup = etc/ssvnode/config.yaml
+	source = ssv::git+https://github.com/ssvlabs/ssv.git#tag=v2.5.0
+	source = ssvnode.service
+	source = ssvnode.sysusers
+	source = ssvnode.tmpfiles
+	sha256sums = 88e12c0fbfdb6d2d98ac272c8ca89503cce12aa203934a2f68387e45ca6d78f2
+	sha256sums = b96f3f905287d84bab2d51ebe69d62184e7bcffc4cc1234e9431998828896565
+	sha256sums = f108321762dd617d37091dc2b5ece909b8472ab7d21da0c2b0d0933fa115ae9d
+	sha256sums = c985bd739b1313b53f8475f94f8b17c8397156eb8881fb2145e1e7dd9a88ae10
+
+pkgname = ssv-network

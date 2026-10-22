@@ -1,0 +1,2 @@
+d /var/lib/ssvnode 0750 ssvnode ssvnode -
+z /etc/ssvnode/config.yaml 0640 root ssvnode -

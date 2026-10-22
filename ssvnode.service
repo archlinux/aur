@@ -1,0 +1,20 @@
+[Unit]
+Description=SSV network operator node
+Documentation=https://docs.ssv.network/operators/operator-node/node-setup/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=ssvnode
+Group=ssvnode
+StateDirectory=ssvnode
+WorkingDirectory=/var/lib/ssvnode
+ExecStart=/usr/bin/ssvnode start-node -c /etc/ssvnode/config.yaml
+Restart=on-failure
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
