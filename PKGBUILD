@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=(
     'quickshell' 'brightnessctl' 'bash' 'power-profiles-daemon' 'cava' 'matugen'
     'networkmanager' 'fish' 'ttf-outfit' 'ttf-material-symbols-variable' 'qt6-multimedia-ffmpeg'
-    'qt6ct' 'mpvpaper'
+    'qt6ct' 'mpvpaper' 
 )
 makedepends=('git' 'haxe' 'bluez')
 provides=('whisker-shell' 'whisker')
@@ -25,7 +25,7 @@ pkgver() {
     if git describe --tags --long >/dev/null 2>&1; then
         git describe --tags --long | sed 's/^v//; s/-/./g'
     else
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf 'r%s.%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     fi
 }
 
@@ -34,11 +34,11 @@ build() {
     echo "  -> change directory: $PWD"
 
     export WHISKER_VERSION="$pkgver"
-    export WHISKER_COMMIT="$(git rev-parse --short HEAD)"
+    export WHISKER_COMMIT="$(git -C "$srcdir/whisker" rev-parse --short HEAD)"
 
     echo "  -> Whisker version: $WHISKER_VERSION"
     echo "  -> Whisker commit:  $WHISKER_COMMIT"
-    
+
     export HAXELIB_PATH="$srcdir/haxelib"
     echo "  -> set HAXELIB_PATH to $HAXELIB_PATH"
 
