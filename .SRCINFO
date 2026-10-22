@@ -1,6 +1,6 @@
 pkgbase = rwpm
 	pkgdesc = Separate RimWorld profiles, each with its own saves, settings and mod list
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/keyz182/rimworld-profile-manager
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = rwpm
 	conflicts = rwpm-bin
 	options = !lto
 	options = !strip
-	source = rwpm-1.18.0.tar.gz::https://github.com/keyz182/rimworld-profile-manager/archive/refs/tags/v1.18.0.tar.gz
-	sha256sums = 05076c05f21a4f779917278e5386177d78b32ea5c6431a14349f9c6b265be8b8
+	source = rwpm-1.19.0.tar.gz::https://github.com/keyz182/rimworld-profile-manager/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = a016722754b48662bb8ba4575b6fe95c98de7dcde698b07b45b8803e5e834e5a
 
 pkgname = rwpm
