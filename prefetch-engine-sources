@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Optional acquisition only. makepkg must still verify the pinned checksums.
+set -euo pipefail
+
+if [[ $# -gt 1 || ${1-} == --help ]]; then
+    printf 'Usage: prefetch-engine-sources [SOURCE-CACHE-DIR]\nDefault: adjacent recipe directory. Use your makepkg SRCDEST if configured.\n'
+    [[ $# -le 1 ]] && exit 0
+    exit 1
+fi
+
+recipe=$(dirname -- "$(realpath -- "${BASH_SOURCE[0]}")")
+cache=${1:-$recipe}
+mkdir -p -- "$cache"
+cache=$(realpath -- "$cache")
+# Trusted local metadata only; sourcing does not call package().
+# shellcheck source=PKGBUILD
+source "$recipe/PKGBUILD"
+
+pending=()
+for entry in "${source[@]}"; do
+    [[ $entry == *::ghasset://* ]] || continue
+    alias=${entry%%::*}
+    url=${entry#*::}
+    output=$cache/$alias
+    # Preserve even corrupt files and dangling aliases for makepkg to report.
+    [[ -e $output || -L $output ]] && continue
+    pending+=("$url" "$output")
+done
+
+if (( ${#pending[@]} )); then
+    # NUL-separated pairs preserve spaces/Unicode. xargs waits for all workers
+    # and reports failures; the existing helper publishes each file atomically.
+    printf '%s\0' "${pending[@]}" |
+        xargs -0 -n2 -P2 -r -- "$recipe/download-gh-asset"
+fi

@@ -1,0 +1,11 @@
+--- a/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
++++ b/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
+@@ -45,7 +45,7 @@
+ 	[ $(uname -m) == "arm64" ] && ARCH=arm64 
+ 
+ 	export UE_DOTNET_DIR="$CUR_DIR/../../../Binaries/ThirdParty/DotNet/8.0.300/linux-$ARCH"
+-	chmod u+x "$UE_DOTNET_DIR/dotnet"
++	[ -x "$UE_DOTNET_DIR/dotnet" ] || chmod u+x "$UE_DOTNET_DIR/dotnet"
+ 	export PATH="$UE_DOTNET_DIR:$PATH"
+ 	export DOTNET_ROOT="$UE_DOTNET_DIR"
+ 

@@ -1,0 +1,14 @@
+version = 1
+
+# Recipe files written for this package.
+[[annotations]]
+path = "**"
+SPDX-FileCopyrightText = "2026 Jonathan Gabor"
+SPDX-License-Identifier = "ISC"
+
+# Epic's notice, and a patch that contains lines from Epic's SetupDotnet.sh.
+# The last matching table takes precedence.
+[[annotations]]
+path = ["LICENSE.md", "setup-dotnet-permissions.patch"]
+SPDX-FileCopyrightText = "Epic Games, Inc."
+SPDX-License-Identifier = "LicenseRef-UnrealEngine"

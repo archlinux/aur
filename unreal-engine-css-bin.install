@@ -1,0 +1,67 @@
+# shellcheck shell=bash
+
+_engine_css_registered() {
+  local line section=''
+  while IFS= read -r line || [[ -n $line ]]; do
+    if [[ $line =~ ^[[:space:]]*\[([^]]+)\][[:space:]]*$ ]]; then
+      section=${BASH_REMATCH[1]}
+    elif [[ $section == Installations && $line =~ ^[[:space:]]*[^=[:space:]\;#][^=]*=[[:space:]]*/opt/unreal-engine-css/?[[:space:]]*$ ]]; then
+      return 0
+    fi
+  done < "$1"
+  return 1
+}
+
+_engine_css_group() {
+  if ! getent group unreal-engine-css >/dev/null 2>&1; then
+    groupadd -r unreal-engine-css ||
+      printf '%s\n' 'Warning: could not create group unreal-engine-css.' >&2 || :
+  fi
+  chgrp -R unreal-engine-css /opt/unreal-engine-css ||
+    printf '%s\n' 'Warning: could not assign engine ownership to group unreal-engine-css.' >&2 || :
+  # Builds write all over the engine. A default group ACL keeps new files
+  # group-writable under umask 022; chmod fixes files earlier builds created.
+  # Both skip symlinks, which group members can create.
+  setfacl -R -P -d -m g::rwx /opt/unreal-engine-css ||
+    printf '%s\n' 'Warning: could not set the default group ACL on the engine.' >&2 || :
+  chmod -R g+w /opt/unreal-engine-css ||
+    printf '%s\n' 'Warning: could not make engine files group-writable.' >&2 || :
+  return 0
+}
+
+_engine_css_membership_notice() {
+  printf '%s\n' \
+    'To use the engine from your IDE, join its group:' \
+    "  sudo gpasswd -a \"\$USER\" unreal-engine-css" \
+    'Then log out and back in before opening the project in an IDE.' || :
+}
+
+post_install() {
+  local account name uid gid home _ group_record group_gid members
+  _engine_css_group
+  # Pacman may not receive SUDO_USER. Never infer an account from root's HOME.
+  if [[ -n ${SUDO_USER:-} && $SUDO_USER != root ]] &&
+     account=$(getent passwd "$SUDO_USER" 2>/dev/null) &&
+     IFS=: read -r name _ uid gid _ home _ <<< "$account" &&
+     [[ $name == "$SUDO_USER" && $uid =~ ^[0-9]+$ && ! $uid =~ ^0+$ && $home == /* ]]; then
+    if group_record=$(getent group unreal-engine-css 2>/dev/null) &&
+       IFS=: read -r _ _ group_gid members <<< "$group_record" &&
+       [[ $gid == "$group_gid" || ,$members, == *,"$name",* ]]; then
+      :
+    else
+      _engine_css_membership_notice
+    fi
+    if _engine_css_registered "$home/.config/Epic/UnrealEngine/Install.ini" 2>/dev/null; then
+      return 0
+    fi
+  else
+    _engine_css_membership_notice
+  fi
+  printf '%s\n' \
+    'If not already registered for your account, run as your ordinary user, without sudo:' \
+    '  /opt/unreal-engine-css/Engine/Binaries/Linux/UnrealVersionSelector -register -unattended' || :
+}
+
+post_upgrade() {
+  post_install
+}

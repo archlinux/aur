@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+# makepkg DLAGENT: download-gh-asset URL OUTPUT. Fixed recipe checksums remain
+# authoritative; API size/digest checks detect incomplete or corrupt transfers.
+set +x
+set -euo pipefail
+
+fail() {
+    printf 'download-gh-asset: %s\n' "$1" >&2
+    exit 1
+}
+
+[[ $# == 2 ]] || fail 'Usage: download-gh-asset URL OUTPUT'
+# Restrict this helper to the CSS repository and simple release tags. In
+# particular, reject credentials, query strings, traversal and API placeholders.
+uri_pattern='^ghasset://satisfactorymodding/UnrealEngine/([A-Za-z0-9][A-Za-z0-9._-]*)/([1-9][0-9]*)$'
+[[ $1 =~ $uri_pattern ]] || fail 'Invalid URL; expected ghasset://satisfactorymodding/UnrealEngine/RELEASE-TAG/NUMERIC-ASSET-ID'
+tag=${BASH_REMATCH[1]}
+asset_id=${BASH_REMATCH[2]}
+[[ $tag != *..* ]] || fail 'Invalid release tag'
+[[ -n $2 && ! -d $2 ]] || fail 'OUTPUT must be a file path, not a directory'
+output=$2
+[[ $output == /* ]] || output=./$output
+parent=$(dirname -- "$output")
+[[ -d $parent ]] || fail 'OUTPUT parent directory does not exist'
+command -v gh >/dev/null || fail 'GitHub CLI (gh) is required'
+
+# Keep existing github.com credentials/configuration, but never allow the host
+# or debug environment to redirect requests or expose credentials/signed URLs.
+# Proxies and TLS configuration remain the user's normal transport settings.
+unset GH_DEBUG DEBUG GH_HOST GH_REPO GH_FORCE_TTY
+export GH_PROMPT_DISABLED=1 GH_PAGER=cat GH_NO_UPDATE_NOTIFIER=1
+export GH_NO_EXTENSION_UPDATE_NOTIFIER=1
+
+if ! gh auth status --active --hostname github.com >/dev/null 2>&1; then
+    fail 'Existing github.com authentication is missing, invalid, or could not be verified. Check gh auth status and network connectivity; this helper never logs in.'
+fi
+repo='repos/satisfactorymodding/UnrealEngine'
+if ! gh api --hostname github.com "$repo" --silent >/dev/null 2>&1; then
+    fail 'Cannot access satisfactorymodding/UnrealEngine. Check repository access and network/API availability.'
+fi
+# Select metadata from the requested release, not from the asset endpoint alone,
+# so an asset from a different release cannot satisfy this URL.
+if ! metadata=$(gh api --hostname github.com "$repo/releases/tags/$tag" \
+    --jq ".assets[] | select((.id | tostring) == \"$asset_id\") | [.size, (.digest // \"-\")] | @tsv" 2>/dev/null); then
+    fail 'Cannot access the requested release. Check the release tag, repository access, and network/API availability.'
+fi
+[[ -n $metadata ]] || fail 'Requested asset does not belong to the requested release (or is missing).'
+metadata_pattern=$'^([0-9]+)\t(-|sha256:[a-fA-F0-9]{64})$'
+[[ $metadata =~ $metadata_pattern ]] || fail 'Invalid or unsupported asset size/digest metadata'
+size=${BASH_REMATCH[1]}
+digest=${BASH_REMATCH[2]}
+
+temp_dir=$(mktemp -d -- "$parent/.ghasset.XXXXXXXX") || fail 'Cannot create a temporary download in OUTPUT directory'
+cleanup() {
+    rm -f -- "$temp_dir/asset"
+    rmdir -- "$temp_dir"
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+if ! gh api --hostname github.com "$repo/releases/assets/$asset_id" \
+    --header 'Accept: application/octet-stream' >"$temp_dir/asset" 2>/dev/null; then
+    fail 'Asset transfer failed. Check repository access and network/API availability; OUTPUT was not changed.'
+fi
+actual_size=$(stat -c %s -- "$temp_dir/asset")
+[[ $actual_size == "$size" ]] || fail 'Asset byte count mismatch; OUTPUT was not changed.'
+if [[ $digest != - ]]; then
+    actual_digest=$(sha256sum <"$temp_dir/asset")
+    actual_digest=${actual_digest%% *}
+    expected_digest=${digest#sha256:}
+    [[ $actual_digest == "${expected_digest,,}" ]] || fail 'Asset SHA256 mismatch; OUTPUT was not changed.'
+fi
+# -T prevents an existing directory from turning the rename into a move into it.
+mv -fT -- "$temp_dir/asset" "$output" || fail 'Cannot rename completed download to OUTPUT'
