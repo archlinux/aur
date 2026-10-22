@@ -1,6 +1,6 @@
 pkgbase = cadcraft-bin
 	pkgdesc = Open-source native CAD and drafting app, AutoCAD alternative (prebuilt binary)
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/storytold/cadcraft
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = cadcraft-bin
 	provides = cadcraft
 	conflicts = cadcraft
 	options = !strip
-	source_x86_64 = cadcraft-0.10.0-linux-x86_64.tar.gz::https://github.com/storytold/cadcraft/releases/download/v0.10.0/cadcraft-0.10.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2bf13abe4645655c971d452304c06f98081849ace86a3289fc991bec55392d18
-	source_aarch64 = cadcraft-0.10.0-linux-aarch64.tar.gz::https://github.com/storytold/cadcraft/releases/download/v0.10.0/cadcraft-0.10.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 96494730880b30fbf2cf1d74cb822fdcbcd36f59eee877c445f948f4978684a2
+	source_x86_64 = cadcraft-0.11.0-linux-x86_64.tar.gz::https://github.com/storytold/cadcraft/releases/download/v0.11.0/cadcraft-0.11.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7f551bb2897c3409992cbdbc9f82e0d95fd8edb9493ce941472f37ff040ce58d
+	source_aarch64 = cadcraft-0.11.0-linux-aarch64.tar.gz::https://github.com/storytold/cadcraft/releases/download/v0.11.0/cadcraft-0.11.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0af318c6330c4472e081928799407e899d51325901b51bcd6a43494c42fe0c2c
 
 pkgname = cadcraft-bin
