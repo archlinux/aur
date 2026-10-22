@@ -10,14 +10,14 @@ pkgname=(otf-geist
          otf-geist-pixel
          ttf-geist-pixel
          ttf-geist-pixel-variable)
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A new font family for Vercel, created by Vercel in collaboration with Basement Studio"
 arch=('any')
 url="https://vercel.com/font"
 license=('OFL-1.1')
 source=("https://github.com/vercel/geist-font/releases/download/v${pkgver}/${pkgbase}-v${pkgver}.zip")
-sha256sums=('70f42c1452fb6df12ea183e20a65999157354f91d11dac18b4c713e383808ec2')
+sha256sums=('43ffb66912b1c49e40c371d96e86b3b3dab42db83eb2d0c8a17321210394c4c7')
 
 package_otf-geist() {
     cd "${pkgbase}"
