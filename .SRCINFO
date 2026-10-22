@@ -1,6 +1,6 @@
 pkgbase = designcraft-bin
 	pkgdesc = Page layout and desktop publishing (prebuilt binaries)
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/storytold/designcraft
 	arch = x86_64
@@ -23,26 +23,26 @@ pkgbase = designcraft-bin
 	optdepends = vulkan-driver: hardware-accelerated Vulkan rendering
 	optdepends = xdg-desktop-portal: native file dialogs
 	optdepends = xdg-utils: open external links
-	provides = designcraft=0.10.0
+	provides = designcraft=0.11.0
 	conflicts = designcraft
 	options = !strip
-	source = designcraft-0.10.0-NOTICE.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.10.0/NOTICE
-	source = designcraft-0.10.0-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.10.0/docs/brand/LICENSE-brand.txt
-	source = designcraft-0.10.0-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.10.0/assets/app-icon/LICENSE.txt
-	source = designcraft-0.10.0-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.10.0/assets/fonts/OFL-Inter.txt
-	source = designcraft-0.10.0-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.10.0/assets/fonts/OFL-JetBrainsMono.txt
-	source = designcraft-0.10.0-OFL-SourceSans3.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.10.0/assets/fonts/OFL-SourceSans3.txt
-	source = designcraft-0.10.0-OFL-SourceSerif4.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.10.0/assets/fonts/OFL-SourceSerif4.txt
-	sha256sums = f0d8dafbdaf24f3a096dad1f83c5aae601ba6eca8e6670a438bd7ae0a2ec6951
+	source = designcraft-0.11.0-NOTICE.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.11.0/NOTICE
+	source = designcraft-0.11.0-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.11.0/docs/brand/LICENSE-brand.txt
+	source = designcraft-0.11.0-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.11.0/assets/app-icon/LICENSE.txt
+	source = designcraft-0.11.0-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.11.0/assets/fonts/OFL-Inter.txt
+	source = designcraft-0.11.0-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.11.0/assets/fonts/OFL-JetBrainsMono.txt
+	source = designcraft-0.11.0-OFL-SourceSans3.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.11.0/assets/fonts/OFL-SourceSans3.txt
+	source = designcraft-0.11.0-OFL-SourceSerif4.txt::https://raw.githubusercontent.com/storytold/designcraft/v0.11.0/assets/fonts/OFL-SourceSerif4.txt
+	sha256sums = b7de6a3c581be46591387bf9e6b4160c9facc7aeb274c2c250ee62caf0baf562
 	sha256sums = 68fb0e786130f8ead0350a352f66d7027d0f8a8ebebcf30d51de9146405f670e
 	sha256sums = eb3f3cfc6437fd370e31ca8449c7312314c191d15347bd70934d9ce2df5331bd
 	sha256sums = 262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a
 	sha256sums = a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697
 	sha256sums = 56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328
 	sha256sums = c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464
-	source_x86_64 = https://github.com/storytold/designcraft/releases/download/v0.10.0/designcraft-0.10.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4a3708fa878daf5188aa2ba66fd7cd186bf38690a6c15246ec83d853e0deeb94
-	source_aarch64 = https://github.com/storytold/designcraft/releases/download/v0.10.0/designcraft-0.10.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = a232ffcd89c840bdcccfc4911efa43a6211c26d39a341a91c075093597439bd4
+	source_x86_64 = https://github.com/storytold/designcraft/releases/download/v0.11.0/designcraft-0.11.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 12076f89ce445af5cf96c0048701a7d48373dccbd524de19fe2308601b554d58
+	source_aarch64 = https://github.com/storytold/designcraft/releases/download/v0.11.0/designcraft-0.11.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0f529995352cf50b5756906c2ef2691d80d01192d0bab9cf1fd0f1f58ef8f12a
 
 pkgname = designcraft-bin
