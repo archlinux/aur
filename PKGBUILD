@@ -3,9 +3,9 @@
 pkgname=relic-nightfox-gtk-theme
 _repo=Nightfox-GTK-Theme
 _commit=f0212f2aa0d3d6cc0b313020d2d0122f313eafc9
-_fixes=2026.10.22
+_fixes=2026.10.22.1
 pkgver=2025.10.23
-pkgrel=3
+pkgrel=4
 pkgdesc='Nightfox GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('08843884ad97463bac198fb67d0c24338fae08dea5ef4cd6c236ce81fceb5783'
-            'c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb')
+            '3c203a956f4148230177eb925916ad8eddb75c98dd2212368b40df5e52d889d0')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
