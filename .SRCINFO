@@ -1,7 +1,7 @@
 pkgbase = prek
 	pkgdesc = ⚡ Better 'pre-commit', re-engineered in Rust
 	pkgver = 0.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j178/prek
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = prek
 	depends = gcc-libs
 	options = !lto
 	source = prek::git+https://github.com/j178/prek.git#commit=8569a4ac59a79212fe152f3c815505775301ec1d
-	md5sums = SKIP
+	source = aws-lc-rs.patch
+	sha256sums = SKIP
+	sha256sums = 8eb795bdd245f1646e0097432414598d466f671b5f30df1bd0c54f8a5e2f5150
 
 pkgname = prek
