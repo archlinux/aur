@@ -1,7 +1,7 @@
 pkgbase = battery-mode
 	pkgdesc = Named charge-limit modes for laptop batteries (save/balanced/full), persistent across reboots
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ghollisjr/battery-mode
 	install = battery-mode.install
 	arch = any

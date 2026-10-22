@@ -1,7 +1,7 @@
 # Maintainer: Gary Hollis <ghollisjr@gmail.com>
 pkgname=battery-mode
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Named charge-limit modes for laptop batteries (save/balanced/full), persistent across reboots"
 arch=('any')
 url="https://github.com/ghollisjr/battery-mode"
@@ -18,6 +18,7 @@ package() {
 
     install -Dm0755 battery-mode                 "$pkgdir/usr/bin/battery-mode"
     install -Dm0644 battery-mode-restore.service "$pkgdir/usr/lib/systemd/system/battery-mode-restore.service"
+    install -dm0750                              "$pkgdir/etc/sudoers.d"
     install -Dm0440 battery-mode.sudoers         "$pkgdir/etc/sudoers.d/battery-mode"
     install -Dm0644 README.md                    "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm0644 LICENSE                      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
