@@ -1,0 +1,4 @@
+[floci-cli-bin]
+source = "git"
+git = "https://github.com/floci-io/floci-cli.git"
+prefix = ""
