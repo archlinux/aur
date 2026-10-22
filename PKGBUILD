@@ -1,6 +1,6 @@
 # Maintainer: AkitaOnRails <fabio.akita@gmail.com>
 pkgname=omarchy-games-menu
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Steam-like QuickShell launcher grid for distrobox-managed PC ports, recomps and emulators (Rust backend)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'cmake')
 # makepkg's global LTO breaks ring's C objects when linked by rust-lld.
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('40512a861ba5ab48a33023e0a36c5a5b4d3f12b3be84875cbd3d88421a5fd4c0')
+sha256sums=('70376505d27aac05fac4d73c2c6859f7b38ddcbb73d2d6c6a07848cbbd11647e')
 
 build() {
     cd "${pkgname}-${pkgver}"
