@@ -1,6 +1,6 @@
 pkgbase = skills-manager
 	pkgdesc = Manage, sync, and organize AI agent skills across coding tools
-	pkgver = 1.42.2
+	pkgver = 1.43.0
 	pkgrel = 1
 	url = https://github.com/xingkongliang/skills-manager
 	install = skills-manager.install
@@ -28,7 +28,7 @@ pkgbase = skills-manager
 	conflicts = skills-manager-bin
 	options = !lto
 	options = !strip
-	source = skills-manager-1.42.2.tar.gz::https://github.com/xingkongliang/skills-manager/archive/refs/tags/v1.42.2.tar.gz
-	sha256sums = 33738fc339253a0e09d7d27d89790bf02f1ec939eb7412458d4600a69f3ad0cf
+	source = skills-manager-1.43.0.tar.gz::https://github.com/xingkongliang/skills-manager/archive/refs/tags/v1.43.0.tar.gz
+	sha256sums = 58ca2caa98e841d2397c4ee4b7e809b37d2acf6d88550f34d40f66168d68fd51
 
 pkgname = skills-manager
