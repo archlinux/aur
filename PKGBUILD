@@ -1,16 +1,16 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 _base=xraydb
 pkgname=python-${_base}
-pkgver=4.4.7
+pkgver=4.5.8
 pkgrel=1
 pkgdesc="X-ray reference data in SQLite library with Python interface"
 arch=(x86_64)
 url="https://github.com/xraypy/XrayDB"
 license=(Public Domain)
-depends=(python-numpy python-scipy python-sqlalchemy)
+depends=("python-numpy>=2" "python-scipy>=1.13" "python-sqlalchemy>=2.0.1")
 makedepends=(python-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${_base::1}/$_base/$_base-$pkgver.tar.gz)
-sha512sums=('a8103a0c5dfb07766e2f9a45c6a120491fdf76cca643d39e82b2849c4b8a01fa0640b9c74c1ad84dd6c2b1d06967a789e6be55bfdb6535090f9392ed73ada05e')
+sha512sums=('f53597b90d4e24ae897597512ebf16f97406aa260e9d0a9ec73e3ab7023202dae789033a6662e474f9cd46846deacf8ffada269fcc484468bea21c8d5ec23339')
 
 build() {
   cd ${_base}-${pkgver}
