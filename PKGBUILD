@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=elyterminal-bin
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="A GPU-accelerated terminal emulator built on GPUI"
 arch=('x86_64')
 url="https://github.com/ELY-Open-Source/ELYTerminal"
@@ -11,7 +11,7 @@ provides=('elyterminal')
 conflicts=('elyterminal')
 options=('!strip' '!debug')
 source_x86_64=("ELYTerminal-${pkgver}-linux-x86_64.tar.gz::https://github.com/ELY-Open-Source/ELYTerminal/releases/download/v${pkgver}/ELYTerminal-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('0e9a73fcb44d892d97b15a27748969225abfcf19322b5ec65c10d4dc27280412')
+sha256sums_x86_64=('0befa912342e48eeb0a61c3362a08d7c9b53515d8f15d777c15cc7065c42c7cf')
 
 package() {
     local _dir="ELYTerminal-${pkgver}-linux-x86_64"
