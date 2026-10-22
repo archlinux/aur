@@ -4,7 +4,7 @@
 
 _pkgname=kglobalacceld
 pkgname="${_pkgname}"-ptt-fix
-pkgver=6.8.0
+pkgver=6.8.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality patched with MR !130'

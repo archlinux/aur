@@ -1,6 +1,6 @@
 pkgbase = kglobalacceld-ptt-fix
 	pkgdesc = Daemon providing Global Keyboard Shortcut (Accelerator) functionality patched with MR !130
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/130
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = kglobalacceld-ptt-fix
 	depends = libxcb
 	depends = qt6-base
 	depends = xcb-util-keysyms
-	provides = kglobalacceld=6.8.0
+	provides = kglobalacceld=6.8.1
 	conflicts = kglobalacceld
 	options = !debug
-	source = https://download.kde.org/stable/plasma/6.8.0/kglobalacceld-6.8.0.tar.xz
+	source = https://download.kde.org/stable/plasma/6.8.1/kglobalacceld-6.8.1.tar.xz
 	source = patch.diff::https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/130.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
