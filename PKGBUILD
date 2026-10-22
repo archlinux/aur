@@ -1,7 +1,8 @@
-# Maintainer: the_swest
+# Maintainer: SkyfaR <forgejo at skyfar dot de>
+# Co-Maintainer: the_swest
 # Contributor: DrSkyfaR <https://github.com/DrSkyfaR>
 pkgname=dualcpy-linux
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Multi-window scrcpy launcher for dual-screen Android handhelds (X11 docking / Wayland floating)"
 arch=('any')
@@ -22,7 +23,7 @@ makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "dualcpy-linux.sh"
         "dualcpy-linux.desktop")
-sha256sums=('2d353f17b1a5f0a7068e875943f2f40a1e45e34ce19706cd82fc8d240cc99e81'
+sha256sums=('7fcb042e6bd462da339ead12e273c27728cb9923452a52f24462ba105fa94a17'
             '4f401d149814e34ae39580852b76310b0e281e3f366a0bd0dcfb224cd0213418'
             'a84f963ea9a365da1b993a48caef482f8f42dc33178433eeae1b2036220df4c0')
 
