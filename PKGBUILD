@@ -5,7 +5,7 @@ _pkgname=bcmr
 pkgname=${_pkgname}-bin
 pkgdesc="Better Copy Move Remove — A modern, safe CLI tool for file operations with progress display, resume, and remote copy."
 
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${arch[0]}-linux.tar.gz")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
-            '056047b510e7b981f16f2a03983d0490ff7502cb37db3ed0671947e97c323b14')
-sha256sums_x86_64=('3a269a8dafbff7f1250e3792ab8f6966801d1245ce52340bd7a196da68dd8f79')
+            'cd3f3d113657e08844fc856caeea7a3d0c3fb765f6c18d5690dd0149aabbd81b')
+sha256sums_x86_64=('a0900a597a9f5daa58c339ead94e0058224d3e86cd816c5091fc0e1f0e2f9a53')
 
 
 package() {
