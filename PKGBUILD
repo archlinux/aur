@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-vicinae
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Companion GNOME extension for Vicinae with clipboard monitoring and window management APIs"
 arch=('any')
@@ -10,7 +10,7 @@ conflicts=("${pkgname}-git")
 _uuid='vicinae@dagimg-dot'
 source=("${_uuid}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_uuid}.shell-extension-v${pkgver}.zip")
 noextract=("${_uuid}-${pkgver}.zip")
-sha256sums=('d0d79c762c7cac44941d4f74617b156c3a27df255320b8c81a20a3fe1f17284a')
+sha256sums=('a3cc5db3b5a0c44ecf2f7db5ef0f9b49644cc0d20342f107b2e431c1d85f9956')
 
 package() {
   local extension_dir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
