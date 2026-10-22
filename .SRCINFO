@@ -1,6 +1,6 @@
 pkgbase = cpdf
 	pkgdesc = manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://www.coherentpdf.com/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cpdf
 	makedepends = ocaml
 	makedepends = ocaml-findlib
 	depends = glibc
-	depends = camlpdf>=2.9.2
+	depends = camlpdf>=2.9.3
 	options = !makeflags
 	options = staticlibs
-	source = cpdf-source-2.9.2.tar.gz::https://github.com/johnwhitington/cpdf-source/archive/v2.9.2.tar.gz
-	md5sums = 4eabc38b55cd0e8075ea930714787aba
-	sha256sums = bfcabf3a1e1a55840df55229afc992873b311ae50bd5a9b4135c9aef7ef91f0e
+	source = cpdf-source-2.9.3.tar.gz::https://github.com/johnwhitington/cpdf-source/archive/v2.9.3.tar.gz
+	md5sums = f8ac08b6673d7559a3117d422c4645d6
+	sha256sums = 21f33258f29458a31bd6dc6a0a327adb4b3d6db08fb278523412bc721df87d20
 
 pkgname = cpdf
