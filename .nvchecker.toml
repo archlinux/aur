@@ -1,0 +1,4 @@
+[python-gds2palace]
+source = "git"
+git = "https://github.com/VolkerMuehlhaus/gds2palace_ihp_sg13g2.git"
+prefix = "v"
