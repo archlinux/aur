@@ -1,0 +1,32 @@
+_notice() {
+  cat <<'EOF'
+==> libfprint-goodixtls-55x4 is replaced by libfprint-goodix55b4.
+
+    The new driver (goodix55b4) uses Goodix's Milan matcher ported to native
+    C: far more reliable matching than the old SIGFM matcher. Your sensor
+    needs no reflashing: a sensor flashed with goodix-fp-dump already has the
+    firmware and key the new driver expects.
+
+    Prints enrolled with the old driver are NOT used by the new one.
+    Re-enroll your fingers:
+
+        sudo systemctl restart fprintd
+        fprintd-enroll
+
+    The old prints stay in /var/lib/fprint/<user>/goodixtls55x4/; you can
+    delete that folder. This transitional package can be removed with:
+
+        sudo pacman -D --asexplicit libfprint-goodix55b4
+        sudo pacman -R libfprint-goodixtls-55x4
+
+    More: https://github.com/TheWeirdDev/libfprint-goodix55b4-milan
+EOF
+}
+
+post_install() {
+  _notice
+}
+
+post_upgrade() {
+  _notice
+}
