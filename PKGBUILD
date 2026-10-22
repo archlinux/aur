@@ -1,6 +1,6 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 pkgname=affinity-bin
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Affinity Photo/Designer/Publisher running via Wine (AppImage, unofficial - Serif is not affiliated)"
 arch=('x86_64')
@@ -8,14 +8,16 @@ url="https://github.com/ryzendew/Linux-Affinity-Installer"
 license=('custom')
 options=('!strip' '!debug')  # AppImage = ELF stub + appended squashfs; stripping destroys it
 depends=('fuse2' 'zenity')
+optdepends=('opencl-driver: OpenCL acceleration (e.g. intel-compute-runtime)')
 provides=('affinity')
 conflicts=('affinity')
-# v3.3.0's asset embeds Serif's own build number (4850): earlier releases
-# shipped Affinity-${pkgver}-x86_64.AppImage, this one is
-# Affinity-3.3.0.4850-x86_64.AppImage. Re-check the release's asset list when
-# bumping. The sha256 matches the digest GitHub publishes for the asset.
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/ryzendew/Linux-Affinity-Installer/releases/download/${pkgver}/Affinity-3.3.0.4850-x86_64.AppImage")
-sha256sums=('756ca39d1b6646d087a81f8930aef66b5e8479b652351a3837e3dbdd7e92dec9')
+install=affinity-bin.install
+# Assets embed Serif's own build number and a build suffix instead of just
+# ${pkgver}: v3.3.0 was Affinity-3.3.0.4850-x86_64.AppImage, v3.3.1 is
+# Affinity-3.3.1.4940-x86_64-optimized.AppImage. Re-check the release's asset
+# list when bumping. The sha256 matches the digest GitHub publishes.
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/ryzendew/Linux-Affinity-Installer/releases/download/${pkgver}/Affinity-3.3.1.4940-x86_64-optimized.AppImage")
+sha256sums=('bab79bdd10831864708decced0648da32234b7f54a1d99916c667dd0162144e3')
 
 prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"

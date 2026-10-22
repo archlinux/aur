@@ -1,0 +1,25 @@
+_prefix_note() {
+    cat <<'EOF'
+==> affinity-bin: Wine prefix notes
+
+The AppImage copies its bundled Wine prefix to ~/.affinity-appimage-wineprefix
+only on first start and never refreshes it. If Affinity crashes after a
+package upgrade (e.g. with "Couldn't find a compatible Webview2 Runtime"),
+recreate the prefix:
+
+    mv ~/.affinity-appimage-wineprefix ~/.affinity-appimage-wineprefix.old
+
+A freshly created prefix has no Z: drive, so Wine's file dialog cannot browse
+outside the prefix. Restore it with:
+
+    ln -s / ~/.affinity-appimage-wineprefix/dosdevices/z:
+EOF
+}
+
+post_install() {
+    _prefix_note
+}
+
+post_upgrade() {
+    _prefix_note
+}

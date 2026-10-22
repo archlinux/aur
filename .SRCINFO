@@ -1,17 +1,19 @@
 pkgbase = affinity-bin
 	pkgdesc = Affinity Photo/Designer/Publisher running via Wine (AppImage, unofficial - Serif is not affiliated)
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/ryzendew/Linux-Affinity-Installer
+	install = affinity-bin.install
 	arch = x86_64
 	license = custom
 	depends = fuse2
 	depends = zenity
+	optdepends = opencl-driver: OpenCL acceleration (e.g. intel-compute-runtime)
 	provides = affinity
 	conflicts = affinity
 	options = !strip
 	options = !debug
-	source = affinity-bin-3.3.0.AppImage::https://github.com/ryzendew/Linux-Affinity-Installer/releases/download/3.3.0/Affinity-3.3.0.4850-x86_64.AppImage
-	sha256sums = 756ca39d1b6646d087a81f8930aef66b5e8479b652351a3837e3dbdd7e92dec9
+	source = affinity-bin-3.3.1.AppImage::https://github.com/ryzendew/Linux-Affinity-Installer/releases/download/3.3.1/Affinity-3.3.1.4940-x86_64-optimized.AppImage
+	sha256sums = bab79bdd10831864708decced0648da32234b7f54a1d99916c667dd0162144e3
 
 pkgname = affinity-bin
