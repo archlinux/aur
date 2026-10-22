@@ -34,8 +34,19 @@ sha256sums=('460a5dcc32366adfb40b72789f6dc1e8ce7294e58dfed76b5bf29eb8153c5fe0')
 
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
+	CFLAGS+=' -fno-lto'
 	export OPENSSL_NO_VENDOR=true
 }
 
