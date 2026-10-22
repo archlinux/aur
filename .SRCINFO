@@ -1,13 +1,14 @@
 pkgbase = crossplane-gixy
 	pkgdesc = Reliable and fast NGINX configuration file parser
 	pkgver = 0.5.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dvershinin/crossplane
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-tox
 	checkdepends = pypy3
 	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
 	depends = python-simplejson
