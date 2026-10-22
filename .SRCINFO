@@ -1,0 +1,15 @@
+pkgbase = prettier-plugin-java
+	pkgdesc = Prettier Java Plugin
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = https://github.com/jhipster/prettier-java
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	depends = prettier
+	depends = nodejs
+	noextract = prettier-plugin-java-2.11.0.tgz
+	source = https://registry.npmjs.org/prettier-plugin-java/-/prettier-plugin-java-2.11.0.tgz
+	sha256sums = 8948889699f98f6364513d2e6e7bcf4c9ff14b1a52f5c72dfef4344cbda784ff
+
+pkgname = prettier-plugin-java
