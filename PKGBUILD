@@ -42,7 +42,7 @@ arch=('x86_64' 'aarch64')
 url='https://www.canon-europe.com/support/business/products/office-printers/imagerunner/series/imagerunner-1730i.html'
 license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
-depends=(libcups glibc libstdc++ libxml2-legacy libxml2 glib2 hicolor-icon-theme libjpeg6-turbo gtk3)
+depends=(libcups glibc libstdc++ libxml2-legacy libxml2 glib2 hicolor-icon-theme libjpeg6 gtk3)
 optdepends=('jbigkit: solves some cpu hangs'
             #'libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
             #'libjbig-shared: port of debian/fedora specific jbigkit functionality that can prevent cpu hangs on some models'
