@@ -5,7 +5,7 @@ _pkgname=baken
 pkgname=${_pkgname}-bin
 pkgdesc="Bake'n Deck - Rekordbox to CDJ prep toolkit: loudness gain, Key+BPM playlist sort, and CDJ-safe MP3 transcode"
 
-pkgver=4.6.1
+pkgver=4.7.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,9 +28,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('45f62ea4b8704c36e13c62bdafb15076fc8bf618b9722496534193700a7f61bc'
-            '06b601ba52dd40e5f1dec38f03288070871e8b685d3e16c25fad142692b4736a')
-sha256sums_x86_64=('1fc59a1123c6bcd8f74b55073e5cb850b90a869705b8f18b19bc1f6a3f26a418')
-sha256sums_aarch64=('227aeb49676eaad3104a39d8ae91ca04b46abfaaf9842f0afe38d65ad3039820')
+            '0d617139549c0398b0ab692b785e3a067f2134663df70613c6d45bde5345f9c3')
+sha256sums_x86_64=('661193e2d16b11c4fcf02d84975d136b85ea060954e32174bfa74c02194bc5b6')
+sha256sums_aarch64=('784fa72a866536ddd9e4926581e35a82e359f53826bd7880eb1952303cda06a3')
 
 
 package() {
