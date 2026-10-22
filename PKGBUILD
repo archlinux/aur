@@ -1,6 +1,6 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=padtune
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Unofficial configurator for BIGBIG WON controllers (Rainbow 2 Pro and family): buttons, sticks, triggers, lights, macros, polling rate"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('wayland: native Wayland window'
             'libx11: X11 window')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a871eda11572960f9b80877f5de0482c162320c3c05d7200987866872642c610')
+sha256sums=('ac20f1dc7c38ae6b414eb519fa40cdcb3579a0b92414fe473398c519cfef902b')
 
 prepare() {
   cd "$pkgname-$pkgver"
