@@ -1,6 +1,6 @@
 pkgbase = brioche-git
 	pkgdesc = a package manager and build tool for building and running complex software projects
-	pkgver = 0.1.0.r0.g31f0e37
+	pkgver = 0.1.8.r31.gbd21db2
 	pkgrel = 1
 	url = https://brioche.dev
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = brioche-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	provides = brioche=0.1.0.r0.g31f0e37
+	provides = brioche=0.1.8.r31.gbd21db2
 	conflicts = brioche-git
 	options = !lto
 	source = git+https://github.com/brioche-dev/brioche.git

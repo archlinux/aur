@@ -2,7 +2,7 @@
 
 pkgname=brioche-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.0.r0.g31f0e37
+pkgver=0.1.8.r31.gbd21db2
 pkgrel=1
 pkgdesc='a package manager and build tool for building and running complex software projects'
 arch=(x86_64)
@@ -19,21 +19,31 @@ options=(!lto)
 source=("git+$_url.git")
 sha256sums=('SKIP')
 
-prepare() {
+_srcenv() {
 	cd "$_pkgname"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 pkgver() {
 	cd "$_pkgname"
 	git describe --long --abbrev=7 --tags --match="v*" |
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-_srcenv() {
-	cd "$_pkgname"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 }
 
 build() {
