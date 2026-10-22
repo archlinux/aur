@@ -4,7 +4,7 @@
 # (repository is being renamed to claude-desktop-extra; the old URL redirects)
 
 pkgname=claude-desktop-extra
-pkgver=3.1623.3
+pkgver=3.1623.4
 pkgrel=1
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
@@ -58,10 +58,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v3.1623.3/claude-desktop-3.1623.3-linux.tar.gz")
-sha256sums_x86_64=('2034cfbfe3fdc704d82fe1e3804d643fd9b72bd7676129d5843d2bb03f68e283')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v3.1623.3/claude-desktop-3.1623.3-linux-aarch64.tar.gz")
-sha256sums_aarch64=('9d443bb3e6c7d882d9e8919797370b578fdd788e92fc52dae05be471767d67fc')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v3.1623.4/claude-desktop-3.1623.4-linux.tar.gz")
+sha256sums_x86_64=('b916db5fced3551e6f68e8880f3b0aa1ac566db14a7cdbee44648a73e03191c4')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v3.1623.4/claude-desktop-3.1623.4-linux-aarch64.tar.gz")
+sha256sums_aarch64=('6cc0ca9a5b45f0d2c4a33fdf11e0cce1158d61260174416f52b26f59d1bc8524')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -87,6 +87,21 @@ package() {
     if [ -f "$pkgdir/usr/lib/claude-desktop/chrome-sandbox" ]; then
         chmod 4755 "$pkgdir/usr/lib/claude-desktop/chrome-sandbox"
     fi
+
+    # Release stamp for the in-app update check: the release tag this package
+    # was built from (v<pkgver>, or v<pkgver>-<pkgrel> for a re-release, the tag
+    # scheme of our GitHub releases) and the package format, which picks the
+    # README install section the "Update available" button opens. It sits in the
+    # exe-adjacent resources/, next to app.asar (process.resourcesPath).
+    if [[ ! $pkgver =~ ^[0-9]+\.[0-9]+\.[0-9]+$ || ! $pkgrel =~ ^[1-9][0-9]*$ ]]; then
+        echo "ERROR: pkgver '$pkgver' / pkgrel '$pkgrel' not in X.Y.Z / N form - cannot write the release stamp" >&2
+        return 1
+    fi
+    local _tag="v$pkgver"
+    [ "$pkgrel" = 1 ] || _tag="v$pkgver-$pkgrel"
+    printf '{"tag":"%s","format":"pacman"}\n' "$_tag" \
+        > "$pkgdir/usr/lib/claude-desktop/resources/cdb-release.json"
+    chmod 644 "$pkgdir/usr/lib/claude-desktop/resources/cdb-release.json"
 
     # Install launcher script (Wayland/X11 detection, env setup, lock cleanup)
     install -Dm755 "$srcdir/launcher/claude-desktop" "$pkgdir/usr/bin/claude-desktop"
