@@ -1,0 +1,26 @@
+pkgbase = ttf-kreativekorp-trs80
+	pkgdesc = KreativeKorp's font bundle themed after the TRS-80: Another Man's Treasure, complete with 22 different variations!
+	pkgver = 2014.04
+	pkgrel = 1
+	url = https://www.kreativekorp.com/software/fonts/trs80/
+	arch = any
+	license = custom:relay-fonts-1.2f
+	makedepends = wget
+	depends = xorg-fonts-encodings
+	source = amtreasure.zip::https://www.kreativekorp.com/swdownload/fonts/retro/amtreasure.zip
+	sha256sums = 0ead11c7c07fd3306bc001a393088b973497ad1dad52bdc418c31da5881031e4
+
+pkgname = ttf-kreativekorp-trs80-model1-original
+	pkgdesc = KreativeKorp's TRS-80 original Model 1 (I) font: Another Man's Treasure MIA.
+
+pkgname = ttf-kreativekorp-trs80-model1-lowercase
+	pkgdesc = KreativeKorp's TRS-80 lowercase Model 1 (I) font: Another Man's Treasure MIB.
+
+pkgname = ttf-kreativekorp-trs80-model3
+	pkgdesc = KreativeKorp's TRS-80 Model 3 (III) font: Another Man's Treasure MIII.
+
+pkgname = ttf-kreativekorp-trs80-model4-original
+	pkgdesc = KreativeKorp's TRS-80 original Model 4 font: Another Man's Treasure M4A.
+
+pkgname = ttf-kreativekorp-trs80-model4-intl
+	pkgdesc = KreativeKorp's TRS-80 international Model 4 font: Another Man's Treasure M4B.
