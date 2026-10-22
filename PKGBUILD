@@ -2,7 +2,7 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=65.0.0
+pkgver=65.1.0
 pkgrel=1
 _tarver=7.5.22
 pkgdesc='Command-line interface for Vercel'
@@ -20,7 +20,7 @@ conflicts=('vercel')
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('25ed5036222dfb551f6d106bb7b9c6f5a9290efa7aeb7dbe8e76c86c76bdc979')
+sha256sums=('91b07d29eab9818406eb2d92f621bfbdc76d4b8960597036eeedcd58fb667847')
 
 package() {
     local _stagedir="${srcdir}/${_pkgname}-${pkgver}-stage"
