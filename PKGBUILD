@@ -1,6 +1,6 @@
 # Maintainer: Qiusheng Wu <giswqs at gmail dot com>
 pkgname=terrio
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Pure-Rust geospatial raster and vector data I/O: the terrio command"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 conflicts=('terrio-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/opengeos/terrio/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('462ac9c7e9898449cb04b76460134c842a6b2f22b1e232fbfed25e7eadbe1cac')
+sha256sums=('4462026723875096e2d6e302499be3eeaa9fcc9bbf128d858141e4e9c4af80e3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
