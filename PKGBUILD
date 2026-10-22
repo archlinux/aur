@@ -3,8 +3,9 @@
 
 pkgname=imgp-git
 _pkgname=imgp
-pkgver=v2.9.r13.g00b2b52
-pkgrel=2
+epoch=1
+pkgver=v3.0.r1.g8a3de39
+pkgrel=1
 pkgdesc="Resize or rotate JPEG and PNG images."
 arch=('any')
 url="https://github.com/jarun/${_pkgname}"
@@ -18,7 +19,7 @@ provides=('imgp')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
