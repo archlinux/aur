@@ -1,7 +1,7 @@
 pkgbase = bupdate-git
 	pkgdesc = Universal package updater — parallel updates for Linux, BSD and Windows (built from git)
 	pkgver = 0.2.3.r0.g1a7a68d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://radicle.network/nodes/iris.radicle.network/rad%3Az1SpYG13iEYC9Ds1UjyVJhe1sf1i
 	arch = x86_64
 	arch = aarch64
