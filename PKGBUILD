@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=liketaskmanager-git
-pkgver=2.4.r4.gf491ab2
-pkgrel=2
-pkgdesc="Tool that mimics the permformance monitoring of Windows Task Manager"
+pkgver=4.0.3.r3.gb287ddb
+pkgrel=1
+pkgdesc="Process monitor that mimics the performance and process tab of Windows Task Manager"
 arch=('x86_64')
 url="https://github.com/rejuce/LikeTaskManager"
 license=('GPL-3.0-or-later')
@@ -11,15 +11,16 @@ depends=(
   'qt6-base'
   'qwt'
 )
-makedepends=('git')
+makedepends=(
+  'cmake'
+  'desktop-file-utils'
+  'git'
+  'qt6-tools'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/rejuce/LikeTaskManager.git"
-        "${pkgname%-git}.desktop"
-        'includepath.patch')
-sha256sums=('SKIP'
-            'c1655277c90a158ceed2fe461297ccd148f7746c4f19320de4c375a4e49ada0b'
-            'ddf181e60d9f79079d824b0d1ed92b95d70f708223aa05e3f5e641fe0c06ab91')
+source=("git+https://github.com/rejuce/LikeTaskManager.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd LikeTaskManager
@@ -29,21 +30,41 @@ pkgver() {
 prepare() {
   cd LikeTaskManager
 
-  # Remove precompiled binary
+  # Remove old precompiled binary
   rm -fv LikeTaskManager
 
-  # Correct INCLUDEPATH
-  patch -Np1 -i ../includepath.patch
+  # Use generic icon instead of application screenshot
+  desktop-file-edit --set-icon=utilities-system-monitor LikeTaskManager.desktop
+
+  # Update version
+  sed -i "s/Version 3.1.0/Version ${pkgver%*.r*}/g" ltm.cpp
 }
 
 build() {
-  cd LikeTaskManager
-  qmake6
-  make
+  local cmake_options=(
+    -B build
+    -S LikeTaskManager
+    -W no-author
+    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
+}
+
+check() {
+  local ctest_flags=(
+    --test-dir build
+    --output-on-failure
+    --parallel $(nproc)
+  )
+  ctest "${ctest_flags[@]}"
+
+  desktop-file-validate LikeTaskManager/LikeTaskManager.desktop
 }
 
 package() {
-  cd LikeTaskManager
-  install -Dm755 LikeTaskManager -t "$pkgdir/usr/bin/"
-  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm755 build/LikeTaskManager -t "$pkgdir/usr/bin/"
+  install -Dm644 LikeTaskManager/LikeTaskManager.desktop -t \
+    "$pkgdir/usr/share/applications/"
 }
