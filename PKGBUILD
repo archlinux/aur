@@ -6,7 +6,7 @@
 
 pkgname=vgshell-git
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop shell for Hyprland, built on Quickshell (development version)'
 arch=('any')
 url='https://github.com/vanillagreencom/vgshell'
@@ -14,7 +14,7 @@ license=('MIT AND OFL-1.1 AND ISC AND Apache-2.0 AND CC-BY-SA-4.0')
 depends=(
   'greetd'
   'glibc'
-  'vgshell-quickshell>=0.3.1'
+  'vgshell-quickshell>=0.3.2.r7.g2b4501a-2'
   'hyprland>=0.56'
   'bash'
   'coreutils'
