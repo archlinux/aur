@@ -1,6 +1,6 @@
 pkgbase = iloader-bin
 	pkgdesc = User friendly sideloader
-	pkgver = 2.3.10
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/nab138/iloader
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = iloader-bin
 	depends = gdk-pixbuf2
 	depends = gcc-libs
 	conflicts = iloader-appimage
-	source = iloader-bin-2.3.10.deb::https://github.com/nab138/iloader/releases/download/v2.3.10/iloader-linux-amd64.deb
-	source = iloader-bin-2.3.10-LICENSE::https://github.com/nab138/iloader/raw/refs/heads/main/LICENSE
-	sha256sums = 3a616475a619751336d2a1bf9762bf5050bbe984d121b5e414eab917515130b2
+	source = iloader-bin-2.4.0.deb::https://github.com/nab138/iloader/releases/download/v2.4.0/iloader-linux-amd64.deb
+	source = iloader-bin-2.4.0-LICENSE::https://github.com/nab138/iloader/raw/refs/heads/main/LICENSE
+	sha256sums = a8c54e944f87b96cdb83b0cc9c9c13a724292fce2dae8f3e721339966c30a0c9
 	sha256sums = c6e929e3490b6475e382b4f74aaddd068deb3bf27cca2109821591e692dfcb3b
 
 pkgname = iloader-bin
