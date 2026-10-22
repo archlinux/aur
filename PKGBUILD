@@ -1,15 +1,18 @@
 # Maintainer: coldBug <coldbug@e.mail.de>
 pkgname=rusthound-ce-git
 _pkgname=${pkgname%-git}
-pkgver=r10.6aacf86
+pkgver=r264.6c3aaba
 pkgrel=1
 pkgdesc="BloodHoundCE collector tool written in Rust."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/g0h4n/RustHound-CE"
 license=("MIT")
-makedepends=("git" "cargo" "clang" "rustup")
+depends=("glibc" "krb5" "libgcc")
+makedepends=("git" "cargo" "clang")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
+# ring and libmimalloc-sys compile C code; makepkg's -flto breaks linking it
+options=(!lto)
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -22,7 +25,7 @@ prepare() {
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   cargo update
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -33,6 +36,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
