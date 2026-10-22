@@ -1,0 +1,23 @@
+pkgbase = rufix
+	pkgdesc = Rufus-style USB formatter and bootable drive creator for Linux (GTK3)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/thuutien/rufix
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = polkit
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = exfatprogs
+	depends = ntfs-3g
+	depends = util-linux
+	depends = systemd
+	optdepends = wimlib: split Windows install.wim images larger than 4 GB for FAT32 drives
+	optdepends = parted: re-read partition tables via partprobe
+	source = rufix-0.1.1.tar.gz::https://github.com/thuutien/rufix/releases/download/v0.1.1/rufix-0.1.1.tar.gz
+	sha256sums = 9315a4f664f93bafc24d89e3a0579817854959bff3bdee367371178722a1ff4d
+
+pkgname = rufix
