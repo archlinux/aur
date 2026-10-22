@@ -1,6 +1,6 @@
 pkgbase = python-pinecone
 	pkgdesc = Python Pinecone client and SDK
-	pkgver = 10.0.0
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://github.com/pinecone-io/pinecone-python-client
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-pinecone
 	depends = python-msgspec
 	depends = python-orjson
 	options = !lto
-	source = python-pinecone-10.0.0.tar.gz::https://github.com/pinecone-io/pinecone-python-client/archive/v10.0.0.tar.gz
-	b2sums = a4646dd986b08ebada762e8d0cb6f86f9290f6f64e939c538d64c1a7c9642fc8b5f41ca4e61377b251ca173bfd669d0b8249c04f7ab43347ed44158961765c66
+	source = python-pinecone-10.1.0.tar.gz::https://github.com/pinecone-io/pinecone-python-client/archive/v10.1.0.tar.gz
+	b2sums = 2af48e2df7a012bac9e390052cecf80ab416f297073a6101193a9b24f151be9b099d19657aaec0144c5525fffefbe05b1fd929cfa3d73951bd1402b12cc92000
 
 pkgname = python-pinecone
