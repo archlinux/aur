@@ -3,7 +3,7 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=proto
-pkgver=0.63.1
+pkgver=0.63.2
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ url='https://github.com/moonrepo/proto'
 license=('MIT')
 depends=('glibc' 'libgcc' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e37ff82eebcecd23c36818ffcbe54f10d2e28c924cfe3d55b24512573dce0520')
+sha256sums=('7907070b4f6a8660943f346448c538a1b2dbdf76991e0c4a517fb2154f4d4e74')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
