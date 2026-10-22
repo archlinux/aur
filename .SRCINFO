@@ -1,0 +1,19 @@
+pkgbase = python-markdown-pytest
+	pkgdesc = Pytest plugin for runs tests directly from Markdown files
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/mosquito/markdown-pytest
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	optdepends = python-pytest: pytest
+	optdepends = python-pytest-asyncio: async
+	source = markdown-pytest-0.6.6.tar.gz::https://github.com/mosquito/markdown-pytest/archive/refs/tags/0.6.6.tar.gz
+	sha256sums = ccc074a060cd9e3e95e93507d838edfbf01000140b9373123c97f1732d4c8312
+
+pkgname = python-markdown-pytest
