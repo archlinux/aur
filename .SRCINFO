@@ -1,8 +1,8 @@
 pkgbase = mendingwall
 	pkgdesc = Fix issues when hopping between multiple desktop environments
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
-	url = https://mendingwall.indii.org
+	url = https://indii.org/software/mendingwall
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = mendingwall
 	depends = libadwaita
 	depends = libportal
 	depends = libportal-gtk4
-	source = mendingwall-0.3.9.tar.gz::https://github.com/lawmurray/mendingwall/archive/refs/tags/v0.3.9.tar.gz
-	sha256sums = 8692a1f6e2a192ae17e6efa6b0db15b1778cf4e648c2216e7376c42b0e7c84fe
+	source = mendingwall-0.3.10.tar.gz::https://github.com/lawmurray/mendingwall/archive/refs/tags/v0.3.10.tar.gz
+	sha256sums = c940e3bf74d3361ae882d59ca22e09c1b10e11ce9d844fff5de4d207c0de04f4
 
 pkgname = mendingwall
