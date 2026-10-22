@@ -1,6 +1,6 @@
 # Maintainer: VELA <https://github.com/lucannez64/VELA>
 pkgname=vela-desktop-bin
-pkgver=0.1.583
+pkgver=0.1.593
 pkgrel=1
 pkgdesc="Passwordless, zero-knowledge vault desktop app (prebuilt binary)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('vela-desktop')
 # useless and the split -debug package would only contain junk.
 options=('!strip' '!debug')
 source_x86_64=("VELA_${pkgver}_amd64.deb::${url}/releases/download/desktop-v${pkgver}/VELA_${pkgver}_amd64.deb")
-sha256sums_x86_64=('c8c294a62de0e8d5962103585e602cd6ed2103cd31d310bc75fef2b433bd4243')
+sha256sums_x86_64=('c26c8132039ced9ed33a71dd57d7599a2b62801fe6e017a8bb7f094503fc483a')
 
 package() {
   ar x "VELA_${pkgver}_amd64.deb"
