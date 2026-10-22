@@ -1,0 +1,4 @@
+[isocast]
+source = "git"
+git = "https://github.com/R44VC0RP/isocast.git"
+prefix = "v"
