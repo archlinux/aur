@@ -1,6 +1,6 @@
 pkgbase = agent-manager-bin
 	pkgdesc = Run Claude Code, Codex, OpenCode and other AI coding agents in tmux
-	pkgver = 0.42.0
+	pkgver = 0.43.0
 	pkgrel = 1
 	url = https://agent-manager.dev/
 	license = Apache-2.0
@@ -9,10 +9,10 @@ pkgbase = agent-manager-bin
 	conflicts = agent-manager
 	provides = agent-manager
 	arch = aarch64
-	source_aarch64 = agent-manager-bin_0.42.0_aarch64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v0.42.0/agent-manager_0.42.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1d4e60bc141354a54422cfc9916f61e059b3f5c9f87d1a6d5fb914dce0e5ee5d
+	source_aarch64 = agent-manager-bin_0.43.0_aarch64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v0.43.0/agent-manager_0.43.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e37b8e99444717e672ac8ee816e42207afe44cce654e08962f147c83b95fee24
 	arch = x86_64
-	source_x86_64 = agent-manager-bin_0.42.0_x86_64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v0.42.0/agent-manager_0.42.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = ab195e77401e407cea06d38b7aa6f881cb13e5499268ee7ae66f35bf1739f30b
+	source_x86_64 = agent-manager-bin_0.43.0_x86_64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v0.43.0/agent-manager_0.43.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d1a9ad5567c615e2fa97a8f8dde1e633c173263163e003887064efd1022456f4
 	
 pkgname = agent-manager-bin
