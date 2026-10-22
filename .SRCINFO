@@ -1,7 +1,7 @@
 pkgbase = photocraft-bin
 	pkgdesc = Layer-based image and photo editor (prebuilt binaries)
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storytold/photocraft
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = photocraft-bin
 	license = LicenseRef-SCOWL
 	depends = glibc
 	depends = gcc-libs
+	depends = hicolor-icon-theme
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = libx11
