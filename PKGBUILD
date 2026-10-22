@@ -2,7 +2,7 @@
 
 pkgname=solidcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.0.r73.g95ea05e
+pkgver=0.19.0.nightly.20261022.67.1.r6.gf79cbc2
 pkgrel=1
 url="https://bherbruck.github.io/$_pkgname"
 _url="https://github.com/bherbruck/$_pkgname"
@@ -21,14 +21,18 @@ sha256sums=('SKIP')
 _srcenv() {
 	cd "$_pkgname"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -fno-lto'
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -fno-lto'
 }
 
 prepare() {
