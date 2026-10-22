@@ -1,4 +1,5 @@
 [qrcp]
 source = "git"
 git = "https://github.com/claudiodangelis/qrcp.git"
+include_regex = 'v[\d.]+'
 prefix = "v"
