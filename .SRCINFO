@@ -1,7 +1,7 @@
 pkgbase = tenere
 	pkgdesc = TUI interface for LLMs written in Rust
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pythops/tenere
 	arch = x86_64
 	license = GPL-3.0-only
