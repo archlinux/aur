@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-electron-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.
-	pkgver = 1.142.0
+	pkgver = 1.143.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = aarch64
@@ -27,13 +27,13 @@ pkgbase = visual-studio-code-electron-bin
 	options = !strip
 	source = visual-studio-code-electron.js
 	source = visual-studio-code-electron.sh
-	sha256sums = 34154f0c3b9fd59edb131d803f1cbba6031c8f45a014b6cbddf1242064937d65
-	sha256sums = ee3d816992d08490f0d7fe8eb5b3c23006c1c7c280cde73c7dee79a23903aa5c
-	source_aarch64 = visual-studio-code-electron-1.142.0-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64
-	sha256sums_aarch64 = 292fb01a86f992d86e218f2079f11dc0c6ff3473f0e4f3168bb5919621587497
-	source_armv7h = visual-studio-code-electron-1.142.0-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf
-	sha256sums_armv7h = 2cd46f308a250d5841145f509c82197ae23fc79f244144d4d23f48863b7c46ba
-	source_x86_64 = visual-studio-code-electron-1.142.0-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
-	sha256sums_x86_64 = 973a0bb626c76c86c4edc81d19ca414427d000b14420f3457182daa9fc8fe430
+	sha256sums = dc6e622af50c366f1713adfa1de690bbee9af76c8fec1d4dccddadffc9bdf2ba
+	sha256sums = 13fb5f66f31ced197d0e2b566daae599ffe96ab6f9eea7a0ffccbfc2eedae92f
+	source_aarch64 = visual-studio-code-electron-1.143.0-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64
+	sha256sums_aarch64 = 748258df06e3c6c7c94081d3d53ad265ca3e1217840928e81001546cff376252
+	source_armv7h = visual-studio-code-electron-1.143.0-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf
+	sha256sums_armv7h = 8ae4f1581c767977aed86ec82781123bcd42d25020093b9f3b2f000725193f30
+	source_x86_64 = visual-studio-code-electron-1.143.0-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
+	sha256sums_x86_64 = 624da32c2c3634cffe741c8a76218aa82e747f25eef5d03ea05133de617bc319
 
 pkgname = visual-studio-code-electron-bin

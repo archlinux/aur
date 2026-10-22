@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.142.0
+pkgver=1.143.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -52,16 +52,17 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
-sha256sums=('34154f0c3b9fd59edb131d803f1cbba6031c8f45a014b6cbddf1242064937d65'
-            'ee3d816992d08490f0d7fe8eb5b3c23006c1c7c280cde73c7dee79a23903aa5c')
-sha256sums_aarch64=('292fb01a86f992d86e218f2079f11dc0c6ff3473f0e4f3168bb5919621587497')
-sha256sums_armv7h=('2cd46f308a250d5841145f509c82197ae23fc79f244144d4d23f48863b7c46ba')
-sha256sums_x86_64=('973a0bb626c76c86c4edc81d19ca414427d000b14420f3457182daa9fc8fe430')
+sha256sums=('dc6e622af50c366f1713adfa1de690bbee9af76c8fec1d4dccddadffc9bdf2ba'
+            '13fb5f66f31ced197d0e2b566daae599ffe96ab6f9eea7a0ffccbfc2eedae92f')
+sha256sums_aarch64=('748258df06e3c6c7c94081d3d53ad265ca3e1217840928e81001546cff376252')
+sha256sums_armv7h=('8ae4f1581c767977aed86ec82781123bcd42d25020093b9f3b2f000725193f30')
+sha256sums_x86_64=('624da32c2c3634cffe741c8a76218aa82e747f25eef5d03ea05133de617bc319')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -76,28 +77,18 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${pkgname%-bin}.js/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i -e "
-        s/@ELECTRON@/electron${_electronversion}/g
-        s/@name@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.js"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     grep '"version": ' "$(_get_app_dir)/resources/app/package.json" | awk '{print $2}' | tr -d '"' | tr -d ',' > "${srcdir}/.pkgver"
     sed -i "s/${_debname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_debname}.appdata.xml"
     sed -i -e "
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=vs${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_debname}"*.desktop
-    local _archrem=$([[ "${CARCH}" == "x86_64" ]] && echo arm || echo x64)
-    find "$(_get_app_dir)/resources/app" \
-        \( -name "*darwin*" -o -name "*${_archrem}*" -o -name "*win32*" \) \
-        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir="$(_get_app_dir)"
-    cp -a "${_app_dir}/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "$(_get_app_dir)/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_debname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.UrlHandler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-UrlHandler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
