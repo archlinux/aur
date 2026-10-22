@@ -1,6 +1,6 @@
 pkgbase = tickerbar-bin
 	pkgdesc = Multi-market price ticker for Waybar (crypto, stocks, indices, commodities, forex, rates) — no API key (prebuilt binary)
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/mryll/tickerbar
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = tickerbar-bin
 	provides = tickerbar
 	conflicts = tickerbar
 	options = !debug
-	source = tickerbar-0.7.6::https://github.com/mryll/tickerbar/releases/download/v0.7.6/tickerbar-0.7.6-x86_64-linux
-	source = config.example.toml-0.7.6::https://raw.githubusercontent.com/mryll/tickerbar/v0.7.6/config.example.toml
-	source = LICENSE-0.7.6::https://raw.githubusercontent.com/mryll/tickerbar/v0.7.6/LICENSE
-	sha256sums = 018ba06a8b1bafee5949f89c4d2066282ca0afc72eb91e651e676a0bcf47e1b9
+	source = tickerbar-0.7.7::https://github.com/mryll/tickerbar/releases/download/v0.7.7/tickerbar-0.7.7-x86_64-linux
+	source = config.example.toml-0.7.7::https://raw.githubusercontent.com/mryll/tickerbar/v0.7.7/config.example.toml
+	source = LICENSE-0.7.7::https://raw.githubusercontent.com/mryll/tickerbar/v0.7.7/LICENSE
+	sha256sums = 1461999ddb87d6e02857dfce7a98a77f85943ee52e9160ea1e4985da7d3056ec
 	sha256sums = fbe87470a44c8d20a3111ba011ea718215a26297dc77e0090f5f23774bbcb75f
 	sha256sums = aa9f3a694508cadff239e4694992eac66611723af6ce8643e80ca5c7db8c9e4e
 
