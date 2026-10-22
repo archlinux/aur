@@ -5,7 +5,7 @@
 
 pkgname=git-wipe-git
 _pkgname=git-wipe
-pkgver=0.5.0.r0.g873f195
+pkgver=0.6.0.r0.ge5086cd
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees (git)"
 arch=('x86_64' 'aarch64')
