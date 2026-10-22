@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 # Contributor: Christopher Cooper <christopher@cg505.com>
 pkgname=cursor-cli
-pkgver=2026.10.19.1.6bbf2c4
+pkgver=2026.10.22.1.27dcf5f
 # Upstream is YYYY.MM.DD-<hash>. pkgver cannot contain hyphens, and hashes are
 # not monotonically ordered, so pkgver is YYYY.MM.DD.<n>.<hash>: n resets to 1
 # on a new date and increments when the same date gets a new hash.
@@ -25,8 +25,8 @@ source_x86_64=("cursor-cli-${_upstream_ver}-x86_64.tar.gz::https://downloads.cur
 source_aarch64=("cursor-cli-${_upstream_ver}-aarch64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/arm64/agent-cli-package.tar.gz")
 b2sums=('f1dbf9263b11fa275baa3e192de3e29855262dd7d538aa3fd73d28a0e1e3c9b917ae1957e4b3a414e7492edc8f645255ad3df1fdbe83ad67a1c0d8913c141690'
         '1928e04c713e13911ea607f84c3e4a2fed1f76af9795503811078f43d2b53c753e28b2233e553fc17e766831800fb0dbc272aad2a80b387f95ba6071d7d4116a')
-b2sums_x86_64=('60ccdfddb84a3ed54d5eb31dba1d493875e9c00f8274ef478b05cd6f4309683acd7031e478533fbcf47cd14f92174beff6d3b8cdf173e4c6d7509fdc7cdac8ee')
-b2sums_aarch64=('97748f0a5939d684bdae2c2dc8be2b4943a5edbd6c6c053b19732453c6f54ddb5c59cb5616a7097032b1e2efb6d342b2faa916eda2be28bc0866096cc14d3c79')
+b2sums_x86_64=('65aa42169e09ee21aa8017ab0074f197997f7fd50d8b2189bf6fa85b527c21243b2233fc3bc808c9a12d1fb560f9f068475776fcde14580e39f6807c6e13c734')
+b2sums_aarch64=('86a866023f9666d44374f8ac6436d56ba3a99616240277ba37ed2bbeeeff4f533417dbefdc631222213ad799211df4ca1e22dd3de1a07829a0af1811ddff1d86')
 
 prepare() {
     # Block cursor-agent auto-updates by making its versions directory
