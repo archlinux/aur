@@ -1,6 +1,6 @@
 pkgbase = python-kagglesdk
 	pkgdesc = Basic python bindings for Kaggle's external-facing endpoints
-	pkgver = 0.1.37
+	pkgver = 0.1.38
 	pkgrel = 1
 	url = https://github.com/Kaggle/kagglesdk
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-kagglesdk
 	depends = python
 	depends = python-requests
 	depends = python-protobuf
-	source = https://files.pythonhosted.org/packages/source/k/kagglesdk/kagglesdk-0.1.37.tar.gz
-	sha256sums = bc362761754966919f63cb7a702bc34118f9e8fcce038ee00fb30d5d11afbe08
+	source = https://files.pythonhosted.org/packages/source/k/kagglesdk/kagglesdk-0.1.38.tar.gz
+	sha256sums = fe4033537e8546b7a3ff77da183c3410b189eb8793a7573c58780eb14f5fd5c5
 
 pkgname = python-kagglesdk
