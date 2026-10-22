@@ -1,26 +1,3 @@
-From 7a7def9e247700efc1156ea2a0bf90bc9cf9cbaf Mon Sep 17 00:00:00 2001
-From: Antonio Rojas <arojas@archlinux.org>
-Date: Thu, 10 Sep 2026 00:31:48 +0200
-Subject: [PATCH] Update tests for maxima 5.50
-
-Maxima 5.50 can solve some new limits and equations which make some tests invalid, update the tests accordingly
-
-There are some other failures caused by upstream bugs, see [1,2], so upgrading to an unpatched 5.50 release is not recommended.
-
-[1] https://sourceforge.net/p/maxima/bugs/4994/
-[2] https://sourceforge.net/p/maxima/bugs/4995/
----
- src/sage/calculus/functional.py           |  7 +++----
- src/sage/calculus/tests.py                |  6 ++++--
- src/sage/functions/exp_integral.py        |  6 +++---
- src/sage/functions/other.py               | 15 ++-------------
- src/sage/manifolds/continuous_map.py      |  2 +-
- src/sage/misc/functional.py               |  6 ++++--
- src/sage/symbolic/integration/external.py |  4 ++--
- src/sage/symbolic/integration/integral.py | 11 ++++-------
- src/sage/symbolic/relation.py             | 18 +++++++++---------
- 9 files changed, 32 insertions(+), 43 deletions(-)
-
 diff --git a/src/sage/calculus/functional.py b/src/sage/calculus/functional.py
 index 12210e8a3ae..a86abc3eba8 100644
 --- a/src/sage/calculus/functional.py
@@ -44,7 +21,7 @@ diff --git a/src/sage/calculus/tests.py b/src/sage/calculus/tests.py
 index 59e43bb46d6..227f55dcae3 100644
 --- a/src/sage/calculus/tests.py
 +++ b/src/sage/calculus/tests.py
-@@ -118,8 +118,10 @@
+@@ -118,8 +118,10 @@ No problems here::
  
      sage: integrate(exp(1-x^2),x)
      1/2*sqrt(pi)*erf(x)*e
@@ -90,7 +67,7 @@ index e2ac536d18b..5007542eec4 100644
  
      EXAMPLES::
  
-@@ -1980,17 +1980,6 @@ def _print_latex_(self, ex, var, to, direction=''):
+@@ -1980,17 +1980,6 @@ class Function_limit(BuiltinFunction):
              \lim_{x \to a^-}\, f\left(x\right)
              sage: latex(limit(f(x),x=a,dir='left'))
              \lim_{x \to a^-}\, f\left(x\right)
@@ -112,7 +89,7 @@ diff --git a/src/sage/manifolds/continuous_map.py b/src/sage/manifolds/continuou
 index 44955d190f5..06fe8fbcbb2 100644
 --- a/src/sage/manifolds/continuous_map.py
 +++ b/src/sage/manifolds/continuous_map.py
-@@ -1782,7 +1782,7 @@ def add_expr(self, chart1, chart2, coord_functions):
+@@ -1782,7 +1782,7 @@ class ContinuousMap(Morphism):
  
              sage: rot.display(c_spher, c_spher)
              R: U → U
@@ -122,18 +99,18 @@ index 44955d190f5..06fe8fbcbb2 100644
          Therefore, we use the method :meth:`add_expr` to set the
          spherical-coordinate expression by hand::
 diff --git a/src/sage/misc/functional.py b/src/sage/misc/functional.py
-index 2e0f7ae79a4..fdd935d14ea 100644
+index 1ca322a2d3f..d66bff33364 100644
 --- a/src/sage/misc/functional.py
 +++ b/src/sage/misc/functional.py
-@@ -526,8 +526,10 @@ def symbolic_sum(expression, *args, **kwds):
+@@ -522,8 +522,10 @@ def symbolic_sum(expression, *args, **kwds):
      Another binomial identity (:issue:`7952`)::
  
-         sage: t, k, i = var('t,k,i')                                                    # needs sage.symbolic
--        sage: sum(binomial(i + t, t), i, 0, k)                                          # needs sage.symbolic
+         sage: t, k, i = var('t,k,i')
+-        sage: sum(binomial(i + t, t), i, 0, k)
 -        binomial(k + t + 1, t + 1)
-+        sage: s = sum(binomial(i + t, t), i, 0, k); s                                   # needs sage.symbolic, random - depends on maxima version
++        sage: s = sum(binomial(i + t, t), i, 0, k); s                                   # random - depends on maxima version
 +        binomial(k + t + 1, k)
-+        sage: bool(s == binomial(k + t + 1, k))                                         # needs sage.symbolic
++        sage: bool(s == binomial(k + t + 1, k))
 +        True
  
      Summing a hypergeometric term::
