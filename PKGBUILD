@@ -1,6 +1,6 @@
 # Maintainer: Gianluca Boiano <morf3089@gmail.com>
 pkgname=openartifact-bin
-pkgver=0.2.0
+pkgver=0.2.0 # renovate: datasource=github-releases depName=openartifact/openartifact extractVersion=^v(?<version>\d.+)$
 pkgrel=1
 pkgdesc="Free-as-in-freedom artifact repository manager (Maven, npm, PyPI, OCI, Helm, ...) - prebuilt binaries"
 arch=('x86_64' 'aarch64')
