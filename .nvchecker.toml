@@ -1,0 +1,5 @@
+[python-kdtree]
+source = "git"
+git = "https://github.com/stefankoegl/kdtree.git"
+include_regex = 'v[\d.]+'
+prefix = "v"
