@@ -1,7 +1,7 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/cpa-manager-plus-bin
 pkgname=cpa-manager-plus-bin
-pkgver=1.14.8
+pkgver=1.14.9
 pkgrel=1
 pkgdesc=Management\ panel\ and\ analytics\ server\ for\ CLIProxyAPI
 arch=(x86_64 aarch64 )
@@ -19,10 +19,10 @@ install=cpa-manager-plus-bin.install
 source=(cpa-manager-plus.env.example cpa-manager-plus.service )
 sha256sums=('d3a612277579023580d18391c54c529029d21d4d971a4fe34b39c2b90a90d196'
             '6d31dd15f87463d748b400dc0f00a07ec0f700de213dc4eaaaabdbe2e4135f35')
-sha256sums_x86_64=('ac71ab9b2d1bdb8376d7ee0f3a958ef140168bef10282fbc33b131a36c5cc5e8')
-sha256sums_aarch64=('301232fbffe24298bf23f25eb7743ab65839fe09b2e6fe5b4feb4a06b8eae530')
-source_x86_64=(cpa-manager-plus-bin-1.14.8-x86_64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.14.8/cpa-manager-plus_v1.14.8_linux_amd64.tar.gz )
-source_aarch64=(cpa-manager-plus-bin-1.14.8-aarch64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.14.8/cpa-manager-plus_v1.14.8_linux_arm64.tar.gz )
+sha256sums_x86_64=('d3d2d4977bbfded997656d3a65fe8f405890312c2e4a595359c5af675f029455')
+sha256sums_aarch64=('4fdf25114796e154301ffda2f4df7d43135246308c37e5de3fc5ab48a93f14bc')
+source_x86_64=(cpa-manager-plus-bin-1.14.9-x86_64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.14.9/cpa-manager-plus_v1.14.9_linux_amd64.tar.gz )
+source_aarch64=(cpa-manager-plus-bin-1.14.9-aarch64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.14.9/cpa-manager-plus_v1.14.9_linux_arm64.tar.gz )
 
 _binary_source_path=\*/cpa-manager-plus
 _install_bin_path=/usr/bin/cpa-manager-plus
