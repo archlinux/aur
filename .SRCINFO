@@ -1,9 +1,11 @@
 pkgbase = qt5-feedback
 	pkgdesc = Qt Tactile Feedback Add-on Module
 	pkgver = 0.0.0.20150918
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/qtproject/qtfeedback
 	arch = x86_64
+	arch = i686
+	arch = pentium4
 	license = GPL3
 	license = LGPL
 	license = FDL
