@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 20.5.8
+	pkgver = 21
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -13,6 +13,7 @@ pkgbase = aurutils
 	depends = perl
 	depends = perl-json-xs
 	depends = bash
+	depends = trurl
 	optdepends = bash-completion: bash completion
 	optdepends = zsh: zsh completion
 	optdepends = devtools: aur-chroot
@@ -22,7 +23,7 @@ pkgbase = aurutils
 	optdepends = git-delta: view-delta example script
 	optdepends = python-srcinfo: sync-rebuild example script
 	optdepends = expect: non-interactive usage
-	source = aurutils-20.5.8.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/20.5.8.tar.gz
-	sha256sums = 9a425508e59db73b1ae4644d15fc3c09e3cbd85788295455bd2d13fb6ceccee5
+	source = aurutils-21.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/21.tar.gz
+	sha256sums = 39d169f6139dd5ab26be00b903716aca24387b655e28b2c13d47f2ccaae4b072
 
 pkgname = aurutils
