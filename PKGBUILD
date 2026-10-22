@@ -1,13 +1,13 @@
 # Maintainer: massiveadam <massiveadam@users.noreply.github.com>
 pkgname=massiveeq-git
-pkgver=0.3.0.beta.2.r1.gb332911
+pkgver=0.3.0.beta.2.r1.g369554a
 pkgrel=1
 pkgdesc='Beta device-aware equalizer for PipeWire and Wayland desktops'
 arch=('x86_64')
 url='https://github.com/massiveadam/massiveeq'
 license=('MIT')
 depends=('pipewire>=1:1.4' 'libpipewire' 'wireplumber>=0.5' 'gtk4>=4.18' 'libadwaita>=1.8' 'glib2' 'cairo' 'libsndfile' 'libsamplerate' 'curl' 'glibc' 'libgcc' 'hicolor-icon-theme')
-makedepends=('rust>=1:1.92' 'clang' 'git')
+makedepends=('cargo' 'clang' 'git')
 provides=('massiveeq')
 conflicts=('massiveeq')
 options=('!debug')
