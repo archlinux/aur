@@ -31,6 +31,7 @@ optdepends=(
 )
 provides=("$_pkgname=${pkgver}")
 conflicts=("$_pkgname")
+options=('!lto')
 install=neiro.install
 source=(
   "$_pkgname::git+$url.git"
