@@ -18,7 +18,7 @@ source=(
     'pi-wrapper'
     'APPEND_SYSTEM.md.example'
 )
-sha256sums=('SKIP' '13a511a77c9c99ecd51811172f3c17bd69420f9ae82dcb15ffe3fee4661c3d21' 'SKIP')
+sha256sums=('SKIP' 'SKIP'  'SKIP')
 options=('!strip' '!debug')
 
 pkgver() {
