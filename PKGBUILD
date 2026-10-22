@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.6.284
+pkgver=5.6.285
 _electronversion=32
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software."
@@ -31,9 +31,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('8c184b4fc793142cda88ee81d30d20f38b535aec8594bd5bf1fc65c5abf00fad')
-sha256sums_x86_64=('be420e0ce4f78bd85b581bf21c59d58b62dbb16fd0fe5091181f52d82baaa5f3')
+            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
+sha256sums_aarch64=('c702a98924e1e76bcf5d2167d300328ae2fecef3ba0b5a87708562b7376494ae')
+sha256sums_x86_64=('e7f33a0f55de90486edb27b7b957def3047b4b0775b39ba877d42105a361d57e')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -73,7 +73,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	cp -a "$(_get_app_dir)/resources//" "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
