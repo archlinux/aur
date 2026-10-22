@@ -1,0 +1,13 @@
+[Unit]
+Description=MirCode Companion Daemon - Mobile Git Workspace Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mircode --host 0.0.0.0 --port 18980
+Restart=on-failure
+RestartSec=3s
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target
