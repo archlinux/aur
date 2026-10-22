@@ -1,7 +1,7 @@
 pkgbase = designcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Adobe InDesign (Git HEAD)
-	pkgver = 0.2.1.r39.gd582277
-	pkgrel = 1
+	pkgver = 0.11.0.r17.gf3b7c3e
+	pkgrel = 2
 	url = https://getartcraft.com/apps/designcraft
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = designcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = designcraft=0.2.1.r39.gd582277
+	provides = designcraft=0.11.0.r17.gf3b7c3e
 	conflicts = designcraft
 	source = git+https://github.com/storytold/designcraft.git
 	sha256sums = SKIP
