@@ -2,7 +2,7 @@
 
 _name=phonic
 pkgname=python-$_name
-pkgver=0.32.40
+pkgver=0.32.41
 pkgrel=1
 pkgdesc='The Phonic Python library provides convenient access to the Phonic APIs from Python.'
 arch=('any')
@@ -21,11 +21,11 @@ checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-pytest-xdist'
               'python-dateutil')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cf046cca5f96e3d172db599c42f4c8391b0b11c322c5b6ea75b13e5a8dc1a2cb')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f53c44fff24648d8da08c9fa4dee1a09fc2a327b5c249e88e5046239e3df94e2')
 
 build() {
-  cd "$srcdir"/$_name-python-$pkgver
+  cd "$_name-python-$pkgver"
   python -m build --wheel --no-isolation
 }
 
@@ -34,11 +34,12 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/$_name-python-$pkgver
+  cd "$_name-python-$pkgver"
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/$_name-python-$pkgver
+  cd "$_name-python-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
