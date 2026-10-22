@@ -5,4 +5,5 @@
 !.SRCINFO
 !simple_backup.install
 !LICENSE*
+!LICENSES/**
 !REUSE.toml
