@@ -1,6 +1,6 @@
 pkgbase = rapidraw-tethering-bin
 	pkgdesc = GPU-accelerated RAW image editor with tethering support
-	pkgver = 1.6.4
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://github.com/CyberTimon/RapidRAW
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = rapidraw-tethering-bin
 	depends = glibc
 	provides = rapidraw
 	conflicts = rapidraw
-	source = https://github.com/CyberTimon/RapidRAW/releases/download/v1.6.4/03_tethering_RapidRAW_v1.6.4_ubuntu-24.04_amd64.deb
-	sha256sums = 2bb1bd7ae57e76e06dfda94833dd834340b25618d3493ce88f040b20a2270427
+	source = https://github.com/CyberTimon/RapidRAW/releases/download/v1.6.6/03_tethering_RapidRAW_v1.6.6_ubuntu-24.04_amd64.deb
+	sha256sums = dc49e21073006db59f4a2220c35023f246cc15d3cbd1774af2e360377211d8e5
 
 pkgname = rapidraw-tethering-bin

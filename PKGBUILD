@@ -1,6 +1,6 @@
 # Maintainer: Valentin Weber
 pkgname="rapidraw-tethering-bin"
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="GPU-accelerated RAW image editor with tethering support"
 
@@ -11,7 +11,7 @@ depends=('libgphoto2' 'hicolor-icon-theme' 'webkit2gtk-4.1' 'gtk3' 'dbus' 'libso
 provides=("rapidraw")
 conflicts=("rapidraw")
 
-sha256sums=('2bb1bd7ae57e76e06dfda94833dd834340b25618d3493ce88f040b20a2270427')
+sha256sums=('dc49e21073006db59f4a2220c35023f246cc15d3cbd1774af2e360377211d8e5')
 
 _ubuntuver=24.04
 _debfile="03_tethering_RapidRAW_v${pkgver}_ubuntu-${_ubuntuver}"
