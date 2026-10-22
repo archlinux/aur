@@ -1,7 +1,7 @@
 pkgbase = wordcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft Word (Git HEAD)
-	pkgver = 0.1.0.r3.gdb0cfed
-	pkgrel = 1
+	pkgver = 0.9.0.r562.g8e98636
+	pkgrel = 2
 	url = https://getartcraft.com/apps/wordcraft
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = wordcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = wordcraft=0.1.0.r3.gdb0cfed
+	provides = wordcraft=0.9.0.r562.g8e98636
 	conflicts = wordcraft
 	source = git+https://github.com/storytold/wordcraft.git
 	sha256sums = SKIP
