@@ -1,13 +1,13 @@
 pkgbase = recall-zippoxer-bin
 	pkgdesc = Full-text search and resume for AI coding-agent conversations (prebuilt binary)
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zippoxer/recall
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	provides = recall
 	conflicts = recall
 	conflicts = recall-bin
