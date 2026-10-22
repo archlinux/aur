@@ -1,0 +1,10 @@
+post_install() {
+  echo "==> ToDesk 企业版服务默认【不启动、不开机自启】"
+  echo "    手动启动: sudo systemctl start todesk_host"
+  echo "    手动停止: sudo systemctl stop todesk_host"
+  echo "    开机自启(可选): sudo systemctl enable todesk_host"
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,18 @@
+pkgbase = todesk-enterprise-host-bin
+	pkgdesc = ToDesk Enterprise Host (controlled endpoint) - remote control, enterprise edition
+	pkgver = 3.2.0.0
+	pkgrel = 1
+	url = https://enterprise.todesk.com
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = gtk3
+	depends = kmod
+	depends = nss
+	depends = xcb-util
+	depends = xcb-util-keysyms
+	options = !strip
+	options = emptydirs
+	source = ToDesk_Host_3.2.0.0_amd64.deb::https://dl.todesk.com/tob/linux/ToDesk_Host_3.2.0.0_amd64.deb
+	sha256sums = 658aaa3275cf737bde10576181c181f1a7a6c3091aa3706ca38632540832a455
+
+pkgname = todesk-enterprise-host-bin
