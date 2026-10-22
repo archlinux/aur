@@ -1,7 +1,7 @@
 pkgbase = dangerzone-bin
 	pkgdesc = Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://github.com/freedomofpress/dangerzone
 	arch = x86_64
 	license = AGPL-3.0
@@ -17,7 +17,7 @@ pkgbase = dangerzone-bin
 	depends = python-pip
 	depends = podman
 	options = !debug
-	source = dangerzone-0.11.0.deb::https://packages.freedom.press/apt-tools-prod/pool/main/d/dangerzone/dangerzone_0.11.0_amd64.deb
-	sha256sums = f10c085ef4ee6743739adcf077da65dde84ac5be84b5aadb2e7ea98510f1be85
+	source = dangerzone-0.11.1.deb::https://packages.freedom.press/apt-tools-prod/pool/main/d/dangerzone/dangerzone_0.11.1_amd64.deb
+	sha256sums = 3de8a1cad4fcb984876a94bdaa13b3cc81c3d6b33a0bcc896f729d9a99b3bb68
 
 pkgname = dangerzone-bin
