@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-todav-git
+	pkgdesc = GNOME Shell companion extension for Todav: tasks, month and agenda in the top bar
+	pkgver = 1.0.0.r0.g8523762
+	pkgrel = 1
+	url = https://github.com/SelfRef/todav
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gettext
+	depends = gnome-shell>=1:49
+	depends = todav
+	provides = gnome-shell-extension-todav
+	conflicts = gnome-shell-extension-todav
+	source = todav::git+https://github.com/SelfRef/todav.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-todav-git
