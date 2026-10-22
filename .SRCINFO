@@ -1,7 +1,7 @@
 pkgbase = subcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Substance Painter (Git HEAD)
-	pkgver = 0.1.2.r2.geb3f374
-	pkgrel = 1
+	pkgver = 0.1.8.r0.g56a23a7
+	pkgrel = 2
 	url = https://aalzard.github.io/subcraft
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = subcraft-git
 	makedepends = git
 	depends = glibc
 	depends = libgcc
-	provides = subcraft=0.1.2.r2.geb3f374
+	provides = subcraft=0.1.8.r0.g56a23a7
 	conflicts = subcraft
 	source = git+https://github.com/Aalzard/subcraft.git
 	sha256sums = SKIP
