@@ -2,4 +2,4 @@
 export APP_DIR=/opt/neuroforest
 export ENV=PRODUCTION
 cd "$APP_DIR"
-exec nenv/bin/invoke app.run
+exec nenv/bin/invoke app.run ${1:+--url "$1"}

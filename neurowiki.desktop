@@ -2,7 +2,7 @@
 Type=Application
 Name=NeuroWiki
 Comment=NW.js based user interface for NeuroForest
-Exec=neurowiki
+Exec=neurowiki %u
 Icon=neuroforest
 Terminal=false
 Categories=Science;Education;Office;
