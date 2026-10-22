@@ -23,6 +23,7 @@ pkgbase = neiro-git
 	optdepends = unzip: unpack Samsung driver downloads for neiro import
 	provides = neiro=0.1.0.r0.g9a3148e
 	conflicts = neiro
+	options = !lto
 	source = neiro::git+https://gitlab.com/wolf-yuan/neiro.git
 	source = neiro.service
 	sha256sums = SKIP
