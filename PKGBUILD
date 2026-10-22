@@ -1,4 +1,5 @@
-# Maintainer: UnicornDarkness
+# Maintainer: Ismet Togay <ismet.togay at gmail dot com>
+# Contributor: The Tumultuous Unicorn Of Darkness <the-tumultuous-unicorn-of-darkness at gmx dot com>
 # Contributor: Anthony Wang <a at exozy dot me>
 
 _pkgbase=zenmonitor3
