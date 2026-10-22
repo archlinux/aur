@@ -1,6 +1,6 @@
 pkgbase = deckcraft-bin
 	pkgdesc = Open-source native presentation app, PowerPoint alternative (prebuilt binary)
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/storytold/deckcraft
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = deckcraft-bin
 	provides = deckcraft
 	conflicts = deckcraft
 	options = !strip
-	source_x86_64 = deckcraft-0.9.0-linux-x86_64.tar.gz::https://github.com/storytold/deckcraft/releases/download/v0.9.0/deckcraft-0.9.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 531b4c8cd434ca767ef21da0d44e099664af5d5d968b038bc8f927717f8fa8f1
-	source_aarch64 = deckcraft-0.9.0-linux-aarch64.tar.gz::https://github.com/storytold/deckcraft/releases/download/v0.9.0/deckcraft-0.9.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 02115811f8a7a48064e4e5b5e80f8b1ed6fc1b8c747630137641fdf53df7570b
+	source_x86_64 = deckcraft-0.10.0-linux-x86_64.tar.gz::https://github.com/storytold/deckcraft/releases/download/v0.10.0/deckcraft-0.10.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 546616eb2300ce8efb20b44a53e60abfe6b96d71ac606b452a36fd21c6b1ff28
+	source_aarch64 = deckcraft-0.10.0-linux-aarch64.tar.gz::https://github.com/storytold/deckcraft/releases/download/v0.10.0/deckcraft-0.10.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 7be0594d90c4c0be15b812a597b85f6005271716be778b2999cb492f52c8676b
 
 pkgname = deckcraft-bin
