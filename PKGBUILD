@@ -80,7 +80,6 @@ makedepends=(
   fmt
   'freetype2>=2.12'
   glad
-  glfw
   lcms2
   libdbus
   libexif
@@ -204,7 +203,6 @@ prepare() {
     -DHELLOIMGUI_INSTALL=OFF
     -DHELLOIMGUI_STB_IMAGE_IMPLEMENTATION=ON
     -DHELLOIMGUI_STB_IMAGE_WRITE_IMPLEMENTATION=ON
-    -DHELLOIMGUI_USE_EXTERNAL_JSON=OFF        # 2026-10-21: Set '=OFF', otherwise error: 'Target "hello_imgui" links to: nlohmann_json::nlohmann_json but the target was not found.'
     -DHELLOIMGUI_USE_FREETYPE=ON
     -DHELLOIMGUI_USE_FREETYPE_PLUTOSVG=ON
     -DHELLOIMGUI_USE_IMGUI_CMAKE_PACKAGE=OFF  # '=ON': 'hello_imgui' should use system installed 'imgui'. '=OFF': Don't do that. Set to '=OFF' (and do not have any 'imgui' locally installed), since otherwise 'hello_imgui' ususally fails to build.

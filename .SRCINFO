@@ -19,7 +19,6 @@ pkgbase = hdrview-git
 	makedepends = fmt
 	makedepends = freetype2>=2.12
 	makedepends = glad
-	makedepends = glfw
 	makedepends = lcms2
 	makedepends = libdbus
 	makedepends = libexif
