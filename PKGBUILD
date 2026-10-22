@@ -1,9 +1,9 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python315
-pkgver=3.15.0
+pkgver=3.15.1
 pkgrel=1
-_pyver=3.15.0
+_pyver=3.15.1
 _pybasever=3.15
 _pymajver=3
 pkgdesc="Major release 3.15 of the Python high-level programming language"
@@ -42,7 +42,7 @@ source=(
   "https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz"{,.sigstore}
 )
 sha256sums=(
-  'ba4bed1ba346b916890b76d9e320451420aa69f6408997d33c66482eeae3d575'
+  '673ae7232d84c894729882c8257d300ef2d26523911bfd3917ec8ce7f526f99b'
   'SKIP'
 )
 
