@@ -1,0 +1,5 @@
+post_upgrade() {
+  # 0.4.12-2 and -3 installed /opt/wallpaperx as 0700, and pacman keeps an
+  # existing directory's mode on upgrade, so reset it here.
+  chmod 755 /opt/wallpaperx
+}
