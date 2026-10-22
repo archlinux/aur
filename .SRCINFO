@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker.
-	pkgver = 0.124.20
+	pkgver = 0.125.5
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = lvce-bin
 	depends = electron44
 	depends = nodejs
 	depends = python
-	provides = lvce=0.124.20
+	provides = lvce=0.125.5
 	conflicts = lvce
 	options = !strip
 	options = !emptydirs
@@ -17,9 +17,9 @@ pkgbase = lvce-bin
 	source = lvce.sh
 	sha256sums = ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc
 	sha256sums = a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953
-	source_aarch64 = lvce-0.124.20-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.124.20/lvce-v0.124.20_arm64.deb
-	sha256sums_aarch64 = 76430179b09a678a3977bcf6b0478d3d801e6ce8f66995effd569ba8c37f95a4
-	source_x86_64 = lvce-0.124.20-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.124.20/lvce-v0.124.20_amd64.deb
-	sha256sums_x86_64 = f8591d2efcc4a16655a66f308ed085fb5e4734fdfbe030667e04cab2eb244dc1
+	source_aarch64 = lvce-0.125.5-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.125.5/lvce-v0.125.5_arm64.deb
+	sha256sums_aarch64 = 8cc1e2ef4bf34be13cc429a1c897e7797a7337f34feb5d9fee4a09ad55d1a90b
+	source_x86_64 = lvce-0.125.5-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.125.5/lvce-v0.125.5_amd64.deb
+	sha256sums_x86_64 = db0a5d9d4f3db82062e36af03cfd1c7b502cb0b581b8e0ccc0d2cebb59a1c846
 
 pkgname = lvce-bin
