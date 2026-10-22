@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.5.3.26051504.r986.g412ab44
+pkgver=8.5.3.26051504.r1161.gfbf45aa
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -73,7 +73,9 @@ EOF
 }
 
 package() {
-	depends+=('python-pefile' 'python-requests' 'python-rsa' 'python-six')
+	depends+=(
+		'python-pefile' 'python-requests' 'python-rsa' 'python-six'
+		'libavcodec.so' 'libavcodec.so' 'libavutil.so' 'libswresample.so' 'libswscale.so')
 
 	#pack data
 	mkdir -p "$pkgdir/"{usr/share/{$_pkgname,doc/$_pkgname},}
