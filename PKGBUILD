@@ -1,7 +1,8 @@
 # Maintainer: chabandou <chabandou@gmail.com>
 pkgname=poise-bin
-pkgver=1.1.0
-pkgrel=11
+# Keep in step with version in pyproject.toml (release checklist there)
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Real-time system audio denoiser and voice isolator with TUI (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/chabandou/Poise-Voice-Isolator"
@@ -20,7 +21,7 @@ optdepends=('rnnoise: RNNoise engine (same model as EasyEffects)')
 # force users into --rebuild). Keep uploading the plain `poise` asset too
 # for manual curl installs; only the pkgrel-named one is packaged here.
 source=("poise-${pkgver}-${pkgrel}::${url}/releases/download/v${pkgver}/poise-${pkgver}-${pkgrel}")
-sha256sums=('b144e015cdcea8ef178c095457b24f36c980721e6db1b6e20e0843a53e4f29c9')
+sha256sums=('f205d3272a26d7d9ac60ff41c2b5269152e28107ea3913ba1033c1156f5b256c')
 
 # Don't strip the binary - Nuitka onefile binaries get corrupted by strip
 options=('!strip')
