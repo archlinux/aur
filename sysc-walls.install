@@ -43,9 +43,9 @@ post_upgrade() {
 
 SYSC-WALLS UPGRADED
 
-v1.1.1 changes:
-  - Restore compatibility with sysc-shell's screensaver controls.
-  - Stop and disable a legacy system-scoped sysc-walls.service on upgrade.
+v1.3.0 changes:
+  - Add four rotating aircraft effects.
+  - Improve lighting and shading on rotating models.
 
 Restart the service to apply changes:
     systemctl --user restart sysc-walls.service
