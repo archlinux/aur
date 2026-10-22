@@ -1,7 +1,7 @@
 # Maintainer: maki <maki@hotmilk.space>
 
 pkgname=frankenphp-bin
-pkgver=1.13.0
+pkgver=1.13.2
 pkgrel=1
 pkgdesc='FrankenPHP is a modern application server for PHP built on top of the Caddy web server.'
 arch=('x86_64' 'aarch64')
