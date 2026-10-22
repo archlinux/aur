@@ -2,11 +2,11 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=neferbar-git
-pkgver=0.3.0.r0.gda0887c
+pkgver=0.3.1.r0.g7a3b92c
 pkgrel=1
 pkgdesc='One-cell-high, terminal-style status bar for Wayland, driven by scripts (git version)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/bnema/neferbar'
+url='https://git.bnema.dev/neferbar'
 license=('MIT')
 # Loaded at runtime (purego, no cgo): not seen by makepkg's library scan.
 # fontconfig provides fc-match, which finds the font files.
@@ -15,7 +15,7 @@ makedepends=('go>=2:1.27' 'git')
 optdepends=('ttf-jetbrains-mono-nerd: default font, with the icons modules print')
 provides=('neferbar')
 conflicts=('neferbar' 'neferbar-bin')
-source=('git+https://github.com/bnema/neferbar.git')
+source=('git+https://git.bnema.dev/neferbar.git')
 sha256sums=('SKIP')
 
 pkgver() {
