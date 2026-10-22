@@ -1,23 +1,23 @@
 # Maintainer: flear <teymurzadehuseyn14 at gmail dot com>
 pkgname=butaglyph
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Fast prompt for bash, zsh, fish and PowerShell, with presets, gradients and its own git reader'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Huseynteymurzade28/butaglyph'
 license=('MIT')
 options=('!debug')
-makedepends=('zig>=0.16.0' 'zig<0.17.0')
+makedepends=('zig>=0.17.0' 'zig<0.18.0')
 optdepends=('ttf-nerd-fonts-symbols: icons with .glyphs = .nerd')
 provides=('butaglyph')
 conflicts=('butaglyph-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9c492cfce631d17cd307b6b23cd2296e5e19dd4ee7ac4ec7c0e69dfbacc7ace')
+sha256sums=('a6e624677e4e39d5017130ac6f3b37297d08c2b4b30f6dbfcfe1ac75a8572bf6')
 
 build() {
   cd "$pkgname-$pkgver"
-  zig build -Doptimize=ReleaseFast -Dcpu=baseline \
-    --global-cache-dir "$srcdir/zig-cache" --prefix "$srcdir/out"
+  ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache" \
+    zig build -Doptimize=ReleaseFast -Dcpu=baseline --prefix "$srcdir/out"
 }
 
 package() {
