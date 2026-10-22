@@ -27,8 +27,8 @@ source=("$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/kunkka19xx/
 sha256sums=('4ad78f314cb0ba16242173bcdc62c17d81644345ea41d90d1b0a68ab3dd9f841')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/lgtm-x86_64-linux.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/lgtm-aarch64-linux.tar.gz")
-sha256sums_x86_64=('5945031143b68e80448b6866a96b6fbbd7fd8bb2bfba6ea66aac29adfad010cf')
-sha256sums_aarch64=('4d66f9cdef8c4500e4d23b318a0dc4052d0cd8d319c36adc1f4b426bdd027a2e')
+sha256sums_x86_64=('e8b6a9e8c3d812baa90dfa050a197b438a74daf45a707f8dcfde278ce88ce897')
+sha256sums_aarch64=('ffda8a199d5d31c64250fc85c9edf52da169b95f17e3cce5acadabbb896902df')
 
 package() {
   install -Dm755 "$srcdir/lgtm" "$pkgdir/usr/bin/lgtm"
