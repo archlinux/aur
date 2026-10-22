@@ -3,7 +3,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r7877.97643900
+pkgver=r8853.6d083a39d
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -25,6 +25,8 @@ depends=('ffmpeg'
          'tl-expected'
          'md4c'
          'uriparser'
+         'lua'
+         'libffi'
          )
 makedepends=('git'
              'make'
@@ -36,30 +38,32 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/ocornut/imgui.git'
         'git+https://github.com/serge1/ELFIO.git'
         'git+https://github.com/exoticlibraries/libcester.git'
-        'git+https://github.com/grumpycoders/LuaJIT.git'
+        'git+https://github.com/pcsx-redux/LuaJIT.git'
         'git+https://github.com/luvit/luv.git'
         'git+https://github.com/keplerproject/lua-compat-5.3.git'
         'git+https://github.com/wolfpld/tracy.git'
         'git+https://github.com/Neargye/magic_enum.git'
         'git+https://github.com/Distrotech/ucl.git'
         'git+https://github.com/herumi/xbyak'
-        'git+https://github.com/grumpycoders/zep'
-        'git+https://github.com/grumpycoders/vixl.git'
-        'git+https://github.com/grumpycoders/imgui_md.git'
+        'git+https://github.com/pcsx-redux/zep'
+        'git+https://github.com/pcsx-redux/vixl.git'
+        'git+https://github.com/pcsx-redux/imgui_md.git'
         'git+https://github.com/iafonov/multipart-parser-c.git'
-        'git+https://github.com/nicolasnoble/luafilesystem.git'
-        'git+https://github.com/grumpycoders/luacov.git'
+        'git+https://github.com/pcsx-redux/luafilesystem.git'
+        'git+https://github.com/pcsx-redux/luacov.git'
         'git+https://github.com/bluebird75/luaunit.git'
         'git+https://github.com/taocpp/PEGTL.git' # as of 9/1/2026, pcsx-redux fails to compile with extra/pegtl due to missing `auto_rewind`
-        'git+https://codeberg.org/malucart/xmake-psx.git'
         'git+https://github.com/pcsx-redux/iec-60908b.git'
         'git+https://github.com/pcsx-redux/cueparser.git'
         'git+https://github.com/pcsx-redux/nugget.git'
+        'git+https://github.com/grumpycoders/luaffifb.git'
         'git+https://github.com/pcsx-redux/thorvg.git'
         'git+https://github.com/epezent/implot.git'
         'git+https://github.com/ArthurSonzogni/FTXUI.git'
+        'git+https://github.com/Taywee/args.git'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -117,6 +121,7 @@ prepare() {
   git config submodule.third_party/thorvg.url "$srcdir/thorvg"
   git config submodule.third_party/implot.url "$srcdir/implot"
   git config submodule.third_party/ftxui.url "$srcdir/FTXUI"
+  git config submodule.third_party/args.url "$srcdir/args"
   
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
@@ -141,7 +146,8 @@ prepare() {
                        src/mips \
                        third_party/thorvg \
                        third_party/implot \
-                       third_party/ftxui
+                       third_party/ftxui \
+                       third_party/args
                        
 
 
