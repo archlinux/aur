@@ -1,6 +1,6 @@
 pkgbase = reasonix-studio-bin
 	pkgdesc = Reasonix Studio - Electron desktop GUI for the DeepSeek-native AI coding agent (repackaged from .deb)
-	pkgver = 2.47.1
+	pkgver = 2.48.0
 	pkgrel = 1
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
@@ -34,12 +34,12 @@ pkgbase = reasonix-studio-bin
 	optdepends = bubblewrap: for agent shell sandbox execution
 	provides = reasonix-studio
 	conflicts = reasonix-studio
-	noextract = reasonix-studio-bin-2.47.1-amd64.deb
+	noextract = reasonix-studio-bin-2.48.0-amd64.deb
 	options = !strip
 	options = !debug
-	source = reasonix-studio-bin-2.47.1-amd64.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/studio-v2.47.1/ReasonixStudio-linux-amd64.deb
-	source = LICENSE-2.47.1::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/studio-v2.47.1/LICENSE
-	sha256sums = ded468f21a271a524977dd383bbc043352398283e216fa38429243c98573b23b
+	source = reasonix-studio-bin-2.48.0-amd64.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/studio-v2.48.0/ReasonixStudio-linux-amd64.deb
+	source = LICENSE-2.48.0::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/studio-v2.48.0/LICENSE
+	sha256sums = 7050c40748ed2565e57ce02207fa183bc55776d44f46b0e968ef791bbb3206ff
 	sha256sums = dc024237821ac82056c37f8d82e3be919bd51e39a4529ec12a8ab3e2a346dc4c
 
 pkgname = reasonix-studio-bin
