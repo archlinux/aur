@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 ## options
@@ -6,7 +6,7 @@
 
 _pkgname="qtscrcpy"
 pkgname="$_pkgname"
-pkgver=4.1.1
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
@@ -33,7 +33,7 @@ source=(
   "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
 )
 sha256sums=(
-  'eea26f0e940c8dc6357ced9d2a74418ffc312e244bf2f900ed539676f5ed0902'
+  '2e74061b08cd0ebff21ebea7edb26b3cc1deee3bc911a7a252701146c13b7fec'
   'SKIP'
 )
 
