@@ -1,7 +1,7 @@
 pkgbase = deckcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft PowerPoint (Git HEAD)
-	pkgver = 0.4.0.r16.gd556ff9
-	pkgrel = 1
+	pkgver = 0.9.0.r14.g128cb0b
+	pkgrel = 2
 	url = https://getartcraft.com/apps/deckcraft
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = deckcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = deckcraft=0.4.0.r16.gd556ff9
+	provides = deckcraft=0.9.0.r14.g128cb0b
 	conflicts = deckcraft
 	source = git+https://github.com/storytold/deckcraft.git
 	sha256sums = SKIP
