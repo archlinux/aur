@@ -4,7 +4,7 @@
 
 pkgname=python-quart-schema
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quart extension that provides schema validation and auto-generated API documentation"
 arch=(any)
 url="https://github.com/pgjones/quart-schema"
@@ -13,6 +13,7 @@ depends=(
   python
   python-humps
   python-quart
+  python-msgspec
 )
 makedepends=(
   python-build
@@ -23,7 +24,7 @@ makedepends=(
 checkdepends=(
   python-hypothesis
   python-msgspec
-  python-pydantic
+  python-pydantic # undesirable, but that's to be expected.
   python-pytest
   python-pytest-asyncio
 )

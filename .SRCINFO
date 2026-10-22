@@ -1,7 +1,7 @@
 pkgbase = python-quart-schema
 	pkgdesc = Quart extension that provides schema validation and auto-generated API documentation
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgjones/quart-schema
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = python-quart-schema
 	depends = python
 	depends = python-humps
 	depends = python-quart
+	depends = python-msgspec
 	source = https://github.com/pgjones/quart-schema/archive/0.23.0/quart-schema-0.23.0.tar.gz
 	sha256sums = 9127f6cd031427d162d3f58d769722dbe0783b9386ca08871b82e452924766d4
 
