@@ -57,11 +57,27 @@ prepare() {
     return 1
   }
 
+  cd "Linux" || {
+    msg "Failed to cd into Linux srcdir"
+    return 1
+  }
+
   # Fix the build pipeline complaint:
   #
-  # binary audit: 1 check(s) failed
+  # binary audit: 2 check(s) failed
   # Audit failed: the binaries are not portable/hardened enough to ship.
-  sed -i 's|CFLAGS="-O2 -fPIC -include|CFLAGS="-O2 -fPIC -fcf-protection=full -fstack-protector-strong -fstack-clash-protection -include|' "Linux/src/Makefile"
+  sed -i -E '/CFLAGS="-O2 -fPIC /{/-fcf-protection/!s|CFLAGS="-O2 -fPIC |CFLAGS="-O2 -fPIC -fcf-protection=full -fstack-protector-strong -fstack-clash-protection |}' "./src/Makefile"
+  if grep -E 'CFLAGS="-O2 -fPIC ' "./src/Makefile" | grep -qv -- '-fcf-protection'; then
+    msg "Failed to add hardening flags to the bundled libbpf/libelf/zlib builds"
+    return 1
+  fi
+
+  # Set the cache instead of using ${HOME}/.cache
+  export LIBBPF_CACHE="${srcdir}/libbpf-cache"
+
+  # Clear the cache and prepare for a rebuild
+  rm -rf "${LIBBPF_CACHE}"
+  rm -rf "output"
 }
 
 package() {
@@ -70,14 +86,6 @@ package() {
     msg "Failed to cd into ${srcdir}/${_gitname}"
     return 1
   }
-
-  # Set the cache instead of using ${HOME}/.cache
-  export LIBBPF_CACHE="${srcdir}/libbpf-cache"
-  rm -rf "${LIBBPF_CACHE}"
-
-  # Install license file to documentation location
-  # shellcheck disable=SC2154
-  install -D --mode=644 LICENSE "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
 
   cd "Linux" || {
     msg "Failed to cd into Linux srcdir"
@@ -91,6 +99,7 @@ package() {
   }
 
   # Script
+  # shellcheck disable=SC2154
   install -D --mode=755 "output/${_outputname}" "${pkgdir}/usr/bin/${_outputname}"
 
   # symlink to an easier cli name
@@ -109,6 +118,10 @@ package() {
   # Create configuration directory (empty by default)
   mkdir -p "${pkgdir}/etc"
   mkdir --mode=755 "${pkgdir}/etc/${_gitname}"
+
+  # Install license file to documentation location
+  # shellcheck disable=SC2154
+  install -D --mode=644 LICENSE "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
 
   # Save Linux README to documentation
   install -D --mode=644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
