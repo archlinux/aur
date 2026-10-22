@@ -1,7 +1,7 @@
 pkgbase = linyaps-test-git
 	pkgdesc = Next-Gen Universal Package Manager for Linux (linglong)
-	pkgver = 1.12.5+3.r0.d3eb77b
-	pkgrel = 2
+	pkgver = 1.15.0+0.r1.fa70bcf
+	pkgrel = 1
 	url = https://github.com/LFRon/linyaps-generic-linux
 	install = linyaps-test-git.install
 	arch = x86_64
