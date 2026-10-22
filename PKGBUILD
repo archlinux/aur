@@ -15,8 +15,8 @@
 # sources from distant mirrors. See _HZ_ticks, _tickrate and _tcp_bbr3 below for
 # the reasoning on each.
 #
-# It also runs the BORE scheduler; see _cpusched. pkgrel normally stays pinned to
-# the distro package's - see the note there.
+# It also runs the BORE scheduler; see _cpusched. pkgrel follows CachyOS's
+# numbering for a patch-only rebuild - see the note there.
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null or choose proper variable to enable them
@@ -261,12 +261,13 @@ _tagrel=2
 # version bump is safe because the running kernel keeps its own directory; this
 # does not. Install only when the reboot follows immediately.
 #
-# pkgrel=3 while the distro package is at 2: a deliberate bump, made so a rebuild
-# at the same kernel version (here, porting upstream's generated-Rust headers
-# install) installs as a new version and leaves the running kernel's module
-# tree alone. `uname -r` reads 7.2.9-3-cachyos-jetm until the next upstream tag
-# resets it via update-version.sh.
-pkgrel=2
+# pkgrel is set by update-version.sh to _tagrel plus the number of commits
+# CachyOS has made since that tag to the kernel-patches files this package
+# fetches, which matches how CachyOS numbered a patch-only rebuild (linux-cachyos
+# 7.3.0-2 -> 7.3.0-3). It is also kept at least one above the previous build at
+# the same kernel version, so a rebuild always installs as a new version
+# instead of reinstalling over the running kernel's module tree.
+pkgrel=5
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -300,6 +301,15 @@ makedepends=(
   zstd
 )
 
+# makepkg reuses any file already in the package directory ("Found ...") and
+# never re-downloads it, so a patch left by an earlier build was reused after
+# CachyOS changed it: updpkgsums then pinned the old b2sum and validation passed
+# on the wrong file. It failed loudly on a series bump (prepare() rejected
+# hunks) and silently when BORE changed inside 7.3 (the b2sum was re-pinned to
+# the old patch). _purge_fetched_patches, below the source arrays, deletes every patch
+# fetched from kernel-patches whenever this file is sourced, so each run
+# downloads them fresh. The dkms-clang and scheduler patches are also saved as
+# <name>-${_major}.patch (the name::url form) to keep the series in the file name.
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 _nv_ver=615.78.08
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
@@ -324,7 +334,7 @@ validpgpkeys=(
 # LLVM makedepends
 if _is_lto_kernel; then
     makedepends+=(clang llvm lld)
-    source+=("${_patchsource}/misc/dkms-clang.patch")
+    source+=("dkms-clang-${_major}.patch::${_patchsource}/misc/dkms-clang.patch")
     BUILD_FLAGS=(
         CC=clang
         LD=ld.lld
@@ -341,14 +351,14 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=71a9f9578616a90c3c14bb59629fb4d31bfd68d1")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=fb48c76e17d3e0092fbba430a9eec1960e1b9961")
 fi
 
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
-             "${_patchsource}/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
-             "${_patchsource}/misc/nvidia/0003-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
+             "${_patchsource}/misc/nvidia/0001-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
+             "${_patchsource}/misc/nvidia/0002-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -373,14 +383,31 @@ fi
 ## List of CachyOS schedulers
 case "$_cpusched" in
     bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
+        source+=("0001-bore-cachy-${_major}.patch::${_patchsource}/sched/0001-bore-cachy.patch");;&
     bmq) ## Project C Scheduler
-        source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
+        source+=("0001-prjc-cachy-${_major}.patch::${_patchsource}/sched/0001-prjc-cachy.patch");;
     hardened) ## Hardened Patches
-        source+=("${_patchsource}/misc/0001-hardened.patch");;
+        source+=("0001-hardened-${_major}.patch::${_patchsource}/misc/0001-hardened.patch");;
     rt|rt-bore) ## RT patches
-        source+=("${_patchsource}/misc/0001-rt-i915.patch");;
+        source+=("0001-rt-i915-${_major}.patch::${_patchsource}/misc/0001-rt-i915.patch");;
 esac
+
+# Delete every patch fetched from kernel-patches, so makepkg downloads them fresh
+# on each run (see the note above _patchsource). Runs while makepkg sources this
+# file, before it looks for sources; it is a no-op for a caller that has no
+# makepkg environment (refresh-config.sh sources this file under `set -u`).
+_purge_fetched_patches() {
+    local dir="${SRCDEST:-${startdir:-}}" entry name
+    [ -n "$dir" ] || return 0
+    for entry in "${source[@]}"; do
+        # name::url keeps its local name; a bare url is saved under its basename.
+        [[ "${entry#*::}" == "${_patchsource}"/* ]] || continue
+        name="${entry%%::*}"
+        [ "$name" != "$entry" ] || name="${entry##*/}"
+        rm -f -- "$dir/$name"
+    done
+}
+_purge_fetched_patches
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER="$pkgbase"
@@ -944,6 +971,6 @@ done
 
 b2sums=('de863b0d5ab80a456292e154e70c6ef5108740f15218da96e057bea8814ba0c186d3752a1fae20bb80a3e0dc7620d3a34e4a18b66385b3e634185e16faf9d8e9'
         'SKIP'
-        '475ed83f3a10cfeb9624a65b8deae00f171bfbc04b92a4aa80c546264393b6374acaa001ab19e24c1bf0adc891ac7a32af1b03476ae4d976ce16de34eb51235d'
+        'ec368517f0f5bbe7d61e2e82f5d6e19262d2c1739f3322691c973eb75d17d23db8d10c73c07aa38f419278acc2287f63ba1c09496dda97c77368e4470eb8db81'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
-        'acaf7cab034098f8728089921ce7ccadd66157e28d6910063e62df59f1fec11546909c36b2cfbde5d3673529d937f40e0b7d38427e64d11dacc33e73c0e3b6d8')
+        '04cca5d4811dce379776c124469cb69f5275e7eaa61401da9e23077d0d60d4d06b85b646292b6db4639541d70b4283f732b102c1168d6d29e16f8cccc695e205')
