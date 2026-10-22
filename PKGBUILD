@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
-pkgver=0.0.0.r1350.g0ce7533
+pkgver=0.0.0.r1837.g7d50081
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -64,11 +64,22 @@ build() {
   local _cef_api_version=$(grep -oP 'CEF_API_VERSION_LAST CEF_API_VERSION\_\K[0-9]+' /usr/include/cef/include/cef_api_versions.h)
   echo Setting CEF_API_VERSION to $_cef_api_version
 
+  export CARGO_PROFILE_RELEASE_DEBUG=2
+  export CARGO_PROFILE_RELEASE_STRIP=false
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+  export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
   local cmake_options=(
     -B build
     -S $pkgbase
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
+    -DENABLE_BRAND_RUST=ON
+    -DOBS_RUST_VERSION="${pkgver%.r*}"
     -DMbedTLS_DIR="/usr/lib/mbedtls3/cmake/MbedTLS"
     -DENABLE_BROWSER=ON
     -DCEF_API_VERSION=$_cef_api_version
@@ -79,18 +90,12 @@ build() {
     -DENABLE_JACK=ON
     -DENABLE_LIBFDK=ON
     -DENABLE_WEBRTC=ON
-    -DOBS_RUST_VERSION="${pkgver%.r*}"
     -DCALM_DEPRECATION=ON
     -DENABLE_WEBSOCKET=ON
-    -DENABLE_RUST_LIBOBS=ON
     -Wno-dev
   )
   cmake "${cmake_options[@]}"
   cmake --build build
-  pushd "$pkgbase"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
 }
 
 package_obs-studio-rust-git() {
@@ -105,8 +110,6 @@ package_obs-studio-rust-git() {
               "$_obs_studio-plugin-browser: CEF-based browser plugin"
               )
   DESTDIR="$pkgdir" cmake --install build
-  pushd "$pkgbase"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
 }
 
 package_obs-studio-rust-plugin-browser-git() {
