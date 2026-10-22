@@ -1,0 +1,20 @@
+pkgbase = xerj-bin
+	pkgdesc = Local-first search engine and MCP server for AI agents: BM25, vector and hybrid search over code, docs, logs and PDFs
+	pkgver = 1.0.0rc.98
+	pkgrel = 2
+	url = https://xerj.org
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = xerj
+	conflicts = xerj
+	options = !strip
+	options = !debug
+	source_x86_64 = xerj-1.0.0-rc.98-x86_64-unknown-linux-gnu.tar.gz::https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.98/xerj-1.0.0-rc.98-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cd983afbea1d8a54c8762950f064a1d47ba9a06027aa9f8d8c295c803e565ff2
+	source_aarch64 = xerj-1.0.0-rc.98-aarch64-unknown-linux-gnu.tar.gz::https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.98/xerj-1.0.0-rc.98-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5bcb82bdc2f92075b6712081ec973a9a317c35411f1e58712f9fefb098c2d04b
+
+pkgname = xerj-bin
