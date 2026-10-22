@@ -3,9 +3,9 @@
 pkgname=relic-catppuccin-gtk-theme
 _repo=Catppuccin-GTK-Theme
 _commit=a0f69cc33299dc97267c3507fe8a001aecc46b0f
-_fixes=2026.10.22.1
+_fixes=2026.10.22.2
 pkgver=2026.06.25
-pkgrel=4
+pkgrel=5
 pkgdesc='Catppuccin GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('2d478e2e8c7540eba92fe668fbef0136d4b448410d41789483faf413befe687c'
-            '3c203a956f4148230177eb925916ad8eddb75c98dd2212368b40df5e52d889d0')
+            '633d7b4729e30c4da5dc17543ac51249ed75bb8e789f20e5aa2c6d5bbc1bd5b6')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
