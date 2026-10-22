@@ -1,11 +1,12 @@
 PACKAGER="Laurent Brock <incognito0135@protonmail.com>"
 pkgname=piavpn-bin
 
-pkgver=3.7.2
-build_number=08420
+pkgver=3.8.0
+_pkgver=3.8
+build_number=08539
 # https://www.privateinternetaccess.com/pages/changelog
-
-epoch=1 # Switch versioning schemes for guaranteed upgrades
+# Switch versioning schemes for guaranteed upgrades
+epoch=1
 pkgrel=1
 pkgdesc="Private Internet Access client"
 arch=('x86_64' 'aarch64')
@@ -17,27 +18,28 @@ makedepends=(libcap)
 provides=(piavpn)
 conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
-source_x86_64=("https://installers.privateinternetaccess.com/download/pia-linux-${pkgver}-${build_number}.run")
-source_aarch64=("https://installers.privateinternetaccess.com/download/pia-linux-arm64-${pkgver}-${build_number}.run")
+source_x86_64=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}-${build_number}.run")
+source_aarch64=("https://installers.privateinternetaccess.com/download/pia-linux-arm64-${_pkgver}-${build_number}.run")
 options=(!strip)
-sha256sums_x86_64=('08a88af04462a9e078aeef52b26bcdb56f0a9b087a0fb7606f98b7eb79bb3dd9')
-sha256sums_aarch64=('3956d1ed9b6977f24ca960e78dd60572edd435f71b2a554e5c5d00f94603eeb9')
+
+sha256sums_x86_64=('a3cf2e2b50d29693ba58f0ae232e52c5785f0244a56e6ed005b684b18767399f')
+sha256sums_aarch64=('612d278eaadd123f9fed7f016924e7d25a32a33273d2dbbb690faaee14a6ebb3')
 
 # == You need to enable and start piavpn.service. Run sudo systemctl enable --now piavpn.service ==
 prepare() {
-	_pia_run="pia-linux-${pkgver}-${build_number}.run"
+	_pia_run="pia-linux-${_pkgver}-${build_number}.run"
 	if [ "$CARCH" == "aarch64" ] ;then
-		_pia_run="pia-linux-arm64-${pkgver}-${build_number}.run"
+		_pia_run="pia-linux-arm64-${_pkgver}-${build_number}.run"
 	fi
-	env -i /bin/sh $_pia_run --noexec --target "${srcdir}/$pkgname-${pkgver}-${build_number}"
+	env -i /bin/sh $_pia_run --noexec --target "${srcdir}/$pkgname-${_pkgver}-${build_number}"
 }
 
 check() {
-	grep -a 'targetdir="pia-linux' "${srcdir}/pia-linux-${pkgver}-${build_number}.run" | cut -d'-' -f3
+	grep -a 'targetdir="pia-linux' "${srcdir}/pia-linux-${_pkgver}-${build_number}.run" | cut -d'-' -f3
 }
 
 package() {
-	cd "$pkgname-$pkgver-$build_number"
+	cd "$pkgname-$_pkgver-$build_number"
 	mkdir -p $pkgdir/opt/piavpn/bin
 	cp -a piafiles/* $pkgdir/opt/piavpn
 	cp installfiles/*.sh $pkgdir/opt/piavpn/bin
