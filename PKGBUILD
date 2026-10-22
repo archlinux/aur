@@ -8,7 +8,7 @@
 #
 # Template note: the release workflow (`aur-bin` job) copies this file to the
 # AUR `bitty-bin` repository as `PKGBUILD`, substitutes `pkgver` with the
-# release tag version, and replaces `b0b2efd40a663838701fa36fe2a994f18fcf447c7ff8ee035f6db780c4d795ed` below with
+# release tag version, and replaces `238b43c8fc0472cace67be32b261b30ebd8ee84cc630662fd1bdfbdb6602eade` below with
 # the real sha256 from the published `.sha256` asset. The binary checksum must
 # never be `SKIP` in a published package.
 #
@@ -27,7 +27,7 @@
 # The metadata tarball below is not mirrored (only dist/* is), so it keeps the
 # GitHub archive URL. The binary sha256 is always verified by makepkg.
 pkgname=bitty-bin
-pkgver=0.0.25
+pkgver=0.0.26
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -38,31 +38,29 @@ makedepends=('ncurses')
 optdepends=('noto-fonts: fallback font')
 provides=('bitty')
 conflicts=('bitty' 'bitty-nightly' 'bitty-git')
-_bitty_asset="bitty-x86_64-unknown-linux-gnu"
+_bitty_asset="bitty-${pkgver}-x86_64-unknown-linux-gnu.tar.zst"
 # Version the local cached filename so package managers cannot reuse a
 # previous release's download when the published asset name is stable.
-_bitty_src="bitty-${pkgver}-x86_64-unknown-linux-gnu"
+_bitty_src="bitty-${pkgver}-x86_64-unknown-linux-gnu.tar.zst"
 source_x86_64=(
   "${_bitty_src}::https://cdn.bitty.run/releases/v${pkgver}/${_bitty_asset}"
-  "bitty-${pkgver}.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums_x86_64=(
-  'b0b2efd40a663838701fa36fe2a994f18fcf447c7ff8ee035f6db780c4d795ed'
-  'SKIP'
+  '238b43c8fc0472cace67be32b261b30ebd8ee84cc630662fd1bdfbdb6602eade'
 )
 
 package() {
-  install -Dm755 "${srcdir}/${_bitty_src}" "${pkgdir}/usr/bin/bitty"
-  cd "${srcdir}/bitty-${pkgver}"
+  cd "${srcdir}/bitty-${pkgver}-x86_64-unknown-linux-gnu"
+  install -Dm755 bin/bitty "${pkgdir}/usr/bin/bitty"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -Dm644 packaging/run.bitty.Bitty.desktop "${pkgdir}/usr/share/applications/run.bitty.Bitty.desktop"
-  install -Dm644 packaging/run.bitty.Bitty.metainfo.xml "${pkgdir}/usr/share/metainfo/run.bitty.Bitty.metainfo.xml"
+  install -Dm644 share/applications/run.bitty.Bitty.desktop "${pkgdir}/usr/share/applications/run.bitty.Bitty.desktop"
+  install -Dm644 share/metainfo/run.bitty.Bitty.metainfo.xml "${pkgdir}/usr/share/metainfo/run.bitty.Bitty.metainfo.xml"
   for size in 16 32 64 128 256 512; do
-    install -Dm644 "packaging/icons/hicolor/${size}x${size}/apps/bitty.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
+    install -Dm644 "share/icons/hicolor/${size}x${size}/apps/bitty.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
   done
-  install -Dm644 packaging/icons/hicolor/scalable/apps/bitty.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitty.svg"
+  install -Dm644 share/icons/hicolor/scalable/apps/bitty.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitty.svg"
   # Terminfo (CTX-1121 #1764): compile canonical source; never install raw .ti.
   tic -x -o "$pkgdir/usr/share/terminfo" terminfo/bitty.ti
 }
