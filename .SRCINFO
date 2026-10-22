@@ -1,6 +1,6 @@
 pkgbase = python-phonic
 	pkgdesc = The Phonic Python library provides convenient access to the Phonic APIs from Python.
-	pkgver = 0.32.39
+	pkgver = 0.32.40
 	pkgrel = 1
 	url = https://github.com/Phonic-Co/phonic-python
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-phonic
 	depends = python-pydantic-core
 	depends = python-typing_extensions
 	depends = python-websockets
-	source = https://github.com/Phonic-Co/phonic-python/archive/refs/tags/v0.32.39.tar.gz
-	sha256sums = 88194a9974b8953550796e6eb7638481d8a64004d056411918cda61697aa00b9
+	source = https://github.com/Phonic-Co/phonic-python/archive/refs/tags/v0.32.40.tar.gz
+	sha256sums = cf046cca5f96e3d172db599c42f4c8391b0b11c322c5b6ea75b13e5a8dc1a2cb
 
 pkgname = python-phonic
