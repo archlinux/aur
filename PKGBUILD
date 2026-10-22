@@ -24,32 +24,28 @@ sha256sums=(
 
 package() {
 	mkdir -p ${srcdir}/scripts
-	find ${srcdir} -maxdepth 1 -type f -print0 | while IFS= read -r -d $'\0' file; do
-		trimfname=${file##*/}
-		CLASSNAME=$(sed -nE 's/MAINCLASS=(.+)/\1/p' $file)
-		if [[ "$CLASSNAME" == "" ]]; then
+	find ${srcdir} -maxdepth 1 -type f -print0 | while read -r -d $'\0' _file; do
+		_trimfname=${_file##*/}
+		_classname=$(sed -nE 's/MAINCLASS=(.+)/\1/p' ${_file})
+		if [[ "${_classname}" == "" ]]; then
 			continue
 		fi
-		cp ${srcdir}/template.sh ${srcdir}/scripts/$trimfname
-		sed -i -e "s/MAINCLASS_PLACEHOLDER/$CLASSNAME/g" ${srcdir}/scripts/$trimfname
-		sed -i -e "s/PKGVER_PLACEHOLDER/${pkgver}/g" ${srcdir}/scripts/$trimfname
+		cp ${srcdir}/template.sh ${srcdir}/scripts/${_trimfname}
+		sed -i -e "s/MAINCLASS_PLACEHOLDER/${_classname}/g" ${srcdir}/scripts/${_trimfname}
+		sed -i -e "s/PKGVER_PLACEHOLDER/${pkgver}/g" ${srcdir}/scripts/${_trimfname}
+		install -Dm755 ${srcdir}/scripts/${_trimfname} -t ${pkgdir}/usr/bin
 	done
 
-	magick ${srcdir}/docs/doomtools-logo.ico ${srcdir}/doomtools.png
-	for file in ${srcdir}/scripts/*; do
-		install -Dm755 $file ${pkgdir}/usr/bin/"${file##*/}"
+	magick identify ${srcdir}/docs/doomtools-logo.ico | while read -r _icon _dummy _icon_res _dummy; do
+		magick ${_icon} ${srcdir}/${_icon_res}.png
+		install -Dm644 ${srcdir}/${_icon_res}.png ${pkgdir}/usr/share/icons/hicolor/${_icon_res}/apps/doomtools.png
 	done
-	install -Dm755 ${srcdir}/jar/doomtools-${pkgver}.jar -t ${pkgdir}/usr/share/java/doomtools
-	install -Dm755 ${srcdir}/doomtools.desktop -t ${pkgdir}/usr/share/applications
-	install -Dm644 ${srcdir}/doomtools-0.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/doomtools.png
-	install -Dm644 ${srcdir}/doomtools-1.png ${pkgdir}/usr/share/icons/hicolor/96x96/apps/doomtools.png
-	install -Dm644 ${srcdir}/doomtools-2.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/doomtools.png
-	install -Dm644 ${srcdir}/doomtools-3.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/doomtools.png
-	install -Dm644 ${srcdir}/doomtools-4.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/doomtools.png
-	install -Dm644 ${srcdir}/doomtools-5.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/doomtools.png
+
+	install -Dm644 ${srcdir}/jar/doomtools-${pkgver}.jar -t ${pkgdir}/usr/share/java/doomtools
+	install -Dm644 ${srcdir}/doomtools.desktop -t ${pkgdir}/usr/share/applications
 	install -Dm644 ${srcdir}/docs/LICENSE.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
+	install -Dm644 ${srcdir}/docs/licenses/* -t ${pkgdir}/usr/share/licenses/${pkgname}
 	install -Dm644 ${srcdir}/docs/*.md -t ${pkgdir}/usr/share/doomtools/docs
 	install -Dm644 ${srcdir}/docs/*.txt -t ${pkgdir}/usr/share/doomtools/docs
-	install -Dm644 ${srcdir}/docs/licenses/* -t ${pkgdir}/usr/share/licenses/${pkgname}
 	rm ${pkgdir}/usr/share/doomtools/docs/LICENSE.txt
 }
