@@ -3,7 +3,7 @@
 pkgdesc='A terminal user interface that extracts and displays tasks from notes files'
 pkgname=taskfinder
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 url="https://codeberg.org/kdwarn/$pkgname"
 arch=(x86_64)
 license=(AGPL-3.0-or-later)
@@ -13,15 +13,25 @@ makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('7bd77d7c921b82d1937f7b81117a03d4acce20f2a178cece7155846cb217a610')
 
-prepare() {
-	cd "$pkgname"
-	cargo fetch --locked --target host-tuple
-}
-
 _srcenv() {
 	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 build() {

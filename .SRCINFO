@@ -1,7 +1,7 @@
 pkgbase = taskfinder
 	pkgdesc = A terminal user interface that extracts and displays tasks from notes files
 	pkgver = 2.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/kdwarn/taskfinder
 	arch = x86_64
 	license = AGPL-3.0-or-later
