@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-pure
-pkgver=157.0
+pkgver=158.0.1
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.firefox.com"
@@ -84,12 +84,12 @@ source=(
   "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-${pkgver%%.*}-patches-01.tar.xz"
 )
 sha256sums=(
-  '259c564dd4bbd56bbe8a9a6cf001fc8812853567fd3a78e77c9ddf10d7d4e982'
+  'b5beff55fa73a29a674a867da5922f5d7699f51e351e6bbe4405fcc4ba55a824'
   'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
   '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
   'a7364ddb3b6eab922873f35731ed5cfb61e8022a35d54edd2f80b95a4f5625ed'
-  'e615f4512a4faf9b8cd96ff5484875176a3c636083966659f65260cc64737060'
+  'ca830e343d0b034452a3fab1bdf6891cd68501e096eb6385feed6f427549b4f9'
 )
 
 prepare() {
@@ -102,8 +102,8 @@ prepare() {
   # Gentoo patches
   for patch in "${srcdir}/firefox-patches"/*.patch; do
     echo "Applying patch $patch..."
-    [[ "$patch" == */0015-bgo-940031-wasm-support-firefox-155.patch ]] && continue
-    [[ "$patch" == */0027-bgo-981812-bindgen-libcxx-fix.patch ]] && continue
+    [[ "$patch" == */0014-bgo-940031-wasm-support-firefox-155.patch ]] && continue
+    [[ "$patch" == */0026-bgo-981812-bindgen-libcxx-fix.patch ]] && continue
     patch -Np1 -i "${patch}"
   done
 
