@@ -1,7 +1,7 @@
 pkgbase = relic-gruvbox-gtk-theme
 	pkgdesc = Gruvbox GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
 	pkgver = 2025.10.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gaou-piou/Gruvbox-GTK-Theme
 	arch = any
 	license = GPL-3.0-only
@@ -13,8 +13,8 @@ pkgbase = relic-gruvbox-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Gruvbox-GTK-Theme-578cd220b5ff6e86b078a6111d26bb20ec8c733f.tar.gz::https://github.com/gaou-piou/Gruvbox-GTK-Theme/archive/578cd220b5ff6e86b078a6111d26bb20ec8c733f.tar.gz
-	source = relic-gtk-fixes-2026.10.13.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.13.tar.gz
+	source = relic-gtk-fixes-2026.10.22.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.22.tar.gz
 	sha256sums = f45da23a6c4123148cf8f78983e391a86c2e2ee1b7a80aa66790f148cb9619bd
-	sha256sums = 895fe5ab4d59fb69cf9aaf7ee7df4f2cf716485a429eacaf02ab5d761217bb47
+	sha256sums = c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb
 
 pkgname = relic-gruvbox-gtk-theme
