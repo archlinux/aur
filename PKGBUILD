@@ -2,7 +2,7 @@
 
 pkgname=headroom-ai
 pkgver=0.41.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90%"
 arch=('x86_64')
 url="https://github.com/chopratejas/headroom"
@@ -25,15 +25,24 @@ makedepends=('rust' 'maturin' 'python-installer')
 # symlink (named after the cpython-314 .so that never gets installed).
 options=('!debug')
 optdepends=(
-  'python-fastapi: proxy server support'
-  'uvicorn: proxy server support'
-  'python-httpx: proxy server with HTTP/2'
-  'python-openai: OpenAI API format support'
+  'python-fastapi: required by headroom proxy and wrap'
+  'uvicorn: required by headroom proxy and wrap'
+  'python-httpx: required by headroom proxy and wrap'
+  'python-h2: required by headroom proxy and wrap'
+  'python-openai: required by headroom proxy and wrap'
+  'python-orjson: required by headroom proxy and wrap'
+  'python-mcp: required by headroom proxy and wrap'
+  'python-magika: required by headroom proxy and wrap'
+  'python-zstandard: required by headroom proxy and wrap'
+  'python-websockets: required by headroom proxy and wrap'
+  'python-onnxruntime: required by headroom proxy and wrap (any provider, e.g. python-onnxruntime-cpu)'
+  'python-watchdog: live code-graph reindexing (--code-graph)'
+  'python-sqlite-vec: vector index for --memory'
+  'python-transformers: required by headroom proxy and wrap'
   'python-tree-sitter-language-pack: AST-based code compression'
   'python-numpy: relevance scoring, evals, and memory adapters'
   'python-datasets: evaluation and voice training datasets'
   'python-huggingface-hub: Kompress model downloads'
-  'python-transformers: HuggingFace tokenizers and Kompress compression'
   'python-hnswlib: HNSW vector memory adapter'
 )
 source=("https://files.pythonhosted.org/packages/source/h/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
