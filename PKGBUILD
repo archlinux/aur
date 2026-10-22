@@ -49,13 +49,17 @@ package() {
 	if [ -f "${pkgdir}/usr/lib/nota/nota-scanworker" ]; then
 		chmod 755 "${pkgdir}/usr/lib/nota/nota-scanworker"
 	fi
-	if [ -f "${pkgdir}/usr/lib/nota/createdump" ]; then
-		chmod 755 "${pkgdir}/usr/lib/nota/createdump"
-	fi
 	find "${pkgdir}/usr/lib/nota" -type f -name "*.so*" -exec chmod 755 {} +
 
 	# Remove LTTng tracepoint provider to avoid unnecessary dependency on liblttng-ust
 	rm -f "${pkgdir}/usr/lib/nota/libcoreclrtraceptprovider.so"
+
+	# Drop build-time artifacts that only bloat the package
+	find "${pkgdir}/usr/lib/nota" -name "*.pdb" -delete
+	find "${pkgdir}/usr/lib/nota" -name "*.xml" -delete
+
+	# createdump is a development/crash-dump helper, not needed at runtime
+	rm -f "${pkgdir}/usr/lib/nota/createdump"
 
 	# Install launcher scripts
 	install -d "${pkgdir}/usr/bin"
