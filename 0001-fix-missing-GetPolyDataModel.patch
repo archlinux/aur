@@ -1,0 +1,59 @@
+From 6a22e41e41b36bd0321d2b720144e757ab2eb7c2 Mon Sep 17 00:00:00 2001
+From: Thorsten Liebig <Thorsten.Liebig@gmx.de>
+Date: Tue, 20 Oct 2026 18:28:46 +0200
+Subject: [PATCH] disc material: build the model polydata from CSXCAD's arrays
+
+CSXCAD no longer creates the vtkPolyData of a discrete material; build
+it here from GetPolyDataModel() in mesh coordinates, so the scale and
+transform are applied as before.
+
+Needs the CSXCAD that removes CreatePolyDataModel().
+
+Assisted-by: Claude Opus 5.5 (Claude Code)
+Signed-off-by: Thorsten Liebig <thorsten.liebig@gmx.de>
+---
+ QVTKStructure.cpp | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/QVTKStructure.cpp b/QVTKStructure.cpp
+index c730918..254dc5f 100644
+--- a/QVTKStructure.cpp
++++ b/QVTKStructure.cpp
+@@ -41,6 +41,8 @@
+ #include "vtkCubeSource.h"
+ #include "vtkPolyDataMapper.h"
+ #include "vtkCellArray.h"
++#include "vtkPoints.h"
++#include "vtkPolyData.h"
+ #include "vtkActor.h"
+ #include "vtkLODActor.h"
+ #include "vtkFollower.h"
+@@ -722,9 +724,26 @@ void QVTKStructure::RenderDiscMaterialModel()
+ 		CSPropDiscMaterial* dm_prop = prop->ToDiscMaterial();
+ 		if (dm_prop)
+ 		{
+-			vtkPolyData* polydata = dm_prop->CreatePolyDataModel();
+-			if (polydata==NULL)
++			// the surface in mesh coordinates, scale and transform are applied below
++			std::vector<double> coords;
++			std::vector<int> quads;
++			if (!dm_prop->GetPolyDataModel(coords, quads, false))
+ 				continue;
++			vtkPoints* points = vtkPoints::New();
++			points->SetNumberOfPoints(coords.size()/3);
++			for (size_t n=0;n<coords.size()/3;++n)
++				points->SetPoint(n, &coords[3*n]);
++			vtkCellArray* poly = vtkCellArray::New();
++			for (size_t n=0;n<quads.size();n+=4)
++			{
++				vtkIdType ids[4] = {quads[n], quads[n+1], quads[n+2], quads[n+3]};
++				poly->InsertNextCell(4, ids);
++			}
++			vtkPolyData* polydata = vtkPolyData::New();
++			polydata->SetPoints(points);
++			points->Delete();
++			polydata->SetPolys(poly);
++			poly->Delete();
+ 
+ 			VTKDiscModel model;
+ 			VTKPrimitives* vtkPrims= new VTKPrimitives(ren);

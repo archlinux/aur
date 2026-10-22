@@ -3,8 +3,8 @@
 
 _pkgname="qcsxcad"
 pkgname="$_pkgname"
-pkgver=0.6.3
-pkgrel=4
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Qt-GUI for CSXCAD"
 url="https://github.com/thliebig/QCSXCAD"
 license=("LGPL-3.0-or-later")
@@ -28,11 +28,11 @@ _pkgsrc="QCSXCAD-$pkgver"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext"
-  '0001_disable_property_editor.patch'
+  '0001-fix-missing-GetPolyDataModel.patch'
 )
 sha256sums=(
-  'f05edbcca65f0bf8a3fb6ab20baa3db0b8651c2baab2f6a3f0113436c866f879'
-  '6fde23f71472296942bb99e2344c1a914f4e3049d7962328a923cf659f67c410'
+  'a266a094ef23a6e63d8c60dee90aaab52623c9438ee07fcad80232271984c06d'
+  'f9898121a90f31af434c1d45f9af76b3c021eb10086bf5379dbb9c3963944bc1'
 )
 
 prepare() {
@@ -46,30 +46,15 @@ prepare() {
       patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
-
-  # fix cmake
-  sed -E -e '/cmake_policy/d' \
-    -e '/PROJECT/s&(CXX)&\1 C&' \
-    -i "$_pkgsrc/CMakeLists.txt"
-
-  # fix namespace
-  install -D /dev/stdin hammer.h << END
-#include <iostream>
-using std::cerr;
-using std::cout;
-END
 }
 
 build() {
-  export CXXFLAGS+=" -include '$srcdir/hammer.h'"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -Wno-author
   )
 
