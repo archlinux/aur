@@ -2,6 +2,31 @@
 
 All the changes made to runa are documented here.
 
+## [0.14.1] - 2026-10-23
+
+#### Navigation, preview and config watcher fixes.
+
+### Fixed
+- **Navigation**:
+    - Fast moves into or out of directories no longer leave previous or stale entries on screen.
+    - Moving through a directory whose files keep changing (like build outputs) no longer jumps back or skips entries.
+- **Preview**: Errors from other panes no longer replace the preview.
+- **Config**:
+    - Without a config folder, runa no longer watches the parent directory recursively.
+    - Only the actual `runa.toml` inside the config directory triggers a reload.
+
+### Internal
+- **Workers**: Busy worker keeps newest request instead of dropping it. Errors on directory loads are routed by request and path.
+
+> [!TIP]
+> The previous version, 0.14.0, added a lot of new features.  
+> Read through its [changelog](https://github.com/alexm-dev/runa/releases/tag/v0.14.0) to get up to speed,
+> and see the [editor doc](https://alexm-dev.github.io/runa/config-reference/editor) and [commands doc](https://alexm-dev.github.io/runa/config-reference/commands) to set them up.
+
+
+---
+
+
 ## [0.14.0] - 2026-10-22
 
 #### Archive preview, custom commands, directory scrolling and more.
