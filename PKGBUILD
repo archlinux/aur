@@ -1,6 +1,6 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=rqlite
-pkgver=10.6.3
+pkgver=10.6.4
 pkgrel=1
 pkgdesc="A lightweight, distributed relational database, which uses SQLite as its storage engine"
 arch=("x86_64" "armv7h" "aarch64")
@@ -15,7 +15,7 @@ source=("${pkgname}.service"
 sha256sums=('dada94e4161c48609567014e4ac48dc633437fd3a569ecf400e5c056b53dc3f9'
             'c0132b51d5c28517545fb58ce4aa67b6e860020d662aa8317ecb6aab0264829a'
             '43c1094a6fdd04c18df738fdc85250f0cbcb87b2f8f23320f42f4ca0656f43fc'
-            '3ea8bb2d6552f1884ba292c693b68995196e78b7da77af9dd604b370c7625ada')
+            'd78f59fa7631458a7379c6278fc6a7495a6e91dc49ad964e2d09c0f296fdfcde')
 
 prepare() {
     cd "$pkgname-$pkgver"
