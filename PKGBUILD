@@ -1,11 +1,11 @@
 # Maintainer: qie2035 <qie2035@users.noreply.github.com>
-# The upstream asset lives under the moving "nightly" tag, which is rebuilt in
-# place without changing the file name; the checksum below pins the
-# 2026-09-07 build, so bump it (and pkgrel) whenever upstream pushes a new one.
+# The upstream .deb is attached to the immutable 1.5.0 release tag; the
+# checksum below pins that asset. Bump pkgver (and pkgrel) when a new stable
+# release is published upstream.
 pkgname=rustdesk-unattended-wayland
 pkgver=1.5.0
-pkgrel=3
-pkgdesc="RustDesk remote desktop - nightly build with unattended access support on Wayland"
+pkgrel=4
+pkgdesc="RustDesk remote desktop - stable build with unattended access support on Wayland"
 arch=('x86_64')
 url="https://github.com/rustdesk/rustdesk"
 license=('AGPL-3.0-only')
