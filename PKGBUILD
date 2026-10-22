@@ -8,22 +8,21 @@
 # Also installs the libfprint examples as goodix55b4-{img-capture,enroll,
 # verify,identify,manage-prints} (stop fprintd first; they need root for USB).
 #
-# Build and install:
+# Published on the AUR as libfprint-goodix55b4. To build from this repo:
 #   git clone https://github.com/TheWeirdDev/libfprint-goodix55b4-milan.git
 #   cd libfprint-goodix55b4-milan/packaging/arch && makepkg -si
 
 pkgname=libfprint-goodix55b4
 pkgver=1.94.10.m2
-pkgrel=1
+pkgrel=2
 pkgdesc="libfprint with the Goodix 27c6:55b4 driver using the native Milan matcher"
 arch=('x86_64')
-url="https://gitlab.freedesktop.org/libfprint/libfprint"
+url="https://github.com/TheWeirdDev/libfprint-goodix55b4-milan"
 license=('LGPL-2.1-or-later')
 depends=('glib2' 'libgusb' 'libgudev' 'openssl' 'pixman' 'libdeflate' 'systemd-libs')
 makedepends=('git' 'meson' 'ninja' 'python' 'patchelf' 'gobject-introspection' 'systemd')
 provides=('libfprint=1.94.10' 'libfprint-2.so')
 conflicts=('libfprint' 'libfprint-goodix55b4-milan')
-replaces=('libfprint-goodix55b4-milan')
 _libfprint_commit=0c97a47d8ef405cd577b87058c1e89cae9d242e7 # v1.94.10
 _repo_url=https://github.com/TheWeirdDev/libfprint-goodix55b4-milan.git
 source=("libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=${_libfprint_commit}"
