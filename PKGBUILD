@@ -3,9 +3,9 @@
 pkgname=relic-tokyonight-gtk-theme
 _repo=Tokyonight-GTK-Theme
 _commit=6c340e058e84c1975a038a8e5d1e384477225dc0
-_fixes=2026.10.13
+_fixes=2026.10.22
 pkgver=2025.10.23
-pkgrel=2
+pkgrel=3
 pkgdesc='Tokyo Night GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('ecb39f8ca86a0e460a8bde52173a21f656f2740fc17bf393a21411c17378fd6c'
-            '895fe5ab4d59fb69cf9aaf7ee7df4f2cf716485a429eacaf02ab5d761217bb47')
+            'c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
