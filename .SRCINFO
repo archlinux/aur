@@ -1,6 +1,6 @@
 pkgbase = faro-bin
 	pkgdesc = Terminal client for Signal, built for people who live in tmux (prebuilt binary)
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://getfaro.dev
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = faro-bin
 	conflicts = faro
 	options = !strip
 	options = !debug
-	source_x86_64 = faro-x86_64-unknown-linux-gnu-0.1.3.tar.xz::https://github.com/harababurel/faro/releases/download/v0.1.3/faro-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = b135a5a8ce82f5588e7c41fa7d6bcb997003264c113131170c0d276034868fcf
-	source_aarch64 = faro-aarch64-unknown-linux-gnu-0.1.3.tar.xz::https://github.com/harababurel/faro/releases/download/v0.1.3/faro-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = c1717dd29954a6e29cd7958091529cfb134056c5a1501f0c967ff35cd5adb75a
+	source_x86_64 = faro-x86_64-unknown-linux-gnu-0.1.4.tar.xz::https://github.com/harababurel/faro/releases/download/v0.1.4/faro-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = c7d1f21de9285dbcb1e80ab76d802fe1fce234e86f7d849b18b50e5d528d327c
+	source_aarch64 = faro-aarch64-unknown-linux-gnu-0.1.4.tar.xz::https://github.com/harababurel/faro/releases/download/v0.1.4/faro-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 2d471ee0625b3442ca91426c58321f244787dd3bda8bfdba519e40e9a1f5d994
 
 pkgname = faro-bin
