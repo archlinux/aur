@@ -1,7 +1,7 @@
 pkgbase = click-ns3-git
 	pkgdesc = The Click modular router: fast modular packet processing and analysis.
 	pkgver = 2.0.1.r964.g9197a59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kohler/click
 	arch = x86_64
 	license = LicenseRef-the-Click-license

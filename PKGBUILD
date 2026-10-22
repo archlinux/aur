@@ -1,7 +1,7 @@
 pkgname='click-ns3-git'
 _pkgname='click'
 pkgver=2.0.1.r964.g9197a59
-pkgrel=1
+pkgrel=2
 pkgdesc="The Click modular router: fast modular packet processing and analysis."
 arch=('x86_64')
 url="https://github.com/kohler/click"
@@ -19,6 +19,8 @@ pkgver() {
 }
 
 build() {
+  export CXXFLAGS="${CXXFLAGS} -std=gnu++11"
+
   cd ${_pkgname}
   ./configure \
     --prefix /usr \
