@@ -1,23 +1,23 @@
 pkgbase = todoist-wrapper-bin
 	pkgdesc = A lightweight Electron wrapper for Todoist that provides a native desktop experience on Linux with full Wayland support.
-	pkgver = 4.20261018035611
+	pkgver = 4.20261021040615
 	pkgrel = 1
 	url = https://github.com/conjfrnk/todoist-wrapper
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron41
 	depends = nodejs
-	provides = todoist-wrapper=4.20261018035611
+	provides = todoist-wrapper=4.20261021040615
 	conflicts = todoist-wrapper
 	options = !emptydirs
 	options = !strip
-	source = todoist-wrapper-4.20261018035611.rpm::https://github.com/conjfrnk/todoist-wrapper/releases/download/v4.20261018035611/todoist-wrapper-4.20261018035611-1.x86_64.rpm
+	source = todoist-wrapper-4.20261021040615.rpm::https://github.com/conjfrnk/todoist-wrapper/releases/download/v4.20261021040615/todoist-wrapper-4.20261021040615-1.x86_64.rpm
 	source = todoist-wrapper.svg::https://simpleicons.org/icons/todoist.svg
-	source = LICENSE-4.20261018035611::https://raw.githubusercontent.com/conjfrnk/todoist-wrapper/v4.20261018035611/LICENSE
+	source = LICENSE-4.20261021040615::https://raw.githubusercontent.com/conjfrnk/todoist-wrapper/v4.20261021040615/LICENSE
 	source = todoist-wrapper.sh
-	sha256sums = dbd49bf06291a2195c8f519d5c96026daf0dea28443337438a85dc5db1fa019d
+	sha256sums = fa6bf94456fb4105b2753bce05c6ab955074fa3660fac48e5c7629d14035e9a1
 	sha256sums = 112b8e04327007cf75839bee7547718f334908c27700f9d5f5211062258510fe
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = todoist-wrapper-bin
