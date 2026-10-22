@@ -1,7 +1,7 @@
 # Maintainer: Ait contributors <https://github.com/ait-app/ait>
 
 pkgname=ait-bin
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='Local-first multi-agent manager with an Electron desktop and Rust daemon'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 )
 noextract=("${_appimage}")
 sha256sums=(
-  'f83957727571f069a3cb86ff352c26ef1641801573b3c6ab5b7bdd4437164fef'
+  '7dc208b0f9019bd18b37faededc4deba36f943c418b0cc93fcb58c68a26eeefa'
   'c046b482bf9d9ba6ce161a6b242fa506798e908b5b5dfbf5e27776558e803cc0'
 )
 
