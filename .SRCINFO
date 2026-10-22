@@ -1,0 +1,26 @@
+pkgbase = python-gds2palace
+	pkgdesc = Create AWS Palace (FEM Solver) model from GDSII layout files
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/VolkerMuehlhaus/gds2palace_ihp_sg13g2
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gdspy
+	depends = python-shapely
+	depends = python-numpy
+	depends = gmsh
+	optdepends = python-matplotlib: If running the inductor synthesis example
+	optdepends = python-scikit-rf: For converting output to Touchstone
+	optdepends = paraview: To view field-dump output
+	optdepends = palace: Primary FEM solver
+	optdepends = elmerfem: Alternative FEM solver
+	source = gds2palace::git+https://github.com/VolkerMuehlhaus/gds2palace_ihp_sg13g2#commit=f76f33acf4a337c656c74bd015f8fcb5da973770
+	b2sums = SKIP
+
+pkgname = python-gds2palace
