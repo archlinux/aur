@@ -1,6 +1,6 @@
 # Maintainer: Luis Ortiz <luis.ortiz@westpoint.io>
 pkgname=lazyrsync
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A terminal UI for rsync — profiles, dry-run diff preview, live progress"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('rsync' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7ddb32c20688c1e56032207a5ed8edd5db09f9aaaad43741de13bef715bc1a4d')
+sha256sums=('e8995ca91c75dc67d88ad4e09f74a2f7863387262b63ee299833a4f9d4c7de3c')
 
 prepare() {
     cd "$pkgname-$pkgver"
