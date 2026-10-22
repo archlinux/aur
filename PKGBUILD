@@ -5,7 +5,7 @@
 # shellcheck shell=bash
 
 pkgname="modsecurity-crs"
-pkgver=4.29.0
+pkgver=4.30.0
 pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 url="https://github.com/coreruleset/coreruleset"
@@ -23,9 +23,9 @@ source=("coreruleset-$pkgver.tar.gz::https://github.com/coreruleset/coreruleset/
   "https://github.com/coreruleset/coreruleset/releases/download/v$pkgver/coreruleset-$pkgver.tar.gz.asc"
   "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended"
   "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping")
-b2sums=('828f9b5d4aaaf84274b7ef50c010699e07ac1eddd908109845fb45f5a3b4eaa858c490274338f27884e806c28816208c7be5db7c65d387c00fa799dbbb77ac44'
+b2sums=('d4e97140a46983544b199c4f1bfd0e75bd76891312368d97745873e67298693f4d6eadf815ef5d7ad98b91b3211ae1805a8eb64a62ce202dac6986926dcda621'
         'SKIP'
-        '378937cb32877e1bb22a2e08389da144be8004233e6d77c917c848ecfba5897cae85bd5c921e5a8eefb14a12b07050e6cd642c485351d25b6e9e8aef9ab84c1f'
+        '5d2c6c7d252930c26b8cb2b886191eda5c1aadb6179c2fe648c68f1078d2749f9dc7ea829e5d9f334f8250775eca757946dd69a3767f6d79ec942af916d2c822'
         '81760f570952b472dcdd3a5b5a2214136e21d1a1cdf65b6d16c615ef4ac6df056b37eebe9ce1f175aa72c664fa7405b1e6edc57847e64511cc64d969ad4490e7')
 # See https://coreruleset.org/docs/1-getting-started/1-1-crs-installation/#verifying-releases
 validpgpkeys=('36006F0E0BA167832158821138EEACA1AB8A6E72')
