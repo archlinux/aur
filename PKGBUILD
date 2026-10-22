@@ -16,10 +16,12 @@ makedepends=(boost cmake git python-setuptools swig)
 checkdepends=(ruby)
 source=("git+https://github.com/quickfix/quickfix.git"
     cmake.patch
-    getdatetime-gil.patch)
+    getdatetime-gil.patch
+    fix-scheduled-relogon.patch)
 sha256sums=('SKIP'
             'fdd7b71866f6490100796be9d891df13a92546f2e70c9cf88863688e9b65a2f7'
-            '04972d562875f8224861d76791001b3ec2515e0a898a431439dea6fbef88760f')
+            '04972d562875f8224861d76791001b3ec2515e0a898a431439dea6fbef88760f'
+            'eca581da23e5ee5c61e44c6eb55c7a7a221406d22d681237c120c89ff6704c75')
 options=(!lto)
 
 pkgver() {
@@ -31,6 +33,7 @@ prepare() {
   cd "${_pkgname}"
   patch -p1 < ../cmake.patch
   patch -p1 < ../getdatetime-gil.patch
+  patch -p1 < ../fix-scheduled-relogon.patch
   # Regenerate the bindings so the %nothreadallow above takes effect; the
   # committed QuickfixPython.cpp is stale otherwise.
   cd src/python

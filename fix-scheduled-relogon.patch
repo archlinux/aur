@@ -1,0 +1,113 @@
+From 1281f3e0466cb38cfaeb061d8f6efc0940526b7c Mon Sep 17 00:00:00 2001
+From: abhi byte-62 <mrabhisheak@email.com>
+Date: Thu, 1 Oct 2026 12:09:43 +0530
+Subject: [PATCH] Fix SocketInitiator disconnect notification when disconnected
+ by Session
+
+When an acceptor issues a Logout message, Session::nextLogout calls
+Session::disconnect(), which invokes SocketConnection::disconnect() and
+drops the socket from the SocketMonitor. Because the socket is already
+dropped, ConnectorWrapper never triggers onDisconnect on the
+SocketInitiator, leaving the connection registered in m_connections and
+preventing automatic reconnection.
+
+This change tracks the disconnected state in SocketConnection so that
+SocketConnection::read() returns false when disconnected, properly
+signaling onDisconnect to the SocketInitiator.
+
+Fixes #741
+---
+ src/C++/SocketConnection.cpp              | 14 ++++++++++----
+ src/C++/SocketConnection.h                |  1 +
+ src/C++/test/SocketConnectionTestCase.cpp | 10 ++++++++++
+ 3 files changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/src/C++/SocketConnection.cpp b/src/C++/SocketConnection.cpp
+index ada023998..5b1b42674 100644
+--- a/src/C++/SocketConnection.cpp
++++ b/src/C++/SocketConnection.cpp
+@@ -37,7 +37,8 @@ SocketConnection::SocketConnection(socket_handle s, Sessions sessions, SocketMon
+       m_sendLength(0),
+       m_sessions(sessions),
+       m_pSession(0),
+-      m_pMonitor(pMonitor) {
++      m_pMonitor(pMonitor),
++      m_disconnected(false) {
+ #ifdef _MSC_VER
+   FD_ZERO(&m_fds);
+   FD_SET(m_socket, &m_fds);
+@@ -52,7 +53,8 @@ SocketConnection::SocketConnection(
+     : m_socket(s),
+       m_sendLength(0),
+       m_pSession(i.getSession(sessionID, *this)),
+-      m_pMonitor(pMonitor) {
++      m_pMonitor(pMonitor),
++      m_disconnected(false) {
+ #ifdef _MSC_VER
+   FD_ZERO(&m_fds);
+   FD_SET(m_socket, &m_fds);
+@@ -112,19 +114,23 @@ bool SocketConnection::processQueue() {
+ }
+ 
+ void SocketConnection::disconnect() {
++  m_disconnected = true;
+   if (m_pMonitor) {
+     m_pMonitor->drop(m_socket);
+   }
+ }
+ 
+ bool SocketConnection::read(SocketConnector &s) {
+-  if (!m_pSession) {
++  if (!m_pSession || m_disconnected) {
+     return false;
+   }
+ 
+   try {
+     readFromSocket();
+     readMessages(s.getMonitor());
++    if (m_disconnected) {
++      return false;
++    }
+   } catch (SocketRecvFailed &e) {
+     m_pSession->getLog()->onEvent(e.what());
+     return false;
+@@ -192,7 +198,7 @@ bool SocketConnection::read(SocketAcceptor &acceptor, SocketServer &server) {
+     } else {
+       readFromSocket();
+       readMessages(server.getMonitor());
+-      return true;
++      return !m_disconnected;
+     }
+   } catch (SocketRecvFailed &e) {
+     if (m_pSession) {
+diff --git a/src/C++/SocketConnection.h b/src/C++/SocketConnection.h
+index bb31e0757..c116fa880 100644
+--- a/src/C++/SocketConnection.h
++++ b/src/C++/SocketConnection.h
+@@ -92,6 +92,7 @@ class SocketConnection : Responder {
+   Sessions m_sessions;
+   Session *m_pSession;
+   SocketMonitor *m_pMonitor;
++  bool m_disconnected;
+   Mutex m_mutex;
+ #ifdef _MSC_VER
+   fd_set m_fds;
+diff --git a/src/C++/test/SocketConnectionTestCase.cpp b/src/C++/test/SocketConnectionTestCase.cpp
+index 3bf0a6a22..00345cc08 100644
+--- a/src/C++/test/SocketConnectionTestCase.cpp
++++ b/src/C++/test/SocketConnectionTestCase.cpp
+@@ -256,4 +256,14 @@ TEST_CASE("SocketConnectionTests") {
+     SocketConnector connector;
+     CHECK(!connection.pSocketConnection->read(connector));
+   }
++
++  SECTION("ReadSocket_Disconnected_ReturnsFalse") {
++    TestSessionConnection connection;
++    Session *session = connection.getSession();
++    CHECK(nullptr != session);
++    session->disconnect();
++
++    SocketConnector connector;
++    CHECK(!connection.pSocketConnection->read(connector));
++  }
+ }
