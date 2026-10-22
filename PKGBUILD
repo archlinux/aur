@@ -5,7 +5,7 @@
 _pkgname=qdrant-client
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Client library for the Qdrant vector search engine"
 arch=('any')
@@ -17,7 +17,6 @@ depends=(
     'python-h2'
     'python-httpx'
     'python-numpy'
-    'python-portalocker'
     'python-protobuf'
     'python-pydantic'
     'python-urllib3'
@@ -39,10 +38,22 @@ checkdepends=(
 # package; the packaged CPU FastEmbed integration remains advertised.
 optdepends=(
     'python-fastembed: local embedding generation (fastembed extra)'
+    'python-orjson: faster JSON serialization (orjson extra)'
 )
 _archive="${_pkgname}-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3000dedabf54ec0eb0356ab4d7bf8b45b4634e495647bd1d4e37bc1e25272531')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        'posix-file-locking.patch'
+        'test-posix-locking.py')
+sha256sums=('96f62fca4d8910f9406da2037f4a70f0e8eadb2742f2d07207617f21faea5047'
+            'e8869a82eef0a3f86582269d20e10b0baf4659efaaf905c3c779dc02f62fb1be'
+            '91215605d593a304cd1637ac18c9100d99377c056ccb5cbdad00cf6fb29d2d61')
+
+prepare() {
+    cd "${_archive}"
+    # The public Portalocker recipe cannot build with Arch's current uv-build.
+    # On Arch, use the same flock API through Python's POSIX standard library.
+    patch -Np1 -i "$srcdir/posix-file-locking.patch"
+}
 
 build() {
     cd "${_archive}"
@@ -106,13 +117,15 @@ check() {
         --asyncio-mode=auto --rootdir=. --import-mode=importlib -v \
         "${tests[@]}"
 
+    PYTHONPATH="$staged" python -P "$srcdir/test-posix-locking.py"
+
     PYTHONPATH="$staged" python -P - <<'PY'
 import importlib.metadata
 import tempfile
 
 from qdrant_client import QdrantClient, models
 
-assert importlib.metadata.version("qdrant-client") == "1.19.1"
+assert importlib.metadata.version("qdrant-client") == "1.20.0"
 with tempfile.TemporaryDirectory() as path:
     client = QdrantClient(path=path)
     client.create_collection(
@@ -140,16 +153,6 @@ PY
 package() {
     cd "${_archive}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-
-    # Poetry includes upstream's in-package test modules in the wheel.
-    # Do not make pytest a runtime dependency merely for installed tests.
-    local site_packages
-    site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
-    rm -rf "$pkgdir$site_packages/qdrant_client/local/tests"
-    rm -f "$pkgdir$site_packages/qdrant_client/hybrid/test_reranking.py"
-    rm -f "$pkgdir$site_packages/qdrant_client/hybrid/__pycache__"/test_reranking.*.pyc
-    rmdir --ignore-fail-on-non-empty \
-        "$pkgdir$site_packages/qdrant_client/hybrid/__pycache__"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

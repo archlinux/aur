@@ -1,6 +1,6 @@
 pkgbase = python-qdrant-client
 	pkgdesc = Client library for the Qdrant vector search engine
-	pkgver = 1.19.1
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://github.com/qdrant/qdrant-client
 	arch = any
@@ -19,12 +19,16 @@ pkgbase = python-qdrant-client
 	depends = python-h2
 	depends = python-httpx
 	depends = python-numpy
-	depends = python-portalocker
 	depends = python-protobuf
 	depends = python-pydantic
 	depends = python-urllib3
 	optdepends = python-fastembed: local embedding generation (fastembed extra)
-	source = python-qdrant-client-1.19.1.tar.gz::https://github.com/qdrant/qdrant-client/archive/refs/tags/v1.19.1.tar.gz
-	sha256sums = 3000dedabf54ec0eb0356ab4d7bf8b45b4634e495647bd1d4e37bc1e25272531
+	optdepends = python-orjson: faster JSON serialization (orjson extra)
+	source = python-qdrant-client-1.20.0.tar.gz::https://github.com/qdrant/qdrant-client/archive/refs/tags/v1.20.0.tar.gz
+	source = posix-file-locking.patch
+	source = test-posix-locking.py
+	sha256sums = 96f62fca4d8910f9406da2037f4a70f0e8eadb2742f2d07207617f21faea5047
+	sha256sums = e8869a82eef0a3f86582269d20e10b0baf4659efaaf905c3c779dc02f62fb1be
+	sha256sums = 91215605d593a304cd1637ac18c9100d99377c056ccb5cbdad00cf6fb29d2d61
 
 pkgname = python-qdrant-client

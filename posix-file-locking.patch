@@ -1,0 +1,85 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -30,7 +30,6 @@
+ grpcio = { version = ">=1.41.0", allow-prereleases = true }
+ protobuf = ">=3.20.0"
+ urllib3 = ">=1.26.14,<3"
+-portalocker = ">=2.7.0,<5.0"
+ fastembed = [
+     { version = "^0.9", optional = true },
+ ]
+--- a/qdrant_client/local/qdrant_local.py
++++ b/qdrant_client/local/qdrant_local.py
+@@ -110,13 +110,11 @@
+ 
+         try:
+             if self._flock_file is not None and not self._flock_file.closed:
+-                import portalocker  # `portalocker` can't be imported at the top level: it checks for writeable
+-                # directories on import and crashes in read-only systems even if local mode is not used
+-
+-                portalocker.unlock(self._flock_file)
++                import fcntl
++
++                fcntl.flock(self._flock_file, fcntl.LOCK_UN)
+                 self._flock_file.close()
+-        except TypeError:  # sometimes portalocker module can be garbage collected before
+-            # QdrantLocal instance
++        except TypeError:  # The module can be cleared before this instance during shutdown.
+             pass
+ 
+     def _load(self) -> None:
+@@ -171,15 +169,14 @@
+                 f.write("tmp lock file")
+         self._flock_file = open(lock_file_path, "r+")
+ 
+-        import portalocker  # `portalocker` can't be imported at the top level: it checks for writeable directories
+-        # on import and crashes in read-only systems even if local mode is not used
++        import fcntl
+ 
+         try:
+-            portalocker.lock(
++            fcntl.flock(
+                 self._flock_file,
+-                portalocker.LockFlags.EXCLUSIVE | portalocker.LockFlags.NON_BLOCKING,
++                fcntl.LOCK_EX | fcntl.LOCK_NB,
+             )
+-        except portalocker.exceptions.LockException:
++        except OSError:
+             raise RuntimeError(
+                 f"Storage folder {self.location} is already accessed by another instance of Qdrant client."
+                 f" If you require concurrent access, use Qdrant server instead."
+--- a/qdrant_client/local/async_qdrant_local.py
++++ b/qdrant_client/local/async_qdrant_local.py
+@@ -109,9 +109,9 @@
+                 )
+         try:
+             if self._flock_file is not None and (not self._flock_file.closed):
+-                import portalocker
+-
+-                portalocker.unlock(self._flock_file)
++                import fcntl
++
++                fcntl.flock(self._flock_file, fcntl.LOCK_UN)
+                 self._flock_file.close()
+         except TypeError:
+             pass
+@@ -157,14 +157,14 @@
+             with open(lock_file_path, "w") as f:
+                 f.write("tmp lock file")
+         self._flock_file = open(lock_file_path, "r+")
+-        import portalocker
++        import fcntl
+ 
+         try:
+-            portalocker.lock(
++            fcntl.flock(
+                 self._flock_file,
+-                portalocker.LockFlags.EXCLUSIVE | portalocker.LockFlags.NON_BLOCKING,
+-            )
+-        except portalocker.exceptions.LockException:
++                fcntl.LOCK_EX | fcntl.LOCK_NB,
++            )
++        except OSError:
+             raise RuntimeError(
+                 f"Storage folder {self.location} is already accessed by another instance of Qdrant client. If you require concurrent access, use Qdrant server instead."
+             )
