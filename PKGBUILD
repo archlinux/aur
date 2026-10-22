@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chirpity-bin
 _pkgname=Chirpity
-pkgver=6.1.1
+pkgver=6.1.2
 _electronversion=43
 pkgrel=1
 pkgdesc="AI powered audio analyser for bird call visualisation, detection and cataloguing."
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Mattk70/Chirpity-Electron/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('81ad2c9cd7563b1ca1df27e7a3c96fa389ef4685011c84f12dd83cb538cb6de9'
+sha256sums=('27085b5404f9433093e5c2f23b569e8e7124b51260df8dae1f170e40c6b7f9f4'
             '04d5c28567bb68b3c647742455c90091e2ea2b6708da27679889e1f80dd838ed'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
