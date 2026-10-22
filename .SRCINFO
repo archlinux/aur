@@ -1,6 +1,6 @@
 pkgbase = mirador-bin
 	pkgdesc = An opinionated personal dashboard for your terminal
-	pkgver = 1.22.1
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://github.com/jchultarsky/mirador
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mirador-bin
 	provides = mirador
 	conflicts = mirador
 	options = !strip
-	source_x86_64 = mirador-x86_64-1.22.1.tgz::https://github.com/jchultarsky/mirador/releases/download/v1.22.1/mirador-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9ea95523ca4d502bd4a469477b874e1365ade0282c3e2c69bca3a1a5ef5d4436
+	source_x86_64 = mirador-x86_64-1.22.2.tgz::https://github.com/jchultarsky/mirador/releases/download/v1.22.2/mirador-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 52daaf537452780514e82f734a5baf706a3158e3526e0246cf503eacd952697f
 
 pkgname = mirador-bin
