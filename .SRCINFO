@@ -1,0 +1,26 @@
+pkgbase = isocast-git
+	pkgdesc = OBS alternative that records every source as its own file (Git HEAD
+	pkgver = 0.0.8.r1.g74a13d2
+	pkgrel = 1
+	url = https://isocast.xyz
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = fontconfig
+	depends = glibc
+	depends = libgcc
+	provides = isocast=0.0.8.r1.g74a13d2
+	conflicts = isocast
+	source = git+https://github.com/R44VC0RP/isocast.git
+	sha256sums = SKIP
+
+pkgname = isocast-git
+	depends = alsa-lib
+	depends = fontconfig
+	depends = glibc
+	depends = libgcc
+	depends = libasound.so
+	depends = libgcc_s.so
