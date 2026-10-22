@@ -1,0 +1,24 @@
+pkgbase = signed
+	pkgdesc = Sign PDFs and fill them in with text and dates, in a window or from the command line
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/omacom/signed
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = poppler-qt6
+	depends = qpdf
+	depends = nss
+	depends = noto-fonts
+	depends = xdg-desktop-portal
+	source = signed-0.3.1.tar.gz::https://github.com/omacom/signed/archive/v0.3.1.tar.gz
+	source = signed.desktop
+	source = signed.svg
+	sha256sums = e38bc1a4c9b034a361d6cfbd1e9a41e4871f93fa2ef0b4b4e36276f57b2f566f
+	sha256sums = d2fd31caf37d1e1ef692b84d2e6db4de5b48ac71fbb9c745827395ad7454fdb8
+	sha256sums = 0c677e9a93568f55321af784c7ca439f564f22e3b5af14bdcb0b53aa63ee62bb
+
+pkgname = signed
