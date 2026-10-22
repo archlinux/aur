@@ -1,7 +1,7 @@
 # Maintainer: Ross Ceb aur@roceb.xyz
 pkgname=glide-browser-bin
 _binaryname=glide-bin
-pkgver=0.1.64a
+pkgver=0.1.65a
 pkgrel=1
 pkgdesc="An extensible and keyboard-focused web browser built on Firefox"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'pulse-native-provider: Audio support')
 source_x86_64=("glide.linux-x86_64-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/glide.linux-x86_64.tar.xz")
 source_aarch64=("glide.linux-aarch64-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/glide.linux-aarch64.tar.xz")
-sha256sums_x86_64=('1f97b0a3d19b59ba64145b00011774147c43f405d4f037386a5bcda9aea530fd')
-sha256sums_aarch64=('588b2038f28ff0af4fddd512318da23519a38049557708a59c5ee167b4f159e6')
+sha256sums_x86_64=('82335b35b24e88aee287c5a1ad0cc4f28eccc502ff54686fd26bcb7a02eac257')
+sha256sums_aarch64=('af1a9b96a01e60db6bfe3adc79d26ec69fb8babbd891853f1b9a09a19eac8710')
 
 package() {
 # Create directories
