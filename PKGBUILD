@@ -5,7 +5,7 @@
 _base=ray
 pkgname=python-${_base}
 pkgver=2.59.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and simple framework for building and running distributed applications"
 arch=(x86_64)
 url="https://github.com/${_base}-project/${_base}"
@@ -13,7 +13,7 @@ license=(Apache-2.0)
 depends=(glibc libgcc libstdc++ libxcrypt-compat psmisc python python-aiohttp
   python-click python-colorama python-filelock python-jsonschema python-msgpack
   python-packaging python-protobuf python-psutil python-yaml python-requests)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazelisk unzip git)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazelisk unzip git nodejs npm)
 checkdepends=(python-cryptography python-grpcio python-numpy python-prometheus_client
   python-pytest python-pytest-asyncio python-pytest-timeout)
 optdepends=('python-cryptography: for TLS certificates and autoscaler SSH keys'
@@ -35,7 +35,10 @@ optdepends=('python-cryptography: for TLS certificates and autoscaler SSH keys'
   'python-fastapi: for ray[serve]'
   'python-tensorboardx: for ray[tune, rllib]'
   'python-opentelemetry-api: for ray[observability]'
-  'python-opentelemetry-sdk: for ray[observability]'
+  'python-opentelemetry-sdk: for ray[default, observability]'
+  'python-opentelemetry-exporter-prometheus: for ray[default]'
+  'python-opentelemetry-proto: for ray[default]'
+  'python-pydantic: for ray[default, tune, train]'
   'python-opentelemetry-exporter-otlp: for ray[observability]'
   'python-dm-tree: for ray[rllib]'
   'python-gymnasium: for ray[rllib]'
@@ -69,12 +72,25 @@ prepare() {
   patch --fuzz=0 -Np1 -i "$srcdir/ray-jemalloc-patch-hook.patch"
   install -Dm644 "$srcdir/jemalloc-gcc16.patch" thirdparty/patches/jemalloc-gcc16.patch
 
+  # Use the canonical registry for the existing locked archives. Keep all
+  # upstream versions and integrity checksums unchanged.
+  sed -i "s|https://registry.npmmirror.com/|https://registry.npmjs.org/|g" \
+    python/ray/dashboard/client/package-lock.json
+
   # Vendored Python dependencies are disabled below and supplied by depends.
   # pip is only used to install those vendored copies, not to build the wheel.
   sed -i 's/"cython >= 3.0.12", "pip", "wheel"/"cython >= 3.0.12", "wheel"/' python/setup.py
 }
 
 build() {
+  # The wheel only includes dashboard assets when they are built beforehand.
+  # Use the upstream lockfile and omit dependency lifecycle scripts.
+  cd ${_base}-${_base}-${pkgver}/python/ray/dashboard/client
+  npm ci --ignore-scripts --no-audit --no-fund
+  npm run build
+  test -s build/index.html
+
+  cd "$srcdir"
   cd ${_base}-${_base}-${pkgver}/python
   export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   local _jobs=${MAX_JOBS:-$(env -u OMP_NUM_THREADS -u OMP_THREAD_LIMIT nproc)}
@@ -87,12 +103,48 @@ build() {
 check() {
   cd ${_base}-${_base}-${pkgver}
   local _source=$PWD
+  (
+    cd python/ray/dashboard/client
+    # SWR's default visibility callback outlives JSDOM in asynchronous UI
+    # tests. Preserve normal visibility behavior and treat a destroyed test
+    # document as hidden, as required by the browser lifecycle.
+    # https://github.com/vercel/swr/issues/2373
+    python - <<'PYTESTFIXTURE'
+from pathlib import Path
+fixture = Path("src/util/test-utils.tsx")
+text = fixture.read_text()
+old = "<SWRConfig value={{ provider: () => new Map() }}>"
+new = """<SWRConfig value={{
+        provider: () => new Map(),
+        isVisible: () => typeof document !== "undefined" && document !== null
+          && document.visibilityState !== "hidden",
+      }}>"""
+assert text.count(old) == 1
+fixture.write_text(text.replace(old, new))
+PYTESTFIXTURE
+    # Upstream's dataset timestamp assertions use Pacific time.
+    TZ=America/Los_Angeles CI=true npm test -- --watchAll=false --runInBand
+  )
   local _check="$srcdir/check-install"
   local _site
   rm -rf "$_check"
   python -m venv --without-pip --system-site-packages "$_check"
   "$_check/bin/python" -m installer python/dist/ray-${pkgver}-*.whl
   _site=$("$_check/bin/python" -c 'import sysconfig; print(sysconfig.get_path("purelib"))')
+  "$_check/bin/python" - "$_site" <<'PY'
+import json
+from pathlib import Path
+import sys
+
+frontend = Path(sys.argv[1]) / "ray/dashboard/client/build"
+assert (frontend / "index.html").is_file()
+manifest = json.loads((frontend / "asset-manifest.json").read_text())
+assert any(name.endswith(".js") for name in manifest["files"])
+for value in manifest["files"].values():
+    asset = frontend / value.lstrip("/")
+    assert asset.is_relative_to(frontend) and asset.is_file(), value
+print("Installed dashboard asset manifest: PASS")
+PY
   # Upstream excludes its test package from wheels. Stage only the tests beside
   # the installed wheel so subprocess workers can import their test modules.
   cp -a python/ray/tests "$_site/ray/"
