@@ -2,6 +2,46 @@
 
 All the changes made to runa are documented here.
 
+## [0.14.0] - 2026-10-22
+
+#### Archive preview, custom commands, directory scrolling and more.
+
+### Added
+- **Preview**:
+    - Directory previews are now scrollable.
+    - Archives can preview their contents as a tree. Off by default, set it up in `[display.preview_options.archive]`.
+    - Color the tree lines and mark archive content with `[theme.archive]`
+- **Commands**: Bind your own commands to keys with `[commands]` (example: `lazygit = { keys = "<m-g>", cmd = "lazygit" }`)
+- **Editor**:
+    - Map multi-part extensions to their own command (example: `"tar.gz" = ["tar", "-xf"]`). The longest match wins, so `.tar.gz` and `.gz` can open differently.
+    - Put the file anywhere in a command with `{path}`, `{name}`, `{dir}`, `{stem}` and `{unused_stem}` (example: `zip = ["7z", "x", "{path}", "-o{stem}"]` extracts `photos.zip` into `photos`).
+    - `{unused_stem}` works like `{stem}` but picks `photos_1` when `photos` already exists, so nothing gets overwritten.
+    - Run tools like `7z`, `tar` and more without leaving runa (example: `pdf = { cmd = ["zathura"], terminal = false }`). Failures show as a message.
+    - Open files with the default app of your system (example: `system = ["pdf", "png", "html"]`). Works the same on Windows, macOS and Linux.
+
+### Fixed
+- **UI**: Last line of a file preview is now correctly drawn while in `split` border mode.
+- **Config**: Full `runa.toml` writes the actual internal defaults again.
+- **Docs**: Config reference matches the internal defaults and lists all key names.
+
+### Changed
+- **Editor**: Editor commands always get the absolute path of the file.
+
+### Internal
+- **Preview**: Directory previews only build their visible rows.
+- **Editor**: Editor config module moved to `config/editor.rs` and the command arguments to `command.rs`.
+- **Core**: File previews moved to `core/preview.rs` and metadata formatting to `core/metadata.rs`.
+- **Workers**: Added the `runner` worker thread which starts editor commands in the background.
+- **CI**: Documentation deployment now runs after the release workflow.
+- **Clean-up**: Removed redundant tests and made module-local functions private.
+
+> [!NOTE]
+> There is no 0.13.0, this release follows 0.12.3.
+
+
+---
+
+
 ## [0.12.3] - 2026-10-21
 
 #### Smooth preview scrolling, preview fixes and better version output.
