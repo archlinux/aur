@@ -2,7 +2,7 @@
 
 pkgname=wrkflw
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='validate and execute GitHub Actions workflows locally'
 url="https://github.com/bahdotsh/$pkgname"
 arch=(x86_64)
@@ -15,17 +15,29 @@ _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('79d63da0c40cfb884600b671830d63bb6cf143f1d8e65886e067a747491c23b4')
 
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
-}
-
 _srcenv() {
 	cd "$_archive"
-	CFLAGS+=' -ffat-lto-objects'
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=' -fno-lto'
 	export OPENSSL_NO_VENDOR=true
+}
+
+prepare() {
+	_srcenv
+	# Upstream lockfile is broken
+	cargo update
+	cargo fetch --locked --target host-tuple
 }
 
 build() {

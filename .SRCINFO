@@ -1,7 +1,7 @@
 pkgbase = wrkflw
 	pkgdesc = validate and execute GitHub Actions workflows locally
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bahdotsh/wrkflw
 	arch = x86_64
 	license = MIT
