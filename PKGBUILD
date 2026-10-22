@@ -5,7 +5,7 @@
 # ../update.sh; the rest is hand-maintained.
 
 pkgname=gitorii
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='Human-first Git client: simpler commands, a TUI, snapshots, multi-platform mirrors and a secret scanner'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ conflicts=('gitorii-bin')
 # only confuses the link step; the release profile does its own thin LTO.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/paskidev/gitorii/-/archive/v$pkgver/gitorii-v$pkgver.tar.gz")
-sha256sums=('379a42bd1ceff724a9110d8e5c99859e6e749b37fd7b4bd553db8b78093babe4')
+sha256sums=('9c33f83a05ec54a17ce84d77ae4326c06bf6ae8ceba716dd532047fc9ab8f633')
 
 _srcdir="gitorii-v$pkgver"
 
