@@ -6,6 +6,7 @@ pkgbase = aurodle-git
 	arch = x86_64
 	license = MIT
 	makedepends = zig
+	makedepends = scdoc
 	depends = git
 	depends = pacman
 	provides = aurodle

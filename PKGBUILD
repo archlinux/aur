@@ -1,14 +1,14 @@
 # Maintainer: Rémy Marquis <https://github.com/rmarquis>
 _pkgname=aurodle
 pkgname=$_pkgname-git
-pkgver=r0.0000000
+pkgver=r307.6d45d5a
 pkgrel=1
 pkgdesc="An AUR helper that builds packages into a local repository"
 arch=('x86_64')
 url="https://github.com/rmarquis/aurodle"
 license=('MIT')
 depends=('git' 'pacman')
-makedepends=('zig')
+makedepends=('zig' 'scdoc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/rmarquis/aurodle.git")
@@ -22,12 +22,15 @@ pkgver() {
 build() {
     cd "$_pkgname"
     zig build -Doptimize=ReleaseSafe
+    scdoc < man/aurodle.1.scd > aurodle.1
 }
 
 package() {
     cd "$_pkgname"
 
     install -Dm755 "zig-out/bin/aurodle" "$pkgdir/usr/bin/aurodle"
+
+    install -Dm644 "aurodle.1" "$pkgdir/usr/share/man/man1/aurodle.1"
 
     install -Dm644 "completions/aurodle.bash" \
         "$pkgdir/usr/share/bash-completion/completions/aurodle"
