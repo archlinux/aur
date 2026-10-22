@@ -1,0 +1,22 @@
+post_install() {
+    cat <<'EOF'
+==> battery-mode installed. To enable persistent restoration at boot:
+      systemctl enable --now battery-mode-restore.service
+
+==> Pick a mode:
+      sudo battery-mode save        # 40%-80%, long battery life
+      sudo battery-mode balanced    # 60%-90%, moderate
+      sudo battery-mode full        # 0%-100%, before travel
+      battery-mode status           # show current state
+
+    On laptops with on/off conservation mode only (e.g. Lenovo IdeaPad),
+    'save' turns conservation on and 'full' turns it off.
+
+==> Members of the 'wheel' group can run battery-mode via sudo without a
+    password. If you're not in wheel, edit /etc/sudoers.d/battery-mode.
+EOF
+}
+
+pre_remove() {
+    systemctl disable --now battery-mode-restore.service 2>/dev/null || true
+}
