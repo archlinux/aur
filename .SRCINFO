@@ -1,0 +1,20 @@
+pkgbase = fluxter
+	pkgdesc = Keyboard-only TUI chat client for the Fluxer messaging platform, with inline media and voice calls
+	pkgver = 0.7.5.r20260923.a5a4acd
+	pkgrel = 1
+	url = https://github.com/AIVirtuoso/fluxter
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = go
+	depends = gcc-libs
+	optdepends = ffmpeg: microphone and playback for voice calls (fluxter-phone)
+	optdepends = mpv: playback for voice calls when ffplay is missing
+	optdepends = gst-plugins-ugly: screen sharing in voice calls (x264enc)
+	optdepends = gst-plugin-pipewire: screen sharing in voice calls (pipewiresrc)
+	optdepends = xdg-desktop-portal: screen sharing in voice calls (the screen chooser)
+	options = !lto
+	source = fluxter-a5a4acd4d52afec6085e5219be0e4f1a97e2dc5c.tar.gz::https://github.com/AIVirtuoso/fluxter/archive/a5a4acd4d52afec6085e5219be0e4f1a97e2dc5c.tar.gz
+	sha256sums = 02bc8b2565298962faaed75f928187e50840fff764ac38420af471302d1a23c0
+
+pkgname = fluxter
