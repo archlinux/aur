@@ -1,21 +1,21 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=printcraft-bin
-_pkgname=${pkgname%-bin}
-pkgver=0.2.1
+_pkgname=pdfcraft
+pkgver=0.12.0
 pkgrel=1
-pkgdesc='PDF viewer and editor (prebuilt binaries)'
+pkgdesc='PdfCraft PDF viewer and editor (prebuilt binaries, formerly PrintCraft)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/$_pkgname"
 license=('MIT OR Apache-2.0' 'OFL-1.1' 'LicenseRef-ArtCraft-brand' 'ISC' 'BSD-3-Clause')
-depends=('glibc' 'gcc-libs' 'libxkbcommon' 'libxkbcommon-x11'
+depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'libxkbcommon' 'libxkbcommon-x11'
          'libx11' 'libxcursor' 'libxi' 'libxrandr' 'wayland'
          'libglvnd' 'vulkan-icd-loader' 'dbus')
 optdepends=('vulkan-driver: hardware-accelerated Vulkan rendering'
             'xdg-desktop-portal: native file dialogs'
             'xdg-utils: open external links')
 options=(!strip)
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver" "printcraft=$pkgver")
+conflicts=('pdfcraft' 'pdfcraft-bin' 'printcraft')
 
 source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/NOTICE"
         "$_pkgname-$pkgver-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/docs/brand/LICENSE-brand.txt"
@@ -27,22 +27,24 @@ source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storyto
         "$_pkgname-$pkgver-LICENSE-FOXIT.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/vendor/hayro-interpret/assets/LICENSE_FOXIT")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('ea1edc629f3a66291c05f2c5859ae243c462c7b5315a5b188a97a84beb519b5b'
-            'c5424ea8916be3a970053f5ec5761e225d57a6c09ea57c3a67d2c39b67a870b6'
-            '22a8bacc20accfdca66dfec9bcebbc062c998e994f860d6f9bdd396d8e48ff74'
+sha256sums=('496946cff190a3fec32fe0241ea60d40539c73a9da1865073eb0c73ee822c8d5'
+            '0f33f48e7a96cd359d4e4e5b11424b13cebeb59cc70c77928186695e4173585c'
+            'b768acafe6cbad8247eedf86b5b5381feefcd4ee0f8c7808b86811bc687cf37b'
             '6f090277c00af96651ce6dbcc38ff1591047a3bffef486e80b6a32e8276a8201'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57'
             'b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7')
-sha256sums_x86_64=('73b2977330d73716971237f68f89cba6ad52cbfb563ad0ab6d9ad18f44d45192')
-sha256sums_aarch64=('c7ae5dac00b3c11bea4e7cc502878a1b6ab520362d09885293e48417452e5dc0')
+sha256sums_x86_64=('d0960f0a2faf7152f4541f12589956016e806ae8cb12152caa73228a3d2ed16a')
+sha256sums_aarch64=('e8e86ced2bf433adf861e05ae8bfbfd84245dbfdbc5637a989cfc7e2e836dfa2')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
 
   install -dm755 "$pkgdir/usr"
   cp -a bin share "$pkgdir/usr/"
+  ln -s pdfcraft "$pkgdir/usr/bin/printcraft"
+  ln -s pdfcraft-cli "$pkgdir/usr/bin/printcraft-cli"
   install -Dm644 share/doc/$_pkgname/LICENSE-* -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$srcdir"/*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
