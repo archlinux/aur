@@ -1,7 +1,7 @@
 pkgbase = designcraft-bin
 	pkgdesc = Page layout and desktop publishing (prebuilt binaries)
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storytold/designcraft
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = designcraft-bin
 	license = LicenseRef-ArtCraft-brand
 	depends = glibc
 	depends = gcc-libs
+	depends = hicolor-icon-theme
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = libx11

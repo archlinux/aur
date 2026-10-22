@@ -2,12 +2,12 @@
 pkgname=designcraft-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Page layout and desktop publishing (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/$_pkgname"
 license=('MIT OR Apache-2.0' 'OFL-1.1' 'LicenseRef-ArtCraft-brand')
-depends=('glibc' 'gcc-libs' 'libxkbcommon' 'libxkbcommon-x11'
+depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'libxkbcommon' 'libxkbcommon-x11'
          'libx11' 'libxcursor' 'libxi' 'libxrandr' 'wayland'
          'libglvnd' 'vulkan-icd-loader' 'dbus')
 optdepends=('vulkan-driver: hardware-accelerated Vulkan rendering'
