@@ -3,9 +3,9 @@
 pkgname=relic-kanagawa-gtk-theme
 _repo=Kanagawa-GKT-Theme
 _commit=55ca4ba249eba21f861b9866b71ab41bb8930318
-_fixes=2026.10.22
+_fixes=2026.10.22.1
 pkgver=2025.10.23
-pkgrel=3
+pkgrel=4
 pkgdesc='Kanagawa GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('9c176f36fccc8383b156048205db0714a18b5f96f1c683d4496940802041ca5f'
-            'c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb')
+            '3c203a956f4148230177eb925916ad8eddb75c98dd2212368b40df5e52d889d0')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
