@@ -5,6 +5,7 @@ pkgbase = open-git-control-bin
 	url = https://github.com/timbornemann/Open-Git-Control
 	arch = x86_64
 	license = GPL-3.0
+	makedepends = imagemagick
 	depends = glibc
 	depends = libgcc
 	depends = glib2

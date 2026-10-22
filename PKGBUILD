@@ -22,6 +22,7 @@ license=('GPL-3.0')
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
+makedepends=('imagemagick')
 depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'libxfixes' 'libxkbcommon' 'at-spi2-core' 'libxrandr' 'cairo' 'nspr' 'systemd-libs' 'expat' 'libcups' 'libxdamage' 'nss' 'dbus' 'libx11' 'pango' 'fontconfig' 'libxcomposite' 'mesa' 'libxcb' 'alsa-lib' 'libxext' 'hicolor-icon-theme')
 
 options=('!strip')
@@ -38,7 +39,18 @@ package() {
 	cd "${srcdir}/" || exit
 
 	tar -xf "data.tar.xz" -C "${pkgdir}"
-	rm -rf "${pkgdir}/usr/share/doc/open-git-control"
+
+	rm -rf "${pkgdir}/usr/share/doc/${_appname}"
+
+	mv "${pkgdir}/usr/share/applications/${_gitname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
+	rm -rf "${pkgdir}/usr/share/applications/${_appname}-recovery.desktop"
+
+	magick mogrify -resize 512x512 "${pkgdir}/usr/share/icons/hicolor/3378x3378/apps/${_appname}.png"
+	mv "${pkgdir}/usr/share/icons/hicolor/3378x3378" "${pkgdir}/usr/share/icons/hicolor/512x512"
+	chmod 644 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png"
+
+	install -dm755 "${pkgdir}/usr/bin/"
+	ln -sf "/opt/${_gitname}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
