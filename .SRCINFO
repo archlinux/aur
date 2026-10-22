@@ -1,6 +1,6 @@
 pkgbase = eqy-nightly
 	pkgdesc = Equivalence Checking with Yosys
-	pkgver = 20261021_v0.70_1_gfb8b211
+	pkgver = 20261022_v0.70_1_gfb8b211
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/eqy
