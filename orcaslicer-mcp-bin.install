@@ -1,0 +1,9 @@
+post_install() {
+	cat <<-'EOF'
+	==> OrcaSlicer MCP stores its settings in ~/.config/OrcaSlicer, the same directory
+	    as the regular OrcaSlicer (orca-slicer / orca-slicer-bin). Both share printer,
+	    filament and process profiles. Back up that directory before first launch if
+	    you also use the regular OrcaSlicer.
+	    Launch with: orca-slicer-mcp
+	EOF
+}
