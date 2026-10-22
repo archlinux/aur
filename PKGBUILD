@@ -3,7 +3,7 @@
 pkgname=onon-git
 _pkgname=onon
 pkgver=0.9.4.r0.g49e499b
-pkgrel=1
+pkgrel=2
 pkgdesc="A quiet reader for the keyboard, built on MuPDF and configured with Lua"
 arch=('x86_64')
 url="https://github.com/Aethar01/onon"
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	export GOPATH="$srcdir/gopath"
+	export GOFLAGS="-modcacherw"
 	go mod download -x
 }
 
