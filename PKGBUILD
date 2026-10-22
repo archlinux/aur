@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=convey
-pkgver=50.2
-pkgrel=2
+pkgver=51.0
+pkgrel=1
 pkgdesc="Email application built around conversations for the GNOME desktop."
 arch=('x86_64')
 url="https://gitlab.gnome.org/donnybeelo/convey"
@@ -57,8 +57,8 @@ checkdepends=(
   # 'xorg-server-xvfb'
 )
 conflicts=('geary')
-source=("git+https://gitlab.gnome.org/donnybeelo/convey.git#tag=$pkgver-1")
-sha256sums=('9ca94857c220731dfe9ab5fc2ffa9221ca44f272e292c652209962f5b5f533f0')
+source=("git+https://gitlab.gnome.org/donnybeelo/convey.git#tag=$pkgver")
+sha256sums=('18db9ec6912241f505c7ca1a06680a696147a3750bb79917c618013a38a2917a')
 
 build() {
   arch-meson "$pkgname" build -Dprofile=release
