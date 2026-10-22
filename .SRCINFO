@@ -1,6 +1,6 @@
 pkgbase = lighthouse-ethereum-bin
 	pkgdesc = Ethereum 2.0 client
-	pkgver = 8.2.3
+	pkgver = 8.3.1
 	pkgrel = 1
 	url = https://lighthouse.sigmaprime.io/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = lighthouse-ethereum-bin
 	source = https://raw.githubusercontent.com/sigp/lighthouse/stable/LICENSE
 	validpgpkeys = 15E66D941F697E28F49381F426416DC3F30674B0
 	sha256sums = 91d7b651aa6c6ffe6c36445f2652b49ff86134f6dc558a8bf35a8d407dfe2578
-	source_x86_64 = https://github.com/sigp/lighthouse/releases/download/v8.2.3/lighthouse-v8.2.3-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://github.com/sigp/lighthouse/releases/download/v8.2.3/lighthouse-v8.2.3-x86_64-unknown-linux-gnu.tar.gz.asc
-	sha256sums_x86_64 = 876f27e169161520ba4bb4d3bd19837f2474939e3c0f817a94749e0702c975ef
+	source_x86_64 = https://github.com/sigp/lighthouse/releases/download/v8.3.1/lighthouse-v8.3.1-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/sigp/lighthouse/releases/download/v8.3.1/lighthouse-v8.3.1-x86_64-unknown-linux-gnu.tar.gz.asc
+	sha256sums_x86_64 = 46f6580d64bb3164b17d0799847fc2ec518700860a187373a6a8d5b5fed382d3
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/sigp/lighthouse/releases/download/v8.2.3/lighthouse-v8.2.3-aarch64-unknown-linux-gnu.tar.gz
-	source_aarch64 = https://github.com/sigp/lighthouse/releases/download/v8.2.3/lighthouse-v8.2.3-aarch64-unknown-linux-gnu.tar.gz.asc
-	sha256sums_aarch64 = f06498414925f029620c16c2afee03c69bca7c52f3846e98996ca71ddd3a21dd
+	source_aarch64 = https://github.com/sigp/lighthouse/releases/download/v8.3.1/lighthouse-v8.3.1-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/sigp/lighthouse/releases/download/v8.3.1/lighthouse-v8.3.1-aarch64-unknown-linux-gnu.tar.gz.asc
+	sha256sums_aarch64 = c6cda533c83eeaf1caab1e83dfdffda9dc5ff18587f4dee9a7d6ccc5179a3dc2
 	sha256sums_aarch64 = SKIP
 
 pkgname = lighthouse-ethereum-bin
