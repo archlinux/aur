@@ -1,2 +1,0 @@
-#!/bin/sh
-xdg-desktop-menu install /opt/xeres/lib/xeres-Xeres.desktop
