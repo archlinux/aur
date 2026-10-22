@@ -3,11 +3,13 @@
 _pkgname=docmancer
 pkgname=$_pkgname-git
 pkgver=r243.c5c76c6
-pkgrel=1
-pkgdesc="Fetch docs, embed locally, expose to AI agents via skills"
+pkgrel=2
+pkgdesc="One local memory shared by every coding agent on your machine"
 arch=('any')
 url="https://github.com/docmancer/docmancer"
 license=('MIT')
+# follows upstream's Requires-Dist except pdfplumber and striprtf (not in the
+# official repos or [xnf4-aur]); zstandard is also loaded at CLI startup
 depends=(
   'python>=3.11'
   'python-pydantic'
@@ -26,24 +28,26 @@ depends=(
   'python-model2vec'
   'python-charset-normalizer'
   'python-pypdf'
-  # cli/__main__.py transitively imports docmancer.cloud at startup, which
-  # needs these three even when cloud sync is never used
   'python-rfc8785'
   'python-keyring'
   'python-pynacl'
+  'python-docx'
+  'python-mcp'
+  'python-starlette'
+  'python-sse-starlette'
+  'uvicorn'
+  'python-zstandard'
+  'python-tomli-w'
 )
-# striprtf (RTF loader) is unpackaged on Arch; the loader degrades gracefully without it.
 optdepends=(
   'python-pdfplumber: PDF table/layout extraction fallback'
-  'python-docx: DOCX ingestion'
-  'python-mcp: MCP server (docmancer mcp; pulls starlette + sse-starlette)'
+  'python-striprtf: RTF ingestion'
   'python-fastembed: heavy ONNX embeddings provider'
   'python-qdrant-client: qdrant vector store backend'
   'python-playwright: browser extraction'
-  'python-datasets: benchmark datasets'
-  'python-openai: OpenAI benchmark provider'
-  'python-anthropic: Anthropic benchmark provider'
-  'python-google-genai: Gemini benchmark provider'
+  'python-openai: OpenAI embeddings provider'
+  'python-cohere: Cohere embeddings provider'
+  'python-crawl4ai: crawl4ai extraction'
 )
 makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
 provides=("$_pkgname")
