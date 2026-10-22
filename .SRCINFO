@@ -1,0 +1,14 @@
+pkgbase = mattpocock-skills
+	pkgdesc = Matt Pocock's agent skills (agentskills.io format), linked into ~/.agents/skills via user tmpfiles
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/mattpocock/skills
+	install = mattpocock-skills.install
+	arch = any
+	license = MIT
+	makedepends = jq
+	depends = systemd
+	source = mattpocock-skills-1.3.1.tar.gz::https://github.com/mattpocock/skills/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 1847b1dab968d7dc8e87fdcad6613574557fd51301b66ba423c78d306bfa157b
+
+pkgname = mattpocock-skills
