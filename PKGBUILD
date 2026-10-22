@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=1.9.4.r39.ge4d61b7
+pkgver=2.7.3.r0.g4da7925
 pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
@@ -30,9 +30,7 @@ makedepends=(
     sqlite
     vulkan-headers
 )
-optdepends=(
-    
-)
+optdepends=()
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
@@ -56,15 +54,13 @@ source=(
     "fmt::git+https://github.com/fmtlib/fmt.git"
     "replxx::git+https://github.com/AmokHuginnsson/replxx.git"
     "libssh2::git+https://github.com/libssh2/libssh2.git"
-    "mbedtls::git+https://github.com/Mbed-TLS/mbedtls.git"
     "cmark-gfm::git+https://github.com/github/cmark-gfm.git"
     "lexbor::git+https://github.com/lexbor/lexbor.git"
-    "framework::git+https://github.com/Mbed-TLS/mbedtls-framework.git"
-    "tf-psa-crypto::git+https://github.com/Mbed-TLS/TF-PSA-Crypto.git"
-    "mldsa-native::git+https://github.com/Mbed-TLS/mldsa-native.git"
+    "uvm-core::git+https://github.com/accellera-official/uvm-core.git"
+    "z3::git+https://github.com/Z3Prover/z3.git"
+    "aws-lc::git+https://github.com/aws/aws-lc.git"
 )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -111,22 +107,12 @@ prepare() {
     git config submodule.external/fmt.url "$srcdir/fmt"
     git config submodule.external/replxx.url "$srcdir/replxx"
     git config submodule.external/libssh2.url "$srcdir/libssh2"
-    git config submodule.external/mbedtls.url "$srcdir/mbedtls"
     git config submodule.external/cmark-gfm.url "$srcdir/cmark-gfm"
     git config submodule.external/lexbor.url "$srcdir/lexbor"
+    git config submodule.external/uvm-core.url "$srcdir/uvm-core"
+    git config submodule.external/z3.url "$srcdir/z3"
+    git config submodule.external/aws-lc.url "$srcdir/aws-lc"
     git -c protocol.file.allow=always submodule update
-
-    cd "${srcdir}/${pkgname}/external/mbedtls"
-    git submodule init
-    git config submodule.framework.url "$srcdir/framework"
-    git config submodule.tf-psa-crypto.url "$srcdir/tf-psa-crypto"
-    git -c protocol.file.allow=always submodule update
-
-    # cd "${srcdir}/${pkgname}/external/mbedtls/tf-psa-crypto"
-    # git submodule init
-    # git config submodule.framework.url "$srcdir/framework"
-    # git config submodule.mldsa-native.url "$srcdir/mldsa-native"
-    # git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -138,7 +124,7 @@ build() {
         -Wno-author \
         -B build \
         -G Ninja
-        # -Wno-deprecated-declarations \
+
     ninja -C build
 }
 
