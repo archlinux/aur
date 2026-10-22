@@ -1,0 +1,23 @@
+pkgbase = over-bin
+	pkgdesc = A git-based file overlay manager (dotfiles as overlays) (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/noirbizarre/over
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	provides = over=0.1.0
+	conflicts = over
+	options = !strip
+	options = !debug
+	source = LICENSE-0.1.0::https://github.com/noirbizarre/over/raw/0.1.0/LICENSE
+	sha256sums = 579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e
+	source_x86_64 = over-bin-0.1.0-x86_64.tar.gz::https://github.com/noirbizarre/over/releases/download/0.1.0/over_0.1.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = becbbea3191cd3d5a15e8dd282327ede74ddf417807a8400b2233313182fbdbb
+	source_aarch64 = over-bin-0.1.0-aarch64.tar.gz::https://github.com/noirbizarre/over/releases/download/0.1.0/over_0.1.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = 99013719efa87fbfb199bf7076203c0edea88981ab9d1c42e7848299592cc24e
+
+pkgname = over-bin
