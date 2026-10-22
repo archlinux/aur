@@ -1,6 +1,6 @@
 pkgbase = ioexplorer-git
 	pkgdesc = Wayland-native provider-oriented file manager, spotlight, and other utilities for Wayland desktops
-	pkgver = r76.0fd48fe
+	pkgver = r78.22316ef
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ioexplorer
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = ioexplorer-git
 	optdepends = libpulse: recording audio and mixing in the microphone
 	optdepends = wtype: typing symbols and emoji picked in ioexplorer-quick
 	optdepends = ydotool: pasting ioexplorer-quick picks when wtype is missing
+	optdepends = gvfs: list unmounted drives in the sidebar and on the This PC page, and mount, unmount or eject them
+	optdepends = udisks2: mounting removable and internal drives without root, used by gvfs
 	source = ioexplorer-git::git+https://github.com/LucasionGS/ioexplorer.git
 	sha256sums = SKIP
 
