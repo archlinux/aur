@@ -1,6 +1,6 @@
 # Maintainer: RAMA <143774106+Nomadcxx@users.noreply.github.com>
 pkgname=sysclet-git
-pkgver=r15.g092b2cd
+pkgver=r27.ga59c415
 pkgrel=1
 pkgdesc="Generate ANSI text headers from TheDraw TDF fonts"
 arch=('x86_64' 'aarch64')
