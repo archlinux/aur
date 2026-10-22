@@ -3,10 +3,10 @@
 # Contributor: Xeonacid <h.dwwwwww@gmail.com>
 
 pkgname=evmone
-pkgver=0.22.0
+pkgver=0.25.0
 pkgrel=1
 _intx_version=0.15.0
-_blst_version=0.3.16
+_blst_version=0.3.17
 pkgdesc="Fast Ethereum Virtual Machine implementation"
 arch=(x86_64)
 url="https://github.com/ethereum/${pkgname}"
@@ -20,9 +20,9 @@ source=(
 )
 noextract=("blst-${_blst_version}.tar.gz")
 sha256sums=(
-	35b2899b2c170380034a1d1bb252af1093a2c6f77304f78f795739074125af0a
+	b38e5445ad625e3445b94d1d869bee2c912ef3aa611b3d16cf550be7b05ac8d0
 	7db5d37ae5e9c3787a12c27e53a28be840a35ee51101c3ac15412ce259191600
-	e04805b7d6ef9e1d89b7f511a5b86136c57b455d97924d7324da2305a864673f
+	c3fef37b566b67419703b2bbb648e15176276af9a880c22aa8f5f2e8cecc2e4d
 )
 
 prepare()
