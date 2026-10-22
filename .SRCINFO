@@ -1,0 +1,21 @@
+pkgbase = tsc-rs-bin
+	pkgdesc = TypeScript compiler and language server ported to Rust (official binaries)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/pingdotgg/ts-rust
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = Unicode-3.0
+	provides = tsc-rs=0.8.0
+	conflicts = tsc-rs
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/pingdotgg/ts-rust/releases/download/v0.8.0/tsc-rs-0.8.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 909bc899363a368f5f482494dfe22061510ee3389d1a34e7ee1b4dd6a26fd512
+	source_aarch64 = https://github.com/pingdotgg/ts-rust/releases/download/v0.8.0/tsc-rs-0.8.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9f5f2cf7993f032a88b558921388662999d0ec5f7ad8e94edb142611be6f30c5
+
+pkgname = tsc-rs-bin
