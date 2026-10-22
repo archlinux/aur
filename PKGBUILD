@@ -1,6 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=go2tv
-pkgver=2.7.0 # renovate: datasource=github-tags depName=alexballas/go2tv
+# renovate: datasource=github-tags depName=alexballas/go2tv
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Cast media files to Smart TVs and Chromecast devices'
 arch=('x86_64')
@@ -35,4 +36,4 @@ package() {
   install -Dm644 $pkgname-$pkgver/assets/go2tv-icon-color.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/app.go2tv.go2tv.svg
 }
 
-sha256sums=('9cca0906d59fb2e3efc7d3fd375deab1afbd7e0a85ad79ebe4c29b028ba5d9fb')
+sha256sums=('a3aada6f50aa8bf06ff7d5d7f504c620f43bc64b2494f3c4a560d2263bcb3eb6')
