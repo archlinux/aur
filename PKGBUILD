@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pi-harness-bin
 _pkgname=Pi-Harness
-pkgver=2.2.5
+pkgver=2.2.6
 _electronversion=44
 pkgrel=1
 pkgdesc="Operational Superset Harness and Desktop Control Plane for Pi Coding Agent."
@@ -27,7 +27,7 @@ source=(
     "resources-path-override.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b88b475d1728a8d71f20da6fcd54b7f1188e77c690aa3b5e7b326ec1c963bd30'
+sha256sums=('873ef579bf65436c3625adeb6557d9ba4a7df1493a8a10a388509c8a72ced3c7'
             '7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8'
             '523a9e7294fb8d0611611db823288e3dc38ae021eceb3067791dc0c4ff3b0d15')
 _get_app_dir() {
