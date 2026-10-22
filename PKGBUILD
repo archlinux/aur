@@ -1,6 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
+# Contributor: Mohamed Amine Zghal <medaminezghal <at> outlook <dot> com>
 _projectname='microsoft-authentication-extensions-for-python'
 pkgname='python-msal-extensions'
 pkgver='1.3.1'
