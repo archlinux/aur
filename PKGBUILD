@@ -2,7 +2,7 @@
 
 pkgname=carve-rs
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Rust parser and HTML renderer for the Carve markup language'
 arch=(x86_64)
 url="https://github.com/markup-carve/$pkgname"
@@ -17,10 +17,14 @@ sha256sums=('953128768cbac9ed8db76a593bc8a3b5e050ef48d45901a86b4e59f57a81a366')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
