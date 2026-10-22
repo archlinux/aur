@@ -2,7 +2,7 @@
 
 pkgname=badness
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server, formatter, and linter for LaTeX'
 arch=(x86_64)
 url="https://github.com/jolars/$pkgname"
@@ -17,10 +17,14 @@ sha256sums=('a0c575b793d06e2a907b26f869386c00770498b95030e6f210034a8d9ee3bfd8')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
