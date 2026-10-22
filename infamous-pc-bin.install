@@ -1,0 +1,8 @@
+post_install() {
+  # The port writes boot images, patches and logs here at runtime.
+  chmod 1777 /opt/ports/infamous-pc/out
+}
+
+post_upgrade() {
+  post_install
+}
