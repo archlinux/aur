@@ -1,6 +1,6 @@
 pkgbase = ultra-9000
 	pkgdesc = Agent harness with native Alacritty terminals in a Tauri/Svelte interface
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/yasen-pavlov/ultra_9000
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = ultra-9000
 	depends = webkit2gtk-4.1
 	options = !lto
 	options = !debug
-	source = ultra-9000-0.5.0.tar.gz::https://github.com/yasen-pavlov/ultra_9000/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 1eeca3716859d5207fdf6f20624280ad2c5e181766cdcfcaf672ec3a46ba30b4
+	source = ultra-9000-0.6.0.tar.gz::https://github.com/yasen-pavlov/ultra_9000/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 7f4db09a27d8f85bb7ca6d7d485adc00315d53b3b05bbd767c6c282faac1dc6f
 
 pkgname = ultra-9000
