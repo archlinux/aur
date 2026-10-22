@@ -2,7 +2,7 @@
 # Contributor: Simon Hayessen <simon@lnqs.io>
 
 pkgname=gnome-shell-extension-system-monitor-next-git
-pkgver=r1510.cf869fb
+pkgver=r1523.81f3c83
 pkgrel=1
 pkgdesc="Display system information in GNOME Shell status bar (next fork)"
 arch=('any')
