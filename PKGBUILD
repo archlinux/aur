@@ -71,6 +71,7 @@ makedepends=(
   cmake
   git
   glaze
+  hyprland-protocols
   hyprwayland-scanner-git
   ninja
   #patch
@@ -94,10 +95,8 @@ _pkgsrc=$_pkgname
 source=(
   "$_pkgsrc::git+$url.git"
   "udis86::git+https://github.com/canihavesomecoffee/udis86.git"
-  "git+https://github.com/hyprwm/hyprland-protocols.git"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -112,7 +111,6 @@ prepare() {
   cd "$_pkgsrc"
   git submodule init
   git config submodule.subprojects/udis86.url "$srcdir/udis86"
-  git config submodule.subprojects/hyprland-protocols.url "$srcdir/hyprland-protocols"
   git config submodule.subprojects/tracy.update none
   git -c protocol.file.allow=always submodule update
 
