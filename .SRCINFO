@@ -1,6 +1,6 @@
 pkgbase = miru-zoom-git
 	pkgdesc = A Wayland-based zoom daemon and control utility (development branch)
-	pkgver = r62.f6dfd68
+	pkgver = r302.7d7aeb3
 	pkgrel = 1
 	url = https://codeberg.org/Vaishnav-Sabari-Girish/miru
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = miru-zoom-git
 	makedepends = git
 	depends = wayland
 	depends = mesa
-	depends = libffi
+	depends = libpng
+	depends = libnotify
 	provides = miru-zoom
 	conflicts = miru-zoom
 	source = miru::git+https://codeberg.org/Vaishnav-Sabari-Girish/miru.git
