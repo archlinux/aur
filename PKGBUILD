@@ -1,7 +1,7 @@
 # Maintainer: LycheeSlicer
 # Contributor: LycheeSlicer
 pkgname=lycheeslicer
-pkgver=8.0.1
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="Lychee Slicer"
 arch=('x86_64')
@@ -13,14 +13,14 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'gl
 makedepends=('squashfs-tools')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-_appimage="LycheeSlicer-${pkgver}-x86_64.GLIBC-235.AppImage"
+_appimage="LycheeSlicer-${pkgver}-x86_64.GLIB-235.AppImage"
 noextract=("${_appimage}")
 source_x86_64=(
 	"https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/${_appimage}"
 	"local://lycheeslicer.xml"
 )
 sha512sums_x86_64=(
-	'e867b3384d201c6bf0f58673e2ef3aaed9bb18f6b3c61324cda2ef5e75e10443bef19a74c94bcb318fe86d1d97e560be11c8480322665d8f3a3ee52ef223b467'
+	'c656c17a6c387c958b5c059df6f1b8b9448980f877dfefd0be783c293192836339c1b5ccdc51bfa24010cafaaf75c2463b847b042069d6396780b5b09d15a8d6'
 	'aba52d9bd76619f66fac0688c1c04846e630f5b8acba6032c61f46a4bcf9ff9d5aa1eb11a3901e85bce33e179d4ccc1f574b06c9ad3f415a692ff4ad39c77f49'
 )
 
