@@ -1,0 +1,15 @@
+pkgbase = mcp-kodi
+	pkgdesc = MCP server that lets an AI assistant control Kodi over its JSON-RPC API
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/laszlopere/mcp-kodi
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	depends = glib2
+	depends = json-glib
+	depends = libsoup3
+	source = mcp-kodi-0.2.0.tar.gz::https://github.com/laszlopere/mcp-kodi/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ab5e01b6397389f2ded075d373c3be5732904770df16d266cd2b694f48a3d5da
+
+pkgname = mcp-kodi
