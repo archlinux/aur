@@ -2,7 +2,7 @@
 # Ely Office desktop apps. Named *-app-bin because the standard ely-*-bin
 # names are already taken on AUR by another maintainer.
 pkgname=ely-table-app-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="ElyTable - spreadsheet app from the Ely Office suite"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('ely-table' 'ely-table-bin')
 
 options=('!strip' '!debug')
 source_x86_64=("ely-table_${pkgver}-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v${pkgver}/ely-table_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('cb7328b4473ab3e34e56871cebd4c59f521b0be9b18ad5be8b698da4cdf9a447')
+sha256sums_x86_64=('8a5d2177978484f3274046978c3c22ea804d8e117d7f0504b10a0554ad5d662e')
 
 package() {
     local _deb="ely-table_${pkgver}-1_amd64.deb"
