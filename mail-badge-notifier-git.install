@@ -1,0 +1,27 @@
+post_install() {
+    echo "========================================================================"
+    echo " mail-badge-notifier-git successfully installed!"
+    echo "========================================================================"
+    echo " This package provides the backend and extension files for Mail Badge Bridge."
+    echo ""
+    echo " TO COMPLETE THE SETUP ON YOUR USER ACCOUNT:"
+    echo ""
+    echo " 1. Run the user-space installer script from the shared directory:"
+    echo "      /usr/share/mail-badge-notifier-git/install.sh --thunderbird"
+    echo "    (Or use --betterbird if you are using Betterbird)"
+    echo ""
+    echo " 2. Install the browser extension (.xpi) in your mail client:"
+    echo "    - Open Thunderbird or Betterbird."
+    echo "    - Go to Add-ons and Themes (Ctrl+Shift+A) -> Gear icon (⚙)."
+    echo "    - Click 'Install Add-on From File...'"
+    echo "    - Select: /usr/share/mail-badge-notifier-git/mail-badge-bridge.xpi"
+    echo "    - Restart your mail client once."
+    echo ""
+    echo " To uninstall later, simply run:"
+    echo "      /usr/share/mail-badge-notifier-git/uninstall.sh"
+    echo "========================================================================"
+}
+
+post_upgrade() {
+    post_install
+}

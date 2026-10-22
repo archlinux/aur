@@ -3,6 +3,7 @@ pkgbase = mail-badge-notifier-git
 	pkgver = r5.85b4b7c
 	pkgrel = 1
 	url = https://github.com/salexandarz/mail-badge-notifier
+	install = mail-badge-notifier-git.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
