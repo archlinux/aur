@@ -1,5 +1,7 @@
 # System-unit met User=bluegit, config in /etc/bluegit/config.yml en
 # state in /var/lib/bluegit. Dit is geen systemd --user-unit.
+# systemd-sysusers maakt ook bluegit-build, de onbevoegde bouwgebruiker
+# van bluegit-update.service. post_upgrade herstart bluegit.service.
 # backup= in de PKGBUILD laat een bestaande config.yml staan.
 # Zonder draaiende systemd (chroot of container) faalt de transactie niet.
 
