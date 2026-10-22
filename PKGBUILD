@@ -3,7 +3,7 @@
 pkgname=tincan
 _pkgname=$pkgname-cli
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Serverless peer-to-peer voice and text chat for your terminal'
 arch=(x86_64)
 url="https://github.com/bilalyazicioglu/$_pkgname"
@@ -20,10 +20,14 @@ sha256sums=('5398da1a3bf20e21d90089c67c9bd1385173b0bd8943f911fd1b9163d622729b')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
 	export RUSTUP_TOOLCHAIN=stable
