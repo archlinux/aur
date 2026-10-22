@@ -1,5 +1,6 @@
 # Maintainer: Elmer Skjødt Henriksen <esh@fjerhammer.dk>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Leo LI <i@hardrain980.com>
 
 _upstream_pkgver=17.11.1.1-1
 pkgname=msodbcsql17
