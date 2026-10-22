@@ -1,6 +1,6 @@
 pkgbase = sqlit
 	pkgdesc = The lazygit of SQL databases - a lightweight TUI for SQL Server, PostgreSQL, MySQL, SQLite, and more
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/Maxteabag/sqlit
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = sqlit
 	provides = python-sqlit-tui
 	conflicts = python-sqlit-tui
 	replaces = python-sqlit-tui
-	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.6.4.tar.gz
-	sha256sums = 7f7058b062c0e868bde867047928283909abaa27eb9bb527603b83fe71bdf1d6
+	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.6.5.tar.gz
+	sha256sums = 5c842c47ac9e6e66a6bbd6bf8e279d1b5f7df1c5ab10980ce25c1f3aaa7af0ee
 
 pkgname = sqlit
