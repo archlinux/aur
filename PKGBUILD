@@ -48,7 +48,7 @@ package() {
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	for dir in deploy templates; do
+	for dir in deploy; do
 		install -dm755 "${pkgdir}/usr/share/${_appname}/${dir}/"
 		cp -av ${dir}/. "${pkgdir}/usr/share/${_appname}/${dir}/"
 	done
