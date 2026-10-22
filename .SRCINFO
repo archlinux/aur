@@ -1,6 +1,6 @@
 pkgbase = bettbox-pre-bin
-	pkgdesc = A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash.
-	pkgver = 1.19.7pre1
+	pkgdesc = A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core.
+	pkgver = 1.19.7
 	pkgrel = 1
 	url = https://github.com/appshubcc/Bettbox
 	install = bettbox.install
@@ -12,7 +12,7 @@ pkgbase = bettbox-pre-bin
 	depends = libayatana-indicator
 	depends = libkeybinder3
 	optdepends = polkit: for TUN authorization
-	provides = bettbox=1.19.7pre1
+	provides = bettbox=1.19.7
 	conflicts = bettbox
 	conflicts = bettbox-compatible
 	conflicts = bettbox-compatible-pre
@@ -25,9 +25,9 @@ pkgbase = bettbox-pre-bin
 	source = bettbox.install
 	sha256sums = 03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2
 	sha256sums = c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b
-	source_x86_64 = bettbox-1.19.7pre1-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.7-pre1/Bettbox-1.19.7-linux-amd64.deb
-	sha256sums_x86_64 = f767380fbbf494ec96e8b6b540f1afb4f4d3425ce8d2cc3817ed8b03f791ef31
-	source_aarch64 = bettbox-1.19.7pre1-aarch64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.7-pre1/Bettbox-1.19.7-linux-arm64.deb
-	sha256sums_aarch64 = 2e0c0eb8c3abdff9f4759fe37e3b33c151d9e1f58306618d24ab4752e9889b29
+	source_x86_64 = bettbox-1.19.7-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.7/Bettbox-1.19.7-linux-amd64.deb
+	sha256sums_x86_64 = 20a9297e8490263518a4629f5bd7a21384f2eeeb07dc4599a8ea99b356087d81
+	source_aarch64 = bettbox-1.19.7-aarch64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.7/Bettbox-1.19.7-linux-arm64.deb
+	sha256sums_aarch64 = ea7eaafc0ef4fd4944fcc429fada3f703ffac4aeeeafdafd74ed5ced8add61eb
 
 pkgname = bettbox-pre-bin
