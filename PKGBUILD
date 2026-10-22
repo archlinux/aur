@@ -71,13 +71,6 @@ prepare() {
     msg "Failed to add hardening flags to the bundled libbpf/libelf/zlib builds"
     return 1
   fi
-
-  # Set the cache instead of using ${HOME}/.cache
-  export LIBBPF_CACHE="${srcdir}/libbpf-cache"
-
-  # Clear the cache and prepare for a rebuild
-  rm -rf "${LIBBPF_CACHE}"
-  rm -rf "output"
 }
 
 package() {
@@ -87,10 +80,18 @@ package() {
     return 1
   }
 
+  # Install license file to documentation location
+  # do this BEFORE we cd into Linux :)
+  # shellcheck disable=SC2154
+  install -D --mode=644 LICENSE "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
+
   cd "Linux" || {
     msg "Failed to cd into Linux srcdir"
     return 1
   }
+
+  # Set the cache instead of using ${HOME}/.cache
+  export LIBBPF_CACHE="${srcdir}/libbpf-cache"
 
   # Run build
   ./build.sh || {
@@ -118,10 +119,6 @@ package() {
   # Create configuration directory (empty by default)
   mkdir -p "${pkgdir}/etc"
   mkdir --mode=755 "${pkgdir}/etc/${_gitname}"
-
-  # Install license file to documentation location
-  # shellcheck disable=SC2154
-  install -D --mode=644 LICENSE "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
 
   # Save Linux README to documentation
   install -D --mode=644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
