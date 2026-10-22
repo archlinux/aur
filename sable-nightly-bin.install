@@ -1,5 +1,5 @@
 post_install() {
-  ln -sf /opt/Sable/sable /usr/bin/sable
+  ln -sf '/opt/Sable Nightly/sable-nightly' /usr/bin/sable-nightly
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
   update-desktop-database -q
 }
@@ -9,7 +9,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  rm -f /usr/bin/sable
+  rm -f /usr/bin/sable-nightly
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
   update-desktop-database -q
 }
