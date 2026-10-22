@@ -4,7 +4,7 @@
 # VCS package: builds the tip of master. pkgver() derives the version from
 # git describe at build time; the value below only feeds the AUR web page.
 pkgname=actionlint-kjanat-git
-pkgver=1.17.0.r61.g8e2e612
+pkgver=1.17.0.r75.g5e84355
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork, git master)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,7 +22,7 @@ source=('actionlint::git+https://github.com/kjanat/actionlint.git')
 sha256sums=('SKIP')
 
 # Go module path; the ldflags targets below are package-level vars in it.
-_module='actionlint.kjanat.dev'
+_module='actionlint.kjanat.dev/v2'
 
 # mise shims on the builder's PATH otherwise apply the repository's mise configs.
 _system_tools() {
@@ -34,7 +34,7 @@ pkgver() {
 	_system_tools
 	cd actionlint || exit 1
 	local tag
-	# v1.17.0-12-gabc1234 -> 1.17.0.r12.gabc1234
+	# v2.0.0-12-gabc1234 -> 2.0.0.r12.gabc1234
 	tag="$(git describe --long --abbrev=7 --tags)"
   echo "${tag}" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -57,7 +57,7 @@ build() {
 	export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 	# makepkg strips symbols itself; keeping them here lets debuginfod work.
 	go build -o build/actionlint \
-		-ldflags "-linkmode=external -X ${_module}.version=${pkgver} -X ${_module}.installedFrom=https://aur.archlinux.org/packages/${pkgname}" \
+		-ldflags "-linkmode=external -X ${_module}/internal/buildinfo.ReleaseVersion=${pkgver} -X ${_module}/internal/buildinfo.InstallOrigin=https://aur.archlinux.org/packages/${pkgname}" \
 		./cmd/actionlint
 	make man/actionlint.1
 }
