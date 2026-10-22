@@ -1,8 +1,7 @@
-# SPDX-License-Identifier: MIT
 # Maintainer: sphekes <sphekes@qq.com>
 
 pkgname=artcraft-launcher-appimage
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Install, update and launch the Craft App Suite (AppImage)'
 arch=('x86_64' 'aarch64')
@@ -53,21 +52,15 @@ source=(
   'artcraft-launcher'
   "${_archive}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=(
-  'fb90a2e1b07057d5817e363a339fe691c99414230782f57a0c6edc94db1f6cac'
-  '79f764b8e786c4a9ea1691bc560a97f0b1872ae123b08af682ca300912b8ed07'
-)
+sha256sums=('fb90a2e1b07057d5817e363a339fe691c99414230782f57a0c6edc94db1f6cac'
+            'e3aac276b3a6bd891f0f62cd35868df30fb29ef290cb0d09273e0eb21c87ee3d')
+sha256sums_x86_64=('4c8679a160e841b1789ce5c4737fdd0f9c589823aaf2e607777181991f82e1a2')
+sha256sums_aarch64=('dbc6abefab139f821315a6486665e2f882b32f11e36b20870b2bee83e5779588')
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_name}-${pkgver}-linux-x86_64.AppImage"
 )
-sha256sums_x86_64=(
-  '4d543eaa20e5c6a838f643707699abb99737ad4f6b0384ed22c731dd2df5c155'
-)
 source_aarch64=(
   "${url}/releases/download/v${pkgver}/${_name}-${pkgver}-linux-aarch64.AppImage"
-)
-sha256sums_aarch64=(
-  '6386d004e0366fac188eb92bed57de33e462029992013845b2df59f56e24d4e2'
 )
 noextract=(
   "${_name}-${pkgver}-linux-x86_64.AppImage"
