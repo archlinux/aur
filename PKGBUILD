@@ -1,6 +1,6 @@
 # Maintainer: mustd
 pkgname=mdpkg
-pkgver=0.2.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Declarative multi-host package manager for Manjaro Linux via Markdown checklists"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('pacman' 'pamac-cli' 'sudo')
 optdepends=('npm: for global npm package management')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a2382f192fa42326316215d33280100c906bdaa8dd67f9bc22b6b8e77897e1f4')
+sha256sums=('c4efa7a72908ff56daa7b02640b0e539a18649f06ff9e770dab2f0a06f89bad6')
 
 build() {
   cd "$pkgname-$pkgver"
