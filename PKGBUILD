@@ -2,7 +2,7 @@
 
 pkgname=mailcraft
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/UCS-Care-Group/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft Outlook'
 arch=(x86_64)
@@ -18,14 +18,18 @@ sha256sums=('cfe592208072a45b4b970f24b660f3a4ae75d35955fc0d5c1ac39e23477e59f8')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -fno-lto'
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -fno-lto'
 }
 
 _icons=(512 256 128 64 48 32 16)

@@ -1,7 +1,7 @@
 pkgbase = mailcraft
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft Outlook
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UCS-Care-Group/mailcraft
 	arch = x86_64
 	license = MIT
