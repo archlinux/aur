@@ -2,7 +2,7 @@
 
 pkgname=smaragd
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Native desktop authoring tool for writers'
 arch=(x86_64)
 url="https://github.com/ljantzen/$pkgname"
@@ -19,14 +19,18 @@ sha256sums=('4c88dd9ff3d0f9ffd2c719570de2e949a2dc1a0a0546a484bda96ca9586e19b7')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -ffat-lto-objects'
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	CFLAGS+=' -ffat-lto-objects'
 }
 
 prepare() {
