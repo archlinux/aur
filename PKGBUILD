@@ -1,7 +1,7 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-bin
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='澜音 - 一款简洁优雅的跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。'
 arch=('x86_64')
 url='https://ceru.docs.shiqianjiang.cn/'
@@ -30,7 +30,7 @@ _debdir='澜音'         # 上游 deb 内部目录名（中文）
 source=("LICENSE::https://raw.githubusercontent.com/timeshiftsauce/CeruMusic/main/LICENSE")
 source_x86_64=("${_debname}::https://github.com/timeshiftsauce/CeruMusic/releases/download/v${pkgver}/${_debname}")
 sha256sums=('156192fbbc7e97514fc250480ed4bd1570f1a7f6e59420b088b4151a7e68431b')
-sha256sums_x86_64=('6e3ddae9ee3f24d7d53a61b9e6bfa35f86cc1330e1e40f77bdd710b332f9c76b')
+sha256sums_x86_64=('6411c9d19b2dba2ba05ccbfe6fa0b29a8712bbd78f70a78eddb27c4bd5513a23')
 
 prepare() {
     # 只解出 app.asar 与 app.asar.unpacked，跳过 218MB 的 electron 二进制、
@@ -64,9 +64,26 @@ package() {
         "${pkgdir}${_appdir}/resources/"
 
     # 2. 启动脚本：用系统 electron 加载 app.asar
+    #    启动前读取用户自定义参数文件（约定同 code-flags.conf / electron-flags.conf）：
+    #      ${XDG_CONFIG_HOME:-$HOME/.config}/ceru-music-flags.conf
+    #    每行一个参数，空行与 # 开头的整行注释忽略。
+    #    注意参数必须插在 app.asar 之前 —— Chromium/Electron 开关只有位于
+    #    app 路径之前才会被 electron 本体识别；桌面入口与 ceru-music://
+    #    深度链接传入的 "$@"（文件/URL）仍排在最后。
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/ceru-music" << EOF
 #!/bin/bash
-exec /usr/bin/electron44 ${_appdir}/resources/app.asar "\$@"
+_flags=()
+_conf="\${XDG_CONFIG_HOME:-\$HOME/.config}/ceru-music-flags.conf"
+if [ -r "\$_conf" ]; then
+    while IFS= read -r _line || [ -n "\$_line" ]; do
+        # 去掉行首尾空白（read 按默认 IFS 折叠），允许手写缩进
+        read -r _line <<< "\$_line"
+        [ -z "\$_line" ] && continue
+        case "\$_line" in '#'*) continue ;; esac
+        _flags+=("\$_line")
+    done < "\$_conf"
+fi
+exec /usr/bin/electron44 "\${_flags[@]}" ${_appdir}/resources/app.asar "\$@"
 EOF
 
     # 3. 图标：deb 自带 16~1024 全套 hicolor 图标
