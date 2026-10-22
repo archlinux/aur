@@ -1,7 +1,7 @@
 # Maintainer: Mahfuz Shaikh <mah3uz@gmail.com>
 
 pkgname=sysman
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='System monitor for Linux: a metrics collector daemon with crash log and history, and a GPUI app'
 arch=('x86_64')
@@ -23,7 +23,7 @@ install=sysman.install
 # makepkg's LTO turns the bundled SQLite into GCC bitcode that Rust's linker cannot read
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c4ea3ef36944bb942138220d537ec6ea6a055e29757f29b8b5daa3e7eab797d')
+sha256sums=('81729f90203b91d46bc427810dc754e099423ff84997b8a823070d76350bf86a')
 
 prepare() {
   cd "$pkgname-$pkgver"
