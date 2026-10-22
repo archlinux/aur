@@ -2,7 +2,7 @@
 
 pkgname=python-diffsynth
 _pkgname=diffsynth
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team"
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
     'python-torchaudio: audio extra'
     'python-torchcodec: audio extra'
     'python-librosa: audio extra'
-    'python-streamlit: all extra (web UI)'
+    'python-streamlit: web UI'
     'python-bitsandbytes: quantized Ideogram text encoder'
     'python-deepspeed: DeepSpeed training and checkpointing'
     'python-facexlib: face recognition pipelines'
@@ -58,8 +58,11 @@ optdepends=(
     'python-wandb: Weights & Biases training logger'
     'python-xformers: xFormers attention acceleration'
     'python-opencv: face restoration and image-processing pipelines'
+    'python-comfy-kitchen: quantization kernels (quant extra)'
+    'python-torchao>=0.16: TorchAO quantization (quant extra)'
+    'python-tiktoken: Yue2 tokenization'
 )
-_commit=6b3c254299ec4031cb60ff5ecce18272a2646ea6
+_commit=baac56f232efc200fed95c483171ca350a7f69d1
 _archive=DiffSynth-Studio
 source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
