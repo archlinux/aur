@@ -3,7 +3,7 @@
 
 pkgname=php-legacy-pdo_sqlsrv
 _pkgname=pdo_sqlsrv
-pkgver=5.13.0
+pkgver=5.13.3
 pkgrel=1
 pkgdesc="Microsoft SQL Server PDO driver for PHP (php-legacy)."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('php-legacy')
 
 _archive="${_pkgname}-${pkgver}"
 source=("https://pecl.php.net/get/${_archive}.tgz")
-sha256sums=('efa859bcc48d97f25268dbdebf1db25f25610d7fa36b3ee91073c1c99411e24c')
+sha256sums=('198a7b37da0658d36a93d158a0ec179b137b3a4d241c90a6650ae9ee8f91ec4a')
 
 backup=("etc/php-legacy/conf.d/${_pkgname}.ini")
 
