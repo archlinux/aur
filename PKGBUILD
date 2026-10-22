@@ -2,7 +2,7 @@
 
 pkgname=renpy
 pkgver=8.5.3.26051504
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -59,7 +59,9 @@ EOF
 }
 
 package() {
-	depends+=('python-pefile' 'python-requests' 'python-rsa' 'python-six')
+	depends+=(
+		'python-pefile' 'python-requests' 'python-rsa' 'python-six'
+		'libavcodec.so' 'libavcodec.so' 'libavutil.so' 'libswresample.so' 'libswscale.so')
 
 	mkdir -p "$pkgdir/"{usr/share/{$pkgname,doc/$pkgname},}
 

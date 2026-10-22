@@ -1,7 +1,7 @@
 pkgbase = renpy
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs
 	pkgver = 8.5.3.26051504
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.renpy.org
 	install = renpy.install
 	arch = i686
@@ -58,3 +58,8 @@ pkgname = renpy
 	depends = python-requests
 	depends = python-rsa
 	depends = python-six
+	depends = libavcodec.so
+	depends = libavcodec.so
+	depends = libavutil.so
+	depends = libswresample.so
+	depends = libswscale.so
