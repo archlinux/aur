@@ -5,7 +5,7 @@ _pkgname='beeper'
 _install_path='opt'
 
 pkgname='beeper-bin'
-pkgver=4.3.209
+pkgver=4.3.229
 pkgrel=1
 epoch=1
 pkgdesc='The ultimate messaging app'
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 conflicts=('beeper' 'beeper-v4-bin')
 provides=('beeper')
 
-source=('Beeper-4.3.209-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-4.3.209-x86_64.AppImage')
-sha256sums=('41da0982e557387b3cc6d48bd3012a3eff73285b9beba6dee4335a154e8a30c7')
+source=('Beeper-4.3.229-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-4.3.229-x86_64.AppImage')
+sha256sums=('41a1c2ca08dafc94f14b7d00379895653e9b657e7897642ff5e2b39380deb874')
 
 build() {
   local _filename="Beeper-${pkgver}-x86_64.AppImage"
