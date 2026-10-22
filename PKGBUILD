@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=scramblery-bin
 _pkgname=Scramblery
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.Common version."
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altunenes/scramblery/v${pkgver}/LICENSE"
 )
-sha256sums=('72ec31aa6406b1c24b59f979ca0b4773ec3080605095970a1c6d370f8b7bcfb2'
+sha256sums=('7f47976a85e7598088827f35ce0923f00111432d3a43ee1b14f081df8f02847d'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
