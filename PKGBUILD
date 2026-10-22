@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=dim-agent-bin
-pkgver=0.9.57
+pkgver=0.9.58
 pkgrel=1
 pkgdesc='Agent runtime for desktop, terminal, scripts, and editors'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=('dimagent')
 conflicts=('dimagent')
 source=("DimAgent-${pkgver}.deb::https://dimcode.echooai.com/updates/stable/linux/x64/DimAgent-${pkgver}.deb")
 noextract=("DimAgent-${pkgver}.deb")
-sha256sums=('4a383dbff8fd5a63abc84705ed54ca2ae30de25df73c99c25d25a193c43278f1')
+sha256sums=('0d5bcf4e3099da734324bcf6b3f521537ac38e79e998386a6ce65285fae14118')
 
 package() {
   local data_member
