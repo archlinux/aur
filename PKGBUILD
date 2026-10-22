@@ -12,9 +12,9 @@
 # come from.
 pkgname=margin-bin
 _pkgname=margin
-pkgver=26.10.21
+pkgver=26.10.22
 pkgrel=1
-pkgdesc="A terminal tool for reviewing markdown and handing the comments back to an agent (a launcher plus a seed build: margin updates itself in ~/.local/margin with margin update)"
+pkgdesc="A terminal tool for reviewing markdown and handing the comments back to an agent, speaking hotty 0.5 (a launcher plus a seed build: margin updates itself in ~/.local/margin with margin update)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/neuroplastio/margin"
 license=('Apache-2.0')
@@ -31,8 +31,8 @@ source_x86_64=("margin-launcher-${pkgver}-x86_64::${_release}/margin-launcher_li
                "margin-${pkgver}-x86_64::${_release}/margin_linux_amd64")
 source_aarch64=("margin-launcher-${pkgver}-aarch64::${_release}/margin-launcher_linux_arm64"
                 "margin-${pkgver}-aarch64::${_release}/margin_linux_arm64")
-sha256sums_x86_64=('6528a5fd2a91574d6f1854807441a1bf4c6af2dd2c51bc4eef30cd20a1341a65' '31893be542f4ae94143714f458c798e6f84616920683dda175722c1318902d3a')
-sha256sums_aarch64=('2bd279f77fa85fec76544440917af1423aa17a86e869cf32a0da9f230188bbf6' 'ba592ca636599ad60b05517977247f01b92477ad0d38efd674c9534b318751f2')
+sha256sums_x86_64=('5ca5de859e092c6ec91ccd69876e3f191ac6b643b185dc33f46cf524c9f867ef' '825c7bae4f082228ec8e6c8940ea117d5cbce093944462f4f7e3588d8a07a0b4')
+sha256sums_aarch64=('554e3609475406fc63ad0f9e52b926fdf65e0a71a7075c2f83ef41f485ef409b' '5454fae4e4cb512f308a46e82bc07a554f04e76a2fde5d7f2f8c4bc7649348e4')
 
 package() {
   install -Dm755 "margin-launcher-${pkgver}-${CARCH}" "$pkgdir/usr/bin/$_pkgname"
