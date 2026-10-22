@@ -1,7 +1,7 @@
 pkgbase = git-bookmark
 	pkgdesc = Keep your bookmarks with your repository
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qu4tro/git-bookmark
 	arch = any
 	license = MIT
@@ -14,4 +14,3 @@ pkgbase = git-bookmark
 	md5sums = d16cff4a707789ce6a2a7cc22cef833a
 
 pkgname = git-bookmark
-
