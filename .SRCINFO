@@ -1,6 +1,6 @@
 pkgbase = python-udtools
 	pkgdesc = Python tools for Universal Dependencies
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/UniversalDependencies/tools
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-udtools
 	depends = python
 	depends = python-udapi
 	depends = python-regex
-	source = python-udtools-0.2.8.tar.gz::https://github.com/UniversalDependencies/tools/archive/refs/tags/py0.2.8.tar.gz
-	sha256sums = 7ce3a2d5f7a7492c072b4cafefa2f119c9a89fd7aa5ef0284a026e73795146a3
+	source = python-udtools-0.2.9.tar.gz::https://github.com/UniversalDependencies/tools/archive/refs/tags/py0.2.9.tar.gz
+	sha256sums = 2d82af3e3e90c88ad7f11efd2bb3ea8979874588626a1d83cbc747c06d3a8b4b
 
 pkgname = python-udtools

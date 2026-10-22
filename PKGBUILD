@@ -2,7 +2,7 @@
 
 _pkgname=udtools
 pkgname="python-${_pkgname}"
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Python tools for Universal Dependencies"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=(
 )
 _archive="tools-py$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/py$pkgver.tar.gz")
-sha256sums=('7ce3a2d5f7a7492c072b4cafefa2f119c9a89fd7aa5ef0284a026e73795146a3')
+sha256sums=('2d82af3e3e90c88ad7f11efd2bb3ea8979874588626a1d83cbc747c06d3a8b4b')
 
 prepare() {
     # Upstream declares udtools/data/*.json as package data, but keeps the JSON
@@ -74,7 +74,7 @@ sample = """# sent_id = smoke-1
 
 """
 
-assert udtools.__version__ == '0.2.8'
+assert udtools.__version__ == '0.2.9'
 with TemporaryDirectory() as directory:
     path = Path(directory, 'sample.conllu')
     path.write_text(sample, encoding='utf-8')
