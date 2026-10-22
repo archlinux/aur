@@ -10,7 +10,7 @@ pkgname=proxybridge-git
 # shellcheck disable=SC2034
 pkgdesc="Proxifier Alternative to redirect any TCP and UDP traffic to HTTP/Socks5 proxy (Unofficial PKGBUILD)"
 # shellcheck disable=SC2034
-pkgver=r542.ccfd858
+pkgver=r575.eedf1b7
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -62,10 +62,6 @@ prepare() {
   # binary audit: 1 check(s) failed
   # Audit failed: the binaries are not portable/hardened enough to ship.
   sed -i 's|CFLAGS="-O2 -fPIC -include|CFLAGS="-O2 -fPIC -fcf-protection=full -fstack-protector-strong -fstack-clash-protection -include|' "Linux/src/Makefile"
-
-  # Set the cache instead of using ${HOME}/.cache
-  export LIBBPF_CACHE="${srcdir}/libbpf-cache"
-  rm -rf "${LIBBPF_CACHE}"
 }
 
 package() {
@@ -74,6 +70,10 @@ package() {
     msg "Failed to cd into ${srcdir}/${_gitname}"
     return 1
   }
+
+  # Set the cache instead of using ${HOME}/.cache
+  export LIBBPF_CACHE="${srcdir}/libbpf-cache"
+  rm -rf "${LIBBPF_CACHE}"
 
   # Install license file to documentation location
   # shellcheck disable=SC2154
