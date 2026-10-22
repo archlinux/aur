@@ -1,10 +1,10 @@
 # Maintainer: bnema <b at bnema dot dev>
 pkgname=dumber-browser-git
-pkgver=0.33.2.r0.g57f21d61
+pkgver=0.33.2.r1.g355c90ac
 pkgrel=1
 pkgdesc="A minimal keyboard-driven browser for tiling WMs (git version)"
 arch=('x86_64')
-url="https://github.com/bnema/dumber"
+url="https://git.bnema.dev/dumber"
 license=('MIT')
 makedepends=('go>=1.27' 'git' 'brotli')
 depends=('gtk4' 'cef' 'webkitgtk-6.0')
@@ -27,7 +27,7 @@ optdepends=(
 )
 provides=('dumber-browser' 'dumber')
 conflicts=('dumber-browser' 'dumber-browser-bin')
-source=("git+https://github.com/bnema/dumber.git")
+source=("git+https://git.bnema.dev/dumber.git")
 sha256sums=('SKIP')
 
 pkgver() {
