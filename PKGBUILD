@@ -3,7 +3,7 @@
 # Co-Maintainer: Aethar <elliott.ashby88@gmail.com>
 pkgname=yt-x-git
 _pkgname=yt-x
-pkgver=v0.8.6.r4.g976b047
+pkgver=v0.8.7.r4.ge321147
 pkgrel=1
 pkgdesc="Browse youtube from your terminal"
 arch=(any)
@@ -20,13 +20,19 @@ depends=(
   'ffmpeg'
   'ttf-jetbrains-mono-nerd')
 optdepends=(
-  'gum'
-  'chafa'
-  'icat'
-  'imgcat'
-  'mpv'
-  'kitty'
-  'bat')
+  'mpv: default media player'
+  'vlc: alternative media player'
+  'chafa: image previews (default renderer)'
+  'kitty: image previews via kitten icat'
+  'viu: image previews'
+  'ffmpegthumbnailer: thumbnails in the downloads extension'
+  'rofi: alternative launcher'
+  'libnotify: desktop notifications when not run from a terminal'
+  'wl-clipboard: copy video url on Wayland'
+  'xclip: copy video url on X11'
+  'xdg-utils: open videos and channels in the browser'
+  'gum: improved prompts and loaders'
+  'bat: default pager')
 
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
