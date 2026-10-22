@@ -1,7 +1,7 @@
 pkgbase = oleafly
 	pkgdesc = a local-first AI assisted research workspace for scientific writing & publishing
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oleafly.com
 	arch = x86_64
 	license = MIT
