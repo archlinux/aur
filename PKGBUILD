@@ -1,12 +1,19 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=hatoba-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Open-source desktop SSH client with an AI assistant and end-to-end encrypted sync through your own Cloudflare account"
 arch=('x86_64')
 url="https://hatoba.fog.moe"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'openssl')
+depends=(
+    'webkit2gtk-4.1'
+    'gtk3'
+    'libayatana-appindicator'
+    'libsecret'
+    'openssl'
+)
+optdepends=('gnome-keyring: keep sync credentials in a Secret Service keyring (org.freedesktop.secrets)')
 provides=('hatoba')
 conflicts=('hatoba')
 options=('!strip' '!debug')
