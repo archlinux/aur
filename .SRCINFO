@@ -1,7 +1,7 @@
 pkgbase = poise-bin
 	pkgdesc = Real-time system audio denoiser and voice isolator with TUI (prebuilt binary)
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chabandou/Poise-Voice-Isolator
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = poise-bin
 	provides = poise
 	conflicts = poise
 	options = !strip
-	source = poise-1.5.0-1::https://github.com/chabandou/Poise-Voice-Isolator/releases/download/v1.5.0/poise-1.5.0-1
-	sha256sums = f205d3272a26d7d9ac60ff41c2b5269152e28107ea3913ba1033c1156f5b256c
+	source = poise-1.5.0-2::https://github.com/chabandou/Poise-Voice-Isolator/releases/download/v1.5.0/poise-1.5.0-2
+	sha256sums = 3dd3b8b683691d1cc6196391ea375697e1883e096d8da9e568cdedd3ec14f191
 
 pkgname = poise-bin
