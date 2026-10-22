@@ -1,0 +1,20 @@
+pkgbase = python-e3nn
+	pkgdesc = Euclidean neural networks for E(3) equivariant deep learning
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/e3nn/e3nn
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-pytorch
+	depends = python-scipy
+	depends = python-sympy
+	depends = python-opt-einsum-fx
+	source = e3nn-0.6.0.tar.gz::https://github.com/e3nn/e3nn/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = 6be2d0cd59d1e76d8db8d2c6252d72604fb152c4be0212c6116a22e9f0018dc5
+
+pkgname = python-e3nn
