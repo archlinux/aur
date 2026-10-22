@@ -1,7 +1,7 @@
 # Maintainer: brave <aur-release@brave.com>
 
 pkgname=brave-origin-bin
-pkgver=1.97.59
+pkgver=1.98.60
 pkgrel=1
 epoch=1
 pkgdesc='The minimalist browser from the makers of Brave (binary release).'
@@ -22,8 +22,8 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/brave/brav
 noextract=("${pkgname}-${pkgver}-x86_64.zip" "${pkgname}-${pkgver}-aarch64.zip")
 sha256sums=('5ff70ee473f35c2fc7642c422c8abe20aaac0d7cc30a3292744eb9fbeafba1bd'
             'c70bc71c696b6764247070375ae111bd76c8bad9c7bda4d46e03975b95571a8a')
-sha256sums_x86_64=('138b85d05f8e225e0d6bc71da0b616f72a194e461883df5fd7e35aef3af75325')
-sha256sums_aarch64=('055653841cb6eab8f69dfc7eda02aceb9c7edebadc83d193eb612fc818e6cfbb')
+sha256sums_x86_64=('39a69cf12b5787f789d0a0b013f32253bddc9004d03e36c679a8daa61821b6e8')
+sha256sums_aarch64=('9c02f03b691515a2eb81a17c5570fcc958915a4f1ee9973b69b578566c876a3b')
 
 prepare() {
 	mkdir -p brave
