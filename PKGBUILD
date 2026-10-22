@@ -24,7 +24,7 @@ makedepends=(
 checkdepends=(
   python-hypothesis
   python-msgspec
-  python-pydantic # undesirable, but that's to be expected.
+  python-pydantic # Undesirable, but that's to be required.
   python-pytest
   python-pytest-asyncio
 )
