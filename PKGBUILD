@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal UI for rsync — profiles, dry-run diff preview, live progress"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('67e1a89fe8ba17ee650d8ba4f57115b49ae2c49453deabe5918b4b7bbb283074'
+sha256sums=('41f65b7d3c48c7889266efa75784b004fc0c374b424ae885f17a9a03206fd999'
             'd5f42f4a131789a11fd12133dda988199ef9f49bc10180761a72921937219d48')
-sha256sums_x86_64=('86e6031f8da85260f35a7c6c80a9dc7991ba077b635b58d2ff4fbe68effabb23')
-sha256sums_aarch64=('d3bc82eccde12ecc68fcd88dff2f6e6c25ddfb4db45e846fc6a543f5f35cb24c')
+sha256sums_x86_64=('0cd33c252f3fddc6fd95a1350c80271cbcdcc6cb340469d573fc8560b86f3adc')
+sha256sums_aarch64=('be09445c8a3773827e59a896ab9f19b3c17bce57e37f088069c498d99fb188d3')
 
 
 package() {
