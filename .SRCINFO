@@ -1,6 +1,6 @@
 pkgbase = switchhosts-bin
-	pkgdesc = Switch hosts quickly!(Prebuilt version)
-	pkgver = 5.0.2
+	pkgdesc = Switch hosts quickly!
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://switchhosts.app/
 	arch = aarch64
@@ -9,11 +9,13 @@ pkgbase = switchhosts-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = switchhosts=5.0.2
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = switchhosts=5.0.3
 	conflicts = switchhosts
-	source_aarch64 = switchhosts-5.0.2-aarch64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.2/SwitchHosts-5.0.2-linux-aarch64.rpm
-	sha256sums_aarch64 = 817bfa64932f42f8a376cd2a0c63fbc8e8b14a3b2cbe892371e1f64937f90498
-	source_x86_64 = switchhosts-5.0.2-x86_64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.2/SwitchHosts-5.0.2-linux-x86_64.rpm
-	sha256sums_x86_64 = 4f4cd60d7dfa6165047ad1ceb7e5af1facc3ca181afeb15be4f96be207bb2846
+	source_aarch64 = switchhosts-5.0.3-aarch64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.3/SwitchHosts-5.0.3-linux-aarch64.rpm
+	sha256sums_aarch64 = 32acac9dbb3490e3e69290eb0fcd59a3efbc33db937c98106458f0a55f9e803d
+	source_x86_64 = switchhosts-5.0.3-x86_64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.3/SwitchHosts-5.0.3-linux-x86_64.rpm
+	sha256sums_x86_64 = 6f303165f01d6e76812ce79418aa9f97314297096e0aed62b20b3caa3ccf0e44
 
 pkgname = switchhosts-bin
