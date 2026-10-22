@@ -1,6 +1,6 @@
 # Maintainer: quest
 pkgname=spawn-desktop
-pkgver=0.7.40
+pkgver=0.7.42
 pkgrel=1
 pkgdesc="Spawn desktop app with Discord Rich Presence"
 arch=('x86_64')
@@ -19,13 +19,21 @@ depends=('at-spi2-core'
 optdepends=('libappindicator-gtk3: tray icon support')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::https://spawnfile.io/desktop/releases/Spawn-$pkgver.deb")
-sha512sums=('ea5ce31953c225cafec183810edc088e0f1d6f81d02d6126ba930f10406b6b36f16914c5100721eb4cd14c0a7eb8211bdd67a0fe23abd86cfe01331af576affc')
+sha512sums=('dce90236292f3709c4069bda479db177e7224782216b7c86f5c65a76661548c8ed78c6950c6e886323b848870357091c6da05edc0b16f5d039b6c370c37a00dc')
 
 package() {
     bsdtar -xOf "$pkgname-$pkgver.deb" data.tar.xz | bsdtar -xf - -C "$pkgdir"
 
     # Debian packaging cruft
     rm -r "$pkgdir/usr/share/doc"
+
+    # Disable the built-in updater. With package-type=deb, electron-updater
+    # uses DebUpdater, which runs dpkg -i and apt-get install -f on the host.
+    # Without package-type it falls back to AppImageUpdater, which stays
+    # inactive when $APPIMAGE is unset. app-update.yml is removed as well so
+    # there is no update feed even if $APPIMAGE is set.
+    rm "$pkgdir/opt/Spawn/resources/package-type"
+    rm "$pkgdir/opt/Spawn/resources/app-update.yml"
 
     install -d "$pkgdir/usr/bin"
     ln -s /opt/Spawn/spawn-desktop "$pkgdir/usr/bin/spawn-desktop"

@@ -1,6 +1,6 @@
 pkgbase = spawn-desktop
 	pkgdesc = Spawn desktop app with Discord Rich Presence
-	pkgver = 0.7.40
+	pkgver = 0.7.42
 	pkgrel = 1
 	url = https://www.spawn.co/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = spawn-desktop
 	optdepends = libappindicator-gtk3: tray icon support
 	options = !strip
 	options = !debug
-	source = spawn-desktop-0.7.40.deb::https://spawnfile.io/desktop/releases/Spawn-0.7.40.deb
-	sha512sums = ea5ce31953c225cafec183810edc088e0f1d6f81d02d6126ba930f10406b6b36f16914c5100721eb4cd14c0a7eb8211bdd67a0fe23abd86cfe01331af576affc
+	source = spawn-desktop-0.7.42.deb::https://spawnfile.io/desktop/releases/Spawn-0.7.42.deb
+	sha512sums = dce90236292f3709c4069bda479db177e7224782216b7c86f5c65a76661548c8ed78c6950c6e886323b848870357091c6da05edc0b16f5d039b6c370c37a00dc
 
 pkgname = spawn-desktop
