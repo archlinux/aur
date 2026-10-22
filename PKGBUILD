@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
 url="https://www.process-one.net/fluux-messenger/"
@@ -31,7 +31,7 @@ makedepends=(
 # that get compiled that are particular about CFLAGS (aws-lc-rs).
 options=('!buildflags')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/processone/fluux-messenger/releases/download/v${pkgver}/fluux-messenger-${pkgver}-source.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/processone/fluux-messenger/releases/download/v${pkgver}/Fluux-Messenger_${pkgver}_source.tar.gz"
 )
 _resolutions=( 16 32 48 64 96 128 256 512 1024 )
 
@@ -83,5 +83,5 @@ package() {
 }
 
 sha512sums=(
-'50e73e004458157861383c5bbe797b752a2c257f2c221083957cd901eb5d247a2c57b8874b3b85ba60396b17e9ed06517b291e67f4996e87e05dfdaacc3b96a7'
+'cdc436be70d589450133555a0c14bac75feb9ae8711a3723899da46f25f4c3b0e3e8cf7ca1c3eee89cb57113de0ff06aa996f8caae125b570175063699d07585'
 )
