@@ -20,6 +20,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Unreleased changes are in [`.changeset/`](.changeset/), one file per change. Run `cargo xtask changeset preview` to see them as release notes.
 
+# [1.0.1] - 2026-10-21
+
+## 🐛 Fixes
+
+- **Stop trusting distrusted emSign intermediate certificates - @SharkBaitDLS**
+
+  Rover's TLS stack could accept certificate chains through emSign intermediates that are no longer trusted, and bundled root certificates that trusted them (RUSTSEC-2026-0382, RUSTSEC-2026-0383). Rover now uses `rustls-webpki` 0.103.16 and `webpki-root-certs` 1.0.10, which reject them.
+
 # [1.0.0] - 2026-10-06
 
 > Important: 3 potentially breaking changes below, indicated by **❗ BREAKING ❗**
