@@ -1,6 +1,6 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=rust-discord-overlay
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Lightweight Discord voice/text overlay for Linux (Wayland, GTK4 layer-shell), written in Rust"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('cargo' 'librsvg')
 optdepends=('libpulse: sync system mic/speaker mute with Discord (pactl)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5aac1835cc98cacd316b38aa916bb9b649f26d9ec53254347df4f31975f8b0c5')
+sha256sums=('e7411d615fe4d58ac41c65e2fc058f43d5207ff664d824b38b49f850ef158793')
 
 prepare() {
     cd "$pkgname-$pkgver"
