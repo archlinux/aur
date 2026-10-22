@@ -1,12 +1,13 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com> 
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=matthart1983
 _gitname=syswatch
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Single-host, read-only system diagnostics TUI — twelve tabs covering CPU, memory, disks, processes, GPU, power, services, network, plus a Timeline scrubber and an Insights anomaly engine"
+pkgdesc="Single-host system diagnostics TUI"
 
-pkgver=0.1.1
+pkgver=0.14.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.gz")
-sha256sums=('9bc81b068b70356dadd1d887755d8dca9be60705ec92a5a1a7f6bd904e39bee0'
+sha256sums=('f442d0671a8f6f204d82f74e0639ef59c07979b4833f5aa3177a50126035f230'
             'e78d969849862ac5abf431de8929c62759311a0cc58fd404eaf30996ab3f9162')
-sha256sums_x86_64=('cf6360b395e58f9d6fa421e8cb21299a030dcf6cff263837e4370bc407827357')
-sha256sums_aarch64=('0ba7c30b5792aea4db189f231e199f6c95d634fc5172e4fe0cbde3accbb21780')
+sha256sums_x86_64=('45dda51b29c29439c1deeda24b768c4a6a01f7af342b6ca6504b165c974f9c1c')
+sha256sums_aarch64=('d5b2565aa8059b60f8769a6fe56472d6222be653ec0d0923585842a6c667bce6')
 
 
 case ${CARCH} in
