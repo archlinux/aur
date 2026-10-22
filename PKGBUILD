@@ -1,16 +1,17 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.40
+pkgver=0.1.41
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
-url="https://github.com/musqz/archcanary"
+url="https://codeberg.org/linux-bird/archcanary-aur"
 license=('GPL-3.0-only')
 depends=('bash' 'pacman')
 optdepends=(
   'libnotify: desktop alerts on infected scan result'
   'polkit: privileged remediation commands (allowlist edits, audit-rules/lynis-config writes)'
   'bpf: bpftool for eBPF rootkit detection'
+  'audit: auditd records which AUR builds ran, appended to last-scan.log by the system scan service'
   'yay: AUR helper with Lua hook support'
   'paru: AUR helper with PreBuildCommand hook support'
   'bash-completion: tab-completion for archcanary/canary flags'
@@ -21,11 +22,11 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/autostart_allowlist.conf'
         'etc/archcanary/package_allowlist.conf')
 install=archcanary.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('704313c3ea7074e35f84f1902ab708b70c7e923e7ba05781c0591f39a82462db')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('1a86eebe6ab32dd34bc9a18cfebf4a8eba13485c3438586a0ab6781c4053faf9')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/archcanary-aur"
 
   # Stamp the real version into the placeholder install.sh normally sed's at
   # install time — package() bypasses install.sh entirely, so without this
