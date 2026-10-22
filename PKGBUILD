@@ -6,8 +6,8 @@
 pkgname=vesktop-bin
 _pkgname=vesktop
 _appname=vencord-desktop
-pkgver=1.6.7
-pkgrel=5
+pkgver=1.6.8
+pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed."
 arch=(
     'aarch64'
@@ -31,19 +31,19 @@ optdepends=(
     'xdg-utils: Open links, files, etc'
 )
 
-source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.tar.gz")
+source_aarch64=("${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.tar.gz")
 source_x86_64=("${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 source=(
     "${_pkgname}.sh"
     "${_pkgname}.desktop"
     "${_ghurl}/raw/refs/tags/v${pkgver}/build/icon.svg"
 )
-noextract=("${_pkgname}-${pkgver}.tar.gz")
+noextract=("${_pkgname}-${pkgver}.tar.gz" "${_pkgname}-${pkgver}-arm64.tar.gz")
 sha256sums=('db901fa9af0ce812f48ecba9c338162bd5b12f6586fefca2bc6b6509430ea351'
             '455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46'
             '7d0f9dbdb3c86f800577d7fb26a22defeb7025d10c405f634d3c2b939a75be7f')
-sha256sums_aarch64=('23841d3348aa4addd7ca7301172d927feb1ad6e62b1bf288871004d65d154f7f')
-sha256sums_x86_64=('152786c72cf97f510b3a527829568083dd5c79b723cf459c13d430b6ca385b66')
+sha256sums_aarch64=('2aecdb99058ea7c2e8295feda80f72e199416bf29a27adae0f9ac4855ad737ad')
+sha256sums_x86_64=('477dc07e9da85cf3f86b890f00cebe328d82ef62a40790bb515f18de38845a46')
 
 prepare() {
     sed -i -e "
@@ -53,8 +53,11 @@ prepare() {
     " "${srcdir}/${_pkgname}.sh"
 }
 package() {
+	local archive="${_pkgname}-${pkgver}.tar.gz"
+	[[ "$CARCH" == aarch64 ]] && archive="${_pkgname}-${pkgver}-arm64.tar.gz"
+
     mkdir -p "$pkgdir/opt/${_pkgname}"
-    tar -xf "$srcdir/${_pkgname}-${pkgver}.tar.gz" -C "$pkgdir/opt/${_pkgname}" --strip-components=1 --exclude='*app-update.yml'
+    tar -xf "$archive" -C "$pkgdir/opt/${_pkgname}" --strip-components=1 --exclude='*app-update.yml'
     mkdir -p "$pkgdir/usr/bin"
     install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}" # Start script
     install -Dm644 "icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" # Install icons
