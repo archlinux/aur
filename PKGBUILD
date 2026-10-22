@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal UI for your Obsidian vault: live-preview notes, backlinks, images, a force-directed graph and an assistant"
 
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('033dbd0cd9f9f19d15469f726fe5d17ec3798a8c8ca68c16a3cd26fe374cab6d')
-sha256sums_aarch64=('3d88a2eaf8157b4bef84b1888149129cd207b9076d58997c701974f20b0c9f7d')
+sha256sums_x86_64=('2a0e01677f809eb5366bf7c1ebe2bebb7d9b198dbc41243d59f65cab30eae169')
+sha256sums_aarch64=('827de7c7b8d358a74da52fdbf8184b10db9c17406e8378d6ad97bb239c01112e')
 
 
 case ${CARCH} in
