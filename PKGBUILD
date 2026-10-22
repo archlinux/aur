@@ -3,10 +3,10 @@
 pkgname=bookstack
 _camelname=BookStack
 pkgver=26.09.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
-url="https://github.com/BookStackApp/BookStack"
+url="https://codeberg.org/bookstack/bookstack"
 license=('MIT')
 # https://www.bookstackapp.com/docs/admin/installation/
 depends=(
@@ -21,7 +21,7 @@ optdepends=(
 )
 makedepends=('composer')
 source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz::https://codeberg.org/bookstack/bookstack/archive/v${pkgver}.tar.gz"
 	'bookstack.conf'
 )
 sha256sums=('63d6be10b6d2db89a5f82c439e478480fc12daaaca0de9a88a700b583e1d2c65'

@@ -1,4 +1,4 @@
 [bookstack]
 source = "git"
-git = "https://github.com/BookStackApp/BookStack.git"
+git = "https://codeberg.org/bookstack/bookstack.git"
 prefix = "v"
