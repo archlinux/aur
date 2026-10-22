@@ -3,9 +3,9 @@
 pkgname=relic-rosepine-gtk-theme
 _repo=Rose-Pine-GTK-Theme
 _commit=c4fdfa62a9eb6941a36b2cd5026fc64123aaa0dd
-_fixes=2026.10.22.1
+_fixes=2026.10.22.2
 pkgver=2025.10.23
-pkgrel=4
+pkgrel=5
 pkgdesc='Rosé Pine GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('9410203a7c2d4362c5e8696279e9c9d7b7925b97fd1cb5b1d0890fd6f99ebc58'
-            '3c203a956f4148230177eb925916ad8eddb75c98dd2212368b40df5e52d889d0')
+            '633d7b4729e30c4da5dc17543ac51249ed75bb8e789f20e5aa2c6d5bbc1bd5b6')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
