@@ -408,9 +408,17 @@ def plugin_roots(project):
 
 def project_plugins(project):
     # Unreal discovers plugins recursively, stopping below a descriptor directory.
+    # Like Unreal, follow symlinked mod folders, but visit each real directory once
+    # so link loops end and a mod linked twice is not reported as ambiguous.
     plugins = []
+    seen = set()
     for root in plugin_roots(project):
-        for directory, children, files in os.walk(root):
+        for directory, children, files in os.walk(root, followlinks=True):
+            real = os.path.realpath(directory)
+            if real in seen:
+                children[:] = []
+                continue
+            seen.add(real)
             descriptors = [Path(directory) / f for f in files if f.endswith(".uplugin")]
             if descriptors:
                 plugins.extend(descriptors)

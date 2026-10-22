@@ -2,7 +2,7 @@
 # makepkg reads metadata and supplies srcdir/pkgdir.
 # shellcheck disable=SC2034,SC2154
 pkgname=satmod
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='MSVC under Wine, Starter Project setup, and mod builds for Satisfactory modding'
 arch=('x86_64')
@@ -17,7 +17,7 @@ _commit=61b7cbc8cb9413fec8f0016ef433a90e06c37f54
 source=("msvc-wine-${_commit}.tar.gz::https://codeload.github.com/mircearoata/msvc-wine/tar.gz/${_commit}"
         'satmod' 'LICENSE')
 sha256sums=('0747197e8ff04749137978c02bada973c4bad2c6844c48909ae4217086fc7867'
-            '016dfe8b88149e55cf3a62dc31682e46281b17a84bb7c0409caee4e4adc1e3cf'
+            '80e80b79ec3ed514a7c4fc0e374c01edbfa1961cd477857bd7948efb471e3637'
             '2c50315092a261a88be9569e534c24b56b08606dde657263e8728f711263e58e')
 
 package() {
