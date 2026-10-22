@@ -1,6 +1,6 @@
 pkgbase = puddletag-git
 	pkgdesc = An audio tag editor for GNU/Linux, git version
-	pkgver = 2.5.0.r37.gda6fd53
+	pkgver = 2.5.0.r254.ga1eaa08
 	pkgrel = 1
 	url = https://github.com/puddletag/puddletag
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = puddletag-git
 	depends = python-mutagen
 	depends = python-pyparsing
 	depends = python-pyqt6
+	depends = python-send2trash
 	depends = python-unidecode
 	depends = qt6-svg
 	optdepends = chromaprint: AcoustID support
