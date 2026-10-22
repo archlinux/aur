@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-lock
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Wayland session locker for Niri with PAM authentication"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go>=1.26.4')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-lock/archive/refs/tags/v${pkgver}.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/Nomadcxx/sysc-lock/5f3baea0e7e74e620d35ba68743bf23274f1d196/LICENSE")
-sha256sums=('962d104b5461485f1e36c978572d80b748d979ff20b2e9282f389669f775cdd6'
+sha256sums=('922179ea1c9b1bb492bc940540f14455eb617a94cf581f42dc60404ca1d32a5c'
             'e79b463f506ee0a390088b757cb77f6643ce3bd2319c08884335d486456a214e')
 
 build() {

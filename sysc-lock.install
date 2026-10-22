@@ -1,4 +1,4 @@
-post_install() {
+_sysc_lock_print_header() {
   cat <<'EOF'
 
                        ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀
@@ -6,12 +6,25 @@ post_install() {
                        ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀
                       //  SEE YOU SPACE COWBOY //
 
-Start in a Niri session: systemctl --user enable --now sysc-lock-session.service
-Docs: https://nomadcxx.github.io/sysc/docs/
-
 EOF
 }
 
+_sysc_lock_print_usage() {
+  cat <<'EOF'
+Start in a Niri session: systemctl --user enable --now sysc-lock-session.service
+Docs: https://nomadcxx.github.io/sysc/docs/
+EOF
+}
+
+post_install() {
+  _sysc_lock_print_header
+  printf 'sysc-lock %s installed.\n\n' "${1:-unknown}"
+  _sysc_lock_print_usage
+}
+
 post_upgrade() {
-  post_install
+  _sysc_lock_print_header
+  printf 'sysc-lock upgraded: %s -> %s.\n' "${2:-unknown}" "${1:-unknown}"
+  printf '\nEffect catalog: L2A1 SAR, historical and religious statues and monuments, and four rotating fighter aircraft.\n\n'
+  _sysc_lock_print_usage
 }
