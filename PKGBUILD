@@ -3,7 +3,7 @@
 _gitauthor=Epistates
 _gitname=gravityfile
 _appname=${_gitname}
-_alias=grav
+_execname=grav
 pkgname=${_appname}
 pkgdesc="File system explorer and analyzer with an interactive TUI"
 
@@ -20,7 +20,7 @@ url=${_ghurl}
 
 license=('Apache-2.0' 'MIT')
 
-provides=("${_appname}")
+provides=("${_execname}")
 
 makedepends=('cargo')
 depends=('glibc' 'libgcc' 'xz')
@@ -42,6 +42,12 @@ build() {
 
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release
+
+	mkdir -p "./completions"
+
+	"./target/release/${_execname}" completions zsh > "./completions/${_appname}.zsh"
+	"./target/release/${_execname}" completions bash > "./completions/${_appname}.bash"
+	"./target/release/${_execname}" completions fish > "./completions/${_appname}.fish"
 }
 
 check() {
@@ -54,11 +60,15 @@ check() {
 package() {
 	cd "${pkgname}-${pkgver}" || exit
 
-	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${_execname}" "${pkgdir}/usr/bin/${_execname}"
 
-	install -Dm644 "scripts/${_alias}.zsh" "${pkgdir}/usr/share/${_appname}/${_alias}.zsh"
-	install -Dm644 "scripts/${_alias}.bash" "${pkgdir}/usr/share/${_appname}/${_alias}.bash"
-	install -Dm644 "scripts/${_alias}.fish" "${pkgdir}/usr/share/${_appname}/${_alias}.fish"
+	install -Dm644 "completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
+	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+	install -Dm644 "completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
+
+	install -Dm644 "src/shell/${_execname}.zsh" "${pkgdir}/usr/share/${_appname}/${_execname}.zsh"
+	install -Dm644 "src/shell/${_execname}.bash" "${pkgdir}/usr/share/${_appname}/${_execname}.bash"
+	install -Dm644 "src/shell/${_execname}.fish" "${pkgdir}/usr/share/${_appname}/${_execname}.fish"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
