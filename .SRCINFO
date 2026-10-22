@@ -1,6 +1,6 @@
 pkgbase = vk-workspace-bin
 	pkgdesc = VK WorkSpace app for team collaboration
-	pkgver = 26.3.11.139192
+	pkgver = 26.4.0.141207
 	pkgrel = 1
 	url = https://workspace.vk.ru/
 	install = vk-workspace-bin.install
@@ -14,9 +14,9 @@ pkgbase = vk-workspace-bin
 	replaces = vkteams-bin
 	replaces = vkteams
 	options = !strip
-	source = vkworkspace-26.3.11.139192.tar.xz::https://hb.bizmrg.com/vkteams-www/linux/x64/26.3.11.139192/vkworkspace.tar.xz
+	source = vkworkspace-26.4.0.141207.tar.xz::https://hb.bizmrg.com/vkteams-www/linux/x64/26.4.0.141207/vkworkspace.tar.xz
 	source = vkworkspace.sh
-	sha256sums = 821ea702a3127ba67a240619abd69caa7ecbc513431cc7fb5cc0e38455b06b7b
+	sha256sums = 0eac2984a353dde5a97ec34abb7344c835321e2b9bd7dfebf7c60ecd63902d59
 	sha256sums = 1682a949a32b87b322c5490ec0ca380421a8a4c45d13948bac097986e02905bb
 
 pkgname = vk-workspace-bin
