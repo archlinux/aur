@@ -1,5 +1,5 @@
 # Maintainer: Nicolas Ramirez-Diaz <support at tephro dot chat>
-# The AUR's tephro-client-bin, written by `make aur CLIENT=X.Y.Z` from
+# The AUR's tephro-client-bin, written by `make distros CLIENT=X.Y.Z` from
 # client/deploy/aur/PKGBUILD.in. Edit the template in the Tephro repository,
 # not the copy on the AUR.
 #
@@ -8,7 +8,7 @@
 # comes from the release's SHA256SUMS after its OpenPGP signature verified.
 # depends= matches client/deploy/pacman/PKGBUILD, where the list is explained.
 pkgname=tephro-client-bin
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="Self-hosted group chat client: text, voice, video and screen sharing (release build)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ conflicts=('tephro-client')
 options=('!strip' '!debug')
 install=tephro-client.install
 source=("tephro-client_${pkgver}_amd64.deb::https://gitlab.com/encenillo/tephro/-/releases/client%2Fv${pkgver}/downloads/tephro-client_${pkgver}_amd64.deb")
-sha256sums=('000409c1d061c5cf74148193573b814a01da007f13e7324d3e612365622d2197')
+sha256sums=('d7399a601422142b01e455c7f7b79f2c7c2048c88add8b3775e523620573b7dd')
 
 package() {
   bsdtar --no-same-owner -xf data.tar.xz -C "$pkgdir" ./opt ./usr/share/applications ./usr/share/icons
