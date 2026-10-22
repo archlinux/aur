@@ -3,7 +3,6 @@ pkgbase = wallpaperx-bin
 	pkgver = 0.4.12
 	pkgrel = 5
 	url = https://github.com/jagrat7/linux-wallpaper-engine
-	install = wallpaperx-bin.install
 	arch = x86_64
 	license = MIT
 	depends = alsa-lib

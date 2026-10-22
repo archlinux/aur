@@ -19,7 +19,6 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" 'linux-wallpaper-engine-ux')
 replaces=('linux-wallpaper-engine-ux')
 options=('!strip' '!debug')
-install=$pkgname.install
 
 # Names inside the Electron Forge zip; change these when the app is renamed.
 _appdir="Linux Wallpaper Engine-linux-x64"
