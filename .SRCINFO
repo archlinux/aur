@@ -1,7 +1,7 @@
 pkgbase = tylax
 	pkgdesc = A bi-directional converter between Typst and LaTeX
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scipenai/tylax
 	arch = x86_64
 	license = Apache-2.0

@@ -2,7 +2,7 @@
 
 pkgname=tylax
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A bi-directional converter between Typst and LaTeX'
 arch=(x86_64)
 url="https://github.com/scipenai/$pkgname"
@@ -17,10 +17,14 @@ sha256sums=('bebdfbddadfdf8c44c822a81ca23df0389428a471f1e5d2a391e0c6b517bd222')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=true
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
