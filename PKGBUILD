@@ -3,7 +3,7 @@
 _name=memories
 pkgname=nextcloud-app-memories
 pkgdesc="Fast, modern and advanced photo management suite for Nextcloud"
-pkgver=8.0.1
+pkgver=10.1.0
 pkgrel=1
 arch=(any)
 license=(AGPL-3.0-or-later)
