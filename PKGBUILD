@@ -6,7 +6,7 @@
 
 pkgname=forskscope
 # Keep pkgver in sync with [workspace.package] version in Cargo.toml on each release.
-pkgver=0.194.0
+pkgver=0.195.0
 pkgrel=1
 pkgdesc="Local-first cross-platform diff and merge tool"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archi
 # here. This file is a template; do not copy it and run `makepkg -si`
 # expecting a verified download (see docs/src/users/installation.md's
 # Arch section for the supported path).
-sha256sums=('2b8b1830a5e8949c7b7605f8131ebc1f386388caa48fe792031a3cee673f0b59')
+sha256sums=('8a8420931d4bd8f1fa802a402587ceaee79cdda6f5c445ed8bae73d775fd643d')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -36,12 +36,15 @@ build() {
     # updates button - FORSKSCOPE_CHANNEL tells the About dialog to say so
     # ("Update with your AUR helper") instead of linking a GitHub download.
     export FORSKSCOPE_CHANNEL=aur
+    # No -p: builds every workspace member's default target, which now
+    # includes forskscope-cli (RFC-094) beside the GUI's forskscope.
     cargo build --release --locked
 }
 
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/forskscope" "$pkgdir/usr/bin/forskscope"
+    install -Dm755 "target/release/forskscope-cli" "$pkgdir/usr/bin/forskscope-cli"
     install -Dm644 "packaging/linux/forskscope.desktop" \
         "$pkgdir/usr/share/applications/forskscope.desktop"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
