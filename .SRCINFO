@@ -1,6 +1,6 @@
 pkgbase = kiekje-bin
 	pkgdesc = Capture, mark up and keep screenshots (release binary)
-	pkgver = 0.1.0alpha6
+	pkgver = 0.1.0alpha7
 	pkgrel = 1
 	url = https://github.com/remcostoeten/kiekje
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = kiekje-bin
 	conflicts = kiekje
 	options = !strip
 	options = !debug
-	source_x86_64 = kiekje-0.1.0-alpha.6-x86_64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.6/kiekje-0.1.0-alpha.6-x86_64-linux.tar.gz
-	sha256sums_x86_64 = eb600c015f1ec63291637d64dbc67ee931fffd0e52b98e0580c35f3b3623f3cb
-	source_aarch64 = kiekje-0.1.0-alpha.6-aarch64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.6/kiekje-0.1.0-alpha.6-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 4338162062ef2435422083440280835e1e38fc18866774917c47c3cc8e68b783
+	source_x86_64 = kiekje-0.1.0-alpha.7-x86_64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.7/kiekje-0.1.0-alpha.7-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 032c08b8e3016e4d896968651aced8e17c2f24598e556b0f2ab94311411c3d18
+	source_aarch64 = kiekje-0.1.0-alpha.7-aarch64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.7/kiekje-0.1.0-alpha.7-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 189926d85b936e175acd64917e49e0c7ed3d7edb921735251a6e06788c14d177
 
 pkgname = kiekje-bin
