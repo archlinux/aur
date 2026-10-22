@@ -1,0 +1,16 @@
+pkgbase = python-logging-journald
+	pkgdesc = Pure python logging handler for writing logs to the journald using native protocol.
+	pkgver = 0.6.12
+	pkgrel = 1
+	url = https://github.com/mosquito/logging-journald
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = logging-journald-0.6.12.tar.gz::https://github.com/mosquito/logging-journald/archive/refs/tags/0.6.12.tar.gz
+	sha256sums = 2b09e62d8c6c2a7f56a7f28ec2eedbbc92a8bd8f57bd4d1331eef7799c54af2a
+
+pkgname = python-logging-journald
