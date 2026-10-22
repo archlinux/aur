@@ -1,0 +1,17 @@
+# System-unit met User=bluegit, config in /etc/bluegit/config.yml en
+# state in /var/lib/bluegit. Dit is geen systemd --user-unit.
+# backup= in de PKGBUILD laat een bestaande config.yml staan.
+
+post_install() {
+  systemd-sysusers bluegit.conf || true
+  systemd-tmpfiles --create bluegit.conf || true
+  systemctl daemon-reload || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  systemctl daemon-reload || true
+}
