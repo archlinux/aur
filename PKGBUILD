@@ -9,12 +9,12 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt
-pkgver=3007.14
+pkgver=3008.3
 pkgrel=1
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
 url='https://saltproject.io/'
-license=('Apache')
+license=('Apache-2.0')
 replaces=('salt-zmq' 'salt-raet')
 conflicts=('salt-zmq' 'salt-raet')
 # dependency groups: base, crypto, zeromq
@@ -68,21 +68,15 @@ install=salt.install
 source=(
     "https://pypi.io/packages/source/s/salt/salt-$pkgver.tar.gz"
     salt.logrotate
-    utilspycrypto.patch
     httprequests.patch
-    foudfou-codecs-open.patch
 )
-sha256sums=('9fcc89154fab351d0a875661972b79f0555caa75f80efafa2d42885a7025f075'
+sha256sums=('4bfa995ecde1491916bc9fd0abebf38d39eaca24c1e99e29c5046b97b8754f30'
     'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-    '6ba4ff71017823074d69fb83e9a8eab657066b3d21294fd194f2fdeee55029cf'
-    'e8ad0830dc48325790b6d13e4128085a82b48396475233a6ab1ad22e5f3df0f9'
-    '2eb49808123f80c53db1a96a34c1cad2d66b3363110f8c800273f6a675763363')
+    '6a8bd4bd183b328d4a6a2b14ec79ee01fc1566b418fb13daa38d62269afb9ea5')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    for i in utilspycrypto httprequests foudfou-codecs-open; do
-        patch -N -p1 -i "${srcdir}/${i}.patch"
-    done
+    patch -N -p1 -i "${srcdir}/httprequests.patch"
     for i in contextvars rpm-vercmp; do
         sed -i -E "/^${i}[[:space:]]*([=><]|$)/d" "${srcdir}/${pkgname}-${pkgver}/requirements/base.txt"
     done

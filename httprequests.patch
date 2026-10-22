@@ -1,6 +1,8 @@
---- a/salt/utils/http.py	2025-11-16 02:07:48.055485546 +0100
-+++ b/salt/utils/http.py	2025-11-16 02:08:50.346872290 +0100
-@@ -217,7 +217,7 @@
+diff --git a/salt/utils/http.py b/salt/utils/http.py
+index cef3d67..a6b95e4 100644
+--- a/salt/utils/http.py
++++ b/salt/utils/http.py
+@@ -216,7 +216,7 @@ def query(
              opts = {}
  
      if not backend:
