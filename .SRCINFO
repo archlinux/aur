@@ -1,0 +1,20 @@
+pkgbase = python-aiocarbon
+	pkgdesc = Asynchronous client for carbon.
+	pkgver = 0.15.3
+	pkgrel = 1
+	url = https://github.com/mosquito/aiocarbon
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-immutables
+	source = aiocarbon-0.15.3.tar.gz::https://github.com/mosquito/aiocarbon/archive/149771d99d4417cc704bbf6bed29022c89d7d960.tar.gz
+	source = python310-loop-argument.patch
+	sha256sums = 8c09a2864f3a2d36ce73591ecef06ef0617425a800e8a46985937d355b5199d0
+	sha256sums = 8ecf8a5c8cfafbc96a40087776d4603b0597c5b4e0f27cb6c175526caea57833
+
+pkgname = python-aiocarbon

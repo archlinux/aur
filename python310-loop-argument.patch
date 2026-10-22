@@ -1,0 +1,159 @@
+--- a/aiocarbon/protocol/base.py
++++ b/aiocarbon/protocol/base.py
+@@ -29,7 +29,7 @@
+         self._host = host
+         self._port = port
+         self._storage = storage or TotalStorage()
+-        self.lock = asyncio.Lock(loop=self.loop)
++        self.lock = asyncio.Lock()
+ 
+     @property
+     def namespace(self):
+@@ -46,7 +46,7 @@
+             except:
+                 log.exception("Exception while sending metrics")
+             finally:
+-                await asyncio.sleep(self.SEND_PERIOD, loop=self.loop)
++                await asyncio.sleep(self.SEND_PERIOD)
+ 
+     def format_metric_name(self, metric: Metric):
+         if self._ns:
+--- a/aiocarbon/protocol/pickle.py
++++ b/aiocarbon/protocol/pickle.py
+@@ -20,7 +20,7 @@
+         while True:
+             try:
+                 reader, writer = await asyncio.open_connection(
+-                    self._host, self._port, loop=self.loop
++                    self._host, self._port
+                 )
+ 
+                 writer.write(header)
+--- a/aiocarbon/protocol/tcp.py
++++ b/aiocarbon/protocol/tcp.py
+@@ -14,7 +14,7 @@
+     async def send(self):
+         async with self.lock:
+             reader, writer = await asyncio.open_connection(
+-                self._host, self._port, loop=self.loop
++                self._host, self._port
+             )
+ 
+             idx = 0
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -2,32 +2,26 @@
+ import asyncio
+ 
+ import pytest
++import pytest_asyncio
+ 
+ from aiocarbon.protocol.tcp import TCPClient
+ 
+ 
+-@pytest.fixture()
+-def event_loop():
+-    asyncio.get_event_loop().close()
+-
+-    loop = asyncio.new_event_loop()
+-    asyncio.set_event_loop(loop)
+-    try:
+-        yield loop
+-    finally:
+-        loop.close()
++@pytest_asyncio.fixture()
++async def event_loop():
++    yield asyncio.get_running_loop()
+ 
+ 
+ class Server:
+     def __init__(self, loop, host, port):
+         self.loop = loop
+         self.task = self.loop.create_task(
+-            asyncio.start_server(self.handler, host, port, loop=loop))
++            asyncio.start_server(self.handler, host, port))
+ 
+         self.host = host
+         self.port = port
+         self.data = b''
+-        self.event = asyncio.Event(loop=self.loop)
++        self.event = asyncio.Event()
+ 
+     async def handler(self, reader: asyncio.StreamReader,
+                       writer: asyncio.StreamWriter):
+@@ -39,7 +33,7 @@
+ 
+     async def wait_data(self):
+         await self.event.wait()
+-        self.event = asyncio.Event(loop=self.loop)
++        self.event = asyncio.Event()
+ 
+ 
+ @pytest.fixture()
+--- a/tests/test_protocol_pickle.py
++++ b/tests/test_protocol_pickle.py
+@@ -23,7 +23,7 @@
+         client.add(metric)
+ 
+     data = list()
+-    event = asyncio.Event(loop=event_loop)
++    event = asyncio.Event()
+ 
+     async def handler(reader: asyncio.StreamReader,
+                       writer: asyncio.StreamWriter):
+@@ -54,7 +54,7 @@
+         reader.feed_eof()
+ 
+     server = await asyncio.start_server(
+-        handler, '127.0.0.1', unused_tcp_port, loop=event_loop
++        handler, '127.0.0.1', unused_tcp_port
+     )
+ 
+     await client.send()
+@@ -79,7 +79,7 @@
+         reader.feed_eof()
+ 
+     server = await asyncio.start_server(
+-        handler, '127.0.0.1', unused_tcp_port, loop=event_loop
++        handler, '127.0.0.1', unused_tcp_port
+     )
+ 
+     client = PickleClient('127.0.0.1', port=unused_tcp_port, namespace='')
+@@ -121,7 +121,7 @@
+         reader.feed_eof()
+ 
+     server = await asyncio.start_server(
+-        handler, '127.0.0.1', unused_tcp_port, loop=event_loop
++        handler, '127.0.0.1', unused_tcp_port
+     )
+ 
+     await client.send()
+--- a/tests/test_protocol_tcp.py
++++ b/tests/test_protocol_tcp.py
+@@ -58,7 +58,7 @@
+         reader.feed_eof()
+ 
+     server = await asyncio.start_server(
+-        handler, '127.0.0.1', unused_tcp_port, loop=event_loop
++        handler, '127.0.0.1', unused_tcp_port
+     )
+ 
+     client = TCPClient('127.0.0.1', port=unused_tcp_port, namespace='')
+@@ -75,7 +75,7 @@
+     with pytest.raises(ConnectionError):
+         await client.send()
+ 
+-    event = asyncio.Event(loop=event_loop)
++    event = asyncio.Event()
+ 
+     data = b''
+ 
+@@ -95,7 +95,7 @@
+         event.set()
+ 
+     server = await asyncio.start_server(
+-        handler, '127.0.0.1', unused_tcp_port, loop=event_loop
++        handler, '127.0.0.1', unused_tcp_port
+     )
+ 
+     await client.send()
