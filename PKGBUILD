@@ -2,7 +2,7 @@
 # Contributor: falkTX <falktx@falktx.com>
 
 pkgname=clara-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=3
 # The release workflow always builds the Arch asset with pkgrel=1, so the asset name must not be
 # derived from this package's own pkgrel (which is free to be bumped whenever the PKGBUILD

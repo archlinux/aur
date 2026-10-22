@@ -1,6 +1,6 @@
 pkgbase = clara-bin
 	pkgdesc = Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic cable gradients, and session safety - binary release)
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 3
 	url = https://github.com/acropolis914/Clara
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = clara-bin
 	conflicts = clara-git
 	options = !strip
 	options = !debug
-	source = https://github.com/acropolis914/Clara/releases/download/v1.1.2/clara-bin-1.1.2-1-x86_64.pkg.tar.zst
+	source = https://github.com/acropolis914/Clara/releases/download/v1.1.3/clara-bin-1.1.3-1-x86_64.pkg.tar.zst
 	sha256sums = SKIP
 
 pkgname = clara-bin
