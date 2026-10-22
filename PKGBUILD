@@ -2,8 +2,8 @@
 
 pkgname=tincan-git
 _pkgname=${pkgname%-git}-cli
-pkgver=0.3.3.r0.g8d47968
-pkgrel=2
+pkgver=0.3.4.r0.gbde881d
+pkgrel=1
 pkgdesc='Serverless peer-to-peer voice and text chat for your terminal'
 arch=(x86_64)
 url="https://github.com/bilalyazicioglu/$_pkgname"
@@ -19,19 +19,17 @@ conflicts=("$_pkgname")
 source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "${pkgname%-git}"
-	git describe --long --abbrev=7 --tags --match="v*" |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 _srcenv() {
 	cd "${pkgname%-git}"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
 	export RUSTUP_TOOLCHAIN=stable
@@ -41,6 +39,12 @@ _srcenv() {
 prepare() {
 	_srcenv
 	cargo fetch --locked --target host-tuple
+}
+
+pkgver() {
+	cd "${pkgname%-git}"
+	git describe --long --abbrev=7 --tags --match="v*" |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

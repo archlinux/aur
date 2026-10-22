@@ -1,7 +1,7 @@
 pkgbase = tincan-git
 	pkgdesc = Serverless peer-to-peer voice and text chat for your terminal
-	pkgver = 0.3.3.r0.g8d47968
-	pkgrel = 2
+	pkgver = 0.3.4.r0.gbde881d
+	pkgrel = 1
 	url = https://github.com/bilalyazicioglu/tincan-cli
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = tincan-git
 	depends = glibc
 	depends = libgcc
 	depends = libopusenc
-	provides = tincan-cli=0.3.3.r0.g8d47968
+	provides = tincan-cli=0.3.4.r0.gbde881d
 	conflicts = tincan-cli
 	source = tincan::git+https://github.com/bilalyazicioglu/tincan-cli.git
 	sha256sums = SKIP
