@@ -2,8 +2,8 @@
 
 pkgname=python-domdf-python-tools
 _name=${pkgname#python-}
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.11.0
+pkgrel=1
 pkgdesc='Helpful functions for Python'
 arch=(any)
 url='https://domdf-python-tools.readthedocs.io'
@@ -24,7 +24,7 @@ makedepends=(
   python-hatch-requirements-txt
 )
 source=("$_name::git+https://github.com/domdfcoding/domdf_python_tools#tag=v$pkgver")
-sha512sums=('ddcba2085564e58cd9d81a5e116e78fdc970b9d5828d5a31280caf437619a21382895b319309c4ce278fd8d91aa903a9fce6cbcfa06593e3b4035e63015165b1')
+sha512sums=('c540a3dfd18297f74896d152bce737848bc99f1606884746fa864d8409dcf26783577563f5583c4ede5290e3e89a644f45de3800f100c0b62791e99125fabd7b')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
