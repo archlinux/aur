@@ -1,7 +1,7 @@
 pkgbase = vectorcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Illustrator
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getartcraft.com/apps/vectorcraft
 	arch = x86_64
 	license = MIT
