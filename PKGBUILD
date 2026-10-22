@@ -6,7 +6,7 @@
 _pkgname=git-bookmark
 pkgname=$_pkgname-git
 pkgver=0.5.1.r0.gc4ef8b4
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep your bookmarks with your repository"
 arch=('any')
 url="https://github.com/Qu4tro/git-bookmark"
@@ -29,5 +29,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="${pkgdir}" MANDIR="/usr/local/man" install
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
