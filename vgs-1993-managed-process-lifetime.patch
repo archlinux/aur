@@ -1,0 +1,346 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ 
+ set(UNRELEASED_FEATURES)
+ 
+-set(QT_MIN_VERSION "6.6.0")
++set(QT_MIN_VERSION "6.7.0")
+ set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+diff --git a/src/io/process.cpp b/src/io/process.cpp
+--- a/src/io/process.cpp
++++ b/src/io/process.cpp
+@@ -1,4 +1,5 @@
+ #include "process.hpp"
++#include <cerrno>
+ #include <csignal> // NOLINT
+ #include <utility>
+ 
+@@ -12,12 +13,15 @@
+ #include <qtmetamacros.h>
+ #include <qtypes.h>
+ #include <qvariant.h>
++#include <sys/prctl.h>
++#include <unistd.h>
+ 
+ #include "../core/generation.hpp"
+ #include "../core/qmlglobal.hpp"
+ #include "../core/reload.hpp"
+ #include "datastream.hpp"
+ #include "processcore.hpp"
++#include "processgroup.hpp"
+ 
+ Process::Process(QObject* parent): PostReloadHook(parent) {
+ 	QObject::connect(
+@@ -196,6 +200,28 @@
+ 	auto args = this->mCommand.sliced(1);
+ 
+ 	this->process = new QProcess(this);
++
++	static qs::io::ManagedProcessGroup group;
++	auto status = group.check();
++	auto groupId = group.groupId();
++	auto parentPid = getpid();
++	// Qt 6.7 runs this modifier after fork and before exec; its dedicated
++	// failure API safely reports FailedToStart from the child to the parent.
++	// https://doc.qt.io/qt-6.7/qprocess.html#setChildProcessModifier
++	this->process->setChildProcessModifier([process = this->process, status, groupId, parentPid] {
++		if (status.operation != qs::io::ProcessGroupStatus::Ready)
++			process->failChildProcessModifier(
++			    qs::io::ManagedProcessGroup::operation(status.operation),
++			    status.error
++			);
++		if (prctl(PR_SET_PDEATHSIG, SIGKILL) == -1)
++			process->failChildProcessModifier("prctl(PR_SET_PDEATHSIG)", errno);
++		// Parent death before arming sends no signal; never exec an orphan.
++		if (getppid() != parentPid)
++			process->failChildProcessModifier("managed process parent exited", ECHILD);
++		if (setpgid(0, groupId) == -1)
++			process->failChildProcessModifier("managed process setpgid", errno);
++	});
+ 
+ 	// clang-format off
+ 	QObject::connect(this->process, &QProcess::started, this, &Process::onStarted);
+@@ -289,8 +315,8 @@
+ 
+ void Process::onErrorOccurred(QProcess::ProcessError error) {
+ 	if (error == QProcess::FailedToStart) { // other cases should be covered by other events
+-		qWarning() << "Process failed to start, likely because the binary could not be found. Command:"
+-		           << this->mCommand;
++		qWarning() << "Process failed to start:" << this->process->errorString()
++		           << "Command:" << this->mCommand;
+ 		QObject::disconnect(this->process, nullptr, this, nullptr);
+ 		this->process->deleteLater();
+ 		this->process = nullptr;
+diff --git a/src/io/processgroup.hpp b/src/io/processgroup.hpp
+new file mode 100644
+--- /dev/null
++++ b/src/io/processgroup.hpp
+@@ -0,0 +1,219 @@
++#pragma once
++
++#include <cerrno>
++#include <climits>
++#include <csignal>
++#include <time.h>
++
++#include <fcntl.h>
++#include <poll.h>
++#include <sys/prctl.h>
++#include <sys/signalfd.h>
++#include <sys/wait.h>
++#include <unistd.h>
++
++namespace qs::io {
++
++// This private mode execs before Qt starts, so the monitor retains neither the
++// shell's heap nor any display, audio, keyring or crash-report descriptors.
++inline constexpr auto PROCESS_GROUP_MONITOR = "--internal-process-group-monitor";
++
++struct ProcessGroupStatus {
++	enum Operation {
++		Ready,
++		Pipe,
++		Fork,
++		Duplicate,
++		Close,
++		Exec,
++		Group,
++		Signals,
++		SignalFd,
++		ParentDeath,
++		Handshake,
++		Dead
++	};
++	Operation operation = Ready;
++	int error = 0;
++};
++
++[[noreturn]] inline void endManagedProcessGroup() {
++	// TERM gives owned helpers their existing EXIT cleanup; KILL also ends
++	// descendants that ignore it. The leader reserves the group throughout.
++	// SIGTERM stays blocked in the monitor, preventing recursive teardown.
++	// The grace covers printers-watch cleanup's ipptool -T 4 bound.
++	kill(0, SIGTERM);
++	auto remaining = timespec {.tv_sec = 5, .tv_nsec = 0};
++	while (nanosleep(&remaining, &remaining) == -1 && errno == EINTR) {}
++	kill(0, SIGKILL);
++	_exit(1);
++}
++
++inline bool writeProcessGroupStatus(int fd, ProcessGroupStatus status) {
++	ssize_t result;
++	do {
++		result = write(fd, &status, sizeof(status));
++	} while (result == -1 && errno == EINTR);
++	return result == static_cast<ssize_t>(sizeof(status));
++}
++
++[[noreturn]] inline void
++failProcessGroupMonitor(int fd, ProcessGroupStatus::Operation operation, int error) {
++	writeProcessGroupStatus(fd, {.operation = operation, .error = error});
++	_exit(1);
++}
++
++[[noreturn]] inline void runProcessGroupMonitor() {
++	if (setpgid(0, 0) == -1) failProcessGroupMonitor(4, ProcessGroupStatus::Group, errno);
++
++	struct sigaction action {};
++	sigemptyset(&action.sa_mask);
++	// exec resets caught handlers but preserves ignored signals inherited from
++	// launchers. No shell handler may run in this independent lifetime owner.
++	for (int signal = 1; signal < NSIG; signal++) {
++		if (signal == SIGKILL || signal == SIGSTOP) continue;
++		action.sa_handler = SIG_DFL;
++		if (sigaction(signal, &action, nullptr) == -1 && errno != EINVAL)
++			failProcessGroupMonitor(4, ProcessGroupStatus::Signals, errno);
++	}
++	sigset_t signalMask;
++	sigemptyset(&signalMask);
++	sigaddset(&signalMask, SIGTERM);
++	if (sigprocmask(SIG_SETMASK, &signalMask, nullptr) == -1)
++		failProcessGroupMonitor(4, ProcessGroupStatus::Signals, errno);
++	auto signalFd = signalfd(-1, &signalMask, SFD_CLOEXEC);
++	if (signalFd == -1) failProcessGroupMonitor(4, ProcessGroupStatus::SignalFd, errno);
++
++	if (!writeProcessGroupStatus(4, {})) endManagedProcessGroup();
++	close(4);
++	pollfd inputs[] = {{3, POLLHUP, 0}, {signalFd, POLLIN, 0}};
++	int result;
++	do {
++		result = poll(inputs, 2, -1);
++	} while (result == -1 && errno == EINTR);
++	// The shell's death signal also covers forks retaining the lease writer.
++	// CLOEXEC lease EOF additionally covers a same-PID re-exec.
++	endManagedProcessGroup();
++}
++
++class ManagedProcessGroup {
++public:
++	ManagedProcessGroup() {
++		int lease[2];
++		if (pipe2(lease, O_CLOEXEC) == -1) {
++			this->status = {.operation = ProcessGroupStatus::Pipe, .error = errno};
++			return;
++		}
++		int ready[2];
++		if (pipe2(ready, O_CLOEXEC) == -1) {
++			this->status = {.operation = ProcessGroupStatus::Pipe, .error = errno};
++			close(lease[0]);
++			close(lease[1]);
++			return;
++		}
++		auto parentPid = getpid();
++		this->pid = fork();
++		if (this->pid == 0) {
++			// Only async-signal-safe operations occur between fork and exec.
++			struct sigaction action {};
++			action.sa_handler = SIG_DFL;
++			sigemptyset(&action.sa_mask);
++			if (sigaction(SIGTERM, &action, nullptr) == -1)
++				failProcessGroupMonitor(ready[1], ProcessGroupStatus::Signals, errno);
++			sigset_t signalMask;
++			sigemptyset(&signalMask);
++			sigaddset(&signalMask, SIGTERM);
++			if (sigprocmask(SIG_BLOCK, &signalMask, nullptr) == -1)
++				failProcessGroupMonitor(ready[1], ProcessGroupStatus::Signals, errno);
++			// A crash coredump fork can retain the lease writer until it exits.
++			// The monitor also watches the actual shell thread's death; TERM
++			// releases the group once the monitor has initialized.
++			if (prctl(PR_SET_PDEATHSIG, SIGTERM) == -1)
++				failProcessGroupMonitor(ready[1], ProcessGroupStatus::ParentDeath, errno);
++			if (getppid() != parentPid)
++				failProcessGroupMonitor(ready[1], ProcessGroupStatus::ParentDeath, ECHILD);
++			auto input = fcntl(lease[0], F_DUPFD_CLOEXEC, 5);
++			if (input == -1) failProcessGroupMonitor(ready[1], ProcessGroupStatus::Duplicate, errno);
++			auto output = fcntl(ready[1], F_DUPFD_CLOEXEC, 5);
++			if (output == -1) failProcessGroupMonitor(ready[1], ProcessGroupStatus::Duplicate, errno);
++			if (dup2(input, 3) == -1 || dup2(output, 4) == -1)
++				failProcessGroupMonitor(output, ProcessGroupStatus::Duplicate, errno);
++			if (close_range(0, 2, 0) == -1 || close_range(5, UINT_MAX, 0) == -1)
++				failProcessGroupMonitor(4, ProcessGroupStatus::Close, errno);
++			char name[] = "quickshell";
++			char mode[] = "--internal-process-group-monitor";
++			char* args[] = {name, mode, nullptr};
++			char* environment[] = {nullptr};
++			execve("/proc/self/exe", args, environment);
++			failProcessGroupMonitor(4, ProcessGroupStatus::Exec, errno);
++		}
++		if (this->pid == -1) {
++			this->status = {.operation = ProcessGroupStatus::Fork, .error = errno};
++		}
++		close(lease[0]);
++		close(ready[1]);
++		if (this->pid != -1) {
++			ssize_t result;
++			do {
++				result = read(ready[0], &this->status, sizeof(this->status));
++			} while (result == -1 && errno == EINTR);
++			if (result != static_cast<ssize_t>(sizeof(this->status))) {
++				this->status = {
++				    .operation = ProcessGroupStatus::Handshake,
++				    .error = result == -1 ? errno : EIO
++				};
++			}
++		}
++		close(ready[0]);
++		this->leaseFd = lease[1];
++	}
++
++	~ManagedProcessGroup() {
++		if (this->leaseFd != -1) close(this->leaseFd);
++		if (this->pid != -1) {
++			// Never reap while the shell runs: even an unexpectedly dead monitor
++			// retains its PID and cannot redirect a later join or signal by reuse.
++			kill(this->pid, this->status.operation == ProcessGroupStatus::Ready ? SIGTERM : SIGKILL);
++			while (waitpid(this->pid, nullptr, 0) == -1 && errno == EINTR) {}
++		}
++	}
++
++	ManagedProcessGroup(const ManagedProcessGroup&) = delete;
++	ManagedProcessGroup& operator=(const ManagedProcessGroup&) = delete;
++
++	ProcessGroupStatus check() const {
++		if (this->status.operation != ProcessGroupStatus::Ready) return this->status;
++		siginfo_t info {};
++		if (waitid(P_PID, this->pid, &info, WEXITED | WNOHANG | WNOWAIT) == -1)
++			return {.operation = ProcessGroupStatus::Dead, .error = errno};
++		if (info.si_pid != 0) return {.operation = ProcessGroupStatus::Dead, .error = ECHILD};
++		return {};
++	}
++
++	pid_t groupId() const { return this->pid; }
++
++	static const char* operation(ProcessGroupStatus::Operation operation) {
++		switch (operation) {
++		case ProcessGroupStatus::Ready: return "managed process group";
++		case ProcessGroupStatus::Pipe: return "managed process group pipe2";
++		case ProcessGroupStatus::Fork: return "managed process group fork";
++		case ProcessGroupStatus::Duplicate: return "managed process group dup2/fcntl";
++		case ProcessGroupStatus::Close: return "managed process group close_range";
++		case ProcessGroupStatus::Exec: return "managed process group execve";
++		case ProcessGroupStatus::Group: return "managed process group setpgid";
++		case ProcessGroupStatus::Signals: return "managed process group signal setup";
++		case ProcessGroupStatus::SignalFd: return "managed process group signalfd";
++		case ProcessGroupStatus::ParentDeath: return "managed process group prctl(PR_SET_PDEATHSIG)";
++		case ProcessGroupStatus::Handshake: return "managed process group readiness read";
++		case ProcessGroupStatus::Dead: return "managed process group monitor exited";
++		}
++		return "invalid managed process group status";
++	}
++
++private:
++	pid_t pid = -1;
++	int leaseFd = -1;
++	ProcessGroupStatus status;
++};
++
++} // namespace qs::io
+diff --git a/src/launch/main.cpp b/src/launch/main.cpp
+--- a/src/launch/main.cpp
++++ b/src/launch/main.cpp
+@@ -1,5 +1,6 @@
+ #include "main.hpp"
+ #include <cerrno>
++#include <cstring>
+ 
+ #include <fcntl.h>
+ #include <qcoreapplication.h>
+@@ -13,6 +14,7 @@
+ #include "../core/instanceinfo.hpp"
+ #include "../core/logging.hpp"
+ #include "../core/paths.hpp"
++#include "../io/processgroup.hpp"
+ #include "build.hpp"
+ #include "launch_p.hpp"
+ 
+@@ -117,6 +119,9 @@
+ }
+ 
+ int main(int argc, char** argv) {
++	if (argc == 2 && std::strcmp(argv[1], qs::io::PROCESS_GROUP_MONITOR) == 0)
++		qs::io::runProcessGroupMonitor();
++
+ 	QCoreApplication::setApplicationName("quickshell");
+ 
+ #if CRASH_HANDLER
+diff --git a/src/crash/handler.cpp b/src/crash/handler.cpp
+--- a/src/crash/handler.cpp
++++ b/src/crash/handler.cpp
+@@ -150,10 +150,8 @@
+ 		perror("Failed to launch crash reporter.\n");
+ 		_exit(-1);
+ 	} else {
+-		populateEnv();
+-		execve(exe.data(), arg.data(), env.data());
+-
+-		perror("Failed to relaunch quickshell.\n");
+-		_exit(-1);
++		// The VGS runner owns replacement. Exit the old PID so managed
++		// children receive their death signal before it starts another shell.
++		_exit(128 + sig);
+ 	}
+ }
