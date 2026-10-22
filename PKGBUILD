@@ -4,7 +4,7 @@
 _projectname='microsoft-authentication-extensions-for-python'
 pkgname='python-msal-extensions'
 pkgver='1.3.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Microsoft Authentication Library extensions for Python'
 arch=('any')
 url="https://github.com/AzureAD/$_projectname"
@@ -16,6 +16,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 b2sums=('45c4b39a8179c88111f44e7322e7d9bbee9b61852f0b2972fc437058ff63ee0646a37f923ad32974d3054bf9d4d5bdf0ea52a69a80453c1ee0b4c21399f83109')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+    cd "$srcdir/$_sourcedirectory/"
+    sed -E -i "s/\blabel=(\"\"|'')/label=\"MSAL Extensions\"/" 'msal_extensions/libsecret.py'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
