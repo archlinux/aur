@@ -2,7 +2,7 @@
 
 pkgname=openknowledge-bin
 _pkgname=openknowledge
-pkgver=0.87.9
+pkgver=0.88.1
 pkgrel=1
 pkgdesc="Beautiful, AI-native markdown IDE and LLM wiki (binary release)"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ options=('!strip' '!debug')
 _url="https://github.com/inkeep/open-knowledge/releases/download/v$pkgver"
 source_x86_64=("$_pkgname-$pkgver-x86_64.deb::$_url/OpenKnowledge-amd64.deb")
 source_aarch64=("$_pkgname-$pkgver-aarch64.deb::$_url/OpenKnowledge-arm64.deb")
-sha256sums_x86_64=('3a46ad129aaed9b5609a0206327b7849f373291ec0e74ebb389a66770d04300a')
-sha256sums_aarch64=('a0fc8c474508fe61b82b160899881def4dbac57069bd6573bd8f828ca794c991')
+sha256sums_x86_64=('6bcf875cb3ae1714473ca600610126e1766b7e5a66923ae589bb8c7816e2cf4e')
+sha256sums_aarch64=('75b8693c15aab90852ef31cfea30b5712b06540a3a4d9e7f86942d5544f12aa3')
 
 prepare() {
   mkdir -p deb
