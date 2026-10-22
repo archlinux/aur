@@ -12,6 +12,10 @@ pkgdesc="Audio Plugin Host (fork with UI/UX enhancements, modal tools, dynamic c
 arch=('x86_64')
 url="https://github.com/acropolis914/Clara"
 license=('GPL-2.0-or-later')
+# The upstream release binaries are already stripped and carry no debug info, so makepkg's
+# strip/debug pass has nothing to do: it only produced "No debugging symbols" warnings from
+# gdb-add-index and an empty clara-bin-debug split package.
+options=('!strip' '!debug')
 depends=(
   'alsa-lib'
   'glibc'

@@ -43,6 +43,8 @@ pkgbase = clara-bin
 	conflicts = carla-git
 	conflicts = clara
 	conflicts = clara-git
+	options = !strip
+	options = !debug
 	source = https://github.com/acropolis914/Clara/releases/download/v1.1.1/clara-bin-1.1.1-1-x86_64.pkg.tar.zst
 	sha256sums = SKIP
 
