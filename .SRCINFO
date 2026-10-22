@@ -1,6 +1,6 @@
 pkgbase = tokensave-bin
 	pkgdesc = Semantic code intelligence for AI coding agents
-	pkgver = 7.15.0
+	pkgver = 7.16.0
 	pkgrel = 1
 	url = https://github.com/aovestdipaperino/tokensave
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = tokensave-bin
 	provides = tokensave
 	conflicts = tokensave
 	options = !strip
-	source = tokensave-license-7.15.0::https://raw.githubusercontent.com/aovestdipaperino/tokensave/v7.15.0/LICENSE
+	source = tokensave-license-7.16.0::https://raw.githubusercontent.com/aovestdipaperino/tokensave/v7.16.0/LICENSE
 	sha256sums = 08e7979abf9173c207753df084b5d94fa0cbe583a7cb6cbc20de5f973ee22aa0
-	source_x86_64 = https://github.com/aovestdipaperino/tokensave/releases/download/v7.15.0/tokensave-v7.15.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 3da8d0e52da38d2b477d92e2548a68795dbda355bb274d120ee6a77f391b57a4
-	source_aarch64 = https://github.com/aovestdipaperino/tokensave/releases/download/v7.15.0/tokensave-v7.15.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 0143e3e99c5b3a2a97790fbf50846cfb64a18a1035bf2fd63a60f511c4b7c5e2
+	source_x86_64 = https://github.com/aovestdipaperino/tokensave/releases/download/v7.16.0/tokensave-v7.16.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 783dcea8bb8b472982b497523ad912a5176b8d8e770d25592dc38b5f749ac7ea
+	source_aarch64 = https://github.com/aovestdipaperino/tokensave/releases/download/v7.16.0/tokensave-v7.16.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = b1b28daf21ea51f44ccfd1ea3101505d6db644a055cef261bcdb3beb8369d03f
 
 pkgname = tokensave-bin

@@ -1,6 +1,6 @@
 # Maintainer: rNoz <8237539+rNoz@users.noreply.github.com>
 pkgname=tokensave-bin
-pkgver=7.15.0
+pkgver=7.16.0
 pkgrel=1
 pkgdesc='Semantic code intelligence for AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -14,13 +14,13 @@ source_x86_64=(
   "https://github.com/aovestdipaperino/tokensave/releases/download/v$pkgver/tokensave-v$pkgver-x86_64-linux.tar.gz"
 )
 sha256sums_x86_64=(
-  '3da8d0e52da38d2b477d92e2548a68795dbda355bb274d120ee6a77f391b57a4'
+  '783dcea8bb8b472982b497523ad912a5176b8d8e770d25592dc38b5f749ac7ea'
 )
 source_aarch64=(
   "https://github.com/aovestdipaperino/tokensave/releases/download/v$pkgver/tokensave-v$pkgver-aarch64-linux.tar.gz"
 )
 sha256sums_aarch64=(
-  '0143e3e99c5b3a2a97790fbf50846cfb64a18a1035bf2fd63a60f511c4b7c5e2'
+  'b1b28daf21ea51f44ccfd1ea3101505d6db644a055cef261bcdb3beb8369d03f'
 )
 source=(
   "tokensave-license-$pkgver::https://raw.githubusercontent.com/aovestdipaperino/tokensave/v$pkgver/LICENSE"
