@@ -1,7 +1,7 @@
 pkgbase = display-tui-bin
 	pkgdesc = Minimalistic Hyprland monitor configuration TUI (pre-built binary)
-	pkgver = 0.9.7
-	pkgrel = 2
+	pkgver = 0.9.8
+	pkgrel = 1
 	url = https://github.com/Henriklmao/display-tui
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,10 +12,10 @@ pkgbase = display-tui-bin
 	conflicts = display-tui-git
 	options = !strip
 	options = !lto
-	source = display-tui-v0.9.7-2-x86_64-linux-gnu::https://github.com/Henriklmao/display-tui/releases/download/v0.9.7-2/display-tui-v0.9.7-2-x86_64-linux-gnu
-	source = https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.7-2/assets/display-tui.desktop
-	source = https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.7-2/assets/desktop-icon.png
-	sha256sums = 084519764f9f1c0ea9ae86fe4fb0a1b99fafa13262bfe0790288a463d9386bbd
+	source = display-tui-v0.9.8-x86_64-linux-gnu::https://github.com/Henriklmao/display-tui/releases/download/v0.9.8/display-tui-v0.9.8-x86_64-linux-gnu
+	source = https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.8/assets/display-tui.desktop
+	source = https://raw.githubusercontent.com/Henriklmao/display-tui/v0.9.8/assets/desktop-icon.png
+	sha256sums = ed813dcaf1590a14a2b6f73f3171ef55918d03b699e38c54d6b357d591042a1e
 	sha256sums = 97ae3da9e1c0b505846c33615e6c3808cf021e0f28cbda3d9aafa4140d863034
 	sha256sums = 928f22dd38c67efd985d53fa73c73b490b06625bf99e35c6fd434f8e7d9aad52
 
