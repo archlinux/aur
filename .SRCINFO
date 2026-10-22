@@ -1,11 +1,11 @@
 pkgbase = bupdate-git
 	pkgdesc = Universal package updater — parallel updates for Linux, BSD and Windows (built from git)
-	pkgver = 0.2.3.r0.gba25ad6
+	pkgver = 0.2.3.r0.g1a7a68d
 	pkgrel = 1
-	url = https://app.radicle.xyz/nodes/iris.radicle.xyz/rad:z1SpYG13iEYC9Ds1UjyVJhe1sf1i
+	url = https://radicle.network/nodes/iris.radicle.network/rad%3Az1SpYG13iEYC9Ds1UjyVJhe1sf1i
 	arch = x86_64
 	arch = aarch64
-	license = custom:ANTL-2.0
+	license = Unlicense
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
@@ -15,7 +15,7 @@ pkgbase = bupdate-git
 	conflicts = bupdate
 	conflicts = bupdate-bin
 	options = !debug
-	source = bupdate-git::git+https://iris.radicle.xyz/rad:z1SpYG13iEYC9Ds1UjyVJhe1sf1i.git
+	source = bupdate-git::git+https://iris.radicle.network/rad:z1SpYG13iEYC9Ds1UjyVJhe1sf1i.git
 	sha256sums = SKIP
 
 pkgname = bupdate-git

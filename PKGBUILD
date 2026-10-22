@@ -1,11 +1,11 @@
 # Maintainer: LAA
 pkgname=bupdate-git
-pkgver=0.2.3.r0.gba25ad6
+pkgver=0.2.3.r0.g1a7a68d
 pkgrel=1
 pkgdesc="Universal package updater — parallel updates for Linux, BSD and Windows (built from git)"
 arch=('x86_64' 'aarch64')
-url="https://app.radicle.xyz/nodes/iris.radicle.xyz/rad:z1SpYG13iEYC9Ds1UjyVJhe1sf1i"
-license=('custom:ANTL-2.0')
+url="https://radicle.network/nodes/iris.radicle.network/rad%3Az1SpYG13iEYC9Ds1UjyVJhe1sf1i"
+license=('Unlicense')
 provides=('bupdate')
 conflicts=('bupdate' 'bupdate-bin')
 makedepends=('cargo' 'git')
@@ -15,7 +15,7 @@ optdepends=(
     'sudo: privilege elevation for system package managers'
     'systemd: sleep inhibition during updates'
 )
-source=("${pkgname}::git+https://iris.radicle.xyz/rad:z1SpYG13iEYC9Ds1UjyVJhe1sf1i.git")
+source=("${pkgname}::git+https://iris.radicle.network/rad:z1SpYG13iEYC9Ds1UjyVJhe1sf1i.git")
 sha256sums=('SKIP')
 
 pkgver() {
