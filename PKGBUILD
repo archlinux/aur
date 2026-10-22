@@ -22,6 +22,7 @@ prepare(){
   sed -i "/^rust-version/d" Cargo.toml
   cargo remove reqwest
   cargo add reqwest --no-default-features --features blocking,rustls
+  cargo add flate2 --no-default-features --features zlib-rs # via zip crate
 }
 
 build(){
