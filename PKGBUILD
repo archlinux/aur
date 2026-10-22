@@ -1,6 +1,6 @@
 # Maintainer: pencelheimer <pencelheimer@proton.me>
 pkgname=lget-bin
-pkgver=0.1.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A fast, interactive command-line tool to fetch open-source licenses directly from the SPDX repository."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pencelheimer/lget/v${pkgver}/LICENSE"
 )
 
-sha256sums=('1b1594e3f82cbcdb34f0f357772d6535e764bb4ef35a1b181a8d395d29be5dac'
+sha256sums=('3daa7954ff156fa53d7e34e025eaab7bbf25400475ef7d70f8df1fc594bd874e'
             'b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5')
 
 package() {
