@@ -3,12 +3,12 @@
 pkgname=herdr-workspace-manager
 _srcname=herdr-plugin-workspace-manager
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for the herdr Workspace Manager plugin - declarative worktree layouts and gone-worktree cleanup"
 arch=('x86_64')
 url="https://github.com/razajamil/herdr-plugin-workspace-manager"
 license=('MIT')
-depends=('git' 'gcc-libs')
+depends=('git' 'libgcc')
 makedepends=('cargo')
 optdepends=('herdr: plugin host for the layout side (install the plugin with: herdr plugin install razajamil/herdr-plugin-workspace-manager)')
 source=("$_srcname-$pkgver.tar.gz::https://github.com/razajamil/$_srcname/archive/v$pkgver.tar.gz")
