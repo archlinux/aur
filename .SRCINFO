@@ -1,16 +1,18 @@
 pkgbase = fnt
 	pkgdesc = The missing font manager for Linux
-	pkgver = 1.9.1.mdrv
+	pkgver = 1.9.2
 	pkgrel = 1
-	url = https://github.com/mdrv/fnt
+	url = https://github.com/alexmyczko/fnt
 	arch = any
 	license = MIT
-	makedepends = git
-	depends = bash
+	depends = binutils
 	depends = curl
-	depends = chafa
-	depends = texlive-bin
-	source = fnt::git+https://github.com/mdrv/fnt#commit=b03824b56fe0cdc22446c46e401619935942c88e
-	sha256sums = 4d29a81a638c7f1b4130fdbcd4245be540e0a34e84e7971d342a6f5c5956bf62
+	depends = lcdf-typetools
+	optdepends = chafa: preview fonts in the terminal
+	optdepends = timg: alternative font preview backend
+	optdepends = lolcat: colored output
+	options = !debug
+	source = fnt-1.9.2.tar.gz::https://github.com/alexmyczko/fnt/archive/refs/tags/1.9.2.tar.gz
+	sha256sums = a3c4c17bb891d773dbf6cccb9479d8d436bb83d4c3d57d7e333a8db8cb9f11b4
 
 pkgname = fnt

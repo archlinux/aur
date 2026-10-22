@@ -1,40 +1,33 @@
-# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 
 pkgname=fnt
-pkgver=1.9.1.mdrv
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='The missing font manager for Linux'
 arch=('any')
-url='https://github.com/mdrv/fnt'
+url='https://github.com/alexmyczko/fnt'
 license=('MIT')
-depends=('bash' 'curl' 'chafa' 'texlive-bin')
-makedepends=('git')
-_commit='b03824b56fe0cdc22446c46e401619935942c88e'
-source=("$pkgname::git+$url#commit=$_commit")
-sha256sums=('4d29a81a638c7f1b4130fdbcd4245be540e0a34e84e7971d342a6f5c5956bf62')
-
-# pkgver() {
-#   cd "$pkgname"
-# 
-#   git describe --tags | sed 's/^v//'
-# }
+depends=('binutils' 'curl' 'lcdf-typetools')
+optdepends=('chafa: preview fonts in the terminal'
+            'timg: alternative font preview backend'
+            'lolcat: colored output')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('a3c4c17bb891d773dbf6cccb9479d8d436bb83d4c3d57d7e333a8db8cb9f11b4')
+options=('!debug')
 
 prepare() {
-  cd "$pkgname"
-
-  sed 's/ZCOMPDIR=\/usr\/local\/share\/zsh\/site-functions/ZCOMPDIR=\/usr\/share\/zsh\/site-functions/g' -i "$srcdir/fnt/Makefile"
-  sed 's/i="apt"/i="pacman"/g' -i "$srcdir/fnt/fnt"
+	cd "$pkgname-$pkgver"
+	# install the zsh completion into /usr/share, not /usr/local
+	sed -i 's|ZCOMPDIR=/usr/local/share/zsh/site-functions|ZCOMPDIR=/usr/share/zsh/site-functions|' Makefile
 }
 
 package() {
-  cd "$pkgname"
+	cd "$pkgname-$pkgver"
+	DESTDIR="$pkgdir" make install
 
-  DESTDIR="$pkgdir" make install
+	# documentation
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-  # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	# license
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
