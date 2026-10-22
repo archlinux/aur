@@ -4,7 +4,7 @@ _upstream=ZCode
 # pkgver 取 deb 头部 dpkg 权威版本归一化（3.14.0-7681 → 3.14.0_7681，与
 # aur-metadata rule-deb 采集一致）；上游版本号经 ${_upstream_ver} 进 URL
 pkgname=z-code
-pkgver=3.14.5_7961
+pkgver=3.16.2_8769
 _upstream_ver="${pkgver%_*}"
 pkgrel=1
 pkgdesc="AI coding agent desktop app by Z.ai"
@@ -22,8 +22,8 @@ source_x86_64=("https://cdn-zcode.z.ai/zcode/electron/releases/${_upstream_ver}/
 source_aarch64=("https://cdn-zcode.z.ai/zcode/electron/releases/${_upstream_ver}/linux-arm64/${_upstream}-${_upstream_ver}-linux-arm64.deb")
 b2sums=('eac2332eb52f8a6b079120c6d7b30124409f96eafc12d192074e9c8b26ddcb0b3e09876236ccf48894c1bf057c9c6376e090eae8bbdfa9ac361ddc42e3f17aee'
         '0b3a5b925482fc438cdca38ec75e5dcdbbfdf034383a867cfbb0583c2cb5e2d6f535906c5d51fa71c7c2f0440f4fc781b89ae8bc8acfa747faa131cd98cceb7b')
-b2sums_x86_64=('1609e954b6a8add2619879192f246601ec60a23dd32b682523ea5c4042aead60db88a228dd83eab7c81e50826067445be59fe0f277978be7691e1f67a797fdf1')
-b2sums_aarch64=('34ef91fb607087ca05ef256a317a34858bb5fa092668ad5be9cf26e6df45261335b1a966845e7a003a7eb74d05c493eb667c1befb5654775621c7bbefecba506')
+b2sums_x86_64=('5c16f99bddf827f16a0f872e30fcece09c9b4e2a65fc7512695fda7762defc819fb7129c7feb3d489968adb04b71c2040919c35c1f8f0926fc5714a85afb576e')
+b2sums_aarch64=('da00aefa4b78be1f324c9c8cdb87d1381b204b0b8060240303fd0c3a9d1a7b73b821df9818655eb2cfd5b1a5b078db4907bf94c2195996b7116c0faec79189e5')
 
 # NOTE: z-code.sh hardcodes /opt/ZCode/zcode
 # If _installdir changes, the launcher script must also be updated.
