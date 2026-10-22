@@ -1,7 +1,7 @@
 pkgbase = infamous-pc-bin
 	pkgdesc = inFAMOUS Second Son native PC port (requires your own game dump)
 	pkgver = 2026.10.21.da39b0b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HayatoG/iss_pc
 	arch = x86_64
 	license = GPL-2.0-only
