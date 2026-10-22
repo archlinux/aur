@@ -1,4 +1,23 @@
+# Switching between abb-agent, abb-agent-bin and abb-agent-git removes the old package first:
+# pacman keeps a modified configuration as .pacsave and installs the template, which only has
+# comments. Without this the next backup would take every disk and leave nothing out.
+restore_config() {
+  conf=/etc/abb-agent.toml
+  [ -f "$conf.pacsave" ] || return 0
+  if grep -qvE '^[[:space:]]*(#|$)' "$conf" 2>/dev/null; then
+    echo "==> abb-agent: $conf.pacsave is an older configuration: compare it with $conf"
+    return 0
+  fi
+  cp -p "$conf.pacsave" "$conf" && rm -f "$conf.pacsave" &&
+    echo "==> abb-agent: configuration of the previous package restored in $conf"
+}
+
 post_install() {
+  restore_config
+  if [ -f /var/lib/abb-agent/state.json ]; then
+    echo "==> abb-agent: restart the service to use the new version: sudo systemctl restart abb-agent"
+    return
+  fi
   cat <<'MSG'
 ==> abb-agent is installed but does nothing yet. To set it up:
     1. Pair with the NAS:  sudo abb-agent connect -a <nas> -u <dsm user>

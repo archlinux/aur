@@ -2,7 +2,7 @@
 pkgname=abb-agent
 _pkgname=abb-agent
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Replacement for the Synology Active Backup for Business Linux agent: any distro and kernel, first-class btrfs, bare-metal restore (https://github.com/rylos/abb-agent)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rylos/abb-agent"
