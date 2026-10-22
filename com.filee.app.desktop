@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Filee
+Comment=Convert files offline
+Exec=/opt/filee/Filee --convert %F
+Icon=filee
+Terminal=false
+Categories=Utility;
+StartupWMClass=Filee
