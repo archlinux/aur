@@ -4,7 +4,7 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname='perl-imager'
-pkgver='1.035'
+pkgver='1.040'
 pkgrel='1'
 pkgdesc="Perl extension for Generating 24 bit Images"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('perl-parse-recdescent: needed to parse transform2() expressions')
 makedepends=()
 url='https://metacpan.org/release/Imager'
 source=("https://cpan.metacpan.org/authors/id/T/TO/TONYC/Imager-${pkgver}.tar.gz")
-b2sums=('b288f731705658a854eebd7922c4605091af51063a6635d60090b042a396d8bf73fbf86c2d30d9c04b71f2eb295aa741c89690bdb155858f6b1e982f5485bdc9')
+b2sums=('4e6ff612cb23e89f5bec062ec3f416426351b2ed7ecb3863b141a1e46a9ba67efcc2e966041f4173ae98d599a91acdcd89b0574e4798cc8fd4294881c0df77df')
 _distdir="Imager-${pkgver}"
 
 prepare() {
