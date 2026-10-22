@@ -2,7 +2,7 @@
 
 pkgname=figcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.5.1.r25.ge56856f
+pkgver=0.9.0.r11.g9ec80bf
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
@@ -22,14 +22,18 @@ sha256sums=('SKIP')
 _srcenv() {
 	cd "$_pkgname"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -fno-lto'
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -fno-lto'
 }
 
 _icons=(512 256 128 64 48 32 16)
