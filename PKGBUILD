@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="YouTube — and your own videos and music — in the terminal"
 
-pkgver=0.7.9
+pkgver=0.8.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,7 +31,7 @@ source=("LICENSE-MIT-${pkgver}::${_ghurlraw}/LICENSE-MIT"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 sha256sums=('0c632fdaad3edd3af2d4f47dc50581d0bdd45e09f72a9a6e7876b5c6615b9c9b'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('2f8a1b65c09e444a9b5cf3aae009925fe09633b7083672ffd19f06c2517de437')
+sha256sums_x86_64=('007cde7b89bf7a9ec7ea338db4a8e122358c8e62135809fe762901be6d288862')
 
 
 package() {
