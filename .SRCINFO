@@ -1,6 +1,6 @@
 pkgbase = webhookd
 	pkgdesc = A very simple webhook server launching scripts.
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/ncarlier/webhookd
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = webhookd
 	makedepends = go
 	makedepends = unzip
 	backup = etc/default/webhookd
-	source = webhookd-1.22.0.zip::https://github.com/ncarlier/webhookd/archive/refs/tags/v1.22.0.zip
+	source = webhookd-1.22.1.zip::https://github.com/ncarlier/webhookd/archive/refs/tags/v1.22.1.zip
 	source = webhookd.service
 	source = webhookd.user.service
-	sha256sums = 9f7feb2ebd907a3b3e35c5b50ef2c508fd2ed8d4b0692ecea85cb5a393be8e14
+	sha256sums = 0e3367426eea23f0ec132d06c68fabbb0eb6892cda4d46fae14d563541415b90
 	sha256sums = 245ea528ce9217ae6255c2b6f2f61ad91d22544822a43e2d4f652f5aef4d65e6
 	sha256sums = b2fb27f5082b9442ff8aea858f6e5fbe3392bb63299e5debd34e4f9c34fc54f2
 
