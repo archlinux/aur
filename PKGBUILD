@@ -5,13 +5,13 @@
 pkgname=crossplane-gixy
 _projectname=crossplane
 pkgver=0.5.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Reliable and fast NGINX configuration file parser"
 arch=('any')
 url="https://github.com/dvershinin/crossplane"
 license=('Apache-2.0')
 depends=('python' 'python-simplejson')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-setuptools')
 checkdepends=('python-tox' 'pypy3')
 provides=('crossplane')
 conflicts=('crossplane')
