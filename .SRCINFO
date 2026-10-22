@@ -1,0 +1,15 @@
+pkgbase = omnidotdev-run-cli-bin
+	pkgdesc = Self-hosting made simple (pre-built)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://run.omni.dev
+	arch = x86_64
+	license = Apache-2.0
+	provides = omnidotdev-run-cli
+	conflicts = omnidotdev-run-cli
+	source = omnidotdev-run-cli-bin-0.1.0.tar.gz::https://github.com/omnidotdev/run-cli/releases/download/v0.1.0/run-x86_64-unknown-linux-gnu.tar.gz
+	source = omnidotdev-run-cli-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/omnidotdev/run-cli/v0.1.0/LICENSE.md
+	sha256sums = 5889e329b6d16e5e7b89d1b6aec8ba686d47a5ac9b2418875bbeb121c58e955d
+	sha256sums = 64d90764a9baac9d5f0797d6d9a7dfb26823396df09c872557e971cf76cc0a92
+
+pkgname = omnidotdev-run-cli-bin
