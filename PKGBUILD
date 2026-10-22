@@ -2,13 +2,13 @@
 
 pkgname=artcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.41.0.r8.g3e5793b
+pkgver=0.41.0.r19.g800217e
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
 pkgdesc='IDE for interactive AI image and video creation (Git HEAD)'
 arch=(x86_64)
-license=(MIT)
+license=(MIT Apache-2.0)
 depends=(alsa-lib
          atkmm
          cairo
@@ -40,10 +40,14 @@ sha256sums=('SKIP')
 _srcenv() {
 	cd "$_pkgname"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
@@ -82,5 +86,5 @@ package() {
 	          libsoup-3.0.so)
 	cd "$_pkgname"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
