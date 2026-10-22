@@ -1,6 +1,6 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=quickbox-qt
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Qt6/PySide6 GUI front-end for quickemu"
 arch=('any')
@@ -14,12 +14,16 @@ depends=(
     'xdg-utils'
 )
 optdepends=(
+    'libnotify: desktop notifications'
+    'parted: format disk'
+    'dosfstools: format disk (FAT32/EFI partition)'
+    'qemu-img: format disk (qemu-nbd)'
     'virt-viewer: SPICE display backend support'
 )
 conflicts=('quickbox')
 provides=('quickbox')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bcb3f2e5ee0af82c63421b0591b93173ba558f43ffbc558360fcc686b4b9e772')
+sha256sums=('cff480b773be84e89dbc76a4316283d4e4c6cac82453281225201b2a2abcf128')
 
 package() {
     cd "$srcdir/$pkgname"
