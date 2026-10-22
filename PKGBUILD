@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=acceptarium-git
-pkgver=0.0.0.r166.g0d2ffd9
+pkgver=0.0.0.r252.g84417eb
 pkgrel=1
 pkgdesc='CLI tool to facilitate digitized receipt handling in plain text accounting workflows'
 arch=(x86_64)
@@ -28,26 +28,36 @@ conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
+_srcenv() {
 	cd "${pkgname%-git}"
-	git describe --long --abbrev=7 --tags --match="v*" |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+	CFLAGS+=' -fno-lto'
+	export CARGO_FEATURE_FLAGS==--offline
+	export LIBGIT2_NO_VENDOR=1
 }
 
 prepare() {
-	cd "${pkgname%-git}"
+	_srcenv
 	sed Makefile.am -i -e "/^licensedir = /s#.(_acceptarium)\$#$pkgname#"
 	./bootstrap.sh
 	cargo fetch --locked --target host-tuple
 }
 
-_srcenv() {
+pkgver() {
 	cd "${pkgname%-git}"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	export CARGO_FEATURE_FLAGS==--offline
-	export LIBGIT2_NO_VENDOR=1
-	CFLAGS+=' -ffat-lto-objects'
+	git describe --long --abbrev=7 --tags --match="v*" |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

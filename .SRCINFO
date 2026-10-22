@@ -1,6 +1,6 @@
 pkgbase = acceptarium-git
 	pkgdesc = CLI tool to facilitate digitized receipt handling in plain text accounting workflows
-	pkgver = 0.0.0.r166.g0d2ffd9
+	pkgver = 0.0.0.r252.g84417eb
 	pkgrel = 1
 	url = https://codeberg.org/plaintextaccounting/acceptarium
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = acceptarium-git
 	optdepends = imagemagick: convert PDFs prior to OCR
 	optdepends = ollama: extract data from images or OCR using local models
 	optdepends = tesseract: process using OCR
-	provides = acceptarium=0.0.0.r166.g0d2ffd9
+	provides = acceptarium=0.0.0.r252.g84417eb
 	conflicts = acceptarium
 	source = git+https://codeberg.org/plaintextaccounting/acceptarium.git
 	sha256sums = SKIP
