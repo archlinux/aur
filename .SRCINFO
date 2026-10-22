@@ -21,6 +21,6 @@ pkgbase = vitis-fs
 	depends = oxfuse-ldc2
 	depends = fuse3
 	source = vitis-0.33.2.tar.gz::https://gitlab.com/os-18/vitis/-/archive/v0.33.2/vitis-v0.33.2.tar.gz
-	sha256sums = 8908b1ff511aaa82fd22d5133c5256f29634d3036d706d55dd69876c9c9e8375
+	sha256sums = 05ac268bf05412f2fa3446059a0616bbe02d55c9592a4e201ac6f616f4b30218
 
 pkgname = vitis-fs
