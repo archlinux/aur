@@ -2,7 +2,7 @@
 
 pkgname=plainva
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 url="https://$pkgname.com"
 _url="https://github.com/$pkgname/$pkgname"
 pkgdesc='Obsidian-compatible, local-first editor for plain Markdown vaults'
@@ -31,10 +31,14 @@ sha256sums=('29eb970ba77ab296df82296d07acaa16ad2ed3f9dc5bceb1c352878ba7de0801')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
