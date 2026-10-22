@@ -2,7 +2,7 @@
 pkgname=wallpaperx-bin
 _pkgname=wallpaperx
 pkgver=0.4.12
-pkgrel=2 # bump for packaging-only fixes; CI resets it to 1 on a new release
+pkgrel=3 # bump for packaging-only fixes; CI resets it to 1 on a new release
 pkgdesc="Browse, manage, and apply Wallpaper Engine wallpapers on Linux"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
@@ -37,6 +37,8 @@ package() {
 
   install -dm755 "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
   cp -a "$app/." "$pkgdir/opt/$_pkgname/"
+  # The Forge zip stores its top-level dir as 0700, which cp -a carries over.
+  find "$pkgdir/opt/$_pkgname" -type d -exec chmod 755 {} +
   ln -s "/opt/$_pkgname/$_exe" "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 "$app/resources/assets/transparent-logo.png" \
