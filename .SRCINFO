@@ -1,8 +1,8 @@
 pkgbase = bdash-git
-	pkgdesc = Simple SQL Client for lightweight data analysis.(Use system-wide electron)
-	pkgver = 1.35.1.r2.g694eaf8
+	pkgdesc = Simple SQL Client for lightweight data analysis.
+	pkgver = 1.35.3.r2.g78be8c4
 	pkgrel = 1
-	url = https://github.com/bdash-app/bdash
+	url = https://bdash-app.github.io/
 	arch = x86_64
 	license = MIT
 	makedepends = npm
@@ -10,15 +10,16 @@ pkgbase = bdash-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
 	makedepends = python
 	makedepends = jq
 	depends = electron40
-	provides = bdash=1.35.1
+	provides = bdash=1.35.3
 	conflicts = bdash
 	source = bdash.git::git+https://github.com/bdash-app/bdash.git
+	source = resources-path-override.js
 	source = bdash.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8
+	sha256sums = 1d078765ddfb31c3c424fbfef8a47a4443b38303e82065d7db49a88371df6ac8
 
 pkgname = bdash-git
