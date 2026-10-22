@@ -1,0 +1,23 @@
+pkgbase = python-llm-structured-confidence
+	pkgdesc = Extract per-field confidence scores from LLM structured JSON outputs using token-level log-probabilities.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/rodolfonobrega/llm-structured-confidence
+	arch = any
+	license = MIT
+	checkdepends = python-pandas
+	checkdepends = python-pydantic
+	checkdepends = python-pytest
+	checkdepends = python-litellm
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-lark
+	optdepends = python-litellm: litellm
+	optdepends = python-google-genai: genai
+	optdepends = python-pandas: pandas
+	source = llm-structured-confidence-0.4.5.tar.gz::https://github.com/rodolfonobrega/llm-structured-confidence/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = 51be458f2cfc53b15b0b9ae6806c9d7bdba87a8930faa2a0f41ef799dfe1e91f
+
+pkgname = python-llm-structured-confidence
