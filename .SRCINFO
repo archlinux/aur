@@ -1,7 +1,7 @@
 pkgbase = flclashx-git
 	pkgdesc = [Pre-release] Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pluralplay/FlClashX
 	arch = aarch64
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = flclashx-git
 	options = !emptydirs
 	source = flclashx.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = flclashx-0.5.0-aarch64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.5.0-pre.1/FlClashX-linux-arm64.deb
-	sha256sums_aarch64 = a522d6eebf73bd6684d70905a7c436bb1c2921454545b1a98871d74578af745c
-	source_x86_64 = flclashx-0.5.0-x86_64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.5.0-pre.1/FlClashX-linux-amd64.deb
-	sha256sums_x86_64 = 0316f8033fd494578945191c96606d058321f4229f36a1fcfc97f117c845fe7a
+	source_aarch64 = flclashx-0.5.0-aarch64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.5.0-pre.2/FlClashX-linux-arm64.deb
+	sha256sums_aarch64 = 4eee05c30fe62c3aa2d7ab64ef895162699d3b80e3ecf837842670cf38aa0f9e
+	source_x86_64 = flclashx-0.5.0-x86_64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.5.0-pre.2/FlClashX-linux-amd64.deb
+	sha256sums_x86_64 = cd350d47099d04dd6e40a8e992f4e1635acdf9c2574875a531986482db8bcdec
 
 pkgname = flclashx-git
