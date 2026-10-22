@@ -3,7 +3,7 @@
 pkgname=netcloud-music-bin
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="网易云音乐网页版的非官方 Linux 桌面外壳（系统托盘 / MPRIS / 媒体键）"
+pkgdesc="网易云音乐官方网页版的非官方 Linux 桌面外壳"
 arch=('x86_64')
 url="https://github.com/lxp731/NetCloudMusic-Webplayer"
 license=('MIT')
