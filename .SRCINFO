@@ -1,22 +1,23 @@
 pkgbase = godot-launcher-bin
 	pkgdesc = A streamlined, open-source tool designed to simplify and accelerate your Godot game development workflow.
-	pkgver = 1.13.0
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = https://godotlauncher.org/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = asar
 	depends = electron43
-	provides = godot-launcher=1.13.0
+	provides = godot-launcher=1.13.1
 	conflicts = godot-launcher
-	source = LICENSE-1.13.0.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.13.0/LICENSE.txt
+	source = LICENSE-1.13.1.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.13.1/LICENSE.txt
+	source = resources-path-override.js
 	source = godot-launcher.sh
 	sha256sums = 982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
-	source_aarch64 = godot-launcher-1.13.0-aarch64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.13.0/Godot_Launcher-1.13.0-linux_aarch64.rpm
-	sha256sums_aarch64 = 823318309995cf9b61757bf5e19332d3252e95edce7396de4e6d6f98ec8dd17d
-	source_x86_64 = godot-launcher-1.13.0-x86_64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.13.0/Godot_Launcher-1.13.0-linux_x86_64.rpm
-	sha256sums_x86_64 = 80fc9baaf1aba56dadad0ed749bcf15bba9f47c533e8ff1a3e7ec12ee4e0b276
+	sha256sums = 7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8
+	sha256sums = 523a9e7294fb8d0611611db823288e3dc38ae021eceb3067791dc0c4ff3b0d15
+	source_aarch64 = godot-launcher-1.13.1-aarch64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.13.1/Godot_Launcher-1.13.1-linux_aarch64.rpm
+	sha256sums_aarch64 = 47e90d365a9765b54e96085d0b240953201bd7b19d142f38bb0d4c0e312b5712
+	source_x86_64 = godot-launcher-1.13.1-x86_64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.13.1/Godot_Launcher-1.13.1-linux_x86_64.rpm
+	sha256sums_x86_64 = b5b89b22e3a0f998140d19fe39c6151ef66252173ad32067762e4d015e10f9fd
 
 pkgname = godot-launcher-bin
