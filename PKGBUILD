@@ -1,10 +1,10 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=forum-scout-qt
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch-focused multi-forum search tool (Qt/PyQt6 edition)"
 arch=('any')
-url="https://github.com/musqz/forum-scout-qt"
+url="https://codeberg.org/linux-bird/forum-scout-qt"
 license=('MIT')
 provides=('forum-scout')
 conflicts=('forum-scout')
@@ -13,21 +13,21 @@ depends=(
   'python-requests'
 )
 checkdepends=('desktop-file-utils')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f51b061184968437915174df587f820cba9214e9baeb1a697554c3f96326d474')
+source=("$pkgname-$pkgver-codeberg.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('fa7482db6bdcb70e9eb02550877fe6ef4be6a338808d36fa5deab57fb892bfcd')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   sed -i "s/__VERSION__/$pkgver/" "$pkgname.py"
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   desktop-file-validate "forum-scout.desktop"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/forum-scout"
   install -Dm644 "forum-scout.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 forums.conf -t "$pkgdir/usr/share/forum-scout/"
