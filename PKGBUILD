@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v0.22.2
-_commit=d923a5eb487a17c0a68801bba9ef0f56c81040a8
-pkgver=0.22.2
+_pkgver_tag=v0.22.4
+_commit=4d04303818b61bf3aa09278af48356315515965b
+pkgver=0.22.4
 pkgrel=1
 pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('MIT')
 # hermes-agent would pull them in transitively.
 depends=(
   'electron42'
-  'hermes-agent>=0.22.2'
+  'hermes-agent>=0.22.4'
   'hicolor-icon-theme'
   'libnotify'
   'libsecret'
@@ -41,8 +41,8 @@ source=(
   'hermes-desktop'
   'launcher.test.cjs'
 )
-sha256sums=('77d2c763a3bd5133bfb3e327986c987dba249e14988b92919ef726d389c6b9d2'
-            '19c1f67e0b24d86d9c61237f9c05a02b66ca34a8467c298a2423d5a39106c0c4'
+sha256sums=('808464c45097ebc4febaed2d08bb936095262c6997ba7c49ee1a0c4e7f7c593e'
+            '9c046a8b38d6a794c3d8109f7693edbfe303a61c80b77f651ca1c8a21718cfed'
             '412ad7b2b6bc5149a8d236ad2cb9be54d2ac0ab78dbd3c8e16deb4f4e683713f'
             '8a677666d7d20578a88a745d83b4a75412a55fd5c184fd4f66a50dfe66adb3c6'
             '202e474fda5fd845f1ba334e503e751f746fb7d1f378fb0d3e8142b4795a025b')

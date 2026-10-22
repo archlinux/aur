@@ -1,6 +1,6 @@
 pkgbase = hermes-agent-desktop
 	pkgdesc = Desktop UI for Hermes Agent (chat, voice, files, settings)
-	pkgver = 0.22.2
+	pkgver = 0.22.4
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hermes-agent-desktop
 	checkdepends = uv
 	makedepends = npm
 	depends = electron42
-	depends = hermes-agent>=0.22.2
+	depends = hermes-agent>=0.22.4
 	depends = hicolor-icon-theme
 	depends = libnotify
 	depends = libsecret
@@ -20,13 +20,13 @@ pkgbase = hermes-agent-desktop
 	optdepends = libayatana-appindicator: tray indicator support
 	conflicts = hermes-agent-desktop-bin
 	options = !debug
-	source = hermes-agent-v0.22.2.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v0.22.2.tar.gz
+	source = hermes-agent-v0.22.4.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v0.22.4.tar.gz
 	source = package-managed-runtime.patch
 	source = package-managed-bootstrap.patch
 	source = hermes-desktop
 	source = launcher.test.cjs
-	sha256sums = 77d2c763a3bd5133bfb3e327986c987dba249e14988b92919ef726d389c6b9d2
-	sha256sums = 19c1f67e0b24d86d9c61237f9c05a02b66ca34a8467c298a2423d5a39106c0c4
+	sha256sums = 808464c45097ebc4febaed2d08bb936095262c6997ba7c49ee1a0c4e7f7c593e
+	sha256sums = 9c046a8b38d6a794c3d8109f7693edbfe303a61c80b77f651ca1c8a21718cfed
 	sha256sums = 412ad7b2b6bc5149a8d236ad2cb9be54d2ac0ab78dbd3c8e16deb4f4e683713f
 	sha256sums = 8a677666d7d20578a88a745d83b4a75412a55fd5c184fd4f66a50dfe66adb3c6
 	sha256sums = 202e474fda5fd845f1ba334e503e751f746fb7d1f378fb0d3e8142b4795a025b
