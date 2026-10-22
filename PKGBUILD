@@ -3,16 +3,16 @@
 # Contributor: Tim Yang <tdy@gmx.com>
 
 pkgname=paps
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='Converts Unicode text to postscript and pdf using pango'
 url='https://github.com/dov/paps'
 arch=('x86_64')
 license=('LGPL')
-depends=('pango' 'fmt')
+depends=('libpaper' 'pango' 'fmt')
 makedepends=('intltool')
 source=("https://github.com/dov/paps/archive/v${pkgver}.tar.gz")
-sha256sums=('8fd8db04e6f8c5c164806d2c1b5fea6096daf583f83f06d1e4813ea61edc291f')
+sha256sums=('603bab59a49a8dd76b2a025919a705d21d44c8e929c72c6ed5e7ad0e87fbc486')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
