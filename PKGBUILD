@@ -1,5 +1,12 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
 
+# Version 12.1.0 - point release, upstream package date 2026-10-19:
+# - Installer layout is unchanged: makeself .run, payload
+#   Mixbus_x86_64-${pkgver}.tar, launcher bin/mixbus12, binary bin/mixbus-${pkgver}.
+# - The bundle no longer ships libreadline, libhistory, libncurses, libtinfo,
+#   or libbz2. libz is still bundled and is removed so the system zlib is used.
+# - The bundled launcher still sets PIPEWIRE_MIDI_BROKEN for Pipewire 1.1-1.5.
+#
 # Version 12.0.1 - Mixbus 12 major release:
 # - First release of the Mixbus 12 series (Ardour 8-based engine).
 # - New launcher/binary naming: /opt/Mixbus-12.0.1/bin/mixbus12.
@@ -15,7 +22,7 @@
 # Linux users receive core DAW functionality but not all advertised premium features.
 
 pkgname=mixbus12
-pkgver=12.0.1
+pkgver=12.1.0
 pkgrel=1
 pkgdesc="Harrison Consoles Mixbus DAW (Version 12)"
 arch=('x86_64')
@@ -35,7 +42,7 @@ source=(
     "${pkgname}.install"
 )
 sha256sums=(
-    '06bd21dc64a6083215f3a2fc7189f3d9d75fad751a5da5b38735fb92f459f740'
+    '1875c8d93c4ea80ee3266647bde0d27845681a127697b36c726abb4ac5fdbf3c'
     '764953880bdd424974bda39ad387830777cf746649578962a1c6e37830202550'
 )
 options=('!strip')

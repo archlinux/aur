@@ -3,7 +3,7 @@
 Harrison Consoles Mixbus DAW (Version 12) - Professional Digital Audio Workstation
 
 ## Current Version
-- **Package Version**: 12.0.1-1
+- **Package Version**: 12.1.0-1
 - **Maintainer**: z3n <z3nlabs at proton dot me>
 
 ## Description
@@ -94,7 +94,7 @@ If Mixbus doesn't detect your audio interface:
 - **Mixbus Forum**: https://discourse.ardour.org/c/mixbus
 
 ## File Locations
-- **Installation**: `/opt/Mixbus-12.0.1/`
+- **Installation**: `/opt/Mixbus-12.1.0/`
 - **Executable**: `/usr/bin/mixbus12`
 - **Desktop Entry**: `/usr/share/applications/mixbus12.desktop`
 - **Icons**: `/usr/share/icons/hicolor/*/apps/mixbus12.png`
