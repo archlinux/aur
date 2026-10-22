@@ -1,0 +1,13 @@
+post_install() {
+    udevadm control --reload-rules 2>/dev/null || true
+    modprobe uinput 2>/dev/null || true
+    udevadm trigger --subsystem-match=misc --sysname-match=uinput 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    udevadm control --reload-rules 2>/dev/null || true
+}

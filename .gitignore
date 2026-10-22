@@ -1,0 +1,7 @@
+*
+!.gitignore
+!Makefile
+!PKGBUILD
+!.SRCINFO
+!keepalive.install
+!keepalive.service
