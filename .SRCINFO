@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-memories
 	pkgdesc = Fast, modern and advanced photo management suite for Nextcloud
-	pkgver = 8.0.1
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://github.com/pulsejet/memories
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-memories
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = https://github.com/pulsejet/memories/releases/download/v8.0.1/memories.tar.gz
-	sha256sums = 07e3bbf2a8c141b98c9c502f1ffe5af98062bdefab9011bd00a4d7ec6dea351d
+	source = https://github.com/pulsejet/memories/releases/download/v10.1.0/memories.tar.gz
+	sha256sums = b5b476b6cd7d7d7a16f219141752c8a00e2d40ee9641626f3631bf827594970f
 
 pkgname = nextcloud-app-memories

@@ -12,7 +12,7 @@ options=('!strip')
 makedepends=(nextcloud
              yq)
 source=("$url/releases/download/v$pkgver/$_name.tar.gz")
-sha256sums=("07e3bbf2a8c141b98c9c502f1ffe5af98062bdefab9011bd00a4d7ec6dea351d")
+sha256sums=("b5b476b6cd7d7d7a16f219141752c8a00e2d40ee9641626f3631bf827594970f")
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
