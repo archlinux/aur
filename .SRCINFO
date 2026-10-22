@@ -1,7 +1,7 @@
 pkgbase = val
 	pkgdesc = an arbitrary precision calculator language
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terror/val
 	arch = x86_64
 	license = CC0-1.0
@@ -9,10 +9,14 @@ pkgbase = val
 	depends = glibc
 	depends = gmp
 	depends = libgcc
-	depends = libgcc_s.so
 	depends = mpfr
-	depends = libmpfr.so
 	source = https://github.com/terror/val/archive/0.7.0/val-0.7.0.tar.gz
 	sha256sums = c29d753147a2523a6c8f25079e9e42d3b839af0331cb77ef39f7059e38bf9eb4
 
 pkgname = val
+	depends = glibc
+	depends = gmp
+	depends = libgcc
+	depends = mpfr
+	depends = libgcc_s.so
+	depends = libmpfr.so
