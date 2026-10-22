@@ -1,7 +1,7 @@
 pkgbase = casile
 	pkgdesc = Caleb’s SILE publishing toolkit
 	pkgver = 0.14.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sile-typesetter/casile
 	arch = x86_64
 	license = AGPL-3.0-only

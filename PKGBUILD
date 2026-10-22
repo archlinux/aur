@@ -2,7 +2,7 @@
 
 pkgname=casile
 pkgver=0.14.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
@@ -87,25 +87,33 @@ sha256sums=('975bb68f6f9f759528d768b774ce2727e705c3752e4d49f554cb09e66dbbee59'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
-	export YARN_CACHE_FOLDER="$srcdir/node_modules"
-	yarn install --production --frozen-lockfile
-}
-
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	export CARGO_FEATURE_FLAGS==--offline
-	export LIBGIT2_NO_VENDOR=1
 	CFLAGS+=' -ffat-lto-objects'
+	export LIBGIT2_NO_VENDOR=1
+	export YARN_CACHE_FOLDER="$srcdir/node_modules"
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
+	yarn install --production --frozen-lockfile
 }
 
 build() {
 	_srcenv
-	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	./configure --prefix "/usr"
 	make
 }
