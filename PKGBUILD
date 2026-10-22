@@ -3,9 +3,9 @@
 pkgname=relic-everforest-gtk-theme
 _repo=Everforest-GTK-Theme
 _commit=9b8be4d6648ae9eaae3dd550105081f8c9054825
-_fixes=2026.10.13
+_fixes=2026.10.22
 pkgver=2025.10.23
-pkgrel=2
+pkgrel=3
 pkgdesc='Everforest GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('20966e9f5008efc7b23e44ca4ad1aec5e173cafdf120b9063b3687a1970500e0'
-            '895fe5ab4d59fb69cf9aaf7ee7df4f2cf716485a429eacaf02ab5d761217bb47')
+            'c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"

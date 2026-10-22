@@ -1,7 +1,7 @@
 pkgbase = relic-everforest-gtk-theme
 	pkgdesc = Everforest GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
 	pkgver = 2025.10.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gaou-piou/Everforest-GTK-Theme
 	arch = any
 	license = GPL-3.0-only
@@ -13,8 +13,8 @@ pkgbase = relic-everforest-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Everforest-GTK-Theme-9b8be4d6648ae9eaae3dd550105081f8c9054825.tar.gz::https://github.com/gaou-piou/Everforest-GTK-Theme/archive/9b8be4d6648ae9eaae3dd550105081f8c9054825.tar.gz
-	source = relic-gtk-fixes-2026.10.13.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.13.tar.gz
+	source = relic-gtk-fixes-2026.10.22.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.22.tar.gz
 	sha256sums = 20966e9f5008efc7b23e44ca4ad1aec5e173cafdf120b9063b3687a1970500e0
-	sha256sums = 895fe5ab4d59fb69cf9aaf7ee7df4f2cf716485a429eacaf02ab5d761217bb47
+	sha256sums = c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb
 
 pkgname = relic-everforest-gtk-theme
