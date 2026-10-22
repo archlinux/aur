@@ -1,5 +1,5 @@
 pkgname=tempesta-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="The fastest and lightest bookmark manager CLI written in Rust (binary package)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('tempesta')
 source_x86_64=("tempesta-x86_64-$pkgver.tar.gz::https://github.com/x71c9/tempesta/releases/download/v$pkgver/tempesta-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("tempesta-aarch64-$pkgver.tar.gz::https://github.com/x71c9/tempesta/releases/download/v$pkgver/tempesta-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=("b9499c57eee6f62a339ae2aac4a15a1c74d8814615ccc078f1bce1683008ad80")
-sha256sums_aarch64=("75ae496c4bc478b49ab960180c3fa5b5c3f630757ea2cfc4c8785638117339b5")
+sha256sums_x86_64=("f96c916d7a4252385d994fc0624e0e2dc53681117f22fd7d2b602cbee2ff2aa7")
+sha256sums_aarch64=("9893162ab7c4bb3789e6aa2d9a8b10910f2eb7d06a3c8d4fb4e1e5600f1cc762")
 
 package() {
   if [[ $CARCH == "x86_64" ]]; then
