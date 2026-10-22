@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.18.0.r62.g22fb56d
+pkgver=0.20.0.r63.g8a48cd0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -10,10 +10,10 @@ license=('GPL-2.0-or-later')
 depends=(
 	'abseil-cpp' # protobuf dependency
 	'glibc'
-	'glslang>=15'
 	'miniz>=3.1'
 	'pugixml>=1.14'
 	'sdl3>=3.3.5'
+	'zarchive>=0.1.2.r4'
 )
 makedepends=(
 	'boost>=1.84'
@@ -23,6 +23,7 @@ makedepends=(
 	'fmt>=12'
 	'freetype2>=2.14.1'
 	'git'
+	'glslang>=15'
 	'half>=1.12'
 	'libgcc'
 	'libpng>=1.6'
@@ -44,8 +45,8 @@ makedepends=(
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
-	'zarchive>=0.1.2'
 	'zlib'
+	'zstd'
 	'zycore-c' # zydis dependency
 )
 optdepends=(
@@ -145,6 +146,7 @@ package() {
 		'libxxhash.so'
 		'libz.so'
 		'libzarchive.so'
+		'libzstd.so'
 	)
 
 	# shellcheck disable=SC2154
