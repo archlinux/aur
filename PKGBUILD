@@ -2,8 +2,8 @@
 
 pkgname=teamtype-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.2.r31.g22ffa6a
-pkgrel=1
+pkgver=0.9.2.r96.ged1b0d7
+pkgrel=2
 pkgdesc='Peer-to-peer, editor-agnostic collaborative editing of local text files'
 arch=(x86_64)
 url="https://github.com/$_pkgname/$_pkgname"
@@ -28,14 +28,18 @@ pkgver() {
 
 _srcenv() {
 	cd "$_pkgname"
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -ffat-lto-objects'
 	export LIBGIT2_NO_VENDOR=1
 }
