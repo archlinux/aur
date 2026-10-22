@@ -6,17 +6,17 @@ pkgver=r1510.cf869fb
 pkgrel=1
 pkgdesc="Display system information in GNOME Shell status bar (next fork)"
 arch=('any')
-url="https://github.com/mgalgs/gnome-shell-system-monitor-applet"
+url="https://github.com/mgalgs/gnome-shell-system-monitor-next-applet"
 license=('GPL-3.0-or-later')
 depends=('gnome-shell>=45' 'libgtop' 'glib2')
 makedepends=('git')
 provides=("system-monitor-applet" "gnome-shell-system-monitor-applet-git" "gnome-shell-extension-system-monitor-git")
 conflicts=("gnome-shell-system-monitor-applet-git" "gnome-shell-extension-system-monitor-git")
-source=('git+https://github.com/mgalgs/gnome-shell-system-monitor-applet')
+source=('git+https://github.com/mgalgs/gnome-shell-system-monitor-next-applet')
 sha256sums=('SKIP')
 install=${pkgname}.install
 
-_reponame=gnome-shell-system-monitor-applet
+_reponame=gnome-shell-system-monitor-next-applet
 
 package() {
   cd "$srcdir/$_reponame"
