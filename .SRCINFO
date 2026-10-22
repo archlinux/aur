@@ -1,6 +1,6 @@
 pkgbase = magpie-bin
 	pkgdesc = One place to pick every AI coding agent's model: Codex, Claude Code, Gemini CLI and more
-	pkgver = 0.1.1317
+	pkgver = 0.1.1318
 	pkgrel = 1
 	url = https://usemagpie.ai
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = magpie-bin
 	conflicts = magpie
 	options = !strip
 	options = !debug
-	source = magpie-0.1.1317-LICENSE::https://raw.githubusercontent.com/yetone/magpie/v0.1.1317/LICENSE
-	source = magpie-icon-0.1.1317.png::https://usemagpie.ai/img/icon-256.png
+	source = magpie-0.1.1318-LICENSE::https://raw.githubusercontent.com/yetone/magpie/v0.1.1318/LICENSE
+	source = magpie-icon-0.1.1318.png::https://usemagpie.ai/img/icon-256.png
 	sha256sums = 79d2c8444715d4bc453ec4f8a0aaf2051a4c1ee5ac08f5bd2e5848aef87c7572
 	sha256sums = 57437c6596e05a8fcfc42d4288c030aa00ed86b69fe35d464d69d7026150c704
-	source_x86_64 = magpie-0.1.1317-amd64::https://github.com/yetone/magpie-releases/releases/download/v0.1.1317/magpie-linux-amd64
-	sha256sums_x86_64 = 0b12765a209e4b6551981d69e7aae8ec46e97bbf86df1c0a61817ddfbbadf392
-	source_aarch64 = magpie-0.1.1317-arm64::https://github.com/yetone/magpie-releases/releases/download/v0.1.1317/magpie-linux-arm64
-	sha256sums_aarch64 = 28205abcb205a15c966674dd1bcbdbb67c85d4a64d5b56cacb5fe414ce1fd3fa
+	source_x86_64 = magpie-0.1.1318-amd64::https://github.com/yetone/magpie-releases/releases/download/v0.1.1318/magpie-linux-amd64
+	sha256sums_x86_64 = 564fbd70294977205c810e1a79b87a97b899e6f36284062c8b097ced965fe070
+	source_aarch64 = magpie-0.1.1318-arm64::https://github.com/yetone/magpie-releases/releases/download/v0.1.1318/magpie-linux-arm64
+	sha256sums_aarch64 = 2717a245fea595989f8ebc8a921370a29e909e4aa3224714998fac95e3fb3533
 
 pkgname = magpie-bin
