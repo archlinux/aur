@@ -2,7 +2,7 @@
 
 pkgname=jorvik-bin
 _pkgname=jorvik
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="Chat and voice for Matrix"
 arch=('x86_64')
@@ -11,14 +11,14 @@ license=('AGPL-3.0-only')
 # Translated from the upstream .deb's Depends. libuuid1 is util-linux-libs on
 # Arch, and libxss1/libxtst6 are libxss/libxtst.
 depends=('gtk3' 'nss' 'libnotify' 'libxss' 'libxtst' 'at-spi2-core' 'libsecret'
-         'util-linux-libs' 'xdg-utils')
+         'util-linux-libs' 'xdg-utils' 'alsa-lib')
 optdepends=('libappindicator-gtk3: tray icon on desktops using AppIndicator')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 install="$pkgname.install"
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Jorvik-$pkgver.deb")
-sha256sums=('c4f6e9b7b5821ef354c0ae3b409ef39de459fa2392e6c46c3dcbf015c0254697')
+sha256sums=('86bdd2f7787b5cd29a06f499ab82d9d036290c08b85523fe3ef97ed60169b64f')
 # makepkg does not understand .deb, so unpack it by hand in package().
 noextract=("$_pkgname-$pkgver.deb")
 
