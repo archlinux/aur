@@ -1,50 +1,34 @@
-# Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
+# Maintainer: Adam Mlady <adam.mlady@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=ghost-dl-git
-pkgver=v1.1.4
+pkgver=2.2.0_r2_g258d649
 pkgrel=1
-pkgdesc="Kingdom Hearts Insider Game OST Archive Dowloader CLI"
-arch=('x86_64')
+pkgdesc="Kingdom Hearts Insider Game OST Archive Downloader CLI/TUI"
+arch=('x86_64' 'aarch64')
 url="https://github.com/TheElevatedOne/ghost-dl"
-license=('GPL3')
-depends=('glibc' 'gcc' 'python' 'python-pip')
-options=('!debug' '!strip')
+license=('GPL-3.0-or-later')
+depends=('glibc' 'curl' 'ncurses')
 makedepends=(
   'git'
-  'clang'
-  'patchelf'
-  'ccache'
+  'gcc'
+  'make'
 )
-provides=(ghost-dl-git)
-conflicts=(ghost-dl-bin)
+provides=(ghost-dl)
+conflicts=(ghost-dl)
 source=("git+https://github.com/TheElevatedOne/ghost-dl.git#branch=main")
 sha256sums=("SKIP")
 
 pkgver() {
   cd ghost-dl
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  cd ..
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/_/g' || echo "2.2.0"
 }
 
 build() {
-  set -e
   cd ghost-dl
-  python -m venv venv
-  source venv/bin/activate
-  pip install -r requirements.txt
-  pip install nuitka
-  if ! ls build; then mkdir build; fi
-  python -m nuitka --onefile --follow-imports --main=ghost_dl.py --output-dir=build --output-filename=ghost-dl
-  deactivate
-  rm -rf venv
-  rm -rf build/ghost_dl.build build/ghost_dl.dist build/ghost_dl.onefile-build
-  cd ..
+  make PREFIX=/usr
 }
 
 package() {
-  set -e
   cd ghost-dl
-
-  install -Dm755 build/ghost-dl "$pkgdir/usr/bin/ghost-dl"
-  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
