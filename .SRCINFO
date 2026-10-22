@@ -1,6 +1,6 @@
 pkgbase = switchhosts-git
 	pkgdesc = An app for managing hosts file,and switch hosts quickly !
-	pkgver = 5.0.1.r34.g2d0de55
+	pkgver = 5.0.3.r2.ga43172f
 	pkgrel = 1
 	url = https://switchhosts.app/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = switchhosts-git
 	makedepends = gendesk
 	makedepends = nvm
 	makedepends = npm
-	makedepends = curl
+	makedepends = jq
 	makedepends = git
 	makedepends = librsvg
 	makedepends = patchelf
@@ -17,7 +17,7 @@ pkgbase = switchhosts-git
 	depends = webkit2gtk-4.1
 	depends = libappindicator
 	depends = libayatana-appindicator
-	provides = switchhosts=5.0.1
+	provides = switchhosts=5.0.3
 	conflicts = switchhosts
 	source = switchhosts.git::git+https://github.com/oldj/SwitchHosts.git
 	sha256sums = SKIP
