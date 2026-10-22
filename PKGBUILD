@@ -3,22 +3,22 @@
 # Contributor: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 _projectname='psl'
 pkgname='python-publicsuffixlist'
-pkgver='1.0.2.20260922'
+pkgver='1.1.2.20261021'
 pkgrel='1'
 pkgdesc='publicsuffixlist for python'
 arch=('any')
 url="https://github.com/ko-zu/$_projectname"
 license=('MPL-2.0')
-depends=('python>=3.5.0' 'python-requests')
-makedepends=('python-setuptools')
+depends=('python>=3.8.0' 'python-requests')
+makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-gha.tar.gz")
-b2sums=('8df49aea84224c54319159e60ca66f5d3dd8f6b04c13d1e84b03515041c83292f1ed5f3283b78514a612b05e0a8a9e31e4f225973900359bfb87e2cddb699976')
+b2sums=('062540e3547fd863457e5d803ae8ba4c44d9b6e838e2a69a1ffb6bed5be2005405f08312030dd11add9935c30cde37bfeb61aec89c973db9177ff88d6e4a4fa7')
 
 _sourcedirectory="$_projectname-$pkgver-gha"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -28,5 +28,5 @@ check() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
 }
