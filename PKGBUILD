@@ -2,7 +2,7 @@
 
 pkgname=docspec
 pkgver=1.21.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Rust implementation of DocSpec, a streaming document conversion library'
 arch=(x86_64)
 url="https://github.com/$pkgname/$pkgname"
@@ -19,12 +19,18 @@ sha256sums=('d1033e14860cb9eeb2bd681f78d676d27714cf39db23ff56d043a21cd59c61a6')
 _srcenv() {
 	cd "$pkgname"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=true
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
-	CFLAGS+=' -ffat-lto-objects'
+	CFLAGS+=' -fno-lto'
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 }
 
 prepare() {
