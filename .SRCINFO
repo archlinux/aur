@@ -1,7 +1,7 @@
 pkgbase = nsis-nsarray-bin
 	pkgdesc = Plug-in for NSIS which provides dynamic, indexed and associative arrays (much like PHP)
 	pkgver = 1.1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nsis.sourceforge.io/Arrays_in_NSIS
 	arch = any
 	license = custom
