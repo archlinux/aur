@@ -2,7 +2,7 @@
 
 pkgname=flectar-mail
 pkgver=0.1.0alpha.7
-pkgrel=1
+pkgrel=2
 url="https://${pkgname%-*}.com"
 _url="https://github.com/${pkgname/-//}"
 pkgdesc='a lightweight, native client for email, calendars, and contacts'
@@ -33,15 +33,19 @@ sha256sums=('457f9844c30bd2548fc4bc4166426eb4d7ef6efe5a2918d6cb13b3b2f184258b')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
-	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 }
 
 prepare() {

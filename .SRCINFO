@@ -1,7 +1,7 @@
 pkgbase = flectar-mail
 	pkgdesc = a lightweight, native client for email, calendars, and contacts
 	pkgver = 0.1.0alpha.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flectar.com
 	arch = x86_64
 	license = AGPL-3.0-only
