@@ -3,7 +3,7 @@
 pkgdesc='TUI Bible reader'
 pkgname=christ-cli
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 url="https://github.com/whoisyurii/$pkgname"
 arch=(x86_64)
 license=(MIT)
@@ -14,16 +14,26 @@ _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('9e53924e336a0488da0905f36685711132e0159e1a59f150d20445dc15519139')
 
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target host-tuple
-}
-
 _srcenv() {
 	cd "$_archive"
-	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
-	CFLAGS+=' -ffat-lto-objects'
+	export RUSTUP_TOOLCHAIN=stable
+	CFLAGS+=' -fno-lto'
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
