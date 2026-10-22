@@ -8,7 +8,7 @@
 
 pkgname=bleachbit-cli
 _pkgname=bleachbit
-pkgver=6.0.4
+pkgver=6.0.6
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.'
 conflicts=($_pkgname)
@@ -21,7 +21,7 @@ optdepends=('python-chardet: detect file encoding when rewriting text files')
 makedepends=(git)
 source=(git+https://github.com/bleachbit/bleachbit.git#tag=v${pkgver}?signed)
 validpgpkeys=(A9E582E4054A159315EDC943D6D447B02B4D4C9D) # Andrew Ziem <ahz001@gmail.com>
-sha256sums=('f8905019fb8919f27616fe53797ecbc8d587aaf0872a5a5869fe9ea839b0e532')
+sha256sums=('07739d7035ad89ff83231faa313a726bf592ae33b1f57fb49a193ad0d27cbd7d')
 
 package() {
   cd $_pkgname
