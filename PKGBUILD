@@ -2,7 +2,7 @@
 
 pkgname=comrak
 pkgver=0.57.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=(x86_64 i686)
 url="https://github.com/kivikakk/$pkgname"
@@ -18,14 +18,18 @@ sha256sums=('06933637b62368dc5a1199dddebc40794ee34a68c4eb47b5900b774250093f2b')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=true
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
-	export CFLAGS+=' -ffat-lto-objects'
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export CFLAGS+=' -ffat-lto-objects'
 	export RUSTONIG_DYNAMIC_LIBONIG=1
 }
 
