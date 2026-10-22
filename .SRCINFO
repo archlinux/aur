@@ -1,6 +1,6 @@
 pkgbase = bluebubbles-bin
 	pkgdesc = A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!
-	pkgver = 2.1.3+desktop.93
+	pkgver = 2.1.4+desktop.94
 	pkgrel = 1
 	url = https://bluebubbles.app/
 	arch = aarch64
@@ -15,14 +15,14 @@ pkgbase = bluebubbles-bin
 	depends = libayatana-indicator
 	depends = ayatana-ido
 	depends = gtk3
-	provides = bluebubbles=2.1.3+desktop.93
+	provides = bluebubbles=2.1.4+desktop.94
 	conflicts = bluebubbles
 	options = !emptydirs
 	source = bluebubbles.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = bluebubbles-2.1.3+desktop.93-aarch64.tar.gz::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v2.1.3+desktop.93/bluebubbles-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 190c223a77db0404d76d4a189e5bdee36475d4988ea9c5fb1bf36b66844a2491
-	source_x86_64 = bluebubbles-2.1.3+desktop.93-x86_64.tar.gz::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v2.1.3+desktop.93/bluebubbles-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a9ed17847b7f068b1b79610d2fa39a986a1bf452fda3ffea97572a516986b668
+	source_aarch64 = bluebubbles-2.1.4+desktop.94-aarch64.tar.gz::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v2.1.4+desktop.94/bluebubbles-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 03012f4411b74de64455c9a29b25f5f7d6fb157ae3cfa26bab98bdf6377b4cae
+	source_x86_64 = bluebubbles-2.1.4+desktop.94-x86_64.tar.gz::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v2.1.4+desktop.94/bluebubbles-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b5f8e63cf807af54d1e747d231a44d1a4b8745da32c19ad658eab7b1181ce0b6
 
 pkgname = bluebubbles-bin
