@@ -4,15 +4,12 @@ _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 pkgver=9.31
-pkgrel=15
+pkgrel=16
 url='https://software.schmorp.de/pkg/rxvt-unicode.html'
 arch=('i686' 'x86_64')
 license=('GPL-3.0-only')
-# WORKAROUND: using gcc15 because some features (e.g., daemon/client)
-#             don't work when compiled with gcc16
 makedepends=(
     'signify'
-    'gcc15'
 )
 depends=(
     'libxft'
@@ -77,10 +74,6 @@ prepare() {
 
     cd "$_archive"
 
-    # WORKAROUND: force gcc15 for building and linking
-    export CC=gcc-15
-    export CXX=g++-15
-
     # WORKAROUND: multiple-char sequence for 7-bit queries
     # https://lists.schmorp.de/pipermail/rxvt-unicode/2023q1/002640.html
     patch -p1 -i ../7-bit-queries.patch
@@ -122,6 +115,12 @@ prepare() {
 build() {
     cd "$_archive"
 
+    # With >=GCC-16 memsets before constructor invocation are optimized away.
+    # Together with LTO this breaks internal assumptions about object initialization,
+    # leading to segfaults.
+    # WORKAROUND: Disable those optimizations.
+    export CXXFLAGS+=" -fno-lifetime-dse"
+
     ################################################################
     #                                                              #
     #   This is an opinionated build. If you miss features, feel   #
@@ -130,10 +129,10 @@ build() {
     #                                                              #
     ################################################################
 
-    # disable smart-resize (FS#34807)
-    # do not specify --with-terminfo (FS#46424)
-    # do not specify --disable-frills (FS#77474)
-    # workaround ncurses --disable-root-access (FS#79143)
+    # WORKAROUND: disable --smart-resize (FS#34807)
+    # WORKAROUND: do not specify --with-terminfo (FS#46424)
+    # WORKAROUND: do not specify --disable-frills (FS#77474)
+    # WORKAROUND: ncurses --disable-root-access (FS#79143)
     export TIC="/usr/bin/tic -o $srcdir/terminfo"
     ./configure \
         --prefix=/usr \
