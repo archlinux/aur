@@ -7,13 +7,17 @@ pkgname=${_execname}-bin
 pkgver=1.5.0
 pkgrel=2
 pkgdesc='A FOSS Git multiplatform client for newbies and pros'
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
+
 depends=('java-runtime' 'hicolor-icon-theme')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
+provides=("${_execname}")
+
 source=("${_execname}.svg" "${_execname}.desktop"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
