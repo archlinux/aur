@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps6000a
-pkgver=2.1.3_0r232
+pkgver=2.1.4_0r238
 pkgrel=1
 pkgdesc="Library for PicoScope 6000a series in PicoScope 7 Beta"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps6000a/libps6000a_${pkgver//_/-}_amd64.deb")
-md5sums=('2eaf5d7c3682daa9eb75767600a261b2')
+md5sums=('4b32f341cb476d894f9b9f7b3bc91335')
 
 package() {
   tar -xf data.tar.* -C "${pkgdir}"
