@@ -1,7 +1,7 @@
 pkgbase = gridcraft
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft Excel
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getartcraft.com/apps/gridcraft
 	arch = x86_64
 	license = MIT
