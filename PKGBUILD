@@ -5,7 +5,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.6.2.21
+pkgver=3.6.2.22
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('Artistic-2.0')
 depends=('sdl2' 'sdl2_sound' 'libogg' 'libtheora' 'libvorbis' 'freetype2' 'glm' 'tinyxml2' 'miniz')
 makedepends=('cmake' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('19cc4bdf222c5bf1c412d11f19f3fee07b310e21a9b731f42f1f71d6faf0e1a0')
+sha256sums=('610eaf62ba94d6f64b53969c14884aa9ee96611f18f8b4aa236048e0af4b3798')
 
 _srcdir="$pkgname-$pkgver"
 
@@ -32,6 +32,8 @@ prepare() {
 }
 
 build() {
+	export CXXFLAGS+=' -Wno-error=format-security'
+
 	cmake -S "$_srcdir" -B 'build' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_BUILD_TYPE=None \
