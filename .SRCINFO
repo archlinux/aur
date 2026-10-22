@@ -1,0 +1,18 @@
+pkgbase = privacybit
+	pkgdesc = Privacy audit for Linux desktops
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/privacybit
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go>=1.26.4
+	depends = systemd
+	optdepends = flatpak: inspect Flatpak applications
+	optdepends = iproute2: inspect VPN routes
+	optdepends = sudo: run reviewed package removal actions
+	source = privacybit::git+https://github.com/Nomadcxx/privacybit.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = privacybit
