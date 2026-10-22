@@ -1,0 +1,19 @@
+pkgbase = polystrata
+	pkgdesc = Run large AI models on your own PC: Qwen3.8-Flash-Next, GLM 5.3 Flash, DeepSeek V4 Flash and more, on NVIDIA or AMD GPUs
+	pkgver = 0.1.45.poly.2
+	pkgrel = 1
+	url = https://github.com/VecSzn/PolyStrata
+	install = polystrata.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = gcc
+	depends = git
+	optdepends = cuda: NVIDIA GPU engine (upstream builds with CUDA 13.0; nvcc is found on PATH or in /opt/cuda*)
+	optdepends = rocm-hip-sdk: AMD GPU engine through a system ROCm 7 in /opt/rocm (otherwise ROCm is downloaded into the venv on first start)
+	source = https://github.com/VecSzn/PolyStrata/archive/refs/tags/v0.1.45-poly.2.tar.gz
+	source = polystrata.sh
+	sha256sums = ed1e197091c6d5fa99da387142d89ba7f5254bb53c340575c3c8a250f598c764
+	sha256sums = 1913c231339ef70d671afdff518de808b7bb9831f4d1cfa3be00807acbe4fcd8
+
+pkgname = polystrata

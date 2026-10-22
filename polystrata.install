@@ -1,0 +1,22 @@
+post_install() {
+	cat <<'EOF'
+polystrata: run `polystrata` to set up and start the server.
+
+The first run compiles the engine for your GPU (10-40 minutes) and downloads
+the model files (tens of GB) into ~/PolyStrata (override with the
+POLYSTRATA_HOME environment variable). Later runs just start the server.
+
+  polystrata            set up if needed, then start the model
+  polystrata --help     upstream setup options (model, context, GPU, ...)
+  polystrata-update     rebuild the engine and refresh the Python packages
+                        without starting the model
+
+NVIDIA: install the `cuda` package first (upstream builds with CUDA 13.0).
+AMD: a system ROCm 7 in /opt/rocm is used when present, otherwise ROCm is
+downloaded into the venv on the first start. See /opt/polystrata/docs/.
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
