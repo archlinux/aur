@@ -25,7 +25,7 @@ makedepends=('cmake' 'python')
 # DRA decoder source: maliwen2015/ffmpeg_cavs_dra has no releases, pin the
 # commit; extract_dra.py refuses a patch version it does not know, so a
 # changed patch fails the build loudly instead of packaging something broken.
-_patchcommit=20260814.010734
+_patchcommit=eb94ceb887b47b6ecfbda9da43273dd65246df1e
 source=("OnAir-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz"
         "ffmpeg-7.1.2_cavs_dra.patch::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/$_patchcommit/ffmpeg-7.1.2_cavs_dra.patch"
         "LICENSE::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/$_patchcommit/LICENSE")
