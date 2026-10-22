@@ -11,7 +11,7 @@ srcinfo:
 	$(MP) --printsrcinfo > .SRCINFO
 
 clean:
-	git clean -Xdf
+	git clean -Xdff
 
 install:
 	$(MP) -si
