@@ -3,9 +3,9 @@
 pkgname=relic-vague-gtk-theme
 _repo=Vague-GTK-Theme
 _commit=a2e5b05f8bb0137cfb71c9fadd546888c0a7337a
-_fixes=2026.10.22.1
+_fixes=2026.10.22.2
 pkgver=2026.06.25
-pkgrel=4
+pkgrel=5
 pkgdesc='Vague GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('ebf947bcbc99a2297e94b199b54577ce424ad3ce886635a175c7021b0cf481aa'
-            '3c203a956f4148230177eb925916ad8eddb75c98dd2212368b40df5e52d889d0')
+            '633d7b4729e30c4da5dc17543ac51249ed75bb8e789f20e5aa2c6d5bbc1bd5b6')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
