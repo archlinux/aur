@@ -1,25 +1,26 @@
 pkgbase = rundeck-community
-        pkgdesc = Rundeck is an open source automation service with a web console, command line tools and a WebAPI
-        pkgver = 5.17.0.20251103
-        pkgrel = 1
-        url = https://www.rundeck.com/open-source
-        install = rundeck.install
-        arch = any
-        license = Apache
-        depends = java-runtime>=11
-        options = !strip
-        backup = etc/rundeck/admin.aclpolicy
-        backup = etc/rundeck/framework.properties
-        backup = etc/rundeck/jaas-loginmodule.conf
-        backup = etc/rundeck/log4j2.properties
-        backup = etc/rundeck/profile
-        backup = etc/rundeck/project.properties
-        backup = etc/rundeck/realm.properties
-        backup = etc/rundeck/rundeck-config.properties
-        backup = etc/rundeck/ssl/ssl.properties
-        source = rundeck-community-5.17.0.20251103-1.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.17.0.20251103-1.noarch.rpm/download.rpm?distro_version_id=227
-        source = rundeckd.service
-        sha256sums = c7852805c7e95cf2cc33f2e4a43da8ea9a2d0bd9d0f811973d71ce70b5114409
-        sha256sums = d0fd0c817aa86e1fe43c1d1a5a71465624916ca54fb7405cb09e6b01ac31cca1
+	pkgdesc = Rundeck is an open source automation service with a web console, command line tools and a WebAPI
+	pkgver = 6.2.1.20260909
+	pkgrel = 1
+	url = https://www.rundeck.com/open-source
+	install = rundeck.install
+	arch = any
+	license = Apache
+	depends = java-runtime>=17
+	depends = postgresql-jdbc
+	options = !strip
+	backup = etc/rundeck/admin.aclpolicy
+	backup = etc/rundeck/framework.properties
+	backup = etc/rundeck/jaas-loginmodule.conf
+	backup = etc/rundeck/log4j2.properties
+	backup = etc/rundeck/profile
+	backup = etc/rundeck/project.properties
+	backup = etc/rundeck/realm.properties
+	backup = etc/rundeck/rundeck-config.properties
+	backup = etc/rundeck/ssl/ssl.properties
+	source = rundeck-community-6.2.1.20260909-1.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-6.2.1.20260909-1.noarch.rpm/download.rpm?distro_version_id=227
+	source = rundeckd.service
+	sha256sums = d10f0b19a4afffc664c591adaa0badf27aa7a5d140d549a2f6617ae79fd9ab00
+	sha256sums = d0fd0c817aa86e1fe43c1d1a5a71465624916ca54fb7405cb09e6b01ac31cca1
 
 pkgname = rundeck-community
