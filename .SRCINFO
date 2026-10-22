@@ -1,14 +1,15 @@
 pkgbase = fluxzy-bin
 	pkgdesc = Fully streamed MITM proxy to intercept, record and alter HTTP/1.1, H2, WebSocket and gRPC traffic (prebuilt)
 	pkgver = 1.39.50.33872
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haga-rak/fluxzy.core
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	depends = gcc-libs
 	depends = glibc
 	depends = icu
+	depends = libgcc
+	depends = libstdc++
 	depends = openssl
 	optdepends = libpcap: raw packet capture (-c/--include-dump, pcapng export)
 	optdepends = polkit: pkexec prompt used to elevate the fluxzynetcap capture helper

@@ -3,14 +3,14 @@
 pkgname=fluxzy-bin
 _pkgname=fluxzy
 pkgver=1.39.50.33872
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully streamed MITM proxy to intercept, record and alter HTTP/1.1, H2, WebSocket and gRPC traffic (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/haga-rak/fluxzy.core"
 license=('GPL-3.0-only')
 # Self-contained .NET 10 publish: the runtime is bundled, but it still dlopens
 # ICU (the process aborts at startup without it), OpenSSL and libstdc++.
-depends=('gcc-libs' 'glibc' 'icu' 'openssl')
+depends=('glibc' 'icu' 'libgcc' 'libstdc++' 'openssl')
 optdepends=('libpcap: raw packet capture (-c/--include-dump, pcapng export)'
             'polkit: pkexec prompt used to elevate the fluxzynetcap capture helper'
             'libcap: getpcaps, used to detect already-granted capture capabilities')
