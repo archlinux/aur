@@ -1,0 +1,5 @@
+[signed]
+source = "github"
+github = "omacom/signed"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,14 @@
+# whitelist: an AUR repository holds the PKGBUILD, its metadata, the
+# nvchecker config and the small files the PKGBUILD names as local
+# sources; makepkg's work (src/, pkg/, the download, the built package,
+# logs) is never admitted
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!*.desktop
+!*.svg
+!*.install
+!*.patch
+*/
