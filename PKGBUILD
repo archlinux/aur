@@ -1,7 +1,7 @@
 # Maintainer: LAA
 pkgname=bupdate-bin
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal package updater — parallel updates for Linux, BSD and Windows (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://radicle.network/nodes/iris.radicle.network/rad%3Az1SpYG13iEYC9Ds1UjyVJhe1sf1i"
