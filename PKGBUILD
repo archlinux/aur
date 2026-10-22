@@ -53,4 +53,6 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 crates/ravel-desktop/assets/markdown/katex/LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/KaTeX-LICENSE"
+    install -Dm644 crates/ravel-desktop/assets/markdown/highlight/LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/Highlight.js-LICENSE"
 }
