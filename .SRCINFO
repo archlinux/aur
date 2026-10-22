@@ -1,8 +1,8 @@
 pkgbase = neferbar-bin
 	pkgdesc = One-cell-high, terminal-style status bar for Wayland, driven by scripts
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
-	url = https://github.com/bnema/neferbar
+	url = https://git.bnema.dev/neferbar
 	arch = aarch64
 	arch = x86_64
 	license = MIT
@@ -15,9 +15,9 @@ pkgbase = neferbar-bin
 	provides = neferbar
 	conflicts = neferbar
 	conflicts = neferbar-git
-	source_aarch64 = neferbar-bin_0.3.0_aarch64.tar.gz::https://github.com/bnema/neferbar/releases/download/v0.3.0/neferbar_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 72ec2b402c4d1e329b3a6b5f014a6137bcbe62cb386de0b05e2d69eed74295b0
-	source_x86_64 = neferbar-bin_0.3.0_x86_64.tar.gz::https://github.com/bnema/neferbar/releases/download/v0.3.0/neferbar_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1c33f516b6c122978f305ca6f60093d98554dbdd55d14c80cba68674e8ad6e2f
+	source_aarch64 = neferbar-bin_0.3.1_aarch64.tar.gz::https://git.bnema.dev/neferbar/releases/download/v0.3.1/neferbar_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8b58009c7d655d14698ee7b11046d59a3daab5230642e4fd1f81b5444bf9798c
+	source_x86_64 = neferbar-bin_0.3.1_x86_64.tar.gz::https://git.bnema.dev/neferbar/releases/download/v0.3.1/neferbar_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = f63a522ac7aa4e9e58f624ac462539459fc07392350e55dc35790886f8714802
 
 pkgname = neferbar-bin
