@@ -1,0 +1,23 @@
+pkgbase = kumiko-bin
+	pkgdesc = Tiling terminal emulator for Linux, built on ttyx_ and Tilix
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/iqzer0/kumiko
+	arch = x86_64
+	license = MPL-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk3
+	depends = vte3
+	depends = libsecret
+	depends = libx11
+	optdepends = gsettings-desktop-schemas: system monospace font, dark-mode preference and proxy settings
+	optdepends = dconf: one-time import of ttyx_ settings
+	provides = kumiko
+	conflicts = kumiko
+	options = !strip
+	options = !debug
+	source = https://github.com/iqzer0/kumiko/releases/download/v2.0.0/kumiko-2.0.0-linux-x86_64.tar.gz
+	sha256sums = 0bc8c74ebd522df3ab82ace02b31ba85894122ac55e4f7f80faa2b9f1a0cd706
+
+pkgname = kumiko-bin
