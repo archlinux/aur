@@ -1,6 +1,6 @@
 # Maintainer: wearzdk <hi@wearzdk.me>
 pkgname=nahimic-linux
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Nahimic speaker effects and equalizer for supported Linux laptops'
 arch=('x86_64')
