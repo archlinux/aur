@@ -1,6 +1,6 @@
 # Maintainer: illusory <becomeillusory@gmail.com>
 pkgname=kcxy-wifi-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="河南开封科技传媒学院校园网（锐捷 RG-SAM+ eportal）自动认证与掉线重连（预编译）"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,9 +20,9 @@ source_x86_64=("$_gh/$_asset_amd64")
 source_aarch64=("$_gh/$_asset_arm64")
 source_armv7h=("$_gh/$_asset_armv7")
 
-sha256sums_x86_64=('85e5d6427b81dccfa42c50a28118292de142cdd98c181e227aef01eddafae50e')
-sha256sums_aarch64=('c4235fa23f18ace0b96d54711bc2a5d63a2ec70af13b3b0e7426ecb9b9175bea')
-sha256sums_armv7h=('38b377525a1d6a5c52975609048946e2974a93131e5201a06aaace42742f0ae7')
+sha256sums_x86_64=('f14bc6e0feae00ca824bca764b730d62ac8dae64980a76942d541daa0d3aa82f')
+sha256sums_aarch64=('4c59bbf02905c26b5c205e39c4ab102ebb49a0b2eabc876fb06ab2ea74193523')
+sha256sums_armv7h=('55cb645a660f65374141be64a59450358d5cc775c5845aad850ec2b76f8cb5a6')
 
 package() {
   case "$CARCH" in
