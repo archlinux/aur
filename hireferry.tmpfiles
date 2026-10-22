@@ -1,0 +1,2 @@
+d /etc/hireferry 0750 root hireferry -
+d /var/lib/hireferry 0700 hireferry hireferry -

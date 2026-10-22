@@ -1,0 +1,33 @@
+[Unit]
+Description=HireFerry recruitment service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=hireferry
+Group=hireferry
+WorkingDirectory=/var/lib/hireferry
+ExecStart=/usr/bin/hireferry --config /etc/hireferry/config.toml serve
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=30
+UMask=0077
+StateDirectory=hireferry
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/hireferry
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target
