@@ -1,0 +1,19 @@
+pkgbase = todesk-enterprise-client-bin
+	pkgdesc = ToDesk Enterprise Client (controller) - remote control, enterprise edition
+	pkgver = 3.2.0.0
+	pkgrel = 1
+	url = https://enterprise.todesk.com
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = gtk3
+	depends = kmod
+	depends = libpulse
+	depends = nss
+	depends = xcb-util
+	depends = xcb-util-keysyms
+	options = !strip
+	options = emptydirs
+	source = ToDesk_Client_3.2.0.0_amd64.deb::https://dl.todesk.com/tob/linux/ToDesk_Client_3.2.0.0_amd64.deb
+	sha256sums = 1339d29d911789221dd5676baf568fb5b7841973052f501101aadb374aa4a63f
+
+pkgname = todesk-enterprise-client-bin
