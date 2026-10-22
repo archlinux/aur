@@ -8,7 +8,7 @@ pkgname=pstate-frequency-git
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver (git version)"
 # shellcheck disable=SC2034
-pkgver="3.15.0".r1011.2e43242
+pkgver="3.18.0".r1091.7ff6ab5
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -28,10 +28,10 @@ license=('GPL2')
 url="https://github.com/pyamsoft/pstate-frequency.git"
 # shellcheck disable=SC2034
 backup=('etc/pstate-frequency.d/00-auto.plan'
-        'etc/pstate-frequency.d/01-powersave.plan'
-        'etc/pstate-frequency.d/02-balanced.plan'
-        'etc/pstate-frequency.d/03-performance.plan'
-        'etc/pstate-frequency.d/04-max.plan')
+  'etc/pstate-frequency.d/01-powersave.plan'
+  'etc/pstate-frequency.d/02-balanced.plan'
+  'etc/pstate-frequency.d/03-performance.plan'
+  'etc/pstate-frequency.d/04-max.plan')
 
 ##
 # The SHA256 is constantly changing since this is
@@ -39,28 +39,28 @@ backup=('etc/pstate-frequency.d/00-auto.plan'
 ##
 # shellcheck disable=SC2034
 source=(
-        "${_gitname}::git+${url}#branch=main"
-        "00-fix-prefix.patch")
+  "${_gitname}::git+${url}#branch=main"
+  "00-fix-prefix.patch")
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
-            'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
+  'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 pkgver() {
   # shellcheck disable=SC2154
   cd "${srcdir}/${_gitname}" || {
-        msg "Failed to cd into ${srcdir}/${_gitname}"
-        return 1
+    msg "Failed to cd into ${srcdir}/${_gitname}"
+    return 1
   }
 
-  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^readonly __VERSION=/) {print $2}}' "${_gitname}")" \
-                "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(awk -F '=' '{ if (/^readonly __VERSION=/) { print $2 } }' "${_gitname}")" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   # shellcheck disable=SC2154
   cd "${srcdir}/${_gitname}" || {
-        msg "Failed to cd into ${srcdir}/${_gitname}"
-        return 1
+    msg "Failed to cd into ${srcdir}/${_gitname}"
+    return 1
   }
 
   # Apply patches
@@ -76,8 +76,8 @@ prepare() {
 package() {
   # shellcheck disable=SC2154
   cd "${srcdir}/${_gitname}" || {
-        msg "Failed to cd into ${srcdir}/${_gitname}"
-        return 1
+    msg "Failed to cd into ${srcdir}/${_gitname}"
+    return 1
   }
 
   # shellcheck disable=SC2154
