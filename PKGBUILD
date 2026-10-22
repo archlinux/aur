@@ -3,7 +3,7 @@
 
 pkgname=youki
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A container runtime written in Rust'
 arch=(x86_64 aarch64)
 url="https://containers.github.io/$pkgname"
@@ -24,10 +24,14 @@ sha256sums=('2dbc7be5edccd269fcce7f1509294bb056764cceaea3e64608476e8a2eb13c31')
 _srcenv() {
 	cd "$pkgname"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target

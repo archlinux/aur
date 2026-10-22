@@ -1,7 +1,7 @@
 pkgbase = youki
 	pkgdesc = A container runtime written in Rust
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://containers.github.io/youki
 	arch = x86_64
 	arch = aarch64
