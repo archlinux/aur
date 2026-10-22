@@ -7,7 +7,7 @@ _minor=6
 _patch=0
 pkgver=$_major.$_minor
 cemu_tag="v$pkgver"
-pkgrel=5
+pkgrel=6
 pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
 url=https://cemu.info
@@ -82,9 +82,9 @@ package() {
 
 	install -dm755 "$pkgdir/usr/share/Cemu"
 
-	local _GLOBIGNORE=bin/Cemu_release
+	GLOBIGNORE=bin/Cemu_release
 	cp -ar bin/* "$pkgdir/usr/share/Cemu"
-	unset _GLOBIGNORE
+	unset GLOBIGNORE
 
 	install -Dm644 src/resource/logo_icon.png -T "$pkgdir/usr/share/icons/hicolor/128x128/apps/info.cemu.Cemu.png"
 	install -Dm644 dist/linux/info.cemu.Cemu.desktop -T "$pkgdir/usr/share/applications/info.cemu.Cemu.desktop"
