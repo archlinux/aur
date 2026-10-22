@@ -2,19 +2,19 @@
 # Maintainer (AUR): voron00
 
 pkgname=proton-wineland-bin
-_srctag=11.0-20261015
+_srctag=11.0-20261022
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
 
 _package_name="proton-wineland-${_srctag}-x86_64"
 source=(
-  https://github.com/nanomatters/proton-cachyos/releases/download/wineland-${_srctag}/${_package_name}.tar.xz
+  https://github.com/nanomatters/proton-salkim/releases/download/wineland-${_srctag}/${_package_name}.tar.xz
   compatibilitytool.vdf.template
 )
 
 pkgdesc="An unofficial fork of proton-cachyos with further improvements and wayland enhancements"
-url="https://github.com/nanomatters/proton-cachyos"
+url="https://github.com/nanomatters/proton-salkim"
 arch=(x86_64 x86_64_v3)
 options=(!strip emptydirs)
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -97,5 +97,5 @@ package() {
     mv "${_compatdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-sha256sums=('eab8debacde4261d3d6007254168bfa96f409c1aed35b3231b56ee54b2bb685c'
+sha256sums=('37c417ae5633a21b6d9b7e313df09560d58be831259a2b9784b732ae87786342'
             '6983622dc08784891929b843e8c5bf566c160eb2c23b7fc89c0f4dbabcd5db69')
