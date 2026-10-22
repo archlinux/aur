@@ -2,7 +2,7 @@
 
 pkgname=python-liger-kernel
 _pkgname=Liger-Kernel
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Efficient Triton kernels for LLM training"
 arch=('any')
@@ -34,7 +34,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/linkedin/Liger-Kernel/archive/refs/tags/v$pkgver.tar.gz"
     'experimental-ops-package.patch'
 )
-sha256sums=('babbb9dc2ba5be256c5661786ff5485744d346c74bdf40ee0b122762d860eedb'
+sha256sums=('dc2e4e886ea858d9523a28ee2f3d8cef6ea8daffa9b14b5000eff5e67787a3f3'
             '38554a4ae52740d8470829b10bd07b7edd227eb125bae3288fef138b6aadcfc8')
 
 prepare() {
