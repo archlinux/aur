@@ -2,11 +2,11 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=nefercap-git
-pkgver=0.6.0.r0.g7d47882
+pkgver=0.6.1.r0.g3d41bc5
 pkgrel=1
 pkgdesc='Screenshots and silent screen recording for Wayland, from one shortcut (git version)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/bnema/nefercap'
+url='https://git.bnema.dev/nefercap'
 license=('GPL-3.0-only')
 # Loaded at runtime (purego, no cgo): not seen by makepkg's library scan.
 depends=('glibc' 'wayland' 'libxkbcommon' 'vulkan-icd-loader' 'vulkan-driver')
@@ -16,7 +16,7 @@ optdepends=('ffmpeg: screen recording (libx264)'
 	'neferwl: hidden-workspace capture, HUD exclusion and capture indicator')
 provides=('nefercap')
 conflicts=('nefercap' 'nefercap-bin')
-source=('git+https://github.com/bnema/nefercap.git')
+source=('git+https://git.bnema.dev/nefercap.git')
 sha256sums=('SKIP')
 
 pkgver() {
