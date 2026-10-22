@@ -21,8 +21,10 @@ pkgbase = quickfix-git
 	source = git+https://github.com/quickfix/quickfix.git
 	source = cmake.patch
 	source = getdatetime-gil.patch
+	source = fix-scheduled-relogon.patch
 	sha256sums = SKIP
 	sha256sums = fdd7b71866f6490100796be9d891df13a92546f2e70c9cf88863688e9b65a2f7
 	sha256sums = 04972d562875f8224861d76791001b3ec2515e0a898a431439dea6fbef88760f
+	sha256sums = eca581da23e5ee5c61e44c6eb55c7a7a221406d22d681237c120c89ff6704c75
 
 pkgname = quickfix-git
