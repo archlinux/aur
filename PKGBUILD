@@ -2,7 +2,7 @@
 
 pkgname=artcraft
 pkgver=0.41.0
-pkgrel=3
+pkgrel=4
 url="https://getartcraft.com"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='IDE for interactive AI image and video creation'
@@ -39,10 +39,14 @@ sha256sums=('c10a89be18b8322e51d9ee6985032ba79872ceb0477beaf72c753d4340baba00')
 _srcenv() {
 	cd "$_archive"
 	export CARGO_HOME="$srcdir"
-	export CARGO_PROFILE_RELEASE_DEBUG=2
-	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=thin
-	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
