@@ -1,0 +1,35 @@
+--- a/src/ui/message_view.rs
++++ b/src/ui/message_view.rs
+@@ -6728,26 +6728,9 @@
+-#[allow(deprecated)] // lookup_color: named theme colors have no successor yet
+-pub fn theme_grounds_for(widget: &impl IsA<gtk::Widget>, dark: bool) -> (String, String, String) {
+-    let style = widget.style_context();
+-    if dark == adw::StyleManager::default().is_dark() {
+-        if let Some(c) = style.lookup_color("view_bg_color") {
+-            let hex = |r: f32, g: f32, b: f32| crate::color::to_hex(&gtk::gdk::RGBA::new(r, g, b, 1.0));
+-            // The stock pairs' own ratios: #1e1e1e→#141414 and #fff→#f1f1f1.
+-            let f = if dark { 0.667 } else { 0.945 };
+-            let ground = hex(c.red(), c.green(), c.blue());
+-            let page = hex(c.red() * f, c.green() * f, c.blue() * f);
+-            // The window's own ground — what the GTK reader header (the
+-            // subject block) sits on. A full-bleed single message paints
+-            // its in-document header this color so subject and header
+-            // read as one surface.
+-            let chrome = style
+-                .lookup_color("window_bg_color")
+-                .map(|w| hex(w.red(), w.green(), w.blue()))
+-                .unwrap_or_else(|| (if dark { CHROME.1 } else { CHROME.0 }).to_string());
+-            return (ground, page, chrome);
+-        }
+-    }
++pub fn theme_grounds_for(_widget: &impl IsA<gtk::Widget>, dark: bool) -> (String, String, String) {
++    if let Some(p) = crate::theme::palette(dark) {
++        return (p.surface.to_string(), p.canvas.to_string(), p.chrome.to_string());
++    }
+     let (g, p, c) = if dark {
+         (GROUND.1, PAGE.1, CHROME.1)
+     } else {
+         (GROUND.0, PAGE.0, CHROME.0)
+     };
+     (g.to_string(), p.to_string(), c.to_string())
+ }
