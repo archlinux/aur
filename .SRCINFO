@@ -1,6 +1,6 @@
 pkgbase = sioyek-supernote
 	pkgdesc = A PDF viewer designed for reading research papers and technical books with Supernote .mark file support.
-	pkgver = r2096.4719fbb2
+	pkgver = r2097.19c614bb
 	pkgrel = 2
 	url = https://github.com/mil-ad/sioyek
 	arch = x86_64
