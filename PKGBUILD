@@ -7,10 +7,10 @@ pkgname="${_pkgname}"-ptt-fix
 pkgver=6.8.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality patched with MR !124'
+pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality patched with MR !130'
 
 arch=(x86_64)
-url='https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/124'
+url='https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/130'
 license=(LGPL-2.0-or-later)
 
 depends=(glibc
@@ -35,7 +35,7 @@ conflicts=("${_pkgname}")
 
 source=(
   "https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz"
-  "124.diff::https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/124.diff"
+  "patch.diff::${url}.diff"
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -44,7 +44,7 @@ options=(!debug)
 prepare() {
   cd "${_pkgname}-${pkgver}" || exit
 
-  patch -Np1 -i ../124.diff
+  patch -Np1 -i ../patch.diff
 }
 
 build() {
