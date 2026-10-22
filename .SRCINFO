@@ -1,0 +1,17 @@
+pkgbase = nethack-cn-bin
+	pkgdesc = Simplified Chinese localization of NetHack 5.0.1 (prebuilt binaries)
+	pkgver = 5.0.1pre509.27e34f0
+	pkgrel = 1
+	url = https://github.com/StackC00ki3/Nethack-cn
+	arch = x86_64
+	arch = aarch64
+	license = custom:NGPL
+	depends = ncurses
+	options = !strip
+	options = !debug
+	source_x86_64 = nethack-pre-509-27e34f0-x86_64.tar.gz::https://github.com/StackC00ki3/Nethack-cn/releases/download/nethack-pre-509-27e34f0/NetHack-501-linux-amd64-glibc-s.tar.gz
+	sha256sums_x86_64 = e252de2a20ab01055e9db0d1b2ad9eb1b228144475ce348667b0d47b96cb52f0
+	source_aarch64 = nethack-pre-509-27e34f0-aarch64.tar.gz::https://github.com/StackC00ki3/Nethack-cn/releases/download/nethack-pre-509-27e34f0/NetHack-501-linux-arm64-glibc-s.tar.gz
+	sha256sums_aarch64 = db868501984966eb971a156ac6939579532c8d611f9b8c13110eca4ae7caea04
+
+pkgname = nethack-cn-bin
