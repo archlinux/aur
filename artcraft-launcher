@@ -1,0 +1,3 @@
+#!/bin/sh
+export ARTCRAFT_LAUNCHER_NO_DESKTOP_INTEGRATION=1
+exec /opt/artcraft-launcher-appimage/artcraft-launcher.AppImage "$@"
