@@ -1,7 +1,7 @@
 pkgbase = relic-nightfox-gtk-theme
 	pkgdesc = Nightfox GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
 	pkgver = 2025.10.23
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gaou-piou/Nightfox-GTK-Theme
 	arch = any
 	license = AGPL-3.0-only
@@ -13,8 +13,8 @@ pkgbase = relic-nightfox-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Nightfox-GTK-Theme-f0212f2aa0d3d6cc0b313020d2d0122f313eafc9.tar.gz::https://github.com/gaou-piou/Nightfox-GTK-Theme/archive/f0212f2aa0d3d6cc0b313020d2d0122f313eafc9.tar.gz
-	source = relic-gtk-fixes-2026.10.22.1.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.22.1.tar.gz
+	source = relic-gtk-fixes-2026.10.22.2.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.22.2.tar.gz
 	sha256sums = 08843884ad97463bac198fb67d0c24338fae08dea5ef4cd6c236ce81fceb5783
-	sha256sums = 3c203a956f4148230177eb925916ad8eddb75c98dd2212368b40df5e52d889d0
+	sha256sums = 633d7b4729e30c4da5dc17543ac51249ed75bb8e789f20e5aa2c6d5bbc1bd5b6
 
 pkgname = relic-nightfox-gtk-theme
