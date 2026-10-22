@@ -1,0 +1,19 @@
+pkgbase = local-rocket-stats-bin
+	pkgdesc = Rocket League stats and MMR tracker that reads the game's local data (Stats API + log), with tray and web dashboard (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/deddroid/local-rocket-stats
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	optdepends = xdg-utils: open the dashboard in the browser
+	provides = local-rocket-stats
+	conflicts = local-rocket-stats
+	options = !lto
+	options = !strip
+	options = !debug
+	source = https://github.com/deddroid/local-rocket-stats/releases/download/v0.1.0/local-rocket-stats-0.1.0-linux-x86_64.tar.gz
+	sha256sums = 2d8f11ededbd46b4fb8ce6d9991de75b3583d4b89156f088b99a96b1c5dee1d5
+
+pkgname = local-rocket-stats-bin
