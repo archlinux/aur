@@ -2,7 +2,7 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 pkgname=snakemake
-pkgver=9.27.0
+pkgver=9.27.1
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
@@ -55,7 +55,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('cd80a66dda92d274af02244a0c861d7de8851402b23caadbcbcc101f4c04a0d6')
+sha256sums=('f772714bb4133f836f0b5c3124ed70ef954c223aa034d6fcaf0282a4bbb98a5e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -65,6 +65,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 #   local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
 #   install -d "$pkgdir/etc/bash_completion.d"
 #   PYTHONPATH="$pkgdir/usr/lib/python$pyver/site-packages:$PYTHONPATH" \
