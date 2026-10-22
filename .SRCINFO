@@ -1,0 +1,23 @@
+pkgbase = todav-bin
+	pkgdesc = Tasks and calendar kept in your Nextcloud
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SelfRef/todav
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita>=1:1.8
+	depends = libsecret
+	depends = glib2
+	depends = libgcc
+	depends = glibc
+	optdepends = gnome-online-accounts: sign in with a GNOME Online Accounts account
+	optdepends = org.freedesktop.secrets: keep the passwords in the system keyring
+	optdepends = gnome-shell-extension-todav: tasks, month and agenda in the GNOME top bar
+	provides = todav
+	conflicts = todav
+	noextract = todav-1.0.0-x86_64.tar.gz
+	source_x86_64 = todav-1.0.0-x86_64.tar.gz::https://github.com/SelfRef/todav/releases/download/v1.0.0/todav-1.0.0-x86_64.tar.gz
+	sha256sums_x86_64 = 37e4d0dfc731508f5462941a213e517ad2c0c7f6c1f37d3236bd623d6069377c
+
+pkgname = todav-bin
