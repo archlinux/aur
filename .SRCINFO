@@ -1,6 +1,6 @@
 pkgbase = scramblery-webgpu-bin
 	pkgdesc = Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.WebGPU version.
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/altunenes/scramblery
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = scramblery-webgpu-bin
 	depends = fontconfig
 	depends = gtk3
 	depends = vulkan-icd-loader
-	provides = scramblery=4.3.0
+	provides = scramblery=4.4.0
 	conflicts = scramblery
 	conflicts = scramblery-cuda
 	conflicts = scramblery-openvino
 	conflicts = scramblery-migraphx
-	source = scramblery-webgpu-4.3.0.deb::https://github.com/altunenes/scramblery/releases/download/v4.3.0/scramblery-webgpu_4.3.0_amd64.deb
-	source = LICENSE-4.3.0::https://raw.githubusercontent.com/altunenes/scramblery/v4.3.0/LICENSE
-	sha256sums = 1da889263d92f8634d29d22ac326656fad8dfe622935a389de6d2aaeca25abb8
+	source = scramblery-webgpu-4.4.0.deb::https://github.com/altunenes/scramblery/releases/download/v4.4.0/scramblery-webgpu_4.4.0_amd64.deb
+	source = LICENSE-4.4.0::https://raw.githubusercontent.com/altunenes/scramblery/v4.4.0/LICENSE
+	sha256sums = ec1ec6b586b12a0e0e060ca1f4b70d59ccc87406ebe03da10fd6b3c42fa53749
 	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
 
 pkgname = scramblery-webgpu-bin
