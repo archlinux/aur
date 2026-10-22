@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=serein-bin
-pkgver=1.0.0pre.nightly.20261017.60
+pkgver=1.0.0pre.nightly.20261022.61
 # Upstream tags the same release without the pkgver prefix mangling.
 _upver="${pkgver/pre./-}"
 pkgrel=1
@@ -31,7 +31,7 @@ options=('!strip' '!debug')
 # Upstream ships a ready Arch package per nightly; repack it instead of rebuilding.
 _asset="serein-v${_upver}-Linux-arch-serein-${pkgver}-1-${CARCH}.pkg.tar.zst"
 source=("serein-${pkgver}-${CARCH}.pkg.tar.zst::${url}/releases/download/v${_upver}/${_asset}")
-sha256sums=('9f2c1b2c8261ac04a0df51bdfc5ea231bf62387b1b07d5bbf97571300e5945b0')
+sha256sums=('5b2558d5e505a83f916de23ace071cc85ddd4cca93657c4706c84f29d8535e8d')
 
 latestver() {
     gh api repos/ViceVerse-cz/Serein/releases?per_page=10 \
