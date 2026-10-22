@@ -1,0 +1,22 @@
+pkgbase = katiecad-git
+	pkgdesc = Lightweight CAD drawing tool (Python/Tkinter) with DXF/DWG support
+	pkgver = 0.2.2.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Merecete/KatieCAD
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = tk
+	depends = python-pillow
+	depends = python-ezdxf
+	optdepends = python-ezdwg: extended DWG import (pip: python -m pip install ezdwg)
+	optdepends = oda-file-converter: DWG conversion via ODA File Converter
+	optdepends = libredwg: DWG conversion via dwg2dxf
+	provides = katiecad
+	conflicts = katiecad
+	source = git+https://github.com/Merecete/KatieCAD.git
+	sha256sums = SKIP
+
+pkgname = katiecad-git
