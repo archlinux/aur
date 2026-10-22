@@ -1,0 +1,21 @@
+pkgbase = python-grpcio-reflection
+	pkgdesc = Standard Protobuf Reflection Service for gRPC.
+	pkgver = 1.84.0
+	pkgrel = 1
+	url = https://github.com/grpc/grpc/tree/master/src/python/grpcio_reflection
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-coverage
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-grpcio-tools
+	depends = python
+	depends = python-protobuf
+	depends = python-grpcio
+	source = grpc-1.84.0.tar.gz::https://github.com/grpc/grpc/archive/refs/tags/v1.84.0.tar.gz
+	sha256sums = 17a4d25717f4871eb71cfdf191f7491f66a59c8ebc782ab53d52fcbfc478959f
+
+pkgname = python-grpcio-reflection
