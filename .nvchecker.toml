@@ -1,0 +1,4 @@
+[vesktop-bin]
+source = "git"
+git = "https://github.com/Vencord/Vesktop.git"
+prefix = "v"
