@@ -1,0 +1,22 @@
+pkgbase = kcxy-wifi-bin
+	pkgdesc = 河南开封科技传媒学院校园网（锐捷 RG-SAM+ eportal）自动认证与掉线重连（预编译）
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Become-ILLUSORY/kcxy-wifi
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	provides = kcxy-wifi
+	conflicts = kcxy-wifi
+	backup = etc/kcxy-wifi/config.ini
+	backup = etc/kcxy-wifi/accounts.json
+	source_x86_64 = https://github.com/Become-ILLUSORY/kcxy-wifi/releases/download/v1.0.1/kcxy-wifi-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3646e488c6d97f27f56869837c01b9f734734e0711d09dcd0ca924a8681d990e
+	source_aarch64 = https://github.com/Become-ILLUSORY/kcxy-wifi/releases/download/v1.0.1/kcxy-wifi-linux-arm64.tar.gz
+	sha256sums_aarch64 = 64061c45e5eb855f59dda809ce9a5f1183777a150cf7a0b6dcd702a25a748470
+	source_armv7h = https://github.com/Become-ILLUSORY/kcxy-wifi/releases/download/v1.0.1/kcxy-wifi-linux-armv7.tar.gz
+	sha256sums_armv7h = 7ec5c291a0e532a2b2956397a779852324adeb558882df76cdabe5c421c0084a
+
+pkgname = kcxy-wifi-bin
