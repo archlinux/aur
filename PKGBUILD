@@ -23,10 +23,10 @@ pkgname=ivi-cli
 # The release version as tagged upstream. pacman refuses a `-` in pkgver, and
 # without one vercmp still orders 0.5.0beta.1 after 0.4.0 and before
 # 0.5.0beta.2 and 0.5.0, so a stable release upgrades a beta without an epoch.
-_pkgver=0.5.0-beta.1
+_pkgver=0.5.0
 pkgver=${_pkgver//-/}
 pkgrel=1
-pkgdesc="Integrated CLI for managing, diagnosing, and operating VISA/IVI instruments"
+pkgdesc="Integrated CLI for VISA/IVI instruments: SCPI over HiSLIP, VXI-11, raw socket, USBTMC and serial"
 arch=('x86_64')
 url="https://github.com/ShortArrow/ivi-cli"
 license=('MIT' 'Apache-2.0')
@@ -38,7 +38,7 @@ conflicts=('ivi-cli-bin')
 # empty /usr/src/debug and a build-id symlink pointing at nothing.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('805e39fc2b66bc71d568c7725866e112845d85cbab155c252085569232581dd3')
+sha256sums=('1acdcd3f5370b895f08ae939d265af70903847311e5e034403b849ecef985a9e')
 
 prepare() {
   cd "$srcdir/$pkgname-$_pkgver"

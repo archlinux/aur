@@ -1,6 +1,6 @@
 pkgbase = ivi-cli
-	pkgdesc = Integrated CLI for managing, diagnosing, and operating VISA/IVI instruments
-	pkgver = 0.5.0beta.1
+	pkgdesc = Integrated CLI for VISA/IVI instruments: SCPI over HiSLIP, VXI-11, raw socket, USBTMC and serial
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ShortArrow/ivi-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ivi-cli
 	depends = aspnet-runtime
 	conflicts = ivi-cli-bin
 	options = !debug
-	source = ivi-cli-0.5.0beta.1.tar.gz::https://github.com/ShortArrow/ivi-cli/archive/refs/tags/v0.5.0-beta.1.tar.gz
-	sha256sums = 805e39fc2b66bc71d568c7725866e112845d85cbab155c252085569232581dd3
+	source = ivi-cli-0.5.0.tar.gz::https://github.com/ShortArrow/ivi-cli/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 1acdcd3f5370b895f08ae939d265af70903847311e5e034403b849ecef985a9e
 
 pkgname = ivi-cli
