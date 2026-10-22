@@ -2,7 +2,7 @@
 # Repackage the complete, prebuilt GitHub release; no local compilation.
 pkgname=epic-games-launcher-proton-bin
 pkgver=0.100.0
-pkgrel=2
+pkgrel=3
 # GitHub release revision is independent of AUR packaging-only revisions.
 _release=1
 pkgdesc='Native Epic Games Launcher Preview with per-game Proton selection'
@@ -19,8 +19,9 @@ provides=("epic-games-launcher=$pkgver")
 conflicts=('epic-games-launcher' 'epic-games-launcher-bin')
 # Preserve the tested release's binaries and debug information.
 options=('!strip' '!debug')
-_archive="${pkgname}-${pkgver}-${_release}-${CARCH}.pkg.tar.zst"
-source=("https://github.com/Adiker/egl-arch/releases/download/v${pkgver}-${_release}/${_archive}")
+# A distinct download name avoids reusing an older locally built package.
+_archive="egl-arch-release-${pkgver}-${_release}-${CARCH}.tar.zst"
+source=("${_archive}::https://github.com/Adiker/egl-arch/releases/download/v${pkgver}-${_release}/${pkgname}-${pkgver}-${_release}-${CARCH}.pkg.tar.zst")
 noextract=("${_archive}")
 sha256sums=('d798df165587c5ee890503beececf151eccdcf51d86c911088b538509fb1d1ed')
 
