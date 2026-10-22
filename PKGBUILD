@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=nats-top
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A top-like tool for monitoring NATS servers"
 arch=(x86_64 aarch64 armv7h i686)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2511e1cb55d2c0f0b52118042b1cec2322552793b555eebb6968bc44f5902fca')
+sha256sums=('b33a090f1531d58c99659c735e78161231e323df675bdf710c02ab3514bfe1e7')
 
 prepare() {
     cd "$pkgname-$pkgver"
