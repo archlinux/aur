@@ -1,6 +1,6 @@
 pkgbase = quickbox
 	pkgdesc = GTK4 GUI for managing QEMU virtual machines via quickemu
-	pkgver = 1.3.9
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://codeberg.org/linux-bird/quickbox
 	arch = any
@@ -9,8 +9,13 @@ pkgbase = quickbox
 	depends = python-gobject
 	depends = gtk4
 	depends = quickemu
+	depends = rsync
+	depends = xdg-utils
 	optdepends = libnotify: desktop notifications
-	source = quickbox-1.3.9.tar.gz::https://codeberg.org/linux-bird/quickbox/archive/refs/tags/v1.3.9.tar.gz
-	sha256sums = 5731693bfb9f566ff14ebee4bfffb2c561be098243073d69ff03afc2817c3aa9
+	optdepends = parted: format disk
+	optdepends = gtk3: system tray icon
+	optdepends = virt-viewer: SPICE display backend support
+	source = quickbox-1.3.10.tar.gz::https://codeberg.org/linux-bird/quickbox/archive/refs/tags/v1.3.10.tar.gz
+	sha256sums = 4a8138570e9971c24adb424de69b41995eb0d13524b464f63c843be71cff0d9c
 
 pkgname = quickbox
