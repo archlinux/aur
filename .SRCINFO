@@ -1,17 +1,18 @@
 pkgbase = ymusic-cli-bin
 	pkgdesc = Terminal client for Yandex Music: My Wave, likes, stations (TUI) — prebuilt static binary
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/iodnoorov/ymusic
 	arch = x86_64
 	license = MIT
+	license = FDK-AAC
 	optdepends = pipewire-pulse: share the sound card with other programs (without a sound server sound goes straight to ALSA)
 	optdepends = pulseaudio: the same with PulseAudio instead of PipeWire
 	provides = ymusic-cli
 	conflicts = ymusic-cli
 	options = !strip
 	options = !debug
-	source = https://github.com/iodnoorov/ymusic/releases/download/v3.4.0/ymusic-3.4.0-x86_64-linux.tar.gz
-	sha256sums = 66c2f246c49e06bb61177d6727c862020cadf5cc8fa16742f17a4836a0da14ac
+	source = https://github.com/iodnoorov/ymusic/releases/download/v3.4.1/ymusic-3.4.1-x86_64-linux.tar.gz
+	sha256sums = db2589cc40ab3b81b6c38f866533361d159e1e7e66e006189d3e52d2c942bc67
 
 pkgname = ymusic-cli-bin
