@@ -2,12 +2,12 @@
 ##If you spot any issues, please don't hesitate to email me.
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop
-pkgver=7.1.5.0
-pkgrel=2
+pkgver=7.2.9.0
+pkgrel=1
 pkgdesc='A patch-based Telegram Desktop fork,with features from 64Gram'
 arch=('x86_64')
 url="https://github.com/yukigram/yukigram"
-license=('GPL3')
+license=('GPL-3.0-or-later WITH OpenSSL-exception')
 depends=(
   'abseil-cpp'
   'ada'
@@ -26,6 +26,7 @@ depends=(
   'libpipewire'
   'libsrtp'
   'libstdc++'
+  'libvpx'
   'libxcb'
   'libxcomposite'
   'libxdamage'
@@ -39,15 +40,18 @@ depends=(
   'openal'
   'openh264'
   'openssl'
+  'opus'
   'pipewire'
   'qt6-base'
+  'qt6-declarative'
   'qt6-imageformats'
   'qt6-svg'
   'qt6-wayland'
   'rnnoise'
+  'tlottie'
   'xxhash'
   'zlib'
-)
+    )
 makedepends=(
   'boost'
   'boost-libs'
@@ -81,9 +85,9 @@ source=(
   "0000-Fix-Pony-fix-lang-res-file-loc.patch"
 )
 
-sha512sums=('e79998c51a608c843b6bb054525d7e88ac18f74579af3b81df9b55f89aa304c9359f2017c35697efca69d1e3155fade5a3e695b3e595c0f00c34d7eec888342c'
+sha512sums=('4d0f18292fe33f204fea0bd0167efb3376b424ede6a1ce4fd3660955035a3ae7033343a86dfa585401e63747fa11676d5ce87355e785638014e3e90caf4e9195'
             '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1'
-            '5fdc612cc395f03592062f3953a3263b929aac9241b69e68c9b1adf64fbc882c6c55965d8463d4c909b7ef54c3c84f2ca3756492400d0c99689d59119ea717a7'
+            '607129025d9045112127621293062bf67a7937e49b0290f40a1a904eb9f3f40d490382268feb2e5015e353e0669071d256e23d36b88d6bdd46e6b677f8cfc525'
             '392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72')
 
 
