@@ -1,0 +1,5 @@
+[python-suntime]
+source = "git"
+git = "https://github.com/SatAgro/suntime.git"
+includ_regex = 'v[\d.]+'
+prefix = "v"
