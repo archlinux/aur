@@ -1,18 +1,18 @@
 pkgbase = leafview-bin
 	pkgdesc = A minimalist image viewer based on Leaflet.js and Electron.
-	pkgver = 4.4.10
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://github.com/sprout2000/leafview
 	arch = x86_64
 	license = MIT
-	depends = electron44
-	provides = leafview=4.4.10
+	depends = electron45
+	provides = leafview=4.5.1
 	conflicts = leafview
-	source = leafview-4.4.10.deb::https://github.com/sprout2000/leafview/releases/download/v4.4.10/LeafView-4.4.10-linux-amd64.deb
-	source = LICENSE-4.4.10.md::https://raw.githubusercontent.com/sprout2000/leafview/v4.4.10/LICENSE.md
+	source = leafview-4.5.1.deb::https://github.com/sprout2000/leafview/releases/download/v4.5.1/LeafView-4.5.1-linux-amd64.deb
+	source = LICENSE-4.5.1.md::https://raw.githubusercontent.com/sprout2000/leafview/v4.5.1/LICENSE.md
 	source = leafview.sh
-	sha256sums = dd6de1f782e249f80e9017ea61ba114d245b6328ce3dfb12582e8fb690c24c83
+	sha256sums = 60640058a79f42b5e8895f7cabc14a546259c37e845a1f138cca69617851191e
 	sha256sums = 941d106f44f0c5acd2173dfe5531b43a49e7e64f62472dfef4f7711a990a558d
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = leafview-bin

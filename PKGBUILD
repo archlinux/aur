@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leafview-bin
 _pkgname=LeafView
-pkgver=4.4.10
-_electronversion=44
+pkgver=4.5.1
+_electronversion=45
 pkgrel=1
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron."
 arch=('x86_64')
@@ -18,9 +18,9 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/sprout2000/leafview/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dd6de1f782e249f80e9017ea61ba114d245b6328ce3dfb12582e8fb690c24c83'
+sha256sums=('60640058a79f42b5e8895f7cabc14a546259c37e845a1f138cca69617851191e'
             '941d106f44f0c5acd2173dfe5531b43a49e7e64f62472dfef4f7711a990a558d'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
