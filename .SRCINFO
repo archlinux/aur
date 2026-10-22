@@ -1,7 +1,7 @@
 pkgbase = relic-kanagawa-gtk-theme
 	pkgdesc = Kanagawa GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
 	pkgver = 2025.10.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gaou-piou/Kanagawa-GKT-Theme
 	arch = any
 	license = GPL-3.0-only
@@ -13,8 +13,8 @@ pkgbase = relic-kanagawa-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Kanagawa-GKT-Theme-55ca4ba249eba21f861b9866b71ab41bb8930318.tar.gz::https://github.com/gaou-piou/Kanagawa-GKT-Theme/archive/55ca4ba249eba21f861b9866b71ab41bb8930318.tar.gz
-	source = relic-gtk-fixes-2026.10.13.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.13.tar.gz
+	source = relic-gtk-fixes-2026.10.22.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.22.tar.gz
 	sha256sums = 9c176f36fccc8383b156048205db0714a18b5f96f1c683d4496940802041ca5f
-	sha256sums = 895fe5ab4d59fb69cf9aaf7ee7df4f2cf716485a429eacaf02ab5d761217bb47
+	sha256sums = c43a7f638dd859fc113ecc99789eb27700d20b26e90b93b966f8cdc00bef22fb
 
 pkgname = relic-kanagawa-gtk-theme
