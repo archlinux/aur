@@ -1,0 +1,13 @@
+pkgbase = cadja
+	pkgdesc = A music library indexer and database for DJs.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://codeberg.org/OpenDJLab/cadja
+	arch = x86_64
+	groups = pro-audio
+	license = GPL-3.0-only
+	makedepends = cargo-nightly
+	source = cadja-0.2.4.zip::https://codeberg.org/OpenDJLab/cadja/archive/v0.2.4.zip
+	sha256sums = 1106022ddaff721162ae815fdccd2307f140255a4fde9bc23bf9382f6b6ea43b
+
+pkgname = cadja
