@@ -1,6 +1,6 @@
 pkgbase = opencode-antigravity-auth
 	pkgdesc = Google Antigravity OAuth Plugin for opencode
-	pkgver = 2.0.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/NoeFabris/opencode-antigravity-auth
 	install = opencode-antigravity-auth.install
@@ -10,7 +10,7 @@ pkgbase = opencode-antigravity-auth
 	depends = opencode
 	conflicts = opencode-antigravity-auth-debug
 	options = !debug
-	source = opencode-antigravity-auth-2.0.0.tar.gz::https://github.com/NoeFabris/opencode-antigravity-auth/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 4556b3dfda62632c536c1432edb4a3a578306e9b0566ed99084142ea25e8a653
+	source = opencode-antigravity-auth-2.1.1.tar.gz::https://github.com/NoeFabris/opencode-antigravity-auth/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 36bbef51e76b42974c3612fbd150abeb605c634dac465da65d0f8498a30fa947
 
 pkgname = opencode-antigravity-auth
