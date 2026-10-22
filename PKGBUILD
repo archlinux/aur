@@ -3,7 +3,7 @@
 
 _name=cyclopts
 pkgname=python-$_name
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Intuitive, easy CLIs based on type hints.'
 arch=('any')
@@ -41,16 +41,8 @@ optdepends=('python-trio: trio'
             'mkdocs: mkdocs'
             'python-markdown: mkdocs'
             'python-pymdown-extensions: mkdocs')
-source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'pydantic-validate-by-name.patch')
-sha256sums=('673a02265e186af51a279c5f8862e214532e4d6d172985a82e0e5326980391ee'
-            '37a22459c195547be0b6cf07020a72e3a6fd8aeb02f77b335567c8945a66a8c2')
-
-prepare() {
-  cd "$_name-$pkgver"
-  # Register the field name for validate_by_alias=False on pydantic 2.14 (upstream commits 8f78e24 and 24a0693)
-  patch -Np1 -i ../pydantic-validate-by-name.patch
-}
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('14a59414bb21652b87974a8433c9cf7d963092ce6cccff683cc2d21f4f1062b7')
 
 build() {
   cd "$_name-$pkgver"
