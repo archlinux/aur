@@ -1,7 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ac8223762..12f1469e3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -3,7 +3,7 @@
+@@ -3,7 +3,7 @@ project(quickshell VERSION "0.3.2" LANGUAGES CXX C)
  
  set(UNRELEASED_FEATURES)
  
@@ -10,7 +11,27 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
  set(CMAKE_CXX_STANDARD 20)
  set(CMAKE_CXX_STANDARD_REQUIRED ON)
  
+diff --git a/src/crash/handler.cpp b/src/crash/handler.cpp
+index 33506a642..9c2fdfb20 100644
+--- a/src/crash/handler.cpp
++++ b/src/crash/handler.cpp
+@@ -150,11 +150,9 @@ void signalHandler(
+ 		perror("Failed to launch crash reporter.\n");
+ 		_exit(-1);
+ 	} else {
+-		populateEnv();
+-		execve(exe.data(), arg.data(), env.data());
+-
+-		perror("Failed to relaunch quickshell.\n");
+-		_exit(-1);
++		// The VGS runner owns replacement. Exit the old PID so managed
++		// children receive their death signal before it starts another shell.
++		_exit(128 + sig);
+ 	}
+ }
+ 
 diff --git a/src/io/process.cpp b/src/io/process.cpp
+index 879b6e298..5da3b5f9e 100644
 --- a/src/io/process.cpp
 +++ b/src/io/process.cpp
 @@ -1,4 +1,5 @@
@@ -35,11 +56,10 @@ diff --git a/src/io/process.cpp b/src/io/process.cpp
  
  Process::Process(QObject* parent): PostReloadHook(parent) {
  	QObject::connect(
-@@ -196,6 +200,28 @@
- 	auto args = this->mCommand.sliced(1);
+@@ -197,6 +201,28 @@ void Process::startProcessIfReady() {
  
  	this->process = new QProcess(this);
-+
+ 
 +	static qs::io::ManagedProcessGroup group;
 +	auto status = group.check();
 +	auto groupId = group.groupId();
@@ -61,10 +81,11 @@ diff --git a/src/io/process.cpp b/src/io/process.cpp
 +		if (setpgid(0, groupId) == -1)
 +			process->failChildProcessModifier("managed process setpgid", errno);
 +	});
- 
++
  	// clang-format off
  	QObject::connect(this->process, &QProcess::started, this, &Process::onStarted);
-@@ -289,8 +315,8 @@
+ 	QObject::connect(this->process, &QProcess::finished, this, &Process::onFinished);
+@@ -289,8 +315,8 @@ void Process::onFinished(qint32 exitCode, QProcess::ExitStatus exitStatus) {
  
  void Process::onErrorOccurred(QProcess::ProcessError error) {
  	if (error == QProcess::FailedToStart) { // other cases should be covered by other events
@@ -77,6 +98,7 @@ diff --git a/src/io/process.cpp b/src/io/process.cpp
  		this->process = nullptr;
 diff --git a/src/io/processgroup.hpp b/src/io/processgroup.hpp
 new file mode 100644
+index 000000000..59c91234f
 --- /dev/null
 +++ b/src/io/processgroup.hpp
 @@ -0,0 +1,219 @@
@@ -300,6 +322,7 @@ new file mode 100644
 +
 +} // namespace qs::io
 diff --git a/src/launch/main.cpp b/src/launch/main.cpp
+index 24969d881..079fec500 100644
 --- a/src/launch/main.cpp
 +++ b/src/launch/main.cpp
 @@ -1,5 +1,6 @@
@@ -317,7 +340,7 @@ diff --git a/src/launch/main.cpp b/src/launch/main.cpp
  #include "build.hpp"
  #include "launch_p.hpp"
  
-@@ -117,6 +119,9 @@
+@@ -117,6 +119,9 @@ void exitDaemon(int code) {
  }
  
  int main(int argc, char** argv) {
@@ -327,20 +350,3 @@ diff --git a/src/launch/main.cpp b/src/launch/main.cpp
  	QCoreApplication::setApplicationName("quickshell");
  
  #if CRASH_HANDLER
-diff --git a/src/crash/handler.cpp b/src/crash/handler.cpp
---- a/src/crash/handler.cpp
-+++ b/src/crash/handler.cpp
-@@ -150,10 +150,8 @@
- 		perror("Failed to launch crash reporter.\n");
- 		_exit(-1);
- 	} else {
--		populateEnv();
--		execve(exe.data(), arg.data(), env.data());
--
--		perror("Failed to relaunch quickshell.\n");
--		_exit(-1);
-+		// The VGS runner owns replacement. Exit the old PID so managed
-+		// children receive their death signal before it starts another shell.
-+		_exit(128 + sig);
- 	}
- }

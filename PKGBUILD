@@ -47,14 +47,14 @@ sha256sums=('SKIP'
             '8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083'
             'df5e9c1ef8d2e1881f8781185c4285cd2ac6c8b1bd4fd3b6a3a7de236a40508a'
             '4e15375f9ac2b7a6c81b0bf494f462993d036214bed0d248b5fab5b154996513'
-            'c0b89218bbb02d80f08199a0105b405dd8549a1306b3f5c5b24c53fcef0346d6')
+            'f13331a3e1daee17d483738bab1fc375ed9dc12c4824c64e5713c98c98b8e02d')
 
 
 prepare() {
   cd "$_pkgsrc"
-  patch -p1 --forward < "$srcdir/vgs-989-deletelater.patch"
-  patch -p1 --forward < "$srcdir/vgs-1109-log-filter-mutex.patch"
-  patch -p1 --forward < "$srcdir/vgs-1993-managed-process-lifetime.patch"
+  patch -p1 --forward --fuzz=0 < "$srcdir/vgs-989-deletelater.patch"
+  patch -p1 --forward --fuzz=0 < "$srcdir/vgs-1109-log-filter-mutex.patch"
+  patch -p1 --forward --fuzz=0 < "$srcdir/vgs-1993-managed-process-lifetime.patch"
 }
 
 build() {
