@@ -1,0 +1,14 @@
+post_install() {
+    udevadm control --reload-rules 2>/dev/null
+    udevadm trigger --subsystem-match=hidraw 2>/dev/null
+    cat <<'MSG'
+==> rossat-swarm: replug the mouse (or re-login) so the udev rule grants access.
+==> AIMO / Heartbeat / Easy-Shift lighting is drawn by the PC. Run it with
+    the GUI's Engine switch, `rossat-swarm --minimized` in your autostart, or
+      systemctl --user enable --now rossat-engine.service
+MSG
+}
+
+post_upgrade() {
+    udevadm control --reload-rules 2>/dev/null
+}
