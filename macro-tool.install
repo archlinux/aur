@@ -1,0 +1,14 @@
+post_install() {
+  modprobe uinput 2>/dev/null || true
+  udevadm trigger --subsystem-match=misc --sysname-match=uinput 2>/dev/null || true
+  echo
+  echo "On Wayland, hotkeys and recording read your keyboard directly, which needs"
+  echo "the input group. Run this once, then log out and back in:"
+  echo
+  echo "    sudo usermod -aG input \$USER"
+  echo
+}
+
+post_upgrade() {
+  modprobe uinput 2>/dev/null || true
+}

@@ -1,0 +1,22 @@
+pkgbase = macro-tool
+	pkgdesc = Auto clicker and mouse and keyboard macro recorder for X11 and Wayland
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/YatoVoid/Macro-Tool
+	install = macro-tool.install
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = pyside6
+	depends = python-evdev
+	depends = python-pynput
+	optdepends = spectacle: magnifier with real pixels when picking points on KDE Plasma Wayland
+	optdepends = grim: magnifier with real pixels when picking points on Sway and Hyprland
+	source = macro-tool-2.0.0.tar.gz::https://github.com/YatoVoid/Macro-Tool/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 83c0a0ac3f287d7eaa331ccd046beff7824ed23480495b4393aeb7c2f1ed2f2a
+
+pkgname = macro-tool
