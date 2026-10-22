@@ -2,7 +2,7 @@
 
 pkgname=brioche
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='a package manager and build tool for building and running complex software projects'
 arch=(x86_64)
 url="https://$pkgname.dev"
@@ -16,15 +16,25 @@ _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('a03e822db8b8baa9678d2eec5bd235bd1a4ce473a2f708396654aff38ab80387')
 
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target host-tuple
-}
-
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	if check_option debug y; then
+		export CARGO_PROFILE_RELEASE_DEBUG=2
+		export CARGO_PROFILE_RELEASE_STRIP=false
+	fi
+	if check_option lto y; then
+		export CARGO_PROFILE_RELEASE_LTO=thin
+		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	fi
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
