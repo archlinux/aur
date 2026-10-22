@@ -1,6 +1,6 @@
 # Maintainer: Lukas Grumlik (Rakosn1cek) <rakosn1cek@zohomail.eu>
 pkgname=oversight-git
-pkgver=0.5.7.r0.g54321ab
+pkgver=0.5.9.r0.g27be375
 pkgrel=1
 pkgdesc="Security Intelligence & Static Audit Engine for local scripts and raw web links"
 arch=("x86_64")
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "oversight"
   
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)*g//;s/-/./g'
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
