@@ -5,7 +5,7 @@ _pname=${pkgname#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Sphinx extension googleanalytics"
 arch=("any")
@@ -19,7 +19,7 @@ checkdepends=('python-nose')
 #              'python-sphinx'
 #    )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('a2ac6df9d16b9c124febf6b44e714c1fd9725e692b73ee84ec6b52b377ff5561')
+sha256sums=('dc8740342331ff523b5eda8f5d1ea6176acfa86bbd195e8d67f642db8f2b22c7')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" | sed 's#^/usr/##' || \
@@ -35,8 +35,10 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   rm build/lib/sphinxcontrib/__init__.py
-#   PYTHONPATH="build/lib" pytest build/lib --import-check -vv -l -ra --color=yes -o console_output_style=count
+##  rm build/lib/sphinxcontrib/__init__.py
+##  PYTHONPATH="build/lib" pytest build/lib --import-check -vv -l -ra --color=yes -o console_output_style=count
+##  pytest ${_pyname%_*} --import-check -vv -l -ra --color=yes -o console_output_style=count
+#   pytest build/lib --import-check -vv -l -ra --color=yes -o console_output_style=count
     nosetests -v -x || warning "Tests failed"
 }
 
