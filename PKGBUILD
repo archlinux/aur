@@ -1,6 +1,6 @@
 # Maintainer: Arnaud Gissinger <agissing@student.42.fr>
 pkgname=pen-dev-appimage
-pkgver=1.2.18
+pkgver=1.2.19
 pkgrel=1
 pkgdesc='Pen: AI-powered design canvas (formerly Pencil) (appimage)'
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ sha256sums=(
     'c488ed6256fd9663637e95d5e5e8632b523d22e5f873145c76ccf016d409081d'
 )
 source_x86_64=("${_release}/Pen-${pkgver}-linux-x86_64.AppImage")
-sha256sums_x86_64=('b26f93448a1dc3a74f7056ae650e95a04a6ce70b43033ded363cec3de88dac93')
+sha256sums_x86_64=('f600ddcc2a00a18cfcb9d838e50df19a98e33d842205a440bb9389a7da8f4402')
 source_aarch64=("${_release}/Pen-${pkgver}-linux-arm64.AppImage")
-sha256sums_aarch64=('4268ccead02a3a6dababc785ae2d88ce8f3558bb220b972109f98e1c9e2d01e1')
+sha256sums_aarch64=('511a4b35930a47ab5fcee9743fbc6172463053d648927d4396d481a8db0f9dce')
 
 noextract=("Pen-${pkgver}-linux-x86_64.AppImage" "Pen-${pkgver}-linux-arm64.AppImage")
 
