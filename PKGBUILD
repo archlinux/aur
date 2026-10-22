@@ -1,5 +1,5 @@
 # Maintainer: Nicolas Ramirez-Diaz <support at tephro dot chat>
-# The AUR's tephro-server-bin, written by `make aur SERVER=X.Y.Z` from
+# The AUR's tephro-server-bin, written by `make distros SERVER=X.Y.Z` from
 # server/deploy/aur/PKGBUILD.in. Edit the template in the Tephro repository,
 # not the copy on the AUR.
 #
@@ -9,7 +9,7 @@
 # verified. pacman owns the binary, so `tephro-server admin upgrade` refuses
 # to swap it and names the package command instead.
 pkgname=tephro-server-bin
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="Self-hosted group chat server: text, voice, video and screen sharing in one binary (release build)"
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ options=('!strip' '!debug')
 source=('tephro-server.service' 'tephro-server.sysusers' 'tephro-server.tmpfiles')
 source_x86_64=("tephro-${pkgver}-linux-amd64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv${pkgver}/downloads/tephro-${pkgver}-linux-amd64")
 source_aarch64=("tephro-${pkgver}-linux-arm64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv${pkgver}/downloads/tephro-${pkgver}-linux-arm64")
-sha256sums=('cc33d30fe1efec74ef78c23e6f574feaf7335519504365e6084215c4643b83be' '244b6d13190d4fdc1c92fee072484fad83a4f4bcbc7d3ba29ce683a3a6dd4d57' 'd2058578c4b27880a4fd6cedfe3956e9591c7afd240e11f8c78b55b4f3ceb57e')
-sha256sums_x86_64=('0bb6b9dadeeeaac2c26c4890de54d8da7c64a08860063f2c69884c03c12620e1')
-sha256sums_aarch64=('28bf19dab5523e5399f69ca2ea4559178d91ed2e559d5de9e3fa66f84a973b77')
+sha256sums=('cc33d30fe1efec74ef78c23e6f574feaf7335519504365e6084215c4643b83be' 'cd0cfdf2590d83d352a028e6ad1bf9c7bcddfabc43bce665d74ba4b2b3dcbde7' 'd2058578c4b27880a4fd6cedfe3956e9591c7afd240e11f8c78b55b4f3ceb57e')
+sha256sums_x86_64=('e76b4043a193e5a862de1724835a7622c64f8333b20e4411cb39c933d530f49f')
+sha256sums_aarch64=('0a943909a638be89f5810f9512f155225b89c50caa4af421a61e8896064fc894')
 
 package() {
   local goarch=amd64
