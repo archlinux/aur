@@ -1,6 +1,6 @@
 pkgbase = ghost-dl-git
 	pkgdesc = Kingdom Hearts Insider Game OST Archive Downloader CLI/TUI
-	pkgver = 2.2.0_r2_g258d649
+	pkgver = 2.2.0_r6_gf76e1ca
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/ghost-dl
 	arch = x86_64
