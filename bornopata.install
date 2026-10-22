@@ -1,10 +1,10 @@
 post_install() {
-  echo '==> Bornopata: start the input method server for your user:'
-  echo '      systemctl --user daemon-reload && systemctl --user enable --now bornopata'
-  echo '    then restart Fcitx5 and add "Bornopata" in its configuration tool (untick "Only show current language").'
+  echo '==> Bornopata: run this once as your own user, not as root:'
+  echo '      bornopata-setup'
+  echo '    It starts the input method server, adds Bornopata to Fcitx5 and restarts Fcitx5.'
   echo '    Settings: search for "Bornopata Settings" in your application launcher.'
 }
 
 post_upgrade() {
-  echo '==> Bornopata: restart the server to use the new version: systemctl --user restart bornopata'
+  echo '==> Bornopata: run bornopata-setup to use the new version (it restarts the server and Fcitx5).'
 }
