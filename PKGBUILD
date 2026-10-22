@@ -2,7 +2,7 @@
 _appname=scramblery
 pkgname="${_appname}-cuda-bin"
 _pkgname=Scramblery
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.CUDA version."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altunenes/scramblery/v${pkgver}/LICENSE"
 )
-sha256sums=('bdb33a9e8956156b39b8a5bf5002bc8f8cd462c24648bd207278ca8f62c70457'
+sha256sums=('785b4a9dff296bd184e7bf70c5f31e090454e16343513b78f9037cb0cbe33835'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
