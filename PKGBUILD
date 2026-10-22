@@ -1,6 +1,6 @@
 # Maintainer: Kolimi contributors <chaitanyachowdary125@live.com>
 pkgname=kolimi-server
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Pure-Rust, single-binary self-hosted cloud: files, WebDAV, CalDAV/CardDAV, sync"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('kolimi')
 conflicts=('kolimi-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dd89f3d4e5bf081e24c53107a76f36191752362142a58f89291b29ba5153efcf')
+sha256sums=('b67c3df96b783db030e5ce397e730e2d41c0dfb1ce10edaf7807da7ff8988397')
 
 build() {
     cd "kolimi-$pkgver"
@@ -21,6 +21,10 @@ build() {
     # but Arch's hardened CFLAGS force -O2 afterwards, tripping a compile-time
     # #error. Disable the jitterentropy fallback so the OS RNG is used instead.
     export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+    # Build the embedded web UI first: the server rust-embeds
+    # crates/kolimi-server/assets/ui. Without this the package ships the
+    # not-built.html placeholder.
+    ./scripts/build-ui.sh
     # glibc build: enable the CLI OS-keystore backend (falls back to the
     # `0600` device file when no Secret Service is running).
     cargo build --release --locked -p kolimi-server -p kolimi-sync --features kolimi-sync/keystore
