@@ -1,0 +1,12 @@
+# The group "gkey" (sysusers.d) and the udev rule are applied by the pacman
+# hooks of the systemd package.
+
+post_install() {
+    echo "gkey-config: start \"G-Key Configuration\" from the application menu; on its first"
+    echo "  start it offers to start the daemon at login and to allow LED control."
+}
+
+post_upgrade() {
+    echo "gkey-config: restart a running daemon to use the new version:"
+    echo "  systemctl --user restart gkeyd"
+}
