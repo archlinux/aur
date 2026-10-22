@@ -1,6 +1,6 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 pkgname=bluegit
-pkgver=20261022224043
+pkgver=20261022223233
 pkgrel=1
 pkgdesc='Self-hosted git-platform'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = bluegit
 	pkgdesc = Self-hosted git-platform
-	pkgver = 20261022224043
+	pkgver = 20261022223233
 	pkgrel = 1
 	url = https://gitlab.com/Timfa/bluegit
 	install = bluegit.install
