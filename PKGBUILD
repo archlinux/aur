@@ -3,7 +3,7 @@
 # Generated blocks are rewritten by packaging/sync-pkgbuild.py; do not edit them by hand.
 
 pkgname=qtgmc-6ui
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="QTGMC deinterlacer for archival video (VapourSynth) with a Qt6 GUI"
 arch=(x86_64)
@@ -23,7 +23,7 @@ _extra_licenses=('zimg-1ad1895d5ff0bbe69c61243f9996aede713d1b5f.tar.gz|COPYING|r
 # BEGIN generated: plugin-deps (packaging/sync-pkgbuild.py from packaging/plugins/plugins.json)
 _plugin_set=all
 _plugin_depends=(fftw libgcc libstdc++ glibc llvm22-libs zimg)
-_plugin_makedepends=(cmake llvm22 make meson ninja patch zig)
+_plugin_makedepends=(cmake llvm22 make meson ninja patch)
 # END generated: plugin-deps
 
 # Python-level and runtime-loaded deps namcap cannot see: see PKGBUILD.md "namcap".
@@ -33,9 +33,12 @@ depends=(
   vapoursynth-plugin-bestsource
   ffmpeg
   pyside6
+  python-cattrs
   python-numpy
+  python-platformdirs
   python-psutil
   python-rich
+  python-tomli-w
   python-typing_extensions
   qt6-svg
   hicolor-icon-theme
@@ -64,7 +67,7 @@ else
   source=("$_srcname.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 # set by sync-pkgbuild.py --project-sha256 (never updpkgsums)
-_project_sha256='0752127b533635ce32c3e74615d05afdf70eb737a1f90f7599024b757b19afb8'
+_project_sha256='b99844b32bcb6e5ac5c1ff9ad0c631f6a873a91c590e9ca280dbb5ba6cc7bbc5'
 sha256sums=("$_project_sha256")
 
 # BEGIN generated: plugin-sources (packaging/sync-pkgbuild.py from packaging/plugins/plugins.json)
@@ -104,6 +107,9 @@ noextract+=('adworacz-fftw-579b516e6b39a2a96200d248fc3c96d1ad7d9841.tar.gz')
 source+=('fftw-3.3.11.tar.gz::https://www.fftw.org/fftw-3.3.11.tar.gz')  # zsmooth
 sha256sums+=('5630c24cdeb33b131612f7eb4b1a9934234754f9f388ff8617458d0be6f239a1')
 noextract+=('fftw-3.3.11.tar.gz')
+source+=('zig-x86_64-linux-0.16.0.tar.xz::https://ziglang.org/download/0.16.0/zig-x86_64-linux-0.16.0.tar.xz')  # zsmooth
+sha256sums+=('70e49664a74374b48b51e6f3fdfbf437f6395d42509050588bd49abe52ba3d00')
+noextract+=('zig-x86_64-linux-0.16.0.tar.xz')
 source+=('vapoursynth_dfttest2_cpu-11.1.0.tar.gz::https://files.pythonhosted.org/packages/13/a6/ab2b5ff13a13584fd46133711747646a525e80fea7703b1c4a4021870976/vapoursynth_dfttest2_cpu-11.1.0.tar.gz')  # dfttest2
 sha256sums+=('656b91c77b097ac521de89d216be34cea94164c2c7cb51c6baad149981859c49')
 noextract+=('vapoursynth_dfttest2_cpu-11.1.0.tar.gz')
