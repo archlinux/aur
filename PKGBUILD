@@ -1,6 +1,6 @@
 # Maintainer: neomoth <admin@neomoth.dev>
 pkgname=ss14-starlight-launcher-bin
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Starlight Launcher for Space Station 14"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 source=("Starlight.Launcher-linux-x64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Starlight.Launcher-linux-x64-${pkgver}.tar.gz"
         "starlight-launcher-${pkgver}.png::https://raw.githubusercontent.com/ss14Starlight/Starlight.Launcher/v${pkgver}/PublishFiles/icon.png")
 noextract=("Starlight.Launcher-linux-x64-${pkgver}.tar.gz")
-sha256sums=('df43cc98a49b74775a17d7abeac1eecc3549f162d810b585b14cdc6a1d33ddfa'
+sha256sums=('6577838ae8671c71a83cc72cac27988c30f2282532e1ace47b66cd231fb9eef5'
             '1c11bfa0cd5484c807ec2f8f0a2658e4c5383566d5050d8b6fc4ddec5a925471')
 
 package() {
@@ -21,7 +21,7 @@ package() {
 
     install -d "${dest}"
     bsdtar -xf "${srcdir}/Starlight.Launcher-linux-x64-${pkgver}.tar.gz" -C "${dest}"
-    chmod +x "${dest}/Starlight.Launcher" "${dest}/loader/Robust.Loader"
+    chmod 755 "${dest}/Starlight.Launcher" "${dest}/loader/Robust.Loader" "${dest}/loader/createdump"
 
     echo pacman > "${dest}/install-kind"
 
