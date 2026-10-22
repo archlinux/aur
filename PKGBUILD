@@ -1,6 +1,6 @@
 # Maintainer: Novaturiente
 pkgname=novabrowser
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="AVX2-optimized keyboard-driven web browser on Chromium (CEF), configured in TypeScript"
 arch=(x86_64)
@@ -22,7 +22,7 @@ options=(strip !lto !debug)
 _cef=cef-154.0.34-novabrowser-x86_64-v3
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$_cef.tar.zst::$url/releases/download/cef-154.0.34-nova1/$_cef.tar.zst")
-sha256sums=('cd8ad5b183c1e7f9fe68867917da55564838e4a100e0df1adbe92c6fd97fa08c'
+sha256sums=('4ca5fda6d90f8c2c9b2c96e3065d3e72cf9050b1d70a984d689f51b4637b3e10'
             'a88ace6b3f2857e28a9ca9446c041a5cd729a15aa2e838caa7e3d8f9906e285f')
 _src=nova-browser-$pkgver
 
