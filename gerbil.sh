@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-_APPDIR="/usr/lib/@appname@"
+export _APPDIR="/usr/lib/@appname@"
 export CHROME_DESKTOP="@appname@.desktop"
 export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 if [[ -f "${_APPDIR}/app.asar" ]]; then
@@ -9,17 +9,29 @@ elif [[ -d "${_APPDIR}/app" ]]; then
 	_RUNNAME="${_APPDIR}/app"
 elif [[ -d "${_APPDIR}/app.asar.unpacked" ]]; then
 	_RUNNAME="${_APPDIR}/app.asar.unpacked"
-else
-	_RUNNAME="${_APPDIR}/@runname@"
 fi
-_OVERRIDE="${_APPDIR}/resources-path-override.js"
-# override 的 env tier 需要 resources 级路径: gerbil 生产分支以
-# process.resourcesPath/../assets 定位资源, 与 AppImage 原生结构同构
-# (squashfs-root/resources + squashfs-root/assets)。
-# 必须在 _RUNNAME/LD_LIBRARY_PATH 计算完成后再改 _APPDIR。
-export _APPDIR="${_APPDIR}/resources"
 _SANDBOX_ARG=()
 if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
 	_SANDBOX_ARG=("--no-sandbox")
 fi
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" --require "${_OVERRIDE}" --app "${_RUNNAME}" "$@"
+_ozone_var="${_APPDIR##*/}"
+_ozone_var="${_ozone_var^^}"
+_ozone_var="${_ozone_var//[^A-Z0-9_]/_}_OZONE_PLATFORM"
+_OZONE_HINT="${!_ozone_var:-x11}"
+_OZONE_ARG=()
+case "${_OZONE_HINT}" in
+x11)
+	_OZONE_ARG=("--ozone-platform=x11")
+	;;
+wayland)
+	_OZONE_ARG=("--enable-features=UseOzonePlatform" "--ozone-platform=wayland")
+	;;
+auto)
+	:
+	;;
+*)
+	echo "${0##*/}: 未知 Ozone 平台 '${_OZONE_HINT}' (可用: x11|wayland|auto), 按 x11 处理" >&2
+	_OZONE_ARG=("--ozone-platform=x11")
+	;;
+esac
+exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" --app "${_RUNNAME}" "$@"
