@@ -1,6 +1,6 @@
 # Maintainer: CoreCat <corecathx@proton.me>
 pkgname=whisker-shell-git
-pkgver=r162.3827d38
+pkgver=r236.475618c
 pkgrel=1
 pkgdesc="Desktop shell built with Quickshell and follows Material 3 Design rules."
 arch=('x86_64')
