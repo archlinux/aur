@@ -2,7 +2,7 @@
 pkgname=wallpaperx-bin
 _pkgname=wallpaperx
 pkgver=0.4.12
-pkgrel=3 # bump for packaging-only fixes; CI resets it to 1 on a new release
+pkgrel=4 # bump for packaging-only fixes; CI resets it to 1 on a new release
 pkgdesc="Browse, manage, and apply Wallpaper Engine wallpapers on Linux"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
@@ -48,7 +48,7 @@ package() {
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<DESKTOP
 [Desktop Entry]
 Type=Application
-Name=WallpaperX
+Name=wallpaperX
 Comment=Browse, manage, and apply Wallpaper Engine wallpapers
 Exec=$_pkgname
 Icon=$_pkgname
