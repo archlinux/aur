@@ -1,6 +1,6 @@
 pkgbase = mail-badge-notifier-git
 	pkgdesc = Unread mail taskbar badges for Thunderbird/Betterbird with headless systemd service and GUI wrapper
-	pkgver = r5.85b4b7c
+	pkgver = r7.a73a6fd
 	pkgrel = 1
 	url = https://github.com/salexandarz/mail-badge-notifier
 	install = mail-badge-notifier-git.install
