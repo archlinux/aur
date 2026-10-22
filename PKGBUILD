@@ -1,8 +1,8 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=krunvm-git
-pkgver=v0.2.6.r0.g59f3673
-pkgrel=2
+pkgver=v0.2.7.r0.gd51d82a
+pkgrel=1
 pkgdesc="Create microVMs from OCI images"
 arch=("x86_64")
 url="https://github.com/containers/krunvm"
