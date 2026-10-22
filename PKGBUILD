@@ -2,14 +2,14 @@
 
 _pkgbase=gnome-shell-extension-tophat
 pkgname="$_pkgbase-git"
-pkgver=22.r4.gfca81d7
+pkgver=24.r0.gc2ce8cf
 pkgrel=1
 pkgdesc="View CPU, memory, disk, and network activity in the GNOME top bar."
 arch=('any')
 url="https://github.com/fflewddur/tophat"
 license=('GPL-3.0')
 optdepends=('networkmanager: to monitor network devices')
-makedepends=('git' 'nodejs' 'yarn')
+makedepends=('git' 'nodejs' 'corepack' 'glib2')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase::git+https://github.com/fflewddur/tophat.git")
