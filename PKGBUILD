@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=upm
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A fast, tiny package manager for the npm registry, written in TypeScript.'
 url='https://github.com/unjs/upm'
@@ -17,7 +17,7 @@ makedepends=(
 license=('MIT')
 
 source=("git+https://github.com/unjs/upm.git#tag=v$pkgver")
-b2sums=('0ad5ff4fdf04d95f22f02e3b41916bb10cecc5aad439ea6eecc029a476c2ee683d48975695042b549ba3bddae8efaeca43b6d5801039676a5b30667a48ae0f8c')
+b2sums=('8ff979f0c2bdb7516480da5876cd3211b3af66f38209142822b0e169ed250c6578449565a560e2c2418817e76fca8300ae2f169db671dc0b3a59c261d7d38e51')
 
 prepare() {
 	cd "$srcdir/$pkgname"
