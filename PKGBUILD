@@ -2,7 +2,7 @@
 _pkgname=sioyek
 pkgname="${_pkgname}-supernote"
 pkgver=r2096.4719fbb2
-pkgrel=1
+pkgrel=2
 pkgdesc="A PDF viewer designed for reading research papers and technical books with Supernote .mark file support."
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
 url="https://github.com/mil-ad/sioyek"
@@ -67,7 +67,6 @@ build() {
 package() {
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
-  install -dm755 "${pkgdir}/etc/${_pkgname}"
   install -dm755 "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/share/pixmaps/"
 
@@ -76,8 +75,10 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   install -Dm644 "resources/sioyek.desktop" "${pkgdir}/usr/share/applications/sioyek.desktop"
-  install -Dm644 "pdf_viewer/keys.config" "${pkgdir}/etc/${_pkgname}/keys.config"
-  install -Dm644 "pdf_viewer/prefs.config" "${pkgdir}/etc/${_pkgname}/prefs.config"
+  # sioyek is built with LINUX_STANDARD_PATHS, so it reads the defaults from
+  # /usr/share/sioyek; users override them via prefs_user.config in ~/.config.
+  install -Dm644 "pdf_viewer/keys.config" "${pkgdir}/usr/share/${_pkgname}/keys.config"
+  install -Dm644 "pdf_viewer/prefs.config" "${pkgdir}/usr/share/${_pkgname}/prefs.config"
 
   cp -r "pdf_viewer/shaders" "${pkgdir}/usr/share/${_pkgname}/"
   install -Dm644 "tutorial.pdf" "${pkgdir}/usr/share/${_pkgname}/tutorial.pdf"
