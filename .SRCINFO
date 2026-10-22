@@ -1,6 +1,6 @@
 pkgbase = kortix-desktop
 	pkgdesc = Kortix desktop application (official binary)
-	pkgver = 0.14.4
+	pkgver = 0.14.5
 	pkgrel = 1
 	url = https://kortix.com
 	arch = x86_64
@@ -29,13 +29,13 @@ pkgbase = kortix-desktop
 	depends = nss
 	depends = pango
 	optdepends = xdg-utils: desktop integration
-	noextract = Kortix-0.14.4-x86_64.AppImage
+	noextract = Kortix-0.14.5-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = https://github.com/kortix-ai/suna/releases/download/v0.14.4/Kortix-0.14.4-x86_64.AppImage
+	source = https://github.com/kortix-ai/suna/releases/download/v0.14.5/Kortix-0.14.5-x86_64.AppImage
 	source = kortix-desktop
-	source = LICENSE-0.14.4::https://raw.githubusercontent.com/kortix-ai/suna/v0.14.4/LICENSE
-	sha256sums = d74bcf1d9f6723cbdf15cf4b6a6a6381e62818a723781009ef7a94ecc4868967
+	source = LICENSE::https://raw.githubusercontent.com/kortix-ai/suna/v0.14.5/LICENSE
+	sha256sums = 631304ade22226375c507e18427414da829f0dcd7bea734035bee90566ec805e
 	sha256sums = 405657a88ad27df88d5710e3024e68fe663081e063b8f79dc2f0072fcabe78d0
 	sha256sums = 48255018b41fc0e965b1115af7e6779bc218bb8a6747d561da800d5022622aa2
 

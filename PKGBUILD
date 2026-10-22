@@ -1,6 +1,6 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 pkgname=kortix-desktop
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 pkgdesc='Kortix desktop application (official binary)'
 arch=('x86_64')
@@ -15,9 +15,9 @@ options=('!strip' '!debug')
 _image="Kortix-${pkgver}-x86_64.AppImage"
 source=("https://github.com/kortix-ai/suna/releases/download/v${pkgver}/${_image}"
         "kortix-desktop"
-        "LICENSE-${pkgver}::https://raw.githubusercontent.com/kortix-ai/suna/v${pkgver}/LICENSE")
+        "LICENSE::https://raw.githubusercontent.com/kortix-ai/suna/v${pkgver}/LICENSE")
 noextract=("${_image}")
-sha256sums=('d74bcf1d9f6723cbdf15cf4b6a6a6381e62818a723781009ef7a94ecc4868967'
+sha256sums=('631304ade22226375c507e18427414da829f0dcd7bea734035bee90566ec805e'
             '405657a88ad27df88d5710e3024e68fe663081e063b8f79dc2f0072fcabe78d0'
             '48255018b41fc0e965b1115af7e6779bc218bb8a6747d561da800d5022622aa2')
 
@@ -48,5 +48,5 @@ package() {
   # electron-builder places the application icon at the AppDir root.
   install -Dm644 "@kortixdesktop-electron.png" "${pkgdir}/usr/share/pixmaps/kortix-desktop.png"
 
-  install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
