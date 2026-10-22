@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=tieba-cloud-sign
-pkgver=20261022.005652
+pkgver=20261022.014106
 pkgrel=1
 pkgdesc="Baidu Tieba Cloud Sign | 百度贴吧云签到"
 arch=("any")
