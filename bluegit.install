@@ -1,17 +1,106 @@
 # System-unit met User=bluegit, config in /etc/bluegit/config.yml en
 # state in /var/lib/bluegit. Dit is geen systemd --user-unit.
 # backup= in de PKGBUILD laat een bestaande config.yml staan.
+# Zonder draaiende systemd (chroot of container) faalt de transactie niet.
+
+_bluegit_have_systemd() {
+  if [[ "${_BLUEGIT_SYSTEMD_CHECKED:-}" == 1 ]]; then
+    [[ "${_BLUEGIT_SYSTEMD_OK}" == 1 ]]
+    return
+  fi
+  _BLUEGIT_SYSTEMD_CHECKED=1
+  if ! command -v systemctl >/dev/null 2>&1 || [[ ! -d /run/systemd/system ]]; then
+    _BLUEGIT_SYSTEMD_OK=0
+    echo "bluegit: systemd draait niet (chroot of container). De service is niet aangepast."
+    return 1
+  fi
+  _BLUEGIT_SYSTEMD_OK=1
+  return 0
+}
+
+_bluegit_run() {
+  _bluegit_have_systemd || return 0
+  local out rc
+  out="$(systemctl "$@" 2>&1)" && return 0
+  rc=$?
+  if printf '%s\n' "$out" | grep -Eq 'not been booted with systemd|Failed to connect to bus|Host is down'; then
+    echo "bluegit: systemd is niet bereikbaar. De service is niet aangepast."
+    return 0
+  fi
+  printf '%s\n' "$out" >&2
+  return "$rc"
+}
+
+_bluegit_unquote() {
+  local val="$1" n first last
+  val="${val#"${val%%[![:space:]]*}"}"
+  val="${val%"${val##*[![:space:]]}"}"
+  n=${#val}
+  if (( n >= 2 )); then
+    first="${val:0:1}"
+    last="${val:n-1:1}"
+    if [[ "$first" == "$last" && ( "$first" == '"' || "$first" == "'" ) ]]; then
+      val="${val:1:n-2}"
+      val="${val#"${val%%[![:space:]]*}"}"
+      val="${val%"${val##*[![:space:]]}"}"
+    fi
+  fi
+  printf '%s' "$val"
+}
+
+# Config én een niet-leeg clientgeheim. Een lege client_secret: "" telt niet.
+_bluegit_secret_ready() {
+  [[ -f /etc/bluegit/config.yml ]] || return 1
+  if [[ -f /etc/bluegit/client_secret ]]; then
+    local body
+    body="$(tr -d '[:space:]' < /etc/bluegit/client_secret || true)"
+    [[ -n "$body" ]] && return 0
+  fi
+  [[ -f /etc/bluegit/secret.env ]] || return 1
+  local line val
+  line="$(grep -E '^[[:space:]]*BLUEGIT_AUTH_CLIENT_SECRET=' /etc/bluegit/secret.env | tail -n 1 || true)"
+  [[ -n "$line" ]] || return 1
+  val="$(_bluegit_unquote "${line#*=}")"
+  [[ -n "$val" ]]
+}
+
+_bluegit_print_next_steps() {
+  cat <<'EOF'
+bluegit: de service is niet gestart. /etc/bluegit/config.yml en het clientgeheim moeten er allebei zijn.
+
+Vervolg:
+1. Zorg dat /etc/bluegit/config.yml bestaat. Het package levert een voorbeeld.
+2. Schrijf het clientgeheim naar /etc/bluegit/client_secret (mode 0600),
+   of zet BLUEGIT_AUTH_CLIENT_SECRET in /etc/bluegit/secret.env.
+   Een lege client_secret: "" in de config telt niet.
+3. Kopieer /usr/share/bluegit/storage.conf.example naar
+   /etc/systemd/system/bluegit.service.d/storage.conf en zet ReadWritePaths.
+4. systemctl daemon-reload && systemctl enable --now bluegit.service
+EOF
+}
 
 post_install() {
   systemd-sysusers bluegit.conf || true
   systemd-tmpfiles --create bluegit.conf || true
-  systemctl daemon-reload || true
+  _bluegit_run daemon-reload || return
+  if _bluegit_secret_ready; then
+    _bluegit_run enable --now bluegit.service || return
+  else
+    _bluegit_print_next_steps
+  fi
 }
 
 post_upgrade() {
-  post_install
+  systemd-sysusers bluegit.conf || true
+  systemd-tmpfiles --create bluegit.conf || true
+  _bluegit_run daemon-reload || return
+  _bluegit_run try-restart bluegit.service
+}
+
+pre_remove() {
+  _bluegit_run disable --now bluegit.service
 }
 
 post_remove() {
-  systemctl daemon-reload || true
+  _bluegit_run daemon-reload
 }
