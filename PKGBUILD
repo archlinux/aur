@@ -27,9 +27,9 @@ pkgver() {
 build() {
   cd "$srcdir/zero-beat"
   export CGO_ENABLED=0
-  local _ver="${pkgver%%.r*}"
+  # 注入完整 pkgver（如 0.5.0.r123.gabcdef），-git 包的「关于」不再显示截断的 tag。
   go build -buildmode=pie -trimpath -buildvcs=false \
-    -ldflags "-s -w -bindnow -X main.version=${_ver}" \
+    -ldflags "-s -w -bindnow -X main.version=${pkgver}" \
     -o zero ./cmd/zero
 }
 
