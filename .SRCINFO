@@ -1,7 +1,7 @@
 pkgbase = subcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Substance Painter
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aalzard.github.io/subcraft
 	arch = x86_64
 	license = MIT
