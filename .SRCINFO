@@ -1,11 +1,12 @@
 pkgbase = wallr-bin
 	pkgdesc = 🎨 GPU-accelerated animated wallpaper engine for Wayland
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/programmersd21/wallr
 	arch = x86_64
 	license = MIT
 	provides = wallr
+	provides = wallr-daemon
 	conflicts = wallr
 	options = !strip
 	source = LICENSE-0.8.3::https://raw.githubusercontent.com/programmersd21/wallr/v0.8.3/LICENSE

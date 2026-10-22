@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="🎨 GPU-accelerated animated wallpaper engine for Wayland"
 
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64')
@@ -19,7 +19,7 @@ url=${_ghurl}
 
 license=('MIT')
 
-provides=("${_appname}")
+provides=("${_appname}"{,-daemon})
 conflicts=("${pkgname%-bin}")
 
 options=(!strip)
@@ -33,7 +33,7 @@ sha256sums_x86_64=('e06dc3550d3e63a76dd62e9802cad82b397af8999697e4d4e594258da8af
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}"{,-daemon} -t "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
