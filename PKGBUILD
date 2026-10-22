@@ -2,8 +2,8 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgver="0.9"
-pkgrel="12"
+pkgver="1.0"
+pkgrel="0"
 _name="notebook"
 pkgname="$_name"
 pkgdesc='Markdown Desktop Wiki'
