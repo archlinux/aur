@@ -1,6 +1,6 @@
 pkgbase = levi-bin
 	pkgdesc = The fastest blade for your git history. Fuzzy search for you, plain text for your agents.
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/rsdlt/levi
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = levi-bin
 	provides = levi
 	conflicts = levi
 	options = !strip
-	source_x86_64 = levi-x86_64-0.19.0.tgz::https://github.com/rsdlt/levi/releases/download/v0.19.0/levi-0.19.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = bc52cb73a6e533570f37d12a53c841a21ae5bd2f7cccf7c8d912dc92cf48b98f
-	source_aarch64 = levi-aarch64-0.19.0.tgz::https://github.com/rsdlt/levi/releases/download/v0.19.0/levi-0.19.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 03bb9d79331e41f5b57df92d2ee6b2dedc1cd56a6dcf919d57d1012621b87a23
+	source_x86_64 = levi-x86_64-0.20.0.tgz::https://github.com/rsdlt/levi/releases/download/v0.20.0/levi-0.20.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ae463dde704b0626e31d33a348f4d451479011497cca6165ebdfaf92c1814e37
+	source_aarch64 = levi-aarch64-0.20.0.tgz::https://github.com/rsdlt/levi/releases/download/v0.20.0/levi-0.20.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 1354e8ecd692413963014b1a214272cc98d8169555768c068b5e11ab8fd2f2ce
 
 pkgname = levi-bin
