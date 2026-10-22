@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=canboat
-pkgver=8.3.0
+pkgver=9.0.0
 pkgrel=1
 epoch=
 pkgdesc="CAN Boat provides NMEA 2000 and NMEA 0183 utilities. It contains a NMEA 2000 PGN decoder and can read and write N2K messages. It is not meant as an end-user tool but as a discovery mechanism for delving into NMEA 2000 networks."
@@ -37,7 +37,7 @@ install=
 changelog=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('70a4e5359c9626257d84a2a19ba10fb2e909c0a33e65701dc94665bdcc43dcff')
+sha256sums=('8fcac5570d1d77e7ddcbbec17463cfad7801ac45c946ab77f372b78ac9d65d17')
 #validpgpkeys=()
 
 prepare() {
@@ -71,7 +71,8 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
     make DESTDIR="$pkgdir" PREFIX=/usr install
-    install -Dm0644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -dm0755 ${pkgdir}/usr/share/doc/${pkgname}
+    cp -R docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
     install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/60-canboat-actisense.rules" <<EOF
 # Copy this file to /etc/udev/rules.d/
