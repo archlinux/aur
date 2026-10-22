@@ -1,7 +1,7 @@
 # Maintainer: Kieran David Evans <keyz182 at gmail dot com>
 
 pkgname=rwpm
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Separate RimWorld profiles, each with its own saves, settings and mod list'
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('rwpm-bin')
 # !strip: makepkg would strip Valve's libsteam_api.so, which must stay as shipped.
 options=('!lto' '!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85ebf2a08c373c8341dfaeddb58ad23f6792e253d9eb2b76bdafc6d21f95f7e6')
+sha256sums=('05076c05f21a4f779917278e5386177d78b32ea5c6431a14349f9c6b265be8b8')
 
 _src() { echo "$srcdir/rimworld-profile-manager-$pkgver"; }
 
