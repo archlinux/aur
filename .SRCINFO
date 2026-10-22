@@ -1,7 +1,7 @@
 pkgbase = nsis-registry-bin
 	pkgdesc = NSIS plug-in for registry
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nsis.sourceforge.io/Registry_plug-in
 	arch = any
 	license = custom
