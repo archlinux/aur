@@ -1,0 +1,14 @@
+pkgbase = lazycut
+	pkgdesc = Terminal-based video trimming TUI
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ozemin/lazycut
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.26
+	depends = chafa
+	depends = ffmpeg
+	source = lazycut-0.4.0.tar.gz::https://github.com/ozemin/lazycut/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = 5b6e2d6dc7f5020550dd6a119c7a6b950ce2f145dd4f477d019827f7cfdbc8504b687113fb92b4022faa3f7a5e400dde50f90d448b9c791c307d0c12bd75770b
+
+pkgname = lazycut
