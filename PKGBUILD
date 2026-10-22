@@ -2,7 +2,7 @@
 
 _pkgname='caelestia-shell-plugins'
 pkgname="$_pkgname-git"
-pkgver=2.5.0.r109.g1bf3b958
+pkgver=2.5.0.r110.g2cfd222e
 pkgrel=1
 pkgdesc='Caelestia Shell with the plugin system (git)'
 arch=('x86_64' 'aarch64')
