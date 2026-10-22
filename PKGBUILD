@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=liketaskmanager-git
 pkgver=4.0.3.r3.gb287ddb
 pkgrel=1
