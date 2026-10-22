@@ -1,6 +1,6 @@
 # Maintainer: Raphael <raphamzn@gmail.com>
 pkgname=seraph-git
-pkgver=r373.gfae9991
+pkgver=r374.g83c814b
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland and niri"
 arch=('x86_64' 'aarch64')
