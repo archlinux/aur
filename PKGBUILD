@@ -2,7 +2,7 @@
 
 pkgbase=libcudf
 pkgname=(libcudf libcudf-streaming python-pylibcudf)
-pkgver=26.10.00
+pkgver=26.10.02
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/NVIDIA/cudf"
@@ -24,7 +24,7 @@ source=(
     "fix-cython33-signatures.patch"
     "streaming-lib.patch"
 )
-sha256sums=('bfd7789bdea61ed92666ca059003fcb1b107cd1ba7dd241a1887e3c510d2d8da'
+sha256sums=('d184028ca8347573c053202d7cc08ac1be750cef8a096c71ee3a0aca2b103a9e'
             'f00adc2b2b71cc78f659db27b546b41bfb29fc095af48db93bbd5e318ed80eea'
             '8aaca96cf35ed3c4a94687ee68a8a137679c0710e4388c92c8f5c182c8f48dbb'
             '496341c903486a9fef4fcd52ebbd0cbf33b5e1d6113279cdbc22771cfbcd91ea'
