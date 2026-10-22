@@ -4,7 +4,7 @@
 pkgname=qqmusic-electron-patched
 _pkgname=qqmusic
 pkgver=1.1.8
-pkgrel=19
+pkgrel=20
 pkgdesc="Tencent QQMusic"
 arch=('any')
 url="https://y.qq.com/"
@@ -19,7 +19,7 @@ source=(
     "${_pkgname}.sh"
     "logo.png"
 )
-sha512sums=('816d36c5476474dd19f177f6fe755c127066da9195927d9d6256379d0012f87a5cf2b5c2b2c0428331ea8ea90bc2362f51a493683e9f9c08967f8449b886b90d'
+sha512sums=('cdac107c2fd1f6db43b31e1ed37d2b438edf74c3ba2cf9eb7703d6a44c95693588376c093efee7c92c5cef663f700e1095118fe1b792df3c2c8a52c4618f8add'
             'a872d410a02700b66ae9c55ee10a59bc6831caf403f3e62a96b7baa3ea39a8d239a1b829d2b13db4947b97daa9b9eb588deeea05ed125a6ac6892f43d6aa300f'
             '2308b4bfa9bf89bcc0bf5c3c9352482a265f10d67e26d03482bb540abece3537a3a0a71302ba2e9203ee23c1a74c86e830b27c32860c305c344dd31958ec1b94'
             '1f49450952fc7be0654a046c73cd55b738b940a910eb83d0de073f8c5077b550865f7b74e8171ea4b34dd160a7ffdc616ab9dab14d2227db6e4e5ef9ce54c700')
