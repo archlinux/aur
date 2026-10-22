@@ -1,6 +1,6 @@
 pkgbase = proton-pass-cli
 	pkgdesc = A command-line interface for Proton Pass
-	pkgver = 2.4.2
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://protonpass.github.io/pass-cli
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = proton-pass-cli
 	depends = glibc
 	depends = libgcc
 	depends = sqlcipher
-	source = proton-pass-cli::git+https://github.com/protonpass/pass-cli.git#tag=2.4.2
-	b2sums = d4a7efb19cdd11820999e80f8f36eb478539c2442b06c0f27718bf54ace3213a9f491308f7c5cbf203f915a2811a6e6e1c9aa134337b1655c4b104e68d203939
+	source = proton-pass-cli::git+https://github.com/protonpass/pass-cli.git#tag=2.5.1
+	b2sums = d870d246fcce5659e11b2402952a789adf0b45835013fa18b02a961fc4e077712469edfa7d1f011a18c6d84831491ac0633c71b7aff7be364ee61d39d91849a3
 
 pkgname = proton-pass-cli
