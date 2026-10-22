@@ -2,7 +2,7 @@
 _appname=scramblery
 pkgname="${_appname}-migraphx-bin"
 _pkgname=Scramblery
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.MIGraphX version."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altunenes/scramblery/v${pkgver}/LICENSE"
 )
-sha256sums=('02073672a47ab95fbe523d5a345a700b6dd6b1055c985f083262364f2b6de0bb'
+sha256sums=('396d76061349b086230e015619df6102aa45716cdfc0bddc485a5d270604582e'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
