@@ -2,14 +2,14 @@
 _pkgname=WiiUDownloader
 pkgname=wiiudownloader
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows to download encrypted wiiu files from nintendo's official servers"
 arch=('x86_64')
 url="https://github.com/Xpl0itU/WiiUDownloader"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'glib2' 'hicolor-icon-theme' 'gtk4' 'gdk-pixbuf2' 'cairo' 'pango' 'libadwaita'
 	 'graphene')
-makedepends=('go' 'gendesk' 'python')
+makedepends=('go' 'gendesk' 'python' 'python-pycurl' 'libgirepository')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
 	"fix-python.patch::$url/commit/a3fd6ea62449e98b4fa11299dca2f5991363051a.patch"

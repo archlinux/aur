@@ -1,13 +1,15 @@
 pkgbase = wiiudownloader
 	pkgdesc = Allows to download encrypted wiiu files from nintendo's official servers
 	pkgver = 3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Xpl0itU/WiiUDownloader
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = go
 	makedepends = gendesk
 	makedepends = python
+	makedepends = python-pycurl
+	makedepends = libgirepository
 	depends = glibc
 	depends = glib2
 	depends = hicolor-icon-theme
