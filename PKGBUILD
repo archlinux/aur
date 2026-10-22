@@ -1,6 +1,6 @@
 # Maintainer: Omni <team@omni.dev>
 pkgname=omnidotdev-run-cli
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Self-hosting made simple"
 arch=('x86_64')
@@ -20,4 +20,4 @@ package() {
   install -Dm755 "target/release/run" "$pkgdir/usr/bin/run"
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('920a8b4d562c54c7bdb3c0cb54763401ccfc243968a920ea5c30ef67a64b8b13')
+sha256sums=('11a41b37ce79dd3a38cc1a9999192a792c7fba5b9074cf88ce0a80ecab8515b7')

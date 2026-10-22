@@ -1,12 +1,12 @@
 pkgbase = omnidotdev-run-cli
 	pkgdesc = Self-hosting made simple
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://run.omni.dev
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	source = https://github.com/omnidotdev/run-cli/archive/v0.1.0.tar.gz
-	sha256sums = 920a8b4d562c54c7bdb3c0cb54763401ccfc243968a920ea5c30ef67a64b8b13
+	source = https://github.com/omnidotdev/run-cli/archive/v0.1.1.tar.gz
+	sha256sums = 11a41b37ce79dd3a38cc1a9999192a792c7fba5b9074cf88ce0a80ecab8515b7
 
 pkgname = omnidotdev-run-cli
