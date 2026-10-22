@@ -1,6 +1,6 @@
 pkgbase = rwpm-bin
 	pkgdesc = Separate RimWorld profiles, each with its own saves, settings and mod list (prebuilt release)
-	pkgver = 1.19.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://github.com/keyz182/rimworld-profile-manager
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = rwpm-bin
 	optdepends = libxi: X11 input
 	optdepends = libxcb: X11 connection
 	optdepends = dbus: desktop dialogs
-	provides = rwpm=1.19.0
+	provides = rwpm=1.20.0
 	conflicts = rwpm
 	options = !strip
 	options = !debug
-	source = rwpm-1.19.0-linux-x86_64.tar.gz::https://github.com/keyz182/rimworld-profile-manager/releases/download/v1.19.0/rwpm-1.19.0-linux-x86_64.tar.gz
-	sha256sums = 73b4cc37c8e69e52371089240c2ff5671b3ece2cdcc64be09de6ed839d742d5c
+	source = rwpm-1.20.0-linux-x86_64.tar.gz::https://github.com/keyz182/rimworld-profile-manager/releases/download/v1.20.0/rwpm-1.20.0-linux-x86_64.tar.gz
+	sha256sums = e02e3cc1d931fd6b1391ce0c4e86b21be1f54a7ae41d83b4107ee1fe50e78128
 
 pkgname = rwpm-bin
