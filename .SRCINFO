@@ -1,0 +1,24 @@
+pkgbase = python-pyxtal
+	pkgdesc = Python code for generation of crystal structures based on symmetry constraints
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/MaterSim/PyXtal
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-spglib
+	depends = python-pymatgen
+	depends = python-pandas
+	depends = python-networkx
+	depends = python-ase
+	depends = python-scipy
+	depends = python-importlib-metadata
+	depends = python-typing_extensions
+	source = PyXtal-1.1.5.tar.gz::https://github.com/MaterSim/PyXtal/archive/refs/tags/v1.1.5.tar.gz
+	sha256sums = b51ab8dd3238c97687a33e07c2d7660abfb19d4f9bc339aed5e9583267561b16
+
+pkgname = python-pyxtal
