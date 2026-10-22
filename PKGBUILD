@@ -26,7 +26,7 @@
 #######################################################################
 
 pkgname=powershell
-pkgver=7.6.7
+pkgver=7.6.8
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
@@ -71,8 +71,8 @@ checkdepends=(
 install=powershell.install
 
 source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver")
-sha512sums=('0c46d4739bd45553884510a521c6643893a5ea39e27dd1f1e729ce5ce7ead8728a98b7b369fd35a60dd1024c90d074eefda5e004240579449bf5cf5f2aff5c15')
-b2sums=('9a7e90e061db86fbe827ab7bc1d5877cbb2870739e127c4639d8c4c5bff8a5cccb19930032eb9eda2209424fddf1d858309e5f2301f5c56287c3aa44f562fd7e')
+sha512sums=('e4dd34cc55412a90210f7bacb4521f501ed3280eead8e14a7de03b4cdeb544ee954240c988c01aa7364e270668e5c0258bdccceac360fa132074ebfa429401e8')
+b2sums=('899efbe944442765b9878895e95cdf9e6a28c33019c0c44ea65fe14ff72a319e1efece3d50fb41f51ce6ed6767a0b3943aaf073cdf0461583f10139e5ad4b987')
 
 prepare() {
   cd PowerShell
@@ -293,6 +293,11 @@ check() {
   # shellcheck disable=SC2016
   sed -i '/Push-Location $rootDir/iNew-Item -ItemType "Directory" -Path $TestDrive -Name TestDir -Force' \
     Modules/Microsoft.PowerShell.Management/FileSystemProviderExtended.Tests.ps1
+
+  # TEMPORARY: Test-Json is broken on PowerShell 7.6.7+
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28218
+  # A fix seems to queued for the next release.
+  rm Modules/Microsoft.PowerShell.Utility/Test-Json.ps1
 
   # Test contains a logic error
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27503
