@@ -1,6 +1,6 @@
 post_install() {
     echo "==> snip installed."
-    echo "==> snipped - snippet server (systemd service)"
+    echo "==> snipd - snippet server (systemd service)"
     echo "==> snip - CLI tool"
     echo ""
     echo "==> To start the service:"
