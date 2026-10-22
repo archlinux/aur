@@ -5,7 +5,7 @@
 # 「语音功能」，daemon 就会拉起 `miyu-voice` 进程做唤醒词监听与本地识别。
 
 pkgname=miyu-voice
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Miyu 语音前端：唤醒词 + 本地语音识别(SenseVoice / sherpa-onnx)，可选组件'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  'c514763d3fe332dd478ec15b674cc588b8035001197ba4e659f114d90a84468d'
+  '8d4ff373cc5b17a71d7ef2b7cb6e38970791739dc08e090bf040a8667af40bac'
 )
 
 # Keep the last published version and checksum until channel_update records
