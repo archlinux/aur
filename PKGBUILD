@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=laptop-livecam
-pkgver=7.0.40
+pkgver=7.0.41
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=laptop-livecam.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livecam/archive/refs/tags/v$pkgver.tar.gz"
         "laptop-livecam.install")
-sha256sums=('3a4388aa3d49f4efd3e23a4ad4293e0c9e15ccfd037a75a0b08bfc0009afcf13'
+sha256sums=('b3db550baade7c6a56f7b0e3190212513aacacb0ac6c0aa0d8802bcac243b0f7'
             '1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c')
 
 package() {
@@ -64,6 +64,8 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/hls-livecam-repair"
     install -Dm644 pkg/usr/share/hls-livecam-server/block_art.py \
                    "$pkgdir/usr/share/hls-livecam-server/block_art.py"
+    install -Dm644 pkg/usr/share/hls-livecam-server/buzz_tone.py \
+                   "$pkgdir/usr/share/hls-livecam-server/buzz_tone.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/cv_processor.py \
                    "$pkgdir/usr/share/hls-livecam-server/cv_processor.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/cv_detect.py \
