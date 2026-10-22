@@ -1,0 +1,15 @@
+pkgbase = samflash
+	pkgdesc = A GUI samsung flashing tool (odin4 + heimdall)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Anand-Rift/samflash
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = heimdall
+	optdepends = odin4: Odin mode (AUR)
+	source = samflash-0.1.0.tar.gz::https://github.com/Anand-Rift/samflash/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 1003a41d201775f183c3bfc11f0350cd4d90619526d8ea93fd17263ea37c9bb8
+
+pkgname = samflash
