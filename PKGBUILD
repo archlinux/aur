@@ -2,7 +2,7 @@
 # Contributor: springtwr <springtwr@outlook.com>
 
 pkgname=trae-cn
-pkgver=2.3.91092
+pkgver=2.3.93438
 pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance (Chinese Domestic Version)"
 arch=('x86_64' 'aarch64')
@@ -17,12 +17,12 @@ optdepends=('libappindicator-gtk3: System tray support'
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=("trae-cn.sh" "trae-cn.desktop")
-source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.91092/linux/TRAE_CN-linux-x64.tar.gz")
-source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.91092/linux/TRAE_CN-linux-arm64.tar.gz")
+source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.93438/linux/TRAE_CN-linux-x64.tar.gz")
+source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.93438/linux/TRAE_CN-linux-arm64.tar.gz")
 b2sums=('f7998b11d3f97f84895231ca1ca9a05bd3a97106f363744fc5f13402c15c419cc56d09e52c9366bfbd75c016b0aada69286bef8879df4925df0ef446212d7c45'
             '02d2c5d433e4d56a958bc7766563d977d79070f06c94bfa5829d2eb3c20c50111c3ff5174109bdb6f8f20cafdf4730f053f37c3a7a03e6b0f466446981dcc407')
-b2sums_x86_64=('46736b202a0a5db6b7f9b9ea5f1ad1c66a2117a14e0a5d89930f1cef73b5e1910015c3d4e254feaf28405a657189e4518720f89d68ef12540787161c3988c917')
-b2sums_aarch64=('1536cb2f6132d63f5c778a77baeec90d6b2f8f6326e1d43242ae51babf458ced59262e56895eb0de0bfa2519ef4061a767011f8f3806c93ca9dbd1a6dbdc4312')
+b2sums_x86_64=('4ac98a71278bc1c492afa53f55962326c5c1d10f69ea109b63b3739c40f5367063507f84c55fd71a2fb6561321c34a05b9fab59a23c9122466dbb3005e5bf2bc')
+b2sums_aarch64=('a70c69bb8990cd1ee01e30cc8e3628323fdb2991144e779b2d5f488755e1731a362233b211503c9210f625e618a3c5cfeb2e23e6db06206e97bec223a1f02390')
 
 package() {
     install -d "${pkgdir}/opt/trae-cn"
