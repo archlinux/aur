@@ -5,8 +5,8 @@
 
 _pkgname=dislocker
 pkgname=dislocker-patched
-pkgver=0.7.3.r91.g6d8be24
-pkgrel=2
+pkgver=0.7.4.r0.g21ef6e5
+pkgrel=1
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes. May include patches from Issues and PRs from official Aorimn/dislocker. Added aarch64."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Aorimn/dislocker"
@@ -17,9 +17,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 optdepends=('ntfs-3g: NTFS file system support')
 source=(
-  'git+https://github.com/Aorimn/dislocker.git#commit=6d8be248896fceb728e9aa5c6da64fca246c3a31'
+  'git+https://github.com/Aorimn/dislocker.git#commit=21ef6e58deb400502121e80fc0dfc7d9974e364f'
 )
-sha512sums=('fd5bee749ee4fd140763be05592a21cb4c2129d5124f2f24e70ec0253cd06f795a40e4ead44cd5dd1f6daf7f162e579f2c1d522fab359fc170ce11cc5f0fba8c')
+sha512sums=('68ca0bdcd25e7fbd7d60679ddfaf77967eb816ad4d0ebb29ff204f318e1243eff154ecabd324b916afb92d89271e66d5d251a7a48677f069665b43761fffe432')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
