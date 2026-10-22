@@ -1,13 +1,13 @@
 pkgbase = adguard-cli-bin
 	pkgdesc = Surf the Web ad-free and safely. Shields up
-	pkgver = 1.4.13
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardCLI
 	install = adguard-cli.install
 	arch = x86_64
 	conflicts = adguard-cli-nightly-bin
 	options = !strip
-	source = https://github.com/AdguardTeam/AdGuardCLI/releases/download/v1.4.13-release/adguard-cli-1.4.13-linux-x86_64.tar.gz
-	sha256sums = 0575c9a2397fc1537d9c8213811f0d79867a7953f2481f3e9677bd3f0a2cf88c
+	source = https://github.com/AdguardTeam/AdGuardCLI/releases/download/v1.5.0/adguard-cli-1.5.0-linux-x86_64.tar.gz
+	sha256sums = e515de4a4b36d31067416731abe1450e494edd3743df766d9e4673b9ed9f3e28
 
 pkgname = adguard-cli-bin

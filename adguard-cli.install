@@ -1,11 +1,39 @@
+_gecko_notice() {
+    echo ""
+    echo "If you use a Gecko-based browser such as Firefox, you may need to install"
+    echo "the AdGuard certificate manually, because Firefox keeps its own certificate store."
+    echo "  See: https://adguard.com/kb/adguard-for-linux/solving-problems/certificate-for-gecko/"
+}
+
+_release_notes() {
+    local ver="${1%-*}"
+    ver="${ver#*:}"
+    echo ""
+    echo "Release notes: https://github.com/AdguardTeam/AdGuardCLI/releases/tag/v${ver}"
+}
+
 post_install() {
     echo "AdGuard CLI has been installed."
     echo "  Documentation: https://adguard.com/kb/adguard-for-linux/installation/"
-    echo "Below are commands you may need to log in, enable protection, and manage the AdGuard settings:"
-    echo "  adguard-cli activate                 - to enter your license information"
-    echo "  adguard-cli configure                - to run the configuration wizard"
-    echo "  adguard-cli cert                     - to install the certificate"
-    echo "  adguard-cli start                    - to start AdGuard proxy server"
-    echo "  You can also configure systemd service to run adguard-cli automatically, please refer to the documentation: https://adguard.com/kb/adguard-for-linux/solving-problems/cli-auto-start/"
-    echo "  Since version 1.14 you can connect adguard-cli to your browser extension via 'adguard-cli install-browser-integration', please refer to the documentation: https://adguard.com/kb/adguard-for-linux/settings/#adguard-browser-assistant"
+    echo "You may need to log in, enable protection, and configure AdGuard:"
+    echo "  adguard-cli activate                     - enter your license information"
+    echo "  adguard-cli configure                    - run the configuration wizard"
+    echo "  adguard-cli cert                         - install the certificate"
+    echo "  adguard-cli start                        - start AdGuard proxy server"
+    echo "  adguard-cli install-service              - install adguard-cli as a system service"
+    echo "  adguard-cli install-browser-integration  - setup browser integration"
+    echo "Run \`adguard-cli\` for details on each command."
+    _gecko_notice
+    _release_notes "$1"
+}
+
+post_upgrade() {
+    # $1 = new version, $2 = old version
+    if (( $(vercmp "$2" 1.5.0) < 0 )); then
+        echo "New in 1.5.0:"
+        echo "  adguard-cli install-service          - install adguard-cli as a system service"
+        echo "Run \`adguard-cli\` for details on each command."
+        _gecko_notice
+    fi
+    _release_notes "$1"
 }
