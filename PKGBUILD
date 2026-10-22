@@ -1,6 +1,6 @@
 # Maintainer: lxp731 <lxp731@users.noreply.github.com>
 # Contributor: netcloud-music contributors
-pkgname=netcloud-music-bin
+pkgname=netmusic-webplayer-bin
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="网易云音乐官方网页版的非官方 Linux 桌面外壳"

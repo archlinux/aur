@@ -1,4 +1,4 @@
-pkgbase = netcloud-music-bin
+pkgbase = netmusic-webplayer-bin
 	pkgdesc = 网易云音乐官方网页版的非官方 Linux 桌面外壳
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -27,4 +27,4 @@ pkgbase = netcloud-music-bin
 	source = netcloud-music-0.1.0.pacman::https://github.com/lxp731/NetCloudMusic-Webplayer/releases/download/v0.1.0/netcloud-music-0.1.0-x64.pacman
 	sha256sums = 2e29480c404a9dad455f0b4e1b490e5db00a577d60e8a156a1ca1ce21c4126c2
 
-pkgname = netcloud-music-bin
+pkgname = netmusic-webplayer-bin
