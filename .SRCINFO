@@ -1,6 +1,6 @@
 pkgbase = hireferry-server-git
 	pkgdesc = Self-hosted recruitment server with an embedded web UI
-	pkgver = 0.1.0.r38.gd3c1214
+	pkgver = 0.1.0.r41.g11b0dfc
 	pkgrel = 1
 	url = https://github.com/TokenNotIncluded/hireferry
 	arch = x86_64
