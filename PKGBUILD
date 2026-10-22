@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Local-first cross-platform diff and merge tool"
 
-pkgver=0.194.0
+pkgver=0.195.0
 pkgrel=1
 
 arch=('x86_64')
@@ -34,10 +34,10 @@ source=("LAUNCHER-${pkgver}.desktop::${_ghurlraw}/packaging/linux/${_appname}.de
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${pkgver}/${_appname}-v${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('720e9852dc03d0f7241160a598785cf64a7001ea83be0e2ce127d886488d1b95'
             '35766d3d70744fb8fe544fa89e50592749003cc99e35b7d65a6b12a02002e692'
-            'e17e218744dd4f2ebb9c6b9635b8e50aebc1370a7fd5c009e0fb72297baf1c0c'
+            '4d2ed25a5656133f801a397c9a566504bd3ea467ad1f5a8968c9c2660b55de17'
             'f651689716d7e61870c050334baf1bfc0e44a2fb8f39c68b2a1412de140f97fe'
             '8aa452d4de64938dbe60eb883a57780f7cb889a96db3c29aaa5fb9b9966de004')
-sha256sums_x86_64=('4ba10cc2add82c4337b5a82241d6bc13d48436d215d7cfce627053b833f41ce3')
+sha256sums_x86_64=('cc9c98891b2a83bf7616c660a96c91f442f59f5906f0689790d4954ba645bf6c')
 
 
 prepare() {
