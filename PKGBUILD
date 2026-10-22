@@ -2,7 +2,7 @@
 # Contributor: netcloud-music contributors
 pkgname=netmusic-webplayer-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="网易云音乐官方网页版的非官方 Linux 桌面外壳"
 arch=('x86_64')
 url="https://github.com/lxp731/NetCloudMusic-Webplayer"
@@ -18,7 +18,7 @@ conflicts=('netcloud-music')
 source=(
   "netcloud-music-${pkgver}.pacman::https://github.com/lxp731/NetCloudMusic-Webplayer/releases/download/v${pkgver}/netcloud-music-${pkgver}-x64.pacman"
 )
-sha256sums=('2e29480c404a9dad455f0b4e1b490e5db00a577d60e8a156a1ca1ce21c4126c2')
+sha256sums=('558ccbd303e6f40129e43eac3865c73cdc9315a98d7b3c54ba38b27372074f8d')
 
 package() {
   # 上游的 .pacman 是 electron-builder 产物，内部就是 usr/ + opt/ 布局；
