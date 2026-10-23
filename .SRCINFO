@@ -1,0 +1,27 @@
+pkgbase = dux-calendar-git
+	pkgdesc = Local, Google, Microsoft, and CalDAV calendars for the Dux desktop (git)
+	pkgver = 2.0.0.r6.ge7123fc
+	pkgrel = 1
+	url = https://github.com/duxlabs-dev/dux-calendar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = quickshell
+	depends = qt6-declarative
+	optdepends = dms-shell: dynamic theming via Dux Shell colors
+	provides = dcal=2.0.0.r6.ge7123fc
+	provides = dux-calendar=2.0.0.r6.ge7123fc
+	provides = dankcalendar=2.0.0.r6.ge7123fc
+	conflicts = dcal
+	conflicts = dux-calendar
+	conflicts = dankcalendar
+	conflicts = dankcalendar-bin
+	conflicts = dankcalendar-git
+	conflicts = dux-calendar-bin
+	replaces = dankcalendar-git
+	source = dux-calendar-git::git+https://github.com/duxlabs-dev/dux-calendar.git
+	sha256sums = SKIP
+
+pkgname = dux-calendar-git
