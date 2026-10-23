@@ -1,7 +1,7 @@
 # Maintainer: r1a <m@zcq100.com>
 pkgname=nethack-cn-bin
 pkgver=5.0.1pre509.27e34f0
-pkgrel=1
+pkgrel=2
 _tag='nethack-pre-509-27e34f0'
 _ver='501'
 pkgdesc='Simplified Chinese localization of NetHack 5.0.1 (prebuilt binaries)'
@@ -36,6 +36,12 @@ mkdir -p "$play/save"
 for f in nhdat symbols license sysconf; do
     ln -sfn "$data/$f" "$play/$f"
 done
+# HLOCK: 上游把空文件 perm 作为 fcntl 锁文件，启动时以 O_RDWR 打开；
+# 必须存在且属于当前用户，缺失会报 "Cannot open file perm"。
+if [ ! -e "$play/perm" ] || [ ! -w "$play/perm" ]; then
+    rm -f "$play/perm"
+    : > "$play/perm"
+fi
 cd "$play" || exit 1
 exec "$data/nethack" "$@"
 EOF
@@ -50,6 +56,10 @@ mkdir -p "$play/save"
 for f in nhdat symbols license sysconf; do
     ln -sfn "$data/$f" "$play/$f"
 done
+if [ ! -e "$play/perm" ] || [ ! -w "$play/perm" ]; then
+    rm -f "$play/perm"
+    : > "$play/perm"
+fi
 cd "$play" || exit 1
 exec "$data/recover" "$@"
 EOF

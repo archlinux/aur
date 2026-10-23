@@ -1,7 +1,7 @@
 pkgbase = nethack-cn-bin
 	pkgdesc = Simplified Chinese localization of NetHack 5.0.1 (prebuilt binaries)
 	pkgver = 5.0.1pre509.27e34f0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/StackC00ki3/Nethack-cn
 	arch = x86_64
 	arch = aarch64
