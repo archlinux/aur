@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=snowflake-odbc
-pkgver=3.21.0
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="ODBC Driver for Snowflake database"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom: commercial')
 install=snowflake-odbc.install
 depends=(nss gcc-libs unixodbc)
 source=(https://sfc-repo.snowflakecomputing.com/odbc/linux/${pkgver}/snowflake_linux_x8664_odbc-${pkgver}.tgz)
-sha256sums=('fcecb3501ac0c10045f72a098aa9f3df782d6f2adee2cb5ec85435b313742526')
+sha256sums=('4a59cbbf70f944200a92e30b4aeca3d50295b8aa5f3a756b906e6599b4b8ff4e')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
