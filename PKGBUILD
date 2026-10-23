@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=pdfcraft
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Acrobat'
@@ -17,7 +17,7 @@ conflicts=(printcraft)
 replaces=(printcraft)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('ed738813ba7ef3c41930e215dd8ed63e2711abd335af9e57561974ba12998ad3')
+sha256sums=('a65214953787fd8428cb6636447a0e65a66f20bb64ace18bb58e06d7002d7a5b')
 
 _srcenv() {
 	cd "$_archive"
