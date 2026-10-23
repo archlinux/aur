@@ -1,0 +1,11 @@
+pkgbase = dovewarden
+	pkgdesc = a Dovecot replication controller, bringing back replication to Dovecot 2.4+ servers
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dovewarden/dovewarden
+	arch = x86_64
+	license = MIT
+	source = dovewarden-0.1.1.tar.gz::https://github.com/dovewarden/dovewarden/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = bc717b5020e4565dda03a20be40044a175ffb91c98a412e1702f5a146f988c64
+
+pkgname = dovewarden
