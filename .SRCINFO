@@ -1,6 +1,6 @@
 pkgbase = jellyfin-server-bin
 	pkgdesc = Jellyfin server backend
-	pkgver = 12.2
+	pkgver = 12.3
 	pkgrel = 1
 	url = https://jellyfin.org/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = jellyfin-server-bin
 	sha256sums = 0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2
 	sha256sums = 9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228
 	sha256sums = b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a
-	source_x86_64 = https://repo.jellyfin.org/files/server/debian/latest-stable/amd64/jellyfin-server_12.2+deb12_amd64.deb
-	sha256sums_x86_64 = efc5c695b739b6db2f9cfb26f4ba34ac21de001935bbe7ef234f6c402688a7ff
-	source_aarch64 = https://repo.jellyfin.org/files/server/debian/latest-stable/arm64/jellyfin-server_12.2+deb12_arm64.deb
-	sha256sums_aarch64 = 144b61e3346c460df0c8d5590b9697551429538fd6c18c265655f47be73f09d8
+	source_x86_64 = https://repo.jellyfin.org/files/server/debian/latest-stable/amd64/jellyfin-server_12.3+deb12_amd64.deb
+	sha256sums_x86_64 = baba367fef9a1c73976d85d240737e6e332456b01df8286e012a35571d663a5c
+	source_aarch64 = https://repo.jellyfin.org/files/server/debian/latest-stable/arm64/jellyfin-server_12.3+deb12_arm64.deb
+	sha256sums_aarch64 = db4998a63e9f78f32742602afaea643f9572c28e11ceeb7d0cf238a33f53861a
 
 pkgname = jellyfin-server-bin
