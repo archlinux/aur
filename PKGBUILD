@@ -5,7 +5,7 @@
 # ../update.sh; the rest is hand-maintained.
 
 pkgname=gitorii
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Human-first Git client: simpler commands, a TUI, snapshots, multi-platform mirrors and a secret scanner'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ conflicts=('gitorii-bin')
 # only confuses the link step; the release profile does its own thin LTO.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/paskidev/gitorii/-/archive/v$pkgver/gitorii-v$pkgver.tar.gz")
-sha256sums=('d30bab11f966abfbc910856b8fac6f81f05df3b8551163d9c50f54b777ac3afd')
+sha256sums=('8cd27970b5456d1fcba627267a2c53ac51ac76dbea321d935d451df4ef7a5444')
 
 _srcdir="gitorii-v$pkgver"
 
@@ -51,5 +51,5 @@ package() {
 	install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 	install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 	install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm0644 COMMANDS.md "$pkgdir/usr/share/doc/$pkgname/COMMANDS.md"
+	install -Dm0644 docs/commands.md "$pkgdir/usr/share/doc/$pkgname/commands.md"
 }

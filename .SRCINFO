@@ -1,6 +1,6 @@
 pkgbase = gitorii
 	pkgdesc = Human-first Git client: simpler commands, a TUI, snapshots, multi-platform mirrors and a secret scanner
-	pkgver = 0.17.2
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://gitorii.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gitorii
 	optdepends = git: needed by torii grep, archive, notes, patch and subtree, which shell out to it
 	conflicts = gitorii-bin
 	options = !lto
-	source = gitorii-0.17.2.tar.gz::https://gitlab.com/paskidev/gitorii/-/archive/v0.17.2/gitorii-v0.17.2.tar.gz
-	sha256sums = d30bab11f966abfbc910856b8fac6f81f05df3b8551163d9c50f54b777ac3afd
+	source = gitorii-0.18.0.tar.gz::https://gitlab.com/paskidev/gitorii/-/archive/v0.18.0/gitorii-v0.18.0.tar.gz
+	sha256sums = 8cd27970b5456d1fcba627267a2c53ac51ac76dbea321d935d451df4ef7a5444
 
 pkgname = gitorii
