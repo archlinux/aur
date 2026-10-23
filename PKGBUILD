@@ -1,15 +1,15 @@
 # Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=rdc-cli
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Unix-friendly CLI for RenderDoc .rdc captures"
 arch=('x86_64')
 url="https://github.com/BANANASJIM/rdc-cli"
 license=('MIT')
 depends=(
-  'python'
+  'python>=3.11'
   'python-click'
-  'python-pillow'
+  'python-pillow>=13.0.0'
   'python-numpy'
   'libx11'
   'libxcb'
@@ -33,10 +33,10 @@ provides=('rdc-cli')
 conflicts=('rdc-cli-git')
 source=(
   "rdc-cli-${pkgver}.tar.gz::https://github.com/BANANASJIM/rdc-cli/archive/refs/tags/v${pkgver}.tar.gz"
-  "git+https://github.com/baldurk/renderdoc.git#tag=v1.41"
+  "git+https://github.com/baldurk/renderdoc.git#tag=v1.46"
   "renderdoc-swig::https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip"
 )
-sha256sums=('ace2f48fdb8669326f89ebb085e51767d5a097737e0613582263350b75b929cf'
+sha256sums=('1fe6b68f0aa205b6c9a92dd1322f9633315a281d5a1454655edae8e14983b562'
             'SKIP'
             '9d7e5013ada6c42ec95ab167a34db52c1cc8c09b89c8e9373631b1f10596c648')
 
