@@ -1,6 +1,6 @@
 pkgbase = lightos-remoted-bin
 	pkgdesc = LightOS browser remote desktop with a persistent isolated desktop session
-	pkgver = 0.1.13
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/ca-x/lightos-remote-desktop
 	install = lightos-remoted-bin.install
@@ -41,6 +41,7 @@ pkgbase = lightos-remoted-bin
 	depends = pipewire-pulse
 	depends = wireplumber
 	depends = wl-clipboard
+	depends = xorg-xauth
 	depends = systemd
 	depends = shadow
 	depends = bash
@@ -48,8 +49,8 @@ pkgbase = lightos-remoted-bin
 	depends = util-linux
 	depends = gawk
 	optdepends = lightos-codec-ffmpeg-bin: Optional native hardware H.264 encoders; software fallback remains available
-	provides = lightos-remoted=0.1.13
-	provides = lightos-remote-desktop=0.1.13
+	provides = lightos-remoted=0.1.15
+	provides = lightos-remote-desktop=0.1.15
 	conflicts = lightos-remoted
 	conflicts = lightos-remote-desktop
 	options = !strip
@@ -60,9 +61,9 @@ pkgbase = lightos-remoted-bin
 	sha256sums = 975a3479b458722ec2e34e5fed9cdd46f77fa70485431f70093693532f685ff3
 	sha256sums = c905d0cb7abb194e2772b4a655bd834b7f198f92b38de228040d37e4cc492986
 	sha256sums = ef58b026b3c9f73cf6dfd4c9682b5c5e6e440ff8a68cb41b86e7c425d281c265
-	source_x86_64 = lightos-remoted-linux-x86_64-0.1.13.tar.gz::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.13/lightos-remoted-linux-x86_64.tar.gz
-	source_x86_64 = lightos-remoted-linux-x86_64-0.1.13.tar.gz.sha256::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.13/lightos-remoted-linux-x86_64.tar.gz.sha256
-	sha256sums_x86_64 = 04bc61d8308f1e56a678a5cfcb9dc1c6176e0c7fe3bcc4d3cbba1c9f1f8141b6
-	sha256sums_x86_64 = cc0e64d26978bef9168db73cb9ef4f0bebabe87b1ea0ee1e1f02761123db3a83
+	source_x86_64 = lightos-remoted-linux-x86_64-0.1.15.tar.gz::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.15/lightos-remoted-linux-x86_64.tar.gz
+	source_x86_64 = lightos-remoted-linux-x86_64-0.1.15.tar.gz.sha256::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.15/lightos-remoted-linux-x86_64.tar.gz.sha256
+	sha256sums_x86_64 = 771dc3a4e286cbf21e26bfc6b2c39b51ad380151bbb2f489bdaa1480e9dde37c
+	sha256sums_x86_64 = f027f455626e44aab99d9ecda42472c83ed374455c2a7e635b88482c95cccd52
 
 pkgname = lightos-remoted-bin

@@ -1,6 +1,6 @@
 # Maintainer: ca-x <https://github.com/ca-x>
 pkgname=lightos-remoted-bin
-pkgver=0.1.13
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='LightOS browser remote desktop with a persistent isolated desktop session'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'libgcc' 'libstdc++' 'wayland' 'libxkbcommon' 'libpulse'
          'hyprland' 'aquamarine=0.15.1' 'hyprutils' 'libdisplay-info' 'libdrm'
          'libglvnd' 'libhyprutils.so' 'libdisplay-info.so' 'libinput' 'mesa' 'pixman' 'seatd' 'systemd-libs'
          'cage' 'ghostty' 'ttf-liberation' 'dbus' 'pipewire' 'pipewire-pulse'
-         'wireplumber' 'wl-clipboard' 'systemd' 'shadow' 'bash' 'coreutils' 'util-linux' 'gawk')
+         'wireplumber' 'wl-clipboard' 'xorg-xauth' 'systemd' 'shadow' 'bash' 'coreutils' 'util-linux' 'gawk')
 optdepends=('lightos-codec-ffmpeg-bin: Optional native hardware H.264 encoders; software fallback remains available')
 makedepends=('cmake' 'ninja' 'pkgconf' 'hyprwayland-scanner' 'wayland-protocols' 'hwdata' 'patch')
 provides=("lightos-remoted=$pkgver" "lightos-remote-desktop=$pkgver")
@@ -24,8 +24,8 @@ source=("aquamarine-0.15.1-${_aqcommit}.tar.gz::https://codeload.github.com/hypr
 sha256sums=('975a3479b458722ec2e34e5fed9cdd46f77fa70485431f70093693532f685ff3'
             'c905d0cb7abb194e2772b4a655bd834b7f198f92b38de228040d37e4cc492986'
             'ef58b026b3c9f73cf6dfd4c9682b5c5e6e440ff8a68cb41b86e7c425d281c265')
-sha256sums_x86_64=('04bc61d8308f1e56a678a5cfcb9dc1c6176e0c7fe3bcc4d3cbba1c9f1f8141b6'
-                   'cc0e64d26978bef9168db73cb9ef4f0bebabe87b1ea0ee1e1f02761123db3a83')
+sha256sums_x86_64=('771dc3a4e286cbf21e26bfc6b2c39b51ad380151bbb2f489bdaa1480e9dde37c'
+                   'f027f455626e44aab99d9ecda42472c83ed374455c2a7e635b88482c95cccd52')
 source_x86_64=("${_bundle}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz"
                "${_bundle}-${pkgver}.tar.gz.sha256::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz.sha256")
 
