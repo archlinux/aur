@@ -1,6 +1,6 @@
 pkgbase = srsran-4g-git
 	pkgdesc = Open source SDR 4G software suite from Software Radio Systems (SRS)
-	pkgver = 23.11.0.r0.geea87b1
+	pkgver = 25.10.0.r14.gbef8680
 	pkgrel = 1
 	url = https://www.srsran.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = srsran-4g-git
 	depends = fftw
 	depends = libconfig
 	depends = lksctp-tools
-	depends = mbedtls
+	depends = mbedtls3
 	depends = pcsclite
 	depends = srsgui
 	optdepends = bladerf: driver for bladeRF support

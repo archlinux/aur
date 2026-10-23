@@ -3,7 +3,7 @@
 pkgbase=srsran-4g-git
 pkgname=$pkgbase
 _pkgname=srsRAN_4G
-pkgver=23.11.0.r0.geea87b1
+pkgver=25.10.0.r14.gbef8680
 pkgrel=1
 pkgdesc='Open source SDR 4G software suite from Software Radio Systems (SRS)'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=(
   'fftw'         # discrete Fourier transform
   'libconfig'    # config file parser
   'lksctp-tools' # SCTP libraries
-  'mbedtls'      # cryptography
+  'mbedtls3'     # cryptography
   'pcsclite'     # hard SIM support
   'srsgui'       # GUI support
 )
@@ -51,6 +51,11 @@ build() {
   # clear compiler flags set by makepkg.conf
   CFLAGS=""
   CXXFLAGS=""
+
+  # ensure mbedtls3
+  export PKG_CONFIG_PATH=/usr/lib/mbedtls3/pkgconfig
+  # temporary workaround to not search mbedtls v4 in root directory (when MBEDTLS_DIR empty)
+  export MBEDTLS_DIR=invalid
 
   echo "Building $_pkgname..."
   cmake \
