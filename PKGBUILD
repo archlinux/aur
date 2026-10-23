@@ -2,9 +2,9 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
-pkgdesc="The GRUB boot menu without editing files by hand: plain-word settings, a review before every save, a backup first"
+pkgdesc="The GRUB boot menu without editing files by hand: plain-word settings, a review before every save, a backup first. Any major Linux distribution with GRUB, any desktop or none, works on a text console"
 arch=('any')
 url="https://github.com/jetomev/grubforge"
 license=('GPL3')
@@ -18,9 +18,11 @@ license=('GPL3')
 # menu (the 2026-10-11 dependency audit). python-gobject: forgekit's in-app polkit agent, which grubForge uses.
 depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'polkit' 'python-gobject' 'grub')
 optdepends=('os-prober: other systems on the boot menu')
+# 2.2.2: check() validates the launcher entry
+checkdepends=('desktop-file-utils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('fb67e80d6733e0231b97316b4ee81bb627fd9ca0fa1a6d292d5af903df6a033a'
+sha256sums=('0297305b0c30269a3fa7039d4ac95011390a2922a2fb856452df669071ddf44e'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -81,7 +83,10 @@ print('grubforge helper refusal checks OK')
     # backups, distributions, and that nothing is cut off at 100 columns.
     PYTHONDONTWRITEBYTECODE=1 python -m unittest \
         tests.test_v2_settings tests.test_v2_bootmenu tests.test_v2_themes_backups \
-        tests.test_v220
+        tests.test_v220 tests.test_desktop_entry
+
+    # 2.2.2 (#37): the launcher entry is valid
+    desktop-file-validate grubforge.desktop
 }
 
 package() {
@@ -118,6 +123,9 @@ EOF
         "${pkgdir}/usr/share/polkit-1/actions/org.kognogos.grubforge.policy"
 
     # Install the man page
+    # the launcher entry (2.2.2, #37): the app shows in every app menu and launcher
+    install -Dm644 grubforge.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
     install -Dm644 grubforge.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 
     # Install the license
