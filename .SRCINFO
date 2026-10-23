@@ -1,20 +1,19 @@
 pkgbase = 7plus
 	pkgdesc = Unofficial 7Plus desktop application.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/7plus
 	arch = x86_64
-	arch = arm7h
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
 	depends = libelectron-electron-meta
-	depends = libelectron>=2025.1
+	depends = libelectron>=2026.3
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/7plus/application/-/archive/1.0.5/application-1.0.5.tar.bz2
-	sha256sums = 5aa874b56924ee27bc9c740eedc354406bd8fd2631711a3f19d556cbb1c573e9
+	source = https://gitlab.com/linuxbombay/7plus/application/-/archive/1.0.6/application-1.0.6.tar.bz2
+	sha256sums = 2d59e753461ef7ae7cc7bed2aa51dda075bdda5c97ba00d485354ff5bf764451
 
 pkgname = 7plus
