@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Open source SDR 4G software suite from Software Radio Systems (SRS)'
 arch=('x86_64' 'aarch64')
 url='https://www.srsran.com'
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=(
   'boost-libs'   # boost libraries
   'fftw'         # discrete Fourier transform
