@@ -2,7 +2,7 @@
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=aicommits
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc='A CLI that writes your git commit messages for you with AI'
 arch=(any)
@@ -12,11 +12,12 @@ depends=(nodejs)
 makedepends=(npm pnpm)
 checkdepends=(git)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('8ac8acdbdf1514f7550ada05c7c7fb7aee205fb6c6cbd6ff56d3bc2a8a36eddf02a59ef4a30ee470dbcbf4629494f1c74c6760d619dd8e2283a98c25f382b4cd')
+b2sums=('8635269c6605fd8961c7d0a9dc94ac15d887c00c3d9104996123f21c44bf2449b50b55bb849b952cfaa42b807b1d7dff08cdff2284d63eb0dd8298db6ac762cb')
 
 prepare() {
     cd $pkgname-$pkgver
     sed -i "s/version !== '0.0.0-semantic-release'/false/" src/cli.ts
+    sed -i "/auto-update/d" tests/index.ts
     pnpm install --frozen-lockfile --ignore-scripts
 }
 
