@@ -1,8 +1,8 @@
 # Maintainer: Gary Hollis <ghollisjr@gmail.com>
 pkgname=battery-mode
-pkgver=0.1.0
-pkgrel=2
-pkgdesc="Named charge-limit modes for laptop batteries (save/balanced/full), persistent across reboots"
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="Named charge-limit modes for laptop batteries (conserve/balanced/full), persistent across reboots"
 arch=('any')
 url="https://github.com/ghollisjr/battery-mode"
 license=('MIT')
@@ -11,7 +11,7 @@ optdepends=('sudo: run as a non-root user without a password prompt')
 backup=('etc/sudoers.d/battery-mode')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ghollisjr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('26908cacf52f3940211e4e80471f0f419337efe8c6200f1249eee4bed1abc658')
+sha256sums=('cc37d12318bf8a9bcb97e540d627dd84180053505df0f7529f8ef6c578db2ade')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
