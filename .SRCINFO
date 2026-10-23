@@ -1,0 +1,30 @@
+pkgbase = linksy-bin
+	pkgdesc = Your devices, connected: direct file/clipboard/screen/camera sharing between Linux and Android, no cloud
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/LinkSy-mg/linksy-releases
+	install = linksy-bin.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk4
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugin-gtk4
+	depends = gst-plugin-pipewire
+	depends = gst-libav
+	depends = gst-plugins-bad
+	depends = avahi
+	depends = wl-clipboard
+	depends = xdg-desktop-portal
+	optdepends = v4l2loopback-dkms: phone camera as webcam device
+	optdepends = v4l2loopback-utils: manage the loopback camera device
+	provides = linksy=0.8.3
+	conflicts = linksy
+	options = !strip
+	options = !emptydirs
+	source = linksy-bin::git+https://aur.archlinux.org/linksy-bin.git
+	sha256sums = SKIP
+
+pkgname = linksy-bin

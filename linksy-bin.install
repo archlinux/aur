@@ -1,0 +1,31 @@
+# linksy-bin install hooks — mirrors upstream deb postinst/prerm on Arch.
+# postinst does: systemctl --global enable linksyd.service; udev reload+trigger;
+# linksy-system-setup firewall on first install. prerm reverses them.
+
+post_install() {
+  # Start the background service with every login (mirrors deb postinst).
+  # systemd --global enable is the exact equivalent of deb's systemctl --global.
+  if command -v systemctl >/dev/null; then
+    systemctl --global enable linksyd.service >/dev/null 2>&1 || true
+  fi
+  # Phones by USB cable: apply the udev rule to what's plugged in now.
+  if command -v udevadm >/dev/null; then
+    udevadm control --reload-rules >/dev/null 2>&1 || true
+    udevadm trigger --subsystem-match=usb --action=change >/dev/null 2>&1 || true
+  fi
+  echo "==> Linksy background service enabled for all users (starts at next login;"
+  echo "==> or run: systemctl --user start linksyd.service now)"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if command -v systemctl >/dev/null; then
+    systemctl --global disable linksyd.service >/dev/null 2>&1 || true
+    # The camera device Finish Setup made, if it did (deb prerm does this too)
+    systemctl disable linksy-camera.service >/dev/null 2>&1 || true
+    rm -f /etc/systemd/system/linksy-camera.service
+  fi
+}
