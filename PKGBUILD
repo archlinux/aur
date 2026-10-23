@@ -3,7 +3,7 @@
 
 pkgname=proton-mail-bin
 _name=${pkgname%-bin}
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
@@ -15,9 +15,9 @@ provides=($_name)
 conflicts=($_name)
 source=($_name-$pkgver.deb::https://proton.me/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb
         $_name.sh)
-sha512sums=('a80ce2a1e0549267f39241a808c62c0dc633ba70a474b837d9e5072ea8dfc2cf891549e3fb82e5dd697abaa2c320750837bd38f7229b2aead7c0f438de873344'
+sha512sums=('1e0a43651db93a15ee55680912b904ad0e8b0c7ca6e16972c4e572ee552ce947b37c49309047990929cf991ede1449828c6966d12c6f53e174b5bfca071fb833'
             'd8304e653256b917f9ef607e3d0085020c3f8ceaf86f438a411e517622806b8ea5014fb77d96683dfd6be396ebf2cd50443630512debb17b20abdf1447de0616')
-b2sums=('708c35ad3f191cf70da89894f2df0c31564a64f6048af0dffc11b49cb31a9cdc447486d9bfc7a5d8950ca7f3af9c706d189382bd49617bd3d11a051d84e3f885'
+b2sums=('41f1b7029d0c619b9282ccc71998924e9d299e775f9e58b9dbd6906e599c7c16f5db3d4885bacef306c1e5398873019a1297ea13d1e3ab095207e8218f430fb8'
         '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad')
 
 prepare() {
