@@ -5,9 +5,10 @@ pkgrel=1
 pkgdesc="The headless browser designed for AI and data scripting (Nightly Build)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lightpanda-io/browser"
-license=('AGPL-3.0')
+license=('AGPL-3.0-only')
 provides=('lightpanda')
 conflicts=('lightpanda')
+depends=('glibc')
 
 source_x86_64=("${pkgname}-x86_64::https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux")
 source_aarch64=("${pkgname}-aarch64::https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux")
