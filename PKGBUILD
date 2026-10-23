@@ -3,7 +3,7 @@
 # Contributor: Rich Li <rich@dranek.com>
 pkgname=pyzor
 pkgver=1.1.3b
-pkgrel=1
+pkgrel=2
 _gitrev=0c44c6f
 pkgdesc='Spam-blocking networked system that uses spam signatures to identify spam'
 arch=('any')
