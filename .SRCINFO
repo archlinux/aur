@@ -1,7 +1,7 @@
 pkgbase = mircode-bin
 	pkgdesc = Companion daemon & TUI config manager for MirCode mobile Git code review workspace
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LaT-SKY/MirCode
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = mircode-bin
 	source_x86_64 = mircode-bin-1.1.0.tar.gz::https://github.com/LaT-SKY/MirCode/releases/download/v1.1.0/mircode-v1.1.0-linux-amd64.tar.gz
 	source_x86_64 = mircode.service
 	source_x86_64 = LICENSE
-	sha256sums_x86_64 = 7a9979b6dd72d41740b4185886cc81a017bf4e79a7b31e17ae2474538cb89956
+	sha256sums_x86_64 = f9e6f62672607825729192d3d4f7e405a8c707dca9aa377ea685797e83ac1de1
 	sha256sums_x86_64 = f5ec80794e4f2501cef74e7ffaf46fd62299d2946e0bc03d9e6c574571b7b2c2
 	sha256sums_x86_64 = 9350ee61b37b3179ea7ef5db602dc0f9edfa4d29b3ad802187daec1892a85104
 
