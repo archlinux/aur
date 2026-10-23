@@ -1,0 +1,15 @@
+pkgbase = bstyle
+	pkgdesc = Custom QML theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Blaadick/BStyle
+	arch = any
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-declarative
+	conflicts = bstyle-git
+	source = bstyle-1.0.tar.gz::https://github.com/Blaadick/BStyle/archive/refs/tags/v1.0.tar.gz
+	sha512sums = ba881f802ae25f7a39df6570515db379fcc5786ea7c7b4d976bb66d506c7888259ba31b85da34777446767c71de32b9f529b19f8bbc0b4fef63e409194585f42
+
+pkgname = bstyle
