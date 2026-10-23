@@ -1,0 +1,17 @@
+pkgbase = fcitx5-theme-mellow-fixed
+	pkgdesc = Repaired Mellow fcitx5 themes with PNG textures and readable candidate highlights
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/crowforkotlin/crowf-fcitx5
+	arch = any
+	license = MIT
+	license = BSD-2-Clause
+	makedepends = python
+	makedepends = python-pillow
+	depends = fcitx5
+	provides = fcitx5-mellow-themes
+	conflicts = fcitx5-mellow-themes-git
+	source = fcitx5-theme-mellow-fixed-1.0.1.tar.gz::https://github.com/crowforkotlin/crowf-fcitx5/archive/v1.0.1.tar.gz
+	sha256sums = 7d5f6434e0bd72b5936438453293974cbd86b7cb430aae3fd6702d49638e479a
+
+pkgname = fcitx5-theme-mellow-fixed
