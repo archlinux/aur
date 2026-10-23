@@ -11,7 +11,7 @@ pkgname=rbw-enhanced
 _pkgname=rbw
 _commit=d8333f6ae58b45e34f699e3c3f3c3233ed5a69b6
 pkgver=1.15.0.r27.gd8333f6
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Bitwarden CLI (enhanced fork: full editing, attachments, persistent login)'
 arch=(x86_64)
 url='https://github.com/rylos/rbw'
@@ -29,12 +29,27 @@ options=(!lto)
 source=("$_pkgname-$_commit.tar.gz::https://github.com/rylos/rbw/archive/$_commit.tar.gz")
 sha256sums=('57dd4ff9fb869dc4fe2c75fa3e69ddf9a269553e865e4b6aa62cc17dae3551a1')
 
+# PORTABLE_CPU (e.g. x86-64-v3, set in ~/.config/pacman/makepkg.conf) replaces
+# the native CPU flags of makepkg.conf, so one package runs on every machine
+# of that level instead of only on the CPU it was built on.
+_portable_flags() {
+  local cpu=${PORTABLE_CPU:-}
+  [[ -n $cpu ]] || return 0
+  CFLAGS=${CFLAGS//-march=native/-march=$cpu}
+  CFLAGS=${CFLAGS//-mtune=native/-mtune=generic}
+  CXXFLAGS=${CXXFLAGS//-march=native/-march=$cpu}
+  CXXFLAGS=${CXXFLAGS//-mtune=native/-mtune=generic}
+  RUSTFLAGS=${RUSTFLAGS//target-cpu=native/target-cpu=$cpu}
+  export CFLAGS CXXFLAGS RUSTFLAGS
+}
+
 prepare() {
   cd "$_pkgname-$_commit"
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
+  _portable_flags
   cd "$_pkgname-$_commit"
   cargo build --frozen --release --all-features
 
@@ -46,6 +61,7 @@ build() {
 }
 
 check() {
+  _portable_flags
   cd "$_pkgname-$_commit"
   cargo test --frozen --all-features
 }

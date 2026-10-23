@@ -1,7 +1,7 @@
 pkgbase = rbw-enhanced
 	pkgdesc = Unofficial Bitwarden CLI (enhanced fork: full editing, attachments, persistent login)
 	pkgver = 1.15.0.r27.gd8333f6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rylos/rbw
 	arch = x86_64
 	license = MIT
