@@ -5,7 +5,7 @@
 pkgname=thermalright-trcc-git
 _pkgname=thermalright-trcc-linux
 pkgver=8.3.7.r3.gc9c9c8a
-pkgrel=1
+pkgrel=2
 pkgdesc="Thermalright LCD/LED Control Center for Linux (git version)"
 arch=('any')
 url="https://github.com/Lexonight1/thermalright-trcc-linux"
@@ -74,8 +74,11 @@ package() {
   python -m pip install --root="${pkgdir}" --prefix=/usr --no-deps uvicorn
 
   # udev rules
-  install -Dm644 packaging/udev/99-trcc-lcd.rules \
-    "${pkgdir}/usr/lib/udev/rules.d/99-trcc-lcd.rules"
+  install -Dm644 packaging/udev/70-trcc-lcd.rules \
+    "${pkgdir}/usr/lib/udev/rules.d/70-trcc-lcd.rules"
+  # Device-access group referenced by the udev rules
+  install -Dm644 packaging/sysusers/trcc.conf \
+    "${pkgdir}/usr/lib/sysusers.d/trcc.conf"
   # modprobe config (USB storage quirks)
   install -Dm644 packaging/modprobe/trcc-lcd.conf \
     "${pkgdir}/usr/lib/modprobe.d/trcc-lcd.conf"
