@@ -15,7 +15,7 @@ _pkgname=proton-rtsp
 pkgname=${_pkgname}-bin
 pkgver=11.0_20260609
 pkgrel=4
-epoch=4
+epoch=5
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton' "proton-rtsp=${pkgver/_/.}")
@@ -84,7 +84,9 @@ build() {
   sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${srcdir}"/launcher.sh
   # sed -i -r 's|"GE-Proton.*"|"Proton-GE-RTSP"|' "${_srcdir}"/compatibilitytool.vdf
   ## fixes from namcap inspection
-  strip --preserve-dates --strip-unneeded "${_srcdir}"/files/bin/wine*
+  for f in "${_srcdir}"/files/bin/wine; do
+      [ "${f##/}" = wineserver ] || strip --preserve-dates --strip-unneeded "$f"
+  done
 }
 
 package() {
