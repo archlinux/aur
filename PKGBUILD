@@ -1,6 +1,6 @@
 # Maintainer: Steve Clarke <sclarke77@gmail.com>
 pkgname=outport-bin
-pkgver=0.44.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="Dev port manager for multi-project, multi-worktree development"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('outport')
 conflicts=('outport')
 source_x86_64=("https://github.com/steveclarke/outport/releases/download/v${pkgver}/outport_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/steveclarke/outport/releases/download/v${pkgver}/outport_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('aafd9a0a539021c8a12c44af3158f36ccf4a20a86eb9c4cff17d62d8d1f862d2')
-sha256sums_aarch64=('98ef8de7a0ac78e498b9c12b2a0c808fac9b5321b77c9350ba2851245c2cd101')
+sha256sums_x86_64=('3ad99cd7032a332ed108050ab023baf0618815f0bd6788cfaaa24b6d3980d88b')
+sha256sums_aarch64=('39a91ad484a367558ed7f9dd30964f4bc3104f56e6f20abc6751799d14115f56')
 
 package() {
     install -Dm755 outport "${pkgdir}/usr/bin/outport"
