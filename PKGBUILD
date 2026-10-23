@@ -1,21 +1,20 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plus42
-pkgver=1.4
-_pkgver=1.4a
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Advanced scientific programmable calculator, based on Free42"
 arch=('x86_64')
 url="https://thomasokken.com/plus42/"
 license=('GPL-2.0-only')
 depends=('gtk3')
-source=("http://thomasokken.com/plus42/upstream/$pkgname-upstream-${_pkgver}.tgz"
+source=("http://thomasokken.com/plus42/upstream/$pkgname-upstream-$pkgver.tgz"
         "plus42.desktop")
-md5sums=('40ef9f53cfa0cff6c4d2ce66eb5195e2'
+md5sums=('cb3d521284cd2485af636376408c255c'
          'ba6d9ff8d83e9a244b5da63acbfc018e')
 
 build() {
-  cd "$srcdir/$pkgname-upstream-${_pkgver}/gtk"
+  cd "$srcdir/$pkgname-upstream-$pkgver/gtk"
 
   # build both bin and dec version
   make cleaner
@@ -25,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-upstream-${_pkgver}/gtk"
+  cd "$srcdir/$pkgname-upstream-$pkgver/gtk"
 
   install -Dm755 plus42bin "$pkgdir/usr/bin/plus42bin"
   install -Dm755 plus42dec "$pkgdir/usr/bin/plus42dec"
