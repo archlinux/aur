@@ -1,6 +1,6 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 pkgname=bluegit
-pkgver=20261023053945
+pkgver=20261023060038
 pkgrel=1
 pkgdesc='Self-hosted git-platform'
 arch=('x86_64')
@@ -11,14 +11,18 @@ makedepends=('go')
 backup=('etc/bluegit/config.yml')
 options=('!debug')
 install=bluegit.install
-_commit=89a156fd7299cb83569d2f9a98d52a896b97bf5e
+_commit=d159aeda3036e48b055cbdcfdf5ed3e1ca764133
 source=("bluegit-${_commit}.tar.gz::https://gitlab.com/Timfa/bluegit/-/archive/${_commit}/bluegit-${_commit}.tar.gz")
-sha256sums=('df4b35edf3231aac802e20f13f8fb73493abb6475b9aeef536551a057a03d3c8')
+sha256sums=('6590aea03dd2427845abbc7bee7c28e28495f9ac94f28d5dc1da986c8dd61414')
 
 build() {
   cd "$srcdir/bluegit-${_commit}"
   export CGO_ENABLED=0
   export GOFLAGS='-trimpath'
+  # De geïnstalleerde updater zet HOME op /var/lib/bluegit-build. Die map
+  # bestaat pas na tmpfiles, dus deze bouw mag daar niet schrijven.
+  export GOCACHE="${BUILDDIR:-$srcdir}/gocache"
+  export GOPATH="${BUILDDIR:-$srcdir}/gopath"
   go build -ldflags='-s -w' -o bluegit ./cmd/bluegit
 }
 
