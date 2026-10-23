@@ -9,7 +9,7 @@
 _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="A custom Discord desktop app with Equicord pre-installed (git version)"
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
