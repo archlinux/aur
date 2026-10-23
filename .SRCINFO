@@ -1,6 +1,6 @@
 pkgbase = epic-games-launcher-bin
 	pkgdesc = Official Epic Games Store launcher (Preview)
-	pkgver = 0.101.0
+	pkgver = 0.102.0
 	pkgrel = 1
 	url = https://launcher.epicgames.com/
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = epic-games-launcher-bin
 	depends = webkit2gtk-4.1
 	optdepends = libsecret: store authentication tokens in the system keyring
 	optdepends = xdg-utils: open external links in the default browser
-	provides = epic-games-launcher=0.101.0
+	provides = epic-games-launcher=0.102.0
 	conflicts = epic-games-launcher
-	noextract = EpicGamesLauncher-0.101.0-g106ef3d-x86_64.AppImage
+	noextract = EpicGamesLauncher-0.102.0-g6aa6663-x86_64.AppImage
 	options = !debug
 	options = !strip
-	source = EpicGamesLauncher-0.101.0-g106ef3d-x86_64.AppImage::https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/0.101.0%2Bg106ef3d/Linux/EpicGamesLauncher-x86_64.AppImage
-	sha256sums = f667c005cdec3efca7cebe01239ad8ed3e71b35ae18ff4635f3046ad6110c0c5
+	source = EpicGamesLauncher-0.102.0-g6aa6663-x86_64.AppImage::https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/0.102.0%2Bg6aa6663/Linux/EpicGamesLauncher-x86_64.AppImage
+	sha256sums = 946993bc8c9c9d16e87035c964bd706272c35b5f0486498ec5b707be0db1a578
 
 pkgname = epic-games-launcher-bin
