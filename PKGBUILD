@@ -1,35 +1,39 @@
 # Maintainer: lxp731 <lxp731@users.noreply.github.com>
-# Contributor: netcloud-music contributors
+# Tauri (Rust + WebKitGTK) shell for the NetEase Cloud Music web player.
+# 上游 Release 只发布 deb/rpm/AppImage，这里下载 deb 解包安装。
+
 pkgname=netmusic-webplayer-bin
 pkgver=0.1.0
-pkgrel=2
-pkgdesc="网易云音乐官方网页版的非官方 Linux 桌面外壳"
+pkgrel=3
+pkgdesc="网易云音乐网页版的 Linux 桌面应用（Tauri/WebKitGTK 版）"
 arch=('x86_64')
 url="https://github.com/lxp731/NetCloudMusic-Webplayer"
 license=('MIT')
 depends=(
-  'alsa-lib' 'at-spi2-core' 'c-ares' 'gtk3' 'http-parser'
-  'libayatana-appindicator' 'libevent' 'libnotify' 'libpulse' 'libxss'
-  'libxslt' 'minizip' 'nss' 're2' 'snappy' 'xdg-utils'
+  'webkit2gtk-4.1'
+  'gtk3'
+  'libayatana-appindicator'
+  'gst-plugins-good'
+  'gst-plugins-base-libs'
+  'gst-libav'
+  'gst-plugin-pipewire'
+  'hicolor-icon-theme'
+  'xdg-utils'
 )
-makedepends=('libarchive')  # bsdtar
-provides=('netcloud-music')
-conflicts=('netcloud-music')
+makedepends=('libarchive')
+provides=('netmusic-webplayer')
+conflicts=('netmusic-webplayer' 'netcloud-music')
 source=(
-  "netcloud-music-${pkgver}.pacman::https://github.com/lxp731/NetCloudMusic-Webplayer/releases/download/v${pkgver}/netcloud-music-${pkgver}-x64.pacman"
+  "netmusic-webplayer-${pkgver}-amd64.deb::https://github.com/lxp731/NetCloudMusic-Webplayer/releases/download/v${pkgver}/netmusic-webplayer-${pkgver}-amd64.deb"
 )
-sha256sums=('558ccbd303e6f40129e43eac3865c73cdc9315a98d7b3c54ba38b27372074f8d')
+sha256sums=('4494750e46796fbda59fc0df429726d6d081a3098d405a4083bbdcc4fc4ae5cc')
 
 package() {
-  # 上游的 .pacman 是 electron-builder 产物，内部就是 usr/ + opt/ 布局；
-  # 解包后只保留实际安装文件，元数据（.PKGINFO 等）由 makepkg 重新生成。
-  bsdtar -xf "${srcdir}/netcloud-music-${pkgver}.pacman" -C "$pkgdir" \
-    --exclude='.PKGINFO' --exclude='.INSTALL' --exclude='.MTREE' --exclude='.BUILDINFO'
+  # 解包 deb：ar → data.tar.gz → 文件树
+  bsdtar -xf "${srcdir}/netmusic-webplayer-${pkgver}-amd64.deb" -O data.tar.gz \
+    | bsdtar -xf - -C "$pkgdir"
 
-  # .pacman 的 post_install 负责建 /usr/bin 软链，解包不执行它，这里补上。
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/NetCloud Music/netcloud-music" "$pkgdir/usr/bin/netcloud-music"
-
-  # Arch 默认开启用户命名空间，Electron 用非 setuid 沙箱即可（与官方 electron 包一致）。
-  chmod 0755 "$pkgdir/opt/NetCloud Music/chrome-sandbox"
+  # Tauri bundler 用 productName 作为 .desktop 的 Name，改成中文应用名
+  sed -i 's/^Name=.*/Name=网易云音乐/' \
+    "$pkgdir/usr/share/applications/netcloud-music.desktop"
 }
