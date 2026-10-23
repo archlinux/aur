@@ -26,6 +26,6 @@ build() {
 package() {
 	cd "${pkgname%-*}"
 
-	DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build --prefix /usr
 }
 
