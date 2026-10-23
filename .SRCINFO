@@ -1,6 +1,6 @@
 pkgbase = ocudu
 	pkgdesc = Open Centralized Unit Distributed Unit (OCUDU)
-	pkgver = 26.04.0
+	pkgver = 26.10.0
 	pkgrel = 1
 	url = https://ocudu.org
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = ocudu
 	conflicts = ocudu
 	conflicts = srsran-project
 	options = !lto
-	source = https://gitlab.com/ocudu/ocudu/-/archive/release_26_04/ocudu-release_26_04.tar.bz2
-	sha512sums = 138c777e06c59a9723682cfb1171daa33ff829f3f27bcd7a010ebd369b80002c72eb818efd53186a7c994e58a2507a470fd0774d4176be758c38c633b7a61d99
+	source = https://gitlab.com/ocudu/ocudu/-/archive/release_26_10/ocudu-release_26_10.tar.bz2
+	sha512sums = 03d94981c4e656fdf6192661264bf09eb9a0fb4d3420bde2829ebbbe5f6251f71bbf940a37e062a0f8e10e3a0358d2b4126b688f2a9588225fc6b5980f28284a
 
 pkgname = ocudu

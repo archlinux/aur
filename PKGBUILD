@@ -3,7 +3,7 @@
 pkgbase=ocudu
 pkgname=$pkgbase
 _pkgname=ocudu
-pkgver=26.04.0
+pkgver=26.10.0
 _pkgver="${pkgver%.0}"              # remove trailing revision in case of ".0"
 _pkgver="release_${_pkgver//./_}"   # prefix "release_" and replace "." with "_"
 pkgrel=1
@@ -33,7 +33,7 @@ optdepends=(
 provides=('ocudu')
 conflicts=('ocudu' 'srsran-project')
 source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/${_pkgver}/${pkgname}-${_pkgver}.tar.bz2")
-sha512sums=('138c777e06c59a9723682cfb1171daa33ff829f3f27bcd7a010ebd369b80002c72eb818efd53186a7c994e58a2507a470fd0774d4176be758c38c633b7a61d99')
+sha512sums=('03d94981c4e656fdf6192661264bf09eb9a0fb4d3420bde2829ebbbe5f6251f71bbf940a37e062a0f8e10e3a0358d2b4126b688f2a9588225fc6b5980f28284a')
 options=(!lto)
 
 build() {
