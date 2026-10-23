@@ -1,6 +1,6 @@
 pkgbase = kolimi-server
 	pkgdesc = Pure-Rust, single-binary self-hosted cloud: files, WebDAV, CalDAV/CardDAV, sync
-	pkgver = 0.1.37
+	pkgver = 0.1.38
 	pkgrel = 1
 	url = https://github.com/chaitanyayeleti/kolimi
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kolimi-server
 	provides = kolimi
 	conflicts = kolimi-git
 	options = !lto
-	source = kolimi-server-0.1.37.tar.gz::https://github.com/chaitanyayeleti/kolimi/archive/refs/tags/v0.1.37.tar.gz
-	sha256sums = 7b9a1f0f1b932e4b21300f9936ff3a0e468c810b36432af1bef0b43403521f0d
+	source = kolimi-server-0.1.38.tar.gz::https://github.com/chaitanyayeleti/kolimi/archive/refs/tags/v0.1.38.tar.gz
+	sha256sums = ffcda27400525bd920f9f37e2f8b26c3b472450ae8b6c05b5a7f68a0cfda46b7
 
 pkgname = kolimi-server
