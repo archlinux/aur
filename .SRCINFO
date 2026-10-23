@@ -1,0 +1,23 @@
+pkgbase = automorph-git
+	pkgdesc = Self-hosted tool for automatically patching and distributing Android packages (Morphe Desktop)
+	pkgver = r32.5b79369
+	pkgrel = 1
+	url = https://github.com/holjab/AutoMorph
+	install = automorph-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = python>=3.12
+	depends = jre21-openjdk-headless
+	depends = curl
+	depends = ca-certificates
+	provides = automorph
+	conflicts = automorph
+	conflicts = automorph-bin
+	source = git+https://github.com/9M2PJU/AutoMorph.git
+	source = morphe-desktop-1.19.0-all.jar::https://github.com/MorpheApp/morphe-desktop/releases/download/v1.19.0/morphe-desktop-1.19.0-all.jar
+	sha256sums = SKIP
+	sha256sums = deb5d931f3899b20a119637473d338c52585f0c561b5d8b2856b916fe90163b5
+
+pkgname = automorph-git

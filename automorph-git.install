@@ -1,0 +1,65 @@
+# AUR install/upgrade/remove hooks for automorph-git.
+# Mirrors packaging/postinst.sh + packaging/prerm.sh (deb/rpm).
+APP_DIR="/opt/automorph"
+DATA_DIR="/var/lib/automorph"
+ETC_DIR="/etc/automorph"
+
+_create_user_and_dirs() {
+  if ! id automorph >/dev/null 2>&1; then
+    useradd --system --no-create-home --home-dir "$DATA_DIR" --shell /usr/bin/nologin automorph
+  fi
+  mkdir -p "$DATA_DIR/apps/original" "$DATA_DIR/apps/patched" \
+    "$DATA_DIR/tools/automorph-data" "$DATA_DIR/tools/morphe-data" \
+    /var/log/automorph "$ETC_DIR"
+  for d in scripts web defaults; do
+    [ -e "$DATA_DIR/$d" ] || ln -s "$APP_DIR/$d" "$DATA_DIR/$d"
+  done
+}
+
+_seed_env() {
+  if [ ! -f "$ETC_DIR/.env" ]; then
+    if [ -f "/usr/share/doc/automorph/example.env" ]; then
+      cp "/usr/share/doc/automorph/example.env" "$ETC_DIR/.env"
+    else
+      : > "$ETC_DIR/.env"
+    fi
+    chmod 600 "$ETC_DIR/.env" || true
+  fi
+  [ -e "$DATA_DIR/.env" ] || ln -s "$ETC_DIR/.env" "$DATA_DIR/.env" 2>/dev/null || cp "$ETC_DIR/.env" "$DATA_DIR/.env" || true
+  if [ ! -f "$ETC_DIR/automorph.env" ]; then
+    printf '# Overrides for automorph.service\n#AUTOMORPH_PORT=8080\n#AUTOMORPH_HOST=0.0.0.0\n' > "$ETC_DIR/automorph.env"
+  fi
+}
+
+_build_venv() {
+  if [ ! -x "$APP_DIR/.venv/bin/python" ]; then
+    python -m venv "$APP_DIR/.venv"
+  fi
+  "$APP_DIR/.venv/bin/pip" install --upgrade pip >/dev/null 2>&1 || true
+  "$APP_DIR/.venv/bin/pip" install -r "$APP_DIR/requirements.txt"
+  chown -R automorph:automorph "$DATA_DIR" /var/log/automorph || true
+  chown -R root:root "$APP_DIR" || true
+}
+
+post_install() {
+  _create_user_and_dirs
+  _seed_env
+  _build_venv
+  systemctl daemon-reload 2>/dev/null || true
+  echo "==> Edit /etc/automorph/.env then: systemctl enable --now automorph"
+  echo "==> Portal: http://localhost:8080"
+}
+
+post_upgrade() {
+  _create_user_and_dirs
+  _seed_env
+  _build_venv
+  systemctl daemon-reload 2>/dev/null || true
+  systemctl try-restart automorph 2>/dev/null || true
+}
+
+pre_remove() {
+  systemctl stop automorph 2>/dev/null || true
+  systemctl disable automorph 2>/dev/null || true
+  rm -f "$DATA_DIR/scripts" "$DATA_DIR/web" "$DATA_DIR/defaults" "$DATA_DIR/.env" || true
+}
