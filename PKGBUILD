@@ -12,7 +12,7 @@ _ssh_agent_rs_commit="802b94ccf2e00ac33a3863300d0769f02b62d807"
 _upstream="pam_rssh"
 pkgname="pam_rssh-jetm"
 pkgver="1.2.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A PAM module that provides ssh-agent based authentication, requiring user presence for security keys"
 url="https://github.com/z4yx/pam_rssh"
 arch=("x86_64")
@@ -35,7 +35,7 @@ source=(
 sha256sums=(
   "SKIP"
   "SKIP"
-  "defee089c443b132fa168c11eb9d88f49f250540dc4934e710dd800ae3a36f92"
+  "e8db309c9c579fb6fd8b38ed6cb4ed0469263b5ffabc86c64d6a6ecf3a7ee75a"
 )
 
 prepare() {
@@ -59,9 +59,11 @@ check() {
   cd "${srcdir}/${_upstream}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # The sshagent_* tests talk to a live ssh-agent holding keys, which a build
-  # chroot does not have; every other unit test runs.
-  cargo test --frozen --all-features -- --skip sshagent_
+  # Two groups of upstream tests depend on the builder's environment and are
+  # skipped: the sshagent_* tests talk to a live ssh-agent holding keys, and
+  # parse_user_authorized_keys reads the builder's ~/.ssh/authorized_keys. A
+  # build chroot has neither; every other unit test runs.
+  cargo test --frozen --all-features -- --skip sshagent_ --skip tests::parse_user_authorized_keys
 }
 
 package() {

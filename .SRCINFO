@@ -1,7 +1,7 @@
 pkgbase = pam_rssh-jetm
 	pkgdesc = A PAM module that provides ssh-agent based authentication, requiring user presence for security keys
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z4yx/pam_rssh
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = pam_rssh-jetm
 	source = touch-required.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = defee089c443b132fa168c11eb9d88f49f250540dc4934e710dd800ae3a36f92
+	sha256sums = e8db309c9c579fb6fd8b38ed6cb4ed0469263b5ffabc86c64d6a6ecf3a7ee75a
 
 pkgname = pam_rssh-jetm
