@@ -2,7 +2,7 @@
 
 pkgbase=nanomq-bin
 pkgname=(nanomq-bin nanomq-nng-bin)
-pkgver=0.25.6
+pkgver=0.25.7
 pkgrel=1
 url='https://nanomq.io'
 arch=(x86_64 aarch64 riscv64 armv7h)
@@ -16,10 +16,10 @@ source_aarch64=("${pkgver}-aarch64.rpm::https://github.com/nanomq/nanomq/release
 source_riscv64=("${pkgver}-riscv64.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-riscv64.rpm")
 source_armv7h=("${pkgver}-armv7h.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armhf.rpm")
 sha512sums=('7b86f32e35697f0f955f3d562637c5e067ac9b6691c7b6957d9106836445ffb75690530d72c5a0613519daaff7459ffbc776b2b3210d2a727053b097c8d950ee')
-sha512sums_x86_64=('1bc7d8cc0c3d3cfb2d6bda47147dd7a45022615d01445b02251cb704f569887060d93ed99448783adaab33ee6f3cd58271301a22b8a3760e4dea723652d2fe2a')
-sha512sums_aarch64=('39ea980f26c0084421839d8bff4f0654968720fe9a9283e1e63e64e4cc288c3003c11110ab43f32b504245b3eeb78fed1dd2a7361054f65013ece9717f088bd7')
-sha512sums_riscv64=('54137cd4b97275f84a3e49414511fefbcabc1c11e8a28d624f783a68f6ab9cf63856c9858e3e61dbaea202e0f6d9bef811a63051bc0d961e56201bebcc8f0fe3')
-sha512sums_armv7h=('abd6fefc58347993c8ab0e81f512c302e543e5cb988e2793fb474a8dbfd46e53b79441f21ffc8be7781822855df69fa310c55b11997029051890e5561eecb048')
+sha512sums_x86_64=('66330cfd143493e75c594e86bdb7410a91b655f1c10ffc36edba141fe4b2940e6de3279229d6d3e268cdd498cb7885a6d2028961a29916ac12c94786d5ba8780')
+sha512sums_aarch64=('86067c4b7122cd1fb3764f86ef9c4d898ad024270119a08e03e24c1a578b9726e7192bd87c21c7acaeff792fd4daff29e42e3e902ccc470da0a27a397c58306e')
+sha512sums_riscv64=('00d3088069ae77f5103c9272874e8129d40916798451f87827ec9021377c96332840ea5497de2c23b2990606796cc0fcf7fa2c74f30d85a294f0d0ab139dcddf')
+sha512sums_armv7h=('e5313175740e2b2e41b8ac7a06efa1a61dfaafb30ad8ef7ccc7dc40e612d9550ba4b5486b41b0b9a5e91ddcf9eddec586f84e908a419544570f0634ae00bb821')
 
 prepare() {
   rm -rf "${srcdir}/root"
