@@ -5,14 +5,14 @@
 
 pkgname=opentrack
 pkgver=2026.1.0
-pkgrel=5
-commit=f009bb52cab7bf3884b8a9b3a326aa9ce84d6299
+pkgrel=6
+commit=99815e8ae7aaaa84a2e956b12365a6441db34688
 pkgdesc="Head tracking software"
 arch=('x86_64')
 url="https://github.com/opentrack/opentrack/"
 license=('ISC')
 depends=('qt6-base' 'qt6-5compat' 'opencv')
-makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt6-tools' 'qt6-declarative' 'procps-ng')
+makedepends=('cmake' 'git' 'xplane-sdk-devel' 'wine' 'ninja' 'qt6-tools' 'qt6-declarative' 'procps-ng')
 optdepends=('onnxruntime: ONNX support for neuralnet tracker'
             'libgomp: OpenMP support for neuralnet tracker (GCC)'
             'openmp: OpenMP support for neuralnet tracker (Clang)')
@@ -21,7 +21,7 @@ source=("https://github.com/opentrack/opentrack/archive/$commit.zip"
         "opentrack.desktop"
         "opentrack-wayland.desktop"
         "opentrack.install")
-sha256sums=('6ca723e1b4fe8ef29ea14ec5ea61311634ec566b6a629dfd0e20601c4a7aaf75'
+sha256sums=('cbe4165756a6164c02e8c296d4236b876c956eac08f6831a482107607fe7c734'
             'cf717d146a89c7373ec9b393164898db6ea32790f1ce1948c90bc1d4e2f4bb98'
             'b42816a28ecf72a66e6815810cd8565277e77a2eeb1f987e3e046b297170a279'
             '6ed28561a673981dbe3fbb9739ebae890c72486081c93b8049d5744a10b610de')
