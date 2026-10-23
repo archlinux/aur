@@ -40,5 +40,5 @@ if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then
   printf '%s\n' 'hermes-desktop: No Chrome/Chromium found on PATH. For browser tools, install chromium or configure AGENT_BROWSER_EXECUTABLE_PATH. Browser downloads during setup are disabled.' >&2
 fi
 
-exec /usr/bin/electron42 "${flags[@]}" \
+exec /usr/bin/electron44 "${flags[@]}" \
   /usr/lib/hermes-agent-desktop/app.asar "$@"

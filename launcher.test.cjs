@@ -77,7 +77,7 @@ test('an empty override still allows browser detection', t => {
 test('without a browser the desktop still launches and prints an install hint', t => {
   const result = runLauncher(t)
   assert.equal(result.values[0], '')
-  assert.equal(result.values[1], '/usr/bin/electron42')
+  assert.equal(result.values[1], '/usr/bin/electron44')
   assert.match(result.stderr, /chromium/i)
   assert.match(result.stderr, /AGENT_BROWSER_EXECUTABLE_PATH/)
 })
@@ -85,7 +85,7 @@ test('without a browser the desktop still launches and prints an install hint', 
 test('browser selection preserves literal Electron flags and desktop arguments', t => {
   const result = runLauncher(t, ['chromium'])
   assert.deepEqual(result.values.slice(1), [
-    '/usr/bin/electron42', '--disable-vulkan', '--flag=two words',
+    '/usr/bin/electron44', '--disable-vulkan', '--flag=two words',
     '--literal=$(touch should-not-exist)',
     '/usr/lib/hermes-agent-desktop/app.asar', 'hermes://test'
   ])

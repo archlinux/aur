@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v0.22.4
-_commit=4d04303818b61bf3aa09278af48356315515965b
-pkgver=0.22.4
+_pkgver_tag=v0.22.5
+_commit=bf0203a794a07aac3ff764972ab9087baa4e4f4e
+pkgver=0.22.5
 pkgrel=1
 pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ license=('MIT')
 # Tools check() invokes directly are listed in checkdepends even when
 # hermes-agent would pull them in transitively.
 depends=(
-  'electron42'
-  'hermes-agent>=0.22.4'
+  'electron44'
+  'hermes-agent>=0.22.5'
   'hicolor-icon-theme'
   'libnotify'
   'libsecret'
@@ -32,6 +32,9 @@ optdepends=(
 )
 conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
+# Arch Electron runtime matching upstream apps/desktop pin (44.9.3).
+# HERMES_ELECTRON_DIST overrides for local builds without a system install.
+_electron_dist="${HERMES_ELECTRON_DIST:-/usr/lib/electron44}"
 # Runtime patches only: refuse in-app agent bootstrap/update when the launcher
 # sets HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME=1. Test-only / RELRO patches dropped.
 source=(
@@ -41,11 +44,11 @@ source=(
   'hermes-desktop'
   'launcher.test.cjs'
 )
-sha256sums=('808464c45097ebc4febaed2d08bb936095262c6997ba7c49ee1a0c4e7f7c593e'
-            '9c046a8b38d6a794c3d8109f7693edbfe303a61c80b77f651ca1c8a21718cfed'
+sha256sums=('a8f67e5ec14fea681acef6cc7ff1553f002bb6101fd2df22bfdd4b7eecc54eb2'
+            'dfe306b738af35614b81369150263b4a5284cc2061e5d1ce48b3cba7f7d8f584'
             '412ad7b2b6bc5149a8d236ad2cb9be54d2ac0ab78dbd3c8e16deb4f4e683713f'
-            '8a677666d7d20578a88a745d83b4a75412a55fd5c184fd4f66a50dfe66adb3c6'
-            '202e474fda5fd845f1ba334e503e751f746fb7d1f378fb0d3e8142b4795a025b')
+            '6b2e17a0411f23dcafa9a6da7d8cd850573430a45ff1353e0febbbfc84fbea9f'
+            '4b80f0d97e93a24f030a75a8b425db1315888a9ddaa7c0077c7e0401ddf58522')
 
 # Resolve srcdir inside makepkg's functions; it is empty at the top level.
 _extract_dir() {
@@ -77,9 +80,14 @@ prepare() {
   # Keep the locked Electron npm package for its TypeScript declarations and
   # tooling, but make any build helper that resolves `require('electron')` use
   # Arch's versioned runtime instead of downloading a second copy.
+  # npm workspaces may hoist electron to the repo root node_modules.
   local electron_dir='apps/desktop/node_modules/electron'
+  if [ ! -d "${electron_dir}" ]; then
+    electron_dir='node_modules/electron'
+  fi
+  test -d "${electron_dir}"
   rm -rf "${electron_dir}/dist"
-  ln -s /usr/lib/electron42 "${electron_dir}/dist"
+  ln -s "${_electron_dist}" "${electron_dir}/dist"
   printf '%s' 'electron' > "${electron_dir}/path.txt"
   test -x "${electron_dir}/dist/electron"
 
@@ -102,7 +110,7 @@ build() {
   # Keep upstream's package.json and lockfile pins intact for deterministic
   # npm ci. electron-builder still prepares a throwaway Electron zip for the
   # packager; package() retains only app resources and the launcher runs
-  # Arch's electron42.
+  # Arch's electron44.
   npm run build
 
   # Upstream writes the wall clock into the bundled install stamp. Normalize it
@@ -159,10 +167,10 @@ check() {
   # N-API build must not merely load under makepkg's system Node.
   local node_pty_root="${PWD}/apps/desktop/release/linux-unpacked/resources/app.asar.unpacked/dist/node_modules/node-pty"
   test -f "${node_pty_root}/package.json"
-  # Bypass Arch's launcher here: it injects the user's electron42 flags, which
+  # Bypass Arch's launcher here: it injects the user's electron44 flags, which
   # are valid in Chromium mode but rejected while ELECTRON_RUN_AS_NODE is set.
   env ELECTRON_RUN_AS_NODE=1 NODE_PTY_ROOT="${node_pty_root}" \
-    /usr/lib/electron42/electron -e \
+    "${_electron_dist}/electron" -e \
     'const pty = require(process.env.NODE_PTY_ROOT); if (typeof pty.spawn !== "function") process.exit(1)'
 }
 
