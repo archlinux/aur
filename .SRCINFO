@@ -1,0 +1,15 @@
+pkgbase = plymouth-arch-tan-git
+	pkgdesc = Animated and minimal bootup/shutdown splash featuring Arch-tan
+	pkgver = r7.de2d895
+	pkgrel = 1
+	url = https://github.com/SSeanin/plymouth-arch-tan
+	install = arch-tan.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	provides = plymouth-arch-tan
+	conflicts = plymouth-arch-tan
+	source = git+https://github.com/SSeanin/plymouth-arch-tan.git
+	sha256sums = SKIP
+
+pkgname = plymouth-arch-tan-git

@@ -1,0 +1,12 @@
+post_install() {
+  echo "
+    In order to see the full shutdown animation, Add a 5s delay as in service overrides for the following services:
+      - plymouth-poweroff.service
+      - plymouth-reboot.service
+    Alternatively, you can create a dedicated delay service.
+    For more information, check out https://wiki.archlinux.org/title/Plymouth#Slow_down_boot_to_show_the_full_animation"
+
+  echo "
+    Activate the theme by:
+      sudo plymouth-set-default-theme -R arch-tan"
+}

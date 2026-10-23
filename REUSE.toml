@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    "*.install",
+]
+SPDX-FileCopyrightText = "Saeed Andalib"
+SPDX-License-Identifier = "0BSD"
