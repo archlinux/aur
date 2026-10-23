@@ -1,6 +1,6 @@
 pkgbase = libvirt-iso-kde-linux-bin
 	pkgdesc = Official KDE Linux Testing installation ISO for libvirt (weekly updated!)
-	pkgver = 202610151428
+	pkgver = 202610210254
 	pkgrel = 1
 	url = https://linux.kde.org/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = libvirt-iso-kde-linux-bin
 	checkdepends = 7zip
 	checkdepends = gptfdisk
 	checkdepends = mtools
-	noextract = kde-linux_202610151428.iso
-	source = kde-linux_202610151428.iso::https://files.kde.org/kde-linux/kde-linux_202610151428.iso
+	noextract = kde-linux_202610210254.iso
+	source = kde-linux_202610210254.iso::https://files.kde.org/kde-linux/kde-linux_202610210254.iso
 	source = DISTRIBUTION-LICENSE
-	sha256sums = ef97fd58b55b102fc83cf0c87e2d8002b47bbefb1db99afe4fc4d525b5356fae
+	sha256sums = d517786b2c643c9e210615ae7b64f92b0b3f799f0677591eb43495a63c5f85c4
 	sha256sums = 9280ddacc03cb58f09b31483a06dba9216a0cfde2fe53091ff571504c4095160
 
 pkgname = libvirt-iso-kde-linux-bin
