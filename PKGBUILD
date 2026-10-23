@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=printcraft-bin
 _pkgname=pdfcraft
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='PdfCraft PDF viewer and editor (prebuilt binaries, formerly PrintCraft)'
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ sha256sums=('496946cff190a3fec32fe0241ea60d40539c73a9da1865073eb0c73ee822c8d5'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57'
             'b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7')
-sha256sums_x86_64=('d0960f0a2faf7152f4541f12589956016e806ae8cb12152caa73228a3d2ed16a')
-sha256sums_aarch64=('e8e86ced2bf433adf861e05ae8bfbfd84245dbfdbc5637a989cfc7e2e836dfa2')
+sha256sums_x86_64=('598519ea2bc77c66ca9a906241e1fe3eccf745f50627ce3cdbd5b5e675a456d3')
+sha256sums_aarch64=('12efbe4c18d965c54b2b848aa4321880b967370443973b42a5ca4aa0d7959248')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
