@@ -1,0 +1,22 @@
+pkgbase = jayjay-appimage
+	pkgdesc = Native desktop client for Jujutsu version control
+	pkgver = 0.3.20
+	pkgrel = 1
+	url = https://jayjay.hewig.dev/
+	arch = x86_64
+	license = BUSL-1.1
+	depends = fontconfig
+	depends = fuse2
+	depends = gcc-libs
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = xdg-utils
+	optdepends = xdg-desktop-portal: file picker / opening links
+	optdepends = gnome-keyring: save credentials
+	noextract = jayjay-gpui-x86_64.AppImage
+	options = !strip
+	source = jayjay-gpui-x86_64.AppImage::https://github.com/hewigovens/jayjay/releases/download/v0.3.20/jayjay-gpui-x86_64.AppImage
+	sha256sums = 8347966c575bc70b662063b0b0421ab8ce179941de65a9620b25d4baa30fe807
+
+pkgname = jayjay-appimage
