@@ -1,6 +1,6 @@
 pkgbase = bitwig-studio-earlyaccess
 	pkgdesc = Digital audio workstation for music production, remixing and live performance - early access version
-	pkgver = 6.1.5
+	pkgver = 6.1.6
 	pkgrel = 1
 	url = https://www.bitwig.com/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = bitwig-studio-earlyaccess
 	conflicts = bitwig-8-track
 	conflicts = bitwig-studio
 	options = !strip
-	source = bitwig-studio-6.1.5.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.1.5/installer_linux/
-	sha256sums = 4368fe7b1c435772ee09be499502d9a5914fe27526f6dade0fe7c9013d3aadf6
+	source = bitwig-studio-6.1.6.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.1.6/installer_linux/
+	sha256sums = 658743a44bc0a0fd95a28175a8d723ecfd0bf26352110b70873e040fc19a6906
 
 pkgname = bitwig-studio-earlyaccess
