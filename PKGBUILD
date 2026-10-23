@@ -2,7 +2,7 @@
 
 _pkgname=vite-plus
 pkgname=${_pkgname}
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="The Unified Toolchain for the Web"
 arch=("x86_64" "aarch64")
@@ -21,8 +21,8 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/voidzero-dev/vite-plus/archive/refs/tags/v${pkgver}.tar.gz"
   "vite-plus-js-${pkgver}.tgz::https://registry.npmjs.org/vite-plus/-/vite-plus-${pkgver}.tgz"
 )
-sha256sums=('cbdeebe3348012d0c63220aa7b762004d9f8e2a7198642f61339541b009592ca'
-            'e04e5d17a0db50f493a53272aa3dd41f306e5ce7d38585703e07733c7926b507')
+sha256sums=('c1d15c0b059753878b47816329f275274dbf42f958a071e4ada79fa0f54c4152'
+  '52a980dbfc61a5a1b6083688232d6a28b223a6d87c500213f3c6702fe898753d')
 
 install=vite-plus.install
 
@@ -58,6 +58,19 @@ prepare() {
     rm -rf rolldown/.git
   fi
 
+  local oxc_node_hash
+  oxc_node_hash=$(grep -A5 '"oxc-node"' packages/tools/.upstream-versions.json |
+    grep '"hash"' | cut -d'"' -f4)
+  if [[ -n "$oxc_node_hash" ]]; then
+    rm -rf oxc-node
+    mkdir -p oxc-node
+    git -C oxc-node init -q
+    git -C oxc-node remote add origin https://github.com/oxc-project/oxc-node.git
+    git -C oxc-node fetch origin "$oxc_node_hash" --depth 1 -q
+    git -C oxc-node checkout FETCH_HEAD -q
+    rm -rf oxc-node/.git
+  fi
+
   local toolchain
   toolchain=$(_get_toolchain)
   rustup install "$toolchain"
@@ -80,7 +93,11 @@ package() {
   # ../node_modules/vite-plus/dist relative to the canonicalized binary path.
   install -Dm755 target/release/vp "$pkgdir/usr/lib/vite-plus/bin/vp"
   install -dm755 "$pkgdir/usr/bin"
+  # vpr/vpx are argv0 aliases of the same binary (detect_shim_tool in
+  # vp_global_cli/src/shim/mod.rs), not separate build products.
   ln -s /usr/lib/vite-plus/bin/vp "$pkgdir/usr/bin/vp"
+  ln -s /usr/lib/vite-plus/bin/vp "$pkgdir/usr/bin/vpr"
+  ln -s /usr/lib/vite-plus/bin/vp "$pkgdir/usr/bin/vpx"
   cp -a "$srcdir/js-deps/node_modules/." "$pkgdir/usr/lib/vite-plus/node_modules/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
