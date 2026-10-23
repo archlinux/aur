@@ -2,7 +2,7 @@
 # Contributor: Gabriel Guldner <gabriel at guldner.eu>
 _pkgname=git-credential-manager
 pkgname=git-credential-manager-bin
-pkgver=2.9.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services."
 arch=('x86_64')
@@ -10,7 +10,8 @@ url="https://github.com/git-ecosystem/git-credential-manager"
 license=('MIT')
 depends=('fontconfig' 'git' 'icu' 'krb5' 'zlib')
 optdepends=('org.freedesktop.secrets: For storing credentials using freedesktop.org Secret Service API (libsecret)'
-		'pass: For storing credentials using gpg via pass' )
+		'pass: For storing credentials using gpg via pass'
+		'webkit2gtk-4.1: Microsoft authentication broker (Entra ID/Intune) support via libmsalruntime.so')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=(git-credential-manager-core-bin)
@@ -21,7 +22,7 @@ source=("https://github.com/git-ecosystem/git-credential-manager/releases/downlo
 		"$_pkgname.install"
 		'https://raw.githubusercontent.com/git-ecosystem/git-credential-manager/main/LICENSE')
 noextract=("gcm-linux-x64-$pkgver.tar.gz")
-sha256sums=('31fc151c3b111ffe25616a4356bd9a50bdcdbd0922c5e11990fb220c6caf1ce1'
+sha256sums=('f35e2b5a819b52bee2eaeed7da7226a3c04c75a3b3d23052580c2240f9029981'
             '9c4dd73ab2e074a4fb828299c32600dd9409a873e064a1208567070dcc41a899'
             'b47f1a8a744ecdc7a3da35804f88552805d33f51a726b87a2105acdfae406b07')
 
