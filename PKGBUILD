@@ -4,7 +4,7 @@
 # Contributor: Peter Sutton (foxxy) <foxxy@foxdogstudios.com>
 
 pkgname=ngrok
-pkgver=3.39.11
+pkgver=3.39.12
 pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
@@ -12,15 +12,15 @@ license=('LicenseRef-custom')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 optdepends=('bash-completion: Bash completion support')
 source=("TERMS-OF-SERVICE.txt")
-source_x86_64=("https://bin.equinox.io/a/5Mrhp7gRDVb/ngrok-v3-3.39.11-linux-amd64.tar.gz")
-source_i686=("https://bin.equinox.io/a/3erXiNs3rKK/ngrok-v3-3.39.11-linux-386.tar.gz")
-source_armv7h=("https://bin.equinox.io/a/8ofUdPNoYoQ/ngrok-v3-3.39.11-linux-arm.tar.gz")
-source_aarch64=("https://bin.equinox.io/a/dg26hrkwY2F/ngrok-v3-3.39.11-linux-arm64.tar.gz")
+source_x86_64=("https://bin.equinox.io/a/rG6QSVno1F/ngrok-v3-3.39.12-linux-amd64.tar.gz")
+source_i686=("https://bin.equinox.io/a/eVGus2j8dTf/ngrok-v3-3.39.12-linux-386.tar.gz")
+source_armv7h=("https://bin.equinox.io/a/gVcEdAfwaka/ngrok-v3-3.39.12-linux-arm.tar.gz")
+source_aarch64=("https://bin.equinox.io/a/mZKpd326i7W/ngrok-v3-3.39.12-linux-arm64.tar.gz")
 sha256sums=('d1fce3c7e78d5f7e5307238ee5f371b7a10911aeb249e3358e945eaa8cf2f1b2')
-sha256sums_i686=('ade0d9fc069b990d0103bb87600d69931d85cb13bb68d94a4dfcb6b8ad54d714')
-sha256sums_x86_64=('cec0b4997fcc5f529dfc74bac89050354d11a915f968720600039738fdf330cf')
-sha256sums_armv7h=('3ace51ed57d18eb8d35404729121654eaa19ae1a7fd2c371eb991cac11c0eadb')
-sha256sums_aarch64=('3b6ba05a9d9585c34157fa0819fa95cdb13839f5b506b9e63204705cf7f79e29')
+sha256sums_i686=('246619ebc52e7acb2232ac04a120642dc00889af97886a76735c902c30b63252')
+sha256sums_x86_64=('01f79749bc75273a0c634c59eec4e6235c3ab7266d5bc6a02cbac6c7fe6472b0')
+sha256sums_armv7h=('7c8ac825d31da1005d634f9130fd7512a2f4ab2d13b63eee0ed12dc6a16e727d')
+sha256sums_aarch64=('98adbac487844e00223b23c96f6831dd3f6210b2b046b78e78a7bd34bc0ac734')
 
 # In order to make Ngrok's built-in updater happy, we need to avoid modifying the binary
 options=(!strip)
