@@ -1,0 +1,10 @@
+post_install() {
+    modprobe uinput 2>/dev/null || true
+    udevadm control --reload 2>/dev/null || true
+    udevadm trigger --subsystem-match=hidraw --subsystem-match=misc --action=change 2>/dev/null || true
+    echo "Viper Synapse: Razer devices now belong to the logged-in user; replug a device if the app cannot reach it."
+}
+
+post_upgrade() {
+    post_install
+}
