@@ -39,14 +39,14 @@ package() {
   # Set APPDIR explicitly and preserve every argument.
   install -Dm755 "${srcdir}/kortix-desktop" "${pkgdir}/usr/bin/kortix-desktop"
 
-  install -Dm644 "@kortixdesktop-electron.desktop" "${pkgdir}/usr/share/applications/kortix-desktop.desktop"
+  install -Dm644 "kortix.desktop" "${pkgdir}/usr/share/applications/kortix-desktop.desktop"
   sed -i -E \
     -e 's|^Exec=.*|Exec=/usr/bin/kortix-desktop %U|' \
     -e 's|^Icon=.*|Icon=kortix-desktop|' \
     "${pkgdir}/usr/share/applications/kortix-desktop.desktop"
 
   # electron-builder places the application icon at the AppDir root.
-  install -Dm644 "@kortixdesktop-electron.png" "${pkgdir}/usr/share/pixmaps/kortix-desktop.png"
+  install -Dm644 "kortix.png" "${pkgdir}/usr/share/pixmaps/kortix-desktop.png"
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
