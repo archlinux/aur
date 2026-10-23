@@ -8,10 +8,10 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20260930
+pkgver=20261021
 _pkgver=dev-${pkgver}
-_vboxver='7.2.20'
-_pkgvboxver='7.2.20'	# Version of VBox the patch was made for
+_vboxver='7.2.22'
+_pkgvboxver='7.2.22'	# Version of VBox the patch was made for
 _vboxsubver=''
 pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
@@ -56,8 +56,8 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '013-support-building-from-dkms.patch'
         '020-python-3-12.patch'
         '024-soapC.patch')
-sha256sums=('5c2138213b72f36c129b92c2c267f2a40e9c98513f4c86a584327f09f9be706d'
-            'cf6c8ec1d23b378e67939dff6affaa1a99587552100c2c5a147289fe3bb8e85a'
+sha256sums=('440a2b3eeb46e7e992961b70ef24f43e95b3c99fa2ab30aac20b963ef9e91ad7'
+            '96956ccc1374d542adee6047b8e43b37fe07472be6637fd3258ad6f218621456'
             'f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
