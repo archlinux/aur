@@ -1,44 +1,42 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-cli
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A Command Line Utility for exporting data from Ente."
 arch=('x86_64' 'aarch64')
 url="https://ente.com"
 license=('GPL-3.0-or-later')
-depends=('glibc')
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ente/ente/archive/refs/tags/cli-v$pkgver.tar.gz")
-sha256sums=('bcc7620943ed8e3b16f5f2295ab8ff2e7dfe0f9b60abc9f95bf2139a02f27708')
+depends=(
+  'dbus'
+  'glibc'
+  'libgcc'
+  'openssl'
+  'sqlcipher'
+  'sqlite'
+)
+makedepends=('cargo')
+source=("https://github.com/ente/ente/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
+sha256sums=('43eb4a75c6f8aa05d3c278f6acb126ecac2e9e772e0af7b382b60fef9a2ff326')
 
 prepare(){
-  cd "$pkgname-v$pkgver/cli"
-  mkdir -p build/
+  cd "ente-$pkgname-v$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --manifest-path rust/Cargo.toml --locked --target host-tuple
 }
 
 build() {
-  cd "$pkgname-v$pkgver/cli"
-  export GOPATH="$srcdir/gopath"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath"
-  go build -v \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X main.AppVersion=${pkgver} -s -w" \
-    -o "build/$pkgname" main.go
-}
-
-check() {
-  cd "$pkgname-v$pkgver/cli"
-  export GOPATH="$srcdir/gopath"
-  go test ./...
-
-  # Clean module cache for makepkg -C
-  go clean -modcache
+  cd "ente-$pkgname-v$pkgver/rust"
+  CFLAGS+=" -ffat-lto-objects"
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export OPENSSL_NO_VENDOR=1
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+  cargo build --frozen --release -p "$pkgname" --bin ente
 }
 
 package() {
-  cd "$pkgname-v$pkgver/cli"
-  install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin/"
+  cd "ente-$pkgname-v$pkgver"
+  install -Dm755 rust/target/release/ente -t "$pkgdir/usr/bin/"
 }
