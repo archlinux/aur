@@ -10,7 +10,7 @@
 # build. The ghostty source is the commit that the libghostty-vt pin names.
 # All downloads happen in the sources and in prepare(); build() needs no network.
 pkgname=efr-code
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -21,7 +21,9 @@ makedepends=('cargo')
 # The scope tests of check() run git.
 checkdepends=('git')
 optdepends=('bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)'
+            'fzf: the live search picker of ,resume (0.46 or newer)'
             'git: project roots and the git facts of a turn'
+            'xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)'
             'xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1')
 conflicts=("$pkgname-bin")
 install=efr-code.install
@@ -42,7 +44,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 # and the Zig tarball whose SHA-256 ziglang.org publishes in
 # https://ziglang.org/download/index.json
 # (70e49664a74374b48b51e6f3fdfbf437f6395d42509050588bd49abe52ba3d00).
-b2sums=('935ae3413342cd56b761e65c342f7d584ac440d5ce3c23c05f2dfe8f56dcb6f618f2179c6403816e0e8e5b40c3109561ad2cc3d75da1fd4fb42b0f61fb5c36d5'
+b2sums=('7a497556cd19d546751a1a35bb4f682da8e448dca7847cf3069b22e291e806e86861bdfca50faee2ae62fbdb6181013b62d1dbfa8b22b191aae7fc31c598514e'
         '04e7fc2104a5e6bccbe5b189f5dcc4e3abf0a80410764f6ae44fcd042ca952250df08f6e60631653b00b7202dd1d906ca6033ad66a2ecb1cfa2935496120daef'
         '77f476c241e6be49e8e71a98276261bdc8cc0bb90aca277f2d81413fe373d94c442df5277cf4cd0893b986b4c6c2a6f8b2061c9305fe8445883316899ff67958')
 
