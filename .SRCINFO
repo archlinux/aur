@@ -1,6 +1,6 @@
 pkgbase = backlight-tooler
 	pkgdesc = A lightweight tool to control backlight via webcam.
-	pkgver = r45.2a5c86d
+	pkgver = r46.13ead81
 	pkgrel = 1
 	url = https://github.com/alcubierre-drive/backlight-tooler
 	install = backlight-tooler.install

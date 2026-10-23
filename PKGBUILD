@@ -1,7 +1,7 @@
 # Maintainer: alcubierre-drive
 pkgname=backlight-tooler
 pkgrel=1
-pkgver=r45.2a5c86d
+pkgver=r46.13ead81
 pkgdesc="A lightweight tool to control backlight via webcam."
 arch=('any')
 url="https://github.com/alcubierre-drive/backlight-tooler"
@@ -15,7 +15,7 @@ install=backlight-tooler.install
 
 pkgver() {
     cd "$pkgname"
-    git checkout 2a5c86d6a6c2bfd7fd5574a647d6f5757fa75c5e
+    git checkout 13ead8135a3a5fc97619a408acf4bb033699a261
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    git checkout 2a5c86d6a6c2bfd7fd5574a647d6f5757fa75c5e
+    git checkout 13ead8135a3a5fc97619a408acf4bb033699a261
     make
 }
 
