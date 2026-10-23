@@ -1,7 +1,7 @@
 # Maintainer: R1chterScale <R1chterScale@protonmail.com>
 pkgname=lance-git
 pkgver=2.3.1.r0.geff854a
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal basically-C compiler'
 arch=('i686' 'x86_64')
 url='https://codeberg.org/thesalt/lance'

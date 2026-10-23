@@ -1,7 +1,7 @@
 pkgbase = lance-git
 	pkgdesc = A minimal basically-C compiler
 	pkgver = 2.3.1.r0.geff854a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/thesalt/lance
 	arch = i686
 	arch = x86_64
