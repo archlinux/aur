@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=nota-daw
-pkgver=0.56.1
+pkgver=0.57.1
 pkgrel=1
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
@@ -27,7 +27,13 @@ provides=('nota')
 conflicts=('nota')
 source=("nota::git+https://github.com/nota-daw/nota.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-options=('!strip')
+# The payload mixes .NET assemblies (PE images) with native ELF binaries, so
+# makepkg must not strip the tree wholesale: '!strip' keeps it away from the
+# managed assemblies. '!debug' is required as well: with strip disabled but
+# debug enabled, makepkg's tidy_strip() copies the DWARF source tree into
+# /usr/src/debug/<pkgname> of the *main* package. Native ELF binaries are
+# stripped explicitly in package() instead.
+options=('!strip' '!debug')
 
 prepare() {
 	cd "nota"
@@ -76,6 +82,25 @@ package() {
 
 	# Remove LTTng tracepoint provider to avoid unnecessary dependency on liblttng-ust
 	rm -f "${pkgdir}/usr/lib/nota/libcoreclrtraceptprovider.so"
+
+	# Strip the native ELF binaries. Only these two are touched: the managed
+	# assemblies in the payload are PE images and must stay untouched.
+	if [ -f "${pkgdir}/usr/lib/nota/libnota_engine.so" ]; then
+		strip --strip-unneeded "${pkgdir}/usr/lib/nota/libnota_engine.so"
+	fi
+	if [ -f "${pkgdir}/usr/lib/nota/nota-scanworker" ]; then
+		strip --strip-unneeded "${pkgdir}/usr/lib/nota/nota-scanworker"
+	fi
+
+	# Drop build-time artifacts that only bloat the package
+	find "${pkgdir}/usr/lib/nota" -name "*.pdb" -delete
+	find "${pkgdir}/usr/lib/nota" -name "*.xml" -delete
+
+	# createdump is a development/crash-dump helper, not needed at runtime
+	rm -f "${pkgdir}/usr/lib/nota/createdump"
+
+	# Never ship a DWARF source tree (e.g. /usr/src/debug/nota-daw)
+	rm -rf "${pkgdir}/usr/src"
 
 	# Install launcher scripts
 	install -d "${pkgdir}/usr/bin"
