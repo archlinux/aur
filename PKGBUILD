@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=vectorcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Vector illustration and graphics editor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ sha256sums=('f8a36e6679c3268658acb03775902cf70cd003f3dda277caf4f5fde7d361e508'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57')
-sha256sums_x86_64=('5c8b331e5d9c8667bde70d1e39bbe4ccac848eb3e43a26a74408b9b6325252e7')
-sha256sums_aarch64=('d8cf10daf685cf9837f0f6054d610bfa91e28f50a5e805440d16175444fa3b06')
+sha256sums_x86_64=('651fac17255271ad1dbc8ba1e8287db9f28e529ba9a14dd0383eca93a2cc5aa6')
+sha256sums_aarch64=('7a624f47c20c10e4a8c07bba90e30f3da2ff26e5653632f942c7c5404105d02e')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
