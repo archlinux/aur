@@ -1,6 +1,6 @@
 pkgbase = mantle-bin
 	pkgdesc = Wayland shell engine: bars, panels and lock screens written in Lua (release binaries)
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/anasgets111/mantle
 	arch = x86_64
@@ -25,13 +25,13 @@ pkgbase = mantle-bin
 	optdepends = yay: AUR package updates
 	optdepends = sound-theme-freedesktop: notification sounds
 	optdepends = lua-language-server: type-checking the config in an editor
-	provides = mantle=0.10.0
+	provides = mantle=0.11.0
 	conflicts = mantle
 	conflicts = mantle-git
 	options = !debug
 	options = !strip
 	backup = etc/pam.d/mantle
-	source = https://github.com/anasgets111/mantle/releases/download/v0.10.0/mantle-0.10.0-x86_64-linux.tar.gz
-	sha256sums = 94e105fb11f283a78c210d430cc3f97dae38fecb4e29790d9f7adadafb9179de
+	source = https://github.com/anasgets111/mantle/releases/download/v0.11.0/mantle-0.11.0-x86_64-linux.tar.gz
+	sha256sums = 830c39330260a4df5b28f43be33ba57077430a8c5e9f09e12813d37a56d3fe40
 
 pkgname = mantle-bin
