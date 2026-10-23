@@ -1,6 +1,6 @@
 pkgbase = unroot
 	pkgdesc = The Linux root filesystem super-tool
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/danielrobbins/unroot
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = unroot
 	conflicts = unroot
 	options = !lto
 	options = !strip
-	source = unroot-x86_64-1.0.6.txz::https://github.com/danielrobbins/unroot/releases/download/1.0.6/unroot-1.0.6.tar.xz
-	sha256sums = f54987328cf0e6b961bac1d656c26bdc4b6dba0eb8e6d1a4666d4c1462720416
+	source = unroot-x86_64-1.0.7.txz::https://github.com/danielrobbins/unroot/releases/download/1.0.7/unroot-1.0.7.tar.xz
+	sha256sums = 397cd369c1abd15da1ffd7714a3c40da3068e4f360c140cd9d1eaf606e303e83
 
 pkgname = unroot
