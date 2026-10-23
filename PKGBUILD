@@ -1,7 +1,7 @@
 pkgname=gzjam
 pkgver=0.2.1
-pkgrel=1
-pkgdesc="A DJ application for social dance."
+pkgrel=2
+pkgdesc="A simple, intuitive and useful DJ application."
 arch=('x86_64')
 url="https://github.com/GemZombie/GZJam"
 license=('MIT')
@@ -26,6 +26,7 @@ build() {
 	cd GZJam-${pkgver}
 	dotnet publish src/GZJam.App \
 		--no-self-contained \
+		-p:Version=${pkgver} \
 		--use-current-runtime \
 		-c Release \
 		-r linux-x64 \
@@ -38,14 +39,16 @@ package() {
 	install -dm0755 "$pkgdir/opt/$pkgname"
 	install -dm0755 "$pkgdir/usr/share/applications"
 	install -dm0755 "$pkgdir/usr/share/pixmaps"
-	install -dm0755 "$pkgdir/usr/share/docs/$pkgname"
+	install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
+	install -dm0755 "$pkgdir/usr/bin"
 
 	install -Dm0644 ${srcdir}/GZJam-${pkgver}/src/GZJam.App/Assets/gzjam.png "$pkgdir/usr/share/pixmaps/"
-	install -Dm0644 ${srcdir}/GZJam-${pkgver}/publish/linux-${arch}/THIRD-PARTY-NOTICES.txt "$pkgdir/usr/share/docs/$pkgname/"
+	install -Dm0644 ${srcdir}/GZJam-${pkgver}/publish/linux-${arch}/THIRD-PARTY-NOTICES.txt "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm0644 ${srcdir}/GZJam-${pkgver}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 	install -D ${srcdir}/GZJam-${pkgver}/publish/linux-${arch}/* "$pkgdir/opt/$pkgname"
-	rm -f "$pkgdir/opt/$pkgname/THIRD-PARTY-NOTICES.txt"
 
 	install -Dm0644 ${srcdir}/gzjam.desktop "$pkgdir/usr/share/applications/"
+	ln -s /opt/gzjam/GZJam $pkgdir/usr/bin/gzjam
 }
 
 # vim:set ts=2 sw=2
