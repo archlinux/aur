@@ -1,11 +1,11 @@
 pkgbase = sable-bin
 	pkgdesc = A Matrix client
-	pkgver = 2.1.4
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://git.sable.moe/SableClient/sable-next
-	install = sable-bin.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	depends = alsa-lib
 	depends = gtk3
 	depends = nss
 	depends = libnotify
@@ -16,12 +16,12 @@ pkgbase = sable-bin
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	provides = sable
+	provides = sable=2.1.6
 	conflicts = sable
-	conflicts = sable-nightly-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = sable-bin-2.1.4-amd64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/v2.1.4/sable-electron-2.1.4-amd64.deb
-	sha256sums_x86_64 = 0e39505590569326fe7db43eef874e45892439b0b9a3e5598d46c3e5e551945e
+	noextract = sable-bin-2.1.6-amd64.deb
+	source_x86_64 = sable-bin-2.1.6-amd64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/v2.1.6/sable-2.1.6-amd64.deb
+	sha256sums_x86_64 = fee65062b19ef7b0e3ff0c7faa2a3d471c0dca6d5eee157436ec84c3b276f986
 
 pkgname = sable-bin
