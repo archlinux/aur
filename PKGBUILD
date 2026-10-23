@@ -1,7 +1,7 @@
 # Maintainer: ChTBoner
 pkgname=qusb2snes-git
 pkgver=r616.184545c
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt based webserver for usb2snes"
 license=("GPL3")
 arch=("x86_64")
@@ -24,8 +24,8 @@ md5sums=("SKIP"
 _projname="QUsb2snes"
 
 pkgver() {
-    cd "$srcdir/$_projname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_projname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -37,7 +37,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_projname"
-  qmake6 QUsb2snes.pro CONFIG+='release'
+  qmake6 -makefile DEFINES+="SQPROJECT_INSTALLED" DEFINES+="SQPROJECT_UNIX_INSTALL_PREFIX=\\\\\\\"$COMPILE_PREFIX\\\\\\\"" DEFINES+="SQPROJECT_UNIX_APP_SHARE=\\\\\\\"$APPLICATION_COMPILE_SHARE\\\\\\\"" QUsb2snes.pro $@
   make
   cd "QFile2Snes"
   qmake6 QFile2Snes.pro CONFIG+='release'
