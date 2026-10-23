@@ -1,6 +1,6 @@
 # Maintainer: Gianluca Boiano <morf3089@gmail.com>
 pkgname=openartifact
-pkgver=0.7.0 # renovate: datasource=github-releases depName=openartifact/openartifact extractVersion=^v(?<version>\d.+)$
+pkgver=0.8.0 # renovate: datasource=github-releases depName=openartifact/openartifact extractVersion=^v(?<version>\d.+)$
 pkgrel=1
 pkgdesc="Free-as-in-freedom artifact repository manager (Maven, npm, PyPI, OCI, Helm, ...)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ conflicts=('openartifact-bin')
 backup=('etc/openartifact/openartifact.yaml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "openartifact.service")
-sha256sums=('fa97a2e8e24ac75b2392519f58a859ffbf27f46c54c4a9fc8ac2c28cc70f5b0a'
+sha256sums=('27f0eb91731ab2bb762f02c0d3950f4e9e83bdd83f76d6714463a172cedb289c'
             'bc1ec1cb88982f5c3bfc5a86505bcc8b87e6e83541609526b90b298ea2c473cb')
 
 build() {
