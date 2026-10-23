@@ -5,7 +5,7 @@
 
 pkgname=git-wipe-git
 _pkgname=git-wipe
-pkgver=0.6.0.r0.ge5086cd
+pkgver=0.6.0.r1.g5c7a466
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees (git)"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,15 @@ url="https://github.com/noirbizarre/git-wipe"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'git')
 makedepends=('cargo' 'git')
+# makepkg adds `-flto=auto` to CFLAGS, and `ring`'s build script (via the `cc`
+# crate) picks it up: its objects become GCC LTO bytecode that rustc's lld
+# linker cannot read, so the link fails with "undefined symbol: ring_core_*".
+# Rust does its own LTO (see `[profile.release]`), so nothing is lost.
+#
+# `!debug` for the same reason as git-wipe-bin: the release profile sets
+# `strip = true`, so there is no debug data to split out, and makepkg would
+# otherwise emit an empty git-wipe-git-debug package.
+options=('!lto' '!debug')
 provides=("$_pkgname=$pkgver")
 # `replaces`/`conflicts` on the pre-rename name so `pacman -Syu` migrates
 # anyone still on git-synchronizer-git instead of leaving both installed.
