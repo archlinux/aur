@@ -1,6 +1,6 @@
 pkgbase = gleem-crossfade
 	pkgdesc = Dual-mix virtual audio mixer for PipeWire
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/gleem-gg/crossfade
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gleem-crossfade
 	provides = openwave-mixer
 	conflicts = openwave-mixer
 	replaces = openwave-mixer
-	source = crossfade-0.8.0.tar.gz::https://github.com/gleem-gg/crossfade/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 577c872f4e77284bfef88ad8011d69d98e4fa79af7e6e868a61052e742c04253
+	source = crossfade-0.9.0.tar.gz::https://github.com/gleem-gg/crossfade/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 2d50329b171e11d9fe3378e6d4f8c5b75cdd03f718a952fce06046315216257e
 
 pkgname = gleem-crossfade
