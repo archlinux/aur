@@ -3,7 +3,7 @@
 # Maintainer: vcup <me@vcup.moe>
 
 pkgname=sozu
-pkgver=2.1.0
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='Sōzu HTTP reverse proxy, configurable at runtime, fast and safe, built in Rust.'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
   'sozu.service'
   'sozu@.service'
 )
-sha512sums=('627b6b25ba2f641e6f99681d12410de3bb439ea50ec5920a47a77befc197fad94ca3d5996f1d9654f1bfbca7f1389dc6fd2b8e73baa6537f4a0ae297b9d32613'
+sha512sums=('dd11e594c5b9c2584263664e1040559967ea6a36773ff292ed85c33e18194befc11ffc5574d9ef53742f9eb13003a21965750c06959512740902e2ee66038d95'
             '7d21cdcb00632970bb379e2e4240110fad77c7475e18bbf9d7205e75dfbb4e79966ee083c814f0a08dc65cddf0ec2c537039e6356a2f8dc521da3f7ffcaf5054'
             'aaca9b4ef063313f9c77d3154b45c88b11ccc97b265d7d9957e0e99c78b8a5cae3e8516715ef4f73572db4ba28a5975e60ec90c8153a70478cbc6f0ff92debb4'
             '6c1e0dc797a94a5c9a4160b2a6949ad071d64eccf925a0b2b220f85fff1a54f42b253ca3c18c5c33d16b1ce31a32af011a284c7ad2004259bb423e21fa7f604d')
