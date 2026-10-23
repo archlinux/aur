@@ -1,6 +1,6 @@
 # Maintainer: Raphael Quintao <raphaelquintao@gmail.com>
 pkgname=qredshift
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Stateless, modern multi-display screen color temperature CLI for X11 and Wayland"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'ppc64le' 'riscv64')
@@ -28,9 +28,9 @@ package() {
   install -Dm644 man/qredshift.1 "$pkgdir/usr/share/man/man1/qredshift.1"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums_x86_64=('92f0f40613c6702c5132e70dac972ae7608ea4695fd970c056424c05b72f8ec4')
-sha256sums_i686=('559d31b8735ebc65017dae296f8027b3d391cb8899428f3314d8fc4db6e2c5e7')
-sha256sums_aarch64=('14ce7531afd917dba6a6ef75c9ba53250b86886e8f26286a7a36e1cc139a79be')
-sha256sums_armv7h=('32997999babd62b83227ef18a5dd10575f33c3a6a3770b70eb1d8ce17ff567de')
-sha256sums_ppc64le=('ba16e970b0249d56a462ed622500724ade227c871ed2f0f08f260b55a81ef4fc')
-sha256sums_riscv64=('28a4702284551df579b999c5cfc9b3b9c32998b1389300cc6b62cafe0d170d95')
+sha256sums_x86_64=('db0d640f92c28e220a887b5810bc0c66341240736c65ebc01a914b171bf8ce06')
+sha256sums_i686=('77ea9f2d623945e76f3b18f1e86676bd0acb398a3dd2093aa33c44dba1532eb6')
+sha256sums_aarch64=('34ee9e2367c96eaf4bc9275b73804f2208c9c2ff7727b8f6017d7006f99087f0')
+sha256sums_armv7h=('696986d4375ce6ac059679a8e3945b0f19f8bf92aa359fa1e5f828d9d8f506cc')
+sha256sums_ppc64le=('7288bdcb8aea9c16b38ef5e8fbb380f8aa302699602e90153e561f70f778f6af')
+sha256sums_riscv64=('c18641237ba2b058da6ebac1a553ce9d5b0a4ce90c140988d99512678ff4d4a4')
