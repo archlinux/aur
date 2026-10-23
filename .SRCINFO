@@ -1,8 +1,8 @@
 pkgbase = image-analyze
 	pkgdesc = Lightweight image viewer for wayland
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
-	url = https://github.com/ArthurGuihaire/image-analyze
+	url = https://github.com/prismaticbridge/image-analyze
 	arch = any
 	makedepends = base-devel
 	makedepends = cmake
@@ -11,7 +11,7 @@ pkgbase = image-analyze
 	depends = libspng
 	depends = libjpeg-turbo
 	optdepends = libheif: HEIF/HEIC image support
-	source = https://github.com/ArthurGuihaire/image-analyze/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = f4ec798586a634f23c0a543fedc6c695b89ad6c50332f026d3a335fc0c40cf1e
+	source = https://github.com/prismaticbridge/image-analyze/archive/refs/tags/v3.2.1.tar.gz
+	sha256sums = 1238366ebffe9a73cb427a23fa4bf3b3a7836102c2d7246762f66e3c5c296ee5
 
 pkgname = image-analyze
