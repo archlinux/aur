@@ -1,6 +1,6 @@
 pkgbase = sonarqube-cli
 	pkgdesc = Command line interface for SonarQube Server and SonarQube Cloud
-	pkgver = 1.10.0.16040
+	pkgver = 1.10.1.16776
 	pkgrel = 1
 	url = https://github.com/SonarSource/sonarqube-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sonarqube-cli
 	depends = gcc-libs
 	depends = glibc
 	depends = icu
-	source = sonarqube-cli-1.10.0.16040.tar.gz::https://github.com/SonarSource/sonarqube-cli/archive/refs/tags/1.10.0.16040.tar.gz
-	sha256sums = cc9671f5576913a2cdcf03d9d21559f8da8c3777280cbc39c5ddd790530a94fd
+	source = sonarqube-cli-1.10.1.16776.tar.gz::https://github.com/SonarSource/sonarqube-cli/archive/refs/tags/1.10.1.16776.tar.gz
+	sha256sums = 9275d6ecf4fcc194e97560d0747bcf991ab48bd24d15d2f9e37bde6312211f73
 
 pkgname = sonarqube-cli
