@@ -3,7 +3,7 @@
 _pkgname=firedragon
 __pkgname=$_pkgname-catppuccin
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.10.0
+_pkgver=13.10.1
 _branding=catppuccin
 _gentoo=firefox-158-patches-02.tar.xz
 _gentoo_exclude=(0014-bgo-940031-wasm-support-firefox-155.patch)
@@ -17,75 +17,75 @@ url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
 depends=(alsa-lib
-  at-spi2-core
-  bash
-  cairo
-  dbus
-  ffmpeg
-  fontconfig
-  freetype2
-  gdk-pixbuf2
-  glib2
-  glibc
-  gtk3
-  hicolor-icon-theme
-  libgcc
-  libpulse
-  libstdc++
-  libx11
-  libxcb
-  libxcomposite
-  libxdamage
-  libxext
-  libxfixes
-  libxrandr
-  libxss
-  libxt
-  mime-types
-  nspr
-  nss
-  pango
-  ttf-font)
+         at-spi2-core
+         bash
+         cairo
+         dbus
+         ffmpeg
+         fontconfig
+         freetype2
+         gdk-pixbuf2
+         glib2
+         glibc
+         gtk3
+         hicolor-icon-theme
+         libgcc
+         libpulse
+         libstdc++
+         libx11
+         libxcb
+         libxcomposite
+         libxdamage
+         libxext
+         libxfixes
+         libxrandr
+         libxss
+         libxt
+         mime-types
+         nspr
+         nss
+         pango
+         ttf-font)
 makedepends=(cbindgen
-  clang
-  diffutils
-  imake
-  jack
-  lld
-  llvm
-  mesa
-  nasm
-  nodejs
-  onnxruntime
-  pnpm
-  python
-  rust
-  unzip
-  wasi-compiler-rt
-  wasi-libc
-  wasi-libc++
-  wasi-libc++abi
-  xorg-server-xvfb
-  yasm
-  zip)
+             clang
+             diffutils
+             imake
+             jack
+             lld
+             llvm
+             mesa
+             nasm
+             nodejs
+             onnxruntime
+             pnpm
+             python
+             rust
+             unzip
+             wasi-compiler-rt
+             wasi-libc
+             wasi-libc++
+             wasi-libc++abi
+             xorg-server-xvfb
+             yasm
+             zip)
 optdepends=('hunspell-en_US: Spell checking, American English'
-  'libnotify: Notification integration'
-  'networkmanager: Location detection via available WiFi networks'
-  'onnxruntime: Local machine learning features such as smart tab groups'
-  'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland')
+            'libnotify: Notification integration'
+            'networkmanager: Location detection via available WiFi networks'
+            'onnxruntime: Local machine learning features such as smart tab groups'
+            'speech-dispatcher: Text-to-Speech'
+            'xdg-desktop-portal: Screensharing with Wayland')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=($__pkgname-next)
 options=(!emptydirs
-  !lto
-  !makeflags)
+         !lto
+         !makeflags)
 install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
-  https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('6c1e498c758fa940bb699ea23e40b8d3cdfaa8eb8cf85dcb8c32c302921fbfb1'
-  'a0c58c8abd6b6c0aae19495b596a7a82fc6e0805a89df33a16d640fa6e1b0afb')
+        https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
+sha256sums=('02446a8bcd692bf01fd02fdd45dc61a9463d22329917fb96681a5a89425e279d'
+            'a0c58c8abd6b6c0aae19495b596a7a82fc6e0805a89df33a16d640fa6e1b0afb')
 
 prepare() {
   mkdir -p mozbuild
@@ -116,7 +116,7 @@ prepare() {
   pnpm -C browser/$_pkgname install --frozen-lockfile
   pnpm -C browser/$_pkgname all:build
 
-  cat >> ../mozconfig << END
+  cat >> ../mozconfig <<END
 ac_add_options --enable-linker=lld
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -153,7 +153,7 @@ build() {
   if [[ "${_build_pgo:-t}" == "t" ]]; then
     # Do 3-tier PGO
     echo "Building instrumented browser..."
-    cat > .mozconfig ../mozconfig - << END
+    cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
     ./mach build --priority normal
@@ -175,14 +175,14 @@ END
     ./mach clobber objdir
 
     echo "Building optimized browser..."
-    cat > .mozconfig ../mozconfig - << END
+    cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   else
-    cat > .mozconfig ../mozconfig
+    cat >.mozconfig ../mozconfig
   fi
   ./mach build --priority normal
 
@@ -197,7 +197,7 @@ package() {
 
   local appdir="$pkgdir/usr/lib/$_pkgname"
 
-  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" << END
+  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -214,7 +214,7 @@ pref("extensions.autoDisableScopes", 11);
 pref("browser.gnome-search-provider.enabled", true);
 END
 
-  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" << END
+  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" <<END
 [Global]
 id=${pkgname}
 version=${pkgver}-${pkgrel}
@@ -240,7 +240,7 @@ END
   install -Dvm644 browser/$_pkgname/assets/$_rdns.metainfo.xml -t "$pkgdir/usr/share/metainfo"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$_pkgname/$_pkgname "\$@"
 END
@@ -255,7 +255,7 @@ END
   fi
 
   # Register GNOME search provider
-  install -Dvm644 /dev/stdin "$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini" << END
+  install -Dvm644 /dev/stdin "$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini" <<END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/_}.SearchProvider
