@@ -1,0 +1,19 @@
+pkgbase = rbw-enhanced
+	pkgdesc = Unofficial Bitwarden CLI (enhanced fork: full editing, attachments, persistent login)
+	pkgver = 1.15.0.r27.gd8333f6
+	pkgrel = 1
+	url = https://github.com/rylos/rbw
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	depends = pinentry
+	optdepends = libnotify: notification when the login expired
+	provides = rbw=1.15.0.r27.gd8333f6
+	conflicts = rbw
+	options = !lto
+	source = rbw-d8333f6ae58b45e34f699e3c3f3c3233ed5a69b6.tar.gz::https://github.com/rylos/rbw/archive/d8333f6ae58b45e34f699e3c3f3c3233ed5a69b6.tar.gz
+	sha256sums = 57dd4ff9fb869dc4fe2c75fa3e69ddf9a269553e865e4b6aa62cc17dae3551a1
+
+pkgname = rbw-enhanced
