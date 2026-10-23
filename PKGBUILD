@@ -1,10 +1,10 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-bin
 _pkgname=podctl
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Rockykln/podctl"
 license=('MIT' 'Apache-2.0')
 depends=('bluez-utils' 'dbus')
@@ -15,12 +15,14 @@ optdepends=(
 )
 provides=('podctl')
 conflicts=('podctl' 'podctl-git')
-source=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-x86_64-linux-musl.tar.gz")
-sha256sums=('c9c06db08e9e34af110cc2c222107602b2e651b5cf6c647a6758d86e240757db')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-x86_64-linux-musl.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-aarch64-linux-musl.tar.gz")
+sha256sums_x86_64=('e2a8b65a63ef05528234400c911fc1f47fa69c297c4d28cccc43bd586c87f547')
+sha256sums_aarch64=('b38c83f639390a14bb949cc267bd2a71b1a4729d39e195523a9fb0d9b753b853')
 options=('!strip')   # musl-static binary, already stripped by release workflow
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}-x86_64-linux-musl"
+  cd "${srcdir}/${_pkgname}-${pkgver}-${CARCH}-linux-musl"
 
   install -Dm755 podctl         "${pkgdir}/usr/bin/podctl"
   install -Dm755 podctld        "${pkgdir}/usr/bin/podctld"
@@ -46,6 +48,12 @@ package() {
     install -Dm644 "${srcdir}/${unit}.fixed" \
       "${pkgdir}/usr/lib/systemd/user/${unit}"
   done
+
+  local ext=podctl@rockykln.com
+  install -Dm644 "gnome-shell-extension/${ext}/metadata.json" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/metadata.json"
+  install -Dm644 "gnome-shell-extension/${ext}/extension.js" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/extension.js"
 
   install -Dm644 LICENSE-MIT     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
