@@ -1,0 +1,23 @@
+pkgbase = dockerman-ce-bin
+	pkgdesc = Lightweight Docker management UI built with Tauri and React
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://dockerman.app
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = dbus
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = openssl
+	depends = polkit
+	depends = webkit2gtk-4.1
+	depends = xz
+	optdepends = docker: manage the local Docker engine
+	optdepends = trivy: image vulnerability scanning
+	provides = dockerman
+	conflicts = dockerman
+	options = !strip
+	source = Dockerman_6.3.0_amd64.deb::https://github.com/ZingerLittleBee/dockerman.app/releases/download/app-v6.3.0/Dockerman_6.3.0_amd64.deb
+	sha256sums = 7a0affed77bc33d353a54ec2378e21db2779d9da7bd85f70da56cfa9b787c4bc
+
+pkgname = dockerman-ce-bin
