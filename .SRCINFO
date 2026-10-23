@@ -1,0 +1,15 @@
+pkgbase = gifetch
+	pkgdesc = Puts an animated GIF next to your fastfetch output, for the kitty terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vredix-openvuture/gifetch
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = fastfetch
+	optdepends = kitty: draws the animated image (elsewhere gifetch runs plain fastfetch)
+	optdepends = imagemagick: background removal with gifetch-make-transparent
+	source = gifetch-1.0.0.tar.gz::https://github.com/vredix-openvuture/gifetch/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e31d6a9a0697ba5e86c60744231a1c4019c773e3a6b05501d9b03cfad48ed3ad
+
+pkgname = gifetch
