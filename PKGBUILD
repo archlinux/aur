@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=wordcraft
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft Word'
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('60a1a393d0dd3d62677c967da8a500f1fa9efc6dbf76b84821498782a2c46f98')
+sha256sums=('3fa36c81490c1b2e08593cafc3de46ba3cebd589d8610dce0c2af4a62f9c1313')
 
 _srcenv() {
 	cd "$_archive"
@@ -28,9 +28,9 @@ _srcenv() {
 		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -fno-lto'
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -fno-lto'
 }
 
 _icons=(512 256 128 64 48 32 16)
