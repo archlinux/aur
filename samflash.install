@@ -1,0 +1,15 @@
+post_install() {
+  echo "=> Adding current users to uucp and dialout groups for USB permissions..."
+
+  # Detect actual users with home directories (excluding system users)
+  for user in $(awk -F: '$6 ~ "^/home" {print $1}' /etc/passwd); do
+    echo "   Adding user '$user' to uucp and dialout..."
+    usermod -aG uucp,dialout "$user" 2>/dev/null || true
+  done
+
+  echo "=> IMPORTANT: You must log out and log back in for group changes to take effect."
+}
+
+post_upgrade() {
+  post_install
+}
