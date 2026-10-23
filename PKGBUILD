@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=designcraft
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe InDesign'
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('92e2b9791b4402d853f115ccbf5ac03136f513493ccc4010a40b470ea1887652')
+sha256sums=('0654543b8407b3229544235ced0a2ee0bea6f420c899ae10be08b51a9b3c8112')
 
 _srcenv() {
 	cd "$_archive"
