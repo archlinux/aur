@@ -2,7 +2,7 @@
 _pkgname=drift
 pkgname=drift-diff
 # renovate: datasource=github-releases depName=aymanbagabas/drift
-pkgver=0.0.8
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='A git diff pager that actually wants to be looked at'
 url='https://github.com/aymanbagabas/drift'
@@ -10,11 +10,12 @@ license=('MIT')
 makedepends=('cargo')
 depends=()
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+options=(!lto)
 source=(
   #"${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${_pkgname}/${_pkgname}-${pkgver}.crate"
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d17924f24b5df5fd692ed511cea72d91af7bd23e9e44cbe14e53bfa4b4385fa6')
+sha256sums=('a431735b109fd7a903a9d6babb6f45f46f8f6ee11c015e23017f62c5360c408e')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
