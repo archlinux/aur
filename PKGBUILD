@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=pig-bin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="PiG (Pi in Go) - a Go port of the Pi coding agent"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('pig')
 options=('!strip' '!debug')
 source_x86_64=("pig-${pkgver}-linux-amd64.tar.gz::https://github.com/MichaelKinsy/PiG/releases/download/v${pkgver}/pig-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("pig-${pkgver}-linux-arm64.tar.gz::https://github.com/MichaelKinsy/PiG/releases/download/v${pkgver}/pig-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('c878c8c13b354abefc04994c20a95daf892a6eea5efe5aa59768885e97594206')
-sha256sums_aarch64=('96c52a3ee27f91ed14fb6856a1c168c85d9ee0bb24e4a571938901f97ff75259')
+sha256sums_x86_64=('1e45e5e591a06d087587d5f09d2b6d61673a1e262cb2609e6189defffd5ae7ec')
+sha256sums_aarch64=('c94acaa8b2a5d3d2b1f59e679f70bba6762dc7a01655369b2ffc40fb9be4552b')
 
 package() {
     local _arch="amd64"
