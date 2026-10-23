@@ -1,6 +1,6 @@
 pkgbase = ely-mark-app-bin
 	pkgdesc = ElyMark - Markdown editor from the Ely Office suite
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://office.elygpui.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ely-mark-app-bin
 	conflicts = ely-mark-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = ely-mark_0.1.10-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.10/ely-mark_0.1.10-1_amd64.deb
-	sha256sums_x86_64 = 98051186556f5dae9fdba02df662def28aa4415d699c5630824a887011ce3afe
+	source_x86_64 = ely-mark_0.1.11-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.11/ely-mark_0.1.11-1_amd64.deb
+	sha256sums_x86_64 = ec2103454e1e2dfa78a4ece5d5a492fec873bd48b70fb6d6470ed6a6dda1747f
 
 pkgname = ely-mark-app-bin
