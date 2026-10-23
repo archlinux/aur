@@ -1,6 +1,6 @@
 # Maintainer: gnuruzzi <gnuruzzi@users.noreply.gitlab.com>
 pkgname=evolution-quill
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="AI assistant for Evolution mail — summarize messages and draft replies (Gemini, Claude, OpenAI)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
     'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('ccdd290c1a9082e2b308a113879b3a977d35e10e04b592c78c045d6f7536f8a3')
+sha256sums=('641be8c449780f4b97b6c60a383d78a930a57ffc10e24e556365476c3d99b8d7')
 
 build() {
     cmake -B build -S "$pkgname-v$pkgver" \
