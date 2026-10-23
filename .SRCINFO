@@ -1,10 +1,11 @@
 pkgbase = bitlaforge
-	pkgdesc = Solo Bitcoin mining, honestly framed: start and stop the miner, live speed, heat pause, real odds, history (Forge Suite)
-	pkgver = 1.1.0
+	pkgdesc = Solo Bitcoin mining, honestly framed: start and stop the miner, live speed, heat pause, real odds, history. Any Linux distribution, no desktop needed, works on a text console (Forge Suite)
+	pkgver = 1.1.1
 	pkgrel = 1
-	url = https://github.com/jetomev/bitlaforge
+	url = https://github.com/jetomev/forge-suite/tree/main/bitlaforge
 	arch = any
 	license = GPL3
+	checkdepends = desktop-file-utils
 	depends = python
 	depends = python-textual
 	depends = python-rich
@@ -12,10 +13,10 @@ pkgbase = bitlaforge
 	depends = python-forgekit>=0.10.0
 	depends = util-linux
 	optdepends = cpuminer: the miner bitlaForge runs (pooler cpuminer, provides minerd)
-	source = bitlaforge-1.1.0.tar.gz::https://github.com/jetomev/bitlaforge/releases/download/v1.1.0/bitlaforge-1.1.0.tar.gz
-	source = bitlaforge-1.1.0.tar.gz.asc::https://github.com/jetomev/bitlaforge/releases/download/v1.1.0/bitlaforge-1.1.0.tar.gz.asc
+	source = bitlaforge-1.1.1.tar.gz::https://github.com/jetomev/forge-suite/releases/download/bitlaforge-v1.1.1/bitlaforge-1.1.1.tar.gz
+	source = bitlaforge-1.1.1.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/bitlaforge-v1.1.1/bitlaforge-1.1.1.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = 879fad5026cb0f3a26a5140adebee7820590638c205f2a069e2b448f66d1fe78
+	sha256sums = a199469c805deee9adfdc091c746a87c10eafa789d5844b3c1b34a61ff3a2383
 	sha256sums = SKIP
 
 pkgname = bitlaforge

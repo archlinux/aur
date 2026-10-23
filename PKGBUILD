@@ -2,11 +2,13 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=bitlaforge
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Solo Bitcoin mining, honestly framed: start and stop the miner, live speed, heat pause, real odds, history (Forge Suite)"
+pkgdesc="Solo Bitcoin mining, honestly framed: start and stop the miner, live speed, heat pause, real odds, history. Any Linux distribution, no desktop needed, works on a text console (Forge Suite)"
 arch=('any')
-url="https://github.com/jetomev/bitlaforge"
+# bitlaForge lives in the Forge Suite repository since 1.1.1 (D-60); releases are tagged bitlaforge-vX.Y.Z there
+_repo="https://github.com/jetomev/forge-suite"
+url="${_repo}/tree/main/bitlaforge"
 license=('GPL3')
 depends=('python' 'python-textual' 'python-rich' 'python-tomlkit' 'python-forgekit>=0.10.0' 'util-linux')
 # minerd is AUR-only, so it can't be a hard depends=. bitlaForge finds it at
@@ -14,9 +16,11 @@ depends=('python' 'python-textual' 'python-rich' 'python-tomlkit' 'python-forgek
 # "Installing the miner" page says how. util-linux gives setpriv, which makes
 # the system stop the miner if bitlaForge itself ends unexpectedly.
 optdepends=('cpuminer: the miner bitlaForge runs (pooler cpuminer, provides minerd)')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('879fad5026cb0f3a26a5140adebee7820590638c205f2a069e2b448f66d1fe78'
+# 1.1.1: check() validates the launcher entry
+checkdepends=('desktop-file-utils')
+source=("${pkgname}-${pkgver}.tar.gz::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
+sha256sums=('a199469c805deee9adfdc091c746a87c10eafa789d5844b3c1b34a61ff3a2383'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -46,6 +50,8 @@ asyncio.run(_smoke())
 print('bitlaforge headless mount OK')
 "
     python -m unittest discover tests
+    # 1.1.1 (forge-suite#118): the launcher entry is valid
+    desktop-file-validate bitlaforge.desktop
     rm -rf --one-file-system "$tmp"
 }
 
@@ -71,6 +77,8 @@ EOF
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
     # Install the man page
+    # the launcher entry (1.1.1, forge-suite#118): the app shows in every app menu and launcher
+    install -Dm644 bitlaforge.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 bitlaforge.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 
     # Install the license
