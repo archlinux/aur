@@ -1,6 +1,6 @@
 pkgbase = stegoforge-bin
 	pkgdesc = The ultimate steganography and digital forensics toolkit
-	pkgver = 1.1.5
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Nour833/StegoForge
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = stegoforge-bin
 	depends = zlib
 	provides = stegoforge
 	conflicts = stegoforge
-	source = README-1.1.5.md::https://raw.githubusercontent.com/Nour833/StegoForge/v1.1.5/README.md
-	source = LICENSE-1.1.5::https://raw.githubusercontent.com/Nour833/StegoForge/v1.1.5/LICENSE
-	sha256sums = e1bd204cdaff761d76bf5fcdfcefa22c1fee963bb20bc6b4af820a7baa49bf89
+	source = README-1.5.0.md::https://raw.githubusercontent.com/Nour833/StegoForge/v1.5.0/README.md
+	source = LICENSE-1.5.0::https://raw.githubusercontent.com/Nour833/StegoForge/v1.5.0/LICENSE
+	sha256sums = c0e68318094972e2dfa8a3d271e2bed237f3fd0f5ce39735ecc70dde29a50356
 	sha256sums = 0f3acd479b3a20f56204281802b5cc34cf04b439f9a897c82f685e9a776e5469
-	source_x86_64 = stegoforge-x86_64-1.1.5::https://github.com/Nour833/StegoForge/releases/download/v1.1.5/stegoforge-linux-x86_64
-	sha256sums_x86_64 = 649c62a314af463fe67760cdf9e2da5ff41e895c3a364ce3e03b026a8a8a4bad
+	source_x86_64 = stegoforge-x86_64-1.5.0::https://github.com/Nour833/StegoForge/releases/download/v1.5.0/stegoforge-linux-x86_64
+	sha256sums_x86_64 = 622bb65ec872f5204edea058433f6b535b765cee2499279f31d417baab349c7d
 
 pkgname = stegoforge-bin
