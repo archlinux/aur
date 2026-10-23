@@ -1,6 +1,6 @@
 pkgbase = sendemail-safe
 	pkgdesc = Secure CLI email sending via SMTP and Gmail API OAuth 2.0
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/marcorighi/sendEmail-safe
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = sendemail-safe
 	depends = bash
 	depends = python
 	optdepends = xdg-utils: opens the browser for initial Gmail OAuth authorization
-	source = sendemail-safe-1.1.0.tar.gz::https://codeload.github.com/marcorighi/sendEmail-safe/tar.gz/71162095ac38bfede1f9fb6b19ec395a6ae012f0
-	sha256sums = 3420281abcb0d92da1aedf7f70c778043189a1906e4259a92b8997b570c08a34
+	source = sendemail-safe-1.2.0.tar.gz::https://codeload.github.com/marcorighi/sendEmail-safe/tar.gz/c1dac524b3b58e5521e73f5e52eaeea14e781fcd
+	sha256sums = 2bfd9eea2f67dd3a1df7fbe36a8af0db971522a790161d36cfe58b0483ca3099
 
 pkgname = sendemail-safe
