@@ -2,7 +2,7 @@
 
 pkgbase=neuroforest-git
 pkgname=neuroforest-git
-pkgver=1.6.0.r353.8c1f84b
+pkgver=1.8.2.r427.d2061da
 pkgrel=1
 pkgdesc="NeuroForest knowledge engineering platform"
 arch=('x86_64')
@@ -13,20 +13,21 @@ makedepends=('git' 'npm' 'pnpm' 'uv')
 conflicts=('neuroforest')
 provides=('neuroforest')
 options=('!strip' '!debug')
-_commit=8c1f84b308a90444fcdee85168e47facd76b12e5
+_commit=d2061da4d40ab20df26bde40879b902d8ce1b0fb
 source=("app::git+https://github.com/neuroforest/app.git#commit=$_commit"
         'neuro.sh'
         'neurowiki.sh'
         'neurowiki.desktop')
 sha256sums=('SKIP'
             'c1ae7630bcdbd441112c7ba035e21fa0386d52b6f20bac2b318e8c1a130a473a'
-            '7e9cefeebc70e3b2c5f5eb94d45c1589fd7dfa10e5f2f1f6ef41a092bb50fe5a'
-            'fda674499a7514ee6154e2aa0af1d7b9b7eb90ec670414327398b60afe78ba34')
+            '38ab95677b879b799c32f58edcfc610f74dc5266fc6556b38f1f084ededa94e0'
+            'b19da6ac25851d0e53eeea94613ae7652dfedafd42ee6c770198f073334bd0ee')
 
 pkgver() {
     cd "$srcdir/app"
+    # One literal, the app's VERSION file (PLAN-2026-322); APP_VERSION left .env at 1.8.x.
     local ver
-    ver=$(grep -m1 '^APP_VERSION=' .env | cut -d= -f2)
+    ver=$(tr -d '[:space:]' < VERSION)
     printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
