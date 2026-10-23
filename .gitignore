@@ -1,0 +1,7 @@
+*.AppImage
+*.pkg.tar.*
+*.src.tar.*
+LICENSE.openbot
+NOTICE.openbot
+src/
+pkg/
