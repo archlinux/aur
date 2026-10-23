@@ -2,7 +2,7 @@
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
@@ -14,10 +14,8 @@ optdepends=(
 	'openssl: openssl support'
 	)
 
-source=(
-	"git+https://github.com/actor-framework/actor-framework#commit=6a38a9e95abce3a93ff6d2ea2153468b90fdbb5b"
-	)
-sha256sums=('830682dfc88373caf4af4f0f653de8c79332d260d066a52704f06874edbe15b1')
+source=("git+https://github.com/actor-framework/actor-framework#tag=${pkgver}")
+sha256sums=('ffef8718d81aa21f1739ab096322c6e69dd1277a7952922350a2a9f61d0347af')
 
 prepare(){
 	cd ${pkgname}
