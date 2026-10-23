@@ -1,21 +1,21 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-local-agent-git
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Chat with Work: desktop app, terminal interface and local background agent (development version)"
+pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent (development version)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/crmne/chatwithwork-local-agent"
+url="https://github.com/crmne/chatwithwork-desktop"
 license=('MIT OR Apache-2.0')
 install="${pkgname}.install"
-depends=('glibc' 'gcc-libs' 'libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
-makedepends=('git' 'cargo')
+depends=('alsa-lib' 'libpipewire' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'dbus')
+makedepends=('git' 'cargo' 'pkgconf' 'cmake' 'clang')
 optdepends=('org.freedesktop.secrets: store the device key in your keyring'
             'xdg-desktop-portal: native folder picker'
             'systemd: start the agent now and at login with cww daemon install')
 provides=('cww' 'cww-app' 'chatwithwork-local-agent')
 conflicts=('cww' 'chatwithwork-local-agent' 'chatwithwork-local-agent-bin')
 options=('!debug' '!lto')
-source=("${pkgname}::git+https://github.com/crmne/chatwithwork-local-agent.git")
+source=("${pkgname}::git+https://github.com/crmne/chatwithwork-desktop.git")
 sha256sums=('SKIP')
 
 pkgver() {
