@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#commit=76a552f7ec56f00ed52e122150f27639a3a8d70a")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=9f1d19838b8dc4eba0b5fd933e65c077bdb7c4b8")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -150,6 +150,12 @@ package() {
     "$pkgdir/etc/skel/.config/cava/config"
   install -Dm644 "$stage/.config/cava/themes/Hornero Dynamic" \
     "$pkgdir/etc/skel/.config/cava/themes/Hornero Dynamic"
+
+  # Hyprland's factory config imports modules from the user's XDG config
+  # directory. Seed new accounts with that complete profile so the first
+  # compositor session does not start with missing-source errors.
+  mkdir -p "$pkgdir/etc/skel/.config"
+  cp -a "$stage/.config/hypr" "$pkgdir/etc/skel/.config/"
 
   # Niri reads /etc/niri/config.kdl as its system fallback after the user's
   # XDG config. Keep one source file: materialize.sh also places it in the
@@ -265,6 +271,7 @@ package() {
     -type f -exec chmod 644 {} +
   chmod 755 "$pkgdir"/usr/share/hornero/bin/hornero-*
   chmod 755 "$pkgdir"/etc/xdg/hypr/scripts/*.sh
+  chmod 755 "$pkgdir"/etc/skel/.config/hypr/scripts/*.sh
 
   # Ship the license alongside the payload for offline inspection.
   install -Dm644 "$repo_root/LICENSE" \
