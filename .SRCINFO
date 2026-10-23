@@ -1,0 +1,27 @@
+pkgbase = kraken-workbench-bin
+	pkgdesc = Reverse-engineering workbench on Ghidra's decompiler: analyse, patch and rewrite binaries, with an AI assistant
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Adam-AtlasSoftware/kraken
+	arch = x86_64
+	license = GPL-3.0-or-later AND Apache-2.0 AND Zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	depends = libxkbcommon
+	optdepends = wayland: run the app in a Wayland session
+	optdepends = libx11: run the app in an X11 session
+	optdepends = libxcursor: run the app in an X11 session
+	optdepends = libxi: run the app in an X11 session
+	optdepends = libxrandr: run the app in an X11 session
+	optdepends = vulkan-icd-loader: draw the app with Vulkan
+	provides = kraken-workbench
+	conflicts = kraken-workbench
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/Adam-AtlasSoftware/kraken/releases/download/v0.1.0/kraken-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 94ba14e370e56ae8ed113801cb1c8b2cee3602400ddbe051c3d45476f1e67950
+
+pkgname = kraken-workbench-bin
