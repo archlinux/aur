@@ -1,5 +1,5 @@
-# Maintainer: bahdotsh <appu.yess@gmail.com>
-# Contributor: 9M2PJU <9m2pju@gmail.com>
+# Maintainer: 9M2PJU <9m2pju@gmail.com>
+# Contributor: bahdotsh (upstream author)
 pkgname=hopchat
 pkgver=0.1.0
 pkgrel=1
@@ -10,20 +10,31 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bahdotsh/hopchat/archive/refs/tags/v$pkgver.tar.gz")
-# NOTE: filled in on the first upstream release (v0.1.0 tag does not exist yet).
-# Update with: updpkgsums (or makepkg -g) after the tag is pushed.
-sha256sums=('SKIP')
+# Deliberately not SKIP: a fixed release tarball must be verified. Run
+# `updpkgsums` after bumping pkgver (see ../README.md).
+sha256sums=('65d164e10146fbf1cddfb75f20bbe0daa7c9cb13771270305c319f6c977b1087')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
   cd "$pkgname-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
-  cargo test --locked --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --release
 }
 
 package() {

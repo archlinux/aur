@@ -10,6 +10,6 @@ pkgbase = hopchat
 	depends = gcc-libs
 	depends = openssl
 	source = hopchat-0.1.0.tar.gz::https://github.com/bahdotsh/hopchat/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 65d164e10146fbf1cddfb75f20bbe0daa7c9cb13771270305c319f6c977b1087
 
 pkgname = hopchat
