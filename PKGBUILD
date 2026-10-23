@@ -3,7 +3,7 @@
 pkgbase=ocudu-git
 pkgname=$pkgbase
 _pkgname=ocudu
-pkgver=26.04.0.r18.g77512ff
+pkgver=26.10.0.r522.gbe597f0
 pkgrel=1
 pkgdesc='Open Centralized Unit Distributed Unit (OCUDU)'
 arch=('x86_64' 'aarch64')
