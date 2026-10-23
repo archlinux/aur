@@ -14,7 +14,7 @@ source=("Driveclub-PC-linux-x86_64.AppImage::https://github.com/DionSantosGG/Dri
         'LICENSE'
         'driveclub-pc'
         'driveclub-pc.desktop')
-sha256sums=('b41bf3c479c3f35d9f80196517f9b5e3788235c3c25cd09d06a729e07a134925'
+sha256sums=('d1dd0b1762932b1df30fdf852aaa658d611b498c8e7e51c70fda53896eaabd97'
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
             '29138bd9b6fb5448a68ae4b19d987d6b833a87377e4c5479213b444f54692332'
             '449c18b90b26b836d2a2c00df5dea1f4a7d79012040f89ed077c548db192bf28')
