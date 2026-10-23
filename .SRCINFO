@@ -1,6 +1,6 @@
 pkgbase = mux-media-bin
 	pkgdesc = CLI utility to mux (merge) video, audio, and subtitles
-	pkgver = 0.19.6
+	pkgver = 0.19.7
 	pkgrel = 1
 	url = https://github.com/nujievik/mux-media
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mux-media-bin
 	provides = mux-media
 	conflicts = mux-media
 	options = !debug
-	source_x86_64 = https://github.com/nujievik/mux-media/releases/download/v0.19.6/mux-media-Linux-x64.zip
-	sha256sums_x86_64 = 1ee44fa52ab47dfa5a8d57c81d746c327c3d4ef8e88ac5817fa1986a0c9bbf04
-	source_i686 = https://github.com/nujievik/mux-media/releases/download/v0.19.6/mux-media-Linux-x32.zip
-	sha256sums_i686 = 216cd7dc57fdc6f388fee031e05a565c097d7b62379f8610602bd80c06434d8e
+	source_x86_64 = https://github.com/nujievik/mux-media/releases/download/v0.19.7/mux-media-Linux-x64.zip
+	sha256sums_x86_64 = 5ea4e8f05c7f2dc863f0ebc8b9f5d0ae399eeb2d0bdf95c5a383b1bbf5d9a112
+	source_i686 = https://github.com/nujievik/mux-media/releases/download/v0.19.7/mux-media-Linux-x32.zip
+	sha256sums_i686 = a1ffeab4bbfcbe006f3758466991fd75fdc4e86d89518e82d178a18cbbdc6f21
 
 pkgname = mux-media-bin
