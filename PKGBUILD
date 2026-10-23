@@ -14,11 +14,11 @@ pkgver() {
     git -C lance describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/lance"
   make
 }
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/lance"
 
   mkdir -p "$pkgdir/usr/bin"
   make DESTDIR="$pkgdir/usr/bin" install
