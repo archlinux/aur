@@ -4,7 +4,7 @@ pkgname=tune-server
 pkgver=1.0.0.rc7
 _pkgver=1.0.0
 rc=7
-pkgrel=1
+pkgrel=2
 pkgdesc="self-hosted multi-room music server in Rust: local library (FLAC/DSD) + Qobuz/Tidal/Deezer to DLNA/UPnP, Chromecast, AirPlay"
 arch=('x86_64' 'aarch64')
 url="https://mozaiklabs.fr/"
@@ -17,7 +17,7 @@ sha256sums=('57cc779089fdd19aae126c1bf6d3257af48d34c4bf6f4f16ae0f77a532f61a60' '
 sha256sums_x86_64=('60cc08d27eb9f357bd93d98d53481df16f36d8757df0937dd78d5b5953a1db8f')
 sha256sums_aarch64=('1760209e701987824f1b361ec0e16fdeb99ed3af97143de6bfe8bca16e4deda6')
 install=$pkgname.install
-backup=(etc/default/hqplayer/tune-server)
+backup=(etc/default/tune-server)
 
 package() {
 cd "$srcdir"
