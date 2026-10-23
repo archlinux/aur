@@ -1,0 +1,37 @@
+pkgbase = lightos-codec-ffmpeg-bin
+	pkgdesc = Optional Arch-native FFmpeg hardware H.264 worker for LightOS remote desktop
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/ca-x/lightos-remote-desktop
+	install = lightos-codec-ffmpeg-bin.install
+	arch = x86_64
+	license = MIT
+	license = BSD-2-Clause
+	license = BSD-3-Clause
+	license = IJG
+	license = Zlib
+	license = WTFPL
+	makedepends = python
+	makedepends = binutils
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = ffmpeg
+	depends = libavcodec.so=63-64
+	depends = libavutil.so=61-64
+	depends = libswscale.so=10-64
+	optdepends = lightos-remoted-bin: Remote desktop service that discovers this optional worker
+	provides = lightos-codec-ffmpeg=0.1.11
+	conflicts = lightos-codec-ffmpeg
+	options = !strip
+	options = !debug
+	source = lightos-codec-ffmpeg-bin.install
+	source = validate-arch-codec.py
+	sha256sums = 57819d8658719114e59247776cf769046de25dd43ad2d99fbfef155a2c9ad3a7
+	sha256sums = b1a16652f3ffef6185f0636da9c6fc9bbc665ffb9c0a7dc98776373b1b4b1a91
+	source_x86_64 = lightos-codec-ffmpeg-linux-x86_64-archlinux-0.1.11.tar.gz::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.11/lightos-codec-ffmpeg-linux-x86_64-archlinux.tar.gz
+	source_x86_64 = lightos-codec-ffmpeg-linux-x86_64-archlinux-0.1.11.tar.gz.sha256::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.11/lightos-codec-ffmpeg-linux-x86_64-archlinux.tar.gz.sha256
+	sha256sums_x86_64 = 9426d96cba0b5091851da9d500ceb8496d1c3e49560a1d1cd1e8fc86d644c353
+	sha256sums_x86_64 = 97003644451f89eaf953fe2cace9fa2243e162f2328be2f59eadef73a79470cd
+
+pkgname = lightos-codec-ffmpeg-bin

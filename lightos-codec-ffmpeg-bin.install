@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Refresh cached encoder capabilities only for an already-running managed server.
+_refresh_lightos_codec_transport() {
+    local service=lightos-remote-desktop.service pid executable fragment
+    [[ -x /usr/lib/lightos-remoted/lightos-remoted ]] || return 0
+    command -v systemctl >/dev/null || return 0
+    [[ ! -e /etc/systemd/system/lightos-remote-desktop.service && ! -L /etc/systemd/system/lightos-remote-desktop.service &&
+       ! -e /etc/systemd/system/lightos-remote-desktop-session.service && ! -L /etc/systemd/system/lightos-remote-desktop-session.service ]] || return 0
+    systemctl is-active --quiet "$service" || return 0
+    pid=$(systemctl show --property=ExecMainPID --value "$service") || return 0
+    [[ $pid =~ ^[1-9][0-9]*$ ]] || return 0
+    executable=$(readlink -- "/proc/$pid/exe") || return 0
+    executable=${executable% (deleted)}
+    [[ $executable == /usr/lib/lightos-remoted/lightos-remoted ]] || return 0
+    fragment=$(systemctl show --property=FragmentPath --value "$service") || return 0
+    [[ $fragment == /usr/lib/systemd/system/lightos-remote-desktop.service ]] || return 0
+    systemctl try-restart "$service" || printf '%s\n' 'Could not refresh the LightOS transport; inspect its journal and restart it after saving remote work.' >&2
+    return 0
+}
+post_install() { _refresh_lightos_codec_transport; }
+post_upgrade() { _refresh_lightos_codec_transport; }
+post_remove() { _refresh_lightos_codec_transport; }
