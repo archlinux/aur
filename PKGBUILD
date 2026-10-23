@@ -1,6 +1,6 @@
 pkgname=gephgui-wry-bin
 pkgver=5.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Geph desktop GUI"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
@@ -8,13 +8,12 @@ license=('MPL-2.0')
 install=gephgui-wry-bin.install
 provides=('gephgui-wry' 'geph5-client' 'geph5')
 conflicts=('gephgui-wry' 'geph5-client' 'geph5-client-git' 'geph5-app-git')
-makedepends=('ostree')
+makedepends=('ostree' 'patchelf')
 depends=(
   'webkit2gtk-4.1'
   'polkit'
   'nftables'
   'iproute2'
-  'libxdo3'
   'libayatana-appindicator'
 )
 options=('!strip' '!debug')
@@ -37,6 +36,12 @@ package() {
   install -Dm755 "${srcdir}/geph-app/files/bin/geph5" "$pkgdir/usr/bin/geph5"
   install -Dm755 "${srcdir}/geph-app/files/bin/geph5-client" "$pkgdir/usr/bin/geph5-client"
   install -Dm755 "${srcdir}/geph-app/files/bin/gephgui-wry" "$pkgdir/usr/bin/gephgui-wry"
+
+  # Private copy of libxdo.so.3 (flatpak bundles xdotool 3.x; extra only ships
+  # libxdo.so.4 via xdotool 4.x). Avoid polluting /usr/lib.
+  install -Dm755 "${srcdir}/geph-app/files/lib/libxdo.so.3" \
+    "$pkgdir/usr/lib/gephgui-wry/libxdo.so.3"
+  patchelf --set-rpath '$ORIGIN/../lib/gephgui-wry' "$pkgdir/usr/bin/gephgui-wry"
 
   install -Dm644 "${srcdir}/geph-app/export/share/applications/io.geph.GephGui.desktop" \
     "$pkgdir/usr/share/applications/io.geph.GephGui.desktop"
