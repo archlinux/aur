@@ -1,0 +1,11 @@
+pkgbase = ttf-vavin
+	pkgdesc = Garamond-derived serif fonts with a large x-height for screen reading
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://adrbn.github.io/vavin/
+	arch = any
+	license = OFL-1.1-RFN
+	source = ttf-vavin-1.1.zip::https://github.com/adrbn/vavin/releases/download/v1.1/Vavin-v1.1.zip
+	sha256sums = 321158c8fb56ec4d74dee921e3361827e9b2729764b787ea0504d47f4529fdcc
+
+pkgname = ttf-vavin
