@@ -1,7 +1,7 @@
 # Maintainer: LAA
 pkgname=bupdate-git
-pkgver=0.2.3.r0.g1a7a68d
-pkgrel=2
+pkgver=0.2.3.r1.ga82a2e0
+pkgrel=1
 pkgdesc="Universal package updater — parallel updates for Linux, BSD and Windows (built from git)"
 arch=('x86_64' 'aarch64')
 url="https://radicle.network/nodes/iris.radicle.network/rad%3Az1SpYG13iEYC9Ds1UjyVJhe1sf1i"
