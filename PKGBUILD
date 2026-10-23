@@ -2,20 +2,24 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=alacrittyforge
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Alacritty's settings without editing the file by hand: plain-word settings, a review before every save, your notes kept"
+pkgdesc="Alacritty's settings without editing the file by hand: plain-word settings, a review before every save, your notes kept. Any Linux distribution, any desktop or none, works on a text console (Forge Suite)"
 arch=('any')
-url="https://github.com/jetomev/alacrittyforge"
+# alacrittyForge lives in the Forge Suite repository since 1.1.1 (D-60); releases are tagged alacrittyforge-vX.Y.Z there
+_repo="https://github.com/jetomev/forge-suite"
+url="${_repo}/tree/main/alacrittyforge"
 license=('GPL3')
 # v1.0.0: tomlkit edits alacritty.toml as a document, so comments and layout
 # stay (tomli_w rewrote the whole file); forgekit 0.5.1 for decimal and wide
 # number fields; fontconfig's fc-list lists the fonts
 depends=('python' 'python-textual' 'python-rich' 'python-tomlkit' 'python-forgekit>=0.10.0' 'fontconfig')
 optdepends=('alacritty: the terminal these settings are for (alacrittyForge reads its version)')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('2e540de6c4bb00bfdaae1edc3c36745b05b29c40c6a9d4a8324c76a8887aea1b'
+# 1.1.1: check() validates the launcher entry
+checkdepends=('desktop-file-utils')
+source=("${pkgname}-${pkgver}.tar.gz::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
+sha256sums=('f88e53643ed8e269224730cc8b2f44d1e1ba7e3184a12d5494b8d2d2d99cfc22'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -55,7 +59,10 @@ print('alacrittyforge headless mount OK')
     # Alacritty and no display needed.
     PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_saving tests.test_session \
         tests.test_themes tests.test_bindings tests.test_versions tests.test_manual tests.test_screens \
-        tests.test_v110
+        tests.test_v110 tests.test_v111 tests.test_desktop_entry
+
+    # 1.1.1 (forge-suite#114): the launcher entry is valid
+    desktop-file-validate alacrittyforge.desktop
 }
 
 package() {
@@ -78,6 +85,9 @@ package() {
 exec python /usr/lib/alacrittyforge/main.py "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
+    # Install the launcher entry (1.1.1, forge-suite#114): the app shows in every app menu and launcher
+    install -Dm644 alacrittyforge.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # Install the man page
     install -Dm644 alacrittyforge.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
