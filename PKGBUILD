@@ -1,7 +1,7 @@
 # Maintainer: opecko <https://github.com/opecko>
 # AUR package: builds ytdesk from the GitHub release tag. Updated by scripts/aur.sh.
 pkgname=ytdesk
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="YouTube Music desktop client"
 url='https://github.com/opecko/ytdesk'
@@ -15,7 +15,7 @@ optdepends=('nodejs: JS runtime for the yt-dlp playback fallback'
             'gnome-keyring: stores the login cookie (Secret Service)')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/opecko/ytdesk/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('43e0b462618d431ca939bb584cbc1f6d6764ada89c4f7e9da90cab45e0d3f1b8')
+sha256sums=('7bc3ad77aa33671dce5bf79182a76e7f5a18b8b2733401df99e957c2d94e3fb3')
 
 prepare() {
   cd "$pkgname-$pkgver"

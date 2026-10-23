@@ -1,6 +1,6 @@
 pkgbase = ytdesk
 	pkgdesc = YouTube Music desktop client
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/opecko/ytdesk
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ytdesk
 	conflicts = ytdesk-bin
 	options = !lto
 	options = !debug
-	source = ytdesk-2.1.0.tar.gz::https://github.com/opecko/ytdesk/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 43e0b462618d431ca939bb584cbc1f6d6764ada89c4f7e9da90cab45e0d3f1b8
+	source = ytdesk-2.2.0.tar.gz::https://github.com/opecko/ytdesk/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 7bc3ad77aa33671dce5bf79182a76e7f5a18b8b2733401df99e957c2d94e3fb3
 
 pkgname = ytdesk
