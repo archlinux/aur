@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=soundcraft
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.1
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Avid Pro Tools'
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('d69f00d31cda0a9f23eab117940c64783e86bb1965e0edc949bacdfbb295ea92')
+sha256sums=('62365e3a0768f5e5e04fb8feba3671a3f790f4c094efe006fb99b024c021ee80')
 
 _srcenv() {
 	cd "$_archive"
