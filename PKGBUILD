@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Find, verify, and analyze leaked credentials"
 
-pkgver=3.99.3
+pkgver=3.99.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('37e56a67543eea634967c9516831c823967fb2e2cbfedc036be25648f5d696d2'
             'b1dc9104998919f161e89aa8512699ed20b50c601cfbcebc4ba630e69cf3e62e')
-sha256sums_x86_64=('029b182e0ed35fd5b02cd1eadc2a94bd457ab14ad22a9380b6e5d9652261d28d')
-sha256sums_aarch64=('fdfc2d0da45c9fc3642c4cad08f881131570c0e8f648a5943a02e5387a94243d')
+sha256sums_x86_64=('5ae9b313342d1bfa96404064c0f59e77a2cbd1824d797ca7b11e6655aa8fd9d1')
+sha256sums_aarch64=('e6285aff62e692131255dca91ad300a62a479330e0b72e4eb1d60ae58908f8d5')
 
 
 package() {
