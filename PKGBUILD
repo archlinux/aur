@@ -1,6 +1,6 @@
 # Maintainer: Chris Watson (watzon)
 pkgname=sayso-bin
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Local voice dictation into any app"
 arch=('x86_64' 'aarch64')
@@ -15,14 +15,16 @@ conflicts=('sayso')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('a3b35d1550ce3d7d4be7881b3e1919f59475874226d7130c7a5e3a7427769807')
-sha256sums_aarch64=('19f4a2f7f28071048c0d0d90d7658b211f68dfd14a4e288b5a90bd60678a0a19')
+sha256sums_x86_64=('899516c33d9824be62cbda865e635aded3beeffafa5baf42d0b23cec52965bb3')
+sha256sums_aarch64=('4dc40728ab54bf72cc485979884cb67c4df6761c64051fb94356a61ebecebfab')
 
 package() {
   cd "sayso-$pkgver-linux-$CARCH"
-  # The app finds the engine next to itself, so both binaries live in one folder.
+  # The app finds the engine and the cleanup runtime next to itself, so the
+  # three binaries live in one folder.
   install -Dm755 bin/sayso "$pkgdir/usr/lib/sayso/sayso"
   install -Dm755 bin/sayso-engine "$pkgdir/usr/lib/sayso/sayso-engine"
+  install -Dm755 bin/sayso-cleanup "$pkgdir/usr/lib/sayso/sayso-cleanup"
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/sayso/sayso "$pkgdir/usr/bin/sayso"
   install -Dm644 share/applications/dev.sayso.Sayso.desktop "$pkgdir/usr/share/applications/dev.sayso.Sayso.desktop"
@@ -32,4 +34,5 @@ package() {
   # The app finds the AUR package by this folder, and then names an AUR helper
   # as the way to update (crates/sayso-update/src/install/package.rs).
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" share/licenses/sayso/*.txt
 }
