@@ -1,6 +1,6 @@
 pkgbase = tide
-	pkgdesc = A multi-source music player with two personalities
-	pkgver = 2.3.0
+	pkgdesc = A YouTube Music client for Linux
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/captiencelovesarch/tide
 	arch = any
@@ -18,14 +18,13 @@ pkgbase = tide
 	depends = python-numpy
 	depends = python-mutagen
 	depends = python-spotipy
-	optdepends = python-pypresence: Discord rich presence integration
 	optdepends = python-secretstorage: GNOME/libsecret backend for cookie import
 	optdepends = kwallet: KDE wallet backend for cookie import
-	optdepends = python-watchdog: live re-indexing of the local files source
+	optdepends = python-watchdog: live re-indexing for the local files plugin
 	optdepends = librespot: Spotify Premium playback via the librespot backend
-	optdepends = python-onnxruntime-cpu: precise lyric word timing (local alignment)
+	optdepends = python-onnxruntime-cpu: the precise lyric timing plugin, and voice in vr
 	optdepends = python-yaml: word-synced lyrics from LRClib
-	source = tide-2.3.0.tar.gz::https://github.com/captiencelovesarch/tide/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = d0d049d1909961cad3f0ceb11bea8b10fb32b4679a59e0ddd51c328081e29da5
+	source = tide-3.0.0.tar.gz::https://github.com/captiencelovesarch/tide/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 8b8dcc0f43da129d4ee432b3980353bca281bb2b0badafbecd608e9b4fdba629
 
 pkgname = tide

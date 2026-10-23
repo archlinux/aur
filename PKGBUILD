@@ -1,8 +1,8 @@
 # Maintainer: captience <milkkjello@gmail.com>
 pkgname=tide
-pkgver=2.3.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="A multi-source music player with two personalities"
+pkgdesc="A YouTube Music client for Linux"
 arch=('any')
 url="https://github.com/captiencelovesarch/tide"
 license=('GPL-3.0-or-later')
@@ -19,12 +19,11 @@ depends=(
   'python-spotipy'
 )
 optdepends=(
-  'python-pypresence: Discord rich presence integration'
   'python-secretstorage: GNOME/libsecret backend for cookie import'
   'kwallet: KDE wallet backend for cookie import'
-  'python-watchdog: live re-indexing of the local files source'
+  'python-watchdog: live re-indexing for the local files plugin'
   'librespot: Spotify Premium playback via the librespot backend'
-  'python-onnxruntime-cpu: precise lyric word timing (local alignment)'
+  'python-onnxruntime-cpu: the precise lyric timing plugin, and voice in vr'
   'python-yaml: word-synced lyrics from LRClib'
 )
 makedepends=(
@@ -35,7 +34,7 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # computed from the GitHub tag tarball at release time (updpkgsums once
 # v$pkgver is tagged and pushed); until then this is the previous release's.
-sha256sums=('d0d049d1909961cad3f0ceb11bea8b10fb32b4679a59e0ddd51c328081e29da5')
+sha256sums=('8b8dcc0f43da129d4ee432b3980353bca281bb2b0badafbecd608e9b4fdba629')
 
 build() {
   cd "$pkgname-$pkgver"
