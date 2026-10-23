@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.54
-pkgver=1.0.0beta54
+_tag=v1.0.0-beta.55
+pkgver=1.0.0beta55
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -107,7 +107,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('97a7d344bcf4430de0112ede552632e26b24db0199609b31614d7b41635f7d38')
+sha256sums=('310597187d356152b99f7120f9812ea94e18f1d81a9ed71f16329740b0cfcc74')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
