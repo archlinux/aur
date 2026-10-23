@@ -1,16 +1,16 @@
 pkgbase = crtui-bin
 	pkgdesc = Terminal-based container registry management tool
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://kaanksc.com
 	license = MIT
 	conflicts = crtui
 	provides = crtui
 	arch = aarch64
-	source_aarch64 = crtui-bin_0.4.0_aarch64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v0.4.0/crtui_0.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 50258f5be3803093f1e0deb5459d497f3177a7e273c5e19812aa89f28eb4cd9f
+	source_aarch64 = crtui-bin_0.4.1_aarch64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v0.4.1/crtui_0.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d05e0b85ccf528065f8ff854c268a30176a369d970e196365d07ea10d3318c48
 	arch = x86_64
-	source_x86_64 = crtui-bin_0.4.0_x86_64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v0.4.0/crtui_0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 435dd436d2ea2929de13e388510558a12de3b973b3cae4211ca6ed3b0c22c9d2
+	source_x86_64 = crtui-bin_0.4.1_x86_64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v0.4.1/crtui_0.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = daca3ba998ac661994af4aade42e5ec02217988ca4b5632f0bb4a8447c8c5b07
 	
 pkgname = crtui-bin
