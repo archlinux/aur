@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-git
 _pkgname=podctl
-pkgver=0.3.0.r48.g568ce06
+pkgver=0.4.0.r138.g47dc171
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup (git HEAD)"
 arch=('x86_64' 'aarch64')
@@ -72,6 +72,12 @@ package() {
     install -Dm644 "${srcdir}/${unit}.fixed" \
       "${pkgdir}/usr/lib/systemd/user/${unit}"
   done
+
+  local ext=podctl@rockykln.com
+  install -Dm644 "contrib/gnome-shell-extension/${ext}/metadata.json" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/metadata.json"
+  install -Dm644 "contrib/gnome-shell-extension/${ext}/extension.js" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${ext}/extension.js"
 
   install -Dm644 LICENSE-MIT     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
