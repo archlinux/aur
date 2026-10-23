@@ -1,0 +1,38 @@
+diff --git a/src/backend/Wayland.cpp b/src/backend/Wayland.cpp
+--- a/src/backend/Wayland.cpp
++++ b/src/backend/Wayland.cpp
+@@ -121,12 +121,18 @@ bool Aquamarine::CWaylandBackend::start() {
+             waylandState.seat = makeShared<CCWlSeat>((wl_proxy*)wl_registry_bind((wl_registry*)waylandState.registry->resource(), id, &wl_seat_interface, 9));
+             initSeat();
+         } else if (NAME == "xdg_wm_base") {
+-            TRACE(backend->log(AQ_LOG_TRACE, std::format("  > binding to global: {} (version {}) with id {}", name, 6, id)));
+-            waylandState.xdg = makeShared<CCXdgWmBase>((wl_proxy*)wl_registry_bind((wl_registry*)waylandState.registry->resource(), id, &xdg_wm_base_interface, 6));
++            const auto bindVersion = std::min(version, 6U);
++            TRACE(backend->log(AQ_LOG_TRACE, std::format("  > binding to global: {} (version {}) with id {}", name, bindVersion, id)));
++            waylandState.xdg = makeShared<CCXdgWmBase>((wl_proxy*)wl_registry_bind((wl_registry*)waylandState.registry->resource(), id, &xdg_wm_base_interface, bindVersion));
+             initShell();
+         } else if (NAME == "wl_compositor") {
+-            TRACE(backend->log(AQ_LOG_TRACE, std::format("  > binding to global: {} (version {}) with id {}", name, 6, id)));
+-            waylandState.compositor = makeShared<CCWlCompositor>((wl_proxy*)wl_registry_bind((wl_registry*)waylandState.registry->resource(), id, &wl_compositor_interface, 6));
++            if (version < 4) {
++                backend->log(AQ_LOG_ERROR, "Wayland backend requires wl_compositor version 4 for wl_surface.damage_buffer");
++                return;
++            }
++            const auto bindVersion = std::min(version, 6U);
++            TRACE(backend->log(AQ_LOG_TRACE, std::format("  > binding to global: {} (version {}) with id {}", name, bindVersion, id)));
++            waylandState.compositor = makeShared<CCWlCompositor>((wl_proxy*)wl_registry_bind((wl_registry*)waylandState.registry->resource(), id, &wl_compositor_interface, bindVersion));
+         } else if (NAME == "wl_shm") {
+             TRACE(backend->log(AQ_LOG_TRACE, std::format("  > binding to global: {} (version {}) with id {}", name, 1, id)));
+             waylandState.shm = makeShared<CCWlShm>((wl_proxy*)wl_registry_bind((wl_registry*)waylandState.registry->resource(), id, &wl_shm_interface, 1));
+@@ -153,6 +159,11 @@ bool Aquamarine::CWaylandBackend::start() {
+ 
+     createOutput();
+ 
++    if (wl_display_flush(waylandState.display) < 0) {
++        backend->log(AQ_LOG_ERROR, "Wayland backend cannot start: failed to flush initial output requests");
++        return false;
++    }
++
+     return true;
+ }
+ 

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+pre_upgrade() {
+    /usr/lib/lightos-remoted/lightos-remoted install-service --snapshot || return 1
+}
+post_install() {
+    /usr/lib/lightos-remoted/lightos-remoted install-service --package-managed || return 1
+}
+post_upgrade() {
+    /usr/lib/lightos-remoted/lightos-remoted install-service --package-managed || return 1
+}
+pre_remove() {
+    # Preserve mapped owner/transport binaries and GUI processes until they exit.
+    # Keep a payload snapshot and configuration for deliberate cleanup.
+    /usr/lib/lightos-remoted/lightos-remoted install-service --remove || return 1
+}
