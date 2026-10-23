@@ -1,6 +1,6 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=intel-deep-learning-essentials
-pkgver=2026.1.4
+pkgver=2026.2.0
 pkgrel=1
 pkgdesc="Intel® Deep Learning Essentials + Intel® Deep Neural Network Library - Intel® oneAPI DPC++/C++ Compiler, Intel® oneAPI DPC++ Library, Intel® oneAPI Math Kernel Library, Intel® oneAPI Collective Communications Library, Intel® Deep Neural Network Library"
 arch=('x86_64')
@@ -37,16 +37,16 @@ conflicts=(
 )
 options=('!strip' 'staticlibs')
 source=(
-    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b5c100a7-8052-4e88-90e2-63d9916a998b/intel-deep-learning-essentials-2026.1.4.17_offline.sh'
-    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/94c3dbac-0852-45be-a57d-21c204cada3e/intel-onednn-2026.0.2.46_offline.sh'
+    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/aef232d2-aac5-4cd6-bceb-911019bbb6a8/intel-deep-learning-essentials-2026.2.0.640_offline.sh'
+    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/46452a4a-7b7f-49f2-be4c-602a900180bb/intel-onednn-2026.1.0.625_offline.sh'
 )
 noextract=(
-    'intel-deep-learning-essentials-2026.1.4.17_offline.sh'
-    'intel-onednn-2026.0.2.46_offline.sh'
+    'intel-deep-learning-essentials-2026.2.0.640_offline.sh'
+    'intel-onednn-2026.1.0.625_offline.sh'
 )
 sha384sums=(
-    '38adddc04a3a194ca891e74e81269c3f52fdff12ab5884878f118f14cfabe548e29da249e21d3b14dff2b6d5995d905c'
-    'a3cb11a67b400ca8ae2338c6a4802108204cfcebba0f736560ebf8acb834b73b351776c412c7050d7b3eedde18f29a6e'
+    '612706088f1c816224af1ca9750dbf4eb16006c81e7a0aac82e2cd0f489efcc2ee554dc298bed9eaff35970237188900'
+    '6bcbb2d013c87a91b2300e75f125613f2f4cff82a4ef45cfd3b3d1e79b43d089b910fcdc59ba942b65c675fcced4d9fc'
 )
 
 package() {
@@ -71,7 +71,7 @@ package() {
     env -i HOME="/home/${_real_user}" \
            USER="${_real_user}" \
            PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    sh "${srcdir}/intel-deep-learning-essentials-2026.1.4.17_offline.sh" \
+    sh "${srcdir}/intel-deep-learning-essentials-2026.2.0.640_offline.sh" \
         -a --silent --eula accept \
         --install-dir "${pkgdir}/opt/intel/oneapi" \
         --log-dir "${srcdir}/"
@@ -79,7 +79,7 @@ package() {
     env -i HOME="/home/${_real_user}" \
            USER="${_real_user}" \
            PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    sh "${srcdir}/intel-onednn-2026.0.2.46_offline.sh" \
+    sh "${srcdir}/intel-onednn-2026.1.0.625_offline.sh" \
         -a --silent --eula accept \
         --install-dir "${pkgdir}/opt/intel/oneapi" \
         --log-dir "${srcdir}/"
