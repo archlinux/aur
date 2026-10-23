@@ -1,7 +1,7 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=nota-daw-bin
-pkgver=0.56.1
-_appimage_sha='ee931f7187ded392e602a07cef6b2ad90cb6c7255b4cec2d175299c680968eb5'
+pkgver=0.57.1
+_appimage_sha='632b64c65833e2c8dbf82905724f2d2ea5464cd57b992fd5a0ad763332b3fa26'
 _license_sha='0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
 pkgrel=1
 pkgdesc="Modern digital audio workstation (DAW) (upstream binary)"
