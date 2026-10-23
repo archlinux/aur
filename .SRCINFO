@@ -1,6 +1,6 @@
 pkgbase = cumora-bin
 	pkgdesc = A workspace where AI teammates live, not visit.
-	pkgver = 0.18.7
+	pkgver = 0.18.8
 	pkgrel = 1
 	url = https://cumora.ai
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cumora-bin
 	depends = util-linux-libs
 	depends = libsecret
 	optdepends = libappindicator-gtk3: for system tray icon support
-	source = cumora_0.18.7_amd64.deb::https://updates.cumora.ai/cumora_0.18.7_amd64.deb
-	md5sums = f3aecb4a140cab6bbe599781b3e3256c
+	source = cumora_0.18.8_amd64.deb::https://updates.cumora.ai/cumora_0.18.8_amd64.deb
+	md5sums = 8f046b5af9a0ee7a7c730b0263ba135b
 
 pkgname = cumora-bin
