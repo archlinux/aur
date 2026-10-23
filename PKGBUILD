@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd-git
-pkgver=0.2.7.r8.g8c664ad
+pkgver=0.2.7.r12.g55b2b07
 pkgrel=1
 pkgdesc="Markdown-based task and workflow runner"
 arch=("x86_64")
