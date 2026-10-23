@@ -1,7 +1,7 @@
 # Package maintainer: Leonid B <leonid dot bloch at esrf dot fr>
 # Upstream contact: silx at esrf dot fr
 pkgname=python-silx
-pkgver=2.2.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A collection of Python packages for data analysis at synchrotron radiation facilities."
 arch=('any')
@@ -13,17 +13,18 @@ optdepends=('python-h5py: for HDF5 input/output'
             'python-qtconsole: for GUI console'
             'python-pyopencl: for sift - OpenCL implementation'
             'opencl-driver: for sift - OpenCL implementation')
-makedepends=('cython' 'python-setuptools')
+makedepends=('cython' 'meson-python' 'python-build' 'python-installer'
+             'python-wheel')
 source=("https://github.com/silx-kit/${pkgname#*-}/archive/v${pkgver}.tar.gz")
-sha256sums=('cf89c20013e150b9737ab9c43448cc20a96d17a6a5669402dd262dc57cd47002')
+sha256sums=('7b6106ac4c04d528563d4284c7b1b3aeea11a028df5dde3a9e94db257ae36840')
 
 build() {
     cd "${pkgname#*-}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${pkgname#*-}-${pkgver}"
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -D copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
