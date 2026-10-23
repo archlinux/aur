@@ -29,7 +29,7 @@ if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     depends+=(qt6-websockets)
 fi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('691bd61789a0cc3bb42d3312ab38600d6061a3ee8f183f1a6a9bfec028a4bf0a')
+sha256sums=('e2f4bfcdcea286dd5460df03ae78aa48468bde003222bbc22f8f22af6b9eba1f')
 
 build() {
   cd "$pkgname-$pkgver/src"
