@@ -1,6 +1,6 @@
 pkgbase = neuroforest-git
 	pkgdesc = NeuroForest knowledge engineering platform
-	pkgver = 1.8.2.r427.d2061da
+	pkgver = 1.8.3.r438.5495cd1
 	pkgrel = 1
 	url = https://github.com/neuroforest
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = neuroforest-git
 	conflicts = neuroforest
 	options = !strip
 	options = !debug
-	source = app::git+https://github.com/neuroforest/app.git#commit=d2061da4d40ab20df26bde40879b902d8ce1b0fb
+	source = app::git+https://github.com/neuroforest/app.git#commit=5495cd12900ef2d25e7296d8b826e6bbdeaf324c
 	source = neuro.sh
 	source = neurowiki.sh
 	source = neurowiki.desktop

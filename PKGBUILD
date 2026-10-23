@@ -2,7 +2,7 @@
 
 pkgbase=neuroforest-git
 pkgname=neuroforest-git
-pkgver=1.8.2.r427.d2061da
+pkgver=1.8.3.r438.5495cd1
 pkgrel=1
 pkgdesc="NeuroForest knowledge engineering platform"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'npm' 'pnpm' 'uv')
 conflicts=('neuroforest')
 provides=('neuroforest')
 options=('!strip' '!debug')
-_commit=d2061da4d40ab20df26bde40879b902d8ce1b0fb
+_commit=5495cd12900ef2d25e7296d8b826e6bbdeaf324c
 source=("app::git+https://github.com/neuroforest/app.git#commit=$_commit"
         'neuro.sh'
         'neurowiki.sh'
