@@ -1,15 +1,15 @@
 pkgbase = quarkus-agent-mcp-bin
 	pkgdesc = A standalone MCP server that enables AI coding agents to create, manage, and interact with Quarkus applications.
-	pkgver = 1.2.11
+	pkgver = 1.2.12
 	pkgrel = 1
 	url = https://github.com/quarkusio/quarkus-agent-mcp
 	arch = any
 	license = Apache-2.0
 	depends = java-runtime>=11
-	noextract = quarkus-agent-mcp-1.2.11-runner.jar
-	source = https://github.com/quarkusio/quarkus-agent-mcp/releases/download/1.2.11/quarkus-agent-mcp-1.2.11-runner.jar
-	source = LICENSE-1.2.11::https://github.com/quarkusio/quarkus-agent-mcp/raw/refs/tags/1.2.11/LICENSE
-	sha256sums = 6e6de9a5d79b554416e9d18037a6c11b09024412255b5e9f02f9ac714143310d
+	noextract = quarkus-agent-mcp-1.2.12-runner.jar
+	source = https://github.com/quarkusio/quarkus-agent-mcp/releases/download/1.2.12/quarkus-agent-mcp-1.2.12-runner.jar
+	source = LICENSE-1.2.12::https://github.com/quarkusio/quarkus-agent-mcp/raw/refs/tags/1.2.12/LICENSE
+	sha256sums = 96e9bfe7db5224366cfd9b3e7dd23cd89448d0070fcc9ffb0d8c07df2fae78ae
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = quarkus-agent-mcp-bin
