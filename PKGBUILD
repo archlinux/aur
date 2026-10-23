@@ -2,7 +2,7 @@
 # Upstream: https://github.com/alexballas/go2tv
 
 pkgname=go2tv-bin
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Cast media files to Smart TVs and Chromecast devices (pre-built binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -42,12 +42,12 @@ source_armv7h=("go2tv-${pkgver}-arm.zip::https://github.com/${_upstream_repo}/re
 
 sha256sums=('f3e74b19ba21d7c94eb917b4a9027e069de8350629d25a14e95161c4f6e6fe51'
             'cb4563f5856fac6b51f4c8b08e25520501bd7cca0dab48606025f350cdf1cc9a'
-            '7ba8c35e45036073b04d8ac9419172534a901f7eb6e15aadf246b36f1859a3c9'
+            'e1b8b5c7cd778d23f85ea360652c3c2c083d6f0ee39605156e3300800a100b43'
             '06ddd76db63dc6733dd12b3645fe817bb9e8c659cec6f1756031bcf91d459f23'
             'd1825ec83521c2e46399955cd42813a3df2051b856c6296cf122dc435d9ed570')
-sha256sums_x86_64=('d3c0ce35472cf32b4ce7177f8fc4124bec85a2cebdbdab5e05f6f87b07df9e4e')
-sha256sums_aarch64=('68375df9203ac6905ed29e57c3900eacb462323029a921ada6710d170a204284')
-sha256sums_armv7h=('6f857c0393d5ad5f35c4d1fb86a2248e8b60f47e4f6e28fe9965dcce42b7be56')
+sha256sums_x86_64=('19bbdc329f8ab40c0f33025054c61b7c8f43c31e36e2b18c516f6ace62fd38c1')
+sha256sums_aarch64=('1ecab22fb2924d09d2ecdfb1d5e9c49467ac9214816c525c8c8e8584a9f6e1e7')
+sha256sums_armv7h=('bce82f3ffa9bbd56ee2f3506faf033dec1fae8dbf2e213536bf3aba51bdf5a07')
 
 package() {
     install -Dm755 "go2tv" -t "${pkgdir}/usr/bin"
