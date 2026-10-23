@@ -1,6 +1,6 @@
 pkgbase = uniclipboard-git
 	pkgdesc = Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted
-	pkgver = 1.4.0.alpha.1.r3.g0fdcdaa
+	pkgver = 1.4.0.r0.g346e248
 	pkgrel = 1
 	url = https://www.uniclipboard.app
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = uniclipboard-git
 	depends = libx11
 	depends = libsoup3
 	provides = uniclipboard
-	provides = uniclipboard=1.4.0.alpha.1.r3.g0fdcdaa
+	provides = uniclipboard=1.4.0.r0.g346e248
 	conflicts = uniclipboard
 	conflicts = uniclipboard-bin
 	options = !lto
