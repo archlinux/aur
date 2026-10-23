@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=2.31.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=('python-aiohttp: aiohttp'
             'python-pyopenssl: pyopenssl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "$url/pull/3064.patch")
-sha256sums=('1bcf5c56d7ccd8e6d195be6cbdbf5f34b4bcad7e918c24dac7629325afb16592'
+sha256sums=('fa13547aa6e416ed02f1062d5c389ce561cec653fe3f386ac3c4ccf95846c112'
             '3d18903ca18ae3d2913d87d6423df903e2a96408aa2dd671271347ce52f02d28')
 
 prepare(){
