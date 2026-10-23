@@ -2,8 +2,8 @@
 
 pypiname=terminal_tetris
 pkgname=terminal-tetris
-pkgver=0.0.10
-pkgrel=4
+pkgver=0.0.12
+pkgrel=5
 pkgdesc="A simple Tetris game for the terminal."
 arch=('any')
 url="https://github.com/averyvisentin/terminal-tetris"
@@ -12,8 +12,8 @@ license=('MIT')
 depends=('python-blessed')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/25/f8/137fe386064039129bd6620a6d595b9f01e6bcaeff46acd60fe3885f9ae8/terminal_tetris-0.0.10.tar.gz")
-sha256sums=('cc0fe8f333b5e5aa8d67ca6a99e9ad8c3e9db6786e4c704da12d3d9a6551c708')
+source=("https://files.pythonhosted.org/packages/db/5f/273a53d496f046c4b7c4e0d4a58d21b4e283302bd9b8a0962b648f7b43a2/terminal_tetris-0.0.12.tar.gz")
+sha256sums=('ee966e2061fab88c42b8a7ecacee64e6ad1d402385debc55b151b9c18560e014')
 
 build() {
   cd "$pypiname-$pkgver"
