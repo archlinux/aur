@@ -1,6 +1,6 @@
 pkgbase = aoostar-lcd-bin
 	pkgdesc = Glanceable front-panel status display for the AOOSTAR WTR MAX home server
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nietonchique/aoostar-lcd
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = aoostar-lcd-bin
 	optdepends = zfs-utils: ZFS pool usage page
 	optdepends = nvidia-utils: GPU telemetry via nvidia-smi
 	optdepends = docker: container CPU/RAM statistics
-	provides = aoostar-lcd=1.0.1
+	provides = aoostar-lcd=1.1.0
 	conflicts = aoostar-lcd
 	backup = etc/aoostar-lcd.toml
-	source = aoostar-lcd-v1.0.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/nietonchique/aoostar-lcd/releases/download/v1.0.1/aoostar-lcd-v1.0.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c610ec7b7c6a9f63eff5fe7d2e62f2f3e870a2e37accc6c04f5087b44dc9489f
+	source = aoostar-lcd-v1.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/nietonchique/aoostar-lcd/releases/download/v1.1.0/aoostar-lcd-v1.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 7713875728ac44bbbc7cadb6f57e793d9dfc2883bb9557f0eb02f42c7aaad1ee
 
 pkgname = aoostar-lcd-bin

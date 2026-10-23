@@ -3,7 +3,7 @@
 # .github/workflows/release.yml. For a source build see the -git variant.
 _pkgname=aoostar-lcd
 pkgname=${_pkgname}-bin
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Glanceable front-panel status display for the AOOSTAR WTR MAX home server'
 arch=('x86_64')
@@ -21,7 +21,7 @@ backup=('etc/aoostar-lcd.toml')
 # makepkg cache. Checksum below must be updated from the release's
 # SHA256SUMS.txt asset (or `updpkgsums`) on every version bump.
 source=("${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('c610ec7b7c6a9f63eff5fe7d2e62f2f3e870a2e37accc6c04f5087b44dc9489f')
+sha256sums=('7713875728ac44bbbc7cadb6f57e793d9dfc2883bb9557f0eb02f42c7aaad1ee')
 
 # No build(): nothing to compile, no makedepends. The tarball carries a
 # top-level dir that makepkg extracts into $srcdir automatically.
