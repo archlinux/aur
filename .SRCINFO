@@ -1,7 +1,7 @@
 pkgbase = worker
 	pkgdesc = A file manager for the X Window System
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.boomerangsworld.de/worker
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = worker
 	depends = libx11
 	depends = file
 	depends = xorgproto
+	optdepends = imlib2: image display in show image mode
 	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-6.0.0.tar.bz2
 	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-6.0.0.tar.bz2.asc
 	validpgpkeys = F9299EE90A729029E71AF26B667132D0FBC52B37

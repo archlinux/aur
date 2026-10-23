@@ -5,12 +5,13 @@
 
 pkgname=worker
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.boomerangsworld.de/worker"
 depends=('avfs' 'gcc-libs' 'libx11' 'file' 'xorgproto')
+optdepends=('imlib2: image display in show image mode')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2
         http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2.asc)
