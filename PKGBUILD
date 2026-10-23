@@ -1,20 +1,20 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-mango
-pkgver=1.1.11
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Mango compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'MIT' 'CC0-1.0' 'CC-BY-4.0' 'CC-BY-NC-4.0' 'CC-BY-SA-4.0' 'CC-BY-NC-SA-4.0')
 depends=('greetd' 'kitty' 'mangowm' 'gslapper')
 optdepends=(
     'swww: Legacy wallpaper support (fallback)'
 )
 makedepends=('go>=1.25')
 provides=('sysc-greet')
-conflicts=('sysc-greet' 'sysc-greet-cagebreak' 'sysc-greet-hyprland' 'sysc-greet-sway')
+conflicts=('sysc-greet' 'sysc-greet-sway' 'sysc-greet-hyprland' 'sysc-greet-cagebreak')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2b2199f9cb18d093876150b2ac7505f408ede2e577f7fccb0767dabb631d6884')
+sha256sums=('d62d4b0e485d0b3681af0643ff2866dc75dd40bd1bafbe6f4ce0d2506d3a35ef')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/mango-greeter-config.conf' 'etc/greetd/mango-greeter-session.sh' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-mango.install
@@ -52,6 +52,10 @@ package() {
         install -dm755 "${pkgdir}/usr/share/sysc-greet/Assets"
         cp -r assets/* "${pkgdir}/usr/share/sysc-greet/Assets/" 2>/dev/null || true
     fi
+
+    # Install bundled ANSI border artwork
+    install -dm755 "${pkgdir}/usr/share/sysc-greet/borders"
+    cp -r cmd/sysc-greet/assets/borders/* "${pkgdir}/usr/share/sysc-greet/borders/"
 
     # Install wallpapers
     if [ -d "wallpapers" ]; then
