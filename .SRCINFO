@@ -1,0 +1,27 @@
+pkgbase = blaadpapers-git
+	pkgdesc = Fast & clean wallpaper manager (latest commit from master)
+	pkgver = 0.5.0.r0.g3015815
+	pkgrel = 1
+	url = https://github.com/Blaadick/BlaadPapers
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = imageinfo
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = curl
+	depends = yyjson
+	depends = libvips
+	depends = ffmpeg
+	depends = mpvpaper
+	depends = bstyle
+	provides = blaadpapers
+	conflicts = blaadpapers
+	source = blaadpapers::git+https://github.com/Blaadick/BlaadPapers.git
+	sha512sums = SKIP
+
+pkgname = blaadpapers-git
