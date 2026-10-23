@@ -1,28 +1,30 @@
 # Maintainer: Marco Righi <marco.righi@cnr.it>
 
 pkgname=sendemail-safe
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="SMTP command-line tools that keep credentials out of process command lines"
+pkgdesc="Secure CLI email sending via SMTP and Gmail API OAuth 2.0"
 arch=('any')
 url="https://github.com/marcorighi/sendEmail-safe"
 license=('MIT')
 depends=('bash' 'python')
+optdepends=('xdg-utils: opens the browser for initial Gmail OAuth authorization')
 
+# Immutable upstream 1.1.0 source snapshot; avoids reliance on a missing tag.
+_commit=71162095ac38bfede1f9fb6b19ec395a6ae012f0
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/marcorighi/sendEmail-safe/tar.gz/${_commit}"
 )
-
-sha256sums=('6ca21d5c04fcc84ce464df79ba078963361df40b916bae9ca9ac48182add2e24')
+sha256sums=('3420281abcb0d92da1aedf7f70c778043189a1906e4259a92b8997b570c08a34')
 
 check() {
-    cd "${srcdir}/sendEmail-safe-${pkgver}"
+    cd "${srcdir}/sendEmail-safe-${_commit}"
 
     ./run-tests.sh
 }
 
 package() {
-    cd "${srcdir}/sendEmail-safe-${pkgver}"
+    cd "${srcdir}/sendEmail-safe-${_commit}"
 
     install -Dm755 \
         sendEmail-safe.py \
@@ -35,6 +37,15 @@ package() {
     install -Dm755 \
         sendEmail-safe-migrate.py \
         "${pkgdir}/usr/bin/sendEmail-safe-migrate.py"
+
+    install -Dm755 \
+        sendEmail-safe-google-auth.py \
+        "${pkgdir}/usr/bin/sendEmail-safe-google-auth.py"
+
+    # Imported by /usr/bin/sendEmail-safe.py; must be in the same directory.
+    install -Dm644 \
+        sendemail_safe_google.py \
+        "${pkgdir}/usr/bin/sendemail_safe_google.py"
 
     install -Dm644 \
         README.md \
