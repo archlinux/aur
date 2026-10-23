@@ -3,14 +3,14 @@
 
 pkgname=httptoolkit
 pkgver=1.27.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
 url="https://httptoolkit.com/"
 license=('AGPL-3.0-or-later')
 
-# package.json specifies electron 39 as of version 1.27.3
+# package.json specifies electron 42 as of version 1.27.3
 _electron_version="42"
 
 depends=("electron${_electron_version}" python)
