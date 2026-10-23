@@ -3,7 +3,7 @@
 # Generated blocks are rewritten by packaging/sync-pkgbuild.py; do not edit them by hand.
 
 pkgname=qtgmc-6ui
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="QTGMC deinterlacer for archival video (VapourSynth) with a Qt6 GUI"
 arch=(x86_64)
@@ -67,7 +67,7 @@ else
   source=("$_srcname.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 # set by sync-pkgbuild.py --project-sha256 (never updpkgsums)
-_project_sha256='b99844b32bcb6e5ac5c1ff9ad0c631f6a873a91c590e9ca280dbb5ba6cc7bbc5'
+_project_sha256='e6173f801b5495360b71b588fe12bbb18588c7ef5effe5cc23a4f630508d540c'
 sha256sums=("$_project_sha256")
 
 # BEGIN generated: plugin-sources (packaging/sync-pkgbuild.py from packaging/plugins/plugins.json)
