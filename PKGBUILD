@@ -30,7 +30,7 @@ conflicts=('typeaside')
 options=('!debug' '!strip')
 source=("typeaside-${pkgver}.deb::https://typeaside.app/releases/v${pkgver}/typeaside.deb")
 noextract=("typeaside-${pkgver}.deb")
-sha256sums=('31a72f441c53136c3041b69ebe768d3d89fa0a4d6edcf58928b190bde15979be')
+sha256sums=('af39ac2597f9ab3ef5b3b93e89608b1688f4338064dde25010263eb68a8010e2')
 
 package() {
   bsdtar -xOf "typeaside-${pkgver}.deb" 'data.tar*' | bsdtar -xf - -C "$pkgdir"
