@@ -1,6 +1,6 @@
 pkgbase = wealthfolio-bin
 	pkgdesc = A beautiful, private, local-first personal finance tracker. Investments, net worth, spending, and simulations.
-	pkgver = 3.10.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://wealthfolio.app/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = wealthfolio-bin
 	depends = webkit2gtk-4.1
 	provides = wealthfolio-bin
 	conflicts = wealthfolio-bin
-	source_x86_64 = Wealthfolio_3.10.0_x86_64.deb::https://github.com/wealthfolio/wealthfolio/releases/download/v3.10.0/Wealthfolio_3.10.0_amd64.deb
-	sha256sums_x86_64 = 56a7a5a366ca3524c4b6e7dc2fbf1ec15327179b43bf6da407cc67a9547b49e3
-	source_aarch64 = Wealthfolio_3.10.0_aarch64.deb::https://github.com/wealthfolio/wealthfolio/releases/download/v3.10.0/Wealthfolio_3.10.0_arm64.deb
-	sha256sums_aarch64 = 7b3ac7439de319309b700035de824b445e851f78eaf1f75a9f8f7b5806af8203
+	source_x86_64 = Wealthfolio_3.11.0_x86_64.deb::https://github.com/wealthfolio/wealthfolio/releases/download/v3.11.0/Wealthfolio_3.11.0_amd64.deb
+	sha256sums_x86_64 = a3af9cca2e0a207fad4c6efecab8cb4b9f24efcbfe54ad1ee0059258f2565dc3
+	source_aarch64 = Wealthfolio_3.11.0_aarch64.deb::https://github.com/wealthfolio/wealthfolio/releases/download/v3.11.0/Wealthfolio_3.11.0_arm64.deb
+	sha256sums_aarch64 = d058756d5b778b9052a1155e4d8c2257bea78ab27e9d1281653d23d2f11bd3e4
 
 pkgname = wealthfolio-bin

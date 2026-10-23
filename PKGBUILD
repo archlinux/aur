@@ -2,7 +2,7 @@
 
 pkgname=wealthfolio-bin
 _pkgname=Wealthfolio
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="A beautiful, private, local-first personal finance tracker. Investments, net worth, spending, and simulations."
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ changelog=
 source_x86_64=("${_pkgname}_${pkgver}_x86_64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}_${pkgver}_aarch64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 noextract=()
-sha256sums_x86_64=('56a7a5a366ca3524c4b6e7dc2fbf1ec15327179b43bf6da407cc67a9547b49e3')
-sha256sums_aarch64=('7b3ac7439de319309b700035de824b445e851f78eaf1f75a9f8f7b5806af8203')
+sha256sums_x86_64=('a3af9cca2e0a207fad4c6efecab8cb4b9f24efcbfe54ad1ee0059258f2565dc3')
+sha256sums_aarch64=('d058756d5b778b9052a1155e4d8c2257bea78ab27e9d1281653d23d2f11bd3e4')
 validpgpkeys=()
 
 prepare() {
