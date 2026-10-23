@@ -1,0 +1,34 @@
+pkgbase = screencraft-git
+	pkgdesc = vibe coded clean-room reimplementation of Screen Studio(Git HEAD)
+	pkgver = 0.0.0.r167.gcd52362
+	pkgrel = 1
+	url = https://screencraft.mdnlabs.dev
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libxtst
+	depends = pipewire-v4l2
+	depends = xdg-desktop-portal
+	provides = ScreenCraft=0.0.0.r167.gcd52362
+	conflicts = ScreenCraft
+	options = !lto
+	source = git+https://github.com/MarshallNickolauson/ScreenCraft.git
+	sha256sums = SKIP
+
+pkgname = screencraft-git
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libxtst
+	depends = pipewire-v4l2
+	depends = xdg-desktop-portal
+	depends = libgcc_s.so
