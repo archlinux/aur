@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=syscgo
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Terminal animation library and CLI tool for Go"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,8 @@ license=('MIT' 'CC-BY-NC-4.0')
 depends=()
 makedepends=('go>=1.24.2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-Go/archive/v${pkgver}.tar.gz")
-sha256sums=('f4b0839686c6c9b323a124d3d260c2c896def2b8185fc33bc8de325ad3d04d5a')
+sha256sums=('1f10db30c042d155dd68401fd11561a89d85dfa5a64f6f90add570d6f9dac25b')
+install="${pkgname}.install"
 
 build() {
   cd "${srcdir}/sysc-Go-${pkgver}"
