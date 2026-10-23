@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=aurgen
-pkgver=1.10.3
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Generate, test and publish AUR packages for GitHub projects'
 arch=('any')
@@ -17,8 +17,8 @@ license=('GPL-3.0-or-later')
 validpgpkeys=('2B0541BF62E91D538C55739DF677BC1E3BD7246E')
 depends=('curl' 'jq' 'util-linux' 'bash' 'coreutils' 'diffutils' 'findutils' 'gawk' 'git' 'gnupg' 'grep' 'gzip' 'make' 'pacman' 'pacman-contrib' 'sed' 'tar')
 optdepends=('github-cli: create GitHub releases and upload assets in aur mode' 'shellcheck: lint mode' 'namcap: PKGBUILD checks in test mode' 'bubblewrap: sandboxed make install for runtime dependency detection')
-source=("https://github.com/eserlxl/aurgen/releases/download/v1.10.3/aurgen-1.10.3.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.10.3/aurgen-1.10.3.tar.gz.sig")
-b2sums=('bd32e14dcf63ff77e56a1b974e4b32f2e9543e79b4457b10018559b8bcf60e9e35fb2939d97e82928cd1b09b39c5b5b1e3a041979a2aa0d2039aeba834e013ba'
+source=("https://github.com/eserlxl/aurgen/releases/download/v1.11.0/aurgen-1.11.0.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.11.0/aurgen-1.11.0.tar.gz.sig")
+b2sums=('515dd2414e5f7b433b0f65a4a54528b3d94ce21595cb6a6d7c8e664c473ba9c8bdb955e9e5d49785f19f528525a9d662c81981765745f1e3757212265a6e9ce2'
         'SKIP')
 
 build() {
@@ -36,7 +36,7 @@ copy_tree() {
     abs_src="$(realpath "$src" 2>/dev/null)" || return 0
 
     # Patterns stay find arguments so install-YAML metacharacters are not executed.
-    local -a find_cmd=(find "$abs_src" -maxdepth 5 -type f)
+    local -a find_cmd=(find "$abs_src" -type f)
     local exclude
     for exclude in "$@"; do
         # Trim whitespace
@@ -60,18 +60,18 @@ copy_tree() {
 package() {
     # Note: Tarball is created without subdirectory prefix, so no cd needed
     # Install license file
-    for name in LICENSE LICENSE.txt COPYING; do
+    for name in LICENSE LICENSE.txt LICENSE.md LICENCE COPYING COPYING.md; do
         [[ -f "$name" ]] && install -Dm644 "$name" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" && break
     done
 
     # Copy sections based on configuration
     copy_tree "bin" "usr/bin" "755"
-    copy_tree "lib" "usr/lib/$pkgname" "644"
+    copy_tree "lib" "usr/lib/aurgen" "644"
     copy_tree "etc" "etc/$pkgname" "644"
     copy_tree "share" "usr/share/$pkgname" "644"
     copy_tree "include" "usr/include/$pkgname" "644"
     copy_tree "local" "usr/local/$pkgname" "644"
     copy_tree "var" "var/$pkgname" "644"
-    copy_tree "opt" "opt/$pkgname" "644" '[]'
-    echo "$pkgver" > "$pkgdir/usr/lib/$pkgname/VERSION"
+    copy_tree "opt" "opt/$pkgname" "644"
+    echo "$pkgver" > "$pkgdir/usr/lib/aurgen/VERSION"
 }
