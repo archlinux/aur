@@ -1,0 +1,5 @@
+[dirule-bin]
+source = "github"
+github = "Slyverr/dirule"
+use_latest_release = true
+prefix = "v"

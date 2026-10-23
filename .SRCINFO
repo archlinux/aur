@@ -1,0 +1,19 @@
+pkgbase = dirule-bin
+	pkgdesc = Bulk-rename and sort files with reviewable rules. Previews before changes, undo support, and CI checks
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Slyverr/dirule
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = dirule
+	conflicts = dirule
+	options = !strip
+	source_x86_64 = dirule-x86_64-0.5.0.txz::https://github.com/Slyverr/dirule/releases/download/v0.5.0/dirule-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 17d33141451b899865eb52e76fd2fb9d1067ed07d661c2007d71e8cd96cc6043
+	source_aarch64 = dirule-aarch64-0.5.0.txz::https://github.com/Slyverr/dirule/releases/download/v0.5.0/dirule-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 313791c9fa2307feb7d55dc4a6513fe22984fd2786f3e290f26548cbb3a14f22
+
+pkgname = dirule-bin
