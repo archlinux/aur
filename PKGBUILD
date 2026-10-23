@@ -2,8 +2,8 @@
 # Packaged by Scuffed QA. Installs the prebuilt release tarball as is (no compile).
 
 pkgname=scuffed-stat-tracker-bin
-_tag=stat-tracker-v0.5.0-rc.8
-pkgver=0.5.0rc8
+_tag=stat-tracker-v0.5.0-rc.9
+pkgver=0.5.0rc9
 pkgrel=1
 pkgdesc="Overwatch personal stats tracker for Scuffed Crew (capture daemon and desktop app)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source_x86_64=("scuffed-stat-tracker-${pkgver}.tar.gz::${url}/releases/download/
 sha256sums=('976824c0c583ba2066d72eb1d5215961e7066cfc61dd7e09b700a6b446c49c15'
             'f06096d72781572a2e19344e81d3a235f99b495480d2f2f8b3be703bb286dfef'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('7f909258ceff5e5de1d24e4751bf9f1a77d4fffeb9eb89a3fb05106650537e18')
+sha256sums_x86_64=('382a30f2e349abd35d2f7dc2f94b3c883a51e8be0647a7c31fefbfd500e555d3')
 
 package() {
   cd "${srcdir}/scuffed-stat-tracker-linux-${CARCH}"
