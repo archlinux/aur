@@ -3,7 +3,7 @@
 
 pkgname=polystrata
 pkgver=0.1.45.poly.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Run large AI models on your own PC: Qwen3.8-Flash-Next, GLM 5.3 Flash, DeepSeek V4 Flash and more, on NVIDIA or AMD GPUs'
 arch=('any')
 url='https://github.com/VecSzn/PolyStrata'
