@@ -1,0 +1,19 @@
+pkgbase = scriptisto-bin
+	pkgdesc = A language-agnostic "shebang interpreter" that enables you to write scripts in compiled languages
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/igor-petruk/scriptisto
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	provides = scriptisto
+	conflicts = scriptisto
+	options = !strip
+	source = README-2.2.0.md::https://raw.githubusercontent.com/igor-petruk/scriptisto/v2.2.0/README.md
+	source = LICENSE-2.2.0::https://raw.githubusercontent.com/igor-petruk/scriptisto/v2.2.0/LICENSE
+	sha256sums = 643efc7af648f1a463d692a3a90a4bc3a30bb97ac7d94f123ff45fb690740d07
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = scriptisto-x86_64-2.2.0.tbz2::https://github.com/igor-petruk/scriptisto/releases/download/v2.2.0/scriptisto-x86_64-unknown-linux-musl.tar.bz2
+	sha256sums_x86_64 = 0e31db3c29fd3868257d771c4851b4af35af2794116287dbe55068fa33539cee
+
+pkgname = scriptisto-bin
