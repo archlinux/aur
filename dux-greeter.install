@@ -1,0 +1,26 @@
+post_install() {
+    cat << EOF
+
+==> Configuration required:
+
+Edit /etc/greetd/config.toml and set:
+
+    [terminal]
+    vt = 1
+
+    [default_session]
+    user = "greeter"
+    command = "/usr/bin/dms-greeter --command niri"
+
+You can replace 'niri' with 'hyprland' or 'sway' if desired.
+
+==> Apply your DMS theme and settings to the greeter:
+
+    sudo dms-greeter sync
+
+==> Enable the greeter:
+
+    systemctl enable greetd
+
+EOF
+}
