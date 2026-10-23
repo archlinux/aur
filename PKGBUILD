@@ -2,7 +2,7 @@
 # Contributor: Zollerboy1 <josef@walterzollerpiano.com> (zed-preview-bin reference)
 
 pkgname=zed-bin
-pkgver=1.25.2
+pkgver=1.25.3
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ conflicts=("${pkgname%-bin}" 'zed-git' 'zed-preview-bin')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-aarch64.tar.gz")
 
-sha256sums_x86_64=('b405ebea810c82ff84854631e7b2853ae1f22dd1b7e306cb57726471c6617508')
-sha256sums_aarch64=('5cc192ea154b273efd9a090b76ec5fe482647cbc9aea27a41fb9b42d8c95d63c')
+sha256sums_x86_64=('35f9115acd8b4c3bea6ed20f7c9b6ec8f1d2c2dd5a1cc438d552167b5ed4b342')
+sha256sums_aarch64=('776b3a5e39f1218eacabe1e9fa3859b7a6dda2653522d8a3992a9ab0f2184058')
 
 package() {
     cd 'zed.app'
