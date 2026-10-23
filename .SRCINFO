@@ -1,6 +1,6 @@
 pkgbase = open-sstv-bin
 	pkgdesc = Open-source cross-platform SSTV transceiver for amateur radio (prebuilt binary, GUI only)
-	pkgver = 0.6.16
+	pkgver = 0.6.17
 	pkgrel = 1
 	url = https://github.com/bucknova/Open-SSTV
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = open-sstv-bin
 	provides = open-sstv
 	conflicts = open-sstv
 	options = !strip
-	source_x86_64 = open-sstv-bin-0.6.16-linux-x86_64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v0.6.16/open-sstv-linux-x86_64.zip
-	sha256sums_x86_64 = 8135a33bd2cc74a88f197d221a90ef5c68d8681c0549fd21f323dd83f481a3a4
-	source_aarch64 = open-sstv-bin-0.6.16-linux-arm64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v0.6.16/open-sstv-linux-arm64.zip
-	sha256sums_aarch64 = ee72f946dd7a4ca8790e3f4ee805255c94137267b564d3f154ac2135a2861f19
+	source_x86_64 = open-sstv-bin-0.6.17-linux-x86_64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v0.6.17/open-sstv-linux-x86_64.zip
+	sha256sums_x86_64 = e79cb17fbf3d28a1b4775864124573a48802f9c0b92154f75b1d6c6e1c3a5890
+	source_aarch64 = open-sstv-bin-0.6.17-linux-arm64.zip::https://github.com/bucknova/Open-SSTV/releases/download/v0.6.17/open-sstv-linux-arm64.zip
+	sha256sums_aarch64 = 80e3a7828f4769f184767a60d23f0134d1c6b2a8c87ee52fdc486680de1ab583
 
 pkgname = open-sstv-bin
