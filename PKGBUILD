@@ -2,13 +2,13 @@
 
 pkgname=zmij
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast double-to-string conversion library'
 arch=(x86_64)
 url='https://github.com/vitaut/zmij'
 license=(MIT)
 makedepends=(cmake git ninja)
-options=(staticlibs)
+options=(staticlibs !lto) # slim LTO objects in a .a are useless to non-LTO consumers
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 
