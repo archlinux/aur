@@ -3,7 +3,7 @@
 pkgname=quickfix-git
 _pkgname=quickfix
 pkgver=1.16.0.r28.g386ce46e
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Fix Engine Library"
 arch=(x86_64)
 url="http://www.quickfixengine.org"
@@ -21,7 +21,7 @@ source=("git+https://github.com/quickfix/quickfix.git"
 sha256sums=('SKIP'
             'fdd7b71866f6490100796be9d891df13a92546f2e70c9cf88863688e9b65a2f7'
             '04972d562875f8224861d76791001b3ec2515e0a898a431439dea6fbef88760f'
-            'eca581da23e5ee5c61e44c6eb55c7a7a221406d22d681237c120c89ff6704c75')
+            '6e4852d12c2c6a987355cf3fa9d2ba6efd981cbd62538807fdc2a6c89b903897')
 options=(!lto)
 
 pkgver() {

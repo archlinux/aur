@@ -1,113 +1,156 @@
-From 1281f3e0466cb38cfaeb061d8f6efc0940526b7c Mon Sep 17 00:00:00 2001
-From: abhi byte-62 <mrabhisheak@email.com>
-Date: Thu, 1 Oct 2026 12:09:43 +0530
-Subject: [PATCH] Fix SocketInitiator disconnect notification when disconnected
- by Session
+From 0461db1ab495c118f460b9297b8f49eac7cc8847 Mon Sep 17 00:00:00 2001
+From: 0736b <76035626+0736b@users.noreply.github.com>
+Date: Fri, 5 Jun 2026 11:05:00 +0700
+Subject: [PATCH] Fix SocketConnector cleanup for dropped sockets
 
-When an acceptor issues a Logout message, Session::nextLogout calls
-Session::disconnect(), which invokes SocketConnection::disconnect() and
-drops the socket from the SocketMonitor. Because the socket is already
-dropped, ConnectorWrapper never triggers onDisconnect on the
-SocketInitiator, leaving the connection registered in m_connections and
-preventing automatic reconnection.
-
-This change tracks the disconnected state in SocketConnection so that
-SocketConnection::read() returns false when disconnected, properly
-signaling onDisconnect to the SocketInitiator.
-
-Fixes #741
 ---
- src/C++/SocketConnection.cpp              | 14 ++++++++++----
- src/C++/SocketConnection.h                |  1 +
- src/C++/test/SocketConnectionTestCase.cpp | 10 ++++++++++
- 3 files changed, 21 insertions(+), 4 deletions(-)
+ src/C++/SocketConnector.cpp              |  5 ++---
+ src/C++/SocketMonitor_UNIX.cpp           |  8 ++++---
+ src/C++/SocketMonitor_UNIX.h             |  2 +-
+ src/C++/SocketMonitor_WIN32.cpp          |  8 ++++---
+ src/C++/SocketMonitor_WIN32.h            |  2 +-
+ src/C++/test/SocketConnectorTestCase.cpp | 27 ++++++++++++++++++++++++
+ 6 files changed, 41 insertions(+), 11 deletions(-)
 
-diff --git a/src/C++/SocketConnection.cpp b/src/C++/SocketConnection.cpp
-index ada023998..5b1b42674 100644
---- a/src/C++/SocketConnection.cpp
-+++ b/src/C++/SocketConnection.cpp
-@@ -37,7 +37,8 @@ SocketConnection::SocketConnection(socket_handle s, Sessions sessions, SocketMon
-       m_sendLength(0),
-       m_sessions(sessions),
-       m_pSession(0),
--      m_pMonitor(pMonitor) {
-+      m_pMonitor(pMonitor),
-+      m_disconnected(false) {
- #ifdef _MSC_VER
-   FD_ZERO(&m_fds);
-   FD_SET(m_socket, &m_fds);
-@@ -52,7 +53,8 @@ SocketConnection::SocketConnection(
-     : m_socket(s),
-       m_sendLength(0),
-       m_pSession(i.getSession(sessionID, *this)),
--      m_pMonitor(pMonitor) {
-+      m_pMonitor(pMonitor),
-+      m_disconnected(false) {
- #ifdef _MSC_VER
-   FD_ZERO(&m_fds);
-   FD_SET(m_socket, &m_fds);
-@@ -112,19 +114,23 @@ bool SocketConnection::processQueue() {
- }
- 
- void SocketConnection::disconnect() {
-+  m_disconnected = true;
-   if (m_pMonitor) {
-     m_pMonitor->drop(m_socket);
-   }
- }
- 
- bool SocketConnection::read(SocketConnector &s) {
--  if (!m_pSession) {
-+  if (!m_pSession || m_disconnected) {
-     return false;
+diff --git a/src/C++/SocketConnector.cpp b/src/C++/SocketConnector.cpp
+index 5463250ef..462a29ea5 100644
+--- a/src/C++/SocketConnector.cpp
++++ b/src/C++/SocketConnector.cpp
+@@ -53,9 +53,8 @@ class ConnectorWrapper : public SocketMonitor::Strategy {
    }
  
-   try {
-     readFromSocket();
-     readMessages(s.getMonitor());
-+    if (m_disconnected) {
-+      return false;
+   virtual void onError(SocketMonitor &monitor, socket_handle socket) override {
+-    if (monitor.drop(socket)) {
+-      m_strategy.onDisconnect(m_connector, socket);
+-    }
++    monitor.drop(socket, false);
++    m_strategy.onDisconnect(m_connector, socket);
+   }
+ 
+   virtual void onError(SocketMonitor &) override { m_strategy.onError(m_connector); }
+diff --git a/src/C++/SocketMonitor_UNIX.cpp b/src/C++/SocketMonitor_UNIX.cpp
+index 47d738ba0..a1b4d7f5a 100644
+--- a/src/C++/SocketMonitor_UNIX.cpp
++++ b/src/C++/SocketMonitor_UNIX.cpp
+@@ -90,7 +90,7 @@ bool SocketMonitor::addWrite(socket_handle s) {
+   return true;
+ }
+ 
+-bool SocketMonitor::drop(socket_handle s) {
++bool SocketMonitor::drop(socket_handle s, bool queueDropped) {
+   Sockets::iterator i = m_readSockets.find(s);
+   Sockets::iterator j = m_writeSockets.find(s);
+   Sockets::iterator k = m_connectSockets.find(s);
+@@ -100,7 +100,9 @@ bool SocketMonitor::drop(socket_handle s) {
+     m_readSockets.erase(s);
+     m_writeSockets.erase(s);
+     m_connectSockets.erase(s);
+-    m_dropped.push(s);
++    if (queueDropped) {
++      m_dropped.push(s);
 +    }
-   } catch (SocketRecvFailed &e) {
-     m_pSession->getLog()->onEvent(e.what());
-     return false;
-@@ -192,7 +198,7 @@ bool SocketConnection::read(SocketAcceptor &acceptor, SocketServer &server) {
-     } else {
-       readFromSocket();
-       readMessages(server.getMonitor());
--      return true;
-+      return !m_disconnected;
-     }
-   } catch (SocketRecvFailed &e) {
-     if (m_pSession) {
-diff --git a/src/C++/SocketConnection.h b/src/C++/SocketConnection.h
-index bb31e0757..c116fa880 100644
---- a/src/C++/SocketConnection.h
-+++ b/src/C++/SocketConnection.h
-@@ -92,6 +92,7 @@ class SocketConnection : Responder {
-   Sessions m_sessions;
-   Session *m_pSession;
-   SocketMonitor *m_pMonitor;
-+  bool m_disconnected;
-   Mutex m_mutex;
- #ifdef _MSC_VER
-   fd_set m_fds;
-diff --git a/src/C++/test/SocketConnectionTestCase.cpp b/src/C++/test/SocketConnectionTestCase.cpp
-index 3bf0a6a22..00345cc08 100644
---- a/src/C++/test/SocketConnectionTestCase.cpp
-+++ b/src/C++/test/SocketConnectionTestCase.cpp
-@@ -256,4 +256,14 @@ TEST_CASE("SocketConnectionTests") {
-     SocketConnector connector;
-     CHECK(!connection.pSocketConnection->read(connector));
+     return true;
    }
-+
-+  SECTION("ReadSocket_Disconnected_ReturnsFalse") {
-+    TestSessionConnection connection;
-+    Session *session = connection.getSession();
-+    CHECK(nullptr != session);
-+    session->disconnect();
-+
-+    SocketConnector connector;
-+    CHECK(!connection.pSocketConnection->read(connector));
-+  }
+   return false;
+@@ -238,4 +240,4 @@ void SocketMonitor::buildSet(const Sockets &sockets, struct pollfd *pfds, short
+ 
+ } // namespace FIX
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/C++/SocketMonitor_UNIX.h b/src/C++/SocketMonitor_UNIX.h
+index c17048568..e4066f038 100644
+--- a/src/C++/SocketMonitor_UNIX.h
++++ b/src/C++/SocketMonitor_UNIX.h
+@@ -49,7 +49,7 @@ class SocketMonitor {
+   bool addConnect(socket_handle socket);
+   bool addRead(socket_handle socket);
+   bool addWrite(socket_handle socket);
+-  bool drop(socket_handle socket);
++  bool drop(socket_handle socket, bool queueDropped = true);
+   void signal(socket_handle socket);
+   void unsignal(socket_handle socket);
+   void block(Strategy &strategy, bool poll = 0, double timeout = 0.0);
+diff --git a/src/C++/SocketMonitor_WIN32.cpp b/src/C++/SocketMonitor_WIN32.cpp
+index 1f4d5f057..aff913b25 100644
+--- a/src/C++/SocketMonitor_WIN32.cpp
++++ b/src/C++/SocketMonitor_WIN32.cpp
+@@ -94,7 +94,7 @@ bool SocketMonitor::addWrite(socket_handle s) {
+   return true;
  }
+ 
+-bool SocketMonitor::drop(socket_handle s) {
++bool SocketMonitor::drop(socket_handle s, bool queueDropped) {
+   Sockets::iterator i = m_readSockets.find(s);
+   Sockets::iterator j = m_writeSockets.find(s);
+   Sockets::iterator k = m_connectSockets.find(s);
+@@ -104,7 +104,9 @@ bool SocketMonitor::drop(socket_handle s) {
+     m_readSockets.erase(s);
+     m_writeSockets.erase(s);
+     m_connectSockets.erase(s);
+-    m_dropped.push(s);
++    if (queueDropped) {
++      m_dropped.push(s);
++    }
+     return true;
+   }
+   return false;
+@@ -245,4 +247,4 @@ void SocketMonitor::buildSet(const Sockets &sockets, fd_set &watchSet) {
+ }
+ } // namespace FIX
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/C++/SocketMonitor_WIN32.h b/src/C++/SocketMonitor_WIN32.h
+index fa69626e6..3f09b656d 100644
+--- a/src/C++/SocketMonitor_WIN32.h
++++ b/src/C++/SocketMonitor_WIN32.h
+@@ -45,7 +45,7 @@ class SocketMonitor {
+   bool addConnect(socket_handle socket);
+   bool addRead(socket_handle socket);
+   bool addWrite(socket_handle socket);
+-  bool drop(socket_handle socket);
++  bool drop(socket_handle socket, bool queueDropped = true);
+   void signal(socket_handle socket);
+   void unsignal(socket_handle socket);
+   void block(Strategy &strategy, bool poll = 0, double timeout = 0.0);
+diff --git a/src/C++/test/SocketConnectorTestCase.cpp b/src/C++/test/SocketConnectorTestCase.cpp
+index a96f39460..4d72ed220 100644
+--- a/src/C++/test/SocketConnectorTestCase.cpp
++++ b/src/C++/test/SocketConnectorTestCase.cpp
+@@ -56,6 +56,33 @@ TEST_CASE("SocketConnectorTests") {
+     server.close();
+   }
+ 
++  SECTION("dropped_connected_socket_fires_disconnect_once") {
++    SocketServer server(0);
++    socket_handle serverSocket = server.add(0, true, true);
++
++    SocketConnector connector(1);
++    SocketConnectorTestStrategy strategy;
++    socket_handle clientSocket = connector.connect("127.0.0.1", socket_hostport(serverSocket), false, 1024, 1024);
++    CHECK(clientSocket != INVALID_SOCKET_HANDLE);
++
++    process_sleep(0.1);
++    socket_handle acceptedSocket = server.accept(serverSocket);
++    CHECK(acceptedSocket != INVALID_SOCKET_HANDLE);
++
++    connector.block(strategy, true);
++    CHECK(1 == strategy.connect);
++
++    CHECK(connector.getMonitor().drop(clientSocket));
++    connector.block(strategy, true);
++    CHECK(1 == strategy.disconnect);
++
++    connector.block(strategy, true);
++    CHECK(1 == strategy.disconnect);
++
++    destroySocket(acceptedSocket);
++    server.close();
++  }
++
+ #ifndef _MSC_VER
+   SECTION("connect_to_dead_port_fires_disconnect_once") {
+     // Bind a server to get a free port, then close it so nothing is listening.
