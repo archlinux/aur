@@ -1,6 +1,6 @@
 --- a/hermes_cli/_launchers.py
 +++ b/hermes_cli/_launchers.py
-@@ -123,6 +123,15 @@
+@@ -124,6 +124,15 @@
      scratch cleanup may delete, leaving the launcher to exit 127 forever
      (#131745). It still supplies the store when the tree records none.
      """

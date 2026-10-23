@@ -58,7 +58,7 @@ source=(
     'system-tools.py'
 )
 sha256sums=('a8f67e5ec14fea681acef6cc7ff1553f002bb6101fd2df22bfdd4b7eecc54eb2'
-            '516bee4492e4d6f6e4310703bdec7e88229a1b0ddb828542f297d4e6e226c427'
+            '9a2bcfc9f259cae4f28c1b2e7b7c38b65925a5dd37275e2089ed8a538339870e'
             '5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d')
 
 prepare() {
