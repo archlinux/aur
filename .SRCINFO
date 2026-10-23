@@ -1,6 +1,6 @@
 pkgbase = datadog-pup-cli
 	pkgdesc = Datadog API CLI (pup) — OAuth2/API-key CLI for metrics, logs, monitors, traces across 30+ Datadog products (built from source)
-	pkgver = 1.6.5
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/DataDog/pup
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = datadog-pup-cli
 	conflicts = pup-git
 	options = !lto
 	options = !debug
-	source = datadog-pup-cli-1.6.5.tar.gz::https://github.com/DataDog/pup/releases/download/v1.6.5/pup_1.6.5_source.tar.gz
-	sha256sums = 6e558cbd80ac3a0e5eba017229acb43d37c0b6884e8b48e09ce00400dbb4aa28
+	source = datadog-pup-cli-2.3.0.tar.gz::https://github.com/DataDog/pup/releases/download/v2.3.0/pup_2.3.0_source.tar.gz
+	sha256sums = 51364c859417eb2cc21f6a5da64d87dd40c7fcdec6fd8a51d94b201ea7f05a3a
 
 pkgname = datadog-pup-cli
