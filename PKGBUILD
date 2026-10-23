@@ -1,7 +1,7 @@
 # Maintainer: SonOfMithras <ammar.alriyamy@gmail.com>
 pkgname=plasma-theme-master
-pkgver=2.0.7
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Daemon and GUI to generate/synchronize and control theme dynamically across KDE Plasma and universal applications"
 arch=('x86_64')
 url="https://github.com/SonOfMithras/plasma-theme-master"
@@ -12,7 +12,7 @@ optdepends=('python-pipx: for Material You color generation support'
             'kvantum: for Kvantum theme support'
             'klassy: for window decoration preset switching support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9c6382ac13fe0e8a538d901cbb22d795ca5ed1c3a42d448903be7fe7c5494b6c')
+sha256sums=('bf849f892a62b1047334f897539ae331902934167dbb8efac5d81da82ad9f387')
 install="$pkgname.install"
 
 build() {

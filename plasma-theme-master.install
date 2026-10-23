@@ -13,5 +13,17 @@ post_upgrade() {
     echo "========================================================================="
     echo "To restart the plasma-theme-master daemon after an upgrade, run:"
     echo "  systemctl --user restart plasma-theme-master.service"
+    if [ -n "$2" ]; then
+        if [ "$(vercmp "$2" "2.1.0")" -lt 0 ]; then
+            echo ""
+            echo "Notice: Plasma Theme Master 2.1.0 introduces a revamped Universal"
+            echo "Template engine with community & bundled templates."
+            echo "If upgrading from 2.0.7 or earlier, you can clean legacy template files"
+            echo "and backup old configurations by running:"
+            echo "  plasma-theme-master-clean-templates"
+            echo "Please review your ~/.config/plasma-theme-master/config.toml to verify"
+            echo "application template settings under [app_templates]."
+        fi
+    fi
     echo "========================================================================="
 }
