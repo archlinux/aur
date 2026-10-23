@@ -1,17 +1,18 @@
 # Maintainer: Ron Brand <ronb1964@gmail.com>
 pkgname=tuxtalk-appimage
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Voice dictation for Linux: hold a key, talk, and your words are typed for you"
 arch=('x86_64')
 url="https://tuxtalk.app/"
 license=('MIT')
 # The AppImage itself bundles libayatana-appindicator3 with its dbusmenu
-# libraries, and ydotool, ydotoold and wl-clipboard, so those depends are
-# belt and braces. They stay until a clean Arch install has been tested
-# without them. The AppImage needs fusermount to mount itself, which fuse2
-# provides (fuse3's fusermount3 works too).
-depends=('fuse2' 'ydotool' 'wl-clipboard' 'libayatana-appindicator')
+# libraries, and wl-clipboard, so those depends are belt and braces. They
+# stay until a clean Arch install has been tested without them. TuxTalk types
+# with its own virtual keyboard since 0.18, so ydotool isn't needed. The
+# AppImage needs fusermount to mount itself, which fuse2 provides (fuse3's
+# fusermount3 works too).
+depends=('fuse2' 'wl-clipboard' 'libayatana-appindicator')
 optdepends=(
     'pipewire-pulse: PipeWire audio support'
     'pulseaudio: PulseAudio support'
@@ -27,7 +28,7 @@ options=('!strip')
 install=tuxtalk-appimage.install
 source=("TuxTalk-v${pkgver}-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v${pkgver}/TuxTalk-v${pkgver}-x86_64.AppImage"
         "tuxtalk.desktop")
-sha256sums=('635f8bb5021f05f67136e8f1b510787de71214c26a4b142816d3caa89c7c133c'
+sha256sums=('adb4aebad5b55fb74a6368229b8c39b7f4d161923c40e507e2c372708bad5259'
             'SKIP')
 noextract=("TuxTalk-v${pkgver}-x86_64.AppImage")
 

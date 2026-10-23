@@ -1,12 +1,11 @@
 pkgbase = tuxtalk-appimage
 	pkgdesc = Voice dictation for Linux: hold a key, talk, and your words are typed for you
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://tuxtalk.app/
 	arch = x86_64
 	license = MIT
 	depends = fuse2
-	depends = ydotool
 	depends = wl-clipboard
 	depends = libayatana-appindicator
 	optdepends = pipewire-pulse: PipeWire audio support
@@ -18,10 +17,10 @@ pkgbase = tuxtalk-appimage
 	replaces = talktype-appimage
 	options = !strip
 	install = tuxtalk-appimage.install
-	noextract = TuxTalk-v0.17.0-x86_64.AppImage
-	source = TuxTalk-v0.17.0-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v0.17.0/TuxTalk-v0.17.0-x86_64.AppImage
+	noextract = TuxTalk-v0.18.0-x86_64.AppImage
+	source = TuxTalk-v0.18.0-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v0.18.0/TuxTalk-v0.18.0-x86_64.AppImage
 	source = tuxtalk.desktop
-	sha256sums = 635f8bb5021f05f67136e8f1b510787de71214c26a4b142816d3caa89c7c133c
+	sha256sums = adb4aebad5b55fb74a6368229b8c39b7f4d161923c40e507e2c372708bad5259
 	sha256sums = SKIP
 
 pkgname = tuxtalk-appimage
