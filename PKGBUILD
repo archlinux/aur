@@ -2,33 +2,33 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=conceal-bin
-pkgver=0.7.0
+_pkgname=${pkgname%-bin}
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="Command line recycle bin"
-arch=('x86_64')
+pkgdesc="Command line trash bin"
+arch=('x86_64' 'aarch64')
 url="https://github.com/TD-Sky/conceal"
 license=('MIT')
-provides=("$pkgname")
-conflicts=("${pkgname%-bin}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=('fzf')
 optdepends=('skim: supports skim as finder')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('f0a76f2b139f4d1d87ade0e4608bcdf01ce19eb00b547fc82a143fa0e1f7b751')
+source_x86_64=("${pkgname}-x86_64-${pkgver}.zip::$url/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-musl.zip")
+source_aarch64=("${pkgname}-aarch64-${pkgver}.zip::$url/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-musl.zip")
+sha256sums_x86_64=('81836ffa7fa7df0f1b0e89eaefe470e318454d10d7c5abcdd30496c88e67ea27')
+sha256sums_aarch64=('953c327c29198914750e26d555cd6c193878168b2e6a3ab0e7e81b2eac42def7')
 options=(!strip !lto !debug)
 
 package() {
-  install -Dm 755 conceal -t "$pkgdir/usr/bin"
-  install -Dm 644 "completions/conceal/_conceal" -t "$pkgdir/usr/share/zsh/site-functions"
-  install -Dm 644 "completions/conceal/conceal.bash" "$pkgdir/usr/share/bash-completion/completions/conceal"
-  install -Dm 644 "completions/conceal/conceal.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
-  install -Dm 644 "completions/conceal/conceal.nu" -t "$pkgdir/usr/share/nushell/completions"
+    cd "${_pkgname}-${CARCH}-unknown-linux-musl"
 
-  install -Dm 755 cnc -t "$pkgdir/usr/bin"
-  install -Dm 644 "completions/cnc/_cnc" -t "$pkgdir/usr/share/zsh/site-functions"
-  install -Dm 644 "completions/cnc/cnc.bash" "$pkgdir/usr/share/bash-completion/completions/cnc"
-  install -Dm 644 "completions/cnc/cnc.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
-  install -Dm 644 "completions/cnc/cnc.nu" -t "$pkgdir/usr/share/nushell/completions"
+    install -Dm 755 conceal -t "${pkgdir}/usr/bin"
+    install -Dm 644 completions/_conceal -t "${pkgdir}/usr/share/zsh/site-functions"
+    install -Dm 644 completions/conceal.bash "${pkgdir}/usr/share/bash-completion/completions/conceal"
+    install -Dm 644 completions/conceal.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+    install -Dm 644 completions/conceal.nu -t "${pkgdir}/usr/share/nushell/vendor/autoload"
 
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
+    install -Dm 755 cnc -t "${pkgdir}/usr/bin"
+
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
