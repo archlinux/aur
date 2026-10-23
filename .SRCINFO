@@ -1,0 +1,18 @@
+pkgbase = materialcraft
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Substance Designer
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/PiJellyPin/MaterialCraft
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/PiJellyPin/MaterialCraft/archive/refs/tags/0.4.0/MaterialCraft-0.4.0.tar.gz
+	sha256sums = 072ddafb1d6320dbfdaa6bc090fb84f855a7804263733b0b0f69787fd4141b15
+
+pkgname = materialcraft
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
