@@ -3,7 +3,7 @@
 
 pkgname=tracedraw-bin
 _pkgname=tracedraw
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Vector illustration, page layout and print: an open-source vector editor (prebuilt binary)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!debug')
 source=("$_pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/igtoth/tracedraw/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('cc04936d4e326cf8d469194f63520fed827b20e7165b1c95e0b7b586ef787471')
+sha256sums=('eb5d4c1affabf357167f0bbe4adcb13f1723de8e090ba6324c93e3ac02ed27ca')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"

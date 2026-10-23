@@ -1,6 +1,6 @@
 pkgbase = tracedraw-bin
 	pkgdesc = Vector illustration, page layout and print: an open-source vector editor (prebuilt binary)
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/igtoth/tracedraw
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = tracedraw-bin
 	provides = tracedraw
 	conflicts = tracedraw
 	options = !debug
-	source = tracedraw-0.13.0-linux-x86_64.tar.gz::https://github.com/igtoth/tracedraw/releases/download/v0.13.0/tracedraw-0.13.0-linux-x86_64.tar.gz
-	sha256sums = cc04936d4e326cf8d469194f63520fed827b20e7165b1c95e0b7b586ef787471
+	source = tracedraw-0.14.0-linux-x86_64.tar.gz::https://github.com/igtoth/tracedraw/releases/download/v0.14.0/tracedraw-0.14.0-linux-x86_64.tar.gz
+	sha256sums = eb5d4c1affabf357167f0bbe4adcb13f1723de8e090ba6324c93e3ac02ed27ca
 
 pkgname = tracedraw-bin
