@@ -6,7 +6,7 @@ _appname=EdenText
 pkgname=${_appname,,}-bin
 pkgdesc="Powerful local Word Processor for docx and odt"
 
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname,,}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('61625454d1ff53b9f487ae47f464e552425fce8c3207c9827d5105e5593b1a09'
+sha256sums=('e36d3ba4540656a2016c3034f61d6657a755978d4dae092e09c264f4866ba9ee'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
-sha256sums_x86_64=('35f7aa42ffba959823e1d3eae5169934c6606b76618cf46410fb3bff47b68677')
+sha256sums_x86_64=('d15244e01bc75f5cdf55878f795e2718bf4a718eb955ce38b21d10c139681783')
 
 
 package() {
