@@ -3,8 +3,8 @@
 
 pkgname=comfy-desktop
 _name=Comfy-Desktop
-pkgver=1.1.7
-pkgrel=2
+pkgver=1.1.8
+pkgrel=1
 pkgdesc="The desktop app for ComfyUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Comfy-Org/Comfy-Desktop"
@@ -14,21 +14,22 @@ depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++'
 makedepends=('gendesk' 'nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('faf9ae7259d095c764a92be191e40ed57f7c7bf5be7efb45a028e41b3c32ebe3'
+sha256sums=('281829c5a9af8df0333e1309d2c4bf16df9d5c9a34d73bd1fd9086a4aad0a7a9'
             '392aa4a63d71a463dcf7345271eac74fb3ca867d57ae99bc47a3a90117805fdd')
 
 prepare() {
     cd "${_name}-${pkgver}"
     sed -i "s/process.resourcesPath/path.dirname(app.getAppPath())/g" \
         src/main/lib/bundledScript.ts \
-        src/main/lib/disk.ts
+        src/main/lib/disk.ts \
+        src/main/lib/git.ts
     sed -i "s/@ELECTRON@/${_electron}/" "${srcdir}/${pkgname}.sh"
 
     gendesk -f -n \
         --pkgname "${pkgname}" \
         --pkgdesc "${pkgdesc}" \
         --name "${_name/-/ }" \
-        --categories 'AudioVideo;Graphics;3DGraphics;'
+        --categories 'AudioVideo;Graphics;3DGraphics'
 }
 
 build() {
