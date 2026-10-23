@@ -3,8 +3,8 @@
 # Contributor: Sandy Carter <bwrsandman [at] gmail dot com>
 
 pkgname=teslamate
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="A self-hosted data logger for your Tesla"
 arch=(x86_64 aarch64)
 url="https://github.com/teslamate-org/teslamate"
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
         "teslamate.sysusers"
         "teslamate.install"
         "teslamate.tmpfiles")
-sha512sums=('f8263eded674b2d25d5eab56cdc9a6735265f759af6b96f6ca25aa61b04b5d8aea498971b242c41ad98e4ce5a6e9bb20f0eb55b2ca2973e2af85ca8f12a58632'
+sha512sums=('0f757b2d8417e7b3cc13b2e8ca0fddb2d1f7e990144e5fca8e6dd938e70c918998863f57435e558b54e4f508396bb09b741b229a7e4565037f5777f84a96a228'
             '531334833f358ffbc39948a59bd73b2a8e0977677b54432f168cb5df6e5a3bfa706a4bd4e5099bb787b8b92eab96be74835d09b6c5a708bc3c40daecf38b01b3'
             'fd306d395b9c5f5c7e0a4e17015235ef674e24fcd7022538872f8661e1964e23b12ed4b27335755b666a3e5fd9aef3e47e94436f1068e6f5908a27507cf7ffcb'
             'bfb718592f7ca86049f81f1b8b9efae4bbcf600846d0c3d14d965a8062c9a571d0243768fd753052d62fe4c690c76c5f28171c9a7a50ff4219149f49a489f128'
