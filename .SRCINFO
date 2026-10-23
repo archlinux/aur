@@ -1,0 +1,20 @@
+pkgbase = kero-bin
+	pkgdesc = Cross-platform native terminal app optimized for agents
+	pkgver = 2.1.9
+	pkgrel = 2
+	url = https://kero.sh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = kero
+	conflicts = kero
+	options = !strip
+	options = !debug
+	source_x86_64 = kero_2.1.9_amd64.deb::https://github.com/egoist/kero/releases/download/v2.1.9/kero_2.1.9_amd64.deb
+	sha256sums_x86_64 = 262d93adfd3261d56f00e7c1f877537f9434d42d184ffa979d2195d618bb4705
+	source_aarch64 = kero_2.1.9_arm64.deb::https://github.com/egoist/kero/releases/download/v2.1.9/kero_2.1.9_arm64.deb
+	sha256sums_aarch64 = 76626db03c06205b6d0fab179d36a0695790b2867b78ca6b1d21e52fcc1613da
+
+pkgname = kero-bin
