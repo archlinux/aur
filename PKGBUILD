@@ -1,6 +1,6 @@
 # Maintainer: ca-x <https://github.com/ca-x>
 pkgname=lightos-codec-ffmpeg-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Optional Arch-native FFmpeg hardware H.264 worker for LightOS remote desktop'
 arch=('x86_64')
@@ -18,8 +18,8 @@ _bundle=lightos-codec-ffmpeg-linux-x86_64-archlinux
 source=('lightos-codec-ffmpeg-bin.install' 'validate-arch-codec.py')
 sha256sums=('57819d8658719114e59247776cf769046de25dd43ad2d99fbfef155a2c9ad3a7'
             'b1a16652f3ffef6185f0636da9c6fc9bbc665ffb9c0a7dc98776373b1b4b1a91')
-sha256sums_x86_64=('9426d96cba0b5091851da9d500ceb8496d1c3e49560a1d1cd1e8fc86d644c353'
-                   '97003644451f89eaf953fe2cace9fa2243e162f2328be2f59eadef73a79470cd')
+sha256sums_x86_64=('22d12ed04bdc739f9729421e91e769f17b9d4805e9dea41f7a3af402b43febb6'
+                   '39ecb67a328e698536b98451f92f04fadb5706187b2470f3f2fdb7adbde9b198')
 source_x86_64=("${_bundle}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz"
                "${_bundle}-${pkgver}.tar.gz.sha256::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz.sha256")
 
