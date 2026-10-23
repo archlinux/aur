@@ -1,24 +1,30 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+_pkgauthor=MeanEYE
 _pkgname=sunflower
 pkgname=${_pkgname}-bin
-_pkgver=0.5-63
-pkgver=${_pkgver//-/.}
-_pkgrel=1
-pkgrel=2
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
+
+pkgver=0.6.64
+pkgrel=1
+
+_pkgversion="${pkgver%.*}-${pkgver##*.}"
+
 arch=('any')
 url="https://sunflower-fm.org/"
 license=('GPL3')
-conflicts=("${_pkgname}")
+
+conflicts=("${pkgname%-bin}")
 provides=("${_pkgname}")
+
 makedepends=('tar')
 depends=('gtk3' 'vte3' 'python>=3.14' 'python-gobject' 'python-chardet' 'python-cairo' 'librsvg')
 optdepends=('libnotify'
             'python-mutagen: audio-metadata support'
             'gvfs: mount-management')
-source=("https://github.com/MeanEYE/Sunflower/releases/download/${_pkgver}/${_pkgname}-${_pkgver//-/.}-${_pkgrel}.all.deb")
-sha256sums=('686bb28a0e35fa0f07cd8906b11d215e3a57dd172c36c1bd1005784712babf96')
+
+            source=("https://github.com/MeanEYE/Sunflower/releases/download/${_pkgversion}/${_pkgname}-${pkgver}-${pkgrel}.all.deb")
+sha256sums=('72bf0eea021db3ceb8f0f48c12acf3d6a6244edcf8447a47b157c3213750278f')
 
 package() {
     cd "${pkgdir}"
