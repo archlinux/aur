@@ -2,7 +2,7 @@
 
 pkgname=kwin-dual-mode
 _pkgname=kwin
-pkgver=6.7.3
+pkgver=6.8.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='An easy to use, but flexible, wayland compositor. Patched with a dual-mode monitor identifier hack'
@@ -86,7 +86,7 @@ optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         0001-Dirty-hack-Add-native-resolution-to-display-edid-id.patch)
-sha256sums=('345b45d400884cc6b00f4b3585cc056aa2780f32afe2df394d20c5a98273c559'
+sha256sums=('f3d725f81061c1ba97fdef8aeb2101a5c5e03c77f11e9a2abaa1dfed4489d3b6'
             'SKIP'
             '2a4b657e82c4a602d46e83aad1d279be7337bed761861262fcbb4fcb50fed565')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
