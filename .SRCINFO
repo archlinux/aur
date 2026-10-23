@@ -1,7 +1,7 @@
 pkgbase = gostman-bin
 	pkgdesc = An API client for REST, GraphQL, gRPC and WebSocket that you, your CI pipeline and your coding agent share. Desktop app, web app and command line, no account.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kunalgoesbyken/gostman
 	arch = x86_64
 	license = AGPL-3.0-only
