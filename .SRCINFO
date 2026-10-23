@@ -1,0 +1,14 @@
+pkgbase = tardigrade
+	pkgdesc = Self-healing creature of learned weights that lives in your terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/smoothyy3/tardigrade
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/smoothyy3/tardigrade.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = tardigrade
