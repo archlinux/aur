@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-meet
-pkgver=1.0.12
+pkgver=1.0.14
 pkgrel=1
 pkgdesc='Secure, end-to-end encrypted video conferencing'
 arch=(any)
@@ -9,11 +9,11 @@ url='https://proton.me/meet'
 license=(GPL-3.0-or-later)
 _electron=electron43
 depends=(bash $_electron hicolor-icon-theme)
-makedepends=(git jq nodejs-lts-jod yarn)
+makedepends=(git jq nodejs-lts-krypton pnpm)
 source=(ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#tag=proton-meet-desktop@$pkgver
         proton-meet.desktop
         proton-meet.sh)
-b2sums=('5dffb0b142f92c355044f499e4c3945144278abff767e503a8e004b2f3b6c8a3f57f5c8b20e5ad862138f6affae92842c01fccf1a80e575c796cbe2cf960dea6'
+b2sums=('c22d1338e74a34a73aa93f295c8094334f6262405af2fd13f570af3aa08b7480c7de36b4a3d5cade0d376bed710bba1035394f37b20acdaf5cec7bb1e9e2cdf4'
         'efdcc089844bf0287c61e7d5f8c6aa9f5721a6000751b887a586f3a5b5caf36686500b09c10dc3039e6914be804c155edf67a0be17640602221d96a25e1a197c'
         'cc16def864fd2e9134c194b473db94b0588871af895803fe4151ab7b715f66bbbb695a0964c03577da12b72397230626dabf186885cd206de412c8eac3a47e4a')
 
@@ -32,22 +32,21 @@ prepare() {
     # Specify electron version in launcher
     sed -i "s|@ELECTRON@|$_electron|" "$srcdir/proton-meet.sh"
 
-    # Configure Yarn workspaces to build only meet-desktop instead of all applications
-    sed -i 's/"applications\/\*",/"applications\/meet-desktop",/' package.json
-
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
-    export SENTRYCLI_SKIP_DOWNLOAD=1
-    yarn install
+    sed -i '/tarball: https:\/\/nexus\.protontech\.ch/s/, tarball: [^}]*//' pnpm-lock.yaml
+    pnpm install --frozen-lockfile --filter 'proton-meet-desktop...' --ignore-scripts --trust-lockfile \
+        --config.@protontech:registry=https://registry.npmjs.org/ \
+        --config.@proton-meet:registry=https://registry.npmjs.org/ \
+        --store-dir "$srcdir/.pnpm-store"
 }
 
 build() {
     cd ProtonWebClients
-    yarn workspace proton-meet-desktop package
+    pnpm --filter proton-meet-desktop run package
 }
 
 check() {
     cd ProtonWebClients
-    yarn workspace proton-meet-desktop test
+    pnpm --filter proton-meet-desktop run test
 }
 
 package() {
