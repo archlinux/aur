@@ -1,8 +1,8 @@
-# Maintainer: frousties
-# Contributor: frousties
+# Maintainer: frousties <frousties.snouf@gmail.com>
+# Contributor: frousties <frousties.snouf@gmail.com>
 _pkgname=tacentview
 pkgname=${_pkgname}-git
-pkgver=1.0.46.9.g9093d58
+pkgver=1.0.47.1.g068db66
 pkgrel=1
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent."
 arch=('any')
