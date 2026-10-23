@@ -1,0 +1,18 @@
+pkgbase = python-pan-python
+	pkgdesc = Multi-tool set for Palo Alto Networks PAN-OS, Panorama, WildFire and AutoFocus
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://github.com/kevinsteves/pan-python
+	arch = any
+	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-requests: HTTP backend used automatically if present (else urllib)
+	optdepends = python-certifi: CA bundle for WildFire API certificate verification (overrides system CA store)
+	source = pan-python-0.26.0.tar.gz::https://github.com/kevinsteves/pan-python/releases/download/v0.26.0/pan_python-0.26.0.tar.gz
+	sha256sums = 0a0ea34279b745e8e3d55df015e18ab299051ffdd519128d9340ff7aae4e2392
+
+pkgname = python-pan-python

@@ -1,0 +1,4 @@
+[python-pan-python]
+source = "git"
+git = "https://github.com/kevinsteves/pan-python.git"
+prefix = "v"
