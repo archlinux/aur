@@ -20,7 +20,7 @@ _tag="v0.1.45-poly.2"
 source=("https://github.com/VecSzn/PolyStrata/archive/refs/tags/$_tag.tar.gz"
         'polystrata.sh')
 sha256sums=('ed1e197091c6d5fa99da387142d89ba7f5254bb53c340575c3c8a250f598c764'
-            '1913c231339ef70d671afdff518de808b7bb9831f4d1cfa3be00807acbe4fcd8')
+            '5b13f46009a8baa3e4b5e85e63f44dcf8399f9fec9dd7b5a3ff59843f0a57c66')
 
 # The release asset is the Windows engine; on Linux upstream installs by
 # cloning this tree and running ./setup.sh. The package ships that tree under
