@@ -1,0 +1,13 @@
+pkgbase = exercism-git
+	pkgdesc = Command line tool for exercism.io -- special edition::(extra cool and swag mode)!
+	pkgver = 3.5.9.r0.g4223e01
+	pkgrel = 1
+	url = https://github.com/exercism/cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/exercism/cli
+	b2sums = SKIP
+
+pkgname = exercism-git
