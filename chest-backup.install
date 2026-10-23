@@ -65,34 +65,14 @@ post_install() {
     target_home=$(getent passwd "$(id -u)" | cut -d: -f6)
   fi
 
-  local unit="chest-backup-headless"
-
-  if [ -t 1 ]; then
-    echo
-    echo "  Select mode:"
-    echo "    [1] Headless  — API server + daemon (servers, SSH)"
-    echo "    [2] Tray      — API server + daemon + system tray icon (desktop)"
-    echo -n "  Enter choice [1-2] (default 1): "
-    read -r choice
-    case "$choice" in
-      2) unit="chest-backup-tray" ;;
-      *) unit="chest-backup-headless" ;;
-    esac
-    echo
-  fi
-
-  enable_service "$target_user" "$target_home" "$unit"
+  enable_service "$target_user" "$target_home" "chest-backup"
 
   echo
-  echo "  chest-backup installed with $unit."
+  echo "  chest-backup installed."
   echo
   echo "  Web UI:              http://localhost:5199"
   echo "  Config:              ~/.config/chest-backup/chest-backup.json"
   echo "  Secrets:             ~/.config/chest-backup/.env"
-  echo
-  echo "  To switch to tray mode, run:"
-  echo "      systemctl --user disable --now $unit"
-  echo "      systemctl --user enable --now chest-backup-tray"
   echo
 }
 
