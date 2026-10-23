@@ -13,16 +13,15 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # Snapshot shown on the AUR web page; makepkg recomputes it with pkgver() below. The publish step
 # replaces this line with the current `git describe` value.
-pkgver=1.4.0.r0.g346e248
+pkgver=1.4.0.r1.gc4e8342
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
 url="https://www.uniclipboard.app"
 license=('AGPL-3.0-only')
-# The GUI links GTK 3, WebKitGTK 4.1 (with libsoup 3 and JavaScriptCore) and Xlib; gtk-layer-shell is
-# loaded at run time for the quick panel on Wayland. The tray and notifications use D-Bus directly, so
-# no appindicator or libnotify is needed.
-depends=('gtk3' 'webkit2gtk-4.1' 'gtk-layer-shell' 'libx11' 'libsoup3')
+# The GUI links GTK >= 4.14, WebKitGTK 6.0 and Xlib. GTK4 uses an ordinary quick-panel window.
+# The tray and notifications use D-Bus directly; no GTK3 Layer Shell library is needed.
+depends=('gtk4>=4.14' 'webkitgtk-6.0' 'libx11' 'libsoup3')
 # `bun` builds the shared frontend (extra/bun). `jq` reads the app identity from apps/gui-go/app.json, the
 # single source of it. The `go` in extra satisfies the toolchain line of apps/gui-go/go.mod, so no
 # toolchain is downloaded during the build.
@@ -84,7 +83,7 @@ build() {
   product="$(jq -r .productName apps/gui-go/app.json)"
   identifier="$(jq -r .identifier apps/gui-go/app.json)"
   pubkey="$(jq -r .updater.pubkey apps/gui-go/app.json)"
-  (cd apps/gui-go && go build -tags gtk3,production,release \
+  (cd apps/gui-go && go build -tags gtk4,production,release \
       -trimpath -buildvcs=false -mod=readonly -modcacherw \
       -ldflags "-w -s -X main.updaterPublicKey=$pubkey -X main.productName=$product -X main.bundleID=$identifier" \
       -o "$root/target/release/$_pkgname" .)
