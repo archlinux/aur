@@ -1,10 +1,10 @@
 # Maintainer: Axel Haustant <noirbizarre@gmail.com>
 #
-# Source package. `0.5.0` and `61f50314a7ec89a0c3898e1fc573e6e50042da22d6650c179d7b743dc182e3c8` are substituted by
-# .github/workflows/aur.yml from the published release assets.
+# Source package. `0.6.0` and `fde5196dd0afb569079ca0e2ea2b08825ecc29079919cdced52c020470afa055` are substituted by
+# .github/workflows/aur.yaml from the published release assets.
 
 pkgname=git-wipe
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees"
 arch=('x86_64' 'aarch64')
@@ -14,15 +14,23 @@ license=('MIT')
 # out to it, and the test suite builds real repositories with it.
 depends=('gcc-libs' 'glibc' 'git')
 makedepends=('cargo')
+# makepkg adds `-flto=auto` to CFLAGS, and `ring`'s build script (via the `cc`
+# crate) picks it up: its objects become GCC LTO bytecode that rustc's lld
+# linker cannot read, so the link fails with "undefined symbol: ring_core_*".
+# Rust does its own LTO (see `[profile.release]`), so nothing is lost.
+#
+# `!debug` for the same reason as git-wipe-bin: the release profile sets
+# `strip = true`, so there is no debug data to split out, and makepkg would
+# otherwise emit an empty git-wipe-debug package.
+options=('!lto' '!debug')
 # `replaces`/`conflicts` on the pre-rename name so `pacman -Syu` migrates
 # anyone still on git-synchronizer instead of leaving both installed.
 provides=('git-synchronizer')
 conflicts=('git-synchronizer')
 replaces=('git-synchronizer')
-# The project tags with a `v` prefix while `pkgver` is the bare version, hence
-# the `v$pkgver` in the URL against `$pkgname-$pkgver.tar.gz` as the file name.
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('61f50314a7ec89a0c3898e1fc573e6e50042da22d6650c179d7b743dc182e3c8')
+# The project tags without a `v` prefix, so the tag in the URL is `$pkgver`.
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('fde5196dd0afb569079ca0e2ea2b08825ecc29079919cdced52c020470afa055')
 
 prepare() {
   cd "$pkgname-$pkgver"
