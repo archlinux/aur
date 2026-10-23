@@ -1,6 +1,6 @@
 pkgbase = chaostictool
 	pkgdesc = Terminal interface for authorized security testing
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Chaos-Tic/Chaostic-Tool
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = chaostictool
 	depends = python>=3.11
 	depends = python-rich>=13.7
 	depends = python-prompt_toolkit>=3
-	source = chaostictool-1.4.0.tar.gz::https://github.com/Chaos-Tic/Chaostic-Tool/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = ad9c690e89b2d62a8ae5e3c32207f5b029b549c7c7b391220e1efe67d1b541d6
+	source = chaostictool-1.5.0.tar.gz::https://github.com/Chaos-Tic/Chaostic-Tool/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = ca5bfb246f911a94c8645441e3fdbb415aba0d8cd6d00848cc1532711061840e
 
 pkgname = chaostictool
