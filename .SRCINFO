@@ -1,6 +1,6 @@
 pkgbase = python-gotranx
 	pkgdesc = A declarative language describing ordinary differential equations
-	pkgver = 2.6.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/finsberg/gotranx
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-gotranx
 	depends = python-myokit
 	optdepends = python-clang-format-docs: for formatter support
 	optdepends = python-black: for formatter support
-	source = gotranx-2.6.0.tar.gz::https://github.com/finsberg/gotranx/archive/v2.6.0.tar.gz
-	sha512sums = 213cb085fee571326687159b439b1e07019aca4408fcd735f18c22e2e25dd910cfd9536f5227369cfcfec9a8b5589026d2c86edb0018e45e30c9b8af2271f28f
+	source = gotranx-2.8.0.tar.gz::https://github.com/finsberg/gotranx/archive/v2.8.0.tar.gz
+	sha512sums = b5cebaea5d5271d5bede4b4b5a46b3ed0d5f82f666bd3f735f00c93d466e7afddc7af337fbd0f0c0eee3d67a955048cfd939edaa67cd54d13d02edac7037d642
 
 pkgname = python-gotranx
