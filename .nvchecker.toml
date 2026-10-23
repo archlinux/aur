@@ -1,0 +1,4 @@
+[dovecot-wormhole]
+source = "git"
+git = "https://codeberg.org/errror/wormhole.git"
+prefix = "v"

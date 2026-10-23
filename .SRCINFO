@@ -1,0 +1,11 @@
+pkgbase = dovecot-wormhole
+	pkgdesc = bring back Dovecot's replication feature for Dovecot 2.4 and later
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://codeberg.org/errror/wormhole
+	arch = x86_64
+	license = LGPL-2.1-only
+	source = dovecot-wormhole-0.14.tar.gz::https://codeberg.org/errror/wormhole/archive/v0.14.tar.gz
+	sha256sums = 9b86016d60133af8231f410478aafa0c926e575c0b5d81c6055757a4d2192b2d
+
+pkgname = dovecot-wormhole
