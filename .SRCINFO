@@ -1,11 +1,10 @@
 pkgbase = python-constraint
 	pkgdesc = Module to solve Constraint Solving Problems (CSP) over finite domain
-	pkgver = 2.7.3
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/python-constraint/python-constraint
 	arch = x86_64
 	license = BSD-2-Clause
-	checkdepends = python-pep440
 	checkdepends = python-pytest
 	checkdepends = python-tomli
 	makedepends = git
@@ -16,7 +15,7 @@ pkgbase = python-constraint
 	makedepends = python-wheel
 	depends = cython
 	depends = python
-	source = python-constraint::git+https://github.com/python-constraint/python-constraint#tag=2.7.3
-	b2sums = ddf89252f2b3964f73a102991c9078d02b2daa9119f0ab85352587868303ff2cd9015c2c2e5b6132008c6bf76b53eeea251fc3c70b70c7a19ebb944a4a8144ef
+	source = python-constraint::git+https://github.com/python-constraint/python-constraint#tag=2.8.0
+	b2sums = 051f3be9e746dbe0cb31b8c4cac89491ccd82efcc582fdb3cb0116d615a1e86f409727ffe388acdb4ee857c973e30f88bf31d70ab8ae8603883ea5d34872defe
 
 pkgname = python-constraint
