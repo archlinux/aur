@@ -1,6 +1,6 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = b767
+	pkgver = b768
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = redumper-bin
 	conflicts = redumper-gui
 	conflicts = redumper-git
 	conflicts = redumper
-	source = https://github.com/superg/redumper/releases/download/b767/redumper-b767-linux-x64.zip
+	source = https://github.com/superg/redumper/releases/download/b768/redumper-b768-linux-x64.zip
 	source = https://raw.githubusercontent.com/superg/redumper/main/README.md
 	source = https://raw.githubusercontent.com/superg/redumper/main/LICENSE
-	sha256sums = 6ebb1d4f4f6099d3919f3be5fcfdde15bd60256a6cdcc8d405a92abaab5fc8df
+	sha256sums = 34409e24beb1acb11db975bdda12a7818096b6b92642266cfb0a12b4f700baf9
 	sha256sums = SKIP
 	sha256sums = SKIP
 
