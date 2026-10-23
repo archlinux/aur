@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-pcee2
 pkgname=$_pkgname-git
-pkgver=r23120.7839d51
+pkgver=r23503.b603826
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (port of current PCSX2)"
 arch=('x86_64')
@@ -11,8 +11,6 @@ groups=('libretro')
 depends=(
 	'glibc'
 	'libretro-core-info>=1.22.2.r20'
-	'libx11'
-	'libxi'
 	'sdl3'
 )
 makedepends=(
@@ -45,12 +43,21 @@ makedepends=(
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!lto')
-source=("$_pkgname::git+$url.git")
-b2sums=('SKIP')
+source=(
+	"$_pkgname::git+$url.git"
+	"pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git"
+)
+b2sums=('SKIP'{,})
 
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd $_pkgname
+	git config submodule.3rdparty/pcsx2_patches.url ../pcsx2_patches
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
