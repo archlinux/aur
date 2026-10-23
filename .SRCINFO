@@ -1,6 +1,6 @@
 pkgbase = zas
 	pkgdesc = Most simple static site generator ever.
-	pkgver = 0.0.8
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/darccio/zas
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = zas
 	depends = glibc
 	depends = gcc-libs
 	options = !lto
-	source = https://github.com/darccio/zas/archive/refs/tags/v0.0.8.tar.gz
-	b2sums = 5d7a8e553212d351205d5911476f0c195b3e3c5ed403006770f30011ed414b48eaea0892b4e936844a5509bd6b57edb8e807759709c97867be9709a696f88bf4
+	source = https://github.com/darccio/zas/archive/refs/tags/v0.0.10.tar.gz
+	b2sums = 584dc052a6471f42bd2c7336c8c04b99ae1c4176dd31f5d2f051ed3483b201cfae956489a0596eca174b10ce8ce30c74d08393172f4924d901d7c96af12f5ec6
 
 pkgname = zas
