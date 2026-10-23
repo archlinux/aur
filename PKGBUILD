@@ -3,11 +3,11 @@
 _pkgname=gostman
 pkgname=${_pkgname}-bin
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An API client for REST, GraphQL, gRPC and WebSocket that you, your CI pipeline and your coding agent share. Desktop app, web app and command line, no account.'
 arch=(x86_64)
 url='https://github.com/kunalgoesbyken/gostman'
-license=(AGPL-3.0-only)
+license=(MIT)
 depends=(
 	# As reported by namcap
 	glib2
