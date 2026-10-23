@@ -1,5 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
-pkgname=gostman
+
+_pkgname=gostman
+pkgname=${_pkgname}-bin
 pkgver=1.5.0
 pkgrel=1
 pkgdesc='An API client for REST, GraphQL, gRPC and WebSocket that you, your CI pipeline and your coding agent share. Desktop app, web app and command line, no account.'
@@ -24,7 +26,7 @@ options=(
 	!emptydirs # Remove empty directories from package
 )
 source_x86_64=(
-	"${pkgname}-${pkgver}.deb::https://github.com/kunalgoesbyken/gostman/releases/download/v${pkgver}/Gostman-linux-amd64.deb"
+	"${_pkgname}-${pkgver}.deb::https://github.com/kunalgoesbyken/gostman/releases/download/v${pkgver}/Gostman-linux-amd64.deb"
 	"LICENSE::https://github.com/kunalgoesbyken/gostman/blob/main/LICENSE"
 )
 b2sums_x86_64=('a062f03cac718ae8efd4e7420054f73ab1f69d57125a20ea6f01b176c7f92b280d9cc1503b96934f0472c08cb690a0ca250e29b59d2760fd98a8fc44cf5bdfcd'
@@ -38,5 +40,5 @@ package() {
 	cp -r "${srcdir}/usr" "${pkgdir}/"
 	install -dm755 "${pkgdir}/usr/bin"
 	install -dm755 "${pkgdir}/usr/share"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
