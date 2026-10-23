@@ -1,0 +1,19 @@
+pkgbase = hunspell-rm
+	pkgdesc = Romansh dictionaries of the Lia Rumantscha: Rumantsch Grischun and the five idioms
+	pkgver = 2026.10.14
+	pkgrel = 1
+	url = https://github.com/farscrl/spellcheckers-rumantschs
+	arch = any
+	license = MIT
+	checkdepends = hunspell
+	source = hunspell-rm-a2b127603bab2993684599ec53e0fe6ddcd0b1d6.tar.gz::https://github.com/farscrl/spellcheckers-rumantschs/archive/a2b127603bab2993684599ec53e0fe6ddcd0b1d6.tar.gz
+	sha256sums = 35f83c273be932b011f9e3c62bc1f7fdcac8aa8c674a2e7b4841c1f3acf4f30f
+
+pkgname = hunspell-rm
+	pkgdesc = Romansh hunspell dictionaries of the Lia Rumantscha: Rumantsch Grischun, Sursilvan, Sutsilvan, Surmiran, Puter and Vallader
+	optdepends = hunspell: the spell checking library and command line tool
+	provides = hunspell-dictionary
+
+pkgname = hyphen-rm
+	pkgdesc = Romansh hyphenation patterns of the Lia Rumantscha, for Rumantsch Grischun and the five idioms
+	optdepends = hyphen: the hyphenation library
