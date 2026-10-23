@@ -1,6 +1,6 @@
 # Maintainer: LAA
 pkgname=bupdate-git
-pkgver=0.3.0.r0.ga82a2e0
+pkgver=0.4.0.r0.g09d3386
 pkgrel=1
 pkgdesc="Universal package updater — parallel updates for Linux, BSD and Windows (built from git)"
 arch=('x86_64' 'aarch64')
