@@ -1,7 +1,7 @@
 # Maintainer: Tanay Pant <tanaypant@protonmail.com>
 
 pkgname=bearbar-git
-pkgver=0.1.0.r4.gee6879a
+pkgver=0.1.0.r5.gcd250d4
 pkgrel=1
 pkgdesc="Compact GTK4 desktop bar for Hyprland, Niri, Sway, and KDE Plasma"
 arch=('x86_64')
