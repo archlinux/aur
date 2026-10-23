@@ -2,7 +2,7 @@
 pkgname=craft-launcher-bin
 _pkgname=craft-launcher
 _distname=artcraft-launcher
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="The Craft App Launcher (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ conflicts=("$_pkgname" "$_distname")
 options=('!strip')
 source_x86_64=("$_distname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_distname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('46c9fcdbc72a82245e544a5804d305d05795ada2e17825615b54a4e3fe614881')
-sha256sums_aarch64=('3888bbe5345d5e82c2978a0d3bf19aa2851e2e1897aa332744e20fb482097d03')
+sha256sums_x86_64=('d2b420d9e080549829ada1f44f3c3735fcc20bd18936702b36a598e2dc713ab9')
+sha256sums_aarch64=('879ebee75c86b8551c71d0feb71590328a62aca5eb38e10c94d53ce7d4f06090')
 
 package() {
 	local _root="$srcdir/$_distname-$pkgver-linux-$CARCH"
