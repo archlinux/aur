@@ -33,7 +33,7 @@ _package
 # skywire-bin/cc.deb.PKGBUILD.
 _gen_deb_scripts
 _msg2 'installing control file and install scripts'
-#install -Dm755 ${srcdir}/${_scripts}/preinst.sh ${_pkgdir}/DEBIAN/preinst
+install -Dm755 ${srcdir}/preinst.sh ${_pkgdir}/DEBIAN/preinst
 install -Dm755 ${srcdir}/postinst.sh ${_pkgdir}/DEBIAN/postinst
 install -Dm755 ${srcdir}/prerm.sh ${_pkgdir}/DEBIAN/prerm
 install -Dm755 ${srcdir}/postrm.sh ${_pkgdir}/DEBIAN/postrm

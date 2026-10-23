@@ -28,14 +28,70 @@ post_install() {
   # autoconfig. The shell wrapper still ships at
   # /opt/skywire/scripts/skywire-autoconfig for back-compat with
   # any operator scripts that call it directly.
-  skywire autoconfig
+  skywire autoconfig "$@"
 }
 
-#pre-upgrade() {
-#pre-install
-#}
+# The update channel (skywire-update) replaces /opt/skywire/bin/skywire with
+# newer builds than any release, and pacman writes the package's copy over it.
+# pre_upgrade saves the installed binary; post_upgrade puts it back when it is
+# newer, so an upgrade never downgrades a visor unless /etc/skywire.conf sets
+# ALLOW_PACKAGE_DOWNGRADE=1.
+_kept=/var/lib/skywire/pkg-kept
+
+# _ver_gt reports whether Go module version $1 is newer than $2, comparing the
+# x.y.z part first and treating a pre-release as older than its release.
+_ver_gt() {
+  local a=${1#v} b=${2#v} ab bb ap bp
+  ab=${a%%-*}; bb=${b%%-*}; ap=${a#"$ab"}; bp=${b#"$bb"}
+  if [[ $ab != "$bb" ]]; then
+    [[ $(printf '%s\n%s\n' "$ab" "$bb" | sort -V | tail -1) == "$ab" ]]
+    return
+  fi
+  [[ -z $ap ]] && { [[ -n $bp ]]; return; }
+  [[ -z $bp ]] && return 1
+  [[ $ap != "$bp" && $(printf '%s\n%s\n' "$ap" "$bp" | sort -V | tail -1) == "$ap" ]]
+}
+
+pre_upgrade() {
+  rm -rf "$_kept"
+  [[ -x /opt/skywire/bin/skywire ]] || return 0
+  mkdir -p "$_kept"
+  cp -p /opt/skywire/bin/skywire "$_kept/skywire"
+  for _f in skywire.wasm.gz skywire.wasm.json; do
+    [[ -f /opt/skywire/bin/$_f ]] && cp -p "/opt/skywire/bin/$_f" "$_kept/$_f"
+  done
+  "$_kept/skywire" -b 2>/dev/null | head -1 | tr -d '[:space:]' > "$_kept/version"
+  return 0
+}
+
+# _restore_newer puts the saved binary back when it is newer than the
+# package's, and reports whether it did.
+_restore_newer() {
+  local _old _new
+  [[ -f $_kept/version && -x $_kept/skywire ]] || return 1
+  grep -qs '^ALLOW_PACKAGE_DOWNGRADE=1' /etc/skywire.conf && { rm -rf "$_kept"; return 1; }
+  _old=$(<"$_kept/version")
+  _new=$(/opt/skywire/bin/skywire -b 2>/dev/null | head -1 | tr -d '[:space:]')
+  if [[ -z $_old || -z $_new ]] || ! _ver_gt "$_old" "$_new"; then
+    rm -rf "$_kept"
+    return 1
+  fi
+  echo "keeping the installed skywire $_old, newer than the package's $_new (ALLOW_PACKAGE_DOWNGRADE=1 in /etc/skywire.conf overrides)"
+  install -m 0755 "$_kept/skywire" /opt/skywire/bin/skywire
+  for _f in skywire.wasm.gz skywire.wasm.json; do
+    [[ -f $_kept/$_f ]] && install -m 0644 "$_kept/$_f" "/opt/skywire/bin/$_f"
+  done
+  rm -rf "$_kept"
+  return 0
+}
 
 post_upgrade() {
+  # The running visor is already on the binary we kept, so write the config
+  # with it and leave the services running.
+  if _restore_newer; then
+    post_install --no-restart
+    return 0
+  fi
   post_install
   # On upgrade, restart every package-shipped service that's
   # currently active. try-restart is a noop on inactive units, so

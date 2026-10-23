@@ -1,7 +1,7 @@
 pkgbase = skywire
 	pkgdesc = Software defined networking with public keys. Skycoin.com
 	pkgver = 1.3.101
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = i686
