@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd-git
 pkgver=0.2.7.r12.g55b2b07
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown-based task and workflow runner"
 arch=("x86_64")
 url="https://github.com/rezigned/upmd"
@@ -29,5 +29,7 @@ package() {
     cd "$srcdir/$pkgname" || exit 1
     install -Dm755 "target/release/upmd" "$pkgdir/usr/bin/upmd"
     install -Dm644 "LICENSE"             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "CHANGELOG.md"        "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
     install -Dm644 "README.md"           "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "DEMO.md"             "$pkgdir/usr/share/doc/$pkgname/DEMO.md"
 }

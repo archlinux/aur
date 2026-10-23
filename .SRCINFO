@@ -1,7 +1,7 @@
 pkgbase = upmd-git
 	pkgdesc = Markdown-based task and workflow runner
 	pkgver = 0.2.7.r12.g55b2b07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rezigned/upmd
 	arch = x86_64
 	license = MIT
