@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Slick
+Comment=Slack client mod (BYOE)
+Exec=/opt/slick-mod-bundled/slick --no-sandbox %U
+Icon=slick
+Terminal=false
+Categories=Network;InstantMessaging;
+MimeType=x-scheme-handler/slack;
+StartupWMClass=Slick
