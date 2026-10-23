@@ -1,6 +1,6 @@
 pkgbase = abb-agent-bin
 	pkgdesc = Replacement for the Synology Active Backup for Business Linux agent: any distro and kernel, first-class btrfs, bare-metal restore (https://github.com/rylos/abb-agent)
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/rylos/abb-agent
 	install = abb-agent.install
@@ -8,14 +8,14 @@ pkgbase = abb-agent-bin
 	license = GPL-3.0-or-later
 	depends = glibc
 	depends = libgcc
-	provides = abb-agent=0.2.7
+	provides = abb-agent=0.2.8
 	conflicts = abb-agent
 	conflicts = abb-agent-git
 	backup = etc/abb-agent.toml
 	validpgpkeys = B903BF2CD82C9EA45C9FB35DE2E8944F09676A61
-	source_x86_64 = abb-agent-0.2.7-x86_64.tar.gz::https://github.com/rylos/abb-agent/releases/download/v0.2.7/abb-agent-0.2.7-x86_64.tar.gz
-	source_x86_64 = abb-agent-0.2.7-x86_64.tar.gz.asc::https://github.com/rylos/abb-agent/releases/download/v0.2.7/abb-agent-0.2.7-x86_64.tar.gz.asc
-	sha256sums_x86_64 = e10a2c1577496e1930780ea2a7952fd3872b69c7619412798e84bdc8107b80ef
+	source_x86_64 = abb-agent-0.2.8-x86_64.tar.gz::https://github.com/rylos/abb-agent/releases/download/v0.2.8/abb-agent-0.2.8-x86_64.tar.gz
+	source_x86_64 = abb-agent-0.2.8-x86_64.tar.gz.asc::https://github.com/rylos/abb-agent/releases/download/v0.2.8/abb-agent-0.2.8-x86_64.tar.gz.asc
+	sha256sums_x86_64 = 3c0c73fd8095b322f71a227f6e69e448c5f9c1f52fc8e61a7016a7decfeecbaa
 	sha256sums_x86_64 = SKIP
 
 pkgname = abb-agent-bin
