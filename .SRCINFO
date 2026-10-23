@@ -1,6 +1,6 @@
 pkgbase = r-lme4
 	pkgdesc = Linear Mixed-Effects Models using 'Eigen' and S4
-	pkgver = 2.0.6
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lme4
 	arch = x86_64
@@ -35,8 +35,8 @@ pkgbase = r-lme4
 	optdepends = r-statmod
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/lme4_2.0-6.tar.gz
-	md5sums = cf60da58c196ac7f2ac8094b6a13b6ce
-	b2sums = 9c483d8a68c11940188e4080fa8ac06506b0d3b3675be430b5c693c2bfe51123659ff45ef03006a7ff357e11c6761a9dd149bfecf538dc68973344b8bc276eab
+	source = https://cran.r-project.org/src/contrib/lme4_2.1-0.tar.gz
+	md5sums = 673b4943af202f4ea2fec10aa92732eb
+	b2sums = 79f81406181f925283ec3096a91091360f081a04397b30c9f37ff95e6bc4d48ac206330b82533c86dd4bfcadd1e03ff561bc3845f7262f8e5ec57c928ee6e2e0
 
 pkgname = r-lme4
