@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
-pkgver=2.18.3
+pkgver=2.18.4
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '503f5a83c87c4f924555327c8289e1015f320b644103e394f00973e957b12fb6'
+  'd0af2f46f8fc31e128bf70669daff0d59d7b7ad24c06c83bc9717b23cc1738bc'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -48,6 +48,8 @@ build() {
   echo "==== BUILDING MCP SERVER"
   cd "${srcdir}/${_pkgbase}-${pkgver}/mcp"
   sed -i 's/target=node18/target=node26/' packages/server/package.json
+  sed -i '/packageManager/d' package.json
+  cat package.json
   pnpm --config.node-linker=hoisted --config.symlink=false install
   pnpm build
   rm -rf ./deployed
@@ -63,6 +65,9 @@ build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
   sed -i '/^corepack/d' ./scripts/build
   sed -i '/^corepack/d' ../mcp/scripts/setup
+  sed -i '/packageManager/d' package.json
+  sed -i '/packageManager/d' ../plugins/package.json
+  sed -i '/packageManager/d' ../render-wasm/package.json
 
   pushd ../render-wasm
   sed -i '/corepack/d' ./_build_env
@@ -84,6 +89,7 @@ build() {
   # so we don't have to install the playwright binaries
   sed -i 's|:args #js|:executablePath "/usr/bin/chromium", :args #js|' src/app/browser.cljs
   sed -i 's#^{#{\n  "bin": "./app.js",#' package.json
+  sed -i '/packageManager/d' package.json
   sed -i '/^corepack/d' ./scripts/build
   sed -i 's/pnpm install/pnpm --config.node-linker=hoisted install/g' ./scripts/build
   sed -i '/install chromium/d' ./scripts/build
