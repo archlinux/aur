@@ -2,13 +2,13 @@
 
 pkgname=lupin-bin
 _pkgname=lupin
-pkgver=0.1.55
+pkgver=0.1.56
 pkgrel=1
 pkgdesc='The reference interpreter for the wolf language, and the compiler differential oracle (release archive)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/wolffe-lang/wolf-interp'
 license=('GPL-3.0-or-later')
-# glibc floor: the 0.1.55 archives import at most GLIBC_2.34 (objdump -T,
+# glibc floor: the 0.1.56 archives import at most GLIBC_2.34 (objdump -T,
 # x86_64 and aarch64; built on Ubuntu 22.04 since 0.1.39, wolf-lang#447);
 # every Arch glibc meets that, so it stays unversioned.
 depends=('gcc-libs' 'glibc')
@@ -23,8 +23,8 @@ conflicts=('lupin')
 # bare version with no `+dev` suffix.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/lupin-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/lupin-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1152abc0bef65d334b94bc881a26463fac345919cc2ca07a291796e6048a8a38')
-sha256sums_aarch64=('5854ab268a835bb75749bce7601441858ac342351906a0838e8602e4edbd45d7')
+sha256sums_x86_64=('ad703550ac4787e8e4bb26989d591a731410274d7332f2b4e8b9a64c878822cc')
+sha256sums_aarch64=('e2719ab28df566ad7b92714191bac00599fbca6c95b6b579d470497b482dd591')
 
 package() {
     local _triple
