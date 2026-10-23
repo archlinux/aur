@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.90.0
+pkgver=0.91.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('96470ad85de27b0141b0567e10c04d0eab7916a1c4dfb2db614a36f867ff2481')
+sha256sums=('f9a773d4af578245a61ecd429dbe8a42fb925ec4d57939ab8128404bf14852c7')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
