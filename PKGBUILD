@@ -14,7 +14,7 @@
 
 pkgname=ivar-bin
 _pkgname=ivar
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Multi-repo worktrees for coding agents: one feature across repos, on one branch, one PR per repo (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -41,9 +41,9 @@ source=(
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30' 'ab849d302d516ef62a39d65a01205355bf73e3cac4041cf77c3cfaeeaf4da748')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64")
-sha256sums_x86_64=('a24ebdb949db3083212a861370ea30e065895e8879113d728f515c654b01abd0')
+sha256sums_x86_64=('5a6a2ca0a5ea0eea40e8ff8d5fd02451e923cf6e9f23fe55c3ef94c0865b3ad5')
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64")
-sha256sums_aarch64=('91834ffacbd148b45340211fd7792a0d79ee307eb709baa50d776b8688e055e3')
+sha256sums_aarch64=('f66c063369fccb98abe589dd63f48775fe5cb8e939dca81457d934f3c55bf0c2')
 
 package() {
     install -Dm0755 "$srcdir/$_pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"

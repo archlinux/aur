@@ -1,6 +1,6 @@
 pkgbase = ivar-bin
 	pkgdesc = Multi-repo worktrees for coding agents: one feature across repos, on one branch, one PR per repo (prebuilt binary)
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/mnzsss/ivar
 	arch = x86_64
@@ -10,17 +10,17 @@ pkgbase = ivar-bin
 	depends = glibc
 	depends = git
 	optdepends = github-cli: authentication and pull requests without exporting a token
-	provides = ivar=0.17.0
+	provides = ivar=0.17.1
 	conflicts = ivar
 	options = !strip
 	options = !debug
-	source = ivar-0.17.0-LICENSE::https://raw.githubusercontent.com/mnzsss/ivar/v0.17.0/LICENSE
-	source = ivar-0.17.0-NOTICE::https://raw.githubusercontent.com/mnzsss/ivar/v0.17.0/NOTICE
+	source = ivar-0.17.1-LICENSE::https://raw.githubusercontent.com/mnzsss/ivar/v0.17.1/LICENSE
+	source = ivar-0.17.1-NOTICE::https://raw.githubusercontent.com/mnzsss/ivar/v0.17.1/NOTICE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 	sha256sums = ab849d302d516ef62a39d65a01205355bf73e3cac4041cf77c3cfaeeaf4da748
-	source_x86_64 = ivar-0.17.0-x86_64::https://github.com/mnzsss/ivar/releases/download/v0.17.0/ivar-linux-x86_64
-	sha256sums_x86_64 = a24ebdb949db3083212a861370ea30e065895e8879113d728f515c654b01abd0
-	source_aarch64 = ivar-0.17.0-aarch64::https://github.com/mnzsss/ivar/releases/download/v0.17.0/ivar-linux-aarch64
-	sha256sums_aarch64 = 91834ffacbd148b45340211fd7792a0d79ee307eb709baa50d776b8688e055e3
+	source_x86_64 = ivar-0.17.1-x86_64::https://github.com/mnzsss/ivar/releases/download/v0.17.1/ivar-linux-x86_64
+	sha256sums_x86_64 = 5a6a2ca0a5ea0eea40e8ff8d5fd02451e923cf6e9f23fe55c3ef94c0865b3ad5
+	source_aarch64 = ivar-0.17.1-aarch64::https://github.com/mnzsss/ivar/releases/download/v0.17.1/ivar-linux-aarch64
+	sha256sums_aarch64 = f66c063369fccb98abe589dd63f48775fe5cb8e939dca81457d934f3c55bf0c2
 
 pkgname = ivar-bin
