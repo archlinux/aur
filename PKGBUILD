@@ -5,7 +5,7 @@ _pkgname=msgvault
 pkgname=${_pkgname}-bin
 pkgdesc="Archive a lifetime of email and chat. Offline search, analytics, and AI query over your full message history. Powered by DuckDB."
 
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('1b2aa5259c158b18d2162df2fb4c14dbadc9205654bc5326ac1be72a5b74726e'
+sha256sums=('ec2d9cc4c953d43b2397bfd999254bce96cdad012fe3cc85a38f4b3438d29be6'
             '6c53c20cce3570ab804556dc5ae92ca9a0dcc429b41b28c5fd0c3cc1910fe3be')
-sha256sums_x86_64=('56b2438eab14f3cadd15b6edecc4ea30454b6584c1039c2d5593a0afa77d7497')
-sha256sums_aarch64=('48720a42f2b7340480d32c6622c0d372a2e894ce90f2a4f7be025c77ccb40512')
+sha256sums_x86_64=('3b146f1c1e78c626072d1f441ac59e916c96766472fb117d27a7098d822740a1')
+sha256sums_aarch64=('905d9a84ca1d7e6c1ec759d9a5f9901ff2b37930e62760a52742d5ced16a06ba')
 
 
 package() {
