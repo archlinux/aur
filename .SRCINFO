@@ -1,0 +1,18 @@
+pkgbase = riptags-bin
+	pkgdesc = Fast tree-sitter symbol search: definitions and cross-references
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/keithamus/riptags
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = riptags
+	conflicts = riptags
+	source = riptags-bin-0.2.3-LICENSE::https://raw.githubusercontent.com/keithamus/riptags/v0.2.3/LICENSE
+	sha256sums = 36d40a511030c0ad186c7d3d5e193618ce49652a09e023c78cc8661e707c5f1e
+	source_x86_64 = rt-0.2.3-x86_64.tar.gz::https://github.com/keithamus/riptags/releases/download/v0.2.3/rt-linux-x64.tar.gz
+	sha256sums_x86_64 = 3066c854d2a6922a4a6261d39b9b20b1256df740e5dc7b8a67e215aab1cf557a
+	source_aarch64 = rt-0.2.3-aarch64.tar.gz::https://github.com/keithamus/riptags/releases/download/v0.2.3/rt-linux-arm64.tar.gz
+	sha256sums_aarch64 = d70e3404111fe33ee39de28c3860e44e1b591ee7bd04f8b9c7ee6d4f3aa94b2f
+
+pkgname = riptags-bin
