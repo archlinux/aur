@@ -1,7 +1,7 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=rust-discord-overlay-bin
 _pkgname=rust-discord-overlay
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Lightweight Discord voice/text overlay for Linux (Wayland, GTK4 layer-shell), written in Rust (prebuilt binary)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('2a2d13984491508414d5b84b7dc42d16fdbe2aeae0fb2923cd06a672bac97946')
+sha256sums=('1edef1643764d96a993fc6cb3f570668a891ed9768afff92f5bdfea2aca95d9e')
 
 package() {
     install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
