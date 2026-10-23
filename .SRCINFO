@@ -1,6 +1,6 @@
 pkgbase = sindricad-beta
 	pkgdesc = Parametric CAD for 3D printing (rolling beta, official binary)
-	pkgver = 0.1.265
+	pkgver = 0.1.269
 	pkgrel = 1
 	url = https://github.com/MakerViking/sindricad
 	install = sindricad-beta.install
@@ -12,7 +12,7 @@ pkgbase = sindricad-beta
 	provides = sindricad
 	conflicts = sindricad
 	options = !strip
-	source = sindricad-beta-0.1.265.deb::https://github.com/MakerViking/sindricad/releases/download/beta/SindriCAD_0.1.265_amd64.deb
-	sha256sums = af791ffd20e60a9a664951a5cdf6116d0a693a34be6a4b535253e70aeef9277b
+	source = sindricad-beta-0.1.269.deb::https://github.com/MakerViking/sindricad/releases/download/beta/SindriCAD_0.1.269_amd64.deb
+	sha256sums = a60624747fe3ae9f21fe1d3ee87012c8e9807f5d25030f2c9de2f305df9523c6
 
 pkgname = sindricad-beta
