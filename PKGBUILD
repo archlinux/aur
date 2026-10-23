@@ -11,11 +11,9 @@ license=('Apache-2.0')
 depends=('libgcc' 'glibc')
 makedepends=('cargo' 'git' 'protobuf' 'help2man')
 source=("$pkgbase::git+https://github.com/eclipse-ankaios/ankaios.git"
-	'ank-server.service'
-	'ank-agent.service')
+	'ankaios.sysusers')
 b2sums=('SKIP'
-        '4a49445b8da1e14764696afd16995a92abe00fecd2d32162beeb96e8ba454edafa4312c725a125a41b58367cb7dfafc9cfb81d71bc9b6bbb17495441a670972e'
-        'b0ff4b3ec44d77bc088eb92250c0d240645b2bc8e4bbc918b7e1be53e63769ca45c42bfc08eae8a39bbfe5af9ec1b0e44238b894117222ccf0b5676b0c974fdd')
+        'f8f40d8b3c5e67941d3cd8294ef388eca34ee10e4dd0711f0f842d8e881b856478bf08d9a057f659f190bd81ecd4791ec9873723e946bec0723f897bce6f2436')
 
 pkgver() {
   cd "$pkgbase"
@@ -26,6 +24,8 @@ prepare() {
     cd "$pkgbase"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
+    # Unit files ship with ExecStart=/usr/local/bin/...; adapt to the AUR package layout
+    sed -i 's#/usr/local/bin#/usr/bin#' server/config/ank-server.service agent/config/ank-agent.service
 }
 
 build() {
@@ -45,7 +45,8 @@ package_ankaios-server-git() {
             "etc/ankaios/state.yaml")
 
     install -Dm755 -t "$pkgdir"/usr/bin/ "$pkgbase/target/$(rustc --print host-tuple)/release/ank-server"
-    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ ank-server.service
+    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "$pkgbase"/server/config/ank-server.service
+    install -Dm644 ankaios.sysusers "$pkgdir"/usr/lib/sysusers.d/ankaios.conf
     install -Dm644 -t "$pkgdir"/etc/ankaios/ "$pkgbase"/server/config/ank-server.conf
     install -Dm644 -t "$pkgdir"/etc/ankaios/ "$pkgbase"/server/config/state.yaml
     install -Dm644 -t "$pkgdir"/usr/share/man/man8 "$pkgbase"/build/man/man8/ank-server.8
@@ -62,7 +63,7 @@ package_ankaios-agent-git() {
     )
 
     install -Dm755 -t "$pkgdir"/usr/bin/ "$pkgbase/target/$(rustc --print host-tuple)/release/ank-agent"
-    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ ank-agent.service
+    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "$pkgbase"/agent/config/ank-agent.service
     install -Dm644 -t "$pkgdir"/etc/ankaios/ "$pkgbase"/agent/config/ank-agent.conf
     install -Dm644 -t "$pkgdir"/usr/share/man/man8 "$pkgbase"/build/man/man8/ank-agent.8
 }
