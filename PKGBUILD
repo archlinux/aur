@@ -39,7 +39,8 @@ prepare() {
 build() {
   cd "$srcdir/$_projname"
   git checkout $pkgver
-  qmake6 QUsb2snes.pro CONFIG+='release'
+  qmake6 -makefile DEFINES+="SQPROJECT_INSTALLED" DEFINES+="SQPROJECT_UNIX_INSTALL_PREFIX=\\\\\\\"$COMPILE_PREFIX\\\\\\\"" DEFINES+="SQPROJECT_UNIX_APP_SHARE=\\\\\\\"$APPLICATION_COMPILE_SHARE\\\\\\\"" QUsb2snes.pro $@
+  # qmake6 QUsb2snes.pro CONFIG+='release'
   make
   cd "QFile2Snes"
   qmake6 QFile2Snes.pro CONFIG+='release'

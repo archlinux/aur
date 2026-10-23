@@ -1,0 +1,3 @@
+# adding all files to gitignore to force tracking
+# and make sure no files are pushed by mistake
+*
