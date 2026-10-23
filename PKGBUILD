@@ -3,7 +3,7 @@
 pkgbase=ankaios
 pkgname=(ankaios-server ankaios-agent ankaios-cli ankaios)
 groups=(ankaios)
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://eclipse-ankaios.github.io/ankaios"
@@ -11,16 +11,16 @@ license=('Apache-2.0')
 depends=('libgcc' 'glibc')
 makedepends=('cargo' 'protobuf' 'help2man')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/eclipse-ankaios/ankaios/archive/refs/tags/v$pkgver.tar.gz"
-	'ank-server.service'
-	'ank-agent.service')
-b2sums=('57e94e35b6934a7b58b51df6ed90ac2bfe5882150da2e74b261d202e13931443877c712b674775579c0b262f4f54766aff6d9856ea66b90f6469d631f7fcdd4c'
-        '4a49445b8da1e14764696afd16995a92abe00fecd2d32162beeb96e8ba454edafa4312c725a125a41b58367cb7dfafc9cfb81d71bc9b6bbb17495441a670972e'
-        'b0ff4b3ec44d77bc088eb92250c0d240645b2bc8e4bbc918b7e1be53e63769ca45c42bfc08eae8a39bbfe5af9ec1b0e44238b894117222ccf0b5676b0c974fdd')
+	'ankaios.sysusers')
+b2sums=('62f2d2e09644d85f604988d8dd4850e5abb4328a2d203baca8a34326063257d721d75f7fada8d2cd4ebc8f33ed30ff3b8e2dd36ec769f6a5b1fe7def95842784'
+        'f8f40d8b3c5e67941d3cd8294ef388eca34ee10e4dd0711f0f842d8e881b856478bf08d9a057f659f190bd81ecd4791ec9873723e946bec0723f897bce6f2436')
 
 prepare() {
     cd "ankaios-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
+    # Unit files ship with ExecStart=/usr/local/bin/...; adapt to the AUR package layout
+    sed -i 's#/usr/local/bin#/usr/bin#' server/config/ank-server.service agent/config/ank-agent.service
 }
 
 build() {
@@ -38,7 +38,8 @@ package_ankaios-server() {
             "etc/ankaios/state.yaml")
 
     install -Dm755 -t "$pkgdir"/usr/bin/ "ankaios-$pkgver/target/$(rustc --print host-tuple)/release/ank-server"
-    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ ank-server.service
+    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "ankaios-$pkgver"/server/config/ank-server.service
+    install -Dm644 ankaios.sysusers "$pkgdir"/usr/lib/sysusers.d/ankaios.conf
     install -Dm644 -t "$pkgdir"/etc/ankaios/ "ankaios-$pkgver"/server/config/ank-server.conf
     install -Dm644 -t "$pkgdir"/etc/ankaios/ "ankaios-$pkgver"/server/config/state.yaml
     install -Dm644 -t "$pkgdir"/usr/share/man/man8 "ankaios-$pkgver"/build/man/man8/ank-server.8
@@ -53,7 +54,7 @@ package_ankaios-agent() {
     )
 
     install -Dm755 -t "$pkgdir"/usr/bin/ "ankaios-$pkgver/target/$(rustc --print host-tuple)/release/ank-agent"
-    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ ank-agent.service
+    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "ankaios-$pkgver"/agent/config/ank-agent.service
     install -Dm644 -t "$pkgdir"/etc/ankaios/ "ankaios-$pkgver"/agent/config/ank-agent.conf
     install -Dm644 -t "$pkgdir"/usr/share/man/man8 "ankaios-$pkgver"/build/man/man8/ank-agent.8
 }
