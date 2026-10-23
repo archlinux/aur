@@ -3,7 +3,7 @@
 
 pkgname=tracedraw-bin
 _pkgname=tracedraw
-pkgver=0.10.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Vector illustration, page layout and print: an open-source vector editor (prebuilt binary)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!debug')
 source=("$_pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/igtoth/tracedraw/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('92aa4ee1553cfe0ef97bc165451c915e238afb71b1953cf860b2d7a2f61c1f35')
+sha256sums=('cc04936d4e326cf8d469194f63520fed827b20e7165b1c95e0b7b586ef787471')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
@@ -36,7 +36,7 @@ package() {
   install -Dm644 "$startdir/tracedraw.desktop" \
     "$pkgdir/usr/share/applications/tracedraw.desktop"
 
-  for size in 16 32 64 128 256 512; do
+  for size in 16 32 64 128 256 512 1024; do
     install -Dm644 "$startdir/tracedraw-$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/tracedraw.png"
   done
