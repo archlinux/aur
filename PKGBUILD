@@ -1,8 +1,8 @@
 # Maintainer: guglovich <https://github.com/guglovich>
-# Created with assistance from Space Bunny Free.
+# Created with assistance from DeepSeek V4.1 Flash Free.
 pkgname=transmission-remote-slint
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
 url="https://github.com/guglovich/Transmission-Remote-Slint"
@@ -19,6 +19,7 @@ makedepends=(
     'rust'
     'cargo'
     'pkg-config'
+    'python-pillow'
 )
 optdepends=(
     'zenity: file picker dialogs (GNOME/X11)'
@@ -45,6 +46,17 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
+
+    # Иконки из ui/app-icon.png (256x256) в нужных размерах
+    python3 - <<'PYEOF'
+from PIL import Image
+import os
+
+src = Image.open("ui/app-icon.png").convert("RGBA")
+os.makedirs("icons", exist_ok=True)
+for size in [16, 22, 32, 48, 64, 128, 256]:
+    src.resize((size, size), Image.LANCZOS).save(f"icons/{size}.png")
+PYEOF
 }
 
 check() {
@@ -65,6 +77,12 @@ package() {
     install -Dm644 README.md \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
 
+    # Иконки в hicolor
+    for size in 16 22 32 48 64 128 256; do
+        install -Dm644 "icons/${size}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/transmission-remote-slint.png"
+    done
+
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/transmission-remote-slint.desktop" <<'DESKTOP'
 [Desktop Entry]
 Type=Application
@@ -72,7 +90,7 @@ Name=Transmission Remote
 GenericName=BitTorrent Client
 Comment=Lightweight Transmission GUI (Slint, no GTK)
 Exec=transmission-remote-slint %f
-Icon=transmission
+Icon=transmission-remote-slint
 Terminal=false
 Categories=Network;FileTransfer;P2P;
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;

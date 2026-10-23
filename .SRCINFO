@@ -1,13 +1,14 @@
 pkgbase = transmission-remote-slint
 	pkgdesc = Lightweight Transmission BitTorrent GUI built with Slint (no GTK)
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guglovich/Transmission-Remote-Slint
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = rust
 	makedepends = cargo
 	makedepends = pkg-config
+	makedepends = python-pillow
 	depends = transmission-cli
 	depends = libxcb
 	depends = libxkbcommon
