@@ -1,6 +1,6 @@
 pkgbase = python-grpc-google-iam-v1
 	pkgdesc = gRPC Google IAM python
-	pkgver = 0.14.5
+	pkgver = 0.14.6
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python/tree/main/packages/grpc-google-iam-v1
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = python-grpc-google-iam-v1
 	depends = python-protobuf
 	depends = python-googleapis-common-protos
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/grpc_google_iam_v1/grpc_google_iam_v1-0.14.5.tar.gz
+	source = https://files.pythonhosted.org/packages/source/g/grpc_google_iam_v1/grpc_google_iam_v1-0.14.6.tar.gz
 	source = fix-deprecations.patch
-	sha256sums = 07fd3a9fafb586588e771831fbfc8f6597050181d0c3b45e039d18b8fdc1aab5
+	sha256sums = fc0a683ace0a149184fcd08d667dd64d51ae65e5698e86f7136aa6002a8b5373
 	sha256sums = 3ae94d82120928d8da22cbbdb129480ebea8d8a66de884af944cdc87eefc583b
 
 pkgname = python-grpc-google-iam-v1
