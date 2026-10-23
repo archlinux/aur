@@ -1,0 +1,24 @@
+pkgbase = dux-search-git
+	pkgdesc = Fast filesystem search service (git)
+	pkgver = 2.0.0.r1.g646b0e0
+	pkgrel = 1
+	url = https://github.com/duxlabs-dev/dux-search
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = dsearch=2.0.0.r1.g646b0e0
+	provides = dux-search=2.0.0.r1.g646b0e0
+	conflicts = dsearch
+	conflicts = dux-search
+	conflicts = dsearch-bin
+	conflicts = dsearch-git
+	conflicts = dux-search-bin
+	replaces = dsearch-git
+	source = git+https://github.com/duxlabs-dev/dux-search.git
+	source = dsearch.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dux-search-git
