@@ -1,0 +1,19 @@
+pkgbase = python-vodozemac
+	pkgdesc = Python bindings for vodozemac
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/matrix-nio/vodozemac-python
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = rust
+	depends = python
+	source = vodozemac-0.10.0.tar.gz::https://files.pythonhosted.org/packages/source/v/vodozemac/vodozemac-0.10.0.tar.gz
+	sha256sums = 9602edb87ab7d16e7b4aad5a087473d8fb6b3ee99043f9aaf0f54bb78970dde9
+
+pkgname = python-vodozemac
