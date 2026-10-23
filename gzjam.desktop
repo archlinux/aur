@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=GZJam
+Comment=A simple, intuitive DJ app
+Exec=/opt/gzjam/GZJam
+Icon=gzjam
+Terminal=false
+Categories=AudioVideo;Audio;Player;
