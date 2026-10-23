@@ -14,9 +14,9 @@ pkgbase = rdc-cli-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = pcre
-	depends = python
+	depends = python>=3.11
 	depends = python-click
-	depends = python-pillow
+	depends = python-pillow>=13.0.0
 	depends = python-numpy
 	depends = libx11
 	depends = libxcb

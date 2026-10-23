@@ -7,9 +7,9 @@ arch=('x86_64')
 url="https://github.com/BANANASJIM/rdc-cli"
 license=('MIT')
 depends=(
-  'python'
+  'python>=3.11'
   'python-click'
-  'python-pillow'
+  'python-pillow>=13.0.0'
   'python-numpy'
   'libx11'
   'libxcb'
