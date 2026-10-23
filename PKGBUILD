@@ -3,7 +3,7 @@
 pkgname=relic-osaka-gtk-theme
 _repo=Osaka-GTK-Theme
 _commit=0faa853682a45868c9e08a5354a4761a187cf101
-_fixes=2026.10.22.2
+_fixes=2026.10.23
 pkgver=2025.10.23
 pkgrel=5
 pkgdesc='Osaka GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('7a7b782d7caefb8d7fc317feb77500a50476862e5801bacf8869e59894e95963'
-            '633d7b4729e30c4da5dc17543ac51249ed75bb8e789f20e5aa2c6d5bbc1bd5b6')
+            'a9c132c3a5952c1d2bb826554187f0bfec982fe2b4841bf2649843bb07774db0')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
