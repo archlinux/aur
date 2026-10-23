@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Lahav <j.lahav@gmail.com>
 
 pkgname=owbox
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ optdepends=('xorg-xwayland: X applications'
 backup=('etc/xdg/owbox/rc.xml' 'etc/xdg/owbox/menu.xml'
         'etc/xdg/owbox/autostart' 'etc/xdg/owbox/environment')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c674be9fffbf43ac7834e57ea159560a9c5713b34d1d88b725e2826eec1c1ac')
+sha256sums=('66edda72aa0b3d80f015ca91285c274e07b0c55a88849160c80c69e60c0a154f')
 
 build() {
   arch-meson "$pkgname-$pkgver" "$pkgname-$pkgver/build"
