@@ -1,7 +1,7 @@
 pkgbase = switch-frame-tap
 	pkgdesc = PC viewer for Switch Frame Tap: watch and record your Nintendo Switch streamed over USB or network
 	pkgver = 0.7.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TomasUribe/switch-frame-tap
 	arch = x86_64
 	license = GPL-2.0-only
