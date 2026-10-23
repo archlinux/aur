@@ -1,6 +1,6 @@
 pkgbase = comfy-desktop-bin
 	pkgdesc = Official desktop application for ComfyUI — install, run, and manage ComfyUI with GPU-ready environments
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://www.comfy.org/
 	arch = x86_64
@@ -38,11 +38,11 @@ pkgbase = comfy-desktop-bin
 	replaces = comfyui-desktop-2-beta
 	options = !strip
 	options = !debug
-	source = LICENSE-1.1.7::https://raw.githubusercontent.com/Comfy-Org/Comfy-Desktop/v1.1.7/LICENSE
+	source = LICENSE-1.1.8::https://raw.githubusercontent.com/Comfy-Org/Comfy-Desktop/v1.1.8/LICENSE
 	sha256sums = 0cea5d109b4d245ea1110c205df0f825a1088c9e45e257514c1661c7c14f7bc3
-	source_x86_64 = comfy-desktop-bin-1.1.7-x86_64.deb::https://dl.todesktop.com/241130tqe9q3y/versions/1.1.7/linux/deb/x64
-	sha256sums_x86_64 = 60c9b73e82a0a9ae996c8193ab72fbc99aae9f41ebeff90233ac8b8147a5f25b
-	source_aarch64 = comfy-desktop-bin-1.1.7-aarch64.deb::https://dl.todesktop.com/241130tqe9q3y/versions/1.1.7/linux/deb/arm64
-	sha256sums_aarch64 = 32a2e9f2aa0196a40a50034eaba07fbbf5b2aeb149b02a3b41759b6b910c822c
+	source_x86_64 = comfy-desktop-bin-1.1.8-x86_64.deb::https://dl.todesktop.com/241130tqe9q3y/versions/1.1.8/linux/deb/x64
+	sha256sums_x86_64 = ff076e83a1a97ead2b19c684394cff8f9395cb6cb6b287dee32888274687cc1e
+	source_aarch64 = comfy-desktop-bin-1.1.8-aarch64.deb::https://dl.todesktop.com/241130tqe9q3y/versions/1.1.8/linux/deb/arm64
+	sha256sums_aarch64 = 353bd36764269252c875719a1882d0935ae24029c620b309d3e557fea409b598
 
 pkgname = comfy-desktop-bin
