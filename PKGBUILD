@@ -2,7 +2,7 @@
 
 pkgname=faro
 _pkgname=faro
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal client for Signal, built for people who live in tmux'
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ optdepends=(
 # The release profile strips the binary, so a -debug package would be empty.
 options=('!lto' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/harababurel/faro/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b7a29d71210bb3c78f4909e9b1860d204e722873179abb2a0164157b035bfd6d')
+sha256sums=('f60f9e24a794141973e7481c18a23ee1f8767b19de0b5de7af2d07d9cb56bdd0')
 
 # The GitHub tarball has no .git, so build.rs falls back to the bare
 # version line ("0.1.0"); set FARO_BUILD_COMMIT/FARO_BUILD_DATE in build()
