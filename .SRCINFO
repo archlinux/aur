@@ -1,7 +1,7 @@
 pkgbase = pi-bin
-	pkgdesc = AI coding agent for the terminal — minimal, extensible and optimized for tool-use (pi-mono)
+	pkgdesc = AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI (pi-mono)
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/earendil-works/pi
 	arch = x86_64
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = pi-bin
 	options = !lto
 	source = LICENSE::https://raw.githubusercontent.com/earendil-works/pi/v1.4.0/LICENSE
 	sha256sums = 0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48
-	source_x86_64 = pi-linux-x64-1.4.0-2.tar.gz::https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-x64.tar.gz
+	source_x86_64 = pi-linux-x64-1.4.0-3.tar.gz::https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-x64.tar.gz
 	sha256sums_x86_64 = f2e4e4329603223d03260cdb8bd5033dbdc1f73ba58ab8939db2e56546e115d2
-	source_aarch64 = pi-linux-arm64-1.4.0-2.tar.gz::https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-arm64.tar.gz
+	source_aarch64 = pi-linux-arm64-1.4.0-3.tar.gz::https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-arm64.tar.gz
 	sha256sums_aarch64 = fa5829c7ef83ffeaebba015715c8306220f89b2aa8a00154efbba98dd5440156
 
 pkgname = pi-bin

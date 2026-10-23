@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=pi-bin
 pkgver=1.4.0
-pkgrel=2
-pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool-use (pi-mono)"
+pkgrel=3
+pkgdesc="AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI (pi-mono)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
 license=('MIT')
