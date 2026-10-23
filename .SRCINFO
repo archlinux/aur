@@ -1,0 +1,18 @@
+pkgbase = python-nvidia-cutlass-dsl-libs-core
+	pkgdesc = NVIDIA CuTe DSL: Python front end
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = https://pypi.org/project/nvidia-cutlass-dsl-libs-core/
+	arch = any
+	license = LicenseRef-NVIDIA-Software-License-Agreement
+	makedepends = python-installer
+	depends = python
+	depends = python-cuda
+	depends = python-numpy
+	depends = python-protobuf
+	depends = python-typing_extensions
+	noextract = nvidia_cutlass_dsl_libs_core-4.8.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/85/66/d05f0ae372b80fc757e59d5211d93483c6ff721f574cb68cad84ceb87157/nvidia_cutlass_dsl_libs_core-4.8.0-py3-none-any.whl
+	sha256sums = b32716d2ed10c185cdbbb6b5c6fca26a3113a60e6e2fe4e2f0cb15966422b621
+
+pkgname = python-nvidia-cutlass-dsl-libs-core
