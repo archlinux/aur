@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=designcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='Page layout and desktop publishing (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/$_pkgname"
@@ -33,8 +33,8 @@ sha256sums=('b7de6a3c581be46591387bf9e6b4160c9facc7aeb274c2c250ee62caf0baf562'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464')
-sha256sums_x86_64=('12076f89ce445af5cf96c0048701a7d48373dccbd524de19fe2308601b554d58')
-sha256sums_aarch64=('0f529995352cf50b5756906c2ef2691d80d01192d0bab9cf1fd0f1f58ef8f12a')
+sha256sums_x86_64=('0e7bbe349670f8d5eb178fa9bd4a1bf1c7c51d6a54e1b802b8dcdbb2ae68fe1d')
+sha256sums_aarch64=('eb055f655ab26a137d5e46d63c6d7d91683148814766224a36de73ecbff7a6b3')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
