@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A tool for running things"
 
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[2]}.tar.gz")
 sha256sums=('cc8eee50aa319de86bd79b0ca4d5a5e08abc288f805cf31ab7675851d3df0c99')
-sha256sums_x86_64=('05dfb01f9ab743a8485d4784e5a2f3aae6ea1e6b3ef9cc3a9a011e5899b84685')
-sha256sums_i686=('ac2f18c0716d098f0cb2fb4053af4c6ce398da3c06c569f76530f8c0b9de386c')
-sha256sums_aarch64=('85940703395967fba287eb3df5c4e26c73f9ab34c090d798dcbc5e2ec03f9da5')
+sha256sums_x86_64=('52b30e0e1edaa93eb02f35040efab17a90289ee20a6937357323eca9847692d3')
+sha256sums_i686=('b75ef292478e368ac8513da37de621bc1e38729b9512e5541c0f5f8d5f7d7061')
+sha256sums_aarch64=('f34ad6198cae7b818750ca33d049b7bb990b87c487e2b158a35605eac38b625b')
 
 
 package() {
