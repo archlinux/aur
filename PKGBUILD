@@ -1,7 +1,10 @@
 # Maintainer: rdbt <87152661+rdbtCVS@users.noreply.github.com>
 pkgname=horizon-launcher-bin
-pkgver=0.17.0
+# Upstream reset 0.17.0 to 0.2.x with the launcher@ tag scheme.
+epoch=1
+pkgver=0.2.1
 pkgrel=1
+_tag=launcher@0.2.1
 pkgdesc='Horizon is Minecraft Java Edition rewritten in Rust'
 arch=('x86_64')
 url='https://github.com/ludovic111/horizon'
@@ -17,7 +20,7 @@ optdepends=('jdk25-openjdk: Java 25 JDK for preparing game resources'
 provides=("horizon-launcher=$pkgver")
 conflicts=('horizon-launcher')
 options=('!strip' '!debug')
-source=("horizon-launcher-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/launcher-v${pkgver}/horizon-launcher-linux-x86_64.tar.gz"
+source=("horizon-launcher-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/${_tag}/horizon-launcher-linux-x86_64.tar.gz"
         'horizon-launcher.sh'
         'horizon-launcher.desktop'
         'horizon.desktop'
@@ -26,7 +29,7 @@ source=("horizon-launcher-${pkgver}-linux-x86_64.tar.gz::${url}/releases/downloa
         'OFL-Geist.txt'
         'LICENSE')
 sha256sums=(
-    '693059c7f396026081a1cc8bb0c88eeeaa48c1866a2e58e7823e285b1891ee52'
+    '17a6a3c53bd6fbae38608790291b15dce8c85ec74da37ffee4a525fbaa2cf814'
     '7f92a543eba884aa862eca36639790437f2d1bc41ae2d24b0556dd6aa2cc3287'
     'fb11867fdefb560a12d0edd06555ded73c520e7e72cf6f3959a074a4a13d3c90'
     '2eb5834d6d0b1189bef3f3f73139ca2fee7f5c837a4aaeb0df744005303b6a54'
