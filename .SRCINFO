@@ -1,0 +1,17 @@
+pkgbase = shebang-bin
+	pkgdesc = A sometimes nice way of doing CLI. Mostly harmless. Works on thursdays.
+	pkgver = 2026.10.19
+	pkgrel = 1
+	url = https://github.com/9seconds/shebang
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = shebang
+	conflicts = shebang
+	options = !strip
+	source_x86_64 = shebang-x86_64-2026.10.19.tgz::https://github.com/9seconds/shebang/releases/download/v2026.10.19/shebang-2026.10.19-linux-amd64.tar.gz
+	sha256sums_x86_64 = 12379c9ddb962e9b7b7c2ee77719ac88b52e9a8d8a6963bc25a9f6cc6c434b2f
+	source_aarch64 = shebang-aarch64-2026.10.19.tgz::https://github.com/9seconds/shebang/releases/download/v2026.10.19/shebang-2026.10.19-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5b2d35be2e2b8f0456dc21f69fa44e258ca7c7540dcf6b7d3db34e8fb042b20f
+
+pkgname = shebang-bin

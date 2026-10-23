@@ -1,0 +1,5 @@
+[shebang-bin]
+source = "github"
+github = "9seconds/shebang"
+use_latest_release = true
+prefix = "v"
