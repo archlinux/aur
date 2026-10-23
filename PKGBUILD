@@ -1,10 +1,13 @@
 # Maintainer: Lordbooker <lordbooker@gmail.com>
 #
+# SPDX-FileCopyrightText: 2026 Lordbooker
+# SPDX-License-Identifier: GPL-2.0-only
+#
 # The release workflow sets pkgver and sha256sums from the tag and publishes
 # this file to the AUR (package gkey-config).
 
 pkgname=gkey-config
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Configuration tool for the gaming keys of Logitech G keyboards (hid-lg-g15)"
 arch=('x86_64')
@@ -19,7 +22,7 @@ optdepends=('polkit: allow LED control from the configuration tool'
 conflicts=('linux-g13-driver' 'linux-g13-driver-git')
 install=gkey-config.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9d0743fc6caa995583b072158ffbae21deddb4ab288397a065da7760bc5200e6')
+sha256sums=('67d8dca67b0a0e57e023da50d9ac474eff53c49804b9afe1b382c83c078b8b97')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \

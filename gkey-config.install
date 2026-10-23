@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Lordbooker
+# SPDX-License-Identifier: GPL-2.0-only
+
 # The group "gkey" (sysusers.d) and the udev rule are applied by the pacman
 # hooks of the systemd package.
 
