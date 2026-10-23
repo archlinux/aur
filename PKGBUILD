@@ -11,7 +11,7 @@
 # tarball checksum below.
 
 pkgname=snd-usb-babyface-pro-dkms
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="DKMS driver for the RME Babyface Pro FS (proprietary USB mode)"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
     'linux-headers: build against the stock kernel'
 )
 source=("${url}/archive/v${pkgver}/babyface-pro-linux-${pkgver}.tar.gz")
-sha256sums=('cabc08621daba7b0f97706016160b9f54137ca35e30bea00e2011c892944c062')
+sha256sums=('1f3167ba17b73186df06dfb598badaa7d3c9fed3b6287bd1ff9d9100eb4480a3')
 
 package() {
     cd "${srcdir}/babyface-pro-linux-${pkgver}"
