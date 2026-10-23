@@ -2,7 +2,7 @@
 _base=foamlib
 pkgname=python-${_base}
 pkgdesc="A Python interface for interacting with OpenFOAM"
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 arch=(any)
 url="https://github.com/gerlero/${_base}"
@@ -19,7 +19,7 @@ optdepends=(
   'python-plotly: examples'
   'python-scipy: examples')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d1d55fa3840cfd0cc8ff15f173a5c750c9d6d61bb8d9553521adfe600008d78358b03c693f68edd0eb034910823fb4fec73be69dec04f4f70a77728480ea1ce6')
+sha512sums=('b4aad94605f10eb835afc6f95130a6a1f7eb808b40fbe39ca57179d83d5591ddd83153d8eb0851decc896b6e36077292f1bd2025a75bd79b6a73d16ddf5900b9')
 
 build() {
   cd ${_base}-${pkgver}
