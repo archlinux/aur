@@ -1,26 +1,32 @@
 pkgbase = sysc-greet-hyprland
-	pkgdesc = DEPRECATED, use sysc-greet-cagebreak. Graphical console greeter for greetd (Hyprland compositor)
-	pkgver = 1.1.10
+	pkgdesc = Graphical console greeter for greetd (Hyprland compositor)
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/sysc-greet
 	install = sysc-greet-hyprland.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
+	license = MIT
+	license = CC0-1.0
+	license = CC-BY-4.0
+	license = CC-BY-NC-4.0
+	license = CC-BY-SA-4.0
+	license = CC-BY-NC-SA-4.0
 	makedepends = go>=1.25
 	depends = greetd
 	depends = kitty
-	depends = hyprland
+	depends = hyprland>=0.55
 	depends = gslapper
 	optdepends = swww: Legacy wallpaper support (fallback)
 	provides = sysc-greet
-	conflicts = sysc-greet-niri
-	conflicts = sysc-greet-sway
 	conflicts = sysc-greet
+	conflicts = sysc-greet-sway
 	conflicts = sysc-greet-cagebreak
-	backup = etc/greetd/hyprland-greeter-config.conf
+	conflicts = sysc-greet-mango
+	backup = etc/greetd/hyprland-greeter-config.lua
 	backup = etc/polkit-1/rules.d/85-greeter.rules
-	source = sysc-greet-1.1.10.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v1.1.10.tar.gz
-	sha256sums = 41941a80a2cdd0099eeef80549931a8de35b13bc69afcd8175b5fd4a08bfbdb8
+	source = sysc-greet-1.2.0.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = d62d4b0e485d0b3681af0643ff2866dc75dd40bd1bafbe6f4ce0d2506d3a35ef
 
 pkgname = sysc-greet-hyprland

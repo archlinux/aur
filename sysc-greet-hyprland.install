@@ -22,7 +22,7 @@ post_install() {
 vt = 1
 
 [default_session]
-command = "start-hyprland -- --config /etc/greetd/hyprland-greeter-config.conf"
+command = "start-hyprland -- --config /etc/greetd/hyprland-greeter-config.lua"
 user = "greeter"
 EOF
 
@@ -36,10 +36,6 @@ EOF
     echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
     echo "sysc-greet (Hyprland) installed successfully!"
-    echo ""
-    echo "WARNING: Hyprland greeter support is deprecated and unmaintained."
-    echo "         It will be removed in a future release. Switch to cagebreak:"
-    echo "         yay -S sysc-greet-cagebreak"
     echo ""
     echo "IMPORTANT: You must REBOOT to start using sysc-greet."
     echo "           Logging out is NOT sufficient when switching compositors."
@@ -55,6 +51,12 @@ post_upgrade() {
     chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
     chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
 
+    # Update the restored Lua config path for existing Hyprland installs.
+    if [ -f /etc/greetd/config.toml ] && grep -Fq 'start-hyprland -- --config /etc/greetd/hyprland-greeter-config.conf' /etc/greetd/config.toml; then
+        cp -an /etc/greetd/config.toml /etc/greetd/config.toml.bak
+        sed -i 's|start-hyprland -- --config /etc/greetd/hyprland-greeter-config.conf|start-hyprland -- --config /etc/greetd/hyprland-greeter-config.lua|' /etc/greetd/config.toml
+    fi
+
     # Remove source_profile=false if present (was added in v1.1.3, causes user session breakage)
     if [ -f /etc/greetd/config.toml ] && grep -q 'source_profile' /etc/greetd/config.toml; then
         echo "==> Removing source_profile setting from greetd config..."
@@ -69,13 +71,10 @@ post_upgrade() {
     echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
     echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
-    echo "sysc-greet upgraded to v1.1.10"
-    echo ""
-    echo "WARNING: Hyprland greeter support is deprecated and unmaintained."
-    echo "         It will be removed in a future release. Switch to cagebreak:"
-    echo "         yay -S sysc-greet-cagebreak"
+    echo "sysc-greet upgraded to v1.2.0"
     echo ""
     echo "What's new:"
+    echo "  v1.2.0: Restores Hyprland support; adds ANSI headers, border styles, and background effects"
     echo "  v1.1.10: Theme colors on login inputs, niri greeter hides the pointer, Hyprland greeter unmaintained"
     echo "  v1.1.9: gSlapper IPC reliability fixes"
     echo "  v1.1.8: Cagebreak compositor variant, idle/effect CPU cuts, greeter env fixes"

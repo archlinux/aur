@@ -1,22 +1,22 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
-pkgver=1.1.10
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="DEPRECATED, use sysc-greet-cagebreak. Graphical console greeter for greetd (Hyprland compositor)"
+pkgdesc="Graphical console greeter for greetd (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
-license=('GPL-3.0-only')
-depends=('greetd' 'kitty' 'hyprland' 'gslapper')
+license=('GPL-3.0-only' 'MIT' 'CC0-1.0' 'CC-BY-4.0' 'CC-BY-NC-4.0' 'CC-BY-SA-4.0' 'CC-BY-NC-SA-4.0')
+depends=('greetd' 'kitty' 'hyprland>=0.55' 'gslapper')
 optdepends=(
     'swww: Legacy wallpaper support (fallback)'
 )
 makedepends=('go>=1.25')
 provides=('sysc-greet')
-conflicts=('sysc-greet-niri' 'sysc-greet-sway' 'sysc-greet' 'sysc-greet-cagebreak')
-source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v${pkgver}.tar.gz")
-sha256sums=('41941a80a2cdd0099eeef80549931a8de35b13bc69afcd8175b5fd4a08bfbdb8')
+conflicts=('sysc-greet' 'sysc-greet-sway' 'sysc-greet-cagebreak' 'sysc-greet-mango')
+source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d62d4b0e485d0b3681af0643ff2866dc75dd40bd1bafbe6f4ce0d2506d3a35ef')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
-backup=('etc/greetd/hyprland-greeter-config.conf' 'etc/polkit-1/rules.d/85-greeter.rules')
+backup=('etc/greetd/hyprland-greeter-config.lua' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-hyprland.install
 
 build() {
@@ -53,6 +53,10 @@ package() {
         cp -r assets/* "${pkgdir}/usr/share/sysc-greet/Assets/" 2>/dev/null || true
     fi
 
+    # Install bundled ANSI border artwork
+    install -dm755 "${pkgdir}/usr/share/sysc-greet/borders"
+    cp -r cmd/sysc-greet/assets/borders/* "${pkgdir}/usr/share/sysc-greet/borders/"
+
     # Install wallpapers
     if [ -d "wallpapers" ]; then
         install -dm755 "${pkgdir}/usr/share/sysc-greet/wallpapers"
@@ -60,7 +64,7 @@ package() {
     fi
 
     # Install greetd configs
-    install -Dm644 config/hyprland-greeter-config.conf "${pkgdir}/etc/greetd/hyprland-greeter-config.conf"
+    install -Dm644 config/hyprland-greeter-config.lua "${pkgdir}/etc/greetd/hyprland-greeter-config.lua"
 
     # Install polkit rule to allow greeter user to shutdown/reboot
     install -Dm644 /dev/stdin "${pkgdir}/etc/polkit-1/rules.d/85-greeter.rules" <<'EOF'
