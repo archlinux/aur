@@ -1,7 +1,7 @@
 # Maintainer: AnandRift <https://github.com/Anand-Rift>    Email:- <anand.anandrift@gmail.com>
 pkgname=samflash
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.2
+pkgrel=3
 pkgdesc="A GUI Samsung flashing tool (odin4 + heimdall)"
 arch=('x86_64')
 url="https://github.com/samflash"
