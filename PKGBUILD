@@ -1,9 +1,9 @@
 # Maintainer: knoelli
 
 pkgname=adguard-cli-nightly-bin
-pkgver=1.5.0
-_pkgstatus='nightly.6'
-pkgrel=3
+pkgver=1.5.1
+_pkgstatus='nightly.1'
+pkgrel=1
 pkgdesc='Tool to protect against ads, trackers and malicious websites'
 arch=('x86_64')
 url='https://github.com/AdguardTeam/AdGuardCLI'
@@ -20,7 +20,7 @@ _full_name="${_file}-${pkgver}-${_pkgstatus}-linux-${arch}"
 source=(
 	"https://github.com/AdguardTeam/AdGuardCLI/releases/download/v${pkgver}-${_pkgstatus}/${_full_name}.tar.gz"
 )
-sha256sums=('d7b637c7a2411348ec4f1aaf8f42e7c19eb4c9f8a7aad92244ae73a436106a45')
+sha256sums=('bc560c5f0675a5a01b81e4ca290ea0f5a67922f52322e98fed93faea45e614a9')
 
 package() {
     cd "${srcdir}/${_full_name}"
