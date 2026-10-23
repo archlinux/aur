@@ -1,6 +1,6 @@
 pkgbase = viper-synapse-bin
 	pkgdesc = Razer device settings: key bindings, macros, lighting and sensitivity, in a Synapse-style window
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Viper-Synapse
 	install = viper-synapse.install
@@ -24,9 +24,9 @@ pkgbase = viper-synapse-bin
 	depends = systemd
 	provides = viper-synapse
 	conflicts = viper-synapse
-	noextract = ViperSynapse-0.0.5-linux-x64.tar.gz
+	noextract = ViperSynapse-0.0.6-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/Viper-Synapse/releases/download/v0.0.5/ViperSynapse-0.0.5-linux-x64.tar.gz
-	sha256sums = add445cdcde03983260b8cbf118843417ae4224860711ee718e202a87a36bfbb
+	source = https://github.com/codingncaffeine/Viper-Synapse/releases/download/v0.0.6/ViperSynapse-0.0.6-linux-x64.tar.gz
+	sha256sums = 42a169d1ec1751e2f57f929502d70ad044fd4d225cd65e007af883d7f315c1a9
 
 pkgname = viper-synapse-bin
