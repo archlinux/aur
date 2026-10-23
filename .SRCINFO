@@ -1,14 +1,14 @@
 pkgbase = vgshell
 	pkgdesc = Desktop shell for Hyprland, built on Quickshell
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vanillagreencom/vgshell
 	install = vgshell.install
 	arch = any
 	license = MIT AND OFL-1.1 AND ISC AND Apache-2.0 AND CC-BY-SA-4.0
 	depends = greetd
 	depends = glibc
-	depends = vgshell-quickshell>=0.3.1
+	depends = vgshell-quickshell>=0.3.2.r7.g2b4501a-2
 	depends = hyprland>=0.56
 	depends = bash
 	depends = coreutils
@@ -88,7 +88,9 @@ pkgbase = vgshell
 	optdepends = uwsm: the Hyprland (uwsm-managed) session the login screen starts first
 	optdepends = xorg-xinit: startx, for X11 sessions on the login screen
 	optdepends = polkit: pkexec, so applications can ask for administrator access
-	optdepends = tailscale: the Tailscale connection in the VPN plugin
+	optdepends = tailscale: the Tailscale plugin
+	optdepends = nm-connection-editor: adds and changes VPN profiles in NetworkManager
+	optdepends = networkmanager-openvpn: connects and imports OpenVPN profiles in the VPN plugin
 	optdepends = cups: lpstat and ipptool, which list your printers and their changes in the Printers plugin
 	optdepends = cups-pk-helper: adds, removes and sets the default printer in the Printers plugin
 	optdepends = system-config-printer: Print Settings, for drivers, paper size and quality in the Printers plugin
