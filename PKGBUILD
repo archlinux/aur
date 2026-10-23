@@ -2,7 +2,7 @@
 
 _pkgbasename=gnome-software
 pkgname="${_pkgbasename}"-plugin-snap
-pkgver=51.0
+pkgver=51.1
 pkgrel=1
 pkgdesc="Snap support for GNOME Software"
 url="https://apps.gnome.org/Software"
@@ -42,7 +42,7 @@ source=(
   "git+https://gitlab.gnome.org/mwleeds/gnome-pwa-list.git"
   "${_patch_file}"
 )
-b2sums=('2bd4e05602c919b962f267f669de80d3f836bc1fefe1f6823c2c380b0f5b600e7aa41932b1ddc0f8dc8ebf54e91bc2c5456855e7b373bb8fa3a3020e229cbadf'
+b2sums=('7bb085378e42811162fe449a4f4606a8a9f9ae01423887f51c678b636525dc6d54cdb8b6ab31e2fc3b9205b65e0c0345cf88d485a42f7fcd0da9b0d9261a35ef'
         'SKIP'
         '07639c42c37508bed90f1979e5a875c654fd8b2aa0abd974bd22adc83f0a5b8c79b09245fbba73c35bc2c161c638758e6ae0aa46c570cba03979913d9817c7a2')
 
