@@ -1,7 +1,7 @@
 pkgbase = bupdate-bin
 	pkgdesc = Universal package updater — parallel updates for Linux, BSD and Windows (prebuilt binary)
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://radicle.network/nodes/iris.radicle.network/rad%3Az1SpYG13iEYC9Ds1UjyVJhe1sf1i
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = bupdate-bin
 	conflicts = bupdate
 	conflicts = bupdate-git
 	options = !debug
-	source_x86_64 = bupdate-linux-amd64-0.2.3::https://codeberg.org/LAA/bupdate/releases/download/v0.2.3/bupdate-linux-amd64
-	sha256sums_x86_64 = 7685b611674438be4bfeb3171bbd5cc771d8842993e925d5057261562174161a
-	source_aarch64 = bupdate-linux-arm64-0.2.3::https://codeberg.org/LAA/bupdate/releases/download/v0.2.3/bupdate-linux-arm64
-	sha256sums_aarch64 = 800b6ac75af683b8a82415ffea268c02e497043a01af3e0a436d2782fee787a9
+	source_x86_64 = bupdate-linux-amd64-0.3.0::https://codeberg.org/LAA/bupdate/releases/download/v0.3.0/bupdate-linux-amd64
+	sha256sums_x86_64 = 936e6cae336b566773864fc99a14a956f8ea382dbfefdf0a4d56408830a7ff66
+	source_aarch64 = bupdate-linux-arm64-0.3.0::https://codeberg.org/LAA/bupdate/releases/download/v0.3.0/bupdate-linux-arm64
+	sha256sums_aarch64 = f2e2fd06fa8fee93db42ee9a426ee3aba34178c084c94fbf4feeb3329e6f97bb
 
 pkgname = bupdate-bin
