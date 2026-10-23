@@ -1,6 +1,6 @@
 pkgbase = ely-pdf-app-bin
 	pkgdesc = ElyPDF - PDF viewer from the Ely Office suite
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://office.elygpui.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ely-pdf-app-bin
 	conflicts = ely-pdf-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = ely-pdf_0.1.10-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.10/ely-pdf_0.1.10-1_amd64.deb
-	sha256sums_x86_64 = 27be6878ed3df5a20a979669bcb9012bdfc3aba7121699bc313359588e32d327
+	source_x86_64 = ely-pdf_0.1.11-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.11/ely-pdf_0.1.11-1_amd64.deb
+	sha256sums_x86_64 = fb420e69917bc9b82ceedf4b2bf894081e07b5d7076ba8bf715b381db5874c87
 
 pkgname = ely-pdf-app-bin
