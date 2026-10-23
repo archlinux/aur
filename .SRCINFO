@@ -1,6 +1,6 @@
 pkgbase = music-assistant-tui-git
 	pkgdesc = Terminal UI for Music Assistant (git version)
-	pkgver = 20261023.0.r251.gc8f3eef
+	pkgver = 20261023.0.r252.gbc66676
 	pkgrel = 1
 	url = https://github.com/timmo001/music-assistant-tui
 	arch = x86_64
