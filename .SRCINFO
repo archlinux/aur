@@ -1,7 +1,7 @@
 pkgbase = factorio-demo
 	pkgdesc = A game in which you build and maintain factories
 	pkgver = 2.1.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.factorio.com/
 	arch = aarch64
 	arch = x86_64

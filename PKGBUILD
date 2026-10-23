@@ -1,6 +1,6 @@
 pkgname=factorio-demo
 pkgver=2.1.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A game in which you build and maintain factories"
 arch=(
   aarch64
@@ -22,6 +22,12 @@ sha256sums=('8b5d83c82c2b93b7765e6a51abca11dd53858a47a5bb5c5a36591b8dec9173a6'
 sha256sums_aarch64=('c98da594e45a97f6e3f6257e3d3b4dff76074a7e7963c2d9383f57bb39249c3a')
 sha256sums_x86_64=('66e1e4bcc892b97b145fb57f20952329a884764848fc261aad6ffa89604e5f22')
 
+case "${CARCH}" in
+  aarch64) _binarch="arm64" ;;
+  x86_64)  _binarch="x64" ;;
+  *)       _binarch="${CARCH}" ;;
+esac
+
 package() {
   cd "${srcdir}"
 
@@ -29,7 +35,7 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   cd factorio
-  install -Dm755 bin/x64/factorio -t "${pkgdir}/usr/bin/"
+  install -Dm755 bin/${_binarch}/factorio -t "${pkgdir}/usr/bin/"
 
   install -d "${pkgdir}/usr/share/factorio"
   cp -r data/* "${pkgdir}/usr/share/factorio"
@@ -37,13 +43,5 @@ package() {
 
 check() {
   cd "${srcdir}/factorio"
-
-  local binarch
-  case "${CARCH}" in
-    aarch64) binarch="arm64" ;;
-    x86_64)  binarch="x64" ;;
-    *)       binarch="${CARCH}" ;;
-  esac
-
-  ./bin/${binarch}/factorio --version
+  ./bin/${_binarch}/factorio --version
 }
