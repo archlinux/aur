@@ -1,7 +1,7 @@
 # Maintainer: Livaco <livaco@livaco.dev>
 pkgname=crab-fetch
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="Extremely fast, featureful and customizable command-line fetcher."
 arch=('x86_64')
 url="https://github.com/LivacoNew/CrabFetch"
@@ -12,18 +12,18 @@ makedepends=("cargo")
 provides=("crabfetch")
 conflicts=("crabfetch")
 source=("https://github.com/LivacoNew/CrabFetch/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('74dd0f7bbc1ea4930b47dd226dc2c8f0d69474bc9ee39516820f2eb1de50deeea611745a05493b6629b9156d2374b1a3da1c030883221cf5227b8ac419501f8b')
+sha512sums=('07d4f4a84980542253f8ce39730c1066c7264236cab557276c4748a13dbf4803b136dc1efc9a62cf1c2d5b0fb0b70140b1ae06ec707812b8f9246f7d88586592')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
-	cd "${srcdir}/CrabFetch-${pkgver}"
+    cd "${srcdir}/CrabFetch-${pkgver}"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-	cd "${srcdir}/CrabFetch-${pkgver}"
+    cd "${srcdir}/CrabFetch-${pkgver}"
     # If you don't want to use dbus, remove the music feature flag!
     # Since this is an *arch* package, I'm assuming you are however
     cargo build --frozen -r -F music
@@ -31,15 +31,12 @@ build() {
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
-	cd "${srcdir}/CrabFetch-${pkgver}"
+    cd "${srcdir}/CrabFetch-${pkgver}"
     cargo test --frozen -F music
 }
 
 package() {
-	cd "${srcdir}/CrabFetch-${pkgver}"
-    # hardcoded "crabfetch" cus the package name is different
-    # note: after 0.5.4 the cargo.toml name for crabfetch turned to crab-fetch cus of an already-existing package in crates.io
-    # as a result, this will need to be changed on the next release!
-    install -Dm 755 ./target/release/crabfetch ${pkgdir}/usr/bin/crabfetch
+    cd "${srcdir}/CrabFetch-${pkgver}"
+    install -Dm 755 ./target/release/crab-fetch ${pkgdir}/usr/bin/crabfetch
     install -Dm 755 ./LICENCE ${pkgdir}/usr/share/licenses/crabfetch/LICENCE
 }
