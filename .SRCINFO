@@ -1,6 +1,6 @@
 pkgbase = goboscript-git
 	pkgdesc = goboscript is the Scratch compiler
-	pkgver = v3.2.1.r560.90da472
+	pkgver = v3.2.1.r572.ec3ddf3
 	pkgrel = 1
 	url = https://github.com/aspizu/goboscript
 	arch = x86_64

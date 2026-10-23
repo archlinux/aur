@@ -1,6 +1,6 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Archion <archion11@proton.me>
 pkgname=goboscript-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=v3.2.1.r560.90da472
+pkgver=v3.2.1.r572.ec3ddf3
 pkgrel=1
 pkgdesc="goboscript is the Scratch compiler"
 arch=('x86_64')
