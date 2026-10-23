@@ -1,6 +1,6 @@
 pkgbase = lumina-code-cef-bin
 	pkgdesc = A Tauri + React desktop GUI for OpenCode — CEF (Chromium) rendering variant, bundling its own pinned server binary
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/iewnfod/lumina-code
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = lumina-code-cef-bin
 	depends = gtk4
 	depends = hicolor-icon-theme
 	optdepends = xdg-utils: open files/URLs from the app
-	provides = lumina-code-cef=0.6.2
+	provides = lumina-code-cef=0.7.0
 	conflicts = lumina-code-cef
-	noextract = lumina-code-cef-bin-0.6.2-*.deb
+	noextract = lumina-code-cef-bin-0.7.0-*.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = lumina-code-cef-bin-0.6.2-amd64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.6.2/Lumina.Code.CEF_0.6.2_amd64.deb
-	sha256sums_x86_64 = b4c5bbefa904c9541ccfa75348531ef5c6e3f8526db935e06524248913a9c8f1
-	source_aarch64 = lumina-code-cef-bin-0.6.2-arm64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.6.2/Lumina.Code.CEF_0.6.2_arm64.deb
-	sha256sums_aarch64 = 8c304fce3d55cfdcf0135967da6f925fc900aed397ba079b10d5a5c4bb8dbb97
+	source_x86_64 = lumina-code-cef-bin-0.7.0-amd64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.7.0/Lumina.Code.CEF_0.7.0_amd64.deb
+	sha256sums_x86_64 = 5e7b7dad3c03d029ad3eb4de32d214a6438e5c0d9cbbd436fd4561131bf9b169
+	source_aarch64 = lumina-code-cef-bin-0.7.0-arm64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.7.0/Lumina.Code.CEF_0.7.0_arm64.deb
+	sha256sums_aarch64 = 6bd7ca66c1e621f11f3bbf88184bcba9a94f00491782429d32f7671ab5a7cdc0
 
 pkgname = lumina-code-cef-bin
