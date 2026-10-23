@@ -1,6 +1,6 @@
 pkgbase = system-health
 	pkgdesc = Read-only health report for Arch Linux and CachyOS
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ajsem1337/system-health
 	arch = any
@@ -17,10 +17,10 @@ pkgbase = system-health
 	depends = sudo
 	optdepends = gsmartcontrol: graphical disk inspection and self-tests
 	optdepends = kitty: supported terminal for the desktop launcher
-	source = system-health-0.2.0::https://raw.githubusercontent.com/ajsem1337/system-health/f3731ce32c981d7020793894360644b191b4fd11/system-health
-	source = system-health.desktop::https://raw.githubusercontent.com/ajsem1337/system-health/f3731ce32c981d7020793894360644b191b4fd11/system-health.desktop
-	source = LICENSE::https://raw.githubusercontent.com/ajsem1337/system-health/f3731ce32c981d7020793894360644b191b4fd11/LICENSE
-	sha256sums = b6dfa578f14e0d58acec325a3cd1e5bd0a7c968c22236e21b0ced5c0f43ab53f
+	source = system-health-0.3.0::https://raw.githubusercontent.com/ajsem1337/system-health/8b2a60af70609aaae5522990aa439c9e4a51707c/system-health
+	source = system-health.desktop::https://raw.githubusercontent.com/ajsem1337/system-health/8b2a60af70609aaae5522990aa439c9e4a51707c/system-health.desktop
+	source = LICENSE::https://raw.githubusercontent.com/ajsem1337/system-health/8b2a60af70609aaae5522990aa439c9e4a51707c/LICENSE
+	sha256sums = bd3e0d647b6c377ea474687a9e2ed4945cdb8119cd410c554bab4ef17f35cd1e
 	sha256sums = 003be01dd7ff8378b821ed6a548605ea0be93c39360f6e62255a1d43237fb52a
 	sha256sums = 35fb3b11a39d4f2583dca02d38fee84cb4f30b059abe5111f050cfee74b33142
 
