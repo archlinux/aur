@@ -1,0 +1,578 @@
+Upstream: https://github.com/nexu-io/open-design/pull/8927 (head f2db0915f812e53badaa7de41bc29b2211388644)
+Fixes project deletion for signed-out local sessions: https://github.com/nexu-io/open-design/issues/8926
+
+diff --git a/apps/web/src/App.tsx b/apps/web/src/App.tsx
+index f9881598b35..58c2aa4c9b4 100644
+--- a/apps/web/src/App.tsx
++++ b/apps/web/src/App.tsx
+@@ -156,6 +156,7 @@ import {
+   workspaceIdentityCacheKey,
+   workspaceResourceReadContext,
+ } from './collab/useWorkspaceContext';
++import { workspaceIdentitySettledSignedOut } from './collab/workspace-identity-signed-out';
+ import {
+   projectResourceReadsCanStart,
+   useProjectRouteWorkspaceContext,
+@@ -989,6 +990,7 @@ function AppInner() {
+       ? ['pending-account', workspaceAccountGeneration]
+       : ['workspace-account', workspaceAccountGeneration, currentWorkspaceIdentity],
+   );
++  const workspaceSettledSignedOut = workspaceIdentitySettledSignedOut(workspaceContextState);
+   const workspaceContextRef = useRef<WorkspaceCollabContext | null>(null);
+   const workspaceContextStateRef = useRef(workspaceContextState);
+   const projectRouteWorkspaceContextRef = useRef<WorkspaceCollabContext | null>(null);
+@@ -5915,6 +5917,7 @@ function AppInner() {
+           onboardingCompleted={config.onboardingCompleted === true}
+           identityScopeKey={workspaceTabsIdentityScopeKey}
+           workspaceContext={workspaceContext}
++          workspaceSignedOut={workspaceSettledSignedOut}
+           onRenameProject={handleRenameProject}
+           onDuplicateProject={handleDuplicateProject}
+           onDeleteProject={handleDeleteProject}
+diff --git a/apps/web/src/collab/workspace-identity-signed-out.ts b/apps/web/src/collab/workspace-identity-signed-out.ts
+new file mode 100644
+index 00000000000..94b9e328702
+--- /dev/null
++++ b/apps/web/src/collab/workspace-identity-signed-out.ts
+@@ -0,0 +1,26 @@
++import type { WorkspaceContextState } from './useWorkspaceContext';
++
++/**
++ * Whether the workspace identity read has SETTLED with no signed-in identity
++ * at all — the only reading in which a null context may be treated as "no
++ * share surface in scope" by destructive flows (the delete confirmations).
++ *
++ * A null context alone proves nothing: `loading` holds no answer yet, and
++ * `unavailable` / `reauth-required` mean the identity exists or is unknown —
++ * treating those as anonymity is the same bug shape
++ * `workspaceIdentityCanBillAmr` guards against. `unsupported` is an old
++ * daemon with no workspace endpoint, where pre-workspace headerless behavior
++ * is legal and no share surface can exist.
++ *
++ * Lives beside (not inside) `useWorkspaceContext` like
++ * `entry-rail-account-state.ts`: a pure discriminator over the read state,
++ * importable without the hook module's client machinery.
++ */
++export function workspaceIdentitySettledSignedOut(
++  state: Pick<WorkspaceContextState, 'context' | 'loading' | 'failure'>,
++): boolean {
++  if (state.context !== null) return false;
++  if (state.loading) return false;
++  if (state.failure === 'unavailable' || state.failure === 'reauth-required') return false;
++  return true;
++}
+diff --git a/apps/web/src/components/DesignsTab.tsx b/apps/web/src/components/DesignsTab.tsx
+index 44a7ec3f31f..5244015ae65 100644
+--- a/apps/web/src/components/DesignsTab.tsx
++++ b/apps/web/src/components/DesignsTab.tsx
+@@ -12,6 +12,7 @@ import {
+ } from "../analytics/events";
+ import { useT } from "../i18n";
+ import { useWorkspaceContext } from "../collab/useWorkspaceContext";
++import { workspaceIdentitySettledSignedOut } from "../collab/workspace-identity-signed-out";
+ import { currentWorkspaceAccountGeneration, workspaceIdentityCacheKey } from "../collab/workspace-identity";
+ import {
+ 	getProjectCoverSnapshot,
+@@ -143,8 +144,12 @@ export function DesignsTab({
+ 	const confirmTitleId = useId();
+ 	const t = useT();
+ 	const analytics = useAnalytics();
+-	const { context: workspaceContext, loading: workspaceContextLoading } = useWorkspaceContext();
+-	const deleteFlow = useProjectDeleteFlow({ onDelete, analyticsPage: "all_projects", workspaceContext });
++	const workspaceContextState = useWorkspaceContext();
++	const { context: workspaceContext, loading: workspaceContextLoading } = workspaceContextState;
++	// A bare null context also covers loading/unavailable reads; only the
++	// settled signed-out reading may drive the share-free delete path.
++	const workspaceSettledSignedOut = workspaceIdentitySettledSignedOut(workspaceContextState);
++	const deleteFlow = useProjectDeleteFlow({ onDelete, analyticsPage: "all_projects", workspaceContext, workspaceSignedOut: workspaceSettledSignedOut });
+ 	// P0 page_view page_name=projects — fire once when the tab mounts so
+ 	// `/projects` landings register even before the user clicks anything.
+ 	// ref-keyed to survive re-renders that flip parent state without
+@@ -189,7 +194,7 @@ export function DesignsTab({
+ 	const [confirmPending, setConfirmPending] = useState(false);
+ 	const [confirmError, setConfirmError] = useState<string | null>(null);
+ 	const [batchDeleteIds, setBatchDeleteIds] = useState<string[]>([]);
+-	const batchShares = useBatchProjectShareCount(confirmTarget ? batchDeleteIds : [], workspaceContext);
++	const batchShares = useBatchProjectShareCount(confirmTarget ? batchDeleteIds : [], workspaceContext, workspaceSettledSignedOut);
+ 	const [view, setView] = useState<ViewMode>(() => {
+ 		if (typeof window === "undefined") return "grid";
+ 		try {
+diff --git a/apps/web/src/components/EntryNavRail.tsx b/apps/web/src/components/EntryNavRail.tsx
+index d5fadcd0303..41ca50770eb 100644
+--- a/apps/web/src/components/EntryNavRail.tsx
++++ b/apps/web/src/components/EntryNavRail.tsx
+@@ -257,6 +257,10 @@ interface Props {
+   topRightSlot?: ReactNode;
+   /** The one shared workspace context; null → local (no cloud identity) state. */
+   context: WorkspaceCollabContext | null;
++  /** Whether a null context is a SETTLED signed-out reading (the shell
++   *  verifies via `workspaceIdentitySettledSignedOut`); loading/unavailable
++   *  reads are also null and must keep the delete flows fail closed. */
++  contextSettledSignedOut?: boolean;
+   /** Account billing metadata (via the vela CLI 收口). Null → the billing
+    *  chip falls back to the context plan-tier hint. */
+   billing?: WorkspaceBillingSummary | null;
+@@ -412,6 +416,7 @@ function RailRecentSection({
+   onProjectShared,
+   onProjectShareFailed,
+   workspaceContext,
++  workspaceSignedOut,
+   analyticsPage,
+   label,
+ }: {
+@@ -425,6 +430,9 @@ function RailRecentSection({
+   onProjectShared?: (project: WorkspaceProjectSummary) => void;
+   onProjectShareFailed?: (projectId: string) => void;
+   workspaceContext?: WorkspaceCollabContext | null;
++  /** Whether a null `workspaceContext` is a settled signed-out reading, from
++   *  `workspaceIdentitySettledSignedOut` at the shell. Fail closed by default. */
++  workspaceSignedOut?: boolean;
+   analyticsPage: TrackingWorkspacePage;
+   label: string;
+ }) {
+@@ -453,6 +461,7 @@ function RailRecentSection({
+     onDelete,
+     analyticsPage: collectionPage,
+     workspaceContext,
++    workspaceSignedOut,
+   });
+   const duplicateFlow = useProjectDuplicateFlow({
+     onDuplicate,
+@@ -2096,6 +2105,7 @@ export function EntryNavRail({
+   open,
+   topRightSlot,
+   context,
++  contextSettledSignedOut,
+   billing,
+   billingResponse,
+   balanceUsd,
+@@ -2642,6 +2652,7 @@ export function EntryNavRail({
+               onProjectShared={onRecentProjectShared}
+               onProjectShareFailed={onRecentProjectShareFailed}
+               workspaceContext={context}
++              workspaceSignedOut={contextSettledSignedOut}
+               analyticsPage={analyticsPage}
+               label={t('recentProjects.title')}
+             />
+@@ -2726,6 +2737,7 @@ export function EntryNavRail({
+               onDelete={onDeleteRecentProject}
+               onDuplicate={onDuplicateRecentProject}
+               workspaceContext={null}
++              workspaceSignedOut={contextSettledSignedOut}
+               analyticsPage={analyticsPage}
+               label={t('recentProjects.title')}
+             />
+diff --git a/apps/web/src/components/EntryShell.tsx b/apps/web/src/components/EntryShell.tsx
+index 7244cd21a7a..540ff06d090 100644
+--- a/apps/web/src/components/EntryShell.tsx
++++ b/apps/web/src/components/EntryShell.tsx
+@@ -164,6 +164,7 @@ import {
+   workspaceBillingBalanceUsd,
+   workspaceBillingSummaryForContext,
+ } from '../collab/useWorkspaceContext';
++import { workspaceIdentitySettledSignedOut } from '../collab/workspace-identity-signed-out';
+ import { useWorkspaceInvalidation } from '../collab/workspace-events';
+ import { resolvePlanLabelTier } from '../collab/team-plan';
+ import { resolveDeepSeekV4FlashCampaignAudience } from '../campaigns/deepseek-v4-flash';
+@@ -715,6 +716,10 @@ export function EntryShell({
+   const railWorkspaceContext = accountFooterState === 'sign-in'
+     ? null
+     : workspaceContext;
++  // The rail's signed-out recent rows delete through the shared flow; a null
++  // context there is only share-free when the identity read settled (loading
++  // and unavailable reads are also null and must fail closed).
++  const railContextSettledSignedOut = workspaceIdentitySettledSignedOut(workspaceContextState);
+   const usesOpenDesignCloud = config.mode === 'daemon' && config.agentId === 'amr';
+   const amrProfile = config.agentCliEnv?.amr?.OPEN_DESIGN_AMR_PROFILE ?? null;
+   const amrAuthRequired =
+@@ -1924,6 +1929,7 @@ export function EntryShell({
+             </>
+           ) : null}
+           context={railWorkspaceContext}
++          contextSettledSignedOut={railContextSettledSignedOut}
+           billing={workspaceBilling}
+           billingResponse={workspaceBillingResponse}
+           balanceUsd={workspaceBalanceUsd}
+diff --git a/apps/web/src/components/RecentProjectsStrip.tsx b/apps/web/src/components/RecentProjectsStrip.tsx
+index 5bc9b49d519..e9f04acd336 100644
+--- a/apps/web/src/components/RecentProjectsStrip.tsx
++++ b/apps/web/src/components/RecentProjectsStrip.tsx
+@@ -43,6 +43,7 @@ import {
+   useWorkspaceBilling,
+   useWorkspaceContext,
+ } from '../collab/useWorkspaceContext';
++import { workspaceIdentitySettledSignedOut } from '../collab/workspace-identity-signed-out';
+ import {
+   canAccessWorkspaceInviteFlow,
+   resolveWorkspaceInviteTarget,
+@@ -388,10 +389,14 @@ export function RecentProjectsStrip({
+   // member directory turns an ownerMemberId into a display name, while the
+   // workspace context supplies the signed-in user's own name and profile image.
+   const { resolve: resolveMember } = useTeamMembers();
++  const workspaceContextState = useWorkspaceContext();
+   const {
+     context: workspaceContext,
+     loading: workspaceContextLoading,
+-  } = useWorkspaceContext();
++  } = workspaceContextState;
++  // A bare null context also covers loading/unavailable reads; only the
++  // settled signed-out reading may drive the share-free delete path.
++  const workspaceSettledSignedOut = workspaceIdentitySettledSignedOut(workspaceContextState);
+   // A cover request captures the complete identity at dispatch. A mutable ref
+   // keeps the queue callbacks stable without letting an in-flight read drift
+   // to whichever Workspace a different render happens to select later.
+@@ -547,7 +552,7 @@ export function RecentProjectsStrip({
+   // Delete confirm → request → settle, shared with the rail's 最近项目 rows
+   // (OPEND-2797) so both entry points open the very same dialog. A failed
+   // request keeps that dialog open with a visible reason (recvqbh189zBY6).
+-  const deleteFlow = useProjectDeleteFlow({ onDelete, analyticsPage, workspaceContext });
++  const deleteFlow = useProjectDeleteFlow({ onDelete, analyticsPage, workspaceContext, workspaceSignedOut: workspaceSettledSignedOut });
+   const duplicateFlow = useProjectDuplicateFlow({ onDuplicate, analyticsPage, workspaceContext });
+   // Project → team-space sharing (the project card entry), through the flow
+   // the rail rows share. The card menu is this surface's progress readout: it
+@@ -685,6 +690,7 @@ export function RecentProjectsStrip({
+   const batchShares = useBatchProjectShareCount(
+     bulkDeleteOpen ? selectedProjects.map(({ project }) => project.id) : [],
+     workspaceContext,
++    workspaceSettledSignedOut,
+   );
+   // Same gate as the per-card menu: only your own projects can be moved or
+   // deleted, so a selection containing someone else's shared project disables
+diff --git a/apps/web/src/components/WorkspaceTabsBar.tsx b/apps/web/src/components/WorkspaceTabsBar.tsx
+index 92bd1127927..90eb35cda6f 100644
+--- a/apps/web/src/components/WorkspaceTabsBar.tsx
++++ b/apps/web/src/components/WorkspaceTabsBar.tsx
+@@ -176,6 +176,10 @@ interface Props {
+    * simply returns nothing readable in a workspace one.
+    */
+   workspaceContext?: WorkspaceCollabContext | null;
++  /** Whether a null `workspaceContext` is a settled signed-out reading (the
++   *  shell verifies via `workspaceIdentitySettledSignedOut`). Fail closed by
++   *  default: loading/unavailable reads are also null. */
++  workspaceSignedOut?: boolean;
+   /**
+    * The docked dropdown's per-row ⋮ menu (OPEND-2686 / OPEND-3128): 重命名 /
+    * 复制项目 / 转入团队空间 / 删除, through the flows the rail's 最近项目 rows and
+@@ -865,6 +869,7 @@ export function WorkspaceTabsBar({
+   identityScopeKey,
+   preserveSignedOutShareRoute = false,
+   workspaceContext = null,
++  workspaceSignedOut = false,
+   onRenameProject,
+   onDuplicateProject,
+   onDeleteProject,
+@@ -1275,6 +1280,7 @@ export function WorkspaceTabsBar({
+     onDelete: onDeleteProject,
+     analyticsPage: 'home',
+     workspaceContext,
++    workspaceSignedOut,
+   });
+   const duplicateFlow = useProjectDuplicateFlow({
+     onDuplicate: onDuplicateProject,
+diff --git a/apps/web/src/components/project-actions/useBatchProjectShareCount.ts b/apps/web/src/components/project-actions/useBatchProjectShareCount.ts
+index 5a610fca9fe..57d4aa6b215 100644
+--- a/apps/web/src/components/project-actions/useBatchProjectShareCount.ts
++++ b/apps/web/src/components/project-actions/useBatchProjectShareCount.ts
+@@ -14,12 +14,17 @@ type BatchRead = { scope: string; count: number | null; failed: boolean };
+  * A batch confirmation cannot claim zero shared links until every selected
+  * project's authoritative history has been read for the same account. A failed
+  * read keeps the destructive confirmation locked; closing/reopening retries.
+- * Without a workspace identity no count is known (as for single-card delete);
+- * the daemon still owns the final stop-before-delete authorization.
++ * A session whose identity read has SETTLED with no workspace identity (the
++ * caller verifies this via `workspaceIdentitySettledSignedOut` — a bare null
++ * context also covers loading/unavailable reads, which must fail closed) has
++ * no share surface in scope (same invariant as the single-card flow), so it
++ * settles at zero without a read; the daemon still owns the final
++ * stop-before-delete authorization.
+  */
+ export function useBatchProjectShareCount(
+   ids: readonly string[],
+   context: WorkspaceCollabContext | null | undefined,
++  settledSignedOut = false,
+ ) {
+   const generation = currentWorkspaceAccountGeneration();
+   const scope = JSON.stringify([ids, workspaceAccountScopedCacheKey(context)]);
+@@ -65,10 +70,13 @@ export function useBatchProjectShareCount(
+   }, [scope, context, generation]);
+   const needsRead = ids.length > 0;
+   const current = result?.scope === scope ? result : null;
++  const shareFreeSession = needsRead && context == null && settledSignedOut;
+   return {
+-    count: current?.count ?? null,
+-    pending: needsRead && !!context && !current,
+-    failed: needsRead && (!context || current?.failed === true),
+-    generation: current?.count !== null && current?.count !== undefined ? generation : null,
++    count: shareFreeSession ? 0 : current?.count ?? null,
++    // An unresolved identity (loading / unavailable) stays pending: the
++    // confirmation keeps waiting instead of claiming share-free.
++    pending: needsRead && !shareFreeSession && (!context || !current),
++    failed: needsRead && !!context && current?.failed === true,
++    generation: shareFreeSession || (current?.count !== null && current?.count !== undefined) ? generation : null,
+   };
+ }
+diff --git a/apps/web/src/components/project-actions/useProjectDeleteFlow.ts b/apps/web/src/components/project-actions/useProjectDeleteFlow.ts
+index a37cc33f363..062034d4a26 100644
+--- a/apps/web/src/components/project-actions/useProjectDeleteFlow.ts
++++ b/apps/web/src/components/project-actions/useProjectDeleteFlow.ts
+@@ -30,8 +30,14 @@ export function useProjectDeleteFlow(input: {
+   onDelete?: ProjectDeleteHandler;
+   analyticsPage: TrackingProjectCollectionPage;
+   workspaceContext: WorkspaceCollabContext | null | undefined;
++  /**
++   * Whether a null `workspaceContext` is a SETTLED signed-out reading (from
++   * `workspaceIdentitySettledSignedOut`), never a bare null: loading and
++   * unavailable reads are also null and must fail closed. Defaults to false.
++   */
++  workspaceSignedOut?: boolean;
+ }) {
+-  const { onDelete, analyticsPage, workspaceContext } = input;
++  const { onDelete, analyticsPage, workspaceContext, workspaceSignedOut } = input;
+   const analytics = useAnalytics();
+   const [target, setTarget] = useState<Project | null>(null);
+   const [pending, setPending] = useState(false);
+@@ -40,8 +46,21 @@ export function useProjectDeleteFlow(input: {
+   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+   const accountGeneration = currentWorkspaceAccountGeneration();
+   const { history, status } = useProjectShareHistoryState(target && workspaceContext ? target.id : undefined, workspaceContext, 'delete-confirmation');
+-  const shareReadStatus = target && !workspaceContext ? 'error' : status;
+-  const activeShareCount = history ? history.publications.filter(publication => publication.status === 'active').length : null;
++  // A SETTLED signed-out session (verified by the caller via
++  // `workspaceIdentitySettledSignedOut`, never a bare null context, which
++  // also covers loading and unavailable reads) has no share surface in scope:
++  // publishing requires the collab identity it lacks, and the daemon's delete
++  // path owns stop-before-delete authorization server-side. Resolve that
++  // session to a settled, share-free reading — a forced 'error' here made
++  // every signed-out confirm dead-end on the generic retry copy with a
++  // permanently disabled accept button, so local-first deletes never issued.
++  // A null-but-unresolved context stays fail closed: an identity the read has
++  // not answered for must not be treated as anonymity.
++  const shareFreeSession = workspaceContext == null && workspaceSignedOut === true;
++  const shareReadStatus = shareFreeSession ? 'ready' : status;
++  const activeShareCount = shareFreeSession
++    ? 0
++    : history ? history.publications.filter(publication => publication.status === 'active').length : null;
+ 
+   const request = useCallback((project: Project) => {
+     setFailed(false);
+diff --git a/apps/web/tests/collab/workspace-identity-settled-signed-out.test.ts b/apps/web/tests/collab/workspace-identity-settled-signed-out.test.ts
+new file mode 100644
+index 00000000000..d513cc894bc
+--- /dev/null
++++ b/apps/web/tests/collab/workspace-identity-settled-signed-out.test.ts
+@@ -0,0 +1,30 @@
++import { describe, expect, it } from 'vitest';
++import type { WorkspaceCollabContext } from '@open-design/contracts';
++import type { WorkspaceContextState } from '../../src/collab/useWorkspaceContext';
++import { workspaceIdentitySettledSignedOut } from '../../src/collab/workspace-identity-signed-out';
++
++const context = { workspaceId: 'ws' } as unknown as WorkspaceCollabContext;
++const state = (overrides: Partial<WorkspaceContextState>): WorkspaceContextState =>
++  ({ context: null, loading: false, ...overrides });
++
++describe('workspaceIdentitySettledSignedOut', () => {
++  it('is false whenever an identity is present', () => {
++    expect(workspaceIdentitySettledSignedOut(state({ context }))).toBe(false);
++  });
++
++  it('is false while the identity read is loading', () => {
++    expect(workspaceIdentitySettledSignedOut(state({ loading: true }))).toBe(false);
++  });
++
++  it.each(['unavailable', 'reauth-required'] as const)('is false on failure %s', (failure) => {
++    expect(workspaceIdentitySettledSignedOut(state({ failure }))).toBe(false);
++  });
++
++  it('is true on an unsupported (pre-workspace) daemon: headerless behavior is legal and no share surface can exist', () => {
++    expect(workspaceIdentitySettledSignedOut(state({ failure: 'unsupported' }))).toBe(true);
++  });
++
++  it('is true only when the read settled with no identity at all', () => {
++    expect(workspaceIdentitySettledSignedOut(state({}))).toBe(true);
++  });
++});
+diff --git a/apps/web/tests/components/DesignsTab.share-delete.test.tsx b/apps/web/tests/components/DesignsTab.share-delete.test.tsx
+index 48be1aa7f4f..7d74b99a771 100644
+--- a/apps/web/tests/components/DesignsTab.share-delete.test.tsx
++++ b/apps/web/tests/components/DesignsTab.share-delete.test.tsx
+@@ -12,7 +12,8 @@ const context: WorkspaceCollabContext = {
+   permissions: buildWorkspacePermissions({ role: 'owner', lifecycleState: 'active' }),
+ };
+ let workspaceContext: WorkspaceCollabContext | null = context;
+-vi.mock('../../src/collab/useWorkspaceContext', () => ({ useWorkspaceContext: () => ({ context: workspaceContext, loading: false }) }));
++let workspaceLoading = false;
++vi.mock('../../src/collab/useWorkspaceContext', () => ({ useWorkspaceContext: () => ({ context: workspaceContext, loading: workspaceLoading }) }));
+ vi.mock('../../src/providers/registry', () => ({
+   deleteLiveArtifact: vi.fn(), fetchLiveArtifacts: vi.fn(async () => []),
+   fetchProjectFiles: vi.fn(async () => []), liveArtifactPreviewUrl: () => '/preview',
+@@ -27,6 +28,7 @@ const request = vi.fn<typeof fetch>();
+ 
+ beforeEach(() => {
+   workspaceContext = context;
++  workspaceLoading = false;
+   remove.mockClear();
+   request.mockReset();
+   window.localStorage.clear();
+@@ -89,7 +91,7 @@ it('All Projects batch checks both selected projects and warns of the aggregate
+   expect(dialog.isConnected).toBe(false);
+ });
+ 
+-it('All Projects batch never deletes when workspace context is missing and no share count is known', () => {
++it('All Projects batch deletes without a workspace identity and waits on no share-state read', () => {
+   workspaceContext = null;
+   const other: Project = { ...project, id: 'project-2', name: 'Brand system' };
+   render(<DesignsTab projects={[project, other]} skills={[]} designSystems={[]} onOpen={vi.fn()} onOpenLiveArtifact={vi.fn()} onDelete={remove} />);
+@@ -98,8 +100,29 @@ it('All Projects batch never deletes when workspace context is missing and no sh
+   fireEvent.click(screen.getByText('Brand system').closest('.design-card') as HTMLElement);
+   fireEvent.click(screen.getByRole('button', { name: 'Delete selected' }));
+   const dialog = screen.getByRole('alertdialog');
++  // A signed-out session has no share surface in scope, so the confirmation
++  // settles without a read instead of reporting the generic retry error.
++  expect(within(dialog).queryByRole('alert')).toBeNull();
++  expect(within(dialog).getByRole('button', { name: 'Delete selected' })).toBeEnabled();
++  fireEvent.click(within(dialog).getByRole('button', { name: 'Delete selected' }));
++  expect(remove).toHaveBeenCalledTimes(2);
++  expect(remove.mock.calls.map(([id]) => id).sort()).toEqual(['project-1', 'project-2']);
++  expect(request.mock.calls.filter(([url]) => String(url).endsWith('/share-state'))).toHaveLength(0);
++});
++it('All Projects batch fails closed while the workspace read is loading', () => {
++  workspaceContext = null;
++  workspaceLoading = true;
++  const other: Project = { ...project, id: 'project-2', name: 'Brand system' };
++  render(<DesignsTab projects={[project, other]} skills={[]} designSystems={[]} onOpen={vi.fn()} onOpenLiveArtifact={vi.fn()} onDelete={remove} />);
++  fireEvent.click(screen.getByRole('button', { name: 'Select' }));
++  fireEvent.click(screen.getByText('Landing refresh').closest('.design-card') as HTMLElement);
++  fireEvent.click(screen.getByText('Brand system').closest('.design-card') as HTMLElement);
++  fireEvent.click(screen.getByRole('button', { name: 'Delete selected' }));
++  const dialog = screen.getByRole('alertdialog');
++  // A null context during loading is not proof of sign-out: the batch keeps
++  // waiting instead of claiming share-free.
+   expect(within(dialog).getByRole('button', { name: 'Delete selected' })).toBeDisabled();
+-  expect(within(dialog).getByRole('alert')).toBeVisible();
++  expect(within(dialog).queryByRole('alert')).toBeNull();
+   fireEvent.click(within(dialog).getByRole('button', { name: 'Delete selected' }));
+   expect(remove).not.toHaveBeenCalled();
+   expect(request.mock.calls.filter(([url]) => String(url).endsWith('/share-state'))).toHaveLength(0);
+diff --git a/apps/web/tests/components/RecentProjectsStrip.share-delete.test.tsx b/apps/web/tests/components/RecentProjectsStrip.share-delete.test.tsx
+index c0b024f0fcb..f9ae9d9e9f1 100644
+--- a/apps/web/tests/components/RecentProjectsStrip.share-delete.test.tsx
++++ b/apps/web/tests/components/RecentProjectsStrip.share-delete.test.tsx
+@@ -12,9 +12,10 @@ const context: WorkspaceCollabContext = {
+   permissions: buildWorkspacePermissions({ role: 'owner', lifecycleState: 'active' }),
+ };
+ let workspaceContext: WorkspaceCollabContext | null = context;
++let workspaceLoading = false;
+ vi.mock('../../src/collab/useWorkspaceContext', async (importOriginal) => ({
+   ...(await importOriginal<Record<string, unknown>>()),
+-  useWorkspaceContext: () => ({ context: workspaceContext, loading: false }),
++  useWorkspaceContext: () => ({ context: workspaceContext, loading: workspaceLoading }),
+ }));
+ vi.mock('../../src/providers/registry', () => ({
+   fetchProjectFileText: vi.fn(async () => null), fetchProjectFiles: vi.fn(async () => []),
+@@ -28,6 +29,7 @@ const remove = vi.fn(async (_id: string) => true);
+ const request = vi.fn<typeof fetch>();
+ beforeEach(() => {
+   workspaceContext = context;
++  workspaceLoading = false;
+   remove.mockClear(); request.mockReset(); vi.stubGlobal('fetch', request);
+   request.mockImplementation(async (url) => {
+     const path = String(url);
+@@ -58,7 +60,7 @@ it('Drafts batch delete warns for two active links across selected projects and
+   expect(remove).not.toHaveBeenCalled();
+ });
+ 
+-it('Drafts batch never deletes when workspace context is missing and no share count is known', () => {
++it('Drafts batch deletes without a workspace identity and waits on no share-state read', () => {
+   workspaceContext = null;
+   const { container } = render(<RecentProjectsStrip
+     heading="Drafts" space="drafts" projects={[project('project-1', 'Landing refresh'), project('project-2', 'Brand system')]}
+@@ -69,10 +71,38 @@ it('Drafts batch never deletes when workspace context is missing and no share co
+   fireEvent.click(container.querySelector('.recent-projects__select-check[aria-label="Brand system"]')!);
+   fireEvent.click(screen.getByRole('button', { name: 'Delete selected' }));
+   const dialog = screen.getByRole('alertdialog');
+-  expect(within(dialog).getByRole('button', { name: 'Delete selected' })).toBeDisabled();
+-  expect(within(dialog).getByRole('alert')).toBeVisible();
++  // A signed-out session has no share surface in scope, so the confirmation
++  // settles without a read instead of reporting the generic retry error.
++  expect(within(dialog).queryByRole('alert')).toBeNull();
++  expect(within(dialog).getByRole('button', { name: 'Delete selected' })).toBeEnabled();
+   fireEvent.click(within(dialog).getByRole('button', { name: 'Delete selected' }));
++  expect(remove).toHaveBeenCalledTimes(2);
++  expect(remove.mock.calls.map(([id]) => id).sort()).toEqual(['project-1', 'project-2']);
++  expect(request.mock.calls.filter(([url]) => String(url).endsWith('/share-state'))).toHaveLength(0);
++});
++it('Drafts single-card delete fails closed while the workspace read is loading, then deletes once it settles signed out', async () => {
++  workspaceContext = null;
++  workspaceLoading = true;
++  const props = {
++    heading: 'Drafts', space: 'drafts' as const,
++    projects: [project('project-1', 'Landing refresh')],
++    limit: 1, onOpen: vi.fn(), onDelete: remove,
++  };
++  const view = render(<RecentProjectsStrip {...props} />);
++  fireEvent.click(screen.getByRole('button', { name: 'More actions' }));
++  fireEvent.click(screen.getByRole('menuitem', { name: 'Delete' }));
++  const dialog = screen.getByRole('alertdialog');
++  // A null context during loading is not proof of sign-out: keep waiting.
++  expect(within(dialog).getByTestId('project-delete-confirm-accept')).toBeDisabled();
++  expect(within(dialog).queryByRole('alert')).toBeNull();
++  fireEvent.click(within(dialog).getByTestId('project-delete-confirm-accept'));
+   expect(remove).not.toHaveBeenCalled();
++  // The read settles with no identity: the confirm unlocks without a read.
++  workspaceLoading = false;
++  view.rerender(<RecentProjectsStrip {...props} />);
++  expect(within(screen.getByRole('alertdialog')).getByTestId('project-delete-confirm-accept')).toBeEnabled();
++  fireEvent.click(within(screen.getByRole('alertdialog')).getByTestId('project-delete-confirm-accept'));
++  await waitFor(() => expect(remove).toHaveBeenCalledExactlyOnceWith('project-1'));
+   expect(request.mock.calls.filter(([url]) => String(url).endsWith('/share-state'))).toHaveLength(0);
+ });
+ it('Drafts single-card delete keeps an exact refusal visible and retryable', async () => {
+diff --git a/apps/web/tests/components/project-delete-share-warning.test.tsx b/apps/web/tests/components/project-delete-share-warning.test.tsx
+index 4e7006de48e..9cfe9cc2371 100644
+--- a/apps/web/tests/components/project-delete-share-warning.test.tsx
++++ b/apps/web/tests/components/project-delete-share-warning.test.tsx
+@@ -9,8 +9,8 @@ const context: WorkspaceCollabContext = { workspaceId: 'ws', workspaceType: 'per
+ const project: Project = { id: 'project', name: 'Example', skillId: null, designSystemId: null, createdAt: 1, updatedAt: 1 };
+ const request = vi.fn<typeof fetch>();
+ const remove = vi.fn(async () => true);
+-function Harness() {
+-  const flow = useProjectDeleteFlow({ onDelete: remove, analyticsPage: 'home', workspaceContext: context });
++function Harness({ workspaceContext = context, workspaceSignedOut = false }: { workspaceContext?: WorkspaceCollabContext | null; workspaceSignedOut?: boolean } = {}) {
++  const flow = useProjectDeleteFlow({ onDelete: remove, analyticsPage: 'home', workspaceContext, workspaceSignedOut });
+   return <><button onClick={() => flow.request(project)}>Request delete</button><button onClick={() => void flow.commit()}>Invoke commit directly</button>{flow.target ? <ProjectDeleteConfirmDialog projectName={flow.target.name} activeShareCount={flow.activeShareCount} shareReadStatus={flow.shareReadStatus} pending={flow.pending} failed={flow.failed} onCancel={flow.cancel} onConfirm={() => void flow.commit()} /> : null}</>;
+ }
+ beforeEach(() => { request.mockReset(); remove.mockClear(); vi.stubGlobal('fetch', request); });
+@@ -18,6 +18,33 @@ afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
+ function history(statuses: ('active' | 'stopped')[]) {
+   return Response.json({ projectId: 'project', bindingExists: statuses.length > 0, hasEverShared: statuses.length > 0, publications: statuses.map((status, index) => ({ sourceFilePath: `${index}.html`, slug: `stable-${index}`, status })) });
+ }
++it('deletes from a settled signed-out session: no share surface in scope, no share-state read', async () => {
++  render(<Harness workspaceContext={null} workspaceSignedOut />);
++  fireEvent.click(screen.getByText('Request delete'));
++  expect(await screen.findByText('Delete "Example"?')).toBeVisible();
++  // No workspace identity means no share-state read to wait for: the confirm
++  // must settle immediately, not report the generic retry error.
++  expect(request).not.toHaveBeenCalled();
++  expect(screen.queryByRole('alert')).toBeNull();
++  expect(screen.getByTestId('project-delete-confirm-accept')).toBeEnabled();
++  fireEvent.click(screen.getByTestId('project-delete-confirm-accept'));
++  fireEvent.click(screen.getByText('Invoke commit directly'));
++  await waitFor(() => expect(remove).toHaveBeenCalledExactlyOnceWith('project'));
++  await waitFor(() => expect(screen.queryByRole('alertdialog')).toBeNull());
++});
++it('fails closed while the workspace identity is unresolved: no delete, no share-free shortcut, no read', () => {
++  render(<Harness workspaceContext={null} />);
++  fireEvent.click(screen.getByText('Request delete'));
++  // Loading / unavailable reads are also a null context; the confirm must keep
++  // waiting (loading copy, no alert) instead of claiming share-free.
++  expect(screen.queryByRole('alert')).toBeNull();
++  expect(screen.getByTestId('project-delete-confirm-accept')).toBeDisabled();
++  fireEvent.click(screen.getByTestId('project-delete-confirm-accept'));
++  fireEvent.click(screen.getByText('Invoke commit directly'));
++  expect(remove).not.toHaveBeenCalled();
++  expect(request).not.toHaveBeenCalled();
++});
++
+ it('counts active shares only and does not delete while reading the confirmation', async () => {
+   request.mockImplementation(async () => history(['active', 'stopped', 'active']));
+   render(<Harness />);

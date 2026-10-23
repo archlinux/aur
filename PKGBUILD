@@ -2,7 +2,7 @@
 
 pkgname=open-design-desktop
 pkgver=0.26.1
-pkgrel=1
+pkgrel=2
 _tag="open-design-v${pkgver}"
 # Upstream's pack step copies the node binary that runs the build into the
 # package. Arch's node links against system libraries (libsimdjson etc.), so
@@ -37,13 +37,39 @@ source=(
   "open-design-desktop.sh"
   "open-design-desktop.desktop"
   "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.xz"
+  "8538-cms-fingerprint-guard.patch"
+  "8927-signed-out-local-delete.patch"
 )
 sha256sums=('c39db18559cc18037a33d7144df13fad01b7956e9a07da7ce3b61d24041a6a01'
             '5ae2dfc1943cd7ec376a5c42086cb76b618f14e10c7e92ecbf901f376b6eea6e'
             '7f86112fce365ab0bc6cc5f7cd415b4bace62c1c2d6252584100b7580290ddd6'
-            'fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6')
+            'fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6'
+            'ced7b398a562f1f2627c2729b14c12fbbb3579e66551bbb88cf9c93899d9e0e2'
+            '1b3acb8ad9aee254de82036f24cb75e3f57e3ed495dfa42f9fab88da5c22a31a')
 
 _sourcedir="open-design-${_tag}"
+
+# Upstream fixes not yet in a release (approved, unmerged PRs):
+#   #8538 web sidecar dies on startup reading missing workspace sources (#9038)
+#   #8927 project deletion dead-ends for signed-out local sessions (#8926)
+# Already applied upstream means a release picked it up: skip it, and drop it here.
+_patches=(
+  8538-cms-fingerprint-guard.patch
+  8927-signed-out-local-delete.patch
+)
+
+prepare() {
+  cd "${srcdir}/${_sourcedir}"
+
+  local _patch
+  for _patch in "${_patches[@]}"; do
+    if patch -Rsfp1 --dry-run -i "${srcdir}/${_patch}" > /dev/null; then
+      echo "Skipping ${_patch}: already in this release"
+      continue
+    fi
+    patch -Np1 --no-backup-if-mismatch -i "${srcdir}/${_patch}"
+  done
+}
 
 build() {
   cd "${srcdir}/${_sourcedir}"

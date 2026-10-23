@@ -1,0 +1,91 @@
+Upstream: https://github.com/nexu-io/open-design/pull/8538 (head 8fa5a96dcc91a881b8b45b13bfa026b1cce4b7e7)
+Fixes the packaged startup failure: https://github.com/nexu-io/open-design/issues/9038
+
+diff --git a/apps/web/next.config.ts b/apps/web/next.config.ts
+index 13ee9b8e08c..a4136631565 100644
+--- a/apps/web/next.config.ts
++++ b/apps/web/next.config.ts
+@@ -195,11 +195,28 @@ export function cmsHostReleaseFingerprint(
+   ).digest('hex')}`;
+ }
+ 
++/**
++ * Whether this checkout still carries the workspace sources the CMS host release
++ * fingerprint reads.
++ *
++ * Ask this question about the inputs themselves. A packaged web payload ships
++ * `apps/web` sources inside `node_modules/@open-design/web`, so probing
++ * `WEB_ROOT/src` reports "present" for a layout that has no workspace root to
++ * read `apps/web/app/layout.tsx` from, and loading this config then dies with
++ * ENOENT before the server can start.
++ */
++export function hasCmsHostReleaseInputs(
++  workspaceRoot: string,
++  exists: (file: string) => boolean = existsSync,
++): boolean {
++  return CMS_HOST_RELEASE_INPUTS.every((file) => exists(resolve(workspaceRoot, file)));
++}
++
+ const nextConfig: NextConfig = {
+   env: {
+     // Embedded in the client at build time. Packaged servers use the already
+     // compiled client and need not retain source files to load this config.
+-    NEXT_PUBLIC_CMS_HOST_RELEASE: existsSync(resolve(WEB_ROOT, 'src/components/touchpoint-component.ts'))
++    NEXT_PUBLIC_CMS_HOST_RELEASE: hasCmsHostReleaseInputs(WORKSPACE_ROOT)
+       ? cmsHostReleaseFingerprint((file) => readFileSync(resolve(WORKSPACE_ROOT, file)))
+       : undefined,
+   },
+diff --git a/apps/web/tests/runtime/cms-host-release-fingerprint.test.ts b/apps/web/tests/runtime/cms-host-release-fingerprint.test.ts
+index 9b87e1e6910..04f1a914e7e 100644
+--- a/apps/web/tests/runtime/cms-host-release-fingerprint.test.ts
++++ b/apps/web/tests/runtime/cms-host-release-fingerprint.test.ts
+@@ -1,9 +1,12 @@
+-import { readFileSync } from "node:fs";
+-import { resolve } from "node:path";
++import { existsSync, readFileSync } from "node:fs";
++import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
++import { tmpdir } from "node:os";
++import { join, resolve } from "node:path";
+ import { describe, expect, it } from "vitest";
+ import {
+ 	CMS_HOST_RELEASE_INPUTS,
+ 	cmsHostReleaseFingerprint,
++	hasCmsHostReleaseInputs,
+ } from "../../next.config";
+ 
+ const workspaceRoot = resolve(process.cwd(), "../..");
+@@ -35,3 +38,34 @@ describe("CMS host release fingerprint", () => {
+ 		},
+ 	);
+ });
++
++describe("CMS host release fingerprint inputs", () => {
++	it("are present in the workspace checkout", () => {
++		expect(hasCmsHostReleaseInputs(workspaceRoot)).toBe(true);
++	});
++
++	it("are absent from a packaged payload that ships only the web package", async () => {
++		// Regression: the packaged web server ships `apps/web` inside
++		// `node_modules/@open-design/web`, so a probe of the web package's own
++		// `src` reports "present" for a tree with no workspace root. Reading the
++		// workspace-relative inputs then threw ENOENT while loading next.config,
++		// which killed the packaged web sidecar before it could serve.
++		const packagedRoot = await mkdtemp(join(tmpdir(), "open-design-packaged-web-"));
++		try {
++			const webPackageRoot = join(
++				packagedRoot,
++				"node_modules",
++				"@open-design",
++				"web",
++			);
++			const shipped = join(webPackageRoot, "src/components/touchpoint-component.ts");
++			await mkdir(join(webPackageRoot, "src/components"), { recursive: true });
++			await writeFile(shipped, "export const touchpoint = 1;\n");
++
++			expect(existsSync(shipped)).toBe(true);
++			expect(hasCmsHostReleaseInputs(packagedRoot)).toBe(false);
++		} finally {
++			await rm(packagedRoot, { force: true, recursive: true });
++		}
++	});
++});
