@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=hegn
+Comment=Cloud Hypervisor MicroVM sandbox manager and TUI for coding agents
+Exec=hegn
+Terminal=true
+Type=Application
+Icon=utilities-terminal
+StartupNotify=true
+Categories=Development;
+Keywords=firecracker;microvm;sandbox;tui;agent;

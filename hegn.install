@@ -1,0 +1,20 @@
+post_install() {
+  echo "=== hegn installed ==="
+  echo ""
+  echo "You can launch hegn via your application launcher or by running 'hegn' in your terminal."
+  echo ""
+  echo "Before the first VM start:"
+  echo "  hegn config init       # write ~/.config/hegn/config.toml"
+  echo "  hegn images download   # fetch and verify the pinned kernel and rootfs"
+  echo "  hegn doctor            # check KVM, Cloud Hypervisor, virtiofsd and images"
+  echo ""
+  echo "hegn needs access to /dev/kvm (add yourself to the 'kvm' group) and"
+  echo "Cloud Hypervisor, available as cloud-hypervisor or cloud-hypervisor-bin"
+  echo "from the AUR. virtiofsd is required for workspace sharing."
+  echo ""
+  echo "==============================="
+}
+
+post_upgrade() {
+  post_install
+}
