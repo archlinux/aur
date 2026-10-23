@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=gnome-shell-extension-dynamic-music-pill
-pkgver=1.4
+pkgver=1.6
 pkgrel=1
 pkgdesc="A highly customizable music widget for GNOME Shell"
 arch=(any)
@@ -10,8 +10,8 @@ license=(GPL-3.0-or-later)
 depends=(gnome-shell)
 optdepends=("cava: real-time visualizer")
 makedepends=(git jq)
-source=($pkgname::git+$url.git#tag=V$pkgver)
-sha256sums=('a5b3f6a04e3e00f9d3f5825914183e85ced93d081511adfed71d0c180f85e472')
+source=($pkgname::git+$url.git#tag=v$pkgver)
+sha256sums=('3ac878f588e78e04a66016abc232ee0565d4a5449ce62be8ece1a44cf88319a1')
 
 build() {
   cd $pkgname
