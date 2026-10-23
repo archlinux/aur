@@ -16,6 +16,7 @@ source=(
   "$_pkgname.tmpfiles"
   'https://raw.githubusercontent.com/laurent22/joplin/dev/.env-sample'
 )
+_imagesum='sha256:ed32018183f7771818f9d856b1bb9830b22424243496eae1ce08c957a42f296c'
 sha256sums=('2b4bd101041ea99d90d735b65b6bd54573e7424e57fc127c90082034c19c1cde'
             '2f3cea9bed6f79d7c93721dd1acb7c3b5c0368be264ae2894bd66034634e694d'
             '55455d0ebfcb6ef72b8c4fe934a69ccfd9089f881058933d7cba0c07d7aaffc0'
@@ -38,6 +39,11 @@ prepare() {
   echo "Looking up image '$_image:$pkgver' via '$_registry'"
   idigest="$(curl -s -H "Authorization: Bearer $token" -H "Accept: $_accept" "https://$_registry/v2/$_image/manifests/$pkgver" \
     | jq -r 'if .mediaType == "'"$_vndlist"'" then .manifests[0] else . end | .digest')"
+  if ! [ "$idigest" = "$_imagesum" ]; then
+    echo >&2 "Error: image checksum mismatch for '$_image:$pkgver'"
+    echo >&2 "(expected '$_imagesum', found '$idigest')"
+    exit 1
+  fi
   echo "Listing layers for manifest '$idigest'"
   curl -s -H "Authorization: Bearer $token" -H "Accept: $_vnd" "https://$_registry/v2/$_image/manifests/$idigest" \
     | jq -r '.layers[].digest' \
