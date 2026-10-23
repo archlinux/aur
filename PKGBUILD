@@ -3,8 +3,8 @@
 
 _repo_name=transcribe.cpp
 pkgname=transcribe-cpp-vulkan
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)'
 arch=('x86_64')
 url="https://github.com/handy-computer/${_repo_name}"
@@ -29,7 +29,7 @@ optdepends=(
 source=(
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('51b4b08bcdaa083849b626c3028a8bbc35d66e2dd992cd4f075b15f9733058d1')
+sha256sums=('96a3993c075770bf3ca7aeaa86cc55c3673c24d7176643b60cc6a1f46dcab4a5')
 
 build() {
   cmake -S "${_repo_name}-${pkgver}" -B build \
