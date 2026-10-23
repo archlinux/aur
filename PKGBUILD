@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 _pkgname=futo-notes
 pkgname=${_pkgname}-bin
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Fast, private, local-first notes"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("LICENSE.md::https://gitlab.futo.org/futo-notes/futo-notes/-/raw/v${pkgv
 source_x86_64=("${_appimage}::https://gitlab.futo.org/api/v4/projects/488/packages/generic/${_pkgname}/v${pkgver}/FUTO-Notes-${pkgver}-x86_64.AppImage")
 noextract=("${_appimage}")
 sha256sums=('808950f8388f37b47a07217fbb90ef2e3512fd60abd492f1abe4ea1507857a8a')
-sha256sums_x86_64=('758f3838c0edf720d306ffca87e623a07a3e0a1ad4874bbef0a0e156d9fa76ab')
+sha256sums_x86_64=('89579bef5fba5a6c5aeba585538c851045eb754dd6681cf36adfed6fa6bc1ba3')
 
 prepare() {
   chmod +x "${_appimage}"
