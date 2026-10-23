@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Toaster
+Comment=Live Strudel code from whatever is playing
+Exec=toaster
+Icon=toaster
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+StartupWMClass=Toaster
