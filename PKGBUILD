@@ -1,20 +1,19 @@
 # Maintainer: tyrolyean <tyrolyean@tyrolyean.net>
 # Co-Maintainer: danihek <danihek07@gmail.com>
 pkgname=hellwal
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="fast, extensible color palette generator"
 arch=('any')
 url="https://github.com/danihek/hellwal"
 license=('MIT')
 makedepends=('make')
 source=(
-	"https://github.com/danihek/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+	"https://github.com/danihek/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	)
 
-md5sums=('4e73daba38172090d4eaa7bbdd873f5c')
-sha256sums=('53f629f22bd80c95150fa8510c4c5f4969beec06bfd01ad33a5fdad3d56a357e')
-sha512sums=('9cd043a72ce7b69929b5ba4390e64a8443b8d39a56192b9e1f3dcb0099c48edadb50b7ac5a312d6a80a84321db8be025cbc51318149795a5266ef85de966e587')
+sha512sums=('900fa0d7191551013d1749ef1d87d69e492e6211b52b5496370484a6392ca5488315b681ade3447c8a7e7e46052ea28527618e56e4f0c613f5c7d11d16882945')
+b2sums=('de5b077e69346676621cc7e973e4ae21a0311c5738d95a904bbe106fdb57a3732dabc4042676790a9997734516368c8ae48941bd9c581b0763d20a72b931734a')
 
 
 build() {
