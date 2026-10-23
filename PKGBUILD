@@ -3,11 +3,11 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=moonscript
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 _rockrel=1
 pkgdesc='A programmer friendly language that compiles to Lua'
-arch=(any)
+arch=(x86_64)
 url="http://$pkgname.org"
 _url="https://github.com/leafo/$pkgname"
 license=(MIT)
@@ -22,12 +22,12 @@ conflicts=(moon
            moonbit
            moonstone)
 _archive="$pkgname-$pkgver"
-_rock="$_archive-$_rockrel.all.rock"
+_rock="$_archive-$_rockrel.linux-$CARCH.rock"
 _rockspec="$_archive-$_rockrel.rockspec"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
         "https://luarocks.org/manifests/leafo/$_archive-1.rockspec")
-sha256sums=('98fcf86d47694c81ccf9012e310f86d443ddf516e90b267ea33eb7ff1b0747c4'
-            'fd17e182432124f6a1f4f5a6ab714a544ba99791825bfc400723fd5baac330b8')
+sha256sums=('0458ba86359c9089f823f81e4198ea3f7d57c2f2773fb8a1364940ebdd802ac5'
+            '511deed7a87c31f36760e2bcc9fb856f0c0f0733e13d5ff05fadd58f8c87754c')
 
 build() {
 	cd "$_archive"
