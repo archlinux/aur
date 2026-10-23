@@ -1,0 +1,21 @@
+pkgbase = otf-furifont
+	pkgdesc = Japanese font that shows furigana on the font itself.
+	pkgver = v0.6.2
+	pkgrel = 1
+	url = https://github.com/antfu/furifont/releases/download/v0.6.2
+	arch = any
+	license = MIT
+	license = OFL-1.1
+	provides = otf-furifont
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSans-Regular.otf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSerif-Regular.otf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSansRomaji-Regular.otf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSerifRomaji-Regular.otf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/OFL.txt
+	sha256sums = b30d7e2da4ecbb2e8a9c737f8ac45a0b4ae3fca1585e1b2590d073498ebceb56
+	sha256sums = cbc907150ec01057991d34cfe9a47c26ff2521036c08048f0fdc6b5e1f068ac6
+	sha256sums = 705059476ce847c6f83cfe773248e3f63dcefecbeec9a9ad5fe445efffde1717
+	sha256sums = c9b6dc316fe999783d6495083ab24d9a77303b04364235a582e492fa442ac28d
+	sha256sums = fcac737e761ec63dbfbdce11030a1780161920d80315edba9c8beff1c2bac5a2
+
+pkgname = otf-furifont
