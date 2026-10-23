@@ -1,7 +1,7 @@
 pkgbase = blender-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)
-	pkgver = 5.2.2
-	pkgrel = 3
+	pkgver = 5.2.3
+	pkgrel = 1
 	url = https://blender.org
 	install = blender-bin.install
 	arch = x86_64
@@ -69,7 +69,7 @@ pkgbase = blender-bin
 	optdepends = hip-runtime-amd: HIP renderer AMD support
 	provides = blender
 	conflicts = blender
-	source = https://mirror.blender.org/release/Blender5.2/blender-5.2.2-linux-x64.tar.xz
-	sha256sums = 84098912789dc450e95697c4184fb8a90acbe5111c2ba4aede3fecb57806a168
+	source = https://mirror.blender.org/release/Blender5.2/blender-5.2.3-linux-x64.tar.xz
+	sha256sums = 78486c018b4443efe5e75ab54c290ed8c15abafd249b862c2c9ce2530a918eec
 
 pkgname = blender-bin
