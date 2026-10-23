@@ -3,30 +3,29 @@
 # Upstream: Fender Musical Instruments Corporation
 
 pkgname='fender-studio-pro-8'
-pkgver='8.1.2.113407'
+pkgver='8.2.0.114903'
 pkgrel='1'
 pkgdesc='Digital audio workstation (DAW), used to create, record, mix and master music'
 arch=('x86_64')
 url='https://www.fender.com/redirects/studiopro_product_page'
 license=('custom')
-depends=('alsa-lib' 'wayland' 'sdbus-cpp1' 'gcc-libs' 'nss' 'glibc' 'glib2'
-         'qt5-base' 'qt5-wayland' 'fontconfig' 'util-linux-libs' 'libunistring'
-         'libsecret' 'libglvnd' 'libxkbcommon')
-optdepends=('jack' 'vulkan-icd-loader' 'vulkan-driver' 'ffmpeg6.1' 'avahi' 'kwallet5')
+depends=('alsa-lib' 'wayland' 'sdbus-cpp' 'gcc-libs' 'glibc' 'fontconfig'
+         'openssl' 'util-linux-libs' 'libunistring' 'libglvnd' 'libxkbcommon')
+optdepends=('jack' 'pipewire' 'vulkan-icd-loader' 'vulkan-driver' 'ffmpeg8.1' 'avahi')
 provides=('clap-host' 'vst3-host')
 conflicts=('studio-one-7')
 options=(!strip)
 # Note: Please download "Installer for Linux (deb)" (studiopro8-x86_64.deb) manually from https://my.fender.com/products/detail/1781
 source=("studiopro8-x86_64.deb::local://studiopro8-x86_64.deb")
-sha256sums=('0699e73b52adfc0b6825b1490c89a8c5295768322bbcdbcbe7d847918893e93c')
+sha256sums=('df2bc17d41c1374d53f82f760ca365548fa71f939317226bbbd5b969db847457')
 
 package() {
   # Unpack package contents
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
 
-  # Fix permissions
-  chmod -R g-w "${pkgdir}/opt"
-  chmod -R g-w "${pkgdir}/usr"
+  # Fix permissions (777 -> 755)
+  chmod -R g-w,o-w "${pkgdir}/opt"
+  chmod -R g-w,o-w "${pkgdir}/usr"
 
   # Create our shared extensions location (based on deb pkg postinst script)
   mkdir -p "${pkgdir}/var/opt/Fender/Extensions"
