@@ -1,6 +1,6 @@
 pkgbase = ytmgo-bin
 	pkgdesc = A terminal-based YouTube Music client — search, download, queue, and play music from the keyboard (binary release)
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/anas1412/ytmgo
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = ytmgo-bin
 	conflicts = ytmgo
 	options = !strip
 	options = !debug
-	source = ytmgo-bin-1.6.3-icon.png::https://raw.githubusercontent.com/anas1412/ytmgo/v1.6.3/ytmgo-icon.png
-	source = ytmgo-bin-1.6.3-LICENSE::https://raw.githubusercontent.com/anas1412/ytmgo/v1.6.3/LICENSE
+	source = ytmgo-bin-1.6.4-icon.png::https://raw.githubusercontent.com/anas1412/ytmgo/v1.6.4/ytmgo-icon.png
+	source = ytmgo-bin-1.6.4-LICENSE::https://raw.githubusercontent.com/anas1412/ytmgo/v1.6.4/LICENSE
 	sha256sums = e55568bb0b1a1b44fd476d529b27dbaae9c1c4d7f567d295ba30d8186c1f8d58
 	sha256sums = 51f19ea24ca521fd6f8beb5b825112e06d5b7ae0a68d23dde6a52063cb1a3b53
-	source_x86_64 = ytmgo-bin-1.6.3-x86_64.tar.gz::https://github.com/anas1412/ytmgo/releases/download/v1.6.3/ytmgo_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0ace92ceb75a1a6b5b94bd83ad30254b636f3000c168786aed2181d3a22f52ae
-	source_aarch64 = ytmgo-bin-1.6.3-aarch64.tar.gz::https://github.com/anas1412/ytmgo/releases/download/v1.6.3/ytmgo_Linux_arm64.tar.gz
-	sha256sums_aarch64 = c6777f190c8992ac8208d457cae3d6045f41097b98d54a1a5ded4c02bcb9a298
+	source_x86_64 = ytmgo-bin-1.6.4-x86_64.tar.gz::https://github.com/anas1412/ytmgo/releases/download/v1.6.4/ytmgo_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 34dad8d1cee1164d43f0e00c606fffb51dbcd090204b6c0a1d9df9dcc6fcca59
+	source_aarch64 = ytmgo-bin-1.6.4-aarch64.tar.gz::https://github.com/anas1412/ytmgo/releases/download/v1.6.4/ytmgo_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 26d8dcd91ca4bc0be0123d87f34bc638b62a7f25f4a9e9c81ecda69ddd0ca58f
 
 pkgname = ytmgo-bin
