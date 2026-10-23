@@ -1,7 +1,7 @@
 pkgbase = python-flashinfer
 	pkgdesc = Kernel Library for LLM Serving
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flashinfer-ai/flashinfer
 	arch = x86_64
 	license = Apache-2.0
@@ -29,6 +29,12 @@ pkgbase = python-flashinfer
 	conflicts = python-flashinfer-rocm
 	options = !strip
 	source = flashinfer-0.7.1.tar.gz::https://github.com/flashinfer-ai/flashinfer/archive/refs/tags/v0.7.1.tar.gz
+	source = cutlass-b46b16d003484063bca4ed365e44095c4c6ed633.tar.gz::https://github.com/NVIDIA/cutlass/archive/b46b16d003484063bca4ed365e44095c4c6ed633.tar.gz
+	source = spdlog-c3aed4b68373955e1cc94307683d44dca1515d2b.tar.gz::https://github.com/gabime/spdlog/archive/c3aed4b68373955e1cc94307683d44dca1515d2b.tar.gz
+	source = cccl-16bd510c9b712e82b0ab6cbb630d8e29ba1f7116.tar.gz::https://github.com/NVIDIA/cccl/archive/16bd510c9b712e82b0ab6cbb630d8e29ba1f7116.tar.gz
 	sha256sums = 0cee9f4b51dc06729c7f103b0244e35927c83a287c6431898ab0b74759b8fdb7
+	sha256sums = eb32d2231412541cdaefedf82827903360b07762a0c8d554ca10a59951b321d0
+	sha256sums = 206184e0d3be5b4ea56343dca519d38d1fdf567b59dd9913e3e959ed4c6b0f4d
+	sha256sums = 8c4a1bebc5dfefaebbd40f21460951c62403f9c1f7c52b151b99cae82a02c844
 
 pkgname = python-flashinfer
