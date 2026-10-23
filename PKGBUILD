@@ -5,7 +5,7 @@ pkgver=0.8.8
 pkgrel=2
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
-url="https://github.com/danny-avila/LibreChat"
+url="https://github.com/LibreChat-AI/LibreChat"
 license=('MIT')
 depends=(gcc-libs glibc nodejs libvips)
 optdepends=(
@@ -20,7 +20,7 @@ backup=(etc/librechat/librechat.env etc/librechat/librechat.yaml)
 options=(!strip)
 
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/danny-avila/LibreChat/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/LibreChat-AI/LibreChat/archive/refs/tags/v$pkgver.tar.gz"
   librechat.install librechat.env librechat.service librechat.sysusers librechat-server.sh
 )
 sha256sums=('3a2811324c95f7d851ebf6a12a5238fd10a96190a473854d8bcbf05ca96e46b8'
