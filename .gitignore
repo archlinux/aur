@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!launch-script.sh
+!key-gunner.desktop
+!REUSE.toml
+!LICENSE
+!LICENSES
+!LICENSES/0BSD.txt

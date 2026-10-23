@@ -1,0 +1,19 @@
+pkgbase = key-gunner
+	pkgdesc = A game where you defeat waves of enemies by typing
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://zad-man.itch.io/key-gunner
+	arch = x86_64
+	license = custom:commercial
+	depends = wine
+	noextract = KeyGunnerPortable1.3.1.zip
+	source = hib://KeyGunnerPortable1.3.1.zip
+	source = launch-script.sh
+	source = key-gunner.desktop
+	source = key-gunner_iconsrc.png::https://img.itch.zone/aW1nLzE5NDI4MDIyLnBuZw==/original/tlzD7z.png
+	sha256sums = 1ff9ceee6afa689d9b23ad6c31edd80831c5cb50292e5b2ee1d2421c3cfe080c
+	sha256sums = ce80193e3b750688d83c6e663bcef441de1c529fea44834622172a4ab8e23beb
+	sha256sums = 65403ef470ce1b292aa19cef49daacf80bbdfd88609319baad5a49ea8d7ee3c8
+	sha256sums = 21b2763c4daee08cc6548fb3ca418bfe0c56b4b923a78a6c19692122e2cef5c4
+
+pkgname = key-gunner
