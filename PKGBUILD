@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=librechat
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
 url="https://github.com/LibreChat-AI/LibreChat"
@@ -24,8 +24,8 @@ source=(
   librechat.install librechat.env librechat.service librechat.sysusers librechat-server.sh
 )
 sha256sums=('3a2811324c95f7d851ebf6a12a5238fd10a96190a473854d8bcbf05ca96e46b8'
-            '063927ce15c895c49252b1d0e12dbf7aa15c6a335630576db7cee0c4beaf964f'
-            'c1996fb6baa3f6decfdf27cac916ab6a9eb49bd9ff28e5a350dc9396c96ff0e4'
+            '3783a51758c37fa1585a887e2ff8cce26422c831141f0b26dbceb811de3c58c7'
+            'a6b3e7a2c859d504a7274f0b6a8c5dce5d3549714874e7cae80016db55a586ec'
             '6d8d9cbf687b9978ca33be6ae270fe2a6a65938ee945d3dca5435531ba5cadf8'
             '98e0aa0ac2e301a82d1d9cb567f361cb86af09a9b7b7bf65a526098fc4789339'
             '0dc9d536ad4740e19ac8346a7e8372b5e65cd0653755db339edc126d019ea955')
@@ -76,8 +76,14 @@ package() {
   install -Dm644 "$srcdir/LibreChat-$pkgver/librechat.example.yaml" "$pkgdir/etc/librechat/librechat.yaml"
   install -Dm644 "$srcdir/librechat.env" "$pkgdir/etc/librechat/librechat.env"
 
-  # Add some docs
-  install -Dm644 "$srcdir/LibreChat-$pkgver"/{client/nginx.conf,rag.yml,README.md,CHANGELOG.md} -t "$pkgdir/usr/share/doc/$pkgname/" || true
+  # Add some docs. Files move between upstream releases, so install
+  # them one by one and skip any that are absent in this release
+  # (e.g. CHANGELOG.md was removed from the 0.8.8 tree).
+  for f in client/nginx.conf rag.yml README.md; do
+    if [ -f "$srcdir/LibreChat-$pkgver/$f" ]; then
+      install -Dm644 "$srcdir/LibreChat-$pkgver/$f" "$pkgdir/usr/share/doc/$pkgname/$(basename "$f")"
+    fi
+  done
 
   # Populate sample env on top of our defaults
   cat .env.example >>"$pkgdir/etc/librechat/librechat.env"

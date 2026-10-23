@@ -29,6 +29,8 @@ post_install() {
   chmod g+s /usr/lib/librechat
   chown -R librechat:librechat /usr/lib/librechat
   chown -R librechat:librechat /usr/share/webapps/librechat
+  # state dir for auto-generated credentials (LIBRECHAT_TEMP_CREDENTIALS_PATH)
+  install -dm750 -o librechat -g librechat /var/lib/librechat
 
   echo ""
   print_header "Next Steps"
@@ -75,6 +77,20 @@ post_upgrade() {
   echo ""
   print_header "LibreChat Upgrade Complete"
   echo ""
+
+  # LibreChat >= 0.8.8 refuses to start when well-known upstream example
+  # credential defaults are still configured. Detect them and tell the admin.
+  ENV=/etc/librechat/librechat.env
+  if [ -f "$ENV" ] && grep -qE '^JWT_SECRET=16f8c0ef4a5d391b26034086c628469d3f9f497f08163ab9b40137092f2909ef$|^JWT_REFRESH_SECRET=eaa5191f2914e30b9387fd84e254e4ba6fc51b4654968a9b0803b456a54b8418$' "$ENV"; then
+    echo ""
+    print_warning "Retired default JWT credentials detected in /etc/librechat/librechat.env"
+    print_info "LibreChat 0.8.8+ refuses to start with them. Replace both values with unique random ones:"
+    print_command "sudo vi /etc/librechat/librechat.env"
+    print_info "Generate each value with: openssl rand -hex 32"
+    print_info "Note: rotating JWT secrets signs all users out. Do NOT change CREDS_KEY/CREDS_IV."
+    echo ""
+  fi
+
   post_install
 }
 
