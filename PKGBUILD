@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.101'
-pkgrel='4'
+pkgrel='5'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -236,6 +236,44 @@ if command -v systemd-tmpfiles >/dev/null 2>&1 ; then
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/skywire.conf 2>/dev/null || true
 fi
 
+# A newer binary from the update channel survives the upgrade, see skywire.install.
+_kept=/var/lib/skywire/pkg-kept
+
+# _ver_gt reports whether Go module version $1 is newer than $2, comparing the
+# x.y.z part first and treating a pre-release as older than its release.
+_ver_gt() {
+  local a=${1#v} b=${2#v} ab bb ap bp
+  ab=${a%%-*}; bb=${b%%-*}; ap=${a#"$ab"}; bp=${b#"$bb"}
+  if [[ $ab != "$bb" ]]; then
+    [[ $(printf '%s\n%s\n' "$ab" "$bb" | sort -V | tail -1) == "$ab" ]]
+    return
+  fi
+  [[ -z $ap ]] && { [[ -n $bp ]]; return; }
+  [[ -z $bp ]] && return 1
+  [[ $ap != "$bp" && $(printf '%s\n%s\n' "$ap" "$bp" | sort -V | tail -1) == "$ap" ]]
+}
+
+_restore_newer() {
+  local _old _new
+  [[ -f $_kept/version && -x $_kept/skywire ]] || return 1
+  grep -qs '^ALLOW_PACKAGE_DOWNGRADE=1' /etc/skywire.conf && { rm -rf "$_kept"; return 1; }
+  _old=$(<"$_kept/version")
+  _new=$(/opt/skywire/bin/skywire -b 2>/dev/null | head -1 | tr -d '[:space:]')
+  if [[ -z $_old || -z $_new ]] || ! _ver_gt "$_old" "$_new"; then
+    rm -rf "$_kept"
+    return 1
+  fi
+  echo "keeping the installed skywire $_old, newer than the package's $_new (ALLOW_PACKAGE_DOWNGRADE=1 in /etc/skywire.conf overrides)"
+  install -m 0755 "$_kept/skywire" /opt/skywire/bin/skywire
+  for _f in skywire.wasm.gz skywire.wasm.json; do
+    [[ -f $_kept/$_f ]] && install -m 0644 "$_kept/$_f" "/opt/skywire/bin/$_f"
+  done
+  rm -rf "$_kept"
+  return 0
+}
+_restored=0
+[ "$1" = configure ] && [ -n "$2" ] && _restore_newer && _restored=1
+
 # File caps for VPN apps + low-port hypervisor binds. Survives
 # User= changes; required for the user-mode unit (which can't be
 # granted ambient caps).
@@ -249,6 +287,10 @@ fi
 # longer ships the file — there's nothing for dpkg to overwrite.
 [[ ! -f /etc/skywire.conf ]] && skywire cli config gen -pqQ /etc/skywire.conf
 
+if [ "$_restored" = 1 ]; then
+  skywire autoconfig --no-restart
+  exit 0
+fi
 skywire autoconfig
 
 # On upgrade, restart every package-shipped service that's
@@ -265,6 +307,22 @@ for _unit in skywire.service skywire-autoconfig.service \
     systemctl try-restart "$_unit" 2>/dev/null || true
 done
 POSTINST_EOF
+
+  cat > "${srcdir}/preinst.sh" <<'PREINST_EOF'
+#!/bin/bash
+set -e
+_kept=/var/lib/skywire/pkg-kept
+if [ "$1" = upgrade ]; then
+  rm -rf "$_kept"
+  [[ -x /opt/skywire/bin/skywire ]] || exit 0
+  mkdir -p "$_kept"
+  cp -p /opt/skywire/bin/skywire "$_kept/skywire"
+  for _f in skywire.wasm.gz skywire.wasm.json; do
+    [[ -f /opt/skywire/bin/$_f ]] && cp -p "/opt/skywire/bin/$_f" "$_kept/$_f" || true
+  done
+  "$_kept/skywire" -b 2>/dev/null | head -1 | tr -d '[:space:]' > "$_kept/version"
+fi
+PREINST_EOF
 
   cat > "${srcdir}/prerm.sh" <<'PRERM_EOF'
 #!/bin/bash
