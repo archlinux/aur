@@ -1,8 +1,9 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-crypt-random-tesha2
 pkgver=0.01
-pkgrel=12
+pkgrel=13
 pkgdesc='Random numbers using timer/schedule entropy, aka userspace voodoo entropy'
 arch=(any)
 license=(PerlArtistic GPL)
