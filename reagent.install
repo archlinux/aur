@@ -4,7 +4,7 @@ ReAgent is installed at /opt/reagent (a self-contained venv on Python 3.11).
 
 Two one-time steps before the first plan:
 
-  reagent-download-data ~/.local/share/reagent
+  reagent-download-data "${REAGENT_DATA:-${XDG_DATA_HOME:-$HOME/.local/share}/reagent}"
   reagent build-stock-cache
 
 The first pulls the pretrained USPTO expansion policy, the filter policy and

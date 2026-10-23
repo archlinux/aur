@@ -1,6 +1,6 @@
 # Maintainer: Partha Pratim Gogoi 160270614+rugbedbugg@users.noreply.github.com
 pkgname=reagent
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Agentic retrosynthesis planner scoring routes on seven objectives with RDKit-grounded chemistry"
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/reagent-$pkgve
         'requirements.lock'
         'reagent.sh'
         'reagent-download-data.sh')
-sha256sums=('8105e34e4c594c175a9fbf5b2070da520358efc2efeeb9ac2dd47ebcf649c696'
-            '77e6ec5e25d9255824884e5b360797bd0c69501230d525ada52d198384aa75c6'
-            '583982a4cd3c6f918313a1520ad3fad40a87025be4ba76e40a24b57d6158598f'
+sha256sums=('678014f220ac1b7363b33e1cb093022289dcc42d35b5e2b7651efdb8c04a5e5d'
+            'e6129533571e4e1fd554f198540b1bc0be99bb70f943a995d6bfb8142e072355'
+            'fc643050eb2c7dfbf14cebe09ca9c8257a1eec5648f74825d46f88f07c182c46'
             '86688a17f0a5c685a67dfc40fed579150d89845014e3af904518a0568273c6af')
 
 _srcdir="$pkgname-$pkgver"
