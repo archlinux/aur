@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=zapfast-bin
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ install="${pkgname}.install"
 # Nothing beyond libc is linked directly; winit and glutin dlopen these at
 # startup, and this is a GUI-only application, so all of them have to be
 # there for it to run at all.
-depends=('alsa-lib' 'alsa-plugins' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxrandr')
+depends=('alsa-lib' 'libpipewire' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxrandr')
 optdepends=('org.freedesktop.secrets: archive encryption key storage'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')
@@ -21,8 +21,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/zapfast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('0cac7c7dda1326265c9a16dcc562ba6d07bd0b8ae5d534f3529b786760036663')
-sha256sums_aarch64=('78abc39fc2f455a3ea2130835c1e62c5542e34923ee01a5ba4be741922463ab3')
+sha256sums_x86_64=('a6845c8b39b93379620c2384d8e3d467e1a5c5dd2facd1ae8b11062e0dd3279c')
+sha256sums_aarch64=('0e7aba93d3f5149c0dee65d26f9bed81093aec289649bb77f534d5a376a35d8e')
 
 package() {
   local target
