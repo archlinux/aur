@@ -1,5 +1,5 @@
 pkgbase = libspecbleach-git
-	pkgdesc = C library for audio noise reduction
+	pkgdesc = C library for audio noise reduction. Contains extras
 	pkgver = r216.f63b64b
 	pkgrel = 1
 	arch = i686
