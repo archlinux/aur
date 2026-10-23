@@ -1,0 +1,17 @@
+pkgbase = falconsdr
+	pkgdesc = Wideband SDR ATC/radio scanner - records only the transmissions it stops on
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/rafafunt/FalconSDR
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libusb
+	depends = hicolor-icon-theme
+	depends = systemd
+	optdepends = ffmpeg: MP3 recording output (system binary preferred, bundled fallback otherwise)
+	provides = falconsdr
+	conflicts = smartscanatc
+	source = https://github.com/rafafunt/FalconSDR/releases/download/v0.9.0/falconsdr_0.9.0_amd64.deb
+	sha256sums = 36842975a8de0835b69753b0030bc63397692f0d8bd762ec7c966c639d63d0a5
+
+pkgname = falconsdr
