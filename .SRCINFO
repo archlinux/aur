@@ -1,6 +1,6 @@
 pkgbase = calibre-bin
 	pkgdesc = Official binary version Calibre
-	pkgver = 9.16.0
+	pkgver = 9.17.0
 	pkgrel = 1
 	url = https://download.calibre-ebook.com
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = calibre-bin
 	conflicts = calibre-git
 	options = !strip
 	source = share.tar.xz
-	source = https://download.calibre-ebook.com/9.16.0/calibre-9.16.0-x86_64.txz
-	source = calibre-9.16.0.tar.gz::https://github.com/kovidgoyal/calibre/archive/refs/tags/v9.16.0.tar.gz
+	source = https://download.calibre-ebook.com/9.17.0/calibre-9.17.0-x86_64.txz
+	source = calibre-9.17.0.tar.gz::https://github.com/kovidgoyal/calibre/archive/refs/tags/v9.17.0.tar.gz
 	sha256sums = c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a
-	sha256sums = 03cd4fda43de23d65405a3c90b924bc4a5c84753e388589d4ca343d9ba561a1d
-	sha256sums = 80eab5891ee9881883d65fcfc334969e3c3ee0b6c2e5a3a140f8e1f590eda419
+	sha256sums = 953e4512a6482848cd803c88b6d942e6afca65dc3b67c7d1353ae048d616de53
+	sha256sums = fabfeae685e219b740306a615705075be86c95dc2a5352675851c983249ea2ff
 
 pkgname = calibre-bin
