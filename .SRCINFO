@@ -1,6 +1,6 @@
 pkgbase = stickies-bin
 	pkgdesc = Local sticky notes for Linux Wayland with Layer Shell v4+
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/0atxl/stickies
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = stickies-bin
 	depends = pango>=1.56
 	depends = sqlite
 	depends = librsvg
-	provides = stickies=0.10.1
+	provides = stickies=0.10.2
 	conflicts = stickies
 	options = !debug
 	options = !strip
-	source = https://github.com/0atxl/stickies/releases/download/v0.10.1/stickies-0.10.1-1-x86_64.pkg.tar.zst
-	sha256sums = d06ffdddd93bc913458f9a268111fa91061f59ebb5756deb1e5b026ba45a45b5
+	source = https://github.com/0atxl/stickies/releases/download/v0.10.2/stickies-0.10.2-1-x86_64.pkg.tar.zst
+	sha256sums = 0d669363b270d890fa6cfba8085f8259f8ea154dfa65a955d57637fb5aae534f
 
 pkgname = stickies-bin
