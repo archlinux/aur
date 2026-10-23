@@ -1,6 +1,6 @@
 pkgbase = openxlr
 	pkgdesc = A Wave Link replacement for Linux: hardware controls, a PipeWire submixer and an OpenDeck plugin for the Elgato Wave XLR Pro, XLR Dock, Wave XLR, MK.2 family and Wave:3
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/emaspa/openxlr
 	install = openxlr.install
@@ -29,7 +29,9 @@ pkgbase = openxlr
 	optdepends = gdk-pixbuf2: SVG application icons in the UI
 	optdepends = librsvg: SVG application icons in the UI
 	options = !strip
-	source = openxlr-0.2.0.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 21e6f24d2b4902aaf93ae74cdaf1107c4add192bce65cd437026e69526ca68cb
+	backup = etc/chromium/native-messaging-hosts/com.emaspa.openxlr.browser.json
+	backup = etc/opt/chrome/native-messaging-hosts/com.emaspa.openxlr.browser.json
+	source = openxlr-0.2.1.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 691bd61789a0cc3bb42d3312ab38600d6061a3ee8f183f1a6a9bfec028a4bf0a
 
 pkgname = openxlr

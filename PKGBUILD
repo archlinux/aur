@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: hardware controls, a PipeWire submixer and an OpenDeck plugin for the Elgato Wave XLR Pro, XLR Dock, Wave XLR, MK.2 family and Wave:3"
 arch=('x86_64')
@@ -15,6 +15,8 @@ optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'gdk-pixbuf2: SVG application icons in the UI'
             'librsvg: SVG application icons in the UI')
 install=openxlr.install
+backup=('etc/chromium/native-messaging-hosts/com.emaspa.openxlr.browser.json'
+        'etc/opt/chrome/native-messaging-hosts/com.emaspa.openxlr.browser.json')
 # The receipt below hashes the payload; makepkg must not strip it afterwards.
 options=('!strip')
 
@@ -27,7 +29,7 @@ if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     depends+=(qt6-websockets)
 fi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('21e6f24d2b4902aaf93ae74cdaf1107c4add192bce65cd437026e69526ca68cb')
+sha256sums=('691bd61789a0cc3bb42d3312ab38600d6061a3ee8f183f1a6a9bfec028a4bf0a')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -60,6 +62,12 @@ WRAP
 exec /usr/lib/openxlr/tui/openxlr-tui "$@"
 WRAP
   chmod 755 "$pkgdir/usr/bin/openxlr-daemon" "$pkgdir/usr/bin/openxlr" "$pkgdir/usr/bin/openxlr-tui"
+
+  # Native messaging for the separately installed browser companion.
+  install -Dm644 browser/native-host.json \
+    "$pkgdir/etc/chromium/native-messaging-hosts/com.emaspa.openxlr.browser.json"
+  install -Dm644 browser/native-host.json \
+    "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.emaspa.openxlr.browser.json"
 
   install -Dm644 packaging/70-openxlr.rules "$pkgdir/usr/lib/udev/rules.d/70-openxlr.rules"
   install -Dm644 packaging/50-xlr-dock-capture-hold.conf \
