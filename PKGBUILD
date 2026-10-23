@@ -11,7 +11,7 @@ _appname=_${_pkgname}
 pkgname=${_cratename}
 pkgdesc="A high-performance filesystem navigation engine"
 
-pkgver=0.2.11
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc' 'libgcc')
 provides=("${_appname}"{,d})
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download" "LICENSE")
-sha256sums=('a8b02efe64d9213e71dd4c7541327b8214e45937192e90c1570b7fbce8af8653'
+sha256sums=('78ed014e11f270026f55ba012c24db8ed67287b637bc8de5063bf2703a399a56'
             '0e90e8d18a1aac520d071d3c06ffc5e7123671913d0e9d7c36843b16fa2beb1b')
 
 
