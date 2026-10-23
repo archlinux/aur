@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=toaster
 pkgver=0.4.11
-pkgrel=2
+pkgrel=1
 pkgdesc='Hears whatever is playing and writes it out as live Strudel code, with visuals'
 arch=(
     'x86_64'
