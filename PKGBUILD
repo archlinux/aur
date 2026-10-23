@@ -1,5 +1,5 @@
-# Maintainer: bahdotsh <appu.yess@gmail.com>
-# Contributor: 9M2PJU <9m2pju@gmail.com>
+# Maintainer: 9M2PJU <9m2pju@gmail.com>
+# Contributor: bahdotsh (upstream author)
 pkgname=hopchat-git
 pkgver=0.1.0.r0.g0000000
 pkgrel=1
@@ -16,20 +16,38 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
-    printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # With tags: 0.1.0.r12.gabc1234. Before the first tag, git describe fails
+  # and we fall back to the Cargo.toml version plus the commit count.
+  if desc="$(git describe --long --tags 2>/dev/null)"; then
+    printf '%s\n' "$desc" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf '%s.r%s.g%s\n' \
+      "$(grep -m1 '^version' Cargo.toml | cut -d'"' -f2)" \
+      "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  fi
+}
+
+prepare() {
+  cd "$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
-  cargo test --locked --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --release
 }
 
 package() {
