@@ -1,0 +1,18 @@
+pkgbase = python-nvidia-cutlass-dsl-libs-base
+	pkgdesc = NVIDIA CuTe DSL: MLIR bindings and profiler
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = https://pypi.org/project/nvidia-cutlass-dsl-libs-base/
+	arch = x86_64
+	license = LicenseRef-NVIDIA-Software-License-Agreement
+	makedepends = python-installer
+	depends = python>=3.14
+	depends = python<3.15
+	depends = python-nvidia-cutlass-dsl-libs-core=4.8.0
+	noextract = nvidia_cutlass_dsl_libs_base-4.8.0-cp314-cp314-manylinux_2_28_x86_64.whl
+	options = !strip
+	options = !debug
+	source = https://files.pythonhosted.org/packages/d1/d2/22980e2fded6fb7232b027fe1afb1a93a4b999cba293deeaf188f007e48e/nvidia_cutlass_dsl_libs_base-4.8.0-cp314-cp314-manylinux_2_28_x86_64.whl
+	sha256sums = 728abf1bc065fa950ad4f4506928300d7e32f3148312b93f83f3f2e8f756329a
+
+pkgname = python-nvidia-cutlass-dsl-libs-base
