@@ -1,6 +1,6 @@
 # Maintainer: Aleks Ozolins <aleks@ozolins.xyz>
 pkgname=orgwarrior
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A taskwarrior-style command line for Org mode's agenda, through your running Emacs"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'emacs')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/o/orgwarrior/orgwarrior-$pkgver.tar.gz")
-sha256sums=('49c2dbed048617382f58cb387f77d0f3383c694dca6a4194c778ea3fcb7abca2')
+sha256sums=('6e3f764ae027e1fd9e01f6afbbe21078daf5ccfa767a602f5e47c709e07afc65')
 
 build() {
   cd "$pkgname-$pkgver"
