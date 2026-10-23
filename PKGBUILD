@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cadcraft
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Autodesk AutoCAD'
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('fb8df3ce93c0d8dc7702f95683197fd8f50c1af210e382b05627020ed862b29f')
+sha256sums=('374177d50bd52ee38d724956f823741e8ac5f7e469fba049df3f421882820868')
 
 _srcenv() {
 	cd "$_archive"
