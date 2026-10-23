@@ -3,7 +3,7 @@
 # Submit by pushing this, viper-synapse.install and the generated .SRCINFO (makepkg --printsrcinfo > .SRCINFO) to
 #   ssh://aur@aur.archlinux.org/viper-synapse-bin.git
 pkgname=viper-synapse-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Razer device settings: key bindings, macros, lighting and sensitivity, in a Synapse-style window"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('fontconfig' 'freetype2' 'libglvnd' 'libx11' 'libxi' 'libxcursor' 'libx
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 install=viper-synapse.install
 source=("$url/releases/download/v$pkgver/ViperSynapse-$pkgver-linux-x64.tar.gz")
-sha256sums=('77ba932c15a37208100e8f74423b357124a337e3c88b90fe61d2f22a1e89a452')
+sha256sums=('a02e61dd2c0b0fcb10e88634ba8a25a5fe5f477163d11e004527024be733831e')
 noextract=("ViperSynapse-$pkgver-linux-x64.tar.gz")
 
 prepare() {
