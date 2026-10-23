@@ -1,5 +1,5 @@
 pkgname=stickies
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='Local sticky notes for Linux Wayland with Layer Shell v4+'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('cairo' 'dbus' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'graphene'
          'libgcc' 'pango>=1.56' 'sqlite' 'librsvg')
 makedepends=('rust>=1:1.92' 'pkgconf' 'desktop-file-utils')
 options=('!debug')
-source=("https://github.com/0atxl/stickies/releases/download/v0.10.1/stickies-${pkgver}-src.tar.gz")
-sha256sums=('5a3bce4f2ddb8c519af81dfbdd1d35c422e70a9045ec7e49458adea494ca1940')
+source=("https://github.com/0atxl/stickies/releases/download/v0.10.2/stickies-${pkgver}-src.tar.gz")
+sha256sums=('be70277da10a4ab870006c6e3bd203ac6e176e91076e0ec2c54559284293211c')
 _target=x86_64-unknown-linux-gnu
 
 prepare() {
@@ -41,12 +41,8 @@ package() {
     install -Dm644 data/dev.stickies.Stickies.png \
         "$pkgdir/usr/share/pixmaps/dev.stickies.Stickies.png"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/stickies/LICENSE"
-    local notice
-    for notice in assets/fonts/*-LICENSE.txt; do
-        install -Dm644 "$notice" "$pkgdir/usr/share/licenses/stickies/fonts/${notice##*/}"
-    done
-    install -d "$pkgdir/usr/share/licenses/stickies/rust"
-    cp -r packaging/notices/. "$pkgdir/usr/share/licenses/stickies/rust/"
+    install -Dm644 packaging/THIRD-PARTY-NOTICES.txt \
+        "$pkgdir/usr/share/licenses/stickies/THIRD-PARTY-NOTICES.txt"
     install -Dm644 SOURCE-INFO.txt "$pkgdir/usr/share/doc/stickies/SOURCE-INFO.txt"
     install -Dm644 packaging/README.md "$pkgdir/usr/share/doc/stickies/packaging.md"
 }
