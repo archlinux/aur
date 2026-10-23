@@ -1,0 +1,12 @@
+pkgbase = ttf-kerberos
+	pkgdesc = Serif font family for long-form reading on paper and screens
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://jul-sh.github.io/Kerberos/
+	arch = any
+	license = OFL-1.1-RFN
+	conflicts = ttf-kerberos-variable
+	source = ttf-kerberos-1.4.1.zip::https://github.com/jul-sh/Kerberos/releases/download/v1.4.1/Kerberos-1.4.1.zip
+	sha256sums = 3c07e99c092acbe1552133898127a581a492f74d1e326cc834e081e6f175002f
+
+pkgname = ttf-kerberos
