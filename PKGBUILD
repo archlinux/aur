@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Play Snake on the command line!"
 
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('5ff859689a7993b88bedd9e49b0d899d82063446c9cd09a849e34436b77ab0e5')
-sha256sums_i686=('4c56dbda3ae9c5da55e5799a41ab32e8c4abfb5d36f56628029a8e827a6e143a')
-sha256sums_aarch64=('7827f9eae9ddb166c0c84c0cd5445f3b4806b0f4e6261348dd4ae423901067b3')
+sha256sums_x86_64=('ac760bf9fb57f5cbdedf5fc775eb60c1cda102d957c0702758dfd32974045b65')
+sha256sums_i686=('5269b1cd53afbf6bb2c4f37adc863643a9fbca5458037f33e59f3a1d1589429b')
+sha256sums_aarch64=('5bfc9d3e84714ace5f6384027a4a3e686aef2f586f5fd0f008dffe43ba9b5061')
 
 
 package() {
