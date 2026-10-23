@@ -75,6 +75,9 @@ build() {
   cd "${srcdir}/${_sourcedir}"
 
   export PATH="${srcdir}/node-v${_nodever}-linux-x64/bin:${PATH}"
+  # onnxruntime-node's postinstall otherwise fetches its CUDA runtime, and dies
+  # on hosts whose nvcc reports a CUDA version it doesn't know (13+).
+  export ONNXRUNTIME_NODE_INSTALL_CUDA=skip
 
   _pnpm() { npx --yes pnpm@10.33.2 "$@"; }
 
