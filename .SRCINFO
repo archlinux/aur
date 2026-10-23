@@ -1,0 +1,18 @@
+pkgbase = pdg
+	pkgdesc = Zero-install, pure-CPU text-to-speech engine with an embedded model
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/akhenakh/pdg
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = GPL-3.0-or-later
+	makedepends = go>=1.27
+	optdepends = pipewire-audio: pw-play/pw-cat playback
+	optdepends = libpulse: paplay playback
+	optdepends = alsa-utils: aplay playback
+	optdepends = ffmpeg: ffplay playback
+	source = pdg-0.2.1.tar.gz::https://github.com/akhenakh/pdg/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 9c7ae195194055223fd3d51236bec5133a7d780f8a0f924dd69b74b0d6671881
+
+pkgname = pdg
