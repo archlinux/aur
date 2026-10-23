@@ -1,6 +1,6 @@
 _pkgname=roam-research
 pkgname=roam-research
-pkgver=0.0.40
+pkgver=0.0.41
 pkgrel=1
 pkgdesc="A note-taking tool for networked thought"
 arch=('any')
@@ -13,7 +13,7 @@ source=(
 	"$_pkgname-$pkgver.tgz::https://roam-electron-deploy.s3.us-east-2.amazonaws.com/${_pkgname}_${pkgver}_amd64.deb"
 	"LICENSE"
 )
-md5sums=('4cc70176a1e4a26243c6706e313dc3cd'
+md5sums=('eb5736f184e66a385f707c9cb412367c'
          '34234c4e196ceeaf00e4ee7f29b9fb63')
 
 prepare() {
