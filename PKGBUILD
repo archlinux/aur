@@ -4,11 +4,11 @@ pkgbase=srsran-4g-git
 pkgname=$pkgbase
 _pkgname=srsRAN_4G
 pkgver=25.10.0.r14.gbef8680
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SDR 4G software suite from Software Radio Systems (SRS)'
 arch=('x86_64' 'aarch64')
 url='https://www.srsran.com'
-license=('AGPL-3.0-only')
+license=('AGPL-3.0-or-later')
 depends=(
   'boost-libs'   # boost libraries
   'fftw'         # discrete Fourier transform
