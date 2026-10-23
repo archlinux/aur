@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkgname=webhookd
 pkgname=webhookd-bin
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='A very simple webhook server launching shell scripts'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('webhookd')
 conflicts=('webhookd')
 depends=('glibc')
 source_x86_64=("$_pkgname-$pkgver-$CARCH.tgz::$url/releases/download/v$pkgver/webhookd-linux-amd64.tgz")
-sha256sums_x86_64=('9ce7ee86c67cacb841cbf5bc88b2b0817f2a2ba649518e57ded930faf2530bd9')
+sha256sums_x86_64=('7a1f4edd1e47c93851074e39ed5f2634c0b0734e8d9d4200d570ec04df0bee29')
 
 package() {
   install -Dm755 webhookd -t "$pkgdir/usr/bin/"
