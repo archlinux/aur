@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=solidcraft
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.0
+pkgrel=1
 url="https://bherbruck.github.io/$pkgname"
 _url="https://github.com/bherbruck/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Autodesk Fusion'
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('33ac82bc07763585963e1583ecb43a7dc4aa84828cff154697b40ae55bd4b8ed')
+sha256sums=('f920fbc5ac4fede0a519726d9851a8f885c3243722c87cde95e6b24f950578ea')
 
 _srcenv() {
 	cd "$_archive"
