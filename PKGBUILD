@@ -4,7 +4,7 @@ _pkgname='alpine'
 _flavor='virt'
 _series='v3.24'
 pkgname="libvirt-iso-${_pkgname}-${_flavor}-bin"
-pkgver=3.24.2
+pkgver=3.24.3
 pkgrel=1
 pkgdesc='Official Alpine Linux virtualization ISO for libvirt'
 arch=('x86_64')
@@ -24,14 +24,14 @@ source=(
 )
 noextract=("${_iso}")
 sha512sums=(
-	'7563011cefca3f84c77ddab032d47448216e1fc9b730b7d09be9cc26c8d5a69c1b75c9a404f5168654c76128fa231d83b248e24466d6c5dd2655696f44220aba'
+	'8dcb83380f5c53178142eb9470fc78aae80c60df03bb85b16434e1cd338c27782252171f5f23763d04295afc89a2738e24e70290dc2479ccc41c6c47db54962d'
 	'SKIP'
 	'SKIP'
 	'SKIP'
 )
 b2sums=(
 	'SKIP'
-	'b4490820dbd0e3d62356670b10ea36b2fedf091641ca574da2bcacf564e36e246c559c5ac6753f1849b170f7a297669e459e8ac385b31418dde9e9a7d843ca41'
+	'df2166f5bb3da6b2046772d7e71bb56d1bc63ff96e66c8bb48fc0fb517ccdaf91b590cbe5e0be9c85fbb7892d8d599f7528d5d6890dd275d4e5362a9cde80e22'
 	'a0df34a1645d2c21a80dff3776a53fe8b71d1daae06f11fa6f0f5446a496caa42b4d5c2365d5b6f8efcc2460f9c3182c77f0204783ff45cba43201c18ae12057'
 	'6ca732810a034a28e8297a022a7bbcef378ce5534c21d772bed0fe1668046df0594e2c6c66638efd23a894eb59990c6ed34c10e4f7653ceb25f2b9843365b8b7'
 )
