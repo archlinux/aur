@@ -2,19 +2,19 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail
-pkgver=1.15.1
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
 url='https://proton.me/mail'
 license=(GPL-3.0-or-later)
 _electron=electron43
 depends=(bash $_electron hicolor-icon-theme)
-makedepends=(git jq nodejs-lts-jod yarn)
+makedepends=(git jq nodejs-lts-krypton pnpm)
 source=(https://github.com/ProtonMail/WebClients/archive/proton-inbox-desktop@$pkgver/$pkgname-$pkgver.tar.gz
         proton-mail.desktop
         proton-mail.sh)
-b2sums=('d355399571deaf871c8a8d88ad73dce221bcf45326ab90db7d63f750b91fa74dbe61653787d35e9ffda0f2f37d17e3450748db6c55911cdb31f4904b20b4f8f8'
+b2sums=('1128d601e74ff06163229dfb6598d345baed7129a99386d459f2ffd8fe236b6f54b12dca27fd9f8fb371f16ea5f7c9d077f63f9991300c1fd98d8fd0063ee4ee'
         'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
         '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad')
 
@@ -33,22 +33,20 @@ prepare() {
     # Specify electron version in launcher
     sed -i "s|@ELECTRON@|$_electron|" "$srcdir/proton-mail.sh"
 
-    # Configure Yarn workspaces to build only inbox-desktop (proton-mail) instead of all applications
-    sed -i 's/"applications\/\*",/"applications\/inbox-desktop",/' package.json
-
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
-    export SENTRYCLI_SKIP_DOWNLOAD=1
-    yarn install
+    pnpm install --frozen-lockfile --filter 'proton-inbox-desktop...' --ignore-scripts --trust-lockfile \
+        --config.@protontech:registry=https://registry.npmjs.org/ \
+        --config.@proton-meet:registry=https://registry.npmjs.org/ \
+        --store-dir "$srcdir/.pnpm-store"
 }
 
 build() {
     cd WebClients-proton-inbox-desktop-$pkgver
-    yarn workspace proton-inbox-desktop package
+    pnpm --filter proton-inbox-desktop run package
 }
 
 check() {
     cd WebClients-proton-inbox-desktop-$pkgver
-    yarn workspace proton-inbox-desktop test
+    pnpm --filter proton-inbox-desktop run test
 }
 
 package() {
