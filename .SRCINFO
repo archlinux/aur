@@ -1,5 +1,5 @@
 pkgbase = lrdp-bin
-	pkgdesc = LRDP remote desktop client built with Flutter and FreeRDP (prebuilt Linux x64 AppImage)
+	pkgdesc = LRDP (Lightweight Remote Desktop Protocol) RDP client with embedded FreeRDP
 	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://github.com/lucinhu/LRDP
