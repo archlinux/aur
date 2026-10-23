@@ -1,14 +1,16 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=zapfast
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
 url="https://zapfast.rocks"
 license=('MIT' 'GPL-2.0-only')
 install="${pkgname}.install"
-depends=('alsa-lib' 'alsa-plugins' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxrandr')
-makedepends=('cargo' 'cmake' 'perl')
+depends=('alsa-lib' 'libpipewire' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxrandr')
+makedepends=('cargo' 'cmake' 'perl' 'clang')
+# The right-to-left layout tests need one of the fonts they look for.
+checkdepends=('ttf-liberation')
 optdepends=('org.freedesktop.secrets: archive encryption key storage'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')
@@ -21,7 +23,7 @@ replaces=('fastsapp')
 # meets this.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/zapfast/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e15fab081c47f1823b3e252b56e64a08d154d7fcc8d4b1f42713d113902bb4c6')
+sha256sums=('f526a38f2838bfacb69c20aa13333edbe26b1adf181a764b1165d92be231e4b6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
