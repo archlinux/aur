@@ -1,6 +1,6 @@
 pkgbase = effectcraft-bin
 	pkgdesc = Motion graphics and visual effects compositor (prebuilt binaries)
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/storytold/effectcraft
 	arch = x86_64
@@ -25,24 +25,24 @@ pkgbase = effectcraft-bin
 	optdepends = vulkan-driver: hardware-accelerated Vulkan rendering
 	optdepends = xdg-desktop-portal: native file dialogs
 	optdepends = xdg-utils: open external links
-	provides = effectcraft=0.15.0
+	provides = effectcraft=0.16.0
 	conflicts = effectcraft
 	options = !strip
-	source = effectcraft-0.15.0-NOTICE.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.15.0/NOTICE
-	source = effectcraft-0.15.0-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.15.0/docs/brand/LICENSE-brand.txt
-	source = effectcraft-0.15.0-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.15.0/assets/app-icon/LICENSE.txt
-	source = effectcraft-0.15.0-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.15.0/assets/fonts/OFL-Inter.txt
-	source = effectcraft-0.15.0-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.15.0/assets/fonts/OFL-JetBrainsMono.txt
-	source = effectcraft-0.15.0-OFL-NotoSerif.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.15.0/assets/fonts/OFL-NotoSerif.txt
+	source = effectcraft-0.16.0-NOTICE.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.16.0/NOTICE
+	source = effectcraft-0.16.0-LICENSE-brand.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.16.0/docs/brand/LICENSE-brand.txt
+	source = effectcraft-0.16.0-LICENSE-app-icon.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.16.0/assets/app-icon/LICENSE.txt
+	source = effectcraft-0.16.0-OFL-Inter.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.16.0/assets/fonts/OFL-Inter.txt
+	source = effectcraft-0.16.0-OFL-JetBrainsMono.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.16.0/assets/fonts/OFL-JetBrainsMono.txt
+	source = effectcraft-0.16.0-OFL-NotoSerif.txt::https://raw.githubusercontent.com/storytold/effectcraft/v0.16.0/assets/fonts/OFL-NotoSerif.txt
 	sha256sums = b58d5fdf0f7f90236118eb81903f765a4644eea9d3ac7eeaa552732d1b337111
 	sha256sums = 7ee27fdb49f96a969ab80d5f800d8422aa17cb39d1cca286d18aa6227d8c7628
 	sha256sums = 6f7a100b47da67df0c9e8e06397a7222766932c36cdebeff2e89cb2cd2917b85
 	sha256sums = 262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a
 	sha256sums = a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697
 	sha256sums = cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a
-	source_x86_64 = https://github.com/storytold/effectcraft/releases/download/v0.15.0/effectcraft-0.15.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6c9093ec369bf0f22fa4245620a856989c432b6080292cbc1745e488b2b9df67
-	source_aarch64 = https://github.com/storytold/effectcraft/releases/download/v0.15.0/effectcraft-0.15.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 2ce16feee0b0d8046f74e5d32082f8aac36e8f23acbc8adbf2c51b4d15ae9a5d
+	source_x86_64 = https://github.com/storytold/effectcraft/releases/download/v0.16.0/effectcraft-0.16.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 91b40da9e18be49157467a96db7b2fbf7c20b5182d8c415c59bed51591bc1de0
+	source_aarch64 = https://github.com/storytold/effectcraft/releases/download/v0.16.0/effectcraft-0.16.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bf38cec1717b35432d73a6f48cfc075c0d2b110fae357fba5c4242d55c4aae97
 
 pkgname = effectcraft-bin
