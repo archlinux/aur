@@ -1,6 +1,6 @@
 pkgbase = pi-ext-intercom
 	pkgdesc = Direct 1:1 messaging extension for pi coding agent sessions
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/nicobailon/pi-intercom
 	install = pi-ext.install
@@ -8,7 +8,7 @@ pkgbase = pi-ext-intercom
 	license = MIT
 	optdepends = pi-coding-agent
 	optdepends = pi-coding-agent-git
-	source = pi-ext-intercom-0.18.0.tar.gz::https://github.com/nicobailon/pi-intercom/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = 611774889e08d4d44c987c1ac9783cba689b447c7e9ea66382361f6ba5522968
+	source = pi-ext-intercom-0.18.1.tar.gz::https://github.com/nicobailon/pi-intercom/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = 97b58dce8639b1903dc1aa8e02d4748ca09f3eebaa3ddc71c14df3760cec4292
 
 pkgname = pi-ext-intercom
