@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=deckcraft
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft PowerPoint'
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('a5a0012492e2f405da46c5b9c407ec216f3632e868310ed58c4907befbda909c')
+sha256sums=('2240c7ee8fec7ff2425634d9b76a4f3fd332b67db543e865593dedf3d29a1bb0')
 
 _srcenv() {
 	cd "$_archive"
