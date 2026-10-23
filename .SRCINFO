@@ -1,0 +1,16 @@
+pkgbase = python-nvidia-cutlass-dsl
+	pkgdesc = NVIDIA CuTe DSL (the cutlass Python module), CUDA 13 build
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = https://pypi.org/project/nvidia-cutlass-dsl/
+	arch = any
+	license = LicenseRef-NVIDIA-Software-License-Agreement
+	makedepends = python-installer
+	depends = python
+	depends = python-nvidia-cutlass-dsl-libs-base=4.8.0
+	depends = python-nvidia-cutlass-dsl-libs-cu13=4.8.0
+	noextract = nvidia_cutlass_dsl-4.8.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/e4/f4/e96f452f7975dd2fd4d2a4af88c63205431dad7efbe63aff6e3a4b1ada17/nvidia_cutlass_dsl-4.8.0-py3-none-any.whl
+	sha256sums = 24f996e0e5fa88c8b417f4893e615af135bdfdfdbdbed7e239faf36a88df711b
+
+pkgname = python-nvidia-cutlass-dsl
