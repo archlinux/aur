@@ -1,6 +1,6 @@
 pkgbase = battery-mode
 	pkgdesc = Named charge-limit modes for laptop batteries (conserve/balanced/full), persistent across reboots
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ghollisjr/battery-mode
 	install = battery-mode.install
@@ -10,7 +10,7 @@ pkgbase = battery-mode
 	depends = systemd
 	optdepends = sudo: run as a non-root user without a password prompt
 	backup = etc/sudoers.d/battery-mode
-	source = battery-mode-0.1.1.tar.gz::https://github.com/ghollisjr/battery-mode/archive/v0.1.1.tar.gz
-	sha256sums = cc37d12318bf8a9bcb97e540d627dd84180053505df0f7529f8ef6c578db2ade
+	source = battery-mode-0.1.2.tar.gz::https://github.com/ghollisjr/battery-mode/archive/v0.1.2.tar.gz
+	sha256sums = 7f3a1714304576ab76f4ab1075cf37d8d6cb0517e2c449fb83438f49a80f2815
 
 pkgname = battery-mode
