@@ -1,14 +1,17 @@
 pkgbase = klog-time-tracker-bin
 	pkgdesc = A plain-text file format and a command line tool for time tracking.
-	pkgver = 7.1
+	pkgver = 7.2
 	pkgrel = 1
 	url = https://github.com/jotaen/klog
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	provides = klog-time-tracker=7.1
+	provides = klog-time-tracker=7.2
 	conflicts = klog
 	conflicts = klog-time-tracker
-	source = klog-time-tracker-bin-7.1.zip::https://github.com/jotaen/klog/releases/download/v7.1/klog-linux.zip
-	sha256sums = ef2838bd5428980a480c28498db32147602b4c7d5b35763bd41495e25b960702
+	source_x86_64 = klog-time-tracker-bin-7.2-x86_64.zip::https://github.com/jotaen/klog/releases/download/v7.2/klog-linux-amd64.zip
+	sha256sums_x86_64 = 5857c548fc707a46c4451123cf7945c7cdc1a0f6ebdd6dbd1da71de3c6a57781
+	source_aarch64 = klog-time-tracker-bin-7.2-aarch64.zip::https://github.com/jotaen/klog/releases/download/v7.2/klog-linux-arm64.zip
+	sha256sums_aarch64 = 5a948d409781b05f8098d08c2dbbd2f826a29cd92eb480f619daebd3a376bcdb
 
 pkgname = klog-time-tracker-bin
