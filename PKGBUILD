@@ -16,13 +16,15 @@
 # mismatch is structurally impossible rather than merely checked for.
 
 pkgname=paseo-desktop-git-bin
+_github_url='https://github.com/getpaseo/paseo'
+_upstream_branch='main'
 # NOTE: pkgver/_commit/_bin_sha are re-stamped together by
 # scripts/update.d/git-bin.sh on each bump, and only when the matching
 # release asset already exists. The values here must always describe ONE
 # consistent build: pkgver must derive the _asset that is actually on the
 # release, and _commit/_bin_sha must be that same build. Do not hand-edit
 # one of the three in isolation.
-pkgver=0.13.0.beta.1.r4.g76b32544c
+pkgver=0.13.0.beta.2.r2.gfed19f3d2
 pkgrel=2
 # Publish targets: aur + Arch release. Debian is deliberately off (#60):
 # paseo-desktop-git already ships the same payload on debian-current, so this
@@ -49,7 +51,7 @@ _deb_depends=('libc6' 'libgcc-s1' 'libstdc++6' 'libgtk-3-0t64' 'libglib2.0-0t64'
 # reusing the Arch conflicts array verbatim.
 _deb_provides=('paseo')
 _deb_conflicts=('paseo-cli-edge' 'paseo-cli-git' 'paseo-cli-git-bin' 'paseo-desktop-bin-edge' 'paseo-desktop-git' 'paseo')
-_commit='76b32544c6ba804b135acef86bd4ed627c654ae2'
+_commit='fed19f3d29cbcd21ecd45834af81adc13d9d5a7f'
 # Drop the .rN.gSHA git-describe suffix, then turn the prerelease separator
 # dot into a dash (0.9.0.beta.2 -> 0.9.0-beta.2). Only that one dot is
 # touched, so a version without a suffix or without a prerelease is left
@@ -60,10 +62,10 @@ if ! printf '%s' "$_asset_ver" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]
 	error "paseo-desktop-git-bin: cannot derive a release version from pkgver='$pkgver' (got '$_asset_ver'); refusing to guess an asset name"
 fi
 _asset="Paseo-${_asset_ver}-x64.tar.gz"
-_bin_sha='43d5a651c9d013ad89745bd57a1bc5390b98e97a54a9f92b5df1e9cb1a61cfb4'
+_bin_sha='d29f856ac27b8d43f73268cb3c507e4ee671af50786fc5a8bf5e1ff3938e614a'
 _icon_sha='585d202ff6a6e41bcd5c7464a1c4889b78977cea000f7b88ba1f67f3d9fff0bd'
 _pkgdesc_base='One interface for all your Claude Code, Codex and OpenCode agents.'
-pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-22 @76b3254)'
+pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-10-23 @fed19f3)'
 arch=('x86_64')
 url="https://paseo.sh"
 license=("Apache-2.0")
