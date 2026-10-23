@@ -1,6 +1,6 @@
 pkgbase = burp-backup-dev
 	pkgdesc = A next generation experimental version of the burp backup and restore program.
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/grke/burp
 	install = burp.install
@@ -18,7 +18,7 @@ pkgbase = burp-backup-dev
 	backup = etc/burp/burp-server.conf
 	backup = etc/burp/CA.cnf
 	backup = etc/logrotate.d/burp
-	source = https://github.com/grke/burp/archive/3.2.0.tar.gz
+	source = https://github.com/grke/burp/archive/3.3.0.tar.gz
 	source = https://salsa.debian.org/debian/burp/raw/debian/debian/logrotate
 	source = https://salsa.debian.org/debian/burp/raw/debian/debian/burp.cron.d
 	source = burp.install
