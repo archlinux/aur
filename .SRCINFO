@@ -1,6 +1,6 @@
 pkgbase = gcc-arm-none-eabi-bin
 	pkgdesc = GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)
-	pkgver = 15.3.rel1
+	pkgver = 15.3.rel2
 	pkgrel = 1
 	url = https://gitlab.arm.com/tooling/gnu-toolchains-for-arm
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = gcc-arm-none-eabi-bin
 	options = !strip
 	options = staticlibs
 	options = !debug
-	source_aarch64 = https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/15.3.rel1/arm-gnu-toolchain-15.3.rel1-aarch64-arm-none-eabi.tar.xz
-	sha256sums_aarch64 = 06979e0c8171de58e5dc2a2b2019330a290f30930f27728af98a83e1a7369b3a
-	source_x86_64 = https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/15.3.rel1/arm-gnu-toolchain-15.3.rel1-x86_64-arm-none-eabi.tar.xz
-	sha256sums_x86_64 = 563bebb2b97d53382b956d6ee1fe61e2cae26699901417234a37df505ef9b5fa
+	source_aarch64 = https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/15.3.rel2/arm-gnu-toolchain-15.3.rel2-aarch64-arm-none-eabi.tar.xz
+	sha256sums_aarch64 = a0dc18893171d39dec82fd8d57eeab3da836fd3df4b61978db3eccbf4a6bb948
+	source_x86_64 = https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/15.3.rel2/arm-gnu-toolchain-15.3.rel2-x86_64-arm-none-eabi.tar.xz
+	sha256sums_x86_64 = 463df9665c246fa13bab2102115bbf83440661b6eb70b44f3dfd4712ca30037a
 
 pkgname = gcc-arm-none-eabi-bin
