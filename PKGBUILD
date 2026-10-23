@@ -3,7 +3,7 @@
 pkgname=relic-gruvbox-gtk-theme
 _repo=Gruvbox-GTK-Theme
 _commit=578cd220b5ff6e86b078a6111d26bb20ec8c733f
-_fixes=2026.10.22.2
+_fixes=2026.10.23
 pkgver=2025.10.23
 pkgrel=5
 pkgdesc='Gruvbox GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
@@ -18,7 +18,7 @@ options=('!strip' '!debug' '!emptydirs')
 source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
         "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
 sha256sums=('f45da23a6c4123148cf8f78983e391a86c2e2ee1b7a80aa66790f148cb9619bd'
-            '633d7b4729e30c4da5dc17543ac51249ed75bb8e789f20e5aa2c6d5bbc1bd5b6')
+            'a9c132c3a5952c1d2bb826554187f0bfec982fe2b4841bf2649843bb07774db0')
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
