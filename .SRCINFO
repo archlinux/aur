@@ -1,0 +1,13 @@
+pkgbase = git-worktree-share
+	pkgdesc = Share untracked files across git worktrees
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/keithamus/git-worktree-share
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	source = git-worktree-share-0.1.4.tar.gz::https://github.com/keithamus/git-worktree-share/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = c9ca84c2f53377ad3b844be4466665fdfa40c153f43e6fafd251d46a92c7879c
+
+pkgname = git-worktree-share
