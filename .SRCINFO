@@ -1,16 +1,16 @@
 pkgbase = shuck-bin
 	pkgdesc = A lightning fast shell linter/formatter/LSP server
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://ewhauser.github.io/shuck/
 	arch = x86_64
 	license = MIT
 	depends = libgcc
-	provides = shuck=0.2.6
+	provides = shuck=0.2.7
 	conflicts = shuck
 	options = !debug
 	options = !strip
-	source_x86_64 = shuck-cli-v0.2.6-x86_64-unknown-linux-gnu.tar.xz::https://github.com/ewhauser/shuck/releases/download/v0.2.6/shuck-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = c0b5500e9afc699707b224b6ad2eb43870f39edd0924b27d10881b52471f974c
+	source_x86_64 = shuck-cli-v0.2.7-x86_64-unknown-linux-gnu.tar.xz::https://github.com/ewhauser/shuck/releases/download/v0.2.7/shuck-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 66db3daa642210657876c9f57bc69b76c4215d3e80cbee591ed729bfeb910215
 
 pkgname = shuck-bin
