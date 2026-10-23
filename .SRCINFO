@@ -1,0 +1,21 @@
+pkgbase = ttf-furifont-variable
+	pkgdesc = Japanese font that shows furigana on the font itself.
+	pkgver = v0.6.2
+	pkgrel = 1
+	url = https://github.com/antfu/furifont/releases/download/v0.6.2
+	arch = any
+	license = MIT
+	license = OFL-1.1
+	provides = ttf-furifont-variable
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSansVF.ttf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSerifVF.ttf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSansRomajiVF.ttf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/FurifontSerifRomajiVF.ttf
+	source = https://github.com/antfu/furifont/releases/download/v0.6.2/OFL.txt
+	sha256sums = 5cd36ebcd9e9562351e01a8f06c9a0cccd2df610181f4d3e7a22381b7879c323
+	sha256sums = fd73120b5a040cfe5313dad5453026bd7adb88a86f54f7a83468f2bc895289ea
+	sha256sums = cdcdd8755df054ed5bbb136c0b754cbbfd1a372b099c08bf55b364c4957b9fa4
+	sha256sums = 5fa534373326e40ac1b18bde9a56565fb2801dfedb1ddfa857a41376d4d48a1c
+	sha256sums = fcac737e761ec63dbfbdce11030a1780161920d80315edba9c8beff1c2bac5a2
+
+pkgname = ttf-furifont-variable
