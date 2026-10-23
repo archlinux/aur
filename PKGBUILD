@@ -5,7 +5,7 @@
 # They link only libc.so.6, libm.so.6 and libgcc_s.so.1 (no RPATH); any current
 # Arch glibc satisfies them. The efr-code package builds the same version from source.
 pkgname=efr-code-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -13,7 +13,9 @@ url='https://github.com/eggfriedrice24/eggfriedrice.code'
 license=('MIT')
 depends=('glibc' 'libgcc' 'zsh')
 optdepends=('bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)'
+            'fzf: the live search picker of ,resume (0.46 or newer)'
             'git: project roots and the git facts of a turn'
+            'xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)'
             'xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1')
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=("${pkgname%-bin}")
@@ -25,7 +27,7 @@ _dist="${pkgname%-bin}-$pkgver-$CARCH-linux"
 source_x86_64=("$url/releases/download/v$pkgver/$_dist.tar.gz")
 # Filled in for each release by .github/workflows/aur.yml with the value that
 # upstream publishes in $_dist.tar.gz.sha256 next to the tarball.
-sha256sums_x86_64=('92872bb28cdff0800f2064701b1319271e55f6d1df09ad1a42352228a42a3c78')
+sha256sums_x86_64=('9d3c42043ca218d0987db371d167128596bf57f51d8af3b2f4c081d21262e880')
 
 package() {
   cd "$_dist"
