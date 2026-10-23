@@ -3,8 +3,8 @@
 # 依赖 AUR 的 zcode 包提供 ZCode 桌面版本体。
 
 pkgname=zcode-pro
-pkgver=1.2.10.20.3
-pkgrel=11
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="ZCode Pro — 界面增强启动器（自定义项目别名等），不修改客户端文件"
 arch=(any)
 license=(Apache)

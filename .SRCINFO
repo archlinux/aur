@@ -1,7 +1,7 @@
 pkgbase = zcode-pro
 	pkgdesc = ZCode Pro — 界面增强启动器（自定义项目别名等），不修改客户端文件
-	pkgver = 1.2.10.20.3
-	pkgrel = 11
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/duanluan/zcode-pro
 	install = zcode-pro.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zcode-pro
 	depends = zcode
 	optdepends = nodejs>=22: 使用系统 Node 运行启动器（缺省复用 ZCode 内置运行时，无需安装 Node）
 	options = !strip
-	source = zcode-pro-1.2.10.20.3.tar.gz::https://github.com/duanluan/zcode-pro/releases/download/v1.2.10.20.3/zcode-pro-1.2.10.20.3.tar.gz
+	source = zcode-pro-1.2.1.tar.gz::https://github.com/duanluan/zcode-pro/releases/download/v1.2.1/zcode-pro-1.2.1.tar.gz
 	sha256sums = 0873bdb0d348bfad7b8f1c67d671c6365b3606a6c776eb8b9a30b30033f1c116
 
 pkgname = zcode-pro
