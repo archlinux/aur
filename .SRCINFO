@@ -1,6 +1,6 @@
 pkgbase = sciverse
 	pkgdesc = Sciverse Agent Tools — OpenAI / Anthropic / LangChain compatible tool schema and async client for Sciverse retrieval APIs
-	pkgver = 0.14.3
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://github.com/opendatalab/Sciverse-Agent-Tools
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = sciverse
 	makedepends = python-installer
 	depends = python-httpx
 	depends = python-pydantic
-	source = sciverse-0.14.3.tar.gz::https://github.com/opendatalab/Sciverse-Agent-Tools/archive/refs/tags/v0.14.3.tar.gz
-	source = sciverse-skill-0.14.3.tar.gz::https://github.com/opendatalab/Sciverse-Agent-Tools/releases/download/v0.14.3/web-skill.tgz
-	sha256sums = 0f7822b8a50601b630fa6d4ba4b1b0b27bfe7603a39208b76a349cb733ce8ce0
-	sha256sums = 38d835f620d89cb6733dbecac0625d481ae18a6c07878e21f7c0d8a424b5606c
+	source = sciverse-0.14.4.tar.gz::https://github.com/opendatalab/Sciverse-Agent-Tools/archive/refs/tags/v0.14.4.tar.gz
+	source = sciverse-skill-0.14.4.tar.gz::https://github.com/opendatalab/Sciverse-Agent-Tools/releases/download/v0.14.4/web-skill.tgz
+	sha256sums = 3a3c1f14e1ef4938c3959913ab10d705db69725476d0e94348915992d5296a2b
+	sha256sums = 9e3772ca5f5608088279218ad2062277c4bfe6c95b2ea4b67afce87996f76c29
 
 pkgname = sciverse
