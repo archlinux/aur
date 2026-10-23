@@ -1,7 +1,7 @@
 # Maintainer: gui <aerofrutiger3000@gmail.com>
 pkgname=aro-git
 _pkgname=aro
-pkgver=0.4.0.r0.g4b03828
+pkgver=0.4.0.r35.gf8daca4
 pkgrel=1
 pkgdesc='Minimal tiling Wayland compositor with spring animations'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   'libxkbcommon'
   'pango'
   'pixman'
-  'scenefx0.5'
+  'libscenefx-0.5.so'
   'wayland'
   'wlroots0.20'
   'xcb-util-wm'

@@ -1,6 +1,6 @@
 pkgbase = aro-git
 	pkgdesc = Minimal tiling Wayland compositor with spring animations
-	pkgver = 0.4.0.r0.g4b03828
+	pkgver = 0.4.0.r35.gf8daca4
 	pkgrel = 1
 	url = https://github.com/simeulinuxkaliaiwr/aro
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = aro-git
 	depends = libxkbcommon
 	depends = pango
 	depends = pixman
-	depends = scenefx0.5
+	depends = libscenefx-0.5.so
 	depends = wayland
 	depends = wlroots0.20
 	depends = xcb-util-wm
