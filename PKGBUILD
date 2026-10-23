@@ -2,8 +2,8 @@
 
 pkgname=python-tomlrt
 _pkgname=tomlrt
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="A format-preserving TOML reader and writer for Python"
 url="https://github.com/dimbleby/tomlrt/"
 depends=(python)
@@ -12,7 +12,7 @@ checkdepends=(python-pytest python-hypothesis python-tomli)
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimbleby/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7e4dc69631c1e63cb5a318c20792b85e386a3ae58dffd892ff68bfac596ced5d')
+sha256sums=('427d312438b957387d0786a6c42db75daafd740c1f0f960935219bd6afba09d5')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
