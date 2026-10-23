@@ -19,8 +19,8 @@ pkgbase = dropout-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-rc.2/Dropout_0.2.0-rc.2_amd64.deb
-	sha256sums_x86_64 = 3d2b442653f0fcbef445a3674248c53dc721a7fe3c8cc3fe78c5bce89920d8b9
+	sha256sums_x86_64 = a264a42f659965abf6d4e9f70db18779adcb6a6e9b0898ccac74186d4880b63b
 	source_aarch64 = https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-rc.2/Dropout_0.2.0-rc.2_arm64.deb
-	sha256sums_aarch64 = 287db1379e4fd56cd55cdf97c9267a1d311cee66ae441e1f3456c5cbed8a79a8
+	sha256sums_aarch64 = e937d7fa94ebb56916c19bc1579e8c961fec17bea65a25a400e96568c97ea702
 
 pkgname = dropout-bin
