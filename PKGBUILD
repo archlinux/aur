@@ -1,14 +1,14 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-local-agent
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Chat with Work: desktop app, terminal interface and local background agent"
+pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent"
 arch=('x86_64' 'aarch64')
-url="https://github.com/crmne/chatwithwork-local-agent"
+url="https://github.com/crmne/chatwithwork-desktop"
 license=('MIT OR Apache-2.0')
 install="${pkgname}.install"
-depends=('glibc' 'gcc-libs' 'libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
-makedepends=('cargo')
+depends=('alsa-lib' 'libpipewire' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'dbus')
+makedepends=('cargo' 'pkgconf' 'cmake' 'clang')
 optdepends=('org.freedesktop.secrets: store the device key in your keyring'
             'xdg-desktop-portal: native folder picker'
             'systemd: start the agent now and at login with cww daemon install')
@@ -19,17 +19,19 @@ conflicts=('cww' 'chatwithwork-local-agent-bin' 'chatwithwork-local-agent-git')
 # because the release profile strips symbols, so a debug package would be
 # empty.
 options=('!debug' '!lto')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/chatwithwork-local-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('249845e9b6422ed573e868c04eaeb9ccb1f5ce350ae4096778398833557ecfa0')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/chatwithwork-desktop/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f772d4262c2055eb8fe088c04295ce45214fca1e9a7bd1f1da321270b90263a9')
 
+# GitHub names the archive's folder after the repository, which was renamed
+# chatwithwork-desktop; the package keeps its name, so upgrades follow.
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/chatwithwork-desktop-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/chatwithwork-desktop-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/"
@@ -37,14 +39,14 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/chatwithwork-desktop-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo test --frozen --release --workspace
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/chatwithwork-desktop-${pkgver}"
   install -Dm755 target/release/cww "${pkgdir}/usr/bin/cww"
   install -Dm755 target/release/cww-app "${pkgdir}/usr/bin/cww-app"
   install -Dm644 packaging/linux/cww-app.desktop "${pkgdir}/usr/share/applications/cww-app.desktop"
