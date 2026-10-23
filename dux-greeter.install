@@ -1,0 +1,42 @@
+post_install() {
+    cat << MSG
+
+==> Configuration required:
+
+Edit /etc/greetd/config.toml and set:
+
+    [terminal]
+    vt = 1
+
+    [default_session]
+    user = "greeter"
+    command = "/usr/bin/dms-greeter --command niri"
+
+You can replace 'niri' with 'hyprland' or 'sway' if desired.
+
+==> Apply your DMS theme and settings to the greeter:
+
+    sudo dms-greeter sync
+
+==> Enable the greeter:
+
+    systemctl enable greetd
+
+MSG
+}
+
+post_upgrade() {
+    cat << MSG
+
+==> dms-greeter is now a single binary with the UI embedded.
+    The /usr/share/quickshell/dms-greeter tree is gone; an existing
+    /etc/greetd/config.toml entry keeps working:
+
+    command = "/usr/bin/dms-greeter --command COMPOSITOR"
+
+==> Re-apply your DMS theme and settings:
+
+    sudo dms-greeter sync
+
+MSG
+}
