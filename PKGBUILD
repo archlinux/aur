@@ -1,6 +1,6 @@
 # Maintainer: safalski <https://git.safallama.com.np/safalski>
 pkgname=typeshi
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="A typing application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD-2-Clause')
 depends=('qt6-base' 'qt6-declarative' 'qt6-shadertools')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('12529ee7172e1343700d7ec38afcdeb91da15ce86d2ea587b080d7ff21b2b5a9')
+sha256sums=('aec382479371626ca822a3b9ac3f91676d975848badf185d0831f0db475142c5')
 
 build() {
   cmake -B build -S "typeshi-mirror-$pkgver" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -G Ninja
