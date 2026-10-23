@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=photocraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='Layer-based image and photo editor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/storytold/$_pkgname"
@@ -33,8 +33,8 @@ sha256sums=('25a69f3364a0d7fea0ea486a9def19c3dc1af51608ec1218911a1a24069b4454'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57')
-sha256sums_x86_64=('fb2b830230e3202a1ee18ec20e3f6d250d276b165d78811e83eb6a75725f9ce2')
-sha256sums_aarch64=('daba522ddac492b96e0c137ce032227cb1ba943f9cc38f323dc373e36f4a470a')
+sha256sums_x86_64=('3d1f60a76c25aafbf53f23cfedd3687bd99eb6f5309920e140d588bd3212c936')
+sha256sums_aarch64=('43e7b4bdd69bc5ad747d1f6161aef6fba4839e7807a86eb0cd1d008897395615')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
