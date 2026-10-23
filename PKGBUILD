@@ -1,7 +1,7 @@
 # Maintainer: Dominik Toth <info@dominiktoth.com>
 
 pkgname=ku-bin
-pkgver=0.11.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Fast, keyboard-driven Kubernetes TUI'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "upstream-license::https://raw.githubusercontent.com/bjarneo/ku/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '44f666c903036edd6d62fcd1b357e385b6e3efe4acaa735d4252de846c1b1aa3'
+  'cbe35792ee860d36ed3e381d9229a6ad388abae6929527a0690bb4cf166faede'
   'ebb1323d93aee5f8b4a672ec20ca24954373c85686be39307facb88dd582444c'
 )
 
