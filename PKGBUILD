@@ -8,28 +8,29 @@
 # why this package does not.
 
 pkgname=lsw-bin
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU"
 arch=('x86_64')
 url="https://github.com/acceleration3/linux-subsystem-windows"
-# LSW itself; QEMU and its firmware; vkd3d-proton; DXVK. The texts are
-# in /usr/share/licenses/lsw-bin.
-license=('Apache-2.0' 'GPL-2.0-only' 'LGPL-2.1-or-later' 'Zlib')
+# LSW itself; QEMU and its firmware; vkd3d-proton; DXVK; virtio-win's
+# viofs driver and virtiofs.exe; WinFsp's installer, under its FLOSS
+# exception. The texts are in /usr/share/licenses/lsw-bin.
+license=('Apache-2.0' 'GPL-2.0-only' 'LGPL-2.1-or-later' 'Zlib' 'BSD-3-Clause'
+         'GPL-3.0-only' 'LicenseRef-WinFsp-FLOSS-exception')
 provides=('lsw')
 conflicts=('lsw')
 # The libraries the shipped ELF files link (the release's .depends file,
 # from readelf and pacman -Qo in the build container), then what the
 # manager runs or reads without linking it.
 depends=(
-    # lsw-manager, remotewin. remotewin speaks Wayland below Qt and uses
-    # Qt's private Gui and WaylandClient API (both in qt6-base since Qt
-    # 6.10), so it runs on the Qt minor it was built with and no other:
-    # an older one refuses it (qt_version_tag), a newer one may have
-    # moved the private API. A Qt update calls for a rebuild of this
-    # package; see README.md.
-    'qt6-base>=6.12' 'qt6-base<6.13' 'libvirt' 'libisofs' 'libvncserver' 'wimlib' 'hivex'
-    'spdlog' 'fmt' 'zlib' 'wayland'
+    # lsw-manager: Qt's public API only, so any Qt from the one it was
+    # built against on (an older one refuses it, qt_version_tag).
+    # remotewin: a Wayland client of its own, with no Qt - libwayland,
+    # xkbcommon for the keymap, libdrm for explicit sync, sd-bus
+    # (systemd-libs, below) for KWin.
+    'qt6-base>=6.12' 'libvirt' 'libisofs' 'libvncserver' 'wimlib' 'hivex'
+    'spdlog' 'fmt' 'zlib' 'wayland' 'libxkbcommon' 'libdrm'
     # accel-virt: the executor, QEMU and its modules
     'vulkan-icd-loader' 'ocl-icd' 'libglvnd' 'libpipewire'
     'glib2' 'pixman' 'gnutls' 'libpng' 'libjpeg-turbo' 'libsasl' 'snappy' 'lzo'
@@ -59,7 +60,7 @@ install=lsw-bin.install
 # makepkg to strip, and a debug package would be empty.
 options=('!strip' '!debug')
 source=("https://github.com/acceleration3/linux-subsystem-windows/releases/download/v${pkgver}/lsw-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('b42d4209ada01de9418f05a7d8e5d55159eede3d16f8836fc81c643ef59592c2')
+sha256sums=('b032ebe91766606f1afb1734bb8595f86704b663c264e5129b7dde9391a123de')
 
 package() {
     cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
