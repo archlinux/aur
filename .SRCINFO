@@ -1,0 +1,14 @@
+pkgbase = libspecbleach-git
+	pkgdesc = C library for audio noise reduction
+	pkgver = r216.f63b64b
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	conflicts = libspecbleach
+	conflicts = libspecbleach-bin
+	source = libspecbleach::git+https://github.com/lucianodato/libspecbleach.git
+	md5sums = SKIP
+
+pkgname = libspecbleach-git

@@ -2,6 +2,4 @@ pkg
 src
 libspecbleach
 *.pkg.tar.zst
-.SRCINFO
-.AURINFO
 
