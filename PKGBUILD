@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-diffutils-bin
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Rust implementation of diffutils"
 arch=('x86_64')
 url="https://github.com/uutils/diffutils"
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 provides=("uutils-diffutils=$pkgver")
 conflicts=('uutils-diffutils')
 source_x86_64=("https://github.com/uutils/diffutils/releases/download/v$pkgver/diffutils-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('322e59ab837ecaf838c4511091615b01bf289030699133e45fa5843e53dfc32b')
+sha256sums_x86_64=('a0a8fcab78954ddc75a5c9fae3af8a33924cf4a637d7f5bfde1bd1b4da1f88bb')
 
 
 package() {
