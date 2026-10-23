@@ -1,6 +1,6 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=qthrone-bin
-pkgver=1.6.3
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (binary release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('qthrone')
 conflicts=('qthrone')
 options=('!strip' '!debug')
 source=("https://github.com/ttrroyy/qThrone/releases/download/v${pkgver}/qThrone-${pkgver}-arch-x86_64.pkg.tar.zst")
-sha256sums=('f76a565e872e370bf4c18577ff759037621e3055ae2c2c60dbed666c1db750fc')
+sha256sums=('858128db82be389a809b2f1e349d88d89a1219b652376e40458bf272322efa3b')
 
 package() {
     cp -a "${srcdir}"/* "${pkgdir}/"
