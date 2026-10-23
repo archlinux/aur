@@ -18,7 +18,7 @@ pkgrel=1
 # }
 # _pkgver="$(pkgver)"
 
-pkgver=3.6.2
+pkgver=3.6.3_beta.1
 
 url="https://github.com/SteamClientHomebrew/Millennium"
 arch=('x86_64')
