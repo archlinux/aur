@@ -3,7 +3,7 @@
 pkgname="bstyle-git"
 pkgdesc="Custom QML theme (latest commit from master)"
 url="https://github.com/Blaadick/BStyle"
-license=("GPL-3.0-only")
+license=("GPL-3.0-or-later")
 pkgver="1.0.r0.g4a60434"
 pkgrel=1
 arch=("any")
