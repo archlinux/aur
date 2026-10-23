@@ -1,6 +1,6 @@
 # Maintainer: Sam M <contact@s-mc.io>
 pkgname=nuvio-desktop
-pkgver=0.1.31_alpha
+pkgver=0.1.32_alpha
 pkgrel=1
 pkgdesc="A modern media hub desktop application (AppImge)"
 
@@ -21,7 +21,7 @@ _appimge="Nuvio-Linux-${CARCH}-${_pkgver}.AppImage"
 options=('!strip' '!debug') # prebuilt binaries: don't strip, don't emit a debug package
 source=("${_appimge}::${url}/releases/download/${_pkgver}/$_appimge")
 noextract=("nuvio-${_pkgver}.AppImage")
-sha256sums=('f09e2708183b8e0a0b6dc28b1500de3cfb696b232738fb2261e3827dc28f0fb2')
+sha256sums=('a32b54787336946dbbf9e8b34559a4b08522d8c4ff6702a05b12f5b3d76b488d')
 
 package() {
 	cd "${srcdir}"
