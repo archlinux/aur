@@ -1,6 +1,6 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 _memprof_limits_commit=c2cced325a93d2271379f0712db85867b29dbee1
 _visitors_commit=e18a7a67150a54a3aef51661e0317cacc313d764
@@ -43,7 +43,7 @@ _semgrep_typescript_commit=08a13a2a846e6d64dc859435be5f0214dff2d72c
 _ocaml_tree_sitter_core_commit=1392efc21e60d5acde72d0d1c6586f5692fedace
 _pcre2_ocaml_commit=b763e279b7aa624c9f1adf0afdd45ee7555e2460
 _testo_commit=634c978b8c03f02f8f172820fed4554aff721313
-_semgrep_rules_commit=9bbf021d0acffa3095fcffd17b2bc7787eb4796d
+_semgrep_rules_commit=16b9e6d45f10649f6a531ec4838ed9924372c3bc
 _opam_switch_stamp=4
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep"
 arch=('x86_64' 'aarch64')
