@@ -8,7 +8,7 @@
 # strip/debug are disabled: the shipped ELF objects are the upstream binaries.
 pkgname=lrdp-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='LRDP remote desktop client built with Flutter and FreeRDP (prebuilt Linux x64 AppImage)'
 arch=('x86_64')
 url='https://github.com/lucinhu/LRDP'
@@ -89,9 +89,20 @@ package() {
   # must be readable by every user.
   chmod -R a+rX "${pkgdir}/opt/lrdp"
 
+  # linuxdeploy's GTK plugin hard-codes "export GDK_BACKEND=x11" in the AppRun
+  # hook. On a Wayland desktop that forces the app through XWayland, where GTK
+  # reports a scale factor of 1: Flutter only uses GTK's integer scale factor,
+  # so the UI ignores the desktop's HiDPI/fractional scaling and the compositor
+  # has to upscale the window (blurry). Drop the override and let GTK choose
+  # the backend (Wayland when available, X11 otherwise); users can still force
+  # a backend with their own GDK_BACKEND. This also becomes a no-op once the
+  # upstream AppImage ships the fixed hook.
+  sed -i '/^export GDK_BACKEND=x11/d' \
+    "${pkgdir}/opt/lrdp/apprun-hooks/linuxdeploy-plugin-gtk.sh"
+
   # Launcher: re-use AppRun so APPDIR/OPENSSL_MODULES and the linuxdeploy GTK
-  # hook (GTK_DATA_PREFIX, GDK_BACKEND, module caches, ...) are applied exactly
-  # as in the upstream AppImage, without needing FUSE at runtime.
+  # hook (GTK_DATA_PREFIX, module caches, ...) are applied exactly as in the
+  # upstream AppImage, without needing FUSE at runtime.
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/lrdp" <<'EOF'
 #!/bin/sh
