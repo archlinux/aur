@@ -1,7 +1,7 @@
 # Maintainer: Marco Righi <marco.righi@cnr.it>
 
 pkgname=sendemail-safe
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Secure CLI email sending via SMTP and Gmail API OAuth 2.0"
 arch=('any')
@@ -10,12 +10,12 @@ license=('MIT')
 depends=('bash' 'python')
 optdepends=('xdg-utils: opens the browser for initial Gmail OAuth authorization')
 
-# Immutable upstream 1.2.0 snapshot; verified by GitHub Actions.
-_commit=c1dac524b3b58e5521e73f5e52eaeea14e781fcd
+# Immutable upstream 1.2.1 snapshot; verified by GitHub Actions.
+_commit=51ccfe7cfb0f4b9097fbb731cec04ab85ac6941a
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/marcorighi/sendEmail-safe/tar.gz/${_commit}"
 )
-sha256sums=('2bfd9eea2f67dd3a1df7fbe36a8af0db971522a790161d36cfe58b0483ca3099')
+sha256sums=('e1b739f3e793eae4d4a7a5eef289527992a16f2b936151c674f8af93eb69f967')
 
 check() {
     cd "${srcdir}/sendEmail-safe-${_commit}"
