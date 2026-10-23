@@ -25,4 +25,5 @@ To check the current handler, run:
 To put it back to Slack, run:
 
         xdg-mime default slack.desktop x-scheme-handler/slack
+EOF
 }

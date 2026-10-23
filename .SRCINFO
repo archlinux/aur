@@ -1,7 +1,7 @@
 pkgbase = slick-mod
 	pkgdesc = The most powerful and versatile Slack client mod (uses system Electron)
 	pkgver = 2.0.139
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/3kh0/slick
 	install = slick-mod.install
 	arch = x86_64

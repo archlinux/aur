@@ -2,7 +2,7 @@
 
 pkgname=slick-mod
 pkgver=2.0.139
-pkgrel=1
+pkgrel=2
 _tag=139
 _electron=electron44 # Slack's version
 pkgdesc="The most powerful and versatile Slack client mod (uses system Electron)"
