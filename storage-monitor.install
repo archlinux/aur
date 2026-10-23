@@ -1,0 +1,26 @@
+post_install() {
+    echo
+    echo "Storage Monitor installed successfully."
+    echo
+    echo "Enable and start the monitoring daemon with:"
+    echo "  sudo systemctl enable --now storage-monitor-agent"
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo "Storage Monitor upgraded successfully."
+    echo
+    echo "Restart the monitoring daemon if necessary:"
+    echo "  sudo systemctl restart storage-monitor-agent"
+    echo
+}
+
+post_remove() {
+    echo
+    echo "Storage Monitor removed."
+    echo
+    echo "Persistent monitoring data may still exist in:"
+    echo "  /var/lib/storage-monitor-agent/"
+    echo
+}

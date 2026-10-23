@@ -1,0 +1,20 @@
+pkgbase = storage-monitor
+	pkgdesc = Qt 6 application for monitoring SMART health and managing Btrfs filesystems
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Brigio/storagemonitor
+	install = storage-monitor.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = btrfs-progs
+	depends = smartmontools
+	depends = polkit
+	depends = util-linux
+	optdepends = msmtp: email notifications
+	source = storage-monitor-1.0.0.tar.gz::https://github.com/Brigio/storagemonitor/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 05b8f45a0000fee35ac49659f651fe5898ec62b3617377ee5216684029b8d8e8
+
+pkgname = storage-monitor
