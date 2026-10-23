@@ -1,6 +1,6 @@
 # Maintainer: AngelSherry
 pkgname=cosmic-ext-applet-clippy-land
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Clipboard history applet for the COSMIC panel'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cosmic-panel' 'cosmic-icon-theme' 'fontconfig' 'glibc' 'libgcc'
 makedepends=('cargo' 'cmake' 'git' 'pkgconf')
 conflicts=('cosmic-ext-applet-clippy-land-git')
 source=("clippy-land-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db6df81a12712d0e4fbcddddb0d10bf65822c30828c6e6b7eb1a015e8be78b6e')
+sha256sums=('880e28642ee72ab4764acb7aa8c40081c6c40537050ab72ba97dc88bf5092fe5')
 
 prepare() {
   cd "clippy-land-${pkgver}"
