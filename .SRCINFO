@@ -1,6 +1,6 @@
 pkgbase = wayper
 	pkgdesc = Wayland-first wallpaper manager with Wallhaven integration and MCP server
-	pkgver = 1.8.11
+	pkgver = 1.8.12
 	pkgrel = 2
 	url = https://github.com/yuukidach/wayper
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = wayper
 	optdepends = python-mcp: MCP server for AI assistant integration
 	optdepends = electron: Electron GUI app (wayper-gui)
 	optdepends = npm: install Electron dependencies
-	source = wayper-1.8.11.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v1.8.11.tar.gz
-	sha256sums = 0b30e737aa3042bf672d40d86c045f613678a5b74e8fa210c847ea4558804381
+	source = wayper-1.8.12.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v1.8.12.tar.gz
+	sha256sums = 6eb51bfa115a046af21ea24c2460607515f71b51b2eab54e7135cacbbd9a7dfd
 
 pkgname = wayper
