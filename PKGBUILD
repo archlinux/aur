@@ -5,10 +5,10 @@
 pkgname=xtables-addons-dkms
 _pkgname="${pkgname%-*}"
 pkgver=3.31
-pkgrel=1
+pkgrel=2
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('x86_64' 'aarch64')
-license=('GPL2')
+license=(' GPL-2.0-or-later')
 url="https://inai.de/projects/${_pkgname}/"
 depends=('dkms')
 optdepends=('perl-text-csv-xs: required for building GeoIP database'
@@ -17,35 +17,38 @@ optdepends=('perl-text-csv-xs: required for building GeoIP database'
             'unzip: required for building GeoIP database')
 conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-multikernel")
 replaces=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-multikernel")
-source=("https://inai.de/files/${_pkgname}/${_pkgname}-${pkgver}.tar.zst"
+#source=("https://inai.de/files/${_pkgname}/${_pkgname}-${pkgver}.tar.zst"
+source=("https://codeberg.org/jengelh/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.zst"
         dkms.conf)
 sha256sums=('e22efc25b7bbb3436d1b7cdc309b1857ea933f7e5c7d88fbe6951a1e3e582a80'
             '5e131d43ce1b282ada4b02599d2c203a01e2444817f5835bd11ba55578e49111')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-
     # disable install-exec-hook (avoids useless calling of depmod -a at 'make install' stage)
     sed -i 's/^install-exec-hook:$/dont-run:/' Makefile.am
     # disable building of xt_ECHO (it's an example module, and it breaks the build)
     sed -i 's/^build_ECHO=.*$/build_ECHO=n/' mconfig
-
     autoreconf -fvi
+}
+
+build() {
+    cd "${_pkgname}-${pkgver}"
+    export CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}"
+    export CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}"
+    export LDFLAGS="${LDFLAGS}"
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
         --bindir=/usr/bin \
         --sbindir=/usr/bin \
         --libdir=/usr/lib \
+        --includedir=/usr/include \
         --mandir=/usr/share/man \
         --docdir=/usr/share/doc \
         --libexecdir=/usr/lib/xtables \
         --with-xtlibdir=/usr/lib/xtables \
         --without-kbuild
-}
-
-build() {
-    cd "${_pkgname}-${pkgver}"
     make
 }
 
