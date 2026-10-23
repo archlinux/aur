@@ -1,12 +1,12 @@
 pkgbase = hermes-agent-desktop-bin
 	pkgdesc = Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime (prebuilt binary)
-	pkgver = 0.22.4
+	pkgver = 0.22.5
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
 	license = MIT
-	depends = electron42
-	depends = hermes-agent>=0.22.4
+	depends = electron44
+	depends = hermes-agent>=0.22.5
 	depends = hicolor-icon-theme
 	depends = libnotify
 	depends = libsecret
@@ -16,10 +16,10 @@ pkgbase = hermes-agent-desktop-bin
 	optdepends = libayatana-appindicator: tray indicator support
 	provides = hermes-agent-desktop
 	conflicts = hermes-agent-desktop
-	noextract = hermes-agent-desktop-bin-0.22.4-1-prebuilt.tar.zst
+	noextract = hermes-agent-desktop-bin-0.22.5-1-prebuilt.tar.zst
 	options = !debug
 	options = !strip
-	source = hermes-agent-desktop-bin-0.22.4-1-prebuilt.tar.zst::https://github.com/jabla/hermes-agent-desktop-bin/releases/download/v0.22.4-1/hermes-agent-desktop-bin-0.22.4-1-x86_64.pkg.tar.zst
-	sha256sums = e79172d878333152ea424bd4da226adb58ecbf2fbcfe4b58138fc970674f2fd6
+	source = hermes-agent-desktop-bin-0.22.5-1-prebuilt.tar.zst::https://github.com/jabla/hermes-agent-desktop-bin/releases/download/v0.22.5-1/hermes-agent-desktop-bin-0.22.5-1-x86_64.pkg.tar.zst
+	sha256sums = c0f933d77fac1fefdd7918011cb7068c123811816d78ebea5cff685853afc197
 
 pkgname = hermes-agent-desktop-bin
