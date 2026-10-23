@@ -2,7 +2,7 @@
 
 pkgname=roamgate-bin
 _pkgname=roamgate
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Web and PWA client for Herdr: control terminals, monitor coding agents, review files and diffs (formerly herdr-gui)"
 arch=('x86_64' 'aarch64')
@@ -45,8 +45,8 @@ sha256sums=('f0366103e89c5b21afe3f414c1f708dfa2e6d261e54cd2ea1b893cb2188ea61e'
             '43b67c7e4667c1bed11495a19bff95d63709c350e2a0cdd5f62c3b192df7e4dc'
             '715b0c13487119c06bb02f30daad92836601b326d32c2232dbe1127d1c98fbb1'
             'dd5f7d359fe16c6bae06ba3cbb199f56b7e87653404eb868c5455132e9122ed1')
-sha256sums_x86_64=('d67d9cf5ae2c147662152372f690a899d9b59acb1d60d3f974a6b37a29d6f821')
-sha256sums_aarch64=('48317e3507eb4feb2400ad65c1c10d183c6f6fac19aea4956256de9f20a4a752')
+sha256sums_x86_64=('e00051d12142e83620ebe52ad7c26804fef713c0f6faf828046d9c0fc4569bd0')
+sha256sums_aarch64=('a5ede9e90e00a8fc8f3240729b13b7a7f5aab2e6b3212ae642fedfe1fabbacaa')
 
 package() {
   local platform='x64'
