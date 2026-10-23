@@ -4,7 +4,7 @@
 
 
 pkgname=minetest-game-cdb
-pkgver=20260817
+pkgver=20261023
 pkgrel=1
 pkgdesc='Latest version of “Minetest Game” from the Luanti Content Database, but installed system-wide as a regular Arch package.'
 
@@ -25,14 +25,16 @@ sha256sums=('77883f101d4b46e3ed37bfc6095e1b2143a79ff852c702d6d98509b6d998ca6b')
 prepare() {
     cdb='https://content.luanti.org'
     releases=$(curl "${cdb}/api/packages/Luanti/minetest_game/releases/")
-    dlpath=$(echo $releases | jq -r '.[0].url')
-    curl "${cdb}${dlpath}" --output 'minetest-game-cdb.zip'
+    dlpath=$(echo $releases | sed ':a;N;$!ba;s/\n/ /g' | jq -r '.[0].url')
+    curl "${dlpath}" --output 'minetest-game-cdb.zip'
     unzip "${srcdir}/minetest-game-cdb.zip"
 }
 
 
 pkgver() {
-    date -d "$(echo $releases | jq -r '.[0].release_date')" "+%Y%m%d"
+    date -d "$(echo $releases \
+        | sed ':a;N;$!ba;s/\n/ /g' \
+        | jq -r '.[0].release_date')" "+%Y%m%d"
 }
 
 
