@@ -1,0 +1,7 @@
+*.log
+*.tgz
+*.tgz.sha256
+*.pkg.*
+
+pkg/
+src/

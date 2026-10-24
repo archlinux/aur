@@ -1,0 +1,25 @@
+pkgbase = iodeos-installer-bin
+	pkgdesc = iodéOS is installable within a few clicks! The installer is available for all official devices.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://gitlab.iode.tech/ota/ota
+	arch = x86_64
+	license = unknown
+	depends = harfbuzz
+	depends = at-spi2-core
+	depends = libgcc
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = glibc
+	depends = libstdc++
+	depends = zlib
+	depends = cairo
+	depends = glib2
+	provides = iodeos-installer
+	source = iodeos-installer-bin-0.3.1.tgz::https://gitlab.iode.tech/ota/ota/-/raw/master/installer/iodeOS-installer-v0.3.1-linux.tgz
+	source = iodeos-installer-bin-0.3.1.tgz.sha256::https://gitlab.iode.tech/ota/ota/-/raw/master/installer/iodeOS-installer-v0.3.1-linux.tgz.sha256
+	sha256sums = ea5cb5bc11977bb7e62f894dd3b53f6ca6c5d0d5aa82357beda4a8af29572722
+	sha256sums = 1e5bfe9f2811239ba229b72d2ca5cb7b96be25a8ea9bc3aecc082f98750e2177
+
+pkgname = iodeos-installer-bin
