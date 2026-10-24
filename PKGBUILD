@@ -1,19 +1,19 @@
 # Maintainer: Popa Ioan Alexandru <alexioanpopa11@gmail.com>
 
 pkgname=catcodec
-pkgver=1.0.5
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="A tool for decoding/encoding .cat files for OpenTTD"
-arch=('i686' 'x86_64')
-url="https://www.openttd.org/downloads/catcodec-releases/latest.html"
+arch=('x86_64')
+url="https://github.com/OpenTTD/catcodec"
 license=('GPL')
-source=("https://cdn.openttd.org/catcodec-releases/1.0.5/catcodec-1.0.5-source.tar.xz")
-sha256sums=('47ff4e6d663e19d529960c76f1e1bda5fe4cad97e2628381ec3a894ba260e0e1')
+makedepends=('cmake')
+source=("https://github.com/OpenTTD/catcodec/releases/download/1.1/catcodec-1.1-source.tar.xz")
+sha256sums=('24f0a634bcabf5f6fc88877b6abbb79686d86dfed0b2f1fb3955d2750d4a5fa6')
 build() {
-    cd ${srcdir}/$pkgname-$pkgver
-    make prefix=/usr
+	cmake -B build -S "$pkgname-$pkgver" -D CMAKE_BUILD_TYPE=None -D CMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 package() {
-    cd ${srcdir}/$pkgname-$pkgver
-    make prefix=/usr DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 }
