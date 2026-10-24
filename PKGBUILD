@@ -2,7 +2,7 @@
 
 upstream_name=dr14_t.meter
 pkgname=python-dr14_tmeter
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Compute the DR14 of a given audio file"
 arch=(any)
@@ -26,4 +26,4 @@ package() {
     install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
 
-sha256sums=('9463aefef93d7a2458bd69413ebaf01118fae1aabf13b274e2439ac9dcb59f56')
+sha256sums=('695f50aeb408ebc7af1a8ee4e40cc37648f09037304d489629b2b4d5e29e45c8')
