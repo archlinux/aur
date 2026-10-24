@@ -1,4 +1,5 @@
 # Maintainer: Olaf Wriggers <olaf@olwig.xyz>
+
 pkgname=cosmic-ext-applet-privacy-indicator
 pkgver=0.3.1
 pkgrel=1
