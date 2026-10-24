@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=magpie-cli-bin
-pkgver=0.1.1442
+pkgver=0.1.1469
 pkgrel=1
 pkgdesc="Terminal build of magpie: pick every AI coding agent's model without GUI dependencies"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("magpie-${pkgver}-LICENSE::https://raw.githubusercontent.com/yetone/magp
 source_x86_64=("magpie-cli-${pkgver}-amd64::https://github.com/yetone/magpie-releases/releases/download/v${pkgver}/magpie-cli-linux-amd64")
 source_aarch64=("magpie-cli-${pkgver}-arm64::https://github.com/yetone/magpie-releases/releases/download/v${pkgver}/magpie-cli-linux-arm64")
 sha256sums=('79d2c8444715d4bc453ec4f8a0aaf2051a4c1ee5ac08f5bd2e5848aef87c7572')
-sha256sums_x86_64=('4443d93c545682ff5b3bcf2373c6357e59bfae0cf7b239eccc35a5587c582ac0')
-sha256sums_aarch64=('f8f5b1326b8fddf7421a0296228c6678e9c34f4bf013d4b6b1e182baf561f803')
+sha256sums_x86_64=('3453fcc53e825babc056eedb5c8af5b0fb734dbb40ce06c7c5982e41f2e0a541')
+sha256sums_aarch64=('b6e5a19c7b1b04a8995de69e7d6d16d7760fa1ef3cf84906fa4462ba0af27a6e')
 
 package() {
     local _suffix
