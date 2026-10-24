@@ -1,0 +1,30 @@
+pkgbase = librepaper-bin
+	pkgdesc = A free collaborative writing, editing, and commenting platform
+	pkgver = 0.0.50
+	pkgrel = 1
+	url = https://github.com/LibrePaper/librepaper
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = harfbuzz
+	depends = gdk-pixbuf2
+	depends = at-spi2-core
+	depends = dbus
+	depends = hicolor-icon-theme
+	provides = librepaper=0.0.50
+	conflicts = librepaper
+	options = !debug
+	options = !strip
+	source = LICENSE-0.0.50::https://raw.githubusercontent.com/LibrePaper/librepaper/v0.0.50/LICENSE
+	sha256sums = 24e8fce6a0afd334944a8982e1f388dab3e208beb33acaecc4a490819918add0
+	source_x86_64 = librepaper-bin-0.0.50-x86_64.deb::https://github.com/LibrePaper/librepaper/releases/download/v0.0.50/librepaper_0.0.50_amd64.deb
+	sha256sums_x86_64 = 0306a574296a9afd97fc94749323f74b7a152504510c92032e18774896db53d3
+
+pkgname = librepaper-bin
