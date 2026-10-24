@@ -4,7 +4,7 @@
 pkgname=gamebreaker-sdl3
 pkgdesc="Simple graphics engine for C++ on SDL3"
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://codeberg.org/elpoeprod/GameBreaker"
 license=(BSD-3)
@@ -29,6 +29,6 @@ package(){
 	mkdir -p "$pkgdir/usr/share/licenses/gamebreaker/"
 	
 	cp -drf include/* "$pkgdir/usr/local/include/gamebreaker/"
-	cp "libgb.so" "$pkgdir/usr/lib/libgb.so"
+	cp "build/linux/libgb.so" "$pkgdir/usr/lib/libgb.so"
 	cp "LICENSE" "$pkgdir/usr/share/licenses/gamebreaker/LICENSE"
 }
