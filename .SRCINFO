@@ -1,0 +1,20 @@
+pkgbase = rnazar-bin
+	pkgdesc = System tray evil eye ward and crash notifier
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/jnmbk/rnazar
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	provides = rnazar
+	conflicts = rnazar
+	source_x86_64 = https://github.com/jnmbk/rnazar/releases/download/v0.8.3/rnazar-0.8.3-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 3baa4a1f32465c73583768c785e66dd80c9d326491d1899b3ac520fbe3db1d68
+
+pkgname = rnazar-bin
