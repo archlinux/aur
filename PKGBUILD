@@ -1,7 +1,7 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/antigravity-tools-bin
 pkgname=antigravity-tools-bin
-pkgver=4.9.8
+pkgver=5.0.0
 pkgrel=1
 pkgdesc=Professional\ Antigravity\ Account\ Manager\ \&\ Switcher
 arch=(x86_64 )
@@ -18,8 +18,8 @@ validpgpkeys=()
 
 source=(LICENSE )
 sha256sums=('6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
-sha256sums_x86_64=('250ab17031b11aa37f151f5c4f8db274f5002537e087810dbf7bb5e0bceec2a6')
-source_x86_64=(antigravity-tools-bin-4.9.8-x86_64.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v4.9.8/Antigravity.Tools_4.9.8_amd64.deb )
+sha256sums_x86_64=('c26bbd5e2121acbe3de15d51d6b6470f2c205e4ef9d7494e70ddd067019cc7e4')
+source_x86_64=(antigravity-tools-bin-5.0.0-x86_64.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v5.0.0/Antigravity.Tools_5.0.0_amd64.deb )
 
 _deb_relocate_usr_local=true
 _install_bin_path=''
@@ -33,7 +33,7 @@ _license_files=(LICENSE )
 prepare() {
     local _deb_source_file
     case "$CARCH" in
-        x86_64) _deb_source_file=antigravity-tools-bin-4.9.8-x86_64.deb ;;
+        x86_64) _deb_source_file=antigravity-tools-bin-5.0.0-x86_64.deb ;;
         *)
             echo "Unsupported architecture: $CARCH" >&2
             return 1
