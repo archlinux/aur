@@ -1,6 +1,6 @@
 pkgbase = keepkey-vault-appimage
 	pkgdesc = Desktop companion app for the KeepKey hardware wallet.
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://www.keepkey.com/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = keepkey-vault-appimage
 	depends = keepkey-udev
 	depends = gtk3
 	depends = nss
-	noextract = KeepKey-Vault-1.6.4.AppImage
+	noextract = KeepKey-Vault-1.6.5.AppImage
 	options = !strip
-	source = https://github.com/keepkey/keepkey-vault/releases/download/v1.6.4/KeepKey-Vault-x86_64.AppImage
-	sha256sums = 245c09c0979e562a915c1e4f3718cf5e2712c9a66e1340e536309cfd9fc1d167
+	source = https://github.com/keepkey/keepkey-vault/releases/download/v1.6.5/KeepKey-Vault-x86_64.AppImage
+	sha256sums = ea607a82943dc5aef98a89dddc425f31685f3854f6d493021bd80a9781728510
 
 pkgname = keepkey-vault-appimage
