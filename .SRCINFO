@@ -1,0 +1,20 @@
+pkgbase = codemeyo-bin
+	pkgdesc = Multi-LLM autonomous coding agent with Claude, GPT, Grok, Gemini, DeepSeek, Mistral, Ollama and Groq support
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = https://codemeyo.com
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	provides = codemeyo
+	conflicts = codemeyo
+	options = !strip
+	options = !debug
+	source = CodeMeYo_1.11.7_amd64.AppImage::https://codemeyo.com/api/v1/updater/files/62
+	source = codemeyo.desktop
+	source = codemeyo.png
+	sha256sums = 6adbbcc0786f4c638ea0f16e6b3bf80722309c1390d0f96f58aa27e8063da878
+	sha256sums = 322b6c50a4e434e57cd88498159573981321c3187039e7dbaf94d6485718d61c
+	sha256sums = 6c7660390d65217fe8de0892862254f47aee77e0af7096c75b8bfe168c5403f7
+
+pkgname = codemeyo-bin

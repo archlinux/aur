@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=CodeMeYo
+GenericName=AI Coding Agent
+Comment=Multi-LLM autonomous coding agent
+Exec=codemeyo %u
+Icon=codemeyo
+Terminal=false
+Categories=Development;
+Keywords=AI;LLM;coding;agent;Claude;GPT;Grok;Gemini;DeepSeek;Mistral;Ollama;Groq;
+StartupWMClass=codemeyo
+MimeType=x-scheme-handler/codemeyo;
