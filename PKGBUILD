@@ -1,5 +1,5 @@
 pkgname=lazyverilog
-pkgver=2.0.1
+pkgver=2.1.2
 pkgrel=1
 epoch=
 pkgdesc="A fast, practical SystemVerilog LSP for RTL coding."
@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/lazyverilog/LazyVerilog"
 license=("MIT")
 groups=()
-makedepends=("boost" "cmake")
+makedepends=("cmake" "git")
 checkdepends=()
 optdepends=()
 provides=()
@@ -23,15 +23,17 @@ noextract=()
 validpgpkeys=()
 
 build() {
-	cd "LazyVerilog"
-	mkdir -p build
+	cd "LazyVerilog-${pkgver}"
 	cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-	cmake --build build -j$(nproc) --target lazyverilog-lsp
+	cmake --build build -j"$(nproc)" --target lazyverilog-lsp lazyverilog-lint lazyverilog-rtltree
 }
 
 package() {
-	cd "LazyVerilog/build"
+	cd "LazyVerilog-${pkgver}/build"
 	install -Dm755 lazyverilog-lsp "$pkgdir/usr/bin/lazyverilog-lsp"
+	install -Dm755 lazyverilog-lint "$pkgdir/usr/bin/lazyverilog-lint"
+	install -Dm755 lazyverilog-rtltree "$pkgdir/usr/bin/lazyverilog-rtltree"
+	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('c35e4b0330a6c1a447577b07159d6b619924bd6a7bea22c73ac4a1275d8ddf71')
+sha256sums=('0ab6ab47e00609a7f56fdad67aa536245ac1ea7a86a6d19a35d5d25826c12d58')
