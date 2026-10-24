@@ -1,0 +1,18 @@
+pkgbase = your-szu-life-bin
+	pkgdesc = Shenzhen University campus life application (prebuilt Debian package)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/rinnein/your-szu-life
+	arch = x86_64
+	license = MIT
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	options = !strip
+	provides = your-szu-life
+	conflicts = your-szu-life-git
+	conflicts = your-szu-life
+	source_x86_64 = your-szu-life_linux_x64_0.10.0-release.deb::https://github.com/rinnein/your-szu-life/releases/download/canary/your-szu-life_linux_x64_0.10.0-release.deb
+	sha256sums_x86_64 = 20fe986930b25fa290fa2e59cec678be170d1eb0a4829567967648fea884d1d1
+
+pkgname = your-szu-life-bin
