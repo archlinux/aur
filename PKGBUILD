@@ -49,6 +49,8 @@ package() {
   cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"
 
   make DESTDIR=${pkgdir} install
+  # Installed read-only, which prevents makepkg from stripping it
+  chmod 755 "${pkgdir}/usr/bin/ipdiscover"
 
   /usr/bin/find ${pkgdir} -name '.packlist' -delete
   /usr/bin/find ${pkgdir} -name '*.pod' -delete
