@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal file explorer built with SharpConsoleUI"
 
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('b0841376bb59150226c7f44f47506d91a763ae35987456ab6435c50c7146ce56'
             'c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73')
-sha256sums_x86_64=('167254635f2d6ed739443cc8d83742ba63cdd7369a589b2239e548433da21fff')
-sha256sums_aarch64=('35c929582af110c61557c0b41b9d2373d32cbf82230579d77b9d4336ca1594cf')
+sha256sums_x86_64=('a6473976aebef60e091288f693809b606c742c70588b9274d30668e313b6ea7c')
+sha256sums_aarch64=('f31c542c3864e23ca4ae67d4430797c86c55a1b8efddabcebe9be33cfc0b336d')
 
 
 package() {
