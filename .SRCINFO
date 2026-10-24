@@ -1,0 +1,17 @@
+pkgbase = octr-nitrofueled-pc-bin
+	pkgdesc = Crash Team Racing: Nitro-Fueled (PS4) running natively on PC (SacredFire fork)
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/Ryu7w7/OCTR-NitroFueled-PC
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = octr-nitrofueled-pc
+	conflicts = octr-nitrofueled-pc
+	options = !strip
+	source = octr-nitrofueled-pc-bin-0.6.4.AppImage::https://github.com/Ryu7w7/OCTR-NitroFueled-PC/releases/download/v0.6.4/SacredFire-v0.6.4-x86_64.AppImage
+	sha256sums = 9af6d88b52735367029910472571b300561cd7e1617da1d3674249536f158f2e
+
+pkgname = octr-nitrofueled-pc-bin
