@@ -1,6 +1,6 @@
 pkgbase = creativecraft-bin
 	pkgdesc = One home for open-source creative apps: installer, cloud sync and an AI assistant over MCP
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/bhimio1/CreativeCraft
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = creativecraft-bin
 	conflicts = creativecraft
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/bhimio1/CreativeCraft/releases/download/v0.3.0/creativecraft-0.3.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a2df6315eb13ca70f249667787f6e43b5a731f4b30e3a46975a2b8a4db269daa
-	source_aarch64 = https://github.com/bhimio1/CreativeCraft/releases/download/v0.3.0/creativecraft-0.3.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 0e2993b60db7da9f3179200ca48faab0cbd6c2b40b4212109162810b1be4a344
+	source_x86_64 = https://github.com/bhimio1/CreativeCraft/releases/download/v0.3.2/creativecraft-0.3.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 1ae7a0bf3599913a739a9df404f52ad0a89555c5c1ef1f68d3122337692d4094
+	source_aarch64 = https://github.com/bhimio1/CreativeCraft/releases/download/v0.3.2/creativecraft-0.3.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d3d4df6592243368b6f186d595fb2fd925c9ba44c1eed67a7d7c8f8f75e8fb93
 
 pkgname = creativecraft-bin
