@@ -1,7 +1,7 @@
 # Maintainer: Yo'av Moshe <aur@yoavmoshe.com>
 
 pkgname=hylki
-pkgver=1.45.1
+pkgver=1.45.2
 pkgrel=1
 pkgdesc="A clean, fast GNOME-native email client"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ options=('!lto')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/hyprlab/hylki/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('0a9b42e5b9d6fc08aaed03f1eb61e8ea619c6cae3ef76832eceb1b78c58230c8')
+sha256sums=('fe30743ba4fad0fc1aa0b952f8cc003f0e93df776f96517d36d910729f9b2ca1')
 
 prepare() {
   cd "$pkgname-$pkgver"
