@@ -7,8 +7,8 @@
 _pkgname=coreutils
 
 pkgname=advcpmv
-pkgver=9.5
-pkgrel=5
+pkgver=9.11
+pkgrel=1
 pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
 license=('GPL3-or-later')
@@ -21,18 +21,18 @@ provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
 source=(
   "https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
   "https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz.sig"
-  "advcpmv-9.5-2.patch"
+  "advcpmv-0.9-9.11.patch"
 )
 
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9')
 
-sha256sums=('cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a'
+sha256sums=('394024eda0a5955217ceda9cd1201e65dc8fa3aa29c2951135a49521d57c3cc3'
             'SKIP'
-            'd89abdc9822c9dee3bafea12874dce952f0c9189f94b11337b5f1b5f1c8ef96c')
+            '54247b572f015ea7750dce1ac8e45da07736716d62bfc3f26735916cb1c0426f')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/advcpmv-9.5-2.patch"
+  patch -Np1 -i "${srcdir}/advcpmv-0.9-9.11.patch"
 }
 
 build() {
