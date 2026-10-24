@@ -1,6 +1,6 @@
 pkgbase = orgwarrior-web
 	pkgdesc = Org mode's agenda in your browser, phone first: a web page over orgwarrior's engine
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/aleksozolins/orgwarrior-web
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = orgwarrior-web
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python
-	depends = orgwarrior>=0.3.0
-	source = https://files.pythonhosted.org/packages/source/o/orgwarrior-web/orgwarrior_web-0.3.0.tar.gz
-	sha256sums = 2e3329209d41c1daa539aa6cd363fc13ef6d7aaf3a0fdd0f0149da8ca03e4ca7
+	depends = orgwarrior>=0.3.1
+	source = https://files.pythonhosted.org/packages/source/o/orgwarrior-web/orgwarrior_web-0.3.1.tar.gz
+	sha256sums = 05bcd81367a35ce2c2d5d6cecb7100703db14510c8a34c584588b86361d61efa
 
 pkgname = orgwarrior-web
