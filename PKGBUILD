@@ -1,19 +1,20 @@
-# Maintainer: René Wagner <rwagner at rw-net dot de>
+# Maintainer: Elias Elwyn <a@jthvai.net>
+# Contributor: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-number-format'
-pkgver='1.76'
+pkgver=1.79
 pkgrel='1'
 pkgdesc="Perl extension for formatting numbers"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/pod/Number::Format'
 source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Number-Format-${pkgver}.tar.gz")
-sha256sums=('0e0060eb363635a885706c6a26f5fcaafeae759f7b2acae49dda70e195dd44d6')
+sha256sums=('404b231709b28a41024ae76bedd349145da7e535f94c6013b6bb55eea383e1ad')
 _distdir="Number-Format-${pkgver}"
 
 build() {
