@@ -1,7 +1,7 @@
 pkgbase = ocsinventory-agent
 	pkgdesc = Hardware and software inventory tool (client)
 	pkgver = 2.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ocsinventory-ng.org
 	install = ocsinventory-agent.install
 	arch = x86_64
@@ -32,10 +32,12 @@ pkgbase = ocsinventory-agent
 	source = ocsinventory-agent.cfg
 	source = ocsinventory-agent.service
 	source = ocsinventory-agent.timer
+	source = screen-serial.patch
 	sha256sums = 477835b3813df4f6e222df5288d8830f838a5a1dbd2914c7d5f89790023fb9c6
 	sha256sums = 71aaa77f9c99f86a11fcedcc6cf8c7f78afa953d877561b36685d06036c098d7
 	sha256sums = 96708ef480c0ec7ba58bc4e9e2074ee3f133965e3c378dca3281aef18cb202b1
 	sha256sums = b5cddb343e940907c2f785973264c6f60c2b4013f3eb393a9ddfa1597b515f55
 	sha256sums = dff1030d95bc55188c219b354bdf1aa5a31b6e7377475ba8f171704ea0caae43
+	sha256sums = ed8cf09cc43651d24b8a55ff420fd1fcf4daa39c285de1ba59b8127fb38ea2d4
 
 pkgname = ocsinventory-agent
