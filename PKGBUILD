@@ -2,7 +2,7 @@
 
 pkgname=pd2-trade-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Project Diablo 2 app for price checking"
 arch=('x86_64')
 url="https://github.com/errolgr/pd2-trade"
@@ -14,10 +14,11 @@ depends=(
   'glib2'
   'gtk3'
   'hicolor-icon-theme'
-  'libsoup'
+  'libsoup3'
   'pango'
   'webkit2gtk-4.1'
   'libayatana-appindicator'
+  'less'
 )
 options=('!strip' '!debug')
 install=${pkgname}.install
