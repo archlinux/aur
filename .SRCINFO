@@ -1,0 +1,20 @@
+pkgbase = libva-nvidia-driver-cagedbird
+	pkgdesc = VA-API driver on NVDEC/NVENC with hardware encode and Chrome support (cagedbird043 fork)
+	pkgver = 0.0.18.cb1
+	pkgrel = 1
+	url = https://github.com/cagedbird043/nvidia-vaapi-driver
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ffnvcodec-headers
+	makedepends = libva
+	depends = gst-plugins-bad-libs
+	depends = libegl
+	depends = nvidia-utils
+	provides = libva-nvidia-driver
+	conflicts = libva-nvidia-driver
+	conflicts = libva-vdpau-driver
+	source = nvidia-vaapi-driver-v0.0.18-cb1.tar.gz::https://github.com/cagedbird043/nvidia-vaapi-driver/archive/refs/tags/v0.0.18-cb1.tar.gz
+	sha256sums = 632cc2e2a084b890939e88a16cde20e52a3b3bfc753481831f683c8913bbfea5
+
+pkgname = libva-nvidia-driver-cagedbird
