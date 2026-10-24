@@ -1,7 +1,7 @@
 pkgbase = sunshine-git
 	pkgdesc = A self-hosted game stream host for Moonlight
 	pkgver = 2026.403.124357.r0.gba4db46
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LizardByte/Sunshine
 	install = sunshine.install
 	arch = x86_64
@@ -47,6 +47,8 @@ pkgbase = sunshine-git
 	depends = opus
 	depends = systemd-libs
 	depends = vulkan-icd-loader
+	depends = qt6-base
+	depends = qt6-svg
 	depends = wayland
 	depends = which
 	optdepends = libva-mesa-driver: AMD GPU encoding support

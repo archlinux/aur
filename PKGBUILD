@@ -11,7 +11,7 @@
 _pkgname='sunshine'
 pkgname="${_pkgname}-git"
 pkgver=2026.403.124357.r0.gba4db46
-pkgrel=2
+pkgrel=3
 pkgdesc='A self-hosted game stream host for Moonlight'
 arch=('x86_64')
 url='https://github.com/LizardByte/Sunshine'
@@ -57,6 +57,8 @@ depends=(
   'opus'
   'systemd-libs'
   'vulkan-icd-loader'
+  'qt6-base'
+  'qt6-svg'
   'wayland'
   'which'
 )
