@@ -1,6 +1,6 @@
 pkgbase = system-bridge-git
 	pkgdesc = A bridge for your systems (git version)
-	pkgver = 5.13.1.r6772.gb64d646
+	pkgver = 5.13.1.r6777.g303d69c
 	pkgrel = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = system-bridge-git
 	optdepends = nvidia-utils: NVIDIA GPU metrics via nvidia-smi
 	optdepends = pciutils: GPU model identification via lspci
 	optdepends = pipewire: name apps using the microphone or camera via pw-dump
+	optdepends = playerctl: media player data and controls
 	optdepends = zenity: tray and desktop confirmation prompts
 	provides = system-bridge
 	conflicts = system-bridge
