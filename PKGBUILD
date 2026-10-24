@@ -20,7 +20,6 @@ prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/${pkgname}-pr1287.patch"
-    patch -Np1 -i "${srcdir}/${pkgname}-pr1292.patch"
     cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
