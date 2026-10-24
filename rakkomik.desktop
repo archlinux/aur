@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=RakKomik
+GenericName=Manga and comic downloader
+Comment=Download manga and comics for offline reading
+Exec=rakkomik
+Icon=rakkomik
+Terminal=false
+Categories=Network;FileTransfer;
+StartupNotify=true

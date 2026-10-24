@@ -1,0 +1,21 @@
+pkgbase = rakkomik
+	pkgdesc = Manga and comic downloader
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/akn19/rakkomik
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = bash
+	depends = electron
+	depends = hicolor-icon-theme
+	source = rakkomik::git+https://github.com/akn19/rakkomik.git#tag=v1.2.3
+	source = rakkomik.sh
+	source = rakkomik.desktop
+	sha256sums = 3e66062e533452480295a101130b9428828fa184647f93b35279fdba1bf03c0d
+	sha256sums = a9623081ede0eb9f52f2ad9db475091f06e00a68ef9fcf5a6f823ca35fe6295b
+	sha256sums = addb3941dd1bf8a67987d8d9668f0395de4b95e1c8f117ec55beafd5ca8de638
+
+pkgname = rakkomik
