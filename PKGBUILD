@@ -1,12 +1,12 @@
 # Maintainer: Chomiam <axel.valens@ik.me>
 pkgname=noos-package-manager
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Gestionnaire de paquets GTK4/libAdapta et outil CLI (noos-up) pour Arch Linux (Pacman, AUR via Yay, Flatpak et AppImages)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Chomiam/noos-package-manager"
 license=('GPL-3.0-or-later')
-options=(!lto)
+options=(!lto !debug)
 depends=(
   'gtk4'
   'libadapta'
@@ -25,10 +25,11 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'git'
+  'cargo-auditable'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32cdbb7c64e06a768d4f4fbcd3aaadcebf1cb1042e94da6fa244bd49f700d2dd')
+# Rempli après la création du tag (somme BLAKE2b du tarball source).
+b2sums=('2837a26d40d9dec941a19f2b9ae1af7b72eca4f90616af3aa45db4732d927152af37de41c1d01905e78f0aadab19de51c3794722f369fb758efe5e25b99bcbf9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,7 +41,15 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  # Durcissement explicite : RELRO complet, NX, liaison « as-needed ».
+  # Les CFLAGS de makepkg apportent déjà PIE, stack protector et FORTIFY_SOURCE
+  # aux dépendances C.
+  export RUSTFLAGS="${RUSTFLAGS:-} -C relro-level=full \
+    -C link-arg=-Wl,-O1 -C link-arg=-Wl,--as-needed \
+    -C link-arg=-Wl,-z,noexecstack"
+  # cargo-auditable embarque la liste des dépendances Rust dans le binaire,
+  # ce qui permet `cargo audit bin` et l'analyse par Syft/Trivy.
+  cargo auditable build --frozen --release --all-features
 }
 
 check() {
