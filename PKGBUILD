@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=qiskit-addon-slc
 pkgname=python-$_name
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Reducing PEC sampling overhead with shaded lightcones"
 arch=(any)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(
     python-matplotlib
     python-pauli-prop
-    python-pyscf
+    python-plotly
     python-qiskit
     python-rustworkx
     python-samplomatic
@@ -19,7 +19,7 @@ makedepends=(
     git
     python-build
     python-installer
-    python-hatchling
+    python-maturin
 )
 checkdepends=(
     python-pytest
@@ -30,13 +30,8 @@ source=(
     $_name::git+https://github.com/Qiskit/$_name.git#tag=$pkgver
     fix-tests.patch
 )
-b2sums=('8f8500baad2e753fc586f1b3e0c10061efe0348584af9c243d3d84d5b2a57a0f7f1a8a49f569cbb0009aa19d287e2ec39be10d319ab69a909249ebb7a30cefbf'
-'6db9659dac057426a1ce4b1a42dc96f3cbc92763b7b9cc58191b17d86839579ae213bf6f23074114ca662e9567280455246ddd67c4c763c3b2abc2e8d28e664e')
-
-prepare(){
-    # https://github.com/Qiskit/qiskit-addon-slc/issues/132
-    patch -Np1 -d $_name < fix-tests.patch
-}
+b2sums=('1e36da27aeabda371067d6f5157181106213cd9d87b1e7eadeb312272e166da365c6d995b413d727f07d92c7fa9c88dc0ae73cf89d209b7d56a1d089a4745c97'
+        '6db9659dac057426a1ce4b1a42dc96f3cbc92763b7b9cc58191b17d86839579ae213bf6f23074114ca662e9567280455246ddd67c4c763c3b2abc2e8d28e664e')
 
 build() {
     cd $_name
