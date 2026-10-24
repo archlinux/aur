@@ -15,6 +15,7 @@ pkgbase = git-credential-manager
 	depends = krb5
 	depends = zlib
 	depends = libsecret
+	conflicts = git-credential-manager-bin
 	options = !strip
 	options = !debug
 	source = git-credential-manager-3.0.1.tar.gz::https://github.com/git-ecosystem/git-credential-manager/archive/refs/tags/v3.0.1.tar.gz

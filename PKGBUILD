@@ -10,6 +10,7 @@ license=('MIT')
 depends=('krb5' 'zlib' 'libsecret')
 makedepends=('dotnet-sdk-10.0' 'clang' 'gcc' 'git' 'dpkg' 'fontconfig')
 checkdepends=('git')
+conflicts=(git-credential-manager-bin)
 options=(!strip !debug)
 
 source=(
