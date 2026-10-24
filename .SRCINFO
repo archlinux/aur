@@ -1,6 +1,6 @@
 pkgbase = xrat-bin
 	pkgdesc = Rust CLI/TUI proxy manager for Xray-core, V2Ray-core, and sing-box
-	pkgver = 0.31.3
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/mhyrzt/xrat
 	install = xrat-bin.install
@@ -16,9 +16,9 @@ pkgbase = xrat-bin
 	provides = xrat
 	conflicts = xrat
 	options = !strip
-	source_x86_64 = xrat-bin-0.31.3-x86_64.tar.gz::https://github.com/mhyrzt/xrat/releases/download/v0.31.3/xrat-v0.31.3-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = fb3de6f61ba7d0049680ac5f9bd1cf6fa8f8eab6c214883bb9dbc0c206ba1daa
-	source_aarch64 = xrat-bin-0.31.3-aarch64.tar.gz::https://github.com/mhyrzt/xrat/releases/download/v0.31.3/xrat-v0.31.3-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 9f334d0b00cb2b34851e0bc504b42ac1a8f6e680594c8fd871c4badd4f8f7bee
+	source_x86_64 = xrat-bin-0.32.0-x86_64.tar.gz::https://github.com/mhyrzt/xrat/releases/download/v0.32.0/xrat-v0.32.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 3327d0f0483878fe6775f1e354b8824167f8ecef6d6a36bb9ce5db099a0da274
+	source_aarch64 = xrat-bin-0.32.0-aarch64.tar.gz::https://github.com/mhyrzt/xrat/releases/download/v0.32.0/xrat-v0.32.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 3e9c550d824f504f28afd18346794b9fa66c190e5c789d25012c1828c3490a17
 
 pkgname = xrat-bin
