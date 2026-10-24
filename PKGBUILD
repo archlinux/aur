@@ -2,7 +2,7 @@
 
 pkgbase=gemmul8
 pkgname=('gemmul8-cuda' 'gemmul8-rocm')
-pkgver=3.4.3
+pkgver=3.5.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='emulating GEMM using low-precision matrix engines, including int8 and fp8'
@@ -12,7 +12,7 @@ license=('MIT')
 source=(
 	"${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('7643517700870c3cf1397e91551bfc0c7a8ead575d700028ad2ae173f3adaa6f')
+sha256sums=('8bb14aaa60d9f513bcd70e06ef9c74f59f485948d82503f3cde3be5e978d81f0')
 
 options=(staticlibs)
 
