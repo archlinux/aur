@@ -1,17 +1,19 @@
 pkgbase = hfdownloader
 	pkgdesc = Simple go utility to download HuggingFace Models and Datasets
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bodaay/HuggingFaceModelDownloader
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = Apache 2.0
-	makedepends = go
 	depends = glibc
 	provides = hfdownloader
 	conflicts = hfdownloader-git
-	source = hfdownloader-3.4.0.tar.gz::https://github.com/bodaay/HuggingFaceModelDownloader/archive/refs/tags/v3.4.0.tar.gz
-	md5sums = 04610fb17251db4bfc10e7822e7390a5
-	sha256sums = 7bdd1839fa01822682162044af4face315140383b61d4def92fd8f593d9f818a
+	source = LICENSE::https://github.com/bodaay/HuggingFaceModelDownloader/raw/v3.4.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = hfdownloader-linux-amd64-v3.4.0::https://github.com/bodaay/HuggingFaceModelDownloader/releases/download/v3.4.0/hfdownloader_linux_amd64_v3.4.0
+	sha256sums_x86_64 = 0a184de0c5d6bac1f68cb7dace778193e08aea3991f698e2f823700e70dd4409
+	source_aarch64 = hfdownloader-linux-amd64-v3.4.0::https://github.com/bodaay/HuggingFaceModelDownloader/releases/download/v3.4.0/hfdownloader_linux_arm64_v3.4.0
+	sha256sums_aarch64 = ba8dbe423824281aaf6ba688973619de1c08aba76d2c5243cb0ae848a7ee4978
 
 pkgname = hfdownloader
