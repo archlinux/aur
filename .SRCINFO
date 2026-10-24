@@ -1,6 +1,6 @@
 pkgbase = python-globus-sdk
 	pkgdesc = Pythonic interface to Globus APIs
-	pkgver = 4.9.1
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://github.com/globus/globus-sdk-python
 	arch = any
@@ -15,8 +15,9 @@ pkgbase = python-globus-sdk
 	depends = python-requests
 	depends = python-pyjwt
 	depends = python-typing_extensions
-	source = python-globus-sdk::git+https://github.com/globus/globus-sdk-python#tag=4.9.1?signed
+	source = python-globus-sdk::git+https://github.com/globus/globus-sdk-python#tag=4.10.0?signed
 	validpgpkeys = FC694E40DC03A8B702D96372CF7E843C41E814C9
-	sha256sums = 163ffec079c5e01c51880675bbbfcac0743c01a9a5131a98ea1a3ea475ea7a92
+	validpgpkeys = 24D9B0C8991CFA608CBF7B82EC368B90919BB3C7
+	sha256sums = c0695185db501b33accee9be9c856bc93ccab8ca6b6fc67c6dab9879f527f9c1
 
 pkgname = python-globus-sdk
