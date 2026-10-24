@@ -1,0 +1,30 @@
+pkgbase = kio-chomikuj-git
+	pkgdesc = KIO worker and System Settings module for Chomikuj.pl
+	pkgver = 0.1.0.r9.g9daa9ab
+	pkgrel = 1
+	url = https://github.com/hamster-instrumentality-project/kio-chomikuj
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	checkdepends = appstream
+	makedepends = cmake
+	makedepends = extra-cmake-modules>=6.3.0
+	makedepends = gettext
+	makedepends = kdoctools>=6.3.0
+	makedepends = ninja
+	makedepends = python
+	depends = kcmutils>=6.3.0
+	depends = kconfig>=6.3.0
+	depends = kcoreaddons>=6.3.0
+	depends = ki18n>=6.3.0
+	depends = kio>=6.3.0
+	depends = qt6-base>=6.5.0
+	depends = zlib
+	optdepends = khelpcenter: offline handbook in KHelpCenter
+	optdepends = plasma-workspace: Chomikuj.pl control module in System Settings
+	provides = kio-chomikuj
+	conflicts = kio-chomikuj
+	source = kio-chomikuj::git+https://github.com/hamster-instrumentality-project/kio-chomikuj.git
+	sha256sums = SKIP
+
+pkgname = kio-chomikuj-git
