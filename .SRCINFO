@@ -1,6 +1,6 @@
 pkgbase = openaside-bin
 	pkgdesc = OpenAside - AI-powered browser built on patched Chromium
-	pkgver = 0.0.17
+	pkgver = 0.0.18
 	pkgrel = 1
 	url = https://github.com/minpeter/openaside
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = openaside-bin
 	conflicts = openaside
 	options = !strip
 	options = !debug
-	source = openaside-bin-0.0.17.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@0.0.17/openaside-0.0.17-linux-x64.tar.gz
-	sha256sums = ccb7001bbb27f3b25abf07ae60ba988891994e3d668f0f84a2664f539a09491c
+	source = openaside-bin-0.0.18.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@0.0.18/openaside-0.0.18-linux-x64.tar.gz
+	sha256sums = 49d69f5e3705c9276cb33f6fd1fad4fc032aef88651063cb114a5ccf848f48c1
 
 pkgname = openaside-bin
