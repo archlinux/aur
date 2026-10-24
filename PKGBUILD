@@ -2,7 +2,7 @@
 
 _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
-_pkgver=32.2.2
+_pkgver=33.0.0
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
@@ -21,7 +21,6 @@ depends=(
   "ffmpeg-obs>=9" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
-  "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C related binary
   "jack" # Deps of JACK plugin
@@ -29,10 +28,12 @@ depends=(
   "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
   "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
+  "libgcc" # Deps of any C++ related binary
   "libgl" # Deps of libobs-opengl and OBS Studio
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
+  "libstdc++" # Deps of any C++ related binary
   "libva" # Deps of FFmpeg plugin and QSV plugin
   "libvpl" # Deps of QSV plugin
   "libx11" # Deps of libobs, libobs-opengl, X11 Capture plugin, frontend tools plugin, obs-browser and CEF
@@ -109,8 +110,8 @@ source=(
   "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed3
   "10136-Add_ROI_support_for_VAAPI.patch" # https://github.com/obsproject/obs-studio/pull/10136
 )
-source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_aarch64.tar.xz")
 sha256sums=(
   "SKIP"
   "SKIP"
@@ -118,8 +119,8 @@ sha256sums=(
   "785b95a8b51864ece25b307246a29ddf80e7e7d4d77fe7d557df73f68329f16d"
   "6739b632ca2275e189f0214c4843b8accc1c9d2bdff81d0f169ec1de4c02096c"
 )
-sha256sums_x86_64=("7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146")
-sha256sums_aarch64=("642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999")
+sha256sums_x86_64=("8ffc64d06ea74da613eeda7f2aa5d4e98661af6fa3ed8c68724c9a6e4e89ea8e")
+sha256sums_aarch64=("b05cf13b0f482e3b0149ac21268268c536d091b5e6608c742019ebd6c8e8a1e3")
 
 if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
@@ -137,11 +138,6 @@ prepare() {
   # Keep sentinel file functional without messing with compile flags
   sed -i "s|#ifndef NDEBUG|#if 0|" frontend/utility/CrashHandler.cpp
 
-  # Ensure MbedTLS 3 is picked
-  sed -i "s|find_package(MbedTLS|find_package(MbedTLS 3...<4|" frontend/cmake/feature-whatsnew.cmake
-  sed -i "s|find_package(MbedTLS|find_package(MbedTLS 3...<4|" plugins/obs-outputs/CMakeLists.txt
-  rm cmake/finders/FindMbedTLS.cmake
-
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
   patch -Np1 -i "$srcdir/bind_iface_eyeballed.patch"
 
@@ -158,7 +154,7 @@ build() {
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
-    -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_${CARCH/%_v?/}" \
+    -DCEF_ROOT_DIR="$srcdir/cef_binary_7871_linux_${CARCH/%_v?/}" \
     -DOBS_VERSION_OVERRIDE="$_pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -DCMAKE_INCLUDE_PATH="/usr/include/mbedtls3;/usr/include" \
