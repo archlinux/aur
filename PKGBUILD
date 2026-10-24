@@ -1,6 +1,6 @@
 # Maintainer: Chomiam <axel.valens@ik.me>
 pkgname=noos-package-manager
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Gestionnaire de paquets GTK4/libAdapta et outil CLI (noos-up) pour Arch Linux (Pacman, AUR via Yay, Flatpak et AppImages)"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v$pkgver.tar.gz")
 # Rempli après la création du tag (somme BLAKE2b du tarball source).
-b2sums=('2837a26d40d9dec941a19f2b9ae1af7b72eca4f90616af3aa45db4732d927152af37de41c1d01905e78f0aadab19de51c3794722f369fb758efe5e25b99bcbf9')
+b2sums=('75704acf470a58efe1cfab8ecb2c3c79530051b76273e16bdd1b329e89216671eac49df5a1c6dcf6b60c5acf27c3067c3a92d058d5ca70552e29d4c271fa5fb3')
 
 prepare() {
   cd "$pkgname-$pkgver"
