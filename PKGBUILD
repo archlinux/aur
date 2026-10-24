@@ -25,7 +25,7 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a98ea0c4f96c07f1b157000fa5b2b986e7459d6f908c7a6bb01e07eaa993851c')
+sha256sums=('6b66108cdf2ba89e5275d716b98eaa6bab50e05ec6df36613fa56b866398d64e')
 
 _github_repo='Relz/network-manager-sidebar'
 _source_name="${_github_repo##*/}-$pkgver"
