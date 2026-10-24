@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A cross-platform TUI mail client built with SharpConsoleUI"
 
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('bdebde85bdf05c95fddbcfdd0fa1646432470a09b97e267334104ba832878cf7'
             'c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73')
-sha256sums_x86_64=('11d5d1e624d9cb0bd89a05124b3cab0db876916acb3479d16ebec45cf22a3f2f')
-sha256sums_aarch64=('42c1a9b68a772065b985e253c70800ad577e98fbd67c2e0dba6e0c7bebb6fd8c')
+sha256sums_x86_64=('5f873b80ec09a91f811b6c67121ba1ece585433656289dacd9cc33242d3923cc')
+sha256sums_aarch64=('8520e310997e73f6f7d262c689dd5ded1ba0b0ff75fe085dee3e09cb242709ec')
 
 
 package() {
