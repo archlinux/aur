@@ -1,0 +1,26 @@
+pkgbase = musike-bin
+	pkgdesc = Open-source music player for YouTube Music
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Ernani1234/musike
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: system tray support
+	provides = musike
+	conflicts = musike
+	source_x86_64 = musike-x86_64.deb::https://github.com/Ernani1234/musike/releases/download/v1.5.1/Musike-Setup-1.5.1-Linux-x64.deb
+	sha256sums_x86_64 = 163d5d89d265b48d51b381de812684f858eb74dcc81d23e8200f9f3c3d30e186
+	source_aarch64 = musike-aarch64.deb::https://github.com/Ernani1234/musike/releases/download/v1.5.1/Musike-Setup-1.5.1-Linux-arm64.deb
+	sha256sums_aarch64 = 58e524291836270e79c119bb386e7fe32c3fb7e6dffcb93a1b9594aa96394ad4
+
+pkgname = musike-bin
