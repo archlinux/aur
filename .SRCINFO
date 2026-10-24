@@ -1,6 +1,6 @@
 pkgbase = pkglint
 	pkgdesc = Security-focused linter for Arch Linux PKGBUILDs
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/jmelahman/pkglint
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = pkglint
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = pkglint::git+https://github.com/jmelahman/pkglint.git#commit=18319ffe6c6ea34d19fe0660ac2e99578cb883f0
+	source = pkglint::git+https://github.com/jmelahman/pkglint.git#commit=7612b98dbd219df7780ab7bab6731b0a206c0630
 	md5sums = SKIP
 
 pkgname = pkglint
