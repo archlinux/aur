@@ -3,37 +3,41 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.4.1.r411.g56a8340
+pkgver=3.4.1.r542.gaff013f
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
-license=('GPL' 'BSD')
+license=('BSD-3-Clause')
 provides=('aegisub')
 conflicts=('aegisub')
 depends=('alsa-lib'
          'boost-libs'
-         'ffmpeg'
          'ffms2'
          'fftw'
          'fontconfig'
+         'glib2'
+         'glibc'
+         'gtk3'
          'hicolor-icon-theme'
          'hunspell'
          'icu'
          'libass'
+         'libgcc'
          'libgl'
-         'libiconv'
+         'libportal'
          'libportal-gtk3'
          'libpulse'
+         'libstdc++'
          'openal'
          'portaudio'
          'uchardet'
+         'wxwidgets-common'
          'wxwidgets-gtk3'
-         'xxhash'
          'zlib')
 makedepends=('git' 'meson' 'cmake' 'boost')
 options=('!lto')
-source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=migration04")
+source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=migration06")
 sha256sums=('SKIP')
 
 AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
@@ -74,6 +78,8 @@ build() {
   arch-meson --buildtype="${BUILDTYPE}" \
     -D b_lto=false \
     -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" \
+    -D enable_update_checker=false \
+    -D system_luajit=false \
     -D tests=false ${MESON_FLAGS} \
     build
   meson compile -C build
