@@ -1,7 +1,7 @@
 # Maintainer: Lucasion <ion@ionnet.dev>
 pkgname=podium-bin
 _pkgname=podium
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Open-source, local-first game clipping: an instant replay buffer, global hotkeys and a clip library (prebuilt)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.pacman::$url/releases/download/v$pkgver/$_pkgname-$pkgver.pacman")
 noextract=("$_pkgname-$pkgver.pacman")
 # publish.sh fills in the checksum of each release.
-sha256sums=('5ae303861eb9992c319e4889190100ee47567aa10c0f95a8e24ebf1f3f5f17bb')
+sha256sums=('00a30baede1371327376b84630890e3137c635ae07e32a72fc32acffb51ab81a')
 
 package() {
   # Install its files, minus its pacman metadata; this PKGBUILD provides its own.
