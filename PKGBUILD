@@ -9,9 +9,9 @@
 # The Android system image is not included: waydroid-nvidia-setup downloads it (see post_install).
 
 pkgname=waydroid-a17-nvidia-bin
-pkgver=20261024.3
+pkgver=20261024.4
 pkgrel=1
-_tag=a17-20261024-3
+_tag=a17-20261024-4
 _wn_sha=29ffa3a237b0d79a751748bd9bb82c50dd577808      # waydroid-nvidia v0.2.0-rc10 release notes commit
 _wn_tag=v0.2.0-rc10
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
@@ -61,17 +61,17 @@ noextract=(
   "waydroid-a17-nvidia-native-x86_64-$_tag.tar.zst"
 )
 sha256sums=('4dc67241bf35189d4490306611f7f52e49117d04511a60999e96328f010dd84f'
-            '8ab75729cf175f8ad69e874d2a9db86025d325ed19fda30cae05e32a2fd0bde4'
+            '83409e32bad61942b59c7b697853e0b8e3f977d946468aa2c03bdfa129c9b27b'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
             '124106f95e1b35c75eed8a966ab66284760fd6d02c79ad9fadd88355d4e3a2d7'
             '5fa325de02c2ef9c13f972efba98e27cdf4d2d48c0a33cf9a884ade8eaa74c50'
             '3fe5822ca2b9ed3aa6fcd9c9627679a04592837b947d7754911c3ab4c1007ec2'
             '6494c5558637acf291486bc3a578a67e9af478afa68f3b213fa8fbc62039b103'
-            '056a1e26e3ee4dcc1bc5a050efedd84b82b2c8fb1f4c8a5215c0a74c1e6b3c38'
-            '170380e4ca413216b9a21e70d58f7c94f2590e3d7262fa128d34e4191c1b3e7b'
-            '7731912846e6529d5e4d2e5e4c558c7971c312a0f6a13ea03bff0488ea0b7b6e'
-            'dd4d119b8e840f8cad342113859a151f37119d6895b60e675dd25f0a7cea51f3'
-            'bcda7b92e25a32484332641b9c8aaba4e52b4baa2872b4296af7d9476b6d4864')
+            'e3b831072fd231aff930a72e72cf11ec61d210a8badebcd8b1199abbf0d96d0a'
+            'daa7d3be8209ae087e66625cf3dd79474185d2f914688a015e89b262def2f6d2'
+            '25395f1abb41b1e81c7a4f2b1a49d767cc2f8f4acc31ee1f9fced492ad8796b7'
+            'abeaf813ef4d140dd519ee1423cd450249fc129a6c9822128465f4310608329b'
+            '02af76ee40021611e111179489c8b415b3f08ff56fd03f3a514fe65a059d4945')
 
 prepare() {
   local wn="$srcdir/waydroid-nvidia-$_wn_sha" a17="$srcdir/waydroid-a17-nvidia-$_tag" p
