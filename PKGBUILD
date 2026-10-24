@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r4066.5ded8c78f
+pkgver=r4225.99ec7cad6
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -36,6 +36,7 @@ conflicts=('vita3k')
 source=(
 	"$_pkgname"::"git+$url.git"
 	"org.vita3k.vita3k.desktop"
+	"vita3k-qt-translations.zip"::"https://github.com/nishinji/vita3k_translations/releases/latest/download/vita3k-qt-translations.zip"
 
 	# submodules for vita3k
 	'SPIRV-Cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
@@ -90,6 +91,7 @@ source=(
 sha256sums=(
 	'SKIP'
 	'889982c3350282912181d0408a5dc60b045d6bd677f275f7c5e9fe7ea84c9acb'
+	'SKIP' # Translations
 
 	'SKIP' # SPIRV-Cross
 	'SKIP' # VulkabnMemoryAllocator-Hpp
@@ -251,6 +253,12 @@ build() {
 
 	# Configure
 	cmake "${cmake_options[@]}"
+
+	mkdir -p "build/qt_translations"
+	if ! bsdtar -xf "$srcdir/vita3k-qt-translations.zip" -C "build/qt_translations"; then
+        echo "Failed to unpack archive. Building without it."
+    fi
+
 	# Build
 	cmake --build build --config Release
 }
