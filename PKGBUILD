@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-starman'
-pkgver='0.4018'
+pkgver='0.4019'
 pkgrel='1'
 pkgdesc="High-performance preforking PSGI/Plack web server"
 arch=('any')
 license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-data-dump>=0' 'perl-http-date>=0' 'perl-http-message>=0' 'perl-http-parser-xs>=0' 'perl-net-server>=2.007' 'perl-plack>=0.9971' 'perl-libwww>=0' 'perl>=5.8.1')
-makedepends=('perl-module-build-tiny')
+makedepends=()
 checkdepends=('perl-test-requires>=0' 'perl-test-tcp>=2.00')
 url='https://metacpan.org/release/Starman'
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-$pkgver.tar.gz")
-md5sums=('15a65eefb14b2e8f89bb7f8e155ae5ed')
-sha512sums=('b839ea13b94ec9556145956a7d3f6973ed99579d30a6102c325e9eac6b306aa6f64f5ac000159a01142fa380a149f5c2be890c6fc3f8846f9922993c489c81fe')
+md5sums=('b172f13b7c20b46e1499b07a91b69e4e')
+sha512sums=('db1aa765c1f504ea7555cd91af21629b4fa0d9ef1a5964c2d6ef7da2f7b6e241d90ba5ca64876dc645ca13063d99dbc38ee2d840fece85fef489d63ea9686630')
 _distdir="Starman-$pkgver"
 
 build() {
