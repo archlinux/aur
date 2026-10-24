@@ -1,7 +1,7 @@
 pkgbase = onlyoffice
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
-	pkgver = 9.4.0
-	pkgrel = 2
+	pkgver = 10.0.0
+	pkgrel = 1
 	url = https://www.onlyoffice.com/desktop.aspx
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,7 +9,7 @@ pkgbase = onlyoffice
 	makedepends = python
 	makedepends = dos2unix
 	makedepends = nasm
-	makedepends = nodejs-lts-iron
+	makedepends = nodejs-lts-jod
 	makedepends = npm
 	makedepends = yarn
 	makedepends = grunt-cli
@@ -39,6 +39,7 @@ pkgbase = onlyoffice
 	depends = qt5-x11extras
 	depends = qt5-svg
 	depends = libnotify
+	depends = libcups
 	depends = libheif
 	optdepends = libreoffice: for OpenSymbol fonts
 	optdepends = otf-takao: for japanese Takao fonts
@@ -50,17 +51,17 @@ pkgbase = onlyoffice
 	noextract = cef_binary.7z
 	options = !emptydirs
 	options = !lto
-	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v9.4.0
-	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v9.4.0.130
-	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v9.4.0.130
-	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v9.4.0.130
-	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v9.4.0.130
-	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v9.4.0.130
-	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v9.4.0.130
-	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v9.4.0.130
-	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v9.4.0.130
-	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v9.4.0.130
-	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v9.4.0.130
+	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v10.0.0
+	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v10.0.0.169
+	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v10.0.0.169
+	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v10.0.0.169
+	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v10.0.0.169
+	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v10.0.0.169
+	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v10.0.0.169
+	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v10.0.0.169
+	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v10.0.0.169
+	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v10.0.0.169
+	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v10.0.0.169
 	source = onlyoffice.github.io::git+https://github.com/ONLYOFFICE/onlyoffice.github.io
 	source = cef_5414.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_109.1.18%2Bgf1c41e4%2Bchromium-109.0.5414.120_linux64_minimal.tar.bz2
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773
@@ -79,23 +80,23 @@ pkgbase = onlyoffice
 	source = no-git-update.diff
 	source = fix-limits-include.diff
 	source = fix-limits-include-1.diff
-	source = do-not-build-commercial.diff
 	source = system-heif.diff
 	source = system-heif-0.diff
 	source = fix-QDesktopWidget-include.diff
 	source = Ancient-V8-Use-Sysroot.diff
 	source = no-js-download-at-build-time.diff
-	sha256sums = 2256c94f02290da096069260d2f4c4bb5482632128873c623cd25f754f77dc5e
-	sha256sums = a3f86bf5410c9a8158dcab4490e792895a8abc1c4eec2eb7d94bf18bc7c696c4
-	sha256sums = f8abe86c14eb3bbcafd0b29aa9480ea27761343dcf35ab0dfe8e52167e0abee8
-	sha256sums = 5fc99b98887b45cf00db54a7caf6189d280234813de4147c186499b31b6952bc
+	source = fix-pdf-object-guard-constructor.diff
+	sha256sums = 42d2be34054a0cb7e3c6af2a608f889d8a8500d7df438225434d2e995e55c1b4
+	sha256sums = 41517ddbbebd2194b3b0ddda3934e82f028df901c4b89b13f27a5019b5077e90
+	sha256sums = 97f0565edf5150a7b1a167d290d89dfb779bed2c5debdafb9c95f3cf3a81dd10
+	sha256sums = 39c75e816f910451aff2443128685a0cd28aef343df14be3577d19cf67f7c66d
 	sha256sums = 62dc945a78f38ab87e9d0a1a0cfefe0ddee29ba9de4e48468f7047d0aac4e645
-	sha256sums = ad165bbe35b192de560a96f9ef96ad83615fce37ce3509484a1d9df236bb5fdc
-	sha256sums = c37790310c7e7e3af6f7a8bb98de0b61dae351eaf32843557ede750792e793eb
-	sha256sums = 73fd76bab5919773c049ef502ac0f43af1f6424ddbeec7286dba86452709c915
-	sha256sums = 06f1bb22167fa6a19ee2d348c3529a558f62f566bd06043b3ff319737af22c5b
+	sha256sums = b1aa12bc9c825fda38d2afd1620d60a43557a4213445de392d7970a746a12bff
+	sha256sums = 5c653d4596fc056b2d3fb893d813c7f6178966403f8c6641c3e795175db88805
+	sha256sums = 72ee0c6623ac60db8ca06fb1cac11d9d25b60c84e4dc86d4ba22698c3508a209
+	sha256sums = c10a11f9004537a33beac9d024e6ba94be73456e3827dc9ce8679ebea24c31dc
 	sha256sums = 55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720
-	sha256sums = 4d9bf0039261bb531663603171b63a4a5339c4c0644e9859991d78ddbf446573
+	sha256sums = 444c54a34ab2961ee6543abcccde8bb878028e671073a2679fd6e70598f8d546
 	sha256sums = SKIP
 	sha256sums = ba4b9ca37cb777b256fdf5e18c9bdbc66ebf060367e8542398676b42bbbc0e59
 	sha256sums = cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe
@@ -107,18 +108,18 @@ pkgbase = onlyoffice
 	sha256sums = bdcf095fd46fb47f2992510078c46cef2b0084000ff4a0c4f956efb0db7e4d57
 	sha256sums = 0f7acc17b78eaeb338f098088ee11356045a53af6698c79ada45fa261c8d18fe
 	sha256sums = 95e107a7c2a895866e8a1d4c89bb4dbed50027fff9e5b9ab513c556537554eef
-	sha256sums = b3e040f0551dc469d91d23487e05bdb7123d2a3e50c5180c44be868a6f42ecbf
+	sha256sums = a867f38030dff76e0aa0cefd0e2f7aacb17c366b0fc533e037f17b300196383a
 	sha256sums = a3561d1f18a61c404c8f9f9ed51484b2e19e3caaee86b71b1cabe3c7ccd0053a
 	sha256sums = 222dab12468f27b2bc1cc098ad2e4ca5bff8df845939f5cba2efff2165eafbcd
 	sha256sums = fbf4c2800bc885063525ee8a50cfb870d7f44166584fd131f4bed8a762538c28
 	sha256sums = a062edfcca4fc2103f5d7eeffeb22539de4a633eddd3ba4ed555ac1976be5176
 	sha256sums = cb87384ce721ac15a82d254efe8662be0eb9011c122edfcb1caa07194fbae697
 	sha256sums = 8761a41683733f8c297fda55485126e895b1271aefd0f834078eb417878afbb0
-	sha256sums = b7bce5799d2f52026795169e40d6a3b436bb8c481d769cc8ff9df19a7e9e29cd
-	sha256sums = c328fbadbb34f6fd59b79b2be188877ae2652a932d1b003548632c261f88a9c6
+	sha256sums = 2689c4fd1b505f7c46d101e49bfe3b80a8b6691292fc56d4c50fbf31974298ec
 	sha256sums = e3af225ba3945e1430d4dbc2a4049e3ff3e114f5e73616624e430eed813b744f
 	sha256sums = 7849b1895a7b99479b2a78a8f009a3e670b0588a5bad150168506a4e41d03e69
 	sha256sums = a542aa3d89568b50dd37a3b844dda230da3e04adf655ee8d67f56b066c2bdde5
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = f98c8d1e37c3a5aafdb6fd7eb7e33c3e18e9cfdc5d0cc162c75e802a0f6eb7d3
 
 pkgname = onlyoffice
