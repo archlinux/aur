@@ -13,14 +13,14 @@
 #   cd libfprint-goodix55b4-milan/packaging/arch && makepkg -si
 
 pkgname=libfprint-goodix55b4
-pkgver=1.94.10.m2
-pkgrel=2
+pkgver=1.94.10.m3
+pkgrel=1
 pkgdesc="libfprint with the Goodix 27c6:55b4 driver using the native Milan matcher"
 arch=('x86_64')
 url="https://github.com/TheWeirdDev/libfprint-goodix55b4-milan"
 license=('LGPL-2.1-or-later')
 depends=('glib2' 'libgusb' 'libgudev' 'openssl' 'pixman' 'libdeflate' 'systemd-libs')
-makedepends=('git' 'meson' 'ninja' 'python' 'patchelf' 'gobject-introspection' 'systemd')
+makedepends=('git' 'meson' 'ninja' 'python' 'patchelf' 'glib2-devel' 'gobject-introspection' 'systemd')
 provides=('libfprint=1.94.10' 'libfprint-2.so')
 conflicts=('libfprint' 'libfprint-goodix55b4-milan')
 _libfprint_commit=0c97a47d8ef405cd577b87058c1e89cae9d242e7 # v1.94.10

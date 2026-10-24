@@ -1,7 +1,7 @@
 pkgbase = libfprint-goodix55b4
 	pkgdesc = libfprint with the Goodix 27c6:55b4 driver using the native Milan matcher
-	pkgver = 1.94.10.m2
-	pkgrel = 2
+	pkgver = 1.94.10.m3
+	pkgrel = 1
 	url = https://github.com/TheWeirdDev/libfprint-goodix55b4-milan
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -10,6 +10,7 @@ pkgbase = libfprint-goodix55b4
 	makedepends = ninja
 	makedepends = python
 	makedepends = patchelf
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = systemd
 	depends = glib2
@@ -24,7 +25,7 @@ pkgbase = libfprint-goodix55b4
 	conflicts = libfprint
 	conflicts = libfprint-goodix55b4-milan
 	source = libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=0c97a47d8ef405cd577b87058c1e89cae9d242e7
-	source = driver::git+https://github.com/TheWeirdDev/libfprint-goodix55b4-milan.git#tag=v1.94.10.m2
+	source = driver::git+https://github.com/TheWeirdDev/libfprint-goodix55b4-milan.git#tag=v1.94.10.m3
 	sha256sums = SKIP
 	sha256sums = SKIP
 
