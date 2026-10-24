@@ -2,7 +2,7 @@
 
 _pkgname=fastembed
 pkgname=python-fastembed
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Fast, lightweight Python library for embedding generation using ONNX Runtime"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ makedepends=(
 provides=("python-fastembed=$pkgver")
 conflicts=('python-fastembed')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/qdrant/fastembed/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('36db09b182e56d3ddc2f4b5502fac9888f168cec6bcade0e15bb6e798ba7a2e8')
+sha256sums=('1d1c6e3e2f55a5c50951e960be3b230ba05663b51722dfe8090a470787294062')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
