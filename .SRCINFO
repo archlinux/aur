@@ -1,18 +1,19 @@
 pkgbase = pwdsafety
 	pkgdesc = Command line tool that checks how much a password is safe
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edoardottt/pwdsafety
 	arch = x86_64
 	arch = aarch64
 	arch = i686
+	arch = armv7h
 	license = GPL-3.0-or-later
 	makedepends = go
-	makedepends = git
 	depends = glibc
-	provides = pwdsafety
 	conflicts = pwdsafety-bin
 	conflicts = pwdsafety-git
+	options = !strip
+	options = !debug
 	source = pwdsafety-0.4.2.tar.gz::https://github.com/edoardottt/pwdsafety/archive/refs/tags/v0.4.2.tar.gz
 	sha256sums = 6676f7ccc1ad32e8c68b889426b563d69080a69c1f9212b32d79fccc2e70b79f
 
