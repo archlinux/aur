@@ -1,6 +1,6 @@
 pkgbase = bothy-bin
 	pkgdesc = A turn-key terminal workspace built from tools you already trust
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/bspeelm/bothy
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = bothy-bin
 	provides = bothy
 	conflicts = bothy
 	options = !strip
-	source_x86_64 = bothy-x86_64-0.13.1.tgz::https://github.com/bspeelm/bothy/releases/download/v0.13.1/bothy_linux_amd64.tar.gz
-	sha256sums_x86_64 = 797e04d504f728f6b8b00dbb469c9090788bf59a38af1ac63bf078006abb6a7d
-	source_aarch64 = bothy-aarch64-0.13.1.tgz::https://github.com/bspeelm/bothy/releases/download/v0.13.1/bothy_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7dd22d43cc358e3c1f9724fb809f279d7ba799ff663883c63c101f856c00baa0
+	source_x86_64 = bothy-x86_64-0.14.0.tgz::https://github.com/bspeelm/bothy/releases/download/v0.14.0/bothy_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4ba35bfb24251d4eb7a4171ca98b5d119b921d3498dd4b9577593af9b007a8cc
+	source_aarch64 = bothy-aarch64-0.14.0.tgz::https://github.com/bspeelm/bothy/releases/download/v0.14.0/bothy_linux_arm64.tar.gz
+	sha256sums_aarch64 = e5574c721e34849e413bf354009f26475b7c8bf75360825805c4581bbd374825
 
 pkgname = bothy-bin
