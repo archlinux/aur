@@ -1,0 +1,43 @@
+post_install() {
+    cat <<'MSG'
+waydroid-a17-nvidia: first setup
+  1. The Android 17 system image (WayDroid-ATV LineageOS 24.0), GAPPS or VANILLA:
+       https://github.com/WayDroid-ATV/waydroid-builds/releases/tag/20261017
+     sudo mkdir -p /etc/waydroid-extra/images
+     sudo bsdtar -xf lineage-24.0-20261017-GAPPS-waydroid_x86_64-system.zip -C /etc/waydroid-extra/images system.img
+     sudo bsdtar -xf /usr/lib/waydroid-nvidia/vendor/waydroid-nvidia-vendor-x86_64-*.zip -C /etc/waydroid-extra/images vendor.img
+  2. sudo waydroid init -f
+  3. sudo waydroid-nvidia-setup          (tests the vendor image on your GPU and kernel module, then installs it)
+  4. waydroid prop set persist.waydroid.multi_windows true   (each app in its own KDE window)
+     waydroid session start
+Optional: enable "Waydroid card placement" in System Settings > Window Management > KWin Scripts.
+Root (KernelSU) and the full guide: https://github.com/cagedbird043/waydroid-a17-nvidia
+MSG
+}
+
+post_upgrade() {
+    echo "waydroid-a17-nvidia: run 'sudo waydroid-nvidia-setup' to gate and install this release's vendor image"
+    echo "waydroid-a17-nvidia: (the container refuses to start while the installed vendor image belongs to another release)"
+}
+
+pre_remove() {
+    # put the vendor image Waydroid was initialized with back while the setup still exists
+    if grep -qx 'nvidia_prolapse_install = vendor-image' /var/lib/waydroid/waydroid.cfg 2>/dev/null; then
+        /usr/bin/waydroid-nvidia-setup --restore-official-vendor ||
+            echo "waydroid-a17-nvidia: could not restore the previous vendor image (see above); run 'sudo waydroid init -f' after the removal"
+    fi
+    # the container unit drop-in written by the setup points at tools this package removes
+    local dropin=/etc/systemd/system/waydroid-container.service.d/source-native.conf
+    if [ -f "$dropin" ] && grep -q /usr/lib/waydroid-nvidia/native "$dropin"; then
+        rm -f "$dropin"
+        systemctl daemon-reload 2>/dev/null || true
+        echo "waydroid-a17-nvidia: removed $dropin"
+    fi
+}
+
+post_remove() {
+    cat <<'MSG'
+waydroid-a17-nvidia: gate logs and old staged driver roots stay on disk; remove them with
+  sudo rm -rf /var/lib/waydroid-nvidia /var/lib/waydroid/nvidia-source-native-* /var/lib/waydroid/nvidia-prolapse
+MSG
+}
