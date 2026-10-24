@@ -12,7 +12,7 @@ provides=('kolimi')
 conflicts=('kolimi-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5a9e61fe37d82c9bf0fb0d63661551dda1c3a4431da13c5b60fdf1a7ce680435')
+sha256sums=('302d71a025672c6635090e41fd22ba1d0567d26158e6830dbb8c41efd41674d3')
 
 build() {
     cd "kolimi-$pkgver"
