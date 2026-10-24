@@ -1,6 +1,6 @@
 pkgbase = yabsnap-git
 	pkgdesc = Btrfs automated snapshot manager.
-	pkgver = r384.c62289a
+	pkgver = r405.2b80a11
 	pkgrel = 1
 	url = https://github.com/hirak99/yabsnap
 	install = yabsnap-git.install
@@ -12,7 +12,7 @@ pkgbase = yabsnap-git
 	depends = python
 	optdepends = rsync: rsync based snapshot support
 	optdepends = python-textual: for the TUI interface
-	provides = yabsnap=r384.c62289a
+	provides = yabsnap=r405.2b80a11
 	conflicts = yabsnap
 	source = yabsnap-git::git+https://github.com/hirak99/yabsnap
 	md5sums = SKIP

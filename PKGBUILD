@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r387.cb95819
+pkgver=r405.2b80a11
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -36,7 +36,8 @@ package() {
   mkdir -p "$DEST"
   pushd src/
   tar -cf - \
-    $(find -type f -not -name "*_test.py" \( -name "*.py" -o -name "*.conf" \)) |
+    $(find -type f -not -name "*_test.py" \
+      \( -name "*.py" -o -name "*.conf" -o -name "*.tcss" \)) |
     tar -xf - -C "$DEST"/ --no-same-owner
   pushd "$DEST"/
   # Write version info for --version flag.
