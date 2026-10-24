@@ -1,0 +1,4 @@
+[ingetrazo]
+source = "git"
+git = "https://github.com/ingelibre/ingetrazo.git"
+prefix = "v"

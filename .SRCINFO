@@ -1,0 +1,21 @@
+pkgbase = ingetrazo
+	pkgdesc = vibe coded clean-room reimplementation of Trimble Sketchup
+	pkgver = 0.5.9
+	pkgrel = 0
+	url = https://ingetrazo.com
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = hicolor-icon-theme
+	depends = python
+	depends = pyside6
+	depends = python-numpy
+	depends = python-manifold3d
+	depends = libgcc
+	source = https://github.com/ingelibre/ingetrazo/archive/refs/tags/v0.5.9/ingetrazo-0.5.9.tar.gz
+	sha256sums = 68adc0b232aec2827512c7304f1a46123a1dc01e9102f32b56decfc9c60a6a9a
+
+pkgname = ingetrazo
