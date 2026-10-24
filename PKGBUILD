@@ -1,7 +1,7 @@
 # Maintainer: Marlon Kranz <dev@marlonkranz.com>
 pkgname=cast-helper
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromecast and AirPlay mirroring and media playback, shared by the Dux Shell Cast plugin and other apps"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Conava/dux-cast"
@@ -13,7 +13,7 @@ optdepends=('gst-plugins-good: more formats and photos'
             'libheif: HEIC photos'
             'doubletake-bin: AirPlay mirroring')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ecc1b063db2e0ea707bfea795226597fa34e34acf5b2e77e9c64fa2d50f8fdd9')
+sha256sums=('25226b6f16ed456fed9e19f0fe02a2630140a3a35490b61a1b214447aa909315')
 
 build() {
   cd "dux-cast-$pkgver"
