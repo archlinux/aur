@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 # Contributor: Jonathan Bangert <jonathan@bangert.dk>
 pkgname=music-assistant-desktop
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 )
 conflicts=('music-assistant-desktop-git' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('216f1cdc87f4f0e83ae78bf66ba2236e294b3233d5444faccf62e1318f72843a')
+sha256sums=('185bd211e3141a78dace1bd7671b44e7dd141ff3f2fbbc560b92286a91c38c61')
 # Never let makepkg put -flto in CFLAGS/CXXFLAGS/LDFLAGS here. The C sources
 # pulled in through build.rs ('cc' crate) are compiled by gcc and emit GNU IR,
 # which rust-lld cannot consume, so the final link fails on unresolved symbols.
