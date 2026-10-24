@@ -21,10 +21,10 @@ install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg')
 source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v${pkgver}/Ocsinventory-Unix-Agent-${pkgver}.tar.gz"
     "modules.conf" "ocsinventory-agent" "ocsinventory-agent.cfg")
-md5sums=('41a17bd029924926275a9b1db52b30a8'
-     '3c1235643decce6f1a29c5644d2b527b'
-     '9419012794e5e134bc152cfd388d63e7'
-     '3be05b06c7a6e269d9a4c74dcf239d19')
+sha256sums=('5aa171c48a21db8dc17e96b7e4d5a80cdbd30979c963a654b6974b8bb1e0efe1'
+     'c82b7e18cb2bdfa3d35170d1a50df74aae599b4ca766e866afea03735c73a773'
+     'f6c1723c9e6c3a480396395e3865fb29465bc6091ee7e4eea3b6dec13b5331ee'
+     '96708ef480c0ec7ba58bc4e9e2074ee3f133965e3c378dca3281aef18cb202b1')
 
 build() {
   cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"
