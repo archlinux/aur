@@ -1,7 +1,7 @@
 pkgbase = musike-bin
 	pkgdesc = Open-source music player for YouTube Music
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ernani1234/musike
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = musike-bin
 	depends = libxtst
 	depends = xdg-utils
 	depends = at-spi2-core
-	depends = util-linux-libs
+	depends = util-linux
 	depends = libsecret
 	optdepends = libappindicator-gtk3: system tray support
 	provides = musike
