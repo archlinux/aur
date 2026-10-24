@@ -1,0 +1,24 @@
+pkgbase = magpie-git
+	pkgdesc = One place to pick every AI coding agent's model: Codex, Claude Code, Gemini CLI and more
+	pkgver = 0.1.1463.r0.g2a3d9f5a
+	pkgrel = 1
+	url = https://github.com/yetone/magpie
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glib2
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = libx11
+	depends = webkit2gtk-4.1
+	provides = magpie
+	conflicts = magpie
+	conflicts = magpie-bin
+	source = git+https://github.com/yetone/magpie.git
+	sha256sums = SKIP
+
+pkgname = magpie-git
