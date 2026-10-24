@@ -1,6 +1,6 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 pkgname=cargo-sync-rdme
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 epoch=
 pkgdesc="Cargo subcommand to synchronize README with crate documentation"
@@ -11,7 +11,7 @@ depends=('libgit2' 'cargo')
 conflicts=('cargo-sync-rdme-bin')
 provides=('cargo-sync-rdme')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gifnksm/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1126cc81965fb9af3fada90e756a902e1d7da70b29cff6bc84227c9cff027e5c')
+sha256sums=('c4e924227bfa1f01f863d5680ec7fcd12d8c9b0ede80c74469ed69266736ce07')
 options=(!lto)
 
 build() {
