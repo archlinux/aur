@@ -6,7 +6,7 @@ _appname=(orzma orzmd orzbrowser)
 pkgname=${_gitname}-bin
 pkgdesc="A terminal emulator that can render webviews inline"
 
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,7 +31,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_gitname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.deb")
 sha256sums=('f1d791f5dd365f7beeee001522c3e90fa6d21b0edce055c777fe92dda21fbae6'
             'af7d47a6b65781c7c7a0d74afb983b788a4243e75ad3c52e70fae08585a7de78')
-sha256sums_x86_64=('bdd22b68066922e24063f08b3e2b00bfa631d3ba1ef687b4c43abed6f98f3b87')
+sha256sums_x86_64=('65b75f986bcf10b3eff18ed693a1c6b6515b56fcb969495d48eb2d7b1714c473')
 
 
 package() {
