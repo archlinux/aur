@@ -1,7 +1,7 @@
 # Maintainer: Lucasion <ion@ionnet.dev>
 pkgname=podium-bin
 _pkgname=podium
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Open-source, local-first game clipping: an instant replay buffer, global hotkeys and a clip library (prebuilt)'
 arch=('x86_64')
@@ -18,12 +18,14 @@ options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.pacman::$url/releases/download/v$pkgver/$_pkgname-$pkgver.pacman")
 noextract=("$_pkgname-$pkgver.pacman")
 # publish.sh fills in the checksum of each release.
-sha256sums=('00a30baede1371327376b84630890e3137c635ae07e32a72fc32acffb51ab81a')
+sha256sums=('58f3d84cbc0a89022f9c177b7d4da44bdbd545a7153d3cdf9476ff7ac47bc488')
 
 package() {
   # Install its files, minus its pacman metadata; this PKGBUILD provides its own.
   bsdtar -xf "$_pkgname-$pkgver.pacman" -C "$pkgdir" \
     --exclude .PKGINFO --exclude .MTREE --exclude .INSTALL --exclude .BUILDINFO
+  # Tells Podium's updater it came from the AUR, so it updates by rebuilding this package.
+  echo "aur:$pkgname" > "$pkgdir/opt/Podium/resources/package-type"
   # electron-builder's install script creates this link at install time; ship it in the package instead.
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/Podium/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
