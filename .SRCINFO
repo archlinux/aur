@@ -1,6 +1,6 @@
 pkgbase = lich-bin
 	pkgdesc = A terminal-first ADE for the coding agents you already use
-	pkgver = 0.78.1
+	pkgver = 0.79.0
 	pkgrel = 1
 	url = https://github.com/lichdotdev/lich
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = lich-bin
 	optdepends = zenity: native folder picker
 	provides = lich
 	conflicts = lich
-	source = lich-v0.78.1-linux-amd64.tar.zst::https://github.com/lichdotdev/lich/releases/download/v0.78.1/lich-v0.78.1-linux-amd64.tar.zst
-	source = lich-0.78.1.desktop::https://raw.githubusercontent.com/lichdotdev/lich/v0.78.1/build/linux/lich.desktop
-	source = lich-0.78.1.png::https://raw.githubusercontent.com/lichdotdev/lich/v0.78.1/build/appicon.png
-	sha256sums = 3fe5104c4d500ccb523211cca8ea4b2ceeb32187021c4c7124c00c1218eaec7d
+	source = lich-v0.79.0-linux-amd64.tar.zst::https://github.com/lichdotdev/lich/releases/download/v0.79.0/lich-v0.79.0-linux-amd64.tar.zst
+	source = lich-0.79.0.desktop::https://raw.githubusercontent.com/lichdotdev/lich/v0.79.0/build/linux/lich.desktop
+	source = lich-0.79.0.png::https://raw.githubusercontent.com/lichdotdev/lich/v0.79.0/build/appicon.png
+	sha256sums = 451786f181b10866958ddcd9569352bbd8dd7ba7bdf49bf925e78dd008cbb0d8
 	sha256sums = 6af34ff31490c369e1f4266b355a6a10bd0817fed0b61793ce163ac6bfa14769
 	sha256sums = 75aa775e531ad495d905a37f07e8e608f4d93e4b2ff1d4b145a764e71ac48b0a
 
