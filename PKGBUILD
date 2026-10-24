@@ -1,14 +1,14 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 # Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap-git
-pkgver=2.0.5.r13.gdd8c3cf
+pkgver=2.0.6.beta.6.r2.gf4079a5c
 pkgrel=1
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
 url="https://github.com/Froststrap/Froststrap"
 license=('AGPL-3.0-or-later' 'MIT' 'MPL-2.0')
-depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme' 'dbus')
-makedepends=('dotnet-sdk-10.0' 'git' 'rust')
+depends=('icu' 'dbus' 'fontconfig' 'hicolor-icon-theme')
+makedepends=('dotnet-sdk-10.0' 'git' 'rust' 'clang' 'zlib')
 provides=('froststrap')
 conflicts=('froststrap')
 source=("git+${url}.git")
@@ -25,27 +25,19 @@ prepare() {
 }
 
 build() {
-    # TODO 2.0.3: switch to upstream's Fallout build system once it
-    # supports --no-installers:
-    #   dotnet run --project build -- publish --no-installers --configuration Release
+    # Upstream's official build path since 2.0.6 (NativeAOT).
+    # RUSTFLAGS="" is required: the repo's .cargo/config.toml sets
+    # "-Z threads=8", which only the nightly compiler accepts.
+    export RUSTFLAGS=""
     cd Froststrap
-    _appver=$(git describe --tags | sed 's/^v//')
-    dotnet publish "$srcdir/Froststrap/Froststrap/Froststrap.csproj" \
-        -r linux-x64 \
-        -c Release \
-        --self-contained false \
-        -p:PublishSingleFile=false \
-        -p:PublishReadyToRun=false \
-        -p:AppVersion="$_appver" \
-        --output build/aur-release
+    cargo xtask publish --no-installers --configuration release
 }
 
 package() {
     cd Froststrap
 
-    # Install binary and libraries
-    mkdir -p "$pkgdir/usr/lib/froststrap/"
-    cp -r build/aur-release/* "$pkgdir/usr/lib/froststrap/"
+    # Install the AOT single binary
+    install -Dm755 .build/publish/Froststrap "$pkgdir/usr/lib/froststrap/Froststrap"
 
     # Create wrapper script
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/froststrap" <<'EOF'
