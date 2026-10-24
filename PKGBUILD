@@ -20,6 +20,7 @@ optdepends=('perl-proc-daemon: daemon mode (--daemon)'
      'perl-edid: monitor inventory'
      'perl-net-netmask: SNMP network scan'
      'smartmontools: disk model, firmware and serial numbers'
+     'upower: battery inventory'
      'ipmitool: BMC network interface inventory')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg'
