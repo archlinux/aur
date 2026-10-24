@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-gnome-ui-tune-git
-pkgver=1.10.2.r0.g03706f7
+pkgver=1.13.0.r1.gaea1b24
 pkgrel=1
 pkgdesc="Tunes GNOME Overview UI to make it more usable."
 arch=('any')
@@ -23,8 +23,10 @@ pkgver() {
 
 build() {
   cd gnome-ui-tune
-  make gettext
-  make dist
+  gnome-extensions pack \
+    --podir=locale \
+    --extra-source=src/ \
+    --force
 }
 
 package() {
@@ -40,5 +42,4 @@ package() {
   install -Dvm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
 
   rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
-  rm -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/LICENSE"
 }
