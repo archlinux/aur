@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-3.0-only
-# SPDX-FileCopyrightText: Copyright (C) 2026 mplx <jennifer@mplx.dev>
+# SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
 #
 # AUR PKGBUILD for `jennifer-git`: clones the upstream repository and builds
 # from source. Tracks the `main` branch; rebuild to follow upstream.
@@ -11,34 +11,28 @@
 # completion symlink only when it exists. So the package ships whatever was built
 # and needs no edit to flip tiny on or off.
 #
-# Today `jennifer-tiny` is skipped: Arch ships Go 1.27, and no current TinyGo
-# release links Jennifer against it. TinyGo 0.42 accepts Go 1.27 but the
-# `-scheduler=tasks` link fails with a duplicate `tinygo_task_exit` symbol
-# (`//export` in TinyGo's internal/task/task_stack.go, emitted into both the
-# cached runtime object and the program object); it reproduces on the official
-# `tinygo/tinygo:0.42.0` image and on `tinygo/tinygo-dev` (0.43.0-dev), even on a
-# trivial goroutine program - an upstream TinyGo bug, not Arch packaging or
-# Jennifer's code. Tracked at https://github.com/tinygo-org/tinygo/issues/5652.
-# When a TinyGo release fixes it, `make build` starts producing `jennifer-tiny`
-# again and this package ships it automatically - no PKGBUILD change needed.
+# Arch ships Go 1.27, which needs TinyGo >= 0.43.0: older releases either reject
+# Go 1.27 or (0.42) fail the `-scheduler=tasks` link with a duplicate
+# `tinygo_task_exit` symbol (https://github.com/tinygo-org/tinygo/issues/5652).
+# With such a TinyGo installed, `make build` skips `jennifer-tiny` and this
+# package ships `jennifer` alone; with TinyGo >= 0.43.0 it ships both.
 #
-# Maintainer: mplx <jennifer@mplx.dev>
+# Maintainer: mplx <mplx@jennifer-lang.dev>
 
 pkgname=jennifer-git
 _realname=jennifer
-pkgver=0.24.0.r106.gf159b5d
+pkgver=0.25.0.r0.g31c70e4
 pkgrel=1
 pkgdesc='Jennifer programming language interpreter (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jennifer-language/jennifer'
 license=('LGPL3')
-provides=('jennifer')
+provides=("jennifer=${pkgver}")
 conflicts=('jennifer' 'jennifer-bin')
 # `tinygo` is a makedepend so `make build` can produce `jennifer-tiny` whenever
-# the toolchain supports it. On current Arch (Go 1.27) TinyGo cannot build it, so
-# the build skips it and only `jennifer` is packaged; the dep stays so recovery
-# is automatic once upstream (tinygo#5652) ships. Drop `tinygo` here for a lighter
-# source build that never produces the tiny binary.
+# the toolchain supports it (see the header); an incapable TinyGo only skips the
+# tiny binary. Drop `tinygo` here for a lighter source build that never produces
+# the tiny binary.
 makedepends=('git' 'go' 'tinygo')
 optdepends=(
     'shared-mime-info: registers the .j file extension with file managers'
@@ -68,7 +62,7 @@ build() {
     #
     # `make build` builds the standard-Go `jennifer` and, when the toolchain can,
     # the TinyGo `jennifer-tiny`; it skips the tiny half gracefully otherwise (see
-    # the header note / tinygo#5652), so this never fails for lack of a working
+    # the header note), so this never fails for lack of a working
     # TinyGo. package() installs whichever binaries were produced.
     make build GOBUILDFLAGS=-trimpath
 }

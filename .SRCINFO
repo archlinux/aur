@@ -1,6 +1,6 @@
 pkgbase = jennifer-git
 	pkgdesc = Jennifer programming language interpreter (built from source)
-	pkgver = 0.24.0.r106.gf159b5d
+	pkgver = 0.25.0.r0.g31c70e4
 	pkgrel = 1
 	url = https://github.com/jennifer-language/jennifer
 	install = jennifer.install
@@ -13,7 +13,7 @@ pkgbase = jennifer-git
 	optdepends = shared-mime-info: registers the .j file extension with file managers
 	optdepends = vim: syntax highlighting for .j files
 	optdepends = bat: syntax highlighting for .j files (run `bat cache --build` after install)
-	provides = jennifer
+	provides = jennifer=0.25.0.r0.g31c70e4
 	conflicts = jennifer
 	conflicts = jennifer-bin
 	source = jennifer::git+https://github.com/jennifer-language/jennifer.git
