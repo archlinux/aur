@@ -28,6 +28,26 @@ https://codemeyo.com/api/v1/updater/files/62
 `6adbbc…a878`), which is exactly the file the download form returns. The
 `_fileid` variable in the PKGBUILD tracks it.
 
+### Why `makepkg` used to fail with HTTP 403
+
+`codemeyo.com` sits behind a firewall that rejects curl's stock User-Agent
+(`curl/8.x`) on a cold connection:
+
+```
+curl: (22) The requested URL returned error: 403
+```
+
+Any browser-like UA is accepted, and a successful request leaves that IP
+trusted for a short while — which is why a manual `curl -A Mozilla/...` works
+while a plain `makepkg` does not. The PKGBUILD therefore overrides `DLAGENTS`
+for `http`/`https` with a curl invocation that sends `-A Mozilla/5.0` (the UA
+must be space-free, as `DLAGENTS` entries are word-split) and retries
+transient failures.
+
+Because this keeps the stock download logic otherwise intact, nothing else
+changes; if upstream ever serves these files without the firewall, the
+`DLAGENTS` block can be dropped.
+
 ## Updating
 
 1. Download the latest Linux AppImage from the form and note its filename.

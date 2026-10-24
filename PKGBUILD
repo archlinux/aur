@@ -23,6 +23,15 @@ options=('!strip' '!debug')
 # the checksums.
 _fileid=62
 
+# codemeyo.com is fronted by a firewall that answers HTTP 403 to curl's stock
+# User-Agent ("curl/8.x") on a cold connection; any browser-like UA passes and
+# then leaves that IP trusted for a short while. makepkg's default https agent
+# sends the stock UA, which is why a plain `makepkg` dies here. Override it for
+# this package's sources only. DLAGENTS entries are word-split, so the UA is
+# deliberately space-free ("Mozilla/5.0", never "Mozilla/5.0 (X11; ...)").
+DLAGENTS=('http::/usr/bin/curl -fLC - -A Mozilla/5.0 --retry 5 --retry-delay 10 --retry-all-errors --retry-max-time 900 -o %o %u'
+          'https::/usr/bin/curl -fLC - -A Mozilla/5.0 --retry 5 --retry-delay 10 --retry-all-errors --retry-max-time 900 -o %o %u')
+
 source=("CodeMeYo_${pkgver}_amd64.AppImage::https://codemeyo.com/api/v1/updater/files/${_fileid}"
         'codemeyo.desktop'
         'codemeyo.png')
