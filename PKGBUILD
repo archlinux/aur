@@ -4,7 +4,7 @@
 # VCS package: builds the tip of master. pkgver() derives the version from
 # git describe at build time; the value below only feeds the AUR web page.
 pkgname=actionlint-kjanat-git
-pkgver=1.17.0.r75.g5e84355
+pkgver=1.17.0.r85.ge6f4a70
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork, git master)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -27,6 +27,8 @@ _module='actionlint.kjanat.dev/v2'
 # mise shims on the builder's PATH otherwise apply the repository's mise configs.
 _system_tools() {
 	export PATH="/usr/bin:${PATH}"
+	# Match the system go driver with its own compiler and standard library.
+	unset GOROOT
 	export MISE_IGNORED_CONFIG_PATHS="${srcdir}/actionlint${MISE_IGNORED_CONFIG_PATHS:+:${MISE_IGNORED_CONFIG_PATHS}}"
 }
 
