@@ -1,0 +1,22 @@
+pkgbase = transfuse
+	pkgdesc = Backup, compress and restore KDE Plasma user configurations
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://gitlab.com/cscs/transfuse
+	arch = any
+	license = Unlicense
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = gawk
+	depends = gzip
+	depends = qt6-tools
+	depends = sed
+	depends = systemd
+	depends = tar
+	optdepends = rsync: faster copying, cp is used without it
+	optdepends = sudo: restore the native package list
+	source = transfuse-0.6.0.tar.gz::https://gitlab.com/cscs/transfuse/-/archive/0.6.0/transfuse-0.6.0.tar.gz
+	sha256sums = d7f549b8736279070fa189fdd35e7a2a610af8f81089d7da60f41595b5eedaf7
+
+pkgname = transfuse
