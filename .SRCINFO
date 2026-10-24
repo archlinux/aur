@@ -1,6 +1,6 @@
 pkgbase = hydrogen-music-bin
 	pkgdesc = Arknights-style third-party NetEase Cloud Music player built with Electron and Vue 3
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/ldx123000/Hydrogen-Music
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = hydrogen-music-bin
 	provides = hydrogen-music
 	conflicts = hydrogen-music
 	options = !strip
-	noextract = hydrogen-music-0.6.3.AppImage
-	source = hydrogen-music-0.6.3.AppImage::https://github.com/ldx123000/Hydrogen-Music/releases/download/v0.6.3/Hydrogen.Music-0.6.3.AppImage
-	source = hydrogen-music.png::https://raw.githubusercontent.com/ldx123000/Hydrogen-Music/v0.6.3/img/icon.png
-	source = hydrogen-music-LICENSE::https://raw.githubusercontent.com/ldx123000/Hydrogen-Music/v0.6.3/LICENSE
-	sha256sums = 112107d32997ff63644a176d4557765e8b53b95cf57a2870613f61a060e7e755
+	noextract = hydrogen-music-0.6.4.AppImage
+	source = hydrogen-music-0.6.4.AppImage::https://github.com/ldx123000/Hydrogen-Music/releases/download/v0.6.4/Hydrogen.Music-0.6.4.AppImage
+	source = hydrogen-music.png::https://raw.githubusercontent.com/ldx123000/Hydrogen-Music/v0.6.4/img/icon.png
+	source = hydrogen-music-LICENSE::https://raw.githubusercontent.com/ldx123000/Hydrogen-Music/v0.6.4/LICENSE
+	sha256sums = 6dbe867e76e1e9773b7255799a4dd12469e682cc66d0ac9dd53c9e0c606ba581
 	sha256sums = e942d5307c7690a86826828212bbabbc13b17e13879d828b4a06b73c34cf0025
 	sha256sums = 0d63d1741e2c23866af592ac48a93f986a386575f90ffff2c67add4633db04e6
 
