@@ -1,7 +1,7 @@
 # Maintainer: Denis Gordenin <support@yutovo.ru>
 pkgname=yutovo
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arbitrary precision graphical WYSIWYG calculator inside a text editor"
 arch=(x86_64)
 url="https://yutovo.com"
@@ -98,12 +98,8 @@ build() {
 
     echo "Building yutovo-solver"
     cd yutovo-solver
-    # Boost 1.92 dropped the boost/process.hpp umbrella header (process v1),
-    # so CMake's FindBoost can no longer verify the "process" component.
-    # The code uses process v2, which links the compiled libboost_process.a.
-    sed -i 's/find_package(Boost REQUIRED COMPONENTS process)/find_package(Boost REQUIRED)\n    if(NOT TARGET Boost::process)\n        add_library(Boost::process INTERFACE IMPORTED)\n        set_target_properties(Boost::process PROPERTIES INTERFACE_LINK_LIBRARIES "${INSTALL_PATH}\/lib\/libboost_process.a;Boost::boost")\n    endif()/' src/CMakeLists.txt
     mkdir -p build && cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=$YUTOVO_DEPLOY/lib/cmake -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_POLICY_DEFAULT_CMP0167=NEW -DCMAKE_PREFIX_PATH=$YUTOVO_DEPLOY/lib/cmake -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
     make -sj4 && make install
     cd ../..
 
