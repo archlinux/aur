@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,10 @@ conflicts=('opencode-desktop')
 # Arch Linux ARM ships no electron package at all (which is also why official
 # code is absent there), so only x86_64 can run on a system runtime.
 _electron=electron44
+# Upstream names the bundled Electron binary after the app id and has already
+# renamed it once (ai.opencode.desktop -> ai.opencode), so keep the name in a
+# single place; the desktop Exec rewrite matches by path, not by name.
+_app_bin=ai.opencode
 depends=('ripgrep')
 depends_x86_64=("${_electron}")
 depends_aarch64=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils')
@@ -29,8 +33,8 @@ source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver
 source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://opencode.ai/files/bin/${pkgver}/opencode-desktop-linux-amd64.deb")
 source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://opencode.ai/files/bin/${pkgver}/opencode-desktop-linux-arm64.deb")
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
-sha256sums_x86_64=('5476fd98195cd447f16f3e7ca1c301b771f267fb3e345c7df869061fccaca150')
-sha256sums_aarch64=('e12d51367bf75773d4604459e1a41bea7ef6e4ea6819574f80287b36bfbecf27')
+sha256sums_x86_64=('3ba25052b860344c1dae29921287239705950798d16000651eed00d9327411d5')
+sha256sums_aarch64=('0b1803a57f373947471fa8b9234714918b81b186fcd92ee93b435a0bdfef3ff8')
 
 package() {
   local _debarch=amd64
@@ -43,7 +47,7 @@ package() {
     # The app only has to work on the Electron it was built against, so refuse
     # to package a runtime pairing upstream never shipped.
     local _bundled
-    _bundled=$(grep -aoP 'Electron/\K[0-9]+' "${pkgdir}/opt/OpenCode/ai.opencode.desktop" | head -1)
+    _bundled=$(grep -aoP 'Electron/\K[0-9]+' "${pkgdir}/opt/OpenCode/${_app_bin}" | head -1)
     if [[ "electron${_bundled}" != "${_electron}" ]]; then
       echo "Upstream now bundles Electron ${_bundled:-<undetected>}; set _electron=electron${_bundled}" >&2
       exit 1
@@ -100,7 +104,7 @@ EOF
     _exec="${_electron} /usr/lib/opencode-desktop"
   else
     _appdir="${pkgdir}/opt/OpenCode/resources"
-    _exec="/opt/OpenCode/ai.opencode.desktop"
+    _exec="/opt/OpenCode/${_app_bin}"
   fi
 
   # Prune Debian/Ubuntu-specific and dead files
@@ -124,7 +128,7 @@ EOF
   sed -i "s|@EXEC@|${_exec}|" "${pkgdir}/usr/bin/opencode-desktop"
 
   # Point desktop files at the wrapper (icons/StartupWMClass already match upstream names)
-  sed -i 's|Exec=/opt/OpenCode/ai\.opencode\.desktop|Exec=opencode-desktop|' \
+  sed -i 's|Exec=/opt/OpenCode/[^[:space:]]*|Exec=opencode-desktop|' \
     "${pkgdir}"/usr/share/applications/*.desktop
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
