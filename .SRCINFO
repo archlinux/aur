@@ -1,6 +1,6 @@
 pkgbase = omdrop-owl
 	pkgdesc = AirDrop radio backend for Omdrop on non-Broadcom Wi-Fi, on Owly
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/t4t5/owly
 	install = omdrop-owl.install
@@ -25,10 +25,10 @@ pkgbase = omdrop-owl
 	depends = python-pillow
 	depends = python-zeroconf
 	conflicts = brcmfmac-awdl-dkms
-	noextract = omdrop-owl-0.4.0.tar.gz
+	noextract = omdrop-owl-0.4.1.tar.gz
 	options = !lto
 	options = !debug
-	source = omdrop-owl-0.4.0.tar.gz::https://github.com/t4t5/owly/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 3e3ee6080353cbb9af150b0622441ce2b0a09c59e7e29136041ec83777908305
+	source = omdrop-owl-0.4.1.tar.gz::https://github.com/t4t5/owly/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 7b2127bc1556c6947e5b2c6bac820a62c36c46092f936abdf60f013b9179318c
 
 pkgname = omdrop-owl
