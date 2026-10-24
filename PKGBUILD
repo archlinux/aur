@@ -2,7 +2,7 @@
 
 pkgname=penguin-engine-git
 _pkgname=penguin-engine
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.0.r78.g1ef35dd
 pkgrel=1
 pkgdesc="Animated desktop wallpapers for Wayland: plays Wallpaper Engine wallpapers"
 arch=('x86_64')
