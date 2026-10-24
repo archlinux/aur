@@ -15,6 +15,6 @@ pkgbase = ds4u
 	provides = ds4u
 	conflicts = ds4u-git
 	source = ds4u-0.1.3.tar.gz::https://git.yokai.digital/deadYokai/ds4u/archive/v0.1.3.tar.gz
-	sha256sums = SKIP
+	sha256sums = 42e9e036bfbffaaf5025782aa14048fe726571fda94e44c82b1fa0edfa739bf1
 
 pkgname = ds4u
