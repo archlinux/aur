@@ -7,7 +7,7 @@
 
 pkgname=ocsinventory-agent
 pkgver=2.10.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Hardware and software inventory tool (client)"
 arch=('x86_64' 'aarch64')
 url="http://www.ocsinventory-ng.org"
