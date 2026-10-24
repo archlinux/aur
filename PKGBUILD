@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r87359.7bb339f2c35
+pkgver=r89547.a6b208bcddd
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -45,7 +45,9 @@ depends=(
   vulkan-memory-allocator # AUR
   wuffs-lib # AUR
 )
-makedepends=(autoconf-archive automake rustup cmake git nasm ninja patchelf skia-static tar unzip zip)
+makedepends=(autoconf-archive automake rustup cmake git nasm ninja patchelf skia-static tar unzip zip
+  zmij # AUR
+)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
