@@ -1,6 +1,6 @@
 pkgbase = botropolis-bin
 	pkgdesc = Every Claude Code session on this machine, drawn as a city (binary release)
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Botropolis-City/botropolis
 	install = botropolis.install
@@ -9,6 +9,7 @@ pkgbase = botropolis-bin
 	license = MIT
 	license = OFL-1.1
 	license = CC0-1.0
+	license = BSD-3-Clause
 	depends = glibc
 	depends = libgl
 	depends = libx11
@@ -19,12 +20,13 @@ pkgbase = botropolis-bin
 	depends = hicolor-icon-theme
 	optdepends = claude-code: the sessions botropolis draws and manages
 	optdepends = waybar: a status bar for `botropolis bar --watch`
-	provides = botropolis=0.2.3
+	optdepends = ffmpeg: record clips in sharing mode
+	provides = botropolis=0.3.0
 	conflicts = botropolis
 	options = !debug
-	source_x86_64 = botropolis-0.2.3-linux-amd64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.2.3/botropolis-0.2.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = c0c00b600c50f69fa3412b2bb4784db4ee37286755a673abef2b4ef210a90239
-	source_aarch64 = botropolis-0.2.3-linux-arm64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.2.3/botropolis-0.2.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = bfac3489a974c5e79835d77c14f878b21aa859cb7b6696b12678316dc5975b38
+	source_x86_64 = botropolis-0.3.0-linux-amd64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.3.0/botropolis-0.3.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = d5d9c7b8aa41c61c419834b8baaa496595d197fcc6ac40c6e8c8a767d1ab8205
+	source_aarch64 = botropolis-0.3.0-linux-arm64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.3.0/botropolis-0.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0c7fb631f7c5e930771e091c1fb58c3662c5d2b3198be1570f55e645aa145f20
 
 pkgname = botropolis-bin

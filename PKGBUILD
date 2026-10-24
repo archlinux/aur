@@ -1,12 +1,12 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis-bin
 _pkgname=botropolis
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Botropolis-City/botropolis"
-license=('MIT' 'OFL-1.1' 'CC0-1.0')
+license=('MIT' 'OFL-1.1' 'CC0-1.0' 'BSD-3-Clause')
 # Ebitengine reaches GL and X11 through dlopen rather than linking them, so the
 # binaries' only NEEDED entry is libc and namcap reports every one of these as
 # possibly unneeded. They are needed: the sonames are in the binaries' string
@@ -14,7 +14,8 @@ license=('MIT' 'OFL-1.1' 'CC0-1.0')
 depends=('glibc' 'libgl' 'libx11' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr'
          'hicolor-icon-theme')
 optdepends=('claude-code: the sessions botropolis draws and manages'
-            'waybar: a status bar for `botropolis bar --watch`')
+            'waybar: a status bar for `botropolis bar --watch`'
+            'ffmpeg: record clips in sharing mode')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
@@ -33,8 +34,8 @@ options=('!debug')
 # package would be built from binaries whose source tree is not here.
 source_x86_64=("${_pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('c0c00b600c50f69fa3412b2bb4784db4ee37286755a673abef2b4ef210a90239')
-sha256sums_aarch64=('bfac3489a974c5e79835d77c14f878b21aa859cb7b6696b12678316dc5975b38')
+sha256sums_x86_64=('d5d9c7b8aa41c61c419834b8baaa496595d197fcc6ac40c6e8c8a767d1ab8205')
+sha256sums_aarch64=('0c7fb631f7c5e930771e091c1fb58c3662c5d2b3198be1570f55e645aa145f20')
 
 package() {
     cd "${_pkgname}-${pkgver}"
@@ -44,6 +45,8 @@ package() {
     install -Dm644 completions/botropolis.bash "${pkgdir}/usr/share/bash-completion/completions/botropolis"
     install -Dm644 completions/_botropolis "${pkgdir}/usr/share/zsh/site-functions/_botropolis"
     install -Dm644 completions/botropolis.fish "${pkgdir}/usr/share/fish/vendor_completions.d/botropolis.fish"
+    install -Dm644 -t "${pkgdir}/usr/share/man/man1" man/*.1.gz
+    install -Dm644 -t "${pkgdir}/usr/share/man/man5" man/*.5.gz
     install -Dm644 packaging/botropolisd.service "${pkgdir}/usr/lib/systemd/user/botropolisd.service"
     install -Dm644 packaging/botropolis-notify.service "${pkgdir}/usr/lib/systemd/user/botropolis-notify.service"
     install -Dm644 packaging/botropolis.bash "${pkgdir}/usr/share/botropolis/botropolis.bash"
@@ -51,7 +54,7 @@ package() {
     install -Dm644 packaging/botropolis.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/botropolis.svg"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
     install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
-    # The Kenney atlases and the Inter typeface are compiled into the binaries,
+    # The Kenney atlases and the Inter and Go Mono typefaces are compiled into the binaries,
     # so their licences ship with the package rather than only with the source.
     #
     # Under ${pkgname}, not ${_pkgname}: a licence audit looks for each declared licence
@@ -59,6 +62,7 @@ package() {
     # under botropolis, where the program's name puts them either way.
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 inter-OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/inter-OFL.txt"
+    install -Dm644 gomono-BSD.txt "${pkgdir}/usr/share/licenses/${pkgname}/gomono-BSD.txt"
     install -Dm644 kenney-CC0.txt "${pkgdir}/usr/share/licenses/${pkgname}/kenney-CC0.txt"
     install -Dm644 kenney-kits.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-kits.md"
     install -Dm644 kenney-packs.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-packs.md"
