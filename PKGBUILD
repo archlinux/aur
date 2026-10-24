@@ -1,6 +1,6 @@
 # Maintainer: Gabantax <ve20@web.de>
 pkgname=switch-frame-tap
-pkgver=0.7.14
+pkgver=0.7.15
 pkgrel=2
 pkgdesc='PC viewer for Switch Frame Tap: watch and record your Nintendo Switch streamed over USB or network'
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('libva-mesa-driver: VAAPI decoding on AMD'
             'intel-media-driver: VAAPI decoding on Intel'
             'nvidia-utils: NVDEC decoding on NVIDIA')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('92ba8ebfd07bab4134c9b6177e6d91a65a152ba6f31bf0c93595f7a464f972fe')
+sha256sums=('429f179ffc049275a04b52adf61d53ae98da29a85041186b7f934d84f17a8b45')
 
 prepare() {
   # sdl2-compat: SDL_RenderGetScale() includes the logical-size scale, but
