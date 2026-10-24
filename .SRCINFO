@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-privacy-indicator
 	pkgdesc = Privacy indicator for the COSMIC Desktop
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/D-Brox/cosmic-ext-applet-privacy-indicator
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cosmic-ext-applet-privacy-indicator
 	depends = fontconfig
 	depends = libpipewire
 	conflicts = cosmic-ext-applet-privacy-indicator-git
-	source = cosmic-ext-applet-privacy-indicator-0.2.0.tar.gz::https://github.com/D-Brox/cosmic-ext-applet-privacy-indicator/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 22d3b29c594112dfa1a0f0b5d223f8d19c2901c23f9286b1b92509c34b656d39
+	source = cosmic-ext-applet-privacy-indicator-0.3.1.tar.gz::https://github.com/D-Brox/cosmic-ext-applet-privacy-indicator/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = e5e87688f4b8963adc088987d062d962b79917ec5ca057dd43583d91424f04bf
 
 pkgname = cosmic-ext-applet-privacy-indicator

@@ -1,6 +1,6 @@
-# Maintainer: Olaf Wriggers <olaf at olwig dot xyz>
+# Maintainer: Olaf Wriggers <olaf@olwig.xyz>
 pkgname=cosmic-ext-applet-privacy-indicator
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Privacy indicator for the COSMIC Desktop"
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
 conflicts=("${pkgname}-git")
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('22d3b29c594112dfa1a0f0b5d223f8d19c2901c23f9286b1b92509c34b656d39')
+sha256sums=('e5e87688f4b8963adc088987d062d962b79917ec5ca057dd43583d91424f04bf')
 
 prepare() {
   cd "$pkgname-$pkgver"
