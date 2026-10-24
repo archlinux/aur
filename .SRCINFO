@@ -1,6 +1,6 @@
 pkgbase = mesa-rk35xx-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 27.0.0_devel.231964.44fd0fde818.d41d8cd
+	pkgver = 26.3.0_rc2.231841.b34c71d9ff2.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = aarch64
@@ -85,7 +85,7 @@ pkgbase = mesa-rk35xx-git
 	conflicts = opencl-rusticl-mesa
 	options = !lto
 	options = !debug
-	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
+	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=26.3
 	source = LICENSE
 	source = xml-1.2.1.tar.gz::https://static.crates.io/crates/xml/1.2.1/download
 	source = zerocopy-0.8.13.tar.gz::https://static.crates.io/crates/zerocopy/0.8.13/download

@@ -13,7 +13,7 @@
 
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=27.0.0_devel.231964.44fd0fde818.d41d8cd
+pkgver=26.3.0_rc2.231841.b34c71d9ff2.d41d8cd
 pkgrel=1
 arch=($CARCH)
 makedepends=(
@@ -92,7 +92,7 @@ url="https://www.mesa3d.org"
 license=('custom')
 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29275
 source=(
-    'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
+    'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=26.3'
     'LICENSE'
 )
 
@@ -355,7 +355,7 @@ build () {
         -D gallium-rusticl=true
 	-D gallium-rusticl-enable-drivers=panfrost
 	#-D static-libclc=all
-#	-D panfrost-rust=true
+	#-D panfrost-rust=true
         -D gallium-va=enabled
         -D gbm=enabled
         -D gles1=enabled
