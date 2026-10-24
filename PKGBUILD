@@ -1,5 +1,5 @@
 pkgname=gzjam
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A simple, intuitive and useful DJ application."
 arch=('x86_64')
@@ -17,9 +17,9 @@ source=(
 	"${pkgname}-${pkgver}.zip::https://github.com/GemZombie/GZJam/archive/refs/tags/v${pkgver}.zip"
 	"gzjam.desktop"
 )
-sha256sums=('78544c45a693132a2a12a367b1e4eb9bc798edfbae139440a5cf60b5a6df4225'
+sha256sums=('52d28670196521bf1f5a260cdf0eff7f9ec4b78da1a6c3118be7739e0f137ade'
             '98807df6f3aba3208db1a31c1a5b8fa8d44b918419d505ca1f843a9b861802da')
-b2sums=('88c6e250e19afa64b9c0a643bc043d4db4f13747a961375ebf036c265ed98410b6ed3bfa2c46cd7dabe3c921c535a5f56e5350de6e1b8ef763403b826769793d'
+b2sums=('a75e3aa98608d62994e3dbb90d6114784af96143d73cb00c41d5848c4f10cec8186a5e3af617028e2c21d7a15cc976cd25fc1618a0e45ce96b6a1929c287d9a7'
         'fcf8074ec46ab584775457a230da5d92c7caa0cea0accf7626b8bebc6bd6e78897f431953dd30025bc92d2aec50da5b842266adc767b4ecfbe2d0d99c19fda29')
 
 build() {
