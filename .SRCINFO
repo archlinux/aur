@@ -1,6 +1,6 @@
 pkgbase = soldr
 	pkgdesc = leverage crgx and zccache to run Rust tools with cached results
-	pkgver = 0.9.39
+	pkgver = 0.9.41
 	pkgrel = 1
 	url = https://github.com/zackees/soldr
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = soldr
 	depends = glibc
 	depends = libgcc
 	depends = rustup
-	source = https://github.com/zackees/soldr/archive/refs/tags/v0.9.39/soldr-0.9.39.tar.gz
-	sha256sums = be0817ddd431bb598ab82e09b7f932a1fc627bd52683492de78a545461439914
+	source = https://github.com/zackees/soldr/archive/refs/tags/v0.9.41/soldr-0.9.41.tar.gz
+	sha256sums = dd40e02545c3a199e226946ee0496445dabdd1098a40918e5bad7746808ccf4d
 
 pkgname = soldr
 	depends = glibc
