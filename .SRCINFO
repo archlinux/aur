@@ -1,0 +1,20 @@
+pkgbase = linux-exploit-suggester
+	pkgdesc = Linux privilege escalation auditing tool
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/The-Z-Labs/linux-exploit-suggester
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = grep
+	depends = gzip
+	depends = procps-ng
+	depends = sed
+	depends = util-linux
+	optdepends = wget: download exploit sources and binaries with --fetch-sources and --fetch-binaries
+	source = linux-exploit-suggester-1.2.tar.gz::https://github.com/The-Z-Labs/linux-exploit-suggester/archive/v1.2.tar.gz
+	sha256sums = 3094b2ae5d2300215718ee4eeb71f4b145b24c58a633e057eecfd7156c68399e
+
+pkgname = linux-exploit-suggester
