@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A ntop/btop-inspired terminal system monitor built with SharpConsoleUI"
 
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('b4c31667d967348099a35d15bf13343aa55fb526495199dd7ba88b9ab3319724'
             'c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73')
-sha256sums_x86_64=('e560c647c0c5103deeded5a2687ad1676066b8d8ccf4e9e14b1c8c51f5bcc8f5')
-sha256sums_aarch64=('4a23023df866aa9fb24ee0db0d796b1cdee8fa6d08917579022f96759671cf69')
+sha256sums_x86_64=('854181b47e1f8463d7c9e93fe7b1b3a1f26a706126e7cd87a795c0c7414509c0')
+sha256sums_aarch64=('c6c17b02465c82659b068f4c3b54703a4c4ef229ba122db0a259fb0d95e07edd')
 
 
 package() {
