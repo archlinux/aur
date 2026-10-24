@@ -5,13 +5,14 @@
 # https://github.com/cagedbird043/waydroid-a17-nvidia (A17 vendor support, KernelSU seccomp, hwcomposer
 # clipboard, host folder sharing), the nvidia-prolapse vendor image built from that repository
 # (NVK + ANGLE, NVDEC, freeform cards, host IME), the native bundle it was built against (rc10 with a
-# dual-queue NVK) and a KWin script that reopens cards where they were closed.
+# dual-queue NVK that also carries the upstream fix for 3D views of 2D images) and a KWin script that
+# reopens cards where they were closed.
 # The Android system image is not included: waydroid-nvidia-setup downloads it (see post_install).
 
 pkgname=waydroid-a17-nvidia-bin
-pkgver=20261024.4
+pkgver=20261024.5
 pkgrel=1
-_tag=a17-20261024-4
+_tag=a17-20261024-5
 _wn_sha=29ffa3a237b0d79a751748bd9bb82c50dd577808      # waydroid-nvidia v0.2.0-rc10 release notes commit
 _wn_tag=v0.2.0-rc10
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
@@ -61,17 +62,17 @@ noextract=(
   "waydroid-a17-nvidia-native-x86_64-$_tag.tar.zst"
 )
 sha256sums=('4dc67241bf35189d4490306611f7f52e49117d04511a60999e96328f010dd84f'
-            '83409e32bad61942b59c7b697853e0b8e3f977d946468aa2c03bdfa129c9b27b'
+            'b4b3c25b9467be03c7788c500ea17ffc70ee14586084cb39cac8da77b837bc42'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
             '124106f95e1b35c75eed8a966ab66284760fd6d02c79ad9fadd88355d4e3a2d7'
             '5fa325de02c2ef9c13f972efba98e27cdf4d2d48c0a33cf9a884ade8eaa74c50'
             '3fe5822ca2b9ed3aa6fcd9c9627679a04592837b947d7754911c3ab4c1007ec2'
-            '6494c5558637acf291486bc3a578a67e9af478afa68f3b213fa8fbc62039b103'
-            'e3b831072fd231aff930a72e72cf11ec61d210a8badebcd8b1199abbf0d96d0a'
-            'daa7d3be8209ae087e66625cf3dd79474185d2f914688a015e89b262def2f6d2'
-            '25395f1abb41b1e81c7a4f2b1a49d767cc2f8f4acc31ee1f9fced492ad8796b7'
-            'abeaf813ef4d140dd519ee1423cd450249fc129a6c9822128465f4310608329b'
-            '02af76ee40021611e111179489c8b415b3f08ff56fd03f3a514fe65a059d4945')
+            '2d07884f603bf1b1bc5c5ecd82975828907a6f433ce7eec64beb912346672409'
+            '7027eda2b6f44bedce7e232c2e060ecb95c77d268663e73fff381ab1c72f01ca'
+            '92c5c924ec00b7caadaadf0d4a62dfdf8cc15526bf8fbd9e7170cfc1b20b465c'
+            '5466848812142e005533bea488f6912f35b610392f19766f55bf232543c7ba27'
+            'ecd4a03656425695b49e773d5d7a7a613b23fb8dcc67b91c4da6013adc96607b'
+            'adbe26496c9b0b28c8857af95c7e29c9ceb68fefa75a71eed5080e6ac8d7ceef')
 
 prepare() {
   local wn="$srcdir/waydroid-nvidia-$_wn_sha" a17="$srcdir/waydroid-a17-nvidia-$_tag" p
