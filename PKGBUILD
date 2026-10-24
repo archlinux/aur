@@ -1,18 +1,18 @@
 # Maintainer: Laurent Carlier <lcarlier@archlinux.org>
 
 pkgname=jnext
-pkgver=1.1.51
+pkgver=1.1.87
 pkgrel=1
 pkgdesc="A ZX Spectrum Next emulator using VHDL sources as a reference"
 arch=('x86_64')
-depends=(sdl3 qt6-base hicolor-icon-theme)
+depends=(sdl3 qt6-base qt6-svg hicolor-icon-theme)
 makedepends=(cmake git libpng)
 optdepends=('ffmpeg: video recording support')
 url="https://github.com/jorgegv/jnext"
 license=('GPL-3.0-only')
 options=()
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8ff807cfc0d01d44c38c6fdfc01cabc0e0421ff7fbb6fa73e5639bba3b177004')
+sha256sums=('32d2f21fc8a506123b43493e5aee5183b48117a5a73b8dd42c89fe9510f24006')
 
 prepare() {
   cd $pkgname-$pkgver/third_party/

@@ -1,6 +1,6 @@
 pkgbase = jnext
 	pkgdesc = A ZX Spectrum Next emulator using VHDL sources as a reference
-	pkgver = 1.1.51
+	pkgver = 1.1.87
 	pkgrel = 1
 	url = https://github.com/jorgegv/jnext
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = jnext
 	makedepends = libpng
 	depends = sdl3
 	depends = qt6-base
+	depends = qt6-svg
 	depends = hicolor-icon-theme
 	optdepends = ffmpeg: video recording support
-	source = jnext-1.1.51.tar.gz::https://github.com/jorgegv/jnext/archive/refs/tags/v1.1.51.tar.gz
-	sha256sums = 8ff807cfc0d01d44c38c6fdfc01cabc0e0421ff7fbb6fa73e5639bba3b177004
+	source = jnext-1.1.87.tar.gz::https://github.com/jorgegv/jnext/archive/refs/tags/v1.1.87.tar.gz
+	sha256sums = 32d2f21fc8a506123b43493e5aee5183b48117a5a73b8dd42c89fe9510f24006
 
 pkgname = jnext
