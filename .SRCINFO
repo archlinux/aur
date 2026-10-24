@@ -1,19 +1,15 @@
 pkgbase = tcltls
-	pkgdesc = OpenSSL extension to Tcl
+	pkgdesc = OpenSSL extension to Tcl providing TLS/SSL channel capabilities
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://core.tcl-lang.org/tcltls/home
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	arch = arm
 	arch = aarch64
-	license = GPL
+	license = TCL
 	depends = tcl
 	depends = openssl
-	depends = awk
 	provides = tls
-	replaces = tls
+	options = !emptydirs
 	source = https://core.tcl-lang.org/tcltls/uv/tcltls2.0.1.tar.gz
 	sha256sums = afffeb5de1978f47745db4804c1dfdcd6605ceac32e324fe8bbe49843de0baae
 

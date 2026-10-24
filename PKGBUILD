@@ -3,30 +3,45 @@
 
 pkgname=tcltls
 pkgver=2.0.1
-pkgrel=1
-pkgdesc="OpenSSL extension to Tcl"
-arch=('x86_64' 'armv6h' 'armv7h' 'arm' 'aarch64')
+pkgrel=2
+pkgdesc="OpenSSL extension to Tcl providing TLS/SSL channel capabilities"
+arch=('x86_64' 'aarch64')
 url="https://core.tcl-lang.org/tcltls/home"
-license=('GPL')
+license=('TCL')
 provides=('tls')
-replaces=('tls')
-depends=('tcl' 'openssl' 'awk')
-source=("https://core.tcl-lang.org/tcltls/uv/tcltls$pkgver.tar.gz")
+depends=('tcl' 'openssl')
+options=('!emptydirs')
+source=("https://core.tcl-lang.org/tcltls/uv/tcltls${pkgver}.tar.gz")
 sha256sums=('afffeb5de1978f47745db4804c1dfdcd6605ceac32e324fe8bbe49843de0baae')
 
 build() {
-  cd "$srcdir"/tcltls$pkgver
-  ./configure --prefix=/usr --with-ssl-dir=/usr
-  make
+	cd "${srcdir}/tcltls${pkgver}"
+
+	./configure \
+		--prefix=/usr \
+		--libdir=/usr/lib \
+		--mandir=/usr/share/man \
+		--enable-64bit \
+		--enable-ssl-fastpath \
+		--enable-hardening \
+		--disable-rpath \
+		--disable-ssl3 \
+		--disable-tls1 \
+		--disable-tls1_1 \
+		--with-tcl=/usr/lib \
+		--with-openssl-dir=/usr
+
+	make
 }
 
 check() {
-  cd "$srcdir"/tcltls$pkgver
-#  make test | awk '{print}/FAILED/{F=1}END{if(F)exit 1}'
+	cd "${srcdir}/tcltls${pkgver}"
+	make test
 }
 
 package() {
-  cd "$srcdir"/tcltls$pkgver
-  make DESTDIR="$pkgdir" install
-#  ln -s tls$pkgver/libtls$pkgver.so "$pkgdir"/usr/lib/libtls$pkgver.so
+	cd "${srcdir}/tcltls${pkgver}"
+	make DESTDIR="${pkgdir}" install
+
+	install -Dm644 license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
