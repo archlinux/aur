@@ -9,6 +9,10 @@ license=('MIT')
 provides=('piper-tts')
 conflicts=('piper-tts')
 depends=(gcc-libs glibc)
+optdepends=(
+  'piper-voices: voices for all languages'
+  'piper-voices-minimal: minimal voice dataset'
+)
 source=('piper-tts.sh')
 source_x86_64=("$url/releases/download/${_pkgver}/piper_linux_x86_64.tar.gz")
 source_aarch64=("$url/releases/download/${_pkgver}/piper_linux_aarch64.tar.gz")
@@ -23,4 +27,3 @@ package() {
   mv "$srcdir"/piper "$pkgdir"/opt/piper-tts
   install -Dm755 "$srcdir"/piper-tts.sh "$pkgdir"/usr/bin/piper-tts
 }
-
