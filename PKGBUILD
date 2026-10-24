@@ -2,7 +2,7 @@
 _base=CryptoDataHub
 pkgname=python-${_base,,}
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Repository of cryptography-related data"
 arch=(any)
 url="https://gitlab.com/coroner/${_base}"
@@ -29,5 +29,5 @@ package() {
   cd ${_base,,}-v${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
