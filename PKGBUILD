@@ -1,7 +1,7 @@
 # Maintainer: Denis Gordenin <support@yutovo.ru>
 pkgname=yutovo
-pkgver=1.7.1
-pkgrel=3
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Arbitrary precision graphical WYSIWYG calculator inside a text editor"
 arch=(x86_64)
 url="https://yutovo.com"
@@ -13,19 +13,19 @@ makedepends=('git' 'cmake' 'base-devel' 'qt5-base' 'qt5-tools')
 
 source=(
     "spdlog::git+https://github.com/gabime/spdlog.git#tag=v1.15.3"
-    "yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#tag=v1.0.6"
-    "boost_1_83_0::https://archives.boost.io/release/1.83.0/source/boost_1_83_0.zip"
+    "yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#tag=v1.0.8"
+    "boost_1_92_0::https://archives.boost.io/release/1.92.0/source/boost_1_92_0.zip"
     "giac_stable.tgz::https://www-fourier.univ-grenoble-alpes.fr/~parisse/giac/giac_stable.tgz"
-    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#tag=v1.6.1"
+    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#tag=v1.7.1"
     "rapidjson::git+https://github.com/Tencent/rapidjson.git#tag=v1.1.0"
-    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#tag=v1.3.1"
+    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#tag=v1.4.1"
     "mathgl-8.0.3.tar.gz::https://downloads.sourceforge.net/mathgl/mathgl-8.0.3.tar.gz"
     "libharu::git+https://github.com/libharu/libharu.git#tag=v2.4.4"
     "stb_image.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image.h"
     "stb_image_write.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h"
-    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#tag=v1.7.1"
-    "yutovo-library::git+https://github.com/denprog/yutovo-library.git#tag=v1.1.1"
-    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#tag=v1.7.1"
+    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#tag=v1.8.1"
+    "yutovo-library::git+https://github.com/denprog/yutovo-library.git#tag=v1.2.1"
+    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#tag=v1.8.1"
 )
 
 sha256sums=(
@@ -66,10 +66,13 @@ build() {
     cd ../..
 
     echo "Building boost"
-    cd boost_1_83_0
+    cd boost_1_92_0
     unset CFLAGS CXXFLAGS LDFLAGS
     ./bootstrap.sh --prefix=$YUTOVO_DEPLOY
     ./b2 headers
+    # boost::process v2 (used by yutovo-solver) is a compiled library since 1.86
+    ./b2 -q -j4 --with-process link=static threading=multi cxxstd=17
+    ./b2 -j4 --with-process link=static threading=multi cxxstd=17 install
     cp -r boost $YUTOVO_DEPLOY/include/
     cd ..
 
@@ -95,6 +98,10 @@ build() {
 
     echo "Building yutovo-solver"
     cd yutovo-solver
+    # Boost 1.92 dropped the boost/process.hpp umbrella header (process v1),
+    # so CMake's FindBoost can no longer verify the "process" component.
+    # The code uses process v2, which links the compiled libboost_process.a.
+    sed -i 's/find_package(Boost REQUIRED COMPONENTS process)/find_package(Boost REQUIRED)\n    if(NOT TARGET Boost::process)\n        add_library(Boost::process INTERFACE IMPORTED)\n        set_target_properties(Boost::process PROPERTIES INTERFACE_LINK_LIBRARIES "${INSTALL_PATH}\/lib\/libboost_process.a;Boost::boost")\n    endif()/' src/CMakeLists.txt
     mkdir -p build && cd build
     cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=$YUTOVO_DEPLOY/lib/cmake -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
     make -sj4 && make install

@@ -1,7 +1,7 @@
 pkgbase = yutovo
 	pkgdesc = Arbitrary precision graphical WYSIWYG calculator inside a text editor
-	pkgver = 1.7.1
-	pkgrel = 3
+	pkgver = 1.8.1
+	pkgrel = 1
 	url = https://yutovo.com
 	arch = x86_64
 	license = GPL-3.0-only
@@ -22,19 +22,19 @@ pkgbase = yutovo
 	depends = ttf-dejavu
 	depends = gnu-free-fonts
 	source = spdlog::git+https://github.com/gabime/spdlog.git#tag=v1.15.3
-	source = yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#tag=v1.0.6
-	source = boost_1_83_0::https://archives.boost.io/release/1.83.0/source/boost_1_83_0.zip
+	source = yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#tag=v1.0.8
+	source = boost_1_92_0::https://archives.boost.io/release/1.92.0/source/boost_1_92_0.zip
 	source = giac_stable.tgz::https://www-fourier.univ-grenoble-alpes.fr/~parisse/giac/giac_stable.tgz
-	source = yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#tag=v1.6.1
+	source = yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#tag=v1.7.1
 	source = rapidjson::git+https://github.com/Tencent/rapidjson.git#tag=v1.1.0
-	source = yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#tag=v1.3.1
+	source = yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#tag=v1.4.1
 	source = mathgl-8.0.3.tar.gz::https://downloads.sourceforge.net/mathgl/mathgl-8.0.3.tar.gz
 	source = libharu::git+https://github.com/libharu/libharu.git#tag=v2.4.4
 	source = stb_image.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image.h
 	source = stb_image_write.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h
-	source = yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#tag=v1.7.1
-	source = yutovo-library::git+https://github.com/denprog/yutovo-library.git#tag=v1.1.1
-	source = yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#tag=v1.7.1
+	source = yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#tag=v1.8.1
+	source = yutovo-library::git+https://github.com/denprog/yutovo-library.git#tag=v1.2.1
+	source = yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#tag=v1.8.1
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
