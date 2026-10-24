@@ -1,13 +1,13 @@
 pkgbase = pcapsql
 	pkgdesc = SQL query engine for PCAP network traffic analysis
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mtottenh/pcapsql
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = pcapsql-0.3.1.tar.gz::https://github.com/mtottenh/pcapsql/archive/v0.3.1.tar.gz
-	sha256sums = ab8300e6043a70e2c478b05dffad52cd927edc548cf952f97fd6312fec0b3556
+	source = pcapsql-0.4.0.tar.gz::https://github.com/mtottenh/pcapsql/archive/v0.4.0.tar.gz
+	sha256sums = f084b80bb762a104d84f43b1daeea729b98e490a5afe94b140ff9ab8e04c0913
 
 pkgname = pcapsql
