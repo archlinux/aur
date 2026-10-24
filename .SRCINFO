@@ -1,6 +1,6 @@
 pkgbase = midnight-cli-git
 	pkgdesc = DiM's fork of Caelestia-CLI
-	pkgver = r706.832c6c2
+	pkgver = r793.e6b4900
 	pkgrel = 1
 	url = https://github.com/dim-ghub/midnight-cli
 	arch = any
@@ -24,9 +24,9 @@ pkgbase = midnight-cli-git
 	depends = cliphist
 	depends = fuzzel
 	optdepends = midnight-shell-git: one of the reasons the cli exists
-	provides = midnight-cli=r706.832c6c2
-	provides = caelestia-cli=r706.832c6c2
-	provides = caelestia-cli-git=r706.832c6c2
+	provides = midnight-cli=r793.e6b4900
+	provides = caelestia-cli=r793.e6b4900
+	provides = caelestia-cli-git=r793.e6b4900
 	conflicts = midnight-cli
 	conflicts = dim-caelestia-cli-git
 	conflicts = caelestia-cli

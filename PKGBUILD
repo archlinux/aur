@@ -2,7 +2,7 @@
 
 pkgname='midnight-cli-git'
 _pkgname='midnight-cli'
-pkgver=r706.832c6c2
+pkgver=r793.e6b4900
 pkgrel=1
 pkgdesc="DiM's fork of Caelestia-CLI"
 arch=('any')
@@ -61,9 +61,9 @@ pkgver() {
 }
 
 build() {
-    local _v="${pkgver#r}"
-    export SETUPTOOLS_SCM_PRETEND_VERSION="${_v}"
-    export VCS_VERSIONING_PRETEND_VERSION="${_v}"
+    local v="${pkgver#r}"
+    export SETUPTOOLS_SCM_PRETEND_VERSION="${v%.*}.0+${v#*.}"
+    export VCS_VERSIONING_PRETEND_VERSION="$SETUPTOOLS_SCM_PRETEND_VERSION"
     cd "${srcdir}/${pkgname}"
     python -m build --wheel --no-isolation
 }
