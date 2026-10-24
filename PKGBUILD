@@ -1,6 +1,6 @@
 pkgname=gzjam
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, intuitive and useful DJ application."
 arch=('x86_64')
 url="https://github.com/GemZombie/GZJam"
@@ -42,7 +42,8 @@ package() {
 	install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
 	install -dm0755 "$pkgdir/usr/bin"
 
-	install -Dm0644 ${srcdir}/GZJam-${pkgver}/src/GZJam.App/Assets/gzjam.png "$pkgdir/usr/share/pixmaps/"
+	install -Dm0644 -T ${srcdir}/GZJam-${pkgver}/src/GZJam.App/Assets/gzjam.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/gzjam.png"
+	install -Dm0644 -T ${srcdir}/GZJam-${pkgver}/branding/gzjam-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gzjam.svg"
 	install -Dm0644 ${srcdir}/GZJam-${pkgver}/publish/linux-${arch}/THIRD-PARTY-NOTICES.txt "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm0644 ${srcdir}/GZJam-${pkgver}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 	install -D ${srcdir}/GZJam-${pkgver}/publish/linux-${arch}/* "$pkgdir/opt/$pkgname"
