@@ -2,13 +2,13 @@
 # TODO: fall back to /builds/old in case the build artifact disappears
 
 pkgname=bombsquad
-pkgver=1.7.62
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64' 'aarch64')
 url='http://www.froemling.net/apps/bombsquad'
 license=('unknown')
-depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python313')
+depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python')
 source=(
   "https://files.ballistica.net/bombsquad/promo/BombSquadIcon.png"
   'bombsquad.sh'
@@ -17,8 +17,8 @@ source=(
 sha256sums=('31f3af8d59a384b7a3ac999d2e8fe0a0033d0d31ae6e760686537ab85d86ba00'
             '850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515'
             '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c')
-sha256sums_x86_64=('4aeef1115ce014197e43688559d2116f23bc951b3c5dde0a69b161c9c654563b')
-sha256sums_aarch64=('43ceca6d0ab010e68c889e2e4a0677783f0060a402a0958fceaeebb7d36ef42a')
+sha256sums_x86_64=('9375e48133ba2f8cbb91cfc5254efcd2a8fe99837acd5482c99c51590b01ce05')
+sha256sums_aarch64=('298f2ce3bb5324297dba49c15bb4c3c566e2b0835793095adc02a7feb3f85243')
 source_x86_64=("https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_x86_64_${pkgver}.tar.gz")
 source_aarch64=("https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_Arm64_${pkgver}.tar.gz")
 
