@@ -1,6 +1,6 @@
 pkgbase = noos-package-manager
 	pkgdesc = Gestionnaire de paquets GTK4/Libadwaita et outil CLI (noos-up) pour Arch Linux (Pacman, AUR via Yay, Flatpak et AppImages)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/Chomiam/noos-package-manager
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = noos-package-manager
 	depends = flatpak
 	depends = polkit
 	depends = hicolor-icon-theme
-	source = noos-package-manager-0.1.9.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = 5938c2498ede9c5763c439835adef869edcf2dc89d8a0dca53e08c9e248fcdbe
+	source = noos-package-manager-0.1.10.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = 82558b8c75f09f6d01eb63d1f6c87b6dc2095c61848abab0ce985330fccb0edc
 
 pkgname = noos-package-manager
