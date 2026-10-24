@@ -1,0 +1,20 @@
+_setup() {
+  udevadm control --reload
+  if lsmod | grep -q '^v4l2loopback '; then
+    udevadm trigger --action=change --subsystem-match=misc --sysname-match=v4l2loopback
+    echo ">>> v4l2loopback is already loaded. If it was loaded with static devices"
+    echo ">>> (devices=…), reload it once no app uses them, or reboot:"
+    echo ">>>   sudo modprobe -r v4l2loopback && sudo modprobe v4l2loopback"
+  else
+    modprobe v4l2loopback 2>/dev/null || echo ">>> Could not load v4l2loopback: install v4l2loopback-dkms or reboot."
+  fi
+  echo ">>> Start \"Webcam Blur\" from your app menu (it can then start itself at login)."
+}
+
+post_install() {
+  _setup
+}
+
+post_upgrade() {
+  udevadm control --reload
+}
