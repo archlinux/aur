@@ -4,7 +4,7 @@
 _pkgname=8188fu
 pkgname="$_pkgname-7.2.x-nambers-dkms-git"
 pkgver=r131.68e5679
-pkgrel=1
+pkgrel=2
 pkgdesc='Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179), for kernel versions 4.15.x ~ 7.2.x'
 arch=('any')
 url="https://github.com/Nambers/rtl8188fu"
