@@ -1,0 +1,21 @@
+pkgbase = 8188fu-7.2.x-nambers-dkms-git
+	pkgdesc = Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179), for kernel versions 4.15.x ~ 7.2.x
+	pkgver = r131.68e5679
+	pkgrel = 1
+	url = https://github.com/Nambers/rtl8188fu
+	install = 8188fu-dkms.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = dkms
+	conflicts = 8188fu-dkms-git
+	conflicts = 8188fu-kelebek333-dkms-git
+	conflicts = 8188fu-supremegamers-dkms-git
+	source = 8188fu::git+https://github.com/Nambers/rtl8188fu.git
+	source = blacklist-r8188fu.conf
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6
+	sha256sums = b948cdf264b397bc68eb25448c8da1370247da064bbf22230542b136bf0d70cb
+
+pkgname = 8188fu-7.2.x-nambers-dkms-git
