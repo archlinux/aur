@@ -1,6 +1,6 @@
 pkgbase = hegn-git
-	pkgdesc = Cloud Hypervisor MicroVM sandbox manager and TUI for coding agents (git version)
-	pkgver = 0.1.0.r68.g9029000
+	pkgdesc = Cloud Hypervisor sandbox manager and TUI for coding agents (git version)
+	pkgver = 0.1.0.r90.ge773fd8
 	pkgrel = 1
 	url = https://github.com/Henriklmao/hegn
 	install = hegn.install
@@ -13,8 +13,8 @@ pkgbase = hegn-git
 	makedepends = git
 	depends = gcc-libs
 	depends = git
-	optdepends = cloud-hypervisor: boot MicroVMs (available as cloud-hypervisor or cloud-hypervisor-bin in the AUR)
-	optdepends = virtiofsd: share the project directory into the guest
+	depends = cloud-hypervisor
+	depends = virtiofsd
 	optdepends = lazygit: open projects with the g shortcut
 	provides = hegn
 	conflicts = hegn
@@ -24,6 +24,6 @@ pkgbase = hegn-git
 	source = hegn::git+https://github.com/Henriklmao/hegn.git
 	source = hegn.desktop
 	sha256sums = SKIP
-	sha256sums = 05b3b79cf4d05728448a826f872296f2e8eca75fbb3716b36109c7c8e4584f63
+	sha256sums = 75d2c9907a9895a7f43d0626e186b18d567112cb29596c3811c90de66cc6e77f
 
 pkgname = hegn-git
