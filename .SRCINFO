@@ -1,7 +1,7 @@
 pkgbase = thorium-browser-beta-avx512-bin
 	pkgdesc = AVX-512 beta build of the Chromium fork focused on performance
 	pkgver = 156.0.8078.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gz83/thorium
 	arch = x86_64
 	license = BSD-3-Clause
