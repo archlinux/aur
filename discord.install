@@ -1,0 +1,7 @@
+post_install() {
+  sh /opt/discord-canary-prerelease-patched-electron-bin/refresh-mod-backup.sh /opt/discord-canary-prerelease-patched-electron-bin
+}
+
+post_upgrade() {
+  post_install
+}
