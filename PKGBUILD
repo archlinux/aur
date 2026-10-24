@@ -58,7 +58,7 @@ package_blitcp-gui-bin() {
 
 	install -Dm755 "${_appname}-gui-${pkgver}" "${pkgdir}/usr/bin/${_appname}-gui"
 
-	install -Dm755 /dev/stdin "${pkgdir}/usr/share/applications/${_appname}.desktop" <<EOF
+	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_appname}.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Name=${_appname}
