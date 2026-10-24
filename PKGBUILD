@@ -1,7 +1,7 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-bin
 pkgver=2.4.0
-pkgrel=1
+pkgrel=4
 pkgdesc='澜音 - 一款简洁优雅的跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。'
 arch=('x86_64')
 url='https://ceru.docs.shiqianjiang.cn/'
@@ -10,6 +10,25 @@ license=('AGPL-3.0-only')
 # Arch electron44 为 44.5.1，同 major（NODE_MODULE_VERSION 均为 149），
 # 原生模块 ABI 一致。electron/electron44 已负责 gtk3、nss、alsa、avahi、
 # cups、cairo、pango、wayland、x11、mesa、systemd-libs 等基础依赖。
+#
+# MPRIS：上游原生模块 external-media-integration 有 bug ——
+# sys_media/linux.rs 的 run_mpris_worker() 从不 await player.run()，
+# mpris-server 0.10 的 object server 无人驱动，客户端第一条查询即 panic
+# （local_server.rs:123, SendError unwrap），接口永远超时；上游修复前用不了。
+#   另外上游无条件 appendSwitch("disable-features",
+#   "HardwareMediaKeyHandling,MediaSessionService")，把 Chromium 自带的
+#   mediaSession/MPRIS 集成也禁用了（"降级为浏览器方案"沦为死代码，
+#   且实测禁用 HardwareMediaKeyHandling 会连坐 MediaSessionService，
+#   二者必须同时释放）。
+# 本包两步处理：
+#   1) 删掉 deb 里的 external-media-integration.node（2.5MiB，Linux 上
+#      还缺封面处理），让 emi loader 走「未找到原生模块」分支；
+#   2) 对 app.asar 做等长字节替换，把上述两个 feature 从禁用列表涂掉。
+#      浏览器侧 navigator.mediaSession（渲染端无条件写入 metadata/状态）
+#      由此接通 Chromium 自带 MPRIS：标题/歌手/专辑/封面/时长/按键控制全通，
+#      Identity=ceru-music。
+# 上游修好 run() 后（issue 见 upstream-issue-draft.md，已验证一行修复有效），
+# 可移除本补丁恢复原生模块。
 depends=(
     'electron44'           # 提供 /usr/bin/electron 与 electron44 运行时
     'at-spi2-core'       # 无障碍支持
@@ -26,6 +45,13 @@ conflicts=('ceru-music-appimage')
 _appdir='/usr/lib/ceru-music'
 _debname="ceru-music-${pkgver}-linux-amd64.deb"
 _debdir='澜音'         # 上游 deb 内部目录名（中文）
+_debdir='澜音'
+
+# 上游 bug（MPRIS 永远超时）：native/external-media-integration/src/sys_media/
+# linux.rs 的 run_mpris_worker() 从不 await player.run()，mpris-server 0.10 的
+# object server 无人驱动，客户端任何方法调用即触发 local_server.rs 内部
+# unwrap(SendError) panic。本仓库 native/ 里保存了上游开源源码 + 已验证的
+# 修复版（select! 驱动 run()），仅作参考与上游 issue 佐证，不参与本包构建。
 
 source=("LICENSE::https://raw.githubusercontent.com/timeshiftsauce/CeruMusic/main/LICENSE")
 source_x86_64=("${_debname}::https://github.com/timeshiftsauce/CeruMusic/releases/download/v${pkgver}/${_debname}")
@@ -40,6 +66,20 @@ prepare() {
         | bsdtar -x -C "${srcdir}/debroot" \
             "./opt/${_debdir}/resources/app.asar" \
             "./opt/${_debdir}/resources/app.asar.unpacked"
+
+    # 上游原生模块 external-media-integration 的 Linux MPRIS 有 bug（缺
+    # player.run() 驱动，D-Bus 接口永远超时，见顶部注释），直接删掉，
+    # 让 emi loader 走「未找到原生模块」分支，由 Chromium mediaSession 兜底。
+    rm -rf "${srcdir}/debroot/opt/${_debdir}/resources/app.asar.unpacked/native"
+
+    # 等长字节替换 app.asar 内的 disable-features 常量，释放
+    # MediaSessionService 与 HardwareMediaKeyHandling（后者会连坐禁掉
+    # mediaSession 的 MPRIS 注册），浏览器侧 mediaSession 即可用。
+    # 仅此一处出现（已核实），替换为同样长度的不存在 feature 名。
+    local asar="${srcdir}/debroot/opt/${_debdir}/resources/app.asar"
+    LC_ALL=C sed -i 's/HardwareMediaKeyHandling,MediaSessionService/UnusedFeatureHWKeysAAAAA,UnusedFeatureFALLBb/' "$asar"
+    grep -qa 'UnusedFeatureHWKeysAAAAA' "$asar" || { echo 'app.asar 补丁失败'; return 1; }
+    grep -qa 'HardwareMediaKeyHandling' "$asar" && { echo 'app.asar 残留旧字符串'; return 1; }
 
     # better-sqlite3 按 platform+arch 从 prebuilds/ 解析 .node，Arch(glibc,
     # x86_64) 只会用到 linux-x64.node，其余 7 个（win32/darwin/arm64/musl）
@@ -56,12 +96,15 @@ prepare() {
 }
 
 package() {
-    # 1. 应用代码（app.asar + 解包出来的原生模块 better-sqlite3、资源文件）
+    # 1. 应用代码（足够 asar + 解包模块 better-sqlite3、资源文件）
     install -d "${pkgdir}${_appdir}/resources"
     cp -a "${srcdir}/debroot/opt/${_debdir}/resources/app.asar" \
         "${pkgdir}${_appdir}/resources/"
     cp -a "${srcdir}/debroot/opt/${_debdir}/resources/app.asar.unpacked" \
         "${pkgdir}${_appdir}/resources/"
+
+    # 1.5 原生模块 external-media-integration（Linux MPRIS bug，见顶部注释）
+    #     已在 prepare() 删除；app.asar 补丁使 Chromium mediaSession 兜底生效。
 
     # 2. 启动脚本：用系统 electron 加载 app.asar
     #    启动前读取用户自定义参数文件（约定同 code-flags.conf / electron-flags.conf）：
