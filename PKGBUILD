@@ -3,7 +3,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="olivetin-bin"
-pkgver=3000.20.0
+pkgver=3000.21.0
 pkgrel=1
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
@@ -18,9 +18,9 @@ source=("olivetin.service"
         "olivetin@.service")
 b2sums=('402097ad54be50688a22223b96f32a6630ec5479bcf4f99dbaf98d1b212cac4316c4adcf8dd7aeb9216d28dd815b5b80820023a4ca710ebe60f7603795931489'
         '90c4f129b8a481612a7b4c051b48930bce6259df1a1f02c7fcadcabe4eb3031feaa7bc620fd543ed66d2453464c7f5c383e58d7146019a01c98c333ccf382f25')
-b2sums_x86_64=('d4f629c90789e44357450a26712c5b7024063d24b83d45e8aa6497683bc0d5349f3074aaccf82ee50e109c8515cc7891582ab13a8e4347d417b42293cac15dc8')
-b2sums_aarch64=('bb5ce3bdffa7d121f4f0c47bb1e601bef43317bd62c8af1c5d15653f08cc599bd956e72d6acb1c54ae43f1365ce5fa7ec1b90b45a537f3e04e3fac48f7711a9c')
-b2sums_armv7h=('9d7ecc207c73e6e5101c3006febc7d65964f2e2857ce2e9fc5bc1314160e3d5e04de16ba6c8d6b5206a97268efef904a7aab6511a5e1b244af9c1e857b7c3078')
+b2sums_x86_64=('027c2fac5e98b149ec04de24e34e3a78b264c9cd73f7a7fdd5bf9d73267eb3713ba9b5bdd7aadea684e3457db3b9721666951cb99ce94ca255bbeff843e7f258')
+b2sums_aarch64=('4347fa31127d8b0104d9a1350d002a536a2fe6e37274995af1e7602b25cb04eb33ac01dddd5d0f7b8d2cc0f49dc1094d5c44fc57e7a584d3a6e7773601ed6dbd')
+b2sums_armv7h=('441d1f83324699a71910a55ce760cac07e43fc19784050cfc5c8761756c44cddf32283c2dfe1c3a4f670cc2085e61640bffb0d9230722157b0c8a8c3c72fc76f')
 backup=("etc/olivetin/config.yaml")
 
 prepare(){
