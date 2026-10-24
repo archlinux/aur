@@ -1,6 +1,6 @@
 pkgbase = dumber-browser-git
 	pkgdesc = A minimal keyboard-driven browser for tiling WMs (git version)
-	pkgver = 0.33.2.r6.g40044642
+	pkgver = 0.33.2.r10.g4b2eb676
 	pkgrel = 1
 	url = https://git.bnema.dev/dumber
 	arch = x86_64
