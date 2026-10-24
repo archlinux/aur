@@ -1,0 +1,14 @@
+pkgbase = dbhub-mcp-server
+	pkgdesc = Database MCP server for Postgres, MySQL, MariaDB, SQL Server, Oracle and SQLite
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/bytebase/dbhub
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22.5.0
+	noextract = dbhub-1.5.0.tgz
+	source = https://registry.npmjs.org/@bytebase/dbhub/-/dbhub-1.5.0.tgz
+	sha256sums = 448d5e1df7173dbeabe6058e170488f45d15e4224dc9e98db422883cd1e46901
+
+pkgname = dbhub-mcp-server
