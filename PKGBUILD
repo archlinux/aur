@@ -61,6 +61,9 @@ pkgver() {
 }
 
 build() {
+    local _v="${pkgver#r}"
+    export SETUPTOOLS_SCM_PRETEND_VERSION="${_v}"
+    export VCS_VERSIONING_PRETEND_VERSION="${_v}"
     cd "${srcdir}/${pkgname}"
     python -m build --wheel --no-isolation
 }
