@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A vim-modal Spotify client for the terminal"
 
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('8ad2c72cb1f5f9fbf86fc876a24fd653ac681003e7d0d66e0ade4c962456f438')
-sha256sums_aarch64=('0d113e2ad185421f84259c6a424ff41e9ac2b17803112c126cbf2d68737e984e')
+sha256sums_x86_64=('9aa12e7d73899ef64f41d104615168d7c264560017b8bd7023ea0914cabf5ede')
+sha256sums_aarch64=('01b493816e66511106057fe79c7e6ba86506bcf26335fbeb756c93d40addae24')
 
 
 package() {
