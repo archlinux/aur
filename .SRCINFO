@@ -1,0 +1,15 @@
+pkgbase = fdroid-cli
+	pkgdesc = CLI management tool for F-Droid packages and Android APK inspection on Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/gerliczkowalczuk/fdroid-linux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = andron: ultra-lightweight Android translation runtime
+	source = fdroid-linux-0.2.0.tar.gz::https://github.com/gerliczkowalczuk/fdroid-linux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 20dfe6a8804eb9c21be98028ea99ed99fedd8e335b0fea8ace3231ce1c34b82c
+
+pkgname = fdroid-cli
