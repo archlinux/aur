@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Render with tools/packaging/prepare.py; never publish the template itself.
 pkgname=galleoncore
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Corsair Galleon Stream Deck daemon, Bosun settings, widgets and wallpapers'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'gcc' 'make' 'pkgconf')
 checkdepends=('dbus')
 optdepends=('ffmpeg: video thumbnails and screensavers' 'wireplumber: system volume' 'openrgb: dial rings')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('12be234ad0e2bf8165a8646fea6cfbd77f24fbd4a926032feac7f1bee96d2d43')
+sha256sums=('5ab1826a9c35ae171351c168d1f72b035e7975f5ee97712e716e4c9d8b38e9dd')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build -DCMAKE_BUILD_TYPE=Release \
