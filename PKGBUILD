@@ -1,8 +1,8 @@
 # Maintainer: Rinne <aur@rinne.in>
 pkgname=your-szu-life-git
 pkgver=20261024.r572cce5
-pkgrel=1
-pkgdesc='Shenzhen University campus life application (git)'
+pkgrel=2
+pkgdesc="泥深 - 你的SZU助手"
 arch=('x86_64')
 url='https://github.com/rinnein/your-szu-life'
 license=('MIT')
