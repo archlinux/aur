@@ -1,0 +1,11 @@
+--- a/sfwebui.py
++++ b/sfwebui.py
+@@ -118,7 +118,7 @@
+ 
+         cherrypy.config.update({
+             "tools.response_headers.on": True,
+-            "tools.response_headers.headers": secure_headers.framework.cherrypy()
++            "tools.response_headers.headers": list(secure_headers.headers.items()) if hasattr(secure_headers, "headers") else secure_headers.framework.cherrypy()
+         })
+ 
+     def error_page(self: 'SpiderFootWebUi') -> None:

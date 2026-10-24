@@ -4,7 +4,7 @@
 
 pkgname=spiderfoot
 pkgver=4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="SpiderFoot is an open source intelligence automation tool for OSINT gathering"
 arch=('any')
 url="https://github.com/smicallef/spiderfoot"
@@ -50,6 +50,7 @@ source=(
   "spiderfoot.sh"
   "spiderfoot.service"
   "spiderfoot.default"
+  "secure-headers-compatibility.patch"
 )
 
 sha256sums=(
@@ -57,7 +58,13 @@ sha256sums=(
   '2246fe34cd61433a35cd49f2d6d18a6a66fd714014c6c703d1f1f29e3b2a5007'
   '98a4230a697def859e062c8a236b6e56dc8a3d2a11885e67464cfe8c837737a5'
   'b55ca3ad0243f3678ab0ed700fb0b3c5f901dfb9c364ba4ca12ed36267e3c32c'
+  'e7fa1dae7b10d16545000c3688b47e4e4946bfae84284bc52d02d8acf35e08c8'
 )
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/secure-headers-compatibility.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
