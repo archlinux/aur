@@ -6,7 +6,6 @@ pkgbase = ocsinventory-agent
 	install = ocsinventory-agent.install
 	arch = any
 	license = GPL
-	makedepends = perl-module-install
 	depends = perl
 	depends = which
 	depends = dmidecode

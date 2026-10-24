@@ -21,7 +21,6 @@ optdepends=('perl-proc-daemon: daemon mode (--daemon)'
      'perl-net-netmask: SNMP network scan'
      'smartmontools: disk model, firmware and serial numbers'
      'ipmitool: BMC network interface inventory')
-makedepends=('perl-module-install')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg'
     'etc/ocsinventory/modules.conf'
