@@ -6,8 +6,8 @@
 # Co-Maintainer: executter
 
 pkgname=ocsinventory-agent
-pkgver=2.10.4
-pkgrel=2
+pkgver=2.10.5
+pkgrel=1
 pkgdesc="Hardware and software inventory tool (client)"
 arch=('x86_64' 'aarch64')
 url="http://www.ocsinventory-ng.org"
@@ -28,7 +28,7 @@ backup=('etc/ocsinventory/ocsinventory-agent.cfg'
 source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v${pkgver}/Ocsinventory-Unix-Agent-${pkgver}.tar.gz"
     "ocsinventory-agent" "ocsinventory-agent.cfg"
     "ocsinventory-agent.service" "ocsinventory-agent.timer")
-sha256sums=('5aa171c48a21db8dc17e96b7e4d5a80cdbd30979c963a654b6974b8bb1e0efe1'
+sha256sums=('477835b3813df4f6e222df5288d8830f838a5a1dbd2914c7d5f89790023fb9c6'
      '71aaa77f9c99f86a11fcedcc6cf8c7f78afa953d877561b36685d06036c098d7'
      '96708ef480c0ec7ba58bc4e9e2074ee3f133965e3c378dca3281aef18cb202b1'
      'b5cddb343e940907c2f785973264c6f60c2b4013f3eb393a9ddfa1597b515f55'
