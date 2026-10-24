@@ -4,7 +4,7 @@
 
 pkgname=netmusic-webplayer-bin
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="网易云音乐网页版的 Linux 桌面应用（Tauri/WebKitGTK 版）"
 arch=('x86_64')
 url="https://github.com/lxp731/NetCloudMusic-Webplayer"
@@ -24,9 +24,9 @@ makedepends=('libarchive')
 provides=('netmusic-webplayer')
 conflicts=('netmusic-webplayer' 'netcloud-music')
 source=(
-  "netmusic-webplayer-${pkgver}-amd64.deb::https://github.com/lxp731/NetCloudMusic-Webplayer/releases/download/v${pkgver}/netmusic-webplayer-${pkgver}-amd64.deb"
+  "netmusic-webplayer-${pkgver}-amd64.deb::https://github.com/lxp731/netmusic-webplayer/releases/download/v${pkgver}/netmusic-webplayer-${pkgver}-amd64.deb"
 )
-sha256sums=('4494750e46796fbda59fc0df429726d6d081a3098d405a4083bbdcc4fc4ae5cc')
+sha256sums=('bd7a676c74c026504e519a850fb10ff43e315d3138fe4eb7679b3dc26bc5efd9')
 
 package() {
   # 解包 deb：ar → data.tar.gz → 文件树

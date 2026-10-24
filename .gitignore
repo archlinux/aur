@@ -1,4 +1,5 @@
 pkg/
 src/
 *.pacman
-*.tar.zst*.deb
+*.tar.zst
+*.deb
