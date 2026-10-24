@@ -1,6 +1,6 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/Botropolis-City/botropolis"
 # The Go module path, which -X needs to stamp the version. Not derived from url:
 # since 0.1.5 the module is the vanity path, and a wrong path here is silent.
 _module="botropolis.city/botropolis"
-license=('MIT' 'OFL-1.1' 'CC0-1.0')
+license=('MIT' 'OFL-1.1' 'CC0-1.0' 'BSD-3-Clause')
 # Ebitengine dlopens GL and X11 rather than linking them, so the binary's only
 # NEEDED entry is libc and namcap reports every one of these as possibly
 # unneeded. They are needed: the sonames are in the binary's string table.
@@ -21,7 +21,8 @@ depends=('glibc' 'libgl' 'libx11' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr'
          'hicolor-icon-theme')
 makedepends=('go')
 optdepends=('claude-code: the sessions botropolis draws and manages'
-            'waybar: a status bar for `botropolis bar --watch`')
+            'waybar: a status bar for `botropolis bar --watch`'
+            'ffmpeg: record clips in sharing mode')
 # botropolis-bin installs the same three binaries from the release tarball. It
 # declares conflicts=('botropolis'), and this is the other half of that pair, so
 # the exclusion is stated from whichever package you are looking at.
@@ -34,7 +35,7 @@ conflicts=('botropolis-bin')
 options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6074f77c565e65839c37b29604735e702cb6aece7131e65afebb5f092619541a')
+sha256sums=('399389fc212d203b95e09ebf512afe1770df3169184d3cf4b737260d13943101')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -43,6 +44,9 @@ build() {
     for bin in botropolis botropolisd botropolis-hook; do
         go build -ldflags "-X ${_module}/pkg/version.Version=${pkgver}" -o "bin/${bin}" "./cmd/${bin}"
     done
+    # The manual pages, as upstream's make man writes them, dated from the
+    # release rather than today so the package builds the same twice.
+    go run -ldflags "-X ${_module}/pkg/version.Version=${pkgver}" ./tools/man -out bin/man -date "$(date -u -d "@${SOURCE_DATE_EPOCH}" +%F)"
 }
 
 check() {
@@ -63,6 +67,8 @@ package() {
     ./bin/botropolis completion bash > "${pkgdir}/usr/share/bash-completion/completions/botropolis"
     ./bin/botropolis completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_botropolis"
     ./bin/botropolis completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/botropolis.fish"
+    install -Dm644 -t "${pkgdir}/usr/share/man/man1" bin/man/*.1.gz
+    install -Dm644 -t "${pkgdir}/usr/share/man/man5" bin/man/*.5.gz
     install -Dm644 packaging/botropolisd.service "${pkgdir}/usr/lib/systemd/user/botropolisd.service"
     install -Dm644 packaging/botropolis-notify.service "${pkgdir}/usr/lib/systemd/user/botropolis-notify.service"
     install -Dm644 packaging/botropolis.bash "${pkgdir}/usr/share/botropolis/botropolis.bash"
@@ -70,10 +76,11 @@ package() {
     install -Dm644 packaging/botropolis.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/botropolis.svg"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-    # The Kenney atlases and the Inter typeface are compiled into the binaries,
+    # The Kenney atlases and the Inter and Go Mono typefaces are compiled into the binaries,
     # so their licences ship with the package rather than only with the source.
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 pkg/assets/fonts/inter/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/inter-OFL.txt"
+    install -Dm644 pkg/assets/fonts/gomono/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/gomono-BSD.txt"
     install -Dm644 pkg/assets/kits/nature-kit/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/kenney-CC0.txt"
     install -Dm644 pkg/assets/kits/README.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-kits.md"
     install -Dm644 pkg/assets/kenney/README.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-packs.md"
