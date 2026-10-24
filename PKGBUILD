@@ -47,4 +47,7 @@ package() {
 
   install -d -m 0755 "$pkgdir"/usr/share/zsh/site-functions
   install -C -m 0644 share/zsh-completion/_git-subrepo "$pkgdir"/usr/share/zsh/site-functions/_git-subrepo
+
+  install -d -m 0755 "$pkgdir"/usr/share/fish/vendor_completions.d
+  install -C -m 0644 share/git-subrepo.fish "$pkgdir"/usr/share/fish/vendor_completions.d/git-subrepo.fish
 }
