@@ -1,7 +1,7 @@
 # Maintainer: Adam Mladý <admin@elevated.ovh>
 
 pkgname=waycentral-git
-pkgver=1.3.0_r1_g8c96373
+pkgver=1.3.0_r0_gb2fcec7
 pkgrel=1
 pkgdesc="Centralized Program for Waybar Custom Modules (clock, updates, volume, music, network, tray, ...) with a C library"
 arch=('x86_64' 'aarch64')
