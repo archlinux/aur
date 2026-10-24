@@ -3,7 +3,7 @@
 _pkgname=linuxblaster_control
 _basepkgname=linuxblaster-control
 pkgname=$_basepkgname
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A native Linux GUI application to control the Creative Sound BlasterX G6 USB DAC/Amp, with full AutoEq integration.'
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
     linuxblaster-control.desktop
 )
 sha256sums=(
-    'e135a836ee02290619e5d03bb8bdeca724a6805f21d136a4d9fda4d8447a738d'
+    '5c4c93b9e14ba8da4513a0c00c0b0b1bcf8370434c91192f09d57c44dcedd3c6'
     'SKIP'
     'SKIP'
 )
