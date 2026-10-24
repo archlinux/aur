@@ -1,6 +1,6 @@
 # Maintainer: deeadly (DC only)
 
-pkgname='midnight-cli-git'
+pkgname='midnight-cli-fix-git'
 _pkgname='midnight-cli'
 pkgver=r793.e6b4900
 pkgrel=1
