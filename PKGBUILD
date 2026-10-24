@@ -2,9 +2,9 @@
 
 pkgname=solidcraft
 pkgver=0.21.0
-pkgrel=1
-url="https://bherbruck.github.io/$pkgname"
-_url="https://github.com/bherbruck/$pkgname"
+pkgrel=2
+url="https://$pkgname.io"
+_url="https://github.com/tangency-labs/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Autodesk Fusion'
 arch=(x86_64)
 license=(MIT Apache-2.0)
