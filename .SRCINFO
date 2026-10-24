@@ -1,0 +1,24 @@
+pkgbase = aetherprompt-git
+	pkgdesc = Wayland passphrase prompt (pinentry & ssh-askpass) styled after caelestia (git version)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/clague/aetherprompt
+	install = aetherprompt-git.install
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = python
+	depends = quickshell
+	depends = qt6-m3shapes
+	depends = caelestia-shell
+	optdepends = gnupg: to use aetherprompt as gpg-agent pinentry
+	optdepends = openssh: SSH_ASKPASS support
+	optdepends = sudo: SUDO_ASKPASS support
+	provides = aetherprompt=0.1.1
+	conflicts = aetherprompt
+	source = aetherprompt::git+https://github.com/clague/aetherprompt.git#branch=master
+	sha256sums = SKIP
+
+pkgname = aetherprompt-git

@@ -1,0 +1,30 @@
+post_install() {
+    cat <<'EOF'
+
+  aetherprompt is installed. To activate it:
+
+  GPG (passphrase prompts for signing/decryption):
+      add to ~/.gnupg/gpg-agent.conf:
+        pinentry-program /usr/bin/aetherprompt
+      then run:
+        gpgconf --kill gpg-agent
+      test:  echo test | gpg --clearsign
+
+  SSH (private-key passphrase prompts, git push/pull over ssh):
+      export SSH_ASKPASS=/usr/bin/aetherprompt
+      export SSH_ASKPASS_REQUIRE=force     # 'prefer' to only use without tty
+      (put these in ~/.profile or your Hyprland env config; the ssh-askpass
+       subcommand is selected automatically by how the program is called)
+
+  SUDO:
+      export SUDO_ASKPASS=/usr/bin/aetherprompt
+      then run: sudo -A <command>
+
+  Optional — Hyprland blur, add to hyprland.conf:
+      layerrule blur, match:namespace aetherprompt-prompt
+      layerrule ignore_alpha 0.3, match:namespace aetherprompt-prompt
+
+  Colours follow your active caelestia scheme automatically.
+
+EOF
+}
