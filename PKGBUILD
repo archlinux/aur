@@ -4,7 +4,8 @@
 pkgname=qqmusic-electron-patched
 _pkgname=qqmusic
 pkgver=1.1.8
-pkgrel=20
+pkgrel=21
+_assets_rel=20
 pkgdesc="Tencent QQMusic"
 arch=('any')
 url="https://y.qq.com/"
@@ -14,7 +15,7 @@ depends=(${_electron})
 provides=("${_pkgname}=${pkgver}" "qqmusic-electron=${pkgver}")
 conflicts=('qqmusic-bin' 'qqmusic-electron')
 source=(
-    "qm-electron_${pkgver}-${pkgrel}.tar.zst::https://github.com/Viemean/assets/releases/download/v${pkgver}-${pkgrel}/qm-electron_${pkgver}-${pkgrel}.tar.zst"
+    "qm-electron_${pkgver}-${_assets_rel}.tar.zst::https://github.com/Viemean/assets/releases/download/v${pkgver}-${_assets_rel}/qm-electron_${pkgver}-${_assets_rel}.tar.zst"
     "${_pkgname}.desktop"
     "logo.png"
 )

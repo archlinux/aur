@@ -1,7 +1,7 @@
 pkgbase = qqmusic-electron-patched
 	pkgdesc = Tencent QQMusic
 	pkgver = 1.1.8
-	pkgrel = 20
+	pkgrel = 21
 	url = https://y.qq.com/
 	arch = any
 	license = CC0-1.0
