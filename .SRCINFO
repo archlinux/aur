@@ -17,6 +17,7 @@ pkgbase = nspawn-git
 	optdepends = polkit: let users other than root drive nspawn
 	optdepends = mkosi: build images with nspawn build
 	optdepends = iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw
+	optdepends = iw: hand a wifi adapter to an app machine with --interface
 	provides = nspawn
 	conflicts = nspawn
 	options = !lto
