@@ -66,3 +66,31 @@ changes; if upstream ever serves these files without the firewall, the
   come through pacman.
 - Upstream's README declares the project MIT-licensed but the repository does
   not ship a `LICENSE` file, so none is installed.
+
+## Blank/grey window on startup
+
+Symptom: the window opens but stays empty/grey; the process does not exit, so
+it does not look like a crash. The journal shows what actually happens:
+
+```
+codemeyo.desktop[…]: Could not create default EGL display: EGL_BAD_PARAMETER. Aborting...
+systemd-coredump[…]: Process … (WebKitWebProces) of user … dumped core.
+```
+
+WebKitGTK's web process aborts while initialising EGL, so nothing is ever
+rendered inside the window.
+
+The cause is inside the AppImage: it ships its own `libwayland-client.so.0` and
+`libwayland-egl.so.1`, built against an older libwayland than a current Arch
+system has. When the bundled copy wins over the system one, EGL initialisation
+fails. Since pkgrel 2 the `/usr/bin/codemeyo` launcher preloads the system
+`libwayland-client.so.0`, which makes the dynamic loader satisfy the `NEEDED`
+entry from `/usr/lib` instead of the bundle.
+
+Setting `WEBKIT_DISABLE_DMABUF_RENDERER`, `WEBKIT_DISABLE_COMPOSITING_MODE`,
+`WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS` or `LIBGL_ALWAYS_SOFTWARE` does
+**not** help — the abort happens before those code paths are reached. Removing
+the bundled `libwayland*` files altogether (e.g. by shipping an extracted tree
+instead of the AppImage) works too, but the preload keeps the package as a
+single upstream artifact.
+

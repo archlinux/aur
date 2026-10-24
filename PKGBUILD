@@ -2,7 +2,7 @@
 
 pkgname=codemeyo-bin
 pkgver=1.11.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-LLM autonomous coding agent with Claude, GPT, Grok, Gemini, DeepSeek, Mistral, Ollama and Groq support'
 arch=('x86_64')
 url='https://codemeyo.com'
@@ -43,8 +43,23 @@ package() {
   install -Dm755 "${srcdir}/CodeMeYo_${pkgver}_amd64.AppImage" \
     "${pkgdir}/opt/codemeyo/CodeMeYo.AppImage"
 
+  # The AppImage carries its own libwayland-client.so.0 and libwayland-egl.so.1,
+  # built against an older libwayland than the one in an up-to-date Arch
+  # install. When the bundled copy is picked up, WebKitGTK's web process aborts
+  # before it can render anything:
+  #
+  #   Could not create default EGL display: EGL_BAD_PARAMETER. Aborting...
+  #
+  # and the window stays empty/grey (the app itself keeps running, so nothing
+  # looks crashed). Preloading the distro copy makes the loader satisfy the
+  # NEEDED entry from /usr/lib instead of the bundle and the UI renders fine.
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/codemeyo" <<'EOF'
 #!/bin/sh
+# Work around the bundled libwayland breaking EGL/WebKit (see PKGBUILD comment).
+if [ -r /usr/lib/libwayland-client.so.0 ]; then
+  LD_PRELOAD="/usr/lib/libwayland-client.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
+  export LD_PRELOAD
+fi
 exec /opt/codemeyo/CodeMeYo.AppImage "$@"
 EOF
 
