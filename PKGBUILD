@@ -1,10 +1,10 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=quickbox-qt
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt6/PySide6 GUI front-end for quickemu"
 arch=('any')
-url="https://codeberg.org/linux-bird/quickbox-qt"
+url="https://github.com/musqz/quickbox-qt"
 license=('MIT')
 depends=(
     'python'
@@ -23,10 +23,10 @@ optdepends=(
 conflicts=('quickbox')
 provides=('quickbox')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cff480b773be84e89dbc76a4316283d4e4c6cac82453281225201b2a2abcf128')
+sha256sums=('a76643c351f614d527dceb244c2cf7abf787247c820b955633cba9880f2f55f5')
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
 
     install -Dm755 quickbox        "$pkgdir/usr/bin/quickbox"
     install -Dm644 LICENSE         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
