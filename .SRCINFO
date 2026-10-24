@@ -1,6 +1,6 @@
 pkgbase = wine-wow64-clang-v3-bin
 	pkgdesc = Argonforge Clang-built Wine (64-bit) for x86-64-v3 (prebuilt)
-	pkgver = 11.19
+	pkgver = 11.20
 	pkgrel = 1
 	url = https://github.com/argonforge/wine-builds
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = wine-wow64-clang-v3-bin
 	depends = libgpg-error
 	depends = util-linux
 	options = !strip
-	source = wine-11.19-wow64-x86-64-v3.tar.xz::https://github.com/argonforge/wine-builds/releases/download/v11.19/wine-11.19-wow64-x86-64-v3.tar.xz
-	sha256sums = SKIP
+	source = wine-11.20-wow64-x86-64-v3.tar.xz::https://github.com/argonforge/wine-builds/releases/download/v11.20/wine-11.20-wow64-x86-64-v3.tar.xz
+	sha256sums = 5daeeedadbc19e79f31f6885e9b8a9ca850eb1c2dd614d87252f5460bd3b394b
 
 pkgname = wine-wow64-clang-v3-bin
