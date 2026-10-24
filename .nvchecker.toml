@@ -1,0 +1,4 @@
+[fieldcraft]
+source = "git"
+git = "https://github.com/tangency-labs/fieldcraft.git"
+prefix = "v"

@@ -1,0 +1,18 @@
+pkgbase = fieldcraft
+	pkgdesc = vibe coded clean-room reimplementation of Dassault Systems Abaqus
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://tangency-labs.github.io/fieldcraft/
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/tangency-labs/fieldcraft/archive/refs/tags/v0.7.0/fieldcraft-0.7.0.tar.gz
+	sha256sums = 3c89fe73ffb2a978b4cc7d68901e6d7e924905a1c8874850234130f7fbbb0a32
+
+pkgname = fieldcraft
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
