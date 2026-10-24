@@ -2,7 +2,7 @@
 
 pkgbase=videoduplicatefinder-git
 pkgname=("videoduplicatefinder-git" "videoduplicatefinder-cli-git" "videoduplicatefinder-webui-git")
-pkgver=4.1.x.r39.g7ef1beb
+pkgver=4.1.1.r6.g4ab0e82
 pkgrel=1
 _pkgdesc="Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity"
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "videoduplicatefinder"
-    git describe --long --tags --abbrev=7 --exclude 'ai-models*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --exclude 'ai-models*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
