@@ -1,6 +1,6 @@
 pkgbase = skalibs
 	pkgdesc = A general-purpose utility library for secure, small C development
-	pkgver = 2.15.1.0
+	pkgver = 2.16.0.0
 	pkgrel = 1
 	url = http://www.skarnet.org/software/skalibs/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = skalibs
 	license = ISC
 	depends = glibc
 	options = !lto
-	source = http://www.skarnet.org/software/skalibs/skalibs-2.15.1.0.tar.gz
-	sha256sums = f9c905e74935c6fe911c7e344e3e89d5fbd2014c1a04650b524b15ce9b5635d1
+	source = http://www.skarnet.org/software/skalibs/skalibs-2.16.0.0.tar.gz
+	sha256sums = 90a3deda94a40d7d6a4495fe6feaf91c0185e0428d59cbd150a1a468741269aa
 
 pkgname = skalibs
