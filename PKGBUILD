@@ -1,6 +1,7 @@
 # Maintainer: sga013
 _pkgname=qrrs
 pkgname=${_pkgname}-bin
+_pkgauthor=cureforpain
 pkgver=0.1.11
 pkgrel=1
 pkgdesc='QRrs is a simple, cross-platform, command-line utility written in rust for working with qr codes (what actually follows from the name).'
