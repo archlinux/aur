@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=gen-commit-msg-git
-pkgver=0.0.3.r150.g1ebcb85
+pkgver=0.1.0.r156.g61c70d2
 pkgrel=1
 pkgdesc="Generate git commit message candidates from staged changes (git version)"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,11 @@ url="https://github.com/chpock/gen-commit-msg"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-optdepends=('git: collect staged change context' 'opencode: generate commit messages')
+optdepends=(
+    'git: collect staged change context'
+    'pi-coding-agent-bin>=1.4.0: generate commit messages with Pi'
+    'opencode: generate commit messages with OpenCode'
+)
 provides=("gen-commit-msg=$pkgver")
 conflicts=('gen-commit-msg')
 source=("git+https://github.com/chpock/gen-commit-msg.git")
