@@ -1,7 +1,7 @@
 pkgname='python-wakepy'
 _module='wakepy'
-_src_folder='wakepy-0.10.2.post1'
-pkgver='0.10.2.post1'
+pkgver='1.0.0'
+_src_folder="${_module}-${pkgver}"
 pkgrel=1
 pkgdesc="wakelock / keep-awake / stay-awake"
 url="None"
@@ -9,8 +9,8 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/e8/26/caf88d7975e1b6e181d91cbb624b63b3a455231aff50eb2cba206c7e7bd9/wakepy-0.10.2.post1.tar.gz")
-sha256sums=('c968b8b7061d30ab193747ce7fb5226bc61c26b005e4a2792a19211f83cf71ac')
+source=("https://files.pythonhosted.org/packages/d6/13/78e45a3d2cd754f95d2fca5aece046676da559b8e34e294e69bb441f18fd/wakepy-1.0.0.tar.gz")
+sha256sums=('a9425e8e77e89bccfe24a70f33ecd8596b474c75ddac79310cd54f2bc92210e3')
 
 build() {
     cd "${srcdir}/${_src_folder}"
