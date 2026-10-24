@@ -1,7 +1,7 @@
 pkgbase = discord-canary-prerelease-patched-electron-bin
 	pkgdesc = Discord Canary with patched Electron and Linux fixes (AVX2 required)
 	pkgver = 20261024.202623
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/discord-patched-electron/discord-patched-electron
 	install = discord.install
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = discord-canary-prerelease-patched-electron-bin
 	optdepends = kdotool: KDE Plasma window labels
 	provides = discord-canary
 	conflicts = discord-canary
+	conflicts = discord-canary-electron-bin
 	options = !strip
 	options = !debug
 	source = discord-canary-prerelease-patched-electron-bin-20261024.202623.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/canary-1.0.2365-0127ebd36508aff4/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz
