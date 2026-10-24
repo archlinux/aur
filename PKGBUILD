@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A real-time network throughput monitor for the terminal, built with SharpConsoleUI"
 
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('c876a489faf9f99ede9e1babd17d35a82a10379c4fb2d50bbf537db27c3e9abc'
             'c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73')
-sha256sums_x86_64=('d8c81a2142d847b20f2cb8e018028af4c59c2fbb8176f2be3d37067073ce4529')
-sha256sums_aarch64=('9c121a85c1f9a7b551a102af4d9ee815e80bb07c5394c4733ee0850251f2a5a3')
+sha256sums_x86_64=('7971f23f35b8f10a5db01cc7c3498ab1501d3cbcde70b4ef53206bf79508eb9f')
+sha256sums_aarch64=('231e5831fc0a3f2dda1fd48bbfe6842f00b9151d5c0b38f32d4e16c353af34a1')
 
 
 package() {
