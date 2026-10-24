@@ -20,6 +20,11 @@
 # (bedrock, voice, fal, …) needs a rebuild with more --extra flags or a
 # writable install — `sudo` + re-packaging, not runtime lazy install.
 #
+# hermes_agent_env.py gives every venv python the launcher's defaults (the
+# gateway service unit starts the venv python without /usr/bin/hermes). The
+# launcher answers --print-runtime-command, which the desktop app asks for
+# the interpreter it mints gateway tickets with.
+#
 # system-tools.py / keep-venv-interpreter.patch adapted from jabla's
 # hermes-agent-bin (thanks).
 pkgname=hermes-agent
@@ -28,7 +33,7 @@ pkgname=hermes-agent
 _commit=bf0203a794a07aac3ff764972ab9087baa4e4f4e
 _commit_date=1792722267
 pkgver=0.22.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -56,10 +61,12 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     'keep-venv-interpreter.patch'
     'system-tools.py'
+    'hermes_agent_env.py'
 )
 sha256sums=('a8f67e5ec14fea681acef6cc7ff1553f002bb6101fd2df22bfdd4b7eecc54eb2'
             '9a2bcfc9f259cae4f28c1b2e7b7c38b65925a5dd37275e2089ed8a538339870e'
-            '5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d')
+            '5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d'
+            '06aa105ecdce204d21029a17580d10b6e45c5a7299b68dcec889d42b9b4b0e67')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -183,8 +190,10 @@ EOF
   venv/bin/python -B "${srcdir}/system-tools.py" "$_optdir" "$_optdir/system-store/tools"
 
   install -d "$_optdir/venv/lib/python3.14/site-packages"
+  install -m644 "${srcdir}/hermes_agent_env.py" "$_optdir/venv/lib/python3.14/site-packages/"
   {
       echo "import sys; sys.path.insert(0, \"/opt/$pkgname\")"
+      echo "import hermes_agent_env"
   } > "$_optdir/venv/lib/python3.14/site-packages/hermes.pth"
 
   install -d "$pkgdir/usr/bin"
@@ -199,6 +208,11 @@ EOF
     # TUI prefers an explicit node; PM store covers the rest.
     echo ': "${HERMES_NODE:=/usr/bin/node}"'
     echo 'export HERMES_NODE'
+    # The desktop app asks for the interpreter it mints gateway tickets with
+    # (group-writable ~/.hermes); hermes_cli.main would reject the flag.
+    echo 'if [[ ${1-} == --print-runtime-command ]]; then'
+    echo "  exec /opt/$pkgname/venv/bin/python -I -B -m hermes_cli._launchers" '"$@"'
+    echo 'fi'
     # Prefer system Chrome/Chromium — blocks PM Chromium auto-download.
     echo 'if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then'
     echo '  for browser in google-chrome-stable google-chrome chromium; do'
