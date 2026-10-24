@@ -1,0 +1,17 @@
+pkgbase = your-szu-life-git
+	pkgdesc = Shenzhen University campus life application (git)
+	pkgver = 20261024.r572cce5
+	pkgrel = 1
+	url = https://github.com/rinnein/your-szu-life
+	arch = x86_64
+	license = MIT
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = your-szu-life
+	conflicts = your-szu-life-bin
+	conflicts = your-szu-life
+	source = $pkgname::git+https://github.com/rinnein/your-szu-life.git#branch=main
+	sha256sums = SKIP
+
+pkgname = your-szu-life-git
