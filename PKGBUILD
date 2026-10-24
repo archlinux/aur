@@ -6,7 +6,7 @@ pkgdesc='Shenzhen University campus life application (git)'
 arch=('x86_64')
 url='https://github.com/rinnein/your-szu-life'
 license=('MIT')
-depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3')
+depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3' 'aria2')
 provides=('your-szu-life')
 conflicts=('your-szu-life-bin' 'your-szu-life')
 makedepends=('base-devel' 'git' 'pnpm' 'rust' 'libarchive')
@@ -49,4 +49,7 @@ build() {
 
 package() {
   cp -a "$srcdir/package-root/usr" "$pkgdir/"
+  # Drop the bundled aria2c: it collides with the aria2 package and needs a
+  # libaria2.so.0 that this package does not ship.
+  rm -f "${pkgdir}/usr/bin/aria2c"
 }
