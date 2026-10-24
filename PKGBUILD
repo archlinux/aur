@@ -31,8 +31,20 @@ build() {
     error "expected one Debian package, found ${#debs[@]}"
     return 1
   fi
+  # A .deb is an ar archive holding control.tar.* and data.tar.*; the payload
+  # has to be unpacked in two steps (bsdtar -O cannot stream a named member).
   rm -rf "$srcdir/package-root"
-  bsdtar -xf "${debs[0]}" data.tar.* -O | bsdtar -xf - -C "$srcdir/package-root"
+  mkdir -p "$srcdir/package-root"
+  cd "$srcdir"
+  local inner
+  inner=$(bsdtar -tf "${debs[0]}" | grep -E '^data\.tar\.')
+  if [[ -z "${inner}" ]]; then
+    error "no data.tar.* inside ${debs[0]}"
+    return 1
+  fi
+  bsdtar -xf "${debs[0]}" "${inner}"
+  bsdtar -xf "${inner}" -C "$srcdir/package-root"
+  rm -f "${inner}"
 }
 
 package() {

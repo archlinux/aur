@@ -5,13 +5,18 @@ pkgbase = your-szu-life-git
 	url = https://github.com/rinnein/your-szu-life
 	arch = x86_64
 	license = MIT
+	makedepends = base-devel
+	makedepends = git
+	makedepends = pnpm
+	makedepends = rust
+	makedepends = libarchive
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	provides = your-szu-life
 	conflicts = your-szu-life-bin
 	conflicts = your-szu-life
-	source = $pkgname::git+https://github.com/rinnein/your-szu-life.git#branch=main
+	source = your-szu-life-git::git+https://github.com/rinnein/your-szu-life.git#branch=main
 	sha256sums = SKIP
 
 pkgname = your-szu-life-git
