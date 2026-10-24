@@ -1,6 +1,6 @@
 # Maintainer: massiveadam <massiveadam@users.noreply.github.com>
 pkgname=massiveeq-git
-pkgver=0.3.0.beta.2.r15.ge756f49
+pkgver=0.3.0.beta.2.r16.gc73ce27
 pkgrel=1
 pkgdesc='Beta device-aware equalizer for PipeWire and Wayland desktops'
 arch=('x86_64')
