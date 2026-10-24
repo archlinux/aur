@@ -1,0 +1,58 @@
+pkgbase = linksy
+	pkgdesc = Your phone and your Linux computer, working as one: files, clipboard, screens, webcam
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/LinkSy-mg/linksy-desktop
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = lld
+	makedepends = gtk4
+	makedepends = libadwaita
+	makedepends = gstreamer
+	makedepends = gst-plugins-base
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	options = !debug
+	options = !lto
+	source = linksy-0.9.3.tar.gz::https://github.com/LinkSy-mg/linksy-desktop/archive/refs/tags/v0.9.3.tar.gz
+	sha256sums = 36cf7fe631644dc3b98f5b74992a19e43a1ec0c45c737963af4181ab638eab6e
+
+pkgname = linksy-common
+	pkgdesc = Your devices, connected: the service and tools both Linksy apps share
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugin-pipewire
+	depends = xdg-desktop-portal
+	depends = linksy-window
+	optdepends = gst-libav: H.264 decoding, to see screens
+	optdepends = gst-plugins-bad: H.264 encoding on the graphics card (VA-API)
+	optdepends = gst-plugins-ugly: H.264 encoding with x264
+	optdepends = wl-clipboard: shared clipboard while the window is not focused
+	optdepends = v4l2loopback-dkms: the phone as a webcam in every app
+	optdepends = v4l2loopback-utils: the phone as a webcam in every app
+	conflicts = linksy<0.8.4
+
+pkgname = linksy
+	pkgdesc = Your phone and your Linux computer, working as one (GTK app, for GNOME and most desktops)
+	depends = linksy-common=0.9.3
+	depends = gtk4
+	depends = libadwaita
+	depends = gst-plugin-gtk4
+	provides = linksy-window
+
+pkgname = linksy-qt
+	pkgdesc = Your phone and your Linux computer, working as one (Qt app, for KDE Plasma)
+	depends = linksy-common=0.9.3
+	depends = gstreamer
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = kirigami-addons
+	depends = qqc2-desktop-style
+	depends = gst-plugin-qml6
+	provides = linksy-window
