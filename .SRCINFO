@@ -1,7 +1,8 @@
 pkgbase = agent-box
 	pkgdesc = Run coding agents in rootless Podman workspace boxes
-	pkgver = 4.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/rus364/agent-box
 	arch = any
 	license = MIT
@@ -14,7 +15,7 @@ pkgbase = agent-box
 	depends = git
 	optdepends = github-cli: forward GitHub authentication
 	optdepends = tmux: detachable host sessions
-	source = agent_box_tool-4.0.0.tar.gz::https://github.com/rus364/agent-box/releases/download/v4.0.0/agent_box_tool-4.0.0.tar.gz
-	sha256sums = ab77586df1aac6690e98275a4f4f11ad167e9b535506bf105b104880c5fa1051
+	source = agent_box_tool-0.1.0.tar.gz::https://github.com/rus364/agent-box/releases/download/v0.1.0/agent_box_tool-0.1.0.tar.gz
+	sha256sums = e2386fd8c84fa795c045221d6044466dcb9a0e63035dc878ab605beb75e2cf7f
 
 pkgname = agent-box
