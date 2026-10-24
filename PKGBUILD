@@ -45,7 +45,18 @@ build() {
 check() {
   cd "$_pkgname"
 
-  make test
+  # `git` resolves subcommands from its exec path before PATH, so an
+  # installed git-subrepo would shadow the one just built. Create a
+  # single-directory exec path with Git's helpers plus this checkout, since
+  # git-sh-setup cannot handle a multiple-entry GIT_EXEC_PATH.
+  local exec_path=$srcdir/git-exec
+  rm -rf "$exec_path"
+  mkdir -p "$exec_path"
+  find "$(git --exec-path)" -mindepth 1 -maxdepth 1 \
+    -exec ln -s {} "$exec_path"/ \;
+  ln -sfn "$PWD/lib/git-subrepo" "$exec_path/git-subrepo"
+
+  GIT_EXEC_PATH=$exec_path make test
 }
 
 package() {
