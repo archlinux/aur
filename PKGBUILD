@@ -4,7 +4,7 @@ _gitauthor=derekbsnider
 _gitname=madc
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="A self-contained C and C++ compiler — JIT, AOT and an interactive REPL in one small download"
+pkgdesc="A self-contained C/C++ language with built-in compiler/linker, JIT, AOT and an interactive REPL"
 
 pkgver=0.106.0
 pkgrel=1
