@@ -25,6 +25,17 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "$_pkgname"
+
+  # The Bash completion generator uses a double-quoted Perl heredoc, so the
+  # unescaped `$(` in `git_subrepos=$(git subrepo status -q)` gets
+  # interpolated as the group ID list, corrupting the generated script.
+  # shellcheck disable=SC2016
+  sed -i 's/git_subrepos=\$(git subrepo status -q)/git_subrepos=\\$(git subrepo status -q)/' \
+    pkg/bin/generate-completion.pl
+}
+
 build() {
   cd "$_pkgname"
 
