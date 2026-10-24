@@ -1,0 +1,30 @@
+pkgbase = scribe-git
+	pkgdesc = A native GNOME Markdown editor that renders your document as you type (development version)
+	pkgver = 0.3.20.r0.g8fa7390
+	pkgrel = 1
+	url = https://github.com/gnacho/scribe
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = gettext
+	makedepends = git
+	makedepends = pkgconf
+	depends = cairo
+	depends = enchant
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk4>=4.14
+	depends = gtksourceview5>=5.10
+	depends = hicolor-icon-theme
+	depends = libadwaita>=1.5
+	depends = libgcc
+	depends = pango
+	provides = scribe=0.3.20.r0.g8fa7390
+	conflicts = scribe
+	conflicts = scribe-bin
+	source = scribe::git+https://github.com/gnacho/scribe.git
+	sha256sums = SKIP
+
+pkgname = scribe-git
