@@ -18,7 +18,9 @@ depends=('dmidecode' 'pciutils' 'perl-crypt-ssleay' 'perl-xml-sax'
 optdepends=('smartmontools')
 makedepends=('perl-module-install')
 install=${pkgname}.install
-backup=('etc/ocsinventory/ocsinventory-agent.cfg')
+backup=('etc/ocsinventory/ocsinventory-agent.cfg'
+    'etc/ocsinventory/modules.conf'
+    'etc/cron.d/ocsinventory-agent')
 source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v${pkgver}/Ocsinventory-Unix-Agent-${pkgver}.tar.gz"
     "ocsinventory-agent" "ocsinventory-agent.cfg")
 sha256sums=('5aa171c48a21db8dc17e96b7e4d5a80cdbd30979c963a654b6974b8bb1e0efe1'
