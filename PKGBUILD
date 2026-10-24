@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A multi-vendor GPU monitor for the terminal — NVIDIA and AMD — built on SharpConsoleUI"
 
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('eeef70bbd63ca8ac7b6508f69c17b302f103d4d1a8f00a82e4f474c758d8a525'
+sha256sums=('b3e390ef5e795f004abad6903e6ed53c2c74988e72b76dfa3e89c7e5edf5e48d'
             'c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73')
-sha256sums_x86_64=('746a13b7b1c014776547aaaef46f3f91cdfc12fc15be074f63280a9939c09c6a')
-sha256sums_aarch64=('d059a3524af3a1fb0ed17f0777699872971b08b121408320ae92812496b94f76')
+sha256sums_x86_64=('f7135d66fd5f3d367fd4a2c95fa4f80cf15515e3f7392cedc13fc92fd4d9f3c8')
+sha256sums_aarch64=('7cc129dfc24e14c4abfb4e9f6510c86e0f0822c761bbfeedfbd128410abc3329')
 
 
 package() {
