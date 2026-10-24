@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=CryptoLyzer
 pkgname=python-${_base,,}
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A comprehensive cryptographic settings analyzer"
 arch=(any)
@@ -12,7 +12,7 @@ license=(MPL-2.0)
 depends=(python-oscrypto python-beautifulsoup4 python-certvalidator python-colorama python-cryptoparser python-pyfakefs python-requests python-dnspython)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 source=(https://gitlab.com/coroner/${_base}/-/archive/v${pkgver}/${_base,,}-v${pkgver}.tar.gz)
-sha512sums=('0e6519c8e08ba1d2b5f7818e93066ca27e5f4b21a75c857a740548d8dca1dc86f99bf86b5742fb86ba0704d6aad2811d5bdde08dce4b8c9f1044e68505f1f684')
+sha512sums=('5648a86fa51aa21286df182e8dad8b5143a7188f1122a13c7744c96ddb0977db2a769264cbb31b51e601a3074bff10b052d3266488f40740b50b3c51aecb6ff5')
 
 build() {
   cd ${_base,,}-v${pkgver}
@@ -24,5 +24,5 @@ package() {
   cd ${_base,,}-v${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
