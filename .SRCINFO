@@ -1,6 +1,6 @@
 pkgbase = linuxblaster-control-git
 	pkgdesc = A native Linux GUI application to control the Creative Sound BlasterX G6 USB DAC/Amp, with full AutoEq integration.
-	pkgver = 2.1.0.r7.g104ba0b
+	pkgver = 2.2.0.r0.g4af51a3
 	pkgrel = 1
 	url = https://github.com/RizeCrime/linuxblaster_control
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = linuxblaster-control-git
 	depends = gcc-libs
 	depends = libusb
 	depends = hidapi
+	depends = alsa-utils
 	provides = linuxblaster-control
 	conflicts = linuxblaster-control
 	source = linuxblaster_control::git+https://github.com/RizeCrime/linuxblaster_control.git

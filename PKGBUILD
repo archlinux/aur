@@ -3,7 +3,7 @@
 _pkgname=linuxblaster_control
 _basepkgname=linuxblaster-control
 pkgname=$_basepkgname-git
-pkgver=2.1.0.r7.g104ba0b
+pkgver=2.2.0.r0.g4af51a3
 pkgrel=1
 pkgdesc='A native Linux GUI application to control the Creative Sound BlasterX G6 USB DAC/Amp, with full AutoEq integration.'
 arch=(x86_64)
@@ -14,6 +14,7 @@ depends=(
     gcc-libs
     libusb
     hidapi
+    alsa-utils
 )
 makedepends=(
     git
@@ -62,6 +63,7 @@ package() {
     install -vDm644 -t "$pkgdir/usr/share/applications" "${srcdir}/linuxblaster-control.desktop"
     install -vDm644 -t "$pkgdir/usr/lib/udev/rules.d" "${srcdir}/60-soundblasterx-g6.rules"
     
-    install -vDm644 -t "$pkgdir/usr/local/bin" "alsa-fix/soundblasterx-g6-alsa-fix.sh"
-    install -vDm644 "alsa-fix/91-soundblasterx-g6.rules" "$pkgdir/usr/lib/udev/rules.d/91-soundblasterx-g6-alsa-fix.rules"
+    install -vDm755 -t "$pkgdir/usr/lib/$_basepkgname" "alsa-fix/soundblasterx-g6-alsa-fix.sh"
+    sed "s|/usr/local/bin/|/usr/lib/$_basepkgname/|" "alsa-fix/91-soundblasterx-g6.rules" \
+        | install -vDm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/91-soundblasterx-g6-alsa-fix.rules"
 }
