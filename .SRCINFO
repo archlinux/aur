@@ -8,6 +8,7 @@ pkgbase = ocsinventory-agent
 	license = GPL
 	makedepends = perl-module-install
 	depends = perl
+	depends = which
 	depends = dmidecode
 	depends = pciutils
 	depends = perl-libwww

@@ -12,7 +12,7 @@ pkgdesc="Hardware and software inventory tool (client)"
 arch=('any')
 url="http://www.ocsinventory-ng.org"
 license=('GPL')
-depends=('perl' 'dmidecode' 'pciutils'
+depends=('perl' 'which' 'dmidecode' 'pciutils'
      'perl-libwww' 'perl-lwp-protocol-https' 'perl-io-socket-ssl'
      'perl-net-ip' 'perl-xml-simple'
      'perl-proc-daemon' 'perl-proc-pid-file' 'perl-net-snmp')
