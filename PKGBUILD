@@ -1,7 +1,7 @@
 # Maintainer: alampy
 
 pkgname=jadx-headless-mcp-bin
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Headless MCP server for Android APK static analysis, built on jadx-core'
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	"LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
 )
 sha256sums=(
-	'6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75'
+	'4b9a01c23845c123c217840182d2b5f2c26a7ca20dec3d08810b310fc80a2372'
 	'612097054771e7268f449b9d479bd47e7ef0901961d1515804e03f1d84e1920d'
 )
 
