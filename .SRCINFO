@@ -1,6 +1,6 @@
 pkgbase = sdrtop
 	pkgdesc = Terminal monitor for SDR hardware
-	pkgver = 0.6.8
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/musithang/sdrtop
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sdrtop
 	provides = sdrtop
 	conflicts = sdrtop
 	options = !lto
-	source = sdrtop::git+https://github.com/musithang/sdrtop#tag=v0.6.8
+	source = sdrtop::git+https://github.com/musithang/sdrtop#tag=v0.7.0
 	sha256sums = SKIP
 
 pkgname = sdrtop
