@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.2.20
+pkgver=0.2.21
 pkgrel=1
 epoch=1
 pkgdesc="Detect and invoke build systems"
@@ -12,10 +12,12 @@ depends=(
   'glibc'
   'libgcc'
   'python'
+  'xz'
+  'zlib'
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('00912094dce76e8442626b7d5913d346572d9f2a33ecc7b5206abc5cd0358baf')
+sha256sums=('48951a89ede2e5b7eee7adf1cab5f483d06b2cae46cef791e29f9b88204b33e7')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -25,9 +27,10 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   cargo build --frozen --release
 }
 
