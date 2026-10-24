@@ -1,12 +1,12 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 pkgname=piclift
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="SD card photo import, cull, and upload tool for photographers"
 arch=('x86_64')
 url="https://codeberg.org/Bykow/piclift"
 license=('AGPL-3.0-only')
-depends=('dbus' 'sqlite' 'gcc-libs' 'glibc')
+depends=('dbus' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake' 'nasm')
 # makepkg's global `lto` option injects -flto=auto into CFLAGS/CXXFLAGS, which
 # makes the bundled C in mozjpeg-sys and aws-lc-sys compile to GCC LTO bitcode
@@ -15,7 +15,7 @@ makedepends=('cargo' 'cmake' 'nasm')
 # unaffected.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7d2243bb2d74dca54eb5ed75c085a90caa901a164ac135eb690f04f9d2134859')
+sha256sums=('e44163f2cbf137769bfe88d461f4fa5bb347bec23af64cc0cae09737637df0f6')
 
 prepare() {
   cd "$pkgname"
