@@ -1,6 +1,6 @@
 pkgbase = sdrtop-bin
 	pkgdesc = Terminal monitor for SDR hardware
-	pkgver = 0.6.8
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/musithang/sdrtop
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sdrtop-bin
 	optdepends = soapysdr: SoapySDR support
 	provides = sdrtop
 	conflicts = sdrtop
-	source_x86_64 = https://github.com/musithang/sdrtop/releases/download/v0.6.8/sdrtop-0.6.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ab345ce0232827217abd2823ad32bf13fda5512836fd24911ab0ea0b25f10a27
+	source_x86_64 = https://github.com/musithang/sdrtop/releases/download/v0.7.0/sdrtop-0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c0aa4218e2192aab0c437e90fbc38db058b7b2cf725bc6ab49e5efe92697178a
 
 pkgname = sdrtop-bin
