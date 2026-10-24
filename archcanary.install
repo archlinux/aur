@@ -46,7 +46,7 @@ post_install() {
   echo "  and the precise command to fix each one."
   echo ""
   echo "  Optional add-ons: lynis (hardening auditor)."
-  echo "  See: https://codeberg.org/linux-bird/archcanary-aur"
+  echo "  See: https://github.com/musqz/archcanary"
   echo ""
 }
 

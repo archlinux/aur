@@ -1,10 +1,10 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
 pkgver=0.1.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
-url="https://codeberg.org/linux-bird/archcanary-aur"
+url="https://github.com/musqz/archcanary"
 license=('GPL-3.0-only')
 depends=('bash' 'pacman')
 optdepends=(
@@ -23,10 +23,10 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/package_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1a86eebe6ab32dd34bc9a18cfebf4a8eba13485c3438586a0ab6781c4053faf9')
+sha256sums=('cfc2b051259e34dfded18ae1387f9b3a288f612d685c3fe920446b6f9705cf67')
 
 package() {
-  cd "$srcdir/archcanary-aur"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Stamp the real version into the placeholder install.sh normally sed's at
   # install time — package() bypasses install.sh entirely, so without this
