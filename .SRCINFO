@@ -1,6 +1,6 @@
 pkgbase = downloader-bin
 	pkgdesc = Fast multi-connection download manager with queues, scheduler and browser integration
-	pkgver = 2.16.2
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://github.com/bezzad/Downloader.Desktop
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = downloader-bin
 	conflicts = downloader
 	options = !strip
 	options = !debug
-	source = Downloader-2.16.2-linux-x64.tar.gz::https://github.com/bezzad/Downloader.Desktop/releases/download/v2.16.2/Downloader-linux-x64.tar.gz
-	source = LICENSE-2.16.2::https://raw.githubusercontent.com/bezzad/Downloader.Desktop/v2.16.2/LICENSE
-	source = downloader-2.16.2.png::https://raw.githubusercontent.com/bezzad/Downloader.Desktop/v2.16.2/src/Downloader.Desktop/Assets/downloader.png
-	sha256sums = c7dbd1b6ee1b45c0d23e0002cdf9d2b5a86332630e3059e3ed473bc050d9012b
+	source = Downloader-2.17.0-linux-x64.tar.gz::https://github.com/bezzad/Downloader.Desktop/releases/download/v2.17.0/Downloader-linux-x64.tar.gz
+	source = LICENSE-2.17.0::https://raw.githubusercontent.com/bezzad/Downloader.Desktop/v2.17.0/LICENSE
+	source = downloader-2.17.0.png::https://raw.githubusercontent.com/bezzad/Downloader.Desktop/v2.17.0/src/Downloader.Desktop/Assets/downloader.png
+	sha256sums = c544c699703c59fe29434a5959e95761cf3d32168fc98a6a5acb72356b9986d8
 	sha256sums = SKIP
 	sha256sums = SKIP
 
