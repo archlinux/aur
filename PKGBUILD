@@ -3,7 +3,7 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.43.0
+pkgver=3.44.0
 pkgrel=1
 pkgdesc='A command line interface to Globus'
 arch=(any)
@@ -29,7 +29,7 @@ checkdepends=(
     python-ruamel-yaml
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ee2c9efa7e45fcbcdf22538c32e5f014102bc1dc36859b4a41702f9b541af96b')
+sha256sums=('324b9d35e2ececc2ac3a34fc18b5c5b01a1701424edfb285b41df93761271de3')
 
 
 build() {

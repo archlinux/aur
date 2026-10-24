@@ -1,6 +1,6 @@
 pkgbase = globus-cli
 	pkgdesc = A command line interface to Globus
-	pkgver = 3.43.0
+	pkgver = 3.44.0
 	pkgrel = 1
 	url = https://github.com/globus/globus-cli
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = globus-cli
 	depends = python-jmespath
 	depends = python-packaging
 	depends = python-requests
-	source = globus-cli-3.43.0.tar.gz::https://github.com/globus/globus-cli/archive/3.43.0.tar.gz
-	sha256sums = ee2c9efa7e45fcbcdf22538c32e5f014102bc1dc36859b4a41702f9b541af96b
+	source = globus-cli-3.44.0.tar.gz::https://github.com/globus/globus-cli/archive/3.44.0.tar.gz
+	sha256sums = 324b9d35e2ececc2ac3a34fc18b5c5b01a1701424edfb285b41df93761271de3
 
 pkgname = globus-cli
