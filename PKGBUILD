@@ -12,12 +12,11 @@ url="https://github.com/chaqchase/artemis"
 _urlraw="https://raw.githubusercontent.com/chaqchase/artemis/@artemis-lang/cli@${pkgver}"
 license=("MIT")
 
-replaces=("nodejs-${_npmname}")
+provides=("${_npmname%-lang}")
 makedepends=("npm" "jq")
-provides=("$_npmname")
 depends=("nodejs")
 
-options=(!strip emptydirs staticlibs zipman)
+options=('!strip' 'emptydirs' 'staticlibs' 'zipman')
 noextract=("${_npmname}-${pkgver}.tgz")
 
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/@${_npmname}/${_npmsub}/-/${_npmsub}-${pkgver}.tgz"
@@ -97,15 +96,14 @@ package() {
 		chmod 644 "${pkgjson}"
 	done
 
+	# Install examples
+	for art in examples/*.art; do
+		install -Dm644 "${art}" "${pkgdir}/usr/share/${pkgname}/${art}"
+	done
+
 	# Install README file
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	# Install LICENSE file
 	install -Dm 644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	# Install examples
-	cd ./examples
-	for art in *.art; do
-		install -Dm644 "${art}" "${pkgdir}/usr/share/${pkgname}/examples/${art}"
-	done
 }
