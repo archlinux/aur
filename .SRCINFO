@@ -7,6 +7,7 @@ pkgbase = ocsinventory-agent
 	arch = any
 	license = GPL
 	makedepends = perl-module-install
+	depends = perl
 	depends = dmidecode
 	depends = pciutils
 	depends = perl-libwww
