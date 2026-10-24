@@ -1,36 +1,31 @@
 # Maintainer: Adam Mladý <admin@elevated.ovh>
 
 pkgname=waycentral-git
-pkgver=1.1.4_r0_g8d67c1e
+pkgver=1.2.1_r1_gd2366a0
 pkgrel=1
-pkgdesc="Centalized Program for Waybar Custom Modules"
-arch=('any')
+pkgdesc="Centralized Program for Waybar Custom Modules, with a C library (libwaycentral)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/TheElevatedOne/waycentral"
-license=('GPL3')
-depends=('make' 'gcc' 'glibc' 'git')
-provides=('waycentral-git')
-conflicts=('waycentral-bin')
+license=('GPL-3.0-or-later')
+depends=('glibc')
+makedepends=('git' 'gcc' 'make')
+provides=("waycentral=${pkgver%%_*}" 'libwaycentral.so')
+conflicts=('waycentral')
 source=("git+https://github.com/TheElevatedOne/waycentral#branch=main")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
-  set -e
   cd waycentral
   git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/_/g'
 }
 
 build() {
-  set -e
   cd waycentral
-  make VERSION=${pkgver}
-  cd ..
+  make PREFIX=/usr release
 }
 
 package() {
-  set -e
   cd waycentral
-  cd build/bin/
-
-  install -Dm755 waycentral "${pkgdir}/usr/bin/waycentral"
-  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

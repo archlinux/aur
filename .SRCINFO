@@ -1,16 +1,18 @@
 pkgbase = waycentral-git
-	pkgdesc = Centalized Program for Waybar Custom Modules
-	pkgver = 1.1.4_r0_g8d67c1e
+	pkgdesc = Centralized Program for Waybar Custom Modules, with a C library (libwaycentral)
+	pkgver = 1.2.1_r1_gd2366a0
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/waycentral
-	arch = any
-	license = GPL3
-	depends = make
-	depends = gcc
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
 	depends = glibc
-	depends = git
-	provides = waycentral-git
-	conflicts = waycentral-bin
+	provides = waycentral=1.2.1
+	provides = libwaycentral.so
+	conflicts = waycentral
 	source = git+https://github.com/TheElevatedOne/waycentral#branch=main
 	sha256sums = SKIP
 
