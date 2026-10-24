@@ -24,8 +24,8 @@
 # them at runtime -- the application locates every file relative to its own directory.
 
 pkgname=deepseek-harness-desktop
-_tag=dsh-v0.2.1-rc.2
-pkgver=0.2.1rc.2
+_tag=dsh-v0.2.1-rc.3
+pkgver=0.2.1rc.3
 pkgrel=1
 pkgdesc='DeepSeek Harness desktop application (Electron shell and bundled dsh runtime)'
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '2be3f459ec89acc8e4bd15c029dfb7066684449e80a75bd9cd4bbd0c92769072'
+  'b7256880844fc7c8a7aded58ff851f236ceb73ff02bd7848925d72f4b50de932'
   'c9783ffd57bf481f89ec59beb6047c7cf40098e4790c6098bf60370c408a4c7d'
 )
 

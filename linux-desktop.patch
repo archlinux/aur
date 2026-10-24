@@ -16,7 +16,7 @@ index 3cb86ce8..6c9654c2 100644
  native/system/test/bin/
 +apps/desktop/.desktop-build/
 diff --git a/apps/desktop/package.json b/apps/desktop/package.json
-index 1d44f92b..abcb26b8 100644
+index 61a73769..dd36d3ca 100644
 --- a/apps/desktop/package.json
 +++ b/apps/desktop/package.json
 @@ -35,6 +35,8 @@
@@ -972,7 +972,7 @@ index ba647d76..86050869 100644
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'darwin', 'x64')).toThrow(/Apple Silicon/u)
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'linux', 'arm64')).toThrow(/macOS/u)
 diff --git a/package.json b/package.json
-index a5e45dbf..f669b6c6 100644
+index d6d1d781..35835d04 100644
 --- a/package.json
 +++ b/package.json
 @@ -42,6 +42,8 @@
