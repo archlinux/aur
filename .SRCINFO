@@ -1,6 +1,6 @@
 pkgbase = fabricad
 	pkgdesc = Fast, lightweight parametric 3D CAD (parts, assemblies, drawings) on Qt 6 and OpenCASCADE
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/maxDTM/fabricad
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = fabricad
 	depends = qt6-base
 	depends = qt6-svg
 	options = !lto
-	source = fabricad-0.1.0.tar.gz::https://github.com/maxDTM/fabricad/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 48dfecb944ce8081725dc87815ee13412279642f9070fee2eb7045a630f4a1d4
+	source = fabricad-0.2.1.tar.gz::https://github.com/maxDTM/fabricad/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 0c27f3f11e1414ffbf9ec79b35308865772f385cb6b93a2877c89b2330c22887
 
 pkgname = fabricad

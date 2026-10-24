@@ -2,7 +2,7 @@
 # AUR release package. After tagging v${pkgver} on GitHub run `updpkgsums` and
 # `makepkg --printsrcinfo > .SRCINFO` (the checksum below is for the GitHub tarball).
 pkgname=fabricad
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Fast, lightweight parametric 3D CAD (parts, assemblies, drawings) on Qt 6 and OpenCASCADE'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ checkdepends=('python')  # token / colour-lint checks
 # LTO roughly doubles the link-time RAM of the OCCT-heavy executables; build without it.
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48dfecb944ce8081725dc87815ee13412279642f9070fee2eb7045a630f4a1d4')
+sha256sums=('0c27f3f11e1414ffbf9ec79b35308865772f385cb6b93a2877c89b2330c22887')
 
 build() {
   cmake -S "${pkgname}-${pkgver}" -B build \
