@@ -3,7 +3,7 @@
 
 _pkgname=neo4j-community
 pkgname=${_pkgname}-bin
-pkgver="2026.10.0"
+pkgver="2026.10.1"
 pkgrel="1"
 pkgdesc='A fully transactional graph database implemented in Java (binary package)'
 license=('GPL-3.0-only')
@@ -19,7 +19,7 @@ source=(
     "neo4j.tmpfiles"
 )
 # https://dist.neo4j.org/deb/neo4j_${pkgver}_all.deb.sha256
-sha256sums=('44280a6be377f84c5eaa02541be07bd23dcd006c46c1d64b78930ef844bcd595'
+sha256sums=('0ecd91d57f16d7de45b4d6919913340b04545badd715d75eaf9aa5367095e6fc'
             '440874201629f436b3817be05d7f8240c9bef603a11dc0a125634287c0376b5d'
             'a4a12084b93c357adfc54d1c0736d710ff507418824e08e33cc1f30bdc8a67f8')
 
