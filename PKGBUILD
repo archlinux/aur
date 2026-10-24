@@ -1,10 +1,10 @@
 # Maintainer: Marlon Kranz <dev@marlonkranz.com>
 pkgname=cast-helper
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Helper for the Cast plugin of Dux Shell: Chromecast and AirPlay mirroring and media playback"
+pkgdesc="Chromecast and AirPlay mirroring and media playback, shared by the Dux Shell Cast plugin and other apps"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Conava/dux-plugins"
+url="https://github.com/Conava/dux-cast"
 license=('MIT')
 depends=('glibc' 'avahi' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugin-pipewire' 'gst-plugin-va')
 makedepends=('go')
@@ -12,16 +12,16 @@ optdepends=('gst-plugins-good: more formats and photos'
             'gst-libav: converting videos'
             'libheif: HEIC photos'
             'doubletake-bin: AirPlay mirroring')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/cast-v$pkgver.tar.gz")
-sha256sums=('01c6ca1dcaa363a70284e12d7cafb624fb9ce094824018197109e007850e7007')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ecc1b063db2e0ea707bfea795226597fa34e34acf5b2e77e9c64fa2d50f8fdd9')
 
 build() {
-  cd "dux-plugins-cast-v$pkgver/helpers/cast"
+  cd "dux-cast-$pkgver"
   CGO_ENABLED=0 go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-s -w" -o cast-helper .
 }
 
 package() {
-  cd "dux-plugins-cast-v$pkgver"
-  install -Dm755 helpers/cast/cast-helper "$pkgdir/usr/bin/cast-helper"
+  cd "dux-cast-$pkgver"
+  install -Dm755 cast-helper "$pkgdir/usr/bin/cast-helper"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
