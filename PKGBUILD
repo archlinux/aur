@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=telegram-drive
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive"
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ conflicts=('telegram-drive-appimage')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caamer20/Telegram-Drive/archive/refs/tags/v${pkgver}.tar.gz")
 # codeload распаковывает архив в каталог с именем репозитория
 _src="Telegram-Drive-${pkgver}" 
-sha256sums=('32b3053f7a3705c8b2a17fa12d59b1c083b6f9d3a3ef59f4f2c520902eae224a')
+sha256sums=('1fba2afa30c6e4735dfdb19f6c024785e3768671ea555c70328a884235869682')
 
 build() {
     cd "${srcdir}/${_src}/app"
