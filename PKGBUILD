@@ -10,7 +10,7 @@ install=mail-badge-notifier-git.install
 depends=('python' 'thunderbird' 'bash' 'systemd')
 makedepends=('git' 'python')
 provides=('mail-badge-notifier')
-conflicts=('mail-badge-notifier')
+conflicts=('mail-badge-notifier' 'mail-badge-bridge')
 source=("git+https://github.com/salexandarz/mail-badge-notifier.git")
 sha256sums=('SKIP')
 
@@ -39,4 +39,7 @@ package() {
   if [ -f mail-badge-bridge.xpi ]; then
     install -Dm644 mail-badge-bridge.xpi "$pkgdir/usr/share/$pkgname/mail-badge-bridge.xpi"
   fi
+
+  # Vrati radni direktorijum na $srcdir pre izlaska iz fakeroot okruženja
+  cd "$srcdir"
 }
