@@ -1,0 +1,39 @@
+Description: don't ignore failures from sub-makes
+Author: Yann Dirson <dirson@debian.org>
+
+---
+Bug-Debian: https://bugs.debian.org/901539
+Last-Update: 2018-08-12
+
+--- gnushogi-1.4.2.orig/Makefile.in
++++ gnushogi-1.4.2/Makefile.in
+@@ -43,16 +43,16 @@ all : gnushogi_compile pat2inc bbk
+ #
+ 
+ gnushogi_compile:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) $(PROGNAME)
++	cd $(GNUSHOGIDIR) && $(MAKE) $(PROGNAME)
+ 
+ pat2inc:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) pat2inc
++	cd $(GNUSHOGIDIR) && $(MAKE) pat2inc
+ 
+ sizetest:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) sizetest
++	cd $(GNUSHOGIDIR) && $(MAKE) sizetest
+ 
+ bbk:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) $(PROGNAME).bbk
++	cd $(GNUSHOGIDIR) && $(MAKE) $(PROGNAME).bbk
+ 
+ 
+ #
+@@ -69,7 +69,7 @@ win32/Makefile: misc/mkmakefile.mingw-on
+ install: gnushogi_install
+ 
+ gnushogi_install:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) install
++	cd $(GNUSHOGIDIR) && $(MAKE) install
+ 
+ 
+ 

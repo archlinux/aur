@@ -1,3 +1,4 @@
 gnushogi-*
 pkg/
 src/
+*.log

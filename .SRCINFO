@@ -1,18 +1,25 @@
 pkgbase = gnushogi
-	pkgdesc = A computer program that plays the game of Shogi, also known as Japanese Chess.
+	pkgdesc = GNU Shogi (Japanese chess) engine
 	pkgver = 1.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnu.org/software/gnushogi/
-	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = autoconf
-	makedepends = gcc
+	arch = aarch64
+	license = GPL-3.0-or-later
 	depends = glibc
-	source = http://ftp.gnu.org/gnu/gnushogi/gnushogi-1.4.2.tar.gz
+	depends = ncurses
+	source = https://ftp.gnu.org/gnu/gnushogi/gnushogi-1.4.2.tar.gz
+	source = https://ftp.gnu.org/gnu/gnushogi/gnushogi-1.4.2.tar.gz.sig
+	source = 01-make-dont-ignore.patch
 	source = gcc-10-globals.patch
+	validpgpkeys = F9113B1F55336A8B4376E3B0029820396BC37E36
 	sha256sums = 1ecc48a866303c63652552b325d685e7ef5e9893244080291a61d96505d52b29
+	sha256sums = SKIP
+	sha256sums = 9f2afc599aec2c75770aae10d2bd10acf75446ad0967f54b43cd9c6a12d94306
 	sha256sums = bc4818c5ca20aab50f684d1dcf13745310980ba00932f34babb45388258c97dd
+	b2sums = ecd61e80359a1367fc1b770584f3f238d1c8fb337539e755caf852b1691eb89eef6bc287b7a0b61e00e170c490c5cea926bc29f3ae8885258596092c9e53fff1
+	b2sums = SKIP
+	b2sums = 0e151a892905a2393510093af66f567e085ddfa6d9c5be73c0eac50d7573ef17700d3509f874f3822a7890ce25cad21ef1bd60cecf70f59041ffedff097eef07
+	b2sums = 5833c66ba7bff035bf808472e6ce11ae9e3ec7bd257887c7c6ca5d15e0c76405fc283b108b20ec1b8a313b32ce32583bc706eabdc89cf9561574e50744fb1c82
 
 pkgname = gnushogi
-

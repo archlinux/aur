@@ -1,0 +1,4 @@
+[gnushogi]
+source = "regex"
+url = "https://ftp.gnu.org/gnu/gnushogi/"
+regex = "gnushogi-([\\d.]+)\\.tar\\.gz"
