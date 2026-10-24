@@ -4,7 +4,7 @@
 
 pkgname=spiderfoot
 pkgver=4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="SpiderFoot is an open source intelligence automation tool for OSINT gathering"
 arch=('any')
 url="https://github.com/smicallef/spiderfoot"
