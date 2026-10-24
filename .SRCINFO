@@ -8,6 +8,7 @@ pkgbase = your-szu-life-bin
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	depends = gtk3
+	depends = aria2
 	provides = your-szu-life
 	conflicts = your-szu-life-git
 	conflicts = your-szu-life
