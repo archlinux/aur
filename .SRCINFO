@@ -1,12 +1,15 @@
 pkgbase = git-subrepo-git
-	pkgdesc = Git Submodule Alternative
-	pkgver = 0.4.3.r1.g2f68596
-	pkgrel = 2
+	pkgdesc = Git submodule alternative
+	pkgver = 0.4.9.r23.g5e0f401
+	pkgrel = 1
 	url = https://github.com/ingydotnet/git-subrepo
 	arch = any
-	license = GPL
+	license = MIT
+	checkdepends = less
+	makedepends = git
 	depends = git
-	provides = git-subrepo=0.4.3.r1.g2f68596
+	optdepends = less: pager for git subrepo status
+	provides = git-subrepo=0.4.9.r23.g5e0f401
 	conflicts = git-subrepo
 	source = git-subrepo::git+https://github.com/ingydotnet/git-subrepo.git
 	md5sums = SKIP

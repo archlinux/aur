@@ -4,8 +4,8 @@
 
 pkgname=git-subrepo-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.3.r1.g2f68596
-pkgrel=2
+pkgver=0.4.9.r23.g5e0f401
+pkgrel=1
 pkgdesc='Git submodule alternative'
 arch=('any')
 url="https://github.com/ingydotnet/$_pkgname"
