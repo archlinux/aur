@@ -1,7 +1,7 @@
 # Maintainer: Floofy <FloofyIV9@proton.me>
 
 pkgname=rosemary
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Compatibility layer and high level emulator hybrid for running macOS applications"
 arch=(x86_64)
@@ -23,9 +23,11 @@ optdepends=(
   'glib-networking: WebView support'
   'webkitgtk-6.0: WebView support'
 )
+provides=("$pkgname=${pkgver%%.3*}")
+conflicts=("$pkgname")
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('58d01fa12c7bf31a41cc93f395d5081c50b866dff8be49b46fc54de8e87da6b1')
+sha256sums=('f15a47a834a3ec4bb611bb7b06fe4f6a42714201bfc2ec0079a1f28636545050')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
