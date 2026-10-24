@@ -2,14 +2,15 @@
 
 pkgname=solidcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.19.0.nightly.20261022.67.1.r6.gf79cbc2
+pkgver=0.21.0.nightly.20261024.75.1.r2.g19db763
 pkgrel=1
-url="https://bherbruck.github.io/$_pkgname"
-_url="https://github.com/bherbruck/$_pkgname"
+url="https://$_pkgname.io"
+_url="https://github.com/tangency-labs/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Autodesk Fusion (Git HEAD)'
 arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(glibc # libc.so libm.so
+         hicolor-icon-theme
          libgcc)
 makedepends=(cargo
              git)
@@ -35,6 +36,8 @@ _srcenv() {
 	export RUSTUP_TOOLCHAIN=stable
 }
 
+_icons=(512 256 128 64 48 32 24 16)
+
 prepare() {
 	_srcenv
 	cargo fetch --locked --target host-tuple
@@ -57,5 +60,9 @@ package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,-cli}
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "assets/platforms/linux/ai.storyteller.$_pkgname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "assets/platforms/linux/ai.storyteller.$_pkgname.mime.xml"
+	for s in ${_icons[@]}; do
+		local dim="${s}x${s}"
+		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/icons/app/linux/exports/hicolor/$dim/apps/ai.storyteller.$_pkgname.png
+	done
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }

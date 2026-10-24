@@ -1,21 +1,23 @@
 pkgbase = solidcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Autodesk Fusion (Git HEAD)
-	pkgver = 0.19.0.nightly.20261022.67.1.r6.gf79cbc2
+	pkgver = 0.21.0.nightly.20261024.75.1.r2.g19db763
 	pkgrel = 1
-	url = https://bherbruck.github.io/solidcraft
+	url = https://solidcraft.io
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = solidcraft=0.19.0.nightly.20261022.67.1.r6.gf79cbc2
+	provides = solidcraft=0.21.0.nightly.20261024.75.1.r2.g19db763
 	conflicts = solidcraft
-	source = git+https://github.com/bherbruck/solidcraft.git
+	source = git+https://github.com/tangency-labs/solidcraft.git
 	sha256sums = SKIP
 
 pkgname = solidcraft-git
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libgcc_s.so
