@@ -1,0 +1,103 @@
+From c799bc6631358f9ee9bee7b05b678cc8fac57990 Mon Sep 17 00:00:00 2001
+From: executter <executter@hotmail.com>
+Date: Sun, 25 Oct 2026 01:10:00 +0200
+Subject: [PATCH 1/2] fix(cpu): find a speed when the model has none
+
+The server lists computers with the speed of their
+first CPU (HARDWARE/PROCESSORS). On Linux x86,
+SPEED only came from a frequency at the end of the
+model name, as in "Intel(R) Core(TM) i5-4590 CPU
+@ 3.30GHz". AMD and recent Intel models have none,
+e.g. "AMD Ryzen 3 4300U with Radeon Graphics", so
+the server shows 0 MHz.
+
+Fall back on the "Current Speed" of dmidecode, the
+frequency at boot, as GLPI-Agent does, then on the
+"CPU max MHz" of lscpu, which needs no root
+privileges. A frequency in the model name still
+comes first.
+---
+ lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm b/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm
+index 7febf51..e5ccc94 100644
+--- a/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm
++++ b/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm
+@@ -18,6 +18,8 @@ sub run {
+     my @cpuinfos=`LANG=C lscpu`;
+     my $cpu;
+     my $nbcpus;
++    my $maxspeed;
++    my $dmispeed;
+ 
+     foreach my $info (@cpuinfos){
+         chomp $info;
+@@ -35,6 +37,7 @@ sub run {
+         }
+ 
+         $cpu->{CURRENT_SPEED} = $1 if ($info =~ /CPU\sMHz:\s*(\d+)(|\.\d+)$/i);
++        $maxspeed = $1 if ($info =~ /CPU\smax\sMHz:\s*(\d+)/i);
+         $cpu->{L2CACHESIZE} = $1 if ($info =~ /L2\scache:\s*(.*)/i);
+         if ($cpu->{CPUARCH} && $cpu->{CPUARCH} eq 'x86_64'){
+             $cpu->{DATA_WIDTH}='64';
+@@ -66,8 +69,12 @@ sub run {
+         $cpu->{SERIALNUMBER}=$info->{'Serial Number'};
+         $cpu->{VOLTAGE}=$info->{'Voltage'};
+         $cpu->{SOCKET}=$info->{'Socket Designation'};
++        $dmispeed=$1 if ($info->{'Current Speed'} && $info->{'Current Speed'} =~ /^(\d+)\s*MHz/i);
+     }
+ 
++    # The model name of AMD and recent Intel CPUs holds no frequency
++    $cpu->{SPEED} ||= $dmispeed || $maxspeed;
++
+     for (my $i=0;$i<$cpu->{NBSOCKET};$i++) {
+         $common->addCPU($cpu);
+     }
+-- 
+2.56.0
+
+
+From b3ac694730613749b2ca4565d3fda04fba610994 Mon Sep 17 00:00:00 2001
+From: executter <executter@hotmail.com>
+Date: Sun, 25 Oct 2026 01:10:10 +0200
+Subject: [PATCH 2/2] fix(cpu): restore the current speed
+
+CURRENT_SPEED came from the "CPU MHz" line of
+lscpu. util-linux 2.38 replaced it with "CPU(s)
+scaling MHz", a percentage, so the current speed
+is no longer reported on recent distributions.
+
+lscpu took that value from the first "cpu MHz"
+line of /proc/cpuinfo: read it there when lscpu
+does not print it.
+---
+ .../Agent/Backend/OS/Linux/Archs/i386/CPU.pm         | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm b/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm
+index e5ccc94..d7d7278 100644
+--- a/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm
++++ b/lib/Ocsinventory/Agent/Backend/OS/Linux/Archs/i386/CPU.pm
+@@ -53,6 +53,18 @@ sub run {
+             }
+         }
+     }
++
++    # lscpu prints "CPU MHz" only up to util-linux 2.37: read the current
++    # frequency of the first CPU from /proc/cpuinfo, as it did
++    if (!$cpu->{CURRENT_SPEED} && open(my $fh, '<', '/proc/cpuinfo')) {
++        while (<$fh>) {
++            if (/^cpu MHz\s*:\s*(\d+)/i) {
++                $cpu->{CURRENT_SPEED} = $1;
++                last;
++            }
++        }
++        close $fh;
++    }
+    
+     # Total Threads = number of cores x number of threads per core
+     $cpu->{THREADS}=$cpu->{CORES}*$cpu->{THREADS};
+-- 
+2.56.0
+

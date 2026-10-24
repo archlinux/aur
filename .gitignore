@@ -12,3 +12,4 @@
 !ocsinventory-agent.service
 !ocsinventory-agent.timer
 !screen-serial.patch
+!cpu-speed.patch
