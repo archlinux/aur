@@ -1,7 +1,7 @@
 # Maintainer: Amos Ng <aur at amosng dot com>
 
 pkgname=go-garble
-pkgver=0.15.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Obfuscate Go builds"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/burrowers/garble"
 license=('BSD3')
 makedepends=('go')
 source=(garble-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('669e50227e62b9c37fec8f722b1efba8e13fa854ee577f65db1a8e8242cbc8fd445c39421270864e66f40eb19b2ae3c6ebcbf1025101a4f837f3db3e4c818867')
+b2sums=('8c3380acf304a9386c4ae334fd8866d13216798f0d1ab1a134f4985e1e108f0f94608e953086bf11369b93f3950ad2e0b63bbf4414e2d07ac4cfca5c869ad65e')
 
 build() {
     cd garble-${pkgver}
