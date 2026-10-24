@@ -2,7 +2,7 @@ pkgbase = wget-lua
 	pkgdesc = Wget with Lua scripting
 	pkgver = 1.21.3_at.20231215.01
 	pkgrel = 1
-	url = http://archiveteam.org/index.php?title=Wget_with_Lua_hooks
+	url = https://wiki.archiveteam.org/index.php?title=Wget_with_Lua_hooks
 	arch = i686
 	arch = x86_64
 	arch = armv6h

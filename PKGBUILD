@@ -5,7 +5,7 @@ pkgname=wget-lua
 pkgver=1.21.3_at.20231215.01
 pkgrel=1
 pkgdesc="Wget with Lua scripting"
-url="http://archiveteam.org/index.php?title=Wget_with_Lua_hooks"
+url="https://wiki.archiveteam.org/index.php?title=Wget_with_Lua_hooks"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'zlib' 'zstd' 'gnutls' 'nettle' 'libidn2' 'libpsl' 'pcre2' 'util-linux-libs' 'luajit')
 optdepends=("ca-certificates: HTTPS Downloads")
