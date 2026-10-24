@@ -1,0 +1,6 @@
+pkg/
+src/
+rune-player/
+fvm-cache/
+*.pkg.tar.*
+*.src.tar.*
