@@ -3,28 +3,18 @@
 
 pkgname=fish-tide
 _pkgname=tide
-pkgver=6.2.0
-pkgrel=7
+pkgver=7.2.0
+pkgrel=1
 pkgdesc="🌊 The ultimate Fish prompt."
 arch=('any')
-url="https://github.com/IlanCosman/tide"
+url="https://github.com/plttn/tide"
 license=('MIT')
 depends=('fish')
 optdepends=('ttf-meslo-nerd-font-powerlevel10k: recommended font, install this if you only want Meslo LGS Nerd Font variants'
             'ttf-meslo-nerd: recommended font, contains all Meslo Nerd Font variants')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "pr-619.patch::https://github.com/IlanCosman/tide/pull/619.patch"
-        "pr-625.patch::https://github.com/IlanCosman/tide/pull/625.patch")
-sha256sums=('c5d229d9d918043739aac93581ac96f00b6f31185b7df1c9864401bcbb69f3bc'
-            '8d3a38476848b48af2c2b7749b24b0129adb9acb9d635c663e688ac3e5b0cdd0'
-            '5426d86cb803426cb26843933c676ef08d15947937217ce7f30075f859cd1315')
-
-prepare() {
-    cd "${_pkgname}-${pkgver}"
-    patch -p1 -i ../pr-619.patch
-    patch -p1 -i ../pr-625.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e2b533b016e4422c1f76247d401787bd174ffed7ab64f33b1455e07745133985')
 
 package() {
     cd "${_pkgname}-${pkgver}"
