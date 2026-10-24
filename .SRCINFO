@@ -1,6 +1,6 @@
 pkgbase = jennifer-bin
 	pkgdesc = Jennifer programming language interpreter (prebuilt binary)
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/jennifer-language/jennifer
 	install = jennifer.install
@@ -10,12 +10,12 @@ pkgbase = jennifer-bin
 	optdepends = shared-mime-info: registers the .j file extension with file managers
 	optdepends = vim: syntax highlighting for .j files
 	optdepends = bat: syntax highlighting for .j files (run `bat cache --build` after install)
-	provides = jennifer
+	provides = jennifer=0.25.0
 	conflicts = jennifer
 	conflicts = jennifer-git
-	source_x86_64 = jennifer-0.24.0-linux-amd64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.24.0/jennifer-0.24.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = fe642f8aec93c9bcaaeac297c709e015356eb2bcb865ddebdc2d9bf1afe4fe66
-	source_aarch64 = jennifer-0.24.0-linux-arm64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.24.0/jennifer-0.24.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = abf184412b76a5124993ea10ea7951e9a20191928d6729aece33364751fd26ec
+	source_x86_64 = jennifer-0.25.0-linux-amd64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.25.0/jennifer-0.25.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 56da2e067d6f63657b90382cc3984587c3ff56268402b97b2f23638124929e1a
+	source_aarch64 = jennifer-0.25.0-linux-arm64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.25.0/jennifer-0.25.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 343ce497d1b1e31da0a9abc7b3edb42f165ecaf1315d13b39d74cab79d77af84
 
 pkgname = jennifer-bin
