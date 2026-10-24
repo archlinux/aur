@@ -1,8 +1,8 @@
 # Maintainer: Rinne <aur@rinne.in>
 pkgname=your-szu-life-git
 pkgver=20261024.r572cce5
-pkgrel=2
-pkgdesc="泥深 - 你的SZU助手"
+pkgrel=3
+pkgdesc="泥深 - 你的SZU助手（自动描述测试）"
 arch=('x86_64')
 url='https://github.com/rinnein/your-szu-life'
 license=('MIT')
