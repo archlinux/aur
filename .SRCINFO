@@ -1,6 +1,6 @@
 pkgbase = lumen-journal
 	pkgdesc = Encrypted journal app built with Rust and Flutter
-	pkgver = 2.2.3
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/crazygiscool/lumen
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = lumen-journal
 	depends = gcc-libs
 	depends = gtk3
 	depends = sqlite
-	source = lumen-journal::git+https://github.com/crazygiscool/Lumen.git#tag=v2.2.3
+	source = lumen-journal::git+https://github.com/crazygiscool/Lumen.git#tag=v3.2.1
 	source = lumen-journal.desktop
 	source = lumen-journal.png
 	source = lumen-journal.appdata.xml
