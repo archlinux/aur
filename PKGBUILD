@@ -1,6 +1,6 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 pkgname=kortix-desktop
-pkgver=0.14.7
+pkgver=0.14.8
 pkgrel=1
 pkgdesc='Kortix desktop application (official binary)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/kortix-ai/suna/releases/download/v${pkgver}/${_image
         "kortix-desktop"
         "LICENSE::https://raw.githubusercontent.com/kortix-ai/suna/v${pkgver}/LICENSE")
 noextract=("${_image}")
-sha256sums=('cfd1d52e5e4c6be0a06afedc1ab77af62eb59c6376390b1ab635f71e4e2c2425'
+sha256sums=('a2201ab29806052a23efc263d4e9d6ae350a39c0ba69d13fd6ae415602a2de8e'
             '405657a88ad27df88d5710e3024e68fe663081e063b8f79dc2f0072fcabe78d0'
             '48255018b41fc0e965b1115af7e6779bc218bb8a6747d561da800d5022622aa2')
 
