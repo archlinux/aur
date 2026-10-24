@@ -15,10 +15,12 @@ makedepends=('git')
 install="${_pkgname}-dkms.install"
 source=("$_pkgname::git+https://github.com/Nambers/rtl8188fu.git"
         blacklist-r8188fu.conf
-        dkms.conf)
+        dkms.conf
+        blacklist-rtl8xxxu.conf)
 sha256sums=('SKIP'
             '48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6'
-            'b948cdf264b397bc68eb25448c8da1370247da064bbf22230542b136bf0d70cb')
+            'b948cdf264b397bc68eb25448c8da1370247da064bbf22230542b136bf0d70cb'
+            'dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5')
 
 
 
@@ -50,6 +52,9 @@ package() {
 
   # Blacklist r8188fu
   install -Dm644 blacklist-r8188fu.conf "$pkgdir/etc/modprobe.d/r8188fu.conf"
+
+  # Blacklist rtl8xxxu
+  install -Dm644 blacklist-rtl8xxxu.conf "$pkgdir/etc/modprobe.d/rtl8xxxu.conf"
 
   # Set name and version
   sed -e "s/@_PKGNAME@/$_pkgname/" -e "s/@PKGVER@/$pkgver/" -i "$install_dir/dkms.conf"

@@ -14,8 +14,10 @@ pkgbase = 8188fu-7.2.x-nambers-dkms-git
 	source = 8188fu::git+https://github.com/Nambers/rtl8188fu.git
 	source = blacklist-r8188fu.conf
 	source = dkms.conf
+	source = blacklist-rtl8xxxu.conf
 	sha256sums = SKIP
 	sha256sums = 48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6
 	sha256sums = b948cdf264b397bc68eb25448c8da1370247da064bbf22230542b136bf0d70cb
+	sha256sums = dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5
 
 pkgname = 8188fu-7.2.x-nambers-dkms-git
