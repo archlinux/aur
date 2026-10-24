@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=0.2.9
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ optdepends=('zenity: file dialogs'
             'onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9d4655e1635b0be6b92b851d8b01f00dccc03ebcc71e6de542c10c0700a292d4')
+sha256sums=('75209c1dfd2d19b1b4151baf6529884982a27563121f7acf0ea8ab4d0720c129')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
@@ -57,6 +57,7 @@ prepare() {
             -e "s|Install OnAir's blacklist file (the .deb package does it), or run: sudo systemctl restart sdrplay|OnAir's blacklist file is already installed by the onair package; or run: sudo systemctl restart sdrplay|g" \
             -e "s|unplug and replug it after installing OnAir's blacklist file (the .deb does it), or restart the SDRplay API service|unplug and replug it (OnAir's blacklist file is already installed by the onair package), or restart the SDRplay API service|g" \
             -e "s|install OnAir's udev rules (the .deb does it, or run install-udev-rules.sh from the portable folder), then unplug and replug it|reload OnAir's udev rules (already installed by the onair package) with $cmd, then unplug and replug it|g" \
+            -e "s|The udev rules (install-udev-rules.sh, done by the .deb) give it|The udev rules (already installed by the onair package) give it|g" \
             "$f"
     done < <(grep -rl 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h')
     if grep -rq 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h'; then
