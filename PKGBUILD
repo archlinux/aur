@@ -1,7 +1,7 @@
 # Maintainer: Daniel Perez
 
 pkgname=entire-graph-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Entity-level semantic code intelligence plugin for Entire CLI'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('entire-graph')
 options=('!debug')
 source_x86_64=("entire-graph-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/entire-graph_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("entire-graph-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/entire-graph_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('24e3edef9d580158e4f125c50950fc4a41865b975d32ab4142d944c88eb9bc95')
-sha256sums_aarch64=('d2aecc39e886bd8a8a3616a8c8af4fcf6764e31b90975c4f3fdb5af5e873bf98')
+sha256sums_x86_64=('0ce190bd928293f98314f8d6b470218a96b432741b72df0d7869c8956f393da7')
+sha256sums_aarch64=('776023435e85f3eefa22eb468c0e3dd926718629dcbcac455311d98754c91a08')
 
 package() {
   install -Dm755 entire-graph "$pkgdir/usr/bin/entire-graph"
