@@ -2,7 +2,7 @@
 
 pkgname=lightdm-kde-greeter
 pkgver=6.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='LightDM Greeter for KDE'
 arch=(x86_64)
 url='https://invent.kde.org/plasma/lightdm-kde-greeter'
@@ -17,7 +17,8 @@ backup=('etc/lightdm/lightdm-kde-greeter.conf')
 
 prepare() {
 	install -d build
-	sed 's/sbin/bin/' -i "${pkgname}/greeter/CMakeLists.txt"
+	sed 's/sbin/bin/' -i "${pkgname}/greeter/"{CMakeLists.txt,lightdm-kde-greeter.desktop}
+	sed 's/_ldm/lightdm/' -i "${pkgname}/kcm/helper.cpp"
 }
 
 build() {
@@ -31,4 +32,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+
+	install -d "${pkgdir}/usr/lib/tmpfiles.d/"
+	printf 'd /var/lib/lightdm-kde-greeter 0750 lightdm lightdm -\n' > "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
