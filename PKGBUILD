@@ -6,7 +6,7 @@ _pkgname=fastfind
 pkgname=${_pkgname}-bin
 pkgdesc="Fast, smart file search with fuzzy matching and natural language queries"
 
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,10 +26,10 @@ source=("MANPAGE-${pkgver}.1::${_urlraw}/mandoc/${_appname}.1"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}")
-sha256sums=('b64763e0e51728ff4018b6ab8add197cffbbd633876e554f21345f38fa782db0'
-            '2a882763e23e78898db4c52075eb79c710ab8b01878424a48e2b72b1701faf2a'
+sha256sums=('35bca8886777566cb5d3a33bde9e70115db518d11da9f91fa7eabad09e873631'
+            '97f3ddd681cae8e688f2fd3242362477da41aac958f660510770757d9364714b'
             '03032f3a3b2cda5b47d8994ebcc63b6f39259eff117931f14640a3ba2649146c')
-sha256sums_x86_64=('114c4431bca8f87982d91ae5c8ada8b0a5669770c20bf2dfcf2471b0d444caa8')
+sha256sums_x86_64=('7125a0c8975304c8116ab7b4db44641154bc3baaf0e8f1e3025ea3b8faa33b68')
 
 
 package() {
