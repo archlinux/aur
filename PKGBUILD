@@ -1,6 +1,6 @@
 # Maintainer: Wibo Kuipers <wibo@w-kuipers.com>
 pkgname=alphadb-bin
-pkgver=1.0.0_beta.51
+pkgver=1.0.0_beta.54
 pkgrel=1
 pkgdesc="SQL Database Version Management"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 provides=('alphadb')
 conflicts=('alphadb')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/w-kuipers/alphadb/releases/download/v${pkgver//_beta./-beta.}/alphadb-cli_v${pkgver//_beta./-beta.}_Linux-x86_64.tar.gz")
-sha256sums_x86_64=('5b817501720ec50563d8dee703eddf61d68889f0c076db3291dc7d19f1576eb8')
+sha256sums_x86_64=('b9341d44ec4a1d04daa821628ded75107b04b6c165e6b4c7dc07e0ce2fe137c9')
 
 package() {
     install -Dm755 "${srcdir}/alphadb" "${pkgdir}/usr/bin/alphadb"
