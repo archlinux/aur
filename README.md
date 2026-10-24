@@ -83,7 +83,7 @@ rendered inside the window.
 The cause is inside the AppImage: it ships its own `libwayland-client.so.0` and
 `libwayland-egl.so.1`, built against an older libwayland than a current Arch
 system has. When the bundled copy wins over the system one, EGL initialisation
-fails. Since pkgrel 2 the `/usr/bin/codemeyo` launcher preloads the system
+fails. The `/usr/bin/codemeyo` launcher therefore preloads the system
 `libwayland-client.so.0`, which makes the dynamic loader satisfy the `NEEDED`
 entry from `/usr/lib` instead of the bundle.
 

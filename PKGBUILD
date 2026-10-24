@@ -2,7 +2,7 @@
 
 pkgname=codemeyo-bin
 pkgver=1.11.7
-pkgrel=2
+pkgrel=1
 pkgdesc='Multi-LLM autonomous coding agent with Claude, GPT, Grok, Gemini, DeepSeek, Mistral, Ollama and Groq support'
 arch=('x86_64')
 url='https://codemeyo.com'
