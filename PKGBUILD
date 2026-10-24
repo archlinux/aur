@@ -2,7 +2,7 @@
 
 _pkgname=gostman
 pkgname=${_pkgname}-bin
-pkgver=1.7.8
+pkgver=1.7.9
 pkgrel=1
 pkgdesc='An API client for REST, GraphQL, gRPC and WebSocket that you, your CI pipeline and your coding agent share. Desktop app, web app and command line, no account.'
 arch=(x86_64)
@@ -28,9 +28,8 @@ options=(
 )
 source_x86_64=(
 	"${_pkgname}-${pkgver}.deb::https://github.com/kunalgoesbyken/${_pkgname}/releases/download/v${pkgver}/Gostman-linux-amd64.deb"
-#	"LICENSE::https://raw.githubusercontent.com/kunalgoesbyken/gostman/v${pkgver}/LICENSE"
 )
-b2sums_x86_64=('2917012dccf12fe78f9d525ba4f47c61590e1db4151624118ab2fba725b2d958e8c5791b3e4c743ca69d450d9c1c09536c29eccb725353ca423af7ea706bb5a4')
+b2sums_x86_64=('c756be82feb91b1a5b912812cad235e7d6c2462061b320208dc18bb5cd274b03dbd7360f8434a7b84ed5f7961980071d30b83c3b6552d37df373bfa5be88620f')
 
 prepare() {
 	bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/"
@@ -42,5 +41,4 @@ package() {
 	install -dm755 "${pkgdir}/usr/share"
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	cp "${srcdir}/usr/share/doc/${_pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	#install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
