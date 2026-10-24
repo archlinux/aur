@@ -15,7 +15,7 @@ pkgname=(
 	'ledspicer-dev'
 )
 
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="LED controller daemon for arcade cabinets and RGB lighting"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -34,7 +34,7 @@ makedepends=(
 )
 
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('e30adb58a2cf6be90cbbeddffd878586449d5945bebb2fa0459ea12014172b3f')
 
 build() {
 	cd "${srcdir}/LEDSpicer-${pkgver}"
