@@ -1,7 +1,7 @@
 pkg/
 src/
 osu/
-osu-framework/
-osu-resources/
+ez2lazer-framework/
+ez2lazer-resources/
 *.log
 *.zst
