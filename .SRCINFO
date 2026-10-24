@@ -1,7 +1,7 @@
 pkgbase = your-szu-life-bin
-	pkgdesc = Shenzhen University campus life application (prebuilt Debian package)
+	pkgdesc = 泥深 - 你的SZU助手
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rinnein/your-szu-life
 	arch = x86_64
 	license = MIT
