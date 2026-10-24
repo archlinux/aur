@@ -1,5 +1,4 @@
-# shellcheck shell=bash
-# Maintainer: Michael Gates \\michael et belowthesalt us\\
+# Maintainer: Michael Gates <michael at belowthesalt . us>
 pkgname=python-pan-python
 _name=pan-python
 _altname=pan_python
@@ -25,16 +24,16 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "${_altname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-}
-
 check() {
   cd "${_altname}-${pkgver}"
   python -m installer --destdir=test_dir dist/*.whl
   local site_packages
   site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  PYTHONPATH="test_dir/${site_packages}" python -c "import pan.xapi, pan.licapi, pan.wfapi, pan.afapi"
+  PYTHONPATH="test_dir/${site_packages}" python -c "import pan.xapi, pan.licapi, pan.wfapi, pan.afapi; print('Import check passed')"
+}
+
+package() {
+  cd "${_altname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
