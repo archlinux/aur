@@ -15,6 +15,7 @@ conflicts=("$_pkgname")
 source=("$_pkgname"::"git+$url.git")
 md5sums=('SKIP')
 depends=(git)
+makedepends=(git)
 checkdepends=(less)
 optdepends=('less: pager for git subrepo status')
 
