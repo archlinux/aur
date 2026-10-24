@@ -67,15 +67,8 @@ package() {
 
 	make DESTDIR="$pkgdir" PREFIX=/usr install
 
-	install -d -m 0755 "$pkgdir"/usr/share/bash-completion/completions
-	install -C -m 0644 share/completion.bash "$pkgdir"/usr/share/bash-completion/completions/git-subrepo
-
-	install -d -m 0755 "$pkgdir"/usr/share/zsh/site-functions
-	install -C -m 0644 share/zsh-completion/_git-subrepo "$pkgdir"/usr/share/zsh/site-functions/_git-subrepo
-
-	install -d -m 0755 "$pkgdir"/usr/share/fish/vendor_completions.d
-	install -C -m 0644 share/git-subrepo.fish "$pkgdir"/usr/share/fish/vendor_completions.d/git-subrepo.fish
-
-	install -d -m 0755 "$pkgdir"/usr/share/licenses/"$pkgname"
-	install -C -m 0644 License "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+	install -Dm0644 share/completion.bash "$pkgdir"/usr/share/bash-completion/completions/git-subrepo
+	install -Dm0644 share/zsh-completion/_git-subrepo "$pkgdir"/usr/share/zsh/site-functions/_git-subrepo
+	install -Dm0644 share/git-subrepo.fish "$pkgdir"/usr/share/fish/vendor_completions.d/git-subrepo.fish
+	install -Dm0644 License "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
