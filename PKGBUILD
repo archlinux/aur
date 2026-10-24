@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 # Contributor: TheCyberArcher <TheCyberArcher@protonmail.ch>
 pkgname=music-assistant-desktop-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -28,7 +28,7 @@ provides=('music-assistant-desktop')
 conflicts=('music-assistant-desktop' 'music-assistant-desktop-git' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.deb::$url/releases/download/$pkgver/Music.Assistant_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/music-assistant/desktop-app/$pkgver/LICENSE")
-sha256sums=('afa38843fd87818cc00cec8543a8b7bc662a61066928696996f8806aa4484b46'
+sha256sums=('ebaad3a2699f6c5964f827c03cc88eb28608ff3faffca8625da5127195b75a03'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 # Prebuilt upstream binary: leave it exactly as shipped, and do not try to
 # split a -debug package out of it.
