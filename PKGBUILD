@@ -3,12 +3,12 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=26.04.29a
+pkgver=26.10.18a
 pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='https://github.com/Hizoka76/MKV-Extractor-Qt6'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python-pyqt6'
          'mkvtoolnix-cli'
          'hicolor-icon-theme')
@@ -21,8 +21,8 @@ optdepends=('ffmpeg: for DTS conversion'
             'bdsup2subpp: SUP subtitle conversion')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("${pkgname}-${pkgver}::git+https://github.com/Hizoka76/MKV-Extractor-Qt6.git#tag=v26.04.29")
-sha256sums=('d5d83f7a626c03880c2ddf2fe83c962700099d52777881c78d6a094fd685ee2a')
+source=("${pkgname}-${pkgver}::git+https://github.com/Hizoka76/MKV-Extractor-Qt6.git#tag=v26.10.18")
+sha256sums=('a558f84b651b47275f3647d7c1a8ae8cac3b0c84e671daf9d487fb65d03144dc')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
