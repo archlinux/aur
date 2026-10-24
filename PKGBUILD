@@ -6,7 +6,7 @@
 # tools), linksy (the GTK app) and linksy-qt (the Qt app, for KDE Plasma).
 pkgbase=linksy
 pkgname=(linksy-common linksy linksy-qt)
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='Your phone and your Linux computer, working as one: files, clipboard, screens, webcam'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('AGPL-3.0-or-later')
 options=(!debug !lto)
 makedepends=('cargo' 'lld' 'gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'qt6-base' 'qt6-declarative')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('646544f0bc796716bfb70950350e80032c1e6ec0235528ae107d53aaf558921d')
+sha256sums=('184d1ac7a0b915d04d934253f085b4cf5c65a7aa83bd1c201cccf36fd286c6bb')
 
 prepare() {
   cd linksy-desktop-$pkgver
@@ -83,6 +83,8 @@ package_linksy-common() {
   install -Dm644 data/mg.diary.linksy.Linksy.metainfo.xml "$pkgdir/usr/share/metainfo/mg.diary.linksy.Linksy.metainfo.xml"
   install -Dm644 data/icons/mg.diary.linksy.Linksy.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/mg.diary.linksy.Linksy.svg"
   install -Dm644 data/icons/mg.diary.linksy.Linksy-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/mg.diary.linksy.Linksy-symbolic.svg"
+  install -Dm644 data/icons/mg.diary.linksy.Linksy-tray-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/mg.diary.linksy.Linksy-tray-symbolic.svg"
+  install -Dm644 data/icons/mg.diary.linksy.Linksy-tray-idle-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/mg.diary.linksy.Linksy-tray-idle-symbolic.svg"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE THIRD-PARTY-NOTICES
 }
 
