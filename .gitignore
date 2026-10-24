@@ -1,3 +1,4 @@
-pwdsafety*
-pkg*
-src*
+pkg/
+src/
+*.pkg.tar.*
+pwdsafety_*.zip
