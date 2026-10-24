@@ -5,8 +5,8 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=transcribe
-pkgver=9.70.3
-pkgrel=2
+pkgver=9.70.4
+pkgrel=1
 pkgdesc="Software to help transcribe recorded music"
 arch=('x86_64')
 url="https://www.seventhstring.com/xscribe/overview.html"
@@ -15,7 +15,7 @@ depends=('libsm' 'gtk3' 'gst-plugins-base-libs' 'hicolor-icon-theme')
 optdepends=('gst-plugin-pipewire: audio output via PipeWire')
 options=(!strip)
 source=("https://www.seventhstring.com/xscribe/downlo/xscsetup-${pkgver}.tar.gz")
-sha256sums=('8a772201cb070dc80e3c7d83d2f908c16518dad36b0d4fa2f08714c926dca2ea')
+sha256sums=('626c57dea5306eeb8131ed83b92cea56d96ad5cbcec40629de4845f2cc3836cd')
 
 package() {
   cd "$srcdir/$pkgname"

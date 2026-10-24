@@ -1,7 +1,7 @@
 pkgbase = transcribe
 	pkgdesc = Software to help transcribe recorded music
-	pkgver = 9.70.3
-	pkgrel = 2
+	pkgver = 9.70.4
+	pkgrel = 1
 	url = https://www.seventhstring.com/xscribe/overview.html
 	arch = x86_64
 	license = custom:seventhstring
@@ -11,7 +11,7 @@ pkgbase = transcribe
 	depends = hicolor-icon-theme
 	optdepends = gst-plugin-pipewire: audio output via PipeWire
 	options = !strip
-	source = https://www.seventhstring.com/xscribe/downlo/xscsetup-9.70.3.tar.gz
-	sha256sums = 8a772201cb070dc80e3c7d83d2f908c16518dad36b0d4fa2f08714c926dca2ea
+	source = https://www.seventhstring.com/xscribe/downlo/xscsetup-9.70.4.tar.gz
+	sha256sums = 626c57dea5306eeb8131ed83b92cea56d96ad5cbcec40629de4845f2cc3836cd
 
 pkgname = transcribe
