@@ -11,7 +11,7 @@
 # plugins, edit the /opt/ibm/iAccessClientSolutions/AcsConfig.properties file after installation.
 
 pkgname=iacs
-pkgver=1.1.9.16
+pkgver=1.1.9.17
 pkgrel=1
 pkgdesc="Access Client Solutions is a Java based, platform-independent interface for IBM i systems."
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('glibc' 'java-runtime>=8' 'libgcc_s.so' 'libstdc++.so')
 backup=("opt/ibm/iAccessClientSolutions/AcsConfig.properties")
 options=('!debug')  # No reason to make this package, there's nothing debuggable here.
 source=("file://IBMiAccess_v1r1.zip")
-sha512sums=('a1ba18262731755da5cdec57bc09adaee07604631971ab787ec1314930e00d67ae5cfe8d260bae14d7ac43b906202e4fa8773de366fea17c0fcd207106cf0432')
+sha512sums=('f04ddfd9fefbcf9a4c90bf227863ee91671bc73fb0fcf70539868bd3b62bda424b21c4c25fec6d69636398f5e9b2d71c33b42a3d2d1e7433215ffae524b2ff99')
 
 DLAGENTS=("file::/usr/bin/echo ${BOLD}${RED} Unable to find %u, please read the PKGBUILD ${ALL_OFF}" $DLAGENTS[@])
 
