@@ -3,7 +3,7 @@
 pkgname=wastearr-git
 _pkgname=${pkgname%-git}
 pkgver=v0.2.0.r0.gbc46c8b
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool that analyzes Sonarr and Radarr collections to identify content with poor ratings-to-storage ratios"
 arch=('x86_64')
 options=('!strip' '!lto')
@@ -14,6 +14,7 @@ url="https://codeberg.org/mutker/$_pkgname"
 source=("$_pkgname::git+$url.git")
 conflicts=("$_pkgname")
 provides=("$_pkgname")
+backup=('etc/wastearr/config')
 sha256sums=('SKIP')
 
 pkgver() {
