@@ -1,0 +1,43 @@
+# bluegit-runner: systemd-unit met User=bluegit-runner (groep docker).
+# Na installatie draait de service zodra er een config is
+# (bluegit-runner register). Een upgrade herstart de service.
+# Zonder draaiende systemd (chroot of container) faalt de transactie niet.
+
+_bgr_systemctl() {
+  if ! command -v systemctl >/dev/null 2>&1 || [[ ! -d /run/systemd/system ]]; then
+    echo "bluegit-runner: systemd draait niet; de service is niet aangepast."
+    return 0
+  fi
+  systemctl "$@" || true
+}
+
+post_install() {
+  systemd-sysusers bluegit-runner.conf || true
+  systemd-tmpfiles --create bluegit-runner.conf || true
+  _bgr_systemctl daemon-reload
+  _bgr_systemctl enable --now bluegit-runner.service
+  if [[ ! -f /etc/bluegit-runner/config.yml ]]; then
+    cat <<'MSG'
+bluegit-runner: register this machine to start the service:
+  1. In BlueGit: Settings → Runners → "New registration token"
+     (or a group's Settings → Runners).
+  2. sudo bluegit-runner register --url https://your-bluegit --token bgrr_...
+The service is enabled and starts as soon as the config exists.
+MSG
+  fi
+}
+
+post_upgrade() {
+  systemd-sysusers bluegit-runner.conf || true
+  systemd-tmpfiles --create bluegit-runner.conf || true
+  _bgr_systemctl daemon-reload
+  _bgr_systemctl try-restart bluegit-runner.service
+}
+
+pre_remove() {
+  _bgr_systemctl disable --now bluegit-runner.service
+}
+
+post_remove() {
+  _bgr_systemctl daemon-reload
+}
