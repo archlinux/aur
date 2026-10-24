@@ -1,6 +1,6 @@
 pkgbase = horizon-launcher-bin
 	pkgdesc = Horizon is Minecraft Java Edition rewritten in Rust
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ludovic111/horizon
@@ -22,11 +22,11 @@ pkgbase = horizon-launcher-bin
 	optdepends = vulkan-driver: Vulkan graphics driver for the launcher and game
 	optdepends = gnome-keyring: persist Microsoft sign-in through Secret Service
 	optdepends = kwallet: alternative Secret Service provider for Microsoft sign-in
-	provides = horizon-launcher=0.2.4
+	provides = horizon-launcher=0.2.5
 	conflicts = horizon-launcher
 	options = !strip
 	options = !debug
-	source = horizon-launcher-0.2.4-linux-x86_64.tar.gz::https://github.com/ludovic111/horizon/releases/download/launcher@0.2.4/horizon-launcher-linux-x86_64.tar.gz
+	source = horizon-launcher-0.2.5-linux-x86_64.tar.gz::https://github.com/ludovic111/horizon/releases/download/launcher@0.2.5/horizon-launcher-linux-x86_64.tar.gz
 	source = horizon-launcher.sh
 	source = horizon-launcher.desktop
 	source = horizon.desktop
@@ -34,7 +34,7 @@ pkgbase = horizon-launcher-bin
 	source = LICENSE.upstream
 	source = OFL-Geist.txt
 	source = LICENSE
-	sha256sums = c78798cf05b909a64ea2681db2aae52792d2560c74658d8b8a69a430f90b9139
+	sha256sums = f794da3598a633813e33fd49d45c4fa8b49de4551cfa1f7a188a756d80d7ce8a
 	sha256sums = 7f92a543eba884aa862eca36639790437f2d1bc41ae2d24b0556dd6aa2cc3287
 	sha256sums = fb11867fdefb560a12d0edd06555ded73c520e7e72cf6f3959a074a4a13d3c90
 	sha256sums = 2eb5834d6d0b1189bef3f3f73139ca2fee7f5c837a4aaeb0df744005303b6a54
