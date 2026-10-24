@@ -1,0 +1,20 @@
+--- a/testenv/server/http/http_server.py
++++ b/testenv/server/http/http_server.py
+@@ -47,10 +47,13 @@ class HTTPSServer(StoppableHTTPServer):
+                                                os.getenv('srcdir', '.'),
+                                                'certs',
+                                                'server-key.pem'))
+-        self.socket = ssl.wrap_socket(
+-            sock=socket.socket(self.address_family, self.socket_type),
+-            certfile=CERTFILE,
+-            keyfile=KEYFILE,
++        # ssl.wrap_socket was removed in Python 3.12; SSLContext exists since 3.2,
++        # PROTOCOL_TLS_SERVER since 3.6 (PROTOCOL_SSLv23 is the older equivalent)
++        ctx = ssl.SSLContext(getattr(ssl, 'PROTOCOL_TLS_SERVER',
++                                     ssl.PROTOCOL_SSLv23))
++        ctx.load_cert_chain(CERTFILE, KEYFILE)
++        self.socket = ctx.wrap_socket(
++            socket.socket(self.address_family, self.socket_type),
+             server_side=True
+         )
+         self.server_bind()

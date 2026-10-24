@@ -1,0 +1,6 @@
+pkg/*
+src/*
+gnulib/*
+wget-lua/*
+wget-*lua*
+PKGBUILD-namcap.log

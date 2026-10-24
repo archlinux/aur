@@ -1,0 +1,6 @@
+[wget-lua]
+source = "git"
+git = "https://github.com/ArchiveTeam/wget-lua.git"
+prefix = "v"
+from_pattern = "^(.*)-(at\\..*)$"
+to_pattern = "\\1_\\2"

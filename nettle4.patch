@@ -1,0 +1,23 @@
+--- a/src/http-ntlm.c
++++ b/src/http-ntlm.c
+@@ -47,6 +47,7 @@
+ #ifdef HAVE_NETTLE
+ # include <nettle/md4.h>
+ # include <nettle/des.h>
++# include <nettle/version.h>
+ #else
+ # include <openssl/des.h>
+ # include <openssl/md4.h>
+@@ -322,7 +323,12 @@
+ #ifdef HAVE_NETTLE
+     nettle_md4_init(&MD4);
+     nettle_md4_update(&MD4, (unsigned) (2 * len), pw4);
++# if NETTLE_VERSION_MAJOR >= 4
++    /* Nettle 4 dropped the length argument from the digest functions */
++    nettle_md4_digest(&MD4, ntbuffer);
++# else
+     nettle_md4_digest(&MD4, MD4_DIGEST_SIZE, ntbuffer);
++# endif
+ #else
+     /* create NT hashed password */
+     MD4_Init(&MD4);

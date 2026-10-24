@@ -1,0 +1,46 @@
+--- a/tests/SSLServer.pm
++++ b/tests/SSLServer.pm
+@@ -72,6 +72,9 @@ sub ssl_setup_conn
+                                     Timeout         => 30,
+                                     ReuseAddr       => 1,
+                                     SSL_cipher_list => $ssl_params{'ciphers'},
++                                    # IO::Socket::SSL disables TLS 1.0/1.1 by default
++                                    (defined $ssl_params{'sslversion'}
++                                     ? (SSL_version => $ssl_params{'sslversion'}) : ()),
+                                     SSL_verify_mode => 0x00,
+                                     SSL_ca_file     => $ssl_params{'cafile'},
+                                     SSL_cert_file   => $ssl_params{'certfile'},
+--- a/tests/SSLTest.pm
++++ b/tests/SSLTest.pm
+@@ -22,6 +22,7 @@ my %ssl_defaults = (
+     _keyfile   => "$srcdir/certs/server-key.pem",
+     _cafile    => "$srcdir/certs/test-ca-cert.pem",
+     _ciphers   => 'ALL',
++    _sslversion => undef,
+     _lhostname => 'wgettestingserver',
+     _sslport   => 55443,
+ );
+--- a/tests/Test-https-tlsv1.px
++++ b/tests/Test-https-tlsv1.px
+@@ -65,6 +65,9 @@ my $sslsock = SSLTest->new(cmdline  => $cmdline,
+                            errcode  => $expected_error_code,
+                            existing => \%existing_files,
+                            output   => \%expected_downloaded_files,
++                           # OpenSSL 3 only allows TLS 1.0/1.1 at security level 0
++                           ciphers  => 'ALL:@SECLEVEL=0',
++                           sslversion => 'TLSv1',
+                            sslport  => $port);
+ exit $sslsock->run();
+ 
+--- a/tests/Test-https-tlsv1x.px
++++ b/tests/Test-https-tlsv1x.px
+@@ -66,6 +66,9 @@ my $sslsock = SSLTest->new(cmdline  => $cmdline,
+                            errcode  => $expected_error_code,
+                            existing => \%existing_files,
+                            output   => \%expected_downloaded_files,
++                           # OpenSSL 3 only allows TLS 1.0/1.1 at security level 0
++                           ciphers  => 'ALL:@SECLEVEL=0',
++                           sslversion => 'TLSv1_1',
+                            sslport  => $port);
+ exit $sslsock->run();
+ 

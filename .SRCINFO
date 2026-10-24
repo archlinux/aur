@@ -1,28 +1,46 @@
 pkgbase = wget-lua
 	pkgdesc = Wget with Lua scripting
-	pkgver = 1.21.3_at.20231213.03
+	pkgver = 1.21.3_at.20231215.01
 	pkgrel = 1
 	url = http://archiveteam.org/index.php?title=Wget_with_Lua_hooks
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = GPL
+	license = GPL-3.0-or-later
+	checkdepends = python
+	checkdepends = perl-http-daemon
+	checkdepends = perl-io-socket-ssl
 	makedepends = git
 	makedepends = perl
 	makedepends = autoconf-archive
 	makedepends = gettext
 	makedepends = gperf
-	makedepends = wget
+	depends = glibc
+	depends = zlib
+	depends = zstd
 	depends = gnutls
-	depends = libidn
-	depends = pcre
-	depends = lua51
+	depends = nettle
+	depends = libidn2
+	depends = libpsl
+	depends = pcre2
+	depends = util-linux-libs
+	depends = luajit
 	optdepends = ca-certificates: HTTPS Downloads
-	provides = wget-lua
-	source = git+https://github.com/ArchiveTeam/wget-lua#tag=v1.21.3-at.20231213.03
-	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=c5c11d644737e04258f411ab8584f5ed816135ab
-	sha1sums = bad93dd33f8557ef0c81aadc9dc13506d74c1299
-	sha1sums = 3cc37ffe21690ddf1684ca40b285e7fd1953f851
+	source = git+https://github.com/ArchiveTeam/wget-lua#tag=v1.21.3-at.20231215.01
+	source = git+https://https.git.savannah.gnu.org/git/gnulib.git#commit=c5c11d644737e04258f411ab8584f5ed816135ab
+	source = nettle4.patch
+	source = testenv-ssl.patch
+	source = tests-tls1-seclevel.patch
+	sha256sums = ce1a57cdda29b12da5f0e248e5bd051e2ca4b845bbf45d8b3ded950103b68a67
+	sha256sums = 09c51b4d181699142823c5b7bd0405fe224678d8f0bc6c0a54abc4a2c1106865
+	sha256sums = 33b00fc091b232411fa962208e6892ed00e0547d7b3b750abcc3b6409943c9e7
+	sha256sums = 00d8566eaf871e63b5f82a933d970825e5fc5121a9c9369b551e673874066ee1
+	sha256sums = de4db9219a5f7ba5bf4c1367afcd3612a9b1040f8016ea879d662c6a339175bd
+	b2sums = 5f5e52622a7981bb82abe648129dbf789c27f14641e32716af2a41447a0586b52dfa469de71a55af22a8852025f07691d148062e12f4ab6297deb56ea1dc4597
+	b2sums = b02e5809dde7b358b75ef88097c14c4477b26292d2c59d53e5fa947f83dac08719ad414eb37db967b42376e7e3b3d6e1ba7e903330823b10585aab60e2fd3671
+	b2sums = 44d99e4c4dae598282ad37753b13fc2fdcf56d0bddb52805061d58c9412b2e325c5aebc00291594a0f33566a66804beaa02c70da775425d5f85f2515640c9ccb
+	b2sums = e6469dad156cf4c571cb94c5350526cf101d7bbea5ac2acaa79d824dc7da15b8656b7d8f4123c63f0bbfa0c4dbe8533faf2d40ba5e781b37e9e23c18a2ff61ed
+	b2sums = e3214738814c88b0874eeb10a5ddbd5230765f68b9609d7e8f7db0c69d2caf5a1c60a77e375af778e1dfd2771c8f752754d886c665ad3f8ccf99b870d532dfbc
 
 pkgname = wget-lua
