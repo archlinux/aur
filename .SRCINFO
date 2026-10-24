@@ -1,0 +1,15 @@
+pkgbase = textifyopendocument
+	pkgdesc = Fast OpenDocument (odt/ods/odp) to plain text converter for previews
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://codeberg.org/jbrains/textifyopendocument
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = textifyopendocument-0.1.1.tar.gz::https://codeberg.org/jbrains/textifyopendocument/archive/v0.1.1.tar.gz
+	b2sums = dde9e15e3349e395c2cb3d67d6dc7ae098297f4a3b8d425adba1650925fa78122b82ac1cb7306f285dec371dd228644ea5dd445536287f315b0bdc3a7cd23e39
+
+pkgname = textifyopendocument
