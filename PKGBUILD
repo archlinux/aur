@@ -1,6 +1,6 @@
 # Maintainer: Viraaj Basi <viraajbasi@gmail.com>
 pkgname=ps3-disc-dumper-bin
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="A handy utility to make decrypted PS3 disc dumps"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
 	"https://github.com/13xforever/${pkgname/-bin/}/archive/refs/tags/v${pkgver}.tar.gz"
 	"ps3-disc-dumper.desktop"
 )
-b2sums=('51773fc51d47272d9be4d3bd8a9e9e94f6926a2bd50623b7700c0283d8ef9f524e23a259d91b731bcbbc7ae7575a49ab52e7007cb6abf75756e3179196754772'
-        'fc051c4c9f955c351f2367dec8b1f678cfc76eab164c5c03703835d52225795a72ebc99ceec911a56a4ef7cd9cefd656dfd99cf978a9dc14c94c137af7f4cca4'
+b2sums=('7bb62e67278ceb493a8f1dcb50c513df2547086d5d1bccbb7559d3fa7c8d8f8d810fa5ee1a31dc8867a55eb27bf3226476c12d54ce664891578e71ad28b63280'
+        '8a1ecdaadb46580962e4d8803f5c2eca17162595cfb5ec72088abd85d6c8c2d9e5e2c80f4fda9a3c7e44bebe77f964f0e33b07c376705d80b5d5c0c9ac20cc25'
         '06b17f6705cd3e82e3d6cade872e25464346c00624fce88f1f5a3d3ebc1d163a4a5d0f73ba1fe07e0f5f372c7510f054976bd416bcb1088fb4b05487fcaba0d7')
 
 package() {
