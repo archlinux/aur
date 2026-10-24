@@ -1,9 +1,9 @@
 # Maintainer: Oskar Gerlicz-Kowalczuk <oskar@gerlicz.space>
 
 pkgname=andron
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Ultra-lightweight Android compatibility & translation runtime for Linux"
+pkgdesc="Ultra-lightweight, stripped-down Android container & translation runtime for Linux"
 arch=('x86_64')
 url="https://github.com/gerliczkowalczuk/andron"
 license=('GPL-3.0-or-later')
@@ -12,9 +12,10 @@ makedepends=('cargo')
 optdepends=(
   'wayland: native Wayland zero-copy display support'
   'pipewire: low-latency direct audio routing'
+  'waydroid: accelerated system container backend'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gerliczkowalczuk/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('40c8d4f3252c7bc511a4a7f359251c8c80d6c7f8abf3e8b7f7b0e96171c4c81c')
+sha256sums=('8dee4449e27c5e89cc5dc9cac68a501ebe5739a1e2a96ec10c347f6c5c675180')
 
 prepare() {
   cd "$pkgname-$pkgver"
