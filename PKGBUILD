@@ -10,7 +10,7 @@
 
 pkgname=rakkomik-bin
 _pkgname=rakkomik
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Manga and comic downloader (prebuilt)'
 arch=('any')
@@ -23,7 +23,7 @@ _file="$_pkgname-$pkgver-1-any.pkg.tar.zst"
 source=("$url/releases/download/v$pkgver/$_file")
 # unpacked in package(), where fakeroot keeps the owner root of its files
 noextract=("$_file")
-sha256sums=('797bbf61737112d15660b083c9c19d2da2297879a7489bef6a6f60e0057e099c')
+sha256sums=('9f80a503945e0629aba4caaabd568b44f6b184fad565c3b0f80726d799376b73')
 
 package() {
     # only the files of the package, not the metadata of pacman (.PKGINFO, .BUILDINFO, .MTREE)
