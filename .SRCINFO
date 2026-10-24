@@ -1,6 +1,6 @@
 pkgbase = zeron-bin
 	pkgdesc = A native control plane for Claude Code, Codex, Cursor, Devin and other coding agents
-	pkgver = 0.2.120
+	pkgver = 0.2.121
 	pkgrel = 1
 	url = https://zeron.sh
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = zeron-bin
 	conflicts = zeron
 	options = !strip
 	options = !debug
-	source_x86_64 = zeron-0.2.120-linux-x86_64.tar.gz::https://github.com/zeronsh/zeron/releases/download/v0.2.120/zeron-0.2.120-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 7c7bcb9a9f3a4c949ae6a3fcc0e0c689c8a846810bf66a815e451d5898cd090c
-	source_aarch64 = zeron-0.2.120-linux-aarch64.tar.gz::https://github.com/zeronsh/zeron/releases/download/v0.2.120/zeron-0.2.120-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 308a21ed420d0b22d711ad0191674e33c93112e6df7be5db74a2f295da0ee0c2
+	source_x86_64 = zeron-0.2.121-linux-x86_64.tar.gz::https://github.com/zeronsh/zeron/releases/download/v0.2.121/zeron-0.2.121-linux-x86_64.tar.gz
+	sha256sums_x86_64 = afaece9bd1af68788683d7df90e92476514f2c9baf8ba5ddd15ffbfcd88f7a0e
+	source_aarch64 = zeron-0.2.121-linux-aarch64.tar.gz::https://github.com/zeronsh/zeron/releases/download/v0.2.121/zeron-0.2.121-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f3e8c0befbd67edd69d75da583c479ae3b2e036217196f2e9d817b76ad31102c
 
 pkgname = zeron-bin
