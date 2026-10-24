@@ -1,0 +1,37 @@
+pkgbase = quickshell-release-git
+	pkgdesc = Flexible toolkit for making desktop shells with QtQuick (Release build, -DNO_PCH=ON)
+	pkgver = 0.3.2.r11.g9b0f339
+	pkgrel = 1
+	url = https://git.outfoxxed.me/quickshell/quickshell
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = vulkan-headers
+	makedepends = spirv-tools
+	makedepends = qt6-shadertools
+	makedepends = wayland-protocols
+	makedepends = cli11
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = jemalloc
+	depends = qt6-svg
+	depends = libpipewire
+	depends = libxcb
+	depends = wayland
+	depends = libdrm
+	depends = mesa
+	depends = cpptrace
+	depends = polkit
+	depends = hicolor-icon-theme
+	provides = quickshell
+	conflicts = quickshell
+	conflicts = quickshell-git
+	source = quickshell::git+https://git.outfoxxed.me/quickshell/quickshell.git
+	source = quickshell-check.hook
+	sha256sums = SKIP
+	sha256sums = 8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083
+
+pkgname = quickshell-release-git
