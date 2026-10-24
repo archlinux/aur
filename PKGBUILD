@@ -4,7 +4,7 @@
 : ${_build_debug_enabled:=false}
 
 pkgname=cloud-sql-proxy
-pkgver=2.25.4
+pkgver=2.26.3
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
@@ -19,7 +19,7 @@ if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
 source=(${pkgname}::git+${url}.git#tag=v${pkgver})
-b2sums=('6f096e0e776e65e863be5bb3df4e13a5bf406a809bbbca1a00d0b55030c81453ae2c6acfda1e54c30d588ec4ea9b93e3dcaeac1ae21411da456eb39961b94bfc')
+b2sums=('89c548a231e0525a2a8e4cd479ab1ec8dd05514bee02cd68753d261c3e8a2052ab4f223b7c80c3b4170f5b60edbdf9c20f0555acfb365fa27b409f93bf95628f')
 
 prepare() {
   cd ${pkgname}
