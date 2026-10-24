@@ -2,7 +2,7 @@
 
 pkgname=ungoogled-chromium-widevine-bin
 pkgver=155.0.8059.84
-pkgrel=1
+pkgrel=2
 _upstream_rel=1
 pkgdesc="A lightweight approach to removing Google web service dependency (with Widevine)"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
   'dav1d'
   'dbus'
   'desktop-file-utils'
+  'double-conversion'
   'expat'
   'flac'
   'fontconfig'
@@ -26,6 +27,7 @@ depends=(
   'gtk3'
   'harfbuzz'
   'hicolor-icon-theme'
+  'highway'
   'libcups'
   'libdrm'
   'libffi'
@@ -55,6 +57,7 @@ depends=(
   'opus'
   'pango'
   'pciutils'
+  'simdutf'
   'systemd'
   'systemd-libs'
   'ttf-liberation'
@@ -78,7 +81,7 @@ source=(
 )
 noextract=("google-chrome-stable_${pkgver}-1_amd64.deb")
 sha256sums=('a1e534e519916d6df1efbf6b897b9efa1f28080794c80676a019327ce08030a6'
-            '8fbd2ae69cdf7ee98b7513c3396a7b5e06f974f8625fdd590df3091dd0c3e9de')
+  '8fbd2ae69cdf7ee98b7513c3396a7b5e06f974f8625fdd590df3091dd0c3e9de')
 
 prepare() {
   mkdir -p "$srcdir/chrome_extract"
