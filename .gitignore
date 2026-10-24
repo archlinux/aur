@@ -1,0 +1,10 @@
+# AUR 仓库白名单：默认忽略所有文件，仅放行必须提交的内容
+*
+!*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+# 如需提交补丁或许可证文件，取消下面的注释
+# !*.patch
+# !*.diff
+# !LICENSE
