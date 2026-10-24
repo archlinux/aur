@@ -1,6 +1,6 @@
 pkgbase = orgwarrior
 	pkgdesc = A taskwarrior-style command line for Org mode's agenda, through your running Emacs
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/aleksozolins/orgwarrior
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = orgwarrior
 	makedepends = python-hatchling
 	depends = python
 	depends = emacs
-	source = https://files.pythonhosted.org/packages/source/o/orgwarrior/orgwarrior-0.3.0.tar.gz
-	sha256sums = a9068f3e297b94f18038d6eee47f71148dffd8e333a1cbb605487bee81930ed2
+	source = https://files.pythonhosted.org/packages/source/o/orgwarrior/orgwarrior-0.3.1.tar.gz
+	sha256sums = 4f0c6584f76da05071d468a304250e00c57daa75de60ed9761fb7acd7a239494
 
 pkgname = orgwarrior
