@@ -1,6 +1,6 @@
 pkgbase = stealth-mission-89
 	pkgdesc = A Rust/Bevy remake of DOS-era 3D flight simulations with multiplayer, dynamic realtime campaign and VR support
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/stealth-mission-89
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = stealth-mission-89
 	depends = wayland
 	optdepends = openxr: VR headset support (--vr)
 	options = !lto
-	source = stealth-mission-89-0.6.0.tar.gz::https://github.com/dividebysandwich/stealth-mission-89/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 30bac190879b754cd235289eebe9a60b16efc33398be1a6d84b80fe1aba9b8e8
+	source = stealth-mission-89-0.6.1.tar.gz::https://github.com/dividebysandwich/stealth-mission-89/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = ff4e1e2b1ac6aa2fa8eaf156d0a3183fc478acb84f04e75f0791b874644b5c4f
 
 pkgname = stealth-mission-89
