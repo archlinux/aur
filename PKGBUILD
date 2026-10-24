@@ -5,7 +5,7 @@
 
 pkgname="python-holidays"
 _pkgname="${pkgname#python-}"
-pkgver=0.92
+pkgver=0.107
 pkgrel=1
 pkgdesc="Generate and work with holidays in Python"
 arch=("any")
@@ -17,7 +17,7 @@ depends=("python"
 "python-korean_lunar_calendar"
 "python-hijridate")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('4a607617ffdfe5dd9495601d97b0cf3a0387c0132001c9d207f80dda7fb6952513dbf61d9e18badf97c6a5d4b88f3bd3a3d1cf7cbbb843b3590c70a3e362aea5')
+b2sums=('2df6b7fc4ce6bc7650d2b806476cb5bb932bb6dbad211437f92a9734ca26b3bf95cf2d70d886cab9173d9342fe1c52f7b1bc2a3d0198dd85c9dba3d629cdb68a')
 
 build(){
  cd ${srcdir}/${_pkgname}-${pkgver}
