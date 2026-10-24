@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=rexadb-bin
-pkgver=1.3.26
+pkgver=1.3.27
 pkgrel=1
 pkgdesc="Multi-database desktop client for PostgreSQL, MySQL, MongoDB, SQLite, ClickHouse, Redis, and SQL Server"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0')
 depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'dbus')
 provides=('rexa-db')
 source=("RexaDB_${pkgver}_amd64.deb::https://github.com/RexaDB/RexaDB/releases/download/v${pkgver}/RexaDB_${pkgver}_amd64.deb")
-sha256sums=('a978d87de2c78194e1e8c05c1b5e194ceb024d3afe44a396101722c8eba5bcc7')
+sha256sums=('21f1373b6808453f8d6b12bbd627d024e671709b341490fbad4563c394230e96')
 
 package() {
     # Extract the deb package
