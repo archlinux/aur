@@ -1,1 +1,2 @@
-43 2 * * * root /usr/bin/ocsinventory-agent --lazy > /dev/null 2>&1
+# Skipped while ocsinventory-agent.timer is active, so the agent runs only once a day
+43 2 * * * root systemctl -q is-active ocsinventory-agent.timer 2>/dev/null || /usr/bin/ocsinventory-agent --lazy > /dev/null 2>&1

@@ -26,10 +26,13 @@ backup=('etc/ocsinventory/ocsinventory-agent.cfg'
     'etc/ocsinventory/modules.conf'
     'etc/cron.d/ocsinventory-agent')
 source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v${pkgver}/Ocsinventory-Unix-Agent-${pkgver}.tar.gz"
-    "ocsinventory-agent" "ocsinventory-agent.cfg")
+    "ocsinventory-agent" "ocsinventory-agent.cfg"
+    "ocsinventory-agent.service" "ocsinventory-agent.timer")
 sha256sums=('5aa171c48a21db8dc17e96b7e4d5a80cdbd30979c963a654b6974b8bb1e0efe1'
-     'f6c1723c9e6c3a480396395e3865fb29465bc6091ee7e4eea3b6dec13b5331ee'
-     '96708ef480c0ec7ba58bc4e9e2074ee3f133965e3c378dca3281aef18cb202b1')
+     '71aaa77f9c99f86a11fcedcc6cf8c7f78afa953d877561b36685d06036c098d7'
+     '96708ef480c0ec7ba58bc4e9e2074ee3f133965e3c378dca3281aef18cb202b1'
+     'b5cddb343e940907c2f785973264c6f60c2b4013f3eb393a9ddfa1597b515f55'
+     'dff1030d95bc55188c219b354bdf1aa5a31b6e7377475ba8f171704ea0caae43')
 
 build() {
   cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"
@@ -60,4 +63,6 @@ package() {
   cd "$srcdir"
   install -D -m644 ocsinventory-agent.cfg "${pkgdir}/etc/ocsinventory/ocsinventory-agent.cfg"
   install -D -m744 -D ocsinventory-agent "${pkgdir}/etc/cron.d/ocsinventory-agent"
+  install -D -m644 ocsinventory-agent.service "${pkgdir}/usr/lib/systemd/system/ocsinventory-agent.service"
+  install -D -m644 ocsinventory-agent.timer "${pkgdir}/usr/lib/systemd/system/ocsinventory-agent.timer"
 }

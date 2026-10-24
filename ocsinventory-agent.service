@@ -1,0 +1,9 @@
+[Unit]
+Description=OCS Inventory NG agent
+Documentation=man:ocsinventory-agent(1p)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ocsinventory-agent

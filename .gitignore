@@ -9,3 +9,5 @@
 !ocsinventory-agent
 !ocsinventory-agent.cfg
 !ocsinventory-agent.install
+!ocsinventory-agent.service
+!ocsinventory-agent.timer

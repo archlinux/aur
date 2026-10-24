@@ -1,3 +1,17 @@
+_schedule_hint() {
+    echo "Schedule the daily inventory with the systemd timer:"
+    echo "    systemctl enable --now ocsinventory-agent.timer"
+    echo "or with any cron daemon reading /etc/cron.d (skipped while the timer is active)."
+}
+
 post_install() {
     echo "Edit /etc/ocsinventory/ocsinventory-agent.cfg with your server details."
+    _schedule_hint
+}
+
+post_upgrade() {
+    if (( $(vercmp "$2" 2.10.4-2) < 0 )); then
+        echo "A systemd timer is now shipped alongside the cron job."
+        _schedule_hint
+    fi
 }

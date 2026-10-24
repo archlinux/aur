@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily OCS Inventory NG agent run
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1h
+RandomizedDelaySec=240
+Persistent=true
+
+[Install]
+WantedBy=timers.target
