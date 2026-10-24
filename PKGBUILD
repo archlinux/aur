@@ -1,35 +1,17 @@
 # Maintainer: opecko <https://github.com/opecko>
-# AUR package: repackages the .deb from the GitHub release. Updated by scripts/aur.sh.
+# AUR package: transitional. ytdesk is now Sonolith; this empty package pulls in sonolith-bin, so `yay -Syu` moves
+# existing installs over (pacman offers to remove the old ytdesk-bin, which conflicts with sonolith-bin). Updated by
+# scripts/aur.sh until the package base is merged into sonolith-bin.
 pkgname=ytdesk-bin
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="YouTube Music desktop client (prebuilt)"
-url='https://github.com/opecko/ytdesk'
-arch=('x86_64')
+pkgdesc="Transitional package: ytdesk is now Sonolith (sonolith-bin, prebuilt)"
+url='https://github.com/opecko/sonolith'
+arch=('any')
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'dbus' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav' 'libayatana-appindicator')
-optdepends=('nodejs: JS runtime for the yt-dlp playback fallback'
-            'gnome-keyring: stores the login cookie (Secret Service)')
-provides=('ytdesk')
-conflicts=('ytdesk')
-options=('!strip' '!debug')
-source=("https://github.com/opecko/ytdesk/releases/download/v$pkgver/ytdesk_${pkgver}_amd64.deb"
-        "LICENSE-$pkgver::https://raw.githubusercontent.com/opecko/ytdesk/v$pkgver/LICENSE")
-noextract=("ytdesk_${pkgver}_amd64.deb")
-sha256sums=('dd58017c3cafc3454b683bbdf13c8439fd8b0e81f9b6d6842a0d5a00886d5725'
-            'd8246ddc68471e6f5d5eb2bc54b9fb5878d6c362a7d99df0dd8193ec48cbdcce')
-
-prepare() {
-  bsdtar -xf "ytdesk_${pkgver}_amd64.deb" data.tar.gz
-}
+depends=('sonolith-bin')
+sha256sums=()
 
 package() {
-  bsdtar -xf data.tar.gz -C "$pkgdir"
-  # Tauri names the 2x icon dir "256x256@2"; use the standard hicolor size dir.
-  if [ -d "$pkgdir/usr/share/icons/hicolor/256x256@2" ]; then
-    mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256"
-    mv "$pkgdir/usr/share/icons/hicolor/256x256@2/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
-    rmdir "$pkgdir/usr/share/icons/hicolor/256x256@2"
-  fi
-  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  :
 }
