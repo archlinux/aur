@@ -5,7 +5,7 @@
 pkgname=mrstreamer-bin
 pkgver=0.0.19
 pkgrel=1
-pkgdesc='IPTV player with bundled Electron, FFmpeg and ffprobe'
+pkgdesc='IPTV player for Xtream Codes and M3U subscriptions, with live TV, programme guide, movies and series'
 arch=('x86_64')
 url='https://mrstreamer.app'
 license=('GPL-3.0-only' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'MIT' 'BSD-2-Clause'

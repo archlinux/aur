@@ -1,5 +1,5 @@
 pkgbase = mrstreamer-bin
-	pkgdesc = IPTV player with bundled Electron, FFmpeg and ffprobe
+	pkgdesc = IPTV player for Xtream Codes and M3U subscriptions, with live TV, programme guide, movies and series
 	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://mrstreamer.app
