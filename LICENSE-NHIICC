@@ -1,0 +1,10 @@
+NHIICC (健保卡網路註冊憑證元件) is copyright the National Health Insurance
+Administration (衛生福利部中央健康保險署), Taiwan.
+
+It is distributed free of charge from
+https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/Eventesting.aspx
+
+No licence terms are published for it: none are included in the download,
+the download page or the installation manual (checked 2026-10-24).
+
+The mLNHIICC binary includes OpenSSL 1.1.1f, see OPENSSL-LICENSE.

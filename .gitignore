@@ -1,0 +1,6 @@
+pkg/
+src/
+CMS_mNHIICC_Setup-*.zip
+nhiicc-*.pkg.tar.*
+*.log
+OPENSSL-LICENSE

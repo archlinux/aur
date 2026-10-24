@@ -6,6 +6,14 @@ post_install() {
 }
 
 post_upgrade() {
+  # Only generate the local CA and server certificate once, instead of adding
+  # a new trust anchor on every upgrade. To regenerate them (e.g. when they
+  # are about to expire), run /usr/share/nhiicc/regen-certs.sh as root.
+  if [[ -f /var/lib/nhiicc/cert/NHIServerCert-real.key &&
+        -f /etc/ca-certificates/trust-source/anchors/NHIRootCA.crt ]]; then
+    return
+  fi
+
   /usr/share/nhiicc/regen-certs.sh
   cat <<EOF
 >>>
@@ -17,7 +25,7 @@ EOF
 post_remove() {
   sed -i '/iccert\.nhi\.gov\.tw/d' /etc/hosts
 
-  rm -r /var/lib/nhiicc/cert
-  rm /etc/ca-certificates/trust-source/anchors/NHIRootCA.crt
+  rm -rf /var/lib/nhiicc/cert
+  rm -f /etc/ca-certificates/trust-source/anchors/NHIRootCA.crt
   /usr/bin/update-ca-trust
 }
