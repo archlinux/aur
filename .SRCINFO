@@ -1,0 +1,18 @@
+pkgbase = lshwtui-bin
+	pkgdesc = A lazygit inspired hardware details explorer
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/susamn/lshwtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = lshw
+	provides = lshwtui
+	conflicts = lshwtui
+	options = !strip
+	source_x86_64 = lshwtui-x86_64-0.1.1.tgz::https://github.com/susamn/lshwtui/releases/download/v0.1.1/lshwtui_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 49543fd655084f020c41cf9535f3e81b72a4d2d5174e6f53988dba019c2a912a
+	source_aarch64 = lshwtui-aarch64-0.1.1.tgz::https://github.com/susamn/lshwtui/releases/download/v0.1.1/lshwtui_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1d3408d42a312e0587131c9fe38674886027212cda1af1a64e92185e1d6bc281
+
+pkgname = lshwtui-bin

@@ -1,0 +1,5 @@
+[lshwtui-bin]
+source = "github"
+github = "susamn/lshwtui"
+use_latest_release = true
+prefix = "v"
