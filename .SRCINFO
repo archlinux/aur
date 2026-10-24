@@ -1,6 +1,6 @@
 pkgbase = openring-rs-bin
 	pkgdesc = A tool for generating a webring from Atom/RSS feeds, written in Rust (prebuilt binary)
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/lukehsiao/openring-rs
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = openring-rs-bin
 	depends = glibc
 	depends = libgcc
 	provides = openring
-	provides = openring-rs=0.6.5
+	provides = openring-rs=0.6.6
 	conflicts = openring
 	conflicts = openring-rs
-	source_x86_64 = openring-0.6.5-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/openring-rs/releases/download/v0.6.5/openring-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b3e01c119a6f43d76926b967ace5be4f8d8954c9f58b1a823d87556bc90dea00
-	source_aarch64 = openring-0.6.5-aarch64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/openring-rs/releases/download/v0.6.5/openring-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c5b5a7eee2f6c76895a87cbe2abbe579d4bfcda180b07faa9ec96de9c6c7acd9
-	source_armv7h = openring-0.6.5-armv7-unknown-linux-gnueabihf.tar.gz::https://github.com/lukehsiao/openring-rs/releases/download/v0.6.5/openring-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = f665a2b2644e92ad1c3b2ce879c76621d0a92b284e135c34b0680f2534c0006c
+	source_x86_64 = openring-0.6.6-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/openring-rs/releases/download/v0.6.6/openring-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 06d38a0c64d619f8d8d3645cae31180acf261978bb87283adb16a02ed83cb703
+	source_aarch64 = openring-0.6.6-aarch64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/openring-rs/releases/download/v0.6.6/openring-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f7ab00f3bb71f1b5aa2227f847cd44dcfc56468c93513d68cf977569c9887a97
+	source_armv7h = openring-0.6.6-armv7-unknown-linux-gnueabihf.tar.gz::https://github.com/lukehsiao/openring-rs/releases/download/v0.6.6/openring-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = f84c33a8a53921b3cee78d040bcaee81bbac22a6c27c2400e99dad537173ec03
 
 pkgname = openring-rs-bin
