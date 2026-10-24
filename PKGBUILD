@@ -1,17 +1,17 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname="cntlm"
-pkgver=0.92.3
-pkgrel=5
+pkgname=cntlm
+pkgver=0.94.0
+pkgrel=1
 license=('GPL2')
 pkgdesc="An NTLM, NTLM2SR, and NTLMv2 authenticating HTTP proxy."
 arch=('i686' 'x86_64')
-url="http://cntlm.sourceforge.net/"
-source=("https://sourceforge.net/projects/cntlm/files/cntlm/cntlm%20$pkgver/cntlm-$pkgver.tar.gz"
+url="https://github.com/versat/cntlm"
+source=("https://github.com/versat/cntlm/archive/refs/tags/$pkgver.tar.gz"
 	    'cntlm.service')
 backup=('etc/cntlm.conf')
-md5sums=('0d7fcfbfbef0546306b896be246caa88'
-		'3d0641122bef4ee93d5dfd8ec1a10230')
+md5sums=('9aa6873d9e9cbaf59e3f6b0b51ec114c'
+         '3d0641122bef4ee93d5dfd8ec1a10230')
 
 build() {
 	cd "$pkgname-$pkgver"
