@@ -1,7 +1,7 @@
 # Maintainer: nietonchique <nietonchique@users.noreply.github.com>
 
 pkgname=mc3000-mcp
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Safe MCP server for SKYRC MC3000-compatible battery chargers over Bluetooth LE'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('dbus' 'gcc-libs')
 makedepends=('cargo')
 optdepends=('bluez: Bluetooth adapter support (BlueZ over D-Bus)')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nietonchique/mc3000-mcp/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
-b2sums=('ec64b4a17c75cf83610c33dc5db9fa43647c46acc3eff1de2090231bcd56740b86f2099682330edce06e9163930654e85a5644f0a4760c3d08326bcbce7b0319')
+b2sums=('656bbe0bc1699f49df3ce11fec09779348ff0aeb232dbdd1a0165947ec1f296c740b30cde911d7f9a575183a9789a1e24c65ed8ab84af573df512cad7b00b24d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
