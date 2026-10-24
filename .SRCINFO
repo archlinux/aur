@@ -1,0 +1,22 @@
+pkgbase = niri-pip
+	pkgdesc = Smart Picture-in-Picture, sticky windows and compact overlays for the Niri Wayland compositor.
+	pkgver = r7.dfa79f4
+	pkgrel = 1
+	url = https://github.com/t1ktakdev/niri-pip
+	install = niri-pip.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = niri>=26.04
+	depends = rust
+	depends = cargo
+	depends = python
+	depends = systemd
+	depends = bash
+	depends = fuzzel
+	depends = playerctl
+	optdepends = playerctl: media controls
+	source = niri-pip::git+https://github.com/t1ktakdev/niri-pip.git
+	sha256sums = SKIP
+
+pkgname = niri-pip

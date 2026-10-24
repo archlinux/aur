@@ -1,0 +1,12 @@
+post_install() {
+  systemctl --user daemon-reload
+  systemctl --user enable niripip.service
+  if systemctl --user cat niri.service >/dev/null 2>&1; then
+    systemctl --user add-wants niri.service niripip.service
+  fi
+}
+
+pre_remove() {
+  systemctl --user stop niripip.service
+  systemctl --user disable niripip.service
+}
