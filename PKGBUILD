@@ -6,7 +6,7 @@
 # tools), linksy (the GTK app) and linksy-qt (the Qt app, for KDE Plasma).
 pkgbase=linksy
 pkgname=(linksy-common linksy linksy-qt)
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Your phone and your Linux computer, working as one: files, clipboard, screens, webcam'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('AGPL-3.0-or-later')
 options=(!debug !lto)
 makedepends=('cargo' 'lld' 'gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'qt6-base' 'qt6-declarative')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('184d1ac7a0b915d04d934253f085b4cf5c65a7aa83bd1c201cccf36fd286c6bb')
+sha256sums=('312f3c26c32d7c06bfa72da766bbb2f345d21d34ba3f4c69f88454526ff92dcf')
 
 prepare() {
   cd linksy-desktop-$pkgver
