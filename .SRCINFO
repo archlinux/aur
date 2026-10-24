@@ -1,6 +1,6 @@
 pkgbase = hegn-git
 	pkgdesc = Cloud Hypervisor sandbox manager and TUI for coding agents (git version)
-	pkgver = 0.1.0.r90.ge773fd8
+	pkgver = 0.1.0.r96.gbf156c2
 	pkgrel = 1
 	url = https://github.com/Henriklmao/hegn
 	install = hegn.install
@@ -15,7 +15,7 @@ pkgbase = hegn-git
 	depends = git
 	depends = cloud-hypervisor
 	depends = virtiofsd
-	optdepends = lazygit: open projects with the g shortcut
+	optdepends = lazygit: open git with the g shortcut
 	provides = hegn
 	conflicts = hegn
 	conflicts = hegn-bin

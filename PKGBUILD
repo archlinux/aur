@@ -1,6 +1,6 @@
-# Maintainer: hegn maintainers
+# Maintainer: Henrik Bernhardt <57109108+Henriklmao@users.noreply.github.com>
 pkgname=hegn-git
-pkgver=0.1.0.r90.ge773fd8
+pkgver=0.1.0.r96.gbf156c2
 pkgrel=1
 pkgdesc='Cloud Hypervisor sandbox manager and TUI for coding agents (git version)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 # satisfies this dependency. hegn cannot start without the VMM or virtiofsd.
 depends=('gcc-libs' 'git' 'cloud-hypervisor' 'virtiofsd')
 optdepends=(
-  'lazygit: open projects with the g shortcut'
+  'lazygit: open git with the g shortcut'
 )
 provides=('hegn')
 conflicts=('hegn' 'hegn-bin')
