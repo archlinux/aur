@@ -1,0 +1,5 @@
+[madc-bin]
+source = "github"
+github = "derekbsnider/madc"
+use_latest_release = true
+prefix = "v"
