@@ -2,7 +2,7 @@
 
 _pkgname=telegram-tdlib
 pkgname=${_pkgname}
-pkgver=1.8.67
+pkgver=1.8.68
 pkgrel=1
 pkgdesc='Cross-platform library for building Telegram clients'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,8 +13,8 @@ makedepends=('make' 'gcc' 'cmake' 'gperf' 'git')
 provides=('telegram-tdlib')
 conflicts=('telegram-tdlib')
 options=('!lto' '!debug')
-source=("${_pkgname}-${pkgver}::git+https://github.com/tdlib/td.git#commit=bc9c263e2bfee06aaab41e82db51a103376030bc")
-sha256sums=('1ea4d7666f98d1a45cc1c81bde9aee5de4f81530b24c864a539a50c3d732aaf9')
+source=("${_pkgname}-${pkgver}::git+https://github.com/tdlib/td.git#commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700")
+sha256sums=('9e4c1e6e60fae9c72c20929b9e4655f6668c5a9d2fb1d28c6107969f7b572b2a')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}" || exit
