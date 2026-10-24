@@ -1,7 +1,7 @@
 pkgbase = piper-tts-bin
 	pkgdesc = A fast, local neural text to speech system
 	pkgver = 2023.11.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhasspy/piper
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = piper-tts-bin
 	depends = glibc
 	provides = piper-tts
 	conflicts = piper-tts
+	source = piper-tts.sh
+	sha256sums = a3e5c9429c36df01391a6296bfe6037e2a9040082f42a6907406c55986ec32a1
 	source_x86_64 = https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_linux_x86_64.tar.gz
 	sha256sums_x86_64 = a50cb45f355b7af1f6d758c1b360717877ba0a398cc8cbe6d2a7a3a26e225992
 	source_aarch64 = https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_linux_aarch64.tar.gz
