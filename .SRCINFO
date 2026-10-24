@@ -1,0 +1,16 @@
+pkgbase = tend
+	pkgdesc = Tends the machine: scans dead weight, cleans safely, backs up dotfiles, and watches resources
+	pkgver = 0.2.0_beta
+	pkgrel = 1
+	url = https://github.com/horizzon3507/tend
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	provides = tend
+	source = https://github.com/horizzon3507/tend/archive/refs/tags/v0.2.0-beta.tar.gz
+	sha256sums = e32bd3e1e6f54aa7b454ba8965df20ce1efaa097eee1f65f05ae284e43ba03f6
+
+pkgname = tend
