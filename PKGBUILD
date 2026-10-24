@@ -1,8 +1,8 @@
 # Maintainer: Lecer69 <https://github.com/Lecer69>
 pkgname=lssh
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
-pkgdesc="Simple SSH server manager with a live stats bar"
+pkgdesc="Simple SSH server manager"
 arch=('x86_64')
 url="https://github.com/Lecer69/LSSH"
 license=('Unlicense')
