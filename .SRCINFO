@@ -1,0 +1,25 @@
+pkgbase = chaotixrecompiled-git
+	pkgdesc = Static recompilation of Knuckles' Chaotix (32X) with an SDL3 frontend (interpreter build; ROM required at first launch)
+	pkgver = 0.15.1.r184.g1d4e22c
+	pkgrel = 1
+	url = https://github.com/YuutaTsubasa/ChaotixRecompiled
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = sdl3
+	depends = sdl3_ttf
+	optdepends = vulkan-icd-loader: Vulkan renderer
+	optdepends = mesa: OpenGL/Vulkan drivers for AMD/Intel GPUs
+	optdepends = nvidia-utils: Vulkan/OpenGL drivers for NVIDIA GPUs
+	provides = chaotixrecompiled
+	conflicts = chaotixrecompiled
+	options = !lto
+	source = chaotixrecompiled-git::git+https://github.com/YuutaTsubasa/ChaotixRecompiled.git
+	sha256sums = SKIP
+
+pkgname = chaotixrecompiled-git
