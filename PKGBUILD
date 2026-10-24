@@ -1,11 +1,11 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-walls
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A terminal screensaver, designed in Go and built for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-walls"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'MIT' 'CC0-1.0' 'CC-BY-4.0' 'CC-BY-NC-4.0' 'CC-BY-SA-4.0' 'CC-BY-NC-SA-4.0')
 depends=('kitty' 'wayland')
 makedepends=('go>=1.24.2' 'git')
 source=("${pkgname}::git+https://github.com/Nomadcxx/${pkgname}.git#tag=v${pkgver}")
@@ -49,4 +49,6 @@ package() {
 
     # Install LICENSE
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 THIRD_PARTY_NOTICES.md "${pkgdir}/usr/share/doc/${pkgname}/THIRD_PARTY_NOTICES.md"
+
 }

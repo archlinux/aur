@@ -43,9 +43,9 @@ post_upgrade() {
 
 SYSC-WALLS UPGRADED
 
-v1.3.0 changes:
-  - Add four rotating aircraft effects.
-  - Improve lighting and shading on rotating models.
+v1.4.0 changes:
+  - Add standalone Higgs Field and particle shading across mesh effects.
+  - Add aircraft flight motion and Napoleon dissolution.
 
 Restart the service to apply changes:
     systemctl --user restart sysc-walls.service
