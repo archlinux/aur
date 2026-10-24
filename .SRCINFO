@@ -1,0 +1,16 @@
+pkgbase = andron
+	pkgdesc = Ultra-lightweight Android compatibility & translation runtime for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gerliczkowalczuk/andron
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = wayland: native Wayland zero-copy display support
+	optdepends = pipewire: low-latency direct audio routing
+	source = andron-0.1.0.tar.gz::https://github.com/gerliczkowalczuk/andron/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 40c8d4f3252c7bc511a4a7f359251c8c80d6c7f8abf3e8b7f7b0e96171c4c81c
+
+pkgname = andron
