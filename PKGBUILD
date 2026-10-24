@@ -9,7 +9,7 @@ license=('Unlicense')
 depends=('openssh' 'dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/LSSH/archive/v$pkgver.tar.gz")
-sha256sums=('384e0b5feec4b9b57517cb5681e693c8de103c572e004c6e7470b42db3552ea2')
+sha256sums=('b16336b6b3536fe13c8bd026514b9ab28c724707170fb9c8d24bf7b6dcbe39f0')
 
 build() {
     cd "LSSH-$pkgver"
