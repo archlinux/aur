@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A command-line knowledge store. It captures text, URLs, and commands, extracts structured metadata, and makes everything searchable."
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('133f8f2c9d0c7c0b17b99d6c32e06ef2dc42884b05e6f7a55e5346ac0f04bbe7')
-sha256sums_aarch64=('d1932cc6e9250e2d3c293b3700d4c4fcf7d3f0eaa5fe94e9091d7cb0b679aef8')
+sha256sums_x86_64=('e7df359709b0abee887d165dc6a572abfacb796e5fb2add4dc05293404ade01c')
+sha256sums_aarch64=('8791556801122c57f8bda15393e0787e30dc48fe5487ddfb2a21a32c26ec6c37')
 
 package() {
 	cd "${srcdir}/" || exit
