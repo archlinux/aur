@@ -1,6 +1,6 @@
 pkgbase = vinted-cli-bin
 	pkgdesc = Terminal CLI for Vinted
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/Microck/vinted-cli
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = vinted-cli-bin
 	conflicts = vinted-cli
 	provides = vinted-cli
 	arch = aarch64
-	source_aarch64 = vinted-cli-bin_0.2.3_aarch64.tar.gz::https://github.com/Microck/vinted-cli/releases/download/v0.2.3/vinted_0.2.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = cbf7461df8039a6c6f60a58548f7d9df50b04d6243d518cddc4a398ba2b3ccac
+	source_aarch64 = vinted-cli-bin_0.2.4_aarch64.tar.gz::https://github.com/Microck/vinted-cli/releases/download/v0.2.4/vinted_0.2.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4449eceb63f5d3812ca6c32cf919981ca79bacaa9a13e6b727020415c8ff811b
 	arch = x86_64
-	source_x86_64 = vinted-cli-bin_0.2.3_x86_64.tar.gz::https://github.com/Microck/vinted-cli/releases/download/v0.2.3/vinted_0.2.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6c7c6195bbcfe4a58d764c711231e73061b13f619006d65377cbcaca579a0dbc
+	source_x86_64 = vinted-cli-bin_0.2.4_x86_64.tar.gz::https://github.com/Microck/vinted-cli/releases/download/v0.2.4/vinted_0.2.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8c8c2a557a0cf5dddde69fb32d625f74f3fa2edf80c038995adc38485754bf33
 	
 pkgname = vinted-cli-bin
