@@ -1,6 +1,6 @@
 pkgbase = zathura-git
 	pkgdesc = Minimalistic document viewer
-	pkgver = 2026.07.08.r6.gedc0ca7e
+	pkgver = 2026.10.23.r1.g99f5d0d9
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = zathura-git
 	depends = libseccomp
 	depends = libsynctex
 	depends = sqlite
+	depends = xxhash
 	optdepends = zathura-djvu-git: DjVu support
 	optdepends = zathura-pdf-poppler-git: PDF support using Poppler
 	optdepends = zathura-pdf-mupdf-git: PDF support using MuPDF
