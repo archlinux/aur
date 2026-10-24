@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-quick-settings-scroll
 	pkgdesc = Makes the GNOME Quick Settings menu scroll when it is taller than the screen
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Disk-MTH/Quick-Settings-Scroll
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-quick-settings-scroll
 	makedepends = git
 	makedepends = jq
 	depends = gnome-shell
-	source = git+https://github.com/Disk-MTH/Quick-Settings-Scroll.git#tag=v1.0.1
-	sha256sums = 673d0fb1795ab9d3185c110e65e08a24d364e8cc64a0f3c59725f6897af1062e
+	source = git+https://github.com/Disk-MTH/Quick-Settings-Scroll.git#tag=v1.1.0
+	sha256sums = 683f9ccfbc06cbcfce640b3f168d15359676b0b73a949e6d1556ed9add20c322
 
 pkgname = gnome-shell-extension-quick-settings-scroll
