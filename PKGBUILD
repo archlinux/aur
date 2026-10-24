@@ -1,128 +1,76 @@
 # Maintainer: MojArch
-pkgbase=git-credential-manager
-pkgname=("$pkgbase"
-         "${pkgbase}-extras")
+
+pkgname=git-credential-manager
 pkgver=3.0.1
 pkgrel=1
-pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
-arch=(i686 x86_64)
+pkgdesc="A secure Git credential helper built on .NET"
+arch=('x86_64')
 url="https://github.com/git-ecosystem/git-credential-manager"
 license=('MIT')
-makedepends=(dotnet-sdk-10.0 dpkg fontconfig krb5 zlib)
-checkdepends=(dotnet-sdk-10.0 git)
+depends=('krb5' 'zlib' 'libsecret')
+makedepends=('dotnet-sdk-10.0' 'clang' 'gcc' 'git' 'dpkg' 'fontconfig')
+checkdepends=('git')
 options=(!strip !debug)
-install="$pkgname.install"
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "trim-executables.diff")
-sha512sums=('1e7c2cb1b16fb5f0f09598e194b7421327e46bdc3aa59a59b8ca83926121653015bdbaa11cc9edead5dc8a814ca95db709d99a563ea8463c07ee9d49f096c2f9'
-            'e5253397233ef8aee547402c4c1e2430ed8bf87346896d7052ce5ef4967fb705431b3516d53c1508aee9eb1fbe3204500c614be04fe2af326851a8a7d2fefd6d')
 
-# Seems that trimming is not required, either because of newer .NET or project changes
-# Feel free to uncomment these lines if needed
-#prepare() {
-    #cd "$pkgbase"
-    # Based on this chinese article:
-    # https://live4thee.github.io/posts/2021-02-09-dotnet-core-on-linux-2/
-    # Thanks web translators :P
-    #git apply ../trim-executables.diff
-#}
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha512sums=(
+    '1e7c2cb1b16fb5f0f09598e194b7421327e46bdc3aa59a59b8ca83926121653015bdbaa11cc9edead5dc8a814ca95db709d99a563ea8463c07ee9d49f096c2f9'
+)
 
 build() {
-    cd "${pkgbase}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
-    export DOTNET_CLI_HOME="$srcdir/.dotnet"
-    export HOME="$srcdir/.home"
-    export GIT_CONFIG_GLOBAL="$HOME/.gitconfig"
+    export DOTNET_CLI_HOME="${srcdir}/.dotnet"
+    export HOME="${srcdir}/.home"
+    export DOTNET_NOLOGO=1
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
     mkdir -p "$DOTNET_CLI_HOME" "$HOME"
 
-    rm -rf out
+    local rid='linux-x64'
 
-    # Map Arch architecture to standard .NET Runtime Identifier (RID)
-    local _rid="linux-x64"
-    if [ "$CARCH" = "i686" ]; then
-        _rid="linux-x86"
+    # Build the Linux distribution, not the solution.
+    # This runs the upstream publish, package and archive steps.
+    dotnet build build/linux \
+        --configuration Release \
+        --runtime "$rid" \
+        -p:Version="$pkgver" \
+        -p:NuGetAudit=false
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+
+    local publish_dir="out/publish/git-credential-manager/release_linux-x64"
+
+    if [[ ! -d "$publish_dir" ]]; then
+        error "Published output directory not found: $publish_dir"
+        error "Available publish directories:"
+        find out/publish -maxdepth 3 -type d -print 2>/dev/null || true
+        return 1
     fi
 
-    # Restore serially: multiple projects use the same generated out/.../obj
-    # directory, so .NET 10's parallel restore can race creating project.assets.json.
-    dotnet restore Git-Credential-Manager.sln \
-        --runtime $_rid \
-        --disable-parallel \
-        -p:Configuration=LinuxRelease \
-        -p:ImportByWildcardBeforeSolution=false \
-        -p:NuGetAudit=false
-
-    # -p:ImportByWildcardBeforeSolution=false bypasses NETSDK1134 safely,
-    # letting us build the entire solution for our targeted architecture.
-    dotnet build Git-Credential-Manager.sln \
-        --no-restore \
-        --configuration LinuxRelease \
-        --runtime $_rid \
-        -p:ImportByWildcardBeforeSolution=false \
-        -p:NuGetAudit=false
-}
-
-check() {
-    cd "${pkgbase}-${pkgver}"
-
-    export DOTNET_CLI_HOME="$srcdir/.dotnet"
-    export HOME="$srcdir/.home"
-    export GIT_CONFIG_GLOBAL="$HOME/.gitconfig"
-    mkdir -p "$DOTNET_CLI_HOME" "$HOME"
-
-    local _rid="linux-x64"
-    if [ "$CARCH" = "i686" ]; then
-        _rid="linux-x86"
+    if [[ ! -f "$publish_dir/git-credential-manager" ]]; then
+        error "Expected executable not found in $publish_dir"
+        find "$publish_dir" -maxdepth 2 -type f -print
+        return 1
     fi
 
-    LANG=C dotnet test Git-Credential-Manager.sln \
-        --no-restore \
-        --configuration LinuxRelease \
-        --runtime $_rid \
-        -p:ImportByWildcardBeforeSolution=false \
-        -p:NuGetAudit=false
-}
+    install -d "$pkgdir/usr/lib/$pkgname"
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
 
-package_git-credential-manager() {
-    provides=($pkgname)
-    conflicts=("${pkgname}-bin")
-    replaces=(git-credential-manager-core)
-    depends+=(zlib krb5)
-    optdepends=("${pkgname}-extras: additional QT UIs for logging in")
+    # Install the complete published payload, including any required
+    # companion files produced by the distribution build.
+    cp -a "$publish_dir/." "$pkgdir/usr/lib/$pkgname/"
 
-    cd "${pkgbase}-${pkgver}"
-    mkdir -pv "$pkgdir/usr/bin"
-    mkdir -pv "$pkgdir/usr/lib/share/$pkgname"
-    mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
+    chmod 755 "$pkgdir/usr/lib/$pkgname/git-credential-manager"
 
-    for bin in git-credential-manager
-    do
-        cp -v  "out/linux/Packaging.Linux/Release/payload/$bin" "$pkgdir/usr/lib/share/$pkgname"
-        ln -sv "/usr/lib/share/$pkgname/$bin" "$pkgdir/usr/bin/$bin"
-    done
-    # The package was renamed time ago
-    # https://github.com/GitCredentialManager/git-credential-manager/pull/551
-    # https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/rename.md
+    ln -s "/usr/lib/$pkgname/git-credential-manager" \
+        "$pkgdir/usr/bin/git-credential-manager"
 
-    cp -v LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-}
-
-package_git-credential-manager-extras() {
-    pkgdesc="Additional login UIs to Github and Bitbucket for Git Credential Manager Core"
-    depends+=(zlib krb5 fontconfig "$pkgbase")
-
-    cd "${pkgbase}-${pkgver}"
-
-    mkdir -pv "$pkgdir/usr/lib/share/$pkgbase"
-    mkdir -pv "$pkgdir/usr/share/licenses/$pkgname"
-
-    for lib in libHarfBuzzSharp.so libSkiaSharp.so
-    do
-        cp -v "out/linux/Packaging.Linux/Release/payload/$lib" "$pkgdir/usr/lib/share/$pkgbase"
-    done
-
-    # No extra UI available as of now: see
-    # https://github.com/git-ecosystem/git-credential-manager/pull/1207
-
-    cp -v LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
