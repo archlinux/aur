@@ -4,7 +4,7 @@
 # Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
 
 pkgname=firefly-iii
-pkgver=6.7.4
+pkgver=6.7.9
 pkgrel=1
 pkgdesc='PHP personal finances manager'
 arch=('any')
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/relea
         "$pkgname-cron.service"
         "$pkgname-cron.timer"
         "apache.example.conf")
-sha256sums=('207e2513cc05aa947701421e410b3ee93b0d07eb304edb6adc7b4e8311840b60'
+sha256sums=('f905729c3be6e66d5333c22992281224ef1dc7e21cea13f4ef09af643d09b825'
             'SKIP'
             'SKIP'
             'SKIP')
