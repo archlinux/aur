@@ -1,6 +1,6 @@
 # Maintainer: viewerofall <joemomanugget@gmail.com>
 pkgname=veil-host-bin
-pkgver=3.2.3
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="The Ultimate Desktop Environment for lightweight and free"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ source_x86_64=("veil-host::https://github.com/viewerofall/veilTDC/releases/downl
 source_aarch64=("veil-host::https://github.com/viewerofall/veilTDC/releases/download/v${pkgver}/veil-host-aarch64-unknown-linux-gnu"
   "config.lua::https://raw.githubusercontent.com/viewerofall/veilTDC/v${pkgver}/config.lua")
 
-sha256sums_x86_64=('69827ba06bebd22a56bd95f44ab47eea3c96803cc84c3532aa5dff04bc10676e'
-  '2bba46096af82628264ac0c7812ca0fe4dd5a86a27d3480ffed9bd17c9157636')
-sha256sums_aarch64=('222328e4afcceaa6a7d25cc631d74839909bb1360ee6aac62041eb562e5667bf'
-  '2bba46096af82628264ac0c7812ca0fe4dd5a86a27d3480ffed9bd17c9157636')
+sha256sums_x86_64=('4f1136d51657ebd3ac140ada6bd77434e681a06fe3dbda0100c99376a36882d7'
+  'd9ca7f4e2c572fcf3ebcfa1c161c7cc369716a6128fca41e1182acadd6f3456d')
+sha256sums_aarch64=('9166192dd7fe8bdf9e27d15dad2ee1558ce6b2cfec0d55a3cafbb0209a868eca'
+  'd9ca7f4e2c572fcf3ebcfa1c161c7cc369716a6128fca41e1182acadd6f3456d')
 
 package() {
   install -Dm755 "${srcdir}/veil-host" "${pkgdir}/usr/bin/veil-host"
