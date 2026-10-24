@@ -47,7 +47,7 @@ package() {
 
 	install -Dm755 "bin/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm755 /dev/stdin "${pkgdir}/usr/share/applications/${_appname}.desktop" <<EOF
+	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_appname}.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Name=${_appname^}
