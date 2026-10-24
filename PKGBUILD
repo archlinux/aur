@@ -36,7 +36,8 @@ build() {
 
   sed -i "s/require 'lib\/Ocsinventory\/Agent\/Config.pm';/require '.\/lib\/Ocsinventory\/Agent\/Config.pm';/g" Makefile.PL
 
-  perl Makefile.PL
+  # Scripts go to /usr/bin: ipdiscover must be in the PATH of cron and systemd
+  perl Makefile.PL INSTALLDIRS=vendor INSTALLVENDORSCRIPT=/usr/bin
   make || return 1
   rm run-postinst
 }
@@ -57,7 +58,4 @@ package() {
   cd "$srcdir"
   install -D -m644 ocsinventory-agent.cfg "${pkgdir}/etc/ocsinventory/ocsinventory-agent.cfg"
   install -D -m744 -D ocsinventory-agent "${pkgdir}/etc/cron.d/ocsinventory-agent"
-
-  cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"
-  install -D -m755 ocsinventory-agent "${pkgdir}"/usr/bin/ocsinventory-agent
 }
