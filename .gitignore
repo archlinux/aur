@@ -1,4 +1,5 @@
 steamdeck-dsp*
 !steamdeck-dsp.install
+valve-hardware-audio-processing
 src
 pkg
