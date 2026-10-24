@@ -3,8 +3,8 @@
 
 pkgname=gamebreaker-sdl3
 pkgdesc="Simple graphics engine for C++ on SDL3"
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 arch=(x86_64)
 url="https://codeberg.org/elpoeprod/GameBreaker"
 license=(BSD-3)
