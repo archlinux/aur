@@ -2,11 +2,11 @@
 
 pkgname=wastearr-git
 _pkgname=${pkgname%-git}
-pkgver=r0.1.0.r0.g2104b19
+pkgver=v0.2.0.r0.gbc46c8b
 pkgrel=1
 pkgdesc="CLI tool that analyzes Sonarr and Radarr collections to identify content with poor ratings-to-storage ratios"
 arch=('x86_64')
-options=('!strip')
+options=('!strip' '!lto')
 license=('MIT')
 depends=()
 makedepends=('git' 'rust' 'cargo')

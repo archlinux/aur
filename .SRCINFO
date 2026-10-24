@@ -1,6 +1,6 @@
 pkgbase = wastearr-git
 	pkgdesc = CLI tool that analyzes Sonarr and Radarr collections to identify content with poor ratings-to-storage ratios
-	pkgver = r0.1.0.r0.g2104b19
+	pkgver = v0.2.0.r0.gbc46c8b
 	pkgrel = 1
 	url = https://codeberg.org/mutker/wastearr
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = wastearr-git
 	provides = wastearr
 	conflicts = wastearr
 	options = !strip
+	options = !lto
 	source = wastearr::git+https://codeberg.org/mutker/wastearr.git
 	sha256sums = SKIP
 
