@@ -2,7 +2,7 @@
 # Contributor: Sean Anderson <seanga2@gmail.com>
 
 pkgname=citus
-pkgver=14.2.0
+pkgver=14.3.0
 pkgrel=1
 pkgdesc='Scalable PostgreSQL for multi-tenant and real-time workloads'
 arch=('x86_64')
