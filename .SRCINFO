@@ -1,0 +1,21 @@
+pkgbase = szs-bin
+	pkgdesc = Wiimms SZS Tools (wszst)
+	pkgver = 2.42a
+	pkgrel = 1
+	url = https://szs.wiimm.de
+	arch = x86_64
+	license = GPL-2.0-or-later
+	provides = wbmgt
+	provides = wctct
+	provides = wimgt
+	provides = wkclt
+	provides = wkmpt
+	provides = wlect
+	provides = wmdlt
+	provides = wpatt
+	provides = wstrt
+	provides = wszst
+	source = https://szs.wiimm.de/download/szs-v2.42a-r8989-x86_64.tar.gz
+	sha256sums = 45c07b8e78fdc38868ac42dd50c1a2e14fc0f14695421b1b5c43134e17393ccc
+
+pkgname = szs-bin
