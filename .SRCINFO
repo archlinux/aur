@@ -1,7 +1,7 @@
 pkgbase = ocsinventory-agent
 	pkgdesc = Hardware and software inventory tool (client)
 	pkgver = 2.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ocsinventory-ng.org
 	install = ocsinventory-agent.install
 	arch = x86_64
