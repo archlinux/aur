@@ -1,24 +1,24 @@
-# Maintainer: nizne nizne@outlook.com
+# Maintainer: nizne <nizne@outlook.com>
 _pkgname=zeroclaw
 pkgname=${_pkgname}-bin
-pkgver=0.8.4
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Private AI Assistant that runs entirely on your machine (prebuilt binary)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/zeroclaw-labs/zeroclaw"
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 provides=("${_pkgname}")
 conflicts=("zeroclaw" "zeroclaw-git")
 options=('!strip' '!debug')
 source=("LICENSE-MIT::https://raw.githubusercontent.com/zeroclaw-labs/${_pkgname}/v${pkgver}/LICENSE-MIT"
         "LICENSE-APACHE::https://raw.githubusercontent.com/zeroclaw-labs/${_pkgname}/v${pkgver}/LICENSE-APACHE")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/zeroclaw-labs/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/zeroclaw-labs/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://github.com/zeroclaw-labs/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-unknown-linux-gnu.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://github.com/zeroclaw-labs/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-unknown-linux-gnu.tar.gz")
 sha256sums=('69ad6d0b3c96424e823dd77c3625682fefbf7cc2871a624fa38f5d762c4bcc94'
             '62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a')
-sha256sums_x86_64=('4a63c72dd4bf64d4d669778040e1578886a731fc527ef1a5b0aef1d18f6b29d9')
-sha256sums_aarch64=('aa2cc3c947c7368059fcaf0b9bf636c4ab657abd6aaf63b2406ea0c7e404f5b3')
+sha256sums_x86_64=('79eb87991f3bd91ae8e6ef02d78b33961cd1d874951dfd351234c692a0297a47')
+sha256sums_aarch64=('887c7a4244e799ecf21672c732bf4b955f2936bfe553465ba8b6a524c75efc1e')
 
 package() {
   # ZeroClaw upstream manages services at runtime via `zeroclaw service install`
