@@ -15,6 +15,7 @@ pkgbase = mail-badge-notifier-git
 	depends = systemd
 	provides = mail-badge-notifier
 	conflicts = mail-badge-notifier
+	conflicts = mail-badge-bridge
 	source = git+https://github.com/salexandarz/mail-badge-notifier.git
 	sha256sums = SKIP
 
