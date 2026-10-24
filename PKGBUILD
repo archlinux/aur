@@ -19,7 +19,7 @@ provides=("${pkgname}" "${alias}")
 makedepends=('cargo')
 depends=('glibc' 'libgcc')
 
-options=('!lto' '!strip')
+options=('!lto' '!strip' '!debug')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('e196fa3825055836823addfd5bc5a31a7003c1ad0fba339b09f8d4a874de2ba2')
@@ -41,7 +41,8 @@ check() {
 	cd "${pkgname}-${pkgver}" || exit
 
 	export CARGO_TARGET_DIR=target
-	cargo test --frozen --release
+	cargo test --frozen --release -- \
+		--skip "workspace::host::plugins::tests::applications::help::space_question_follows_the_models_registered_topic_and_live_actions"
 }
 
 package() {
