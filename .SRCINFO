@@ -1,0 +1,26 @@
+pkgbase = happier-cli-bin
+	pkgdesc = Mobile and web companion for Claude Code, Codex, and other coding agents
+	pkgver = 0.2.17
+	pkgrel = 1
+	url = https://github.com/happier-dev/happier
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = procps-ng
+	optdepends = git: Git integration and worktrees
+	optdepends = tmux: attachable terminal sessions using tmux
+	optdepends = xdg-utils: open authentication links in a browser
+	provides = happier-cli=0.2.17
+	conflicts = happier-cli
+	options = !strip
+	options = !debug
+	source = happier-cli-0.2.17-LICENSE::https://raw.githubusercontent.com/happier-dev/happier/a2c45c86804b24e60ac0b76146a3ef36dfcaa15b/LICENCE
+	sha256sums = e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00
+	source_x86_64 = https://github.com/happier-dev/happier/releases/download/cli-v0.2.17/happier-v0.2.17-linux-x64.tar.gz
+	sha256sums_x86_64 = 969328ed5296119d18e3ca48839e0baafb5d05d1ed7047afacfbac064fd8cbc4
+	source_aarch64 = https://github.com/happier-dev/happier/releases/download/cli-v0.2.17/happier-v0.2.17-linux-arm64.tar.gz
+	sha256sums_aarch64 = 80e3110dc55a2a22f0cca6d26903715b67581eb5509be4e4a403b5898214bb44
+
+pkgname = happier-cli-bin
