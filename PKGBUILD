@@ -5,7 +5,7 @@
 # SIV code, binaries or data files and is not affiliated with or endorsed by RH Software.
 
 pkgname=srs-sysinfo
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Clean-room Linux implementation of SIV64X (System Information Viewer by Ray Hinchliffe, RH Software): GTK3 GUI, 538 report items, CPU burner, benchmarks"
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   'hwinfo: srs-sysreport section'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7e544a9ca2000a81107fcaa32bfe6c5b99179032a288790f69a4767850fe472a')
+sha256sums=('ca1a67ecf3ace08d2a90dc68236fa78ee85f68474f6ad52fe466cc42092620d7')
 
 build() {
   cd "$pkgname-$pkgver"
