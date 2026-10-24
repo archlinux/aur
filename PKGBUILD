@@ -2,7 +2,7 @@
 # Contributor: Albert Sebastian <albertsebe2 at gmail dot com>
 
 pkgname=wstunnel
-pkgver=10.7.1
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="tunnel all your traffic over Websocket or HTTP2"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,7 +14,7 @@ conflicts=('wstunnel-bin' 'nodejs-wstunnel' 'haskell-wstunnel-bin')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'git')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "01-wstunnel-src-protocols-tcp-server_rs.patch")
-sha256sums=('016cc051c48159cbd7a2b172024ae70ca7e3db298022828fdcc6b7324aa62d85'
+sha256sums=('3471bfb3c6605deb5f9e1cbdab88cca638c2e31f849c03340b02156ca3ae39e2'
             '9639f931e47f510950108633d483fb77a26a97a34577030a13149cbc8546f6f8')
 
 prepare() {
@@ -22,7 +22,6 @@ prepare() {
 
 	RUSTUP_TOOLCHAIN=stable \
 		cargo fetch \
-		--locked \
 		--target "$(rustc -vV | sed -n 's/host: //p')"
 
 	for p in $srcdir/*.patch; do
