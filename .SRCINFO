@@ -1,0 +1,17 @@
+pkgbase = ktfmt-bin
+	pkgdesc = A program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions (prebuilt native binary)
+	pkgver = 0.65
+	pkgrel = 1
+	url = https://github.com/Kotlin/ktfmt
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = ktfmt=0.65
+	conflicts = ktfmt
+	options = !strip
+	source = ktfmt-0.65-linux-x86_64.tar.gz::https://github.com/Kotlin/ktfmt/releases/download/v0.65/ktfmt-linux-x86_64-0.65.tar.gz
+	source = ktfmt-0.65-LICENSE::https://raw.githubusercontent.com/Kotlin/ktfmt/refs/tags/v0.65/LICENSE
+	sha256sums = 3684327b092db9b76fffcb9525decf73f8331ed17e00ce3232769c11cd36d352
+	sha256sums = 5f1521fb886be393d8afc4655ab7c6ffe84e1d4f15dfd321ceec3ce62968d058
+
+pkgname = ktfmt-bin
