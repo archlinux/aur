@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='Git Submodule Alternative'
 arch=('any')
 url="https://github.com/ingydotnet/$_pkgname"
-license=('GPL')
+license=('MIT')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname"::"git+$url.git")
@@ -74,4 +74,7 @@ package() {
 
   install -d -m 0755 "$pkgdir"/usr/share/fish/vendor_completions.d
   install -C -m 0644 share/git-subrepo.fish "$pkgdir"/usr/share/fish/vendor_completions.d/git-subrepo.fish
+
+  install -d -m 0755 "$pkgdir"/usr/share/licenses/"$pkgname"
+  install -C -m 0644 License "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
