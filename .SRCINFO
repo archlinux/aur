@@ -1,6 +1,6 @@
 pkgbase = jj-bond
 	pkgdesc = jujutsu TUI
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/TD-Sky/jj-bond
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = jj-bond
 	options = !strip
 	options = !lto
 	options = !debug
-	source = jj-bond-0.1.8.tar.gz::https://github.com/TD-Sky/jj-bond/archive/v0.1.8.tar.gz
-	sha256sums = 12d15d48fe69d9d28c673baac1ae0eec03f932b9761a74df0e5ea073fa96786c
+	source = jj-bond-0.1.9.tar.gz::https://github.com/TD-Sky/jj-bond/archive/v0.1.9.tar.gz
+	sha256sums = e5fbb22bdcffa8f84d3784b9a4f5e20279c79dea090ce86a0572a663014334f5
 
 pkgname = jj-bond
