@@ -2,7 +2,7 @@
 # Contributor: Sergiu Puscas <srg.pscs at gmail dot com>
 
 pkgname=ghost-cli
-pkgver=1.33.7
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="CLI Tool for installing & updating Ghost"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs-lts-jod' 'npm' 'pnpm')
 optdepends=()
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha256sums=('1aac77730da7fe933e9ca41a95e5e7cbc3f5b4ea84f9b7d557b3f3d3bc1391ac')
+sha256sums=('c03dc42faadb1b80556a7870ac082a23ba6c769325c2487ef9f5a3cf9917d8ed')
 
 package() {
   cd $srcdir
