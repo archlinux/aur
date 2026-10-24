@@ -28,12 +28,21 @@ backup=('etc/ocsinventory/ocsinventory-agent.cfg'
     'etc/cron.d/ocsinventory-agent')
 source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v${pkgver}/Ocsinventory-Unix-Agent-${pkgver}.tar.gz"
     "ocsinventory-agent" "ocsinventory-agent.cfg"
-    "ocsinventory-agent.service" "ocsinventory-agent.timer")
+    "ocsinventory-agent.service" "ocsinventory-agent.timer"
+    "screen-serial.patch")
 sha256sums=('477835b3813df4f6e222df5288d8830f838a5a1dbd2914c7d5f89790023fb9c6'
      '71aaa77f9c99f86a11fcedcc6cf8c7f78afa953d877561b36685d06036c098d7'
      '96708ef480c0ec7ba58bc4e9e2074ee3f133965e3c378dca3281aef18cb202b1'
      'b5cddb343e940907c2f785973264c6f60c2b4013f3eb393a9ddfa1597b515f55'
-     'dff1030d95bc55188c219b354bdf1aa5a31b6e7377475ba8f171704ea0caae43')
+     'dff1030d95bc55188c219b354bdf1aa5a31b6e7377475ba8f171704ea0caae43'
+     'ed8cf09cc43651d24b8a55ff420fd1fcf4daa39c285de1ba59b8127fb38ea2d4')
+
+prepare() {
+  cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"
+
+  # https://github.com/OCSInventory-NG/UnixAgent/pull/524
+  patch -Np1 -i "$srcdir/screen-serial.patch"
+}
 
 build() {
   cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"

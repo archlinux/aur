@@ -11,3 +11,4 @@
 !ocsinventory-agent.install
 !ocsinventory-agent.service
 !ocsinventory-agent.timer
+!screen-serial.patch

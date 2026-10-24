@@ -1,0 +1,50 @@
+From 84e55d48b26ee33a686a2f34ffb2374ba6dc7540 Mon Sep 17 00:00:00 2001
+From: executter <executter@hotmail.com>
+Date: Sun, 25 Oct 2026 00:18:30 +0200
+Subject: [PATCH] fix(screen): report every monitor sharing a serial
+
+The EDID holds two serial numbers: a mandatory
+numeric field and an optional ASCII descriptor.
+Some vendors put the same placeholder in the
+numeric field for a whole model: two ViewSonic
+VG2239 both report 16843009 (0x01010101), while
+their ASCII serials are UBW163340362 and
+UBW172840586.
+
+Screen.pm deduplicated monitors on that numeric
+field, so the second monitor was dropped, and the
+placeholder was reported as the serial of the
+first one.
+
+Report the ASCII serial when present, as
+FusionInventory and GLPI-Agent do, and
+deduplicate on the whole EDID: the check still
+removes the copies that get-edid returns for
+every port.
+---
+ lib/Ocsinventory/Agent/Backend/OS/Generic/Screen.pm | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/lib/Ocsinventory/Agent/Backend/OS/Generic/Screen.pm b/lib/Ocsinventory/Agent/Backend/OS/Generic/Screen.pm
+index 37ffff2..ce4bbd4 100644
+--- a/lib/Ocsinventory/Agent/Backend/OS/Generic/Screen.pm
++++ b/lib/Ocsinventory/Agent/Backend/OS/Generic/Screen.pm
+@@ -429,9 +429,12 @@ sub run {
+ 	$caption =~ s/[^ -~].*$//;
+         my $description = $edid->{week}."/".$edid->{year};
+         my $manufacturer = _getManufacturerFromCode($edid->{manufacturer_name});
+-        my $serial = $edid->{serial_number};
+-        if (!exists $found{$serial}) {
+-            $found{$serial} = 1;
++        # the numeric serial is often a placeholder shared by a whole model
++        # (e.g. 0x01010101): prefer the ASCII serial when present, and
++        # deduplicate on the whole EDID
++        my $serial = $edid->{serial_number2} ? $edid->{serial_number2}[0] : $edid->{serial_number};
++        if (!exists $found{$raw_edid}) {
++            $found{$raw_edid} = 1;
+  
+             eval "use MIME::Base64;";
+             $base64 = encode_base64($raw_edid) if !$@;
+-- 
+2.56.0
+
