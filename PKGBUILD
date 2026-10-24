@@ -1,5 +1,5 @@
 pkgname=pollen-commit
-pkgver=0.0.17.37
+pkgver=0.6.11.16
 pkgrel=1
 pkgdesc='Pollen channel alias for pollen-commit-bin'
 arch=('any')
