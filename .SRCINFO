@@ -1,6 +1,6 @@
 pkgbase = bayesian-ssh-bin
 	pkgdesc = A fast multi environment ssh connexion manager
-	pkgver = 2.12.1
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://github.com/abdoufermat5/bayesian-ssh
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = bayesian-ssh-bin
 	depends = gcc-libs
 	provides = bayesian-ssh
 	conflicts = bayesian-ssh
-	source = LICENSE-2.12.1::https://raw.githubusercontent.com/abdoufermat5/bayesian-ssh/v2.12.1/LICENSE
-	source = README-2.12.1.md::https://raw.githubusercontent.com/abdoufermat5/bayesian-ssh/v2.12.1/README.md
+	source = LICENSE-2.13.1::https://raw.githubusercontent.com/abdoufermat5/bayesian-ssh/v2.13.1/LICENSE
+	source = README-2.13.1.md::https://raw.githubusercontent.com/abdoufermat5/bayesian-ssh/v2.13.1/README.md
 	sha256sums = b9836a6627fcb346bc64e118b2ff89f31ea834398cd30721e62855bd31199dbe
 	sha256sums = 4ffc8ce5d9038e4f6794d227048cd6e73873a25e92992b233f7201e3581128d9
-	source_x86_64 = bayesian-ssh-x86_64-2.12.1::https://github.com/abdoufermat5/bayesian-ssh/releases/download/v2.12.1/bayesian-ssh-linux-x86_64
-	sha256sums_x86_64 = 42958c770f6d9cb70f70c028d8e74b31eb8c90694f79a645e840db3952dd196b
+	source_x86_64 = bayesian-ssh-x86_64-2.13.1::https://github.com/abdoufermat5/bayesian-ssh/releases/download/v2.13.1/bayesian-ssh-linux-x86_64
+	sha256sums_x86_64 = bd494d10f0e3acfc3c56b100a615f318bfef62e3d36b85366b96234e6132b2da
 
 pkgname = bayesian-ssh-bin
