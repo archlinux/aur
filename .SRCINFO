@@ -1,0 +1,32 @@
+pkgbase = zstd-x64v2
+	pkgdesc = Zstandard - Fast real-time compression algorithm (x86-64-v2)
+	pkgver = 1.5.7
+	pkgrel = 3
+	url = https://facebook.github.io/zstd/
+	arch = x86_64
+	license = BSD-3-Clause
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	depends = xz
+	depends = lz4
+	provides = zstd=1.5.7
+	provides = libzstd.so
+	conflicts = zstd
+	source = https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.zst
+	source = https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.zst.sig
+	source = https://github.com/facebook/zstd/commit/6af3842118ea5325480b403213b2a9fbed3d3d74.patch
+	validpgpkeys = 4EF4AC63455FC9F4545D9B7DEF8FE99528B52FFD
+	sha256sums = 5b331d961d6989dc21bb03397fc7a2a4d86bc65a14adc5ffbbce050354e30fd2
+	sha256sums = SKIP
+	sha256sums = 7c07be222d45718b81fb16f97e611adfeb24efa0712ca77fb1e08f4c67803ec3
+	b2sums = 20df0493d9d960b8fc98f7cac7630f84dae6226bd906364ab9c9ce7dfb2be44a303fd077e4264979f3ee92efd59072d63c4bb4ae7b65c52f6ce0153513088837
+	b2sums = SKIP
+	b2sums = 02e472b01ead30ebc703f64d35ccbfe1db8a9eae6b15a3690e6e5092c6b8cdfaaca585b31b965d94eea7da04cebd6bcca7f5c8bbf9e2c2e84b4acd7f3ce54e5d
+
+pkgname = zstd-x64v2
