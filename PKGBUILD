@@ -1,7 +1,7 @@
 # Maintainer: Rinne <aur@rinne.in>
 pkgname=your-szu-life-bin
 pkgver=0.10.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Shenzhen University campus life application (prebuilt Debian package)'
 arch=('x86_64')
 url='https://github.com/rinnein/your-szu-life'
