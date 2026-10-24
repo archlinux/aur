@@ -138,7 +138,6 @@ build() {
 
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-  export MAKEFLAGS="${MAKEFLAGS:--j$(nproc)}"
 
   local _cmake_options=(
     -S "$_pkgsrc"
@@ -227,6 +226,5 @@ check() {
 }
 
 package() {
-  export MAKEFLAGS="${MAKEFLAGS:--j$(nproc)}"
   DESTDIR="$pkgdir" cmake --install build
 }
