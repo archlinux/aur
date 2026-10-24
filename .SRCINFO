@@ -1,0 +1,18 @@
+pkgbase = python-pan-os-python
+	pkgdesc = Framework for interacting with Palo Alto Networks devices via API
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://github.com/PaloAltoNetworks/pan-os-python
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-httpx
+	depends = python
+	depends = python-pan-python
+	source = pan-os-python-1.13.1.tar.gz::https://github.com/PaloAltoNetworks/pan-os-python/archive/refs/tags/v1.13.1.tar.gz
+	sha256sums = 1785bce918591b156078f221b9ef445d17676f8b563fd47ce7959a5225c1f739
+
+pkgname = python-pan-os-python

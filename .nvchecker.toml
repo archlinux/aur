@@ -1,0 +1,4 @@
+[python-pan-os-python]
+source = "git"
+git = "https://github.com/PaloAltoNetworks/pan-os-python.git"
+prefix = "v"
