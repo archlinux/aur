@@ -2,7 +2,7 @@
 
 pkgname=trustsight
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
 arch=('any')
 url='https://github.com/emiliano-go/trustsight'
@@ -26,6 +26,9 @@ makedepends=(
   'python-hatchling'
   'python-pytest'
   'python-pytest-xdist'
+  # check() runs the corpus tests, which create a throwaway repository with
+  # the git binary even when the archive carries no checkout.
+  'git'
   # The property-based parser tests import hypothesis; the
   # package's own check() runs the suite.
   'python-hypothesis'

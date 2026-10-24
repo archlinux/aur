@@ -1,7 +1,7 @@
 pkgbase = trustsight
 	pkgdesc = Audits AUR PKGBUILD updates before install: structure, commands, novelty
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emiliano-go/trustsight
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = trustsight
 	makedepends = python-hatchling
 	makedepends = python-pytest
 	makedepends = python-pytest-xdist
+	makedepends = git
 	makedepends = python-hypothesis
 	depends = python
 	depends = python-pygit2>=1.20.0
