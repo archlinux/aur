@@ -2,7 +2,7 @@
 
 pkgname=old-launcher-git
 _name=old_launcher
-pkgver=r41.f64fd19
+pkgver=r65.538c9d3
 pkgrel=1
 pkgdesc='Launcher and addon manager for World of Warcraft 3.3.5a clients'
 arch=('x86_64' 'aarch64')
@@ -52,6 +52,13 @@ build() {
   cd "$_name"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Rust 1.99's LLVM crashes vectorizing libbz2-rs-sys for AVX-512 with fat
+  # LTO, which -C target-cpu=native (CachyOS's makepkg default) turns on
+  # wherever the CPU has it: llvm/llvm-project#229609, fixed in LLVM after
+  # Rust 1.99.1. AVX-512 stays off until a Rust release carries the fix.
+  if [[ $CARCH == x86_64 ]]; then
+    export RUSTFLAGS="$RUSTFLAGS -C target-feature=-avx512f"
+  fi
   cargo build --frozen --release --package "$_name" --bin "$_name"
 }
 
