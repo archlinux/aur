@@ -2,7 +2,7 @@
 
 pkgname=topf-bin
 pkgdesc='Talos orchestrator by PostFinance'
-pkgver=0.6.1 # renovate: datasource=github-tags depName=postfinance/topf versioning=semver
+pkgver=0.6.2 # renovate: datasource=github-tags depName=postfinance/topf versioning=semver
 pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/postfinance/topf"
@@ -25,7 +25,7 @@ case "${CARCH}" in
 esac
 
 source=("topf_linux_${_arch}-${pkgver}.tar.gz::https://github.com/postfinance/topf/releases/download/v${pkgver}/topf_linux_${_arch}.tar.gz")
-sha256sums=('6f399e527cb8588b02d7d28eae9a61c49680f4cd5e82d98be7a5c5001c80d341')
+sha256sums=('793dc87c97a6545fd73db82c3558306644d9e6914010f2636d1470cf55272405')
 
 package() {
   install -Dm755 "${srcdir}/topf" "${pkgdir}/usr/bin/topf"
