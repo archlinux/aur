@@ -27,6 +27,7 @@ pkgbase = quickshell-release-git
 	depends = polkit
 	depends = hicolor-icon-theme
 	provides = quickshell
+	provides = quickshell-git
 	conflicts = quickshell
 	conflicts = quickshell-git
 	source = quickshell::git+https://git.outfoxxed.me/quickshell/quickshell.git

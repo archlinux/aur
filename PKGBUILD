@@ -33,7 +33,7 @@ makedepends=(
   'cmake'
   'git'
 )
-provides=("$_pkgname")
+provides=("$_pkgname" "$_pkgname-git")
 conflicts=("$_pkgname" "$_pkgname-git")
 
 _pkgsrc="$_pkgname"
