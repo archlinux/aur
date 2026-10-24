@@ -1,25 +1,25 @@
 pkgbase = particle-cli
 	pkgdesc = CLI tool for the Particle hardware platform
-	pkgver = 3.47.2
-	pkgrel = 2
-	url = http://particle.io/
+	pkgver = 3.52.3
+	pkgrel = 1
+	url = https://www.particle.io/
 	arch = x86_64
 	arch = aarch64
-	arch = armv7h
-	license = Apache-2.0
+	license = Apache-2.0 AND MIT AND ISC AND BSD-2-Clause AND BSD-3-Clause AND LGPL-2.1-or-later
 	makedepends = npm
-	makedepends = git
-	makedepends = python
 	depends = libusb
-	depends = udev
-	depends = nodejs>=22
+	depends = systemd-libs
+	depends = nodejs>=22.20
 	depends = libxml2-legacy
-	depends = openssl
 	optdepends = dfu-util: local flashing
-	noextract = particle-cli-3.47.2.tgz
-	source = http://registry.npmjs.org/particle-cli/-/particle-cli-3.47.2.tgz
-	md5sums = 0b6e9b6b49de3deca29828476dd57d7e
-	sha256sums = 3deb0c722eaa612ecc8d36cc1364c8b3347c900c9397be797a06dcd8079e4c4d
-	b2sums = 3024e074bb6b38a1e23d0421eb0d5794dfec590d182fc213f893b71233a4b9bd638adb0ef7d1c91274683a8508a3321f1d9daa978c5598ee124bd2e98b4e73aa
+	noextract = particle-cli-3.52.3.tgz
+	options = !debug
+	options = !strip
+	source = https://registry.npmjs.org/particle-cli/-/particle-cli-3.52.3.tgz
+	source = particle-cli-3.52.3-npm-shrinkwrap.json::https://raw.githubusercontent.com/particle-iot/particle-cli/v3.52.3/npm-shrinkwrap.json
+	sha256sums = f103037f16fde6ca4a270eab2110c57516e59a1f5eee4e15f82d1fa8bb8c147e
+	sha256sums = 8d05a2fa40ce34587d3b9ec360540e8b66a8cc6712af4ffa3332bc8949b7f96f
+	b2sums = 4caf5a053a22f9bf1cf5af85493563bd9339dd2b9c44afb170ddf1788a0307f9c79b050f82e41aa5733664dcfb6e977ed2c10e5014d283131d5f6f2d6dee7e3d
+	b2sums = 9f6c7446651e0053aeacd4feafaaa9c1202915579162f3293cf7859c17f99d4cb46533d0a0d5b0f4a0c3e100b7e3013ef4ac2672787a82d9a1015ff51971b7ab
 
 pkgname = particle-cli
