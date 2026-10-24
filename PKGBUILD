@@ -1,8 +1,7 @@
 # Maintainer: sga013
-_pkgauthor=Lenivaya
 _pkgname=qrrs
 pkgname=${_pkgname}-bin
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='QRrs is a simple, cross-platform, command-line utility written in rust for working with qr codes (what actually follows from the name).'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -14,7 +13,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 
-sha256sums=('4f26de442e47bd498f4f75757547bab5d969f32cf99bb5d1b024cbc2fb491ec0')
+sha256sums=('289f1a4597317b50c7f52fdb8672a4f2c38730ea756ca8c3052029c451f5b8dd')
 
 prepare() {
 	cd $srcdir
