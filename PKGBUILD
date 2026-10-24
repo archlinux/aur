@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A sleek typing test experience in terminal."
 
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=(!strip)
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('8aa1935bf7182fb739dcbcc225ce6f2aed132674402797eb483c99ff6a65dd90')
-sha256sums_i686=('88b7bb1abd453eb9c67a0f70f9cd2fc2438bae94edc6bae29c2b6176e0d83f54')
-sha256sums_aarch64=('afdbe29a145f6b73a1111778a53c96ab44b09e6f819bc39f296b915d80106062')
+sha256sums_x86_64=('9221f33f1af89f79ef0c16da3bd4490046389f9ebac744b39c3c6f1654b204d7')
+sha256sums_i686=('16de55a9cfd06954ba8f6c9a96741f671d926f4ae5ec75d5d5900f6df7f0491f')
+sha256sums_aarch64=('3120dbfaba331244b4d3963eb4fc3963931786de48f77e27920fc95aa81b5c57')
 
 package() {
 	cd "${srcdir}/" || exit
