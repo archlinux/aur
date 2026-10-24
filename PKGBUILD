@@ -7,7 +7,7 @@ _pkgname='thorium-browser'
 pkgname="${_pkgname}-beta-avx-bin"
 pkgbase="${pkgname}"
 pkgver=156.0.8078.28
-pkgrel=1
+pkgrel=2
 pkgdesc='AVX beta build of the Chromium fork focused on performance'
 url='https://github.com/gz83/thorium'
 license=(
@@ -168,6 +168,23 @@ package() {
 	if ! grep -q '<content_rating type="oars-1.1"' "${metainfo_file}"; then
 		sed -i '/<url type="bugtracker">/i\  <content_rating type="oars-1.1"/>' \
 			"${metainfo_file}"
+	fi
+
+	# Keep the alternate desktop ID available without creating a duplicate launcher.
+	local primary_desktop="${pkgdir}/usr/share/applications/thorium-browser.desktop"
+	local alias_desktop="${pkgdir}/usr/share/applications/org.chromium.Thorium.desktop"
+	if [[ ! -f ${primary_desktop} || ! -f ${alias_desktop} ]]; then
+		printf 'Missing Thorium browser desktop entry\n' >&2
+		return 1
+	fi
+	sed -i \
+		-e '/^NoDisplay=/d' \
+		-e '/^\[Desktop Entry\]$/a NoDisplay=true' \
+		-- "${alias_desktop}"
+	if ! grep -Fxq 'NoDisplay=true' "${alias_desktop}" ||
+		grep -Eq '^(NoDisplay|Hidden)=true$' "${primary_desktop}"; then
+		printf 'Expected exactly one visible Thorium browser launcher\n' >&2
+		return 1
 	fi
 
 	# thorium-shell
