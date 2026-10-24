@@ -1,0 +1,5 @@
+[python-microstructpy]
+source = "github"
+github = "kip-hart/MicroStructPy"
+use_latest_release = "true"
+prefix = "v"
