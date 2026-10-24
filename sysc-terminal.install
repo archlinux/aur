@@ -6,6 +6,9 @@ post_install() {
                        ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀
                       //  SEE YOU SPACE COWBOY //
 
+v0.3.0 adds the L2A1 SAR, statue and fighter effects, and Higgs Field.
+Models gain particle shading, flight motion and Napoleon dissolution.
+
 Select an effect in sysc-shell Settings, or run sysc-terminal --list.
 Docs: https://nomadcxx.github.io/sysc/docs/
 

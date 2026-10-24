@@ -1,18 +1,22 @@
 pkgbase = sysc-terminal
 	pkgdesc = Live terminal-art wallpapers for Niri
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/sysc-terminal
 	install = sysc-terminal.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = CC0-1.0
+	license = CC-BY-4.0
 	license = CC-BY-NC-4.0
+	license = CC-BY-SA-4.0
+	license = CC-BY-NC-SA-4.0
 	makedepends = go>=1.26.4
 	depends = niri
 	depends = ttf-jetbrains-mono
 	optdepends = sysc-shell: select effects from the desktop
-	source = sysc-terminal-0.2.0.tar.gz::https://github.com/Nomadcxx/sysc-terminal/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 641c872c959472eedea1eede01bb369580a24d4007d5f536e6749e0bb6f7d9d0
+	source = sysc-terminal-0.3.0.tar.gz::https://github.com/Nomadcxx/sysc-terminal/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 1de705ccc45ca9bf7efe434fd4b7ae14fb1b4a35b0e195ce1421dfcc5e55e960
 
 pkgname = sysc-terminal
