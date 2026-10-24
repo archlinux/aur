@@ -12,7 +12,7 @@ optdepends=('python-pipx: for Material You color generation support'
             'kvantum: for Kvantum theme support'
             'klassy: for window decoration preset switching support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf849f892a62b1047334f897539ae331902934167dbb8efac5d81da82ad9f387')
+sha256sums=('cf99fcfb6a9f0fd0a986cd836f320c67329122bfe0d4ef1067f8babef06e21ac')
 install="$pkgname.install"
 
 build() {

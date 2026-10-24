@@ -16,6 +16,6 @@ pkgbase = plasma-theme-master
 	optdepends = kvantum: for Kvantum theme support
 	optdepends = klassy: for window decoration preset switching support
 	source = plasma-theme-master-2.1.0.tar.gz::https://github.com/SonOfMithras/plasma-theme-master/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = bf849f892a62b1047334f897539ae331902934167dbb8efac5d81da82ad9f387
+	sha256sums = cf99fcfb6a9f0fd0a986cd836f320c67329122bfe0d4ef1067f8babef06e21ac
 
 pkgname = plasma-theme-master
