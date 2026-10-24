@@ -6,8 +6,8 @@ post_install() {
                        ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀
                       //  SEE YOU SPACE COWBOY //
 
-v1.0.9 adds animations for the Australian L2A1 SAR, historical models,
-rotating statues, and fighter jets. Model shading also improves.
+v1.0.10 adds Higgs field particles, clearer Braille shading, aircraft
+flight motion, and Napoleon's dissolve-and-reform cycle.
 
 BANNER
 }
