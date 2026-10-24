@@ -1,0 +1,26 @@
+_reload_btusb() {
+    if lsmod | grep -q '^btusb '; then
+        echo "==> Reloading btusb module to apply Realtek RTL8761BU firmware in RAM..."
+        modprobe -r btusb 2>/dev/null || true
+        sleep 1
+        modprobe btusb 2>/dev/null || true
+        if systemctl is-active --quiet bluetooth.service; then
+            systemctl restart bluetooth.service 2>/dev/null || true
+        fi
+    fi
+}
+
+post_install() {
+    _reload_btusb
+    echo "==> RTL8761BU firmware 0xddd5c761 (Bluetooth 5.4) installed into /usr/lib/firmware/updates/rtl_bt/"
+    echo "==> Verify with: journalctl -b -k | grep -i 'RTL:'"
+}
+
+post_upgrade() {
+    _reload_btusb
+}
+
+post_remove() {
+    _reload_btusb
+    echo "==> Removed RTL8761BU firmware override; reverted to default linux-firmware-realtek."
+}

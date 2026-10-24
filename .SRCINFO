@@ -1,0 +1,18 @@
+pkgbase = rtl8761bu-firmware
+	pkgdesc = Updated Realtek RTL8761BU Bluetooth 5.4 firmware (0xddd5c761) fixing Xbox Series X|S controller disconnects
+	pkgver = 1.9.1038.3023
+	pkgrel = 1
+	url = https://github.com/yurinogueira/rtl8761bu-firmware
+	install = rtl8761bu-firmware.install
+	arch = any
+	license = LicenseRef-rtlwifi
+	makedepends = zstd
+	depends = linux-firmware-realtek
+	source = https://github.com/yurinogueira/rtl8761bu-firmware/raw/main/rtl8761bu_fw.bin
+	source = https://github.com/yurinogueira/rtl8761bu-firmware/raw/main/rtl8761bu_config.bin
+	source = https://github.com/yurinogueira/rtl8761bu-firmware/raw/main/LICENSE
+	sha256sums = f48cf7124028206bb049740cd4cb0c63c5ad6315febec19f5cf248138b663a47
+	sha256sums = 6c28a3f07c6a30ed208c4b64862a23f02b7d93543ea980edd24df16bab45095f
+	sha256sums = a61351665b4f264f6c631364f85b907d8f8f41f8b369533ef4021765f9f3b62e
+
+pkgname = rtl8761bu-firmware
