@@ -1,7 +1,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=g-tmce
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="PySide6 app for creating and extracting MKV files with TMDB metadata"
 arch=('any')
@@ -10,10 +10,12 @@ license=('GPL-3.0-only')
 depends=(
   'hicolor-icon-theme'
   'python'
-  'pyside6>=6.11.2'
-  'python-certifi>=2026.07.22'
-  'python-pillow>=12.3.0'
+  'pyside6>=6.12.0'
+  'python-certifi>=2026.10.19'
+  'python-pillow>=13.0.0'
   'python-faster-whisper>=1.2.1'
+  # The AUR binary package is still at 4.8.2, which remains compatible with
+  # this release. Keep it rather than requiring an unavailable 4.8.3 binary.
   'python-ctranslate2-bin>=4.8.2'
   'python-sentencepiece>=0.2.2'
 )
@@ -24,7 +26,7 @@ optdepends=(
 # Keep the cached source filename unique for each package revision. This avoids
 # checksum failures when an upstream tag is ever rebuilt.
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8e9cf4a77fe706d7ccac34db9b728a0d77694c3a4e1c23fd9fbd916687c3c505')
+sha256sums=('798ffdb47e82b6c02e226abcb9a80e9ae99bb573e188c6eb60f22b630b8bbf7d')
 
 package() {
   cd "G-TMCE-${pkgver}"
