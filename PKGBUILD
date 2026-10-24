@@ -3,7 +3,7 @@
 
 pkgname=jcodemunch-mcp
 _pkgname=jcodemunch_mcp
-pkgver=1.108.396
+pkgver=1.108.397
 pkgrel=1
 pkgdesc="Token-efficient MCP server for source code exploration via tree-sitter AST parsing"
 arch=(any)
@@ -44,7 +44,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz"
   use-installed-binary.patch
 )
-sha256sums=('6251ad3207d9b7d4bc2142d76636f5583640f0398420385c21538a29ea5e2bbf'
+sha256sums=('eab4bd88950f80168b2b7f7482532beffaaba0814600b92defd6754ed9898add'
             'e02de7f798b232c1e373066d83d8fa0c801c539bf25cc423b2b2383080f17e1c')
 
 prepare() {
