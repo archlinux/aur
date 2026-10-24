@@ -3,16 +3,16 @@
 #
 # Ships the host side of waydroid-nvidia (Shiro836/waydroid-nvidia v0.2.0-rc10) with the patches of
 # https://github.com/cagedbird043/waydroid-a17-nvidia (A17 vendor support, KernelSU seccomp, hwcomposer
-# clipboard, host folder sharing), the nvidia-prolapse vendor image built from that repository
-# (NVK + ANGLE, NVDEC, freeform cards, host IME), the native bundle it was built against (rc10 with a
-# dual-queue NVK that also carries the upstream fix for 3D views of 2D images) and a KWin script that
-# reopens cards where they were closed.
+# clipboard, host folder sharing, the rc11 video and NVK fixes), the nvidia-prolapse vendor image built from that
+# repository (NVK + ANGLE, NVDEC, freeform cards, host IME), the native bundle it was built against (dual-queue NVK,
+# Rust RM with the rc11 video decoder, Codec2 service built against Android 17) and a KWin script that reopens
+# cards where they were closed.
 # The Android system image is not included: waydroid-nvidia-setup downloads it (see post_install).
 
 pkgname=waydroid-a17-nvidia-bin
-pkgver=20261024.5
+pkgver=20261025.1
 pkgrel=1
-_tag=a17-20261024-5
+_tag=a17-20261025-1
 _wn_sha=29ffa3a237b0d79a751748bd9bb82c50dd577808      # waydroid-nvidia v0.2.0-rc10 release notes commit
 _wn_tag=v0.2.0-rc10
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
@@ -30,7 +30,7 @@ depends=(
   # host Venus renderer (venus driver mode)
   'libepoxy' 'libdrm' 'mesa' 'libx11' 'expat' 'vulkan-icd-loader'
 )
-makedepends=('zstd')
+makedepends=('zstd' 'git')   # git apply: the waydroid-nvidia patches carry binary test streams
 optdepends=(
   'nvidia-open: the NVIDIA open kernel module the vendor image runs on'
   'kernelsu-dkms: root in the container (see the repository kernelsu/README.md)'
@@ -62,23 +62,25 @@ noextract=(
   "waydroid-a17-nvidia-native-x86_64-$_tag.tar.zst"
 )
 sha256sums=('4dc67241bf35189d4490306611f7f52e49117d04511a60999e96328f010dd84f'
-            'b4b3c25b9467be03c7788c500ea17ffc70ee14586084cb39cac8da77b837bc42'
+            'b85b8b93bcabc968a129b31c167c9b5ed3963c34ebee10a03058b67ba8cd8fb6'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
             '124106f95e1b35c75eed8a966ab66284760fd6d02c79ad9fadd88355d4e3a2d7'
             '5fa325de02c2ef9c13f972efba98e27cdf4d2d48c0a33cf9a884ade8eaa74c50'
             '3fe5822ca2b9ed3aa6fcd9c9627679a04592837b947d7754911c3ab4c1007ec2'
-            '2d07884f603bf1b1bc5c5ecd82975828907a6f433ce7eec64beb912346672409'
-            '7027eda2b6f44bedce7e232c2e060ecb95c77d268663e73fff381ab1c72f01ca'
-            '92c5c924ec00b7caadaadf0d4a62dfdf8cc15526bf8fbd9e7170cfc1b20b465c'
-            '5466848812142e005533bea488f6912f35b610392f19766f55bf232543c7ba27'
-            'ecd4a03656425695b49e773d5d7a7a613b23fb8dcc67b91c4da6013adc96607b'
-            'adbe26496c9b0b28c8857af95c7e29c9ceb68fefa75a71eed5080e6ac8d7ceef')
+            '1d30484d81f2a732c75a429df1ef6e1ae2afe3f8746b7383b389ea546757fb4a'
+            'aa2126bc02e72c71ed7048bcfd4e66eea13d20332a314700a7e6903b4d8de06c'
+            '8d16155121b6afd5cafc7f6b82134a16c97c69b090127be9fac83d2949b59674'
+            '5116ff558dc1296fd8ec66b618b4cc683d6d8fe6cd4130bc2fbd88129fcdb349'
+            '768e6295384e9427fad137a052b954885381e0d4a5d8f606b9183a90c9f2a80f'
+            'fe24dfc94252f161c7cbc827b97738af1f16b74115c73eb2bab8bc28836491b4')
 
 prepare() {
   local wn="$srcdir/waydroid-nvidia-$_wn_sha" a17="$srcdir/waydroid-a17-nvidia-$_tag" p
+  # outside any repository: inside one (makepkg run from a git checkout) git apply would silently skip every path
   for p in "$a17"/patches/waydroid-nvidia/*.patch; do
-    patch -s -d "$wn" -p1 < "$p"
+    GIT_CEILING_DIRECTORIES="$srcdir" git -C "$wn" apply --whitespace=nowarn "$p"
   done
+  grep -q 'rustc-cdylib-link-arg=-Wl,-soname' "$wn/nvidia-prolapse/driver-source/native/build.rs"
 
   cd "$srcdir/waydroid-$_waydroid_sha"
   patch -s -p1 < "$wn/patches/waydroid/0001-nvidia-integration.patch"
