@@ -2,13 +2,14 @@
 
 _name=databricks-sdk
 pkgname=python-$_name
-pkgver=0.156.0
+pkgver=0.157.0
 pkgrel=1
 pkgdesc='Databricks SDK for Python (Beta).'
 arch=('any')
 url='https://github.com/databricks/databricks-sdk-py'
 license=('Apache-2.0')
 depends=('python'
+         'python-certifi'
          'python-requests'
          'python-google-auth'
          'python-protobuf'
@@ -35,7 +36,7 @@ optdepends=('ipython: notebook'
             'python-protobuf: sandbox'
             'python-grpcio: sandbox')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bdbada75b60f93dd05a4fd52628f9f9d34a483ec3f8eb4658764b04025daaa6c')
+sha256sums=('e93dfbfbcc5967240dcbbd2933157667f37a072f14b96422b82a0ad6d7acfd79')
 
 build() {
   cd "$_name-py-$pkgver"
