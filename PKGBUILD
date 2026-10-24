@@ -17,7 +17,10 @@ depends=('perl' 'which' 'dmidecode' 'pciutils'
      'perl-net-ip' 'perl-xml-simple' 'perl-net-snmp')
 optdepends=('perl-proc-daemon: daemon mode (--daemon)'
      'perl-proc-pid-file: prevent concurrent runs'
-     'smartmontools')
+     'perl-edid: monitor inventory'
+     'perl-net-netmask: SNMP network scan'
+     'smartmontools: disk model, firmware and serial numbers'
+     'ipmitool: BMC network interface inventory')
 makedepends=('perl-module-install')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg'
