@@ -5,13 +5,13 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.13.0
+pkgver=5.14.0
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.13.0.tar.gz")
-sha256sums=('8982019e70a73113f92b3ec8b961bf21b52c233c8efd32bf4a78eeeb85b8e508')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.14.0.tar.gz")
+sha256sums=('94ce851db4cceeb1c50fa29cb00cca57c341fcb05fd9dfb85017f4145981f4ef')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -22,6 +22,7 @@ optdepends=('lm_sensors: broader temperature and fan sensor coverage'
             'nvidia-utils: NVIDIA GPU metrics via nvidia-smi'
             'pciutils: GPU model identification via lspci'
             'pipewire: name apps using the microphone or camera via pw-dump'
+            'playerctl: media player data and controls'
             'zenity: tray and desktop confirmation prompts')
 provides=('system-bridge')
 options=('!strip')
