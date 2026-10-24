@@ -1,0 +1,11 @@
+--- a/opt/google/chrome-remote-desktop/shared_lib.py
++++ b/opt/google/chrome-remote-desktop/shared_lib.py
+@@ -1445,7 +1445,7 @@
+     self.randr_add_sizes = True
+     self.xorg_conf = config_file.name
+ 
+-    xorg_binary = "/usr/lib/xorg/Xorg";
++    xorg_binary = "/usr/lib/Xorg";
+     if not os.access(xorg_binary, os.X_OK):
+       xorg_binary = "Xorg";
+ 

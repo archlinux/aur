@@ -19,7 +19,7 @@ source=(
   "${pkgname}-${pkgver}.deb::https://dl.google.com/linux/${pkgname}/deb/pool/main/c/${pkgname}/${pkgname}_${pkgver}_amd64.deb"
   "pamrule"
   "crd"
-  "xdg-base-directory.patch"
+  "xorg-binary-path.patch"
 )
 sha256sums=('39701c6951b3d9edff08143dccad919468e1866b9897c873141dc4f66baaff72'
             'fcc38269eb1cc902abff9688eda9377a22367e39b9f111f87c0dd8e77adb82e2'
@@ -40,8 +40,11 @@ prepare() {
   rm -rf "${srcdir}/etc/init.d"
   rm -rf "${srcdir}/etc/pam.d"
 
-  # Fix problem with missing import xdg.BaseDirectory, fixing xorg_binary location
-  patch -Np1 -i "${srcdir}/xdg-base-directory.patch"
+  # Upstream probes /usr/lib/xorg/Xorg and otherwise falls back to "Xorg" from
+  # PATH, which on Arch is the suid wrapper /usr/bin/Xorg; the wrapper refuses
+  # to start the server for non-console users, so the CRD systemd user session
+  # would never get a display.
+  patch -Np1 -i "${srcdir}/xorg-binary-path.patch"
 }
 
 package() {
