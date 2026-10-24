@@ -2,7 +2,7 @@
 # Contributor: Ethan Geller (ethang@valvesoftware.com)
 
 pkgname=steamdeck-dsp
-_srctag=1.02
+_srctag=1.03
 pkgver=${_srctag#galileo-}
 pkgrel=1
 arch=(x86_64)
