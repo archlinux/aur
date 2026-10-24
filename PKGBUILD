@@ -1,16 +1,17 @@
 # Maintainer: nizne <nizne@outlook.com>
 pkgname=pwdsafety-git
 _pkgname=pwdsafety
-pkgver=0.4.2.r6.g4b0571e
+pkgver=0.4.2.r7.g5f6ef41
 pkgrel=1
 pkgdesc='Command line tool that checks how much a password is safe (Git version)'
-arch=('x86_64' 'aarch64' 'i686')
+arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url='https://github.com/edoardottt/pwdsafety'
 license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go' 'git')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "${_pkgname}-bin")
+options=('!strip' '!debug')
 source=("git+https://github.com/edoardottt/pwdsafety.git")
 sha256sums=('SKIP')
 
