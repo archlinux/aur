@@ -2,9 +2,9 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust; one install command for the repositories, the AUR, Flatpak and Snap. Arch Linux and Arch-based distributions; no desktop needed; works on a plain text console (tty)"
+pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, in Rust; one tool for the repos, the AUR, Flatpak and Snap: install, search, update, lock, clean. Arch and Arch-based distros; no desktop needed; works on a text console (tty)"
 arch=('x86_64')
 url="https://github.com/jetomev/nog"
 license=('GPL-3.0-or-later')
@@ -26,12 +26,12 @@ backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
 # v1.8.0: no debug package — the release binary carries no debug symbols, and
 # makepkg's attempt printed "No debugging symbols" in every build (Javier, 4 Oct)
 options=('!debug')
-# SKIP is the submission-time placeholder. Before pushing to AUR, run
-# `updpkgsums` in the AUR clone to replace SKIP with the real sha256 of the
-# signed GitHub release tarball for the tag being packaged.
+# The tarball's sha256 comes from the release's signed SHA256SUMS (the tarball is
+# reproducible: git archive --mtime of the tag, gzip -n). The .asc is checked by
+# validpgpkeys instead, so its checksum is SKIP.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('f985c183258ad8aa10246ed1e3ff7cf4e4255afb539543127b4256410eca7639'
+sha256sums=('fc6ed6880e7ce1294b095571d58bc59cec804859d63d9923ecc54832485fd897'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
