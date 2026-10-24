@@ -1,7 +1,7 @@
 pkgbase = obs-plugin-input-overlay
 	pkgdesc = obs-studio plugin to show keyboard, gamepad and mouse input on stream.
-	pkgver = 5.1.0.r56.g673e594
-	pkgrel = 3
+	pkgver = 5.1.1.r0.g3ebbbaf
+	pkgrel = 1
 	url = https://github.com/univrsal/input-overlay
 	arch = x86_64
 	groups = obs-plugins
@@ -20,9 +20,9 @@ pkgbase = obs-plugin-input-overlay
 	depends = libstdc++
 	depends = libgcc
 	depends = libxrandr
-	source = git+https://github.com/univrsal/input-overlay.git#commit=673e594cebc5e686a49c1012b9c7b572dee0c549
-	source = obs-plugin-input-overlay-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git#commit=a41658fb2bef7503a3bcb305ab8bf849755fe906
-	sha256sums = 7a3754edacca7f1623640dd91eae98bfaa0334d2e27ddb98cf10a5b95548b477
-	sha256sums = f2f7e88e01c480f34ac79f4161635105afccab22c8fb4388ca4b48ae62b01238
+	source = git+https://github.com/univrsal/input-overlay.git#commit=3ebbbafeb2e9a8f8d114db8f48455e36a82e0ca4
+	source = obs-plugin-input-overlay-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git
+	sha256sums = d0b99b26f39ca10e3b80cbeed50f0b789d417dcf1e171e954200d72f89fdf385
+	sha256sums = SKIP
 
 pkgname = obs-plugin-input-overlay

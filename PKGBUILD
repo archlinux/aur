@@ -4,8 +4,8 @@
 
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
-pkgver=5.1.0.r56.g673e594
-pkgrel=3
+pkgver=5.1.1.r0.g3ebbbaf
+pkgrel=1
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
 arch=("x86_64")
@@ -13,12 +13,12 @@ url="https://github.com/univrsal/${_pkgname}"
 license=('GPL-2.0-only')
 depends=('obs-studio' 'libxtst' 'libxkbfile' 'sdl2' 'qt6-base' 'libxt' 'libstdc++' 'libgcc' 'libxrandr')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland-protocols' 'patchelf')
-_commit='673e594cebc5e686a49c1012b9c7b572dee0c549'
+_commit='3ebbbafeb2e9a8f8d114db8f48455e36a82e0ca4'
 source=(
 	"git+https://github.com/univrsal/${_pkgname}.git#commit=${_commit}"
-	"$pkgname-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git#commit=a41658fb2bef7503a3bcb305ab8bf849755fe906")
-sha256sums=('7a3754edacca7f1623640dd91eae98bfaa0334d2e27ddb98cf10a5b95548b477'
-            'f2f7e88e01c480f34ac79f4161635105afccab22c8fb4388ca4b48ae62b01238')
+	"$pkgname-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git")
+sha256sums=('d0b99b26f39ca10e3b80cbeed50f0b789d417dcf1e171e954200d72f89fdf385'
+            'SKIP')
 
 _srcdir="${_pkgname}"
 
@@ -33,12 +33,12 @@ pkgver() {
 prepare() {
 	cd "${_srcdir}"
 
-	#git submodule init
-	#git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook-TolikPylypchuk"
-	#git -c 'protocol.file.allow=always' submodule update
+	git submodule init
+	git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook-TolikPylypchuk"
+	git -c 'protocol.file.allow=always' submodule update
 
-	rmdir 'deps/libuiohook' || rm 'deps/libuiohook'
-	ln -s "$srcdir/$pkgname-libuiohook-TolikPylypchuk" 'deps/libuiohook'
+	#rmdir 'deps/libuiohook' || rm 'deps/libuiohook'
+	#ln -s "$srcdir/$pkgname-libuiohook-TolikPylypchuk" 'deps/libuiohook'
 
 	sed -i \
 		-e '/<QJsonDocument>/a #include <bit>/' \
