@@ -1,6 +1,6 @@
 pkgbase = mercurio-bin
 	pkgdesc = Apprise-compatible Rust library, CLI and HTTP server to send notifications to 150+ services via a single URL.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/AlphaJack/mercurio
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = mercurio-bin
 	options = !strip
 	options = !debug
 	backup = etc/mercurio/mercurio.env
-	source_x86_64 = mercurio-bin-0.2.2-x86_64-unknown-linux-musl.tar.xz::https://github.com/AlphaJack/mercurio/releases/download/v0.2.2/mercurio-cli-x86_64-unknown-linux-musl.tar.xz
-	b2sums_x86_64 = aca87ba6e4066abe0560aeae13079e25abe2af52c0c834675b85f5691c74fdfdbea3bdc6b7df5531890cc18150415f159486f1509436e3acc7430bafb7f83d4c
-	source_aarch64 = mercurio-bin-0.2.2-aarch64-unknown-linux-musl.tar.xz::https://github.com/AlphaJack/mercurio/releases/download/v0.2.2/mercurio-cli-aarch64-unknown-linux-musl.tar.xz
-	b2sums_aarch64 = 0dcdccca7b978f50a9c92bb598b732938e598eab747ac13f7c39d5963af6c2815dc1312daef1e84481c029bae2681adc22cbe0094ab7c939b5011b7443312a13
-	source_armv7h = mercurio-bin-0.2.2-armv7-unknown-linux-musleabihf.tar.xz::https://github.com/AlphaJack/mercurio/releases/download/v0.2.2/mercurio-cli-armv7-unknown-linux-musleabihf.tar.xz
-	b2sums_armv7h = 75d958d1fc6b82b019a6054d998dc002bbf6d6b43af6952c01ea0309743522a121631af638ee8966581081b609569af53d43ad53710cf0eec553f249038aa72b
+	source_x86_64 = mercurio-bin-0.2.3-x86_64-unknown-linux-musl.tar.xz::https://github.com/AlphaJack/mercurio/releases/download/v0.2.3/mercurio-cli-x86_64-unknown-linux-musl.tar.xz
+	b2sums_x86_64 = 054d6cc870e4e2a803f016513a58246d6cf0e4e305619841fce9aa56ff69bb480e4e1ae54832e498c6e6ca21da3013819e91af174dc9e03a1a6e912bd98789ed
+	source_aarch64 = mercurio-bin-0.2.3-aarch64-unknown-linux-musl.tar.xz::https://github.com/AlphaJack/mercurio/releases/download/v0.2.3/mercurio-cli-aarch64-unknown-linux-musl.tar.xz
+	b2sums_aarch64 = 58e80d1b5e90827a28a1484ca63a1d7eebc20b11f6c9bd25051bc4a94bb12f9cefc7639e755cad16eeb472af671ab0bbe854e56871f3d7896871347662b5886f
+	source_armv7h = mercurio-bin-0.2.3-armv7-unknown-linux-musleabihf.tar.xz::https://github.com/AlphaJack/mercurio/releases/download/v0.2.3/mercurio-cli-armv7-unknown-linux-musleabihf.tar.xz
+	b2sums_armv7h = 60a7fb569965e1af5d7b1db2afd953d4a6ede17151904bcd1541675c6f329b742443b02080bd93b46700d690a618e0c1bfbdb04f45c89e966a9d2e495efb74d4
 
 pkgname = mercurio-bin
