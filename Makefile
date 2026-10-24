@@ -5,17 +5,21 @@ init:
 	yay -S --needed devtools nvchecker namcap shellcheck
 
 clean:
-	rm -rf pkg src *.deb *.pkg.tar.zst *.log
+	while read f; do rm -r $$f &>/dev/null || :; done < .gitignore
 
 build:
-	pkgctl build
 	makepkg --printsrcinfo > .SRCINFO
+	pkgctl build
 
 install: build
 	makepkg --install
 
 upgrade:
-	pkgctl version upgrade
+	if [ -f .nvchecker.toml ]; then	\
+		pkgctl version upgrade;	\
+	else				\
+		updpkgsums;		\
+	fi
 
 verify:
 	shellcheck --shell=bash --exclude=SC2034,SC2154,SC2164 PKGBUILD
