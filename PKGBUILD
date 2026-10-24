@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=pam-ssh-agent
-pkgver=0.9.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='PAM module for ssh-agent based authentication'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo')
 depends=('pam' 'sudo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('f5f620cc49494956a805f4e9b54e13464b8d71b7d6745c04d738641cd7e20a1e')
+sha256sums=('2ab3b79438e479b9181159c53458890e9e3584934b31f923a939d1935a293eae')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
