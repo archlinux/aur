@@ -1,11 +1,16 @@
 pkgbase = prikk
-	pkgdesc = A placeholder package for prikk
-	pkgver = 0.0.0
+	pkgdesc = A version control system, built from the signed source tag
+	pkgver = 0.54.1
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/prikk
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
-	source = prikk-0.0.0.tar.gz::https://github.com/prikk-vcs/prikk/archive/refs/tags/0.0.0.tar.gz
-	sha256sums = DUMMY-FOR-INITIALIZATION
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	source = git+https://github.com/prikk-vcs/prikk.git#tag=0.54.1?signed
+	validpgpkeys = 25757DA6CBF7022C4E14CCAC1B3066B87DB99A34
+	sha256sums = SKIP
 
 pkgname = prikk
