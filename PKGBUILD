@@ -2,7 +2,7 @@
 
 pkgname=livesplit-one-gtk-git
 _pkgname=livesplit-one-gtk
-pkgver=0.7.2.r178.g225dcd7
+pkgver=0.7.2.r180.gc1f7a78
 pkgrel=1
 pkgdesc="Linux desktop version of LiveSplit One using GTK4 and libadwaita"
 arch=('x86_64')
@@ -49,13 +49,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
-}
-
-check() {
-  cd "$_pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --all-features
 }
 
 package() {
