@@ -8,10 +8,10 @@
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=kahawai-gstreamer
 
 pkgname=kahawai
-_tag=0.0.22-rc.1
+_tag=0.0.24-rc.1
 # The stamped commit the release was built from, which `kahawai --version`
 # and a satellite's hello report. From the release notes.
-_commit=c49e093c79bdd06a72bc2aa34f2c3122d9e60b06
+_commit=a99782e84a269bd6b2218fe29e3d6460b8df2b52
 pkgver=${_tag/-rc./rc}
 pkgrel=1
 # The GStreamer this release's patch set was built for. Exact: kahawai and
@@ -43,7 +43,7 @@ source=("https://github.com/iksteen/kahawai/releases/download/v$_tag/kahawai-$_t
         kahawai-hub.service
         kahawai-mediahost.service
         kahawai-transcoder.service)
-sha256sums=('e462f3ac120062c1b88df1ce831a18983d0bba1f2cbf70940910e61e2028b8e3'
+sha256sums=('1e0808b7162bb9b48b1a6745e47c94d32c9b37e8de1040223e2617566cbcd968'
             'd865db520499a83a564a1dd7ff586db8944de0d4015056f69e224359c0b190db'
             'defd1b5741b7bc13ad1c66c368daf1e93075a8e940cd7810bc642aa0e385ff23'
             '73baebedb951be68563bf9ccfd8ec3c7203caf5080cead15069d8ebc6bbc76e6'
