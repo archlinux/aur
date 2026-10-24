@@ -1,4 +1,5 @@
 # Maintainer: Arti Zirk <arti.zirk@gmail.com>
+# Maintainer: Aaron Friesen <aaron@frie.dev>
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=git-subrepo-git
