@@ -1,0 +1,5 @@
+[podmutt-bin]
+source = "github"
+github = "susamn/podmutt"
+use_latest_release = true
+prefix = "v"
