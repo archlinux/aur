@@ -1,0 +1,24 @@
+pkgbase = amorphis
+	pkgdesc = Small fail-closed screen locker for Wayland and X11
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dani-77/amorphis
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = pam
+	options = !debug
+	backup = etc/pam.d/amorphis
+	source = amorphis-0.1.0.tar.gz::https://github.com/dani-77/amorphis/archive/refs/tags/v0.1.0.tar.gz
+	source = amorphis.pam
+	sha256sums = f4e74759840855a0e79cad9f7fa2cd100b611ccf7f300cb8a90a3e3b18f01278
+	sha256sums = b23a0ff8022f51f692b498fb3c78d467ea6575e0ccf9d42fc4172ff539116a9a
+
+pkgname = amorphis
