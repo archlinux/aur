@@ -17,4 +17,9 @@ post_install() {
 
 post_upgrade() {
   udevadm control --reload
+  if [ "$(vercmp "$2" 0.3.0)" -lt 0 ]; then
+    echo ">>> The GPU now runs through Vulkan: install ncnn for GPU acceleration."
+    echo ">>> ROCm/CUDA builds of onnxruntime are no longer used; to save space:"
+    echo ">>>   sudo pacman -S python-onnxruntime-cpu"
+  fi
 }
