@@ -1,7 +1,7 @@
 pkgbase = thorium-browser-beta-bin
 	pkgdesc = Beta build of the Chromium fork focused on performance and security
 	pkgver = 156.0.8078.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gz83/thorium
 	arch = aarch64
 	arch = i686
