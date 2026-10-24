@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-sway
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Sway compositor)"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,11 @@ depends=('greetd' 'kitty' 'sway' 'gslapper')
 optdepends=(
     'swww: Legacy wallpaper support (fallback)'
 )
-makedepends=('go>=1.25')
+makedepends=('go>=1.26')
 provides=('sysc-greet')
 conflicts=('sysc-greet' 'sysc-greet-hyprland' 'sysc-greet-cagebreak' 'sysc-greet-mango')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d62d4b0e485d0b3681af0643ff2866dc75dd40bd1bafbe6f4ce0d2506d3a35ef')
+sha256sums=('e4101344f9ccb0705fcca8b104dceeef42a1398a0f1ec220a606e519fa4fec11')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/sway-greeter-config' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-sway.install
@@ -83,4 +83,6 @@ EOF
 
     # Install README
     install -Dm644 README.md "${pkgdir}/usr/share/doc/sysc-greet/README.md"
+    install -Dm644 THIRD_PARTY_NOTICES.md "${pkgdir}/usr/share/sysc-greet/THIRD_PARTY_NOTICES.md"
+
 }
