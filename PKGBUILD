@@ -1,6 +1,6 @@
 # Maintainer: AzureHound <183492338+AzureHound@users.noreply.github.com>
 pkgname=jelly
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="🪼 Explore & Stream Jellyfin via CLI"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/AzureHound/jelly"
 license=('0BSD')
 depends=('chafa' 'curl' 'fzf' 'jq' 'mpv' 'socat')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('ccf563c35b178711a3a5c4f1e16b573fd4f3e7e0bcf2a9ed375e182d1d69f1f0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
