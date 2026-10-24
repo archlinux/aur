@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scopebuddy-gui
 _app_id="io.github.rfrench3.$pkgname"
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="Graphical Frontend for Scopebuddy"
 arch=('any')
 url="https://github.com/rfrench3/scopebuddy-gui"
@@ -15,10 +15,12 @@ depends=(
   'xdg-desktop-portal'
   'xdg-utils'
 )
-makedepends=('desktop-file-utils')
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1b484669605c5e1243b4da552911f34e0485827b119c6ed9f540a194a8182f2')
+sha256sums=('fbdde944f11853945a2a2a7a33905e3ff6f8024d64401c03119639ef910c51e2')
 
 prepare() {
   cd "$pkgname-$pkgver"
