@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A self-contained C/C++ language with built-in compiler/linker, JIT, AOT and an interactive REPL"
 
-pkgver=0.106.0
+pkgver=0.106.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,9 +31,9 @@ source=("USAGE-${pkgver}.md::${_ghurlraw}/docs/usage.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('0437e62763864e95d8916e8bc3ed31dc88b1ad7127963c65dfdf1fec690bc5b5'
-            '6d6729a055684eb0134544283af9ebe91c31d57c2f3f0a45872d619828de5b4d'
+            '2ff474c6c5bf06e19ef9c3fe02f78377b26f01d5d8afae224465a0d0960a82d3'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
-sha256sums_x86_64=('d4b6bb3e43e17376d28c950b4edf28583a17b76e8b46e57dd5d5a0d3740d30b8')
+sha256sums_x86_64=('27072ef2f1c3152dff188d1d22e783d2d07cd0b92349bf7469b8420053c2ea14')
 
 
 case ${CARCH} in

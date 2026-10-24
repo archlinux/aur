@@ -1,6 +1,6 @@
 pkgbase = madc-bin
 	pkgdesc = A self-contained C/C++ language with built-in compiler/linker, JIT, AOT and an interactive REPL
-	pkgver = 0.106.0
+	pkgver = 0.106.1
 	pkgrel = 1
 	url = https://github.com/derekbsnider/madc
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = madc-bin
 	conflicts = madc
 	options = !strip
 	options = staticlibs
-	source = USAGE-0.106.0.md::https://raw.githubusercontent.com/derekbsnider/madc/v0.106.0/docs/usage.md
-	source = README-0.106.0.md::https://raw.githubusercontent.com/derekbsnider/madc/v0.106.0/README.md
-	source = LICENSE-0.106.0::https://raw.githubusercontent.com/derekbsnider/madc/v0.106.0/LICENSE
+	source = USAGE-0.106.1.md::https://raw.githubusercontent.com/derekbsnider/madc/v0.106.1/docs/usage.md
+	source = README-0.106.1.md::https://raw.githubusercontent.com/derekbsnider/madc/v0.106.1/README.md
+	source = LICENSE-0.106.1::https://raw.githubusercontent.com/derekbsnider/madc/v0.106.1/LICENSE
 	sha256sums = 0437e62763864e95d8916e8bc3ed31dc88b1ad7127963c65dfdf1fec690bc5b5
-	sha256sums = 6d6729a055684eb0134544283af9ebe91c31d57c2f3f0a45872d619828de5b4d
+	sha256sums = 2ff474c6c5bf06e19ef9c3fe02f78377b26f01d5d8afae224465a0d0960a82d3
 	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
-	source_x86_64 = madc-x86_64-0.106.0.tgz::https://github.com/derekbsnider/madc/releases/download/v0.106.0/madc-0.106.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d4b6bb3e43e17376d28c950b4edf28583a17b76e8b46e57dd5d5a0d3740d30b8
+	source_x86_64 = madc-x86_64-0.106.1.tgz::https://github.com/derekbsnider/madc/releases/download/v0.106.1/madc-0.106.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 27072ef2f1c3152dff188d1d22e783d2d07cd0b92349bf7469b8420053c2ea14
 
 pkgname = madc-bin
