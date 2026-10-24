@@ -1,6 +1,6 @@
 pkgname=mpatch-bin
-_realver="1.7.0"
-pkgver="1.7.0"
+_realver="1.8.0"
+pkgver="1.8.0"
 pkgrel=1
 pkgdesc='Applies diffs based on context, not line numbers. Useful for AI-generated code.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("mpatch-${_realver}-x86_64-unknown-linux-gnu.tar.gz::https://gith
 source_aarch64=("mpatch-${_realver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/Romelium/mpatch/releases/download/v${_realver}/mpatch-aarch64-unknown-linux-gnu-v${_realver}.tar.gz")
 source_armv7h=("mpatch-${_realver}-armv7-unknown-linux-gnueabihf.tar.gz::https://github.com/Romelium/mpatch/releases/download/v${_realver}/mpatch-armv7-unknown-linux-gnueabihf-v${_realver}.tar.gz")
 
-sha256sums_x86_64=('68544763d3c32d98a79c57c24833e17c50074114ee19002354779174a1ffed30')
-sha256sums_aarch64=('03765031bc512ca8f0290c242144f12f282fa37eba49b387ea72b9e7c2a2a6cf')
-sha256sums_armv7h=('b5c1e2cda2fb93fd5f2a95477a667c33f26832a478b41423703bdb3b914490c1')
+sha256sums_x86_64=('6378c78d5e2c4334132cdf847b3045488a3202a720a15239f12f02b628129e39')
+sha256sums_aarch64=('7e8fadd7f06b8ce6b759a654d53c3721bca778bc0c378e7c9c3309349f77fe14')
+sha256sums_armv7h=('c633e86fae5881d5620f8888e22f2a0494298440d6946930f5e343deef3cbf8b')
 
 package() {
   local _dirs=( "${srcdir}"/mpatch-*-v"${_realver}" )
