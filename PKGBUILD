@@ -3,8 +3,8 @@
 # Upstream: https://github.com/ProxyShard/ShardBrowser
 
 pkgname=shardx-launcher-bin
-pkgver=2.0.3
-pkgrel=1
+pkgver=2.1.1
+pkgrel=2
 pkgdesc="ShardX anti-detect browser launcher"
 arch=('x86_64')
 url="https://github.com/ProxyShard/ShardBrowser"
@@ -15,10 +15,10 @@ depends=('hicolor-icon-theme' 'mesa' 'harfbuzz' 'graphite' 'libgpg-error'
 options=('!strip')
 # The launcher itself is MIT; the browser engine it downloads at runtime is
 # a closed-source binary with its own restrictions (see the project README).
-source=("${pkgname%-bin}.AppImage::https://github.com/ProxyShard/ShardBrowser/releases/download/v${pkgver}/ShardX.Launcher_${pkgver}_amd64.AppImage"
+source=("${pkgname%-bin}.AppImage::https://github.com/ProxyShard/ShardBrowser/releases/download/v${pkgver}/ShardBrowser.Launcher_${pkgver}_amd64.AppImage"
         "shardx-launcher.desktop")
 sha256sums=(
-            '45a92adaf0e71e5031d1d726d9cde954306df79af108700170ebfec3b7962048'
+            '990567d15f72130e91e56e97285c2642cfd49c300f4bd8927f1f13a53423210c'
             '3617af983c16d6d999f45bac141ff218656ad05ffc20146ad8a2b3a597150f5e'
 )
 
@@ -39,9 +39,14 @@ package() {
   cp -a AppRun AppRun.wrapped apprun-hooks "$pkgdir/opt/shardx/"
   chmod 755 "$pkgdir/opt/shardx/AppRun" "$pkgdir/opt/shardx/AppRun.wrapped"
   cp -a usr "$pkgdir/opt/shardx/"
-  cp -a "ShardX Launcher.png" "$pkgdir/opt/shardx/"
-  ln -s "usr/share/applications/ShardX Launcher.desktop" \
-    "$pkgdir/opt/shardx/ShardX Launcher.desktop"
+  cp -a "ShardBrowser Launcher.png" "$pkgdir/opt/shardx/"
+  ln -s "usr/share/applications/ShardBrowser Launcher.desktop" \
+    "$pkgdir/opt/shardx/ShardBrowser Launcher.desktop"
+
+  # cp -a preserves the restrictive (0700) directory modes from the squashfs,
+  # which hides usr/ and apprun-hooks/ from regular users and makes the
+  # launcher fail. Reopen all directories for reading/traversal.
+  find "$pkgdir/opt/shardx" -type d -exec chmod 755 {} +
 
   # Drop the bundled (stale) Wayland runtime. It conflicts with the host's
   # modern Mesa/EGL and triggers "Could not create default EGL display:
@@ -74,10 +79,10 @@ EOF
 
   # Icons
   for size in 32x32 128x128; do
-    install -Dm644 "usr/share/icons/hicolor/$size/apps/shardx-launcher.png" \
+    install -Dm644 "usr/share/icons/hicolor/$size/apps/shardbrowser-launcher.png" \
       "$pkgdir/usr/share/icons/hicolor/$size/apps/shardx-launcher.png"
   done
-  install -Dm644 "usr/share/icons/hicolor/256x256@2/apps/shardx-launcher.png" \
+  install -Dm644 "usr/share/icons/hicolor/256x256@2/apps/shardbrowser-launcher.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/shardx-launcher.png"
 
   # Desktop entry

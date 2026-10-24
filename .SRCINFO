@@ -1,6 +1,6 @@
 pkgbase = shardx-launcher-bin
 	pkgdesc = ShardX anti-detect browser launcher
-	pkgver = 2.0.3
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/ProxyShard/ShardBrowser
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = shardx-launcher-bin
 	depends = fribidi
 	depends = wayland
 	options = !strip
-	source = shardx-launcher.AppImage::https://github.com/ProxyShard/ShardBrowser/releases/download/v2.0.3/ShardX.Launcher_2.0.3_amd64.AppImage
+	source = shardx-launcher.AppImage::https://github.com/ProxyShard/ShardBrowser/releases/download/v2.1.1/ShardBrowser.Launcher_2.1.1_amd64.AppImage
 	source = shardx-launcher.desktop
-	sha256sums = 45a92adaf0e71e5031d1d726d9cde954306df79af108700170ebfec3b7962048
+	sha256sums = 990567d15f72130e91e56e97285c2642cfd49c300f4bd8927f1f13a53423210c
 	sha256sums = 3617af983c16d6d999f45bac141ff218656ad05ffc20146ad8a2b3a597150f5e
 
 pkgname = shardx-launcher-bin
