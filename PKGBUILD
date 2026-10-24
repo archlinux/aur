@@ -1,4 +1,4 @@
-# Maintainer: ismail-bahloul <iswadlillah@gmail.com>
+# Maintainer: Ismaïl Bahloul <i.bahloul01@gmail.com>
 
 # TuxMix — Open-source TotalMix replacement for RME audio interfaces on Linux
 #
