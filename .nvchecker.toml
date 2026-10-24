@@ -1,0 +1,5 @@
+[tessera-bin]
+source = "github"
+github = "Limatura/tessera"
+use_latest_release = true
+prefix = "v"
