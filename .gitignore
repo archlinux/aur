@@ -1,0 +1,7 @@
+pkg/
+src/
+xshogi-*.tar.gz*
+xshogi*.pkg.tar.*
+xshogi_*.debian.tar.xz
+*.log
+MODERNISE.md

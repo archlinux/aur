@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=XShogi
+GenericName=Shogi
+Comment=Play Shogi (Japanese chess) against GNU Shogi
+Exec=xshogi
+Icon=xshogi
+Terminal=false
+Categories=Game;BoardGame;
+Keywords=shogi;japanese;chess;
