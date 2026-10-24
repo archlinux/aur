@@ -1,6 +1,6 @@
 pkgbase = liner-bin
 	pkgdesc = Music player that pulls your music and playlists from other platforms into one app, with synced lyrics (upstream binary)
-	pkgver = 0.1.40
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/tryliner/desktop
 	arch = x86_64
@@ -35,12 +35,12 @@ pkgbase = liner-bin
 	optdepends = traceroute: route check in the network diagnostics
 	provides = liner
 	conflicts = liner
-	noextract = liner-bin-0.1.40.deb
+	noextract = liner-bin-0.2.10.deb
 	options = !strip
 	options = !debug
-	source = liner-bin-0.1.40.deb::https://github.com/tryliner/desktop/releases/download/v0.1.40/liner_0.1.40_amd64.deb
-	source = liner-bin-0.1.40-LICENSE::https://raw.githubusercontent.com/tryliner/desktop/v0.1.40/LICENSE
-	sha256sums = 9319ff9cc22c062343532b23add6c72c811b27cda7b865d122092445e765d8ed
+	source = liner-bin-0.2.10.deb::https://github.com/tryliner/desktop/releases/download/v0.2.10/liner_0.2.10_amd64.deb
+	source = liner-bin-0.2.10-LICENSE::https://raw.githubusercontent.com/tryliner/desktop/v0.2.10/LICENSE
+	sha256sums = 7f32dcc3916ed1e3f3d9ef102d98f2d59da22cb2c4881c484cfafb7293fb0610
 	sha256sums = 81f3f6b06e8d932ea52b9e0a2ff221aa2400e1fb73ae667431080f03da770940
 
 pkgname = liner-bin

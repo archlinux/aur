@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=liner-bin
-pkgver=0.1.40
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Music player that pulls your music and playlists from other platforms into one app, with synced lyrics (upstream binary)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/liner_${pkgver}_amd64.deb"
         "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/tryliner/desktop/v${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('9319ff9cc22c062343532b23add6c72c811b27cda7b865d122092445e765d8ed' '81f3f6b06e8d932ea52b9e0a2ff221aa2400e1fb73ae667431080f03da770940')
+sha256sums=('7f32dcc3916ed1e3f3d9ef102d98f2d59da22cb2c4881c484cfafb7293fb0610' '81f3f6b06e8d932ea52b9e0a2ff221aa2400e1fb73ae667431080f03da770940')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
