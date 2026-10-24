@@ -1,26 +1,26 @@
 pkgbase = openartifact-bin
 	pkgdesc = Free-as-in-freedom artifact repository manager (Maven, npm, PyPI, OCI, Helm, ...) - prebuilt binaries
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/openartifact/openartifact
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	provides = openartifact=0.8.1
-	provides = oa-cli=0.8.1
+	provides = openartifact=0.9.0
+	provides = oa-cli=0.9.0
 	conflicts = openartifact
-	noextract = openartifact-bin-0.8.1-x86_64.tar.gz
-	noextract = oa-0.8.1-x86_64.tar.gz
+	noextract = openartifact-bin-0.9.0-x86_64.tar.gz
+	noextract = oa-0.9.0-x86_64.tar.gz
 	backup = etc/openartifact/openartifact.yaml
 	source = openartifact.service
 	sha256sums = bc1ec1cb88982f5c3bfc5a86505bcc8b87e6e83541609526b90b298ea2c473cb
-	source_x86_64 = openartifact-bin-0.8.1-x86_64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.8.1/openartifact_0.8.1_linux_amd64.tar.gz
-	source_x86_64 = oa-0.8.1-x86_64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.8.1/oa_0.8.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = cbded44fef15875691a6a1168e297d67cb12994db879cc3fac93f34ff83aa78f
-	sha256sums_x86_64 = c33be79305bbcce221736f23ab95b9ab7b95cacd76a0641e6f201bcc8557b137
-	source_aarch64 = openartifact-bin-0.8.1-aarch64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.8.1/openartifact_0.8.1_linux_arm64.tar.gz
-	source_aarch64 = oa-0.8.1-aarch64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.8.1/oa_0.8.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1965e1944edfcc2e69f9509bc808a596b8f79fb0c1417cb22421733f17b08217
-	sha256sums_aarch64 = 29050cee3e59b6c3ed296d6f266e38debf5848332224f1e6d03571d616cc7048
+	source_x86_64 = openartifact-bin-0.9.0-x86_64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.9.0/openartifact_0.9.0_linux_amd64.tar.gz
+	source_x86_64 = oa-0.9.0-x86_64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.9.0/oa_0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0936ea33cf97f1e15b5ec13967ce36e7afbf8b957ddbac91739ce4f4fac969fc
+	sha256sums_x86_64 = 1e96934870a49c408cab03df255be2b3b184e541b48aa83b81c8c2664367c1a8
+	source_aarch64 = openartifact-bin-0.9.0-aarch64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.9.0/openartifact_0.9.0_linux_arm64.tar.gz
+	source_aarch64 = oa-0.9.0-aarch64.tar.gz::https://github.com/openartifact/openartifact/releases/download/v0.9.0/oa_0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a380d73ae545b73ef74d081bd783a24e0c9cd6d412a57a29f03c7bc958d413bc
+	sha256sums_aarch64 = 21f96045da3da17b3411208c258f9669852e19cc5cc20752c7224559d0bc7474
 
 pkgname = openartifact-bin
