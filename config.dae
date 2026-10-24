@@ -1,0 +1,53 @@
+# Default configuration shipped by honk-core-bin.
+#
+# This is a direct-only setup: host-originated traffic is intercepted and
+# routed directly, so the datapath can be verified before adding proxies.
+# Add nodes, groups, routing and DNS rules afterwards; see
+# https://github.com/daeuniverse/honk/blob/main/doc/en/configuration.md
+#
+# honk needs Linux 6.12+, cgroup v2 with CONFIG_CGROUP_BPF, and bpffs mounted
+# at /sys/fs/bpf. Keep an out-of-band management path during first deployment.
+
+global {
+    wan_interface: auto
+    data_dir: '/var/lib/honk'
+    log_level: info
+    auto_config_kernel_parameter: true
+    # If startup logs "NFQUEUE netlink unavailable", load nfnetlink_queue,
+    # nft_ct and nft_queue, or uncomment the line below. While the runtime has
+    # disabled NFQUEUE, UI/API config writes fail with unsupported_value
+    # (restart-required on nfqueue_enable), and no subscription can be added.
+    # nfqueue_enable: false
+}
+
+routing {
+    fallback: direct
+}
+
+# Embedded web UI (the doona dashboard, included in this full build).
+# native_api requires a restart when changed; `honk-core reload` rejects it.
+# Password mode keeps the administrator credential in
+# /var/lib/honk/state/honk.db, and the first visit to the UI opens setup.
+# config_write lets the UI add subscriptions and nodes to this main file.
+# For token auth instead, put a secret in a separate read-only include; a
+# secret declared here would make this source read-only.
+experimental {
+    native_api {
+        enabled: true
+        listen: '127.0.0.1:9527'
+        ui: embedded
+        password_auth: true
+        config_write: true
+    }
+}
+#
+# The Clash-compatible API with an external dashboard (zashboard by default)
+# is a separate option; enabling it downloads the dashboard on first start.
+#
+# experimental {
+#     clash_api {
+#         external_controller: '127.0.0.1:9090'
+#         external_ui: 'zashboard'
+#         secret: 'replace-me'
+#     }
+# }
