@@ -1,11 +1,16 @@
 pkgbase = prikk-bin
-	pkgdesc = A placeholder package for prikk-bin
-	pkgver = 0.0.0
+	pkgdesc = A version control system, prebuilt binary (checksum proves download integrity, not provenance)
+	pkgver = 0.54.1
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/prikk
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
-	source = prikk-bin-0.0.0.tar.gz::https://github.com/prikk-vcs/prikk/archive/refs/tags/0.0.0.tar.gz
-	sha256sums = DUMMY-FOR-INITIALIZATION
+	provides = prikk
+	conflicts = prikk
+	source_x86_64 = https://github.com/prikk-vcs/prikk/releases/download/0.54.1/prikk-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 76593a122472ff416901ffbef14d9daa39ada74daaec6d188b08b4fb555ccd55
+	source_aarch64 = https://github.com/prikk-vcs/prikk/releases/download/0.54.1/prikk-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9a38794d8ff1181aa2563e665aab8810199354c3109d291c8fbd21d5e7a016b3
 
 pkgname = prikk-bin
