@@ -1,6 +1,6 @@
 pkgbase = fcitx5-areca-bin
 	pkgdesc = Areca Vietnamese input method for Fcitx5 using the Bamboo engine
-	pkgver = 8.2.1
+	pkgver = 8.2.2
 	pkgrel = 1
 	url = https://github.com/xhkzeroone/ArecaIME
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = fcitx5-areca-bin
 	conflicts = fcitx5-areca-git
 	options = !debug
 	options = !strip
-	source = https://github.com/xhkzeroone/ArecaIME/releases/download/v8.2.1/fcitx5-areca-8.2.1-1-x86_64.pkg.tar.zst
-	sha256sums = 171c596b8177043b9fea87b7f324a20a71c4d17a83066d00795b5be73ae52393
+	source = https://github.com/xhkzeroone/ArecaIME/releases/download/v8.2.2/fcitx5-areca-8.2.2-1-x86_64.pkg.tar.zst
+	sha256sums = e3a95ca757d7a7ba0016be3fd908b61f98af90b39b202f747c3db2646f507c56
 
 pkgname = fcitx5-areca-bin
