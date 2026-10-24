@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=gcopy
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="A clipboard synchronization service for different devices that can synchronize text, screenshots, and files"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -15,7 +15,7 @@ replaces=("${pkgname}-web")
 makedepends=("go" "npm")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('5fdd4e6a0b715aacc99971c18f0a3d13e506aaf252cfec38a09c33d611811322'
+sha256sums=('f9e4b99d355b660b3e114a68962c4efba861240e894782b6b577b781eb1404e9'
             '03d17f7cf39eaf04d36ab8defb1f14effb33eb061b52c4ab64f401d3ce2b8934')
 
 build() {
