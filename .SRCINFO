@@ -1,15 +1,15 @@
 pkgbase = nginx-mod-shapow
 	pkgdesc = Nginx module to keep bots out with a proof-of-work challenge
-	pkgver = 2.0
-	pkgrel = 1
+	pkgver = 3.0
+	pkgrel = 0
 	url = https://git.zajc.tel/shapow.git/about
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = nginx
 	makedepends = nginx-src
 	backup = etc/nginx/modules.d/19-shapow.conf
-	source = https://files.zajc.tel/public/builds/shapow/2.0/shapow-src-2.0.tar.xz
-	sha256sums = f5c8cf91c7e3161aa5cdafb0e87c51e291b9d6f0f4ae153b893a7884c2d95b53
+	source = https://files.zajc.tel/public/builds/shapow/3.0/shapow-src-3.0.tar.xz
+	sha256sums = 116517b54140dbcbe57f4d5962471ce22a778b1b0f625105a6792ecc6919664a
 
 pkgname = nginx-mod-shapow
 	depends = nginx
