@@ -1,6 +1,6 @@
 # Maintainer: fibsussy <noahlykins@gmail.com>
 pkgname=reaction-time-test
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A CLI/TUI reaction time test inspired by Human Benchmark"
 arch=('x86_64' 'aarch64')
