@@ -14,9 +14,10 @@ url="http://www.ocsinventory-ng.org"
 license=('GPL')
 depends=('perl' 'which' 'dmidecode' 'pciutils'
      'perl-libwww' 'perl-lwp-protocol-https' 'perl-io-socket-ssl'
-     'perl-net-ip' 'perl-xml-simple'
-     'perl-proc-daemon' 'perl-proc-pid-file' 'perl-net-snmp')
-optdepends=('smartmontools')
+     'perl-net-ip' 'perl-xml-simple' 'perl-net-snmp')
+optdepends=('perl-proc-daemon: daemon mode (--daemon)'
+     'perl-proc-pid-file: prevent concurrent runs'
+     'smartmontools')
 makedepends=('perl-module-install')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg'
