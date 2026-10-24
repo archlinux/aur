@@ -1,6 +1,6 @@
 pkgbase = yay-sys-tray-bin
 	pkgdesc = Arch Linux system tray update checker using yay (prebuilt binary)
-	pkgver = 1.6.7
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://github.com/skint007/yay-sys-tray
 	install = yay-sys-tray-bin.install
@@ -16,7 +16,7 @@ pkgbase = yay-sys-tray-bin
 	provides = yay-sys-tray
 	conflicts = yay-sys-tray
 	conflicts = yay-sys-tray-git
-	source = yay-sys-tray-1.6.7-x86_64.tar.gz::https://github.com/skint007/yay-sys-tray/releases/download/v1.6.7/yay-sys-tray-1.6.7-x86_64.tar.gz
-	sha256sums = 94d3355bb4bf8e22c67768b2eec3884374ff9d96a8d4108bf3881863beca4a5c
+	source = yay-sys-tray-1.6.8-x86_64.tar.gz::https://github.com/skint007/yay-sys-tray/releases/download/v1.6.8/yay-sys-tray-1.6.8-x86_64.tar.gz
+	sha256sums = 53eabb43a093919d6864fd358db51a8f4cc3efe3e6d45a31ec5ad0bd2d62432b
 
 pkgname = yay-sys-tray-bin
