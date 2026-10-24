@@ -41,7 +41,7 @@ package() {
 
 	install -Dm644 "${_appname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg"
 
-	install -Dm755 /dev/stdin "${pkgdir}/usr/share/applications/${_appname}.desktop" <<EOF
+	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_appname}.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Name=${_appname^}
