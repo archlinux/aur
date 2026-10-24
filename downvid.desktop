@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=DownVid
+GenericName=Video Downloader
+Comment=Download videos and audio with yt-dlp
+Exec=downvid %U
+Icon=downvid
+Terminal=false
+Categories=AudioVideo;Video;Network;Utility;
+Keywords=video;download;yt-dlp;youtube;bilibili;
+StartupWMClass=downvid

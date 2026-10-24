@@ -1,0 +1,26 @@
+pkgbase = downvid-wails-bin
+	pkgdesc = Modern video downloader GUI for yt-dlp/ffmpeg (Wails new architecture, prebuilt)
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/Downvid/downvid
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	provides = downvid
+	conflicts = downvid
+	conflicts = downvid-bin
+	conflicts = downvid-wails
+	options = !strip
+	options = !debug
+	source = downvid-wails-bin-1.6.3.tar.gz::https://github.com/Downvid/downvid/releases/download/v1.6.3/DownVid-Wails-linux-x64-webkit41-1.6.3.tar.gz
+	source = downvid.desktop
+	source = downvid.png::https://raw.githubusercontent.com/Downvid/downvid/v1.6.3/app/build/appicon.png
+	source = LICENSE::https://raw.githubusercontent.com/Downvid/downvid/v1.6.3/LICENSE
+	sha256sums = 74fd77ffe4570770765ba4baa8bb9c5c9255cb46536951638c54e18577f060fc
+	sha256sums = c855a03b2ac0fee9b9b5881ac1b705cb43e1d7640dd6a3a9b021c8669a1ecca9
+	sha256sums = 738c724e45f067bcfb8eb6bbecf5141450de8af197da2b833618ca06754df7ba
+	sha256sums = c142ff2ccd9a9db6a737e3b8450bc676e72409b753d018982b8c5045f73c1704
+
+pkgname = downvid-wails-bin
