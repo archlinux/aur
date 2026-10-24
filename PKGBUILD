@@ -1,12 +1,12 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=tinox-bin
-pkgver=2.3.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Native, statically typed programming language with an LLVM backend, garbage collection, and concurrency support (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/subnix-work/tinox"
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gc' 'openssl' 'llvm' 'gcc')
+depends=('glibc' 'gc' 'openssl' 'llvm' 'gcc' 'xz' 'bzip2')
 optdepends=(
   'clang: tinox repl / dev-mode on-the-fly runtime recompilation'
   'sqlite: DB feature with driver = "sqlite" in tinox.toml'
@@ -20,7 +20,7 @@ optdepends=(
 provides=("tinox=$pkgver")
 conflicts=('tinox')
 source=("https://github.com/subnix-work/tinox/releases/download/v${pkgver}/tinox-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('8e8db9fda6961d107e77b35707a65e738a03497ad267e21f718d59295a448f61')
+sha256sums=('125b5574ab25c5830899dbf85ecb0472ec96ae49704fbcd2a2227d4d729cddf5')
 
 package() {
   cd "$srcdir"

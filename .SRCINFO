@@ -1,6 +1,6 @@
 pkgbase = tinox-bin
 	pkgdesc = Native, statically typed programming language with an LLVM backend, garbage collection, and concurrency support (prebuilt binary)
-	pkgver = 2.3.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/subnix-work/tinox
 	arch = x86_64
@@ -11,13 +11,15 @@ pkgbase = tinox-bin
 	depends = openssl
 	depends = llvm
 	depends = gcc
+	depends = xz
+	depends = bzip2
 	optdepends = clang: tinox repl / dev-mode on-the-fly runtime recompilation
 	optdepends = sqlite: DB feature with driver = "sqlite" in tinox.toml
 	optdepends = postgresql-libs: DB feature with driver = "postgres" in tinox.toml
 	optdepends = mariadb-libs: DB feature with driver = "mysql" in tinox.toml
-	provides = tinox=2.3.0
+	provides = tinox=2.5.1
 	conflicts = tinox
-	source = https://github.com/subnix-work/tinox/releases/download/v2.3.0/tinox-2.3.0-linux-x86_64.tar.gz
-	sha256sums = 8e8db9fda6961d107e77b35707a65e738a03497ad267e21f718d59295a448f61
+	source = https://github.com/subnix-work/tinox/releases/download/v2.5.1/tinox-2.5.1-linux-x86_64.tar.gz
+	sha256sums = 125b5574ab25c5830899dbf85ecb0472ec96ae49704fbcd2a2227d4d729cddf5
 
 pkgname = tinox-bin
