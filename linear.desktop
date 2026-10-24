@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Linear
+GenericName=Issue Tracker
+Comment=The issue tracking tool you'll enjoy using
+Exec=linear-desktop %U
+Icon=linear-desktop
+Terminal=false
+Categories=Office;ProjectManagement;
+MimeType=x-scheme-handler/linear;
+StartupWMClass=linear
+StartupNotify=true

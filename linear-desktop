@@ -1,0 +1,37 @@
+#!/bin/bash
+# Launcher for Linear on the system Electron.
+# Extra Electron/Chromium flags go in ${XDG_CONFIG_HOME:-~/.config}/linear-flags.conf
+# (one per line, '#' comments allowed), same convention as other Arch Electron apps.
+
+app=/usr/lib/linear-desktop/app.asar
+conf="${XDG_CONFIG_HOME:-$HOME/.config}/linear-flags.conf"
+
+flags=()
+if [[ -r $conf ]]; then
+  while IFS= read -r line; do
+    [[ -z $line || $line == \#* ]] || flags+=("$line")
+  done <"$conf"
+fi
+
+# Electron derives its Wayland app_id / X11 class "linear" from the app name; the
+# desktop file is named linear.desktop so shells can map the window to its icon.
+export CHROME_DESKTOP=linear.desktop
+
+# Linear's in-app updater cannot replace pacman-owned files, so tell the user when
+# pacman/the AUR is behind the published release (at most once a day, never blocks).
+check_update() {
+  command -v curl >/dev/null && command -v notify-send >/dev/null || return 0
+  local stamp="${XDG_CACHE_HOME:-$HOME/.cache}/linear-desktop-update-check"
+  if [[ -e $stamp && -n $(find "$stamp" -mmin -1440 2>/dev/null) ]]; then return 0; fi
+  mkdir -p "${stamp%/*}" && : >"$stamp"
+  local installed latest
+  installed=$(<"${app%/*}/VERSION")
+  latest=$(curl -fsS -m 10 https://releases.linear.app/latest.yml 2>/dev/null | sed -n 's/^version: *//p')
+  [[ -n $latest && $latest != "$installed" ]] || return 0
+  [[ $(printf '%s\n%s\n' "$installed" "$latest" | sort -V | tail -n1) == "$latest" ]] || return 0
+  notify-send -a Linear -i linear-desktop "Linear $latest is available" \
+    "Installed: $installed. Update linear-desktop-bin from the AUR."
+}
+check_update &>/dev/null &
+
+exec @ELECTRON@ "${flags[@]}" "$app" "$@"

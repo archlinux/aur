@@ -1,133 +1,72 @@
-# Maintainer: shrimp
-# Linear Desktop for Linux (unofficial)
+# Maintainer: shrimp <james@shrimp.wtf>
+#
+# Linear's desktop client is a pure-JS Electron app (no Linux build is published).
+# This repackages app.asar from the official Windows installer and runs it on the
+# system Electron, so Chromium/Electron security updates come from pacman.
+#
+# Updates are automated by scripts/update.sh (GitHub Actions), which bumps pkgver,
+# the installer checksum and _electron (the Electron major bundled in the release).
 
 pkgname=linear-bin
-pkgver=1.30.0
+pkgver=1.32.7
 pkgrel=1
-pkgdesc="Linear - Issue tracking & project management (unofficial Linux build)"
-arch=('x86_64')
+pkgdesc="Linear desktop client, repackaged from the official release to run on system Electron"
+arch=('any')
 url="https://linear.app"
-license=('LicenseRef-Proprietary')
-depends=('electron')
-makedepends=('p7zip' 'imagemagick' 'icoutils' 'python')
-provides=('linear')
+license=('LicenseRef-custom')
+_electron=electron44
+depends=("${_electron}" 'hicolor-icon-theme' 'xdg-utils')
+makedepends=('7zip' 'icoutils' 'asar')
+optdepends=('libnotify: desktop notification when a new Linear release is available'
+            'curl: new release check on launch')
+provides=('linear' 'linear-desktop')
 conflicts=('linear-desktop' 'linear-desktop-bin' 'linear-desktop-git')
-_ghraw="https://raw.githubusercontent.com/shrimpwtf/linear-arch/main"
-source=("Linear-Setup-${pkgver}.exe::https://releases.linear.app/Linear%20Setup%20${pkgver}.exe"
-        "patch-main.py::${_ghraw}/patch-main.py")
-sha512sums=('31d309720ce21c93dd8a5bce9735bdfc045781db27b1bbfb80ad0048e16bde22836353d6abf1797f6dbb0bf250f48afb354bab63bd804f25997022424985fb98'
-            'SKIP')
+options=('!strip' '!debug')
+_installer="Linear-Setup-${pkgver}.exe"
+source=("${_installer}::https://releases.linear.app/Linear%20Setup%20${pkgver}.exe"
+        'linear-desktop'
+        'linear.desktop'
+        'linear-chrome.main.js'
+        'linear-chrome.preload.js')
+noextract=("${_installer}")
+sha256sums=('d670adb29c1f8fc77008cc76111bdc88523dcabf718e45b9d3ac47d17de7eae3'
+            '53a3034e6b26d1179e09ed824c90c215150fa9417f734c05b4c9cebe118535e3'
+            '0682a91753346ab2d5703ea470b61066f4e890b785fd2a83138fd72e03ba8f0d'
+            '2b9ef7f8d32d44be4d57fdf10b0a197ef0d5638502dfb0f4d28d71c430f3170c'
+            'bd88025c01c59da7c6e389063498687ef8fde71153c09bc816064dd856bc886c')
 
 prepare() {
-    cd "${srcdir}"
+  # NSIS installer -> embedded app archive -> app.asar + exe (icon resource only)
+  7z x -y -o"${srcdir}/nsis" "${srcdir}/${_installer}" '$PLUGINSDIR/app-64.7z' >/dev/null
+  7z x -y -o"${srcdir}/app" "${srcdir}/nsis/\$PLUGINSDIR/app-64.7z" resources/app.asar Linear.exe >/dev/null
 
-    # Extract the NSIS installer
-    7z x -y "Linear-Setup-${pkgver}.exe" -oextracted
+  mkdir -p "${srcdir}/icons"
+  wrestool -x -t14 "${srcdir}/app/Linear.exe" -o "${srcdir}/icons/linear.ico"
+  icotool -x -o "${srcdir}/icons" "${srcdir}/icons/linear.ico"
 
-    # Linear's NSIS bundles BOTH x64 and arm64 archives. We're an x86_64 package.
-    if [ -f "extracted/\$PLUGINSDIR/app-64.7z" ]; then
-        7z x -y "extracted/\$PLUGINSDIR/app-64.7z" -oapp
-    else
-        echo "ERROR: app-64.7z not found in NSIS installer"
-        exit 1
-    fi
-
-    # Extract icon group from Linear.exe (single 256x256 entry as of v1.30.0)
-    if [ -f "app/Linear.exe" ]; then
-        wrestool -x -t 14 app/Linear.exe -o linear.ico 2>/dev/null || true
-    fi
-
-    if [ -f "linear.ico" ]; then
-        # Decompose ico → individual PNG sizes shipped inside the ico
-        icotool -x linear.ico 2>/dev/null || true
-
-        # Linear ships only 256x256, so derive smaller sizes via imagemagick
-        SRC_PNG=$(ls linear_*256x256*.png 2>/dev/null | head -1)
-        mkdir -p icons/hicolor
-
-        for size in 16 24 32 48 64 128 256; do
-            mkdir -p "icons/hicolor/${size}x${size}/apps"
-            existing=$(ls linear_*"${size}x${size}"*.png 2>/dev/null | head -1)
-            if [ -n "$existing" ]; then
-                cp "$existing" "icons/hicolor/${size}x${size}/apps/linear.png"
-            elif [ -n "$SRC_PNG" ]; then
-                # Use ImageMagick 7's `magick` if available, fall back to legacy `convert`
-                if command -v magick >/dev/null 2>&1; then
-                    magick "$SRC_PNG" -resize "${size}x${size}" "icons/hicolor/${size}x${size}/apps/linear.png"
-                else
-                    convert "$SRC_PNG" -resize "${size}x${size}" "icons/hicolor/${size}x${size}/apps/linear.png"
-                fi
-            fi
-        done
-    fi
-}
-
-_find_asar() {
-    if [ -f "${srcdir}/app/resources/app.asar" ]; then
-        echo "${srcdir}/app/resources"
-    elif [ -f "${srcdir}/extracted/resources/app.asar" ]; then
-        echo "${srcdir}/extracted/resources"
-    else
-        dirname "$(find "${srcdir}" -name 'app.asar' -type f | head -1)"
-    fi
-}
-
-build() {
-    # Patch app.asar: stub the in-app auto-updater on Linux so AUR is the
-    # sole source of updates (avoids 404 spam against latest-linux.yml,
-    # which Linear doesn't host).
-    ASAR_PATH="$(_find_asar)"
-    if [ -z "$ASAR_PATH" ] || [ ! -f "$ASAR_PATH/app.asar" ]; then
-        echo "ERROR: Could not find app.asar"
-        exit 1
-    fi
-
-    cd "$ASAR_PATH"
-    python "${srcdir}/patch-main.py"
+  # Frameless window with Linear-styled controls. Each anchor must match exactly so an
+  # upstream change fails the build instead of shipping a half-patched app.
+  asar extract "${srcdir}/app/resources/app.asar" "${srcdir}/app-src"
+  local anchor='titleBarStyle:DV?`hidden`:`default`'
+  grep -qF -- "${anchor}" "${srcdir}/app-src/out/main/index.js" || { echo 'titlebar anchor not found'; return 1; }
+  sed -i 's/titleBarStyle:DV?`hidden`:`default`/titleBarStyle:DV||process.platform===`linux`?`hidden`:`default`/' \
+    "${srcdir}/app-src/out/main/index.js"
+  cat "${srcdir}/linear-chrome.main.js" >> "${srcdir}/app-src/out/main/index.js"
+  cat "${srcdir}/linear-chrome.preload.js" >> "${srcdir}/app-src/out/preload/index.js"
+  asar pack "${srcdir}/app-src" "${srcdir}/app.asar"
 }
 
 package() {
-    ASAR_PATH="$(_find_asar)"
-    if [ -z "$ASAR_PATH" ] || [ ! -f "$ASAR_PATH/app.asar" ]; then
-        echo "ERROR: Could not find app.asar"
-        exit 1
-    fi
+  install -Dm644 "${srcdir}/app.asar" "${pkgdir}/usr/lib/linear-desktop/app.asar"
+  echo "${pkgver}" > "${pkgdir}/usr/lib/linear-desktop/VERSION"
 
-    # Install app payload
-    install -d "${pkgdir}/usr/lib/${pkgname}"
-    cp "$ASAR_PATH/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
+  sed "s/@ELECTRON@/${_electron}/" "${srcdir}/linear-desktop" > "${srcdir}/linear-desktop.out"
+  install -Dm755 "${srcdir}/linear-desktop.out" "${pkgdir}/usr/bin/linear-desktop"
+  install -Dm644 "${srcdir}/linear.desktop" "${pkgdir}/usr/share/applications/linear.desktop"
 
-    # Linear bundles native helper resources alongside the asar (e.g. app-update.yml)
-    if [ -d "$ASAR_PATH/app.asar.unpacked" ]; then
-        cp -r "$ASAR_PATH/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}/"
-    fi
-
-    # Install icons if we extracted them
-    if [ -d "${srcdir}/icons/hicolor" ]; then
-        install -d "${pkgdir}/usr/share/icons"
-        cp -r "${srcdir}/icons/"* "${pkgdir}/usr/share/icons/"
-    fi
-
-    # Desktop entry. linear:// MimeType registers the deep-link handler so
-    # Cursor/Claude Code/etc can open issues directly in the desktop app.
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
-[Desktop Entry]
-Name=Linear
-GenericName=Issue Tracking
-Comment=Linear desktop client
-Exec=${pkgname} %u
-Icon=linear
-Type=Application
-Terminal=false
-Categories=Office;ProjectManagement;Development;
-MimeType=x-scheme-handler/linear;
-StartupWMClass=Linear
-EOF
-
-    # Launcher: --class & --name pin Wayland/X11 window grouping to "Linear"
-    # so StartupWMClass and the icon resolve correctly.
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
-#!/bin/sh
-exec electron --class=Linear --name=Linear /usr/lib/${pkgname}/app.asar "\$@"
-EOF
+  local png size
+  for png in "${srcdir}"/icons/*.png; do
+    size=$(sed -E 's/.*_([0-9]+)x[0-9]+x[0-9]+\.png$/\1/' <<<"${png}")
+    install -Dm644 "${png}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/linear-desktop.png"
+  done
 }
