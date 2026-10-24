@@ -4,7 +4,7 @@ pkgname="blaadpapers"
 pkgdesc="Fast & clean wallpaper manager"
 url="https://github.com/Blaadick/BlaadPapers"
 license=("GPL-3.0-or-later")
-pkgver="0.5.0"
+pkgver="0.5.1"
 pkgrel=1
 arch=("x86_64")
 depends=(
@@ -26,7 +26,7 @@ makedepends=(
 )
 conflicts=("blaadpapers-git")
 source=("blaadpapers-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('5f26ade9257135ffad59d4c9b5ae8b78449c86a00b12c2fce1bd05c3122dae60e1dcf23c8828156c7af03d7d5fb9a911dcc68af7ed34b3603d88e2e2e9e26453')
+sha512sums=('993d981d50ad13014bef7b40f05deaef852ed68e007bf80b6bcb0ea249f29157279866a0e71febfc473ad937488140cc004e885571bbff49d8842880b9c3d138')
 
 build() {
     cd "BlaadPapers-$pkgver"
