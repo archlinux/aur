@@ -1,0 +1,5 @@
+pkg/
+src/
+xfce4-artwork_*.orig.tar.gz
+xfce4-artwork-*.pkg.tar.*
+*.log

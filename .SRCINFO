@@ -1,12 +1,12 @@
 pkgbase = xfce4-artwork
 	pkgdesc = Backdrops for the Xfce4 desktop
 	pkgver = 0.1.1a_git20110420
-	pkgrel = 7
+	pkgrel = 8
 	url = https://goodies.xfce.org/projects/artwork/xfce4-artwork
 	arch = any
-	groups = xfce4-goodies
-	license = GPL2
+	license = GPL-2.0-or-later
 	source = https://sources.archlinux.org/other/packages/xfce4-artwork/xfce4-artwork_0.1.1a~git+20110420.orig.tar.gz
 	sha256sums = 7a97c0acd0ed67ebb871866cc79c2925bea45bf1b92442bd88fac390dbe639ac
+	b2sums = 6e5a005bd8e27804909918dab9a72088742133c3ffdff0d684f4d4a3a7c3d9fb23163c76a4b418d4d1eea190dcca4965b2cdf056ddcdb720733be2b94bf4c6f2
 
 pkgname = xfce4-artwork
