@@ -1,0 +1,4 @@
+[pan-chainguard]
+source = "git"
+git = "https://github.com/PaloAltoNetworks/pan-chainguard.git"
+prefix = "v"

@@ -1,0 +1,20 @@
+pkgbase = pan-chainguard
+	pkgdesc = Manage Root Store and Intermediate Certificate Chains on PAN-OS
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/PaloAltoNetworks/pan-chainguard
+	arch = any
+	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pan-python
+	depends = python-treelib
+	depends = python-aiohttp
+	optdepends = openssl: used by the deprecated cert-fingerprints.sh
+	source = pan_chainguard-0.15.0.tar.gz::https://github.com/PaloAltoNetworks/pan-chainguard/releases/download/v0.15.0/pan_chainguard-0.15.0.tar.gz
+	sha256sums = 7db4763b204434140db92032fe1670a68db5fc7656dae00a340dd0f32cc14b7f
+
+pkgname = pan-chainguard
