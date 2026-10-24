@@ -1,7 +1,7 @@
 pkgbase = splayer-next
 	pkgdesc = Cross-platform desktop music player with rich lyric support and wide audio format compatibility
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/SPlayer-Dev/SPlayer-Next
 	arch = x86_64
 	arch = aarch64
@@ -28,11 +28,11 @@ pkgbase = splayer-next
 	conflicts = splayer-next-bin
 	conflicts = splayer-next-git
 	options = !lto
-	source = SPlayer-Next-1.1.0.tar.gz::https://github.com/SPlayer-Dev/SPlayer-Next/archive/refs/tags/v1.1.0.tar.gz
+	source = SPlayer-Next-1.2.0.tar.gz::https://github.com/SPlayer-Dev/SPlayer-Next/archive/refs/tags/v1.2.0.tar.gz
 	source = 0001-Disable-builtin-updater.patch
 	source = top.imsyy.splayer_next.desktop
-	sha256sums = 248b814590e45e81856573de8b6b435515d42648c8b9b00a0fe3e0135ca64f00
-	sha256sums = 72a7a31955318e3d2b6b1ad070f46f5ef5f6862c9fb47a5b6ceacdedbf4f62f9
+	sha256sums = ff8e5b7259a434cd3854bed3e73ba9926f31076d2b962fa469648977d33afac6
+	sha256sums = fc87c1223f89603c5be1e991ba9c589469c4cd677e789ec3bd34cee8c4c7176d
 	sha256sums = f9530b38c0222ce185bb2dfcd9f5c6ece6fdadb3ba7a0eb10a41846be8b7b632
 
 pkgname = splayer-next
