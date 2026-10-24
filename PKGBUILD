@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=obs-studio-liberty
-pkgver=32.2.2
+pkgver=33.0.0
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
@@ -12,14 +12,13 @@ _qtver=6.11.0
 _libdatachannelver=0.24.5
 _mbedtlsver=3.6.1
 _pythonver=3.14
-_cefver=cef_binary_6533_linux_x86_64_v6
+_cefver=cef_binary_7871_linux_x86_64
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
   "ffmpeg>=8" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
-  "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C related binary
   "jack" # Deps of JACK plugin
@@ -27,11 +26,13 @@ depends=(
 #  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
   "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
+  "libgcc" # GCC runtime library
   "libgl" # Deps of libobs-opengl and OBS Studio
   "libjuice" # UDP Interactive Connectivity Establishment (ICE) library
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
+  "libstdc++" # GNU C++ standard library
   "libva" # Deps of FFmpeg plugin and QSV plugin
   "libvpl" # Deps of QSV plugin
   "libx11" # Deps of libobs, libobs-opengl, X11 Capture plugin, frontend tools plugin, obs-browser and CEF
@@ -96,10 +97,10 @@ source=(
   #"qt_fix.patch"
 )
 
-sha512sums=('33696f3ff534c7ee317dda2e74fb689de94c5e2bbe978ca9950e2fc6e28235e46bb0fe2bbfd9ae64ddfd3f307e01d42945f46740b0ab75ef8a9478cabc61d152'
+sha512sums=('c65f3f9c2b232470fe680d2c94dc2477685bb754758a6fd9bab0ce25bf7df75d830417bd6e743f7063dfa4d6f202ca1a3e7645c0b2405c8a30423275bc4d97e9'
             'SKIP'
             'SKIP'
-            '790da9bf3a2495eb6d4d155ae89adea88a45f496b5996278d72df47a1dea662241b2b73d93be7fc56f83186805c591dcd718266575a74d1b25b6b93379ce74b3')
+            'd5ffabfe40d0c3cfad3a6e7522c9352d05bdc6330615e3f42eddfe787e82e8c21a0d7b323aaae3a1fb52e2a377d218624fc60dc1ae88762c8eb16d589f368289')
 
 prepare() {
   cd "$srcdir/obs-studio"
