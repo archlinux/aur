@@ -1,8 +1,7 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=protoc-gen-connect-go
-_pkgname=connect-go
-pkgver=1.20.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Protoc plugin to generate Go code'
 arch=(x86_64)
@@ -14,9 +13,10 @@ makedepends=(
   go
 )
 options=(!debug)
+_pkgname=connect-go
 _ghurl=https://github.com/connectrpc/${_pkgname}
 source=(${_pkgname}::git+${_ghurl}.git#tag=v${pkgver})
-sha256sums=('86523e5f55e0935ff8ceba0eacb77ed282aff918fe5faa59d9c54fe32e38f4a7')
+sha256sums=('fac22f1f3291cf773bf18fced5f8a0e817069d4de0c532a494a2d01947c1f19d')
 
 prepare() {
   cd ${_pkgname}
@@ -63,7 +63,6 @@ build() {
   export GOFLAGS="${_goflags[*]}"
 
   go build \
-    -v \
     -ldflags "${_ldfags[*]}" \
     -o out/${pkgname} \
     ./cmd/${pkgname}
