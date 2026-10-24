@@ -1,14 +1,15 @@
 # Maintainer: Adam Mladý <admin@elevated.ovh>
 
 pkgname=waycentral-git
-pkgver=1.3.0_r0_gb2fcec7
+pkgver=1.4.0_r1_g325b590
 pkgrel=1
-pkgdesc="Centralized Program for Waybar Custom Modules (clock, updates, volume, music, network, tray, ...) with a C library"
+pkgdesc="Centralized Program for Waybar Custom Modules (clock, updates, volume, music, network, GPU, tray, ...) with a C library"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TheElevatedOne/waycentral"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'pacman' 'curl' 'json-c' 'libpulse' 'systemd-libs' 'gtk3')
 makedepends=('git' 'gcc' 'make' 'pkgconf')
+optdepends=('hwdata: GPU names' 'nvidia-utils: NVIDIA GPU statistics')
 provides=("waycentral=${pkgver%%_*}" 'libwaycentral.so')
 conflicts=('waycentral')
 source=("git+https://github.com/TheElevatedOne/waycentral#branch=main")
