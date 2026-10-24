@@ -1,7 +1,7 @@
 pkgbase = your-szu-life-git
-	pkgdesc = 泥深 - 你的SZU助手（自动描述测试）
+	pkgdesc = 泥深 - 你的SZU助手
 	pkgver = 20261024.r572cce5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rinnein/your-szu-life
 	arch = x86_64
 	license = MIT
