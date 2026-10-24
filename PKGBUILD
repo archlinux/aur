@@ -3,7 +3,7 @@
 # Builds a tagged release from GitHub. For a new release: tag and push it,
 # bump pkgver, then `updpkgsums` and `makepkg --printsrcinfo > .SRCINFO`.
 pkgname=netmeter
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Network usage monitor: interface totals and per-application usage, measured in the kernel"
 arch=('x86_64')
@@ -24,7 +24,7 @@ replaces=('netmeter-git')
 options=('!lto')
 install=netmeter.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f50a310dbccbb0b00aef2234a6f603001f47346df65e2b4db9eb631ee8804f99')
+sha256sums=('211e0d55ed9d422dcc6a8cb58b8a0b2bc02a0b755595afe2ae975509b28cdc61')
 
 prepare() {
     cd "NetMeter-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = netmeter
 	pkgdesc = Network usage monitor: interface totals and per-application usage, measured in the kernel
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/husseinhareb/NetMeter
 	install = netmeter.install
@@ -24,7 +24,7 @@ pkgbase = netmeter
 	conflicts = netmeter-git
 	replaces = netmeter-git
 	options = !lto
-	source = netmeter-0.1.0.tar.gz::https://github.com/husseinhareb/NetMeter/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = f50a310dbccbb0b00aef2234a6f603001f47346df65e2b4db9eb631ee8804f99
+	source = netmeter-0.1.1.tar.gz::https://github.com/husseinhareb/NetMeter/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 211e0d55ed9d422dcc6a8cb58b8a0b2bc02a0b755595afe2ae975509b28cdc61
 
 pkgname = netmeter
