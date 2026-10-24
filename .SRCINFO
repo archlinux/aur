@@ -1,14 +1,15 @@
 pkgbase = waycentral-bin
-	pkgdesc = Centalized Program for Waybar Custom Modules
-	pkgver = 1.1.4
+	pkgdesc = Centralized Program for Waybar Custom Modules, with a C library (libwaycentral)
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/waycentral
-	arch = any
-	license = GPL3
+	arch = x86_64
+	license = GPL-3.0-or-later
 	depends = glibc
-	provides = waycentral-bin
-	conflicts = waycentral-git
-	source = https://github.com/TheElevatedOne/waycentral/releases/download/1.1.4/waycentral-1.1.4.tar.gz
-	sha256sums = SKIP
+	provides = waycentral=1.2.1
+	provides = libwaycentral.so
+	conflicts = waycentral
+	source = waycentral-1.2.1.tar.gz::https://github.com/TheElevatedOne/waycentral/releases/download/1.2.1/waycentral-1.2.1.tar.gz
+	sha256sums = 631039df0ff4339e3af24c454fe933bf16cba3557557290404aa9e5e262b30cd
 
 pkgname = waycentral-bin

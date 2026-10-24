@@ -1,25 +1,41 @@
 # Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=waycentral-bin
-pkgver=1.1.4
+pkgver=1.2.1
 pkgrel=1
-pkgdesc="Centalized Program for Waybar Custom Modules"
-arch=('any')
+pkgdesc="Centralized Program for Waybar Custom Modules, with a C library (libwaycentral)"
+arch=('x86_64')
 url="https://github.com/TheElevatedOne/waycentral"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc')
-provides=('waycentral-bin')
-conflicts=('waycentral-git')
-source=("https://github.com/TheElevatedOne/waycentral/releases/download/${pkgver}/waycentral-${pkgver}.tar.gz")
-sha256sums=("SKIP")
+provides=("waycentral=${pkgver}" 'libwaycentral.so')
+conflicts=('waycentral')
+source=("waycentral-${pkgver}.tar.gz::https://github.com/TheElevatedOne/waycentral/releases/download/${pkgver}/waycentral-${pkgver}.tar.gz")
+sha256sums=('631039df0ff4339e3af24c454fe933bf16cba3557557290404aa9e5e262b30cd')
 
 package() {
-  set -e
-
   cd "${srcdir}"
 
-  mkdir -p extracted
-  tar -xzf "waycentral-${pkgver}.tar.gz" -C extracted
-  install -Dm755 "extracted/waycentral" "${pkgdir}/usr/bin/waycentral"
-  install -Dm644 "extracted/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LINCESE"
+  local major="${pkgver%%.*}"
+
+  install -Dm755 waycentral "${pkgdir}/usr/bin/waycentral"
+  install -Dm755 "libwaycentral.so.${pkgver}" "${pkgdir}/usr/lib/libwaycentral.so.${pkgver}"
+  ln -s "libwaycentral.so.${pkgver}" "${pkgdir}/usr/lib/libwaycentral.so.${major}"
+  ln -s "libwaycentral.so.${major}" "${pkgdir}/usr/lib/libwaycentral.so"
+  install -Dm644 waycentral.h "${pkgdir}/usr/include/waycentral.h"
+
+  install -dm755 "${pkgdir}/usr/lib/pkgconfig"
+  cat > "${pkgdir}/usr/lib/pkgconfig/waycentral.pc" <<PC
+prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: waycentral
+Description: Centralized Waybar modules as a C library
+Version: ${pkgver}
+Libs: -L\${libdir} -lwaycentral
+Cflags: -I\${includedir}
+PC
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
