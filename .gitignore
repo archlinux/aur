@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/*.AppImage
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log

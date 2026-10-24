@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-virt-viewer">
+    <comment>Virt-Viewer connection file</comment>
+    <glob pattern="*.vv"/>
+    <glob pattern="*.VV"/>
+  </mime-type>
+</mime-info>
