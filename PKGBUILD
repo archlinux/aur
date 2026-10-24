@@ -1,6 +1,6 @@
 # Maintainer: Chomiam <axel.valens@ik.me>
 pkgname=noos-package-manager
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Gestionnaire de paquets GTK4/Libadwaita et outil CLI (noos-up) pour Arch Linux (Pacman, AUR via Yay, Flatpak et AppImages)"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
   'git'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chomiam/noos-package-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('45ce300c98b3375c5fca4310fa97c809c7c2f0f6214cd65ac19ad984601b85fc')
+sha256sums=('f787427b4775b54c45abd7cd2ab9f5139754e13e45986d0817b81ceddde718d1')
 
 prepare() {
   cd "$pkgname-$pkgver"
