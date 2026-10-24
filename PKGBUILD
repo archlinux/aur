@@ -1,6 +1,6 @@
 # Maintainer: Luke Hsiao <luke@hsiao.dev>
 pkgname=git-stats
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A tool for getting aggregated commit stats'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,7 +15,7 @@ conflicts=('git-stats-bin')
 #   -debug subpackage is noise for AUR distribution.
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lukehsiao/git-stats/archive/v$pkgver.tar.gz")
-sha256sums=('050ea0ce55ab1653118196a31d1231be34a056b5faa6f0ffac518fe75345ff76')
+sha256sums=('a6eb400303a8e5a975b54746e8e469b42a9eb63074cf04f7df8f8aec13b0667b')
 
 prepare() {
     cd "$pkgname-$pkgver"
