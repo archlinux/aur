@@ -1,0 +1,5 @@
+[mpdtui-bin]
+source = "github"
+github = "susamn/mpdtui"
+use_latest_release = true
+prefix = "v"

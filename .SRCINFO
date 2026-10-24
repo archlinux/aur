@@ -1,0 +1,18 @@
+pkgbase = mpdtui-bin
+	pkgdesc = A lazygit-style terminal UI for MPD (Music Player Daemon)
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/susamn/mpdtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = mpd
+	provides = mpdtui
+	conflicts = mpdtui
+	options = !strip
+	source_x86_64 = mpdtui-x86_64-3.3.0.tgz::https://github.com/susamn/mpdtui/releases/download/v3.3.0/mpdtui_3.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c912ce573721fa03d28553ea0203e5b0793d208eb0e888beefbb8e0116c1f273
+	source_aarch64 = mpdtui-aarch64-3.3.0.tgz::https://github.com/susamn/mpdtui/releases/download/v3.3.0/mpdtui_3.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 110164ffcd0ee9f6589429eb4eba46881bb5efb34bcceb256b84d225ed66fcfb
+
+pkgname = mpdtui-bin
