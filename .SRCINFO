@@ -1,6 +1,6 @@
 pkgbase = linksy
 	pkgdesc = Your phone and your Linux computer, working as one: files, clipboard, screens, webcam
-	pkgver = 0.9.3
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/LinkSy-mg/linksy-desktop
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = linksy
 	makedepends = qt6-declarative
 	options = !debug
 	options = !lto
-	source = linksy-0.9.3.tar.gz::https://github.com/LinkSy-mg/linksy-desktop/archive/refs/tags/v0.9.3.tar.gz
-	sha256sums = 36cf7fe631644dc3b98f5b74992a19e43a1ec0c45c737963af4181ab638eab6e
+	source = linksy-0.9.5.tar.gz::https://github.com/LinkSy-mg/linksy-desktop/archive/refs/tags/v0.9.5.tar.gz
+	sha256sums = ea0f7ce4ccd16081fe999dd45c53fc7976b5d1bebb6d24d81925c062f42b51be
 
 pkgname = linksy-common
 	pkgdesc = Your devices, connected: the service and tools both Linksy apps share
@@ -39,7 +39,7 @@ pkgname = linksy-common
 
 pkgname = linksy
 	pkgdesc = Your phone and your Linux computer, working as one (GTK app, for GNOME and most desktops)
-	depends = linksy-common=0.9.3
+	depends = linksy-common=0.9.5
 	depends = gtk4
 	depends = libadwaita
 	depends = gst-plugin-gtk4
@@ -47,7 +47,7 @@ pkgname = linksy
 
 pkgname = linksy-qt
 	pkgdesc = Your phone and your Linux computer, working as one (Qt app, for KDE Plasma)
-	depends = linksy-common=0.9.3
+	depends = linksy-common=0.9.5
 	depends = gstreamer
 	depends = qt6-base
 	depends = qt6-declarative
