@@ -1,0 +1,22 @@
+--- a/cmake/install.cmake
++++ b/cmake/install.cmake
+@@ -17,7 +17,7 @@
+     get_target_property(mc_schem_implib_filename ${_rust_iface} COR_IMPLIB_FILE_NAME)
+     set(MC_SCHEM_RUNTIME_REL ${CMAKE_INSTALL_BINDIR}/${mc_schem_filename}) #mc_schem.dll or libmc_schem.dll
+     set(MC_SCHEM_LINK_REL ${CMAKE_INSTALL_LIBDIR}/${mc_schem_implib_filename}) #mc_schem.dll.lib or libmc_schem.dll.a
+-    install(FILES $<TARGET_FILE:${_rust_iface}>
++    install(PROGRAMS $<TARGET_FILE:${_rust_iface}>
+         DESTINATION ${CMAKE_INSTALL_BINDIR}
+     )
+     install(FILES $<TARGET_PROPERTY:${_rust_iface},IMPORTED_IMPLIB>
+@@ -26,8 +26,8 @@
+ else ()
+     set(MC_SCHEM_RUNTIME_REL ${CMAKE_INSTALL_LIBDIR}/${mc_schem_filename}) # libmc_schem.so or libmc_schem.dylib
+     set(MC_SCHEM_LINK_REL ${MC_SCHEM_RUNTIME_REL})
+-    install(FILES $<TARGET_FILE:${_rust_iface}>
+-        DESTINATION ${CMAKE_INSTALL_BINDIR}
++    install(PROGRAMS $<TARGET_FILE:${_rust_iface}>
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     )
+ endif ()
+ 
