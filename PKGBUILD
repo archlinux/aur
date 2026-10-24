@@ -7,7 +7,7 @@ pkgdesc="Quranic Research Tool"
 url="https://sourceforge.net/projects/zekr-linux"
 license=("GPL")
 arch=('x86_64')
-depends=('java-runtime' 'webkitgtk2')
+depends=('java-runtime' 'webkit2gtk')
 
 source=(http://downloads.sourceforge.net/$pkgname-linux/$pkgname-$pkgver-linux_64.tar.gz $pkgname.desktop)
 sha256sums=(
