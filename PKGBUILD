@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=ollaya-bin
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Run open decision models locally, the way Ollama runs LLMs (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.zst::$url/releases/download/v$pkgv
 
 sha256sums=('e6a2415aa487f882d2075bfbe033b846063be1fde510cbd3965a696f6a9f300e'
             '888ff9184a099058f147d9ecadeeb7e26b69d536544a32cfc1777b6b3214c99b')
-sha256sums_x86_64=('2b99e7d2fec0bd0d05d77b74df43a84e0f0171a33fc7a1494f79b18702f15f32')
-sha256sums_aarch64=('d48c078b14a9bfb7775b4a74bc93a902ba0aa783677b78a4eceef7fc9484ad02')
+sha256sums_x86_64=('f812367e3c8b792e262477b08b1649c8d85c18fe5a44bbd0d2e587531d031aa9')
+sha256sums_aarch64=('bd58507f60c2db517f831afaa72c6ac52b54ea0f7b773068eaa5cbf70461c4f2')
 
 # The release archives have no top-level directory; they unpack to bin/ and share/.
 package() {
