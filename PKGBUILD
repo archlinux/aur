@@ -1,6 +1,6 @@
 # Maintainer: bjl32 <bjl32@users.noreply.github.com>
 pkgname=why
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A Linux troubleshooter that explains why a program does not work'
 arch=('x86_64' 'aarch64')
@@ -9,13 +9,10 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Release preparation: replace SKIP with `updpkgsums` once the v$pkgver
-# archive exists, then regenerate .SRCINFO before publishing to the AUR.
-sha256sums=('fa5482032765d99e7ecc0d5bab5e03d8aff469874b4bd2dfbcdcec92d7a31576')
+sha256sums=('f1edc8fe4c839f467d6978ecfc47fca89819c5ff78e2af76a2ac1318c0373f0f')
 
 build() {
   cd "$pkgname-$pkgver"
-  # No dependencies, so the build is fully hermetic.
   cargo build --release --locked --offline
 }
 
