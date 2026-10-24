@@ -1,6 +1,6 @@
 pkgbase = bed-bin
 	pkgdesc = Binary editor written in Go
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/itchyny/bed
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = bed-bin
 	depends = libgcc
 	provides = bed
 	conflicts = bed
-	source_x86_64 = bed-x86_64-0.2.8.tgz::https://github.com/itchyny/bed/releases/download/v0.2.8/bed_v0.2.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = d4a38c9d1ee3d48bc83f1fa953a863b8f5fb73f05806f6ac5238fa6bbfc445ae
-	source_aarch64 = bed-aarch64-0.2.8.tgz::https://github.com/itchyny/bed/releases/download/v0.2.8/bed_v0.2.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = e32a26750c9cc72b8155e70c9e3aceb83a5dc9b82eb86ce66e3ad718122f44c6
+	source_x86_64 = bed-x86_64-0.2.9.tgz::https://github.com/itchyny/bed/releases/download/v0.2.9/bed_v0.2.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = d4e0e5265678a23d367a9eb96d9ed10f8517c39c62296d6266601aaa94aea7e3
+	source_aarch64 = bed-aarch64-0.2.9.tgz::https://github.com/itchyny/bed/releases/download/v0.2.9/bed_v0.2.9_linux_arm64.tar.gz
+	sha256sums_aarch64 = b319d87ca33eddb9784cac16e60c8c1c7e049a56ae786084d634fb6d54904420
 
 pkgname = bed-bin

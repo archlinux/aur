@@ -5,7 +5,7 @@ _pkgname=bed
 pkgname=${_pkgname}-bin
 pkgdesc="Binary editor written in Go"
 
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d4a38c9d1ee3d48bc83f1fa953a863b8f5fb73f05806f6ac5238fa6bbfc445ae')
-sha256sums_aarch64=('e32a26750c9cc72b8155e70c9e3aceb83a5dc9b82eb86ce66e3ad718122f44c6')
+sha256sums_x86_64=('d4e0e5265678a23d367a9eb96d9ed10f8517c39c62296d6266601aaa94aea7e3')
+sha256sums_aarch64=('b319d87ca33eddb9784cac16e60c8c1c7e049a56ae786084d634fb6d54904420')
 
 
 case ${CARCH} in
