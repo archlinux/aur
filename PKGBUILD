@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=yapfast
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _commit=74848a170d545c153f99f4a1211277d450f05f82
 _id=io.github.yapfast.Yapfast

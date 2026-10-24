@@ -1,6 +1,6 @@
 pkgbase = yapfast
 	pkgdesc = Native Discord client that stays light on memory
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://yapfast.com
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = yapfast
 	optdepends = libxrandr: screen sharing on X11
 	noextract = skia-binaries-b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan.tar.gz
 	options = !lto
-	source = yapfast-0.1.0.tar.gz::https://github.com/yapfast/yapfast/archive/74848a170d545c153f99f4a1211277d450f05f82.tar.gz
+	source = yapfast-0.2.0.tar.gz::https://github.com/yapfast/yapfast/archive/74848a170d545c153f99f4a1211277d450f05f82.tar.gz
 	source = webrtc-51ef663-linux-x64-release.zip::https://github.com/livekit/rust-sdks/releases/download/webrtc-51ef663/webrtc-linux-x64-release.zip
 	source = https://github.com/rust-skia/skia-binaries/releases/download/0.153.3/skia-binaries-b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan.tar.gz
 	sha256sums = dff9dc701948b102daff6a5e7af8f7ecf2d08aef185963169912e07173e91673
