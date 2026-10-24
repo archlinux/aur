@@ -1,0 +1,33 @@
+pkgbase = noos-flasher
+	pkgdesc = Créateur de clés USB bootables Linux (DD) & Windows 10/11 UEFI avec studio de debloat (Rust + GTK4 / Libadwaita)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Chomiam/noos-flasher
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = cairo
+	depends = dosfstools
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk4>=4.14
+	depends = hicolor-icon-theme
+	depends = libadwaita>=1.5
+	depends = ntfs-3g
+	depends = ntfsprogs
+	depends = pango
+	depends = parted
+	depends = polkit
+	depends = util-linux
+	optdepends = 7zip: détection rapide des métadonnées internes des ISO (7z)
+	provides = noos-win-installer
+	conflicts = noos-win-installer
+	replaces = noos-win-installer
+	source = noos-flasher-0.2.0.tar.gz::https://github.com/Chomiam/noos-flasher/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 96b84da4d82f0a8a55bc320f949239f6618e9f38c0bd6a66b867229e7d6c1119
+
+pkgname = noos-flasher
