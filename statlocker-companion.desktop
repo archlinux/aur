@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Statlocker Companion
+Comment=Deadlock match tracking and companion tools
+Exec=statlocker-companion %U
+Terminal=false
+Categories=Game;Utility;

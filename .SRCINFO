@@ -1,0 +1,17 @@
+pkgbase = statlocker-companion
+	pkgdesc = Native Linux companion app for Statlocker and Deadlock
+	pkgver = 20261020
+	pkgrel = 1
+	url = https://statlocker.gg/deadlock-companion-app
+	arch = x86_64
+	license = unknown
+	depends = fuse2
+	options = !strip
+	source = statlocker-companion.AppImage::https://updates.statlocker.gg/companion/download/statlocker-companion_amd64.AppImage
+	source = statlocker-companion
+	source = statlocker-companion.desktop
+	sha256sums = b78b8ab7eaeb659dbe4a5d2c38973ce9ba6f03e9908bd828d6f2e5d966a2101d
+	sha256sums = 5291ee2cfd48631089ee436d142257db1387720e696e1d2abe5a5278b88256f6
+	sha256sums = 006f44b0c0f6e8213b6695cfc8b243f4a6e83ab78ab681fd115686c78ca0e454
+
+pkgname = statlocker-companion
