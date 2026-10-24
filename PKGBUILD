@@ -1,5 +1,5 @@
 pkgname=pollen-commit-bin
-pkgver=0.0.17.37
+pkgver=0.6.11.16
 pkgrel=2
 pkgdesc='Pollen'
 arch=('x86_64')
