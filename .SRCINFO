@@ -1,0 +1,18 @@
+pkgbase = pgtui-bin
+	pkgdesc = Simple terminal UI for PostgreSQL (prebuilt)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/pgplex/pgtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	provides = pgtui=0.3.0
+	conflicts = pgtui
+	source_x86_64 = https://github.com/pgplex/pgtui/releases/download/v0.3.0/pgtui_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f5db95f13702dff30e6f0ea2af862463b1f3168daa022db3adf028eec910129f
+	source_aarch64 = https://github.com/pgplex/pgtui/releases/download/v0.3.0/pgtui_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 94cbd12b5871cb0d8163e9e8f56c57d07bc2720a049172d55935d12c40b0b88f
+
+pkgname = pgtui-bin
