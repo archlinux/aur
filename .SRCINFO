@@ -1,0 +1,21 @@
+pkgbase = cutecosmic
+	pkgdesc = Qt platform theme for the COSMIC desktop environment
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/IgKh/cutecosmic
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = corrosion
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = breeze: Breeze widget style (used by default when installed)
+	conflicts = cutecosmic-git
+	source = cutecosmic-0.2.0.tar.gz::https://github.com/IgKh/cutecosmic/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 2bbc0f4dbb0e16ccbbf77dc53fea99ff56abf32621d831198bb3744fef01c7aa
+
+pkgname = cutecosmic
