@@ -3,7 +3,7 @@
 
 pkgname=akiflow-bin
 pkgver=2.83.8
-pkgrel=1
+pkgrel=2
 _buildhash=9f6f1262
 pkgdesc="Akiflow - Time blocking and task management (unofficial Linux build)"
 arch=('x86_64')
@@ -11,6 +11,7 @@ url="https://akiflow.com"
 license=('custom')
 depends=('electron')
 makedepends=('p7zip' 'imagemagick' 'icoutils' 'python')
+optdepends=('kwin: opens the tray popup above the panel on Wayland')
 _ghraw="https://raw.githubusercontent.com/shrimpwtf/akiflow-arch/main"
 source=("Akiflow-${pkgver}.exe::https://download.akiflow.com/builds/Akiflow-${pkgver}-${_buildhash}-x64.exe"
         "patch-main.py::${_ghraw}/patch-main.py"
@@ -18,9 +19,11 @@ source=("Akiflow-${pkgver}.exe::https://download.akiflow.com/builds/Akiflow-${pk
         "plasma-widget-main.qml::${_ghraw}/plasma-widget/package/contents/ui/main.qml"
         "plasma-widget-CompactRepresentation.qml::${_ghraw}/plasma-widget/package/contents/ui/CompactRepresentation.qml"
         "plasma-widget-FullRepresentation.qml::${_ghraw}/plasma-widget/package/contents/ui/FullRepresentation.qml"
-        "plasma-widget-akiflow.png::${_ghraw}/plasma-widget/package/contents/icons/akiflow.png")
+        "plasma-widget-akiflow.png::${_ghraw}/plasma-widget/package/contents/icons/akiflow.png"
+        "kwin-popup-metadata.json::${_ghraw}/kwin-script/akiflow-popup/metadata.json"
+        "kwin-popup-main.js::${_ghraw}/kwin-script/akiflow-popup/contents/code/main.js")
 sha512sums=('f8764b23aa378b0ab4760284f80072e68756a82ae546bfaffc795abf514df59ff2953d04f15f03a3bb00667ebf44ad864bf11214d57445fe332255d65d8314d9'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd "${srcdir}"
@@ -135,4 +138,10 @@ EOF
         "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/ui/FullRepresentation.qml"
     install -Dm644 "${srcdir}/plasma-widget-akiflow.png" \
         "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/icons/akiflow.png"
+
+    # KWin script that places the tray popup above the clicked panel widget on Wayland
+    install -Dm644 "${srcdir}/kwin-popup-metadata.json" \
+        "${pkgdir}/usr/share/kwin/scripts/akiflow-popup/metadata.json"
+    install -Dm644 "${srcdir}/kwin-popup-main.js" \
+        "${pkgdir}/usr/share/kwin/scripts/akiflow-popup/contents/code/main.js"
 }
