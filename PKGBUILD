@@ -4,7 +4,7 @@ pkgname=antra-bin
 _pkgname=antra
 __pkgname=Antra
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop music library builder that supports Spotify, YouTube Music, Apple Music, Amazon Music, Tidal, Qobuz, and Deezer"
 arch=("x86_64")
 url="https://github.com/anandprtp/Antra"
@@ -30,5 +30,4 @@ package() {
 
   mkdir -vp "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
   cp -v --no-preserve=ownership --preserve=mode "squashfs-root/usr/share/icons/hicolor/512x512/apps/${__pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
-
 }
