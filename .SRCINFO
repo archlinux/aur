@@ -1,7 +1,7 @@
 pkgbase = ttf-kreativekorp-lisa
 	pkgdesc = KreativeKorp's Apple Lisa font bundle: Empty Folders, Engelbart, Paper (LisaCalc, LisaGraph, LisaGuide, LisaProject, LisaSketch, LisaTerminal), Priam Whamos, Some Acronym, Startup From, and Twiggy, in 2 variations each.
 	pkgver = 2011.02
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kreativekorp.com/software/fonts/retro/
 	arch = any
 	license = custom:relay-fonts-1.2f

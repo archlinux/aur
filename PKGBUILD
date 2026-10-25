@@ -16,7 +16,7 @@ pkgname=(
     'ttf-kreativekorp-lisa-twiggy'
 )
 pkgver=2011.02
-pkgrel=2
+pkgrel=3
 pkgdesc="KreativeKorp's Apple Lisa font bundle: Empty Folders, Engelbart, Paper (LisaCalc, LisaGraph, LisaGuide, LisaProject, LisaSketch, LisaTerminal), Priam Whamos, Some Acronym, Startup From, and Twiggy, in 2 variations each."
 arch=('any')
 url='https://www.kreativekorp.com/software/fonts/retro/'
@@ -40,6 +40,7 @@ _install_font() {
     find "${srcdir}" -type f -name "${fontspec}" \
         -exec install -m644 {} "${pkgdir}/usr/share/fonts/${pkgbase}/" \;
 
+    install -Dm644 "${srcdir}/Demo.rtf" "${pkgdir}/usr/share/doc/${pkgname}/Demo.rtf"
     install -Dm644 "${srcdir}/FreeLicense.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
