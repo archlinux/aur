@@ -1,6 +1,6 @@
 pkgname=nerd-fonts-apple
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=("custom")
 pkgdesc="Apple font (San Francisco, NY), patched with the Nerd Fonts Patcher"
@@ -32,14 +32,14 @@ build() {
     local fontDir="$(echo $archive | cut -d. -f1 | tr -d '-')Fonts"
     local pkgArchive="$(echo $archive | cut -d. -f1 | sed -r 's/-/ /g') Fonts.pkg"
     local payload="${fontDir}.pkg/Payload"
-    cd -- "$srcdir/$fontDir"
+    cd -- "$srcdir/"*"$fontDir"
     bsdtar xvPf "$pkgArchive" &>/dev/null
     bsdtar xvPf "$payload" &>/dev/null
     case $archive in
       *Mono* ) find -name *.ttf -o -name *.otf -print0 | parallel -j$(nproc) -0 python "$srcdir/font-patcher" -q -c -s {} -out "$srcdir/patched" &>/dev/null
                ;;
-      * ) find -name *.ttf -o -name *.otf -print0 | parallel -j$(nproc) -0 python "$srcdir/font-patcher" -q -c {} -out "$srcdir/patched" &>/dev/null
-          ;;
+      *      ) find -name *.ttf -o -name *.otf -print0 | parallel -j$(nproc) -0 python "$srcdir/font-patcher" -q -c {} -out "$srcdir/patched" &>/dev/null
+               ;;
     esac
     cd -- "$pwd"
   done
