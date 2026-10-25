@@ -1,0 +1,21 @@
+pkgbase = plasma6-runners-markdown-bookmarks-git
+	pkgdesc = A Krunner plugin to open web links listed in a Markdown file
+	pkgver = 0.5.1.r6.g625d5d5
+	pkgrel = 1
+	url = https://github.com/andrewrabert/krunner-markdown-bookmarks
+	install = plasma6-runners-markdown-bookmarks-git.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	makedepends = kcmutils
+	depends = krunner
+	depends = yaml-cpp
+	provides = plasma6-runners-markdown-bookmarks
+	conflicts = plasma6-runners-markdown-bookmarks
+	source = git+https://github.com/andrewrabert/krunner-markdown-bookmarks.git
+	sha256sums = SKIP
+
+pkgname = plasma6-runners-markdown-bookmarks-git

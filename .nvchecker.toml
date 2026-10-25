@@ -1,0 +1,4 @@
+[plasma6-runners-markdown-bookmarks-git]
+source = "git"
+git = "https://github.com/andrewrabert/krunner-markdown-bookmarks.git"
+use_commit = true

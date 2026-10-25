@@ -1,0 +1,13 @@
+# Kill Krunner if needed, so it restarts and loads the changes
+#
+post_upgrade() {
+	killall krunner 2> /dev/null || true
+}
+
+pre_remove() {
+	killall krunner 2> /dev/null || true
+}
+
+post_remove() {
+	killall krunner 2> /dev/null || true
+}
