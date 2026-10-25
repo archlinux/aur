@@ -1,6 +1,6 @@
 pkgbase = coomer
 	pkgdesc = Zoomer application for everyone on Linux
-	pkgver = 1.2.4
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/yuzujr/coomer
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = coomer
 	depends = libxkbcommon
 	depends = dbus
 	optdepends = xdg-desktop-portal: portal screenshot backend
-	source = coomer-1.2.4.tar.gz::https://github.com/yuzujr/coomer/archive/refs/tags/v1.2.4.tar.gz
-	sha256sums = fc4de2a4dffd7e9b025a832a553988f528fdae37f0e85b6050347748d56d5968
+	source = coomer-1.3.0.tar.gz::https://github.com/yuzujr/coomer/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = c2c0b1eb5320bcf6a9a41d3f1f282728c99fd76413003a1e180a4d577574c2cd
 
 pkgname = coomer
