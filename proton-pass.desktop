@@ -5,6 +5,6 @@ GenericName=Password Manager
 Exec=proton-pass %U
 Icon=proton-pass
 Type=Application
-StartupNotify=true
 Categories=Utility;
-
+MimeType=x-scheme-handler/protonpass;
+StartupNotify=true
