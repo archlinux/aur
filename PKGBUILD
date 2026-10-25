@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-igitt
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='TUI with clear git graphs arranged for your branching model'
 url="https://github.com/mlange-42/$pkgname"
@@ -17,7 +17,7 @@ makedepends=(cargo
 checkdepends=(git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('67797d3b3fc461ccf67e60b336e2716bc6439bf638d5e797935a4df0d9986599')
+sha256sums=('677c3d257ed70e3df672a56714c645a432388a047496fd9ccc1389a11cea008d')
 
 prepare() {
 	cd "$_archive"
