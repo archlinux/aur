@@ -7,7 +7,7 @@
 pkgbase=inputactions-kwin
 pkgname=(inputactions-kwin inputactions-kwin-alpm-hook)
 pkgver=0.9.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=(
   'yaml-cpp'
