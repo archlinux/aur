@@ -1,6 +1,6 @@
 # Maintainer: Buck <kbuck at tuta dot io>
 #
-# ZENWORKS: a desktop environment built on Quickshell and Hyprland.
+# Zenworks: a desktop environment built on Quickshell and Hyprland.
 # Nothing is compiled: the shell, its Hyprland and kitty configs and the
 # suite's helpers are copied to /usr/share/zenworks, the session's launcher
 # to /usr/bin, and the login-screen entry, portal choice and app launchers
@@ -8,10 +8,10 @@
 
 pkgname=zenworks
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
-url="https://github.com/kbuckleys/ZENWORKS"
+url="https://github.com/kbuckleys/Zenworks"
 license=('GPL-3.0-or-later')
 depends=(
   # compositor & session
@@ -47,8 +47,8 @@ depends=(
   otf-san-francisco otf-san-francisco-mono
 )
 optdepends=(
-  'zsh: the terminal setup ZENWORKS offers (installed when you accept it)'
-  'zoxide: the terminal setup ZENWORKS offers (installed when you accept it)'
+  'zsh: the terminal setup Zenworks offers (installed when you accept it)'
+  'zoxide: the terminal setup Zenworks offers (installed when you accept it)'
   'noto-fonts-cjk: Chinese, Japanese and Korean text'
   'noto-fonts-extra: more weights and rare scripts'
   'tesseract: copying text out of a picture (Picasso)'
@@ -77,10 +77,13 @@ conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('382228262a9a190bf6262cb05cb79fc742a076e0a8284df1de78f42606a6cc69')
+sha256sums=('224154eaa83ca983943601ea4146016621390e90a5bbdeb5934e8c2718926999')
 
 package() {
-  cd "ZENWORKS-$pkgver"
+  # the tarball's directory is named after the repository, as GitHub has
+  # it now (renamed ZENWORKS → Zenworks after 0.0.7-1 was built): read
+  # from $url, so a rename cannot break the build again
+  cd "${url##*/}-$pkgver"
   local share="$pkgdir/usr/share/zenworks"
 
   install -dm755 "$share"
