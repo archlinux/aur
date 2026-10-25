@@ -1,7 +1,6 @@
 # Maintainer: Frédéric Logier <fredix@nomad.wf>
-_name=uncloud
-pkgname=uc
-#_binaryname="uc"
+pkgname=uncloud
+_binaryname="uc"
 pkgver=0.21.0
 pkgrel=1
 pkgdesc="A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨"
@@ -12,7 +11,7 @@ groups=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=("${_name}")
+provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
 backup=()
@@ -31,7 +30,5 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
 
     # Extract archive to the package directory
-    cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-    #ln -sf "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${_binaryname}"
+    cp -a "${srcdir}/${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
 }
