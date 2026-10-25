@@ -17,7 +17,7 @@ makedepends=(
 )
 provides=(${pkgname})
 conflicts=(${pkgname}-git ${pkgname}-bin)
-options=('!strip' '!debug')
+options=('!strip')
 source=(
 	"https://github.com/slskd/slskd/archive/refs/tags/${pkgver}.tar.gz"
 	'slskd.service'
