@@ -1,0 +1,20 @@
+pkgbase = bbhost-desktop-bin
+	pkgdesc = Definitive Bloodborne PC Experience
+	pkgver = 0.2.19
+	pkgrel = 1
+	url = https://github.com/droogie/bbhost
+	arch = x86_64
+	license = GPL3
+	license = Apache-2.0
+	license = MIT
+	license = custom
+	depends = vulkan-icd-loader
+	depends = curl
+	depends = zlib
+	provides = bbhost
+	source = https://github.com/droogie/bbhost/releases/download/v0.2.19/bbhost-linux-v0.2.19.tar.gz
+	source = bbhost.png
+	sha256sums = c7a7e13a9bfa9faf2b19b97b2eb4ef9b19e55716d267864d638bb3599037a44d
+	sha256sums = 67816f5b2a1ce724baa48a49cf55b5119bd5108bfae8ad4441fa3d48b133b16f
+
+pkgname = bbhost-desktop-bin
