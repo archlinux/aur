@@ -6,7 +6,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=simple
+Type=oneshot
 User=clamav
 WorkingDirectory=/var/lib/fangfrisch
 ExecStart=/usr/bin/fangfrisch --conf /etc/fangfrisch/fangfrisch.conf refresh
@@ -16,6 +16,3 @@ Nice=19
 CPUSchedulingPolicy=idle
 IOSchedulingClass=idle
 IOSchedulingPriority=7
-
-[Install]
-WantedBy=multi-user.target
