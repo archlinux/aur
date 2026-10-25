@@ -1,15 +1,18 @@
 # Maintainer: LetalexAlex <letalexalexx@gmail.com>
 pkgname=arrowvortex-linux-git
-pkgver=r363.06b8454
+# beta was branched from a shorter history than the deleted linux branch
+# (r317 < r363), so epoch forces the upgrade.
+epoch=1
+pkgver=r317.3e52cbc
 pkgver() {
     cd "$srcdir/ArrowVortex"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=4
-pkgdesc="Stepmania .sm/.ssc simfile editor (linux port branch)"
+pkgrel=1
+pkgdesc="Stepmania .sm/.ssc simfile editor (beta branch)"
 arch=('x86_64')
 options=('!debug' '!lto')
-url="https://github.com/uvcat7/ArrowVortex/tree/linux"
+url="https://github.com/uvcat7/ArrowVortex/tree/beta"
 license=('GPL-3.0-or-later')
 provides=('arrowvortex')
 conflicts=('arrowvortex')
@@ -26,9 +29,16 @@ depends=(
     'libxkbcommon'
     'libdrm'
     'mesa'
-    'alsa-lib'
     'libpulse'
     'jack'
+    'libpipewire'
+    'sndio'
+    'libdecor'
+    'dbus'
+    'liburing'
+)
+optdepends=(
+    'zenity: file dialogs when xdg-desktop-portal is unavailable'
 )
 makedepends=(
     'git'
@@ -41,15 +51,8 @@ makedepends=(
     'zip'
     'unzip'
     'tar'
-    'libxrandr'
-    'libxcursor'
-    'libxfixes'
-    'libxi'
-    'libxss'
     'wayland-protocols'
-    'libdecor'
     'libusb'
-    'sndio'
     'libltdl'
     'autoconf'
     'autoconf-archive'
@@ -57,9 +60,11 @@ makedepends=(
     'automake'
     'libtool'
     'libxft'
+    'libibus'
+    'libthai'
 )
 source=(
-    "ArrowVortex::git+https://github.com/uvcat7/ArrowVortex.git#branch=linux"
+    "ArrowVortex::git+https://github.com/uvcat7/ArrowVortex.git#branch=beta"
     "vcpkg::git+https://github.com/microsoft/vcpkg.git"
     'disable-warning-override-init.patch'
     'arrowvortex.desktop'
@@ -72,10 +77,13 @@ prepare() {
     # Ensure we use system tools (important for clean-chroot reproducibility;
     # also avoids picking up user pyenv shims during local builds).
     export PATH='/usr/bin:/usr/sbin:/bin:/sbin'
+    # CMake 4 dropped compatibility with projects that declare < 3.5.
+    # Several ports in the pinned vcpkg baseline still do.
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
     # CMakeLists.txt unconditionally sets CMAKE_CXX_CLANG_TIDY with
-    # --warnings-as-errors=*, which fires on SDL3 headers we don't control.
-    # Patch it out before configuring.
+    # --warnings-as-errors=*. The SDL3 header exclude is Windows-only, so a
+    # Linux package build fails on headers we don't control.
     sed -i 's/^set(CMAKE_CXX_CLANG_TIDY.*/# clang-tidy disabled for packaging/' \
         ArrowVortex/CMakeLists.txt
 
@@ -88,9 +96,9 @@ prepare() {
     cd vcpkg
     VCPKG_DISABLE_METRICS=1 ./bootstrap-vcpkg.sh -disableMetrics
 
-    # vcpkg's libsystemd port can fail on newer glibc errno sets (e.g. EFSBADCRC)
-    # due to systemd using -Werror=override-init in its Meson warning list.
-    # Overlay the port and relax that one flag.
+    # vcpkg's libsystemd port (pulled in by dbus) builds systemd 257 with
+    # -Werror=override-init, which rejects newer glibc errno initializers
+    # such as EFSBADCRC. Overlay the port and relax that one flag.
     local overlay="$srcdir/vcpkg-overlays/libsystemd"
     mkdir -p "$overlay"
     cp -a "$srcdir/vcpkg/ports/libsystemd/." "$overlay/"
@@ -105,9 +113,13 @@ build() {
     cd "$srcdir/ArrowVortex"
 
     export PATH='/usr/bin:/usr/sbin:/bin:/sbin'
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
     export VCPKG_ROOT="$srcdir/vcpkg"
     export VCPKG_DISABLE_METRICS=1
 
+    # -B build plus -DYML matches upstream's Linux CI. The linux-release
+    # preset hardcodes VCPKG_ROOT=/opt/vcpkg, so it is not used here.
+    # Upstream sets CMAKE_RUNTIME_OUTPUT_DIRECTORY to the build bin dir.
     cmake \
         -B build \
         -S . \
@@ -117,7 +129,8 @@ build() {
         -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" \
         -DVCPKG_OVERLAY_PORTS="$srcdir/vcpkg-overlays" \
         -DVCPKG_TARGET_TRIPLET=x64-linux \
-        -DYML=1
+        -DPRESET_NAME=linux-release \
+        -DYML=YML
 
     cmake --build build
 }
@@ -126,9 +139,9 @@ package() {
     cd "$srcdir/ArrowVortex"
 
     # Binary
-    install -Dm755 build/src/System/ArrowVortex "$pkgdir/usr/bin/ArrowVortex"
+    install -Dm755 build/bin/ArrowVortex "$pkgdir/usr/bin/ArrowVortex"
 
-    # Data directories
+    # Data directories. The editor loads these relative to the working directory.
     install -dm755 "$pkgdir/usr/share/arrowvortex"
     cp -r bin/assets    "$pkgdir/usr/share/arrowvortex/"
     cp -r bin/noteskins "$pkgdir/usr/share/arrowvortex/"
