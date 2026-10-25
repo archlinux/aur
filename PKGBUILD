@@ -1,6 +1,6 @@
 pkgname=nerd-fonts-apple
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.1
+pkgrel=1
 arch=(any)
 license=("custom")
 pkgdesc="Apple font (San Francisco, NY), patched with the Nerd Fonts Patcher"
@@ -17,12 +17,12 @@ source=(
 
   "font-patcher-$pkgver::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FontPatcher.zip"
 )
-sha256sums=('bbb70b6c84442d234551ad8e5bf640808bbabdb98affc9175ea53def1a6103ed'
-            '99c30cfdc6e6380e7293221bef86e277dbd4eb0ca5f2757092f91df9594e770a'
+sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
+            'c1d0e344ebadd66eb62f03f823784cce49f1787f56563fb098fca01fc554135c'
             '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
             '2760c62d502b77012c49517c2ea392ec2d4c647fe060985c927df48d105197b9'
             '1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4'
-            'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760')
+            '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a')
 
 build() {
   local pwd="$(pwd)"
