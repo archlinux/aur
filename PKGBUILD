@@ -16,8 +16,8 @@ conflicts=('creativecraft')
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/creativecraft-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/creativecraft-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('1ae7a0bf3599913a739a9df404f52ad0a89555c5c1ef1f68d3122337692d4094')
-sha256sums_aarch64=('d3d4df6592243368b6f186d595fb2fd925c9ba44c1eed67a7d7c8f8f75e8fb93')
+sha256sums_x86_64=('d0a65232bdf6c1ba847a721f490b24aadf6dd8b486aedca1949fc2807034c472')
+sha256sums_aarch64=('e9406025388b5d68e64b80f4b2d6fd9734d232b947da30fdfb65b99d4eef9c80')
 
 package() {
   cd "creativecraft-$pkgver-linux-$CARCH"
