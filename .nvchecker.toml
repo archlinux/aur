@@ -1,0 +1,5 @@
+[goport-bin]
+source = "github"
+github = "Slashas632/goPort"
+use_latest_release = true
+prefix = "v"
