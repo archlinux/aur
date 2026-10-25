@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='OpenCode desktop app (built from source, runs on system electron44)'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=(
   'icu'
 )
 makedepends=(
-  'bun>=1.4.2'
+  'bun>=1.4.4'
   'git'
   # electron-builder downloads a Ruby-based fpm tool that links against
   # libcrypt.so.1, which is provided by libxcrypt-compat on Arch.
@@ -39,7 +39,7 @@ options=('!strip' '!debug')
 # scanner enumerates source files via the git index when .git is present, and
 # falls back to a traversal that misses ~28% of the renderer's utility classes
 # when it isn't. Cloning the pinned commit preserves .git for the same CSS as CI.
-_commit=a517687fde98a7329ada3ae644a01a9fc6c4e99e
+_commit=68bc26b7da1990ce10ffecfbc1e09eb13aa5d824
 source=(
   "$pkgname-$pkgver-$_commit::git+https://github.com/anomalyco/opencode.git#commit=$_commit"
   "$pkgname.sh"
@@ -163,7 +163,7 @@ package() {
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   local png size
-  for png in "$_eb"/usr/share/icons/hicolor/*/apps/"$_ebname.png"; do
+  for png in "$_eb"/usr/share/icons/hicolor/*/apps/ai.opencode.png; do
     size=$(basename "$(dirname "$(dirname "$png")")")
     install -Dm644 "$png" "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
   done
