@@ -1,0 +1,18 @@
+pkgbase = driftwm-bin
+	pkgdesc = Trackpad-first infinite canvas Wayland compositor - Prebuilt binary distribution
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/malbiruk/driftwm
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libdisplay-info
+	depends = libinput
+	depends = seatd
+	depends = mesa
+	depends = libxkbcommon
+	provides = driftwm=0.20.0
+	conflicts = driftwm
+	source = https://github.com/qofqoflop/driftwm-bin/releases/download/v0.20.0/driftwm-linux-x86_64.tar.gz
+	sha256sums = 043d7cd41b287a259a65962005fb613dc8d866208bac852ea332d29201ab38e7
+
+pkgname = driftwm-bin
