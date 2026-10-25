@@ -1,0 +1,26 @@
+pkgbase = python-turbopuffer
+	pkgdesc = Python client for the Turbopuffer vector database
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/turbopuffer/turbopuffer-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-aiohttp
+	depends = python-anyio
+	depends = python-distro
+	depends = python-httpx2
+	depends = python-orjson
+	depends = python-pybase64
+	depends = python-pydantic
+	depends = python-sniffio
+	depends = python-typing_extensions
+	optdepends = python-urllib3: urllib3 transport
+	source = turbopuffer-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/t/turbopuffer/turbopuffer-3.0.0.tar.gz
+	sha256sums = 290a94c32e9d64a80299874a0dfac3eb87a01e13f46fb36950e5b7c35c3af943
+
+pkgname = python-turbopuffer
