@@ -11,7 +11,9 @@ Tested with: `zluda-preview-bin` **7.preview.13 only**. The AUR now carries 7.pr
 not been re-verified; the package does not pin a ZLUDA version. After a ZLUDA update, run
 `physx5-zluda-run gputest` once and check the `RESULT:` line.
 
-Build details, the patch, the ZLUDA gaps and how they were found: [docs/DEVELOPER-NOTES.md](https://github.com/eugenesflanagin-spec/physx5-zluda/blob/master/docs/DEVELOPER-NOTES.md).
+**New here? Read the [User Guide](https://github.com/eugenesflanagin-spec/physx5-zluda/blob/master/docs/USER-GUIDE.md)** — plain-words explanation, install,
+every option, troubleshooting and a glossary. Build details, the patch, the ZLUDA gaps and how they
+were found: [docs/DEVELOPER-NOTES.md](https://github.com/eugenesflanagin-spec/physx5-zluda/blob/master/docs/DEVELOPER-NOTES.md).
 
 ```
 $ physx5-zluda-run gputest
@@ -21,6 +23,43 @@ broadphase type  : eGPU
 stats            : activeDynamic=217 pairs=27 gpuMemHeap=65536 KiB (BP 9043, NP 357, solver 23997, sim 136)
 RESULT: GPU PhysX ENGAGED  (bp=GPU, gpuHeap=yes, cudaErr=0, physxErrors=0, warnings=0, kernelsUnavailable=12)
 ```
+
+## Install
+
+You need an AMD GPU that ZLUDA/ROCm supports, and a ZLUDA package. Install ZLUDA **first** so the AUR
+helper does not pick a provider for you:
+
+```sh
+yay -S zluda-preview-bin             # ZLUDA (provides libcuda.so.1)
+```
+
+Then one of:
+
+```sh
+# a) from the AUR (builds from source: ~100 MB of downloads, a few GB of disk, plenty of RAM)
+yay -S physx5-zluda
+
+# b) the ready-built package from the GitHub release page
+#    https://github.com/eugenesflanagin-spec/physx5-zluda/releases
+sha256sum -c SHA256SUMS --ignore-missing
+sudo pacman -U physx5-zluda-5.11.0-3-x86_64.pkg.tar.zst
+
+# c) by hand
+git clone https://aur.archlinux.org/physx5-zluda.git && cd physx5-zluda && makepkg -si
+```
+
+Then check it:
+
+```sh
+physx5-zluda-run gputest             # exit 0 and "RESULT: GPU PhysX ENGAGED" = working
+```
+
+The first GPU start is slow (ZLUDA compiles the PTX kernels once and caches them in `~/.cache/zluda`).
+
+> Do **not** install NVIDIA's `nvidia-utils` or `cuda` packages on the same machine: they provide their
+> own `libcuda.so.1` and remove ZLUDA. This package needs neither.
+
+Uninstall: `sudo pacman -R physx5-zluda` (optionally `rm -rf ~/.cache/zluda`).
 
 ## How it works
 
@@ -67,6 +106,21 @@ Everything lives in `/opt/physx5` (`lib/`, `include/`, `bin/`, `lib/cmake/PhysX`
 link your own programs against `/opt/physx5/lib` and run them with the same `LD_LIBRARY_PATH`/`LD_PRELOAD`
 the wrapper sets).
 
+## Troubleshooting
+
+| symptom | what to do |
+|---|---|
+| `RESULT: no usable CUDA context manager` | ZLUDA is missing or cannot see the GPU. `pacman -Qo /usr/lib/libcuda.so.1` should name your ZLUDA package; your user may need the `render` and `video` groups. |
+| The test picks the integrated GPU | `PHYSX_GPU_DEVICE=1 physx5-zluda-run gputest` (or the right device number). |
+| Exactly 12 `Could not find CUDA module containing function` lines | Expected — see *Known limitation*. Many more than 12 means the shim was not loaded: run through `physx5-zluda-run`. |
+| `error while loading shared libraries: libPhysX_64.so` | The program was started outside the wrapper; use `physx5-zluda-run ./program` or set `LD_LIBRARY_PATH=/opt/physx5/lib`. |
+| `GPU PhysX NOT engaged`, `cudaErr` not 0 | Run with `--debug`, delete `~/.cache/zluda` once and retry. After a ZLUDA update, re-run the test. |
+| Build fails with `unsupported GNU version` | `gcc14` missing; install it and rebuild with `makepkg -Cf`. |
+| Build killed / PC freezes while building | `cudafe++`/`ptxas` ran out of memory: close programs or add swap. |
+| ZLUDA vanished after an update | Something pulled in `nvidia-utils`/`cuda`; remove it and reinstall ZLUDA. |
+
+More cases in the [User Guide](https://github.com/eugenesflanagin-spec/physx5-zluda/blob/master/docs/USER-GUIDE.md#8-troubleshooting).
+
 ## Files
 
 | file | purpose |
@@ -77,8 +131,25 @@ the wrapper sets).
 | `physx5-gputest.cpp` | functional self-test |
 | `physx5-zluda-run` | wrapper setting `LD_LIBRARY_PATH`, `LD_PRELOAD`, `PHYSX_GPU_DEVICE` |
 | `*.desktop` | menu entries (demo + test) |
+| `docs/USER-GUIDE.md` | user guide: install, usage, every option, troubleshooting, glossary |
 | `docs/DEVELOPER-NOTES.md` | how the build and the ZLUDA workarounds were worked out |
+| `CREDITS.md`, `LICENSE` | sources this builds on, and the licence of this project's own files |
+| `packaging/` | clean-container build (`build.sh`) and install test (`test-in-container.sh`) used for releases |
+| `.github/workflows/release.yml` | on a `v<pkgver>-<pkgrel>` tag: build, install-test, publish the GitHub release |
+| `docs/release-notes/` | notes for each release |
 
-Licenses: PhysX is Apache-2.0 (NVIDIA). The CUDA toolkit components are downloaded at build time under
-the NVIDIA CUDA EULA; only `libcudart.so.13` (an EULA-redistributable runtime) ends up in the package.
-Nothing from the toolkit is checked into this repository.
+## Credits and licence
+
+- **[NVIDIA PhysX SDK 5](https://github.com/NVIDIA-Omniverse/PhysX)** © NVIDIA Corporation, Apache-2.0.
+  Built from source; `physx5-zluda.patch` modifies four things (PTX-only arch list, uncompressed fatbins,
+  CUDA 13 `cuCtxCreate`, one snippet dropped). The patched files stay Apache-2.0.
+- **CUDA Toolkit 13.4 redistributables** © NVIDIA Corporation, NVIDIA CUDA EULA. Downloaded at build time and
+  used only to compile; only the redistributable `libcudart.so.13` is packaged. Nothing from the toolkit is
+  in this repository.
+- **[ZLUDA](https://github.com/vosen/ZLUDA)** by Andrzej Janik (vosen) and contributors — runtime dependency,
+  not included. **ROCm** © AMD.
+- This project's own files (PKGBUILD, shim, self-test, wrapper, menu entries, docs): MIT, © Eugene Flanagin
+  ([LICENSE](https://github.com/eugenesflanagin-spec/physx5-zluda/blob/master/LICENSE)). Full list with licences: [CREDITS.md](https://github.com/eugenesflanagin-spec/physx5-zluda/blob/master/CREDITS.md).
+
+NVIDIA, PhysX and CUDA are trademarks of NVIDIA Corporation; AMD, Radeon and ROCm of Advanced Micro Devices,
+Inc. Not affiliated with NVIDIA, AMD or the ZLUDA project.

@@ -17,6 +17,7 @@
 #   PHYSX_GPU_DEVICE -> 0 unless already set (CUDA device ordinal used by PhysX)
 # ZLUDA_CC is NOT needed: the GPU library is PTX-only (compute_75), so ZLUDA's reported CC 8.x is fine.
 set -euo pipefail
+# SPDX-License-Identifier: MIT  (Copyright (c) 2026 Eugene Flanagin; see LICENSE)
 PREFIX=/opt/physx5
 cpu_only=0
 while [[ $# -gt 0 ]]; do

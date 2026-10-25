@@ -1,4 +1,5 @@
 /*
+ * SPDX-License-Identifier: MIT  (Copyright (c) 2026 Eugene Flanagin; see LICENSE)
  * zluda-physx-shim.c -- LD_PRELOAD shim for running NVIDIA PhysX 5 GPU code on
  * ZLUDA (CUDA-on-AMD).  It papers over three gaps found in ZLUDA 7.preview.13:
  *

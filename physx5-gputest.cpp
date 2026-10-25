@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT  (Copyright (c) 2026 Eugene Flanagin; see LICENSE)
 // physx5-gputest.cpp -- small functional check that PhysX 5 GPU rigid-body
 // simulation (GPU broadphase + GPU dynamics) really runs on the CUDA device
 // (here: AMD Radeon RX 9070 XT via ZLUDA).  Bounded, no rendering, no PVD.

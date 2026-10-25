@@ -1,3 +1,12 @@
+physx5-zluda.patch -- modifications to NVIDIA PhysX SDK 5.11.0 (commit 6dc53585),
+made by Eugene Flanagin, 2026, for running the GPU kernels through ZLUDA.
+The patched files remain under the PhysX SDK's Apache License 2.0; NVIDIA's
+copyright and licence headers are not changed.  What it changes:
+  * GPU code generated as PTX compute_75 only (no SASS), fatbins uncompressed
+  * cuCtxCreate call adapted to the CUDA 13 signature
+  * the MultiPruners snippet (does not build here) dropped from the snippet list
+(patch(1) ignores this text before the first diff header.)
+
 diff -ruN a/snippets/compiler/cmake/CMakeLists.txt b/snippets/compiler/cmake/CMakeLists.txt
 --- a/snippets/compiler/cmake/CMakeLists.txt	2026-10-14 10:57:08.395507723 -0400
 +++ b/snippets/compiler/cmake/CMakeLists.txt	2026-10-14 11:13:20.788519167 -0400
