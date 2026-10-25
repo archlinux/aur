@@ -2,7 +2,7 @@
 # Contributor: Flávio Zavan <flavio dot zavan at gmail dot com>
 
 pkgname=mupen64plus-video-gliden64-git
-pkgver=4.0.r737.gcee9f9c9
+pkgver=4.0.r770.ga04081ad
 pkgrel=1
 pkgdesc='A new generation, open-source graphics plugin for N64 emulators (git version)'
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'glibc'
     'libgl'
     'libpng'
+    'libstdc++'
     'mupen64plus'
     'zlib'
     'zstd')
@@ -22,13 +23,12 @@ makedepends=(
     'qt6-base')
 provides=('mupenplus-video-gliden64')
 conflicts=('mupenplus-video-gliden64')
-source=('git+https://github.com/gonetz/GLideN64.git'
-        '010-mupen64plus-video-gliden64-zstd-fix.patch')
-sha256sums=('SKIP'
-            '4d44e103a1c3fe6fd33a3ac52a28ea4571ce35cf9100b910b1a81601f737ff6a')
+source=('git+https://github.com/gonetz/GLideN64.git')
+sha256sums=('SKIP')
 
 prepare() {
-    patch -d GLideN64 -Np1 -i "${srcdir}/010-mupen64plus-video-gliden64-zstd-fix.patch"
+    cd GLideN64/src
+    ./getRevision.sh
 }
 
 pkgver() {
@@ -46,19 +46,16 @@ pkgver() {
 }
 
 build() {
-    cd GLideN64/src
-    ./getRevision.sh 2>/dev/null
-    cmake -B build -S . \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
+    cmake -B build -S GLideN64/src \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DGLIDENUI_QT6:BOOL='ON' \
         -DMUPENPLUSAPI:BOOL='ON' \
         -DUSE_SYSTEM_LIBS:BOOL='ON' \
-        -Wno-dev
+        -Wno-author
     make -C build
 }
 
 package() {
-    install -D -m644 GLideN64/src/build/plugin/Release/mupen64plus-video-GLideN64.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 GLideN64/ini/GLideN64.custom.ini -t "${pkgdir}/usr/share/mupen64plus"
+    DESTDIR="$pkgdir" cmake --install build
 }
