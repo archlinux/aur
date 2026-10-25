@@ -3,17 +3,17 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=mazter-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Mazes in your terminal"
 arch=(x86_64)
 url="https://dystroy.org/mazter/"
 license=('MIT')
-depends=('gcc-libs')
+depends=()
 provides=('mazter')
 conflicts=('mazter')
 source=("$pkgname-$pkgver.zip::https://dystroy.org/mazter/download/mazter_$pkgver.zip")
-sha512sums=('9e1575c57c1131b0793920cd95fe8185bacb7ed45b94657fa57e11671247cd35a4b5303e8f33fa684cc91a2d233042131fa83990bf173b47b7efc034c196f9ad')
+sha512sums=('6c3231c8eae367173b93df661ef355a922f982fc387f8ca055863511e4b441f4cd4ff1fa79d79c62db12b61f6b0b39ea5057817318754ada5011ebb5c6ff3b30')
 
 package() {
   cd build
