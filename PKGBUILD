@@ -4,7 +4,7 @@ _appauthor="crftwr"
 _appname="puikit"
 
 pkgname="python-${_appname}"
-pkgver=1.15.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Capability-based Python UI framework with TUI and GUI backends"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-pillow' 'python-pygments' 'python-numpy')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('c5e820877918e3b53db306ceb9125baedfed10c85a1d33145ec1cdd801d3625c')
+sha256sums=('ffb0ab168db0da138a1d93007df14a02a18de9e665b88df1308e85d5019d300e')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
