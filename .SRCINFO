@@ -1,0 +1,19 @@
+pkgbase = mim
+	pkgdesc = MimIR: a higher-order, dependently typed intermediate representation with plugins
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/mimir/mimir
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = unordered_dense
+	optdepends = clang: compile emitted LLVM IR and JIT regex matchers from Python
+	source = https://github.com/mimir/mimir/releases/download/v0.4/mimir-0.4.tar.gz
+	sha256sums = 978dcf1fe57da8a1970b7ff95ee12dfe548d208ca87743c510b63ecd6efc1d65
+
+pkgname = mim
