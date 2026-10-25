@@ -6,7 +6,6 @@ pkgbase = mazter
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = gcc-libs
 	source = mazter-2.1.2.tar.gz::https://static.crates.io/crates/mazter/mazter-2.1.2.crate
 	sha512sums = 2f3762261d48867492d239583c46fe599736c61f58ca099f8eb7a684d5ba953fece03b23a72728bf0f78c5566729241b86e1a9f00e4eca40fefa6006eab66791
 
