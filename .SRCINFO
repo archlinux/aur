@@ -1,6 +1,6 @@
 pkgbase = lightos-remoted-bin
 	pkgdesc = LightOS browser remote desktop with a persistent isolated desktop session
-	pkgver = 0.1.17
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://github.com/ca-x/lightos-remote-desktop
 	install = lightos-remoted-bin.install
@@ -49,8 +49,8 @@ pkgbase = lightos-remoted-bin
 	depends = util-linux
 	depends = gawk
 	optdepends = lightos-codec-ffmpeg-bin: Optional native hardware H.264 encoders; software fallback remains available
-	provides = lightos-remoted=0.1.17
-	provides = lightos-remote-desktop=0.1.17
+	provides = lightos-remoted=0.1.18
+	provides = lightos-remote-desktop=0.1.18
 	conflicts = lightos-remoted
 	conflicts = lightos-remote-desktop
 	options = !strip
@@ -61,9 +61,9 @@ pkgbase = lightos-remoted-bin
 	sha256sums = 975a3479b458722ec2e34e5fed9cdd46f77fa70485431f70093693532f685ff3
 	sha256sums = c905d0cb7abb194e2772b4a655bd834b7f198f92b38de228040d37e4cc492986
 	sha256sums = ef58b026b3c9f73cf6dfd4c9682b5c5e6e440ff8a68cb41b86e7c425d281c265
-	source_x86_64 = lightos-remoted-linux-x86_64-0.1.17.tar.gz::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.17/lightos-remoted-linux-x86_64.tar.gz
-	source_x86_64 = lightos-remoted-linux-x86_64-0.1.17.tar.gz.sha256::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.17/lightos-remoted-linux-x86_64.tar.gz.sha256
-	sha256sums_x86_64 = 77bf5f29a131287896213ae46594b951923af20c7536ba6cce7f9537f5d506c6
-	sha256sums_x86_64 = 790e6f3661783e2546f59b1db331d8648403fbfee7be53f9449080c928a8ffba
+	source_x86_64 = lightos-remoted-linux-x86_64-0.1.18.tar.gz::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.18/lightos-remoted-linux-x86_64.tar.gz
+	source_x86_64 = lightos-remoted-linux-x86_64-0.1.18.tar.gz.sha256::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.18/lightos-remoted-linux-x86_64.tar.gz.sha256
+	sha256sums_x86_64 = c84f6be9b4b78cf6ba396433d51062538c9c4c1fb4552dedb017b129b4a8880b
+	sha256sums_x86_64 = 3d4bf5f24cc70043ff71747c39fdb9157e890d9c031b295c1c604cbbda8031d1
 
 pkgname = lightos-remoted-bin
