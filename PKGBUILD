@@ -2,16 +2,14 @@
 
 pkgname=ttf-kreativekorp-commodore-berkelium
 pkgver=2011.02
-pkgrel=2
+pkgrel=3
 pkgdesc="KreativeKorp's Commodore GEOS system font: Berkelium, based on BSW. Includes two variants: Berkelium 64 (menus and dialogs), and Berkelium 1541 (file icons)."
 arch=('any')
 url='https://www.kreativekorp.com/software/fonts/c64/'
 license=('custom:relay-fonts-1.2f')
 depends=('xorg-fonts-encodings')
 
-# Patch taken from 'ttf-petme'.
-makedepends=('wget')
-DLAGENTS=('https::/usr/bin/wget -O %o %u')
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -A Mozilla -o %o %u')
 
 source=(
     'berkelium.zip::https://www.kreativekorp.com/swdownload/fonts/retro/berkelium.zip'
@@ -22,9 +20,9 @@ sha256sums=(
 
 package() {
     install -d "${pkgdir}/usr/share/fonts/${pkgbase}/"
-    for f in $(find "${srcdir}" -type f -name 'Berkelium*.ttf'); do
-        install -m644 "$f" "${pkgdir}/usr/share/fonts/${pkgbase}/"
-    done
+
+    find "${srcdir}" -type f -name 'Berkelium*.ttf' \
+        -exec install -m644 {} "${pkgdir}/usr/share/fonts/${pkgbase}/" \;
 
     install -Dm644 "${srcdir}/FreeLicense.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
