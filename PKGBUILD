@@ -13,7 +13,6 @@ license=('EPL-2.0')
 depends=('java-runtime>=8')
 provides=('alda')
 conflicts=('alda-bin' 'icedtea-web') 
-# If it ever appears on the AUR (it was not on the AUR as of 8/16/26), Alda also conflicts with IcedTea (https://openjdk.org/projects/icedtea/). See https://github.com/alda-lang/alda/blob/master/doc/troubleshooting.md#icedtea-related-issues for more.
 makedepends=('go')
 source=("$pkgname-release-$pkgver.tar.gz::https://codeload.github.com/$pkgname-lang/$pkgname/tar.gz/refs/tags/release-$pkgver"
   alda-player )
