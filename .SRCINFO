@@ -1,6 +1,6 @@
 pkgbase = kimi-code-bin
 	pkgdesc = Kimi Code CLI - the starting point for next-gen agents (prebuilt binary)
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/MoonshotAI/kimi-code
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = kimi-code-bin
 	conflicts = kimi-code
 	conflicts = kimi-cli
 	options = !strip
-	source_x86_64 = kimi-code-2.3.1-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.3.1/kimi-code-linux-x64.tar.gz
-	source_x86_64 = kimi-code-2.3.1-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.3.1/LICENSE
-	sha256sums_x86_64 = 0dbc7d771ce4d761acc150ade72325bcd8fc51973d481f7040295f4cf062fdbe
+	source_x86_64 = kimi-code-2.3.2-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.3.2/kimi-code-linux-x64.tar.gz
+	source_x86_64 = kimi-code-2.3.2-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.3.2/LICENSE
+	sha256sums_x86_64 = 4715ccd1a591b64683929a14b26b3d07ac4c484e4da3881b22a2ccca56304042
 	sha256sums_x86_64 = 23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e
-	source_aarch64 = kimi-code-2.3.1-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.3.1/kimi-code-linux-arm64.tar.gz
-	source_aarch64 = kimi-code-2.3.1-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.3.1/LICENSE
-	sha256sums_aarch64 = 6ef2af316d3b7fe28313bbd6aa3fdc0e5943e43958cbf7f6a564e48acec355f0
+	source_aarch64 = kimi-code-2.3.2-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.3.2/kimi-code-linux-arm64.tar.gz
+	source_aarch64 = kimi-code-2.3.2-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.3.2/LICENSE
+	sha256sums_aarch64 = 87913f7a00af125202d4dea3ae6a3c77a41f616f1aac89c11cadb9efc966800d
 	sha256sums_aarch64 = 23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e
 
 pkgname = kimi-code-bin
