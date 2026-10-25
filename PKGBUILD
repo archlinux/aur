@@ -1,8 +1,9 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Marin Moulinier <https://github.com/p1-mmr>
 
 pkgname="vmlinux-to-elf"
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms)"
 arch=(
   'any'
@@ -35,7 +36,6 @@ provides=(
 )
 conflicts=(
   "python-${pkgname}"
-  "vmlinux-to-elf-git"
 )
 options=(
   '!strip'
@@ -59,17 +59,17 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
   cd "${pkgname//-/_}/ui/assets"
   install -vDm644 "re.fossplant.vmlinux-to-elf.desktop" \
-    "${pkgdir}/usr/share/applications/re.fossplant.vmlinux-to-elf.desktop"
+    -t "${pkgdir}/usr/share/applications"
   install -vDm644 "re.fossplant.vmlinux-to-elf.metainfo.xml" \
-    "${pkgdir}/usr/share/metainfo/re.fossplant.vmlinux-to-elf.metainfo.xml"
+    -t "${pkgdir}/usr/share/metainfo"
   install -vDm644 "re.fossplant.vmlinux-to-elf.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/re.fossplant.vmlinux-to-elf.svg"
+    -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${pkgname//-/_}-${pkgver}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vsf "${site_packages}/${pkgname//-/_}-${pkgver}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
