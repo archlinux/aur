@@ -5,7 +5,7 @@
 # Installs the release's x86_64 Linux tarball, built against glibc 2.28.
 
 pkgname=datui-bin
-pkgver=0.4.14
+pkgver=0.4.15
 pkgrel=1
 pkgdesc="Explore tabular data in your terminal: Parquet, CSV, JSON and more"
 url="https://derekwisong.github.io/datui"
@@ -17,8 +17,8 @@ depends=("glibc" "gcc-libs")
 # The tarball ships a symbol table for backtraces; makepkg would strip it and
 # split the symbols into a debug package that pacman orphans at once.
 options=(!strip !debug)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/derekwisong/datui/releases/download/v0.4.14/datui-v0.4.14-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=("9ed8b0ceb4724e9c052edbe0c829927db9725baf6e9f5e75bc76a8ea20bd1510")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/derekwisong/datui/releases/download/v0.4.15/datui-v0.4.15-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=("0145d780de13ded630132c5eb471cbd454e5edbb419a2a241d9d6b121aba7265")
 
 package() {
     install -Dm755 datui -t "$pkgdir/usr/bin"
