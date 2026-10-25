@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=sacd-extract-git
 _pkgname=sacd-ripper
-pkgver=0.3.9.3.r107.g01c90dd
+pkgver=0.3.9.3b.r0.gc9af7d4
 pkgrel=1
 pkgdesc="Extract DSDIFF files, DSF files or RAW ISO from SACD"
 arch=('i686' 'pentium4' 'x86_64')
@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 
 # update the package version to the current git version
 pkgver() {
-        cd "${srcdir}/$_pkgname"
-        git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    cd "${srcdir}/$_pkgname"
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
