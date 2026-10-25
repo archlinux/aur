@@ -2,7 +2,7 @@
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 _app_id="com.bktus.$pkgname"
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A modern OpenPGP tool with a unique dual-engine core"
 arch=('x86_64')
@@ -14,8 +14,12 @@ depends=(
   'hicolor-icon-theme'
   'icu'
   'libarchive'
+  'libgcc'
+  'libgpg-error'
   'libsecret'
   'libsodium'
+  'libstdc++'
+  'openssl'
   'qt6-base'
 )
 makedepends=(
@@ -35,8 +39,10 @@ source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/gpg/libassuan.git'
         'git+https://github.com/gpg/libgpg-error.git'
         'git+https://github.com/corrosion-rs/corrosion.git'
+        'git+https://github.com/lua/lua.git'
         'git+https://git.bktus.com/gpgfrontend/vmime.git')
-sha256sums=('4791349d0b9cbbd41c3da8ebb1383ea7e7d0807d8132985386813efc60b67a5f'
+sha256sums=('be07ff4822037940fbc608aba9225ef2c904cca27fe2300f679688585f647a6e'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -54,6 +60,7 @@ prepare() {
   git config submodule.third_party/libassuan.url "$srcdir/libassuan"
   git config submodule.third_party/libgpg-error.url "$srcdir/libgpg-error"
   git config submodule.third_party/corrosion.url "$srcdir/corrosion"
+  git config submodule.third_party/lua.url "$srcdir/lua"
   git -c protocol.file.allow=always submodule update
 
   pushd modules
@@ -72,6 +79,8 @@ prepare() {
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   local cmake_options=(
     -B build
     -S GpgFrontend
@@ -79,9 +88,11 @@ build() {
     -W no-author
     -D CMAKE_BUILD_TYPE='RelWithDebInfo'
     -D CMAKE_INSTALL_PREFIX='/usr'
+    -D GPGFRONTEND_BUILD_MODE='release'
     -D GPGFRONTEND_BUILD_STABLE='ON'
     -D GPGFRONTEND_BUILD_APP_FOR_PACKAGE='ON'
     -D GPGFRONTEND_BUILD_STRIP_RPATH='ON'
+    -D GPGFRONTEND_LINK_GPGME_INTO_CORE='OFF'
   )
   cmake "${cmake_options[@]}"
   cmake --build build
@@ -96,7 +107,6 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  # Remove duplicate license & stray icons
-  rm -rv "$pkgdir/usr/share/licenses/"
-  rm -v "$pkgdir"/usr/{"${_app_id}.png",.DirIcon}
+  # Remove duplicate license
+  rm -vf "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
