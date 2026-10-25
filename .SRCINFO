@@ -1,0 +1,16 @@
+pkgbase = yggmail-git
+	pkgdesc = End-to-end encrypted email for the mesh networking age
+	pkgver = r121.727c60d
+	pkgrel = 1
+	url = https://github.com/neilalexander/yggmail
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = yggmail
+	conflicts = yggmail
+	source = yggmail::git+https://github.com/neilalexander/yggmail.git
+	sha256sums = SKIP
+
+pkgname = yggmail-git
