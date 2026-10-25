@@ -1,6 +1,6 @@
 # Maintainer: Luke Hsiao <luke@hsiao.dev>
 pkgname=pyproject-udeps
-pkgver=0.3.11
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Find unused dependencies in pyproject.toml'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ conflicts=('pyproject-udeps-bin')
 #   subpackage is noise for AUR distribution.
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lukehsiao/pyproject-udeps/archive/v$pkgver.tar.gz")
-sha256sums=('8d43879793a4576370362b75f52389b0ddf3fda6d8558ded4ce2050a182108a6')
+sha256sums=('6c0b7c1e6051137b29fdb2f8cbc9db56cc9f91fc4588d6166e42d7192318c619')
 
 prepare() {
     cd "$pkgname-$pkgver"
