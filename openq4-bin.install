@@ -1,0 +1,24 @@
+post_install() {
+    cat << EOF
+==> openQ4 needs the retail Quake 4 data (pak001.pk4 - pak012.pk4 and
+==> zpak_<language>.pk4). Either install one of:
+==>     quake4-data-gog, quake4-data-steam   (installs to /opt/quake4)
+==> or keep a Steam/GOG install of Quake 4, which openQ4 detects automatically.
+==> The 1.4.2 patch paks (pak013.pk4 - pak022.pk4) ship with this package.
+==>
+==> A different install can be selected with OPENQ4_QUAKE4_PATH=/path/to/quake4
+==> or "+set fs_basepath /path/to/quake4" (the folder containing q4base/).
+==>
+==> Start the game with: openq4
+==> Steam Deck profile:  openq4-steamdeck
+==> Dedicated server:    openq4-dedicated
+==>
+==> Saves, configs and logs are written to ~/.local/share/openq4.
+==> The Quake 4 patch paks are covered by id Software's license in
+==> /usr/share/licenses/openq4-bin/Quake4-License.txt.
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
