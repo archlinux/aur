@@ -1,7 +1,7 @@
 pkgbase = physx5-zluda
 	pkgdesc = NVIDIA PhysX SDK 5 (GPU rigid bodies, articulations, deformables) running on AMD GPUs via ZLUDA - PTX-only build in /opt/physx5
 	pkgver = 5.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NVIDIA-Omniverse/PhysX
 	arch = x86_64
 	license = Apache-2.0
@@ -11,6 +11,7 @@ pkgbase = physx5-zluda
 	makedepends = gcc14
 	makedepends = python
 	makedepends = patchelf
+	makedepends = rapidjson
 	depends = zluda
 	depends = gcc-libs
 	depends = glibc

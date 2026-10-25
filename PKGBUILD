@@ -7,7 +7,7 @@
 pkgname=physx5-zluda
 _commit=6dc53585d7db07346f53d0598a5fd3bfdce47d8d
 pkgver=5.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA PhysX SDK 5 (GPU rigid bodies, articulations, deformables) running on AMD GPUs via ZLUDA - PTX-only build in /opt/physx5"
 arch=(x86_64)
 url="https://github.com/NVIDIA-Omniverse/PhysX"
@@ -16,7 +16,7 @@ url="https://github.com/NVIDIA-Omniverse/PhysX"
 # libcudart.so.13 is redistributed under the NVIDIA CUDA Toolkit EULA.
 license=(Apache-2.0 LicenseRef-NVIDIA-CUDA-EULA)
 depends=(zluda gcc-libs glibc freeglut glu libxmu libx11 libxi)
-makedepends=(cmake ninja gcc14 python patchelf)
+makedepends=(cmake ninja gcc14 python patchelf rapidjson)
 optdepends=('konsole: terminal used by the menu entries')
 options=(!lto !debug)
 _cuda=13.4.92
