@@ -1,14 +1,19 @@
 # Maintainer: VConet <v-conet@outlook.com>
+
 pkgname=open-cad-studio
 _pkgname=OpenCADStudio 
 pkgver=2026.42
 pkgrel=1
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/HakanSeven12/OpenCADStudio"
 license=('GPL-3.0-only')
-depends=('xdg-desktop-portal' 'glibc' 'libgcc' 'wayland')
+depends=('xdg-desktop-portal-impl' 'glibc' 'libgcc' 'wayland')
 makedepends=('cargo' 'git')
+
+provides=('open-cad-studio')
+conflicts=('open-cad-studio-appimage')
+
 source=(
     "$url/archive/refs/tags/v${pkgver}.tar.gz"
     "logo.png"
@@ -17,7 +22,9 @@ source=(
 sha256sums=('f9ce82707406f32a0d2f57e45cc4039e1e8be8bfea49affed68d13b79a5e5b34'
             '7c0c21229d5cc12db7ee404188652adce00a3acb51ec2631221c5605c01741bf'
             '178b67c82a369bf193dfe87e26ea8cc5dab823b0dc9382466c971e5845bc1638')
+
 options=(!lto)
+
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
