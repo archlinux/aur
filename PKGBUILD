@@ -2,7 +2,7 @@
 
 pkgname=reasonix-studio-bin
 _pkgname=reasonix-studio
-pkgver=2.50.0
+pkgver=2.51.0
 pkgrel=1
 pkgdesc='Reasonix Studio - Electron desktop GUI for the DeepSeek-native AI coding agent (repackaged from .deb)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/studio-v${pkgver}/ReasonixStudio-linux-amd64.deb"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/studio-v${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
-sha256sums=('48ced750c8f8fd144d5cb6d1200064f91624dae8846c35d4cd1bcb6696bfc9df'
+sha256sums=('4a7b72d71573a665e432e5a6ff7561425cc767f6d06fc3c0172c418f15361fd7'
             'dc024237821ac82056c37f8d82e3be919bd51e39a4529ec12a8ab3e2a346dc4c')
 
 prepare() {
