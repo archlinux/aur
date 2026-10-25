@@ -3,7 +3,8 @@
 pkgname=mim
 _pkgname=mimir
 pkgver=0.4
-pkgrel=1
+pkgrel=2
+_commit=542855790e
 pkgdesc='MimIR: a higher-order, dependently typed intermediate representation with plugins'
 arch=('x86_64')
 url='https://mimir.github.io/'
@@ -11,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'python' 'unordered_dense')
 makedepends=('cmake' 'ninja' 'clang')
 optdepends=('clang: compile emitted LLVM IR and JIT regex matchers from Python')
-source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
+source=("https://github.com/mimir/mimir/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
 sha256sums=('978dcf1fe57da8a1970b7ff95ee12dfe548d208ca87743c510b63ecd6efc1d65')
 
 build() {
@@ -22,6 +23,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
     -DFE_USE_SYSTEM_UNORDERED_DENSE=ON \
+    -DMIM_GIT_HASH=$_commit \
     -Wno-dev
   cmake --build build
 }
