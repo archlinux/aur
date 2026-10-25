@@ -1,0 +1,19 @@
+pkgbase = python-mcap-protobuf-support
+	pkgdesc = Protobuf support for the Python MCAP library
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/foxglove/mcap
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-mcap
+	depends = python-protobuf
+	source = python-mcap-protobuf-support-0.6.0.tar.gz::https://github.com/foxglove/mcap/archive/refs/tags/releases/python/mcap-protobuf-support/v0.6.0.tar.gz
+	b2sums = 3a5231091b699c5f1d27168a89da5e47b2590a79972728b4a869e3bcbd8868f7c0a8686e6c0cec4e7e62ea3f21cdce15d1adfdd0acc3d7dcb3167064bc07fdca
+
+pkgname = python-mcap-protobuf-support
