@@ -7,6 +7,12 @@ kernels** and runs them on an AMD GPU via [ZLUDA](https://github.com/vosen/ZLUDA
 Verified on: AMD Radeon RX 9070 XT (RDNA4, gfx1201), ROCm 10, `zluda-preview-bin 7.preview.13`,
 PhysX 5.11.0 (commit `6dc53585`), kernel 7.3, Arch/CachyOS, 2026-10-14.
 
+Tested with: `zluda-preview-bin` **7.preview.13 only**. The AUR now carries 7.preview.18, which has
+not been re-verified; the package does not pin a ZLUDA version. After a ZLUDA update, run
+`physx5-zluda-run gputest` once and check the `RESULT:` line.
+
+Build details, the patch, the ZLUDA gaps and how they were found: [docs/DEVELOPER-NOTES.md](https://github.com/eugenesflanagin-spec/physx5-zluda/blob/master/docs/DEVELOPER-NOTES.md).
+
 ```
 $ physx5-zluda-run gputest
 PhysX 5.11.0 GPU functional test (GPU pipeline requested)
@@ -54,6 +60,7 @@ physx5-zluda-run gputest                # headless functional check (exit 0 = GP
 physx5-zluda-run SnippetHelloGRB        # 8,400-body GPU rigid-body demo (GLUT window)
 physx5-zluda-run --debug SnippetSDF     # log every shim fallback / PTX rewrite
 physx5-zluda-run --cpu-only HelloGRB    # same snippet on the CPU pipeline, for comparison
+physx5-zluda-run --cpu-only gputest     # CPU reference run of the self-test scene (adds the test's --cpu)
 ```
 
 Everything lives in `/opt/physx5` (`lib/`, `include/`, `bin/`, `lib/cmake/PhysX` for CMake consumers;
@@ -70,6 +77,7 @@ the wrapper sets).
 | `physx5-gputest.cpp` | functional self-test |
 | `physx5-zluda-run` | wrapper setting `LD_LIBRARY_PATH`, `LD_PRELOAD`, `PHYSX_GPU_DEVICE` |
 | `*.desktop` | menu entries (demo + test) |
+| `docs/DEVELOPER-NOTES.md` | how the build and the ZLUDA workarounds were worked out |
 
 Licenses: PhysX is Apache-2.0 (NVIDIA). The CUDA toolkit components are downloaded at build time under
 the NVIDIA CUDA EULA; only `libcudart.so.13` (an EULA-redistributable runtime) ends up in the package.

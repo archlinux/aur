@@ -1,4 +1,4 @@
-diff --color -ruN -x build -x bin -x .git -x stage -x '*.log' -x physx5-gputest -x PxConfig.h /tmp/claude-1000/-home-user/a5463c93-0c4a-4761-b055-a545017926a9/scratchpad/physx5/src/physx/snippets/compiler/cmake/CMakeLists.txt dev/snippets/compiler/cmake/CMakeLists.txt
+diff -ruN a/snippets/compiler/cmake/CMakeLists.txt b/snippets/compiler/cmake/CMakeLists.txt
 --- a/snippets/compiler/cmake/CMakeLists.txt	2026-10-14 10:57:08.395507723 -0400
 +++ b/snippets/compiler/cmake/CMakeLists.txt	2026-10-14 11:13:20.788519167 -0400
 @@ -46,7 +46,7 @@
@@ -10,7 +10,7 @@ diff --color -ruN -x build -x bin -x .git -x stage -x '*.log' -x physx5-gputest 
  	SplitSim StandaloneBVH StandaloneBroadphase StandaloneQuerySystem Stepper ToleranceScale TriangleMeshCreate Triggers CustomGeometry CustomConvex CustomGeometryCollision CustomGeometryQueries FixedTendon SpatialTendon)
  LIST(APPEND SNIPPETS_LIST ${PLATFORM_SNIPPETS_LIST})
  
-diff --color -ruN -x build -x bin -x .git -x stage -x '*.log' -x physx5-gputest -x PxConfig.h /tmp/claude-1000/-home-user/a5463c93-0c4a-4761-b055-a545017926a9/scratchpad/physx5/src/physx/source/compiler/cmakegpu/CMakeLists.txt dev/source/compiler/cmakegpu/CMakeLists.txt
+diff -ruN a/source/compiler/cmakegpu/CMakeLists.txt b/source/compiler/cmakegpu/CMakeLists.txt
 --- a/source/compiler/cmakegpu/CMakeLists.txt	2026-10-14 10:57:08.401005521 -0400
 +++ b/source/compiler/cmakegpu/CMakeLists.txt	2026-10-14 11:20:36.052489427 -0400
 @@ -71,10 +71,10 @@
@@ -35,7 +35,7 @@ diff --color -ruN -x build -x bin -x .git -x stage -x '*.log' -x physx5-gputest 
  # Include the platform specific CMakeLists (The other CUDA flags that are specific to each platform are defined there)
  INCLUDE(${PHYSX_ROOT_DIR}/${PROJECT_CMAKE_FILES_DIR}/${TARGET_BUILD_PLATFORM}/CMakeLists.txt)
  
-diff --color -ruN -x build -x bin -x .git -x stage -x '*.log' -x physx5-gputest -x PxConfig.h /tmp/claude-1000/-home-user/a5463c93-0c4a-4761-b055-a545017926a9/scratchpad/physx5/src/physx/source/cudamanager/src/CudaContextManager.cpp dev/source/cudamanager/src/CudaContextManager.cpp
+diff -ruN a/source/cudamanager/src/CudaContextManager.cpp b/source/cudamanager/src/CudaContextManager.cpp
 --- a/source/cudamanager/src/CudaContextManager.cpp	2026-10-14 10:57:08.401413272 -0400
 +++ b/source/cudamanager/src/CudaContextManager.cpp	2026-10-14 11:10:14.591833303 -0400
 @@ -554,7 +554,11 @@
