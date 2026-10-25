@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=chromaprint-fftw
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Library for extracting fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
 provides=('chromaprint' 'libchromaprint.so')
 conflicts=('chromaprint')
 source=("https://github.com/acoustid/chromaprint/archive/v${pkgver}/chromaprint-${pkgver}.tar.gz")
-sha256sums=('7065ec9db48ac1fa929ec6c42afcd966605b1bfe48b6d5e64c25378a05f4fb02')
+sha256sums=('7f92ea1141429b43f695a1ba56d5058132f89fae5f137ce705afc57734f6b5fa')
 
 build() {
     cmake -B build -S "chromaprint-${pkgver}" \
