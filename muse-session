@@ -11,6 +11,7 @@ import json
 import shutil
 import argparse
 import re
+import textwrap
 import curses
 from datetime import datetime, timedelta
 
@@ -151,6 +152,24 @@ def format_size(bytes_val):
         return f"{bytes_val / 1024:.1f} KB"
     else:
         return f"{bytes_val / (1024 * 1024):.1f} MB"
+
+def session_visual_lines(s, width):
+    """Wrapped TUI rows for one session: a header line plus up to two
+    indented continuation lines for the prompt. No line exceeds width."""
+    dt_str = s["created_at"].strftime("%Y-%m-%d %H:%M")
+    sz_str = format_size(s["size_bytes"])
+    prompt_clean = s["prompt"].replace("\n", " ").strip()
+    if s["custom_title"]:
+        head = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | [tag] {s['custom_title']} ({s['workspace']})"
+    else:
+        head = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | {s['workspace']}"
+    lines = [head[:width - 1]]
+    if prompt_clean:
+        wrapped = textwrap.wrap(prompt_clean, width=max(10, width - 7),
+                                max_lines=2, placeholder=" ...")
+        for tline in wrapped:
+            lines.append(("     " + tline)[:width - 1])
+    return lines
 
 def cmd_list(args):
     sessions = find_all_sessions()
@@ -571,32 +590,45 @@ def run_curses_tui(stdscr):
                 show_help_modal(stdscr)
             continue
 
-        # Adjust selection bounds
+        # Adjust selection bounds (per session; rows wrap to visual lines)
         if selected_idx >= len(sessions):
             selected_idx = max(0, len(sessions) - 1)
-        if selected_idx < top_idx:
-            top_idx = selected_idx
-        elif selected_idx >= top_idx + list_height:
-            top_idx = selected_idx - list_height + 1
 
-        # Draw session rows
+        visuals = []  # (session_idx, text) flattened visual lines
+        for idx, s in enumerate(sessions):
+            for text in session_visual_lines(s, w):
+                visuals.append((idx, text))
+
+        def first_vis(n):
+            for pos, (idx, _) in enumerate(visuals):
+                if idx == n:
+                    return pos
+            return 0
+
+        def last_vis(n):
+            pos = first_vis(n)
+            while pos + 1 < len(visuals) and visuals[pos + 1][0] == n:
+                pos += 1
+            return pos
+
+        # Keep the selected session's whole wrapped block on screen
+        if visuals:
+            s_first, s_last = first_vis(selected_idx), last_vis(selected_idx)
+            if s_first < top_idx:
+                top_idx = s_first
+            elif s_last >= top_idx + list_height:
+                top_idx = s_last - list_height + 1
+            top_idx = max(0, min(top_idx, max(0, len(visuals) - 1)))
+
+        # Draw visible rows (top_idx is now a visual-line offset)
         for i in range(list_height):
-            idx = top_idx + i
-            if idx >= len(sessions):
+            pos = top_idx + i
+            if pos >= len(visuals):
                 break
-            s = sessions[idx]
+            idx, text = visuals[pos]
             y = 1 + i
 
-            dt_str = s["created_at"].strftime("%Y-%m-%d %H:%M")
-            sz_str = format_size(s["size_bytes"])
-            title_text = s["custom_title"] if s["custom_title"] else s["prompt"]
-            title_clean = title_text.replace("\n", " ").strip()
-
-            line_str = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | {s['workspace']} : {title_clean}"
-            if s["custom_title"]:
-                line_str = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | 🏷️ {s['custom_title']} ({title_clean})"
-
-            line_padded = line_str[:w-1].ljust(w-1)
+            line_padded = text.ljust(w-1)
 
             if idx == selected_idx:
                 stdscr.addstr(y, 0, line_padded, curses.color_pair(1) | curses.A_BOLD)

@@ -22,7 +22,7 @@ source=('muse.sh' 'muse-session' 'muse-mcp')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=${_realver}&file=muse-x86-linux")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=${_realver}&file=muse-aarch64-linux")
 
-sha256sums=('aac85fec4903d64cb26e076096b8029652ab0c116b0bd14dbbfc3b26cfdcebbe' '2e37ab20bcbce1c5219164567d0e34ee09ddfc3cd761398855059d77af88f306' '65cff61e4bbb8939903c680f3cbf04d881214de23805d993c42eea2c5d1c82a7')
+sha256sums=('aac85fec4903d64cb26e076096b8029652ab0c116b0bd14dbbfc3b26cfdcebbe' '273aaf905396ac7ff943cae8e846c478787c84a0fa3d763d16d8167ea542b0e3' '65cff61e4bbb8939903c680f3cbf04d881214de23805d993c42eea2c5d1c82a7')
 sha256sums_x86_64=('51e97f8de0aa175080e6576cbc055510a95dfe0ededf175c7f6b34fc8e3bf524')
 sha256sums_aarch64=('c7f278b5f12862f5721c73433976256aa2a8abd433a12da0e484d30b08c024ff')
 
