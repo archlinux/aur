@@ -1,16 +1,3 @@
-diff --git a/include/File.h b/include/File.h
-index 5c3029a9d5d82eba6347ee83eacd93df92d4b1af..65d45e67df8ebd57ef2d47eee50eba38b2abc716 100644
---- a/include/File.h
-+++ b/include/File.h
-@@ -43,7 +43,7 @@ EDIT: Also I didn't look into the g++ 4.8.1 problem much. If anyone knows why, a
- #ifdef POLARSSL
- #include "aes.h"
- #else
--#include <mbedtls/aes.h>
-+#include <mbedtls3/mbedtls/aes.h>
- #endif
- 
- #include "AbstractFile.h"
 diff --git a/meson.build b/meson.build
 index 0c67823db20fc567b21ee5fe45ea9c7159a4dc1d..c01f2ffc3e0b85fd49bdaff4edfa1b573ba3bfd0 100644
 --- a/meson.build
