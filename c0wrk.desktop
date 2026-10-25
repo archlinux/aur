@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=c0wrk
+Comment=Desktop AI coding agent
+Exec=c0wrk-desktop
+Icon=c0wrk
+Terminal=false
+Categories=Development;Utility;GTK;
+StartupWMClass=c0wrk-desktop
