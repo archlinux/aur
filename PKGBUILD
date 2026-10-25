@@ -1,6 +1,9 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer@rev-crew.info>
+# shellcheck disable=SC2034,SC2154
+# shellcheck shell=bash
+
 pkgname=('python-a2s')
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Python package for querying Source and GoldSource servers"
 arch=('any')
@@ -11,10 +14,10 @@ makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools
 _upstream_name="${pkgname//-/_}"
 source=("https://files.pythonhosted.org/packages/source/${_upstream_name::1}/${_upstream_name}/${_upstream_name}-$pkgver.tar.gz")
 # Replace this with the upstream sdist sha256 after pkgver is resolved (run makepkg -g / updpkgsums).
-sha256sums=('b30fe1356ac2cbdfa83fb2eec63629801d2abf4cd169ab5dfaf354545cddcf79')
+sha256sums=('aacd7fb2d33b330eb6f84e2c99794e0a7c4bdd0c92c1b4507b0373a6f92c162b')
 
 prepare() {
-  cd "$srcdir"
+  cd "$srcdir" || exit
   tarball="${_upstream_name}-${pkgver}.tar.gz"
   if [[ -f "$tarball" ]]; then
     tar -xzf "$tarball"
@@ -22,13 +25,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${_upstream_name}-${pkgver}"
+  cd "$srcdir/${_upstream_name}-${pkgver}" || exit
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${_upstream_name}-${pkgver}"
+  cd "$srcdir/${_upstream_name}-${pkgver}" || exit
 
   python -m installer --destdir "$pkgdir" dist/*.whl
 
