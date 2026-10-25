@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Hoang Ky <nhktmdzhg at gmail dot com>
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
-pkgver=152.0.7977.124
+pkgver=154.0.8037.106
 pkgrel=1
 _pkgrel=1
 pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -55,24 +55,24 @@ source=(
     "LICENSE.html"
 )
 sha256sums=(
-    'fbe7bc55f76ec1a44fd65e2335b0387f6c224b3765b7fa9686fd737e1026112f'
+    '32fdd2ec492fb2fa009161753851ea4ab539ae76f8b0ce440105b40142953cff'
     'fae326b92e97b28dafc9e1ed3958486bb0455cb5cebe3cad3484f92bde30b804'
     '22bf4605260a7432eee169b0afbfae6782b9812c2bc776fdc1a887f6e2b10ec6'
 )
 
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir/"
-    
+
     # Launcher
     install -m755 coccoc-browser-stable "$pkgdir/usr/bin/coccoc-browser-stable"
-    
+
     local icon_sizes=(16 24 32 48 64 128 256)
     for size in "${icon_sizes[@]}"; do
         install -Dm644 "$pkgdir/opt/coccoc/browser/product_logo_${size}.png" \
         "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/coccoc-browser.png"
         rm "$pkgdir/opt/coccoc/browser/product_logo_${size}.png"
     done
-    
+
     install -Dm644 LICENSE.html "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.html"
     chmod -R go-w "$pkgdir"
     rm -r "$pkgdir/etc/cron.daily/" "$pkgdir/opt/coccoc/browser/cron/"
