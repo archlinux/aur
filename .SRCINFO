@@ -1,20 +1,19 @@
 pkgbase = flclash-oixcloud
 	pkgdesc = A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free (oixcloud custom build)
-	pkgver = 0.8.99+2026101807
+	pkgver = 0.9.1+2026102409
 	pkgrel = 1
 	url = https://oixcloud.com
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = libayatana-appindicator
+	depends = libayatana-indicator
 	depends = ayatana-ido
 	depends = libdbusmenu-glib
-	depends = libkeybinder3
 	depends = libsecret
-	depends = quickjs-c-bridge-git
 	options = !strip
 	source = flclash-oixcloud.sh
-	source = flclash-oixcloud-0.8.99+2026101807.deb::https://dl.dler.io/flclash-linux-amd64.deb
+	source = flclash-oixcloud-0.9.1+2026102409.deb::https://dl.dler.io/flclash-linux-amd64.deb
 	sha256sums = 3ed0072f459608696b592dde43d7a6ea49ef89d0173501d8bb10ce0b3f775e55
-	sha256sums = 68e5cc4ce6b17b4b845429990bd2c076eb72a117f79a491907721bf22e675d70
+	sha256sums = f3ca21d778008563e26058c781dc797528cf59ad6808a5d49435cdf7a11d76c4
 
 pkgname = flclash-oixcloud
