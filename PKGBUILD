@@ -1,6 +1,6 @@
 # Maintainer: ca-x <https://github.com/ca-x>
 pkgname=lightos-remoted-bin
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc='LightOS browser remote desktop with a persistent isolated desktop session'
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=("aquamarine-0.15.1-${_aqcommit}.tar.gz::https://codeload.github.com/hypr
 sha256sums=('975a3479b458722ec2e34e5fed9cdd46f77fa70485431f70093693532f685ff3'
             'c905d0cb7abb194e2772b4a655bd834b7f198f92b38de228040d37e4cc492986'
             'ef58b026b3c9f73cf6dfd4c9682b5c5e6e440ff8a68cb41b86e7c425d281c265')
-sha256sums_x86_64=('5469b385ccb30ac013519a1de796be364061a03218e4f4fffbbbfb88bb5c9a27'
-                   'f75b260b4d2bcad65bf48a3b94a915a80c83ed48e95a6f28633cbfff93361b13')
+sha256sums_x86_64=('77bf5f29a131287896213ae46594b951923af20c7536ba6cce7f9537f5d506c6'
+                   '790e6f3661783e2546f59b1db331d8648403fbfee7be53f9449080c928a8ffba')
 source_x86_64=("${_bundle}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz"
                "${_bundle}-${pkgver}.tar.gz.sha256::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz.sha256")
 
