@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=contrast
-_pkgver=0.24.2
+_pkgver=0.25.0
 pkgname=r-${_pkgname,,}
-pkgver=0.24.2
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='A Collection of Contrast Methods'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4541acae0f18906c960141b6aafa3eaaa2451efdf7a50952cd83ebf7ab6cefcc')
+sha256sums=('a1223aadec0d0531868e9aa24d2c9d5b042dc6fd61894a872404486bf59fa613')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
