@@ -9,7 +9,7 @@
 # Mirror of the logic the project's install.sh uses to pick an asset.
 
 pkgname=pentestcode-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="AI-powered autonomous penetration testing agent for your terminal (prebuilt binary)"
 arch=('x86_64' 'aarch64')
