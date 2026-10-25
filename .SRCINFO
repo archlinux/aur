@@ -1,7 +1,7 @@
 pkgbase = treelite
 	pkgdesc = Universal model exchange and serialization format for decision tree forests
-	pkgver = 4.7.2
-	pkgrel = 1
+	pkgver = 4.8.0
+	pkgrel = 2
 	url = https://github.com/dmlc/treelite
 	arch = x86_64
 	license = Apache-2.0
@@ -22,8 +22,8 @@ pkgbase = treelite
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = mdspan
-	source = treelite::git+https://github.com/dmlc/treelite.git#tag=4.7.2
-	sha256sums = e9f114890aa4c0a3435b773fad2e345975231f3902f1702c42e0c886c894713a
+	source = treelite::git+https://github.com/dmlc/treelite.git#tag=4.8.0
+	sha256sums = d8e516a77fafe3423b79f4833ac72d3b4d37924134e4c704e7594e06394d4373
 
 pkgname = treelite
 	arch = x86_64
