@@ -1,6 +1,6 @@
 pkgbase = morgan-git
 	pkgdesc = Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo
-	pkgver = 0.1.0.r0.ge30ec2e
+	pkgver = 0.2.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/ImJustDoingMyPart/morgan
 	install = morgan.install
@@ -12,10 +12,11 @@ pkgbase = morgan-git
 	makedepends = git
 	makedepends = hyprland-protocols
 	depends = hyprland>=0.56
-	depends = gtk4>=1:4.22
-	depends = gtk4-layer-shell
 	depends = libpulse
 	depends = glib2
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = vulkan-icd-loader
 	depends = pam
 	depends = systemd
 	depends = curl
@@ -29,7 +30,7 @@ pkgbase = morgan-git
 	optdepends = cliphist: launcher, portapapeles
 	optdepends = wtype: launcher, escribir símbolos
 	optdepends = libqalculate: calculadora
-	optdepends = rofimoji: launcher, datos de los símbolos
+	optdepends = cava: ecualizador del reproductor en el centro de control
 	optdepends = libcanberra: sonidos del sistema
 	optdepends = uwsm: lanzar apps como unidades de systemd
 	optdepends = gpu-screen-recorder-ui: indicador y control de grabación

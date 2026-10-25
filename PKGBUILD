@@ -10,7 +10,7 @@
 
 pkgname=morgan-git
 _nombre=morgan
-pkgver=0.1.0.r0.ge30ec2e
+pkgver=0.2.0.r0.g0000000
 pkgrel=1
 pkgdesc='Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo'
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,12 @@ url='https://github.com/ImJustDoingMyPart/morgan'
 license=('GPL-3.0-or-later' 'MIT')
 depends=(
     'hyprland>=0.56'
-    'gtk4>=1:4.22'
-    'gtk4-layer-shell'
     'libpulse'
     'glib2'
+    'libxkbcommon'
+    'fontconfig'
+    # El motor dibuja con wgpu, que carga Vulkan al arrancar.
+    'vulkan-icd-loader'
     'pam'
     'systemd'
     'curl'
@@ -39,7 +41,7 @@ optdepends=(
     'cliphist: launcher, portapapeles'
     'wtype: launcher, escribir símbolos'
     'libqalculate: calculadora'
-    'rofimoji: launcher, datos de los símbolos'
+    'cava: ecualizador del reproductor en el centro de control'
     'libcanberra: sonidos del sistema'
     'uwsm: lanzar apps como unidades de systemd'
     'gpu-screen-recorder-ui: indicador y control de grabación'
