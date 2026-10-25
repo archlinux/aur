@@ -1,6 +1,6 @@
 pkgbase = terminal-to-html
 	pkgdesc = Converts arbitrary shell output (with ANSI) into beautifully rendered HTML
-	pkgver = 3.17.2
+	pkgver = 3.17.3
 	pkgrel = 1
 	url = https://github.com/buildkite/terminal-to-html
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = terminal-to-html
 	depends = glibc
 	provides = terminal-to-html
 	conflicts = terminal-to-html
-	source = terminal-to-html-3.17.2.tar.gz::https://github.com/buildkite/terminal-to-html/archive/v3.17.2.tar.gz
-	b2sums = 56134302e3b4eecaba30c111417fe3cb74af216d78a8503e2613485484bd958823accd6e064e39b6a1dc45398f9dac833bfdee4eeb9bb8fb4c38a051f926e231
+	source = terminal-to-html-3.17.3.tar.gz::https://github.com/buildkite/terminal-to-html/archive/v3.17.3.tar.gz
+	b2sums = 1a7c93ddff2923ef84463f22bf82438e39d230760e75321394baa5d813ca241a19d33439206681f578a1bf4ab20e3b789850feda45db9137764722fcd02c4f17
 
 pkgname = terminal-to-html
