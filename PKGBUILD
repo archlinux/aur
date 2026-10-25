@@ -1,5 +1,5 @@
 pkgname=fenriz-desktop-git
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="Desktop shell for Wayland compositors"
 arch=('x86_64')
