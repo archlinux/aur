@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Mise Browser
+GenericName=Web Browser
+Comment=Minimalist Keyboard-Driven Web Browser
+Exec=mise-browser %u
+Icon=mise-browser
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+Keywords=web;browser;internet;mise;mise-browser;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=mise-browser
