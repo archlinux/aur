@@ -1,0 +1,22 @@
+pkgbase = geartowns-git
+	pkgdesc = Fujitsu FM Towns emulator and debugger with an embedded MCP server
+	pkgver = 1.0.0.r0.g4dbdc3e
+	pkgrel = 1
+	url = https://github.com/drhelius/Geartowns
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = sdl3
+	depends = libglvnd
+	depends = hicolor-icon-theme
+	provides = geartowns
+	conflicts = geartowns
+	source = geartowns::git+https://github.com/drhelius/Geartowns.git
+	sha256sums = SKIP
+
+pkgname = geartowns-git
