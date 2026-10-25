@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=uvr-bin
-pkgver=0.4.7 # renovate: datasource=github-tags depName=nbafrank/uvr
+pkgver=0.4.8 # renovate: datasource=github-releases depName=nbafrank/uvr
 pkgrel=1
 pkgdesc="An extremely fast R package and project manager"
 arch=('x86_64')
@@ -26,5 +26,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('e064ecbdba342114bd5dcf23158685d7cea8aa936a9654b5da2394e90f8810bf'
+sha256sums_x86_64=('626a13ff485e23c447a28f6ff84af0471e9aca18fbcad18002d8cb84fe4ed72a'
                    '77b70ed5d9b61311ad9b3be2940e7bc5491600d0a28a641eb801991690d4debc')
