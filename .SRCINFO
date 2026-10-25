@@ -1,6 +1,6 @@
 pkgbase = massiveeq-git
 	pkgdesc = Beta device-aware equalizer for PipeWire and Wayland desktops
-	pkgver = 0.3.0.beta.2.r24.g337deff
+	pkgver = 0.3.0.beta.2.r25.g3a4887c
 	pkgrel = 1
 	url = https://github.com/massiveadam/massiveeq
 	install = massiveeq.install
