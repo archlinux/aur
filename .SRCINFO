@@ -1,0 +1,28 @@
+pkgbase = bitwig-agent
+	pkgdesc = Thin MCP/CLI bridge and controller extension for Bitwig Studio
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/BANANASJIM/bitwig-agent
+	arch = any
+	license = MIT
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-numpy
+	checkdepends = python-scipy
+	checkdepends = python-soundfile
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python>=3.11
+	depends = python-mcp>=1.29.1
+	depends = python-mcp<2
+	depends = python-pydantic>=2.11
+	depends = python-pydantic<3
+	optdepends = bitwig-studio: native host; only 6.1.3 has native evidence, private APIs are exact-JAR-gated
+	noextract = BitwigAgent-0.1.1.bwextension
+	source = https://github.com/BANANASJIM/bitwig-agent/releases/download/v0.1.1/bitwig_agent-0.1.1.tar.gz
+	source = BitwigAgent-0.1.1.bwextension::https://github.com/BANANASJIM/bitwig-agent/releases/download/v0.1.1/BitwigAgent.bwextension
+	sha256sums = 67b8eb529bc3240703405e9bbe5126ebd73156da6ab028623a46a5122aa7f0dd
+	sha256sums = 22cf939a9c9044440c799fa633d8f88515a9b8046b5ed9a261e48f5e42eb1707
+
+pkgname = bitwig-agent
