@@ -3,7 +3,7 @@
 _pkgbase=todav
 _uuid=todav@aperte.dev
 pkgname=gnome-shell-extension-todav-git
-pkgver=1.2.1.r0.gdd753bf
+pkgver=1.2.2.r0.gc5ca9ad
 pkgrel=1
 pkgdesc='GNOME Shell companion extension for Todav: tasks, month and agenda in the top bar'
 arch=('any')
