@@ -1,6 +1,6 @@
 pkgbase = python-librelane
 	pkgdesc = An infrastructure for implementing chip design flows (successor to OpenLane).
-	pkgver = 3.0.11
+	pkgver = 3.0.16
 	pkgrel = 1
 	url = https://github.com/librelane/librelane
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-librelane
 	depends = yosys
 	provides = python-librelane-git
 	conflicts = python-librelane-git
-	source = librelane-3.0.11.tar.gz::https://github.com/librelane/librelane/archive/refs/tags/3.0.11.tar.gz
-	sha256sums = 20d24c80619af83f0e088da806d57ead46eb89cd7a00bcae94d939978849d535
+	source = librelane-3.0.16.tar.gz::https://github.com/librelane/librelane/archive/refs/tags/3.0.16.tar.gz
+	sha256sums = 4f3c2836c81155d9c17b13d051a266cc3e76bed9b0f4d1be6816e504b3813e96
 
 pkgname = python-librelane
