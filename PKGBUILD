@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=gosec
-pkgver=2.29.0
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="Inspects source code for security problems by scanning the Go AST"
 arch=("x86_64" "i686")
@@ -10,7 +10,7 @@ license=("Apache")
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/securego/gosec/archive/v${pkgver}.tar.gz")
-b2sums=('037a48c59e5fc7efe43baf1624f186c4bfb26d25c663649b29af243590418090f20fac7ba236622412fb7e13a95c6a15a405dc722732e592df745f8b7955c9e8')
+b2sums=('9c4d10a4835d070a547b2f1a2bd176ceaa6be4d46c8bd044940f39fc221dbaee4e9c7851ea26ac63b3398f6789802d108694f6c363755477ee5deb9cffac2895')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/gosec
