@@ -36,9 +36,10 @@ post_install() {
   systemctl enable nordlayer.socket
   systemctl enable nordlayer.service
 
-  # Restart service now
-  systemctl start nordlayer.socket
-  systemctl start nordlayer.service
+  # Restart service now. start is a no-op when the unit is already active,
+  # so an upgrade would keep running the previous daemon.
+  systemctl restart nordlayer.socket
+  systemctl restart nordlayer.service
    # Add current user to nordlayer group
     current_user=$(logname)
     if [ -n "$current_user" ]; then

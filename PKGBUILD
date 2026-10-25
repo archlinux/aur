@@ -2,7 +2,7 @@
 # https://github.com/rolki-png/nordlayer-latest/tree/master
 pkgname=nordlayer-bin
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary secure network access client for Linux"
 arch=('x86_64')
 url="https://nordlayer.com"
