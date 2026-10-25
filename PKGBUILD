@@ -1,10 +1,11 @@
 pkgname=cockatrice-client-stable
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source multiplatform program for playing tabletop card games over a network (stable release)'
 arch=('x86_64')
 url='https://cockatrice.github.io/'
 license=('GPL-2.0-only')
+options=('!debug')
 
 depends=(
     'hicolor-icon-theme'
