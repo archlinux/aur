@@ -1,18 +1,19 @@
 # Maintainer: Minnow Contributors <noreply@example.com>
 pkgname=minnow
-pkgver=0.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple, lightweight file manager for KDE"
 arch=('x86_64')
-url="https://github.com/minnowfm/minnow"
+url="https://forgejo.voten.me/Voten641/minnow"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'kcoreaddons' 'kconfigwidgets' 'kwidgetsaddons' 'kio' 'kfilemetadata' 'karchive' 'knotifications' 'kwindowsystem')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/minnowfm/minnow/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b86dac78b21b77dd251ab5f02104d2d99f3b956a6acedfa9d4879826ed0dab73')
+# Forgejo-generated archive - unpacks to a bare "minnow/" directory, not "minnow-$pkgver/"
+source=("$pkgname-$pkgver.tar.gz::https://forgejo.voten.me/Voten641/minnow/archive/v$pkgver.tar.gz")
+sha256sums=('721209b8a61be8e991124f9ee179161bacf748ab796bf83d460ae9e780bcef97')
 
 build() {
-  cmake -B build -S "$pkgname-$pkgver" \
+  cmake -B build -S minnow \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
