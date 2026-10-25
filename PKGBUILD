@@ -3,7 +3,7 @@
 
 pkgname=discophile-bin
 _pkgname=discophile
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Your music server, played like a record collection: a player for Navidrome, Subsonic, Jellyfin and Audiobookshelf'
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/debba/discophile/releases/download/v${pkgver}/Discophile-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('e14171bf985557ccf60c4bf4b81cd36a2a933255003afa0eabd67a5540c836ca')
+sha256sums=('54aaab5e2b4891e380d32ee78145f232864fe1b84d2c4147ebac36d06a297377')
 
 package() {
   cd Discophile
