@@ -3,7 +3,7 @@
 
 pkgname=xemu-bin
 pkgver=0.8.139
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for the original Xbox console"
 arch=(x86_64)
 url="https://xemu.app"
@@ -15,18 +15,17 @@ source=(xemu-$pkgver.AppImage::https://github.com/xemu-project/xemu/releases/dow
 sha256sums=('220282aacf09b30b35c55ba900a774fb6940c70deca1408bc70a4c9cc67c322f')
 
 prepare() {
-  # Extract files from AppImage (only if exists, in case of using '--noextract').
-  if [ -e xemu-$pkgver.AppImage ]; then
-    chmod 755 xemu-$pkgver.AppImage
-    ./xemu-$pkgver.AppImage --appimage-extract
-    rm -f xemu-$pkgver.AppImage
-  fi
+  chmod 755 xemu-$pkgver.AppImage
+  ./xemu-$pkgver.AppImage --appimage-extract
+  rm -f xemu-$pkgver.AppImage
 }
 
 package() {
-  mkdir -p "$pkgdir"/{opt/xemu,usr/bin}
-  cp -a  "$srcdir"/squashfs-root/usr/{bin,lib} -t "$pkgdir"/opt/xemu/
-  ln -sr "$pkgdir"/opt/xemu/bin/xemu           -t "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/{usr/bin,opt/xemu/{bin,lib}}
+  install -Dm755 "$srcdir"/squashfs-root/usr/bin/xemu -t "$pkgdir"/opt/xemu/bin/
+  install -Dm644 "$srcdir"/squashfs-root/usr/lib/*    -t "$pkgdir"/opt/xemu/lib/
+
+  ln -sr "$pkgdir"/opt/xemu/bin/xemu -t "$pkgdir"/usr/bin/
 
   install -Dm644 "$srcdir"/squashfs-root/usr/share/applications/xemu.desktop            -t "$pkgdir"/usr/share/applications/
   install -Dm644 "$srcdir"/squashfs-root/usr/share/icons/hicolor/scalable/apps/xemu.svg -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps/

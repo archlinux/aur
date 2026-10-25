@@ -1,7 +1,7 @@
 pkgbase = xemu-bin
 	pkgdesc = Emulator for the original Xbox console
 	pkgver = 0.8.139
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xemu.app
 	arch = x86_64
 	license = GPL-2.0-only
