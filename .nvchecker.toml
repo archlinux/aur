@@ -1,4 +1,3 @@
-[nvchecker]
+[cryptpad-sso]
 source = "git"
 git = "https://github.com/cryptpad/sso.git"
-prefix = "v"
