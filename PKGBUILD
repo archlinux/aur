@@ -1,6 +1,6 @@
 pkgname=nerd-fonts-apple
 pkgver=3.5.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 license=("custom")
 pkgdesc="Apple font (San Francisco, NY), patched with the Nerd Fonts Patcher"
@@ -25,27 +25,38 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a')
 
 build() {
-  local pwd="$(pwd)"
+  mkdir -p "$srcdir/patched"
   for archive in *.dmg; do
-    echo "unpack and patch: $archive"
-    7z x $archive &>/dev/null
-    local fontDir="$(echo $archive | cut -d. -f1 | tr -d '-')Fonts"
-    local pkgArchive="$(echo $archive | cut -d. -f1 | sed -r 's/-/ /g') Fonts.pkg"
-    local payload="${fontDir}.pkg/Payload"
-    cd -- "$srcdir/"*"$fontDir"
-    bsdtar xvPf "$pkgArchive" &>/dev/null
-    bsdtar xvPf "$payload" &>/dev/null
+    echo "unpack and patch: $archive"    
+    local workdir="$srcdir/work_${archive%.dmg}"
+    mkdir -p "$workdir"
+    7z x -y "$archive" -o"$workdir" &>/dev/null
+    local pkgFile
+    pkgFile=$(find "$workdir" -type f -name "*.pkg" | head -n 1)
+    
+    if [[ -z "$pkgFile" ]]; then
+      echo "Kon geen .pkg vinden in $archive"
+      return 1
+    fi
+    mkdir -p "$workdir/extracted"
+    bsdtar -xf "$pkgFile" -C "$workdir/extracted"
+    local payloadFile
+    payloadFile=$(find "$workdir/extracted" -type f -name "Payload" | head -n 1)
+    bsdtar -xf "$payloadFile" -C "$workdir/extracted"
     case $archive in
-      *Mono* ) find -name *.ttf -o -name *.otf -print0 | parallel -j$(nproc) -0 python "$srcdir/font-patcher" -q -c -s {} -out "$srcdir/patched" &>/dev/null
-               ;;
-      *      ) find -name *.ttf -o -name *.otf -print0 | parallel -j$(nproc) -0 python "$srcdir/font-patcher" -q -c {} -out "$srcdir/patched" &>/dev/null
-               ;;
+      *Mono* ) 
+        find "$workdir/extracted" -type f \( -name "*.ttf" -o -name "*.otf" \) -print0 | \
+          parallel -j"$(nproc)" -0 python "$srcdir/font-patcher" -q -c -s {} -out "$srcdir/patched" &>/dev/null
+        ;;
+      * ) 
+        find "$workdir/extracted" -type f \( -name "*.ttf" -o -name "*.otf" \) -print0 | \
+          parallel -j"$(nproc)" -0 python "$srcdir/font-patcher" -q -c {} -out "$srcdir/patched" &>/dev/null
+        ;;
     esac
-    cd -- "$pwd"
   done
 }
 
 package() {
   install -d "$pkgdir/usr/share/fonts/apple"
-  install -m644 "patched/"*.otf "$pkgdir/usr/share/fonts/apple"
+  install -m644 "$srcdir/patched/"*.{otf,ttf} "$pkgdir/usr/share/fonts/apple/" 2>/dev/null || true
 }
