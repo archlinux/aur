@@ -1,6 +1,6 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=python-ciel
-pkgver=2.6.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A tool for managing Process Design Kits (PDKs) for ASIC and FPGA flows."
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
 )
 
 source=("ciel-${pkgver}.tar.gz::https://github.com/fossi-foundation/ciel/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f59fe1e76932deab4414f14558d910a1ee0e25b34815490f656d8ced6e531377')
+sha256sums=('fd22712bed00c917780807a8fcb6cdf4523dd050a04c957c3ccd04a5b582a086')
 
 build() {
     cd "ciel-${pkgver}"

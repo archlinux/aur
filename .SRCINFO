@@ -1,6 +1,6 @@
 pkgbase = python-ciel
 	pkgdesc = A tool for managing Process Design Kits (PDKs) for ASIC and FPGA flows.
-	pkgver = 2.6.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/fossi-foundation/ciel
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-ciel
 	depends = python-rich
 	depends = python-truststore
 	depends = python-zstandard
-	source = ciel-2.6.1.tar.gz::https://github.com/fossi-foundation/ciel/archive/refs/tags/2.6.1.tar.gz
-	sha256sums = f59fe1e76932deab4414f14558d910a1ee0e25b34815490f656d8ced6e531377
+	source = ciel-3.2.0.tar.gz::https://github.com/fossi-foundation/ciel/archive/refs/tags/3.2.0.tar.gz
+	sha256sums = fd22712bed00c917780807a8fcb6cdf4523dd050a04c957c3ccd04a5b582a086
 
 pkgname = python-ciel
