@@ -7,7 +7,7 @@
 # to /usr/share. What a user changes lives in ~/.config/zenworks.
 
 pkgname=zenworks
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
@@ -72,10 +72,12 @@ optdepends=(
   'qt6-webengine: PDFs in Minerva (installed when the first PDF is opened)'
   'python-pykeepass: KeePassXC vaults in Calypso (installed when first needed)'
 )
+# zen-browser (the AUR's source build) installs /usr/bin/zen as well
+conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e501f962092dd5fc39e639571fae7fa791023004e28ebab29c947b7465509813')
+sha256sums=('f6dc392e2ed6ab6cd8a9eb5cf8c3c7d8850274166ae4fb9b7b0d5924dc47c932')
 
 package() {
   cd "ZENWORKS-$pkgver"
@@ -98,7 +100,9 @@ package() {
   # Python cannot write its cache into a read-only /usr, so it is made here
   python -m compileall -q -s "$pkgdir" -p / "$share"
 
-  install -Dm755 bin/zenworks "$pkgdir/usr/bin/zenworks"
+  # the session's launcher is `zen`; `zenworks`, its name up to 0.0.5, links to it
+  install -Dm755 bin/zen "$pkgdir/usr/bin/zen"
+  ln -s zen "$pkgdir/usr/bin/zenworks"
   install -Dm644 share/wayland-sessions/zenworks.desktop -t "$pkgdir/usr/share/wayland-sessions"
   install -Dm644 share/xdg-desktop-portal/zenworks-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal"
   install -Dm644 share/applications/*.desktop -t "$pkgdir/usr/share/applications"
