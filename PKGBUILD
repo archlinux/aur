@@ -13,7 +13,7 @@ _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=3.2.0.rc5
 _pkgver=3.2.0-rc5
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -66,22 +66,21 @@ install=tengine.install
 conflicts=('tengine')
 provides=('nginx' 'tengine')
 _acme_ver=0.4.1
-_brotli_ver=1.0.0rc
+_brotli_ref=53e0fb55f250f48fe80c0ddbf6c0f7103cdbaae1
 _zstd_ver=0.1.1
 _geoip2_ver=3.4
 _fancyidx_ver=0.6.0
-_jdomain_ver=1.5.2
-_tongsuo_ver=8.5.0-pre2
-_more_headers_ver=0.39
+_tongsuo_ver=8.5.0
+_more_headers_ver=0.41
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$_pkgver.tar.gz
         service
         logrotate
         acme-v${_acme_ver}.tar.gz::https://github.com/nginx/nginx-acme/releases/download/v${_acme_ver}/nginx-acme-${_acme_ver}.tar.gz
-        brotli-v${_brotli_ver}.tar.gz::https://github.com/google/ngx_brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
+        #brotli-v${_brotli_ver}.tar.gz::https://github.com/google/ngx_brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
+	"ngx_brotli::git+https://github.com/google/ngx_brotli.git#commit=${_brotli_ref}"
         zstd-v${_zstd_ver}.tar.gz::https://github.com/tokers/zstd-nginx-module/archive/refs/tags/${_zstd_ver}.tar.gz
         geoip2-v${_geoip2_ver}.tar.gz::https://github.com/leev/ngx_http_geoip2_module/archive/refs/tags/${_geoip2_ver}.tar.gz
         fancyindex-v${_fancyidx_ver}.tar.xz::https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_fancyidx_ver}/ngx-fancyindex-${_fancyidx_ver}.tar.xz
-        jdomain-v${_jdomain_ver}.tar.gz::https://github.com/nicholaschiasson/ngx_upstream_jdomain/archive/refs/tags/${_jdomain_ver}.tar.gz
         tongsuo-v${_tongsuo_ver}.tar.gz::https://github.com/Tongsuo-Project/Tongsuo/archive/refs/tags/${_tongsuo_ver}.tar.gz
         more-headers-v${_more_headers_ver}.tar.gz::https://github.com/openresty/headers-more-nginx-module/archive/refs/tags/v${_more_headers_ver}.tar.gz
         )
@@ -89,13 +88,12 @@ sha256sums=('fea97353ac3619e40aa555219a60b539610ff44a3249b2c33ae2b1b2754b591b'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             'c9ff256ca07dc041922e24e47adec1996aeb590081dda70208f248a175304e93'
             'b4f99f971bd0bebc89b2037f3afeaa3281004fe434de558df87d69cab2be1f22'
-            'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b'
+            '97b4c72bf2711c574ae153251962be24ce7426f95ddfadbbcdf99aa81b89b76a'
             '707d534f8ca4263ff043066db15eac284632aea875f9fe98c96cea9529e15f41'
             'ad72fc23348d715a330994984531fab9b3606e160483236737f9a4a6957d9452'
             '2846819d4f80df7c753530b2ea93484d41326f5dc5162dc453b92579203c0c32'
-            '7829440cc448edaa47b4fefb88fe35cad93b02ba5fe850c69a0421ccaa6190aa'
-            'b29fa0dd494f4d79a73a6a3402a545050d7701565914ed4f04ae9a359283ec22'
-            'dde68d3fa2a9fc7f52e436d2edc53c6d703dcd911283965d889102d3a877c778')
+            '505085d457214e5662ea7109c3919fb75f695edf74c91ec6f690da0e58c07dea'
+            '800eba641c29b89dfd00a97ccac314a2b7768bdd85ea37ed819452494a5633cd')
 
 prepare() {
     cd tengine-$_pkgver
@@ -104,6 +102,9 @@ prepare() {
     #  echo "Applying patch $i..."
     #  patch -Np1 -i $i
     #done
+
+    cd $srcdir/ngx_brotli
+    git submodule update --init
 }
 
 build() {
@@ -171,9 +172,8 @@ build() {
         --add-module=./modules/ngx_http_upstream_vnswrr_module \
         --add-module=./modules/ngx_multi_upstream_module \
         --add-module=./modules/ngx_tongsuo_ntls \
-        --add-module=$srcdir/ngx_upstream_jdomain-${_jdomain_ver} \
         --add-dynamic-module=$srcdir/nginx-acme-${_acme_ver} \
-        --add-dynamic-module=$srcdir/ngx_brotli-${_brotli_ver} \
+        --add-dynamic-module=$srcdir/ngx_brotli \
         --add-dynamic-module=$srcdir/zstd-nginx-module-${_zstd_ver} \
         --add-dynamic-module=$srcdir/ngx_http_geoip2_module-${_geoip2_ver} \
         --add-dynamic-module=$srcdir/ngx-fancyindex-${_fancyidx_ver} \
