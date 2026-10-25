@@ -1,6 +1,6 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 pkgname=bluegit-runner
-pkgver=20261025205431
+pkgver=20261025212007
 pkgrel=1
 pkgdesc='Separate CI runner for BlueGit (runs jobs in Docker on your own machine)'
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,9 @@ depends=('git' 'docker')
 makedepends=('go')
 options=('!debug')
 install=bluegit-runner.install
-_commit=e8cd3d7b16457433d2211eca6c17849945399ae5
+_commit=8cbf97bdb0200cf20d087f122cdd7b7ec930ff85
 source=("bluegit-${_commit}.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/${_commit}/bluegit-${_commit}.tar.gz")
-sha256sums=('f3112d7aff56db30040a4b913f79ecb6eec3609163110cd95e198fc03f311037')
+sha256sums=('a5cafbe5565391475863109abfa700e048357b02f637480ef0e0fc49b5f12f3e')
 
 build() {
   cd "$srcdir/bluegit-${_commit}"
