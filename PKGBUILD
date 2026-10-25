@@ -4,8 +4,8 @@ pkgname=rune-ide-bin
 _pkgname=rune
 _binaryname=rune
 pkgdesc="Fast, GPU-rendered, keyboard-driven IDE for power users"
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/unstablebuild/rune"
 license=('GPL-3.0-or-later')
@@ -37,20 +37,15 @@ source=(
 )
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('9cf17cca71172c7dcf3094e2837b21ebdc504920546cb8b87d7cd8e1f32f2400')
-sha256sums_aarch64=('a07cb3ca75b299aa5609a909f6b5f24c01b3f3c5b08c4164a8e120d343557af1')
+sha256sums_x86_64=('82ec4e1b625d2988edf91a912a509bac8b49044948c79171a2dead41bda57b2b')
+sha256sums_aarch64=('7613bf8605a7977dbb2c1765b20a7ee4da2194506e7fb9da8ebfff0826938dcd')
 
 package() {
-    # upstream ships a self-contained "rune.app" bundle (bin/, share/) whose
-    # binary locates share/ relative to its own path, and only when that
-    # path is .../rune.app/bin/, so the tree is kept intact under /opt
-    # rather than split across the usual FHS locations
+    # upstream ships a self-contained "rune.app" bundle, kept under /opt
+    # with the same layout; the shell rc files that used to live in
+    # share/zdot are embedded in the binary since 1.3
     local _appdir="/opt/${pkgname}/${_pkgname}.app"
     install -D -m0755 "${srcdir}/${_pkgname}.app/bin/${_binaryname}" "${pkgdir}${_appdir}/bin/${_binaryname}"
-
-    for f in .zlogin .zprofile .zshenv .zshrc; do
-        install -D -m0644 "${srcdir}/${_pkgname}.app/share/zdot/$f" "${pkgdir}${_appdir}/share/zdot/$f"
-    done
 
     install -d "${pkgdir}/usr/bin"
     ln -s "${_appdir}/bin/${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
