@@ -1,0 +1,18 @@
+pkgbase = python-sqlakeyset
+	pkgdesc = Offset-free paging for SQLAlchemy
+	pkgver = 2.0.1787969905
+	pkgrel = 1
+	url = https://github.com/djrobstep/sqlakeyset
+	arch = any
+	license = Unlicense
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-dateutil
+	depends = python-packaging
+	depends = python-sqlalchemy
+	source = sqlakeyset-2.0.1787969905.tar.gz::https://files.pythonhosted.org/packages/source/s/sqlakeyset/sqlakeyset-2.0.1787969905.tar.gz
+	sha256sums = aade1e9cd75d47d01ee486b327d83b59b16e78443aa432189d34185e347d7ed4
+
+pkgname = python-sqlakeyset
