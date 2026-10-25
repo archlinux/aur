@@ -1,6 +1,6 @@
 pkgbase = python-pipelex-tools
 	pkgdesc = Pipelex Tools as a Python library — MTHDS lint & format, importable as 'pipelex_tools'
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://pypi.org/project/pipelex-tools-py/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pipelex-tools
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://files.pythonhosted.org/packages/source/p/pipelex_tools_py/pipelex_tools_py-0.6.0.tar.gz
-	sha256sums = ca17c8428605c9860931c2fdf7be66dc198a1870818242c22feddc16d5d38c69
+	source = https://files.pythonhosted.org/packages/source/p/pipelex_tools_py/pipelex_tools_py-0.7.0.tar.gz
+	sha256sums = 88ca50b17f02939a2890b80d0b5b091ef390d5fe138d4eeb6bb4cf840c9243bd
 
 pkgname = python-pipelex-tools
