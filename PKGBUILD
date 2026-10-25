@@ -2,7 +2,7 @@
 
 pkgname=ddc-controls-git
 _pkgname=ddc-controls
-pkgver=0.1.0_r2_g52d7bbf
+pkgver=0.1.0_r5_g4be76a2
 pkgrel=1
 pkgdesc='GTK3 monitor control panel for DDC/CI (libddcci) and backlights, with a waybar module (git version)'
 arch=('x86_64' 'aarch64')
