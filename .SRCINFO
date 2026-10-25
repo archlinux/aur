@@ -1,6 +1,6 @@
 pkgbase = rui-bin
 	pkgdesc = Terminal UI for managing home routers (Orange Livebox/Funbox today; Play/Fritz on the roadmap)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/rui
 	license = MIT
@@ -11,13 +11,13 @@ pkgbase = rui-bin
 	conflicts = rui-git
 	provides = rui
 	arch = aarch64
-	source_aarch64 = rui-bin_0.1.6_aarch64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.6/rui_0.1.6_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 1498594bc58e5a6a64294216ddc50dcab86578cbfac9718863cdd353a4e2541e
+	source_aarch64 = rui-bin_0.1.7_aarch64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.7/rui_0.1.7_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 40c97c41422730f8761339ffb140b3eb6c3d97909d4191dddbd0d8f97f44ac40
 	arch = armv7h
-	source_armv7h = rui-bin_0.1.6_armv7h.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.6/rui_0.1.6_Linux_armv7.tar.gz
-	sha256sums_armv7h = 535a7704ead8cbdf7247ec8d48722350ccca7d8809929d31284bdbf29e12fac7
+	source_armv7h = rui-bin_0.1.7_armv7h.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.7/rui_0.1.7_Linux_armv7.tar.gz
+	sha256sums_armv7h = f82c8323e3d9a82fa319eee4c508c43703612d70cea26a1800a4fe6e8c7a1c25
 	arch = x86_64
-	source_x86_64 = rui-bin_0.1.6_x86_64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.6/rui_0.1.6_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d415694fcfd26bd29c5d68410b9ab06481b780c32392fb790bc3193bbdbb6140
+	source_x86_64 = rui-bin_0.1.7_x86_64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.7/rui_0.1.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fadfa5b6e2fc4bae23c165a50cf3b315874a03306be977e991aa21534bd059a3
 	
 pkgname = rui-bin
