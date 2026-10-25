@@ -4,7 +4,7 @@
 # Last edited October 24th 2026 @Arthurmeade12
 
 pkgname=alda
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('alda-bin' 'icedtea-web')
 makedepends=('go')
 source=("$pkgname-release-$pkgver.tar.gz::https://codeload.github.com/$pkgname-lang/$pkgname/tar.gz/refs/tags/release-$pkgver"
   alda-player )
-b2sums=('00c26c76f063eb421eb39bbda8732333b84797cfe82d2d97ca2ff1aed46c7b97772a21c96c1f6809410e3cd921f30d279e5df971f79231021666615b64afc53a'
+b2sums=('dfe1780c6301e097d64e3b19a485ba1aa16c92bdd5a0f4f255377e09925e2797858576eaa3ba409e8168d5093094ad19799b952d77eb65c8bd04273790ce09d1'
   '5d6bdd39c1178fd5504a308d95606a82bae781159128e3c5d79c989a253871b36f92123410479d8734df2dbf335ccab2f194d99503fddb76f9e86bb0ed8acee4')
 
 build() {
@@ -29,7 +29,8 @@ build() {
     cd client
     export CGO_ENABLED=0 # The alda repository appears to use go everything afaik, so disabling this should have no effect other than making sure that irrelevant compiler flags for C and C++ are ignored (e.g. CGO_CXXFLAGS)
     export GOPATH="${srcdir}" # Prevents ~/go from being created
-
+    #export GOARCH="${CARCH}" # For TBD support of 3 more arches when I'm not sleepy
+    #[[ "${CARCH}" == 'armv7h' ]] && export GOARM='7' # For tbd support of armv7h
     export GOFLAGS="-buildmode=pie -modcacherw -trimpath -ldflags=-w"
     go generate
     go build -o "target/$pkgname" # main.go
@@ -55,7 +56,7 @@ package() {
 
   mkdir -p "$pkgdir/usr/share/doc/$pkgname/doc_zh_cn"
   install -Dvm644 doc/doc_zh_cn/* "$pkgdir/usr/share/doc/$pkgname/doc_zh_cn/"
-  rm -r doc/doc_zh_cn # The chinese translation folder gave me major headaches because `install` couldn't handle a dir within a dir (zh_cn/ within doc/)
+  rm -r doc/doc_zh_cn # The chinese translation folder caused me major headaches because `install` couldn't handle a dir within a dir (zh_cn/ within doc/)
 
   install -Dvm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname/"
 
