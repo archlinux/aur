@@ -1,0 +1,13 @@
+pkgbase = ccalc-git
+	pkgdesc = Arbitrary precision console calculator
+	pkgver = 2.17.0.2.r9.gc8edd3e
+	pkgrel = 1
+	url = https://github.com/lcn2/calc
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = mandoc
+	depends = readline
+	source = git+https://github.com/lcn2/calc
+	b2sums = SKIP
+
+pkgname = ccalc-git
