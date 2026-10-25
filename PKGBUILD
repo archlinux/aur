@@ -1,5 +1,5 @@
 pkgname=rea-agents
-pkgver=6.4.0
+pkgver=6.7.0
 pkgrel=1
 pkgdesc="Reverse engineer anything from your terminal or agent with one CLI and MCP server"
 arch=('any')
@@ -13,9 +13,13 @@ optdepends=(
   'jadx: Android APK analysis'
   'android-apktool: Android resource decoding'
   'android-tools: ADB device analysis'
+  'python-pwntools: offline ELF layout, EVM bytecode and recorded-crash analysis'
+  'pwndbg: optional recorded-crash debugging'
+  'mitmproxy: native mitmproxy capture imports'
+  'chromium: browser and web capture analysis'
 )
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('59eb1604b8db75f522d4a975c36ce6b4a2ad465e43bad165f9a8f728391db9b8')
+sha256sums=('20958a66dba1a011e50a486beb9463a343128ed368c984f94065362c13f51f90')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
