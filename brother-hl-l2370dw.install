@@ -3,6 +3,5 @@ post_install() {
 }
 
 post_upgrade() {
-    echo "Restart CUPS and add your printer at http://localhost:631"
+	echo "Restart CUPS and add your printer at http://localhost:631"
 }
-
