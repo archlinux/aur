@@ -1,6 +1,6 @@
 pkgbase = wetty
 	pkgdesc = Terminal in browser over http/https
-	pkgver = 4.1.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/butlerx/wetty
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = wetty
 	depends = nodejs
 	depends = python
 	provides = wetty
-	noextract = wetty-4.1.0.tgz
+	noextract = wetty-4.2.1.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = wetty-4.1.0.tgz::https://registry.npmjs.org/wetty/-/wetty-4.1.0.tgz
-	b2sums = 33f0d82e1a47521dba152541c19768ec85da6e664097e5b65dc3dea071edbfb3b2c8405084bae817b54180eced7c3e86c32ca95400b6b38d9cededf53e73daff
+	source = wetty-4.2.1.tgz::https://registry.npmjs.org/wetty/-/wetty-4.2.1.tgz
+	b2sums = 7bb2bb5e65ee3f7e4e145cf054d97f95ced0ffcf1b72830704f7de4abbd43109193467c78ba28febde918b4e7d77cb7ac8b857b6435d878eec25bd39f3b89a96
 
 pkgname = wetty
