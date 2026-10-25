@@ -1,0 +1,48 @@
+# Runs inside pacman (PKGBUILD's `install=`). It prints what changed and how to
+# switch the login chain; it enables nothing and starts nothing.
+#
+# A package that silently took display-manager.service from an existing desktop
+# would be a surprise, and the boot chain is the administrator's decision. The
+# same reason packaging/install.sh does not enable the chain without `--enable`.
+#
+# Written in English because pacman prints these lines to a terminal that may not
+# be UTF-8 (e.g. during `pacstrap`).
+
+post_install() {
+  cat <<'EOF'
+
+Inox is installed but not enabled. The binaries are in /usr/bin, the three PAM
+stacks are in /etc/pam.d, the units are in /usr/lib/systemd/system, and the
+`greeter` system account is created by pacman's systemd-sysusers hook (check it
+with `id greeter`).
+
+Nothing starts a login screen yet.
+
+  Try the login chain on a spare VT (does not touch the boot chain):
+      sudo systemctl start inox-greeter@4.service
+
+  Make Inox the boot-time login screen (disable any other display manager first):
+      sudo systemctl disable --now sddm.service   # or gdm.service, greetd.service, ...
+      sudo ln -sf /usr/lib/systemd/system/inox-greeter@1.service \
+          /etc/systemd/system/display-manager.service
+      sudo reboot
+
+  Undo the boot-chain switch:
+      sudo rm /etc/systemd/system/display-manager.service
+      sudo systemctl enable <your previous display manager>
+
+  Read the logs:
+      journalctl -u inox-auth -u inox-greeter@1
+
+Before switching the screen, read the deployment notes:
+    https://github.com/Inox-desktop/inox/blob/main/docs/book/src/usage/login.md
+
+This package is a build recipe, not a supported distribution channel: the login
+chain has no real-hardware acceptance result, and AUR builds are not CI-produced
+binaries (docs/book/src/development/release.md).
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
