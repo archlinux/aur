@@ -30,3 +30,17 @@ build-aarch64:
 
 build-armv7h:
 	@CARCH=armv7h /usr/bin/makepkg
+
+download:
+	@makepkg --verifysource
+
+download-all: download-x86_64 download-aarch64 download-armv7h
+
+download-x86_64:
+	@CARCH=x86_64 makepkg --verifysource || true
+
+download-aarch64:
+	@CARCH=aarch64 makepkg --verifysource || true
+
+download-armv7h:
+	@CARCH=armv7h makepkg --verifysource || true
