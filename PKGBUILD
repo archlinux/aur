@@ -2,7 +2,7 @@
 # Builds kache from the latest `main`. pkgver() derives the version from git,
 # so this tracks unreleased/dev code — rebuild to update.
 pkgname=kache-git
-pkgver=1.2.2.r1175.g96052b4
+pkgver=1.2.2.r1259.gd2dd00c
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (latest git main)'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/kache"
+  local version
+  version="$(git describe --tags --abbrev=0 --match 'v[0-9]*' --exclude '*-*' 2>/dev/null | sed 's/^v//')"
   printf '%s.r%s.g%s' \
-    "$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo 0.0.0)" \
+    "${version:-0.0.0}" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -37,6 +39,9 @@ build() {
 package() {
   cd "$srcdir/kache"
   install -Dm0755 target/release/kache "$pkgdir/usr/bin/kache"
+  if [[ -f target/release/kache-engine ]]; then
+    install -Dm0755 target/release/kache-engine "$pkgdir/usr/bin/kache-engine"
+  fi
 
   local shell
   for shell in bash zsh fish elvish; do
