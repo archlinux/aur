@@ -1,7 +1,7 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-bin
 pkgver=2.4.0
-pkgrel=4
+pkgrel=6
 pkgdesc='澜音 - 一款简洁优雅的跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。'
 arch=('x86_64')
 url='https://ceru.docs.shiqianjiang.cn/'
@@ -20,15 +20,15 @@ license=('AGPL-3.0-only')
 #   mediaSession/MPRIS 集成也禁用了（"降级为浏览器方案"沦为死代码，
 #   且实测禁用 HardwareMediaKeyHandling 会连坐 MediaSessionService，
 #   二者必须同时释放）。
-# 本包两步处理：
-#   1) 删掉 deb 里的 external-media-integration.node（2.5MiB，Linux 上
-#      还缺封面处理），让 emi loader 走「未找到原生模块」分支；
-#   2) 对 app.asar 做等长字节替换，把上述两个 feature 从禁用列表涂掉。
-#      浏览器侧 navigator.mediaSession（渲染端无条件写入 metadata/状态）
-#      由此接通 Chromium 自带 MPRIS：标题/歌手/专辑/封面/时长/按键控制全通，
-#      Identity=ceru-music。
-# 上游修好 run() 后（issue 见 upstream-issue-draft.md，已验证一行修复有效），
-# 可移除本补丁恢复原生模块。
+#   再有：主进程 close 事件 handler 不 preventDefault，窗口管理器发出的
+#   关闭请求（任务栏关闭/高规 Alt+F4 之外的所有 WM 路径）直接销毁窗口并
+#   触发 window-all-closed → 完全退出，closeToTray 设置对 WM 关闭无效。
+# 补丁见 prepare()（等长字节替换，不破坏 asar 偏移；每处替换均做唯一性
+# 与等长断言，上游结构变化时会清晰报错）。
+# 上游修好后（issue 见 upstream-issue-draft.md，均已验证）：
+#   1) run() 修复前不需要重编 .node，mediaSession 路线即完整可用（含封面）；
+#   2) closeToTray/close bug 上游修复后移除 patch-asar.cjs 的对应补丁。
+# 本仓库 native/ 保存上游开源原生模块源码 + run() 修复版，仅作 issue 佐证。
 depends=(
     'electron44'           # 提供 /usr/bin/electron 与 electron44 运行时
     'at-spi2-core'       # 无障碍支持
@@ -72,14 +72,48 @@ prepare() {
     # 让 emi loader 走「未找到原生模块」分支，由 Chromium mediaSession 兜底。
     rm -rf "${srcdir}/debroot/opt/${_debdir}/resources/app.asar.unpacked/native"
 
-    # 等长字节替换 app.asar 内的 disable-features 常量，释放
-    # MediaSessionService 与 HardwareMediaKeyHandling（后者会连坐禁掉
-    # mediaSession 的 MPRIS 注册），浏览器侧 mediaSession 即可用。
-    # 仅此一处出现（已核实），替换为同样长度的不存在 feature 名。
-    local asar="${srcdir}/debroot/opt/${_debdir}/resources/app.asar"
-    LC_ALL=C sed -i 's/HardwareMediaKeyHandling,MediaSessionService/UnusedFeatureHWKeysAAAAA,UnusedFeatureFALLBb/' "$asar"
-    grep -qa 'UnusedFeatureHWKeysAAAAA' "$asar" || { echo 'app.asar 补丁失败'; return 1; }
-    grep -qa 'HardwareMediaKeyHandling' "$asar" && { echo 'app.asar 残留旧字符串'; return 1; }
+    # 等长补丁 1 —— 释放 Chromium mediaSession / MPRIS：application 主进程
+    # 无条件 appendSwitch("disable-features","HardwareMediaKeyHandling,
+    # MediaSessionService")，把浏览器侧 mediaSession 集成（Linux 上即 MPRIS）
+    # 整个禁掉（且实测仅禁用 HardwareMediaKeyHandling 也会连坐禁掉 MPRIS
+    # 注册——Chromium 里二者耦合）。替换为同样长度的无效 feature 名，
+    # feature 本身默认开启，无需再传开关。
+    # 等长补丁 2 —— 修复「WM 关闭消息直接退出」：
+    # 原 close handler 是 t.on("close",()=>{...;Q.get("closeToTray",!0)||e.app.quit()})，
+    # 永不 preventDefault → WM/任务栏的关闭请求直接销毁窗口 →
+    # window-all-closed → app.quit()，closeToTray 设置对 WM 关闭完全无效；
+    # 修复后：before-quit 先置全局 qf=1（真实退出：托盘退出/更新安装/关机流
+    # 程），close 事件在 qf 未置位时 preventDefault + hide（缩到托盘），已置位
+    # 时放行正常销毁退出；window-close IPC（关闭按钮选了"直接退出"的路径）
+    # 改走 e.app.quit()，同样经 qf 放行。全部等长替换，不移动 asar 内偏移。
+    # 上游修复（其 TODO 里本来就挂着「closeToTray 同步」）后可移除本补丁。
+    cat > "${srcdir}/patch-asar.cjs" <<'EOF'
+const fs = require('fs');
+process.noAsar = true; // 绕过 Electron 的 asar-fs 拦截（否则读不到 .asar 本体）
+const file = process.argv[2];
+let d = fs.readFileSync(file);
+const patches = [
+  ['HardwareMediaKeyHandling,MediaSessionService',
+   'UnusedFeatureHWKeysAAAAA,UnusedFeatureFALLBb'],
+  ['e.ipcMain.on("window-close",()=>{t.close(),Hs.getWin()?.close()}),t.on("close",()=>{Hs.getWin()?.close();Q.get("closeToTray",!0)||e.app.quit()})',
+   'e.ipcMain.on("window-close",()=>{e.app.quit()}),t.on("close",r=>{Q.get("closeToTray",1)?global.qf?0:(r.preventDefault(),t.hide()):e.app.quit()})'],
+  ['e.app.on("before-quit",()=>{Ar.disposeAll().catch(()=>{}),Cs.flushCacheIndex().catch(()=>{})})',
+   'e.app.on("before-quit",()=>{global.qf=1,Ar.disposeAll(),Cs.flushCacheIndex()' + ' '.repeat(16) + '})'],
+];
+for (const [o, n] of patches) {
+  const ob = Buffer.from(o), nb = Buffer.from(n);
+  if (ob.length !== nb.length) { console.error('不等长: ' + o.slice(0, 40)); process.exit(1); }
+  const i = d.indexOf(ob);
+  if (i < 0) { console.error('未找到目标（上游结构变了？）: ' + o.slice(0, 60)); process.exit(1); }
+  try { new Function(n) } catch (e) { console.error('替换片段语法错误: ' + e.message); process.exit(1) }
+  d = Buffer.concat([d.slice(0, i), nb, d.slice(i + ob.length)]);
+}
+fs.writeFileSync(file, d);
+console.log('app.asar 补丁完成');
+EOF
+    ELECTRON_RUN_AS_NODE=1 /usr/bin/electron44 "${srcdir}/patch-asar.cjs" \
+        "${srcdir}/debroot/opt/${_debdir}/resources/app.asar" \
+        || { echo 'app.asar 补丁失败'; return 1; }
 
     # better-sqlite3 按 platform+arch 从 prebuilds/ 解析 .node，Arch(glibc,
     # x86_64) 只会用到 linux-x64.node，其余 7 个（win32/darwin/arm64/musl）
