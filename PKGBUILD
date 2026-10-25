@@ -2,12 +2,12 @@
 
 _majorver=17
 _minorver=0
-_securityver=20.1
-_updatever=1
-_zulu_build="68.203"
+_securityver=21
+_updatever=9
+_zulu_build="70.111"
 pkgname=jre${_majorver}-zulu-bin
 pkgver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
-pkgrel=2
+pkgrel=1
 pkgdesc='Azul Zulu OpenJDK full runtime environment, bin version.'
 arch=('aarch64' 'i686' 'x86_64')
 url='https://www.azul.com/downloads/'
@@ -53,15 +53,15 @@ source_x86_64=(
   "freedesktop-java.desktop"
 )
 sha256sums_aarch64=(
-  '12e8a6a0957c38bcb16b0d18187ba60dfe88e9d16dd99e5eefd5929d1b132931'
+  '6ef6ddc863022083d1d33509eff2d5fb580d000cebfdcf5602a6a3c6239d1557'
   '4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb'
 )
 sha256sums_i686=(
-  'acda3a3a691df809f7b14b002b7a0db89f9a5733a537ac303fc88568ccb5a4ed'
+  'f971684957a57f30a162d71732bfaa5bcc097a873d220abaa9aeea1b0793c7e9'
   '4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb'
 )
 sha256sums_x86_64=(
-  'ab4f4e4bee5db1a266ba08134cd93275ca394c025afde58e6cd34f6aee8d6eb9'
+  '95f5ca5ad770f631f94738f328e6da8f085452443aae54f95b8a45be9f6c2d9d'
   '4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb'
 )
 
