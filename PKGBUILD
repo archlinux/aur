@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=linux-cleaner
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Safe, configuration-driven cleaner for caches and temporary files'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('pacman-contrib: paccache-based package-cache actions' 'libnotify: d
 backup=('etc/linux-cleaner/cleaner.conf')
 install='linux-cleaner.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('e6ff2b31831be09531fc3632a4d29e33211398aeb0ac8e756008d01483f6ab068c35bd83a4eba1d86793f56191df952bca8e5cc05e772219f21aa3c89dbdda62')
+b2sums=('3e1aaac1630ed2eebf355b0675f153ff57c305a4bf48070f9884e7f7d4c7e378b8f1d16080cf1e1629269e5520c743590dfba70bce12a66583df681e1ec743e3')
 
 build() {
     cd "$srcdir/cleaner-$pkgver"
@@ -34,7 +34,7 @@ check() {
 package() {
     cd "$srcdir/cleaner-$pkgver"
     # Install license file
-    for name in LICENSE LICENSE.txt COPYING; do
+    for name in LICENSE LICENSE.txt LICENSE.md LICENCE COPYING COPYING.md; do
         [[ -f "$name" ]] && install -Dm644 "$name" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" && break
     done
     # Install Make build artifacts

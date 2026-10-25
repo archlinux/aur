@@ -1,6 +1,6 @@
 pkgbase = linux-cleaner
 	pkgdesc = Safe, configuration-driven cleaner for caches and temporary files
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/eserlxl/cleaner
 	install = linux-cleaner.install
@@ -15,7 +15,7 @@ pkgbase = linux-cleaner
 	optdepends = libnotify: desktop notifications for --notify
 	optdepends = git: skip cleanup targets that hold git-tracked files
 	backup = etc/linux-cleaner/cleaner.conf
-	source = linux-cleaner-1.7.1.tar.gz::https://github.com/eserlxl/cleaner/archive/refs/tags/v1.7.1.tar.gz
-	b2sums = e6ff2b31831be09531fc3632a4d29e33211398aeb0ac8e756008d01483f6ab068c35bd83a4eba1d86793f56191df952bca8e5cc05e772219f21aa3c89dbdda62
+	source = linux-cleaner-1.8.0.tar.gz::https://github.com/eserlxl/cleaner/archive/refs/tags/v1.8.0.tar.gz
+	b2sums = 3e1aaac1630ed2eebf355b0675f153ff57c305a4bf48070f9884e7f7d4c7e378b8f1d16080cf1e1629269e5520c743590dfba70bce12a66583df681e1ec743e3
 
 pkgname = linux-cleaner
