@@ -1,6 +1,6 @@
 pkgbase = hatoba-bin
 	pkgdesc = Open-source desktop SSH client with an AI assistant and end-to-end encrypted sync through your own Cloudflare account
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://hatoba.fog.moe
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = hatoba-bin
 	conflicts = hatoba
 	options = !strip
 	options = !debug
-	source_x86_64 = Hatoba_0.7.1_linux-x64.deb::https://github.com/scarletkc/Hatoba/releases/download/v0.7.1/Hatoba_0.7.1_linux-x64.deb
-	sha256sums_x86_64 = 0d817fb0491c1e9af176c8efc133cdf5b9a63fa4aab5ef7e906d3fcada946fe3
+	source_x86_64 = Hatoba_0.7.2_linux-x64.deb::https://github.com/scarletkc/Hatoba/releases/download/v0.7.2/Hatoba_0.7.2_linux-x64.deb
+	sha256sums_x86_64 = 133f1e89c86669ec4a5633ee50e4be4bca48b3600bb9d0cde7ce20c62ea109f5
 
 pkgname = hatoba-bin
