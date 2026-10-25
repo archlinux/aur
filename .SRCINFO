@@ -1,6 +1,6 @@
 pkgbase = wicked-ide-bin
 	pkgdesc = Code editor that runs AI models on your own machine
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Wicked-IDE
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = wicked-ide-bin
 	optdepends = vulkan-icd-loader: run models on the GPU through the Vulkan engine
 	provides = wicked-ide
 	conflicts = wicked-ide
-	noextract = WickedIDE-0.0.5-linux-x64.tar.gz
+	noextract = WickedIDE-0.0.6-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/Wicked-IDE/releases/download/v0.0.5/WickedIDE-0.0.5-linux-x64.tar.gz
-	sha256sums = 8b43b77fd0c85ed34140a5c859471c6d216a3282b2c328e394954ac647091728
+	source = https://github.com/codingncaffeine/Wicked-IDE/releases/download/v0.0.6/WickedIDE-0.0.6-linux-x64.tar.gz
+	sha256sums = 7c10ce999c572be42e943f60781b4a4b87bc940db057079c0b95608dca47d491
 
 pkgname = wicked-ide-bin
