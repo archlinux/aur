@@ -21,8 +21,9 @@ post_upgrade() {
     else
 	_header_len="CRX_V2_ZIP_OFFSET_PLACEHOLDER" # we're not supporting v2
     fi
-    local _extract_cmd="dd if=\"${_ext_archive}\" bs=1 skip=${_header_len} status=none \
-| bsdtar -xOf - \"${_host_script}\""
+    local _tmp_archive=$(mktemp -u)
+    local _extract_cmd="dd if=\"${_ext_archive}\" bs=1 skip=${_header_len} status=none of=${_tmp_archive} && \
+bsdtar -xOf ${_tmp_archive} \"${_host_script}\""
 
     echo ">>> [SECURITY] ACTION REQUIRED: review host script bundled in extension:"
     echo ">>>   1. Review contents of updated host script (signed does not imply safe!):"
