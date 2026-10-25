@@ -1,0 +1,19 @@
+pkgbase = python-puikit
+	pkgdesc = Capability-based Python UI framework with TUI and GUI backends
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/crftwr/puikit
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pillow
+	depends = python-pygments
+	depends = python-numpy
+	source = puikit-1.15.0.tar.gz::https://github.com/crftwr/puikit/archive/refs/tags/v1.15.0.tar.gz
+	sha256sums = c5e820877918e3b53db306ceb9125baedfed10c85a1d33145ec1cdd801d3625c
+
+pkgname = python-puikit
