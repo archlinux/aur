@@ -5,7 +5,7 @@
 
 pkgname=python-blis
 _pkg="${pkgname#python-}"
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='Fast matrix-multiplication as a self-contained Python library'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python-numpy' 'python-hypothesis')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/cython-blis/releases/download/release-v$pkgver/$_pkg-$pkgver.tar.gz")
-sha256sums=('034d4560ff3cc43e8aa37e188451b0440e3261d989bb8a42ceee865607715ecd')
+sha256sums=('c125acd77ccf0184f476b6a599f9819727e19ed311904ed3281118a3d06082d9')
 
 build() {
 	cd "$_pkg-$pkgver"
