@@ -1,0 +1,175 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# qemu-apple-t8030: run an Apple t8030 (iPhone 11 / A13) guest with the packaged
+# emulator in /opt/qemu-apple-t8030 (based on ChefKissInc/Inferno).
+#
+# Usage: qemu-apple-t8030 [options] [-- extra qemu arguments]
+#
+#   (no options)     boot in a GTK window at 0.65x scale, centred on the primary
+#                    monitor (KDE Plasma/Wayland: needs kdotool + kscreen-doctor)
+#   --headless       no window (-display egl-headless); drive it over QMP
+#   --companion      start your companion VM first (the USB link used by the
+#                    idevice* tools / reverse tethering); see below
+#   --snapshot       pass -snapshot: all disk writes are thrown away on exit
+#   --scale N        GTK scale factor (default 0.65; 0.25..4)
+#   --name NAME      VM name, shown in the window title (default "t8030")
+#   -h, --help       this text
+#
+# Files (DIR = $QEMU_T8030_DIR, else ${XDG_DATA_HOME:-~/.local/share}/qemu-apple-t8030):
+#   DIR/data/          your restored install, laid out as in the official guide
+#                      (disk images, tickets, Restore/...). Nothing is downloaded.
+#   DIR/vm-args.sh     your machine arguments (bash, sourced from DIR/data/; must set
+#                      the MAINARGS array). Example:
+#                      /usr/share/doc/qemu-apple-t8030-git/vm-args.example.sh
+#   DIR/boot-splash.png  optional boot splash picture (see qemu-apple-t8030-set-boot-splash)
+#   DIR/companion.sh   optional, for --companion: starts your companion VM
+#   DIR/logs/          monitor/QMP/serial sockets and the serial log (QEMU_T8030_RUNDIR
+#                      overrides this)
+#
+# Setup guide: https://chefkiss.dev/applehax/inferno/
+#
+# Mouse: left click/drag = finger, middle click = Home (double = app switcher).
+# Keys:  F1 force shutdown | F2 ringer | F3 vol- | F4 vol+ | F5 side/power | F6 Home
+# Never set a passcode, enable Location Services, or use "Erase All Content and
+# Settings" (the last one bricks the install).
+
+set -u
+PREFIX=/opt/qemu-apple-t8030
+Q="${QEMU_T8030_BIN:-$PREFIX/bin/qemu-system-aarch64}"
+DIR="${QEMU_T8030_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/qemu-apple-t8030}"
+RUN="${QEMU_T8030_RUNDIR:-$DIR/logs}"
+VMARGS="${QEMU_T8030_VMARGS:-$DIR/vm-args.sh}"
+SCALE=0.65
+NAME=t8030
+HEADLESS=0
+COMPANION=0
+EXTRA=()
+
+die() {
+  # From a menu launch stderr goes nowhere, so also show a dialog.
+  echo "qemu-apple-t8030: $*" >&2
+  if [ ! -t 2 ]; then
+    if command -v kdialog >/dev/null; then kdialog --title "QEMU t8030" --sorry "$*" 2>/dev/null
+    elif command -v zenity >/dev/null; then zenity --error --title "QEMU t8030" --text "$*" 2>/dev/null
+    elif command -v notify-send >/dev/null; then notify-send "QEMU t8030" "$*"
+    fi
+  fi
+  exit 1
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --headless) HEADLESS=1 ;;
+    --companion) COMPANION=1 ;;
+    --snapshot) EXTRA+=(-snapshot) ;;
+    --scale) SCALE="${2:?--scale needs a value}"; shift ;;
+    --scale=*) SCALE="${1#*=}" ;;
+    --name) NAME="${2:?--name needs a value}"; shift ;;
+    --name=*) NAME="${1#*=}" ;;
+    -h|--help) sed -n '3,35p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    --) shift; EXTRA+=("$@"); break ;;
+    *) die "unknown option: $1 (try --help)" ;;
+  esac
+  shift
+done
+
+[ -x "$Q" ] || die "emulator not found: $Q"
+if [ ! -d "$DIR/data" ] || [ ! -f "$VMARGS" ]; then
+  die "No VM set up yet.
+Expected:
+  $DIR/data/       your restored install (see the official guide:
+                   https://chefkiss.dev/applehax/inferno/ )
+  $VMARGS   your machine arguments; start from
+                   /usr/share/doc/qemu-apple-t8030-git/vm-args.example.sh
+Set QEMU_T8030_DIR to use another folder. This package ships no firmware,
+keys or disk images and does not download any."
+fi
+
+mkdir -p "$RUN" || die "cannot create $RUN"
+
+# Is a VM already using this run dir? (QEMU's image locking also guards the disks.)
+sock_alive() {
+  [ -S "$1" ] && python3 - "$1" <<'EOF' 2>/dev/null
+import socket, sys
+s = socket.socket(socket.AF_UNIX)
+s.settimeout(1)
+s.connect(sys.argv[1])
+EOF
+}
+if sock_alive "$RUN/qmp-main.sock"; then
+  die "A VM is already running from $RUN (its QMP socket answers)."
+fi
+
+if [ $COMPANION = 1 ]; then
+  C="${QEMU_T8030_COMPANION:-$DIR/companion.sh}"
+  [ -x "$C" ] || die "--companion: $C not found or not executable. It should start your
+companion VM (see the official guide) and create the USB socket your vm-args.sh
+points at. This package's emulator is aarch64-only; the companion VM needs an
+x86_64 build of the same QEMU fork (usb-tcp-remote device)."
+  setsid nohup "$C" > "$RUN/companion.out" 2>&1 < /dev/null &
+  # wait (up to 30 s) for the USB link socket if the caller told us where it is
+  if [ -n "${QEMU_T8030_USB_SOCK:-}" ]; then
+    for _ in $(seq 30); do [ -S "$QEMU_T8030_USB_SOCK" ] && break; sleep 1; done
+  else
+    sleep 5
+  fi
+fi
+
+if [ -z "${QEMU_T8030_BOOT_SPLASH:-}" ] && [ -f "$DIR/boot-splash.png" ]; then
+  export QEMU_T8030_BOOT_SPLASH="$DIR/boot-splash.png"
+fi
+
+# vm-args.sh is sourced from inside the data folder, with D = the base folder.
+# shellcheck disable=SC2034  # used by vm-args.sh
+D="$DIR"
+cd "$DIR/data" || die "cannot enter $DIR/data"
+MAINARGS=()
+# shellcheck source=/dev/null
+source "$VMARGS"
+Q="${QEMU_T8030_BIN:-$PREFIX/bin/qemu-system-aarch64}"   # vm-args.sh may not override it
+[ ${#MAINARGS[@]} -gt 0 ] || die "$VMARGS did not set MAINARGS"
+
+if [ $HEADLESS = 1 ]; then
+  DISPLAY_ARGS=(-display egl-headless)
+else
+  DISPLAY_ARGS=(-display "gtk,zoom-to-fit=off,show-cursor=on,scale=$SCALE")
+fi
+
+# Wayland apps can't place their own window: once it shows up, centre it on the
+# primary (priority 1) monitor with kdotool. Best effort, silent on failure.
+place_window() {
+  command -v kdotool >/dev/null || return
+  local w="" geo ox oy ow oh ww wh
+  for _ in $(seq 120); do
+    w=$(kdotool search --name "$NAME" 2>/dev/null | head -1); [ -n "$w" ] && break; sleep 0.5
+  done
+  [ -n "$w" ] || return
+  sleep 0.5
+  geo=$(kscreen-doctor -j 2>/dev/null | python3 -c '
+import json,sys
+o=[o for o in json.load(sys.stdin)["outputs"] if o.get("enabled")]
+o.sort(key=lambda o: o.get("priority") or 99)
+print(o[0]["pos"]["x"], o[0]["pos"]["y"], o[0]["size"]["width"], o[0]["size"]["height"])' 2>/dev/null)
+  [ -n "$geo" ] || return
+  read -r ox oy ow oh <<<"$geo"
+  read -r ww wh < <(kdotool getwindowgeometry "$w" 2>/dev/null | awk '/Geometry/{split($2,a,"x"); print int(a[1]), int(a[2])}')
+  [ -n "${wh:-}" ] || return
+  kdotool windowmove "$w" $((ox + (ow - ww) / 2)) $((oy + (oh - wh) / 2)) >/dev/null 2>&1
+}
+[ $HEADLESS = 0 ] && { place_window & }
+
+rm -f "$RUN/mon-main.sock" "$RUN/qmp-main.sock" "$RUN/serial-main.sock"
+"$Q" -name "$NAME" "${MAINARGS[@]}" "${DISPLAY_ARGS[@]}" \
+  -chardev "socket,id=ser0,path=$RUN/serial-main.sock,server=on,wait=off,logfile=$RUN/serial-main.log" \
+  -serial chardev:ser0 \
+  -monitor "unix:$RUN/mon-main.sock,server,nowait" \
+  -qmp "unix:$RUN/qmp-main.sock,server,nowait" \
+  "${EXTRA[@]}"
+rc=$?
+if [ $COMPANION = 1 ] && [ -S "$RUN/mon-comp.sock" ]; then
+  python3 - "$RUN/mon-comp.sock" <<'EOF' >/dev/null 2>&1
+import socket, sys
+s = socket.socket(socket.AF_UNIX); s.settimeout(2); s.connect(sys.argv[1]); s.sendall(b"quit\n")
+EOF
+fi
+exit $rc

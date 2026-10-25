@@ -1,0 +1,50 @@
+diff --git i/hw/display/apple_displaypipe_v4.c w/hw/display/apple_displaypipe_v4.c
+index 8e77db8bfa..646d7d0aee 100644
+--- i/hw/display/apple_displaypipe_v4.c
++++ w/hw/display/apple_displaypipe_v4.c
+@@ -26,6 +26,7 @@
+ #include "hw/registerfields.h"
+ #include "migration/vmstate.h"
+ #include "qemu/cutils.h"
++#include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "system/dma.h"
+ #include "ui/console.h"
+@@ -749,8 +750,18 @@ static void adp_v4_read_and_draw_boot_splash(AppleDisplayPipeV4State *adp)
+     uint32_t disp_width;
+     uint32_t disp_height;
+ 
+-    path = get_relocated_path(CONFIG_QEMU_ICONDIR
+-                              "/hicolor/512x512/apps/CKQEMUBootSplash@2x.png");
++    /*
++     * QEMU_T8030_BOOT_SPLASH may name a user-supplied 8-bit RGBA PNG that
++     * replaces the installed splash (the install dir is not user-writable).
++     */
++    if (g_getenv("QEMU_T8030_BOOT_SPLASH") != NULL &&
++        g_file_test(g_getenv("QEMU_T8030_BOOT_SPLASH"),
++                    G_FILE_TEST_IS_REGULAR)) {
++        path = g_strdup(g_getenv("QEMU_T8030_BOOT_SPLASH"));
++    } else {
++        path = get_relocated_path(CONFIG_QEMU_ICONDIR
++                                  "/hicolor/512x512/apps/CKQEMUBootSplash@2x.png");
++    }
+     assert_nonnull(path);
+     fp = fopen(path, "rb");
+     if (fp == NULL) {
+@@ -772,6 +783,16 @@ static void adp_v4_read_and_draw_boot_splash(AppleDisplayPipeV4State *adp)
+ 
+     png_read_info(png_ptr, info_ptr);
+ 
++    /* the rows below are read as-is into an a8b8g8r8 buffer */
++    if (png_get_color_type(png_ptr, info_ptr) != PNG_COLOR_TYPE_RGBA ||
++        png_get_bit_depth(png_ptr, info_ptr) != 8 ||
++        png_get_interlace_type(png_ptr, info_ptr) != PNG_INTERLACE_NONE) {
++        warn_report("boot splash is not an 8-bit RGBA PNG, not drawing it");
++        png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
++        fclose(fp);
++        return;
++    }
++
+     ctx = g_new(ADPV4DrawBootSplashContext, 1);
+     ctx->width = png_get_image_width(png_ptr, info_ptr);
+     ctx->height = png_get_image_height(png_ptr, info_ptr);

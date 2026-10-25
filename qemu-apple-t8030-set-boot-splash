@@ -1,0 +1,30 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# qemu-apple-t8030-set-boot-splash IMAGE | --github USER | --reset
+#
+# Sets the picture the emulator draws before the guest OS starts. The picture is
+# fitted onto a 1024x1024 black square (8-bit RGBA, what the emulator expects) and
+# saved as DIR/boot-splash.png (DIR = $QEMU_T8030_DIR, else
+# ${XDG_DATA_HOME:-~/.local/share}/qemu-apple-t8030). qemu-apple-t8030 passes it to
+# the emulator via QEMU_T8030_BOOT_SPLASH. --reset removes it, so the packaged
+# neutral splash is used again. Takes effect on the next boot; no rebuild needed.
+set -e
+DIR="${QEMU_T8030_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/qemu-apple-t8030}"
+OUT="$DIR/boot-splash.png"
+command -v magick >/dev/null || { echo "needs ImageMagick (magick)" >&2; exit 1; }
+W=""
+trap '[ -n "$W" ] && rm -rf "$W"' EXIT
+case "${1:-}" in
+  ""|-h|--help) sed -n '3,10p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+  --reset|--restore) rm -f "$OUT"; echo "boot splash reset to the packaged default"; exit 0 ;;
+  --github)
+    W=$(mktemp -d)
+    curl -fsSL --max-time 30 -o "$W/in.png" "https://github.com/${2:?usage: --github USER}.png?size=1024"
+    IN="$W/in.png" ;;
+  *) IN=$(readlink -f "$1"); [ -f "$IN" ] || { echo "not a file: $1" >&2; exit 1; } ;;
+esac
+mkdir -p "$DIR"
+magick "$IN" -resize 1024x1024 -background black -gravity center -extent 1024x1024 \
+  -alpha remove -alpha on -depth 8 "PNG32:$OUT.tmp"
+mv -f "$OUT.tmp" "$OUT"
+echo "boot splash set: $OUT"

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=QEMU t8030
+GenericName=Apple A13 (t8030) emulator
+Comment=Run your Apple t8030 (iPhone 11) guest in QEMU
+Exec=qemu-apple-t8030
+Icon=qemu-apple-t8030
+Terminal=false
+Categories=Game;Emulator;
+Keywords=iphone;ios;arm;qemu;emulator;t8030;
+StartupNotify=false

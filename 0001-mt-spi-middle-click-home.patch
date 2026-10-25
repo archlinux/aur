@@ -1,0 +1,45 @@
+diff --git i/hw/arm/apple-silicon/mt-spi.c w/hw/arm/apple-silicon/mt-spi.c
+index eb86618998..5d82011153 100644
+--- i/hw/arm/apple-silicon/mt-spi.c
++++ w/hw/arm/apple-silicon/mt-spi.c
+@@ -956,6 +956,24 @@ static void apple_mt_spi_end_timer_tick(void *opaque)
+     s->prev_y = 0;
+ }
+ 
++/*
++ * Middle mouse button = Home button: forwarded as the F6 key (which the
++ * apple-buttons device maps to SMC_HID_BUTTON_MENU), press and release
++ * mirrored, so a double middle-click opens the app switcher like F6 F6.
++ * Sent from a bottom half so we don't re-enter the input layer.
++ */
++static void apple_mt_spi_home_press_bh(void *opaque)
++{
++    qemu_input_event_send_key_qcode(NULL, Q_KEY_CODE_F6, true);
++    qemu_input_event_sync();
++}
++
++static void apple_mt_spi_home_release_bh(void *opaque)
++{
++    qemu_input_event_send_key_qcode(NULL, Q_KEY_CODE_F6, false);
++    qemu_input_event_sync();
++}
++
+ static void apple_mt_spi_mouse_event(void *opaque, int dx, int dy, int dz,
+                                      int buttons_state)
+ {
+@@ -963,6 +981,15 @@ static void apple_mt_spi_mouse_event(void *opaque, int dx, int dy, int dz,
+ 
+     QEMU_LOCK_GUARD(&s->lock);
+ 
++    /* only MOUSE_EVENT_LBUTTON makes/breaks touches below */
++    if ((s->btn_state ^ buttons_state) & MOUSE_EVENT_MBUTTON) {
++        aio_bh_schedule_oneshot(qemu_get_aio_context(),
++                                (buttons_state & MOUSE_EVENT_MBUTTON) ?
++                                    apple_mt_spi_home_press_bh :
++                                    apple_mt_spi_home_release_bh,
++                                NULL);
++    }
++
+     s->prev_x = s->x;
+     s->prev_y = s->y;
+     s->x = qemu_input_scale_axis(dx, INPUT_EVENT_ABS_MIN, INPUT_EVENT_ABS_MAX,
