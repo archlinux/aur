@@ -2,7 +2,7 @@
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=s6
-pkgver=2.15.1.0
+pkgver=2.15.1.1
 pkgrel=1
 pkgdesc='A small suite of programs for UNIX, designed to allow process supervision'
 arch=('x86_64')
@@ -10,19 +10,13 @@ url="https://skarnet.org/software/${pkgname}"
 license=('ISC')
 depends=('skalibs' 'execline')
 options=('!lto')
-source=("${url}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.patch")
-sha256sums=('eab9c46e22b66b16135f9a05ec68a0ea287d9060b84d10defaaa2caad158ab52'
-            '49a2c8cad5a70cfb99d373eb8a7f97ed8e93c818c853d2995c0ed3ce6ff521b5')
-
-prepare() {
-  patch -p0 -i ../${pkgname}.patch
-}
+source=("${url}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('62080839eb5b04d51efd4ef6e7b43e29b5d0576efce9eb319ace32ea90c05931')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin
+  ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --enable-shared --disable-static --disable-allstatic
   make
 }
 

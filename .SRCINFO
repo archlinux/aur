@@ -1,6 +1,6 @@
 pkgbase = s6
 	pkgdesc = A small suite of programs for UNIX, designed to allow process supervision
-	pkgver = 2.15.1.0
+	pkgver = 2.15.1.1
 	pkgrel = 1
 	url = https://skarnet.org/software/s6
 	arch = x86_64
@@ -8,9 +8,7 @@ pkgbase = s6
 	depends = skalibs
 	depends = execline
 	options = !lto
-	source = https://skarnet.org/software/s6/s6-2.15.1.0.tar.gz
-	source = s6.patch
-	sha256sums = eab9c46e22b66b16135f9a05ec68a0ea287d9060b84d10defaaa2caad158ab52
-	sha256sums = 49a2c8cad5a70cfb99d373eb8a7f97ed8e93c818c853d2995c0ed3ce6ff521b5
+	source = https://skarnet.org/software/s6/s6-2.15.1.1.tar.gz
+	sha256sums = 62080839eb5b04d51efd4ef6e7b43e29b5d0576efce9eb319ace32ea90c05931
 
 pkgname = s6
