@@ -1,6 +1,6 @@
 pkgbase = todav-git
 	pkgdesc = Tasks and calendar kept in your Nextcloud
-	pkgver = 1.2.1.r0.gdd753bf
+	pkgver = 1.2.2.r0.gc5ca9ad
 	pkgrel = 1
 	url = https://github.com/AperteDev/todav
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = todav-git
 	depends = gtk4
 	depends = libadwaita>=1:1.8
 	depends = libsecret
+	depends = sqlite
 	depends = glib2
 	depends = libgcc
 	depends = glibc

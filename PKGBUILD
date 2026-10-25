@@ -2,20 +2,20 @@
 
 _pkgbase=todav
 pkgname="$_pkgbase-git"
-pkgver=1.2.1.r0.gdd753bf
+pkgver=1.2.2.r0.gc5ca9ad
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
 url='https://github.com/AperteDev/todav'
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita>=1:1.8' 'libsecret' 'glib2' 'libgcc' 'glibc')
+depends=('gtk4' 'libadwaita>=1:1.8' 'libsecret' 'sqlite' 'glib2' 'libgcc' 'glibc')
 optdepends=('gnome-online-accounts: sign in with a GNOME Online Accounts account'
             'org.freedesktop.secrets: keep the passwords in the system keyring'
             'gnome-shell-extension-todav: tasks, month and agenda in the GNOME top bar')
 makedepends=('git' 'cargo' 'blueprint-compiler' 'gettext')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-# GCC's LTO objects of the bundled C code (SQLite, ring) don't link with rustc's lld.
+# GCC's LTO objects of ring's bundled C code don't link with rustc's lld.
 options=('!lto')
 source=("$_pkgbase::git+$url.git")
 sha256sums=('SKIP')
