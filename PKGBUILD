@@ -2,18 +2,19 @@
 
 _pkgname=xfce4-dev-tools
 pkgname=${_pkgname}-devel
-pkgver=4.21.0
+pkgver=4.21.2
 pkgrel=1
 pkgdesc="Xfce developer tools (Development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-dev-tools/start"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('glib2' 'gtk-doc')
+makedepends=('meson')
 optdepends=('docker: xfce-build helper script')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/xfce4-dev-tools/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('36059f48bbb196645f6514ab5a356e55cdd9bc917edcaf6afd86adfc28d7a358')
+sha256sums=('a43f726a082b589186d9e6ed076101d41249d1e22bbe61448037550190d7f75a')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -22,8 +23,14 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
-    --localstatedir=/var
+    --localstatedir=/var \
+    --enable-maintainer-mode
   make
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  make check
 }
 
 package() {

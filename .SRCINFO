@@ -1,19 +1,20 @@
 pkgbase = xfce4-dev-tools-devel
 	pkgdesc = Xfce developer tools (Development release)
-	pkgver = 4.21.0
+	pkgver = 4.21.2
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-dev-tools/start
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
+	makedepends = meson
 	depends = glib2
 	depends = gtk-doc
 	optdepends = docker: xfce-build helper script
-	provides = xfce4-dev-tools=4.21.0
+	provides = xfce4-dev-tools=4.21.2
 	conflicts = xfce4-dev-tools
-	source = https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.21/xfce4-dev-tools-4.21.0.tar.bz2
-	sha256sums = 36059f48bbb196645f6514ab5a356e55cdd9bc917edcaf6afd86adfc28d7a358
+	source = https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.21/xfce4-dev-tools-4.21.2.tar.bz2
+	sha256sums = a43f726a082b589186d9e6ed076101d41249d1e22bbe61448037550190d7f75a
 
 pkgname = xfce4-dev-tools-devel
