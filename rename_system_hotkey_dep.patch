@@ -1,12 +1,12 @@
-diff -Naur ./superpaper-2.2.0.orig/setup.py ./superpaper-2.2.0/setup.py
---- ./superpaper-2.2.0.orig/setup.py	2022-12-16 22:57:49.982911108 -0500
-+++ ./superpaper-2.2.0/setup.py	2022-12-16 22:58:05.160926679 -0500
-@@ -61,7 +61,7 @@
-             "Pillow>=7.0.0",
-             "screeninfo>=0.6.1",
-             "numpy>=1.18.0",
--            "system_hotkey310>=1.0.5",
-+            "system_hotkey>=1.0.5",
-             "xcffib>=0.8.0",
-             "xpybutil>=0.0.5"
-         ],
+diff -Naur ./superpaper.orig/pyproject.toml ./superpaper/pyproject.toml
+--- ./superpaper.orig/pyproject.toml	2026-10-25 00:32:31.863416194 -0400
++++ ./superpaper/pyproject.toml	2026-10-25 00:32:56.521935795 -0400
+@@ -38,7 +38,7 @@
+     "Pillow>=12.2.0",
+     "screeninfo>=0.8.1",
+     "numpy>=2.5.0",
+-    "system_hotkey310>=1.0.5",
++    "system_hotkey>=1.0.5",
+     "xcffib>=1.12.0 ; sys_platform == 'linux'",
+     "xpybutil>=0.0.6 ; sys_platform == 'linux'",
+     "pywin32 ; sys_platform == 'win32'",

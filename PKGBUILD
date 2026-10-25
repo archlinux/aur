@@ -2,22 +2,23 @@
 
 _pkgname=superpaper
 pkgname=${_pkgname}-git
-pkgver=2.2.1+2+gb068c8e
+pkgver=2.3.2+18+g16076f4
 pkgrel=1
 pkgdesc="Cross-platform multi monitor wallpaper manager"
 arch=('any')
-url="https://github.com/hhannine/Superpaper"
+#url="https://github.com/hhannine/Superpaper"
+url='https://github.com/mauro-lanza/superpaper-next'
 license=('MIT')
-depends=('python-pillow>=7.0' 'python-screeninfo>=0.6.1' 'python-wxpython'
-         'python-system_hotkey>=5' 'python-xpybutil' 'python-numpy'
-         'python-dbus')
+depends=('python-pillow>=12.2.0' 'python-screeninfo>=0.8.1' 'python-wxpython'
+         'python-system_hotkey>=1.0.5' 'python-xpybutil' 'python-numpy'
+         'python-xcffib' 'dbus-python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 provides=("${_pkgname}=${pkgver%%+}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/hhannine/${_pkgname^}"
+source=("${_pkgname}::git+${url}"
         'rename_system_hotkey_dep.patch')
 sha256sums=('SKIP'
-            '02bc7fb70c18c7292ee9cdac9be58e0954cdb03b07032ee9b5c567fe5ec4d5a5')
+            '57fadb4d0da677158916f15859f237c1bba6e52209502495850be9c0f108ffa2')
 
 pkgver() {
   cd "${_pkgname}"
