@@ -4,7 +4,7 @@ pkgname=rune-ide
 _pkgname=rune
 _binaryname=rune
 pkgdesc="Fast, GPU-rendered, keyboard-driven IDE for power users"
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/unstablebuild/rune"
@@ -32,7 +32,6 @@ makedepends=(
     'libglvnd'
 )
 optdepends=(
-    'zsh: bundled shell profile bootstrap'
     'libglvnd: OpenGL and EGL GUI support'
     'libx11: X11 GUI support'
     'libxcursor: X11 cursor support'
@@ -46,7 +45,7 @@ optdepends=(
 conflicts=("${pkgname}-bin")
 
 source=("${pkgname}-src::git+${url}.git#tag=v${pkgver}")
-sha256sums=('21c1429df444c9320c29291b32c4add3cc66aff62730ef3954628a710a1b5c96')
+sha256sums=('d01ce955afba777d5a476318a7ae4e25f4ef95f185f6b0b7f5432de840f68bd4')
 
 prepare() {
     cd "${srcdir}/${pkgname}-src"
@@ -83,13 +82,10 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-src"
 
-    # the binary only picks up share/zdot when it lives at .../rune.app/bin/,
-    # so the upstream bundle layout is kept intact
+    # mirrors the rune.app/bin layout of upstream's Linux release bundle;
+    # the shell rc files are embedded in the binary since 1.3
     local _appdir="/usr/lib/${pkgname}/${_pkgname}.app"
     install -D -m0755 "${_binaryname}" "${pkgdir}${_appdir}/bin/${_binaryname}"
-    for f in .zlogin .zprofile .zshenv .zshrc; do
-        install -D -m0644 "extra/osx/Rune.app/Contents/Resources/zdot/$f" "${pkgdir}${_appdir}/share/zdot/$f"
-    done
 
     install -d "${pkgdir}/usr/bin"
     ln -s "${_appdir}/bin/${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
