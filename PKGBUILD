@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojo-dom58'
-pkgver='3.002'
+pkgver='3.003'
 pkgrel='1'
 pkgdesc="Minimalistic HTML/XML DOM parser with CSS selectors"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/Mojo-DOM58'
 source=("http://search.cpan.org/CPAN/authors/id/D/DB/DBOOK/Mojo-DOM58-$pkgver.tar.gz")
-md5sums=('09d7274dad04769e84f1116234d1b76c')
-sha512sums=('57577366afd2b623b3d2bd50e86e29d632b03ee3ca1c10dda27b55c057170b15970847fde6b34d38591f5f856f8e1165cdc33ec0315a1bc5005b29cc8e382e14')
+md5sums=('f14c442d63533bbc329a1d8818eab95e')
+sha512sums=('df36e0ceb416cc75523e3b28427cea59e2f28bcdf10447bcb50d939e1a035c4cd654930932096ec2e4002582d1eb2a926618941a2e21b1278b8664c312a57a05')
 _distdir="Mojo-DOM58-$pkgver"
 
 build() {
@@ -37,8 +37,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
