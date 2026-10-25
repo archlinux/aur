@@ -1,0 +1,138 @@
+#!/bin/bash
+# iPod touch 1G (N45AP, iPhoneOS 1.0) on devos50's qemu-ios.
+# usage: ipod-touch-qemu [--headless] [--keep-autolock]
+#   --headless       no window (-display none); drive it via the QMP socket
+#                    with ipod-touch-qmp (tap/drag/key/shot/quit)
+#   --keep-autolock  skip the automatic "Auto-Lock -> Never" taps after boot
+# Keys in the window: H = Home button, P = Power button (a SHORT P press puts
+# the device to sleep and it never wakes - upstream issue #19; hold P ~5 s for
+# "slide to power off" instead). The mouse is the touchscreen.
+#
+# System files go in ${XDG_DATA_HOME:-~/.local/share}/qemu-ios-ipod/
+# (from https://github.com/devos50/qemu-ios/releases/tag/n45ap_v1).
+set -u
+PREFIX=/opt/qemu-ios-ipod
+QEMU=$PREFIX/bin/qemu-system-arm
+INPUT="python3 -I $PREFIX/libexec/ipod-input.py"
+F="${XDG_DATA_HOME:-$HOME/.local/share}/qemu-ios-ipod"
+STATE="${XDG_STATE_HOME:-$HOME/.local/state}/qemu-ios-ipod"
+REL=https://github.com/devos50/qemu-ios/releases/download/n45ap_v1
+
+DISPLAY_OPT="-display sdl"; FIX_AUTOLOCK=1
+for a in "$@"; do
+  case $a in
+    --headless) DISPLAY_OPT="-display none" ;;
+    --keep-autolock) FIX_AUTOLOCK=0 ;;
+    -h|--help) sed -n 2,12p "$0"; exit 0 ;;
+    *) echo "unknown option $a" >&2; exit 2 ;;
+  esac
+done
+
+# --- system files (not shipped: they are Apple firmware) -------------------
+missing=()
+for f in bootrom_s5l8900 iboot_204_n45ap.bin nor_n45ap.bin nand_n45ap.zip; do
+  [ -r "$F/$f" ] || missing+=("$f")
+done
+if [ ${#missing[@]} -gt 0 ]; then
+  msg="The iPod touch 1G system files are missing from:
+  $F
+
+Missing: ${missing[*]}
+
+Download all four from the qemu-ios project's n45ap_v1 release
+  https://github.com/devos50/qemu-ios/releases/tag/n45ap_v1
+and put them in that folder, for example:
+
+  mkdir -p \"$F\" && cd \"$F\"
+  curl -LO $REL/bootrom_s5l8900
+  curl -LO $REL/iboot_204_n45ap.bin
+  curl -LO $REL/nor_n45ap.bin
+  curl -LO $REL/nand_n45ap.zip
+  sha256sum -c <<'EOF'
+220027d6f8ea24603f8c5ad5e920ab553d85a9cd809d79c7e6f6f0eefdc2bc95  bootrom_s5l8900
+be6ec3d515b14826612d8a2b588b176b65d9025f1d96adccc470e78a9efa5d45  iboot_204_n45ap.bin
+9f86a537c19c0193e72e52e60d127f4991eca813b037ff833a1ed1ab9c7dad00  nor_n45ap.bin
+32850c2c2756f1a192cd96e225d7319f662a214aee69c3bed06201c46dfa91a2  nand_n45ap.zip
+EOF
+
+Keep nand_n45ap.zip zipped: the launcher unpacks a fresh copy into RAM on every run."
+  echo "$msg" >&2
+  # Started from the menu there is no terminal, so also try a desktop notice.
+  if [ ! -t 2 ] && command -v notify-send >/dev/null 2>&1; then
+    notify-send -a "iPod touch 1G" "iPod touch 1G: system files missing" \
+      "Put bootrom_s5l8900, iboot_204_n45ap.bin, nor_n45ap.bin and nand_n45ap.zip (release n45ap_v1 of github.com/devos50/qemu-ios) in $F. Run ipod-touch-qemu in a terminal for the full instructions." 2>/dev/null
+  fi
+  exit 1
+fi
+
+# SDL here is usually sdl2-compat on SDL3; its X11 backend can hang forever in
+# SDL_CreateWindow, so prefer native Wayland when a Wayland session is running.
+if [ -n "${WAYLAND_DISPLAY:-}" ] && [ -z "${SDL_VIDEODRIVER:-}" ]; then
+  export SDL_VIDEODRIVER=wayland
+fi
+
+RUN=/dev/shm/ipod-touch-1g-$$
+LOG=$STATE/serial-last.log
+QLOG=$STATE/qemu-last.log
+QMP=$RUN/qmp.sock
+mkdir -p "$STATE"
+mkdir -p "$RUN" || { echo "cannot create $RUN" >&2; exit 1; }
+QPID=""; HPID=""
+cleanup() {
+  if [ -n "$QPID" ] && kill "$QPID" 2>/dev/null; then
+    sleep 1; kill -9 "$QPID" 2>/dev/null
+  fi
+  [ -n "$HPID" ] && kill "$HPID" 2>/dev/null
+  rm -rf "$RUN"
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# The NAND is ~133k small page files. On slow disks the emulator stalls on
+# seeks, so every run unpacks a fresh copy into RAM (/dev/shm, ~520 MB).
+# The emulator never persists NAND writes anyway (it writes *_new.page files
+# and never reads them back), so each boot starts from the pristine image.
+unzip -q "$F/nand_n45ap.zip" 'nand/*' -d "$RUN" || { echo "unzip failed" >&2; exit 1; }
+cp "$F/nor_n45ap.bin" "$RUN/nor.bin"
+: > "$LOG"
+
+"$QEMU" -M "iPod-Touch,bootrom=$F/bootrom_s5l8900,iboot=$F/iboot_204_n45ap.bin,nand=$RUN/nand" \
+  -cpu max -m 1G $DISPLAY_OPT -name "iPod touch 1G (iPhoneOS 1.0)" \
+  -serial "file:$LOG" -qmp "unix:$QMP,server,nowait" \
+  -monitor "unix:$RUN/monitor.sock,server,nowait" \
+  -drive "if=pflash,format=raw,file=$RUN/nor.bin" \
+  >"$QLOG" 2>&1 &
+QPID=$!
+echo "qemu pid $QPID  |  serial log: $LOG  |  QMP: $QMP"
+
+# Helper: after SpringBoard is up, set Auto-Lock to Never (otherwise the
+# device auto-sleeps after 1 minute and never wakes), and quit QEMU once the
+# guest has been shut down with "slide to power off".
+(
+  booted=0
+  while kill -0 $QPID 2>/dev/null; do
+    if [ $booted = 0 ] && grep -q "Couldn't get IAP TV out" "$LOG" 2>/dev/null; then
+      booted=1
+      echo "SpringBoard is up"
+      if [ $FIX_AUTOLOCK = 1 ]; then
+        sleep 4
+        $INPUT "$QMP" tap 198 160; sleep 2    # Settings
+        $INPUT "$QMP" tap 150 226; sleep 2    # General
+        $INPUT "$QMP" tap 150 272; sleep 2    # Auto-Lock
+        $INPUT "$QMP" tap 150 316; sleep 1.5  # Never
+        $INPUT "$QMP" key h >/dev/null        # back to the home screen
+        echo "Auto-Lock set to Never"
+      fi
+    fi
+    if grep -q "pmu go stdby" "$LOG" 2>/dev/null; then
+      echo "guest powered off - closing QEMU"; $INPUT "$QMP" quit >/dev/null 2>&1; break
+    fi
+    sleep 1
+  done
+) &
+HPID=$!
+wait $QPID
+rc=$?
+QPID=""
+exit $rc

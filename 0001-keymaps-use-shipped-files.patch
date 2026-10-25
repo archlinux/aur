@@ -1,0 +1,13 @@
+diff --git i/pc-bios/keymaps/meson.build w/pc-bios/keymaps/meson.build
+index 44247a1..75d7e94 100644
+--- i/pc-bios/keymaps/meson.build
++++ w/pc-bios/keymaps/meson.build
+@@ -34,7 +34,7 @@ keymaps = {
+ }
+ 
+ if meson.is_cross_build() or 'CONFIG_XKBCOMMON' not in config_host
+-  native_qemu_keymap = find_program('qemu-keymap', required: false, disabler: true)
++  native_qemu_keymap = find_program('qemu-keymap-disabled-local', required: false, disabler: true)
+ else
+   native_qemu_keymap = qemu_keymap
+ endif

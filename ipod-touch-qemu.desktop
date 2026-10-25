@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=iPod touch 1G (iPhoneOS 1.0)
+GenericName=iPod touch emulator (qemu-ios)
+Comment=iPod touch 1st gen running iPhoneOS 1.0 on qemu-ios: mouse = touch, H = Home, hold P = power off
+Exec=ipod-touch-qemu
+Icon=qemu-ios-ipod
+Terminal=false
+Categories=Game;Emulator;
+Keywords=ipod;iphone;ios;iphoneos;qemu;springboard;emulator;
