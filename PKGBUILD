@@ -3,7 +3,7 @@
 pkgname=bakkuappu-git
 pkgdesc='No BS python based backup script and scheduler.'
 pkgver=r21.583ccb4
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://git.winnerwind.in/WinnerWind/bakkuappu'
 license=(LicenseRef-None)
