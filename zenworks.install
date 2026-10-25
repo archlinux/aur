@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'EOF'
+==> ZENWORKS is installed.
+    Log out and pick ZENWORKS on your login screen, or run `zenworks` from a
+    text console. A login screen set up to run one fixed command (greetd with
+    `--cmd start-hyprland`, for instance) needs that command changed to
+    `zenworks`.
+    The first start asks whether you want ZENWORKS' terminal setup (zsh);
+    Oracle > Default apps > Terminal setup offers it later too.
+    On NVIDIA, install your driver as well (nvidia-open or nvidia, with
+    nvidia-utils).
+EOF
+}
+
+post_upgrade() {
+  echo "==> ZENWORKS updated: log out and back in to start the new version."
+}

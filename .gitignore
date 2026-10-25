@@ -1,0 +1,6 @@
+# makepkg leftovers: only the recipe is pushed
+*
+!PKGBUILD
+!.SRCINFO
+!zenworks.install
+!.gitignore
