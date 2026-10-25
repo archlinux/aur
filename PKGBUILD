@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.10.25_2
+pkgver=2026.10.25_3
 pkgrel=1
 _npmver=${pkgver//_/-}
 pkgdesc='Opinionated coding agent CLI based on pi'
@@ -29,7 +29,7 @@ source_aarch64=(
   "$pkgname-$_npmver-esbuild-arm64::https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-$_esbuild_ver.tgz"
 )
 noextract=("$pkgname-$_npmver.tgz")
-sha256sums=('5058170b9468171a8df9615404560be37b8106cd2a6668486b91c30cfa8c777b'
+sha256sums=('c73133b30cc28e60ac2ba7739fa0d381a033a829669b8d5b7b46097b4577a976'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
 sha256sums_x86_64=('9573bb2233aab0f9ea7647d5cca9726113cc1768de61d66b17267f4db84488f6')
 sha256sums_aarch64=('a96dbfa41d3ef5dbd1ef22b1c10d5187be9267e86093a870f06402a7ec931596')
