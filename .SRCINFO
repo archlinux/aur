@@ -1,0 +1,23 @@
+pkgbase = codeg-server-bin
+	pkgdesc = Standalone server of Codeg, a collaborative multi-agent AI coding workspace (prebuilt binary)
+	pkgver = 0.40.0
+	pkgrel = 1
+	url = https://github.com/xintaofei/codeg
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = xz
+	provides = codeg-server
+	conflicts = codeg-server
+	options = !strip
+	source = LICENSE-0.40.0::https://raw.githubusercontent.com/xintaofei/codeg/v0.40.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = codeg-server-linux-x64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v0.40.0/codeg-server-linux-x64.tar.gz
+	sha256sums_x86_64 = 06507d265f356e641694421f37eaafca64afd1f3e0c3b43f71345d71ff3eff01
+	source_aarch64 = codeg-server-linux-arm64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v0.40.0/codeg-server-linux-arm64.tar.gz
+	sha256sums_aarch64 = f0d002001fb0ef8b1d2220c9594947f6e408077a34e2381fca8ce8966ad99ba6
+
+pkgname = codeg-server-bin
