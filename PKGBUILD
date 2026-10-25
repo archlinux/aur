@@ -11,7 +11,7 @@ pkgname=pi-hole-ftl-bin
 _pkgname=pi-hole-ftl
 _servicename=pihole-FTL
 pkgver=6.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -51,7 +51,7 @@ source=("${pkgname}-${CARCH}-v${pkgver}"::"https://github.com/pi-hole/FTL/releas
 sha256sums+=('4c0aa7f0a331d0497122246c74d97fb3501b1d3c9aed05fcb1957650a33f13ca'
              '0feb4597a4afd9054553505d305b0feb7e1f6e1705b092561648ff37d0a2893c'
              'dd1d2a341e774d4e549373ae75604031b9af0ee44debcd71a89259d9110d2a77'
-             '0998da040d038ddbad129ba8e1ea74741bc912813407b579cab1b3b3f206e721')
+             '4ed1d47094a0cb7e90aa06a2b9214ee8a511674b322525682cf2679c81b93169')
 
 package() {
   cd "${srcdir}"

@@ -20,9 +20,12 @@ User=pihole
 PermissionsStartOnly=true
 AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN CAP_SYS_NICE CAP_IPC_LOCK CAP_CHOWN CAP_SYS_TIME
 
-ExecStartPre=/usr/bin/chown -R pihole:pihole /etc/pihole
-ExecStartPre=-/usr/bin/chown root:root /etc/pihole/logrotate
-ExecStartPre=-/usr/bin/sh -c '/usr/bin/find /etc/pihole -type d -exec chmod 0755 {} \\;'
+# Pre-start steps run as root ("+"); none of them follows symlinks the pihole user could plant
+# (no PermissionsStartOnly, which is deprecated; no chown of /etc/pihole/logrotate, which Arch does not use).
+# config_backups holds old configs with the password hash, so it stays 0750.
+ExecStartPre=+/usr/bin/chown -RhP pihole:pihole /etc/pihole
+ExecStartPre=+/usr/bin/find /etc/pihole -type d ! -path /etc/pihole/config_backups -exec chmod 0755 {} +
+ExecStartPre=-+/usr/bin/chmod 0750 /etc/pihole/config_backups
 
 ExecStart=/usr/bin/pihole-FTL -f
 Restart=on-failure
