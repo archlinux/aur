@@ -1,6 +1,6 @@
 pkgbase = swiftify-git
 	pkgdesc = A Spotify player for Wayland, in Material 3 after end4 (git master)
-	pkgver = 0.18.0.r2.g81ecfe8
+	pkgver = 0.21.0.r0.g6076b1f
 	pkgrel = 1
 	url = https://github.com/swiftify-org/swiftify
 	arch = x86_64
