@@ -1,6 +1,6 @@
 pkgbase = flaccy-bin
 	pkgdesc = Lossless music player with gapless playback and Last.fm scrobbling (GTK4/libadwaita)
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://github.com/guitaripod/flaccy
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = flaccy-bin
 	conflicts = flaccy
 	options = !strip
 	options = !debug
-	source = https://github.com/guitaripod/flaccy/releases/download/linux-v1.22.0/flaccy-linux-x86_64.tar.gz
-	sha256sums = 9881399301f79cabd7c278609fc4ff211586a235e0eca801b7a45244821d33e5
+	source = https://github.com/guitaripod/flaccy/releases/download/linux-v1.23.0/flaccy-linux-x86_64.tar.gz
+	sha256sums = 8997b9082de5e91c12360bd0d746209dba4bf08556deb1d17ad0e9b33d3c37d9
 
 pkgname = flaccy-bin
