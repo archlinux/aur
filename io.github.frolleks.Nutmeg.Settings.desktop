@@ -8,3 +8,4 @@ Icon=nutmeg
 Terminal=false
 Categories=Game;
 StartupNotify=true
+PrefersNonDefaultGPU=true

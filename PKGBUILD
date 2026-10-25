@@ -1,7 +1,7 @@
 # Maintainer: AntiApple4life <antiapple at antiapple dot net>
 
 pkgname='nutmeg-git'
-pkgver=r29.a687dfa
+pkgver=r36.55f1be1
 pkgrel=1
 pkgdesc='Play macOS Roblox on Linux.'
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=('rosemary: System-level rosemary runner')
 provides=(nutmeg)
 conflicts=(nutmeg)
 sha256sums=('SKIP'
-            'd019f88a41f6e138197b15cd88e8971c7960d973913cff0682458d4bcfa509ef'
-            '4446aa16166639754476effa6e956e48e449dfbf26bb09fe0ddda9e7960483a8'
+            '6d2e56eb294a6aae43e78642965558dd7cf6e8cbd002b67cb466699549227387'
+            '7e5377d897aeb8871703aec36433dee26f6c4b7d0a30795f798f6c6298326b9c'
             '08b7ed946c9aa02f4172f8156d150ff195cced82fc52bd34f0c8f331a07bfb42'
             '9898bd2dbc99a3d8ca2512af9094daa84878c7d42feedad49818de413ede46a9')
 source=('git+https://github.com/frolleks/nutmeg.git'

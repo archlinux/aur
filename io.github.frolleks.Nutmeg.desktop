@@ -9,6 +9,7 @@ Terminal=false
 Categories=Game;
 MimeType=x-scheme-handler/roblox-player;x-scheme-handler/roblox;
 StartupNotify=true
+PrefersNonDefaultGPU=true
 Actions=open-settings;
 
 [Desktop Action open-settings]
