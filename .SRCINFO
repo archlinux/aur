@@ -1,0 +1,20 @@
+pkgbase = bakkuappu-git
+	pkgdesc = No BS python based backup script and scheduler.
+	pkgver = r21.583ccb4
+	pkgrel = 1
+	url = https://git.winnerwind.in/WinnerWind/bakkuappu
+	arch = any
+	license = LicenseRef-None
+	makedepends = git
+	depends = python
+	depends = python-yaml
+	depends = rclone
+	depends = tar
+	provides = bakkuappu
+	conflicts = bakkuappu
+	backup = etc/bakkuappu.yaml
+	source = git+https://git.winnerwind.in/WinnerWind/bakkuappu.git
+	sha256sums = SKIP
+
+pkgname = bakkuappu-git
+
