@@ -1,0 +1,12 @@
+# Build artifacts
+*.pkg.tar.zst
+src/
+pkg/
+testing/
+__pycache__/
+*.log
+*.tmp
+*.tar.gz
+
+# Local testing and scratch directories
+scratch/

@@ -1,0 +1,23 @@
+# Per-Application P-State Profile Drop-In
+# Place custom application overrides in this directory (/etc/nouveau-dynclockd.d/*.conf)
+# Format:
+# [apps]
+# binary_name = <03|07|0a|0f|10>
+
+[apps]
+# Force full 3D performance (P-State 0f) for games and emulators
+steam = 0f
+proton = 0f
+wine64-preloader = 0f
+wine-preloader = 0f
+wineserver = 0f
+glmark2 = 0f
+
+# Target standard 2D / video decoding clocks (P-State 07) for media players
+mpv = 07
+vlc = 07
+kodi.bin = 07
+bino = 07
+
+# Example OC profile (P-State 10: 700 MHz core / 900 MHz DDR3)
+# blender = 10
