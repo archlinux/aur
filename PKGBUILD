@@ -2,7 +2,7 @@
 
 pkgname=vimls
 _pkgname="${pkgname}-go"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Vim script language server written in go.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=(go)
 # options=(!buildflags)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e72fea5d4eaec82c4da15915a3924a20f8a6fb4a9e5e3bdd409cc158e43bf8c9')
+sha256sums=('ff4e9de56456b5802081153b32816e1c9c7697f37e74730d7972dab4222c605e')
 privides=("${pkgname}")
 conflicts=("${pkgname}")
 
