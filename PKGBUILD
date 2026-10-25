@@ -8,7 +8,7 @@
 # Contributor: Jan-Tarek Butt <tarek at ring0 dot de>
 
 pkgname=bootstrap-studio
-pkgver=8.0.1
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
@@ -23,7 +23,7 @@ depends=(
 
 source=("https://releases.bootstrapstudio.io/${pkgver}/Bootstrap%20Studio.AppImage"
         "bstudio.desktop")
-b2sums=('c7dd0e6493fb6317cf4f6da7f2bd83a0e13de4de44a9f8a2455521de07240a8b86512a6ccfbbc0799ff17c09753502b16a9aaefc34ecefee91874775e448a814'
+b2sums=('f3352e998419339159a5f0a127e33f4945de523b01c1531a6cebfbeae0085453508a830076c849e9d1da4a39e35e64a479c7a8f514fdffc8e50f22780cced742'
         '6588d6c99396a05eafa74ca0e4d0c1113ff927f0fc6afc6cf549bf251b1f03a742d0a39d5e1b8bffd0052b49196357daafef371c1ebd49efc16ef353ab3d9daa')
 prepare() {
     # Extract AppImage
@@ -61,6 +61,6 @@ EOF
     # Copy icons
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{128x128,192x192,256x256,512x512}"/apps/"
     for i in 128x128 192x192 256x256 512x512; do
-        cp -Lr "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/bstudio.png" "${pkgdir}/usr/share/icons/hicolor/${i}/apps/"
+        cp -Lr "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/bstudio.png" "${pkgdir}/usr/share/icons/hicolor/${i}/apps/"
     done
 }
