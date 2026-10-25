@@ -1,7 +1,7 @@
 # Maintainer: Izu <ccatdev@proton.me>
 
 pkgname=concord
-pkgver=2.5.12
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="A feature-rich TUI client for Discord"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=(glibc libgcc libstdc++ alsa-lib libpipewire libva)
 optdepends=('mpv: video playback support')
 makedepends=(cargo clang cmake nasm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6df8da04e80a97d222febf35a585756673251b58f464e520ccc8edfb4da85fc5')
+sha256sums=('473059af85ca8c7d2433ebd2a024951a8159c6109399fecaad238deaf2fd717a')
 options=('!lto')
 
 prepare() {
