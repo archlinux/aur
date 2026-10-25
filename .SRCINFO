@@ -1,17 +1,17 @@
 pkgbase = surge.sh
 	pkgdesc = Publish web apps to a CDN with a single command and no setup required.
-	pkgver = 0.46.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://surge.sh/
 	arch = any
 	license = ISC
 	makedepends = npm
 	depends = nodejs
-	noextract = surge-0.46.0.tgz
+	noextract = surge-0.48.0.tgz
 	options = !debug
-	source = surge-0.46.0.tgz::https://registry.npmjs.org/surge/-/surge-0.46.0.tgz
+	source = surge-0.48.0.tgz::https://registry.npmjs.org/surge/-/surge-0.48.0.tgz
 	source = LICENSE
-	sha256sums = b5800a3c00e28afd364122786c13d9555e9af1e6eeaa31d62ecfd1486e95e804
+	sha256sums = d79c8d2069f7d776ce69597d231519645e4bbe2ef68a1377ea8fb56aead6f5ec
 	sha256sums = 02d2eebbd299491b3cc3c6c9186bf2fb325eabc712cfc42e3ae64d99e798cbc9
 
 pkgname = surge.sh
