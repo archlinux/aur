@@ -1,18 +1,13 @@
 # Maintainer: Benjamin Valdez <b.valdez.0509+aur<at>gmail.com>
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
-pkgname=inputactions-kwin
+pkgbase=inputactions-kwin
+pkgname=(inputactions-kwin inputactions-kwin-alpm-hook)
 pkgver=0.9.2.1
 pkgrel=1
-pkgdesc="Bind keyboard, mouse, touchpad and touchscreen actions to system actions"
 arch=('x86_64')
-url="https://inputactions.org"
-license=('GPL-3.0-or-later')
-install=$pkgname.install
-backup=("etc/$pkgname/reminder.conf")
 depends=(
   'yaml-cpp'
   'libyaml-cpp.so'
-  'bash'
   'libgcc'
   'libgcc_s.so'
   'libstdc++'
@@ -27,32 +22,32 @@ depends=(
   'ki18n'
   'inputactions-ctl'
 )
-optdepends=('libnotify: to send a reminder when this package needs to be rebuild')
 checkdepends=('gtest' 'cmake')
 makedepends=('cmake' 'pkgconf' 'extra-cmake-modules' 'vulkan-headers')
-provides=('inputactions')
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/InputActions/kwin/releases/download/v$pkgver/source.tar.gz"
+  "$pkgbase-$pkgver.tar.gz::https://github.com/InputActions/kwin/releases/download/v$pkgver/source.tar.gz"
   "send-rebuild-reminder"
   "reminder.conf"
   "rebuild-reminder.hook"
+  "LICENSE"
 )
 sha256sums=('e489d64a239570f22b29fab3c3fbbba478816b3a1cf0a8f97e0f570bd97f118e'
             'c0338be975d092e5590fcbabd16805828a6d238b78f1a04047c3317e84eb80d4'
             '6e6e8973160ffd1f02a41549ec1f570c32ec8c9b4ae08f9c0862d0e33aa65636'
-            '72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13')
+            '72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13'
+            '7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3')
 
 prepare() {
   sed \
     --in-place \
     -e "7,/###/{
-      s/declare -r pkgname=.*/declare -r pkgname=$pkgname/
+      s/declare -r pkgname=.*/declare -r pkgname=$pkgbase/
       s/declare -r pkgver=.*/declare -r pkgver=$pkgver/
       s/declare -r pkgrel=.*/declare -r pkgrel=$pkgrel/
     }" \
     "$srcdir/send-rebuild-reminder"
 
-  sed --in-place -e "s/\$pkgname/$pkgname/" "$srcdir/rebuild-reminder.hook"
+  sed --in-place -e "s/\$pkgname/$pkgbase/" "$srcdir/rebuild-reminder.hook"
 }
 
 build() {
@@ -78,9 +73,26 @@ check() {
   ctest "${ctest_flags[@]}"
 }
 
-package() {
+package_inputactions-kwin() {
+  pkgdesc="Bind keyboard, mouse, touchpad and touchscreen actions to system actions"
+  url="https://inputactions.org"
+  license=('GPL-3.0-or-later')
+  install=$pkgbase.install
+  optdepends=('inputactions-kwin-alpm-hook: to send a reminder when this package needs to be rebuild')
+  provides=('inputactions')
+
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm 644 "$srcdir/rebuild-reminder.hook" "$pkgdir/usr/share/libalpm/hooks/$pkgname-rebuild-reminder.hook"
+}
+
+package_inputactions-kwin-alpm-hook() {
+  pkgdesc="Send a configurable reminder to rebuild inputactions-kwin (unofficial)"
+  arch=('any')
+  license=('0BSD')
+  depends=('libnotify' 'bash')
+  backup=("etc/$pkgbase/reminder.conf")
+
+  install -Dm 644 "$srcdir/rebuild-reminder.hook" "$pkgdir/usr/share/libalpm/hooks/$pkgbase-rebuild-reminder.hook"
   install -Dm 755 "$srcdir/send-rebuild-reminder" -t "$pkgdir/usr/share/libalpm/scripts/"
-  install -Dm 644 "$srcdir/reminder.conf" -t "$pkgdir/etc/$pkgname"
+  install -Dm 644 "$srcdir/reminder.conf" -t "$pkgdir/etc/$pkgbase"
+  install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/inputactions-kwin-alpm-hook/0BSD.txt"
 }
