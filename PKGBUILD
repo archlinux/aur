@@ -4,7 +4,7 @@
 # the Arch nonfree packaging guidelines the -bin suffix must not be used.
 # See docs/aur-packaging-rules.md in the source repository.
 pkgname=photon-studio
-pkgver=0.1.60
+pkgver=0.1.61
 pkgrel=1
 pkgdesc='Offline image editor with Photoshop-equivalent capabilities and native PSD support'
 arch=('x86_64')
@@ -53,7 +53,7 @@ source=(
   'photon-studio.png'
 )
 sha256sums=(
-  '8a77f38e6db5a7c45f7c6436a6eed009b1cc324ec2f2dfdee0c019dde60edfba'
+  'cf943f9581423fa2092301f824751f67002018a725c18649779bbf1c320c9422'
   '29ec994ac0ffd028dbc0a86e4a1df1d25dc0de8988458cb0f579a1330ffd5f5d'
   '3dbdf2ebbc5979699219a3d332245a19ab0409f21185a886efd92f8bcdc65969'
   'd49bb3c106257c1f75995fa793737113dc87418be5bec19388e6a523ffaafc18'
