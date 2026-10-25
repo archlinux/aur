@@ -1,0 +1,12 @@
+# Build directories
+src/
+pkg/
+
+# Downloaded sources and built packages
+*.deb
+*.pkg.tar*
+*.log
+
+# Local helper scripts
+update.sh
+publish-aur.sh
