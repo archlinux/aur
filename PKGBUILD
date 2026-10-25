@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=kero-bin
-pkgver=2.1.18
+pkgver=2.1.19
 pkgrel=1
 pkgdesc="Cross-platform native terminal app optimized for agents"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('kero')
 options=('!strip' '!debug')
 source_x86_64=("kero_${pkgver}_amd64.deb::https://github.com/egoist/kero/releases/download/v${pkgver}/kero_${pkgver}_amd64.deb")
 source_aarch64=("kero_${pkgver}_arm64.deb::https://github.com/egoist/kero/releases/download/v${pkgver}/kero_${pkgver}_arm64.deb")
-sha256sums_x86_64=('caf4e191c1a56e4e79b32d4816c05df6821fb32e4201d4b80ea142f8ef37b87b')
-sha256sums_aarch64=('7c5c45b2d3209927da8b9cb49a4a40e719c7db6e5625dc61f9fb74aad96a2ff3')
+sha256sums_x86_64=('119d426c72006ac80325a16d6aed50331910cad08384b993a1aa5428b3f15ab1')
+sha256sums_aarch64=('0a32f5b3210ac03218477d93e5b6340b9e1c6368a640808f8fe9e0f7551029bb')
 
 package() {
     local _deb_x86_64="kero_${pkgver}_amd64.deb"
