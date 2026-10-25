@@ -1,19 +1,19 @@
 # Maintainer: he3als <he3als@users.noreply.github.com>
 pkgname=discord-canary-prerelease-patched-electron-bin
-pkgver=20261024.202623
-pkgrel=2
+pkgver=20261025.223908
+pkgrel=1
 pkgdesc='Discord Canary with patched Electron and Linux fixes (AVX2 required)'
 arch=('x86_64')
 url='https://github.com/discord-patched-electron/discord-patched-electron'
-license=('LicenseRef-Discord' 'MIT' 'BSD-3-Clause')
-depends=('glibc>=2.38' gcc-libs alsa-lib gtk3 libcups libxss libxtst nss libdrm mesa libpulse python bash coreutils pipewire pipewire-audio zenity)
+license=(MIT BSD-3-Clause AGPL-3.0-only)
+depends=('glibc>=2.38' gcc-libs alsa-lib gtk3 libcups libxss libxtst nss libdrm mesa libpulse 'python>=3.11' ca-certificates gnupg brotli bash coreutils pipewire pipewire-audio zenity)
 optdepends=('xdg-desktop-portal: desktop screen selection' 'wireplumber: PipeWire session management' 'kdotool: KDE Plasma window labels')
 options=('!strip' '!debug')
 provides=('discord-canary')
 conflicts=(discord-canary discord-canary-electron-bin)
 install=discord.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/canary-1.0.2365-0127ebd36508aff4/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz")
-sha256sums=('cf14ff7e72caaceeea0d066d3cc35b97bab10794e1f1d4bc5a54842accf151b1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261025.223908.0-canary.041bb4c70d3f760e/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz")
+sha256sums=('494e686fab593a465f537a2f09117e53f8ff9eb387a16b6481dca3130ba16b29')
 
 package() {
   install -dm755 "$pkgdir/opt" "$pkgdir/usr/bin"
