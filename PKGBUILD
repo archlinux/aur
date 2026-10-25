@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=tributary-bin
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A high-performance, Rhythmbox-style media manager (Pre-compiled Binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=('tributary')
 conflicts=('tributary')
 # Use the official Arch pre-compiled package as the source
 source=("${pkgname}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/tributary-x86_64.pkg.tar.zst")
-sha256sums=('0c5f0c1d0e201939cb7a69314db9af2e6502916d66794fdbe1dfe54faef80bce')
+sha256sums=('4ec5d3a61415967522d83795295d2d2675d389c8b765abbdbb979b2b88d738c0')
 
 package() {
   # The source is a .pkg.tar.zst which makepkg extracts to $srcdir.
