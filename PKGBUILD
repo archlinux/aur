@@ -1,6 +1,6 @@
 # Maintainer: Uthopik <josearrillaga@ik.me>
 pkgname=jopdf
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Free & Fast PDF Editor for Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('hicolor-icon-theme' 'nss' 'libxss' 'gtk3' 'libxtst' 'alsa-lib' 'java-r
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.deb::https://cdn.jopdf.com/download/jopdf/jopdf-linux-amd64_setup.deb")
-sha256sums=('1bdf771893943a1e96b1b5dcc62af530aaec5059aa09fa80e01b6e03228cb327')
+sha256sums=('4377debf28567830da25663c6483498a03a126a5bb7ba009b1e8498e26ba1192')
 
 package() {
     # 1. Extracción del contenido

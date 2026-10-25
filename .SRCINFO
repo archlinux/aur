@@ -1,6 +1,6 @@
 pkgbase = jopdf
 	pkgdesc = Free & Fast PDF Editor for Linux
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://jopdf.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = jopdf
 	depends = java-runtime
 	depends = qt5-base
 	options = !strip
-	source = jopdf-2.2.0.deb::https://cdn.jopdf.com/download/jopdf/jopdf-linux-amd64_setup.deb
-	sha256sums = 1bdf771893943a1e96b1b5dcc62af530aaec5059aa09fa80e01b6e03228cb327
+	source = jopdf-2.4.0.deb::https://cdn.jopdf.com/download/jopdf/jopdf-linux-amd64_setup.deb
+	sha256sums = 4377debf28567830da25663c6483498a03a126a5bb7ba009b1e8498e26ba1192
 
 pkgname = jopdf
