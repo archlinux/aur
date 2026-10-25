@@ -1,0 +1,25 @@
+pkgbase = oddity-bin
+	pkgdesc = Native Linux launcher for Neverness To Everness
+	pkgver = 0.1.0alpha.2
+	pkgrel = 1
+	url = https://github.com/LaT-SKY/Oddity
+	install = oddity-bin.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = librsvg
+	depends = libsecret
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xdg-utils
+	optdepends = umu-launcher: run the game through Proton
+	provides = oddity
+	conflicts = oddity
+	options = !strip
+	options = !debug
+	source_x86_64 = oddity-0.1.0-alpha.2-linux-x86_64.tar.gz::https://github.com/LaT-SKY/Oddity/releases/download/oddity-v0.1.0-alpha.2/oddity-0.1.0-alpha.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4d7a7dc942c192fb933b2b4734893d696ce6425bcdd4f2dfc687f09b9117686f
+
+pkgname = oddity-bin
