@@ -1,0 +1,4 @@
+[open-cad-studio-appimage]
+source = "git"
+git = "https://github.com/HakanSeven12/OpenCADStudio.git"
+prefix = "v"
