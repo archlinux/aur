@@ -1,7 +1,7 @@
-# Maintainer: Arthurmeade12 <s728c3ilp at relay dot firefox dot com>
+# Maintainer: Arthurmeade12 <ajmeade at proton dot me>
 # Former Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Former Contributor: ml <>
-# Last edited September 4th 2026 @Arthurmeade12
+# Last edited October 24th 2026 @Arthurmeade12
 
 pkgname=alda
 pkgver=2.4.7
