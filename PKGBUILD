@@ -5,7 +5,7 @@ _gitname=atmosphera
 pkgname=atmosphera-git
 _release_ver=0.6.0.r0
 pkgver=0.6.0.r0.g0000000
-pkgrel=11
+pkgrel=12
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=(
   'quickshell'
-  'qt6-dbusqml>=1.0.0'
+  'qt6-dbusqml>=1.1.0'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
@@ -66,7 +66,7 @@ package() {
   # Bake the real package version into the installed tree (About panel reads it)
   echo "$pkgver" > "$pkgdir/etc/xdg/quickshell/atmosphera/VERSION"
   # Exclude dev tooling and temp files from the installed tree
-  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev"
+  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev" "$pkgdir/etc/xdg/quickshell/atmosphera/Scripts/dev"
 
   # Bundled per-process lock screen (the shell spawns it as
   # `qs -c atmosphera-lockscreen`): sibling config whose symlinks into the
