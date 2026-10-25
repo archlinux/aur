@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ optdepends=('zenity: file dialogs'
             'onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('75209c1dfd2d19b1b4151baf6529884982a27563121f7acf0ea8ab4d0720c129')
+sha256sums=('68127d58cef381b260ebf1a1146ddc55caaa3cdce85cb31bc273f0b058fcbee1')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
