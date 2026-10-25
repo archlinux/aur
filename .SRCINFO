@@ -1,6 +1,6 @@
 pkgbase = openaside-bin
 	pkgdesc = OpenAside - AI-powered browser built on patched Chromium
-	pkgver = 0.0.27
+	pkgver = 0.0.28
 	pkgrel = 1
 	url = https://github.com/minpeter/openaside
 	arch = x86_64
@@ -34,11 +34,16 @@ pkgbase = openaside-bin
 	optdepends = pciutils: GPU detection for hardware acceleration
 	optdepends = qt5-base: Qt 5 UI integration
 	optdepends = qt6-base: Qt 6 UI integration
+	optdepends = python: run the Context Awareness capture helper
+	optdepends = python-gobject: observe other apps for Context Awareness (AT-SPI bindings)
+	optdepends = tesseract: on-device screen text (OCR) for Context Awareness
+	optdepends = tesseract-data-eng: English OCR data for Context Awareness
+	optdepends = grim: Wayland screenshots for Context Awareness screen text
 	provides = openaside
 	conflicts = openaside
 	options = !strip
 	options = !debug
-	source = openaside-bin-0.0.27.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@0.0.27/openaside-0.0.27-linux-x64.tar.gz
-	sha256sums = 1b54da15f3aeec17a0fcf1e11e4efbc7e99f96ee31523ebca67c4de39c413701
+	source = openaside-bin-0.0.28.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@0.0.28/openaside-0.0.28-linux-x64.tar.gz
+	sha256sums = 5604af54eca6ca10c1a544891e7ae6f349ceda8da13c2f851fc1780694019576
 
 pkgname = openaside-bin
