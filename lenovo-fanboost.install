@@ -1,0 +1,9 @@
+# The dkms package's pacman hooks build/remove the module from /usr/src automatically.
+post_install() {
+  echo "Enable with: sudo lenovo-fanboost on    (status: lenovo-fanboost)"
+}
+
+pre_remove() {
+  systemctl stop lenovo-fanboost.service 2>/dev/null || true
+  modprobe -r lenovo_fanboost 2>/dev/null || true
+}
