@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=figcraft-bin
 _pkgname=figcraft
-pkgver=0.10.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Open-source interface design and prototyping app, Figma alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('b3e2ffdab54d203a3f6ed1a0018b8325300bd22dbed6a02f0af6757f3eb669da')
-sha256sums_aarch64=('fd5d55f7999d95bf8dd5677559dde8eafead8021a397eed9eacdeb9a5abe1df9')
+sha256sums_x86_64=('69d21d0d3717738f9da79d04bc86c152e9b8f919e6395ae97b1cb56b36cde2b9')
+sha256sums_aarch64=('b19df731c1746f3dd1631209b68c8819f60e9cda927958f5b9a5c872f98b133a')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
