@@ -5,7 +5,7 @@
 
 _pkgname='desktop-plus'
 pkgname="${_pkgname}-bin"
-pkgver=3.6.8.0
+pkgver=3.6.8.1
 pkgrel=1
 pkgdesc="GitHub Desktop fork with extra features and improvements (binary release)."
 arch=('x86_64' 'aarch64')
@@ -38,8 +38,8 @@ sha256sums=(
     'a49191aebdf7c21d7605778e94d1490fcde9af0cb695aaf0d7f30e1214fe0c6c'
     'ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27'
 )
-sha256sums_x86_64=('3b7084f939467ec71b416b4b4474f2e48b3e8c4208a71fb20ba3adfeafffa84a')
-sha256sums_aarch64=('438f2ef805379328ac10c07ded86d974364fcef4917e73c1a609fe1fbd4168bf')
+sha256sums_x86_64=('9cd7b1919bbf3046d438f655333364132b35e5c583881fe0679db6ce3f109b68')
+sha256sums_aarch64=('d78aa0ff776ad55e1bee9c3e5996fa1f83950ee200fa894c82c968ec31b99828')
 package() {
     INSTALL_DIR="$pkgdir/opt/${_pkgname}"
 
