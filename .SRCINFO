@@ -1,0 +1,20 @@
+pkgbase = python-fastapi-pagination
+	pkgdesc = Pagination support for FastAPI
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/uriyyo/fastapi-pagination
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-fastapi
+	depends = python-pydantic
+	depends = python-typing_extensions
+	optdepends = python-sqlalchemy: SQLAlchemy extension
+	optdepends = python-sqlakeyset: keyset pagination for the SQLAlchemy extension
+	source = fastapi_pagination-0.16.1.tar.gz::https://files.pythonhosted.org/packages/source/f/fastapi-pagination/fastapi_pagination-0.16.1.tar.gz
+	sha256sums = c43a4286f7dd4c25501da7f5ae84a89172d3c5f3c4a93b4bc8c6639ed754d11d
+
+pkgname = python-fastapi-pagination
