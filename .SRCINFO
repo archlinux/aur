@@ -1,7 +1,7 @@
 pkgbase = zenworks
 	pkgdesc = A desktop environment built on Quickshell and Hyprland
-	pkgver = 0.0.7
-	pkgrel = 2
+	pkgver = 0.0.8
+	pkgrel = 1
 	url = https://github.com/kbuckleys/Zenworks
 	install = zenworks.install
 	arch = any
@@ -123,7 +123,7 @@ pkgbase = zenworks
 	optdepends = python-pykeepass: KeePassXC vaults in Calypso (installed when first needed)
 	conflicts = zen-browser
 	backup = etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS
-	source = zenworks-0.0.7.tar.gz::https://github.com/kbuckleys/Zenworks/archive/refs/tags/0.0.7.tar.gz
-	sha256sums = 224154eaa83ca983943601ea4146016621390e90a5bbdeb5934e8c2718926999
+	source = zenworks-0.0.8.tar.gz::https://github.com/kbuckleys/Zenworks/archive/refs/tags/0.0.8.tar.gz
+	sha256sums = ddd7bc7d2dee68e67a496aa15c056942fccb3f4c9049adb335c772708530da96
 
 pkgname = zenworks
