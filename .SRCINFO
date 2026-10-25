@@ -1,7 +1,7 @@
 pkgbase = ttf-kreativekorp-apple2
-	pkgdesc = KreativeKorp's Apple II-themed font bundle: BLoad, with its respective variations.
+	pkgdesc = KreativeKorp's Apple II-themed font bundle (deprecated).
 	pkgver = 2020.04
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.kreativekorp.com/software/fonts/apple2/
 	arch = any
 	license = custom:relay-fonts-1.2f
@@ -10,5 +10,4 @@ pkgbase = ttf-kreativekorp-apple2
 	source = bload.zip::https://www.kreativekorp.com/swdownload/fonts/retro/bload.zip
 	sha256sums = 0d87ff9408e7172038fe88a6ce3128af8cb716d5bce4a92cf7a33cd9b7458dd4
 
-pkgname = ttf-kreativekorp-apple2-bload
-	pkgdesc = KreativeKorp's Apple II standard bit patterns fonts: BLoad A1024 (lo-res graphics), and BLoad A8192 (hi-res graphics).
+pkgname = ttf-kreativekorp-apple2-dummy
