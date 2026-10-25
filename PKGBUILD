@@ -1,5 +1,5 @@
 # Maintainer: Thomas Lercher <aur@tlercher.de>
-# Maintainer: Fabian Angenoorth <fabiant@gmail.com>
+# Maintainer: Fabian Angenoorth <fabiant@mailbox.org>
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
