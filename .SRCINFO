@@ -1,6 +1,6 @@
 pkgbase = toaster
 	pkgdesc = Hears whatever is playing and writes it out as live Strudel code, with visuals
-	pkgver = 0.4.11
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://github.com/StopBanning/toaster
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = toaster
 	makedepends = git
 	depends = electron44
 	options = !debug
-	source = toaster-0.4.11.tar.gz::https://github.com/StopBanning/toaster/archive/refs/tags/v0.4.11.tar.gz
+	source = toaster-0.4.17.tar.gz::https://github.com/StopBanning/toaster/archive/refs/tags/v0.4.17.tar.gz
 	source = toaster.desktop
-	sha256sums = 0fa19818f32b3309f5e0614264badf8d3696184fbeeaa15fb8143b8b76538612
+	sha256sums = 96d904c598c3191c7a6e2a95204da635a745f75fc1b5ec85ad2b7172a7388df5
 	sha256sums = d8716162035147616f5702802e039456968fa2d594c070d4a6ede66845caa01c
 
 pkgname = toaster
