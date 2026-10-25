@@ -1,6 +1,6 @@
 pkgbase = opencode-notifier
 	pkgdesc = OpenCode plugin for desktop notifications and sounds on permission, completion, and error events.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/mohak34/opencode-notifier
 	install = opencode-notifier.install
@@ -12,7 +12,7 @@ pkgbase = opencode-notifier
 	conflicts = opencode-notifier-debug
 	options = !strip
 	options = !debug
-	source = opencode-notifier-1.1.0.tar.gz::https://github.com/mohak34/opencode-notifier/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 5461c9a6cece171e9098be6f98c3c47bdfc8f267f078e8a6329eb7590c051e26
+	source = opencode-notifier-1.1.1.tar.gz::https://github.com/mohak34/opencode-notifier/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 2c8b3f7cbfefec0d83bbc79ec7cfd7340e7485c378a857a297a2f66b0fecfbcc
 
 pkgname = opencode-notifier
