@@ -1,6 +1,6 @@
 pkgbase = c0wrk-zabbius-git
 	pkgdesc = Desktop AI coding-agent built with Wails (Go + React) — CPU flavor, git build
-	pkgver = 0.12.1.r130.g2b25793
+	pkgver = 0.13.0.r1.g35def36
 	pkgrel = 1
 	url = https://github.com/zabbius/c0wrk
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = c0wrk-zabbius-git
 	conflicts = c0wrk-desktop
 	conflicts = c0wrk-zabbius-cuda-git
 	options = !strip
-	source = c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=2b257938f4d7c1dd24b71089ec577ba76e7af993
+	source = c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=35def364e52752bc0f86d2e6cf72eb7bb2862867
 	source = c0wrk.desktop
 	sha256sums = SKIP
 	sha256sums = 817980d6896b98a304ade9b151125408e83bdc00c0e7f006eb5f6d7bb486fe62
