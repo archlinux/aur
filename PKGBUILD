@@ -5,7 +5,7 @@ _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
 pkgver=2.6.3
 _pkgver="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -44,6 +44,8 @@ prepare() {
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
     sed -i "s/^StartupWMClass=.*$/StartupWMClass=${_name}/g" "Flatpak/${_app_id}.desktop"
     sed -i "s/^StartupWMClass=.*$/StartupWMClass=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
+    sed -i '/SetApplicationInteractable/d' 'WheelWizard.Test/Views/Shell/ViewModels/HomeViewModelTests.cs'
+    sed -i 's/        var setup = action is WheelWizardStatus.NotInstalled or WheelWizardStatus.OutOfDate;/        var setup = false;/' 'WheelWizard/Views/Shell/ViewModels/HomeViewModel.cs'
     popd
 }
 
