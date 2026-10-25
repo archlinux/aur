@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=balun
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A lightweight cross-platform HDHomeRun live TV viewer"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
 # The upstream package compliance validator run in check() needs perl.
 checkdepends=('perl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cabfd7f97d5ba0ebdbad2d703a7c49d814e5bf71d1972f9ea5553cebdf91d303')
+sha256sums=('d97d2a5efa205e1a47387f19ccc970cfa9125bae21ab02309a6d7974ca87fbe4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
