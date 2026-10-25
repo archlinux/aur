@@ -1,7 +1,7 @@
 # Maintainer: Celti B. <celti@celti.name>
 
 pkgname=pasejo
-pkgver=2026.10.11
+pkgver=2026.10.25
 pkgrel=1
 pkgdesc='CLI password manager for teams using age'
 url="https://github.com/metio/$pkgname"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('glibc' 'libgcc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('8a562cba9487565fece56feb49993c0d5e5404a49320fd9664658d862a86786a554fb7a050a5664553dc3ebbec341f444642acea0de039b9a9b348e4a0637999')
+b2sums=('cc2d55df82b40bf25d7304a91f6197a502085f5e87e730d49ccd8fa46f4e427fae61ffb13cdc20616379897b2a36e54c1b2a1c1571d54c01f7957059306811a3')
 
 _srcenv() {
     export CARGO_HOME="$srcdir"
