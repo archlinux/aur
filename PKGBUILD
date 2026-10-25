@@ -3,7 +3,7 @@
 
 pkgname=unsampled-piano-git
 _name=unsampled-piano
-pkgver=0.2.0.r151.gc7c604f
+pkgver=0.2.1.r164.g2da5558
 pkgrel=1
 pkgdesc="Physically modelled piano, no samples: standalone player, CLAP and VST3 plugins (development version)"
 arch=('x86_64' 'aarch64')
