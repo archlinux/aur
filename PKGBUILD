@@ -1,7 +1,7 @@
 # Maintainer: w
 
 pkgname=spokenly
-pkgver=1.0.11
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Fast voice dictation for your desktop'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
   "Spokenly_${pkgver}_amd64.deb::https://cdn.spokenly.app/releases/linux/Spokenly_${pkgver}_amd64.deb"
   'LICENSE'
 )
-sha256sums=('32010194a37053e800bd69b5cf4a218a37d75d846e5572cdf3265afe272e5332'
+sha256sums=('8dff012e52f6ee1b68ff94fa2ee25c7184ffaf65f8f37fed1ee41f78d99751e1'
             '36281e6dc02d369943554f1681ee1aae9d86429fc7a6e5b44b53f6c620b5dffe')
 
 package() {
