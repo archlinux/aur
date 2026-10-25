@@ -1,0 +1,16 @@
+pkgbase = asus-ec-sensors-plus-dkms
+	pkgdesc = ASUS motherboard EC sensors (VRM, CPU, motherboard, CPU_OPT fan) for boards not yet in the kernel, e.g. TUF GAMING X870-PRO WIFI7 W NEO; read-only DKMS build of asus-ec-sensors
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/eugenesflanagin-spec/asus-ec-sensors-plus
+	arch = any
+	license = GPL-2.0-only
+	depends = dkms
+	optdepends = lm_sensors: the "sensors" command to read the values
+	optdepends = linux-headers: build the module for the stock Arch kernel
+	conflicts = asus-ec-sensors-dkms-git
+	conflicts = asus-ec-sensors-x870tuf-dkms
+	source = asus-ec-sensors-plus-0.1.1.tar.gz::https://github.com/eugenesflanagin-spec/asus-ec-sensors-plus/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 0ae073c61d99bb1e735b9697fce9401c609a83ee32b70ae6a123205f7a5adf9b
+
+pkgname = asus-ec-sensors-plus-dkms
