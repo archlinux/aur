@@ -1,0 +1,22 @@
+pkgbase = eosh
+	pkgdesc = A lightweight but powerful terminal shell with rich TAB completion and context switching
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/crftwr/eosh
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-botocore
+	depends = python-boto3
+	depends = python-pygments
+	depends = python-pexpect
+	provides = eosh
+	conflicts = python-eosh
+	source = eosh-0.3.0.tar.gz::https://github.com/crftwr/eosh/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 295d10feba8bb3640369d0c7066985b564dfb3a4318635c045789f8a292b5310
+
+pkgname = eosh
