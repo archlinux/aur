@@ -3,7 +3,7 @@
 pkgname=codeg-bin
 _pkgname=codeg
 pkgver=0.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collaborative multi-agent AI coding workspace (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xintaofei/codeg'
@@ -50,17 +50,10 @@ package() {
 
   mv "${pkgdir}/usr/bin/${_pkgname}" \
     "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
-  mv "${pkgdir}/usr/bin/${_pkgname}-server" \
-    "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}-server"
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<'SCRIPT'
 #!/bin/sh
 export WEBKIT_DISABLE_DMABUF_RENDERER="${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
 exec /usr/lib/codeg/codeg "$@"
-SCRIPT
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}-server" <<'SCRIPT'
-#!/bin/sh
-export CODEG_STATIC_DIR="${CODEG_STATIC_DIR:-/usr/lib/codeg/web}"
-exec /usr/lib/codeg/codeg-server "$@"
 SCRIPT
 
   sed -i \
