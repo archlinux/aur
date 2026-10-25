@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=ramcleaner
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Find processes holding unused memory, attribute them to their owner, and stop them only after approval'
 arch=('any')
