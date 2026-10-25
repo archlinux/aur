@@ -1,0 +1,4 @@
+[camofox-browser]
+source = "git"
+git = "https://github.com/jo-inc/camofox-browser.git"
+prefix = "v"

@@ -1,0 +1,26 @@
+pkgbase = camofox-browser
+	pkgdesc = Stealth browser for AI agents with advanced fingerprint spoofing
+	pkgver = 1.18.1
+	pkgrel = 1
+	url = https://github.com/jo-inc/camofox-browser
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = gtk3
+	depends = alsa-lib
+	depends = nss
+	depends = nspr
+	depends = libxtst
+	depends = libxcomposite
+	depends = libxfixes
+	depends = libxrandr
+	depends = libxrender
+	depends = libxcursor
+	depends = libxi
+	depends = sh
+	depends = bash
+	source = camofox-browser-1.18.1.tar.gz::https://github.com/jo-inc/camofox-browser/archive/refs/tags/v1.18.1.tar.gz
+	sha256sums = c511b0d80b0ed088caec171658198dd99aef6e889b07d101b23913a58bb33f5d
+
+pkgname = camofox-browser
