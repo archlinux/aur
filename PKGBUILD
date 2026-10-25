@@ -1,7 +1,7 @@
 # Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=waycentral-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Centralized Program for Waybar Custom Modules (clock, updates, volume, music, network, GPU, tray, ...) with a C library"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('hwdata: GPU names' 'nvidia-utils: NVIDIA GPU statistics')
 provides=("waycentral=${pkgver}" 'libwaycentral.so')
 conflicts=('waycentral')
 source=("waycentral-${pkgver}.tar.gz::https://github.com/TheElevatedOne/waycentral/releases/download/${pkgver}/waycentral-${pkgver}.tar.gz")
-sha256sums=('f935dcb16839798a0d909125d9b3f040f4611a924427af5a0f809a52bcd1237b')
+sha256sums=('19db7e8c9898ed91edd3663e20b8474d29253d7bd5723c75bad4507591a7ac3f')
 
 package() {
   cd "${srcdir}"
