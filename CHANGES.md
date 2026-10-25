@@ -1,10 +1,34 @@
 # Release Notes
 
+## 2.105.1
+
+This release updates vendored Pip's vendored certifi's cacert.pem to that from certifi 2026.10.23.
+
+* Update vendored Pip's CA cert bundle. (#3311)
+
+## 2.105.0
+
+This release adds support for CPython 3.16 as it enters the alpha phase.
+
+* Support CPython 3.16. (#3309)
+
+## 2.104.2
+
+This release fixes `pex3 lock sync` for split `--style universal` locks.
+
+Previously, certain configurations would fail to sync in two ways:
+1. An exception could be raised during an internal sorting operation.
+2. The lock updates from a sync operation would only be applied to one of the splits.
+
+* Fix `pex3 lock sync` of split `--style univeral` locks. (#3307)
+
 ## 2.104.1
 
 This release fixes `--venv-repository` to ignore `uv`-specific `.dist-info` metadata files. This
 fixes PEX builds from uv venvs to be reproducible when they should be. For `--rc` builds, `pexrc`
 is upgraded to `0.37.1` to pick up the equivalent fix in `pexrc`.
+
+* Fix `--venv-repository` to ignore `uv`-specific metadata files. (#3302)
 
 ## 2.104.0
 
