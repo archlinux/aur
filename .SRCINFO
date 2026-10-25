@@ -1,6 +1,6 @@
 pkgbase = waycentral-git
 	pkgdesc = Centralized Program for Waybar Custom Modules (clock, updates, volume, music, network, GPU, tray, ...) with a C library
-	pkgver = 1.4.1_r0_gd8fbafa
+	pkgver = 1.4.1_r1_gbb0d098
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/waycentral
 	arch = x86_64
