@@ -1,6 +1,6 @@
 pkgname=nextendo-citron-bin
-_commit=ddfd42a1c
-pkgver=20260922.r${_commit}
+_commit=0b6d9d2ec
+pkgver=20261025.r${_commit}
 pkgrel=1
 pkgdesc="Nintendo Switch emulator (Citron nightly build from NextendoNetwork)"
 arch=('x86_64' 'aarch64')
@@ -26,12 +26,12 @@ _release_tag="nightly-linux"
 source_x86_64=(
   "${pkgname}-${_commit}-x86_64.tar.zst::https://github.com/${_repo}/releases/download/${_release_tag}/citron_nightly-${_commit}-linux-x86_64-use-nopgo.tar.zst"
 )
-sha256sums_x86_64=('ec183df5f984d069e4af198faa93ea3e83853f9e432d81fa615f6c548df59072')
+sha256sums_x86_64=('d0686c0831d38a950d2eb4fb0e222ee880311e57ade7d3fab5e6e55cb4c888a3')
 
 source_aarch64=(
   "${pkgname}-${_commit}-aarch64.tar.zst::https://github.com/${_repo}/releases/download/${_release_tag}/citron_nightly-${_commit}-linux-aarch64-use-nopgo.tar.zst"
 )
-sha256sums_aarch64=('062655a0e1872ffe7f3de1c71ba156e7c84579de87a95e9de39827bda615eaed')
+sha256sums_aarch64=('041f6a50b388950b3ad26f40a7d8a3c9031e9e5098233f437dc70d5e1e214094')
 
 package() {
   local _installdir="${pkgdir}/opt/nextendo-citron"
