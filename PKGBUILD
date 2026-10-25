@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=rio
-_pkgver=1.3.0
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -57,8 +57,8 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c0e9485cfd107eb720d9a6d24c449673')
-b2sums=('c8e3fd29a58bb557d60f53d0cf02945992df111c2aea436e3799274c0226940756b4976f65faae8d0874fee7a8e295d2c80734ff58c44eca8071603cae30c94c')
+md5sums=('2d8312cecc919316737440c6c56284dc')
+b2sums=('d31b9ad0ae49fc4c1a3c727806deb1db5faa15f36fe77f712a3747ddd6acc431123cdb943fda9c90597749f5385f458783c9e2b143a2f9d16449f5ac2056536c')
 
 build() {
   mkdir build
