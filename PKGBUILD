@@ -1,6 +1,6 @@
 # Maintainer: gonsolo@gmail.com
 pkgname=python-wasmtime
-pkgver=48.0.0
+pkgver=50.0.1
 pkgrel=1
 pkgdesc="Python 3 extension for interfacing with Wasmtime/Cranelift."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('python' 'wasmtime')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-git-versioning')
 source=("${pkgname}-${pkgver}::git+https://github.com/bytecodealliance/wasmtime-py.git#tag=${pkgver}")
-sha384sums=('b6225addff2a7e1e4b045f5ddaaa14ff7acdf2e438c8d0c134891e62a81558293f9d913661c7870045f563f39ea6abcd')
+sha384sums=('a868895c8f70035f09f0125a90556616d5dc20d91d5f95de54e74c64e4c1cfff6922a17f03606eee7050e510e6a8fa57')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
