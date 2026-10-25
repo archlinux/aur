@@ -2,7 +2,7 @@
 # Contributor: kryksyh <kryksyh@gmail.com>
 pkgname=audacity4-bin
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Audacity 4, the next generation of the popular multi-track audio editor"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -27,8 +27,12 @@ package() {
 	install -dm755 "$pkgdir/opt/$pkgname"
 	cp -a . "$pkgdir/opt/$pkgname/"
 
+	# Fix-up file permissions
+	chmod -R u+rwX,go+rX,go-w "$pkgdir/opt/$pkgname"
+
 	# Remove symlinks
 	rm -f "$pkgdir/opt/$pkgname/usr" \
+	      "$pkgdir/opt/$pkgname/.DirIcon" \
 	      "$pkgdir/opt/$pkgname/audacity4portable.png" \
 	      "$pkgdir/opt/$pkgname/aup4.svg" \
 	      "$pkgdir/opt/$pkgname/org.audacityteam.Audacity4portable.desktop"
