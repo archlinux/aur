@@ -2,16 +2,14 @@
 
 pkgname=ttf-kreativekorp-apple2-pr
 pkgver=2020.04
-pkgrel=3
+pkgrel=4
 pkgdesc="KreativeKorp's Apple II standard font: Print Char 21, and PR Number 3."
 arch=('any')
 url='https://www.kreativekorp.com/software/fonts/apple2/'
 license=('custom:relay-fonts-1.2f')
 depends=('xorg-fonts-encodings')
 
-# Patch taken from 'ttf-petme'.
-makedepends=('wget')
-DLAGENTS=('https::/usr/bin/wget -O %o %u')
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -A Mozilla -o %o %u')
 
 source=(
     'pr.zip::https://www.kreativekorp.com/swdownload/fonts/retro/pr.zip'
@@ -22,9 +20,9 @@ sha256sums=(
 
 package() {
     install -d "${pkgdir}/usr/share/fonts/${pkgbase}/"
-    for f in $(find "${srcdir}" -type f -iname 'PR*.ttf'); do
-        install -m644 "$f" "${pkgdir}/usr/share/fonts/${pkgbase}/"
-    done
+
+    find "${srcdir}" -type f -iname 'PR*.ttf' \
+        -exec install -m644 {} "${pkgdir}/usr/share/fonts/${pkgbase}/" \;
 
     install -Dm644 "${srcdir}/FreeLicense.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

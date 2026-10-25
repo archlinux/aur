@@ -1,11 +1,10 @@
 pkgbase = ttf-kreativekorp-apple2-pr
 	pkgdesc = KreativeKorp's Apple II standard font: Print Char 21, and PR Number 3.
 	pkgver = 2020.04
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kreativekorp.com/software/fonts/apple2/
 	arch = any
 	license = custom:relay-fonts-1.2f
-	makedepends = wget
 	depends = xorg-fonts-encodings
 	source = pr.zip::https://www.kreativekorp.com/swdownload/fonts/retro/pr.zip
 	sha256sums = 39020933a8f1b5bf2869835fb8d2a4a9e134912ff128a12a8cc4162639a20aec
