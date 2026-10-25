@@ -2,8 +2,8 @@
 
 _gitauthor=Slashas632
 _gitname=goPort
-_appname=${_gitname,,}
-pkgname=${_appname}-bin
+_appname=${_gitname}
+pkgname=${_appname,,}-bin
 pkgdesc="Fast concurrent TCP/UDP port scanner in Go with Lua plugin support"
 
 pkgver=1.3.3
@@ -35,7 +35,7 @@ sha256sums_x86_64=('711cf72111f92a121b5275b971f64b752c5776c78809988db84359a12e6f
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_gitname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
