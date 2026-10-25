@@ -1,19 +1,18 @@
 pkgbase = runa-bin
 	pkgdesc = A fast and lightweight console file browser written in Rust
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/alexm-dev/runa
 	changelog = CHANGELOG.md
 	arch = x86_64
 	arch = aarch64
-	license = Apache-2.0
-	license = MIT
+	license = Apache-2.0 OR MIT
 	depends = libgcc
 	provides = runa
 	conflicts = runa
-	source_x86_64 = runa-bin-0.14.1-x86_64-gnu.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.14.1/runa-linux-x86_64-gnu.tar.gz
-	sha256sums_x86_64 = d3aae6f5ea9b634015aa4758336a996606c10d5e3e5d04faa8d6e5b27b78e569
-	source_aarch64 = runa-bin-0.14.1-aarch64-gnu.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.14.1/runa-linux-aarch64-gnu.tar.gz
-	sha256sums_aarch64 = a58ac0330ef7406a79da020418e13acdbd40e0252712c708b418507e80003ecf
+	source_x86_64 = runa-bin-0.14.2-x86_64-gnu.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.14.2/runa-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = 0d63e0d155e8305c25f0beffd33d4d10203c98103f3cf59ff23ef4beb8bd6d24
+	source_aarch64 = runa-bin-0.14.2-aarch64-gnu.tar.gz::https://github.com/alexm-dev/runa/releases/download/v0.14.2/runa-linux-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = 0362d0d010256263d5f36e6d17341179a0dde91a6fc1869c1b5347827b44bf31
 
 pkgname = runa-bin

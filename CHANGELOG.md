@@ -2,6 +2,32 @@
 
 All the changes made to runa are documented here.
 
+## [0.14.2] - 2026-10-25
+
+#### Directory cache and clipboard fixes, internal cleanup.
+
+### Fixed
+- **Navigation**: Revisiting a directory no longer shows an outdated listing after its content changed.
+- **Clipboard**: Unmarking the lest copied entry now correctly clears the clipboard, so a paste no longer runs an empty copy.
+
+### Changed
+- **Performance**: Markers and clipboard entries are now borrowed instead of copied per frame.
+
+### Internal
+- **Workers**:
+    - Each worker has its own task type instead of a shared `WorkerTask` enum. Task types live in `workers/task.rs`.
+    - Directory loads now carry a `DirRequest`, which routes their response back to the pane that requested it.
+- **App**:
+    - `RunaRoot`, `AppContainer` and `Clipboard` live in their own modules, and all the `AppState` handlers live under `app/state/`.
+    - Fields of `AppState`, `TabManager`, `RunaRoot` and `Clipboard` are all private.
+- **Coding Style**: Named types for huge nested std types, one import per std module, no inline full paths unless needed.
+- **CI**: Release runs only start when the repo owner triggers them.
+- **Dependencies**: `cargo update`.
+
+
+---
+
+
 ## [0.14.1] - 2026-10-23
 
 #### Navigation, preview and config watcher fixes.
