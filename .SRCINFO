@@ -1,17 +1,17 @@
 pkgbase = bootstrap-studio
-	pkgdesc = Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework.
+	pkgdesc = A powerful desktop application that helps you design and publish beautiful websites
 	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://bootstrapstudio.io/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	depends = alsa-lib
 	depends = gtk3
 	depends = libcups
 	depends = nss
-	source = https://releases.bootstrapstudio.io/9.0.1/Bootstrap%20Studio.AppImage
-	source = bstudio.desktop
+	optdepends = xdg-utils: Open URLs and browser previews
+	options = !strip
+	source = bootstrap-studio-9.0.1.AppImage::https://releases.bootstrapstudio.io/9.0.1/Bootstrap%20Studio.AppImage
 	b2sums = f3352e998419339159a5f0a127e33f4945de523b01c1531a6cebfbeae0085453508a830076c849e9d1da4a39e35e64a479c7a8f514fdffc8e50f22780cced742
-	b2sums = 6588d6c99396a05eafa74ca0e4d0c1113ff927f0fc6afc6cf549bf251b1f03a742d0a39d5e1b8bffd0052b49196357daafef371c1ebd49efc16ef353ab3d9daa
 
 pkgname = bootstrap-studio
