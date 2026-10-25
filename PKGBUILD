@@ -27,7 +27,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 # Built by the upstream release workflow; libddcci is linked in statically.
 options=('!debug')
-source=("$_pkgname-$pkgver-x86_64-linux.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
+source=("$_pkgname-$pkgver-x86_64-linux.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
 sha256sums=('9ec3c88f3f2cac670d95f03dd6d0b9ddfc353aca6c4a1e26235448d730d871be')
 
 package() {

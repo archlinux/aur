@@ -19,7 +19,7 @@ pkgbase = ddc-controls-bin
 	provides = ddc-controls=0.1.0
 	conflicts = ddc-controls
 	options = !debug
-	source = ddc-controls-0.1.0-x86_64-linux.tar.gz::https://github.com/TheElevatedOne/ddc-controls/releases/download/v0.1.0/ddc-controls-0.1.0-x86_64-linux.tar.gz
+	source = ddc-controls-0.1.0-x86_64-linux.tar.gz::https://github.com/TheElevatedOne/ddc-controls/releases/download/0.1.0/ddc-controls-0.1.0-x86_64-linux.tar.gz
 	sha256sums = 9ec3c88f3f2cac670d95f03dd6d0b9ddfc353aca6c4a1e26235448d730d871be
 
 pkgname = ddc-controls-bin
