@@ -3,7 +3,7 @@
 
 pkgname=connect-tunnel
 pkgver=12.50.01108
-pkgrel=1
+pkgrel=2
 pkgdesc="SonicWALL Connect Tunnel VPN Client"
 arch=('x86_64')
 url="https://www.sonicwall.com/products/remote-access/vpn-clients/"
@@ -14,8 +14,8 @@ source=(
 	"https://software.sonicwall.com/CT-NX-VPNClients/CT-$(sed 's/[0-9]$/.&/' <<<"${pkgver%.*}")/ConnectTunnel_Linux64-${pkgver}.tar"
 	"https://www.sonicwall.com/legal/general-product-agreement"
 )
-md5sums=('c7d3aa2f0cfe725bb2d28eeef434ca8c'
-         'SKIP')
+sha256sums=('3551d651cb2d05c53c910519feb7db170277aa7cb295283692719465937e3292'
+            'SKIP')
 
 prepare() {
 	tar -xf ConnectTunnel-Linux64-${pkgver}.tar.bz2

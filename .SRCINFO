@@ -1,7 +1,7 @@
 pkgbase = connect-tunnel
 	pkgdesc = SonicWALL Connect Tunnel VPN Client
 	pkgver = 12.50.01108
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sonicwall.com/products/remote-access/vpn-clients/
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = connect-tunnel
 	depends = perl
 	source = https://software.sonicwall.com/CT-NX-VPNClients/CT-12.5.0/ConnectTunnel_Linux64-12.50.01108.tar
 	source = https://www.sonicwall.com/legal/general-product-agreement
-	md5sums = c7d3aa2f0cfe725bb2d28eeef434ca8c
-	md5sums = SKIP
+	sha256sums = 3551d651cb2d05c53c910519feb7db170277aa7cb295283692719465937e3292
+	sha256sums = SKIP
 
 pkgname = connect-tunnel
