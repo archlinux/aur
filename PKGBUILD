@@ -2,7 +2,7 @@
 
 _pkgname=RustGIS
 pkgname=rustgis
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 url="https://$pkgname.app/"
 _url="https://github.com/opengeos/$_pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$_pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('cd8995b6c6deab76c1a0f30f7091e419e8171159d2ef955e289f614e1c38aa41')
+sha256sums=('2a886c1dca830a5b6e7df15cfe84ab0bcd07e352a5a11ccadc84ffcb5d5b3a89')
 
 _srcenv() {
 	cd "$_archive"
