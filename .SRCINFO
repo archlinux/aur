@@ -1,6 +1,6 @@
 pkgbase = python-chalice
 	pkgdesc = Python Serverless Microframework for AWS.
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://github.com/aws/chalice
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = python-chalice
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python
 	depends = python-click
 	depends = python-botocore
@@ -30,7 +29,7 @@ pkgbase = python-chalice
 	optdepends = python-aws-cdk.cloudformation-include: cdk
 	optdepends = python-aws-cdk.core: cdk
 	optdepends = python-aws-cdk-lib: cdkv2
-	source = https://github.com/aws/chalice/archive/refs/tags/1.33.0.tar.gz
-	sha256sums = c62471a790b161e4eedaa28416a313b7f034b09367637d98f552d2e66ba2c3fd
+	source = https://github.com/aws/chalice/archive/refs/tags/1.34.0.tar.gz
+	sha256sums = c42608b830979db045cb91baef41c7d963d56b32d0d5a4eeee4db4ab8bb0422b
 
 pkgname = python-chalice
