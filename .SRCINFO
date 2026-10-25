@@ -1,0 +1,18 @@
+pkgbase = antra-bin
+	pkgdesc = A desktop music library builder that supports Spotify, YouTube Music, Apple Music, Amazon Music, Tidal, Qobuz, and Deezer
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/anandprtp/Antra
+	arch = x86_64
+	license = Elastic-2.0
+	depends = glib2
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	provides = antra
+	conflicts = antra
+	source = https://github.com/anandprtp/Antra/releases/download/v1.1.8/Antra-Linux.AppImage
+	sha256sums = 83ec796a9ffa9ea75e55c71d575933de4060f72e9f6e9957229fae06bef9efdd
+
+pkgname = antra-bin
