@@ -2,7 +2,7 @@
 ##If you spot any issues, please don't hesitate to email me.
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop-clang
-pkgver=7.2.9.0
+pkgver=7.3.3.0
 pkgrel=1
 pkgdesc='yukigram-desktop,build much faster&less memory requirment with clang'
 arch=('x86_64')
@@ -17,7 +17,9 @@ options=(!lto !debug !ccache strip)
 depends=(
   'abseil-cpp'
   'ada'
+  'cairo'
   'ffmpeg'
+  'fontconfig'
   'glib2'
   'glibc'
   'hicolor-icon-theme'
@@ -33,6 +35,7 @@ depends=(
   'libsrtp'
   'libstdc++'
   'libvpx'
+  'libx11'
   'libxcb'
   'libxcomposite'
   'libxdamage'
@@ -47,6 +50,7 @@ depends=(
   'openh264'
   'openssl'
   'opus'
+  'pango'
   'pipewire'
   'qt6-base'
   'qt6-declarative'
@@ -57,15 +61,17 @@ depends=(
   'tlottie'
   'xxhash'
   'zlib'
-)
+    )
 makedepends=(
   'boost'
   'boost-libs'
+  'cargo'
   'clang'
   'cmake'
   'git'
   'glib2-devel'
   'gobject-introspection'
+  'just'
   'gperf'
   'libtg_owt'
   'microsoft-gsl'
@@ -85,28 +91,38 @@ optdepends=(
   'xdg-desktop-portal: desktop integration'
 )
 
-_td_commit=bc9c263e2bfee06aaab41e82db51a103376030bc
+_td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
+_wallet_engine_ver=0.0.7
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver%.*}/tdesktop-${pkgver%.*}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
+  wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz
   "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.tar.gz"
+  https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
   "0000-Fix-Pony-fix-lang-res-file-loc.patch"
 )
 
-sha512sums=('4d0f18292fe33f204fea0bd0167efb3376b424ede6a1ce4fd3660955035a3ae7033343a86dfa585401e63747fa11676d5ce87355e785638014e3e90caf4e9195'
-            '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1'
-            '607129025d9045112127621293062bf67a7937e49b0290f40a1a904eb9f3f40d490382268feb2e5015e353e0669071d256e23d36b88d6bdd46e6b677f8cfc525'
+sha512sums=('3e76971f5ac1c8b4f29c867cf2a6e52f5eb71e479533daaaef26ba8bf53c10c6dd0abc09bb99ec213582546a50fa5306b2bcad023e85024979ebf04603c48540'
+            'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
+            'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
+            '7b46649f0dc7e5135397b40368be3d3b5fcdeb3f024cf1d6d12584d4679601c06c60665366d789e546843d385aaa9f2c48cbc8420d011d75a8f03e52871a9eae'
+            '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
             '392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72')
 
+
 prepare() {
-  cd tdesktop-${pkgver%.*}-full/
-  for p in "$srcdir"/yukigram-${pkgver}/tdesktop/cur/*.patch; do
+  cd "$srcdir"/tdesktop-${pkgver%.*}-full/
+  for p in "$srcdir"/yukigram-${pkgver}/tdesktop/cur/*.patch;do
     patch -Np1 <"$p"
   done
   patch -Np1 < "$srcdir"/0000-Fix-Pony-fix-lang-res-file-loc.patch
+  
+  cd "$srcdir"/wallet-engine-${_wallet_engine_ver}
+  patch -Np1 -i "$srcdir"/wallet-engine.patch
 }
 
 build() {
+
   export CC=clang
   export CXX=clang++
   export LDFLAGS="$LDFLAGS -fuse-ld=mold"
@@ -134,19 +150,28 @@ build() {
   local jobs=$(( mem_jobs < makepkg_jobs ? mem_jobs : makepkg_jobs ))
 
   export CMAKE_BUILD_PARALLEL_LEVEL="$jobs"
+  export CARGO_BUILD_JOBS="$jobs"  
+  cd wallet-engine-${_wallet_engine_ver}
+  just build
+  just bindings-cpp
+  install -Dm644 target/release/libwallet_engine.a -t install/lib/
+  install -Dm644 bindings/cpp-experimental/* -t install/include/wallet_engine/
+  cd ..
 
-  cmake -S td -B td/build -G Ninja \
+  cmake -S td -B td/build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
     -Wno-dev \
     -DTD_E2E_ONLY=ON
-  cmake --build td/build -j "$jobs"
+  cmake --build td/build  -j "$jobs"
   cmake --install td/build
+
 
   cmake -B build -S tdesktop-${pkgver%.*}-full -G Ninja \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
+    -DCMAKE_PREFIX_PATH="$PWD/wallet-engine-${_wallet_engine_ver}/install" \
     -DCMAKE_BUILD_TYPE=Release \
     -DTDESKTOP_API_ID=611335 \
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
