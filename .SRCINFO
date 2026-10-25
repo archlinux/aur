@@ -1,0 +1,25 @@
+pkgbase = stillmusic-bin
+	pkgdesc = Minimal black and white CLI music player powered by MPV (prebuilt binary)
+	pkgver = 0.3.0beta1
+	pkgrel = 1
+	url = https://github.com/fireflylabss/optionMusic
+	arch = x86_64
+	license = Apache-2.0
+	depends = mpv
+	depends = libgcc
+	depends = glibc
+	depends = sqlite
+	optdepends = cava: spectrum bars
+	optdepends = yt-dlp: download music and videos
+	optdepends = ffmpeg: extract and convert downloaded audio
+	optdepends = tar: export and import backups
+	provides = stillmusic=0.3.0beta1
+	conflicts = stillmusic
+	conflicts = optionmusic
+	conflicts = optmusic
+	options = !strip
+	options = !lto
+	source = https://github.com/fireflylabss/optionMusic/releases/download/v0.3.0-beta.1/stillmusic-v0.3.0-beta.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ffadb3b0b0dd99aedeac613d97295044b8d41aff284ba12f9dc121db28485840
+
+pkgname = stillmusic-bin
