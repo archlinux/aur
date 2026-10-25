@@ -58,7 +58,7 @@ pkgver() {
 prepare() {
   cd "$base"
 
-  mkdir bin
+  mkdir -p bin
   go mod verify
 }
 
@@ -72,7 +72,7 @@ build() {
   CGO_LDFLAGS="-static" go build -v -tags "agent" -o bin/ ./cmd/incus-agent/...
 
   go build -v -ldflags "${GO_LDFLAGS}" -tags "netgo" -o bin/ ./cmd/incus-migrate/...
-  for tool in fuidshift incus lxc-to-incus lxd-to-incus incusd incus-benchmark incus-user; do
+  for tool in fuidshift incus lxc-to-incus incusd incus-benchmark incus-user; do
     go build -v -ldflags "${GO_LDFLAGS}" -tags "libsqlite3" -o bin/ ./cmd/$tool
   done
 
@@ -85,7 +85,7 @@ build() {
 package_incus-git() {
   cd "$base"
 
-  for tool in incus incusd incus-agent incus-user lxd-to-incus; do
+  for tool in incus incusd incus-agent incus-user; do
     install -v -p -Dm755 "bin/$tool" "${pkgdir}/usr/bin/$tool"
   done
 
