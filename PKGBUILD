@@ -1,6 +1,6 @@
 # Maintainer: Ákos Uzonyi <uzonyi.akos@gmail.com>
 pkgname=circuit-simulator
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Electronic circuit simulator written by Paul Falstad"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("GPL")
 depends=("libglvnd" "hicolor-icon-theme")
 makedepends=("tar" "imagemagick")
 source=("${pkgname}-${pkgver}.tgz::http://www.falstad.com/circuit/offline/circuitjs1-${pkgver}ts-linux64.tgz" "http://www.falstad.com/circuit/favicon.ico" "circuit.desktop")
-md5sums=('cd182a930328782fbb96de185645f9d5'
+md5sums=('23fe1c65c16e723ffd820ad3bec4b2be'
          '062a9b61267bbef5e406a41b20a7d6a7'
          'deaff8b1646089d6c2c737dcbc540255')
 
