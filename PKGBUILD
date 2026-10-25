@@ -2,13 +2,12 @@
 
 pkgname=ttf-kreativekorp-commodore-berkelium
 pkgver=2011.02
-pkgrel=1
+pkgrel=2
 pkgdesc="KreativeKorp's Commodore GEOS system font: Berkelium, based on BSW. Includes two variants: Berkelium 64 (menus and dialogs), and Berkelium 1541 (file icons)."
 arch=('any')
 url='https://www.kreativekorp.com/software/fonts/c64/'
 license=('custom:relay-fonts-1.2f')
 depends=('xorg-fonts-encodings')
-conflicts=('ttf-petme')
 
 # Patch taken from 'ttf-petme'.
 makedepends=('wget')
