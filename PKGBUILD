@@ -3,11 +3,11 @@
 pkgname=par2cmdline-git
 _gitname='par2cmdline'
 pkgver=20261025.361d3a6
-pkgrel=1
+pkgrel=2
 pkgdesc="A file verification and repair tool"
 url="https://github.com/BlackIkeEagle/par2cmdline"
 license=("GPL")
-makedepends=('git' 'tar' 'cmake' 'ninja')
+makedepends=('git' 'tar' 'cmake' 'ninja' 'cxxopts')
 depends=('gcc-libs')
 arch=('x86_64')
 provides=('par2cmdline')
@@ -26,7 +26,8 @@ build() {
         -B build \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DPAR2_KEEP_ASSERTS=ON
+        -DPAR2_KEEP_ASSERTS=ON \
+        -DPAR2_SYSTEM_CXXOPTS=ON
     cmake --build build
 }
 
