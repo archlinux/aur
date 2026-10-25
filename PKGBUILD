@@ -1,21 +1,23 @@
+# Maintainer: a821 at mail de
 # Contributor: Cravix < dr dot neemous at gmail dot com >
 
 pkgname=limnoria-git
-pkgver=2024.05.31.r3.g01cdfee53
+pkgver=2026.10.18.r2.g95bee4293
 pkgrel=1
 epoch=1
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features (dev channel)"
 arch=('any')
 url="https://github.com/ProgVal/Limnoria"
 license=('BSD-3-Clause')
-depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=('python' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=(
     "python-chardet: to detect encoding of incoming IRC lines, if they are not in UTF-8"
     "python-gnupg: for authenticated based on GPG tokens"
     "python-pysocks: for SOCKS proxy (IRC via Tor)"
     "python-cryptography: Fediverse plugin support"
     "python-feedparser: RSS plugin support"
+    "python-sqlalchemy: Aka plugin support (fallbacks to sqlite3)"
     "python-dateutil: enable fancy time string parsing in the Time plugin")
 conflicts=('limnoria')
 provides=('limnoria')
