@@ -16,7 +16,6 @@ depends=(
     'qt5-svg'
     'pcre'
     'libbsd'
-    'musl'
 )
 makedepends=(
     'gendesk'
@@ -58,8 +57,6 @@ prepare() {
 
     # Clean unused files
     rm -r "${srcdir}/filecentipede/browser_extensions"
-    rm -r "${srcdir}/filecentipede/plugins"
-    rm -r "${srcdir}/filecentipede/webui"
 }
 
 package() {

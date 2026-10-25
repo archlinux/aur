@@ -10,7 +10,6 @@ pkgbase = filecentipede-bin
 	depends = qt5-svg
 	depends = pcre
 	depends = libbsd
-	depends = musl
 	optdepends = qt6-wayland
 	provides = filecxx
 	conflicts = filecxx
