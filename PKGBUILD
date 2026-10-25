@@ -2,7 +2,7 @@
 
 _name=runloop-api-client
 pkgname=python-${_name//-/_}
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='The official Python library for the runloop API.'
 arch=('any')
@@ -20,8 +20,7 @@ depends=('python'
 makedepends=('python-hatchling'
              'python-hatch-fancy-pypi-readme'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 checkdepends=('python-respx'
               'python-pytest'
               'python-pytest-asyncio'
@@ -37,11 +36,11 @@ checkdepends=('python-respx'
               'lsof')
 optdepends=('python-aiohttp: aiohttp'
             'python-httpx-aiohttp: aiohttp')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2a84b35b226a725d892a0109c20f7fe3e13a71242932cf174c4b7d312472d3ed')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0603a71d1c011bf1741295c8fb9d298f6a6ce29314cceb207fcb68a9f821c616')
 
 build() {
-  cd "$srcdir"/${_name//runloop-/}-python-$pkgver
+  cd "${_name//runloop-/}-python-$pkgver"
   python -m build --wheel --no-isolation --skip-dependency-check
 }
 
@@ -54,7 +53,7 @@ check() {
     --disable-warnings
     -p 'no:benchmark'
   )
-  cd "$srcdir"/${_name//runloop-/}-python-$pkgver
+  cd "${_name//runloop-/}-python-$pkgver"
   ./scripts/mock --daemon
   local server_pid=$(lsof -t -i tcp:4010)
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests || { kill "${server_pid}"; return 1; }
@@ -62,6 +61,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir"/${_name//runloop-/}-python-$pkgver
+  cd "${_name//runloop-/}-python-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
