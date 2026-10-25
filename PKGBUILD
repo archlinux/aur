@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=autofilm
-_tagname=2.0.0
+_tagname=2.0.1
 pkgver="${_tagname//-/+}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp."
 arch=($CARCH)
 url="https://github.com/Akimio521/AutoFilm"
