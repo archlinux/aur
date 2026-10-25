@@ -1,0 +1,23 @@
+pkgbase = goose-lang
+	pkgdesc = Memory-safe systems language with no heap allocator, GC, or lifetime annotations
+	pkgver = 2026.3
+	pkgrel = 1
+	url = https://github.com/aardappel/goose
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	optdepends = gcc: goose build (native executables)
+	optdepends = git: fetching packages into ~/.goose
+	conflicts = goose
+	conflicts = goose-bin
+	conflicts = goose-cli
+	conflicts = goose-cli-bin
+	conflicts = goose-desktop
+	conflicts = liamstask-goose-git
+	source = goose-lang-2026.3.tar.gz::https://github.com/aardappel/goose/archive/refs/tags/v2026.3.tar.gz
+	sha256sums = 73ef9aeced4a4a3d93dbb3cb0b65a9a1ec3c0efa6c3d4fa4298211919023a5a4
+
+pkgname = goose-lang
