@@ -1,7 +1,7 @@
 # Maintainer: Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=simdzone
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='Fast and standards compliant DNS presentation format parser'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/NLnetLabs/${pkgname}"
 license=('BSD')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('93c46ecbe87eb0d49ea9b4850d8dc42d903c76bcb59796681916b60db1ebb812')
+sha256sums=('0c7c3ee7da711d3caf1c44eea8ba9ae28e824fd864f2623765da4b193e0db73c')
 
 build() {
   local cmake_options=(
