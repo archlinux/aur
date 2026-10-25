@@ -2,7 +2,7 @@
 
 pkgname=pi
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
@@ -54,6 +54,9 @@ package() {
     install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
     cp -a "packages/$_pkg/dist" "packages/$_pkg/package.json" "packages/$_pkg/README.md" \
       "$pkgdir/$mod_dir/packages/$_pkg/"
+    if [[ -d "packages/$_pkg/node_modules" ]]; then
+      cp -a "packages/$_pkg/node_modules" "$pkgdir/$mod_dir/packages/$_pkg/"
+    fi
   done
 
   # Copy the additional files for coding-agent
