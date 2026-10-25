@@ -1,6 +1,6 @@
 pkgbase = bollworm
 	pkgdesc = Turn an OpenAPI document into a Word reference manual
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Smiduweorc/bollworm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bollworm
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = bollworm-0.2.0.tar.gz::https://github.com/Smiduweorc/bollworm/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 0417855b033737cfd269367ff46e111068cdbc55cdbb7e27c4bde83697849d27
+	source = bollworm-0.3.0.tar.gz::https://github.com/Smiduweorc/bollworm/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 3e77edab5ba4bd4e54187b253c71aed4f069102aaaa516ce5b057ad7e9c60780
 
 pkgname = bollworm
