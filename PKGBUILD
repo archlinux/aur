@@ -1,5 +1,5 @@
 pkgname=bollworm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Turn an OpenAPI document into a Word reference manual"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Refresh on every pkgver bump with `updpkgsums` (pacman-contrib), once the
 # tag's tarball is published upstream.
-sha256sums=('f2a744e62235b1ce10021fe1e6d7d6fbf2fde95137b4f9fbb411a2130bd2a8e7')
+sha256sums=('0417855b033737cfd269367ff46e111068cdbc55cdbb7e27c4bde83697849d27')
 
 prepare() {
 	cd "$pkgname-$pkgver"
