@@ -1,6 +1,6 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 pkgname=bootimus
-pkgver=0.1.77
+pkgver=0.1.78
 pkgrel=1
 pkgdesc="A Complete enhanced version of the PXE server"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=(
   bootimus.sysusers
   bootimus.tmpfiles
 )
-sha256sums=('db74289a457add2201a46c525c46a468ccb63f00efcd35330c549cbc6b33eaf0'
+sha256sums=('8dc5448789e3432cd8dc1c51f737171dfe6249b320e126d5962bbfa534058d91'
             '7c459b9b60f0ee7659ee0a319191aacf5f3bcfc7ac12bb4f59ce0eb9dfe20087'
             '6a725ce5fa5b20e624f2694331cfd53f0696d0e5b5aa88ab2fc23ebf99e1bd9b'
             '1a3d47f5480778994f3359de2a8b9d90665fba1d98e7557b8bf6a2118b61f1bb')
