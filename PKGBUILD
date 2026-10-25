@@ -5,7 +5,7 @@
 _id=ciifpadakeohfnnneflckhojbldkkllp
 
 pkgname=parcel-chromium
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Chromium browser extension for zx2c4's pass (password manager)"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('libarchive: inspect bundled host script with bsdtar')
 source=("${pkgname}-${pkgver}.crx::${url}/releases/download/v${pkgver}/parcel-chrome-${pkgver}.crx"
         "${pkgname}-${pkgver}.crx.asc::${url}/releases/download/v${pkgver}/parcel-chrome-${pkgver}.crx.asc")
 noextract=("${pkgname}-${pkgver}.crx")
-sha256sums=('5ee398865c2fed25ec916b69472b6dd7a0d32c28b4b1c53cef61ec84d6ed8b2c'
+sha256sums=('aec8b3f98ed00f351292b0d5d96383b0825c2f8e04e79857249f00973d8d1e86'
             'SKIP')
 validpgpkeys=('82ED663067C6017BAA4BC752EB670BF2B1131683'
               'B0908ED59A96C9882BED9A942A51761511A30253'
