@@ -1,12 +1,11 @@
 pkgbase = ttf-kreativekorp-apple2-bload
 	pkgdesc = KreativeKorp's Apple II standard bit patterns fonts: BLoad A1024 (lo-res graphics), and BLoad A8192 (hi-res graphics).
 	pkgver = 2014.06
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.kreativekorp.com/software/fonts/apple2/
 	arch = any
 	license = custom:relay-fonts-1.2f
-	makedepends = wget
 	depends = xorg-fonts-encodings
 	source = bload.zip::https://www.kreativekorp.com/swdownload/fonts/retro/bload.zip
 	sha256sums = 0d87ff9408e7172038fe88a6ce3128af8cb716d5bce4a92cf7a33cd9b7458dd4
