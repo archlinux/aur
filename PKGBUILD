@@ -3,7 +3,7 @@
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=execline
-pkgver=2.9.9.2
+pkgver=2.10.0.0
 pkgrel=1
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('x86_64')
@@ -11,19 +11,13 @@ url="https://skarnet.org/software/${pkgname}"
 license=('ISC')
 depends=('skalibs')
 options=('!lto' '!debug')
-source=("${url}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.patch")
-sha256sums=('908ed4db3a6b3a23a205d8fd4cf2a71089156f2aeae0f54656045aafad2dee32'
-            '0eee80ca1652a3efb05d519d6e39b34478013eaf3deb1bc605c37d79cac3538d')
-
-prepare() {
-  patch -p0 -i ../${pkgname}.patch
-}
+source=("${url}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('561be2ce578604644e2263a889bbdf4736e7980401ee88556a7f9017c166dbab')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr --libdir=/usr/lib
+  ./configure --prefix=/usr --libdir=/usr/lib --enable-shared --disable-static --disable-allstatic
   make
 }
 
