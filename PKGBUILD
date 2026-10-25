@@ -1,5 +1,5 @@
 pkgname=zendrite
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="An opinionated fork of element-hq/dendrite"
 arch=(x86_64)
@@ -12,7 +12,7 @@ optdepends=("postgresql>=12: Recommended database"
 install="$pkgname.install"
 source=("git+https://codefloe.com/pat-s/zendrite.git#tag=v$pkgver"
         "$pkgname.service")
-sha256sums=('dfaa58e787878ae871cf2bdc5703f329dc6d366a389610630f63fb0b280d6d61'
+sha256sums=('61bf8d3ae0c594418a43cb6eb3c82c0a661bfae610ada5e289e935a6bf12694e'
             '8eb2c645705cd432b6d16cda65f31f06fa97f513b9d3d90e4c6e5a87bfb39513')
 
 prepare() {
@@ -30,6 +30,12 @@ build() {
     export GOPATH="$srcdir"
     go build -ldflags "-compressdwarf=false -linkmode external -bindnow -X codefloe.com/pat-s/zendrite/internal.version=$pkgver" \
              -tags goolm -o bin/ ./cmd/...
+}
+check() {
+    cd "$pkgname"
+    # Skip tests require pgsql
+    export ZENDRITE_TEST_SKIP_NODB=1
+    go test -tags goolm -v ./...
 }
 package() {
     cd "$pkgname"
