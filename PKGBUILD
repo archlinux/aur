@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.224
+pkgver=1.4.240
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -54,13 +54,13 @@ conflicts=('stably-orca-bin' 'stably-orca-git' 'orca-ide' 'orca-ide-bin')
 options=('!strip' '!debug')
 install=stably-orca.install
 
-_pnpmver=12.0.0
+_pnpmver=12.14.0
 _electronmajor=43
 # GitHub tag archives are mutable: a retag keeps the same URL and silently
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=2bb20586ebc39d605e16d95f57420e20a16e7485
+_commit=86de8f90e22a15846a49912015278c1e440d00c7
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -80,8 +80,8 @@ source_x86_64=(
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
-sha256sums=('000d15ae63a61c3562a4123df38c914ca19cd4ef08da52f8579e1aff51ea580d'
-            '5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d'
+sha256sums=('32f16ca33265e388636ae95b951186538f1de8d4e1694c5cb2036655c79f4f0f'
+            'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
             '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835'
@@ -91,8 +91,8 @@ sha256sums=('000d15ae63a61c3562a4123df38c914ca19cd4ef08da52f8579e1aff51ea580d'
             'aba5146aed46aa61abf4000285460f088698f618991d81ef9730d408173cc253'
             'c97fe80d1e55c274207f62c6b388ae4573627028624ae73bcabd0eabcc7d76e5'
             'eacec99a44af83ed452e367f343e69042a21f8d9750f15a6447b7de2991146a0')
-sha256sums_x86_64=('d0c64efab39d560ef3ae4dc8be5dd08951e5409ed2d53cb6b8317b7713c26333')
-sha256sums_aarch64=('e227252e352b8023fd1151fbe36eeb934a26eef2e0c327b8d1a1aad7b4bfbd90')
+sha256sums_x86_64=('1de98ed2e9621113b0887b06322b461efb9df73d913fc1d151039b10b7117a41')
+sha256sums_aarch64=('e7ca24224eb626a032828ec584c67903ad2f389911b849d009ed70a19f70d8d3')
 noextract=(
   "pnpm-$_pnpmver.tgz"
   "pnpm-exe-linux-x64-$_pnpmver.tgz"
@@ -129,32 +129,93 @@ prepare() {
   fi
 
   cd "$srcdir/orca-$_commit"
-  python - <<'PY'
+  ORCA_COMMIT="$_commit" python - <<'PY'
+import os
 from pathlib import Path
-
 path = Path("config/electron-builder.config.cjs")
 data = path.read_text()
-import_line = (
-    "const { verifyLinuxGlibcFloor } = "
-    "require('./scripts/verify-linux-glibc-floor.cjs')\n"
+
+replacements = [
+    (
+        "const { verifyLinuxGlibcFloor } = "
+        "require('./scripts/verify-linux-glibc-floor.cjs')\n",
+        "",
+    ),
+    (
+        "const {\n"
+        "  ensureBundledWaylandClipboard,\n"
+        "  finalizePackagedWaylandClipboard\n"
+        "} = require('./wayland-clipboard-resources.cjs')\n",
+        "",
+    ),
+    (
+        "const {\n"
+        "  appImageNodeRuntimeFpmArgs,\n"
+        "  placeAppImageNodeRuntime,\n"
+        "  verifyAppImageNodeRuntimeServesPty\n"
+        "} = require('./scripts/appimage-node-runtime.cjs')\n",
+        "const { appImageNodeRuntimeFpmArgs } = "
+        "require('./scripts/appimage-node-runtime.cjs')\n",
+    ),
+    (
+        "  beforePack: (\n"
+        "    context,\n"
+        "    mobileWebBundleDir = MOBILE_WEB_BUNDLE_DIR,\n"
+        "    ensureWaylandClipboard = ensureBundledWaylandClipboard,\n"
+        "    orcadTemplateDir = join(__dirname, '..', orcadTemplateExtraResource.from)\n"
+        "  ) => {",
+        "  beforePack: (\n"
+        "    context,\n"
+        "    mobileWebBundleDir = MOBILE_WEB_BUNDLE_DIR,\n"
+        "    orcadTemplateDir = join(__dirname, '..', orcadTemplateExtraResource.from)\n"
+        "  ) => {",
+    ),
+    (
+        "    if (context.electronPlatformName === 'linux') {\n"
+        "      ensureWaylandClipboard(context.arch)\n"
+        "    }\n",
+        "",
+    ),
+    (
+        "      {\n"
+        "        from: 'native/wayland-clipboard/.build/${arch}/orca-wayland-clipboard',\n"
+        "        to: 'bin/orca-wayland-clipboard'\n"
+        "      },\n",
+        "",
+    ),
+]
+for old, new in replacements:
+    if data.count(old) != 1:
+        raise SystemExit(f"unexpected electron-builder config shape: {old[:60]!r}")
+    data = data.replace(old, new)
+
+start = "    let appImageNodeRuntime = null\n"
+end = "    verifyPackagedMainRuntimeDeps(resourcesDir)\n"
+if data.count(start) != 1 or data.count(end) != 1:
+    raise SystemExit("unexpected Linux runtime hook shape")
+start_index = data.index(start)
+end_index = data.index(end, start_index)
+data = data[:start_index] + data[end_index:]
+
+runtime_probe = (
+    "      if (appImageNodeRuntime) {\n"
+    "        await verifyAppImageNodeRuntimeServesPty(resourcesDir, appImageNodeRuntime)\n"
+    "      }\n"
 )
-check_block = """    // Why: a Linux runner-image glibc bump silently shipped a node-pty pty.node
-    // requiring GLIBC_2.34, crashing the app on startup on Ubuntu 20.04 (#9902).
-    // Fail packaging if any bundled native binary exceeds the supported floor.
-    // Why after the prune: `pnpm install:release` widens the CPU set for cross-builds,
-    // so an arm64 slice can still carry the x64 @parcel/watcher until
-    // prunePackagedRuntimeNodeModules drops it.
-    if (context.electronPlatformName === 'linux') {
-      // Why the arch is passed: symbol-version checks pass happily on a wrong-architecture binary,
-      // so a cross-built slice could ship the host's pty.node and only fail at runtime.
-      verifyLinuxGlibcFloor(context.appOutDir, {
-        targetArch: { 1: 'x64', 3: 'arm64' }[context.arch]
-      })
-    }
-"""
-if data.count(import_line) != 1 or data.count(check_block) != 1:
-    raise SystemExit("upstream glibc-floor check changed")
-path.write_text(data.replace(import_line, "").replace(check_block, ""))
+if data.count(runtime_probe) != 1:
+    raise SystemExit("unexpected AppImage runtime probe shape")
+data = data.replace(runtime_probe, "")
+
+path.write_text(data)
+
+commit_path = Path("config/scripts/build-source-commit.mjs")
+if not commit_path.is_file():
+    raise SystemExit("missing config/scripts/build-source-commit.mjs")
+commit_path.write_text(
+    "export function resolveBuildSourceCommit() {\n"
+    f"  return '{os.environ['ORCA_COMMIT']}'\n"
+    "}\n"
+)
 PY
 }
 
@@ -192,7 +253,8 @@ build() {
   install -d "$HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$PNPM_HOME" \
     "$npm_config_cache" "$npm_config_store_dir" "$ELECTRON_BUILDER_CACHE"
 
-  "${pnpm[@]}" install --frozen-lockfile --ignore-scripts
+  "${pnpm[@]}" install --frozen-lockfile --ignore-scripts \
+    --cpu=current,x64,arm64
 
   rm -rf node_modules/electron/dist
   ln -s "$electron_dist" node_modules/electron/dist
@@ -215,7 +277,7 @@ JS
   )
 
   local target
-  for target in build:relay build:cli build:electron-vite build:web build:mobile-web; do
+  for target in build:cli build:electron-vite build:web-from-renderer build:mobile-web; do
     "${pnpm[@]}" run "$target"
   done
   "${pnpm[@]}" run ensure:electron-runtime
@@ -270,9 +332,11 @@ package() {
   cp -a "$resources/." "$pkgdir/usr/lib/$pkgname/"
   chmod -R go-w "$pkgdir/usr/lib/$pkgname"
 
-  # Pacman owns upgrades for this package. Without the generated AppImage
-  # manifest, release checks may run but electron-updater cannot self-apply.
-  rm -f "$pkgdir/usr/lib/$pkgname/app-update.yml"
+  # System Electron and the Arch package own updates; this marker is only for
+  # upstream's AppImage target and must not leak into the installed resources.
+  rm -f \
+    "$pkgdir/usr/lib/$pkgname/app-update.yml" \
+    "$pkgdir/usr/lib/$pkgname/package-type"
   # serve-sim carries macOS helper binaries and authoring sources even in its
   # Linux npm package. They are unreachable on Linux and confuse ELF analysis.
   local serve_sim="$pkgdir/usr/lib/$pkgname/node_modules/serve-sim"
