@@ -3,7 +3,7 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 pkgver="1.0"
-pkgrel="2"
+pkgrel="3"
 _name="notebook"
 pkgname="$_name"
 pkgdesc='Markdown Desktop Wiki'
@@ -33,6 +33,7 @@ package() {
     install -Dm644 "${_name}-watcher.service" "$pkgdir/usr/lib/systemd/user/${_name}-watcher.service"
     install -Dm644 "${_name}_server.py" "$pkgdir/usr/share/$_name/${_name}_server.py"
     install -Dm644 "tamplate.html" "$pkgdir/usr/share/$_name/tamplate.html"
+    install -Dm644 "${_name}.js" "$pkgdir/usr/share/$_name/${_name}.js"
     install -Dm644 "style.css" "$pkgdir/usr/share/$_name/style.css"
     install -Dm644 "${_name}.lua" "$pkgdir/usr/share/$_name/${_name}.lua"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_name/LICENSE"
