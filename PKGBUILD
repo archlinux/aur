@@ -2,8 +2,8 @@
 
 pkgname=tome4-zomnibus_addon
 _pkgname=tome-zomnibus
-pkgver='17.8.14'
-_pkgver='207'
+pkgver='17.9.6'
+_pkgver='217'
 pkgrel='1'
 pkgdesc="ZOmnibus Addon for tome4."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://te4.org/games/addons/tome/zomnibus-addon-pack"
 license=('custom')
 depends=('tome4>=1.7.4')
 source=("https://te4.org/sites/default/files/games-addons/${_pkgname}_${_pkgver}.teaa")
-sha512sums=('f39f91b4ae21effa3f2a58360a08ff8d05cd655d2fb843bdb40d77b577149c735becc56c1f7c4440f6d974addc2acac207a246a5bdea2cdeaf4d7d4614379bcc')
+sha512sums=('9a0e8600d90975701b30365f9b85ae57297c9d10cada2aed04e5c3caaf3e716646ee130bb5ff336d0d29872fc661072b75cfccca8fbff1a7fe58a31f21388ab4')
 noextract=("${_pkgname}_${_pkgver}.teaa")
 
 package() {
