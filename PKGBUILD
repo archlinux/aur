@@ -92,21 +92,21 @@
 # daemon starts and serves N/A (DriverMissing) sections with exit 0.
 
 pkgname=ramsleuth-bin
-pkgver=2.4.17   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
+pkgver=2.4.18   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT GPL-2.0-only)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
-# v2.4.17: FINAL pin — the sha256 of the published v2.4.17 release
-# tarball (the release workflow's ramsleuth-2.4.17-x86_64.tar.zst
+# v2.4.18: FINAL pin — the sha256 of the published v2.4.18 release
+# tarball (the release workflow's ramsleuth-2.4.18-x86_64.tar.zst
 # asset, verified two ways: its .sha256 sidecar and a direct download
-# + sha256sum; both agree). Replaces the v2.4.16 placeholder (the
-# published v2.4.14 asset's hash, carried until a v2.4.16 asset
-# existed — that asset predates the v2.4.17 changes).
+# + sha256sum; both agree). Replaces the v2.4.17 pin
+# (d080ef039a3842b11d5a21af3fab0eb9115e0626b0be30d14019fe5532b0feb0,
+# the published v2.4.17 asset).
 #
-sha256sums=('d080ef039a3842b11d5a21af3fab0eb9115e0626b0be30d14019fe5532b0feb0')
+sha256sums=('1397ecd186d9b9e498419823b780358d4ca0cb4c6a1857d3513df25f6be27ca2')
 install=ramsleuth-bin.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
