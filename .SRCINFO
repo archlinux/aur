@@ -1,6 +1,6 @@
 pkgbase = unsampled-piano
 	pkgdesc = Physically modelled piano, no samples: standalone player, CLAP and VST3 plugins
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mgth/unsampled-piano
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = unsampled-piano
 	depends = wayland
 	optdepends = pipewire-jack: the player as a graph node with MIDI in and out (or jack2)
 	options = !lto
-	source = unsampled-piano-0.1.0.tar.gz::https://github.com/mgth/unsampled-piano/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = a44638341471867f26ae1fb95f9dfe4d6bef96daf5c99defa821c10ebc15b1de
+	source = unsampled-piano-0.2.0.tar.gz::https://github.com/mgth/unsampled-piano/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = dc99606f36ce19d18fc86a496fe3e10cedc8fa9b43c4fce893ba72f65d66ff2c
 
 pkgname = unsampled-piano

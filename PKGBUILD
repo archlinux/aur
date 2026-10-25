@@ -4,7 +4,7 @@
 # (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=unsampled-piano
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Physically modelled piano, no samples: standalone player, CLAP and VST3 plugins"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=('pipewire-jack: the player as a graph node with MIDI in and out (or 
 # makepkg's LTO turns libspa's C wrappers into bitcode Rust's linker cannot read.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a44638341471867f26ae1fb95f9dfe4d6bef96daf5c99defa821c10ebc15b1de')
+sha256sums=('dc99606f36ce19d18fc86a496fe3e10cedc8fa9b43c4fce893ba72f65d66ff2c')
 
 prepare() {
     cd "$pkgname-$pkgver"
