@@ -1,0 +1,14 @@
+pkgbase = rhythmbox-folder-shuffle
+	pkgdesc = Continuous folder shuffle plugin for Rhythmbox
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/username227/Rhythmbox-Folder-Shuffle
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = rhythmbox
+	depends = libpeas
+	depends = python-gobject
+	source = rhythmbox-folder-shuffle-1.0.0.tar.gz::https://github.com/username227/Rhythmbox-Folder-Shuffle/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 18ae2991504e7ad637dd0ce57b8f2b61d39e90967f87f1713b12f1a4d36c7dbd
+
+pkgname = rhythmbox-folder-shuffle
