@@ -1,6 +1,6 @@
 # Maintainer: Zhiqiang ZHOU <aur@strrl.dev>
 pkgname=raft-desktop-bin
-pkgver=1.21.24
+pkgver=1.21.33
 pkgrel=1
 pkgdesc='Collaborative human and AI messaging desktop app'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('raft-desktop')
 conflicts=('raft-desktop')
 options=('!strip' '!debug')
 source=("https://github.com/botiverse/desktop/releases/download/v${pkgver}/Raft-Desktop-${pkgver}-amd64.deb")
-sha256sums=('d18a90eb4c22c329410542c57d69dc167a2b0a8243dd9361af80dd3b3c063d0b')
+sha256sums=('02c7c763cfc6855250f73a8b1e12dee5e57d4964c3f1f4426581db9b3365ad38')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir"
@@ -20,10 +20,8 @@ package() {
   rm "$pkgdir/opt/raft-desktop/resources/app-update.yml"
   rm "$pkgdir/opt/raft-desktop/resources/package-type"
   install -dm755 "$pkgdir/usr/bin"
-  ln -s '/opt/raft-desktop/@botiverseraft-desktop-electron' "$pkgdir/usr/bin/raft-desktop"
+  ln -s '/opt/raft-desktop/raft-desktop' "$pkgdir/usr/bin/raft-desktop"
 
-  mv "$pkgdir/usr/share/applications/@botiverseraft-desktop-electron.desktop" \
-    "$pkgdir/usr/share/applications/raft-desktop.desktop"
   sed -i \
     -e 's|^Exec=.*|Exec=raft-desktop %U|' \
     -e 's|^Comment=.*|Comment=Collaborative human and AI messaging|' \
