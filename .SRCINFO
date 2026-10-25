@@ -1,0 +1,17 @@
+pkgbase = flydigi-vader4d
+	pkgdesc = Userspace DInput driver for Flydigi Vader 4 Pro
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JochemKuipers/flydigi-spacestation-linux
+	install = flydigi-vader4d.install
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	depends = systemd
+	source = flydigi-vader4d-0.1.0.tar.gz::https://github.com/JochemKuipers/flydigi-spacestation-linux/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = flydigi-vader4d
