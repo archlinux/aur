@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=fortitude
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A Fortran linter, inspired by (and built upon) Ruff.'
 arch=(x86_64)
@@ -13,8 +13,8 @@ depends=(glibc libgcc libgit2)
 makedepends=(git cargo)
 checkdepends=(cargo-nextest)
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('ff10d6e9c3f88dcc0bb56ffb57bd1e53c6316d8164b4ca27a2dd87bf880bfc26291781af1020755f1314fe04ad7fa7818acbb5cb0f64492b91cffa62f305afba')
-b2sums=('56840e3d7aea8215c41e7e2b02754aebb37cacab41e742c657966aadd7615357bfd7028da6321dabc871121da9dbfcad750c2d623d94391a6cc7b558f1e3da67')
+sha512sums=('c30ffeb8f4b02134bd2d7e0100ac82460dd5481c316847e2231c6a582d0563f0c296e00b49c295bdd61ce1465e3dcbe1c69b787234380ebc12a413aaa04346c2')
+b2sums=('2f3f78994a2db564222a2b861e0c8dd123a2d8033fce77376a104d5192dd862c72e07ba48f0e47bc34912063dd6985ef7154a85e044a9902d874051cfcd93823')
 options=('!lto')
 
 prepare() {
