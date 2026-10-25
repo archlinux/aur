@@ -14,5 +14,7 @@ EOF
 
 post_upgrade() {
   # The running daemon keeps the old efrd and its copy of efr-sbx until it restarts.
-  echo '==> efr-code: restart the daemon to use the new version: systemctl --user restart efrd'
+  # NOTE: a new unit file, such as the Delegate=yes of 0.0.5, needs a daemon-reload first.
+  echo '==> efr-code: restart the daemon to use the new version:'
+  echo '==>   systemctl --user daemon-reload && systemctl --user restart efrd'
 }

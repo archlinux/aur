@@ -5,7 +5,7 @@
 # They link only libc.so.6, libm.so.6 and libgcc_s.so.1 (no RPATH); any current
 # Arch glibc satisfies them. The efr-code package builds the same version from source.
 pkgname=efr-code-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -27,7 +27,7 @@ _dist="${pkgname%-bin}-$pkgver-$CARCH-linux"
 source_x86_64=("$url/releases/download/v$pkgver/$_dist.tar.gz")
 # Filled in for each release by .github/workflows/aur.yml with the value that
 # upstream publishes in $_dist.tar.gz.sha256 next to the tarball.
-sha256sums_x86_64=('9d3c42043ca218d0987db371d167128596bf57f51d8af3b2f4c081d21262e880')
+sha256sums_x86_64=('290dfd2e2af58fdd56e200b5e3124dd38c1a67e80deaf2e10892f36b3a8e0c73')
 
 package() {
   cd "$_dist"
@@ -38,6 +38,8 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/zsh/plugins/efr/" shell/zsh/efr.plugin.zsh
   # release.yml already points this unit at /usr/bin/efrd.
   install -Dm0644 -t "$pkgdir/usr/lib/systemd/user/" systemd/efrd.service
+  # Each background job runs in a cgroup of its own below efrd's (ADR 0021).
+  grep -qx 'Delegate=yes' "$pkgdir/usr/lib/systemd/user/efrd.service"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
   install -Dm0644 -t "$pkgdir/usr/share/doc/efr-code/" README.md \
     docs/config.md docs/permissions.md docs/sandbox.md
