@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='tuios-bin'
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Terminal UI Operating System - A terminal-based window manager with tmux-style keybindings'
 url='https://github.com/Gaurav-Gosain/tuios'
@@ -12,16 +12,16 @@ provides=('tuios')
 conflicts=('tuios')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('538a9f240c153029375e6d24369b685316a00c04f8341306b07811f68c699c5d')
+sha256sums_aarch64=('065e44cf5133fdde81e7afd8708c70471331cd3c79a325a67dc34439980ca1ed')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('ad55729681f56d690589ef242f67e512ff5b13493a4c5fc225528299f0d54cc9')
+sha256sums_armv7h=('43f8c264a827efb0548abbe4cae0b3f84431f05341f6a71fcd9b9c3c6282caa3')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('453e37730ab6fd3267f30ecbea10ee3a03f7c5e2ba39b390f3343620e184aabe')
+sha256sums_i686=('6ebac6d3f30abe4ba538a409220b9582f5869e687b78db818360d538a5a966da')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('85a4bf339a9a6793e0b3d15abdccd9a96ca8d2ff76072007ec99be31f1a16a5f')
+sha256sums_x86_64=('ef22ec82cda0db703f288da0fd7ccaec2617b4643b2e6cda96338b6b8490b691')
 
 package() {
   # bin
@@ -29,6 +29,8 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "./licenses/sketch/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/sketch/LICENSE"
+  install -Dm644 "./licenses/sketch/NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/sketch/NOTICE"
 
   # documentation
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
