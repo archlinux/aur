@@ -1,6 +1,6 @@
 pkgbase = kformat
 	pkgdesc = Format disks, SSDs and USB sticks simply and safely (Rust + Kirigami + udisks2)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/thongor77/kformat
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = kformat
 	optdepends = dosfstools: format as FAT32
 	optdepends = e2fsprogs: format as ext4
 	optdepends = plasma-workspace: "Format with kformat…" action in the device notifier
-	source = kformat-0.1.0.tar.gz::https://github.com/thongor77/kformat/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 749bfd3e4092458aca85be79be04a0cff7002d1135e565cf4f1129ab03c8d468
+	source = kformat-0.1.1.tar.gz::https://github.com/thongor77/kformat/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 9a8681533010b057e2e26daca4a1de9606f48d8d11f9789107121ed95ff5ccfd
 
 pkgname = kformat

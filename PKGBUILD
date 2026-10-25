@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=kformat
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Format disks, SSDs and USB sticks simply and safely (Rust + Kirigami + udisks2)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('exfatprogs: format as exFAT'
             'e2fsprogs: format as ext4'
             'plasma-workspace: "Format with kformat…" action in the device notifier')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('749bfd3e4092458aca85be79be04a0cff7002d1135e565cf4f1129ab03c8d468')
+sha256sums=('9a8681533010b057e2e26daca4a1de9606f48d8d11f9789107121ed95ff5ccfd')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -46,6 +46,8 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 target/release/kformat-app "$pkgdir/usr/bin/kformat"
+    install -Dm644 packaging/icons/hicolor/scalable/apps/kformat.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/kformat.svg"
     install -Dm644 packaging/kformat.desktop "$pkgdir/usr/share/applications/kformat.desktop"
     install -Dm644 packaging/solid/kformat-format.desktop \
         "$pkgdir/usr/share/solid/actions/kformat-format.desktop"
