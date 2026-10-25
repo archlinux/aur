@@ -2,7 +2,7 @@
 
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -27,9 +27,9 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("${_pkgname}-${pkgver}-src.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-x86_64.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-aarch64.zip")
-sha512sums=('52d128513149bed4c968edfbe8e8b13b33088dceb1840787e3d0e1d8fb9ff58de134e1bab5e84a46c735d1a1645d6797e8a2ac41575a8065627203ffc28acea3')
-sha512sums_x86_64=('f79079f077f540fa2fd03c5fdc636abcf2a9607903de1d2c69bb689310281a3d86d0f4df1eb12be965de9bc89089a52c4a236afe3145c8e44922a2a0a52e9629')
-sha512sums_aarch64=('dbac8027d5ec3f92a6681caca151f6bb386cbe9505fb52c790717c428b120132afc7bc8ed15dacfbbf9340f7abee170ec96363ca82231854c95d8d3d8b991497')
+sha512sums=('5d5e397e204583f07043a7d18843cf6ec687cb70a509b449d2dd2bed985dbeafa5fad76cc62236dbd5ca87139821efc283be536554363fb59fae4aefb0fe7f38')
+sha512sums_x86_64=('1d18b123d69ee31970bef79dbd2786c219801fcd1b4eca309453217619fc528a0c15945b1ae6d70c8842dd1aefee7bc1c47eb629baf666d2007804a5c9085daa')
+sha512sums_aarch64=('78929c6bdacdda87be408edd1d0c14432a3f794fcd3d3b2374328ca84eca9ca026f080df2bdf0b4f8e6f8555c9e8a6e426ac2e42c91743205434b376ee25b299')
 
 check() {
 	"${srcdir}/${_pkgname}" --check-libmpv
