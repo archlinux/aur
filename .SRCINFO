@@ -1,6 +1,6 @@
 pkgbase = lsa-sysinfo
 	pkgdesc = Linux System Audit: clean-room Linux implementation of AIDA64 Business features (AIDA64 by FinalWire Ltd.) - Cache & Memory Benchmark
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/eugenesflanagin-spec/lsa-sysinfo
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = lsa-sysinfo
 	depends = hicolor-icon-theme
 	depends = hwdata
 	optdepends = srs-sysinfo: srs-root DMI cache for memory speed / type details
-	source = lsa-sysinfo-0.1.3.tar.gz::https://github.com/eugenesflanagin-spec/lsa-sysinfo/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = f2b0114e1c5e21afc13a2c4a6afc71350e3899d13992b6c69e0252d1bb171c9e
+	optdepends = ryzen_smu-dkms-git: North Bridge Clock (FCLK) on Ryzen 7000 desktop CPUs
+	optdepends = xdg-utils: open the user guide from the Guide button / F1 / lsa guide
+	source = lsa-sysinfo-0.2.0.tar.gz::https://github.com/eugenesflanagin-spec/lsa-sysinfo/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c2fabc792699cc6044c600fbc9df5af69de737594ce5d90a5f88f2e88f057bac
 
 pkgname = lsa-sysinfo
