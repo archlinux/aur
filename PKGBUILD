@@ -1,6 +1,6 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=embridge-bin
-pkgver=3.3.0.2
+pkgver=3.3.0.6
 pkgrel=1
 pkgdesc='emBridge Service to access crypto tokens'
 arch=(x86_64)
@@ -8,7 +8,7 @@ url='https://embridge.emudhra.com'
 license=('custom')
 depends=('ca-certificates' 'curl' 'libunwind' 'lttng-ust2.12' 'numactl' 'openssl' 'icu')
 source=("emBridge-${pkgver}.zip::https://resources.emudhra.com/hs/Ubuntu/latest/emBridge.zip")
-sha512sums=('0f053fddabb8b17b4e23bee2be6f06597294af7a4ea05255ec6b894968d6af8b2a75b7b31012d4b1ddcbb5515d79823301a03e74d8e3bfb72dcd74c2cf1aa542')
+sha512sums=('557cca7e5daa567f2d248b7e85153d8c0538b42c78a3b1962341ddf4d8485c8dec4e40b09132de99361c18dd780daa99a69b6478bdc75ffc8a6ecf8504ab3f80')
 options=('!debug' 'libtool' 'staticlibs' '!strip')
 
 package() {
