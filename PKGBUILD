@@ -1,5 +1,5 @@
 pkgname=pollen-nightly-bin
-pkgver=0.1.6.18
+pkgver=0.8.6.23
 pkgrel=2
 pkgdesc='Pollen'
 arch=('x86_64')
