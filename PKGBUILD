@@ -1,14 +1,14 @@
 _pkgname=rivu
 pkgname=rivu-git
-pkgver=0.2.2.r1.287f4ae
+pkgver=0.2.14.r27.ee01766
 pkgrel=1
-pkgdesc='a lightweight, local-first Linux music player'
+pkgdesc='a lightweight, local-first linux music player'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rtgiskard/${_pkgname}"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'fontconfig' 'libpipewire>=1.2' 'libxkbcommon' 'opus' 'wayland' 'libglvnd' 'vulkan-icd-loader' 'ttf-nerd-fonts-symbols-mono' 'hicolor-icon-theme')
-makedepends=('git' 'rust>=1.99' 'clang' 'pkgconf' 'ffmpeg>=9')
-optdepends=('ffmpeg>=9: optional FFmpeg decoding' 'xdg-desktop-portal: desktop file chooser')
+depends=('gcc-libs' 'glibc' 'fontconfig' 'libpipewire>=1.2' 'libxkbcommon' 'wayland' 'libglvnd' 'vulkan-icd-loader' 'ttf-nerd-fonts-symbols-mono' 'hicolor-icon-theme')
+makedepends=('git' 'rust>=1.99' 'clang' 'cmake' 'pkgconf' 'ffmpeg>=9')
+optdepends=('ffmpeg>=9: optional FFmpeg decoding' 'onnxruntime>=1.23: native ONNX speech inference' 'xdg-desktop-portal: desktop file chooser')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!lto')
@@ -33,7 +33,7 @@ package() {
 	cd ${_pkgname}
 	install -Dm755 .cache/target/release/rivu "$pkgdir/usr/bin/rivu"
 	install -Dm755 .cache/target/release/rivu-migrate "$pkgdir/usr/bin/rivu-migrate"
+	install -Dm644 data/applications/rivu.desktop "$pkgdir/usr/share/applications/rivu.desktop"
 	install -Dm644 data/icons/rivu.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/rivu.svg"
 	install -Dm644 data/icons/rivu.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/rivu.png"
-	install -Dm644 data/applications/rivu.desktop "$pkgdir/usr/share/applications/rivu.desktop"
 }
