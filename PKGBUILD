@@ -11,7 +11,7 @@ url="https://codeberg.org/guile-gcrypt/guile-gcrypt"
 license=('LGPL-3.0-or-later')
 depends=('guile' 'libgcrypt')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('79ea92185f5771ec90459cef2ee8a43ac04cf37ae571182c4c5ca37ac5626951')
+sha256sums=('92dd5d2253ecb96a30483850528a76f6e1d7e53e5163670a7d9126f78fe4cfbe')
 
 build() {
 	cd "${srcdir}/${pkgname}"
