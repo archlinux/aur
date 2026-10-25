@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 url='https://www.hunk.dev/'
 arch=(aarch64 x86_64)
@@ -15,7 +15,7 @@ provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz"
         'hunk-embed-envs.patch')
-b2sums=('6aaa4167e59cae6aad332b26468a492c7e514317d535e3eb2e370681161b8309df6be6f1dc4b83de3bad15709e783381937df764f5a17004facbc19e828a19f7'
+b2sums=('49751f37737da612acaf6f4d911db772cbda36645e2b85e4bf1f68b9a7ff75e0ad78a1d1f2ef15f9504561dce9b91f133b92073e940762bf6982f1666947d613'
         '019c586f88e91dc67d37962142e425f6f5021826e70a02030ac8f212dc2a12006f001ccae658aa9eb937cbccc064ea804e29279d8645e96f15565ca17b2b4ce0')
 
 _install_dir=/usr/lib/hunkdiff
@@ -27,7 +27,6 @@ prepare() {
   patch -t -Np1 -i ../hunk-embed-envs.patch
 
   bun install \
-    --production \
     --frozen-lockfile \
     --ignore-scripts
 }
