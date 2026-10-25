@@ -3,9 +3,9 @@
 pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.6.3
+pkgver=2.6.4
 _pkgver="v$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -28,7 +28,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-b2sums=('59d106dcb8da7882e5b157abea3faa65a16aa73ca5de308c783a3f64de1ab5a1d9e2f2b10eaf922c07b2919ba40f4ef4d9c378e541fa6b4b7bce143a2dda8555')
+b2sums=('87c10c0827d10a8e10078010ff91c42ea7db7406148ffe3ed9e35050a14455b0fd3bd788016a165be1a3bc3d0c4a8ef507f489b239618078c820992f2dd93b00')
 
 _runtime() {
     if [ "${CARCH}" = 'aarch64' ]; then
@@ -44,8 +44,6 @@ prepare() {
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
     sed -i "s/^StartupWMClass=.*$/StartupWMClass=${_name}/g" "Flatpak/${_app_id}.desktop"
     sed -i "s/^StartupWMClass=.*$/StartupWMClass=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
-    sed -i '/SetApplicationInteractable/d' 'WheelWizard.Test/Views/Shell/ViewModels/HomeViewModelTests.cs'
-    sed -i 's/        var setup = action is WheelWizardStatus.NotInstalled or WheelWizardStatus.OutOfDate;/        var setup = false;/' 'WheelWizard/Views/Shell/ViewModels/HomeViewModel.cs'
     popd
 }
 
