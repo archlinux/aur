@@ -1,7 +1,7 @@
 # Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=wayweather-git
-pkgver=3.0.1_r2_g79e881b
+pkgver=3.0.1_r5_g9ab786e
 pkgrel=1
 pkgdesc="Weather module for Waybar with saved locations, GPS/IP geolocation, a TUI and a C library"
 arch=('x86_64' 'aarch64')

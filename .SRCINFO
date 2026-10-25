@@ -1,6 +1,6 @@
 pkgbase = wayweather-git
 	pkgdesc = Weather module for Waybar with saved locations, GPS/IP geolocation, a TUI and a C library
-	pkgver = 3.0.1_r2_g79e881b
+	pkgver = 3.0.1_r5_g9ab786e
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/wayweather
 	arch = x86_64
