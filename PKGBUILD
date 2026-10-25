@@ -2,7 +2,7 @@
 
 _name=logfire-api
 pkgname=python-$_name
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Shim for the Logfire SDK which does nothing unless Logfire is installed.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling'
              'python-build'
              'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('06553f4a4b1b54d094dd01708f51cde69ccd5e8a06fc2664bece3491b593390d')
+sha256sums=('e3e4265c926dd505d7986d1970f5a4d8fb1b20fe033d2ff12b419ca7f163b533')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
