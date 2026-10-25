@@ -9,6 +9,7 @@ pkgbase = alda
 	depends = java-runtime>=8
 	provides = alda
 	conflicts = alda-bin
+	conflicts = icedtea-web
 	source = alda-release-2.4.7.tar.gz::https://codeload.github.com/alda-lang/alda/tar.gz/refs/tags/release-2.4.7
 	source = alda-player
 	b2sums = 00c26c76f063eb421eb39bbda8732333b84797cfe82d2d97ca2ff1aed46c7b97772a21c96c1f6809410e3cd921f30d279e5df971f79231021666615b64afc53a
