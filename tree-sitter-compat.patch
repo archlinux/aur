@@ -1,0 +1,65 @@
+--- a/package.json
++++ b/package.json
+@@ -1636,7 +1636,7 @@
+     "tree-sitter-wasms": "^0.1.13",
+     "ts-morph": "^27.0.2",
+     "vis-network": "10.1.0",
+-    "web-tree-sitter": "^0.26.13",
++    "web-tree-sitter": "0.25.10",
+     "zod": "^4.6.7"
+   },
+   "devDependencies": {
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -26,7 +26,7 @@
+         "tree-sitter-wasms": "^0.1.13",
+         "ts-morph": "^27.0.2",
+         "vis-network": "10.1.0",
+-        "web-tree-sitter": "^0.26.13",
++        "web-tree-sitter": "0.25.10",
+         "zod": "^4.6.7"
+       },
+       "bin": {
+@@ -2963,7 +2963,7 @@
+       "version": "1.41.5",
+       "resolved": "https://registry.npmjs.org/@types/emscripten/-/emscripten-1.41.5.tgz",
+       "integrity": "sha512-cMQm7pxu6BxtHyqJ7mQZ2kXWV5SLmugybFdHCBbJ5eHzOo6VhBckEgAT3//rP5FwPHNPeEiq4SmQ5ucBwsOo4Q==",
+-      "dev": true,
++      "devOptional": true,
+       "license": "MIT"
+     },
+     "node_modules/@types/esrecurse": {
+@@ -8699,10 +8699,18 @@
+       }
+     },
+     "node_modules/web-tree-sitter": {
+-      "version": "0.26.13",
+-      "resolved": "https://registry.npmjs.org/web-tree-sitter/-/web-tree-sitter-0.26.13.tgz",
+-      "integrity": "sha512-5bUZ7vbQ1kcondet96wzP974+JfCZDeQ7bTpacICm2nnvHpa5cO0ByRsoMcAhUP+743vpkb4m0BFlVSm+Ye9VA==",
+-      "license": "MIT"
++      "version": "0.25.10",
++      "resolved": "https://registry.npmjs.org/web-tree-sitter/-/web-tree-sitter-0.25.10.tgz",
++      "integrity": "sha512-Y09sF44/13XvgVKgO2cNDw5rGk6s26MgoZPXLESvMXeefBf7i6/73eFurre0IsTW6E14Y0ArIzhUMmjoc7xyzA==",
++      "license": "MIT",
++      "peerDependencies": {
++        "@types/emscripten": "^1.40.0"
++      },
++      "peerDependenciesMeta": {
++        "@types/emscripten": {
++          "optional": true
++        }
++      }
+     },
+     "node_modules/which": {
+       "version": "2.0.2",
+--- a/esbuild.js
++++ b/esbuild.js
+@@ -90,7 +90,7 @@
+ 
+   const wasmFiles = [
+     {
+-      src: 'node_modules/web-tree-sitter/web-tree-sitter.wasm',
++      src: 'node_modules/web-tree-sitter/tree-sitter.wasm',
+       fileName: 'tree-sitter.wasm',
+     },
+     {

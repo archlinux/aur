@@ -1,0 +1,20 @@
+pkgbase = graph-it-live
+	pkgdesc = Local code dependency and call-graph analysis CLI and MCP server
+	pkgver = 1.21.0
+	pkgrel = 1
+	url = https://github.com/magic5644/Graph-It-Live
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22
+	optdepends = git: analysis of changes against Git revisions
+	options = !strip
+	options = !debug
+	source = graph-it-live-1.21.0.tar.gz::https://github.com/magic5644/Graph-It-Live/archive/refs/tags/v1.21.0.tar.gz
+	source = tree-sitter-compat.patch
+	source = stage-runtime.cjs
+	sha256sums = c97085159641d75ef541ef88d3b68c353cae4dbad2abde6b9aa29c8d84c55a44
+	sha256sums = fbd0302a4ccd6119d049314520a7525a748a77ccb613e67bc8413d5118cf0568
+	sha256sums = 61a7c67112bc8566efc783724021c11d579be21de702f87f8c328c8fbfb3eb82
+
+pkgname = graph-it-live
