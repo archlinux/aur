@@ -4,7 +4,7 @@
 
 _pkgname=ntfy
 pkgname=${_pkgname}sh-bin
-pkgver=2.32.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop (upstream bin)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -28,9 +28,9 @@ source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_
 options=(!debug !strip) # not needed as this is binary
 
 sha256sums=('0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
-sha256sums_x86_64=('681819773a69079c0efdd64c096cc2149d9290243feb3e31dd3ef04a2c85f1ed')
-sha256sums_aarch64=('408c34d833f5fa7cc1a05b8fa43ea6f2b78a42bd8ea2f9248bc728e78b90a891')
-sha256sums_armv7h=('feda554c21ef68176b0defa704815eec64d5751557fa16eb041de778d9c2b476')
+sha256sums_x86_64=('f78e2645c6457363f37d5d1c4f7cddb7e9658abd197824a7387a1a38d92bb895')
+sha256sums_aarch64=('d585fe48d1b2e80b1b1719977bb651cc7d9259bacb817aa8a8d5b4c8f0c9e946')
+sha256sums_armv7h=('c8c3a58301db93a9f5de32c0b028ce09485e9dcb0fa1433b9171e073c23e8342')
 
 package() {
     case "${CARCH}" in
