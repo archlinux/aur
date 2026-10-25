@@ -1,6 +1,6 @@
 pkgbase = rivu-git
-	pkgdesc = A local-first Linux music player with desktop, CLI, TUI and headless modes
-	pkgver = 0.2.0.r0.ba47f81
+	pkgdesc = a lightweight, local-first Linux music player
+	pkgver = 0.2.2.r1.287f4ae
 	pkgrel = 1
 	url = https://github.com/rtgiskard/rivu
 	arch = x86_64

@@ -1,8 +1,8 @@
 _pkgname=rivu
 pkgname=rivu-git
-pkgver=0.2.0.r0.ba47f81
+pkgver=0.2.2.r1.287f4ae
 pkgrel=1
-pkgdesc='A local-first Linux music player with desktop, CLI, TUI and headless modes'
+pkgdesc='a lightweight, local-first Linux music player'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rtgiskard/${_pkgname}"
 license=('GPL-3.0-or-later')
@@ -32,7 +32,8 @@ build() {
 package() {
 	cd ${_pkgname}
 	install -Dm755 .cache/target/release/rivu "$pkgdir/usr/bin/rivu"
-	install -Dm644 data/applications/rivu.desktop "$pkgdir/usr/share/applications/rivu.desktop"
+	install -Dm755 .cache/target/release/rivu-migrate "$pkgdir/usr/bin/rivu-migrate"
 	install -Dm644 data/icons/rivu.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/rivu.svg"
 	install -Dm644 data/icons/rivu.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/rivu.png"
+	install -Dm644 data/applications/rivu.desktop "$pkgdir/usr/share/applications/rivu.desktop"
 }
