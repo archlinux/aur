@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
-pkgver=0.0.0.r1890.ge7a272f
+pkgver=0.0.0.r2226.g7992b0b
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -18,9 +18,6 @@ depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls3' 'rnnoise
 makedepends=('cef' 'cmake' 'libfdk-aac' 'x264' 'swig' 'sndio' 'nlohmann-json'
              'ffnvcodec-headers' 'websocketpp' 'asio' 'extra-cmake-modules'
              'git' 'rust')
-conflicts=("$_obs_studio"
-           "$_obs_studio-plugin-browser"
-)
 source=(
   "$pkgbase::git+$url/$_obs_studio.git"
   "${pkgbase}-libdshowcapture::git+$url/libdshowcapture.git"
@@ -87,8 +84,9 @@ build() {
     -S $pkgbase
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
-    -DENABLE_BRAND_RUST=ON
+    -DOBS_BRAND_RUST=ON
     -DOBS_RUST_VERSION="${pkgver%.r*}"
+    -DENABLE_RUST_LIBOBS=ON
     -DMbedTLS_DIR="/usr/lib/mbedtls3/cmake/MbedTLS"
     -DENABLE_BROWSER=ON
     -DCEF_API_VERSION=$_cef_api_version
@@ -123,6 +121,7 @@ package_obs-studio-rust-git() {
 
 package_obs-studio-rust-plugin-browser-git() {
   provides=("$_obs_studio-rust-plugin-browser=$pkgver" "obs-studio-plugin-browser=$_obs_ver")
+  conflicts=("$_obs_studio-plugin-browser")
   pkgdesc="CEF-based OBS Studio browser plugin"
   url="https://obsproject.com/kb/browser-source"
   depends=('cef' 'glibc' 'libgcc' 'libstdc++' 'libx11' "$_obs_studio-rust" 'qt6-base')
