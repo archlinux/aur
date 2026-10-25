@@ -1,7 +1,7 @@
 # Maintainer: TheUnknownThing <TheUnknownThing@users.noreply.github.com>
 
 pkgname=pcl-me-bin
-pkgver=1.0.0beta.5
+pkgver=1.0.0beta.7
 pkgrel=1
 pkgdesc='Cross-platform Minecraft launcher based on Plain Craft Launcher'
 arch=('x86_64' 'aarch64')
@@ -40,8 +40,8 @@ sha256sums=(
   '3999c85af1820068b476271815dec87d47ce531b92aaa45b10fa2f1333af408c'
   '15c72598c29e2646a8d3c900d53d7e5eb6926fc033373b725e8537245de98f0a'
 )
-sha256sums_x86_64=('cf372580610f4587f903a2adb15f0d18ab90a65d76b914a13ffc41cda616d551')
-sha256sums_aarch64=('bdac86aea08fbd1dfcef88dcbfcac0cd29852f9b95a187729659c3165ef8ae67')
+sha256sums_x86_64=('2f2fef8363a86afef5b04c46967a3454cc938387dcd81c99d4ca0a6f69fca325')
+sha256sums_aarch64=('cbaaafc37c7c6753974824051f07d6dc4716ae34095c97f86863aa0dcec4e7c3')
 
 package() {
   install -Dm755 "${srcdir}/PCL-ME" "${pkgdir}/usr/bin/pcl-me"
