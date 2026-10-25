@@ -14,7 +14,7 @@ clean-downloads:
 	@rm -vf ./openvox-agent*deb
 
 clean-packages:
-	@rm -vf ./openvox-agent*tar.zst ./openvox-agent*tar.gz
+	@rm -vf ./openvox8-agent*tar.zst ./openvox8-agent*tar.gz
 
 clean-builds:
 	@rm -rvf ./pkg ./src
