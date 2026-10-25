@@ -1,13 +1,13 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 _pkgbase=todav
-_uuid=todav@selfref.dev
+_uuid=todav@aperte.dev
 pkgname=gnome-shell-extension-todav-git
 pkgver=1.0.0.r0.g8523762
 pkgrel=1
 pkgdesc='GNOME Shell companion extension for Todav: tasks, month and agenda in the top bar'
 arch=('any')
-url='https://github.com/SelfRef/todav'
+url='https://github.com/AperteDev/todav'
 license=('GPL-3.0-or-later')
 depends=('gnome-shell>=1:49' 'todav')
 makedepends=('git' 'gettext')
