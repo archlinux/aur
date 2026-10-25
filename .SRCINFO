@@ -1,0 +1,14 @@
+pkgbase = rhythmbox-albumartist-filter
+	pkgdesc = Continuous album shuffle plugin for Rhythmbox
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/username227/Rhythmbox-AlbumArtist-Filter
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = rhythmbox
+	depends = libpeas
+	depends = python-gobject
+	source = rhythmbox-albumartist-filter-1.0.0.tar.gz::https://github.com/username227/Rhythmbox-AlbumArtist-Filter/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 5b837bff078ec3c2423b21592cb4aa23ad235c5ec4706170268a5ce4361a418e
+
+pkgname = rhythmbox-albumartist-filter
