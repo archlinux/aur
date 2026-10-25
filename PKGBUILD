@@ -4,7 +4,7 @@
 _author=EXODIST
 _dist=Test-Simple
 pkgname=perl-test-simple
-pkgver=1.302225
+pkgver=1.302226
 pkgrel=1
 pkgdesc='Backend for building test libraries'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl')
 checkdepends=()
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/${_author}/${_dist}-${pkgver}.tar.gz")
-sha256sums=('9b5eefd82a9544582d43d2fb4e3d07e3f97d93293568593b41ad5010afccc785')
+sha256sums=('caddb962eeb0fb3ee474e2b25beed30254638d74407106bbc12bf25e3118ec80')
 
 build()
 {
