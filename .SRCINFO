@@ -1,11 +1,12 @@
 pkgbase = nginx-language-server
 	pkgdesc = A Language Server for nginx.conf
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pappasam/nginx-language-server
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
+	makedepends = python-poetry
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
