@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=warpscout
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Cloudflare WARP endpoint scanner"
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ depends=(
 makedepends=(go)
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('5bb3bf390d1bfa036604c413364e1415c7f65c579f42b4c60e8f0bb7a1451d2794dfe98a474a418c2d7d25a98529ca647ada31affcf5462c947bd0be36f6bf31')
+b2sums=('93e93bbcd70330eb5780012196e174c085376a0dc600e462ff3b8dfb9ca37c7a90af929a7e1a419d86c654e10c1cec0e0851c972880b47218d1fb59fab6c6eae')
 
 
 build() {
