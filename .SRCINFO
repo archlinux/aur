@@ -1,6 +1,6 @@
 pkgbase = steve-git
 	pkgdesc = Steve: a coding agent for the terminal, forked from OpenAI Codex, for self-hosted and non-OpenAI model providers
-	pkgver = r12355.8b9fbef1dc
+	pkgver = r12357.0206752739
 	pkgrel = 1
 	url = https://github.com/handley-lab/steve
 	arch = x86_64

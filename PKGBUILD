@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=steve-git
-pkgver=r12355.8b9fbef1dc
+pkgver=r12357.0206752739
 pkgrel=1
 pkgdesc="Steve: a coding agent for the terminal, forked from OpenAI Codex, for self-hosted and non-OpenAI model providers"
 arch=(x86_64 aarch64)
