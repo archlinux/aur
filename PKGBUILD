@@ -1,7 +1,7 @@
 # Maintainer: VConet <v-conet@outlook.com>
 
 pkgname=open-cad-studio-appimage
-pkgver=2026.42
+pkgver=2026.43
 pkgrel=1
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering (AppImage)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('open-cad-studio')
 
 noextract=("OpenCADStudio-v${pkgver}-linux-${CARCH}.AppImage")
 source=("OpenCADStudio-v${pkgver}-linux-${CARCH}.AppImage::https://github.com/HakanSeven12/OpenCADStudio/releases/download/v${pkgver}/OpenCADStudio-v${pkgver}-linux-${CARCH}.AppImage")
-sha256sums=('3c0cc42bb7266ed67a1a5be7548ed954d3951a4c8867bed2840e9a9c685b337a')
+sha256sums=('824d957b32fb92bfc97a043907f0a51a134f5a892636fb1fb6319a98d88edb8d')
 
 options=('!strip')
 
