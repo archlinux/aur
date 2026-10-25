@@ -1,6 +1,6 @@
 pkgbase = typbase-bin
 	pkgdesc = Local-first knowledge base made for Typst and the Atmosphere.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/lemueldls/typbase
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = typbase-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/lemueldls/typbase/releases/download/typbase-v0.4.3/Typbase_0.4.3_amd64.deb
-	sha256sums_x86_64 = 57bb4ce708e151f2db9cfd06ba8596e14ce0e55ad96e0261c546858a50ee49d6
+	source_x86_64 = https://github.com/lemueldls/typbase/releases/download/typbase-v0.4.4/Typbase_0.4.4_amd64.deb
+	sha256sums_x86_64 = f746ed6bac724c1507e94ae2066d34c3e6c2bd6aa9e3d5c6bec64e4450aa7bb0
 
 pkgname = typbase-bin
