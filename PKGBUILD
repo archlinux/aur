@@ -7,7 +7,7 @@ _appsufix=rs
 pkgname=${_appname}-${_appsufix}-bin
 pkgdesc="Terminal-based force-directed graph visualizer for markdown wikilinks"
 
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_appsufix}-${pkgver}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_appsufix}-${pkgver}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('d01d4ae12c8b82a485ee9343983ae6028aa43789e9e65328861247de78fd9732')
-sha256sums_aarch64=('26d17a712f823bd81e320e3410f28677816b0c986a8d7eb11c6a73df2f9787ea')
+sha256sums_x86_64=('e2dc2f56fb0f8a6112cd59ea9e5f9023d1899917fa69390044a933024cff86e2')
+sha256sums_aarch64=('ab4be3e1b6e8b1a6c1dd7f486587fbc44bbb6774b8f5d051ca34722d3fee4849')
 
 
 package() {
