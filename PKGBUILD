@@ -3,7 +3,7 @@
 _pkgname=qwen-code
 pkgname=${_pkgname}-bin
 _name=qwen
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Open-source AI agent originally based on Gemini CLI by QwenLM"
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ source_x86_64=("${_pkgname}-${pkgver}-linux-x64.tar.gz::${url}/releases/download
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.gz"
                 "system-defaults.json")
 
-b2sums_x86_64=('b194eede524fe3469a0fa37ab804c1f7feccfc7bd786dd46d4942073cfd497a9026af0997e23c03a332fd597634e4f215a0480463fba4563aadf8aaf70dafec0'
+b2sums_x86_64=('153c8f5462693523faa2e07f13393f6d6c223ee5b58af411155ad9ea54c75bf3c9811e104c40b8d47cd43f234102fa7c6910ab8bd71e07f4056551f5b37148ba'
                '30c86151e58bd11bd1d39238646aae2dd8bc743ca2a03b64371a9dc36eae81c3acade6f39fe0235b0e7f8b059c7181d04ae5d134a3a316e0f9b3815b8f197bee')
-b2sums_aarch64=('304fb83886d909fc00e8887bf092b361f5323d5f34993a813e240cb0effaa03ca8b51d5922130277a7f82125e68f28998a72d098cf2a51f7f6d4412c78d67c81'
+b2sums_aarch64=('98815834b6c5ec12919418dfba302e8768c33161542f8c67f1159f22c1ed9f9055925e3deef9ea0038566af3d7f35bc97c5dac95086beadd95bb2eb785398dc1'
                 '30c86151e58bd11bd1d39238646aae2dd8bc743ca2a03b64371a9dc36eae81c3acade6f39fe0235b0e7f8b059c7181d04ae5d134a3a316e0f9b3815b8f197bee')
 
 package() {
