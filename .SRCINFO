@@ -7,6 +7,8 @@ pkgbase = ccalc-git
 	license = LGPL-2.1-only
 	makedepends = mandoc
 	depends = readline
+	provides = calc
+	conflicts = calc
 	source = git+https://github.com/lcn2/calc
 	b2sums = SKIP
 

@@ -14,6 +14,8 @@ url="https://github.com/lcn2/calc"
 license=(LGPL-2.1-only)
 depends=(readline)
 makedepends=(mandoc)
+provides=(calc)
+conflicts=(calc)
 source=(git+$url)
 b2sums=('SKIP')
 
