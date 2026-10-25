@@ -1,7 +1,7 @@
 pkgbase = rhythmbox-albumartist-filter
-	pkgdesc = Continuous album shuffle plugin for Rhythmbox
+	pkgdesc = Album Artist filtering plugin for Rhythmbox
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/username227/Rhythmbox-AlbumArtist-Filter
 	arch = x86_64
 	license = GPL-3.0-or-later
