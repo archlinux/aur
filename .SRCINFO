@@ -1,0 +1,23 @@
+pkgbase = caffeine-applet
+	pkgdesc = COSMIC panel applet that keeps the system awake via a logind inhibitor lock
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/codevardhan/caffeine-applet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = cosmic-panel
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = systemd
+	depends = wayland
+	conflicts = caffeine-applet-git
+	source = caffeine-applet-0.1.2.tar.gz::https://github.com/codevardhan/caffeine-applet/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 5e3657e04dac7e810d2f13cc5a7587f89bd3ba99f1bcb9a0d11a50def954aa1f
+
+pkgname = caffeine-applet
