@@ -1,6 +1,6 @@
 # Maintainer: AkitaOnRails <fabio.akita@gmail.com>
 pkgname=omarchy-games-menu-bin
-pkgver=0.1.11
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Steam-like QuickShell launcher grid for distrobox-managed PC ports, recomps and emulators (Rust backend, prebuilt binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('quickshell')
 provides=('omarchy-games-menu')
 conflicts=('omarchy-games-menu')
 source=("omarchy-games-menu-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/omarchy-games-menu-${pkgver}-x86_64.tar.gz")
-sha256sums=('8a6ce000cb7737394095e7133ecc5614f276cb475b5eee441be2e8ff6e12bf58')
+sha256sums=('ad0cd9ae2614acf08a14ba5a3955d004f796f3a04d66c530fa99f275e6972db2')
 
 package() {
     install -Dm755 "ogm" "${pkgdir}/usr/bin/ogm"
