@@ -7,7 +7,7 @@
 pkgname=audacity-git
 _pkgname=audacity
 pkgver=r0
-pkgrel=2
+pkgrel=3
 pkgdesc="A program that lets you manipulate digital audio waveforms (Audacity 4 development branch)"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -60,6 +60,7 @@ makedepends=(
 	vst3sdk
 	rapidjson
 	lv2
+	wxwidgets-gtk3
 )
 provides=(
 	'audacity'
@@ -85,6 +86,10 @@ prepare() {
 	git config submodule.muse.url "$srcdir/muse_framework"
 	git config submodule.muse_deps.url "$srcdir/muse_deps"
 	git -c protocol.file.allow=always submodule update
+
+	# TODO: muse::extensions::Type conflicts with Qt 6.12 Type, remove when fixed in upstream
+	sed -i 's/^muse_create_qml_module(muse_extensions_qml ALIAS /muse_create_qml_module(muse_extensions_qml NO_UNITY ALIAS /' \
+		muse/framework/extensions/qml/Muse/Extensions/CMakeLists.txt
 }
 
 build() {
@@ -96,7 +101,7 @@ build() {
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D EXTDEPS_OVERRIDE_ALL=SYSTEM \
-		-D WX_CONFIG=/usr/bin/wx-config-base \
+		-D WX_CONFIG=/usr/bin/wx-config \
 		-D MUSE_ENABLE_UNIT_TESTS=OFF \
 		-D MUSE_MODULE_DIAGNOSTICS_CRASHPAD_CLIENT=OFF \
 		-D MUSE_MODULE_UPDATE=OFF \

@@ -1,7 +1,7 @@
 pkgbase = audacity-git
 	pkgdesc = A program that lets you manipulate digital audio waveforms (Audacity 4 development branch)
 	pkgver = r0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/audacity/audacity
 	arch = x86_64
 	groups = pro-audio
@@ -18,6 +18,7 @@ pkgbase = audacity-git
 	makedepends = vst3sdk
 	makedepends = rapidjson
 	makedepends = lv2
+	makedepends = wxwidgets-gtk3
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
