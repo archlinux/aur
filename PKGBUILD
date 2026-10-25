@@ -3,7 +3,7 @@
 # are overwritten on every stable release.
 # Maintainer: Section9Labs <matias@section9labs.com>
 pkgname=rupu-bin
-pkgver=0.84.0
+pkgver=0.85.0
 pkgrel=1
 pkgdesc="Agentic code-development CLI (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=('!strip')
 
 source_x86_64=("rupu-$pkgver-x86_64::$url/releases/download/v$pkgver/rupu-linux-x64")
 source_aarch64=("rupu-$pkgver-aarch64::$url/releases/download/v$pkgver/rupu-linux-arm64")
-sha256sums_x86_64=('d703cc323d2c46989ba0d39fb805052855577c8763aae1ccd9d9982bb0976ff2')
-sha256sums_aarch64=('cbf1919d5d373f55bd3731a13ff1ef5a5c3bace55d98873a18e751073f184879')
+sha256sums_x86_64=('65e8a49f36c9d07bc0dbc7256919c3fb5d7de6d6d3c423f372886871f6e8fe77')
+sha256sums_aarch64=('2862a30fa91d1c2beda7fab2841ff308ac7c63273ce5efe4d174e99c99d480f3')
 
 package() {
   local _bin
