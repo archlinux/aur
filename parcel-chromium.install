@@ -5,7 +5,7 @@ post_upgrade() {
     # because the new updated host script will not be allowed to run, until the
     # user manually updates the hash pinned in the user's parcelrc.
 
-    local _new_ver=$2
+    local _new_ver=$1
 
     local _ext_path="/usr/lib/parcel-chromium"
     local _ext_filename="parcel-chromium-${_new_ver%%-*}.crx"
