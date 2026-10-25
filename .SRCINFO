@@ -1,0 +1,23 @@
+pkgbase = python-mcap
+	pkgdesc = Python library for reading and writing MCAP files
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/foxglove/mcap
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-lz4
+	depends = python-zstandard
+	source = python-mcap-1.6.0.tar.gz::https://github.com/foxglove/mcap/archive/refs/tags/releases/python/mcap/v1.6.0.tar.gz
+	source = python-mcap-1.6.0-demo.mcap::https://media.githubusercontent.com/media/foxglove/mcap/releases/python/mcap/v1.6.0/testdata/mcap/demo.mcap
+	source = python-mcap-1.6.0-OneMessage.mcap::https://media.githubusercontent.com/media/foxglove/mcap/releases/python/mcap/v1.6.0/tests/conformance/data/OneMessage/OneMessage.mcap
+	b2sums = 6faec139716f9a4c44e06102961cb4292ade9d02fcf88706d2e57e9631969f9bde258ec29b0973473f27329a307d6a33b3606fde4aaae2b2d6a6373e246d7e2a
+	b2sums = 4e28ccbed540e377e63e2705ae9a48469b89107ea966267f0d3c372889633953cf33982c25f3b8e035904716302109313fb5436fcf900a1b53fcaa1734668077
+	b2sums = f1b15ce171c25804eef403e124c4d933e2c25e1260d2eb9c389760d06a1ebc8a2852aca4501c05169763a39e2cf49ba47e38b0929c26b1269ba30cb429fd82bb
+
+pkgname = python-mcap
