@@ -3,7 +3,7 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=trackerjacker
-pkgver=2.0.5
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Map and track WiFi networks and devices through raw 802.11 monitoring"
 arch=('any')
@@ -11,8 +11,9 @@ url="https://github.com/calebmadrigal/trackerjacker"
 license=('MIT')
 depends=('python-pyaml' 'python-ruamel-yaml' 'python-scapy')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f8b2d0b86996ab253cd444ba0aa05aaf945fef53bd7246f991f2870bcb28891b')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz
+")
+sha256sums=('984ac4796025e623ab1f12f22733acbbee8ddb5d51a4a186703d1e16692008fe')
 
 prepare() {
 	cd "$pkgname-$pkgver"
