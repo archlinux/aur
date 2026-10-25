@@ -2,7 +2,7 @@ pkgbase = todav-bin
 	pkgdesc = Tasks and calendar kept in your Nextcloud
 	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/SelfRef/todav
+	url = https://github.com/AperteDev/todav
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = gtk4
@@ -17,7 +17,7 @@ pkgbase = todav-bin
 	provides = todav
 	conflicts = todav
 	noextract = todav-1.2.0-x86_64.tar.gz
-	source_x86_64 = todav-1.2.0-x86_64.tar.gz::https://github.com/SelfRef/todav/releases/download/v1.2.0/todav-1.2.0-x86_64.tar.gz
+	source_x86_64 = todav-1.2.0-x86_64.tar.gz::https://github.com/AperteDev/todav/releases/download/v1.2.0/todav-1.2.0-x86_64.tar.gz
 	sha256sums_x86_64 = 2336fd0308b46f534a1518e1f25c1e43123fd79fc07967df333ffe0cf0809941
 
 pkgname = todav-bin
