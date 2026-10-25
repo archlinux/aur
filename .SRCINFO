@@ -1,6 +1,6 @@
 pkgbase = crosspaste-desktop-bin
 	pkgdesc = Universal Pasteboard Across Devices
-	pkgver = 2.2.1.2706
+	pkgver = 2.3.0.2767
 	pkgrel = 1
 	url = https://github.com/crosspaste/crosspaste-desktop
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = crosspaste-desktop-bin
 	license = AGPL-3.0-or-later
 	provides = crosspaste-desktop
 	conflicts = crosspaste-desktop
-	source_x86_64 = crosspaste-desktop-bin-2.2.1.2706-x86_64.tar.gz::https://github.com/crosspaste/crosspaste-desktop/releases/download/2.2.1.2706/crosspaste-2.2.1-2706-linux-amd64.tar.gz
-	sha256sums_x86_64 = 9e0629ecc9ec6df6b5b8ab3bf07d00dc93ef696c975d5c7fd7ea3b38169bca9f
-	source_aarch64 = crosspaste-desktop-bin-2.2.1.2706-aarch64.tar.gz::https://github.com/crosspaste/crosspaste-desktop/releases/download/2.2.1.2706/crosspaste-2.2.1-2706-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 38a1982d6634571c231557e0c6a2ad0141faad85f46bf459a4ca28312a9aa55d
+	source_x86_64 = crosspaste-desktop-bin-2.3.0.2767-x86_64.tar.gz::https://github.com/crosspaste/crosspaste-desktop/releases/download/2.3.0.2767/crosspaste-2.3.0-2767-linux-amd64.tar.gz
+	sha256sums_x86_64 = af86f71eeea6ac0809c5e11956e817f67e61e5367002d0b593beb0a55e89534a
+	source_aarch64 = crosspaste-desktop-bin-2.3.0.2767-aarch64.tar.gz::https://github.com/crosspaste/crosspaste-desktop/releases/download/2.3.0.2767/crosspaste-2.3.0-2767-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d54a6ced30c27968be6e18cfb4856955cea688390f45177ce3c8febee438367f
 
 pkgname = crosspaste-desktop-bin
