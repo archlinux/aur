@@ -7,8 +7,7 @@ pkgbase = ly-git
 	arch = x86_64
 	arch = aarch64
 	license = WTFPL
-	makedepends = zig>=0.16
-	makedepends = zig<0.17
+	makedepends = zig>=0.17
 	makedepends = git
 	makedepends = libxcb
 	depends = pam

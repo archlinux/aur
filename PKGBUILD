@@ -8,7 +8,7 @@ arch=(i686 x86_64 aarch64)
 url="https://codeberg.org/fairyglade/ly.git"
 license=('WTFPL')
 depends=(pam)
-makedepends=('zig>=0.16' 'zig<0.17' git libxcb)
+makedepends=('zig>=0.17' git libxcb)
 optdepends=('xorg-xauth: for X server sessions' 'durdraw: for animations')
 conflicts=(ly)
 provides=(ly)
