@@ -1,10 +1,12 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-cagebreak
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Cagebreak compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
+# sysc-greet source: GPL-3.0-only. sysc-Go code: MIT; its model assets
+# carry the CC licenses below. Metadata covers everything in the binary.
 license=('GPL-3.0-only' 'MIT' 'CC0-1.0' 'CC-BY-4.0' 'CC-BY-NC-4.0' 'CC-BY-SA-4.0' 'CC-BY-NC-SA-4.0')
 depends=('greetd' 'kitty' 'cagebreak' 'socat' 'gslapper')
 optdepends=(
@@ -84,5 +86,18 @@ EOF
     # Install README
     install -Dm644 README.md "${pkgdir}/usr/share/doc/sysc-greet/README.md"
     install -Dm644 THIRD_PARTY_NOTICES.md "${pkgdir}/usr/share/sysc-greet/THIRD_PARTY_NOTICES.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 THIRD_PARTY_NOTICES.md "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.md"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.md" <<'EOF'
+# Licenses
+
+sysc-greet's own source code is GPL-3.0-only; see LICENSE in this directory.
+The compiled binary includes MIT-licensed animation code and model data
+through its sysc-Go dependency. The models carry CC0-1.0, CC-BY-4.0,
+CC-BY-NC-4.0, CC-BY-SA-4.0 and CC-BY-NC-SA-4.0 licenses.
+Those terms govern the corresponding model assets, not sysc-greet's own
+source code. Package metadata lists the licenses of all included components.
+See THIRD_PARTY_NOTICES.md in this directory for per-model attribution and terms.
+EOF
 
 }
