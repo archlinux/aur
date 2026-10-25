@@ -1,0 +1,13 @@
+# makepkg build dirs and artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.tar.*
+*.log
+# interrupted-build leftovers (generated inside pkg/ on success)
+.BUILDINFO
+.MTREE
+.PKGINFO
+# upstream release binary (source=, re-downloaded by makepkg)
+llamafile
+*.zip

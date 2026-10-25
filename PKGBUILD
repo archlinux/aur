@@ -1,6 +1,6 @@
 _basepkgname=llamafile
 pkgname=llamafile
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('llamafile' 'whisperfile' 'diffusionfile' 'transcribefile' 'zipalign')
 conflicts=('llamafile-git' 'android-sdk-build-tools' 'zipalign')
 options=('!strip')
 source=("${pkgname}::${url}/releases/download/${pkgver}/llamafile-${pkgver}.zip")
-sha256sums=('54f4d4ae96d8def8564ad78d09596e24d8a4657f4aa6f904d0a46b385d589648')
+sha256sums=('1d0aacce58bb2254adb8b80abf69e4dfbd7dfa530defc0fcca37ce239217e5dc')
 
 package() {
   cd "${_basepkgname}-${pkgver}"
@@ -31,6 +31,7 @@ package() {
   # Install man pages
   install -Dm644 share/man/man1/zipalign.1 -t "${pkgdir}/usr/share/man/man1"
   install -Dm644 share/man/man1/whisperfile.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm644 share/man/man1/whisper-server.1 -t "${pkgdir}/usr/share/man/man1"
 
   # Install documentation
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
