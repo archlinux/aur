@@ -1,13 +1,13 @@
 diff --git a/setup.py b/setup.py
-index b7e963a..fbd03b2 100644
+index e505d52..225bc3a 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -98,7 +98,7 @@ setup(
+@@ -100,7 +100,7 @@ setup(
      name='pyreadr',
-     version='0.5.7',
+     version='0.5.8',
      ext_modules=cythonize([librdata], force=True),
 -    packages=["pyreadr"],
 +    packages=setuptools.find_namespace_packages(include=("pyreadr*",)),
      include_package_data=include_package_data,
      exclude_package_data=exclude_package_data,
-     install_requires=['narwhals>=2.10.1'],
+     install_requires=['narwhals>=2.26.0', 'numpy'],
