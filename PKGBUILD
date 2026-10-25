@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=ramcleaner
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Find processes holding unused memory, attribute them to their owner, and stop them only after approval'
 arch=('any')
@@ -36,7 +36,7 @@ check() {
 package() {
     cd "$srcdir/$pkgname"
     # Install license file
-    for name in LICENSE LICENSE.txt COPYING; do
+    for name in LICENSE LICENSE.txt LICENSE.md LICENCE COPYING COPYING.md; do
         [[ -f "$name" ]] && install -Dm644 "$name" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" && break
     done
     # Install Make build artifacts
