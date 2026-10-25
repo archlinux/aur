@@ -1,7 +1,7 @@
 # Maintainer: Toesoe <code [at] toesoe [dot] dev>
 
 pkgname=negpy-bin
-pkgver=0.65.0
+pkgver=0.66.0
 pkgrel=1
 pkgdesc="Tool for processing film negatives"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 
 _appimage="NegPy-${pkgver}-x86_64.AppImage"
 source=("${_appimage}::${url}/releases/download/${pkgver}/${_appimage}")
-sha256sums=('5f391b9ad66815a891f70054a7a2b89e3d0f2b22a8777efaec8e2008fbedc043')
+sha256sums=('a73740592af1d4b9c2d210dbc1ca858f84a6842fe4b5343642e7dfadb6a1030c')
 
 package() {
   cd "$srcdir"
