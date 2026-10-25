@@ -1,6 +1,6 @@
 mrfragger github.com/mrfagger/substitcher
 pkgname=substitcher-bin
-pkgver=26.10.24
+pkgver=26.10.25
 pkgrel=1
 pkgdesc="Audiobook encoder and player with subtitle support"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3')
 provides=('substitcher')
 conflicts=('substitcher')
 source=("https://github.com/mrfragger/substitcher/releases/download/v${pkgver}/substitcher-x64.AppImage")
-sha256sums=('c26477635bf0bea0abb62705a6b741aed996e8ef7718bde6e2a0e8a6c957418e')
+sha256sums=('9068e8c3b785a64421fd1d40dedea26030f6cd62de426c9634e16fe13ed6cb2e')
 
 package() {
     install -Dm755 "$srcdir/substitcher-x64.AppImage" "$pkgdir/opt/substitcher/substitcher.AppImage"
