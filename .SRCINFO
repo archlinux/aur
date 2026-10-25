@@ -1,0 +1,22 @@
+pkgbase = python-pan-os-upgrade-assurance
+	pkgdesc = Libraries for Palo Alto Networks PAN-OS Upgrade Assurance
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/PaloAltoNetworks/pan-os-upgrade-assurance
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	checkdepends = python-deepdiff
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = python
+	depends = python-pan-os-python
+	depends = python-xmltodict
+	depends = python-pyopenssl
+	depends = python-packaging
+	depends = python-typing_extensions
+	source = v2.1.1.tar.gz::https://github.com/PaloAltoNetworks/pan-os-upgrade-assurance/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 5b7b1d0cc0c270b74865d1ebc472056372a02c307af99ca5f1faeb4e6ea2bef9
+
+pkgname = python-pan-os-upgrade-assurance

@@ -1,0 +1,4 @@
+[python-pan-os-upgrade-assurance]
+source = "git"
+git = "https://github.com/PaloAltoNetworks/pan-os-upgrade-assurance.git"
+prefix = "v"
