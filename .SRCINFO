@@ -1,6 +1,6 @@
 pkgbase = switch-frame-tap
 	pkgdesc = PC viewer for Switch Frame Tap: watch and record your Nintendo Switch streamed over USB or network
-	pkgver = 0.7.18.1
+	pkgver = 0.7.19
 	pkgrel = 1
 	url = https://github.com/TomasUribe/switch-frame-tap
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = switch-frame-tap
 	optdepends = libva-mesa-driver: VAAPI decoding on AMD
 	optdepends = intel-media-driver: VAAPI decoding on Intel
 	optdepends = nvidia-utils: NVDEC decoding on NVIDIA
-	source = switch-frame-tap-0.7.18.1.tar.gz::https://github.com/TomasUribe/switch-frame-tap/archive/refs/tags/v0.7.18.1.tar.gz
-	sha256sums = 8ce67a87961538ca63d4a768fa51a1b195a8b938c10a19440b3955c5b96de9ca
+	source = switch-frame-tap-0.7.19.tar.gz::https://github.com/TomasUribe/switch-frame-tap/archive/refs/tags/v0.7.19.tar.gz
+	sha256sums = b77ae9e6b48c3f97b5b1bcc6c0ea9700dbe1f42b78d705c3a416f75f4b6c3a1e
 
 pkgname = switch-frame-tap
