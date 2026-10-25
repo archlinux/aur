@@ -1,10 +1,11 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r150.f032722
+pkgver=r151.8209bb0
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
-# Not 'any': the workspace-sharing KWin effect is compiled, against the
-# installed KWin, so this package has to be rebuilt when KWin is updated.
+# Not 'any': the KWin plugins (workspace sharing, and the protocols other shells
+# use) are compiled against the installed KWin, so this package has to be
+# rebuilt when KWin is updated.
 arch=('x86_64')
 url="https://github.com/mahirsn/mmsimpulse"
 license=('GPL-3.0-or-later')
@@ -52,7 +53,7 @@ optdepends=(
   'ydotool: cursor warping, which KWin exposes no D-Bus call for'
   'supergfxctl: the AMD/NVIDIA display switch in the bar, on ASUS laptops with a GPU MUX'
 )
-makedepends=('git' 'cmake' 'extra-cmake-modules')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland-protocols' 'wlr-protocols')
 provides=('mmsimpulse')
 conflicts=('mmsimpulse')
 source=("$pkgname::git+$url.git")
@@ -64,12 +65,16 @@ pkgver() {
 }
 
 build() {
-  cmake -S "$srcdir/$pkgname/kwin-effect" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build
+  for plugin in kwin-effect kwin-mmsimpulse; do
+    cmake -S "$srcdir/$pkgname/$plugin" -B "build-$plugin" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build "build-$plugin"
+  done
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  for plugin in kwin-effect kwin-mmsimpulse; do
+    DESTDIR="$pkgdir" cmake --install "build-$plugin"
+  done
 
   cd "$srcdir/$pkgname"
 
@@ -83,7 +88,7 @@ package() {
   # assembled in $HOME and cannot be built here, so the package ships the
   # tooling and `mmsimpulse-install` does that part once.
   install -d "$pkgdir/usr/share/mmsimpulse"
-  cp -a bin kwin-script overlay session shortcuts install.sh README.md \
+  cp -a bin kwin-script overlay profiles session shortcuts install.sh README.md \
         "$pkgdir/usr/share/mmsimpulse/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/mmsimpulse-install" <<'WRAPPER'
