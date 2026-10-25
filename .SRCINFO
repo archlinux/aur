@@ -1,7 +1,7 @@
 pkgbase = qqmusic-electron-patched
 	pkgdesc = Tencent QQMusic
 	pkgver = 1.1.8
-	pkgrel = 21
+	pkgrel = 23
 	url = https://y.qq.com/
 	arch = any
 	license = CC0-1.0
@@ -10,10 +10,10 @@ pkgbase = qqmusic-electron-patched
 	provides = qqmusic-electron=1.1.8
 	conflicts = qqmusic-bin
 	conflicts = qqmusic-electron
-	source = qm-electron_1.1.8-20.tar.zst::https://github.com/Viemean/assets/releases/download/v1.1.8-20/qm-electron_1.1.8-20.tar.zst
+	source = qm-electron_1.1.8-23.tar.zst::https://github.com/Viemean/assets/releases/download/v1.1.8-23/qm-electron_1.1.8-23.tar.zst
 	source = qqmusic.desktop
 	source = logo.png
-	sha512sums = cdac107c2fd1f6db43b31e1ed37d2b438edf74c3ba2cf9eb7703d6a44c95693588376c093efee7c92c5cef663f700e1095118fe1b792df3c2c8a52c4618f8add
+	sha512sums = 6e4e002eec8055fbb39a6ad68e6fb85293c090b5f20f2c080d898f436054f0fedbea3a47124dc1dbfcd533e806121d94b41cd868d7b1d962a7b25075bb056f02
 	sha512sums = a872d410a02700b66ae9c55ee10a59bc6831caf403f3e62a96b7baa3ea39a8d239a1b829d2b13db4947b97daa9b9eb588deeea05ed125a6ac6892f43d6aa300f
 	sha512sums = 1f49450952fc7be0654a046c73cd55b738b940a910eb83d0de073f8c5077b550865f7b74e8171ea4b34dd160a7ffdc616ab9dab14d2227db6e4e5ef9ce54c700
 
