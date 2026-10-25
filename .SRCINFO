@@ -1,12 +1,12 @@
 pkgbase = neferwl-git
 	pkgdesc = A Wayland compositor that spends its frames on your apps, not on itself (git version)
-	pkgver = 0.10.0.r0.gd5d679d
+	pkgver = 0.11.0.r0.ge05860e
 	pkgrel = 1
-	url = https://github.com/bnema/neferwl
+	url = https://git.bnema.dev/neferwl
 	install = neferwl.install
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-only
+	license = AGPL-3.0-only
 	makedepends = go>=2:1.27
 	makedepends = git
 	depends = glibc
@@ -29,7 +29,7 @@ pkgbase = neferwl-git
 	provides = neferwl
 	conflicts = neferwl
 	conflicts = neferwl-bin
-	source = git+https://github.com/bnema/neferwl.git
+	source = git+https://git.bnema.dev/neferwl.git
 	sha256sums = SKIP
 
 pkgname = neferwl-git

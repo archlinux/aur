@@ -2,12 +2,12 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=neferwl-git
-pkgver=0.10.0.r0.gd5d679d
+pkgver=0.11.0.r0.ge05860e
 pkgrel=1
 pkgdesc='A Wayland compositor that spends its frames on your apps, not on itself (git version)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/bnema/neferwl'
-license=('GPL-3.0-only')
+url='https://git.bnema.dev/neferwl'
+license=('AGPL-3.0-only')
 # Loaded at runtime (purego, no cgo): not seen by makepkg's library scan.
 depends=('glibc' 'libinput' 'libxkbcommon' 'seatd' 'systemd-libs' 'vulkan-icd-loader'
 	'vulkan-driver' 'wayland' 'dbus' 'libcap')
@@ -22,7 +22,7 @@ optdepends=('xwayland-satellite>=0.7: X11 apps'
 provides=('neferwl')
 conflicts=('neferwl' 'neferwl-bin')
 install=neferwl.install
-source=('git+https://github.com/bnema/neferwl.git')
+source=('git+https://git.bnema.dev/neferwl.git')
 sha256sums=('SKIP')
 
 pkgver() {
