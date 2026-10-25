@@ -1,6 +1,6 @@
 pkgbase = tuitab
 	pkgdesc = Terminal tabular data explorer — CSV/JSON/YAML/TOML/Parquet/Excel/SQLite viewer
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/denisotree/tuitab
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tuitab
 	license = Apache-2.0
 	makedepends = rust
 	makedepends = cargo
-	source = tuitab-0.10.2.tar.gz::https://github.com/denisotree/tuitab/archive/refs/tags/v0.10.2.tar.gz
-	sha256sums = 1e4202c38e6878ae8aece3ad454190b516d5f849d0cca497cfd7ff2b0dc80255
+	source = tuitab-0.10.3.tar.gz::https://github.com/denisotree/tuitab/archive/refs/tags/v0.10.3.tar.gz
+	sha256sums = aa57b77da4ab78a3a4886d6928cdc1e4fa5786635a6fbec7404d53ed02c01e46
 
 pkgname = tuitab
