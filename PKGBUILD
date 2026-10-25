@@ -7,7 +7,7 @@
 
 pkgname=poncho-wonky
 _upstream=patchwork
-pkgver=5.1.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB),fork of patchwork"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 "${pkgname}.desktop"
 )
 
-sha256sums=('6761c97969483c73721bf58af3bc6ccc82d4c20b9beaef9dea51f036c5d2f056'
+sha256sums=('e65820fa573a3757379b63e2ade9d5bb3bce95dea140c12ce175446b61b8bd83'
             'e1518685a1c37abd0a801d0a2872c4e05eb27434402bb9d304c5db8323f4c3a8'
             'b77ea37cce9723d1dbd97d1aa55450b6da1cb276338087382ce06baa7ea5510e')
 
@@ -45,7 +45,7 @@ build() {
     # Tell node-pre-gyp that we are building for Electron.
     export npm_config_runtime=electron
     # Install all dependencies, and store cache to ~/.electron-gyp.
-    HOME=~/.electron-gyp npm install --only=production
+    HOME=~/.electron-gyp npm install --only=production --allow-git=all
 }
 
 package() {
