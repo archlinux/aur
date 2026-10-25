@@ -2,8 +2,8 @@
 
 pkgname=akyuu
 _pkgname=akyuu
-pkgver=0.1.1
-_commit=df4452622ed5b40d18888ef46c27cd0f8d8e9a79  # v0.1.1
+pkgver=0.2.0
+_commit=3dd4241e9b4e052ab0c8ead4dcacacf7b874844c  # v0.2.0
 pkgrel=1
 pkgdesc="Anime list tracker with media player and web browser detection"
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=("$_pkgname::git+https://github.com/ligneo/akyuu.git#commit=$_commit"
         "$_pkgname-nstd::git+https://github.com/erengy/nstd.git#commit=a8c5ff1bf46b1dfd7a2d98f2516bdeb81942c55a"
         "$_pkgname-semaver::git+https://github.com/erengy/semaver.git#commit=8775c316a8ebd204cf322eadc778459b99e8d49f"
         "$_pkgname-utf8proc::git+https://github.com/JuliaStrings/utf8proc.git#commit=e5e799221b45bbb90f5fdc5c69b6b8dfbf017e78")
-# Git sources use SKIP; each one is pinned to a commit, the submodules to the ones v0.1.1 records.
-sha256sums=('856fa2d3f0e4a1f777115c0cb5a904053e3c0b4376ae2dae26c206f7b0f2803d'
+# Git sources use SKIP; each one is pinned to a commit, the submodules to the ones v0.2.0 records.
+sha256sums=('6c7130e229397761f4a1ede7675ba1c9c34ba633d4d122ff2e7f97bdfed070e7'
             '9b69c2d94ae28c12647e3d1ebb2c238ff9ae16626483656f2fe8d6747a742f78'
             '73f2598e65349876713d382e904cf263013dc844e07f049c82164b0b49b89bd0'
             '240b177000691eba2be682cfd232e3c14b4e8e70af50bba269a5ed4b13bd77ff'
@@ -45,10 +45,13 @@ build() {
 	# the binary and makepkg reports "Package contains reference to $srcdir".
 	export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/$_pkgname=."
 
+	# "system": the update notice says to update through the package manager instead of
+	# offering the release's own pacman package, which would bypass the AUR.
 	cmake -S . -B build -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DAKYUU_PORTABLE=OFF
+		-DAKYUU_PORTABLE=OFF \
+		-DAKYUU_PACKAGE_FORMAT=system
 	cmake --build build
 }
 
