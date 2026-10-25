@@ -1,0 +1,14 @@
+post_install() {
+  echo ":: Run 'omarchy-hyprmouse' (or find \"Mouse (hyprmouse)\" in the app launcher)."
+  echo "   The first launch adds Omarchy menu > Setup > Mouse and wires it into ~/.config/hypr."
+}
+
+post_upgrade() {
+  echo ":: omarchy-hyprmouse updated. Your button choices and mouse settings are kept."
+}
+
+pre_remove() {
+  echo ":: To also remove its Hyprland wiring, menu entry and hooks from your config,"
+  echo "   run 'omarchy-hyprmouse --uninstall' as your user before removing the package."
+  echo "   (Leaving them is harmless: the generated Hyprland files don't need the package.)"
+}
