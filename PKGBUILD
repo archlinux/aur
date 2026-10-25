@@ -6,7 +6,7 @@ pkgver=1.2.0
 pkgrel=1
 pkgdesc='GNOME Shell companion extension for Todav: tasks, month and agenda in the top bar'
 arch=('any')
-url='https://github.com/SelfRef/todav'
+url='https://github.com/AperteDev/todav'
 license=('GPL-3.0-or-later')
 depends=('gnome-shell>=1:49' 'todav')
 provides=("${pkgname%-bin}")
