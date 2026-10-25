@@ -9,7 +9,7 @@ depends=(
   'fontconfig'
   'ttf-nerd-fonts-symbols'
 )
-source=('monolisa-fonts.tar.gz::https://github.com/CharacterHorse/MyFont/releases/download/1.1/fonts.tar.gz')
+source=('https://github.com/CharacterHorse/MyFont/releases/download/1.1/fonts.tar.gz')
 sha256sums=('9720ce775019d5517112af6daa0086ae601ab5060bf7c399f491d430c80f9e5c')
 install=monolisa-font.install
 package() {
