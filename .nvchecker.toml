@@ -1,0 +1,5 @@
+[muon-ssh-bin]
+source = "github"
+github = "devlinx9/muon-ssh"
+use_latest_release = true
+prefix = "v"
