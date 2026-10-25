@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrow
-_pkgver=25.0.1
+_pkgver=26.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Integration to 'Apache' 'Arrow'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -61,8 +61,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a337ef80e3605632842b5ed5846f12cd')
-b2sums=('662ca9f18ee7a97edebd610443c48d82b2dfdc0ae4e7c7b1586e8f027a0ceb1e4d2f801415effeae300a6047cf4b9d728653d1ec80cb407dba856017113a6a89')
+md5sums=('856f159373ecc6746d3eef6e963993b0')
+b2sums=('b8f96d436cb64caa8a8c198b104bc6d6c9d14484bdbce46e8e052d874f568a8e6554b46bfeda97835f714c1409bafaee6dc8cb587e88ebde8ef8d9801df2e601')
 
 build() {
   mkdir build
