@@ -1,19 +1,21 @@
 # Maintainer: Helix128 <https://github.com/Helix128>
 pkgname=lenovo-fanboost
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fan control and boost daemon for Lenovo laptops (DKMS)'
 arch=('any')
 url='https://github.com/Helix128/lenovo-fanboost'
 license=('GPL-2.0-only')
 depends=('python' 'dkms')
 optdepends=(
-  'clang: build the kernel module for clang-built kernels (CachyOS default)'
+  'clang: build module for clang-built kernels (CachyOS default)'
   'lld: needed with clang'
   'llvm: needed with clang'
-  'gcc: build the kernel module for gcc-built kernels (CachyOS LTS, standard Arch)'
-  'linux-cachyos-headers: headers for CachyOS kernel'
+  'gcc: build module for gcc-built kernels (Arch stock, LTS, Zen)'
   'linux-headers: headers for stock Arch kernel'
+  'linux-lts-headers: headers for LTS kernel'
+  'linux-zen-headers: headers for Zen kernel'
+  'linux-cachyos-headers: headers for CachyOS kernel'
 )
 install=lenovo-fanboost.install
 backup=('etc/lenovo-fanboost.toml')
