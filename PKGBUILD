@@ -3,7 +3,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=tfsort
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A CLI utility to sort Terraform variables and outputs"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/AlexNabokikh/tfsort"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='a660662d3ecaaf8660d5e52145d633a29835a761'
+_commit='18d780c591cc8ee34045c126346b40550db68346'
 source=("git+https://github.com/AlexNabokikh/tfsort.git#commit=$_commit")
 sha256sums=('SKIP')
 
