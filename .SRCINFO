@@ -1,7 +1,7 @@
 pkgbase = lenovo-fanboost
 	pkgdesc = Fan control and boost daemon for Lenovo laptops (DKMS)
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/Helix128/lenovo-fanboost
 	install = lenovo-fanboost.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = lenovo-fanboost
 	optdepends = linux-zen-headers: headers for Zen kernel
 	optdepends = linux-cachyos-headers: headers for CachyOS kernel
 	backup = etc/lenovo-fanboost.toml
-	source = lenovo-fanboost-0.1.0.tar.gz::https://github.com/Helix128/lenovo-fanboost/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 36e183677dbae601958e86bd38a7b8873cd80d8284b2ed4e1343fc88477c7c63
+	source = lenovo-fanboost-0.2.0.tar.gz::https://github.com/Helix128/lenovo-fanboost/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 3e1ca09dd9def9483620d49a7049fcc39efa783831c142dd096b308ac604d0fe
 
 pkgname = lenovo-fanboost
