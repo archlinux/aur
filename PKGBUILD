@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nightforge
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="The night light, your way: on or off, how warm, and when, with its own tray icon. For KognogOS's hypeForge desktop on Sway (wlroots); runs in any terminal, even a plain text console (Forge Suite)"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('sway: the desktop it is made for, with hypeForge (runs nightforge s
 checkdepends=('dbus')
 source=("${pkgname}-${pkgver}.tar.gz::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('dd63c75bde0d769af28a3093f8cb8d8f9f6f13d097d227e4345be0bd2fea5b81'
+sha256sums=('201573047125975aba391bf89ed6bdcbf544c45c705e0dc2fa7429f6f770af39'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
