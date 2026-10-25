@@ -1,8 +1,8 @@
 # Maintainer: Atharva Potdar <atharvapotdar07@gmail.com>
 
 pkgname=koreader-nightly-bin
-pkgver=2026.07.2_275_gafff28b10
-_realver=2026.07.2-275-gafff28b10
+pkgver=2026.07.2_280_g400ba0e65
+_realver=2026.07.2-280-g400ba0e65
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 pkgrel=1
@@ -18,11 +18,11 @@ depends=('sdl3' 'noto-fonts' 'ttf-droid')
 options=('!strip' '!debug')
 
 # These lines are fully rewritten by CI on every run.
-source_x86_64=("koreader-nightly-x86_64-${pkgver}.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17434955327/artifacts/raw/koreader/koreader_2026.07.2-275-gafff28b10-1_amd64.deb")
-source_aarch64=("koreader-nightly-aarch64-${pkgver}.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17434955328/artifacts/raw/koreader/koreader_2026.07.2-275-gafff28b10-1_arm64.deb")
+source_x86_64=("koreader-nightly-x86_64-${pkgver}.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17445366475/artifacts/raw/koreader/koreader_2026.07.2-280-g400ba0e65-1_amd64.deb")
+source_aarch64=("koreader-nightly-aarch64-${pkgver}.deb::https://gitlab.com/koreader/nightly-builds/-/jobs/17445366476/artifacts/raw/koreader/koreader_2026.07.2-280-g400ba0e65-1_arm64.deb")
 
-sha256sums_x86_64=('74155afe03e9853f5899adadf6a924d32e1dd411b4d01ecb5024552c6233a121')
-sha256sums_aarch64=('6e1a7020afe87a25b97ddd01d9927b54de16096238872303aae003bb9aac47e8')
+sha256sums_x86_64=('9b86f9b3d3a8ebe557cb3b1ed25da18b22f75f73159bdce3ed1e7b227df6e1ee')
+sha256sums_aarch64=('806c336ea3a653bb1ca0769fb9e5cd05904d606bc52a6e695c450ed132aa687b')
 
 prepare() {
   rm -rf "${srcdir}/dpkgdir"
