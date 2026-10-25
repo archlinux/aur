@@ -1,6 +1,6 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=ygrep-bin
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="grep for YAML with jq-style filter expressions (prebuilt binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('ygrep')
 # which package installed it).
 options=('!debug')
 source=("https://github.com/subnix-work/jgrep-tinox/releases/download/v${pkgver}/ygrep-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('21ba778ceb7047c2ec2607e2877f3dc1c14d5dcd39dde440cdf08b6737a0f241')
+sha256sums=('173ea0e9621e4a5aed940a07ed74b1e48304d8103becdddbe5ded1e5e2500bf5')
 
 package() {
   cd "$srcdir"
