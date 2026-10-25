@@ -1,6 +1,6 @@
 pkgbase = tape16-bin
 	pkgdesc = Destructive tape-style DAW (X11-backed, XWayland on Wayland sessions)
-	pkgver = 0.9.510
+	pkgver = 0.9.520
 	pkgrel = 1
 	url = https://emrmusicgroup.com/tape16/
 	install = tape16-bin.install
@@ -33,7 +33,7 @@ pkgbase = tape16-bin
 	conflicts = tape16-wayland-bin
 	options = !strip
 	options = !debug
-	source = TAPE-16-v0.9.510-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-16-Public-Releases/releases/download/0.9.510/TAPE-16-v0.9.510-Linux-Release.zip
-	sha256sums = 65287d9a282d2f1f83744adeb34f97742dd56dcf64e237aaa45f4c031896f9c4
+	source = TAPE-16-v0.9.520-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-16-Public-Releases/releases/download/0.9.520/TAPE-16-v0.9.520-Linux-Release.zip
+	sha256sums = 82dac878ea8a60b01729e4a0f6b410c7a4c869ebfbe19889806fff6f9025f46d
 
 pkgname = tape16-bin
