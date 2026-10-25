@@ -1,6 +1,6 @@
 # Maintainer: Shawn McCool <shawn@mccool.email>
 pkgname=dredge
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages"
 arch=('x86_64')
@@ -29,13 +29,11 @@ build() {
   # Desktop app — install frontend deps, then build without OS bundling
   # (we install the raw binaries ourselves below).
   cd apps/desktop
-  # Pin pnpm to the version the project builds against (lockfile is v9, CI uses
-  # pnpm 9) instead of the host's pnpm. Arch's rolling pnpm (>=10) requires
-  # Node >=22.13 (it uses the node:sqlite builtin), so on a box with an older
-  # system Node it crashes before installing anything. pnpm 9 runs across
-  # Node 18-26+, so this builds regardless of the host's Node version.
+  # Pin pnpm to the major the project builds against (CI uses pnpm 12) instead
+  # of the host's pnpm. pnpm >=10 needs Node >=22.13 (the node:sqlite
+  # builtin); every Node Arch ships (nodejs, nodejs-lts-jod/krypton) meets it.
   local pnpm_home="${srcdir}/.pnpm"
-  npm install -g --prefix "$pnpm_home" pnpm@9 >/dev/null
+  npm install -g --prefix "$pnpm_home" pnpm@12 >/dev/null
   export PATH="$pnpm_home/bin:$PATH"
   pnpm install --frozen-lockfile
   pnpm tauri build --no-bundle
