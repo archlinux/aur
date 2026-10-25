@@ -26,5 +26,6 @@ package() {
 	install -Dm755 bakkuappu.py "${pkgdir}/usr/bin/bakkuappu"
 	install -Dm644 config.yaml \
 		"${pkgdir}}/etc/bakkuappu.yaml"
+	install -Dm644 bakkuappu.service "${pkgdir}/usr/lib/systemd/system/bakkuappu.service"
 }
 
