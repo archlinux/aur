@@ -5,14 +5,14 @@
 
 pkgname=lightzone-git
 _pkgname=lightzone
-pkgver=5.0.3.r0.g416f3a50
+pkgver=5.0.3.r7.g40b8e691
 pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom (latest git version)"
 url="http://lightzoneproject.org/"
 license=('custom:BSD-3-Clause')
 arch=('x86_64')
-depends=('java-runtime=21' 'lcms2' 'lensfun' 'libjpeg-turbo' 'libraw' 'libtiff' 'libxml2')
-makedepends=('java-environment=21' 'git' 'libx11')
+depends=('java-runtime=25' 'lcms2' 'lensfun' 'libjpeg-turbo' 'libraw' 'libtiff' 'libxml2')
+makedepends=('java-environment=25' 'git' 'libx11')
 conflicts=('lightzone')
 source=('git+https://github.com/ktgw0316/LightZone.git')
 sha256sums=('SKIP')
@@ -27,10 +27,10 @@ MAKEFLAGS="-j1"
 
 build() {
   cd "${srcdir}/LightZone/"
-  if [ -d /usr/lib/jvm/java-21-jdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-21-jdk
+  if [ -d /usr/lib/jvm/java-25-jdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-25-jdk
   else
-    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
   fi
   export GRADLE_USER_HOME="${srcdir}/gradle-home"
 
