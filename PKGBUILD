@@ -1,5 +1,5 @@
 pkgname=fenriz-bar-git
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="Status bar for Wayland compositors"
 arch=('x86_64')
