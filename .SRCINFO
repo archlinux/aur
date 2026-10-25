@@ -1,6 +1,6 @@
 pkgbase = lota-bin
 	pkgdesc = A configurable task runner for rapid development (binary release)
-	pkgver = 1.18.0
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://github.com/quonaro/lota
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lota-bin
 	depends = glibc
 	provides = lota
 	conflicts = lota
-	source_x86_64 = lota-bin-1.18.0::https://github.com/quonaro/Lota/releases/download/v1.18.0/lota-linux-amd64
-	sha256sums_x86_64 = d1f11cb2d807207087707f34acf144af0bdb2fc7d0c77ebc035f99c23b5497de
-	source_aarch64 = lota-bin-1.18.0::https://github.com/quonaro/Lota/releases/download/v1.18.0/lota-linux-arm64
-	sha256sums_aarch64 = 219029a568a09c23852a3581f22a90ec453caf9e56b80d7a818663b535fba7f2
+	source_x86_64 = lota-bin-1.18.1::https://github.com/quonaro/Lota/releases/download/v1.18.1/lota-linux-amd64
+	sha256sums_x86_64 = c508141c99c499fceaee8bb7ef30d040656ddc2fe1cf7a0d08620c35e413f5bd
+	source_aarch64 = lota-bin-1.18.1::https://github.com/quonaro/Lota/releases/download/v1.18.1/lota-linux-arm64
+	sha256sums_aarch64 = 2be6794020d1a6454f155291084635cf3b211d85df8434db769f8dab9c3e3966
 
 pkgname = lota-bin
