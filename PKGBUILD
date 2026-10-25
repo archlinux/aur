@@ -6,7 +6,7 @@ pkgver=1.0.0.r0.g8523762
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
-url='https://github.com/SelfRef/todav'
+url='https://github.com/AperteDev/todav'
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita>=1:1.8' 'libsecret' 'glib2' 'libgcc' 'glibc')
 optdepends=('gnome-online-accounts: sign in with a GNOME Online Accounts account'
@@ -48,6 +48,6 @@ check() {
 package() {
 	cd "$_pkgbase/todav/linux"
 	make install-data PREFIX=/usr DESTDIR="$pkgdir"
-	install -Dm644 data/io.github.selfref.Todav-autostart.desktop \
-		"$pkgdir/etc/xdg/autostart/io.github.selfref.Todav.desktop"
+	install -Dm644 data/dev.aperte.Todav-autostart.desktop \
+		"$pkgdir/etc/xdg/autostart/dev.aperte.Todav.desktop"
 }
