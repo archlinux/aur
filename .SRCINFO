@@ -1,6 +1,6 @@
 pkgbase = neboto-bin
 	pkgdesc = A fast, keyboard-driven terminal UI for browsing AWS
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/neboto/neboto-tui
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = neboto-bin
 	provides = neboto
 	conflicts = neboto
 	options = !strip
-	source_x86_64 = neboto-x86_64-0.8.0.tgz::https://github.com/neboto/neboto-tui/releases/download/v0.8.0/neboto-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5fc798d482a3469b094ac80f4ac2a381f1968a2c39bcb9702ecb585ed0c84edf
-	source_aarch64 = neboto-aarch64-0.8.0.tgz::https://github.com/neboto/neboto-tui/releases/download/v0.8.0/neboto-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 37bbc6c3685041e98129087306857e5eef24cd9f8e64f9fe56cdbde4ca55aa1d
+	source_x86_64 = neboto-x86_64-0.9.0.tgz::https://github.com/neboto/neboto-tui/releases/download/v0.9.0/neboto-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d7d365e3e669528e520a8c8edcc242a88d32d31471f26bb434f362bddb03018c
+	source_aarch64 = neboto-aarch64-0.9.0.tgz::https://github.com/neboto/neboto-tui/releases/download/v0.9.0/neboto-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 024f4559cfb9a29da170734e0afcdab26180e1662b528e50a620ffe1ed50faa8
 
 pkgname = neboto-bin
