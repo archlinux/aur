@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 # Verified stable release
 pkgname=mrstreamer-bin
-pkgver=0.0.19
+pkgver=0.0.20
 pkgrel=1
 pkgdesc='IPTV player for Xtream Codes and M3U subscriptions, with live TV, programme guide, movies and series'
 arch=('x86_64')
@@ -23,12 +23,12 @@ provides=("mrstreamer=$pkgver")
 conflicts=('mrstreamer' 'mr-streamer' 'mr-streamer-bin')
 # These are tested upstream binaries. Preserve their bytes and bundled debug information.
 options=('!strip' '!debug')
-_upstream_version='0.0.19'
-_source_commit='5524bddcb030be19f7bc8b04791d6156f5a07603'
+_upstream_version='0.0.20'
+_source_commit='c06de83c04af7436bed62078d93857ff9c1fed30'
 _deb="Mr-Streamer-${_upstream_version}-linux-amd64.deb"
 source=("https://github.com/Mr-Streamer-OSS/MrStreamer/releases/download/v${_upstream_version}/${_deb}"
         "mrstreamer-LICENSE::https://raw.githubusercontent.com/Mr-Streamer-OSS/MrStreamer/${_source_commit}/LICENSE")
-sha256sums=('6953a8dee3af9bd266659e1bf7ac488c82c71b56ae0aefd8e4e48ceb6c2a74ac'
+sha256sums=('7c216ec653341148c720b07afb57644b6afa27341ac36055bc64dc49479e33f9'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
