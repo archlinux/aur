@@ -2,7 +2,7 @@
 # Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
 pkgname=parcel
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Native host for Parcel browser extension for zx2c4's pass password manager"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=("parcel-firefox: browser extension for Firefox"
             "parcel-chromium: browser extension for Chromium")
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('87a7c501032a3c6fecb562e93a44613349950c2d4c64a4d5b0e4489c8be69b92'
+sha256sums=('dfa9b6949678220773eb0cce6c12b17c22514b5684c44ebc0ab5ef43012d000f'
             'SKIP')
 validpgpkeys=('82ED663067C6017BAA4BC752EB670BF2B1131683'
               'B0908ED59A96C9882BED9A942A51761511A30253'
@@ -57,7 +57,7 @@ validpgpkeys=('82ED663067C6017BAA4BC752EB670BF2B1131683'
 # The hash is on the file extracted from the extension archive [.xpi, .crx],
 # (not the wrapper script file of the same name installed by this package):
 #     sha256sum parcel-host
-_default_host_hash=f9d7982800647bd7253a27324b23b120ad28474ba1e8cc6a9ea363e47157f810
+_default_host_hash=7f77a5cd5d28ea1c88b1783499293374914c66ffd0706182e465a8a2035d245e
 
 prepare() {
     cd "${pkgname}-${pkgver}"
