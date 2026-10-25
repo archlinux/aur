@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 pkgname=todav
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cargo' 'blueprint-compiler' 'gettext')
 # GCC's LTO objects of the bundled C code (SQLite, ring) don't link with rustc's lld.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dba3e94e4ac42c31629ac5121f35a0c3fd64f52c5e82dc97c678799f884b0507')
+sha256sums=('01bb121dd55811b0fd7fc208dd19bc5163b27369352c91190e50d24ad91ca9d5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -40,6 +40,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver/todav/linux"
 	make install-data PREFIX=/usr DESTDIR="$pkgdir"
-	install -Dm644 data/io.github.selfref.Todav-autostart.desktop \
-		"$pkgdir/etc/xdg/autostart/io.github.selfref.Todav.desktop"
+	install -Dm644 data/dev.aperte.Todav-autostart.desktop \
+		"$pkgdir/etc/xdg/autostart/dev.aperte.Todav.desktop"
 }
