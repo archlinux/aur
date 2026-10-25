@@ -25,10 +25,7 @@ sha256sums=('463341b7fdabbfe1a2d4bd912715d6330393874525b1e907b866f0fd8d5bef0d'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '92f8681e349ef1f90891b792da95e3b2b0bd1ed610b78018c58feb2d87e15a9d')
-sha256sums_x86_64=('129f82db7bafd54ae14bb5bb284041c73860e8c7a009a3a026ca5e946cbff247')
-sha256sums_aarch64=('0dc8ad63feacc6c19d7cb5c89ae828085b0ac3fa8039bc816a08a0537744e523')
+            'SKIP')
 
 if "$_system_godot"
 then
@@ -40,6 +37,9 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
     source+=("godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz")
     noextract+=("godot-mono-export-templates-$_godot.zip")
+    sha256sums_x86_64+=('129f82db7bafd54ae14bb5bb284041c73860e8c7a009a3a026ca5e946cbff247')
+    sha256sums_aarch64+=('0dc8ad63feacc6c19d7cb5c89ae828085b0ac3fa8039bc816a08a0537744e523')
+    sha256sums+=('92f8681e349ef1f90891b792da95e3b2b0bd1ed610b78018c58feb2d87e15a9d')
 fi
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
@@ -71,15 +71,15 @@ prepare(){
     git lfs fetch
     git lfs checkout
     local templates="${XDG_DATA_HOME:-$HOME/.local/share}/godot/export_templates"
-    mkdir -p "$templates" "$HOME/.local/bin"
+    mkdir -p "$templates"
     if ! "$_system_godot"
     then
+        mkdir -p "$srcdir/bin"
         ln -srfv "$srcdir/Godot_v$_godot-stable_mono_linux_$_godot_arch/Godot_v$_godot-stable_mono_linux.$_godot_arch" \
-            "$HOME/.local/bin/godot"
+            "$srcdir/bin/godot-mono"
         mkdir -p "$templates/$_godot.stable.mono"
         bsdtar -x -C "$templates/$_godot.stable.mono" -f "$srcdir/godot-mono-export-templates-$_godot.zip" --strip-components 1 "templates/*"
     else
-        ln -srfv /usr/bin/godot-mono "$HOME/.local/bin/godot"
         local installed_godot
         installed_godot="$(LANG=C pacman -Qi godot-mono | grep Version | cut -d : -f 2 | cut -d - -f 1 | xargs)"
         if [[ "$installed_godot" != "$_godot" ]]
@@ -113,7 +113,10 @@ prepare(){
 build(){
     cd "$srcdir/Thrive"
 
-    export PATH="$PATH:$HOME/.local/bin"
+    if ! "$_system_godot"
+    then
+        export PATH="$PATH:$srcdir/bin"
+    fi
     local EXPORT_DIR=dist
 
     # Use --disable-avx if your PC is too old
@@ -122,7 +125,7 @@ build(){
     #dotnet run --project Scripts -- package Linux --compress=false
     dotnet build Thrive.csproj
     mkdir -p $EXPORT_DIR
-    godot --headless --export-release "Linux/X11" $EXPORT_DIR/Thrive
+    godot-mono --headless --export-release "Linux/X11" $EXPORT_DIR/Thrive
 }
 
 package(){
