@@ -25,7 +25,7 @@ post_upgrade() {
 | bsdtar -xOf - \"${_host_script}\""
 
     echo ">>> [SECURITY] ACTION REQUIRED: review host script bundled in extension:"
-    echo ">>>   1. Review contents of updated host script (signed does imply safe!):"
+    echo ">>>   1. Review contents of updated host script (signed does not imply safe!):"
     echo ">>>        "\${EDITOR}" <(${_extract_cmd})"
     echo ">>>   2. If OK, update HOST_HASH in your '~/.config/parcel/parcelrc' to:"
     echo ">>>        ${_extract_cmd} | sha256sum"
