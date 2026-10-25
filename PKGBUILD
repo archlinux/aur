@@ -9,10 +9,10 @@
 
 pkgname=rbw-enhanced
 _pkgname=rbw
-_commit=d8333f6ae58b45e34f699e3c3f3c3233ed5a69b6
-pkgver=1.15.0.r27.gd8333f6
-pkgrel=2
-pkgdesc='Unofficial Bitwarden CLI (enhanced fork: full editing, attachments, persistent login)'
+_commit=95237b4d3a1c60f95d71880189516b5dec4a62f6
+pkgver=1.15.0.r48.g95237b4
+pkgrel=1
+pkgdesc='Unofficial Bitwarden client: TUI, full editing, howdy/fingerprint/PIN unlock, persistent login (rbw fork)'
 arch=(x86_64)
 url='https://github.com/rylos/rbw'
 license=(MIT)
@@ -23,11 +23,18 @@ depends=(
   libgcc
   pinentry
 )
-optdepends=('libnotify: notification when the login expired')
+optdepends=(
+  'libnotify: notification when the login expired'
+  'polkit: unlock with system authentication (see /usr/share/doc/rbw-enhanced/polkit)'
+  'howdy: face unlock through polkit'
+  'fprintd: fingerprint unlock through polkit'
+  'openssh: create ssh key items'
+  'dotool: type credentials from rbw tui (or wtype, ydotool, xdotool)'
+)
 makedepends=(rust)
 options=(!lto)
 source=("$_pkgname-$_commit.tar.gz::https://github.com/rylos/rbw/archive/$_commit.tar.gz")
-sha256sums=('57dd4ff9fb869dc4fe2c75fa3e69ddf9a269553e865e4b6aa62cc17dae3551a1')
+sha256sums=('7a3a8bdfa48ca00ae0b72a402bf023e37478005fcdf5562a2fec57c218a868e9')
 
 # PORTABLE_CPU (e.g. x86-64-v3, set in ~/.config/pacman/makepkg.conf) replaces
 # the native CPU flags of makepkg.conf, so one package runs on every machine
@@ -77,6 +84,11 @@ package() {
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md CHANGELOG.md
+
+  # polkit action for system authentication; the PAM side stays up to the
+  # admin, see the guide next to it
+  install -vDm644 -t "$pkgdir/usr/share/polkit-1/actions" contrib/polkit/net.rbw.unlock.policy
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/polkit" contrib/polkit/*
 
   # shell auto-completions
   install -vDm644 bash-completions "$pkgdir/usr/share/bash-completion/completions/rbw"
