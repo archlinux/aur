@@ -9,6 +9,7 @@ pkgbase = alda-bin
 	depends = java-runtime>=8
 	provides = alda
 	conflicts = alda
+	conflicts = icedtea-web
 	source = alda-player-2.4.7::https://alda-releases.nyc3.digitaloceanspaces.com/2.4.7/player/non-windows/alda-player
 	b2sums = f792b770a2cbf45e1653e8fb744a1f7726b72a8356cb29ec08f714b0e17b9e87daf2c771f764eaf3629a46782b34d57a5c0486f3fcf508bfc28dbf08f8655e99
 	source_i686 = alda-2.4.7-i686::https://alda-releases.nyc3.digitaloceanspaces.com/2.4.7/client/linux-386/alda

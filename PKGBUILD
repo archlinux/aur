@@ -12,7 +12,7 @@ url='https://github.com/alda-lang/alda'
 license=('EPL-2.0')
 depends=('java-runtime>=8')
 provides=('alda')
-conflicts=('alda') # If it ever appears on the AUR (it was not on the AUR as of 8/16/26), Alda also conflicts with IcedTea (https://openjdk.org/projects/icedtea/). See https://github.com/alda-lang/alda/blob/master/doc/troubleshooting.md#icedtea-related-issues for more.
+conflicts=('alda' 'icedtea-web')
 source=("alda-player-$pkgver::https://alda-releases.nyc3.digitaloceanspaces.com/$pkgver/player/non-windows/alda-player")
 # I know namcap complains about having arch-specific sources, but upstream calls x86_64 amd64 and i686 i386. I didn't want to complicate things with an if statement
 source_x86_64=("alda-$pkgver-x86_64::https://alda-releases.nyc3.digitaloceanspaces.com/$pkgver/client/linux-amd64/alda")
