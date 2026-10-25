@@ -4,9 +4,14 @@ Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/listmonk --config /etc/listmonk/config.toml
 User=listmonk
 Group=listmonk
+# Run from a writable data directory so the default relative upload path
+# ("uploads") resolves to /var/lib/listmonk/uploads
+StateDirectory=listmonk
+WorkingDirectory=/var/lib/listmonk
+ExecStartPre=/usr/bin/mkdir -p /var/lib/listmonk/uploads
+ExecStart=/usr/bin/listmonk --config /etc/listmonk/config.toml
 Restart=on-failure
 LimitNOFILE=65536
 TasksMax=infinity

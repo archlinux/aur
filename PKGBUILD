@@ -4,7 +4,7 @@
 
 pkgname=listmonk-bin
 pkgver=6.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard (binary release)'
 url="https://github.com/knadh/listmonk"
 license=('AGPL-3.0-or-later')
@@ -22,7 +22,7 @@ source=("listmonk-$pkgver.toml::$url/raw/v$pkgver/config.toml.sample"
 sha256sums=('5ab5c9c813b826d331d9ffdd7d2462cf1fe57db3918d4b1d636620c3968e430f'
             '232b1dc485ffe96f4b2157c004c3bc11a490a88bd5a315ebc4c1501e1819ee90'
             '5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb'
-            '4852f206b7763ba047ba123d663cadb806f437967154ebe837845198b3266533')
+            '0713b56b0a593a789013f0d5e0dca97ad2e23f1921f90e732d232e09dffeef45')
 sha256sums_x86_64=('ce78c89d8aac0df3ffe0e110b008e7bb5dae13e6ad0c57b43aa7094971e8698e')
 #sha256sums_aarch64=('')
 #sha256sums_armv6h=('')
