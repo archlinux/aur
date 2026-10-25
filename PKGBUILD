@@ -2,12 +2,12 @@
 
 _name=openinference-instrumentation
 pkgname=python-$_name
-pkgver=0.1.71
+pkgver=0.1.72
 pkgrel=1
 pkgdesc="OpenInference instrumentation utilities."
 arch=('any')
 _repo="https://github.com/Arize-ai/openinference"
-url="$_repo/tree/main/${pkgname/-//}"
+url="$_repo/tree/main/python/$_name"
 license=('Apache-2.0')
 depends=('python'
          'python-openinference-semantic-conventions'
@@ -16,19 +16,18 @@ depends=('python'
          'python-wrapt')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 checkdepends=('python-pytest'
               'python-jsonschema'
               'python-openai'
               'python-pydantic'
               'python-pytest-asyncio'
               'python-pytest-recording')
-source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('16e5792f1e882d6245416f7269c01106462199c4d36b8ae1a781168b32672e68')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
+sha256sums=('6d5654a736adfd6af04f4b3a2e760c67a147c7f698a451135593ab4d407b837b')
 
 build() {
-  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "openinference-$pkgname-v$pkgver/python/$_name"
   python -m build --wheel --no-isolation
 }
 
@@ -37,11 +36,11 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "openinference-$pkgname-v$pkgver/python/$_name"
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "openinference-$pkgname-v$pkgver/python/$_name"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
