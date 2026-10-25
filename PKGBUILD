@@ -1,7 +1,7 @@
 # Maintainer: Pater Kleomenis <paterkleomenis@protonmail.com>
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ sha256sums=('baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad'
             '89448ca4aa33837cea05777f33c93253145bb583b4a1e2f010bef666429e1899'
             'fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5'
             '6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae')
-sha256sums_x86_64=('9afdd596417aaf46717ec74260a200d780beb642bea3d691ec935c4d859efe63')
-sha256sums_aarch64=('25ae03703b345e154be3b03b4c57bb6068345db70c3930a06d6409e3bc339ead')
+sha256sums_x86_64=('777822b860b8b7d6097203838c7689479b974e5d920054cf962e5d80116ec894')
+sha256sums_aarch64=('7a3af1646717a6cccc74eeb20eef993f98aa4ba203b5c2020d8985fa39e5d2ac')
 
 
 package() {
