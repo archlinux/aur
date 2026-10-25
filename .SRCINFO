@@ -1,6 +1,6 @@
 pkgbase = cssh
 	pkgdesc = Cluster Secure Shell/Copy based on libssh, for managing clusters in parallel
-	pkgver = 0.0.1.r25.g6bd0546
+	pkgver = 0.0.1.r34.g8726bd4
 	pkgrel = 1
 	url = https://git.andreasbaumann.cc/cgit/cssh/
 	arch = i486
