@@ -6,7 +6,7 @@ _appname=(xftp xcp xsync xfind xtree)
 pkgname=${_gitname}-bin
 pkgdesc="Unix-shaped command-line tools for SharePoint document libraries over Microsoft Graph."
 
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,16 +28,16 @@ for app in "${_appname[@]}"; do
 	source_x86_64+=("${app}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${app}_${pkgver}_${_barch[0]}.tar.gz")
 	source_aarch64+=("${app}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${app}_${pkgver}_${_barch[1]}.tar.gz")
 done
-sha256sums_x86_64=('5eb07361a2659a88a5431524514a28edfa4f96c2ee4378cacfc2d78e0036f1a0'
-                   'aaad34367ddabaef8b42a5e025d7dba860aca87f1a7b285c905655f055f24f85'
-                   '51204b460de577e8baea324061d72330e42b12124c10868b4016901b48b99c4d'
-                   '46700a51acb5322f69521287faf900cc301bea9cf7bea183f29173375b3f6c6f'
-                   '7567e515a7099d464f01391bedc83205ccfad1f1b397469264aaa4bce5cef00c')
-sha256sums_aarch64=('ce32a7dda2d45e652360bfcb9840aec9d95cc5447e4621bc34807881b57a6224'
-                    'cfbbd85de9ee91d4d60470299043e660e7c69df875b4403f658c4715c2f83a2c'
-                    '653a20ad1378d04a4d3dbf0c90777ee24948ae505a93e4043d72907ebfec5840'
-                    '1a98bebec90a05b32ea65060501c29f14ff4c42086a50e2ab22709d2edbfd2e7'
-                    '570101f1864424195c82fabdbc85e43f1c99d7627a308ce57af455587ccd2d0a')
+sha256sums_x86_64=('b95c7d750e9e89b5c22e4b90892f1498f7bafc2d796f11fedad435d65115573b'
+                   '2ae961b843bc90f5ce7befae25b70ce445357fd433296e7000b04ee3550b69be'
+                   '9b34dba323eb771ae4eda73b5d5a3670809a9248b3f9c49a2e063c18d8e87aa3'
+                   '36fa4b890c46f01f81615926cf4c02c8e6f64832f6f88b2d40268ce7b3d1c3f1'
+                   '10be4fc52d74424101a4c627200449b04ce998bac21e1b91f9da04e6f31fc070')
+sha256sums_aarch64=('9e3802a3d04dcefaac2e3c49b40d44cb09b0903da86ad7c256e9310220cd71c3'
+                    'd69f5acda6e0cd6a362399d4e5ff991f8318598fa389f3f4272260677a96cf76'
+                    '219b96d554efea5bb9df92c9868836a3c191480e5dfde479184e26b91239838a'
+                    '581491f706465e13a74384d4bc6e76eb879ca0942919190dd26df4feebe7fcf2'
+                    'ade71bb1e8d53d76211a9c52339b0c949d4c824d48daf683e3b16211cf5da328')
 
 
 package() {
