@@ -7,7 +7,7 @@
 # to /usr/share. What a user changes lives in ~/.config/zenworks.
 
 pkgname=zenworks
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
@@ -75,7 +75,7 @@ optdepends=(
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a5fea0023036b67b6851143906de1eff7173ffc67c70cae4273eb87b70226d9a')
+sha256sums=('e501f962092dd5fc39e639571fae7fa791023004e28ebab29c947b7465509813')
 
 package() {
   cd "ZENWORKS-$pkgver"
