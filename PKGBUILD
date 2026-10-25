@@ -15,6 +15,9 @@ makedepends=(
 	'clang'
 	'cmake'
 	'git'
+	'libxi'
+	'libxss'
+	'libxtst'
 	'lld'
 	'ninja'
 )
