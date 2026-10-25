@@ -2,18 +2,17 @@
 
 pkgname=dupriman-git
 _pkgname=dupriman
-pkgver=0.1.0.r0.g6dfbb5e
+pkgver=0.1.0.r7.g1b1721d
 pkgrel=1
 pkgdesc="Manual duplex printing assistant for single-sided printers (CUPS virtual printer + GTK confirmation prompt)"
 arch=('x86_64')
 url="https://github.com/OrdChaos/dupriman"
 license=('MIT')
-depends=('cups' 'qpdf' 'poppler' 'gtk4>=4.10' 'systemd')
-makedepends=('cargo' 'git')
+depends=('cups' 'qpdf' 'poppler' 'gtk4>=4.10')
+makedepends=('cargo' 'git' 'pkgconf')
 provides=('dupriman')
 conflicts=('dupriman')
 options=('!debug')
-install=dupriman.install
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -30,5 +29,17 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  ./target/release/dupriman install --root "$pkgdir" --no-activate
+  install -Dm755 target/release/dupriman "$pkgdir/usr/bin/dupriman"
+  install -d "$pkgdir/usr/lib/cups/backend"
+  ln -s ../../../bin/dupriman "$pkgdir/usr/lib/cups/backend/dupriman"
+
+  cat > "$srcdir/dupriman-package.toml" <<'EOF'
+[printer]
+virtual_name = "dupriman-duplex"
+virtual_uri = "dupriman://duplex"
+virtual_info = "DupriMan Manual Duplex"
+EOF
+  install -d "$pkgdir/usr/share/cups/model"
+  ./target/release/dupriman --config "$srcdir/dupriman-package.toml" ppd \
+    > "$pkgdir/usr/share/cups/model/dupriman.ppd"
 }

@@ -1,18 +1,17 @@
 pkgbase = dupriman-git
 	pkgdesc = Manual duplex printing assistant for single-sided printers (CUPS virtual printer + GTK confirmation prompt)
-	pkgver = 0.1.0.r0.g6dfbb5e
+	pkgver = 0.1.0.r7.g1b1721d
 	pkgrel = 1
 	url = https://github.com/OrdChaos/dupriman
-	install = dupriman.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = pkgconf
 	depends = cups
 	depends = qpdf
 	depends = poppler
 	depends = gtk4>=4.10
-	depends = systemd
 	provides = dupriman
 	conflicts = dupriman
 	source = git+https://github.com/OrdChaos/dupriman.git
