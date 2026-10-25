@@ -1,6 +1,6 @@
 pkgbase = srs-sysinfo
-	pkgdesc = Clean-room Linux implementation of SIV64X (System Information Viewer by Ray Hinchliffe, RH Software): GTK3 GUI, 538 report items, CPU burner, benchmarks
-	pkgver = 1.0.8
+	pkgdesc = Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 545 report items, user guide, CPU burner, benchmarks
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/eugenesflanagin-spec/srs-sysinfo
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = srs-sysinfo
 	optdepends = inxi: srs-sysreport section
 	optdepends = lshw: srs-sysreport section
 	optdepends = hwinfo: srs-sysreport section
-	source = srs-sysinfo-1.0.8.tar.gz::https://github.com/eugenesflanagin-spec/srs-sysinfo/archive/refs/tags/v1.0.8.tar.gz
-	sha256sums = 51a9dee72102f3c8331fdafe0bc6c2d5c592ffc9b5c5e46835f82eb40edc5da3
+	source = srs-sysinfo-1.1.0.tar.gz::https://github.com/eugenesflanagin-spec/srs-sysinfo/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 86a8a5fe1e926c6f7cc801538075ed24a8926ed6dee3c9481e096b7498ce6bb2
 
 pkgname = srs-sysinfo

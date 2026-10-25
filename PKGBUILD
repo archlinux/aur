@@ -1,13 +1,13 @@
 # Maintainer: Eugene Flanagin <eflanagin@pm.me>
 #
-# SRS is a clean-room implementation of SIV64X (System Information Viewer) for Linux.
-# SIV is the work of Ray Hinchliffe, RH Software (https://rh-software.com); SRS contains no
-# SIV code, binaries or data files and is not affiliated with or endorsed by RH Software.
+# SRS is a Linux system information viewer inspired by SIV64X (System Information Viewer) and
+# built to improve on it. SIV is the work of Ray Hinchliffe, RH Software (https://rh-software.com);
+# SRS is an independent project, not affiliated with SIV or its author.
 
 pkgname=srs-sysinfo
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Clean-room Linux implementation of SIV64X (System Information Viewer by Ray Hinchliffe, RH Software): GTK3 GUI, 538 report items, CPU burner, benchmarks"
+pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 545 report items, user guide, CPU burner, benchmarks"
 arch=('x86_64')
 url="https://github.com/eugenesflanagin-spec/srs-sysinfo"
 license=('GPL-2.0-or-later')
@@ -34,7 +34,7 @@ optdepends=(
   'hwinfo: srs-sysreport section'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51a9dee72102f3c8331fdafe0bc6c2d5c592ffc9b5c5e46835f82eb40edc5da3')
+sha256sums=('86a8a5fe1e926c6f7cc801538075ed24a8926ed6dee3c9481e096b7498ce6bb2')
 
 build() {
   cd "$pkgname-$pkgver"
