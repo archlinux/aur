@@ -1,6 +1,6 @@
 pkgbase = incus-git
 	pkgdesc = Powerful system container and virtual machine manager, git version
-	pkgver = v6.1.0.r148.3f91a7cc7
+	pkgver = v7.5.1.r497.076c66ab8e
 	pkgrel = 1
 	url = https://linuxcontainers.org/incus/
 	arch = x86_64
