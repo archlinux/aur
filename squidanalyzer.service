@@ -3,7 +3,7 @@ Description=Squid log anayzer
 After=network.target
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/usr/bin/squid-analyzer
 StandardOutput=null
 StandardError=null
