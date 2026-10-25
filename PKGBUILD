@@ -1,6 +1,6 @@
 # Maintainer: gimgiwer <gimgiwer@gmail.com>
 pkgname=swiftify-bin
-pkgver=0.18.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A Spotify player for the desktop, built with Qt Quick and a Rust core (precompiled binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('swiftify')
 conflicts=('swiftify')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/swiftify-org/swiftify/releases/download/v${pkgver}/swiftify-${pkgver}-linux-${CARCH}.tar.gz")
-sha256sums=('e79b8bc675ef8fb8f6b7f1b680c287942b92fb11da9246065bdd37bb4df654c8')
+sha256sums=('d6f52cd90cd058940975f0829eaf9c6de3ba361ab6cd82f2de3ce84e61823926')
 
 package() {
     cd "swiftify-${pkgver}-linux-${CARCH}"
