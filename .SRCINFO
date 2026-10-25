@@ -1,0 +1,20 @@
+pkgbase = qtermwidget5
+	pkgdesc = A terminal widget for Qt 5, legacy dependency
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/lxqt/qtermwidget
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = lxqt-build-tools-qt5
+	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	source = https://github.com/lxqt/qtermwidget/releases/download/1.4.0/qtermwidget-1.4.0.tar.xz
+	sha256sums = e7253065f74fa056843c95f9543e690bcaf7a03647ef5e02379eec4eb162026b
+
+pkgname = qtermwidget5
