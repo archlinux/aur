@@ -1,8 +1,8 @@
 # Maintainer: vaishnav <vaishnav.sabari.girish@gmail.com>
 
 pkgname=typepper
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='A spicy little typing game for your terminal and browser'
 arch=('x86_64' 'aarch64')
 url='https://typepper.com/'
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/leodiegues/typepper/archive/refs/tags/v$pkgver.tar.gz")
 # Run `updpkgsums` to fill this in.
-sha256sums=('SKIP')
+sha256sums=('c84e688c6c3ee0a2080eb3ab93016bb04e5a89ce56c583a82363857de08b271b')
 
 prepare() {
   cd "$pkgname-$pkgver"
