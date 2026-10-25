@@ -1,6 +1,6 @@
 pkgbase = tkginstaller-git
 	pkgdesc = Build & install Frogging-Family stuff with ease
-	pkgver = 0.60.5.r401.g74f203e
+	pkgver = 0.60.6.r402.gb727b68
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
 	install = tkginstaller.install
@@ -15,12 +15,12 @@ pkgbase = tkginstaller-git
 	optdepends = nano: fallback configuration editor
 	optdepends = onefetch: repository summaries
 	optdepends = wdiff: word-based configuration comparisons
-	provides = tkginstaller=0.60.5.r401.g74f203e
+	provides = tkginstaller=0.60.6.r402.gb727b68
 	conflicts = tkginstaller
-	source = tkginstaller-0.60.5.r401.g74f203e::https://raw.githubusercontent.com/damachine/tkginstaller/74f203ec968f94af2db0dd34bfac392a5bc60d45/tkginstaller
-	source = tkginstaller.bash::https://raw.githubusercontent.com/damachine/tkginstaller/74f203ec968f94af2db0dd34bfac392a5bc60d45/completions/tkginstaller.bash
-	source = _tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/74f203ec968f94af2db0dd34bfac392a5bc60d45/completions/_tkginstaller
-	sha256sums = e7cd5e3b224e81460d6c73a638f7ef5da2ee9fc31b6b1b2d4d5b1ff1a3c4f12f
+	source = tkginstaller-0.60.6.r402.gb727b68::https://raw.githubusercontent.com/damachine/tkginstaller/b727b688d71c0b00125aad12ae5c323f3fa35a3c/tkginstaller
+	source = tkginstaller.bash::https://raw.githubusercontent.com/damachine/tkginstaller/b727b688d71c0b00125aad12ae5c323f3fa35a3c/completions/tkginstaller.bash
+	source = _tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/b727b688d71c0b00125aad12ae5c323f3fa35a3c/completions/_tkginstaller
+	sha256sums = c1f842593f9f75adf32ca69868e7ca231c7bc0e2c034d81f7b4b7f12c006e74f
 	sha256sums = b131047c9dccfda5a06365305ffab99c881950cdc7a92c5cf5b5de19c878aaa8
 	sha256sums = 098b7c4c9c490ef3abe99cb2ac3c6c6aa531d1508207a06adc8ffa49615a81b6
 
