@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
 url='https://metacpan.org/release/OLE-Storage_Lite'
-source=('http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/OLE-Storage_Lite-0.22.tar.gz')
-md5sums=('b36bb2b7c624862882f3f06988ce3499')
-sha512sums=('672b44f033a8c13fcf6258c2ff08627bd6ed8fe3c105b2c20e9627e361df217511fdb2c7be117634883c5ec050894a64a4d06b21fac252602c0ac1b828bf1dd5')
-_distdir="OLE-Storage_Lite-0.22"
+source=("https://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/OLE-Storage_Lite-${pkgver}.tar.gz")
+sha512sums=('5c2fef782b406effae2d8cd1f20cfdded947c9f70e6803f3749eed48a5db57f19cfa956c2e67708437262fcc14c5b72cfbe7cccd12ff30a2ed9885bb6130f4d7')
+_distdir="OLE-Storage_Lite-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
