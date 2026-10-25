@@ -1,7 +1,7 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=coomer-bin
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Zoomer application for everyone on Linux (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
@@ -28,14 +28,12 @@ source=(
 )
 source_x86_64=("coomer-v$pkgver-x86_64.AppImage::https://github.com/yuzujr/coomer/releases/download/v$pkgver/coomer-v$pkgver-x86_64.AppImage")
 source_aarch64=("coomer-v$pkgver-aarch64.AppImage::https://github.com/yuzujr/coomer/releases/download/v$pkgver/coomer-v$pkgver-aarch64.AppImage")
-sha256sums=(
-  '4736f70e8353dc8df73e186c6fa7b44e3dd040de0d9d2efc6b606ffb70544df6'
-  'c28862c404c04b1ae16d56dbf27113e3df9dfbee0d96d1f8a8f8ca919de3be1c'
-  'e0f1033118fa22c655e0b6ae7ad4ea8268a5f710d2afadea9508e0d13fda9b53'
-  '02cb433214e94fe75bd94ff9c380eeffa2138de6f36d28db2a85bd7c742eace9'
-)
-sha256sums_x86_64=('d24700dc3c8a99fe9e815f6ad837752b59b39b87ee14c9650348f9dbe8d40e3e')
-sha256sums_aarch64=('aa296d6e60524c6c4a3e4f30d5642f5a1b59a2a96b3d286b2d429eae2e12365f')
+sha256sums=('4736f70e8353dc8df73e186c6fa7b44e3dd040de0d9d2efc6b606ffb70544df6'
+            'c28862c404c04b1ae16d56dbf27113e3df9dfbee0d96d1f8a8f8ca919de3be1c'
+            'e0f1033118fa22c655e0b6ae7ad4ea8268a5f710d2afadea9508e0d13fda9b53'
+            '61e54ffa074c1d33229deb6aa40ccdf3e89779d2992896131195d55b79a16fee')
+sha256sums_x86_64=('1789b1deb133e73a3da2b2f36cf75cc288f235244ce6dd4fe7459fd4dfaaf887')
+sha256sums_aarch64=('2853976755eade759005671d2a13f9cff3912273ebced1b25a787f64e274ab12')
 noextract=(
   "coomer-v$pkgver-x86_64.AppImage"
   "coomer-v$pkgver-aarch64.AppImage"
