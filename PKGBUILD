@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=()
 depends=(
   'quickshell'
-  'qt6-dbusqml>=1.0.0'
+  'qt6-dbusqml>=1.1.0'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
@@ -47,7 +47,7 @@ package() {
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
   # Exclude dev tooling and temp files from the installed tree
-  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev"
+  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev" "$pkgdir/etc/xdg/quickshell/atmosphera/Scripts/dev"
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
 
   # Bundled per-process lock screen (the shell spawns it as
