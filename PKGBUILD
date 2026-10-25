@@ -3,7 +3,7 @@
 pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.6.2
+pkgver=2.6.3
 _pkgver="v$pkgver"
 pkgrel=1
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
@@ -28,7 +28,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-b2sums=('121a536e981378854738dfa62a097a34ee36d81898b1b8d60a6bd6019887a85ce49c9dad771750aec9b227ab9d318b60925cb51bc331481709a71f4a9f52c072')
+b2sums=('59d106dcb8da7882e5b157abea3faa65a16aa73ca5de308c783a3f64de1ab5a1d9e2f2b10eaf922c07b2919ba40f4ef4d9c378e541fa6b4b7bce143a2dda8555')
 
 _runtime() {
     if [ "${CARCH}" = 'aarch64' ]; then
@@ -42,6 +42,8 @@ prepare() {
     pushd "${_name}-${pkgver}"
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}.desktop"
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
+    sed -i "s/^StartupWMClass=.*$/StartupWMClass=${_name}/g" "Flatpak/${_app_id}.desktop"
+    sed -i "s/^StartupWMClass=.*$/StartupWMClass=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
     popd
 }
 
