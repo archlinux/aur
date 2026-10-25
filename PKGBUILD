@@ -2,7 +2,7 @@
 
 pkgname=oceanus-bin
 _pkgname=${pkgname%-bin}
-pkgver="1.4.2"
+pkgver="1.5.2"
 pkgrel=1
 pkgdesc="一个 Flutter 网易云音乐客户端"
 arch=('x86_64')
@@ -57,7 +57,7 @@ source=(
     # upstream .deb; we ship it ourselves to satisfy /usr/share/licenses).
     'GPL-3.0-or-later.txt::https://raw.githubusercontent.com/spdx/license-list-data/main/text/GPL-3.0-or-later.txt'
 )
-sha512sums=('ee8380966aad7f49e6ea0e8346a81d6c15c0abe6884e182a298e895823e11e9664473efd7b867257fdeb4af0c18c633635202a2bc1dcf52d981738ebb4911260'
+sha512sums=('d8e279be9e1351087b6237fcc942402f557d987b7fe58e4cef326199cd627088303b574f44b6e580a619ab4e038dcff1cbeaeff216f5bb353a4dd2fe6069ae61'
             '165f8007d3397e1fd4c30a42039122c3ed8f9f5d45274d682f4707fadb093ab7a8f9336724db6eb7653acb9cee42d39fd98fb72811afce635af03a9f2ef66181')
 
 # ---------------------------------------------------------------------------
