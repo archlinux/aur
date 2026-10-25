@@ -1,0 +1,5 @@
+# /etc/hosts as nhiicc.service sees it. mLNHIICC exits at start-up unless it
+# finds the iccert.nhi.gov.tw entry (and tries to add it otherwise)
+127.0.0.1 localhost
+::1 localhost
+127.0.0.1 iccert.nhi.gov.tw

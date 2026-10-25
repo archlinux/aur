@@ -1,11 +1,16 @@
 post_install() {
-  echo 127.0.0.1 iccert.nhi.gov.tw >> /etc/hosts
-  echo /etc/hosts is modified to make NHIICC work. Please review its contents if you wish.
-
   post_upgrade
 }
 
 post_upgrade() {
+  # Up to 1:20240710.1-4 post_install added this entry; the service now has
+  # its own /etc/hosts
+  if [[ -n $2 ]] && (( $(vercmp "$2" 1:20240710.1-5) < 0 )) &&
+     grep -q 'iccert\.nhi\.gov\.tw' /etc/hosts; then
+    echo ">>> The 'iccert.nhi.gov.tw' line in /etc/hosts is no longer needed by NHIICC"
+    echo ">>> and can be removed. It will also be removed when the package is uninstalled."
+  fi
+
   # Only generate the local CA and server certificate once, instead of adding
   # a new trust anchor on every upgrade. To regenerate them (e.g. when they
   # are about to expire), run /usr/share/nhiicc/regen-certs.sh as root.

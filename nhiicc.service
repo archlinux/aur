@@ -15,6 +15,38 @@ BindReadOnlyPaths=/var/lib/nhiicc/cert:/usr/local/share/NHIICC/cert
 # $CREDENTIALS_DIRECTORY
 BindReadOnlyPaths=/run/credentials/nhiicc.service/NHIServerCert.key:/usr/local/share/NHIICC/cert/NHIServerCert.key
 LoadCredential=NHIServerCert.key:/var/lib/nhiicc/cert/NHIServerCert-real.key
+# Tool refuses to start without an iccert.nhi.gov.tw line in /etc/hosts, so
+# give it its own instead of editing the system one
+BindReadOnlyPaths=/usr/share/nhiicc/hosts:/etc/hosts
+
+# Hardening: it only needs to listen on 127.0.0.1:7777, reach NHI's servers
+# and talk to pcscd over its socket
+CapabilityBoundingSet=
+PrivateDevices=true
+PrivateUsers=true
+ProtectHome=true
+ProtectClock=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ProtectProc=invisible
+ProcSubset=pid
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+# Outbound access is required: tool connects to cloudicap.nhi.gov.tw:443 at
+# start-up before accepting connections
+SocketBindAllow=tcp:7777
+SocketBindDeny=any
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallErrorNumber=EPERM
+UMask=0077
 
 [Install]
 WantedBy=multi-user.target
