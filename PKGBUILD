@@ -3,7 +3,7 @@
 
 pkgname=chunghwa-post-webatm
 epoch=1
-pkgver=1.2603.30.1
+pkgver=1.2610.1.1
 pkgrel=1
 pkgdesc='WebATM plugin for Chunghwa Post (中華郵政 WebATM 元件)'
 arch=(any)
@@ -11,18 +11,13 @@ url='https://webatm.post.gov.tw/'
 license=(unknown)
 depends=(gnutls pcsclite sh wine)
 makedepends=(msitools gendesk perl-image-exiftool p7zip imagemagick)
-source=("ATMSetup-$pkgver.msi"::"https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi"
+source=("https://webatm.post.gov.tw/postatm/cab/ATMSetup_V$pkgver.msi"
         "$pkgname")
-sha256sums=('b058447151bb48e01777a04f306406e5e47c64f2f632a079560ec87726d5fc81'
+sha256sums=('bd27304d4872b30f57de0f65ce439253195336b2b9f00474d57b727a91054964'
             '2a21dba5dea4132d3693cf3d6332cee2f3a0be650f0e19e76ece27cd834abb75')
 
 prepare() {
-  msiextract ATMSetup-$pkgver.msi
-}
-
-pkgver() {
-  # Credit: https://askubuntu.com/a/717855
-  exiftool -s3 -ProductVersion ATMXHRService.exe
+  msiextract ATMSetup_V$pkgver.msi
 }
 
 build() {
