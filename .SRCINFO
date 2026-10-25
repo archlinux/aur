@@ -1,15 +1,15 @@
 pkgbase = nimf-libhangul-git
 	pkgdesc = Nimf is a lightweight, fast and extensible input method framework. (libhangul only)
-	pkgver = 1.4.19.r0.gefe873d
-	pkgrel = 3
+	pkgver = 1.4.19.r1.gb4a141a
+	pkgrel = 1
 	url = https://github.com/hamonikr/nimf
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-3.0-or-later
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = intltool
 	makedepends = gtk-doc
-	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = gtk-update-icon-cache
 	makedepends = librsvg
@@ -19,7 +19,7 @@ pkgbase = nimf-libhangul-git
 	makedepends = qt5-base
 	depends = glib2
 	depends = libxklavier
-	depends = libhangul-git
+	depends = libhangul
 	depends = libxkbcommon>=0.5.0
 	depends = libayatana-appindicator
 	source = nimf::git+https://github.com/hamonikr/nimf.git

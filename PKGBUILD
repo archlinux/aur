@@ -2,8 +2,8 @@
 
 _pkgname=nimf
 pkgname=nimf-libhangul-git
-pkgver=1.4.19.r0.gefe873d
-pkgrel=3
+pkgver=1.4.19.r1.gb4a141a
+pkgrel=1
 pkgdesc="Nimf is a lightweight, fast and extensible input method framework. (libhangul only)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hamonikr/nimf"
@@ -11,15 +11,16 @@ license=('LGPL-3.0-or-later')
 depends=(
 	'glib2'
 	'libxklavier'
-	'libhangul-git'
+	'libhangul'
 	'libxkbcommon>=0.5.0'
 	'libayatana-appindicator'
 )
 makedepends=(
 	'git'
+	'glib2-devel'
 	'intltool'
 	'gtk-doc'
-	'gtk2'
+	# gtk2 was removed from official Arch repos; GTK2 IM module is optional in configure.ac
 	'gtk3'
 	'gtk-update-icon-cache'
 	'librsvg'
