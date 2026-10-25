@@ -1,0 +1,5 @@
+[flarectl]
+source = "git"
+git = "https://github.com/cloudflare/cloudflare-go.git"
+prefix = "v"
+include_regex = "v0\\..*"
