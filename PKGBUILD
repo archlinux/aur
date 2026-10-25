@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=pinact-bin
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows.'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=(
 source_aarch64=(
   ${pkgname%-bin}-arm64-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_linux_arm64.tar.gz
 )
-sha256sums_x86_64=('12500c0fff5db94a0155e2e76ed959d1dc0e899056ee168d8fb7b4840e7c04f0')
-sha256sums_aarch64=('fc1432004f378ae51d549a356195b4d2e3ee05935dbd20e3bbca66db1cdf6590')
+sha256sums_x86_64=('7f003d8f51e984c2264d2009d430e3e0e87ae404a0e2dc2a9a277b0f731bf5b7')
+sha256sums_aarch64=('326e27f5b3b5fca21e6a169b2785ba2023df3dd9ee82dd0f4e438cb1220b68d7')
 
 package() {
   install -Dm755 ${pkgname%-bin} "${pkgdir}/usr/bin/${pkgname%-bin}"
