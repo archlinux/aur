@@ -1,6 +1,6 @@
 pkgbase = typepper
 	pkgdesc = A spicy little typing game for your terminal and browser
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://typepper.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = typepper
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = typepper-0.4.0.tar.gz::https://github.com/leodiegues/typepper/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = c84e688c6c3ee0a2080eb3ab93016bb04e5a89ce56c583a82363857de08b271b
+	source = typepper-0.5.0.tar.gz::https://github.com/leodiegues/typepper/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = ff886eb02dd6d41f58f8b460e90aaba59605a31ef49516e9a33d30456de30578
 
 pkgname = typepper
