@@ -1,6 +1,6 @@
 pkgbase = tide-island
 	pkgdesc = A dynamic island for Hyprland and niri using Quickshell
-	pkgver = 1.0.47
+	pkgver = 1.0.48
 	pkgrel = 1
 	url = https://github.com/enhaoswen/Tide-island
 	install = tide-island.install
@@ -50,7 +50,7 @@ pkgbase = tide-island
 	conflicts = tide-island-git
 	options = !debug
 	options = !strip
-	source = tide-island-1.0.47.tar.xz::https://github.com/enhaoswen/Tide-island/releases/download/1.0.47/tide-island-source.tar.xz
-	sha256sums = 4bbfebf362f3162e3ae9abb38a66272d53bcf27df6fda9afdbf8eff3c80a2fdf
+	source = tide-island-1.0.48.tar.xz::https://github.com/enhaoswen/Tide-island/releases/download/1.0.48/tide-island-source.tar.xz
+	sha256sums = 5e776cfbe815d34abca355c4a99f09d3e612e4a88d925af439872efd2296e8c7
 
 pkgname = tide-island
