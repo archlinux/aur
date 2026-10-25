@@ -1,7 +1,7 @@
 pkgbase = agents-anywhere
 	pkgdesc = Open-source cross-device AI agent workbench desktop app (built from source)
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anywhere-labs/Agents-Anywhere
 	arch = x86_64
 	arch = aarch64
