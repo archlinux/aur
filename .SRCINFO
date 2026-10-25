@@ -1,13 +1,13 @@
 pkgbase = mazter
 	pkgdesc = Mazes in your terminal
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://dystroy.org/mazter/
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = mazter-1.0.0.tar.gz::https://static.crates.io/crates/mazter/mazter-1.0.0.crate
-	sha512sums = 024b496104ee393ea175523bef74578d627530a98a603eab013b1ca1567f3317c567da426e561656c8f7ee243a7e4298fb0766914be73146752ed2405935086c
+	source = mazter-2.1.2.tar.gz::https://static.crates.io/crates/mazter/mazter-2.1.2.crate
+	sha512sums = 2f3762261d48867492d239583c46fe599736c61f58ca099f8eb7a684d5ba953fece03b23a72728bf0f78c5566729241b86e1a9f00e4eca40fefa6006eab66791
 
 pkgname = mazter
