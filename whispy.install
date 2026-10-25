@@ -4,13 +4,33 @@ post_install() {
 
       whispy-daemon setup
 
-   It builds whisper.cpp with the Vulkan backend, downloads the ggml model,
-   grants ydotool uinput access, seeds ~/.config/whispy, and enables the
-   systemd user service. Add `--quickshell` to also install the pill overlay.
-   Then add the Hyprland keybinds it prints at the end.
+   It builds whisper.cpp (Vulkan or CPU, auto-detected), downloads the ggml
+   model, grants ydotool uinput access, seeds ~/.config/whispy, and enables the
+   systemd user services (plus the pill overlay when Quickshell is present).
+   Then add the keybinds it prints at the end — Omarchy 4 binds go in
+   ~/.config/hypr/bindings.lua. Reprint them with `whispy-daemon setup keybinds`.
 EOF
 }
 
 post_upgrade() {
-  :
+  # $1 = new version, $2 = old version. Only the 0.2.x -> 0.3 jump needs a note.
+  if [ "$(vercmp "$2" 0.3.0)" -lt 0 ]; then
+    cat <<'EOF'
+==> whispy 0.3.0: two things to do after this upgrade
+
+   1. The recommended keybinds changed: SUPER+SPACE and its ALT/SHIFT/CTRL
+      variants clash with Omarchy 4's menus. The defaults are now F9 (hold to
+      talk), SUPER+CTRL+X (toggle) and SUPER+CTRL+SHIFT+X (cancel), printed in
+      your config's syntax (Omarchy 4 bindings.lua, Hyprland Lua or hyprland.conf):
+
+          whispy-daemon setup keybinds
+
+   2. Re-run setup once to pick up the rest of this release (Omarchy bar
+      widget, log rotation); it is idempotent and keeps your config:
+
+          whispy-daemon setup
+
+   Then restart the daemon: systemctl --user restart whispy-daemon
+EOF
+  fi
 }

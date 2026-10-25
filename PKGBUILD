@@ -1,21 +1,25 @@
 # Maintainer: Riccardo Romoli <romoliriccardo.rr@gmail.com>
 pkgname=whispy
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="System-wide push-to-talk dictation for Hyprland/Wayland and X11, powered by whisper.cpp"
+pkgdesc="System-wide push-to-talk dictation for Hyprland/Omarchy, Wayland and X11, powered by whisper.cpp"
 arch=('x86_64')
 url="https://github.com/Ceereals/whispy"
 license=('MIT')
 depends=('pipewire' 'wl-clipboard' 'ydotool' 'libnotify' 'vulkan-icd-loader')
 makedepends=('rust' 'cargo' 'git')
 optdepends=('quickshell: dictation pill overlay UI (Wayland layer-shell)'
+            'cmake: build whisper.cpp via whispy-daemon setup'
+            'vulkan-headers: build whisper.cpp with Vulkan backend'
+            'spirv-headers: compile SPIR-V shaders for Vulkan backend'
             'wtype: type-mode injection on Wayland'
             'xdotool: type-mode injection and window-class detection on X11'
             'xclip: clipboard paste mode on X11'
             'xsel: clipboard paste mode on X11 (xclip alternative)')
+options=('!lto')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41c5cc0e18b762df858312de6bfe01ba8441cc503bf32f7ce747cf463c1d3e5b')
+sha256sums=('31c6989456c4b715b7654b13d8fca295cfb760b072ed7738e737eda0e6708520')
 
 # whisper.cpp (Vulkan) and the ggml model are NOT shipped in this package — they
 # are too large / hardware-specific. `whispy-daemon setup` bootstraps them on
