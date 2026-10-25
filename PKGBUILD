@@ -1,7 +1,7 @@
 # Maintainer: Joël Müller <mail@joelmueller.ch>
 
 pkgname=dopeiptv
-pkgver=1.2.14
+pkgver=1.2.18
 pkgrel=1
 pkgdesc='Linux IPTV player with Xtream Codes, M3U, EPG, timeshift, recording and multiview'
 arch=('any')
@@ -64,3 +64,4 @@ package() {
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+sha256sums=('4b6b62123c37bbc321178a8b5a1da0aabfc1496a752fa2961de3c4611206d3e3')
