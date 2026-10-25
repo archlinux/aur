@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=8.2.r125668.g70a5df6d27
+pkgver=9.1.r128097.g46f23be8b1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -89,7 +89,6 @@ makedepends=(
   git
   glslang
   ladspa
-  libgl
   nasm
   opencl-headers
   spirv-headers
@@ -115,7 +114,7 @@ conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch')
 sha256sums=('SKIP'
-            '57db0ce758e1599fadaa21066405a0f8783aaaed2587273a6308382f9fc0dcb4')
+            '141981e5596b6f7031825f117036fe152121c255ea3be7b3baf8871a87f64599')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
@@ -201,7 +200,6 @@ build() {
         --enable-nvdec \
         --enable-nvenc \
         --enable-opencl \
-        --enable-opengl \
         --enable-shared \
         --enable-vapoursynth \
         --enable-version3 \

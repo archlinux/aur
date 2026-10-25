@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (git version)
-	pkgver = 8.2.r125668.g70a5df6d27
+	pkgver = 9.1.r128097.g46f23be8b1
 	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = ffmpeg-git
 	makedepends = git
 	makedepends = glslang
 	makedepends = ladspa
-	makedepends = libgl
 	makedepends = nasm
 	makedepends = opencl-headers
 	makedepends = spirv-headers
@@ -106,6 +105,6 @@ pkgbase = ffmpeg-git
 	source = git+https://git.ffmpeg.org/ffmpeg.git
 	source = 040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch
 	sha256sums = SKIP
-	sha256sums = 57db0ce758e1599fadaa21066405a0f8783aaaed2587273a6308382f9fc0dcb4
+	sha256sums = 141981e5596b6f7031825f117036fe152121c255ea3be7b3baf8871a87f64599
 
 pkgname = ffmpeg-git
