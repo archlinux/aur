@@ -2,7 +2,7 @@
 
 pkgname=pi-desktop-bin
 _pkgname=pi-desktop
-pkgver=0.20.1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pk
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 noextract=("${_pkgname}-${pkgver}-x86_64.deb" "${_pkgname}-${pkgver}-aarch64.deb")
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118')
-sha256sums_x86_64=('ba5349c28e7a1222f39f6201cb7541cae5163f55d758fbf8b54fecbb58e1544b')
-sha256sums_aarch64=('cf1d13d18da72e7fb30d45e6f5588278a11dd266d7eea9e20f6ae4fda582442c')
+sha256sums_x86_64=('b519b106a1a42a772bf5a5b5cb33b7c4f3ac8f7ff8bb4a4fe0d91c00187136b0')
+sha256sums_aarch64=('b6a623437f3f574b492ad5ebf348eb7b7997dbce7030594d3b0d051dec3d8bfa')
 
 prepare() {
   mkdir -p deb
