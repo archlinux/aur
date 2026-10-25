@@ -1,0 +1,8 @@
+*
+
+!PKGBUILD
+!slskd.service
+!slskd.sysusers
+!slskd.tmpfiles
+!.SRCINFO
+!.gitignore

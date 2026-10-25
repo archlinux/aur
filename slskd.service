@@ -1,0 +1,16 @@
+[Unit]
+Description=slskd - Soulseek client/server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=slskd
+Group=slskd
+SyslogIdentifier=slskd
+WorkingDirectory=/var/lib/slskd/
+ExecStart=/usr/bin/slskd
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
