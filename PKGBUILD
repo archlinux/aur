@@ -1,5 +1,9 @@
 # Maintainer: Benjamin Valdez <b.valdez.0509+aur<at>gmail.com>
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
+
+# Building tests will severely increase the build time, uncomment the following line to opt-in to building tests
+# _build_tests=1
+
 pkgbase=inputactions-kwin
 pkgname=(inputactions-kwin inputactions-kwin-alpm-hook)
 pkgver=0.9.2.1
@@ -22,7 +26,9 @@ depends=(
   'ki18n'
   'inputactions-ctl'
 )
-checkdepends=('gtest' 'cmake')
+if [ -n "$_build_tests" ]; then
+  checkdepends=('gtest' 'cmake')
+fi
 makedepends=('cmake' 'pkgconf' 'extra-cmake-modules' 'vulkan-headers')
 source=(
   "$pkgbase-$pkgver.tar.gz::https://github.com/InputActions/kwin/releases/download/v$pkgver/source.tar.gz"
@@ -56,22 +62,28 @@ build() {
     -W no-author
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
-    -D BUILD_TESTS=ON
   )
+  if [ -n "$_build_tests" ]; then
+    cmake_options+=(-D BUILD_TESTS=ON)
+  else
+    cmake_options+=(-D BUILD_TESTS=OFF)
+  fi
   cmake "${cmake_options[@]}"
   cmake --build build --parallel "$(nproc)"
 }
 
-check() {
-  local ctest_flags=(
-    --test-dir build
-    # show the stdout and stderr when the test fails
-    --output-on-failure
-    # execute tests in parallel
-    --parallel "$(nproc)"
-  )
-  ctest "${ctest_flags[@]}"
-}
+if [ -n "$_build_tests" ]; then
+  check() {
+    local ctest_flags=(
+      --test-dir build
+      # show the stdout and stderr when the test fails
+      --output-on-failure
+      # execute tests in parallel
+      --parallel "$(nproc)"
+    )
+    ctest "${ctest_flags[@]}"
+  }
+fi
 
 package_inputactions-kwin() {
   pkgdesc="Bind keyboard, mouse, touchpad and touchscreen actions to system actions"
