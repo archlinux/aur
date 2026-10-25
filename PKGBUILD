@@ -7,7 +7,7 @@ pkgver=7.1.0.r9.g54d9411
 _nghttp2_ver=1.70.0
 _curlver=8.23.0
 _sslver=3.6.5
-_brotliver=1.2.0
+_brotliver=1.2.1
 _zlibver=1.3.2
 _xzver=5.8.4
 _bzipver=1.0.8
@@ -17,7 +17,7 @@ _gpgerrorver=1.61
 _libassuanver=3.0.0
 _gpgmever=2.2.0
 _libseccompver=2.6.0
-pkgrel=23
+pkgrel=24
 # use annotated tag and patch level commit from release branch (can be empty for no patches)
 _git_tag=7.1.0
 _git_patch_level_commit=54d94116164b0b2202c6061c4a59c6f3e70820d8

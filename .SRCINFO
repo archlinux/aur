@@ -1,7 +1,7 @@
 pkgbase = pacman-static
 	pkgdesc = Statically-compiled pacman (to fix or install systems without libc)
 	pkgver = 7.1.0.r9.g54d9411
-	pkgrel = 23
+	pkgrel = 24
 	url = https://www.archlinux.org/pacman/
 	arch = i486
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = pacman-static
 	source = https://github.com/openssl/openssl/releases/download/openssl-3.6.5/openssl-3.6.5.tar.gz.asc
 	source = ca-dir.patch
 	source = openssl-3.0.7-no-atomic.patch
-	source = git+https://github.com/google/brotli#tag=v1.2.0
+	source = git+https://github.com/google/brotli#tag=v1.2.1
 	source = https://zlib.net/zlib-1.3.2.tar.gz
 	source = https://zlib.net/zlib-1.3.2.tar.gz.asc
 	source = zlib-1.3.2-CVE-2026-85091.patch
