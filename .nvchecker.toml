@@ -1,4 +1,4 @@
-[powershell]
+[powershell-dsc]
 source = "github"
 github = "PowerShell/DSC"
 prefix = "v"

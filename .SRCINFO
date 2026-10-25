@@ -1,6 +1,6 @@
 pkgbase = powershell-dsc
 	pkgdesc = DSCv3 is the latest iteration of Microsoft's Desired State Configuration platform.
-	pkgver = 3.2.2
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/PowerShell/DSC
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = powershell-dsc
 	depends = bash
 	options = !lto
 	options = !debug
-	source = powershell-dsc::git+https://github.com/PowerShell/DSC#tag=v3.2.2
-	sha512sums = e6959738351f28c3dc58871c9ced225bb6b0bd1186f9602c2c56a9b6c051016517dbe29dd3688c5fc4acc27600fc648b1ad534f20082bf2df9843134c0780d9c
-	b2sums = c7b435ed73f40575e8515308a705a303850cb471d0d40f9cf8154020910150f0a89a2c9be8125ff6e3b19b15352f8790b4336549ab6ebf6df2216205dc2404f2
+	source = powershell-dsc::git+https://github.com/PowerShell/DSC#tag=v3.3.0
+	sha512sums = 69cc660042669c5bc78235ed918be49a2e845c6f091c152838fda5f62516dca801e592fbb6bc7182c67cf2eac85702c82e77fe2098e727583cbd60164071c479
+	b2sums = 62942c4c671e536467a8c1cf6f5c0a0e329e9ba8a2481367d96aa1bef42698703b76660108e9412796dbf07c53be3ff7934c0b56f22c339a9c8bcf0f832375ca
 
 pkgname = powershell-dsc
