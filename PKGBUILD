@@ -2,8 +2,8 @@
 # Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
 pkgname=parcel
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Native host for Parcel browser extension for zx2c4's pass password manager"
 arch=('any')
 url="https://github.com/parcel-pm/${pkgname}"
@@ -14,7 +14,7 @@ optdepends=("parcel-firefox: browser extension for Firefox"
             "parcel-chromium: browser extension for Chromium")
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('7392e28b0c25b11a689008edcb27c2d8fbc87f28c3cdc79ccb866e238fe76004'
+sha256sums=('87a7c501032a3c6fecb562e93a44613349950c2d4c64a4d5b0e4489c8be69b92'
             'SKIP')
 validpgpkeys=('82ED663067C6017BAA4BC752EB670BF2B1131683'
               'B0908ED59A96C9882BED9A942A51761511A30253'
@@ -57,7 +57,7 @@ validpgpkeys=('82ED663067C6017BAA4BC752EB670BF2B1131683'
 # The hash is on the file extracted from the extension archive [.xpi, .crx],
 # (not the wrapper script file of the same name installed by this package):
 #     sha256sum parcel-host
-_default_host_hash=95c6269ad110048ef5020a63318acbcfebc325725cb6cb38fb2683fb41813776
+_default_host_hash=f9d7982800647bd7253a27324b23b120ad28474ba1e8cc6a9ea363e47157f810
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -70,6 +70,7 @@ prepare() {
     local _ph_hash="1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
     sed -i -e "s/^#HOST_HASH=\"${_ph_hash}\"$/HOST_HASH=\"${_default_host_hash}\"/" \
            -e "s/^#VALID_SIGNERS=/VALID_SIGNERS=/" \
+           -e "s/^#BLACKLIST_SIGNERS=/BLACKLIST_SIGNERS=/" \
             parcel-host
     echo ">>> Pinned parcel-host script hash in default config template to:"
     echo ">>>    ${_default_host_hash}"
@@ -82,14 +83,9 @@ package() {
     install -Dm755 "parcel-host" "${pkgdir}/usr/bin/parcel-host"
 
     # Install manifests so that browser extension pkgs can link to them
-    local _manifest_id="com.github.erayd.parcel"
-    local _browser
-    for _browser in "firefox" "chrome"
-    do
-        sed -i 's@/usr/local@/usr@' "example/${_manifest_id}.${_browser}.json"
-        install -Dm644 "example/${_manifest_id}.${_browser}.json" \
-            "${pkgdir}/usr/lib/parcel/hosts/${_browser}/${_manifest_id}.json"
-    done
+    cd example && find . -type f -name '*.json' \
+        -exec sed -i 's@/usr/local@/usr@' {} \; \
+        -exec install -Dm644 {} "${pkgdir}"/usr/lib/parcel/hosts/{} \;
 }
 
 # vim:set ts=4 sw=4 et:

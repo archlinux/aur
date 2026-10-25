@@ -1,7 +1,7 @@
 pkgbase = parcel
 	pkgdesc = Native host for Parcel browser extension for zx2c4's pass password manager
-	pkgver = 1.0.6
-	pkgrel = 2
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://github.com/parcel-pm/parcel
 	arch = any
 	license = ISC
@@ -10,13 +10,13 @@ pkgbase = parcel
 	depends = openssl
 	optdepends = parcel-firefox: browser extension for Firefox
 	optdepends = parcel-chromium: browser extension for Chromium
-	source = https://github.com/parcel-pm/parcel/releases/download/v1.0.6/parcel-1.0.6.tar.gz
-	source = https://github.com/parcel-pm/parcel/releases/download/v1.0.6/parcel-1.0.6.tar.gz.asc
+	source = https://github.com/parcel-pm/parcel/releases/download/v1.0.7/parcel-1.0.7.tar.gz
+	source = https://github.com/parcel-pm/parcel/releases/download/v1.0.7/parcel-1.0.7.tar.gz.asc
 	validpgpkeys = 82ED663067C6017BAA4BC752EB670BF2B1131683
 	validpgpkeys = B0908ED59A96C9882BED9A942A51761511A30253
 	validpgpkeys = 88FF14D6294AF4036B7F00FF676A3C09E2E47A72
 	validpgpkeys = 56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601
-	sha256sums = 7392e28b0c25b11a689008edcb27c2d8fbc87f28c3cdc79ccb866e238fe76004
+	sha256sums = 87a7c501032a3c6fecb562e93a44613349950c2d4c64a4d5b0e4489c8be69b92
 	sha256sums = SKIP
 
 pkgname = parcel
