@@ -1,7 +1,7 @@
 pkgbase = rhun-bin
 	pkgdesc = Small and fast code editor written in assembly (prebuilt binaries)
 	pkgver = 0.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vshvedov/rhun
 	arch = x86_64
 	license = MIT

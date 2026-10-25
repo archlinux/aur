@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=rhun-bin
 pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Small and fast code editor written in assembly (prebuilt binaries)'
 arch=('x86_64')
 url='https://github.com/vshvedov/rhun'
