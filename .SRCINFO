@@ -1,0 +1,19 @@
+pkgbase = wallhost
+	pkgdesc = Animated wallpapers (Wallpaper Engine workshop content) behind the KDE Plasma desktop, crash-isolated from plasmashell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/broroeror/wallhost
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = pyside6
+	depends = qt6-svg
+	depends = python-dbus
+	depends = python-gobject
+	depends = kwin
+	depends = systemd
+	depends = linux-wallpaperengine-git
+	source = wallhost-0.1.0.tar.gz::https://github.com/broroeror/wallhost/archive/v0.1.0.tar.gz
+	sha256sums = d5913ad881971f09c88dcf868253be26cb80885c23d697401ad8208cf05eb206
+
+pkgname = wallhost
