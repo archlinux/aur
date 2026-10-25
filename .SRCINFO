@@ -1,0 +1,28 @@
+pkgbase = python-asslayer
+	pkgdesc = ASS subtitle desktop overlay for Wayland, rendered with libass and Vulkan
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sitiyou/asslayer
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = meson
+	makedepends = meson-python
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = pybind11
+	makedepends = vulkan-headers
+	makedepends = shaderc
+	depends = python>=3.14
+	depends = gcc-libs
+	depends = glibc
+	depends = wayland
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = libass
+	depends = fontconfig
+	source = https://files.pythonhosted.org/packages/source/a/asslayer/asslayer-0.1.0.tar.gz
+	sha256sums = c5cf1d72df9cc962fa78a7d3d25c3600be27175e78a537819fc58716330bc299
+
+pkgname = python-asslayer
