@@ -1,5 +1,5 @@
 pkgname=any-listen-desktop
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A cross-platform private music playback service'
 arch=('x86_64')
