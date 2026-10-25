@@ -1,0 +1,15 @@
+pkgbase = skillspector
+	pkgdesc = Security scanner for AI agent skills (Claude Code, Cursor, and similar)
+	pkgver = 2.13.1
+	pkgrel = 1
+	url = https://github.com/NVIDIA/skillspector
+	install = skillspector.install
+	arch = x86_64
+	license = Apache-2.0
+	depends = python
+	options = !strip
+	options = !emptydirs
+	source = skillspector-2.13.1.tar.gz::https://github.com/NVIDIA/SkillSpector/releases/download/v2.13.1/skillspector-2.13.1.tar.gz
+	sha256sums = 328c3b8f8ffe259488c1ca32f96885b66cf4eb5bd7954a261271a9e162efe897
+
+pkgname = skillspector

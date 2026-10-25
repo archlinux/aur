@@ -1,0 +1,20 @@
+post_install() {
+  cat <<EOF
+
+SkillSpector is installed as a self-contained venv in /usr/lib/skillspector.
+
+Quick start:
+  skillspector scan <skill-directory>           full scan (static + LLM analysis)
+  skillspector scan <skill-directory> --no-llm  static checks only (no API key needed)
+  skillspector --help                           all commands and options
+
+Configuration is done via environment variables (no config file):
+  SKILLSPECTOR_PROVIDER     LLM provider (openai, anthropic, ollama, ...)
+  SKILLSPECTOR_MODEL        model name
+  SKILLSPECTOR_OUTPUT_LANGUAGE  report language
+LLM analysis requires an API key: OPENAI_API_KEY (+ optional OPENAI_BASE_URL),
+the active provider's key (e.g. ANTHROPIC_API_KEY), or SKILLSPECTOR_PROVIDER=ollama
+for local models.
+Baseline (false-positive suppression) can be supplied with: --baseline <file>
+EOF
+}
