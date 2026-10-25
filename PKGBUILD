@@ -1,6 +1,6 @@
 # Maintainer: Stefanie Jane <stef@hyperbliss.tech>
 pkgname=unifly-bin
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="CLI + TUI for managing UniFi network controllers"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ install=unifly-bin.install
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/hyperb1iss/unifly/releases/download/v${pkgver}/unifly-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/hyperb1iss/unifly/releases/download/v${pkgver}/unifly-linux-arm64")
 
-sha256sums_x86_64=('df67dc26ef16dd96a6c474d8e7da4e2c4dc7ddc9352e4884641ee70344f21bca')
-sha256sums_aarch64=('8beedf0f338e9aa34ec40a375093f8568da4e863559c66ce4da593bfb34cdb05')
+sha256sums_x86_64=('96103298453ef1e1a4af8b338a6ae8627768a3047f10dc99e32b28b0ded57e6c')
+sha256sums_aarch64=('0b64a6abad553171db315e85c9f2b61262226891d4da78feded1756f69ac8e67')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/unifly"
