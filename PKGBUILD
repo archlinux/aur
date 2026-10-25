@@ -18,8 +18,8 @@ license=('MIT')
 depends=()
 source_x86_64=("https://github.com/s0ld13rr/pentestcode/releases/download/v${pkgver}/pentestcode-linux-x64-baseline.tar.gz")
 source_aarch64=("https://github.com/s0ld13rr/pentestcode/releases/download/v${pkgver}/pentestcode-linux-arm64.tar.gz")
-sha256sums_x86_64=('e6c6786a1dbd4c0f3dcbfd957886b0d65f7c25c5b66e5821cd0486304ed3206a')
-sha256sums_aarch64=('2d37792a41b1ab27437405e00c86fc68700a5a1a24e67872b1666ba37d045d31')
+sha256sums_x86_64=('1e7f7e750a3f9315e335835c32c3831e16a4613190b92d9fc7b85103c1927f85')
+sha256sums_aarch64=('6027173aeebd74367f6888bc47b14f4ef1b3c04db2f25d9a03fbc59e0c3c68db')
 
 package() {
   install -Dm755 "pentestcode" "${pkgdir}/usr/bin/pentestcode"
