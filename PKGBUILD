@@ -1,17 +1,18 @@
 # Maintainer: Riccardo Romoli <romoliriccardo.rr@gmail.com>
 pkgname=whispy
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="System-wide push-to-talk dictation for Hyprland/Omarchy, Wayland and X11, powered by whisper.cpp"
 arch=('x86_64')
 url="https://github.com/Ceereals/whispy"
 license=('MIT')
-depends=('pipewire' 'wl-clipboard' 'ydotool' 'libnotify' 'vulkan-icd-loader')
+# `whispy-daemon setup` builds whisper.cpp on first run; with vulkan-icd-loader
+# present it builds the Vulkan backend, which needs cmake, glslc (shaderc) and the
+# Vulkan + SPIR-V headers, so those are hard dependencies.
+depends=('pipewire' 'wl-clipboard' 'ydotool' 'libnotify' 'vulkan-icd-loader'
+         'git' 'cmake' 'shaderc' 'vulkan-headers' 'spirv-headers')
 makedepends=('rust' 'cargo' 'git')
 optdepends=('quickshell: dictation pill overlay UI (Wayland layer-shell)'
-            'cmake: build whisper.cpp via whispy-daemon setup'
-            'vulkan-headers: build whisper.cpp with Vulkan backend'
-            'spirv-headers: compile SPIR-V shaders for Vulkan backend'
             'wtype: type-mode injection on Wayland'
             'xdotool: type-mode injection and window-class detection on X11'
             'xclip: clipboard paste mode on X11'
@@ -19,7 +20,7 @@ optdepends=('quickshell: dictation pill overlay UI (Wayland layer-shell)'
 options=('!lto')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('31c6989456c4b715b7654b13d8fca295cfb760b072ed7738e737eda0e6708520')
+sha256sums=('22b5923a84d95dd57d2432b0831b6c744ed45e3379dcbbdec6ca6ec56badda7a')
 
 # whisper.cpp (Vulkan) and the ggml model are NOT shipped in this package — they
 # are too large / hardware-specific. `whispy-daemon setup` bootstraps them on
@@ -32,6 +33,11 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  # Distro makepkg.conf files can put -flto into CFLAGS even with !lto. ring's C
+  # objects then hold only LTO bitcode, and rustc's (non-LTO) link of the binary
+  # fails with undefined ring_core_* symbols. The last -f(no-)lto flag wins, so
+  # this keeps every other flag (hardening included) and only turns LTO off.
+  export CFLAGS="$CFLAGS -fno-lto" CXXFLAGS="$CXXFLAGS -fno-lto"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
@@ -39,6 +45,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  export CFLAGS="$CFLAGS -fno-lto" CXXFLAGS="$CXXFLAGS -fno-lto"  # see build()
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --release
 }
