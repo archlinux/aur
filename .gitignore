@@ -1,0 +1,5 @@
+# makepkg files
+*.pkg.tar*
+*.flatpak
+/src/
+/pkg/

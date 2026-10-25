@@ -1,0 +1,24 @@
+pkgbase = aiostreams-desktop-bin
+	pkgdesc = AIOStreams desktop app in a native window, playing through mpv
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/Viren070/AIOStreams
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = flatpak
+	makedepends = ostree
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = mpv
+	depends = webkitgtk-6.0
+	optdepends = discord: Discord Rich Presence support
+	optdepends = vesktop: Discord Rich Presence support
+	provides = aiostreams-desktop=0.20.0
+	conflicts = aiostreams-desktop
+	source_x86_64 = aiostreams-desktop-bin-0.20.0-x64.flatpak::https://github.com/Viren070/AIOStreams/releases/download/desktop-v0.20.0/aiostreams-desktop-linux-x64.flatpak
+	sha256sums_x86_64 = c1cc654d6768fee5bb6962a9f2c7c41eac0a9fb9837619eb8a70c7448384f488
+	source_aarch64 = aiostreams-desktop-bin-0.20.0-arm64.flatpak::https://github.com/Viren070/AIOStreams/releases/download/desktop-v0.20.0/aiostreams-desktop-linux-arm64.flatpak
+	sha256sums_aarch64 = c7dc8640b219b030814eb2ff99b7c52f335e5acd666e43c491d39c06c3e06c7a
+
+pkgname = aiostreams-desktop-bin
