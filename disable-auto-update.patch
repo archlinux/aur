@@ -1,0 +1,6 @@
+--- a/electron/main.cjs
++++ b/electron/main.cjs
+@@ -477,0 +478,3 @@ function setupAutoUpdater() {
++	log("auto-update: disabled by the Arch Linux package; update through the AUR");
++	return;
++
