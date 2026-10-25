@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=iOS 12 (xnu-qemu-arm64, serial console)
+GenericName=iOS 12.1 emulator (iPhone 6s Plus)
+Comment=Boot iOS 12.1 to a root shell on Aleph Security's xnu-qemu-arm64 (serial console)
+Exec=xnu-qemu-ios-console
+Icon=utilities-terminal
+Terminal=true
+Categories=System;Emulator;
+Keywords=iOS;iPhone;XNU;QEMU;Darwin;emulator;

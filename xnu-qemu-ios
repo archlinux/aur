@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# Boot iOS 12.1 (iPhone 6s Plus, n66) on Aleph Security's xnu-qemu-arm64 fork.
+#
+#   xnu-qemu-ios            screen mode: a QEMU window shows the iOS text framebuffer
+#                           (verbose boot, then the root shell); THIS terminal is the
+#                           keyboard (serial input).
+#   xnu-qemu-ios --console  serial-only mode: no window, everything in this terminal.
+#   xnu-qemu-ios-ssh [cmd]  SSH in (root / alpine) once booted, via Aleph's tcp-tunnel.
+#
+# Extra arguments after the mode flag are passed straight to qemu-system-aarch64.
+# ~60-75 s after start press Enter for the bash-4.4# prompt. Inside the shell:
+#   export PATH=$PATH:/iosbinpack64/usr/bin:/iosbinpack64/bin:/iosbinpack64/usr/sbin:/iosbinpack64/sbin
+# Quit with Ctrl-a x (Ctrl-a c = QEMU monitor), or close the window.
+#
+# Environment:
+#   XNU_QEMU_IOS_DIR   folder with the files you prepared
+#                      (default: ${XDG_DATA_HOME:-~/.local/share}/xnu-qemu-arm64)
+#   XNU_QEMU_IOS_MEM   guest RAM (default: 6G)
+set -euo pipefail
+
+QEMU=/opt/xnu-qemu-arm64/bin/qemu-system-aarch64
+WIKI="https://github.com/alephsecurity/xnu-qemu-arm64/wiki/Build-iOS-on-QEMU"
+DATA="${XNU_QEMU_IOS_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/xnu-qemu-arm64}"
+MEM="${XNU_QEMU_IOS_MEM:-6G}"
+
+mode=screen
+if [[ ${1:-} == --console ]]; then mode=console; shift
+elif [[ ${1:-} == --screen ]]; then shift
+elif [[ ${1:-} == -h || ${1:-} == --help ]]; then
+    sed -n '2,19p' "$0" | sed 's/^# \{0,1\}//'; exit 0
+fi
+
+files=(kernelcache.release.n66.out DeviceTree.n66ap.im4p.out aleph_bdev_drv.bin hfs.main hfs.sec)
+missing=()
+for f in "${files[@]}"; do
+    [[ -f "$DATA/$f" ]] || missing+=("$f")
+done
+if (( ${#missing[@]} )); then
+    cat >&2 <<EOF
+xnu-qemu-ios: the iOS files are not set up yet.
+
+Looked in: $DATA
+Missing:   ${missing[*]}
+
+This package ships only the emulator. Apple's iOS files cannot be redistributed,
+so you have to make them yourself from an iOS 12.1 IPSW (iPhone 6s Plus, n66)
+by following Aleph Security's guide:
+
+    $WIKI
+
+When you are done, put these five files in the folder above
+(or point XNU_QEMU_IOS_DIR at the folder that holds them):
+
+    kernelcache.release.n66.out   decoded + decompressed kernelcache
+    DeviceTree.n66ap.im4p.out     decoded device tree
+    aleph_bdev_drv.bin            Aleph's block-device driver
+    hfs.main                      root file system image (HFS+)
+    hfs.sec                       secondary r/w disk image (HFS+)
+
+Linux notes for the macOS-only steps of the guide, and the tcp-tunnel
+cross-build for SSH, are in /usr/share/doc/xnu-qemu-arm64-git/.
+EOF
+    # keep the message readable when started from the menu (terminal closes on exit)
+    [[ -t 0 && -t 1 ]] && read -rp "Press Enter to close."
+    exit 1
+fi
+
+cd "$DATA"
+# iOS mounts hfs.sec read-write and never unmounts it cleanly when QEMU is killed,
+# so repair it before each launch (no root needed; fsck.hfsplus is in hfsprogs).
+if command -v fsck.hfsplus >/dev/null 2>&1; then
+    echo "[xnu-qemu-ios] repairing hfs.sec ..."
+    fsck.hfsplus -fy "$DATA/hfs.sec" >/dev/null 2>&1 || true
+else
+    echo "[xnu-qemu-ios] fsck.hfsplus not found (install hfsprogs); hfs.sec not repaired" >&2
+fi
+
+machine="iPhone6splus-n66-s8000,kernel-filename=kernelcache.release.n66.out,dtb-filename=DeviceTree.n66ap.im4p.out,driver-filename=aleph_bdev_drv.bin,qc-file-0-filename=hfs.main,qc-file-1-filename=hfs.sec,kern-cmd-args=debug=0x8 kextlog=0xfff cpus=1 rd=disk0 serial=2"
+
+if [[ $mode == screen ]]; then
+    echo "[xnu-qemu-ios] starting QEMU - watch the QEMU window; type here (this terminal is the keyboard)."
+    echo "[xnu-qemu-ios] when the boot has settled (~70 s), press Enter for the bash-4.4# prompt."
+    exec "$QEMU" -M "$machine,xnu-ramfb=on" -cpu max -m "$MEM" \
+        -display gtk -name "iOS 12.1 - iPhone 6s Plus (QEMU)" -serial mon:stdio "$@"
+else
+    echo "[xnu-qemu-ios] starting QEMU - wait ~60-75 s, then press Enter for the bash-4.4# prompt."
+    exec "$QEMU" -M "$machine,xnu-ramfb=off" -cpu max -m "$MEM" \
+        -display none -serial mon:stdio "$@"
+fi

@@ -1,0 +1,39 @@
+xnu-qemu-arm64-git - how to use the package
+=============================================
+
+This package ships only the emulator: Aleph Security's xnu-qemu-arm64 fork
+(QEMU 4.2, aarch64-softmmu, machine "iPhone6splus-n66-s8000"), installed in
+/opt/xnu-qemu-arm64 so it never touches the system qemu packages, plus a
+patch that makes it work properly on a Linux host:
+  - xnu-ramfb draws in 32 bpp (x8r8g8b8), so the text screen has the right colours
+  - the guest-services socket/fcntl/errno calls are translated between Darwin
+    and Linux, so Aleph's tcp-tunnel (SSH on host port 2222) works
+
+No Apple files are included or downloaded. You make them yourself from an
+iOS 12.1 IPSW (iPhone 6s Plus, n66) with Aleph's guide:
+  https://github.com/alephsecurity/xnu-qemu-arm64/wiki/Build-iOS-on-QEMU
+README.md in this folder lists the Linux replacements for the macOS-only
+steps of that guide (dmg2img, apfs-fuse, mkfs.hfsplus, ldid, ...).
+
+Put the five finished files in ~/.local/share/xnu-qemu-arm64/
+(or set XNU_QEMU_IOS_DIR to the folder that holds them):
+  kernelcache.release.n66.out  DeviceTree.n66ap.im4p.out  aleph_bdev_drv.bin
+  hfs.main  hfs.sec
+QEMU opens hfs.main and hfs.sec read-write, so the folder must be writable.
+
+Commands
+  xnu-qemu-ios            QEMU window shows the iOS text screen; the terminal is the keyboard
+  xnu-qemu-ios-console    serial only, everything in the terminal (also in the app menu)
+  xnu-qemu-ios-ssh [cmd]  SSH in as root / alpine (needs sshpass, and the tunnel in hfs.main)
+  Quit QEMU with Ctrl-a x. Extra arguments are passed to qemu-system-aarch64.
+  XNU_QEMU_IOS_MEM sets guest RAM (default 6G).
+
+tunnel-linux/
+  Source for building Aleph's tcp-tunnel for iOS on Linux with no Apple SDK
+  (clang -target arm64-apple-ios12.0 + minimal Darwin headers + ld64.lld +
+  a libSystem.tbd stub, signed with ldid). build.sh expects to sit next to a
+  checkout of https://github.com/alephsecurity/xnu-qemu-arm64-tools (it reads
+  ../tools/tcp-tunnel/src), the QEMU source (../qemu/include) and ldid
+  (../ldid-src/ldid); copy the folder there before running it. Copy the
+  resulting "tunnel" binary to /bin/tunnel in hfs.main and tcptunnel.plist to
+  /System/Library/LaunchDaemons/. Nothing here is needed to build this package.

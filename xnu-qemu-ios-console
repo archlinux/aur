@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Serial-only mode: boot iOS 12.1 on xnu-qemu-arm64 with no window; kernel log and the
+# root bash shell are all in this terminal. Quit with Ctrl-a x. See: xnu-qemu-ios --help
+exec /usr/bin/xnu-qemu-ios --console "$@"

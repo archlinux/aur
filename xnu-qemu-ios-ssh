@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# SSH into the emulated iOS (root / alpine) through Aleph's tcp-tunnel, which the guest
+# exposes on host port 2222 (~25 s after boot). Needs sshpass and openssh, and the
+# tunnel daemon installed in hfs.main (see /usr/share/doc/xnu-qemu-arm64-git/tunnel-linux/).
+#   xnu-qemu-ios-ssh            interactive shell
+#   xnu-qemu-ios-ssh 'uname -a' run one command
+# Environment: XNU_QEMU_IOS_SSH_PORT (default 2222), XNU_QEMU_IOS_PASSWORD (default alpine)
+set -e
+if ! command -v sshpass >/dev/null 2>&1; then
+    echo "xnu-qemu-ios-ssh: sshpass is not installed (pacman -S sshpass)" >&2
+    exit 1
+fi
+export SSHPASS="${XNU_QEMU_IOS_PASSWORD:-alpine}"
+exec sshpass -e ssh -p "${XNU_QEMU_IOS_SSH_PORT:-2222}" \
+    -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR \
+    -o ConnectTimeout=60 root@127.0.0.1 "$@"
