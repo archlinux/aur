@@ -1,6 +1,6 @@
 pkgbase = ttf-monolisa-font
 	pkgdesc = MonoLisa TrueType font, must own the fonts
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://www.monolisa.dev/
 	install = monolisa-font.install
