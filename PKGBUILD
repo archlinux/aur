@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=displayforge
-pkgver=1.1.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Screen settings in the terminal: arrange, resolution, refresh rate, size, rotation, brightness, with a countdown that undoes a change by itself. Sway desktop only, written for KognogOS; on a plain text console it explains why and closes (Forge Suite)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'sway
 optdepends=('ddcutil: Brightness and Identify (your screens need DDC/CI switched on in their own menu)')
 source=("${pkgname}-${pkgver}.tar.gz::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('241c55e8740dcfbbdf7db95e36bd33a145fc8b269b36968be419294dc7af8769'
+sha256sums=('d98d6e1c22f8b508360d1b6dcd1e41263095463a04a3598e188665b283ee74ef'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import

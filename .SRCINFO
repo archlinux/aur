@@ -1,6 +1,6 @@
 pkgbase = displayforge
 	pkgdesc = Screen settings in the terminal: arrange, resolution, refresh rate, size, rotation, brightness, with a countdown that undoes a change by itself. Sway desktop only, written for KognogOS; on a plain text console it explains why and closes (Forge Suite)
-	pkgver = 1.1.1
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/jetomev/forge-suite/tree/main/displayforge
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = displayforge
 	depends = python-forgekit>=0.10.0
 	depends = sway
 	optdepends = ddcutil: Brightness and Identify (your screens need DDC/CI switched on in their own menu)
-	source = displayforge-1.1.1.tar.gz::https://github.com/jetomev/forge-suite/releases/download/displayforge-v1.1.1/displayforge-1.1.1.tar.gz
-	source = displayforge-1.1.1.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/displayforge-v1.1.1/displayforge-1.1.1.tar.gz.asc
+	source = displayforge-1.1.4.tar.gz::https://github.com/jetomev/forge-suite/releases/download/displayforge-v1.1.4/displayforge-1.1.4.tar.gz
+	source = displayforge-1.1.4.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/displayforge-v1.1.4/displayforge-1.1.4.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = 241c55e8740dcfbbdf7db95e36bd33a145fc8b269b36968be419294dc7af8769
+	sha256sums = d98d6e1c22f8b508360d1b6dcd1e41263095463a04a3598e188665b283ee74ef
 	sha256sums = SKIP
 
 pkgname = displayforge
