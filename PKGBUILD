@@ -1,6 +1,6 @@
-# Maintainer: runxhq <dev@runx.ai>
+# Maintainer: 0state <oss@0state.com>
 pkgname=runx
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Native governed runtime for agent skills, tools, graphs, and packets."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=('runx-bin')
 # the bundled C libraries (sqlite, zstd, ring).
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/runxhq/runx/archive/refs/tags/cli-v$pkgver.tar.gz")
-sha256sums=('aafca4abd3b2acebcd825c34195711159292bdd41a569f5fc7fe69f2d099b8da')
+sha256sums=('163352e7aaf4a9c407c1e467cf838c4bba3e9054b76ffc40120da7497718191c')
 
 prepare() {
   cd "$pkgname-cli-v$pkgver"
