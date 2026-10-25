@@ -18,6 +18,6 @@ pkgbase = gamebreaker-sdl3
 	depends = gtk3
 	conflicts = gamebreaker
 	source = GameBreaker-0.1.4-sdl3.tar.gz::https://codeberg.org/elpoeprod/GameBreaker/archive/v0.1.4-sdl3.tar.gz
-	md5sums = fa2ac2ddc158e0f7c5a76939de1ed178
+	md5sums = 7b923db5470835369de09767d04c058f
 
 pkgname = gamebreaker-sdl3

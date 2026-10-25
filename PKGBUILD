@@ -12,7 +12,7 @@ depends=(sdl3 sdl3_ttf sdl3_image sdl3_mixer alsa-tools libopenmpt enet glm tagl
 conflicts=(gamebreaker)
 makedepends=(make)
 source=("GameBreaker-${pkgver}-sdl3.tar.gz::https://codeberg.org/elpoeprod/GameBreaker/archive/v${pkgver}-sdl3.tar.gz")
-md5sums=('fa2ac2ddc158e0f7c5a76939de1ed178')
+md5sums=('7b923db5470835369de09767d04c058f')
 
 build(){
 	rename "gamebreaker" "GameBreaker-${pkgver}-sdl3" "${srcdir}/gamebreaker"
