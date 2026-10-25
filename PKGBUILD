@@ -1,6 +1,6 @@
 # Maintainer: Ahmad Othman <ahmad.ali.othman@outlook.com>
 pkgname=commit-sage-bin
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="AI-powered git commit message generator (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=("https://raw.githubusercontent.com/AhmedOsman101/commit-sage-cli/v$pkgve
 source_x86_64=("https://github.com/AhmedOsman101/commit-sage-cli/releases/download/v$pkgver/commit-sage-linux-gnu-x64")
 source_aarch64=("https://github.com/AhmedOsman101/commit-sage-cli/releases/download/v$pkgver/commit-sage-linux-gnu-arm64")
 sha256sums=('bbd34c3771c7de3e8369e916892fb70af83a3c6926b9c0a3499716c7c7626bd9')
-sha256sums_x86_64=('af9de84da41f72ae32b123e22da085cd6a4f9b51ad9592acd9f9f5bf4b258d51')
-sha256sums_aarch64=('6fbedb5298c1dcbde1a2dc4eb3fb9f197d151c7f0fe1497948236f85be283378')
+sha256sums_x86_64=('11e8a5c67ec3a0b3e6cff5371645a5522c4e3735b55a6a402354d54116811db7')
+sha256sums_aarch64=('1c63ccb889d135b13b1f4db97d261fe5749470cfefba29889183272c3ae06a9d')
 
 prepare() {
   # Smoke test, as upstream's installer does: a mislabeled asset (right
