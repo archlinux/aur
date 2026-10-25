@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=26.2.1.3
+pkgver=26.3.1.1
 pkgrel=1
 pkgdesc="Media relay for RTP sessions (Sipwise proxy)"
 arch=('x86_64')
@@ -16,8 +16,7 @@ depends=(
   'libjwt2' 'libmnl' 'libnftnl' 'libpcap' 'liburing' 'libwebsockets'
   'mariadb-libs' 'mosquitto' 'ncurses' 'openssl' 'opus' 'pcre2'
   'perl' 'perl-bencode' 'perl-config-tiny' 'perl-crypt-openssl-rsa'
-  'perl-crypt-rijndael' 'perl-data-dumper' 'perl-digest-crc'
-  'perl-digest-hmac' 'perl-io-multiplex' 'perl-io-socket-ip' 'perl-json'
+  'perl-crypt-rijndael' 'perl-digest-crc'
   'perl-libwww' 'perl-net-interface' 'perl-socket6'
   'spandsp' 'systemd-libs' 'zlib'
 )
@@ -55,7 +54,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archi
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "10-kmod.conf")
-sha256sums=('7fc02c9a07314b26f8f9aec5e02e2bf86f21eb122b86d4f6f443b6833eca8613'
+sha256sums=('a279fe141907ba868d8acfff333de4822ae7a31935bd29da942ac0e79a2f8107'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e'
             '50330c2dd7c3f3fcb4dd0ed947cbc08139a1255199885299646ebefc48f5f34f'
             '342781f68382a10521dfe2eb1c0527e7f1bab18435995ea41da8eb57ca7d7e9d')
