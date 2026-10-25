@@ -1,6 +1,6 @@
 pkgbase = vader-companion
 	pkgdesc = Vader Companion — configure Flydigi Vader 4 Pro on Linux
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/JochemKuipers/flydigi-spacestation-linux
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = vader-companion
 	depends = python-evdev
 	depends = pyside6
 	depends = flydigi-vader4d
-	source = vader-companion-0.1.1.tar.gz::https://github.com/JochemKuipers/flydigi-spacestation-linux/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 429e376fb16e7c8f76c60f947446fb7640514de2ef76cc5fbd138bbe29f5f4e8
+	source = vader-companion-0.1.2.tar.gz::https://github.com/JochemKuipers/flydigi-spacestation-linux/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = f6e9443ff9754a37573fc1a5853fdfc3ad0fead6f72b2cea487bb2cf481efb9c
 
 pkgname = vader-companion
