@@ -1,5 +1,5 @@
 pkgname=fenriz-bin
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="A fast, stable tiling Wayland compositor (Binary Release)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('xorg-xwayland: X11 application support'
 provides=('fenriz')
 conflicts=('fenriz' 'fenriz-git')
 source=("${url}/releases/download/v${pkgver}/fenriz-${pkgver}.tar.gz")
-sha256sums=('fc56d002f90aa3c983ea3bcf21b6c351dc4e6d30f6a6d5ab94474121509f2dce')
+sha256sums=('52562b7736c067bed03ba3f46e29f8d8ac0c8bbfd779c0cadf17c22ee474feec')
 
 package() {
     cd "fenriz-${pkgver}"
