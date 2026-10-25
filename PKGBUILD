@@ -1,21 +1,21 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 pkgname=todav
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
 url='https://github.com/AperteDev/todav'
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita>=1:1.8' 'libsecret' 'glib2' 'libgcc' 'glibc')
+depends=('gtk4' 'libadwaita>=1:1.8' 'libsecret' 'sqlite' 'glib2' 'libgcc' 'glibc')
 optdepends=('gnome-online-accounts: sign in with a GNOME Online Accounts account'
             'org.freedesktop.secrets: keep the passwords in the system keyring'
             'gnome-shell-extension-todav: tasks, month and agenda in the GNOME top bar')
 makedepends=('cargo' 'blueprint-compiler' 'gettext')
-# GCC's LTO objects of the bundled C code (SQLite, ring) don't link with rustc's lld.
+# GCC's LTO objects of ring's bundled C code don't link with rustc's lld.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01bb121dd55811b0fd7fc208dd19bc5163b27369352c91190e50d24ad91ca9d5')
+sha256sums=('820262b04ead2c00e41582caff37708b2d7a2febabbb950945c123e3801fc19d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
