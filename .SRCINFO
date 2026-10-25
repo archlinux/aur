@@ -1,6 +1,6 @@
 pkgbase = uvr
 	pkgdesc = An extremely fast R package and project manager
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/nbafrank/uvr
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = uvr
 	conflicts = uvr-bin
 	options = !lto
 	options = !debug
-	source = uvr-0.4.7.tar.gz::https://github.com/nbafrank/uvr/archive/v0.4.7.tar.gz
-	sha512sums = 2f7fac60d086d43ab5cc7d0547a7a3665ffd24ef3ecf50c82393e3931fcdfd5ffb60b46542a28fc062cc94682fc00db5b10372f716a432a9b706ad705260ccdb
+	source = uvr-0.4.8.tar.gz::https://github.com/nbafrank/uvr/archive/v0.4.8.tar.gz
+	sha512sums = ea3d7b60783619f12b53a954f9de6d520fa889bc7aa6dab6f1fc71be6bac5b6f5c25a30e7345b710cff30540d1a0567c234320f66147b6e2474c9fd3578eda73
 
 pkgname = uvr

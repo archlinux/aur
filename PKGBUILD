@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=uvr
-pkgver=0.4.7 # renovate: datasource=github-tags depName=nbafrank/uvr
+pkgver=0.4.8 # renovate: datasource=github-releases depName=nbafrank/uvr
 pkgrel=1
 pkgdesc="An extremely fast R package and project manager"
 url="https://github.com/nbafrank/uvr"
@@ -35,4 +35,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('2f7fac60d086d43ab5cc7d0547a7a3665ffd24ef3ecf50c82393e3931fcdfd5ffb60b46542a28fc062cc94682fc00db5b10372f716a432a9b706ad705260ccdb')
+sha512sums=('ea3d7b60783619f12b53a954f9de6d520fa889bc7aa6dab6f1fc71be6bac5b6f5c25a30e7345b710cff30540d1a0567c234320f66147b6e2474c9fd3578eda73')
