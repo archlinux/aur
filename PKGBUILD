@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucaszhou007@163.com>
 pkgname=llama-prism-rocm-bin
-pkgver=b10787
-_commit=73bfe6c
+pkgver=b10822
+_commit=bf8c069
 _rocmver=7.2
 pkgrel=1
 pkgdesc="llama.cpp Prism fork - LLM inference in C/C++ (prebuilt ROCm / HIP binaries for AMD GPUs)"
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 
 _asset="llama-prism-${pkgver}-${_commit}-bin-ubuntu-rocm-${_rocmver}-x64.tar.gz"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/prism-${pkgver}-${_commit}/${_asset}")
-sha256sums=('68392d2980469f267ba377fcdf0ce836e68780d4a97206ca87df1442afb32497')
+sha256sums=('6a8ba9b9f872155964d370836164a8208d45450865a222890e7a6424674f3ae7')
 
 package() {
   local _srcdir="$srcdir/llama-prism-${pkgver}-${_commit}"

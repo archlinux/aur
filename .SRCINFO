@@ -1,6 +1,6 @@
 pkgbase = llama-prism-rocm-bin
 	pkgdesc = llama.cpp Prism fork - LLM inference in C/C++ (prebuilt ROCm / HIP binaries for AMD GPUs)
-	pkgver = b10787
+	pkgver = b10822
 	pkgrel = 1
 	url = https://github.com/PrismML-Eng/llama.cpp
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = llama-prism-rocm-bin
 	conflicts = llama-prism-cuda
 	options = !strip
 	options = !debug
-	source = llama-prism-rocm-bin-b10787.tar.gz::https://github.com/PrismML-Eng/llama.cpp/releases/download/prism-b10787-73bfe6c/llama-prism-b10787-73bfe6c-bin-ubuntu-rocm-7.2-x64.tar.gz
-	sha256sums = 68392d2980469f267ba377fcdf0ce836e68780d4a97206ca87df1442afb32497
+	source = llama-prism-rocm-bin-b10822.tar.gz::https://github.com/PrismML-Eng/llama.cpp/releases/download/prism-b10822-bf8c069/llama-prism-b10822-bf8c069-bin-ubuntu-rocm-7.2-x64.tar.gz
+	sha256sums = 6a8ba9b9f872155964d370836164a8208d45450865a222890e7a6424674f3ae7
 
 pkgname = llama-prism-rocm-bin
