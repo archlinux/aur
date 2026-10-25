@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 _fc_ver=0.2.0
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('x86_64' 'aarch64')
@@ -58,6 +58,7 @@ makedepends=(
   'python-wheel'
   'setconf'
 )
+checkdepends=('desktop-file-utils')
 optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
   'power-profiles-daemon: Required for Energy Pulse Extension'
@@ -71,7 +72,7 @@ optdepends=(
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
         "FerrumCast-${_fc_ver}.tar.gz::https://github.com/BYTEDz/FerrumCast/archive/refs/tags/v${_fc_ver}.tar.gz")
-sha256sums=('f74750523b46626caf4860f9d05ce713bcab39e5baef6f60eb40b63225ab8c5f'
+sha256sums=('855652b9133456e6a49bd8ba801dc366eb0a28b10bc465f83e9880ccb7af467c'
             '3b58bc84b95f1491eefb24f9e1ada197bc5fb6fb3c4579de3f4417a94f1f7cae')
 
 prepare() {
@@ -93,6 +94,8 @@ build() {
   pushd "FerrumCast-${_fc_ver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_LTO=true
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
   cargo build --frozen --release
   popd
 
