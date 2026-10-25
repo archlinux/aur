@@ -1,16 +1,16 @@
-pkgbase = uncloud
+pkgbase = uc
 	pkgdesc = A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨
-	pkgver = 0.19.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/psviderski/uncloud
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	provides = uncloud
-	conflicts = uncloud
-	source_x86_64 = uncloud_linux_amd64.tar.gz::https://github.com/psviderski/uncloud/releases/download/v0.19.0/uncloud_linux_amd64.tar.gz
-	sha256sums_x86_64 = 998af0e182e096a623c6e4518c64ed967dd8d05be6a0edfb3614fd8b655a2a96
-	source_aarch64 = uncloud_linux_arm64_linux.tar.gz::https://github.com/psviderski/uncloud/releases/download/v0.19.0/uncloud_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0f34464122b21d8d8e5e14b93ebf33757ef54a7fe1e825fc596f9aee76a0179d
+	conflicts = uc
+	source_x86_64 = uc_linux_amd64.tar.gz::https://github.com/psviderski/uncloud/releases/download/v0.21.0/uc_linux_amd64.tar.gz
+	sha256sums_x86_64 = 11a87551d31144a5837c04d87d4f984c2a62b29052bb3a29d2a5cb72be7de616
+	source_aarch64 = uc_linux_arm64_linux.tar.gz::https://github.com/psviderski/uncloud/releases/download/v0.21.0/uc_linux_arm64.tar.gz
+	sha256sums_aarch64 = f9416a97a409865238e8a7be5ad4a0441cc8523c8f33967a9a87eea27109d47e
 
-pkgname = uncloud
+pkgname = uc

@@ -1,8 +1,8 @@
 # Maintainer: Frédéric Logier <fredix@nomad.wf>
 _name=uncloud
-pkgname=uncloud
-_binaryname="uc"
-pkgver=0.19.0
+pkgname=uc
+#_binaryname="uc"
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨"
 arch=('x86_64' 'aarch64')
@@ -13,13 +13,13 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=("${_name}")
-conflicts=("${_name}")
+conflicts=("${pkgname}")
 replaces=()
 backup=()
-source_x86_64=("${pkgname}_linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/uncloud_linux_amd64.tar.gz")
-source_aarch64=("${pkgname}_linux_arm64_linux.tar.gz::${url}/releases/download/v${pkgver}/uncloud_linux_arm64.tar.gz")
-sha256sums_x86_64=('998af0e182e096a623c6e4518c64ed967dd8d05be6a0edfb3614fd8b655a2a96')
-sha256sums_aarch64=('0f34464122b21d8d8e5e14b93ebf33757ef54a7fe1e825fc596f9aee76a0179d')
+source_x86_64=("${pkgname}_linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/uc_linux_amd64.tar.gz")
+source_aarch64=("${pkgname}_linux_arm64_linux.tar.gz::${url}/releases/download/v${pkgver}/uc_linux_arm64.tar.gz")
+sha256sums_x86_64=('11a87551d31144a5837c04d87d4f984c2a62b29052bb3a29d2a5cb72be7de616')
+sha256sums_aarch64=('f9416a97a409865238e8a7be5ad4a0441cc8523c8f33967a9a87eea27109d47e')
 
 validpgpkeys=()
 
@@ -33,5 +33,5 @@ package() {
     # Extract archive to the package directory
     cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-    ln -sf "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${_binaryname}"
+    #ln -sf "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${_binaryname}"
 }
