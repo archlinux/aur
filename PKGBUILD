@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=librepaper
-pkgver=0.0.50 # renovate: datasource=github-releases depName=LibrePaper/librepaper
+pkgver=0.0.52 # renovate: datasource=github-releases depName=LibrePaper/librepaper
 pkgrel=1
 pkgdesc="A free collaborative writing, editing, and commenting platform"
 url="https://github.com/LibrePaper/librepaper"
@@ -73,4 +73,4 @@ EOF
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('19697653a9d62d9355c90d573c5bea51b0e406afa4be73d4f1e84f52cf36fa622c4cda6089a8f12d885bdd4acb8131ec1f1ad87b267abb5a6b066778665924e1')
+sha512sums=('f0913ff9559a6fadcb7249e8d86ef2e743f7c731f8082960cc421384192a2762f6508a7b86448f68c6388a6c9247578e7c3afb69f40f0995c2fa5cf543fb9d21')
