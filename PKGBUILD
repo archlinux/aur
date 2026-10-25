@@ -1,17 +1,21 @@
-# Maintainer: Sebastian 'gonX' Jensen <gonx@gonx.dk>
+# Maintainer: Elecksy <personal@elecksy.top>
+# Contributor: Sebastian 'gonX' Jensen <gonx@gonx.dk>
 # Contributor: LavaDesu <me@lava.moe>
-pkgname=opentabletdriver
+pkgname=opentabletdriver-rc
 _pkgname=OpenTabletDriver
-pkgver=0.6.7
-pkgrel=3
-pkgdesc="A cross-platform open source tablet driver"
+_tag=v0.6.8-rc1
+pkgver=0.6.8rc1
+pkgrel=1
+provides=('opentabletdriver')
+pkgdesc="A cross-platform open source tablet driver (release candidate)"
 arch=('x86_64')
 url="https://opentabletdriver.net"
 license=('LGPL-3.0-or-later')
-depends=('dotnet-runtime-8.0' 'gtk3' 'libevdev')
+depends=('dotnet-runtime-10.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
-makedepends=('dotnet-sdk-8.0' 'jq' 'git')
+makedepends=('dotnet-sdk-10.0' 'jq' 'git')
 conflicts=(
+  'opentabletdriver'
   'digimend-kernel-drivers-dkms-git'
   'digimend-drivers-git-dkms'
   'digimend-kernel-drivers-dkms'
@@ -22,14 +26,14 @@ install="notes.install"
 # unified binary dotnet releases break when stripped
 # see https://github.com/dotnet/runtime/issues/54947
 options=('!strip')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/v$pkgver.tar.gz"
+source=("$_pkgname-$_tag.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/$_tag.tar.gz"
         "notes.install"
         )
 
-sha256sums=('95e8fe646ccfcee97da5477f2432ce3265ec6c0c5356a23b1b2f41a0b738796f'
+sha256sums=('62bce912d8882f3dbfee4fbe4d2187e76b250e1643e410cc761beb6a48c45a7e'
             '33e50caf00ab290463acaa09b024bcd8bcf6a39911db2fc506e88495171bf3e3')
 
-_srcdir="OpenTabletDriver-$pkgver"
+_srcdir="OpenTabletDriver-${_tag#v}"
 
 build() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
