@@ -7,7 +7,7 @@ pkgname=(
   bisq-cli
   bisq-daemon
 )
-pkgver=1.10.9
+pkgver=1.10.10
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
