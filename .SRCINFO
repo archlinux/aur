@@ -1,0 +1,18 @@
+pkgbase = flaccy-server-bin
+	pkgdesc = Headless OpenSubsonic server for one music folder, made for Flaccy and any Subsonic app
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/guitaripod/flaccy
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	optdepends = ffmpeg: transcoding for apps that ask for AAC, Opus or MP3
+	optdepends = tailscale: HTTPS access from your devices with tailscale serve
+	provides = flaccy-server
+	conflicts = flaccy-server
+	options = !strip
+	options = !debug
+	source = https://github.com/guitaripod/flaccy/releases/download/server-v0.1.0/flaccy-server-linux-x86_64.tar.gz
+	sha256sums = 11ac60b614bf7ce57375d9e37a3a85b50c97116333f99b6c7f2f45f17c6c4e41
+
+pkgname = flaccy-server-bin
