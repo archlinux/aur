@@ -1,0 +1,13 @@
+src/
+pkg/
+*.tar.*
+*.tar
+*.log
+
+# Local staging area for the dependency packages that neither the official
+# repositories nor the AUR carry yet:
+#   python-fastapi-pagination, python-turbopuffer, python-cashews,
+#   python-sqlakeyset
+# Each subdirectory is meant to become its own AUR repo, so it is deliberately
+# not part of the honcho package.
+deps/

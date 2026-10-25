@@ -1,0 +1,30 @@
+[Unit]
+Description=Honcho deriver (background reasoning worker)
+Documentation=https://honcho.dev/docs
+After=network-online.target postgresql.service honcho.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=honcho
+Group=honcho
+StateDirectory=honcho
+StateDirectoryMode=0750
+WorkingDirectory=/usr/lib/honcho
+EnvironmentFile=/etc/honcho/honcho.env
+Environment=HOME=/var/lib/honcho
+Environment=PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/usr/lib/honcho
+Environment=PYTHON_DOTENV_DISABLED=1
+Environment=TIKTOKEN_CACHE_DIR=/var/lib/honcho/tiktoken
+# The deriver stores messages but derives no memory without this worker.
+ExecStart=/usr/bin/python3 -m src.deriver
+Restart=always
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target

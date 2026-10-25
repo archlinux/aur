@@ -1,0 +1,32 @@
+post_install() {
+  cat <<'EOF'
+Honcho needs PostgreSQL (with the pgvector, pg_trgm and btree_gin
+extensions) and an LLM provider key to do useful work:
+
+  1. Create the database role and database, then enable the extensions:
+       sudo -u postgres createuser --pwprompt honcho
+       sudo -u postgres createdb -O honcho honcho
+       sudo -u postgres psql -d honcho -c 'CREATE EXTENSION IF NOT EXISTS vector;'
+       sudo -u postgres psql -d honcho -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm;'
+       sudo -u postgres psql -d honcho -c 'CREATE EXTENSION IF NOT EXISTS btree_gin;'
+
+  2. Configure /etc/honcho/honcho.env (DB_CONNECTION_URI plus at least one
+     LLM_*_API_KEY; without a key the API still starts, but memory derivation
+     and embeddings fail). An OpenAI-compatible proxy (OpenRouter, Ollama,
+     vLLM...) also works; see /usr/share/doc/honcho/env.template.
+
+  3. Start the API and the background deriver worker:
+       sudo systemctl enable --now honcho honcho-deriver
+
+Both units run as the unprivileged "honcho" system user created by this
+package. Database migrations run automatically at API startup
+(advisory-locked). The API listens on 127.0.0.1:8000 - put a reverse proxy
+(Caddy, nginx) in front of it for TLS.
+Docs: https://honcho.dev/docs/v3/contributing/self-hosting
+EOF
+}
+
+post_upgrade() {
+  echo "Restart the services to apply migrations:"
+  echo "  sudo systemctl restart honcho honcho-deriver"
+}

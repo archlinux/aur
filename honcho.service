@@ -1,0 +1,37 @@
+[Unit]
+Description=Honcho memory server (API)
+Documentation=https://honcho.dev/docs
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=honcho
+Group=honcho
+StateDirectory=honcho
+StateDirectoryMode=0750
+WorkingDirectory=/usr/lib/honcho
+EnvironmentFile=/etc/honcho/honcho.env
+Environment=HOME=/var/lib/honcho
+Environment=PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+# src.main is imported as a package from the working directory.
+Environment=PYTHONPATH=/usr/lib/honcho
+# Make the systemd env file the single source of config: src/config.py calls
+# load_dotenv(override=True), which would otherwise look for a .env in CWD.
+Environment=PYTHON_DOTENV_DISABLED=1
+# tiktoken downloads its BPE file on first use; keep the cache across restarts
+# instead of letting PrivateTmp discard it every time.
+Environment=TIKTOKEN_CACHE_DIR=/var/lib/honcho/tiktoken
+Environment=HONCHO_HOST=127.0.0.1 HONCHO_PORT=8000 API_WORKERS=1
+# Runs migrations on every start (advisory-locked, safe with multiple nodes).
+ExecStartPre=/usr/bin/python3 scripts/provision_db.py
+ExecStart=/usr/bin/uvicorn src.main:app --host ${HONCHO_HOST} --port ${HONCHO_PORT} --workers ${API_WORKERS}
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
