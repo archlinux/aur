@@ -1,0 +1,10 @@
+[Unit]
+Description=OTK coding-agent browser UI
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/otk
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
