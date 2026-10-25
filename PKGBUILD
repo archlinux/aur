@@ -3,7 +3,7 @@
 
 pkgauthor=omacom
 pkgname=ttfx
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Terminal text effects as a single static binary"
 
@@ -19,7 +19,7 @@ depends=('glibc' 'libgcc')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2882c7e47011a95f4d136303f7320da71613299840f67f88fd1385ef53d5f2a0')
+sha256sums=('3f10b987b7690aa3caa2fa4f1749d8c7904e177380eff3e000d3422da8eb0134')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
