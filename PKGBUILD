@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=rhun-bin
-pkgver=0.18.3
+pkgver=0.18.4
 pkgrel=1
 pkgdesc='Small and fast code editor written in assembly (prebuilt binaries)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('rhun')
 source=("LICENSE-Iosevka-$pkgver.md::https://raw.githubusercontent.com/vshvedov/rhun/v$pkgver/assets/fonts/LICENSE-Iosevka.md")
 source_x86_64=("rhun-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/rhun-$pkgver-linux-x86_64.tar.gz")
 sha256sums=('4ba53c7c1cb39279aae5f8d7d22054c485c71169920e5a36ed098b115e2e3c5d')
-sha256sums_x86_64=('9a3a0eff40eeb66f60cedb29103634341062282fba0cc58cd8596d5c9a327f8c')
+sha256sums_x86_64=('84ff056e57632ac11accbcb4fea140f7648e117e8667ce4f029082cc9835b569')
 
 package() {
   cd "$srcdir/rhun-$pkgver"
