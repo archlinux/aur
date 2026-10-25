@@ -1,0 +1,25 @@
+pkgbase = python-cashews
+	pkgdesc = Cache tools with async power
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = https://github.com/Krukov/cashews
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-redis: redis backend
+	optdepends = python-diskcache: disk backend
+	optdepends = python-bitarray: speedup extras
+	optdepends = python-xxhash: speedup extras
+	optdepends = python-hiredis: speedup extras
+	optdepends = python-dill: dill pickler
+	optdepends = python-prometheus_client: Prometheus metrics middleware
+	optdepends = python-starlette: FastAPI/Starlette middleware
+	optdepends = python-sqlalchemy: SQLAlchemy pickler support
+	source = cashews-7.6.0.tar.gz::https://files.pythonhosted.org/packages/source/c/cashews/cashews-7.6.0.tar.gz
+	sha256sums = fc2456d9153ca424f26b040ef053d000f9092c65b1ad6e6330f66fea95d503f0
+
+pkgname = python-cashews
