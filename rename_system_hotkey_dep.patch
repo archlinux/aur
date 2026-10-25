@@ -1,12 +1,12 @@
-diff -Naur ./superpaper-2.2.0.orig/setup.py ./superpaper-2.2.0/setup.py
---- ./superpaper-2.2.0.orig/setup.py	2022-12-16 22:57:49.982911108 -0500
-+++ ./superpaper-2.2.0/setup.py	2022-12-16 22:58:05.160926679 -0500
-@@ -61,7 +61,7 @@
+diff -Naur ./superpaper-next-2.3.2.orig/setup.py ./superpaper-next-2.3.2/setup.py
+--- ./superpaper-next-2.3.2.orig/setup.py	2026-10-25 00:22:44.151182647 -0400
++++ ./superpaper-next-2.3.2/setup.py	2026-10-25 00:25:24.318160838 -0400
+@@ -60,7 +60,7 @@
              "Pillow>=7.0.0",
              "screeninfo>=0.6.1",
              "numpy>=1.18.0",
 -            "system_hotkey310>=1.0.5",
 +            "system_hotkey>=1.0.5",
              "xcffib>=0.8.0",
-             "xpybutil>=0.0.5"
+             "xpybutil>=0.0.5",
          ],
