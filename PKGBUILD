@@ -2,7 +2,7 @@
 
 pkgname=dmultiwall-git
 _pkgname=dmultiwall
-pkgver=v1.0.0
+pkgver=1.0.0.r0.g11d5841
 pkgrel=1
 pkgdesc="Dynamic multi-monitor wallpaper setter using feh"
 arch=('x86_64')
@@ -18,10 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  # Use commit count + short hash (standard for -git packages)
-  printf "r%s.%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
