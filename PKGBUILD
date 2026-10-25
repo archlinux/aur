@@ -1,7 +1,7 @@
 # Maintainer: Tim Ebbeke <tim 06 tr (at) gmail dot com>
 
 pkgname=nui-sftp
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="NUI-based SFTP application"
 arch=('x86_64')
@@ -62,9 +62,9 @@ source=(
     "${_cefdirectory}.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_${_cefversion//+/%2B}_linux64_minimal.tar.bz2"
 )
 sha256sums=(
-    '180e21ab324cc7bbd428f8efc02b37f934283c78b923f20cf6dd8f30cef7c389'
+    'b923953000a24b9b7730ad6685d62dc7b061e3162a97c30794e4b2df5a6b3de5'
     'cf0fc442069dfd28bd8b7769da6dfdca92111044ea9817197716ed9bfada3869'
-    'de6db33c6d3678352aec31a35049c5d6f0acbef4cc7dc92eccbb0c7469cddcaf'
+    'c61f3b7c4e83c76917425a74be3ae725e08a034181da4aa4e3bf5f7f9b4f32f7'
     'e87e2c76304372dd28b899ceb6efa4b353f52700594ddc358a8237ec07ec6492'
 )
 
