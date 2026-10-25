@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=velotype-bin
-pkgver=0.7.2
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Write at the speed of thought - high-performance native Markdown editor built with Rust and GPUI"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('velotype')
 conflicts=('velotype')
 source_x86_64=("velotype-v${pkgver}-linux-x86_64.tar.gz::https://github.com/manyougz/velotype/releases/download/v${pkgver}/velotype-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("velotype-v${pkgver}-linux-aarch64.tar.gz::https://github.com/manyougz/velotype/releases/download/v${pkgver}/velotype-v${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('c1903f97158edeb85da3c02ac8aa1cb0cba4183d20d9169bb2237f8defd55d73')
-sha256sums_aarch64=('9b3eaaf8e47b3ec09d884b6d0840a25ce768370af145e28e8b68263b7c89de41')
+sha256sums_x86_64=('d829d560f270bd9088fa4db24100373241841f02742b954309e47d3e85f65378')
+sha256sums_aarch64=('528128d97c10d3a65b6e99698547cadc2c3c3adf5c1ba65af3a7ae93229272c2')
 
 package() {
     install -Dm755 velotype "${pkgdir}/usr/bin/velotype"
