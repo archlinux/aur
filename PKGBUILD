@@ -5,7 +5,7 @@
 # SRS is an independent project, not affiliated with SIV or its author.
 
 pkgname=srs-sysinfo
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 545 report items, user guide, CPU burner, benchmarks"
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   'hwinfo: srs-sysreport section'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('86a8a5fe1e926c6f7cc801538075ed24a8926ed6dee3c9481e096b7498ce6bb2')
+sha256sums=('8a8a16e96e446f6f60180798227ee85692420bf7a9ef325ca4260dc207b4f10f')
 
 build() {
   cd "$pkgname-$pkgver"
