@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=filee-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Offline file converter for images, PDF, Office, HWP, video, audio, e-books and archives (upstream binary)"
 arch=('x86_64' 'aarch64')
@@ -30,10 +30,10 @@ source=("com.filee.app.desktop")
 sha256sums=('7924b339c9845b737fc76dc5f779f6d4d63a606990fcccfa40052d4e5a46b596')
 
 source_x86_64=("https://github.com/KnifeLemon/Filee/releases/download/v${pkgver}/Filee-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=('e34a6f9464fac3af74dd646af54d7a75cffacb064fbe11d98701a874e68a170a')
+sha256sums_x86_64=('2461af183460e36b68043692c9a009da174ff84b981d7b7f2ed4d80e881f2a56')
 
 source_aarch64=("https://github.com/KnifeLemon/Filee/releases/download/v${pkgver}/Filee-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('271271caa70df3cd675e73cde3ae72258882489d405a9331e425bb86fc7936d1')
+sha256sums_aarch64=('df744ea347f8d2e813fd654312d8edc24e4e604508dee24dee9d2b1fdf010f5d')
 
 package() {
   local _dir="$srcdir/Filee-${pkgver}-linux-x64"
