@@ -1,7 +1,7 @@
 # Maintainer: Fabrice Aneche <akh@inair.space>
 
 pkgname=pdg
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Zero-install, pure-CPU text-to-speech engine with an embedded model"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
   'ffmpeg: ffplay playback'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akhenakh/pdg/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9c7ae195194055223fd3d51236bec5133a7d780f8a0f924dd69b74b0d6671881')
+sha256sums=('b3356d5407513fddc2903d50a7f083e5b63119eec7be8fb9b6929b7cf55d1416')
 
 build() {
   cd "pdg-$pkgver"
