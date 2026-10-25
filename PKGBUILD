@@ -4,7 +4,7 @@
 # `cargo xtask dist` builds them. release.yml's `aur` job sets pkgver,
 # regenerates .SRCINFO and pushes.
 pkgname=enclave-messenger
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Private messages without a phone number, through Tor and the Nym mixnet'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,8 @@ provides=('enclave-messenger')
 conflicts=('enclave-messenger-bin')
 options=('!lto' '!debug')
 _v=${pkgver//_/-}
-source=("git+https://github.com/0xnullsect0r/enclave-messenger.git#tag=v${_v}")
+# Checked out as Enclave/, the directory the steps below work in.
+source=("Enclave::git+https://github.com/0xnullsect0r/enclave-messenger.git#tag=v${_v}")
 sha256sums=('SKIP')
 
 prepare() {
