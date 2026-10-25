@@ -3,7 +3,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=6.1.4
+pkgver=6.1.5
 pkgrel=1
 pkgdesc="SIP Server for large VoIP and real-time communication platforms"
 arch=('x86_64')
@@ -15,10 +15,10 @@ depends=(
 )
 
 makedepends=(
-  'cmake' 'gcc' 'make' 'pkg-config' 'flex' 'bison' 'clang'
-  'openssl' 'libmariadbclient' 'postgresql-libs' 'sqlite'
+  'cmake' 'gcc' 'make' 'pkgconf' 'flex' 'bison' 'clang'
+  'openssl' 'mariadb-libs' 'postgresql-libs' 'sqlite'
   'python' 'lua' 'libxml2' 'curl' 'libunistring' 'util-linux'
-  'lynx' 'libxslt' 'docbook2x' 'docbook-xsl' 'lksctp-tools'
+  'lynx' 'libxslt' 'docbook2x' 'docbook-xsl' 'lksctp-tools' 'pcre2'
 )
 
 optdepends=(
@@ -31,6 +31,7 @@ optdepends=(
   'libxml2: XML operations'
   'unixodbc: ODBC database support'
   'lksctp-tools: SCTP transport support'
+  'pcre2: dialplan, regex and lcr modules support'
 )
 
 backup=(
@@ -41,12 +42,12 @@ backup=(
 
 install="${pkgname}.install"
 
-source=("https://www.kamailio.org/pub/${pkgname}/latest/src/${pkgname}-${pkgver}_src.tar.gz"
+source=("https://www.kamailio.org/pub/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}_src.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('290624b6624edc230af0fc458fb7e481e64b893be7cb5084398e587942992e0a'
+sha256sums=('444f0ca03ec3581a19f5a616d8b35ddcd3ab3471967c94a6a2742ee7b41fac2c'
             'cbc0d7510a52791cb2016d91df9543433f3b8467efec196ed06d025ba5f8a0fa'
-            'edcbe39e6c5c368109e791693302dfc41c1b63f654eb6311281a8bdfc4adfbf3')
+            'fa4f7683608efa70493d7d16c6bce922c4d640abcb110da0c622e81efb433e3c')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -66,7 +67,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  local modules='acc;alias_db;async;auth;auth_db;avpops;benchmark;blst;cfg_rpc;cfgutils;corex;counters;ctl;debugger;dialog;dialplan;dispatcher;dmq;domain;domainpolicy;drouting;enum;exec;group;htable;ipops;jansson;jsonrpcs;kex;lcr;maxfwd;mqueue;nathelper;path;pdt;permissions;pike;pipelimit;prefix_route;pv;ratelimit;regex;registrar;rls;rr;rtimer;sanity;sca;sdpops;siputils;sl;speeddial;sqlops;statistics;textops;tm;tmx;topoh;uac;usrloc;xlog;db_mysql;db_postgres;db_sqlite;tls;websocket;sctp;app_python3;app_lua'
+  local modules='acc alias_db async auth auth_db avpops benchmark blst cfg_rpc cfgutils corex counters ctl debugger dialog dialplan dispatcher dmq domain domainpolicy drouting enum exec group htable ipops jansson jsonrpcs kex lcr maxfwd mqueue nathelper path pdt permissions pike pipelimit prefix_route pv ratelimit regex registrar rls rr rtimer sanity sca sdpops siputils sl speeddial sqlops statistics textops tm tmx topoh uac usrloc xlog db_mysql db_postgres db_sqlite tls websocket sctp app_python3 app_lua'
 
   local cmake_options=(
     -B build
@@ -74,6 +75,7 @@ build() {
     -Wno-dev
     -DCMAKE_BUILD_TYPE=None
     -DINCLUDE_MODULES="${modules}"
+    -DMODULE_GROUP_NAME="DEFAULT"
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
     -DCMAKE_INSTALL_BINDIR=/usr/bin

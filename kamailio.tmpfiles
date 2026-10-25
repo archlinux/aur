@@ -1,2 +1,6 @@
 d /run/kamailio 0750 kamailio kamailio -
 d /var/lib/kamailio 0750 kamailio kamailio -
+x /run/kamailio/kamailio_ctl
+x /run/kamailio/kamailio.pid
+x /run/kamailio/kamailio_rpc.fifo
+x /run/kamailio/kamailio_rpc.sock
