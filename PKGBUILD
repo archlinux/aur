@@ -14,7 +14,7 @@
 #     curl -s 'https://aur.archlinux.org/rpc/v5/info?arg[]=ai-memory'
 #
 pkgname=ai-memory
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ install=ai-memory.install
 options=('!debug' '!lto')
 conflicts=('ai-memory-bin')
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6b756b30012e7e9401418ce1028747285110f6bed84890bbe3009aa5ecd204c8')
+sha256sums=('81d009a15c53542da4314d20d7f2a3274c9ed1a9ba7bff9c347e06a76352652c')
 
 prepare() {
     cd "$pkgname-$pkgver"
