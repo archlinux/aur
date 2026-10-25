@@ -2,10 +2,10 @@
 pkgname=cosmic-ext-applet-minimon
 _app_id=io.github.cosmic_utils.minimon-applet
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A COSMIC applet for displaying CPU/Memory/Network/Disk/GPU usage in the Panel or Dock."
 arch=('x86_64' 'aarch64')
-url="https://github.com/cosmic-utils/minimon-applet"
+url="https://github.com/cosmic-utils/cosmic-ext-applet-minimon"
 license=('GPL-3.0-or-later')
 depends=(
   'cosmic-applets'
@@ -21,28 +21,28 @@ checkdepends=(
   'desktop-file-utils'
 )
 conflicts=('minimon-applet-for-cosmic')
-source=("minimon-applet-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1aa1c88f3d1da05aec11a682283be73cbe14e5008216a3502a28fe236c65b4d4')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('aa5352f500a69ea475c04433a9908206c817ef41ae9e6478427772c2a657b77f')
 
 prepare() {
-  cd "minimon-applet-$pkgver"
+  cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "minimon-applet-$pkgver"
+  cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   just build-release --frozen
 }
 
 check() {
-  cd "minimon-applet-$pkgver"
+  cd "$pkgname-$pkgver"
   appstreamcli validate --no-net "res/${_app_id}.metainfo.xml"
   desktop-file-validate "res/${_app_id}.desktop"
 }
 
 package() {
-  cd "minimon-applet-$pkgver"
+  cd "$pkgname-$pkgver"
   just rootdir="$pkgdir" install
 }
