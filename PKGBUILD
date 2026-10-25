@@ -7,7 +7,7 @@
 # After a new release is tagged: set pkgver, then `updpkgsums`.
 
 pkgname=mavernix
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='A lightweight Wayland desktop session with a classic look'
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
   'xdg-desktop-portal-wlr: screen sharing'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d0558a9d4c6002388ed842ece2173f83cf3a881fd490066d21dadd57ca98ef52')
+sha256sums=('c25815a6b5c3f5846393e9cc0eb05dbf9116a7dbc2a864ef3468f23e7c1f42a8')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
