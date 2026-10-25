@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=sakura-frp
-pkgver=0.51.0_sakura_12.3
+pkgver=0.51.0_sakura_15.1
 pkgrel=2
 pkgdesc="Sakura Frp Client"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -31,10 +31,10 @@ md5sums=('SKIP'
          'aa5e634fe5032eff425151306be9d3d8'
          'c376a78ccc30f4c741eb4df195c8be69'
          'b6f05593949f04968ea4012be9aad10c')
-md5sums_x86_64=('8ba7dcde07b1181e4f011e011321c6f8')
-md5sums_i686=('00f0b4bfc7e7b339c0c9884d4f45be16')
-md5sums_aarch64=('248fb095f2c1a9ed8e9a05784223c40b')
-md5sums_armv7h=('59881860fc75bc5e426a816fce6b628e')
+md5sums_x86_64=('a3d443de501d0f8af520219c3ed07f83')
+md5sums_i686=('a0a20f21bff4a2ce8d175867186c5f4c')
+md5sums_aarch64=('4223979f9a9fa259db2f69d840db949b')
+md5sums_armv7h=('76b8fa07a4b08da48be28798c4feccbc')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}-${CARCH} ${pkgdir}/usr/bin/${pkgname}c
