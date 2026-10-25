@@ -1,7 +1,7 @@
 pkgbase = naabu
 	pkgdesc = A fast port scanner written in go with focus on reliability and simplicity
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectdiscovery/naabu
 	arch = x86_64
 	arch = i686
