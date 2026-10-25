@@ -11,7 +11,7 @@
 # Von dort wird gepusht — nicht von hier.
 
 pkgname=yakuda-connect
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="WiVRn VR management software with gaming optimization and OpenXR/OpenVR fixes"
 arch=('any')
@@ -40,7 +40,7 @@ conflicts=('yakuda-connect-git')
 # Tag-Format im Repo ist v<version> -> v1.1.2
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Wird von 'updpkgsums' im AUR-Ordner gesetzt — NICHT von Hand eintragen.
-sha256sums=('c058add7c1a6dcd78640a96360635b124266197ebaa0eb5b8bba6809019358a8')
+sha256sums=('6fe490838e35c7cf3cb1179be12b73c90a6b8682e5217de961d83c7f07e6107d')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -61,6 +61,12 @@ package() {
     # Aufraeumen: Bytecode und Build-Reste gehoeren nicht ins Paket
     find "$dest" -type d -name '__pycache__' -prune -exec rm -rf {} +
     find "$dest" -type f -name '*.py[co]' -delete
+    # Bytecode HIER frisch erzeugen (seit v1.4.4): /usr/share ist fuer den
+    # Nutzer schreibgeschuetzt — ohne vorkompilierte .pyc uebersetzt Python
+    # bei JEDEM Start alle Module neu (gemessen ~0,2 s). -d setzt den Pfad,
+    # der spaeter in Tracebacks steht. Nach einem Python-Update ohne
+    # Paket-Neubau werden die .pyc nur ignoriert (wie bisher, kein Fehler).
+    python -m compileall -q -d /usr/share/yakuda-connect "$dest" >/dev/null || true
     # Reproduzierbare Rechte (cp -r erbt sonst die Rechte aus dem Checkout)
     find "$dest" -type d -exec chmod 755 {} +
     find "$dest" -type f -exec chmod 644 {} +
