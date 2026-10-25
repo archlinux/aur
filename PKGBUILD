@@ -3,16 +3,17 @@
 pkgname=envoyproxy-bin
 provides=(envoyproxy)
 conflicts=(envoyproxy)
-pkgver=1.39.0
+pkgver=1.40.1
 pkgrel=1
 pkgdesc="An open source edge and service proxy, designed for cloud-native applications"
 arch=('x86_64')
 url="https://envoyproxy.io"
-license=('Apache2')
+license=('Apache-2.0')
+depends=(glibc)
 source=(
   "https://archive.tetratelabs.io/envoy/download/v$pkgver/envoy-v$pkgver-linux-amd64.tar.xz"
 )
-sha512sums=('a0140926709f0a4e318ab9eadac5658962d03ada4cc23535668a8336c96d6bdeb4dd8be9e0eddc2b64a6d595ecc712b4ce30723ea3b803e04f0acb4a1baa327f')
+sha512sums=('c4f2c11ea2459c2c9f59013247ff5eb298bb626920160e035071c319086101b667a168af94ca71459316afbb58a8108a5fc040cfb804df468c4670287a595384')
 
 
 check() {
