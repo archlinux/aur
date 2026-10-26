@@ -1,6 +1,6 @@
 pkgbase = unpackerr
 	pkgdesc = Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.
-	pkgver = 0.16.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://unpackerr.zip
 	arch = x86_64
@@ -20,7 +20,8 @@ pkgbase = unpackerr
 	makedepends = gzip
 	provides = unpackerr
 	backup = etc/unpackerr/unpackerr.conf
-	source = https://github.com/Unpackerr/unpackerr/releases/download/v0.16.1/unpackerr-0.16.1.tar.gz
-	sha256sums = a46f2148b4a6b8e8814ea60a2845bc2f296561814cd0cf7504526518739217e0
+	install = unpackerr.install
+	source = https://github.com/Unpackerr/unpackerr/releases/download/v1.0.0/unpackerr-1.0.0.tar.gz
+	sha256sums = 0de5ff0e0b1731b37c003a6f5df4d734f7495c48340f686fecfa3d57d327f98e
 
 pkgname = unpackerr

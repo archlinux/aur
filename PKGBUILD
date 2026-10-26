@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog at gmail dot com>
 
 pkgname='unpackerr'
-pkgver=0.16.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.'
 url='https://unpackerr.zip'
@@ -18,8 +18,9 @@ optdepends=(
   'rtorrent: torrent downloader'
 )
 backup=('etc/unpackerr/unpackerr.conf')
-source=("unpackerr-0.16.1.tar.gz::https://github.com/Unpackerr/unpackerr/releases/download/v0.16.1/unpackerr-0.16.1.tar.gz")
-sha256sums=('a46f2148b4a6b8e8814ea60a2845bc2f296561814cd0cf7504526518739217e0')
+install=unpackerr.install
+source=("unpackerr-1.0.0.tar.gz::https://github.com/Unpackerr/unpackerr/releases/download/v1.0.0/unpackerr-1.0.0.tar.gz")
+sha256sums=('0de5ff0e0b1731b37c003a6f5df4d734f7495c48340f686fecfa3d57d327f98e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
