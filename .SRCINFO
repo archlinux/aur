@@ -1,12 +1,12 @@
 pkgbase = ecapp
 	pkgdesc = Terminal Translation Tool
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/missercatos/ecapp
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/missercatos/ecapp/releases/download/v0.4.0/ecapp-v0.4.0-x86_64-linux.tar.gz
-	sha256sums = 3b5236b08ca8813bd9c4a70b4778679735e1aae716f3c0f12f963b9aa7377b7d
+	source = https://github.com/missercatos/ecapp/releases/download/v0.5.0/ecapp-v0.5.0-x86_64-linux.tar.gz
+	sha256sums = 6f500de243cd721b049d224aa6bd6c71284f692843cd3e47545f0e5810cb2df7
 
 pkgname = ecapp
