@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soulfire-bin
 _pkgname=SoulFire
-pkgver=2.10.4
+pkgver=2.10.5
 _electronversion=44
 pkgrel=1
 pkgdesc="A frontend for the SoulFire server , with Electron while still using the official SoulFire gRPC API."
@@ -20,11 +20,12 @@ depends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
-sha256sums=('cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
-sha256sums_aarch64=('7fd370c9bf3fec4ceb218de6949b9ee477806f737a11465a863cbb1c02123325')
-sha256sums_x86_64=('22ba97dca638921b2f042fc4155be3f767fd7c8de29d5275b558f9cce12cef62')
+sha256sums=('983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
+sha256sums_aarch64=('93cb3ac63377f9d2d664c75b2fd0a3e41bf168ae2c7cd0284b33832800a551d2')
+sha256sums_x86_64=('6020a90b9056081200ba2ddf1102746f889646e757de417bdfea52c5aa117410')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -38,7 +39,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
@@ -46,8 +46,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
