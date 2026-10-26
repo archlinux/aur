@@ -1,20 +1,20 @@
 pkgbase = wizread-bin
-	pkgdesc = A next-generation e-book reader for passionate readers. (Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.17
+	pkgdesc = A next-generation e-book reader for passionate readers.
+	pkgver = 1.0.19
 	pkgrel = 1
 	url = https://wizread.io
 	arch = x86_64
 	license = LicenseRef-proprietary
 	depends = electron33
-	provides = wizread=1.0.17
+	provides = wizread=1.0.19
 	conflicts = wizread
 	options = !emptydirs
 	options = !strip
-	source = wizread-1.0.17.deb::https://github.com/wizread/wizread-releases//releases/download/v1.0.17/wizread_1.0.17_amd64.deb
+	source = wizread-1.0.19.deb::https://github.com/wizread/wizread-releases//releases/download/v1.0.19/wizread_1.0.19_amd64.deb
 	source = LICENSE::https://wizread.io/tos
 	source = wizread.sh
-	sha256sums = c3ff14d10809179f509c9d32d8fc9ac726719e84d117806ee9025e813fa24754
-	sha256sums = d5a82c8719e163d14a8089054d58ba0efab88b5f85bb9fc92e5ec8a274a5a400
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 9a4402ecb98a0446f65c149fae646b13ac1aa3c392617e0a22ff81950f3d3a12
+	sha256sums = 0e5c69f55896dd2e8f08801ce6b0f52852bdd89a67994d8523f380c96a9ac111
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = wizread-bin
