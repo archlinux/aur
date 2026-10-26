@@ -1,0 +1,24 @@
+pkgbase = cosmic-ext-applet-gh-notifications-git
+	pkgdesc = A GitHub notifications applet for the COSMIC desktop
+	pkgver = r7.04eee50
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/cosmic-ext-gh-notifications
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = just
+	makedepends = clang
+	depends = github-cli
+	depends = libxkbcommon
+	provides = cosmic-ext-applet-gh-notifications
+	provides = cosmic-ext-gh-notifications
+	conflicts = cosmic-ext-applet-gh-notifications
+	conflicts = cosmic-ext-gh-notifications
+	source = cosmic-ext-applet-gh-notifications::git+https://github.com/cosmic-utils/cosmic-ext-gh-notifications.git
+	source = wrapper.sh
+	source = https://brand.github.com/GitHub_Logos.zip
+	sha256sums = SKIP
+	sha256sums = a55a1d603b7f5f728ba0c3cb6458fb28c9d085ae2c03d38b7f838e3096c29089
+	sha256sums = e2a67d6cc51d990a52c46c1cf6bcab688db4830982174bca50e0be7a5c2f3194
+
+pkgname = cosmic-ext-applet-gh-notifications-git
