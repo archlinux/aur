@@ -1,6 +1,6 @@
 # Maintainer: LUCKY / LuckySingh1 <luckysingh71826@gmail.com>
 pkgname=chillpill-shell
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Lightweight and feature rich dynamic pill bar for Hyprland"
 depends=(
@@ -29,7 +29,7 @@ license=('GPL-3.0')
 options=('!debug')
 url="https://github.com/LUCKYS1NGHH/ChillPill-Shell"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c484355bc38c230acfff46d42b4295d27d1a067b046218d9a7b3d5c3e16a6c46')
+sha256sums=('291c44c49de4b41075ee23b942f0d12180130e9fe6ef5eb370ee6d61b58be6f3')
 
 package() {
   cd "ChillPill-Shell-$pkgver"
@@ -37,7 +37,7 @@ package() {
   cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
   cmake --build build -j"$(nproc)"
 
-  install -d "$pkgdir/usr/share/chillpill-shell/IslandBackend"
+  install -d "$pkgdir/usr/share/chillpill-shell/PillBackend"
   cp -r scripts "$pkgdir/usr/share/chillpill-shell"
   cp -r share "$pkgdir/usr/share/chillpill-shell"
   cp -r config-app "$pkgdir/usr/share/chillpill-shell"
@@ -47,14 +47,15 @@ package() {
   chmod 755 "$pkgdir/usr/share/chillpill-shell/scripts/config_update.py"
 
   install -m 644 \
-    build/libIslandBackend.so \
-    build/libIslandBackendPlugin.so \
+    build/libPillBackend.so \
+    build/libPillBackendPlugin.so \
     build/qmldir \
-    build/IslandBackend.qmltypes \
-    "$pkgdir/usr/share/chillpill-shell/IslandBackend"
+    build/PillBackend.qmltypes \
+    "$pkgdir/usr/share/chillpill-shell/PillBackend"
 
   install -Dm755 launcher.sh "$pkgdir/usr/bin/chillpill-shell"
   install -Dm755 config-launcher.sh "$pkgdir/usr/bin/chillpill-config"
+  install -Dm755 lockscreen.sh "$pkgdir/usr/bin/chillpill-lock"
   install -Dm644 chillpill.desktop "$pkgdir/usr/share/applications/chillpill.desktop"
   install -Dm644 chillpill-config.desktop "$pkgdir/usr/share/applications/chillpill-config.desktop"
   install -Dm644 config.jsonc "$pkgdir/usr/share/chillpill-shell/config.jsonc.example"
