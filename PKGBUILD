@@ -13,7 +13,7 @@ provides=('libva-nvidia-driver')
 conflicts=('libva-nvidia-driver' 'libva-nvidia-driver-cagedbird')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fba6680659df42d2aa898d26d982ac8c43e56909be6f8703f32ef87c73efb536')
 
 prepare() {
   cd "nvidia-vaapi-driver-$pkgver"

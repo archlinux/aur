@@ -16,6 +16,6 @@ pkgbase = nvrm-vaapi-driver
 	conflicts = libva-nvidia-driver-cagedbird
 	options = !debug
 	source = nvrm-vaapi-driver-0.1.0.tar.gz::https://github.com/cagedbird043/nvidia-vaapi-driver/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = fba6680659df42d2aa898d26d982ac8c43e56909be6f8703f32ef87c73efb536
 
 pkgname = nvrm-vaapi-driver
