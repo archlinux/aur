@@ -1,5 +1,9 @@
 post_install() {
   getent group lyrionms &>/dev/null || groupadd -r lyrionms >/dev/null
   getent passwd lyrionms &>/dev/null || useradd -r -g lyrionms -d /opt/lyrionmusicserver -c 'Logitech Media Server' -s /bin/false lyrionms >/dev/null
+  chown -vR lyrionms:lyrionms /opt/lyrionmusicserver
+}
+
+post_upgrade() {
   chown -R lyrionms:lyrionms /opt/lyrionmusicserver
 }

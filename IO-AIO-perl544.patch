@@ -1,0 +1,20 @@
+--- a/AIO.xs	2010-12-30 07:16:36.000000000 +0000
++++ b/AIO.xs	2026-10-19 08:48:02.247798654 +0100
+@@ -629,7 +629,7 @@
+     }
+ }
+ 
+-static void atfork_child (void)
++static void aio_atfork_child (void)
+ {
+   create_respipe ();
+ }
+@@ -818,7 +818,7 @@
+     croak ("IO::AIO: unable to initialise eio library");
+ 
+   /* atfork child called in fifo order, so before eio's handler */
+-  X_THREAD_ATFORK (0, 0, atfork_child);
++  X_THREAD_ATFORK (0, 0, aio_atfork_child);
+ }
+ 
+ void

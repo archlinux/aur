@@ -2,24 +2,39 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=lyrionmusicserver
-pkgver=9.1.0
+pkgver=9.1.1
 pkgrel=1
 pkgdesc="Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server)"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/LMS-Community/slimserver"
 license=(GPL-2.0-only)
-depends=(perl glibc gcc-libs zlib
-		 'perl>=5.40' 'perl<5.43'
-		 )
-makedepends=(git rsync yasm)
+depends=(
+    glibc
+    libgcc
+    libstdc++
+    perl
+    'perl>=5.40' 'perl<5.45'
+    perl-io-socket-ssl
+    sh
+    zlib
+    )
+makedepends=(
+    git
+    rsync
+    yasm
+    )
 install=lyrionmusicserver.install
 options=(!strip)
 source=("git+https://github.com/LMS-Community/slimserver.git#tag=${pkgver}"
         "git+https://github.com/LMS-Community/slimserver-vendor.git"
-        'lyrionmusicserver.service')
-sha256sums=('94c9b222e3759ffaad5cf02767c044157829d49d9a564362bd405ace6fbd1719'
+        'lyrionmusicserver.service'
+        'IO-AIO-perl544.patch'
+        'Image-Scale-libm.patch')
+sha256sums=('eb28fe88c7bb4a5a127b359b4d78e5b9b77301e9afea45874fba95f2cbd3d3a3'
             'SKIP'
-            '8d06c69c06bf824c427990de091dec2a738090aa46f0034c392d34ec446f844f')
+            '8d06c69c06bf824c427990de091dec2a738090aa46f0034c392d34ec446f844f'
+            '0695c8151ca509f1d65e8df5025510cfff4c56fe6cb1cbd64e2a641dc6c7aa51'
+            '7d47361adcb36f5ddb5529068e96a0ccff3c517a9eacc258c9d86aeb4ea23780')
 
 prepare() {
     cd "slimserver/Bin"
@@ -34,6 +49,17 @@ prepare() {
     rm -rf arch
     cd "${srcdir}/slimserver/lib"
     rm -rf Audio
+
+    cd "${srcdir}/slimserver-vendor/CPAN"
+    rm -rf build
+    # buildme.sh echoes before "exit $?", so failures exit 0
+    sed -i 's/exit \$?/exit 1/' buildme.sh
+    # buildme.sh reuses an already extracted module dir, then deletes it after building
+    rm -rf IO-AIO-3.71 Image-Scale-0.14
+    tar xzf IO-AIO-3.71.tar.gz
+    tar xzf Image-Scale-0.14.tar.gz
+    patch -d IO-AIO-3.71 -p1 < "${srcdir}/IO-AIO-perl544.patch"
+    patch -d Image-Scale-0.14 -p1 < "${srcdir}/Image-Scale-libm.patch"
 }
 
 build() {
@@ -54,7 +80,4 @@ package() {
   cp -a * "${pkgdir}/opt/${pkgname}"
   cd "${srcdir}/slimserver-vendor"
   cp -a CPAN/build/5.*/lib/*/*linux*/* "${pkgdir}/opt/${pkgname}/CPAN"
-
-  touch "${pkgdir}/opt/lyrionmusicserver/Logs/server.log"
-  touch "${pkgdir}/opt/lyrionmusicserver/Logs/perfmon.log"
 }

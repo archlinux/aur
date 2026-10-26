@@ -1,0 +1,11 @@
+--- a/Makefile.PL	2017-11-28 02:59:18.000000000 +0000
++++ b/Makefile.PL	2026-10-19 08:52:45.913222346 +0100
+@@ -256,7 +256,7 @@
+     ABSTRACT_FROM     => 'lib/Image/Scale.pm',
+     AUTHOR            => 'Andy Grundman <andy@hybridized.org>',
+     INC               => join(' ', @INC),
+-    LIBS              => [ join(' ', @LIBPATH, @LIBS) ],
++    LIBS              => [ join(' ', @LIBPATH, @LIBS, '-lm') ],
+     DEFINE            => $DEFINES,
+     MYEXTLIB          => $MYEXTLIB,
+     depend            => { 'Scale.c' => "$inc_files $src_files" },
