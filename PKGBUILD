@@ -11,14 +11,17 @@ depends=('bash' 'ca-certificates' 'coreutils' 'dmidecode' 'glibc'
          'inetutils' 'iproute2' 'systemd' 'tar' 'util-linux' 'which')
 makedepends=('dart')
 options=('!strip' '!debug')
+backup=('etc/ocsinventory-agent/config.json')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'fix-agent-version.patch'
         'fix-os-release.patch'
-        'fix-ip-address.patch')
+        'fix-ip-address.patch'
+        'config.json')
 sha256sums=('704d641fc523902f88c05aa665e68d614cf5a3a26ce1f69e5fd3610fc4725365'
             '212f04b36efccf976251226ce1fc09f333ce7dafe3b50634b5199f81bdf1a9d3'
             'd474fb83581dd17d282ea03558c9e3d9fc826e2d426e93e93ffd3179a4ad1b31'
-            'b504d7ce0480966bb044d28703ec1df9ef3ac5e52afbd03c21a1cc248cba0923')
+            'b504d7ce0480966bb044d28703ec1df9ef3ac5e52afbd03c21a1cc248cba0923'
+            '3d1a7939a86f46a01efc14de561371ca63ad5228256585c37139b0032f603027')
 
 prepare() {
   cd OCSInventory-Agent-Rework-$pkgver
@@ -43,6 +46,8 @@ build() {
 }
 
 package() {
+  install -Dm600 config.json "$pkgdir/etc/ocsinventory-agent/config.json"
+
   cd OCSInventory-Agent-Rework-$pkgver
   install -Dm755 ocsinventory-cli "$pkgdir/usr/bin/ocsinventory-cli"
 }
