@@ -59,7 +59,7 @@ prepare() {
   cd "${srcdir}/${_gitname}"
 
   # Apply the security fix for CVE-2026-7179.
-  #patch -Np1 < "${srcdir}/CVE-2026-7179.patch"
+  patch -Np1 < "${srcdir}/CVE-2026-7179.patch"
 
   # Include namespace packages in the Python distribution.
   sed -i \
