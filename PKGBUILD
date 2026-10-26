@@ -2,14 +2,14 @@
 
 pkgname="duckypad-udev"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Udev rules for duckypad"
-arch=("x86_64")
+url="https://github.com/dekuNukem/duckyPad"
+arch=("any")
 license=("MIT")
-depends=("udev")
 source=("duckypad.rules")
-sha512sums=("2d04e8aea1c394dd9a25f6d89b476c802e10b6b2f80518818e90964c92f4bcab4eeef48d0ef82b135caa120d56c701170cfb26fa3e061db8886bf992efa44be1")
+sha512sums=('6d535679debb39361c10b5f073e7446d9076fe42cea723659a0b3f273234bc040535da4d7123fe42c426e3a33185abe5b42e8dca7ffa633e8f32088a47277772')
 
 package() {
-  install -Dm0644 "duckypad.rules" "$pkgdir/etc/udev/rules.d/20-duckyPad.rules"
+  install -Dm0644 duckypad.rules "$pkgdir/usr/lib/udev/rules.d/70-duckypad.rules"
 }
