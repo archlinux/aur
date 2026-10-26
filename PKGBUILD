@@ -1,4 +1,5 @@
-# Maintainer: enihcam <enihcam@archlinux.us>
+# Maintainer: omgold@aur
+# Contributor: enihcam <enihcam@archlinux.us>
 
 pkgname=python-bm25s
 pkgver=0.3.15
