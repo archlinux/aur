@@ -5,7 +5,7 @@
 # the source of truth to copy from. See ../README.md for the publish
 # procedure and how to bump pkgver for a new release.
 pkgname=tesseract-matrix
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Cross-platform Matrix chat client"
 arch=('x86_64')
@@ -16,6 +16,10 @@ license=('GPL-3.0-or-later')
 # resulting objects lack real machine code for symbols the Rust side needs
 # at link time, producing "undefined symbol: ring_core_*" errors.
 options=('!lto')
+# makepkg's own CFLAGS/CXXFLAGS/LDFLAGS already inject Arch's hardening set
+# (-fstack-protector-strong, -D_FORTIFY_SOURCE=3 via -Wp, RELRO, etc.), so the
+# project's own cmake/Hardening.cmake pass is disabled below to avoid
+# double-injecting/conflicting flags (e.g. our _FORTIFY_SOURCE=2 vs Arch's =3).
 # The binary is installed as `tesseract-matrix` (not `tesseract`) so this
 # package can coexist with the unrelated Tesseract OCR engine, which owns
 # /usr/bin/tesseract.
@@ -38,7 +42,7 @@ makedepends=(
     'wayland'            # xdg-activation Wayland window focus (find_library at configure time)
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/surakin/tesseract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0ffc607427e62b4761d6af8565b9f7328668dddb05c51664ad6fe9ac5980fdc')
+sha256sums=('1c188a50a5973c9a177586e03983e9b3e56ed65618e7389b83edb741ddd9cee8')
 
 build() {
     cmake -S "tesseract-$pkgver" -B build -G Ninja \
