@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-bin
 _pkgname=PostyBirb
-pkgver=4.1.2
+pkgver=4.1.3
 _electronversion=42
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
@@ -22,14 +22,16 @@ depends=(
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mvdicarlo/postybirb/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-rpm-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-rpm-x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-deb-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-deb-amd64.deb")
 sha256sums=('f549ac630b1a4e0e8a80ae21c37d1c7d63f00e1cd155d5f747a5315b54ae2e31'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('5c63e5e6f973a396ff3ba102ab81803852f7932fb165bf77c490157cbf441dda')
-sha256sums_x86_64=('63cfcabb7175adea70a5f80fa27b5d7818dd22a82a9860c099e85cc836a0409b')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+sha256sums_aarch64=('976c54f7c6039425cb65c2156c092430d165378b6c9713f79cb5d670cbc9947f')
+sha256sums_x86_64=('bbba23ab052696c316e3f4d8c2d2f994773ef9821ba75515645534d3f8c4edaf')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -46,7 +48,8 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+    bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
@@ -59,7 +62,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
