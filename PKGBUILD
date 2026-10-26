@@ -1,7 +1,7 @@
 # Maintainer: sandwichfarm <sandwich.farm@protonmail.com>
 
 pkgname=nsyte-bin
-pkgver=0.28.1
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Publish your site to nostr and blossom servers"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('nsyte' 'nsite-git')
 source_x86_64=(
   "nsyte-linux-${pkgver}::${url}/releases/download/v${pkgver}/nsyte-linux-${pkgver}"
 )
-sha256sums_x86_64=('5a06ff4f592a5eccae3008da28cdac272bb7a6dd044e00482e11c47c1dc9d30d')
+sha256sums_x86_64=('269a497b63ef4b6d0afd7fe301dfc6135cd563229013d0c118adaca354a5228e')
 
 package() {
   install -Dm755 "nsyte-linux-${pkgver}" "${pkgdir}/usr/bin/nsyte"
