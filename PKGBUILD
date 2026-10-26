@@ -7,7 +7,7 @@
 # this file to the AUR (package gkey-config).
 
 pkgname=gkey-config
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Configuration tool for the gaming keys of Logitech G keyboards (hid-lg-g15)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('polkit: allow LED control from the configuration tool'
 conflicts=('linux-g13-driver' 'linux-g13-driver-git')
 install=gkey-config.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a25c2c3b765e1eb1703f16c4d7cfe7f3834702d2f89cf24a91f3a509ab4b1c3a')
+sha256sums=('227b18f8d0c4e5881fe76d3507435e5bdd42ba6434f012903c04873681d8f574')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
