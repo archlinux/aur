@@ -4,51 +4,57 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-interface-libraries
-pkgver=6.7.5.1
+pkgver=6.8.0
 pkgrel=1
 pkgdesc='SonicDE library and runtime components'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-interface-libraries'
-license=(LGPL-2.0-or-later)
-depends=(glibc
-         kconfig
-         ki18n
-         knotifications
-         kpackage
-         ksvg
-         kwidgetsaddons
-         libgcc
-         libglvnd
-         libstdc++
-         libx11
-         libxcb
-         qt6-5compat
-         qt6-base
-         qt6-declarative
-         sonic-activities
-         sonic-frameworks-color-scheme
-         sonic-frameworks-core-addons
-         sonic-frameworks-gui-addons
-         sonic-frameworks-icon-themes
-         sonic-frameworks-io
-         sonic-frameworks-keybind
-         sonic-frameworks-quick-ui
-         sonic-frameworks-windowsystem)
-makedepends=(sonic-frameworks-cmake-modules
-             sonic-frameworks-doctools)
-provides=(libplasma)
-conflicts=(libplasma plasma-framework)
-replaces=(plasma-framework)
-groups=(sonicde)
+license=('LGPL-2.0-or-later')
+depends=(
+	'glibc'
+	'libgcc'
+	'libglvnd'
+	'libstdc++'
+	'libx11'
+	'libxcb'
+	'qt6-base'
+	'qt6-declarative'
+	'sonic-activities'
+	'sonic-frameworks-color-scheme'
+	'sonic-frameworks-core-addons'
+	'sonic-frameworks-gui-addons'
+	'sonic-frameworks-icon-themes'
+	'sonic-frameworks-internationalization'
+	'sonic-frameworks-io'
+	'sonic-frameworks-keybind'
+	'sonic-frameworks-notifications'
+	'sonic-frameworks-package'
+	'sonic-frameworks-quick-ui'
+	'sonic-frameworks-settings'
+	'sonic-frameworks-svg'
+	'sonic-frameworks-widgets-addons'
+	'sonic-frameworks-windowsystem'
+)
+makedepends=(
+	'sonic-frameworks-cmake-modules'
+	'sonic-frameworks-doctools'
+)
+provides=('libplasma')
+conflicts=(
+	'libplasma'
+	'plasma-framework'
+)
+replaces=('plasma-framework')
+groups=('sonicde')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3725203fbe10f2494d0a9e87c1579d3c2804f642fe236f7276d269cee486ebdb')
+sha256sums=('e26155f7bb20a61662c3866f20f640f30c75bc8d72a53bcd5895b283e77c5aed')
 
 build() {
-  cmake -B build  -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
