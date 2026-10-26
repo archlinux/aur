@@ -1,6 +1,6 @@
 # Maintainer: Rachel Litjens
 pkgname=ember
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Ember — a minimal AUR helper written in Ruby"
 arch=('x86_64' 'aarch64')
