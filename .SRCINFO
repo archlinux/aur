@@ -1,0 +1,33 @@
+pkgbase = blender-4.5-lts-bin
+	pkgdesc = A fully integrated 3D graphics creation suite (official 4.5 LTS precompiled binary release)
+	pkgver = 4.5.15
+	pkgrel = 1
+	url = https://www.blender.org
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libice
+	depends = libsm
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxrender
+	depends = shared-mime-info
+	optdepends = cuda: Cycles renderer CUDA support
+	optdepends = hip-runtime-amd: HIP renderer AMD support
+	optdepends = intel-compute-runtime: Cycles renderer Intel OneAPI support
+	optdepends = libdecor: Wayland client-side decorations support
+	provides = blender=4.5.15
+	provides = blender-4.5
+	provides = blender-lts
+	conflicts = blender
+	source = https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+	source = blender-4.5.sh
+	sha256sums = 0d2b8bb2efe97e6c8eb57de6b7322f8800e1984e3125b60decca5f6771e4773e
+	sha256sums = fc8b07fcf73a77c9a1e074ec09a35c680d7adcf6a98a427556c923fe0aefb6e0
+
+pkgname = blender-4.5-lts-bin
