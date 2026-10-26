@@ -17,8 +17,14 @@ source=("cronopete-${pkgver}-1-x86_64.pkg.tar.zst::https://www.rastersoft.com/de
 sha256sums=('a63701e6aa753596b55da557b5e76822cef0960c504f9a655e7bd5cef9889cae')
 
 latestver() {
+  # The Arch download link is the version source rather than the page's own
+  # "version:" text, which is bumped when a release is announced and can sit
+  # ahead of the artifact. Upstream renames the file on every rebuild, so the
+  # build counter between the version and the architecture is matched
+  # generically: pinning it makes the version undetectable as soon as they
+  # republish without changing the version.
   curl -fsSL "${url}" |
-    grep -oP 'cronopete-\K[0-9]+(\.[0-9]+)*(?=-1-x86_64\.pkg\.tar\.zst)' |
+    grep -oP 'cronopete-\K[0-9]+(\.[0-9]+)+(?=-[0-9]+-x86_64\.pkg\.tar\.zst)' |
     sort -V | tail -1
 }
 
