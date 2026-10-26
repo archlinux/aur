@@ -2,7 +2,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="harlequin"
-pkgver=2.16.2
+pkgver=2.17.0
 pkgrel=1
 pkgdesc="The SQL IDE for Your Terminal"
 url="https://harlequin.sh/"
@@ -39,7 +39,7 @@ options=("!strip")
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "fix-warnings.patch")
-b2sums=('c02bfb60fc74801f7340aa09ae7a0f9ae383e79aa4bf5748594f385340429e5eac9b8c7f3027b62d0dc8f6d8bd7753974cdf606402f900a2598b33daa755fe44'
+b2sums=('eeb59c906276304c62c380e18ca3866f90983b42cb1568b3abc38687079e92728695bec428361253fea7104a56118a09ed8f6d1a5cd5343ca815c225f58b9896'
         '74ca51c3958da81afc68ca1cdec196337d14886d87bfdc4ad74f0b9f321f73325c009d1a2ae22383e851c09707b3d3ebf3c58fb10185c1623881118410ee5a0a')
 
 build() {
