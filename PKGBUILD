@@ -7,16 +7,16 @@
 # https://github.com/michaellass/AUR
 
 pkgname=pycrc
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator"
 arch=(any)
 url="https://pycrc.org"
 license=('MIT')
 depends=(python)
-makedepends=(python-build python-installer python-wheel libxslt docbook-xsl)
+makedepends=(python-build python-hatchling python-installer python-wheel libxslt docbook-xsl)
 source=("https://github.com/tpircher/pycrc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4948208966cebfc3c15e06268d480d060b5ab9931549b43c2ccdbd080c2b7cbf')
+sha256sums=('301509bddf838f608f155c8b35557e9c937c644cba4630775bb194395466fbd0')
 
 build() {
     cd "$pkgname-$pkgver"
