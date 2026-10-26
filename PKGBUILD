@@ -6,7 +6,7 @@ _appname=(netdoc{,-sim})
 pkgname=${_gitname}-bin
 pkgdesc="A network troubleshooting TUI that turns interface, DNS, TCP, TLS, HTTP, proxy, and path-MTU checks into one plain-English diagnosis"
 
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,12 +32,12 @@ source_x86_64=("${_appname[0]}-${arch[0]}-${pkgver}::${_ghurl}/releases/download
 			   "${_appname[1]}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname[1]}_${pkgver}_${_barch[0]}")
 source_aarch64=("${_appname[0]}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname[0]}_${pkgver}_${_barch[1]}"
 				"${_appname[1]}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname[1]}_${pkgver}_${_barch[1]}")
-sha256sums=('b39624ebbe35596cd12f178f4c2401568ae596cb331e4e7233f6ffc4343cd492'
+sha256sums=('388d929f58559801dce2e727d1f4bbc9cca72fc8b59db0a0528f4c752456585d'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('661b9998c6a7d01731fa146178ffe8120affb7e10288ee5e03ef39e18aabe9df'
-                   'b201793b9703dc653a34a1999bb4f88d24796d105583ddaa45cc309b3929d5d8')
-sha256sums_aarch64=('d2a1a87fc5486ab3293236590a0fabd188b425e2accc6505a4e2b216ef8c95db'
-                    '38c14bba409e9810a47c14f9b3126d3002b05d9d1f6565c89158c9dfcd8b2933')
+sha256sums_x86_64=('cc04744d8f8382fb2e025f630bc2c4f30c5f4cb87414ec8eb5a3f9ea63b7f30a'
+                   'e297b74caf4c6fb2e157e5d562c38fda1829529287685f23d040b953e8fa66e3')
+sha256sums_aarch64=('3f35bbd5f2115682727f9cc1006a9994fee875581c3cd23eccbf50b711d7f995'
+                    'ed3539c11893912148655bc114eec6e5f3327774057fbfea21a72f328e58bdd4')
 
 
 prepare() {
