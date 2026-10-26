@@ -1,0 +1,34 @@
+Subject: [PATCH] cmake: add option to disable systemd integration
+
+Allow downstream builds to explicitly disable systemd integration instead
+of relying exclusively on whether the systemd pkg-config module happens to
+be available in the build environment.
+
+The option defaults to enabled, preserving the existing automatic detection
+and build behavior.
+---
+ CMakeLists.txt | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1d4d1bd..59def5f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,8 +121,13 @@ pkg_check_modules(DBus dbus-1 REQUIRED IMPORTED_TARGET)
+ find_package(KWinX11DBusInterface CONFIG REQUIRED)
+ find_package(ScreenSaverDBusInterface CONFIG REQUIRED)
+ 
+-# Used in kcm_autostart
+-pkg_check_modules(SYSTEMD "systemd")
++# Used in kcm_autostart and startkde
++option(BUILD_SYSTEMD "Build systemd integration" ON)
++if(BUILD_SYSTEMD)
++    pkg_check_modules(SYSTEMD "systemd")
++else()
++    set(SYSTEMD_FOUND FALSE)
++endif()
+ 
+ find_package(Canberra)
+ set_package_properties(Canberra PROPERTIES
+-- 
+2.51.0
