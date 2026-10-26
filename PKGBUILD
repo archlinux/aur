@@ -2,7 +2,7 @@
 # Contributor: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=1.3.3184.692e7b8
+pkgver=1.4.3232.ded8955
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -36,20 +36,15 @@ build() {
     cd "$srcdir/$_gitname"
     cmake -S . -B build \
           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-          -DBUILD_PRO=true \
-          -DBUILD_PLAYER=true -DBUILD_TOOLS=true \
-          -DBUILD_WITH_ALL=true -DBUILD_STATIC=true
+          -DBUILD_PRO=ON \
+          -DBUILD_TOOLS=OFF -DBUILD_WITH_FORTH=OFF \
+          -DBUILD_WITH_ALL=ON -DBUILD_STATIC=ON
     cmake --build build
 }
 
 package() {
     cd "$srcdir/$_gitname/build"
     install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
-    install -Dm755 bin/bin2txt "${pkgdir}/usr/bin/bin2txt"
-    install -Dm755 bin/cart2prj "${pkgdir}/usr/bin/cart2prj"
-    install -Dm755 bin/prj2cart "${pkgdir}/usr/bin/prj2cart"
-    install -Dm755 bin/wasmp2cart "${pkgdir}/usr/bin/wasmp2cart"
-    install -Dm755 bin/xplode "${pkgdir}/usr/bin/xplode"
 
     install -Dm644 linux/tic80.desktop -t "${pkgdir}/usr/share/applications/"
     install -Dm644 linux/tic80.png -t "${pkgdir}/usr/share/icons/"
