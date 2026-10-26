@@ -1,6 +1,6 @@
 pkgbase = clippy-rs-bin
 	pkgdesc = Clipboard Manager built with Rust & Typescript
-	pkgver = 1.7.9
+	pkgver = 1.7.10
 	pkgrel = 1
 	url = https://github.com/0-don/clippy
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = clippy-rs-bin
 	depends = gtk3
 	provides = clippy-rs
 	conflicts = clippy-rs
-	source = clippy-rs-bin-1.7.9.deb::https://github.com/0-don/clippy/releases/download/v1.7.9/clippy_1.7.9_amd64.deb
-	sha256sums = 641479785b752bc95f1c4cee4aeb63cf2e20362998c2afd8d9f9308fd75164be
+	source = clippy-rs-bin-1.7.10.deb::https://github.com/0-don/clippy/releases/download/v1.7.10/clippy_1.7.10_amd64.deb
+	sha256sums = f862091a88cad9c569df14d974834f8dbdfe4531c7c1679a2002d1e9c16a0219
 
 pkgname = clippy-rs-bin
