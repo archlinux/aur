@@ -1,4 +1,3 @@
 [python-dsinternals]
-source = "github"
-github = "p0dalirius/pydsinternals"
-use_latest_release = true
+source = "pypi"
+pypi = "dsinternals"
