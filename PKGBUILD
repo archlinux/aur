@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=yoctopuce
-pkgver=2.1.16087
+pkgver=2.1.16695
 pkgrel=1
 pkgdesc="C++ library for interfacing with Yoctopuce devices"
 arch=($CARCH)
@@ -25,7 +25,7 @@ source=(
 	"${pkgname}::git+$url.git#tag=v$pkgver"
 	LICENSE.txt
 )
-sha256sums=('55b016d335950c282c8ed1e64bf9f56759289d95ce3960f996df7980a725eccf'
+sha256sums=('4184e305c96413776461f1b4a144c06012904140143c6fd5e33383d3bd3d1a8d'
             '2b22a5342677bd71e40e9fadab57146a8662ded89e97ac98b8726fb9a0e22e30')
 
 prepare() {
