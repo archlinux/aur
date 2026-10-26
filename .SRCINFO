@@ -18,6 +18,6 @@ pkgbase = lenovo-fanboost
 	optdepends = linux-cachyos-headers: headers for CachyOS kernel
 	backup = etc/lenovo-fanboost.toml
 	source = lenovo-fanboost-0.2.0.tar.gz::https://github.com/Helix128/lenovo-fanboost/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 3e1ca09dd9def9483620d49a7049fcc39efa783831c142dd096b308ac604d0fe
+	sha256sums = ae46c35bbc167c1d0a7642bebd3c2edadd511c6d2d719faa85817a43d6f7bacc
 
 pkgname = lenovo-fanboost
