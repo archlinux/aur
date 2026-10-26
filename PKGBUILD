@@ -1,7 +1,7 @@
 # Maintainer: n00bady <kaz00@vivaldi.net>
 
 pkgname=ttvchecker
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A cli tool to check if your favorite twitch streamers are online written in GO."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("$pkgname")
 makedepends=('go')
 depends=('glibc' 'xdg-utils')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('eb3224ea520cbd11576c3723297a7437a4dcf2ec4e88e993893a308383bafc40c10e343e719d51624e822f4b57af0af2a011d1fb8a55c1852d5a6643f40b1e25')
+sha512sums=('36e8826fb7dd40d3719e20e5e1fa52c51e49fade4a9bc73545e470d2915965c44930f46bde14bf2701c0d046f548bea23a284c5eeac9fc4b272509f8466c3c72')
 
 build() {
     cd "$pkgname-$pkgver"
