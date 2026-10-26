@@ -1,0 +1,19 @@
+pkgbase = create-awesome-rust-app
+	pkgdesc = Rust-native scaffolding CLI for the Rust programming language (source build)
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/Create-Rust-App/create-rust-app
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	provides = create-rust-app
+	provides = create-awesome-rust-app
+	conflicts = create-awesome-rust-app-bin
+	conflicts = create-rust-app
+	source = create-awesome-rust-app-0.4.2.tar.gz::https://github.com/Create-Rust-App/create-rust-app/archive/refs/tags/create-rust-app@0.4.2.tar.gz
+	sha256sums = 41a85c188b7323c7d368dbb5fad38fe87a3de5a3bd06be20ece268b90376e10e
+
+pkgname = create-awesome-rust-app
