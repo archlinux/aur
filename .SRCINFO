@@ -1,6 +1,6 @@
 pkgbase = archcalc
 	pkgdesc = Built with precision. The definitive workspace and dev tools platform.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/murtazapatel89100/ArchCalc
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = archcalc
 	depends = libayatana-appindicator
 	provides = archcalc
 	conflicts = archcalc
-	source = archcalc-1.4.0.deb::https://github.com/murtazapatel89100/ArchCalc/releases/download/v1.4.0/archcalc_1.4.0_amd64.deb
-	sha256sums = dcf8b7d3bb7fce8cdb7ed83e62ccef88be5166194747c94a18b873eb6acd893e
+	source = archcalc-1.5.0.deb::https://github.com/murtazapatel89100/ArchCalc/releases/download/v1.5.0/archcalc_1.5.0_amd64.deb
+	sha256sums = e1445f756fe2937eceb4e1b1ebe09d8d849c1287ef371ff6196d83276ab64dc3
 
 pkgname = archcalc
