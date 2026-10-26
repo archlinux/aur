@@ -1,0 +1,23 @@
+# Mirrors the deb's postinst: Chromium's SUID sandbox helper is the only way to
+# keep renderer sandboxing when unprivileged user namespaces are unavailable
+# (the helper is useless without the setuid bit, and upstream's launcher falls
+# back to --no-sandbox in that case). Where user namespaces work -- the Arch
+# default -- the bit stays off and the namespace sandbox is used instead.
+_set_chrome_sandbox_mode() {
+  local sandbox=/opt/muster-agent/chrome-sandbox
+  [ -f "${sandbox}" ] || return 0
+
+  if unshare --user true 2>/dev/null; then
+    chmod 0755 "${sandbox}" 2>/dev/null || true
+  else
+    chmod 4755 "${sandbox}" 2>/dev/null || true
+  fi
+}
+
+post_install() {
+  _set_chrome_sandbox_mode
+}
+
+post_upgrade() {
+  _set_chrome_sandbox_mode
+}
