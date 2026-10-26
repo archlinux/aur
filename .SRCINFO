@@ -1,0 +1,26 @@
+pkgbase = sonic-frameworks-widgets-addons
+	pkgdesc = Addons to QtWidgets
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-widgets-addons
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	makedepends = sonic-pyside6
+	makedepends = sonic-shiboken6-generator
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	optdepends = sonic-pyside6: Python bindings
+	provides = kwidgetsaddons
+	conflicts = kwidgetsaddons
+	source = sonic-frameworks-widgets-addons-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-widgets-addons/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 23d5bc66ccadf1b599cb73543cc62d6a12f217faed3f9ac0ea45f972f2e40f33
+
+pkgname = sonic-frameworks-widgets-addons
