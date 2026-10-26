@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=linux-tmpcleaner
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Systemd timer that deletes old /tmp entries while protecting files in use'
 arch=('any')
@@ -19,7 +19,7 @@ conflicts=('tmpcleaner')
 backup=('etc/tmpcleaner/tmpcleaner.conf')
 install='linux-tmpcleaner.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('0ab5e2f7fa90f92e8cb44c2a859e18836e5619297808d7a82459222a608ba6349a35e1b5594188906296023f839265af7fa7045f5d826494c0700608da24216b')
+b2sums=('57e2d50ea2c0da46a46c1e827e32f38c1f2c960548b61d7bda0edc2016771fd1812c88d6b865dcb07b242c04c5c14dd17c85abb76f1fcaadaafb4033a286f721')
 
 build() {
     cd "$srcdir/tmpCleaner-$pkgver"
@@ -35,9 +35,10 @@ check() {
 package() {
     cd "$srcdir/tmpCleaner-$pkgver"
     # Install license file
-    for name in LICENSE LICENSE.txt COPYING; do
+    for name in LICENSE LICENSE.txt LICENSE.md LICENCE COPYING COPYING.md; do
         [[ -f "$name" ]] && install -Dm644 "$name" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" && break
     done
     # Install Make build artifacts
     make install DESTDIR="$pkgdir" PREFIX=/usr UNITDIR=/usr/lib/systemd/system
+    rm -f "$pkgdir/etc/tmpcleaner/tmpcleaner.conf.default"
 }

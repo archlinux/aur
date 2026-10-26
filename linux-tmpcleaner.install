@@ -1,15 +1,44 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+warn_source_install() {
+	source_install_found=0
+	for source_install_path in /usr/local/bin/tmpcleaner /etc/systemd/system/tmpcleaner.service /etc/systemd/system/tmpcleaner.timer; do
+		if [ -e "$source_install_path" ] || [ -L "$source_install_path" ]; then
+			if [ "$source_install_found" -eq 0 ]; then
+				printf '%s\n' 'WARNING: tmpcleaner source install left in place:'
+				source_install_found=1
+			fi
+			printf '  %s\n' "$source_install_path"
+		fi
+	done
+	if [ "$source_install_found" -eq 1 ]; then
+		cat <<'SOURCE_INSTALL_WARNING'
+The source install's units override the packaged ones, and /usr/local/bin/tmpcleaner comes before
+/usr/bin/tmpcleaner on PATH, so the package version is not the one that runs.
+Run sudo make uninstall KEEP_CONFIG=1 from the source checkout (keeps your configuration), or:
+  sudo systemctl disable --now tmpcleaner.timer
+  Delete the listed files, then run sudo systemctl daemon-reload.
+Then run sudo systemctl enable --now tmpcleaner.timer if it was enabled.
+SOURCE_INSTALL_WARNING
+	fi
+}
+
 post_install() {
-    cat <<'AURGEN_MESSAGES'
+	cat <<'AURGEN_MESSAGES'
 tmpcleaner: the timer is not enabled automatically.
   Preview first: sudo tmpcleaner --dry-run
   Keep paths:    sudo tmpcleaner --suggest-exclusions | sudo tee -a /etc/tmpcleaner/tmpcleaner.conf.d/50-keep.conf
                  then delete the rules for anything you do not need kept
   Then enable:   sudo systemctl enable --now tmpcleaner.timer
 AURGEN_MESSAGES
+	warn_source_install
+}
+
+post_upgrade() {
+	warn_source_install
 }
 
 pre_remove() {
-    cat <<'AURGEN_MESSAGES'
+	cat <<'AURGEN_MESSAGES'
 ==> linux-tmpcleaner: disable the units you enabled before removing:
 sudo systemctl disable --now tmpcleaner.timer
 AURGEN_MESSAGES

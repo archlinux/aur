@@ -1,6 +1,6 @@
 pkgbase = linux-tmpcleaner
 	pkgdesc = Systemd timer that deletes old /tmp entries while protecting files in use
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/eserlxl/tmpCleaner
 	install = linux-tmpcleaner.install
@@ -15,7 +15,7 @@ pkgbase = linux-tmpcleaner
 	depends = sed
 	conflicts = tmpcleaner
 	backup = etc/tmpcleaner/tmpcleaner.conf
-	source = linux-tmpcleaner-1.2.2.tar.gz::https://github.com/eserlxl/tmpCleaner/archive/refs/tags/v1.2.2.tar.gz
-	b2sums = 0ab5e2f7fa90f92e8cb44c2a859e18836e5619297808d7a82459222a608ba6349a35e1b5594188906296023f839265af7fa7045f5d826494c0700608da24216b
+	source = linux-tmpcleaner-1.3.0.tar.gz::https://github.com/eserlxl/tmpCleaner/archive/refs/tags/v1.3.0.tar.gz
+	b2sums = 57e2d50ea2c0da46a46c1e827e32f38c1f2c960548b61d7bda0edc2016771fd1812c88d6b865dcb07b242c04c5c14dd17c85abb76f1fcaadaafb4033a286f721
 
 pkgname = linux-tmpcleaner
