@@ -1,6 +1,6 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname=geartowns-bin
-pkgver=0.0.11
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Fujitsu FM Towns emulator and debugger with an embedded MCP server (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ sha256sums=('443e70feb18ea6d8963376e3d62e803fde196731547fc096d790b7074b9632d1'
             'aa26e6619445eb69f306d32b4c265c7002e650cb06cf2500f06ff777dffc4646'
             '3744e4effb4e60b1724e64940cccaa2836a81345cfe1be22525d0d1f33e5e8ee'
             'b6cdfb8b8d983b06c4eb7db9fc63df40de85770716653da65b6489765abcee2e')
-sha256sums_x86_64=('321998868b05bf861dbca3e7508ab31eded53f3b709e2ccfde1f5d471d2913b6')
-sha256sums_aarch64=('e2e357bd273969cf74f69522c4ea301f87d2c372cdb738ec8b2ec8efb765e118')
+sha256sums_x86_64=('e2b1de36fcace729736254a3f17fecdd087757413b77b025432078e8668223f2')
+sha256sums_aarch64=('d0529571a6db628d96de059bc51dab1c0d4e8d17820594104ce299f5fb9e9a18')
 
 package() {
   install -Dm755 "${srcdir}/geartowns" "${pkgdir}/usr/lib/geartowns/geartowns"
