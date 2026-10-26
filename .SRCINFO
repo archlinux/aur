@@ -1,13 +1,13 @@
 pkgbase = agentics
 	pkgdesc = Agentics - the voice-driven AI platform launcher, the desktop front door for the entire Agentics ecosystem
-	pkgver = 0.1.104
+	pkgver = 0.1.105
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !debug
-	source = agentics-0.1.104-x86_64::https://repo.agentics.co.za/x86_64/agentics-0.1.104-x86_64
-	sha512sums = 8cd22ff2324d8764e298594ed2b813e032a8c1ab5891f42afebec6e24c84114a039792c846da56a00f110007260cc76ab3d05d134f876fe473f56c71f6af53a5
+	source = agentics-0.1.105-x86_64::https://repo.agentics.co.za/x86_64/agentics-0.1.105-x86_64
+	sha512sums = 1769cef7511106edf6a1333825307ab1687ddfb27d958c12620d9fa3b6623f31f56acaf4bdfbacc6da1865c046053aa2dafb06124f1e46f6a86af926fb9a55f6
 
 pkgname = agentics
