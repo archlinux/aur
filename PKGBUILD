@@ -1,18 +1,18 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=logitech-g435-battery
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tray icon showing the battery level of the Logitech G435 wireless headset"
 arch=('x86_64' 'aarch64')
 url="https://github.com/deddroid/logitech-g435-battery"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'systemd-libs')
+depends=('alsa-lib' 'gcc-libs' 'glibc' 'systemd-libs')
 makedepends=('cargo')
 provides=('g435-tray')
 conflicts=('g435-tray')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f91b35461f56d22950375c4714df3c60a742a0a0bab7408e1099b9e037546df6')
+sha256sums=('f8f5b3b6b50032e44b4c365e9eb3b9a74b5bec28baadfb8133e6647cacb757b2')
 
 prepare() {
   cd "$pkgname-$pkgver"
