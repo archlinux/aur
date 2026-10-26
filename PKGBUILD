@@ -1,4 +1,6 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
+# The protected renderer sets pkgver, _release_tag and source checksums from
+# the immutable manifest. The verifier is fetched from that exact source tag.
 pkgname=omnistore-bin
 pkgver=0.1.5beta1
 pkgrel=1
