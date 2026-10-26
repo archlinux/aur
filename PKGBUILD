@@ -5,7 +5,7 @@
 
 pkgname=python-thinc
 _pkg="${pkgname#python-}"
-pkgver=8.3.13
+pkgver=8.3.14
 pkgrel=1
 pkgdesc='Practical Machine Learning for NLP'
 arch=('x86_64' 'aarch64')
@@ -27,15 +27,15 @@ depends=(
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-cupy' 'python-pytorch' 'python-tensorflow')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('68e658549fc1eb3ff92aed5147fcbb9c15d6e9cc0e623b4d0998d16522ffb4f9')
+sha256sums=('35d26c2d3138f6c08bd7c192f493a01e00513b8439ffaf4ce9d2def9b31e6dfa')
 
 build() {
-	cd "$_pkg-$pkgver"
+	cd "${_pkg}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	cd "${_pkg}-${pkgver}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
