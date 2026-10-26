@@ -1,20 +1,20 @@
 pkgbase = wj-markdown-editor-bin
 	pkgdesc = An open-source desktop markup editor that supports webdav.一款支持webdav的开源桌面端markdown编辑器
-	pkgver = 2.23.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/nlbwqmz/wj-markdown-editor
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron43
-	provides = wj-markdown-editor=2.23.0
+	provides = wj-markdown-editor=3.0.1
 	conflicts = wj-markdown-editor
 	conflicts = wj-markdown-editor-git
-	source = wj-markdown-editor-2.23.0.rpm::https://github.com/nlbwqmz/wj-markdown-editor/releases/download/2.23.0/wj-markdown-editor-linux-x86_64-2.23.0.rpm
-	source = LICENSE-2.23.0::https://raw.githubusercontent.com/nlbwqmz/wj-markdown-editor/2.23.0/LICENSE
+	source = wj-markdown-editor-3.0.1.rpm::https://github.com/nlbwqmz/wj-markdown-editor/releases/download/3.0.1/wj-markdown-editor-linux-x86_64-3.0.1.rpm
+	source = LICENSE-3.0.1::https://raw.githubusercontent.com/nlbwqmz/wj-markdown-editor/3.0.1/LICENSE
 	source = wj-markdown-editor.sh
-	sha256sums = 13cc66480bbdc4e5766dbdc2f2deb03e8f46000d8bc21a9bec958a4e4ab7feb5
+	sha256sums = f58186570fa17fb2415dc34404349812800cf182721a693f7640de33ea3fc06b
 	sha256sums = 4db85f2bcfa2b60623a893393a61158a562fd907cf1244a06f41fd11eb6f8605
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = wj-markdown-editor-bin
