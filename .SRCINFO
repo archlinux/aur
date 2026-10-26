@@ -1,0 +1,58 @@
+pkgbase = quadrahq-git
+	pkgdesc = Run the macOS Roblox client on Linux through Darling
+	pkgver = 0.37.3.r0
+	pkgrel = 1
+	url = https://quadrahq.org
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	license = ISC
+	license = OFL-1.1
+	makedepends = git
+	makedepends = clang
+	makedepends = lld
+	makedepends = pkgconf
+	makedepends = vulkan-headers
+	makedepends = rust>=1.98
+	depends = unzip
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk4>=4.14
+	depends = libadwaita>=1.5
+	depends = webkitgtk-6.0
+	depends = sdl2
+	depends = wayland
+	depends = libpulse
+	depends = libglvnd
+	depends = vulkan-icd-loader
+	depends = llvm-libs>=15
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxcursor
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	optdepends = darling: regular Darling runtime
+	optdepends = ciderdarling-bin: QuadraHQ Darling runtime (also available from the launcher)
+	optdepends = mangohud: performance overlay
+	optdepends = mesa: Mesa EGL and Zink for the Vulkan renderer
+	optdepends = vulkan-driver: hardware Vulkan driver for the Vulkan renderer
+	optdepends = pipewire-audio: native PipeWire audio playback
+	provides = quadrahq
+	provides = ciderhq
+	provides = macoblox
+	conflicts = quadrahq
+	conflicts = ciderhq
+	conflicts = ciderhq-git
+	conflicts = macoblox
+	conflicts = macoblox-git
+	replaces = ciderhq-git
+	replaces = macoblox-git
+	source = Quadra::git+https://github.com/QuadraHQ/Quadra.git
+	sha256sums = SKIP
+
+pkgname = quadrahq-git
