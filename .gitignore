@@ -2,4 +2,6 @@ pkg/
 src/
 *.pkg.tar.zst
 *.tar.gz
+*.tar.zst
 otk/
+otk-git/

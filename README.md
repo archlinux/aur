@@ -1,49 +1,94 @@
-# otk-git
+# OTK AUR packages
 
-AUR package for [OTK](https://github.com/alexindigo/otk) — a browser UI
-for coding-agent backends, built from git master.
+AUR packages for [Open Terminal Kit](https://github.com/alexindigo/otk), a
+browser UI for coding-agent backends. Each package installs the same compiled
+executable, user service, README, example configuration and upstream license.
+Choose one channel; the packages conflict and replace one another.
 
 ## Contents
 
 - `PKGBUILD` — Arch Linux package build script.
-- `.SRCINFO` — AUR package metadata (auto-generated from PKGBUILD).
-- `otk.sh` — offline launcher using Arch's `/usr/bin/deno`.
-- `otk.service` — systemd user service.
+- `.SRCINFO` — AUR metadata generated with makepkg in the OTK test VM.
+- `pre-commit.sh` — canonical metadata/lint hook.
+- `LICENSE`, `REUSE.toml` — 0BSD packaging-file license annotations. The installed
+  application is LGPL-3.0-only; its license comes from the upstream source/asset.
 
 ## Dependencies
 
-- **Runtime**: `deno`.
-- **Build**: `git`, plus the standard Arch `base-devel` group.
-- **Optional**: `opencode`, the backend server OTK connects to.
+| Package | Runtime | Build |
+|---|---|---|
+| `otk-bin` | glibc, libgcc | Standard base-devel; downloads release assets |
+| `otk` | glibc, libgcc | deno, standard base-devel |
+| `otk-git` | glibc, libgcc | deno, git, standard base-devel |
 
-Dependencies are downloaded during the build, and the browser bundle is built
-then. Runtime dependencies ship with the package. The launcher uses
-`--cached-only`; starting OTK does not download dependencies or run a web build.
+Opencode is optional as an Arch package: OTK connects to a separately running
+server. Deno is never needed at runtime. Both x86_64 and aarch64 are declared;
+the beta packaging verification executed only x86_64.
 
 ## Building
+
+For a human installing from this AUR checkout:
 
 ```sh
 makepkg -si
 ```
 
-Or install from the AUR with `yay -S otk-git`.
+The source variants use the upstream `deno task compile
+"${CARCH}-unknown-linux-gnu" <output>` recipe. Network access is required during
+the build for frozen Deno dependencies. The binary variant downloads the
+architecture-specific GitHub release archive and verifies its SHA-256 against
+the value in the release's `SHA256SUMS`. Both strip and debug splitting are
+disabled: stripping a Deno executable destroys its embedded application.
 
-## First run
+## Version scheme
 
-Run OTK as your normal desktop user, alongside your already-running opencode
-server. OTK does not start opencode. The alpha has been tested with opencode
-1.18.34, 1.18.35 and 1.19.3. See the upstream README for alpha limitations.
+Tags map `v0.1.0-alpha.1` to `0.1.0alpha1`, `v0.1.0-beta.1` to `0.1.0beta1`,
+and `v0.1.0-rc.1` to `0.1.0rc1`; the final release is `0.1.0`.
+Pacman's vercmp orders these alpha < beta < rc < final. The VCS package appends
+`.r<distance>.g<hash>` and uses a commit-date/hash fallback if no tag is available.
 
-Create a private configuration file:
+All three use `epoch=1`, permanently retained for future versions. This makes
+the corrected prerelease versions newer than the previously published dotted
+alpha (`0.1.0.alpha.1.r0.g2201d86`), which pacman otherwise ranks above
+`0.1.0beta1`. `otk-git` has `pkgrel=2` because its packaging changed; upstream
+commits alone do not require a pkgrel bump. Release packages start at pkgrel 1.
+
+## Laptop upgrade from the alpha otk-git
+
+These are human installation instructions, not agent host-test authorization.
+Keep the existing private config and state; do not repeat password setup.
+Use the same desktop user as the running opencode server.
 
 ```sh
+yay -S otk-bin
+# Accept removal of the conflicting otk-git package.
+systemctl --user daemon-reload
+systemctl --user restart otk.service
+```
+
+Open <http://127.0.0.1:1502/> (or the port in your existing config) and log in
+with the existing credentials. To choose a different channel, use `yay -S otk`
+or `yay -S otk-git`, accept the conflicting package's removal, then run the same
+daemon-reload/restart commands. The old `/usr/lib/otk` tree and launcher are
+removed by pacman; no manual deletion is needed. Keep the installed Deno package
+if anything else uses it; source package builds still require it.
+
+The config remains `${XDG_CONFIG_HOME:-$HOME/.config}/otk/otk.toml`; explicit
+`OTK_CONFIG` wins. State stays at `${XDG_STATE_HOME:-$HOME/.local/state}/otk/<port>`
+unless already overridden. The service must keep using the same port/state path
+to retain the password and other state.
+
+## Fresh laptop installation
+
+```sh
+yay -S otk-bin
 install -dm700 "${XDG_CONFIG_HOME:-$HOME/.config}/otk"
 touch "${XDG_CONFIG_HOME:-$HOME/.config}/otk/otk.toml"
 chmod 600 "${XDG_CONFIG_HOME:-$HOME/.config}/otk/otk.toml"
 ${EDITOR:-vi} "${XDG_CONFIG_HOME:-$HOME/.config}/otk/otk.toml"
 ```
 
-Use the actual URL and credentials of your running server:
+Set the running opencode server URL and its real Basic auth credentials:
 
 ```toml
 [server]
@@ -53,67 +98,41 @@ port = 1502
 [harness]
 url = "http://127.0.0.1:4097"
 username = "opencode"
-password = "" # Set to your opencode server's Basic auth password, if enabled.
+password = "" # Set if the running backend requires a password.
 ```
 
-If opencode uses a non-default database location, set `harness.db` to that
-existing database. The default is `$XDG_DATA_HOME/opencode/opencode.db`, or
-`~/.local/share/opencode/opencode.db`. OTK opens it read-only.
-
-Start the user service, then open <http://127.0.0.1:1502/>:
+For a non-default opencode database, set `harness.db` to its absolute path.
+Keep OTK on localhost. Then:
 
 ```sh
 systemctl --user daemon-reload
 systemctl --user enable --now otk.service
 ```
 
-Select **Password**, enter a username and password, choose **Configure
-sidecar**, then log in. The Sessions view lists your opencode sessions.
-Keep the alpha bound to localhost; see upstream's alpha security findings.
+Open <http://127.0.0.1:1502/>, select Password, enter the initial credentials,
+choose Configure sidecar, then log in. Configuration and state are user-owned
+and are not removed with the package. Before uninstalling:
 
-For a foreground run, stop the service first and run `otk`.
-
-The launcher reads `${XDG_CONFIG_HOME:-$HOME/.config}/otk/otk.toml` when present.
-`OTK_CONFIG` explicitly selects another file; OTK's `OTK_*` settings retain
-their normal precedence. To override the service's environment, use
-`systemctl --user edit otk.service` and add `[Service]` / `Environment=...`.
-
-OTK writes its database and private `auth.toml` under
-`$XDG_STATE_HOME/otk/1502` or `~/.local/state/otk/1502`; the last component
-follows `server.port`. `state.path` / `OTK_STATE_PATH` overrides this.
-Application files and dependencies under `/usr/lib/otk` remain read-only.
-
-After an upgrade, run `systemctl --user restart otk.service`.
-Before uninstalling, run `systemctl --user disable --now otk.service`.
-Uninstalling preserves your user configuration and state.
+```sh
+systemctl --user disable --now otk.service
+sudo pacman -R otk-bin # Substitute the installed package name.
+```
 
 ## Maintenance
 
-### Update .SRCINFO after PKGBUILD changes
-
-A pre-commit hook is provided (`pre-commit.sh`) that regenerates
-`.SRCINFO` and runs `namcap PKGBUILD` whenever `PKGBUILD` is staged.
-
-On a fresh clone, install it:
+On a fresh AUR clone, install the canonical pre-commit hook:
 
 ```sh
-cp pre-commit.sh .git/hooks/pre-commit
-chmod +x .git/hooks/pre-commit
+install -m755 pre-commit.sh .git/hooks/pre-commit
 ```
 
-### Bump pkgrel
+It regenerates `.SRCINFO` and runs `namcap PKGBUILD` when PKGBUILD is staged.
+Agent builds/checks run in the named OTK VM, never on the laptop. Regenerate
+metadata there with `makepkg --printsrcinfo > .SRCINFO`, then run `makepkg -s`,
+`namcap PKGBUILD` and `namcap <package-file>`. For a new upstream release, update
+the release version/checksums and reset release pkgrel to 1. For packaging-only
+changes, increment pkgrel. Retain epoch 1 in every channel.
 
-Bump `pkgrel` when packaging logic changes without a new upstream version.
-Regenerate `.SRCINFO` with `makepkg --printsrcinfo > .SRCINFO`.
-
-### Push to AUR
-
-After review and explicit authorization to publish:
-
-```sh
-git add PKGBUILD .SRCINFO README.md otk.sh otk.service .gitignore LICENSE REUSE.toml pre-commit.sh
-git commit -m "Update packaging"
-git push
-```
-
-Packaging files are 0BSD; OTK itself is LGPL-3.0-only.
+After verification, the authorized maintainer commits signed changes in the AUR
+repository. Push to its `master` branch only after explicit publication approval;
+the OTK release orchestrator owns those commits and pushes for this staging task.
