@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Legacy Cycles
+Comment=TRON Legacy-style light cycle
+Exec=legacy-cycles
+Icon=legacy-cycles
+Terminal=false
+Categories=Game;
+StartupNotify=true
