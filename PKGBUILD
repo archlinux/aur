@@ -10,6 +10,7 @@ license=('GPL-3.0-or-later' 'GPL-3.0-only')
 depends=('bash' 'ca-certificates' 'coreutils' 'dmidecode' 'glibc'
          'inetutils' 'iproute2' 'systemd' 'tar' 'util-linux' 'which')
 optdepends=('cups: printer inventory'
+            'libdisplay-info: monitor inventory'
             'libvirt: libvirt virtual machine inventory'
             'pciutils: controller, sound and video card inventory'
             'python: process, cron and uptime inventory (Extended template)'
@@ -18,7 +19,6 @@ optdepends=('cups: printer inventory'
             'teamviewer: TeamViewer ID inventory (Extended template)'
             'upower: battery inventory'
             'usbutils: USB device inventory'
-            'v4l-utils: monitor inventory'
             'virtualbox: VirtualBox virtual machine inventory')
 provides=('ocsinventory-agent3')
 conflicts=('ocsinventory-agent3')
