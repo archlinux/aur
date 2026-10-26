@@ -1,9 +1,9 @@
 # Maintainer: Dominik Nakamura <dnaka91@gmail.com>
-# https://github.com/dnaka91/pkgbuilds
+# https://forge.dnaka91.rocks/dnaka91/pkgbuilds
 
 pkgname=obs-advanced-masks
-pkgver=1.5.4
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Advanced Masking Plugin for OBS"
 arch=('x86_64')
 url="https://github.com/FiniteSingularity/obs-advanced-masks"
@@ -11,14 +11,14 @@ license=('GPL-2.0-or-later')
 depends=('curl' 'glibc' 'libgcc' 'libstdc++' 'obs-studio' 'qt6-base' 'qt6-svg')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('78bfa36de4ca6867568661aea9c5e4b92dee86960b1b4b0bc045eb869f92219f779cbfd1a1b2ba39eb36f6995f9360b23287c3f6a7b812eebb04932a870af796')
+b2sums=('adc855ec06c57bef1ce8ef0b5bf87af216f614a208c9a4fd65d069a956d98fbdc3a2c94dcc91173b0d474a268e1d6096e5559ebb223099f3a94732c00b169bea')
 
 build() {
   cmake -B build -S "$pkgbase-$pkgver" -Wno-dev \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-Wno-discarded-qualifiers" \
-    -DLINUX_PORTABLE=OFF
+    -DENABLE_FRONTEND_API=ON \
+    -DENABLE_QT=ON
   cmake --build build
 }
 
