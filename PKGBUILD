@@ -3,7 +3,7 @@
 
 pkgname='ipt_ndpi'
 _name='ndpi-netfilter'
-pkgver=1.2_5.1.0.6501.63880be
+pkgver=1.2_6.1.0.6607.a84692b
 pkgrel=1
 pkgdesc='nDPI as netfilter extension'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd "${pkgname}"
   git checkout flow_info-4
-  export CFLAGS="${CFLAGS} ${DEBUG_CFLAGS} -Wno-error=format-security"
+  export CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}"
   export CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}"
   export LDFLAGS="${LDFLAGS}"
   ./autogen.sh
