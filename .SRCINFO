@@ -1,0 +1,23 @@
+pkgbase = sonic-frameworks-feeds
+	pkgdesc = RSS/Atom parser library
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-feeds
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = sonic-frameworks-text-codec
+	provides = syndication
+	conflicts = syndication
+	source = sonic-frameworks-feeds-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-feeds/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = ff56f827104d0c05f037f8b55123791c4c70fa65785dfcff7256f75a6bdde443
+
+pkgname = sonic-frameworks-feeds
