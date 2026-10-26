@@ -1,0 +1,24 @@
+pkgbase = sonic-frameworks-pseudo-terminal
+	pkgdesc = Pty abstraction
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-pseudo-terminal
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = libutempter
+	depends = qt6-base
+	depends = sonic-frameworks-core-addons
+	depends = sonic-frameworks-internationalization
+	provides = kpty
+	conflicts = kpty
+	source = sonic-frameworks-pseudo-terminal-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-pseudo-terminal/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 0f61ac7a05a5d0382ebdef8b694bd5e29025de3b83cddd7dae96ba3f043f903a
+
+pkgname = sonic-frameworks-pseudo-terminal
