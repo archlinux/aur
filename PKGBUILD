@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.6.49
+pkgver=0.6.55
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9ae29b04daacb5f68aea8834133a16631d8de00a1201749a6cbb17f7cbcf2ee9')
+sha256sums=('3e86676dc6e4f9d28735655c77303aa2b895bb4faab1e24e260f9dba77f07297')
 
 # rustup provides an unversioned "rust" package, so check the actual toolchain.
 _check_rust_version() {
