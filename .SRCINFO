@@ -1,0 +1,21 @@
+pkgbase = sonic-frameworks-keyring-pam
+	pkgdesc = SonicDE keyring PAM integration
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-keyring-pam
+	arch = x86_64
+	groups = sonicde
+	license = LGPL-2.0-or-later
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libgcrypt
+	depends = pam
+	depends = sh
+	depends = socat
+	depends = sonic-frameworks-keyring
+	provides = kwallet-pam
+	conflicts = kwallet-pam
+	source = sonic-frameworks-keyring-pam-6.8.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-keyring-pam/archive/refs/tags/6.8.0.tar.gz
+	sha256sums = 37865ddaee414f40bcdf1ab4846eafb41fade3bb2604927e2d1e6a9c281d8c0d
+
+pkgname = sonic-frameworks-keyring-pam
