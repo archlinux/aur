@@ -19,8 +19,8 @@ optical size or width axes, no small caps and no old-style figures.
 | Tag | Name | Min | Default | Max | What it does |
 |---|---|---|---|---|---|
 | `wght` | Weight | 100 | **100** | 900 | Thin … Black. Line width +2.2% at 700, +4.5% at 900 over 400 |
-| `FLAR` | Flare | 0 | 0 | 100 | Straight grotesque terminals swell into glyphic serifs. Line width -1.5%, ascenders/descenders +0.5% |
-| `VOLM` | Volume | 0 | 0 | 100 | Turns the flared serifs into wedges. **No effect on its own**: advance widths, x-height, cap height and ascenders are identical to FLAR 0 |
+| `FLAR` | Flare | 0 | 0 | 100 | Straight grotesque terminals swell into glyphic serifs. Line width +0.5%, ascenders 3/2000 em longer, x-height and cap height unchanged |
+| `VOLM` | Volume | 0 | 0 | 100 | Turns the flared serifs into wedges. **Almost no effect on its own**: every extent is identical to FLAR 0, and in the test string only `s` and `Α` change advance width, by 5 and 3 units |
 
 `avar` remaps the weight axis (`wght` 200 → normalized 0.084, 300 → 0.179,
 400 → 0.274, 500 → 0.400, 600 → 0.505, 700 → 0.621, 800 → 0.816), so equal
@@ -111,8 +111,9 @@ Geologica. This is the single most important measurement in this document,
 because it decides how well ttfautohint's blue zones - taken from the default
 (Thin) master - fit the other eight weights. They fit (README section 2).
 
-`FLAR=100` adds 3 units to the ascender and 5 to the descender and leaves
-x-height and cap height alone; `VOLM` adds nothing on top.
+`FLAR=100` makes the ascender 3 units taller (`b` 1484 → 1487) and leaves
+x-height, cap height and the descender alone - `g`, `p`, `q` and `y` end at
+exactly the same y. `VOLM` adds nothing on top of that.
 
 ### 1.3 The italic is a shear - and the file Google Fonts ships is older
 
@@ -152,12 +153,16 @@ HarfBuzz, "Hamburgefonstiv Αλφάβητο 0123", relative to `wght=400, FLAR=0
 
 | Setting | Width | | Setting | Width |
 |---|---|---|---|---|
-| `wght=100` | 98.27% | | `FLAR=100` | 98.55% |
-| `wght=700` | 102.15% | | `VOLM=100` (FLAR 0) | 98.27% (no change) |
-| `wght=900` | 104.47% | | `FLAR=100, VOLM=100` | 98.55% |
+| `wght=100` | 98.27% | | `FLAR=50` | 100.24% |
+| `wght=700` | 102.15% | | `FLAR=100` | 100.47% |
+| `wght=900` | 104.47% | | `VOLM=100` (FLAR 0) | 100.03% |
+| | | | `FLAR=100, VOLM=100` | 100.49% |
 
-The flare axis makes the text *narrower* while adding serifs: the serifs are
-drawn inside the old terminal, not outside it.
+Half a percent is all the flare axis costs: the serifs are drawn where the
+terminals already were rather than added outside them, so the line grows by
+0.5% and its texture changes completely. The single exception among the 33
+glyphs of the test string is `s`, which grows by 5 units when `VOLM` is added
+on top of `FLAR`.
 
 ---
 

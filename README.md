@@ -101,8 +101,8 @@ tr '\0' '\n' < /proc/$(pgrep -xu $USER gnome-shell)/environ | grep FREETYPE
 | Tag | Name | Min | Default | Max | What it does |
 |---|---|---|---|---|---|
 | `wght` | Weight | 100 | **100** | 900 | Thin … Black. Line width +4.5% at 900 vs 400 |
-| `FLAR` | Flare | 0 | 0 | 100 | Straight grotesque terminals swell into glyphic serifs. Line width -1.5%, ascenders/descenders +0.5% |
-| `VOLM` | Volume | 0 | 0 | 100 | Turns those serifs into wedges. No effect without `FLAR`; changes no advance width |
+| `FLAR` | Flare | 0 | 0 | 100 | Straight grotesque terminals swell into glyphic serifs. Line width +0.5%, ascenders 3/2000 em longer, x-height and cap height unchanged |
+| `VOLM` | Volume | 0 | 0 | 100 | Turns those serifs into wedges. Without `FLAR` it is a no-op: no extent moves, and only `s` and `Α` change advance width (by 5 and 3 units) |
 
 Nine named instances per file, roman and italic, all at `FLAR=0, VOLM=0`. The
 italic is a separate file, not an axis, and it is complete (weight and voice
