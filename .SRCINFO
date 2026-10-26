@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 27.0.1 Oracle Build.
-	pkgver = 27.0.1.u9
+	pkgdesc = Java OpenJDK 27.0.1.0.3 Oracle Build.
+	pkgver = 27.0.1.0.3.u1
 	pkgrel = 1
 	url = https://jdk.java.net/27
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=27
 	provides = java-runtime-headless=27
 	provides = java-runtime-headless-openjdk=27
-	source_x86_64 = https://download.java.net/java/GA/jdk27.0.1/cb858dd9ef0246e1847750bdb65252fe/9/GPL/openjdk-27.0.1_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 5748965a78d06be35bec771284066bcc474dab4d672113e428d5df729c264613
-	source_aarch64 = https://download.java.net/java/GA/jdk27.0.1/cb858dd9ef0246e1847750bdb65252fe/9/GPL/openjdk-27.0.1_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = cfa802dd706ae23a85acec429a3801f2f5bf07748ec5ae62a61b2a61ae2f8832
+	source_x86_64 = https://download.java.net/java/GA/jdk27.0.1.0.3/b14170c9b2de463d9b89442c6db3e384/1/GPL/openjdk-27.0.1.0.3_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 256199399aaddc6d66919b5de90794b4263e4ab312aa56692cb63b70a0abef41
+	source_aarch64 = https://download.java.net/java/GA/jdk27.0.1.0.3/b14170c9b2de463d9b89442c6db3e384/1/GPL/openjdk-27.0.1.0.3_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = a088a727fa3e76ebeadfa76ed9c1e9fecbdfa54ec752ecb669c38a8585e058a1
 
 pkgname = java-openjdk-bin
