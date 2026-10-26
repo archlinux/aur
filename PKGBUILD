@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flyenv-bin
 _pkgname=FlyEnv
-pkgver=4.20.1
+pkgver=4.20.2
 _electronversion=39
 pkgrel=1
 pkgdesc="A modern alternative to XAMPP, MAMP, Laragon and Laravel Herd, with runtimes, databases, web servers, local sites, HTTPS, AI coding tools and MCP."
@@ -53,14 +53,16 @@ optdepends=(
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/xpf0000/PhpWebStudy/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.rpm")
 sha256sums=('01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('290791311791e08ff925d827f090fbff50af169f377a032fe606c024255f120c')
-sha256sums_x86_64=('b634421f61b6520cf97d1d9064f42e48ed57301fd4ca7f744b4797b24407cd8e')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+sha256sums_aarch64=('ee1bda3c1bce6aec87d94f9ddb331128182fe08e92bdc87dd3526a857afbcf3a')
+sha256sums_x86_64=('0ea0b9ca4134e7dfcaf63ec93b9983e51b22e3501ae93857fddf41ee57ca0166')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -77,7 +79,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
@@ -93,7 +95,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
