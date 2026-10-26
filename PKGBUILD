@@ -5,6 +5,7 @@
 ## Contributor: Thaodan <theodorstormgrade@gmail.com>
 
 pkgname='qt-virt-manager-v2'
+_pkgname="${pkgname%-v2}"
 url='https://github.com/F1ash/qt-virt-manager'
 makedepends=('cmake' 'qt5-tools' 'spice-protocol')
 arch=('x86_64')
@@ -20,16 +21,16 @@ conflicts=('virt-manager-qt5')
 replaces=('virt-manager-qt5')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 	sed -i '/find_package(KRDC/d' CMakeLists.txt
 	sed -i 's|#include <krdc/remoteview.h>|#include "remoteview.h"|' \
 		src/vm_viewer/krdc_vnc_qtonly/vncclientthread.h
 
-	mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
+	mkdir -p "${srcdir}/${_pkgname}-${pkgver}/build"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}/build"
+	cd "${srcdir}/${_pkgname}-${pkgver}/build"
 	export CXXFLAGS="$CXXFLAGS -std=c++11"
 
 	if which ninja &> /dev/null; then
@@ -50,7 +51,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/build"
+	cd "${srcdir}/${_pkgname}-${pkgver}/build"
 	if which ninja &> /dev/null; then
 		DESTDIR=${pkgdir} ninja install
 	else
@@ -58,9 +59,9 @@ package() {
 	fi
 
 	install -Dm644 ../LICENSE \
-		-t "$pkgdir/usr/share/licenses/$pkgname/"
+		-t "$pkgdir/usr/share/licenses/$_pkgname/"
 	install -Dm644 ../Licenses \
-		"$pkgdir/usr/share/licenses/$pkgname/ICONS"
+		"$pkgdir/usr/share/licenses/$_pkgname/ICONS"
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
