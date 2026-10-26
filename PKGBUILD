@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=networkd-broker
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="An event broker daemon for systemd-networkd"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=(cargo)
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('6d74fd5ab14a1f2093c295ea0b324508b710b810b4c545fbb827af3d6c031465904ab99ee908d7a19afee08455847deaa0393c86eb290fb5eb9226b7b0dd65c7')
+b2sums=('461e589b951b989aadbfca4c49add78a661d00120b27c410b29003dc29d0fcfe178212867aa893c8615b32e864a59aaef9e5b6f01b854284b7125c703610de9e')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
