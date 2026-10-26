@@ -3,7 +3,7 @@
 
 _name=cyclopts
 pkgname=python-$_name
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='Intuitive, easy CLIs based on type hints.'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=('python-trio: trio'
             'python-markdown: mkdocs'
             'python-pymdown-extensions: mkdocs')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('14a59414bb21652b87974a8433c9cf7d963092ce6cccff683cc2d21f4f1062b7')
+sha256sums=('8e74b1d027ff9f228fd3d849d0a0525c72c6bb15cb896384a3c97ac0abe50f2c')
 
 build() {
   cd "$_name-$pkgver"
