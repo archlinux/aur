@@ -1,0 +1,22 @@
+pkgbase = otk
+	pkgdesc = Open Terminal Kit, a browser UI for coding-agent backends
+	pkgver = 0.1.0beta1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/alexindigo/otk
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = deno
+	depends = glibc
+	depends = libgcc
+	optdepends = opencode: coding-agent backend; connect OTK to your running server
+	provides = otk
+	conflicts = otk-bin
+	conflicts = otk-git
+	options = !strip
+	options = !debug
+	source = otk-0.1.0-beta.1.tar.gz::https://github.com/alexindigo/otk/archive/refs/tags/v0.1.0-beta.1.tar.gz
+	sha256sums = 1dff8ebf3247fa53d83a49cb02a1a9d822435aaaa8a02cfeab4e600ad45c115d
+
+pkgname = otk
