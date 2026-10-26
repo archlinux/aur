@@ -1,0 +1,25 @@
+pkgbase = sonic-frameworks-notification-settings
+	pkgdesc = Configuration system for SonicDE notify
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-notification-settings
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libcanberra
+	depends = libstdc++
+	depends = qt6-base
+	depends = sonic-frameworks-internationalization
+	depends = sonic-frameworks-io
+	depends = sonic-frameworks-settings
+	provides = knotifyconfig
+	conflicts = knotifyconfig
+	source = sonic-frameworks-notification-settings-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-notification-settings/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 54c64f9725f1a7cded36da2328a83aaa4b34720fed32ea786c3022343c03f150
+
+pkgname = sonic-frameworks-notification-settings
