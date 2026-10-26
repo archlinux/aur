@@ -3,7 +3,7 @@
 # Contributor: Martin Reboredo <yakoyoku at gmail dot com>
 
 pkgname=mongosh
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Rich Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   https://github.com/mongodb-js/mongosh/archive/refs/tags/v"$pkgver".tar.gz
 )
 
-sha256sums=('7dfb67d07f87ac0bfe2a43743dab5c22d5358f21cec0af0c7f7351a0526a9f35')
+sha256sums=('61cd07d7401492f410bcb31321556a43f57122adedabd5906ddc514ad5b644f1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
