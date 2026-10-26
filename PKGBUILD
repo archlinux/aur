@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netcatty
 _pkgname=Netcatty
-pkgver=1.1.85
+pkgver=1.1.90
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -29,8 +29,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('bb3bd05580c37e161fff391dab12620ca07a9dbeef526da599d680374bfaaf02'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+sha256sums=('dcfd4e5e87fa135e395a8a35567246533ac68e3277fadee9be4eb51dc72ec3ce'
+            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -118,7 +118,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-	rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
 		install -Dm644 "$(_get_project_dir)/build/icons/${_icons}.png" \
