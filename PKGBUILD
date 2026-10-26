@@ -13,7 +13,7 @@
 #   cd libfprint-goodix55b4-milan/packaging/arch && makepkg -si
 
 pkgname=libfprint-goodix55b4
-pkgver=1.94.100.m2
+pkgver=1.94.100.m3
 pkgrel=1
 pkgdesc="libfprint with the Goodix 27c6:55b4/5584 driver using the native Milan matcher"
 arch=('x86_64')
@@ -29,7 +29,11 @@ _libfprint_commit=80a4b5ec612892c5c056c48dddaa561452cf37ec # v1.94.100
 _repo_url=https://github.com/TheWeirdDev/libfprint-goodix55b4-milan.git
 source=("libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=${_libfprint_commit}"
         "driver::git+${_repo_url}#tag=v${pkgver}")
-sha256sums=('SKIP' 'SKIP')
+# libfprint is pinned by commit, so its checksum is fixed. The driver's
+# cannot be: this file is part of the tagged tree. RELEASING.md step 6 runs
+# updpkgsums on the AUR copy, which pins the tag's exact content there.
+sha256sums=('18fcee9ffb2adb9ba2ea229850e9266d0bcad2df5fad556beffce6c8ba84f192'
+            '9e1f7d6e267f04fbcf673c5073b317f8488b8e275758080d73a40930c56a85dc')
 
 _examples=(img-capture enroll verify identify manage-prints)
 
