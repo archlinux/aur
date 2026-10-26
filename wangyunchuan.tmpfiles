@@ -1,3 +1,2 @@
-#Type   Path                            Mode    User           Group         Age     Argument
-d       /etc/wangyunchuan               0755    wangyunchuan   wangyunchuan   -       -
+d       /etc/wangyunchuan               0755    root           root          -       -
 z       /etc/wangyunchuan/config.json   0640    wangyunchuan   wangyunchuan   -       -

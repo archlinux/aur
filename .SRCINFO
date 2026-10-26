@@ -1,7 +1,7 @@
 pkgbase = wyc
 	pkgdesc = 网云穿最便捷的端口映射
 	pkgver = 8.0.11
-	pkgrel = 3
+	pkgrel = 5
 	url = https://wangyunchuan.com
 	install = wyc.install
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = wyc
 	source = wangyunchuan.tmpfiles
 	source = wangyunchuan.sysusers
 	source = wyc.install
-	sha256sums = b43ded86c239ef44c4f9b7dcac115507fda82719c3f9c02d3f6acc568e7a1b0a
-	sha256sums = b52e4b5775e62bed88beea845bdb2740440c398aed363f0b256a8c8901a89183
+	sha256sums = 93c8aa4f7cf2252396dc8de9b7288345867dc30bac36a52174037d506f742062
+	sha256sums = 02517bed1a977b4ad8edc04282300760049f32f97e648da96d86198080ce2d9c
 	sha256sums = 1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523
 	sha256sums = 138f00be0f1c0a8b2a16728e0f146d837f009ae18aeff3c7bee1c08a9fb37e2f
 	source_x86_64 = wyc-clent-linux-x64-8.0.11.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-x86_64-tar-gz?source=wyc_official
