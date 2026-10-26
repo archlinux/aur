@@ -1,7 +1,7 @@
 # Maintainer: Moraxyc <i@qaq.li>
 
 pkgname=artalk
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A self-hosted comment system"
 url="https://github.com/ArtalkJS/Artalk"
@@ -14,8 +14,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     'artalk.service'
     'artalk.tmpfiles'
     'artalk.sysusers')
-sha256sums=('08d8686f5b5d8191693d612bf8d8e75d6d71790e465328889edcf641daa07171'
-            '6e6b5456a3265e29cecb36b7d935dbafb6639035e2681901123b6b150e307379'
+sha256sums=('27ec8bbba4e6d526102bb1c80552ce36db8be4761cca72c5802a7d1406fbc81a'
+            '85580ad4c149e236f1300d135a9f30c622d1722f5e8dc517a295c93af10b6c3b'
             '089beb9843b735b597b93c727595fbded272261c2f54e193f73e3db36da5f00e'
             '401cc7b81993810bb39285b244c6be7bae669f11c133bc676b3405581eb3e96d'
             '12b14875a5e62d6a2a160a793285001621dac16539f8e2f1cee800644a62349e')
