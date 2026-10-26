@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=crcbl-bin
 _pkgname=crcbl
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Crucible engine's headless control CLI (binary release)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("crcbl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v${pkgver}/crcbl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("crcbl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/crcbl/releases/download/v${pkgver}/crcbl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('023111ab3982b92373d1965127c03d5ba3d4c3b780060dad83f1583422975412')
-sha256sums_aarch64=('89e71d079c0f5f73a5d6aa50f39a1f7d184da69da1d0a5fefe339390909e20f1')
+sha256sums_x86_64=('a3530166b547725ae67c97182d0287f518c002dfb052ea3f88444f820269b387')
+sha256sums_aarch64=('4b057470ec619724058ca96f4d30311287e974e405eb04533c53f73c447e5f68')
 
 package() {
     install -Dm755 "$srcdir/crcbl" "$pkgdir/usr/bin/crcbl"
