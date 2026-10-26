@@ -1,0 +1,21 @@
+pkgbase = floral-notepaper-app
+	pkgdesc = 花笺 — A lightweight, elegant cross-platform desktop sticky note app with Markdown support (Tauri/Rust)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Achilng/floral-notepaper
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = floral-notepaper
+	conflicts = floral-notepaper
+	noextract = floral-notepaper_1.2.0_amd64.deb
+	options = !strip
+	options = !debug
+	source = floral-notepaper_1.2.0_amd64.deb::https://github.com/Achilng/floral-notepaper/releases/download/v1.2.0/floral-notepaper_1.2.0_amd64.deb
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/Achilng/floral-notepaper/v1.2.0/LICENSE
+	sha256sums = aafe846a5761b18397094700a7993e518528902fd22af62eab67494397321810
+	sha256sums = e4df1e97f2ee75fe597e567546bf3070f5b09c9cc4879666b53fe5254e00994e
+
+pkgname = floral-notepaper-app
