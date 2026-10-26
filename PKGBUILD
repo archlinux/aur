@@ -3,7 +3,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 pkgname=cpp-peglib
 pkgdesc="A single file C++ header-only PEG (Parsing Expression Grammars) library"
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 license=(MIT)
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/yhirose/${pkgname}"
 makedepends=(cmake)
 checkdepends=(gtest)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('380fc2afa235096cfd0cf6064acded1187d5ec683a6219d0c96c2cffd60823cde8343666b047f36f206f8df9389cd3d211f26dd0e6f72cf2a528ba272c6003c5')
+sha512sums=('36b1ee6c648bd599b19c4599b84984db014ee9072411e5d1d2910bfff938ba119a22e2156232a15f237fd399a7b6c47601b2f40bfe61bd921478ced0fc6b08b7')
 
 build() {
   cmake \
