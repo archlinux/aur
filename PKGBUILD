@@ -2,7 +2,7 @@
 
 pkgname=mygo-cloudmusic
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='MyGo 云音乐 - 第三方网易云音乐原生客户端'
 arch=('x86_64' 'aarch64')
 url='https://music.egoist.dev'
@@ -11,8 +11,6 @@ depends=('gtk3' 'libsecret')
 optdepends=(
   'libpulse: PulseAudio 音频输出'
   'alsa-lib: ALSA 音频输出（PulseAudio 不可用时）'
-  'libayatana-appindicator: 系统托盘图标'
-  'gtk-layer-shell: 刘海播放器'
 )
 makedepends=('go' 'gcc' 'git')
 options=('!debug')
