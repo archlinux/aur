@@ -1,6 +1,6 @@
 pkgbase = belt-bin
 	pkgdesc = CLI for inference.sh - run AI apps, manage skills, connect MCP servers
-	pkgver = 1.26.1
+	pkgver = 1.26.19
 	pkgrel = 1
 	url = https://inference.sh/belt
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = belt-bin
 	options = !emptydirs
 	source = LICENSE
 	sha256sums = 2b8447683453e9a1eab7364b149fcb2066f68ef0e1db1dd1fade2792f6d4cc96
-	source_x86_64 = inferencesh-cli-v1.26.1-linux-amd64.tar.gz::https://dist.inference.sh/cli/v1.26.1/inferencesh-cli-v1.26.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8ab4a71e1e3da8744998248258f57fed6a062afd327545e3888edbd623521cfa
-	source_aarch64 = inferencesh-cli-v1.26.1-linux-arm64.tar.gz::https://dist.inference.sh/cli/v1.26.1/inferencesh-cli-v1.26.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 501a9c2e07e30b67e7bcd03fb26326004f463abd13668bdcb4830083d5e596cd
+	source_x86_64 = inferencesh-cli-v1.26.19-linux-amd64.tar.gz::https://dist.inference.sh/cli/v1.26.19/inferencesh-cli-v1.26.19-linux-amd64.tar.gz
+	sha256sums_x86_64 = fbda7904c9a2ecc2ca4d710e8b565209b4320e20016eafab9438a6aba75fa9b9
+	source_aarch64 = inferencesh-cli-v1.26.19-linux-arm64.tar.gz::https://dist.inference.sh/cli/v1.26.19/inferencesh-cli-v1.26.19-linux-arm64.tar.gz
+	sha256sums_aarch64 = acd5ffd456b8f300936b27a915b7bbb2e2569954b2b5a0e79267a375b4e40e02
 
 pkgname = belt-bin
