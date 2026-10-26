@@ -1,0 +1,27 @@
+pkgbase = sonic-gamma
+	pkgdesc = Adjust your monitor gamma settings
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-gamma
+	arch = x86_64
+	groups = sonicde
+	license = LGPL-2.0-or-later
+	makedepends = sonic-frameworks-cmake-modules
+	makedepends = sonic-frameworks-doctools
+	depends = glibc
+	depends = libstdc++
+	depends = libx11
+	depends = libxxf86vm
+	depends = qt6-base
+	depends = sonic-frameworks-core-addons
+	depends = sonic-frameworks-internationalization
+	depends = sonic-frameworks-settings
+	depends = sonic-frameworks-settings-utils
+	provides = kgamma
+	conflicts = kgamma
+	conflicts = kgamma5
+	replaces = kgamma5
+	source = sonic-gamma-6.8.0.tar.gz::https://github.com/Sonic-DE/sonic-gamma/archive/refs/tags/6.8.0.tar.gz
+	sha256sums = a537fabeeb80f3ac466c16e27eef227022d6cec3a1339c116160a13388dc9687
+
+pkgname = sonic-gamma
