@@ -1,6 +1,6 @@
 pkgbase = supermodel
 	pkgdesc = A Sega Model 3 Arcade Emulator
-	pkgver = 0.3a_20261018_git_ddbc306
+	pkgver = 0.3a_20261025_git_1481545
 	pkgrel = 1
 	url = https://github.com/trzy/Supermodel
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = supermodel
 	depends = glu
 	depends = sdl2_net
 	depends = zenity
-	source = https://github.com/trzy/Supermodel/archive/refs/tags/v0.3a-20261018-git-ddbc306.tar.gz
+	source = https://github.com/trzy/Supermodel/archive/refs/tags/v0.3a-20261025-git-1481545.tar.gz
 	source = supermodel
 	source = supermodel.desktop
-	sha512sums = 50c51dcdf63f5061db845a9f1f9823838ba279b575738c6e5bfdedbbb7552563dea1e2fed535b7087328290da5cd0a74967f493e51d27f6284555ce3888d0443
+	sha512sums = e7b39809f7e0924bbd18977b20e4eee9d450fe6e4f0f96a8d3234c14735de390d9f3cea9472728e4d5c4bad6590fda89859fd072e8c25d3bcd64b6fd38fd719b
 	sha512sums = bf62d43965ae51db0ce2c7d62a5a38253ce468ed0682df627a0e648aadd7eb85a5b35fb82354cc6f4163a49627ae9419a47eae12a0a4d3c2da9f743539bd788c
 	sha512sums = 13266c13ecbaccc2a156c41d2d42a271d9bc4bffcfe794a875a10128e97981558302ee9f7b5b8dd8c87ef8b00c5b5216843a9576917f9dd37a13a0455a1bba69
 
