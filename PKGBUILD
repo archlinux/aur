@@ -4,38 +4,47 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-gui-addons
-pkgver=6.30.0
+pkgver=6.31.0
 pkgrel=1
 pkgdesc='Addons to QtGui'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-frameworks-gui-addons'
-license=(LGPL-2.0-only LGPL-3.0-only)
-depends=(glibc
-         libstdc++
-         libx11
-         qt6-base)
-makedepends=(doxygen
-             pyside6
-             python-build
-             python-setuptools
-             qt6-declarative
-             qt6-tools
-             shiboken6-generator
-             sonic-frameworks-cmake-modules)
-optdepends=('pyside6: Python bindings'
-            'qt6-declarative: QML bindings')
-provides=(kguiaddons)
-conflicts=(kguiaddons)
-groups=(sonicde-frameworks)
+license=(
+	'LGPL-2.0-only'
+	'LGPL-3.0-only'
+)
+depends=(
+	'glibc'
+	'libstdc++'
+	'libx11'
+	'qt6-base'
+)
+makedepends=(
+	'doxygen'
+	'python-build'
+	'python-setuptools'
+	'qt6-declarative'
+	'qt6-tools'
+	'sonic-frameworks-cmake-modules'
+	'sonic-pyside6'
+	'sonic-shiboken6-generator'
+)
+optdepends=(
+	'qt6-declarative: QML bindings'
+	'sonic-pyside6: Python bindings'
+)
+provides=('kguiaddons')
+conflicts=('kguiaddons')
+groups=('sonicde-frameworks')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('effea7dd33a15c2a66d2d98172ecd3b350629a44acf3a41e873056ff0ea1d088')
+sha256sums=('3b6b97b996b393ff693aa3f140c0dd31cb5fa8eca5e4695328cbc5b9824c000a')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
