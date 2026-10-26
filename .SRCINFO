@@ -4,7 +4,6 @@ pkgbase = superlight
 	pkgrel = 1
 	url = https://github.com/xapp-project/superlight
 	arch = any
-	groups = x-apps
 	license = GPL-3.0-or-later
 	checkdepends = desktop-file-utils
 	makedepends = meson

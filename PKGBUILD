@@ -6,7 +6,6 @@ pkgdesc="System Monitor for Linux Desktops"
 arch=('any')
 url="https://github.com/xapp-project/superlight"
 license=('GPL-3.0-or-later')
-groups=('x-apps')
 depends=(
   'gtk3'
   'python-cairo'
