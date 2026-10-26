@@ -1,45 +1,61 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yt-dlandcut-bin
-pkgver=3.0.0
-_electronversion=25
-pkgrel=9
-pkgdesc="Download and cut an Youtube video by providing its url and the time range.(Prebuilt version.Use system-wide electron)"
+_debname="com.electron.${pkgname%-bin}"
+pkgver=4.0.0
+_electronversion=45
+pkgrel=1
+pkgdesc="Download and cut an Youtube video by providing its url and the time range."
 arch=('x86_64')
 url="https://github.com/Markkop/yt-dlandcut"
-license=('custom')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d440f515341ec5936f09cf7d878ab4165baf7821579973ab667e4176a76b3cbc'
+sha256sums=('52e50fdf7b550d4f5d880232e9eddf42c1767f6f3b0eb4a9d48e125dfaaa9345'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+_get_app_dir() {
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
+}
+_check_electron_version() {
+	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
+		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+		| grep -oP 'Electron/\K[0-9]+' | head -1)
+	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
+	(( _v == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _check_electron_version
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${_debname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "$(_get_app_dir)/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
+    install -Dm644 "$(_get_app_dir)/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
