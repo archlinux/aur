@@ -1,6 +1,6 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 pkgname=bluegit-runner
-pkgver=20261025212007
+pkgver=20261025234544
 pkgrel=1
 pkgdesc='Separate CI runner for BlueGit (runs jobs in Docker on your own machine)'
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,15 @@ depends=('git' 'docker')
 makedepends=('go')
 options=('!debug')
 install=bluegit-runner.install
-_commit=8cbf97bdb0200cf20d087f122cdd7b7ec930ff85
+_commit=f6236bc3cfc31581b17a1e0b0bb7148ba5189f41
 source=("bluegit-${_commit}.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/${_commit}/bluegit-${_commit}.tar.gz")
-sha256sums=('a5cafbe5565391475863109abfa700e048357b02f637480ef0e0fc49b5f12f3e')
+sha256sums=('d0e39f2d54c1488e0848d23748575857998b7cbc90c7600f1aba2b30622e07b6')
 
 build() {
   cd "$srcdir/bluegit-${_commit}"
   export CGO_ENABLED=0
+  # go.mod vraagt Go 1.26; een oudere Arch-go haalt die toolchain zelf op.
+  export GOTOOLCHAIN=auto
   export GOFLAGS='-trimpath'
   export GOCACHE="${BUILDDIR:-$srcdir}/gocache"
   export GOPATH="${BUILDDIR:-$srcdir}/gopath"
