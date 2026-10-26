@@ -4,7 +4,7 @@
 
 pkgname=radarr-develop
 _pkgname=Radarr
-pkgver=6.4.4.10685
+pkgver=7.0.0.10815
 pkgrel=1
 pkgdesc='Movie organizer/manager for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
@@ -12,12 +12,16 @@ url='https://radarr.video'
 license=('GPL-3.0-or-later')
 groups=(servarr-develop)
 depends=(
-  aspnet-runtime-8.0
+  aspnet-runtime-10.0
   gcc-libs
   glibc
   sqlite
 )
-makedepends=(dotnet-sdk-8.0 yarn)
+makedepends=(
+  dotnet-sdk-10.0
+  aspnet-targeting-pack-10.0
+  yarn
+)
 optdepends=(
   'postgresql: postgresql database'
   'sabnzbd: usenet downloader'
@@ -46,7 +50,7 @@ source=(
   radarr.sysusers
   radarr.tmpfiles
 )
-sha256sums=('dde505a58408cb6a88172a226a3e238cbdc7e18304134aaf20d9435ad4718aeb'
+sha256sums=('8832a228193699ce5aabb44fd8c2e5c3526f3a2b096bd00460ef54fc5789b0e4'
             '4a41a56ab30f8b6001a666e867c7012bfe23760ec29eac957bf90e1dcb4ee36e'
             '25637c6496aa59673aada6acc6cf41025a5f12a844025ee41d8a6cc66b84b5c0'
             'bb73e0c55711d7ddbf74140b3beb39cb8674ae92be8387c3dd8109bcd53faca8'
@@ -58,7 +62,7 @@ case ${CARCH} in
   armv7h) _CARCH='arm' ;;
 esac
 
-_framework='net8.0'
+_framework='net10.0'
 _runtime="linux-${_CARCH}"
 _output='_output'
 _artifacts="${_output}/${_framework}/${_runtime}/publish"
@@ -73,7 +77,7 @@ prepare() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 8.0.127 --roll-forward latestFeature
+  dotnet new globaljson --sdk-version 10.0.113 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
@@ -105,7 +109,7 @@ build() {
     && dotnet build-server shutdown # Build servers do not terminate automatically
 
   # Build frontend
-  yarn run build --env production
+  yarn run build
 }
 
 package() {
