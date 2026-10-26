@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bdash-git
 _pkgname=Bdash
-pkgver=1.35.3.r2.g78be8c4
-_electronversion=40
-_nodeversion=22
+pkgver=1.35.4.r11.g56c2ad4
+_electronversion=42
+_nodeversion=24
 pkgrel=1
 pkgdesc="Simple SQL Client for lightweight data analysis."
 arch=('x86_64')
@@ -26,12 +26,12 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    'resources-path-override.js'
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8'
-            '1d078765ddfb31c3c424fbfef8a47a4443b38303e82065d7db49a88371df6ac8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -126,7 +126,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/resources-path-override.js"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -151,7 +151,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/resources-path-override.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "$(_get_project_dir)/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
