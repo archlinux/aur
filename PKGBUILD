@@ -2,7 +2,7 @@
 pkgname=bili-music
 _pkgname='Bili Music'
 _zhsname='午夜黑胶'
-pkgver=0.8.0
+pkgver=1.0.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="A no login, no disk B station music player. Use Bilibili as your music library, listen to music without login, do not have to download.一个免登录、不落盘的 B 站音乐播放器。把哔哩哔哩当作你的曲库，听歌不必登录，不必下载。"
@@ -19,12 +19,12 @@ depends=(
 )
 makedepends=(
     'git'
-    'curl'
     'rustup'
     'gendesk'
     'librsvg'
     'npm'
     'nvm'
+    'jq'
 )
 options=(
     '!lto'
@@ -32,12 +32,15 @@ options=(
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('b7d14db1110a9e26af6646875c574b4cd01e131006ab914a9e2706308b3f5229')
+sha256sums=('773016238b1ab736fdc3e679c9a2bda135a5647e34b5812e9bfee14321dc8250')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
 		find "$d" -name "src-tauri" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
+_get_app_dir() {
+	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
 }
 _set_build_env() {
 	export HOME="${srcdir}/.home"
@@ -74,6 +77,7 @@ prepare() {
         --exec="${pkgname} %U"
     _ensure_local_nvm
     _set_build_env
+    jq '.bundle.active = false' src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
     rustup update stable
     rustup default stable
     npm install @tauri-apps/cli@^2
@@ -85,9 +89,8 @@ build() {
     npx tauri build
 }
 package() {
-    local _app_dir="$(_get_project_dir)"
-    install -Dm755 "${_app_dir}/target/release/"{"${pkgname}",guest_playurl_verify} -t "${pkgdir}/usr/bin"
-    install -Dm644 "${_app_dir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_app_dir}/design/app-icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    install -Dm644 "${_app_dir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "$(_get_app_dir)/"{"${pkgname}",guest_playurl_verify} -t "${pkgdir}/usr/bin"
+    install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/design/app-icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
