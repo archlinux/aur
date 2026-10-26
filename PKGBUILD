@@ -8,30 +8,29 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=5.5.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('x86_64')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CDDL' 'CPL' 'custom')
 depends=('gtk2' 'archlinux-java-run' 'java-runtime=21' 'java-environment=21' 'java-openjfx=21')
-makedepends=('zstd')
 source=("https://github.com/k-pet-group/BlueJ-Greenfoot/releases/download/BLUEJ-RELEASE-${pkgver}/BlueJ-linux-x64-${pkgver}.deb"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('c060301af30705bd231eaf37655eb0198ce3bdcaaa228393c09622003f5a4a02'
-            '8ec0152633f246326ec6f6eca8ccbfb0a00405e0d70532bde5867151864d71db'
+sha256sums=('9fc8d2bcd69dc7076e020f060545c3102acf224b432f565513e2dcba8f4a50dc'
+            '00d311ec73e5168278bca4c584b1280aaf4d76ad73c0b0179f26f518b7a29a32'
             'a845f3997ce91cfb1eeb882f4a6e1e4408b7a7d7c2e164495b5a077bdf353e7f'
             'e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772')
 prepare() {
   cd "${srcdir}"
   echo "Extracting archive ..."
-#  tar --use-compress-program=unzstd -xf data.tar.xz
   tar -xf data.tar.xz --exclude=usr/share/${pkgname}/jdk
   cd "usr/share/${pkgname}"
   find -type f -name "javafx-*" -delete
 }
+
 package() {
   cd "${srcdir}"
 

@@ -12,7 +12,6 @@ JAVAFXJARS=`ls -1 $JFXPATH/javafx* | paste -sd ":" -`
 CP="$CP:$JAVAFXJARS"
 
 archlinux-java-run -a 21 -b 21 -- \
-	-Djdk.gtk.version=2 \
-        -Dawt.useSystemAAFontSettings=on -Xmx512M \
+        -Xmx512M \
         -cp "$CP" bluej.Boot \
         "$@"
