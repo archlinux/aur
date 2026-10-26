@@ -4,13 +4,12 @@ _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.visualstudio.CodeOSS
-pkgver=1.140.06880
+pkgver=1.143.17183
 _electronversion=43
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of Visual Studio Code."
 arch=(
     'aarch64'
-#    'armv7h'
     'x86_64'
 )
 url="https://vscodium.com/"
@@ -46,13 +45,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el8.aarch64.rpm")
-#source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el8.armv7hl.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el8.x86_64.rpm")
 sha256sums=('2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e'
-            '1e5e7f3fa955ee11afe17d164fae3bb88765c835d1e3f1d2961360a1cc6763c9'
-            '21f87daf91da816e7402305192f4245d52f15888b7c031fc63d1c4718f87acdb')
-sha256sums_aarch64=('4ba2afb5430f1cc2ab8f302e28ede5b05cfb1ea7d2af6790d88f243a4e5c9692')
-sha256sums_x86_64=('f138e6e3c43e23398c93d75c4264095f9296a5a8a9a7525de93fccb5542698a2')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
+sha256sums_aarch64=('a2dbdb086213f03f6d78a735af9d1ebe17bab521bccc852b181140d5f31609c6')
+sha256sums_x86_64=('6d773aada6afc84f2c5005c48ad001a794c40cabe08a998566199ea3e245f1b4')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -69,12 +67,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${pkgname%-bin}.js/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i -e "
-        s/@ELECTRON@/electron${_electronversion}/g
-        s/@name@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.js"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i "s/${_debname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_debname}.appdata.xml"
     sed -i -e "
@@ -89,7 +82,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-	cp -a "$(_get_app_dir)/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_debname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.UrlHandler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.UrlHandler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
