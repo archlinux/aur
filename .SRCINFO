@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-git
 	pkgdesc = AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs.
-	pkgver = 2.0.9.r1070.g68e4e77
+	pkgver = 2.0.9.r1249.gc61386a
 	pkgrel = 1
 	url = https://cherryai.com/
 	arch = any
@@ -24,8 +24,10 @@ pkgbase = cherry-studio-git
 	provides = cherry-studio=2.0.9
 	conflicts = cherry-studio
 	source = cherry-studio.git::git+https://github.com/CherryHQ/cherry-studio
+	source = cherry-studio.js
 	source = cherry-studio.sh
 	sha256sums = SKIP
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
 
 pkgname = cherry-studio-git

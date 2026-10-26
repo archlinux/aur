@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=2.0.9.r1070.g68e4e77
+pkgver=2.0.9.r1249.gc61386a
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -36,10 +36,12 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}"
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -112,7 +114,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -122,106 +124,50 @@ prepare() {
     _ensure_local_nvm
     _set_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    local _arch_name
-    case "${CARCH}" in
-        x86_64)  _arch_name="x64" ;;
-        aarch64) _arch_name="arm64" ;;
-    esac
-    local _binaries_dir="resources/binaries/linux-${_arch_name}"
-    mkdir -p "${_binaries_dir}"
-    touch "${_binaries_dir}/"{mise,bun,uv,uvx,rg}
     export NODE_ENV=development
+    sed -i '/^overrides:/a\  canvas: "3.2.3"' pnpm-workspace.yaml
     pnpm install --ignore-scripts
-    sed -i '/"postinstall": "node \.\/script\/install"/d' node_modules/onnxruntime-node/package.json
-    node -e "const fs=require('fs'); const pkg=JSON.parse(fs.readFileSync('package.json','utf8')); pkg.devDependencies['node-abi']='4.33.0'; fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2)+'\n')"
-    pnpm install --ignore-scripts
-    pnpm --filter @cherrystudio/dsh-bridge build
-    pnpm --filter @cherrystudio/remote-protocol build
-    pnpm --filter @cherrystudio/remote-transport build
+    pnpm run postinstall
+    sed -i "s|return fs.readFileSync(versionPath, 'utf8').trim() === expectedVersion|return true|" scripts/download-binaries.js
+    sed -i "s|if (marked !== tool.version) {|if (false) {|" scripts/download-binaries.js
+    sed -i "s|if (process.platform !== 'win32') fs.chmodSync(filePath, 0o755)|if (process.platform !== 'win32') { try { fs.chmodSync(filePath, 0o755) } catch (_) {} }|" scripts/download-binaries.js
 }
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_build_env
     export NODE_ENV=production
-    pnpm rebuild better-sqlite3 node-pty selection-hook sharp @napi-rs/canvas @napi-rs/system-ocr tesseract.js koffi esbuild @swc/core electron-winstaller @paymoapp/electron-shutdown-handler @sentry/cli unrs-resolver @j178/prek @deepseek-ai/dsh-subprocess-local
-    python3 << 'PYTHON_EOF'
-import re
-
-with open('scripts/linux-native/compat.js', 'r') as f:
-    content = f.read()
-content = content.replace("glibc: '2.28'", "glibc: '99.99'")
-with open('scripts/linux-native/compat.js', 'w') as f:
-    f.write(content)
-
-with open('scripts/packaging/before-pack.js', 'r') as f:
-    content = f.read()
-
-content = re.sub(
-    r"if \(platform === 'linux'\) \{.*?return",
-    """if (platform === 'linux') {
-    if (context.arch !== Arch.arm64 && context.arch !== Arch.x64) {
-      throw new Error(`Unsupported Linux packaging architecture: ${context.arch}`)
-    }
-    const { getNativeArtifactPaths, readProjectBuildMetadata, verifyNativeArtifact } = require('../linux-native/compat')
-    const artifactPaths = getNativeArtifactPaths(projectRoot, arch)
-    const metadata = readProjectBuildMetadata(projectRoot)
-    const expected = { ...metadata, arch }
-    const artifact = verifyNativeArtifact({ ...artifactPaths, expected })
-    process.stdout.write(`Using locally compiled GLIBC-compatible better-sqlite3 for linux-${arch} (${artifact.inspection.sha256})\\n`)
-    return""",
-    content,
-    flags=re.DOTALL
-)
-
-content = re.sub(
-    r"console\.log\(`Downloading bundled binaries.*?verifyBundledBinaries\(platform, arch\)",
-    """console.log(`Skipping bundled binaries download for ${platform}-${arch}, using system binaries`)
-  const { verifyBundledBinaries } = require('../download-binaries')
-  verifyBundledBinaries(platform, arch)""",
-    content,
-    flags=re.DOTALL
-)
-
-with open('scripts/packaging/before-pack.js', 'w') as f:
-    f.write(content)
-
-with open('electron-builder.yml', 'r') as f:
-    content = f.read()
-content = "npmRebuild: false\n" + content
-with open('electron-builder.yml', 'w') as f:
-    f.write(content)
-PYTHON_EOF
     pnpm exec dotenv pnpm run build
+    local _arch_name=$([[ "${CARCH}" == "aarch64" ]] && echo linux-arm64 || echo linux-x64)
+    local _bindir="resources/binaries/${_arch_name}"
+    for _bin in mise bun uv uvx rg; do
+        install -m755 "/usr/bin/${_bin}" -t "${_bindir}"
+    done
+    local _mise_ver _bun_ver _uv_ver _rg_ver
+    _mise_ver=$(grep -oP "const MISE_VERSION = '\K[^']+" scripts/download-binaries.js)
+    _bun_ver=$(grep -oP "const BUN_VERSION = '\K[^']+" scripts/download-binaries.js)
+    _uv_ver=$(grep -oP "const UV_VERSION = '\K[^']+" scripts/download-binaries.js)
+    _rg_ver=$(grep -oP "const RG_VERSION = '\K[^']+" scripts/download-binaries.js)
+    echo "${_mise_ver}" > "${_bindir}/.mise-version"
+    echo "${_bun_ver}" > "${_bindir}/.bun-version"
+    echo "${_uv_ver}" > "${_bindir}/.uv-version"
+    echo "${_rg_ver}" > "${_bindir}/.rg-version"
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
     find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
-	case "${CARCH}" in
-		aarch64)	_archrem=x64	;;
-		x86_64)		_archrem=arm	;;
-	esac
-	find "$(_get_app_dir)/resources/app.asar.unpacked" -depth \
-		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
-		-exec rm -rf {} +
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+    rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
-    local _arch_name
-    case "${CARCH}" in
-        aarch64) _arch_name="linux-arm64"   ;;
-        x86_64)  _arch_name="linux-x64"     ;;
-    esac
-    local _binaries_dir="${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/binaries/${_arch_name}"
-    mkdir -p "${_binaries_dir}"
-    rm -rf "${_binaries_dir}/"{mise,bun,uv,uvx,rg}
-    ln -sf /usr/bin/mise "${_binaries_dir}/mise"
-    ln -sf /usr/bin/bun "${_binaries_dir}/bun"
-    ln -sf /usr/bin/uv "${_binaries_dir}/uv"
-    ln -sf /usr/bin/uvx "${_binaries_dir}/uvx"
-    ln -sf /usr/bin/rg "${_binaries_dir}/rg"
+    local _arch_name=$([[ "${CARCH}" == "aarch64" ]] && echo linux-arm64 || echo linux-x64)
+    for _bin in bun rg uv uvx mise; do
+        ln -sf "/usr/bin/${_bin}" "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/binaries/${_arch_name}/${_bin}"
+    done
     install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "$(_get_project_dir)/build/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
     install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
