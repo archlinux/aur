@@ -7,7 +7,6 @@ pkgdesc="Archive Manager for Linux Desktops"
 arch=('any')
 url="https://github.com/xapp-project/unfold"
 license=('GPL-3.0-or-later')
-groups=('x-apps')
 depends=(
   '7zip'
   'gtk3'
