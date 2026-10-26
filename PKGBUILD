@@ -1,4 +1,5 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: nVjhNFGQWoBQEthk
+
 pkgname=slskd
 pkgver=0.26.2
 pkgrel=1
