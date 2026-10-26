@@ -1,6 +1,6 @@
 pkgbase = todav-bin
 	pkgdesc = Tasks and calendar kept in your Nextcloud
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/AperteDev/todav
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = todav-bin
 	optdepends = gnome-shell-extension-todav: tasks, month and agenda in the GNOME top bar
 	provides = todav
 	conflicts = todav
-	noextract = todav-1.2.2-x86_64.tar.gz
-	source_x86_64 = todav-1.2.2-x86_64.tar.gz::https://github.com/AperteDev/todav/releases/download/v1.2.2/todav-1.2.2-x86_64.tar.gz
-	sha256sums_x86_64 = c443b1c8f63af7384eaec1ec34990048d4f8d49b1d57d5d22e0657878286710d
+	noextract = todav-1.3.0-x86_64.tar.gz
+	source_x86_64 = todav-1.3.0-x86_64.tar.gz::https://github.com/AperteDev/todav/releases/download/v1.3.0/todav-1.3.0-x86_64.tar.gz
+	sha256sums_x86_64 = 5a3935f938cc68a1dd77d04bb49cd058b1a71c59bede9bccf7b4ed1364549258
 
 pkgname = todav-bin
