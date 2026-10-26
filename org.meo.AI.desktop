@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Meo AI
+Comment=Your MeoArch AI assistant
+Exec=meo-ai-desktop %u
+Icon=meo-ai
+Terminal=false
+Categories=Utility;
+MimeType=x-scheme-handler/meoai;
+StartupWMClass=meo-ai-desktop

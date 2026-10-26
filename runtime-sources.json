@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "provenance": "Pinned pure-Python dependencies from meo-ai modules/python3-newspaper3k.json; other dependencies use Arch packages.",
+  "sources": [
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/35/82/1251fefec3bb4b03fd966c7e7f7a41c9fc2bb00d823a34c13f847fd61406/feedfinder2-0.0.4.tar.gz",
+      "sha256": "3701ee01a6c85f8b865a049c30ba0b4608858c803fe8e30d1d289fdbe89d0efe"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/d7/b9/51afecb35bb61b188a4b44868001de348a0e8134b4dfa00ffc191567c4b9/newspaper3k-0.2.8-py3-none-any.whl",
+      "sha256": "44a864222633d3081113d1030615991c3dbba87239f6bbf59d91240f71a22e3e"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/17/82/86982e4b6d16e4febc79c2a1d68ee3b707e8a020c5d2bc4af8052d0f136a/tinysegmenter-0.3.tar.gz",
+      "sha256": "ed1f6d2e806a4758a73be589754384cbadadc7e1a414c81a166fc9adf2d40c6d"
+    }
+  ],
+  "licenses": [
+    {
+      "repository": "codelucas/newspaper",
+      "commit": "f8e3cb63c87ff53080fab77f4bafef2ecf8179f7",
+      "sourceUrl": "https://raw.githubusercontent.com/codelucas/newspaper/f8e3cb63c87ff53080fab77f4bafef2ecf8179f7/LICENSE",
+      "sourceSha256": "662ea995a58f4d1138128ae1f44a91bccd4ddb114419d04446cf165442b8217c",
+      "file": "newspaper3k-LICENSE"
+    },
+    {
+      "repository": "dfm/feedfinder2",
+      "commit": "7ad17c673b0ab863b2507fae87b0f865e512aa9c",
+      "sourceUrl": "https://raw.githubusercontent.com/dfm/feedfinder2/7ad17c673b0ab863b2507fae87b0f865e512aa9c/LICENSE",
+      "sourceSha256": "dd878f923e4dc2e4ee6a4482fc00a94a933888c2ceb51db131827939a26739af",
+      "file": "feedfinder2-LICENSE"
+    }
+  ]
+}
