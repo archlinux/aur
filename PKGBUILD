@@ -1,7 +1,7 @@
 # Maintainer: Snowvy <a40166895@gmail.com>
 pkgname=golfetch-git
-pkgver=r36.g512e1f6
-pkgrel=2
+pkgver=r58.gcc15437
+pkgrel=1
 pkgdesc="A minimalist, suckless-style system fetch utility written in Go."
 arch=('x86_64') # I don't think program will work on ARM, so I wouldn't add any other architectures
 url="https://github.com/snowvy01/golfetch"
@@ -33,7 +33,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags="-s -w -X main.GitCommit=${_commit}" \
+    -ldflags="-X main.GitCommit=${_commit} -s -w" \
     -o build/golfetch .
 }
 package() {
