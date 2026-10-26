@@ -2,7 +2,7 @@
 
 pkgname=old-launcher-git
 _name=old_launcher
-pkgver=r94.4266ffb
+pkgver=r101.9f5f67b
 pkgrel=1
 pkgdesc='Launcher and addon manager for World of Warcraft 3.3.5a clients'
 arch=('x86_64' 'aarch64')
@@ -26,6 +26,7 @@ makedepends=('cargo' 'git')
 optdepends=(
   'umu-launcher: starting the game with Proton, the default way when installed'
   'wine: starting the game the default way without umu-launcher, or another runner set up'
+  'gamemode: the system tuned for the game while it runs, the default way when installed'
   'vulkan-icd-loader: hardware-accelerated drawing, instead of software rendering'
   'xdg-desktop-portal: file pickers, with a backend such as xdg-desktop-portal-gtk'
   'xdg-utils: opening web pages and folders'

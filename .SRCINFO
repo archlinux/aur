@@ -1,6 +1,6 @@
 pkgbase = old-launcher-git
 	pkgdesc = Launcher and addon manager for World of Warcraft 3.3.5a clients
-	pkgver = r94.4266ffb
+	pkgver = r101.9f5f67b
 	pkgrel = 1
 	url = https://gitlab.com/juxuanu/old_launcher
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = old-launcher-git
 	depends = wayland
 	optdepends = umu-launcher: starting the game with Proton, the default way when installed
 	optdepends = wine: starting the game the default way without umu-launcher, or another runner set up
+	optdepends = gamemode: the system tuned for the game while it runs, the default way when installed
 	optdepends = vulkan-icd-loader: hardware-accelerated drawing, instead of software rendering
 	optdepends = xdg-desktop-portal: file pickers, with a backend such as xdg-desktop-portal-gtk
 	optdepends = xdg-utils: opening web pages and folders
