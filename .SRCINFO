@@ -1,6 +1,6 @@
 pkgbase = ember
 	pkgdesc = Ember — a minimal AUR helper written in Ruby
-	pkgver = 1.2
+	pkgver = 2.0
 	pkgrel = 0
 	url = https://github.com/syuvi211/ember
 	arch = x86_64
