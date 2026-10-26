@@ -37,6 +37,7 @@ a ttfautohint version string, but still zero glyph instructions.
 | Hinting | none → at `hintmedium` FreeType snaps nothing (measured identical to `NO_HINTING`); at `hintslight` its light autohinter | ttfautohint bytecode, preset `natural` (measured best) |
 | Static fonts, per-weight hinting | `fonts/ttf/` only, unhinted, SHRP 0 | `GEO_VARIANT=static`: any of the nine weights, italic, SHRP 0 or 100, each hinted on its own |
 | Axis names in GTK/pango | `@SHRP=100`, `@CRSV=1` only | opt-in `79-geologica-families.conf`: `Geologica Sharp`, `Geologica Semi Sharp`, `Geologica Cursive` |
+| Thin (or ExtraLight/Light) as the desktop font | impossible: GTK drops the weight from `font-name` | `GEO_UI_WEIGHT=100`: a second family, `Geologica UI`, whose Regular draws Thin (section 1.4) |
 | Nerd Fonts | – | `NERD_PATCH=true` |
 | Docs | README of the sources | this README, `FEATURES.md` in `/usr/share/doc/ttf-geologica-hinted/` |
 
@@ -44,6 +45,7 @@ Files installed (default build):
 
 ```
 /usr/share/fonts/geologica/GeologicaVariable.ttf
+/usr/share/fonts/geologica/GeologicaUIVariable.ttf          (GEO_UI_WEIGHT only)
 /usr/share/fontconfig/conf.avail/79-geologica-families.conf   (opt-in)
 /usr/share/fontconfig/conf.avail/80-ttf-geologica-hinted.conf (opt-in)
 /usr/share/doc/ttf-geologica-hinted/{README,FEATURES}.md
@@ -65,6 +67,7 @@ work (section 1).
 | `~/.config/gtk-4.0/settings.ini` | `gtk-hint-font-metrics=false` | whole-pixel advances give uneven letter gaps |
 | `/etc/fonts/conf.d/` | leave `10-hinting-slight.conf` (the Arch default) enabled | |
 | fontconfig, optional | symlink `79-geologica-families.conf` | family names for the sharpness and cursive axes (section 3) |
+| gsettings `font-name`, for a light desktop font | `'Geologica UI 11'` (build with `GEO_UI_WEIGHT=100`), **not** `'Geologica Thin 11'` | GTK3/GTK4 keep only family and size from `font-name`, so the Thin request renders at 400 (section 1.4) |
 | CSS in browsers | `font-variation-settings: "SHRP" 100` for sharpness; `font-feature-settings: "ss01"` for the cursive a/g | browsers map `italic` to `slnt` but cannot set `CRSV` (section 1.3) |
 
 On a desktop that runs `hintmedium`/`hintfull` globally, do the opposite: link
@@ -160,6 +163,55 @@ heights the heavier instances actually have. This is measured in section 2.
 `hhea` and `OS/2` typo metrics are 1950/-550/0, the `fsSelection` USE_TYPO_
 METRICS bit is set, so the default line height is 1.25 em everywhere and the
 weight axis does not change it. `usWinAscent/Descent` are 2518/895 (Windows).
+
+### 1.4 A light desktop font: `Geologica UI` (`GEO_UI_WEIGHT`)
+
+`gsettings set org.gnome.desktop.interface font-name 'Geologica Thin 11'` does
+**not** give a Thin desktop. pango renders `Geologica Thin 11` correctly, but
+GTK3 and GTK4 take only family and size from `font-name` and the weight from
+CSS: a label's font description is `Geologica 11` (checked in both toolkits),
+so pango sends `wght=400`. GNOME Shell keeps the weight; the applications do
+not.
+
+Changing `OS/2.usWeightClass` (what `fix_weights.py` does for MiSans) cannot
+help, because fontconfig already picks the right face here; the problem is the
+axis value. A fontconfig rule can force `fontvariations wght=100`, but only
+pango reads it, and a rule on `Geologica` itself takes Regular away from every
+other program.
+
+`GEO_UI_WEIGHT=N` installs a second copy of the variable font,
+`GeologicaUIVariable.ttf`, family **`Geologica UI`**, with an `avar` table that
+maps the requested weight to the drawn one (user → design):
+
+| requested | 100 | 300 | **400** | 500 | 600 | **700** | 900 |
+|---|---|---|---|---|---|---|---|
+| `GEO_UI_WEIGHT=100` | 100 | 100 | **100** | 300 | 500 | **700** | 900 |
+| `GEO_UI_WEIGHT=300` | 100 | 233 | **300** | 433 | 567 | **700** | 900 |
+
+Regular draws `N`, Bold stays Bold (headings and bold labels keep their
+contrast), and the italic follows the weight. Because the mapping is inside the
+font, every renderer applies it – pango, Firefox, Chromium, Qt – and no
+fontconfig rule is needed. Plain `Geologica` is untouched, so editors and
+documents keep all nine weights. Measured with `pango-view`, 24 px, ink sum:
+
+| request | ink |
+|---|---|
+| `Geologica 24` (Regular) | 864 |
+| `Geologica Thin 24` | 497 |
+| `Geologica UI 24` (`GEO_UI_WEIGHT=100`) | 498 |
+| `Geologica UI Medium 24` | 738 (= Light) |
+| `Geologica UI Bold 24` | 1249 (`Geologica Bold`: 1262) |
+
+```sh
+GEO_UI_WEIGHT=100 makepkg -si
+gsettings set org.gnome.desktop.interface font-name 'Geologica UI 11'
+# ~/.config/gtk-3.0/settings.ini and gtk-4.0/settings.ini, if you keep them:
+#   gtk-font-name=Geologica UI 11
+```
+
+The family name may not end in a pango style word (`Thin`, `Light`, `Bold`,
+`Italic`, `Condensed`, …): pango would parse it as a style, which is exactly
+how `Geologica Thin 11` lost its weight. `make_ui.py` refuses such names.
 
 ---
 
@@ -404,6 +456,9 @@ python measure.py Geologica-Regular.ttf slight '{}' 10,11,12
   Geologica `hintslight` is equal at 400-700 and better at 900, so the honest
   recommendation is "no hintstyle change needed", and the bytecode is for
   desktops that are on `hintmedium` for other reasons.
+- **A light desktop font needs its own family.** GTK drops the weight from
+  `font-name`, so Thin as the UI font is the opt-in `Geologica UI` (an `avar`
+  copy of the VF), not a fontconfig rule (section 1.4).
 - **No italic fix and no weight fix.** pango applies the full italic instance
   (slnt **and** CRSV) and derives the weight correctly; the Thin default never
   reaches an application. Nothing is enabled by default in this package.

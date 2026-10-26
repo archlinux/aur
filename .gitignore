@@ -5,6 +5,7 @@
 !FEATURES.md
 !.SRCINFO
 !make_statics.py
+!make_ui.py
 !set_gasp.py
 !measure.py
 !79-geologica-families.conf

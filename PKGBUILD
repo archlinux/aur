@@ -4,7 +4,7 @@ _geover=1.010
 _geocommit=685f38d7c9e86b0c8530204c97ddcaf6558dd17b
 _nfver=3.5.1
 pkgver="${_geover}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Geologica, a humanist-geometric sans with Sharp/Cursive/Slant/Weight axes, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/geologica'
@@ -18,6 +18,7 @@ source=(
   "OFL.txt::https://raw.githubusercontent.com/googlefonts/geologica/${_geocommit}/OFL.txt"
   "font-patcher-${_nfver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   "make_statics.py"
+  "make_ui.py"
   "set_gasp.py"
   "measure.py"
   "79-geologica-families.conf"
@@ -29,10 +30,11 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
             '778186245840aea0e60bec6a46e7fb1442e0cd78e41afeadffcd3e8824b379e0'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '53d9a3969632b52c7afc5b1968aab4b583c7933641ce3394735705a0cb8e450b'
+            '02fce268054796c470c6279c16e5e3ba1d5a8ca29b843cf5a3e1c9a3b6f92af3'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             'cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1'
             'be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c'
-            '169e2ad429d88f819c39764dcd68d57d5da4778c1720d32e843890b39210648c'
+            'e3da546e69d96b3a1d35496f4eab9bba0610eb2892ef1e6f927d4bbc1c50d24a'
             '1acf0491c2a831a87e1cb09e1a8151dabc02bdf80e33807c7b52ed07be2e5028')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -127,6 +129,16 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #                                Sharp statics become the family
 #                                "Geologica Sharp", as in the Monokrom release
 #
+#  GEO_UI_WEIGHT  none|100|200|300  (default: none)
+#                 Also install "Geologica UI": a second copy of the variable
+#                 font whose Regular draws this weight (an avar table shifts
+#                 the wght scale: 400 -> N, Bold 700 and the ends unchanged).
+#                 For a light desktop font: GTK3/GTK4 drop the weight from
+#                 gsettings font-name, so 'Geologica Thin 11' renders at 400;
+#                 'Geologica UI 11' renders Thin, in every program, with no
+#                 fontconfig rule, while "Geologica" keeps all its weights.
+#                 Variable build only. See README.md section 1.4.
+#
 #  NERD_PATCH  true/false  Patch with Nerd Fonts glyphs (default: false).
 #                          font-patcher drops variable axes, so this forces
 #                          GEO_VARIANT=static. Family becomes
@@ -189,10 +201,11 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #    GEO_VARIANT=static makepkg -si
 #    GEO_VARIANT=static STATIC_SHRP=100 STATIC_ITALIC=false makepkg -si
 #    HINT_PRESET=balanced makepkg -si
+#    GEO_UI_WEIGHT=100 makepkg -si           (Thin as the desktop font)
 #    NERD_PATCH=true STATIC_WEIGHTS="400 500 700" makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
 
-_opt_keys=(GEO_VARIANT STATIC_WEIGHTS STATIC_ITALIC STATIC_SHRP NERD_PATCH
+_opt_keys=(GEO_VARIANT GEO_UI_WEIGHT STATIC_WEIGHTS STATIC_ITALIC STATIC_SHRP NERD_PATCH
            HINTING HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX
            HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
@@ -242,6 +255,14 @@ _prompt_options() {
         "static:one file per weight/italic, hinted per weight"
       GEO_VARIANT=$_choice
     fi
+    if [[ "${GEO_VARIANT:-variable}" == variable && -z "${GEO_UI_WEIGHT:-}" ]]; then
+      _ask_choice "Also install \"Geologica UI\" (Regular drawn lighter, for font-name)" none \
+        "none:no" \
+        "100:Regular draws Thin" \
+        "200:Regular draws ExtraLight" \
+        "300:Regular draws Light"
+      GEO_UI_WEIGHT=$_choice
+    fi
     if [[ -z "${HINTING:-}" ]]; then
       _ask_yn "Hint with ttfautohint (n = unhinted, as upstream)" y; HINTING=$_yn
     fi
@@ -285,6 +306,7 @@ _resolve_options() {
   done < "$srcdir/.build_opts"
 
   GEO_VARIANT="${GEO_VARIANT:-variable}"
+  GEO_UI_WEIGHT="${GEO_UI_WEIGHT:-none}"
   STATIC_WEIGHTS="${STATIC_WEIGHTS:-100 200 300 400 500 600 700 800 900}"
   STATIC_ITALIC="${STATIC_ITALIC:-true}"
   STATIC_SHRP="${STATIC_SHRP:-0}"
@@ -312,6 +334,14 @@ _resolve_options() {
   if [[ "$NERD_PATCH" == true && "$GEO_VARIANT" == variable ]]; then
     echo "==> Note: the variable font cannot be Nerd-patched; using GEO_VARIANT=static."
     GEO_VARIANT=static
+  fi
+  case "$GEO_UI_WEIGHT" in
+    none|100|200|300) ;;
+    *) echo "Error: GEO_UI_WEIGHT='$GEO_UI_WEIGHT' invalid (none|100|200|300)." >&2; exit 1 ;;
+  esac
+  if [[ "$GEO_UI_WEIGHT" != none && "$GEO_VARIANT" != variable ]]; then
+    echo "==> Note: \"Geologica UI\" needs the variable font; GEO_UI_WEIGHT ignored."
+    GEO_UI_WEIGHT=none
   fi
   for _v in $STATIC_WEIGHTS; do
     case "$_v" in
@@ -381,7 +411,7 @@ prepare() {
 build() {
   _resolve_options
 
-  echo "==> Options: variant=$GEO_VARIANT nerd=$NERD_PATCH hinting=$HINTING"
+  echo "==> Options: variant=$GEO_VARIANT ui=$GEO_UI_WEIGHT nerd=$NERD_PATCH hinting=$HINTING"
   if [[ "$GEO_VARIANT" == static ]]; then
     echo "==> Statics: weights='$STATIC_WEIGHTS' italic=$STATIC_ITALIC shrp=$STATIC_SHRP"
   fi
@@ -399,6 +429,11 @@ build() {
   if [[ "$GEO_VARIANT" == variable ]]; then
     # A plain filename: brackets in file names upset some tools and globs.
     install -m644 "$srcdir/GeologicaVariable.ttf" "$srcdir/selected/GeologicaVariable.ttf"
+    if [[ "$GEO_UI_WEIGHT" != none ]]; then
+      echo "==> Deriving Geologica UI..."
+      python "$srcdir/make_ui.py" --regular "$GEO_UI_WEIGHT" \
+        -o "$srcdir/selected/GeologicaUIVariable.ttf" "$srcdir/GeologicaVariable.ttf"
+    fi
   else
     echo "==> Cutting static instances..."
     local -a _italics=("0 0")
