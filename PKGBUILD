@@ -1,7 +1,7 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=tmog-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Task Manager TMOG, a native system monitor and task manager (precompiled binary)"
 arch=('x86_64')
 url="https://tmog.org"
@@ -10,7 +10,9 @@ depends=(
   'gcc-libs'
   'qt6-base'
   'qt6-svg'
-  'systemd-libs'
+)
+optdepends=(
+  'systemd-libs: sd-bus for logind sessions and systemd services pages (or elogind/basu)'
 )
 provides=('tmog-task-manager')
 conflicts=('tmog-task-manager')
