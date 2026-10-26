@@ -2,7 +2,7 @@
 
 _pkgbase=jan
 pkgname=${_pkgbase}-git
-pkgver=0.8.5.r160.g0817df9
+pkgver=0.8.7.r22.gdf5038b
 pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
@@ -22,6 +22,9 @@ optdepends=(
 	'libappindicator-gtk3: for tray icon support'
 	'uv: for MCP servers based on Python'
 	'npm: for MCP servers based on Node.js'
+	'hip-runtime-amd: for ROCm llama.cpp backends on AMD GPUs'
+	'hipblas: for ROCm llama.cpp backends on AMD GPUs'
+	'rocblas: for ROCm llama.cpp backends on AMD GPUs'
 )
 makedepends=(
 	'git'
