@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="containerlab"
-pkgver=0.81.1
+pkgver=0.82.0
 pkgrel=1
 pkgdesc="Container-based networking labs"
 arch=(
@@ -25,7 +25,7 @@ source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
   "${pkgname}.sysusers"
 )
-b2sums=('dfeaf2409e331215076dc8fa81c62ee1377976263de6939feafeea7126e3724bff63051b8deeb481129f51d787db3b87584d40d9f7353d0d6dd5523f98c0429c'
+b2sums=('30fe4a6754c7f5293e72eaa742d0aa60960144f0efdfa365542d61a950c8c6297169ecd245cc2efab3428b93665badea867f081de1b8e756849a5a287d6b68e4'
         '7b0465b94085ad1a63e7a9a7fcf5598c68dd847de4151197fa850032bb4a1265575c8f08c66318fe062bea70a67465e8547a2f941bb628f1a6bf6bb4958540e4')
 
 prepare() {
