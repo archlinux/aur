@@ -1,6 +1,6 @@
 pkgbase = discophile-bin
 	pkgdesc = Your music server, played like a record collection: a player for Navidrome, Subsonic, Jellyfin and Audiobookshelf
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://discophile.app
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = discophile-bin
 	conflicts = discophile
 	options = !strip
 	options = !debug
-	source = discophile-0.1.5.tar.gz::https://github.com/debba/discophile/releases/download/v0.1.5/Discophile-0.1.5-linux-x86_64.tar.gz
-	sha256sums = 94ed825f4a79ead5c43e79b27cbf0d2427890fa9da4817c4da80d8e3d0639281
+	source = discophile-0.1.6.tar.gz::https://github.com/debba/discophile/releases/download/v0.1.6/Discophile-0.1.6-linux-x86_64.tar.gz
+	sha256sums = 9c035809de827455860b486e8f0a6731f4ff02e4e7b2d411015cb8216043f759
 
 pkgname = discophile-bin
