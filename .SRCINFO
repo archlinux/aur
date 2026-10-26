@@ -1,10 +1,11 @@
 pkgbase = wyc
 	pkgdesc = 网云穿最便捷的端口映射
-	pkgver = 7
-	pkgrel = 20
+	pkgver = 8.0.11
+	pkgrel = 1
 	url = https://wangyunchuan.com
 	install = wyc.install
 	arch = x86_64
+	arch = aarch64
 	license = LicenseRef-scancode-commercial-license
 	makedepends = libarchive
 	depends = sh
@@ -12,27 +13,22 @@ pkgbase = wyc
 	provides = wyc-bin
 	conflicts = wyc
 	conflicts = wyc-bin
+	noextract = wyc-clent-linux-x64-8.0.11.tar.gz
+	noextract = wyc-clent-linux-arm64-8.0.11.tar.gz
 	options = !strip
 	options = !debug
-	source = wangyunchuan@.service
-	source = wangyunchuan-watchdog@.service
-	source = wangyunchuan-watchdog@.timer
-	source = wycctl
+	backup = etc/wangyunchuan/config.json
+	source = wangyunchuan.service
 	source = wangyunchuan.tmpfiles
 	source = wangyunchuan.sysusers
 	source = wyc.install
-	source = LICENSE.txt
-	source = wyc-x86_64-7::https://api.wangyunchuan.com/app/cms/linux/app_download?cpuArch=x86&osBit=64&type=app
-	source = wyc-aarch64-7::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app
-	sha256sums = 32a0b3c2b9f8b44e9a43db0708babb01862dea4dd20f2998478a7de19731ec6e
-	sha256sums = 92a7e0ef4b7f6da103fdd4cd40d316ff9cb5bddf27907ce59968559fe1beb0dd
-	sha256sums = da64bca6d4c15fd0bced35db4468ddfefb31163f631c3efb827c8b4e6bcf4bd4
-	sha256sums = 1b0e0651a2fe6e50c55ad66af8ca106530d7695fa2d518d0b6ebbbd2cdb18536
-	sha256sums = 34990ee4d0f935b0f97f2107fa65a63b9aad8f01fc6aac8f927b8cb4bb56981b
+	sha256sums = b43ded86c239ef44c4f9b7dcac115507fda82719c3f9c02d3f6acc568e7a1b0a
+	sha256sums = 6903a173a8cafaaa20690a915c8427f55925d270ed3a7940afd083ebc72ad089
 	sha256sums = 1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523
-	sha256sums = b3831c456d2dc2aa4a8b2dce9f69fc3772a81ba42bd9d84947a159bf0f83ea7b
-	sha256sums = 3f3715937f9e3ae47d4deac0faef7b9072df4048083410454c6dc561688e5824
-	sha256sums = 00529da711eb6b2cc1a1c25dcbcae6307088059aad427383bd38d138f13029ab
-	sha256sums = a53ad0268f50ed19f996de00d40977b3bd9c070cefeb8d23568ea16b61d43309
+	sha256sums = 5816ffd39bdf4c5e9bd4e6e37cba7949446c29d565e14b448991947afe9673e6
+	source_x86_64 = wyc-clent-linux-x64-8.0.11.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-x86_64-tar-gz?source=wyc_official
+	sha256sums_x86_64 = 75ed6c88c05fd7fc637271a9c2fc79eff2241a3c22e9cbf7dff0a9edd453806b
+	source_aarch64 = wyc-clent-linux-arm64-8.0.11.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-arm64-tar-gz?source=wyc_official
+	sha256sums_aarch64 = 8efe0b7cec593666e1b6604cd97738ff95a31b081ad6155871e380f6f73941b4
 
 pkgname = wyc

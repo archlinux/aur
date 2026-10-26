@@ -2,4 +2,5 @@
 d       /var/lib/wangyunchuan           0755    wangyunchuan   wangyunchuan   -       -
 d       /var/log/wangyunchuan           0755    wangyunchuan   wangyunchuan   -       -
 d       /etc/wangyunchuan               0755    wangyunchuan   wangyunchuan   -       -
-
+# 配置含 Token，收紧为仅 root 与服务用户可读写；文件内容由本包提供，这里仅修正属主与权限
+z       /etc/wangyunchuan/config.json   0640    wangyunchuan   wangyunchuan   -       -

@@ -1,68 +1,47 @@
 pre_install() {
-    echo -e "==== installing WangYunChuan ===="
+    echo "==== installing WangYunChuan (wyc) ===="
 }
 
 _help() {
     cat << 'EOF'
-网云穿 (WangYunChuan) 服务管理帮助
-=====================================
+网云穿 (WangYunChuan / wyc) 使用帮助（config.json 驱动模型）
+============================================================
 
-基本使用:
-1. 添加服务实例:
-   wycctl add <实例名> <token>
-   示例: wycctl add web token123456789
+本包以「配置文件驱动」方式运行 wyc-client 常驻服务：
 
-2. 服务管理命令:
-   启动:    wycctl start <实例名>
-   停止:    wycctl stop <实例名>
-   重启:    wycctl restart <实例名>
-   状态:    wycctl status <实例名>
+  1. 编辑配置文件，填入隧道 Token：
+       sudoedit /etc/wangyunchuan/config.json
+     （基于 CONFIG.example.json 模板；token 字段留空则服务待命、不建隧道）
+  2. 启用并启动服务（开机自启）：
+       sudo systemctl enable --now wangyunchuan
+  3. 查看状态 / 日志：
+       sudo systemctl status wangyunchuan
+       sudo journalctl -u wangyunchuan -f
+  4. 修改配置后重启生效：
+       sudo systemctl restart wangyunchuan
+  5. 停止 / 卸载：
+       sudo systemctl disable --now wangyunchuan
 
-3. 实例管理:
-   查看所有实例: wycctl list
-   删除实例:     wycctl remove <实例名>
-   查看日志路径: wycctl logpath <实例名>
+配置文件 /etc/wangyunchuan/config.json 已纳入 backup，升级时保留你的改动。
+状态与日志由 wyc-client 自动维护（位于 StateDirectory /var/lib/wangyunchuan
+与 RuntimeDirectory /run/wangyunchuan），无需手工管理。
 
-4. 服务日志查看:
-   - 实时日志: sudo journalctl -u wangyunchuan@<实例名> -f
-   - 文件日志: wycctl logs <实例名>
-   - 日志路径: /var/log/wangyunchuan/<token前8位>/YYYY-MM-DD.log
-
-5. Watchdog 自动看护（推荐启用）:
-   启用看护:  systemctl enable --now wangyunchuan-watchdog@<实例名>.timer
-   查看状态:  systemctl list-timers wangyunchuan-watchdog@*
-   停止看护:  systemctl disable --now wangyunchuan-watchdog@<实例名>.timer
-   看护日志:  cat /var/log/wangyunchuan/<token前8位>/watchdog.log
-
-   Watchdog 每 1 分钟检查一次隧道状态，当检测到 [FAIL] 时自动重启服务。
-   服务意外停止且已启用时也会自动拉起，网络恢复后可自愈。
-   重启冷却期为 2 分钟，防止日志未更新时反复重启。
-   日志自动清理：保留 7 天，超期自动删除。
-
-6. 常用实例命名:
-   web    - 网站服务
-   ssh    - SSH远程访问
-   mysql  - 数据库访问
-   nas    - 网络存储
-   api    - API服务
-
-7. 权限修复:
-   wycctl fix-perms
-
-配置文件: /etc/wangyunchuan/<实例名>_token
-日志目录: /var/log/wangyunchuan/<token前8位>/
+如需使用新版「多隧道 / 账号绑定」能力，可直接调用官方子命令：
+  wyc-client add --token <Token> / list / status / logs <ID> / doctor
+（该模式需先通过 `wyc-client install` 安装其自带常驻服务，与本包的
+ wangyunchuan.service 二选一，请勿同时启用）
 
 优惠码: oi0bhf
-=====================================
+============================================================
 EOF
 }
 
 post_install() {
     _help
-    echo -e "==== WangYunChuan installed ===="
+    echo "==== WangYunChuan installed ===="
 }
 
 post_upgrade() {
     _help
-    echo -e "==== WangYunChuan upgraded ===="
+    echo "==== WangYunChuan upgraded ===="
 }

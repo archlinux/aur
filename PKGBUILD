@@ -2,12 +2,12 @@
 
 pkgbase=wyc
 pkgname=wyc
-pkgver=7
-pkgrel=20
+pkgver=8.0.11
+pkgrel=1
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
 url="https://wangyunchuan.com"
-arch=($CARCH)
+arch=('x86_64' 'aarch64')
 options=(!strip !debug)
 depends=(
     sh
@@ -16,51 +16,50 @@ makedepends=(libarchive)
 provides=(${pkgname} ${pkgname}-bin)
 conflicts=(${pkgname} ${pkgname}-bin)
 replaces=()
-# backup=(etc/wangyunchuan/)
+backup=(etc/wangyunchuan/config.json)
 install=${pkgname}.install
 source=(
-    "wangyunchuan@.service"
-    "wangyunchuan-watchdog@.service"
-    "wangyunchuan-watchdog@.timer"
-    "wycctl"
+    "wangyunchuan.service"
     "wangyunchuan.tmpfiles"
     "wangyunchuan.sysusers"
     "${pkgname}.install"
-    #     "LICENSE::https://wangyunchuan.com/agreement"
-    "LICENSE.txt"
-    "${pkgname}-x86_64-${pkgver}::https://api.wangyunchuan.com/app/cms/linux/app_download?cpuArch=x86&osBit=64&type=app"
-    "${pkgname}-aarch64-${pkgver}::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app"
 )
-sha256sums=('32a0b3c2b9f8b44e9a43db0708babb01862dea4dd20f2998478a7de19731ec6e'
-            '92a7e0ef4b7f6da103fdd4cd40d316ff9cb5bddf27907ce59968559fe1beb0dd'
-            'da64bca6d4c15fd0bced35db4468ddfefb31163f631c3efb827c8b4e6bcf4bd4'
-            '1b0e0651a2fe6e50c55ad66af8ca106530d7695fa2d518d0b6ebbbd2cdb18536'
-            '34990ee4d0f935b0f97f2107fa65a63b9aad8f01fc6aac8f927b8cb4bb56981b'
+source_x86_64=("${pkgname}-clent-linux-x64-${pkgver}.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-x86_64-tar-gz?source=wyc_official")
+source_aarch64=("${pkgname}-clent-linux-arm64-${pkgver}.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-arm64-tar-gz?source=wyc_official")
+sha256sums=('b43ded86c239ef44c4f9b7dcac115507fda82719c3f9c02d3f6acc568e7a1b0a'
+            '6903a173a8cafaaa20690a915c8427f55925d270ed3a7940afd083ebc72ad089'
             '1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523'
-            'b3831c456d2dc2aa4a8b2dce9f69fc3772a81ba42bd9d84947a159bf0f83ea7b'
-            '3f3715937f9e3ae47d4deac0faef7b9072df4048083410454c6dc561688e5824'
-            '00529da711eb6b2cc1a1c25dcbcae6307088059aad427383bd38d138f13029ab'
-            'a53ad0268f50ed19f996de00d40977b3bd9c070cefeb8d23568ea16b61d43309')
-noextract=()
+            '5816ffd39bdf4c5e9bd4e6e37cba7949446c29d565e14b448991947afe9673e6')
+sha256sums_x86_64=('75ed6c88c05fd7fc637271a9c2fc79eff2241a3c22e9cbf7dff0a9edd453806b')
+sha256sums_aarch64=('8efe0b7cec593666e1b6604cd97738ff95a31b081ad6155871e380f6f73941b4')
+noextract=(
+    "${pkgname}-clent-linux-x64-${pkgver}.tar.gz"
+    "${pkgname}-clent-linux-arm64-${pkgver}.tar.gz"
+)
 
 package() {
-    if [ "$CARCH" == "aarch64" ]; then
-        msg2 "Install for arm64"
-        install -vDm755 ${srcdir}/${pkgname}-${CARCH}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
-    elif [ "$CARCH" == "x86_64" ]; then
-        msg2 "Install for x64"
-        install -vDm755 ${srcdir}/${pkgname}-${CARCH}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
-    else
-        msg2 "Unsupported architectures"
-    fi
+    local _tar _src
+    case "$CARCH" in
+        x86_64)  _tar="${pkgname}-clent-linux-x64-${pkgver}.tar.gz" ;;
+        aarch64) _tar="${pkgname}-clent-linux-arm64-${pkgver}.tar.gz" ;;
+        *)       error "不支持的架构: $CARCH"; return 1 ;;
+    esac
+    _src="${srcdir}/wyc-${CARCH}"
+    install -d "${_src}"
+    bsdtar -xf "${srcdir}/${_tar}" -C "${_src}"
 
-    install -vDm755 ${srcdir}/wycctl -t ${pkgdir}/usr/bin/
-    install -vDm644 ${srcdir}/wangyunchuan@.service -t ${pkgdir}/usr/lib/systemd/system/
-    install -vDm644 ${srcdir}/wangyunchuan-watchdog@.service -t ${pkgdir}/usr/lib/systemd/system/
-    install -vDm644 ${srcdir}/wangyunchuan-watchdog@.timer -t ${pkgdir}/usr/lib/systemd/system/
-    install -vdm755 ${pkgdir}/etc/wangyunchuan \
-        ${pkgdir}/var/log/wangyunchuan
+    install -vDm755 "${_src}/wyc-client" "${pkgdir}/usr/bin/wyc"
+
+    install -vDm644 "${srcdir}/wangyunchuan.service" -t "${pkgdir}/usr/lib/systemd/system/"
+
+    install -vdm755 "${pkgdir}/etc/wangyunchuan" \
+        "${pkgdir}/var/log/wangyunchuan"
+
     install -Dvm644 "${srcdir}/wangyunchuan.sysusers" "${pkgdir}/usr/lib/sysusers.d/wangyunchuan.conf"
     install -Dvm644 "${srcdir}/wangyunchuan.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/wangyunchuan.conf"
-    install -vDm644 ${srcdir}/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+    install -vDm644 "${_src}/LICENSE.md" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.md"
+    install -vDm644 "${_src}/README.md" "${pkgdir}/usr/share/doc/$pkgname/README.md"
+    install -vDm644 "${_src}/PRIVACY.md" "${pkgdir}/usr/share/doc/$pkgname/PRIVACY.md"
+    install -vDm644 "${_src}/CONFIG.example.json" "${pkgdir}/etc/wangyunchuan/config.json"
 }
