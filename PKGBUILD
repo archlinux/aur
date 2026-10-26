@@ -1,7 +1,7 @@
 # Maintainer: Voxan <admin at hessfr dot fr>
 
 pkgname=electorrent-bin
-pkgver=2.10.1
+pkgver=2.17.2
 pkgrel=1
 pkgdesc="A remote control client for µTorrent, qBittorrent, rTorrent, Transmission, Synology & Deluge"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('electorrent')
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/tympanix/Electorrent/releases/download/v${pkgver}/Electorrent-${pkgver}.AppImage")
-sha256sums=('0e3c817a6c52ef29102ad4511c59b62e912c8dfb3b01fbd0a35da281df63e3c9')
+sha256sums=('facbcb49e795f2e54a2d3addec5183459b8ca7bbe97ac7e889a9bda2425b9d85')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
