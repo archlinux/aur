@@ -7,7 +7,7 @@
 # to /usr/share. What a user changes lives in ~/.config/zenworks.
 
 pkgname=zenworks
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
@@ -71,13 +71,14 @@ optdepends=(
   'fwupd: firmware updates in Hestia (installed when first needed)'
   'qt6-webengine: PDFs in Minerva (installed when the first PDF is opened)'
   'python-pykeepass: KeePassXC vaults in Calypso (installed when first needed)'
+  'fcitx5: typing Chinese, Japanese, Korean and more (installed when Input methods is turned on)'
 )
 # zen-browser (the AUR's source build) installs /usr/bin/zen as well
 conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9ee610387c176542f159e1d68e6f95ec71d91fd456f50a27f95ecfd68b6114b3')
+sha256sums=('5970a217a951f4d56415ad2e2ecc55c15dcc2813bd637cbbe34acd24d2fc35aa')
 
 package() {
   # the tarball's directory is named after the repository, as GitHub has
