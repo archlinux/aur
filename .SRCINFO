@@ -1,11 +1,12 @@
 pkgbase = muster-agent-bin
 	pkgdesc = Agentic development environment (ADE) for Codex, Claude Code, OpenCode and local models
 	pkgver = 0.3.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://themuster.dev
 	install = muster-agent-bin.install
 	arch = x86_64
 	license = MIT
+	makedepends = python
 	depends = gtk3
 	depends = nss
 	depends = libxss
@@ -24,7 +25,9 @@ pkgbase = muster-agent-bin
 	options = !debug
 	source = Muster-Agent-0.3.15-linux-amd64.deb::https://github.com/musterhq/muster-code/releases/download/agent-v0.3.15/Muster-Agent-0.3.15-linux-amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/musterhq/muster-code/agent-v0.3.15/LICENSE
+	source = fix-mcp-launchers.py
 	sha256sums = 05a325827e64caf773212ae425463ba2dc2908f76700672dcf9c5e212740ff8f
 	sha256sums = 8be9dc5eea50ccc91e9c3be00ffd5c973531f2f0a7098e9bd979b4355523661e
+	sha256sums = 894eaa04f4d6e6a227f633fab25869ad7cd60be11ef43b2865129406854da5cb
 
 pkgname = muster-agent-bin

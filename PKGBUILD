@@ -2,13 +2,14 @@
 
 pkgname=muster-agent-bin
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Agentic development environment (ADE) for Codex, Claude Code, OpenCode and local models'
 arch=('x86_64')
 url='https://themuster.dev'
 license=('MIT')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify'
          'at-spi2-core' 'xdg-utils')
+makedepends=('python')
 optdepends=('libappindicator-gtk3: tray icon support'
             'gnome-keyring: store credentials in the GNOME keyring'
             'kwallet: store credentials in KWallet')
@@ -33,9 +34,11 @@ _deb="Muster-Agent-${pkgver}-linux-amd64.deb"
 _url="https://github.com/musterhq/muster-code/releases/download/agent-v${pkgver}"
 
 source=("${_deb}::${_url}/${_deb}"
-        "LICENSE::https://raw.githubusercontent.com/musterhq/muster-code/agent-v${pkgver}/LICENSE")
+        "LICENSE::https://raw.githubusercontent.com/musterhq/muster-code/agent-v${pkgver}/LICENSE"
+        'fix-mcp-launchers.py')
 sha256sums=('05a325827e64caf773212ae425463ba2dc2908f76700672dcf9c5e212740ff8f'
-            '8be9dc5eea50ccc91e9c3be00ffd5c973531f2f0a7098e9bd979b4355523661e')
+            '8be9dc5eea50ccc91e9c3be00ffd5c973531f2f0a7098e9bd979b4355523661e'
+            '894eaa04f4d6e6a227f633fab25869ad7cd60be11ef43b2865129406854da5cb')
 
 prepare() {
   cd "${srcdir}"
@@ -53,6 +56,15 @@ package() {
   # Debian convention; Arch has no /usr/share/doc and pacman cannot own files
   # outside the package there anyway.
   rm -rf "${pkgdir}/usr/share/doc"
+
+  # Upstream only writes an MCP server's launcher script when the server is
+  # added or edited in Settings, yet hands that script's path to the agent for
+  # servers it imported from ~/.claude.json, ~/.codex/config.toml or .mcp.json
+  # too; those start with a missing command (ENOENT). The patch makes the
+  # config builder write the launcher first. It fails the build if the bundle
+  # no longer has the expected shape. See fix-mcp-launchers.py.
+  python3 -I "${srcdir}/fix-mcp-launchers.py" \
+    "${pkgdir}/opt/muster-agent/resources/app.asar"
 
   # The deb's postinst creates this link (through update-alternatives there).
   # It points at the launcher script, not at the Electron binary, so the

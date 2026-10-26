@@ -64,7 +64,7 @@ Optional: `libappindicator-gtk3` (tray icon), `gnome-keyring` or `kwallet`
 
 ## Chromium sandbox
 
-Nothing is patched into the binary; the shipped launcher does the work. A
+Nothing about the sandbox is patched; the shipped launcher does the work. A
 `chrome-sandbox` helper inside a read-only AppImage cannot be setuid, which is
 why the AppImage relies on unprivileged user namespaces only. With the deb
 layout the setuid bit is possible, so `muster-agent-bin.install` mirrors the
@@ -73,6 +73,28 @@ deb's postinst: it leaves the helper at `0755` when `unshare --user true` works
 restricted — there the setuid helper is the only way to keep renderer
 sandboxing. If neither is available, the launcher falls back to `--no-sandbox`
 and says so on stderr.
+
+## Patch: MCP launchers
+
+`fix-mcp-launchers.py` patches one expression in
+`resources/app.asar` (`dist/runtime/service.cjs`) at package time.
+
+Upstream imports MCP servers from `~/.claude.json`, `~/.codex/config.toml` and
+folder `.mcp.json` files, and passes every stdio server with arguments to the
+agent as `<dataDir>/mcp-launchers/<id>.sh`. Only the add and update handlers in
+Settings write that script, so imported servers start with a missing command:
+the chat reports them as failed (`ENOENT`) while Settings › MCP shows them
+healthy, because its own test spawns the command directly. Toggling a server
+off and on writes its launcher, which hides the bug until the next import.
+Present in 0.3.14 and 0.3.15 and on `main` (`syncDetected()` in
+`packages/agent-app/src/runtime/domains/mcp.ts`).
+
+The patch makes the config builder write the launcher, synchronously, when it
+is missing or stale, using upstream's own script builder. The bundle is
+minified, so the site is matched by shape; the script fails the build unless
+it matches exactly once, and is idempotent. The patched file is appended to the
+archive with a fresh integrity entry, so every other file keeps its bytes.
+Drop the patch once upstream calls `writeLauncher()` for detected servers.
 
 ## Known behaviour
 
