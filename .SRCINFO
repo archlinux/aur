@@ -1,16 +1,16 @@
 pkgbase = tmxr-bin
 	pkgdesc = tmux-style terminal multiplexer for Linux, macOS and Windows (binary release)
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/kryptic-sh/tmxr
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = tmxr=0.10.0
+	provides = tmxr=0.11.0
 	conflicts = tmxr
-	source_x86_64 = tmxr-v0.10.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/tmxr/releases/download/v0.10.0/tmxr-v0.10.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3d7e139881df50eede2cef2a8e0fa5e0dbe9e1cf66a6888537eabff2b28dc34b
-	source_aarch64 = tmxr-v0.10.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/tmxr/releases/download/v0.10.0/tmxr-v0.10.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2a94f039427829744aa697900ae1a03d217d13dfe1fd2ee175b80af5de9dbb00
+	source_x86_64 = tmxr-v0.11.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/tmxr/releases/download/v0.11.0/tmxr-v0.11.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e758ce18b18434247f454bc58c555b074c6011c8331f8604744cd6f6b0a3423a
+	source_aarch64 = tmxr-v0.11.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/tmxr/releases/download/v0.11.0/tmxr-v0.11.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e1f0becb7d2eb956e0416bbbae8c76f2f6c174d8639b86ad2c299f8625606c76
 
 pkgname = tmxr-bin
