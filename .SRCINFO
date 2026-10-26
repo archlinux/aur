@@ -16,7 +16,6 @@ pkgbase = slskd
 	conflicts = slskd-git
 	conflicts = slskd-bin
 	options = !strip
-	options = !debug
 	source = https://github.com/slskd/slskd/archive/refs/tags/0.26.2.tar.gz
 	source = slskd.service
 	source = slskd.sysusers
