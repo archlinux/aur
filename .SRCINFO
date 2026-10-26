@@ -1,0 +1,23 @@
+pkgbase = sonic-polkit
+	pkgdesc = A library that allows developers to access PolicyKit API with a nice Qt-style API
+	pkgver = 0.201.2
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-polkit
+	arch = x86_64
+	groups = sonicde
+	license = BSD-3-Clause
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	makedepends = cmake
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = polkit
+	depends = qt6-base
+	provides = polkit-qt6
+	conflicts = polkit-qt6
+	source = sonic-polkit-0.201.2.tar.gz::https://github.com/Sonic-DE/sonic-polkit/archive/refs/tags/0.201.2.tar.gz
+	sha256sums = 22757af51dc38179936f6e5807eefaa01ba4d123c82319b150d8095027ff543e
+
+pkgname = sonic-polkit
