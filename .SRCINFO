@@ -1,6 +1,6 @@
 pkgbase = nouveau-dkms
 	pkgdesc = Unified Nouveau out-of-tree module with Fermi core, shader, and DDR3 memory reclocking (DKMS)
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/Twilight0/nouveau-dkms
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nouveau-dkms
 	source = dkms.conf
 	source = nouveau.conf
 	sha256sums = 1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad
-	sha256sums = 11edd475544e3be80ce758e150ebc22ff21a72ccfd46fc23eac14a9664ff7e3d
+	sha256sums = 96f9e70e0fbf7e779f935e5518aa1e53e608f45d17a22855dbe41cbf2ec0ef0c
 	sha256sums = 7f0d3d86a1551d4f1775d6dea33568f04d59dbf38faa7e9d50c0b327cfc327a6
 	sha256sums = 326efac21bf858f7be0e41b21f2c585bfd1ef5b18dad9cce022685a4623bb090
 
