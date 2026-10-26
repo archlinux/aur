@@ -21,7 +21,7 @@ prepare(){
 
 build(){
   cd ${pkgname}-$pkgver
-  RUSTFLAGS+="-C link-args=-fuse-ld=mold"
+  RUSTFLAGS+=" -C link-args=-fuse-ld=mold"
   cargo build --release $_cargoflags #--frozen
 }
 
