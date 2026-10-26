@@ -1,0 +1,30 @@
+pkgbase = ezoo-download-git
+	pkgdesc = Multi-threaded download manager written in Rust and Slint (Linux port)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/kerlif/ezoo-download
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = freetype2
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = xdg-desktop-portal
+	depends = yt-dlp
+	depends = ffmpeg
+	provides = ezoo-download
+	conflicts = ezoo-download
+	options = !lto
+	source = git+https://github.com/kerlif/ezoo-download.git#branch=linux-support
+	sha256sums = SKIP
+
+pkgname = ezoo-download-git
