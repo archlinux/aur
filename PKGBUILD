@@ -5,14 +5,14 @@ _gitname=zzzfm-antix
 #https://github.com/vanilla-dpup/woof-CE/tree/vanilladpup-12.0.x/rootfs-petbuilds/zzzfm
 pkgname=zzzfm-dpup
 pkgver=1.0.7
-pkgrel=9
+pkgrel=10
 pkgdesc='Multi-panel tabbed file manager - wayland gtk3 version'
 arch=(i686 x86_64)
 url="https://gitlab.com/antiX-Linux/zzzfm-antix"
-license=(GPL3+)
+license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 provides=('zzzfm')
 conflicts=('zzzfm' 'zzzfm-bin' 'zzzfm-git')
-depends=('e2fsprogs' 'gdk-pixbuf2' 'glibc' 'gtk-layer-shell' 'gtk3' 'hicolor-icon-theme' 'udev')
+depends=('bash' 'systemd-libs' 'glib2' 'libx11' 'cairo' 'pango' 'gdk-pixbuf2' 'glibc' 'gtk-layer-shell' 'gtk3')
 makedepends=(intltool git)
 optdepends=('dbus: dbus integration'
             'util-linux: disk eject support'
@@ -37,7 +37,6 @@ source=(
     'https://github.com/vanilla-dpup/woof-CE/raw/refs/heads/vanilladpup-12.0.x/rootfs-petbuilds/zzzfm/puppy-defaults.patch'
     'https://github.com/vanilla-dpup/woof-CE/raw/refs/heads/vanilladpup-12.0.x/rootfs-petbuilds/zzzfm/layer-shell.patch'
     'menu-popup-position.patch'
-    'keyboard-on-demand.patch'
     "zzzfm-wallpaper.desktop"
     "zzzfm-desktop.desktop"
     )
@@ -48,7 +47,6 @@ sha256sums=(
     4b90f2aa5c8e0632081ed510e7c7346e4ae5b23647cceed2daffba531cc6368a  #puppy-defaults.patch
     420c9b5e2027e2f638e3175e5336d16bbea8a182bc3e90c428d85666939f50a0  #layer-shell.patch
     e7a063d9915dead35cd2eb283d4195f6413efe66ca1a341cfa9c8bfef3e8a729  #menu-popup-position.patch
-    3b5c9da61c05b2c696e121755a34db301dbb9b9f16f624f70ad60bfcb650688e  #keyboard-on-demand.patch
     bd424d9a595f4dba624c4c09c0da6e58bf273c6193e121b0f672ef6b24001cc8  #zzzfm-wallpaper.desktop
     cd52440c295a55f8916f1becf38a79c349d872a500ba6e491c3b850023e145f9  #zzzfm-desktop.desktop
     )
@@ -59,7 +57,7 @@ prepare() {
 #    patch -p1 < ../puppy-defaults.patch
     patch -p1 < ../layer-shell.patch #fix zzzfm --desktop
     patch -p1 < ../menu-popup-position.patch #menu at cursor on wayland
-    patch -p1 < ../keyboard-on-demand.patch #keyboard focus on desktop under wayland
+#    patch -p1 < ../keyboard-on-demand.patch #keyboard focus on desktop under wayland
 }
 
 build() {
