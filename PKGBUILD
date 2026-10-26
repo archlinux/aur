@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Moura Longaray <vmouralongaray@gmail.com>
 pkgname=spectrum-git
-pkgver=r286.b6fb050
+pkgver=r287.3834a9c
 pkgrel=1
 pkgdesc="Console-based music player with equalizer written in C++."
 arch=("x86_64")
