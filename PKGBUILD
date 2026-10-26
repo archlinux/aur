@@ -1,6 +1,6 @@
 # Maintainer: Alireza S.N. <alireza6677@gmail.com>
 #
-# Drop-in replacement for Arch's libfprint: upstream libfprint 1.94.10 with
+# Drop-in replacement for Arch's libfprint: upstream libfprint 1.94.100 with
 # all of its drivers plus goodix55b4 (Goodix 27c6:55b4, native Milan matcher).
 # fprintd uses it directly. Prints enrolled with other 55b4 drivers
 # (goodixtls55x4/SIGFM) are not compatible: delete them and re-enroll.
@@ -13,7 +13,7 @@
 #   cd libfprint-goodix55b4-milan/packaging/arch && makepkg -si
 
 pkgname=libfprint-goodix55b4
-pkgver=1.94.10.m5
+pkgver=1.94.100.m1
 pkgrel=1
 pkgdesc="libfprint with the Goodix 27c6:55b4/5584 driver using the native Milan matcher"
 arch=('x86_64')
@@ -21,9 +21,9 @@ url="https://github.com/TheWeirdDev/libfprint-goodix55b4-milan"
 license=('LGPL-2.1-or-later')
 depends=('glib2' 'libgusb' 'libgudev' 'openssl' 'pixman' 'libdeflate' 'systemd-libs')
 makedepends=('git' 'meson' 'ninja' 'python' 'patchelf' 'glib2-devel' 'gobject-introspection' 'systemd')
-provides=('libfprint=1.94.10' 'libfprint-2.so')
+provides=('libfprint=1.94.100' 'libfprint-2.so')
 conflicts=('libfprint' 'libfprint-goodix55b4-milan')
-_libfprint_commit=0c97a47d8ef405cd577b87058c1e89cae9d242e7 # v1.94.10
+_libfprint_commit=80a4b5ec612892c5c056c48dddaa561452cf37ec # v1.94.100
 _repo_url=https://github.com/TheWeirdDev/libfprint-goodix55b4-milan.git
 source=("libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=${_libfprint_commit}"
         "driver::git+${_repo_url}#tag=v${pkgver}")
