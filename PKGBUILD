@@ -1,26 +1,22 @@
 # Maintainer: Rachel Litjens
 pkgname=ember
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=0
 pkgdesc="Ember — a minimal AUR helper written in Ruby"
 arch=('x86_64' 'aarch64')
 url="https://github.com/syuvi211/ember"
 license=('GPL')
 depends=('ruby' 'curl' 'git')
 makedepends=()
-source=("https://github.com/syuvi211/ember/archive/refs/tags/v1.1-3.tar.gz")
+source=("https://github.com/syuvi211/ember/archive/refs/tags/v2.0-0.tar.gz")
 sha256sums=('SKIP')
 
 package() {
 
-    cd "$srcdir/ember-${pkgver}-3" || exit 1
+    cd "$srcdir/ember-${pkgver}-0" || exit 1
 
 
-    install -Dm755 bin/emb "$pkgdir/usr/bin/emb"
-
-
-    install -Dm644 lib/ember.rb "$pkgdir/usr/lib/ember/ember.rb"
-
-
+    install -Dm755 bin/ember "$pkgdir/usr/bin/ember"
+    install -Dm755 bin/ember "$pkgdir/usr/bin/emb"
     install -Dm644 README.md "$pkgdir/usr/share/doc/ember/README.md"
 }
