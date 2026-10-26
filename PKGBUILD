@@ -5,7 +5,7 @@
 # Contributor: Doron Behar <doron.behar@gmail.com>
 
 pkgname=python-bidi
-pkgver=0.6.11
+pkgver=0.6.12
 pkgrel=1
 pkgdesc="BIDI algorithm related functions"
 url="https://github.com/MeirKriheli/python-bidi"
@@ -14,7 +14,7 @@ arch=('x86_64' 'aarch64')
 depends=(python)
 makedepends=(python-build python-maturin python-installer)
 source=("${url}/archive/v${pkgver}/python-bidi-${pkgver}.tar.gz")
-b2sums=('fe622471c9ec4eb070619760b708adb386e2825208550e3f1ecf849b09c21a2171bf53962f6ee02b89e37b3d4a9db8f1a09b3f1aff06a5a9143de7611d156d34')
+b2sums=('8074647c2e6ebb9181bc06f273421bbbaf2fdb082a7e7f2521ea578c661d5387e658c242786b39872e20cbb231c4987e7046072bf870551c57894b98af302505')
 
 build() {
   cd python-bidi-${pkgver}
