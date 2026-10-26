@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=5.6.10.r5.g07c7e5d33
+pkgver=5.7.15.r0.gc1de836
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -96,7 +96,8 @@ prepare() {
     _set_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     find ./ -type f -name "package-lock.json" -exec rm {} +
-    export NODE_ENV=development
+    export NODE_ENV=developmentgit clone git+ssh://aur@aur.archlinux.org/electerm-git && cd electerm-git && touch PKGBUILD electerm.sh
+
     npm config set legacy-peer-deps true
     npm install --legacy-peer-deps
     npm add -D node-gyp --legacy-peer-deps
