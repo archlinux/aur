@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=blender-3.6-lts-bin
 pkgver=3.6.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (official 3.6 LTS precompiled binary release)"
 arch=('x86_64')
 url="https://www.blender.org"
@@ -35,7 +35,7 @@ source=(
 )
 sha256sums=(
   '0e9a18af4d0060b825e9617e24a775f759e0f9f67271c062f3d53a539030af00'
-  'dd96be4195791988c888a369df41d5c2388836e236bc43ebda9d91a2fdaafad4'
+  '508ad0a9f1bfa205e2ac993d1e04948830bcde5c3fe0c10ad497058dfe9af575'
 )
 
 package() {
