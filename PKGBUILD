@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=wu-bin
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="Fast, native code editor in Rust that feels like VS Code"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ conflicts=('wu')
 options=('!debug')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/wu-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/wu-linux-aarch64.tar.gz")
-sha256sums_x86_64=('09f2cb1612e31ad41a1f0f286ad98a4959aecadd826df60ebfcd99d40999b4e9')
-sha256sums_aarch64=('69bfdbf58f2ac82c70d696b24d68ce3a25bbe82081b8ee35b76336e755f1c55f')
+sha256sums_x86_64=('19edab305cbb0f1cca46e13f12b90435434e961844cf596b2ee4c1c4ad28148e')
+sha256sums_aarch64=('4e46d2863c25c087279bda3be8f746ee955974c0ad14c94481db7c1faa415bf3')
 
 package() {
   # Use Arch's system XCB/XKB libraries instead of the copies in wu.app/lib.
