@@ -12,10 +12,12 @@ makedepends=('dart')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'fix-agent-version.patch'
-        'fix-os-release.patch')
+        'fix-os-release.patch'
+        'fix-ip-address.patch')
 sha256sums=('704d641fc523902f88c05aa665e68d614cf5a3a26ce1f69e5fd3610fc4725365'
             '212f04b36efccf976251226ce1fc09f333ce7dafe3b50634b5199f81bdf1a9d3'
-            'd474fb83581dd17d282ea03558c9e3d9fc826e2d426e93e93ffd3179a4ad1b31')
+            'd474fb83581dd17d282ea03558c9e3d9fc826e2d426e93e93ffd3179a4ad1b31'
+            'b504d7ce0480966bb044d28703ec1df9ef3ac5e52afbd03c21a1cc248cba0923')
 
 prepare() {
   cd OCSInventory-Agent-Rework-$pkgver
@@ -24,6 +26,8 @@ prepare() {
   patch -Np1 -i ../fix-agent-version.patch
   # https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/pull/173
   patch -Np1 -i ../fix-os-release.patch
+  # https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/pull/172
+  patch -Np1 -i ../fix-ip-address.patch
 
   export PUB_CACHE="$srcdir/pub-cache"
   dart --suppress-analytics pub get

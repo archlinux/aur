@@ -1,0 +1,72 @@
+From 166a8d2537eae46cc3887a246d778880d4bc46bc Mon Sep 17 00:00:00 2001
+From: executter <executter@hotmail.com>
+Date: Mon, 26 Oct 2026 12:03:26 +0100
+Subject: [PATCH] fix(baseLinux): find the IP address with ip
+
+The base inventory took srcip from the first
+address printed by "hostname -I". Only the
+hostname of Debian and RHEL based systems has
+this option. The hostname of inetutils, used on
+Arch Linux, and the one of BusyBox reject it
+("invalid option -- 'I'", exit code 64), so the
+server gets an empty IP address and the agent
+logs an error on each run.
+
+The address now comes from "ip -o addr show
+scope global". ip is already required to find
+the MAC addresses, and the global scope leaves
+out loopback and link-local addresses, as
+hostname -I does. IPv4 addresses come before
+IPv6 ones, in the order hostname -I prints them
+in practice.
+---
+ lib/core/inventory/linux/baseLinux.dart | 26 +++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
+
+diff --git a/lib/core/inventory/linux/baseLinux.dart b/lib/core/inventory/linux/baseLinux.dart
+index 08b62ab..2367be4 100755
+--- a/lib/core/inventory/linux/baseLinux.dart
++++ b/lib/core/inventory/linux/baseLinux.dart
+@@ -131,10 +131,7 @@ class BaseLinux {
+       "osname": osRelease["NAME"].toString(),
+       "osversion": osRelease["VERSION_ID"].toString(),
+       "uuid": await _getUUID(),
+-      "srcip": (await commands.processTarget(
+-              "BASH", "hostname -I", logType, "IP ADDRESS"))["value"]
+-          .toString()
+-          .split(" ")[0],
++      "srcip": await _getIPAddress(),
+       "srcmac": macAddressList,
+       "domain": (await commands.processTarget(
+           "BASH", "hostname -d", logType, "DOMAIN"))["value"],
+@@ -154,6 +151,27 @@ class BaseLinux {
+     return result["value"] != null && result["value"].toString().isNotEmpty;
+   }
+ 
++  /// Returns the first global address of the host, IPv4 before IPv6.
++  ///
++  /// hostname -I gave this address on Debian and RHEL based systems only:
++  /// the hostname of inetutils (Arch Linux) and of BusyBox has no -I
++  /// option. ip is already required to find the MAC addresses, and its
++  /// global scope leaves out loopback and link-local addresses, as -I does.
++  Future<String> _getIPAddress() async {
++    final result = await commands.processTarget(
++      "BASH", "ip -o addr show scope global", logType, "IP ADDRESS",
++    );
++    final String addresses = result["value"].toString();
++    for (final family in ["inet", "inet6"]) {
++      final match = RegExp(r'\s' + family + r' (?<ip>[0-9a-fA-F.:]+)/')
++          .firstMatch(addresses);
++      if (match != null) {
++        return match.namedGroup("ip")!;
++      }
++    }
++    return "";
++  }
++
+   /// Detects whether the process is running inside a container (LXC, Docker,
+   /// Podman, systemd-nspawn, ...).
+   ///
+-- 
+2.56.0
+

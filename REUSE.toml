@@ -13,6 +13,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "fix-agent-version.patch",
+    "fix-ip-address.patch",
     "fix-os-release.patch",
 ]
 SPDX-FileCopyrightText = "OCS Inventory contributors"
