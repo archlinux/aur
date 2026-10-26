@@ -1,6 +1,6 @@
 pkgbase = computer-use-linux
 	pkgdesc = Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)
-	pkgver = 0.7.25
+	pkgver = 0.7.27
 	pkgrel = 1
 	url = https://github.com/agent-sh/computer-use-linux
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = computer-use-linux
 	license = MIT
 	checkdepends = dbus
 	makedepends = cargo
-	source = computer-use-linux-0.7.25.tar.gz::https://github.com/agent-sh/computer-use-linux/archive/refs/tags/v0.7.25.tar.gz
-	sha256sums = e4cdeb164c2a8e07eb87f639b08fac1d33fde02e9ae692383a8df8f1bf3b4f1e
+	source = computer-use-linux-0.7.27.tar.gz::https://github.com/agent-sh/computer-use-linux/archive/refs/tags/v0.7.27.tar.gz
+	sha256sums = 0983f63c8d2b4e099a81699435593a810fcd562128e9682a680e202eddadd130
 
 pkgname = computer-use-linux
 	depends = at-spi2-core
