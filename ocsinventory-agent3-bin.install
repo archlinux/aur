@@ -3,4 +3,13 @@ post_install() {
     echo "password and mode (1 or 2) in /etc/ocsinventory-agent/config.json."
     echo "Then start the daemon:"
     echo "    systemctl enable --now ocsinventory-agent3.service"
+    echo
+    echo "The server has no inventory template for Arch Linux, and mode 1 needs"
+    echo "one. Copy /usr/share/ocsinventory-agent3/linux-arch-template.json to"
+    echo "the computer you browse the web console from, then, once, under"
+    echo "Configurations:"
+    echo "  - Templates: import the file as a new template;"
+    echo "  - Software mapping: map the NAME, PUBLISHER, VERSION, MAJOR, MINOR"
+    echo "    and PATCH fields of its SOFTWARES section;"
+    echo "  - Rules: assign it to the assets whose osname matches (?i)(Arch)."
 }
