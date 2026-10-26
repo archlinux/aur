@@ -3,7 +3,7 @@
 A reference of what the font can do and how to reach each part of it on Linux.
 Everything below was read from
 `Commissioner[FLAR,VOLM,wght].ttf` with fontTools 4.67, shaped with HarfBuzz
-0.57 and rendered with pango 1.58 / GTK 4.24 on 2026-10-26.
+14.6.0 and rendered with pango 1.58 / GTK 4.24 on 2026-10-26.
 
 **Commissioner's range comes from its axes, not from its features.** Three axes
 (weight, flare, volume), 18 GSUB features of which the usable ones are `tnum`

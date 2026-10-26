@@ -34,7 +34,7 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
             '373d859f527adcf80933f9741af0595e708f591bdde5f2f01896aebd7d488750'
             'd86d04b9116f44fb419116f46582daca4d1227c7facd9f9a3c562e104e69fc61'
             'e11223b233815eeb7d061c5ac660bc8cbe7acf67b8912484629fc87966ef21c8'
-            '9ae8ef9e42aad427e6ce07b1304096285d9335f506fce9373693b446e1616ab1')
+            'bae523975b57a0dfa3c9a6f39262da97cbf9b3f52286c3e8b048799e21a8086a')
 
 # ── What this package does ──────────────────────────────────────────────────
 #
