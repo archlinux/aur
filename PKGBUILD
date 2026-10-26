@@ -20,6 +20,7 @@ optdepends=('cups: printer inventory'
 provides=('ocsinventory-agent3')
 conflicts=('ocsinventory-agent3')
 options=('!strip' '!debug')
+install=$pkgname.install
 backup=('etc/ocsinventory-agent/config.json')
 source=("$url/releases/download/$pkgver/OCSInventory-Agent-Setup-Linux-Deb-$pkgver.tar.xz"
         'config.json')

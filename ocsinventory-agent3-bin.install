@@ -1,0 +1,6 @@
+post_install() {
+    echo "Point the agent to your OCS Inventory 3.x server: set url, username,"
+    echo "password and mode (1 or 2) in /etc/ocsinventory-agent/config.json."
+    echo "Then start the daemon:"
+    echo "    systemctl enable --now ocsinventory-agent3.service"
+}
