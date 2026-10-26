@@ -3,7 +3,7 @@
 pkgname=certora-tac-optimizer
 _repo=CertoraProver
 _bin=tac_optimizer
-pkgver=8.20.2
+pkgver=8.20.3
 pkgrel=1
 pkgdesc="Term-rewriting optimizer the Certora Prover shells out to while verifying rules"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 depends=('glibc' 'libgcc')
 makedepends=('cargo' 'git')
 source=("${_repo}-${pkgver}.tar.gz::https://github.com/Certora/${_repo}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1b10b7a100f6cf3b1b86e681951bebca5ddac7ab67b90c1c4e6334448ecad95e')
+sha256sums=('8cdafa5f3d6425c84f23939c10544009cdd922afe42fa61c88b0d08e12a2b032')
 
 latestver() {
     gh api --paginate "repos/Certora/${_repo}/releases" --jq \

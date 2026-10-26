@@ -1,6 +1,6 @@
 pkgbase = certora-tac-optimizer
 	pkgdesc = Term-rewriting optimizer the Certora Prover shells out to while verifying rules
-	pkgver = 8.20.2
+	pkgver = 8.20.3
 	pkgrel = 1
 	url = https://www.certora.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = certora-tac-optimizer
 	makedepends = git
 	depends = glibc
 	depends = libgcc
-	source = CertoraProver-8.20.2.tar.gz::https://github.com/Certora/CertoraProver/archive/refs/tags/8.20.2.tar.gz
-	sha256sums = 1b10b7a100f6cf3b1b86e681951bebca5ddac7ab67b90c1c4e6334448ecad95e
+	source = CertoraProver-8.20.3.tar.gz::https://github.com/Certora/CertoraProver/archive/refs/tags/8.20.3.tar.gz
+	sha256sums = 8cdafa5f3d6425c84f23939c10544009cdd922afe42fa61c88b0d08e12a2b032
 
 pkgname = certora-tac-optimizer
