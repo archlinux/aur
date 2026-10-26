@@ -1,9 +1,9 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python314-freethreaded
-pkgver=3.14.9
+pkgver=3.14.10
 pkgrel=1
-_pyver=3.14.9
+_pyver=3.14.10
 _pybasever=3.14
 _pymajver=3
 pkgdesc="Major release 3.14 of the Python high-level programming language (freethreading version without GIL)"
@@ -41,7 +41,7 @@ source=(
   "https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz"{,.sigstore}
 )
 sha256sums=(
-  'e02d9ac21cebda6e46435369744a92c65cc7cd8669697694122cf97ffacd1e53'
+  'de414a57119abef52784d8993e341d53aed635fc2b05c2607d9f98a2c5b72032'
   'SKIP'
 )
 
