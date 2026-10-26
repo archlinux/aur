@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-tui-bin
 pkgdesc="Developer-process cockpit — a TUI + CLI for the local dev servers and processes you care about, resolved into names you recognize."
 
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('5216f0c37abddb15bebb375ca21bd65f4dbd344b17600115153892d3b5381485'
+sha256sums=('1cedc9982c06e48782f23fa38aab015cdb30e0126e9f2d820445fd2e90969aa8'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('ae4c538430beaf21e5ca63ee36d42481ac1bbfe9072e548e643cd751aa94baba')
+sha256sums_x86_64=('26281098e92d141c31499b0e02d5e79be0cff95a5ec3a272cee01175595068a2')
 
 
 package() {
