@@ -786,7 +786,7 @@ def install_dependencies(
     run(["uv", "--quiet", "sync", "--inexact"])
 
     log.info("Installing basic dependencies ...")
-    run(["uv", "add", "--requirements", "requirements.txt"])
+    run(["uv", "add", "--no-sync", "--requirements", "requirements.txt"])
 
     if config["enable_manager"]:
         manager_req = extracted_dir / "manager_requirements.txt"
@@ -804,6 +804,7 @@ def install_dependencies(
             [
                 "uv",
                 "add",
+                "--no-sync",
                 "--requirements",
                 "manager_requirements.txt",
             ]
@@ -831,13 +832,21 @@ def install_dependencies(
                 "Installing dependencies of custom node [%s] ...",
                 node.name,
             )
-            run(["uv", "add", "--requirements", str(requirements)])
+            run(
+                [
+                    "uv",
+                    "add",
+                    "--no-sync",
+                    "--requirements",
+                    str(requirements),
+                ]
+            )
 
     extra_pkgs = config["extra_python_package"]
     if extra_pkgs:
         log.info("Installing extra packages ...")
         for pkg in extra_pkgs:
-            run(["uv", "add", "--no-build-isolation", pkg])
+            run(["uv", "add", "--no-sync", "--no-build-isolation", pkg])
 
     log.info("Syncing venv packages ...")
     run(["uv", "sync"])
