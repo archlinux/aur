@@ -31,4 +31,6 @@ package() {
 
   cd OCSInventory-Agent-Linux-Deb-Setup
   install -Dm755 ocsinventory-cli "$pkgdir/usr/bin/ocsinventory-cli"
+  install -Dm644 ocsinventory-agent.service \
+    "$pkgdir/usr/lib/systemd/system/ocsinventory-agent3.service"
 }
