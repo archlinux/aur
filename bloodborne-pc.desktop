@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
-Name=Bloodborne
-GenericName=bbport
-Comment=Bloodborne (CUSA03173) running natively via bbport
+Name=Bloodborne (Lantern Engine)
+GenericName=Lantern Engine
+Comment=Bloodborne (CUSA03173) via Lantern Engine; requires your own game dump
 Exec=bloodborne-pc
 Icon=bloodborne-pc
 Terminal=false
 Categories=Game;
-Keywords=bloodborne;bbport;ps4;fromsoftware;
+Keywords=bloodborne;lantern;engine;ps4;fromsoftware;
 StartupNotify=true

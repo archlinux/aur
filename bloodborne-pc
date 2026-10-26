@@ -1,12 +1,19 @@
 #!/bin/sh
-# Launcher for the Bloodborne bbport package.
-#
-# Same environment the previous desktop shortcut used. The game dump stays where
-# it is; override BB_GAME_DIR if yours lives elsewhere.
-export APPIMAGE_EXTRACT_AND_RUN=1
-export TMPDIR="${TMPDIR:-${XDG_CACHE_HOME:-$HOME/.cache}}"
-export NO_CLEANUP=1
-export BB_GAME_DIR="${BB_GAME_DIR:-$HOME/Games/BloodBorne/game/CUSA03173}"
-export BB_DLSS="${BB_DLSS:-0}"
+# Launcher for the Bloodborne Lantern Engine package.
+# The game dump, saves, mods and logs stay outside the package.
+set -eu
 
-exec /opt/ports/bloodborne-pc/Bloodborne-bbport.AppImage "$@"
+data_dir="${BB_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bbport}"
+out_dir="${BB_OUT_DIR:-$data_dir/out}"
+
+mkdir -p "$data_dir" "$out_dir" "$data_dir/user" "$data_dir/mods" "$data_dir/logs" "$data_dir/patches"
+export BB_DATA_DIR="$data_dir"
+export BB_OUT_DIR="$out_dir"
+export BB_CONFIG="${BB_CONFIG:-$data_dir/lantern.ini}"
+
+if [ ! -f "$BB_CONFIG" ]; then
+  cp /opt/ports/bloodborne-pc/engine/lantern.default.ini "$BB_CONFIG"
+fi
+
+cd /opt/ports/bloodborne-pc
+exec './Lantern Engine' "$@"

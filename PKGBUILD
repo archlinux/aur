@@ -1,33 +1,59 @@
 # Maintainer: mak <mak@localhost>
+#
+# Online (Lantern Engine 0.9.37, current upstream release):
+# The stock Linux engine/out/bb-start skips online.configure_online(), so this
+# package is offline out of the box. The local Linux fix is intentionally not
+# baked into the AUR recipe; see ~/ports/aur/README.md ("Online fix") and
+# reapply it after every upgrade. In Lantern Engine keep "Disable HTTP
+# Requests" OFF, and never share hd_token/thd_token.
 pkgname=bloodborne-pc-bin
-pkgver=0.6.2
+pkgver=0.9.37
 pkgrel=1
-pkgdesc="Bloodborne native PC port (bbport, SrShadowy build, requires your own game dump)"
+pkgdesc="Bloodborne PC port (Lantern Engine Linux, needs your own game dump)"
 arch=('x86_64')
-url="https://github.com/SrShadowy/bloodborne_pc"
-license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'systemd-libs' 'vulkan-icd-loader')
+url="https://github.com/Awakenchan/LanternEngine"
+license=('GPL-3.0-or-later')
+depends=('bash' 'glibc>=2.38' 'gcc-libs' 'python' 'icu' 'vulkan-icd-loader'
+         'libx11' 'libxcb' 'libxkbcommon' 'libxrandr' 'libxi' 'libxcursor' 'libxext'
+         'wayland' 'libdecor' 'libglvnd'
+         'fontconfig' 'freetype2' 'alsa-lib'
+         'openssl' 'zlib' 'xxhash' 'brotli' 'zstd')
+optdepends=('mangohud: Vulkan performance overlay'
+            'nvidia-utils: DLSS on RTX GPUs'
+            'pipewire: PipeWire audio'
+            'pulseaudio: PulseAudio audio')
 provides=('bloodborne-pc')
 conflicts=('bloodborne-pc')
 options=('!strip')
-source=("Bloodborne-bbport-x86_64.AppImage::https://github.com/SrShadowy/bloodborne_pc/releases/download/${pkgver}/Bloodborne-bbport-x86_64.AppImage"
-        'LICENSE'
+source=("LanternEngine-${pkgver}-linux-x64.tar.gz::https://github.com/Awakenchan/LanternEngine/releases/download/v${pkgver}/LanternEngine-${pkgver}-linux-x64.tar.gz"
         'bloodborne-pc'
         'bloodborne-pc.desktop'
         'bloodborne-pc.png')
-sha256sums=('da4232b6a83d2a3340323fea35448aee542014c9f8f857e68726a6373858a899'
-            'edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6'
-            '05d3255417a62c47655215e333b916a680a80a62c90e75e7a3345b66a270fbfa'
-            'dda96dd4187d0443828073f3ab5670c3e5226713c86e00dd59c821f7b72866a6'
+sha256sums=('e638358e0efcdee62418a52dcc02c27a83e840dcb3d2a9d56e5f8b967b13fc27'
+            'a0372a6b63d5592a4c63f5814ca9cef821f471a17012fc30df7e6756d01cbc4f'
+            'a461c2435b0e5e275c34e0e5e8b53761f8b60d320ea144f49e4eee77aa086b57'
             '43acf16390fd766a90d7c19f3c5b80803ae6b354cecc15ff5e60fbb39d6c1abb')
 
+prepare() {
+  # The packaged launcher must not try to write game_dir.txt into /opt.
+  sed -i 's|^remembered=.*|remembered=${BB_DATA_DIR}/game_dir.txt|' \
+    "$srcdir/LanternEngine/lantern.sh"
+}
+
 package() {
-  install -Dm755 "$srcdir/Bloodborne-bbport-x86_64.AppImage" \
-    "$pkgdir/opt/ports/bloodborne-pc/Bloodborne-bbport.AppImage"
+  install -d "$pkgdir/opt/ports/bloodborne-pc"
+  cp -a "$srcdir/LanternEngine/." "$pkgdir/opt/ports/bloodborne-pc/"
+
   install -Dm755 "$srcdir/bloodborne-pc" "$pkgdir/usr/bin/bloodborne-pc"
   install -Dm644 "$srcdir/bloodborne-pc.desktop" \
     "$pkgdir/usr/share/applications/bloodborne-pc.desktop"
   install -Dm644 "$srcdir/bloodborne-pc.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/bloodborne-pc.png"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 "$srcdir/LanternEngine/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LanternEngine/NOTICE" \
+    "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+  install -Dm644 "$srcdir/LanternEngine/README.txt" \
+    "$pkgdir/usr/share/doc/$pkgname/README.txt"
 }
