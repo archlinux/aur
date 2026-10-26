@@ -1,5 +1,5 @@
 pkgname=ezoo-download-git
-pkgver=1.0.6 # هذا الرقم سيتحدث تلقائياً بمجرد تشغيل makepkg
+pkgver=1.0.5.linux.r0.g252f2fb.nagar # هذا الرقم سيتحدث تلقائياً بمجرد تشغيل makepkg
 pkgrel=1
 pkgdesc="A fast, modern open-source alternative to Internet Download Manager (IDM) for Linux"
 arch=('x86_64')
