@@ -1,6 +1,6 @@
 pkgbase = qt6-dbusqml
 	pkgdesc = Standalone D-Bus binding for QML (no KDE dependencies)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/alexindigo/dbusqml
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = qt6-dbusqml
 	makedepends = cmake
 	depends = qt6-base
 	depends = qt6-declarative
-	provides = qt6-dbusqml=1.1.1
+	provides = qt6-dbusqml=1.1.2
 	conflicts = qt6-dbusqml-git
 	conflicts = qt6-dbusqml-reactive
-	source = qt6-dbusqml-1.1.1.tar.gz::https://github.com/alexindigo/dbusqml/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 2d4a96b5a4dd91dff7843908ab665a278e5bfa628ac3200c89402dcf036f2d45
+	source = qt6-dbusqml-1.1.2.tar.gz::https://github.com/alexindigo/dbusqml/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 00c7ec63c3407a53c0b43c5bfdec81f1a3f23f71aa757fab97ba24dacd2d7681
 
 pkgname = qt6-dbusqml
