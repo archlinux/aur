@@ -1,0 +1,106 @@
+From 7bad6c57110f8e86ecd1329622212647921b108d Mon Sep 17 00:00:00 2001
+From: Majd Abu Diab <majdabudiab2013@gmail.com>
+Date: Wed, 16 Sep 2026 11:55:24 +0300
+Subject: [PATCH] Remove X11-only task handling
+
+---
+ plugin/pagermodel.cpp  | 10 +---------
+ plugin/pagermodel.h    |  3 +--
+ plugin/windowmodel.cpp | 24 +-----------------------
+ 3 files changed, 3 insertions(+), 34 deletions(-)
+
+diff --git a/plugin/pagermodel.cpp b/plugin/pagermodel.cpp
+index ea6fdbd..df3723a 100644
+--- a/plugin/pagermodel.cpp
++++ b/plugin/pagermodel.cpp
+@@ -5,7 +5,6 @@
+ #include <taskmanager/virtualdesktopinfo.h>
+ #include <taskmanager/waylandtasksmodel.h>
+ #include <taskmanager/windowtasksmodel.h>
+-#include <taskmanager/xwindowtasksmodel.h>
+ 
+ #include <QDBusConnection>
+ #include <QDBusMessage>
+@@ -15,8 +14,6 @@
+ #include <QScreen>
+ #include <QUuid>
+ 
+-#include <KWindowSystem>
+-
+ #include <PlasmaActivities/Controller>
+ 
+ using namespace TaskManager;
+@@ -492,12 +489,7 @@ void PagerModel::drop(QMimeData *mimeData, int modifiers, const QVariant &itemId
+     };
+ 
+     bool ok = false;
+-    QList<QModelIndex> indices;
+-    if (KWindowSystem::isPlatformX11()) {
+-        indices = findWindows(TaskManager::XWindowTasksModel::winIdsFromMimeData(mimeData, &ok));
+-    } else if (KWindowSystem::isPlatformWayland()) {
+-        indices = findWindows(TaskManager::WaylandTasksModel::winIdsFromMimeData(mimeData, &ok));
+-    }
++    const QList<QModelIndex> indices = findWindows(TaskManager::WaylandTasksModel::winIdsFromMimeData(mimeData, &ok));
+     if (!ok) {
+         return;
+     }
+diff --git a/plugin/pagermodel.h b/plugin/pagermodel.h
+index 973a138..1317e94 100644
+--- a/plugin/pagermodel.h
++++ b/plugin/pagermodel.h
+@@ -1,12 +1,11 @@
+ #pragma once
+ 
+ #include <QAbstractListModel>
++#include <QMimeData>
+ #include <QQmlParserStatus>
+ #include <memory>
+ #include <qqmlregistration.h>
+ 
+-class QMimeData;
+-
+ class PagerModel : public QAbstractListModel, public QQmlParserStatus
+ {
+     Q_OBJECT
+diff --git a/plugin/windowmodel.cpp b/plugin/windowmodel.cpp
+index dc0a9b8..534cf87 100644
+--- a/plugin/windowmodel.cpp
++++ b/plugin/windowmodel.cpp
+@@ -7,9 +7,6 @@
+ #include <QMetaEnum>
+ #include <QScreen>
+ 
+-#include <KWindowSystem>
+-#include <KX11Extras>
+-
+ using namespace TaskManager;
+ 
+ class WindowModel::Private
+@@ -65,26 +62,7 @@ QVariant WindowModel::data(const QModelIndex &index, int role) const
+         QRect windowGeo = TaskFilterProxyModel::data(index, role).toRect();
+         const QRect clampingRect(QPoint(0, 0), d->pagerModel->pagerItemSize());
+ 
+-        if (KWindowSystem::isPlatformX11() && KX11Extras::mapViewport()) {
+-            int x = windowGeo.center().x() % clampingRect.width();
+-            int y = windowGeo.center().y() % clampingRect.height();
+-
+-            if (x < 0) {
+-                x = x + clampingRect.width();
+-            }
+-
+-            if (y < 0) {
+-                y = y + clampingRect.height();
+-            }
+-
+-            const QRect mappedGeo(x - windowGeo.width() / 2, y - windowGeo.height() / 2, windowGeo.width(), windowGeo.height());
+-
+-            if (filterByScreen() && screenGeometry().isValid()) {
+-                const QPoint &screenOffset = screenGeometry().topLeft();
+-
+-                windowGeo = mappedGeo.translated(0 - screenOffset.x(), 0 - screenOffset.y());
+-            }
+-        } else if (filterByScreen() && screenGeometry().isValid()) {
++        if (filterByScreen() && screenGeometry().isValid()) {
+             const QPoint &screenOffset = screenGeometry().topLeft();
+ 
+             windowGeo.translate(0 - screenOffset.x(), 0 - screenOffset.y());

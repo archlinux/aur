@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-kara
 	pkgdesc = KDE Plasma Pager Applet
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dhruv8sh/kara
 	arch = any
 	license = GPL-3.0-only
@@ -19,6 +19,8 @@ pkgbase = plasma6-applets-kara
 	provides = plasma6-applets-kara
 	conflicts = plasma6-applets-kara-git
 	source = git+https://github.com/dhruv8sh/kara.git
+	source = remove-x11-task-handling.patch
 	sha256sums = SKIP
+	sha256sums = 2f81c1c785db00519ae576f201dc00d737bc61da4afcba97b11a1054ea7a5799
 
 pkgname = plasma6-applets-kara

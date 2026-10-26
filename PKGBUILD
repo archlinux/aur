@@ -2,7 +2,7 @@
 
 pkgname=plasma6-applets-kara
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE Plasma Pager Applet"
 arch=('any')
 url="https://github.com/dhruv8sh/kara"
@@ -25,14 +25,23 @@ makedepends=(
   'vulkan-headers'
 )
 
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=(
+  "git+${url}.git"
+  'remove-x11-task-handling.patch'
+)
+sha256sums=(
+  'SKIP'
+  '2f81c1c785db00519ae576f201dc00d737bc61da4afcba97b11a1054ea7a5799'
+)
 
 prepare() {
   cd "$srcdir/kara"
 
   git fetch --tags
-  git checkout "v${pkgver}"
+  git checkout --force "v${pkgver}"
+  git clean -fd
+
+  patch -Np1 -i "$srcdir/remove-x11-task-handling.patch"
 }
 
 build() {
