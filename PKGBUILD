@@ -1,10 +1,10 @@
 pkgname=image-analyze
-pkgver=3.2.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Lightweight image viewer for wayland"
 arch=('any')
 url="https://github.com/prismaticbridge/image-analyze"
-sha256sums=('1238366ebffe9a73cb427a23fa4bf3b3a7836102c2d7246762f66e3c5c296ee5')
+sha256sums=('154e240dc2c708c7943332dea815729ceb58bc28254b9412ee6c7925bd47c32a')
 licence='GPL2'
 depends=('glfw' 'libspng' 'libjpeg-turbo')
 makedepends=('base-devel' 'cmake' 'pkgconf')
