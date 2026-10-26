@@ -2,7 +2,7 @@
 # Maintainer: Douglas de Moura <douglas at demoura dot dev>
 
 pkgname='chroncal-bin'
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc='Terminal-first calendar, todo, and journal manager'
 url='https://github.com/DouglasdeMoura/chroncal'
@@ -12,16 +12,16 @@ provides=('chroncal')
 conflicts=('chroncal')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/DouglasdeMoura/chroncal/releases/download/v${pkgver}/chroncal_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('069052a2bdf390dc919af6585f3bdf2323e2230c93b40b76ba552e49acd7042d')
+sha256sums_aarch64=('0608343b797455a5ec0b2d7fe8844afb66b382c6b7d072d1022be6c7a86e8268')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/DouglasdeMoura/chroncal/releases/download/v${pkgver}/chroncal_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('8748a0e7132ec6abef89b8e48ac4d09008b989c3a5378a7b06d91677bba2268a')
+sha256sums_armv7h=('7723b5e7f940c0ff0ab2e1868d626d936c7e47fa7136e79d2ca04c876943aeb1')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/DouglasdeMoura/chroncal/releases/download/v${pkgver}/chroncal_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('78ee512b09f214024432741334b5f26d0f0f112659c7ed3489f767a3ba6a0c59')
+sha256sums_i686=('9a5448b02946ae7b9dca84ceaca4f44ad5f07219ec0a51b736e51ab9d3ffde9b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/DouglasdeMoura/chroncal/releases/download/v${pkgver}/chroncal_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d82f35dd410065a0953422c04fca31bb4681225d7ac824ec32a821038f936571')
+sha256sums_x86_64=('ce2c3710cc33dc3331a18f870377ea9fd086ed88aae23cac6f7369c55047e4b4')
 
 package() {
   install -Dm755 "./chroncal" "${pkgdir}/usr/bin/chroncal"
