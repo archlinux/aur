@@ -28,7 +28,10 @@ pkgbase = ocsinventory-agent3-bin
 	conflicts = ocsinventory-agent3
 	options = !strip
 	options = !debug
+	backup = etc/ocsinventory-agent/config.json
 	source = https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/releases/download/3.0.0/OCSInventory-Agent-Setup-Linux-Deb-3.0.0.tar.xz
+	source = config.json
 	sha256sums = 05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5
+	sha256sums = 324d4bdd75ae48283d9a5634186bdfc90497f0830cfa6ddb17bdac2a33205171
 
 pkgname = ocsinventory-agent3-bin

@@ -20,10 +20,15 @@ optdepends=('cups: printer inventory'
 provides=('ocsinventory-agent3')
 conflicts=('ocsinventory-agent3')
 options=('!strip' '!debug')
-source=("$url/releases/download/$pkgver/OCSInventory-Agent-Setup-Linux-Deb-$pkgver.tar.xz")
-sha256sums=('05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5')
+backup=('etc/ocsinventory-agent/config.json')
+source=("$url/releases/download/$pkgver/OCSInventory-Agent-Setup-Linux-Deb-$pkgver.tar.xz"
+        'config.json')
+sha256sums=('05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5'
+            '324d4bdd75ae48283d9a5634186bdfc90497f0830cfa6ddb17bdac2a33205171')
 
 package() {
+  install -Dm600 config.json "$pkgdir/etc/ocsinventory-agent/config.json"
+
   cd OCSInventory-Agent-Linux-Deb-Setup
   install -Dm755 ocsinventory-cli "$pkgdir/usr/bin/ocsinventory-cli"
 }
