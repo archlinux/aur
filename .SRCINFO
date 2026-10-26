@@ -1,6 +1,6 @@
 pkgbase = note-gen-bin
 	pkgdesc = A local-first Markdown app that helps you collect scattered information and organize it into clear notes with AI.一款本地优先、以 Markdown 为核心，帮助你收集碎片信息，并借助 AI 将它们整理成清晰笔记的跨平台应用。
-	pkgver = 0.38.3
+	pkgver = 0.39.0
 	pkgrel = 1
 	url = https://notegen.top/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = note-gen-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = note-gen=0.38.3
+	provides = note-gen=0.39.0
 	conflicts = note-gen
-	source = note-gen-0.38.3.rpm::https://github.com/codexu/note-gen/releases/download/note-gen-v0.38.3/NoteGen-0.38.3-1.x86_64.rpm
-	sha256sums = dff999490e861f10977edefb779b6d670ee43764a8e7e6a539b9d983a37998b9
+	source = note-gen-0.39.0.rpm::https://github.com/codexu/note-gen/releases/download/note-gen-v0.39.0/NoteGen-0.39.0-1.x86_64.rpm
+	sha256sums = 58698a0cb6a051737681ab4e87f681def56a5cadc0b496448098bc440494350e
 
 pkgname = note-gen-bin
