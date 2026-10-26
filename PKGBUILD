@@ -3,14 +3,15 @@
 pkgname=sable-nightly-bin
 # pkgver mirrors the release version with '-' replaced by '.', so each nightly
 # sorts above the last. _relver keeps the original form for the asset URL.
-pkgver=2.1.5.nightly.261022103835.ad91058e4375
+pkgver=2.1.7.nightly.261026202914.603b27e76e16
 pkgrel=1
-_relver=2.1.5-nightly.261022103835.ad91058e4375
+_relver=2.1.7-nightly.261026202914.603b27e76e16
 pkgdesc="A Matrix client (nightly builds)"
 arch=('x86_64')
 url="https://git.sable.moe/SableClient/sable-next"
 license=('AGPL-3.0-or-later')
 depends=(
+  'alsa-lib'
   'gtk3'
   'nss'
   'libnotify'
@@ -22,15 +23,21 @@ depends=(
   'hicolor-icon-theme'
   'desktop-file-utils'
 )
+provides=("sable-nightly=${pkgver}")
+conflicts=('sable-nightly')
 options=('!strip' '!debug')
-install=${pkgname}.install
+noextract=("${pkgname}-${pkgver}-amd64.deb")
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/nightly-${_relver}/sable-${_relver}-amd64.deb")
-sha256sums_x86_64=('4d6e58efdb8aaeee3740ea86a28b631fda92bd6da7eb0ab1103e3e5d094741be')
+sha256sums_x86_64=('2eb398e1889ab6813b2d7cbdceabe5db66a86e38602e9918e390a6e65b26a376')
 
 package() {
   # bsdtar reads whichever compression the deb uses for data.tar.*
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-amd64.deb" 'data.tar*' \
     | bsdtar -xp -C "${pkgdir}"
   find "${pkgdir}" -type d -exec chmod 755 {} +
-  find "${pkgdir}/opt" -name chrome-sandbox -exec chmod 4755 {} +
+  chmod 4755 "${pkgdir}/opt/Sable Nightly/chrome-sandbox"
+  # Updates are managed by pacman, not electron-updater's Debian installer.
+  rm -f "${pkgdir}/opt/Sable Nightly/resources/app-update.yml"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s '/opt/Sable Nightly/sable-nightly' "${pkgdir}/usr/bin/sable-nightly"
 }
