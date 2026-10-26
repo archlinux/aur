@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale-bin
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 # Upstream renamed DeepSeek-TUI → CodeWhale on 2026-05-24 and removed the
 # legacy `deepseek`/`deepseek-tui` stub binaries in v0.8.54.
@@ -14,6 +14,9 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/codewhale-hq/Codewhale"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'dbus')
+# The experimental extension host ([features] extension_host) runs the embedded
+# TypeScript bundle in Node; Bun is only qualified on macOS.
+optdepends=('nodejs: run plugins through the experimental extension host')
 provides=('codewhale' 'codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 replaces=('deepseek-tui-bin')
@@ -23,8 +26,8 @@ _relurl="${url}/releases/download/v${pkgver}"
 
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/codewhale-hq/Codewhale/v${pkgver}/LICENSE")
 sha256sums=('25b5d5a7553af7604772f65aac936540d7e9f5562a9e6a8ca9d02e4f628e9d51')
-sha256sums_x86_64=('ed2d83b3853de803ee39f574c745d1e1c9f6f8bf99ed3aec3835425e0c26993b')
-sha256sums_aarch64=('efe702a5083fe78a7e09676b129dedba4f595a12b4c824c7f1a794da9ca6d6da')
+sha256sums_x86_64=('28ac984a2f145bf99b29933498a3f951a591283c22782933ce933861dda6c70b')
+sha256sums_aarch64=('b7c55e36f7ef30c8fae4b8741bfaf9e0177220a9d4d6d3e26650609b4d9ffe90')
 
 # v0.9.5 folded the TUI into the CLI: upstream now uploads one 60 MB binary and
 # publishes it under all three release names (codewhale / codewhale-tui /
