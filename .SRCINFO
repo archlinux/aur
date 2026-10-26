@@ -1,0 +1,21 @@
+pkgbase = sonic-exiv2-library
+	pkgdesc = A library to manipulate pictures metadata
+	pkgver = 26.08.2
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-exiv2-library
+	arch = x86_64
+	groups = sonicde
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	makedepends = sonic-frameworks-cmake-modules
+	depends = exiv2
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	provides = libkexiv2
+	conflicts = libkexiv2
+	source = sonic-exiv2-library-26.08.2.tar.gz::https://github.com/Sonic-DE/sonic-exiv2-library/archive/refs/tags/26.08.2.tar.gz
+	sha256sums = cc2135570f0649a5ec3e2d03663470674ae9822d50419cca97891d5f15a3cfb8
+
+pkgname = sonic-exiv2-library
