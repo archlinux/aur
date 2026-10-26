@@ -26,6 +26,10 @@ source=("$url/releases/download/$pkgver/OCSInventory-Agent-Setup-Linux-Deb-$pkgv
 sha256sums=('05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5'
             '3d1a7939a86f46a01efc14de561371ca63ad5228256585c37139b0032f603027')
 
+prepare() {
+  sed -i '/^PIDFile=/d' OCSInventory-Agent-Linux-Deb-Setup/ocsinventory-agent.service
+}
+
 package() {
   install -Dm600 config.json "$pkgdir/etc/ocsinventory-agent/config.json"
 
