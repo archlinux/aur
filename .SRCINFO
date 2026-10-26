@@ -1,0 +1,27 @@
+pkgbase = asc-amct-bin
+	pkgdesc = Huawei Ascend Model Compression Toolkit: amct_acl plus Caffe/ONNX/PyTorch/TensorFlow plugins
+	pkgver = 9.2.0
+	pkgrel = 1
+	url = https://www.hiascend.com/developer/download/community/result?module=cann
+	arch = x86_64
+	arch = aarch64
+	license = custom:CANN-OSLA-2.0
+	makedepends = unzip
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	depends = python
+	depends = asc-toolkit
+	depends = asc-runtime
+	provides = asc-amct
+	conflicts = asc-amct
+	noextract = cann-amct-9.2.0.zip
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source_x86_64 = cann-amct-9.2.0.zip::https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.2.0/Ascend-cann-amct_9.2.0_linux-x86_64.zip
+	sha256sums_x86_64 = c1356f297f7302da168bfd59d4901f8548da67e438163da0a63d9eaa6f62a971
+	source_aarch64 = cann-amct-9.2.0.zip::https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.2.0/Ascend-cann-amct_9.2.0_linux-aarch64.zip
+	sha256sums_aarch64 = 29b2a706dabbcfaf61efebfb2e37a1f2bf14f76506d6e91da6a050a9d5cadf7c
+
+pkgname = asc-amct-bin
