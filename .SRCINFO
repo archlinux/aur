@@ -1,7 +1,7 @@
 pkgbase = lenovo-fanboost
 	pkgdesc = Fan control and boost daemon for Lenovo laptops (DKMS)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Helix128/lenovo-fanboost
 	install = lenovo-fanboost.install
 	arch = any
