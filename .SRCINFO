@@ -1,0 +1,22 @@
+pkgbase = sonic-frameworks-syntax-highlighting
+	pkgdesc = Syntax highlighting engine for structured text and code
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-syntax-highlighting
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = MIT
+	makedepends = doxygen
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	optdepends = qt6-declarative: QML bindings
+	provides = syntax-highlighting
+	conflicts = syntax-highlighting
+	source = sonic-frameworks-syntax-highlighting-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-syntax-highlighting/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 7f4fae2e60d203de1fd24a77c709073bad2407aa7c198154a263c6caea6fcd91
+
+pkgname = sonic-frameworks-syntax-highlighting
