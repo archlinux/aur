@@ -1,0 +1,23 @@
+pkgbase = phrased-bin
+	pkgdesc = Types phrases from the Phrasedeck iPhone app into the focused window (Wayland)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ericdahl-dev/phrasedeck
+	install = phrased-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Proprietary
+	depends = wtype
+	depends = wl-clipboard
+	optdepends = ydotool: typing on GNOME or KDE (Wayland)
+	optdepends = xdotool: typing on X11
+	optdepends = xclip: pasting on X11
+	optdepends = libnotify: the notice when a Phrase edited on a panel is first typed
+	provides = phrased
+	conflicts = phrased
+	source_x86_64 = https://github.com/ericdahl-dev/phrasedeck/releases/download/v0.3.0/phrased-0.3.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = ecc0ac2d184e3432747c1771adf788b3381c7abf9bf0d3d0635e7f2424b62d97
+	source_aarch64 = https://github.com/ericdahl-dev/phrasedeck/releases/download/v0.3.0/phrased-0.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9ed0d9989e7c9c5313142e8f90d0cf09691b726c8477d92c524cacf00462915f
+
+pkgname = phrased-bin
