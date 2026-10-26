@@ -1,6 +1,6 @@
 pkgbase = agent-browser-bin
 	pkgdesc = Fast browser automation CLI for AI agents (native binary)
-	pkgver = 0.39.2
+	pkgver = 0.39.3
 	pkgrel = 1
 	url = https://github.com/vercel-labs/agent-browser
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = agent-browser-bin
 	optdepends = lightpanda: Alternative browser engine optimized for AI
 	optdepends = appium: For iOS Simulator support (--provider ios)
 	optdepends = nss: Private proxy CA trust support (--ca-cert)
-	provides = agent-browser=0.39.2
+	provides = agent-browser=0.39.3
 	conflicts = agent-browser
 	options = !strip
 	options = !debug
-	source = agent-browser-0.39.2-50c34e78c98dbe8add0b3ff36b4bcd7a47f1022b.tar.gz::https://github.com/vercel-labs/agent-browser/archive/50c34e78c98dbe8add0b3ff36b4bcd7a47f1022b.tar.gz
-	sha256sums = a7f8981825988b610132b5fd8be1edbd907a944a303d2f08318633f6f744c219
-	source_x86_64 = agent-browser-bin-0.39.2-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v0.39.2/agent-browser-linux-x64
-	sha256sums_x86_64 = 0f68e74e792bf7d0814c58ee4b86dbcacfd3997c27805cd12c2d15e0ca38638e
-	source_aarch64 = agent-browser-bin-0.39.2-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v0.39.2/agent-browser-linux-arm64
-	sha256sums_aarch64 = 72be7bfed76bb03142d9fba9f3b0e5e9ae535ff1789f6be6bdfc26f8daa136e5
+	source = agent-browser-0.39.3-bac577a80442fd00f6f1756e5852a5194d53ff21.tar.gz::https://github.com/vercel-labs/agent-browser/archive/bac577a80442fd00f6f1756e5852a5194d53ff21.tar.gz
+	sha256sums = 87cb035fa15dcb33c657fcdc9caa2073b8dc0c736660aa75404bfadb0cbfe4fb
+	source_x86_64 = agent-browser-bin-0.39.3-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v0.39.3/agent-browser-linux-x64
+	sha256sums_x86_64 = 2628338df946e186a7b0267d16e7e5b5ebe567adbc18084c59504227f05b274f
+	source_aarch64 = agent-browser-bin-0.39.3-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v0.39.3/agent-browser-linux-arm64
+	sha256sums_aarch64 = 6f86b0d8ba2d92bd52f72ed83424b5232d8f572e7f75b78e6331a64cb6b7439e
 
 pkgname = agent-browser-bin
