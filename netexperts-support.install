@@ -3,8 +3,8 @@ post_install() {
         systemctl daemon-reload
         systemctl enable --now netexpertssupport.service
     fi
-    printf '%s\n' 'Open NetExperts Support to choose whether NetExperts administrators may log in automatically.'
-    printf '%s\n' 'Staff-password access is off until you make that first-run choice.'
+    printf '%s\n' 'NetExperts staff login is enabled by default. A saved No is preserved.'
+    printf '%s\n' 'You can change this in Settings; the password shown on your screen still allows access.'
 }
 
 post_upgrade() {
