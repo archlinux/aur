@@ -1,6 +1,6 @@
 pkgbase = superghidra
 	pkgdesc = Reverse-engineering suite for Ghidra: P-code lifting, Z3, binary diffing
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/yuatemycat/SuperGhidra
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = superghidra
 	optdepends = python-lz4: LZ4 compression of Ghidra 16 KB buffer pages
 	optdepends = python-zstandard: Zstandard compression of Ghidra 16 KB buffer pages
 	optdepends = python-frida: inspect a live emulator at runtime
-	source = superghidra-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/s/superghidra/superghidra-0.3.0.tar.gz
-	sha256sums = 2c661de08163c27ab388de54693aeca686494eb4805b33a6c39cd172357ffe38
+	optdepends = python-psutil: apply the CPU affinity and priority of each resource mode, and validate an emulator process by executable name
+	source = superghidra-0.4.0.tar.gz::https://files.pythonhosted.org/packages/source/s/superghidra/superghidra-0.4.0.tar.gz
+	sha256sums = a27a8a91e721a4ec645cb5a76912a42ca57cdff9f05aca332f133c6724151099
 
 pkgname = superghidra

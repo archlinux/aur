@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=superghidra
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Reverse-engineering suite for Ghidra: P-code lifting, Z3, binary diffing'
 arch=('any')
@@ -18,9 +18,10 @@ optdepends=(
   'python-lz4: LZ4 compression of Ghidra 16 KB buffer pages'
   'python-zstandard: Zstandard compression of Ghidra 16 KB buffer pages'
   'python-frida: inspect a live emulator at runtime'
+  'python-psutil: apply the CPU affinity and priority of each resource mode, and validate an emulator process by executable name'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2c661de08163c27ab388de54693aeca686494eb4805b33a6c39cd172357ffe38')
+sha256sums=('a27a8a91e721a4ec645cb5a76912a42ca57cdff9f05aca332f133c6724151099')
 
 latestver() {
   curl -fsSL "https://pypi.org/pypi/${pkgname}/json" |
@@ -35,15 +36,19 @@ build() {
 # The sdist ships no upstream test suite, so this asserts the published surface
 # instead. The wheel installs the package plus ~30 top-level modules that
 # sibling projects import by their bare names, and every optional backend is
-# imported lazily, so importing the whole surface from the wheel is what proves
-# a default install needs no optional dependency and that nothing was dropped or
-# shadowed in packaging. `filter` is asserted because it is the subcommand that
-# exercises the lifting stack without invoking Ghidra, and its output is checked
-# rather than its exit status.
+# imported lazily, so importing the whole surface is what proves a default
+# install needs no optional dependency and that nothing was dropped or shadowed
+# in packaging. That surface is only importable once installed, so the wheel is
+# installed into a throwaway root first; the same install is what proves the
+# JSON schemas reached site-packages, since they are opened by path rather than
+# through the import system. `filter` is asserted because it is the subcommand
+# that exercises the lifting stack without invoking Ghidra, and its output is
+# checked rather than its exit status.
 check() {
   cd "$srcdir/${pkgname}-${pkgver}"
   python - <<'PY'
 import importlib
+import os
 import pathlib
 import subprocess
 import sys
@@ -63,19 +68,38 @@ def dotted(name):
 
 
 modules = sorted(module for module in map(dotted, shipped) if module)
-for module in modules:
-    importlib.import_module(module)
-print(f"imported {len(modules)} modules")
 
-raw = "undefined4 main(void)\n{\n  return 0;\n}\n"
 with tempfile.TemporaryDirectory() as tmp:
-    source = pathlib.Path(tmp) / "raw.c"
-    source.write_text(raw)
-    done = subprocess.run(
-        [sys.executable, "-m", "superghidra", "filter", str(source)],
+    install = subprocess.run(
+        [sys.executable, "-m", "installer", f"--destdir={tmp}", str(wheel)],
         capture_output=True,
         text=True,
     )
+    assert install.returncode == 0, install.stderr
+
+    installed = pathlib.Path(tmp)
+    site = next(installed.glob("usr/lib/python3.*/site-packages"))
+    sys.path.insert(0, str(site))
+
+    for module in modules:
+        importlib.import_module(module)
+    print(f"imported {len(modules)} modules")
+
+    validator = importlib.import_module("superghidra.schemas.validator")
+    for schema in validator.SCHEMA_FILES:
+        validator.load_schema(schema)
+    print(f"loaded {len(validator.SCHEMA_FILES)} schemas")
+
+    raw = "undefined4 main(void)\n{\n  return 0;\n}\n"
+    with tempfile.TemporaryDirectory() as work:
+        source = pathlib.Path(work) / "raw.c"
+        source.write_text(raw)
+        done = subprocess.run(
+            [str(next(installed.glob("usr/bin/superghidra"))), "filter", str(source)],
+            capture_output=True,
+            text=True,
+            env={**os.environ, "PYTHONPATH": str(site)},
+        )
 
 assert done.returncode == 0, done.stderr
 assert "uint32_t main(void)" in done.stdout, done.stdout
