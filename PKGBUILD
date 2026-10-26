@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/driftwood-game-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=driftwood-game-bin
-pkgver=0.5.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Open-world survival crafting game: gather, build, explore, fight, trade and learn magic"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('libdecor: window decorations on GNOME Wayland'
 options=('!strip')   # self-contained .NET single-file bundle — stripping breaks it
 source_x86_64=("$url/releases/download/v$pkgver/Driftwood-v$pkgver-linux-x64.tar.gz")
 # The release's own tarball, hashed when it was built (publish-release.sh writes the .sha256).
-sha256sums_x86_64=('7f8d73131889985688c5413fc6b2a3289315ff6f8d7628347512965312846341')
+sha256sums_x86_64=('49e54c0971223883accbb1cf20beedf1533570bab4115605f120f4bb14cff6e3')
 
 package() {
     local id=io.github.codingncaffeine.Driftwood
