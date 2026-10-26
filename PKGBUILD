@@ -1,29 +1,24 @@
 # Maintainer: Miguel Scaramozzino <mikele@gmail.com>
 
 pkgname=leenky-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Leenky, a desktop clipboard URL collector for Linux"
 arch=('x86_64')
 url="https://github.com/mikelexp/Leenky"
 license=('custom')
-depends=(
-  'glibc'
-  'libxcb'
-  'libxkbcommon-x11'
-  'xcb-util-cursor'
-  'xcb-util-image'
-  'xcb-util-keysyms'
-  'xcb-util-renderutil'
-  'xcb-util-wm'
-)
+depends=('glibc' 'gcc-libs' 'gtk3')
 source=("${url}/releases/download/v${pkgver}/leenky-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('e494bd8def4d9d2d6b66e7fe2ecd33a3e548548ad5cb7ec7e1b414d5b3005ff3')
+sha256sums=('c5711d519c3dc4e77efb909ac7221cfc0e779ae18adae83961464b566bda7cbd')
 
 package() {
   cd "${srcdir}"
-
-  install -Dm755 leenky "${pkgdir}/usr/bin/leenky"
+  install -d "${pkgdir}/usr/lib/leenky"
+  cp -a leenky/. "${pkgdir}/usr/lib/leenky/"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/leenky" <<'EOF'
+#!/usr/bin/env sh
+exec /usr/lib/leenky/leenky "$@"
+EOF
   install -Dm644 leenky.desktop "${pkgdir}/usr/share/applications/leenky.desktop"
-  install -Dm644 icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/leenky.png"
+  install -Dm644 leenky.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/leenky.png"
 }
