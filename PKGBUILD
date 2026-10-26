@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -11,15 +11,19 @@ depends=(glibc taglib)
 makedepends=(git go scdoc)
 checkdepends=(ffmpeg rsgain)
 optdepends=(
-  "ffmpeg: transcoding for device sync"
+  "ffmpeg: track splitting and transcoding for device sync"
   "rsgain: apply replaygain to extracted audio"
   "yt-dlp: automatic video downloads"
 )
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('90b3ec85924417517ca0607af66cddc8dee67020eb75aa74caf0b6672aac963a')
+sha256sums=('78f815fde73b60b826152e901298089e1cf132e1c0c9af358e6a95340cb7dfe8')
 
 prepare() {
   cd $pkgname
+
+  # fix failing test, remove on next release
+  git cherry-pick d907fe70302ea13e0adece539b623cd5a0559ee4
+
   export GOPATH="${srcdir}/gopath"
   go mod download
 }
@@ -64,6 +68,8 @@ package() {
 
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm0644 DESIGN.md "$pkgdir/usr/share/doc/$pkgname/DESIGN.md"
+  install -Dm0644 SPECTRUM.md "$pkgdir/usr/share/doc/$pkgname/SPECTRUM.md"
   install -Dm0644 WORKFLOW.md "$pkgdir/usr/share/doc/$pkgname/WORKFLOW.md"
 }
 
