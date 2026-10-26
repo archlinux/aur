@@ -13,9 +13,9 @@
 #   cd libfprint-goodix55b4-milan/packaging/arch && makepkg -si
 
 pkgname=libfprint-goodix55b4
-pkgver=1.94.10.m4
+pkgver=1.94.10.m5
 pkgrel=1
-pkgdesc="libfprint with the Goodix 27c6:55b4 driver using the native Milan matcher"
+pkgdesc="libfprint with the Goodix 27c6:55b4/5584 driver using the native Milan matcher"
 arch=('x86_64')
 url="https://github.com/TheWeirdDev/libfprint-goodix55b4-milan"
 license=('LGPL-2.1-or-later')
@@ -48,7 +48,8 @@ check() {
   # integrate.py must have moved 55b4 from the "unsupported" list to the
   # goodix55b4 driver. (The autosuspend hwdb itself ships with systemd.)
   grep -q '^usb:v27C6p55B4' libfprint/data/autosuspend.hwdb
-  ! grep -q '0x55b4' libfprint/libfprint/fprint-list-udev-hwdb.c
+  grep -q '^usb:v27C6p5584' libfprint/data/autosuspend.hwdb
+  ! grep -qE '0x(55b4|5584)' libfprint/libfprint/fprint-list-udev-hwdb.c
 }
 
 package() {
