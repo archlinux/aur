@@ -1,6 +1,6 @@
 pkgbase = mbelib-neo-git
 	pkgdesc = IMBE, AMBE and AMBE+2 vocoder library with TETRA ACELP decoding. Supports P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA, ProVoice and TETRA.
-	pkgver = 2.6.2.r15.g66de7b8
+	pkgver = 2.6.2.r16.gc37d2c3
 	pkgrel = 1
 	url = https://github.com/arancormonk/mbelib-neo
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = mbelib-neo-git
 	makedepends = cmake
 	makedepends = git
 	depends = glibc
-	provides = mbelib-neo=2.6.2.r15.g66de7b8
+	provides = mbelib-neo=2.6.2.r16.gc37d2c3
 	conflicts = mbelib-neo
 	options = staticlibs
 	source = mbelib-neo-git::git+https://github.com/arancormonk/mbelib-neo.git#branch=main
-	source = pffft-548918d826a45a1f4cd1b3236ad0efea801b7605.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/548918d826a45a1f4cd1b3236ad0efea801b7605
+	source = pffft-316f0b01e3bdd327e89933891ea2c0be2d10c75e.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/316f0b01e3bdd327e89933891ea2c0be2d10c75e
 	sha256sums = SKIP
-	sha256sums = 0b6be48c2963e1b1e91834be21c856ea698a40345f54a076642c7aa1ff642561
+	sha256sums = 92c723fb1ed5ffbf3130318447a7f12acc6cdaa6c442d667d8a3eab9dd86dd02
 
 pkgname = mbelib-neo-git
