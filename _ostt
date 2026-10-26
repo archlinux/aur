@@ -17,8 +17,9 @@ _ostt() {
     _arguments "${_arguments_options[@]}" : \
 '-o+[Write transcription to file instead of stdout (record default command)]:FILE:_default' \
 '--output=[Write transcription to file instead of stdout (record default command)]:FILE:_default' \
-'-p+[Enable processing after transcription]' \
-'--process=[Enable processing after transcription]' \
+'-p+[Enable processing after transcription. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--process=[Enable processing after transcription. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--attach=[Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
@@ -42,8 +43,9 @@ _ostt() {
 _arguments "${_arguments_options[@]}" : \
 '-o+[Write transcription to file instead of stdout]:FILE:_default' \
 '--output=[Write transcription to file instead of stdout]:FILE:_default' \
-'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
-'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--attach=[Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
@@ -58,8 +60,9 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-o+[Write transcription to file instead of stdout]:FILE:_default' \
 '--output=[Write transcription to file instead of stdout]:FILE:_default' \
-'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
-'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--attach=[Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
@@ -74,8 +77,9 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-o+[Write transcription to file instead of stdout]:FILE:_default' \
 '--output=[Write transcription to file instead of stdout]:FILE:_default' \
-'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
-'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--attach=[Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
@@ -91,8 +95,9 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-o+[Write transcription to file instead of stdout]:FILE:_default' \
 '--output=[Write transcription to file instead of stdout]:FILE:_default' \
-'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
-'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--attach=[Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
@@ -108,8 +113,9 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-o+[Write transcription to file instead of stdout]:FILE:_default' \
 '--output=[Write transcription to file instead of stdout]:FILE:_default' \
-'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
-'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3]' \
+'--attach=[Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
@@ -794,6 +800,69 @@ _arguments "${_arguments_options[@]}" : \
 '--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
+(agent)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__agent_commands" \
+"*::: :->agent" \
+&& ret=0
+
+    case $state in
+    (agent)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-agent-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(models)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':id -- Agent id, as in `ostt agent list`:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__agent__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-agent-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(models)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
 (config)
 _arguments "${_arguments_options[@]}" : \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
@@ -981,6 +1050,7 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-o+[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
 '--output=[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
+'--attach=[Image to send to the action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '--format=[Output format for \`ostt process list\`]:FORMAT:(table json)' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
 '-c[Copy result to clipboard instead of stdout (shadows global -c)]' \
@@ -996,6 +1066,7 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-o+[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
 '--output=[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
+'--attach=[Image to send to the action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)]:FILE:_files' \
 '--format=[Output format for \`ostt process list\`]:FORMAT:(table json)' \
 '*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
 '-c[Copy result to clipboard instead of stdout (shadows global -c)]' \
@@ -1487,6 +1558,30 @@ esac
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(agent)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__agent_commands" \
+"*::: :->agent" \
+&& ret=0
+
+    case $state in
+    (agent)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-agent-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(models)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
 (config)
 _arguments "${_arguments_options[@]}" : \
 ":: :_ostt__help__config_commands" \
@@ -1638,6 +1733,7 @@ _ostt_commands() {
 'keyword:Manage keywords for improved transcription accuracy' \
 'k:Manage keywords for improved transcription accuracy' \
 'replace:Manage deterministic text replace rules' \
+'agent:List the agents AI processing actions can run' \
 'config:Open configuration file in your preferred editor' \
 'c:Open configuration file in your preferred editor' \
 'logs:Show recent log entries from the application' \
@@ -1651,6 +1747,49 @@ _ostt_commands() {
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'ostt commands' commands "$@"
+}
+(( $+functions[_ostt__agent_commands] )) ||
+_ostt__agent_commands() {
+    local commands; commands=(
+'list:List agents, whether each is installed and takes images' \
+'models:List the models an agent offers, one per line, if it can list them' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt agent commands' commands "$@"
+}
+(( $+functions[_ostt__agent__help_commands] )) ||
+_ostt__agent__help_commands() {
+    local commands; commands=(
+'list:List agents, whether each is installed and takes images' \
+'models:List the models an agent offers, one per line, if it can list them' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt agent help commands' commands "$@"
+}
+(( $+functions[_ostt__agent__help__help_commands] )) ||
+_ostt__agent__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt agent help help commands' commands "$@"
+}
+(( $+functions[_ostt__agent__help__list_commands] )) ||
+_ostt__agent__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt agent help list commands' commands "$@"
+}
+(( $+functions[_ostt__agent__help__models_commands] )) ||
+_ostt__agent__help__models_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt agent help models commands' commands "$@"
+}
+(( $+functions[_ostt__agent__list_commands] )) ||
+_ostt__agent__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt agent list commands' commands "$@"
+}
+(( $+functions[_ostt__agent__models_commands] )) ||
+_ostt__agent__models_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt agent models commands' commands "$@"
 }
 (( $+functions[_ostt__auth_commands] )) ||
 _ostt__auth_commands() {
@@ -1908,6 +2047,7 @@ _ostt__help_commands() {
 'history:View and browse transcription history' \
 'keyword:Manage keywords for improved transcription accuracy' \
 'replace:Manage deterministic text replace rules' \
+'agent:List the agents AI processing actions can run' \
 'config:Open configuration file in your preferred editor' \
 'logs:Show recent log entries from the application' \
 'process:Post-process a transcription from history' \
@@ -1917,6 +2057,24 @@ _ostt__help_commands() {
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'ostt help commands' commands "$@"
+}
+(( $+functions[_ostt__help__agent_commands] )) ||
+_ostt__help__agent_commands() {
+    local commands; commands=(
+'list:List agents, whether each is installed and takes images' \
+'models:List the models an agent offers, one per line, if it can list them' \
+    )
+    _describe -t commands 'ostt help agent commands' commands "$@"
+}
+(( $+functions[_ostt__help__agent__list_commands] )) ||
+_ostt__help__agent__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help agent list commands' commands "$@"
+}
+(( $+functions[_ostt__help__agent__models_commands] )) ||
+_ostt__help__agent__models_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help agent models commands' commands "$@"
 }
 (( $+functions[_ostt__help__auth_commands] )) ||
 _ostt__help__auth_commands() {

@@ -19,6 +19,9 @@ _ostt() {
             ostt,a)
                 cmd="ostt__auth"
                 ;;
+            ostt,agent)
+                cmd="ostt__agent"
+                ;;
             ostt,auth)
                 cmd="ostt__auth"
                 ;;
@@ -93,6 +96,24 @@ _ostt() {
                 ;;
             ostt,transcribe)
                 cmd="ostt__transcribe"
+                ;;
+            ostt__agent,help)
+                cmd="ostt__agent__help"
+                ;;
+            ostt__agent,list)
+                cmd="ostt__agent__list"
+                ;;
+            ostt__agent,models)
+                cmd="ostt__agent__models"
+                ;;
+            ostt__agent__help,help)
+                cmd="ostt__agent__help__help"
+                ;;
+            ostt__agent__help,list)
+                cmd="ostt__agent__help__list"
+                ;;
+            ostt__agent__help,models)
+                cmd="ostt__agent__help__models"
                 ;;
             ostt__auth,help)
                 cmd="ostt__auth__help"
@@ -202,6 +223,9 @@ _ostt() {
             ostt__daemon__help,uninstall)
                 cmd="ostt__daemon__help__uninstall"
                 ;;
+            ostt__help,agent)
+                cmd="ostt__help__agent"
+                ;;
             ostt__help,auth)
                 cmd="ostt__help__auth"
                 ;;
@@ -249,6 +273,12 @@ _ostt() {
                 ;;
             ostt__help,transcribe)
                 cmd="ostt__help__transcribe"
+                ;;
+            ostt__help__agent,list)
+                cmd="ostt__help__agent__list"
+                ;;
+            ostt__help__agent,models)
+                cmd="ostt__help__agent__models"
                 ;;
             ostt__help__auth,list)
                 cmd="ostt__help__auth__list"
@@ -470,7 +500,7 @@ _ostt() {
 
     case "${cmd}" in
         ostt)
-            opts="-c -o -p -m -h -V --clipboard --paste --output --process --model --param --help --version record r retry transcribe t replay rp auth a model history h keyword k replace config c logs process p launch l completions daemon d help"
+            opts="-c -o -p -m -h -V --clipboard --paste --output --process --attach --model --param --help --version record r retry transcribe t replay rp auth a model history h keyword k replace agent config c logs process p launch l completions daemon d help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -492,6 +522,10 @@ _ostt() {
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
+                --attach)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
                 --model)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -500,6 +534,120 @@ _ostt() {
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
+                --param)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__agent)
+            opts="-h --param --help list models help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                --param)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__agent__help)
+            opts="list models help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__agent__help__help)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__agent__help__list)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__agent__help__models)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__agent__list)
+            opts="-h --format --param --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                --format)
+                    COMPREPLY=($(compgen -W "table json" -- "${cur}"))
+                    return 0
+                    ;;
+                --param)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__agent__models)
+            opts="-h --param --help <ID>"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
                 --param)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -1156,8 +1304,50 @@ _ostt() {
             return 0
             ;;
         ostt__help)
-            opts="record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help"
+            opts="record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__help__agent)
+            opts="list models"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__help__agent__list)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        ostt__help__agent__models)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
@@ -2562,7 +2752,7 @@ _ostt() {
             return 0
             ;;
         ostt__process)
-            opts="-c -o -h --clipboard --paste --output --format --param --help [INDEX_OR_ACTION] [ACTION]"
+            opts="-c -o -h --clipboard --paste --output --attach --format --param --help [INDEX_OR_ACTION] [ACTION]"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2573,6 +2763,10 @@ _ostt() {
                     return 0
                     ;;
                 -o)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --attach)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
@@ -2592,7 +2786,7 @@ _ostt() {
             return 0
             ;;
         ostt__record)
-            opts="-c -o -p -m -h --clipboard --paste --output --process --model --param --help"
+            opts="-c -o -p -m -h --clipboard --paste --output --process --attach --model --param --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2611,6 +2805,10 @@ _ostt() {
                     return 0
                     ;;
                 -p)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --attach)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
@@ -2670,7 +2868,7 @@ _ostt() {
             return 0
             ;;
         ostt__retry)
-            opts="-c -o -p -m -h --clipboard --paste --output --process --model --param --help [N]"
+            opts="-c -o -p -m -h --clipboard --paste --output --process --attach --model --param --help [N]"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2689,6 +2887,10 @@ _ostt() {
                     return 0
                     ;;
                 -p)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --attach)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
@@ -2712,7 +2914,7 @@ _ostt() {
             return 0
             ;;
         ostt__transcribe)
-            opts="-c -o -p -m -h --clipboard --paste --output --process --model --param --help <FILE>"
+            opts="-c -o -p -m -h --clipboard --paste --output --process --attach --model --param --help <FILE>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2731,6 +2933,10 @@ _ostt() {
                     return 0
                     ;;
                 -p)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --attach)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;

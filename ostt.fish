@@ -1,6 +1,6 @@
 # Print an optspec for argparse to handle cmd's options that are independent of any subcommand.
 function __fish_ostt_global_optspecs
-	string join \n c/clipboard paste o/output= p/process= m/model= param= h/help V/version
+	string join \n c/clipboard paste o/output= p/process= attach= m/model= param= h/help V/version
 end
 
 function __fish_ostt_needs_command
@@ -25,7 +25,8 @@ function __fish_ostt_using_subcommand
 end
 
 complete -c ostt -n "__fish_ostt_needs_command" -s o -l output -d 'Write transcription to file instead of stdout (record default command)' -r
-complete -c ostt -n "__fish_ostt_needs_command" -s p -l process -d 'Enable processing after transcription' -r
+complete -c ostt -n "__fish_ostt_needs_command" -s p -l process -d 'Enable processing after transcription. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3' -r
+complete -c ostt -n "__fish_ostt_needs_command" -l attach -d 'Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_needs_command" -s m -l model -d 'Override transcription model for this run' -r
 complete -c ostt -n "__fish_ostt_needs_command" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_needs_command" -s c -l clipboard -d 'Copy transcription to clipboard instead of stdout (record default command)'
@@ -47,6 +48,7 @@ complete -c ostt -n "__fish_ostt_needs_command" -f -a "h" -d 'View and browse tr
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "keyword" -d 'Manage keywords for improved transcription accuracy'
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "k" -d 'Manage keywords for improved transcription accuracy'
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "replace" -d 'Manage deterministic text replace rules'
+complete -c ostt -n "__fish_ostt_needs_command" -f -a "agent" -d 'List the agents AI processing actions can run'
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "config" -d 'Open configuration file in your preferred editor'
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "c" -d 'Open configuration file in your preferred editor'
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "logs" -d 'Show recent log entries from the application'
@@ -59,35 +61,40 @@ complete -c ostt -n "__fish_ostt_needs_command" -f -a "daemon" -d 'Manage the lo
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "d" -d 'Manage the local model daemon'
 complete -c ostt -n "__fish_ostt_needs_command" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
 complete -c ostt -n "__fish_ostt_using_subcommand record" -s o -l output -d 'Write transcription to file instead of stdout' -r
-complete -c ostt -n "__fish_ostt_using_subcommand record" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker' -r
+complete -c ostt -n "__fish_ostt_using_subcommand record" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3' -r
+complete -c ostt -n "__fish_ostt_using_subcommand record" -l attach -d 'Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_using_subcommand record" -s m -l model -d 'Override transcription model for this run' -r
 complete -c ostt -n "__fish_ostt_using_subcommand record" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_using_subcommand record" -s c -l clipboard -d 'Copy transcription to clipboard instead of stdout'
 complete -c ostt -n "__fish_ostt_using_subcommand record" -l paste -d 'Paste transcription into the focused app'
 complete -c ostt -n "__fish_ostt_using_subcommand record" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c ostt -n "__fish_ostt_using_subcommand r" -s o -l output -d 'Write transcription to file instead of stdout' -r
-complete -c ostt -n "__fish_ostt_using_subcommand r" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker' -r
+complete -c ostt -n "__fish_ostt_using_subcommand r" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3' -r
+complete -c ostt -n "__fish_ostt_using_subcommand r" -l attach -d 'Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_using_subcommand r" -s m -l model -d 'Override transcription model for this run' -r
 complete -c ostt -n "__fish_ostt_using_subcommand r" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_using_subcommand r" -s c -l clipboard -d 'Copy transcription to clipboard instead of stdout'
 complete -c ostt -n "__fish_ostt_using_subcommand r" -l paste -d 'Paste transcription into the focused app'
 complete -c ostt -n "__fish_ostt_using_subcommand r" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c ostt -n "__fish_ostt_using_subcommand retry" -s o -l output -d 'Write transcription to file instead of stdout' -r
-complete -c ostt -n "__fish_ostt_using_subcommand retry" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker' -r
+complete -c ostt -n "__fish_ostt_using_subcommand retry" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3' -r
+complete -c ostt -n "__fish_ostt_using_subcommand retry" -l attach -d 'Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_using_subcommand retry" -s m -l model -d 'Override transcription model for this run' -r
 complete -c ostt -n "__fish_ostt_using_subcommand retry" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_using_subcommand retry" -s c -l clipboard -d 'Copy transcription to clipboard instead of stdout'
 complete -c ostt -n "__fish_ostt_using_subcommand retry" -l paste -d 'Paste transcription into the focused app'
 complete -c ostt -n "__fish_ostt_using_subcommand retry" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -s o -l output -d 'Write transcription to file instead of stdout' -r
-complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker' -r
+complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3' -r
+complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -l attach -d 'Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -s m -l model -d 'Override transcription model for this run' -r
 complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -s c -l clipboard -d 'Copy transcription to clipboard instead of stdout'
 complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -l paste -d 'Paste transcription into the focused app'
 complete -c ostt -n "__fish_ostt_using_subcommand transcribe" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c ostt -n "__fish_ostt_using_subcommand t" -s o -l output -d 'Write transcription to file instead of stdout' -r
-complete -c ostt -n "__fish_ostt_using_subcommand t" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker' -r
+complete -c ostt -n "__fish_ostt_using_subcommand t" -s p -l process -d 'Enable processing after transcription. Optionally specify action ID to skip picker. If the action fails, the unprocessed transcription is output instead and ostt exits with status 3' -r
+complete -c ostt -n "__fish_ostt_using_subcommand t" -l attach -d 'Image to send to the processing action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_using_subcommand t" -s m -l model -d 'Override transcription model for this run' -r
 complete -c ostt -n "__fish_ostt_using_subcommand t" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_using_subcommand t" -s c -l clipboard -d 'Copy transcription to clipboard instead of stdout'
@@ -250,6 +257,20 @@ complete -c ostt -n "__fish_ostt_using_subcommand k; and __fish_seen_subcommand_
 complete -c ostt -n "__fish_ostt_using_subcommand k; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
 complete -c ostt -n "__fish_ostt_using_subcommand replace" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_using_subcommand replace" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and not __fish_seen_subcommand_from list models help" -l param -d 'Override a transcription param for this run, as key=value' -r
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and not __fish_seen_subcommand_from list models help" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and not __fish_seen_subcommand_from list models help" -f -a "list" -d 'List agents, whether each is installed and takes images'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and not __fish_seen_subcommand_from list models help" -f -a "models" -d 'List the models an agent offers, one per line, if it can list them'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and not __fish_seen_subcommand_from list models help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from list" -l format -d 'Output format' -r -f -a "table\t''
+json\t''"
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from list" -l param -d 'Override a transcription param for this run, as key=value' -r
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from list" -s h -l help -d 'Print help'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from models" -l param -d 'Override a transcription param for this run, as key=value' -r
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from models" -s h -l help -d 'Print help'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from help" -f -a "list" -d 'List agents, whether each is installed and takes images'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from help" -f -a "models" -d 'List the models an agent offers, one per line, if it can list them'
+complete -c ostt -n "__fish_ostt_using_subcommand agent; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
 complete -c ostt -n "__fish_ostt_using_subcommand config; and not __fish_seen_subcommand_from path list-devices help" -l param -d 'Override a transcription param for this run, as key=value' -r
 complete -c ostt -n "__fish_ostt_using_subcommand config; and not __fish_seen_subcommand_from path list-devices help" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c ostt -n "__fish_ostt_using_subcommand config; and not __fish_seen_subcommand_from path list-devices help" -f -a "path" -d 'Print the config file path'
@@ -287,6 +308,7 @@ complete -c ostt -n "__fish_ostt_using_subcommand logs; and __fish_seen_subcomma
 complete -c ostt -n "__fish_ostt_using_subcommand logs; and __fish_seen_subcommand_from help" -f -a "path" -d 'Print the latest log file path'
 complete -c ostt -n "__fish_ostt_using_subcommand logs; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
 complete -c ostt -n "__fish_ostt_using_subcommand process" -s o -l output -d 'Write result to file instead of stdout (shadows global -o)' -r
+complete -c ostt -n "__fish_ostt_using_subcommand process" -l attach -d 'Image to send to the action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_using_subcommand process" -l format -d 'Output format for `ostt process list`' -r -f -a "table\t''
 json\t''"
 complete -c ostt -n "__fish_ostt_using_subcommand process" -l param -d 'Override a transcription param for this run, as key=value' -r
@@ -294,6 +316,7 @@ complete -c ostt -n "__fish_ostt_using_subcommand process" -s c -l clipboard -d 
 complete -c ostt -n "__fish_ostt_using_subcommand process" -l paste -d 'Paste result into the focused app'
 complete -c ostt -n "__fish_ostt_using_subcommand process" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c ostt -n "__fish_ostt_using_subcommand p" -s o -l output -d 'Write result to file instead of stdout (shadows global -o)' -r
+complete -c ostt -n "__fish_ostt_using_subcommand p" -l attach -d 'Image to send to the action (AI actions get the image, bash actions its path in OSTT_ATTACHMENT)' -r -F
 complete -c ostt -n "__fish_ostt_using_subcommand p" -l format -d 'Output format for `ostt process list`' -r -f -a "table\t''
 json\t''"
 complete -c ostt -n "__fish_ostt_using_subcommand p" -l param -d 'Override a transcription param for this run, as key=value' -r
@@ -380,22 +403,23 @@ complete -c ostt -n "__fish_ostt_using_subcommand d; and __fish_seen_subcommand_
 complete -c ostt -n "__fish_ostt_using_subcommand d; and __fish_seen_subcommand_from help" -f -a "uninstall" -d 'Remove the daemon login service'
 complete -c ostt -n "__fish_ostt_using_subcommand d; and __fish_seen_subcommand_from help" -f -a "run" -d '[Internal] Run the daemon process — used by the service manager and daemon start'
 complete -c ostt -n "__fish_ostt_using_subcommand d; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "record" -d 'Record audio with real-time visualization (default)'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "retry" -d 'Retry transcription of a previous recording'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "transcribe" -d 'Transcribe a pre-recorded audio file'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "replay" -d 'Replay a previous recording using system audio player'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "auth" -d 'Manage cloud provider credentials'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "model" -d 'Choose and manage cloud or local transcription models'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "history" -d 'View and browse transcription history'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "keyword" -d 'Manage keywords for improved transcription accuracy'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "replace" -d 'Manage deterministic text replace rules'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "config" -d 'Open configuration file in your preferred editor'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "logs" -d 'Show recent log entries from the application'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "process" -d 'Post-process a transcription from history'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "launch" -d 'Launch ostt in a popup terminal window'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "completions" -d 'Generate shell completion script'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "daemon" -d 'Manage the local model daemon'
-complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace config logs process launch completions daemon help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "record" -d 'Record audio with real-time visualization (default)'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "retry" -d 'Retry transcription of a previous recording'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "transcribe" -d 'Transcribe a pre-recorded audio file'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "replay" -d 'Replay a previous recording using system audio player'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "auth" -d 'Manage cloud provider credentials'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "model" -d 'Choose and manage cloud or local transcription models'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "history" -d 'View and browse transcription history'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "keyword" -d 'Manage keywords for improved transcription accuracy'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "replace" -d 'Manage deterministic text replace rules'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "agent" -d 'List the agents AI processing actions can run'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "config" -d 'Open configuration file in your preferred editor'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "logs" -d 'Show recent log entries from the application'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "process" -d 'Post-process a transcription from history'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "launch" -d 'Launch ostt in a popup terminal window'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "completions" -d 'Generate shell completion script'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "daemon" -d 'Manage the local model daemon'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and not __fish_seen_subcommand_from record retry transcribe replay auth model history keyword replace agent config logs process launch completions daemon help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from auth" -f -a "login" -d 'Add or update a cloud provider credential'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from auth" -f -a "logout" -d 'Remove a cloud provider credential'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from auth" -f -a "list" -d 'List authenticated providers'
@@ -411,6 +435,8 @@ complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcomma
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from keyword" -f -a "list" -d 'List transcription keywords'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from keyword" -f -a "add" -d 'Add transcription keywords'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from keyword" -f -a "remove" -d 'Remove transcription keywords'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from agent" -f -a "list" -d 'List agents, whether each is installed and takes images'
+complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from agent" -f -a "models" -d 'List the models an agent offers, one per line, if it can list them'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from config" -f -a "path" -d 'Print the config file path'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from config" -f -a "list-devices" -d 'List audio input devices for config selection'
 complete -c ostt -n "__fish_ostt_using_subcommand help; and __fish_seen_subcommand_from logs" -f -a "follow" -d 'Follow the latest log file'
