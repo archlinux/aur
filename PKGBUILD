@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soulfire-bin
 _pkgname=SoulFire
-pkgver=2.10.5
+pkgver=2.10.6
 _electronversion=44
 pkgrel=1
 pkgdesc="A frontend for the SoulFire server , with Electron while still using the official SoulFire gRPC API."
@@ -17,12 +17,16 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-source=("${pkgname%-bin}.sh")
+source=(
+	"${pkgname%-bin}.js"
+	"${pkgname%-bin}.sh"
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
-sha256sums=('983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
-sha256sums_aarch64=('93cb3ac63377f9d2d664c75b2fd0a3e41bf168ae2c7cd0284b33832800a551d2')
-sha256sums_x86_64=('6020a90b9056081200ba2ddf1102746f889646e757de417bdfea52c5aa117410')
+sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+sha256sums_aarch64=('5cd7931a95e61fb511b9ac18f40d168634a0b61ad0e316db600813d85bffa4da')
+sha256sums_x86_64=('b8b5d72c5fccdabcc715642bb40ec5aadcc8c5ad8f6bb10b925b4997dd6e9497')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -39,13 +43,13 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
