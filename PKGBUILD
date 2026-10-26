@@ -2,7 +2,7 @@
 _appname=qoder
 pkgname="${_appname}-ide-bin"
 _pkgname='Qoder IDE'
-pkgver=1.35.0
+pkgver=1.36.0
 _electronversion=42
 pkgrel=1
 pkgdesc="AI native IDE for real-world software development."
@@ -30,14 +30,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/release/latest/${pkgname%-bin}_${CARCH}.rpm"
     "LICENSE.html"
     "${pkgname%-bin}.js"
-    "resources-path-override.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('847cd5cebf70cde9af69b49f62f6c5244a9725b1f4e38f2f23da9a8935347842'
+sha256sums=('1b2679742a2dcabb813b4c1f41e311f15963ba5a2269d924fdc93adaeb66e7d3'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            '07266a02dec625616431e9d851b06c374510302776f0d809b112443231fc0c7c'
-            '7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8'
-            '523a9e7294fb8d0611611db823288e3dc38ae021eceb3067791dc0c4ff3b0d15')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -70,8 +68,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/resources-path-override.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "$(_get_app_dir)/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}"* -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
