@@ -8,7 +8,7 @@
 # tarball checksum below.
 
 pkgname=tuxmix
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Open-source TotalMix replacement for RME audio interfaces on Linux"
 arch=('x86_64')
@@ -35,7 +35,7 @@ options=('!lto')
 # GitHub names the archive after the repo's real casing (TuxMix-*),
 # not the lowercase pkgname — build()/package() cd into that below.
 source=("${url}/archive/v${pkgver}/TuxMix-${pkgver}.tar.gz")
-sha256sums=('177782c8b0f1a57662ea2b1b668a1e92c760d9203de108f91ae2b9d1595b6546')
+sha256sums=('37a29191c59d6c3b1c1b6ce97e7399a7c380ec1192bb522b333c014661bce5d4')
 
 build() {
     cd "${srcdir}/TuxMix-${pkgver}"
