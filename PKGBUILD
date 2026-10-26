@@ -6,7 +6,7 @@
 
 pkgname=wpa_supplicant-wep2
 pkgver=2.12
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='A utility providing key negotiation for WPA wireless networks (with WEP support)'
 url='https://w1.fi/wpa_supplicant/'
