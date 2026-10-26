@@ -1,9 +1,10 @@
 pkgbase = sonic-frameworks-io-fuse
-	pkgdesc = FUSE interface for KIO
+	pkgdesc = FUSE interface for sonic-frameworks-io
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Sonic-DE/sonic-frameworks-io-fuse
 	arch = x86_64
+	groups = sonicde-frameworks
 	license = GPL-3.0-or-later
 	makedepends = sonic-frameworks-cmake-modules
 	depends = fuse3
