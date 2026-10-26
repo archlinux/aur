@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=toaster
-pkgver=0.4.17
+pkgver=0.4.19
 pkgrel=1
 pkgdesc='Hears whatever is playing and writes it out as live Strudel code, with visuals'
 arch=(
@@ -20,7 +20,7 @@ source=(
     'toaster.desktop'
 )
 sha256sums=(
-    '96d904c598c3191c7a6e2a95204da635a745f75fc1b5ec85ad2b7172a7388df5'
+    '183c988d3118008e45a3cbe444ad0a9c0983bb178701571e185f725015a1c9b1'
     'd8716162035147616f5702802e039456968fa2d594c070d4a6ede66845caa01c'
 )
 
