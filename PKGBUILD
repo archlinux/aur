@@ -4,40 +4,49 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-core-addons
-pkgver=6.30.0
+pkgver=6.31.0
 pkgrel=1
 pkgdesc='Addons to QtCore'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-frameworks-core-addons'
-license=(LGPL-2.0-only LGPL-3.0-only)
-depends=(glibc
-         libgcc
-         libstdc++
-         qt6-base
-         systemd-libs
-         util-linux-libs)
-makedepends=(doxygen
-             pyside6
-             python-build
-             python-setuptools
-             qt6-declarative
-             qt6-tools
-             shiboken6-generator
-             sonic-frameworks-cmake-modules)
-optdepends=('pyside6: Python bindings'
-            'qt6-declarative: QML bindings')
-provides=(kcoreaddons)
-conflicts=(kcoreaddons)
-groups=(sonicde-frameworks)
+license=(
+	'LGPL-2.0-only'
+	'LGPL-3.0-only'
+)
+depends=(
+	'glibc'
+	'libgcc'
+	'libstdc++'
+	'libudev.so'
+	'qt6-base'
+	'util-linux-libs'
+)
+makedepends=(
+	'doxygen'
+	'python-build'
+	'python-setuptools'
+	'qt6-declarative'
+	'qt6-tools'
+	'sonic-frameworks-cmake-modules'
+	'sonic-pyside6'
+	'sonic-shiboken6-generator'
+)
+optdepends=(
+	'qt6-declarative: QML bindings'
+	'sonic-pyside6: Python bindings'
+)
+provides=('kcoreaddons')
+conflicts=('kcoreaddons')
+groups=('sonicde-frameworks')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('41514b9cea9a97ab92db6a11444dfb7bd70cd52c1c834a64ac59d88edf385914')
+sha256sums=('fd8297c46f64c55e856c1a31d3380ad7167a9e01c03af5eeecb1d27b1ac8fd2d')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
