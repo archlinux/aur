@@ -4,7 +4,7 @@
 : ${_pkgtype:=-latest-bin}
 
 pkgname="ncmdump$_pkgtype"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Convert ncm files to mp3 or flac."
 arch=("x86_64")
