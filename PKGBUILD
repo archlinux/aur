@@ -2,47 +2,63 @@
 # Maintainer: Aaron Liu
 # Contributor: Zhirui Dai <daizhirui at hotmail dot com>
 
-# Probe which ROCm version has a libtorch binary for the current pkgver.
-# Tries the system version first, then known fallbacks.
-_detect_rocm_ver() {
-    local sysver=$(pacman -Q rocm-core 2>/dev/null | awk '{print $2}' | cut -d. -f1-2)
-    for v in "$sysver" "7.2" "7.1" "6.2" "6.1" "6.0"; do
-        [ -n "$v" ] || continue
-        if curl -sfI --max-time 5 \
-            "https://download.pytorch.org/libtorch/rocm$v/libtorch-shared-with-deps-${pkgver}%2Brocm$v.zip" \
-            >/dev/null 2>&1; then
-            echo "$v"
-            return 0
-        fi
-    done
-    echo "7.1"
-}
-_rocm_ver=$(_detect_rocm_ver)
-
 pkgname=libtorch-rocm
 pkgver=2.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PyTorch but C++ as an isolated folder, with ROCm included"
 arch=('x86_64')
 url='https://docs.pytorch.org/cppdocs/installing.html'
 license=('BSD-3-Clause')
-depends=(pybind11 rocm-core)
-makedepends=(curl python)
+# Bound tied to the pinned _rocm_ver: libtorch links against the ROCm runtime it
+# was built with, and a mismatch shows up as an undefined HIP symbol at dlopen()
+# (surfacing as a generic module-load failure in audacity-openvino).
+depends=(pybind11 'rocm-core>=7.2')
+makedepends=(python)
 replaces=(libtorch-cxx11abi-rocm)
 provides=("libtorch=${pkgver}")
 conflicts=(libtorch)
+
+# Pinned, not probed: sha256sums below are for this exact artifact, so the
+# ROCm version must not vary per host.  Bump together with pkgver.
+_rocm_ver=7.2
+
 # Use a filename without URL encoding to avoid extraction issues
 source=("libtorch-shared-with-deps-${pkgver}+rocm${_rocm_ver}.zip::https://download.pytorch.org/libtorch/rocm${_rocm_ver}/libtorch-shared-with-deps-${pkgver}%2Brocm${_rocm_ver}.zip"
 	"https://github.com/pytorch/pytorch/raw/refs/tags/v${pkgver}/LICENSE")
-sha256sums=('SKIP'
-            'SKIP')
+# Upstream publishes no checksum sidecars for these zips (listing is browsable,
+# but *.sha256 / SHA256SUMS return 403), so these are hashes of the artifacts we
+# actually fetched. They are coupled: pkgver, _rocm_ver and both sums must move
+# together, or the build fails the validity check by design.
+# Upstream re-push under the same name => the sum stops matching for everyone:
+# verify `curl -sIL <url> | grep -i content-length` against the archive size
+# first, then bump pkgrel and update the sum.
+sha256sums=('8c740f551d52f4318cdd3908890cfb22f280b40620feb2538432c2c75ab0db55'
+            'bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43')
 options=('!debug' '!strip' '!libtool' '!staticlibs' '!zipman')
 
 pkgver() {
-    curl -sL https://api.github.com/repos/pytorch/pytorch/releases/latest |
-        grep '"tag_name":' |
-        sed 's/.*: "//;s/",//' |
-        sed 's/^v//'
+    # Read the version from the extracted pre-built package instead of querying
+    # api.github.com. The old scrape was anonymous (60 req/h rate limit) and
+    # returned an empty string on 403, aborting the build with
+    # "pkgver is not allowed to be empty". It also reported whatever release
+    # was newest, not the one source=() actually pinned via ${pkgver}.
+    local bv
+    bv=$(cat libtorch/build-version 2>/dev/null)
+    bv=${bv%%+*}   # "2.12.0+rocm7.1" -> "2.12.0"
+    if [ -z "$bv" ]; then
+        # No build-version file: keep the pinned value rather than emitting an
+        # empty version (which is what aborted the reported build).
+        bv=$pkgver
+    elif [ "$bv" != "$pkgver" ]; then
+        # Refuse to silently relabel the archive. source=() is expanded from the
+        # static $pkgver before pkgver() runs, so echoing $bv here would ship
+        # binaries of one release under another release's name and provides=().
+        printf 'error: archive contains libtorch %s but PKGBUILD pins %s\n' \
+            "$bv" "$pkgver" >&2
+        printf 'error: update pkgver and sha256sums together\n' >&2
+        return 1
+    fi
+    printf '%s\n' "$bv"
 }
 
 prepare() {

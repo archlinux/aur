@@ -1,3 +1,31 @@
+2026-10-19  libtorch-rocm 2.12.0-3
+
+  * pkgver() now reads libtorch/build-version from the extracted archive
+    instead of scraping api.github.com/repos/pytorch/pytorch/releases/latest.
+    The anonymous GitHub API call is rate limited (60 requests/hour) and
+    returned an empty string when the limit was hit, aborting every build
+    with "pkgver is not allowed to be empty".  Derived from the binary, the
+    version can also no longer contradict the sources that source=() pinned
+    via the static ${pkgver}.
+  * _rocm_ver is pinned to 7.2 instead of probed, and sha256sums are now
+    filled in for both sources.  Pinned sums need a fixed artifact, so the
+    ROCm auto-probe is gone; bump _rocm_ver together with pkgver and the
+    sums.  Note the old probe was broken anyway: _rocm_ver was expanded
+    before pkgver was assigned, so every probe URL contained an empty
+    version, all probes 404'd, and the package silently fell back to
+    rocm7.1 on every system.
+  * PyTorch publishes no checksum for libtorch archives (the GitHub release
+    only carries pytorch-v2.12.0.tar.gz and torch-2.12.0.tar.gz, and
+    <zip>.sha256 is AccessDenied on download.pytorch.org / 404 on the R2
+    mirror), so the sums below come from the downloaded archives.
+  * Drop curl from makedepends; the only consumer was the removed probe.
+  * pkgver() now refuses to relabel: a build-version that disagrees with the
+    pinned pkgver is an error instead of being echoed, and a missing file
+    falls back to pkgver rather than emitting an empty version.
+  * depends gains a rocm-core>=7.2 bound matching the pinned build, so a
+    mismatched runtime fails at dependency resolution instead of dlopen()
+    with an undefined HIP symbol.
+
 2026-05-23  libtorch-rocm 2.12.0-2
 
   * Fix ELF load command alignment in pre-built libtorch_cpu.so.
