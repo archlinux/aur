@@ -2,8 +2,8 @@
 pkgname=audax-data-manager-bin
 _shortname=audaxdm
 _pkgname='Audax Data Manager'
-pkgver=1.6
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="A free, open-source database client and administration tool for PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, and Oracle - all from one app, so you don't need a different tool per database."
 arch=('x86_64')
 url="https://www.commandprompt.com/"
@@ -34,7 +34,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/commandprompt/Audax-Data-Manager/${pkgver}-release/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f5d6940fd142b02325272ad9b0d98a90ae49d5823b2a201c43c10f043cc00ef0'
+sha256sums=('d4d7837a4dc3d7524da63a72db8bf5887cfff2452b872b455b7417301861a95f'
             '2d33c37fcdb0f809daa69b5b8e763776310cfaaef75c82ed7ab4a2084260bb1f'
             '7fc2b726adb41bfc30899035594c00ac4694e5cd37dd49e355d897b85f9fe355')
 prepare() {
