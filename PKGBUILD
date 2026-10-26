@@ -1,6 +1,6 @@
 # Maintainer: Matt Moyles <matt@mattmoyles.com>
 pkgname=jotdo
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _ftxui=7.0.3
 _toml=3.4.0
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "ftxui-$_ftxui.tar.gz::https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v$_ftxui.tar.gz"
         "tomlplusplus-$_toml.tar.gz::https://github.com/marzer/tomlplusplus/archive/refs/tags/v$_toml.tar.gz")
-sha256sums=('f695bb71f57e5e654b683d01bd3699f394a408fee8b22c81842ba85eb4217826'
+sha256sums=('1bbd95c3c4bfa9a604cb7c543fb41a4c3ea6a69892109b3b65ab178094fdd702'
             'e7c62ffe19009759821b4f0f8df7f2a6fb83784c3a9f1477d81f56d3ee723c88'
             '8517f65938a4faae9ccf8ebb36631a38c1cadfb5efa85d9a72e15b9e97d25155')
 
