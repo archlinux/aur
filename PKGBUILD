@@ -1,6 +1,6 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city"
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ conflicts=('botropolis-bin')
 options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('399389fc212d203b95e09ebf512afe1770df3169184d3cf4b737260d13943101')
+sha256sums=('b9793df9b0e86ba3083bbb146065886f854ee4be1046956f819844b5a68d2055')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -83,5 +83,4 @@ package() {
     install -Dm644 pkg/assets/fonts/gomono/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/gomono-BSD.txt"
     install -Dm644 pkg/assets/kits/nature-kit/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/kenney-CC0.txt"
     install -Dm644 pkg/assets/kits/README.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-kits.md"
-    install -Dm644 pkg/assets/kenney/README.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-packs.md"
 }
