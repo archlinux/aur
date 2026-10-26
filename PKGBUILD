@@ -5,7 +5,7 @@
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.4.10.r0.g5059648
+pkgver=3.4.11.r6.g488e649
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -40,7 +40,7 @@ options=('!lto')
 sha256sums=('SKIP'
             'efc8a6cea79ed0203dcbadf17632b5341952a49704f99e3ea0ddc573b06748f4'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
