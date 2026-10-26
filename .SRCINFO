@@ -1,11 +1,14 @@
 pkgbase = universe
 	pkgdesc = Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/ilyasturki/universe
 	arch = x86_64
 	license = MIT
 	checkdepends = tzdata
+	checkdepends = xorg-server-xvfb
+	checkdepends = pipewire
+	checkdepends = wireplumber
 	makedepends = blueprint-compiler
 	makedepends = glib2-devel
 	makedepends = cargo
@@ -18,10 +21,8 @@ pkgbase = universe
 	makedepends = scdoc
 	options = !lto
 	options = !debug
-	source = universe-0.0.13.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.13.tar.gz
-	source = GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe
-	sha256sums = 3e6339048ae353750597c8fa4f04d17b799291fb9bff210e25879326e5065a7e
-	sha256sums = c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d
+	source = universe-0.0.14.tar.gz::https://github.com/ilyasturki/universe/archive/v0.0.14.tar.gz
+	sha256sums = f8521dbe23583a6a118ad4d9df8185579796e3ab99ecfd4b0b4b8ed2af4ad18a
 
 pkgname = universe
 	depends = libgcc
@@ -29,7 +30,6 @@ pkgname = universe
 	depends = hicolor-icon-theme
 	depends = python
 	depends = pyside6>=6.11
-	depends = python-pysdl2
 	depends = python-qrcode
 	depends = python-xkbcommon
 	depends = qt6-5compat
@@ -38,7 +38,7 @@ pkgname = universe
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = qt6-wayland
-	depends = sdl2
+	depends = sdl3
 	depends = systemd
 	optdepends = gamescope: games run inside it
 	optdepends = mangohud: the frame rate limit and the in-game HUD
@@ -66,6 +66,6 @@ pkgname = universe-desktop
 	depends = gtk4>=1:4.22
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1:1.9
-	depends = universe=0.0.13
+	depends = universe=0.0.14
 	optdepends = gst-libav: recordings played in the app (H.264, HEVC)
 	optdepends = gst-plugins-bad: recordings played in the app (AV1, VA-API)

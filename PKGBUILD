@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe
 pkgname=(universe universe-desktop)
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope'
 arch=('x86_64')
@@ -19,16 +19,11 @@ makedepends=(
   'python-setuptools'
   'scdoc'
 )
-checkdepends=('tzdata')
+checkdepends=('tzdata' 'xorg-server-xvfb' 'pipewire' 'wireplumber')
 # makepkg's -flto C objects (aws-lc's) are GCC bitcode that rust-lld cannot link; Cargo.toml strips, so a debug package would be empty
 options=('!lto' '!debug')
-# the stub is the flake's galaxyServiceStub
-source=(
-  "$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  'GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe'
-)
-sha256sums=('3e6339048ae353750597c8fa4f04d17b799291fb9bff210e25879326e5065a7e'
-            'c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f8521dbe23583a6a118ad4d9df8185579796e3ab99ecfd4b0b4b8ed2af4ad18a')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -62,7 +57,6 @@ package_universe() {
     'hicolor-icon-theme'
     'python'
     'pyside6>=6.11'
-    'python-pysdl2'
     'python-qrcode'
     'python-xkbcommon'
     'qt6-5compat'
@@ -71,7 +65,7 @@ package_universe() {
     'qt6-multimedia'
     'qt6-svg'
     'qt6-wayland'
-    'sdl2'
+    'sdl3'
     'systemd'
   )
   optdepends=(
@@ -101,7 +95,6 @@ package_universe() {
     cp -r "$kind/." "$pkgdir/usr/share/universe/$kind"
     rm -rf "$pkgdir/usr/share/universe/$kind"/*/tests "$pkgdir/usr/share/universe/$kind"/conftest.py "$pkgdir/usr/share/universe/$kind"/test_*.py
   done
-  install -Dm644 "$srcdir/GalaxyCommunication-comet-0.3.2.exe" "$pkgdir/usr/share/universe/sources/gog/GalaxyCommunication.exe"
   install -Dm644 extension/metadata.json extension/extension.js -t "$pkgdir/usr/share/gnome-shell/extensions/universe@ilyasturki.github.io"
   install -Dm644 gen/man/*.1 -t "$pkgdir/usr/share/man/man1"
   install -Dm644 gen/universe.fish "$pkgdir/usr/share/fish/vendor_completions.d/universe.fish"
