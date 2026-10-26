@@ -8,6 +8,8 @@
 !LICENSE
 !LICENSES/
 !LICENSES/0BSD.txt
+!LICENSES/GPL-3.0-only.txt
 !REUSE.toml
 !config.json
+!linux-arch-template.json
 !ocsinventory-agent3-bin.install

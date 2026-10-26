@@ -6,6 +6,7 @@ pkgbase = ocsinventory-agent3-bin
 	install = ocsinventory-agent3-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	depends = bash
 	depends = ca-certificates
 	depends = coreutils
@@ -32,7 +33,9 @@ pkgbase = ocsinventory-agent3-bin
 	backup = etc/ocsinventory-agent/config.json
 	source = https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/releases/download/3.0.0/OCSInventory-Agent-Setup-Linux-Deb-3.0.0.tar.xz
 	source = config.json
+	source = linux-arch-template.json
 	sha256sums = 05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5
 	sha256sums = 3d1a7939a86f46a01efc14de561371ca63ad5228256585c37139b0032f603027
+	sha256sums = 1b961e5cf26152feb1fa0d35acb7c7a8111e50500766827705324410c21a9c1c
 
 pkgname = ocsinventory-agent3-bin
