@@ -1,0 +1,24 @@
+pkgbase = philosophic-moon-bin
+	pkgdesc = A shared moon in your terminal: chat, stargazing, a communal plant and a graffiti wall
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/SorBalda/philosophic-moon
+	arch = x86_64
+	license = LicenseRef-PolyForm-Perimeter-1.0.0
+	depends = glibc
+	optdepends = alsa-lib: music playback
+	optdepends = libpulse: music playback through PulseAudio or PipeWire
+	provides = philosophic-moon
+	conflicts = philosophic-moon
+	options = !strip
+	options = !debug
+	source = moon-0.3.5::https://github.com/SorBalda/philosophic-moon/releases/download/v0.3.5/moon-linux-amd64
+	source = LICENSE-0.3.5::https://raw.githubusercontent.com/SorBalda/philosophic-moon/v0.3.5/LICENSE
+	source = TRADEMARK-0.3.5.md::https://raw.githubusercontent.com/SorBalda/philosophic-moon/v0.3.5/TRADEMARK.md
+	source = README-0.3.5.md::https://raw.githubusercontent.com/SorBalda/philosophic-moon/v0.3.5/README.md
+	sha256sums = 21ef29e95a708b8c80269bf5035145d12ab57864f7a97c5a7fe6bef7b81775d0
+	sha256sums = 5476c0deab6e777714c13a8316aba0471999ba8014c1fbfa27fae54f2038a192
+	sha256sums = d7639fb6d24f551945e4b092bf2a008ebc9ee01dbeefe52e2c4003f0d1a7dfc9
+	sha256sums = 95b5f4f3a6de9046135a7816157ae5ebaf8338b5d424d484c452b778c7d9338f
+
+pkgname = philosophic-moon-bin
