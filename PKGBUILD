@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=lyr-bin
 _pkgname=lyr
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A desktop status bar for Wayland, Windows and macOS (binary release)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("lyr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/lyr/releases/download/v${pkgver}/lyr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("lyr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/lyr/releases/download/v${pkgver}/lyr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('36b0ebf5dd59eed5adac798a9d78228976219d40108c7fad73e22200af59b529')
-sha256sums_aarch64=('7cb385a138eb11177bf35a3c43f08e051e89e88fc055cb755e0af892eccd391e')
+sha256sums_x86_64=('679ce25719ab0c3766d5525c7348f70d8fe1945500bdbb2b7ecc12d080cd9fb3')
+sha256sums_aarch64=('593128b0c6c412277f7349220277697b86622ffbfe9825d7556bc7167dfaabe4')
 
 package() {
     install -Dm755 "$srcdir/lyr" "$pkgdir/usr/bin/lyr"
