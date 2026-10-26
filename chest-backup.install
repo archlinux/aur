@@ -1,0 +1,81 @@
+seed_config() {
+  local target_user="" target_home="" chown_flags=() started=false
+
+  if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+    target_user="$SUDO_USER"
+    target_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+    chown_flags=(-o "$SUDO_USER" -g "$SUDO_USER")
+  else
+    target_home=$(getent passwd "$(id -u)" | cut -d: -f6)
+  fi
+
+  cfg_dir="$target_home/.config/chest-backup"
+
+  install -d -m700 "${chown_flags[@]}" "$cfg_dir"
+  if [ ! -e "$cfg_dir/chest-backup.json" ]; then
+    if [ -e /etc/chest-backup/chest-backup.json ]; then
+      install -m600 "${chown_flags[@]}" /etc/chest-backup/chest-backup.json "$cfg_dir/chest-backup.json"
+    else
+      install -m600 "${chown_flags[@]}" /usr/share/chest-backup/chest-backup.default.json "$cfg_dir/chest-backup.json"
+    fi
+  fi
+  if [ ! -e "$cfg_dir/.env" ]; then
+    if [ -e /etc/chest-backup/.env ]; then
+      install -m600 "${chown_flags[@]}" /etc/chest-backup/.env "$cfg_dir/.env"
+    else
+      install -m600 "${chown_flags[@]}" /usr/share/chest-backup/.env.default "$cfg_dir/.env"
+    fi
+  fi
+}
+
+enable_service() {
+  local target_user="$1" target_home="$2" unit="$3"
+
+  if [ -n "$target_user" ]; then
+    local uid
+    uid=$(id -u "$target_user")
+    if runuser -u "$target_user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+      systemctl --user enable --now "$unit" 2>/dev/null; then
+      return 0
+    fi
+    install -d "$target_home/.config/systemd/user/default.target.wants"
+    ln -sf "/usr/lib/systemd/user/$unit.service" \
+      "$target_home/.config/systemd/user/default.target.wants/$unit.service"
+    return 0
+  fi
+
+  if systemctl --user enable --now "$unit" 2>/dev/null; then
+    return 0
+  fi
+  install -d "$target_home/.config/systemd/user/default.target.wants"
+  ln -sf "/usr/lib/systemd/user/$unit.service" \
+    "$target_home/.config/systemd/user/default.target.wants/$unit.service"
+  return 0
+}
+
+post_install() {
+  seed_config
+
+  local target_user="" target_home=""
+
+  if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+    target_user="$SUDO_USER"
+    target_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+  else
+    target_home=$(getent passwd "$(id -u)" | cut -d: -f6)
+  fi
+
+  enable_service "$target_user" "$target_home" "chest-backup"
+
+  echo
+  echo "  chest-backup installed."
+  echo
+  echo "  Web UI:              http://localhost:5199"
+  echo "  Config:              ~/.config/chest-backup/chest-backup.json"
+  echo "  Secrets:             ~/.config/chest-backup/.env"
+  echo
+}
+
+post_upgrade() {
+  seed_config
+}
