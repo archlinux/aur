@@ -1,8 +1,8 @@
 # Maintainer: Ketchup901 <ketchup901@riseup.net>
 
 pkgname=lib32-libraw
-pkgver=0.22.2
-pkgrel=2
+pkgver=0.22.3
+pkgrel=1
 pkgdesc="A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (32-bit)"
 arch=('x86_64')
 url='https://www.libraw.org/'
@@ -16,7 +16,7 @@ depends=(libraw
          lib32-zlib)
 makedepends=(git)
 source=("https://www.libraw.org/data/LibRaw-$pkgver.tar.gz")
-sha256sums=('de86b035655accff8d4010f1a221fdf50d353cb7b1422ba26f14a0db92612cfa')
+sha256sums=('789f3c33466210a1a0907f747a97c715d21bbf4af712f257fcbbd90111b227e4')
 
 build() {
     cd LibRaw-$pkgver
