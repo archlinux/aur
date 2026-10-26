@@ -1,7 +1,7 @@
 # Maintainer: John Ettedgui <git@johne.rojalabs.com>
 
 pkgname=honcho
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Open-source memory server for AI agents (FastAPI API + background deriver worker)'
 arch=('any')
@@ -74,7 +74,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/plastic-labs/honcho/archive
         honcho-deriver.service
         honcho.env
         honcho.sysusers)
-sha256sums=('bd0567e3006f67ac25d2e4072b8b0710f1fc12ed8eb6d5c72567d081a0cf5bc9'
+sha256sums=('e329815e39ef0dc7473a319fdb2a56ea2ab8f14b62526a09c174f4c5e346cb06'
             '8deeb00a90ddf17c1542faf48aa0703146eea8068e768193863567dac7e9bb84'
             '861282d83961afdc34192c275a503429e2fa2f000694e882e072458d1d9426d2'
             'b289c05d719d24dec78958c257b9d779897f9f38fd16eff8d35bfc560b49807b'
