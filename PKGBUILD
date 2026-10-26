@@ -33,6 +33,8 @@ prepare() {
   # https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/pull/172
   patch -Np1 -i ../fix-ip-address.patch
 
+  sed -i '/^PIDFile=/d' setup/linux/ocsinventory-agent.service
+
   export PUB_CACHE="$srcdir/pub-cache"
   dart --suppress-analytics pub get
 }
