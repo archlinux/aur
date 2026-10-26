@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-desktop-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/chatwithwork-desktop"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/cww-app-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/cww-app-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1b934fd22a670b40bcdd67c2a8326e7aec037cf148658a8373d35ce023c23f42')
-sha256sums_aarch64=('a47b4998619dbf63456cbae266071850c5ff60a97148434541d538a6b4182467')
+sha256sums_x86_64=('79a664180088bdfda7f9e6a59330221a408d0210d88e48cbe969cb938ca7015f')
+sha256sums_aarch64=('af7a745c20c3e016f52aa49ff9505bee017db77923136dc0f8173ddca900c90e')
 
 package() {
   local target
