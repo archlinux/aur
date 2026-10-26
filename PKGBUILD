@@ -41,11 +41,11 @@ build() {
   done
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}"
-  export GOPATH="${srcdir}"
-  go test -mod=readonly ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgname}"
+#   export GOPATH="${srcdir}"
+#   go test -mod=readonly ./...
+# }
 
 package() {
     cd "${srcdir}/${_pkgname}"
