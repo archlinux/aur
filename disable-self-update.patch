@@ -1,0 +1,64 @@
+diff --git a/internal/cli/update.go b/internal/cli/update.go
+index 60bfb7f..442f9e0 100644
+--- a/internal/cli/update.go
++++ b/internal/cli/update.go
+@@ -17,6 +17,13 @@ var (
+ 	applyUpdate   = selfupdate.Apply
+ )
+ 
++// UpdateDisabled, when set at build time via
++// `-ldflags "-X 'github.com/strelov1/freehire-cli/internal/cli.UpdateDisabled=...'"`,
++// stops `freehire update` from replacing the binary and is shown to the user
++// instead. Package managers set it to say how to update their package;
++// `update --check` still works.
++var UpdateDisabled = ""
++
+ // newUpdateCmd checks GitHub for a newer freehire release and, unless
+ // --check is set, downloads and installs it over the running binary.
+ func newUpdateCmd() *cobra.Command {
+@@ -28,6 +35,9 @@ func newUpdateCmd() *cobra.Command {
+ 		RunE: func(cmd *cobra.Command, args []string) error {
+ 			checkOnly, _ := cmd.Flags().GetBool("check")
+ 			current := Version
++			if UpdateDisabled != "" && !checkOnly {
++				return fmt.Errorf("self-update is disabled in this build: %s", UpdateDisabled)
++			}
+ 
+ 			rel, err := latestRelease(cmd.Context())
+ 			if err != nil {
+diff --git a/internal/cli/update_test.go b/internal/cli/update_test.go
+index 1047a4b..e152e54 100644
+--- a/internal/cli/update_test.go
++++ b/internal/cli/update_test.go
+@@ -167,3 +167,31 @@ func TestUpdateCheckJSONNeverSetsUpdated(t *testing.T) {
+ 		t.Errorf("updated = %v, want false", got["updated"])
+ 	}
+ }
++
++func TestUpdateDisabledRefusesInstall(t *testing.T) {
++	t.Setenv("HOME", t.TempDir())
++	setVersion(t, "v0.16.0")
++	old := UpdateDisabled
++	UpdateDisabled = "update it with your package manager"
++	t.Cleanup(func() { UpdateDisabled = old })
++	calls := withFakeUpdate(t, selfupdate.Release{
++		Tag:    "v0.17.0",
++		Assets: map[string]string{selfupdate.AssetName(): "https://example.test/asset"},
++	}, nil, nil)
++
++	_, err := run(t, "update")
++	if err == nil || !strings.Contains(err.Error(), UpdateDisabled) {
++		t.Errorf("update err = %v, want it to carry the UpdateDisabled message", err)
++	}
++	if *calls != 0 {
++		t.Errorf("apply must not run when updates are disabled, got %d calls", *calls)
++	}
++
++	out, err := run(t, "update", "--check")
++	if err != nil {
++		t.Fatalf("update --check: %v", err)
++	}
++	if !strings.Contains(out, "v0.17.0") {
++		t.Errorf("output = %q, want --check to still report the latest version", out)
++	}
++}
