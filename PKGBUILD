@@ -9,7 +9,7 @@ _ghurl="https://github.com/LongYinStudio/DevCrate"
 license=('mit')
 depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'webkit2gtk-4.1')
 source=(
-  "https://github.com/LongYinStudio/DevCrate/releases/download/v$pkgver/video-downloader_"$pkgver"_amd64.deb"
+  "https://github.com/LongYinStudio/DevCrate/releases/download/v$pkgver/devcrate_"$pkgver"_amd64.deb"
   "devcrate.png"
   "devcrate.desktop"
 )
