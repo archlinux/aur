@@ -1,6 +1,6 @@
 # Maintainer: y0sif <https://github.com/y0sif>
 pkgname=lawh-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Keyboard-driven whiteboard for people who think in Vim (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('lawh' 'lawh-git')
 options=('!debug')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/lawh-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/lawh-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e65c4e7482e71f45ade02aa4a457b0ebae02cebf4839b3f628b70fbc5de66f25')
-sha256sums_aarch64=('f12ed944f736bfb30160e5311ab48fa495ec5a6b4012408406e9f6af598a62e2')
+sha256sums_x86_64=('c646cbd994cfae8dc7b917f1c083922225779600e95d12fc54d39dacf47cc833')
+sha256sums_aarch64=('24f8e278b03a0151392ecfc49c3fd180e558de876e30120b4ef1f769503a3e7f')
 
 package() {
   cd "lawh-v$pkgver-$CARCH-unknown-linux-gnu"
