@@ -1,7 +1,7 @@
 pkgname=ezoo-download-git
 pkgver=1.0.6
 pkgrel=1
-pkgdesc="Multi-threaded download manager written in Rust and Slint (Linux port)"
+pkgdesc="A fast, modern open-source alternative to Internet Download Manager (IDM) for Linux"
 arch=('x86_64')
 url="https://github.com/kerlif/ezoo-download"
 license=('custom')
