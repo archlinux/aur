@@ -3,7 +3,7 @@
 # publish.sh stamps pkgver from the tag being released and fills in b2sums;
 # bump pkgrel here when the recipe changes without a new release.
 pkgname=laneway
-pkgver=0.17.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='A terminal board for Jira'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('45a256adf1079bf08fc1ed533154d467b233d36f71c4ccec8d1f6f7dd23785ce9e1041a3ed3f6423ff9d0b92e0b6abbf3b5dc4eac5e501b538baf71365f0541c')
+b2sums=('7b50840040d6af2c3a2822d01336304045551faf4c3fac1ae571799e84cf67e2d8725e0b47d83e534494eab570e58e54f248366d1868fb70017b2414725662b8')
 
 prepare() {
 	cd "$pkgname-$pkgver"
