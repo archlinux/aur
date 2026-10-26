@@ -9,15 +9,14 @@ elif [[ -d "${_APPDIR}/app" ]]; then
 	_RUNNAME="${_APPDIR}/app"
 elif [[ -d "${_APPDIR}/app.asar.unpacked" ]]; then
 	_RUNNAME="${_APPDIR}/app.asar.unpacked"
-else
-	_RUNNAME="${_APPDIR}/@runname@"
 fi
 _SANDBOX_ARG=()
 if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
 	_SANDBOX_ARG=("--no-sandbox")
 fi
 _ozone_var="${_APPDIR##*/}"
-_ozone_var="${_ozone_var^^}_OZONE_PLATFORM"
+_ozone_var="${_ozone_var^^}"
+_ozone_var="${_ozone_var//[^A-Z0-9_]/_}_OZONE_PLATFORM"
 _OZONE_HINT="${!_ozone_var:-x11}"
 _OZONE_ARG=()
 case "${_OZONE_HINT}" in
@@ -35,4 +34,4 @@ auto)
 	_OZONE_ARG=("--ozone-platform=x11")
 	;;
 esac
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/resources-path-override.js" --app "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" --app "${_RUNNAME}" "$@"

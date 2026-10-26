@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.4.8
+pkgver=0.4.11
 _electronversion=43
 pkgrel=1
 pkgdesc="Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle."
@@ -29,13 +29,13 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/qoder-app/releases/latest/${_pkgname}-linux-${CARCH}.rpm"
     "LICENSE.html"
-    "resources-path-override.js"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('034eb9700710518f01ad77e7104af550f3eae51768c5e8703b2a902637ddca37'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            '7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8'
-            '5754f1e135cc5783c57aaf0a4e10c73c18325422ab637d5e5b2cdf599409c1c8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -56,14 +56,14 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/resources-path-override.js"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     ( cd "${srcdir}" && asar ef "$(_get_app_dir)/resources/app.asar" package.json )
     grep -oP '"version":\s*"\K[^"]+' "${srcdir}/package.json" > "${srcdir}/.pkgver"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/resources-path-override.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     ln -sf "/usr/lib/${pkgname%-bin}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
