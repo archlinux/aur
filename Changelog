@@ -1,14 +1,18 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 5.2.0 ➙ 5.3.3
-              : 2026-01-24 ➙ 2026-10-08
+ Tags         : 5.3.0 ➙ 5.4.0
+              : 2026-09-05 ➙ 2026-10-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-08   : 5.3.3
+ 2026-10-26   : 5.4.0
+              - **5.4.0**
+                * Update to use lockmgr 2.1.0 new API
+
+ 2026-10-08   : 5.3.3, origin/master
               - 5.3.3 Readme update
 
- 2026-10-08   : 5.3.2, origin/master
+ 2026-10-08   : 5.3.2
               - 5.3.2 Documentation available on `readthedocs <https://dns-tools.readthedocs.io>`
 
  2026-09-09   : 5.3.1
@@ -26,14 +30,4 @@
                 * periodic code review and improvements
                 * directory re-org
  2026-01-24   ⋯
-              - update Docs/Changelog
-
- 2026-01-24   : 5.2.0
-              - Version 5.2.0
-                Bug fix:
-                  dns-tool --serial-bump --sign -> works file.
-                  dns-tool --serial-bump        -> did not bump the serial.
-                pyconcurrent is new dependency (was optional):
-                  Reduce maintenance and no loner having duplicate code copied from pyconcurrent module.
- 2026-01-04   ⋯
               - update Docs/Changelog
