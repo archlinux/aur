@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.1.7
+pkgver=2.1.8
 _electronversion=44
 pkgrel=1
 pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
@@ -29,22 +29,21 @@ depends=(
     'uv'
     'mise'
 )
-makedepends=(
-    'asar'
-)
 optdepends=(
     'ollama: Use your local LLM'
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-x64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('12b917dd566f3ba23b55cfb99e856dd171ea032dba0417972f9ab900170ab345')
-sha256sums_x86_64=('6adf36c2d2192263873aea76b5657e0e56a2ed3431a4083551e222f72ef3b77b')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
+sha256sums_aarch64=('fe59b639219bc1c83cfb238c9dcac4e1cc767715a50da5b9c5cbec649be11202')
+sha256sums_x86_64=('38820cf90fd1512af911902adc323f607fc8a89dd43f8ee65c6508862437abdd')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -61,38 +60,25 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i -e "
         s/\"\/opt\/${_pkgname}\/${_pkgname// /}\"/${pkgname%-bin}/g
         s/Icon=${_pkgname// /}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname// /}.desktop"
-    case "${CARCH}" in
-        aarch64)
-            _arch_rem="x64"
-            _archdir="linux-arm64"
-            ;;
-        x86_64)
-            _arch_rem="arm64"
-            _archdir="linux-x64"
-            ;;
-    esac
-    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked" || continue
-    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    find "${srcdir}" -type d \
-        \( -name "*darwin*" -o -name "*win32*" -o -name "*${_arch_rem}*" \) \
-        -exec rm -rf {} +
-    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
-    ln -sf "/usr/bin/bun" "$(_get_app_dir)/resources/app.asar.unpacked/resources/binaries/${_archdir}/bun"
-            ln -sf "/usr/bin/rg" "$(_get_app_dir)/resources/app.asar.unpacked/resources/binaries/${_archdir}/rg"
-            ln -sf "/usr/bin/uv" "$(_get_app_dir)/resources/app.asar.unpacked/resources/binaries/${_archdir}/uv"
-            ln -sf "/usr/bin/uvx" "$(_get_app_dir)/resources/app.asar.unpacked/resources/binaries/${_archdir}/uvx"
-            ln -sf "/usr/bin/mise" "$(_get_app_dir)/resources/app.asar.unpacked/resources/binaries/${_archdir}/mise"
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+    local _archdir=$([[ "${CARCH}" == "aarch64" ]] && echo linux-arm64 || echo linux-x64)
+    for _bin in bun rg uv uvx mise; do
+        ln -sf "/usr/bin/${_bin}" "$(_get_app_dir)/resources/app.asar.unpacked/resources/binaries/${_archdir}/${_bin}"
+    done
     find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"

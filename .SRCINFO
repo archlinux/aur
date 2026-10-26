@@ -1,13 +1,12 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs.
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://cherryai.com/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	license = LicenseRef-custom
-	makedepends = asar
 	depends = electron44
 	depends = libevdev
 	depends = python
@@ -18,15 +17,17 @@ pkgbase = cherry-studio-electron-bin
 	depends = uv
 	depends = mise
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=2.1.7
+	provides = cherry-studio=2.1.8
 	conflicts = cherry-studio
-	source = LICENSE-2.1.7::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.1.7/LICENSE
+	source = LICENSE-2.1.8::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.1.8/LICENSE
+	source = cherry-studio-electron.js
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
-	source_aarch64 = cherry-studio-electron-2.1.7-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.7/Cherry-Studio-2.1.7-linux-arm64.rpm
-	sha256sums_aarch64 = 12b917dd566f3ba23b55cfb99e856dd171ea032dba0417972f9ab900170ab345
-	source_x86_64 = cherry-studio-electron-2.1.7-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.7/Cherry-Studio-2.1.7-linux-x64.rpm
-	sha256sums_x86_64 = 6adf36c2d2192263873aea76b5657e0e56a2ed3431a4083551e222f72ef3b77b
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
+	source_aarch64 = cherry-studio-electron-2.1.8-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.8/Cherry-Studio-2.1.8-linux-arm64.rpm
+	sha256sums_aarch64 = fe59b639219bc1c83cfb238c9dcac4e1cc767715a50da5b9c5cbec649be11202
+	source_x86_64 = cherry-studio-electron-2.1.8-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.8/Cherry-Studio-2.1.8-linux-x64.rpm
+	sha256sums_x86_64 = 38820cf90fd1512af911902adc323f607fc8a89dd43f8ee65c6508862437abdd
 
 pkgname = cherry-studio-electron-bin
