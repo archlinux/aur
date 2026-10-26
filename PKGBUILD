@@ -1,6 +1,6 @@
 # Maintainer: faceless33
 pkgname=cranamp
-pkgver=0.1.91
+pkgver=0.1.92
 pkgrel=1
 pkgdesc='Music player in Rust with WSZ skins and an agent-connected Skin Studio'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'libgcc' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxi' 'libx
 optdepends=('vulkan-driver: GPU rendering' 'xdg-desktop-portal: file dialogs')
 makedepends=('cargo' 'git' 'pkgconf')
 source=("https://github.com/samoylenkodmitry/cranamp/releases/download/v$pkgver/cranamp-$pkgver-source.tar.gz")
-sha256sums=('e22992e2f0240af1e31945d5b818f0395ca003e23dfeb892a0a8c0bb7b9d35f8')
+sha256sums=('40f8c4396726b0ff29448a080a612eb536509bc38c2f0ca0532bc5b44238d471')
 prepare() {
   cd "cranamp-$pkgver"
   cargo fetch --locked
