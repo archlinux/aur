@@ -15,6 +15,7 @@ pkgbase = datazen-bin
 	depends = libayatana-appindicator
 	depends = libgcc
 	depends = libsoup3
+	depends = org.freedesktop.secrets
 	depends = webkit2gtk-4.1
 	provides = datazen
 	conflicts = datazen
