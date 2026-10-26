@@ -10,7 +10,7 @@ pkgname=('systemd-git'
          'systemd-tests-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=262.devel.r90669.afff448cf47
+pkgver=263.devel.r92904.80f70d2af65
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -22,7 +22,8 @@ makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
-             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers')
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers'
+             'rust' 'rust-bindgen')
 conflicts=("mkinitcpio<38-1")
 options=('!strip')
 source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
@@ -45,7 +46,8 @@ source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         '30-systemd-daemon-reload-user.hook'
         '35-systemd-enqueue-marked.hook'
         '35-systemd-udev-reload.hook'
-        '35-systemd-update.hook')
+        '35-systemd-update.hook'
+        '36-systemd-modules-load.hook')
 sha512sums=('SKIP'
             'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
@@ -63,7 +65,8 @@ sha512sums=('SKIP'
             '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
             '51ebf20a1c93c2a86e8ced0d68e91f4a2bf6a537a2d674e05da69961d5861213159e28f228ffdc897bed721abd61ff133f49aeb0a9ebbbe76020c5b847c2a2df'
             'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
-            '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
+            '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97'
+            '717d93fb29034398394b68510f53da8d599cb68accf1cb92baee158fca1fde3fa5a1f698d35f81661b22c7acec6da34422b852e29dbc731b296a0884ffb6fcb0')
 
 pkgver() {
   cd "$pkgbase-stable"
@@ -160,9 +163,9 @@ package_systemd-git() {
   depends=(
     "systemd-libs-git=${pkgver}"
     'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-    'dbus-units' 'kbd' 'kmod' 'hwdata'
+    'dbus-units' 'glibc' 'kbd' 'kmod' 'hwdata'
     'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
-    'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
+    'libelf' 'libgcc' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
     'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
     'openssl' 'libcrypto.so' 'libssl.so')
   provides=('nss-myhostname' "systemd-tools=${pkgver}" "udev=${pkgver}")
@@ -339,7 +342,18 @@ package_systemd-tests-git() {
   pkgdesc+=' (git version)'
   conflicts=('systemd-tests')
   provides=("systemd-tests=${pkgver}")
-  depends=("systemd=${pkgver}")
+  depends=(
+    'bash'
+    'glibc'
+    'libgcc'
+    'python'
+    'python-packaging'
+    'python-colorama'
+    'python-pexpect'
+    'python-pytest'
+    'python-psutil'
+    "systemd=${pkgver}",
+    "systemd-libs=${pkgver}")
 
   install -d -m0755 "$pkgdir"/usr/lib/systemd
   mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
@@ -351,7 +365,7 @@ package_systemd-ukify-git() {
   conflicts=('systemd-ukify')
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
-  depends=("systemd-git=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=("systemd-git=${pkgver}" 'binutils' 'python-cryptography' 'python' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
