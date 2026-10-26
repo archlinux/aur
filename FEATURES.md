@@ -200,9 +200,9 @@ de-accented by `calt` - see "Greek, in detail".
 
 | Feature | What it does |
 |---|---|
-| `kern` | Class-based pair kerning for Latin, Greek and Cyrillic (`AV` 2672 → 2532 units, `Το` 2468 → 2308, `ΤΑ` 2610 → 2430, `Γα` 2338 → 2178). Digits are not kerned (`0123456789` is unchanged) |
-| `mark` | Combining-mark positioning, 8 lookups, for Latin, Greek and Cyrillic alike: `α`+U+0308 puts the diaeresis at (0, -1233) over the alpha, `Α`+U+0308 uses the `.case` mark at (0, -1266) |
-| `mkmk` | Mark-on-mark stacking: `ι`+grave+acute stacks the two accents at different heights |
+| `kern` | Class-based pair kerning for Latin, Greek and Cyrillic. At `wght` 400: `AV` 2753 → 2608 units, `Το` 2477 → 2322, `ΤΑ` 2662 → 2487, `Γα` 2353 → 2198. Digits barely kern - `0123456789` loses 13 units over ten glyphs |
+| `mark` | Combining-mark positioning, 8 lookups, for Latin, Greek and Cyrillic alike: `α`+U+0308 shifts the diaeresis 1229 units left so it is centred over the alpha, and `Α`+U+0308 uses the `.case` variant, shifted 1288. The mark's ink already sits above the baseline, so the vertical offset stays 0 - the point is that this is a real anchor, not the pen position |
+| `mkmk` | Mark-on-mark stacking: `ι`+grave+acute puts the acute 385 units higher than the grave and both over the iota, from two separate lookups |
 
 There is **no `cpsp`** in this font (Geologica has one), so there is no
 automatic capital spacing to switch on.
@@ -227,15 +227,21 @@ automatic capital spacing to switch on.
 
 ### Figures, measured
 
+At `wght=400`, in font units:
+
 | | `zero` | `one` | `two` | `three` | `eight` | `1111 0000` |
 |---|---|---|---|---|---|---|
-| default (proportional) | 1329 | 905 | 1138 | 1165 | 1237 | 9318 |
-| `tnum` | 1356 | 1356 | 1356 | 1356 | 1356 | 11230 (+20.5%) |
-| `pnum` | ← identical to default | | | | | 9318 |
+| default (proportional) | 1305 | 855 | 1109 | 1141 | 1214 | 9023 |
+| `tnum` | 1356 | 1356 | 1356 | 1356 | 1356 | 11231 (+24.5%) |
+| `pnum` | ← identical to default | | | | | 9023 |
 
 Digits are proportional by default, so a column of numbers does not line up
-unless you ask for `tnum`. `tnum` also lines up the arithmetic signs, which is
-what makes it worth having in a table.
+unless you ask for `tnum`. The tabular width is 1356 units in **every**
+weight - Thin's `zero` is already exactly 1356, and `tnum` holds it there as
+the proportional widths grow - so a table set with `tnum` keeps its column
+widths when the weight changes, as long as the weight is the same for the
+whole table. `tnum` also lines up the arithmetic signs, which is what makes it
+worth having in a table.
 
 ### Not in the font
 
