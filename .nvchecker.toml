@@ -1,0 +1,3 @@
+[unfold-xapp]
+source = "git"
+git = "https://github.com/xapp-project/unfold.git"

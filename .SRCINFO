@@ -1,0 +1,23 @@
+pkgbase = unfold-xapp
+	pkgdesc = Archive Manager for Linux Desktops
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/xapp-project/unfold
+	arch = any
+	groups = x-apps
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = meson
+	depends = 7zip
+	depends = gtk3
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = python-xapp
+	depends = xapp
+	depends = xapp-symbolic-icons
+	provides = unfold
+	conflicts = unfold
+	source = unfold-1.0.3.tar.gz::https://github.com/xapp-project/unfold/archive/refs/tags/1.0.3.tar.gz
+	sha256sums = 75ec76b9727cbdce3d11e3a45833fe1db757594efaf4959749ea3fc38f784130
+
+pkgname = unfold-xapp
