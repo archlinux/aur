@@ -1,0 +1,16 @@
+pkgbase = eternal-timer
+	pkgdesc = Timers and stopwatches that survive shutdowns and power cuts
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Tamim180/eternal-timer
+	install = eternal-timer.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = pyside6
+	optdepends = python-cryptography: encrypted phone sync
+	optdepends = libnotify: desktop notifications while the window is closed
+	source = eternal-timer-3.0.0.tar.gz::https://github.com/Tamim180/eternal-timer/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 23551868df7cafac6d3976beae5dc3d74b4a6d99c4cf80217179ea7005def74e
+
+pkgname = eternal-timer

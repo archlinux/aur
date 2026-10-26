@@ -1,0 +1,21 @@
+post_install() {
+    echo "=============================================================="
+    echo " Eternal Timer installed."
+    echo
+    echo " A login-time check is already wired in (/etc/xdg/autostart),"
+    echo " so a finished timer notifies you right after you log in even"
+    echo " if it finished while you were shut down."
+    echo
+    echo " For a more frequent check (every ~60s) while you're logged"
+    echo " in, enable the optional background timer yourself:"
+    echo
+    echo "     systemctl --user enable --now eternal-timer-check.timer"
+    echo
+    echo " Phone sync needs python-cryptography:"
+    echo "     sudo pacman -S python-cryptography"
+    echo "=============================================================="
+}
+
+post_upgrade() {
+    post_install
+}
