@@ -1,14 +1,14 @@
 pkgbase = rakarrack-plus
 	pkgdesc = Guitar Effects Processor
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Stazed/rakarrack-plus
 	arch = x86_64
 	arch = aarch64
 	groups = lv2-plugins
 	groups = pro-audio
 	license = GPL-2.0-only
-	checkdepends = lilv
+	checkdepends = lilv-tools
 	checkdepends = lv2lint
 	makedepends = alsa-lib
 	makedepends = cmake

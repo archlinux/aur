@@ -3,14 +3,14 @@
 
 pkgname=rakarrack-plus
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Guitar Effects Processor'
 arch=(x86_64 aarch64)
 url='https://github.com/Stazed/rakarrack-plus'
 license=(GPL-2.0-only)
 depends=(alsa-utils fltk glibc gcc-libs hicolor-icon-theme libxpm)
 makedepends=(alsa-lib cmake jack liblo lv2 libsndfile python zita-resampler)
-checkdepends=(lilv lv2lint)
+checkdepends=(lilv-tools lv2lint)
 optdepends=('lv2-host: for running LV2 plugins'
             'new-session-manager: for NSM support')
 groups=(lv2-plugins pro-audio)
@@ -46,8 +46,7 @@ check() {
     ln -vsf /usr/lib/lv2/$spec.lv2 "$lv2path"
   done
 
-  LV2_PATH="$lv2path" lv2lint -Mpack -d -q \
-    ${plugins[@]}
+  LV2_PATH="$lv2path" lv2lint -Mpack -d -q ${plugins[@]}
   rm -rf "$testdir"
 }
 
