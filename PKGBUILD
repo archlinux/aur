@@ -2,51 +2,50 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-welcome-center
-pkgver=6.7.5
+pkgver=6.8.0
 pkgrel=1
-pkgdesc='SonicDE onboarding wizard with Silver defaults'
-arch=(x86_64)
+pkgdesc='A friendly onboarding wizard for SonicDE'
+arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-welcome-center'
-license=(LGPL-2.0-or-later)
-depends=(glibc
-         kcmutils
-         kconfig
-         kconfigwidgets
-         kcrash
-         kdbusaddons
-         kglobalaccel
-         ki18n
-         kjobwidgets
-         knewstuff
-         kservice
-         ksvg
-         kuserfeedback
-         libstdc++
-         plasma5support
-         qt6-5compat
-         qt6-base
-         qt6-declarative
-         qt6-svg
-         sonic-frameworks-core-addons
-         sonic-frameworks-io
-         sonic-frameworks-quick-ui
-         sonic-frameworks-quick-ui-addons
-         sonic-frameworks-windowsystem
-         sonic-interface-libraries
-         sonic-network-manager)
-makedepends=(sonic-frameworks-cmake-modules)
-provides=(plasma-welcome)
-conflicts=(plasma-welcome)
-groups=(sonicde)
+license=('LGPL-2.0-or-later')
+depends=(
+	'glibc'
+	'knewstuff' # org.kde.knewstuff-dialog
+	'libstdc++'
+	'qt6-base'
+	'qt6-declarative'
+	'sonic-frameworks-app-info'
+	'sonic-frameworks-core-addons'
+	'sonic-frameworks-crash-handler'
+	'sonic-frameworks-dbus'
+	'sonic-frameworks-internationalization'
+	'sonic-frameworks-io'
+	'sonic-frameworks-keybind'
+	'sonic-frameworks-progress-ui'
+	'sonic-frameworks-quick-ui'
+	'sonic-frameworks-quick-ui-addons'
+	'sonic-frameworks-settings'
+	'sonic-frameworks-settings-utils'
+	'sonic-frameworks-svg'
+	'sonic-frameworks-user-feedback'
+	'sonic-frameworks-windowsystem'
+	'sonic-interface-libraries'
+	'sonic-network-manager'
+	'sonic-plasma5-support-library'
+)
+makedepends=('sonic-frameworks-cmake-modules')
+provides=('plasma-welcome')
+conflicts=('plasma-welcome')
+groups=('sonicde')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2ff1f43155044784975e342af5f962aac6ed4b8968e577fdf2d5d30afa474fbf')
+sha256sums=('675f9397febe1913cd541345fa5d0dfb328af176d1aa04dda347ce4272989ca0')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
