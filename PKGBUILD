@@ -1,18 +1,18 @@
 # Maintainer: chuanshanjia <1845776552@qq.com>
 
 pkgname=linuxmirrors
-pkgver=2026.10.07
+pkgver=2026.10.21
 pkgrel=1
 pkgdesc="GNU/Linux mirror switching script - automatically detect and switch system package manager mirrors"
 arch=('any')
 url="https://github.com/SuperManito/LinuxMirrors"
 license=('MIT')
 depends=('bash')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SuperManito/LinuxMirrors/archive/92ca581c8d4824e42698cda409601edfbf97ad2d.tar.gz")
-sha256sums=('8e11a8ac7cfb65030e24b9060d825ed63461fb0510cb426459ed34b349b0e6b1')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SuperManito/LinuxMirrors/archive/76fbf1738c22108cdbcc73973612bdb07ad6789b.tar.gz")
+sha256sums=('41b98b7eb6b983d665047b06c22f8b041c55f091cd7c106838b21cd33ef4e127')
 
 package() {
-    cd "${srcdir}/LinuxMirrors-92ca581c8d4824e42698cda409601edfbf97ad2d"
+    cd "${srcdir}/LinuxMirrors-76fbf1738c22108cdbcc73973612bdb07ad6789b"
 
     # Install main script
     install -Dm755 ChangeMirrors.sh "${pkgdir}/usr/share/linuxmirrors/ChangeMirrors.sh"
