@@ -2,18 +2,19 @@
 
 _pkgname=MaterialCraft
 pkgname=materialcraft
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 url="https://github.com/PiJellyPin/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Substance Designer'
 arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(glibc # libc.so libm.so
+         hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
-sha256sums=('072ddafb1d6320dbfdaa6bc090fb84f855a7804263733b0b0f69787fd4141b15')
+sha256sums=('78866ac3da35bfc38adc9f97b56a4eb8fea63dbfab192590e83cd35d12ada718')
 
 _srcenv() {
 	cd "$_archive"
@@ -46,6 +47,6 @@ package() {
 	depends+=(libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-gui}
-	install -Dm0644 assets/${_pkgname}Logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+	install -Dm0644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
