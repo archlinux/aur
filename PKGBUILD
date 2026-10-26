@@ -28,8 +28,8 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
