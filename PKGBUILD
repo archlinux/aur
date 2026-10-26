@@ -4,7 +4,7 @@
 pkgname=whisparr-eros
 _pkgname=Whisparr
 __pkgname=Whisparr-Eros
-pkgver=3.6.2.1727
+pkgver=3.6.5.1886
 _pkgver=${pkgver%.*}-release.${pkgver##*.}
 pkgrel=1
 pkgdesc='Adult movie organizer/manager for usenet and torrent users'
@@ -46,7 +46,7 @@ source=(
   whisparr-eros.sysusers
   whisparr-eros.tmpfiles
 )
-sha256sums=('c890159b3ee6c2d212f89b6238a010c25701e3acfcb20bc0b4114c94a5ea1f04'
+sha256sums=('e1cf4bae0e4face13d04107c529323486c4a55875cd0b95c1aa717ea3708a498'
             '928ba49a81e3eeec4385ecf7f23040ad16758bacd4e3abd41d552595e8876cc8'
             '3964160cb383c88c8d335da2ca37cf800a282b32f68b4093595694f4ac8fe99c'
             '050f751d01333298bccfa84dbe11550031075f595009c15d37b089eaf453b19c'
@@ -78,6 +78,12 @@ prepare() {
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   # Uncomment after dotnet-sdk reaches 10.0.101
   dotnet new globaljson --sdk-version 10.0.101 --roll-forward latestFeature
+
+  # Patch vulnerabilities
+  if ! grep -q -i 'System.Security.Cryptography.Pkcs' src/NzbDrone.Core/Whisparr.Core.csproj; then
+    dotnet package add System.Security.Cryptography.Pkcs --version 10.0.13 --project src/NzbDrone.Core/Whisparr.Core.csproj
+    dotnet package add Microsoft.AspNetCore.SignalR.Common --version 10.0.13 --project src/NzbDrone.Core/Whisparr.Core.csproj
+  fi
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
@@ -111,7 +117,7 @@ build() {
     && dotnet build-server shutdown # Build servers do not terminate automatically
 
   # Build frontend
-  yarn run build --env production
+  yarn run build
 }
 
 package() {
