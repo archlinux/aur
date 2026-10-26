@@ -1,6 +1,6 @@
 pkgbase = ely-doc-app-bin
 	pkgdesc = ElyDoc - Word document editor from the Ely Office suite
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://office.elygpui.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ely-doc-app-bin
 	conflicts = ely-doc-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = ely-doc_0.1.11-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.11/ely-doc_0.1.11-1_amd64.deb
-	sha256sums_x86_64 = b0fc492369740d8d6b3cfc801024d4b156a8b737e7c77726c5990ed7a163acf7
+	source_x86_64 = ely-doc_0.1.12-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.12/ely-doc_0.1.12-1_amd64.deb
+	sha256sums_x86_64 = 4d7f0f92bc7bee915a2c2ae197cd4afb48117b31524e5c6648faeeab9f4186a3
 
 pkgname = ely-doc-app-bin
