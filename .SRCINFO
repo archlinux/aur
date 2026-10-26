@@ -1,7 +1,7 @@
 pkgbase = colibri-bin
 	pkgdesc = Tiny local inference engine for large MoE models (prebuilt)
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustVugg/colibri
 	arch = x86_64
 	license = Apache-2.0
