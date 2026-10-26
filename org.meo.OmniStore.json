@@ -1,0 +1,17 @@
+{
+  "id": "org.meo.OmniStore",
+  "name": "OmniStore",
+  "oauthClientId": "registered-omnistore-oauth-client-id",
+  "redirectUri": "omnistore://auth/callback",
+  "executables": [
+    "/usr/lib/omnistore/omnistore-native"
+  ],
+  "scopes": [
+    "openid",
+    "profile",
+    "email"
+  ],
+  "capabilities": [
+    "local_ai"
+  ]
+}

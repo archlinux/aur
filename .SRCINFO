@@ -1,0 +1,34 @@
+pkgbase = omnistore-bin
+	pkgdesc = OmniStore software manager for MeoArch
+	pkgver = 0.1.5beta1
+	pkgrel = 1
+	url = https://github.com/QwQdoge/OmniStore
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = patchelf
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = meoui-qml>=1.0.4beta2-4
+	depends = meo-kde-runtime>=0.4.0beta3
+	depends = ksshaskpass
+	depends = libsecret
+	depends = pacman-contrib
+	depends = python
+	depends = pyalpm
+	optdepends = meo-release: shared MeoArch application catalog and channel integration
+	optdepends = meo-account>=0.1.0-8: system AI connections and remembered catalog consent
+	optdepends = flatpak: install applications from Flatpak remotes
+	provides = omnistore
+	conflicts = omnistore
+	conflicts = omnistore-git
+	noextract = omnistore-linux-x64.tar.gz
+	source = omnistore-linux-x64.tar.gz::https://github.com/QwQdoge/OmniStore/releases/download/v0.1.5-beta.1/omnistore-linux-x64.tar.gz
+	source = org.meo.OmniStore.json
+	source = omnistore.desktop
+	source = verify_release_exporter_contract.py::https://raw.githubusercontent.com/QwQdoge/OmniStore/615186e57b0abeec98fa04c183a36f0499d8e21f/verify_release_exporter_contract.py
+	sha256sums = 3b14e8d06e29db8a6262c288ba064e8c6311dfc4e140471d0c5c7ae1391eb274
+	sha256sums = bb9f5e8267d2106ffed2927047df4dc0a2037a65c5b50002b51a2cf213484e1d
+	sha256sums = 50279aede8e00311980b46812ef4eaaf2ca33b8100d9bbb5850c9017a3df1904
+	sha256sums = d4b7694e512898a32907be3a4fdf76ffba994b001ae2c957c0533b31b59c0773
+
+pkgname = omnistore-bin

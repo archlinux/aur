@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=OmniStore
+GenericName=App Store
+GenericName[zh_CN]=应用商店
+Comment=Unified software store for MeoArch
+Comment[zh_CN]=MeoArch 的统一软件商店
+Keywords=apps;software;packages;updates;MeoArch;
+Keywords[zh_CN]=应用;软件;软件包;更新;MeoArch;
+Exec=/usr/bin/omnistore %u
+Icon=org.meo.OmniStore
+Terminal=false
+Type=Application
+Categories=Utility;PackageManager;
+MimeType=x-scheme-handler/omnistore;
+StartupNotify=true
