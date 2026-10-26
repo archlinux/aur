@@ -1,0 +1,30 @@
+pkgbase = eve-wrench-git
+	pkgdesc = EVE Online settings manager - backup, restore, and sync settings (development version)
+	pkgver = 0.6.0.r0.g2de3d80
+	pkgrel = 1
+	url = https://github.com/eve-wrench/eve-wrench-app
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = libx11
+	makedepends = openssl
+	makedepends = wayland
+	makedepends = zstd
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	optdepends = vulkan-driver: GPU-accelerated rendering
+	provides = eve-wrench=0.6.0.r0.g2de3d80
+	conflicts = eve-wrench
+	options = !debug
+	options = !lto
+	source = git+https://github.com/eve-wrench/eve-wrench-app.git
+	b2sums = SKIP
+
+pkgname = eve-wrench-git
