@@ -1,6 +1,6 @@
 pkgbase = animaple-bin
 	pkgdesc = Anime streaming app — Flutter cross-platform client (prebuilt binary)
-	pkgver = 2.0.13
+	pkgver = 2.0.14
 	pkgrel = 1
 	url = https://github.com/MapleProjects/AniMaple
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = animaple-bin
 	conflicts = animaple-git
 	options = !strip
 	options = !debug
-	source = animaple-bin-2.0.13-x86_64.tar.gz::https://github.com/MapleProjects/AniMaple/releases/download/v2.0.13/animaple-v2.0.13-linux-x86_64.tar.gz
-	sha256sums = a920d839c86d761e55fbc63d67b0e600a98a43526e42b11f1a157a2f506ee86c
+	source = animaple-bin-2.0.14-x86_64.tar.gz::https://github.com/MapleProjects/AniMaple/releases/download/v2.0.14/animaple-v2.0.14-linux-x86_64.tar.gz
+	sha256sums = b7243447b049a4a91c127669d4fef9696fe20a1faddca70b44bf2d37b79c46a7
 
 pkgname = animaple-bin
