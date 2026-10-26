@@ -1,6 +1,6 @@
 pkgbase = netexperts-support-bin
 	pkgdesc = NetExperts Remote Support with automatic relay fallback and staff access enabled by default (based on RustDesk)
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://netexperts.com.au/source-code.html
 	install = netexperts-support.install
@@ -25,14 +25,14 @@ pkgbase = netexperts-support-bin
 	conflicts = netexperts-support
 	conflicts = rustdesk
 	conflicts = rustdesk-bin
-	noextract = NetExpertsSupport-1.5.2-linux-source.tar.gz
+	noextract = NetExpertsSupport-1.5.3-linux-source.tar.gz
 	options = !strip
 	options = !debug
-	source = https://netexperts.com.au/opensource/netexperts-support-1.5.2-x86_64-linux.tar.gz
-	source = https://netexperts.com.au/opensource/NetExpertsSupport-1.5.2-linux-source.tar.gz
+	source = https://netexperts.com.au/opensource/netexperts-support-1.5.3-x86_64-linux.tar.gz
+	source = https://netexperts.com.au/opensource/NetExpertsSupport-1.5.3-linux-source.tar.gz
 	source = netexpertssupport.service
-	sha256sums = f423e3242d40c7af96caf3839f336723daa19fca94b3698b60ad19341e77c662
-	sha256sums = 79774ace447ca14e4bbfa05de5f99939710f3a5b6d45067f5afefb8e557b9e0d
+	sha256sums = bcb0ad0855802025c69b39710ddd26a913f6d34279bc5f219c906e6800987ddc
+	sha256sums = ef5a1c07a4bf77cc449b69477206aa9f06ae091797aa0730e594f559f0bedef7
 	sha256sums = 9e78d6f83f918235d9004cc7adabf0b13bacaed0151a2e328cdc37d2d11cb3f3
 
 pkgname = netexperts-support-bin

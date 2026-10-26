@@ -1,16 +1,46 @@
+backup_support() {
+    local backup="/data/autobak/$(hostname)/netexperts-support/$(date -u +%F)/before-153-$(date -u +%H%M%S)-$$"
+    local paths=() path
+    for path in /usr/lib/netexperts-support /root/.config/netexpertssupport; do
+        [ ! -e "$path" ] || paths+=("$path")
+    done
+    (
+        umask 077
+        mkdir -p "$backup" || exit 1
+        if [ "${#paths[@]}" -gt 0 ]; then
+            tar -czf "$backup/state.tar.gz" "${paths[@]}" || exit 1
+        fi
+        printf '%s\n' 'Stop netexpertssupport; verify SHA256SUMS; reinstall the previous cached package and restore saved configuration from state.tar.gz. Preserve later configuration before rollback.' > "$backup/ROLLBACK.txt"
+        cd "$backup" || exit 1
+        sha256sum ./* > SHA256SUMS.new && mv SHA256SUMS.new SHA256SUMS && sha256sum -c SHA256SUMS
+    )
+}
+
+pre_install() {
+    backup_support
+}
+
+pre_upgrade() {
+    backup_support
+}
+
 post_install() {
+    local choice=Y
+    [ "${NX_STAFF_ACCESS:-}" != N ] || choice=N
+    /usr/bin/netexperts-support --setup-staff-access-system "$choice" || return 1
     if [ -d /run/systemd/system ]; then
         systemctl daemon-reload
         systemctl enable --now netexpertssupport.service
     fi
-    printf '%s\n' 'NetExperts staff login is enabled by default. A saved No is preserved.'
-    printf '%s\n' 'You can change this in Settings; the password shown on your screen still allows access.'
+    printf '%s\n' 'Staff login starts Yes at installation. Only No chosen in this installation disables it.'
+    printf '%s\n' 'Change this later in Settings; the displayed password and recipient approval remain available.'
 }
 
 post_upgrade() {
-    if [ "$(vercmp "$2" '1.5.1-1')" -lt 0 ]; then
-        post_install
-    elif [ -d /run/systemd/system ]; then
+    local choice=Y
+    [ "${NX_STAFF_ACCESS:-}" != N ] || choice=N
+    /usr/bin/netexperts-support --setup-staff-access-system "$choice" || return 1
+    if [ -d /run/systemd/system ]; then
         systemctl daemon-reload
         systemctl try-restart netexpertssupport.service
     fi
