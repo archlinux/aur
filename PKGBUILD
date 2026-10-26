@@ -4,7 +4,7 @@ _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
 _debname="com.${pkgname//-/}.Nuclear"
-pkgver=1.51.2
+pkgver=1.52.2
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -32,7 +32,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/player@${pkgver}.tar.gz")
-sha256sums=('96d63fff34fbe5b0b04e9af5af86548bee28eff985ee3a24d3c958d0bf20fc32')
+sha256sums=('c33edf77b04a18e3470b6314c0a635cdd2e7addd5bd6395529587fbdd34d51bf')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,15 +40,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_project_dir() {
-    find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
-        while read -r tauri_dir; do
-            [ -f "${tauri_dir}/Cargo.toml" ] || continue
-            local dir="${tauri_dir}"
-            until [ -f "${dir}/package.json" ] || [ "$dir" = "${srcdir}" ] || [ "$dir" = "/" ]; do
-                dir="$(dirname "$dir")"
-            done
-            [ -f "${dir}/package.json" ] && { echo "$dir"; return; }
-        done
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
+_get_app_dir() {
+	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -127,11 +125,10 @@ build() {
     done
 }
 package() {
-    local _appdir="$(_get_project_dir)/packages/player/src-tauri"
-    install -Dm755 "${_appdir}/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm755 "${_appdir}/resources/${_debname}.desktop" \
+    install -Dm755 "$(_get_app_dir)/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "$(_get_project_dir)/packages/player/src-tauri/resources/${_debname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "${_appdir}/resources/${_debname}.metainfo.xml" \
+    install -Dm755 "$(_get_project_dir)/packages/player/src-tauri/resources/${_debname}.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/${pkgname}.metainfo.xml"
     _icon_sizes=(32x32 64x64 128x128 256x256 512x512)
 	for _icons in "${_icon_sizes[@]}";do

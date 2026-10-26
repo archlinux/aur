@@ -1,6 +1,6 @@
 pkgbase = nuclear-player
 	pkgdesc = Streaming music player that finds free music for you.
-	pkgver = 1.51.2
+	pkgver = 1.52.2
 	pkgrel = 1
 	url = https://nuclearplayer.com/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = nuclear-player
 	optdepends = gst-plugins-bad: Additional media codec support
 	optdepends = gst-plugins-ugly: Patented codec support
 	optdepends = gst-libav: FFmpeg-based codec support
-	source = nuclear-player-1.51.2.tar.gz::https://github.com/nukeop/nuclear/archive/refs/tags/player@1.51.2.tar.gz
-	sha256sums = 96d63fff34fbe5b0b04e9af5af86548bee28eff985ee3a24d3c958d0bf20fc32
+	source = nuclear-player-1.52.2.tar.gz::https://github.com/nukeop/nuclear/archive/refs/tags/player@1.52.2.tar.gz
+	sha256sums = c33edf77b04a18e3470b6314c0a635cdd2e7addd5bd6395529587fbdd34d51bf
 
 pkgname = nuclear-player
