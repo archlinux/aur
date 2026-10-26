@@ -1,0 +1,15 @@
+pkgbase = pi-acp
+	pkgdesc = ACP adapter for the pi coding agent
+	pkgver = 0.0.34
+	pkgrel = 1
+	url = https://github.com/svkozak/pi-acp
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = pi
+	noextract = pi-acp-0.0.34.tgz
+	source = https://registry.npmjs.org/pi-acp/-/pi-acp-0.0.34.tgz
+	sha512sums = 32b0a9dfb51ba54ce44e4cd320c2507f5458ad3fa4af87e0183185a0b981376e94ba9b82669d17c55218fbb5d8b0ca37c839f30de6542748cfc8cdd28ba06492
+
+pkgname = pi-acp
