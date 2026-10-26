@@ -175,7 +175,12 @@ def _load_config(config_files: list[Path]) -> dict[str, Any]:
     for key in _PATH_KEYS:
         if not config[key]:
             config[key] = DEFAULTS[key]
-        config[key] = Path(config[key])
+        config[key] = Path(config[key]).expanduser()
+
+    if config["extra_model_paths_yaml"]:
+        config["extra_model_paths_yaml"] = (
+            Path(config["extra_model_paths_yaml"]).expanduser()
+        )
 
     # `github_token` falls back to the GITHUB_TOKEN environment variable
     # only when it is not explicitly set in the config files.
