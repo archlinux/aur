@@ -1,0 +1,26 @@
+pkgbase = asc-nnal-bin
+	pkgdesc = Huawei Ascend CANN NNAL: ATB (Ascend Transformer Boost) and ASDSIP
+	pkgver = 9.2.0
+	pkgrel = 1
+	url = https://www.hiascend.com/developer/download/community/result?module=cann
+	arch = x86_64
+	arch = aarch64
+	license = custom:CANN-OSLA-2.0
+	makedepends = unzip
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	depends = asc-toolkit
+	depends = asc-runtime
+	provides = asc-nnal
+	conflicts = asc-nnal
+	noextract = cann-nnal-9.2.0.zip
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source_x86_64 = cann-nnal-9.2.0.zip::https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.2.0/Ascend-cann-nnal_9.2.0_linux-x86_64.zip
+	sha256sums_x86_64 = 1ad4ce62596551723fab814b94b0c7e4606c6a1db3e48536939c539271216005
+	source_aarch64 = cann-nnal-9.2.0.zip::https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.2.0/Ascend-cann-nnal_9.2.0_linux-aarch64.zip
+	sha256sums_aarch64 = 71e279743f75da0523f9b9b8e352bf40870c3c314100dc1bfeda545fd4e51ac4
+
+pkgname = asc-nnal-bin
