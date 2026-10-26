@@ -9,8 +9,6 @@ elif [[ -d "${_APPDIR}/app" ]]; then
 	_RUNNAME="${_APPDIR}/app"
 elif [[ -d "${_APPDIR}/app.asar.unpacked" ]]; then
 	_RUNNAME="${_APPDIR}/app.asar.unpacked"
-else
-	_RUNNAME="${_APPDIR}/@runname@"
 fi
 _SANDBOX_ARG=()
 if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
@@ -36,4 +34,4 @@ auto)
 	_OZONE_ARG=("--ozone-platform=x11")
 	;;
 esac
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --app "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" --app "${_RUNNAME}" "$@"
