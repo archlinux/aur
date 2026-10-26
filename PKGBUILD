@@ -3,7 +3,7 @@
 # 依赖 AUR 的 zcode 包提供 ZCode 桌面版本体。
 
 pkgname=zcode-pro
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="ZCode Pro — 界面增强启动器（自定义项目别名等），不修改客户端文件"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('nodejs>=22: 使用系统 Node 运行启动器（缺省复用 ZCode 
 makedepends=()
 url="https://github.com/duanluan/zcode-pro"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=(bd346345e69c0627dfa7b96de63e413f404661180e0828827f6b6ac36c639848)
+sha256sums=(934a9d1261a800233a3c1b7ba16a832c1cd463252ff51838f5c0f2514fe5c541)
 install=zcode-pro.install  # 装后检测并提示清理 ~/.local 下的手动安装残留
 options=('!strip')
 
