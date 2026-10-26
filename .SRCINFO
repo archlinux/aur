@@ -1,7 +1,7 @@
 pkgbase = binwalk2
 	pkgdesc = Tool for searching a given binary image for embedded files
 	pkgver = 2.4.3
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/OSPG/binwalk
 	arch = any
 	license = MIT
@@ -32,7 +32,7 @@ pkgbase = binwalk2
 	optdepends = sleuthkit: forensic analysis support
 	provides = binwalk
 	source = binwalk::git+https://github.com/OSPG/binwalk#commit=ce6c706cc0cc13dbaa4c5cf22e7f03fcd83835ac
-	source = CVE-2026-7179.patch::https://sources.debian.org/data/main/b/binwalk/2.4.3%2Bdfsg1-3/debian/patches/prevent-path-traversal-in-wince.patch
+	source = CVE-2026-7179.patch
 	sha512sums = SKIP
 	sha512sums = ad8bb01ecdb1f8a2f3af82f8f1607f1e2e0dd7ffaed914dd2156749d36954e8932c5bf064f3bdc1f272b2a72842272bb264f19fa89129d98756ccc06c0e655e4
 
