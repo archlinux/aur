@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=qi-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Local-first query engine CLI for AI agents and humans (BM25 + vector search)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!debug')
 source_x86_64=("qi-linux-amd64.tar.gz::https://github.com/itsmostafa/qi/releases/download/v${pkgver}/qi-linux-amd64.tar.gz")
-sha256sums_x86_64=('1db2d892bdb25244b7e2a4bcf79044939185d4319b189973a3ec7f16fdae4396')
-sha256sums_aarch64=('9103f2a1f87cf8d7ebdba946b218a2f13faea0a03a68f570ea2b14bd2b0490f2')
+sha256sums_x86_64=('9acd34c7a1b198541397a4aea8b74eea52dcff630f2084f51e8990baea60bd10')
+sha256sums_aarch64=('dfddbdf60e8d8a848c0355a9c8c6597400ef14ddd6b97f4ddc7107dc038b43c1')
 source_aarch64=("qi-linux-arm64.tar.gz::https://github.com/itsmostafa/qi/releases/download/v${pkgver}/qi-linux-arm64.tar.gz")
 
 latestver() {
