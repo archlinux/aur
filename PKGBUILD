@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-irc-client-bin
 _pkgname=Simple-Irc-Client
-pkgver=2.1.5
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="An open source project that provides a minimalist IRC client for users who don't need all the bells and whistles of a full-featured IRC client."
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
     'libayatana-appindicator'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('f39c31f6d709dcfd0ded1edb0c86a6b21ae029e675eed67dcd3358060b6d3321')
+sha256sums=('205dc0ff90d9060935e1b5645697e722ea8073a5b3838407ad945d42d366b76c')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
