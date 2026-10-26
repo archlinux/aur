@@ -1,0 +1,24 @@
+pkgbase = python-bloodhound-ce
+	pkgdesc = Python based ingestor for BloodHound
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/dirkjanm/bloodhound.py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools>=42.0.0
+	makedepends = git
+	depends = python>=3.7
+	depends = python-dnspython
+	depends = python-ldap3>=2.5
+	depends = python-ldap3-ad-auth>=0.1.0
+	depends = python-pyasn1>=0.4
+	depends = python-pycryptodome
+	depends = impacket>=0.9.17
+	source = bloodhound::git+https://github.com/dirkjanm/bloodhound.py?signed#commit=50fa194029837de4dc7d8297c01464f56a1bf31c
+	validpgpkeys = 6D29A790AA820F7A51602DDC79653F553AEA621E
+	b2sums = 199cd9a3830bbc73f7f75733b51e40f5f9607f75c22f3855f85c592a1148a5af786b5552645b60e6919d2678e6549e4b63511fae45b14668847541ed5528f43f
+
+pkgname = python-bloodhound-ce
