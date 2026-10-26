@@ -1,6 +1,6 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=microblocks
-pkgver=2.0.88
+pkgver=2.0.126
 pkgrel=1
 pkgdesc="MicroBlocks is a free, blocks pogramming language for learning physical computing with educational microcontroller boards such as the micro:bit, Adafruit Circuit Playground Express, and many others."
 arch=('x86_64')
@@ -9,12 +9,12 @@ license=('MPL2')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}-amd64.deb::https://microblocks.fun/downloads/v$pkgver/packages/ublocks-amd64.deb")
-sha512sums=('e9a4f526b59e25fc3ffd645d1ecd607d8b5a73a25d966c8c9554a7e82ef0859e0b7662db9c229cf4d217a3a49973a1fd4afc7cff9a3c863c7813abf30a7a5cd8')
+sha512sums=('374715f29481088532fe82eb038a8ab83360fbf2ed589a06837882aee26d905b9724f2f8fb5e95964747eb28f88fd3c308ffa1952b5bea375c0642d71fe437c1')
 
 package(){
 
 	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+	tar xf data.tar.zst -C "${pkgdir}"
 
 	# Fix directories structure differencies
 	cd "${pkgdir}"
