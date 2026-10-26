@@ -1,6 +1,6 @@
 # Maintainer: Igor Tolmachev <me@igorek.dev>
 pkgname=v2rs
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A small CLI for managing xray proxy"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('xray' 'iproute2')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d9983201786630c7642cd05cea3995ecd4e326df3bc935f023b2c99f5d4fd628')
+sha256sums=('2979f85e0a154b53c634dc5570bf6a6e4d83ddbde1b35c960266623235d10eba')
 
 prepare() {
 	cd "$pkgname"
