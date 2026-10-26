@@ -13,7 +13,8 @@ pkgbase = python-dsinternals
 	depends = python>=3.4
 	depends = python-pyopenssl
 	depends = python-pycryptodomex
-	source = dsinternals::git+https://github.com/p0dalirius/pydsinternals#tag=1.2.5
+	source = dsinternals::git+https://github.com/p0dalirius/pydsinternals?signed#tag=1.2.5
+	validpgpkeys = 1E9ED6000B97C180E3054AAA486041AD6E31728F
 	b2sums = bb612e3012b8a6e36192fd7ddc16319c0410df0eebe2b0005a81b5780cfa9fe7ed3e8d16e00bb24600955e7127533905cb69412181e02ed044881f4de80bc406
 
 pkgname = python-dsinternals

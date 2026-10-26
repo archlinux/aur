@@ -19,8 +19,9 @@ makedepends=(
   'python-setuptools'
   'git'
 )
-source=("$_name::git+$url#tag=$pkgver")
+source=("$_name::git+$url?signed#tag=$pkgver")
 b2sums=('bb612e3012b8a6e36192fd7ddc16319c0410df0eebe2b0005a81b5780cfa9fe7ed3e8d16e00bb24600955e7127533905cb69412181e02ed044881f4de80bc406')
+validpgpkeys=('1E9ED6000B97C180E3054AAA486041AD6E31728F') # Remi GASCOU (Podalirius) <79218792+p0dalirius@users.noreply.github.com>
 
 prepare() {
   git -C "$_name" clean -dfx

@@ -1,4 +1,4 @@
 *.pkg.*
-*/
+/*/
 !LICENSES/
-*.tar.gz
+!keys/
