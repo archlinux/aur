@@ -2,11 +2,12 @@
 
 _name=langgraph-cli
 pkgname=python-$_name
-pkgver=0.4.38
+pkgver=0.4.39
 pkgrel=1
 pkgdesc='CLI for interacting with LangGraph API.'
 arch=('any')
-url='https://github.com/langchain-ai/langgraph/tree/main/libs/cli'
+_repo='https://github.com/langchain-ai/langgraph'
+url="$_repo/tree/main/libs/cli"
 license=('MIT')
 depends=('python'
          'python-click'
@@ -24,17 +25,11 @@ checkdepends=('python-pytest'
               'python-requests')
 optdepends=('python-langgraph-api: inmem'
             'python-langgraph-runtime-inmem: inmem')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('545211d0641cbbf1a923b47c18d86f76eb815531410c29b45217db348f4f2e90')
-
-prepare(){
-  # Fix tests
-  cd "${_name//-/_}-$pkgver"
-  sed -i "s/cli_1/${_name//-/_}-$pkgver/g" tests/unit_tests/cli/test_cli.py
-}
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/cli==$pkgver.tar.gz")
+sha256sums=('d1ebcac21fe592cb30771b147f264d80d3f7f48965176760023e3972a8dc1b66')
 
 build() {
-  cd "${_name//-/_}-$pkgver"
+  cd "langgraph-cli-$pkgver/libs/cli"
   python -m build --wheel --no-isolation
 }
 
@@ -48,12 +43,12 @@ check() {
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version_and_base_image
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version
   )
-  cd "${_name//-/_}-$pkgver"
+  cd "langgraph-cli-$pkgver/libs/cli"
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "${_name//-/_}-$pkgver"
+  cd "langgraph-cli-$pkgver/libs/cli"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
