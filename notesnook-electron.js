@@ -2,7 +2,6 @@
 try {
 	const path = require('path');
 	const fs = require('fs');
-
 	const resolveAppDir = () => {
 		const argv = process.argv || [];
 		for (let i = 0; i < argv.length; i++) {
