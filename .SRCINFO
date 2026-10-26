@@ -1,6 +1,6 @@
 pkgbase = jan
 	pkgdesc = An open source alternative to ChatGPT that runs 100% offline on your computer
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
@@ -20,10 +20,13 @@ pkgbase = jan
 	optdepends = libappindicator-gtk3: for tray icon support
 	optdepends = uv: for MCP servers based on Python
 	optdepends = npm: for MCP servers based on Node.js
+	optdepends = hip-runtime-amd: for ROCm llama.cpp backends on AMD GPUs
+	optdepends = hipblas: for ROCm llama.cpp backends on AMD GPUs
+	optdepends = rocblas: for ROCm llama.cpp backends on AMD GPUs
 	provides = jan
 	conflicts = jan
 	options = !lto
-	source = jan::git+https://github.com/menloresearch/jan.git#tag=v0.8.6
-	sha256sums = a8f83919587088000ab93397473f935ab3952c75483c26a93e6ee448303ac8cb
+	source = jan::git+https://github.com/menloresearch/jan.git#tag=v0.8.7
+	sha256sums = c50241ce4d89e17c50a7e2758679c9b8cbc2194a337721899be52705a8fb9d98
 
 pkgname = jan
