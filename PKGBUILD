@@ -1,4 +1,4 @@
-# Maintainer: my@liyp.cc
+# Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=mygo-cloudmusic
 pkgver=0.1.13
