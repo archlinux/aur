@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=daftar-cli-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="The command line and TUI of Daftar, for an Obsidian vault in a Git repository"
 arch=(x86_64 aarch64)
@@ -13,8 +13,8 @@ provides=('daftar-cli')
 conflicts=('daftar-cli' 'daftar-bin')
 source_x86_64=("https://github.com/parham-alvani/notes-linux/releases/download/v${pkgver}/daftar-cli-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/parham-alvani/notes-linux/releases/download/v${pkgver}/daftar-cli-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('447061a000d3c2c18ac4b9bc433fe405fc649664c183d18fa14b2e7931dd180b')
-sha256sums_aarch64=('d750ed3cc5bdc452067073be7547a6ee9f013c7587d7d67a040eab3e40028b44')
+sha256sums_x86_64=('30629d82006a68c23f32b959385f129f80d1f25ea3072966957c59c1cbf90324')
+sha256sums_aarch64=('74c99721cb2374d380f1ff9f590c5989989060c62ed69ae6691aebd8a8a24a6d')
 
 package() {
   cd "daftar-cli-${pkgver}-${CARCH}-unknown-linux-gnu"
