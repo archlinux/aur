@@ -4,38 +4,45 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-icon-themes
-pkgver=6.30.0
-pkgrel=2
+pkgver=6.31.0.1
+pkgrel=1
 pkgdesc='Support for icon themes'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-frameworks-icon-themes'
-license=(LGPL-2.0-only LGPL-3.0-only)
-depends=(glibc
-         karchive
-         kconfig
-         ki18n
-         kwidgetsaddons
-         libstdc++
-         qt6-base
-         qt6-svg
-         sonic-frameworks-color-scheme
-         sonic-silver-icons)
-makedepends=(doxygen
-             qt6-tools
-             sonic-frameworks-cmake-modules)
+license=(
+	'LGPL-2.0-only'
+	'LGPL-3.0-only'
+)
+depends=(
+	'glibc'
+	'libstdc++'
+	'qt6-base'
+	'qt6-svg'
+	'sonic-frameworks-archive'
+	'sonic-frameworks-color-scheme'
+	'sonic-frameworks-internationalization'
+	'sonic-frameworks-settings'
+	'sonic-frameworks-widgets-addons'
+	'sonic-silver-icons'
+)
+makedepends=(
+	'doxygen'
+	'qt6-tools'
+	'sonic-frameworks-cmake-modules'
+)
 optdepends=('qt6-declarative: QML bindings')
-provides=(kiconthemes)
-conflicts=(kiconthemes)
-groups=(sonicde-frameworks)
+provides=('kiconthemes')
+conflicts=('kiconthemes')
+groups=('sonicde-frameworks')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bcffe3f58cd78b5b1dae0e85f8475479d227afbabea6f3c918739a0dee2bbc65')
+sha256sums=('efff90128665a5fe43cab271d68f605d26a354cd492e68a990d25c83be77fc81')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
