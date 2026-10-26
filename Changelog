@@ -1,17 +1,20 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 5.0.0 ➙ 5.0.5
-              : 2026-08-25 ➙ 2026-10-05
+ Tags         : 5.0.1 ➙ 5.1.0
+              : 2026-08-25 ➙ 2026-10-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-05   : 5.0.5
+ 2026-10-26   : 5.1.0
+              - 5.1.0 Update to new lockmgr 2.1.0 API
+
+ 2026-10-05   : 5.0.5, origin/master
               - Mon Oct  5 11:18:28 AM EDT 2026
             
                 * Documentation available at https://py-cidr.readthedocs.io
                 * Switch python docstrings from google to sphinx format
 
- 2026-09-09   : 5.0.3, origin/master
+ 2026-09-09   : 5.0.3
               - **5.0.3**
             
                 * Change Arch package dependencies that have been renamed:
@@ -24,22 +27,3 @@
 
  2026-08-25   : 5.0.1
               - Add manual to repo
-
- 2026-08-25   : 5.0.0
-              - **5.0.0**
-            
-                * New PyCidr class - replaces functionality in Cidr class.
-                  Using the pure C-code *cidrtools* library and its python bindings *cidrtools-cffi*
-            
-                  - Superior performance.  For example compacting lists of cidr blocks runs
-                    about 10 - 20 times faster.
-            
-                  - API is similar but migrating the code will unlock the perfomance benefit.
-                  - Depends on two new packages: *cidrtools* and *cidrtools-cffi*
-                  - Updated build system using meson and uv.
-            
-                * Cidr class still supported unchanged.
-                  This facilitates testing and comparing Cidr with PyCidr.
-                  In the future, some/all of Cidr may be migrated to use the new fast codebase.
-            
-                * See manual for details and how to use the new speedy class!

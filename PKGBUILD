@@ -11,7 +11,7 @@ pkgname='py-cidr'
 pkgdesc='Python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver="5.0.5"
+pkgver="5.1.0"
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 
@@ -21,7 +21,7 @@ license=(GPL-2.0-or-later)
 # To build docs uncommont sphinx/texlive
 depends=(
     'python>=3.14' 
-    'python-lockmgr'
+    'python-lockmgr>=2.1.0'
     'patricia26'
     'python-pytricia'           # Keep (for now) to convert old CidrMaps (Pytricia to Patricia26)
     'cidrtools-cffi'
