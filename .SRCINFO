@@ -1,0 +1,17 @@
+pkgbase = sonic-silver-sound-theme
+	pkgdesc = Ocean Sound Theme for SonicDE
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-silver-sound-theme
+	arch = any
+	groups = sonicde
+	license = LGPL-2.0-or-later
+	makedepends = qt6-base
+	makedepends = sonic-frameworks-cmake-modules
+	provides = ocean-sound-theme
+	conflicts = ocean-sound-theme
+	options = !debug
+	source = sonic-silver-sound-theme-6.8.0.tar.gz::https://github.com/Sonic-DE/sonic-silver-sound-theme/archive/refs/tags/6.8.0.tar.gz
+	sha256sums = 8071bd7a1c4723c95fb0127607341f72f7fc5695ce3ec4e51253a85a9c0a10f2
+
+pkgname = sonic-silver-sound-theme
