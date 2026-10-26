@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-adaptivegrain-git
 	pkgdesc = Reimplementation of the adaptive grain mask as a Vapoursynth plugin
-	pkgver = 0.3.0.38.g1c062e6
+	pkgver = 0.5.0.52.g6171e17
 	pkgrel = 1
 	url = https://github.com/kageru/adaptivegrain
 	arch = x86_64

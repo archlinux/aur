@@ -2,7 +2,7 @@
 
 _plug=adaptivegrain
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.3.0.38.g1c062e6
+pkgver=0.5.0.52.g6171e17
 pkgrel=1
 pkgdesc='Reimplementation of the adaptive grain mask as a Vapoursynth plugin'
 arch=('x86_64')
@@ -30,5 +30,7 @@ rustup install stable && rustup default stable'
 
 package() {
     cd $_plug
-    install -Dm755 "target/release/libadaptivegrain_rs.so" "$pkgdir/usr/lib/vapoursynth/libadaptivegrain.so"
+    local plugindir
+    plugindir="$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")"
+    install -Dm755 "target/release/libadaptivegrain_rs.so" "${pkgdir}${plugindir}/libadaptivegrain.so"
 }
