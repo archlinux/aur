@@ -12,7 +12,7 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver="8.0.2"
+pkgver="8.1.0"
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
@@ -24,7 +24,7 @@ depends=(
     'python-dnspython' 
     'python-tomli-w' 
     'python-dateutil' 
-    'python-lockmgr' 
+    'python-lockmgr>=2.1.0' 
     'python-pyconcurrent'
     'certbot'
     'bash'
