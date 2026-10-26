@@ -2,8 +2,8 @@
 
 _pkgname=MasterDnsVPN
 pkgname=masterdnsvpn
-pkgver=2026.06.13.234407_7de2476
-pkgrel=2
+pkgver=2026.10.26.100415_5f83ee9
+pkgrel=1
 pkgdesc="Advanced DNS tunneling VPN for censorship bypass"
 arch=("x86_64")
 url="https://github.com/masterking32/MasterDnsVPN"
@@ -11,7 +11,7 @@ license=("MIT")
 depends=()
 makedepends=("git" "go")
 source=("git+${url}.git#tag=v${pkgver//_/-}")
-sha256sums=('10a380657ff2502bfb8abeb373e36c9dec5e56fbf942bea3d512d2f9cc166403')
+sha256sums=('78b882a23c410d8d5bad6a942dd599557fdf8bc330d6134841a751300cab19c1')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
