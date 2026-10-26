@@ -1,0 +1,23 @@
+pkgbase = ratslang-bin
+	pkgdesc = Configuration language for building physical systems in Rust: CLI and language server
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://codeberg.org/stelzo/ratslang
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = libgcc
+	depends = glibc
+	provides = ratslang
+	conflicts = ratslang
+	noextract = ratslang-bin-0.5.0.deb
+	options = !lto
+	options = !strip
+	options = !debug
+	source_x86_64 = ratslang-bin-0.5.0.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/ratslang_0.5.0-1_amd64.deb
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = ratslang-bin-0.5.0.deb::https://ppa.steado.tech/ubuntu/pool/main/noble/ratslang_0.5.0-1_arm64.deb
+	sha256sums_aarch64 = SKIP
+
+pkgname = ratslang-bin
