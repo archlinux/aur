@@ -1,0 +1,37 @@
+pkgbase = asc-tools-git
+	pkgdesc = Huawei Ascend CANN developer tools (cpudebug, npuchk, msobjdump) - source build
+	pkgver = 9.2.0.r282.2575ba72
+	pkgrel = 1
+	url = https://atomgit.com/cann/asc-tools
+	arch = x86_64
+	arch = aarch64
+	license = custom:CANN-OSLA-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = python
+	makedepends = ccache
+	makedepends = asc-devkit
+	makedepends = asc-toolkit
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	depends = python
+	depends = asc-devkit
+	depends = asc-toolkit
+	provides = asc-tools
+	conflicts = asc-tools
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source = asc-tools::git+https://atomgit.com/cann/asc-tools.git#branch=9.2.0
+	source = cann-cmake::git+https://gitcode.com/cann/cmake.git#tag=master-054
+	source = makeself-release-2.5.0.tar.gz::https://cann-3rd.obs.cn-north-4.myhuaweicloud.com/makeself/makeself-release-2.5.0.tar.gz
+	source = makeself-2.5.0.patch::https://cann-3rd.obs.cn-north-4.myhuaweicloud.com/makeself/makeself-2.5.0.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 705d0376db9109a8ef1d4f3876c9997ee6bed454a23619e1dbc03d25033e46ea
+	sha256sums = abb9efe26f95db61ce927a7d046ea2c73ec908cec984ea6316892b4c8b11d784
+
+pkgname = asc-tools-git
