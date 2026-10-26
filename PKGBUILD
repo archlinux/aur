@@ -11,7 +11,7 @@ url=https://github.com/GoogleChrome/ripunzip
 license=('MIT')
 arch=('x86_64')
 depends=(bzip2 libgcc glibc xz)
-makedepends=(git rust pkgconf)
+makedepends=(git mold rust pkgconf)
 conflicts=(ripunzip)
 provides=(ripunzip)
 source=("git+${url}")
@@ -27,7 +27,7 @@ prepare(){
 
 build(){
   cd ${pkgname%-git}
-  export RUSTFLAGS+=" -C force-unwind-tables=no ${RUSTFLAGS}"
+  export RUSTFLAGS+=" -C link-args=-fuse-ld=mold -C force-unwind-tables=no ${RUSTFLAGS}"
   test ${RUSTC_BOOTSTRAP} = 1 && test -e /usr/lib/rustlib/src/rust/library/Cargo.toml && _cargoflags='-Zbuild-std=std,panic_abort --config=profile.release.panic="immediate-abort" -Zpanic-immediate-abort'
   cargo build --release $_cargoflags
 }
