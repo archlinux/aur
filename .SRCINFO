@@ -1,6 +1,6 @@
 pkgbase = ssh-vault
 	pkgdesc = Encrypt/Decrypt using SSH keys
-	pkgver = 1.3.7
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://ssh-vault.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ssh-vault
 	options = !debug
 	options = !lto
 	options = !buildflags
-	source = ssh-vault-1.3.7.tar.gz::https://github.com/ssh-vault/ssh-vault/archive/1.3.7.tar.gz
-	sha256sums = 73c8f676e4e8ed4e3b8dec236715093fc934d3fa5f9ab9eeb535125f1dbe26f0
+	source = ssh-vault-1.3.9.tar.gz::https://github.com/ssh-vault/ssh-vault/archive/1.3.9.tar.gz
+	sha256sums = f12f2c3052f32338a6bb01a4bcc3e4f5d705322ac41d533e80ae8aea9a1d7598
 
 pkgname = ssh-vault
