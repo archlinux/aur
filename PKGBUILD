@@ -3,14 +3,15 @@
 pkgname=rudder-agent
 pkgver="9.2.0"
 # pkgver="9.1.3~git202607090118"
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
 url='https://www.rudder.io'
 license=('GPL-3.0-or-later')
 depends=('acl' 'glibc' 'curl' 'gcc-libs' 'pam' 'pcre2' 'readline' 'openssl' 'systemd'
 	'systemd-libs' 'libxml2' 'libyaml' 'util-linux' 'dmidecode' 'cronie' 'net-tools'
-	'diffutils' 'perl' 'perl-xml-treepp' 'jq' 'libvirt' 'augeas' 'python' 'lmdb')
+	'diffutils' 'perl' 'perl-xml-treepp' 'jq' 'libvirt' 'augeas' 'python' 'lmdb'
+	'librsync')
 makedepends=('base-devel' 'gcc' 'rust' 'unzip' 'git' 'clang' 'patchelf')
 install='.install'
 
