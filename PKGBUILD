@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgbase=zlib-git
-pkgname=('zlib-git') # minizip-git
-pkgver=1.3.2.r110.g767c4c94
+pkgname=('minizip-git' 'zlib-git')
+pkgver=1.3.2.r138.ge4904270
 pkgrel=1
 pkgdesc="A massively spiffy yet delicately unobtrusive compression library (git develop branch)"
 arch=('i686' 'x86_64')
