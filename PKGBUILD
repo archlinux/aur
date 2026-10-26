@@ -4,30 +4,37 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-keybind
-pkgver=6.30.0
+pkgver=6.31.0
 pkgrel=1
 pkgdesc='Add support for global workspace shortcuts'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-frameworks-keybind'
-license=(LGPL-2.0-only LGPL-3.0-only)
-depends=(glibc
-         libstdc++
-         qt6-base)
-makedepends=(doxygen
-             qt6-tools
-             sonic-frameworks-cmake-modules)
-provides=(kglobalaccel)
-conflicts=(kglobalaccel)
-groups=(sonicde-frameworks)
+license=(
+	'LGPL-2.0-only'
+	'LGPL-3.0-only'
+)
+depends=(
+	'glibc'
+	'libstdc++'
+	'qt6-base'
+)
+makedepends=(
+	'doxygen'
+	'qt6-tools'
+	'sonic-frameworks-cmake-modules'
+)
+provides=('kglobalaccel')
+conflicts=('kglobalaccel')
+groups=('sonicde-frameworks')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c31507e0bbea544da33ceb7525cb8cdf9c45e95cf893060bb5209534d16b9895')
+sha256sums=('e72b6843ec8661a1694f7868077d658dbfb5a7890c52482a8c2d99094da6e148')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
