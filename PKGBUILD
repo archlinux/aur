@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Push files fast. Sync only what changed."
 
-pkgver=0.16.3
+pkgver=0.16.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,7 +31,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.deb")
 sha256sums=('89fa42eb81de16b5e079c5d3e86225bd4f4419fe4b522b6aed1ab814f34a6228'
             'de1b680e8cf8ebf3641646e14f5c0730f726da2d9d6d211d498032c20d0d9e2c')
-sha256sums_x86_64=('f831b6dd4097b8733a1a773010b3c9584dcf0294f8c913f5b3b9e7835afbdb4e')
+sha256sums_x86_64=('d57b4285488cc3371f3e746f0eb5229a91ba96c4ff9bd41a24812ddd0c27ad76')
 
 
 prepare() {
@@ -52,7 +52,7 @@ package() {
 	rm -rf "${pkgdir}/usr/share/doc/"
 
 	mv "${pkgdir}/opt/"*"/" "${pkgdir}/opt/${_appname}"
-	sed -e "s|Exec=/opt/.*/diskpush-desktop|Exec=/opt/${_appname}/diskpush-desktop|g" -i "${pkgdir}/usr/share/applications/"*".desktop"
+	sed -e "s|Exec=/opt/.*/${_appname}-desktop|Exec=/opt/${_appname}/${_appname}-desktop|g" -i "${pkgdir}/usr/share/applications/"*".desktop"
 
 	install -dm755 "${pkgdir}/usr/bin/"
 	ln -sf "/opt/${_appname}/${_appname}-desktop" "${pkgdir}/usr/bin/${_appname}-desktop"
