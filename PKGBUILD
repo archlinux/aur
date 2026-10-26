@@ -1,6 +1,6 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-keychron-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Pipette — Vial-compatible keyboard configurator (AppImage). Keychron fork"
 arch=("x86_64")
@@ -15,7 +15,7 @@ optdepends=('dfu-util: flash Keychron firmware')
 options=('!strip' '!debug')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/Tymon3310/pipette-desktop/releases/download/v${pkgver}/Pipette-linux-x86_64.AppImage")
-sha256sums=('22cb23998676e735fe2eb42abf0f6a6ab313870a7822287efed668f6ab419aeb')
+sha256sums=('0adc9e302fdd5f8e70850237daf79908b1645b9555b81de3d5a6bf0acb1848b2')
 
 prepare() {
   cd "$srcdir"
