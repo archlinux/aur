@@ -1,0 +1,20 @@
+pkgbase = sonic-pulseaudio-library
+	pkgdesc = Qt bindings for libpulse
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-pulseaudio-library
+	arch = x86_64
+	groups = sonicde
+	license = LGPL-2.1-only
+	license = LGPL-3.0-only
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libpulse
+	depends = libstdc++
+	depends = qt6-base
+	provides = pulseaudio-qt
+	conflicts = pulseaudio-qt
+	source = sonic-pulseaudio-library-1.8.1.tar.gz::https://github.com/Sonic-DE/sonic-pulseaudio-library/archive/refs/tags/1.8.1.tar.gz
+	sha256sums = 846740f81b8e33de1fe03f1f31fb1c22bad1690075058f065dfd4108cd323e68
+
+pkgname = sonic-pulseaudio-library
