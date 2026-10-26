@@ -8,7 +8,7 @@ url="https://github.com/syuvi211/ember"
 license=('GPL')
 depends=('ruby' 'curl' 'git')
 makedepends=()
-source=("https://github.com/syuvi211/ember/archive/refs/tags/v2.0-1.tar.gz")
+source=("https://github.com/syuvi211/ember/archive/refs/tags/v2.0-2.tar.gz")
 sha256sums=('SKIP')
 
 package() {
