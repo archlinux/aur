@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Temurin Java @MAJOR@ EA Console
+Comment=Temurin Java @MAJOR@ early access monitoring and management console
+Keywords=java;console;monitoring;
+Exec=/usr/lib/jvm/java-temurin-ea/bin/jconsole
+Terminal=false
+Type=Application
+Icon=java-temurin-ea
+Categories=Development;Java;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Temurin Java @MAJOR@ EA Shell
+Comment=Temurin Java @MAJOR@ early access shell
+Keywords=java;shell;
+Exec=/usr/lib/jvm/java-temurin-ea/bin/jshell
+Terminal=true
+Type=Application
+Icon=java-temurin-ea
+Categories=Development;Java;
