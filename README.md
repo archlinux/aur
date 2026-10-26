@@ -14,7 +14,7 @@ cairo → FreeType) and the verification methods in
 
 Measured on 2026-10-26: GNOME on Wayland with `font-rendering=manual`,
 `font-hinting=slight`, grayscale antialiasing and `gtk-hint-font-metrics=false`;
-GTK 4.24.1, pango 1.58.2, cairo 1.18.6, HarfBuzz 0.57.0, FreeType 2.15.0,
+GTK 4.24.1, pango 1.58.2, cairo 1.18.6, HarfBuzz 14.6.0, FreeType 2.15.0,
 fontconfig 2.18.3, fontTools 4.67.0, ttfautohint 1.8.4.
 
 ---
