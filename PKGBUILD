@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/release.yml` republish.
 pkgname=krypt-bin
 _pkgname=krypt
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Cross-platform dotfiles manager. Rust binary. Config-driven. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ depends=('glibc')
 
 source_x86_64=("krypt-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/krypt/releases/download/v${pkgver}/krypt-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("krypt-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/krypt/releases/download/v${pkgver}/krypt-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b1c62b4c115bac952c9236236ef1e2fcc77baa087365d2a85df81a3109f84f36')
-sha256sums_aarch64=('83d562933fa4404314454ecbaf23dde82911c0093efe213cbf5dd63e61c6a8c9')
+sha256sums_x86_64=('89827b0cbed2a0e8a8d85769cd2eaf8c4304237e2c1726fc1c0f59a8aa416405')
+sha256sums_aarch64=('5920df962c853449a4dab065e093bc058ce1650743ac8f0abed9b60f6762daf1')
 
 package() {
     install -Dm755 "$srcdir/krypt" "$pkgdir/usr/bin/krypt"
