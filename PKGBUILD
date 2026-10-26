@@ -7,7 +7,7 @@
 pkgname=binwalk2
 _gitname=binwalk
 pkgver=2.4.3
-pkgrel=12
+pkgrel=13
 pkgdesc='Tool for searching a given binary image for embedded files'
 url='https://github.com/OSPG/binwalk'
 arch=(any)
@@ -41,7 +41,8 @@ optdepends=(
   'bzip2: BZIP2 archive support'
   'unrar: RAR decompression support'
   'xz: XZ decompression support'
-  'firmware-mod-kit: cramfs support'
+  'cramfs-tools: CramFS filesystem extraction'
+  'cramfsswap: big-endian CramFS filesystem extraction'
   'lhasa: LHA support'
   'sleuthkit: forensic analysis support'
 )
