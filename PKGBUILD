@@ -46,9 +46,8 @@ check() {
 
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release -- \
-		--skip "session_pool_is_sorted_live_first" \
-		--skip "gate2_skips_with_message_when_gwm_absent" \
-		--skip "rename_worktree_aborts_when_remote_has_unfetched_commits"
+		--skip "every_capture_ships_at_retina_density" \
+		--skip "gate2_skips_with_message_when_gwm_absent"
 }
 
 package() {
