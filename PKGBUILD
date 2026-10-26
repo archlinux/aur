@@ -1,0 +1,33 @@
+# Maintainer: executter <executter at hotmail dot com>
+
+pkgname=ocsinventory-agent3
+pkgver=3.0.0
+pkgrel=1
+pkgdesc="Hardware and software inventory agent for OCS Inventory server 3.x"
+arch=('x86_64')
+url="https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework"
+license=('GPL-3.0-or-later')
+depends=('glibc')
+makedepends=('dart')
+options=('!strip' '!debug')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('704d641fc523902f88c05aa665e68d614cf5a3a26ce1f69e5fd3610fc4725365')
+
+prepare() {
+  cd OCSInventory-Agent-Rework-$pkgver
+
+  export PUB_CACHE="$srcdir/pub-cache"
+  dart --suppress-analytics pub get
+}
+
+build() {
+  cd OCSInventory-Agent-Rework-$pkgver
+
+  export PUB_CACHE="$srcdir/pub-cache"
+  dart --suppress-analytics compile exe -o ocsinventory-cli lib/app/app.dart
+}
+
+package() {
+  cd OCSInventory-Agent-Rework-$pkgver
+  install -Dm755 ocsinventory-cli "$pkgdir/usr/bin/ocsinventory-cli"
+}

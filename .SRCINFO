@@ -1,0 +1,15 @@
+pkgbase = ocsinventory-agent3
+	pkgdesc = Hardware and software inventory agent for OCS Inventory server 3.x
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = dart
+	depends = glibc
+	options = !strip
+	options = !debug
+	source = ocsinventory-agent3-3.0.0.tar.gz::https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/archive/refs/tags/3.0.0.tar.gz
+	sha256sums = 704d641fc523902f88c05aa665e68d614cf5a3a26ce1f69e5fd3610fc4725365
+
+pkgname = ocsinventory-agent3
