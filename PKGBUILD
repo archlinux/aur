@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stockholm-trekkers-playlist-maker-bin
 _pkgname='Stockholm Trekkers Playlist Maker'
-pkgver=4.3.1
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="An Electron app for making video playlists.(Prebuilt version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname// /.}_${pkgver}_amd64.deb")
-sha256sums=('50f0b543ea9745ebe95eec183f7bf318b9343428b97c95c9202e2ef0ca098861')
+sha256sums=('679d1ac77d5a9493fcad625dd50d86881480ff1a09f726d01038d4e6620e2abc')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=AudioVideo;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
