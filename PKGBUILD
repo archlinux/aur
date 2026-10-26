@@ -7,7 +7,7 @@
 pkgname=binwalk2
 _gitname=binwalk
 pkgver=2.4.3
-pkgrel=14
+pkgrel=15
 pkgdesc='Tool for searching a given binary image for embedded files'
 url='https://github.com/OSPG/binwalk'
 arch=(any)
@@ -47,7 +47,7 @@ optdepends=(
   'python-numpy: entropy analysis support'
   'python-opengl: binviz module support'
   'python-pyqtgraph: graph and visualization support'
-  'sasquatch: non-standard SquashFS filesystem extraction (sasquatch-git recommended)'
+  'sasquatch: non-standard SquashFS filesystem extraction'
   'sleuthkit: forensic analysis support'
   'squashfs-tools: squashfs support'
   'srecord: Intel HEX and Motorola S-record conversion'

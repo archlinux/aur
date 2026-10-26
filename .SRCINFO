@@ -1,7 +1,7 @@
 pkgbase = binwalk2
 	pkgdesc = Tool for searching a given binary image for embedded files
 	pkgver = 2.4.3
-	pkgrel = 14
+	pkgrel = 15
 	url = https://github.com/OSPG/binwalk
 	arch = any
 	license = MIT
@@ -33,7 +33,7 @@ pkgbase = binwalk2
 	optdepends = python-numpy: entropy analysis support
 	optdepends = python-opengl: binviz module support
 	optdepends = python-pyqtgraph: graph and visualization support
-	optdepends = sasquatch: non-standard SquashFS filesystem extraction (sasquatch-git recommended)
+	optdepends = sasquatch: non-standard SquashFS filesystem extraction
 	optdepends = sleuthkit: forensic analysis support
 	optdepends = squashfs-tools: squashfs support
 	optdepends = srecord: Intel HEX and Motorola S-record conversion
