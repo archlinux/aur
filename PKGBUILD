@@ -13,7 +13,7 @@
 #   cd libfprint-goodix55b4-milan/packaging/arch && makepkg -si
 
 pkgname=libfprint-goodix55b4
-pkgver=1.94.10.m3
+pkgver=1.94.10.m4
 pkgrel=1
 pkgdesc="libfprint with the Goodix 27c6:55b4 driver using the native Milan matcher"
 arch=('x86_64')
