@@ -2,7 +2,7 @@
 
 pkgname=uutils-findutils
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust implementation of findutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/findutils"
@@ -20,7 +20,7 @@ prepare() {
     cargo update
   fi
   cargo fetch \
-    --frozen \
+    --locked \
     --target host-tuple
 }
 
