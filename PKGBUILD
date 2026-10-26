@@ -2,7 +2,7 @@
 # Maintainer: Ivan Wheeler <ivanwheeler90 at gmail dot com>
 
 pkgname=kokon-bin
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Kokon creates and edits images from a sentence, privately on your own GPU, with Qwen-Image 2.1 via stable-diffusion.cpp. Everything runs on this PC.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('cuda: Runtime for NVIDIA GPUs')
 
 noextract=("Kokon_${pkgver}_amd64.deb")
 source=("https://github.com/GabrieleLozupone/kokon/releases/download/v${pkgver}/${noextract[0]}")
-b2sums=('549c0baaa031336b3df8a648df60ac5d6fda63f3b853e4a4a746f58311ed11be607db551ec445654afb5d916eb7079975e8cf77f361e39b3d16566b589dd2b4d')
+b2sums=('74b377be72f274d94273816eb9943950379151a835393c23cff2015fbe766dcd29001b6fdd1490f6b2c0742dea3ff9196a32aaa8b06c89ae6ceb22ba6ef92082')
 
 package() {
   # Really nothing else to do here
