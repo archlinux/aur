@@ -1,6 +1,6 @@
 pkgbase = podium-bin
 	pkgdesc = Open-source, local-first game clipping: an instant replay buffer, global hotkeys and a clip library (prebuilt)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/LucasionGS/podium
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = podium-bin
 	depends = gpu-screen-recorder
 	provides = podium
 	conflicts = podium
-	noextract = podium-0.3.0.pacman
+	noextract = podium-0.3.1.pacman
 	options = !strip
 	options = !debug
-	source = podium-0.3.0.pacman::https://github.com/LucasionGS/podium/releases/download/v0.3.0/podium-0.3.0.pacman
-	sha256sums = 58f3d84cbc0a89022f9c177b7d4da44bdbd545a7153d3cdf9476ff7ac47bc488
+	source = podium-0.3.1.pacman::https://github.com/LucasionGS/podium/releases/download/v0.3.1/podium-0.3.1.pacman
+	sha256sums = 6f948c44c00e4004d3c7614de7a1db950bd559d197c06f7608b57ccf416f200f
 
 pkgname = podium-bin
