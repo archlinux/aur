@@ -1,6 +1,6 @@
 pkgbase = ollaya-bin
 	pkgdesc = Run open decision models locally, the way Ollama runs LLMs (prebuilt binaries)
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/ollaya-dev/ollaya
 	install = ollaya.install
@@ -16,9 +16,9 @@ pkgbase = ollaya-bin
 	source = ollaya.sysusers
 	sha256sums = e6a2415aa487f882d2075bfbe033b846063be1fde510cbd3965a696f6a9f300e
 	sha256sums = 888ff9184a099058f147d9ecadeeb7e26b69d536544a32cfc1777b6b3214c99b
-	source_x86_64 = ollaya-bin-0.17.0-x86_64.tar.zst::https://github.com/ollaya-dev/ollaya/releases/download/v0.17.0/ollaya-linux-amd64.tar.zst
-	sha256sums_x86_64 = f812367e3c8b792e262477b08b1649c8d85c18fe5a44bbd0d2e587531d031aa9
-	source_aarch64 = ollaya-bin-0.17.0-aarch64.tar.zst::https://github.com/ollaya-dev/ollaya/releases/download/v0.17.0/ollaya-linux-arm64.tar.zst
-	sha256sums_aarch64 = bd58507f60c2db517f831afaa72c6ac52b54ea0f7b773068eaa5cbf70461c4f2
+	source_x86_64 = ollaya-bin-0.18.0-x86_64.tar.zst::https://github.com/ollaya-dev/ollaya/releases/download/v0.18.0/ollaya-linux-amd64.tar.zst
+	sha256sums_x86_64 = 9d1d13cc16437a2748e1cc7af7e98cc31a5dea23a9cd82705f374abf49d7b084
+	source_aarch64 = ollaya-bin-0.18.0-aarch64.tar.zst::https://github.com/ollaya-dev/ollaya/releases/download/v0.18.0/ollaya-linux-arm64.tar.zst
+	sha256sums_aarch64 = 80eeee5f3a6d1a26d887b739f9639ace397b9f68fdaba0559c2f67ca5293d0b3
 
 pkgname = ollaya-bin
