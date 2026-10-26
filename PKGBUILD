@@ -2,7 +2,7 @@
 # Contributor: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=jdupes-git
-pkgver=1.27.3.r32.g81b9ced
+pkgver=1.31.3.r2.g1477c08
 pkgrel=1
 pkgdesc='A program for identifying duplicate files residing within specified directories (git)'
 arch=(i686 x86_64)
@@ -12,22 +12,16 @@ depends=(glibc libjodycode-git xxhash)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+https://codeberg.org/jbruchon/jdupes.git
-        jdupes-system-xxhash.patch)
-sha256sums=('SKIP'
-            'b4df170f8ea5569808e0c4f84a1af24282ea53233db760d97531e50df8eea1c4')
+source=(git+https://codeberg.org/jbruchon/jdupes.git)
+sha256sums=('SKIP')
 
 pkgver() {
     git -C "${pkgname%-git}" describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    patch --directory="${pkgname%-git}" --forward --strip=1 --input="${srcdir}/jdupes-system-xxhash.patch"
-}
-
 build() {
     cd "${pkgname%-git}"
-    make ENABLE_BTRFS=1 ENABLE_DEDUPE=1 STATIC_DEDUPE_H=1
+    make EXTERNAL_HASH_LIB=1 LDFLAGS_EXTRA=-lxxhash
 }
 
 package() {
