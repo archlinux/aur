@@ -1,0 +1,17 @@
+pkgbase = libresplit
+	pkgdesc = Free speedrun timer with auto splitting and load removal.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://libresplit.org
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = gtk4
+	depends = jansson
+	depends = lua54
+	optdepends = glib-networking: web split icons
+	optdepends = gvfs: web split icons
+	source = libresplit-0.3.0.tar.gz::https://github.com/LibreSplit/LibreSplit/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 8b6cb54d14f327579003e9ade678205017a3dcf2e964614880b5c6040cb2590a
+
+pkgname = libresplit
