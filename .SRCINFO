@@ -1,6 +1,6 @@
 pkgbase = sherpa-onnx-bin
 	pkgdesc = Speech-to-text, TTS, diarization and VAD with next-gen Kaldi and onnxruntime (prebuilt)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/k2-fsa/sherpa-onnx
 	arch = x86_64
@@ -12,17 +12,17 @@ pkgbase = sherpa-onnx-bin
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	provides = sherpa-onnx=2.0.0
+	provides = sherpa-onnx=2.0.1
 	conflicts = sherpa-onnx
-	source = c-api-2.0.0.h::https://raw.githubusercontent.com/k2-fsa/sherpa-onnx/v2.0.0/sherpa-onnx/c-api/c-api.h
-	source = cxx-api-2.0.0.h::https://raw.githubusercontent.com/k2-fsa/sherpa-onnx/v2.0.0/sherpa-onnx/c-api/cxx-api.h
-	sha256sums = 9764470f09d219d6e7a80c6950059502c900ef82691ed6bea260d8ce9518f78a
-	sha256sums = a49d7bdecb49b2b04e4dfe59f9a423ea4670cd0b2d2ce308d8160ee5c0ec0c7c
-	source_x86_64 = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.0/sherpa-onnx-v2.0.0-linux-x64-shared.tar.bz2
-	sha256sums_x86_64 = ee729caa387ede28fb62dd0c111e267da5ed436c9438ee502da9ee0a2e03ab7c
-	source_aarch64 = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.0/sherpa-onnx-v2.0.0-linux-aarch64-shared-cpu.tar.bz2
-	sha256sums_aarch64 = 0ee6e6a6de388f9db6f24c241ee6631c7509d47f3c8e5cd7b05259ff92f722b6
-	source_armv7h = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.0/sherpa-onnx-v2.0.0-linux-arm-gnueabihf-shared.tar.bz2
-	sha256sums_armv7h = 9704207d48105817b5c41587688df88d80e73e63db4abbfc7fca164f5d4fc191
+	source = c-api-2.0.1.h::https://raw.githubusercontent.com/k2-fsa/sherpa-onnx/v2.0.1/sherpa-onnx/c-api/c-api.h
+	source = cxx-api-2.0.1.h::https://raw.githubusercontent.com/k2-fsa/sherpa-onnx/v2.0.1/sherpa-onnx/c-api/cxx-api.h
+	sha256sums = 5698f38ba09ad2bdf085c56a6cbbd7741acf15e25f4ce5c7097b9702cadf437f
+	sha256sums = 144b4b33c468078748449b3a8f6ebfb0d92d5c398b2d39067c9fbc008c091c9f
+	source_x86_64 = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-v2.0.1-linux-x64-shared.tar.bz2
+	sha256sums_x86_64 = 2e823376987c3b6960d50726b6560155e2ad92da0b8b3886325773225ec6bdec
+	source_aarch64 = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-v2.0.1-linux-aarch64-shared-cpu.tar.bz2
+	sha256sums_aarch64 = a8fc9fb3940d1aa3f83136767742b05068f00253f560d53c4f5aeb75ab4cb350
+	source_armv7h = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-v2.0.1-linux-arm-gnueabihf-shared.tar.bz2
+	sha256sums_armv7h = 099c6bc956b26df246712ff9902419ff9cbc938c014177ea3e205b32675b48d5
 
 pkgname = sherpa-onnx-bin
