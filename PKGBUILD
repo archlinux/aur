@@ -1,8 +1,8 @@
 # Maintainer: Tomas Runz Jensen <tomasrj@outlook.dk>
 
 pkgname=pyrite64-bin
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="N64 Game-Engine and Editor using libdragon & tiny3d"
 arch=('x86_64')
 url="https://github.com/HailToDodongo/pyrite64"
@@ -23,7 +23,7 @@ source=(
 # stale and breaks the build. SKIP it like the moving git sources.
 sha512sums=('SKIP'
             'SKIP'
-            'b612a7f8eb9fcbf895954d8ed011e6ad231f58037d912e9c8bf05898cb6eb6c326a89fbf8d4f0fc592e5fc5b77cf05313844483d8dad64be37f3b8f36466ad44'
+            '9ae352ececb172d7c30fbe34e58dd37d91271e062f3d2d857494c415d5272c26bcc804b91cc0aee3191e159c4dfcf6ba41e70379120b858331af1e70fa1a5c37'
             'SKIP')
 options=('!strip')
 
