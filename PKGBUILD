@@ -7,7 +7,8 @@ pkgdesc="Hardware and software inventory agent for OCS Inventory server 3.x"
 arch=('x86_64')
 url="https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework"
 license=('GPL-3.0-or-later')
-depends=('glibc')
+depends=('bash' 'ca-certificates' 'coreutils' 'dmidecode' 'glibc'
+         'inetutils' 'iproute2' 'systemd' 'tar' 'util-linux' 'which')
 provides=('ocsinventory-agent3')
 conflicts=('ocsinventory-agent3')
 options=('!strip' '!debug')
