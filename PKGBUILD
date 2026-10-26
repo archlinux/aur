@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=rotki
-pkgver=1.44.1 # renovate: datasource=github-releases depName=rotki/rotki
+pkgver=1.44.2 # renovate: datasource=github-releases depName=rotki/rotki
 pkgrel=1
 pkgdesc='A portfolio tracking, analytics, accounting and management application that protects your privacy'
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ source=(
 	"rotki.desktop"
 	"resources-path.cjs"
 )
-b2sums=('e3aa929e9332b8d37ced13573cf20f3c0d83c615507b6130910b58d458e7e497931c650713f6a263296bfb53b245d6c1d58ab9653fe8077908af09a5a823b4b1'
+b2sums=('d8cb0db5419fb6d100f995fd790ad1892c5a2c5113e0b5c6b2ba66cf4bdc2ce159269cb0fa04cfcbeb5278932e62efb4209b971a009f9b47c51ea79edf280c65'
 	'd29df9c9116e94e650552b1bb36fcb546fff001609a264fb4e7fb211d9222d3f974a10bd3108f07d4b5012ebeee27303b422ca96d80f5f6eaf91ccc6a5e3e2d9'
 	'5a82adf633e21f6655532b9fb84c9e38135396e39ace6af82258c5f4ee102cde914ec51e1c33b5f110f7751df9cfa42b62c2ebe39bb174eb92fdfbbb62bb6fba'
 	'dd7658075a2181d7e41b5abc479b0b2beaad8f7ea0406555d805396aabadf5ed7c978d8a60f27fc1fb480ac0e173e52f05226cf44917d783f6fd76d144cca516')
