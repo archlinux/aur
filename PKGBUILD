@@ -22,6 +22,7 @@ source=('meo-login-manager-59d689c0008bbb7efe2846d869657c004a5fb679.tar.gz::http
 sha256sums=('dfbb699f3fb9d63310d84bbe5f35e4ad18332e1543dc08dae03bb7d5e79c5b68'
             '0e533634254bc76e0b090310c7704ee59222cb2164b1999e8a17fd43edce60f1')
 
+# The protected renderer supplies the reviewed Meo main checkout as
 # $srcdir/$_srcdir. The public product is Meo Login, while PAM, systemd,
 # configuration and service identifiers intentionally stay compatible with
 # upstream Plasma Login Manager.
