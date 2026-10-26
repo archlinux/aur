@@ -50,4 +50,6 @@ package() {
 
   cd OCSInventory-Agent-Rework-$pkgver
   install -Dm755 ocsinventory-cli "$pkgdir/usr/bin/ocsinventory-cli"
+  install -Dm644 setup/linux/ocsinventory-agent.service \
+    "$pkgdir/usr/lib/systemd/system/ocsinventory-agent3.service"
 }
