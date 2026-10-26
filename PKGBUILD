@@ -1,7 +1,7 @@
 # Maintainer: Fikri Muhammad Iqbal <fikri.miqbal23@gmail.com>
 
 pkgname=nui-bin
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Free and Open Source NATS management GUI."
 arch=('x86_64')
@@ -19,11 +19,9 @@ source=(
   "appicon.png"
 )
 
-sha256sums=(
-  "987abf8f211b20bd9ad13de49aa31d2647db9cd202cd8ccac7f6f19589c4e4e8"
-  "07066302a59c1497d0d52fcafcf340b3d48f481a52c1e06a84fa328bc2945118"
-  "d6ad5ba8a51b0e180a39b1e2e7bb8c3fb6fca11859b11b8dbc68090d88440824"
-)
+sha256sums=('53f1030adbcd83ab8590f19cf2a3c4f6b5ce8f3937e830ceefa1a9eb7c43f6c5'
+            '07066302a59c1497d0d52fcafcf340b3d48f481a52c1e06a84fa328bc2945118'
+            'd6ad5ba8a51b0e180a39b1e2e7bb8c3fb6fca11859b11b8dbc68090d88440824')
 
 package() {
   install -Dm755 "$srcdir/linux-amd64-gtk40-nui-app" "$pkgdir/usr/bin/nui"
