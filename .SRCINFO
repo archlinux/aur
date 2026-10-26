@@ -1,6 +1,6 @@
 pkgbase = botropolis
 	pkgdesc = Every Claude Code session on this machine, drawn as a city
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/Botropolis-City/botropolis
 	install = botropolis.install
@@ -24,7 +24,7 @@ pkgbase = botropolis
 	optdepends = ffmpeg: record clips in sharing mode
 	conflicts = botropolis-bin
 	options = !debug
-	source = botropolis-0.3.1.tar.gz::https://github.com/Botropolis-City/botropolis/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = b9793df9b0e86ba3083bbb146065886f854ee4be1046956f819844b5a68d2055
+	source = botropolis-0.3.2.tar.gz::https://github.com/Botropolis-City/botropolis/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 9fe62ca66514191c60c273c9d1edb68421fa92f2f96fc230733715fce6b9eac8
 
 pkgname = botropolis
