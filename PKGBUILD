@@ -6,13 +6,14 @@
 
 pkgname=unified-hifi-control-bin
 _pkgname=unified-hifi-control
-pkgver=3.6.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Hi-fi control bridge for Roon, LMS, HQPlayer, and hardware surfaces"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/open-horizon-labs/unified-hifi-control"
 license=('PolyForm-Noncommercial-1.0.0')
 options=('!debug' '!strip')
+depends=('libvips')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
@@ -28,10 +29,10 @@ source=("${_pkgname}.service"
 
 # Updated automatically by the release workflow.
 sha256sums=('7c8695dd38bb67c64ee8a428003b9f874f7718270d84597f7e8ed9ef061ddd73'
-            'a01f522a8e48a40a0bb5027fc4c2673a033e4c09c305e5185681a79f0d51022e')
-sha256sums_x86_64=('763f3a3880b5712ae80f7afae98162c82e3cbccd89b5ba9986e265a97bca9ee8')
-sha256sums_aarch64=('471bbd7057dc39f885bed1471794624ccec12c45e7b0b433a009b6d1c0c9e74c')
-sha256sums_armv7h=('b626f4a04735e6d4049bf0d57f28a600c582b6c8551111af2a5576d3f83db612')
+            'ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8')
+sha256sums_x86_64=('4c068df2d5a005a4f713c7d1361d07c6676650251c7590e6f2a36d0051078033')
+sha256sums_aarch64=('948267862983dd68b223a26df508020d65bf3e0a9e6eddbbdb4d3283cb5e484b')
+sha256sums_armv7h=('deac5172ee8986522f99546a935b7789f2ea82c5278006e6be6ec6907debdebc')
 
 package() {
     cd "${srcdir}"
