@@ -1,6 +1,6 @@
 pkgbase = pollis
 	pkgdesc = End-to-end encrypted messaging
-	pkgver = 1.17.10
+	pkgver = 1.17.11
 	pkgrel = 1
 	url = https://pollis.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pollis
 	depends = alsa-lib
 	depends = libpulse
 	depends = dbus
-	source = https://cdn.pollis.com/releases/v1.17.10/pollis-v1.17.10-linux.deb
-	sha256sums = be278f2a070b8b7ed3bb5b2115c6800ecd9b1da6160ca2972ef422e728fcf87d
+	source = https://cdn.pollis.com/releases/v1.17.11/pollis-v1.17.11-linux.deb
+	sha256sums = 12225d34204e055ab5612d411b20d68dadeb9a933bcbd1c6f9f18ae75eabecbf
 
 pkgname = pollis
