@@ -6,13 +6,13 @@
 
 pkgname=remmina-git
 _pkgbase=remmina
-pkgver=1.4.43+r10385+g0df0a75d9
-pkgrel=1
+pkgver=1.4.43+r10575+g8999467f4
+pkgrel=2
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(x86_64)
 url='http://www.remmina.org/'
 license=('GPL-2.0-or-later')
-depends=('avahi' 'bash' 'cairo' 'curl' 'glib2' 'glibc' 'gtk3'
+depends=('avahi' 'avahi-gtk' 'bash' 'cairo' 'curl' 'glib2' 'glibc' 'gtk3'
          'hicolor-icon-theme' 'json-glib' 'libayatana-appindicator' 'libgcc'
 	 'libgcrypt' 'libsodium' 'libssh' 'libx11' 'openssl' 'pango' 'python' 'vte3')
 makedepends=('git' 'cmake' 'freerdp' 'gobject-introspection' 'gtk-vnc' 'harfbuzz'
