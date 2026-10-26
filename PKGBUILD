@@ -18,6 +18,10 @@ makedepends=(
     'git'
     'meson'
 )
+optdepends=(
+    'glib-networking: web split icons'
+    'gvfs: web split icons'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
