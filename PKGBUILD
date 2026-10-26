@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=tmog-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Task Manager TMOG, a native system monitor and task manager (precompiled binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 provides=('tmog-task-manager')
 conflicts=('tmog-task-manager')
 source=("https://tmog.org/rtm/downloads/TaskManagerOG-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('a147c613d4a6f5c0ec16eaf52965593de523f9f0231e09c241460cc63352f325')
+sha256sums=('c995267281a1616f121643610a382dae49384d90440ddeb482d1a4546a49dd1b')
 options=('!strip')
 
 package() {
@@ -35,6 +35,9 @@ package() {
 
   install -Dm644 share/pixmaps/tmog-task-manager.png \
     "${pkgdir}/usr/share/pixmaps/tmog-task-manager.png"
+
+  install -Dm644 share/man/man1/tmog-task-manager.1.gz \
+    "${pkgdir}/usr/share/man/man1/tmog-task-manager.1.gz"
 
   install -Dm644 share/doc/tmog/LICENSE.txt \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
