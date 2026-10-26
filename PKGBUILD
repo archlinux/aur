@@ -1,5 +1,5 @@
 pkgname=ezoo-download-git
-pkgver=1.0.6
+pkgver=1.0.6 # هذا الرقم سيتحدث تلقائياً بمجرد تشغيل makepkg
 pkgrel=1
 pkgdesc="A fast, modern open-source alternative to Internet Download Manager (IDM) for Linux"
 arch=('x86_64')
@@ -30,6 +30,21 @@ provides=('ezoo-download')
 conflicts=('ezoo-download')
 source=("git+https://github.com/kerlif/ezoo-download.git#branch=linux-support")
 sha256sums=('SKIP')
+
+# دالة الجلب التلقائي للإصدار
+pkgver() {
+  cd "$srcdir/ezoo-download"
+  # سحب آخر إصدار (Tag) من جيت هب، وإزالة حرف v لو موجود، وتحويل الصيغة لتناسب AUR
+  local _ver="$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+
+  # لو لم يجد Tags على جيت هب، سيعتمد على عدد الكوميتات
+  if [ -z "$_ver" ]; then
+    _ver="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  fi
+
+  # إضافة لقبك في نهاية رقم الإصدار
+  echo "${_ver}.nagar"
+}
 
 prepare() {
   cd "$srcdir/ezoo-download"
