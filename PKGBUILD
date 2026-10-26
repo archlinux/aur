@@ -6,7 +6,7 @@
 _pkgname='leaf-markdown-viewer'
 pkgname="$_pkgname-bin"
 pkgdesc='Leaf is a text-based markdown viewer for your terminal (pre-compiled)'
-pkgver=1.29.1
+pkgver=1.29.2
 pkgrel=1
 url='https://github.com/RivoLink/leaf'
 changelog="$_pkgname.changelog"
@@ -26,7 +26,7 @@ source=(
   "TESTING-$pkgver.md::$_rawurl/TESTING.md"
 )
 sha256sums=(
-  '04e9716562cdf89ce240181e287e8b79ee0a2c096b02151d4f69247d86d3f186'
+  'ee31e39a58c848053685f4302a94cf942f8fd36c8d2f5d7d77bdac54417c6da7'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
