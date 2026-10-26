@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-session
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64 aarch64)
@@ -53,7 +53,7 @@ optdepends=(
   'brightnessctl: the keyboard light keys, where the keyboard does not change it itself'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9dec104fba5b8829a13786f04795996cae9948828a02d769eaae9377946a4a9')
+sha256sums=('9f297739b1835e2cdb282a24d11cedbae4a34986e481839d3b3f9643fcfd87d7')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
