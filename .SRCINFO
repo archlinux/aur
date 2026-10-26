@@ -1,17 +1,17 @@
 pkgbase = pritunl-client-bin
 	pkgdesc = Pritunl OpenVPN and WireGuard client.
-	pkgver = 1.4.4752.50
+	pkgver = 1.4.4791.77
 	pkgrel = 1
 	url = https://client.pritunl.com/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = openvpn
-	provides = pritunl-client=1.4.4752.50
+	provides = pritunl-client=1.4.4791.77
 	conflicts = pritunl-client
 	conflicts = pritunl-client-electron
-	source = pritunl-client-1.4.4752.50.pkg.tar.zst::https://github.com/pritunl/pritunl-client-electron/releases/download/1.4.4752.50/pritunl-client-1.4.4752.50-1-x86_64.pkg.tar.zst
-	source = LICENSE-1.4.4752.50::https://raw.githubusercontent.com/pritunl/pritunl-client-electron/1.4.4752.50/LICENSE
-	sha256sums = d5a8a5177685165ecb7ad789972fe211c75bcef1a391c01354027ab9161c4774
+	source = pritunl-client-1.4.4791.77.pkg.tar.zst::https://github.com/pritunl/pritunl-client-electron/releases/download/1.4.4791.77/pritunl-client-1.4.4791.77-1-x86_64.pkg.tar.zst
+	source = LICENSE-1.4.4791.77::https://raw.githubusercontent.com/pritunl/pritunl-client-electron/1.4.4791.77/LICENSE
+	sha256sums = 27ebdd7168912b4208b29af6d3e1ca08be6bd651aa84c645b0aaf1142490b86a
 	sha256sums = dfc7f459464abab04f166258117caf65f82a807f29cd1c1aa93e82295f1e85bc
 
 pkgname = pritunl-client-bin
