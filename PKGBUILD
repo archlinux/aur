@@ -4,23 +4,27 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-workspace-wallpapers
-pkgver=6.7.5
+pkgver=6.8.0
 pkgrel=1
 pkgdesc='Additional wallpapers for the Sonic Workspace'
-arch=(any)
+arch=('any')
 url='https://github.com/Sonic-DE/sonic-workspace-wallpapers'
-license=(LGPL)
-makedepends=(qt5-base sonic-frameworks-cmake-modules)
-groups=(sonicde)
+license=('LGPL')
+makedepends=(
+	'qt6-base'
+	'sonic-frameworks-cmake-modules'
+)
+options=('!debug')
+groups=('sonicde')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('07ed58304b956151020c8f7ea71e196c959e67b447fd34bdcc877d8a0ff64d76')
+sha256sums=('43d598d82b51fb6fec062ee4576a7582302381008fff4ecaf2ba31f1f4657981')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
