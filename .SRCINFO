@@ -1,0 +1,15 @@
+pkgbase = aur-reviewer
+	pkgdesc = Have Claude review AUR build files (PKGBUILD, install scripts, hooks) before yay builds them
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/giosuel/aur-reviewer
+	arch = any
+	license = AGPL-3.0-only
+	depends = git
+	depends = python
+	depends = yay
+	optdepends = claude-code: Claude Code CLI used for the reviews (or use Anthropic's own installer)
+	source = aur-reviewer-0.1.0.tar.gz::https://github.com/giosuel/aur-reviewer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a4785f4053e7e4b3e0e87c13c47e86c35ac198d9682b77136b261cb9c14c596f
+
+pkgname = aur-reviewer
