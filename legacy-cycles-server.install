@@ -1,0 +1,56 @@
+# System-unit met User=legacy-cycles, config in
+# /etc/legacy-cycles-server/server.env (backup=) en state in
+# /var/lib/legacy-cycles-server. post_install enabled en start de service,
+# post_upgrade herstart hem. Zonder draaiende systemd (chroot of container)
+# faalt de transactie niet.
+
+_lcs_have_systemd() {
+  if [[ "${_LCS_SYSTEMD_CHECKED:-}" == 1 ]]; then
+    [[ "${_LCS_SYSTEMD_OK}" == 1 ]]
+    return
+  fi
+  _LCS_SYSTEMD_CHECKED=1
+  if ! command -v systemctl >/dev/null 2>&1 || [[ ! -d /run/systemd/system ]]; then
+    _LCS_SYSTEMD_OK=0
+    echo "legacy-cycles-server: systemd draait niet (chroot of container). De service is niet aangepast."
+    return 1
+  fi
+  _LCS_SYSTEMD_OK=1
+  return 0
+}
+
+_lcs_run() {
+  _lcs_have_systemd || return 0
+  local out rc
+  out="$(systemctl "$@" 2>&1)" && return 0
+  rc=$?
+  if printf '%s\n' "$out" | grep -Eq 'not been booted with systemd|Failed to connect to bus|Host is down'; then
+    echo "legacy-cycles-server: systemd is niet bereikbaar. De service is niet aangepast."
+    return 0
+  fi
+  printf '%s\n' "$out" >&2
+  return "$rc"
+}
+
+post_install() {
+  systemd-sysusers legacy-cycles-server.conf || true
+  systemd-tmpfiles --create legacy-cycles-server.conf || true
+  _lcs_run daemon-reload || return
+  _lcs_run enable --now legacy-cycles-server.service || return
+  echo "legacy-cycles-server: draait op UDP 27500. Config: /etc/legacy-cycles-server/server.env"
+}
+
+post_upgrade() {
+  systemd-sysusers legacy-cycles-server.conf || true
+  systemd-tmpfiles --create legacy-cycles-server.conf || true
+  _lcs_run daemon-reload || return
+  _lcs_run try-restart legacy-cycles-server.service
+}
+
+pre_remove() {
+  _lcs_run disable --now legacy-cycles-server.service
+}
+
+post_remove() {
+  _lcs_run daemon-reload
+}

@@ -1,0 +1,34 @@
+[Unit]
+Description=Legacy Cycles dedicated server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=legacy-cycles
+Group=legacy-cycles
+# LCS_ARGS: zie /etc/legacy-cycles-server/server.env. Standaard UDP 27500.
+Environment=LCS_ARGS=
+EnvironmentFile=-/etc/legacy-cycles-server/server.env
+ExecStart=/usr/bin/legacy-cycles-server $LCS_ARGS
+Restart=on-failure
+RestartSec=5
+StateDirectory=legacy-cycles-server
+WorkingDirectory=/var/lib/legacy-cycles-server
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
