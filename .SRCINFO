@@ -1,0 +1,23 @@
+pkgbase = sonic-frameworks-holidays
+	pkgdesc = SonicDE library for regional holiday information
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-holidays
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	optdepends = qt6-declarative: QML bindings
+	provides = kholidays
+	conflicts = kholidays
+	source = sonic-frameworks-holidays-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-holidays/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 3f5055523455b5dd4552f8e23fce550829187eea4764b03eea195103ecf31dd0
+
+pkgname = sonic-frameworks-holidays
