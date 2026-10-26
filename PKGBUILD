@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lrcget
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Utility for mass-downloading LRC synced lyrics for your offline music library.'
 arch=(
@@ -22,6 +22,7 @@ makedepends=(
     'cargo-tauri'
     'openssl'
     'pkgconf'
+    'alsa-lib'
 )
 options=(
     !lto
@@ -34,7 +35,7 @@ source=(
     'lrcget'
 )
 sha256sums=(
-    '543e0d44f48534c2aaa739ede0eb0c482b828ecaca3f47a136006c320c9a5302'
+    '61936f4edb105f9c696bfcc056871df6286bb6f8ade860d564667d31fd53735c'
     '123d8dc688e5b447ed6a9547fc4ddd1baec283238d86277392356c7e9fdef343'
 )
 
@@ -58,9 +59,9 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 src-tauri/target/release/lrcget "$pkgdir/usr/bin/lrcget-bin"
     install -Dm0755 ../lrcget "$pkgdir/usr/bin/lrcget"
-    install -Dm644 packaging/linux/LRCGET.desktop "$pkgdir/usr/share/applications/LRCGET.desktop"
-    sed -i 's|Exec=LRCGET|Exec=lrcget|g' "$pkgdir/usr/share/applications/LRCGET.desktop"
-    install -Dm644 src-tauri/icons/icon.png "$pkgdir/usr/share/pixmaps/LRCGET.png"
+    install -Dm644 packaging/linux/lrcget.desktop "$pkgdir/usr/share/applications/lrcget.desktop"
+    install -Dm644 src-tauri/icons/icon.png "$pkgdir/usr/share/pixmaps/lrcget.png"
+    install -Dm644 packaging/linux/lrcget.metainfo.xml "$pkgdir/usr/share/metainfo/$pkgname.metainfo.xml"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
