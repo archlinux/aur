@@ -1,6 +1,6 @@
 pkgbase = chan
 	pkgdesc = Headless terminal multiplexer and workspace manager
-	pkgver = 0.110.0
+	pkgver = 0.111.0
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = chan
 	depends = systemd
 	conflicts = chan-desktop
 	options = !lto
-	source = chan-0.110.0.tar.gz::https://github.com/fiorix/chan/archive/v0.110.0.tar.gz
-	sha256sums = 5ace79b359fd80a7e691157f89dfd6928ff1f5ab045357f67a3a6aca18cd70d0
+	source = chan-0.111.0.tar.gz::https://github.com/fiorix/chan/archive/v0.111.0.tar.gz
+	sha256sums = 7847332677ba209a052a84e286e88fcda1963927c54adb00dc70c860183f2353
 
 pkgname = chan
