@@ -5,7 +5,7 @@ _pkgname=nexchat
 # nexchat's own numbering started at 0.1.0, below the 2.16.2 it carried from
 # HexChat before: the epoch keeps pacman upgrading
 epoch=1
-pkgver=0.2.1.r2.g25eb9e05
+pkgver=0.2.2.r0.gb3c3c70e
 pkgrel=1
 pkgdesc="IRC client: HexChat continued on GTK4, with a terminal UI (git master)"
 arch=('x86_64' 'aarch64')
