@@ -1,6 +1,6 @@
 pkgbase = sidemark-git
 	pkgdesc = PDF viewer and annotator with a live markdown notes sidebar
-	pkgver = 0.6.0.r0.gd4f9685
+	pkgver = 0.7.0.r0.gec86692
 	pkgrel = 1
 	url = https://github.com/brokkoli71/sidemark
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = sidemark-git
 	depends = python-cairo
 	depends = gtksourceview5
 	depends = adwaita-icon-theme
+	depends = ttf-dejavu
 	optdepends = librsvg: render PNG icon sizes at install time
 	optdepends = libreoffice: convert PPTX files to PDF
 	optdepends = ocrmypdf: add a searchable text layer to scanned PDFs (OCR)
