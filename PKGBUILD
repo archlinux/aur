@@ -14,8 +14,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel'
 source=("$_sdist-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname:0:1}/$_pyname/$_sdist-$pkgver.tar.gz")
 sha256sums=('aade1e9cd75d47d01ee486b327d83b59b16e78443aa432189d34185e347d7ed4')
 
-# Version pinned to the one resolved in Honcho 3.4.0's uv.lock (Honcho requires
-# >=2.0.1787969905,<3).
+# Upstream versions by timestamp; this tracks the current release.
 
 build() {
   cd "$_sdist-$pkgver"
