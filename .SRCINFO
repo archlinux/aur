@@ -1,0 +1,22 @@
+pkgbase = mygo-cloudmusic-bin
+	pkgdesc = MyGo 云音乐 - 第三方网易云音乐原生客户端
+	pkgver = 0.1.12
+	pkgrel = 2
+	url = https://music.egoist.dev
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsecret
+	depends = libsoup3
+	provides = mygo-cloudmusic
+	conflicts = mygo-cloudmusic
+	options = !strip
+	options = !debug
+	source_x86_64 = mygo-cloudmusic_0.1.12_amd64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v0.1.12/mygo-cloudmusic_0.1.12_amd64.deb
+	sha256sums_x86_64 = 6058c041e6ebec7b772ae710a1f4f92a9b6ca3a206b6aa4bd6ac01d17169a27a
+	source_aarch64 = mygo-cloudmusic_0.1.12_arm64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v0.1.12/mygo-cloudmusic_0.1.12_arm64.deb
+	sha256sums_aarch64 = 1784399a7e1e8a3c3645012134f574b5baff894ff06107aeb2681a6578f8ec01
+
+pkgname = mygo-cloudmusic-bin
