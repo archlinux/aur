@@ -2,7 +2,7 @@
 
 _pkgbase=todav
 pkgname="$_pkgbase-git"
-pkgver=1.2.2.r0.gc5ca9ad
+pkgver=1.3.0.r0.gb2fcb7a
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
