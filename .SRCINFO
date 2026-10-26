@@ -1,0 +1,20 @@
+pkgbase = python-ldap3-ad-auth
+	pkgdesc = ldap3 adapter for NTLM/Kerberos signing and channel binding
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dirkjanm/ldap3-ad-auth
+	arch = any
+	license = MIT
+	checkdepends = python-pycryptodome
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools>=77.0.3
+	makedepends = git
+	depends = python>=3.9
+	depends = python-ldap3>=2.9.1
+	depends = impacket>=0.13.1
+	source = git+https://github.com/dirkjanm/ldap3-ad-auth#commit=51f7ff67b7f0676a59a5471dc3e8e1b676d2c9d2
+	b2sums = 3586d7e53a0ab3ac5765dace11ad67c6109c7f8ca3bfc6b2ab2e07d2d04e37e4088c0f80c2bacbaa120d644cea34e1a0d8a5c11eb5435bda59a1655f6aefb765
+
+pkgname = python-ldap3-ad-auth
