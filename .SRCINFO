@@ -1,0 +1,33 @@
+pkgbase = heroic-games-launcher-bun
+	pkgdesc = Native GOG, Epic Games and Amazon games launcher for Linux (built with Bun)
+	pkgver = 2.22.4
+	pkgrel = 1
+	url = https://heroicgameslauncher.com/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = desktop-file-utils
+	makedepends = git
+	makedepends = nodejs
+	makedepends = bun
+	depends = electron43
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = python
+	depends = sh
+	depends = which
+	depends = zlib
+	optdepends = gamemode
+	optdepends = gamescope
+	optdepends = mangohud
+	optdepends = rsync: Move games using rsync instead of mv
+	provides = heroic-games-launcher=2.22.4
+	conflicts = heroic-games-launcher
+	conflicts = heroic-games-launcher-bin
+	conflicts = heroic-games-launcher-git
+	source = git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v2.22.4
+	source = heroic.sh
+	sha256sums = a628cc8fb1bf533c7a437f32c7d21bf55dc990ac247c304a33e259870fa12a49
+	sha256sums = 6103e2429c60868452ad45e3537631a26812eeb3e3f57b5ba59c2f6f2b7398d9
+
+pkgname = heroic-games-launcher-bun
