@@ -1,28 +1,29 @@
 pkgbase = echo-music-bin
 	pkgdesc = A simple, sophisticated, and powerful third-party music player designed for the desktop.一个专为桌面端打造的简约、精致、功能强大的第三方音乐播放器。
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://echomusic.cc.cd/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = asar
 	depends = electron43
 	depends = nodejs
 	depends = python
 	depends = libpipewire
-	provides = echo-music=2.3.1
+	provides = echo-music=2.3.2
 	conflicts = echo-music
 	conflicts = echomusic
 	conflicts = echomusic-appimage
 	options = !emptydirs
-	source = LICENSE-2.3.1::https://github.com/hoowhoami/EchoMusic/blob/v2.3.1/LICENSE
+	source = LICENSE-2.3.2::https://github.com/hoowhoami/EchoMusic/blob/v2.3.2/LICENSE
+	source = echo-music.js
 	source = echo-music.sh
-	sha256sums = 63183680f62c197b4faefa739dd5e103bae75a3c05a13f58e1c31c3c44529c45
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = echo-music-2.3.1-aarch64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.3.1/EchoMusic-2.3.1-linux-aarch64.rpm
-	sha256sums_aarch64 = 5ec80cde4a79c2f71733d837317f0e867e8503eab308479f20cf93f78a99e624
-	source_x86_64 = echo-music-2.3.1-x86_64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.3.1/EchoMusic-2.3.1-linux-x86_64.rpm
-	sha256sums_x86_64 = 244687dcea67419aeae7b54751452d2a4a9c34fbf702d6251cac38e6c59b0a23
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
+	source_aarch64 = echo-music-2.3.2-aarch64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.3.2/EchoMusic-2.3.2-linux-aarch64.rpm
+	sha256sums_aarch64 = 54fb7948f7132b4ab477f4096c26647132949169b992a79eb9fe4921def71b8d
+	source_x86_64 = echo-music-2.3.2-x86_64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.3.2/EchoMusic-2.3.2-linux-x86_64.rpm
+	sha256sums_x86_64 = 8c750457bf3c5f8354cb177e5f366e6978269ba051e1e83af6cefbe98eacaafb
 
 pkgname = echo-music-bin
