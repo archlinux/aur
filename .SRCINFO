@@ -1,0 +1,25 @@
+pkgbase = asc-bisheng-bin
+	pkgdesc = Huawei Bisheng C/C++ compiler for Ascend (ccec_compiler, LLVM based)
+	pkgver = 9.2.0
+	pkgrel = 1
+	url = https://www.hiascend.com/developer/download/community/result?module=cann
+	arch = x86_64
+	arch = aarch64
+	license = custom:CANN-OSLA-2.0
+	makedepends = unzip
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	depends = asc-runtime
+	provides = asc-bisheng
+	conflicts = asc-bisheng
+	noextract = cann-toolkit-9.2.0.zip
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source_x86_64 = cann-toolkit-9.2.0.zip::https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.2.0/Ascend-cann-toolkit_9.2.0_linux-x86_64.zip
+	sha256sums_x86_64 = 6d753badfcddcf13d1049906e40f0c26150ffc01d4ad226ad8c74f352cbf7442
+	source_aarch64 = cann-toolkit-9.2.0.zip::https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.2.0/Ascend-cann-toolkit_9.2.0_linux-aarch64.zip
+	sha256sums_aarch64 = 4c432c89b0561de21e2d9b2dd0bc7bf78d3461e4eab645c1613d72422b4bdbbf
+
+pkgname = asc-bisheng-bin
