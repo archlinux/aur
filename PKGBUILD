@@ -1,52 +1,28 @@
-# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
-# Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer:
+# Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 pkgbase=estedad-fonts
-pkgname=("ttf-estedad" "ttf-estedad-variable"
-         "woff2-estedad" "woff2-estedad-variable")
-pkgver=7.3
+pkgname=(ttf-estedad ttf-estedad-variable)
+pkgver=8.5
 pkgrel=1
 pkgdesc="A Sans Serif Arabic-Latin text typeface"
+arch=('any')
 url="https://github.com/aminabedi68/Estedad"
-arch=(any)
-license=('OFL')
-groups=("${pkgbase}" "persian-fonts")
+license=('OFL-1.1')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/Estedad-v${pkgver}.zip"
         "${pkgbase}-LICENSE::${url}/raw/master/OFL.txt")
-
-sha256sums=('a15726ac8b78b7d87f8b10fbc26581ef309f2c6a8a26f547d90b33d75c73cb87'
-            'b0672e6521cd32ca77db2127e23c134719efb0e5d0cf11c2dfc2b23d05b365ce')
+sha256sums=('e780f2c9527e9d9f673b61f1e093c17d6e217c1e4be15a957bb287e13344728e'
+            '0417da48fc44780476e074f02f8400028ee704b3e222be5855fa6d960b9200ca')
 
 package_ttf-estedad() {
-  pkgdesc="${pkgdesc} (TTF)."
-
-  cd "${srcdir}/Estedad-v${pkgver}"
-  install -Dt "${pkgdir}/usr/share/fonts/TTF" -m644 ttf/*.ttf
-  install -Dt "${pkgdir}/usr/share/fonts/TTF" -m644 ttf/FD/*.ttf
-  install -D -m644 ${srcdir}/${pkgbase}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "Estedad-v${pkgver}"
+    install -Dm644 Statics/ttf/*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
+    install -Dm644 "${srcdir}/${pkgbase}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_ttf-estedad-variable() {
-  pkgdesc="${pkgdesc} (TTF Variable)."
-
-  cd "${srcdir}/Estedad-v${pkgver}"
-  install -Dt "${pkgdir}/usr/share/fonts/TTF" -m644 Variable/*.ttf
-  install -D -m644 ${srcdir}/${pkgbase}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "Estedad-v${pkgver}"
+    install -Dm644 Estedad[wght].ttf -t "${pkgdir}/usr/share/fonts/TTF"
+    install -Dm644 "${srcdir}/${pkgbase}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-package_woff2-estedad() {
-  pkgdesc="${pkgdesc} (WOFF2)."
-
-  cd "${srcdir}/Estedad-v${pkgver}"
-  install -Dt "${pkgdir}/usr/share/fonts/WOFF2" -m644 webfonts/statics/*.woff2
-  install -Dt "${pkgdir}/usr/share/fonts/WOFF2" -m644 webfonts/statics/FD/*.woff2
-  install -D -m644 ${srcdir}/${pkgbase}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_woff2-estedad-variable() {
-  pkgdesc="${pkgdesc} (WOFF2 Variable)."
-
-  cd "${srcdir}/Estedad-v${pkgver}"
-  install -Dt "${pkgdir}/usr/share/fonts/WOFF2" -m644 webfonts/variable/*.woff2
-  install -D -m644 ${srcdir}/${pkgbase}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-# vim:set ts=4 sw=4 et:
