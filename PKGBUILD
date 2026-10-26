@@ -3,11 +3,11 @@
 
 # Maintainer: minerharry <miner.harry567@gmail.com>
 pkgname=keysharp-git
-pkgver=r1921.38a1536
+pkgver=r2464.ddaaa5b
 pkgrel=1
 pkgdesc="Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. X11 version."
 arch=('x86_64')
-url="https://github.com/Descolada/keysharp"
+url="https://github.com/keysharp-org/Keysharp/"
 license=('GPL-3.0-or-later')
 groups=()
 depends=(
@@ -58,8 +58,8 @@ build() {
 #}
 
 package() {
-  cd "keysharp/dist/keysharp-linux-x64"
-  find . -type f -exec install -D "{}" "${pkgdir}/usr/share/keysharp/{}" \;
+  cd "keysharp/dist/staging/linux-x64/keysharp-linux-x64"
+  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/keysharp/{}" \;
 
 
   #make install/uninstall scripts executable
