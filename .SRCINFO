@@ -1,0 +1,24 @@
+pkgbase = sonic-frameworks-networkmanager
+	pkgdesc = Qt wrapper for NetworkManager API
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-networkmanager
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = networkmanager
+	depends = qt6-base
+	optdepends = qt6-declarative: QML bindings
+	provides = networkmanager-qt
+	conflicts = networkmanager-qt
+	source = sonic-frameworks-networkmanager-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-networkmanager/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 3dfa087535eadc7a9e43d4b9d99dcd77370b55915b92ead85634ec190b27720f
+
+pkgname = sonic-frameworks-networkmanager
