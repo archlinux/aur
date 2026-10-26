@@ -11,7 +11,7 @@ license=('OFL-1.1')
 makedepends=('python' 'python-fonttools' 'fontforge' 'parallel' 'ttfautohint')
 options=(!strip)
 provides=('ttf-commissioner')
-conflicts=('ttf-commissioner' 'otf-commissioner')
+conflicts=('ttf-commissioner' 'ttf-commissioner-variable' 'otf-commissioner')
 source=(
   "Commissioner-Roman.ttf::https://raw.githubusercontent.com/kosbarts/Commissioner/${_commver}/fonts/variable/Commissioner%5BFLAR%2CVOLM%2Cwght%5D.ttf"
   "Commissioner-Italic.ttf::https://raw.githubusercontent.com/kosbarts/Commissioner/${_commver}/fonts/variable/Commissioner-Italic%5BFLAR%2CVOLM%2Cwght%5D.ttf"
@@ -33,7 +33,7 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '373d859f527adcf80933f9741af0595e708f591bdde5f2f01896aebd7d488750'
             'd86d04b9116f44fb419116f46582daca4d1227c7facd9f9a3c562e104e69fc61'
-            '1319383e4cea7de8a6010a7706de7cf4ee85fc9ebeed52400d69bb4f8eccbe02'
+            '1c3bfe38d0062d74afa0d4421bbd9a2da147d04f182b9e7edde16ec69b38000c'
             '9ae8ef9e42aad427e6ce07b1304096285d9335f506fce9373693b446e1616ab1')
 
 # ── What this package does ──────────────────────────────────────────────────

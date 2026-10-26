@@ -12,6 +12,7 @@ pkgbase = ttf-commissioner-hinted
 	makedepends = ttfautohint
 	provides = ttf-commissioner
 	conflicts = ttf-commissioner
+	conflicts = ttf-commissioner-variable
 	conflicts = otf-commissioner
 	noextract = font-patcher-3.5.1.zip
 	options = !strip
@@ -33,7 +34,7 @@ pkgbase = ttf-commissioner-hinted
 	sha256sums = 0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99
 	sha256sums = 373d859f527adcf80933f9741af0595e708f591bdde5f2f01896aebd7d488750
 	sha256sums = d86d04b9116f44fb419116f46582daca4d1227c7facd9f9a3c562e104e69fc61
-	sha256sums = 1319383e4cea7de8a6010a7706de7cf4ee85fc9ebeed52400d69bb4f8eccbe02
+	sha256sums = 1c3bfe38d0062d74afa0d4421bbd9a2da147d04f182b9e7edde16ec69b38000c
 	sha256sums = 9ae8ef9e42aad427e6ce07b1304096285d9335f506fce9373693b446e1616ab1
 
 pkgname = ttf-commissioner-hinted

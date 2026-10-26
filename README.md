@@ -397,11 +397,15 @@ python measure.py Commissioner-Italic.ttf slight '{}' 10,11,12
   in the `balanced` preset; on a VF that knob never had an effect, which the
   Geologica measurements could not separate because its preset also changed the
   stem mode).
-- **The statics in the AUR `ttf-commissioner` are hinted; the variable font is
-  not.** That package and this one conflict, and they answer different
-  questions: 54 hinted statics versus two hinted variable fonts with the same
-  hinting quality (measured above: ours is closer to the outline at Black,
-  6.4 against 10.7).
+- **The AUR packages `ttf-commissioner`, `otf-commissioner` and
+  `ttf-commissioner-variable` are one pkgbase** (`commissioner-font`) that
+  unpacks the release archive as it comes: 54 statics (hinted by upstream) and
+  the two variable fonts (unhinted). `ttf-commissioner-variable` installs the
+  same two files this package installs, into the same directory, only without
+  hinting - which is why all three conflict with this one. They answer
+  different questions: 54 prebuilt statics, or two hinted variable fonts
+  (measured above: our hinting is closer to the outline at Black, 6.4 against
+  the 10.7 of upstream's own flags).
 
 ## Sources
 
