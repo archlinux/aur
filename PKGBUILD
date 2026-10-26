@@ -11,7 +11,7 @@
 
 pkgname=chest-backup
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 install=chest-backup.install
 pkgdesc="Full-stack backup manager with web UI and scheduling"
 arch=('x86_64' 'aarch64')
