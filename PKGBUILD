@@ -33,10 +33,6 @@ makedepends=(
 source=("$_sdist-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname:0:1}/$_pyname/$_sdist-$pkgver.tar.gz")
 sha256sums=('290a94c32e9d64a80299874a0dfac3eb87a01e13f46fb36950e5b7c35c3af943')
 
-# Honcho's Turbopuffer backend imports turbopuffer.lib.namespace.AsyncNamespace
-# and turbopuffer.types.Filter/RowParam, all of which still exist in 3.x (the
-# client construction and namespace API were verified against this release).
-#
 # Upstream declares httpx2>=2.16.0, but Arch currently ships 2.13.1 (2.16.0
 # was released 2026-10-21).  2.13.1 imports and constructs the client fine, so
 # no version floor is set here until the repository catches up.
