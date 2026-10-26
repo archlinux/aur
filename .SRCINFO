@@ -1,0 +1,23 @@
+pkgbase = sonic-frameworks-quick-charts
+	pkgdesc = A QtQuick plugin providing high-performance charts
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-quick-charts
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = qt6-shadertools
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = sonic-frameworks-quick-ui
+	provides = kquickcharts
+	conflicts = kquickcharts
+	source = sonic-frameworks-quick-charts-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-quick-charts/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 45687be15c1845c91bbc1be75b3e1123578b2ee3d8fa8da9a9d8e3cf934f4820
+
+pkgname = sonic-frameworks-quick-charts
