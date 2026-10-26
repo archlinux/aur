@@ -1,0 +1,18 @@
+pkgbase = mon-1stplayer
+	pkgdesc = Linux hardware monitor daemon for the 1STPLAYER USB display
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/victorzhuk/mon-1stplayer-linux
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go>=1.27.3
+	depends = glibc
+	depends = systemd
+	depends = nvidia-utils
+	conflicts = mon-1stplayer-bin
+	conflicts = mon-1stplayer-git
+	backup = etc/mon-1stplayer.conf
+	source = mon-1stplayer-0.1.2.tar.gz::https://github.com/victorzhuk/mon-1stplayer-linux/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = e2f01c87ab71cb4afc78a03bb0c3380857261ecf36840995acb0a03c3d6671d1
+
+pkgname = mon-1stplayer
