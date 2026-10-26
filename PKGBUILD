@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=shinymanager
-_pkgver=1.1.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,6 +15,7 @@ depends=(
   r-dt
   r-glue
   r-htmltools
+  r-later
   r-openssl
   r-r.utils
   r-r6
@@ -27,6 +28,8 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-emayili
+  r-fontawesome
   r-keyring
   r-knitr
   r-rmarkdown
@@ -35,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f3bf2e80b10e22c3d680d3bee861c610')
-b2sums=('75c97548cb37bc3f98a69c2b80bc936ce7f906c3e6f4882a78a8db8d2f40cab44a665d753ad58a8538fd3e948558020de7b5a8b68c47cba07ddffc68f11a469c')
+md5sums=('6e85f383ede96d8dadc3b01eebbc1794')
+b2sums=('de564c0cee5026a1cd8957eb974e13c70126ad41fd34ef32a2c4e9945140d50153394981c049fe28dff9fff3426741fc9dab6a2c81c47fc287fb2c33ad6d6881')
 
 build() {
   mkdir build
