@@ -7,7 +7,7 @@
 # release and nothing can drift from one.
 
 pkgname=dogdns
-pkgver=0.7.16
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Command-line DNS client with colourful output, DoT, DoH and JSON"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ provides=('dog')
 conflicts=('dog')
 # The GitHub tag tarball unpacks to dog-$pkgver/ (the repository is `dog`, the package `dogdns`).
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6d0e05b841756849a5c02799e90aca047398b6e50b5ac382a003a8cf59b30d1a')
+sha256sums=('6d82ebd5b113effa33a6a6994c77f7064724cc63b11e0d65daa6dd2b5849e774')
 
 prepare() {
   cd "dog-$pkgver"
