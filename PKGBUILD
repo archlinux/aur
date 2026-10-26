@@ -1,7 +1,7 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis-bin
 _pkgname=botropolis
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city (binary release)"
 arch=('x86_64' 'aarch64')
@@ -34,8 +34,8 @@ options=('!debug')
 # package would be built from binaries whose source tree is not here.
 source_x86_64=("${_pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('d5d9c7b8aa41c61c419834b8baaa496595d197fcc6ac40c6e8c8a767d1ab8205')
-sha256sums_aarch64=('0c7fb631f7c5e930771e091c1fb58c3662c5d2b3198be1570f55e645aa145f20')
+sha256sums_x86_64=('f3d4246d7e126137948e5186ef48c6c5b6ce5f41983cfe49032192359d185a30')
+sha256sums_aarch64=('09a652871f667143c2710ce203eaa39774ad2a0de706cdc4f5d004ca2e1dca64')
 
 package() {
     cd "${_pkgname}-${pkgver}"
@@ -65,5 +65,4 @@ package() {
     install -Dm644 gomono-BSD.txt "${pkgdir}/usr/share/licenses/${pkgname}/gomono-BSD.txt"
     install -Dm644 kenney-CC0.txt "${pkgdir}/usr/share/licenses/${pkgname}/kenney-CC0.txt"
     install -Dm644 kenney-kits.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-kits.md"
-    install -Dm644 kenney-packs.md "${pkgdir}/usr/share/licenses/${pkgname}/kenney-packs.md"
 }
