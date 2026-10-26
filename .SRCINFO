@@ -1,7 +1,7 @@
 pkgbase = omnigent-desktop
 	pkgdesc = Desktop client for collaborating with AI agents
 	pkgver = 0.19.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/omnigent-ai/omnigent
 	arch = x86_64
 	license = Apache-2.0
