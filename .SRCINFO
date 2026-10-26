@@ -1,11 +1,10 @@
 pkgbase = voicestudio-bin
 	pkgdesc = Open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://voicestudio.sh/
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = asar
 	depends = electron44
 	depends = uv
 	depends = python
@@ -18,12 +17,16 @@ pkgbase = voicestudio-bin
 	depends = python-cryptography
 	depends = python-psutil
 	depends = python-pydantic
+	depends = python-tqdm
+	depends = python-pytest
 	depends = python-pillow
-	provides = voicestudio=0.5.6
+	provides = voicestudio=0.5.7
 	conflicts = voicestudio
-	source = voicestudio-0.5.6.deb::https://github.com/debpalash/VoiceStudio/releases/download/v0.5.6/VoiceStudio-Electron-0.5.6-linux-x64.deb
+	source = voicestudio-0.5.7.deb::https://github.com/debpalash/VoiceStudio/releases/download/v0.5.7/VoiceStudio-0.5.7-linux-x64.deb
+	source = voicestudio.js
 	source = voicestudio.sh
-	sha256sums = 1e25b412cb78f46e86baffb12eb73018592b6c2085609628d6e82e918fd05f9b
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 33d23b5f9139e4032b7c8860f520abf01cd6c4f27c94b9f32c9f0851c7dc2987
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
 
 pkgname = voicestudio-bin
