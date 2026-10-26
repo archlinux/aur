@@ -2,7 +2,7 @@
 # Maintainer: Chris Lahaye <mail@chrislahaye.com>
 
 pkgname=cfn-teleport-bin
-pkgver=0.52.2
+pkgver=0.52.3
 pkgrel=1
 pkgdesc="A command-line tool for managing CloudFormation resources across and within stacks"
 arch=("aarch64" "arm" "armv7h" "i686" "x86_64")
@@ -20,11 +20,11 @@ source_i686=("${url}/releases/download/v${pkgver}/cfn-teleport-i686-unknown-linu
 source_x86_64=("${url}/releases/download/v${pkgver}/cfn-teleport-x86_64-unknown-linux-musl-v${pkgver}.tar.gz")
 
 # Checksums
-sha256sums_aarch64=("1c1448810be11212891b6b1cfe77b9d782300617f81b52bc4ae11035c10f01d6")
-sha256sums_arm=("07ced18dd0a36a98da9a50cbe74a4369045bf92a90cc92ca690cac825fa2aa3c")
-sha256sums_armv7h=("e35ca0b5d4f562c20460c375df3269f3b613a251aabac1e9ca4eee754ba71bf4")
-sha256sums_i686=("746edf0d585e341e5225730052ef1a5bdf4b2dd75e4e8b5908b1fb4983f52941")
-sha256sums_x86_64=("7e2b3fc2d959a8341460e35e6e3adfb1e58a06e5796f2fb78826043b3ee67206")
+sha256sums_aarch64=("625a9c8cfa8a17374086b98a92b98653499542fce865bc78cf3dc5a3c4b65db1")
+sha256sums_arm=("4fced590c839ccf742914d11a7df8255e9d04fd40a8b43ce5c61320e652cf688")
+sha256sums_armv7h=("a92587d42fb8c207964a07a4dc42cf43eec370bc474b033480f8ec05f66032e9")
+sha256sums_i686=("5721ddf661512e8b915eab7940ad2d3f60f0c9bde35bc8a595614caf7691a196")
+sha256sums_x86_64=("8f56858403cfd6391d07e1da9d1aac67b736f208921d74ad6bd0aab6fa7d765e")
 
 # Build function
 build() {
