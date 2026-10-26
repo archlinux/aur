@@ -2,9 +2,9 @@
 
 pkgname=tizen-cli
 _pkgname=tizen-cli
-_commit=5717a6f882c561f739c194a8dd075f985f756d39
+_commit=8e0289b6c35d5bb9430b27ccbd4601724bfa2a05
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight CLI to build, install, and launch Tizen applications without Tizen Studio"
 arch=('any')
 url="https://github.com/Twilight0/tizen-cli"
@@ -14,7 +14,7 @@ makedepends=('npm')
 provides=('tizenjs' 'tizen.js')
 conflicts=('tizenjs' 'tizen.js')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/Twilight0/tizen-cli/archive/${_commit}.tar.gz")
-sha256sums=('d7dc3dd2838fbda762ce0be7cfcb699260295ee5a13fe5f84b5fcc42c266c7fa')
+sha256sums=('da3f76e61c03fdf99bdbc84155e6d35fc23eb4c1a16a5923001c01e05da1332a')
 
 build() {
   cd "${_pkgname}-${_commit}"
