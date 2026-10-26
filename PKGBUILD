@@ -22,6 +22,7 @@ optdepends=('cups: printer inventory'
             'usbutils: USB device inventory'
             'virtualbox: VirtualBox virtual machine inventory')
 options=('!strip' '!debug')
+install=$pkgname.install
 backup=('etc/ocsinventory-agent/config.json')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'fix-agent-version.patch'

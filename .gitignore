@@ -17,3 +17,4 @@
 !fix-os-release.patch
 !linux-arch-extended-template.json
 !linux-arch-template.json
+!ocsinventory-agent3.install

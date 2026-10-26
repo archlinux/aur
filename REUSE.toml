@@ -5,6 +5,7 @@ path = [
     ".gitignore",
     ".SRCINFO",
     "config.json",
+    "ocsinventory-agent3.install",
     "PKGBUILD",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
