@@ -15,6 +15,22 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 - Fedora package
 
 ### Changed
+- Bus communication interface
+
+### Fixed
+
+Various journal behaviors
+
+- Display newest events when follow (tail) option is checked
+- Always display empty information, when empty
+- When empty, now able to catch new events
+
+## [2.24.1] - 2026-10-20
+
+### Added
+- Fedora package
+
+### Changed
 - French translation
 
 ### Fixed
