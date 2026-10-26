@@ -1,0 +1,27 @@
+pkgbase = sonic-frameworks-barcode
+	pkgdesc = A barcode API to produce QRCode barcodes and DataMatrix barcodes
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-barcode
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = MIT
+	makedepends = doxygen
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libdmtx
+	depends = libgcc
+	depends = libstdc++
+	depends = qrencode
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = zxing-cpp
+	optdepends = qt6-declarative: QML bindings
+	provides = prison
+	conflicts = prison
+	source = sonic-frameworks-barcode-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-barcode/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = bd42c7c6f7f50f5ef8fab24f70b84249436c906bfd1e536ff6db38278f463ba4
+
+pkgname = sonic-frameworks-barcode
