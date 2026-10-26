@@ -5,9 +5,9 @@ pkgname=animalinux
 # build()/package() fallan con "No such file or directory" (bug real,
 # presente desde v0.2.0, nunca se había probado con una build de verdad).
 _gitname=AnimalinuxApp
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Mascotas animadas en el escritorio para Hyprland/Wayland, con editor de píxeles y pintura"
+pkgdesc="Mascotas animadas para tu escritorio (Hyprland, KDE, GNOME…): reaccionan a tu PC, juegan y hasta te juegan un partido; con editor de píxeles y de animación"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Sergi122/AnimalinuxApp"
 license=('MIT')
@@ -23,7 +23,7 @@ depends=(
 )
 optdepends=(
     'mpv: reproducción de audio en el editor de animación'
-    'ffmpeg: exportar animaciones como MP4'
+    'ffmpeg: exportar animaciones como MP4 y stickers de Telegram'
     'python-rembg: recorte de fondo con IA (requiere onnxruntime)'
     'python-onnxruntime: motor IA para rembg'
     'libwnck3: andar por bordes de ventana y pausa en pantalla completa (backend X11: GNOME/KDE/Xfce/MATE/Cinnamon)'
@@ -35,7 +35,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f9fee6ec45424960a41bd615f0969ca68464fa9f3460073fc31c36dffd56d1ed')
+sha256sums=('555226b19f2d33679a560745be844f4506b80f47e7ac9b6d5ec5699cec5b8124')
 
 build() {
     cd "$_gitname-$pkgver"
