@@ -1,6 +1,6 @@
 pkgbase = chromium-extension-adnauseam
 	pkgdesc = An ad-blocker which silently simulates clicks on each blocked ad, confusing trackers
-	pkgver = 3.29.0
+	pkgver = 3.29.2
 	pkgrel = 1
 	epoch = 1
 	url = https://adnauseam.io
@@ -15,8 +15,8 @@ pkgbase = chromium-extension-adnauseam
 	optdepends = brave-origin-nightly-bin: Popular fork of chromium, without some features (nightly release)
 	optdepends = brave-beta-bin: Popular fork of chromium (beta release)
 	optdepends = brave-origin-beta-bin: Popular fork of chromium, without some features (beta release)
-	source = https://github.com/dhowe/AdNauseam/releases/download/v3.29.0/adnauseam-3.29.0.chromium.zip
-	sha256sums = 02502898d6116d73fca41e92f5331d2e5f35ba3b4c049a90736a8aa2ae54b40f
-	b2sums = a8dcbd37f2d2ef4f227e62e19b6a6c4aa2830cd75a6f2e06eacca36fd8979df497dd1d3db76b1607f2904815bbeaafcdc34ce7a6fc6c4597f3b1c5238f4a3c3c
+	source = https://github.com/dhowe/AdNauseam/releases/download/v3.29.2/adnauseam-3.29.2.chromium.zip
+	sha256sums = 2c7241dbd1ec71b16f2f8883830595b74e2603896f3f283ad500b070edbc9ac1
+	b2sums = d1f1507db66ee641b71fee14401126e8a41522a4a9928d5d4928a79b298697162d881ec39d8051b0b620e9d6a66010c8ff3ffd3c9fd7434b883dd6014d0416b4
 
 pkgname = chromium-extension-adnauseam
