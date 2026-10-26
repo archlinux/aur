@@ -7,7 +7,7 @@
 # Contributor: maleadt <tim dot besard at gmail dot com>
 pkgname="turbovnc"
 pkgdesc="A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads"
-pkgver=3.3
+pkgver=3.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://www.turbovnc.org/"
@@ -47,7 +47,7 @@ conflicts=('tigervnc' 'tigervnc-git' 'tightvnc' 'tightvnc-git')
 backup=(etc/turbovnc/turbovncserver.conf
         etc/turbovnc/turbovncserver-security.conf)
 source=("https://github.com/TurboVNC/turbovnc/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('579d71e95beb7790badc1e40b36b52ccec71f255493e89e21721dfd86bbf2a5a'
+sha256sums=('9be0a0764d89f1a234cad7775ea142a01c0efe198523456899883bd6466691da'
             'SKIP')
 validpgpkeys=('AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1') # The VirtualGL Project <information@VirtualGL.org>
 
