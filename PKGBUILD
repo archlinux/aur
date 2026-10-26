@@ -2,7 +2,7 @@
 
 pkgname=pandacode
 pkgver=0.3.56
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight coding agent workspace"
 arch=('x86_64' 'aarch64')
 url="https://github.com/aicodeking/pandacode"
@@ -28,7 +28,11 @@ package() {
   chmod -R a+rX "${pkgdir}/opt/${pkgname}"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/pandacode"
+  cat > "${pkgdir}/usr/bin/pandacode" <<'EOF'
+#!/bin/sh
+exec /opt/pandacode/AppRun "$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/pandacode"
 
   install -Dm644 squashfs-root/PandaCode.desktop \
     "${pkgdir}/usr/share/applications/pandacode.desktop"
