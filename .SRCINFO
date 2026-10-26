@@ -1,6 +1,6 @@
 pkgbase = rom-properties-git
 	pkgdesc = This shell extension adds a few nice features to file browsers for managing video game ROM and disc images.
-	pkgver = 2.7.r86.g562c9be
+	pkgver = 2.9.r263.g89e7acf
 	pkgrel = 1
 	url = https://github.com/GerbilSoft/rom-properties
 	install = rom-properties-git.install
@@ -13,6 +13,7 @@ pkgbase = rom-properties-git
 	makedepends = lz4
 	makedepends = lzo
 	makedepends = pkgconf
+	makedepends = qt5-tools
 	makedepends = zstd
 	depends = fmt
 	depends = gcc-libs
