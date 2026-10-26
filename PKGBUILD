@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=music-assistant-tui-git
-pkgver=20261025.0.r263.gb1553cf
+pkgver=20261026.0.r264.g382363a
 pkgrel=1
 pkgdesc="Terminal UI for Music Assistant (git version)"
 arch=('x86_64' 'aarch64')
