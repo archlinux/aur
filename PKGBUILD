@@ -1,6 +1,6 @@
 # Maintainer: faceless33
 pkgname=cranamp
-pkgver=0.1.86
+pkgver=0.1.88
 pkgrel=1
 pkgdesc='Music player in Rust with WSZ skins and an agent-connected Skin Studio'
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,24 @@ depends=('alsa-lib' 'libgcc' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxi' 'libx
 optdepends=('vulkan-driver: GPU rendering' 'xdg-desktop-portal: file dialogs')
 makedepends=('cargo' 'git' 'pkgconf')
 source=("https://github.com/samoylenkodmitry/cranamp/releases/download/v$pkgver/cranamp-$pkgver-source.tar.gz")
-sha256sums=('e4ada4b2b45a98a37232a378b3eca5b769c49adc50ee42cdff41c787f6ef385c')
+sha256sums=('60a97870122415486705a75674ce451843d7964d506a115c792304ca7811b5fd')
 prepare() {
   cd "cranamp-$pkgver"
   cargo fetch --locked
 }
 build() {
   cd "cranamp-$pkgver"
+  # AWS-LC compiles jitterentropy with -O0; makepkg's -O2 would override it.
+  # Keep the remaining C flags, including hardening flags.
+  local flag
+  local native_cflags=""
+  for flag in $CFLAGS; do
+    case "$flag" in
+      -O*) ;;
+      *) native_cflags+="$flag " ;;
+    esac
+  done
+  export CFLAGS="$native_cflags"
   cargo build --frozen --release --features store
 }
 package() {
