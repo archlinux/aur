@@ -1,0 +1,23 @@
+pkgbase = superlight
+	pkgdesc = System Monitor for Linux Desktops
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/xapp-project/superlight
+	arch = any
+	groups = x-apps
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = meson
+	depends = gtk3
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = python-xapp
+	depends = upower
+	depends = xapp
+	depends = xapp-symbolic-icons
+	optdepends = flatpak: List what is installed with Flatpak
+	source = superlight-1.0.2.tar.gz::https://github.com/xapp-project/superlight/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 0a5322ddce02ec8b676994be3156ac484306dade5cb5d5f8ffc7b3dbe1de488b
+
+pkgname = superlight
