@@ -24,7 +24,7 @@ backup=('etc/ocsinventory-agent/config.json')
 source=("$url/releases/download/$pkgver/OCSInventory-Agent-Setup-Linux-Deb-$pkgver.tar.xz"
         'config.json')
 sha256sums=('05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5'
-            '324d4bdd75ae48283d9a5634186bdfc90497f0830cfa6ddb17bdac2a33205171')
+            '3d1a7939a86f46a01efc14de561371ca63ad5228256585c37139b0032f603027')
 
 package() {
   install -Dm600 config.json "$pkgdir/etc/ocsinventory-agent/config.json"

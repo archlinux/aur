@@ -5,7 +5,7 @@
   "mode": 4,
   "log_level": 3,
   "log_file": true,
-  "log_file_path": "/var/log/ocsinventory-agent/ocsinventory-agent.log",
+  "log_file_path": "/var/log/ocsinventory-agent3/ocsinventory-agent.log",
   "data_directory": "/var/lib/ocsinventory-data",
   "certificate": "none",
   "bypass-certificate": false
