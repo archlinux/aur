@@ -16,9 +16,9 @@ package() {
     cd "$srcdir/ember-${pkgver}-1" || exit 1
 
 
-    install -Dm755 "$startdir/bin/ember" "$pkgdir/usr/bin/ember"
-    install -Dm755 "$startdir/bin/ember" "$pkgdir/usr/bin/emb"
+    install -Dm755 bin/ember "$pkgdir/usr/bin/ember"
+    install -Dm755 bin/ember "$pkgdir/usr/bin/emb"
     install -Dm644 README.md "$pkgdir/usr/share/doc/ember/README.md"
-    install -Dm644 "$startdir/man/ember.8" "$pkgdir/usr/share/man/man8/ember.8"
+    install -Dm644 man/ember.8 "$pkgdir/usr/share/man/man8/ember.8"
     ln -s ember.8 "$pkgdir/usr/share/man/man8/emb.8"
 }
