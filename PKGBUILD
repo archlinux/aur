@@ -26,14 +26,13 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  local _commit=$(git rev-parse --short HEAD)
 
   go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags="-X main.GitCommit=${_commit} -s -w" \
+    -ldflags="-s -w" \
     -o build/golfetch .
 }
 package() {
