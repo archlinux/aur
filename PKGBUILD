@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Local-first cross-platform diff and merge tool"
 
-pkgver=0.196.0
+pkgver=0.196.1
 pkgrel=1
 
 arch=('x86_64')
@@ -33,13 +33,13 @@ source=("METAINFO-${pkgver}.xml::${_ghurlraw}/packaging/linux/io.github.${_appna
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"NOTICE-${pkgver}::${_ghurlraw}/NOTICE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${pkgver}/${_appname}-v${pkgver}-${_barch[0]}.tar.gz")
-sha256sums=('292fcee63ffc518e09014ddbe7443fdad3a64bceeb716e0e32b870227beca46d'
-            '97c10a7bfa6618a1b4d2ac601799d3a04abc7e57f299ba1fa3999ad01626b839'
+sha256sums=('6b88b5959a39da23999c23d418bfb0d769677cd3063b1b175576c6e4b9286fea'
+            '2efcb7ce46b6060034a41f1b9003837c56774d2f9d54c6979cc7c75c8676882a'
             '35766d3d70744fb8fe544fa89e50592749003cc99e35b7d65a6b12a02002e692'
             '4d2ed25a5656133f801a397c9a566504bd3ea467ad1f5a8968c9c2660b55de17'
             'f651689716d7e61870c050334baf1bfc0e44a2fb8f39c68b2a1412de140f97fe'
             '8aa452d4de64938dbe60eb883a57780f7cb889a96db3c29aaa5fb9b9966de004')
-sha256sums_x86_64=('fd158f42cbcbfb0ad2b4b69469332ede0b7cc2f5863f1b5d44239d2dd89f4a7c')
+sha256sums_x86_64=('7c7457da0bf8af9609496e22a8c748a7fb8a5432aef53f748c1a46c790fd2838')
 
 
 prepare() {
