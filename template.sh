@@ -1,7 +1,8 @@
 #!/bin/sh
 
-export DOOMTOOLS_PATH="/usr/share/doomtools"
+export DOOMTOOLS_PATH="/usr/share/java/doomtools"
 export DOOMTOOLS_JAR="/usr/share/java/doomtools/doomtools-PKGVER_PLACEHOLDER.jar"
+export DOOMTOOLS_DOCPATH="/usr/share/doc/doomtools"
 case $@ in
 	*"--update"* )
 	   echo "DoomTools was installed from AUR, updating in this manner is unsupported."

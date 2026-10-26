@@ -25,7 +25,7 @@ pkgbase = doomtools-bin
 	source = template.sh
 	source = doomtools.desktop
 	sha256sums = 3eca101c119a432d1624103a1ccc2053efd3d89f21ed1bc0b773745701711782
-	sha256sums = dab435a5096090c2106875966bec76f357721b27542e9ed2a276df1bc608b673
+	sha256sums = 65ac67f9e70102e1079f4dcb4039c22e31d2e667d1d7a09a0c3b9bf226c68c07
 	sha256sums = d7ac55b49120883c6076a8c6bb884a96e66a9c111362a68f2e69fe3b894f61c1
 
 pkgname = doomtools-bin

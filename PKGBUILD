@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
 	"3eca101c119a432d1624103a1ccc2053efd3d89f21ed1bc0b773745701711782"
-	"dab435a5096090c2106875966bec76f357721b27542e9ed2a276df1bc608b673"
+	"65ac67f9e70102e1079f4dcb4039c22e31d2e667d1d7a09a0c3b9bf226c68c07"
 	"d7ac55b49120883c6076a8c6bb884a96e66a9c111362a68f2e69fe3b894f61c1"
 )
 
@@ -41,11 +41,11 @@ package() {
 		install -Dm644 ${srcdir}/${_icon_res}.png ${pkgdir}/usr/share/icons/hicolor/${_icon_res}/apps/doomtools.png
 	done
 
+	mv ${srcdir}/docs/LICENSE.txt ${srcdir}/docs/licenses
 	install -Dm644 ${srcdir}/jar/doomtools-${pkgver}.jar -t ${pkgdir}/usr/share/java/doomtools
 	install -Dm644 ${srcdir}/doomtools.desktop -t ${pkgdir}/usr/share/applications
-	install -Dm644 ${srcdir}/docs/LICENSE.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
 	install -Dm644 ${srcdir}/docs/licenses/* -t ${pkgdir}/usr/share/licenses/${pkgname}
-	install -Dm644 ${srcdir}/docs/*.md -t ${pkgdir}/usr/share/doomtools/docs
-	install -Dm644 ${srcdir}/docs/*.txt -t ${pkgdir}/usr/share/doomtools/docs
-	rm ${pkgdir}/usr/share/doomtools/docs/LICENSE.txt
+	install -Dm644 ${srcdir}/docs/*.md -t ${pkgdir}/usr/share/doc/doomtools
+	install -Dm644 ${srcdir}/docs/*.txt -t ${pkgdir}/usr/share/doc/doomtools
+	install -Dm644 ${srcdir}/docs/changelogs/* -t ${pkgdir}/usr/share/doc/doomtools/changelogs
 }
