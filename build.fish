@@ -1,15 +1,20 @@
 #!/bin/fish
-# 获取更新
-set ver (curl 'https://hmcl.huangyuhui.net/api/update_link?channel=dev' | jq -r '.["version"]')
-echo 最新版 $ver
+if [ H = "H$argv[1]" ]
+    # 获取更新
+    set ver (curl 'https://hmcl.huangyuhui.net/api/update_link?channel=dev' | jq -r '.["version"]')
+    echo 最新版 $ver
 
-# 获取当前版本
-set pkgver (cat .SRCINFO | grep pkgver | cut -d ' ' -f 3)
-echo 当前版 $pkgver
+    # 获取当前版本
+    set pkgver (cat .SRCINFO | grep pkgver | cut -d ' ' -f 3)
+    echo 当前版 $pkgver
 
-if [ $ver = $pkgver ]
-    echo 已是最新版
-    exit
+    if [ $ver = $pkgver ]
+        echo 已是最新版
+        exit
+    end
+else
+    echo 构建 $argv[1]
+    set ver $argv[1]
 end
 
 # 生成 PKGBUILD
