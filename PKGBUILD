@@ -1,23 +1,35 @@
-# Maintainer: xuewuerduo <xuewuerudo@gmail.com>
+# Maintainer: Keep-Silence <keep137950@163.com>
+# Contributor: xuewuerduo <xuewuerudo@gmail.com>
 #
 # dsh-desktop-git — DeepSeek Harness 的桌面客户端（从源码构建，Arch 原生打包）
 # ===========================================================================
-# DSH Desktop 官方没有发布 Linux 二进制（Linux 包一直是“从源码本地构建”），
-# 因此本 PKGBUILD 直接克隆官方源仓库，按官方流程构建出 Electron 应用本体，
-# 再以 Arch 原生布局安装（/opt/dsh-desktop + .desktop + hicolor 图标），
+# 上游 Linux 说明：dataelement/dsh-desktop 只发布 macOS/Windows 安装包，README
+# 明确标注 Linux“Not currently supported”。自 v0.11.0 起，构建链中的 Office
+# 运行时准备（office:prepare）与打包后校验（afterPack）只接受 macOS/Windows，
+# 直接 `npm run build` 会在 Linux 上报：
+#   Office runtime: unsupported native target linux/x64
 #
-# 版本策略：跟随上游最新 release tag（v 前缀，如 v0.9.0），排除 test/rc/preview tag；
+# 本 PKGBUILD 因此不执行上游 `npm run build`，而是分步执行，并采用社区 Linux
+# 打包工程 ethanrise/dsh-desktop（MIT）的两个适配脚本（按固定版本随包提供，
+# 不修改上游源码）：
+#   - dsh-linux-patch-deps.mjs：修复 libreoffice-kit 在 asar 下的探测，
+#     让 Linux 能走 WASM 回退；
+#   - dsh-linux-after-pack.cjs：替换上游 afterPack，跳过 Office 运行时校验。
+#
+# 由于上游未提供 Linux 版 Office Python 载荷，本包**不包含 Office 运行时**，
+# DOCX/PPTX/XLSX 技能不可用；PPT 编辑/渲染仍可用。
+#
+# 版本策略：跟随上游最新 release tag（v 前缀，如 v0.12.0），排除带 - 后缀的
+# test/rc/preview/beta 等预发布 tag；
 # 构建时 prepare() 检出该 tag，保证打出的包与版本号严格对应同一份源码。
 #
 # 构建流程：
-#   1. npm ci                安装依赖；postinstall 自动完成
-#                             - patch-package 补丁
-#                             - 品牌资源注入
-#                             - 下载 Electron 43 二进制（GitHub Releases）
-#                             - 安装捆绑的 Node.js 运行时（nodejs.org）
-#   2. npm run package:dir   electron-vite build + electron-builder --dir
-#                             => dist/linux-unpacked/（应用本体）
-#   3. package()              安装 linux-unpacked 到 /opt/dsh-desktop，
+#   1. npm ci                安装依赖；postinstall 完成补丁、品牌资源注入
+#                            与 Electron 43 二进制下载
+#   2. ppt:build             electron-vite 构建前的模板/运行时就绪
+#   3. electron-vite build   编译主进程、preload、renderer 与插件
+#   4. electron-builder --linux dir => dist/linux-unpacked/
+#   5. package()             安装 linux-unpacked 到 /opt/dsh-desktop，
 #                             写入 /usr/bin 软链、.desktop、hicolor 图标
 #
 # 依赖锁定在仓库的 package-lock.json（resolved 指向 npmmirror，公开镜像全球可访问），
@@ -26,12 +38,13 @@
 
 
 pkgname=dsh-desktop-git
-pkgver=0.9.0
-pkgrel=2
-pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation'
+pkgver=0.12.1
+pkgrel=1
+pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
 license=('MIT')
+install=dsh-desktop-git.install
 
 depends=('alsa-lib'
          'at-spi2-core'
@@ -73,15 +86,24 @@ optdepends=('libappindicator-gtk3: system tray icon support'
             'pipewire: WebRTC desktop sharing under Wayland')
 provides=('dsh-desktop')
 conflicts=('dsh-desktop')
+# Electron/Chromium 二进制不能被 strip，否则可能无法启动
+options=('!strip')
+
 source=("$pkgname::git+https://github.com/dataelement/dsh-desktop.git"
-        'dsh-desktop.desktop')
+        'dsh-desktop.desktop'
+        'dsh-linux-after-pack.cjs'
+        'dsh-linux-patch-deps.mjs')
 sha256sums=('SKIP'
-            'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea')
+            'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea'
+            '8683aefb28c9a23f29acc58dd9269b4cbc288ff754315b507a7d9120574aafb6'
+            'cdddf8134576a201f8cdca2f4b707b95bed0859a5891b9690e013cab5272d806')
 
 # 最新 v 前缀 release tag（按版本号降序取第一个）
 _latest_tag() {
   local tag
-  tag=$(git for-each-ref --sort=-v:refname --format='%(refname:short)' 'refs/tags/v[0-9]*' | head -1)
+  # 带 - 的 tag（v0.10.0-beta、v0.9.0-test 等）是预发布版本，一律排除
+  tag=$(git for-each-ref --sort=-v:refname --format='%(refname:short)' 'refs/tags/v[0-9]*' \
+        | grep -v -- '-' | head -1)
   if [[ -z "$tag" ]]; then
     # 兜底：没有任何 v 前缀 tag 时退回 HEAD 短哈希
     tag="v0.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short=7 HEAD)"
@@ -99,7 +121,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   # 检出最新 release tag，保证构建的源码与版本号一致
-  git checkout -q "$(_latest_tag)"
+  git checkout -q -f "$(_latest_tag)"
 }
 
 build() {
@@ -108,10 +130,23 @@ build() {
   export npm_config_audit=false
   export npm_config_fund=false
 
-  # Electron 二进制按官方默认源下载（GitHub）
-
   npm ci
-  npm run package:dir
+
+  # 上游 office:prepare / afterPack 仅支持 macOS/Windows，见文件头说明。
+  node "$srcdir/dsh-linux-patch-deps.mjs" .
+
+  # 不打包 Office 运行时（上游无 Linux 载荷）；空目录用于满足 extraResources
+  rm -rf .build/office-runtime
+  mkdir -p .build/office-runtime
+  export LINUX_NO_OFFICE_RUNTIME=1
+
+  # 依次执行上游 `npm run build` 的各步骤，跳过 office:prepare
+  npm run --if-present ppt:build
+  npx electron-vite build
+
+  npx electron-builder --linux dir --x64 --publish never \
+    -c.electronDist="$PWD/node_modules/electron/dist" \
+    -c.afterPack="$srcdir/dsh-linux-after-pack.cjs"
 }
 
 package() {

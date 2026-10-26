@@ -1,8 +1,9 @@
 pkgbase = dsh-desktop-git
-	pkgdesc = Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgdesc = Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)
+	pkgver = 0.12.1
+	pkgrel = 1
 	url = https://github.com/dataelement/dsh-desktop
+	install = dsh-desktop-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -45,9 +46,14 @@ pkgbase = dsh-desktop-git
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	provides = dsh-desktop
 	conflicts = dsh-desktop
+	options = !strip
 	source = dsh-desktop-git::git+https://github.com/dataelement/dsh-desktop.git
 	source = dsh-desktop.desktop
+	source = dsh-linux-after-pack.cjs
+	source = dsh-linux-patch-deps.mjs
 	sha256sums = SKIP
 	sha256sums = e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea
+	sha256sums = 8683aefb28c9a23f29acc58dd9269b4cbc288ff754315b507a7d9120574aafb6
+	sha256sums = cdddf8134576a201f8cdca2f4b707b95bed0859a5891b9690e013cab5272d806
 
 pkgname = dsh-desktop-git

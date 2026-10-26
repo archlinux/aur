@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>> Linux build: the bundled Office runtime is NOT included."
+  echo ">>> DOCX/PPTX/XLSX skills are unavailable; PPT editing still works."
+}
+
+post_upgrade() {
+  post_install
+}
