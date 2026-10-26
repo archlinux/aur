@@ -1,9 +1,9 @@
 # Maintainer: Dominik Nakamura <dnaka91@gmail.com>
-# https://github.com/dnaka91/pkgbuilds
+# https://forge.dnaka91.rocks/dnaka91/pkgbuilds
 
 pkgname=obs-retro-effects
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A collection of OBS filters to give your stream that retro feel"
 arch=('x86_64')
 url="https://github.com/FiniteSingularity/obs-retro-effects"
@@ -11,14 +11,12 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'obs-studio')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('50d9e069727f6761977ee8d94742776de7600a4837a7da61b92319c54aca50a774b2877c50ff2cf46c3e6fa624fa08f9e7e234c5715c1c95db695a82c92637b6')
+b2sums=('3ea54858839f0fcbfe3d6cfaa9cfd2235498b091a6fc949e114f5463b0fea577452041fdecb68841e986aefd769d3c9ffc4d5a2388cfb521db5c6ce8dc98853b')
 
 build() {
   cmake -B build -S "$pkgbase-$pkgver" -Wno-dev \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-Wno-discarded-qualifiers" \
-    -DLINUX_PORTABLE=OFF
+    -DCMAKE_BUILD_TYPE=Release
   cmake --build build
 }
 
