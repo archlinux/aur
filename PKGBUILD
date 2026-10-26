@@ -13,14 +13,16 @@
 #   cd libfprint-goodix55b4-milan/packaging/arch && makepkg -si
 
 pkgname=libfprint-goodix55b4
-pkgver=1.94.100.m1
+pkgver=1.94.100.m2
 pkgrel=1
 pkgdesc="libfprint with the Goodix 27c6:55b4/5584 driver using the native Milan matcher"
 arch=('x86_64')
 url="https://github.com/TheWeirdDev/libfprint-goodix55b4-milan"
 license=('LGPL-2.1-or-later')
 depends=('glib2' 'libgusb' 'libgudev' 'openssl' 'pixman' 'libdeflate' 'systemd-libs')
-makedepends=('git' 'meson' 'ninja' 'python' 'patchelf' 'glib2-devel' 'gobject-introspection' 'systemd')
+makedepends=('git' 'meson' 'ninja' 'python' 'patchelf' 'glib2-devel' 'gobject-introspection' 'systemd'
+             'python-cairo' 'python-gobject')
+checkdepends=('cairo' 'umockdev')
 provides=('libfprint=1.94.100' 'libfprint-2.so')
 conflicts=('libfprint' 'libfprint-goodix55b4-milan')
 _libfprint_commit=80a4b5ec612892c5c056c48dddaa561452cf37ec # v1.94.100
@@ -36,7 +38,10 @@ prepare() {
 }
 
 build() {
+  # drivers=all adds the virtual drivers (used by the tests and by
+  # fprintd's), as Arch's own libfprint does.
   arch-meson libfprint build \
+    -Ddrivers=all \
     -Dudev_rules_dir=/usr/lib/udev/rules.d \
     -Ddoc=false \
     -Dinstalled-tests=false \
@@ -49,7 +54,11 @@ check() {
   # goodix55b4 driver. (The autosuspend hwdb itself ships with systemd.)
   grep -q '^usb:v27C6p55B4' libfprint/data/autosuspend.hwdb
   grep -q '^usb:v27C6p5584' libfprint/data/autosuspend.hwdb
-  ! grep -qE '0x(55b4|5584)' libfprint/libfprint/fprint-list-udev-hwdb.c
+  if grep -qE '0x(55b4|5584)' libfprint/libfprint/fprint-list-udev-hwdb.c; then
+    echo "55b4/5584 still listed as unsupported" >&2
+    return 1
+  fi
+  meson test -C build --print-errorlogs
 }
 
 package() {
