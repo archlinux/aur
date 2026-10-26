@@ -2,12 +2,12 @@
 
 pkgname=python-t61codec
 _name=${pkgname#python-}
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 epoch=
 pkgdesc="Pure Python X.690 implementation"
 arch=('any')
-url="https://pypi.org/project/${_name}"
+url="https://github.com/exhuma/t61codec"
 license=(MIT)
 groups=()
 provides=(${pkgname})
@@ -17,7 +17,8 @@ depends=(
     python-importlib-metadata
 )
 makedepends=(
-    python-poetry-core
+    git
+    python-hatchling
     python-build
     python-installer
     python-wheel
@@ -25,17 +26,21 @@ makedepends=(
 )
 optdepends=()
 options=('!strip' '!debug')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("${_name}::git+${url}.git#tag=v$pkgver")
 noextract=()
-sha256sums=('21c238fbf897b32e5fe9450b71193a1d223abb591dd84b5da8fbc50a2c9277db')
+sha256sums=('e942fcaa9dd381d0f1526ee627fab8aaf84a214a34d829a96f633a64e3e529c2')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

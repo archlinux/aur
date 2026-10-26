@@ -1,11 +1,12 @@
 pkgbase = python-t61codec
 	pkgdesc = Pure Python X.690 implementation
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://pypi.org/project/t61codec
+	url = https://github.com/exhuma/t61codec
 	arch = any
 	license = MIT
-	makedepends = python-poetry-core
+	makedepends = git
+	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -16,7 +17,7 @@ pkgbase = python-t61codec
 	conflicts = python-t61codec
 	options = !strip
 	options = !debug
-	source = t61codec-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/t/t61codec/t61codec-2.0.0.tar.gz
-	sha256sums = 21c238fbf897b32e5fe9450b71193a1d223abb591dd84b5da8fbc50a2c9277db
+	source = t61codec::git+https://github.com/exhuma/t61codec.git#tag=v3.0.0
+	sha256sums = e942fcaa9dd381d0f1526ee627fab8aaf84a214a34d829a96f633a64e3e529c2
 
 pkgname = python-t61codec
