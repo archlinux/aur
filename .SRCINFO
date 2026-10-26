@@ -1,6 +1,6 @@
 pkgbase = spiral-file-manager
 	pkgdesc = File manager for Wayland with a file chooser portal backend
-	pkgver = 0.19.2
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/sachesi/spiral
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = spiral-file-manager
 	optdepends = xdg-terminal-exec: Open in Terminal
 	optdepends = gnome-disk-utility: open drives in Disks
 	conflicts = spiral-git
-	source = spiral-0.19.2.tar.gz::https://github.com/sachesi/spiral/archive/v0.19.2/spiral-0.19.2.tar.gz
-	sha256sums = 5f726c0dd9c9cef41e3f558f8c6c8bde7bde35135ed5758f90db5bd97eb38499
+	source = spiral-0.20.0.tar.gz::https://github.com/sachesi/spiral/archive/v0.20.0/spiral-0.20.0.tar.gz
+	sha256sums = e5b1d6cc7e4bf85baa8216d6b214b47aa78512a64f26cbbeef2c13d416b41c81
 
 pkgname = spiral-file-manager

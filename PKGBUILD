@@ -3,7 +3,7 @@
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=spiral-file-manager
 _name=spiral
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='File manager for Wayland with a file chooser portal backend'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=('glycin: decode pictures in glycin'\''s sandbox'
             'gnome-disk-utility: open drives in Disks')
 conflicts=('spiral-git')
 source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('5f726c0dd9c9cef41e3f558f8c6c8bde7bde35135ed5758f90db5bd97eb38499')
+sha256sums=('e5b1d6cc7e4bf85baa8216d6b214b47aa78512a64f26cbbeef2c13d416b41c81')
 
 prepare() {
   cd "$_name-$pkgver"
