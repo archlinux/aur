@@ -11,6 +11,6 @@ pkgbase = yt-dlandcut-bin
 	source = yt-dlandcut-4.0.0-x86_64.AppImage::https://github.com/Markkop/yt-dlandcut/releases/download/v4.0.0/yt-dlandcut-4.0.0-linux-x86_64.AppImage
 	source = yt-dlandcut.sh
 	sha256sums = 52e50fdf7b550d4f5d880232e9eddf42c1767f6f3b0eb4a9d48e125dfaaa9345
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = yt-dlandcut-bin
