@@ -1,0 +1,17 @@
+pkgbase = xara
+	pkgdesc = A VARA-compatible HF/FM sound modem for Linux with a web UI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/x0rro/xara
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = glibc
+	depends = libpulse
+	source = xara::git+https://github.com/x0rro/xara.git#tag=v0.1.1
+	sha256sums = f91b3de833cfa89e1bd544c87c713fc7c5903efa108b1f388fb0361890adc6d1
+
+pkgname = xara
