@@ -1,6 +1,6 @@
 pkgbase = hollama-bin
 	pkgdesc = A minimal LLM chat app that runs entirely in your browser.
-	pkgver = 0.36.0
+	pkgver = 0.36.3
 	pkgrel = 1
 	url = https://hollama.fernando.is/
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = hollama-bin
 	depends = electron44
 	depends = ollama
 	depends = libvips
-	provides = hollama=0.36.0
+	provides = hollama=0.36.3
 	conflicts = hollama
 	options = !emptydirs
-	source = hollama-0.36.0.tar.gz::https://github.com/fmaclen/hollama/releases/download/0.36.0/Hollama_0.36.0-linux-x64.tar.gz
-	source = hollama-0.36.0.png::https://raw.githubusercontent.com/fmaclen/hollama/0.36.0/static/favicon.png
-	source = LICENSE-0.36.0::https://raw.githubusercontent.com/fmaclen/hollama/0.36.0/LICENSE
+	source = hollama-0.36.3.tar.gz::https://github.com/fmaclen/hollama/releases/download/0.36.3/Hollama_0.36.3-linux-x64.tar.gz
+	source = hollama-0.36.3.png::https://raw.githubusercontent.com/fmaclen/hollama/0.36.3/static/favicon.png
+	source = LICENSE-0.36.3::https://raw.githubusercontent.com/fmaclen/hollama/0.36.3/LICENSE
 	source = hollama.sh
-	sha256sums = 459d633676306f33092ac690364ed3409a76ee2544f2511fcd41ef482583cf0d
+	sha256sums = cc63a5dacb468fc20b9004f87f037f254da770a82d17f9b33b597a93877f2856
 	sha256sums = 9e4e274319c0c5716601c69a701adce095b2248d7d314c2b4b1973f0ad4c4a20
 	sha256sums = 03ecf7aebc7db58685a433f3a0a126e1ac5329fb8a72f3af981957363a6362e6
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = hollama-bin
