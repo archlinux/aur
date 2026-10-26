@@ -1,0 +1,13 @@
+pkgbase = linkman-bin
+	pkgdesc = A fast, beautiful TUI + CLI for creating and managing symlinks
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/zaidejjo/linkman
+	arch = x86_64
+	license = MIT
+	provides = linkman
+	conflicts = linkman
+	source = linkman-bin-0.2.0.tar.gz::https://github.com/zaidejjo/linkman/releases/download/v0.2.0/linkman-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 33305cd2fc70bb7909d7c63c0971452ef3657314b6d453ead1c1b2c3cb0766be
+
+pkgname = linkman-bin
