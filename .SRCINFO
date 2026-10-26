@@ -1,0 +1,25 @@
+pkgbase = sonic-frameworks-internationalization
+	pkgdesc = Advanced internationalization framework
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-internationalization
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = python
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = iso-codes
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = python: to compile .ts files
+	provides = ki18n
+	conflicts = ki18n
+	source = sonic-frameworks-internationalization-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-internationalization/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 3ceea02ec3d8d705a65a29966c33309eb2de8f0cf3870a9a8dcde143710dc2a3
+
+pkgname = sonic-frameworks-internationalization
