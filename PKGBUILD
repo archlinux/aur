@@ -1,6 +1,6 @@
 # Maintainer: Aleks Ozolins <aleks@ozolins.xyz>
 pkgname=orgwarrior-web
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Org mode's agenda in your browser, phone first: a web page over orgwarrior's engine"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' "orgwarrior>=$pkgver")
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/o/orgwarrior-web/orgwarrior_web-$pkgver.tar.gz")
-sha256sums=('a1a876c2606e4cce619bcd5e222ffcbd95ce2fc58756d6c1fb0a6f60f83549e9')
+sha256sums=('a3738391ae85460f2102ddf28a80f91261e20b7fd8b70ef2af3fc3f786ad4bfe')
 
 build() {
   cd "orgwarrior_web-$pkgver"
