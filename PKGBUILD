@@ -3,7 +3,7 @@
 
 _pkgname=slang
 pkgname=$_pkgname-verilog
-pkgver=12.0
+pkgver=12.1
 pkgrel=1
 pkgdesc="SystemVerilog Language Services"
 arch=('x86_64')
@@ -26,7 +26,7 @@ checkdepends=('catch2')
 provides=('slang-verilog')
 conflicts=('slang-verilog-git')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/MikePopoloski/slang/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('64b3eb9d38ee126e009cbb8da0cfa6f68d970334e52ba084ad7c68e4b5fa804c')
+sha256sums=('e7454393956ef0f3e9bbcac27f7de473e11e1fd7be125c3009f1f2bfeddf0358')
 
 build() {
   local cmake_options=(

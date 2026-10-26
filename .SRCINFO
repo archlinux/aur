@@ -1,6 +1,6 @@
 pkgbase = slang-verilog
 	pkgdesc = SystemVerilog Language Services
-	pkgver = 12.0
+	pkgver = 12.1
 	pkgrel = 1
 	url = https://github.com/MikePopoloski/slang
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = slang-verilog
 	depends = tomlplusplus
 	provides = slang-verilog
 	conflicts = slang-verilog-git
-	source = slang-12.0.tar.gz::https://github.com/MikePopoloski/slang/archive/refs/tags/v12.0.tar.gz
-	sha256sums = 64b3eb9d38ee126e009cbb8da0cfa6f68d970334e52ba084ad7c68e4b5fa804c
+	source = slang-12.1.tar.gz::https://github.com/MikePopoloski/slang/archive/refs/tags/v12.1.tar.gz
+	sha256sums = e7454393956ef0f3e9bbcac27f7de473e11e1fd7be125c3009f1f2bfeddf0358
 
 pkgname = slang-verilog
