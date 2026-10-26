@@ -1,23 +1,23 @@
 # Maintainer: javy
 
 pkgname=libepub
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="C library for creating EPUB files"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/javy/libepub"
 license=('MIT')
-depends=('util-linux-libs' 'undr')
+depends=('util-linux-libs' 'undr' 'libzip')
 makedepends=('git' 'gcc' 'make')
 provides=('libepub')
 conflicts=('libepub')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('47562e711fa2a4b702cb4945e205ba087c7ef66aacc54ac64df59ff5390c79d7d566c977672368fc6d65f01473d39caf86310a201fceb8b3b879c130231d9d2f')
+sha512sums=('c408c2b48913e4b29fe7f72ab3e35ca36afac5fd406ec0f14f1d6bf4b0b07e1a1ee32f43bb4810edd6de8a16facd401d23aa2732af86ae085f8f73d40cb7eaf3')
 
 build() {
   cd "${pkgname}"
   make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC" \
-       LD_FLAGS="-luuid -lundr" \
+       LD_FLAGS="-luuid -lundr -lzip" \
        libepub.so
 }
 
