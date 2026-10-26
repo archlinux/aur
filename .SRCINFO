@@ -1,7 +1,7 @@
 pkgbase = qtjambi
 	pkgdesc = QtJambi is Qt bindings for the Java programming language originally developed by Trolltech
 	pkgver = 6.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OmixVisualization/qtjambi
 	arch = x86_64
 	license = LGPL
@@ -51,7 +51,6 @@ pkgbase = qtjambi
 	makedepends = qt6-virtualkeyboard=6.12.0
 	makedepends = qt6-wayland=6.12.0
 	makedepends = qt6-webchannel=6.12.0
-	makedepends = qt6-webengine=6.140.0rc
 	makedepends = qt6-websockets=6.12.0
 	makedepends = qt6-webview=6.12.0
 	makedepends = qt6-xcb-private-headers=6.12.0

@@ -1,6 +1,6 @@
 pkgname=qtjambi
 pkgver=6.12.0
-pkgrel=1
+pkgrel=2
 qtver=6.12.0
 qtjambiver=6.12.0
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
@@ -55,7 +55,7 @@ makedepends=(
   "qt6-virtualkeyboard=${qtver}"
   "qt6-wayland=${qtver}"
   "qt6-webchannel=${qtver}"
-  "qt6-webengine=6.140.0rc"
+#  "qt6-webengine=6.140.0rc"
   "qt6-websockets=${qtver}"
   "qt6-webview=${qtver}"
   "qt6-xcb-private-headers=${qtver}"
@@ -69,6 +69,7 @@ prepare() {
   patch -p1 < ../../build_release_only.patch
   patch -p1 < ../../warn_off.patch
   patch -p1 < ../../rm_warn_dollar.patch
+  patch -p1 < ../../skip_webengine.patch
 }
 
 build() {

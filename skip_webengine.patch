@@ -1,0 +1,303 @@
+diff --git a/build.properties b/build.properties
+index 8ae9cc89..4ec0497e 100644
+--- a/build.properties
++++ b/build.properties
+@@ -1,148 +1,150 @@
+-##
+-## specify qt directory, qt installation base directory or alternatively path to qmake
+-##
+-
+-#QTDIR=
+-#QTBASE=
+-#qmake=
+-
+-##
+-## in combination with QTBASE specify Qt versions to be used (comma separated)
+-##
+-
+-#QTVERSIONS=
+-
+-##
+-## specify qt source code directory
+-##
+-
+-#qtsources=
+-
+-##
+-## option to specify build type (debug, release, debug_and_release). Otherwise it's autodetected.
+-##
+-
+-qtjambi.configuration=release
+-
+-##
+-## force to build release libraries with debug info (default: true)
+-##
+-
+-#qtjambi.force.debug.info=false
+-
+-##
+-## option to create native bundles for debug libs (default: false)
+-##
+-
+-#qtjambi.debug.bundles=true
+-
+-##
+-## option to execute QtJambiGenerator in debug mode
+-##
+-
+-#generator.debug.run=true
+-
+-##
+-## option to compile QtJambi with debug tools flag.
+-## This defaults to true for debug build and to false for release build.
+-##
+-## By running a debug-tools-enabled application with env QTJAMBI_DEBUG_TRACE=1
+-## all method entries and leaves are logged.
+-##
+-
+-#qtjambi.debug-tools=false
+-
+-##
+-## Qt API documentation url
+-##
+-
+-qt.docs=https://doc.qt.io/qt-${qtjambi.soname.version.major}/
+-
+-##
+-## path to Android NDK
+-##
+-
+-#qtjambi.android.ndk=
+-
+-##
+-## Nullness libraries for kotlin to be downloaded and disable option:
+-##
+-
+-#qtjambi.no.jrs305=true
+-jsr305.url=https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar
+-kotlin-annotations-jvm.url=https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-annotations-jvm/2.3.21/kotlin-annotations-jvm-2.3.21.jar
+-qt.sources.url=https://raw.githubusercontent.com/qt/%1$s/refs/heads/%2$s/%3$s/%4$s
+-
+-##
+-## option to prevent generator from generating nullness information at all.
+-##
+-
+-#qtjambi.generate.nullness=false
+-
+-##
+-## option to prevent generator from generating Java-stype getter methods for Qt-style properties which are required to use them as Kotlin property.
+-##
+-
+-#qtjambi.generate.kotlin.delegates=false
+-
+-##
+-## optionally exclude selected modules from being generated.
+-##
+-
+-##
+-## techpreview
+-##
+-#qtjambi.skipped.modules=tasktree
+-
+-## minimum
+-#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,charts,datavisualization,serialport,networkauth,help,designer,webenginequick,webenginecore,webenginewidgets,webview,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,multimedia,websockets,webchannel,webchannelquick,statemachine,virtualkeyboard,quick3d,opengl,openglwidgets,quickwidgets,svg,svgwidgets,printsupport,xml,sql,concurrent,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,quicktest,uic,qml,quick,quickcontrols,network,dbus,test,qmldesignsupport,labsstylekit,opcua,mqtt,coap
+-
+-## essentials
+-#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,charts,datavisualization,serialport,networkauth,help,designer,webenginequick,webenginecore,webenginewidgets,webview,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,multimedia,websockets,webchannel,webchannelquick,statemachine,virtualkeyboard,quick3d,opengl,openglwidgets,quickwidgets,svg,svgwidgets,printsupport,xml,sql,concurrent,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,quicktest,qmldesignsupport,labsstylekit,opcua,mqtt,coap
+-
+-## essentials + requested 1
+-#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,datavisualization,serialport,networkauth,help,designer,webenginequick,webenginecore,webenginewidgets,webview,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,multimedia,websockets,webchannel,webchannelquick,statemachine,virtualkeyboard,quick3d,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,quicktest,qmldesignsupport,labsstylekit,opcua,mqtt,coap
+-
+-## essentials + requested 2
+-#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,datavisualization,serialport,networkauth,help,designer,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,statemachine,virtualkeyboard,quick3d,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,qmldesignsupport,quicktest,opcua,mqtt,coap,qmldesignsupport,labsstylekit
+-
+-minimum.java.version=11
+-
+-qtjambi.user.name=docjambi
+-qtjambi.user.email=info@qtjambi.io
+-
+-##
+-## ant option:
+-##
+-
+-build.log.loglevel=verbose
+-
+-## 
+-## Android NDK download:
+-## 
+-android.repository=https://dl.google.com/android/repository
+-android.ndk.version=r26b
+-android.platform.version=33-ext5
+-android.build-tools.version=r30.0.1
+-
+-## Instead, specify path to Android NDK/SDK:
+-
+-##
+-## Android NDK installation path
+-##
+-#qtjambi.android.ndk=
+-
+-##
+-## Android Platform SDK installation path
+-##
+-#qtjambi.android.platform.dir=
+-
+-##
+-## Android Build Tools installation path (Qt5 only)
+-##
+-#qtjambi.android.buildtools=
+-
+-##
+-## Suffix for QtJambi version e.g. 6.5.2a
+-##
+-#qtjambi.version.suffix=
++##
++## specify qt directory, qt installation base directory or alternatively path to qmake
++##
++
++#QTDIR=
++#QTBASE=
++#qmake=
++
++##
++## in combination with QTBASE specify Qt versions to be used (comma separated)
++##
++
++#QTVERSIONS=
++
++##
++## specify qt source code directory
++##
++
++#qtsources=
++
++##
++## option to specify build type (debug, release, debug_and_release). Otherwise it's autodetected.
++##
++
++qtjambi.configuration=release
++
++##
++## force to build release libraries with debug info (default: true)
++##
++
++#qtjambi.force.debug.info=false
++
++##
++## option to create native bundles for debug libs (default: false)
++##
++
++#qtjambi.debug.bundles=true
++
++##
++## option to execute QtJambiGenerator in debug mode
++##
++
++#generator.debug.run=true
++
++##
++## option to compile QtJambi with debug tools flag.
++## This defaults to true for debug build and to false for release build.
++##
++## By running a debug-tools-enabled application with env QTJAMBI_DEBUG_TRACE=1
++## all method entries and leaves are logged.
++##
++
++#qtjambi.debug-tools=false
++
++##
++## Qt API documentation url
++##
++
++qt.docs=https://doc.qt.io/qt-${qtjambi.soname.version.major}/
++
++##
++## path to Android NDK
++##
++
++#qtjambi.android.ndk=
++
++##
++## Nullness libraries for kotlin to be downloaded and disable option:
++##
++
++#qtjambi.no.jrs305=true
++jsr305.url=https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar
++kotlin-annotations-jvm.url=https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-annotations-jvm/2.3.21/kotlin-annotations-jvm-2.3.21.jar
++qt.sources.url=https://raw.githubusercontent.com/qt/%1$s/refs/heads/%2$s/%3$s/%4$s
++
++##
++## option to prevent generator from generating nullness information at all.
++##
++
++#qtjambi.generate.nullness=false
++
++##
++## option to prevent generator from generating Java-stype getter methods for Qt-style properties which are required to use them as Kotlin property.
++##
++
++#qtjambi.generate.kotlin.delegates=false
++
++##
++## optionally exclude selected modules from being generated.
++##
++
++##
++## techpreview
++##
++#qtjambi.skipped.modules=tasktree
++
++## minimum
++#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,charts,datavisualization,serialport,networkauth,help,designer,webenginequick,webenginecore,webenginewidgets,webview,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,multimedia,websockets,webchannel,webchannelquick,statemachine,virtualkeyboard,quick3d,opengl,openglwidgets,quickwidgets,svg,svgwidgets,printsupport,xml,sql,concurrent,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,quicktest,uic,qml,quick,quickcontrols,network,dbus,test,qmldesignsupport,labsstylekit,opcua,mqtt,coap
++
++## essentials
++#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,charts,datavisualization,serialport,networkauth,help,designer,webenginequick,webenginecore,webenginewidgets,webview,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,multimedia,websockets,webchannel,webchannelquick,statemachine,virtualkeyboard,quick3d,opengl,openglwidgets,quickwidgets,svg,svgwidgets,printsupport,xml,sql,concurrent,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,quicktest,qmldesignsupport,labsstylekit,opcua,mqtt,coap
++
++## essentials + requested 1
++#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,datavisualization,serialport,networkauth,help,designer,webenginequick,webenginecore,webenginewidgets,webview,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,multimedia,websockets,webchannel,webchannelquick,statemachine,virtualkeyboard,quick3d,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,quicktest,qmldesignsupport,labsstylekit,opcua,mqtt,coap
++
++## essentials + requested 2
++#qtjambi.skipped.modules=grpc,protobuf,bodymovin,activex,qt3d,qt3dcore,qt3dlogic,qt3dquickextras,qt3dquickrender,qt3dquickscene2d,qt3dquick,qt3dinput,qt3drender,qt3danimation,qt3dextras,datavisualization,serialport,networkauth,help,designer,remoteobjects,scxml,nfc,texttospeech,serialbus,sensors,location,positioning,bluetooth,statemachine,virtualkeyboard,quick3d,uitools,pdf,pdfwidgets,httpserver,spatialaudio,graphs,graphswidgets,insighttracker,webchannelquick,canvaspainter,tasktree,qmldesignsupport,quicktest,opcua,mqtt,coap,qmldesignsupport,labsstylekit
++
++qtjambi.skipped.modules=webenginequick,webenginecore,webenginewidgets
++
++minimum.java.version=11
++
++qtjambi.user.name=docjambi
++qtjambi.user.email=info@qtjambi.io
++
++##
++## ant option:
++##
++
++build.log.loglevel=verbose
++
++## 
++## Android NDK download:
++## 
++android.repository=https://dl.google.com/android/repository
++android.ndk.version=r26b
++android.platform.version=33-ext5
++android.build-tools.version=r30.0.1
++
++## Instead, specify path to Android NDK/SDK:
++
++##
++## Android NDK installation path
++##
++#qtjambi.android.ndk=
++
++##
++## Android Platform SDK installation path
++##
++#qtjambi.android.platform.dir=
++
++##
++## Android Build Tools installation path (Qt5 only)
++##
++#qtjambi.android.buildtools=
++
++##
++## Suffix for QtJambi version e.g. 6.5.2a
++##
++#qtjambi.version.suffix=
