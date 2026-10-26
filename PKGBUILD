@@ -2,7 +2,7 @@
 
 pkgname="icingaweb2-module-map"
 _module_name="map"
-pkgver="2.0.0"
+pkgver="2.1.0"
 pkgrel=1
 epoch=0
 pkgdesc="An openstreetmap based map module for host and service state visualization with Icinga Web 2"
@@ -33,7 +33,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "d939beb81b4f27c4a80ca1cf7dab76d4d1acf0b79b41bfea55f8872263af121e"
+    "cae215db5e02997ea8886f8c586224dad18b965350c9fade8e154e5b7c99bfe5"
     "SKIP"
 )
 

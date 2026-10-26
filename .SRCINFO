@@ -1,6 +1,6 @@
 pkgbase = icingaweb2-module-map
 	pkgdesc = An openstreetmap based map module for host and service state visualization with Icinga Web 2
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/nbuchwitz/icingaweb2-module-map
@@ -11,9 +11,9 @@ pkgbase = icingaweb2-module-map
 	optdepends = icingadb-web
 	optdepends = icingaweb2-module-mapdatatype
 	backup = etc/icingaweb2/modules/map/config.ini
-	source = https://github.com/nbuchwitz/icingaweb2-module-map/archive/refs/tags/v2.0.0.tar.gz
+	source = https://github.com/nbuchwitz/icingaweb2-module-map/archive/refs/tags/v2.1.0.tar.gz
 	source = config.ini
-	sha256sums = d939beb81b4f27c4a80ca1cf7dab76d4d1acf0b79b41bfea55f8872263af121e
+	sha256sums = cae215db5e02997ea8886f8c586224dad18b965350c9fade8e154e5b7c99bfe5
 	sha256sums = SKIP
 
 pkgname = icingaweb2-module-map
