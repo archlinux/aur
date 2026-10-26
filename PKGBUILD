@@ -2,7 +2,7 @@
 _appname=cline
 pkgname="${_appname}-desktop-bin"
 _pkgname=Cline
-pkgver=0.0.48
+pkgver=0.0.49
 pkgrel=1
 pkgdesc="Cline AI coding agent."
 arch=(
@@ -24,10 +24,11 @@ depends=(
     'libayatana-indicator'
     'libappindicator'
 )
+options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/desktop-v${pkgver}/${_pkgname}_${pkgver}_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/desktop-v${pkgver}/${_pkgname}_${pkgver}_x86_64.rpm")
-sha256sums_aarch64=('d1bed427fda95e71eff13d5221928721d254e82b5ea8c3034c48b40c65127040')
-sha256sums_x86_64=('c553a5b41435c3516cb639bda09b9dcd0cd6ffd6b574c9528f31fc52c2f81310')
+sha256sums_aarch64=('aec36edb594bdc400b0c2275230f29de6814a78ad60add4938347d20cfb93b74')
+sha256sums_x86_64=('e10036a036ee531451695559e2c96feceb3d621408a6615bdd708ffcf9e778ab')
 prepare() {
     sed -i -e "
         s/Exec=${_appname}-app/Exec=${pkgname%-bin}/g
