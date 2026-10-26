@@ -1,6 +1,6 @@
 # Maintainer: Fezzik the Giant <fezzikthegiant@pm.me>
 pkgname=riptide
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A terminal UI music player for Tidal, built with Rust"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('mpv' 'openssl' 'chafa')
 makedepends=('rust' 'cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fezzik-the-giant/riptide/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bd75e838467236c3afd8bba0e8fa32efbc9dfe0f9dead3b93f145cf8adc4fb0a')
+sha256sums=('571d918f7588b91e22e8e5236e2b08bd48ecc6112cee1ef23aa0c002653be8c6')
 
 prepare() {
     cd "$pkgname-$pkgver"
