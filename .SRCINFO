@@ -1,11 +1,12 @@
 pkgbase = amass
 	pkgdesc = In-depth attack surface mapping and asset discovery
 	pkgver = 5.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://owasp.org/www-project-amass
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
+	depends = glibc
 	source = amass-5.1.3.tar.gz::https://github.com/owasp-amass/amass/archive/refs/tags/v5.1.3.tar.gz
 	sha512sums = 92e8a426f1d2c7bda1c5c885910816456a66ae7810b0d1ce28a8cf497360c5b269e90cd01eaf2f0f0248243054a8165f06678414720938d43462e5aac99cb4eb
 
