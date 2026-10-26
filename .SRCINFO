@@ -1,6 +1,6 @@
 pkgbase = etr-bin
 	pkgdesc = ETR - ECMP Traceroute
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/tkjaer/etr
 	install = etr.install
@@ -11,7 +11,7 @@ pkgbase = etr-bin
 	provides = etr
 	conflicts = etr
 	options = !debug
-	source = etr-1.2.7::https://github.com/tkjaer/etr/releases/download/v1.2.7/etr-linux-amd64
-	sha256sums = a3787365ce2c2fde940340c5e8e9686ad02fa783f61ce3061d4d729f1308dd22
+	source = etr-1.2.8::https://github.com/tkjaer/etr/releases/download/v1.2.8/etr-linux-amd64
+	sha256sums = bf3c028e9ff7cfa4abda23cd99398f2a183254f7bf08ba93ea0bc1322944475c
 
 pkgname = etr-bin
