@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=linux-cleaner
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Safe, configuration-driven cleaner for caches and temporary files'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('pacman-contrib: paccache-based package-cache actions' 'libnotify: d
 backup=('etc/linux-cleaner/cleaner.conf')
 install='linux-cleaner.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3e1aaac1630ed2eebf355b0675f153ff57c305a4bf48070f9884e7f7d4c7e378b8f1d16080cf1e1629269e5520c743590dfba70bce12a66583df681e1ec743e3')
+b2sums=('1b45889b7ae25017536937c356dde4186a3767c115f7259291deee74ab6689cc5a5b878f599b5ce54c8a4e9c324c848f2fb0b581a8c5ac60a893e19f1d7a66ce')
 
 build() {
     cd "$srcdir/cleaner-$pkgver"
