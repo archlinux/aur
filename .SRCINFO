@@ -1,0 +1,18 @@
+pkgbase = mcp-discovery
+	pkgdesc = A command-line tool written in Rust for discovering and documenting MCP Server capabilities.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/rust-mcp-stack/mcp-discovery
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = perl
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = zstd
+	options = !lto
+	source = mcp-discovery-0.3.2.tar.gz::https://github.com/rust-mcp-stack/mcp-discovery/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = e1755879d6057d1025bc8db4188088e4a2afc3a08b4c84441428051c3921c6c6
+
+pkgname = mcp-discovery
