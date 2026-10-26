@@ -76,25 +76,54 @@ def parse_cnem(data):
 
     ⚠ len 字段端序：实测网关响应中 ACL(cmd=0x0006) 用**小端**（`14 00`=20），
     REQVIP(cmd=0x0003) 用**大端**（`03 bc`=956）。发送方向恒用大端（网关接受）。
-    因此这里对响应帧做自适应：BE/LE 都试，取能恰好覆盖缓冲长度者。
+    DATA 使用内层 IP 长度；已知控制帧使用捕获证据，其他帧等待下一帧边界。
     """
     if len(data) < 16:
         return None, None, data
     cmd = struct.unpack(">H", data[12:14])[0]
     plen_be = struct.unpack(">H", data[14:16])[0]
     plen_le = struct.unpack("<H", data[14:16])[0]
-    preferred = plen_le if cmd == CMD_DATA else plen_be
-    fallback = plen_be if cmd == CMD_DATA else plen_le
-    candidates = [plen for plen in (preferred, fallback)
-                  if 16 + plen <= len(data)]
-    # 服务端 DATA 帧长度字段为小端；当 payload 恰好为 1024 等值时，
-    # 大小端两种解释都会落在缓冲区内，不能简单选择较小值。
-    # 若某个候选刚好覆盖当前缓冲区，它一定比另一个端序解释更可信。
-    exact = [plen for plen in candidates if 16 + plen == len(data)]
-    for plen in exact or candidates:
-        if plen <= 65535 and 16 + plen <= len(data):
-            return cmd, data[16:16 + plen], data[16 + plen:]
-    return None, None, data
+    if data[:4] != MAGIC_B:
+        raise ValueError("Invalid CNEM magic")
+    if cmd == CMD_DATA:
+        if len(data) < 20:
+            return None, None, data
+        version = data[16] >> 4
+        if version == 4:
+            header_len = (data[16] & 15) * 4
+            packet_len = struct.unpack(">H", data[18:20])[0]
+            if header_len < 20 or packet_len < header_len:
+                raise ValueError("Invalid IPv4 packet length")
+        elif version == 6:
+            if len(data) < 22:
+                return None, None, data
+            packet_len = 40 + struct.unpack(">H", data[20:22])[0]
+        else:
+            raise ValueError("Invalid IP version in CNEM DATA")
+        if packet_len not in (plen_be, plen_le):
+            raise ValueError("CNEM DATA length does not match IP length")
+        plen = packet_len
+    elif cmd == CMD_ACL:
+        plen = plen_le  # Captured ACL responses use little endian.
+    elif cmd == CMD_REQVIP:
+        plen = plen_be  # Captured REQVIP responses use big endian.
+    elif cmd in (CMD_UDP_AVAILABLE, CMD_DATA_CONNECT) and 4 in (plen_be, plen_le):
+        plen = 4  # Captured handshake/keepalive responses carry a 4-byte value.
+    elif plen_be == plen_le:
+        plen = plen_be
+    else:
+        # Unknown control formats cannot be resolved from recv boundaries.
+        # Accept only a candidate followed by another CNEM header; otherwise
+        # wait for more bytes rather than consuming a potentially partial frame.
+        candidates = [n for n in (plen_be, plen_le)
+                      if len(data) >= 16 + n + 16
+                      and data[16 + n:20 + n] == MAGIC_B]
+        if len(candidates) != 1:
+            return None, None, data
+        plen = candidates[0]
+    if len(data) < 16 + plen:
+        return None, None, data
+    return cmd, data[16:16 + plen], data[16 + plen:]
 
 
 # ── REQVIP 响应解析 ──────────────────────────────────
@@ -321,7 +350,6 @@ def main():
 
     # ── 数据面稳定性参数 ──
     RECV_TIMEOUT = 5          # TLS recv 轮询超时（秒）
-    STALE_TIMEOUT = 30        # 数据面无任何回包达到该秒数判定假死（秒）
     RECONNECT_DELAY = 3       # 断连后重连间隔（秒）
 
     # ── 主循环：建立连接 + 转发；数据面假死/断连时自动重连 ──
@@ -527,8 +555,7 @@ def main():
 
         # ── 双向转发 + 心跳 + 假死检测 ──
         running = True
-        session_start = time.time()
-        last_rx = time.time()
+        session_stop = threading.Event()
         sock_lock = threading.Lock()
         reconnect = [False]
 
@@ -543,8 +570,7 @@ def main():
             - cmd=0x001A (DATA_CONNECT) 网关有回包（握手时 payload=11510000）
              因此保活固定发送 0x001A，不因 TUN 流量而跳过。"""
             next_data_keepalive = time.monotonic()
-            while running:
-                time.sleep(KEEPALIVE_CHECK_INTERVAL)
+            while not session_stop.wait(KEEPALIVE_CHECK_INTERVAL):
                 if time.monotonic() < next_data_keepalive:
                     continue
                 try:
@@ -579,7 +605,6 @@ def main():
                         break
 
         def tls_to_tun():
-            nonlocal last_rx
             buf = b""
             sock.settimeout(RECV_TIMEOUT)
             while running:
@@ -596,17 +621,11 @@ def main():
                             break
                         buf = remaining
                         if cmd == CMD_DATA and payload:
-                            last_rx = time.time()  # 仅数据帧更新（控制帧回包不算，防假死检测被保活欺骗）
                             os.write(tun_fd, payload)
                         elif cmd in (0x0008, 0x0005, 0x000D, 0x001A, 0x0003):
                             # 控制帧：KICKOUT(0x0008)/KEEPALIVE(0x0005) 等，打印供诊断
                             logger.info("  收到控制帧 cmd=0x%04x plen=%d %s",
                                          cmd, len(payload), payload.hex()[:64])
-                            # 即使收到控制帧回包，数据面(0x0002)可能已假死；检查并重连
-                            if time.time() - last_rx > STALE_TIMEOUT:
-                                print(f"  [!] 数据面假死（{STALE_TIMEOUT}s 无数据帧回包），触发重连")
-                                reconnect[0] = True
-                                break
                             if cmd == 0x0008:
                                 # KICKOUT：被服务器踢出（网关不发错误码，统一提示）
                                 print("  ⚠ 被网关踢出连接 (KICKOUT)")
@@ -616,11 +635,8 @@ def main():
                     # EAGAIN：SSL socket 暂时无数据（正常，非错误），继续轮询
                     continue
                 except socket.timeout:
-                    # 长时间无任何回包 → 数据面假死（网关半开连接），触发重连
-                    if time.time() - last_rx > STALE_TIMEOUT:
-                        print(f"  [!] 数据面假死（{STALE_TIMEOUT}s 无回包），触发重连")
-                        reconnect[0] = True
-                        break
+                    # IP traffic need not elicit a reply (UDP, TCP ACK/FIN).
+                    # Silence alone is not evidence that the tunnel has failed.
                     continue
                 except Exception as e:
                     print(f"  [!] TLS读取错误: {e}，触发重连")
@@ -635,16 +651,24 @@ def main():
         t3.start()
 
         try:
-            while t1.is_alive() and t2.is_alive() and not stop_event.is_set():
+            while (t1.is_alive() and t2.is_alive() and t3.is_alive()
+                   and not reconnect[0] and not stop_event.is_set()):
                 time.sleep(0.5)
         except KeyboardInterrupt:
             stop_event.set()
 
         # 清理本会话（先停线程再关 fd，避免转发线程访问已关闭资源）
         running = False
-        t1.join(timeout=3)
-        t2.join(timeout=3)
-        t3.join(timeout=3)
+        session_stop.set()
+        # Wake recv/send before joining; never reuse session resources while
+        # an old forwarding thread can still access them.
+        try:
+            sock.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
+        t1.join()
+        t2.join()
+        t3.join()
         sock.close()
         os.close(tun_fd)
         run_cmd(["ip", "link", "del", tun_name])
