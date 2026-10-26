@@ -1,6 +1,6 @@
 pkgbase = kando-bin
 	pkgdesc = A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://kando.menu/
 	arch = aarch64
@@ -14,17 +14,19 @@ pkgbase = kando-bin
 	optdepends = gvfs
 	optdepends = alsa-lib
 	optdepends = pulseaudio
-	provides = kando=3.0.0
+	provides = kando=3.0.1
 	conflicts = kando
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-3.0.0::https://raw.githubusercontent.com/kando-menu/kando/v3.0.0/LICENSE.md
+	source = LICENSE-3.0.1::https://raw.githubusercontent.com/kando-menu/kando/v3.0.1/LICENSE.md
+	source = kando.js
 	source = kando.sh
 	sha256sums = fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab
-	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
-	source_aarch64 = kando-3.0.0-aarch64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.0/kando-3.0.0-1.arm64.rpm
-	sha256sums_aarch64 = 69b956ec69e72f05aec0d18b6699fb3da4a943051ac589eb127fd67d1fb76111
-	source_x86_64 = kando-3.0.0-x86_64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.0/kando-3.0.0-1.x86_64.rpm
-	sha256sums_x86_64 = 1d3d2862929c1156c67265996b4f94978defdc4f9d7a110e1ae0582b6192b84b
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
+	source_aarch64 = kando-3.0.1-aarch64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.1/kando-3.0.1-1.arm64.rpm
+	sha256sums_aarch64 = 2960df70f4d4253c7164fcd446bd52253c7ddb322b553362b30e5cd45ca2e549
+	source_x86_64 = kando-3.0.1-x86_64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.1/kando-3.0.1-1.x86_64.rpm
+	sha256sums_x86_64 = cf0295735c6c832d6eee8f2549e41baabbab8b5f8dd8149275d77922b13a7377
 
 pkgname = kando-bin
