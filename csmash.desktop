@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Cannon Smash
+Comment=A 3D table tennis game
+Exec=csmash
+Icon=csmash
+Categories=Game;SportsGame;

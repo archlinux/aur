@@ -1,0 +1,12 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -148,6 +148,9 @@
+     setlocale(LC_NUMERIC, "C");
+ 
+     putenv("SDL_MOUSE_RELATIVE=0");
++    /* The launcher uses GTK2; on Wayland SDL would load libdecor-gtk (GTK3)
++       into the same process, which deadlocks.  Force the X11 backend. */
++    setenv("SDL_VIDEODRIVER", "x11", 1);
+ 
+ #ifdef WIN32
+     char *localedir = (char*)alloca(MAX_PATH);
