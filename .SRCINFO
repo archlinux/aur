@@ -1,6 +1,6 @@
 pkgbase = ompweb
 	pkgdesc = Web UI for the oh-my-pi coding agent
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/kahme247/ompweb
 	install = ompweb.install
@@ -10,9 +10,9 @@ pkgbase = ompweb
 	depends = oh-my-pi
 	options = !strip
 	options = !debug
-	source = ompweb-0.5.2-x86_64.tar.gz::https://github.com/ParticleG/ompweb/releases/download/bundle-v0.5.2-7a82d0aabb0dc228acc0024d9b38713d5166aadb8b490ddbf76960018453d88c/ompweb-0.5.2-x86_64.tar.gz
+	source = ompweb-0.6.0-x86_64.tar.gz::https://github.com/ParticleG/ompweb/releases/download/bundle-v0.6.0-b9992fa62b08164dce83e3704c27ab98649874a610d80af02f15b136852bcf02/ompweb-0.6.0-x86_64.tar.gz
 	source = ompweb@.service
-	sha256sums = 7a82d0aabb0dc228acc0024d9b38713d5166aadb8b490ddbf76960018453d88c
+	sha256sums = b9992fa62b08164dce83e3704c27ab98649874a610d80af02f15b136852bcf02
 	sha256sums = f39d3111d2767289dfd19ff48511004ae9d45fec7193c61a7d2349bd1a9fa65d
 
 pkgname = ompweb
