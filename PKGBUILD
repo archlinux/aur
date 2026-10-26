@@ -3,11 +3,11 @@
 
 pkgname=runa-bin
 _name=runa
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
-pkgdesc="A fast and lightweight console file browser written in Rust"
+pkgdesc="A fast and lightweight terminal file manager written in Rust"
 arch=(x86_64 aarch64)
-url="https://github.com/alexm-dev/runa"
+url="https://github.com/runa-fm/runa"
 license=('Apache-2.0 OR MIT')
 depends=(libgcc)
 provides=(runa)
@@ -15,8 +15,8 @@ conflicts=(runa)
 changelog=CHANGELOG.md
 source_x86_64=("$pkgname-$pkgver-x86_64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-x86_64-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-aarch64-gnu.tar.gz")
-sha256sums_x86_64=('0d63e0d155e8305c25f0beffd33d4d10203c98103f3cf59ff23ef4beb8bd6d24')
-sha256sums_aarch64=('0362d0d010256263d5f36e6d17341179a0dde91a6fc1869c1b5347827b44bf31')
+sha256sums_x86_64=('cffa32221aeb2abd26813dff3a87a13fa1847228e1d77c58ed9fc8c252892fc3')
+sha256sums_aarch64=('0cef6c94b13ca39469c6dc933ee0fd0e9a5162023c0e7be0274be70acb6f12c7')
 
 package() {
     cd "runa-linux-$CARCH-gnu"

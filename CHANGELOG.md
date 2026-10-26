@@ -2,6 +2,56 @@
 
 All the changes made to runa are documented here.
 
+## [0.15.0] - 2026-10-26
+
+#### Organization migration, crate rename, performance improvements and internal cleanup.
+
+### [**BREAKING CHANGES**]
+- **runa** has moved to the `runa-fm/runa` GitHub organization. This includes the:
+    - [Main repository](https://github.com/runa-fm/runa)
+    - [Packaging](https://github.com/runa-fm/runa-packaging)
+    - [Homebrew tap](https://github.com/runa-fm/homebrew-tap)
+    - [Scoop bucket](https://github.com/runa-fm/scoop-bucket)
+    - [Configuration](https://runa-fm.github.io/runa/)
+- **crates.io**: The crate is now published under the new name `runa-fm`, replacing `runa-tui`.  
+    _Note: runa remains a TUI file manager, this change is solely for naming consistency._
+
+- **Migration Notice**: Users who previously added the Scoop bucket or the Homebrew tap should update their tap/bucket references to the new locations.  
+    - **Homebrew**:
+    ```sh
+    brew uninstall runa
+    brew untap alexm-dev/tap
+    brew tap runa-fm/tap
+    brew install runa
+    ```
+
+    - **Scoop**:
+    ```sh
+    scoop uninstall runa
+    scoop bucket rm alexm-dev
+    scoop bucket add runa-fm https://github.com/runa-fm/scoop-bucket
+    scoop install runa
+    ```
+
+    - **Crates**
+    ```sh
+    cargo uninstall runa-tui
+    cargo install runa-fm
+    ```
+
+### Internal
+- **Frame**: Compute frame layouts before drawing to the UI resulting in performance improvements.
+- **FileOp**: Pass `FileOp` counts to the UI instead of reading directly from the workers.
+- **Runtime**: `root.rs` and `terminal.rs` are now part of the `runtime` module. `root.rs` now only holds the `RunaRoot` struct.
+- **Core**: Moved `command.rs` into the `core` module.
+- **App**:
+    - Separated `AppContainer` from `root.rs` and moved it to its own `app/container.rs` module.
+    - Moved `overlays.rs` into the `app` module.
+
+
+---
+
+
 ## [0.14.2] - 2026-10-25
 
 #### Directory cache and clipboard fixes, internal cleanup.
