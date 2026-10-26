@@ -1,0 +1,3 @@
+[python-ldap3-ad-auth]
+source = "pypi"
+pypi = "ldap3-ad-auth"
