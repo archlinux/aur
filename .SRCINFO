@@ -1,6 +1,6 @@
 pkgbase = uuway-git
 	pkgdesc = NetEase UU Remote host bridge for KDE Wayland with native capture
-	pkgver = 1.2.0.r73.gc382146
+	pkgver = 1.2.0.r103.ge815903
 	pkgrel = 1
 	url = https://github.com/zyk-miao/UUWay
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = uuway-git
 	depends = json-c
 	depends = libx11
 	depends = libxfixes
+	depends = wayland
 	depends = fcitx5
 	depends = python
 	depends = python-gobject
