@@ -1,19 +1,19 @@
 pkgbase = mqttx-bin
 	pkgdesc = A cross-platform MQTT 5.0 client tool open sourced by EMQ.
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://mqttx.app/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron39
-	provides = mqttx=1.13.1
+	provides = mqttx=1.13.2
 	conflicts = mqttx
 	source = mqttx.sh
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = mqttx-1.13.1-aarch64.rpm::https://github.com/emqx/MQTTX/releases/download/v1.13.1/MQTTX-1.13.1.aarch64.rpm
-	sha256sums_aarch64 = 849ff19bbf2596ca465b17f0e11c70494ef12b192c671e01fe028e9b9e7d403b
-	source_x86_64 = mqttx-1.13.1-x86_64.rpm::https://github.com/emqx/MQTTX/releases/download/v1.13.1/MQTTX-1.13.1.x86_64.rpm
-	sha256sums_x86_64 = 2c7666eabecc7cbbbfe9e49a4a3aa9a45ee2780a05cecdf9a8eef214d889f479
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
+	source_aarch64 = mqttx-1.13.2-aarch64.rpm::https://github.com/emqx/MQTTX/releases/download/v1.13.2/MQTTX-1.13.2.aarch64.rpm
+	sha256sums_aarch64 = 9736e4a9d65f4647296241ed21d16866b1995d8a26bcb1e996f1265e60f06e2a
+	source_x86_64 = mqttx-1.13.2-x86_64.rpm::https://github.com/emqx/MQTTX/releases/download/v1.13.2/MQTTX-1.13.2.x86_64.rpm
+	sha256sums_x86_64 = b6430968f0435863e871cc082336539f71e1b7670533b88398bb8a0813c07f15
 
 pkgname = mqttx-bin
