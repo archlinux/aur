@@ -1,7 +1,7 @@
 pkgbase = golfetch-git
 	pkgdesc = A minimalist, suckless-style system fetch utility written in Go.
-	pkgver = r36.g512e1f6
-	pkgrel = 2
+	pkgver = r58.gcc15437
+	pkgrel = 1
 	url = https://github.com/snowvy01/golfetch
 	arch = x86_64
 	license = BSD-3-Clause
