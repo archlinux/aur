@@ -1,8 +1,8 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 pkgname=almond
-pkgver=0.14.5
+pkgver=0.15.0
 pkgrel=1
-_scalaver=3.8
+_scalaver=3.9.0
 pkgdesc="A scala kernel for Jupyter"
 arch=('any')
 url="https://almond.sh/"
@@ -28,7 +28,8 @@ package() {
   export COURSIER_JVM_CACHE="$pkgdir/usr/share/almond/coursier/jvm_cache"
   mkdir -p $COURSIER_JVM_CACHE
 
-  coursier bootstrap almond:$ALMOND_VERSION \
+  coursier bootstrap sh.almond::scala-kernel:$ALMOND_VERSION \
+    --repository https://jitpack.io \
     --scala $SCALA_VERSION \
     --embed-files=false \
     --output almond --force
