@@ -7,7 +7,7 @@
 pkgname=binwalk2
 _gitname=binwalk
 pkgver=2.4.3
-pkgrel=13
+pkgrel=14
 pkgdesc='Tool for searching a given binary image for embedded files'
 url='https://github.com/OSPG/binwalk'
 arch=(any)
@@ -27,6 +27,7 @@ checkdepends=(
   python-pytest
 )
 optdepends=(
+  '7zip: ZIP, LZMA and ISO decompression support'
   'arj: ARJ decompression support'
   'bzip2: BZIP2 archive support'
   'cabextract: CAB archive support'
@@ -34,10 +35,11 @@ optdepends=(
   'cramfsswap: big-endian CramFS filesystem extraction'
   'cramfs-tools: CramFS filesystem extraction'
   'gzip: GZIP decompression support'
+  'java-environment: alternative ZIP extraction using jar'
+  'jefferson-git: JFFS2 filesystem extraction'
   'lhasa: LHA support'
   'lzop: LZO decompression support'
   'mtd-utils: JFFS filesystem support'
-  'p7zip: ZIP, LZMA and ISO decompression support'
   'python-capstone: disassembly support'
   'python-gnupg: PGP plugin support'
   'python-matplotlib: entropy plotting support'
