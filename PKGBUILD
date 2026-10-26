@@ -10,7 +10,7 @@ pkgname='python-lockmgr'
 pkgdesc='Python Lock Manager Class'
 _gitname='lockmgr'
 
-pkgver="2.0.2"
+pkgver="2.1.0"
 pkgrel=1
 url="https://github.com/gene-git/lockmgr"
 
@@ -25,7 +25,6 @@ license=(GPL-2.0-or-later)
 # To build docs uncommont sphinx/texlive
 depends=(
     'python>3.14' 
-    'python-pynotify'
 )
 makedepends=(
     'git'
@@ -36,7 +35,6 @@ makedepends=(
 # Used by package : mkpkg
 _mkpkg_depends=(
     'python>minor'
-    'python-pynotify>minor'
 )
 
 

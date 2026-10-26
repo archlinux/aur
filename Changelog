@@ -1,11 +1,25 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.10.1 ➙ 2.0.2
-              : 2026-09-09 ➙ 2026-10-08
+ Tags         : 1.10.2 ➙ 2.1.0
+              : 2026-09-09 ➙ 2026-10-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-08   : 2.0.2
+ 2026-10-26   : 2.1.0
+              - **2.1.0**
+            
+                * Update and improve code.
+                * Backward compatible. See manual and examples for the new API.
+                * Default to Open File Descripter (OFD) locks provided by C-library fcntl.
+                  OFD is best practice and comes with significant improvements over old Posix locks
+                    - Resolves the "silent unlock on close" flaw
+                    - Thread-safe
+                    - Safe across forks.
+                * New option to turn off OFD to use old style Posix locks.
+                * Improved timeout handler
+                * Add support for context blocks (with LockMgr(...) as lockmgr)
+
+ 2026-10-08   : 2.0.2, origin/master
               - 2.0.2 Tweak for readthedocs
               - readthedocs drop un-needed hawkmoth
 
@@ -22,8 +36,3 @@
               - **1.10.2**
             
                 * Use meson parallel test capability instead of bash script
-
- 2026-09-09   : 1.10.1
-              - **1.10.1**
-            
-                * Drop unused pytest from meson.build (thank you @piater)
