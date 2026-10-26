@@ -1,0 +1,23 @@
+pkgbase = fgj-bin
+	pkgdesc = A command-line tool for working with Forgejo instances (including Codeberg.org) (prebuilt binary)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://codeberg.org/romaintb/fgj
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = fgj
+	conflicts = fgj
+	source = LICENSE-0.6.0::https://codeberg.org/romaintb/fgj/raw/tag/v0.6.0/LICENSE
+	source = README-0.6.0.md::https://codeberg.org/romaintb/fgj/raw/tag/v0.6.0/README.md
+	sha256sums = aa9cc5b4501bafe72ecf5db0e1a01d9e2c740f942ef0e78a638d7329fac1ba90
+	sha256sums = 02c88ba55ef16ed11d34dd992dba58ea129c5639e75651f0f6a03c558f8a99d4
+	source_x86_64 = fgj-0.6.0-x86_64::https://codeberg.org/romaintb/fgj/releases/download/v0.6.0/fgj_linux_amd64
+	sha256sums_x86_64 = 185a789d1ace2690d2b44615fe8cc7b760b647aea48e8a4ce8a43695bf91a6f4
+	source_aarch64 = fgj-0.6.0-aarch64::https://codeberg.org/romaintb/fgj/releases/download/v0.6.0/fgj_linux_arm64
+	sha256sums_aarch64 = 33f3b8b656319ec8553b1d65d935ab7702610abc62ae080e9088aaa7ee7e33d0
+	source_armv7h = fgj-0.6.0-armv7h::https://codeberg.org/romaintb/fgj/releases/download/v0.6.0/fgj_linux_arm
+	sha256sums_armv7h = 1675ba1a0c72a6497a2fcedb7a60cef128d17835a5a03577eccb78332e733847
+
+pkgname = fgj-bin
