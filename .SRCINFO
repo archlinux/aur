@@ -1,6 +1,6 @@
 pkgbase = pelton-bin
 	pkgdesc = Open-source cross-platform desktop email client
-	pkgver = 2026.4.4
+	pkgver = 2026.4.6
 	pkgrel = 1
 	url = https://github.com/peltonapp/Pelton
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pelton-bin
 	conflicts = pelton
 	options = !strip
 	options = !debug
-	source = Pelton-v2026.4.4-linux-amd64.deb::https://github.com/peltonapp/Pelton/releases/download/v2026.4.4/Pelton-v2026.4.4-linux-amd64.deb
-	sha256sums = 36e0391886a11f881220c3b673655cb9afa2747fe0f22e5a15da65967c43c789
+	source = Pelton-v2026.4.6-linux-amd64.deb::https://github.com/peltonapp/Pelton/releases/download/v2026.4.6/Pelton-v2026.4.6-linux-amd64.deb
+	sha256sums = 288c9e208bdfb4be9ce36267b87765139eda0943f2bdcacea10f44d6ffd1c906
 
 pkgname = pelton-bin
