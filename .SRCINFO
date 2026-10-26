@@ -10,6 +10,7 @@ pkgbase = codewhale-bin
 	depends = gcc-libs
 	depends = dbus
 	optdepends = nodejs: run plugins through the experimental extension host
+	optdepends = bubblewrap: sandbox shell commands and extension host code
 	provides = codewhale
 	provides = codewhale-tui
 	provides = deepseek

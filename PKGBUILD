@@ -16,7 +16,10 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'dbus')
 # The experimental extension host ([features] extension_host) runs the embedded
 # TypeScript bundle in Node; Bun is only qualified on macOS.
-optdepends=('nodejs: run plugins through the experimental extension host')
+# Shell commands and extension host code are sandboxed with bubblewrap when
+# /usr/bin/bwrap is installed and works; without it they run unsandboxed.
+optdepends=('nodejs: run plugins through the experimental extension host'
+            'bubblewrap: sandbox shell commands and extension host code')
 provides=('codewhale' 'codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 replaces=('deepseek-tui-bin')
