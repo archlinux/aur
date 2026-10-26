@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Development;Utility;
+Comment=A fast, cross-platform developer toolkit built on Tauri.
+Exec=devcrate
+Icon=/usr/share/icons/hicolor/scalable/apps/devcrate.png
+Name=DevCrate
+Terminal=false
+Type=Application
