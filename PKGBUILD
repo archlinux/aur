@@ -1,16 +1,16 @@
 # Maintainer: Cavernosa <cvrns at proton dot me>
 pkgname=akrasia
-pkgver=1.1.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="CLI task manager inspired by Greek philosophy on self-control"
 arch=('any')
 url="https://github.com/luis-octavius/akrasia"
 license=('MIT')
-depends=('sqlite')
+depends=()
 makedepends=('git' 'go')
 checkdepends=()
-source=("git+$url.git#tag=v.$pkgver")
-sha256sums=('2b1dc95188de8b7d1b692136cf6b1c6b92ae7d20241bb26345419bff3aa027fe')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('53884e40a60eee61f3864df53061993ace100b73de3f93fbb01a23aebb13b927')
 validpgpkeys=()
 
 prepare() {
@@ -28,7 +28,7 @@ build() {
 
 check() {
 	cd "$pkgname"
-	go test ./...
+	go test -race ./...
 }
 
 package() {
