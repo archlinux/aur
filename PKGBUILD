@@ -3,8 +3,8 @@
 pkgname=paseo-cli-edge
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.13.1
-_tarball_sha='5347728067be1c2f6aada6f86363592d811c9def7a8e6da5705420364d6aa020'
+pkgver=0.13.2
+_tarball_sha='6574d6ba5af39278325b975291740f4e7b4c8b6cd741cdc013f6b7455a37ea4d'
 _license_sha='79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3'
 pkgrel=1
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
