@@ -1,16 +1,16 @@
 pkgbase = tuios-plot-bin
 	pkgdesc = Draw charts in the terminal from CSV, TSV or JSON
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://tuios.dev
 	license = MIT
 	conflicts = tplot
 	provides = tplot
 	arch = aarch64
-	source_aarch64 = tuios-plot-bin_0.11.0_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.11.0/tplot_0.11.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = bfc5da4faecf7b8b7d80c9fcf8ff18572cccd2743e0bd1f6b7beb80a41fde438
+	source_aarch64 = tuios-plot-bin_0.11.1_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.11.1/tplot_0.11.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e8308e16dc87f19c26b5ff4a0095f85d56efe54920971e2124ccebbb8ba7520
 	arch = x86_64
-	source_x86_64 = tuios-plot-bin_0.11.0_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.11.0/tplot_0.11.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a5a60d5675126d3fb2437ec5e785d18b0acfa11698380f823c8267eacfa30e53
+	source_x86_64 = tuios-plot-bin_0.11.1_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.11.1/tplot_0.11.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6a5c9ea7dea9c0f119bc9dc533b3fb3ef8fd85a76dcd9b399f07f92e31d79fe4
 	
 pkgname = tuios-plot-bin
