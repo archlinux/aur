@@ -1,12 +1,11 @@
 pkgbase = sonic-pipewire
-	pkgdesc = X11-focused PipeWire components for SonicDE
-	pkgver = 6.7.5
+	pkgdesc = Components relating to pipewire use in SonicDE
+	pkgver = 6.8.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-pipewire
 	arch = x86_64
 	groups = sonicde
 	license = LGPL-2.0-or-later
-	makedepends = ki18n
 	makedepends = sonic-frameworks-cmake-modules
 	depends = ffmpeg
 	depends = glibc
@@ -20,9 +19,10 @@ pkgbase = sonic-pipewire
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = sonic-frameworks-core-addons
+	depends = sonic-frameworks-internationalization
 	provides = kpipewire
 	conflicts = kpipewire
-	source = sonic-pipewire-6.7.5.tar.gz::https://github.com/Sonic-DE/sonic-pipewire/archive/refs/tags/6.7.5.tar.gz
-	sha256sums = 8cec77c3cdb7535082b54708ed038c66d998133ec10da77f2cc3de0e44867c9d
+	source = sonic-pipewire-6.8.0.tar.gz::https://github.com/Sonic-DE/sonic-pipewire/archive/refs/tags/6.8.0.tar.gz
+	sha256sums = d062fb8b84b25fba8e6f52a6d1876118bf8ac7961972fa037f038eddc27767dc
 
 pkgname = sonic-pipewire
