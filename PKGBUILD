@@ -1,7 +1,7 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=vinculum-bin
 _pkgname=vinculum
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Manage Wi-Fi, wired and VPN connections (NetworkManager GUI, prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("$_pkgname")
 options=('!debug') # the release binary is already stripped
 source_x86_64=("$url/releases/download/v$pkgver/Vinculum-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/Vinculum-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('eec27fbb21f2c97abaf09c6a8742b6b0bebe60153a82f165132492513c535d8f')
-sha256sums_aarch64=('be5b13f123edff46037e4466f9631b6451354483d2e57a3358d678ee8b78ea75')
+sha256sums_x86_64=('cf3a416a1c0d71d4dee1d37e786d05ef9a5e3cdf6d1d3fc57269e465fa1a164b')
+sha256sums_aarch64=('e1865a2ea08730656d5b0f75ef7dd6837ee447abb33d10e74121b42fb980f816')
 
 package() {
   case "$CARCH" in
