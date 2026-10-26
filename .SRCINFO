@@ -1,6 +1,6 @@
 pkgbase = emaki-bin
 	pkgdesc = An agentic development environment
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/alkaline-software/emaki
 	arch = x86_64
@@ -17,15 +17,15 @@ pkgbase = emaki-bin
 	depends = vulkan-icd-loader
 	depends = hicolor-icon-theme
 	optdepends = xdg-desktop-portal: file picker and secret storage
-	provides = emaki=0.3.1
+	provides = emaki=0.3.2
 	conflicts = emaki
 	options = !debug
 	options = !strip
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/alkaline-software/emaki/v0.3.1/LICENSE
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/alkaline-software/emaki/v0.3.2/LICENSE
 	sha256sums = 7c7aa1f981bbd6e9285dc04212226c84ea31caec4e01fbce6ebcc9f035d95324
-	source_x86_64 = emaki-bin-0.3.1-x86_64.deb::https://github.com/alkaline-software/emaki/releases/download/v0.3.1/Emaki-linux-x64.deb
-	sha256sums_x86_64 = e68dd61e89b12140fc536087cb50c0ff9bece03a30b494ecd332c74b605c04d2
-	source_aarch64 = emaki-bin-0.3.1-aarch64.deb::https://github.com/alkaline-software/emaki/releases/download/v0.3.1/Emaki-linux-arm64.deb
-	sha256sums_aarch64 = f7617b7c7519431e17c4bd232f0e7769bab6b5f846ce693ee32f1145e80ad5ab
+	source_x86_64 = emaki-bin-0.3.2-x86_64.deb::https://github.com/alkaline-software/emaki/releases/download/v0.3.2/Emaki-linux-x64.deb
+	sha256sums_x86_64 = 99bf15a9c5e9f21345048243202383142248024c4ecd238d9c5d43a9da7bf772
+	source_aarch64 = emaki-bin-0.3.2-aarch64.deb::https://github.com/alkaline-software/emaki/releases/download/v0.3.2/Emaki-linux-arm64.deb
+	sha256sums_aarch64 = a63c68af1f4d5e5c5908703d41233e736ac947326ee066440763db696f87a779
 
 pkgname = emaki-bin
