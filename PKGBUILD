@@ -1,6 +1,6 @@
 # Maintainer: 郑祎
 pkgname=fcitx5-windinput-bin
-pkgver=0.127.0
+pkgver=0.128.0
 pkgrel=1
 pkgdesc='基于 Debian 发行包重打包的清风输入法 Fcitx5 Linux 预览版'
 arch=('x86_64' 'aarch64')
@@ -41,8 +41,8 @@ source=("WindInput-$pkgver-LICENSE::https://raw.githubusercontent.com/huanfeng/W
 source_x86_64=("https://github.com/huanfeng/WindInput/releases/download/v$pkgver/WindInput-$pkgver-linux-amd64.deb")
 source_aarch64=("https://github.com/huanfeng/WindInput/releases/download/v$pkgver/WindInput-$pkgver-linux-arm64.deb")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('678840f2aa458c9254be9bfdfbb929deb262a2e4b6e3f910a64047ef50b503d0')
-sha256sums_aarch64=('13e3a69cd80613fde0208924c6b3e9b446a9d27f163233ef450626f33c510bd6')
+sha256sums_x86_64=('8a610f73a96ec8a006438684a944661251fba8c43fc8f93873615d57600b793a')
+sha256sums_aarch64=('4a1f0c563081454fbab349fe2361d4f63d472c507c478488e627120c34492386')
 
 package() {
   local _multiarch
