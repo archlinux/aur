@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vidbee-bin
 _pkgname=VidBee
-pkgver=2.2.3
+pkgver=2.3.0
 _electronversion=43
 pkgrel=1
 pkgdesc="A free, open-source desktop app that turns video and audio into an organized, searchable library. Download media from 1000+ supported sites or import local files."
@@ -18,9 +18,6 @@ depends=(
     'deno'
     'nodejs'
 )
-makedepends=(
-    'asar'
-)
 options=(
     '!emptydirs'
     '!strip'
@@ -28,11 +25,13 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nexmoe/VidBee/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('926ef6b2ae909a910d6e28baded5358ff171da4a62f417757f73aeb05f44a6bb'
+sha256sums=('d3e92e988080fe7c8722b2f152436e8b9e820b60e3a4cf0b8be80e2250e53797'
             '5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
@@ -49,24 +48,19 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir="$(_get_app_dir)"
-    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
-    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/resources/ffmpeg/ffmpeg"
-    ln -sf "/usr/bin/ffprobe" "${_app_dir}/resources/resources/ffmpeg/ffprobe"
-    ln -sf "/usr/bin/yt-dlp" "${_app_dir}/resources/resources/yt-dlp_linux"
-    ln -sf "/usr/bin/deno" "${_app_dir}/resources/resources/deno"
+    ln -sf "/usr/bin/ffmpeg" "$(_get_app_dir)/resources/resources/ffmpeg/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "$(_get_app_dir)/resources/resources/ffmpeg/ffprobe"
+    ln -sf "/usr/bin/yt-dlp" "$(_get_app_dir)/resources/resources/yt-dlp_linux"
+    ln -sf "/usr/bin/deno" "$(_get_app_dir)/resources/resources/deno"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
