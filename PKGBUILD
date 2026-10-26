@@ -1,13 +1,12 @@
 # Maintainer: Branko Simic <branko@valens.dev>
 #
+# Generated file — do not edit by hand.
+# Edit contrib/aur/PKGBUILD.template and run `pnpm aur:gen`.
+#
 # Publishing:
 #   1. git tag -s v$pkgver -m "v$pkgver" && git push origin v$pkgver
 #   2. makepkg --printsrcinfo > .SRCINFO
 #   3. Commit PKGBUILD + .SRCINFO to the AUR repo
-#
-# Local testing without a tag:
-#   source=("$pkgname::git+https://github.com/brankosimic/chest-backup.git")
-#   sha256sums=('SKIP')
 
 pkgname=chest-backup
 pkgver=1.0.0
