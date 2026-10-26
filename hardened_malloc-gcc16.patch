@@ -1,0 +1,29 @@
+Fix build with GCC 16
+
+GCC 16 removed the std::__throw_* helper functions from libstdc++
+(<bits/functexcept.h>). Throw std::bad_alloc directly instead; the
+helper only provided a noreturn wrapper around the same expression.
+Remove this patch once upstream adapts to GCC 16.
+
+diff --git a/new.cc b/new.cc
+index 165e19e..2baa831 100644
+--- a/new.cc
++++ b/new.cc
+@@ -27,7 +27,7 @@ COLD static void *handle_out_of_memory(size_t size, bool nothrow) {
+     } while (ptr == nullptr);
+ 
+     if (ptr == nullptr && !nothrow) {
+-        std::__throw_bad_alloc();
++        throw std::bad_alloc();
+     }
+     return ptr;
+ }
+@@ -99,7 +99,7 @@ COLD static void *handle_out_of_memory(size_t size, size_t alignment, bool nothr
+     } while (ptr == nullptr);
+ 
+     if (ptr == nullptr && !nothrow) {
+-        std::__throw_bad_alloc();
++        throw std::bad_alloc();
+     }
+     return ptr;
+ }
