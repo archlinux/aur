@@ -1,0 +1,17 @@
+pkgbase = hp-charge-limit-rs
+	pkgdesc = Battery charge limiter for HP laptops via ACPI WMI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kralonur/hp-charge-limit-rs
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = acpi_call
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	backup = etc/hp-charge-limit-rs.conf
+	source = hp-charge-limit-rs-0.3.0.tar.gz::https://github.com/kralonur/hp-charge-limit-rs/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = a71bf28e2a58872110d7827c1ef62ec05fe69532ead8ef35c4d96f30b3a992c3
+
+pkgname = hp-charge-limit-rs
