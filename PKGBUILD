@@ -2,7 +2,7 @@
 
 _pypiname="array-api-extra"
 pkgname="python-${_pypiname}"
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Extra array functions built on top of the array API standard"
 arch=(
@@ -39,7 +39,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "python-${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('ed67278df9c3f1fd230821005359a15e24b2979380c042c4c1654ca3a688ede3')
+sha256sums=('1319f8016660ff087157d136c7e494d6179bc12fd8489d8a097a19fbad103850')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
