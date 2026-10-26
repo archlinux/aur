@@ -11,9 +11,9 @@ _gitname=tidesi
 _plasmoid=org.muddyblack.tidesi
 
 pkgname=plasma6-applets-ai-usage
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
-pkgdesc="Tidesi (formerly AI Usage Widget) - KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers"
+pkgdesc="tideSI (formerly AI Usage Widget) - KDE Plasma 6 panel widget tracking AI usage quotas across multiple providers"
 arch=('any')
 url="https://github.com/Muddyblack/tidesi"
 license=('MIT')
@@ -30,7 +30,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dc78c0235df595d5ccc51f9387945eeecef3051d49ca82ad7c704a8dda1c4f40')
+sha256sums=('990395b7224901cc6f3d5786a8a81fb9a73319bb78281e6bc208672708097ff2')
 
 build() {
     cd "${_gitname}-${pkgver}"
