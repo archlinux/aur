@@ -4,13 +4,13 @@
 
 pkgname=flare
 pkgver=0.22.7
-pkgrel=0
+pkgrel=2
 pkgdesc="Chat with your friends on Signal"
 url="https://gitlab.com/schmiddi-on-mobile/$pkgname"
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 license=("AGPL-3.0-only")
 makedepends=("blueprint-compiler" "cargo" "meson" "protobuf")
-depends=("libadwaita" "libsecret" "protobuf" "gtksourceview5")
+depends=("libadwaita" "libsecret" "protobuf" "gst-libav" "gtksourceview5")
 optdepends=("feedbackd: for vibrating notifications"
   "libspelling: for spell-checking support")
 source=("https://gitlab.com/schmiddi-on-mobile/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
