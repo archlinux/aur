@@ -2,7 +2,7 @@
 
 pkgname=typepper-bin
 _pkgname=typepper
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A spicy little typing game for your terminal and browser (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=('!strip')
 _rel="https://github.com/leodiegues/typepper/releases/download/v$pkgver"
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.xz::$_rel/typepper-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.xz::$_rel/typepper-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('788e6372e48cb684f61b3919bb69a852a0d24fa1bce82dc14363344dc8b76f9e')
-sha256sums_aarch64=('886f6a4fc5ad673603a7311df9c56bc53f289c4b257833b7287f5d793bc336b1')
+sha256sums_x86_64=('7246fb1508c1155d0ac797750a1c1cb322ed3c47e0a2f0d26f6eca01e930a84a')
+sha256sums_aarch64=('0f614a417a733206a43410d4ac8b6f9c67077540fd88fcbf35489ea45b0db805')
 
 package() {
   cd "$srcdir/typepper-$CARCH-unknown-linux-gnu"

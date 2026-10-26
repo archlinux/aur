@@ -1,6 +1,6 @@
 pkgbase = typepper-bin
 	pkgdesc = A spicy little typing game for your terminal and browser (prebuilt binary)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://typepper.com/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = typepper-bin
 	license = GPL-3.0-or-later
 	depends = gcc-libs
 	depends = glibc
-	provides = typepper=0.5.0
+	provides = typepper=0.6.0
 	conflicts = typepper
 	options = !strip
-	source_x86_64 = typepper-0.5.0-x86_64.tar.xz::https://github.com/leodiegues/typepper/releases/download/v0.5.0/typepper-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 788e6372e48cb684f61b3919bb69a852a0d24fa1bce82dc14363344dc8b76f9e
-	source_aarch64 = typepper-0.5.0-aarch64.tar.xz::https://github.com/leodiegues/typepper/releases/download/v0.5.0/typepper-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 886f6a4fc5ad673603a7311df9c56bc53f289c4b257833b7287f5d793bc336b1
+	source_x86_64 = typepper-0.6.0-x86_64.tar.xz::https://github.com/leodiegues/typepper/releases/download/v0.6.0/typepper-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 7246fb1508c1155d0ac797750a1c1cb322ed3c47e0a2f0d26f6eca01e930a84a
+	source_aarch64 = typepper-0.6.0-aarch64.tar.xz::https://github.com/leodiegues/typepper/releases/download/v0.6.0/typepper-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 0f614a417a733206a43410d4ac8b6f9c67077540fd88fcbf35489ea45b0db805
 
 pkgname = typepper-bin
