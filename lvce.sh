@@ -34,4 +34,4 @@ auto)
 	_OZONE_ARG=("--ozone-platform=x11")
 	;;
 esac
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --app "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" --app "${_RUNNAME}" "$@"
