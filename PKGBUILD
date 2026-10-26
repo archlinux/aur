@@ -25,6 +25,7 @@ package() {
   cd "${srcdir}"
   install -d "${pkgdir}/opt/${pkgname}"
   cp -a squashfs-root/. "${pkgdir}/opt/${pkgname}/"
+  chmod -R a+rX "${pkgdir}/opt/${pkgname}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/pandacode"
