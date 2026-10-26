@@ -7,7 +7,7 @@
 pkgname=binwalk2
 _gitname=binwalk
 pkgver=2.4.3
-pkgrel=11
+pkgrel=12
 pkgdesc='Tool for searching a given binary image for embedded files'
 url='https://github.com/OSPG/binwalk'
 arch=(any)
