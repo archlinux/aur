@@ -4,12 +4,13 @@ _pkgauthor=JetpackDuba
 _pkgname=Gitnuro
 _execname=${_pkgname,,}
 pkgname=${_execname}-bin
-pkgver=1.5.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
+_sourceversion=${pkgver%\.0}-${pkgver}
 pkgdesc='A FOSS Git multiplatform client for newbies and pros'
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
-_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
 
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
@@ -21,14 +22,14 @@ provides=("${_execname}")
 source=("${_execname}.svg" "${_execname}.desktop"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${arch[0]}-${pkgver}.jar")
-source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm_${arch[1]}-${pkgver}.jar")
+source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.jar::${url}/releases/download/${pkgver}/${_pkgname}-linux-${arch[0]}-${_sourceversion}.jar")
+source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.jar::${url}/releases/download/${pkgver}/${_pkgname}-linux-arm_${arch[1]}-${_sourceversion}.jar")
 sha256sums=('40625c5934897ac2290c0ace5a24b72a7d62ce7cde305cefa92f82b8d5e1ddab'
             'c881f04e9af5eb3ec865656c91880748d503a0ce929d2a09e0a571629e43c240'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'bb1c63a772d78a429b6fb24a644a6331efd79eb5ed3238fefdfbc51a5701aa69')
-sha256sums_x86_64=('128063c3df0ee603b6c133b7e0a32215eb5eaf261aa590bcdcc51f22ac6d6e64')
-sha256sums_aarch64=('a009826a9bbdc454b52cc6ac8f6d6adfd43fe328cb87a319c7bf6d0bc62395e7')
+            '03e534fb67226ea2983d15f4429b6e131cdb1786717a6e8c47fd9cfb9c467a81')
+sha256sums_x86_64=('ec06881c94fefb15bd6120e83549b1e18b0e4bbbaac53010b38409b4b7ee6ef8')
+sha256sums_aarch64=('0414e45dc1c60474510c5cab54ff321fee6f84140253d924bf48dbde2d7dcd21')
 
 prepare() {
   cd "${srcdir}/" || exit
