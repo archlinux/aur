@@ -4,7 +4,7 @@
 # `cargo xtask dist` builds them. release.yml's `aur` job sets pkgver,
 # regenerates .SRCINFO and pushes.
 pkgname=enclave-messenger
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Private messages without a phone number, through Tor and the Nym mixnet'
 arch=('x86_64' 'aarch64')
