@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=aider-desk-appimage
-pkgver=0.85.0
+pkgver=0.89.0
 pkgrel=1
 pkgdesc="Transparent, steerable AI orchestration platform for software engineers (AppImage)"
 url="https://github.com/hotovo/aider-desk"
@@ -15,10 +15,10 @@ license=("Apache-2.0")
 
 source_x86_64=("aider-desk-appimage-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/aider-desk-${pkgver}-x86_64.AppImage" "aider-desk.png::https://raw.githubusercontent.com/hotovo/aider-desk/main/build/icon.png" "aider-desk.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/aider-desk/aider-desk.desktop")
 source_aarch64=("aider-desk-appimage-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/aider-desk-${pkgver}-arm64.AppImage" "aider-desk.png::https://raw.githubusercontent.com/hotovo/aider-desk/main/build/icon.png" "aider-desk.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/aider-desk/aider-desk.desktop")
-sha256sums_x86_64=('e43ed8ace1400e419652e9ce33a803ce3b033c9a80fe0a24b430f9d5912e8022'
+sha256sums_x86_64=('c30a16b4e2f0a777bc03fa2de35a42cdfd4c6dc3356cd2c66de8c65a34aa5fcc'
                    '5154bb7bfefbe1b93fe94fbc44de529ee59b5b7ceb07dc60b9d748c7857efbc1'
                    '2bf07bf24eaaf3710a63ed5ab1208eb6143b27b9ed3f73de9c865fb3bf59204b')
-sha256sums_aarch64=('fa3cb66a8c7904acaa54b7602eb074e8953bc8408a7cecc725b520a2030a9356'
+sha256sums_aarch64=('a1ec24cb3d5a9819dd38de8129c05d191e46cc1495b94a6ee8d4aa811c846b9b'
                     '5154bb7bfefbe1b93fe94fbc44de529ee59b5b7ceb07dc60b9d748c7857efbc1'
                     '2bf07bf24eaaf3710a63ed5ab1208eb6143b27b9ed3f73de9c865fb3bf59204b')
 
