@@ -1,0 +1,21 @@
+pkgbase = sonic-frameworks-dbus
+	pkgdesc = Addons to QtDBus
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-dbus
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	provides = kdbusaddons
+	conflicts = kdbusaddons
+	source = sonic-frameworks-dbus-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-dbus/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = f7e5e76c05e73c4fd3e91d085e824a9b533d1135796e5fda0d22df5273af0b3b
+
+pkgname = sonic-frameworks-dbus
