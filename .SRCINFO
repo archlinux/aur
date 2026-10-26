@@ -1,0 +1,67 @@
+pkgbase = meo-desktop
+	pkgdesc = Meo Desktop integration for MeoArch, powered by KDE Plasma
+	pkgver = 0.4.0
+	pkgrel = 23
+	url = https://github.com/QwQdoge/meo-kde
+	install = meo-desktop.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = GPL-2.0-or-later
+	license = MIT
+	license = Apache-2.0
+	license = OFL-1.1
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = polkit-qt6
+	depends = meoui-qml>=1.0.4beta1
+	depends = meo-icons>=0.4.0
+	depends = plasma-desktop
+	depends = plasma-workspace>=6.8
+	depends = plasma-nm
+	depends = plasma-pa
+	depends = powerdevil
+	depends = bluedevil
+	depends = systemsettings
+	depends = dolphin
+	depends = konsole
+	depends = breeze
+	depends = kwallet-pam
+	depends = polkit-kde-agent
+	depends = networkmanager-qt
+	depends = bluez-qt
+	depends = solid
+	depends = pulseaudio-qt
+	depends = kguiaddons
+	depends = kwindowsystem
+	depends = kconfig
+	depends = kirigami
+	depends = libplasma>=6.8
+	depends = kdecoration
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kio
+	depends = kservice
+	depends = fcitx5
+	depends = fcitx5-qt
+	depends = fcitx5-gtk
+	depends = system76-scheduler
+	depends = zram-generator
+	depends = dbus-broker-units
+	depends = power-profiles-daemon
+	depends = gamemode
+	optdepends = meo-plasma-login-manager: MeoArch login experience; the Meo session works with other display managers
+	optdepends = preload-ng: optional learned application prefetching (disabled by default)
+	optdepends = prelockd: optional bounded desktop memory locking (disabled by default)
+	optdepends = fcitx5-configtool: advanced Fcitx configuration fallback
+	provides = meo-kde-runtime=0.4.0
+	conflicts = meo-kde-runtime
+	replaces = meo-kde-runtime
+	options = !debug
+	backup = usr/lib/qt6/plugins/org.kde.kdecoration3/org.meo.decoration.so
+	source = meo-kde-348a25525c52329fef6a784bb33a5d503c8fe881.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/348a25525c52329fef6a784bb33a5d503c8fe881
+	sha256sums = 9bc424d70392e7ba27d82559fa6046e690e8b472217c6997f0072126331cc39d
+
+pkgname = meo-desktop
