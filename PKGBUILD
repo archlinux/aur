@@ -7,7 +7,7 @@
 # to /usr/share. What a user changes lives in ~/.config/zenworks.
 
 pkgname=zenworks
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
@@ -78,7 +78,7 @@ conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('427bbf9398963ae0c2ecf232189d96622bf5b69be60d990ee5e18da46b0c4b96')
+sha256sums=('ef118a2e784d134da4e96d905d5429a4d7f303152fd8aa1e636525962752c806')
 
 package() {
   # the tarball's directory is named after the repository, as GitHub has
