@@ -1,6 +1,6 @@
 pkgbase = r-rig-bin
 	pkgdesc = The R Installation Manager
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/r-lib/rig
 	arch = x86_64
@@ -10,15 +10,15 @@ pkgbase = r-rig-bin
 	depends = glibc
 	conflicts = r-rig
 	options = !debug
-	source_x86_64 = r-rig-bin-0.11.0.tar.gz::https://github.com/r-lib/rig/releases/download/v0.11.0/rig-linux-x86_64-0.11.0.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/r-lib/rig/refs/tags/v0.11.0/LICENSE
-	provides_x86_64 = r-rig=0.11.0
-	sha256sums_x86_64 = 27e063df84b6dadb325fa96d13951676b44b69103bb4237b061518fbf564fcf1
+	source_x86_64 = r-rig-bin-0.11.1.tar.gz::https://github.com/r-lib/rig/releases/download/v0.11.1/rig-linux-x86_64-0.11.1.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/r-lib/rig/refs/tags/v0.11.1/LICENSE
+	provides_x86_64 = r-rig=0.11.1
+	sha256sums_x86_64 = 757b5b7886b09a8a97f35ab6e71546b68044d323ffbcaa68adcbe818409af156
 	sha256sums_x86_64 = 6cd5c8d39a38fe457509cb88b5ab333f078c7b05014d27dfebeb69fd4b490db2
-	source_aarch64 = r-rig-bin-0.11.0.tar.gz::https://github.com/r-lib/rig/releases/download/v0.11.0/rig-linux-aarch64-0.11.0.tar.gz
-	source_aarch64 = https://raw.githubusercontent.com/r-lib/rig/refs/tags/v0.11.0/LICENSE
-	provides_aarch64 = r-rig=0.11.0
-	sha256sums_aarch64 = 27e063df84b6dadb325fa96d13951676b44b69103bb4237b061518fbf564fcf1
+	source_aarch64 = r-rig-bin-0.11.1.tar.gz::https://github.com/r-lib/rig/releases/download/v0.11.1/rig-linux-aarch64-0.11.1.tar.gz
+	source_aarch64 = https://raw.githubusercontent.com/r-lib/rig/refs/tags/v0.11.1/LICENSE
+	provides_aarch64 = r-rig=0.11.1
+	sha256sums_aarch64 = 757b5b7886b09a8a97f35ab6e71546b68044d323ffbcaa68adcbe818409af156
 	sha256sums_aarch64 = 6cd5c8d39a38fe457509cb88b5ab333f078c7b05014d27dfebeb69fd4b490db2
 
 pkgname = r-rig-bin
