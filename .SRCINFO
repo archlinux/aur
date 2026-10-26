@@ -1,0 +1,18 @@
+pkgbase = saxby-bin
+	pkgdesc = Local-first LLM routing daemon
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/saxby-tools/saxby
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	provides = saxby
+	conflicts = saxby
+	options = !strip
+	source_x86_64 = https://github.com/saxby-tools/saxby/releases/download/v0.9.5/saxby-0.9.5-linux-x64.tar.gz
+	sha256sums_x86_64 = 3d513fefa15a6dc87ec2dfc69fc6d77833e81d821b3562203a41800a73738cd0
+	source_aarch64 = https://github.com/saxby-tools/saxby/releases/download/v0.9.5/saxby-0.9.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 47f82c92d8435193fcb01dbfc50d5bc626cf7b62f03bf0c2136e4ec5bf04963e
+
+pkgname = saxby-bin
