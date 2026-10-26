@@ -1,6 +1,6 @@
 pkgbase = sonic-activities
 	pkgdesc = Core components for SonicDE Activities
-	pkgver = 6.7.5
+	pkgver = 6.8.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-activities
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = sonic-activities
 	makedepends = qt6-tools
 	makedepends = sonic-frameworks-cmake-modules
 	depends = glibc
-	depends = kconfig
 	depends = libstdc++
 	depends = qt6-base
 	depends = sonic-frameworks-core-addons
+	depends = sonic-frameworks-settings
 	optdepends = qt6-declarative: QML bindings
 	provides = plasma-activities
 	conflicts = kactivities
 	conflicts = plasma-activities
 	replaces = kactivities
-	source = sonic-activities-6.7.5.tar.gz::https://github.com/Sonic-DE/sonic-activities/archive/refs/tags/6.7.5.tar.gz
-	sha256sums = f47a3dae0a385f84ab3723d1ff32450ec55c444856bb35ebcb70a5c885f36947
+	source = sonic-activities-6.8.0.tar.gz::https://github.com/Sonic-DE/sonic-activities/archive/refs/tags/6.8.0.tar.gz
+	sha256sums = ae13996b4ab82e9b0eae6f39d45dddbed8d3e4cb4f5a2c8aa634a3099b5dbf0a
 
 pkgname = sonic-activities
