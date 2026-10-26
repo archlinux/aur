@@ -1,5 +1,5 @@
-#  Maintainer: Alper Şal <alper@sal.web.tr>
-#  Contributor: Radim Vančo (FoxKyong) <radim.vanco@jifox.cz>
+#  Maintainer: Radim Vančo (FoxKyong) <radim.vanco@jifox.cz>
+#  Contributor: Alper Şal <alper@sal.web.tr>
 
 _pkgname=nperf-gui
 pkgname=nperf-gui-appimage
