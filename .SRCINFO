@@ -1,0 +1,29 @@
+pkgbase = meo-kde-runtime
+	pkgdesc = Minimal Meo KDE runtime bridge for Meo applications
+	pkgver = 0.4.0beta3
+	pkgrel = 8
+	url = https://github.com/QwQdoge/meo-kde
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = GPL-2.0-or-later
+	license = MIT
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	depends = meoui-qml>=1.0.4beta1
+	depends = qt6-declarative
+	depends = kirigami
+	depends = networkmanager-qt
+	depends = bluez-qt
+	depends = solid
+	depends = pulseaudio-qt
+	depends = libxcursor
+	depends = kguiaddons
+	depends = libplasma>=6.8
+	depends = kconfig
+	depends = plasma-workspace>=6.8
+	source = meo-kde-4f2b18778ecf19bc22e75eabc4fc7c159ec78f77.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/4f2b18778ecf19bc22e75eabc4fc7c159ec78f77
+	sha256sums = e4367a456e67516e1842f7acb29c215d526c5caae3aba51bbbdd836a02fef68f
+
+pkgname = meo-kde-runtime
