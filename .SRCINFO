@@ -1,0 +1,35 @@
+pkgbase = blender-3.6-lts-bin
+	pkgdesc = A fully integrated 3D graphics creation suite (official 3.6 LTS precompiled binary release)
+	pkgver = 3.6.23
+	pkgrel = 1
+	url = https://www.blender.org
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libice
+	depends = libsm
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxrender
+	depends = shared-mime-info
+	optdepends = cuda: Cycles renderer CUDA support
+	optdepends = hip-runtime-amd: HIP renderer AMD support
+	optdepends = intel-compute-runtime: Cycles renderer Intel OneAPI support
+	optdepends = libdecor: Wayland client-side decorations support
+	provides = blender=3.6.23
+	provides = blender-3.6
+	provides = blender-lts
+	conflicts = blender
+	options = !strip
+	options = !debug
+	source = https://download.blender.org/release/Blender3.6/blender-3.6.23-linux-x64.tar.xz
+	source = blender-3.6.sh
+	sha256sums = 0e9a18af4d0060b825e9617e24a775f759e0f9f67271c062f3d53a539030af00
+	sha256sums = dd96be4195791988c888a369df41d5c2388836e236bc43ebda9d91a2fdaafad4
+
+pkgname = blender-3.6-lts-bin
