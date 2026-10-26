@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.18.10
+pkgver=1.18.11
 pkgrel=1
 _nodeversion=26
 _electronversion=44
@@ -18,7 +18,7 @@ makedepends=(
 checkdepends=('appstream')
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('6162c7d2a1907989986157447f333f53427766fa3a65a57af520e3811a8d7849'
+sha256sums=('b15ca088e214a0b82551e48e99f91ebc37a40b97f4dd84893e66add2fa8be0fd'
             'ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed')
 
 _ensure_local_nvm() {
@@ -54,13 +54,13 @@ build() {
   _ensure_local_nvm
   npm ci
   npm run build
-  npm prune --omit=dev
   npx cap telemetry off
   npx cap sync @capacitor-community/electron
+  npm prune --omit=dev
 
   cd electron
   python patch_capacitor_plugin.py
-  npm ci
+  npm install
   npm run build
   npx electron-builder build --linux dir -c ./electron-builder.config.json \
     -c.electronDist=$electronDist -c.electronVersion=$electronVer
