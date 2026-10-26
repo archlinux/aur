@@ -1,20 +1,16 @@
 # Maintainer: HanHaocheng <1849397656@qq.com>
 #
 # Binary repackage of the official Linux app image from the GitHub releases.
-# Upstream publishes only pre-releases in the 9.x line (tag v<VERSION>-pre.<N>),
-# so pkgver mirrors the tag to keep successive pre-releases ordered.
-# Note: 9.0.6_pre.21 sorts above a future final 9.0.6 under vercmp; this is
-# intentional while no final release exists.
+# Upstream 9.x releases are now cut as plain tags (9.0.8); earlier pre-release tags
+# looked like v9.0.6-pre.21 and pkgver mirrored the tag (9.0.6_pre.21) at that time.
 #
 # The desktop entry below is copied verbatim from packaging/linux/xdm-app.desktop
-# at commit 4f16d4d3b5d09eb83638c114d5b03bdf1c22d725 (the commit the v9.0.6-pre.21
-# tag points at). It is inlined instead of being listed as a source because the
-# file is tiny and it keeps the build independent of raw.githubusercontent.com.
+# at commit 2f46454fe513edaaa943d097c93673746919b0fb (the 9.0.8 tag). It is
+# inlined instead of being listed as a source because the file is tiny and it
+# keeps the build independent of raw.githubusercontent.com.
 
 pkgname=xdm-app-bin
-pkgver=9.0.6_pre.21
-_appver=9.0.6
-_tag="v${_appver}-pre.21"
+pkgver=9.0.8
 pkgrel=1
 pkgdesc='Fast, resumable download accelerator and video downloader with HLS/DASH support'
 arch=('x86_64' 'aarch64')
@@ -30,21 +26,21 @@ optdepends=(
 conflicts=('xdm-app' 'xdman' 'xdman_gtk')
 replaces=('xdman' 'xdman_gtk')
 options=('!strip' '!debug')
-source_x86_64=("https://github.com/subhra74/xdm/releases/download/${_tag}/xdm-app-${_appver}-linux-x64.tar.gz")
-source_aarch64=("https://github.com/subhra74/xdm/releases/download/${_tag}/xdm-app-${_appver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('132fa3b9e9de9eccac1f73d22ec7a4852e02a4f0d5253d611a1165b19367e281')
-sha256sums_aarch64=('e6a71e239b05732b056733966b31a0e065f300cf806b4f6a5d0cdd7566da81b6')
+source_x86_64=("https://github.com/subhra74/xdm/releases/download/$pkgver/xdm-app-$pkgver-linux-x64.tar.gz")
+source_aarch64=("https://github.com/subhra74/xdm/releases/download/$pkgver/xdm-app-$pkgver-linux-arm64.tar.gz")
+sha256sums_x86_64=('ad48ca3a7813ef3b75d668847587b77b8b105d383e8ed8ab04b1f7c7c6902ea7')
+sha256sums_aarch64=('f85b9be8bfad4458d10d59e43d1a8a55623aa16d4b877301cc771d885cc23832')
 
 package() {
   install -dm755 "$pkgdir/opt" "$pkgdir/usr/bin" \
                  "$pkgdir/usr/share/applications" \
                  "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-  cp -a "$srcdir/xdm-app-${_appver}" "$pkgdir/opt/xdm-app"
+  cp -a "$srcdir/xdm-app-$pkgver" "$pkgdir/opt/xdm-app"
   ln -s /opt/xdm-app/bin/xdm-app "$pkgdir/usr/bin/xdm-app"
 
   # The app image only ships one (256 px) icon; desktops scale it as needed.
-  install -Dm644 "$srcdir/xdm-app-${_appver}/lib/xdm-app.png" \
+  install -Dm644 "$srcdir/xdm-app-$pkgver/lib/xdm-app.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/xdm-app.png"
 
   cat > "$pkgdir/usr/share/applications/xdm-app.desktop" <<'DESKTOP'
