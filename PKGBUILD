@@ -9,8 +9,8 @@
 
 pkgname=rbw-enhanced
 _pkgname=rbw
-_commit=4a96f28c2da45b7680ba4e778811ee2a8f8f479f
-pkgver=1.15.0.r49.g4a96f28
+_commit=3a025e815ae88f2d5d0cbe7393a287c5c4cc981a
+pkgver=1.15.0.r50.g3a025e8
 pkgrel=1
 pkgdesc='Unofficial Bitwarden client: TUI, full editing, howdy/fingerprint/PIN unlock, persistent login (rbw fork)'
 arch=(x86_64)
@@ -34,7 +34,7 @@ optdepends=(
 makedepends=(rust)
 options=(!lto)
 source=("$_pkgname-$_commit.tar.gz::https://github.com/rylos/rbw/archive/$_commit.tar.gz")
-sha256sums=('13702511dd21ac3953f84cdddb67cd62d931fe2d6c978b1a9e029c670e0cb526')
+sha256sums=('2d955427f045b1701f55936f0bb21269a7cb7a276cd41c3bd3256eae66820641')
 
 # PORTABLE_CPU (e.g. x86-64-v3, set in ~/.config/pacman/makepkg.conf) replaces
 # the native CPU flags of makepkg.conf, so one package runs on every machine
