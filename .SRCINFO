@@ -1,0 +1,43 @@
+pkgbase = asc-devkit-git
+	pkgdesc = Huawei Ascend CANN Ascend C devkit (compiler headers, tikcpp, Ascend C libs) - source build
+	pkgver = 9.2.0.r3250.343a6e89d2
+	pkgrel = 1
+	url = https://atomgit.com/cann/asc-devkit
+	arch = x86_64
+	arch = aarch64
+	license = custom:CANN-OSLA-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = asc-runtime
+	makedepends = asc-bisheng
+	makedepends = asc-toolkit
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	depends = python
+	depends = asc-runtime
+	depends = asc-bisheng
+	depends = asc-toolkit
+	provides = asc-devkit
+	conflicts = asc-devkit
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source = asc-devkit::git+https://atomgit.com/cann/asc-devkit.git#branch=9.2.0
+	source = cann-cmake::git+https://gitcode.com/cann/cmake.git#tag=master-054
+	source = makeself-release-2.5.0.tar.gz::https://cann-3rd.obs.cn-north-4.myhuaweicloud.com/makeself/makeself-release-2.5.0.tar.gz
+	source = makeself-2.5.0.patch::https://cann-3rd.obs.cn-north-4.myhuaweicloud.com/makeself/makeself-2.5.0.patch
+	source = boost_1_87_0.tar.gz::https://cann-3rd.obs.cn-north-4.myhuaweicloud.com/boost/boost_1_87_0.tar.gz
+	source = json-3.12.0.tar.gz::https://cann-3rd.obs.cn-north-4.myhuaweicloud.com/json/json-3.12.0.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 705d0376db9109a8ef1d4f3876c9997ee6bed454a23619e1dbc03d25033e46ea
+	sha256sums = abb9efe26f95db61ce927a7d046ea2c73ec908cec984ea6316892b4c8b11d784
+	sha256sums = f55c340aa49763b1925ccf02b2e83f35fdcf634c9d5164a2acb87540173c741d
+	sha256sums = 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
+
+pkgname = asc-devkit-git
