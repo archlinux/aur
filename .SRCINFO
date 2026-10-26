@@ -1,0 +1,14 @@
+pkgbase = rhythmbox-now-playing-sidebar
+	pkgdesc = Adds a Now Playing box to Rhythmbox's left sidebar
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/username227/Rhythmbox-Now-Playing-Sidebar
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = rhythmbox
+	depends = libpeas
+	depends = python-gobject
+	source = rhythmbox-now-playing-sidebar-1.0.0.tar.gz::https://github.com/username227/Rhythmbox-Now-Playing-Sidebar/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = db1805d88df7ffd8e03e6225d3538c3978752a2ed1a4947e796de09a107c886b
+
+pkgname = rhythmbox-now-playing-sidebar
