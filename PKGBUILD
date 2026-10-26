@@ -2,7 +2,7 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 
 pkgname=oneleet-agent
-pkgver=2.4.1
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Endpoint security and compliance agent by Oneleet'
 arch=('x86_64' 'aarch64')
@@ -50,8 +50,8 @@ sha512sums=('a6b526737d54bd6ce96ba42882cd3733daad8af217da946447e2deeae857aedf124
             '69218b100ac240d112a99676d3f91de32bada71c5bf5d24ac112e74fdec1ac04243f567d5ee5c2d1cf90e75283b47be5a46520091498cb9c4ff098ac48f1cb9e'
             'ca4b6defb8adcc010050bc8b1bb8f8092c4928b8a0fba32146abcfb256e4d91672f88ca2cdf6210e754e5b8ac5e23fb023806ccd749ac8b701f79a691f03c87a'
             '028763481b30f2f134d15837cfac9dc14543e5322ef6c0fbae9f8a20d6854c88b6693739bb5d75b1234d39b96c76c0babf2a229eabe11dcdd014e194a19fdcdd')
-sha512sums_x86_64=('28ede6dd29d42dadf8d6982dd7bee2fec1f31804072e7ee75afd8294b82db0acb4ec422e7b9613738c48bb039c3b9dae7b5bc79ae7715dcd15a7a096cfc35a56')
-sha512sums_aarch64=('7041bfd370d1b7652b3b4558f87714b50f27881d706fe392f658648e7e2c0800c5a1ab3344276b0900348b245cbd15f07a51ddb144d696a312f54ef114648b09')
+sha512sums_x86_64=('f6fa463115283d2decbc18f5721ccdb5df7ec2fbcc8e182740e6ebae7b77308c37e2154618a95cdbebccf24f130a762d0551a27fb0ea58dbcbf2a59fa676f434')
+sha512sums_aarch64=('0b6a06fa85796b9a739d056c0c8989b86510f839eaeeb6fd5f608dcbe2b37254bf5a4e666da3fa4164e73c31f78f55d796a71d6d99481080a76d3068b1a1cf17')
 
 package() {
   bsdtar --no-same-owner -xf data.tar.xz -C "$pkgdir"
