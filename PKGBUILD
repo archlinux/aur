@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=aurgen
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Generate, test and publish AUR packages for GitHub projects'
 arch=('any')
@@ -17,8 +17,8 @@ license=('GPL-3.0-or-later')
 validpgpkeys=('2B0541BF62E91D538C55739DF677BC1E3BD7246E')
 depends=('curl' 'jq' 'util-linux' 'bash' 'coreutils' 'diffutils' 'findutils' 'gawk' 'git' 'gnupg' 'grep' 'gzip' 'make' 'pacman' 'pacman-contrib' 'sed' 'tar')
 optdepends=('github-cli: create GitHub releases and upload assets in aur mode' 'shellcheck: lint mode' 'namcap: PKGBUILD checks in test mode' 'bubblewrap: sandboxed make install for runtime dependency detection')
-source=("https://github.com/eserlxl/aurgen/releases/download/v1.11.0/aurgen-1.11.0.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.11.0/aurgen-1.11.0.tar.gz.sig")
-b2sums=('515dd2414e5f7b433b0f65a4a54528b3d94ce21595cb6a6d7c8e664c473ba9c8bdb955e9e5d49785f19f528525a9d662c81981765745f1e3757212265a6e9ce2'
+source=("https://github.com/eserlxl/aurgen/releases/download/v1.12.0/aurgen-1.12.0.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.12.0/aurgen-1.12.0.tar.gz.sig")
+b2sums=('bd5712aed3cc5ba4aa3ae8fafec37ce2ccd6abb657eea33505ea560174f1c8354bc76f7f9b066f0a4232b336cec0c0d9778c18cd6f00becee39558dc37504476'
         'SKIP')
 
 build() {
@@ -36,7 +36,7 @@ copy_tree() {
     abs_src="$(realpath "$src" 2>/dev/null)" || return 0
 
     # Patterns stay find arguments so install-YAML metacharacters are not executed.
-    local -a find_cmd=(find "$abs_src" -type f)
+    local -a find_cmd=(find "$abs_src" \( -type f -o -type l \))
     local exclude
     for exclude in "$@"; do
         # Trim whitespace
@@ -52,8 +52,13 @@ copy_tree() {
 
     for file in "${files[@]}"; do
         local relpath
-        relpath="$(realpath --relative-to="$abs_src" "$file")"
-        install -Dm"$mode" "$file" "$pkgdir/$destbase/$relpath"
+        relpath="$(realpath -s --relative-to="$abs_src" "$file")"
+        if [[ -L "$file" ]]; then
+            mkdir -p "$(dirname "$pkgdir/$destbase/$relpath")"
+            ln -s "$(readlink "$file")" "$pkgdir/$destbase/$relpath"
+        else
+            install -Dm"$mode" "$file" "$pkgdir/$destbase/$relpath"
+        fi
     done
 }
 
