@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 
 pkgname=muster-agent-bin
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc='Agentic development environment (ADE) for Codex, Claude Code, OpenCode and local models'
 arch=('x86_64')
@@ -34,7 +34,7 @@ _url="https://github.com/musterhq/muster-code/releases/download/agent-v${pkgver}
 
 source=("${_deb}::${_url}/${_deb}"
         "LICENSE::https://raw.githubusercontent.com/musterhq/muster-code/agent-v${pkgver}/LICENSE")
-sha256sums=('8f64a155007eb521d3ffbbc89614316a6f7d839c3630404bfa72be18efc5478e'
+sha256sums=('05a325827e64caf773212ae425463ba2dc2908f76700672dcf9c5e212740ff8f'
             '8be9dc5eea50ccc91e9c3be00ffd5c973531f2f0a7098e9bd979b4355523661e')
 
 prepare() {

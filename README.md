@@ -28,7 +28,7 @@ Upstream publishes Linux builds on GitHub releases under tags of the form
 `agent-v<version>`, as a `.deb`, a `.tar.gz` and an `.AppImage`:
 
 ```
-https://github.com/musterhq/muster-code/releases/download/agent-v0.3.14/Muster-Agent-0.3.14-linux-amd64.deb
+https://github.com/musterhq/muster-code/releases/download/agent-v0.3.15/Muster-Agent-0.3.15-linux-amd64.deb
 ```
 
 All three carry the three checksums published in the release's `SHA256SUMS`
