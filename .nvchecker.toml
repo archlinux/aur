@@ -1,0 +1,3 @@
+[python-bloodhound-ce]
+source = "pypi"
+pypi = "bloodhound-ce"
