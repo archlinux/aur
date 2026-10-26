@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname='五笔码表助手'
-pkgver=1.4.3
+pkgver=1.5.2
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -31,32 +31,34 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('b25c01fa9c1fa71ce1a52efcefdb33511c573f431365c5c02991ecf850587856'
-            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
-_ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
-}
+sha256sums=('6e288bc6392c020d47cccac7faae36cb74eaa1b463a73a176f315bfc2f5201d7'
+            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
 		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
+_ensure_local_nvm() {
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
+}
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
 	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
 		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -v '^$' | sed 's/^[^0-9]*//' | head -1)
+		| grep -oE '[0-9]+' | head -1)
 	[[ -z "${_elec_ver}" ]] && return 1
-	echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -74,7 +76,7 @@ _set_build_env() {
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
 	local _yarnver _yarnmajor=0
-	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
+	_yarnver="$(node -p "try { require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || '' } catch { '' }" 2>/dev/null || true)"
 	_yarnmajor="${_yarnver%%.*}"
 	_yarnmajor="${_yarnmajor:-0}"
 	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
@@ -89,7 +91,12 @@ _set_build_env() {
 		export YARN_HTTP_TIMEOUT=600000
 		export YARN_HTTP_RETRY=5
 		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}"
+		local _yarnhome="${HOME}/.yarn/install"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}" "${_yarnhome}"
+		if [[ -n "${_yarnver}" ]]; then
+			npm install -g "@yarnpkg/cli-dist@${_yarnver}" --prefix "${_yarnhome}" --registry "${npm_config_registry}"
+			export PATH="${_yarnhome}/bin:${PATH}"
+		fi
 	else
 		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
 		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
@@ -102,6 +109,7 @@ _set_build_env() {
 		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
 	fi
 	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
+	export YARN_REGISTRY="${_reg}"
 	_reg="${_reg%/}"
 	if [[ -f .yarnrc ]]; then
 		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
@@ -111,15 +119,13 @@ _set_build_env() {
 	fi
 }
 _use_local_electron_for_forge() {
-	local _v="${SYSTEM_ELECTRON_VERSION}"
+	local _arch=$([[ "${CARCH}" == "aarch64" ]] && echo arm64 || [[ "${CARCH}" == "armv7h" ]] && echo armv7l || echo x64)
 	local _zd="${srcdir}/electron-zips"
-	case "${CARCH}" in
-		aarch64)	_arch=arm64	;;
-		x86_64)		_arch=x64	;;
-	esac
-	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
-	install -Dm755 -d "${_zd}"
-	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
+	local _zf="${_zd}/electron-v${SYSTEM_ELECTRON_VERSION}-linux-${_arch}.zip"
+	mkdir -p "${_zd}"
+	rm -f "${_zf}"
+	( cd "${ELECTRON_DIST}" && find . \( -type f -o -type l \) -readable -print | zip -@ -0 -q -y "${_zf}" )
+	[[ -s "${_zf}" ]] || { echo "ERROR: Failed to generate electron zip (directory not readable?)"; return 1; }
 	find . -name "forge.config.*" ! -path "*/node_modules/*" -print0 | while IFS= read -r -d '' _cfg; do
 		sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${_cfg}"
 	done
@@ -130,8 +136,6 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-        s/@runname@/app/g
-        s/@cfgdirname@/${pkgname}/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
@@ -145,7 +149,7 @@ prepare() {
     _set_build_env
     icns2png  -d 32 -x assets/img/appIcon/appIcon.icns -o assets/img/appIcon/
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
-    sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" main.js
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     rm -rf package-lock.json yarn.lock
     export NODE_ENV=development
     yarn install
@@ -157,18 +161,17 @@ build() {
     _set_build_env
     export NODE_ENV=production
     yarn run package
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    local _src="$(_get_project_dir)"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     _icon_sizes=(16x16 32x32 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${_src}/assets/img/appIcon/appIcon_${_icons}x32.png" \
+        install -Dm644 "$(_get_project_dir)/assets/img/appIcon/appIcon_${_icons}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/app/${pkgname}.png"
     done
-    install -Dm644 "${_src}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_src}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
