@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=4.8.0
+pkgver=4.8.1
 _nodeversion=24
 pkgrel=1
 pkgdesc="Transparent chat overlay for streamers. Twitch, YouTube, and Kick in one window."
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "modifiers_linux.go"
 )
-sha256sums=('fb4c02c2ad7a5997fd7f37e0b480b51d6493807cb978a9b808243e9bd4c9d65f'
+sha256sums=('a1073d6833bd261ae9712a2590efbcf761591b3adc7e6238c22f8a9eb6268c94'
             '131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c')
 _get_project_dir() {
 	local d
@@ -108,9 +108,9 @@ prepare() {
     pnpm install
 }
 build() {
-    _set_build_env
+	cd "$(_get_project_dir)/build"
     _ensure_local_nvm
-    cd "$(_get_project_dir)/build"
+    _set_build_env
     go mod tidy
     wails3 generate bindings -f '-tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1"' -clean=true -ts
     cd "$(_get_project_dir)/frontend"
