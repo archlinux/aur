@@ -1,7 +1,7 @@
 # Maintainer: Marcel Krause <feuerwinter@gmail.com>
 
 pkgname=evebuddy-git
-pkgver=0.77.0.r137.g49bde8d
+pkgver=0.77.0.r141.ge808d97
 pkgrel=1
 pkgdesc='Multi-platform companion app for EVE Online (development version)'
 arch=('x86_64')
@@ -35,6 +35,7 @@ pkgver() {
 prepare() {
   cd evebuddy
   export GOPATH="${srcdir}"
+  export GOFLAGS='-modcacherw'
   go mod download
 }
 

@@ -1,6 +1,6 @@
 pkgbase = evebuddy-git
 	pkgdesc = Multi-platform companion app for EVE Online (development version)
-	pkgver = 0.77.0.r137.g49bde8d
+	pkgver = 0.77.0.r141.ge808d97
 	pkgrel = 1
 	url = https://github.com/ErikKalkoken/evebuddy
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = evebuddy-git
 	depends = libxxf86vm
 	depends = wayland
 	depends = xdg-utils
-	provides = evebuddy=0.77.0.r137.g49bde8d
+	provides = evebuddy=0.77.0.r141.ge808d97
 	conflicts = evebuddy
 	options = !debug
 	source = git+https://github.com/ErikKalkoken/evebuddy.git
