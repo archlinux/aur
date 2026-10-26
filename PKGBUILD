@@ -1,9 +1,10 @@
-# Maintainer: TryA <tryagainprod@gmail.com>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: TryA <tryagainprod@gmail.com>
 # Contributor: Eric Belanger <belanger@astro.umontreal.ca>
 
 pkgname=csmash
 pkgver=0.6.6
-pkgrel=5
+pkgrel=6
 pkgdesc="A 3D table tennis game"
 arch=('i686' 'x86_64')
 url="http://cannonsmash.sourceforge.net"
