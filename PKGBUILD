@@ -4,7 +4,7 @@ _gitauthor=devlinx9
 _gitname=muon-ssh
 _appname=${_gitname//-/}
 pkgname=${_gitname}-bin
-pkgdesc="Graphical SFTP client and terminal emulator with helpful utilities."
+pkgdesc="Graphical SFTP client and terminal emulator (SSH) with helpful utilities."
 
 pkgver=3.0.0
 pkgrel=1
@@ -37,6 +37,10 @@ package() {
 	cd "${pkgdir}"
 
 	tar -xf "${srcdir}/data.tar.gz"
+
+	echo "Terminal=false" >> "${pkgdir}/usr/share/applications/${_appname}.desktop"
+	echo "Comment=${pkgdesc}" >> "${pkgdir}/usr/share/applications/${_appname}.desktop"
+	echo "Categories=Network;FileTransfer;" >> "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
 	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
