@@ -1,51 +1,47 @@
 # Maintainer: callmetango
-# Contributor: artist <artist@artixlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-breeze
-_pkgname=sonic-breeze
-pkgver=6.7.5
-pkgrel=2
-pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for SonicDE.'
-arch=(x86_64)
+pkgver=6.8.0
+pkgrel=1
+pkgdesc='Artwork, styles and assets for the Breeze visual style for SonicDE'
+arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-breeze'
 license=('LGPL-2.0-or-later')
-depends=(frameworkintegration
-         gcc-libs
-         glibc
-         hicolor-icon-theme
-         kcmutils
-         kcolorscheme
-         kconfig
-         ki18n
-         kiconthemes
-         kwidgetsaddons
-         libstdc++
-         qt6-base
-         qt6-declarative
-         qt6-svg
-         sonic-decoration
-         sonic-frameworks-color-scheme
-         sonic-frameworks-core-addons
-         sonic-frameworks-gui-addons
-         sonic-frameworks-icon-themes
-         sonic-frameworks-quick-ui
-         sonic-frameworks-windowsystem
-         sonic-silver
-         sonic-silver-icons
-         xdg-utils)
-makedepends=(sonic-frameworks-cmake-modules)
-conflicts=(breeze-cursors)
-groups=(sonicde)
+depends=(
+	'glibc'
+	'libstdc++'
+	'qt6-base'
+	'qt6-declarative'
+	'qt6-svg'
+	'sonic-decoration'
+	'sonic-frameworks-color-scheme'
+	'sonic-frameworks-core-addons'
+	'sonic-frameworks-gui-addons'
+	'sonic-frameworks-icon-themes'
+	'sonic-frameworks-internationalization'
+	'sonic-frameworks-qt-integration'
+	'sonic-frameworks-quick-ui'
+	'sonic-frameworks-settings'
+	'sonic-frameworks-settings-utils'
+	'sonic-frameworks-widgets-addons'
+	'sonic-frameworks-windowsystem'
+	'sonic-silver-icons'
+)
+makedepends=('sonic-frameworks-cmake-modules')
+conflicts=('breeze-cursors')
+groups=('sonicde')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('927307907a5c5af11e48ee5c426d17c3dbae3826f005ce9b0ea2de408ccb6422')
+sha256sums=('cc66d45f6830bf502dfb4c82ca7ee9369498a41a677d6dfb6ba860299b325e18')
 
 build() {
-  cmake -B build -S "${_pkgname}-${pkgver}" \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QT5=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
