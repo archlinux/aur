@@ -1,6 +1,6 @@
 pkgbase = rawmakase
 	pkgdesc = Lightroom-compatible RAW photo editor
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://rawmakase.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = rawmakase
 	depends = libgcc
 	depends = libraw
 	options = !lto
-	source = https://github.com/pch/rawmakase/archive/refs/tags/v0.4.4/rawmakase-0.4.4.tar.gz
-	sha256sums = 550a44ce8df0dc390c30cd66e5e38f1a2eef7c56649b318e6b305d52f9535f10
+	source = https://github.com/pch/rawmakase/archive/refs/tags/v0.4.5/rawmakase-0.4.5.tar.gz
+	sha256sums = b5b8a7c6892bd76babb31bca0a55eb1e39419c7c6caed948ea43d0a045a67227
 
 pkgname = rawmakase
 	depends = glibc
