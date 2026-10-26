@@ -11,3 +11,4 @@
 !LICENSES/GPL-3.0-or-later.txt
 !REUSE.toml
 !fix-agent-version.patch
+!fix-os-release.patch

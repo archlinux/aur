@@ -1,0 +1,101 @@
+From 225d30c40907ecd0d7d8f62e9ba3539423ccd2e8 Mon Sep 17 00:00:00 2001
+From: executter <executter@hotmail.com>
+Date: Mon, 26 Oct 2026 12:00:45 +0100
+Subject: [PATCH 1/2] fix(baseLinux): read unquoted os-release values
+
+The regular expression that parses
+/etc/os-release only accepts values enclosed in
+double quotes. os-release(5) requires quotes
+only for values with spaces or special
+characters, and many distributions leave them
+out: Fedora writes VERSION_ID=44, Arch Linux
+writes ID=arch and BUILD_ID=rolling. Such keys
+are dropped, so the agent sends "null" as the
+osversion of every Fedora host.
+
+The new expression accepts double, single or no
+quotes, and must match the whole line.
+---
+ lib/core/inventory/linux/baseLinux.dart | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/lib/core/inventory/linux/baseLinux.dart b/lib/core/inventory/linux/baseLinux.dart
+index 08b62ab..d1a1555 100755
+--- a/lib/core/inventory/linux/baseLinux.dart
++++ b/lib/core/inventory/linux/baseLinux.dart
+@@ -54,8 +54,11 @@ class BaseLinux {
+         .split("\n");
+     Map<String, String> osRelease = {};
+     for (final info in getOSRelease) {
+-      RegExp exp = RegExp(r'(?<key>[\S]+?)="(?<value>[\S\s]+?)"');
+-      RegExpMatch? match = exp.firstMatch(info);
++      // Values are quoted only when they need it, see os-release(5):
++      // Fedora writes VERSION_ID=44 and Arch Linux writes ID=arch
++      RegExp exp = RegExp(
++          r'^(?<key>[A-Z0-9_]+)=(?<quote>["\x27]?)(?<value>.*)\k<quote>$');
++      RegExpMatch? match = exp.firstMatch(info.trim());
+       if (match != null) {
+         final entry = <String, String>{
+           match.namedGroup("key").toString():
+-- 
+2.56.0
+
+
+From ef63c469c181e1a24dc7fda7848add0395ae9ff7 Mon Sep 17 00:00:00 2001
+From: executter <executter@hotmail.com>
+Date: Mon, 26 Oct 2026 12:01:45 +0100
+Subject: [PATCH 2/2] fix(baseLinux): send no "null" for missing values
+
+The base inventory turns missing keys into the
+string "null" with toString(). Three cases occur
+in practice:
+
+- Arch Linux is a rolling release and has no
+  VERSION_ID in /etc/os-release, so osversion
+  becomes "null";
+- hostnamectl fails without systemd, in
+  containers or on Devuan, and the description
+  ends with " null";
+- NAME and PRETTY_NAME are optional, and
+  os-release(5) defaults both to "Linux".
+
+osversion is now empty when VERSION_ID is
+absent, which the server accepts (blank=True in
+asset/inventory_base/models.py of the backend).
+osname and the description fall back to
+"Linux", since the server refuses an empty
+value for them. The description drops the
+architecture when hostnamectl gives none.
+---
+ lib/core/inventory/linux/baseLinux.dart | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/lib/core/inventory/linux/baseLinux.dart b/lib/core/inventory/linux/baseLinux.dart
+index d1a1555..4639175 100755
+--- a/lib/core/inventory/linux/baseLinux.dart
++++ b/lib/core/inventory/linux/baseLinux.dart
+@@ -127,12 +127,16 @@ class BaseLinux {
+ 
+     dynamic body = ({
+       "name": name,
+-      "description": osRelease["PRETTY_NAME"].toString() +
+-          " " +
+-          hostnamectl["Architecture"].toString(),
++      // A missing value must not be sent as "null": os-release(5) defaults
++      // NAME and PRETTY_NAME to "Linux", rolling releases such as Arch Linux
++      // have no VERSION_ID, and hostnamectl is missing without systemd
++      "description": ((osRelease["PRETTY_NAME"] ?? "Linux") +
++              " " +
++              (hostnamectl["Architecture"] ?? ""))
++          .trim(),
+       "serial": await _getSerialNumber(name, macAddress),
+-      "osname": osRelease["NAME"].toString(),
+-      "osversion": osRelease["VERSION_ID"].toString(),
++      "osname": osRelease["NAME"] ?? "Linux",
++      "osversion": osRelease["VERSION_ID"] ?? "",
+       "uuid": await _getUUID(),
+       "srcip": (await commands.processTarget(
+               "BASH", "hostname -I", logType, "IP ADDRESS"))["value"]
+-- 
+2.56.0
+

@@ -11,7 +11,9 @@ pkgbase = ocsinventory-agent3
 	options = !debug
 	source = ocsinventory-agent3-3.0.0.tar.gz::https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/archive/refs/tags/3.0.0.tar.gz
 	source = fix-agent-version.patch
+	source = fix-os-release.patch
 	sha256sums = 704d641fc523902f88c05aa665e68d614cf5a3a26ce1f69e5fd3610fc4725365
 	sha256sums = 212f04b36efccf976251226ce1fc09f333ce7dafe3b50634b5199f81bdf1a9d3
+	sha256sums = d474fb83581dd17d282ea03558c9e3d9fc826e2d426e93e93ffd3179a4ad1b31
 
 pkgname = ocsinventory-agent3
