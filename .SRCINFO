@@ -1,6 +1,6 @@
 pkgbase = mongrel
 	pkgdesc = Desktop control plane for databases, APIs, terminals, containers, and Kubernetes
-	pkgver = 5.72.10
+	pkgver = 5.72.17
 	pkgrel = 1
 	url = https://www.visorcraft.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mongrel
 	depends = fuse2
 	options = !strip
 	validpgpkeys = 1FEE29F48CBCAEDCA3A8A005ADDE097CAA99B277
-	source_x86_64 = mongrel-5.72.10.AppImage::https://downloads.visorcraft.com/mongrel/5.72.10/Mongrel_5.72.10_amd64.AppImage
-	source_x86_64 = mongrel-5.72.10.AppImage.sig::https://downloads.visorcraft.com/mongrel/5.72.10/Mongrel_5.72.10_amd64.AppImage.sig
-	sha256sums_x86_64 = 9427838f4f9842cbd2eaed0b889d7f3d9a988b40e539bfe94baa7f112dc06fab
+	source_x86_64 = mongrel-5.72.17.AppImage::https://downloads.visorcraft.com/mongrel/5.72.17/Mongrel_5.72.17_amd64.AppImage
+	source_x86_64 = mongrel-5.72.17.AppImage.sig::https://downloads.visorcraft.com/mongrel/5.72.17/Mongrel_5.72.17_amd64.AppImage.sig
+	sha256sums_x86_64 = df9415a1108de4633b62e21139a02595a6591092c7cb86509efc19ade8239662
 	sha256sums_x86_64 = SKIP
 
 pkgname = mongrel
