@@ -1,0 +1,21 @@
+pkgbase = meo-account-bin
+	pkgdesc = Meo Account broker and authentication dialog for MeoArch (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 11
+	url = https://github.com/QwQdoge/MeoArch-account
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kwallet
+	depends = meoui-qml>=1.0.4beta1
+	provides = meo-account=0.1.0-11
+	conflicts = meo-account
+	noextract = meo-account-0.1.0-11-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	backup = etc/meo-account/broker.conf
+	source = meo-account-0.1.0-11-x86_64.pkg.tar.zst::https://packages.meoarch.org/meo/os/x86_64/meo-account-0.1.0-11-x86_64.pkg.tar.zst
+	sha256sums = d4b4539b818aaf82e94e2d39ca9892403569b78f3a1d182b2dcdc715f90b045b
+
+pkgname = meo-account-bin
