@@ -4,8 +4,8 @@
 # the meson gates), then push this file plus `makepkg --printsrcinfo > .SRCINFO`
 # to ssh://aur@aur.archlinux.org/log-for-linux.git.
 pkgname=log-for-linux
-_pkgtag=0.3.1
-pkgver=0.3.1
+_pkgtag=0.4.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita ham radio logbook (ADIF, contests, Cabrillo, TCI, WSJT-X)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('gtk4' 'libadwaita' 'glib2' 'sqlite' 'libwebsockets')
 # tools at meson-configure time even though DESTDIR skips the actual refresh.
 makedepends=('meson' 'desktop-file-utils' 'gtk-update-icon-cache')
 source=("$pkgname-$_pkgtag.tar.gz::$url/archive/refs/tags/v$_pkgtag.tar.gz")
-sha256sums=('8f63403f1fe98bc82cc7b0c40f66a7ffb1e9e5a27403206612b990c4948d3edb')
+sha256sums=('337a849979698149e3ab69dc16de0c9606652ac06e7900fc4774ce37d2b361ff')
 
 build() {
   arch-meson "$pkgname-$_pkgtag" build
@@ -28,6 +28,6 @@ check() {
 }
 
 package() {
+  # meson installs LICENSE to /usr/share/licenses/$pkgname/ itself (#22).
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 "$pkgname-$_pkgtag/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
