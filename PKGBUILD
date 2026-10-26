@@ -25,7 +25,7 @@ optdepends=('mangohud: Vulkan performance overlay'
 provides=('bloodborne-pc')
 conflicts=('bloodborne-pc')
 options=('!strip')
-source=("LanternEngine-${pkgver}-linux-x64.tar.gz::https://github.com/Awakenchan/LanternEngine/releases/download/v${pkgver}/LanternEngine-${pkgver}-linux-x64.tar.gz"
+source=("LanternEngine-v${pkgver}-linux-x64.tar.gz::https://github.com/Awakenchan/LanternEngine/releases/download/v${pkgver}/LanternEngine-v${pkgver}-linux-x64.tar.gz"
         'bloodborne-pc'
         'bloodborne-pc.desktop'
         'bloodborne-pc.png')
