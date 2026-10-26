@@ -3,7 +3,7 @@
 _appname=xcute
 pkgname=${_appname}
 pkgdesc="Execute reusable command workflows from a single CLI"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/HichemTab-tech/xcute"
@@ -23,7 +23,7 @@ noextract=("${pkgname}-${pkgver}.tgz")
 
 # source=("${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('95213b10968f395d3ed26b1177c0a0d307edae011baaf20c724f9a1bbf49b11efc2940b3b4b1dc587d8346d226df903a7af2a938413dd2b97f326ba20e7f8a3b')
+b2sums=('b4a7a611903586fb5ec1447d0681c249a1e65e448ba1b59fd50172715ca8019bfe48a46af4a2c2cbc121935277ee3174972de96b4b5edfc8e3c125873f6cb5f5')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
