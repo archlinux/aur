@@ -9,7 +9,7 @@
 
 pkgname=morgan-bin
 _nombre=morgan
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo (binario)'
 arch=('x86_64')
@@ -18,10 +18,12 @@ url='https://github.com/ImJustDoingMyPart/morgan'
 license=('GPL-3.0-or-later' 'MIT')
 depends=(
     'hyprland>=0.56'
-    'gtk4>=1:4.22'
-    'gtk4-layer-shell'
     'libpulse'
     'glib2'
+    'libxkbcommon'
+    'fontconfig'
+    # El motor dibuja con wgpu, que carga Vulkan al arrancar.
+    'vulkan-icd-loader'
     'pam'
     'systemd'
     'curl'
@@ -37,7 +39,7 @@ optdepends=(
     'cliphist: launcher, portapapeles'
     'wtype: launcher, escribir símbolos'
     'libqalculate: calculadora'
-    'rofimoji: launcher, datos de los símbolos'
+    'cava: ecualizador del reproductor en el centro de control'
     'libcanberra: sonidos del sistema'
     'uwsm: lanzar apps como unidades de systemd'
     'gpu-screen-recorder-ui: indicador y control de grabación'
@@ -50,7 +52,7 @@ backup=('etc/pam.d/morgan-lock')
 options=('!strip' '!debug')
 install=morgan.install
 source=("$_nombre-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_nombre-$pkgver-x86_64.tar.gz")
-sha256sums=('4d300ee404cc634ee8d012e436d31e9723cb6dabe664d066c14531df76a5e4eb')
+sha256sums=('00a4617a8bdfc846bf3aa386b46dcbf3abe6798cd96985a8f16dade74f9b10fe')
 
 package() {
     cp -a --no-preserve=ownership "$_nombre-$pkgver-x86_64"/. "$pkgdir/"
