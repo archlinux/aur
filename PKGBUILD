@@ -1,6 +1,6 @@
 # Maintainer: Matt Moyles <matt@mattmoyles.com>
 pkgname=jotmail
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _ftxui=7.0.3
 _toml=3.4.0
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "tomlplusplus-$_toml.tar.gz::https://github.com/marzer/tomlplusplus/archive/refs/tags/v$_toml.tar.gz"
         "stb-$_stb.tar.gz::https://github.com/nothings/stb/archive/$_stb.tar.gz"
         "vmime-$_vmime.tar.gz::https://github.com/kisli/vmime/archive/$_vmime.tar.gz")
-sha256sums=('1f71ab7514b012a3ec62df8b5c6b1875efb698f6f4c9b847983a1722e5aecade'
+sha256sums=('8543f87563ffb6ea19d30956baecfc4736d14f5d7a9a5d737270356a0a2c3609'
             'e7c62ffe19009759821b4f0f8df7f2a6fb83784c3a9f1477d81f56d3ee723c88'
             '8517f65938a4faae9ccf8ebb36631a38c1cadfb5efa85d9a72e15b9e97d25155'
             '9a955b1b49a4410088a2e0ee2a9c057c3c907d0c1d75454144cb980aca0ba515'
