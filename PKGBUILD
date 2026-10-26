@@ -27,24 +27,24 @@ checkdepends=(
   python-pytest
 )
 optdepends=(
-  'python-pyqtgraph: graph and visualization support'
-  'python-opengl: binviz module support'
-  'python-capstone: disassembly support'
   'arj: ARJ decompression support'
+  'bzip2: BZIP2 archive support'
   'cabextract: CAB archive support'
   'cpio: CPIO archvie support'
+  'cramfsswap: big-endian CramFS filesystem extraction'
+  'cramfs-tools: CramFS filesystem extraction'
   'gzip: GZIP decompression support'
+  'lhasa: LHA support'
   'mtd-utils: JFFS filesystem support'
   'p7zip: ZIP, LZMA and ISO decompression support'
+  'python-capstone: disassembly support'
+  'python-opengl: binviz module support'
+  'python-pyqtgraph: graph and visualization support'
+  'sleuthkit: forensic analysis support'
   'squashfs-tools: squashfs support'
   'tar: TAR archive support'
-  'bzip2: BZIP2 archive support'
   'unrar: RAR decompression support'
   'xz: XZ decompression support'
-  'cramfs-tools: CramFS filesystem extraction'
-  'cramfsswap: big-endian CramFS filesystem extraction'
-  'lhasa: LHA support'
-  'sleuthkit: forensic analysis support'
 )
 provides=('binwalk')
 source=(
