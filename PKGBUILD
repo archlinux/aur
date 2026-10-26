@@ -1,4 +1,5 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Rubin Simons <me@rubin55.org>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=(
@@ -6,7 +7,7 @@ pkgname=(
   'python-ctranslate2'
 )
 pkgbase=ctranslate2
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
@@ -29,7 +30,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git')
-sha256sums=('b9261d99550030a626a2bb4bb12dd66d832c1e04da7f0f7032cf641de0794433'
+sha256sums=('bc74a27b512b50768e66b68f657f0a86afd66f68b81b8c9d23c8aadc9e3c7673'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -60,6 +61,11 @@ prepare() {
 }
 
 build() {
+  # ENABLE_CPU_DISPATCH=ON (the default) copies kernels.cc per ISA;
+  # AVX -march in CXXFLAGS makes these copies collide at link time.
+  # This export removes -march from CXXFLAGS.
+  export CXXFLAGS="$(sed -E 's/-march=[^ ]+ ?//g' <<<"$CXXFLAGS")"
+
   local cmake_options=(
     -B build
     -G Ninja
