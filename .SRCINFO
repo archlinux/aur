@@ -1,0 +1,20 @@
+pkgbase = velocitty
+	pkgdesc = Terminal for Linux desktops
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/xapp-project/velocitty
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = python-xapp
+	depends = vte4
+	depends = xapp-symbolic-icons
+	source = velocitty-1.0.4.tar.gz::https://github.com/xapp-project/velocitty/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = 25fa9e98f0537644107d7c721be3ca1149e17e3e22e04618e53ec38dfd74af91
+
+pkgname = velocitty
