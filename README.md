@@ -4,11 +4,10 @@ Arch Linux `PKGBUILD` that packages the official **nPerf** GUI network speed-tes
 client for Linux, distributed upstream as an AppImage
 ([nperf.com](https://www.nperf.com/)).
 
-This is a continuation of the
+This is the source repository of the
 [AUR `nperf-gui-appimage`](https://aur.archlinux.org/packages/nperf-gui-appimage)
-package, kept up to date with newer nPerf releases. Full credit for the original
-packaging goes to the maintainer listed in the `PKGBUILD` header; this repo only
-tracks new upstream versions on top of that work.
+package, which I maintain since October 2026. The original packaging is the work
+of the previous maintainer, credited as a contributor in the `PKGBUILD` header.
 
 ## What it does
 
@@ -31,12 +30,25 @@ Requires `fuse` (fuse2) at runtime to run the AppImage.
 nPerf's Linux downloads live at `https://repo.nperf.com/linux/nperf/`. To bump:
 
 1. Set `pkgver` to the new version (verify the AppImage exists at that URL first).
-2. Regenerate the checksum: `makepkg -g` and paste the printed `md5sums=(...)`.
+2. Regenerate the checksum: `makepkg -g` and paste the printed `sha256sums=(...)`.
 3. Regenerate metadata: `makepkg --printsrcinfo > .SRCINFO`.
 4. Verify it builds: `makepkg -f`.
 
+## Publishing
+
+`main` is pushed to GitHub and, as `master`, to the AUR (which only accepts
+`master`). The `aur` remote is configured to do that mapping:
+
+```bash
+git remote add aur ssh://aur@aur.archlinux.org/nperf-gui-appimage.git
+git config remote.aur.push refs/heads/main:refs/heads/master
+git push origin && git push aur
+```
+
 ## License
 
-nPerf is proprietary freeware (`license=GPL` in the PKGBUILD refers to the
-packaging). This repository contains only the packaging recipe; the AppImage
-itself is downloaded from nPerf's servers during the build.
+The packaging files in this repository are licensed under [0BSD](LICENSE).
+
+nPerf itself is proprietary freeware with no published source, hence
+`license=('LicenseRef-nPerf')` in the `PKGBUILD`. The AppImage is downloaded
+from nPerf's servers during the build and is not part of this repository.
