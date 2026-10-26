@@ -1,24 +1,25 @@
 # Maintainer: callmetango
 
 pkgname=sonic-breeze-sddm
-pkgver=6.7.5
+pkgver=6.8.0
 pkgrel=1
-pkgdesc="Sonic Breeze SDDM Theme (KDE Plasma 6)"
+pkgdesc="Sonic Breeze SDDM Theme"
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-breeze-sddm'
 license=('LGPL-2.0-or-later')
 depends=(sonic-workspace)
 makedepends=(sonic-frameworks-cmake-modules)
+options=('!debug')
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b2452f3984b14f037b2446a208fa3a4f18492c2e870559925357e069e4ef2409')
+sha256sums=('3d65892246d009bebb33059f12217bb36101cb91f79371496330ddb98e913cd6')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
