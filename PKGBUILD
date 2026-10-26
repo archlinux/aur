@@ -1,6 +1,6 @@
 # Maintainer: Johan Larsson <johan@jolars.co>
 pkgname=panache-bin
-pkgver=3.17.0
+pkgver=3.17.1
 pkgrel=1
 pkgdesc="A language server, formatter, and linter for Quarto and other Markdown flavors"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('panache')
 options=(!strip)
 source_x86_64=("panache-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/panache-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("panache-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/panache-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('6001f0f7f0971c9f8036554b6138ac674e9a06ce9de340197113a985913c9262')
-sha256sums_aarch64=('7af5f91319ceb05790c5b744c140f01623f539453d7b21d5a2bf2c0018994caa')
+sha256sums_x86_64=('64509993b0eb4091fc34a0f667565377af29436014bbba05947b327a275013b6')
+sha256sums_aarch64=('a14dac6febe97e697963f706bdad5fd27d98d4364d1b25e53917ab5d41ac12fc')
 
 package() {
     # Binary
