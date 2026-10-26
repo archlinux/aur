@@ -1,0 +1,13 @@
+pkgbase = meo-icons
+	pkgdesc = Meo Symbols Material Design 3 icon theme
+	pkgver = 0.4.0
+	pkgrel = 5
+	url = https://github.com/QwQdoge/meo-kde
+	arch = any
+	license = Apache-2.0
+	depends = breeze-icons
+	depends = hicolor-icon-theme
+	source = meo-kde-3663bfdbc62c041727b9379ba5a34829a1763328.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/3663bfdbc62c041727b9379ba5a34829a1763328
+	sha256sums = c1e543ae72968283ce06c6eaf813f9d5db516bb840419bd99858523142c6a982
+
+pkgname = meo-icons
