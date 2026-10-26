@@ -1,0 +1,22 @@
+pkgbase = sonic-frameworks-settings
+	pkgdesc = Configuration system
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-settings
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = kconfig
+	conflicts = kconfig
+	source = sonic-frameworks-settings-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-settings/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 845977f05939d8a22ccec2cec65feb295cdfd9dbea1eb97c3d54e839376a7a09
+
+pkgname = sonic-frameworks-settings
