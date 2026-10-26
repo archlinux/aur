@@ -1,0 +1,19 @@
+pkgbase = directory-navigator-bin
+	pkgdesc = A modern terminal file manager built in Rust with Turbo Vision, inspired by DOS Navigator
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/deemoun/Directory-Navigator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = dn
+	conflicts = directory-navigator
+	options = !strip
+	source_x86_64 = dn-x86_64-1.0.8.tgz::https://github.com/deemoun/Directory-Navigator/releases/download/v1.0.8/dn-1.0.8-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 216885484910470070a6ea30b12744c5acb7b7968914846dafba75900d7dff9d
+	source_aarch64 = dn-aarch64-1.0.8.tgz::https://github.com/deemoun/Directory-Navigator/releases/download/v1.0.8/dn-1.0.8-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = 52a66f1fd029547222c60b9b9928652c7b997472157d678a49c4f898083b3296
+
+pkgname = directory-navigator-bin

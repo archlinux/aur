@@ -1,0 +1,5 @@
+[directory-navigator-bin]
+source = "github"
+github = "deemoun/Directory-Navigator"
+use_latest_release = true
+prefix = "v"
