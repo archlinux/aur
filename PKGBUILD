@@ -4,7 +4,7 @@
 # Co-Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=talosctl-bin
-pkgver=1.14.4
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="talosctl - A modern OS for Kubernetes"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
@@ -20,11 +20,11 @@ source_aarch64=("talosctl-${pkgver}-aarch64::${url}/releases/download/v${pkgver}
 source_armv7h=("talosctl-${pkgver}-armv7h::${url}/releases/download/v${pkgver}/talosctl-linux-armv7")
 source_riscv64=("talosctl-${pkgver}-riscv64::${url}/releases/download/v${pkgver}/talosctl-linux-riscv64")
 
-sha256sums=('17b5c3b2dd2b318d51ef392aaa4b5ae025b2b0b694884067e54ea90990b9ebde')
-sha256sums_x86_64=('0a69e3f9b682c5cd844b78dae305f6056ceb86c5fcc6913dcea78c527ed97cee')
-sha256sums_aarch64=('a4430fad81b8dc54d99e0dc7b7ea5d0741b93645bc612cbeadf12855c4ec60bb')
-sha256sums_armv7h=('d0452ed2ce9aea2ef5daaab9f450027c1c13bf79bb0466ab5c1a18ab5f940401')
-sha256sums_riscv64=('529c414504bcf9777bc5d0af4d3c9eed3bc87f826ea33988b593f3df7818c8ad')
+sha256sums=('cb44b8cfcb73d300f8d50d94f075d68cb072a8ebff6d4d4b6ef5c4355a57dfc0')
+sha256sums_x86_64=('ff432b68986709e6b69c563a08a2ced4232d5196b0dccd6d2e783e9d714d7d7d')
+sha256sums_aarch64=('dfd3aa33c3159810e216fc39afb685d4d120c8f2728e017d8c7f7635d3139382')
+sha256sums_armv7h=('4927d08ddd2430c37bae9ba2c3124da2571b56bdbff454db2cda7649a056a8bf')
+sha256sums_riscv64=('e14f17e0b6244dae81984b5fd0ae22212b1bf2824fe36a6fef06b6a699ee68aa')
 
 check() {
   chmod +x "talosctl-${pkgver}-${CARCH}"
