@@ -1,0 +1,20 @@
+pkgbase = sonic-oxygen-icons
+	pkgdesc = SonicDE Oxygen Icon Theme
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-oxygen-icons
+	arch = any
+	groups = sonicde-frameworks
+	license = LGPL-2.1-or-later
+	makedepends = qt6-base
+	makedepends = sonic-frameworks-cmake-modules
+	provides = oxygen-icons
+	conflicts = oxygen-icons
+	options = !debug
+	source = sonic-oxygen-icons-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-oxygen-icons/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = ae899a9f2dc5e57db733ffcb662522ec432a3d31490f6f9362ae34dd00a32c1d
+
+pkgname = sonic-oxygen-icons
+
+pkgname = sonic-oxygen-icons-svg
+	pkgdesc = SonicDE Oxygen Icon Theme (Scalable Vector Graphics)
