@@ -3,7 +3,7 @@ pkgname=golfetch-git
 pkgver=r36.g512e1f6
 pkgrel=2
 pkgdesc="A minimalist, suckless-style system fetch utility written in Go."
-arch=('x86_64') # I don't think program will work on ARM, so I wouldn't add any other (compile program for your processor if needed)
+arch=('x86_64') # I don't think program will work on ARM, so I wouldn't add any other architectures
 url="https://github.com/snowvy01/golfetch"
 license=('BSD-3-Clause')
 depends=('glibc')
@@ -26,13 +26,14 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  local _commit=$(git rev-parse --short HEAD)
 
   go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags="-s -w" \
+    -ldflags="-s -w -X main.GitCommit=${_commit}" \
     -o build/golfetch .
 }
 package() {
