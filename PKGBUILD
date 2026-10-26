@@ -3,10 +3,10 @@
 _pkgbase=chordpro
 pkgname=$_pkgbase-gui
 pkgver=6.101.0
-pkgrel=2
+pkgrel=3
 _pkgdownload=App-Music-ChordPro-$pkgver
 _alienwxver=0.73
-_wxver=3.009
+_wxver=3.010
 pkgdesc="A lyrics and chords formatting program (CLI and GUI)"
 arch=('x86_64')
 url="https://chordpro.org/"
@@ -44,7 +44,7 @@ source=("https://github.com/ChordPro/chordpro/releases/download/R$pkgver/$_pkgdo
         "$_pkgbase.sh")
 sha256sums=('554dfc744b882d8fa05f300dd8d1a06c4c547a4d91edf8bd19ba0c65ce616f9c'
             '4f230858ad7010c05f6bf9e111f686fe7ccc027be9826e9588a68640c3bd4872'
-            '18035c52c8bb69f773ec19f2de3d2fa78dac1c8cd5ce114958da8e081fcee19a'
+            '02883c8bc82e5784f4a1e2ad53ba2ce704d3d5d6b67f200788263fdd0fdf7da8'
             'b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311'
             '43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed')
 noextract=("Alien-wxWidgets-$_alienwxver.tar.gz" "Wx-$_wxver.tar.gz")
