@@ -1,6 +1,6 @@
 pkgbase = obs-multi-rtmp
 	pkgdesc = Multiple RTMP outputs plugin for OBS Studio
-	pkgver = 0.7.4.4
+	pkgver = 0.7.4.5
 	pkgrel = 1
 	url = https://github.com/sorayuki/obs-multi-rtmp
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = obs-multi-rtmp
 	depends = obs-studio
 	conflicts = obs-multi-rtmp-bin
 	conflicts = obs-multi-rtmp-git
-	source = obs-multi-rtmp-0.7.4.4.tar.gz::https://github.com/sorayuki/obs-multi-rtmp/archive/refs/tags/0.7.4.4.tar.gz
-	sha512sums = c99682a16eccdf5fac792ef60dcee8c2fe5808ef1c0deeffe3e88dec0dc5d8937e0115ed982522fefec348b43a361c8476f907f60c79c111ee7b181ff8b193b7
+	source = obs-multi-rtmp-0.7.4.5.tar.gz::https://github.com/sorayuki/obs-multi-rtmp/archive/refs/tags/0.7.4.5.tar.gz
+	sha512sums = aa156cc4b079a25f5cf84ddcbbdb3bd9935012371f455690a1ca68e5bb6727b8106b55f38a2fda5664a6731e3b87e8c351d0ad769e8bf09900f673f819b63cdc
 
 pkgname = obs-multi-rtmp
