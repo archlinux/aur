@@ -1,12 +1,12 @@
-diff -ura hamclock-4.22.orig/ESPHamClock/wifi.cpp hamclock-4.22.new/ESPHamClock/wifi.cpp
---- hamclock-4.22.orig/ESPHamClock/wifi.cpp	2026-01-18 10:44:20.000000000 -0500
-+++ hamclock-4.22.new/ESPHamClock/wifi.cpp	2026-04-14 00:43:32.805138234 -0400
-@@ -5,7 +5,7 @@
+diff -ura hamclock-4.33.orig/ESPHamClock/wifi.cpp hamclock-4.33.new/ESPHamClock/wifi.cpp
+--- hamclock-4.33.orig/ESPHamClock/wifi.cpp	2026-10-26 13:35:15.000000000 -0400
++++ hamclock-4.33.new/ESPHamClock/wifi.cpp	2026-10-26 13:52:43.509044538 -0400
+@@ -3,7 +3,7 @@
  
+ #include "HamClock.h"
  
+-#define DEFAULT_HOST "clearskyinstitute.com"
++#define DEFAULT_HOST "ohb.hamclock.app"
  // host name and port of backend server
--const char *backend_host = "clearskyinstitute.com";
-+const char *backend_host = "ohb.hamclock.app";
+ const char *backend_host = DEFAULT_HOST;
  int backend_port = 80;
- 
- // IP where server thinks we came from
