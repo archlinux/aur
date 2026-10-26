@@ -1,0 +1,18 @@
+pkgbase = polylauncher-bin
+	pkgdesc = PolyTrack Launcher For Multiple Versions Of The Game
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = https://git.polymodloader.com/PolyLauncher/PolyLauncher
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = curl
+	depends = fuse2
+	depends = zlib
+	depends = glibc
+	provides = polylauncher
+	options = !strip
+	source = git+https://git.polymodloader.com/PolyLauncher/PolyLauncher.git
+	sha256sums = SKIP
+
+pkgname = polylauncher-bin
