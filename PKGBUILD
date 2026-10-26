@@ -3,17 +3,14 @@
 _pkgname="CalibRaw"
 pkgname="${_pkgname,,}-bin"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=3
 pkgdesc="CalibRaw is a fast, non-destructive, GPU-accelerated RAW photo editor"
 
 url="https://github.com/Duecki1/CalibRaw"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 
-depends=(
-  'libraw'
-  'lensfun'
-)
+depends=('glibc' 'libgcc' 'libstdc++' 'libjpeg-turbo' 'libgomp' 'zlib' 'lensfun' 'hicolor-icon-theme')
 
 provides=("${_pkgname}")
 conflicts=("${pkgname%-bin}")
@@ -43,6 +40,8 @@ package() {
 	cd "${srcdir}/${_root}/" || exit
 
 	install -Dm755 usr/bin/${_pkgname} -t ${pkgdir}/usr/bin/
+
+	install -Dm755 usr/lib/libraw.so.26 -t ${pkgdir}/usr/lib/
 
 	find usr/share/applications/ -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 	find usr/share/icons/ -type f -exec install -Dm644 {} ${pkgdir}/{} \;
