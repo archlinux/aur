@@ -1,19 +1,21 @@
 pkgbase = muffon-bin
-	pkgdesc = Music streaming browser,retrieves audio, video and metadata from various Internet sources.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.4.0
+	pkgdesc = Music streaming browser,retrieves audio, video and metadata from various Internet sources.
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://muffon.netlify.app/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
-	depends = electron39
-	provides = muffon=2.4.0
+	depends = electron44
+	provides = muffon=2.5.0
 	conflicts = muffon
+	source = muffon.js
 	source = muffon.sh
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = muffon-2.4.0-aarch64.pacman::https://github.com/staniel359/muffon/releases/download/v2.4.0/muffon-2.4.0-linux-aarch64.pacman
-	sha256sums_aarch64 = 60b18957bc8411dd400334b57fc3fb3bfe5a313f8c69b3ba2e65041b5b961f18
-	source_x86_64 = muffon-2.4.0-x86_64.pacman::https://github.com/staniel359/muffon/releases/download/v2.4.0/muffon-2.4.0-linux-aarch64.pacman
-	sha256sums_x86_64 = 60b18957bc8411dd400334b57fc3fb3bfe5a313f8c69b3ba2e65041b5b961f18
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
+	source_aarch64 = muffon-2.5.0-aarch64.pacman::https://github.com/staniel359/muffon/releases/download/v2.5.0/muffon-2.5.0-linux-aarch64.pacman
+	sha256sums_aarch64 = a3aef502855a1fb464035359672ab411f20a35c2904ea393d8223dd21a1c4897
+	source_x86_64 = muffon-2.5.0-x86_64.pacman::https://github.com/staniel359/muffon/releases/download/v2.5.0/muffon-2.5.0-linux-aarch64.pacman
+	sha256sums_x86_64 = a3aef502855a1fb464035359672ab411f20a35c2904ea393d8223dd21a1c4897
 
 pkgname = muffon-bin
