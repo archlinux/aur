@@ -1,7 +1,7 @@
 # Maintainer: Snoopey
 pkgname=omnigent-desktop
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop client for collaborating with AI agents'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -25,6 +25,7 @@ prepare() {
   cd "omnigent-$pkgver"
   # Keep tool caches inside the sandboxed build directory.
   export XDG_CACHE_HOME="$srcdir/.cache" npm_config_cache="$srcdir/.cache/npm"
+  export PNPM_HOME="$srcdir/.pnpm-home"
   export npm_config_devdir="$srcdir/.cache/node-gyp"
   export ELECTRON_CACHE="$srcdir/.cache/electron" ELECTRON_BUILDER_CACHE="$srcdir/.cache/electron-builder"
   # Keep updates under the Arch package manager's control.
@@ -37,6 +38,7 @@ build() {
   cd "omnigent-$pkgver/web/electron"
   # Keep tool caches inside the sandboxed build directory.
   export XDG_CACHE_HOME="$srcdir/.cache" npm_config_cache="$srcdir/.cache/npm"
+  export PNPM_HOME="$srcdir/.pnpm-home"
   export npm_config_devdir="$srcdir/.cache/node-gyp"
   export ELECTRON_CACHE="$srcdir/.cache/electron" ELECTRON_BUILDER_CACHE="$srcdir/.cache/electron-builder"
   pnpm run build:overlay
