@@ -1,0 +1,24 @@
+pkgbase = sonic-frameworks-bookmarks
+	pkgdesc = Support for bookmarks and the XBEL format
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-bookmarks
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	depends = sonic-frameworks-core-addons
+	depends = sonic-frameworks-settings
+	depends = sonic-frameworks-widgets-addons
+	provides = kbookmarks
+	conflicts = kbookmarks
+	source = sonic-frameworks-bookmarks-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-bookmarks/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 218f4643bb1663c07324334f10927bab900a5e5b39b8ea937059b95b3c66ba8c
+
+pkgname = sonic-frameworks-bookmarks
