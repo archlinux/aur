@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=devkitty
 _pkgname=Devkitty
-pkgver=4.6.2
+pkgver=4.6.5
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -25,8 +25,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e32352a282d398a71aed41246dec46d9ff5fcfd5e1c41d38cd3d7dcf0b30e80f'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+sha256sums=('54a6d9e2474a67c9bcc586ddb413a399be0c63310fec0c96b1d3530dd8a7320f'
+            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -112,11 +112,11 @@ build() {
     export NODE_ENV=production
     pnpm run build
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "$(_get_project_dir)/assets/logo.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"

@@ -1,6 +1,6 @@
 pkgbase = devkitty
 	pkgdesc = Swiss army knife for developers.All your repos. One calm window.
-	pkgver = 4.6.2
+	pkgver = 4.6.5
 	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = devkitty
 	makedepends = jq
 	depends = electron41
 	conflicts = devkitty
-	source = devkitty-4.6.2.tar.gz::https://github.com/egor-xyz/devkitty/archive/refs/tags/v4.6.2.tar.gz
+	source = devkitty-4.6.5.tar.gz::https://github.com/egor-xyz/devkitty/archive/refs/tags/v4.6.5.tar.gz
 	source = devkitty.sh
-	sha256sums = e32352a282d398a71aed41246dec46d9ff5fcfd5e1c41d38cd3d7dcf0b30e80f
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 54a6d9e2474a67c9bcc586ddb413a399be0c63310fec0c96b1d3530dd8a7320f
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = devkitty
