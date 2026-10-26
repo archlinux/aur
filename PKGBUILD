@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, keyboard-driven podcast client (TUI) for Linux and macOS inspired by lazygit and mpdtui"
 
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('35236a643fde72c4a15382a6d291f50f62310cb662ffad445eaf868df5eee91a')
-sha256sums_aarch64=('b03f6dbf99d4cf21832269a6b1489dfe5a9f634836e33ad736d0c14a1b6abc61')
+sha256sums_x86_64=('b095b53eb167e8d04d78ee9047dce3f4006f7641c96158fd220f81e638faa41b')
+sha256sums_aarch64=('34c817f08995eed4a9321bfa292133b5abc1407e809ce6e1bcaa5a48e44f73fa')
 
 
 package() {
