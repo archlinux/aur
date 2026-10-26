@@ -1,0 +1,15 @@
+pkgbase = tracentp-git
+	pkgdesc = Network Time Protocol (NTP) tracer
+	pkgver = 1.1.0.r0.53c4ab7
+	pkgrel = 1
+	url = https://github.com/mengzhuo/tracentp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = tracentp
+	conflicts = tracentp
+	source = tracentp::git+https://github.com/mengzhuo/tracentp.git
+	sha256sums = SKIP
+
+pkgname = tracentp-git
