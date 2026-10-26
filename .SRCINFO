@@ -1,0 +1,23 @@
+pkgbase = sonic-frameworks-data-models
+	pkgdesc = Models for Qt Model/View system
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-data-models
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	optdepends = qt6-declarative: QML bindings
+	provides = kitemmodels
+	conflicts = kitemmodels
+	source = sonic-frameworks-data-models-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-data-models/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = fa825205e659fd1061f325407d9d6736f000243d7d139048633e7a6297632fb7
+
+pkgname = sonic-frameworks-data-models
