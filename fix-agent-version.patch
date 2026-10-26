@@ -1,0 +1,27 @@
+From 1183df0979f5eed150c4ac6c44f090a0d90cfee4 Mon Sep 17 00:00:00 2001
+From: Lea9250 <lea.droguet@factorfx.com>
+Date: Wed, 14 Oct 2026 11:19:45 +0000
+Subject: [PATCH] feat(ci): set the agent version from the release tag
+
+---
+ lib/core/config.dart | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/core/config.dart b/lib/core/config.dart
+index 222f3dd..404e000 100644
+--- a/lib/core/config.dart
++++ b/lib/core/config.dart
+@@ -40,7 +40,9 @@ class Config {
+ 
+   static late Map<String, dynamic> configFileContent = {};
+ 
+-  static const String agentVersion = "3.0.0-rc2";
++  /// Set to the release tag by .github/workflows/release.yml (-DAPP_VERSION).
++  static const String agentVersion =
++      String.fromEnvironment('APP_VERSION', defaultValue: 'dev');
+ 
+   /// Constructor.
+   Config(String configPath, String configContent) {
+-- 
+2.56.0
+

@@ -10,11 +10,16 @@ license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('dart')
 options=('!strip' '!debug')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('704d641fc523902f88c05aa665e68d614cf5a3a26ce1f69e5fd3610fc4725365')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        'fix-agent-version.patch')
+sha256sums=('704d641fc523902f88c05aa665e68d614cf5a3a26ce1f69e5fd3610fc4725365'
+            '212f04b36efccf976251226ce1fc09f333ce7dafe3b50634b5199f81bdf1a9d3')
 
 prepare() {
   cd OCSInventory-Agent-Rework-$pkgver
+
+  # Merged after 3.0.0: https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework/pull/168
+  patch -Np1 -i ../fix-agent-version.patch
 
   export PUB_CACHE="$srcdir/pub-cache"
   dart --suppress-analytics pub get
@@ -24,7 +29,8 @@ build() {
   cd OCSInventory-Agent-Rework-$pkgver
 
   export PUB_CACHE="$srcdir/pub-cache"
-  dart --suppress-analytics compile exe -o ocsinventory-cli lib/app/app.dart
+  dart --suppress-analytics compile exe -DAPP_VERSION=$pkgver \
+    -o ocsinventory-cli lib/app/app.dart
 }
 
 package() {

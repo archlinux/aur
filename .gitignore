@@ -8,4 +8,6 @@
 !LICENSE
 !LICENSES/
 !LICENSES/0BSD.txt
+!LICENSES/GPL-3.0-or-later.txt
 !REUSE.toml
+!fix-agent-version.patch

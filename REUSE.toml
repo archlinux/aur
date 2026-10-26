@@ -8,3 +8,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+# Changes to the agent, from upstream pull requests
+[[annotations]]
+path = [
+    "fix-agent-version.patch",
+]
+SPDX-FileCopyrightText = "OCS Inventory contributors"
+SPDX-License-Identifier = "GPL-3.0-or-later"
