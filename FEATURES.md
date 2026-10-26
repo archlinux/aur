@@ -61,10 +61,13 @@ HarfBuzz, "Hamburgefonstiv Αλφάβητο 0123", relative to `wght=400`:
 
 ## 2. OpenType features
 
-Scripts: `DFLT`, `latn` (AZE, CAT, CRT, KAZ, MOL, ROM, TAT, TRK), `cyrl` (BGR,
-MKD, SRB). Greek geometry is reached through `DFLT`, but `GPOS` also declares
-`grek` with `kern`/`mark`/`mkmk`/`cpsp`, so Greek kerning and mark positioning
-do apply. The `locl` feature is only registered for the languages listed below.
+Scripts in `GSUB`: `DFLT`, `latn` (AZE, CAT, CRT, KAZ, MOL, ROM, TAT, TRK),
+`cyrl` (BGR, MKD, SRB) – and **nothing for `grek`**. Greek drafts through
+`DFLT`, which carries every feature except `locl`, so every substitution
+described below reaches Greek text. `GPOS` does declare `grek`, but with `kern`
+only: **no `mark`, no `mkmk`, no `cpsp`**. Greek kerning applies; Greek
+combining marks are not anchored (see "Greek, in detail"). `locl` is only
+registered for the languages in its row.
 
 ### GSUB
 
@@ -73,24 +76,48 @@ do apply. The `locl` feature is only registered for the languages listed below.
 | `ccmp` | yes | Composes marks: precomposed accents, `.case` variants for capitals, `.narrow`/`.wide` combining marks |
 | `locl` | yes, per language | TRK/AZE/CRT: `i` → `i.loclTRK` (so `fi` cannot ligate and the dot stays); ROM/MOL: `Ş ş Ţ ţ` → `Ș ș Ț ț`; BGR: 19 Cyrillic forms (`Д Л в г д ж з и к л н п т ц ч ш щ ъ ь ю` → `.loclBGR`); SRB: `б г д п т` → `.loclSRB`; MKD: `ѓ` → `.loclMKD`; KAZ: the same TRK `i`; CAT: declared, no substitution in this build |
 | `liga` | yes | `ff` → `f_f`, `fi`, `fl`, `ffi` → `f_f_i`, `ffl` → `f_f_l` |
-| `calt` | yes | Contextual: `f` before an accented i/j becomes `f.calt` (shorter arm, `fï fì fî`), `j` after glyphs with a descender (`q`, `ζ`, `η`, `j`, …) becomes `j.calt`, Greek `periodcentered` between Greek letters becomes the ano teleia, Greek tonos placement |
+| `calt` | yes | The only contextual feature. Four jobs: (a) Greek all-caps setting – a tonos-bearing capital loses it in a caps run (`ΆΛΦΑ` → `ΑΛΦΑ`, `Ά Β` → `Α Β`, and `ΜΆΙΟΣ` → `ΜΑΪΟΣ`, the tonos becoming the dialytika of the correct spelling), while a capital followed directly by lowercase keeps it (`Άλφα`); (b) a lone accented capital loses it as soon as text follows (`Ά, τι να πω` → `Α, τι να πω`), and not all seven letters are in that lookup – `Ή` always keeps its accent, `Ά Έ Ί Ό Ύ Ώ` do not; (c) a `periodcentered` after a Greek letter at a word end becomes U+0387 ano teleia (`α·`), while between two letters it stays U+00B7; (d) collision repairs – `f` becomes `f.calt` (shorter arm) before a dotted i/j carrying an accent (`fï fî ĩ ĵ ḯ`), and `j` becomes `j.calt` after a glyph with a descender (`qj ζj дj`) |
 | `rvrn` | always (required) | Feature variations; see below |
-| `ss01` | no | The **cursive** `a g`: 42 glyphs (`a`→`a.ss01`, `g`→`g.ss01` and every accented `a`). Pixel-identical to `CRSV=1` – this is how a browser reaches the cursive forms |
+| `ss01` | no | The **cursive** `a g`: 42 glyphs, `a`→`a.ss01`, `g`→`g.ss01`, every accented `a`, Cyrillic `а ѓ ӑ ӓ ӕ`, and `ordfeminine`. Nothing Greek. Pixel-identical to `CRSV=1` – this is how a browser reaches the cursive forms |
 | `tnum` | no | Tabular figures: all ten digits 1296 units wide |
 | `pnum` | no | **Does nothing**: the default figures are already proportional, the feature maps `one.tf` back to `one` and is only useful to undo `tnum` |
-| `frac` | no | Only `1/4`, `1/2`, `3/4` (no arbitrary fractions, no `numr`/`dnom`) |
+| `frac` | no | Only `1/4`, `1/2`, `3/4` (no arbitrary fractions, no `numr`/`dnom`). Matches the character sequence, not the meaning: `1/2/2026` → ½/2026, `21/2` → 2½, `3/4/5` → ¾/5 |
 | `sups` | no | Only `1 2 3 4` (`uni00B9 B2 B3 2074`); no subscript feature |
-| `ordn` | no | `No.` → `uni2116` (№) |
-| `case` | no | The same Greek tonos lookups as `calt`, for all-caps setting; no visible change for Latin |
-| `aalt` | no | Lists the alternates: `a.ss01`, the `.tf` figures and the `locl` forms |
+| `ordn` | no | `No.` → `uni2116` (№), and every digit followed by `a` or `o` is rewritten: `1a` → ª, `2o` → º, `H2O` → H2º |
+| `case` | no | **Not a case-sensitive-forms feature**: it raises no bracket, no dash and no digit, and touches no Latin at all. It repeats a subset of `calt`'s Greek rules (the de-accenting and the dialytika transfer), so with `calt` on it changes nothing – measured on every codepoint and on 180 letter+punctuation pairs. Only useful together with `-calt` |
+| `aalt` | no | "Access all alternates", the glyph-picker feature. Applies every alternate at once: `A`→ª, `O`→º, `No.`→№, digits→`.tf`, `ş`→`ș`. Never for running text |
 
 ### GPOS
 
 | Feature | What it does |
 |---|---|
-| `kern` | Class-based pair kerning (Latin, Greek, Cyrillic). On by default |
-| `cpsp` | Capital spacing: +40/2000 em after every capital except the last (`HAMBURG` gets 40 units between each pair) |
-| `mark` / `mkmk` | Combining-mark positioning, mark-on-mark stacking (Vietnamese) |
+| `kern` | Class-based pair kerning, and the only GPOS feature registered for `grek` besides `DFLT`/`latn`/`cyrl`. `AV` 2580→2520 units, `Το` 2256→2136, `ΤΑ` 2408→2318, `Γα` 2310→2190. Digits kern too: `0123456789` is 80 units narrower with it on |
+| `cpsp` | Capital spacing: +40/2000 em after a capital when the next glyph is also a capital. `AB` widens; `A B`, `A1` and `A-B` do not; Greek capitals never do (no `grek` entry) |
+| `mark` / `mkmk` | Combining-mark positioning, mark-on-mark stacking (Vietnamese), for Latin and Cyrillic. Not for Greek – see below |
+
+### Greek, in detail
+
+Three consequences of `GSUB` having no `grek` entry and of `GPOS.grek` carrying
+`kern` alone:
+
+1. **Every GSUB feature does reach Greek**, because `DFLT` carries all of them
+   except `locl`. `ss01`, `tnum`, `calt`, `case` and the rest are not
+   Latin-only.
+2. **Combining marks are not anchored.** `ccmp` composes the ones that have a
+   precomposed glyph (`α`+U+0301 → `alphatonos`, and above a capital it picks
+   the `.case` variant of the mark), but a mark with no precomposed
+   counterpart, such as `α`+U+0308, is left at the pen position of the base
+   glyph: zero offset, no anchor. Use precomposed characters for Greek.
+3. **No polytonic Greek.** There is no Greek Extended coverage at all (0 of the
+   256 code points in U+1F00–U+1FFF), and no ypogegrammeni (U+0345) either.
+
+The all-caps behaviour of `calt` is worth knowing because it fires without
+being asked for, and it is not applied consistently: `Ή` is missing from the
+lookup and keeps its tonos in every context, while the other six accented
+capitals lose it as soon as the font reads the run as caps – and also when the
+letter stands alone and text follows, so the interjection `Ά, τι να πω`
+renders as `Α, τι να πω`. `-calt` is the only switch, and it also turns off
+the ano teleia and the `f`/`j` collision repairs.
 
 ### Feature variations (`rvrn`)
 
