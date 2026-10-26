@@ -1,6 +1,6 @@
 # Maintainer: EricWRogers <ericwilliamrogers@gmail.com>
 pkgname=canispack-git
-pkgver=0.1.0.r19.gb31e259
+pkgver=0.1.0.r20.g3412965
 pkgrel=1
 pkgdesc='Project launcher for the Canis engine'
 arch=('x86_64')
@@ -38,6 +38,7 @@ prepare() {
 build() {
   cmake -S "$srcdir/CanisPack" -B "$srcdir/build" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build "$srcdir/build"
 }
