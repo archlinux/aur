@@ -1,15 +1,18 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 5.3.0 ➙ 5.4.0
-              : 2026-09-05 ➙ 2026-10-26
+ Tags         : 5.3.1 ➙ 5.4.1
+              : 2026-09-09 ➙ 2026-10-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-26   : 5.4.0
+ 2026-10-26   : 5.4.1
+              - 5.4.1 Update package dependency for lockmgr
+
+ 2026-10-26   : 5.4.0, origin/master
               - **5.4.0**
                 * Update to use lockmgr 2.1.0 new API
 
- 2026-10-08   : 5.3.3, origin/master
+ 2026-10-08   : 5.3.3
               - 5.3.3 Readme update
 
  2026-10-08   : 5.3.2
@@ -22,12 +25,3 @@
             
                   - pyconcurrent -> python-pyconcurrent
                   - lockmgr -> python-lockmgr
-
- 2026-09-05   : 5.3.0
-              - **5.3.0**
-            
-                * Use meson/meson-python for build and package management
-                * periodic code review and improvements
-                * directory re-org
- 2026-01-24   ⋯
-              - update Docs/Changelog
