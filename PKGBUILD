@@ -2,7 +2,7 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 
 pkgname=funes
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Durable, searchable memory of your past AI agent sessions'
 arch=('x86_64' 'aarch64')
@@ -16,15 +16,15 @@ optdepends=('git: associate sessions with their Git repositories')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'system-package.patch')
-sha256sums=('d6c224ae811392f5e491b47d340ad27fb8bd9e3a3186d84348c1a9bd5f8e876d'
-            'cdee7dc04241f11fe2b95bb21d916d6f6dd19088ecd216b96a8b30a900a7b202')
+sha256sums=('c5f5ba5487b5b2f9d8145d4dfbcc2cb955bfbc564075e1d69978b0bf5cbe2207'
+            'ac2c6ed0df8abf27b32078b78f0819d3518f66224ccdc390f1cf80ed96e6eec8')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   patch -Np1 -i "$srcdir/system-package.patch"
 
-  # Upstream stamps the release version in CI; v1.9.0 still contains 1.8.0+dev.
+  # Upstream stamps the release version in CI; set it for source builds too.
   # Update only this package's version, preserving every locked dependency.
   sed -i "/^\[package\]$/,/^\[/s/^version = .*/version = \"$pkgver\"/" Cargo.toml
   sed -i "/^name = \"funes\"$/{n;s/^version = .*/version = \"$pkgver\"/;}" Cargo.lock
@@ -50,7 +50,7 @@ check() {
 
   # The full integration suite downloads models and accesses the Hugging Face Hub.
   cargo test --release --frozen --no-default-features --features blas \
-    --lib --test no_index --test ask_no_agent --test remove
+    --lib --test no_index --test ask_no_agent --test update_waits_for_older_writers
   test "$(target/release/funes --version)" = "funes $pkgver"
 }
 
