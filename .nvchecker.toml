@@ -1,0 +1,4 @@
+[yaabsa-bin]
+source = "git"
+git = "https://github.com/Vito0912/yaabsa.git"
+prefix = "v"

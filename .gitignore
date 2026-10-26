@@ -5,4 +5,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!*.install
+!yaabsa.install
+!.nvchecker.toml
