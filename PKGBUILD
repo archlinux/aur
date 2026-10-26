@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned upstream nightly release
 pkgname=mrstreamer-nightly-bin
-pkgver=0.0.20_nightly.20261025.429
+pkgver=0.0.21_nightly.20261026.431
 pkgrel=1
 pkgdesc='Nightly build of: IPTV player for Xtream Codes and M3U subscriptions, with live TV, programme guide, movies and series'
 arch=('x86_64')
@@ -23,12 +23,12 @@ provides=("mrstreamer=$pkgver")
 conflicts=('mrstreamer' 'mr-streamer' 'mr-streamer-bin')
 # These are upstream nightly binaries. Preserve their bytes and bundled debug information.
 options=('!strip' '!debug')
-_upstream_version='0.0.20-nightly.20261025.429'
-_source_commit='558b4531b71ff31e418c0780788f02aab8b76d2e'
+_upstream_version='0.0.21-nightly.20261026.431'
+_source_commit='ba1c7aa7a638eaae405a492f0a521ea2dbcbea01'
 _deb="Mr-Streamer-${_upstream_version}-linux-amd64.deb"
 source=("https://github.com/Mr-Streamer-OSS/MrStreamer/releases/download/v${_upstream_version}/${_deb}"
         "mrstreamer-LICENSE::https://raw.githubusercontent.com/Mr-Streamer-OSS/MrStreamer/${_source_commit}/LICENSE")
-sha256sums=('9a7c5ebc4126c65c279182cd3976ba0cf380b54b9a0695ba12f1d14b26e5a3cd'
+sha256sums=('2ba107a41f2a5b6295911c7ffa08e1a1b02d1961363ecd7289c9bc82a8000e83'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
