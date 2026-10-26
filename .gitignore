@@ -1,0 +1,4 @@
+src/
+pkg/
+greeter/
+*.pkg.tar.zst

@@ -1,0 +1,21 @@
+pkgbase = scottbass3-greeter-git
+	pkgdesc = greetd greeter for Hyprland built on Quickshell, with the scottbass3-shell lock screen look
+	pkgver = r1.68d683d
+	pkgrel = 1
+	url = https://github.com/scottbass3/greeter
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = greetd
+	depends = quickshell
+	depends = hyprland
+	depends = qt6-declarative
+	optdepends = ttf-jetbrains-mono-nerd: default font
+	optdepends = upower: battery level
+	optdepends = xorg-xinit: X11 sessions
+	provides = scottbass3-greeter
+	conflicts = scottbass3-greeter
+	source = greeter::git+https://github.com/scottbass3/greeter.git
+	sha256sums = SKIP
+
+pkgname = scottbass3-greeter-git
