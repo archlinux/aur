@@ -1,0 +1,11 @@
+pkgbase = ttf-kibernetyk-mono
+	pkgdesc = Geometric monospace typeface inspired by the Ukrainian Cybernetics School, with Latin and Cyrillic support
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/PavloKilko/KibernetykMono
+	arch = any
+	license = OFL-1.1
+	source = KibernetykMono-v1.0.1.zip::https://github.com/PavloKilko/KibernetykMono/releases/download/v1.0.1/KibernetykMono-v1.0.1.zip
+	sha256sums = 6ba7fbe85a791c252076e95a352ad6449af8e0b90d5ddc8663d4581ff400ae57
+
+pkgname = ttf-kibernetyk-mono
