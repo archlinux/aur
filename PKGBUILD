@@ -7,6 +7,8 @@ pkgdesc="Lightweight, open-source AI database client"
 arch=('x86_64')
 url="https://github.com/flyxl/datazen"
 license=('GPL-3.0-or-later')
+# The database encryption key lives in the Secret Service keyring; without one
+# (and no legacy .key file) DataZen refuses to start unless DATAZEN_KEYRING=file.
 depends=(
     'cairo'
     'dbus'
@@ -18,11 +20,15 @@ depends=(
     'libayatana-appindicator'
     'libgcc'
     'libsoup3'
+    'org.freedesktop.secrets'
     'webkit2gtk-4.1'
 )
+# node-gyp: pnpm install compiles the better-sqlite3 dev dependency, which has
+# no prebuilt binary for Arch's current Node release.
 makedepends=(
     'cargo'
     'git'
+    'node-gyp'
     'nodejs'
     'pkgconf'
     'pnpm'
