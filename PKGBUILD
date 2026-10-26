@@ -1,6 +1,6 @@
 # Maintainer: Teejer <teejer@users.noreply.github.com>
 pkgname=linauth
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Native GTK4/libadwaita TOTP/HOTP authenticator that imports WinAuth backups'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6341d2337a899b6c6d2938a35b0370efc12aac90c656fa337fddde9bb2fb00af')
+sha256sums=('57ec17f0cefeccb647fe37c6d64ca7787da8a4aac929ccf463d69bb7577b1b6e')
 
 build() {
   cd "$pkgname-$pkgver/app"
