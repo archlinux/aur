@@ -1,7 +1,7 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=twos
 pkgbase=twos-appimage
-pkgver=7.5.0
+pkgver=1.20.6
 pkgrel=1
 pkgdesc='A simple and beautiful way to capture your thoughts, organize your life, and get things done.'
 arch=('x86_64')
@@ -9,9 +9,9 @@ url='https://twosapp.com/'
 license=('unset')
 depends=('gtk3' 'libxss' 'libindicator-gtk2' 'nss' 'dbus-glib' 'libdbusmenu-gtk2')
 source=(
-    "https://twos.s3.us-west-2.amazonaws.com/mac/Twos-${pkgver}.AppImage"
+    "https://www.twosapp.com/api/desktop/updates/Twos-${pkgver}.AppImage"
 )
-sha256sums=('c4e13a0899635f8c29872222a9e4d86b5e5e06a54aa2cc8d682c327015ddbf61')
+sha256sums=('f1b4d02ad93dde3577d735f4324e9d178c34a84caff80120436fa56748aa5bdd')
 
 prepare() {
     chmod u+x ./Twos-${pkgver}.AppImage
@@ -30,7 +30,9 @@ package() {
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
     chmod -R 755 "${pkgdir}/usr/share/icons"
 
-    sed -i -e 's/AppRun/twos/' "${pkgdir}/usr/lib/${pkgname}/twos.desktop"
-    ln -s "/usr/lib/${pkgname}/twos.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    ln -s "/usr/lib/${pkgname}/twos" "${pkgdir}/usr/bin/${pkgname}"
+    # Upstream binary/desktop renamed to newtwos; keep Arch package name "twos".
+    sed -i -e 's|^Exec=.*|Exec=twos|' -e 's|^Icon=.*|Icon=newtwos|' \
+        "${pkgdir}/usr/lib/${pkgname}/newtwos.desktop"
+    ln -sf "/usr/lib/${pkgname}/newtwos.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    ln -sf "/usr/lib/${pkgname}/newtwos" "${pkgdir}/usr/bin/${pkgname}"
 }
