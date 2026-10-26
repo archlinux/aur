@@ -1,6 +1,6 @@
 pkgbase = wubi-dict-editor-bin
 	pkgdesc = Five Pen Watch Assistant for Rime.五笔码表助手 for Rime.
-	pkgver = 1.4.3
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/KyleBing/wubi-dict-editor
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = wubi-dict-editor-bin
 	optdepends = fcitx5-rime: 使用 fcitx5-rime 配置目录（需手动指定）
 	conflicts = wubi-dict-editor-bin
 	options = !emptydirs
-	source = wubi-dict-editor-1.4.3-x86_64.deb::https://github.com/KyleBing/wubi-dict-editor/releases/download/v1.4.3/wubi-dict-editor_1.4.3_amd64.deb
+	source = wubi-dict-editor-1.5.2-x86_64.deb::https://github.com/KyleBing/wubi-dict-editor/releases/download/v1.5.2/wubi-dict-editor_1.5.2_amd64.deb
 	source = wubi-dict-editor.sh
-	sha256sums = 24ed74708ae062fc7c5d2cf0c8954b033db3132944400549f7c866d964adbff8
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = ea8cbfd3bfc82b9d064027ef1f524d8186f25d03a2e551bf3ff8f03bd7954005
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = wubi-dict-editor-bin
