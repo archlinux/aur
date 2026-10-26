@@ -1,0 +1,6 @@
+# 白名单模式：默认忽略所有文件，仅跟踪以下文件
+/*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
