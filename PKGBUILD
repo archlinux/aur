@@ -1,72 +1,106 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
 # Contributor: weearc <q19981121 [at] 163 dot com>
 # Contributor: JimMoen <LnJimMoen [at] outlook dot com>
+
 pkgname=motrix
 _pkgname=Motrix
-pkgver=1.8.19
-pkgrel=3
-epoch=
-pkgdesc="A full-featured download manager (release version)"
-arch=("x86_64")
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="A full-featured download manager"
+arch=('x86_64')
 url="https://github.com/agalwood/Motrix"
 license=('MIT')
-groups=()
-depends=('gtk3' 'libxcb' 'electron22')
-makedepends=('npm' 'yarn' 'nodejs' 'python')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=('motrix-git')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("motrix.desktop"
-    "motrix"
-    "https://github.com/agalwood/Motrix/archive/v${pkgver}.tar.gz")
-noextract=()
-sha256sums=('c5f185162cdb83c387399e314be355585837a9efcd8ac35425656e4d24f7a5b3'
-            'bb1432adbac2120ef5c59d718f1cd48ef5fc920d3d1231ba32390c700465f3a5'
-            'd2a48692549d426e9dfa0fad9897dddf200b7b82198d59e64819d419114a10d8')
-validpgpkeys=()
+# Upstream 2.0.1 targets Electron 45, but Arch currently packages Electron 44.
+# Switch electron44 and the launcher to electron45 as soon as it reaches the
+# repositories, then rebuild and rerun the native ABI and runtime checks.
+depends=(
+    'electron44'
+    'glibc'
+    'hicolor-icon-theme'
+    'libstdc++'
+    'xdg-utils'
+)
+makedepends=(
+    'nodejs'
+    'pnpm'
+    'python'
+    'rust'
+    'rust-musl'
+)
+optdepends=(
+    'libayatana-appindicator: system tray integration'
+    'libnotify: desktop notifications'
+)
+provides=('motrix')
+conflicts=('motrix-bin' 'motrix-git' 'motrix-beta-bin')
+options=('!strip')
+source=(
+    "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    'motrix'
+    'motrix.desktop'
+    'system-electron.patch'
+)
+sha256sums=('f59186d37f6111d21b0b0efc98d422a54ab2be29c75c9ac7c520d8a2c4fe5fb0'
+            '026c1c4ebd4451274c737f21e9636a3c2250e667ef5e9f21913f5b9a7181a67f'
+            'ddc5858228ed3b4d6222cc0ec55c48f8caf0215b8f9d0b7ca9eb6ffb6e92f6fb'
+            'd67f5b77882cfa5c0d28ebf69a85681efaa445469f2503b891b1def589f7d669')
 
-#_ensure_local_nvm() {
-    # let's be sure we are starting clean
-#    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-#    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-#    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-#}
-
-#prepare() {
-#    _ensure_local_nvm
-#    nvm install 14
-#}
+prepare() {
+    patch -Np1 -d "${srcdir}/${_pkgname}-${pkgver}" < system-electron.patch
+}
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
-#    _ensure_local_nvm
-    export YARN_CACHE_FOLDER="${srcdir}/yarn_cache"
-    yarn
-    yarn run build:dir
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+
+    export PNPM_HOME="${srcdir}/pnpm-home"
+    export PNPM_STORE_DIR="${srcdir}/pnpm-store"
+    export CARGO_HOME="${srcdir}/cargo-home"
+    export CARGO_TARGET_DIR="${srcdir}/cargo-target"
+    export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}"
+    export MOTRIX_SKIP_ELECTRON_REBUILD=1
+    export MOTRIX_SKIP_ENGINE_FETCH=1
+
+    pnpm install --frozen-lockfile
+    node node_modules/electron/install.js
+    pnpm run fetch:engine --platform linux --arch x64
+    pnpm run build:builtin
+    pnpm run build:native-host -- --platform linux --arch x64
+    pnpm run build:finalize-fs -- --platform linux --arch x64
+    pnpm run build:electron
+    pnpm run stage:electron -- --platform linux --arch x64
+    rm -rf release
+    pnpm exec electron-builder --linux dir --x64 --publish never
+}
+
+check() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+
+    node scripts/verify-electron-package.mjs \
+        --app-dir release/linux-unpacked \
+        --platform linux \
+        --arch x64 \
+        --report "${srcdir}/electron-package-report.json"
+
+    ELECTRON_RUN_AS_NODE=1 /usr/lib/electron44/electron \
+        scripts/ensure-native-abi.mjs --probe
+    ELECTRON_RUN_AS_NODE=1 /usr/lib/electron44/electron -e \
+        "if (!process.versions.electron.startsWith('44.')) process.exit(1)"
 }
 
 package() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/app.asar ${pkgdir}/usr/lib/${pkgname}/app.asar
-    install -Dm 755 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/engine/aria2c ${pkgdir}/usr/lib/${pkgname}/engine/aria2c
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/engine/aria2.conf ${pkgdir}/usr/lib/${pkgname}/engine/aria2.conf
+    install -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -r release/linux-unpacked/resources/. "${pkgdir}/usr/lib/${pkgname}/"
+    rm -f \
+        "${pkgdir}/usr/lib/${pkgname}/app-update.yml" \
+        "${pkgdir}/usr/lib/${pkgname}/package-type"
 
-    # binary wrapper
-    install -Dm 775 ${srcdir}/motrix ${pkgdir}/usr/bin/${pkgname}
-
-    # desktop enrty
-    install -Dm 644 ${srcdir}/motrix.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-
-    # icons
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/build/256x256.png ${pkgdir}/usr/share/icons/${pkgname}.png
+    install -Dm755 "${srcdir}/motrix" "${pkgdir}/usr/bin/motrix"
+    install -Dm644 "${srcdir}/motrix.desktop" \
+        "${pkgdir}/usr/share/applications/motrix.desktop"
+    install -Dm644 build/256x256.png \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/motrix.png"
+    install -Dm644 LICENSE \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
