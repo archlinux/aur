@@ -1,18 +1,12 @@
 pkgbase = sysc-greet-mango
 	pkgdesc = Graphical console greeter for greetd with ASCII art and themes (Mango compositor)
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Nomadcxx/sysc-greet
 	install = sysc-greet-mango.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	license = MIT
-	license = CC0-1.0
-	license = CC-BY-4.0
-	license = CC-BY-NC-4.0
-	license = CC-BY-SA-4.0
-	license = CC-BY-NC-SA-4.0
 	makedepends = go>=1.26
 	depends = greetd
 	depends = kitty
