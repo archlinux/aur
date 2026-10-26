@@ -7,14 +7,14 @@ pkgver=2.15.11
 pkgrel=1
 pkgdesc="Nperf wide-area network speed test application."
 arch=('x86_64')
-#url="https://www.nperf.com/"
-license=('GPL')
+url="https://www.nperf.com/"
+license=('LicenseRef-nPerf')
 depends=('fuse')
 provides=('nperf-gui')
 _filename="nPerf-${pkgver}-${arch}.AppImage"
 source=("https://repo.nperf.com/linux/nperf/nPerf-${pkgver}-${arch}.AppImage")
-md5sums=('02fd39d3c1a1805ce7f67f0b50b0d7bc')
-options=(!strip)
+sha256sums=('13e422321043f1350384c566f8dfca75ca93fd3ee84b471cf3030eed53402d87')
+options=('!strip' '!debug')
 prepare() 
 {
   cd "${srcdir}"
