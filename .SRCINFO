@@ -1,6 +1,6 @@
 pkgbase = exifcleaner
 	pkgdesc = Clean metadata from images, videos, PDFs, and other files.
-	pkgver = 4.6.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://exifcleaner.com/
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = exifcleaner
 	makedepends = git
 	makedepends = yarn
 	makedepends = jq
-	depends = electron43
+	depends = electron44
 	depends = perl
-	source = exifcleaner-4.6.0.tar.gz::https://github.com/szTheory/exifcleaner/archive/refs/tags/v4.6.0.tar.gz
-	source = resources-path-override.js
+	source = exifcleaner-4.7.0.tar.gz::https://github.com/szTheory/exifcleaner/archive/refs/tags/v4.7.0.tar.gz
+	source = exifcleaner.js
 	source = exifcleaner.sh
-	sha256sums = 56dfb279ae8d9dbb96dad4baa4ef2424ad1e42668d9da6ba829cb7910ebeecc3
-	sha256sums = 7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8
-	sha256sums = 523a9e7294fb8d0611611db823288e3dc38ae021eceb3067791dc0c4ff3b0d15
+	sha256sums = 96e306e83d5b0f67a4b960c6d7a4faded27b319f066145c571206b70236c7279
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
 
 pkgname = exifcleaner

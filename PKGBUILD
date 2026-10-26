@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=exifcleaner
 _pkgname=ExifCleaner
-pkgver=4.6.0
-_electronversion=43
-_nodeversion=22
+pkgver=4.7.0
+_electronversion=44
+_nodeversion=24
 pkgrel=1
 pkgdesc="Clean metadata from images, videos, PDFs, and other files."
 arch=('any')
@@ -23,12 +23,12 @@ makedepends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-	"resources-path-override.js"
+	"${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('56dfb279ae8d9dbb96dad4baa4ef2424ad1e42668d9da6ba829cb7910ebeecc3'
-            '7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8'
-            '523a9e7294fb8d0611611db823288e3dc38ae021eceb3067791dc0c4ff3b0d15')
+sha256sums=('96e306e83d5b0f67a4b960c6d7a4faded27b319f066145c571206b70236c7279'
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -117,7 +117,7 @@ prepare() {
     sed -i -e "
 		s/@electronversion@/${_electronversion}/g
 		s/@appname@/${pkgname}/g
-	" "${srcdir}/${pkgname}.sh" "${srcdir}/resources-path-override.js"
+	" "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -145,7 +145,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/resources-path-override.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "$(_get_project_dir)/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
