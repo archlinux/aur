@@ -1,6 +1,6 @@
 pkgbase = devkitty-git
 	pkgdesc = Swiss army knife for developers.
-	pkgver = 4.6.4.r0.g3082145
+	pkgver = 4.6.5.r0.gcfd91eb
 	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = devkitty-git
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron41
-	provides = devkitty=4.6.4
+	provides = devkitty=4.6.5
 	conflicts = devkitty
 	source = devkitty.git::git+https://github.com/egor-xyz/devkitty.git
 	source = devkitty.sh
 	sha256sums = SKIP
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7
 
 pkgname = devkitty-git
