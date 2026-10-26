@@ -1,27 +1,38 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="asnmap"
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="CLI for quickly mapping organization network ranges using ASN information"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('git' 'go')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+  'go'
+)
 _pkgsrc="${url##*/}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('2cf8b2155062acadd1a1b243326916b26f11bf1654fa3974dfb29577fd4b439bfd1d853e3eec375e3377f2488974a5a14648a6c7e6952fe1aaba398d2afd5eef')
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+)
+b2sums=('a1300258e3c8bcea6e5cafdbc4adb9bb24f5d2b06bf5e32406eda5245f83afe4fa8a86196b5600c48fafd307e113d86ab75230268aa7ac3c0c2579d40fb30eef')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
-
-  mkdir -p "build"
+  go mod download -modcacherw -x
+  # go mod verify
 }
 
 build() {
@@ -46,6 +57,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE"   -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

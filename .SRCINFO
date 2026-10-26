@@ -1,6 +1,6 @@
 pkgbase = asnmap
 	pkgdesc = CLI for quickly mapping organization network ranges using ASN information
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/asnmap
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = asnmap
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = asnmap::git+https://github.com/projectdiscovery/asnmap.git#tag=v1.1.1
-	b2sums = 2cf8b2155062acadd1a1b243326916b26f11bf1654fa3974dfb29577fd4b439bfd1d853e3eec375e3377f2488974a5a14648a6c7e6952fe1aaba398d2afd5eef
+	source = asnmap::git+https://github.com/projectdiscovery/asnmap.git#tag=v1.2.0
+	b2sums = a1300258e3c8bcea6e5cafdbc4adb9bb24f5d2b06bf5e32406eda5245f83afe4fa8a86196b5600c48fafd307e113d86ab75230268aa7ac3c0c2579d40fb30eef
 
 pkgname = asnmap
