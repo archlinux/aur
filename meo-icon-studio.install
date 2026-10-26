@@ -1,0 +1,50 @@
+_meo_icon_studio=/usr/bin/meo-app-icon-studio
+_meo_icon_studio_marker=/run/meo-icon-studio-adopt-pacnew
+
+_meo_mark_legacy_icon_studio() {
+  rm -f -- "$_meo_icon_studio_marker"
+  [ -e "$_meo_icon_studio" ] || return 0
+  if [ -L "$_meo_icon_studio" ] || [ ! -f "$_meo_icon_studio" ]; then
+    echo "MeoArch: refusing to replace a non-regular legacy icon-studio path" >&2
+    return 1
+  fi
+  if pacman -Qo "$_meo_icon_studio" >/dev/null 2>&1; then
+    return 0
+  fi
+  if ! grep -Fq "Build and apply Meo's per-application Material icon treatment" \
+      "$_meo_icon_studio"; then
+    echo "MeoArch: refusing to replace an unrecognised unowned icon-studio file" >&2
+    return 1
+  fi
+  (umask 077; : > "$_meo_icon_studio_marker")
+}
+
+_meo_adopt_icon_studio_pacnew() {
+  [ -f "$_meo_icon_studio_marker" ] || return 0
+  rm -f -- "$_meo_icon_studio_marker"
+  local candidate="${_meo_icon_studio}.pacnew"
+  if [ ! -f "$candidate" ] || [ -L "$candidate" ]; then
+    echo "MeoArch: packaged icon-studio migration did not create a safe .pacnew" >&2
+    return 1
+  fi
+  echo "MeoArch: adopting packaged Icon Studio over the recognised legacy copy"
+  chown root:root "$candidate"
+  chmod 0755 "$candidate"
+  mv -f -- "$candidate" "$_meo_icon_studio"
+}
+
+pre_install() {
+  _meo_mark_legacy_icon_studio
+}
+
+pre_upgrade() {
+  _meo_mark_legacy_icon_studio
+}
+
+post_install() {
+  _meo_adopt_icon_studio_pacnew
+}
+
+post_upgrade() {
+  _meo_adopt_icon_studio_pacnew
+}

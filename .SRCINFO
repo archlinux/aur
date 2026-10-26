@@ -1,0 +1,18 @@
+pkgbase = meo-icon-studio
+	pkgdesc = MeoArch per-application icon renderer and reviewed identity source sheet
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/QwQdoge/meo-kde
+	install = meo-icon-studio.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = meo-icons>=0.4.0
+	depends = hicolor-icon-theme
+	depends = python-pillow
+	depends = pyside6
+	depends = qt6-svg
+	backup = usr/bin/meo-app-icon-studio
+	source = meo-kde-3663bfdbc62c041727b9379ba5a34829a1763328.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/3663bfdbc62c041727b9379ba5a34829a1763328
+	sha256sums = c1e543ae72968283ce06c6eaf813f9d5db516bb840419bd99858523142c6a982
+
+pkgname = meo-icon-studio
