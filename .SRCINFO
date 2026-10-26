@@ -1,0 +1,26 @@
+pkgbase = sonic-frameworks-archive
+	pkgdesc = Qt addon providing access to numerous types of archives
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-archive
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = bzip2
+	depends = glibc
+	depends = libstdc++
+	depends = openssl
+	depends = qt6-base
+	depends = xz
+	depends = zlib
+	depends = zstd
+	provides = karchive
+	conflicts = karchive
+	source = sonic-frameworks-archive-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-archive/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = b0833f71ea7327525d5f197a750dcc1faeeb244ac33fba4222190d2ecc9d8e74
+
+pkgname = sonic-frameworks-archive
