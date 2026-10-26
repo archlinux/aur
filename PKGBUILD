@@ -9,6 +9,14 @@ url="https://github.com/OCSInventory-NG/OCSInventory-Agent-Rework"
 license=('GPL-3.0-or-later')
 depends=('bash' 'ca-certificates' 'coreutils' 'dmidecode' 'glibc'
          'inetutils' 'iproute2' 'systemd' 'tar' 'util-linux' 'which')
+optdepends=('cups: printer inventory'
+            'libvirt: libvirt virtual machine inventory'
+            'pciutils: controller, sound and video card inventory'
+            'smartmontools: disk model, firmware and serial numbers'
+            'upower: battery inventory'
+            'usbutils: USB device inventory'
+            'v4l-utils: monitor inventory'
+            'virtualbox: VirtualBox virtual machine inventory')
 provides=('ocsinventory-agent3')
 conflicts=('ocsinventory-agent3')
 options=('!strip' '!debug')
