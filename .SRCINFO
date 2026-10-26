@@ -1,0 +1,25 @@
+pkgbase = sonic-frameworks-package
+	pkgdesc = Framework that lets applications manage user installable packages of non-binary assets
+	pkgver = 6.31.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-package
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	makedepends = sonic-frameworks-doctools
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	depends = sonic-frameworks-archive
+	depends = sonic-frameworks-core-addons
+	depends = sonic-frameworks-internationalization
+	provides = kpackage
+	conflicts = kpackage
+	source = sonic-frameworks-package-6.31.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-package/archive/refs/tags/6.31.0.tar.gz
+	sha256sums = 68d743017437d901f50f873cfe770f512e96584cf5664647e1f79c8823358616
+
+pkgname = sonic-frameworks-package
