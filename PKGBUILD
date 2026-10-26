@@ -1,5 +1,5 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
-# Contributor: Django <django@nausch.org>
+# Maintainer: Django <django@nausch.org>
+# Contributor: AlphaJack <alphajack at tuta dot io>
 # Contributor: John Doe <kitterhuff@gmail.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
