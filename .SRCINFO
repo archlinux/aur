@@ -1,6 +1,6 @@
 pkgbase = duckling-bin
 	pkgdesc = A fast viewer for CSV/Parquet files and databases such as DuckDB, SQLite, PostgreSQL, MySQL, Clickhouse, etc.
-	pkgver = 0.59.2
+	pkgver = 0.59.3
 	pkgrel = 1
 	url = https://github.com/l1xnan/duckling
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = duckling-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = duckling=0.59.2
+	provides = duckling=0.59.3
 	conflicts = duckling
-	source = duckling-0.59.2.rpm::https://github.com/l1xnan/duckling/releases/download/v0.59.2/Duckling-0.59.2-1.x86_64.rpm
-	source = LICENSE-0.59.2::https://raw.githubusercontent.com/l1xnan/duckling/v0.59.2/LICENSE
-	sha256sums = 511daa2c557d675d43e7f935828c4e267928145a909abf39389c9c2578a8a220
+	source = duckling-0.59.3.rpm::https://github.com/l1xnan/duckling/releases/download/v0.59.3/Duckling-0.59.3-1.x86_64.rpm
+	source = LICENSE-0.59.3::https://raw.githubusercontent.com/l1xnan/duckling/v0.59.3/LICENSE
+	sha256sums = 1af671989f98026376b81d9e0a54f463b32a08f3f9aa61446625273c85e16b01
 	sha256sums = a57ebfdf4a7893bc2ba09a6f572c55a9f4052bebe8e6f33940df766ef61a1bcd
 
 pkgname = duckling-bin
