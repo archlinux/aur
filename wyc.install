@@ -4,35 +4,45 @@ pre_install() {
 
 _help() {
     cat << 'EOF'
-网云穿 (WangYunChuan / wyc) 使用帮助（config.json 驱动模型）
-============================================================
+网云穿 (WangYunChuan) 使用帮助
+============================
 
-本包以「配置文件驱动」方式运行 wyc-client 常驻服务：
+本包将上游二进制 wyc-client 安装为 /usr/bin/wyc，并以 systemd 单元
+wangyunchuan.service 托管，开机自启。
 
-  1. 编辑配置文件，填入隧道 Token：
+默认（配置文件驱动）:
+  1. 编辑配置文件，填入 32 位隧道 Token（新版密钥为 32 位，旧版 16 位已不可用）:
        sudoedit /etc/wangyunchuan/config.json
-     （基于 CONFIG.example.json 模板；token 字段留空则服务待命、不建隧道）
-  2. 启用并启动服务（开机自启）：
+  2. 启用并启动（或重启使配置生效）:
        sudo systemctl enable --now wangyunchuan
-  3. 查看状态 / 日志：
+       sudo systemctl restart wangyunchuan
+  3. 查看状态 / 日志:
        sudo systemctl status wangyunchuan
        sudo journalctl -u wangyunchuan -f
-  4. 修改配置后重启生效：
-       sudo systemctl restart wangyunchuan
-  5. 停止 / 卸载：
-       sudo systemctl disable --now wangyunchuan
 
-配置文件 /etc/wangyunchuan/config.json 已纳入 backup，升级时保留你的改动。
-状态与日志由 wyc-client 自动维护（位于 StateDirectory /var/lib/wangyunchuan
-与 RuntimeDirectory /run/wangyunchuan），无需手工管理。
+wyc 二进制常用命令（详见 `wyc help`）:
+  wyc run --token <Token>         临时前台运行
+  wyc add --token <Token>         添加隧道（初始停止）
+  wyc start --token <Token>       添加并启动隧道
+  wyc start|stop|remove <ID...>   批量管理本机隧道
+  wyc list|status|doctor          查看设备、隧道及诊断（支持 --json）
+  wyc logs <ID>                   查看隧道日志（支持 --lines/--follow/--json）
+  wyc service start|stop|restart  控制常驻服务
+  wyc uninstall [--purge]         卸载服务
 
-如需使用新版「多隧道 / 账号绑定」能力，可直接调用官方子命令：
-  wyc-client add --token <Token> / list / status / logs <ID> / doctor
-（该模式需先通过 `wyc-client install` 安装其自带常驻服务，与本包的
- wangyunchuan.service 二选一，请勿同时启用）
+注意:
+  - 配置文件 /etc/wangyunchuan/config.json 已纳入 backup，升级时保留你的改动。
+  - 若 Token 无效 / 过期，服务会启动失败，请核对是否为新版 32 位密钥。
+  - 上述 wyc 命令服务于上游「无 Token 常驻 + 多隧道」模型；本包的 wangyunchuan.service
+    已用 `wyc run --config` 托管，二者不要混用（避免重复常驻服务）。
 
-优惠码: oi0bhf
-============================================================
+目录（官方路径，由本包自动建好并归 wangyunchuan 用户）:
+  服务日志             /var/log/wyc-client
+  设备数据与隧道日志     /var/lib/wyc-client/device
+  运行时 socket 等     /run/wyc-client
+  配置文件             /etc/wangyunchuan/config.json
+
+============================
 EOF
 }
 
