@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK @MAJOR@ EA Shell
+Comment=OpenJDK @MAJOR@ early access shell
+Keywords=java;shell;
+Exec=/usr/lib/jvm/java-openjdk-ea/bin/jshell
+Terminal=true
+Type=Application
+Icon=java-openjdk-ea
+Categories=Development;Java;

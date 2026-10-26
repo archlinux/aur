@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK @MAJOR@ EA Console
+Comment=OpenJDK @MAJOR@ early access monitoring and management console
+Keywords=java;console;monitoring;
+Exec=/usr/lib/jvm/java-openjdk-ea/bin/jconsole
+Terminal=false
+Type=Application
+Icon=java-openjdk-ea
+Categories=Development;Java;
