@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-forge-git
-pkgver=89.r1.ga2fabeb
-pkgrel=1
+pkgver=89.r14.g1bf4b21
+pkgrel=2
 _gnome_ver=49
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
@@ -15,12 +15,21 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/forge-ext/forge.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/forge-ext/forge.git'
+        'https://github.com/forge-ext/forge/pull/588.patch')
+sha256sums=('SKIP'
+            'affff0a15c7f39d1eaeaa39ebbf1742a314504da7be40a0e78652dd915b09e27')
 
 pkgver() {
   cd forge
   git describe --long --tags --abbrev=7 | sed "s/^v${_gnome_ver}-//;s/\([^-]*-g\)/r\1/;s/-/./g"
+}
+
+prepare() {
+  cd forge
+
+  # fix: gnome 51 unready window crash
+  patch -Np1 -i ../588.patch
 }
 
 build() {
