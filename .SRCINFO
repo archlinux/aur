@@ -1,6 +1,6 @@
 pkgbase = ostt
 	pkgdesc = Open Speech-to-Text: Terminal application for recording and transcribing audio
-	pkgver = 0.0.30
+	pkgver = 0.0.31
 	pkgrel = 1
 	url = https://github.com/kristoferlund/ostt
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ostt
 	optdepends = wl-clipboard: Clipboard support on Wayland
 	optdepends = xclip: Clipboard support on X11
 	options = !lto
-	source = ostt-0.0.30.tar.gz::https://github.com/kristoferlund/ostt/archive/refs/tags/v0.0.30.tar.gz
-	sha256sums = 33a0413f801cc4e3801be690ed3dcf466aaa443b1d05143c14fabfb00d8ea243
+	source = ostt-0.0.31.tar.gz::https://github.com/kristoferlund/ostt/archive/refs/tags/v0.0.31.tar.gz
+	sha256sums = a92f69dff6d2b7b3138a1ce3e98750739dda0d68e6e53605b60bfc42ee8e6c38
 
 pkgname = ostt
