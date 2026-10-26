@@ -6,9 +6,9 @@
 # on every stable tag.
 pkgname=llamastash-bin
 _pkgname=llamastash
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
-pkgdesc='Zero-overhead, terminal-native local-LLM manager (prebuilt)'
+pkgdesc='Zero-overhead, terminal-native local-LLM orchestrator. Run any engine, any model via the same proxy. (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llamastash/llamastash'
 license=('MIT')
@@ -20,8 +20,8 @@ conflicts=('llamastash' 'llamastash-git')
 _release="$url/releases/download/v$pkgver"
 source_x86_64=("$_release/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_release/$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('d8c140843f9c82176ef811a6ab18d8dbce0979e1184a6557cafbe65acd082801')
-sha256sums_aarch64=('f921a7ad07f8d108706a8e6c0a28a881a73c95c9b7633344eae2d74d4c084811')
+sha256sums_x86_64=('eea1b598edd1e856ddb8cf44ef78555b997b278986b63df7ce59dcd09ef5508a')
+sha256sums_aarch64=('f3ddc78be01ddd218cf380c1126b9bbee4ea4b00e93255bd2633fe0988c405a4')
 
 package() {
   local _triple
