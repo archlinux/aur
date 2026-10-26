@@ -2,7 +2,7 @@
 """Derive "Geologica UI" from the Geologica variable font: the same font with
 its weight scale shifted, so that Regular (wght 400) draws a lighter weight.
 
-Usage:  make_ui.py --regular W [--family NAME] -o OUT.ttf VF.ttf
+Usage:  make_ui.py --regular W [--features ss01,...] [--family NAME] -o OUT.ttf VF.ttf
 
 Why this exists
 ---------------
@@ -30,6 +30,15 @@ untouched Geologica, so applications that ask for Geologica keep all its
 weights. The family name must not end in a pango style word (Thin, Light,
 Bold, Italic, Condensed, ...): pango would read it as a style and drop it
 from the family, which is how 'Geologica Thin 11' lost its weight.
+
+--features: optional GSUB features turned on by default (Geologica has one
+worth it: ss01, the cursive a/g). fontconfig fontfeatures reach pango only;
+Chromium, Electron and Qt ignore them, and in a browser only page CSS can set
+font-feature-settings. So the feature's lookups are appended to calt, which
+every shaper applies by default. calt rather than ccmp or rvrn: those run in
+an earlier HarfBuzz stage, so 'a' would be replaced before sups/ordn/frac look
+for it. The cmap is left alone for the same reason. CSS can still turn the
+forms off with font-feature-settings: "calt" 0.
 """
 import argparse
 import sys
@@ -49,6 +58,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--regular", type=int, required=True,
                     help="design weight drawn for Regular (100-400)")
+    ap.add_argument("--features", default="",
+                    help="comma-separated GSUB features to apply by default")
     ap.add_argument("--family", default="Geologica UI")
     ap.add_argument("-o", "--output", required=True)
     ap.add_argument("vf")
@@ -80,6 +91,23 @@ def main():
                              1.0: 1.0}
     font["avar"] = avar
 
+    tags = [t for t in a.features.replace(",", " ").split()]
+    if tags:
+        gsub = font["GSUB"].table
+        records = gsub.FeatureList.FeatureRecord
+        calt = [fr for fr in records if fr.FeatureTag == "calt"]
+        if not calt:
+            sys.exit("make_ui.py: the font has no calt feature to extend")
+        for tag in tags:
+            lookups = {i for fr in records if fr.FeatureTag == tag
+                       for i in fr.Feature.LookupListIndex}
+            if not lookups:
+                sys.exit(f"make_ui.py: no GSUB feature '{tag}'")
+            for fr in calt:
+                merged = sorted(set(fr.Feature.LookupListIndex) | lookups)
+                fr.Feature.LookupListIndex = merged
+                fr.Feature.LookupCount = len(merged)
+
     # Rename: "Geologica" -> family everywhere it is the family or the
     # PostScript prefix. Instance names (IDs >= 256) are style names and stay.
     ps_old, ps_new = "Geologica", a.family.replace(" ", "")
@@ -91,7 +119,8 @@ def main():
             rec.string = rec.toUnicode().replace(ps_old, ps_new, 1)
 
     font.save(a.output)
-    print(f"  {a.family}: Regular draws wght {a.regular}")
+    extra = f", {'+'.join(tags)} on by default" if tags else ""
+    print(f"  {a.family}: Regular draws wght {a.regular}{extra}")
 
 
 if __name__ == "__main__":

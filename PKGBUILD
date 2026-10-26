@@ -4,7 +4,7 @@ _geover=1.010
 _geocommit=685f38d7c9e86b0c8530204c97ddcaf6558dd17b
 _nfver=3.5.1
 pkgver="${_geover}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Geologica, a humanist-geometric sans with Sharp/Cursive/Slant/Weight axes, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/geologica'
@@ -30,11 +30,11 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
             '778186245840aea0e60bec6a46e7fb1442e0cd78e41afeadffcd3e8824b379e0'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '53d9a3969632b52c7afc5b1968aab4b583c7933641ce3394735705a0cb8e450b'
-            '02fce268054796c470c6279c16e5e3ba1d5a8ca29b843cf5a3e1c9a3b6f92af3'
+            '5844c645e7d4f9a445be4ec9c049d2b84fa450efbf0179b47add06533561c478'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             'cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1'
             'be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c'
-            'e3da546e69d96b3a1d35496f4eab9bba0610eb2892ef1e6f927d4bbc1c50d24a'
+            '2d418f47f4b4ff37e489a5c3b69b128ffb4dc25319af0085a0a743ef90569bcc'
             '1acf0491c2a831a87e1cb09e1a8151dabc02bdf80e33807c7b52ed07be2e5028')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -139,6 +139,12 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #                 fontconfig rule, while "Geologica" keeps all its weights.
 #                 Variable build only. See README.md section 1.4.
 #
+#  GEO_UI_FEATURES  "ss01" or empty  (default: empty)
+#                 GSUB features Geologica UI applies by default. ss01 = the
+#                 cursive a/g. fontconfig fontfeatures reach pango only;
+#                 Chromium/Electron/Qt ignore them, so the feature is built
+#                 into the font (its lookups join calt). README section 1.5.
+#
 #  NERD_PATCH  true/false  Patch with Nerd Fonts glyphs (default: false).
 #                          font-patcher drops variable axes, so this forces
 #                          GEO_VARIANT=static. Family becomes
@@ -202,10 +208,11 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #    GEO_VARIANT=static STATIC_SHRP=100 STATIC_ITALIC=false makepkg -si
 #    HINT_PRESET=balanced makepkg -si
 #    GEO_UI_WEIGHT=100 makepkg -si           (Thin as the desktop font)
+#    GEO_UI_WEIGHT=300 GEO_UI_FEATURES=ss01 makepkg -si
 #    NERD_PATCH=true STATIC_WEIGHTS="400 500 700" makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
 
-_opt_keys=(GEO_VARIANT GEO_UI_WEIGHT STATIC_WEIGHTS STATIC_ITALIC STATIC_SHRP NERD_PATCH
+_opt_keys=(GEO_VARIANT GEO_UI_WEIGHT GEO_UI_FEATURES STATIC_WEIGHTS STATIC_ITALIC STATIC_SHRP NERD_PATCH
            HINTING HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX
            HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
@@ -263,6 +270,10 @@ _prompt_options() {
         "300:Regular draws Light"
       GEO_UI_WEIGHT=$_choice
     fi
+    if [[ "${GEO_UI_WEIGHT:-none}" != none && "${GEO_UI_FEATURES+set}" != set ]]; then
+      _ask_yn "Cursive a/g (ss01) by default in Geologica UI, also in browsers" n
+      [[ "$_yn" == true ]] && GEO_UI_FEATURES=ss01 || GEO_UI_FEATURES=""
+    fi
     if [[ -z "${HINTING:-}" ]]; then
       _ask_yn "Hint with ttfautohint (n = unhinted, as upstream)" y; HINTING=$_yn
     fi
@@ -307,6 +318,7 @@ _resolve_options() {
 
   GEO_VARIANT="${GEO_VARIANT:-variable}"
   GEO_UI_WEIGHT="${GEO_UI_WEIGHT:-none}"
+  GEO_UI_FEATURES="${GEO_UI_FEATURES:-}"
   STATIC_WEIGHTS="${STATIC_WEIGHTS:-100 200 300 400 500 600 700 800 900}"
   STATIC_ITALIC="${STATIC_ITALIC:-true}"
   STATIC_SHRP="${STATIC_SHRP:-0}"
@@ -339,6 +351,11 @@ _resolve_options() {
     none|100|200|300) ;;
     *) echo "Error: GEO_UI_WEIGHT='$GEO_UI_WEIGHT' invalid (none|100|200|300)." >&2; exit 1 ;;
   esac
+  for _v in ${GEO_UI_FEATURES//,/ }; do
+    if [[ ! "$_v" =~ ^[a-z0-9]{4}$ ]]; then
+      echo "Error: GEO_UI_FEATURES: '$_v' is not a feature tag (e.g. ss01)." >&2; exit 1
+    fi
+  done
   if [[ "$GEO_UI_WEIGHT" != none && "$GEO_VARIANT" != variable ]]; then
     echo "==> Note: \"Geologica UI\" needs the variable font; GEO_UI_WEIGHT ignored."
     GEO_UI_WEIGHT=none
@@ -411,7 +428,7 @@ prepare() {
 build() {
   _resolve_options
 
-  echo "==> Options: variant=$GEO_VARIANT ui=$GEO_UI_WEIGHT nerd=$NERD_PATCH hinting=$HINTING"
+  echo "==> Options: variant=$GEO_VARIANT ui=$GEO_UI_WEIGHT${GEO_UI_FEATURES:+ ui-features=$GEO_UI_FEATURES} nerd=$NERD_PATCH hinting=$HINTING"
   if [[ "$GEO_VARIANT" == static ]]; then
     echo "==> Statics: weights='$STATIC_WEIGHTS' italic=$STATIC_ITALIC shrp=$STATIC_SHRP"
   fi
@@ -431,7 +448,7 @@ build() {
     install -m644 "$srcdir/GeologicaVariable.ttf" "$srcdir/selected/GeologicaVariable.ttf"
     if [[ "$GEO_UI_WEIGHT" != none ]]; then
       echo "==> Deriving Geologica UI..."
-      python "$srcdir/make_ui.py" --regular "$GEO_UI_WEIGHT" \
+      python "$srcdir/make_ui.py" --regular "$GEO_UI_WEIGHT" --features "$GEO_UI_FEATURES" \
         -o "$srcdir/selected/GeologicaUIVariable.ttf" "$srcdir/GeologicaVariable.ttf"
     fi
   else

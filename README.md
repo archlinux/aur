@@ -38,6 +38,7 @@ a ttfautohint version string, but still zero glyph instructions.
 | Static fonts, per-weight hinting | `fonts/ttf/` only, unhinted, SHRP 0 | `GEO_VARIANT=static`: any of the nine weights, italic, SHRP 0 or 100, each hinted on its own |
 | Axis names in GTK/pango | `@SHRP=100`, `@CRSV=1` only | opt-in `79-geologica-families.conf`: `Geologica Sharp`, `Geologica Semi Sharp`, `Geologica Cursive` |
 | Thin (or ExtraLight/Light) as the desktop font | impossible: GTK drops the weight from `font-name` | `GEO_UI_WEIGHT=100`: a second family, `Geologica UI`, whose Regular draws Thin (section 1.4) |
+| Cursive a/g in browsers and Electron without page CSS | impossible: they ignore fontconfig `fontfeatures` | `GEO_UI_FEATURES=ss01` on `Geologica UI` (section 1.5) |
 | Nerd Fonts | – | `NERD_PATCH=true` |
 | Docs | README of the sources | this README, `FEATURES.md` in `/usr/share/doc/ttf-geologica-hinted/` |
 
@@ -212,6 +213,43 @@ gsettings set org.gnome.desktop.interface font-name 'Geologica UI 11'
 The family name may not end in a pango style word (`Thin`, `Light`, `Bold`,
 `Italic`, `Condensed`, …): pango would parse it as a style, which is exactly
 how `Geologica Thin 11` lost its weight. `make_ui.py` refuses such names.
+
+### 1.5 Chromium, Electron and fontconfig features (`GEO_UI_FEATURES`)
+
+Chromium-based browsers (Chromium, Brave, Chrome, Vivaldi, Helium) and
+Electron apps take from fontconfig **only**:
+
+- family matching and aliases: the default fonts in `chrome://settings/fonts`,
+  generic `sans-serif`/`monospace`, and the fallback for missing glyphs;
+- the rendering settings per font: `antialias`, `hinting`, `hintstyle`,
+  `rgba`, `lcdfilter`, `autohint`, `embeddedbitmap`.
+
+They ignore `fontfeatures` and `fontvariations` edits. HarfBuzz in Blink
+shapes with the page's CSS only (`font-feature-settings`,
+`font-variation-settings`). Firefox and Qt do the same; pango is the only
+consumer of those two fontconfig properties. Measured in headless Chromium
+with `font-family: Geologica` and a fontconfig rule adding `ss01`: the a/g
+stay double-storey. They change only with `font-feature-settings: "ss01"` in
+the page.
+
+A browser's default font also only applies where a page does not set its own,
+which most sites do.
+
+What still reaches every program is what is **inside the font file**. That is
+why `Geologica UI` shifts its weights with `avar` (Chromium renders
+`font-weight: 400` exactly like `Geologica` at 300 when `GEO_UI_WEIGHT=300`,
+measured). `GEO_UI_FEATURES=ss01` does the same for the cursive a/g: the
+`ss01` lookups are appended to `calt`, which every shaper applies by default.
+
+| headless Chromium, no page CSS | a/g |
+|---|---|
+| `Geologica UI` built without features | double-storey |
+| `Geologica UI` with `GEO_UI_FEATURES=ss01` | cursive; pixel-identical to the first with `font-feature-settings: "ss01"` |
+| the same, with `font-feature-settings: "calt" 0` | double-storey again |
+
+They join `calt`, not `ccmp`/`rvrn`: those run in an earlier HarfBuzz stage
+and would replace `a` before `sups`/`ordn`/`frac` look for it. The cmap is
+untouched. Only `Geologica UI` is changed; `Geologica` stays as designed.
 
 ---
 
