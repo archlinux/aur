@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: PandaDEV <contact@pandadev.net>
 pkgname=wireguard-gui-bin
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="A WireGuard client GUI for Linux built with Tauri"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_x86_64=("$url/releases/download/$pkgver-stable/${pkgname%-bin}_${pkgver}_
 source_aarch64=("$url/releases/download/$pkgver-stable/${pkgname%-bin}_${pkgver}_arm64.deb")
 sha256sums=('e532a576385a259c2baac5188fcdd4026d004876ad55d3274f88c53fe942556a'
             'a649764a630f65bf44848f99913fa9210c9606086ad3cea7e45e885b73232926')
-sha256sums_x86_64=('efd24742c0a4147eaaddf7b4041b9737840afadf216ff77751013eeb713b63d5')
-sha256sums_aarch64=('c6e80c1950e66fd0df048acefbe792922cd8223de31ef95452060198e4ff424a')
+sha256sums_x86_64=('0a68213b6d8606949d6266f1c9cef5b0665a59b964a12469dc9c2dd5a65a4528')
+sha256sums_aarch64=('f6ead04dc428de66ce4d07e00c08faa380b0536a5fe0c7268347882150854fed')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir/"
