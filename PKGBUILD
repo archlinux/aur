@@ -6,7 +6,7 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf-git
-pkgver=v0.74.5.r10.gb412a45
+pkgver=v0.74.5.r11.g26ff936
 pkgrel=1
 epoch=2
 pkgdesc="Command-line fuzzy finder"
