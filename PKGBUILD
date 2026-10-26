@@ -5,7 +5,7 @@
 
 pkgname=python-xhtml2pdf
 _pkgname=${pkgname#python-}
-pkgver=0.2.27
+pkgver=0.2.28
 pkgrel=1
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
@@ -32,7 +32,7 @@ makedepends=(
   python-wheel
 )
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/x/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('00e0472f35f2a4b7a9a8b89b5988091c7b73911df9563b7bfd9edd043068edb5')
+sha256sums=('c68c177dd10a59fb185c5ce163bb4ba6557f7c24bcd72b3e5e66aaf838411bef')
 
 _archive="$_pkgname-$pkgver"
 
