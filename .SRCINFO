@@ -1,0 +1,21 @@
+pkgbase = nvrm-vaapi-driver
+	pkgdesc = VA-API driver for NVIDIA GPUs (NVDEC/NVENC via open kernel module ioctls, no CUDA)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cagedbird043/nvidia-vaapi-driver
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libva
+	depends = gcc-libs
+	depends = glibc
+	depends = NVIDIA-MODULE
+	provides = libva-nvidia-driver
+	conflicts = libva-nvidia-driver
+	conflicts = libva-nvidia-driver-cagedbird
+	options = !debug
+	source = nvrm-vaapi-driver-0.1.0.tar.gz::https://github.com/cagedbird043/nvidia-vaapi-driver/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = nvrm-vaapi-driver
