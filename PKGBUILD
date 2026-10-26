@@ -1,9 +1,9 @@
 # Maintainer: Dominik Nakamura <dnaka91@gmail.com>
-# https://github.com/dnaka91/pkgbuilds
+# https://forge.dnaka91.rocks/dnaka91/pkgbuilds
 
 pkgname=obs-noise
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Advanced Masking Plugin for OBS"
 arch=('x86_64')
 url="https://github.com/FiniteSingularity/obs-noise"
@@ -11,14 +11,12 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'obs-studio')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('7b5dd7369252418988faa80db4144c9e663b4210eb18639053ea3e8ba0253633cc8742f5d2f62d4fcf8d40162829f979e7e2db1e3dd6053e0f6fdb8db8c49c34')
+b2sums=('aa8de1897a10a1f694af5bdd7497f09b94ffb556e8b2469867874178763eb17e5ac6264da0e47940086eb6ec953ead4c81c9b312bc99fa806f1963d80a1bc3b7')
 
 build() {
   cmake -B build -S "$pkgbase-$pkgver" -Wno-dev \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-Wno-discarded-qualifiers" \
-    -DLINUX_PORTABLE=OFF
+    -DCMAKE_BUILD_TYPE=Release
   cmake --build build
 }
 
