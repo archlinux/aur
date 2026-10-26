@@ -2,7 +2,7 @@
 
 pkgname=artalk-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A self-hosted comment system"
 arch=("aarch64" "x86_64")
@@ -17,8 +17,8 @@ options=(!debug)
 sha256sums=('089beb9843b735b597b93c727595fbded272261c2f54e193f73e3db36da5f00e'
             '12b14875a5e62d6a2a160a793285001621dac16539f8e2f1cee800644a62349e'
             '401cc7b81993810bb39285b244c6be7bae669f11c133bc676b3405581eb3e96d')
-sha256sums_aarch64=('8ef3dcb322207ea76038a32d8e137604eba9313259c3423683d80efbcf18aed1')
-sha256sums_x86_64=('8ef3dcb322207ea76038a32d8e137604eba9313259c3423683d80efbcf18aed1')
+sha256sums_aarch64=('e75c7cba6492dcdde6855208139c905bebb0299ed0e0d588394a22654dcb6a76')
+sha256sums_x86_64=('e75c7cba6492dcdde6855208139c905bebb0299ed0e0d588394a22654dcb6a76')
 
 package() {
     install -Dm755 artalk_v${pkgver}_linux*/artalk ${pkgdir}/usr/bin/artalk
