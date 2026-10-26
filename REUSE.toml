@@ -11,9 +11,13 @@ path = [
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
-# Export of the "Linux (Debian based)" template of the OCS Inventory
-# server, whose backend is GPL-3.0, with pacman commands in two sections
+# Exports of the "Linux (Debian based)" and "Linux Extended (Debian
+# based)" templates of the OCS Inventory server, whose backend is
+# GPL-3.0, with pacman commands in two sections
 [[annotations]]
-path = "linux-arch-template.json"
+path = [
+    "linux-arch-extended-template.json",
+    "linux-arch-template.json",
+]
 SPDX-FileCopyrightText = ["OCS Inventory contributors", "Arch Linux contributors"]
 SPDX-License-Identifier = "GPL-3.0-only"

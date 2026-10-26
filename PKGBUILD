@@ -24,10 +24,12 @@ install=$pkgname.install
 backup=('etc/ocsinventory-agent/config.json')
 source=("$url/releases/download/$pkgver/OCSInventory-Agent-Setup-Linux-Deb-$pkgver.tar.xz"
         'config.json'
-        'linux-arch-template.json')
+        'linux-arch-template.json'
+        'linux-arch-extended-template.json')
 sha256sums=('05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5'
             '3d1a7939a86f46a01efc14de561371ca63ad5228256585c37139b0032f603027'
-            '1b961e5cf26152feb1fa0d35acb7c7a8111e50500766827705324410c21a9c1c')
+            '1b961e5cf26152feb1fa0d35acb7c7a8111e50500766827705324410c21a9c1c'
+            '12edacb9143f472c28a0364d009459b0af7abbad0e5a1efdf76259006250bb9e')
 
 prepare() {
   sed -i '/^PIDFile=/d' OCSInventory-Agent-Linux-Deb-Setup/ocsinventory-agent.service
@@ -35,8 +37,8 @@ prepare() {
 
 package() {
   install -Dm600 config.json "$pkgdir/etc/ocsinventory-agent/config.json"
-  install -Dm644 linux-arch-template.json \
-    "$pkgdir/usr/share/ocsinventory-agent3/linux-arch-template.json"
+  install -Dm644 -t "$pkgdir/usr/share/ocsinventory-agent3" \
+    linux-arch-template.json linux-arch-extended-template.json
 
   cd OCSInventory-Agent-Linux-Deb-Setup
   install -Dm755 ocsinventory-cli "$pkgdir/usr/bin/ocsinventory-cli"
