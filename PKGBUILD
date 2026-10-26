@@ -2,12 +2,12 @@
 
 pkgname=uutils-findutils
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust implementation of findutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/findutils"
 license=('MIT')
-depends=('glibc' 'libgcc' 'oniguruma')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/uutils/findutils/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('e36ae3937f889bc59cfbd65820a642baa695c58d7fa1e387e41857e710f40419')
@@ -19,7 +19,9 @@ prepare() {
   if [ ! -f "Cargo.lock" ]; then
     cargo update
   fi
-  cargo fetch
+  cargo fetch \
+    --frozen \
+    --target host-tuple
 }
 
 check() {
