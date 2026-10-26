@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,16 @@ url="https://github.com/codewhale-hq/Codewhale"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'dbus')
 makedepends=('rust' 'cargo')
+# The experimental extension host ([features] extension_host) runs the embedded
+# TypeScript bundle in Node; Bun is only qualified on macOS.
+optdepends=('nodejs: run plugins through the experimental extension host')
 provides=('codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 # Upstream's release binaries have no debug symbols.
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0b7e025ce1c2c916a089e44bb29ada7239e2153344cce42508ff7534195776ab')
-_commit=fead51eeea0fb6038ea3e30923751b1a1c765b25
+sha256sums=('8743af404fa05a3406e8839474194dacfeaabb314c3e3bc68af44895c0d90245')
+_commit=ff466b2ed0bfb4ae5267d4d8d0ecb562cf46956e
 
 prepare() {
     cd "Codewhale-${pkgver}"
