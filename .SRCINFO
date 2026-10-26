@@ -1,0 +1,15 @@
+pkgbase = nouveau-utils
+	pkgdesc = Userspace dynamic frequency governor, CLI management tool, and interactive TUI for Nouveau
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/Twilight0/nouveau-utils
+	arch = any
+	license = GPL-2.0-only
+	depends = python
+	depends = nouveau-dkms
+	provides = nouveau-utils
+	backup = etc/nouveau-dynclockd.conf
+	source = nouveau-utils-2.2.0.tar.gz::https://github.com/Twilight0/nouveau-utils/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 41e6cfdccb394024e75a8871971ac34e93791bd30d884e211ed2d7be4e2831c2
+
+pkgname = nouveau-utils
