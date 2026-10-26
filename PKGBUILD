@@ -1,5 +1,5 @@
 pkgname=spicetify-bin
-pkgver=2.45.3
+pkgver=2.46.4
 pkgrel=1
 pkgdesc='Command-line tool to customize the official Spotify client'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "https://github.com/spicetify/cli/releases/download/v${pkgver}/spicetify-${pkgver}-linux-amd64.tar.gz"
 )
 noextract=("spicetify-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('29e7f0fb49c4a722afbd7e305c25d3953b4cf0cb642216bfd4de69f63bb2c41e')
+sha256sums=('61216076ef40eb46e57716b2f68ae9e5281e1c440e67ae34013facdb25300cfd')
 
 package() {
   install -dm755 "${pkgdir}/opt/spicetify"
