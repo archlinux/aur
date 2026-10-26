@@ -2,7 +2,7 @@
 
 _name=e2b
 pkgname=python-$_name
-pkgver=2.59.0
+pkgver=2.61.0
 pkgrel=1
 pkgdesc='E2B SDK that give agents cloud environments.'
 arch=('any')
@@ -29,15 +29,17 @@ makedepends=('python-uv-build'
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-pytest-timeout')
-source=("$_name::git+$_repo.git#tag=@$_name/python-sdk@$pkgver")
-sha256sums=('13502d8c5b179f36f8a66d8638516a9a7877680d19673b9157c70f740cef6132')
+source=("$_name::git+$_repo.git#tag=@$_name/python-sdk@$pkgver"
+        'connectrpc-0.13.patch')
+sha256sums=('beae02bc22567c41f43cf664ce7a2780a23c889849774261303bcb8451387b9d'
+            '236e115ef19bcb2e5ff03e2009098d17ff8d4fd4a69cf5f977aec1ef234af6b8')
 
 prepare() {
   cd "$_name/packages/python-sdk"
   # Remove stale build artifacts
   git clean -dfx
-  # Use the uv_build version shipped by Arch
-  sed -i 's/uv_build>=0.10.0,<0.11.0/uv_build/' pyproject.toml
+  # Add stream_type to the generated connect stubs for connectrpc 0.13
+  patch -Np1 -i ../../../connectrpc-0.13.patch
 }
 
 build() {
