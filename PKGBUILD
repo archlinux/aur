@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 pkgname=anvil
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Build, sign, and manage Linux kernels for Firecracker and Kata Containers'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
     'libelf: kernel compilation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/cli-v${pkgver}.tar.gz")
-sha256sums=('eab28d017bd72ab487b9c44fcd47909c4e43f4beb17ac15a67a422e55713a89b')
+sha256sums=('b243f60f4a93642eeaa61c6d3db76353a306482fee1b9c2afc8d7ce3af1b1dc6')
 
 build() {
     cd "Anvil-cli-v${pkgver}"
