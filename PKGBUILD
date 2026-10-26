@@ -6,7 +6,7 @@
 
 pkgname=forskscope
 # Keep pkgver in sync with [workspace.package] version in Cargo.toml on each release.
-pkgver=0.196.0
+pkgver=0.196.1
 pkgrel=1
 pkgdesc="Local-first cross-platform diff and merge tool"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archi
 # here. This file is a template; do not copy it and run `makepkg -si`
 # expecting a verified download (see docs/src/users/installation.md's
 # Arch section for the supported path).
-sha256sums=('654caa10351c816829c14d631a1b5ff3b29cf6f1d7d18b66e438bacecdf96a83')
+sha256sums=('af9677a1674d07be830475227f7f8781e41c7aafb510c272828253664a326a92')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -47,10 +47,10 @@ package() {
     install -Dm755 "target/release/forskscope" "$pkgdir/usr/bin/forskscope"
     install -Dm644 "packaging/linux/io.github.forskscope.forskscope.desktop" \
         "$pkgdir/usr/share/applications/io.github.forskscope.forskscope.desktop"
-    # RFC-095 §5: no real icon exists yet (the owner has not decided who
-    # draws it) - installed under the same hicolor/hicolor-id convention
-    # the Flatpak uses once it does, so `Icon=` in the desktop file above
-    # needs no change when it lands.
+    # RFC-095 §5: the icon, installed under the same hicolor convention the
+    # Flatpak uses, so `Icon=` in the desktop file above needs no change.
+    # The guard stays: a source tree without it (a sparse checkout) still
+    # packages, just without an icon, rather than failing the build.
     local icon="packaging/linux/icons/hicolor/scalable/apps/io.github.forskscope.forskscope.svg"
     if [[ -f "$icon" ]]; then
         install -Dm644 "$icon" \
