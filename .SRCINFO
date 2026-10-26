@@ -1,6 +1,6 @@
 pkgbase = msime-bin
 	pkgdesc = MSIME (Metasequoia) Linux input method: IBus host, desktop tools and a Fcitx5 addon
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/metasequoiaime/msime
 	arch = x86_64
@@ -31,13 +31,13 @@ pkgbase = msime-bin
 	optdepends = quickshell: bar status widget for Omarchy/Quickshell sessions
 	provides = msime-linux
 	conflicts = msime-linux
-	noextract = msime-linux_0.13.0_amd64.deb
-	noextract = msime-linux_0.13.0_arm64.deb
+	noextract = msime-linux_0.14.0_amd64.deb
+	noextract = msime-linux_0.14.0_arm64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = msime-linux_0.13.0_amd64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v0.13.0/msime-linux_0.13.0_amd64.deb
-	sha256sums_x86_64 = 84b023a69689a4493b70f36c1af3e27cb186bcbacc4ae2d5424f45f83208a5d6
-	source_aarch64 = msime-linux_0.13.0_arm64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v0.13.0/msime-linux_0.13.0_arm64.deb
-	sha256sums_aarch64 = 4240ad172a73771f7ba598cef9aba2e219358cc9867306ffef859686f815a71d
+	source_x86_64 = msime-linux_0.14.0_amd64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v0.14.0/msime-linux_0.14.0_amd64.deb
+	sha256sums_x86_64 = 4c91ee21f900ac233a7aa1901e0f1f59d4c81b21c4668c491a01a9439553a79c
+	source_aarch64 = msime-linux_0.14.0_arm64.deb::https://github.com/metasequoiaime/msime/releases/download/linux-v0.14.0/msime-linux_0.14.0_arm64.deb
+	sha256sums_aarch64 = a899954da11dda683d809e77b3d31f52137870c004d3eb3ca51b47e3bbe4c0f0
 
 pkgname = msime-bin
