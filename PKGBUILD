@@ -21,7 +21,7 @@ license=('MIT')
 
 conflicts=("${pkgname%-bin}")
 
-depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'gdk-pixbuf2' 'cairo' 'dbus' 'openssl' 'libsoup3' 'webkit2gtk-4.1' 'hicolor-icon-theme')
+depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'gdk-pixbuf2' 'cairo' 'dbus' 'openssl' 'libsoup3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'hicolor-icon-theme')
 
 options=('!strip')
 

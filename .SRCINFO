@@ -15,6 +15,7 @@ pkgbase = prism-download-manager-bin
 	depends = openssl
 	depends = libsoup3
 	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
 	conflicts = prism-download-manager
 	options = !strip
