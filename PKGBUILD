@@ -2,7 +2,7 @@
 
 pkgname=pandacode
 pkgver=0.3.56
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight coding agent workspace"
 arch=('x86_64' 'aarch64')
 url="https://github.com/aicodeking/pandacode"
