@@ -3,14 +3,14 @@
 
 pkgname=onedrivegui-git
 _pkgname=OneDriveGUI
-pkgver=1.2.1.r10.g740cd51
+pkgver=2.4.0.r2.g0437572
 pkgrel=1
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
 arch=('any')
 url="https://github.com/bpozdena/${_pkgname}"
 license=("GPL-3.0-or-later")
-depends=("pyside6" "python-requests" "onedrive-abraunegg" "qt6-webengine")
-makedepends=("git")
+depends=("hicolor-icon-theme" "onedrive-abraunegg" "pyside6" "python" "python-requests" "qt6-webengine")
+makedepends=("git" "python-build" "python-installer" "python-setuptools")
 conflicts=("onedrivegui")
 provides=("onedrivegui")
 source=("git+${url}.git")
@@ -21,16 +21,20 @@ pkgver() {
 	git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 
-package() {
-	cd "${_pkgname}/src/"
-	install -d "${pkgdir}/usr/lib/${_pkgname}/"
-	cp -a * "${pkgdir}/usr/lib/${_pkgname}/"
-	chmod +x "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.py"
+build() {
+	cd "${_pkgname}/"
+	python -m build --wheel --no-isolation
+}
 
-	cd resources
-	install -Dm644 "images/${_pkgname}.png" -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps/"
+package() {
+	cd "${_pkgname}/"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+
+	cd src/onedrive_gui/resources
 	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
-	install -d "${pkgdir}/usr/bin/"
-	ln -sf "/usr/lib/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+	cd images/hicolor
+	for r in 16 24 32 48 64 96 128 256; do
+		install -Dm644 "${r}x${r}/apps/${_pkgname}.png" -t "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/"
+	done
 }
