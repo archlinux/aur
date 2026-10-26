@@ -1,6 +1,6 @@
 # Maintainer: AlphaJack <19962243+AlphaJack at users dot noreply dot github dot com>
 pkgname=mercurio-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Apprise-compatible Rust library, CLI and HTTP server to send notifications to 150+ services via a single URL."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,9 +13,9 @@ backup=('etc/mercurio/mercurio.env')
 source_x86_64=("$pkgname-$pkgver-x86_64-unknown-linux-musl.tar.xz::$url/releases/download/v$pkgver/mercurio-cli-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("$pkgname-$pkgver-aarch64-unknown-linux-musl.tar.xz::$url/releases/download/v$pkgver/mercurio-cli-aarch64-unknown-linux-musl.tar.xz")
 source_armv7h=("$pkgname-$pkgver-armv7-unknown-linux-musleabihf.tar.xz::$url/releases/download/v$pkgver/mercurio-cli-armv7-unknown-linux-musleabihf.tar.xz")
-b2sums_x86_64=('054d6cc870e4e2a803f016513a58246d6cf0e4e305619841fce9aa56ff69bb480e4e1ae54832e498c6e6ca21da3013819e91af174dc9e03a1a6e912bd98789ed')
-b2sums_aarch64=('58e80d1b5e90827a28a1484ca63a1d7eebc20b11f6c9bd25051bc4a94bb12f9cefc7639e755cad16eeb472af671ab0bbe854e56871f3d7896871347662b5886f')
-b2sums_armv7h=('60a7fb569965e1af5d7b1db2afd953d4a6ede17151904bcd1541675c6f329b742443b02080bd93b46700d690a618e0c1bfbdb04f45c89e966a9d2e495efb74d4')
+b2sums_x86_64=('42853ee4e35382304ef22d6290aadac9789d5fc59ce3078d6dc2f17eb914192a113d2f4e1e02dd6d741c2aca6a8bc5463b67dc140f3c8e70156f985ad7c0b76d')
+b2sums_aarch64=('36b41aced96ab33af5cca4a8b34582f8a2bf73158e181a866f942ed1bdc37b34e55d164c6946623f5d591e3f9837851d500023b6aeaf18149e1c0a939a0a17ed')
+b2sums_armv7h=('0784e2c0d6de35161a582b8ceb487519a334da83a2d181279d30ce1a8c6b9193a2f798732d59dae2c947bac6836142a09330bcd4792facdb84c7f630180182de')
 
 package() {
   local target
