@@ -1,25 +1,29 @@
 # Maintainer: faetalize
 
 pkgname=waytator
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
-pkgdesc='Screenshot annotator and lightweight image editor'
+pkgdesc='Screenshot and screen recording tool with an image and video editor'
 arch=('x86_64')
 url='https://github.com/faetalize/waytator'
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita' 'gtk4-layer-shell' 'wayland' 'wl-clipboard')
+depends=('gtk4' 'libadwaita' 'gtk4-layer-shell' 'wayland' 'wl-clipboard'
+         'ffmpeg' 'libpipewire' 'rubberband' 'mesa' 'libglvnd')
 optdepends=('tesseract: OCR support'
-            'xdg-desktop-portal: screenshots on compositors without wlr-screencopy')
-makedepends=('meson' 'ninja' 'pkgconf' 'wayland-protocols')
+            'xdg-desktop-portal: screen recording, and screenshots on compositors without wlr-screencopy'
+            'gifski: better looking GIF export')
+makedepends=('meson' 'ninja' 'pkgconf' 'wayland-protocols' 'libdrm')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5fda02466c98ad0bc6cc1bce0be1c19e64c9dfe5b85a43480098821e649df1eb')
+sha256sums=('50de9bb2fd83799e31701c5c1da3edf00d124b7753630c6e6bd2d28cdbf01d11')
 
 build() {
   local meson_options=(
     --buildtype=release
   )
 
+  # a build folder left from an older version would still point at its sources
+  rm -rf build
   arch-meson "$pkgname-$pkgver" build "${meson_options[@]}"
   meson compile -C build
 }
