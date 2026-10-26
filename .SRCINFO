@@ -1,10 +1,11 @@
 pkgbase = logitech-g435-battery-bin
 	pkgdesc = Tray icon showing the battery level of the Logitech G435 wireless headset (prebuilt binary)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/deddroid/logitech-g435-battery
 	arch = x86_64
 	license = MIT
+	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
 	depends = systemd-libs
@@ -12,7 +13,7 @@ pkgbase = logitech-g435-battery-bin
 	provides = g435-tray
 	conflicts = logitech-g435-battery
 	conflicts = g435-tray
-	source = https://github.com/deddroid/logitech-g435-battery/releases/download/v0.1.0/g435-tray-v0.1.0-x86_64-linux.tar.gz
-	sha256sums = 4cd232166b6364b1c0c06ff2caaca3cac65f9026275078bd15ead0ed51f4a000
+	source = https://github.com/deddroid/logitech-g435-battery/releases/download/v0.2.0/g435-tray-v0.2.0-x86_64-linux.tar.gz
+	sha256sums = b807a4688dbc7e1fb0ab590f141ffb23a56614fc08b65efef40361420d6bb1ef
 
 pkgname = logitech-g435-battery-bin
