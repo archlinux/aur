@@ -201,8 +201,12 @@ matches it is enough.
 and increments `pkgrel`.
 
 What must not be committed: the ~100 MB upstream `.deb`, the built
-`.pkg.tar.zst`, and `src/` / `pkg/` / `sources/`. `.gitignore` already covers
-all of them, so `git status` before pushing is the only check needed.
+`.pkg.tar.zst`, and `src/` / `pkg/` / `sources/` — that includes
+`sources/LICENSE`, which is fetched from the `agent-v<pkgver>` tag just like
+the deb. A copy in the repo root would be preferred by `makepkg` over
+`$SRCDEST` (it checks `$startdir` first) and so silently shadow the download.
+`.gitignore` already covers all of them, so `git status` before pushing is the
+only check needed.
 
 Prerequisites: an AUR account with the SSH public key added
 (<https://aur.archlinux.org/account>), plus `git` and `openssh`.
