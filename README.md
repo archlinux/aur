@@ -28,7 +28,7 @@ Upstream publishes Linux builds on GitHub releases under tags of the form
 `agent-v<version>`, as a `.deb`, a `.tar.gz` and an `.AppImage`:
 
 ```
-https://github.com/musterhq/muster-code/releases/download/agent-v0.3.13/Muster-Agent-0.3.13-linux-amd64.deb
+https://github.com/musterhq/muster-code/releases/download/agent-v0.3.14/Muster-Agent-0.3.14-linux-amd64.deb
 ```
 
 All three carry the three checksums published in the release's `SHA256SUMS`
@@ -49,8 +49,9 @@ deb is the layout upstream actually maintains for Linux systems:
 
 The `.gz` tarball is the same payload without that metadata. Repackaging the
 deb also avoids a runtime dependency on `fuse2` and the squashfs mount; the
-price is a ~290 MB installed tree instead of one 117 MB AppImage. The built
-package is ~102 MB because zstd compresses better than the AppImage's squashfs.
+price is a ~290 MB installed tree instead of one 113 MB AppImage. The built
+package is around 100 MB because zstd compresses better than the AppImage's
+squashfs.
 
 ## Runtime dependencies
 
@@ -98,8 +99,117 @@ and says so on stderr.
    automatically.
 3. Refresh `sha256sums` from the release's `SHA256SUMS` asset (the deb's own
    digest) and, because the `LICENSE` is fetched by tag, the license digest.
-4. `makepkg --printsrcinfo > .SRCINFO`, rebuild, commit, and bump `pkgrel` if
-   only the PKGBUILD changed.
+   The digests are also printed next to every asset on
+   `https://github.com/musterhq/muster-code/releases/expanded_assets/agent-v<version>`,
+   which is the easier way to read them; `SHA256SUMS` itself only downloads as
+   `application/octet-stream`. The `LICENSE` digest only changes when the blob
+   at the new tag does — compare `sha` in
+   `https://api.github.com/repos/musterhq/muster-code/contents/LICENSE?ref=agent-v<version>`
+   against the previous tag before assuming it moved.
+4. `makepkg --printsrcinfo > .SRCINFO`, rebuild, then commit and push (see
+   *Publishing to the AUR* below); bump `pkgrel` if only the PKGBUILD changed.
+
+## Build directories (`src/`, `pkg/`, `sources/`)
+
+`makepkg` writes to four places, each with its own variable. Only the first of
+them is a directory called `sources/`, and only because `SRCDEST` is pointed
+there; none of the others is named `sources` by default.
+
+| Path | Variable | Contents |
+|---|---|---|
+| `sources/` | `SRCDEST` | the untouched upstream files (`Muster-Agent-*.deb`, `LICENSE`), kept for the next build |
+| `src/` | `$srcdir` | the extracted tree; `prepare()` runs here |
+| `pkg/` | `$pkgdir` | the installation staging tree |
+| `*.pkg.tar.zst` | `PKGDEST` | the built package |
+
+`SRCDEST` moves only the downloads, `BUILDDIR` only `src/` + `pkg/`, `PKGDEST`
+only the package. A configuration that sets `SRCDEST` alone therefore still
+leaves `src/` and `pkg/` next to the `PKGBUILD` — that is the documented
+behaviour, not a fallback. `BUILDDIR` also always appends the package name
+(`$BUILDDIR/muster-agent-bin/src`), so `sources/src` cannot be produced.
+
+Optionally relocated for the whole system:
+
+```sh
+# /etc/makepkg.conf, or ~/.config/pacman/makepkg.conf (which replaces it)
+SRCDEST=/var/cache/makepkg/sources
+BUILDDIR=/var/cache/makepkg
+PKGDEST=/var/cache/makepkg/packages
+```
+
+Per build instead, without touching the config. There are no
+`--srcdest`/`--builddir`/`--pkgdest` options (`makepkg --help` is the list);
+the way in is the environment, because `load_makepkg_config` saves these
+variables before sourcing the config and restores them afterwards — so the
+environment beats any value in a conf file:
+
+```sh
+SRCDEST="$PWD/sources" makepkg                        # downloads land here, symlinked into src/
+BUILDDIR=/var/cache/makepkg PKGDEST=/var/cache/makepkg makepkg
+```
+
+Preserved that way: `PKGDEST SRCDEST SRCPKGDEST LOGDEST BUILDDIR PKGEXT SRCEXT
+GPGKEY PACKAGER CARCH PACKAGECARCH`.
+
+If values set in `makepkg.conf` look ignored, check which file `makepkg` read
+and as whom:
+
+- `--config <file>` silences the user config entirely. In
+  `/usr/share/makepkg/util/config.sh` the user file is only sourced
+  `if [[ $MAKEPKG_CONF = "/etc/makepkg.conf" ]]` — a comparison of the
+  *literal strings*, not of the resolved path. Any wrapper that passes
+  `--config /etc/makepkg-optimize.conf` (pacman's `makepkg-optimize`) therefore
+  never reads `~/.config/pacman/makepkg.conf`. Drop-ins still work there:
+  `$MAKEPKG_CONF.d/*.conf` is sourced for whatever config was given.
+- A `~/.config/pacman/makepkg.conf` *replaces* `/etc/makepkg.conf` rather than
+  layering on it, so a partial user file silently drops the system values.
+- `sudo makepkg` reads root's `$HOME`, so the user config is invisible; a
+  `devtools`/`paru`/`aurutils` chroot build uses the chroot's stock config.
+- A relative path is rejected outright.
+
+`type -a makepkg` and `ls -l ~/.config/pacman/makepkg.conf /etc/makepkg*.conf.d/`
+answer most of it. `makepkg` never *moves* files that are already there: with
+an `SRCDEST` configured, a source found in `$startdir` still wins over the
+cache (`get_filepath()` tests `$startdir` first), so a copy sitting next to the
+`PKGBUILD` keeps `SRCDEST` empty until it is moved away.
+
+`.gitignore` lists `src/`, `pkg/`, `sources/` and the upstream assets, so none
+of them can be committed to the AUR repo.
+
+## Publishing to the AUR
+
+The package is <https://aur.archlinux.org/packages/muster-agent-bin>. This
+folder *is* the AUR clone — `origin` is
+`ssh://aur@aur.archlinux.org/muster-agent-bin.git` and `master` tracks it — so
+publishing is an ordinary commit and push from here. No separate working copy,
+no wrapper script.
+
+```sh
+makepkg --printsrcinfo > .SRCINFO          # must equal what makepkg derives
+git add PKGBUILD .SRCINFO README.md
+git commit -m "upgpkg: muster-agent-bin $(sed -n 's/^pkgver=//p' PKGBUILD)-$(sed -n 's/^pkgrel=//p' PKGBUILD)"
+git push origin master
+```
+
+Commit message convention: `upgpkg: <pkgname> <pkgver>-<pkgrel>`. The AUR only
+accepts commits whose author e-mail is verified on the account, so the identity
+must be the one on the `Maintainer:` line
+(`gaou-piou <i.am.piou@gmail.com>`) — a global `user.name`/`user.email` that
+matches it is enough.
+
+`pkgver` bumps reset `pkgrel` to `1`; a `PKGBUILD`-only change keeps `pkgver`
+and increments `pkgrel`.
+
+What must not be committed: the ~100 MB upstream `.deb`, the built
+`.pkg.tar.zst`, and `src/` / `pkg/` / `sources/`. `.gitignore` already covers
+all of them, so `git status` before pushing is the only check needed.
+
+Prerequisites: an AUR account with the SSH public key added
+(<https://aur.archlinux.org/account>), plus `git` and `openssh`.
+
+A local `pre-commit` hook (`.git/hooks/pre-commit`, so it is never published)
+refuses the commit when `.SRCINFO` no longer matches `makepkg --printsrcinfo`;
+delete it if it gets in the way.
 
 ## Notes
 

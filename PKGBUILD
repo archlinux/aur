@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 
 pkgname=muster-agent-bin
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 pkgdesc='Agentic development environment (ADE) for Codex, Claude Code, OpenCode and local models'
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 # Chromium sandbox on wherever it can, icons in every hicolor size, a desktop
 # entry, and an AppArmor profile in resources/. Repackaging it means no fuse2
 # dependency and no AppImage mount at runtime, at the cost of a ~290 MB
-# installed tree instead of a single 117 MB AppImage. The tarball asset is the
+# installed tree instead of a single 113 MB AppImage. The tarball asset is the
 # same payload without the deb metadata; the deb is preferred because it also
 # documents the runtime dependencies (see depends= above).
 _deb="Muster-Agent-${pkgver}-linux-amd64.deb"
@@ -34,7 +34,7 @@ _url="https://github.com/musterhq/muster-code/releases/download/agent-v${pkgver}
 
 source=("${_deb}::${_url}/${_deb}"
         "LICENSE::https://raw.githubusercontent.com/musterhq/muster-code/agent-v${pkgver}/LICENSE")
-sha256sums=('0b923eb597da87f5c03baa9ce4239445734f4c19821573cbd1bb586129dad010'
+sha256sums=('8f64a155007eb521d3ffbbc89614316a6f7d839c3630404bfa72be18efc5478e'
             '8be9dc5eea50ccc91e9c3be00ffd5c973531f2f0a7098e9bd979b4355523661e')
 
 prepare() {
