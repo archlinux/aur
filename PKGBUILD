@@ -1,7 +1,7 @@
 # Maintainer: Branko Simic <branko@valens.dev>
 #
-# Precompiled package — ships the built API bundle and web assets from the
-# GitHub release, no build step required.
+# Generated file — do not edit by hand.
+# Edit contrib/aur/PKGBUILD.template and run `pnpm aur:gen`.
 #
 # Publishing:
 #   1. git tag -s v$pkgver -m "v$pkgver" && git push origin v$pkgver
@@ -26,15 +26,15 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/ar
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/chest-backup-$pkgver"
-  local app="$pkgdir/usr/share/chest-backup"
+  cd "$srcdir/$pkgname-$pkgver"
+  local app="$pkgdir/usr/share/$pkgname"
 
   install -Dm644 packages/api/dist/index.js "$app/packages/api/dist/index.js"
 
   install -d "$app/packages/web"
   cp -r packages/web/dist "$app/packages/web/"
 
-  sed -i "s|$srcdir/chest-backup-$pkgver|/usr/share/$pkgname|g" \
+  sed -i "s|$srcdir/$pkgname-$pkgver|/usr/share/$pkgname|g" \
     "$app/packages/api/dist/index.js"
 
   for src in \
