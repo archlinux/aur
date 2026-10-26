@@ -1,6 +1,6 @@
 pkgbase = cranamp-bin
 	pkgdesc = Music player in Rust with WSZ skins and an agent-connected Skin Studio
-	pkgver = 0.1.89
+	pkgver = 0.1.91
 	pkgrel = 1
 	url = https://github.com/samoylenkodmitry/cranamp
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = cranamp-bin
 	depends = vulkan-icd-loader
 	optdepends = vulkan-driver: GPU rendering
 	optdepends = xdg-desktop-portal: file dialogs
-	provides = cranamp=0.1.89
+	provides = cranamp=0.1.91
 	conflicts = cranamp
 	options = !strip
 	options = !debug
-	source = https://github.com/samoylenkodmitry/cranamp/releases/download/v0.1.89/cranamp-0.1.89-linux-x86_64-store.tar.gz
-	sha256sums = f48ecfe480d5652ee9f2d6c8170b2b954a1ee016328c192883c67def39e55149
+	source = https://github.com/samoylenkodmitry/cranamp/releases/download/v0.1.91/cranamp-0.1.91-linux-x86_64-store.tar.gz
+	sha256sums = 488e4b90e5a040a16f5257eb827231cfa950d79b6470f9fd2cc0ac49db0e77c7
 
 pkgname = cranamp-bin
