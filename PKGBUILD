@@ -5,7 +5,7 @@
 # Contributor: Saghm Rossi <aur@saghm.com>
 
 pkgname=curseforge-appimage
-pkgver=1.324.0_41180
+pkgver=1.325.0_41594
 pkgrel=1
 pkgdesc="CurseForge desktop client for Linux (AppImage)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "CurseForge-${pkgver/_/-}.AppImage::https://curseforge.overwolf.com/electron/linux/CurseForge-${pkgver/_/-}.AppImage"
   'LICENSE'
 )
-sha256sums=('728e04c70ecd9b9ee6f66d68c8543d872a67ba56551477ceea2a29a77a563c3f'
+sha256sums=('bc9a6c5c969b572a7a19ef8d3d1c28cbbc8d52d96c3b9c46ec8d4caea516ef37'
             '135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f')
 
 prepare() {
