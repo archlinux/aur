@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A local-first Markdown editor. Write visually or in source, organize your own folders, and bring in AI when it helps. Local editing works without an account or an AI provider."
 arch=('x86_64')
@@ -17,10 +17,11 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('abbd7bfbe74aca2652cda98966327b930a5283cca00c57c075d78b4467da9ab8')
+sha256sums=('15f269e5363134cdef60b24390531e6a378352df4688cc10d78388fe3f5e5e72')
 prepare() {
     sed -i "s/Development/Utility/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    [[ -d "${srcdir}/usr/share/icons/hicolor/256x256@2" ]] && mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
+    local _icon_dir="${srcdir}/usr/share/icons/hicolor"
+	[[ -d "${_icon_dir}/256x256@2" && ! -d "${_icon_dir}/512x512" ]] && mv "${_icon_dir}/256x256@2" "${_icon_dir}/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"

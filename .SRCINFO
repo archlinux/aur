@@ -1,15 +1,15 @@
 pkgbase = markflowy-bin
 	pkgdesc = A local-first Markdown editor. Write visually or in source, organize your own folders, and bring in AI when it helps. Local editing works without an account or an AI provider.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://www.markflowy.cc/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = markflowy=1.2.0
+	provides = markflowy=1.2.1
 	conflicts = markflowy
-	source = markflowy-1.2.0.rpm::https://github.com/drl990114/MarkFlowy/releases/download/v1.2.0/MarkFlowy-1.2.0-1.x86_64.rpm
-	sha256sums = abbd7bfbe74aca2652cda98966327b930a5283cca00c57c075d78b4467da9ab8
+	source = markflowy-1.2.1.rpm::https://github.com/drl990114/MarkFlowy/releases/download/v1.2.1/MarkFlowy-1.2.1-1.x86_64.rpm
+	sha256sums = 15f269e5363134cdef60b24390531e6a378352df4688cc10d78388fe3f5e5e72
 
 pkgname = markflowy-bin
