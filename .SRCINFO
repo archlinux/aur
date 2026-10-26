@@ -1,6 +1,6 @@
 pkgbase = scottbass3-greeter-git
 	pkgdesc = greetd greeter for Hyprland built on Quickshell, with the scottbass3-shell lock screen look
-	pkgver = r1.68d683d
+	pkgver = r2.fe0e9b5
 	pkgrel = 1
 	url = https://github.com/scottbass3/greeter
 	arch = any
