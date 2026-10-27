@@ -1,0 +1,25 @@
+pkgbase = dependabot-cli-bin
+	pkgdesc = Run Dependabot update jobs from the command line
+	pkgver = 1.96.0
+	pkgrel = 1
+	url = https://github.com/dependabot/cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = docker
+	depends = ca-certificates
+	provides = dependabot-cli
+	provides = dependabot
+	conflicts = dependabot-cli
+	conflicts = dependabot
+	options = !strip
+	options = !debug
+	source = dependabot-cli-1.96.0-LICENSE::https://raw.githubusercontent.com/dependabot/cli/v1.96.0/LICENSE
+	sha256sums = 0e7b78f37c1ba58f8287e556c1a48dbf477b467f88ec300537af3fef2451a6ff
+	source_x86_64 = https://github.com/dependabot/cli/releases/download/v1.96.0/dependabot-v1.96.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 44bec839eb57d24a7a8aec36d3cd3d97dc12a99d2b8fb23637add6f4f8142613
+	source_aarch64 = https://github.com/dependabot/cli/releases/download/v1.96.0/dependabot-v1.96.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 14e2a8fdddcd7749c428b42040ec42521e71c00c9a0aa11b6b17cfada94317ab
+
+pkgname = dependabot-cli-bin
