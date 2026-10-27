@@ -2,7 +2,7 @@
 set -o pipefail
 
 _APPDIR="/opt/flclash-oixcloud"
-_RUNNAME="${_APPDIR}/FlClash"
+_RUNNAME="${_APPDIR}/flclash-oixcloud"
 
 export PATH="${_APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"

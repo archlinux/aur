@@ -7,6 +7,7 @@ AUR package repackaging the **dler.io custom FlClash build** (`https://dl.dler.i
 - Never check GitHub releases (chen08209/FlClash) for updates — the deb's version does not follow GitHub tags.
 - `pkgver` is the deb's `Version:` field (`control.tar.*/control`) copied verbatim: `<flclash-version>+<buildstamp>`, e.g. `0.8.99+2026092815`.
 - `url` in PKGBUILD intentionally points at the maintainer's site (https://oixcloud.com), not upstream.
+- One commit per logical change with a semantic message (`chore:`, `docs:`, `fix:`, …). Never split one logical change across commits; documentation a version update necessitates (e.g. deb layout changes) goes into that update's commit.
 
 ## Update procedure
 
@@ -16,15 +17,17 @@ AUR package repackaging the **dler.io custom FlClash build** (`https://dl.dler.i
 4. Bump `pkgver` and replace the deb's sha256sum (the second sum) in PKGBUILD.
 5. `makepkg --printsrcinfo > .SRCINFO`
 6. `makepkg -sf` to verify; keep the built `*.pkg.tar.zst` — the installer is usually wanted next.
-7. Commit only `PKGBUILD` and `.SRCINFO`, message `Update to <pkgver>`.
+7. Commit everything this update touched as one semantic commit (e.g. `chore: update to <pkgver>`): `PKGBUILD`, `.SRCINFO`, the launcher if it changed, and AGENTS.md when one of its sections changed because of this version.
 
 ## Deb layout assumptions
 
-`prepare()` / `package()` require in `data.tar`:
+Since 0.9.2+2026102712 the deb ships pre-branded as `flclash-oixcloud`; `prepare()` / `package()` require in `data.tar`:
 
-- `usr/share/applications/FlClash.desktop`
-- `usr/share/icons/hicolor/128x128/apps/FlClash.png` and `256x256` (only these sizes)
-- payload under `usr/share/FlClash/` (binary + `lib/`)
+- `usr/share/applications/flclash-oixcloud.desktop` — installed verbatim (Exec/Icon/Categories/StartupWMClass are already correct; no seds)
+- `usr/share/icons/hicolor/128x128/apps/flclash-oixcloud.png` and `256x256` (only these sizes)
+- payload under `usr/share/flclash-oixcloud/` (binary `flclash-oixcloud`, `lib/`, `FlClashCore`, `FlClashHelperService`, `manifest.json`)
+
+The launcher `flclash-oixcloud.sh` execs `/opt/flclash-oixcloud/flclash-oixcloud` — keep that binary name in sync if the deb renames it again.
 
 Verify with `bsdtar -tf data.tar.*` on every update — if paths moved, the PKGBUILD functions need real changes, not just a version bump. If the deb's `Depends:` changed, that is a prompt to look harder at the dependency audit, but run the audit on every update regardless.
 
