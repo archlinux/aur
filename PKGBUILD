@@ -2,9 +2,9 @@
 pkgname=steamachievementnotifier
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=46
+_subver=48
 pkgver="${_mainver}.${_subver}"
-_electron=electron42
+_electron=electron44
 pkgrel=1
 pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam"
 arch=('x86_64')
