@@ -1,6 +1,6 @@
 pkgbase = nenya-bin
 	pkgdesc = Nenya is a lightweight, highly secure AI API Gateway/Proxy written in Go. Transparent middleware between AI coding clients and upstream LLM providers.
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/gumieri/nenya
 	license = Apache
@@ -8,10 +8,10 @@ pkgbase = nenya-bin
 	conflicts = nenya
 	provides = nenya
 	arch = aarch64
-	source_aarch64 = nenya-bin_0.19.0_aarch64.tar.gz::https://github.com/gumieri/nenya/releases/download/v0.19.0/nenya_0.19.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2a51a386c7b3758738712304eddd4e1080162d19e5b4dbf80a70d61482c4eb3c
+	source_aarch64 = nenya-bin_0.19.1_aarch64.tar.gz::https://github.com/gumieri/nenya/releases/download/v0.19.1/nenya_0.19.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0fa71b929b9f12545e3d51808ba2b509bd3c0d45d56ac2d7c3efdb020310e272
 	arch = x86_64
-	source_x86_64 = nenya-bin_0.19.0_x86_64.tar.gz::https://github.com/gumieri/nenya/releases/download/v0.19.0/nenya_0.19.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8ddc90dee20d7487e9ad35b4b3c7826f46285ef5d917b5e9ea3fd5e0468d028a
+	source_x86_64 = nenya-bin_0.19.1_x86_64.tar.gz::https://github.com/gumieri/nenya/releases/download/v0.19.1/nenya_0.19.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 90ce2f85b74812e0227c79e5fb50b60594bb947fcb20400cc860baac9664a588
 	
 pkgname = nenya-bin
