@@ -52,10 +52,26 @@ makepkg -f; or begin
     exit 1
 end
 
-# 5) Regenerate .SRCINFO.
+# 5) Check for binaries upstream builds that we don't package.
+#    weave-certify is an internal batch verifier, intentionally not shipped.
+set -l ignored weave-certify
+set -l packaged (string match -rag 'target/release/([^"\s]+)' < $pkgbuild)
+set -l unpackaged
+for bin in (find src/weave-$latest/target/release -maxdepth 1 -type f -executable -printf '%f\n')
+    contains -- $bin $packaged $ignored; or set -a unpackaged $bin
+end
+
+if test (count $unpackaged) -gt 0
+    echo "New binaries not in PKGBUILD: $unpackaged" >&2
+    echo "Add them to package() (or to the ignore list here), then commit manually." >&2
+    makepkg --printsrcinfo > $srcinfo
+    exit 1
+end
+
+# 6) Regenerate .SRCINFO.
 makepkg --printsrcinfo > $srcinfo
 
-# 6) Commit the bump.
+# 7) Commit the bump.
 git add PKGBUILD .SRCINFO
 git commit -m "weave-merge $latest"
 
