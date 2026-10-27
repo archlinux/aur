@@ -1,6 +1,6 @@
 pkgbase = oxmgr-bin
 	pkgdesc = Lightweight cross-platform process manager
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Vladimir-Urik/OxMgr
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = oxmgr-bin
 	optdepends = systemd: install and manage the oxmgr daemon as a systemd service
 	provides = oxmgr
 	conflicts = oxmgr
-	source = LICENSE::https://raw.githubusercontent.com/Vladimir-Urik/OxMgr/v0.5.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Vladimir-Urik/OxMgr/v0.6.0/LICENSE
 	sha256sums = aee235df1ebced77a16a1c5b18e341a89f688085001ccaf4932f9b0f48938282
-	source_x86_64 = https://github.com/Vladimir-Urik/OxMgr/releases/download/v0.5.0/oxmgr-v0.5.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = e12466efc976c6444422803cbb9adce9a8bc50709edf6c08cf91d8ef52bfaf4c
-	source_aarch64 = https://github.com/Vladimir-Urik/OxMgr/releases/download/v0.5.0/oxmgr-v0.5.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 9cf0a2aacae8aacd69074a17cc9f83fd58d0fc6a1539ca74e9231ac98fbe7b47
+	source_x86_64 = https://github.com/Vladimir-Urik/OxMgr/releases/download/v0.6.0/oxmgr-v0.6.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 7eb650b5f79b6396dd13fc61a03a938cbe7e9e6ead51978cf97b07c65227c990
+	source_aarch64 = https://github.com/Vladimir-Urik/OxMgr/releases/download/v0.6.0/oxmgr-v0.6.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = c2bad2878f9b5e84171dbf9fa5a91ec99671fec65e789c484b1e478f1752897c
 
 pkgname = oxmgr-bin
