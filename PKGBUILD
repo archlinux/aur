@@ -1,6 +1,5 @@
 # Bootloader for the raspberry pi SBCs (fw between the GPU ROM-kernel).
-# Split package by board lineup to avoid clutter.
-# NOT installed to /boot. Intended to be picked up by kernel-install.
+# Split package by board lineup to avoid clutter. NOT automatically installed.
 
 pkgbase=raspberrypi-bootloader
 pkgname=(raspberrypi-bootloader-rpi4)
