@@ -1,7 +1,7 @@
 # Maintainer: Vaishnav-Sabari-Girish <vaishnav.sabari.girish@gmail.com>
 
 pkgname=wireforge
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Braille Wireframe Viewer"
 arch=(
@@ -18,7 +18,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/wireforge-v$pkgver.tar.gz")
-sha256sums=('12dab5e2121fb7f6a4b8ba36121bf2ed21ab9f42cf2d84ee92494b004c250097')
+sha256sums=('ce3e1c95ed080fdbe8f73b1419160a3f5f41305963028fa66336ae85a9086ab1')
 
 build() {
   cd "$pkgname-$pkgver"
