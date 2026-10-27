@@ -2,7 +2,7 @@
 
 pkgname=dreampotato-bin
 _pkgname=DreamPotato
-pkgver=0.3.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='An emulator for the Dreamcast VMU'
 url='https://github.com/RikkiGibson/DreamPotato'
@@ -13,7 +13,7 @@ source=(
     "$url/releases/download/v$pkgver/DreamPotato-Linux-x64-v$pkgver.zip"
 )
 sha256sums=(
-    'bfd3e9e2252b0cbcb6a07647410d2c1e379eb3fdd9bced7d430a4a81ebff27ef'
+    '5a0923b5073bb2bd14b913139acba7395d452623d20ca540619e0c6ca9914830'
 )
 provides=("dreampotato")
 options=("!strip")
