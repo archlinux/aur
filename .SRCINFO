@@ -1,0 +1,20 @@
+pkgbase = conclave-bin
+	pkgdesc = Multi-agent pull request review with local coding agents
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/bornholm/conclave
+	license = MIT
+	depends = git
+	conflicts = conclave
+	provides = conclave
+	arch = aarch64
+	source_aarch64 = conclave-bin_0.18.1_aarch64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.18.1/conclave_0.18.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d9c7887eedf10a4f19f5aca0820461642e347d281b2730ed8576a342ff0f41bc
+	arch = i686
+	source_i686 = conclave-bin_0.18.1_i686.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.18.1/conclave_0.18.1_linux_386.tar.gz
+	sha256sums_i686 = 9b68ce79968cccab6c39c8ad533b85f81123aaebc67552e8708869f18d7ea444
+	arch = x86_64
+	source_x86_64 = conclave-bin_0.18.1_x86_64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.18.1/conclave_0.18.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4946dbec24bde6e49d443827e30df81af468c80f68b2ee3204f38328ee8fb912
+	
+pkgname = conclave-bin
