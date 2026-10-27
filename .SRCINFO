@@ -1,0 +1,15 @@
+pkgbase = kimai-cli
+	pkgdesc = Console application to manage your Kimai time-tracking data remotely
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kimai/cli
+	arch = any
+	license = MIT
+	makedepends = composer
+	depends = php
+	source = kimai-cli-2.0.0.tar.gz::https://github.com/kimai/cli/archive/refs/tags/2.0.0.tar.gz
+	source = kimai.sh
+	sha256sums = f473707708a78cb86ed907a9e72a5e1ce52d8fc9c6ec02397a11063d5381964a
+	sha256sums = 23e045edb14b8a39f54b2dbf5562ee20d74dc9b5013080341966c941bc52c562
+
+pkgname = kimai-cli
