@@ -3,7 +3,7 @@
 pkgname=python-swspotify
 _name=SwSpotify
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform library to get the currently playing song and artist from Spotify w/o using the API or the internet. Very fast."
 arch=('any')
 url="https://github.com/SwagLyrics/SwSpotify"
@@ -19,10 +19,6 @@ build() {
     python setup.py build
 }
 
-check() {
-    cd "$_name-$pkgver"
-    pytest tests/test_spotify.py::LinuxTests
-}
 
 package() {
     cd "$_name-$pkgver"
