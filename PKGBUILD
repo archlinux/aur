@@ -1,6 +1,6 @@
 # Maintainer: Mikalai Barysevich <nick.barysevich@gmail.com>
 pkgname=cleverswitch
-pkgver=1.5.10
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="Synchronize Logitech Easy-Switch host switching between keyboard and mouse"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "cleverswitch.service")
-sha256sums=('b4e02ac30fd1c061802acba7ddf7b04ec43fdf366d2c579d18facea3a829213e'
+sha256sums=('a5b6a7ae0cad1eb28e09c56590bd7c778ad6c64828d7d51c8cbad99b9b78c4e8'
             '978f0bab35fd9289202571036e881ae52975c74a0178489d6686d005dd6d712a')
 
 build() {
