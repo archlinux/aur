@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-walls
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A terminal screensaver, designed in Go and built for Wayland"
 arch=('x86_64' 'aarch64')
