@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-xcuitest-driver
 pkgname="nodejs-$_pkgname"
-pkgver=12.20.0
+pkgver=12.21.0
 pkgrel=1
 pkgdesc="Appium driver for iOS using XCUITest for backend"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('b5fd1f6925ef82c26487dbc64ca44c4aa8a5da622802724146f754e9e7238b7b')
+sha256sums=('ced7a0691cc053c7edb9b5ba0333188d04f25bdd96c1a1346c247efb0d572052')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
