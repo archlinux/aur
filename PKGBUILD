@@ -1,14 +1,14 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Apache-2.0')
 depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
          'fontconfig' 'libx11' 'libice' 'libsm' 'glib2')
-makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf' 'python')
+makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf' 'python' 'cargo')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin'
@@ -18,7 +18,8 @@ install=openxlr.install
 backup=('etc/chromium/native-messaging-hosts/com.emaspa.openxlr.browser.json'
         'etc/opt/chrome/native-messaging-hosts/com.emaspa.openxlr.browser.json')
 # The receipt below hashes the payload; makepkg must not strip it afterwards.
-options=('!strip')
+# makepkg.conf adds -C debuginfo=2 to RUSTFLAGS, which nothing would strip.
+options=('!strip' '!debug')
 
 # Omarchy 4 replaced Waybar with its own Quickshell process, whose bar is
 # built from plugins. Ship the mixer's bar plugin only when the build host
@@ -28,12 +29,29 @@ if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
     _openxlr_omarchy=1
     depends+=(qt6-websockets)
 fi
-source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c33d957fde8019fc4060228b1d7f0ce150279df5b8a966926c7b9de93aed82d')
+_dfver=0.5.6
+source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
+        "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
+noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
+sha256sums=('d4e89f82252217361fdef3a25ef3fb30b373d24b248ff182e178ffb5ab0f45cb'
+            'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
+
+# DeepFilterNet's noise removal is a Rust library linked into the native
+# helper: its model goes where native/Makefile looks, and its crates are
+# fetched here so build() runs offline.
+prepare() {
+  cd "$pkgname-$pkgver"
+  install -Dm644 "$srcdir/DeepFilterNet3_onnx-$_dfver.tar.gz" \
+    native/deepfilter/model/DeepFilterNet3_onnx.tar.gz
+  cd native/deepfilter
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
   cd "$pkgname-$pkgver/src"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
+  export DEEPFILTER=1 RUSTUP_TOOLCHAIN=stable CARGO_NET_OFFLINE=true
   dotnet publish OpenXLR.Daemon -c Release -r linux-x64 --self-contained false \
     -p:EnableNativeLv2Host=true -o "$srcdir/out/daemon"
   dotnet publish OpenXLR.UI -c Release -r linux-x64 --self-contained false -o "$srcdir/out/ui"
@@ -62,6 +80,9 @@ WRAP
 exec /usr/lib/openxlr/tui/openxlr-tui "$@"
 WRAP
   chmod 755 "$pkgdir/usr/bin/openxlr-daemon" "$pkgdir/usr/bin/openxlr" "$pkgdir/usr/bin/openxlr-tui"
+  # The Deck plugin and the Omarchy bar reach the daemon through this launcher.
+  chmod 755 "$pkgdir/usr/lib/openxlr/daemon/openxlr-control"
+  ln -s ../lib/openxlr/daemon/openxlr-control "$pkgdir/usr/bin/openxlr-control"
 
   # Native messaging for the separately installed browser companion.
   install -Dm644 browser/native-host.json \
@@ -110,6 +131,13 @@ WRAP
     install -Dm755 packaging/omarchy/openxlr-omarchy-enable \
       "$pkgdir/usr/bin/openxlr-omarchy-enable"
   fi
+
+  # The notices of the code the native helper carries.
+  install -Dm644 native/rnnoise/COPYING "$pkgdir/usr/share/licenses/$pkgname/rnnoise/COPYING"
+  install -Dm644 native/deepfilter/libdf/LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/deepfilter/LICENSE-MIT"
+  install -Dm644 native/deepfilter/libdf/LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/deepfilter/LICENSE-APACHE"
+  install -Dm644 native/clap/LICENSE "$pkgdir/usr/share/licenses/$pkgname/clap/LICENSE"
+  install -Dm644 native/vst3/LICENSE "$pkgdir/usr/share/licenses/$pkgname/vst3/LICENSE"
 
   # Record every packaged path for openxlr doctor. Runs last, after the
   # whole payload is in place.
