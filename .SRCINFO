@@ -1,0 +1,17 @@
+pkgbase = mcp-toolbox-git
+	pkgdesc = MCP server for databases (git version)
+	pkgver = r2350.0c8a71d
+	pkgrel = 1
+	url = https://github.com/googleapis/mcp-toolbox
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = mcp-toolbox
+	conflicts = mcp-toolbox
+	source = mcp-toolbox::git+https://github.com/googleapis/mcp-toolbox.git
+	sha256sums = SKIP
+
+pkgname = mcp-toolbox-git
