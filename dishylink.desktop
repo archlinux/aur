@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Dishylink
+Comment=Monitor the performance and health of your Starlink
+Exec=dishylink %U
+Icon=dishylink
+Terminal=false
+StartupWMClass=dishylink
+Categories=Utility;
+Keywords=starlink;dishy;satellite;monitor;
+# Without this GNOME suppresses notifications while the window is unfocused
+X-GNOME-UsesNotifications=true

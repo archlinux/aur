@@ -1,0 +1,16 @@
+pkgbase = dishylink
+	pkgdesc = Desktop app to monitor the performance and health of your Starlink
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://dishylink.com
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	depends = electron
+	source = dishylink-1.3.0-sources.zip::https://github.com/DaveyHert/Dishylink/releases/download/v1.3.0/dishylink-1.3.0-sources.zip
+	source = dishylink.desktop
+	b2sums = d00be799866179740328b3c61a8ec07cbded34dcf07c88fb50951692004687f05955737999386eacabcb5ddf09f881b6afe2c1b8523bcd05117582e53bb9a19e
+	b2sums = SKIP
+
+pkgname = dishylink
