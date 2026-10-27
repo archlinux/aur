@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BANDITS
-_pkgver=1.28.0
+_pkgver=1.28.1
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.28.1
 pkgrel=1
 pkgdesc='BANDITS: Bayesian ANalysis of DIfferenTial Splicing'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-tximport
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1291d09438b9db2880b4f3d79034b4ded03acf039111247c9568bf0e98cc085f')
+sha256sums=('1f193da2a7bf8eae78f0e92e03c7a893f638288dbd12c961972415e7e6949fc0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
