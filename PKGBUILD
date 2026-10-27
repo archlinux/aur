@@ -4,7 +4,7 @@
 
 pkgname=ltex-ls-plus
 pkgver=18.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server for LanguageTool with support for LaTeX, Markdown, and others"
 arch=('any')
 url="https://github.com/ltex-plus/ltex-ls-plus"
@@ -17,13 +17,13 @@ b2sums=('4125c5000f0d3913fa9a58686aeddc5223a1b62088ce8cbfa6db49b9d277c393a67f8d5
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
-  mvn package -Prelease -Dmaven.test.skip=true
+  mvn package -Prelease -Dmaven.test.skip=true -Dmaven.repo.local="$srcdir/m2"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
-  install -Dm644 "README.md" "ACKNOWLEDGMENTS.md" "changelog.xml" -t "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 "README.md" "ACKNOWLEDGMENTS.md" "changelog.xml" -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 "target/appassembler/lib"/*.jar -t "${pkgdir}/usr/share/java/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/bin"
@@ -65,7 +65,7 @@ EOF
   },
   "defaultValues": {
     "--hide-commands": true,
-    "--server-command-line": "${_basepath}/ltex-ls-plus"
+    "--server-command-line": "/usr/bin/ltex-ls-plus"
   }
 }
 EOF

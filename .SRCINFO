@@ -1,7 +1,7 @@
 pkgbase = ltex-ls-plus
 	pkgdesc = Language server for LanguageTool with support for LaTeX, Markdown, and others
 	pkgver = 18.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ltex-plus/ltex-ls-plus
 	arch = any
 	license = MPL-2.0
