@@ -1,6 +1,6 @@
 pkgbase = rune-ide
 	pkgdesc = Fast, GPU-rendered, keyboard-driven IDE for power users
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/unstablebuild/rune
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = rune-ide
 	conflicts = rune-ide-bin
 	options = !lto
 	options = !debug
-	source = rune-ide-src::git+https://github.com/unstablebuild/rune.git#tag=v1.3.1
-	sha256sums = d01ce955afba777d5a476318a7ae4e25f4ef95f185f6b0b7f5432de840f68bd4
+	source = rune-ide-src::git+https://github.com/unstablebuild/rune.git#tag=v1.3.2
+	sha256sums = 9a409b42429ae05ea3650b004c531dd9ac96a812870997116bd346f63c360c21
 
 pkgname = rune-ide
