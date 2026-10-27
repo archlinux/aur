@@ -1,6 +1,6 @@
 pkgbase = fukidashi-bin
 	pkgdesc = Translates the Japanese text of games while you play, on your own machine
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/larochef/fukidashi
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = fukidashi-bin
 	optdepends = libmanette: hide a translation with a gamepad button (GNOME extension)
 	provides = fukidashi
 	conflicts = fukidashi
-	source_x86_64 = https://github.com/larochef/fukidashi/releases/download/v0.1.11/fukidashi-v0.1.11-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 87b002d8dc89d9104bc7fab26e2eae7a0c569fdd6515c940e5a8179718567f1e
+	source_x86_64 = https://github.com/larochef/fukidashi/releases/download/v0.1.12/fukidashi-v0.1.12-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 929c9aef6a73b47dbd093bac81c06f5259d1a457109c80fa8129477f0eced6dd
 
 pkgname = fukidashi-bin
