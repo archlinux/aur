@@ -7,7 +7,7 @@ pkgname=(
     'python-pyvideokit-gui'
 )
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="FFmpeg-based video processing tools"
 arch=('any')
 url="https://github.com/Evilchuck666"
