@@ -4,7 +4,7 @@ _gitauthor=susamn
 _gitname=flashtui
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="A disk flasher TUIi"
+pkgdesc="A disk flasher TUI"
 
 pkgver=0.1.1
 pkgrel=1
