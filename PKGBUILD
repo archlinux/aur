@@ -5,13 +5,13 @@
 # SRS is an independent project, not affiliated with SIV or its author.
 
 pkgname=srs-sysinfo
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 545 report items, user guide, CPU burner, benchmarks"
+pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 558 report items, user guide, CPU and GPU burn-in, benchmarks"
 arch=('x86_64')
 url="https://github.com/eugenesflanagin-spec/srs-sysinfo"
 license=('GPL-2.0-or-later')
-depends=('bash' 'gtk3' 'glib2' 'glibc' 'pango' 'cairo' 'hicolor-icon-theme' 'hwdata' 'systemd')
+depends=('bash' 'gtk3' 'glib2' 'glibc' 'pango' 'cairo' 'sqlite' 'hicolor-icon-theme' 'hwdata' 'systemd')
 optdepends=(
   'libayatana-appindicator: system tray icon (like the SIV Icon Tray)'
   'polkit: srs-root helper for root-only data (one pkexec prompt)'
@@ -32,13 +32,28 @@ optdepends=(
   'inxi: srs-sysreport section'
   'lshw: srs-sysreport section'
   'hwinfo: srs-sysreport section'
+  'zlib: zlib rows of the Everyday Work benchmark (loaded at run time)'
+  'zstd: zstd rows of the Everyday Work benchmark (loaded at run time)'
+  'lz4: lz4 rows of the Everyday Work benchmark (loaded at run time)'
+  'xz: xz rows of the Everyday Work benchmark (loaded at run time)'
+  'curl: libcurl for the optional internet speed test of the Network benchmark (loaded at run time)'
+  "vulkan-icd-loader: the GPU benchmarks (Vulkan loader, loaded at run time; plus your GPU's Vulkan driver)"
+  'rocm-hip-runtime: ROCm / HIP back end of GPU Burnin and the GPU Compute comparison (loaded at run time; hipblas for the library rows)'
+  'opencl-icd-loader: OpenCL back end of GPU Burnin and the GPU Compute comparison (loaded at run time; plus an OpenCL driver)'
+  'clblast: OpenCL matrix library rows of the GPU benchmarks (loaded at run time)'
+  'cuda: CUDA back end of GPU Burnin and the GPU Compute comparison (NVIDIA; loaded at run time)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01b0320d3acf907a1338afaef4b117d4876e86040cf184b33bcff7913a9aabae')
+sha256sums=('19b0f0298d629ff4ad042cdc7fc1336db1a0abfd7490cbd53ac34e27b729c1df')
 
 build() {
   cd "$pkgname-$pkgver"
   make CC=gcc native
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  make CC=gcc test-power
 }
 
 package() {
