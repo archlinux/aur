@@ -1,6 +1,6 @@
 # Maintainer: John Ettedgui <git@johne.rojalabs.com>
 pkgname=pkgds
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Real on-disk usage per installed Arch Linux package"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/John-Gee/pkgds/archive/refs/tags/v$pkgver.tar.gz")
 # TODO: replace SKIP with the real hash via `updpkgsums` once the v0.1.1 tag is
 # pushed, then regenerate .SRCINFO.
-sha256sums=('100d6890e36106ef91f085cdbd4072a40b08c23626f05d06eb9295df0cc4ec46')
+sha256sums=('6df36e3670b0694fd8fc428f2694dd3d363b78ad5e581dead9b2e7dbe8ab5b20')
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
