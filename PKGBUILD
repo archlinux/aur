@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=float-app-bin
-pkgver=20260922.1
+pkgver=20261027.0
 pkgrel=1
 pkgdesc="Persistently float selected Hyprland windows (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -12,16 +12,11 @@ provides=('float-app')
 conflicts=('float-app' 'float-app-git')
 options=('!strip')
 source=('float-app.bash' 'float-app.fish' '_float-app' 'LICENSE')
-source_x86_64=("float-app-${pkgver}-${CARCH}.tar.gz::${url}/releases/download/${pkgver}/float-app-${pkgver}-linux-x86_64.tar.gz")
-source_aarch64=("float-app-${pkgver}-${CARCH}.tar.gz::${url}/releases/download/${pkgver}/float-app-${pkgver}-linux-aarch64.tar.gz")
-sha256sums=(
-  'e9e1826edc8e44abe37b75e4b911d566ce29514b4038acc848aeaccecaf411f1'
-  'bae17d6973705e9eeb84ee9a6414d9fef3e1ab12d6557ba76e3c33e6651ee62b'
-  '07b920b85fba70ff4af6ace8b059e605d96775a22eb93c5a93bf330bab616fdf'
-  'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-)
-sha256sums_x86_64=('8b64d9bd7a56f65d868adbb8db4eddb184ad722186c421ab34c0085849affa2b')
-sha256sums_aarch64=('430df0663ed481b2f2b2cbe12b80fc4a811d72ccac9ad1491bfd971a266ad4d7')
+source_x86_64=("float-app-${pkgver}-linux-${CARCH}.tar.gz::$url/releases/download/${pkgver}/float-app-${pkgver}-linux-${CARCH}.tar.gz")
+source_aarch64=("float-app-${pkgver}-linux-${CARCH}.tar.gz::$url/releases/download/${pkgver}/float-app-${pkgver}-linux-${CARCH}.tar.gz")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums_x86_64=('a468e7cd3c36a6cb6b1172f1bc8455db254e50e2ae3e87664d8ad6f1919e9f7e')
+sha256sums_aarch64=('7166e0ebb7507d7875a6f2b37860b61830f1db43ade79ce1826240197ca558e3')
 
 package() {
   install -Dm755 float-app "$pkgdir/usr/bin/float-app"
