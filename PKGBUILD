@@ -3,7 +3,7 @@
 # Contributor: Samuel Corsi-House <chouse.samuel@gmail.com>
 
 pkgname=playit-bin
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Tool to make your locally running game server public (Binary Version)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -49,14 +49,14 @@ sha256sums=('daa9b021f23bddaa04c29532088ab3f1967591bba11ed98eb8ced4d53e67858d'
             'fd6b309c4e1008b81675a2ad0ea27e709f02f405a502816c238a73c60b497da9'
             'a07e7ae69701e99224bfcd8a464b028c7e7eef241017900701b70ac903e42d39'
             'f9d32c6b4a6055b2bfa48543d68119efc46ea4606f0d9cc973cb273dcd59be9c')
-sha256sums_x86_64=('6fd54d147ae1d3232b22c1c1f4aa3d13cf16d889e840ca2d3f90b4f50a2e7301'
-                   '2df7d9f10227ab312b1ad341853db4e8a8243df5cfcdbae58713a4271711c339')
-sha256sums_aarch64=('b126b4164c03838598c8f33f209d76f6acf1c257d07900c0af2d461b9647099f'
-                    '4c0db3e7b3a8158e249441c2f0b73f54e83429395890c7b1ca45fd7a6303d763')
-sha256sums_armv7h=('2e1140a838b42f00233065432ed36fbfe8af34e9aa22585bcb2e01fcdad282a6'
-                   '92ec60988b1246e07ac090c663128bd04bdc0d7ff388db520e1ff7bb4e5003e0')
-sha256sums_i686=('e8e4bd663d0781e3d168be2a4e45d3642a38bc7946f507ba6116e8687b8a678f'
-                 'd7215f3995e486bc231b3b542aa5f1ac6b0d604f8dae97bb14a9a64b49b3ed50')
+sha256sums_x86_64=('d0d61355cadae033595e5671e7b5cf9200f434b4796ce5ccaf55ec77139e18ba'
+                   '1ccd3fe491d4f54e71504da001c16fa4718832a5cb7ee2461dce2816c3fbbc07')
+sha256sums_aarch64=('4695f3cc2b48545d1781888c8549cde8f12344e9152fc1bd62b65012432e2a39'
+                    'd072bd00a076b99fddc81204523d452d1e25f90545c35b224e4009b41ff0cbb2')
+sha256sums_armv7h=('8c492c67d7287adf381ab2602aaa8775646fd0030862c00a0308813fead35ca1'
+                   '75ffc9bfd2e44a05334be5495c1df636384ffe976ef16a2d3a05dac196e091b1')
+sha256sums_i686=('11614ad90fb9135272b694f6ac2050ecd8646b09a266f3196ce726db2a7b3d44'
+                 'b3275412e8a2e4ca2b3294fb7598e6a8595840b8ce3e5bc36fde4619b47703ad')
 
 package() {
   local cli_bin
