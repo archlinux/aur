@@ -3,7 +3,7 @@
 _pkgauthor=pvolok
 _upstream=dekit
 pkgname=mprocs
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Run multiple commands in parallel (now dekit; installs both dekit and mprocs)"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=("${_upstream}" "${_upstream}-bin")
 makedepends=('rust')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${_upstream}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6acfd19444a371ce04557af1a755accc4735c64e650704ae257aaf9f2e1168ba')
+sha256sums=('175467fb30195c084df4bd38bf2000fad80f7e03b1e3488c29e3b114f3587ca9')
 
 build() {
 	cd ${_upstream}-${pkgver} || exit 1
