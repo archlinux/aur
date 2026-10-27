@@ -1,0 +1,21 @@
+[Unit]
+Description=WhoDB database workspace
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=whodb
+Group=whodb
+StateDirectory=whodb
+CacheDirectory=whodb
+Environment=XDG_DATA_HOME=/var/lib/whodb XDG_CACHE_HOME=/var/cache/whodb
+EnvironmentFile=/etc/conf.d/whodb
+ExecStart=/usr/bin/whodb-server
+Restart=on-failure
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

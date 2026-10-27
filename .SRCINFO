@@ -1,0 +1,35 @@
+pkgbase = whodb-bin
+	pkgdesc = Database workspace with a web UI (prebuilt)
+	pkgver = 0.136.0
+	pkgrel = 1
+	url = https://github.com/clidey/whodb
+	install = whodb.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = Apache-2.0
+	depends = glibc
+	provides = whodb=0.136.0
+	conflicts = whodb
+	backup = etc/conf.d/whodb
+	source = whodb.conf
+	source = whodb.service
+	source = whodb.sysusers
+	sha256sums = 94de90ec29ed45fef786194d005b6011ddcdf4dff923448920cb11054f1c4055
+	sha256sums = f90fb36508968f08d52f0b859bbd8a0b0a36e6258e78ed105fd7e6dd78a6ddbc
+	sha256sums = 907874f38c2748569413955d5722119c9c855efabbbfe30a5a8c7dec8e2e803e
+	source_x86_64 = https://github.com/clidey/whodb/releases/download/0.136.0/whodb-0.136.0-linux-amd64
+	depends_x86_64 = libgcc
+	depends_x86_64 = libstdc++
+	sha256sums_x86_64 = b880a5c819c7e88419dbe0120d24d1a773cb1c892d5a84f58d138da73aeecfdc
+	source_aarch64 = https://github.com/clidey/whodb/releases/download/0.136.0/whodb-0.136.0-linux-arm64
+	depends_aarch64 = libgcc
+	depends_aarch64 = libstdc++
+	sha256sums_aarch64 = 78a26fae8bf4ba2f254ae6a41233e271d382dc38501511035b6fc9ae4fe264b7
+	source_armv7h = https://github.com/clidey/whodb/releases/download/0.136.0/whodb-0.136.0-linux-armv7
+	sha256sums_armv7h = 77e4e27e33f16f6386ca36bd4a78c2c8fdfa254665afb4908334a4d0aae5c266
+	source_riscv64 = https://github.com/clidey/whodb/releases/download/0.136.0/whodb-0.136.0-linux-riscv64
+	sha256sums_riscv64 = 77a59325f23ab6d59572c2764d12f99061cb89ebaa1bb474484bdca1aeccc754
+
+pkgname = whodb-bin

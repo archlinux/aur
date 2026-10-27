@@ -1,0 +1,13 @@
+post_install() {
+  cat <<'EOF'
+whodb.service listens on port 8080 of all interfaces; PORT in
+/etc/conf.d/whodb changes the port. Restrict access with a firewall.
+
+On x86_64 and aarch64 the first start downloads the BAML library from
+GitHub into /var/cache/whodb, and whodb-server exits when that fails.
+
+whodb-server sends an anonymous install heartbeat to PostHog at start
+and every 24 hours. WHODB_HEARTBEAT_DISABLED=true in /etc/conf.d/whodb
+turns it off.
+EOF
+}
