@@ -1,6 +1,6 @@
 pkgbase = uah-bin
 	pkgdesc = Terminal coding agent that works like Codex, built on unreal-agent
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/viktordanov/uah
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = uah-bin
 	optdepends = wl-clipboard: paste images on Wayland
 	optdepends = xclip: paste images on X11
 	optdepends = git: repository context for the agent
-	provides = uah=1.15.0
+	provides = uah=1.16.0
 	conflicts = uah
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/viktordanov/uah/releases/download/v1.15.0/uah-1.15.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4dfc1dd627e6ff8dbf0ffe74f9da4875b2b4d73d6cb6bed8d5e3b89cdf067c91
-	source_aarch64 = https://github.com/viktordanov/uah/releases/download/v1.15.0/uah-1.15.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 676482c2c51a908cb32e123759a75ec7027902357bcd10281cf27e01c4334bba
+	source_x86_64 = https://github.com/viktordanov/uah/releases/download/v1.16.0/uah-1.16.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 021c2aaa9f3589d8ae6c842edd0d3a8565108fc2aa3c76666d4f5b0470d2ea9d
+	source_aarch64 = https://github.com/viktordanov/uah/releases/download/v1.16.0/uah-1.16.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7ee2c0df76c0764b0b0d3d91263f67faaf72d7ae6a092497839af60eb4f9b9ce
 
 pkgname = uah-bin
