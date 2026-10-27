@@ -1,6 +1,6 @@
 pkgbase = dsh-desktop-bin
 	pkgdesc = Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation
-	pkgver = 0.10.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/dataelement/dsh-desktop
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = dsh-desktop-bin
 	conflicts = dsh-desktop
 	options = !strip
 	options = !debug
-	source = dsh-desktop-bin-0.10.0.tar.zst::https://github.com/xy-arch-git/dsh-desktop-linux/releases/download/v0.10.0/dsh-desktop-0.10.0-linux-x64.tar.zst
-	sha256sums = 50a1346bb0017ab9a8661178d7c3480abec187f85623ecc218f9ea45e55295cc
+	source = dsh-desktop-bin-0.12.1.tar.zst::https://github.com/xy-arch-git/dsh-desktop-linux/releases/download/v0.12.1/dsh-desktop-0.12.1-linux-x64.tar.zst
+	sha256sums = c6fe3bd24b9cf2ee76384d282384a94a71b94f3ab575c863830dac6530065bd1
 
 pkgname = dsh-desktop-bin
