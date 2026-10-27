@@ -5,7 +5,7 @@
 
 _pkg=cado-nfs
 pkgname=${_pkg}-git
-pkgver=20260529.60854e865
+pkgver=20261002.692ecb7e6
 pkgrel=1
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
 arch=('x86_64')
