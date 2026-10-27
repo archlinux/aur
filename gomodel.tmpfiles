@@ -1,0 +1,7 @@
+# State + plugin dir for the system service. sysusers.d creates the gomodel
+# user first (same install); these rules apply ownership to the packaged
+# directories, which ship root-owned because the group doesn't exist at
+# build time.
+d /var/lib/gomodel 0750 gomodel gomodel - -
+d /etc/gomodel 0750 root gomodel - -
+f /etc/gomodel/config.yaml 0640 root gomodel - -

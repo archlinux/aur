@@ -1,0 +1,55 @@
+[Unit]
+Description=GoModel AI gateway (system service)
+Documentation=https://github.com/ENTERPILOT/GoModel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+# Config lives in /etc/gomodel; gomodel reads config/config.yaml or
+# config.yaml from its working directory.
+WorkingDirectory=/etc/gomodel
+# The example config ships CWD-relative defaults (data/gomodel.db,
+# data/media). Pin them to the writable state dir explicitly so the
+# DynamicUser never needs to write under /etc.
+Environment=SQLITE_PATH=/var/lib/gomodel/gomodel.db
+Environment=MEDIA_STORAGE_PATH=/var/lib/gomodel/media
+# Secrets (GOMODEL_ENCRYPTION_KEY etc.) go in /etc/gomodel/env, root:gomodel 0640.
+EnvironmentFile=-/etc/gomodel/env
+ExecStart=/usr/bin/gomodel
+Restart=on-failure
+RestartSec=5
+
+# DynamicUser: no persistent service identity needed; state dir is
+# pre-created by sysusers/tmpfiles and runtime-owned via RuntimeDirectory
+# plus the tmpfiles rule on /var/lib/gomodel.
+DynamicUser=yes
+User=gomodel
+Group=gomodel
+StateDirectory=gomodel
+CacheDirectory=gomodel
+RuntimeDirectory=gomodel
+
+# Plugin .so files: root-owned, loaded from /var/lib/gomodel/plugins.
+ReadWritePaths=/var/lib/gomodel
+
+# Hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target
