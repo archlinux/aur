@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=ffsim
 pkgname=python-${_pkgname}
-pkgver=0.0.84
+pkgver=0.0.85
 pkgrel=1
 pkgdesc="Faster simulation of fermionic quantum circuits"
 arch=(x86_64)
@@ -13,7 +13,6 @@ depends=(
     python-opt_einsum
     python-orjson
     python-pyscf
-    python-qiskit
     python-scipy
     python-typing_extensions
 )
@@ -23,9 +22,15 @@ makedepends=(
     python-installer
     python-maturin
 )
-checkdepends=(python-pytest)
+optdepends=(
+    'python-qiskit: Qiskit interoperability'
+)
+checkdepends=(
+    python-pytest
+    python-qiskit
+)
 source=($_pkgname::git+https://github.com/qiskit-community/$_pkgname#tag=v$pkgver)
-b2sums=('1c26f5386d99f2905152605e152fb9f42ad92902df075248aae220438785ec339253eca67e560daeb5d56cacbeca4ad5aad2c0c72a2b43b3c00b13584af0b11c')
+b2sums=('cff8c407079ed3edda238ce9a7c492bcdfbf6c7b132419f0e58ec3e5e84db6b13aadba499c90343cc585d454ca2acad014e8bc9a300a279d7bbca5545e11d620')
 
 build() {
     cd $_pkgname
