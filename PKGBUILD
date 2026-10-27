@@ -2,7 +2,7 @@
 
 pkgname=xodus-nexus-bin
 _pkgname=xodus-nexus
-pkgver=0.3.11
+pkgver=0.4.0
 pkgrel=1
 _appimage="Xodus-Nexus-${pkgver}-x86_64.AppImage"
 pkgdesc='Xbox-inspired launcher for Microsoft Store PC games on Linux, built on Xodus'
@@ -25,7 +25,7 @@ source=(
   "${_pkgname}"
 )
 noextract=("${_appimage}")
-sha256sums=('af58692bfe5d1530ee8bcfe8ee120608a2ea719e45cd93788e4e26f4cb9dbe03'
+sha256sums=('59249b2bcbbab2022d08a78359ca32483a8614f95c7737b93ff77a12ed29ac0f'
             '639b735fd2f65779b82c4aab471f1fcdf927e10e1c21250911f75d44d136ff11'
             '686f0162e483642dd660f24202fb45d64af109a8b2050e055a5313cba79bd9d7'
             '2f73a67081c31c8e5190776d0c1dc989bfa7fbdb1f22f03732c71b7c25a1cc5b')
