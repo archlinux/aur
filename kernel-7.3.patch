@@ -1,0 +1,85 @@
+diff --git a/kernel/nvidia/nv-acpi.c b/kernel/nvidia/nv-acpi.c
+index 9b0b489..aec1526 100644
+--- a/kernel/nvidia/nv-acpi.c
++++ b/kernel/nvidia/nv-acpi.c
+@@ -22,6 +22,8 @@ static NV_STATUS   nv_acpi_extract_buffer  (const union acpi_object *, void *, N
+ static NV_STATUS   nv_acpi_extract_package (const union acpi_object *, void *, NvU32, NvU32 *);
+ static NV_STATUS   nv_acpi_extract_object  (const union acpi_object *, void *, NvU32, NvU32 *);
+ 
++// Rel. commit "ACPI: bus: Eliminate struct acpi_driver" (Rafael J. Wysocki, 1 Jul 2026)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 3, 0)
+ static int         nv_acpi_add             (struct acpi_device *);
+ 
+ // Rel. commit "ACPI: make remove callback of ACPI driver void" (Dawei Li, 14 Nov 2022)
+@@ -34,6 +36,7 @@ static int         nv_acpi_remove_one_arg(struct acpi_device *device);
+ #endif
+ 
+ static void        nv_acpi_event           (acpi_handle, u32, void *);
++#endif
+ static acpi_status nv_acpi_find_methods    (acpi_handle, u32, void *, void **);
+ static NV_STATUS   nv_acpi_nvif_method     (NvU32, NvU32, void *, NvU16, NvU32 *, void *, NvU16 *);
+ 
+@@ -45,6 +48,8 @@ static NV_STATUS   nv_acpi_mxms_method     (NvU8 *, NvU16 *);
+ static int         nv_acpi_match           (struct acpi_device *, struct acpi_driver *);
+ #endif
+ 
++// Rel. commit "ACPI: bus: Eliminate struct acpi_driver" (Rafael J. Wysocki, 1 Jul 2026)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 3, 0)
+ #if defined(ACPI_VIDEO_HID) && defined(NV_ACPI_DEVICE_ID_HAS_DRIVER_DATA) 
+ static const struct acpi_device_id nv_video_device_ids[] = {
+     { 
+@@ -59,12 +64,15 @@ static const struct acpi_device_id nv_video_device_ids[] = {
+ #endif
+ 
+ static struct acpi_driver *nv_acpi_driver;
++#endif
+ static acpi_handle nvif_handle = NULL;
+ static acpi_handle nvif_parent_gpu_handle  = NULL;
+ static acpi_handle wmmx_handle = NULL;
+ static acpi_handle mxmi_handle = NULL;
+ static acpi_handle mxms_handle = NULL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 3, 0)
++// Rel. commit "ACPI: bus: Eliminate struct acpi_driver" (Rafael J. Wysocki, 1 Jul 2026)
+ static const struct acpi_driver nv_acpi_driver_template = {
+     .name = "NVIDIA ACPI Video Driver",
+     .class = "video",
+@@ -90,6 +98,7 @@ static const struct acpi_driver nv_acpi_driver_template = {
+ #endif
+     },
+ };
++#endif
+ 
+ static int nv_acpi_get_device_handle(nv_state_t *nv, acpi_handle *dev_handle)
+ {
+@@ -136,6 +145,7 @@ struct notifier_block acpi_nb = {
+ };
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 3, 0)
+ int nv_acpi_init(void)
+ {
+     /*
+@@ -486,6 +496,22 @@ static void nv_acpi_event(acpi_handle handle, u32 event_type, void *data)
+     // once we are subscribed to ACPI events, we don't have to re-subscribe unless
+     // unsubscribe.
+ }
++#else
++// Rel. commit "ACPI: bus: Eliminate struct acpi_driver" (Rafael J. Wysocki, 1 Jul 2026)
++// The old API (struct acpi_driver, acpi_bus_register_driver, etc.) is removed
++// and the replacement (struct platform_driver, platform_driver_register) is
++// GPL-only, so remove this; It only impacts laptop hotkey handling rather than
++// any critical function of the driver.
++int nv_acpi_init(void)
++{
++    return 0;
++}
++
++int nv_acpi_uninit(void)
++{
++    return 0;
++}
++#endif
+ 
+ #if defined(NV_ACPI_DEVICE_OPS_HAS_MATCH)
+ static int nv_acpi_match(struct acpi_device *device, struct acpi_driver *driver)
