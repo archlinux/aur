@@ -1,11 +1,11 @@
 # Maintainer: ca-x <https://github.com/ca-x>
 pkgname=lightos-codec-ffmpeg-bin
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc='Optional Arch-native FFmpeg hardware H.264 worker for LightOS remote desktop'
 arch=('x86_64')
 url='https://github.com/ca-x/lightos-remote-desktop'
-license=('MIT' 'BSD-2-Clause' 'BSD-3-Clause' 'IJG' 'Zlib' 'WTFPL')
+license=('PolyForm-Noncommercial-1.0.0' 'MIT' 'BSD-2-Clause' 'BSD-3-Clause' 'IJG' 'Zlib' 'WTFPL')
 depends=('glibc' 'libgcc' 'libstdc++' 'ffmpeg' 'libavcodec.so=63-64'
          'libavutil.so=61-64' 'libswscale.so=10-64')
 makedepends=('python' 'binutils')
@@ -18,8 +18,8 @@ _bundle=lightos-codec-ffmpeg-linux-x86_64-archlinux
 source=('lightos-codec-ffmpeg-bin.install' 'validate-arch-codec.py')
 sha256sums=('57819d8658719114e59247776cf769046de25dd43ad2d99fbfef155a2c9ad3a7'
             'b1a16652f3ffef6185f0636da9c6fc9bbc665ffb9c0a7dc98776373b1b4b1a91')
-sha256sums_x86_64=('91e57286c611c57e26f8582878c34d298835976c026d2e8e2f5bcb8efdf00390'
-                   '04bd5eabf7985db14dc2dc514728b28ec2a17806508ec2f52329451fbbe7752c')
+sha256sums_x86_64=('8b25b756cb51801703b1e17bd16bf72d1ceebee054a779ce1c75c757e620ae40'
+                   'fed7c3f5b1f903b54c901f703a4eb8fce4ea676ba3b271d9c43dca6d12a5c2ab')
 source_x86_64=("${_bundle}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz"
                "${_bundle}-${pkgver}.tar.gz.sha256::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz.sha256")
 
