@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.56
-pkgver=1.0.0beta56
+_tag=v1.0.0-beta.57
+pkgver=1.0.0beta57
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -96,8 +96,9 @@ optdepends=(
     'whisper.cpp-model-large-v3-turbo-q5_0: dictation, the model (AUR)'
     'python-evdev: dictation and the emoji cell, pasting into the window'
     'business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell'
-    'gnome-online-accounts: the calendars of Google, Nextcloud and WebDAV accounts in the clock'
+    'gnome-online-accounts: the calendars of Google, Microsoft, Nextcloud and WebDAV accounts in the clock'
     'gnome-online-accounts-gtk: adding those accounts outside GNOME Settings'
+    'gamemode: performance mode, on by itself while a game runs'
 )
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
@@ -107,7 +108,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('4a074f650423ee7aab018e81e1dde448c20f8a4b3aa992bd1e1e64bd101700d6')
+sha256sums=('e8c3c970b4556ea14a940d697df3516ecd16e7e4b0a28fcd3377b271a4c73732')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"

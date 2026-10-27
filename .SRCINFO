@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built with Quickshell: living surfaces rather than a bar
-	pkgver = 1.0.0beta56
+	pkgver = 1.0.0beta57
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -62,11 +62,12 @@ pkgbase = bioma-shell
 	optdepends = whisper.cpp-model-large-v3-turbo-q5_0: dictation, the model (AUR)
 	optdepends = python-evdev: dictation and the emoji cell, pasting into the window
 	optdepends = business-network-wizard: company network setup (NTLM proxy, VPN, 802.1X, shares), opened from the connectivity cell
-	optdepends = gnome-online-accounts: the calendars of Google, Nextcloud and WebDAV accounts in the clock
+	optdepends = gnome-online-accounts: the calendars of Google, Microsoft, Nextcloud and WebDAV accounts in the clock
 	optdepends = gnome-online-accounts-gtk: adding those accounts outside GNOME Settings
+	optdepends = gamemode: performance mode, on by itself while a game runs
 	options = !lto
 	backup = etc/xdg/autostart/bioma.desktop
-	source = bioma-shell-1.0.0beta56.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.56.tar.gz
-	sha256sums = 4a074f650423ee7aab018e81e1dde448c20f8a4b3aa992bd1e1e64bd101700d6
+	source = bioma-shell-1.0.0beta57.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.57.tar.gz
+	sha256sums = e8c3c970b4556ea14a940d697df3516ecd16e7e4b0a28fcd3377b271a4c73732
 
 pkgname = bioma-shell
