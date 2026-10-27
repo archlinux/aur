@@ -1,6 +1,6 @@
 # Maintainer: Snoopey <thomas@wrightconsulting.uk>
 pkgname=omnigent-cli
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='Omnigent CLI, server, and agent host with isolated Python dependencies'
 arch=('x86_64')
@@ -14,9 +14,9 @@ optdepends=('openai-codex: native Codex agent'
             'systemd: manage the host service')
 options=('!strip' '!debug')
 # BEGIN GENERATED SOURCES
-source=(omnigent-0.19.0.tar.gz::https://files.pythonhosted.org/packages/55/d3/a2837c8a1fa08d6e0214df0539899a588e7f7f644b364ee36f1e11de8d24/omnigent-0.19.0.tar.gz
-        omnigent_client-0.19.0.tar.gz::https://files.pythonhosted.org/packages/cc/20/f0349e893d1146a545d3baa0a4ba9714490b93a7858fe3077ba22145b584/omnigent_client-0.19.0.tar.gz
-        omnigent_ui_sdk-0.19.0.tar.gz::https://files.pythonhosted.org/packages/66/50/af51dfc9698a1d999e1190f09260c19c05a991c882753226c982c0bb8edc/omnigent_ui_sdk-0.19.0.tar.gz
+source=(omnigent-0.19.1.tar.gz::https://files.pythonhosted.org/packages/b6/37/3563468c0b14b167393bcd5e2fa696f9a2544184d52cf855b77eef42d2cb/omnigent-0.19.1.tar.gz
+        omnigent_client-0.19.1.tar.gz::https://files.pythonhosted.org/packages/9c/71/86c506cd9e1bc25a38f38359c27b2630728b38d9efc310ef45552b83188b/omnigent_client-0.19.1.tar.gz
+        omnigent_ui_sdk-0.19.1.tar.gz::https://files.pythonhosted.org/packages/48/11/05e94c93d0a653bcd21f99768e6a4ffe159f76e00c9939cc889ef80c0d19/omnigent_ui_sdk-0.19.1.tar.gz
         alembic-1.20.0-py3-none-any.whl::https://files.pythonhosted.org/packages/3f/27/78a89b55b0904d222183164e079b4ca56208e94eff1d35ad1f1ad5be9b06/alembic-1.20.0-py3-none-any.whl
         annotated_doc-0.0.5-py3-none-any.whl::https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl
         annotated_types-0.8.0-py3-none-any.whl::https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl
@@ -24,20 +24,20 @@ source=(omnigent-0.19.0.tar.gz::https://files.pythonhosted.org/packages/55/d3/a2
         argon2_cffi-25.1.0-py3-none-any.whl::https://files.pythonhosted.org/packages/4f/d3/a8b22fa575b297cd6e3e3b0155c7e25db170edf1c74783d6a31a2490b8d9/argon2_cffi-25.1.0-py3-none-any.whl
         argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/6f/86/5363df11b86d02cf3662208e7406496327649cc90eb365bf6f4e8a54a41f/argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl
         attrs-26.1.0-py3-none-any.whl::https://files.pythonhosted.org/packages/64/b4/17d4b0b2a2dc85a6df63d1157e028ed19f90d4cd97c36717afef2bc2f395/attrs-26.1.0-py3-none-any.whl
-        cachetools-7.2.1-py3-none-any.whl::https://files.pythonhosted.org/packages/f0/c9/2a61d784caf0d869a3326728c57c7203f50cc53f3cca2ee76bf924769eb4/cachetools-7.2.1-py3-none-any.whl
+        cachetools-7.2.4-py3-none-any.whl::https://files.pythonhosted.org/packages/5a/4c/694f7d44f2399b3901232d6ded1c88442a02fc8141936396d9289d951848/cachetools-7.2.4-py3-none-any.whl
         cel_python-0.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/1e/f8/38812adc3f787c2c2e8ba56f524185ed379656c10b40347a32796ba61c08/cel_python-0.5.0-py3-none-any.whl
-        certifi-2026.7.22-py3-none-any.whl::https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl
+        certifi-2026.10.19-py3-none-any.whl::https://files.pythonhosted.org/packages/c4/51/29046e48f693c54e5b7412216d447a1d8362c9653148d98c02cdf65fa733/certifi-2026.10.19-py3-none-any.whl
         cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl::https://files.pythonhosted.org/packages/e9/02/4e7d553a7ac4b4238b38b3c1b80d486e9d4436f8d2acbf87a0997fe3f402/cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
         charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/18/24/bad3ac4271589df29cf5ce2f5ae490518a5739358052bd0d61209e6fea54/charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
-        claude_agent_sdk-0.2.166-py3-none-manylinux_2_17_x86_64.whl::https://files.pythonhosted.org/packages/53/80/00a31b9d4160837fd0809d272d45c13643d567845ddb6db8e708809bce83/claude_agent_sdk-0.2.166-py3-none-manylinux_2_17_x86_64.whl
+        claude_agent_sdk-0.2.168-py3-none-manylinux_2_17_x86_64.whl::https://files.pythonhosted.org/packages/00/03/09d347dcddbbab4becd41fef3a811967eddf24135b2d62dac9e321c81537/claude_agent_sdk-0.2.168-py3-none-manylinux_2_17_x86_64.whl
         click-8.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl
         cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/1a/f1/b474e930c4d910328780e3940da76f5aa5cbc48ce1fc14e44d239d9ea9db/cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
         distro-1.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
-        fastapi-0.143.0-py3-none-any.whl::https://files.pythonhosted.org/packages/bd/f4/27e386913417ad32aae42bba48b0c0cce40e9ff2fba1a871ca2702c37324/fastapi-0.143.0-py3-none-any.whl
-        filelock-4.1.1-py3-none-any.whl::https://files.pythonhosted.org/packages/d7/8b/f837f52905395ba4510fe61f753c24833fb0a9c76e21267bb9f828b664a9/filelock-4.1.1-py3-none-any.whl
+        fastapi-0.150.0-py3-none-any.whl::https://files.pythonhosted.org/packages/14/41/7c472e281c147dae4f1dd4a85d9a1b7f6ce8b919e4053f14c83abb1488c7/fastapi-0.150.0-py3-none-any.whl
+        filelock-4.2.4-py3-none-any.whl::https://files.pythonhosted.org/packages/e0/1b/5e74289a1878e666bb4b65fe5805a04cafcac2aa5f519ef1ead67ef91c56/filelock-4.2.4-py3-none-any.whl
         ftfy-6.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/ab/6e/81d47999aebc1b155f81eca4477a616a70f238a2549848c38983f3c22a82/ftfy-6.3.1-py3-none-any.whl
         google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/03/be/a8def96aa4a80b233e105767d22e3de961dcde5a04f0a05cb4f3ddb4df78/google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-        griffelib-2.3.2-py3-none-any.whl::https://files.pythonhosted.org/packages/04/e5/0ae74c83c1cab2c14daadf28bd0143eb14bb81503834af987b66badc7b61/griffelib-2.3.2-py3-none-any.whl
+        griffelib-2.4.0-py3-none-any.whl::https://files.pythonhosted.org/packages/7e/28/bb989a55ac56dabf30765d2e7ea0710c032d9b67d8a7599f91fdcb2e00b1/griffelib-2.4.0-py3-none-any.whl
         h11-0.16.0-py3-none-any.whl::https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl
         httpcore-1.0.9-py3-none-any.whl::https://files.pythonhosted.org/packages/7e/f5/f66802a942d491edb555dd61e3a9961140fd64c90bce1eafd741609d334d/httpcore-1.0.9-py3-none-any.whl
         httptools-0.9.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl::https://files.pythonhosted.org/packages/72/04/4ecb7251a6c55bef61b157bb93fd44678943c35702a5966e4d5ebda2d450/httptools-0.9.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
@@ -60,7 +60,7 @@ source=(omnigent-0.19.0.tar.gz::https://files.pythonhosted.org/packages/55/d3/a2
         markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/8f/db/d7282caf7ab03af44d5d6fdbaa019b35c7d7f1c90588b839c07cba640d6a/markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
         mcp-1.30.0-py3-none-any.whl::https://files.pythonhosted.org/packages/f5/f4/e58bc33317c92a0203664daaf00bf6f41166cc0149e5d6870a03f7cd004a/mcp-1.30.0-py3-none-any.whl
         mdurl-0.1.2-py3-none-any.whl::https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl
-        more_itertools-11.2.0-py3-none-any.whl::https://files.pythonhosted.org/packages/d4/f7/86f27473377a8ebdbdfedec5e62e87fbc24c4c88ed0a2a5ea0a12ee2229b/more_itertools-11.2.0-py3-none-any.whl
+        more_itertools-11.2.1-py3-none-any.whl::https://files.pythonhosted.org/packages/5d/57/3c4b1c6f2e0cc29ba023802458ea3d2a996f87085559e4a5f2192d549532/more_itertools-11.2.1-py3-none-any.whl
         openai-2.44.0-py3-none-any.whl::https://files.pythonhosted.org/packages/ae/f4/561ed79fd94876160018a5e75254cfcb9b0e62d4dded9dcb20072e86d623/openai-2.44.0-py3-none-any.whl
         openai_agents-0.13.6-py3-none-any.whl::https://files.pythonhosted.org/packages/1c/83/a991b2ad389abadabf13f6c4228bd88ac8dc363e4b50fcae8c5ea966bd41/openai_agents-0.13.6-py3-none-any.whl
         opentelemetry_api-1.45.1-py3-none-any.whl::https://files.pythonhosted.org/packages/1e/41/f7dcf80b81ee8e71c1a2b59f14208bc723edbd89ed027a73b175abf6348e/opentelemetry_api-1.45.1-py3-none-any.whl
@@ -75,7 +75,7 @@ source=(omnigent-0.19.0.tar.gz::https://files.pythonhosted.org/packages/55/d3/a2
         pycparser-3.11-py3-none-any.whl::https://files.pythonhosted.org/packages/90/11/0e6f11117525ff0eec40ebac3d313376f102df93ca44ad9e893ee85e4f89/pycparser-3.11-py3-none-any.whl
         pydantic-2.14.1-py3-none-any.whl::https://files.pythonhosted.org/packages/35/ea/a56b9fe5066f3537b7882f77e9c5dfb26d8c2eefdaed9b5fc73d57b4dc22/pydantic-2.14.1-py3-none-any.whl
         pydantic_core-2.50.1-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl::https://files.pythonhosted.org/packages/45/35/38f6d6564fae57d9b12e5676dfa947e0e7d5c46dbeaa7eb3352261d6d299/pydantic_core-2.50.1-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        pydantic_settings-2.15.0-py3-none-any.whl::https://files.pythonhosted.org/packages/30/a4/2bffa9f8e804325a09867f0e9d30795c80ea9f8d62560bd1b6ad6220eb2f/pydantic_settings-2.15.0-py3-none-any.whl
+        pydantic_settings-2.16.0-py3-none-any.whl::https://files.pythonhosted.org/packages/53/f4/b987bf8c51e5b19a95fa66d1ee596074141e085d9c2ddf97920803c7029b/pydantic_settings-2.16.0-py3-none-any.whl
         pygments-2.21.0-py3-none-any.whl::https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl
         pyjwt-2.15.1-py3-none-any.whl::https://files.pythonhosted.org/packages/50/ca/44de4e75f8aadc457f0634be3b542815078ded46dca30efb960edeecad6e/pyjwt-2.15.1-py3-none-any.whl
         pyte-0.8.2-py3-none-any.whl::https://files.pythonhosted.org/packages/59/d0/bb522283b90853afbf506cd5b71c650cf708829914efd0003d615cf426cd/pyte-0.8.2-py3-none-any.whl
@@ -91,11 +91,11 @@ source=(omnigent-0.19.0.tar.gz::https://files.pythonhosted.org/packages/55/d3/a2
         secretstorage-3.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/b7/46/f5af3402b579fd5e11573ce652019a67074317e18c1935cc0b4ba9b35552/secretstorage-3.5.0-py3-none-any.whl
         six-1.17.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl
         sniffio-1.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/e9/44/75a9c9421471a6c4805dbf2356f7c181a29c1879239abab1ea2cc8f38b40/sniffio-1.3.1-py3-none-any.whl
-        sqlalchemy-2.1.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/0e/02/953686f44448b92cc628245687a242799b6eb11ef30ad2bc7adacd51986d/sqlalchemy-2.1.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+        sqlalchemy-2.1.5-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/42/9e/fa478482503a69dfb3b0cb82f3f80fe3816026530dd34b5359e2acd9f30d/sqlalchemy-2.1.5-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
         sse_starlette-3.5.0-py3-none-any.whl::https://files.pythonhosted.org/packages/be/e4/cdda14023c316d71493bc54fdffc3dd006631b88866145c9d3cc33e0f1df/sse_starlette-3.5.0-py3-none-any.whl
-        starlette-1.8.0-py3-none-any.whl::https://files.pythonhosted.org/packages/c1/b0/5742e4ac7af5eb58ec3470a537a49d7aa507e5539413e504b3a65ef50ba8/starlette-1.8.0-py3-none-any.whl
+        starlette-1.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/f3/93/181df62699d9b5aca1d87e5cfda131dac87e3cdaebf668662f7206ca3470/starlette-1.9.0-py3-none-any.whl
         tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/5b/7d/144af98dc5ad68108451a82e2f5a17f80e2663f5115058b8dfd215c1ad02/tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl
-        tomlkit-0.15.1-py3-none-any.whl::https://files.pythonhosted.org/packages/13/bc/8c13eb66537dce1d2bd3a57132902f38d0e7f5bb46fa9f4daed9fe9d76ee/tomlkit-0.15.1-py3-none-any.whl
+        tomlkit-0.15.2-py3-none-any.whl::https://files.pythonhosted.org/packages/da/46/7d84138a60a8bd796825b2d38ebe92d0d16501ca57d501b7c5d677401bbc/tomlkit-0.15.2-py3-none-any.whl
         tqdm-4.70.1-py3-none-any.whl::https://files.pythonhosted.org/packages/a7/03/921a3d3c75785aca9ebfbfcabfbc3a1be12e2ab5265deb026d55a5a3f83e/tqdm-4.70.1-py3-none-any.whl
         types_requests-2.33.0.20261006-py3-none-any.whl::https://files.pythonhosted.org/packages/4d/72/b82789207b3d360ce9f5a4372c790c52cc3dd928aeb7d4faeec652b651b2/types_requests-2.33.0.20261006-py3-none-any.whl
         typing_extensions-4.16.0-py3-none-any.whl::https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl
@@ -113,9 +113,9 @@ source=(omnigent-0.19.0.tar.gz::https://files.pythonhosted.org/packages/55/d3/a2
         omnigent
         smoke-test.py
         LicenseRef-bundled-dependencies)
-sha256sums=(95beb102b94a08d1fae9c288afa761c1a1eb02e7921968e5db545bca8ae300ca
-            029627b0a445ed1fb351f389929dc8b70beda90db2935a53a42a2cd0cb7d737b
-            830d35338e4ec8b3a7d879f080e49da69c65ba441174c65e1ae2579b242701e8
+sha256sums=(49456db48d115b17eaa5d6ff643740031fe4cd8fa9bc1110456b60e5cff908bc
+            bfa8006e0865c08fb0a82ac002415be30379970f4538b03b25ffaae1795496d6
+            b926bc86155dd89934b0df15b0855092e334b33a4c424e45eb15348e068ac395
             77eb101048d95f982c0353e9233404889dcd7a6fc244c107836c0e2fc9cf7d9d
             117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101
             f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0
@@ -123,20 +123,20 @@ sha256sums=(95beb102b94a08d1fae9c288afa761c1a1eb02e7921968e5db545bca8ae300ca
             fdc8b074db390fccb6eb4a3604ae7231f219aa669a2652e0f20e16ba513d5741
             27f1821903e2ceadcb88ec2b45ef190897b7682449c772f4d9b53e42c520cf29
             c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309
-            63aa53dfe7473c10cccdd5a01dedf76ef2c4b73a58840d9396e7d0752cbdac3b
+            4cfbebf3eec4040d2073b19c460511ad47eef7b852dbf9a0d385099b4dafa31e
             d0f85008b89655c2bb18d797d2fa3f96f2ed80f4a3b43b0e8138c6646581e5f6
-            62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775
+            42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b
             b0431303acaea1089ad4b3e9ce4e6518193def1118d4073ca848635ee4ea2e96
             34276fd796040bf0993ab33a369aa572e6979c7aab225a88893667ad8eac8f7a
-            81d34634ef4fb4c0782fd7d5354de1b558b776e399a9be3aca771cc528c7ad2e
+            be197be92549909ec62a2cee04c27f4b0a38c80f723735538a3efc352507f81d
             255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360
             4061c0079120205fb760c58acab6443e217307dcf05e3702cf970e0689972856
             7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
-            3e9395fd35276425b61b516a31fdd7c77fe2af83e41b4da22e30696fb1304c5d
-            3f4a557945a7b0f95efeb1f432267affe5d45ac8ddde2aed1b97ebb62382c089
+            e566bc3f1347cfacf61f2f9ea1d7ab4576fbcff02eb9747c2807b8ced16d9e9a
+            301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e
             7c70eb532015cd2f9adb53f101fb6c7945988d023a085d127d1573dc49dd0083
             a7bfaa2cf55daf0c5c650e68526bb20b61e37d7f3ae53f6893013acc1c91c116
-            8e710afededd5607f95bf3c8ccc175ee306e7084459faf27b9f9f44ef2a7a274
+            0a7db47b0bdf5123a6ceca2f71aa996742a4f04d9048046778f4a9006772d27f
             63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86
             2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55
             18d800aaa2d6bff7d889df810d1b19a5fde72b1f6c0ca96e8d9f28a692fe5460
@@ -159,7 +159,7 @@ sha256sums=(95beb102b94a08d1fae9c288afa761c1a1eb02e7921968e5db545bca8ae300ca
             a8e9f292fcda89b324f2f5c91d13f1424a153e40fc2756f38ee23b15835ff300
             666edb5009503e1047c9d60346a756f94b261f05cc2625f23d41c728ffc484d0
             84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8
-            e4c522352a24664c974d0be8382944107ae638281a06391a5a538366b5707fe5
+            35a7377edd1dd6608dcb2cdf534ded55ea32d49448875ad042cd3f879fb1ded0
             0a2a3ab2e29aeda368700f662ff9ba0f9df17ba4c54577a64e08b8115a3cc0ad
             8decb9eb0cc5dbe7749858e97a7d8316f9439526ca4e539e3bd105e0eb41115e
             b31553efa588ae44bc306f863c785c5333a9ecc091248c6ee68b4b6c87fdedfb
@@ -174,7 +174,7 @@ sha256sums=(95beb102b94a08d1fae9c288afa761c1a1eb02e7921968e5db545bca8ae300ca
             51d5a8ba2be0bbe440b99d2112604c95bbbc3c2748a64260186c541e1729cd80
             9195d967ec791692a04438115466764fb8b9a27b31f14a760437694f40d6b454
             42b54c2c90ad348b5e3a85e03e715d572c1fde357ef104cdfe3b03b697a404ea
-            0ba092c291c94baceb5eff768aa0d56400a457585bc0175925a5a5510303da42
+            7e73acf7f61936a15e5a3b6eedaea29f133357faf7272f2607ba479b049dd7f2
             2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9
             42d59d631f7768a1028a64c7ff581a9bf7519804daf91fc5b6c56e30eec5e193
             85db42a35798a5aafa96ac4d8da78b090b2c933248819157fc0e6f78876a0135
@@ -190,11 +190,11 @@ sha256sums=(95beb102b94a08d1fae9c288afa761c1a1eb02e7921968e5db545bca8ae300ca
             0ce65888c0725fcb2c5bc0fdb8e5438eece02c523557ea40ce0703c266248137
             4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274
             2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
-            14528d37d7d46a92f2a483f188f7fecd86cdd789254a0412b960c9fc5e9efd6d
+            cc44dcc80e89a006af415edffc7409b1f2976a4597065449c166987f95801ab4
             3e6e1070df3f0f5d9cea81496de92dbb72f6721871d99748ece67441dd8b7997
-            dfdd6b29c26483288088d990eee59631dedadd66ce20d203402a7ca8e3c4656f
+            fd3f159936e882d06c1108f84688f7cda2cf85fc6a592a50edbd175e882c2ddc
             e3442bbb2f0c588cec876061e37ae67b455b9df9978b003c8fe30e45f2ef5b42
-            177a05aece5a8ca5266fd3c448abb47b8d352f09d477d3ca8332db4d89b24304
+            05562412163a3037b94497385fb7f9204c637bc605af7a48199e41cf2272f437
             c293e525e6fef9c20e8728fd4612df02a0aa31bb5fe91ecd93e123b1b7bffa73
             26cc8146505cab33cda9737991929e4144c559bebe05078ccc6998f27c4ca2c1
             481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8
@@ -208,7 +208,7 @@ sha256sums=(95beb102b94a08d1fae9c288afa761c1a1eb02e7921968e5db545bca8ae300ca
             7a6ceec4ea84469f15cf15807a747e9efe57e369c384fa86e022b3bea679b79b
             e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0
             aac80bec8b6fe35e8480f1c335be8910fa210a0e6f735a139be205dadcacb544
-            6ab9acad2e4c8eff75c1dd7c4d0abf2e5ef3f2aad32c9d0bb2f5ab3fc5a5a003
+            ed3312857f2f3d9b5e934de9b5625956dfd6981521c29251dc628d1256d80a49
             a0bd60054eae7ce2f8fedb9c295d8137f269fedbf08220a54dde1a0d09f0e9a4
             edd22b3947e18e681e397590651edf2551024be4d53bea5fa55efc428a2acb07
             e9e49acfc1599bb114332a40479d99275e3668b34bd66a6ae2143ba93ec76315)
@@ -219,20 +219,20 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            argon2_cffi-25.1.0-py3-none-any.whl
            argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl
            attrs-26.1.0-py3-none-any.whl
-           cachetools-7.2.1-py3-none-any.whl
+           cachetools-7.2.4-py3-none-any.whl
            cel_python-0.5.0-py3-none-any.whl
-           certifi-2026.7.22-py3-none-any.whl
+           certifi-2026.10.19-py3-none-any.whl
            cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
            charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
-           claude_agent_sdk-0.2.166-py3-none-manylinux_2_17_x86_64.whl
+           claude_agent_sdk-0.2.168-py3-none-manylinux_2_17_x86_64.whl
            click-8.5.0-py3-none-any.whl
            cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl
            distro-1.9.0-py3-none-any.whl
-           fastapi-0.143.0-py3-none-any.whl
-           filelock-4.1.1-py3-none-any.whl
+           fastapi-0.150.0-py3-none-any.whl
+           filelock-4.2.4-py3-none-any.whl
            ftfy-6.3.1-py3-none-any.whl
            google_re2-1.1.20251105-1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-           griffelib-2.3.2-py3-none-any.whl
+           griffelib-2.4.0-py3-none-any.whl
            h11-0.16.0-py3-none-any.whl
            httpcore-1.0.9-py3-none-any.whl
            httptools-0.9.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
@@ -255,7 +255,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
            mcp-1.30.0-py3-none-any.whl
            mdurl-0.1.2-py3-none-any.whl
-           more_itertools-11.2.0-py3-none-any.whl
+           more_itertools-11.2.1-py3-none-any.whl
            openai-2.44.0-py3-none-any.whl
            openai_agents-0.13.6-py3-none-any.whl
            opentelemetry_api-1.45.1-py3-none-any.whl
@@ -270,7 +270,7 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            pycparser-3.11-py3-none-any.whl
            pydantic-2.14.1-py3-none-any.whl
            pydantic_core-2.50.1-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-           pydantic_settings-2.15.0-py3-none-any.whl
+           pydantic_settings-2.16.0-py3-none-any.whl
            pygments-2.21.0-py3-none-any.whl
            pyjwt-2.15.1-py3-none-any.whl
            pyte-0.8.2-py3-none-any.whl
@@ -286,11 +286,11 @@ noextract=(alembic-1.20.0-py3-none-any.whl
            secretstorage-3.5.0-py3-none-any.whl
            six-1.17.0-py2.py3-none-any.whl
            sniffio-1.3.1-py3-none-any.whl
-           sqlalchemy-2.1.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+           sqlalchemy-2.1.5-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
            sse_starlette-3.5.0-py3-none-any.whl
-           starlette-1.8.0-py3-none-any.whl
+           starlette-1.9.0-py3-none-any.whl
            tiktoken-0.14.0-cp314-cp314-manylinux_2_28_x86_64.whl
-           tomlkit-0.15.1-py3-none-any.whl
+           tomlkit-0.15.2-py3-none-any.whl
            tqdm-4.70.1-py3-none-any.whl
            types_requests-2.33.0.20261006-py3-none-any.whl
            typing_extensions-4.16.0-py3-none-any.whl
