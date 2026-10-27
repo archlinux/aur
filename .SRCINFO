@@ -1,26 +1,21 @@
 pkgbase = centrifugo
-	pkgdesc = Real-time messaging server for web applications
-	pkgver = 1.7.4
+	pkgdesc = Scalable real-time messaging server
+	pkgver = 6.10.2
 	pkgrel = 1
 	url = https://github.com/centrifugal/centrifugo
 	install = centrifugo.install
-	arch = i686
 	arch = x86_64
 	arch = aarch64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	license = MIT
+	license = Apache-2.0
 	makedepends = go
-	makedepends = git
-	depends = systemd
-	backup = etc/centrifugo/config.json
-	source = git+https://github.com/centrifugal/centrifugo.git#tag=v1.7.4
+	depends = glibc
+	source = centrifugo-6.10.2.tar.gz::https://github.com/centrifugal/centrifugo/archive/refs/tags/v6.10.2.tar.gz
 	source = centrifugo.service
 	source = centrifugo.sysusers
-	sha256sums = SKIP
-	sha256sums = d1840e7ef5a3b31cad41f498ce02d33d5d88c70f408f9783511387b496ab99e1
-	sha256sums = 0e8c55453bb4c6ea868f4b095237523da85b478fbfda7f1518299cba5356c09f
+	source = centrifugo.tmpfiles
+	sha256sums = 3b2ead1a3c25bf4eb6e86184ad932276fc11cb9103da2e1e25171f98d666220b
+	sha256sums = f61eeb35bfa248be947b0da434bf82815d2a0396f10933e4aadac06a73462f9c
+	sha256sums = dd656417db47b6dd5260a8a6b1f82005c80b6555ac65dd375a95e3aa5168e728
+	sha256sums = 3a4a5123db7293dc103187f406a168214ced95bda0c4f6c0f06508cf262a9718
 
 pkgname = centrifugo
-
