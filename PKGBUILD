@@ -1,7 +1,8 @@
-# Maintainer: Soham Sen <aur at sohamsen dot me>
+# Maintainer: Tim Alexander Neuenbauer <alex dot kannes222 at gmail dot com>
+# Contributor: Soham Sen <aur at sohamsen dot me>
 pkgname=python-swspotify
 _name=SwSpotify
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Cross-platform library to get the currently playing song and artist from Spotify w/o using the API or the internet. Very fast."
 arch=('any')
@@ -11,7 +12,7 @@ depends=('python' 'python-flask' 'python-flask-cors' 'python-requests' 'python-d
 checkdepends=('python-pytest' 'python-mock')
 makedepends=('python-setuptools')
 source=("$_name-$pkgver.tar.gz::https://github.com/SwagLyrics/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('67b1565ff704068e3b809c4cd584f1bad8082106b1dd5ffb59208c0fb5d45b38')
+sha256sums=('7b102edec2994bdee71378cc53352bdc1b540cbac624994b9fb5c77706ebd13f')
 
 build() {
     cd "$_name-$pkgver"
