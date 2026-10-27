@@ -1,0 +1,18 @@
+pkgbase = pocket-tts
+	pkgdesc = Kyutai's pocket-sized text-to-speech on the CPU, without Python
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/kyutai-labs/pocket-tts
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	options = !lto
+	source = pocket-tts-4.0.1.tar.gz::https://github.com/kyutai-labs/pocket-tts/archive/refs/tags/v4.0.1.tar.gz
+	sha256sums = 4599639eadb01bbbc086dc983e5be774f22b8dec9e13769d53899b9de29c047e
+
+pkgname = pocket-tts
