@@ -1,0 +1,27 @@
+pkgbase = open-360-link-bin
+	pkgdesc = Open 360 Link: Pure-Rust cross-platform controller suite (GUI, CLI, HTTP/WS server) for Insta360 Link webcams
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/lucasoskorep/open-360-link
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = ffmpeg
+	depends = libxkbcommon
+	depends = hicolor-icon-theme
+	provides = open-360-link
+	provides = insta360-link-controller
+	conflicts = open-360-link
+	conflicts = insta360-link-controller
+	conflicts = insta360-link-controller-bin
+	replaces = insta360-link-controller-bin
+	options = !strip
+	source_x86_64 = open-360-link-bin-0.1.5-x86_64.tar.gz::https://github.com/lucasoskorep/open-360-link/releases/download/v0.1.5/open-360-link-v0.1.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e556a5f5453ed9320c4a41574bfa75fa359458ebb2c5749bdc763db8153be91e
+	source_aarch64 = open-360-link-bin-0.1.5-aarch64.tar.gz::https://github.com/lucasoskorep/open-360-link/releases/download/v0.1.5/open-360-link-v0.1.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8efb105532d353bcb7fcf3f3b181b48b668619497aede2981ea281c155ee786c
+
+pkgname = open-360-link-bin
