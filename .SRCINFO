@@ -1,6 +1,6 @@
 pkgbase = lektra-bin
 	pkgdesc = High-performance Document and Image viewer that prioritizes screen space and control
-	pkgver = 0.7.9.1
+	pkgver = 0.8.0
 	pkgrel = 0
 	url = https://codeberg.org/lektra/lektra
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = lektra-bin
 	optdepends = qt6-wayland: native Wayland support
 	optdepends = kvantum: Kvantum theme engine
 	optdepends = lua-language-server: completion for init.lua, using the installed Lua stubs
-	provides = lektra=0.7.9.1
+	provides = lektra=0.8.0
 	conflicts = lektra
 	conflicts = lektra-git
 	options = !strip
 	options = !debug
-	source = lektra-0.7.9.1-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v0.7.9.1/lektra-0.7.9.1-x86_64.tar.gz
-	sha256sums = e15e1bf590fee4dc6924d9ffd025f58ed100c51421789c3bec96306967565746
+	source = lektra-0.8.0-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v0.8.0/lektra-0.8.0-x86_64.tar.gz
+	sha256sums = 8bacad86cf30e6dcf42fdd7ab5d6c22baa0f239b39517f4d12a487839ae517fe
 
 pkgname = lektra-bin

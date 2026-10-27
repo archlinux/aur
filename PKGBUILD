@@ -1,6 +1,6 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-bin
-pkgver=0.7.9.1
+pkgver=0.8.0
 pkgrel=0
 pkgdesc="High-performance Document and Image viewer that prioritizes screen space and control"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "lektra-${pkgver}-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v${pkgver}/lektra-${pkgver}-x86_64.tar.gz"
 )
 
-sha256sums=('e15e1bf590fee4dc6924d9ffd025f58ed100c51421789c3bec96306967565746')
+sha256sums=('8bacad86cf30e6dcf42fdd7ab5d6c22baa0f239b39517f4d12a487839ae517fe')
 
 package() {
     # The tarball is a ready-made /usr tree: binary, desktop file, man page,
