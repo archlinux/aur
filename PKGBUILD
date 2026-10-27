@@ -1,7 +1,7 @@
 # Maintainer: Tobias Manske <aur@rad4day.de>
 # Maintainer: I Al Istannen <aur@ialistannen.de>
 pkgname=pferd
-pkgver=3.9.4
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Tool for fast and easily downloading data from KIT Ilias'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python3' 'python-aiohttp' 'python-beautifulsoup4' 'python-rich' 'python-keyring' 'python-certifi')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=($pkgname-$pkgver.tar.gz::https://github.com/Garmelon/PFERD/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('1e881f630e49ada57faee0efd550a316851c59d57aa6e3cf8fbcdf4f449eddf0')
+sha256sums=('7a195c8b16c0f266f6bb35ffa10b6a0711e19dbf36b57bbb0e6ac127f710ae8e')
 
 build() {
     cd "PFERD-$pkgver"
