@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaski-bin
 _pkgname=Chaski
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A content aggregator that helps you focus on what matters.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('331c97791d32872e8b73c81e3778ca5a931301b92a8e56a8eb3c58b1ae2cc4d5')
+sha256sums=('65a241852e8dfc3942a0583f289c68f90b6f03394cc7d7d81f75d28b12583252')
 prepare() {
     sed -i "s/Categories=/Categories=Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     local _icon_dir="${srcdir}/usr/share/icons/hicolor"
