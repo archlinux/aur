@@ -1,9 +1,10 @@
 pkgbase = sdrtop-git
 	pkgdesc = Terminal monitor for SDR hardware
 	pkgver = 0.7.0.r4.g23a419f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/musithang/sdrtop
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0
 	makedepends = cargo
 	makedepends = git
