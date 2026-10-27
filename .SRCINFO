@@ -1,0 +1,21 @@
+pkgbase = pocket-tts-git
+	pkgdesc = Kyutai's pocket-sized text-to-speech on the CPU, without Python (git version)
+	pkgver = r206.77c3d76
+	pkgrel = 1
+	url = https://github.com/kyutai-labs/pocket-tts
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = pocket-tts
+	conflicts = pocket-tts
+	options = !lto
+	source = pocket-tts::git+https://github.com/kyutai-labs/pocket-tts.git
+	sha256sums = SKIP
+
+pkgname = pocket-tts-git
