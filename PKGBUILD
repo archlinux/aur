@@ -30,6 +30,7 @@ pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
+options=(!lto !debug)
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
