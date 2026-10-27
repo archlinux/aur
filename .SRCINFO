@@ -1,0 +1,48 @@
+pkgbase = lurker-git
+	pkgdesc = LUKS and VeraCrypt CLI/desktop with privileged and unprivileged Linux workflows
+	pkgver = 0.1.0.r19.g2e8371c
+	pkgrel = 1
+	url = https://github.com/annguyenfoss/lurker
+	arch = x86_64
+	license = GPL-3.0-only
+	license = GPL-2.0-only
+	license = Apache-2.0
+	license = LicenseRef-TrueCrypt-3.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = python
+	makedepends = bc
+	makedepends = bison
+	makedepends = flex
+	makedepends = libelf
+	makedepends = wxwidgets-gtk3
+	depends = cryptsetup
+	depends = btrfs-progs
+	depends = util-linux
+	depends = polkit
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = wayland
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = fuse3
+	depends = wxwidgets-common
+	optdepends = veracrypt: create VeraCrypt volumes in privileged mode
+	optdepends = sudo: CLI privilege escalation and desktop terminal fallback
+	provides = lurker
+	conflicts = lurker
+	options = !lto
+	source = lurker::git+https://github.com/annguyenfoss/lurker.git#branch=main
+	source = veracrypt-userspace::git+https://github.com/veracrypt/VeraCrypt.git#commit=8172bc55f834485f67be271e02c1167981423621
+	source = lkl-userspace::git+https://github.com/lkl/linux.git#commit=d0f76a77e8c2ca68bd7d96190b8da09040eab072
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lurker-git
