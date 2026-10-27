@@ -1,0 +1,5 @@
+[flashtui-bin]
+source = "github"
+github = "susamn/flashtui"
+use_latest_release = true
+prefix = "v"

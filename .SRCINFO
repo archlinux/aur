@@ -1,0 +1,23 @@
+pkgbase = flashtui-bin
+	pkgdesc = A disk flasher TUIi
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/susamn/flashtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = util-linux
+	depends = systemd
+	depends = polkit
+	depends = openssl
+	depends = udisks2
+	depends = parted
+	provides = flashtui
+	conflicts = flashtui
+	options = !strip
+	source_x86_64 = flashtui-x86_64-0.1.1.tgz::https://github.com/susamn/flashtui/releases/download/v0.1.1/flashtui_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3db430a95d26081353c942fa4dc97e166da95ceed0bcc6203fba8488ab65f315
+	source_aarch64 = flashtui-aarch64-0.1.1.tgz::https://github.com/susamn/flashtui/releases/download/v0.1.1/flashtui_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2d6bf0bdbd2f238730c13f28ad3b5eeca762484a23af827597f1e55cc418ed4b
+
+pkgname = flashtui-bin
