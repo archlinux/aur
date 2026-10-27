@@ -77,6 +77,8 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
 prepare() {
   cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
+  # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
+  export DOTNET_CLI_HOME="$srcdir/dotnet-home"
 
   # We first determine the exact SDK and runtime versions for later usage
   _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
@@ -134,6 +136,7 @@ prepare() {
   export NUGET_PACKAGES="$PWD/nuget"
   dotnet new tool-manifest --force
   dotnet tool install dotnet-outdated-tool
+  dotnet tool restore
   dotnet outdated --upgrade --exclude "JsonSchema.Net"
   dotnet outdated --upgrade --version-lock major --include "JsonSchema.Net"
 
@@ -170,6 +173,8 @@ build() {
   cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
+  # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
+  export DOTNET_CLI_HOME="$srcdir/dotnet-home"
 
   ## Start-ResGen()
   # ResGen runs much faster if built with optimisations
@@ -271,6 +276,8 @@ check() {
   cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
+  # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
+  export DOTNET_CLI_HOME="$srcdir/dotnet-home"
 
   cd test/powershell || exit
   # In Pester 4.x, deleting tests is unfortunately the only fine grained option
