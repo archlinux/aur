@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname='sonarqube-cli'
-pkgver=1.10.1.16776
+pkgver=1.11.0.16877
 pkgrel=1
 pkgdesc="Command line interface for SonarQube Server and SonarQube Cloud"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('LGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'icu')
 makedepends=('bun')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9275d6ecf4fcc194e97560d0747bcf991ab48bd24d15d2f9e37bde6312211f73')
+sha256sums=('3d40f113b6684bf244590c9582a06196fa557780837db0bfb54845d37b517af1')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -19,6 +19,14 @@ prepare() {
     # so make it an empty URL so bun uses the default registry.
     sed -i 's|"https://repox\.jfrog\.io/[^"]*"|""|' bun.lock
     sed -i '/^registry = /d' bunfig.toml
+
+    # Self-update is disabled, so system status skips update checks.
+    sed -i "s/it.each(\['update status', 'system status'\])/it.each(['update status'])/" \
+        tests/unit/commands/update/update-version.test.ts
+
+    # Test expects no build number in the current version, add it.
+    sed -i 's/\(currentVersion: `.*\${patch}\)`/\1.'"${pkgver##*.}"'`/' \
+        tests/unit/commands/update/update-version.test.ts
 
     # Disable self-update command.
     sed -i 's/enableSelfUpdate: true/enableSelfUpdate: false/' \
@@ -30,10 +38,10 @@ prepare() {
     sed -i "s|'/usr/bin:/bin'|'${srcdir}/hookbin'|" \
         tests/unit/commands/integrate/git/git-husky.test.ts
 
-    # Test expects no build number in the current version, add it.
-    sed -i 's/\(currentVersion: `.*\${patch}\)`/\1.'"${pkgver##*.}"'`/' \
-        tests/unit/commands/update/update-version.test.ts
+    # Lower the parallelism a bit.
+    sed -i 's/bun test --parallel/bun test --parallel=4/' package.json
 
+    # Install dependencies.
     bun install --frozen-lockfile --ignore-scripts
 
     # Append build number to version, same way as CI does.
