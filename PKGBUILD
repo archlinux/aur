@@ -3,7 +3,7 @@
 pkgname=greenmask-bin
 pkgver=0.2.26
 pkgrel=1
-pkgdesc='PostgreSQL dump, anonymization and restore tool (upstream build)'
+pkgdesc='PostgreSQL dump, anonymization and restore tool (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'riscv64' 'powerpc64le')
 url='https://github.com/GreenmaskIO/greenmask'
 license=('Apache-2.0')

@@ -1,5 +1,5 @@
 pkgbase = greenmask-bin
-	pkgdesc = PostgreSQL dump, anonymization and restore tool (upstream build)
+	pkgdesc = PostgreSQL dump, anonymization and restore tool (prebuilt)
 	pkgver = 0.2.26
 	pkgrel = 1
 	url = https://github.com/GreenmaskIO/greenmask
