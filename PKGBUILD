@@ -19,13 +19,10 @@ source=("https://efisc.kttg.ch/update/eFisc/2025/${_pkgname}_${_debver}_amd64.de
 sha256sums=('315c199dd34f4a8bb58ffd7450571afa44897f9371587635a8b3d4f67b0ebea1')
 
 prepare() {
-  mkdir -p data
-  bsdtar -xf data.tar.* -C data
+  bsdtar -xf data.tar.zst
 }
 
 package() {
-  cd data
-
   install -dm755 "$pkgdir/usr/share"
   cp -a usr/share/$_pkgname "$pkgdir/usr/share/"
 
