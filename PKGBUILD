@@ -1,5 +1,5 @@
 pkgname=mbelib-neo
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="IMBE, AMBE and AMBE+2 vocoder library with TETRA ACELP decoding. Supports P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA, ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 conflicts=('mbelib-neo-git')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d87dc35bdbd7884b033b6ba918840f859f15a11ba8aee2190b7b7519fac61711')
+sha256sums=('7e36e246022b0455adac4d1ed2a087feb68544c5b85b4f547832542ead5e3cf8')
 
 # BEGIN pinned PFFFT (tools/update_aur_pffft.py)
 _pffft_sha=316f0b01e3bdd327e89933891ea2c0be2d10c75e
