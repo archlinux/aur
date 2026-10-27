@@ -1,7 +1,7 @@
 pkgbase = solo1
 	pkgdesc = Python tool and library for SoloKeys Solo 1
 	pkgver = 0.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/solokeys/solo1-cli
 	arch = any
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = solo1
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-flit-core
+	makedepends = python-setuptools>=61.0
 	depends = python
 	depends = python-click>=7.1
 	depends = python-cryptography
@@ -24,9 +24,13 @@ pkgbase = solo1
 	replaces = solo-python
 	source = solo1-cli-0.1.1.tar.gz::https://github.com/solokeys/solo1-cli/archive/refs/tags/0.1.1.tar.gz
 	source = solo1-169.patch
-	source = pyproject-pep621.patch
+	source = pyproject-setuptools.patch
+	source = fido2-2.x-compat.patch
+	source = run_tests.py
 	sha256sums = 377f0c244ee0efc741f18b3370cc0e5dcaff852db90102eeb258201128643c84
 	sha256sums = 06b4aed197f90604447f5f297f06c5784ede4fa33c90af851cd2ff3f62cf5abf
-	sha256sums = 0bdbc1d753ea073b4f6c77ec4b6f2719ffe19d762b407a38bdd04d35ab41a61c
+	sha256sums = e7fbbe5b370cfba33f52932e088c491f7ee9fcb732640c9b91276eab0de9746e
+	sha256sums = 71cd05cbd9732f035ab1a570fc5c662ec15d49194cd755bd5acc1e1030c0c17d
+	sha256sums = 9f8b1322f8a6e99848dfdb263d2a6a7d4813d5fc0dcd9a5922422d58042b49f4
 
 pkgname = solo1

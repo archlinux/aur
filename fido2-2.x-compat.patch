@@ -1,0 +1,107 @@
+diff --git a/solo/devices/base.py b/solo/devices/base.py
+index 97fe005..1c1769e 100644
+--- a/solo/devices/base.py
++++ b/solo/devices/base.py
+@@ -92,15 +92,18 @@ class SoloClient:
+         rp = {"id": self.host, "name": "example site"}
+         user = {"id": self.user_id, "name": "example user"}
+         challenge = b"Y2hhbGxlbmdl"
+-        options = PublicKeyCredentialCreationOptions(
+-            rp,
+-            user,
+-            challenge,
+-            [{"type": "public-key", "alg": -8}, {"type": "public-key", "alg": -7}],
++        options = PublicKeyCredentialCreationOptions.from_dict(
++            {
++                "rp": rp,
++                "user": user,
++                "challenge": challenge,
++                "pubKeyCredParams": [{"type": "public-key", "alg": -8}, {"type": "public-key", "alg": -7}],
++            }
+         )
+         result = client.make_credential(options)
+-        attest = result.attestation_object
+-        data = result.client_data
++        resp = getattr(result, "response", result)
++        attest = getattr(resp, "attestation_object", getattr(result, "attestation_object", None))
++        data = getattr(resp, "client_data", getattr(result, "client_data", None))
+         try:
+             attest.verify(data.hash)
+         except AttributeError:
+diff --git a/solo/devices/solo_v1.py b/solo/devices/solo_v1.py
+index dab0360..5b7257f 100644
+--- a/solo/devices/solo_v1.py
++++ b/solo/devices/solo_v1.py
+@@ -7,6 +7,10 @@ import time
+ from threading import Event
+ 
+ from fido2.client import Fido2Client, UserInteraction
++try:
++    from fido2.client import DefaultClientDataCollector
++except ImportError:
++    DefaultClientDataCollector = None
+ from fido2.ctap import CtapError
+ from fido2.ctap1 import Ctap1
+ from fido2.ctap2 import Ctap2
+@@ -83,7 +87,11 @@ class Client(SoloClient):
+             self.ctap2 = None
+ 
+         try:
+-            self.client = Fido2Client(dev, self.origin, user_interaction=CliInteraction())
++            if DefaultClientDataCollector is not None:
++                collector = DefaultClientDataCollector(self.origin)
++                self.client = Fido2Client(dev, client_data_collector=collector, user_interaction=CliInteraction())
++            else:
++                self.client = Fido2Client(dev, self.origin, user_interaction=CliInteraction())
+         except CtapError:
+             print("Not using FIDO2 interface.")
+             self.client = None
+diff --git a/solo/hmac_secret.py b/solo/hmac_secret.py
+index d0058a9..6ed41d1 100644
+--- a/solo/hmac_secret.py
++++ b/solo/hmac_secret.py
+@@ -28,8 +28,9 @@ def make_credential(
+     client = solo.client.find(solo_serial=serial, udp=udp).get_current_fido_client()
+ 
+     rp = {"id": host, "name": "Example RP"}
+-    client.host = host
+-    client.origin = f"https://{client.host}"
++    if hasattr(client, "host"):
++        client.host = host
++        client.origin = f"https://{client.host}"
+     client.user_id = user_id
+     user = {"id": user_id, "name": "A. User"}
+     challenge = secrets.token_bytes(32)
+@@ -45,7 +46,9 @@ def make_credential(
+             ],
+             "extensions": {"hmacCreateSecret": True},
+         },
+-    ).attestation_object
++    )
++    resp = getattr(attestation_object, "response", attestation_object)
++    attestation_object = getattr(resp, "attestation_object", getattr(attestation_object, "attestation_object", attestation_object))
+ 
+     credential = attestation_object.auth_data.credential_data
+     credential_id = credential.credential_id
+@@ -69,8 +72,9 @@ def simple_secret(
+     client = solo.client.find(solo_serial=serial, udp=udp).get_current_fido_client()
+ 
+     # rp = {"id": host, "name": "Example RP"}
+-    client.host = host
+-    client.origin = f"https://{client.host}"
++    if hasattr(client, "host"):
++        client.host = host
++        client.origin = f"https://{client.host}"
+     client.user_id = user_id
+     # user = {"id": user_id, "name": "A. User"}
+     credential_id = binascii.a2b_hex(credential_id)
+@@ -92,7 +96,8 @@ def simple_secret(
+         },
+     ).get_response(0)
+ 
+-    output = assertion.extension_results["hmacGetSecret"]["output1"]
++    ext_results = getattr(assertion, "client_extension_results", getattr(assertion, "extension_results", {}))
++    output = ext_results["hmacGetSecret"]["output1"]
+     if output:
+         print(output.hex())
+ 
