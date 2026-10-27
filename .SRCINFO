@@ -1,6 +1,6 @@
 pkgbase = winjitsu
 	pkgdesc = A slick, animated window management tool for Linux (X11)
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/Evilchuck666/WinJitsu
 	arch = any
