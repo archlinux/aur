@@ -1,4 +1,3 @@
-# Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
 # Maintainer: Matthias Eberlein
 
 pkgname=youtube-to-mp3
