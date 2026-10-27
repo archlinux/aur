@@ -1,0 +1,15 @@
+pkgbase = libmempressure
+	pkgdesc = Memory-pressure events from kernel PSI for applications, an onTrimMemory for Linux
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kutuso/libmempressure
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = binutils
+	makedepends = cmake
+	depends = glibc
+	source = libmempressure-0.2.1.tar.gz::https://github.com/kutuso/libmempressure/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 4772859a141dc81e989790227ba4265a49d6cb030c1f278381ee6e6e7b1facf1
+
+pkgname = libmempressure
