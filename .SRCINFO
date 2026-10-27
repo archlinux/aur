@@ -1,0 +1,21 @@
+pkgbase = segasonic-port-git
+	pkgdesc = A native port of SegaSonic The Hedgehog (Sega arcade, 1993)
+	pkgver = 1.0.r89.gddfc87e
+	pkgrel = 1
+	url = https://github.com/cheviman/segasonic-port
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	depends = sdl2
+	provides = segasonic-port
+	conflicts = segasonic-port
+	options = !lto
+	source = segasonic-port-git::git+https://github.com/cheviman/segasonic-port
+	sha256sums = SKIP
+
+pkgname = segasonic-port-git
