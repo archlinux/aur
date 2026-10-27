@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=git-credential-manager
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A secure Git credential helper built on .NET"
 arch=('x86_64')
@@ -16,9 +16,7 @@ options=(!strip !debug)
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=(
-    '1e7c2cb1b16fb5f0f09598e194b7421327e46bdc3aa59a59b8ca83926121653015bdbaa11cc9edead5dc8a814ca95db709d99a563ea8463c07ee9d49f096c2f9'
-)
+sha512sums=('f8fbdd5b9f00bdc0372458e8048428633754b1fa2f329a458c23e8863b89b8de7ddcd9a03fbfb966e2cdaf528fb2fe5a9e3f3817ec38fa004c36851a06ce432e')
 
 build() {
     cd "${pkgname}-${pkgver}"
