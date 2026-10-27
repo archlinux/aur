@@ -1,0 +1,17 @@
+pkgbase = riff-bin
+	pkgdesc = A free, open-source desktop music player for YouTube Music, SoundCloud, and local files.
+	pkgver = 43.0.0
+	pkgrel = 1
+	url = https://github.com/rootscripts/riff
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = riff
+	conflicts = riff
+	options = !strip
+	source_x86_64 = https://github.com/rootscripts/riff/releases/download/v43.0.0/riff-43.0.0-linux-x86_64.AppImage
+	sha256sums_x86_64 = b35ec26f4d630e67a75ed6e3869441458d94e5727e4abf2c557915531b234bb5
+
+pkgname = riff-bin
