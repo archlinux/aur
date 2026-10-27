@@ -2,16 +2,22 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sdrtop
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal monitor for SDR hardware"
 arch=("x86_64")
 url="https://github.com/musithang/sdrtop"
 license=("GPL-3.0")
 depends=("gcc-libs")
 optdepends=(
+    'airspy: AirSpy support'
     'hackrf: HackRF support'
     'rtl-sdr: RTL-SDR support'
     'soapysdr: SoapySDR support'
+    'soapyrtlsdr: SoapySDR support (RTL-SDR plugin)'
+    'soapyhackrf: SoapySDR support (HackRF plugin)'
+    'soapyairspy: SoapySDR support (Airspy plugin)'
+    'soapyplutosdr: SoapySDR support (PlutoSDR plugin)'
+    'soapysdrplay3-git: SoapySDR support (SDRPlay plugin)'
 )
 makedepends=("cargo" "git")
 provides=("sdrtop")
@@ -22,7 +28,7 @@ options=(!lto)
 
 build() {
     cd "$srcdir/$pkgname" || exit 1
-    cargo build --release --config 'profile.release.opt-level="z"' --config 'profile.release.lto=true' --config 'profile.release.codegen-units=1' --config 'profile.release.panic="abort"'
+    cargo build --release --locked
 }
 
 package() {
