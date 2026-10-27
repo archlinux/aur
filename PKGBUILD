@@ -1,18 +1,17 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=kwybars-git
 _repo=Kwybars
-pkgver=0.2.0.r0.g0000000
-pkgrel=2
+pkgver=0.3.0.r0.g0000000
+pkgrel=1
 pkgdesc="Desktop audio visualizer for Wayland that renders real-time audio bars on screen (latest git)"
 arch=('x86_64')
 url="https://github.com/naurissteins/Kwybars"
 license=('GPL-3.0-or-later')
 provides=('kwybars')
 conflicts=('kwybars' 'kwybars-bin')
-options=('!debug')
-depends=('gdk-pixbuf2' 'gtk4' 'gtk4-layer-shell' 'pipewire' 'cava')
-optdepends=('libnotify: desktop error notifications via notify-send')
-makedepends=('cargo' 'git')
+options=('!debug' '!lto')
+depends=('gcc-libs' 'glibc' 'pipewire')
+makedepends=('cargo' 'clang' 'git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -23,29 +22,30 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_repo"
-  cargo fetch --locked
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$srcdir/$_repo"
-  cargo build --frozen --release --workspace
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+}
+
+check() {
+  cd "$srcdir/$_repo"
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --release
 }
 
 package() {
   cd "$srcdir/$_repo"
 
-  install -Dm755 target/release/kwybars-overlay "$pkgdir/usr/bin/kwybars-overlay"
-  install -Dm755 target/release/kwybars-daemon "$pkgdir/usr/bin/kwybars-daemon"
-  install -Dm755 target/release/kwybarsctl "$pkgdir/usr/bin/kwybarsctl"
-
-  install -Dm644 assets/systemd/kwybars-daemon.service \
-    "$pkgdir/usr/lib/systemd/user/kwybars-daemon.service"
-
-  install -d "$pkgdir/usr/share/kwybars/themes"
-  install -m644 assets/themes/*.toml "$pkgdir/usr/share/kwybars/themes/"
-  install -Dm644 docs/man/*.1 -t "$pkgdir/usr/share/man/man1"
-  install -Dm644 assets/examples/config.toml \
-    "$pkgdir/usr/share/doc/kwybars/examples/config.toml"
-
+  install -Dm755 target/release/kwybars "$pkgdir/usr/bin/kwybars"
+  install -Dm644 assets/systemd/kwybars.service \
+    "$pkgdir/usr/lib/systemd/user/kwybars.service"
+  install -Dm644 assets/themes/*.toml -t "$pkgdir/usr/share/kwybars/themes"
+  install -Dm644 assets/examples/*.toml -t "$pkgdir/usr/share/doc/kwybars/examples"
+  install -Dm644 docs/man/kwybars.1 "$pkgdir/usr/share/man/man1/kwybars.1"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/kwybars/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
