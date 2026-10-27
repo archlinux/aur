@@ -2,7 +2,7 @@
 # Maintainer: Darko Demić <mail at darkodemic dot com>
 
 pkgname='gpwebcam-bin'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Use a GoPro connected over USB as a Linux webcam'
 url='https://github.com/darkodemic/gpwebcam'
@@ -15,10 +15,10 @@ optdepends=('v4l2loopback-dkms: the loopback device that applications read' 'lib
 install=gpwebcam.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/darkodemic/gpwebcam/releases/download/v${pkgver}/gpwebcam_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('844b67ce88d6383f3bd614162ccffd7f303ab3b58b3c1ea863dcd5a9bf874571')
+sha256sums_aarch64=('c8c075fe52ac0b6b97db636a0450e69c4516395055bf1432dfdefe4e1b7757dd')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/darkodemic/gpwebcam/releases/download/v${pkgver}/gpwebcam_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f13048b681b9337354cb36eb9436dce4a4068e7895366eb882cf50f6da28f4d6')
+sha256sums_x86_64=('311d5948f6ab9fe15d7dd941442121f9b52595cf90358b23dd3ca954bc191793')
 
 package() {
   install -Dm755 gpwebcam "${pkgdir}/usr/bin/gpwebcam"
