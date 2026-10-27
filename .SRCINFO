@@ -1,6 +1,6 @@
 pkgbase = discord-canary-prerelease-patched-electron-bin
 	pkgdesc = Discord Canary with patched Electron and Linux fixes (AVX2 required)
-	pkgver = 20261027.181742
+	pkgver = 20261027.184519
 	pkgrel = 1
 	url = https://github.com/discord-patched-electron/discord-patched-electron
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = discord-canary-prerelease-patched-electron-bin
 	conflicts = discord-canary-electron-bin
 	options = !strip
 	options = !debug
-	source = discord-canary-prerelease-patched-electron-bin-20261027.181742.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261027181742.0.0-canary.b381958a958aef30/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz
-	sha256sums = 208205e1ee0238507ae558640b0176893f4cafb9d7cba787f226f4c1eb0d1df6
+	source = discord-canary-prerelease-patched-electron-bin-20261027.184519.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261027184519.0.0-canary.2a057c23e05c9778/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz
+	sha256sums = 1d11d97a7a57d34c9ece0d28c9f2b6a65c0c6dbbf29a70737da33246edc0db90
 
 pkgname = discord-canary-prerelease-patched-electron-bin
