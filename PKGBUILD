@@ -1,11 +1,11 @@
 # Maintainer: ca-x <https://github.com/ca-x>
 pkgname=lightos-remoted-bin
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc='Cross-platform Rust remote desktop host for browser clients (Linux binary)'
 arch=('x86_64')
 url='https://github.com/ca-x/lightos-remote-desktop'
-license=('MIT' 'BSD-3-Clause')
+license=('PolyForm-Noncommercial-1.0.0' 'MIT' 'BSD-3-Clause')
 depends=('glibc' 'libgcc' 'libstdc++' 'wayland' 'libxkbcommon' 'libpulse'
          'hyprland' 'aquamarine=0.15.1' 'hyprutils' 'libdisplay-info' 'libdrm'
          'libglvnd' 'libhyprutils.so' 'libdisplay-info.so' 'libinput' 'mesa' 'pixman' 'seatd' 'systemd-libs'
@@ -24,8 +24,8 @@ source=("aquamarine-0.15.1-${_aqcommit}.tar.gz::https://codeload.github.com/hypr
 sha256sums=('975a3479b458722ec2e34e5fed9cdd46f77fa70485431f70093693532f685ff3'
             'c905d0cb7abb194e2772b4a655bd834b7f198f92b38de228040d37e4cc492986'
             'ef58b026b3c9f73cf6dfd4c9682b5c5e6e440ff8a68cb41b86e7c425d281c265')
-sha256sums_x86_64=('31406d19b842b071c538539d1d3219a3dec934f6ea521be1ec1a22ba8bac55d3'
-                   '96fb9e2452f0f25f280feb98b8f10991ad3dae6a5ba60ec60302f8201ec5e836')
+sha256sums_x86_64=('bf3f4d9a6442049136bf7b9683da7382867e46b5b49f6cf82dbd9b9f41f1ebf4'
+                   'f4f26160fdefa747c634f680a5a92e85c890cd6caeedfa41f83789594baa2a72')
 source_x86_64=("${_bundle}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz"
                "${_bundle}-${pkgver}.tar.gz.sha256::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz.sha256")
 
