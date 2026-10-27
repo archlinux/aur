@@ -3,12 +3,14 @@
 pkgbase=dingtalk-sans
 pkgname=ttf-dingtalk-sans
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉进步体 dingtalk jinbuti"
 url="https://www.alibabafonts.com/#/more"
 depends=()
 license=("LicenseRef-custom")
 arch=(any)
+# fonts.alibabadesign.com has enabled Referer anti-hotlinking; a Referer from the same domain is required to download files.
+DLAGENTS=('https::/usr/bin/curl -fLC - --referer https://fonts.alibabadesign.com/ -o %o %u')
 source=(
     "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/DingTalkJinBuTi.zip"
     "钉钉进步体法律声明.pdf"

@@ -1,7 +1,7 @@
 pkgbase = dingtalk-sans
 	pkgdesc = 钉钉进步体 dingtalk jinbuti
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alibabafonts.com/#/more
 	arch = any
 	license = LicenseRef-custom
