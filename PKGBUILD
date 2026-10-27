@@ -1,15 +1,15 @@
 # Maintainer: David Birks <david@birks.dev>
 pkgname=ssmsh
-pkgver=1.4.9
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Interactive shell for the AWS Parameter Store'
 arch=('x86_64')
 url='https://github.com/bwhaley/ssmsh'
 license=('MIT')
-makedepends=('go')
+makedepends=('go>=1.27.2')
 options=('!debug')
 source=("ssmsh-${pkgver}.tar.gz::https://github.com/bwhaley/ssmsh/archive/v${pkgver}.tar.gz")
-b2sums=('cd2d736960a98322c14a0b8d11d60f5234755fd5cc074dc75e66e7e4dd11470686707df25aa9be37b8bccc0fc2e7b78f48c860456b3c6fc5167f53c3ec9af3a9')
+b2sums=('b76bc7013d571f3662a1d70af89adc5f74d356e4c0786a886ddd254b0531f9c30ed9cd0cb37b7bf5e405aac9d9aad061a4f91f6799c6df2ac47559c70d3562fe')
 
 build() {
   cd "${srcdir}/ssmsh-${pkgver}"
@@ -17,11 +17,11 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw"
   go build \
     -ldflags="-X main.Version=${pkgver}" \
     -o ssmsh \
-    ./ssmsh.go
+    .
 }
 
 package() {
