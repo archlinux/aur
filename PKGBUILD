@@ -1,5 +1,5 @@
-# Maintainer: Christian Pfeiffer <cpfeiffer@rev-crew.info>
-# shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 pkgname='mogui'
 pkgver=0.2.2
@@ -16,13 +16,13 @@ sha512sums=('b814392cf225bb635e25fe00b0f7ed3498a133e3b2d73b36b01c7d199718adfe7a0
 b2sums=('9e726899347c1f7649da54622cc8a98d0a1bcdbe453de02062953e8b8ce3e8413077bd4ff321389a3278cc5defe1dc45cdf30f21918ea0ba66bd06efef8fb648')
 
 build() {
-  cd "$srcdir/${_name}-${pkgver}"
+  cd "$srcdir/${_name}-${pkgver}" || exit
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${_name}-${pkgver}"
+  cd "$srcdir/${_name}-${pkgver}" || exit
 
   python -m installer --destdir "$pkgdir" dist/*.whl
 }
