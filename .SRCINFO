@@ -1,7 +1,7 @@
 pkgbase = agents-anywhere
 	pkgdesc = Open-source cross-device AI agent workbench desktop app (built from source)
-	pkgver = 2.0.3
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/anywhere-labs/Agents-Anywhere
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = agents-anywhere
 	depends = libappindicator-gtk3
 	options = !strip
 	options = !debug
-	source = Agents-Anywhere-2.0.3.tar.gz::https://github.com/anywhere-labs/Agents-Anywhere/archive/refs/tags/v2.0.3.tar.gz
-	sha256sums = 5b36e7937e24f43318ee5bbd80710c3e378b62484f4f09483b7c5a7a8b1a3094
+	source = Agents-Anywhere-2.1.0.tar.gz::https://github.com/anywhere-labs/Agents-Anywhere/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 82e5fcc01fdc20fe1f184bb955afb2a4bb17487dd4546162f5dbcbe9cc1720a4
 
 pkgname = agents-anywhere
