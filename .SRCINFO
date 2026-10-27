@@ -4,8 +4,13 @@ pkgbase = coreos-installer
 	pkgrel = 1
 	url = https://github.com/coreos/coreos-installer
 	arch = x86_64
-	license = APACHE
-	depends = cargo
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = xz
+	depends = zstd
 	source = coreos-installer-0.27.0.tar.gz::https://github.com/coreos/coreos-installer/archive/refs/tags/v0.27.0.tar.gz
 	sha256sums = b1491d7f0af8e01c80e77e9d480301b9bd23bf4dd9752019a7b1182c299810be
 
