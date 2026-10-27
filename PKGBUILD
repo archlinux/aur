@@ -1,14 +1,16 @@
 ##
 # Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
+#
+# shellcheck shell=bash
 ##
 
 _gitname=thrapl
 # shellcheck disable=SC2034
 pkgname=thrapl-git
 # shellcheck disable=SC2034
-pkgdesc="Easily adjust the PL2 (Turbo) wattage using the intel_rapl driver"
+pkgdesc="Easily adjust PL1 (Sustained) and PL2 (Turbo) wattage using the intel_rapl driver"
 # shellcheck disable=SC2034
-pkgver="0.0.1".r1.2b7da63
+pkgver="0.0.1".r6.60a1047
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
