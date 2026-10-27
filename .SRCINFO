@@ -1,0 +1,21 @@
+pkgbase = cumpressor
+	pkgdesc = Private, on-device video compressor built with Rust and GPUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Coobyk/Cumpressor
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = ffmpeg
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = vulkan-icd-loader
+	source = cumpressor-0.1.0.tar.gz::https://github.com/Coobyk/Cumpressor/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 93d31dd4b965a8d093d428d89fa9e0ee8ed953d00e4f5008a15eab99d3f7ffa4
+
+pkgname = cumpressor
