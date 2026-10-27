@@ -3,7 +3,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Kevin Hanselman <kevin.hanselman@gmail.com>
 pkgname=xfce4-genmon-plugin-git
-pkgver=r1278.0eda6d6
+pkgver=r1279.8f61431
 pkgrel=1
 pkgdesc="plugin that monitors customizable programs stdout for the Xfce4 panel"
 arch=('x86_64')
