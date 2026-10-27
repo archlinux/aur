@@ -4,11 +4,11 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.40.0
+pkgver=7.41.0
 _bettersqlite3ver=13.0.1
 _bufferutilver=4.0.9
 _pipewirever=1.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Your connected workspace for wiki, docs & projects"
 arch=(x86_64)
 url=https://www.notion.so/desktop
@@ -39,7 +39,7 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('c6cc1b5cdb016bf9f9445906ea6a499c8f46a72c568991ea36acf6cc823b7bfe'
+sha256sums=('23e9b0f45c30e302dad47c8ea6620eb3d49aff5dcc23a1f90f50c357e4508e97'
             '92935ff8280f933aff78f87e04eb718a21af003aec4e5bd0076f287aa1709da4'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
             'ed7425c2f287df8e192656f89b5c6645f67837aaaba64692e493dc8e8e0d55fe'
@@ -114,8 +114,8 @@ prepare() {
 		'if("darwin"===process.platform)$MAC;else if("linux"===process.platform){const $UNINSTALL=$ARGS=>$ARGS.find($ARG=>"--uninstall"===$ARG);$$$B}'
 	# System Electron includes app.asar in argv; do not treat it as a Markdown file.
 	sg_patch \
-		'function $F($ARG){const $EXT=$PATH.default.extname($ARG).toLowerCase();return!$ARG.startsWith("-")&&!$ARG.startsWith(`${$CONFIG.default.protocol}:`)&&$EXT.length>0&&".exe"!==$EXT}' \
-		'function $F($ARG){const $EXT=$PATH.default.extname($ARG).toLowerCase();return!$ARG.startsWith("-")&&!$ARG.startsWith(`${$CONFIG.default.protocol}:`)&&$EXT.length>0&&".exe"!==$EXT&&".asar"!==$EXT}'
+		'function $F($ARG){const $EXT=$PATH.default.extname($ARG).toLowerCase();return!$ARG.startsWith("-")&&void 0===$SCHEME($ARG)&&$EXT.length>0&&".exe"!==$EXT}' \
+		'function $F($ARG){const $EXT=$PATH.default.extname($ARG).toLowerCase();return!$ARG.startsWith("-")&&void 0===$SCHEME($ARG)&&$EXT.length>0&&".exe"!==$EXT&&".asar"!==$EXT}'
 	sg_patch \
 		'($$$PRE,function(){$$$INIT}(),0)' \
 		'($$$PRE,function(){$$$INIT}())'
