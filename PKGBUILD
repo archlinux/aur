@@ -3,7 +3,7 @@
 
 # Maintainer: minerharry <miner.harry567@gmail.com>
 pkgname=keysharp-git
-pkgver=r2464.ddaaa5b
+pkgver=v0.0.0.18.r0.g54af9a3
 pkgrel=1
 pkgdesc="Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. X11 version."
 arch=('x86_64')
@@ -16,6 +16,8 @@ depends=(
     'libx11' 'libxtst' 'libxinerama' 'libxt' 'libxkbcommon-x11' 'libxcb' 'gtk3' 'libnotify' 'at-spi2-core' #keysharp's explicitly listed deps
     'glibc' 'gcc-libs' #extra lib deps picked up by checkpkg, seems obvious but w/e
     )
+optdepends=('keysharp-input-git: Input interface for Linux'
+            'keysharp-desktop-git: Desktop interfaces')
 makedepends=('git' 'dotnet-sdk')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -37,7 +39,7 @@ pkgver() {
   cd "keysharp"
 
   ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null ||
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 
