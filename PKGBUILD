@@ -4,7 +4,7 @@
 # shellcheck shell=bash
 pkgname=crowdsec-nginx-bouncer
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://github.com/crowdsecurity/cs-nginx-bouncer"
@@ -14,6 +14,7 @@ provides=('cs-nginx-bouncer')
 conflicts=('cs-nginx-bouncer')
 depends=(
   'crowdsec'
+  'gettext' # envsubst in the install script
   'lua51-cjson'
   'lua-resty-http'
   'lua-resty-string'
@@ -21,9 +22,6 @@ depends=(
 optdepends=('luajit-openresty: OpenResty optimised luajit'
   'nginx-mainline-mod-lua: Support for nginx-mainline'
   'nginx-mod-lua: Support for nginx')
-makedepends=(
-  'gettext'
-)
 backup=(
   etc/nginx/lua/templates/crowdsec/{ban,captcha}.html
   etc/nginx/conf.d/crowdsec_nginx.conf

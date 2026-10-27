@@ -1,15 +1,22 @@
 post_install() {
-	API_KEY=`cscli bouncers add crowdsec-nginx-bouncer -o raw`
-	export API_KEY
-	IFS=: read HOST PORT <<< `sudo cscli config show --key "Config.API.Server.ListenURI"`
+	local conf=etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
+	local api_key listen_uri host port tmp
+
+	if ! api_key=$(cscli bouncers add crowdsec-nginx-bouncer -o raw 2>/dev/null); then
+		echo "Could not register the bouncer with the CrowdSec Local API (already registered or crowdsec not set up?)."
+		echo "Set API_KEY and API_URL in /$conf manually."
+		return 0
+	fi
 	echo "Bouncer registered to the CrowdSec Local API."
 
-	CROWDSEC_LAPI_URL="http://${HOST:-'127.0.0.1'}:${PORT:-'8080'}"
-	export CROWDSEC_LAPI_URL
+	listen_uri=$(cscli config show --key "Config.API.Server.ListenURI" 2>/dev/null)
+	IFS=: read -r host port <<<"$listen_uri"
 
-	TMP=$(mktemp -p /tmp/)
-	install -m600 /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf "$TMP"
-	envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf >/dev/null
+	tmp=$(mktemp "$conf.XXXXXX")
+	# shellcheck disable=SC2016
+	API_KEY="$api_key" CROWDSEC_LAPI_URL="http://${host:-127.0.0.1}:${port:-8080}" \
+		envsubst '$API_KEY $CROWDSEC_LAPI_URL' <"$conf" >"$tmp"
+	mv "$tmp" "$conf"
 }
 
 post_remove() {
