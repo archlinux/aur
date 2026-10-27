@@ -1,0 +1,5 @@
+[shoin]
+source = "github"
+github = "nol00p/Shoin"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = shoin
+	pkgdesc = A no-clutter terminal Markdown editor with modal editing
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/nol00p/Shoin
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = shoin
+	options = !lto
+	options = !strip
+	source = shoin-0.1.8.tgz::https://github.com/nol00p/Shoin/archive/v0.1.8.tar.gz
+	sha256sums = 801feeea8f972ff9978f3d39b055217fe9990bfd7bd5acb354bd39ab6bdcb264
+
+pkgname = shoin
