@@ -42,4 +42,5 @@ build() {
 package() {
     cd $_pkgname
     meson install -C build --destdir "$pkgdir"
+    mv "$pkgdir/usr/share/licenses/$_pkgname" "$pkgdir/usr/share/licenses/$pkgname"
 }
