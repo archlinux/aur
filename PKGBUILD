@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-terminal
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Live terminal-art wallpapers for Niri"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-terminal"

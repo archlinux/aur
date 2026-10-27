@@ -1,7 +1,7 @@
 pkgbase = sysc-terminal
 	pkgdesc = Live terminal-art wallpapers for Niri
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nomadcxx/sysc-terminal
 	install = sysc-terminal.install
 	arch = x86_64
