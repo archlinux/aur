@@ -2,9 +2,9 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
-pkgdesc="Offline speech-to-text desktop application using Whisper"
+pkgdesc="Offline speech-to-text desktop application using Whisper and Parakeet"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AshBuk/dabri"
 license=('MIT')
@@ -47,7 +47,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    'f01e970dcf0a271dc5829b90e7443bda73cdc589e5748aee5ccdec4fd91ff795'
+    '0ede45ab999675db76b21196704b0be12a52ddd7c0b7a9a0fc4c86946c610906'
     'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
 )
 
@@ -84,8 +84,8 @@ build() {
     # Prepare lib directory for Go build
     mkdir -p lib
     # whisper.cpp >= v1.9 places all libraries (incl. Vulkan backend) in build/bin
-    cp build/whisper.cpp/build/bin/libwhisper.so* lib/
-    cp build/whisper.cpp/include/whisper.h lib/
+    cp build/whisper.cpp/build/bin/libwhisper.so* build/whisper.cpp/build/bin/libparakeet.so* lib/
+    cp build/whisper.cpp/include/whisper.h build/whisper.cpp/include/parakeet.h lib/
     cp build/whisper.cpp/ggml/include/*.h lib/ 2>/dev/null || :
     cp build/whisper.cpp/build/bin/libggml*.so* lib/
     # The Go bindings link -lggml-cpu, which is a runtime module with GGML_CPU_ALL_VARIANTS
@@ -123,7 +123,7 @@ package() {
     # Install only versioned .so files and create symlinks to avoid duplicating large binaries
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
 
-    for lib in lib/libwhisper.so lib/libggml.so lib/libggml-base.so lib/libggml-cpu-*.so lib/libggml-vulkan.so; do
+    for lib in lib/libwhisper.so lib/libparakeet.so lib/libggml.so lib/libggml-base.so lib/libggml-cpu-*.so lib/libggml-vulkan.so; do
         [[ ! -f "$lib" ]] && continue
         base=$(basename "$lib" .so)
         # Find the fully versioned file (e.g., libwhisper.so.1.8.3)
