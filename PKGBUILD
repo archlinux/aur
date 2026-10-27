@@ -5,7 +5,7 @@ pkgname=animalinux
 # build()/package() fallan con "No such file or directory" (bug real,
 # presente desde v0.2.0, nunca se había probado con una build de verdad).
 _gitname=AnimalinuxApp
-pkgver=0.8.1.3
+pkgver=0.8.1.4
 pkgrel=1
 pkgdesc="Mascotas animadas para tu escritorio (Hyprland, KDE, GNOME…): reaccionan a tu PC, juegan y hasta te juegan un partido; con editor de píxeles y de animación"
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c46c18a6da0d13c6bdeef67d371b00a986d7bb0649a54b5942f889fdf835ec98')
+sha256sums=('2d4b5e57b2c5bfa16078e4e541751c7ff0c03cc4aa976a3b8f7e2b7bfa9e30db')
 
 build() {
     cd "$_gitname-$pkgver"
