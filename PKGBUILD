@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-launch
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Linux desktop application launcher and diagnostic CLI"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 makedepends=('go>=1.26.10')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-launch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dd763d9153bcdabd12ae8d738c935c935d871007ab9f90e5c20ea54bd28e0851')
+sha256sums=('77aa434174c5cf106ac404b363ed130a6a0a55ea6a4bf8cab83a4a802e6d0fa7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
