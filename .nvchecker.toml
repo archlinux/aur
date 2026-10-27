@@ -1,0 +1,4 @@
+[rogue]
+source = "regex"
+url = "https://beej.us/moria/files/rogue/"
+regex = 'rogue(\d+(?:\.\d+)+)-src\.tar\.gz'

@@ -1,17 +1,24 @@
-# Maintainer: libele <libele@disroot.org>
+# Maintainer: Beej <beej@beej.us>
+# Contributor: libele <libele@disroot.org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=rogue
 pkgver=5.4.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="The original dungeon crawl game."
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="http://rogue.rogueforge.net/rogue-5-4/"
-license=('custom')
+license=('LicenseRef-custom')
 depends=('ncurses')
-source=("http://rogue.rogueforge.net/files/rogue5.4/rogue${pkgver}-src.tar.gz" "config.guess::https://git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=428664896cf9e92d264976a960c76660938dffce")
-md5sums=('033288f46444b06814c81ea69d96e075' '31425d9ff4907ea0de54624aab92336c')
+
+# The main site seems to be down. I mirrored the source from the
+# Internet Archive onto my Moria site for now.
+
+#source=("http://rogue.rogueforge.net/files/rogue5.4/rogue${pkgver}-src.tar.gz" "config.guess::https://git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=428664896cf9e92d264976a960c76660938dffce")
+source=("https://beej.us/moria/files/rogue/rogue${pkgver}-src.tar.gz" "config.guess")
+sha256sums=('7d37a61fc098bda0e6fac30799da347294067e8e079e4b40d6c781468e08e8a1'
+            'ac18bbd7dc3769e1646af49ebba331a391829f4a73579b735dc8d439bd1c7f07')
 
 prepare() {
   cd $pkgname$pkgver
@@ -22,12 +29,11 @@ prepare() {
   # Use wmove instead of trying to accesses fields of an opaque struct
   sed -i '/curscr->_curx = ox;/d' main.c
   sed -i 's/curscr->_cury = oy;/wmove(curscr, oy, ox);/' main.c
-
 }
 
 build() {
   cd $pkgname$pkgver
-  mv ../config.guess config.guess
+  cp ../config.guess config.guess
   CFLAGS="-g -O2 -std=gnu18" ./configure
   make
 }
