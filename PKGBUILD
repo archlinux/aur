@@ -1,7 +1,7 @@
 # Maintainer: icyleaf <icyleaf.cn at gmail dot com>
 
 pkgname=omawarden-bin
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="High-performance Bitwarden CLI and resident daemon (Designed for Omarchy)"
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ depends=('libsecret' 'wl-clipboard')
 optdepends=('libfido2: WebAuthn / Passkey / FIDO2 security key support')
 provides=('omawarden')
 conflicts=('omawarden')
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/icyleaf/omarchy-bitwarden/releases/download/omawarden-0.10.1/omawarden-0.10.1-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('692510b54793d74c0df0797a3d77b093a9e7b58e612f3e449bbb3df2393448f3')
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/icyleaf/omarchy-bitwarden/releases/download/omawarden-0.10.1/omawarden-0.10.1-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('bb106aac8b2382d06bd1938d366bf0c0a55a17533328943b3a9c63dfd55cf5e8')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/icyleaf/omarchy-bitwarden/releases/download/omawarden-0.10.2/omawarden-0.10.2-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('394b4d8e3043f2259131cedcb37e1aa23de513819aa021ebe85e67de7a6cb4b4')
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/icyleaf/omarchy-bitwarden/releases/download/omawarden-0.10.2/omawarden-0.10.2-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('655aec4be3a4b40bb649ced73e0ee4feb361f072a40b9b38cd58dd1a451fe748')
 
 package() {
     install -Dm755 "${srcdir}"/omawarden-*/omawarden "${pkgdir}/usr/bin/omawarden"
