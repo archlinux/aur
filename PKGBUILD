@@ -2,7 +2,7 @@
 # Contributor: fuxter <fuxterz@gmail.com>
 _name=linapple
 pkgname=$_name-git
-pkgver=2026.10.10.g86bee1c2
+pkgver=2026.10.26.g7f4b6089
 pkgrel=1
 pkgdesc="Apple 2e emulator"
 arch=(x86_64)
@@ -27,21 +27,12 @@ makedepends=(
 )
 provides=($_name)
 conflicts=($_name)
-source=(
-    $_name::git+https://github.com/linappleii/linapple.git
-    fix-cmake-etc.patch::https://patch-diff.githubusercontent.com/raw/linappleii/linapple/pull/364.patch
-)
-sha256sums=('SKIP'
-            '2cad7ae52bbd536bb96750a6ed6b24d226aadb873da995cba7c23e7f4ff0f11f')
+source=($_name::git+https://github.com/linappleii/linapple.git)
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_name
     git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
-}
-
-prepare() {
-    # https://github.com/linappleii/linapple/issues/363
-    patch -Np1 -d $_name < fix-cmake-etc.patch
 }
 
 build() {
