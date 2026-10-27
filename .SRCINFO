@@ -1,0 +1,17 @@
+pkgbase = simpleflash-git
+	pkgdesc = Simple CLI application for flashing to and backing up from USB drives
+	pkgver = r14.9c9a269
+	pkgrel = 1
+	url = https://github.com/zocker-160/simpleflash
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	provides = simpleflash
+	conflicts = simpleflash
+	source = simpleflash-git::git+https://github.com/zocker-160/simpleflash.git
+	sha256sums = SKIP
+
+pkgname = simpleflash-git
