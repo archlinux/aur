@@ -1,5 +1,5 @@
 pkgbase = liquidsoap-bin
-	pkgdesc = Audio and video streaming language (upstream Debian build)
+	pkgdesc = Audio and video streaming language (prebuilt)
 	pkgver = 2.5.0rc1
 	pkgrel = 1
 	url = https://www.liquidsoap.info/
