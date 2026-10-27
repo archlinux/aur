@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A lazygit inspired hardware details explorer"
 
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('49543fd655084f020c41cf9535f3e81b72a4d2d5174e6f53988dba019c2a912a')
-sha256sums_aarch64=('1d3408d42a312e0587131c9fe38674886027212cda1af1a64e92185e1d6bc281')
+sha256sums_x86_64=('855bc615e5a9c2375a47850c8c2f9248fd937a60fb63e8515c4e51163765c8ec')
+sha256sums_aarch64=('5a1599bb258933a41c7dcf08103e65f5cb1b5e05b0950a1ada96f3d6281aee07')
 
 
 package() {
