@@ -18,6 +18,7 @@ AUR package repackaging the **dler.io custom FlClash build** (`https://dl.dler.i
 5. `makepkg --printsrcinfo > .SRCINFO`
 6. `makepkg -sf` to verify; keep the built `*.pkg.tar.zst` — the installer is usually wanted next.
 7. Commit everything this update touched as one semantic commit (e.g. `chore: update to <pkgver>`): `PKGBUILD`, `.SRCINFO`, the launcher if it changed, and AGENTS.md when one of its sections changed because of this version.
+8. Push both remotes: `git -c credential.helper='!gh auth git-credential' push` (GitHub) and `git push aur main:master` (AUR — the same repo under the `aur` remote, published at https://aur.archlinux.org/packages/flclash-oixcloud).
 
 ## Deb layout assumptions
 
