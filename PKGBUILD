@@ -12,16 +12,21 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=100.0.8
+pkgver=100.0.9
 _tag=
 pkgrel=1
 
 pkgdesc="Professional-grade cinematic Matrix rain renderer for serious terminal environments."
-arch=('x86_64' 'aarch64')
+# night-dragon-maintenance-6: the release lane ships Linux x86_64 static
+# musl packages only (v3/v4), so the binary package tracks x86_64.
+arch=('x86_64')
 url="https://github.com/oxyzenQ/cosmostrix"
 license=('GPL3')
 
-depends=('glibc' 'gcc-libs' 'curl')
+# The release binary is a fully static musl executable: no dynamic libc
+# or libgcc linkage, so glibc/gcc-libs are not runtime dependencies.
+# curl stays: the update checker shells out to the curl binary.
+depends=('curl')
 
 provides=('cosmostrix')
 conflicts=('cosmostrix' 'cosmostrix-git')
@@ -36,7 +41,7 @@ options=('!strip')
 # sidecar .sha512sum checksum from the GitHub Release.
 #
 # This avoids:
-#   - downloading all 4 x86_64 variants when only 1 is needed
+#   - downloading all x86_64 variants when only 1 is needed
 #   - parse-time side effects from dynamic source=() definitions
 #   - incompatibility between makepkg static checksums and adaptive selection
 # ---------------------------------------------------------------------------
@@ -51,7 +56,7 @@ sha512sums=()
 # 3. Verify integrity with sha512sum --check
 # 4. Extract into srcdir
 #
-# Detection strategy for x86_64:
+# Detection strategy for x86_64 (assets are the static musl pair):
 #   v4 requires AVX-512 (avx512f)
 #   v3 requires AVX2 (minimum supported — v1/v2 are no longer built)
 #
@@ -69,10 +74,10 @@ prepare() {
     fi
 
     # -- Select optimal binary based on host architecture and CPU features --
+    # night-dragon-maintenance-6: the release lane ships the Linux x86_64
+    # static musl pair (linux-amd64-v3-musl / linux-amd64-v4-musl); the
+    # gnu and linux-aarch64 packages are retired.
     case "${CARCH}" in
-        aarch64)
-            asset="cosmostrix-${tag}-linux-aarch64.tar.gz"
-            ;;
         x86_64)
             local level="v3"
 
@@ -85,7 +90,7 @@ prepare() {
                 warning "Pre-2013 CPUs are not supported. Build from source if needed."
             fi
 
-            asset="cosmostrix-${tag}-linux-amd64-${level}.tar.gz"
+            asset="cosmostrix-${tag}-linux-amd64-${level}-musl.tar.gz"
             ;;
         *)
             error "Unsupported architecture: ${CARCH}"
@@ -133,7 +138,7 @@ prepare() {
 
     # -- Verify integrity --
     # SHA-512 is always verified (mandatory — every Linux has sha512sum).
-    # BLAKE2b-512 + SHAKE256 are optional quantum-resistant checksums.
+    # BLAKE3-256 + SHAKE256 are optional checksums.
     # They are verified only when the corresponding tool is available.
     msg2 "Verifying SHA512 checksum (required)..."
     (
@@ -141,18 +146,21 @@ prepare() {
         sha512sum --check "${asset}.sha512sum"
     )
 
-    # Optional: BLAKE2b-512 (quantum-resistant, in GNU coreutils)
-    if command -v b2sum >/dev/null 2>&1; then
-        msg2 "Verifying BLAKE2b checksum (optional, quantum-resistant)..."
+    # Optional: BLAKE3-256 (fast, modern; upgraded from BLAKE2b-512 in
+    # night-dragon-maintenance-0 to match the release pipeline). The
+    # official b3sum CLI ships in extra/community repos or builds via
+    # 'cargo install b3sum --locked'.
+    if command -v b3sum >/dev/null 2>&1; then
+        msg2 "Verifying BLAKE3 checksum (optional)..."
         curl "${curl_flags[@]}" \
-            --output "${srcdir}/${asset}.b2sum" \
-            "${url}.b2sum"
+            --output "${srcdir}/${asset}.b3sum" \
+            "${url}.b3sum"
         (
             cd "${srcdir}" || return 1
-            b2sum --check "${asset}.b2sum"
+            b3sum --check "${asset}.b3sum"
         )
     else
-        msg2 "b2sum not found — skipping BLAKE2b verification (optional)"
+        msg2 "b3sum not found — skipping BLAKE3 verification (optional)"
     fi
 
     # Optional: SHAKE256 (quantum-resistant, NIST PQ standard, via Python)
@@ -182,7 +190,7 @@ print(hashlib.shake_256(data).hexdigest(64))
     # -- Extract (normalize archive layout) --
     # Older releases nested files under a subdirectory (e.g.
     # cosmostrix-1.1.1-stable.1-linux-amd64-v3/); newer releases are flat.
-    # Artifact naming uses the tag (e.g. cosmostrix-v2.1.0-linux-amd64-v3.tar.gz).
+    # Artifact naming uses the tag (e.g. cosmostrix-v2.1.0-linux-amd64-v3-musl.tar.gz).
     # Detect and strip the leading directory if present so package() always
     # finds files at ${srcdir}/cosmostrix, ${srcdir}/LICENSE, etc.
     local top_entry
