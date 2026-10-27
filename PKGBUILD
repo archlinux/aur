@@ -11,7 +11,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Lyra-Music-${pkgver}-x86_64.AppImage")
 
 # Checksums
-sha256sums=('b454c796638610ea7353ff140b0336be85eb4d4ed107f2887b329deae1459873')
+sha256sums=('39134b6616e21eb6d55a82d85f053bdd4d0bea1122fb2c1a3c917ca18566036f')
 
 # Extract AppImage contents to the squashfs-root folder
 prepare() {
