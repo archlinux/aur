@@ -1,0 +1,12 @@
+post_install() {
+  echo '==> Enable the local Routine service (per user):'
+  echo '    systemctl --user daemon-reload'
+  echo '    systemctl --user enable --now routine.service'
+  echo '==> Then launch the client: routine'
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim: set ts=2 sw=2 et:
