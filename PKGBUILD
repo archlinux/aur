@@ -1,7 +1,7 @@
 # Maintainer: FACT-Finder <ff-dev@fact-finder.com>
 
 pkgname=snage-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A tool for managing change logs."
 arch=(any)
@@ -13,7 +13,7 @@ provides=('snage')
 conflicts=('snage')
 
 source=("snage-$pkgver.tar.gz::https://github.com/FACT-Finder/snage/releases/download/v$pkgver/snage-$pkgver.tar.gz")
-sha256sums=('f8a7da953dc6c9f609c83d1e25b087e1f964295391aefef71ebee94a2d5dc737')
+sha256sums=('64d38884fc1b51f51e31007d256f6044eab60b42afc08bcd692e4b7007d6b68c')
 options=(!strip)
 
 package() {
