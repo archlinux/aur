@@ -1,7 +1,7 @@
 pkgbase = efisc2024-bin
-	pkgdesc = Steuererklärungssoftware des Kantons Thurgau für das Steuerjahr 2023 (eFisc2024)
+	pkgdesc = Steuererklärungssoftware des Kantons Thurgau für das Steuerjahr 2024
 	pkgver = 1.0.10.69
-	pkgrel = 2
+	pkgrel = 3
 	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2024.html/16453
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -18,7 +18,6 @@ pkgbase = efisc2024-bin
 	optdepends = libcups: printing
 	provides = efisc2024
 	conflicts = efisc2024
-	noextract = efisc2024_1.0.10-69_amd64.deb
 	options = !strip
 	options = !debug
 	source = https://efisc.kttg.ch/update/eFisc/2024/efisc2024_1.0.10-69_amd64.deb
