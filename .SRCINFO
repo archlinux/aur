@@ -1,18 +1,20 @@
 pkgbase = netron-bin
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models.
-	pkgver = 9.3.2
+	pkgver = 9.3.3
 	pkgrel = 1
 	url = https://netron.app/
 	arch = x86_64
 	license = MIT
-	depends = electron44
-	provides = netron=9.3.2
+	depends = electron45
+	provides = netron=9.3.3
 	conflicts = netron
-	source = LICENSE-9.3.2::https://raw.githubusercontent.com/lutzroeder/netron/v9.3.2/LICENSE
+	source = LICENSE-9.3.3::https://raw.githubusercontent.com/lutzroeder/netron/v9.3.3/LICENSE
+	source = netron.js
 	source = netron.sh
 	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
-	source_x86_64 = netron-9.3.2-x86_64.rpm::https://github.com/lutzroeder/netron/releases/download/v9.3.2/Netron-9.3.2-x86_64.rpm
-	sha256sums_x86_64 = aacbdb104b314476f2940e9ab465c7f38f6944dffef15f2bcbf16b82f6d3c334
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
+	source_x86_64 = netron-9.3.3-x86_64.rpm::https://github.com/lutzroeder/netron/releases/download/v9.3.3/Netron-9.3.3-x86_64.rpm
+	sha256sums_x86_64 = 30b445692cb70ab335f23714f66be034146160ccc435e65ebdd98d1366a2035c
 
 pkgname = netron-bin
