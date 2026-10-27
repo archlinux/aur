@@ -17,7 +17,7 @@ url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 # Apparently there is an alternate URL - https://archive.mozilla.org/pub/
 _base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
 _version=161.0a1
-_build_id_raw=20261026210443
+_build_id_raw=20261027091753
 declare -A _build_id
 _build_id=(
   [year]="${_build_id_raw:0:4}"
@@ -30,7 +30,7 @@ _build_id=(
   [time]="${_build_id_raw:8:6}"
 )
 
-pkgver=161.0a1.20261026.210443
+pkgver=161.0a1.20261027.091753
 
 pkgrel=1
 
@@ -78,9 +78,9 @@ source_aarch64=(
 
 sha512sums=('320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
-sha512sums_x86_64=('55bf12d6a1aa7be1441bbf314adb92e6c33e5ee4537e0b93328aa4ba3b9642c499c6b0a1f13c39e0857ab494e424bc9a58a3fa27c0be49dbfd71488b57508ec3'
+sha512sums_x86_64=('b369890a5a5877e32be1b49f3dceb2495898946dce39b5c5570402bff5e14d128212ce81bd7c10c9fd4d37416dc9c2c98dda5e639822006099e6cd4b330c3038'
                    'SKIP')
-sha512sums_aarch64=('2abb2c8c46bbe0b2e713b0fa7059019e1fb0971eda40f3e906eb17b476663233e5cf852199dcd817652bb4dbdf4e39bf709b5bc89fb5d600bfda98180b711bf7'
+sha512sums_aarch64=('77b76c88b8b9af830c3d9c499ac2b878ffc42da76a6d1e2c64e82d0724279aa2728e512fef2e10e15dd22e6ba79c761de05f34ee7aaca843f3744e112c299859'
                     'SKIP')
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
