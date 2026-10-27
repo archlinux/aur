@@ -1,6 +1,6 @@
 pkgbase = mediarium-bin
 	pkgdesc = Self-hosted media manager for movies, TV, music, ebooks and audiobooks: search, download and organise
-	pkgver = 3.7.4
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://mediarium.app
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = mediarium-bin
 	source = mediarium.tmpfiles
 	sha256sums = b9ed5becafa699a8c3f058473ccc997a853c63ed5ad1167716d1d3fc0e30dccf
 	sha256sums = 4227a0b0f667a3821d2924a84089f76df8d3b6c5dcd861ae0c881f942f04ca9a
-	source_x86_64 = Mediarium-x86_64-3.7.4.tar.gz::https://github.com/rdborg/Mediarium/releases/download/v3.7.4/mediarium_3.7.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9751fe9b4daa056828b76b2ffdb08e968b1f6819baa3b2a94ffa8b8b37f7bbfd
-	source_aarch64 = Mediarium-aarch64-3.7.4.tar.gz::https://github.com/rdborg/Mediarium/releases/download/v3.7.4/mediarium_3.7.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 67f25cd853706256d7d045290c34e1e1b8ddb1bc25c791100a8a41406565f74a
+	source_x86_64 = Mediarium-x86_64-3.8.0.tar.gz::https://github.com/rdborg/Mediarium/releases/download/v3.8.0/mediarium_3.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e58b2e9005f676b32fa225da07db42b2ff4ff26713fed9850de815594cf314fb
+	source_aarch64 = Mediarium-aarch64-3.8.0.tar.gz::https://github.com/rdborg/Mediarium/releases/download/v3.8.0/mediarium_3.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e8f4d28d50d1daf7281350ed18d55c36dd1bfedf87991117e8a7b9b79896d9a
 
 pkgname = mediarium-bin
