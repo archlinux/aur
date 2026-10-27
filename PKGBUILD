@@ -5,7 +5,7 @@ pkgver=2.2.1
 pkgrel=1
 pkgdesc="Cross-platform Widevine helper for Chromium based browsers"
 optdepends=(
-	'helium-browser: Compatible browser'
+	'helium-browser-bin: Compatible browser'
 	'chromium: Compatible browser'
 	'thorium-browser: Compatible browser'
 )
