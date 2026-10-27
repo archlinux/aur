@@ -1,6 +1,6 @@
 pkgbase = rakkomik-bin
 	pkgdesc = Manga and comic downloader (prebuilt)
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/akn19/rakkomik
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = rakkomik-bin
 	depends = bash
 	depends = electron
 	depends = hicolor-icon-theme
-	provides = rakkomik=1.2.6
+	provides = rakkomik=1.2.7
 	conflicts = rakkomik
-	noextract = rakkomik-1.2.6-1-any.pkg.tar.zst
-	source = https://github.com/akn19/rakkomik/releases/download/v1.2.6/rakkomik-1.2.6-1-any.pkg.tar.zst
-	sha256sums = 5fc295efcd076ed70d2911a6ac0378b35483847bcd08c13996a5f119f9725e48
+	noextract = rakkomik-1.2.7-1-any.pkg.tar.zst
+	source = https://github.com/akn19/rakkomik/releases/download/v1.2.7/rakkomik-1.2.7-1-any.pkg.tar.zst
+	sha256sums = 3430f3bd7e8511d2150dc5046bd1d55950db8654216a21ec03a2448f392111a3
 
 pkgname = rakkomik-bin
