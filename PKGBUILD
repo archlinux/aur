@@ -5,7 +5,7 @@ _pkgname=climp
 pkgname=${_pkgname}-bin
 pkgdesc="CLI Media Player"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[1]}.tar.gz")
-sha256sums=('0f226882aaed3055d710992137a01468912269210dcca89e20c8f2b746c96af1'
+sha256sums=('d6f145afb43f292ef88639acae44d01cbeb91196d23ecf41df947d9f4e419abd'
             '52be0de46b2ed866c6c6b02f7d2ed1e0f13a92e49b8e426b6f87fe308a064b37')
-sha256sums_x86_64=('239a217bc48780b1fd0efc6b7d2de294e7c6dd745d38aab32ebd18fe515eb2a1')
-sha256sums_aarch64=('ca65958ae74fd5c6f1c0a670aee660fbf4e91a4a78166307307a9038b31a5c70')
+sha256sums_x86_64=('dab3a0432fe4dec5d3dd9b257923b8fd1a0344c2ab0a81673282532b1cda438d')
+sha256sums_aarch64=('f6dea38b698593a0cbd2114d860e98aa62d88bd9f4a2ae3c5c67d3148dd16971')
 
 
 case ${CARCH} in
