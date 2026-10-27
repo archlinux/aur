@@ -1,18 +1,21 @@
 pkgbase = flare-player-bin
-	pkgdesc = An "unofficial" emulator based on Ruffle Flash Emulator. Created to provide a friendly interface and enhanced playing experience. It is a complete alternative to Adobe Flash Player. Run Flash Safely Anywhere.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.15.0
+	pkgdesc = An "unofficial" emulator based on Ruffle Flash Emulator. Created to provide a friendly interface and enhanced playing experience. It is a complete alternative to Adobe Flash Player. Run Flash Safely Anywhere.
+	pkgver = 1.16.0
 	pkgrel = 1
-	url = https://github.com/jooy2/flaru
+	url = https://github.com/jooy2/flare
+	arch = arch64
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron35
-	provides = flare-player=1.15.0
+	depends = electron45
+	provides = flare-player=1.16.0
 	conflicts = flare-player
-	source = flare-player-1.15.0.rpm::https://github.com/jooy2/flaru/releases/download/1.15.0/Flare.Player.1.15.0_x86_64.rpm
-	source = LICENSE-1.15.0::https://raw.githubusercontent.com/jooy2/flaru/1.15.0/LICENSE
+	source = LICENSE-1.16.0::https://raw.githubusercontent.com/jooy2/flaru/1.16.0/LICENSE
+	source = flare-player.js
 	source = flare-player.sh
-	sha256sums = 97e88b1e1f048e8d98ea8a3968d575b8f90eb6689ff735a21bedf0d15a368c85
-	sha256sums = 73e127f0f0a4e9035191cd3a5036a3d9e360523c66892449830ee0bf44ea511b
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = ee9532df290a4974ff9bc4de5007fed709e5308531933db2bc3f90e01e72f44b
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
+	source_x86_64 = flare-player-1.16.0-x86_64.deb::https://github.com/jooy2/flare/releases/download/1.16.0/flare-player_1.16.0_amd64.deb
+	sha256sums_x86_64 = 3fa1a942f8fefc2623b5530c4fe4edcb10c3ad482ae960c31d56a198225e22ee
 
 pkgname = flare-player-bin
