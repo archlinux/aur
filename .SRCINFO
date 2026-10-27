@@ -1,0 +1,19 @@
+pkgbase = therapist-git
+	pkgdesc = A blazingly fast terminal log viewer: open multi-GB logs at once.
+	pkgver = 0.1.1.r1.g32d1d06
+	pkgrel = 1
+	url = https://github.com/M-Komorek/therapist
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = thr
+	conflicts = therapist
+	options = !lto
+	options = !debug
+	source = therapist-main::git+https://github.com/M-Komorek/therapist.git#branch=main
+	sha256sums = SKIP
+
+pkgname = therapist-git
