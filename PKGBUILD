@@ -1,6 +1,6 @@
 # Maintainer: Aidan Heeney <aidan.heeney@proton.me>
 pkgname=squelch
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Push-to-talk speech-to-text on GPU: Parakeet/Whisper, mic-array beamforming, Menu-key dictation'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'vulkan-headers' 'spirv-headers')
 optdepends=('aspell-en: learn your vocabulary for Whisper')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "whisper.cpp::git+https://github.com/ggml-org/whisper.cpp.git#commit=0c7be696371069e0baa2515ed7aa08d5a5473aa6")
-sha256sums=('35d081a6b7210dc04572712339f3ca524187078db9f3f52370773fb8c462128b'
+sha256sums=('5fd8dafe12241372bcf86abc93ef7b3022c4fd35ab70cf3224d318a11a9c3147'
             'SKIP')
 options=('!debug')
 
