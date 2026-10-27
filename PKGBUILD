@@ -1,6 +1,6 @@
 # Maintainer: QaidVoid <contact@qaidvoid.dev>
 pkgname=soar-nightly-bin
-pkgver=69b4cb2
+pkgver=2c5b321
 pkgrel=1
 pkgdesc="A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More [Nightly Release]"
 arch=('aarch64' 'x86_64')
