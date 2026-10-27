@@ -1,4 +1,4 @@
-# Maintainer: Christian Pfeiffer <cpfeiffer@live.de>
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # Contributor: Jason Papakostas <vithos@gmail.com>
 # Contributor: Sean Enck <enckse@gmail.com>
 # shellcheck disable=SC2034,SC2154
