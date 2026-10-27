@@ -1,15 +1,18 @@
 # Maintainer: Quark Contributors <https://github.com/0xnullsect0r/Quark>
 pkgname=quark
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Train and run your own Llama 4-style MoE coding LLM on your own hardware"
 arch=('x86_64')
 url="https://github.com/0xnullsect0r/Quark"
 license=('MIT')
-depends=('gtk3' 'openssl' 'hicolor-icon-theme')
+depends=('gtk3' 'openssl' 'hicolor-icon-theme' 'vulkan-icd-loader')
 makedepends=('rust' 'cargo')
+# One binary with every backend; the fastest one that works is picked at
+# runtime (CUDA, then Vulkan, then CPU).
 optdepends=(
-  'cuda: NVIDIA GPU acceleration'
+  'cuda: fastest backend on NVIDIA GPUs (toolkit must not be newer than the driver)'
+  'vulkan-driver: GPU acceleration on AMD, Intel and NVIDIA via Vulkan'
 )
 provides=('quark' 'quark-chat' 'quark-code')
 conflicts=('quark-git' 'quark-bin')
@@ -20,7 +23,7 @@ conflicts=('quark-git' 'quark-bin')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/0xnullsect0r/Quark/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4da6d355742e694cb2e650fff118da6eb6c48b3ad42ff17812aa7d386666df6f')
+sha256sums=('78cb93927675a9d0ecedfaf2c3afd1f4cccffd22d34c640d49a80416cfb4d4b3')
 
 build() {
   cd "Quark-${pkgver}"
@@ -30,7 +33,7 @@ build() {
   export CXXFLAGS="$(echo "${CXXFLAGS:-}" | sed 's/-flto[^ ]*//g; s/  */ /g; s/^ //; s/ $//')"
   export RUSTFLAGS="-C lto=off"
 
-  cargo build --release --workspace --features backend-cpu
+  cargo build --release --workspace --features "backend-cpu backend-wgpu backend-cuda"
 }
 
 package() {
