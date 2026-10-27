@@ -1,8 +1,8 @@
 # Maintainer: Shadowbee <shadowbee.contact@proton.me>
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 pkgname=hister-bin
-pkgver=0.20.0
-pkgrel=3
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 provides=(hister)
@@ -23,8 +23,8 @@ sha256sums=('f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f'
             '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
             '4752aafdb88d88697e39e19791aba5c71670bd17dc52c8ba2d9a430673430ff4')
-sha256sums_x86_64=('28c453cd3fe383dac936f91450c0bd6d3be4944079670aa607f38e01215844fe')
-sha256sums_aarch64=('28c453cd3fe383dac936f91450c0bd6d3be4944079670aa607f38e01215844fe')
+sha256sums_x86_64=('0886c72db57e16f726af8dc5a072e5dacd4c5a4f9295ea131227210d2d2f8515')
+sha256sums_aarch64=('0886c72db57e16f726af8dc5a072e5dacd4c5a4f9295ea131227210d2d2f8515')
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hister_${pkgver}_linux_amd64")
 source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hister_${pkgver}_linux_arm64")
 backup=(etc/hister/{hister.env,config.yml})
