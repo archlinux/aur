@@ -1,0 +1,27 @@
+pkgbase = bde-verify-git
+	pkgdesc = Static analysis tool verifying adherence to BDE C++ coding standards
+	pkgver = 1.5.1.r1208.a03bd7b
+	pkgrel = 1
+	url = https://bloomberg.github.io/bde_verify/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = llvm21
+	makedepends = ninja
+	depends = aspell
+	depends = clang21
+	depends = gcc-libs
+	depends = glibc
+	depends = llvm21-libs
+	depends = perl
+	depends = which
+	optdepends = aspell-en: English dictionary for spell checking
+	provides = bde-verify
+	provides = bde_verify
+	conflicts = bde-verify
+	conflicts = bde_verify
+	source = bde-verify::git+https://github.com/bloomberg/bde_verify.git
+	sha256sums = SKIP
+
+pkgname = bde-verify-git
