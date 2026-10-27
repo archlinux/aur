@@ -2,7 +2,7 @@
 
 _pkgname=spacy-alignments
 pkgname=python-${_pkgname}
-pkgver=0.9.2
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A spaCy package for the Rust tokenizations library"
 arch=(x86_64 aarch64)
@@ -15,10 +15,8 @@ makedepends=(
     python-setuptools
     python-setuptools-rust
 )
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/explosion/${_pkgname}/archive/refs/tags/release-v${pkgver}.zip"
-)
-b2sums=("14c01cb1fd8738ba3ff5886f2258823d121360b1ccc58ec93c091e99d851ed8af341f2c05326d61f3aad12203c9a6dcd4e952011fd89409d101fdec61dbe5344")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/${_pkgname}/archive/refs/tags/release-v${pkgver}.zip")
+b2sums=("0fd8c21ef65746fb11033f7a7a1c3a1af95c0b2b6e57f65309ce8eac3a41982b74e69f0643f7bd359554a9cd8aa0c8415ae9e32edd1a8dd1e89fa0406d414703")
 
 build() {
     cd "${_pkgname}-release-v${pkgver}"
