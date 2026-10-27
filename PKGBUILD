@@ -5,7 +5,7 @@ launcher_rel='launcher-releases/releases/download'
 lore_rel='lore-releases/releases/download'
 tome_rel='tome-releases/releases/download'
 
-launcherVer=1.13.9
+launcherVer=1.14.0
 loreVer=1.14.2
 tomeVer=1.14.2
 
@@ -28,7 +28,7 @@ source=(
   "amsel-suite"
 )
 
-sha256sums=('7e85f48ae9a2c4bfdfab707887a25a6d5be3f1eacbc9bbb034dc1a4511b1753b'
+sha256sums=('a857c1e10ef7ed0ab339663ddc09254c1b0036701cec6ffa93d44a764abfe3c5'
             'd36ba1272fbe1c05e616cc8cb938ed89c7b7166181454a8bf406cfab79a0bd6e'
             '59fb5f1b31f277517c071dd86cb674c86951864e409528e6441e8da5cded1838'
             'de91a5d9f51e1efa094cd32d8ef3b10ef156b053acce40f83042ef8f80262b7d')
