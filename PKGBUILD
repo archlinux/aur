@@ -16,7 +16,7 @@
 #                       downstream packages ship no lib/ dir.
 
 pkgname=zz
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='ZZ programming language toolchain — prebuilt binary (zz run main.zz, plus zz-lsp)'
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ makedepends=('unzip')
 conflicts=('zz-lang')
 source_x86_64=("$pkgname-$pkgver-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-x86_64.zip")
 source_aarch64=("$pkgname-$pkgver-$CARCH.zip::https://github.com/zaidejjo/zz/releases/download/v$pkgver/zz-$pkgver-linux-aarch64.zip")
-sha256sums_x86_64=('8122c985d2a6199a85ce27717e466c1438699819b2e7995774867e38ad4ea7f1')
-sha256sums_aarch64=('e5b3027aad3de760b959b9a2432c9d56e6002a6f7bfec7bf70a765726c447b7d')
+sha256sums_x86_64=('9d40d478d3fc3cd924e176a8c84b4f300b74aded031ef5e31f2ad4d3bc1c235c')
+sha256sums_aarch64=('a7babb2376f591e3d8447ce0fce18d382c132c2c998cf91a76e29f3968f94779')
 
 check() {
   # Prebuilt binaries: smoke-test only (full suite ran in CI pre-release).
