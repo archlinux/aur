@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hydrogen-music
 _pkgname=Hydrogen-Music
-pkgver=0.6.3
+pkgver=0.6.4
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -17,85 +17,97 @@ makedepends=(
     'npm'
     'nvm'
     'git'
-    'curl'
     'yarn'
     'jq'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "ffmpeg.js"
+    "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('61a97966def56f043536fd2875c55ffac0b303576fce7608ee69ed4a768376c3'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums=('1f04a5438d49b62fd8993ff438b3ba37ca30b67f1bfe4b26aeadfaaf7ea63414'
+            '8c844d69197f42e2b039cff458c9491ee63c052772ddb669c96f1dce7add7a8d'
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 _ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
+}
+_get_app_dir() {
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
+}
+_get_electron_version() {
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -oE '[0-9]+' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_OVERRIDE_DIST_PATH="${electronDist}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export BUN_CONFIG_REGISTRY="https://registry.npmmirror.com"
-        export npm_config_registry="https://registry.npmmirror.com"
-        export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
-        export npm_config_nodejs_org_mirror="https://npmmirror.com/mirrors/node"
-        export NVM_NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron"
-        export npm_config_electron_mirror="https://npmmirror.com/mirrors/electron/"
-        export BUN_BINARY_MIRROR_OVERRIDE="https://npmmirror.com/-/binary/"
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
-}
-_get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
-}
-_get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export BUN_INSTALL_CACHE_DIR="${HOME}/.bun/cache"
+	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
+	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
+	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_CONFIG_SKIP_LOAD_LOCKFILE=1
+	export BUN_DISABLE_DOTENV=1
+	export DO_NOT_TRACK=1
+	export BUN_JOBS="$(nproc)"
+	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname//-/}/g
-    " "${srcdir}/${pkgname}.sh"    
+    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Graphics;Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
-    _set_build_env
     _ensure_local_nvm
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    _set_build_env
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+    sed -i "s/^  'History',$/  'History.md',/" electron-builder.config.cjs
+    sed -i "/^  'History\.\*',$/d" electron-builder.config.cjs
+    install -Dm644 "${srcdir}/ffmpeg.js" -t src/electron
     bun install
 }
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	_set_build_env
-    _ensure_local_nvm
+	cd "$(_get_project_dir)"
+	_ensure_local_nvm
+    _set_build_env
     bun run build
     bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.config.cjs
-    local _app_dir=$(_get_app_dir)
-    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
+    rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
-	rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/img/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+    install -Dm644 "$(_get_project_dir)/img/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
