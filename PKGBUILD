@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=voicenux-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="VoiceMod for Linux. Real-time voice changer and soundboard for PipeWire (upstream binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 # licence is not in it and comes from the tag.
 source=("${pkgname}-${pkgver}.tar.zst::https://github.com/voicenux/voicenux/releases/download/v${pkgver}/voicenux-${pkgver}-arch-x86_64.tar.zst"
         "LICENSE.emoji-${pkgver}::https://raw.githubusercontent.com/voicenux/voicenux/v${pkgver}/data/icons/LICENSE")
-sha256sums=('fdd792fd42cbbe1883c1682344f44b8738f23f5c81f238776ff7ad7560baea37' 'a4cf5895899b9910cf9ffaaf35fb8592f2808acf5b4cebe42164eadc5aa26910')
+sha256sums=('b622395c8867e27943ba690f2abea6ab5fdf83e9630701eb0bce1da3295aae2f' 'a4cf5895899b9910cf9ffaaf35fb8592f2808acf5b4cebe42164eadc5aa26910')
 
 package() {
   cp -a "voicenux-${pkgver}-arch-x86_64/usr" "$pkgdir/"
