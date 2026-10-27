@@ -2,14 +2,14 @@
 
 pkgname=xdman-bin
 pkgver=9.0.8
-pkgrel=1
-pkgdesc="Powerfull download accelerator and video downloader (binary release)"
+pkgrel=2
+pkgdesc="Xtreme Download Manager Download accelerator and video downloader"
 arch=('x86_64')
 url="https://github.com/subhra74/xdm"
 license=('GPL-3.0-or-later')
-depends=('libx11' 'libxext' 'libxrender' 'libxtst' 'libxi' 'freetype2' 'fontconfig' 'ttf-font')
+depends=('fontconfig' 'freetype2' 'gtk3' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst')
 provides=("xdman")
-conflicts=("xdman" "xdman-beta-bin")
+conflicts=("xdman")
 source=("$url/releases/download/$pkgver/xdm-app-$pkgver-1.x86_64.rpm")
 sha256sums=('e3d10a14e62ff0fe15d76b85a24cff6c44b547dba3b6ffaa28922ffa6c2270da')
 
