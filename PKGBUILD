@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.18.2
+pkgver=1.18.3
 pkgrel=1
 pkgdesc="A decentralized, onion routed, private messenger"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/session-foundation/session-desktop.git#tag=v${pk
         "git+https://github.com/session-foundation/session-desktop-dynamic-assets.git"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('6e41627bf2083fca98e1f0a7d37333754e2738d735ca65f86e3c30371eefa2ce'
+sha256sums=('48c536dfdbf3caec8c75dfa49afb8cdda4cb31c6086f4dc1646776cf1fc927c5'
             'SKIP'
             'SKIP'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
@@ -61,8 +61,8 @@ package() {
     cd "${pkgname}"
     install -Dm644 release/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r release/linux-unpacked/resources/{app.asar.unpacked,dynamic_assets} "${pkgdir}/usr/lib/${pkgname}"
-    for i in 16 32 48 64 128 256 512 1024; do
-        install -Dm644 "build/icons/icon_${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
+        install -Dm644 "build/icons/icon_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
