@@ -1,7 +1,7 @@
 # Maintainer: Toby Collier <firstname dot lastname at maths.ox.ac.uk>
 
 pkgname=mtgarena
-_shortver=14517.1329972
+_shortver=14589.1332174
 pkgver=0.1.$_shortver
 pkgrel=2
 pkgdesc="Magic: the Gathering Arena (via Wine)"
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-    '7353ca06342f270c151e3aa7b894149baace00326c37fd6a7a6e2c5202136992'
+    '4ce2477e7d54c6595e102b106c00567ce2d352adbca26da36c1197b15269e2e7'
     'f7389c8dd1dba42a1af5f3fed0fe8f0bea591322a363bc981e9365c1df5e08fd'
     'b646e4cbbeefc6d5dab93991d87afa21de3b3e6e54a06b37d92d1a9bfc5528ae'
 )
