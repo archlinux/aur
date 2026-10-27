@@ -2,13 +2,13 @@
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgbase=librefang-git
 pkgname=("librefang-git" "librefang-desktop-git" "librefang-whatsapp-gateway-git")
-pkgver=2026.7.27.r13.g1b9518fd1
+pkgver=2026.10.16.r38.gb14e01642c
 pkgrel=1
 pkgdesc='LibreFang is an open-source Agent Operating System written in Rust. (GIT version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/librefang/librefang'
 license=('MIT' 'Apache-2.0')
-makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'libvips')
+makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'nodejs-addon-api' 'libvips')
 source=(
     "${pkgbase}::git+https://github.com/librefang/librefang.git"
     "librefang.sysusers"
@@ -16,13 +16,15 @@ source=(
     "librefang.service"
     "librefang-desktop.desktop"
     "librefang-whatsapp-gateway.service"
+    "feature-local-inference.md"
 )
 sha256sums=('SKIP'
             '72663b7a008dcf86e799df777f52c56ba700849510d3fd0c8f4a9e839702dd6e'
             'eb06400136cd6f6e0a57f5ee802c273c3ea05b63946c60bd9e135d079d777f10'
             'cf026330b3d4c3c708bd079b15401731e1afef4f3e780c4ad286ad0d961a6d5c'
             'a640db0197d001c5ae9348d57cda8092e2c8170fa27ced98d5546557fadb6d17'
-            '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975')
+            '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975'
+            '98941a4dedfc4081d7dbb8e9ca5f3f4bc26f9e438fc3317d438863e34053e424')
 
 pkgver() {
     cd "${pkgbase}"
@@ -30,20 +32,33 @@ pkgver() {
 }
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
+    # Ensure HOME is writable for any git operations triggered by cargo or npm
+    mkdir -p "${srcdir}/.home"
+    export HOME="${srcdir}/.home"
+
     cd "${pkgbase}"
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    # Build Rust binaries (dashboard assets are embedded at compile time via include_dir!)
+    # Ensure HOME is writable for any git operations triggered by cargo or npm
+    mkdir -p "${srcdir}/.home"
+    export HOME="${srcdir}/.home"
+
+    # Build React dashboard WebUI so it gets embedded in the API binary at compile-time
+    cd "${srcdir}/${pkgbase}/crates/librefang-api/dashboard"
+    pnpm install --frozen-lockfile
+    pnpm run build
+
+    # Build Rust binaries
     cd "${srcdir}/${pkgbase}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     # Remap source paths so binaries don't embed build-specific paths
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/build"
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${CARGO_HOME:-${HOME}/.cargo}=/vendor"
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${RUSTUP_HOME:-${HOME}.rustup}=/rustup"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${RUSTUP_HOME:-${HOME}/.rustup}=/rustup"
     # Remove -flto flags due to sqlite3 GCC compatibility issues with rust-lld
     CFLAGS="${CFLAGS//-flto=auto/}"
     CFLAGS="${CFLAGS//-flto/}"
@@ -67,6 +82,7 @@ build() {
 }
 
 check() {
+    export HOME="${srcdir}/.home"
     cd "${pkgbase}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --release -p librefang-types --lib 2>/dev/null || true
@@ -89,6 +105,7 @@ package_librefang-git() {
     install -Dm755 "target/release/librefang" "${pkgdir}/usr/bin/librefang"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${srcdir}/feature-local-inference.md" "${pkgdir}/usr/share/doc/${pkgname}/feature-local-inference.md"
 
     # systemd service
     install -Dm644 "${srcdir}/librefang.service" "${pkgdir}/usr/lib/systemd/system/librefang.service"
@@ -118,6 +135,8 @@ package_librefang-desktop-git() {
     install -Dm755 "target/release/librefang-desktop" "${pkgdir}/usr/bin/librefang-desktop"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${srcdir}/feature-local-inference.md" \
+        "${pkgdir}/usr/share/doc/${pkgname}/feature-local-inference.md"
 
     # .desktop file
     install -Dm644 "${srcdir}/librefang-desktop.desktop" \
