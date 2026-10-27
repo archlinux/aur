@@ -1,0 +1,35 @@
+_cache_dir=/var/cache/liquidsoap
+
+# Each version writes its standard library cache under a new name
+_clean_cache() {
+  rm -f "${_cache_dir}"/*.liq-cache "${_cache_dir}/ladspa-plugins"
+}
+
+# As the upstream Debian postinst does. The user cache of this run goes to a
+# temporary directory instead of the home of root.
+_build_cache() {
+  local user_cache
+  mkdir -p "${_cache_dir}"
+  user_cache=$(mktemp -d)
+  echo "Generating the liquidsoap standard library cache..."
+  LIQ_CACHE_SYSTEM_DIR="${_cache_dir}" LIQ_CACHE_USER_DIR="${user_cache}" \
+    /usr/bin/liquidsoap --cache-stdlib >/dev/null 2>&1 ||
+    echo "Could not generate the liquidsoap standard library cache"
+  rm -rf "${user_cache}"
+}
+
+post_install() {
+  _build_cache
+}
+
+pre_upgrade() {
+  _clean_cache
+}
+
+post_upgrade() {
+  _build_cache
+}
+
+pre_remove() {
+  _clean_cache
+}
