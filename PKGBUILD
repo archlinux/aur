@@ -4,13 +4,15 @@
 _pkgname=fernflower
 pkgname=$_pkgname-git
 pkgver=261.20362.25.r20.gd426f6e
-pkgrel=1
+pkgrel=2
 pkgdesc='An analytical decompiler for Java'
 arch=('any')
 url='https://github.com/fesh0r/fernflower'
 license=('Apache-2.0')
 depends=('java-runtime>=8' 'bash')
 makedepends=('git' 'apache-ant')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+$url")
 sha256sums=('SKIP')
 
