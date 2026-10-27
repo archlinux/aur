@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=honk-core-bin
-pkgver=0.1.0beta.2
+pkgver=0.1.0beta.3
 pkgrel=1
 pkgdesc='Experimental eBPF transparent proxy engine (prebuilt release binary)'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ backup=('etc/honk/config.dae')
 install="${pkgname}.install"
 options=('!strip' '!debug')
 
-_upver='0.1.0-beta.2'
+_upver='0.1.0-beta.3'
 # Literal names keep .SRCINFO correct when generated on either architecture.
 _dir="honk-core-v${_upver}-${CARCH}-unknown-linux-gnu-full"
 _dir_x86_64="honk-core-v${_upver}-x86_64-unknown-linux-gnu-full"
@@ -31,8 +31,8 @@ sha256sums=('3b72033008f377f8aad72833943458d0becdda1218ed900b5d369c824e20824d'
             '8e6791e762e9398a0ee8f910a637cc6d11e64e1729b20ce027ff77b9932c7830'
             'cba5c54fdc2ad776e8df3ac6094af3b6010554508925172b6e240a645630be13'
             '50d1ddbcc901d4e477f5e67ea2092ba364667dea24588929fbf9b2583035679b')
-sha256sums_x86_64=('c5b02040c9753fff209517504b6eb9fc8a209a7b20c873909a65095175356dc6')
-sha256sums_aarch64=('87fce6d1c91638f2b58a68405bc7daead7084efd84c0c031c2978c543d41b706')
+sha256sums_x86_64=('ea852581d1182b044ba0f81571e596166854947b1a4bfe52913b796c20570787')
+sha256sums_aarch64=('6470b8d665c609b08d009d243ee44c0ad39489bf068e17735644df53394c8ff9')
 
 prepare() {
   {
