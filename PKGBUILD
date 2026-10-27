@@ -2,7 +2,7 @@
 # Maintainer: Niko <aurpkgs@niko.lgbt>
 pkgname=rimgo
 pkgver=1.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="An alternative frontend for Imgur."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://codeberg.org/rimgo/rimgo"
