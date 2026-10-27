@@ -1,0 +1,9 @@
+# Ignore everything by default
+*
+
+# Whitelist what belongs in the AUR repo
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.patch
+!README.md
