@@ -1,0 +1,2 @@
+d /var/lib/webdav 0750 webdav webdav -
+z /etc/webdav/config.yml 0640 root webdav -
