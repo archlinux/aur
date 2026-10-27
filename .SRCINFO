@@ -1,0 +1,16 @@
+pkgbase = oasdiff-bin
+	pkgdesc = Diff and breaking changes for OpenAPI specifications (prebuilt)
+	pkgver = 1.34.1
+	pkgrel = 1
+	url = https://github.com/oasdiff/oasdiff
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = oasdiff=1.34.1
+	conflicts = oasdiff
+	source_x86_64 = https://github.com/oasdiff/oasdiff/releases/download/v1.34.1/oasdiff_1.34.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 75775f65b0adebd26a8e013af51a799342dfdc6262d89efa9e3b7bdf89657d90
+	source_aarch64 = https://github.com/oasdiff/oasdiff/releases/download/v1.34.1/oasdiff_1.34.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = e8f99bbf102a4b7f235104da72d0b9d67702e78622d1d4d37169e698ee90a249
+
+pkgname = oasdiff-bin
