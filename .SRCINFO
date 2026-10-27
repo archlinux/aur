@@ -1,11 +1,13 @@
 pkgbase = python-tesserocr
 	pkgdesc = A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython
-	pkgver = 2.11.0
-	pkgrel = 2
+	pkgver = 2.12.0
+	pkgrel = 1
 	url = https://github.com/sirfz/tesserocr
 	arch = x86_64
 	license = MIT
-	makedepends = cython
+	checkdepends = python-pillow
+	checkdepends = tesseract-data-osd
+	makedepends = cython>=3.1.8
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,11 +15,9 @@ pkgbase = python-tesserocr
 	depends = leptonica
 	depends = python
 	depends = tesseract
-	depends = python-cysignals
+	depends = tesseract-data-eng
 	optdepends = python-pillow: support PIL.Image objects
-	source = tesserocr-2.11.0.tar.gz::https://github.com/sirfz/tesserocr/archive/refs/tags/v2.11.0.tar.gz
-	source = cython-3.2.patch
-	b2sums = 90afc4841a98ea81ef4ab7d8d9803f7e7d2814c92618f9341cd02abba95412f3eff975396f7624c04a2488330232739223df7acd92c953d5ef7ac208a1d0529f
-	b2sums = c4ac810091946baec5b15774d3027d08c1518a16c51cf72e58c5b1943b5bee1fdebfb9afc3b5abd1ebc0c4cd3a525c5b2d9494ae2fca01886cc0f929dc19c276
+	source = tesserocr-2.12.0.tar.gz::https://github.com/sirfz/tesserocr/archive/refs/tags/v2.12.0.tar.gz
+	b2sums = af93a9e26a06726dfe9c427dc7c0c6c1c075cd703b1651f7ba02c3bd95ef68b52f029d827be83c7c3a61280ca323b33ae2280181fbca5f0b6d996e85cc4fdf80
 
 pkgname = python-tesserocr
