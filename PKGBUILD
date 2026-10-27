@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 pkgname=tcos-pkcs11
 pkgver=1.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS#11 driver for TeleSec TCOS smartcards"
 arch=('x86_64')
 url="https://www.telesec.de/de/service/downloads/produkte-und-loesungen"
@@ -26,5 +26,5 @@ package() {
   install -Dm644 "p11tcos-netkey.module" -t "${pkgdir}/usr/share/p11-kit/modules/"
   cd "libpkcs11tcos_Linux_PCSC_${pkgver//./-}_x86x64" || exit
   install -Dm755 ./*.so -t "${pkgdir}/usr/lib/pkcs11/"
-  install -Dm644 "ReleaseNotesLinux ${pkgver//./-}.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "ReleaseNotesLinux ${pkgver//./-}.txt" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
