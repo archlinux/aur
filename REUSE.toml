@@ -4,7 +4,6 @@ version = 1
 path = [
     "PKGBUILD",
     "README.md",
-    "nuget-source.patch",
     "keys/**",
     ".SRCINFO",
     ".nvchecker.toml",
@@ -25,7 +24,7 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
+    "*.patch",
 ]
-SPDX-FileCopyrightText = "Microsoft Corporation"
+SPDX-FileCopyrightText = "PowerShell contributors"
 SPDX-License-Identifier = "MIT"

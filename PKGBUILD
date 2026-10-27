@@ -27,7 +27,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -70,15 +70,23 @@ checkdepends=(
 )
 install=powershell.install
 
-source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver")
-sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502')
-b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c')
+source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
+  "psmodulepath-combined-paths.patch")
+sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
+  'c8bde32576737e61696f3722fc5c61195f82688898c1ea794ba08b40b5e1efdb095dd0d7b57048dd72a9e17c623142c7c46dae80638ca3b69a3e0953cc8c91ab')
+b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
+  '770bf06617ce9a1045f2c05e8458eac3fabd260fc0e8ff74e0ce8c2c2a84612d0633eaca03797029ce8ed2a0aab0e2d8e3744df913d77d3b4b72492448960ad8')
 
 prepare() {
   cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
+
+  # Fix startup crash when PSModulePath is already set and powershell.config.json
+  # contains multiple paths, e.g. when starting pwsh from pwsh
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/20706
+  patch -Np1 -i "$srcdir/psmodulepath-combined-paths.patch"
 
   # We first determine the exact SDK and runtime versions for later usage
   _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
