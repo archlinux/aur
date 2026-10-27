@@ -2,7 +2,7 @@
 
 _name="Jive"
 pkgname=${_name,,}
-pkgver=7.46
+pkgver=8.1
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
 pkgrel=1
 pkgdesc="A standalone JAVA application designed to browse and edit the static TANGO database"
@@ -17,7 +17,7 @@ source=(
   jive.desktop
 )
 sha256sums=(
-  "db48a7ceb80615e41c7cdc93d0b96d12fcbca22504315b3473cb2524dbadb5c6"
+  "b690b6d1a526fdc2a78595a6a383e74bbc45ab27a47a449ebf5b529211fcf252"
   "49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee"
   "1b0d8707be20236241e2d84575227f809c93d239783f14b626c896480927d500"
 )
