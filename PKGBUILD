@@ -1,6 +1,6 @@
-# Maintainer: Christian Pfeiffer <cpfeiffer+aur at rev-crew dot info>
-# shellcheck shell=bash
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # shellcheck disable=SC2034,SC2154
+# shellcheck shell=bash
 
 pkgname=crossplane-gixy
 _projectname=crossplane
