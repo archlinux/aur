@@ -1,5 +1,5 @@
 pkgname=legio-launcher-git
-pkgver=0.2.2.r201.g364aa26
+pkgver=0.2.2.r225.gc70a18e
 pkgrel=1
 epoch=1
 pkgdesc='Legio desktop game launcher (development sources)'
@@ -38,6 +38,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD_PARTY_NOTICES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
   install -Dm644 src/assets/fonts/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/Inter-OFL.txt"
-  install -Dm644 _meta/licenses/glow-icons.txt "$pkgdir/usr/share/licenses/$pkgname/glow-icons.txt"
+  install -Dm644 _meta/licenses/lucide.txt "$pkgdir/usr/share/licenses/$pkgname/lucide.txt"
   install -Dm644 src-tauri/vendor/flexsearch.LICENSE "$pkgdir/usr/share/licenses/$pkgname/flexsearch.LICENSE"
 }
