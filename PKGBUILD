@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gotepad-bin
-pkgver=2.7.11
+pkgver=2.8.1
 pkgrel=1
-pkgdesc="A simple text editor built with Wails.(Prebuilt version)"
+pkgdesc="A simple text editor built with Wails."
 arch=('x86_64')
 url="https://github.com/Sammy-T/gotepad"
 license=('MIT')
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sammy-T/gotepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Sammy-T/gotepad/v${pkgver}/build/appicon.png"
 )
-sha256sums=('0ee36b74b205432cea6b9fbb856b6537e7b6d8adface22b4d9a78bdca9dc3b96'
+sha256sums=('bf364f3f77cc3de045d021cec046ca36e4a39fe7ac442ce29c9a683bf2c544e9'
             'dca196dfc07025990b7613625b114fa8ae063e0fb5de6f29a81e42ffd1b5eaae'
             '6d3beef0cac0b65e2a25e326970302b7efdac1c66f8c4f4bfe469fe49df30763')
 prepare() {
