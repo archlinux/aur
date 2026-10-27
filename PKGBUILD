@@ -1,4 +1,4 @@
-# Maintainer: SZanko, szanko at protonmail dot com
+# Contributor: SZanko, szanko at protonmail dot com
 # Maintainer: Niko <aurpkgs@niko.lgbt>
 pkgname=rimgo
 pkgver=1.4.2
@@ -8,13 +8,13 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://codeberg.org/rimgo/rimgo"
 options=(!lto)
 license=('AGPL3')
-makedepends=('go>=1.17')
+makedepends=('go>=1.17' 'git')
 source=(
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+	"git+${url}#tag=v${pkgver}"
 	"rimgo.service"
 	"rimgo.conf"
 )
-sha256sums=('6834d252e7c9c63e313c29e0a4d411d5c201fbb539186619e1995462bcae658b'
+sha256sums=('8e69d6d0428412fe03ec4ac1fa61786e919408efd363907192b994b509afa96a'
             '2fa11fe14e1536f63f678f3334d33910c38cd67c28a4a6c94fcab9ca908197d6'
             '145cd73c55a7bc133db7e981c1485d614fadb96a49680e0bd1320f25dc28fd93')
 backup=(
