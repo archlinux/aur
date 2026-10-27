@@ -11,14 +11,14 @@ url="https://github.com/keysharp-org/Keysharp/"
 license=('GPL-3.0-or-later')
 groups=()
 depends=(
-    'dotnet-runtime' #.NET/C# SDK
+    'dotnet-runtime>=10.0' #.NET/C# SDK
     'rsync' #needed for install script
     'libx11' 'libxtst' 'libxinerama' 'libxt' 'libxkbcommon-x11' 'libxcb' 'gtk3' 'libnotify' 'at-spi2-core' #keysharp's explicitly listed deps
     'glibc' 'gcc-libs' #extra lib deps picked up by checkpkg, seems obvious but w/e
     )
 optdepends=('keysharp-input-git: Input interface for Linux'
             'keysharp-desktop-git: Desktop interfaces')
-makedepends=('git' 'dotnet-sdk')
+makedepends=('git' 'dotnet-sdk>=10.0')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
