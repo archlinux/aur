@@ -1,0 +1,14 @@
+#!/bin/sh
+# Launcher for the separate SrShadowy BBPort 0.6.7 test package.
+# It keeps its files and game data separate from the Lantern Engine package.
+set -eu
+
+port_dir=/opt/ports/bloodborne-pc-srshadowy
+data_dir="${BB_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bbport-srshadowy}"
+game_dir="${BB_GAME_DIR:-$HOME/Games/BloodBorne/game/CUSA03173}"
+
+mkdir -p "$data_dir"
+export BB_DATA_DIR="$data_dir"
+export BB_GAME_DIR="$game_dir"
+
+exec "$port_dir/start.sh" "$@"

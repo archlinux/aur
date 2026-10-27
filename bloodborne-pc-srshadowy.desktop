@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Bloodborne (SrShadowy)
+GenericName=BBPort
+Comment=Bloodborne (CUSA03173) via SrShadowy BBPort 0.6.7; requires your own game dump
+Exec=bloodborne-pc-srshadowy
+Icon=bloodborne-pc-srshadowy
+Terminal=false
+Categories=Game;
+Keywords=bloodborne;bbport;srshadowy;ps4;fromsoftware;
+StartupNotify=true
