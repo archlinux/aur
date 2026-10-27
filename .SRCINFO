@@ -1,6 +1,6 @@
 pkgbase = mustang
 	pkgdesc = New full-featured desktop email, chat and video conference client.
-	pkgver = 0.9.40
+	pkgver = 0.9.41
 	pkgrel = 1
 	url = https://parula.app/
 	arch = any
@@ -12,9 +12,11 @@ pkgbase = mustang
 	makedepends = yarn
 	makedepends = jq
 	depends = electron41
-	source = mustang-0.9.40.tar.gz::https://github.com/mustang-im/mustang/archive/refs/tags/v0.9.40.tar.gz
+	source = mustang-0.9.41.tar.gz::https://github.com/mustang-im/mustang/archive/refs/tags/v0.9.41.tar.gz
+	source = mustang.js
 	source = mustang.sh
-	sha256sums = cedb1215613e43a0f65be959de62729e390d09437b70e309edbb5874d7b7be57
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 2c926655eadb9583e8e4a2e3ccbf3c794fcdfe099ea420248b050d92e62e04a0
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
 
 pkgname = mustang
