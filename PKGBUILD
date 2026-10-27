@@ -91,6 +91,7 @@ package_python-pyvideokit-gui() {
 
     cd "$srcdir/PyVideoKit-GUI"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-pyvideokit-gui/LICENSE"
 
     # .desktop file
     install -Dm644 /dev/stdin \
