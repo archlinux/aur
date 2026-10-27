@@ -4,7 +4,7 @@
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 # Contributor: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# shellcheck disable=SC2034,SC2154,SC2164
+# shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
 #######################################################################
@@ -75,7 +75,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c')
 
 prepare() {
-  cd PowerShell
+  cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
 
   # We first determine the exact SDK and runtime versions for later usage
@@ -167,13 +167,13 @@ _copymodules() {
 }
 
 build() {
-  cd PowerShell
+  cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
 
   ## Start-ResGen()
   # ResGen runs much faster if built with optimisations
-  cd "$srcdir"/PowerShell/src/ResGen
+  cd "$srcdir"/PowerShell/src/ResGen || exit
   dotnet run \
     -c Release \
     -f "net$_dotnetsdkver" \
@@ -181,7 +181,7 @@ build() {
 
   ## Start-TypeGen()
   local _inc_file="$PWD/src/TypeCatalogGen/powershell_linux-x64.inc"
-  cd "$srcdir"/PowerShell/src/Microsoft.PowerShell.SDK
+  cd "$srcdir"/PowerShell/src/Microsoft.PowerShell.SDK || exit
   dotnet build \
     -c Release \
     -f "net$_dotnetsdkver" \
@@ -191,7 +191,7 @@ build() {
     -p:DesignTimeBuild=true \
     -p:_DependencyFile="$_inc_file"
 
-  cd "$srcdir"/PowerShell/src/TypeCatalogGen
+  cd "$srcdir"/PowerShell/src/TypeCatalogGen || exit
   dotnet run \
     -c Release \
     -f "net$_dotnetsdkver" \
@@ -214,7 +214,7 @@ build() {
     "-p:RunAnalyzersDuringBuild=false"
   )
 
-  cd "$srcdir"/PowerShell/src/powershell-unix
+  cd "$srcdir"/PowerShell/src/powershell-unix || exit
   dotnet publish "${_build_arguments[@]}" \
     --output "$_publish_path"
 
@@ -232,7 +232,7 @@ build() {
   # is outdated and especially missing all body content of the man page.
   # See https://github.com/PowerShell/PowerShell/issues/21086
   # The tags in the markdown don't have their < > escaped either, which causes breakage.
-  cd "$srcdir"/PowerShell/assets/manpage
+  cd "$srcdir"/PowerShell/assets/manpage || exit
   sed -i -e 's/>/\\>/g' -e 's/</\\</g' pwsh.1.ronn
   ronn -r "pwsh.1.ronn"
 
@@ -248,7 +248,7 @@ build() {
   # to the regular XDG-compliant /usr/local/share/powershell/Modules.
   # Arch Packages are not allowed to use /usr/local, so this adds a convenient location
   # to which PowerShell modules could be packaged and installed to.
-  cd "$_publish_path"
+  cd "$_publish_path" || exit
   # shellcheck disable=SC2016
   ./pwsh -noprofile -command '
     foreach($mod in (Get-ChildItem ./Modules)) {
@@ -268,11 +268,11 @@ build() {
 }
 
 check() {
-  cd PowerShell
+  cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
 
-  cd test/powershell
+  cd test/powershell || exit
   # In Pester 4.x, deleting tests is unfortunately the only fine grained option
   # to disable tests.
 
@@ -344,7 +344,7 @@ check() {
   # We disable telemetry by default, which the telemetry tests don't expect.
   rm engine/Basic/Telemetry.Tests.ps1
 
-  cd ../..
+  cd ../.. || exit
 
   ## Restore-PSPester()
   dotnet publish \
@@ -425,7 +425,7 @@ check() {
 }
 
 package() {
-  cd PowerShell
+  cd PowerShell || exit
 
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   local _pkgnum=${pkgver:0:1}
