@@ -1,0 +1,15 @@
+pkgbase = oasdiff
+	pkgdesc = Diff and breaking changes for OpenAPI specifications
+	pkgver = 1.34.1
+	pkgrel = 1
+	url = https://github.com/oasdiff/oasdiff
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = git
+	makedepends = go
+	depends = glibc
+	source = oasdiff-1.34.1.tar.gz::https://github.com/oasdiff/oasdiff/archive/refs/tags/v1.34.1.tar.gz
+	sha256sums = ebcf119ebc942694f4c3a9c0dfc9c6c6d401d803efb525a77aa973104e7b68d9
+
+pkgname = oasdiff
