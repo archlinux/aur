@@ -1,5 +1,5 @@
 # Maintainer: deridray <deriday@gmail.com>
-pkgname=riff-bin
+pkgname=riff-player-bin
 pkgver=43.0.0
 pkgrel=1
 pkgdesc="A free, open-source desktop music player for YouTube Music, SoundCloud, and local files."
@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/rootscripts/riff"
 license=('MIT') 
 provides=('riff')
-conflicts=('riff')
+conflicts=('riff' 'riff-bin')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
 
