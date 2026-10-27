@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-terminal
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Live terminal-art wallpapers for Niri"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('sysc-shell: select effects from the desktop')
 makedepends=('go>=1.26.4')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-terminal/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1de705ccc45ca9bf7efe434fd4b7ae14fb1b4a35b0e195ce1421dfcc5e55e960')
+sha256sums=('5db50bc5c14c782eba6db4a882a88c4c185788c6c1938824652934f69a3b4ced')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
