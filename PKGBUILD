@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-tray
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="StatusNotifierItem and DBusMenu tray daemon for sysc-shell"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('sysc-shell: tray presentation')
 makedepends=('go>=1.26.4')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-tray/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bc1840625011344f26b7c16058813a8d3fe33aea38010fb2813ce30a6d2e69c0')
+sha256sums=('76acbb04d3a2048ab767a6defd070e9389baa9b5a6355b7f03ed72be4b1792be')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
