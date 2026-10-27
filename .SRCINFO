@@ -1,6 +1,6 @@
 pkgbase = pdg
 	pkgdesc = Zero-install, pure-CPU text-to-speech engine with an embedded model
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/akhenakh/pdg
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = pdg
 	optdepends = libpulse: paplay playback
 	optdepends = alsa-utils: aplay playback
 	optdepends = ffmpeg: ffplay playback
-	source = pdg-0.2.3.tar.gz::https://github.com/akhenakh/pdg/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = b3356d5407513fddc2903d50a7f083e5b63119eec7be8fb9b6929b7cf55d1416
-
+	source = pdg-0.2.4.tar.gz::https://github.com/akhenakh/pdg/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 1f07cb56c89fc8cc77b5212de8eb45e6d5b3b0ca8e178b03f68c9673d83eb956
 
 pkgname = pdg
