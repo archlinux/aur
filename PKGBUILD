@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 _nodeversion=24
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ makedepends=(
   'git'
   'go'
   'nvm'
-  'wails'
+  # 'wails'  ## Not compatible with >=3.0.0
 )
 optdepends=('libayatana-appindicator: tray icon')
 source=("git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v$pkgver"
@@ -46,6 +46,10 @@ prepare() {
   cd zen-desktop
   export npm_config_cache="$srcdir/npm_cache"
   npm install --prefix frontend
+
+  export GOPATH="$srcdir/gopath"
+  go mod download -modcacherw
+  go install "github.com/wailsapp/wails/v2/cmd/wails@$(go list -m -f 'v2.14.0' github.com/wailsapp/wails/v2)"
 }
 
 build() {
@@ -58,6 +62,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath"
+  export PATH="${PATH}:$srcdir/gopath/bin"
   _ensure_local_nvm
   wails build \
     -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" \

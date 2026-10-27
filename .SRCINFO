@@ -1,7 +1,7 @@
 pkgbase = zen-adblocker
 	pkgdesc = Simple, free and efficient ad-blocker and privacy guard
 	pkgver = 0.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://irbis.sh/zen
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = zen-adblocker
 	makedepends = git
 	makedepends = go
 	makedepends = nvm
-	makedepends = wails
 	depends = ca-certificates-utils
 	depends = coreutils
 	depends = gtk3
