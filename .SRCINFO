@@ -1,7 +1,7 @@
 pkgbase = python-urllib3-future-git
-	pkgdesc = Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest git commit)
-	pkgver = 2.12.915.r0.g60af644f
-	pkgrel = 2
+	pkgdesc = Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (development version)
+	pkgver = 2.25.904.r0.gd834510f
+	pkgrel = 1
 	url = https://github.com/jawah/urllib3.future
 	arch = any
 	license = MIT
@@ -20,10 +20,13 @@ pkgbase = python-urllib3-future-git
 	depends = python-python-socks
 	depends = python-qh3
 	depends = python-typing_extensions
+	depends = python-urllib3
 	depends = python-wsproto
+	depends = python-websockets
 	depends = python-zstandard
 	provides = python-urllib3-future
 	conflicts = python-urllib3-future
+	options = !strip
 	source = git+https://github.com/jawah/urllib3.future.git
 	sha256sums = SKIP
 

@@ -1,17 +1,18 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-urllib3-future-git'
+pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (development version)'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=2.12.915.r0.g60af644f
-pkgrel=2
-pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest git commit)'
-arch=('any')
+pkgver=2.25.904.r0.gd834510f
+pkgrel=1
 url='https://github.com/jawah/urllib3.future'
-license=('MIT')  # SPDX-License-Identifier: MIT
+arch=('any')
+license=('MIT')
 makedepends=(
   'git'
   'python-build'
@@ -30,19 +31,22 @@ depends=(
   'python-python-socks'
   'python-qh3'
   'python-typing_extensions'
+  'python-urllib3'
   'python-wsproto'
+  'python-websockets'
   'python-zstandard'
 )
-source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
+options=('!strip')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_srcdir"
 
   git describe --tags --long \
-  |  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -57,8 +61,12 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  install -vDm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -sr "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
