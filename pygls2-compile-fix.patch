@@ -1,6 +1,6 @@
 diff --color -ura nginx-language-server/nginx_language_server/pygls_utils.py nginx-language-server-fixed/nginx_language_server/pygls_utils.py
---- nginx-language-server/nginx_language_server/pygls_utils.py	2026-06-24 18:12:45.932874395 +0200
-+++ nginx-language-server-fixed/nginx_language_server/pygls_utils.py	2026-06-24 18:44:44.047375052 +0200
+--- nginx-language-server/nginx_language_server/pygls_utils.py	2026-10-27 20:00:30.049588638 +0100
++++ nginx-language-server-fixed/nginx_language_server/pygls_utils.py	2026-10-27 20:00:30.031968714 +0100
 @@ -6,7 +6,7 @@
  from typing import Optional
  
@@ -11,8 +11,8 @@ diff --color -ura nginx-language-server/nginx_language_server/pygls_utils.py ngi
  
  def char_before_cursor(
 diff --color -ura nginx-language-server/nginx_language_server/server.py nginx-language-server-fixed/nginx_language_server/server.py
---- nginx-language-server/nginx_language_server/server.py	2026-06-24 18:12:45.932874395 +0200
-+++ nginx-language-server-fixed/nginx_language_server/server.py	2026-06-24 18:44:44.047375052 +0200
+--- nginx-language-server/nginx_language_server/server.py	2026-10-27 20:00:30.049588638 +0100
++++ nginx-language-server-fixed/nginx_language_server/server.py	2026-10-27 20:00:30.051176605 +0100
 @@ -22,7 +22,7 @@
      MarkupKind,
      TextDocumentPositionParams,
@@ -22,3 +22,21 @@ diff --color -ura nginx-language-server/nginx_language_server/server.py nginx-la
  
  from nginx_language_server import __version__, pygls_utils
  from nginx_language_server.parser import DIRECTIVES, VARIABLES, nginxconf
+@@ -47,7 +47,7 @@
+     server: LanguageServer, params: CompletionParams
+ ) -> Optional[CompletionList]:
+     """Returns completion items."""
+-    document = server.workspace.get_document(params.text_document.uri)
++    document = server.workspace.get_text_document(params.text_document.uri)
+     parsed = nginxconf.convert(document.source)
+     line = nginxconf.find(parsed, params.position.line)
+     if not line:
+@@ -88,7 +88,7 @@
+     server: LanguageServer, params: TextDocumentPositionParams
+ ) -> Optional[Hover]:
+     """Support Hover."""
+-    document = server.workspace.get_document(params.text_document.uri)
++    document = server.workspace.get_text_document(params.text_document.uri)
+     parsed = nginxconf.convert(document.source)
+     word = document.word_at_position(params.position)
+     line = nginxconf.find(parsed, params.position.line)
