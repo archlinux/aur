@@ -1,0 +1,27 @@
+pkgbase = omnidict-git
+	pkgdesc = Offline dictionary for any language
+	pkgver = 1.1.0.r2.ga0824b4
+	pkgrel = 1
+	url = https://github.com/keshavbhatt/omnidict
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-svg
+	depends = sqlite
+	depends = zstd
+	optdepends = qt6-wayland: native Wayland windows
+	optdepends = xdg-desktop-portal: the quick lookup shortcut on Wayland
+	provides = omnidict
+	conflicts = omnidict
+	source = omnidict::git+https://github.com/keshavbhatt/omnidict.git
+	sha256sums = SKIP
+
+pkgname = omnidict-git
