@@ -1,0 +1,24 @@
+pkgbase = brochure-bin
+	pkgdesc = A terminal RSS reader built Ratatui.
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/Sylviromi/brochure
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = brochure
+	conflicts = brochure
+	options = !strip
+	source = README-0.13.0.md::https://raw.githubusercontent.com/Sylviromi/brochure/v0.13.0/README.md
+	source = LICENSE-0.13.0::https://raw.githubusercontent.com/Sylviromi/brochure/v0.13.0/LICENSE
+	sha256sums = e67b6eea785a0e3daf5c85c2ecba92fcdb9d50d62342c60ca5508ee58ba4441b
+	sha256sums = 4320c24a046044a23f671a465cae91ab841a78c129d4299269614ac7df7d160d
+	source_x86_64 = brochure-x86_64-0.13.0.tgz::https://github.com/Sylviromi/brochure/releases/download/v0.13.0/brochure-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2d55ef96ac4601dfbf2c1f02d3ea65032b9163759cc0c95af3ba1de290e773e5
+	source_aarch64 = brochure-aarch64-0.13.0.tgz::https://github.com/Sylviromi/brochure/releases/download/v0.13.0/brochure-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 22e3bd6b5f9f9f519125913afad7f98259bd7625986eb014883e58ead800aa82
+
+pkgname = brochure-bin
