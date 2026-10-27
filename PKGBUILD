@@ -3,14 +3,16 @@
 pkgbase=alimama-shuheiti
 pkgname=({ttf,otf,woff,woff2}-$pkgbase)
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="阿里妈妈数黑体 AlimamaShuHeiTi"
 url="https://www.alibabafonts.com/#/more"
 makedepends=(libarchive)
 license=("LicenseRef-Custom")
 arch=(any)
+# fonts.alibabadesign.com has enabled Referer anti-hotlinking; a Referer from the same domain is required to download files.
+DLAGENTS=('https::/usr/bin/curl -fLC - --referer https://fonts.alibabadesign.com/ -o %o %u')
 source=("$pkgbase-$pkgver.zip::https://fonts.alibabadesign.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold.zip")
-sha256sums=('06f162d6802ab6e41b4f0e79abe90e084691ad480d5247d793f60167da4b9180')
+sha256sums=('fbb4b7f1ca5f3b60432a56c329da98e596388586413dcccddd97717a3b43cce4')
 
 package_ttf-alimama-shuheiti() {
     pkgdesc+="(ttf)"
