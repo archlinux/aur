@@ -78,8 +78,7 @@ package_python-pyvideokit-cli() {
 
     cd "$srcdir/PyVideoKit-CLI"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    # Uncomment once LICENSE is added to PyVideoKit-CLI repo:
-    # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-pyvideokit-cli/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-pyvideokit-cli/LICENSE"
 }
 
 package_python-pyvideokit-gui() {
