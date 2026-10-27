@@ -1,16 +1,16 @@
 # Maintainer: Alireza S.N <alireza6677@gmail.com>
 pkgname=filegdb-api
 _pkgname=FileGDB_API
-pkgver=1.5.4
-pkgrel=2
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
 arch=('x86_64')
 url="https://github.com/Esri/file-geodatabase-api"
 license=('Apache-2.0')
 makedepends=('libxml2' 'gcc')
 changelog=$pkgname.changelog
-source=($pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/${_pkgname}_${pkgver}/${_pkgname}-RHEL8-64gcc83.tar.gz)
-b2sums=('19e284a710b0ac7b483ddf7cb940d8aef7b5f525f43105796d239868a505cff1704ac26d641e644ccb76e59f0335d504f421b6476de7d0eb101671f05c14e819')
+source=($pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/${_pkgname}_${pkgver}/${_pkgname}-RHEL8-64gcc8.tar.gz)
+b2sums=('54830321bcf151e08eb83a4f5b9f8d361d9c322e06c156802efea676f68ef1ba38d31247567482bab7470f80d322bb15cc354342e5c98e0e2e35957b9824b787')
 
 prepare() {
     cd $srcdir
