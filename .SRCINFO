@@ -1,0 +1,21 @@
+pkgbase = lootrs-git
+	pkgdesc = Minimal TUI and CLI for running Windows games through wine, Proton (umu) or natively
+	pkgver = r17.g43869c2
+	pkgrel = 1
+	url = https://github.com/Gigas002/lootrs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = wine: wine runner
+	optdepends = umu-launcher: Proton runner
+	optdepends = winetricks: lootrs tricks for the wine runner
+	provides = lootrs
+	conflicts = lootrs
+	source = lootrs::git+https://github.com/Gigas002/lootrs.git
+	sha256sums = SKIP
+
+pkgname = lootrs-git
