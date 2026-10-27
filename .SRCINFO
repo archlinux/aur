@@ -14,7 +14,7 @@ pkgbase = libresplit-bin
 	conflicts = libresplit
 	options = !debug
 	options = !strip
-	source = libresplit-bin-0.3.0.zip::https://github.com/LibreSplit/LibreSplit/releases/download/v0.3.0/LibreSplit-0.3.0-standalone-x86_64.zip
+	source = libresplit-0.3.0.zip::https://github.com/LibreSplit/LibreSplit/releases/download/v0.3.0/LibreSplit-0.3.0-standalone-x86_64.zip
 	sha256sums = 01458e735800f3ab40ff75797d25f7edb8b2d464719789b977c4ac670d55f574
 
 pkgname = libresplit-bin

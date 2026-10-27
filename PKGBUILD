@@ -20,9 +20,10 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 options=('!debug' '!strip')
-source=("$pkgname-$pkgver.zip::https://github.com/LibreSplit/LibreSplit/releases/download/v$pkgver/LibreSplit-$pkgver-standalone-x86_64.zip")
+source=("$_pkgname-$pkgver.zip::https://github.com/LibreSplit/LibreSplit/releases/download/v$pkgver/LibreSplit-$pkgver-standalone-x86_64.zip")
 sha256sums=('01458e735800f3ab40ff75797d25f7edb8b2d464719789b977c4ac670d55f574')
 
 package() {
     cp -a usr "$pkgdir/"
+    mv "$pkgdir/usr/share/licenses/$_pkgname" "$pkgdir/usr/share/licenses/$pkgname"
 }
