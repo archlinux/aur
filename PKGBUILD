@@ -3,7 +3,7 @@
 pkgname=intel-gna-dkms-git
 _modname=intel-gna
 _subdir=gna
-pkgver=r2.de3c9e0
+pkgver=r3.d26c52b
 pkgrel=1
 pkgdesc="Intel GNA (Gaussian & Neural Accelerator) accel driver, DKMS (out-of-tree port of the v5 dri-devel series)"
 arch=('any')
