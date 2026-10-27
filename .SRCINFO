@@ -1,7 +1,7 @@
 pkgbase = python-wassima-git
-	pkgdesc = Say goodbye to certifi. Embrace your system root CAs — retrieve them with ease and comfort (latest commit)
-	pkgver = 2.0.0.r0.ge45e965
-	pkgrel = 2
+	pkgdesc = Say goodbye to certifi. Embrace your system root CAs — retrieve them with ease and comfort (development version)
+	pkgver = 2.1.5.r0.g4052aa7
+	pkgrel = 1
 	url = https://github.com/jawah/wassima
 	arch = any
 	license = MIT
@@ -10,9 +10,11 @@ pkgbase = python-wassima-git
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.7
+	depends = python
+	depends = python-typing_extensions
 	provides = python-wassima
 	conflicts = python-wassima
+	options = !strip
 	source = git+https://github.com/jawah/wassima.git
 	sha256sums = SKIP
 
