@@ -1,0 +1,22 @@
+pkgbase = xdman-bin
+	pkgdesc = Powerfull download accelerator and video downloader (binary release)
+	pkgver = 9.0.8
+	pkgrel = 1
+	url = https://github.com/subhra74/xdm
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxtst
+	depends = libxi
+	depends = freetype2
+	depends = fontconfig
+	depends = ttf-font
+	provides = xdman
+	conflicts = xdman
+	conflicts = xdman-beta-bin
+	source = https://github.com/subhra74/xdm/releases/download/9.0.8/xdm-app-9.0.8-1.x86_64.rpm
+	sha256sums = e3d10a14e62ff0fe15d76b85a24cff6c44b547dba3b6ffaa28922ffa6c2270da
+
+pkgname = xdman-bin
