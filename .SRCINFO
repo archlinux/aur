@@ -1,0 +1,17 @@
+pkgbase = kinjo-bin
+	pkgdesc = TUI browser and command launcher for local services
+	pkgver = 0.3.13
+	pkgrel = 1
+	url = https://github.com/abbyssoul/kinjo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kinjo
+	conflicts = kinjo
+	options = !strip
+	source_x86_64 = kinjo-x86_64-0.3.13.tgz::https://github.com/abbyssoul/kinjo/releases/download/v0.3.13/kinjo-0.3.13-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = d8e6ebb2ae079c9ab11219c17f1e07d43e6c4a985a9794a92bf6fbec8a6e8a25
+	source_aarch64 = kinjo-aarch64-0.3.13.tgz::https://github.com/abbyssoul/kinjo/releases/download/v0.3.13/kinjo-0.3.13-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 73c9b987acd9e03e1653480999d94c5540a4efe5f11f7edf7c35e3840c5a6f7c
+
+pkgname = kinjo-bin

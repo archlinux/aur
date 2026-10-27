@@ -1,0 +1,5 @@
+[kinjo-bin]
+source = "github"
+github = "abbyssoul/kinjo"
+use_latest_release = true
+prefix = "v"
