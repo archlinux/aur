@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.155
-pkgrel=2
+pkgrel=3
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -78,6 +78,16 @@ prepare() {
     chmod +x "${srcdir}/Root-${pkgver}-x86_64.AppImage"
     "${srcdir}/Root-${pkgver}-x86_64.AppImage" --appimage-extract
     chmod go-w squashfs-root
+
+    # The distfile URL is versionless, so upstream can swap the payload under
+    # the pinned pkgver; X-AppImage-Version inside the AppImage is the only
+    # authoritative version (2026-10-27, same field aur.yml reads). Fail the
+    # build instead of shipping a package labelled with the wrong version.
+    shipped=$(sed -n 's/^X-AppImage-Version=//p' "${srcdir}"/squashfs-root/*.desktop | head -n 1)
+    if [ "$shipped" != "$pkgver" ]; then
+        error "payload is version ${shipped:-unknown}, pkgver is ${pkgver}"
+        return 1
+    fi
 }
 
 package() {
