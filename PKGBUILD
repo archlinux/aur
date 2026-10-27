@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=memoh-bin
-pkgver=2026.10.26.1
+pkgver=2026.10.27.1
 pkgrel=1
 pkgdesc="Give your agent a cloud computer - cloud-first multi-agent platform where every agent has its own desktop, files and network, running 24/7"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('custom')
 depends=('alsa-lib' 'avahi' 'dbus' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator: system tray support')
 makedepends=('libarchive')
-_debver="2026.10.26-1"
+_debver="2026.10.27-1"
 source=("Memoh-${_debver}-linux-amd64.deb::https://desktopresource.memoh.ai/Memoh-${_debver}-linux-amd64.deb")
-sha256sums=('354027e6b2e89c08b2c1542fbda5ae68a393a387d63cf6a23c2805adfb60981b')
+sha256sums=('b9f1aeb2bc2b50ca8e82b954853d8835384793ce7f6a952d9918a4f6810a6691')
 
 package() {
     # Dynamically select the data archive member in case the deb compression changes
