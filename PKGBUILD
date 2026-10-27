@@ -3,7 +3,7 @@
 
 _pkgname="cloudlist"
 pkgname="${_pkgname}-bin"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tool for listing Assets from multiple Cloud Providers"
 arch=(
@@ -35,14 +35,14 @@ source_i686=(
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip"
 )
-sha256sums_aarch64=('53ee72ddfdfbb5dfe76742ae1db03aec92f6545f32ebe743b8e0154851c412fe')
-sha256sums_armv7h=('d1d85a514bfd229d97636f03442ffa36dea839815e5e863ef3d4368b92b14867')
-sha256sums_i686=('537f6460a738ba327b5b2745540bb7133e9554012b1f358d7c7ba6c49b236222')
-sha256sums_x86_64=('9df38cfc134da15b56827e9a437f36038928a47c74aec85dfb99d46594cbbf94')
+sha256sums_aarch64=('52b0b776023dae4079d1ae2633a724f2949f35f39137800a00c5bc9d45430870')
+sha256sums_armv7h=('ea58256bfc99d90fdc45afb36c9af62fc85548a200401da1fb38c4edeadd5c7c')
+sha256sums_i686=('7872eb3d2004905a57531abaf777dbbd49694d9f1f86cf9a95c2dc65bb47d603')
+sha256sums_x86_64=('5bd58f5c3df8f730ea57219627e4970378dde2ca067185278812a4c75b958578')
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE.md"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+  install -vDm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "README.md"   -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -vDm644 "LICENSE.md"  -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
