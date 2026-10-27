@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=Firestorm Viewer ([EXTENSION])
 Comment=Client for accessing 3D virtual worlds
-Exec=firestorm-[EXTENSION]
+Exec=firestorm-[EXTENSION] %u
 Icon=firestorm-[EXTENSION]
 Terminal=false
 Type=Application
-Categories=Application;Internet;Network;Game
+Categories=Network;Game;
+MimeType=x-scheme-handler/secondlife;x-scheme-handler/hop;
 StartupNotify=true
 StartupWMClass=do-not-directly-run-firestorm-[EXTENSION]

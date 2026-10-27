@@ -15,4 +15,11 @@ post_upgrade() {
     echo "==> (you can also manually rename or copy the folder)"
     echo "==> If everything works and you're not using the binary version of Firestorm, you can remove the old configuration folder"
   fi
+
+  if [ "$(vercmp $2 7.2.5.81788-1)" -lt 0 ]; then
+    echo "==> NOTE: Dependencies have changed. Voice on OpenSim grids (Vivox) now needs"
+    echo "==> optional 32-bit packages; Second Life voice is not affected. Install them with:"
+    echo "==>   lib32-glibc lib32-gcc-libs lib32-util-linux lib32-zlib lib32-libidn11 (AUR)"
+    echo "==> Full packaging changes: pacman -Qc firestorm"
+  fi
 }

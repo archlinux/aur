@@ -1,0 +1,33 @@
+Packaging changes for the firestorm AUR package, newest first.
+Firestorm's own release notes: https://www.firestormviewer.org/category/news/
+
+2026-10-27  7.2.5.81788-1
+  * Update to Firestorm 7.2.5.81788.
+  * secondlife:// and hop:// links now open in Firestorm (the desktop entry
+    registers itself as the handler for both).
+  * Local patch, not in upstream Firestorm: opening a secondlife:// link while
+    Firestorm is not running now starts the viewer. Before, it quit
+    immediately.
+  * Arguments containing spaces are now passed to Firestorm correctly.
+  * Dependencies rebuilt from what the packaged binaries actually use:
+    - Removed unused or bundled: apr-util, dbus-glib, gtk2, lib32-libidn,
+      lib32-libsndfile, libbsd, libidn, libjpeg-turbo, libpng, libxss,
+      libxml2, openal, sdl, vlc, zlib.
+    - Added missing: alsa-lib, at-spi2-core, cairo, dbus, expat, fontconfig,
+      glib2, libcups, libx11, libxcb, libxcomposite, libxdamage, libxext,
+      libxfixes, libxkbcommon, libxrandr, nspr, pango, systemd-libs,
+      util-linux-libs.
+    - The 32-bit voice client (Vivox) is only used for voice on OpenSim grids,
+      so its libraries are now optional. For OpenSim voice, install:
+        lib32-glibc lib32-gcc-libs lib32-util-linux lib32-zlib
+        lib32-libidn11 (AUR)
+      Second Life voice is not affected.
+    - New optional dependencies: gst-plugins-good (in-world media; without
+      it media faces stay blank), PulseAudio, PipeWire or JACK audio,
+      libnotify, gtk3 (file picker), xdg-utils. See "pacman -Qi firestorm".
+  * Added hicolor-icon-theme (owns the icon directory the package installs to).
+  * License corrected to LGPL-2.1-only (SPDX), matching the viewer source.
+  * Build dependencies: removed boost (the build uses its own copy), added
+    libxinerama and libpulse (required by the build configuration).
+  * After upgrading, "pacman -Qdt" may list packages that were only installed
+    for this package and are no longer needed.
