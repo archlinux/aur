@@ -4,13 +4,14 @@ pkgname=efisc2026-bin
 _pkgname=efisc2026
 pkgver=1.0.0.76
 _debver=1.0.0-76
-pkgrel=1
+pkgrel=2
 pkgdesc="Steuererklärungssoftware des Kantons Thurgau für das Steuerjahr 2025 (eFisc2026)"
 arch=('x86_64')
-url="https://efisc.tg.ch/"
+url="https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2026.html/18120"
 license=('LicenseRef-proprietary')
-depends=('alsa-lib' 'fontconfig' 'freetype2' 'glibc' 'gtk3' 'hicolor-icon-theme'
-         'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
+depends=('fontconfig' 'glibc' 'gtk3' 'hicolor-icon-theme'
+         'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst')
+optdepends=('libcups: printing')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
