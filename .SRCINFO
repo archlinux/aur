@@ -1,8 +1,8 @@
 pkgbase = posprint-bin
 	pkgdesc = Designer for POS-print documents with live preview and USB ESC/POS printing (prebuilt binary)
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
-	url = https://gitlab.com/Timfa/posprint
+	url = https://git.timfalken.com/timfa/posprint
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
@@ -15,11 +15,11 @@ pkgbase = posprint-bin
 	depends = fontconfig
 	depends = freetype2
 	depends = libglvnd
-	provides = posprint=0.5.8
+	provides = posprint=0.5.9
 	conflicts = posprint
 	options = !strip
 	options = !debug
-	source = posprint-0.5.8-x86_64.tar.gz::https://gitlab.com/api/v4/projects/Timfa%2Fposprint/packages/generic/posprint/0.5.8/posprint-0.5.8-x86_64.tar.gz
-	sha256sums = 2146c5385af1fbcaad242e896566743c312843842d457f6ad8c0add96644bff5
+	source = posprint-0.5.9-x86_64.tar.gz::https://git.timfalken.com/timfa/posprint/-/releases/0.5.9/assets/posprint-0.5.9-x86_64.tar.gz
+	sha256sums = 112ccb90e72d378b637041341195c872a086f8bf4df789c843ed9e681174fe4f
 
 pkgname = posprint-bin
