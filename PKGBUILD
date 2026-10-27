@@ -1,7 +1,7 @@
 # Maintainer: facelock contributors
 pkgname=facelock
-_tag=0.2.1
-pkgver=0.2.1
+_tag=0.3.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Face authentication for Linux PAM"
 arch=('x86_64')
@@ -21,12 +21,19 @@ source=("$pkgname-$_tag.tar.gz::$url/archive/v$_tag.tar.gz")
 # Filled in by publish-aur.sh at release time, like PKGBUILD-bin's sums: the
 # tagged tree cannot carry its own tarball's digest. The placeholder fails
 # closed — makepkg refuses to build until a real digest replaces it.
-sha256sums=('b7f7cc8f65b9e26a22abd95b2c3a5e4b435e496590e4a03bddb0a670a47b267f')
+sha256sums=('2d8ea53505903068f2dc45a7c657ece8a9d65fe680845ceae2d4922d8a2952d0')
 
 prepare() {
     cd "$pkgname-$_tag"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    # Network happens here and only here: vendor the locked crates.io
+    # dependencies beside the tree (inside it, check()'s docs-example scan
+    # would walk every crate's README) and point cargo at them, so build()
+    # and check() run --frozen against them. `cargo vendor` rather than
+    # `cargo fetch` because AUR helpers' PKGBUILD scanners flag `fetch` as a
+    # downloader wherever it appears (#361).
+    mkdir -p .cargo
+    cargo vendor --locked "$srcdir/vendor" > .cargo/config.toml
 }
 
 build() {
