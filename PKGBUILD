@@ -3,7 +3,7 @@ _pkgname=@appium/images-plugin
 _scope="${_pkgname%%/*}"
 _name="${_pkgname##*/}"
 pkgname="nodejs-${_scope//@/}-$_name"
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Plugin for working with images and image elements in Appium"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_name-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('84e48ba5d8d88c4c7d672bbdf92291b1dc11a9f58b7f8126255b19797c0ef00b')
+sha256sums=('41825a741cd812754774c289d1e004e5da67c358b0362cb3a6d0c2d235886283')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
