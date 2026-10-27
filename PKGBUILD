@@ -6,8 +6,8 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.6.1.r273.59263ff
-pkgrel=5
+pkgver=1.6.6.r464.c4f0137
+pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=($CARCH)
@@ -30,6 +30,7 @@ depends=(
   zlib 
   qt6-base
   qt6-multimedia
+  qt6-serialport
   qt6-websockets
 )
 makedepends=(
