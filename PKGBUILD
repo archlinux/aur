@@ -1,6 +1,6 @@
 # Maintainer: nasedkinpv <nasedkinpv@users.noreply.github.com>
 pkgname=numr
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A text calculator for natural language expressions with a vim-style TUI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 provides=('numr' 'numr-cli')
 conflicts=('numr-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nasedkinpv/numr/releases/download/v$pkgver/numr-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('84707505bdcc7962726275f807f40741d54a7476797aa693f1b51e22da901f7b')
+sha256sums=('7213b86d3fcbada0a831f8d29c307ec130dc28ed3549a45108d7ec5119d9a933')
 
 package() {
     install -Dm755 "numr" "$pkgdir/usr/bin/numr"
