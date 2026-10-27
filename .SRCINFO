@@ -1,6 +1,6 @@
 pkgbase = deemix-gui
 	pkgdesc = A GUI electron app for the deemix library. Download music from deezer.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/bambanah/deemix
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = deemix-gui
 	conflicts = deemix-fix-gui-appimage-git
 	conflicts = deemix-fix-gui-git
 	options = !strip
-	source = git+https://github.com/bambanah/deemix#tag=deemix-gui@0.5.1
+	source = git+https://github.com/bambanah/deemix#tag=deemix-gui@0.5.2
 	source = desktop_patch.patch
-	b2sums = a1dcdc8d411e681a66996b4921d03d15f2226fd69d4aed0573ff28eedf6c623a6cdf7968888f99a74d78ebbbd92e79703ce81e0601e00b875ada137c1ff11088
+	b2sums = ea5381fe6a48b40beecba36968268789a270ed42d1f03503cff221266e5e7cdab8e448694caa7ea6a2ba177721b1e5fa98454fbc18d0f1febc7db3e57a0ebae8
 	b2sums = 169cd20411165c1e1ef594c79ab19a76b46ea7ab78da07e7c348cb8f0348047c3b92666fbda0806e833c8f3862ea68095c1f1e8d8220656323351e0f65d6f1b1
 
 pkgname = deemix-gui
