@@ -5,7 +5,7 @@ _pkgname=lnko
 pkgname=${_pkgname}-bin
 pkgdesc="Simple stow-like dotfile linker"
 
-pkgver=0.2.4
+pkgver=0.6.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux_${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux_${_barch[1]}")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '81fc5b93658aad890f4f24fd7e2690756b7f75669f719b45100e7e400b8d6551')
-sha256sums_x86_64=('dac4d176667b90adef3de6a773abd5090592b70f3903e5b16d60188a212b86c0')
-sha256sums_aarch64=('49750a21f5af5f1445ff30ef27a71e560f3901cc09f57e1600e51aba96014657')
+            '3e2dd8103d559f65837f38a1a569dfe0cdc6a9f8b5442a898e9f5d3daafe99cd')
+sha256sums_x86_64=('e5f95579b81ca4be9f8e1a2485da9ef860ec46c55fae158e5ee68b21a4fee9ab')
+sha256sums_aarch64=('f1b25eec0c387ca094c984ca040768f9405637ed0f79ddd69abe276a7fa983ad')
 
 
 
