@@ -1,0 +1,17 @@
+pkgbase = routine-bin
+	pkgdesc = GNOME time-blocking client with local routine-server (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/wit3k/routine
+	install = routine-bin.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = hicolor-icon-theme
+	provides = routine
+	conflicts = routine
+	source = routine-0.1.0-x86_64.tar.zst::https://gitlab.gnome.org/api/v4/projects/wit3k%2Froutine/packages/generic/routine/0.1.0/routine-0.1.0-x86_64.tar.zst
+	sha256sums = 999ea9a1fac6b1dc6e2eda53fa527fc46882550871af578b42967d08b8bfe93a
+
+pkgname = routine-bin
