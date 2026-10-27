@@ -1,7 +1,7 @@
 pkgbase = alibabasans-puhuiti3-fonts
 	pkgdesc = A typeface for creating alibaba sans puhuiti3 in text.阿里巴巴普惠体简体中文(3.0),7字重
 	pkgver = 3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.alibabafonts.com/#/font
 	arch = any
 	license = LicenseRef-custom

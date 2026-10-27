@@ -6,12 +6,14 @@ pkgbase=alibabasans-puhuiti3-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}" "${pkgbase%-fonts}-fontconfig")
 _fontname=AlibabaPuHuiTi-3
 pkgver=3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans puhuiti3 in text.阿里巴巴普惠体简体中文(3.0),7字重"
 arch=('any')
 url='https://www.alibabafonts.com/#/font'
 license=('LicenseRef-custom')
 makedepends=(fontconfig)
+# fonts.alibabadesign.com has enabled Referer anti-hotlinking; a Referer from the same domain is required to download files.
+DLAGENTS=('https::/usr/bin/curl -fLC - --referer https://fonts.alibabadesign.com/ -o %o %u')
 source=(
     "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
