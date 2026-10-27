@@ -3,18 +3,18 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=clair
-pkgver=4.8.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=('x86_64')
 url='https://github.com/quay/clair'
-license=('Apache')
+license=('Apache-2.0')
 options=('!debug')
 depends=('glibc')
 makedepends=('go')
 optdepends=('postgresql: local database')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quay/clair/archive/v${pkgver}.tar.gz")
-b2sums=('3eb8905f12374449573cf888d40fe683506b9df66dc6996b9e0cae1aa60b8d4b5bd1a2c18d48c7fd74e2fb45bdff99338fef68924eb6d1c32052f4ea6603fc3e')
+b2sums=('d57c65b0dc1f01cb7d9e33c722e19c015c58f3d8444ceaf5dc91b2ce66971b169fa03ee3c9d320a31100c2bd0ce674443d0bb5b5347bdf227292f4874887c52e')
 install='clair.install'
 
 prepare() {
@@ -29,10 +29,10 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw"
 
   go build \
-    -ldflags "-X main.Version=${pkgver}" \
+    -ldflags "-linkmode=external -X github.com/quay/clair/v4/cmd.Version=${pkgver}" \
     -o build/ \
     ./cmd/...
 }
