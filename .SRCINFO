@@ -1,0 +1,15 @@
+pkgbase = greenmask
+	pkgdesc = PostgreSQL dump, anonymization and restore tool
+	pkgver = 0.2.26
+	pkgrel = 1
+	url = https://github.com/GreenmaskIO/greenmask
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	depends = postgresql-libs
+	source = greenmask-0.2.26.tar.gz::https://github.com/GreenmaskIO/greenmask/archive/refs/tags/v0.2.26.tar.gz
+	sha256sums = 2e77626183f52cf6309ed8db4d84ff143fe0e045d8b3c5d47d98d2e50e70a016
+
+pkgname = greenmask
