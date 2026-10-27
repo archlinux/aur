@@ -40,6 +40,9 @@ prepare() {
 
   # Activar watchdog thread kicks por defecto para evitar congelamientos en CiderDarling (QUADRA_KICK=1)
   sed -i 's/"cider_thread_kicks": False/"cider_thread_kicks": True/' launcher/quadra/core.py
+
+  # Fallback a shim precompilado del sistema si no se exporto la variable de entorno
+  sed -i 's/PREBUILT_SHIM = os\.environ\.get("QUADRA_PREBUILT_SHIM")/PREBUILT_SHIM = os.environ.get("QUADRA_PREBUILT_SHIM") or ("\/usr\/lib\/quadrahq\/shim" if os.path.exists("\/usr\/lib\/quadrahq\/shim\/libQuadraShims.dylib") else None)/' launcher/quadra/core.py
 }
 
 build() {
