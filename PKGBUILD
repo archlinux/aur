@@ -5,7 +5,7 @@
 _author=CROMEDOME
 _dist=Dancer2
 pkgname=perl-${_dist@L}
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Lightweight yet powerful web application framework'
 arch=('any')
@@ -95,7 +95,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('f3dafb0a1b7b116182fb489a185f0bf9d19864fd42a013c612a1d3cbb125013f')
+sha256sums=('4764563277d667a757070483ec69aa2241555d405e6308252e3ffefe11645e7b')
 
 build()
 {

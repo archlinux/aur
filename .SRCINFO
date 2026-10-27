@@ -1,6 +1,6 @@
 pkgbase = perl-dancer2
 	pkgdesc = Lightweight yet powerful web application framework
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://metacpan.org/dist/Dancer2
 	arch = any
@@ -77,7 +77,7 @@ pkgbase = perl-dancer2
 	optdepends = perl-url-encode-xs
 	optdepends = perl-yaml-libyaml
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CR/CROMEDOME/Dancer2-2.2.1.tar.gz
-	sha256sums = f3dafb0a1b7b116182fb489a185f0bf9d19864fd42a013c612a1d3cbb125013f
+	source = https://cpan.metacpan.org/authors/id/C/CR/CROMEDOME/Dancer2-2.3.0.tar.gz
+	sha256sums = 4764563277d667a757070483ec69aa2241555d405e6308252e3ffefe11645e7b
 
 pkgname = perl-dancer2
