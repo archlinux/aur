@@ -14,3 +14,9 @@ src/
 pkg/
 *.bak
 *.bak[0-9]
+
+# fetched by makepkg from the models-v1 release; never committed
+yolov8n.onnx
+*.pkg.tar.zst
+src/
+pkg/
