@@ -3,8 +3,10 @@
 
 pkgname=vocalinux
 # AUR pkgver cannot contain hyphens (v0.14.0-beta -> 0.14.0beta).
-pkgver=0.18.4
-_tag=0.18.4
+pkgver=0.18.5
+_tag=0.18.5
+# PEP 440-normalized sdist version may differ from a prerelease tag.
+_version=0.18.5
 pkgrel=1
 pkgdesc="Free, offline voice dictation for Linux"
 arch=('any')
@@ -56,17 +58,18 @@ optdepends=(
   'wtype: Wayland keystroke injection fallback'
 )
 conflicts=('vocalinux-git')
-source=("${pkgname}-${_tag}.tar.gz::https://github.com/VocaHQ/vocalinux/archive/refs/tags/v${_tag}.tar.gz")
-# SKIP until the v${_tag} tarball exists. release.yml sets updpkgsums=true on publish.
-sha256sums=('4ebe5449735093c3b60c2c059964f50a307ba1635dfc06a4fccbd29a6eb64e6f')
+source=("${pkgname}-${_version}.tar.gz::https://github.com/VocaHQ/vocalinux/releases/download/v${_tag}/${pkgname}-${_version}.tar.gz")
+# Canonical release sdist, also published on PyPI. prepare_aur_source.py verifies
+# its checksum/provenance before pinning the next version; publication never rehashes.
+sha256sums=('1def4d8f0f14f2df2f2fee64ca29e6865e3d82e551f7d465c2a78ec6d4d72b1d')
 
 build() {
-  cd "${pkgname}-${_tag}"
+  cd "${pkgname}-${_version}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}-${_tag}"
+  cd "${pkgname}-${_version}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
