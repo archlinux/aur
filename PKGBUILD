@@ -1,12 +1,12 @@
 # Maintainer: zyk-miao <45023244+zyk-miao@users.noreply.github.com>
 pkgname=uuway-git
-pkgver=1.2.0.r110.gc6de4d3
+pkgver=1.2.0.r123.gb692cf0
 pkgrel=1
 pkgdesc='NetEase UU Remote host bridge for KDE Wayland with native capture'
 arch=('x86_64')
 url='https://github.com/zyk-miao/UUWay'
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later' 'MIT')
-depends=('nvidia-utils' 'lib32-nvidia-utils' 'vulkan-icd-loader' 'pipewire' 'gst-plugins-base-libs'
+depends=('nvidia-utils' 'lib32-nvidia-utils' 'vulkan-icd-loader' 'pipewire' 'gst-plugin-pipewire' 'gst-plugins-base-libs'
          'json-c' 'libx11' 'libxfixes' 'wayland' 'fcitx5' 'python' 'python-gobject' 'python-dbus'
          'libappindicator' 'xdg-desktop-portal-kde' 'kscreen' 'lib32-glibc'
          'lib32-freetype2' 'lib32-libpng' 'xorg-server-xvfb' 'xclip' 'gtk3'
