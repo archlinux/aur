@@ -1,0 +1,31 @@
+pkgbase = gomodel-git
+	pkgdesc = High-performance AI gateway (git main build, quasi-nightly)
+	pkgver = 0.1.108
+	pkgrel = 1
+	url = https://github.com/ENTERPILOT/GoModel
+	install = gomodel.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = glibc
+	optdepends = bun: faster UI dependency install + build (auto-used when installed, GOMODEL_UI_PM=npm forces npm)
+	optdepends = go: build and load plugin shared objects (gomodel plugin build)
+	optdepends = redis: distributed rate limiting and response cache backend
+	optdepends = postgresql: cost/history storage backend
+	provides = gomodel
+	conflicts = gomodel
+	options = !lto
+	source = gomodel-git::git+https://github.com/ENTERPILOT/GoModel.git#branch=main
+	source = plugin-message-format-4.4.0.tgz::https://registry.npmjs.org/@inlang/plugin-message-format/-/plugin-message-format-4.4.0.tgz
+	source = plugin-m-function-matcher-2.2.6.tgz::https://registry.npmjs.org/@inlang/plugin-m-function-matcher/-/plugin-m-function-matcher-2.2.6.tgz
+	source = gomodel-user.service
+	sha256sums = SKIP
+	sha256sums = c3027edad173f88ab94a7e4aca2e935aedad5820470230a3e0896977ade281be
+	sha256sums = 834622fe28c0195b1ae78008bb75688f3be3bb2612b5efce73f01ceb9ac782a8
+	sha256sums = fe63ac54caa66676e59bfa5044ebe1372e3cc5546ac68fac9bde4ddb19f82973
+
+pkgname = gomodel-git

@@ -1,0 +1,25 @@
+[Unit]
+Description=GoModel AI gateway (per-user)
+Documentation=https://github.com/ENTERPILOT/GoModel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+# Config: drop ~/.config/gomodel/config.yaml (optional; env vars suffice).
+# gomodel reads config/config.yaml or config.yaml from its working directory.
+WorkingDirectory=%h/.config/gomodel
+# Keyring / secrets: put GOMODEL_ENCRYPTION_KEY=... in ~/.config/gomodel/env
+# (chmod 600). Decrypt-at-login happens here: the file is read when the unit
+# starts, i.e. on login for units wanted by default.target.
+EnvironmentFile=-%h/.config/gomodel/env
+ExecStart=/usr/bin/gomodel
+Restart=on-failure
+RestartSec=5
+
+# XDG defaults need no overrides: state -> ~/.local/share/gomodel,
+# cache -> ~/.cache/gomodel. Plugins go to ~/.local/share/gomodel/plugins
+# (set via PLUGINS_SEARCH_PATHS in the env file if used).
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,38 @@
+## arg 1: the new package version
+## arg 2: the old package version
+
+post_install() {
+  cat <<EOF
+
+gomodel installed.
+
+System service (root-managed, config in /etc/gomodel):
+  1. Edit /etc/gomodel/config.yaml (example config is pre-seeded).
+  2. Optional secrets: /etc/gomodel/env  (root:gomodel 0640), e.g.
+       GOMODEL_ENCRYPTION_KEY=\$(openssl rand -base64 32)
+  3. systemctl enable --now gomodel
+  4. Check: systemctl status gomodel && curl -s localhost:8080/healthz
+
+Per-user service (starts at login, keyring decrypts via env file):
+  1. mkdir -p ~/.config/gomodel && drop a config.yaml there (optional).
+  2. Optional secrets: ~/.config/gomodel/env (chmod 600), e.g.
+       GOMODEL_ENCRYPTION_KEY=\$(openssl rand -base64 32)
+  3. systemctl --user enable --now gomodel
+
+Plugins (needs the 'go' package, optdepend):
+  gomodel plugin build -o ~/.local/share/gomodel/plugins/foo.so ./my-plugin
+  Enable in config: plugins: { enabled: true, search_paths: [...], load: [...] }
+  The .so must be built with the same 'go' version as this package was.
+
+EOF
+}
+
+post_upgrade() {
+  # Restart running services so the new binary is picked up.
+  systemctl try-restart gomodel.service 2>/dev/null || true
+  cat <<EOF
+
+gomodel upgraded. Running system services were restarted.
+User services: run 'systemctl --user restart gomodel' if enabled.
+EOF
+}
