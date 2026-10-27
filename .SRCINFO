@@ -1,6 +1,6 @@
 pkgbase = deezer-discord-rpc-bin
 	pkgdesc = A Discord RPC for Deezer
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/CuteTenshii/deezer-discord-rpc
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = deezer-discord-rpc-bin
 	depends = mesa
 	depends = xdg-utils
 	source = https://github.com/CuteTenshii/deezer-discord-rpc/releases/latest/download/DeezerDiscordRPC-linux-amd64.deb
-	md5sums = 7ce78547d79ab1e51cb44eae61f91237
-	sha256sums = 60fdf9c009f9ec19611cf1281853d575fa3dfdbd60cd48ae838c380e70862d2a
+	md5sums = 951e8e4c159143baa100b3b4f68c9b99
+	sha256sums = e9b40f121092bacd879326b984c91d2286d3e2cd353dc450706d19418cc4582b
 
 pkgname = deezer-discord-rpc-bin
