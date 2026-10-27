@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.686
+pkgver=8.3.687
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -37,18 +37,13 @@ source=(
    "0001-pass-LDFLAGS.patch"
 )
 
-b2sums=('a35976688cd58aa0e09348725b58439e6101e1be717c536f7c882a3858deae0aaf0df167d95470db68e208f89b0b6d5abf7c950eed9b95f4ec01a0c910e8ed40'
+b2sums=('f35f0c18824ce24630d5af443e413f826a996a535c8af7c4800d5bba52651243951d591f0dfee8db7714431793654f118bd577bff5b5c7860c42728628895cac'
         '702bca8c771c100b050379970a40f141edfd93a16e9f321aa50c2815de5b9c3204f2141af071ed90696d8b317691893027950aa74661927643d02cbb7615ef88')
 
 options=()
 
 prepare() {
    cd "${pkgname}"
-
-   # Disable the legacy malloc/free APIs that are not
-   # thread safe... This might introduce new bugs :)
-   # TODO: Consider setting this by default?
-   # sed -i 's/#FEATURE_FLAGS/FEATURE_FLAGS/g' scripts/defs.mak.in
 
    # Patch to pass makepkg.conf LDFLAGS
    patch -Np1 < ../"0001-pass-LDFLAGS.patch"
