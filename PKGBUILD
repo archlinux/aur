@@ -1,14 +1,16 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 _basename='wl-freeze'
 pkgname="$_basename-git"
-pkgver=2.0.2.r4.g082cf30
-pkgrel=2
+pkgver=2.2.0.r0.gfae2887
+pkgrel=1
 pkgdesc="wl-freeze is a community-driven utility to suspend a game process (and other programs) in Wayland compositors"
 arch=('any')
 url="https://github.com/Zerodya/wl-freeze"
 license=('GPL')
-depends=('jq' 'psmisc')
-optdepends=('libnotify: notifications')
+depends=('jq' 'xorg-xwininfo')
+optdepends=('libnotify: notifications'
+            'xdotool: XWayland window PIDs and mouse capture release'
+            'pipewire: release game audio while frozen')
 makedepends=('git')
 provides=("$_basename")
 conflicts=("$_basename")
