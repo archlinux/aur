@@ -2,7 +2,7 @@
 _appname=dashplayer
 pkgname="${_appname//hp/h-p}-bin"
 _pkgname=DashPlayer
-pkgver=6.13.3
+pkgver=6.14.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A video player designed specifically for English learning.一款专为英语学习打造的视频播放器"
@@ -17,19 +17,19 @@ depends=(
     'ffmpeg'
     'yt-dlp'
 )
-makedepends=(
-    'asar'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/solidSpoon/DashPlayer/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('23d51dfb7ee96533671b197f0c75c319ad1abeb1a464fa2c564f588c883997e8'
+sha256sums=('34c20cf42265a637b83a728b536b18e4d0420c23bccd2d552f014ec9c07f7aee'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -43,23 +43,17 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i -e "
         s/Exec=${_appname}/Exec=${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_appname}.desktop"
-    local _app_dir="$(_get_app_dir)"
-    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/.vite" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir="$(_get_app_dir)"
-    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     _file_list=(ffmpeg ffprobe yt-dlp)
         for _files in "${_file_list[@]}";do
