@@ -1,5 +1,5 @@
 pkgname=driftwm-bin
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Trackpad-first infinite canvas Wayland compositor - Prebuilt binary distribution"
 arch=('x86_64')
@@ -12,8 +12,11 @@ provides=("driftwm=$pkgver")
 conflicts=('driftwm')
 
 source=("https://github.com/qofqoflop/driftwm-bin/releases/download/v${pkgver}/driftwm-linux-x86_64.tar.gz")
-sha256sums=('043d7cd41b287a259a65962005fb613dc8d866208bac852ea332d29201ab38e7')
+sha256sums=('d28d20b23174451ba2ff149cab6a21c8e745c494a8d1ab735185eceb770689d2')
+
+noextract=('driftwm-linux-x86_64.tar.gz')
 
 package() {
-    cp -a "$srcdir/." "$pkgdir/"
+    tar -xzf "$srcdir/driftwm-linux-x86_64.tar.gz" \
+        -C "$pkgdir"
 }
