@@ -4,7 +4,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=11.0.0.r30.71efc76a
+pkgver=13.1.0.r14.2b6e90e7
 pkgrel=1
 pkgdesc="A modern music player"
 arch=("x86_64" "aarch64")
@@ -82,8 +82,11 @@ pkgver() {
 prepare() {
 	# Use system kissfft instead of the expected cloned repository
 	cd "${pkgname%-git}"
-	sed -i 's|"src/phazor/kissfft/kiss_fftr.c", "src/phazor/kissfft/kiss_fft.c", ||g' pyproject.toml
-	sed -i 's|"samplerate"|"kissfft-float", "samplerate"|g' pyproject.toml
+	sed -i \
+		-e '/src\/phazor\/kissfft\/kiss_fft[r]*\.c/d' \
+		-e 's/set(TAUON_PHAZOR_PACKAGES /set(TAUON_PHAZOR_PACKAGES kissfft-float /' \
+		CMakeLists.txt
+	sed -i 's|com.github.taiko2k.tauonmb.desktop|tauonmb.desktop|' extra/com.github.taiko2k.tauonmb.metainfo.xml
 
 	cd src/lrclib-solver
 	export RUSTUP_TOOLCHAIN=stable
@@ -106,17 +109,9 @@ package() {
 	cd "${pkgname%-git}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 
-	for dir in src/tauon/locale/*; do
-		install -Dm644 \
-			"${dir}/LC_MESSAGES/"*.mo \
-			-t "${pkgdir}/usr/share/locale/$(basename "${dir}")/LC_MESSAGES"
-	done
-
 	install -Dm644 "extra/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "extra/${_pkgname}-symbolic.svg" -t "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
 	install -Dm644 "extra/${_pkgname}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-	install -Dm755 "extra/tauonmb.sh" "${pkgdir}/opt/${pkgname%-git}/tauonmb.sh"
-	install -Dm755 "extra/tauonmb.sh" "${pkgdir}/usr/bin/tauon"
 
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	install -Dm755 "src/lrclib-solver/target/release/lrclib-solver" "${pkgdir}${site_packages}/tauon/lrclib-solver"

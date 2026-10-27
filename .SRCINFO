@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box-git
 	pkgdesc = A modern music player
-	pkgver = 11.0.0.r30.71efc76a
+	pkgver = 13.1.0.r14.2b6e90e7
 	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
