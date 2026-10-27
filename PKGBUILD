@@ -3,7 +3,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=2.0.3.r5.g77705f8
-pkgrel=2
+pkgrel=3
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -65,12 +65,12 @@ build() {
 
 package() {
   cd "$srcdir"
-	install -Dm755 build/${_pkgname} "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
+	install -Dm755 build/${_pkgname} "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
-	install -dm755 "${pkgdir}/usr/share/${pkgname}"
-	cp -a build/res "${pkgdir}/usr/share/${pkgname}/res"
-	ln -s /usr/share/${_pkgname}/res "${pkgdir}/usr/lib/${pkgname}/res"
-	ln -s /usr/lib/${_pkgname}/${_pkgname} "${pkgdir}/usr/bin/${pkgname}"
+	install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+	cp -a build/res "${pkgdir}/usr/share/${_pkgname}/res"
+	ln -s /usr/share/${_pkgname}/res "${pkgdir}/usr/lib/${_pkgname}/res"
+	ln -s /usr/lib/${_pkgname}/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 ${_pkgname}/platforms/freedesktop/dev.twilitrealm.dusk.desktop "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
 	install -Dm644 ${_pkgname}/res/icon.png "${pkgdir}/usr/share/pixmaps/dev.twilitrealm.dusk.png"
