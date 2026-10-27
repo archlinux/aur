@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=markterm
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Terminal markdown renderer, plus a fast self-contained Markdown/HTML-to-PDF converter."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/ralsina/markterm"
 license=('MIT')
 makedepends=('crystal' 'shards' 'cmake' 'git')
 install=install
-_litehtml_rev=587663441c85e0d9229f464894441631b34fc5de
+_litehtml_rev=d908f3f8ab250c653c10547061913a1feb47b0ad
 _microtex_rev=0e3707f6dafebb121d98b53c64364d16fefe481d
 _libharu_ver=2.4.6
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
@@ -16,8 +16,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archiv
         "microtex-$_microtex_rev.tar.gz::https://github.com/NanoMichael/MicroTex/archive/$_microtex_rev.tar.gz"
         "libharu-$_libharu_ver.tar.gz::https://github.com/libharu/libharu/archive/refs/tags/v$_libharu_ver.tar.gz")
 optdepends=("timg: image support")
-sha256sums=('143c265d9ac4441fe40d86feda4c7c4fce71636cb0b6e04331b027310808116b'
-            '1a673ac5e2062aae2b303b181ee4526ff239c4cad011dc998aff7ac9e6fce649'
+sha256sums=('94515b5bd7be1e95886a3ee12b10464575c216798f76d2b4f235981c80c9ccdc'
+            '4aa692a5398b11de99f9cbb305de2c8b8b38007273d18858b5ce9c4285d31ee5'
             '47476269d29c41df322bce6bdd2daa7017cc50b9eda841b2bec1767dba28daa6'
             'ec8f327520d1d354ce58b5d2af75b64f380cddc522437c169463b39760921348')
 
