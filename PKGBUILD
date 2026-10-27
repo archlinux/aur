@@ -2,7 +2,7 @@
 
 _pkgname=opencloud-desktop
 pkgname=opencloud-desktop-git
-pkgver=3.0.0.r205.gad35d3d
+pkgver=4.0.0.r122.g02870c5
 pkgrel=1
 pkgdesc='The OpenCloud desktop application - git checkout'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(
   glibc
   hicolor-icon-theme
   kdsingleapplication
-  libre-graph-api
+  'libre-graph-api>=1.0.8'
   libstdc++
   qt6-base
   qt6-declarative
