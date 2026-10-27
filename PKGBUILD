@@ -9,7 +9,7 @@ pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis 
 arch=('x86_64')
 url="https://binary.ninja"
 license=('custom:Binary Ninja Free Edition License Agreement')
-depends=('python' 'glibc' 'qt6-base' 'libxml2-legacy')
+depends=('python' 'glibc' 'qt6-base' 'libxml2-legacy' 'fontconfig' 'freetype2' 'libx11' 'libxcb')
 optdepends=('gtk-update-icon-cache: icon support')
 source=(
 	"${pkgname}-${pkgver}.zip::https://github.com/Vector35/binaryninja-api/releases/download/stable%2F${pkgver}/binaryninja_free_linux.zip"
