@@ -2,18 +2,18 @@
 # Contributor: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=topiary
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='The universal code formatter'
 arch=('x86_64')
 url='https://topiary.tweag.io/'
 license=(MIT)
-depends=(glibc gcc-libs)
-makedepends=(cargo)
+depends=(glibc libgcc)
+makedepends=('rust')
 options=(!debug !lto)
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tweag/topiary/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d90cb9ec7684d36b157faaf4e2b3bd53833882c840679543eecbffd1036e7019')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/topiary/topiary/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('203bdc6007989f51ef728424c7e051da2c131c0415fc76fb359da8fc49b8006e')
 
 export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
@@ -42,7 +42,9 @@ build() {
 check() {
     cd "$pkgname-$pkgver" || exit
 
-    cargo test --frozen -- --skip "coverage_input_ocaml"
+    # Parallel tests compiling the same grammar into a cold cache race on
+    # tree-sitter-loader's lock file, so run them one at a time.
+    cargo test --frozen -- --test-threads=1 --skip "coverage_input_ocaml"
 }
 
 package() {
