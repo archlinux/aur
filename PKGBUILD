@@ -34,6 +34,8 @@ url='https://microsoft.com/PowerShell'
 license=('MIT')
 options=('!debug')
 _dotnetsdkver="10.0"
+# RID of the source-built .NET, whose packs come with dotnet-source-built-artifacts
+_rid="arch-x64"
 depends=(
   dotnet-runtime-"$_dotnetsdkver"
   libgcc
@@ -49,6 +51,7 @@ optdepends=('openssh: PowerShell Remoting over ssh'
   'powershell-editor-services: Language server and debug adapter for PowerShell editor support')
 makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
+  dotnet-source-built-artifacts-"$_dotnetsdkver"
   git
   rsync
   ruby-ronn
@@ -99,9 +102,45 @@ prepare() {
   DOTNET_NOLOGO=1 dotnet new globaljson --sdk-version "$_sdkver"
 
   ## Switch-PSNugetConfig()
-  # We're switching to the public nuget.org feed
-  sed -i -e 's|<add key="powershell".*$|<add key="nuget.org" value="https://api.nuget.org/v3/index.json" />|g' nuget.config
+  # Packages of the source-built .NET are taken from dotnet-source-built-artifacts, so that they exactly
+  # match the .NET we're building and running with. This includes the runtime, apphost and crossgen packs.
+  # Everything else comes from the public nuget.org feed.
+  local _artifacts=(/usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz)
+  mkdir -p "$srcdir/nuget-local"
+  bsdtar -xf "${_artifacts[0]}" -C "$srcdir/nuget-local" '*.nupkg'
+  _localpackages=()
+  local _nupkg _nuspec _id _version
+  for _nupkg in "$srcdir"/nuget-local/*.nupkg; do
+    _nuspec="$(bsdtar -xOf "$_nupkg" '*.nuspec')"
+    _id="$(sed -n -E 's|.*<id>([^<]+)</id>.*|\1|p' <<<"$_nuspec" | head -1)"
+    _version="$(sed -n -E 's|.*<version>([^<]+)</version>.*|\1|p' <<<"$_nuspec" | head -1)"
+    if [[ "$_version" == "$_runtimever" ]]; then
+      _localpackages+=("$_id")
+    fi
+  done
+  {
+    echo '<?xml version="1.0" encoding="utf-8"?>'
+    echo '<configuration>'
+    echo '  <packageSources>'
+    echo '    <clear />'
+    echo "    <add key=\"dotnet-source-built\" value=\"$srcdir/nuget-local\" />"
+    echo '    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />'
+    echo '  </packageSources>'
+    echo '  <packageSourceMapping>'
+    echo '    <clear />'
+    echo '    <packageSource key="dotnet-source-built">'
+    printf '      <package pattern="%s" />\n' "${_localpackages[@]}"
+    echo '    </packageSource>'
+    echo '    <packageSource key="nuget.org">'
+    echo '      <package pattern="*" />'
+    echo '    </packageSource>'
+    echo '  </packageSourceMapping>'
+    echo '</configuration>'
+  } >nuget.config
   sed -i -e 's|<add key="powershell".*$|<add key="psgallery" value="https://www.powershellgallery.com/api/v2/" />|g' \
+    src/Modules/nuget.config \
+    test/tools/Modules/nuget.config
+  sed -i -e 's|</configuration>|  <packageSourceMapping>\n    <clear />\n  </packageSourceMapping>\n</configuration>|' \
     src/Modules/nuget.config \
     test/tools/Modules/nuget.config
 
@@ -124,7 +163,7 @@ prepare() {
   # but saves over a gigabyte of unnecessary NuGet downloads.
   while read -r _csproj; do
     sed -i -E -e 's/netstandard2\.0/net'"$_dotnetsdkver"'/' \
-      -e 's|(RuntimeIdentifiers>)[^<]*|\1linux-x64|' "$_csproj"
+      -e 's|(RuntimeIdentifiers>)[^<]*|\1'"$_rid"'|' "$_csproj"
     if [[ "$_csproj" =~ .*PSVersionInfoGenerator.csproj ]]; then
       sed -i -e '/<PackageReference Include="System/d' "$_csproj"
     fi
@@ -145,13 +184,24 @@ prepare() {
   dotnet new tool-manifest --force
   dotnet tool install dotnet-outdated-tool
   dotnet tool restore
-  dotnet outdated --upgrade --exclude "JsonSchema.Net"
+
+  # Align all references to .NET runtime packages (versioned like the runtime itself) with the
+  # version of the source-built .NET, and keep dotnet outdated from upgrading them again.
+  # Other .NET packages like System.ServiceModel.* use build numbers as patch version (e.g. 10.0.652802).
+  find . -type f -name "*.csproj" -exec sed -i -E \
+    's|(<PackageReference Include="[^"]+" Version=")'"${_dotnetsdkver//./\\.}"'\.[0-9]{1,3}"|\1'"$_runtimever"'"|' {} +
+  local _outdated_excludes=() _package
+  while read -r _package; do
+    _outdated_excludes+=(--exclude "$_package")
+  done < <(grep -rhoE '<PackageReference Include="[^"]+" Version="'"${_runtimever//./\\.}"'"' --include='*.csproj' . |
+    sed -E 's/.*Include="([^"]+)".*/\1/' | sort -u)
+  dotnet outdated --upgrade --exclude "JsonSchema.Net" "${_outdated_excludes[@]}"
   dotnet outdated --upgrade --version-lock major --include "JsonSchema.Net"
 
   # Replicating build.psm1:Start-PSBuild()
   ## Restore-PSPackage()
-  dotnet restore "src/TypeCatalogGen" --runtime linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
-  dotnet restore "src/ResGen" --runtime linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
+  dotnet restore "src/TypeCatalogGen" --runtime "$_rid" -p:SDKToUse=Microsoft.NET.Sdk
+  dotnet restore "src/ResGen" --runtime "$_rid" -p:SDKToUse=Microsoft.NET.Sdk
 
   # Restore the PowerShell modules for later
   dotnet restore src/Modules
@@ -190,15 +240,15 @@ build() {
   dotnet run \
     -c Release \
     -f "net$_dotnetsdkver" \
-    -r linux-x64
+    -r "$_rid"
 
   ## Start-TypeGen()
-  local _inc_file="$PWD/src/TypeCatalogGen/powershell_linux-x64.inc"
+  local _inc_file="$PWD/src/TypeCatalogGen/powershell_${_rid}.inc"
   cd "$srcdir"/PowerShell/src/Microsoft.PowerShell.SDK || exit
   dotnet build \
     -c Release \
     -f "net$_dotnetsdkver" \
-    -r linux-x64 \
+    -r "$_rid" \
     ./Microsoft.PowerShell.SDK.csproj \
     -t:_GetDependencies \
     -p:DesignTimeBuild=true \
@@ -208,14 +258,14 @@ build() {
   dotnet run \
     -c Release \
     -f "net$_dotnetsdkver" \
-    -r linux-x64 \
+    -r "$_rid" \
     ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs \
     "$_inc_file"
 
   _build_arguments=(
     "--configuration" "Release"
     "--framework" "net""$_dotnetsdkver"
-    "--runtime" "linux-x64"
+    "--runtime" "$_rid"
     "--no-self-contained"
     "-p:ReleaseTag=""$pkgver"
     "-p:AppDeployment=FxDependentDeployment"
@@ -365,7 +415,7 @@ check() {
   dotnet publish \
     --configuration Release \
     --no-self-contained \
-    --runtime linux-x64 \
+    --runtime "$_rid" \
     --framework "net$_dotnetsdkver" \
     test/tools/TestAlc
 
@@ -373,7 +423,7 @@ check() {
     dotnet publish \
       --configuration Release \
       --no-self-contained \
-      --runtime linux-x64 \
+      --runtime "$_rid" \
       --framework "net$_dotnetsdkver" \
       -p:AllowMissingPrunePackageData=true \
       --output "$PWD/bin" \
@@ -385,7 +435,7 @@ check() {
   dotnet publish \
     --configuration Release \
     --no-self-contained \
-    --runtime linux-x64 \
+    --runtime "$_rid" \
     --framework "net$_dotnetsdkver" \
     --output test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection \
     test/tools/NamedPipeConnection/src/code
@@ -436,7 +486,7 @@ check() {
   '
 
   ## Start-PSxUnit
-  dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r linux-x64 --test-adapter-path:.
+  dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r "$_rid" --test-adapter-path:.
 }
 
 package() {

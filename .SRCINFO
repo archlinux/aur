@@ -19,6 +19,7 @@ pkgbase = powershell
 	checkdepends = procps-ng
 	checkdepends = xclip
 	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-source-built-artifacts-10.0
 	makedepends = git
 	makedepends = rsync
 	makedepends = ruby-ronn
