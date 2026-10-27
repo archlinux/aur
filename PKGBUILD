@@ -9,7 +9,7 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt
-pkgver=3008.3
+pkgver=3008.5
 pkgrel=1
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
@@ -70,9 +70,9 @@ source=(
     salt.logrotate
     httprequests.patch
 )
-sha256sums=('4bfa995ecde1491916bc9fd0abebf38d39eaca24c1e99e29c5046b97b8754f30'
-    'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-    '6a8bd4bd183b328d4a6a2b14ec79ee01fc1566b418fb13daa38d62269afb9ea5')
+sha256sums=('0259deafd601d783721e5aa8ed10677d8c4d6cc12f5de17499af71590d593315'
+            'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
+            '6a8bd4bd183b328d4a6a2b14ec79ee01fc1566b418fb13daa38d62269afb9ea5')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
