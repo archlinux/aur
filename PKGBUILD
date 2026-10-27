@@ -60,9 +60,9 @@ EOF
 build() {
   cd "$_pkg"
 
-  CFLAGS="$(_update_march "$CFLAGS") -Wno-stringop-overflow -ffile-prefix-map=${srcdir}=."
-  CPPFLAGS="$(_update_march "$CPPFLAGS") -Wno-stringop-overflow -ffile-prefix-map=${srcdir}=."
-  CXXFLAGS="$(_update_march "$CXXFLAGS") -Wno-stringop-overflow -ffile-prefix-map=${srcdir}=."
+  CFLAGS="$(_update_march "$CFLAGS") -Wno-stringop-overflow -Wno-error=maybe-uninitialized -ffile-prefix-map=${srcdir}=."
+  CPPFLAGS="$(_update_march "$CPPFLAGS") -Wno-stringop-overflow -Wno-error=maybe-uninitialized -ffile-prefix-map=${srcdir}=."
+  CXXFLAGS="$(_update_march "$CXXFLAGS") -Wno-stringop-overflow -Wno-error=maybe-uninitialized -ffile-prefix-map=${srcdir}=."
 
   make cmake
   # cado_config.h embeds CFLAGS/CXXFLAGS as strings, which contain makepkg's
