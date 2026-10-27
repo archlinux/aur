@@ -1,0 +1,5 @@
+[cozy-bin]
+source = "github"
+github = "takakix2/cozy"
+use_latest_release = true
+prefix = "v"

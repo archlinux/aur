@@ -1,0 +1,19 @@
+pkgbase = cozy-bin
+	pkgdesc = A Comfort First terminal text editor — type like nano, navigate like vim
+	pkgver = 0.2.37
+	pkgrel = 1
+	url = https://github.com/takakix2/cozy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = cozy
+	provides = czv
+	conflicts = cozy
+	options = !strip
+	source_x86_64 = cozy-x86_64-0.2.37.tgz::https://github.com/takakix2/cozy/releases/download/v0.2.37/cozy-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a921572d037a6d55be821a360902231cd65b0c7ae9db3567200c4ca59aed5d97
+	source_aarch64 = cozy-aarch64-0.2.37.tgz::https://github.com/takakix2/cozy/releases/download/v0.2.37/cozy-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f43891d71c8948a43dead5ed90c0835fe0889842788d3bf606c69c43a8f7903b
+
+pkgname = cozy-bin
