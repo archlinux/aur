@@ -31,13 +31,13 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s /opt/keyguard/bin/Keyguard "${pkgdir}/usr/bin/keyguard"
 
-    # Install desktop file (patch Exec to use our symlink name)
-    install -Dm644 share/applications/com.artemchep.keyguard.desktop \
-        "${pkgdir}/usr/share/applications/com.artemchep.keyguard.desktop"
+    # Install desktop integration, AppStream metadata, and polkit policy.
+    install -dm755 "${pkgdir}/usr"
+    cp -a share "${pkgdir}/usr/"
+
+    # Match the launcher installed in /usr/bin.
     sed -i 's|^Exec=Keyguard|Exec=keyguard|' \
         "${pkgdir}/usr/share/applications/com.artemchep.keyguard.desktop"
-
-    # Install icon
-    install -Dm644 share/icons/hicolor/scalable/apps/com.artemchep.keyguard.svg \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.artemchep.keyguard.svg"
+    sed -i 's|<binary>Keyguard</binary>|<binary>keyguard</binary>|' \
+        "${pkgdir}/usr/share/metainfo/com.artemchep.keyguard.metainfo.xml"
 }
