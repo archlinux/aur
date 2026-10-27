@@ -8,7 +8,7 @@ provides=('python-cantools')
 conflicts=('python-cantools')
 pkgdesc="Python CAN bus tools in Python 3"
 url="https://github.com/eerimoq/cantools"
-pkgver=45.1.0
+pkgver=45.1.1
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -38,7 +38,7 @@ optdepends=(
 )
 
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('cc954bf91587da6dd23c87b4b488ee36f24afaa78a1a8c72322ef4e67953b69a')
+sha256sums=('a0beaf0363165ff9cd72017fa30f9fd5ce95f8080807ddf58e0d5cdda981d5a9')
 
 build() {
 	cd "$srcdir/${_name}"
