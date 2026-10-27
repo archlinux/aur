@@ -1,14 +1,14 @@
 pkgbase = all-contributors-cli
 	pkgdesc = Automate acknowledging contributors to your open source projects
-	pkgver = 6.26.1
+	pkgver = 7.0.0
 	pkgrel = 1
-	url = https://allcontributors.org/docs/en/cli/overview
+	url = https://allcontributors.org/cli/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = all-contributors-cli-6.26.1.tgz
-	source = https://registry.npmjs.org/all-contributors-cli/-/all-contributors-cli-6.26.1.tgz
-	sha1sums = 9f3358c9b9d0a7e66c8f84ffebf5a6432a859cae
+	noextract = all-contributors-cli-7.0.0.tgz
+	source = https://registry.npmjs.org/all-contributors-cli/-/all-contributors-cli-7.0.0.tgz
+	b2sums = 8fa01c78bdf5e1ed8b86c3db50b13c69a1066ccb8f79d4478f5d7bfcdccf76aba05cada0d55ac0ec6f2e27b20df8dc6eaa4a9bc10a62b61fdab447efb46b4bcf
 
 pkgname = all-contributors-cli
