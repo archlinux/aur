@@ -1,6 +1,6 @@
 pkgname=qobine
-pkgver="2026.10.16"
-_release_version="2026-10-16"
+pkgver="2026.10.27"
+_release_version="2026-10-27"
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz. Formaly known as qobuz-player"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'pango' 'gdk-pixbuf2' 'g
 makedepends=('protobuf' 'cargo' 'nodejs' 'npm' 'sqlx-cli')
 optdepends=('ttf-font-nerd: glyph support')
 source=("qobine-${_release_version}.tar.gz::https://github.com/SofusA/qobine/archive/refs/tags/v${_release_version}.tar.gz")
-sha256sums=('826ddc36d1f297b7cd9da4fb542361eec5b321364378290a8c42c6b46ffb63cf')
+sha256sums=('9c8145da3c56d9b1c33ed4d6033b27e564babd1065b4070f519957d13eff518d')
 options=('!lto')
 
 prepare() {
