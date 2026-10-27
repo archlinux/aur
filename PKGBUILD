@@ -1,7 +1,7 @@
 # shellcheck disable=SC2154
 # Maintainer: Bas <hi@bas.sh>
 pkgname=goat-cli
-pkgver=0.2.7 # renovate: datasource=github-tags depName=bluesky-social/goat
+pkgver=0.2.8 # renovate: datasource=github-tags depName=bluesky-social/goat
 pkgrel=1
 pkgdesc="Go AT protocol CLI tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bluesky-social/goat/archive/v$pkgver.tar.gz")
-sha256sums=('3ab36603983d516cc0cb91c384e97554fa22a124bedfc91cb06c4fb7a5c774d5')
+sha256sums=('03f62647a6c3818f6a123721a6ef41d7b67d4a00ffd5581abfbff05885014c58')
 
 build() {
 	cd "goat-$pkgver" || exit 1
