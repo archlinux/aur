@@ -1,6 +1,6 @@
 pkgbase = capi-shell-mcp
 	pkgdesc = MCP provider for capi-shell — exec into cluster-api workload clusters
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/cwrau/capi-shell-mcp
 	install = capi-shell-mcp.install
@@ -10,9 +10,9 @@ pkgbase = capi-shell-mcp
 	provides = capo-shell-mcp
 	conflicts = capo-shell-mcp
 	replaces = capo-shell-mcp
-	source_x86_64 = capi-shell-mcp-linux-amd64.tar.gz::https://github.com/cwrau/capi-shell-mcp/releases/download/v2.0.0/capi-shell-mcp-linux-amd64.tar.gz
-	sha256sums_x86_64 = 2683dd4e381ee086a0d4570cbc681684bf4bac09a750cf9693943bf2d79fccce
-	source_aarch64 = capi-shell-mcp-linux-arm64.tar.gz::https://github.com/cwrau/capi-shell-mcp/releases/download/v2.0.0/capi-shell-mcp-linux-arm64.tar.gz
-	sha256sums_aarch64 = 56932533abb4e6532269522cd341477866e937b1586ab2491825232e8df7f5d9
+	source_x86_64 = capi-shell-mcp-linux-amd64.tar.gz::https://github.com/cwrau/capi-shell-mcp/releases/download/v2.1.0/capi-shell-mcp-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7ae66ea532a5aa7c59d85f73d42503567b22e9e3148d4b5020d2acc7015983ed
+	source_aarch64 = capi-shell-mcp-linux-arm64.tar.gz::https://github.com/cwrau/capi-shell-mcp/releases/download/v2.1.0/capi-shell-mcp-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5127528bbd78ef059cdf5e0169154327b77cecf9120709b6841e08191d7a5d56
 
 pkgname = capi-shell-mcp
