@@ -3,20 +3,20 @@
 
 pkgname=cot
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Rust web framework for lazy developers - CLI tool"
 arch=('x86_64')
 url="https://cot.rs"
 license=('MIT OR Apache-2.0')
-makedepends=('cargo')
-checkdepends=('cargo')
+depends=('glibc' 'libgcc')
+makedepends=('rust')
 source=("cot-cli-$pkgver.tar.gz::https://github.com/cot-rs/cot/archive/cot-cli-v$pkgver.tar.gz")
 md5sums=('ca7c4c39d14aada9bd4dca5f46136f60')
 sha256sums=('029416cda3b80e1d02f9097e64402e761a40d25e4f89aaf6a47049203b0690b1')
 b2sums=('80258510b6065fe9e4b5b815b7a11879c2c7ecd1ced7f97fe57ba21d58c9018c1b998d4d4736f741648f69caf19b35fdd5430d1725a6d73e0a2641cdde92fd08')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
-export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
+export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src -C link-arg=-Wl,--as-needed"
 
 prepare() {
     cd "$pkgname-cot-cli-v$pkgver" || exit
@@ -40,7 +40,7 @@ build() {
 
 check() {
     cd "$pkgname-cot-cli-v$pkgver" || exit
-    cargo check --frozen --release
+    cargo check --frozen
 }
 
 package() {
