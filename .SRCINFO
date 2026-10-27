@@ -1,0 +1,21 @@
+pkgbase = pi-remote-control-bin
+	pkgdesc = Remote control for running Pi sessions: prc server with the mobile web UI built in
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/mipsel64/pi-remote-control
+	install = pi-remote-control-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = pi-remote-control=0.1.10
+	conflicts = pi-remote-control
+	conflicts = pi-remote-control-git
+	options = !debug
+	source_x86_64 = prc-0.1.10-linux-amd64.tar.gz::https://github.com/mipsel64/pi-remote-control/releases/download/v0.1.10/prc-v0.1.10-linux-amd64.tar.gz
+	sha256sums_x86_64 = cd8efec86f49b57a0f1c65709ef9860ae00c73ab1ded6985d5d00795305cb868
+	source_aarch64 = prc-0.1.10-linux-arm64.tar.gz::https://github.com/mipsel64/pi-remote-control/releases/download/v0.1.10/prc-v0.1.10-linux-arm64.tar.gz
+	sha256sums_aarch64 = 48487305dbdc810949297735a6ca01f0bfec7faa4843d38fc56e942458f28bf3
+
+pkgname = pi-remote-control-bin

@@ -1,0 +1,28 @@
+post_install() {
+  cat <<'EOF'
+==> Pi Remote Control server installed as /usr/bin/prc.
+
+    1. Create the config before starting the server (run as the user that
+       will serve, writes ~/.config/prc/config.json with mode 0600 and
+       prints the admin password once):
+
+         prc setup
+
+    2. Start the per-user service and open http://127.0.0.1:8787:
+
+         systemctl --user enable --now pi-remote-control.service
+
+    3. Attach Pi or omp sessions with the npm extension:
+
+         pi install npm:@mipsel64/pi-remote-control
+
+    Remote prompts run tools with your permissions; keep the server on
+    localhost or a private tailnet. Logs: journalctl --user -u pi-remote-control
+EOF
+}
+
+# Defined so upgrades do not replay the first-run instructions above
+# (pacman falls back to post_install when post_upgrade is missing).
+post_upgrade() {
+  :
+}

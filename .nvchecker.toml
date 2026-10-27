@@ -1,0 +1,5 @@
+[pi-remote-control]
+source = "github"
+github = "mipsel64/pi-remote-control"
+prefix = "v"
+use_latest_release = true
