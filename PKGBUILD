@@ -146,8 +146,87 @@ EOF
 </svg>
 EOF
     install -d "$pkgdir/usr/share/man/man1"
-    gzip -9 -n -c packaging/common/redalert2-recomp-setup.1 > "$pkgdir/usr/share/man/man1/redalert2-recomp-setup.1.gz"
-    gzip -9 -n -c packaging/common/redalert2-recomp-play.1 > "$pkgdir/usr/share/man/man1/redalert2-recomp-play.1.gz"
+    cat > "$pkgdir/redalert2-recomp-setup.1" <<'EOF'
+.TH REDALERT2-RECOMP-SETUP 1 "October 2026" "redalert2-recomp" "Games Manual"
+.SH NAME
+redalert2-recomp-setup \- build the recompiled Red Alert 2 and Yuri's Revenge
+.SH SYNOPSIS
+.B redalert2-recomp-setup
+.RI [ yr | ra2 ]
+.RI [ options ]
+.SH DESCRIPTION
+Static recompilation of Command & Conquer: Red Alert 2 and Yuri's Revenge to
+native code. The package ships the source; this script copies it to
+.I ~/.local/share/redalert2-recomp
+on first run, finds your own copy of the game (Steam, or
+.BR --game-dir ),
+then analyses, lifts and builds each game (30\-60 minutes, ~6 GB, once).
+.PP
+You need your own copy of the game: the folder holding
+.I game.exe
+and
+.IR gamemd.exe .
+Nothing from the game is in the package.
+.SH OPTIONS
+.TP
+.B yr | ra2
+Build only that game (about half the time).
+.TP
+.BR --yes
+Do not ask before installing anything.
+.TP
+.BR --game-dir " DIR"
+Use this install instead of searching Steam.
+.TP
+.BR --force
+Redo every step.
+.TP
+.BR --wine
+Build the Windows exes and play them under Wine instead of natively.
+.SH FILES
+.TP
+.I /usr/share/redalert2-recomp
+Pristine packaged source (do not build here).
+.TP
+.I ~/.local/share/redalert2-recomp
+Your per-user copy: game link, function catalogues
+.IR ( work/ ),
+lifted C
+.IR ( src/recomp/gen* )
+and builds
+.IR ( build-linux* ).
+.SH SEE ALSO
+.BR redalert2-recomp-play (1)
+.SH NOTE
+First builds need the 32-bit toolchain plus SDL2 and ffmpeg for i386; the
+script names the exact packages when any are missing.
+EOF
+    cat > "$pkgdir/redalert2-recomp-play.1" <<'EOF'
+.TH REDALERT2-RECOMP-PLAY 1 "October 2026" "redalert2-recomp" "Games Manual"
+.SH NAME
+redalert2-recomp-play \- play the recompiled Red Alert 2 or Yuri's Revenge
+.SH SYNOPSIS
+.B redalert2-recomp-play
+.RI [ yr | ra2 ]
+.RI [ args... ]
+.SH DESCRIPTION
+Runs an already-built native game out of
+.IR ~/.local/share/redalert2-recomp :
+.I build-linux/ra2
+(Yuri's Revenge) or
+.I build-linux-game/ra2
+(Red Alert 2), with
+.B --run
+plus any extra args passed through. If nothing is built yet it tells you to
+run
+.BR redalert2-recomp-setup (1)
+first.
+.SH SEE ALSO
+.BR redalert2-recomp-setup (1)
+EOF
+    gzip -9 -n -c "$pkgdir/redalert2-recomp-setup.1" > "$pkgdir/usr/share/man/man1/redalert2-recomp-setup.1.gz"
+    gzip -9 -n -c "$pkgdir/redalert2-recomp-play.1" > "$pkgdir/usr/share/man/man1/redalert2-recomp-play.1.gz"
+    rm "$pkgdir/redalert2-recomp-setup.1" "$pkgdir/redalert2-recomp-play.1"
     install -d "$pkgdir/usr/share/licenses/$_pkgname"
     install -m644 LICENSE NOTICE.md "$pkgdir/usr/share/licenses/$_pkgname/"
 }
