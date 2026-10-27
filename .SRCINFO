@@ -1,0 +1,14 @@
+pkgbase = mcp-toolbox-bin
+	pkgdesc = MCP server for databases (prebuilt)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/googleapis/mcp-toolbox
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = mcp-toolbox=1.15.0
+	conflicts = mcp-toolbox
+	source = mcp-toolbox-1.15.0::https://storage.googleapis.com/mcp-toolbox-for-databases/v1.15.0/linux/amd64/toolbox
+	sha256sums = f6fac005c39898a379523700727a2a3d0a2828f579bec22cc0efe74e0652062d
+
+pkgname = mcp-toolbox-bin
