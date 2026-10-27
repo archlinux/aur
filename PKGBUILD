@@ -5,25 +5,22 @@
 pkgname=crossplane-gixy
 _projectname=crossplane
 pkgver=0.5.16
-pkgrel=4
+pkgrel=5
 pkgdesc="Reliable and fast NGINX configuration file parser"
 arch=('any')
 url="https://github.com/dvershinin/crossplane"
 license=('Apache-2.0')
-depends=('python' 'python-simplejson')
+depends=('python')
+optdepends=('python-simplejson: faster JSON encoding/decoding')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
-checkdepends=('python-tox' 'pypy3')
+checkdepends=('python-pytest')
 provides=('crossplane')
 conflicts=('crossplane')
 options=('!debug')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dvershinin/$_projectname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0037122835d0e1eead275abcc416f688986fd7028ce4a918fc28f81ff6b27da')
-
-prepare() {
-  cd "$srcdir/$_projectname-$pkgver" || exit
-  sed -i 's/^envlist.*/envlist = python, pypy/' tox.ini
-}
+sha512sums=('3a6dd3363ba720a8bc2462706993980ab71eae8c04a0bfd573a23440d5adbb1f6313c9ca62dfa814691b3ea49ea9793c9f1d9183f935286b02320422b982d0a0')
+b2sums=('b43e71a5511f1e0bdbae381c8dfe3f6e2a12327128f0ea0659a7fada3d726c3a3565e46e5ff94ed2598b2c4b0225956acd0d65dfcb0260c28326d91634600e6c')
 
 build() {
   cd "$srcdir/$_projectname-$pkgver" || exit
@@ -32,13 +29,12 @@ build() {
 
 check() {
   cd "$srcdir/$_projectname-$pkgver" || exit
-  python -m tox
+  python -m pytest
 }
 
 package() {
   cd "$srcdir/$_projectname-$pkgver" || exit
   python -m installer --destdir="$pkgdir" dist/*.whl
-  mkdir -p "$pkgdir"/usr/share/{doc/"$_projectname",licenses/"$_projectname"}
-  install -Dm644 AUTHORS.rst README.md "$pkgdir/usr/share/doc/$_projectname"
-  install -Dm644 LICENSE NOTICE "$pkgdir/usr/share/licenses/$_projectname"
+  install -Dm644 AUTHORS.rst README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE NOTICE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
