@@ -1,8 +1,9 @@
 # Bootloader for the raspberry pi SBCs (fw between the GPU ROM-kernel).
 # Split package by board lineup to avoid clutter. NOT automatically installed.
+# For the Pi5 see https://github.com/raspberrypi/rpi-eeprom
 
 pkgbase=raspberrypi-bootloader
-pkgname=(raspberrypi-bootloader-rpi4)
+pkgname=(raspberrypi-bootloader-legacy raspberrypi-bootloader-rpi4)
 pkgver=1.20260915
 pkgrel=1
 pkgdesc="Bootloader files for Raspberry Pi"
@@ -21,5 +22,15 @@ package_raspberrypi-bootloader-rpi4() {
     install -Dm644 boot/LICENCE.broadcom "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     for file in start4{,cd,db,x}.elf fixup4{,cd,db,x}.dat; do
         install -Dm644 -t "$pkgdir/usr/lib/raspberrypi/rpi4/boot" "boot/$file"
+    done
+}
+
+package_raspberrypi-bootloader-legacy() {
+    pkgdesc+=" (1/2/3, Zero & Zero 2)"
+    cd "$srcdir/firmware-$pkgver"
+
+    install -Dm644 boot/LICENCE.broadcom "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    for file in start{,_cd,_x,_db}.elf fixup{,_cd,_x,_db}.dat bootcode.bin; do
+        install -Dm644 -t "$pkgdir/usr/lib/raspberrypi/legacy/boot" "boot/$file"
     done
 }
