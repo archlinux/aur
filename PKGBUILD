@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="HTTP(S)/WS(S)/TCP Tunnels to localhost using only SSH"
 
-pkgver=3.0.5
+pkgver=3.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ install="${_appname}.install"
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}.${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}.${_barch[1]}.tar.gz")
-sha256sums_x86_64=('81fe1ed90447d54e1c6973e4a12a3842845d48ec6d970c2ff628f6f89e5398bf')
-sha256sums_aarch64=('f7774b837795261729cfb484c3ecc5230922d1f1d2bca8749cf814788e9009f4')
+sha256sums_x86_64=('a516791a6e2816d3270d9e867894b0a11ff5ddd37f57d237339cbbdee064770f')
+sha256sums_aarch64=('8e0ce98c7e5581149708a48d4438ed2a01a67f10ad1ef0a5514ee9ff7c2b1426')
 
 
 case ${CARCH} in
