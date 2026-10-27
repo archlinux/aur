@@ -15,7 +15,7 @@ _appimage="${_PkgName}-${pkgver}.AppImage"
 source=("${_appimage}::${url}/releases/download/v3.2.0/${_PkgName}-Linux.AppImage"
         "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/RyanYuuki/AnymeX/refs/tags/v3.2.0/LICENSE.md")
 noextract=(${_appimage})
-sha256sums=('bf93304df4cc32a36cfacd3173f0e004dd8971d933a828d519a251e07db4dcc7' 'SKIP')
+sha256sums=('3d4d9e0406172ecc5d09122f7903c709457cdfcfe25fad05430896d929644cd6' 'SKIP')
 
 prepare() {
     chmod +x "${_appimage}"
