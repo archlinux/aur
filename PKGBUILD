@@ -4,7 +4,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=8.3.0.r0.g2bd138377
+pkgver=8.2.9.r64.g9b89da035
 pkgrel=1
 pkgdesc='Audio Effects for PipeWire applications'
 arch=(aarch64 x86_64)
@@ -44,6 +44,8 @@ optdepends=(
   'mda.lv2: bass loudness'
   'x42-plugins-lv2: autotune'
   'libdeep_filter_ladspa: deep noise remover'
+  'hush-mic: DPDFNet noise remover'
+  'rakarrack-plus: harmonizer'
 )
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}=${pkgver%%.r*}")

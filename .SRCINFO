@@ -43,6 +43,8 @@ pkgbase = easyeffects-git
 	optdepends = mda.lv2: bass loudness
 	optdepends = x42-plugins-lv2: autotune
 	optdepends = libdeep_filter_ladspa: deep noise remover
+	optdepends = hush-mic: DPDFNet noise remover
+	optdepends = rakarrack-plus: harmonizer
 	provides = easyeffects=8.2.9
 	conflicts = easyeffects
 	source = easyeffects::git+https://github.com/wwmm/easyeffects
