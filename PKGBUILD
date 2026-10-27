@@ -4,7 +4,7 @@
 # for glibc 2.34 and newer). release.yml's `aur` job sets pkgver and the
 # checksums from the release, regenerates .SRCINFO and pushes.
 pkgname=enclave-messenger-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Private messages without a phone number, through Tor and the Nym mixnet'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ options=('!strip' '!debug')
 _v=${pkgver//_/-}
 source_x86_64=("https://github.com/0xnullsect0r/enclave-messenger/releases/download/v${_v}/enclave-${_v}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/0xnullsect0r/enclave-messenger/releases/download/v${_v}/enclave-${_v}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('2b0f6d55a17f53616200435c2fa7e02630742e8280976a6083a012dee02d00fb')
-sha256sums_aarch64=('f9c00986640032ef213fe9d9ed5bb34f454691b5ff61f1a4fcfa2ebf92cfe18b')
+sha256sums_x86_64=('e00dc874f0bb1a8b5c20455b08f456c03eb9f33717c12e5bb843458814576263')
+sha256sums_aarch64=('827de8ec1d146a6373795d1062db866ae67fb546def6048c7dbe0c5b9b9a0449')
 
 package() {
   cd "enclave-${_v}-${CARCH}-unknown-linux-gnu"
