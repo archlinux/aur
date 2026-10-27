@@ -1,0 +1,13 @@
+pkgbase = jabridge
+	pkgdesc = Control Jabra headsets and dongles on Linux. Change settings, manage sound and update supported firmware.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/Watchdog0x/jabridge
+	arch = x86_64
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = go
+	source = https://github.com/Watchdog0x/jabridge/releases/download/v1.4.0/jabridge_1.4.0_source.tar.gz
+	sha256sums = 95000d5bbf441d79397010c0d7680a073b4552c307c0abe4e38ed4da7ca07327
+
+pkgname = jabridge
