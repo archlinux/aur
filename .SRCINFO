@@ -1,0 +1,33 @@
+pkgbase = python-scad123d-git
+	pkgdesc = Import OpenSCAD files as native build123d BRep geometry, via OpenSCAD's flattened CSG export (latest git version)
+	pkgver = 0.9.0.r0.g611f524
+	pkgrel = 1
+	url = https://github.com/etjones/scad123d
+	arch = any
+	license = MIT AND OFL-1.1
+	checkdepends = python-pytest
+	checkdepends = python-psutil
+	checkdepends = python-rich
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = openscad
+	depends = python
+	depends = python-build123d>=0.13.0
+	depends = python-fonttools
+	depends = python-lark-parser
+	depends = python-numpy
+	depends = python-ocp
+	depends = python-scipy
+	depends = python-webcolors
+	optdepends = scad2step: scad2step command
+	optdepends = python-psutil: scad123d-batch
+	optdepends = python-rich: scad123d-batch
+	provides = python-scad123d
+	conflicts = python-scad123d
+	source = git+https://github.com/etjones/scad123d.git
+	sha256sums = SKIP
+
+pkgname = python-scad123d-git
