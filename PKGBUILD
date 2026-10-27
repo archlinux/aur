@@ -2,15 +2,18 @@
 
 pkgname=cargo-afl
 pkgver=0.17.1
-pkgrel=1
+_commit='52df6acdceae8430f403f89cfc825085f7db64ef'
+pkgrel=2
 pkgdesc="Fuzzing Rust code with AFLplusplus"
 arch=(x86_64)
 url="https://github.com/rust-fuzz/afl.rs"
 license=('Apache-2.0')
-depends=(glibc gcc-libs)
-makedepends=(cargo git)
+depends=(glibc libgcc)
+makedepends=(rust git)
 options=(!debug !lto)
-source=("git+https://github.com/rust-fuzz/afl.rs.git#tag=v$pkgver"
+source=("git+https://github.com/rust-fuzz/afl.rs.git#commit=$_commit"
+	# AFLplusplus is afl.rs's git submodule, so it lives under its own GitHub org.
+	# pkglint: ignore=PB109
 	"git+https://github.com/AFLplusplus/AFLplusplus.git#commit=afbcb07")
 sha256sums=('19e5fc96c0672a6a068d8872618ce8776130c43c39a0ad8513f60acc50869038'
             '1759a74a078b5d64827b41ca3b489aef08e21b6bf9468c3bb82951f1040026e1')
@@ -27,7 +30,7 @@ prepare() {
     git config submodule.cargo-afl/AFLplusplus.url "$srcdir/AFLplusplus"
     git -c protocol.file.allow=always submodule update
 
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {

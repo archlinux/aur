@@ -1,17 +1,17 @@
 pkgbase = cargo-afl
 	pkgdesc = Fuzzing Rust code with AFLplusplus
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rust-fuzz/afl.rs
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = cargo
+	makedepends = rust
 	makedepends = git
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	options = !debug
 	options = !lto
-	source = git+https://github.com/rust-fuzz/afl.rs.git#tag=v0.17.1
+	source = git+https://github.com/rust-fuzz/afl.rs.git#commit=52df6acdceae8430f403f89cfc825085f7db64ef
 	source = git+https://github.com/AFLplusplus/AFLplusplus.git#commit=afbcb07
 	sha256sums = 19e5fc96c0672a6a068d8872618ce8776130c43c39a0ad8513f60acc50869038
 	sha256sums = 1759a74a078b5d64827b41ca3b489aef08e21b6bf9468c3bb82951f1040026e1
