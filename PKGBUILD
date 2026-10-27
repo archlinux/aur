@@ -2,7 +2,7 @@
 # Contributor: weselben <bengottwaldi04 at gmail dot com>
 
 pkgname=gomodel-git
-pkgver=0.1.108
+pkgver=0.1.108.r10.g6096b766
 pkgrel=1
 pkgdesc="High-performance AI gateway (git main build, quasi-nightly)"
 arch=('x86_64' 'aarch64')
@@ -29,13 +29,10 @@ options=('!lto')
 
 pkgver() {
   cd "${pkgname}"
-  local ver=$(git describe --tags --long 2>/dev/null | sed 's/^v//')
-  if [ -n "$ver" ]; then
-    printf "%s" "$ver"
-  else
-    printf "0.1.108.r%s.g%s" \
+  git describe --tags --long 2>/dev/null \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+    || printf "r%s.g%s" \
       "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
 }
 
 prepare() {
