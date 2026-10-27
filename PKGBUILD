@@ -22,7 +22,7 @@ source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v${pkgve
 md5sums=('73939a0c8fb449e1f572d2966502b23f'
          '3c1235643decce6f1a29c5644d2b527b'
          '9419012794e5e134bc152cfd388d63e7'
-         '3be05b06c7a6e269d9a4c74dcf239d19')
+         'ca708a7d64bf477c9d83c1b518373241')
 
 build() {
   cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"

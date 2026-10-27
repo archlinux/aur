@@ -3,11 +3,15 @@ post_install() {
     mkdir -p /var/log/ocsinventory-agent
     chmod 755 /var/lib/ocsinventory-agent
     chmod 755 /var/log/ocsinventory-agent
-    echo "Edit /etc/ocsinventory/ocsinventory-agent.cfg with your server details."
+
+    local response
+    while ! [[ $response =~ ^[YyNn]$ ]]; do
+        read -p $'\nEdit config? (y/n): ' -n 1 response
+        echo ""
+    done
+    [[ $response =~ ^[Yy]$ ]] && ${EDITOR:-nano} /etc/ocsinventory/ocsinventory-agent.cfg || echo "Edit: /etc/ocsinventory/ocsinventory-agent.cfg"
 }
-pre_upgrade() {
-    mv /etc/ocsinventory/ocsinventory-agent.cfg /etc/ocsinventory/ocsinventory-agent.cfg.OLD
-}
-post_upgrade() {
-    mv /etc/ocsinventory/ocsinventory-agent.cfg.OLD /etc/ocsinventory/ocsinventory-agent.cfg
+
+pre_remove() {
+    echo "Configuration preserved at /etc/ocsinventory/"
 }
