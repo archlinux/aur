@@ -2,7 +2,7 @@
 
 pkgname=kiro-crew-bin
 _name=${pkgname%-bin}
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A persistent workspace for development work that self-improves and continues beyond one session'
 arch=(aarch64 x86_64)
@@ -40,8 +40,8 @@ conflicts=($_name)
 options=(!strip !debug)
 source_aarch64=($pkgname-$pkgver-aarch64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v$pkgver/KiroCrew-$pkgver-arm64.AppImage)
 source_x86_64=($pkgname-$pkgver-x86_64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v$pkgver/KiroCrew-$pkgver-x86_64.AppImage)
-b2sums_aarch64=('2f8249e2f43e06e4a0c280e8e99a01850cb56403767e8b4fdfeac57f67825a6c547236a0276f051e60994eff7e43c3612662a7cb2020b2dd59a188e9eaa2b92e')
-b2sums_x86_64=('c074ca7c58b9a700115a7731d039eea222388508aab8af0981eab5a794660ebe72022bdaffd84e1f183ab223267cbae4617ac7a7cfef359ab1f31eac0da220d9')
+b2sums_aarch64=('629f24c4ba2cd06a9e08c629ab92c7da7e91623968f922e253eed75aaf1c809710e992758a5a3ce520c94b6ac49faa729482e2a071a335019ba0a35b637d92d3')
+b2sums_x86_64=('d32fccd207f1d92add47b04c37570171951a533a2da8801af409d763951cda4775558d34e1511e62b36de9344ba4f6bf44bcf441197a88e3c499abc5ec55f34a')
 
 prepare() {
     local appname=kirocrew-desktop
