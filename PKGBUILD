@@ -7,7 +7,7 @@
 # Jan de Groot <jgc@archlinux.org>
 
 pkgname=cinnamon-control-center-git
-pkgver=6.7.7.unstable.r0.g3d276c0
+pkgver=6.8.0.r0.gec7bef1
 pkgrel=1
 pkgdesc="The Control Center for Cinnamon"
 arch=('i686' 'x86_64')
