@@ -20,13 +20,13 @@ module.exports = {
         url: 'https://<keycloakserver/realms/<realm>',
         client_id: "cryptpad",
         client_secret: "<clientsecret>",
-        jwt_alg: 'RS256', (deprecated)
-        id_token_alg: 'PS256', (optional)
-        userinfo_token_alg: 'PS256', (optional)
-        username_scope: 'profile',  (optional)
-        username_claim: 'name', (optional)
-        use_pkce: true, (optional)
-        use_nonce: true (optional)
+        // jwt_alg: 'RS256', // (deprecated)
+        id_token_alg: 'PS256', // (optional)
+        userinfo_token_alg: 'PS256', // (optional)
+        username_scope: 'profile',  // (optional)
+        username_claim: 'name', // (optional)
+        use_pkce: true, // (optional)
+        use_nonce: true // (optional)
       },
     /*
 
