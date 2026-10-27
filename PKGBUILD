@@ -5,8 +5,8 @@
 
 pkgname=albert-bin
 _pkgname=albert
-pkgver=35.1.0
-pkgrel=1
+pkgver=35.2.0
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher. Binary version."
 arch=('x86_64')
 url="https://albertlauncher.github.io/"
@@ -32,8 +32,8 @@ depends=(
     'python-pycparser'
 )
 optdepends=('qt6-wayland: Wayland support')
-source=("https://github.com/vijayv996/albert-bin/releases/download/v35.1.0/albert-35.1.0-1-x86_64.pkg.tar.zst")
-sha256sums=('3b6383e61733eed71c605884660121ed80b728ecace656a6b0d5b6cce427c421')
+source=("https://github.com/vijayv996/albert-bin/releases/download/v35.2.0/albert-35.2.0-2-x86_64.pkg.tar.zst")
+sha256sums=('c7394c4983e7262cab668b3bcc94f10eb2b291034143b90c3b5e549331c85361')
 options=('!strip' '!debug')
 
 package() {
