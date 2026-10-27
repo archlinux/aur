@@ -1,6 +1,6 @@
 pkgbase = reflectcpp-git
 	pkgdesc = A C++20 library for fast serialization, deserialization and validation using reflection
-	pkgver = 0
+	pkgver = 0.26.2.r10.g587b72ee
 	pkgrel = 1
 	url = https://github.com/getml/reflect-cpp
 	arch = x86_64
@@ -9,12 +9,13 @@ pkgbase = reflectcpp-git
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc
+	makedepends = git
 	makedepends = ninja
-	optdepends = libxml2: for XML serialization support
-	optdepends = yaml-cpp: for YAML serialization support
-	optdepends = pugixml: for XML serialization support (alternative to libxml2)
+	depends = pugixml
+	depends = tomlplusplus
+	depends = yaml-cpp
 	provides = reflectcpp
-	provides = reflectcpp=0
+	provides = reflectcpp=0.26.2.r10.g587b72ee
 	conflicts = reflectcpp
 	source = git+https://github.com/getml/reflect-cpp.git
 	sha256sums = SKIP

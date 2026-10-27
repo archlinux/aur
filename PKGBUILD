@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 # Contributor: Community
 pkgname=reflectcpp-git
-pkgver=0
+pkgver=0.26.2.r10.g587b72ee
 pkgrel=1
 pkgdesc="A C++20 library for fast serialization, deserialization and validation using reflection"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,15 +10,15 @@ license=('MIT')
 makedepends=(
   'cmake'
   'gcc'
+  'git'
   'ninja'
 )
-# reflectcpp is header-only + bundled deps, no runtime dependencies
-depends=()
-# Optional format support dependencies
-optdepends=(
-  'libxml2: for XML serialization support'
-  'yaml-cpp: for YAML serialization support'
-  'pugixml: for XML serialization support (alternative to libxml2)'
+# TOML, YAML, and XML are compiled in and linked against the system
+# libraries (see the cmake flags below). JSON uses the bundled yyjson.
+depends=(
+  'pugixml'
+  'tomlplusplus'
+  'yaml-cpp'
 )
 provides=("reflectcpp" "reflectcpp=${pkgver}")
 conflicts=('reflectcpp')
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/reflect-cpp"
-  git describe --tags --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
