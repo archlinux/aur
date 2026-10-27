@@ -1,16 +1,15 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-launch
-pkgver=0.2.1
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Application discovery and launcher diagnostic CLI for Niri"
+pkgdesc="Linux desktop application launcher and diagnostic CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-launch"
-license=('GPL-3.0-only')
-depends=('niri')
+license=('BSD-3-Clause')
 makedepends=('go>=1.26.4')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-launch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ee7e7d66190eab58dcd67ca704c42ac5edc716327373d609e44a729cefac76e2')
+sha256sums=('fc02c4ac56b3f32b0d91e2552e3ed7b9db88276aadc21ff1a03a3ca7073599dc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
