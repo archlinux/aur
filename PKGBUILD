@@ -1,5 +1,5 @@
 pkgname=tamery-bin
-pkgver=0.99.2
+pkgver=0.99.3
 pkgrel=1
 pkgdesc="AI-powered tool for working with Postgres, MySQL, MSSQL, ClickHouse and SQLite."
 arch=('x86_64')
@@ -35,7 +35,7 @@ provides=('tamery')
 conflicts=('tamery')
 options=('!strip' '!emptydirs')
 source_x86_64=("tamery-${pkgver}.deb::https://download.tamery.app/versions/${pkgver}/linux/deb/x64")
-sha256sums_x86_64=('c6485587158c94060318d33f73349232528f09c84baca4ba34570ff0f82638f6')
+sha256sums_x86_64=('c5a009b1e718061cf2ff83d503febe1ddd630c6cc98d992b1795d63fac888273')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}"
