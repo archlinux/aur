@@ -1,4 +1,4 @@
-# Maintainer: Valens <hello@valens.dev>
+# Maintainer: Valens <info@valens.dev>
 #
 # Generated file — do not edit by hand.
 # Edit contrib/aur/PKGBUILD.template and run `pnpm aur:gen`.
