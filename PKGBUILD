@@ -9,7 +9,7 @@ _cuda_arch=
 
 pkgbase=whisrs
 pkgname=(whisrs whisrs-cuda whisrs-vulkan)
-pkgver=0.1.29
+pkgver=0.1.31
 pkgrel=1
 pkgdesc='Linux-first voice-to-text dictation tool, written in Rust'
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(cargo clang cmake cuda vulkan-headers vulkan-icd-loader shaderc)
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('2b1dd2849f21a04e1b5e719702731a6e76049fefb68f77f2a55f947e7fea8d53')
+sha256sums=('51450871e4b2c985f272a6034aa082f613c8b2623955bacf8abd5987ac6bdb74')
 
 prepare() {
   cd $pkgbase-$pkgver
