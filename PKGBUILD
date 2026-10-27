@@ -5,7 +5,7 @@
 pkgname=keysharp-git
 pkgver=v0.0.0.18.r0.g54af9a3
 pkgrel=1
-pkgdesc="Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. X11 version."
+pkgdesc="Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. Compatible with X11 and Wayland."
 arch=('x86_64')
 url="https://github.com/keysharp-org/Keysharp/"
 license=('GPL-3.0-or-later')
