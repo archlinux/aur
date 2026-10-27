@@ -1,7 +1,7 @@
 # Maintainer: Evilchuck666 <carlos.martinez.medina1992@gmail.com>
 _pkgname=WinJitsu
 pkgname=winjitsu
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A slick, animated window management tool for Linux (X11)"
 arch=('any')
