@@ -1,17 +1,18 @@
 pkgbase = foxtelgo
 	pkgdesc = Unnofficial FoxtelGo desktop application
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/foxtelgo
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = electron-castlab-bin
-	depends = libelectron
+	depends = libelectron>=2026.3
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/foxtelgo/application/-/archive/1.1.0/application-1.1.0.tar.bz2
-	sha256sums = 74142a138d6733a02e65bd9ab39039be43b19ad52bf8eb7b5faa9d2b67625372
+	source = https://gitlab.com/linuxbombay/foxtelgo/application/-/archive/1.1.1/application-1.1.1.tar.bz2
+	sha256sums = 281b66f5d20a2d6f89f792a28cd7d91d64c792f75d3f010ffbd934ff3ef87e16
 
 pkgname = foxtelgo

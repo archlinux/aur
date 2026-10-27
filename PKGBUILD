@@ -1,14 +1,14 @@
 pkgname=foxtelgo
 _pkgname=FoxtelGo
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/foxtelgo"
 license=('GPL')
-depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('electron-castlab-bin' 'libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('74142a138d6733a02e65bd9ab39039be43b19ad52bf8eb7b5faa9d2b67625372')
+sha256sums=('281b66f5d20a2d6f89f792a28cd7d91d64c792f75d3f010ffbd934ff3ef87e16')
 
 
 package() {
