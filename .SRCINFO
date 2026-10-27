@@ -1,0 +1,24 @@
+pkgbase = grimoire-tui-git
+	pkgdesc = A terminal writing desk for novels
+	pkgver = 0.7.5.r0.gf3ca1e8
+	pkgrel = 1
+	url = https://github.com/kelsierbot/GrimoireTUI
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = alsa-lib
+	optdepends = speech-dispatcher: For the voice feature
+	optdepends = espeak-ng: Another option for the voice feature
+	provides = grimoire
+	conflicts = grimoire-tui-git
+	conflicts = grimoire-tui-bin
+	options = !lto
+	options = !debug
+	source = grimoire-tui-main::git+https://github.com/kelsierbot/GrimoireTUI.git#branch=main
+	source = grimoire.desktop
+	sha256sums = SKIP
+	sha256sums = 9063f4253aaa32cac86665cee124f5388ce0c9efc8df7077a40566638b4a5aad
+
+pkgname = grimoire-tui-git

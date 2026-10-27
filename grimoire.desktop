@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Grimoire
+Comment=A terminal writing desk for novels
+Exec=grimoire
+Icon=grimoire
+Terminal=true
+Categories=TextEditor;
+StartupWMClass=Grimoire
