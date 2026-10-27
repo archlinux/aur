@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=amazon-corretto-11
-pkgver=11.0.33.0.9
+pkgver=11.0.33.0.10
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ package() {
   esac
 }
 
-sha256sums_x86_64=('a9ce82ab7bcc503d4514628052860c74215309e4a58c4113b679f14675625fe9'
+sha256sums_x86_64=('f368ac379f3b20e266080e80fcc1f5e8567d044a4f895c8786220cab5b580c15'
                    'SKIP')
-sha256sums_aarch64=('53d7619af34494903745c9ac00d484863950e9322f52d50122589e3b51bfbda2'
+sha256sums_aarch64=('ada21539d4959e8946b20b55a2c868a006d4b993be0633c576e3d38c8b9d0c1c'
                     'SKIP')
