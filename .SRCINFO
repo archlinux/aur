@@ -1,6 +1,6 @@
 pkgbase = rayfish
 	pkgdesc = P2P mesh VPN powered by iroh
-	pkgver = 0.5.10
+	pkgver = 0.5.11
 	pkgrel = 1
 	url = https://github.com/rayfish/rayfish
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rayfish
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = rayfish-0.5.10.tar.gz::https://github.com/rayfish/rayfish/archive/v0.5.10.tar.gz
-	sha256sums = e1eae1ed7089746f59008ef9dc255d572a42689513a5fe3cf29a6345934d8d83
+	source = rayfish-0.5.11.tar.gz::https://github.com/rayfish/rayfish/archive/v0.5.11.tar.gz
+	sha256sums = dcf151484b83cea47e871c0ebf55857edf62baf3ed9eed4291899d278cec2ad5
 
 pkgname = rayfish
