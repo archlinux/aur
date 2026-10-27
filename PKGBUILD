@@ -4,8 +4,8 @@ pkgname=efisc2025-bin
 _pkgname=efisc2025
 pkgver=1.0.6.78
 _debver=1.0.6-78
-pkgrel=2
-pkgdesc="Steuererklärungssoftware des Kantons Thurgau für das Steuerjahr 2024 (eFisc2025)"
+pkgrel=3
+pkgdesc="Steuererklärungssoftware des Kantons Thurgau für das Steuerjahr 2025"
 arch=('x86_64')
 url="https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2025.html/17525"
 license=('LicenseRef-proprietary')
@@ -17,11 +17,10 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("https://efisc.kttg.ch/update/eFisc/2025/${_pkgname}_${_debver}_amd64.deb")
 sha256sums=('315c199dd34f4a8bb58ffd7450571afa44897f9371587635a8b3d4f67b0ebea1')
-noextract=("${_pkgname}_${_debver}_amd64.deb")
 
 prepare() {
   mkdir -p data
-  bsdtar -xOf "${_pkgname}_${_debver}_amd64.deb" 'data.tar.*' | bsdtar -xf - -C data
+  bsdtar -xf data.tar.* -C data
 }
 
 package() {
