@@ -1,14 +1,14 @@
 # Maintainer: kausban <mail at kausban com>
 pkgname=openaudible-bin
-pkgver=5.0.3
+pkgver=5.1
 pkgrel=2
 pkgdesc="a cross-platform audiobook manager designed for Audible users. Manage all your audiobooks with this easy-to-use desktop application"
 arch=('x86_64')
 url="https://openaudible.org"
 license=('Apache')
 depends=("desktop-file-utils" "webkit2gtk-4.1")
-source=("https://github.com/openaudible/openaudible/releases/download/v5.0.3/OpenAudible_5.0.3_x86_64.deb")
-sha512sums=('ee9e86123bb56f43d117635ad323bbcaf8fa01b334860dbf52ec9094df2e6f4aea3a3ffa79f498f2b57cfd39fe724c623669364b84a876cbf635b1cc2a90538f')
+source=("https://github.com/openaudible/openaudible/releases/download/v5.1/OpenAudible_5.1_x86_64.deb")
+sha512sums=('289938ce52cec714a256e08680d93b001fa9f2195b4e4386cc8af0357056a19b5c2a2027bc5c66eea7bffd12b2439fd6794a40f9da1d731c264b819466950128')
 
 package(){
     # Extract package data
