@@ -11,7 +11,7 @@ pkgrel=3
 pkgdesc="Hardware and software inventory tool (client)"
 arch=('x86_64' 'aarch64')
 url="http://www.ocsinventory-ng.org"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('perl' 'glibc' 'which' 'dmidecode' 'pciutils'
      'perl-libwww' 'perl-lwp-protocol-https' 'perl-io-socket-ssl'
      'perl-net-ip' 'perl-xml-simple' 'perl-net-snmp')
