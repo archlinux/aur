@@ -1,7 +1,7 @@
 pkgbase = ergochat-dnsbl
 	pkgdesc = DNSBL plugin for the IRC server Ergo
 	pkgver = r8.3e66d08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ergochat/ergo-dnsbl
 	arch = i686
 	arch = pentium4
@@ -10,7 +10,7 @@ pkgbase = ergochat-dnsbl
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = Apache-2.0
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc

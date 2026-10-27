@@ -1,4 +1,4 @@
-# Maintainer: Christian Pfeiffer <cpfeiffer@live.de>
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
@@ -6,11 +6,11 @@ pkgname=ergochat-dnsbl
 _upstream_pkgname=ergo-dnsbl
 pkgver=r8.3e66d08
 _commit=3e66d083e859c5ac36d826db3b381ab509d461b7
-pkgrel=1
+pkgrel=2
 pkgdesc="DNSBL plugin for the IRC server Ergo"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/ergochat/ergo-dnsbl"
-license=('Apache-2.0')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+$url#commit=$_commit")
