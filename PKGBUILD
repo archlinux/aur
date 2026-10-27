@@ -4,7 +4,7 @@
 
 _pkgname=squashfuse
 pkgname=${_pkgname}-git
-pkgver=0.6.3.r0.g1a211e2
+pkgver=0.6.5.r0.gb3a880a
 pkgrel=1
 pkgdesc="FUSE filesystem to mount squashfs archives"
 arch=('x86_64')
