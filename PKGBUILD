@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname="cloudlist"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tool for listing Assets from multiple Cloud Providers"
 arch=(
@@ -26,7 +26,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('cecd9e860707139226672ad79812c0ba6b45ab4e92faaa53f3f39f8be239ebe8')
+sha256sums=('e75a769df7418f51b011b444c62fd4b758547e2dcc130369f69872a1b6e7009c')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -57,6 +57,6 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -vDm644 "README.md"  -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
