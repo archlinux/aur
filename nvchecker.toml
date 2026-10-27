@@ -3,4 +3,4 @@ source = "github"
 github = "saltstack/salt"
 prefix = "v"
 use_max_tag = true
-exclude_regex = "v.*(pre|rc|alpha|beta|\\-).*"
+exclude_regex = ".*(pre|rc|alpha|beta|\\-).*"
