@@ -1,5 +1,5 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# shellcheck disable=SC2034,SC2154,SC2164
+# shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
 pkgname=powershell-dsc
@@ -22,13 +22,13 @@ prepare() {
   # We need to delete this to use the usual crates.io
   rm "$pkgname"/.cargo/config.toml
 
-  cd "$pkgname"
+  cd "$pkgname" || exit
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   export RUSTUP_TOOLCHAIN=stable
 
   # shellcheck disable=SC2016
@@ -46,7 +46,7 @@ build() {
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   export RUSTUP_TOOLCHAIN=stable
 
   # Doesn't seem to account for pwsh.profile.dsc.resource.json being shipped with PowerShell
@@ -79,7 +79,7 @@ check() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
 
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/lib/DSC"
