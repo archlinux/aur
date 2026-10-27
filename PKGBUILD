@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 pkgname=gccdiag
-pkgver=0.2.4
-pkgrel=1
+pkgver=0.2.7
+pkgrel=2
 pkgdesc="Utility to get GCC diagnostics for a file, with flags from compilation database."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/andrejr/gccdiag"
@@ -17,7 +17,7 @@ license=('GPL3')
 provides=("gccdiag")
 conflicts=("gccdiag-git")
 source=("https://gitlab.com/api/v4/projects/28532726/packages/generic/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5200f5ab13aabf7e83c45fe4f37119b71321c91ba72729e8d4581eda2fee3a6c')
+sha256sums=('f2d8841eafcfa34a6eb52a2d34eccbf6cfd81174892622a068eaaaa29c6466fa')
 
 build() {
     cmake \
