@@ -7,10 +7,16 @@ pkgrel=1
 arch=('x86_64')
 url='https://github.com/lindell/multi-gitter'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lindell/multi-gitter/archive/refs/tags/v${pkgver}.tar.gz")
-depends=()
+depends=('glibc')
 makedepends=('go')
 b2sums=('16675d1e19f86452e4a4a610d0b97e9681a8698b896feaab82ba6f63c7a21df9b08710df129dcfb2efcd6614f0279d673d430ddcdf75425395fe86e326bb564a')
 license=('Apache-2.0')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+
+  GOFLAGS="-modcacherw" go mod download
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit

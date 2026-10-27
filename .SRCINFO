@@ -6,6 +6,7 @@ pkgbase = multi-gitter
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
+	depends = glibc
 	source = multi-gitter-0.64.0.tar.gz::https://github.com/lindell/multi-gitter/archive/refs/tags/v0.64.0.tar.gz
 	b2sums = 16675d1e19f86452e4a4a610d0b97e9681a8698b896feaab82ba6f63c7a21df9b08710df129dcfb2efcd6614f0279d673d430ddcdf75425395fe86e326bb564a
 
