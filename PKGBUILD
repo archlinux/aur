@@ -3,19 +3,20 @@
 # Contributor: Rafael Silva <perigoso at riseup dot net>
 
 pkgname='epics-base'
-pkgver=7.0.10
-pkgrel=2
+pkgver=7.0.11
+pkgrel=1
 pkgdesc="Experimental Physics and Industrial Control System"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://epics-controls.org"
 license=('LicenseRef-EPICS-Open-License')
 groups=('epics')
-depends=('readline' 'ncurses' 'perl')
-source=("https://epics-controls.org/download/base/base-${pkgver}.tar.gz"{,.asc}
+depends=('readline' 'perl')
+optdepends=('python: generate relative RPATHs when building EPICS modules with LINKER_USE_RPATH=ORIGIN')
+source=("https://github.com/epics-base/epics-base/releases/download/R${pkgver}/base-${pkgver}.tar.gz"{,.asc}
         '01_install_permissions.patch'
         '02_no_rpath.patch'
 )
-sha512sums=('94b238ff014feb5c8550659b13891699b181454bbf784bb365e366aebd2c840e59a31d97a854f2e32027fbd7bfc10377935225440198dc0930535721b73244ed'
+sha512sums=('ded8148941e7b130df7db0c5d17d0e94f0ba3c531d23ce34d0664429572ed5079d001a66cfe81e180025e45434f34b51baab1333c4f02052cb34aea430ee94e8'
             'SKIP'
             '8d8ea744e1bd011c0a01c645a37cd29c420830389ce340820975ea798c6138ce28d7d5e066fe503025fb353a2e19c1a33169a3d5777414e60b42eb5b3874091a'
             '394b023fe3003e61701c8c31d44c17281297a3b67f3bbe604e9191f38267986c34b06fe24eae5e778a29b466b022bdce5d4d0f4061da9c91a44467f1e0d266a3')
@@ -29,39 +30,42 @@ prepare() {
     patch --forward --strip=1 --input="${srcdir}/02_no_rpath.patch"
 
     # install files to staging area
-    echo "INSTALL_LOCATION=${srcdir}/staging/usr/lib/epics" >'configure/CONFIG_SITE.local'
+    echo "INSTALL_LOCATION=${srcdir}/staging/${CARCH}/usr/lib/epics" >'configure/CONFIG_SITE.local'
 
     # final install location
     echo 'FINAL_LOCATION=/usr/lib/epics' >>'configure/CONFIG_SITE.local'
 
+    # avoid embedding the staging directory as the IOC's TOP
+    echo 'IOCS_APPL_TOP=/usr/lib/epics' >>'configure/CONFIG_SITE.local'
+
     # get the EPICS_HOST_ARCH and write it to a file
-    echo $(perl -CSD src/tools/EpicsHostArch.pl) >"${srcdir}/EPICS_HOST_ARCH"
+    perl -CSD src/tools/EpicsHostArch.pl >"${srcdir}/EPICS_HOST_ARCH.${CARCH}"
 }
 
 build() {
     cd "base-${pkgver}"
 
     # get the EPICS_HOST_ARCH and set it as an environment variable
-    export EPICS_HOST_ARCH=$(cat "${srcdir}/EPICS_HOST_ARCH")
+    export EPICS_HOST_ARCH=$(cat "${srcdir}/EPICS_HOST_ARCH.${CARCH}")
 
     # export the library path for the linker at build time
-    export LD_LIBRARY_PATH="${srcdir}/staging/usr/lib/epics/lib/${EPICS_HOST_ARCH}"
+    export LD_LIBRARY_PATH="${srcdir}/staging/${CARCH}/usr/lib/epics/lib/${EPICS_HOST_ARCH}"
 
     # export perl library path for build time resolution
-    # export PERL5LIB="${srcdir}/staging/usr/lib/epics/lib/perl"
+    # export PERL5LIB="${srcdir}/staging/${CARCH}/usr/lib/epics/lib/perl"
 
-    # build and install to staging area, "-s" for silent build
-    make -s
+    # build and install to staging area
+    make
 }
 
 package() {
-    cd "staging/usr/lib/epics"
+    cd "staging/${CARCH}/usr/lib/epics"
 
     # everything is installed relative to EPICS_BASE and linked to the system paths
     # because a lot of the EPICS tools and epics modules expect the files to be in these locations
 
     # get the EPICS_HOST_ARCH and set it as an local variable
-    local EPICS_HOST_ARCH=$(cat "${srcdir}/EPICS_HOST_ARCH")
+    local EPICS_HOST_ARCH=$(cat "${srcdir}/EPICS_HOST_ARCH.${CARCH}")
     local EPICS_BASE="${pkgdir}/usr/lib/epics"
 
     # install library files and link them to the system library path
@@ -72,15 +76,20 @@ package() {
     done
 
     # install perl modules and link them to the system perl path
-    cp -r lib/perl "${EPICS_BASE}/lib"
-    local PERL_VERSION=$(perl -V:version | perl -pe '($_)=/([0-9]+([.][0-9]+)?)/')
+    local PERL_FULL_VERSION=$(perl -MConfig -e 'print $Config{version}')
+    local PERL_ARCH=$(perl -MConfig -e 'print $Config{archname}')
+    local PERL_VERSION=${PERL_FULL_VERSION%.*}
+    install -dm755 "${EPICS_BASE}/lib/perl/${PERL_FULL_VERSION}"
+    find lib/perl -mindepth 1 -maxdepth 1 ! -name '[0-9]*' \
+        -exec cp -r -t "${EPICS_BASE}/lib/perl" -- {} +
+    cp -r "lib/perl/${PERL_FULL_VERSION}/${PERL_ARCH}" \
+        "${EPICS_BASE}/lib/perl/${PERL_FULL_VERSION}"
     install -dm755 "${pkgdir}/usr/lib/perl5/${PERL_VERSION}/vendor_perl" "${pkgdir}/usr/share/perl5/vendor_perl"
     for module in DBD EPICS CA.pm DBD.pm; do
         ln -sr "${EPICS_BASE}/lib/perl/${module}" "${pkgdir}/usr/share/perl5/vendor_perl"
     done
-    for lib in $(find "${EPICS_BASE}/lib/perl" -name '*.so'); do
-        ln -sr "${lib}" "${pkgdir}/usr/lib/perl5/${PERL_VERSION}/vendor_perl"
-    done
+    ln -sr "${EPICS_BASE}/lib/perl/${PERL_FULL_VERSION}/${PERL_ARCH}/libCap5.so" \
+        "${pkgdir}/usr/lib/perl5/${PERL_VERSION}/vendor_perl"
 
     # Install bin files and link the public EPICS commands to the system path.
     install -dm755 "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}" "${pkgdir}/usr/bin"
@@ -95,7 +104,7 @@ package() {
     # install include files and link them to the system include path
     install -dm755 "${pkgdir}/usr/include/epics"
     cp -r include "${EPICS_BASE}"
-    ln -sr -t "${pkgdir}/usr/include/epics" "${EPICS_BASE}/include"
+    ln -sr -t "${pkgdir}/usr/include/epics" "${EPICS_BASE}/include/"*
 
     # cfg, configure, db, dbd are installe to EPICS_BASE and don't have appropriate system locations
     install -dm755 "${pkgdir}/usr/share/epics"
@@ -119,8 +128,7 @@ package() {
         "${EPICS_HOST_ARCH}" |
         install -Dm644 /dev/stdin "${pkgdir}/usr/lib/environment.d/10-epics-base.conf"
 
-    # Patch epics config_site local install location to current folder (.)
-    sed -i "s|${srcdir}/staging/usr/lib/epics|./usr/lib/epics|g" "${pkgdir}/usr/lib/epics/configure/CONFIG_SITE.local"
-
-    # TODO: makepkg complains the package contains references to $srcdir
+    # Keep build-only locations out of the installed configuration.
+    sed -i '/^INSTALL_LOCATION=/d; /^IOCS_APPL_TOP=/d' \
+        "${pkgdir}/usr/lib/epics/configure/CONFIG_SITE.local"
 }
