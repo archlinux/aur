@@ -36,6 +36,8 @@ options=('!debug')
 _dotnetsdkver="10.0"
 # RID of the source-built .NET, whose packs come with dotnet-source-built-artifacts
 _rid="arch-x64"
+# PowerShell-Native has no tag for the version PowerShell uses (700.0.2), it was published from this commit
+_psnativecommit="f24d5494b373de20ec3e3d2fdc7c3fc98af1f9f1"
 depends=(
   dotnet-runtime-"$_dotnetsdkver"
   libgcc
@@ -52,6 +54,8 @@ optdepends=('openssh: PowerShell Remoting over ssh'
 makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
   dotnet-source-built-artifacts-"$_dotnetsdkver"
+  cmake
+  gtest
   git
   rsync
   ruby-ronn
@@ -74,14 +78,27 @@ checkdepends=(
 install=powershell.install
 
 source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
+  "git+https://github.com/PowerShell/PowerShell-Native.git#commit=$_psnativecommit"
   "psmodulepath-combined-paths.patch")
 sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
+  '673e931ea136511fa2c638035334a7ea1800aafb1d4100d94cf0adf1086888f765a3d92f9f294060c5f088eab4d4c12c2d70cc5dc5a4ec4f56b80f26d16cc644'
   'c8bde32576737e61696f3722fc5c61195f82688898c1ea794ba08b40b5e1efdb095dd0d7b57048dd72a9e17c623142c7c46dae80638ca3b69a3e0953cc8c91ab')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
+  '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
   '770bf06617ce9a1045f2c05e8458eac3fabd260fc0e8ff74e0ce8c2c2a84612d0633eaca03797029ce8ed2a0aab0e2d8e3744df913d77d3b4b72492448960ad8')
 
 prepare() {
-  cd PowerShell || exit
+  # libpsl-native is built from source instead of using the prebuilt Microsoft.PowerShell.Native package
+  cd "$srcdir"/PowerShell-Native/src/libpsl-native || exit
+  # Arch already sets _FORTIFY_SOURCE=3 and we don't want new compiler warnings to break the build
+  # -fpie is wrong for a shared library and breaks linking with LTO
+  # The system googletest requires C++17
+  sed -i -e 's/ -Werror//' -e 's/ -D_FORTIFY_SOURCE=2//' -e 's/ -fpie/ -fPIC/' -e 's/-std=c++11/-std=c++17/' CMakeLists.txt
+  # Use the system googletest instead of the submodule
+  sed -i -e 's/^add_subdirectory(googletest)$/find_package(GTest REQUIRED)/' \
+    -e 's/psl-native gtest)/psl-native GTest::gtest)/' test/CMakeLists.txt
+
+  cd "$srcdir"/PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -158,6 +175,9 @@ prepare() {
   rm src/System.Management.Automation/utils/Telemetry.cs
   sed -i -e '/Microsoft.ApplicationInsights/d' src/System.Management.Automation/System.Management.Automation.csproj
 
+  # libpsl-native is built from PowerShell-Native and put next to pwsh in build()
+  sed -i -e '/"Microsoft.PowerShell.Native"/d' src/System.Management.Automation/System.Management.Automation.csproj
+
   # Next we convert quite a bit to framework refs
   # This doesn't change anything really about the binaries that are generated
   # but saves over a gigabyte of unnecessary NuGet downloads.
@@ -228,6 +248,9 @@ _copymodules() {
 }
 
 build() {
+  cmake -S PowerShell-Native/src/libpsl-native -B build-psl-native -DCMAKE_BUILD_TYPE=Release
+  cmake --build build-psl-native
+
   cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
@@ -281,6 +304,9 @@ build() {
   dotnet publish "${_build_arguments[@]}" \
     --output "$_publish_path"
 
+  # libpsl-native, built from PowerShell-Native
+  install -Dm755 "$srcdir"/PowerShell-Native/src/powershell-unix/libpsl-native.so -t "$_publish_path"
+
   # Publish Reference Assemblies
   mkdir -p "$_publish_path/ref"
   grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;//' | while read -r _assembly; do
@@ -331,11 +357,15 @@ build() {
 }
 
 check() {
+  ctest --test-dir build-psl-native --output-on-failure
+
   cd PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
   # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
+  # The xUnit tests aren't run from the publish folder, so they need to find libpsl-native
+  export LD_LIBRARY_PATH="$srcdir/PowerShell-Native/src/powershell-unix${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 
   cd test/powershell || exit
   # In Pester 4.x, deleting tests is unfortunately the only fine grained option

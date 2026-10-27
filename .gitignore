@@ -19,3 +19,5 @@ src/
 # End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
 
 PowerShell/
+
+PowerShell-Native/
