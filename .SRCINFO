@@ -1,5 +1,5 @@
 pkgbase = powershell-dsc
-	pkgdesc = DSCv3 is the latest iteration of Microsoft's Desired State Configuration platform.
+	pkgdesc = Microsoft Desired State Configuration v3 platform
 	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/PowerShell/DSC
@@ -14,6 +14,7 @@ pkgbase = powershell-dsc
 	depends = glibc
 	depends = libgcc
 	depends = bash
+	optdepends = powershell: PowerShell adapter and resources
 	options = !lto
 	options = !debug
 	source = powershell-dsc::git+https://github.com/PowerShell/DSC#tag=v3.3.0

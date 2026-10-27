@@ -5,11 +5,12 @@
 pkgname=powershell-dsc
 pkgver=3.3.0
 pkgrel=1
-pkgdesc="DSCv3 is the latest iteration of Microsoft's Desired State Configuration platform."
+pkgdesc="Microsoft Desired State Configuration v3 platform"
 arch=(x86_64)
 url='https://github.com/PowerShell/DSC'
 license=(MIT)
 depends=(glibc libgcc bash)
+optdepends=('powershell: PowerShell adapter and resources')
 makedepends=(git cargo tree-sitter-cli nodejs protobuf powershell)
 source=("$pkgname::git+$url#tag=v$pkgver")
 sha512sums=('69cc660042669c5bc78235ed918be49a2e845c6f091c152838fda5f62516dca801e592fbb6bc7182c67cf2eac85702c82e77fe2098e727583cbd60164071c479')
@@ -20,6 +21,10 @@ prepare() {
   # Upstream uses a private registry
   # We need to delete this to use the usual crates.io
   rm "$pkgname"/.cargo/config.toml
+
+  cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -78,7 +83,6 @@ package() {
 
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/lib/DSC"
-  install -dm755 "$pkgdir/usr/lib/powershell-7/Modules"
 
   # shellcheck disable=SC2016
   pwsh -noprofile -command '
