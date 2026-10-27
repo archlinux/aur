@@ -2,7 +2,7 @@
 # Maintainer: Darko Demić <mail at darkodemic dot com>
 
 pkgname='gpwebcam'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Use a GoPro connected over USB as a Linux webcam'
 url='https://github.com/darkodemic/gpwebcam'
@@ -15,13 +15,16 @@ makedepends=('go')
 optdepends=('v4l2loopback-dkms: the loopback device that applications read' 'libnotify: desktop notifications')
 install=gpwebcam.install
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/darkodemic/gpwebcam/releases/download/v${pkgver}/gpwebcam-${pkgver}.tar.gz")
-sha256sums=('33c476ef457ad8ca0cf5d151570d6c03538e14f576c9a4c7ee9da0d560db631e')
+sha256sums=('e6519db3a939d7eacc19cf450377bb396ad7e11fd09c12fe3e97c485b72c66a6')
 prepare() {
   cd "${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}/gopath"
+  export GOFLAGS="-mod=readonly -modcacherw"
   go mod download
 }
 build() {
   cd "${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
