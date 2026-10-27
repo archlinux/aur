@@ -1,0 +1,15 @@
+pkgbase = berthd-bin
+	pkgdesc = Persistent shell sessions — a small daemon that owns your PTYs, so shells outlive the terminal app
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/takakix2/berthd
+	arch = x86_64
+	license = ISC
+	provides = berth
+	provides = berthd
+	conflicts = berthd
+	options = !strip
+	source_x86_64 = berthd-x86_64-0.6.3.tgz::https://github.com/takakix2/berthd/releases/download/v0.6.3/berthd-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9ebf03cf46a603be52175b4a322fe4e0796786c751b832fb6c8a559eec45923d
+
+pkgname = berthd-bin

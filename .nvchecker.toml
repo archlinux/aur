@@ -1,0 +1,5 @@
+[berthd-bin]
+source = "github"
+github = "takakix2/berthd"
+use_latest_release = true
+prefix = "v"
