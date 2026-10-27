@@ -1,8 +1,9 @@
-# Maintainer: Josh Holmer <jholmer.in@gmail.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
+# Contributor: Josh Holmer <jholmer.in@gmail.com>
 
 _plug=vszip
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=22.1.0
+pkgver=23.1.0
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug}"
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('MIT')
 depends=('vapoursynth>=75')
 makedepends=('zig>=0.16.0' 'zig<0.17.0')
 source=("https://github.com/dnjulek/vapoursynth-zip/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2189c343ad0a33bc4f10d8c80280d4dfd7a157f601105e96db30c436523f7513')
+sha256sums=('9b91a89d1ca75e6e5ee993880148b5a38c88bcec237b9691476aa0fd28aac111')
 
 build() {
 	cd "vapoursynth-zip-${pkgver}"
