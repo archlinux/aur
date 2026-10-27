@@ -1,0 +1,19 @@
+#!/bin/sh
+# lsa - Linux System Audit is now part of SRS (srs-sysinfo). This wrapper keeps the old command
+# working: "lsa cachemem ..." runs SRS's Cache & Memory benchmark with the same options.
+# Copyright (C) 2026 Eugene Flanagin. Licensed under the GNU General Public License v2.0 or later.
+case "$1" in
+    cachemem) shift; exec sysreport-search cachemem "$@" ;;
+    guide) exec sysreport-search guide cache-memory ;;
+    --version)
+        echo "lsa (transitional): Linux System Audit is now part of SRS - the Cache & Memory benchmark"
+        echo "is in SRS (Benchmarks & stress page, or: sysreport-search cachemem)."
+        exec sysreport-search --version ;;
+    *)
+        echo "Linux System Audit is now part of SRS (srs-sysinfo)."
+        echo "  lsa cachemem [options]   = sysreport-search cachemem [options]   (same options)"
+        echo "  lsa guide                = sysreport-search guide cache-memory"
+        echo "  lsa-gui                  = srs-gui --gui-open=cachemem"
+        [ "$1" = --help ] || [ "$1" = -h ] && exit 0
+        exit 2 ;;
+esac

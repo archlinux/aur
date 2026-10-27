@@ -2,3 +2,5 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!lsa
+!lsa-gui

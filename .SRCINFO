@@ -1,20 +1,14 @@
 pkgbase = lsa-sysinfo
-	pkgdesc = Linux System Audit: clean-room Linux implementation of AIDA64 Business features (AIDA64 by FinalWire Ltd.) - Cache & Memory Benchmark
-	pkgver = 0.2.0
+	pkgdesc = Linux System Audit is now part of SRS (srs-sysinfo): transitional package with the lsa and lsa-gui commands
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/eugenesflanagin-spec/lsa-sysinfo
-	arch = x86_64
+	arch = any
 	license = GPL-2.0-or-later
-	depends = gtk3
-	depends = glib2
-	depends = glibc
-	depends = cairo
-	depends = hicolor-icon-theme
-	depends = hwdata
-	optdepends = srs-sysinfo: srs-root DMI cache for memory speed / type details
-	optdepends = ryzen_smu-dkms-git: North Bridge Clock (FCLK) on Ryzen 7000 desktop CPUs
-	optdepends = xdg-utils: open the user guide from the Guide button / F1 / lsa guide
-	source = lsa-sysinfo-0.2.0.tar.gz::https://github.com/eugenesflanagin-spec/lsa-sysinfo/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = c2fabc792699cc6044c600fbc9df5af69de737594ce5d90a5f88f2e88f057bac
+	depends = srs-sysinfo>=2.2.0
+	source = lsa
+	source = lsa-gui
+	sha256sums = 99f81f32098d12e541d1886abac40d1d2df3e039fab95f739ded21d46c9b2bd5
+	sha256sums = afb80c96bab029a7e8cc7916a49244c575113116a6bac714bcd5d3b2102d066b
 
 pkgname = lsa-sysinfo

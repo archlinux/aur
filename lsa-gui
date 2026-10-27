@@ -1,0 +1,4 @@
+#!/bin/sh
+# lsa-gui - Linux System Audit is now part of SRS: opens SRS's Cache & Memory benchmark window.
+# Copyright (C) 2026 Eugene Flanagin. Licensed under the GNU General Public License v2.0 or later.
+exec srs-gui --gui-open=cachemem
