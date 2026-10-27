@@ -1,5 +1,7 @@
-Z /etc/webapps/cryptpad - cryptpad cryptpad
-Z %S/cryptpad 0750 cryptpad cryptpad
-Z %S/cryptpad/blob 2750 cryptpad http
-Z %S/cryptpad/block 2750 cryptpad http
-Z %S/cryptpad/datastore 2750 cryptpad http
+z /etc/webapps/cryptpad 0750 root cryptpad
+d %S/cryptpad 0750 cryptpad cryptpad
+d %S/cryptpad/data 0750 cryptpad cryptpad
+d %S/cryptpad/logs 0750 cryptpad cryptpad
+d %S/cryptpad/blob 2750 cryptpad http
+d %S/cryptpad/block 2750 cryptpad http
+d %S/cryptpad/datastore 2750 cryptpad http

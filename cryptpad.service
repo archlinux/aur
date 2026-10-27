@@ -7,10 +7,22 @@ ExecStart=/usr/bin/node /usr/share/webapps/cryptpad/server.js
 WorkingDirectory=/usr/share/webapps/cryptpad
 User=cryptpad
 Group=cryptpad
+ProtectSystem=strict
 ReadWritePaths=/var/lib/cryptpad
 ProtectHome=yes
 NoNewPrivileges=yes
 PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 
 [Install]
 WantedBy=multi-user.target
