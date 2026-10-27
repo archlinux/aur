@@ -5,7 +5,7 @@
 # SRS is an independent project, not affiliated with SIV or its author.
 
 pkgname=srs-sysinfo
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 558 report items, user guide, CPU and GPU burn-in, benchmarks"
 arch=('x86_64')
@@ -44,7 +44,7 @@ optdepends=(
   'cuda: CUDA back end of GPU Burnin and the GPU Compute comparison (NVIDIA; loaded at run time)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('643893d45d4985a0d2ae402b221f7c93db3e5b4411223faf046658b0bb269b82')
+sha256sums=('ebc0dfcf7623b45e3c205e92efc51b71bd2f9d5356f335eeb3d5d9b4567db93f')
 
 build() {
   cd "$pkgname-$pkgver"
