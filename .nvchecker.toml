@@ -1,0 +1,3 @@
+[raspberrypi-bootloader]
+source = "git"
+git = "https://github.com/raspberrypi/firmware.git"

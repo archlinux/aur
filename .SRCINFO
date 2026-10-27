@@ -1,0 +1,14 @@
+pkgbase = raspberrypi-bootloader
+	pkgdesc = Bootloader files for Raspberry Pi
+	pkgver = 1.20260915
+	pkgrel = 1
+	url = https://github.com/raspberrypi/firmware
+	arch = any
+	license = custom
+	conflicts = raspberrypi-bootloader
+	options = !strip
+	source = https://github.com/raspberrypi/firmware/archive/refs/tags/1.20260915.tar.gz
+	sha256sums = 58751354e5c8289d3660511958e8c7869de010f6719d8e1859820391058a337c
+
+pkgname = raspberrypi-bootloader-rpi4
+	pkgdesc = Bootloader files for Raspberry Pi (4 only)
