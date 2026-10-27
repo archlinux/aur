@@ -1,0 +1,7 @@
+*.tar.gz
+*.zip
+*.zst
+*.deb
+src/
+pkg/
+*.html

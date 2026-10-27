@@ -1,0 +1,4 @@
+["jubbio-bin"]
+source = "regex"
+url = "https://cdn.jubbio.com/downloads/latest-linux.yml"
+regex = 'version:\s*([0-9.]+)'

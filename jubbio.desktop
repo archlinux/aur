@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Jubbio
+Exec=/usr/bin/jubbio %U
+Terminal=false
+Type=Application
+Icon=jubbio
+StartupWMClass=jubbio-client
+Comment=Jubbio - Connect with your community
+MimeType=x-scheme-handler/jubbio;
+Categories=Network;Chat;InstantMessaging;
