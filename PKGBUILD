@@ -3,7 +3,7 @@
 # Contributor: Carson Rueter <roachh at proton mail dot com>
 # Contributor: xXR01I1Xx <xxr01i1xx@tuta.io>
 # Contributor: Ewhal <ewhal@pantsu.cat>
-# Contributor: SpidFightFR <spidfight@swisscows.email>
+# Contributor: SpidFightFR <spidfight@disroot.org>
 
 pkgname=session-desktop-bin
 pkgver=1.18.2
