@@ -1,21 +1,23 @@
 pkgbase = mustang-bin
 	pkgdesc = New full-featured desktop email, chat and video conference client.
-	pkgver = 0.9.39
+	pkgver = 0.9.41
 	pkgrel = 1
 	url = https://parula.app/
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-EUPL-1.2
 	depends = electron41
-	provides = mustang=0.9.39
+	provides = mustang=0.9.41
 	conflicts = mustang
-	source = LICENSE-0.9.39::https://raw.githubusercontent.com/mustang-im/mustang/v0.9.39/LICENSE
+	source = LICENSE-0.9.41::https://raw.githubusercontent.com/mustang-im/mustang/v0.9.41/LICENSE
+	source = mustang.js
 	source = mustang.sh
 	sha256sums = b235d2b5410c8a5f6d176a8dfbf3afaadb7165d27659285d1916fe7e0044aa89
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
-	source_aarch64 = mustang-0.9.39-aarch64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.39/mustang-0.9.39-aarch64.pacman
-	sha256sums_aarch64 = 5fc4b78a2e1352966ea720b6e894d137fd0273de7292b430f6db17aebbc3bf20
-	source_x86_64 = mustang-0.9.39-x86_64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.39/mustang-0.9.39.pacman
-	sha256sums_x86_64 = dfa5b10379eb4ca2b4213a8d4b36f4c51705b6a3a23960e0a9078c3349053e95
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
+	source_aarch64 = mustang-0.9.41-aarch64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.41/mustang-0.9.41-aarch64.pacman
+	sha256sums_aarch64 = 2d406a14a340b3a189875070a24be57029fce98e32fdf7b13657dcf90980f05a
+	source_x86_64 = mustang-0.9.41-x86_64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.41/mustang-0.9.41.pacman
+	sha256sums_x86_64 = 029fa1fdfe6b0eee9a8aa815f3bc450aa7cf8840b42339d67f0e133289f8e02d
 
 pkgname = mustang-bin
