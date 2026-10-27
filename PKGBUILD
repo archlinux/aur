@@ -1,23 +1,27 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=tinyserial-git
-pkgver=1.4.r2.g3c6cda7
-pkgrel=2
+pkgver=2.1.0.r3.gced1142
+pkgrel=1
 epoch=
 pkgdesc="A GUI Serial Debug Tool for Linux/Mac OS."
 arch=($CARCH)
 url="https://github.com/carloscn/tinyserial"
 license=('MPL-2.0')
 groups=()
+_qt=qt6
 depends=(
-  gcc-libs
-  glibc
-  qt5-base
-  qt5-serialport
+  libgcc
+  libstdc++
+  $_qt-base
+  $_qt-serialport
 )
 makedepends=(
   git
-  qt5-tools
+  cmake
+  ninja
+  $_qt-tools
+  vulkan-headers
 )
 checkdepends=()
 optdepends=()
@@ -25,7 +29,7 @@ provides=(tinyserial)
 conflicts=(tinyserial)
 replaces=()
 backup=()
-options=('!strip')
+options=(emptydirs)
 install=
 changelog=
 source=("${pkgname%-git}::git+${url}.git")
@@ -40,46 +44,22 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  qmake
-  make
+# see：https://wiki.archlinux.org/title/CMake_package_guidelines
+  cmake -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -B build \
+    -G Ninja \
+    -Wno-author
+
+  ninja -C build
+}
+
+check() {
+  ctest --test-dir "${srcdir}"/${pkgname%-git}/build --output-on-failure
 }
 
 package() {
-  install -Dm0755 "${srcdir}/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-  install -Dm0755 "${srcdir}/${pkgname%-git}/img/appmain-ubuntu.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-  install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.carloscn.tinyserial.metainfo.xml" <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
-  <id>io.github.carloscn.tinyserial</id>
-
-  <name>${pkgname%-git}</name>
-  <summary>${pkgname%-git}</summary>
-
-  <metadata_license>MIT</metadata_license>
-  <project_license>GPL-3.0-only</project_license>
-
-  <description>
-    <p>
-      ${pkgdesc}
-    </p>
-  </description>
-
-  <launchable type="desktop-id">io.github.carloscn.tinyserial.desktop</launchable>
-</component>
-EOF
-
-  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.carloscn.tinyserial.desktop" <<EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-
-Name=${pkgname%-git}
-Comment=${pkgname%-git}
-Categories=Network;Qt;
-
-Icon=${pkgname%-git}.png
-Exec=${pkgname%-git}
-Terminal=false
-EOF
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname%-git}/build install
+  install -vDm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -vdm0755 "${pkgdir}/var/log/tinyserial"
 }
