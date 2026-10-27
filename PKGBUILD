@@ -2,7 +2,7 @@
 
 pkgname=tiny-poe2smoother-bin
 _pkgname=tiny-poe2smoother
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Desktop app for reducing selected visual and sound effects in Path of Exile 2"
 arch=('x86_64')
@@ -29,10 +29,8 @@ source_x86_64=(
   "poe2smoother-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/poe2smoother-linux-x86_64.tar.gz"
   "LICENSE-$pkgver::https://raw.githubusercontent.com/kengzzzz/tiny-poe2smoother/v$pkgver/LICENSE"
 )
-sha256sums_x86_64=(
-  '7e4ea8189e4c9b1ccbbb0750c69e17c0edd735496e3781acd9c65d6f94eda793'
-  '1f88511148f9afc5b1f99d4e21e0f6517011f340c46db5e437b1c5e928e14454'
-)
+sha256sums_x86_64=('d1d11b45d65f80d02b432ad16a6cbf36094efc7c699cd7d879e6007d90186940'
+                   '1f88511148f9afc5b1f99d4e21e0f6517011f340c46db5e437b1c5e928e14454')
 
 package() {
   install -Dm755 poe2smoother \
