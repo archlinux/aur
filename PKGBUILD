@@ -1,6 +1,6 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 _memprof_limits_commit=c2cced325a93d2271379f0712db85867b29dbee1
 _visitors_commit=e18a7a67150a54a3aef51661e0317cacc313d764

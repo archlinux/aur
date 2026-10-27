@@ -1,6 +1,6 @@
 pkgbase = opengrep
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep
-	pkgver = 1.32.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://github.com/opengrep/opengrep
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = opengrep
 	depends = python-urllib3
 	depends = python-wcmatch
 	depends = tree-sitter
-	source = opengrep::git+https://github.com/opengrep/opengrep.git#tag=v1.32.0
+	source = opengrep::git+https://github.com/opengrep/opengrep.git#tag=v1.33.0
 	source = memprof-limits::git+https://gitlab.com/dimitris-m/memprof-limits.git#commit=c2cced325a93d2271379f0712db85867b29dbee1
 	source = visitors::git+https://github.com/opengrep/visitors.git#commit=e18a7a67150a54a3aef51661e0317cacc313d764
 	source = semgrep-interfaces::git+https://github.com/opengrep/semgrep-interfaces.git#commit=5e705660dc7381d4c4c247fa83c4c5860e61d555
