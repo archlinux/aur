@@ -1,0 +1,20 @@
+pkgbase = betaflight-bin
+	pkgdesc = Configuration and management application for Betaflight flight controllers
+	pkgver = 2026.6.2
+	pkgrel = 1
+	url = https://github.com/betaflight/betaflight-configurator
+	install = betaflight-bin.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = betaflight
+	conflicts = betaflight
+	noextract = Betaflight-2026.6.2-amd64.AppImage
+	options = !strip
+	options = !debug
+	source = Betaflight-2026.6.2-amd64.AppImage::https://github.com/betaflight/betaflight-configurator/releases/download/2026.6.2/Betaflight-2026.6.2-amd64.AppImage
+	sha256sums = 94c09d3652d23437f37b663f5de89fa26c709cd61c718a726c0a5ca2e79cd891
+
+pkgname = betaflight-bin
