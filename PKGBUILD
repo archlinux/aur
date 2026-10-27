@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-fermions
 pkgname=python-${_pkgname}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A toolkit for working with fermionic systems"
 arch=(x86_64)
@@ -36,7 +36,7 @@ checkdepends=(
 )
 provides=(libqiskit_fermions_cext.so)
 source=($_pkgname::git+https://github.com/Qiskit/$_pkgname#tag=$pkgver)
-b2sums=('0f809e0efc8268412e399c071370e4bd9eaf1c104533f3b23c7f2b1bff0e9a836b138a7403e9ca80568d0529981e8d19c4b90badc36e5876780a32de0ea5bcf8')
+b2sums=('b78251c8a855c93651f906835ac1788e0c80c85bf8dc62ff8ecb022dffe2b57f431b923c9245c7b8e731575ec10aa9bdb1bdf1cf4a7deca694fa4241dc94eb09')
 
 prepare() {
     cd $_pkgname
