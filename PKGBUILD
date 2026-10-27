@@ -2,8 +2,8 @@
 # Contributor: Philipp Joram <mail at phijor dot me>
 
 pkgname=pokefinder
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 pkgdesc='Cross platform Pokémon RNG tool'
 arch=(x86_64)
 url='https://github.com/Admiral-Fish/PokeFinder'
@@ -27,7 +27,7 @@ source=(
     "git+https://github.com/Admiral-Fish/EncounterTableGenerator"
 )
 
-sha256sums=('d5a8635250acae55793b3e71140e608f2c4d68c0fe86bb51844a0945427d9aea'
+sha256sums=('8a09d2f183dfdf8199ad35b5139de498e9bd688e61a6e73fe6249df6e88ffdc3'
             '505646d82b2fd54666ee7174cf36e569ec0e2b080c62ff40bb3dc62bbc2e5cd6'
             '4151b4be2d9ace17c665d1537f061a8646e995d5152fd9be0b503d4beb236d3d'
             'SKIP'
