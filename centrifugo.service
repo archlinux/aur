@@ -1,0 +1,17 @@
+[Unit]
+Description=Centrifugo real-time messaging server
+After=network.target
+
+[Service]
+Type=simple
+User=centrifugo
+Group=centrifugo
+ExecStart=/usr/bin/centrifugo --config /etc/centrifugo/config.json
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=on-failure
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

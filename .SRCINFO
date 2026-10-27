@@ -1,0 +1,24 @@
+pkgbase = centrifugo-git
+	pkgdesc = Scalable real-time messaging server (git version)
+	pkgver = r1996.3a8731a
+	pkgrel = 1
+	url = https://github.com/centrifugal/centrifugo
+	install = centrifugo.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = centrifugo
+	conflicts = centrifugo
+	source = centrifugo::git+https://github.com/centrifugal/centrifugo.git
+	source = centrifugo.service
+	source = centrifugo.sysusers
+	source = centrifugo.tmpfiles
+	sha256sums = SKIP
+	sha256sums = f61eeb35bfa248be947b0da434bf82815d2a0396f10933e4aadac06a73462f9c
+	sha256sums = dd656417db47b6dd5260a8a6b1f82005c80b6555ac65dd375a95e3aa5168e728
+	sha256sums = 3a4a5123db7293dc103187f406a168214ced95bda0c4f6c0f06508cf262a9718
+
+pkgname = centrifugo-git

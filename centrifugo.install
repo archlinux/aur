@@ -1,0 +1,5 @@
+post_install() {
+  if [ ! -e /etc/centrifugo/config.json ]; then
+    centrifugo genconfig --config /etc/centrifugo/config.json
+  fi
+}
