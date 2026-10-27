@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Copies the packaged OCR models into the per-user folder the tracker reads.
+# eng: only when missing (never overwrite the user's own).
+# koverwatch: when missing or different, keeping a .bak (same rule as install.sh).
+set -u
+src="${SEED_SRC:-/usr/share/scuffed-stat-tracker/tessdata}"
+dst="${XDG_DATA_HOME:-$HOME/.local/share}/scuffed-stat-tracker/tessdata"
+mkdir -p "$dst" || exit 0
+if [[ -f "$src/eng.traineddata" && ! -f "$dst/eng.traineddata" ]]; then
+  install -m644 "$src/eng.traineddata" "$dst/eng.traineddata"
+fi
+if [[ -f "$src/koverwatch.traineddata" ]] && ! cmp -s "$src/koverwatch.traineddata" "$dst/koverwatch.traineddata"; then
+  [[ -f "$dst/koverwatch.traineddata" ]] && cp -f "$dst/koverwatch.traineddata" "$dst/koverwatch.traineddata.bak"
+  install -m644 "$src/koverwatch.traineddata" "$dst/koverwatch.traineddata"
+fi
+exit 0
