@@ -1,7 +1,7 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=nautilus-backspace
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A simple nautilus extension to bring back the 'Backspace' shortcut."
 arch=("any")
