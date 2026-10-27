@@ -1,0 +1,29 @@
+pkgbase = greenmask-bin
+	pkgdesc = PostgreSQL dump, anonymization and restore tool (upstream build)
+	pkgver = 0.2.26
+	pkgrel = 1
+	url = https://github.com/GreenmaskIO/greenmask
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = riscv64
+	arch = powerpc64le
+	license = Apache-2.0
+	depends = postgresql-libs
+	provides = greenmask=0.2.26
+	conflicts = greenmask
+	source_x86_64 = greenmask-0.2.26-amd64.tar.gz::https://github.com/GreenmaskIO/greenmask/releases/download/v0.2.26/greenmask-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1ed5a679f792c688b4df5bb89ecfb7dae1270bc3a438f1e605561fd30d1c0eb2
+	source_aarch64 = greenmask-0.2.26-arm64.tar.gz::https://github.com/GreenmaskIO/greenmask/releases/download/v0.2.26/greenmask-linux-arm64.tar.gz
+	sha256sums_aarch64 = 72e2503e4b1254745c5aa8dda2be72056a0e5466b7ae5b94446df934bbdbea4a
+	source_armv7h = greenmask-0.2.26-armv7.tar.gz::https://github.com/GreenmaskIO/greenmask/releases/download/v0.2.26/greenmask-linux-armv7.tar.gz
+	sha256sums_armv7h = 0c99bdad6304558be488fe4d5a90a710db9b519376f58b09d72ede87188614a1
+	source_armv6h = greenmask-0.2.26-armv6.tar.gz::https://github.com/GreenmaskIO/greenmask/releases/download/v0.2.26/greenmask-linux-armv6.tar.gz
+	sha256sums_armv6h = 8e690bca9efe3504b60288b3d71b992e313170d19cd64bd693aaf8dd5922e807
+	source_riscv64 = greenmask-0.2.26-riscv64.tar.gz::https://github.com/GreenmaskIO/greenmask/releases/download/v0.2.26/greenmask-linux-riscv64.tar.gz
+	sha256sums_riscv64 = 496263c78c1046666101b0ecb16f4631c6a76a12dc3a005f647dc766ec30c493
+	source_powerpc64le = greenmask-0.2.26-ppc64le.tar.gz::https://github.com/GreenmaskIO/greenmask/releases/download/v0.2.26/greenmask-linux-ppc64le.tar.gz
+	sha256sums_powerpc64le = 4f2e0aae7ce32e5de06f122037ef93afbd2e74e35abc8d726a4297828393941b
+
+pkgname = greenmask-bin
