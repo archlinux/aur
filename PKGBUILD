@@ -8,7 +8,7 @@ pkgdesc="Extra array functions built on top of the array API standard"
 arch=(
   'any'
 )
-url="https://data-apis.org/array-api-extra"
+url="https://data-apis.org/array-api-extra/"
 _url="https://github.com/data-apis/${_pypiname}"
 license=(
   'MIT'
