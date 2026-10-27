@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.106.0
+pkgver=1.106.4
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,7 @@ depends=('python'
          'python-pydantic-settings'
          'python-jsonschema'
          'python-boto3'
+         'python-certifi'
          'python-typing_extensions'
          'glibc'
          'libgcc')
@@ -114,12 +115,17 @@ optdepends=('gunicorn: proxy'
             'python-numpy: stt-nvidia-riva'
             
             'python-google-cloud-aiplatform: google'
+
             'python-aws-sdk-bedrock-runtime: bedrock-realtime'
+            'python-smithy-http: bedrock-realtime'
+            'python-awscrt: bedrock-realtime'
             
             'python-google-cloud-aiplatform: proxy-runtime'
             'python-google-cloud-speech: proxy-runtime'
             'python-google-genai: proxy-runtime'
             'python-anthropic: proxy-runtime'
+            'python-google-auth: proxy-runtime'
+            'python-requests: proxy-runtime'
             'python-grpcio: proxy-runtime'
             'python-prometheus-client: proxy-runtime'
             'python-langfuse: proxy-runtime'
@@ -137,8 +143,8 @@ optdepends=('gunicorn: proxy'
             'python-detect-secrets: proxy-runtime')
 provides=("python-${pkgname}")
 options=(!lto !strip)
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5c84cc7d928cdb6ec57c5d87f221e3d27ca755958ebae389d5663f822b6f7a19')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('dc58da933f25e8efec12348a4821b71e15e358d97093821576073fee37c49589')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -157,6 +163,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 "README.md" "$pkgdir"/usr/share/doc/$pkgname/README.md
-  install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
