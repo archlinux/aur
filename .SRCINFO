@@ -1,6 +1,6 @@
 pkgbase = keysharp-git
-	pkgdesc = Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. X11 version.
-	pkgver = r2464.ddaaa5b
+	pkgdesc = Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. Compatible with X11 and Wayland.
+	pkgver = v0.0.0.18.r0.g54af9a3
 	pkgrel = 1
 	url = https://github.com/keysharp-org/Keysharp/
 	install = keysharp.install
