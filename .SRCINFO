@@ -1,0 +1,40 @@
+pkgbase = tux-burner
+	pkgdesc = GPU undervolting, overclocking, and per-game tuning (AMD and NVIDIA)
+	pkgver = 0.99
+	pkgrel = 1
+	url = https://github.com/eugenesflanagin-spec/tux-burner
+	install = tux-burner.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-glibc
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = vulkan-headers
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = pyside6>=6.7
+	depends = python
+	depends = python-colorama>=0.4
+	depends = python-pyqtgraph>=0.13
+	depends = python-yaml>=6.0
+	depends = hwdata
+	depends = ocl-icd
+	optdepends = rocm-opencl-runtime: AMD OpenCL ICD for the --amd-stress / --amd-auto-uv workload (rusticl also works)
+	optdepends = lact: when lactd runs it owns GPU tuning; use --amd-export-lact to hand it a plan
+	optdepends = vulkan-radeon: RADV, needed by the Q2RTX stability benchmark
+	provides = penguin-burner
+	provides = penguin-burner-amd
+	conflicts = penguin-burner
+	conflicts = penguin-burner-amd
+	replaces = penguin-burner-amd
+	source = tux-burner-933335ecf3dad4a54efdab6323a38ab73f63ca1b.tar.gz::https://github.com/eugenesflanagin-spec/tux-burner/archive/933335ecf3dad4a54efdab6323a38ab73f63ca1b.tar.gz
+	source = tux-burner.install
+	sha256sums = f04ff2931fd729410a6b28d0896963cc9d96eedc8c38bf6e81351640a5e1b342
+	sha256sums = 245090698f989b17681a9f3fcf6315c2b7818be7472b488a0b92e116fbd3654f
+
+pkgname = tux-burner

@@ -1,0 +1,41 @@
+# Tux Burner is Copyright (C) 2026 by Eugene Flanagin. Licensed under GPL-3.0-or-later.
+# Fork of PenguinBurner by jpietek (GPL-3.0-or-later).
+
+_tb_migrate() {
+	# Copy settings written under the old PenguinBurner / penguin-burner-amd names.
+	# The old directories are left in place (copy, never move or delete).
+	local old new
+	for pair in "/etc/penguin-burner:/etc/tux-burner" "/var/lib/penguin-burner:/var/lib/tux-burner"; do
+		old=${pair%%:*}
+		new=${pair##*:}
+		if [ -d "$old" ] && [ ! -e "$new" ]; then
+			cp -a "$old" "$new" && echo "tux-burner: copied $old to $new"
+		fi
+	done
+}
+
+_tb_notes() {
+	if [ -e /etc/systemd/system/penguin-burnerd.service ] || [ -e /var/opt/penguin-burner/libexec/penguin-burnerd ]; then
+		cat <<'MSG'
+tux-burner: an older PenguinBurner / penguin-burner-amd service is still installed.
+  Its settings were copied to /etc/tux-burner and /var/lib/tux-burner (the old ones are kept).
+  To switch over (run these yourself, once):
+    sudo systemctl disable --now penguin-burnerd.service
+    sudo rm -f /etc/systemd/system/penguin-burnerd.service
+    sudo tburn-cli --install-systemd-service
+  Your saved profiles in ~/.config/PenguinBurner are copied to ~/.config/TuxBurner on first start.
+MSG
+	else
+		echo "tux-burner: install the root hardware service once with:  sudo tburn-cli --install-systemd-service"
+	fi
+}
+
+post_install() {
+	_tb_migrate
+	_tb_notes
+}
+
+post_upgrade() {
+	_tb_migrate
+	_tb_notes
+}
