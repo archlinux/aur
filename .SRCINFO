@@ -1,0 +1,23 @@
+pkgbase = ts-warp-git
+	pkgdesc = Transparent proxy server and traffic wrapper (SOCKS4/5, HTTP) with GUI frontend
+	pkgver = 1.5.12.r6.gff90081
+	pkgrel = 1
+	url = https://github.com/mezantrop/ts-warp
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = gcc
+	depends = glibc
+	optdepends = tk: gui-warp.py frontend
+	optdepends = iptables: transparent redirection
+	optdepends = nftables: transparent redirection
+	provides = ts-warp
+	conflicts = ts-warp
+	backup = etc/ts-warp.ini
+	backup = etc/gui-warp.ini
+	backup = etc/ts-warp_iptables.sh
+	backup = etc/ts-warp_nftables.sh
+	source = ts-warp-git::git+https://github.com/mezantrop/ts-warp
+	md5sums = SKIP
+
+pkgname = ts-warp-git
