@@ -86,6 +86,11 @@ prepare() {
         "pnpm@$(node -p 'require("./package.json").devEngines.packageManager.version')"
     _build_env
 
+    # Ruffle, the Flash player, so Flash games (.swf files) play like webxdc games, as in every
+    # Haven release. On by default here; set HAVEN_RUFFLE to a version or a local copy to pick
+    # which Ruffle, or to an empty string to build without Flash (see docs/building.md).
+    export HAVEN_RUFFLE="${HAVEN_RUFFLE-latest}"
+
     # HAVEN_NO_BRANDING/HAVEN_LOGIN_BACKGROUND/HAVEN_NOTIFICATION_SOUND are real source-tree
     # mutations handled by scripts/setup.sh, which also runs a full "pnpm install" (scripts
     # included, so the Element Call component's own prepare script builds it). Only pay that
@@ -99,6 +104,8 @@ prepare() {
         # memory hard enough to get the build OOM-killed.
         pnpm install --frozen-lockfile=false --ignore-scripts
         _build_element_call_component
+        # setup.sh runs this itself on the other path.
+        node "$srcdir/${pkgname%-git}/scripts/fetch-ruffle.mjs"
     fi
 }
 
