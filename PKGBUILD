@@ -7,7 +7,7 @@ pkgname=(
   tmtv-server
 )
 
-pkgver=2.0.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Instant terminal sharing'
 arch=(x86_64 aarch64)
@@ -23,7 +23,7 @@ source=(
   tmtv-server-genkeys.service
   tmtv-server.tmpfiles
 )
-sha256sums=('d5c1616357cab5338c0d877619811cb5637b2b734dbc8da44662197157f3f1f8'
+sha256sums=('17c53e5c2d829f908d9b3f2b161a96d1de478ea0f561761131272b297b255d9f'
             '0380456813c8962b0a226f1f44851fd6e8b81f2351c1b37120cfd43e9c3f40fc'
             '9150147914c9bed3b784a5fed53361c75f01bbb06bdd0007fc750b9ccb966736'
             'be45547cda2bf8c1928c0c78c6c1af413fc4da5f241112318330e0c6d55a02bc'
