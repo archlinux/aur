@@ -1,0 +1,16 @@
+pkgbase = shakal-git
+	pkgdesc = Qt 6 front end for one deliberately aggressive ffmpeg degradation preset
+	pkgver = 0.1.0.r15.4d7773d
+	pkgrel = 1
+	url = https://github.com/Ladniy/shakal
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	source = git+https://github.com/Ladniy/shakal.git#branch=main
+	sha256sums = SKIP
+
+pkgname = shakal-git
