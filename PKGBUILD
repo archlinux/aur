@@ -1,8 +1,8 @@
-# Maintainer: 
+# Maintainer: Matthew Sexton <Matthew@asylumtech.com> 
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=sparrow-wifi-git
-pkgver=r189.7521e4d
+pkgver=r400.b4f4592
 pkgrel=1
 pkgdesc="Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux"
 arch=('any')
@@ -16,10 +16,10 @@ depends=('aircrack-ng'
          'python-manuf'
          'python-matplotlib'
          'python-numpy'
-         'python-pyqt5-chart'
-         'python-pyqt5-sip'
-         'python-qscintilla-qt5'
-         'qt5-declarative'
+         'python-pyqt6-charts'
+         'python-pyqt6-sip'
+         'python-qscintilla-qt6'
+         'qt6-declarative'
          'tk'
          'wireless_tools')
 makedepends=('git')
