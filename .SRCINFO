@@ -1,6 +1,6 @@
 pkgbase = gitea-cli
 	pkgdesc = Official Gitea CLI — Rework of tea cli (repos, issues, PRs, releases)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitea.com/gitea/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gitea-cli
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gitea-cli-0.1.0.tar.gz::https://gitea.com/gitea/cli/archive/v0.1.0.tar.gz
-	sha256sums = b275325123c5cc68e45302cfd99d31259852ffdce21be711fe4872ac6bf8cc57
+	source = gitea-cli-0.2.0.tar.gz::https://gitea.com/gitea/cli/archive/v0.2.0.tar.gz
+	sha256sums = a5a9f8b7efdfc1404d8ba4a8d0228a498f6883ee415e44df9990178d4b2c76c3
 
 pkgname = gitea-cli

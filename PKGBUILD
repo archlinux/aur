@@ -1,6 +1,6 @@
 # Maintainer: quantulr <35954003+quantulr@users.noreply.github.com>
 pkgname=gitea-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Official Gitea CLI — Rework of tea cli (repos, issues, PRs, releases)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b275325123c5cc68e45302cfd99d31259852ffdce21be711fe4872ac6bf8cc57')
+sha256sums=('a5a9f8b7efdfc1404d8ba4a8d0228a498f6883ee415e44df9990178d4b2c76c3')
 
 build() {
   cd cli
@@ -18,7 +18,7 @@ build() {
     -ldflags "-X gitea.dev/cli/internal/version.Version=$pkgver" \
     -o gt ./cmd/gt
   # generate man pages and shell completions (dated to the release)
-  SOURCE_DATE_EPOCH=1792713600 go run ./tools/cli-docs --out docs/generated
+  SOURCE_DATE_EPOCH=1792972800 go run ./tools/cli-docs --out docs/generated
 }
 
 check() {
