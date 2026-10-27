@@ -1,0 +1,31 @@
+post_install() {
+  #update shared library path (installs to /usr/local/lib for some reason)
+  ldconfig
+
+  #setup keysharp-input daemon
+  keysharp-input daemon --install-input-access
+}
+
+pre_upgrade() {
+  # Run uninstall script
+  /usr/local/share/doc/keysharp-input/uninstall.sh
+
+  #update shared library path
+  ldconfig
+}
+
+post_upgrade() {
+  #update shared library path (installs to /usr/local/lib for some reason)
+  ldconfig
+
+ #setup keysharp-input daemon
+  keysharp-input daemon --install-input-access  # Run install script
+}
+
+pre_remove() {
+  # Run uninstall script
+  /usr/local/share/doc/keysharp-input/uninstall.sh
+
+  #update shared library path
+  ldconfig
+}

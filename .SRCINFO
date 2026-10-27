@@ -1,0 +1,19 @@
+pkgbase = keysharp-input-git
+	pkgdesc = Input hooks for KeySharp (Autohotkey Port) for linux, compatible with X11 and Wayland.
+	pkgver = v1.1.1.r0.gd57605c
+	pkgrel = 1
+	url = https://github.com/keysharp-org/keysharp-input
+	install = keysharp-input.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = libevdev
+	depends = polkit
+	provides = keysharp-input
+	conflicts = keysharp-input
+	source = keysharp-input::git+https://github.com/keysharp-org/keysharp-input
+	sha256sums = SKIP
+
+pkgname = keysharp-input-git
