@@ -1,6 +1,6 @@
 # Maintainer: facelock contributors
 pkgname=facelock-git
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Face authentication for Linux PAM (development build)"
 arch=('x86_64')
@@ -69,7 +69,14 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    # Network happens here and only here: vendor the locked crates.io
+    # dependencies beside the tree (inside it, check()'s docs-example scan
+    # would walk every crate's README) and point cargo at them, so build()
+    # and check() run --frozen against them. `cargo vendor` rather than
+    # `cargo fetch` because AUR helpers' PKGBUILD scanners flag `fetch` as a
+    # downloader wherever it appears (#361).
+    mkdir -p .cargo
+    cargo vendor --locked "$srcdir/vendor" > .cargo/config.toml
 }
 
 build() {
