@@ -1,6 +1,6 @@
 pkgbase = beardrive-bin
 	pkgdesc = Synced file system for AI agents to mount, sync, and track folders
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/runbear-io/beardrive
 	install = beardrive-bin.install
@@ -10,11 +10,11 @@ pkgbase = beardrive-bin
 	depends = ca-certificates
 	optdepends = git: detect the author email from Git configuration
 	optdepends = xdg-utils: open the browser during login
-	provides = beardrive=0.18.0
+	provides = beardrive=0.18.1
 	conflicts = beardrive
-	source_x86_64 = https://github.com/runbear-io/beardrive/releases/download/v0.18.0/beardrive_0.18.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 26b8c947fb72928db4021df52d8966780e82bf7d463901832e38f7225435deba
-	source_aarch64 = https://github.com/runbear-io/beardrive/releases/download/v0.18.0/beardrive_0.18.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = d117791ce721f5613f60a1c61ab8436f1a5c2531a4d11ea8bf031ed6ddd0dc69
+	source_x86_64 = https://github.com/runbear-io/beardrive/releases/download/v0.18.1/beardrive_0.18.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2c09deffdca63eacb99d65c99d0680fa6c449a5d51d38ec042c7fa2f5eb4d6fa
+	source_aarch64 = https://github.com/runbear-io/beardrive/releases/download/v0.18.1/beardrive_0.18.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1621f73a5be1740e6806fc0bbcc4d37eaf94d9d2f323b4fc38b53b9888b89ce0
 
 pkgname = beardrive-bin
