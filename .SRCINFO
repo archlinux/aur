@@ -1,11 +1,11 @@
 pkgbase = gowin-eda
 	pkgver = 1.9.12.04
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gowinsemi.com.cn/software/index
 	arch = x86_64
 	license = unknown
-	source = https://cdn.gowinsemi.com.cn/Gowin_V1.9.12.04_linux.tar.gz
+	source = https://eda.gowinsemi.cn/Gowin_V1.9.12.04_linux.tar.gz
 	source = gw_ide.sh
 	source = gw_sh.sh
 	source = programmer.sh

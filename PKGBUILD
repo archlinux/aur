@@ -3,13 +3,17 @@
 
 pkgbase=gowin-eda
 pkgver=1.9.12.04
-pkgrel=1
+pkgrel=2
 epoch=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
 url="https://www.gowinsemi.com.cn/software/index"
 license=('unknown')
-source=("https://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
+
+# Custom DLAGENTS to set user agent and prevent 403s
+DLAGENTS=('https::/usr/bin/curl -qgb "" -A pacman -fLC - --retry 3 --retry-delay 3 -o %o %u')
+
+source=("https://eda.gowinsemi.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "gw_ide.sh"
         "gw_sh.sh"
         "programmer.sh"
