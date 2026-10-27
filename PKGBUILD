@@ -1,11 +1,11 @@
 # Contributor: Sam Guymer <sam at guymer dot me>
 # Maintainer: ThiccFurLizzy <lizbeth.gatica.meow+arch at gmail dot com>
 
-_java_ver=25
+_java_ver=27
 _jdkname="zulu-jre-fx"
-_zulu_build="${_java_ver}.34.17-ca"
+_zulu_build="${_java_ver}.28.103-ca"
 pkgname="zulu-jre-fx-bin"
-pkgver="${_java_ver}.0.3"
+pkgver="${_java_ver}.0.0"
 pkgrel=1
 pkgdesc='Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=(
 install="$pkgname.install"
 _tarballname="zulu${_zulu_build}-fx-jre${pkgver}-linux_x64"
 source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-sha256sums=('7adaaa1573e785cbb7b8cfc6793ceedf9d89b718bab1d8af93a464be301728c1')
+sha256sums=('22cbf59965e4e224f7d4abc89d28f5dc71dec0246effdfe956fa35d2a1106f93')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
