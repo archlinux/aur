@@ -1,7 +1,7 @@
 # Maintainer: Jos Dehaes <jos dot dehaes at gmail dot com>
 
 pkgname=yserver
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A modern X11 server written from scratch in Rust (DRM/KMS + Vulkan)'
 url='https://github.com/joske/yserver'
@@ -23,7 +23,7 @@ optdepends=('vulkan-driver: required Vulkan implementation for your GPU'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Fill with `updpkgsums` once v1.4.0 is tagged. Not SKIP: that is for VCS
 # sources, and a fixed tarball must be verified.
-sha256sums=('daec8881746caba67f13aaec5d3b23218a70ce7cedabcf814c7dd46774507765')
+sha256sums=('a1ec2d4bb5271bd0edbcee927b1167b96bb17b62bec6c4da652c1993cdc44ea8')
 
 # Rust LTO is controlled by the cargo profile, not makepkg's C toolchain flags.
 options=('!lto')
