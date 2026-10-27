@@ -1,0 +1,1 @@
+z /etc/centrifugo/config.json 0640 root centrifugo -

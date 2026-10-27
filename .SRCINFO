@@ -1,0 +1,26 @@
+pkgbase = centrifugo-bin
+	pkgdesc = Scalable real-time messaging server (prebuilt)
+	pkgver = 6.10.2
+	pkgrel = 1
+	url = https://github.com/centrifugal/centrifugo
+	install = centrifugo.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	license = Apache-2.0
+	provides = centrifugo=6.10.2
+	conflicts = centrifugo
+	source = centrifugo.service
+	source = centrifugo.sysusers
+	source = centrifugo.tmpfiles
+	sha256sums = f61eeb35bfa248be947b0da434bf82815d2a0396f10933e4aadac06a73462f9c
+	sha256sums = dd656417db47b6dd5260a8a6b1f82005c80b6555ac65dd375a95e3aa5168e728
+	sha256sums = 3a4a5123db7293dc103187f406a168214ced95bda0c4f6c0f06508cf262a9718
+	source_x86_64 = https://github.com/centrifugal/centrifugo/releases/download/v6.10.2/centrifugo_6.10.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = fea3767686d2bcc55df02094cc323268d9a02bb255eb60884d9e74ce4162eb45
+	source_aarch64 = https://github.com/centrifugal/centrifugo/releases/download/v6.10.2/centrifugo_6.10.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5bfaf520235db64ea1339247f4d6b14c0738979fedae187c57aa24c1861db5c2
+	source_armv6h = https://github.com/centrifugal/centrifugo/releases/download/v6.10.2/centrifugo_6.10.2_linux_armv6.tar.gz
+	sha256sums_armv6h = b871244ef64e159f956e4bbc417a16e145d6ed84682cd36125ce1f3682d89cf3
+
+pkgname = centrifugo-bin
