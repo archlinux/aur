@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='OpenCode desktop app (built from source, runs on system electron44)'
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ options=('!strip' '!debug')
 # scanner enumerates source files via the git index when .git is present, and
 # falls back to a traversal that misses ~28% of the renderer's utility classes
 # when it isn't. Cloning the pinned commit preserves .git for the same CSS as CI.
-_commit=68bc26b7da1990ce10ffecfbc1e09eb13aa5d824
+_commit=1097e2668b1e08ad63bdf0b1c4860b9bc01e420c
 source=(
   "$pkgname-$pkgver-$_commit::git+https://github.com/anomalyco/opencode.git#commit=$_commit"
   "$pkgname.sh"
@@ -91,7 +91,8 @@ build() {
   # → hicolor/<size>/apps/...). Re-extracting them into our package keeps us
   # in sync with whatever upstream defines without us hand-maintaining a
   # parallel copy.
-  ( cd packages/desktop && bun run package -- \
+  ( cd packages/desktop && OPENCODE_VERSION="$pkgver" bunx electron-builder \
+      --config electron-builder.config.ts \
       --linux pacman \
       -c.asar=false \
       -c.electronDist=/usr/lib/electron44 \
