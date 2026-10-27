@@ -87,24 +87,27 @@ def _record_header_re(key: bytes) -> re.Pattern[bytes]:
 
 
 def _find_binary_record_keymap(data: bytes, patched: bool) -> tuple[int, int, int] | None:
-    """Find the newer keymap whose entries carry binary records instead of actions."""
+    """Find the binary-record keymap without requiring model metadata in its block."""
     first_key, second_key = (b"ctrl-i", b"ctrl-g") if patched else (b"ctrl-g", b"ctrl-p")
+    model_key = b"ctrl-p" if patched else b"ctrl-n"
     first_re = _record_header_re(first_key)
     second_re = _record_header_re(second_key)
+    model_re = _record_header_re(model_key)
     candidates = []
     for first_match in first_re.finditer(data):
         first_position = first_match.start()
         window_end = min(len(data), first_position + BINARY_RECORD_KEYMAP_WINDOW)
         window = data[first_position:window_end]
         second_match = second_re.search(window, RECORD_HEADER_TAIL_LEN)
+        model_match = model_re.search(window, RECORD_HEADER_TAIL_LEN)
         slash_position = window.find(b"ctrl-slash\x00", RECORD_HEADER_TAIL_LEN)
-        model_position = window.find(b"model-cycle\x00", RECORD_HEADER_TAIL_LEN)
         autonomy_position = window.find(b"autonomy-cycle\x00", RECORD_HEADER_TAIL_LEN)
         if (
             second_match
+            and model_match
+            and model_match.start() < slash_position
             and slash_position > second_match.start()
-            and model_position > slash_position
-            and autonomy_position > model_position
+            and autonomy_position > slash_position
             and RANGE_GAP not in window[:autonomy_position]
         ):
             candidates.append(
