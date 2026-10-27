@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=flasher-software-and-documentation
-pkgver=9.86
+pkgver=986a
 pkgrel=1
 pkgdesc="Segger Flasher Software and Documentation Pack for Linux"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("Flasher_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/do
 source_aarch64=("Flasher_Linux_${pkgver/./}_arm64.tgz::https://www.segger.com/downloads/flasher/Flasher_Linux_V${pkgver/./}_arm64.tgz")
 source=("Flasher.svg")
 sha256sums=('debad3e258c6fca6b7c58dbe711eee366eeef0e0f021eee4810281e93afa758b')
-sha256sums_x86_64=('e3bd9378bd6a0569bea027aaa507352f9829ba362a78b69609fc4c2bdeea3ad0')
-sha256sums_aarch64=('5808535584a5b5a19f84e213a3363917968c753ae3048c3b09b1530b2c0f5658')
+sha256sums_x86_64=('c6b137f8a86aaf71a07d92400408cf961e8df96020d9240e8dce2b7d49369637')
+sha256sums_aarch64=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 install=$pkgname.install
 url="https://www.segger.com/program-embedded-systems/"
 conflicts=("${pkgname}" "j-link-software-and-documentation")
