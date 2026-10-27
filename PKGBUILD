@@ -1,7 +1,7 @@
 # Maintainer: Dexanir <https://github.com/Dexanir>
 
 pkgname=dtr
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Human-friendly package-management wrapper for pacman, yay, and the AUR'
 arch=('any')
@@ -15,9 +15,9 @@ optdepends=(
   'base-devel: direct AUR package builds'
   'pacman-contrib: precise package cache cleanup with paccache'
 )
-_commit='703e9929d5af9e66c088c0f6a80bfda8fe433264'
+_commit='8cf2300bb7a4108f1e24ed6b42e4b53b70040514'
 source=("${pkgname}-${pkgver}::https://raw.githubusercontent.com/Dexanir/dtr/${_commit}/dtr")
-sha256sums=('4f1c93892a067b2fc6e46a219ce5b71b8cb463633aa14e5ca62acc468d8de4f1')
+sha256sums=('c938bd11574e62f454d74244511f28979cd4028241bf8ce89701b628815a4e9c')
 
 check() {
   bash -n "${srcdir}/${pkgname}-${pkgver}"
