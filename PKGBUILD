@@ -8,7 +8,7 @@ _prefix="${_prefix:-/opt/comfyui}"
 # ──────────────────────────────────────────────────────────────────────
 
 pkgname=comfyui
-pkgver=0.39.0
+pkgver=0.43.0
 pkgrel=1
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
 )
 
 sha256sums=(
-    '095d95805bdf36e73bbd15d6d2ee15fa627708679a2e67b5f467db4c57e7ff0a'
+    '8a496a7d82bd343cafdb2b867857fe8c5140e3cd9ec5cf46c6277ccb7466f202'
     'SKIP'
     'SKIP'
     'SKIP'
