@@ -1,0 +1,4 @@
+[ergochat-ldap]
+source = "git"
+git = "https://github.com/ergochat/ergo-ldap.git"
+prefix = "v"
