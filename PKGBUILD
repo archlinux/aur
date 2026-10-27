@@ -1,12 +1,12 @@
 # Maintainer: Evilchuck666 <carlos.martinez.medina1992@gmail.com>
 _pkgname=WinJitsu
 pkgname=winjitsu
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A slick, animated window management tool for Linux (X11)"
 arch=('any')
-url="https://github.com/Evilchuck666/winjitsu"
-license=('GPL3')
+url="https://github.com/Evilchuck666/WinJitsu"
+license=('GPL-3.0-only')
 depends=('python' 'xdotool' 'python-xlib')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$_pkgname::git+https://github.com/Evilchuck666/$_pkgname.git")
