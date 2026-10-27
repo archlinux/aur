@@ -3,7 +3,7 @@
 
 pkgname=frankenphp
 pkgver=1.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The modern PHP app server"
 arch=('x86_64')
 url="https://frankenphp.dev"
@@ -20,7 +20,7 @@ build() {
 	export CGO_CFLAGS="$(php-config --includes) ${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs) ${LDFLAGS}"
-	export GOFLAGS="-trimpath -buildmode=pie"
+	export GOFLAGS="-trimpath -buildmode=pie -modcacherw"
 
 	cd "${pkgname}-${pkgver}/caddy/frankenphp/"
 	go build -tags=nobadger,nomysql,nopgx,deprecated_topic,deprecated_claim
