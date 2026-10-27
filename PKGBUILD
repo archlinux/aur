@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=bast-bin
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A terminal UI and CLI for browsing SSH hosts, managing keys, and connecting to servers"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('bast')
 conflicts=('bast')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/ellipse-software/bast/releases/download/v${pkgver}/bast_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/ellipse-software/bast/releases/download/v${pkgver}/bast_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('b21aadb993d645bcc8487e65a8a6878965b55ea7973bdca28b4a8428fbdb5f5b')
-sha256sums_aarch64=('3f9c1b432120cc1e45864a8d5f1dd6c8054b657c0fc41b5fb721132724bd0080')
+sha256sums_x86_64=('1be0092f088eed23ec94e77dc38c408fe9818e930aa4fe2767fd6633134e2707')
+sha256sums_aarch64=('aac7b6d8f57a497bdc91539308347e0982db91655312dd12f21757c5151f4b7c')
 
 package() {
     local _bundle
