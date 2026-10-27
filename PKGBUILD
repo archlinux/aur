@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: files-on-demand FUSE mount, CLI, GTK4 app and tray"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!lto')
 # Stops the running daemon before removal, so the mount stops mirroring deletes.
 install=proton-drive.install
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5eb0e001ec2301ffb8b2b8429e907fab32810d6eba541bf978a0ea97867d8bc9')
+sha256sums=('d9b16b1027816a379d6a11c6396d779f751a6f94becaa16b17439420f561d13d')
 
 _srcname="proton-drive-linux-$pkgver"
 
@@ -78,4 +78,7 @@ package() {
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  # pacman brings new releases, so the app never checks for them itself.
+  install -Dm644 /dev/null "$pkgdir/usr/share/proton-drive-linux/managed-updates"
 }
