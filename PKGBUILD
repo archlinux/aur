@@ -29,6 +29,5 @@ package() {
   cp --archive ${srcdir}/${pkgname}/etc/lightdm/lightdm-gtk-greeter.conf.d/99_linuxmint.conf ${pkgdir}/etc/lightdm/lightdm-gtk-greeter.conf
   cp --archive ${srcdir}/${pkgname}/etc/skel ${pkgdir}/etc
   cp --archive ${srcdir}/${pkgname}/etc/xdg ${pkgdir}/etc
-  cp --archive ${srcdir}/${pkgname}/usr/bin/sha256sum-mint ${pkgdir}/usr/bin/sha256sum-mint
   cp --archive ${srcdir}/${pkgname}/usr/share/* ${pkgdir}/usr/share/
 }
