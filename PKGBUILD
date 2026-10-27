@@ -9,7 +9,7 @@
 # you want a fully verifiable source build.
 
 pkgname=veshell-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
@@ -22,23 +22,26 @@ depends=(
   'libdisplay-info' 'wayland'
   'pipewire' 'libpulse'
   'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good'
-  'dbus' 'upower' 'polkit'
+  'dbus' 'upower' 'polkit' 'pam'
   'xorg-xwayland' 'xdg-desktop-portal' 'xdg-utils'
 )
 optdepends=(
   'networkmanager: network control panel'
   'bluez: Bluetooth control panel'
   'rtkit: real-time audio scheduling'
+  'fprintd: fingerprint unlock on the lock screen'
   'xdg-desktop-portal-gtk: GTK portal fallback backend'
 )
+# Lock screen PAM services: keep local edits across upgrades.
+backup=('etc/pam.d/veshell' 'etc/pam.d/veshell-fingerprint')
 provides=('veshell' 'wayland-compositor')
 conflicts=('veshell' 'veshell-git')
 
-source=("veshell-0.1.7-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.1.7/veshell-0.1.7-x86_64.tar.zst")
-sha256sums=('ac575dc659fba132b3f3b18d51925bf98fa7bb936bb5e2bc6260226f0c65a622')
+source=("veshell-0.1.8-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.1.8/veshell-0.1.8-x86_64.tar.zst")
+sha256sums=('3310a0b6df8ab4dfb4a5f188c458932a47412cffff3b95ec4116b7fd9af855be')
 
 package() {
-  bsdtar -xf "$srcdir/veshell-0.1.7-x86_64.tar.zst" -C "$pkgdir"
+  bsdtar -xf "$srcdir/veshell-0.1.8-x86_64.tar.zst" -C "$pkgdir"
   install -Dm644 "$pkgdir/usr/share/licenses/veshell/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
