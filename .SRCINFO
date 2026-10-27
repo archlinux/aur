@@ -1,7 +1,7 @@
 pkgbase = dsh-desktop-bin
 	pkgdesc = Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation
 	pkgver = 0.12.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/dataelement/dsh-desktop
 	arch = x86_64
 	license = MIT

@@ -6,7 +6,7 @@
 
 pkgname=dsh-desktop-bin
 pkgver=0.12.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
@@ -64,6 +64,14 @@ package() {
   install -d "$pkgdir/opt/dsh-desktop"
   cp -r "$src/app/." "$pkgdir/opt/dsh-desktop/"
   chmod 755 "$pkgdir/opt/dsh-desktop/dsh-desktop"
+
+  # 上游按开发树布局去读 <应用根>/.build/office-runtime/primary-runtime/runtime.json，
+  # 而打包后该运行时实际在 resources/office-runtime（extraResources）。不补这个链接，
+  # desktop-office 插件启动时会 ENOENT，导致「1 required plugin did not activate」。
+  if [[ -d "$pkgdir/opt/dsh-desktop/resources/office-runtime" ]]; then
+    install -d "$pkgdir/opt/dsh-desktop/.build"
+    ln -s ../resources/office-runtime "$pkgdir/opt/dsh-desktop/.build/office-runtime"
+  fi
 
   install -d "$pkgdir/usr/bin"
   ln -s /opt/dsh-desktop/dsh-desktop "$pkgdir/usr/bin/dsh-desktop"
