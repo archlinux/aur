@@ -2,7 +2,7 @@
 # Contributor: Jonny Stoten <jonny@jonnystoten.com>
 
 pkgname="stripe-cli-bin"
-pkgver=1.55.2
+pkgver=1.55.3
 pkgrel=1
 pkgdesc="A command-line tool for Stripe"
 arch=("x86_64" "aarch64")
@@ -18,8 +18,8 @@ provides=("stripe" "stripe-cli")
 conflicts=("stripe-cli")
 source_x86_64=("https://github.com/stripe/stripe-cli/releases/download/v$pkgver/stripe_${pkgver}_linux_x86_64.tar.gz")
 source_aarch64=("https://github.com/stripe/stripe-cli/releases/download/v$pkgver/stripe_${pkgver}_linux_arm64.tar.gz")
-b2sums_x86_64=('6331c92ac7890fe5a7a90af8e04db0181fb6582fb50d448857fadc55c7fc4868dc9343b45fd86b0854ac0a60f6d1774ab5c9b0d203f04ee65fd51985e106f5c2')
-b2sums_aarch64=('3969ecb59c54f52abddb0e74579eb1883d386f92905ecf02b20620ad60929e08d8e655acf1eab4a830b8a773830c7d9f9ad97ce867f3bdd4bae156f7e75fa032')
+b2sums_x86_64=('d8a0c3b4352a31b09ec9ea0ca0da4de455cf828aae64894cf438007df63c16307ef4acbc140700548ed7b14a84c358f796dbb034de7a076eb2091c91c52e3ef1')
+b2sums_aarch64=('23a9b3c2f312d1257aeef6b5dfd352fad437ce1b7e3c7c13c0aec7424808a5b4072a3c8c55e4cb75467d31e91da934b84b6520664068810118e2df59232aa233')
 
 package() {
  install -D -m 0755 "stripe" "$pkgdir/usr/bin/stripe"
