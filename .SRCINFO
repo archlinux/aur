@@ -1,0 +1,18 @@
+pkgbase = scad2step
+	pkgdesc = Convert an OpenSCAD file to a STEP file from the command line
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/etjones/scad2step
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-scad123d
+	source = https://files.pythonhosted.org/packages/source/s/scad2step/scad2step-0.1.3.tar.gz
+	sha256sums = 83158ff86d826f0236ac05f67d4bf9ae5351e7d8392aefc3fce23b7677172776
+
+pkgname = scad2step

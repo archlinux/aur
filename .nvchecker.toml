@@ -1,0 +1,4 @@
+[scad2step]
+source = "pypi"
+pypi = "scad2step"
+release_url = "https://pypi.org/project/scad2step/__version__/"
