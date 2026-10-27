@@ -1,14 +1,14 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="MyAnimeList scrobbler"
 arch=('x86_64')
 url="https://tundra.moe"
-license=('GPL3')
+license=('GPL-3.0-only')
 groups=()
-depends=('gtk4' 'libadwaita' 'dbus')
+depends=('gtk4' 'libadwaita' 'dbus' 'hicolor-icon-theme')
 makedepends=('rust')
 checkdepends=()
 optdepends=()
@@ -24,6 +24,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/m4tx/$pkgname/archive/v$pkg
 noextract=()
 md5sums=('a0e506ddec3d62473fa42e7b54b424cc'
          '0cbde2a6f270098ed63e7c6a7c9a6465')
+sha256sums=('a75148db97ef0182390cd6bd74c2d52167fb27aea1ca48818cfa5c0c3c72cf56'
+            '40f48d53e1f705ded033daa2eb88114358046755d4650520dfed65e683925003')
+b2sums=('12f3255313e0baa6a67dd1e12015304d1b04c9cac6309312e4498566ab94c6fdc6230958d9b144695d7519d893b90a44834aed0ea08e22aeb4f8baccf2732f40'
+        '977193d815fe473015658b69923c9c5472983277aa353bfe576a6d5aaba9657a5519b1c15a13e36fe2d2244644f0b0f33727aebafca4b2d050f57bae5105b20a')
 validpgpkeys=()
 
 prepare() {
