@@ -40,6 +40,6 @@ package() {
     install -Dm644 mail-badge-bridge.xpi "$pkgdir/usr/share/$pkgname/mail-badge-bridge.xpi"
   fi
 
-  # Vrati radni direktorijum na $srcdir pre izlaska iz fakeroot okruženja
+  # Return working directory to $srcdir before exiting the fakeroot environment
   cd "$srcdir"
 }

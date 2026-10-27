@@ -10,15 +10,6 @@ post_install() {
     echo "      /usr/share/mail-badge-notifier-git/install.sh --thunderbird"
     echo "    (Or use --betterbird if you are using Betterbird)"
     echo ""
-    echo " 2. Install the browser extension (.xpi) in your mail client:"
-    echo "    - Open Thunderbird or Betterbird."
-    echo "    - Go to Add-ons and Themes (Ctrl+Shift+A) -> Gear icon (⚙)."
-    echo "    - Click 'Install Add-on From File...'"
-    echo "    - Select: /usr/share/mail-badge-notifier-git/mail-badge-bridge.xpi"
-    echo "    - Restart your mail client once."
-    echo ""
-    echo " To uninstall later, simply run:"
-    echo "      /usr/share/mail-badge-notifier-git/uninstall.sh"
     echo "========================================================================"
 }
 
