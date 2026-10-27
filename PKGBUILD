@@ -7,7 +7,7 @@
 _pkgname="download-with-kget"
 pkgname="${_pkgname}-native-git"
 pkgver=r9.dee199a
-pkgrel=1
+pkgrel=2
 pkgdesc="KGet extension native handler"
 arch=('any')
 url="https://github.com/Takios/download-with-kget"
@@ -15,11 +15,13 @@ license=('MPL-2.0')
 depends=(
   'python'
   'python-pydbus'
+  'kget'
 )
 makedepends=('git' 'jq')
 provides=("$_pkgname")
 source=("git+https://github.com/Takios/download-with-kget")
 sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname" || exit
@@ -28,14 +30,13 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}/src/native" || exit
-  cat <<<"$(jq '.path = "/usr/bin/download_with_kget"' download_with_kget.json)" >download_with_kget.json
+  jq '.path = "/usr/bin/download_with_kget"' download_with_kget.json >download_with_kget.json.new
+  mv download_with_kget.json.new download_with_kget.json
 }
 
 package() {
   cd "${_pkgname}/src/native" || exit
   install -Dm644 download_with_kget.json -t "${pkgdir}/usr/lib/mozilla/native-messaging-hosts"
   install -Dm644 download_with_kget.json -t "${pkgdir}/usr/lib/librewolf/native-messaging-hosts"
-  mkdir -p "${pkgdir}/usr/bin"
-  cp download_with_kget.py "${pkgdir}/usr/bin/download_with_kget"
-  chmod 755 "${pkgdir}/usr/bin/download_with_kget"
+  install -Dm755 download_with_kget.py "${pkgdir}/usr/bin/download_with_kget"
 }
