@@ -1,6 +1,6 @@
 pkgname=xfce4-diskperf-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=2.8.0.r201.gfb45c01
+pkgver=2.8.0.r202.g8cefa54
 pkgrel=1
 pkgdesc='Plugin for the Xfce4 panel displaying instant disk/partition performance'
 arch=('i686' 'x86_64')
