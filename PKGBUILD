@@ -2,9 +2,9 @@
 # Contributor: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname=git-spice
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
-_commit=eb1831c
+_commit=9796a50
 pkgdesc='A tool for stacking Git branches.'
 url='https://github.com/abhinav/git-spice'
 arch=(aarch64 armv7h x86_64)
@@ -12,7 +12,7 @@ license=(GPL-3.0-or-later)
 depends=(glibc)
 makedepends=(git go)
 source=("$pkgname::git+$url#commit=$_commit?signed")
-sha256sums=('98c8e2a6cb1942d91bcd68da2d9f3d9d744341939dcd6ef88f870239a1509075')
+sha256sums=('d803257f77c05c9b6da43fd5f6d372a4f55ee146e1ef5ab03350ff6cffaefe3a')
 validpgpkeys=(968479A1AFF927E37D1A566BB5690EEEBB952194)
 
 prepare() {
