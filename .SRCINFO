@@ -1,6 +1,6 @@
 pkgbase = nowledge-mem
 	pkgdesc = Local-first memory and context management system for AI-powered workflows
-	pkgver = 0.10.101
+	pkgver = 0.10.109
 	pkgrel = 1
 	url = https://mem.nowledge.co
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = nowledge-mem
 	provides = nmem-cli
 	conflicts = nmem-cli
 	conflicts = nowledge-mem-bin
-	noextract = nowledge-mem-0.10.101.deb
+	noextract = nowledge-mem-0.10.109.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = nowledge-mem-0.10.101.deb::https://download-mem.nowledge.co/app/0.10.101/x86_64-unknown-linux-gnu.deb
-	sha256sums_x86_64 = 306d03d28867f9cba3292ab632924b48d85d1d9cc263fe49b707d581c7dfc684
+	source_x86_64 = nowledge-mem-0.10.109.deb::https://download-mem.nowledge.co/app/0.10.109/x86_64-unknown-linux-gnu.deb
+	sha256sums_x86_64 = 10174a648ba69918b274d912472c12fe42df1d32cd734714b1c5beee176ab5c9
 
 pkgname = nowledge-mem
