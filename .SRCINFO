@@ -1,6 +1,6 @@
 pkgbase = system-bridge
 	pkgdesc = A bridge for your systems
-	pkgver = 5.19.0
+	pkgver = 5.20.0
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/timmo001/system-bridge
@@ -16,13 +16,16 @@ pkgbase = system-bridge
 	optdepends = nvidia-utils: NVIDIA GPU metrics via nvidia-smi
 	optdepends = pciutils: GPU model identification via lspci
 	optdepends = pipewire: name apps using the microphone or camera via pw-dump
-	optdepends = playerctl: media player data and controls
 	optdepends = zenity: tray and desktop confirmation prompts
+	optdepends = libpulse: audio devices, controls and notification sounds via pactl and paplay
+	optdepends = alsa-utils: notification sounds via aplay
+	optdepends = bluez: Bluetooth devices and controls
+	optdepends = ddcutil: external monitor brightness and power over DDC/CI
 	provides = system-bridge
 	conflicts = system-bridge-git
 	conflicts = system-bridge-git-debug
 	options = !strip
-	source = system-bridge-5.19.0.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.19.0.tar.gz
-	sha256sums = 30645af375181a9298b0c98605ae52a3e10a238956c73c85a026c6c3ebe49381
+	source = system-bridge-5.20.0.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.20.0.tar.gz
+	sha256sums = 29610db4c244402f451e1108e7102bf10fcc267282adacb3e76bc6459035d702
 
 pkgname = system-bridge
