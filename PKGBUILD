@@ -3,7 +3,7 @@
 
 pkgname=php-box-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Fast, zero config application bundler with PHARs"
 arch=("any")
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}.phar::https://github.com/box-project/box/releases/download/${pkgver}/box.phar"
   "${pkgname}-${pkgver}.LICENSE::https://raw.github.com/box-project/box/${pkgver}/LICENSE"
 )
-sha256sums=('3d390eeaec33288098fe83f8a54c60cc575cb6be295f38ff4482b4b4f26f8d52'
+sha256sums=('aedabb38bad96a90868603f118956c3faa662b545c06be66df1b145aba703c0a'
             'ba2dfc30b9659262549c839894838d9a1fe78ca533d0338cebc2f4f634b3bb12')
 
 package() {
