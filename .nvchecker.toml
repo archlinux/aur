@@ -1,0 +1,5 @@
+[db9s-bin]
+source = "github"
+github = "damien-mathieu1/db9s"
+use_latest_release = true
+prefix = "v"
