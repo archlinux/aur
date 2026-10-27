@@ -3,9 +3,9 @@
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-pg8000
-pkgver=1.31.5
+pkgver=1.31.6
 pkgrel=1
-_commit=c178a65641f3b23c4d722aeafdbd304ae0a0b4f1
+_commit=24477a478730fea97d03d2476cd696127fd93902
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://codeberg.org/tlocke/pg8000'
@@ -15,7 +15,7 @@ checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp python-dateutil)
 source=("git+${url}.git?signed#commit=${_commit}")
-sha256sums=('0cf9322b701efa82cdc10f2f1d9f53e550070eaf35025cc9a7db1b77ac4271ba')
+sha256sums=('5baf872d2550055d24b77098f143ec8d23df3ebeeb2e8c573da1ba607bbfc3f1')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
