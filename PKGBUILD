@@ -10,9 +10,9 @@
 # The Android system image is not included: waydroid-nvidia-setup downloads it (see post_install).
 
 pkgname=waydroid-a17-nvidia-bin
-pkgver=20261025.2
+pkgver=20261027.1
 pkgrel=1
-_tag=a17-20261025-2
+_tag=a17-20261027-1
 _wn_sha=29ffa3a237b0d79a751748bd9bb82c50dd577808      # waydroid-nvidia v0.2.0-rc10 release notes commit
 _wn_tag=v0.2.0-rc10
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
@@ -62,17 +62,17 @@ noextract=(
   "waydroid-a17-nvidia-native-x86_64-$_tag.tar.zst"
 )
 sha256sums=('4dc67241bf35189d4490306611f7f52e49117d04511a60999e96328f010dd84f'
-            '507ba87e7ec784e3a04fd1549291d8286d85d877e8d3ae9494f258eeac1bdeec'
+            'ee72eb7b34c1d5323f478ca067da958193108e5c3f2dd1bac1b027e6a23d1ca7'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
             '124106f95e1b35c75eed8a966ab66284760fd6d02c79ad9fadd88355d4e3a2d7'
             '5fa325de02c2ef9c13f972efba98e27cdf4d2d48c0a33cf9a884ade8eaa74c50'
             '3fe5822ca2b9ed3aa6fcd9c9627679a04592837b947d7754911c3ab4c1007ec2'
-            '203e3495c2bb80e02070a389fd4374f9044ffba6653c4dd31e8609d7ad768169'
-            '09e82830df54a864edaf7cf14b92ddc0965680ee8b685834e8a8a41522f870f6'
-            'fc8efc7a597ef28c9c0633bdb7b654e5a960136d7b47596f7afe242908e12880'
-            'a2299bd5044ad6715a320009be0af8b224674626b937e76f7101a70cd7115734'
-            'b4009690f534bdbdbe616f90c8840c7393f3393571a3d64435cc4daa9481bb13'
-            'a18d000622dfe665e6d1822d69860eca926a6edb3d6ddb84f81497b66d35e372')
+            'b599dadbb7c8fc93d74e76143b9d6c9a290baa27f48eff2bb2f03c14378db6cb'
+            'deac2c5f77c09b3bde35995b57b02c9e91fb514bb688878ffc77f4133ca5194e'
+            '64168b6959ca7c333a8567083e3fcf08ba454e67ad040f13d866f27a39788f59'
+            '718beafc2ea57aa9c68e58750d6067c367cfb9449388a81ab8f6202c8f764214'
+            '76fe959f113d3f1335c1ce61f0b6842867e4315f9076cc45a486a178084c75e9'
+            '1a97f3e747c4ba3c3c46336fc8459910b2097ce361f9e09cf9934e561fea445e')
 
 prepare() {
   local wn="$srcdir/waydroid-nvidia-$_wn_sha" a17="$srcdir/waydroid-a17-nvidia-$_tag" p
