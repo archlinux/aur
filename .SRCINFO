@@ -1,7 +1,7 @@
 pkgbase = efisc2026-bin
-	pkgdesc = Steuererklärungssoftware des Kantons Thurgau für das Steuerjahr 2025 (eFisc2026)
+	pkgdesc = Steuererklärungssoftware des Kantons Thurgau für das Steuerjahr 2026
 	pkgver = 1.0.0.76
-	pkgrel = 2
+	pkgrel = 3
 	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2026.html/18120
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -17,7 +17,6 @@ pkgbase = efisc2026-bin
 	optdepends = libcups: printing
 	provides = efisc2026
 	conflicts = efisc2026
-	noextract = efisc2026_1.0.0-76_amd64.deb
 	options = !strip
 	options = !debug
 	source = https://efisc.kttg.ch/update/eFisc/2026/efisc2026_1.0.0-76_amd64.deb
