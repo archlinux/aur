@@ -5,7 +5,7 @@
 pkgname=fortitude
 pkgver=0.10.0
 pkgrel=1
-pkgdesc='A Fortran linter, inspired by (and built upon) Ruff.'
+pkgdesc='Fortran linter, inspired by (and built upon) Ruff'
 arch=(x86_64)
 url='https://github.com/PlasmaFAIR/fortitude'
 license=(MIT)
@@ -38,8 +38,10 @@ check() {
   cd "$pkgname" || exit
 
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export LIBGIT2_NO_VENDOR=1
   # Upstream specifically recommends using nextest in CONTRIBUTING.md
-  cargo nextest run
+  cargo nextest run --frozen --release --all-features
 }
 
 package() {
