@@ -2,7 +2,7 @@
 pkgname=zeroclawlabs
 _reponame=zeroclaw
 # >>> generated:pkgbuild-version by `cargo generate installers` - do not edit <<<
-pkgver=0.8.6
+pkgver=0.8.7
 # >>> end generated:pkgbuild-version <<<
 pkgrel=1
 pkgdesc="Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant."
@@ -14,7 +14,7 @@ makedepends=('cargo' 'git' 'nodejs' 'npm')
 provides=('zeroclaw' 'zerocode')
 conflicts=('zeroclaw' 'zerocode')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ffef623e3b6b83ea1a95fa2ea454e6986ed9f827736e99f114b5b3694fb89008')
+sha256sums=('352f97ddcf0a03864089d8311fddd1bc5b5c2e1f1595a5e407a96fe0d2b62c79')
 
 prepare() {
   cd "${_reponame}-${pkgver}"
