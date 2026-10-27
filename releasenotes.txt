@@ -1,17 +1,23 @@
-# Gaia Sky 3.9.1
+# Gaia Sky 3.9.2
 
-This is a bug-fix release. It restores the occlusion of the procedurally generated galaxy channels by the volume dust, and fixes several issues that surfaced when creating galaxies from the UI and when inserting entities into the scene graph.
+This is a bug-fix release. The procedural galaxy is drawn at the right size and position, the background grid annotations are back, and a camera teleport when focusing large objects is fixed.
 
 ## Bug Fixes
 
+### Volumes
+- Procedural galaxy volumes are drawn at the correct size and position (they were 5% too large and off-centre). Volumes generated with an older `particles-to-volume.py` must be regenerated.
+- Volume labels are no longer 10 times too large. Fixes [#943](https://codeberg.org/gaiasky/gaiasky/issues/943).
+
+### Labels and grids
+- The latitude/longitude annotations of the equatorial, ecliptic and galactic grids are visible again.
+
 ### Rendering
-- Half-resolution channels are occluded by full-resolution occluders again. The full- and half-resolution buffers have independent depth attachments, and the half-resolution pass cleared its own before drawing, so the billboard channels of procedural galaxies were never depth-tested against the volume dust and showed through it. The full-resolution depth is now blitted into the half-resolution buffer before the half-resolution pass, where the billboard renderers already read it without writing.
-- Runtime-created billboards bind their texture array. A galaxy created from the UI resolved its texture array in the same callback that queued it, before the asynchronous loader had built anything, so the field stayed `null` for good and the renderers sampled whatever array other passes had left on texture unit 0. The asset is now waited for, and an error is logged if it cannot be resolved.
-- Billboard texture arrays are bound to the correct texture unit, which fixes particle sets' arrays leaking into the unit the billboard shader samples.
+- Fixed-function GL state no longer leaks between render groups, and render-group teardown no longer skips state restoration on failure.
 
-### UI & interface
-- Galaxies added via the UI get their parent populated correctly again. Entities inserted while their parent node has no children yet were not getting their graph parent set, which broke proximity descriptors and crashed on focus. This prevents a crash with the NASA Exoplanet Archive dataset.
-- Fix the guard in the code that adds children to nodes, which made it function improperly.
+### Camera and focus
+- Focusing an object that opts out of camera collision (e.g. the Milky Way) no longer teleports the camera out of it.
+- Focus resolution no longer jumps to the first particle of a set when a name is not in its index.
 
-## Performance Improvements
-- Always run the volume depth pre-pass at full resolution, so that its depth occludes half-resolution content, and skip the full-to-half depth blit when the half-resolution pass is empty.
+## Features
+
+- The galaxy volume is 1.37 times larger, giving a 17 kpc gas disk with the Sun at 0.47 of it, and dust scattering is enabled.

@@ -1,6 +1,6 @@
 pkgbase = gaiasky
 	pkgdesc = Open source 3D universe simulator for desktop and VR with support for more than a billion objects
-	pkgver = 3.9.1
+	pkgver = 3.9.2
 	pkgrel = 1
 	epoch = 3
 	url = https://gaiasky.space
@@ -9,7 +9,7 @@ pkgbase = gaiasky
 	license = MPL
 	depends = java-runtime>=26
 	depends = xorg-xrandr
-	source = https://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/3.9.1.0c8d86389/gaiasky-3.9.1.0c8d86389.tar.gz
-	sha256sums = 83c4bf1e64d2707a0f16283df857246ad7f2008186eb93355f87734c7a6e95b6
+	source = https://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/3.9.2.95a9305a9/gaiasky-3.9.2.95a9305a9.tar.gz
+	sha256sums = 7059f2214eb500c3e49b8b02b19b534d3975aaa96baaa460b698fcd7f9332cf6
 
 pkgname = gaiasky
