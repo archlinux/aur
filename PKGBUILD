@@ -1,8 +1,8 @@
 # Maintainer: facelock contributors
 pkgname=facelock-bin
 _pkgname=facelock
-_tag=0.2.1
-pkgver=0.2.1
+_tag=0.3.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Face authentication for Linux PAM (prebuilt binaries)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "pam_facelock-$_tag.so::$url/releases/download/v$_tag/pam_facelock.so"
     "facelock-polkit-agent-$_tag-x86_64::$url/releases/download/v$_tag/facelock-polkit-agent-x86_64-linux-gnu"
 )
-sha256sums=('b7f7cc8f65b9e26a22abd95b2c3a5e4b435e496590e4a03bddb0a670a47b267f' 'd8c529945e262d1c5ec134e3cfd7777e4fd7759ab463be47cf9755f0fe153b95' '01678219c40b685c07df822588136ba3766186e4b76c2583b4165c593569138f' '865d8cc87509dadb66dee981fbb28191bf38032d8806c12dd31b96856d42ba11')
+sha256sums=('2d8ea53505903068f2dc45a7c657ece8a9d65fe680845ceae2d4922d8a2952d0' '5f19a8e9bfa2aee4960d477ab7531b1f498da10095d8335f8d7c618992127c93' 'e6cdda2d9cb54af7864a6a1fad17bce7690262d582697b41c4aeb20387eb1e61' '450e0a234669a1eed5b9cc363da6e1c44d07aa9892bc557900101f88fe73524f')
 
 package() {
     cd "$_pkgname-$_tag"
