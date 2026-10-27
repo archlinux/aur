@@ -14,7 +14,7 @@ license=('LGPL-2.1-or-later')
 # We configure with optional curl, hwloc, gmp-ecm.
 # Configuring with hwloc makes binaries in linalg/bwc depend on it.
 depends=('gmp' 'python' 'sqlite' 'hwloc' 'python-flask' 'python-requests' 'fmt')
-makedepends=('git' 'cmake' 'inetutils' 'curl' 'gmp-ecm')
+makedepends=('git' 'cmake' 'inetutils' 'curl' 'gmp-ecm' 'perl')
 optdepends=('curl: for cado-nfs-client.py'
             'gmp-ecm: for JL DLP polynomial selection'
             'perl: for bwc.pl')
@@ -52,6 +52,8 @@ GMPECM="\$PREFIX"
 CURL="\$PREFIX"
 # Remove 32-bit barriers to big factorizations
 FLAGS_SIZE="-DSIZEOF_P_R_VALUES=8 -DSIZEOF_INDEX=8"
+# Fixed build tree, instead of the default build/\$(hostname)
+build_tree="\${up_path}/build/makepkg"
 EOF
 }
 
@@ -63,8 +65,9 @@ build() {
   CXXFLAGS="$(_update_march "$CXXFLAGS") -Wno-stringop-overflow -ffile-prefix-map=${srcdir}=."
 
   make cmake
-  local escaped="$(sed 's|[.*^$\\\|[]|\\&|g;s/\n/\\n/g' <<< "$srcdir")"
-  find build -type f -iname '*.h' -print0 | xargs -0 sed -zi "s|$escaped|$_pkg|g"
+  # cado_config.h embeds CFLAGS/CXXFLAGS as strings, which contain makepkg's
+  # -ffile-prefix-map=$srcdir=...; scrub them so binaries don't reference $srcdir
+  SRCDIR="$srcdir" perl -pi -e 's/\Q$ENV{SRCDIR}\E/<srcdir>/g' build/makepkg/cado_config.h
 
   make
 }

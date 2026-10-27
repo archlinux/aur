@@ -10,6 +10,7 @@ pkgbase = cado-nfs-git
 	makedepends = inetutils
 	makedepends = curl
 	makedepends = gmp-ecm
+	makedepends = perl
 	depends = gmp
 	depends = python
 	depends = sqlite
