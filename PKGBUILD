@@ -1,77 +1,101 @@
-# Maintainer: Christer Solskogen <christer.solskogen@gmail.com
+# Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 _target=m68k-elf
 pkgname=$_target-toolchain
-pkgver=20230502
+pkgver=20261027
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
-depends=('zlib' 'bash' 'libmpc' 'libisl')
-url="http://www.gnu.org"
-conflicts=($_target-gcc $_target-binutils $_target-newlib $_target-gdb)
+depends=('bash' 'zlib' 'zstd' 'gmp' 'mpfr' 'libmpc' 'libisl'
+         'libelf' 'expat' 'ncurses' 'readline' 'python' 'xz' 'xxhash')
+url="https://www.gnu.org"
+conflicts=("$_target-gcc" "$_target-binutils" "$_target-newlib" "$_target-gdb")
 arch=('x86_64')
-depends=(libelf)
-makedepends=(git)
+makedepends=('git')
 license=('GPL' 'BSD')
-options=('!strip')
-_binutils_commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
-_gcc_commit=ffc6b225c955a3d8478de1beba5ad08a7396648c
-_newlib_commit=ab49db3a8c08e2240e53d8f12d6a14fd285def4e
+options=('!strip' '!debug' '!lto' 'staticlibs')
+_binutils_commit=cd679f551a3961ba3ac17a8f9e48d86323207b7c
+_gcc_commit=b567707db43a9990e4319c0c38f4b0c752d45ac7
+_newlib_commit=8ba4275b83ec27529f67e0d477611fa6d8d6e6bd
 
-source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_binutils_commit}
-                  git+https://gcc.gnu.org/git/gcc.git#commit=${_gcc_commit}
-                  git+https://sourceware.org/git/newlib-cygwin.git#commit=${_newlib_commit}
+source=("git+https://sourceware.org/git/binutils-gdb.git#commit=${_binutils_commit}"
+        "git+https://gcc.gnu.org/git/gcc.git#commit=${_gcc_commit}"
+        "git+https://sourceware.org/git/newlib-cygwin.git#commit=${_newlib_commit}"
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-CFLAGS=${CFLAGS/-Werror=format-security/}
-CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
-
 prepare() {
-	cd "${srcdir}"/binutils-gdb
-	
-	#for i in bfd binutils gas gold ld libctf libsframe opcodes; do ln -snfv ../binutils-gdb/$i; done
-	for i in gcc fixincludes libcody libcpp libgcc libstdc++-v3; do ln -snfv ../gcc/$i; done
-	for i in newlib libgloss; do ln -snfv ../newlib-cygwin/$i; done
+	local repository entry
+	local -a entries
 
-	mkdir -p "${srcdir}/obj"
+	# GCC diagnoses the undeclared memcpy/memset calls in this startup code.
+	if ! grep -q '^#include <string.h>' "${srcdir}/newlib-cygwin/libgloss/m68k/cf-crt1.c"; then
+		sed -i '/^#include <stdlib.h>/a #include <string.h>' \
+			"${srcdir}/newlib-cygwin/libgloss/m68k/cf-crt1.c"
+	fi
+	# Match the semihosting symbol exported by cf-hosted.S/fido-hosted.S.
+	sed -i 's/extern int __io_hosted (/extern int __hosted (/' \
+		"${srcdir}/newlib-cygwin/libgloss/m68k/io.h"
+
+	rm -rf "${srcdir:?}/combined"
+	mkdir -p "${srcdir}/combined" "${srcdir}/obj-combined"
+
+	# Real directories allow merging; files are symlinks to the source trees.
+	# Later trees override earlier ones: GCC > binutils > newlib.
+	for repository in newlib-cygwin binutils-gdb gcc; do
+		entries=()
+		for entry in "${srcdir}/${repository}/"* \
+		             "${srcdir}/${repository}/".[!.]* \
+		             "${srcdir}/${repository}/"..?*; do
+			[[ -e $entry || -L $entry ]] || continue
+			[[ ${entry##*/} == .git ]] && continue
+			entries+=("$entry")
+		done
+		cp -rs --remove-destination "${entries[@]}" "${srcdir}/combined/" || return
+	done
 }
 
 build()
 {
-	cd "${srcdir}"/obj
-	"${srcdir}"/binutils-gdb/configure --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
-	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-plugins --enable-deterministic-archives --enable-relro --enable-__cxa_atexit \
-	--enable-linker-build-id --enable-plugin --enable-checking=release --enable-host-shared --disable-libssp --disable-libunwind-exceptions --disable-source-highlight
+	cd "${srcdir}"/obj-combined || return
+	CFLAGS=${CFLAGS//-Werror=format-security/}
+	CXXFLAGS=${CXXFLAGS//-Werror=format-security/}
+	# Host architecture and hardening flags must not reach bare-metal libraries.
+	export CFLAGS_FOR_TARGET='-O2 -g'
+	export CXXFLAGS_FOR_TARGET='-O2 -g'
+
+	"${srcdir}"/combined/configure --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
+	--with-newlib --with-system-zlib --disable-nls --enable-plugins --enable-deterministic-archives --enable-relro --enable-__cxa_atexit \
+	--enable-linker-build-id --enable-checking=release --disable-libcc1 --disable-libssp --disable-libunwind-exceptions --disable-source-highlight --disable-werror \
+	--with-python=/usr/bin/python --without-debuginfod --without-guile --without-babeltrace --without-intel-pt --disable-gprofng
 
 	make
 }
 
 package()
 {
-	cd "${srcdir}/obj"
+	cd "${srcdir}/obj-combined" || return
 	make install DESTDIR="${pkgdir}" -j1
-	rm -rf "${pkgdir}"/usr/share
-	rm -rf "${pkgdir}"/usr/include
-	rm -rf "${pkgdir}"/usr/lib/libcc1.*
-	rm -rf "${pkgdir}"/usr/lib/bfd-plugins
+	rm -rf "${pkgdir:?}"/usr/share
+	rm -rf "${pkgdir:?}"/usr/include
+	rm -rf "${pkgdir:?}"/usr/lib/libcc1.*
+	rm -rf "${pkgdir:?}"/usr/lib/bfd-plugins
 	find "${pkgdir}" -name '*.py' -delete 
 
 
-	# local variable is scoped to the function, for general tidiness. 
-	local regex='ELF ().*(executable|shared object).*'
-	# read null-terminated filenames from stdin, and use a while loop to operate on each one
-	# for each run of the loop, the filename is stored in the intuitive variable "filename". :) 
-	while read -r -d '' filename; do
-	# test if the output of `file` matches the regular expression defined earlier
-	if [[ $(file -b "$filename") =~ $regex ]]; then
-       	 # awesome, it matches! So, do the standard strip routine since this isn't an $_target executable
-        	strip --strip-unneeded "$filename"
-    	fi
-	# this find command uses process substitution to pass the output of find into the `while read` loop
+	# Only the native x86-64 tools may be stripped with the host strip.
+	local filename description
+	while IFS= read -r -d '' filename; do
+		description=$(LC_ALL=C readelf -h "$filename" 2>/dev/null) || continue
+		if [[ $description == *'Machine:'*'Advanced Micro Devices X86-64'* &&
+		      ( $description == *'Type:'*'EXEC ('* || $description == *'Type:'*'DYN ('* ) ]]; then
+			strip --strip-unneeded "$filename" || return
+		fi
 	done < <(find "$pkgdir" -type f -print0)
 
-	find "${pkgdir}/usr/lib/gcc/${_target}" "${pkgdir}/usr/${_target}/lib" -type f -name '*.o' -o -name '*.a' -exec "${pkgdir}"/usr/bin/${_target}-strip -g {} +
-
+	# Group both suffixes so -type and -exec apply to objects and archives.
+	find "${pkgdir}/usr/lib/gcc/${_target}" "${pkgdir}/usr/${_target}/lib" \
+		-type f \( -name '*.o' -o -name '*.a' \) \
+		-exec "${pkgdir}/usr/bin/${_target}-strip" -g {} +
 }

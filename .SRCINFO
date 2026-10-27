@@ -1,21 +1,37 @@
 pkgbase = m68k-elf-toolchain
 	pkgdesc = A complete gcc/binutils/newlib toolchain for m68k-elf
-	pkgver = 20230502
+	pkgver = 20261027
 	pkgrel = 1
-	url = http://www.gnu.org
+	url = https://www.gnu.org
 	arch = x86_64
 	license = GPL
 	license = BSD
 	makedepends = git
+	depends = bash
+	depends = zlib
+	depends = zstd
+	depends = gmp
+	depends = mpfr
+	depends = libmpc
+	depends = libisl
 	depends = libelf
+	depends = expat
+	depends = ncurses
+	depends = readline
+	depends = python
+	depends = xz
+	depends = xxhash
 	conflicts = m68k-elf-gcc
 	conflicts = m68k-elf-binutils
 	conflicts = m68k-elf-newlib
 	conflicts = m68k-elf-gdb
 	options = !strip
-	source = git+https://sourceware.org/git/binutils-gdb.git#commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
-	source = git+https://gcc.gnu.org/git/gcc.git#commit=ffc6b225c955a3d8478de1beba5ad08a7396648c
-	source = git+https://sourceware.org/git/newlib-cygwin.git#commit=ab49db3a8c08e2240e53d8f12d6a14fd285def4e
+	options = !debug
+	options = !lto
+	options = staticlibs
+	source = git+https://sourceware.org/git/binutils-gdb.git#commit=cd679f551a3961ba3ac17a8f9e48d86323207b7c
+	source = git+https://gcc.gnu.org/git/gcc.git#commit=b567707db43a9990e4319c0c38f4b0c752d45ac7
+	source = git+https://sourceware.org/git/newlib-cygwin.git#commit=8ba4275b83ec27529f67e0d477611fa6d8d6e6bd
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
