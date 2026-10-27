@@ -10,12 +10,13 @@
 # The Android system image is not included: waydroid-nvidia-setup downloads it (see post_install).
 
 pkgname=waydroid-a17-nvidia-bin
-pkgver=20261027.1
+pkgver=20261028.1
 pkgrel=1
-_tag=a17-20261027-1
+_tag=a17-20261028-1
 _wn_sha=29ffa3a237b0d79a751748bd9bb82c50dd577808      # waydroid-nvidia v0.2.0-rc10 release notes commit
 _wn_tag=v0.2.0-rc10
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
+_vendor_parts=45
 pkgdesc="Waydroid for Android 17 (WayDroid-ATV) with NVIDIA acceleration: NVK + ANGLE vendor image, freeform cards, host IME and clipboard"
 arch=('x86_64')
 url="https://github.com/cagedbird043/waydroid-a17-nvidia"
@@ -49,12 +50,12 @@ source=(
   "$_wn_rel/waydroid-nvidia-guest-android-x86_64-$_wn_tag.tar.zst"
   "$_wn_rel/waydroid-nvidia-guest-prebuilts-$_wn_tag.tar.zst"
   "waydroid-a17-nvidia-native-x86_64-$_tag.tar.zst::$_rel/waydroid-a17-nvidia-native-x86_64.tar.zst"
-  "vendor-$_tag.img.zst.part00::$_rel/vendor.img.zst.part00"
-  "vendor-$_tag.img.zst.part01::$_rel/vendor.img.zst.part01"
-  "vendor-$_tag.img.zst.part02::$_rel/vendor.img.zst.part02"
-  "vendor-$_tag.img.zst.part03::$_rel/vendor.img.zst.part03"
-  "vendor-$_tag.img.zst.part04::$_rel/vendor.img.zst.part04"
 )
+for (( _part=0; _part<_vendor_parts; _part++ )); do
+  printf -v _suffix '%02d' "$_part"
+  source+=("vendor-$_tag.img.zst.part$_suffix::$_rel/vendor.img.zst.part$_suffix")
+done
+unset _part _suffix
 noextract=(
   "waydroid-nvidia-host-x86_64-$_wn_tag.tar.zst"
   "waydroid-nvidia-guest-android-x86_64-$_wn_tag.tar.zst"
@@ -62,17 +63,57 @@ noextract=(
   "waydroid-a17-nvidia-native-x86_64-$_tag.tar.zst"
 )
 sha256sums=('4dc67241bf35189d4490306611f7f52e49117d04511a60999e96328f010dd84f'
-            'ee72eb7b34c1d5323f478ca067da958193108e5c3f2dd1bac1b027e6a23d1ca7'
+            '59b3f11b6733340f41063f8aab4c193e29094cc71e1c2d6ecc7237e702e07713'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
             '124106f95e1b35c75eed8a966ab66284760fd6d02c79ad9fadd88355d4e3a2d7'
             '5fa325de02c2ef9c13f972efba98e27cdf4d2d48c0a33cf9a884ade8eaa74c50'
             '3fe5822ca2b9ed3aa6fcd9c9627679a04592837b947d7754911c3ab4c1007ec2'
-            'b599dadbb7c8fc93d74e76143b9d6c9a290baa27f48eff2bb2f03c14378db6cb'
-            'deac2c5f77c09b3bde35995b57b02c9e91fb514bb688878ffc77f4133ca5194e'
-            '64168b6959ca7c333a8567083e3fcf08ba454e67ad040f13d866f27a39788f59'
-            '718beafc2ea57aa9c68e58750d6067c367cfb9449388a81ab8f6202c8f764214'
-            '76fe959f113d3f1335c1ce61f0b6842867e4315f9076cc45a486a178084c75e9'
-            '1a97f3e747c4ba3c3c46336fc8459910b2097ce361f9e09cf9934e561fea445e')
+            '1b745453643406bc2c8a29fc435276ff4a8bdc3631776d268e1b4c9a72b69139'
+            'd4685208d66aaa7b18ffcbb2cf91f1e21f658da8ecca941c0b7dac73aab27253'
+            '5841a04372dfc1dc74928f725c7c2edad4c1c91c9799d7bce65dc9ecfe500727'
+            'eca12f436c9044294690e0ea73ede6382551ca98d0f9daa6c88bd86666964239'
+            '4e2dd4fc9ee5ed287bdff80a8afc7b131d88f8b167937a0546131880a0d3f99f'
+            '667ad017abe268dfbd173f16a457639fa783b465f3ee5245ebe6288608da91c3'
+            '9199605e8c04080252338e24076a622a7e336220a6b0fa8b950892ddf24d1279'
+            'e27eefc0a38abbce0daf9482751665675d0518c18a2746ce7add98ecc055536a'
+            '148d002d73e73e1adb7877da895b8c16965aa1b5d8b1a05c43e8ee33cbc17694'
+            '7fcfdbe6205d05b622518fba73c7c7d232928cc522178f743026e68130c36f04'
+            'd533104ddec6c2a8fc4cc084e4fc6bf53d67366c1db8e346b74aecb951fead66'
+            '6255f2825e70951ce91ec9aadd3a000129f0fd86c668a655db63bd7ec71f0bb8'
+            '44a832d1cd779e305fc4d4827f1887058d73f2b083e8f9ba729e603134832602'
+            'bb8003dad5bbd84b7d4278f871bf969d5c6c008c6f90b04d41c1f900270009e6'
+            'a4d4141cc3e290dca2e18935c75f3dd0bfb9cad12fd5ef27d2bdcaed7b71915c'
+            '6a16b14903c87d70e027ee7326fe0a0e685994e12d5cc275a95aa3a8d654f858'
+            '8a93fd4b896c448eaa81604bb0a716dd8f751d077f12ead1b26cff8f8001ac96'
+            '7c940ac904fed9b4debe9992db0018ec61cd9dc7c85175a03bb665561d434d7b'
+            '9279812db2d81e1a752a3960c59ba18c90e3ff210be7ac14f78447f271c48506'
+            '6206200cecf25779937c738973ea47cf780f52bf3976be4d6769dc72e23160bd'
+            '882d0c02fc72d85ac0108edba28fac260c07fc9fd20703b0fef2e8cd1619998a'
+            '89ef45d8defba50235f380cc2df8c96a6008900370d855ad5302a2af8d52e43e'
+            'a35827c1d7f1d09cab857fa4100f9ea3ffa01aefb10513831b24ae36b3c408e2'
+            '5b7c24d83a1cf310a691e5776aa9493eb3c229c788d25680a9a927fda9b0cb14'
+            'ff61a61875a9cb9f6b1d4000b52d53eda76efb294cd501b8acc24c9280fc07e0'
+            '932fe12395f3bd8994133e0007d9c1269639884d6fa4d89b461737e3252ad373'
+            '00a2d186b8c886a1dc472a93b44b87e024de5bb71be88609d9ad4f95d2ba4601'
+            '8987969127adee592acd2bb8a094ca1f4a53065cae829af158eeacdad912b564'
+            'efbb8bd9a354f57ce6607dc16a8585c34ca906ed4177c365e886b160b94c5e0a'
+            'e3cfcc9e5e2da18fffbbb47295f822d8629d3a581d03b7ff9de719d867c9b29c'
+            '4cea833df887d2458037520c590ebc1c68d72b84e60504b030f5cdeeec4ed4fd'
+            '17608ca9e16667cf10c144aededfce2ba85ce9ad1fa6d64f7f1f00d8a216e673'
+            'daddefac9772d0a8a089577c26476c862f20ec1245ae9c555b7bb8c25e7abbd6'
+            'fd3df2672e0e8e782d69a72836f1c77b0e9763fd23dbf9026d82272a79829fb6'
+            '9084a6f3d62e4a2fad875016c7def5a5d4120b5b419d62699100ec05fec7777d'
+            'e3d0f669b46e4cb425754238200933e03172899cf49f2402417a6f549d5a7a98'
+            'f19e620f42d921d9a085a3caf6b2829e064c712c121ddc51163573d5585846ac'
+            '57b4f07352fbbb8cfa0ef59eb99966ad23b2cc127b47c9049466740a88d72b44'
+            'b0f300b2775f3de841fbf0f9e6f2ffe5645d00e5602be679683469240d2df1b5'
+            '552d2e566494ae8154da85c482fc1612b7f98d17ddb1e681611edf5ffa8cf426'
+            'c80811694d0bf1f752c1ac52c1847bb4c3c15ded54ab1de41855f525e9cfa16e'
+            '3c15f53f757269d4776b0f7489a3431ec7dbd669a6fd2b53a0cb690dd4d21cce'
+            'cdb3c3737f8540a8734ae904675aa2cd073e995c8fd206a1062d2945fe41c079'
+            'e25503c7c11e2c67a80538af78d9c824a3abdc77e295e0e2c04b25d5d95e2a71'
+            'c859ba46dc9a3ad5c401dbfebe7e15299cd466d7d6775f720b31b56367bf3444'
+            '758d91f96e4ca50baa61d4aa39ab3a881752024d5bf4dfdb293b4d8414a70c6c')
 
 prepare() {
   local wn="$srcdir/waydroid-nvidia-$_wn_sha" a17="$srcdir/waydroid-a17-nvidia-$_tag" p
@@ -101,7 +142,7 @@ build() {
   # the native bundle the vendor image names in ro.vendor.nvidia_prolapse.build_record
   rm -rf native && mkdir native
   bsdtar -C native -xf "waydroid-a17-nvidia-native-x86_64-$_tag.tar.zst"
-  cat vendor-$_tag.img.zst.part0[0-4] | zstd -dq -o vendor.img -f
+  cat vendor-$_tag.img.zst.part[0-9][0-9] | zstd -dq -o vendor.img -f
   rm -rf vendor-ota && mkdir vendor-ota
   python "waydroid-nvidia-$_wn_sha/packaging/vendor-ota.py" vendor.img native/BUILD-RECORD.json vendor-ota \
     --tag "$_wn_tag-a17" --repo cagedbird043/waydroid-a17-nvidia
