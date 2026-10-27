@@ -1,6 +1,6 @@
 pkgbase = entire-graph-bin
 	pkgdesc = Entity-level semantic code intelligence plugin for Entire CLI
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/entireio/entire-graph
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = entire-graph-bin
 	provides = entire-graph
 	conflicts = entire-graph
 	options = !debug
-	source_x86_64 = entire-graph-0.5.0-x86_64.tar.gz::https://github.com/entireio/entire-graph/releases/download/v0.5.0/entire-graph_0.5.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0ce190bd928293f98314f8d6b470218a96b432741b72df0d7869c8956f393da7
-	source_aarch64 = entire-graph-0.5.0-aarch64.tar.gz::https://github.com/entireio/entire-graph/releases/download/v0.5.0/entire-graph_0.5.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 776023435e85f3eefa22eb468c0e3dd926718629dcbcac455311d98754c91a08
+	source_x86_64 = entire-graph-0.6.0-x86_64.tar.gz::https://github.com/entireio/entire-graph/releases/download/v0.6.0/entire-graph_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b1600fdfb6dfbbc1bd0b53ee319c6db87b5af5804206a6f7b1a105f3e97b87ca
+	source_aarch64 = entire-graph-0.6.0-aarch64.tar.gz::https://github.com/entireio/entire-graph/releases/download/v0.6.0/entire-graph_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f11f38f2b8625f83f911a177e7667648e01a37e7174b4fc1c36c392469c13c97
 
 pkgname = entire-graph-bin
