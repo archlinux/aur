@@ -1,0 +1,4 @@
+[tlog]
+source = "git"
+git = "https://github.com/Scribery/tlog.git"
+prefix = "v"
