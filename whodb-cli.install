@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'EOF'
+The CLI is installed as /usr/bin/whodb.
+
+On x86_64 and aarch64 its first run downloads the BAML library from
+GitHub into the user cache, and whodb exits when that fails.
+
+whodb sends anonymous usage analytics to PostHog by default.
+WHODB_CLI_ANALYTICS_DISABLED=true or --no-analytics turns them off.
+EOF
+}

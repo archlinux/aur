@@ -1,0 +1,25 @@
+pkgbase = whodb-cli-bin
+	pkgdesc = Database management CLI with a TUI and an MCP server (prebuilt)
+	pkgver = 0.136.0
+	pkgrel = 1
+	url = https://github.com/clidey/whodb
+	install = whodb-cli.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	depends = glibc
+	provides = whodb-cli=0.136.0
+	conflicts = whodb-cli
+	source_x86_64 = whodb-cli-0.136.0-linux-amd64::https://github.com/clidey/whodb/releases/download/0.136.0/whodb-cli-linux-amd64
+	depends_x86_64 = libgcc
+	depends_x86_64 = libstdc++
+	sha256sums_x86_64 = c98475946908ebc007e75307c51141347dcb135b08467694678f2f162a75dfca
+	source_aarch64 = whodb-cli-0.136.0-linux-arm64::https://github.com/clidey/whodb/releases/download/0.136.0/whodb-cli-linux-arm64
+	depends_aarch64 = libgcc
+	depends_aarch64 = libstdc++
+	sha256sums_aarch64 = e60a981e96d06bf246352adf5e2910e15b3479cec00f0bf68198a0e1b9c1a375
+	source_armv7h = whodb-cli-0.136.0-linux-armv7::https://github.com/clidey/whodb/releases/download/0.136.0/whodb-cli-linux-armv7
+	sha256sums_armv7h = 09674bdac77572a89eeb3479b1eb4a899747f8759f151e0fbbb9b4a3230a5186
+
+pkgname = whodb-cli-bin
