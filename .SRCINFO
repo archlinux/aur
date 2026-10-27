@@ -1,6 +1,6 @@
 pkgbase = groonga
 	pkgdesc = An open-source fulltext search engine and column store.
-	pkgver = 16.0.4
+	pkgver = 16.1.4
 	pkgrel = 1
 	url = https://groonga.org/
 	arch = i686
@@ -31,10 +31,10 @@ pkgbase = groonga
 	depends = xsimd
 	depends = xxhash
 	depends = zeromq
-	source = https://github.com/groonga/groonga/releases/download/v16.0.4/groonga-16.0.4.tar.gz
-	source = https://github.com/groonga/groonga/releases/download/v16.0.4/groonga-16.0.4.tar.gz.asc
+	source = https://github.com/groonga/groonga/releases/download/v16.1.4/groonga-16.1.4.tar.gz
+	source = https://github.com/groonga/groonga/releases/download/v16.1.4/groonga-16.1.4.tar.gz.asc
 	validpgpkeys = 2701F317CFCCCB975CADE9C2624CF77434839225
-	sha512sums = f99af9c3e826f86588f83f117f0af17b25b1fcfab9934b5f4424f4fda70bba180f66afa57377107cc69554a50e6024f13d6bea7c67935175a7770d8744ab2506
+	sha512sums = 1a95b78aaabc67d4658834219e00dbe86f49cc0473e643f331a5ac6ebb391bf1335e7039e8a8503724e0d48487dce70f16f5420d6c1643e688832485efbb3c9d
 	sha512sums = SKIP
 
 pkgname = groonga

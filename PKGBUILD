@@ -2,7 +2,7 @@
 
 pkgname=groonga
 pkgdesc="An open-source fulltext search engine and column store."
-pkgver=16.0.4
+pkgver=16.1.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://groonga.org/"
@@ -43,7 +43,7 @@ source=(
   "https://github.com/groonga/groonga/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc"
 )
 sha512sums=(
-  "f99af9c3e826f86588f83f117f0af17b25b1fcfab9934b5f4424f4fda70bba180f66afa57377107cc69554a50e6024f13d6bea7c67935175a7770d8744ab2506"
+  "1a95b78aaabc67d4658834219e00dbe86f49cc0473e643f331a5ac6ebb391bf1335e7039e8a8503724e0d48487dce70f16f5420d6c1643e688832485efbb3c9d"
   "SKIP"
 )
 validpgpkeys=(2701F317CFCCCB975CADE9C2624CF77434839225)
@@ -60,7 +60,16 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_SKIP_RPATH=ON
     -D GRN_WITH_APACHE_ARROW=ON
-    -D GRN_WITH_BLOSC=system
+    # This is a workaround.
+    # Currently, the system-provided Blosc2 is not used when building Groonga due to the following error.
+    #
+    # CMake Error at /usr/lib/cmake/Blosc2/Blosc2Targets.cmake:108 (message):
+    # The imported target "Blosc2::blosc2_static" references the file
+    # "/usr/lib/libblosc2.a"
+    #
+    # This is an upstream issue.
+    # So, we use bundled Blosc2 until the upstream issue is resolved.
+    -D GRN_WITH_BLOSC=bundled
     -D GRN_WITH_MRUBY=ON
   )
   cmake "${cmake_options[@]}"
