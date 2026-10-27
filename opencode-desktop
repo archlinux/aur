@@ -1,0 +1,77 @@
+#!/bin/bash
+# SPDX-License-Identifier: 0BSD
+set -euo pipefail
+umask 077
+
+die() {
+  printf 'opencode-desktop: %s\n' "$*" >&2
+  exit 1
+}
+
+(( EUID != 0 )) || die 'Run this launcher as your regular user, not root.'
+[[ $(uname -m) == x86_64 ]] || die 'This launcher package supports x86_64.'
+
+data_home=${XDG_DATA_HOME:-"${HOME}/.local/share"}
+[[ $data_home == /* ]] || die 'XDG_DATA_HOME must be an absolute path.'
+app_dir="${data_home}/opencode-desktop-launcher"
+appimage="${app_dir}/OpenCode.AppImage"
+
+mkdir -p -- "$app_dir"
+exec {bootstrap_lock}>"${app_dir}/.bootstrap.lock"
+flock "$bootstrap_lock"
+
+metadata_tmp=
+appimage_tmp=
+cleanup() {
+  [[ -z $metadata_tmp ]] || rm -f -- "$metadata_tmp"
+  [[ -z $appimage_tmp ]] || rm -f -- "$appimage_tmp"
+}
+trap cleanup EXIT
+trap 'exit 129' HUP
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# Only bootstrap a missing application. Never replace a user's self-updated copy.
+if [[ ! -s $appimage ]]; then
+  metadata_tmp=$(mktemp "${app_dir}/.release.XXXXXX")
+  curl --fail --location --silent --show-error \
+    --proto '=https' --proto-redir '=https' \
+    --retry 3 --connect-timeout 15 --max-time 60 \
+    --output "$metadata_tmp" \
+    'https://opencode.ai/update/api/latest/desktop/opencode'
+
+  version=$(jq --exit-status --raw-output \
+    '.version | strings | select(test("^[0-9]+[.][0-9]+[.][0-9]+([.+_-][0-9A-Za-z._-]+)?$"))' \
+    "$metadata_tmp") || die 'The release service returned an invalid version.'
+
+  asset='opencode-desktop-linux-x86_64.AppImage'
+  url=$(jq --exit-status --raw-output --arg asset "$asset" \
+    '.metadata.files[$asset].url | strings' "$metadata_tmp") \
+    || die 'The release service did not provide an AppImage URL.'
+  expected_url="https://opencode.ai/files/bin/${version}/${asset}"
+  [[ $url == "$expected_url" ]] || die 'The AppImage URL was not the expected official download.'
+
+  checksum=$(jq --exit-status --raw-output --arg asset "$asset" \
+    '.metadata.files[$asset].sha256 | strings | select(test("^[0-9a-f]{64}$"))' \
+    "$metadata_tmp") || die 'The release service did not provide a valid SHA-256 checksum.'
+
+  printf 'Downloading OpenCode %s for first use...\n' "$version" >&2
+  appimage_tmp=$(mktemp "${app_dir}/.appimage.XXXXXX")
+  curl --fail --location --show-error \
+    --proto '=https' --proto-redir '=https' \
+    --retry 3 --connect-timeout 15 --max-time 1800 \
+    --output "$appimage_tmp" "$url"
+  printf '%s  %s\n' "$checksum" "$appimage_tmp" | sha256sum --check --status \
+    || die 'The AppImage checksum did not match; the download was discarded.'
+
+  chmod 755 "$appimage_tmp"
+  mv -f -- "$appimage_tmp" "$appimage"
+  appimage_tmp=
+fi
+
+[[ -x $appimage ]] || die "The existing AppImage is not executable: ${appimage}"
+cleanup
+trap - EXIT HUP INT TERM
+flock --unlock "$bootstrap_lock"
+exec {bootstrap_lock}>&-
+exec "$appimage" "$@"

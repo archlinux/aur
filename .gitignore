@@ -1,0 +1,9 @@
+/src/
+/pkg/
+/.sources/
+/*.AppImage
+/opencode-desktop-icon-*.png
+/LICENSE-opencode
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
