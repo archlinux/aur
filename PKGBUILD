@@ -17,7 +17,7 @@ optdepends=("didyoumean")
 # contain the version, so makepkg would otherwise reuse a cached tarball from a
 # previous release and fail the sha256 validity check.
 source=("charcoal-dict-$pkgver-x86_64-unknown-linux-gnu.tar.xz::$url/releases/download/v$pkgver/charcoal-dict-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=("dba035148c1c83ac9d2ab5fb0bbe7349dd3b6347b10a8c5d92f0145143270074")
+sha256sums=('dba035148c1c83ac9d2ab5fb0bbe7349dd3b6347b10a8c5d92f0145143270074')
 
 package() {
     install -Dm755 charcoal-dict-x86_64-unknown-linux-gnu/charcoal -t "$pkgdir/usr/bin"
