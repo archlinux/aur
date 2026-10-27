@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-mango
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Mango compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
