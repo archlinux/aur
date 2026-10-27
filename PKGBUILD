@@ -5,7 +5,7 @@
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.18.4.r6979.g100099a
+pkgver=5.19.1.r6997.g1e67196
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -21,8 +21,11 @@ optdepends=('lm_sensors: broader temperature and fan sensor coverage'
             'nvidia-utils: NVIDIA GPU metrics via nvidia-smi'
             'pciutils: GPU model identification via lspci'
             'pipewire: name apps using the microphone or camera via pw-dump'
-            'playerctl: media player data and controls'
-            'zenity: tray and desktop confirmation prompts')
+            'zenity: tray and desktop confirmation prompts'
+            'libpulse: audio devices, controls and notification sounds via pactl and paplay'
+            'alsa-utils: notification sounds via aplay'
+            'bluez: Bluetooth devices and controls'
+            'ddcutil: external monitor brightness and power over DDC/CI')
 provides=('system-bridge')
 options=('!strip')
 
