@@ -1,15 +1,15 @@
 # Maintainer: mdmrk <mariodavo.20@gmail.com>
 
 pkgname=kytyps5-nightly-bin
-pkgver=2026.10.26.597137e
+pkgver=2026.10.27.a5b3673
 pkgrel=1
 _appname=kytyps5
-_tag=KytyPS5-2026-10-26-597137e
-_commit=597137e8b19aa86d64710cd38064bb14a7ca3e44
+_tag=KytyPS5-2026-10-27-a5b3673
+_commit=a5b3673a3913d98a39044cc3173185068b44c207
 pkgdesc="PlayStation 5 emulator (upstream nightly binary release)"
 arch=('x86_64')
 url="https://github.com/KytyPS5/KytyPS5"
-license=('GPL-2.0-only' 'MIT' 'LGPL-3.0-only' 'Unicode-3.0' 'LGPL-2.1-or-later' 'BSD-3-Clause')
+license=('GPL-2.0-only' 'MIT' 'LGPL-3.0-only' 'Unicode-3.0' 'LGPL-2.1-or-later' 'BSD-3-Clause' 'OFL-1.1' 'Apache-2.0')
 depends=(
   'alsa-lib'
   'brotli'
@@ -59,13 +59,15 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/$_tag/$_tag-Linux-x86_64.tar.gz"
   "LICENSE-$pkgver::https://raw.githubusercontent.com/KytyPS5/KytyPS5/$_commit/LICENSE"
   "Kyty-MIT-$pkgver.txt::https://raw.githubusercontent.com/KytyPS5/KytyPS5/$_commit/LICENSES/Kyty-MIT.txt"
+  "$_appname-$pkgver.svg::https://raw.githubusercontent.com/KytyPS5/KytyPS5/$_commit/docs/logo.svg"
   "$_appname.desktop"
 )
 sha256sums=(
-  '05b487510ce056078c5267565006ebdb6c1dd742115d097a212e731398e12db6'
+  '35bbf9af2ce3d7672bd33b3d525585987169826ce9e4c28780e7ba2a17446bf0'
   'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
   '1bbcea0e75b3ac77b4711a12eefa3a3b7dfea43528fc0730af3178ba5cd55396'
-  '8eeeacccbbbb858724dbaf5e40a25f0718aa2a7ab75937b3da2652cb16e85103'
+  '76a381bd4ccf3801d1c850c3bf9903e6d11a480eb6eb5938cdab3d8e949fe857'
+  'a9090cd6c4d2c531112edc252e19b35b80305ef16f2004825f0b1924f501320f'
 )
 
 package() {
@@ -74,6 +76,8 @@ package() {
   install -Dm755 -t "$_dest" "$srcdir/kyty_emulator" "$srcdir/launcher"
   install -Dm644 -t "$_dest" "$srcdir/qt.conf"
   install -Dm644 -t "$_dest/assets/sounds" "$srcdir/assets/sounds"/*
+  install -Dm644 -t "$_dest/assets/fonts" "$srcdir/assets/fonts"/*
+  install -Dm644 -t "$_dest/assets/cursors" "$srcdir/assets/cursors"/*
   install -dm755 "$_dest/lib"
   install -m644 -t "$_dest/lib" "$srcdir/lib"/*.so.*
   cp -a "$srcdir/plugins" "$_dest/"
@@ -99,10 +103,13 @@ cd "\$dir"
 exec ./launcher "\$@"
 EOF
 
+  install -Dm644 "$srcdir/$_appname-$pkgver.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_appname.svg"
   install -Dm644 "$srcdir/$_appname.desktop" "$pkgdir/usr/share/applications/$_appname.desktop"
   install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/Kyty-MIT-$pkgver.txt" "$pkgdir/usr/share/licenses/$pkgname/Kyty-MIT.txt"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/ffmpeg" \
     "$srcdir/licenses/ffmpeg/copyright" "$srcdir/licenses/ffmpeg/SOURCE.txt"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/opus" "$srcdir/licenses/opus/COPYING"
+  install -Dm644 "$srcdir/licenses/noto-sans/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/noto-sans/LICENSE"
+  install -Dm644 "$srcdir/licenses/openxr/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/openxr/LICENSE"
 }
