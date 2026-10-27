@@ -1,19 +1,19 @@
 # Maintainer: Tenshii <tenshii@miwa.lol>
 pkgname=deezer-discord-rpc-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A Discord RPC for Deezer"
 arch=('x86_64')
 url="https://github.com/CuteTenshii/deezer-discord-rpc"
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib' 'mesa' 'xdg-utils')
-source=("https://github.com/CuteTenshii/deezer-discord-rpc/releases/latest/download/DeezerDiscordRPC-linux-amd64.deb")
-md5sums=("951e8e4c159143baa100b3b4f68c9b99")
-sha256sums=("e9b40f121092bacd879326b984c91d2286d3e2cd353dc450706d19418cc4582b")
+source=("deezer-discord-rpc-1.5.1.deb::https://github.com/CuteTenshii/deezer-discord-rpc/releases/download/1.5.1/DeezerDiscordRPC-linux-amd64.deb")
+md5sums=("acc2016a22a2d855218ea07935ec17c8")
+sha256sums=("e51b4bc9d948b7b6407d0c281f99f1ca8bfdae7d5285c7c040a5d81bb66def5f")
 
 package() {
     # Extract the .deb file
-    bsdtar -xf "DeezerDiscordRPC-linux-amd64.deb" -C "$srcdir"
+    bsdtar -xf "deezer-discord-rpc-1.5.1.deb" -C "$srcdir"
 
     # Extract the data tarball
     bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
