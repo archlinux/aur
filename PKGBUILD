@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux-bin
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=("proton-drive-linux-$pkgver-x86_64.tar.gz::$_repo/releases/download/$_ta
         "io.narl.proton-drive-linux-$pkgver.svg::$_raw/packaging/io.narl.proton-drive-linux.svg"
         "proton-drive-$pkgver.service::$_raw/packaging/proton-drive.service"
         "LICENSE-$pkgver::$_raw/LICENSE")
-sha256sums=('902f60de5f471cb15c84d0ecb29cb4644a0ac52ce36d2be54c16b4befeba8de0'
+sha256sums=('8e9b76b0df238af1c8978c33b4c27c0c548e1faa81b368d0d271ed564d0a76c7'
             'd190d6771fff0b975271fb62fd3fb0fa8bbf17d7278c10853c18557855b0c123'
             '1d95e250370220e3bb6aead6ce34d1d6cc759f42c4803b75f1667e78ff47c6c0'
             'e598a93c2715c3a9fdc7fb937902083d4a1135e8fbdfe6fe7e37f0383ebbd828'
@@ -65,4 +65,7 @@ package() {
   cp -r --no-preserve=ownership "$srcdir/locale" "$pkgdir/usr/share/locale"
 
   install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # pacman brings new releases, so the app never checks for them itself.
+  install -Dm644 /dev/null "$pkgdir/usr/share/proton-drive-linux/managed-updates"
 }
