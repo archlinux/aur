@@ -1,0 +1,19 @@
+pkgbase = alsa-eldview-git
+	pkgdesc = View audio capabilities of TV or sound system connected via HDMI or DisplayPort.
+	pkgver = r1
+	pkgrel = 1
+	url = https://zynskey.nekoweb.org/eldviewer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = qt6-base
+	makedepends = alsa-lib
+	depends = qt6-base
+	depends = alsa-lib
+	provides = alsa-eldview
+	source = git+https://codeberg.org/zynskeyfolf/alsa-eldview
+	sha256sums = SKIP
+
+pkgname = alsa-eldview-git
