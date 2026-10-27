@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.1.r6700.10f1967
+pkgver=3.11.1.r6990.26ce6d2
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -38,8 +38,7 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOPATH="$srcdir"
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
-  go build -ldflags "-compressdwarf=false -linkmode external" ./cmd/nuclei
-  go build ./cmd/docgen
+  go build -ldflags "-compressdwarf=false -linkmode external" ./cmd/{nuclei,docgen}
 }
 
 check() {
