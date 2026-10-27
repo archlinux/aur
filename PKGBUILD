@@ -1,18 +1,18 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=beads
-pkgver=1.0.3
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Git-backed issue tracking system designed for AI coding agents'
 arch=('x86_64')
-url='https://github.com/steveyegge/beads'
+url='https://github.com/gastownhall/beads'
 license=('MIT')
 provides=('bd')
 depends=('git')
-makedepends=('go')
+makedepends=('go' 'gcc')
 options=('!debug')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/steveyegge/beads/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c02c5a75cd8f8d0f6838f8da2c4209c78e149e8f7b41e9852f65ff90f3a4a59690b9a3617b09ce3d54114cc8c2afac95b301a92aab1ad96022892cacf81a3b54')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gastownhall/beads/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('4ac28a8cba1e3d778dfff8e2166e6c3fc5149f96522e548bb5a3a6a6aa076d7806cb0a18819df394f3171d372dc2122e4b75c318f981a29de0065f662279914f')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -21,9 +21,11 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -buildvcs=false -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export CGO_ENABLED=1
+  export GOTOOLCHAIN=local
 
-  go build -ldflags "-X main.Version=${pkgver}" -o bd ./cmd/bd
+  go build -tags gms_pure_go -o bd ./cmd/bd
 }
 
 package() {
