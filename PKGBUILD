@@ -1,6 +1,6 @@
 # Maintainer: PapyElGringo <adrien@pesler.be>
 pkgname=veshell-git
-pkgver=v0.1.7.r0.g0225399
+pkgver=v0.1.8.r0.g4480ae3c
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
@@ -13,14 +13,14 @@ depends=(
   'libdisplay-info' 'wayland'
   'pipewire' 'libpulse'
   'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good'
-  'dbus' 'upower' 'polkit'
+  'dbus' 'upower' 'polkit' 'pam'
   'xorg-xwayland' 'xdg-desktop-portal' 'xdg-utils'
 )
 makedepends=(
   'rust' 'clang' 'cmake' 'ninja' 'pkgconf' 'git'
   'unzip' 'zstd' 'xz'
   'gtk3' 'libpulse'
-  'libinput' 'seatd' 'mesa' 'openssl'
+  'libinput' 'seatd' 'mesa' 'openssl' 'pam'
   'pipewire' 'gstreamer' 'gst-plugins-base-libs'
   'libxkbcommon' 'libdisplay-info' 'wayland' 'systemd-libs'
   'vulkan-icd-loader'
@@ -29,8 +29,11 @@ optdepends=(
   'networkmanager: network control panel'
   'bluez: Bluetooth control panel'
   'rtkit: real-time audio scheduling'
+  'fprintd: fingerprint unlock on the lock screen'
   'xdg-desktop-portal-gtk: GTK portal fallback backend'
 )
+# Lock screen PAM services: keep local edits across upgrades.
+backup=('etc/pam.d/veshell' 'etc/pam.d/veshell-fingerprint')
 provides=('veshell' 'wayland-compositor')
 conflicts=('veshell' 'veshell-bin')
 # This silences the distribution's C LTO, and only that (makepkg enables it by
