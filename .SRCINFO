@@ -1,6 +1,6 @@
 pkgbase = libundr
 	pkgdesc = C library with multiple utilities
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://codeberg.org/javy/libundr
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libundr
 	depends = curl
 	provides = undr
 	conflicts = undr
-	source = libundr::git+https://codeberg.org/javy/libundr.git#tag=0.7.1
-	sha512sums = 88b2bcb53ef8daa899c2e7ed8dd064fea8ad8312e0535ecfa211e3d8e4f298a00d77c888c233d3cbd36c417c265828ccf2017c80d6c21df08048cccdeb7c8184
+	source = libundr::git+https://codeberg.org/javy/libundr.git#tag=0.8.0
+	sha512sums = 80f22bd1906b5acc2abb3f0eb10712b9d60419ae9bde4db56bba113fe0950317b0feb8f2ba4771e145ea16085dd7abd83e33e37a25fd1cf0a34fee904b40a517
 
 pkgname = libundr
