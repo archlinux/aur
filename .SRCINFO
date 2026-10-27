@@ -1,0 +1,15 @@
+pkgbase = nixfmt-bin
+	pkgdesc = The official formatter for Nix code
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/NixOS/nixfmt
+	arch = x86_64
+	license = MPL-2.0
+	provides = nixfmt
+	conflicts = nixfmt
+	options = !strip
+	options = !debug
+	source_x86_64 = nixfmt-1.5.0::https://github.com/NixOS/nixfmt/releases/download/v1.5.0/nixfmt
+	sha256sums_x86_64 = aa029247ab89c897e2f3948463967553f902f86e86e3402fa28cb29c4a44f745
+
+pkgname = nixfmt-bin
