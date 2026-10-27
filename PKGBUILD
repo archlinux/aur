@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 # Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         hister.override.service
         systemd-user.patch
         hister.sysusers)
-sha256sums=('211743f169766ce9a8d7b8a4ebd69a9e5d3bd656150e76c7a0e2fe4e1321a623'
+sha256sums=('b47d349d5c14b4b0c142ed7dd9583d276c20658677a483fcf7331beb9735bf0a'
             'f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
             '44253a839af41fad0d7c2700cc842089b7f8dd0455f8b58d33d4c98a06039538'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f')
