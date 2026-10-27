@@ -1,5 +1,5 @@
 pkgname=termix-bin
-pkgver=26.10.2
+pkgver=26.10.5
 pkgrel=1
 pkgdesc="Modern cross-platform SSH client built with Electron"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   "termix.png"
 )
 
-sha256sums=('104fc03d425361c46839b052262e4125dfcec1d3a0d7dc7b2850a5d602e0a3d6'
+sha256sums=('9b145e10f6dac8dcdb98c946ee3f92f768f8776113b6874979810cebed81f2c0'
             'e7e212579407ecb581d2c22ef115fbbe4b2a0b07781515cd714a2499904e4623'
             '028538b18db920510c0f52887c897ca7f2d753be1bbe675e87cd9710c5081086')
 
