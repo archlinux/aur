@@ -2,9 +2,9 @@
 pkgname=avogadro2-bin
 _pkgname=Avogadro2
 _appname="org.openchemistry.${_pkgname}"
-pkgver=2.0.0
-pkgrel=4
-pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)"
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
 arch=(
     'aarch64'
     'x86_64'
@@ -33,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-x86_64.AppImage")
 sha256sums=('3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
             '0d625edc1abc14e5971788272ff95412cc4851274633c34b94144541609b92ac')
-sha256sums_aarch64=('f7cfac39aa8df5d2ff712b5178c90ef87a49972b919e38b003015e9b3dd3c518')
-sha256sums_x86_64=('9792b8a81069d3c7b855374ba580acd9950ca24c8c2173320c7841aa6c82452e')
+sha256sums_aarch64=('ebb909acc1f8b9a03b14a600b07466205094511489d8deb7cf482bfff52bc1db')
+sha256sums_x86_64=('712d6f8e4f4481b6d1305a7ce93c9d1ec90109f5507740efccb2d5ce6e9b2823')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g

@@ -1,7 +1,7 @@
 pkgbase = avogadro2-bin
-	pkgdesc = An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)
-	pkgver = 2.0.0
-	pkgrel = 4
+	pkgdesc = An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://two.avogadro.cc/
 	arch = aarch64
 	arch = x86_64
@@ -11,17 +11,17 @@ pkgbase = avogadro2-bin
 	depends = libxcb
 	depends = libgpg-error
 	depends = python-requests
-	provides = avogadro2=2.0.0
+	provides = avogadro2=2.1.0
 	conflicts = avogadro2
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/2.0.0/LICENSE
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/2.1.0/LICENSE
 	source = avogadro2.sh
 	sha256sums = 3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4
 	sha256sums = 0d625edc1abc14e5971788272ff95412cc4851274633c34b94144541609b92ac
-	source_aarch64 = avogadro2-2.0.0-aarch64.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/2.0.0/Avogadro2-aarch64.AppImage
-	sha256sums_aarch64 = f7cfac39aa8df5d2ff712b5178c90ef87a49972b919e38b003015e9b3dd3c518
-	source_x86_64 = avogadro2-2.0.0-x86_64.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/2.0.0/Avogadro2-x86_64.AppImage
-	sha256sums_x86_64 = 9792b8a81069d3c7b855374ba580acd9950ca24c8c2173320c7841aa6c82452e
+	source_aarch64 = avogadro2-2.1.0-aarch64.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/2.1.0/Avogadro2-aarch64.AppImage
+	sha256sums_aarch64 = ebb909acc1f8b9a03b14a600b07466205094511489d8deb7cf482bfff52bc1db
+	source_x86_64 = avogadro2-2.1.0-x86_64.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/2.1.0/Avogadro2-x86_64.AppImage
+	sha256sums_x86_64 = 712d6f8e4f4481b6d1305a7ce93c9d1ec90109f5507740efccb2d5ce6e9b2823
 
 pkgname = avogadro2-bin
