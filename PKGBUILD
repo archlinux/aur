@@ -2,7 +2,7 @@
 
 pkgname=sindricad-beta
 _pkgname=sindricad
-pkgver=0.1.271
+pkgver=0.1.272
 pkgrel=1
 pkgdesc="Parametric CAD for 3D printing (rolling beta, official binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/beta/SindriCAD_${pkgver}_amd64.deb")
-sha256sums=('e46ac5c8f825d24e34e5986acf3f14d2351eaddd1600ec2e8c4edc24f435dea1')
+sha256sums=('ee4d2421e4f1f03d90e02cdcc7b84ae6d5cd48ae7e6065d393189fa5d9157411')
 
 package() {
   bsdtar -xf data.tar.* -C "${pkgdir}/"
