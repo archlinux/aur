@@ -1,0 +1,15 @@
+pkgbase = pg-schema-diff
+	pkgdesc = Diff PostgreSQL schemas and generate SQL migrations
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/stripe/pg-schema-diff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = pg-schema-diff::git+https://github.com/stripe/pg-schema-diff.git#tag=v1.0.9
+	sha256sums = f872febc4bbdc79be47904ea5e003b282345eeb3a75ef4245d61920f90092c4c
+
+pkgname = pg-schema-diff
