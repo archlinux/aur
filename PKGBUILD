@@ -1,6 +1,6 @@
 # Maintainer: François Laroche <https://github.com/larochef>
 pkgname=fukidashi-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Translates the Japanese text of games while you play, on your own machine"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('retroarch: translate games through its AI Service'
 provides=('fukidashi')
 conflicts=('fukidashi')
 source_x86_64=("$url/releases/download/v$pkgver/fukidashi-v$pkgver-x86_64-linux.tar.gz")
-sha256sums_x86_64=('231e03dd91dcb713b92d6ec505fbf04a27ff45cdd6f7f6c8fe26322b7303ace0')
+sha256sums_x86_64=('f83e05db72e206aa01d270bb77a84066acd19585145077e7f06016f58256864d')
 
 package() {
     cd "fukidashi-v$pkgver-$CARCH-linux"
