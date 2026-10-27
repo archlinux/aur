@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Graphical console greeter for greetd (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
@@ -15,7 +15,7 @@ makedepends=('go>=1.26')
 provides=('sysc-greet')
 conflicts=('sysc-greet' 'sysc-greet-sway' 'sysc-greet-cagebreak' 'sysc-greet-mango')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e4101344f9ccb0705fcca8b104dceeef42a1398a0f1ec220a606e519fa4fec11')
+sha256sums=('8d60a8d0c40243f5b905a57cb31f2f3e7c014889760c1bb8548785aa320f1cac')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/hyprland-greeter-config.lua' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-hyprland.install
