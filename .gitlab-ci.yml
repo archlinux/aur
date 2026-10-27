@@ -63,7 +63,8 @@ bump:
       # newest release regularly ships Windows and macOS assets only. Take the
       # newest release that actually has a Linux tarball.
       release=$(curl -fsSL "https://api.github.com/repos/$UPSTREAM_REPO/releases?per_page=30" |
-        jq '[.[] | select((.draft or .prerelease) | not)
+        jq 'sort_by(.published_at) | reverse
+            | [.[] | select((.draft or .prerelease) | not)
              | select(any(.assets[]; .name | endswith("-Linux-x86_64.tar.gz")))][0]')
 
       if [ "$release" = "null" ]; then
@@ -109,6 +110,7 @@ bump:
         raw="https://raw.githubusercontent.com/$UPSTREAM_REPO/$commit"
         license_sha=$(curl -fsSL "$raw/LICENSE" | sha256sum | cut -d' ' -f1)
         mit_sha=$(curl -fsSL "$raw/LICENSES/Kyty-MIT.txt" | sha256sum | cut -d' ' -f1)
+        icon_sha=$(curl -fsSL "$raw/docs/logo.svg" | sha256sum | cut -d' ' -f1)
         desktop_sha=$(sha256sum kytyps5.desktop | cut -d' ' -f1)
 
         sed -i \
@@ -119,11 +121,11 @@ bump:
           PKGBUILD
 
         # Replace the whole sha256sums=( ... ) block; order matches source=().
-        awk -v sums="$tarball_sha $license_sha $mit_sha $desktop_sha" '
+        awk -v sums="$tarball_sha $license_sha $mit_sha $icon_sha $desktop_sha" '
           /^sha256sums=\($/ {
             print
             split(sums, a, " ")
-            for (i = 1; i <= 4; i++) printf "  '\''%s'\''\n", a[i]
+            for (i = 1; i <= 5; i++) printf "  '\''%s'\''\n", a[i]
             skip = 1
             next
           }

@@ -47,11 +47,6 @@ depends=(
   'zlib'
   'zstd'
 )
-optdepends=(
-  'konsole: show emulator output in a terminal window'
-  'kitty: show emulator output in a terminal window'
-  'xterm: show emulator output in a terminal window'
-)
 provides=("kytyps5=$pkgver")
 conflicts=('kytyps5')
 options=('!strip' '!debug')
@@ -74,13 +69,10 @@ package() {
 
   install -Dm755 -t "$_dest" "$srcdir/kyty_emulator" "$srcdir/launcher"
   install -Dm644 -t "$_dest" "$srcdir/qt.conf"
-  install -Dm644 -t "$_dest/assets/sounds" "$srcdir/assets/sounds"/*
-  install -Dm644 -t "$_dest/assets/fonts" "$srcdir/assets/fonts"/*
-  install -Dm644 -t "$_dest/assets/cursors" "$srcdir/assets/cursors"/*
   install -dm755 "$_dest/lib"
   install -m644 -t "$_dest/lib" "$srcdir/lib"/*.so.*
-  cp -a "$srcdir/plugins" "$_dest/"
-  chmod -R u=rwX,go=rX "$_dest/plugins"
+  cp -a "$srcdir/assets" "$srcdir/plugins" "$_dest/"
+  chmod -R u=rwX,go=rX "$_dest/assets" "$_dest/plugins"
 
   (
     cd "$_dest/lib"
@@ -108,7 +100,7 @@ EOF
   install -Dm644 "$srcdir/Kyty-MIT-$pkgver.txt" "$pkgdir/usr/share/licenses/$pkgname/Kyty-MIT.txt"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/ffmpeg" \
     "$srcdir/licenses/ffmpeg/copyright" "$srcdir/licenses/ffmpeg/SOURCE.txt"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/opus" "$srcdir/licenses/opus/COPYING"
-  install -Dm644 "$srcdir/licenses/noto-sans/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/noto-sans/LICENSE"
-  install -Dm644 "$srcdir/licenses/openxr/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/openxr/LICENSE"
+  for _l in noto-sans openxr opus; do
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/$_l" "$srcdir/licenses/$_l"/*
+  done
 }
