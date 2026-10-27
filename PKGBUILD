@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-tui
 _pkgname=reasonix
-pkgver=2.52.0
+pkgver=2.53.1
 pkgrel=1
 pkgdesc="Cache-first DeepSeek coding agent for the terminal"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ conflicts=("$_pkgname")
 # The release build deliberately strips Go symbols with -s -w, so makepkg
 # cannot produce a useful split debug package.
 options=('!debug')
-_commit=98570c95c0cbafe825d1da4187918e094980f1a4
+_commit=74805c102cf483aed637f30c9316928d3048c18c
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1902213e0500a9fdcf992fb5794fb1cea265acc8552179959bb550f7dbdbdb5')
+sha256sums=('63373763b225ec489e1b25f96f38d6b127cf162391d7e007a41b0beaec2cad42')
 
 build() {
     cd "DeepSeek-Reasonix-$pkgver"
