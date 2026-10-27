@@ -1,6 +1,6 @@
 pkgbase = lantern-bin
 	pkgdesc = Open-source VPN for speed, privacy, and censorship circumvention
-	pkgver = 10.0.0
+	pkgver = 10.0.4
 	pkgrel = 1
 	url = https://lantern.io
 	install = lantern.install
@@ -29,7 +29,7 @@ pkgbase = lantern-bin
 	depends = zlib
 	provides = lantern
 	conflicts = lantern
-	source = lantern-10.0.0.pkg.tar.zst::https://github.com/getlantern/lantern/releases/download/v10.0.0/lantern-installer.pkg.tar.zst
-	sha256sums = deec2f8d44cc287aee65bbddcef76f5168e0215a20ee90be5e2eaff7158b6480
+	source = lantern-10.0.4.pkg.tar.zst::https://github.com/getlantern/lantern/releases/download/v10.0.4/lantern-installer.pkg.tar.zst
+	sha256sums = 541610b45a996ec9eba4b4c540a4b5e29e6f5cd8f2e13284b28b6fe0c186a205
 
 pkgname = lantern-bin
