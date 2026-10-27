@@ -1,8 +1,8 @@
 pkgbase = chest-backup
 	pkgdesc = Full-stack backup manager with web UI and scheduling
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/brankosimic/chest-backup
+	url = https://github.com/valens-dev/chest-backup
 	install = chest-backup.install
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = chest-backup
 	makedepends = python
 	depends = bun
 	optdepends = docker: container-based backup sources (sqlite-container, postgres-container)
-	source = chest-backup-1.0.0.tar.gz::https://github.com/brankosimic/chest-backup/archive/v1.0.0.tar.gz
-	sha256sums = d5fd63104e5cd85026c678923049b82669ca461167da878a3de69fe3a1ec66be
+	source = chest-backup-1.0.1.tar.gz::https://github.com/valens-dev/chest-backup/archive/v1.0.1.tar.gz
+	sha256sums = d021c026889b0ee4fe7e79111dff34408ff0c11a87d239b597beb7f2e9ba6697
 
 pkgname = chest-backup

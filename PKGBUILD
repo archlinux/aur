@@ -1,4 +1,4 @@
-# Maintainer: Branko Simic <branko@valens.dev>
+# Maintainer: Valens <hello@valens.dev>
 #
 # Generated file — do not edit by hand.
 # Edit contrib/aur/PKGBUILD.template and run `pnpm aur:gen`.
@@ -9,12 +9,12 @@
 #   3. Commit PKGBUILD + .SRCINFO to the AUR repo
 
 pkgname=chest-backup
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 install=chest-backup.install
 pkgdesc="Full-stack backup manager with web UI and scheduling"
 arch=('x86_64' 'aarch64')
-url="https://github.com/brankosimic/chest-backup"
+url="https://github.com/valens-dev/chest-backup"
 license=('MIT')
 depends=(
   'bun'
@@ -27,8 +27,8 @@ makedepends=(
 optdepends=(
   'docker: container-based backup sources (sqlite-container, postgres-container)'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/archive/v$pkgver.tar.gz")
-sha256sums=('d5fd63104e5cd85026c678923049b82669ca461167da878a3de69fe3a1ec66be')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/valens-dev/chest-backup/archive/v$pkgver.tar.gz")
+sha256sums=('d021c026889b0ee4fe7e79111dff34408ff0c11a87d239b597beb7f2e9ba6697')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
