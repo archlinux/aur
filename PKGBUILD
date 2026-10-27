@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=mcptools
-pkgver=0.7.0 # renovate: datasource=github-tags depName=f/mcptools
+pkgver=0.7.1 # renovate: datasource=github-tags depName=f/mcptools
 pkgrel=1
 pkgdesc='Swiss Army Knife for MCP Servers'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/f/mcptools"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/f/mcptools/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('1ddb84336c53e3816fe8820baac2471c24e63d2bb449b58941c31e0ad1b41b2db17eec0dd4740efc53a4bb8429a02ad7ee3488ee8b6d8de6a7668a3e7ee478f5')
+b2sums=('34ac24bd20c0e06bb7c7b9b6ac8274d6ed5ce53827e07b03d7065b5674ffab8845dab2f50e734a79e7c722a1275de5b0583d51eb324ba075c4ee00e66a0b7437')
 options=('!lto' '!debug')
 
 prepare(){
@@ -25,9 +25,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw"
 
-  go build -o build -ldflags "-X main.Version=$pkgver" ./cmd/...
+  go build -o build -ldflags "-linkmode=external -X main.Version=$pkgver" ./cmd/...
 }
 
 package() {
