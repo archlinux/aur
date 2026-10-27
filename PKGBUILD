@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 # Contributor: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# shellcheck disable=SC2034,SC2154,SC2164
+# shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
 pkgname="modsecurity-crs"
@@ -56,7 +56,7 @@ Include /etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf" >>"$sr
 }
 
 package() {
-  cd "coreruleset-$pkgver"
+  cd "coreruleset-$pkgver" || exit
 
   # custom configurations
   # https://coreruleset.org/docs/deployment/quick_start/#setting-up-the-main-configuration-file
