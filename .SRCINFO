@@ -1,0 +1,29 @@
+pkgbase = cosmic-control-center-applet-bin
+	pkgdesc = Quick-Settings-style control center applet for the COSMIC panel (prebuilt binary)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/jjnuthuagen/cosmic-control-center-applet
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	depends = cosmic-panel
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = networkmanager: Wi-Fi, DNS and VPN tiles
+	optdepends = bluez: Bluetooth tile
+	optdepends = power-profiles-daemon: power profile tile
+	optdepends = upower: battery and charge limit tiles
+	optdepends = wireplumber: volume and microphone tiles
+	optdepends = libpulse: volume fallback via pactl
+	optdepends = gamemode: Game Mode tile
+	provides = cosmic-control-center-applet=0.2.1
+	conflicts = cosmic-control-center-applet
+	conflicts = cosmic-control-center-applet-git
+	options = !strip
+	options = !debug
+	source = cosmic-control-center-applet-0.2.1-x86_64-linux.tar.gz::https://github.com/jjnuthuagen/cosmic-control-center-applet/releases/download/v0.2.1/cosmic-control-center-applet-0.2.1-x86_64-linux.tar.gz
+	sha256sums = be4213891f0aa2152dd0792cedc1b3dbe5e62e18fe0a13828c2deb2e97d02b8f
+
+pkgname = cosmic-control-center-applet-bin
