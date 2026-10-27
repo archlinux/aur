@@ -1,0 +1,4 @@
+[cockpit-session-recording]
+source = "git"
+git = "https://github.com/Scribery/cockpit-session-recording.git"
+include_regex = "^[0-9]+$"
