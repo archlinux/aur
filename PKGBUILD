@@ -1,6 +1,6 @@
 # Maintainer: Fredrik Storm <fredrik@fldc.se>
 pkgname=nuphyctl-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Rust CLI for sending NuPhy keyboard HID commands"
 arch=('x86_64' 'aarch64')
@@ -18,5 +18,5 @@ package() {
     install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 sha256sums=('f68933e05b2f9076808b495f9157ff473c98e07c584662e2a058cc7218d149cb')
-sha256sums_x86_64=('72f10053bc3063e55964ec589a92a5590993e487e746e6063e6d04952e2f7ad9')
-sha256sums_aarch64=('2d2737af624e544ffb87d6abe2d24bba454eead0db71479df1622d5f8be78edb')
+sha256sums_x86_64=('24c2df140503c2018125fad772d84d2b2a4ddfab2e681d2f74d6918e8d17b7be')
+sha256sums_aarch64=('0a2cf6150adc7da7dd571bd04a79f6b59104f46d2c2e4bb4e3a28c0b571d26cc')
