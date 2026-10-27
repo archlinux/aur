@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=voicenux
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="VoiceMod for Linux. Real-time voice changer and soundboard for PipeWire"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('xdg-desktop-portal: global shortcuts')
 # set in upstream's release profile.
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/voicenux/voicenux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6ba081030185096e2310b308a14c12d21e17467610ee109fecd58d0c2d618943')
+sha256sums=('16e5d3086c2515b8f8e62355a730f3bb364a72c0719d147e60b500ad539f8943')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
