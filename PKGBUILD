@@ -1,14 +1,14 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra-git
 pkgver=0.5.4.r26.gaf90cf7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="MyAnimeList scrobbler (git version)"
 arch=('x86_64')
 url="https://tundra.moe"
-license=('GPL3')
+license=('GPL-3.0-only')
 groups=()
-depends=('gtk4' 'libadwaita' 'dbus')
+depends=('gtk4' 'libadwaita' 'dbus' 'hicolor-icon-theme')
 makedepends=('rust' 'git')
 checkdepends=()
 optdepends=()
@@ -20,6 +20,7 @@ options=(!debug !lto)
 install=
 changelog=
 source=("git+https://github.com/m4tx/tundra.git"
+# pkglint: ignore=PB101
         "https://raw.githubusercontent.com/erengy/anime-relations/master/anime-relations.txt")
 noextract=()
 md5sums=('SKIP'
