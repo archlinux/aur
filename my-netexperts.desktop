@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=My NetExperts
+Exec=my-netexperts %U
+Icon=my-netexperts
+Terminal=false
+Categories=Network;Office;
+StartupWMClass=my-netexperts
