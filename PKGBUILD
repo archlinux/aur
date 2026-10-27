@@ -1,4 +1,4 @@
-# Maintainer: Christian Pfeiffer <cpfeiffer@rev-crew.info>
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
