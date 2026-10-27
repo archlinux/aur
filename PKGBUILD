@@ -2,8 +2,8 @@
 pkgname=geforcenow-electron-bin
 _pkgname="com.github.hmlendea.${pkgname%-bin}"
 _appname='GeForce NOW'
-pkgver=3.0.5
-_electronversion=41
+pkgver=3.0.6
+_electronversion=45
 pkgrel=1
 pkgdesc="Unofficial desktop client for Nvidia GeForce NOW on Linux, delivering a native Electron-based experience with Wayland support, Steam Deck integration, and optional Discord rich presence."
 arch=('x86_64')
@@ -17,10 +17,12 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux.zip"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ca94f14b514fc3c1afe77b67b9938b25d29a954b4158d741349bdcc653128473'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+sha256sums=('97f469971be869d364bd16868b5e490872216e4325079c3ea5f12a35e7f87b40'
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -37,7 +39,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i -e "
         s/\/opt\/${pkgname%-bin}\///g
@@ -46,7 +48,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "$(_get_app_dir)/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "$(_get_app_dir)/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
