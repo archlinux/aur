@@ -1,5 +1,5 @@
 backup_support() {
-    local backup="/data/autobak/$(hostname)/netexperts-support/$(date -u +%F)/before-153-$(date -u +%H%M%S)-$$"
+    local backup="/data/autobak/$(hostname)/netexperts-support/$(date -u +%F)/before-1541-$(date -u +%H%M%S)-$$"
     local paths=() path
     for path in /usr/lib/netexperts-support /root/.config/netexpertssupport; do
         [ ! -e "$path" ] || paths+=("$path")
