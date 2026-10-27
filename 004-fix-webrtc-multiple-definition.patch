@@ -1,0 +1,14 @@
+diff --git a/indra/llwebrtc/CMakeLists.txt b/indra/llwebrtc/CMakeLists.txt
+index eb10f4eee4..1425f3e521 100644
+--- a/indra/llwebrtc/CMakeLists.txt
++++ b/indra/llwebrtc/CMakeLists.txt
+@@ -54,6 +54,9 @@ elseif (DARWIN)
+     endif (USE_BUGSPLAT)
+ elseif (LINUX)
+     target_link_libraries(llwebrtc PRIVATE ll::webrtc)
++    # libwebrtc.a bundles protobuf/protozero build-tool plugins that each define main.
++    # Newer ld rejects multiple definitions even in shared library links.
++    target_link_options(llwebrtc PRIVATE -Wl,--allow-multiple-definition)
+ endif (WINDOWS)
+     
+ target_include_directories( llwebrtc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

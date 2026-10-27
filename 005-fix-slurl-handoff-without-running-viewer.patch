@@ -1,0 +1,38 @@
+--- a/indra/newview/llappviewerlinux.cpp
++++ b/indra/newview/llappviewerlinux.cpp
+@@ -300,6 +300,7 @@
+ 
+     g_variant_get (parameters, "(&s)", &slurl);
+     dispatchSLURL(slurl);
++    g_dbus_method_invocation_return_value(invocation, nullptr);
+ }
+ 
+ GDBusNodeInfo *gBusNodeInfo = nullptr;
+@@ -376,6 +377,16 @@
+         return false;
+     }
+ 
++    gchar *pOwner = g_dbus_proxy_get_name_owner(pProxy);
++    if( !pOwner )
++    {
++        LL_INFOS() << "No running viewer to pass the SLURL to, starting normally." << LL_ENDL;
++        g_object_unref( pProxy );
++        g_object_unref( pBus );
++        return false;
++    }
++    g_free( pOwner );
++
+     auto *pArgs = g_variant_new( "(s)", url.c_str() );
+     if( !pArgs )
+     {
+@@ -387,8 +398,8 @@
+     auto pRes  = g_dbus_proxy_call_sync(pProxy,
+                                         "GoSLURL",
+                                         pArgs,
+-                                        G_DBUS_CALL_FLAGS_NONE,
+-                                        -1, nullptr, nullptr);
++                                        G_DBUS_CALL_FLAGS_NO_AUTO_START,
++                                        5000, nullptr, nullptr);
+ 
+ 
+ 

@@ -2,29 +2,49 @@
 pkgname=firestorm-git
 _src=master
 _extension=dev
-pkgver=7.2.4.80358
+pkgver=7.3.0.82757
 pkgrel=1
-pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life  and OpenSim grids ($_extension version)"
+pkgdesc="Feature-packed third-party viewer for Second Life and OpenSim grids ($_extension version)"
 arch=('x86_64')
 url=https://www.firestormviewer.org
-license=('LGPL')
+license=('LGPL-2.1-only')
 install='firestorm.install'
-depends=(apr-util dbus-glib glu gtk2 lib32-libidn lib32-libsndfile
-         lib32-util-linux lib32-zlib libbsd libgl libidn libjpeg-turbo
-         libpng libxcrypt-compat libxss libxml2 mesa nss openal sdl
-         vlc zlib)
+# Packaging release notes. Shown by AUR helpers before updating and by "pacman -Qc firestorm-git".
+changelog='firestorm.changelog'
+# Libraries the packaged binaries link against directly. Everything else
+# (APR, OpenAL, ALUT, SDL3, libsndfile, CEF, ...) is bundled by the build.
+depends=(alsa-lib at-spi2-core cairo dbus expat fontconfig glib2 glu
+         libcups libdecor libgl libvlc libx11 libxcb libxcomposite
+         libxcrypt-compat libxcursor libxdamage libxext libxfixes
+         libxkbcommon libxrandr mesa nspr nss pango systemd-libs
+         util-linux-libs hicolor-icon-theme)
+# Libraries loaded at runtime only if present, plus the 32-bit runtime
+# for the Vivox voice client (SLVoice), which is only used on OpenSim grids.
+# Second Life voice uses the 64-bit WebRTC library instead.
 optdepends=(
-  'alsa-lib: for ALSA support'
-  'pepper-flash: for inworld Flash support'
-  'freealut: for OpenAL support'
-  'lib32-gst-plugins-good: for voice support'
-  'lib32-libidn11: for voice support'
-  'libpulse: for PulseAudio support'
-  'mesa-libgl: For Intel, Radeon, Nouveau support'
-  'nvidia-libgl: for NVIDIA support'
-  'nvidia-utils: for NVIDIA support'
+  'gst-plugins-good: for in-world media playback (GStreamer)'
+  'gst-plugins-bad: additional media codecs'
+  'gst-plugins-ugly: additional media codecs'
+  'gst-libav: additional media codecs'
+  'libpulse: for PulseAudio audio support'
+  'pipewire: for PipeWire audio support'
+  'jack: for JACK audio support'
+  'libnotify: for desktop notifications'
+  'gtk3: for the native file picker'
+  'xdg-utils: for opening links in your web browser'
+  'lib32-glibc: for OpenSim voice (Vivox)'
+  'lib32-gcc-libs: for OpenSim voice (Vivox)'
+  'lib32-util-linux: for OpenSim voice (Vivox)'
+  'lib32-zlib: for OpenSim voice (Vivox)'
+  'lib32-libidn11: for OpenSim voice (Vivox, AUR)'
 )
-makedepends=('cmake' 'python-pip' 'git' 'boost' 'xz')
+# libxinerama and libpulse are only checked for at configure time (indra/cmake/OpenGL.cmake,
+# MediaPluginBase.cmake); the packaged binaries don't link against them.
+# libvlc is in depends: upstream master builds and ships the VLC media plugin on Linux.
+# GStreamer and PipeWire headers are needed by the media plugins, which load the libraries at runtime.
+# wayland-client headers enable the viewer's Wayland support.
+makedepends=('cmake' 'python-pip' 'git' 'xz' 'libxinerama' 'libpulse'
+             'gstreamer' 'gst-plugins-base-libs' 'libpipewire' 'wayland')
 conflicts=()
 provides=("firestorm-$_extension")
 source=(
@@ -32,24 +52,37 @@ source=(
   "fs-build-variables"::'git+https://github.com/FirestormViewer/fs-build-variables'
   'firestorm.desktop'
   'firestorm.launcher'
-# This patch fixes the fortify check. Arch defines _FORTIFY_SOURCE by default, 
-# These are in CMAKE_CXX_FLAGS and not in CMAKE_CXX_COMPILER_ARG1, 
-# so the check for _FORTIFY_SOURCE in CMAKE_CXX_COMPILER_ARG1 fails and the fortify check is not disabled, 
-# which causes build failures.
+# Arch defines _FORTIFY_SOURCE in CXXFLAGS by default. Upstream master defines it again for Release builds,
+# which causes build failures. This patch only defines it when CMAKE_CXX_FLAGS doesn't already.
   '001-fix-fortify-check.patch'
 
-# We want to be able to use the OS version together with the official firestorm-bin version so we want a different config directory for the OS version.
-# This patch changes the default config directory to ~/.firestorm_x64-os instead of ~/.firestorm_x64
+# We want to be able to use the OS version together with the official firestorm-bin version so we want a different config directory for this version.
+# This patch changes the default config directory to ~/.firestorm_x64-dev instead of ~/.firestorm_x64
   '002-set-different-config-dir.patch'
+
+# GCC 16 introduced -Wsfinae-incomplete which triggers on valid SFINAE patterns used in llinitparam.h.
+# This patch disables that warning-as-error for GCC 16+.
+  '003-fix-sfinae-incomplete-gcc16.patch'
+
+# libwebrtc.a bundles protobuf/protozero build-tool plugins (cppgen_plugin.o, protozero_plugin.o)
+# that both define main. Newer ld rejects multiple definitions even when building a shared library.
+  '004-fix-webrtc-multiple-definition.patch'
+
+# The D-Bus SLURL handoff never replied and its sender ignored the result. Check for a running viewer
+# by bus name owner instead; otherwise opening a link without a running viewer made it quit.
+  '005-fix-slurl-handoff-without-running-viewer.patch'
 )
 sha256sums=('SKIP'
             'SKIP'
-            'db34a50f4b7fda4a465cd0536f17a0f6040ff6b2e40c32594b1f244ebe8e2d60'
-            '465f1611c17f90bba8bc7e7cc3e05ffe8cf20fb9c1b7df59053f54a6bceb8283'
-            'cbef822d5ce2b1b9eb3bc88bfcaa59dfb2eec2cc698bdcb391b1c332a7ed93fb'
-            '5eec78e0196e51d58e45078b84dc277353ef635ff160ff61ac58ab5966245011')
-# The binaries are already stripped in the build system.
-options=(!strip)
+            '785af910134b3f221290e5a6b3341da040e48f6c9f12cb944761df0d1e59a974'
+            'eb225e8886f347ad8708cd7c3c42f0761d23f11ed7b2164538782ecc5c4b4548'
+            'a949492f28a5a8a01969d214aa983a3f5985c509c31a8f85d628dd5aba8c8a2d'
+            '5eec78e0196e51d58e45078b84dc277353ef635ff160ff61ac58ab5966245011'
+            '761502b9fe2a12d160b463b3dbe42d05cfa863b6ffde1fae8305c37f7eaa414c'
+            'cc754541b0ed40f80acee048ca038d32eccf5452e409d373638c055ccdb82dda'
+            'c09a364743107a5cda971407a82fb714c4c4e17bec784de9a3a81aec8ec9d1af')
+# The binaries are already stripped in the build system, so no separate debug package either.
+options=(!strip !debug)
 
 pkgver() {
 	_pkgver=$(cat "$srcdir/$pkgname/indra/newview/VIEWER_VERSION_FS.txt")
@@ -109,6 +142,7 @@ build() {
   # - Don't use Havok for physics. Havok requires license. This only affects Mesh uploads.
   # - Enable OpenSim support
   # - Pass --fresh to cmake to ensure flags are up to date
+
   autobuild build -A 64 -c ReleaseFS -- --chan "$channel" \
     --package \
     --avx2 \
@@ -122,13 +156,14 @@ build() {
   deactivate
 }
 
+
 package() {
   mkdir -p "$pkgdir/opt"
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
 
   # Install the packaged output to /opt/firestorm-$_extension
-  mv "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm-$_extension"
+  cp -a --reflink=auto "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm-$_extension"
 
   install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm-$_extension"
   install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm-$_extension.desktop"

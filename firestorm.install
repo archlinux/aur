@@ -6,3 +6,12 @@ order to use Second Life: https://secondlife.com/
 Remember to log out and back in for the change to take effect.
 EOF
 }
+
+post_upgrade() {
+  if [ "$(vercmp $2 7.2.4.80358-1)" -le 0 ]; then
+    echo "==> NOTE: Dependencies have changed. Voice on OpenSim grids (Vivox) now needs"
+    echo "==> optional 32-bit packages; Second Life voice is not affected. Install them with:"
+    echo "==>   lib32-glibc lib32-gcc-libs lib32-util-linux lib32-zlib lib32-libidn11 (AUR)"
+    echo "==> Full packaging changes: pacman -Qc firestorm-git"
+  fi
+}

@@ -5,3 +5,4 @@ firestorm-git
 fs-build-variables
 pkg
 src
+*.log
