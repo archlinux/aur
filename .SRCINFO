@@ -1,0 +1,20 @@
+pkgbase = hledger-simplefin-git
+	pkgdesc = SimpleFIN helper scripts for hledger
+	pkgver = r11.ea8ec42
+	pkgrel = 1
+	url = https://github.com/eleanor-k/hledger-simplefin
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = jq
+	depends = libsecret
+	depends = python3
+	provides = hledger-simplefin
+	conflicts = hledger-simplefin
+	source = hledger-simplefin::git+https://github.com/eleanor-k/hledger-simplefin.git
+	b2sums = SKIP
+
+pkgname = hledger-simplefin-git
