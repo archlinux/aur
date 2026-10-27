@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sdrtop-git
 pkgver=0.7.0.r4.g23a419f
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal monitor for SDR hardware"
 arch=("x86_64")
 url="https://github.com/musithang/sdrtop"
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname" || exit 1
-    cargo build --release --config 'profile.release.opt-level="z"' --config 'profile.release.lto=true' --config 'profile.release.codegen-units=1' --config 'profile.release.panic="abort"'
+    cargo build --release --locked
 }
 
 package() {
