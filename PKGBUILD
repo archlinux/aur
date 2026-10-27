@@ -2,7 +2,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=moltis-git
-pkgver=20260529.02.r0.g6de135a28
+pkgver=20261023.01.r1.g8a12400dc
 pkgrel=1
 pkgdesc="A personal AI gateway written in Rust. One binary, sandboxed, secure. (Git VCS version)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,10 @@ replaces=()
 depends=(
     gcc-libs
     glibc
-    openssl
-    systemd-libs
+    zlib
+)
+optdepends=(
+    'systemd: for cgroup sandboxing (systemd-run) and service management'
 )
 makedepends=(
     clang
@@ -40,48 +42,36 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
 
-    # Increase recursion limit for all crate roots
-    for f in crates/*/src/lib.rs crates/*/src/main.rs; do
-        if [ -f "$f" ]; then
-            sed -i '/recursion_limit/d' "$f"
-            echo '#![recursion_limit = "2048"]' | cat - "$f" >temp && mv temp "$f"
-        fi
-    done
+    # Pre-fetch npm dependencies for web UI
+    (
+        cd crates/web/ui
+        npm ci --ignore-scripts
+    )
 
-    # Disable matrix feature globally as it causes build failure on stable Rust
-    find . -name "Cargo.toml" -exec sed -i 's/"matrix",//g' {} +
-    find . -name "Cargo.toml" -exec sed -i 's/"moltis-matrix\/metrics",//g' {} +
-
-    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname%-git}"
 
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/build"
 
     # Build web UI assets
     just build-web-assets
 
-    # Build WASM components
-    # cargo build --target wasm32-wasip2 -p moltis-wasm-calc -p moltis-wasm-web-fetch -p moltis-wasm-web-search --release
-    # cargo run -p moltis-wasm-precompile --release
-
-    # Build release binary
-    cargo build --release -p moltis --features full
+    # Build release binary (portable feature set per upstream release packaging guidelines)
+    cargo build --release -p moltis --no-default-features --features portable
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname%-git}"
 
     install -Dm0755 target/release/moltis -t "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/usr/share/moltis/web"
     cp -R --no-preserve=mode crates/web/src/assets/* "${pkgdir}/usr/share/moltis/web/"
-    # install -Dm0644 -t "${pkgdir}/usr/share/moltis/wasm/" target/wasm32-wasip2/release/moltis_wasm_calc.wasm
-    # install -Dm0644 -t "${pkgdir}/usr/share/moltis/wasm/" target/wasm32-wasip2/release/moltis_wasm_web_fetch.wasm
-    # install -Dm0644 -t "${pkgdir}/usr/share/moltis/wasm/" target/wasm32-wasip2/release/moltis_wasm_web_search.wasm
-    install -Dm0644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm0644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -d "${pkgdir}/usr/share/moltis/docs"
+    cp -R -L --no-preserve=mode docs/src/* "${pkgdir}/usr/share/moltis/docs/"
+    install -Dm0644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm0644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
