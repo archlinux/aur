@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=gslapper
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern mpvpaper replacement - Wayland wallpaper utility with video/image support and instant switching via RAM cache"
 arch=('x86_64')
 url="https://github.com/Nomadcxx/gSlapper"

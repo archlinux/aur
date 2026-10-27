@@ -1,7 +1,7 @@
 pkgbase = gslapper
 	pkgdesc = Modern mpvpaper replacement - Wayland wallpaper utility with video/image support and instant switching via RAM cache
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nomadcxx/gSlapper
 	install = gslapper.install
 	arch = x86_64
