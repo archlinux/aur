@@ -2,8 +2,10 @@
 
 pkgname=proton-pass-cli-bin
 pkgver=2.5.1 # datasource=github-releases depName=protonpass/pass-cli
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line interface for managing your Proton Pass vaults, items, and secrets.'
+provides=('proton-pass-cli')
+conflicts=('proton-pass-cli')
 arch=('aarch64' 'x86_64')
 url='https://protonpass.github.io/pass-cli/'
 depends=('glibc' 'libgcc')
