@@ -1,6 +1,6 @@
 pkgbase = r-gap
 	pkgdesc = Genetic Analysis Package
-	pkgver = 1.15.2
+	pkgver = 1.15.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gap
 	arch = x86_64
@@ -37,13 +37,15 @@ pkgbase = r-gap
 	optdepends = r-plotrix
 	optdepends = r-r2jags
 	optdepends = r-readr
+	optdepends = r-remotes
 	optdepends = r-reshape
 	optdepends = r-rmarkdown
 	optdepends = r-rms
 	optdepends = r-scales
+	optdepends = r-testthat
 	optdepends = r-valr
-	source = https://cran.r-project.org/src/contrib/gap_1.15.2.tar.gz
-	md5sums = 52478515ea26137597b2010a69d0a738
-	b2sums = 7b059b3dbf0505430d61f9ee3fa7301e5da31c4af594cee8831bae5f35aeffd061f012fd269eaf3334be9bd082f7ba0733544fafffa4ab2a8cbe0544fbaa0e30
+	source = https://cran.r-project.org/src/contrib/gap_1.15.3.tar.gz
+	md5sums = bb89c9d8d40e2f9d032135fce41c8b42
+	b2sums = 9ace24e952be146f4d44bc492eb5b23fb88d174a5b1ecc85e2a89e2de6ee0a92f00780d9e7b7fc48c5b1120f84dcb980dd8717c43994d6051ad4826b97b31e50
 
 pkgname = r-gap
