@@ -1,11 +1,11 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=gastown
-pkgver=0.5.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Multi-agent orchestration system for Claude Code with persistent work tracking'
 arch=('x86_64')
-url='https://github.com/steveyegge/gastown'
+url='https://github.com/gastownhall/gastown'
 license=('MIT')
 provides=('gt')
 depends=('git')
@@ -15,8 +15,8 @@ optdepends=(
   'tmux: Recommended for multi-agent sessions'
 )
 options=('!debug')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/steveyegge/gastown/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('09e96ed400eb8e6b336583fe02213c9a7e8eb77177af8f77ccda66656fdd9b0d334f469540e2a63ab352accf61b576ee87d289eb6537752a3e4e4af543d35ec6')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gastownhall/gastown/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('e0575a0b006f93a089ccd4d301b67edfbed20ea74e41877ad2114e7d21cb14ee760c2f6d90a897d55980d063e938e4b0484c3bce84da2a571e3e7da550c93031')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -25,9 +25,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -buildvcs=false -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -ldflags "-X main.Version=${pkgver}" -o gt ./cmd/gt
+  go build -o gt ./cmd/gt
 }
 
 package() {
