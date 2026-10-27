@@ -1,6 +1,6 @@
 # Maintainer: ServiusHack <serviushack at gmx dot de>
 pkgname=casparcg-client
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='A client software used to control the CasparCG Server software'
 arch=('x86_64')
@@ -23,6 +23,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/Client"
+	# fix: compatibility with boost 1.90
+	git show 41a1fc5105ae9d668cc4b354ab2a7ba1872a8f8e | patch -p1
 	./tools/build-linux.sh
 }
 

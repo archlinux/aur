@@ -1,6 +1,6 @@
 pkgbase = casparcg-client
 	pkgdesc = A client software used to control the CasparCG Server software
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = http://www.casparcg.com/
 	arch = x86_64
