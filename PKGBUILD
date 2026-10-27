@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bili-shadowreplay-bin
 _pkgname='BiliBili ShadowReplay'
-pkgver=2.24.2
+pkgver=2.25.0
 pkgrel=1
 pkgdesc="A tool for caching bilibili live broadcasts and editing submissions in real time.一个缓存BiliBili直播并进行实时编辑投稿的工具"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Xinrea/bili-shadowreplay/v${pkgver}/LICENSE"
 )
-sha256sums=('5389b06425aa6606a3fc10870008b2385dbc54d946bd26e226b6068fbbebd6f8'
+sha256sums=('5a42cc4f31e8f895b9a449873dc551c5e60156cdad6c3d2c645d2db1cafd8b1e'
             '4cbb91ff4be21fae9f321899a00b75e05f7b40aee1b2aa5d4896a7155822cb45')
 prepare() {
     sed -i -e "
@@ -27,7 +27,8 @@ prepare() {
         s/Categories=/Categories=AudioVideo;/g
         s/Name=${pkgname%-bin}/Name=${_pkgname}/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    [[ -d "${srcdir}/usr/share/icons/hicolor/256x256@2" ]] && mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
+    local _icon_dir="${srcdir}/usr/share/icons/hicolor"
+	[[ -d "${_icon_dir}/256x256@2" && ! -d "${_icon_dir}/512x512" ]] && mv "${_icon_dir}/256x256@2" "${_icon_dir}/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
