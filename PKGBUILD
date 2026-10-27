@@ -1,7 +1,7 @@
 # Maintainer: Hakan İSMAİL <hakanismail53@gmail.com>
 pkgname=rclone-manager-git
 appname='RClone.Manager'
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="User-friendly GUI for Rclone"
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd rclone-manager/src-tauri/target/release/bundle/deb/
+  cd rclone-manager/backend/target/release/bundle/deb/
   
   # Find the actual deb file
   DEB_FILE=$(ls *.deb | head -1)
