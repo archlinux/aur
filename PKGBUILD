@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-mac2-driver
 pkgname="nodejs-$_pkgname"
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="XCTest-based Appium driver for macOS apps automation"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('1af74583342bc370100110d0283cb60f79995af761b41cb7224b0f2ef2ede4f4')
+sha256sums=('97948b10e8a25336e3a2a5e1fdefb84bb3da83618caf880d0bda6a6641f483c5')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
