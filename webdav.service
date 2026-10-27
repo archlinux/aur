@@ -1,0 +1,16 @@
+[Unit]
+Description=WebDAV server
+After=network.target
+
+[Service]
+Type=simple
+User=webdav
+Group=webdav
+ExecStart=/usr/bin/webdav --config /etc/webdav/config.yml
+Restart=on-failure
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

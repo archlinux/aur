@@ -1,0 +1,19 @@
+# All options: https://github.com/hacdias/webdav#configuration
+address: 127.0.0.1
+port: 6065
+directory: /var/lib/webdav
+permissions: R
+
+log:
+  format: console
+  colors: false
+  outputs:
+    - stderr
+
+# Without users there is no authentication. Generate a password hash with
+# "webdav bcrypt" and add users here, for example:
+# users:
+#   - username: alice
+#     password: "{bcrypt}<hash>"
+#     permissions: CRUD
+users: []
