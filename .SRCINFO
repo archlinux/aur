@@ -1,6 +1,6 @@
 pkgbase = junior-desktop
 	pkgdesc = The desktop app for Junior
-	pkgver = 3.1.70
+	pkgver = 3.1.71
 	pkgrel = 1
 	url = https://github.com/Andrew-AI-JR/Desktop-Releases
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = junior-desktop
 	optdepends = libappindicator-gtk3: for system tray support
 	options = !strip
 	options = !emptydirs
-	source = junior-desktop_3.1.70_amd64.deb::https://github.com/Andrew-AI-JR/Desktop-Releases/releases/download/v3.1.70/junior-desktop_3.1.70_amd64.deb
-	sha256sums = e3dcc9271434b172199574f109272cde66e17cadcea2d0c22d1bc528f4d4d415
+	source = junior-desktop_3.1.71_amd64.deb::https://github.com/Andrew-AI-JR/Desktop-Releases/releases/download/v3.1.71/junior-desktop_3.1.71_amd64.deb
+	sha256sums = 9bfca599b6c230ab10ab826ecd76443972bda667624f67ba3859ad71d7a5f070
 
 pkgname = junior-desktop
