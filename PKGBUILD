@@ -1,5 +1,5 @@
 pkgname=ezoo-download-git
-pkgver=1.0.5.linux.r0.g252f2fb.nagar # هذا الرقم سيتحدث تلقائياً بمجرد تشغيل makepkg
+pkgver=1.x.x
 pkgrel=1
 pkgdesc="A fast, modern open-source alternative to Internet Download Manager (IDM) for Linux"
 arch=('x86_64')
@@ -28,22 +28,17 @@ makedepends=(
 )
 provides=('ezoo-download')
 conflicts=('ezoo-download')
-source=("git+https://github.com/kerlif/ezoo-download.git#branch=linux-support")
+source=("git+https://github.com/kerlif/ezoo-download.git#branch=main")
 sha256sums=('SKIP')
 
-# دالة الجلب التلقائي للإصدار
+# Version is generated automatically from the latest git tag on every makepkg run
 pkgver() {
   cd "$srcdir/ezoo-download"
-  # سحب آخر إصدار (Tag) من جيت هب، وإزالة حرف v لو موجود، وتحويل الصيغة لتناسب AUR
-  local _ver="$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
-
-  # لو لم يجد Tags على جيت هب، سيعتمد على عدد الكوميتات
-  if [ -z "$_ver" ]; then
-    _ver="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  if v=$(git describe --long --tags --match 'v[0-9]*' 2>/dev/null); then
+    printf '%s' "$v" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
-
-  # إضافة لقبك في نهاية رقم الإصدار
-  echo "${_ver}.nagar"
 }
 
 prepare() {
@@ -59,12 +54,13 @@ build() {
   cd "$srcdir/ezoo-download"
   export RUSTUP_TOOLCHAIN=stable
 
-  # Make sure C code (e.g. from the ring crate) is not built as LTO bitcode
-  export CFLAGS="${CFLAGS/-flto=auto/} -fno-lto"
-  export CXXFLAGS="${CXXFLAGS/-flto=auto/} -fno-lto"
-  export RUSTFLAGS="${RUSTFLAGS/-Clink-arg=-fuse-ld=lld/}"
+  # Make sure C code (e.g. from the ring crate) is not built as LTO bitcode,
+  # and strip the build directory path from the compiled binary
+  export CFLAGS="${CFLAGS/-flto=auto/} -fno-lto -ffile-prefix-map=$srcdir=src"
+  export CXXFLAGS="${CXXFLAGS/-flto=auto/} -fno-lto -ffile-prefix-map=$srcdir=src"
+  export RUSTFLAGS="${RUSTFLAGS/-Clink-arg=-fuse-ld=lld/} --remap-path-prefix=$srcdir=src"
 
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
