@@ -1,11 +1,11 @@
 pkgname=rea-agents
-pkgver=6.7.0
+pkgver=6.8.0
 pkgrel=1
 pkgdesc="Reverse engineer anything from your terminal or agent with one CLI and MCP server"
 arch=('any')
 url="https://github.com/morluto/rea"
 license=('MIT')
-depends=('nodejs>=22.19' 'npm')
+depends=('nodejs>=22.23.4' 'npm')
 makedepends=('npm')
 optdepends=(
   'hopper4: native binary analysis (Hopper provider, AUR, commercial)'
@@ -19,7 +19,7 @@ optdepends=(
   'chromium: browser and web capture analysis'
 )
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('20958a66dba1a011e50a486beb9463a343128ed368c984f94065362c13f51f90')
+sha256sums=('8d542ec76a9cb350584b60a6c9c088706ff812d5bb5b094c20c95b6dc25698bb')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
