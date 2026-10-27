@@ -1,21 +1,40 @@
-diff -Naur ./bs-2.11.orig/Makefile ./bs-2.11/Makefile
---- ./bs-2.11.orig/Makefile	2016-12-08 10:54:14.164589590 -0500
-+++ ./bs-2.11/Makefile	2016-12-08 10:54:46.243780672 -0500
-@@ -5,7 +5,7 @@
- CC = gcc
- 
- # DESTDIR support
--DESTDIR = 
-+DESTDIR =
+--- a/Makefile
++++ b/Makefile
+@@ -29,7 +29,7 @@
+ # Build
  
  bs: bs.c
- 	$(CC) $(CFLAGS) -o bs bs.c -lncurses
-@@ -35,7 +35,7 @@
- 	install -m 0644 bs.xml $(DESTDIR)/usr/share/appdata/
+-	$(CC) $(CFLAGS) -DVERSION='"$(VERSION)"' -o bs bs.c -lncurses
++	$(CC) $(CPPFLAGS) $(CFLAGS) -DVERSION='"$(VERSION)"' -o bs bs.c $(LDFLAGS) -lncurses
+ 
+ clean:
+ 	rm -f bs bs.6 bs*.tar.gz bs*.rpm *~ *.html
+@@ -47,21 +47,18 @@
+ 
+ # Install/uninstall
+ 
+-# Note: does not install desktop file.
+-install: bs.6 uninstall
++install: bs bs.6
+ 	install -m 0755 -d $(DESTDIR)$(BINDIR)
+ 	install -m 0755 -d $(DESTDIR)$(MANDIR)/man6
+-	install -m 0755 -d $(DESTDIR)//usr/share/applications/
+-	install -m 0755 -d $(DESTDIR)/usr/share/icons/hicolor/32x32/apps/
+-	install -m 0755 -d $(DESTDIR)/usr/share/appdata
+-	install -m 0755 bs $(DESTDIR)$(MANDIR)/
++	install -m 0755 -d $(DESTDIR)$(DATADIR)/applications/
++	install -m 0755 -d $(DESTDIR)$(DATADIR)/icons/hicolor/32x32/apps/
++	install -m 0755 bs $(DESTDIR)$(BINDIR)/
+ 	install -m 0644 bs.6 $(DESTDIR)$(MANDIR)/man6/
+-	install -m 0644 bs.desktop $(DESTDIR)/usr/share/applications/
+-	install -m 0644 battleship.png $(DESTDIR)/usr/share/icons/hicolor/32x32/apps/
+-	install -m 0644 bs.adoc $(DESTDIR)/usr/share/appdata/
++	install -m 0644 bs.desktop $(DESTDIR)$(DATADIR)/applications/
++	install -m 0644 battleship.png $(DESTDIR)$(DATADIR)/icons/hicolor/32x32/apps/
  
  uninstall:
--	rm -f /usr/bin/bs /usr/share/man/man6/bs.6
-+	rm -f $(DESTDIR)/usr/bin/bs $(DESTDIR)/usr/share/man/man6/bs.6
+-	rm -f $(BINDIR)/bs /usr/share/man/man6/bs.6
++	rm -f $(DESTDIR)$(BINDIR)/bs $(DESTDIR)$(MANDIR)/man6/bs.6
  
- SOURCES = README COPYING NEWS control bs.c Makefile bs.xml battleship.png bs.desktop
+ # Export
  

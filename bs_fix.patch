@@ -1,0 +1,29 @@
+--- a/bs.c
++++ b/bs.c
+@@ -112,7 +112,7 @@
+ 	bool placed;       /* has it been placed on the board? */
+ } ship_t;
+ 
+-static bool checkplace(int b, ship_t *ss, int vis);
++static bool checkplace(int b, const ship_t *ss, int vis);
+ static void reset_ai_state(void);
+ 
+ static ship_t plyship[SHIPTYPES] = {
+@@ -1131,7 +1131,7 @@
+ 		break;
+ 
+ 	case REVERSE_JUMP: /* nail down the ship's other end */
+-		d = cpu_ts.dir + 4;
++		d = (cpu_ts.dir + 4) % 8;
+ 		x = cpu_ts.x + cpu_ts.hits * xincr[d];
+ 		y = cpu_ts.y + cpu_ts.hits * yincr[d];
+ 		if (POSSIBLE(x, y) && (hit = cpufire(x, y))) {
+@@ -1210,7 +1210,7 @@
+ 	return (sgetc("YN") == 'Y');
+ }
+ 
+-static void do_options(int c, const char *op[]) {
++static void do_options(int c, char *op[]) {
+ 	if (c > 1) {
+ 		register int i;
+ 
