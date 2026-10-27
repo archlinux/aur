@@ -1,13 +1,18 @@
 # Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=mygo-cloudmusic
-pkgver=0.1.13
-pkgrel=2
+pkgver=0.1.19
+pkgrel=1
 pkgdesc='MyGo 云音乐 - 第三方网易云音乐原生客户端'
 arch=('x86_64' 'aarch64')
 url='https://music.egoist.dev'
 license=('AGPL-3.0-only')
-depends=('gtk3' 'libsecret')
+# The UI is drawn natively on the GPU through GTK 3: linux.webview is
+# false in mygo.json, so WebKitGTK and libsoup are never loaded.
+# libayatana-appindicator has been required since 0.1.14, which puts the
+# app's icon in the notification area on Linux; without it the app still
+# starts, but closing the window quits instead of hiding.
+depends=('gtk3' 'libsecret' 'libayatana-appindicator')
 optdepends=(
   'libpulse: PulseAudio 音频输出'
   'alsa-lib: ALSA 音频输出（PulseAudio 不可用时）'
