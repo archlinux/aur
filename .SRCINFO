@@ -1,6 +1,6 @@
 pkgbase = muxin-bin
 	pkgdesc = All your machines in one app, for you and your AI agents
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://muxin.dev
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = muxin-bin
 	conflicts = muxin
 	options = !strip
 	options = !debug
-	source_x86_64 = Muxin-0.8.0-linux-x86_64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v0.8.0/Muxin-0.8.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = ebf2f76308e81716bd391d87ae453bc0d544b57cb076f1052bc270304ff8aca6
-	source_aarch64 = Muxin-0.8.0-linux-aarch64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v0.8.0/Muxin-0.8.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 20d4139a7e35d095c998596ef27e25824ed258b127adcce38125b32d80dcbad5
+	source_x86_64 = Muxin-0.8.1-linux-x86_64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v0.8.1/Muxin-0.8.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f19a6dbffeb99007fe605d910029322b7e22a878ba5b7a98c27851ad446971bc
+	source_aarch64 = Muxin-0.8.1-linux-aarch64.tar.gz::https://github.com/LumaryLabsLLC/muxin/releases/download/v0.8.1/Muxin-0.8.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b5383b055a4a41ca6c71cf6f7607e75020ad639643a16bcf68282a24092231f0
 
 pkgname = muxin-bin
