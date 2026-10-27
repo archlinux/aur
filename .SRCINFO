@@ -1,13 +1,15 @@
 pkgbase = cryptpad
 	pkgdesc = Realtime collaborative visual editor with zero knowledge server
 	pkgver = 2026.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cryptpad/cryptpad
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
 	makedepends = npm
 	makedepends = git
 	makedepends = unzip
+	depends = glibc
 	depends = nodejs
 	optdepends = nginx: HTTP server providing TLS
 	optdepends = certbot: Let's Encrypt – automatically receive and install X.509 certificates to enable TLS

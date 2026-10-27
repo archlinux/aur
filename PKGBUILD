@@ -6,12 +6,12 @@
 
 pkgname=cryptpad
 pkgver=2026.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Realtime collaborative visual editor with zero knowledge server"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
 license=(AGPL-3.0-only)
-depends=(nodejs)
+depends=(glibc nodejs)
 makedepends=(npm git unzip)
 optdepends=("nginx: HTTP server providing TLS"
   "certbot: Let's Encrypt – automatically receive and install X.509 certificates to enable TLS"
@@ -20,7 +20,7 @@ optdepends=("nginx: HTTP server providing TLS"
 conflicts=("cryptpad-sso<1.0.0")
 backup=(etc/webapps/"$pkgname"/config.js
   etc/nginx/sites-available/"$pkgname".conf)
-options=(!strip !debug) # There are no ELF files, no need to strip anything.
+options=(!strip !debug) # The only ELF files are upstream's sodium-native prebuilds
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
   "$pkgname.service"
   "$pkgname.sysusers"
@@ -40,6 +40,21 @@ build() {
   npm ci --cache "$srcdir"/npm-cache
   npm run install:components --cache "$srcdir"/npm-cache
   ./install-office.sh --accept-license
+
+  # sodium-native ships prebuilds for every platform, keep only ours
+  # The .bare files are for the Bare runtime, Node only loads the .node file
+  local _node_arch
+  case "$CARCH" in
+    x86_64) _node_arch=x64 ;;
+    aarch64) _node_arch=arm64 ;;
+  esac
+  find node_modules/sodium-native/prebuilds -mindepth 1 -maxdepth 1 \
+    ! -name "linux-$_node_arch" -exec rm -rf {} +
+  find node_modules/sodium-native/prebuilds -name '*.bare' -delete
+
+  # drawio is only served from www/components, the copy in node_modules is unused.
+  # WEB-INF is draw.io's Java servlet backend, which CryptPad doesn't use.
+  rm -rf node_modules/drawio www/components/drawio/src/main/webapp/WEB-INF
 }
 
 package() {
