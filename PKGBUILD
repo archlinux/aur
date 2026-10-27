@@ -5,7 +5,7 @@
 _pkgname=mfem
 pkgname=${_pkgname}-palace
 pkgver=4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods - With Palace EM Solver patches"
 arch=(x86_64)
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -42,7 +42,10 @@ source=(
   "0002-mfem_pr5353.diff::https://raw.githubusercontent.com/awslabs/palace/b22f654ab36fe01f1f3176349c60626efed1a6a2/extern/patch/mfem/mfem_pr5353.diff"
   "0003-mfem_pr5494.diff::https://github.com/mfem/mfem/compare/10b0b596dbc26dca384b9f25f23026b1a6403592...399d72c2b7607e25d196dc19fd70b8840eaf1cc8.diff"
   "0004-mfem_pr5502.diff::https://github.com/mfem/mfem/commit/3091ba40b238c4008b67216314bb26da6738b833.diff"
-  "0005-enable-MPI_C-interface.patch"
+  "0005-mfem_pr5531.diff::https://patch-diff.githubusercontent.com/raw/mfem/mfem/pull/5531.diff"
+  "0006-mfem_pr5639.diff::https://patch-diff.githubusercontent.com/raw/mfem/mfem/pull/5639.diff"
+  "0007-mfem_pr5698.diff::https://patch-diff.githubusercontent.com/raw/mfem/mfem/pull/5698.diff"
+  "0010-enable-MPI_C-interface.patch"
 )
 
 b2sums=('9b37057a242f5867e1961c998252995f977b539e1487f8f6d8148b8be9a2200c4f66802e676422eb6eab3ec0869acc99586a43b50199e91f17daef521a848fa6'
@@ -50,31 +53,57 @@ b2sums=('9b37057a242f5867e1961c998252995f977b539e1487f8f6d8148b8be9a2200c4f66802
         '7e6267b157ea0c0847428d0c381d2212caaa8c66253e988877c4caa1acb31805e4dfdb59938e8953b17b4de09a3ce639de95875d909c3e8f24f0e09521d438a2'
         'c9023398170e276b34ab27733aec85a12bd6636a832e6164699623b677fbf18e6d7b7f6eeea7e3802795bc525026ac360540083100a1ac73df9ec96ab7a173d7'
         '585d8b4647b4ca5da63e87df7ef65348f52ba253e97562ea488074eebb391cef93861011765430b2a739c5878b97aebfbea18abf37d67b22207080a0a099d5c8'
+        '5abd6a284095196b9c0f8b089929606d4b29424a41db33219dbf1368a3b0b0f3ffbe41d1b3cec3a83e7e73fe6d1f95e75cb980c7d265ca997c68d14860d693df'
+        '85b58e90df2972f9b6dcb1d9c5da6c3a5ff20bb6d3c76bfcc191ec0bfd811ef522386ab97c8ac7055bc342c4796228755a24a2a43d38579dee4e45129f74edbd'
+        '56793cc9dfb3f30f9924086428e25c60022280fcd1bfe04aad21135430b762f004cb0903acdd15360054356d9767f75f489224f9155b37230de770ff01440b3c'
         '4618e8739b4c0e8fedb77858ecf13ec3961d08e274c11a3df1a04a528104af37f5e6e95ce6f342cdafe7eeadf319cdb3b3a166eab28eb1647796d9693e55b394')
 
 prepare() {
   cd "${_pkgname}"
+  local patches=()
 
   # Patch 1: "Consistent edge ordering for MarkTetMeshForRefinement for tetrahedal meshes"
   # https://github.com/mfem/mfem/pull/3847
-  patch -Np1 < ../"0001-mfem_pr3847.diff"
+  patches+=("0001-mfem_pr3847.diff")
 
   # Patch 2: "Distribute DeltaCoefficient over containing elements"
   # https://github.com/mfem/mfem/pull/5353
-  patch -Np1 < ../"0002-mfem_pr5353.diff"
+  patches+=("0002-mfem_pr5353.diff")
 
   # Patch 3: "Fix parallel NC hanging-vertex ownership and tetrahedral edge-face communication"
   # https://github.com/mfem/mfem/pull/5494
-  patch -Np1 < ../"0003-mfem_pr5494.diff"
+  patches+=("0003-mfem_pr5494.diff")
 
   # Patch 4: "NCMesh: fix 8-bit reference-counter overflow at high-valence vertices"
   # https://github.com/mfem/mfem/pull/5502
-  patch -Np1 < ../"0004-mfem_pr5502.diff"
+  patches+=("0004-mfem_pr5502.diff")
+
+  # Patch 5: "Fix the essential DOFs on interior boundaries of 2D NC meshes"
+  # https://github.com/mfem/mfem/pull/5531
+  patches+=("0005-mfem_pr5531.diff")
+
+  # Patch 6: "Order the shared entities of ParSubMesh groups consistently across ranks"
+  # https://github.com/mfem/mfem/pull/5639
+  patches+=("0006-mfem_pr5639.diff")
+
+  # Patch 7: "Add NCMesh::GetRootTransforms and NCMesh::GetElementCornerNodes"
+  # https://github.com/mfem/mfem/pull/5698
+  patches+=("0007-mfem_pr5698.diff")
 
   # ArchLinux specific patches!
   # For Strumpack support, we need the MPI-C interface as well as Fortran
-  patch -Np1 < ../"0005-enable-MPI_C-interface.patch"
+  patches+=("0010-enable-MPI_C-interface.patch")
 
+  # Actually do the patching
+  for p in "${patches[@]}"; do
+    if ! [ -e "../${p}" ]; then
+      echo "Patch '${p}' not found."
+      exit 1
+    else
+      echo "Patching... '${p}'"
+      patch -Np1 < "../${p}"
+    fi
+  done
 }
 
 build() {
