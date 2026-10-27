@@ -1,6 +1,6 @@
 pkgbase = cpeditor-bin
 	pkgdesc = The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit.
-	pkgver = 7.0.3
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://cpeditor.org/
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = cpeditor-bin
 	optdepends = java-runtime: execute Java
 	optdepends = python: execute Python
 	optdepends = wakatime: track coding stats
-	provides = cpeditor=7.0.3
+	provides = cpeditor=7.2.1
 	conflicts = cpeditor
 	options = !strip
-	source = cpeditor-7.0.3.deb::https://github.com/cpeditor/cpeditor/releases/download/7.0.3/cpeditor-7.0.3-linux-amd64.deb
+	source = cpeditor-7.2.1.deb::https://github.com/cpeditor/cpeditor/releases/download/7.2.1/cpeditor-7.2.1-linux-amd64.deb
 	source = cpeditor.sh
-	sha256sums = be5880f41e306d107bb4d78a3968f250610936c03ae3c947b01fee466ecf3012
+	sha256sums = c72ca965b3e9797334beb9024271395efb06f794e8ad9019e555e753aae1a00e
 	sha256sums = 187af44879585688a89874e74896e13840b3bb8defc9190a16ff6962adae01eb
 
 pkgname = cpeditor-bin
