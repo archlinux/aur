@@ -1,0 +1,16 @@
+pkgbase = m-flasher
+	pkgdesc = Back up, restore and reinstall the firmware of an M-VAVE FM-1 or SMK-37
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/jvitkauskas/m-flasher
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = systemd-libs
+	source = https://github.com/jvitkauskas/m-flasher/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 2e258ea9cb0dce1a5b323d46217c0ae791b13b24f172412d4d06d616b0a86b06
+
+pkgname = m-flasher
