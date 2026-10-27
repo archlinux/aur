@@ -24,7 +24,7 @@ package() {
   bsdtar -xf data.tar.gz -C "$pkgdir/"
 
   install -Dm644 "${srcdir}/devcrate.png" \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/devcrate.png"
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/devcrate.png"
 
   install -Dm644 "${srcdir}/devcrate.desktop" \
     "${pkgdir}/usr/share/applications/devcrate.desktop"
