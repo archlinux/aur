@@ -8,6 +8,7 @@ pkgbase = ocsinventory-agent
 	arch = aarch64
 	license = GPL
 	depends = perl
+	depends = glibc
 	depends = which
 	depends = dmidecode
 	depends = pciutils

@@ -12,7 +12,7 @@ pkgdesc="Hardware and software inventory tool (client)"
 arch=('x86_64' 'aarch64')
 url="http://www.ocsinventory-ng.org"
 license=('GPL')
-depends=('perl' 'which' 'dmidecode' 'pciutils'
+depends=('perl' 'glibc' 'which' 'dmidecode' 'pciutils'
      'perl-libwww' 'perl-lwp-protocol-https' 'perl-io-socket-ssl'
      'perl-net-ip' 'perl-xml-simple' 'perl-net-snmp')
 optdepends=('perl-proc-daemon: daemon mode (--daemon)'
