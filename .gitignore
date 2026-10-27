@@ -21,3 +21,11 @@ src/
 PowerShell/
 
 PowerShell-Native/
+PowerShellGetv2/
+oneget/
+NuGetProvider/
+PSResourceGet/
+Microsoft.PowerShell.Archive/
+PSReadLine/
+Pager/
+ThreadJob/

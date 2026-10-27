@@ -3,6 +3,7 @@ version = 1
 [[annotations]]
 path = [
     "PKGBUILD",
+    "powershell-modules.psm1",
     "README.md",
     "keys/**",
     ".SRCINFO",
@@ -24,7 +25,7 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "*.patch",
+    "psmodulepath-combined-paths.patch",
 ]
 SPDX-FileCopyrightText = "PowerShell contributors"
 SPDX-License-Identifier = "MIT"

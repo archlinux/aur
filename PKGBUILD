@@ -38,6 +38,20 @@ _dotnetsdkver="10.0"
 _rid="arch-x64"
 # PowerShell-Native has no tag for the version PowerShell uses (700.0.2), it was published from this commit
 _psnativecommit="f24d5494b373de20ec3e3d2fdc7c3fc98af1f9f1"
+# The modules PowerShell bundles (src/Modules/PSGalleryModules.csproj) are built from source as well.
+# Upstream didn't tag most of their releases, so these are the commits used:
+# - PowerShellGet 2.2.5: last commit (2.2.5.1) of the archived PowerShellGetv2 repository
+_psgetcommit="3b38eec8742d6b6f26cf0f010e0dd95691ed5ade"
+# - PackageManagement 1.4.8.1: release commit, later ones drop .NET Core support
+_onegetcommit="923260b2f2cbc5b66d90ef2e31f240b9d8579a74"
+# - Microsoft.PowerShell.Archive 1.2.6: release commit on the servicing branch
+_archivecommit="87428e309898a728fb0287eab31b5cd214ceb9ba"
+# - Microsoft.PowerShell.ThreadJob 2.2.0: release commit
+_threadjobcommit="21d19c867ef05d22fe70aa39e45ab0c479a930e0"
+# - Microsoft.PowerShell.Pager 1.0.0, a dependency of PSReadLine: last commit of the archived repository
+_pagercommit="965675f549dfa074eb02a47ca6d6e07d0ee7771f"
+_psresourcegetver="1.2.0"
+_psreadlinever="2.4.5"
 depends=(
   dotnet-runtime-"$_dotnetsdkver"
   libgcc
@@ -79,13 +93,40 @@ install=powershell.install
 
 source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/PowerShell-Native.git#commit=$_psnativecommit"
-  "psmodulepath-combined-paths.patch")
+  "git+https://github.com/PowerShell/PowerShellGetv2.git#commit=$_psgetcommit"
+  "git+https://github.com/OneGet/oneget.git#commit=$_onegetcommit"
+  "git+https://github.com/OneGet/NuGetProvider.git"
+  "git+https://github.com/PowerShell/PSResourceGet.git#tag=v$_psresourcegetver"
+  "git+https://github.com/PowerShell/Microsoft.PowerShell.Archive.git#commit=$_archivecommit"
+  "git+https://github.com/PowerShell/PSReadLine.git#tag=v$_psreadlinever"
+  "git+https://github.com/PowerShell/Pager.git#commit=$_pagercommit"
+  "git+https://github.com/PowerShell/ThreadJob.git#commit=$_threadjobcommit"
+  "psmodulepath-combined-paths.patch"
+  "powershell-modules.psm1")
 sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
   '673e931ea136511fa2c638035334a7ea1800aafb1d4100d94cf0adf1086888f765a3d92f9f294060c5f088eab4d4c12c2d70cc5dc5a4ec4f56b80f26d16cc644'
-  'c8bde32576737e61696f3722fc5c61195f82688898c1ea794ba08b40b5e1efdb095dd0d7b57048dd72a9e17c623142c7c46dae80638ca3b69a3e0953cc8c91ab')
+  '326b55c2eff49b21b427812c394afd000ef3e5b4da86dca087fb897e39e423be3b5c105e087f79da5dc39b0b268a9c0876f198ab67b845f31ee765caa4694aac'
+  'c9efa8a5c497dad6dfb773c17f01e004f65e842bac4612c5842563efe0d07fff5d64a1729c8436e4bcdb5f4cac24202168855fded3c31e1cff764303718883c3'
+  'SKIP'
+  '54d081330468a9629f5aa8166defef423cd923f5a53065a4657ab15c691946f0c04c398525a99bdc3652a4d1bbf0965f4575e814216f3ae16e83d08127eeaadb'
+  '6c3004608cc1d2089712e8400001a4557c0de8e1e7e755184cd3e683e6b2ba497f373c1f77cd3a52d2fcd2045ee089957095d54fb899e02bf7185cbe8ad17ccd'
+  '4b4ac87e70c04e4d85ac4b772024c3cf5aec574259654bc9f58f9d06cccacfd84d68415de87e5804f7beb33ae8679b47d58221a014c7b55e960eba93e70cfaae'
+  '177593575d59629bb9f8020a52205c9617170b3212033ab21787d8739ac3af3d283b706ee607f29d6473415cee9ed5a8d23a4d53e90d52360a72f796f9b1bda8'
+  '50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42'
+  '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
+  'c980d27b69778a0fc398ae6993cc44de42d1e85322ab0d63cd4e6611276f1ff7ae427013a7c63201a7320d56fda6eea0b8e53b2628572562ade832441e9667a1')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
   '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
-  '770bf06617ce9a1045f2c05e8458eac3fabd260fc0e8ff74e0ce8c2c2a84612d0633eaca03797029ce8ed2a0aab0e2d8e3744df913d77d3b4b72492448960ad8')
+  'ce0b02fbdcb1b179f2b04cc230ac2c720563f33f09cb6787e706056638ea7c105cd4c35b4d8dc240cb08191107fe5d0053b9060705b9e4fb1da44e50763e0032'
+  '79b0ef16583d5c36f30319c377f4f6f1bca8f05eadb2aac1df5544ca6db82c7bc978ad2c45e6aebf99813c059dd0e523b8093dbd47285cf0b4a85c0b6cf35f59'
+  'SKIP'
+  '48483be8ff69963d96ba4f15651943c3237f98edbf13fc899adcad725ed55e1cc01075fc27ece91a3c1cdc223f77995fe9769cc852db72637233854e2d3056ca'
+  '55a484f6d835a08384349ed04649ab41730aa0619129b1aacf21431021b238810051885eec49d503627b75ee3864202e0aa4caaa0a3588692d5a9c8dffa19f42'
+  'fd6b6f6044b8b9f2581a21f5cfb6c4e030ea895cbc8c0498925632f0d863cb272b9fc061134c14aece172d82a6f0a0f4f663ee4aa4169f6912b0c6e746af2eb4'
+  '83ae40c17c7c8f2f201049f81def4081262077f90e703cc2e7dcbb52f777b4476053a87861d572f9b24da0977496f15e148b1130c14951854f5b9fb60d2c9962'
+  'c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170'
+  'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
+  '098c9546a4f6216794da81067b2e60e44c1a6f45fc249aee1764af61d867ae55c5a5931f2bb973a15d49920c3b3526a64eeecc15b9df2ceadc6b9c7e895593d6')
 
 prepare() {
   # libpsl-native is built from source instead of using the prebuilt Microsoft.PowerShell.Native package
@@ -97,6 +138,23 @@ prepare() {
   # Use the system googletest instead of the submodule
   sed -i -e 's/^add_subdirectory(googletest)$/find_package(GTest REQUIRED)/' \
     -e 's/psl-native gtest)/psl-native GTest::gtest)/' test/CMakeLists.txt
+
+  # The NuGet provider of PackageManagement is a submodule
+  cd "$srcdir"/oneget || exit
+  git submodule init
+  git config submodule.src/Microsoft.PackageManagement.NuGetProvider.url "$srcdir/NuGetProvider"
+  git -c protocol.file.allow=always submodule update
+
+  # The modules are built with nuget.org only, they don't need to match the .NET runtime
+  cat >"$srcdir/nuget-modules.config" <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+  </packageSources>
+</configuration>
+EOF
 
   cd "$srcdir"/PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
@@ -222,9 +280,6 @@ prepare() {
   ## Restore-PSPackage()
   dotnet restore "src/TypeCatalogGen" --runtime "$_rid" -p:SDKToUse=Microsoft.NET.Sdk
   dotnet restore "src/ResGen" --runtime "$_rid" -p:SDKToUse=Microsoft.NET.Sdk
-
-  # Restore the PowerShell modules for later
-  dotnet restore src/Modules
 }
 
 _copymodules() {
@@ -314,7 +369,22 @@ build() {
   done
 
   ## Restore-PSModuleToBuild()
-  _copymodules "$srcdir/PowerShell/src/Modules/PSGalleryModules.csproj" "$_publish_path/Modules"
+  # Instead of downloading the modules from the PowerShell Gallery, they're built from source
+  # with the PowerShell we just built, see powershell-modules.psm1
+  # shellcheck disable=SC2016
+  "$_publish_path"/pwsh -NoProfile -NonInteractive -Command '
+    $SourceDir = "'"$srcdir"'"
+    $ModulesDir = "'"$_publish_path/Modules"'"
+    Import-Module (Join-Path $SourceDir powershell-modules.psm1)
+    $nugetConfig = Join-Path $SourceDir nuget-modules.config
+    Build-PowerShellGetModule -SourcePath (Join-Path $SourceDir PowerShellGetv2) -OutputPath $ModulesDir
+    Build-PackageManagementModule -SourcePath (Join-Path $SourceDir oneget) -OutputPath $ModulesDir -NuGetConfig $nugetConfig
+    Build-PSResourceGetModule -SourcePath (Join-Path $SourceDir PSResourceGet) -OutputPath $ModulesDir -NuGetConfig $nugetConfig
+    Build-ArchiveModule -SourcePath (Join-Path $SourceDir Microsoft.PowerShell.Archive) -OutputPath $ModulesDir
+    Build-PSReadLineModule -SourcePath (Join-Path $SourceDir PSReadLine) -PagerSourcePath (Join-Path $SourceDir Pager) `
+      -OutputPath $ModulesDir -NuGetConfig $nugetConfig
+    Build-ThreadJobModule -SourcePath (Join-Path $SourceDir ThreadJob) -OutputPath $ModulesDir -NuGetConfig $nugetConfig
+  '
 
   ## Build manpage
   # We have to build this, since the pregenerated file (that is also included in their official RPMs)
