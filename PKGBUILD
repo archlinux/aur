@@ -5,7 +5,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname=php-box
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="An application for building and managing Phars"
 arch=("any")
@@ -14,7 +14,7 @@ license=("MIT")
 depends=('php' 'php-sodium')
 makedepends=('git' 'composer')
 source=("git+https://github.com/box-project/box.git#tag=${pkgver}")
-sha256sums=('3a496bc1434b455c6ee394799ef767dea70225d70c7cd82e0b35f7d70a511807')
+sha256sums=('d4b6c9cb87298a44468020796f02c6dd5a282a6ad0a8a27aeb13b90b52e7cc8c')
 
 prepare() {
   cd box
