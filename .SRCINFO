@@ -1,6 +1,6 @@
 pkgbase = python-puikit
 	pkgdesc = Capability-based Python UI framework with TUI and GUI backends
-	pkgver = 1.15.2
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/crftwr/puikit
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-puikit
 	depends = python-pillow
 	depends = python-pygments
 	depends = python-numpy
-	source = puikit-1.15.2.tar.gz::https://github.com/crftwr/puikit/archive/refs/tags/v1.15.2.tar.gz
-	sha256sums = ffb0ab168db0da138a1d93007df14a02a18de9e665b88df1308e85d5019d300e
+	source = puikit-1.16.0.tar.gz::https://github.com/crftwr/puikit/archive/refs/tags/v1.16.0.tar.gz
+	sha256sums = 78d4159d01ecc05c20cd3bb712a10cbb2eb5b23d928ac45d40332fe44337b4cc
 
 pkgname = python-puikit
