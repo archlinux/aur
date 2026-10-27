@@ -102,6 +102,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/Pager.git#commit=$_pagercommit"
   "git+https://github.com/PowerShell/ThreadJob.git#commit=$_threadjobcommit"
   "psmodulepath-combined-paths.patch"
+  "cim-windows-only.patch"
   "oneget-user-temp-folder.patch"
   "powershell-modules.psm1")
 sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
@@ -115,6 +116,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '177593575d59629bb9f8020a52205c9617170b3212033ab21787d8739ac3af3d283b706ee607f29d6473415cee9ed5a8d23a4d53e90d52360a72f796f9b1bda8'
   '50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42'
   '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
+  '96ce607ab0c3d5a8d1670913d09ebc5575cad958fc427641b9d2c9e6982997c6659c6f20d9c0df1ebae57c77bc9efcf43fff39753a9821efad5b0dd35f190999'
   '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
   'c980d27b69778a0fc398ae6993cc44de42d1e85322ab0d63cd4e6611276f1ff7ae427013a7c63201a7320d56fda6eea0b8e53b2628572562ade832441e9667a1')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
@@ -128,6 +130,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '83ae40c17c7c8f2f201049f81def4081262077f90e703cc2e7dcbb52f777b4476053a87861d572f9b24da0977496f15e148b1130c14951854f5b9fb60d2c9962'
   'c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170'
   'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
+  '8384011144b56696fbbf47a2c751cfbdbcb1f0de858da784c98128838fe86a3fd0affca03fc62377d8e2b3af3ba413c1c8cdcde5c89d73bb20a706c5796aefe4'
   '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
   '098c9546a4f6216794da81067b2e60e44c1a6f45fc249aee1764af61d867ae55c5a5931f2bb973a15d49920c3b3526a64eeecc15b9df2ceadc6b9c7e895593d6')
 
@@ -171,6 +174,10 @@ EOF
   # contains multiple paths, e.g. when starting pwsh from pwsh
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/20706
   patch -Np1 -i "$srcdir/psmodulepath-combined-paths.patch"
+
+  # CIM (Microsoft.Management.Infrastructure) is closed source and only usable on Windows,
+  # so put it behind #if !UNIX like upstream does for WMI and ADSI and don't ship it
+  patch -Np1 -i "$srcdir/cim-windows-only.patch"
 
   # We first determine the exact SDK and runtime versions for later usage
   _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")

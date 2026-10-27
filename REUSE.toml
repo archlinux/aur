@@ -26,6 +26,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "psmodulepath-combined-paths.patch",
+    "cim-windows-only.patch",
 ]
 SPDX-FileCopyrightText = "PowerShell contributors"
 SPDX-License-Identifier = "MIT"
