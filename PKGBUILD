@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=rusthound-ce
-pkgver=2.5.28
+pkgver=2.5.29
 pkgrel=1
 pkgdesc="BloodHound CE collector written in Rust"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=(
   'git'
 )
 source=("git+$url#tag=v$pkgver")
-b2sums=('c62d448fd493236f0ef7631a6aacaf6632cafcacf52a8dd265b8f2b6396750223c61964166ec72c034d06d277e410ce2f1bfe6c04f9e47e88eeec6787855ed06')
+b2sums=('3dc393e185f08d913e840aa2cba0b0002956a97b18ca78313ccb51c63058d7cf6d03644517f420f4d29a3a161d9a3fee99b1c9d8f9f5f67b4874ed9f535f4100')
 options=('!lto')
 
 prepare() {
