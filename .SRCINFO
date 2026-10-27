@@ -1,20 +1,17 @@
 pkgbase = ruston-mail-git
 	pkgdesc = An unofficial, native, cross-platform Proton Mail desktop client written in Rust
-	pkgver = 0.1.0.r116.4a0b4f5
+	pkgver = 0.8.0.r640.7c466f5
 	pkgrel = 1
 	url = https://github.com/luiscuellar31/ruston-mail
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = clang
 	makedepends = lld
+	makedepends = oxipng
 	source = git+https://github.com/luiscuellar31/ruston-mail.git
-	source = ruston-mail.desktop
-	source = ruston-mail.svg
 	b2sums = SKIP
-	b2sums = 2a2d02f79e0db80db80930b0362d7a4c743653ee11181a427213745452cc6bfc34d53bff1c3024fb31f039c10ccf49ea38e3fd575be79133fe2c16b0f048ba7b
-	b2sums = bba7a0fd138b674695b9a60f4b4f6060fb52cea1435aa12f5c8f2ba57ba54745ea9f5fada4cac25404b7291688c988510747c713521add6a149d37d5134254a0
 
 pkgname = ruston-mail-git

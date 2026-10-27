@@ -3,17 +3,15 @@
 execname=ruston
 
 pkgname=ruston-mail-git
-pkgver=0.1.0.r116.4a0b4f5
+pkgver=0.8.0.r640.7c466f5
 pkgrel=1
 pkgdesc="An unofficial, native, cross-platform Proton Mail desktop client written in Rust"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/luiscuellar31/ruston-mail"
 license=('MIT')
-makedepends=('git' 'rust' 'cargo' 'clang' 'lld')
-source=("git+$url.git" "${pkgname%-*}.desktop" "${pkgname%-*}.svg")
-b2sums=('SKIP'
-        '2a2d02f79e0db80db80930b0362d7a4c743653ee11181a427213745452cc6bfc34d53bff1c3024fb31f039c10ccf49ea38e3fd575be79133fe2c16b0f048ba7b'
-        'bba7a0fd138b674695b9a60f4b4f6060fb52cea1435aa12f5c8f2ba57ba54745ea9f5fada4cac25404b7291688c988510747c713521add6a149d37d5134254a0')
+makedepends=('git' 'rust' 'cargo' 'clang' 'lld' 'oxipng')
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
@@ -33,6 +31,11 @@ pkgver() {
   printf "${_base_ver}.r${_commits}.${_hash}"
 }
 
+prepare() {
+    cd "${pkgname%-*}"
+    oxipng -o max -r -p -s -v -t $(nproc) -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 assets/icons/hicolor/256x256
+}
+
 build() {
     cd "${pkgname%-*}"
 
@@ -41,16 +44,16 @@ build() {
     export CXX=clang++
     export RUSTFLAGS="\
         -C opt-level=3 \
-        -C target-cpu=native \
-        -C embed-bitcode=yes \
+        -C target-cpu=x86-64-v4 \
+        -C embed-bitcode=no \
         -C codegen-units=1 \
+        -C lto=no \
         -C strip=symbols \
         -C relocation-model=pic \
         -C link-arg=-fuse-ld=lld \
         -C link-arg=-Wl,--icf=safe \
         -C link-arg=-Wl,--gc-sections \
         -C link-arg=-Wl,--as-needed \
-        -C link-arg=-Wl,-O3 \
         -C link-arg=-fno-plt \
     "
 
@@ -64,10 +67,10 @@ package() {
     install -Dm755 "target/release/$execname" "$pkgdir/usr/bin/$execname"
 
     # Install desktop file
-    install -Dm644 "$srcdir/${pkgname%-*}.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
+    install -Dm644 "packaging/linux/com.luiscuellar.ruston-mail.desktop" "$pkgdir/usr/share/applications/com.luiscuellar.ruston-mail.desktop"
 
     # Install icon
-    install -Dm644 "$srcdir/${pkgname%-*}.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname%-*}.svg"
+    install -Dm644 "assets/icons/hicolor/256x256/apps/com.luiscuellar.ruston-mail.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.luiscuellar.ruston-mail.png"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
