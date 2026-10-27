@@ -32,9 +32,9 @@ pkgbase = tux-burner
 	conflicts = penguin-burner
 	conflicts = penguin-burner-amd
 	replaces = penguin-burner-amd
-	source = tux-burner-933335ecf3dad4a54efdab6323a38ab73f63ca1b.tar.gz::https://github.com/eugenesflanagin-spec/tux-burner/archive/933335ecf3dad4a54efdab6323a38ab73f63ca1b.tar.gz
+	source = tux-burner-0.99.tar.gz::https://github.com/eugenesflanagin-spec/tux-burner/releases/download/v0.99/tux-burner-0.99.tar.gz
 	source = tux-burner.install
-	sha256sums = f04ff2931fd729410a6b28d0896963cc9d96eedc8c38bf6e81351640a5e1b342
+	sha256sums = 741fccbafb0814563bc90325b1238f98f60ffbb897075e72178419278e0f264f
 	sha256sums = 245090698f989b17681a9f3fcf6315c2b7818be7472b488a0b92e116fbd3654f
 
 pkgname = tux-burner

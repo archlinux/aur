@@ -6,7 +6,7 @@
 # Changes compared with upstream's packaging/arch/PKGBUILD (all marked here):
 #   * pkgname tux-burner, provides/conflicts penguin-burner and penguin-burner-amd,
 #     replaces penguin-burner-amd (the earlier local AMD port).
-#   * source is GitHub's archive of a pinned commit of the Tux Burner repo; the program lives in its work/ folder.
+#   * source is the Tux Burner source tarball (release asset, or `git archive` of work/).
 #   * no NVAPI latency shim and no mingw-w64-gcc makedepend (NVIDIA/Windows only).
 #   * AMD optdepends (OpenCL ICD, LACT, RADV); nothing providing libcuda is pulled in.
 #   * tux-burner.install migrates /etc/penguin-burner and /var/lib/penguin-burner.
@@ -14,7 +14,6 @@
 pkgname=tux-burner
 pkgver=0.99
 pkgrel=1
-_commit=933335ecf3dad4a54efdab6323a38ab73f63ca1b
 pkgdesc='GPU undervolting, overclocking, and per-game tuning (AMD and NVIDIA)'
 arch=('x86_64')
 url='https://github.com/eugenesflanagin-spec/tux-burner'
@@ -50,13 +49,13 @@ makedepends=(
   'python-wheel'
   'vulkan-headers'
 )
-source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'tux-burner.install')
-sha256sums=('f04ff2931fd729410a6b28d0896963cc9d96eedc8c38bf6e81351640a5e1b342'
+sha256sums=('741fccbafb0814563bc90325b1238f98f60ffbb897075e72178419278e0f264f'
             '245090698f989b17681a9f3fcf6315c2b7818be7472b488a0b92e116fbd3654f')
 
 build() {
-  cd "${pkgname}-${_commit}/work"
+  cd "${pkgname}-${pkgver}"
   # The virtual cargo dependency can be supplied by rustup, whose proxy is not a
   # compiler. Bootstrap as the makepkg user, without replacing a default toolchain.
   if command -v rustup >/dev/null 2>&1 &&
@@ -79,14 +78,14 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${_commit}/work"
+  cd "${pkgname}-${pkgver}"
   # Pure parsers and the engine's AMD apply path, tested against captured OD text;
   # no GPU needed.
   cargo test --release --locked --manifest-path burnerd/Cargo.toml -- amd
 }
 
 package() {
-  cd "${pkgname}-${_commit}/work"
+  cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm755 burnerd/target/release/tux-burnerd "${pkgdir}/usr/libexec/tux-burnerd"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
