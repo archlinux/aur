@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.22.8
+pkgver=3.22.9
 pkgrel=1
 pkgdesc="A program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
@@ -17,79 +17,7 @@ url="https://github.com/${_pkgname}/${_pkgname}"
 license=(MIT)
 # run './geninfo.sh' to auto generate 'depends' variable after run 'updpkgsums'
 depends=(
-    "python-aniso8601"
-    "python-annotated-doc"
-    "python-apscheduler"
-    "python-attrs"
-    "python-babelfish"
-    "python-beautifulsoup4"
-    "python-blinker"
-    "python-brotli"
-    "python-certifi"
-    "python-cffi"
-    "python-charset-normalizer"
-    "python-cheroot"
-    "python-cherrypy"
-    "python-click"
-    "python-cryptography"
-    "python-curl_cffi"
-    "python-dateutil"
-    "python-feedparser"
-    "python-feedparser-sgmllib"
-    "python-flask"
-    "python-flask-compress"
-    "python-flask-cors"
-    "python-flask-login"
-    "python-flask-restx"
-    "python-guessit"
-    "python-html5lib"
-    "python-idna"
-    "python-importlib_resources"
-    "python-itsdangerous"
-    "python-jaraco.collections"
-    "python-jaraco.context"
-    "python-jaraco.functools"
-    "python-jaraco.text"
-    "python-jinja"
-    "python-jsonschema"
-    "python-jsonschema-specifications"
-    "python-loguru"
-    "python-markdown-it-py"
-    "python-markupsafe"
-    "python-mdurl"
-    "python-more-itertools"
-    "python-packaging"
-    "python-pendulum"
-    "python-plumbum"
-    "python-portend"
-    "python-psutil"
-    "python-pycparser"
-    "python-pygments"
-    "python-pynzb"
-    "python-pyparsing"
-    "python-pyrss2gen"
-    "python-pyyaml"
-    "python-rebulk"
-    "python-referencing"
-    "python-requests"
-    "python-rich"
-    "python-rpds-py"
-    "python-rpyc"
-    "python-setuptools"
-    "python-shellingham"
-    "python-six"
-    "python-soupsieve"
-    "python-sqlalchemy"
-    "python-tempora"
-    "python-typer"
-    "python-typing_extensions"
-    "python-tzdata"
-    "python-tzlocal"
-    "python-urllib3"
-    "python-webencodings"
-    "python-werkzeug"
-    "python-zc.lockfile"
-    "python-zxcvbn"
+
 )
 makedepends=('python-build' 'python-hatchling' 'python-installer')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-socket' 'python-pytest-xdist' 'python-vcrpy')
@@ -118,7 +46,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('e02b9b1a517d824904ee941465a2dcaa7730d471471fe96ba89bce2528c65c4f'
+sha256sums=('c23eed03e8c9e09b7533bf5436249e9207f2b19c65453c561ebce583e53fb3b7'
             '8dc5035d934f9163509a7e2f085c45db11857cc7110ff4d096677d3a5622e833'
             'a79330c58603e606511164d9f033fc3b5758144b8df072aead87b70fe510d28d'
             'f9564d79e62b9e4d078e2695ebe062772c89b3f135b25abc6c73bdcd5124fdee'
