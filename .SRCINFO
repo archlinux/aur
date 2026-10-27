@@ -1,0 +1,26 @@
+pkgbase = clovercut-bin
+	pkgdesc = Desktop-first, open-source video editor with built-in stock libraries and local AI
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/tulcoturo/clovercut
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = mesa
+	depends = alsa-lib
+	provides = clovercut
+	conflicts = clovercut
+	options = !strip
+	options = !debug
+	source_x86_64 = Clovercut-0.1.8-x86_64.AppImage::https://github.com/tulcoturo/clovercut/releases/download/v0.1.8/Clovercut-0.1.8-x86_64.AppImage
+	sha256sums_x86_64 = bbd35f5f95919bef68794d9f928ba6d39c92f6b090ea356fa3d09460f15a4e98
+	source_aarch64 = Clovercut-0.1.8-aarch64.AppImage::https://github.com/tulcoturo/clovercut/releases/download/v0.1.8/Clovercut-0.1.8-aarch64.AppImage
+	sha256sums_aarch64 = 7cca6d1cd3c7f7dbee973d9ec40b1e9ea2ccb23a90b0dbc3ed370d84898578e7
+
+pkgname = clovercut-bin
