@@ -1,0 +1,4 @@
+[ergochat-dnsbl]
+source = "git"
+git = "https://github.com/ergochat/ergo-dnsbl.git"
+use_commit = true
