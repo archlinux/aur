@@ -1,6 +1,6 @@
 pkgbase = niri-screensaver
 	pkgdesc = TerminalTextEffects-based screensaver for the niri Wayland compositor
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/jfreed-dev/niri-screensaver
 	install = niri-screensaver.install
@@ -15,7 +15,7 @@ pkgbase = niri-screensaver
 	optdepends = wlrctl: cursor parking under niri
 	optdepends = ydotool: cursor-parking fallback if wlrctl is absent
 	optdepends = figlet: large ASCII rendering for clock and overlays
-	source = niri-screensaver-0.8.0.tar.gz::https://github.com/jfreed-dev/niri-screensaver/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 33bcd5bba32fe51b527a5b221983bf15eeea6552804aa07ebb5b939e1e1b0826
+	source = niri-screensaver-0.8.1.tar.gz::https://github.com/jfreed-dev/niri-screensaver/archive/refs/tags/v0.8.1.tar.gz
+	sha256sums = 39a1bc00b776a526f71efcd1b53f116792219398568a4a768c57ce40d324a35b
 
 pkgname = niri-screensaver
