@@ -8,7 +8,7 @@
 pkgname=redalert2-recomp-git
 _pkgname=redalert2-recomp
 pkgver=0.1.3.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Static recompilation of Red Alert 2 and Yuri's Revenge to native Linux (needs your own game copy)"
 arch=('x86_64')
 url="https://github.com/sp00nznet/redalert2-recomp"
@@ -145,6 +145,9 @@ EOF
   <path d="M32 10 L37.5 25.5 L54 25.5 L40.7 35 L45.5 51 L32 41.5 L18.5 51 L23.3 35 L10 25.5 L26.5 25.5 Z" fill="#d0342c"/>
 </svg>
 EOF
+    install -d "$pkgdir/usr/share/man/man1"
+    gzip -9 -n -c packaging/common/redalert2-recomp-setup.1 > "$pkgdir/usr/share/man/man1/redalert2-recomp-setup.1.gz"
+    gzip -9 -n -c packaging/common/redalert2-recomp-play.1 > "$pkgdir/usr/share/man/man1/redalert2-recomp-play.1.gz"
     install -d "$pkgdir/usr/share/licenses/$_pkgname"
     install -m644 LICENSE NOTICE.md "$pkgdir/usr/share/licenses/$_pkgname/"
 }
