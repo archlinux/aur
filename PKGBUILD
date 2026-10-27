@@ -1,7 +1,7 @@
 # Maintainer: Helix128 <https://github.com/Helix128>
 pkgname=lenovo-fanboost
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Fan control and boost daemon for Lenovo laptops (DKMS)'
 arch=('any')
 url='https://github.com/Helix128/lenovo-fanboost'
@@ -20,7 +20,7 @@ optdepends=(
 install=lenovo-fanboost.install
 backup=('etc/lenovo-fanboost.toml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3f949c25fa443e09a786c55c83055e884ba188bbae4bf6aca1d3ac4955e65be')
+sha256sums=('792f61e5aa28f95468e663b4848e8b7ab27ebb884aa89ec2d2b3a18d66239321')
 
 package() {
   cd "$pkgname-$pkgver"
