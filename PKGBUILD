@@ -24,6 +24,7 @@ build() {
     export CARGO_TARGET_DIR="$srcdir/target"
     # Link system sqlite3 for proc-macros to prevent undefined symbol errors in rustc
     export RUSTFLAGS="-C link-arg=-Wl,--no-as-needed -C link-arg=-lsqlite3"
+    export CARGO_HOST_RUSTFLAGS="-C link-arg=-Wl,--no-as-needed -C link-arg=-lsqlite3"
     cargo build --release --frozen
 }
 
