@@ -1,6 +1,6 @@
 pkgbase = ffdec
 	pkgdesc = Open Source Flash SWF decompiler and editor
-	pkgver = 26.3.0
+	pkgver = 26.4.0
 	pkgrel = 1
 	url = https://github.com/jindrapetrik/jpexs-decompiler
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ffdec
 	makedepends = ant
 	makedepends = java-environment>=8
 	depends = java-runtime>=8
-	source = ffdec-26.3.0.tar.gz::https://github.com/jindrapetrik/jpexs-decompiler/archive/refs/tags/version26.3.0.tar.gz
+	source = ffdec-26.4.0.tar.gz::https://github.com/jindrapetrik/jpexs-decompiler/archive/refs/tags/version26.4.0.tar.gz
 	source = ffdec-script-regex-fix.patch
 	source = ffdec.desktop
-	b2sums = f9a0b100a53efd087d708841a3f8e0fbe43dbbef2fea3419e8054a6cd685e20a96964dc9da91ac6b5189689304b02ea63d708f16d4b7d0e17bcd0302d5b65313
+	b2sums = 4c967afd3e85328f415302afe6625d74915f3ac4c2eff051019549cb08e26a1d12f8094ebf8021c885dd63d7f2be355458bfd9bd30bdca3d571796ed5b411f91
 	b2sums = 4df2de2b0e9550205e97950bc39b4358332daa441b056752a02346974c3e36888f5af71bb5d5f8fd7a3d59e5cc140509698d48fec023067a9d21068edcc95a70
 	b2sums = fb07f5e2e0dab924b5e819f02ef374b827093978c698fdfaa301e4b520d0a06bfc172d5e32576846a113ed6ecc9198ee8cb2a0d58f932a01c188a72a86ac3692
 
