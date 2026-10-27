@@ -1,12 +1,13 @@
 pkgbase = xdg-desktop-portal-umbriel-git
 	pkgdesc = xdg-desktop-portal backend for the Umbriel compositor
 	pkgver = 0.1.0.r0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/noctalia-dev/xdg-desktop-portal-umbriel
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
+	makedepends = libei>=1.3
 	makedepends = meson
 	makedepends = ninja
 	makedepends = nlohmann-json
