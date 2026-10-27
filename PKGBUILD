@@ -1,25 +1,23 @@
-
-# Maintainer: Filippo Ranza <filipporanza@gmail.com>
+# Contributor: Filippo Ranza <filipporanza@gmail.com>
+# Contributor: tee < teeaur at duck dot com >
 pkgname=bfi
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Brainfuck interpreter with interactive shell"
-arch=('i686' 'x86_64')
-url="git@github.com:FilippoRanza/bfi.git"
-makedepends=('git')
-license=('GPL')
+arch=(x86_64)
+url="https://github.com/FilippoRanza/bfi"
+makedepends=(git)
+license=(GPL-3.0-or-later)
 makedepends=('cmake')
-depends=('readline')
-source=('git+https://github.com/FilippoRanza/bfi.git')
-md5sums=('SKIP')
-
+depends=('glibc' 'readline')
+source=("git+$url")
+b2sums=('SKIP')
 
 build() {
 	cd "$pkgname"
-        cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
-
 
 package() {
 	cd "$pkgname"
