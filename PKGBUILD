@@ -6,7 +6,7 @@ pkgname=(
     'python-pyvideokit-cli'
     'python-pyvideokit-gui'
 )
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="FFmpeg-based video processing tools"
 arch=('any')
