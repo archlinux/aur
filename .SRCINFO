@@ -1,0 +1,17 @@
+pkgbase = gotrust-cli
+	pkgdesc = Headless front-end for Sangfor aTrust gateways with local SOCKS5 and HTTP proxies
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/YangtseSu/goTrust
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	makedepends = gcc
+	depends = glibc
+	conflicts = gotrust-cli-git
+	options = !debug
+	source = gotrust-cli-0.1.0.tar.gz::https://github.com/YangtseSu/goTrust/archive/v0.1.0.tar.gz
+	sha256sums = 18e740429f218139257e169ae2e8a11968b4002f3ea982c58ed5332463e65eb6
+
+pkgname = gotrust-cli
