@@ -1,7 +1,7 @@
 pkgbase = python-wassima-git
 	pkgdesc = Say goodbye to certifi. Embrace your system root CAs — retrieve them with ease and comfort (development version)
 	pkgver = 2.1.5.r0.g4052aa7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jawah/wassima
 	arch = any
 	license = MIT
