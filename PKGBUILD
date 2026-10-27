@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ccr-resume
 _pkgname=ccr
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 # AUR base "ccr" is the unrelated netCDF Community Codec Repository (ships no
 # /usr/bin/ccr), hence this pkgname; the binary keeps upstream's name.
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c4570eb9f976d2815c99669045eb75edfda8db4aa2c76cdbe4e36f6ab3ca67e1')
+sha256sums=('1e6cdd16c3d88d5a327c7b66906f5ac6358bc67d441262aaf70de2f64d3401c7')
 
 prepare() {
   cd "$_pkgname-$pkgver"
