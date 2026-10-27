@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rocketchat-desktop-git
 _pkgname=Rocket.Chat
-pkgver=4.18.0.alpha.7.r9.g158b7c6
-_electronversion=42
+pkgver=4.19.0.alpha.2.r0.g869159d
+_electronversion=43
 _nodeversion=24
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform."
@@ -20,7 +20,6 @@ makedepends=(
     'npm'
     'nvm'
     'git'
-    'curl'
     'yarn'
     'jq'
     'patch'
@@ -32,11 +31,13 @@ optdepends=(
 source=(
     "${pkgname%-git}.git::git+${_ghurl}"
     "${pkgname%-git}-rollup.patch"
-    "${pkgname%-git}.sh"
+    "${pkgname%-git}.js"
+	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
             '1c186ddc7dc31bf46c92c58e235f2d5b99ef309b0b81663e38778ef397bdd41a'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -131,7 +132,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -157,7 +158,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
