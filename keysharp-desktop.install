@@ -1,0 +1,17 @@
+post_install() {
+  echo "======== Keysharp-Desktop Installation Complete ========"
+  echo "To ensure proper integration with your desktop environment, run \`keysharp-desktop enable-extension\` as each user"
+  echo "========================================================"
+}
+
+pre_upgrade() {
+  # Run uninstall script
+  /usr/local/share/doc/keysharp-desktop/uninstall.sh
+}
+
+#post_upgrade() {}
+
+pre_remove() {
+  # Run uninstall script
+  /usr/local/share/doc/keysharp-desktop/uninstall.sh
+}

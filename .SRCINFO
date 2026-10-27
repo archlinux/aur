@@ -1,0 +1,24 @@
+pkgbase = keysharp-desktop-git
+	pkgdesc = Desktop interaction (windows, clipboard, etc) for KeySharp (Autohotkey Port) for linux, compatible with X11, KWin/Plasma Wayland, GNOME/Cinammon, and more.
+	pkgver = v1.0.3.r0.gb28cac1
+	pkgrel = 1
+	url = https://github.com/keysharp-org/keysharp-desktop
+	install = keysharp-desktop.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = polkit
+	depends = glib2
+	depends = libxcb
+	depends = libxkbcommon
+	depends = wayland
+	depends = wayland-protocols
+	provides = keysharp-desktop
+	conflicts = keysharp-desktop
+	source = keysharp-desktop::git+https://github.com/keysharp-org/keysharp-desktop
+	sha256sums = SKIP
+
+pkgname = keysharp-desktop-git
