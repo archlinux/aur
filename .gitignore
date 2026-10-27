@@ -18,5 +18,5 @@ src/
 
 # End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
 
-modsecurity.conf-recommended
-unicode.mapping
+modsecurity-*.conf-recommended
+unicode-*.mapping
