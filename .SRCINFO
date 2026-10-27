@@ -1,6 +1,6 @@
 pkgbase = serial-port-utility-bin
 	pkgdesc = Serial, TCP and UDP in one window — up to 16 ports at once, with a transparent bridge between any two of them
-	pkgver = 6.6.7
+	pkgver = 6.6.8
 	pkgrel = 1
 	url = https://github.com/alithon/serial-port-utility
 	install = serial-port-utility.install
@@ -22,8 +22,8 @@ pkgbase = serial-port-utility-bin
 	conflicts = SerialPortUtility
 	options = !debug
 	source = serial-port-utility-bin::git+https://github.com/alithon/serial-port-utility.git
-	source = https://github.com/alithon/serial-port-utility/releases/download/v6.6.7/serial-port-utility-v6.6.7-linux-x86_64.tar.gz
+	source = https://github.com/alithon/serial-port-utility/releases/download/v6.6.8/serial-port-utility-v6.6.8-linux-x86_64.tar.gz
 	sha256sums = SKIP
-	sha256sums = 1834516d4ce0c517612c4af77f806151be08e46017a7f16b91aff048d613f31a
+	sha256sums = c829601ac98010666e67a53eaca4cdb38d336c4b7625510f85b8a1cc2c1e7ba7
 
 pkgname = serial-port-utility-bin

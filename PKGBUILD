@@ -2,7 +2,7 @@
 
 pkgname=serial-port-utility-bin
 _name=${pkgname%-bin}
-pkgver=6.6.7
+pkgver=6.6.8
 pkgrel=1
 pkgdesc="Serial, TCP and UDP in one window — up to 16 ports at once, with a transparent bridge between any two of them"
 provides=(${_name} SerialPortUtility)
@@ -32,7 +32,7 @@ source=(
     "${pkgname}::git+${url}.git"
     "${url}/releases/download/v${pkgver}/${_name}-v${pkgver}-linux-$CARCH.tar.gz")
 sha256sums=('SKIP'
-            '1834516d4ce0c517612c4af77f806151be08e46017a7f16b91aff048d613f31a')
+            'c829601ac98010666e67a53eaca4cdb38d336c4b7625510f85b8a1cc2c1e7ba7')
 
 package() {
     install -vDm0755 SerialPortUtility -t "${pkgdir}/usr/bin/"
