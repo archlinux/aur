@@ -2,7 +2,7 @@
 pkgname=quadrahq-git
 _name=Quadra
 pkgver=0.37.4.r1.g1e561fd
-pkgrel=1
+pkgrel=2
 pkgdesc="Run the macOS Roblox client on Linux through Darling"
 arch=('x86_64')
 url="https://quadrahq.org"
@@ -30,6 +30,16 @@ pkgver() {
   # Normalize p1 and .p1 tags so patch builds sort after earlier git snapshots.
   git describe --tags --long --match 'v[0-9]*' --abbrev=7 |
     sed 's/^v//;s/^\([0-9][0-9.]*[0-9]\)\.\{0,1\}p\([0-9][0-9]*\)/\1.\2/;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_name"
+  # Prevenir cierre prematuro de RobloxCrashHandler antes del handshake de Crashpad
+  sed -i 's/time\.sleep(2)/time.sleep(15)/' launcher/quadra/core.py
+  sed -i 's/time\.monotonic() - self\.started_at > 3/time.monotonic() - self.started_at > 20/' launcher/quadra/core.py
+
+  # Activar watchdog thread kicks por defecto para evitar congelamientos en CiderDarling (QUADRA_KICK=1)
+  sed -i 's/"cider_thread_kicks": False/"cider_thread_kicks": True/' launcher/quadra/core.py
 }
 
 build() {
