@@ -2,7 +2,7 @@
 
 pkgname=resd-mini
 pkgver=3.1.3
-pkgrel=1
+pkgrel=3
 pkgdesc="This is the mini version of a high-value, high-performance and diverse resource downloader called res-downloader."
 arch=($CARCH)
 url="https://github.com/putyy/resd-mini"
@@ -18,6 +18,7 @@ makedepends=(
     pnpm
     git
     go
+    nodejs
 )
 optdepends=(
     'motrix: A full-featured download manager (release version)'
@@ -36,134 +37,41 @@ sha256sums=('b64fd88871ef9b61f7f6adab9a37063b57f367faebc8f314c060f7add364e562'
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/web"
-    sed -i '/"@vue\/devtools-kit"/d' package.json
-
-    cat > vite.config.ts << 'EOF'
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import { fileURLToPath, URL } from 'node:url';
-
-const isNode = typeof process !== 'undefined' && process.versions?.node;
-
-if (isNode && typeof window === 'undefined') {
-  const mockStorage = {
-    getItem: () => null,
-    setItem: () => {},
-    removeItem: () => {},
-    clear: () => {},
-    key: () => null,
-    length: 0
-  };
-  
-  (global as any).localStorage = mockStorage;
-  (global as any).sessionStorage = mockStorage;
-}
-
-export default defineConfig({
-  plugins: [vue({
-    template: {
-      compilerOptions: {
-        isCustomElement: (tag: string) => tag.startsWith('media-')
-      }
-    }
-  })],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  },
-  server: { port: 3000 },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vue: ['vue'],
-          vendor: ['vue-router', 'pinia']
-        }
-      }
-    }
-  }
-});
-EOF
-
-    cat > tsconfig.json << 'EOF'
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
-}
-EOF
-
-    cat > tsconfig.node.json << 'EOF'
-{
-  "compilerOptions": {
-    "composite": true,
-    "skipLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "types": ["node"]
-  },
-  "include": ["vite.config.ts"]
-}
-EOF
     rm -rf node_modules pnpm-lock.yaml
 }
 
 build() {
-    cd "${srcdir}/${pkgname}/"
+  cd "${srcdir}/${pkgname}/"
 
+  export npm_config_allow_remote=all
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GO111MODULE=on
+  export GOPROXY=https://goproxy.cn,direct
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    export GO111MODULE=on
-    export GOPROXY=https://goproxy.cn,direct
-
-    pushd web 
-    export CARGO_HOME="${srcdir}/.cargo"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-    } >>.npmrc
+  pushd web 
+  export CARGO_HOME="${srcdir}/.cargo"
+  cat > .npmrc <<EOF
+  link-workspace-packages=true
+  fetch-retry-maxtimeout=10000
+  cache-dir=${srcdir}/.pnpm_cache
+  store-dir=${srcdir}/.pnpm_store
+  shamefully-hoist=true
+  virtual-store-dir-max-length=80
+  dangerously-allow-all-builds=true
+EOF
 
 export VITE_DEVTOOLS=false
 export NODE_ENV=production
-    # NODE_ENV=development pnpm install --force
-    # NODE_ENV=production pnpm run build 
-    pnpm install --force
-    pnpm run build-only
-    popd
-    #     wails build
-    go build -o ${pkgname}
+  # pnpm install --force --config.dangerouslyAllowAllBuilds=true
+  pnpm install --force --allow-build esbuild --allow-build @parcel/watcher --allow-build vue-demi
+  pnpm run build-only
+  popd
+  #     wails build
+  go build -o ${pkgname}
 }
 
 package() {
