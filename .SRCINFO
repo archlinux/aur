@@ -1,0 +1,23 @@
+pkgbase = sccache-jetm
+	pkgdesc = Shared compilation cache - build with distributed-compile fixes
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/mozilla/sccache
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = patch
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	optdepends = memcached: Memcached support
+	optdepends = valkey: Redis support
+	provides = sccache=0.19.0
+	conflicts = sccache
+	options = !lto
+	source = sccache-0.19.0.tar.gz::https://github.com/mozilla/sccache/archive/refs/tags/v0.19.0.tar.gz
+	source = 0001-jetm-carry.patch
+	sha256sums = 2da079033cd19fd8e2a09f56f9a7d9d1a72d591ff3acdc47d95b920145cf2671
+	sha256sums = 1585533763ec311f6564bf4c247189135acd5e4507b1960053ffe21d8c5f7d94
+
+pkgname = sccache-jetm
