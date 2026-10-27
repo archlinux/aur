@@ -65,7 +65,6 @@ is_excused() {
         pkg/DEBIAN/*) return 0 ;;
         # The Debian variants of files Arch installs from a *-arch twin.
         pkg/usr/local/bin/hls-livecam-setup) return 0 ;;
-        pkg/usr/share/hls-livecam-server/hls-livecam-setup) return 0 ;;
         pkg/etc/systemd/system/broadcast-api.service) return 0 ;;
         # Web root is populated by hls-livecam-setup at configure time, from
         # usr/share, so that @HOSTNAME@ is substituted per node. Installing a
