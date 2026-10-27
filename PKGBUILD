@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=claude-code-transcripts
-pkgver=0.4
+pkgver=0.6
 pkgrel=1
 pkgdesc='Convert Claude Code session files to HTML transcripts'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('uv' 'python')
 optdepends=('github-cli: for publishing to GitHub Gists')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/simonw/claude-code-transcripts/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('48ead2a16e62b93fc399056523e0b8a7f5eb4d8bdbf676d90d8bf46711623da0745d776e5f8676f3a7991282a45de459d83b44505d8b379cb93fbd80bc212bee')
+b2sums=('95167c666e4d34837b7492fd2a0490d5d9d460fdbbac68a41dfb1873a5ada36da6818093cc6932092a4055383daff3c0497340fcd40f1c78746f1a713a7c3f78')
 
 build() {
   cd "$pkgname-$pkgver"
