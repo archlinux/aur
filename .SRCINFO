@@ -1,0 +1,14 @@
+pkgbase = silvervine-bin
+	pkgdesc = Cross-platform Widevine helper for Chromium based browsers
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/nicholasraimbault/silvervine
+	arch = x86_64
+	license = MIT
+	optdepends = helium-browser: Compatible browser
+	optdepends = chromium: Compatible browser
+	optdepends = thorium-browser: Compatible browser
+	source = silvervine-2.2.1.tar.xz::https://github.com/nicholasraimbault/silvervine/releases/download/v2.2.1/silvervine-x86_64-unknown-linux-musl.tar.xz
+	sha256sums = d9cfeda39a6b5ee34db0ffedef7b030db6fd910e3bc74b41c35dce061231ebd8
+
+pkgname = silvervine-bin

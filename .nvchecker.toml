@@ -1,0 +1,4 @@
+[silvervine-bin]
+source = "git"
+git = "https://github.com/nicholasraimbault/silvervine.git"
+prefix = "v"
