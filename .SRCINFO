@@ -1,6 +1,6 @@
 pkgbase = devin-cli-bin
 	pkgdesc = Command-line interface for Devin, Cognition's AI software engineer
-	pkgver = 3000.11.3
+	pkgver = 3000.11.228
 	pkgrel = 1
 	url = https://cli.devin.ai
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = devin-cli-bin
 	conflicts = devin-cli
 	options = !strip
 	options = !debug
-	source_x86_64 = https://static.devin.ai/cli/3000.11.3/devin-3000.11.3-x86_64-unknown-linux.tar.gz
-	sha256sums_x86_64 = 83b3b113c01bf2a3e9e100db08d77e6b086806a7754f091e20831bdfe215157e
-	source_aarch64 = https://static.devin.ai/cli/3000.11.3/devin-3000.11.3-aarch64-unknown-linux.tar.gz
-	sha256sums_aarch64 = 21a2d7a8dea67987067cde7eb3fe7193a48daa8f8c3d50d414c603c4a2b67f15
+	source_x86_64 = https://static.devin.ai/cli/3000.11.228/devin-3000.11.228-x86_64-unknown-linux.tar.gz
+	sha256sums_x86_64 = c00eb43d6e3f8c07f8d2ee435cddf62c7879319b73393a891c610da73c558509
+	source_aarch64 = https://static.devin.ai/cli/3000.11.228/devin-3000.11.228-aarch64-unknown-linux.tar.gz
+	sha256sums_aarch64 = d4df503f81e01ffdc37ef706ed1d3a0369d1b071f5a746de79e7895637beabf5
 
 pkgname = devin-cli-bin
