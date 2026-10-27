@@ -2,12 +2,11 @@
 # Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on extra/electron* by
 # Caleb Maclennan <caleb@alerque.com>
-
 _projectname=electron
 _major=46
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='0.0-alpha.1'
+_subver='0.0-alpha.2'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-}"
 pkgrel=1
@@ -51,11 +50,11 @@ source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
 )
-sha256sums=('cea9f99f6d0a9a8bab239ffd2192dca3adf4f769b3123a2f366983c82d572ac9')
-sha256sums_aarch64=('5c27117c7798f0299d6ad69c7ef375b3496fcddf44aa074f36f7d1a4754f1176'
-                    '3dc10d8a8f02c031fcd627e5a70410c8f77fead887eeaefa56c1c2583dc7c5d2')
-sha256sums_x86_64=('d02912935e89f6849aafce9aa63090d4688054f4d919891d493899d060893401'
-                   '2b7fd1b866667fd1562ea19afe3e358bd9c2b0f690d4f2369c3e14959e1f2272')
+sha256sums=('3721240f57668b7ed7970b7fc2dcb9a548acf4956a5b1406d0193af296b8ffad')
+sha256sums_aarch64=('eb61165190c461b9607006b03f8a9c072e674979102d0b8bc1d021ed3a84f9c0'
+                    '6581747e73d95f6a854627fc02000c123bc06962d8d40c3ec66e65fccc7b49fc')
+sha256sums_x86_64=('34181e42fe86a445f00d2bb7b61c80a698e8214fded78bd1096f71c7e939a9a4'
+                   'ff40bc9371bc72c0f3aac8aae4dc6c9ae7b04358f0f81e54b3d2fea9c1a806fc')
 prepare() {
     sed -i "s/@ELECTRON@/${_pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/${_pkgname}"
