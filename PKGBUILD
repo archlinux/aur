@@ -3,7 +3,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=2.0.3.r5.g77705f8
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
