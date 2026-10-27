@@ -1,0 +1,6 @@
+[python-scad123d]
+source = "pypi"
+pypi = "scad123d"
+release_url = "https://pypi.org/project/scad123d/__version__/"
+# 0.9.0 and later need build123d 0.13 (OCCT 8), which isn't packaged yet
+exclude_regex = '0\.(9|[1-9][0-9])\..*|[1-9].*'
