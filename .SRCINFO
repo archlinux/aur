@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ext-neologd
 	pkgdesc = Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)
-	pkgver = 3.33.6133.102.ga16dde4.xb1b79e9
+	pkgver = 3.35.6354.102.g58def27.xf4e3dc5
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -31,16 +31,16 @@ pkgbase = fcitx5-mozc-ext-neologd
 	conflicts = fcitx-mozc-ut-unified
 	conflicts = fcitx-mozc-ut-unified-full
 	conflicts = fcitx5-mozc
-	source = git+https://github.com/fcitx/mozc.git#commit=a16dde4
+	source = git+https://github.com/fcitx/mozc.git#commit=58def27
 	source = https://www.post.japanpost.jp/service/search/zipcode/download/office/zip/jigyosyo.zip
 	source = https://www.post.japanpost.jp/service/search/zipcode/download/kogaki/zip/ken_all.zip
-	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=8be0e31
-	source = git+https://github.com/google/googletest.git#commit=d72f9c8
+	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=94c818ea
+	source = git+https://github.com/google/googletest.git#commit=cd8e73f
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=38d3462
-	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=ca98c98
-	source = git+https://github.com/google/protobuf.git#commit=199a436
-	source = git+https://github.com/abseil/abseil-cpp.git#commit=5c01794
-	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=b1b79e9
+	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=93acc7b
+	source = git+https://github.com/google/protobuf.git#commit=8dd0a01
+	source = git+https://github.com/abseil/abseil-cpp.git#commit=76a21a9
+	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=f4e3dc5
 	source = git+https://github.com/neologd/mecab-ipadic-neologd.git#commit=abc61e3
 	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
 	sha512sums = SKIP

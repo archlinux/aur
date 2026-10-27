@@ -6,21 +6,21 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=a16dde4
+_mozc_commit=58def27
 
-_abseil_cpp_commit=5c01794
-_breakpad_commit=8be0e31
-_gtest_commit=d72f9c8
+_abseil_cpp_commit=76a21a9
+_breakpad_commit=94c818ea
+_gtest_commit=cd8e73f
 _japanese_usage_dictionary_commit=38d3462
-_jsoncpp_commit=ca98c98
-_protobuf_commit=199a436
-_dictext_commit=b1b79e9
+_jsoncpp_commit=93acc7b
+_protobuf_commit=8dd0a01
+_dictext_commit=f4e3dc5
 _neologd_commit=abc61e3
 
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
-pkgver=3.33.6133.102.ga16dde4.xb1b79e9
+pkgver=3.35.6354.102.g58def27.xf4e3dc5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
