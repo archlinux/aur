@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=NetExperts Mail
+Exec=netexperts-mail %U
+Icon=netexperts-mail
+Terminal=false
+Categories=Network;Email;
+StartupWMClass=netexperts-mail
