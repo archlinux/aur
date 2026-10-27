@@ -1,0 +1,12 @@
+pkgbase = profile-sync-daemon-brave-origin
+	pkgdesc = Brave origin browser support for profile-sync-daemon
+	pkgver = 2026.10.27
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = profile-sync-daemon
+	optdepends = brave-origin-bin: the target browser
+	source = brave-origin
+	md5sums = dfc6f5ae61cc9e31b956ee104ee6aa38
+
+pkgname = profile-sync-daemon-brave-origin
