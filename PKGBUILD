@@ -6,7 +6,7 @@ pkgdesc="Linux desktop application launcher and diagnostic CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-launch"
 license=('BSD-3-Clause')
-makedepends=('go>=1.26.4')
+makedepends=('go>=1.26.10')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-launch/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('fc02c4ac56b3f32b0d91e2552e3ed7b9db88276aadc21ff1a03a3ca7073599dc')
