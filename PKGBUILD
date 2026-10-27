@@ -1,9 +1,9 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 # De CI (scripts/ci/publish-aur.sh) zet pkgver, _tag en sha256sums.
 pkgname=legacycycles-bin
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
-_tag=v0.0.33
+_tag=v0.0.34
 pkgdesc='TRON Legacy-style light cycle game (prebuilt binary; bike model compiled in)'
 arch=('x86_64')
 url='https://git.timfalken.com/timfa/legacy-cycles'
@@ -22,7 +22,7 @@ options=('!strip' '!debug')
 _local=('legacy-cycles.desktop' 'legacy-cycles.png')
 source=("legacy-cycles-${_tag}-linux-x86_64.tar.gz::${url}/-/releases/${_tag}/assets/legacy-cycles-${_tag}-linux-x86_64.tar.gz"
         "${_local[@]}")
-sha256sums=('4bf80c28f3c55d741d309585f196983ccb38298fa8c3e08bea43e4b2d889692b' 'a2819a75c6992e052b36bf6b58fb400df51e6a3245ad09bba4982d71310d8554' '596339b8ef4f3c68221d361659eba3b427d19b270d19b5d227595140557034cb')
+sha256sums=('b64bf96a128c529d1602745e5b5dad8a2f59637415bca0f32e6287d565e9da32' 'a2819a75c6992e052b36bf6b58fb400df51e6a3245ad09bba4982d71310d8554' '596339b8ef4f3c68221d361659eba3b427d19b270d19b5d227595140557034cb')
 
 package() {
   cd "$srcdir/legacy-cycles-${_tag}-linux-x86_64"
