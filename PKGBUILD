@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOquery
-_pkgver=2.80.0
+_pkgver=2.80.1
 pkgname=r-${_pkgname,,}
-pkgver=2.80.0
+pkgver=2.80.1
 pkgrel=1
 pkgdesc='Get data from NCBI Gene Expression Omnibus (GEO)'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2729835ed94afa01e56a94381b999d0757aa2458be2443e1ca009e8b4d4ecbea')
+sha256sums=('0b7d063cdd9cf684e37cf2dd2c77a3b493336239efae4ef77cbe453693e9f13a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
