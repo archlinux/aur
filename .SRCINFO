@@ -1,0 +1,27 @@
+pkgbase = grimoire-tui-bin
+	pkgdesc = A terminal writing desk for novels
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/kelsierbot/GrimoireTUI
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = speech-dispatcher: For the voice feature
+	optdepends = espeak-ng: Another option for the voice feature
+	provides = grimoire
+	conflicts = grimoire-tui-git
+	conflicts = grimoire-tui
+	options = !lto
+	options = !debug
+	source = 128x128-0.7.5.png::https://raw.githubusercontent.com/kelsierbot/GrimoireTUI/refs/tags/v0.7.5/apps/mobile/src-tauri/icons/128x128.png
+	source = 128x128@2x-0.7.5.png::https://raw.githubusercontent.com/kelsierbot/GrimoireTUI/refs/tags/v0.7.5/apps/mobile/src-tauri/icons/128x128@2x.png
+	source = grimoire.desktop
+	sha256sums = 822bbe4af06f1a9a478c315331e0a6460b2524315ae476c64e6a76379982cc3b
+	sha256sums = 90b8a1d12316321e7aed2e3ee06e799a17601f86fa61f38cd67c49a11b5504c1
+	sha256sums = 9063f4253aaa32cac86665cee124f5388ce0c9efc8df7077a40566638b4a5aad
+	source_x86_64 = grimoire-tui-bin-0.7.5.tar.xz::https://github.com/kelsierbot/GrimoireTUI/releases/download/v0.7.5/grimoire-tui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 95f7bcf9abbf097539d9db6dbf2b333d2f7fe6caaec3389af45130581b750c35
+	source_aarch64 = grimoire-tui-bin-0.7.5.tar.xz::https://github.com/kelsierbot/GrimoireTUI/releases/download/v0.7.5/grimoire-tui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = a401b0b01bb83e9908a474280a2ef0683435405537a901be8e503e22ccbcc6eb
+
+pkgname = grimoire-tui-bin
