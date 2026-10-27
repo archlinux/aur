@@ -1,8 +1,8 @@
 # Maintainer: a821 at mail de
 
 pkgname=python-pynndescent
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Simple fast approximate nearest neighbor search"
 arch=('any')
 url="https://github.com/lmcinnes/pynndescent"
@@ -12,8 +12,8 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 checkdepends=('python-pytest')
 source=("https://pypi.io/packages/source/p/pynndescent/pynndescent-${pkgver}.tar.gz"
         "fix-tests.patch")
-sha256sums=('7ffde0fb5b400741e055a9f7d377e3702e02250616834231f6c209e39aac24f5'
-            'b98f2852179daecb9b2e67bf88d9b355b3ca003a9fc75769e9264bd0bcabbb9a')
+sha256sums=('54f097a003bfdb917225e1bcf55c4027e283a37a2b5e3cae4b4aaf21197f6d1c'
+            '728d7f537c30df4ee7171d8be1e6dc96c4365f391470baab786429cbf638daa6')
 
 prepare() {
   cd "pynndescent-$pkgver"
