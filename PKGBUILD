@@ -26,7 +26,7 @@
 #######################################################################
 
 pkgname=powershell
-pkgver=7.6.8
+pkgver=7.6.9
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
@@ -71,8 +71,8 @@ checkdepends=(
 install=powershell.install
 
 source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver")
-sha512sums=('e4dd34cc55412a90210f7bacb4521f501ed3280eead8e14a7de03b4cdeb544ee954240c988c01aa7364e270668e5c0258bdccceac360fa132074ebfa429401e8')
-b2sums=('899efbe944442765b9878895e95cdf9e6a28c33019c0c44ea65fe14ff72a319e1efece3d50fb41f51ce6ed6767a0b3943aaf073cdf0461583f10139e5ad4b987')
+sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502')
+b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c')
 
 prepare() {
   cd PowerShell
@@ -297,7 +297,7 @@ check() {
   # TEMPORARY: Test-Json is broken on PowerShell 7.6.7+
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28218
   # A fix seems to queued for the next release.
-  rm Modules/Microsoft.PowerShell.Utility/Test-Json.ps1
+  rm Modules/Microsoft.PowerShell.Utility/Test-Json.Tests.ps1
 
   # Test contains a logic error
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27503
