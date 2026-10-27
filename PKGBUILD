@@ -1,7 +1,7 @@
 # Maintainer: Julian Houba <info at craftingdragon dot ch>
 _pkgsrc=caqtdm
 pkgname='caqtdm-git'
-pkgver=4.6.1.r6014.g3aa30cf
+pkgver=4.9.0.r6359.g4e9f122
 pkgrel=1
 pkgdesc='caQtDM is a popular Epics framework for developing panels'
 arch=('x86_64')
@@ -129,6 +129,10 @@ EOF
     ln -sf /opt/caqtdm/lib/qt6/adl2ui          "$pkgdir/usr/bin/adl2ui"
     ln -sf /opt/caqtdm/lib/qt6/edl2ui          "$pkgdir/usr/bin/edl2ui"
     ln -sf /opt/caqtdm/lib/qt6/caqtdm_designer "$pkgdir/usr/bin/caqtdm_designer"
+
+    # Expose control-system plugins at the path searched by caQtDM.
+    ln -s /opt/caqtdm/lib/qt6/controlsystems \
+        "$pkgdir/usr/lib/qt6/plugins/controlsystems"
 
     # Symlink Qt Designer plugins
     local _designerdir="$pkgdir/usr/lib/qt6/plugins/designer"
