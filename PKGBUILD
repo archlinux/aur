@@ -1,5 +1,5 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# shellcheck disable=SC2034,SC2154,SC2164
+# shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
 pkgname="powershell-editor-services"
@@ -21,7 +21,7 @@ sha512sums=('c9408c3462334a6fd6f78ae793b8483dd550ad3918cac969bf78a6e1d753820ece6
 b2sums=('94bbeb6af2cef3feed161759ff732370ef34929235220c5b827263493dfe405de1afe56032738367aeb0160defa8fa3012d77d7fd676d14576b2699f38e2b5fd')
 
 prepare() {
-  cd "$srcdir"/PowerShellEditorServices
+  cd "$srcdir"/PowerShellEditorServices || exit
   export NUGET_PACKAGES="$PWD/nuget"
 
   mkdir -p "$srcdir"/build-modules
@@ -101,7 +101,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/PowerShellEditorServices
+  cd "$srcdir"/PowerShellEditorServices || exit
   export NUGET_PACKAGES="$PWD/nuget"
 
   # Set the environment variables such that it will produce a release rather than a CI build
@@ -119,7 +119,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir"/PowerShellEditorServices
+  cd "$srcdir"/PowerShellEditorServices || exit
   export NUGET_PACKAGES="$PWD/nuget"
 
   # One test breaks due to the description of Expand-Archive having changed in current PowerShell
