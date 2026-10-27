@@ -5,7 +5,7 @@ _pkgname=treehouse
 pkgname=${_pkgname}
 pkgdesc="Manage worktrees without managing worktrees"
 
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,7 +23,7 @@ depends=('git')
 provides=("${_pkgname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_pkgvername}.tar.gz")
-sha256sums=('b08f60b206080ac621cce40bcabccb0dc1e63e818b8a5a67e4fef9e3f59fd699')
+sha256sums=('471acf369b3aaf01c718c82617cbab603ac1f23e8c2f214570ebabea52d36428')
 
 
 prepare() {
