@@ -7,7 +7,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.20.2
+pkgver=12.21.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -40,8 +40,8 @@ source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.xz"::"$url/releases/downloa
 
 sha256sums=('8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
             '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8')
-sha256sums_x86_64=('059a85f0e40c9f3649ae61fe716ecbdde85f06971a600aeec5c3e8f3a0af6004')
-sha256sums_aarch64=('3521183a928c7e2a43577e1cccb9fc70c71c90ed7538221e1f4435e051d00d22')
+sha256sums_x86_64=('e3ff309b319ec50556c1d9cd4638fc443524160ac95c36febad4a359d3ffbcd4')
+sha256sums_aarch64=('3caa49bff3f1d3dc3ad724d6c69c0ee7b6060de5b5b26904a8e02b41c0d9df3b')
 
 package() {
   depends=(
