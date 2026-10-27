@@ -1,6 +1,6 @@
 pkgbase = onair
 	pkgdesc = SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/adswill/OnAir
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = onair
 	optdepends = soapysdrplay: SDRplay support through SoapySDR
 	optdepends = onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)
 	conflicts = onair-bin
-	source = onair-3.1.0.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = 68127d58cef381b260ebf1a1146ddc55caaa3cdce85cb31bc273f0b058fcbee1
+	source = onair-3.2.0.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v3.2.0.tar.gz
+	sha256sums = ebe08d7213127be7dd666fee62bcaa6d1f6f389ca8316953d67e9f63731fedef
 
 pkgname = onair
