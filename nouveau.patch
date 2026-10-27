@@ -1,6 +1,6 @@
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/dispnv50/disp.c /usr/src/nouveau-dkms-2.2.1/dispnv50/disp.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/dispnv50/disp.c nouveau-source/dispnv50/disp.c
 --- orig/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/dispnv50/disp.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/dispnv50/disp.c	2026-10-27 15:57:29.195027520 +0200
 @@ -228,6 +228,10 @@
  static int nv50_dmac_vram_pushbuf = -1;
  module_param_named(kms_vram_pushbuf, nv50_dmac_vram_pushbuf, int, 0400);
@@ -31,9 +31,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  
  	nv50_audio_component_init(drm);
  
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_backlight.c /usr/src/nouveau-dkms-2.2.1/nouveau_backlight.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_backlight.c nouveau-source/nouveau_backlight.c
 --- orig/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nouveau_backlight.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nouveau_backlight.c	2026-10-27 15:57:29.196741479 +0200
 @@ -344,10 +344,7 @@
  		goto fail_alloc;
  	}
@@ -46,9 +46,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_bo.c /usr/src/nouveau-dkms-2.2.1/nouveau_bo.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_bo.c nouveau-source/nouveau_bo.c
 --- orig/nouveau_bo.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nouveau_bo.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nouveau_bo.c	2026-10-27 15:57:29.197164584 +0200
 @@ -202,6 +202,8 @@
  	} else {
  		*size = roundup_64(*size, (1 << nvbo->page));
@@ -58,9 +58,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	}
  
  	*size = roundup_64(*size, PAGE_SIZE);
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_debugfs.c /usr/src/nouveau-dkms-2.2.1/nouveau_debugfs.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_debugfs.c nouveau-source/nouveau_debugfs.c
 --- orig/nouveau_debugfs.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nouveau_debugfs.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nouveau_debugfs.c	2026-10-27 15:57:29.215686879 +0200
 @@ -29,6 +29,8 @@
   */
  
@@ -94,9 +94,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	return 0;
  }
  
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_display.c /usr/src/nouveau-dkms-2.2.1/nouveau_display.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_display.c nouveau-source/nouveau_display.c
 --- orig/nouveau_display.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nouveau_display.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nouveau_display.c	2026-10-27 15:57:29.216575562 +0200
 @@ -25,6 +25,7 @@
   */
  
@@ -129,9 +129,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  }
  
  int
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_gem.c /usr/src/nouveau-dkms-2.2.1/nouveau_gem.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nouveau_gem.c nouveau-source/nouveau_gem.c
 --- orig/nouveau_gem.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nouveau_gem.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nouveau_gem.c	2026-10-27 15:57:29.217742454 +0200
 @@ -349,6 +349,10 @@
  	 */
  	nouveau_cli_disable_uvmm_noinit(cli);
@@ -143,9 +143,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	ret = nouveau_gem_new(cli, req->info.size, req->align,
  			      req->info.domain, req->info.tile_mode,
  			      req->info.tile_flags, &nvbo);
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/clk/base.c /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/clk/base.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
 --- orig/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/clk/base.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/clk/base.c	2026-10-27 15:57:29.219098179 +0200
 @@ -29,6 +29,7 @@
  #include <subdev/bios/perf.h>
  #include <subdev/bios/vpstate.h>
@@ -318,9 +318,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	return 0;
  }
  
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/clk/gf100.c /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/clk/gf100.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/clk/gf100.c nouveau-source/nvkm/subdev/clk/gf100.c
 --- orig/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/clk/gf100.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-10-27 15:57:29.220262970 +0200
 @@ -91,6 +91,9 @@
  		return 0;
  	}
@@ -404,9 +404,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
 -	return nvkm_clk_ctor(&gf100_clk, device, type, inst, false, &clk->base);
 +	return nvkm_clk_ctor(&gf100_clk, device, type, inst, true, &clk->base);
  }
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/fb/fexec_code.inc /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/fb/fexec_code.inc
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/fb/fexec_code.inc nouveau-source/nvkm/subdev/fb/fexec_code.inc
 --- orig/nvkm/subdev/fb/fexec_code.inc	1970-01-01 02:00:00.000000000 +0200
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/fb/fexec_code.inc	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/fb/fexec_code.inc	2026-10-27 15:57:29.221206986 +0200
 @@ -0,0 +1,243 @@
 +/* Native resident Falcon executor for Fermi GF106 DDR3 reclocking */
 +static const u32 fexec_code[] = {
@@ -651,9 +651,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
 +	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 +	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 +};
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/fb/ramfuc.h /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/fb/ramfuc.h
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/fb/ramfuc.h nouveau-source/nvkm/subdev/fb/ramfuc.h
 --- orig/nvkm/subdev/fb/ramfuc.h	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/fb/ramfuc.h	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/fb/ramfuc.h	2026-10-27 15:57:29.221385091 +0200
 @@ -4,10 +4,15 @@
  #include <subdev/fb.h>
  #include <subdev/pmu.h>
@@ -860,9 +860,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  }
  
  #define ram_init(s,p)        ramfuc_init(&(s)->base, (p))
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/fb/ramgf100.c /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/fb/ramgf100.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/fb/ramgf100.c nouveau-source/nvkm/subdev/fb/ramgf100.c
 --- orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/fb/ramgf100.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/fb/ramgf100.c	2026-10-27 15:58:34.633650849 +0200
 @@ -27,6 +27,7 @@
  
  #include <core/option.h>
@@ -882,7 +882,7 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  };
  
  static void
-@@ -123,6 +128,485 @@
+@@ -123,6 +128,480 @@
  	}
  }
  
@@ -952,9 +952,8 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
 + * scanout. Waiting only for [vblanks .. vtotal) missed 90% of VBlank and
 + * timed out after 50ms when sleeping 200-500us.
 + * Here we sleep in short 80-150us steps until the pre-VBlank approach zone
-+ * (last 40 active lines) or early VBlank (at least 22 blanking lines left),
-+ * then tight-poll with udelay(1) for the exact leading edge of VBlank so both
-+ * the ~160us Falcon transition and the host 0x001548 PHY commit latch finish
++ * (last 40 active lines), then tight-poll with udelay(1) for the exact leading edge
++ * of VBlank so both the ~160us Falcon transition and the host 0x001548 PHY commit latch finish
 + * 100% inside a single VBlank interval. */
 +static inline int
 +gf100_ram_calc_vpos(u32 vblanks, u32 vblanke, u32 vtotal, u32 vline,
@@ -1035,10 +1034,6 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
 +			vline = nvkm_rd32(device, 0x616340 + rgpos_off) & 0xffff;
 +			vpos = gf100_ram_calc_vpos(vblanks, vblanke, vtotal, vline,
 +						   &vblank_lines, &vdisplay);
-+
-+			/* Early VBlank window: inside VBlank with >= 22 lines remaining */
-+			if (vpos < 0 && (-vpos >= 22 || -vpos >= (vblank_lines * 2) / 3))
-+				return vpos;
 +
 +			/* Pre-VBlank approach zone: last 40 active lines before VBlank onset.
 +			 * Tight-poll in 1us increments for the exact leading edge of VBlank. */
@@ -1368,7 +1363,7 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  int
  gf100_ram_calc(struct nvkm_ram *base, u32 freq)
  {
-@@ -143,6 +627,9 @@
+@@ -143,6 +622,9 @@
  	int N1, M1, P;
  	int ret;
  
@@ -1378,7 +1373,7 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	/* lookup memory config data relevant to the target frequency */
  	rammap.data = nvbios_rammapEm(bios, freq / 1000, &ver, &rammap.size,
  				      &cnt, &ramcfg.size, &cfg);
-@@ -408,6 +895,22 @@
+@@ -408,6 +890,22 @@
  {
  	struct gf100_ram *ram = gf100_ram(base);
  	struct nvkm_device *device = ram->base.fb->subdev.device;
@@ -1401,7 +1396,7 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	ram_exec(&ram->fuc, nvkm_boolopt(device->cfgopt, "NvMemExec", true));
  	return 0;
  }
-@@ -436,7 +939,65 @@
+@@ -436,7 +934,65 @@
  	};
  	struct gf100_ram *ram = gf100_ram(base);
  	struct nvkm_device *device = ram->base.fb->subdev.device;
@@ -1468,7 +1463,7 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  
  	switch (ram->base.type) {
  	case NVKM_RAM_TYPE_GDDR5:
-@@ -650,6 +1211,14 @@
+@@ -650,6 +1206,14 @@
  	ram->fuc.r_0x611200 = ramfuc_reg(0x611200);
  
  	ram->fuc.r_0x13d8f4 = ramfuc_reg(0x13d8f4);
@@ -1483,9 +1478,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	return 0;
  }
  
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/pmu/fuc/gf100.fuc3.h
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h
 --- orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-10-27 15:57:29.224046412 +0200
 @@ -1260,7 +1260,7 @@
  	0xb8525413,
  	0x0bf406e1,
@@ -1510,9 +1505,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  /* 0x050a: host_init */
  	0x17f100f8,
  	0x14b60080,
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/pmu/gt215.c /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/pmu/gt215.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/pmu/gt215.c nouveau-source/nvkm/subdev/pmu/gt215.c
 --- orig/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/pmu/gt215.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/pmu/gt215.c	2026-10-27 15:57:29.225217510 +0200
 @@ -23,6 +23,7 @@
   */
  #include "priv.h"
@@ -2101,9 +2096,9 @@ diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules
  	return 0;
  }
  
-diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/pmu/memx.c /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/pmu/memx.c
+diff -ruN -x '*.o' -x '*.ko' -x '*.cmd' -x '*.mod*' -x Module.symvers -x modules.order -x dkms.conf -x '.*' orig/nvkm/subdev/pmu/memx.c nouveau-source/nvkm/subdev/pmu/memx.c
 --- orig/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
-+++ /usr/src/nouveau-dkms-2.2.1/nvkm/subdev/pmu/memx.c	2026-10-26 16:51:21.000000000 +0200
++++ nouveau-source/nvkm/subdev/pmu/memx.c	2026-10-27 15:57:29.226731213 +0200
 @@ -61,9 +61,11 @@
  	memx->size = reply[1];
  
