@@ -29,3 +29,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "PowerShell contributors"
 SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+    "oneget-user-temp-folder.patch",
+]
+SPDX-FileCopyrightText = "OneGet contributors"
+SPDX-License-Identifier = "Apache-2.0"

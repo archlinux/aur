@@ -1,0 +1,38 @@
+diff --git a/src/Microsoft.PackageManagement/Utility/Extensions/FilesystemExtensions.cs b/src/Microsoft.PackageManagement/Utility/Extensions/FilesystemExtensions.cs
+index c1eee02..069c518 100644
+--- a/src/Microsoft.PackageManagement/Utility/Extensions/FilesystemExtensions.cs
++++ b/src/Microsoft.PackageManagement/Utility/Extensions/FilesystemExtensions.cs
+@@ -29,10 +29,32 @@ internal static class FilesystemExtensions {
+         public static string OriginalTempFolder;
+ 
+         static FilesystemExtensions() {
+-            OriginalTempFolder = OriginalTempFolder ?? Path.GetTempPath();
++            OriginalTempFolder = OriginalTempFolder ?? GetUserTempFolder();
+             ResetTempFolder();
+         }
+ 
++        /// <summary>
++        /// Path.GetTempPath() is per user on Windows, but on Unix it's /tmp, which is shared by all users.
++        /// The folder created in it would then only be usable by the first user running PackageManagement.
++        /// Use the per user runtime directory there instead, or the user's cache directory as fallback.
++        /// </summary>
++        private static string GetUserTempFolder() {
++            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows)) {
++                return Path.GetTempPath();
++            }
++
++            var runtimeDirectory = Environment.GetEnvironmentVariable("XDG_RUNTIME_DIR");
++            if (!string.IsNullOrEmpty(runtimeDirectory) && Directory.Exists(runtimeDirectory)) {
++                return runtimeDirectory;
++            }
++
++            var cacheDirectory = Environment.GetEnvironmentVariable("XDG_CACHE_HOME");
++            if (string.IsNullOrEmpty(cacheDirectory)) {
++                cacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".cache");
++            }
++            return cacheDirectory;
++        }
++
+         public static string TempPath {get; private set;}
+ 
+         public static int Counter {
