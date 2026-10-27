@@ -18,13 +18,29 @@ url="https://github.com/thefangeddeity/laptop-livecam"
 license=('GPL-3.0-or-later')
 depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow' 'python-numpy' 'python-opencv' 'python-pyfakewebcam' 'pyside6' 'v4l2loopback-dkms' 'smartmontools' 'v4l-utils' 'wget' 'ttf-dejavu')
 install=laptop-livecam.install
+# The detector model is fetched here, not carried in the repo. It used to be
+# a 12.3 MiB blob in every clone that NOTHING installed -- the file the nodes
+# loaded was hand-placed and `pacman -Qo` reported it owned by no package. As
+# a source it is downloaded once at build time, checksummed, and installed by
+# this package, so an upgrade or a reinstall now replaces it like anything
+# else. noextract because it is not an archive.
+_model=yolov8n.onnx
+_model_tag=models-v1
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livecam/archive/refs/tags/v$pkgver.tar.gz"
-        "laptop-livecam.install")
+        "laptop-livecam.install"
+        "$_model::https://github.com/thefangeddeity/laptop-livecam/releases/download/$_model_tag/$_model")
+noextract=("$_model")
 sha256sums=('8f1544d2f008fcdba896730f4162e20bbe359751d7220d16d26ccef4bd498ca1'
-            '1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c')
+            '1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c'
+            'b2bc52f40e8e1c532427d5bde3575a5d5b571b739fab2c6df443733ed1589cbd')
 
 package() {
     cd "$pkgname-$pkgver"
+
+    # The model, at the path device.env points at. CV_DETECT_MODEL defaults to
+    # .../models/candidates/yolov8n.onnx on every node in the fleet.
+    install -Dm644 "$srcdir/$_model" \
+                   "$pkgdir/usr/share/hls-livecam-server/models/candidates/$_model"
 
     # ── Executables ──────────────────────────────────────────────────────────
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-setup-arch \
