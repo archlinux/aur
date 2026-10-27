@@ -1,6 +1,6 @@
 pkgbase = openknowledge-bin
 	pkgdesc = Beautiful, AI-native markdown IDE and LLM wiki (binary release)
-	pkgver = 0.88.3
+	pkgver = 0.88.5
 	pkgrel = 1
 	url = https://openknowledge.ai
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = openknowledge-bin
 	conflicts = openknowledge
 	options = !strip
 	options = !debug
-	source_x86_64 = openknowledge-0.88.3-x86_64.deb::https://github.com/inkeep/open-knowledge/releases/download/v0.88.3/OpenKnowledge-amd64.deb
-	sha256sums_x86_64 = f3e394be5ec872bdcad34dae66a982140d4e0dfbfba0a1bec088d198f286e573
-	source_aarch64 = openknowledge-0.88.3-aarch64.deb::https://github.com/inkeep/open-knowledge/releases/download/v0.88.3/OpenKnowledge-arm64.deb
-	sha256sums_aarch64 = 62506e0d01b953d7a8760f28d15c02c6ce262c2bff7b904e1af97dd12f74c5ac
+	source_x86_64 = openknowledge-0.88.5-x86_64.deb::https://github.com/inkeep/open-knowledge/releases/download/v0.88.5/OpenKnowledge-amd64.deb
+	sha256sums_x86_64 = f023dce6eee5b572927e663455ff563caf1c69fb43e22ef4479ca203010070a5
+	source_aarch64 = openknowledge-0.88.5-aarch64.deb::https://github.com/inkeep/open-knowledge/releases/download/v0.88.5/OpenKnowledge-arm64.deb
+	sha256sums_aarch64 = 1482b449ca9a78fe27648b96f338268f15e3f1a33d044db505e48b2eed2fcac5
 
 pkgname = openknowledge-bin
