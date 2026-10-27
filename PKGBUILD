@@ -3,8 +3,8 @@
 
 _basename=koharu
 pkgname=${_basename}-bin
-pkgver=0.83.4
-pkgrel=2
+pkgver=0.83.5
+pkgrel=1
 pkgdesc="Manga translation tools"
 arch=("x86_64")
 url="https://github.com/koharu-rs/koharu"
@@ -21,7 +21,7 @@ makedepends=("libarchive")
 
 source=("$_basename-${pkgver}.deb::https://github.com/mayocream/koharu/releases/download/${pkgver}/koharu_${pkgver}_amd64.deb")
 
-sha256sums=('ca44dd1204746ec1ecfdfd9c4688b33e1f8073d6d8c138464092cde970e5fd44')
+sha256sums=('e4151e59994ceaa31468c9d4b6456dc8287c096887e493dac9c06dbef0a444c2')
 
 package() {
   bsdtar -xf "$srcdir/$_basename-${pkgver}.deb" data.tar.gz
