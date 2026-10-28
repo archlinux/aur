@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=kqalc-bin
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Full qalculate power in KRunner"
 arch=('x86_64' 'aarch64')
 url="https://github.com/noctuum/kqalc"
@@ -25,6 +25,5 @@ package() {
     "${pkgdir}/usr/share/krunner/dbusplugins/org.kde.krunner1.kqalc.desktop"
   install -Dm644 dist/org.kde.krunner1.kqalc.service \
     "${pkgdir}/usr/share/dbus-1/services/org.kde.krunner1.kqalc.service"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
