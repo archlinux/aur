@@ -1,0 +1,25 @@
+--- orbis-reframe-0.7.0.orig/CMakeLists.txt	2026-10-28 09:14:37.000000000 +0000
++++ orbis-reframe-0.7.0/CMakeLists.txt	2026-10-28 16:42:36.512826274 +0000
+@@ -645,8 +645,6 @@
+     # location), share/doc/orbis-reframe/ (licenses, the manual), the desktop
+     # entry, icon and file types (the .deb's install runs shared-mime-info's
+     # and desktop-file-utils' triggers on them).
+-    set_target_properties(orbis-reframe PROPERTIES
+-        INSTALL_RPATH "\$ORIGIN/../lib/orbis-reframe")
+     install(TARGETS orbis-reframe RUNTIME DESTINATION bin)
+     install(DIRECTORY resources/models/ DESTINATION share/orbis-reframe/models)
+     install(DIRECTORY resources/luts/ DESTINATION share/orbis-reframe/luts)
+@@ -732,11 +730,8 @@
+ 
+             target_sources(orbis_app PRIVATE src/ui/PlateScanJob.cpp src/ui/PlateScanJob.h
+                 src/ui/PlateJobController.cpp src/ui/PlateJobController.h)
+-            # ncnn isn't in Debian: installs ship it next to the app, in
+-            # lib/orbis-reframe/ (orbis-reframe's INSTALL_RPATH, below).
+-            install(IMPORTED_RUNTIME_ARTIFACTS ncnn LIBRARY DESTINATION lib/orbis-reframe)
+-            install(FILES packaging/licenses/ncnn-LICENSE.txt
+-                DESTINATION share/doc/orbis-reframe/licenses)
++            # Distributions that package ncnn (e.g. Arch) link the system
++            # library; do not bundle a private copy under lib/orbis-reframe/.
+             target_link_libraries(orbis_app PUBLIC privacy_scan)
+             target_compile_definitions(orbis_app PUBLIC ORBIS_REFRAME_HAVE_PLATE_SCAN)
+         else()
