@@ -1,6 +1,6 @@
 pkgbase = bingspotany-bin
 	pkgdesc = A modern, cross-platform daily wallpaper manager fetching from Bing and Spotlight
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/darkinsun/BingSpotAny
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bingspotany-bin
 	provides = bingspotany
 	conflicts = bingspotany
 	options = !strip
-	source = bingspotany-bin-1.1.8.tar.gz::https://github.com/darkinsun/BingSpotAny/releases/download/v1.1.8/BingSpotAny-Linux-x64.tar.gz
-	sha256sums = 08bf74905efde224b71d03be4105adf3669bbc106f58fd13503a0526242de60e
+	source = bingspotany-bin-1.1.9.tar.gz::https://github.com/darkinsun/BingSpotAny/releases/download/v1.1.9/BingSpotAny-Linux-x64.tar.gz
+	sha256sums = e45dcdbe06fe67b7caa2a2242dba366e6c9d6e59d89397728262fa306e9bb807
 
 pkgname = bingspotany-bin
