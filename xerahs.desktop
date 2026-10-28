@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=XerahS
+Comment=Cross-platform screen capture and sharing tool
+GenericName=Screen Capture
+Exec=/usr/bin/xerahs %U
+Icon=xerahs
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/xerahs;
+Categories=Utility;Graphics;GTK;
+Keywords=screenshot;screen;capture;share;upload;
+StartupWMClass=xerahs
+X-GNOME-UsesNotifications=true
+X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2
