@@ -3,11 +3,11 @@
 
 _pkgbase=vosulay
 pkgname=${_pkgbase}-git
-pkgver=1.2.1.r2.gfe36000
+pkgver=1.5.2.r1.g9f1d70f
 pkgrel=1
 pkgdesc='In-game overlay for vosu and tosu-compatible counters (git version)'
 arch=('x86_64')
-url='https://github.com/shiruviaa/vosulay'
+url='https://github.com/18-lab-dev/vosulay'
 license=('MIT' 'BSD-3-Clause' 'CC-BY-4.0')
 depends=(
     'alsa-lib'

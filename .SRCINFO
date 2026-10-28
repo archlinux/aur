@@ -1,8 +1,8 @@
 pkgbase = vosulay-git
 	pkgdesc = In-game overlay for vosu and tosu-compatible counters (git version)
-	pkgver = 1.2.1.r2.gfe36000
+	pkgver = 1.5.2.r1.g9f1d70f
 	pkgrel = 1
-	url = https://github.com/shiruviaa/vosulay
+	url = https://github.com/18-lab-dev/vosulay
 	arch = x86_64
 	license = MIT
 	license = BSD-3-Clause
@@ -36,7 +36,7 @@ pkgbase = vosulay-git
 	options = !lto
 	options = !strip
 	options = !debug
-	source = vosulay::git+https://github.com/shiruviaa/vosulay.git#branch=main
+	source = vosulay::git+https://github.com/18-lab-dev/vosulay.git#branch=main
 	sha256sums = SKIP
 
 pkgname = vosulay-git
