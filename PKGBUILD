@@ -60,9 +60,18 @@ pkgver() {
 }
 
 build() {
-    # SNX_DEPLOY off: a build of the runtime otherwise copies it next to each game in the data folder of $HOME
+    # Tuned for the machine that builds it, whatever makepkg.conf says: the flags below come after makepkg's, and win
+    case "$CARCH" in
+        x86_64) local arch_flags='-march=native -mtune=native' ;;
+        aarch64) local arch_flags='-mcpu=native' ;;
+    esac
+    # SNX_DEPLOY off: a build of the runtime otherwise copies it next to each game in the data folder of $HOME.
+    # The O level is the project's (RelWithDebInfo's -O2 -g, after CFLAGS). The flags go in as -D, since CMake reads
+    # CFLAGS only when it makes the build folder, which a rebuild keeps
     CC=clang CXX=clang++ cmake -S ScarletNX -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_C_FLAGS="$CFLAGS $arch_flags" \
+        -DCMAKE_CXX_FLAGS="$CXXFLAGS $arch_flags" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DSNX_DEPLOY=OFF \
         -DSNX_TRACY=OFF \
