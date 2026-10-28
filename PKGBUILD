@@ -3,7 +3,7 @@
 pkgname=sherpa-onnx-piper-voice-ru-dmitri
 _model=vits-piper-ru_RU-dmitri-medium
 pkgver=20251202
-pkgrel=1
+pkgrel=2
 pkgdesc="Russian Piper TTS voice dmitri (medium quality) in sherpa-onnx format"
 arch=('any')
 url="https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models"
@@ -16,5 +16,4 @@ sha256sums=('c86d0803737de13d441923ff3b3f309482fab8d7af3ec85949942809eb9a3660')
 package() {
   install -d "${pkgdir}/usr/share/sherpa-onnx"
   cp -r --no-preserve=ownership "${_model}" "${pkgdir}/usr/share/sherpa-onnx/"
-  install -Dm644 "${_model}/MODEL_CARD" "${pkgdir}/usr/share/licenses/${pkgname}/MODEL_CARD"
 }
