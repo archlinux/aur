@@ -1,0 +1,17 @@
+pkgbase = pgstream-bin
+	pkgdesc = PostgreSQL replication with DDL changes (prebuilt)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/xataio/pgstream
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = postgresql-libs
+	provides = pgstream=1.5.0
+	conflicts = pgstream
+	source_x86_64 = pgstream-1.5.0.linux.amd64::https://github.com/xataio/pgstream/releases/download/v1.5.0/pgstream.linux.amd64
+	sha256sums_x86_64 = 80cb61cf3a218ec0a94f5f98d7c8015f7fdacb700910f0474cba8dde9f9b8ad5
+	source_aarch64 = pgstream-1.5.0.linux.arm64::https://github.com/xataio/pgstream/releases/download/v1.5.0/pgstream.linux.arm64
+	sha256sums_aarch64 = cfad86d75b92d4a30af2e7d5f6c805f27df749034473291b3c83387be856fa6f
+
+pkgname = pgstream-bin
