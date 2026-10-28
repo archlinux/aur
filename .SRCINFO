@@ -9,7 +9,7 @@ pkgbase = weasis-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = maven
-	makedepends = java-environment-openjdk=27
+	makedepends = java-environment=27
 	makedepends = unzip
 	makedepends = dpkg
 	makedepends = fakeroot

@@ -1,4 +1,4 @@
-# Maintainer: Michael <michael@localhost>
+# Maintainer: roastpiece <archlinux.toocr@passmail.net>
 
 pkgname=weasis-git
 _pkgname=weasis
@@ -8,7 +8,7 @@ pkgdesc='Weasis DICOM medical viewer (built from git master)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nroduit/Weasis'
 license=('EPL-2.0' 'Apache-2.0')
-makedepends=('git' 'maven' 'java-environment-openjdk=27' 'unzip' 'dpkg' 'fakeroot' 'rpm-tools')
+makedepends=('git' 'maven' 'java-environment=27' 'unzip' 'dpkg' 'fakeroot' 'rpm-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 options=('!strip' )
