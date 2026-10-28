@@ -3,8 +3,8 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=buildifier
-pkgver=10.1.0
-pkgrel=3
+pkgver=10.2.0
+pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
@@ -15,7 +15,7 @@ conflicts=('buildifier-bin')
 # rules_go trims source paths from the binary, so the generated debug package
 # contains no sources and only a dangling build-id symlink.
 options=('!debug')
-_commit='d12fe38eb8b1680838af70fe9a797feb9c3f71ba'
+_commit='82285db8e1af42013d863701e44735b1e07bdefe'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
