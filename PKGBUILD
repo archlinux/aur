@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.11
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#commit=64557c05ecf368fb3d5ed6ced69bc5e05901edbe")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=528c67abb40e6b73213b5acdff43bcd0ef51f827")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -260,7 +260,7 @@ package() {
   printf '%s\n' "$profile_name" > "$pkgdir/usr/share/hornero/HORNERO_PROFILE"
 
   # Permissions mirror scripts/materialize.sh: dirs 755, files 644,
-  # with executables restored for CLI adapters and hypr helpers.
+  # with executables restored for CLI adapters.
   find "$pkgdir/etc/xdg" "$pkgdir/etc/alacritty" "$pkgdir/etc/skel" \
     "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
     "$pkgdir/usr/share/ghostty/themes" \
@@ -270,8 +270,6 @@ package() {
     "$pkgdir/usr/share/ghostty/themes" \
     -type f -exec chmod 644 {} +
   chmod 755 "$pkgdir"/usr/share/hornero/bin/hornero-*
-  chmod 755 "$pkgdir"/etc/xdg/hypr/scripts/*.sh
-  chmod 755 "$pkgdir"/etc/skel/.config/hypr/scripts/*.sh
 
   # Ship the license alongside the payload for offline inspection.
   install -Dm644 "$repo_root/LICENSE" \
