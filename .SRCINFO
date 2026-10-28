@@ -1,0 +1,24 @@
+pkgbase = pathvalidate-cli
+	pkgdesc = The tool can sanitize/validate strings such as file-names/file-paths
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/thombashi/pathvalidate-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = bash
+	depends = python
+	depends = python-pathvalidate
+	depends = python-loguru
+	depends = python-pytablewriter
+	depends = python-msgfy
+	depends = python-click
+	provides = pathvalidate
+	source = https://files.pythonhosted.org/packages/source/p/pathvalidate_cli/pathvalidate_cli-0.2.1.tar.gz
+	sha256sums = 9998f4379d29ff65de4808a8a0e6ef75d94a1e6e40659ff984fa50ba0eb90b80
+
+pkgname = pathvalidate-cli
