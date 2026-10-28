@@ -1,7 +1,7 @@
 # Maintainer: Clever Cloud <ci@clever-cloud.com>
 
 pkgname=clever-tools-bin
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Command Line Interface for Clever Cloud. (standalone binary)"
 arch=('x86_64')
@@ -15,16 +15,16 @@ conflicts=('clever-tools')
 # Prebuilt binary: stripping it breaks it, and there are no debug symbols to extract
 options=(!strip !debug)
 
-source=("clever-tools-5.2.0_linux.tar.gz::https://clever-tools.clever-cloud.com/releases/5.2.0/clever-tools-5.2.0_linux.tar.gz")
-sha256sums=('50b7e95bf96aee1062ce88ca4d9512a6eaa8b63ae2566eca947d55675d1481b7')
+source=("clever-tools-5.3.0_linux.tar.gz::https://clever-tools.clever-cloud.com/releases/5.3.0/clever-tools-5.3.0_linux.tar.gz")
+sha256sums=('f2d2b1b7f97b2123a23cdc37e15126368af93ea1f1382070b9fbca3743cdf6e8')
 
 package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/bash-completion/completions"
   install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-  install "${srcdir}/clever-tools-5.2.0_linux/clever" "${pkgdir}/usr/bin/clever"
+  install "${srcdir}/clever-tools-5.3.0_linux/clever" "${pkgdir}/usr/bin/clever"
 
-  "${srcdir}/clever-tools-5.2.0_linux/clever" --bash-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/bash-completion/completions/clever"
-  "${srcdir}/clever-tools-5.2.0_linux/clever" --zsh-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/zsh/site-functions/_clever"
+  "${srcdir}/clever-tools-5.3.0_linux/clever" --bash-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/bash-completion/completions/clever"
+  "${srcdir}/clever-tools-5.3.0_linux/clever" --zsh-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/zsh/site-functions/_clever"
 }
