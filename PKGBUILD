@@ -2,7 +2,7 @@
 # Upstream: https://github.com/LinkSy-mg/linksy-releases (desktop track: linux-vX.Y.Z)
 
 pkgname=linksy-bin
-pkgver=0.9.14   # fallback, overridden by pkgver()
+pkgver=0.9.15   # fallback, overridden by pkgver()
 pkgrel=1
 pkgdesc="Your devices, connected: direct file/clipboard/screen/camera sharing between Linux and Android, no cloud"
 arch=('x86_64')
