@@ -15,7 +15,7 @@ license=('GPL-3.0-or-later' 'MIT' 'Apache-2.0' 'BSD-3-Clause' 'IJG' 'Zlib' 'libp
 # What the binaries load, plus what the face-unlock command runs. No opencv:
 # it is linked in.
 depends=('bash' 'coreutils' 'gawk' 'grep' 'sed' 'gettext' 'systemd' 'systemd-libs' 'pam' 'polkit'
-         'qt6-base' 'qt6-declarative' 'qt6-wayland' 'wayland' 'layer-shell-qt' 'ki18n'
+         'qt6-base' 'qt6-declarative' 'wayland' 'layer-shell-qt' 'ki18n'
          'glibc' 'libgcc' 'libstdc++' 'hicolor-icon-theme')
 optdepends=('hyprpolkitagent: password windows on Hyprland and Niri')
 provides=('face-unlock')

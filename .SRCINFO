@@ -24,7 +24,6 @@ pkgbase = face-unlock-bin
 	depends = polkit
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-wayland
 	depends = wayland
 	depends = layer-shell-qt
 	depends = ki18n
