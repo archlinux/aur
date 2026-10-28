@@ -1,12 +1,12 @@
 # Maintainer: Daan Hessen <daanhessen@notbadcompany.com>
 pkgname=vector-view
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Vector View: GTK4 viewer for images, videos (mpv), PDFs and office documents'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Not-Bad-Company/vector'
 license=('MIT')
-depends=('gtk4' 'glib2' 'gdk-pixbuf2' 'mpv' 'poppler-glib' 'cairo' 'libglvnd' 'graphene' 'glibc' 'libgcc' 'hicolor-icon-theme')
+depends=('gtk4' 'glib2' 'gdk-pixbuf2' 'libjpeg-turbo' 'mpv' 'poppler-glib' 'cairo' 'libglvnd' 'graphene' 'glibc' 'libgcc' 'hicolor-icon-theme')
 makedepends=('cargo')
 optdepends=(
   'ttf-jetbrains-mono-nerd: the intended font and icons'
@@ -22,7 +22,7 @@ optdepends=(
 )
 options=('!lto')
 source=("vector-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0e3b7e4e856319383b82e5032b5b81dc285bbd7f47168eb05c02a4ea7a1d6eb')
+sha256sums=('42a61fb26ccb4b83ace43d71b44314a914ac5693a682f44d6197aad976f68f77')
 
 prepare() {
   cd "vector-$pkgver"
