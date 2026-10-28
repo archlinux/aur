@@ -1,6 +1,6 @@
 pkgbase = hokum-bin
 	pkgdesc = Hokum: a freedesktop notification daemon for Wayland layer-shell compositors
-	pkgver = 0.0.3
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://hokum.app
 	install = hokum-bin.install
@@ -26,9 +26,9 @@ pkgbase = hokum-bin
 	sha256sums = e83761aacd0d5ec5207e594564fdaa5677def9928ba07fcadb51f1c042c62034
 	sha256sums = a2f5db48078f9d8109c6d53502313ff9639643ea07a7a968e99d9c4802198335
 	sha256sums = b1fe69afe2f6fe0884efc8936dab69bbdf3a319b3828a965ee1304fbd6a60021
-	source_x86_64 = hokum-0.0.3-linux-x64::https://anoma.ly/release/hokum/files/941fedc5a77251b220ef488ce5ac468222a1909039b741f43622b5ab7d0fdabe/hokum
-	sha256sums_x86_64 = 941fedc5a77251b220ef488ce5ac468222a1909039b741f43622b5ab7d0fdabe
-	source_aarch64 = hokum-0.0.3-linux-arm64::https://anoma.ly/release/hokum/files/f51e3793e520ad4bb819effd47e091e9f9b3b95d72f0c815e9d7d9c365158e2b/hokum
-	sha256sums_aarch64 = f51e3793e520ad4bb819effd47e091e9f9b3b95d72f0c815e9d7d9c365158e2b
+	source_x86_64 = hokum-0.1.0-linux-x64::https://anoma.ly/release/hokum/files/f7736a554132b745680b7f97ba86e3037c840eddf242112f2b9e892cd547a4ab/hokum
+	sha256sums_x86_64 = f7736a554132b745680b7f97ba86e3037c840eddf242112f2b9e892cd547a4ab
+	source_aarch64 = hokum-0.1.0-linux-arm64::https://anoma.ly/release/hokum/files/06503da7bf80e6ce79f58dffeeb980c104d036478b5af7012af8e1598aaff6d4/hokum
+	sha256sums_aarch64 = 06503da7bf80e6ce79f58dffeeb980c104d036478b5af7012af8e1598aaff6d4
 
 pkgname = hokum-bin
