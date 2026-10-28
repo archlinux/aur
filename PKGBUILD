@@ -1,6 +1,6 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar-git
-pkgver=1.0.1.r28.g7f089ab
+pkgver=1.0.1.r124.g203e101
 pkgrel=1
 pkgdesc='Development version of the Linux-native Wayland terminal built on Ghostty terminal core'
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 optdepends=(
   'noto-fonts-emoji: emoji support'
   'noto-fonts-cjk: CJK font support'
-  'systemd: launch additional terminal windows'
+  'systemd: launch additional terminal windows as user services'
   'xdg-desktop-portal: open links and files through a desktop portal'
   'xdg-utils: open links when a desktop portal is unavailable'
 )
