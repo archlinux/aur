@@ -2,7 +2,7 @@
 
 _pkgbase=todav
 pkgname="$_pkgbase-bin"
-pkgver=1.3.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
@@ -16,10 +16,10 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source_x86_64=("$_pkgbase-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgbase-$pkgver-x86_64.tar.gz")
 noextract=("$_pkgbase-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('50589ab65430c3a0f72b9f06b423b9a0a5eb145c27e8c106c62bac368a9f8731')
+sha256sums_x86_64=('93de0b58c97aa757be35dd7ed7f7689835ff69387464e9440d2a9ccda300a38a')
 
 package() {
 	bsdtar -xf "$_pkgbase-$pkgver-x86_64.tar.gz" -C "$pkgdir" --no-same-owner
 	# The extension is packaged on its own (gnome-shell-extension-todav-bin).
-	rm -r "$pkgdir/usr/share/gnome-shell"
+	rm -r "$pkgdir/usr/share/gnome-shell/extensions"
 }
