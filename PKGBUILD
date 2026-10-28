@@ -10,7 +10,7 @@
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=4.3.250
+pkgver=4.3.251
 pkgrel=1
 pkgdesc="The ultimate messaging app (nightly channel)"
 depends=(libappindicator-gtk3 libnotify libsecret hicolor-icon-theme)
