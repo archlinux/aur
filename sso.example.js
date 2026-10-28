@@ -4,31 +4,31 @@
 
 //const fs = require('node:fs');
 module.exports = {
-    // Enable SSO login on this instance
-    enabled: true,
-    // Block registration for non-SSO users on this instance
-    enforced: false,
-    // Allow users to add an additional CryptPad password to their SSO account
-    cpPassword: true,
-    // You can also force your SSO users to add a CryptPad password
-    forceCpPassword: true,
-    // List of SSO providers
-    list: [
-      {
-        name: 'keycloak',
-        type: 'oidc',
-        url: 'https://<keycloakserver/realms/<realm>',
-        client_id: "cryptpad",
-        client_secret: "<clientsecret>",
-        // jwt_alg: 'RS256', // (deprecated)
-        id_token_alg: 'PS256', // (optional)
-        userinfo_token_alg: 'PS256', // (optional)
-        username_scope: 'profile',  // (optional)
-        username_claim: 'name', // (optional)
-        use_pkce: true, // (optional)
-        use_nonce: true // (optional)
-      },
-    /*
+	// Enable SSO login on this instance
+	enabled: true,
+	// Block registration for non-SSO users on this instance
+	enforced: false,
+	// Allow users to add an additional CryptPad password to their SSO account
+	cpPassword: true,
+	// You can also force your SSO users to add a CryptPad password
+	forceCpPassword: true,
+	// List of SSO providers
+	list: [
+		{
+			name: "keycloak",
+			type: "oidc",
+			url: "https://<keycloakserver/realms/<realm>",
+			client_id: "cryptpad",
+			client_secret: "<clientsecret>",
+			// jwt_alg: 'RS256', // (deprecated)
+			id_token_alg: "PS256", // (optional)
+			userinfo_token_alg: "PS256", // (optional)
+			username_scope: "profile", // (optional)
+			username_claim: "name", // (optional)
+			use_pkce: true, // (optional)
+			use_nonce: true, // (optional)
+		},
+		/*
 
     // Sample Univention UCS Configuration (using Kopano Connect)
     {
@@ -59,5 +59,5 @@ module.exports = {
         signingCert: fs.readFileSync("./your/signing/cert/location", "utf-8"),
     }
     */
-    ]
+	],
 };
