@@ -13,7 +13,7 @@ license=('LicenseRef-AGPL-3.0-only-OpenSSL')
 # what is left over
 depends=('glibc' 'gcc-libs' 'zlib' 'bzip2' 'brotli' 'expat' 'libgpg-error'
          'e2fsprogs' 'fontconfig' 'freetype2' 'alsa-lib' 'libx11' 'libxcb'
-         'libdrm' 'libva' 'libglvnd' 'mesa' 'vulkan-icd-loader'
+         'libdrm' 'libva' 'libglvnd' 'mesa' 'vulkan-icd-loader' 'wayland'
          'hicolor-icon-theme')
 # mesa carries the vaapi backend for AMD GPUs
 optdepends=('intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]'

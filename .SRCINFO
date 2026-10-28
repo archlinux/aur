@@ -23,6 +23,7 @@ pkgbase = chiaki-ng-bin
 	depends = libglvnd
 	depends = mesa
 	depends = vulkan-icd-loader
+	depends = wayland
 	depends = hicolor-icon-theme
 	optdepends = intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]
 	optdepends = libva-intel-driver: vaapi backend for Intel GPUs [<= Haswell]
