@@ -1,10 +1,10 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=yazeed
-_pkgname=proc
-_appname=${_pkgname}
-pkgname=${_pkgname}-bin
-pkgdesc="A semantic CLI tool for process management"
+_pkgname=proc-cli
+_appname=${_pkgname%-cli}
+pkgname=${_appname}-bin
+pkgdesc="Semantic CLI tool for process management. Target by port, PID, name or path."
 
 pkgver=2.0.1
 pkgrel=1
@@ -19,7 +19,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
@@ -43,7 +43,7 @@ esac
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}-${_CARCH}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}-${_CARCH}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
