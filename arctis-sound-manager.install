@@ -34,6 +34,8 @@ post_install() {
     # lets hid-generic claim interface 4 back. The headset then reads as absent
     # until it is physically replugged, after every single upgrade.
     udevadm trigger --action=add --subsystem-match=usb --attr-match=idVendor=1038 2>/dev/null || true
+    # And the hidraw nodes the hidraw transport opens: their mode comes from the same rules.
+    udevadm trigger --action=add --subsystem-match=hidraw 2>/dev/null || true
 
     REAL_USER="${SUDO_USER:-}"
 
@@ -90,6 +92,8 @@ post_upgrade() {
     # lets hid-generic claim interface 4 back. The headset then reads as absent
     # until it is physically replugged, after every single upgrade.
     udevadm trigger --action=add --subsystem-match=usb --attr-match=idVendor=1038 2>/dev/null || true
+    # And the hidraw nodes the hidraw transport opens: their mode comes from the same rules.
+    udevadm trigger --action=add --subsystem-match=hidraw 2>/dev/null || true
 
     # Replacing files on disk does not touch running processes: asm-daemon keeps
     # executing the version it loaded at startup until something restarts it.
