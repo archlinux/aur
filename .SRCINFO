@@ -1,6 +1,6 @@
 pkgbase = obs-rust
 	pkgdesc = Free, open source software for live streaming and recording
-	pkgver = 0.1.0beta.20261023
+	pkgver = 0.1.0beta.20261028
 	pkgrel = 1
 	url = https://github.com/obs-rust
 	arch = x86_64
@@ -37,13 +37,11 @@ pkgbase = obs-rust
 	depends = qrcodegencpp-cmake
 	depends = python
 	depends = luajit
-	conflicts = obs-studio
-	conflicts = obs-studio-plugin-browser
-	source = obs-rust::git+https://github.com/obs-rust/obs-studio.git#tag=obs-studio-rust-v0.1.0-beta.20261023
+	source = obs-rust::git+https://github.com/obs-rust/obs-studio.git#tag=obs-studio-rust-v0.1.0-beta.20261028
 	source = obs-rust-libdshowcapture::git+https://github.com/obs-rust/libdshowcapture.git
 	source = obs-rust-obs-browser::git+https://github.com/obs-rust/obs-browser.git
 	source = obs-rust-obs-websocket::git+https://github.com/obs-rust/obs-websocket.git
-	sha256sums = 3574a3cc012e4942ac68f05491e65fbe89961dbb409e269e7530abd59add6f3f
+	sha256sums = 6e0e4663a2eebf65560aeab7c0bfaecf40a9c4d7b9c94d940314aab3406f2c80
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -70,3 +68,4 @@ pkgname = obs-studio-rust-plugin-browser
 	depends = obs-studio-rust
 	depends = qt6-base
 	provides = obs-studio-plugin-browser=32.2.2
+	conflicts = obs-studio-plugin-browser

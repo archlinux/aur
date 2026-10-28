@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust
 pkgname=("$_obs_studio-rust" "$_obs_studio-rust-plugin-browser")
-pkgver=0.1.0beta.20261023
+pkgver=0.1.0beta.20261028
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -18,9 +18,6 @@ depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls3' 'rnnoise
 makedepends=('cef' 'cmake' 'libfdk-aac' 'x264' 'swig' 'sndio' 'nlohmann-json'
              'ffnvcodec-headers' 'websocketpp' 'asio' 'extra-cmake-modules'
              'git' 'rust')
-conflicts=("$_obs_studio"
-           "$_obs_studio-plugin-browser"
-)
 _tag="$_obs_studio-rust-v${pkgver/beta/-beta}"
 source=(
   "$pkgbase::git+$url/$_obs_studio.git#tag=$_tag"
@@ -28,7 +25,7 @@ source=(
   "${pkgbase}-obs-browser::git+$url/obs-browser.git"
   "${pkgbase}-obs-websocket::git+$url/obs-websocket.git"
 )
-sha256sums=('3574a3cc012e4942ac68f05491e65fbe89961dbb409e269e7530abd59add6f3f'
+sha256sums=('6e0e4663a2eebf65560aeab7c0bfaecf40a9c4d7b9c94d940314aab3406f2c80'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -80,8 +77,9 @@ build() {
     -S $pkgbase
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
-    -DENABLE_BRAND_RUST=ON
+    -DOBS_BRAND_RUST=ON
     -DOBS_RUST_VERSION="${_tag#*-v}"
+    -DENABLE_RUST_LIBOBS=ON
     -DMbedTLS_DIR="/usr/lib/mbedtls3/cmake/MbedTLS"
     -DENABLE_BROWSER=ON
     -DCEF_API_VERSION=$_cef_api_version
@@ -116,6 +114,7 @@ package_obs-studio-rust() {
 
 package_obs-studio-rust-plugin-browser() {
   provides=("obs-studio-plugin-browser=$_obs_ver")
+  conflicts=("$_obs_studio-plugin-browser")
   pkgdesc="CEF-based OBS Studio browser plugin"
   url="https://obsproject.com/kb/browser-source"
   depends=('cef' 'glibc' 'libgcc' 'libstdc++' 'libx11' "$_obs_studio-rust" 'qt6-base')
