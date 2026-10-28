@@ -1,18 +1,18 @@
 # Maintainer: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
 
 pkgname=argtable3
-pkgver=3.2.2
-_commit=f25c624
+pkgver=3.3.1
 pkgrel=1
+_srcdir="argtable-v${pkgver}"
 arch=('any')
 pkgdesc='A single-file, ANSI C, command-line parsing library that parses GNU-style command-line options.'
 url='https://www.argtable.org/'
 makedepends=('cmake')
-source=("https://github.com/argtable/argtable3/archive/refs/tags/v${pkgver}.${_commit}.tar.gz")
-sha512sums=('623197142fd1749b2fd5bc3e51758ae49c58ec8699b6afa5ecb2d0199d98f9c05366f92c5169c8039b5c417f4774fb4a09c879a7b04ddbed9d5e43585692ed7f')
+source=("https://github.com/argtable/argtable3/releases/download/v${pkgver}/argtable-v${pkgver}.tar.gz")
+sha512sums=('3c6c3054365746c311081d349970a42c347587260a87b38111f324ee0f9d5e5c277a50f27cc0832f866ae596054c94666108950599b3ded98db638fb41f58ff9')
 
 build() {
-    cmake -B build -S "${pkgname}-${pkgver}.${_commit}" \
+    cmake -B build -S "${_srcdir}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON
     cmake --build build
@@ -20,5 +20,5 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 ${pkgname}-${pkgver}.${_commit}/LICENSE
+    install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "${_srcdir}/LICENSE"
 }
