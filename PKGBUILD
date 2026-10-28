@@ -2,7 +2,7 @@
 
 pkgname=python-kara-templater
 _pkgname=kara-templater
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Python karaoke template engine with native libass text metrics'
 arch=('x86_64')
