@@ -5,7 +5,7 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=153.6.0_100
+pkgver=153.6.0_101
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
@@ -77,16 +77,18 @@ _source_tag="${_konformver}.${_konformrel}"
 source=(
   "git+https://codeberg.org/konform-browser/source.git#tag=${_source_tag}"
   default192x192.png
+  entrypoint.sh
   "${__pkgname}.desktop"
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('69d6ee5a599ba169f25337fba14d9fa7fd66b0590dc77e16d002fc8a7acaf845'
+sha256sums=('6cc2d4299596e589a2f63961a413b1ec33a7f9f22b0ae97ed6532b0250f5b6de'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
+            'c683b93bcb843da6de51ee49dd163c6eb9889f27988357aba3ca8766abd76f2e'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('60591242bfbc56a1202c41cb1b6b8b67fb0da25de285ce847e1b8ff46db9f33f'
+sha256sums_x86_64=('f390cbb1888a921e5c2bafa62ce053eb233b78fb07202d3529572c49e63f503a'
                    'SKIP')
-sha256sums_aarch64=('87719f01d8ccf0c3da801325119f5e9706ff78d7250bac757cb693615218e28b'
+sha256sums_aarch64=('ccf5030874229a0362ae0156643603cecbbc2ed077ab5e7ca1a610e4b02ab0c8'
                     'SKIP')
 
 package() {
@@ -131,16 +133,14 @@ END
   install -Dvm644 ${srcdir}/$__pkgname.desktop \
     "$pkgdir/usr/share/applications/$__pkgname.desktop"
 
-  # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
-#!/bin/sh
-exec /usr/lib/${__pkgname}/${__pkgname} "\$@"
-END
-
   # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1553771
+  install -Dvm755 "${srcdir}/entrypoint.sh" "$pkgdir/usr/lib/$__pkgname/${__pkgname}"
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/$__pkgname-bin"
+  ln -srfv "${pkgdir}/usr/lib/${__pkgname}/${__pkgname}" "${pkgdir}/usr/bin/${__pkgname}"
   ln -s "${__pkgname}" "${pkgdir}/usr/bin/${_pkgname}" || true
+
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
