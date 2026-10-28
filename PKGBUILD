@@ -1,6 +1,6 @@
 # Maintainer: Quirky1869 <quirky1869@users.noreply.github.com>
 pkgname=glideftp-bin
-pkgver=1.7.8
+pkgver=1.7.9
 pkgrel=1
 pkgdesc="Desktop FTP/SFTP client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('glideftp')
 source_x86_64=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/Quirky1869/GlideFTP/releases/download/v${pkgver}/GlideFTP-Linux-v${pkgver}.tar.gz"
 )
-sha256sums_x86_64=('b7db19eedd7cf2de2871d2cf519b043282b57fc5ed1f1828b3a2a6c0a7f10414')
+sha256sums_x86_64=('8a7a57996ec668d699c404044c71f87455d4d39cf7fb80955e7f176061d112da')
 
 package() {
     install -Dm755 "${srcdir}/GlideFTP"           "${pkgdir}/usr/bin/glideftp"
