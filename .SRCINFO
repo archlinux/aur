@@ -1,0 +1,13 @@
+pkgbase = ttf-niek-fonts-win11
+	pkgdesc = Font collection from Niek's fonts-extractor (win11) archive
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://github.com/Niek/fonts-extractor
+	arch = any
+	license = custom:upstream-font-licenses
+	depends = fontconfig
+	noextract = fonts-win11-2.8.zip
+	source = fonts-win11-2.8.zip::https://github.com/Niek/fonts-extractor/releases/download/v2.8/fonts-win11.zip
+	sha256sums = 0807d2d1cd08a51ff29363b5411ddd4b78854b2a11b92b8b2fad111abcb9ca6e
+
+pkgname = ttf-niek-fonts-win11
