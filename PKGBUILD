@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=agentgateway-bin
-pkgver=1.6.0 # renovate: datasource=github-releases depName=agentgateway/agentgateway
+pkgver=1.7.0 # renovate: datasource=github-releases depName=agentgateway/agentgateway
 pkgrel=1
 pkgdesc="Next Generation Agentic Proxy for AI Agents and MCP servers"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ sha256sums=('ccbf401f366bd723ff37c7ff726861addc4f023acfd13947c4154fd1865aaca8'
             '27f129b0434a4bb00a276f9c391dab3280cf9c657fefd1b358aded52c7937afb'
             '1ade18462998f6f52b533bb423803c2d41c8b944bf2528d6de9302ee9163a583'
             '4c6940d0a7de2eee1a6dbeb830d896c7ed5494df9aef0f9762b0d5509dc216d8')
-sha256sums_x86_64=('496ed27e6a96b55a9ad7cabe5c2be7172511f44a3cb113e533d22bf93a7f079d')
-sha256sums_aarch64=('b59ecac31103bb317d1377fd42b0cb25cd9a21f8c3f1d9ee14c3ff05f3f91abf')
+sha256sums_x86_64=('1b2fc01a2de29ca113bbb6258b5cae7b1eb3c724071c09d687a449132f2f42f8')
+sha256sums_aarch64=('85724a15dc9f5179fb6e2fd85b0ba2d4fea56dd289abb8bf8fefadc3bea8b89e')
 
 package() {
   if [ "${CARCH}" = "x86_64" ]; then
