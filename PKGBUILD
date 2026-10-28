@@ -2,7 +2,7 @@
 # Contributor: chn <g897331845@gmail.com>
 
 pkgname=nameof
-pkgver=0.10.6
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Nameof operator for modern C++,
          simply obtain the name of a variable, type, function, macro, and enum"
@@ -11,7 +11,7 @@ url="https://github.com/Neargye/nameof"
 license=("MIT")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Neargye/nameof/archive/v${pkgver}.tar.gz")
-b2sums=("1ab8ea946028156d845bfe7248e8b6690e7248910e8775d250bd4e53c751949365718c8f4e6f5fab002f7eaa187748ea7744d2bc16edd1f6d0fd5b36df207ade")
+b2sums=("b65dababf3c20e2105f82d3557ca72ad976be4c86f5f5981562b0f82d0b8d3adfcc7904ce52c773975404b2daba42cf28320070353a65507bfc78d9a488bfb02")
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
