@@ -1,6 +1,6 @@
 pkgname=disneyplus
 _pkgname=DisneyPlus
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Unnofficial Disney+ desktop application"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("https://gitlab.com/disneyplusdesktop/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('484bb57b90b8f8b703789268696089f43b46bc2c56b710cf44c0fa6510a7ba38')
+sha256sums=('14c466303be26c362d1e0d2cbeeaf965a351239fb243a8cdd53b8ead9c4d2dfa')
 
 
 package() {
