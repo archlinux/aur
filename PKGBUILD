@@ -47,7 +47,7 @@
 
 pkgname=mediatek-mt7927-dkms
 pkgver=2.17
-pkgrel=1
+pkgrel=2
 # Keywords: MT7927 MT7925 MT6639 MT7902 Filogic 380 WiFi 7 Bluetooth btusb mt7925e mt7921e
 pkgdesc="DKMS Bluetooth (MT6639) and WiFi (MT7925e/MT7902) modules for MediaTek MT7927 Filogic 380"
 arch=('x86_64')
@@ -76,7 +76,7 @@ source=(
 )
 sha256sums=('87363c24f10e06321eb362765521094e94471f6bff8bce2d6b3e40f39f004953'
             'e64ff5726ece3e2e3045dd5277a5e8acd6f144f2d5c228738cfeb1d8e3c8a58e'
-            '41ea800184bd857480a2169f9e2fe76116f993fd3ef211e80afdca82e05f8ac0')
+            'd0b95840a491b307d1637aeb9212c017ed883d2a8d3dc0197ea7a11fbbdd46f5')
 
 # Auto-download via ASUS CDN token API
 _download_driver_zip() {

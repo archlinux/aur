@@ -5,6 +5,12 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.17-2] - 2026-10-28
+
+### Packaging
+
+- Fix Arch and CachyOS installs failing with `dkms.conf: line 32: kernelver: DKMS must provide the target kernelver` followed by `Missing dependencies to install module`. Arch's dkms pacman hook sources `dkms.conf` with no `kernelver` set, only to read `BUILD_DEPENDS`, and the `${kernelver:?}` guard added with the Linux 6.8 backport aborted that read, so the hook treated the module as having unmet dependencies and never built it. This broke every pacman-hook install of 2.16-4 and 2.17-1. An empty `kernelver` now falls through to the default, and the gate is unchanged when DKMS provides one. Checked by replaying the hook's `check_dependency()` against the old and new file: the old one fails with the reported message, the new one passes. Not run: a real pacman transaction. A machine stuck on 2.16-4 or 2.17-1 can run `sudo dkms install -m mediatek-mt7927 -v 2.17 -k <kernel>` until it upgrades
+
 ## [2.17-1] - 2026-10-28
 
 ### Driver
