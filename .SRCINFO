@@ -8,7 +8,6 @@ pkgbase = memos-bin
 	arch = aarch64
 	arch = armv7h
 	license = MIT
-	depends = glibc
 	provides = memos
 	conflicts = memos
 	conflicts = memos-git

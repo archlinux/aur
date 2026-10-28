@@ -6,7 +6,6 @@ pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and sh
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/usememos/memos"
 license=('MIT')
-depends=('glibc')
 provides=('memos')
 conflicts=('memos' 'memos-git')
 install=$pkgname.install
