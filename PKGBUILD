@@ -10,9 +10,9 @@ provides=('memos')
 conflicts=('memos' 'memos-git')
 install=$pkgname.install
 backup=('etc/memos.conf')
-source_x86_64=("memos-${pkgver}-x86_64.tar.gz::https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("memos-${pkgver}-aarch64.tar.gz::https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_arm64.tar.gz")
-source_armv7h=("memos-${pkgver}-armv7h.tar.gz::https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_armv7.tar.gz")
+source_x86_64=("https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_arm64.tar.gz")
+source_armv7h=("https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_armv7.tar.gz")
 source=("memos-${pkgver}-LICENSE::https://raw.githubusercontent.com/usememos/memos/v${pkgver}/LICENSE"
         "memos.service"
         "memos-sysusers.conf"
