@@ -2,7 +2,7 @@
 
 pkgname=headroom-ai-bin
 _pyname=headroom_ai
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)"
 arch=('x86_64')
@@ -27,13 +27,14 @@ options=('!strip' '!debug')
 # into /usr/lib/python3.12/site-packages/ via pip in a transient venv.
 #
 # The wheel declares fastapi/uvicorn/openai/mcp/onnxruntime/transformers/etc.
-# as the `proxy` extra, but headroom.cli imports headroom.proxy unconditionally
-# so the [proxy] set is effectively required just for `headroom --help` to load.
+# as the `proxy` extra. The bare CLI loads without it, but `headroom proxy`,
+# `wrap`, `deploy` and `install` need it, and the venv cannot fall back on
+# Arch's python-* packages, so [proxy] is always installed.
 _pytag=cp310-abi3-manylinux_2_28_x86_64
 _wheel="$_pyname-$pkgver-$_pytag.whl"
 source=("$_wheel::https://files.pythonhosted.org/packages/${_pytag%%-*}/${_pyname:0:1}/$_pyname/$_wheel")
 noextract=("$_wheel")
-sha256sums=('f4db5e5119a73af3ed952b1c10caff2430831d899eb17d995a27574ae6e6b306')
+sha256sums=('fbb3ceb8f6c3f208edcc3aad43c0e03e0db45636d9d2061525ad0d0a166da146')
 
 build() {
   rm -rf venv
