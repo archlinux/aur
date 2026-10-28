@@ -17,22 +17,11 @@ _biopass_run_config_migration() {
 }
 
 _biopass_run_post_install() {
-  script="/usr/share/com.ticklab.biopass/download_models.sh"
-
   if command -v ldconfig >/dev/null 2>&1; then
     ldconfig
   fi
 
   _biopass_run_config_migration
-
-  if [ ! -f "${script}" ]; then
-    echo ">>> Biopass: model downloader not found at ${script}"
-    return
-  fi
-
-  echo ">>> Biopass: running model downloader"
-  bash "${script}" || \
-    echo ">>> Biopass: automatic model download failed; run ${script} as your normal user."
 }
 
 post_install() {
@@ -49,7 +38,7 @@ post_install() {
   echo ">>>   auth [success=1 default=ignore] pam_unix.so nullok"
   echo ">>>   auth requisite pam_deny.so"
   echo ">>> "
-  echo ">>> For more details, see: https://github.com/TickLabVN/biopass/blob/main/docs/PAM.md"
+  echo ">>> For more details, see: https://github.com/phucvinh57/biopass/blob/main/docs/PAM.md"
   echo ""
 }
 

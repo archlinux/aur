@@ -1,8 +1,8 @@
 pkgbase = biopass-bin
 	pkgdesc = An alternative to Windows Hello/Howdy
-	pkgver = 1.4.1
-	pkgrel = 2
-	url = https://github.com/TickLabVN/biopass
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/phucvinh57/biopass
 	install = biopass-bin.install
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,9 @@ pkgbase = biopass-bin
 	options = !strip
 	options = !debug
 	backup = etc/ld.so.conf.d/biopass.conf
-	source_x86_64 = biopass_1.4.1_amd64.deb::https://github.com/TickLabVN/biopass/releases/download/1.4.1/biopass_1.4.1_amd64.deb
-	sha256sums_x86_64 = d3fa8bc12f38c6c9059bb6629116285dcba89cf75b144284f94dc1844e0b1168
-	source_aarch64 = biopass_1.4.1_arm64.deb::https://github.com/TickLabVN/biopass/releases/download/1.4.1/biopass_1.4.1_arm64.deb
-	sha256sums_aarch64 = 3fa6a4e0cce4759e613844a474f043eeeb39332698ad02bfbdf7f23251aab1cb
+	source_x86_64 = biopass_1.4.2_amd64.deb::https://github.com/phucvinh57/biopass/releases/download/1.4.2/biopass_1.4.2_amd64.deb
+	sha256sums_x86_64 = 31830f085a5875eacdbfa24d92bb3e9ca111b5f27c72a6e1ab389e4c7aa4f5eb
+	source_aarch64 = biopass_1.4.2_arm64.deb::https://github.com/phucvinh57/biopass/releases/download/1.4.2/biopass_1.4.2_arm64.deb
+	sha256sums_aarch64 = 76e643ddb008b0928357aeded746a207edb0da864925c9ee17f3ab137f131294
 
 pkgname = biopass-bin
