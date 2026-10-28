@@ -1,6 +1,6 @@
 pkgbase = aws-doctor
 	pkgdesc = Diagnose AWS costs, detect idle resources, and optimize cloud spending directly from your terminal. 🩺 ☁️
-	pkgver = 2.22.0
+	pkgver = 2.22.1
 	pkgrel = 1
 	url = https://github.com/elC0mpa/aws-doctor
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = aws-doctor
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/elC0mpa/aws-doctor.git#commit=aedd3276ddaba3938b5c2a30d1ec63f77cf85a7a
+	source = git+https://github.com/elC0mpa/aws-doctor.git#commit=eaf820db822d122a80868c21ee4cfcff524223c9
 	sha256sums = SKIP
 
 pkgname = aws-doctor
