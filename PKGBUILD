@@ -1,19 +1,18 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=olladesk
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Client desktop per Ollama in stile ChatGPT (PySide6/Qt), con companion web per smartphone e tablet"
 arch=('any')
 url="https://github.com/gradia64/OllaDesk"
-license=('GPL-3.0-or-later')
-depends=('python' 'pyside6' 'hicolor-icon-theme')
+license=('GPL-3.0-or-later' 'ISC')   # ISC: icone di Lucide (olladesk/assets/icons)
+depends=('python' 'pyside6' 'qt6-svg' 'hicolor-icon-theme')
 makedepends=('git')
 optdepends=(
   'ollama: server LLM locale'
   'python-pypdf: testo dei PDF allegati'
   'python-keyring: chiave API della ricerca web nel portachiavi (KWallet)'
-  'qt6-svg: icona SVG della finestra'
   'python-qrcode: QR code per abbinare il telefono alla companion web'
 )
 # Sorgente git dal tag firmato dal maintainer: con «?signed» makepkg verifica
@@ -55,4 +54,7 @@ package() {
       -e "s/@DATE@/$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)/" \
       packaging/common/olladesk.1.in > "$pkgdir/usr/share/man/man1/olladesk.1"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  # ISC non è tra le licenze comuni di Arch: namcap vuole il testo qui
+  install -Dm644 olladesk/assets/icons/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-lucide"
 }
