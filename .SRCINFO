@@ -1,4 +1,4 @@
-pkgbase = niek-fonts-extractor-mac
+pkgbase = ttf-niek-fonts-mac
 	pkgdesc = Font collection from Niek's fonts-extractor (mac) archive
 	pkgver = 2.8
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = niek-fonts-extractor-mac
 	source = https://github.com/Niek/fonts-extractor/releases/download/v2.8/fonts-mac.zip
 	sha256sums = 6ae7ff7cfef557675108b7447fab8848497dbadc7a788909feeba234be3701aa
 
-pkgname = niek-fonts-extractor-mac
+pkgname = ttf-niek-fonts-mac

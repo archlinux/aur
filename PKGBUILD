@@ -2,7 +2,7 @@
 # Personal-use packaging recipe for the upstream font archive.
 # Check the archive's font-by-font licenses before redistribution.
 
-pkgname=niek-fonts-extractor-mac
+pkgname=ttf-niek-fonts-mac
 pkgver=2.8
 pkgrel=1
 pkgdesc="Font collection from Niek's fonts-extractor (mac) archive"
