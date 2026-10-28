@@ -31,8 +31,8 @@ source=("$url/releases/download/$pkgver/OCSInventory-Agent-Setup-Linux-Deb-$pkgv
         'linux-arch-extended-template.json')
 sha256sums=('05b00d9b1c599c1390eab80195de0a88bf7151c9dff626d507ea5764545dd5d5'
             '3d1a7939a86f46a01efc14de561371ca63ad5228256585c37139b0032f603027'
-            '1b961e5cf26152feb1fa0d35acb7c7a8111e50500766827705324410c21a9c1c'
-            '29524d0e4de357de917978131154066cbbe624ef39c22d012b5fb9717aa4e404')
+            '7918b3fdb1d1c6751cab7c3ba66b1b4bb0b34568ca839e3e32596595a311e60a'
+            '097ba2e2892b5ace03c77d7e33f3d46ea8afd0a3ee886cdf02b91e70cdf68445')
 
 prepare() {
   sed -i '/^PIDFile=/d' OCSInventory-Agent-Linux-Deb-Setup/ocsinventory-agent.service

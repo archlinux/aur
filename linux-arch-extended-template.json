@@ -727,7 +727,7 @@
         {
           "name": "SERIAL NUMBER",
           "order": 5,
-          "retrieval_value": "Serial Number:\\s*([0-9]+)",
+          "retrieval_value": "(?:Display Product Serial Number:\\s*'|Serial Number:\\s*(?![\\s\\S]*Display Product Serial Number))([^'\\s]+)",
           "override_target": false,
           "new_target": null,
           "retrieval_method": null,
