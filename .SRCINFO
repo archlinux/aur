@@ -10,11 +10,11 @@ pkgbase = ir-bin
 	depends = libgcc
 	conflicts = ir
 	options = !debug
-	source_x86_64 = ir-bin-0.4.1.tar.gz::https://github.com/r-lib/ir/releases/download/v0.4.1/ir-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = ir-bin-0.4.1-x86_64.tar.gz::https://github.com/r-lib/ir/releases/download/v0.4.1/ir-x86_64-unknown-linux-gnu.tar.gz
 	provides_x86_64 = ir=0.4.1
 	sha256sums_x86_64 = 6fd9281e538c7b0d6bb6ec39172f6e54a50c4d0c25180269285638e5ecbd2ba2
-	source_aarch64 = ir-bin-0.4.1.tar.gz::https://github.com/r-lib/ir/releases/download/v0.4.1/ir-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = ir-bin-0.4.1-aarch64.tar.gz::https://github.com/r-lib/ir/releases/download/v0.4.1/ir-aarch64-unknown-linux-gnu.tar.gz
 	provides_aarch64 = ir=0.4.1
-	sha256sums_aarch64 = 6fd9281e538c7b0d6bb6ec39172f6e54a50c4d0c25180269285638e5ecbd2ba2
+	sha256sums_aarch64 = 92649e568cb8437fa6a007fd5a27c7a8b600ee529ce47e295064bbac163ab0e8
 
 pkgname = ir-bin
