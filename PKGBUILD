@@ -9,7 +9,8 @@ pkgdesc="Fluxer Canary Desktop Application"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
 license=('AGPL-3.0-only')
-depends=('gtk3' 'nss' 'alsa-lib')
+# libpipewire and systemd-libs: two of the app's native modules link them
+depends=('gtk3' 'nss' 'alsa-lib' 'libpipewire' 'systemd-libs')
 options=('!strip')
 
 source=("fluxer-canary.desktop")
