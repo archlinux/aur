@@ -14,7 +14,7 @@ arch=('x86_64' 'aarch64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('Apache-2.0 AND LicenseRef-vim')
-depends=('hicolor-icon-theme')
+depends=('glibc' 'hicolor-icon-theme' 'libgcc')
 makedepends=('jq')
 optdepends=('python-neovim: for Python 3 plugin support (see :help provider-python)'
 	'ruby-neovim: for Ruby plugin support (see :help provider-ruby)'
