@@ -1,6 +1,6 @@
 pkgbase = hypercolor-bin
 	pkgdesc = Open-source RGB lighting orchestration engine for Linux
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/hyperb1iss/hypercolor
 	install = hypercolor.install
@@ -19,9 +19,9 @@ pkgbase = hypercolor-bin
 	optdepends = i2c-tools: SMBus/I2C RGB memory module support
 	provides = hypercolor
 	conflicts = hypercolor
-	source_x86_64 = https://github.com/hyperb1iss/hypercolor/releases/download/v0.8.0/hypercolor-0.8.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 80943d719943eccf72a7bfd8bd155cef3327db5234a414346724fed263bb1d85
-	source_aarch64 = https://github.com/hyperb1iss/hypercolor/releases/download/v0.8.0/hypercolor-0.8.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0322124c4ae4d94a29f24da07d4fcd790c202d21a50481fcbf9388a6466e1d54
+	source_x86_64 = https://github.com/hyperb1iss/hypercolor/releases/download/v0.8.1/hypercolor-0.8.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5122914a6ac1a88ef494b787761fdc730729307670d30dd23ec1cae75c945425
+	source_aarch64 = https://github.com/hyperb1iss/hypercolor/releases/download/v0.8.1/hypercolor-0.8.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = fd5ddfeac561793a7a6fa3ac2aef81cd93c18be3143baeb51d93ccd76cabe14e
 
 pkgname = hypercolor-bin
