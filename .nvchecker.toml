@@ -1,0 +1,8 @@
+[xf86-input-libinput]
+source = "gitlab"
+gitlab = "xorg/driver/xf86-input-libinput"
+host = "gitlab.freedesktop.org"
+use_max_tag = true
+
+include_regex = ".*xf86-input-libinput-.*"
+prefix = "xf86-input-libinput-"
