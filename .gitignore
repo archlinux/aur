@@ -1,8 +1,5 @@
-# Ignore everything
 *
-
-# ...but
+!.nvchecker.toml
 !.gitignore
-!.SRCINFO
 !PKGBUILD
-!ov-bin.*
+!.SRCINFO

@@ -1,0 +1,5 @@
+[ov-bin]
+source = "github"
+github = "noborus/ov"
+use_latest_release = true
+prefix = "v"
