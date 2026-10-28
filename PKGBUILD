@@ -1,6 +1,6 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 pkgname=loaf-fm
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Material 3 Expressive File Manager built with Qt6 Quick and Rust"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('7zip: zip/7z/rar/iso and encrypted archives'
 provides=('loaf')
 conflicts=('loaf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m-uvex/loaf-fm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a434f160b1ca236f8c0592826f2aa2477672c966cd9cf0934fbc148f83e5f8f1')
+sha256sums=('a87a3c5d6667260dea3f964935b5b6efb8a3a18e71488e25c2493425ad383d6a')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -34,4 +34,6 @@ package() {
     done
     install -Dm644 "packaging/assets/icons/hicolor/scalable/apps/loaf.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/loaf.svg"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "THIRD-PARTY-LICENSES.md" "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES.md"
 }
