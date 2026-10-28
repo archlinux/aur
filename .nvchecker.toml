@@ -1,0 +1,5 @@
+[runal-bin]
+source = "github"
+github = "emprcl/runal"
+use_latest_release = true
+prefix = "v"

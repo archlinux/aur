@@ -1,0 +1,17 @@
+pkgbase = runal-bin
+	pkgdesc = A creative coding environment for the terminal
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/emprcl/runal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = runal
+	conflicts = runal
+	options = !strip
+	source_x86_64 = runal-x86_64-0.13.0.tgz::https://github.com/emprcl/runal/releases/download/v0.13.0/runal_0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 36b7017631b5a2a02e0c25617186acd19b407bb3cd8befb4daa7390df8e8fc70
+	source_aarch64 = runal-aarch64-0.13.0.tgz::https://github.com/emprcl/runal/releases/download/v0.13.0/runal_0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bf001f9cf7d5459f9b7a8172042deb44b62ea859c66af0ce025b5681401c8d6b
+
+pkgname = runal-bin
