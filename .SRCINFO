@@ -1,14 +1,16 @@
 pkgbase = beefetch
-	pkgdesc = Neofetch clone written in Go with the ability to display 🐝
-	pkgver = 2.0.0
+	pkgdesc = Neofetch clone written in Rust with the ability to display 🐝
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/mirdukkkkk/beefetch
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	makedepends = go
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
 	options = !debug
-	source = beefetch-2.0.0.tar.gz::https://github.com/mirdukkkkk/beefetch/archive/2.0.0.tar.gz
-	sha512sums = 4b0753949ffd5f3eda9f5d0145633ff89c0e405bbfc90761a46d01a14900e6034c9694dcc8c73a2a261780ec6e0817684a0909a0be3febfe4337ec4878e74bcc
+	source = beefetch-3.0.0.tar.gz::https://github.com/mirdukkkkk/beefetch/archive/3.0.0.tar.gz
+	sha512sums = ab9fdd9917c88b3670f81b9e2c3a3fea56263d598dfcc5447dae8a08251c5d6f4454ef72e15c6ebfe4c13ce11fd4ebd21b836fd5c0738ab666e1e492b0350d9e
 
 pkgname = beefetch

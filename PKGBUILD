@@ -1,31 +1,53 @@
 # Maintainer: mirdukkkkk <me@mrdk.uk>
 
 pkgname=beefetch
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Neofetch clone written in Go with the ability to display 🐝"
+pkgdesc="Neofetch clone written in Rust with the ability to display 🐝"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mirdukkkkk/beefetch"
 license=('GPL-3.0-only')
 
-makedepends=('go')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo')
 options=('!debug')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('4b0753949ffd5f3eda9f5d0145633ff89c0e405bbfc90761a46d01a14900e6034c9694dcc8c73a2a261780ec6e0817684a0909a0be3febfe4337ec4878e74bcc')
+sha512sums=('ab9fdd9917c88b3670f81b9e2c3a3fea56263d598dfcc5447dae8a08251c5d6f4454ef72e15c6ebfe4c13ce11fd4ebd21b836fd5c0738ab666e1e492b0350d9e')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    export CGO_ENABLED=0
-    export GOFLAGS="-trimpath -buildmode=pie"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
 
-    go build -ldflags="-s -w" -o beefetch ./cmd/beefetch
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo test --frozen
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    install -Dm755 beefetch "$pkgdir/usr/bin/beefetch"
+    local bin=target/release/beefetch
+
+    install -Dm755 "$bin" "$pkgdir/usr/bin/beefetch"
+    install -Dm644 docs/beefetch.1 "$pkgdir/usr/share/man/man1/beefetch.1"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    "$bin" --bpaf-complete-style-bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/beefetch"
+    "$bin" --bpaf-complete-style-zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_beefetch"
+    "$bin" --bpaf-complete-style-fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/beefetch.fish"
 }
