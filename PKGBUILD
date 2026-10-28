@@ -19,7 +19,7 @@ source=("memos-${pkgver}-LICENSE::https://raw.githubusercontent.com/usememos/mem
         "memos-tmpfiles.conf"
         "memos.conf")
 sha256sums=('dadc85262cec40d1344736b57da50814194ff721ab98012c09cd9d35c4b8582a'
-            '956a0895ba490d7057048ed4458172d5b70b726e82127f4505cf95f9d9dcd0f3'
+            '0c7d5102f95e7348c4791e2c919b3664c1124469c5174349c81153894affe2dd'
             'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
             'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc'
             '0e0b2a4e83ecb837055a59ee19c869586b2c74abeaa3b7a43fff95c19bd34e4d')
