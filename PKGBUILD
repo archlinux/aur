@@ -6,15 +6,15 @@
 _pkgname=libxfce4ui
 pkgname="${_pkgname}"-git
 epoch=1
-pkgver=4.21.3+103+gb5167ff3
+pkgver=4.21.9+23+g488b3069
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/libxfce4ui/start"
 license=('GPL-2.0-or-later')
 groups=('xfce4-git')
-depends=('libxfce4util' 'gtk3' 'xfconf' 'libsm' 'startup-notification' 'libgudev'
-         'libgtop' 'libepoxy' 'hicolor-icon-theme')
+depends=('libxfce4util' 'gtk3' 'xfconf' 'libgudev' 'libgtop' 'libepoxy'
+         'hicolor-icon-theme')
 makedepends=('git' 'gtk-doc' 'gobject-introspection' 'vala' 'xfce4-dev-tools' 'meson')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
@@ -31,6 +31,7 @@ build() {
     -D gtk-doc=true
     -D x11=enabled
     -D wayland=enabled
+    -D session-management=disabled
   )
 
   arch-meson "${_pkgname}" build "${meson_options[@]}"
