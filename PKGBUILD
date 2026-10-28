@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=vestige-bin
 _pkgname=vestige
-pkgver=5.0.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Long-term memory MCP server for AI agents with deterministic root-cause retrieval'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('vestige' 'vestige-git')
 options=('!strip' '!debug')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-mcp-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('4f31623ee32a57155289b4f53dd9b2a0d015cf1f836c6c2cec6e99330b4be707')
+sha256sums_x86_64=('e0e03877218a01a3d97fcf3c69bd1ad377d401d1f086feccbcce7b0b3b288879')
 
 package() {
     local bin
