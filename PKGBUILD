@@ -12,7 +12,8 @@ pkgdesc="Fluxer Desktop Application"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
 license=('AGPL-3.0-only')
-depends=('gtk3' 'nss' 'alsa-lib')
+# libpipewire and systemd-libs: two of the app's native modules link them
+depends=('gtk3' 'nss' 'alsa-lib' 'libpipewire' 'systemd-libs')
 # /usr/bin/fluxer is also installed by fluxer-git on the AUR and by the
 # "fluxer" package in upstream's own pacman repository:
 # provides/conflicts makes that an either/or instead of a file conflict
