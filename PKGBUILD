@@ -2,7 +2,7 @@
 # Contributor: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=komga
-pkgver=1.29.1
+pkgver=1.29.2
 pkgrel=1
 pkgdesc='Media server for comics/mangas/BDs/magazines/eBooks with API, OPDS, Kobo Sync and KOReader Sync support'
 arch=(any)
@@ -20,7 +20,7 @@ source=("https://github.com/gotson/komga/releases/download/${pkgver}/${pkgname}-
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('e9cafae1ec6d0d117c2375fff9ecb737ed384eede2afea9716bcb555d96ea834'
+sha256sums=('42fcaac29cbd00199c5c16f1b25882bd5a7cebc695d761f04f4532d08a22063f'
             '0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f'
             'ea583b007a654b24e96838033ae1ce01bd66a0aacf4bda429bb8bbec1bf400ef'
             'a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d'
