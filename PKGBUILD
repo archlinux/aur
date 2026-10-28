@@ -1,7 +1,7 @@
 # Maintainer: Lucas Oskorep <lucas.oskorep@gmail.com>
 pkgname=frameport-bin
 _pkgname=frameport
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Port games and apps to work with the Valve Steam Frame"
 arch=('x86_64' 'aarch64')
@@ -28,9 +28,9 @@ source=(
 )
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '7ff2de3077a117e1afa4dba1e52f0a07fec3e2952ee0fce57619291ca2d2a8c1')
-sha256sums_x86_64=('4b1eaa0165533163a09efcba6326b8a0796effaa77cae49279365559ef8feff9')
-sha256sums_aarch64=('9cc39a55181fe76ba896e0b39f421391bd5922e97cff0c95c66ddcc426e82682')
+            '0bc2825b04e291877a5f58c3c9b7d565ad070a85c3c57314974e0dd7fdac384c')
+sha256sums_x86_64=('0b7a786eb752ffc96abdee3184d30debdc770c2fd384d3ef5b49b6bebbc1d1f1')
+sha256sums_aarch64=('e36e69c6fbfea722845874d2d68e560372252d3c8eedafc86a48ee5ef518f5c9')
 
 package() {
   local _installdir="${pkgdir}/opt/${_pkgname}"
