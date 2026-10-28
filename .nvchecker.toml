@@ -1,0 +1,5 @@
+[spor-bin]
+source = "github"
+github = "emprcl/spor"
+use_latest_release = true
+prefix = "v"

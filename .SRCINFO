@@ -1,0 +1,17 @@
+pkgbase = spor-bin
+	pkgdesc = Infinite undo for your whole project
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/emprcl/spor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = spor
+	conflicts = spor
+	options = !strip
+	source_x86_64 = spor-x86_64-0.3.2.tgz::https://github.com/emprcl/spor/releases/download/v0.3.2/spor_0.3.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5ff6fa6f092cdd2dc6611323d56cc7bf311e66db33782314dd4238a948dbb36c
+	source_aarch64 = spor-aarch64-0.3.2.tgz::https://github.com/emprcl/spor/releases/download/v0.3.2/spor_0.3.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 18b0aeae792eaea45b814f0e8da29e9252589271c8671f384020fee5548db4fb
+
+pkgname = spor-bin
