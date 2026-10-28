@@ -1,6 +1,6 @@
 pkgbase = riptide-browser
 	pkgdesc = Keyboard-driven web browser with vim-like bindings, built on CEF
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://joshzcold.github.io/riptide/
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = riptide-browser
 	options = !strip
 	options = !debug
 	options = !lto
-	source = riptide::git+https://github.com/joshzcold/riptide.git#tag=v0.13.0
+	source = riptide::git+https://github.com/joshzcold/riptide.git#tag=v0.14.0
 	source = https://cef-builds.spotifycdn.com/cef_binary_156.0.14+g4fa4ab5+chromium-156.0.8078.48_linux64_minimal.tar.bz2
 	sha1sums = SKIP
 	sha1sums = d091c82a8655113a34616c08cb340bf92310298d
