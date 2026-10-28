@@ -1,6 +1,6 @@
 pkgbase = terminaltexteffects-git
 	pkgdesc = Visual effects engine applied to text in the terminal.
-	pkgver = 0.15.0.r305.g0985894
+	pkgver = 0.15.0.r313.gea9f6f3
 	pkgrel = 1
 	url = https://github.com/ChrisBuilds/terminaltexteffects
 	arch = any
