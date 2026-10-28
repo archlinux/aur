@@ -1,0 +1,11 @@
+pkgbase = bytefetch
+	pkgdesc = Tiny dependency-free fetch script with 10 fields and ASCII art
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ColtNovak/bytefetch
+	arch = any
+	license = GPL-3.0-or-later
+	source = bytefetch-1.0.tar.gz::https://github.com/ColtNovak/bytefetch/archive/refs/tags/v1.0.tar.gz
+	sha256sums = c35322ef816b5fd22a36cf340d259863f319289f403c52de171a83386afcc031
+
+pkgname = bytefetch
