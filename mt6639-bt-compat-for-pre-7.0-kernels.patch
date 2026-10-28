@@ -1,6 +1,6 @@
 Bluetooth: btusb/btmtk: compat fixes for pre-7.0 host kernels
 
-This DKMS package extracts btusb.c and btmtk.c from the kernel 7.1.1
+This DKMS package extracts btusb.c and btmtk.c from the kernel 7.3
 tarball but compiles them against the host kernel, which is commonly
 6.17 through 7.0 (Fedora 43, Ubuntu 24.04, Bazzite, Proxmox, etc.).
 
@@ -21,7 +21,7 @@ Two pre-7.0 build issues arise:
 
 --- a/btmtk.c
 +++ b/btmtk.c
-@@ -579,7 +579,7 @@
+@@ -580,7 +580,7 @@
  	if (!urb)
  		return -ENOMEM;
  
@@ -32,15 +32,15 @@ Two pre-7.0 build issues arise:
  		return -ENOMEM;
 --- a/btusb.c
 +++ b/btusb.c
-@@ -7,6 +7,7 @@
-  */
+@@ -8,6 +8,7 @@
  
+ #include <linux/cpufeature.h>
  #include <linux/dmi.h>
 +#include <linux/version.h>
  #include <linux/module.h>
  #include <linux/usb.h>
  #include <linux/usb/quirks.h>
-@@ -2099,7 +2100,7 @@
+@@ -2180,7 +2181,7 @@
  	if (!urb)
  		return ERR_PTR(-ENOMEM);
  
@@ -49,7 +49,7 @@ Two pre-7.0 build issues arise:
  	if (!dr) {
  		usb_free_urb(urb);
  		return ERR_PTR(-ENOMEM);
-@@ -4079,7 +4080,7 @@
+@@ -4225,7 +4226,7 @@
  			return -ENODEV;
  	}
  
@@ -58,15 +58,18 @@ Two pre-7.0 build issues arise:
  	if (!data)
  		return -ENOMEM;
  
-@@ -4481,8 +4482,12 @@
- 	/* Don't auto-suspend if there are connections or discovery in
- 	 * progress; external suspend calls shall never fail.
+@@ -4671,9 +4672,15 @@
+ 	 * order to wake up the system from sleep if userspace has enabled it as
+ 	 * a wakeup source.
  	 */
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 0, 0)
-+	if (PMSG_IS_AUTO(message) && hci_conn_count(data->hdev))
++	if (PMSG_IS_AUTO(message) &&
++	    ((test_bit(BTUSB_WAKEUP_BROKEN, &data->flags) && data->intf->needs_remote_wakeup) ||
++	     hci_conn_count(data->hdev)))
 +#else
  	if (PMSG_IS_AUTO(message) &&
- 	    (hci_conn_count(data->hdev) || hci_discovery_active(data->hdev)))
+ 	    ((test_bit(BTUSB_WAKEUP_BROKEN, &data->flags) && data->intf->needs_remote_wakeup) ||
+ 	     hci_conn_count(data->hdev) || hci_discovery_active(data->hdev)))
 +#endif
  		return -EBUSY;
  

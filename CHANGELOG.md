@@ -5,6 +5,20 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.17-1] - 2026-10-28
+
+### Driver
+
+- Rebase the `mt76` WiFi and `btusb`/`btmtk` Bluetooth sources from Linux 7.2 to Linux 7.3 (tarball sha256 `87363c24...`, checked against kernel.org's `sha256sums.asc`). The package's `mt76` shadows the in-tree one, so a user on a 7.2.x stable kernel was running 7.2.0-era `mt76` without the stable fixes since. The 7.3 base carries the DMA queue-index clamp and PCIe error handler that stop `mt76_dma_add_buf` from oopsing when a hung bus reads all ones, which matches the oops in #119, plus the RXDMAD_C descriptor and recycling fixes. It does not carry the channel-switch receive-loss fix for #123, which is posted to linux-wireless but not merged
+- Drop `mt7927-wifi-backport-01` and `-02` (cancel pending and on-stop `mlo_pm_work`), both merged upstream. Keep the four AP-mode patches, which still apply unchanged
+- Drop the `btusb.c` half of `mt6639-bt-compat-usb-pm.patch`: 7.3 fixes the same leaked runtime PM reference upstream through the `BTUSB_RESET` flag released at disconnect, and keeping a second put would release it twice. The `btmtk.c` half stays. The payload-bounds and `-ENOENT` reset patches still apply, since 7.3 carries neither
+- `mt7925.Kbuild` links the new `nan.o`, because 7.3 adds NAN support to the MT7925 driver
+
+### Compatibility
+
+- Three new compat patches let the 7.3 sources build on the 6.17 through 7.2 hosts this package supports. `mt7927-wifi-compat-nan-for-pre-7.1-kernels.patch` builds the NAN code as stubs when the host's `nl80211.h` has no `NL80211_IFTYPE_NAN_DATA`; `mt7927-wifi-compat-regd-obj-aql-for-pre-7.2-kernels.patch` replaces `kzalloc_flex()`/`kzalloc_obj()` with the plain form and guards two Linux 7.2 mac80211 helpers; `mt6639-bt-compat-for-pre-7.3-kernels.patch` replaces the 7.3-only `hci_acl_dlen()` and `__hci_reset_sync()` with local equivalents that behave the same on every host. The `mt6639-bt-compat-for-pre-7.0` patch is rebased for 7.3's changed suspend condition. The WiFi patches are enabled by Kbuild probes of the host headers for the symbol, not the kernel version, so a distro kernel that backported one keeps it
+- Verified by compiling both module sets against the headers of 6.17.y, 6.18.y, 7.0.y, 7.1.y and 7.2.y stable and the 7.3 host: 0 errors and 0 warnings on each, and a real `dkms add` and `dkms build` of the staged package on the 7.3 host. Not verified: any hardware run of the 7.3 base, hosts that are distro kernels instead of stable heads, and the Ubuntu 6.8 Bluetooth-only path on its original hardware
+
 ## [2.16-4] - 2026-10-28
 
 ### Packaging

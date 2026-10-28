@@ -1,0 +1,61 @@
+Bluetooth: btusb: use local hci_acl_dlen() and HCI reset helpers
+
+The Linux 7.3 btusb.c this DKMS package extracts uses two helpers that the
+Bluetooth core only gained in 7.3: the hci_acl_dlen() inline in hci.h and the
+exported __hci_reset_sync() in hci_sync.c. Building against any earlier host
+fails with "call to undeclared function".
+
+Use btusb-local equivalents everywhere instead of detecting the host. The ACL
+length is the same one-line read of the ACL header, and the reset issues the
+same synchronous HCI_Reset through __hci_cmd_sync(), which every host exports.
+A header probe would add a failure mode, since a wrong probe on a 7.3 host would
+redefine the core's inline, while the local helpers behave identically on all of
+them.
+
+--- a/btusb.c
++++ b/btusb.c
+@@ -30,6 +30,26 @@
+ #include "btrtl.h"
+ #include "btmtk.h"
+ 
++/* The Bluetooth core only gained hci_acl_dlen() and __hci_reset_sync() in
++ * Linux 7.3. These local versions do the same thing on every host.
++ */
++static inline __u16 btusb_acl_dlen(const struct sk_buff *skb)
++{
++	return __le16_to_cpu(hci_acl_hdr(skb)->dlen);
++}
++
++static int btusb_hci_reset_sync(struct hci_dev *hdev)
++{
++	struct sk_buff *skb;
++
++	skb = __hci_cmd_sync(hdev, HCI_OP_RESET, 0, NULL, HCI_INIT_TIMEOUT);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	kfree_skb(skb);
++	return 0;
++}
++
+ #define VERSION "0.8"
+ 
+ static bool disable_scofix;
+@@ -1410,7 +1430,7 @@
+ 
+ 		if (skb->len == HCI_ACL_HDR_SIZE) {
+ 			/* Complete ACL header */
+-			hci_skb_expect(skb) = hci_acl_dlen(skb);
++			hci_skb_expect(skb) = btusb_acl_dlen(skb);
+ 
+ 			if (skb_tailroom(skb) < hci_skb_expect(skb)) {
+ 				kfree_skb(skb);
+@@ -4005,7 +4025,7 @@
+ {
+ 	int err;
+ 
+-	err = __hci_reset_sync(hdev);
++	err = btusb_hci_reset_sync(hdev);
+ 	if (err)
+ 		bt_dev_err(hdev, "HCI reset during shutdown failed");
+ 

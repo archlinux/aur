@@ -1,0 +1,80 @@
+wifi: mt76: compat: Linux 7.3 allocator and mac80211 helpers on older hosts
+
+Four constructs in the Linux 7.3 mt76 sources need helpers that older hosts do
+not have:
+
+  - kzalloc_flex() and kzalloc_obj(), which 6.17 hosts lack (6.18 and later
+    stable kernels have them) and which the new regd.c allocations and
+    mt7925_mac_sta_add() use. They
+    expand to kzalloc(struct_size(...), GFP_KERNEL) and
+    kzalloc(sizeof(*p), GFP_KERNEL), so those calls use the plain form, which
+    is valid everywhere.
+  - ieee80211_txq_aql_pending(), a Linux 7.2 mac80211 helper that mt76's power
+    save buffering consults. Kbuild defines MT76_NO_AQL_PENDING when the host's
+    mac80211.h lacks it, and the check is then skipped, which is what hosts
+    without the accounting did before.
+  - ieee80211_nan_cluster_joined(), also Linux 7.2, called when the NAN firmware
+    reports a cluster join. Kbuild defines MT76_NO_NAN_CLUSTER_JOINED when it is
+    missing, and the notification is then not sent.
+
+Kbuild tests for the symbol in the host headers, not the kernel version, so a
+distro kernel that backported one keeps using it.
+
+--- a/mt7925/regd.c
++++ b/mt7925/regd.c
+@@ -336,7 +336,7 @@
+ 		goto err;
+ 	}
+ 
+-	regd = kzalloc_flex(*regd, reg_rules, num_of_rules);
++	regd = kzalloc(struct_size(regd, reg_rules, num_of_rules), GFP_KERNEL);
+ 	if (!regd) {
+ 		ret = -ENOMEM;
+ 		goto err;
+--- a/mt7921/regd.c
++++ b/mt7921/regd.c
+@@ -289,7 +289,7 @@
+ 		goto err;
+ 	}
+ 
+-	regd = kzalloc_flex(*regd, reg_rules, num_of_rules);
++	regd = kzalloc(struct_size(regd, reg_rules, num_of_rules), GFP_KERNEL);
+ 	if (!regd) {
+ 		ret = -ENOMEM;
+ 		goto err;
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -1118,7 +1118,7 @@
+ 			mlink = &msta->deflink;
+ 			is_deflink = true;
+ 		} else {
+-			mlink = kzalloc_obj(*mlink);
++			mlink = kzalloc(sizeof(*mlink), GFP_KERNEL);
+ 			if (!mlink) {
+ 				err = -ENOMEM;
+ 				break;
+--- a/tx.c
++++ b/tx.c
+@@ -505,8 +505,10 @@
+ 	if (test_bit(MT_WCID_FLAG_PS, &wcid->flags)) {
+ 		if (!(dev->drv->drv_flags & MT_DRV_HW_PS_BUFFERING))
+ 			return 0;
++#ifndef MT76_NO_AQL_PENDING
+ 		if (ieee80211_txq_aql_pending(phy->hw, txq))
+ 			return 0;
++#endif
+ 	}
+ 
+ 	if (atomic_read(&mt76_wcid_primary(wcid)->non_aql_packets) >=
+--- a/mt7925/nan.c
++++ b/mt7925/nan.c
+@@ -541,7 +541,9 @@
+ 	dev_dbg(dev->mt76.dev, "nan: own_nmi=%pM master_nmi=%pM\n",
+ 		de_evt->own_nmi, de_evt->master_nmi);
+ 
++#ifndef MT76_NO_NAN_CLUSTER_JOINED
+ 	ieee80211_nan_cluster_joined(dev->nan_vif, cluster_id, true, GFP_KERNEL);
++#endif
+ }
+ 
+ void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)

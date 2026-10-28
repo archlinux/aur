@@ -18,5 +18,14 @@ mt792x-lib-y := mt792x_core.o mt792x_mac.o mt792x_trace.o \
 # Use compat stub for airoha_offload.h on kernels < 6.19
 subdir-ccflags-y += $(if $(wildcard $(srctree)/include/linux/soc/airoha/airoha_offload.h),,-I$(src)/compat/include)
 
+# Build the NAN code as stubs on hosts whose cfg80211 predates the NAN data
+# interface type (Linux 7.1). Test the symbol, not the version, so a distro
+# kernel that backported it keeps full NAN support.
+subdir-ccflags-y += $(if $(shell grep -qs NL80211_IFTYPE_NAN_DATA $(srctree)/include/uapi/linux/nl80211.h && echo y),,-DMT76_NO_NAN)
+
+# mac80211 helpers that arrived in Linux 7.2 and that the 7.3 sources call.
+subdir-ccflags-y += $(if $(shell grep -qs ieee80211_txq_aql_pending $(srctree)/include/net/mac80211.h && echo y),,-DMT76_NO_AQL_PENDING)
+subdir-ccflags-y += $(if $(shell grep -qs ieee80211_nan_cluster_joined $(srctree)/include/net/mac80211.h && echo y),,-DMT76_NO_NAN_CLUSTER_JOINED)
+
 CFLAGS_trace.o := -I$(src)
 CFLAGS_mt792x_trace.o := -I$(src)

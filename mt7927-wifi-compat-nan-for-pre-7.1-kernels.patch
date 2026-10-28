@@ -1,0 +1,349 @@
+wifi: mt76: compat: build the NAN code as stubs on pre-7.1 hosts
+
+The Linux 7.3 mt76 sources the DKMS package extracts carry NAN support for the
+MT7925, written against cfg80211 interfaces that arrived in Linux 7.1: the NAN
+data interface type (NL80211_IFTYPE_NAN_DATA), the NAN peer schedule limits
+(CFG80211_NAN_MAX_PEER_MAPS, CFG80211_NAN_SCHED_NUM_TIME_SLOTS), the peer's
+NMI station pointer and the nan_peer_sched_changed() callback. Building against
+a 6.17 through 7.0 host fails with undeclared identifiers.
+
+Kbuild defines MT76_NO_NAN when the host's nl80211.h lacks
+NL80211_IFTYPE_NAN_DATA, which tests the symbol and so also handles a distro
+kernel that backported it. In that case the NAN-only code is not compiled, the
+NAN entry points in nan.c become stubs, and the wiphy does not advertise NAN,
+so none of them is reached. Behaviour on a 7.1 or newer host is unchanged.
+
+--- a/mt76_connac_mcu.h
++++ b/mt76_connac_mcu.h
+@@ -6,6 +6,24 @@
+ 
+ #include "mt76_connac.h"
+ 
++/* NL80211_IFTYPE_NAN_DATA and the NAN peer schedule API arrived in Linux 7.1.
++ * Kbuild defines MT76_NO_NAN when the host headers do not provide them, and
++ * the NAN code then builds as stubs.
++ */
++#ifdef MT76_NO_NAN
++#define MT76_CASE_NAN_DATA
++#define MT76_VIF_IS_NAN_DATA(vif)	(false)
++#ifndef CFG80211_NAN_MAX_PEER_MAPS
++#define CFG80211_NAN_MAX_PEER_MAPS	1
++#endif
++#ifndef CFG80211_NAN_SCHED_NUM_TIME_SLOTS
++#define CFG80211_NAN_SCHED_NUM_TIME_SLOTS	32
++#endif
++#else
++#define MT76_CASE_NAN_DATA		case NL80211_IFTYPE_NAN_DATA:
++#define MT76_VIF_IS_NAN_DATA(vif)	((vif)->type == NL80211_IFTYPE_NAN_DATA)
++#endif
++
+ #define FW_FEATURE_SET_ENCRYPT		BIT(0)
+ #define FW_FEATURE_SET_KEY_IDX		GENMASK(2, 1)
+ #define FW_FEATURE_ENCRY_MODE		BIT(4)
+--- a/mt76_connac_mcu.c
++++ b/mt76_connac_mcu.c
+@@ -466,7 +466,7 @@
+ 		basic->aid = cpu_to_le16(link_sta->sta->aid);
+ 		break;
+ 	case NL80211_IFTYPE_NAN:
+-	case NL80211_IFTYPE_NAN_DATA:
++	MT76_CASE_NAN_DATA
+ 		basic->conn_type = cpu_to_le32(CONNECTION_NAN);
+ 		break;
+ 	default:
+@@ -1265,7 +1265,7 @@
+ 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_IBSS_ADHOC);
+ 		break;
+ 	case NL80211_IFTYPE_NAN:
+-	case NL80211_IFTYPE_NAN_DATA:
++	MT76_CASE_NAN_DATA
+ 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_NAN);
+ 		basic_req.basic.conn_state = !enable;
+ 		break;
+@@ -1680,7 +1680,7 @@
+ 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_IBSS_ADHOC);
+ 		break;
+ 	case NL80211_IFTYPE_NAN:
+-	case NL80211_IFTYPE_NAN_DATA:
++	MT76_CASE_NAN_DATA
+ 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_NAN);
+ 		basic_req.basic.active = enable;
+ 		break;
+--- a/mt792x_core.c
++++ b/mt792x_core.c
+@@ -61,6 +61,7 @@
+ 	}
+ };
+ 
++#ifndef MT76_NO_NAN
+ static const struct ieee80211_iface_limit if_limits_nan_mcc[] = {
+ 	{
+ 		.max = 2,
+@@ -95,6 +96,8 @@
+ 	},
+ };
+ 
++#endif
++
+ static const struct ieee80211_iface_combination if_comb_chanctx_base[] = {
+ 	{
+ 		.limits = if_limits_chanctx_mcc,
+@@ -112,6 +115,7 @@
+ 	}
+ };
+ 
++#ifndef MT76_NO_NAN
+ static const struct ieee80211_iface_combination if_comb_chanctx_nan[] = {
+ 	{
+ 		.limits = if_limits_nan_mcc,
+@@ -128,15 +132,18 @@
+ 		.beacon_int_infra_match = false,
+ 	},
+ };
++#endif
+ 
+ static int mt792x_setup_iface_combinations(struct mt792x_dev *dev,
+ 					   struct wiphy *wiphy)
+ {
+ 	const bool cnm = !!(dev->fw_features & MT792x_FW_CAP_CNM);
++#ifndef MT76_NO_NAN
+ 	const bool nan = !!(dev->fw_features & MT792x_FW_CAP_NAN);
+ 	const int n_base = ARRAY_SIZE(if_comb_chanctx_base);
+ 	const int n_nan = ARRAY_SIZE(if_comb_chanctx_nan);
+ 	struct ieee80211_iface_combination *comb;
++#endif
+ 
+ 	if (!cnm) {
+ 		dev->iface_combinations = if_comb;
+@@ -144,6 +151,11 @@
+ 		return 0;
+ 	}
+ 
++#ifdef MT76_NO_NAN
++	dev->iface_combinations = if_comb_chanctx_base;
++	dev->n_iface_combinations = ARRAY_SIZE(if_comb_chanctx_base);
++	return 0;
++#else
+ 	/* CNM enabled, NAN optional */
+ 	if (!nan) {
+ 		dev->iface_combinations = if_comb_chanctx_base;
+@@ -164,6 +176,7 @@
+ 	dev->n_iface_combinations = n_base + n_nan;
+ 
+ 	return 0;
++#endif
+ }
+ 
+ void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+@@ -792,6 +805,7 @@
+ 				 BIT(NL80211_IFTYPE_P2P_GO) |
+ 				 BIT(NL80211_IFTYPE_P2P_DEVICE);
+ 
++#ifndef MT76_NO_NAN
+ 	if ((dev->fw_features & MT792x_FW_CAP_CNM) &&
+ 	    (dev->fw_features & MT792x_FW_CAP_NAN)) {
+ 		wiphy->interface_modes |= BIT(NL80211_IFTYPE_NAN) |
+@@ -806,6 +820,7 @@
+ 		wiphy->nan_capa.dev_capabilities = NAN_DEV_CAPA_EXT_KEY_ID_SUPPORTED;
+ 		wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_SECURE_NAN);
+ 	}
++#endif
+ 
+ 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
+ 	wiphy->max_scan_ssids = 4;
+--- a/mt7925/init.c
++++ b/mt7925/init.c
+@@ -160,6 +160,7 @@
+ 	return 0;
+ }
+ 
++#ifndef MT76_NO_NAN
+ static int mt7925_init_nan_cap(struct mt76_dev *mdev)
+ {
+ 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+@@ -186,6 +187,7 @@
+ 
+ 	return 0;
+ }
++#endif
+ 
+ static void mt7925_init_work(struct work_struct *work)
+ {
+@@ -207,7 +209,9 @@
+ 		return;
+ 	}
+ 
++#ifndef MT76_NO_NAN
+ 	dev->mt76.init_wiphy = mt7925_init_nan_cap;
++#endif
+ 
+ 	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
+ 				   ARRAY_SIZE(mt76_rates));
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -26,8 +26,7 @@
+ 
+ static bool mt7925_vif_is_nan(struct ieee80211_vif *vif)
+ {
+-	return vif->type == NL80211_IFTYPE_NAN ||
+-	       vif->type == NL80211_IFTYPE_NAN_DATA;
++	return vif->type == NL80211_IFTYPE_NAN || MT76_VIF_IS_NAN_DATA(vif);
+ }
+ 
+ #define HE_PHY(p, c)			u8_get_bits(c, IEEE80211_HE_PHY_##p)
+@@ -2854,7 +2853,7 @@
+ 		basic_req->active = true;
+ 		break;
+ 	case NL80211_IFTYPE_NAN:
+-	case NL80211_IFTYPE_NAN_DATA:
++	MT76_CASE_NAN_DATA
+ 		basic_req->conn_type = cpu_to_le32(CONNECTION_NAN);
+ 		basic_req->active = enable;
+ 		break;
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -1271,7 +1271,7 @@
+ 		mt7925_mac_link_sta_assoc(mdev, vif, link_sta);
+ 		break;
+ 	case MT76_STA_EVENT_AUTHORIZE:
+-		if (vif->type == NL80211_IFTYPE_NAN_DATA) {
++		if (MT76_VIF_IS_NAN_DATA(vif)) {
+ 			int ret;
+ 
+ 			mt792x_mutex_acquire(dev);
+@@ -1412,8 +1412,7 @@
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 
+ 	/* Release NAN peer record before tearing down the STA. */
+-	if (vif->type == NL80211_IFTYPE_NAN ||
+-	    vif->type == NL80211_IFTYPE_NAN_DATA) {
++	if (vif->type == NL80211_IFTYPE_NAN || MT76_VIF_IS_NAN_DATA(vif)) {
+ 		int ret = mt792x_nan_set_peer_rec(mdev, sta);
+ 
+ 		if (ret)
+@@ -1422,6 +1421,7 @@
+ 				ret);
+ 	}
+ 
++#ifndef MT76_NO_NAN
+ 	/* Release NDP context ID for NAN_DATA sta. */
+ 	if (vif->type == NL80211_IFTYPE_NAN_DATA) {
+ 		struct ieee80211_sta *nmi_sta;
+@@ -1440,6 +1440,7 @@
+ 		}
+ 		rcu_read_unlock();
+ 	}
++#endif
+ 
+ 	if (ieee80211_vif_is_mld(vif)) {
+ 		mt7925_mac_sta_remove_links(dev, vif, sta, msta->valid_links);
+@@ -2154,10 +2155,12 @@
+ 
+ 	mt792x_mutex_release(dev);
+ 
++#ifndef MT76_NO_NAN
+ 	if (vif->type == NL80211_IFTYPE_NAN &&
+ 	    changed & BSS_CHANGED_NAN_LOCAL_SCHED) {
+ 		mt7925_nan_local_sched_changed(dev, vif);
+ 	}
++#endif
+ }
+ 
+ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
+@@ -2592,6 +2595,7 @@
+ 	}
+ }
+ 
++#ifndef MT76_NO_NAN
+ static int mt7925_start_nan(struct ieee80211_hw *hw,
+ 			    struct ieee80211_vif *vif,
+ 			    struct cfg80211_nan_conf *conf)
+@@ -2694,6 +2698,7 @@
+ 
+ 	return err;
+ }
++#endif
+ 
+ static void mt7925_sta_pre_rcu_remove(struct ieee80211_hw *hw,
+ 				      struct ieee80211_vif *vif,
+@@ -2807,10 +2812,12 @@
+ 	.channel_switch = mt7925_channel_switch,
+ 	.abort_channel_switch = mt7925_abort_channel_switch,
+ 	.channel_switch_rx_beacon = mt7925_channel_switch_rx_beacon,
++#ifndef MT76_NO_NAN
+ 	.start_nan = mt7925_start_nan,
+ 	.stop_nan = mt7925_stop_nan,
+ 	.nan_change_conf = mt7925_nan_change_conf,
+ 	.nan_peer_sched_changed = mt7925_nan_peer_sched_changed,
++#endif
+ };
+ EXPORT_SYMBOL_GPL(mt7925_ops);
+ 
+--- a/mt7925/nan.c
++++ b/mt7925/nan.c
+@@ -17,6 +17,60 @@
+ #include "nan.h"
+ #include "regd.h"
+ 
++#ifdef MT76_NO_NAN
++/* The host's cfg80211 has no NAN data interface or peer schedule API, so the
++ * wiphy never advertises NAN and none of these is reached.
++ */
++int mt7925_nan_enable(struct ieee80211_vif *vif, struct mt792x_dev *dev,
++		      struct cfg80211_nan_conf *conf)
++{
++	return -EOPNOTSUPP;
++}
++
++int mt7925_nan_disable(struct ieee80211_vif *vif, struct mt792x_dev *dev)
++{
++	return -EOPNOTSUPP;
++}
++
++int mt7925_nan_change_configure(struct ieee80211_vif *vif,
++				struct mt792x_dev *dev,
++				struct cfg80211_nan_conf *conf)
++{
++	return -EOPNOTSUPP;
++}
++
++void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)
++{
++}
++
++int mt7925_nan_set_nmi_addr(struct mt792x_dev *dev, const u8 *addr)
++{
++	return -EOPNOTSUPP;
++}
++
++void mt7925_nan_local_sched_changed(struct mt792x_dev *dev,
++				    struct ieee80211_vif *vif)
++{
++}
++
++int mt792x_nan_set_peer_schedule(struct mt792x_dev *dev,
++				 struct ieee80211_sta *sta)
++{
++	return -EOPNOTSUPP;
++}
++
++int mt792x_nan_set_peer_rec(struct mt76_dev *mdev, struct ieee80211_sta *sta)
++{
++	return 0;
++}
++
++int mt792x_nan_map_sta_rec(struct mt76_dev *mdev, struct ieee80211_vif *vif,
++			   struct ieee80211_sta *sta)
++{
++	return -EOPNOTSUPP;
++}
++#else
++
+ static void mt7925_nan_set_5g_channel(struct mt792x_dev *dev,
+ 				      struct mt7925_nan_enable_req_tlv *req,
+ 				      struct cfg80211_nan_conf *conf)
+@@ -1096,3 +1150,4 @@
+ 
+ 	return ret ?: -ENOMEM;
+ }
++#endif /* MT76_NO_NAN */
