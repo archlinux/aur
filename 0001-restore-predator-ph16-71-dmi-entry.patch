@@ -1,0 +1,31 @@
+Restore the Acer Predator PH16-71 DMI entry.
+
+Upstream Linuwu-Sense dropped the PH16-71 from its quirk table in ee01b84
+(0x7375646F/Linuwu-Sense#103), so the module loads with quirk_unknown and
+creates no predator_sense/ group. This is the maintainer's fix from
+https://github.com/0x7375646F/Linuwu-Sense/pull/152, verbatim.
+
+Temporary: drop this patch (and its prepare() step) once #152 is merged.
+prepare() already skips it when the source has the entry again.
+See docs/adr/0002-own-linuwu-sense-dkms-git.md.
+
+diff --git a/src/linuwu_sense.c b/src/linuwu_sense.c
+index 64c5950..6f0c7b1 100644
+--- a/src/linuwu_sense.c
++++ b/src/linuwu_sense.c
+@@ -1111,6 +1111,15 @@ static struct quirk_entry quirk_acer_nitro = {
+         },
+         .driver_data = &quirk_acer_predator_phn14_51,
+     },
++     {
++         .callback = dmi_matched,
++         .ident = "Acer Predator PH16-71",
++         .matches = {
++             DMI_MATCH(DMI_SYS_VENDOR, "Acer"),
++             DMI_MATCH(DMI_PRODUCT_NAME, "Predator PH16-71"),
++         },
++         .driver_data = &quirk_acer_predator_v4,
++     },
+      {
+          .callback = dmi_matched,
+          .ident = "Acer Predator PH18-71",

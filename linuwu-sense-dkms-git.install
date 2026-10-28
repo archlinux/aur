@@ -1,0 +1,12 @@
+post_install() {
+  echo ':: linuwu-sense: dkms builds the module for your installed kernels now.'
+  echo '   acer_wmi is blacklisted and linuwu_sense loads at boot, so reboot'
+  echo '   (or: sudo modprobe -r acer_wmi && sudo modprobe linuwu_sense).'
+  echo '   Secure Boot: the module must be signed, see the dkms mok_signing_key'
+  echo '   setting in /etc/dkms/framework.conf.'
+  echo '   Clang-built kernel (CachyOS)? Install clang, lld and llvm first.'
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,18 @@
+PACKAGE_NAME="linuwu-sense"
+PACKAGE_VERSION="@PKGVER@"
+AUTOINSTALL="yes"
+
+# Build with kbuild directly (Kbuild next to this file names the module).
+MAKE[0]="make -C ${kernel_source_dir} M=${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build modules"
+
+# Clang-built kernels (CachyOS etc.) must be built with the LLVM toolchain, or
+# kbuild bails out on the compiler mismatch. Recent dkms adds LLVM=1 itself;
+# this does the same for older versions (repeating LLVM=1 is harmless).
+# The build needs the clang, lld and llvm packages.
+if [[ -e "${kernel_source_dir}/.config" ]] && grep -q '^CONFIG_CC_IS_CLANG=y' "${kernel_source_dir}/.config"; then
+    MAKE[0]+=" LLVM=1"
+fi
+
+BUILT_MODULE_NAME[0]="linuwu_sense"
+BUILT_MODULE_LOCATION[0]="src/"
+DEST_MODULE_LOCATION[0]="/kernel/drivers/platform/x86"
