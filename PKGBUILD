@@ -1,59 +1,91 @@
-# Maintainer:     Jaja <jaja@mailbox.org>
-# Co-maintainer:  alisoftware <admin@situsali.com>
-#
+# Maintainer: Pablo Romano <promano7@hotmail.com>
 
 pkgname=jsignpdf
-pkgver=2.3.0
-_releasedate="2025git -01-06"
+pkgver=3.2.1
 pkgrel=1
-pkgdesc="Digitally sign PDF files with X.509 certificates in GUI and CLI."
-arch=('any')
-url="http://jsignpdf.sourceforge.net/"
-license=('LGPL' 'MPL' 'CCPL' 'Apache' 'custom')
-depends=('java-runtime>=8'
-         'bash')
-optdepends=('hicolor-icon-theme: icon for launcher'
-            'desktop-file-utils: MIME cache update')
+pkgdesc='Digitally sign PDF documents with a graphical interface or command line'
+arch=('x86_64' 'aarch64')
+url='https://github.com/intoolswetrust/jsignpdf'
+license=('MPL-2.0 OR LGPL-2.1-only')
+depends=('gtk3' 'libxtst' 'libxxf86vm' 'hicolor-icon-theme')
+makedepends=('jdk21-openjdk' 'maven')
+checkdepends=('desktop-file-utils')
+optdepends=('opensc: PKCS#11 module for compatible smart cards and tokens')
+_tag="JSignPdf_${pkgver//./_}"
 source=(
-  ${pkgname}-${pkgver}.zip::"https://github.com/intoolswetrust/jsignpdf/releases/download/JSignPdf_${pkgver//./_}/JSignPdf-${pkgver}.zip"
-  jsignpdf_48.png::"https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_48x48x32.png"
-  jsignpdf_128.png::"https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_128x128x32.png"
-  supplementary.tar.zst)
-md5sums=('d239658ea50a39eb35169d8392feaffb'
-         'a44ef91da28d94fb949e361d19adbbd5'
-         'bf2d11e38c706fe183900cce1fab0e38'
-         'e45374c55c83559e1f66f09e8fd0cd1a')
-changelog=changelog
-backup=('usr/share/java/jsignpdf/conf/conf.properties'
-        'usr/share/java/jsignpdf/conf/pkcs11.cfg')
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz"
+  'jsignpdf.sh'
+  'jsignpdf.desktop'
+)
+sha256sums=('547ac4ad88ef1e0d3b2aea408b1db0c3aa5347650a60dbb17bf819bc128d4764'
+            'c8e4c5662d11101fb6dea16277437f69aba0473fc555bc8a08efa0aa9bb29bab'
+            '8870afe9c0673690e462439581d961abf399764f601c7d3cb0ab7805487d4d4d')
 
 build() {
-  sed -i "s/<pkgver>/$pkgver/g" ${srcdir}/manpages/de/man1/*
-  sed -i "s/<pkgver>/$pkgver/g" ${srcdir}/manpages/man1/*
-  sed -i "s/<date>/$_releasedate/g" ${srcdir}/manpages/de/man1/*
-  sed -i "s/<date>/$_releasedate/g" ${srcdir}/manpages/man1/*
+  cd "$pkgname-$_tag"
+
+  export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+  export PATH="$JAVA_HOME/bin:$PATH"
+
+  # Keep Maven's downloaded dependencies in the build tree.
+  mvn --batch-mode --no-transfer-progress \
+    -Dmaven.repo.local="$srcdir/.m2/repository" \
+    -DskipTests package
+}
+
+check() {
+  cd "$pkgname-$_tag"
+
+  export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+  export PATH="$JAVA_HOME/bin:$PATH"
+
+  mvn --batch-mode --no-transfer-progress \
+    -Dmaven.repo.local="$srcdir/.m2/repository" test
+  desktop-file-validate "$srcdir/jsignpdf.desktop"
 }
 
 package() {
-  ## file and directory permissions for mv and cp: u=rwx,g=rx,o=rx
-  umask 022
-  ## licenses
-  install -d "${pkgdir}"/usr/share/licenses/"${pkgname}"
-  mv "${srcdir}/${pkgname}-${pkgver}"/licenses/ThirdPartyLicenses/* "${pkgdir}"/usr/share/licenses/"${pkgname}"
-  ## documentation
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/docs/JSignPdf.pdf "${pkgdir}"/usr/share/doc/"${pkgname}"/Quickstart.pdf
-  #install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/docs/ReleaseNotes.txt "${pkgdir}"/usr/share/doc/"${pkgname}"/ReleaseNotes
-  install -d "${pkgdir}"/usr/share/man
-  mv "${srcdir}"/manpages/* "${pkgdir}"/usr/share/man
-  ## programm files
-  install -Dm644 "${srcdir}"/pictures/splash1.png "${pkgdir}"/usr/share/java/"${pkgname}"/splash.png
-  rm -r "${srcdir}/${pkgname}-${pkgver}"/docs
-  mv "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}"/usr/share/java/"${pkgname}"
-  ## executable scripts
-  install -Dm755 "${srcdir}"/launchers/jsignpdf.sh "${pkgdir}"/usr/bin/jsignpdf
-  install -Dm755 "${srcdir}"/launchers/jsignpdf-installcert.sh "${pkgdir}"/usr/bin/jsignpdf-installcert
-  ## .icon and .desktop files
-  install -Dm644 "${srcdir}"/jsignpdf_48.png "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/"${pkgname}".png
-  install -Dm644 "${srcdir}"/jsignpdf_128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/"${pkgname}".png
-  install -Dm644 "${srcdir}"/launchers/jsignpdf.desktop "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
+  # Resolve the JDK at build time before adding the runtime requirement.
+  # Both Arch's JRE 21 and JDK 21 provide this virtual dependency.
+  depends=('java-runtime-openjdk=21' 'gtk3' 'libxtst' 'libxxf86vm' 'hicolor-icon-theme')
+
+  cd "$pkgname-$_tag"
+
+  local staging=distribution/target/appassembler/lib
+  local classifier jar name
+  case "$CARCH" in
+    x86_64) classifier=linux ;;
+    aarch64) classifier=linux-aarch64 ;;
+    *) return 1 ;;
+  esac
+
+  # Bootstrap expects the platform-specific JavaFX jars in a sibling
+  # javafx/ directory. Keep only the Linux natives for this package's arch.
+  install -dm755 "$pkgdir/usr/share/java/$pkgname/javafx"
+  for jar in "$staging"/*.jar; do
+    name=${jar##*/}
+    case "$name" in
+      javafx-*-win.jar|javafx-*-linux.jar|javafx-*-linux-aarch64.jar|javafx-*-mac.jar|javafx-*-mac-aarch64.jar)
+        if [[ $name == *-"$classifier".jar ]]; then
+          install -m644 "$jar" "$pkgdir/usr/share/java/$pkgname/javafx/"
+        fi
+        ;;
+      *) install -m644 "$jar" "$pkgdir/usr/share/java/$pkgname/" ;;
+    esac
+  done
+
+  install -Dm755 "$srcdir/jsignpdf.sh" "$pkgdir/usr/bin/jsignpdf"
+  install -Dm644 "$srcdir/jsignpdf.desktop" \
+    "$pkgdir/usr/share/applications/jsignpdf.desktop"
+  install -Dm644 distribution/linux/flatpak/jsignpdf.png \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.intoolswetrust.JSignPdf.png"
+
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  cp -r distribution/licenses/. "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m644 License.md "$pkgdir/usr/share/licenses/$pkgname/"
+
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -m644 distribution/target/generated-docs/*.pdf \
+    "$pkgdir/usr/share/doc/$pkgname/"
+  cp -r distribution/demo "$pkgdir/usr/share/doc/$pkgname/"
 }

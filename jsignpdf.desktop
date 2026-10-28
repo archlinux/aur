@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=JSignPdf
+Comment=Add digital signatures to PDF documents
+Comment[es]=Añadir firmas digitales a documentos PDF
+Exec=jsignpdf --gui
+TryExec=jsignpdf
+Icon=io.github.intoolswetrust.JSignPdf
+Terminal=false
+Categories=Office;Viewer;
+StartupNotify=true
+Keywords=pdf;signature;digital signature;sign;
+Keywords[es]=pdf;firma;firma digital;firmar;
