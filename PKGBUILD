@@ -5,12 +5,20 @@
 pkgname=lunar-client-bin
 _pkgname=lunarclient
 pkgver=3.7.17
-pkgrel=2
+pkgrel=3
 pkgdesc="PvP modpack for all modern versions of Minecraft (upstream AppImage)"
 arch=('x86_64')
 url="https://lunarclient.com"
 license=('LicenseRef-proprietary')
-depends=('fuse2' 'xorg-xrandr')
+# The AppImage runs as it is: its runtime loads fuse2 and zlib. The rest is
+# what the Electron app inside links (readelf -d), plus what Minecraft loads.
+depends=('fuse2' 'zlib'
+         'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'glibc' 'gtk3'
+         'libcups' 'libgcc' 'libstdc++' 'libx11' 'libxcb' 'libxcomposite'
+         'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa'
+         'nspr' 'nss' 'pango' 'systemd-libs'
+         # loaded by Minecraft, not by the launcher
+         'libgl' 'libpulse' 'libxcursor' 'libxxf86vm' 'xorg-xrandr')
 provides=('lunar-client' 'lunarclient')
 conflicts=('lunar-client' 'lunarclient')
 options=('!strip' '!debug')
