@@ -16,6 +16,7 @@ depends=(
   'playerctl'
   'networkmanager'
   'bluez'
+  'bluez-utils'
   'python'
   'git'
 )

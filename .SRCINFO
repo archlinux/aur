@@ -14,6 +14,7 @@ pkgbase = crux-shell-git
 	depends = playerctl
 	depends = networkmanager
 	depends = bluez
+	depends = bluez-utils
 	depends = python
 	depends = git
 	optdepends = grim: settings-panel/verification screenshots
