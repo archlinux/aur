@@ -1,0 +1,4 @@
+[gtk4]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/gtk.git"
+include_regex = '4\.\d*[02468]\.\d+'
