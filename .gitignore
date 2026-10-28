@@ -2,6 +2,8 @@
 !PKGBUILD
 !linux-id.rules
 !linux-id.service
+!linux-id-uhid.conf
+!linux-id.install
 !.gitignore
 !.SRCINFO
 !.nvchecker.toml

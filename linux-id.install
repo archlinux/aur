@@ -1,0 +1,10 @@
+post_upgrade() {
+    if [[ "$(vercmp "${2}" 0.2.4-1)" -le 0 ]]
+    then
+        echo "Starting from linux-id 0.2.4-2, a /usr/lib/modules-load.d/linux-id-uhid.conf is added"
+        echo " to ensure uhid module is loaded. If you do not like it, you can create a symlink at"
+        echo " /etc/modules-load.d/linux-id-uhid.conf points to /dev/null to mask it."
+        echo "This is because linux-id.service, a user service, which cannot reference system service"
+        echo " like modprobe@uhid.service."
+    fi
+}

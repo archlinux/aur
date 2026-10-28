@@ -1,8 +1,6 @@
 [Unit]
 Description=linux-id TPM service
 Documentation=https://github.com/matejsmycka/linux-id
-Wants=modprobe@uhid.service
-After=modprobe@uhid.service
 ConditionSecurity=tpm2
 ConditionKernelModuleLoaded=uhid
 
