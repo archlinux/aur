@@ -6,7 +6,7 @@
 # nothing extra to compile on the user's machine.
 
 pkgname=poc-hello
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Prints a greeting - poc-app demo binary, versioned independently by multicz'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('go')
 source=("poc-app-$pkgver.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/hello-v$pkgver.tar.gz")
 # Recomputed by .github/workflows/publish.yml on every version bump via
 # `updpkgsums` once the corresponding poc-app tag actually exists.
-sha256sums=('08800c37f05704788d2ae69a10f204039026a0bd05eeffd7045d5be0cc8efa32')
+sha256sums=('04fd922a3430507ef1e0737249b787e2c4908b79b7d03935553550ad460ee35a')
 
 build() {
   # Not a fixed "poc-app-hello-v$pkgver" name: while poc-app stays
