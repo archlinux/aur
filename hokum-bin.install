@@ -1,0 +1,6 @@
+post_install() {
+  echo 'Hokum starts on the first notification through D-Bus activation.'
+  echo 'If another notification daemon (mako, dunst, swaync) is running, stop it and run:'
+  echo '  systemctl --user enable --now hokum.service'
+  echo 'Open Hokum from your launcher (or run hokum) to style and configure it.'
+}

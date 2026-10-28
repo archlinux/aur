@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Hokum
+GenericName=Notification Settings
+Comment=Style and configure your notifications
+Exec=hokum
+Icon=preferences-desktop-notification
+Terminal=false
+StartupNotify=true
+Categories=Settings;DesktopSettings;
+Keywords=notifications;notification;daemon;do not disturb;

@@ -1,0 +1,19 @@
+[Unit]
+Description=Hokum notification daemon (org.freedesktop.Notifications)
+Documentation=https://hokum.app
+PartOf=graphical-session.target
+After=graphical-session.target
+Conflicts=mako.service dunst.service swaync.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.Notifications
+ExecCondition=/bin/sh -c '[ -n "$WAYLAND_DISPLAY" ]'
+ExecStart=/usr/bin/hokum service
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target
