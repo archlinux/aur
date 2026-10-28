@@ -1,7 +1,7 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=plico
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Editor PDF nativo per Linux: pagine, cancellazione vera, moduli, OCR, firma (PySide6/Qt)"
 arch=('any')
@@ -29,6 +29,9 @@ optdepends=(
   'tesseract-data-fra: OCR dei documenti in francese'
   'tesseract-data-deu: OCR dei documenti in tedesco'
   'tesseract-data-spa: OCR dei documenti in spagnolo'
+  # il PySide6 di Arch usa le traduzioni di Qt del sistema, che stanno qui:
+  # senza, OK, Annulla, Sì e No restano in inglese
+  "qt6-translations: pulsanti standard di Qt nella lingua dell'interfaccia"
 )
 _pyhanko=pyhanko-0.37.0-py3-none-any.whl
 _certvalidator=pyhanko_certvalidator-0.32.1-py3-none-any.whl
