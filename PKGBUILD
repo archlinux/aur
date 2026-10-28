@@ -1,7 +1,7 @@
 # Maintainer: Alexander Beck <dev@daallexx.eu>
 
 pkgname=etr
-pkgver=1.2.8
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='ETR - ECMP Traceroute'
 arch=('x86_64')
