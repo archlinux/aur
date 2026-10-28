@@ -8,7 +8,7 @@ pkgname=${_appname}-bin
 pkgdesc="Feature-rich terminal-based text viewer. It is a so-called terminal pager."
 
 pkgver=0.55.0
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -38,10 +38,24 @@ sha256sums_armv7h=('5f4b25dacd9b5a4cd1ba26e2c4fbed5431b0e4b9a6764c105ecc912ebd6a
 sha256sums_aarch64=('0e5912383ae65af84be274f26fc920d0f493b237d1256123c1d1384a2e5e542f')
 
 
+build() {
+	cd "${srcdir}/" || exit
+
+	mkdir -p "./completions"
+
+	"./${_appname}" --completion zsh > "./completions/${_appname}.zsh"
+	"./${_appname}" --completion bash > "./completions/${_appname}.bash"
+	"./${_appname}" --completion fish > "./completions/${_appname}.fish"
+}
+
 package() {
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_appname}" -t "${pkgdir}/usr/bin/"
+
+	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+	install -Dm644 "completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
+	install -Dm644 "completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
 
 	install -Dm644 "${_appname}.yaml" -t "${pkgdir}/usr/share/doc/${_appname}/"
 	install -Dm644 "${_appname}-less.yaml" -t "${pkgdir}/usr/share/doc/${_appname}/"

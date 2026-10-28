@@ -1,7 +1,7 @@
 pkgbase = ov-bin
 	pkgdesc = Feature-rich terminal-based text viewer. It is a so-called terminal pager.
 	pkgver = 0.55.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noborus/ov
 	arch = x86_64
 	arch = armv7h
