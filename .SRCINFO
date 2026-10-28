@@ -1,21 +1,20 @@
 pkgbase = keyvis
 	pkgdesc = A simple and lightweight keystroke visualisation tool
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/d7omdev/keyvis
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = bun
-	makedepends = npm
-	makedepends = typescript
 	depends = gjs
 	depends = gtk4
+	depends = gtk4-layer-shell
 	depends = keyd
-	depends = bun
+	optdepends = ttf-nerd-fonts-symbols: icons for keys like Backspace, Enter and the arrows
 	provides = keyvis
 	conflicts = keyvis
-	source = git+https://github.com/d7omdev/keyvis.git
+	source = git+https://github.com/d7omdev/keyvis.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = keyvis
