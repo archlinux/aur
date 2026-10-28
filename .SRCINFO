@@ -1,0 +1,26 @@
+pkgbase = liveside
+	pkgdesc = Twitch chat client with a window, a terminal frontend and a daemon
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://liveside.jifox.net
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gtk4
+	depends = glib2
+	depends = pango
+	depends = cairo
+	depends = graphene
+	depends = libgcc
+	depends = glibc
+	depends = hicolor-icon-theme
+	optdepends = pipewire: sounds through pw-play
+	optdepends = libpulse: sounds through paplay, where PipeWire is not
+	optdepends = sound-theme-freedesktop: the default sounds
+	optdepends = streamlink: watching the stream from the window or the terminal
+	optdepends = python: the example bot
+	options = !lto
+	source = liveside-0.9.0.tar.gz::https://github.com/foxkyong/liveside/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = liveside
