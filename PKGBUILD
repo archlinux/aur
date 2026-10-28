@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=tracedraw
-pkgver=0.19.8
+pkgver=0.19.10
 pkgrel=1
 url="https://github.com/igtoth/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Corel Draw'
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('4f3b6e240bef3fd1b6bb38d1fa336c475098c19496c5bb459e0368dc867d770a')
+sha256sums=('87615d1e48ca3562025e3fde8b835e047a71c3db6e47d9bb529df8b23c6c4f1f')
 
 _srcenv() {
 	cd "$_archive"
