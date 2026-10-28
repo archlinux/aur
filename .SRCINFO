@@ -1,6 +1,6 @@
 pkgbase = calibre-tui-bin
 	pkgdesc = A TUI application to search and open books in your Calibre library.
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/WindustH/calibre-tui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = calibre-tui-bin
 	conflicts = calibre-tui
 	conflicts = calibre-tui-git
 	options = !strip
-	source = calibre-tui-0.6.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/calibre-tui/releases/download/v0.6.2/calibre-tui-0.6.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = ef48ae7b63dfb1a3800a6092f49e46e7fd6f67c73d850a9226f135cf18504167
+	source = calibre-tui-0.6.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/calibre-tui/releases/download/v0.6.3/calibre-tui-0.6.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 71532c31b205cadc22e5b01758391d9a0829aa310bee0a432d74ef22c98ad296
 
 pkgname = calibre-tui-bin
