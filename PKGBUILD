@@ -2,7 +2,7 @@
 
 pkgname=pgconsole
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based PostgreSQL editor with access control and audit logging"
 arch=('any')
 url="https://github.com/pgplex/pgconsole"
@@ -34,6 +34,5 @@ package() {
   cp -r runtime/node_modules "${dest}/"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/dist/server.mjs" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 package/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 package/README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }

@@ -1,7 +1,7 @@
 pkgbase = pgconsole
 	pkgdesc = Web-based PostgreSQL editor with access control and audit logging
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgplex/pgconsole
 	arch = any
 	license = Apache-2.0
