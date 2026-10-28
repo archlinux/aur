@@ -9,10 +9,22 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 <!-- ## [Unreleased] -->
 
-## [2.24.1] - 2026-10-20
+## [2.24.5] - 2026-10-28
 
 ### Added
-- Fedora package
+
+- Option to close the create unit window on successful creation
+
+### Changed
+
+- Russian translation
+
+### Fixed
+
+- Unit Creation Window: fix validators for Service ExecStart and ExecReload
+- Unit Creation Window: Focus on unit after creation (when creation window is at autoclose)
+
+## [2.24.1] - 2026-10-26
 
 ### Changed
 - Bus communication interface
@@ -39,7 +51,7 @@ Various journal behaviors
 ## [2.24.0] - 2026-10-16
 
 ### Added
-- [Issue 80](https://github.com/plrigaux/sysd-manager/issues/80) Preserve Filters on the appplication restart
+- [Issue 80](https://github.com/plrigaux/sysd-manager/issues/80) Preserve Filters on the application restart
 
 ### Changed
 - Filter Unit Panel UX
@@ -198,7 +210,7 @@ improve UX
 - [Issue 62](https://github.com/plrigaux/sysd-manager/issues/62) Add word wrap option for the journal events
 
 ### Fixed
-- [Issue 58](https://github.com/plrigaux/sysd-manager/issues/58) Services in currated list - Fix include unit files
+- [Issue 58](https://github.com/plrigaux/sysd-manager/issues/58) Services in curated list - Fix include unit files
 - [Issue 64](https://github.com/plrigaux/sysd-manager/issues/64) Unit File Color palette when switching Color Scheme Mode (Light and Dark)
 - [Issue 63](https://github.com/plrigaux/sysd-manager/issues/63) Unit Description and Unit Dependencies text color palette
 when switching Color Scheme Mode (Light and Dark)
@@ -208,7 +220,7 @@ when switching Color Scheme Mode (Light and Dark)
 ### Added
 - Create Unit wizard (under construction)
 - [Issue 59](https://github.com/plrigaux/sysd-manager/issues/59) Keyboard shortcuts Ctrl+W and Esc to close sub-windows, and Ctrl+Q to quit the application
-- [Issue 58](https://github.com/plrigaux/sysd-manager/issues/58) Add Services in currated list (Shift+Ctrl+S)
+- [Issue 58](https://github.com/plrigaux/sysd-manager/issues/58) Add Services in curated list (Shift+Ctrl+S)
 
 ### Fixed
 - [Issue 49](https://github.com/plrigaux/sysd-manager/issues/49) Put focus on search entry when appearing
