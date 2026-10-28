@@ -3,6 +3,9 @@ version = 1
 [[annotations]]
 path = [
   "PKGBUILD",
+  "dsc-build.ps1",
+  "dsc-test.ps1",
+  "dsc-install.ps1",
   "README.md",
   ".SRCINFO",
   ".nvchecker.toml",

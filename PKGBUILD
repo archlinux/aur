@@ -4,17 +4,30 @@
 
 pkgname=powershell-dsc
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Desired State Configuration v3 platform"
 arch=(x86_64)
 url='https://github.com/PowerShell/DSC'
 license=(MIT)
 depends=(glibc libgcc bash)
-optdepends=('powershell: PowerShell adapter and resources')
-makedepends=(git cargo tree-sitter-cli nodejs protobuf powershell)
-source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('69cc660042669c5bc78235ed918be49a2e845c6f091c152838fda5f62516dca801e592fbb6bc7182c67cf2eac85702c82e77fe2098e727583cbd60164071c479')
-b2sums=('62942c4c671e536467a8c1cf6f5c0a0e329e9ba8a2481367d96aa1bef42698703b76660108e9412796dbf07c53be3ff7934c0b56f22c339a9c8bcf0f832375ca')
+# PowerShell before 7.6.9-3 crashes when started from pwsh, which the PowerShell adapter does
+optdepends=('powershell>=7.6.9-3: PowerShell adapter and resources')
+makedepends=(git cargo tree-sitter-cli nodejs protobuf 'powershell>=7.6.9-3')
+# Upstream created the v3.3.0 tag from main (3.4.0-preview.1) instead of the release commit
+# on release/v3.3, which the published release was built from
+_commit="ea572fa755dbd49fb52339043409fbd50a625600"
+source=("$pkgname::git+$url#commit=$_commit"
+  "dsc-build.ps1"
+  "dsc-test.ps1"
+  "dsc-install.ps1")
+sha512sums=('4a52d6505cc110c2b14a0609994d3a30c6bc2a1cca8bd01e7eed76eca5c8d41ad25e991b7763b0ff5a94ec4bbb7d1a724818625336939b37649bc302fd2bafb1'
+            '32354322f14010d8a8bdb69edaa3858b1f6a395b88f83eeb9fdf97e5c6cb90210551fd6997e74b5bfc620c28f9fdeb9e2ded0950bcb8109a478f960bde6da71c'
+            '12cf29ffc85f82f4a41b3d63cc4cf8c19cb12138dc96a26067a05d7b8bb7f6eaabc30b38a7103a5633741dbd9920b8d62fe53a353a88ec57393e1ed4b3f9dc35'
+            '3d9f086aa6bcd667fdcb9db5aaf121385b916fd335d42449b87b41aec293187c6a53804cb2ccddb85a370c0941460cff1f3eb762fb729cf5b7017f21d936e0c3')
+b2sums=('6b85f40d3aa0cdc98a3ca6fc64542be38ea62b69b08a5cb7ab666e810fa81882834799394755e7c5b2fb473e7ae275f63e2f0f53e19a862f467cde57a4231bd3'
+        'be83f1a08333a654d54d2744c3c270c89ea031c4e79ab8f8a1b22646c6d5350cd8638d20e24745e4f27054e178bdd6720b1bf1c8e25d0fdc28a90e1bedd501f9'
+        'af1bc66d894ec36e80f7d35da8a8b2454f7ca168c9cd06136a370828fddea5ff6df52646ed2d195bf02007289049ce8c72238d1fe45a664ae39a4f60c1ae0c88'
+        '261e33f2beacfaa4e54a5401c33301d0b20a43b3f6d1676b48384d386809332b38d5eb3d49453e40778bb9959803ce042d22adaccf87ac6c1d94ec5e9c6586ef')
 options=('!lto' '!debug')
 
 prepare() {
@@ -28,81 +41,47 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname" || exit
   export RUSTUP_TOOLCHAIN=stable
-
-  # shellcheck disable=SC2016
-  pwsh -noprofile -command '
-    Import-Module ./helpers.build.psm1
-    $BuildData = Import-DscBuildData -RefreshProjects
-    Export-GrammarBinding -Project $BuildData.Projects
-    $buildParams = @{
-      Project = $BuildData.Projects
-      Release = $true
-    }
-    Build-RustProject @buildParams
-    Copy-BuildArtifact @buildParams -ExecutableFile $BuildData.PackageFiles.Executable | Out-Null
-  '
+  # Everything was fetched in prepare()
+  export CARGO_NET_OFFLINE=true
+  pwsh -NoProfile -NonInteractive -File dsc-build.ps1 -SourcePath "$srcdir/$pkgname"
 }
 
 check() {
-  cd "$pkgname" || exit
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_NET_OFFLINE=true
+  # Run the tests with a home of their own, so they neither see the profiles, modules and configs
+  # of the user building the package, nor leave their own files behind in the user's home.
+  # Cargo and rustup keep using the builder's ones, which have what prepare() fetched.
+  export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+  export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
+  rm -rf "$srcdir/test-home"
+  export HOME="$srcdir/test-home"
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_DATA_HOME="$HOME/.local/share"
+  export XDG_CACHE_HOME="$HOME/.cache"
+  export XDG_STATE_HOME="$HOME/.local/state"
+  mkdir -p "$HOME"
 
-  # Doesn't seem to account for pwsh.profile.dsc.resource.json being shipped with PowerShell
-  rm dsc/tests/dsc_extension_discover.tests.ps1
-
-  # Test seems not to have been updated, at least it doesn't expect that dsc intentionally warns about relative paths
-  rm dsc/tests/dsc_adapter.tests.ps1
-
+  cd "$pkgname" || exit
+  # Arch has no comparable version ("Rolling Release") and no codename in /etc/os-release
   # shellcheck disable=SC2016
-  pwsh -noprofile -command '
-    if(-not (Test-Path pwsh-modules -PathType Container)) {
-      New-Item -Type Directory -Name pwsh-modules | Out-Null
-    }
-    $modulefolder = Resolve-Path pwsh-modules
-    $env:PSModulePath = "${modulefolder}:${env:PSModulePath}" 
-    $required_modules = "Pester", "YaYaml", "PSToml"
-    foreach($module in $required_modules) {
-      Save-PSResource -Name $module -Repository PSGallery -TrustRepository -Path $modulefolder
-      Import-Module $module
-    }
-    Import-Module ./helpers.build.psm1
-    $BuildData = Import-DscBuildData -RefreshProjects
-    $releaseopt = @{ Release=$true }
-    Update-PathEnvironment @releaseopt
-    $commonParams = @{ Project = $BuildData.Projects }
+  sed -i -e "s/Context 'valid version constraints' {/Context 'valid version constraints' -Skip {/" \
+    -e "s/Context 'codename property' -Skip:(-not \$IsLinux) {/Context 'codename property' -Skip {/" \
+    resources/osinfo/tests/osinfo.tests.ps1
 
-    Test-RustProject @commonParams @releaseopt
-    Test-ProjectWithPester @commonParams -Group @("dsc", "adapters", "extensions", "grammars", "resources")
-  '
+  cd "$srcdir" || exit
+  pwsh -NoProfile -NonInteractive -File dsc-test.ps1 -SourcePath "$srcdir/$pkgname" -ModulePath "$srcdir/test-modules"
 }
 
 package() {
-  cd "$pkgname" || exit
-
+  # Same layout as upstream's packages: everything in one folder, as dsc looks for resources next
+  # to itself and the PowerShell adapter runs ./psDscAdapter/powershell.resource.ps1 from there.
+  # Only dsc and dsc-bicep-ext are put on PATH.
+  pwsh -NoProfile -NonInteractive -File dsc-install.ps1 -SourcePath "$srcdir/$pkgname" -Destination "$pkgdir/usr/lib/DSC"
   install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/lib/DSC"
+  ln -s /usr/lib/DSC/dsc "$pkgdir/usr/bin/dsc"
+  ln -s /usr/lib/DSC/dsc-bicep-ext "$pkgdir/usr/bin/dsc-bicep-ext"
 
-  # shellcheck disable=SC2016
-  pwsh -noprofile -command '
-    Import-Module ./helpers.build.psm1
-    $BuildData = Import-DscBuildData -RefreshProjects
-    $commonParams = @{
-      Release = $true
-    }
-    $artifactDirectory = Get-ArtifactDirectoryPath @commonParams
-    foreach($file in $BuildData.PackageFiles.Linux) {
-      $dest = ($file -eq "psDscAdapter/") ? (Join-Path "/usr/share/powershell/Modules" $file) : "/usr/lib/DSC"
-      $prefixdest = Join-Path '"$pkgdir"' $dest
-      $currentfile = Get-Item (Join-Path $artifactDirectory.Bin $file)
-      Copy-Item -LiteralPath $currentfile.FullName -Destination $prefixdest -Recurse -ErrorAction Stop
-      if(($currentfile -is [System.IO.FileInfo]) -and ($currentfile.UnixMode -match "x")) {
-        $symlinkdest = Join-Path '"$pkgdir"' "/usr/bin/$file"
-        New-Item -Type SymbolicLink -Path $symlinkdest -Target (Join-Path $dest $file) | Out-Null
-      }
-    }
-  '
-
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
