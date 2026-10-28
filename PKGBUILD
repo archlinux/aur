@@ -3,7 +3,7 @@
 # Maintainer: snowdropQwQ <snowqwq.dev@gmail.com>
 
 pkgname=micyou-git
-pkgver=2.0.1.r774.gb22c41f
+pkgver=2.1.1.r949.g692ecbb
 pkgrel=1
 pkgdesc="Turn your Android device into a wireless microphone (development version)"
 arch=('x86_64')
@@ -15,17 +15,18 @@ depends=(
   'glibc'
   'gtk3'
   'hicolor-icon-theme'
+  'libappindicator'
   'pipewire'
   'webkit2gtk-4.1'
   'wireplumber'
 )
 makedepends=(
   'git'
-  'mold'
   'rust'
   'cargo'
   'nodejs'
-  'npm'
+  'bun'
+  'cmake'
   'pkgconf'
 )
 optdepends=(
@@ -54,8 +55,8 @@ build() {
   export CXXFLAGS="${CXXFLAGS//-flto*/}"
 
   cd MicYou/tauri-app
-  npm install
-  npm run tauri -- build --no-bundle
+  bun install --frozen-lockfile
+  bun run tauri -- build --no-bundle
 }
 
 package() {
@@ -64,8 +65,12 @@ package() {
   # Install binary
   for _name in micyou micyou-cli micyou-tui; do
     install -Dm755 tauri-app/target/release/$_name \
-      "$pkgdir/usr/bin/$_name"
+      "$pkgdir/usr/bin/$_name" || return 1
   done
+
+  # Install runtime resources (ALSA config for the PipeWire virtual sink)
+  install -Dm644 tauri-app/src-tauri/resources/alsa/micyou-pipewire.conf \
+    "$pkgdir/usr/lib/micyou/resources/alsa/micyou-pipewire.conf"
 
   # Install icons
   install -Dm644 tauri-app/src-tauri/icons/32x32.png \
@@ -86,9 +91,9 @@ Comment=Use an Android device as a wireless microphone
 Exec=micyou
 Icon=micyou
 Terminal=false
-Categories=AudioVideo;Audio;
+Categories=AudioVideo;Audio;Music;
 Keywords=android;audio;microphone;pipewire;pulseaudio;wireless;
-StartupWMClass=MicYou
+StartupWMClass=micyou
 EOF
   install -Dm644 micyou.desktop "$pkgdir/usr/share/applications/micyou.desktop"
 
