@@ -4,12 +4,18 @@
 
 pkgname=modrinth-app-bin
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft mod manager and launcher from Modrinth (upstream binary)"
 arch=('x86_64')
 url="https://modrinth.com/app"
 license=('GPL-3.0-only')
-depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme')
+# what the binary links (readelf -d), plus what Minecraft loads, as in
+# extra/modrinth-app
+depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
+         'libgcc' 'libsoup3' 'webkit2gtk-4.1'
+         # loaded by Minecraft, not by the launcher
+         'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm')
+optdepends=('xorg-xrandr: for older Minecraft versions')
 provides=('modrinth-app')
 conflicts=('modrinth-app')
 options=('!strip' '!debug')
