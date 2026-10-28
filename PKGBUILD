@@ -146,7 +146,19 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         'a6dd3599d2930dfa2ce3db725a428305196e5ef52c42dd88ac5d47f852f27e0ad6577f7ef6b7a12ff3a9548bcb31254a973dc2dccbfa222ee50816620cf32976'
         '84ab1ef0c546607fa509e4c71ab8528d5a6ff8b120a0dca14ccd7ec0ae39706cbb6c0e0cb65360dd14b74bb225b393c85d70d813602d1877efa4d720cc193374')
 
+# Sets up the environment shared by prepare(), build() and check()
+_dotnet_env() {
+  _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
+  export NUGET_PACKAGES="$srcdir/PowerShell/nuget"
+  # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
+  export DOTNET_CLI_HOME="$srcdir/dotnet-home"
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  export DOTNET_NOLOGO=1
+}
+
 prepare() {
+  _dotnet_env
+
   # libpsl-native is built from source instead of using the prebuilt Microsoft.PowerShell.Native package
   cd "$srcdir"/PowerShell-Native/src/libpsl-native || exit
   # Arch already sets _FORTIFY_SOURCE=3 and we don't want new compiler warnings to break the build
@@ -167,9 +179,6 @@ prepare() {
   patch -Np1 -i "$srcdir/oneget-user-temp-folder.patch"
 
   cd "$srcdir"/PowerShell || exit
-  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
-  # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
-  export DOTNET_CLI_HOME="$srcdir/dotnet-home"
 
   # Fix startup crash when PSModulePath is already set and powershell.config.json
   # contains multiple paths, e.g. when starting pwsh from pwsh
@@ -181,14 +190,15 @@ prepare() {
   patch -Np1 -i "$srcdir/cim-windows-only.patch"
 
   # We first determine the exact SDK and runtime versions for later usage
+  local _sdkver _runtimever _runtimepath
   _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
   _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([[:digit:]\.]+) .*/\1/")
   _runtimepath="/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever"
 
   # Update global.json to match with the current SDK
+  # The old one has to go first, dotnet refuses to run with an SDK it doesn't know
   rm global.json
-  _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
-  DOTNET_NOLOGO=1 dotnet new globaljson --sdk-version "$_sdkver"
+  dotnet new globaljson --sdk-version "$_sdkver"
 
   ## Switch-PSNugetConfig()
   # Packages of the source-built .NET are taken from dotnet-source-built-artifacts, so that they exactly
@@ -197,8 +207,7 @@ prepare() {
   local _artifacts=(/usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz)
   mkdir -p "$srcdir/nuget-local"
   bsdtar -xf "${_artifacts[0]}" -C "$srcdir/nuget-local" '*.nupkg'
-  _localpackages=()
-  local _nupkg _nuspec _id _version
+  local _localpackages=() _nupkg _nuspec _id _version
   for _nupkg in "$srcdir"/nuget-local/*.nupkg; do
     _nuspec="$(bsdtar -xOf "$_nupkg" '*.nuspec')"
     _id="$(sed -n -E 's|.*<id>([^<]+)</id>.*|\1|p' <<<"$_nuspec" | head -1)"
@@ -207,25 +216,25 @@ prepare() {
       _localpackages+=("$_id")
     fi
   done
-  {
-    echo '<?xml version="1.0" encoding="utf-8"?>'
-    echo '<configuration>'
-    echo '  <packageSources>'
-    echo '    <clear />'
-    echo "    <add key=\"dotnet-source-built\" value=\"$srcdir/nuget-local\" />"
-    echo '    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />'
-    echo '  </packageSources>'
-    echo '  <packageSourceMapping>'
-    echo '    <clear />'
-    echo '    <packageSource key="dotnet-source-built">'
-    printf '      <package pattern="%s" />\n' "${_localpackages[@]}"
-    echo '    </packageSource>'
-    echo '    <packageSource key="nuget.org">'
-    echo '      <package pattern="*" />'
-    echo '    </packageSource>'
-    echo '  </packageSourceMapping>'
-    echo '</configuration>'
-  } >nuget.config
+  cat >nuget.config <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="dotnet-source-built" value="$srcdir/nuget-local" />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+  </packageSources>
+  <packageSourceMapping>
+    <clear />
+    <packageSource key="dotnet-source-built">
+$(printf '      <package pattern="%s" />\n' "${_localpackages[@]}")
+    </packageSource>
+    <packageSource key="nuget.org">
+      <package pattern="*" />
+    </packageSource>
+  </packageSourceMapping>
+</configuration>
+EOF
   sed -i -e 's|<add key="powershell".*$|<add key="psgallery" value="https://www.powershellgallery.com/api/v2/" />|g' \
     src/Modules/nuget.config \
     test/tools/Modules/nuget.config
@@ -254,16 +263,17 @@ prepare() {
   # Next we convert quite a bit to framework refs
   # This doesn't change anything really about the binaries that are generated
   # but saves over a gigabyte of unnecessary NuGet downloads.
+  local _csproj _packref _packname
   while read -r _csproj; do
     sed -i -E -e 's/netstandard2\.0/net'"$_dotnetsdkver"'/' \
       -e 's|(RuntimeIdentifiers>)[^<]*|\1'"$_rid"'|' "$_csproj"
-    if [[ "$_csproj" =~ .*PSVersionInfoGenerator.csproj ]]; then
+    if [[ "$_csproj" == */PSVersionInfoGenerator.csproj ]]; then
       sed -i -e '/<PackageReference Include="System/d' "$_csproj"
     fi
 
     while read -r _packref; do
-      # shellcheck disable=SC2001
-      _packname=$(echo "$_packref" | sed -E -e 's/.*Include="([^"]+).*/\1/' -)
+      [[ "$_packref" =~ Include=\"([^\"]+)\" ]] || continue
+      _packname="${BASH_REMATCH[1]}"
 
       if [[ -f "${_runtimepath}/${_packname}.dll" ]]; then
         sed -i -E 's|.*"'"$_packname"'".*|<FrameworkReference Include="'"$_packname"'"/>|' "$_csproj"
@@ -273,7 +283,6 @@ prepare() {
     done < <(grep PackageReference "$_csproj")
   done < <(find . -type f -name "*.csproj")
 
-  export NUGET_PACKAGES="$PWD/nuget"
   dotnet new tool-manifest --force
   dotnet tool install dotnet-outdated-tool
   dotnet tool restore
@@ -297,35 +306,28 @@ prepare() {
   dotnet restore "src/ResGen" --runtime "$_rid" -p:SDKToUse=Microsoft.NET.Sdk
 }
 
+# Copies the packages referenced by a project ($1) from the NuGet cache into a module folder ($2)
 _copymodules() {
+  local _packref
   mkdir -p "$2"
-  mapfile _reference_packages < <(grep "PackageReference" "$1")
-  for _curpackage in "${_reference_packages[@]}"; do
-    # shellcheck disable=SC2001
-    _package_name="$(echo "$_curpackage" | sed -E 's/.*Include="([^"]+).*/\1/')"
-    # shellcheck disable=SC2001
-    _package_version="$(echo "$_curpackage" | sed -E 's/.*Version="([^"]*).*/\1/')"
-
-    rsync -aqP \
+  while read -r _packref; do
+    [[ "$_packref" =~ Include=\"([^\"]+)\"\ +Version=\"([^\"]*)\" ]] || continue
+    rsync -aq \
       -f '- *.nupkg' \
       -f '- *.nupkg.metadata' \
       -f '- *.nupkg.sha512' \
       -f '- *.nuspec' \
       -f '- System.Runtime.InteropServices.RuntimeInformation.dll' \
       -f '- fullclr' \
-      "$NUGET_PACKAGES/${_package_name,,}/${_package_version}/." "$2/${_package_name}/"
-  done
+      "$NUGET_PACKAGES/${BASH_REMATCH[1],,}/${BASH_REMATCH[2]}/." "$2/${BASH_REMATCH[1]}/"
+  done < <(grep PackageReference "$1")
 }
 
 build() {
   cmake -S PowerShell-Native/src/libpsl-native -B build-psl-native -DCMAKE_BUILD_TYPE=Release
   cmake --build build-psl-native
 
-  cd PowerShell || exit
-  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
-  export NUGET_PACKAGES="$PWD/nuget"
-  # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
-  export DOTNET_CLI_HOME="$srcdir/dotnet-home"
+  _dotnet_env
 
   ## Start-ResGen()
   # ResGen runs much faster if built with optimisations
@@ -336,7 +338,7 @@ build() {
     -r "$_rid"
 
   ## Start-TypeGen()
-  local _inc_file="$PWD/src/TypeCatalogGen/powershell_${_rid}.inc"
+  local _inc_file="$srcdir/PowerShell/src/TypeCatalogGen/powershell_${_rid}.inc"
   cd "$srcdir"/PowerShell/src/Microsoft.PowerShell.SDK || exit
   dotnet build \
     -c Release \
@@ -355,12 +357,12 @@ build() {
     ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs \
     "$_inc_file"
 
-  _build_arguments=(
-    "--configuration" "Release"
-    "--framework" "net""$_dotnetsdkver"
-    "--runtime" "$_rid"
-    "--no-self-contained"
-    "-p:ReleaseTag=""$pkgver"
+  local _build_arguments=(
+    --configuration Release
+    --framework "net$_dotnetsdkver"
+    --runtime "$_rid"
+    --no-self-contained
+    -p:ReleaseTag="$pkgver"
     "-p:AppDeployment=FxDependentDeployment"
     "-p:SDKToUse=Microsoft.NET.Sdk"
     "-p:IsWindows=false"
@@ -379,9 +381,7 @@ build() {
 
   # Publish Reference Assemblies
   mkdir -p "$_publish_path/ref"
-  grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;//' | while read -r _assembly; do
-    cp "$_assembly" "$_publish_path"/ref
-  done
+  grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;$//' | xargs -d '\n' cp -t "$_publish_path/ref"
 
   ## Restore-PSModuleToBuild()
   # Instead of downloading the modules from the PowerShell Gallery, they're built from source
@@ -405,11 +405,8 @@ build() {
 check() {
   ctest --test-dir build-psl-native --output-on-failure
 
+  _dotnet_env
   cd PowerShell || exit
-  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
-  export NUGET_PACKAGES="$PWD/nuget"
-  # Keep the .NET CLI state (e.g. the local tool cache) out of the builder's home
-  export DOTNET_CLI_HOME="$srcdir/dotnet-home"
   # The xUnit tests aren't run from the publish folder, so they need to find libpsl-native
   export LD_LIBRARY_PATH="$srcdir/PowerShell-Native/src/powershell-unix${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 
@@ -422,17 +419,13 @@ check() {
   # Start-Transcript.Tests.ps1 is excluded, since it looks for the result of
   # the Start-Transcript cmdlet at its default locations and needs $env:HOME for that.
   # shellcheck disable=SC2016
-  _testsneedpatching="$(grep -R -l --include="*.Tests.ps1" --exclude="Start-Transcript.Tests.ps1" '$env:HOME' .)"
-  # shellcheck disable=SC2016
-  echo "$_testsneedpatching" | while read -r _curtest; do
-    sed -i 's/$env:HOME/$TestDrive/g' "$_curtest"
-  done
+  grep -R -l -Z --include="*.Tests.ps1" --exclude="Start-Transcript.Tests.ps1" '$env:HOME' . |
+    xargs -0 sed -i 's/$env:HOME/$TestDrive/g'
 
   # These tests use Pesters TestDrive in a way that it doesn't work on Linux
   # shellcheck disable=SC2016
-  sed -i 's/TestDrive:/$TestDrive/g' Modules/Microsoft.PowerShell.Management/FileSystemProviderExtended.Tests.ps1
-  # shellcheck disable=SC2016
-  sed -i '/Push-Location $rootDir/iNew-Item -ItemType "Directory" -Path $TestDrive -Name TestDir -Force' \
+  sed -i -e 's/TestDrive:/$TestDrive/g' \
+    -e '/Push-Location $rootDir/iNew-Item -ItemType "Directory" -Path $TestDrive -Name TestDir -Force' \
     Modules/Microsoft.PowerShell.Management/FileSystemProviderExtended.Tests.ps1
 
   # TEMPORARY: Test-Json is broken on PowerShell 7.6.7+
@@ -495,7 +488,8 @@ check() {
     --framework "net$_dotnetsdkver" \
     test/tools/TestAlc
 
-  for project in TestExe UnixSocket WebListener; do
+  local _project
+  for _project in TestExe UnixSocket WebListener; do
     dotnet publish \
       --configuration Release \
       --no-self-contained \
@@ -503,7 +497,7 @@ check() {
       --framework "net$_dotnetsdkver" \
       -p:AllowMissingPrunePackageData=true \
       --output "$PWD/bin" \
-      test/tools/"$project"
+      test/tools/"$_project"
   done
 
   # Fix a NU1510 warning that would otherwise pop
@@ -537,9 +531,9 @@ check() {
 }
 
 package() {
+  _dotnet_env
   cd PowerShell || exit
 
-  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   local _pkgnum=${pkgver:0:1}
 
   install -dm755 "$pkgdir/usr/lib/$pkgname-$_pkgnum"
