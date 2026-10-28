@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.156
-pkgrel=4
+pkgrel=5
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -53,6 +53,9 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
+optdepends=('xdg-desktop-portal: file picker and screen-share dialogs'
+            'xdg-desktop-portal-gtk: file picker backend on non-KDE desktops'
+            'pipewire-pulse: PulseAudio-compatible server for voice and audio devices')
 options=('!strip' '!debug')
 
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage"
@@ -79,11 +82,32 @@ package() {
     rm -f "${pkgdir}/opt/${pkgname}/usr/bin/Root.dbg"
 
     install -dm755 "${pkgdir}/usr/bin"
+    # Payload mkdirs "Root Communications", "Sentry" and ".sentry-native" beside its exe and
+    # exits 0 when that fails, so it needs a user-writable runtime dir (verified 2026-10-28).
     cat > "${pkgdir}/usr/bin/rootapp" <<'WRAPPER_EOF'
 #!/bin/sh
-export APPDIR="/opt/rootapp-bin"
-exec /opt/rootapp-bin/AppRun "$@"
+set -eu
+run="${XDG_DATA_HOME:-$HOME/.local/share}/rootapp-bin"
+stamp=__STAMP__
+mkdir -p "$run"
+chmod 700 "$run" 2>/dev/null || true
+if [ "$(cat "$run/.stamp" 2>/dev/null || true)" != "$stamp" ]; then
+    cp --reflink=auto "/opt/rootapp-bin/usr/bin/Root" "$run/Root.part"
+    chmod 755 "$run/Root.part"
+    mv -f "$run/Root.part" "$run/Root"
+    for entry in /opt/rootapp-bin/usr/bin/*; do
+        name=${entry##*/}
+        [ "$name" = Root ] || ln -sfn "$entry" "$run/$name"
+    done
+    printf '%s\n' "$stamp" > "$run/.stamp"
+fi
+exec "$run/Root" "$@"
 WRAPPER_EOF
+    sed -i "s/__STAMP__/${pkgver}-${pkgrel}/" "${pkgdir}/usr/bin/rootapp"
+    if grep -q '__STAMP__' "${pkgdir}/usr/bin/rootapp"; then
+        printf 'unstamped wrapper would recopy the payload on every launch\n' >&2
+        return 1
+    fi
     chmod 755 "${pkgdir}/usr/bin/rootapp"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
