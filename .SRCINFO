@@ -1,6 +1,6 @@
 pkgbase = ymusic-cli-bin
 	pkgdesc = Terminal client for Yandex Music: My Wave, likes, stations (TUI) — prebuilt static binary
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://github.com/iodnoorov/ymusic
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ymusic-cli-bin
 	conflicts = ymusic-cli
 	options = !strip
 	options = !debug
-	source = https://github.com/iodnoorov/ymusic/releases/download/v3.6.1/ymusic-3.6.1-x86_64-linux.tar.gz
-	sha256sums = 80f55a135f11949ee39c6daf83b81608c64d629fb4c003e60fd3dd54c9f86076
+	source = https://github.com/iodnoorov/ymusic/releases/download/v3.6.2/ymusic-3.6.2-x86_64-linux.tar.gz
+	sha256sums = 8a8d4924161fbaec2558ad070657f329bef1885cb9a15b9dffe3909327e291a3
 
 pkgname = ymusic-cli-bin
