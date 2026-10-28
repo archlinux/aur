@@ -1,7 +1,7 @@
 # Maintainer: a821
 
 pkgname=shiny-server
-pkgver=1.5.23.1030
+pkgver=1.5.24.1047
 pkgrel=1
 pkgdesc="Host Shiny applications over the web"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("git+https://github.com/rstudio/shiny-server#commit=v$pkgver"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('8965a06f843bedb3585ed7debf9c43d15553a8cc4f6d14429307ede37d72ee64'
+sha256sums=('e08f4d70bcbf5c6f01e7bdaabc9a3234c9ad060c663996f2c804d65744786cbf'
             '1dc3401a3d87ef27ae026dc45bc374c2763b2819384ef8f326b4b7a12201ef42'
             'e56bfe2b7bf85fdc72d1080ab2d08a54c52928a0dc25cdbeff1302981aa18e30'
             '27538c6961fdb70f168be6d7c5754c474dd221dff0dcf639181d5803d6646a54')
