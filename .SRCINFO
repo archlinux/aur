@@ -1,0 +1,35 @@
+pkgbase = lemon-studio-git
+	pkgdesc = A free and open-source digital audio workstation written in Rust
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/ItsAlphaNeon/Lemon-Studio
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = hicolor-icon-theme
+	optdepends = zenity: native confirmation dialogs
+	optdepends = kdialog: native confirmation dialogs on KDE
+	optdepends = xorg-xwayland: X11 plug-in windows on Wayland desktops
+	optdepends = pipewire-alsa: route ALSA audio through PipeWire
+	optdepends = pulseaudio-alsa: route ALSA audio through PulseAudio
+	provides = lemon-studio=0.0.0
+	conflicts = lemon-studio
+	source = git+https://github.com/ItsAlphaNeon/Lemon-Studio.git#branch=main
+	sha256sums = SKIP
+
+pkgname = lemon-studio-git
