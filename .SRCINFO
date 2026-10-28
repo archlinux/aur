@@ -1,0 +1,19 @@
+pkgbase = lanweave-bin
+	pkgdesc = Lightweight Local Peer-to-Peer File Transfer Protocol
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/etim66/lanweave
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = lanweave
+	conflicts = lanweave
+	options = !strip
+	source = LICENSE-0.2.2::https://raw.githubusercontent.com/etim66/lanweave/v0.2.2/LICENCE
+	sha256sums = cd272a04087a27b1ddcbd17d5d480682f780569c21edcff98707847c714ba08c
+	source_x86_64 = lanweave-x86_64-0.2.2.txz::https://github.com/etim66/lanweave/releases/download/v0.2.2/lanweave-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 2e54a651c7654792e30c2b09bf22fadd2c1ae5d214d0d587acffa1abb048848e
+	source_aarch64 = lanweave-aarch64-0.2.2.txz::https://github.com/etim66/lanweave/releases/download/v0.2.2/lanweave-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = d510a1ee7e94efc50073422de8f114d75deb6dbd0e7fb7e86f473cfcd52bb254
+
+pkgname = lanweave-bin

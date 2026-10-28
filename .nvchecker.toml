@@ -1,0 +1,5 @@
+[lanweave-bin]
+source = "github"
+github = "etim66/lanweave"
+use_latest_release = true
+prefix = "v"
