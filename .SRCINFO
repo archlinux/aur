@@ -1,6 +1,6 @@
 pkgbase = rufix
 	pkgdesc = Rufus-style USB formatter and bootable drive creator for Linux (GTK3)
-	pkgver = 0.1.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/thuutien/rufix
 	arch = any
@@ -13,11 +13,16 @@ pkgbase = rufix
 	depends = e2fsprogs
 	depends = exfatprogs
 	depends = ntfs-3g
+	depends = ntfsprogs
 	depends = util-linux
 	depends = systemd
 	optdepends = wimlib: split Windows install.wim images larger than 4 GB for FAT32 drives
 	optdepends = parted: re-read partition tables via partprobe
-	source = rufix-0.1.1.tar.gz::https://github.com/thuutien/rufix/releases/download/v0.1.1/rufix-0.1.1.tar.gz
-	sha256sums = 9315a4f664f93bafc24d89e3a0579817854959bff3bdee367371178722a1ff4d
+	optdepends = 7zip: extract 7z and RAR files in Compressed file mode
+	optdepends = unrar: extract RAR files in Compressed file mode
+	optdepends = libarchive: bsdtar fallback for extracting archives
+	optdepends = udisks2: remount the drive after writing so it shows in the file manager
+	source = rufix-0.3.1.tar.gz::https://github.com/thuutien/rufix/releases/download/v0.3.1/rufix-0.3.1.tar.gz
+	sha256sums = df5ff180d01774fab1615c2df3adbf166aff2f3a6f6e1fceadd5ba6cb0aa408f
 
 pkgname = rufix
