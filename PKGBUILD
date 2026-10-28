@@ -3,7 +3,7 @@
 pkgname=mux-media-bin
 provides=("mux-media")
 conflicts=("mux-media")
-pkgver=0.19.11
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="CLI utility to mux (merge) video, audio, and subtitles"
 arch=("x86_64" "i686")
@@ -14,8 +14,8 @@ options=("!debug")
 source_x86_64=("$url/releases/download/v$pkgver/mux-media-Linux-x64.zip")
 source_i686=("$url/releases/download/v$pkgver/mux-media-Linux-x32.zip")
 
-sha256sums_x86_64=('a89f3fd619181644aed68da25cf394fa836b43b641647ae6156a81f0d59c2265')
-sha256sums_i686=('01efa1685646a6a7a8e6735777626465b79bdf9067165e5525bb42eb98af3e60')
+sha256sums_x86_64=('05beeafee134f9034894b956045840d54b2a579d25e71cf33641c8d952f32cf0')
+sha256sums_i686=('2bec0d68ec777fc67c91e696af70c6a851a7ea82a9d9a4d480fc1f8bea18bf48')
 
 package() {
     install -Dm755 "$srcdir/mux-media" "$pkgdir/usr/bin/mux-media"
