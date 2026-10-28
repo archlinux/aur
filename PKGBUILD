@@ -5,7 +5,7 @@
 # https://github.com/livekit/livekit-cli
 
 pkgname=livekit-cli-bin
-pkgver=2.19.0
+pkgver=2.19.2
 pkgrel=1
 pkgdesc='LiveKit CLI: command line utilities that interacts with LiveKit'
 arch=(x86_64 aarch64)
@@ -22,8 +22,8 @@ source_aarch64=(
     "https://github.com/livekit/livekit-cli/releases/download/v${pkgver}/lk_${pkgver}_linux_arm64.tar.gz"
 )
 
-sha256sums_x86_64=('601ce74299db7e538014426644ab23b2a1ba171c506967197a259c3cd762d418')
-sha256sums_aarch64=('64e8f68f26eb1de81f0696a9a0fca7564c4e7e551de6cc98efc327ca02b56b52')
+sha256sums_x86_64=('a234a95b9cd54303330e59eaf32da953cbfd2b74dbdabd69acae7aa5ff377c8e')
+sha256sums_aarch64=('edcbd3ce453b420a9b59b0207869e6b1321026f4a24beb7013fef7cd9287cd9b')
 
 package() {
   install -vDm755 "${srcdir}/lk" -t "$pkgdir/usr/bin"
