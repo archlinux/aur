@@ -6,4 +6,6 @@
 post_install() {
   echo "  TTS (optional): install piper-tts from AUR - yay -S piper-tts"
   echo "  Then run :tts config in tabook to pick a voice"
+  echo "  Vosk TTS (alternative, ONNX): pipx install vosk-tts"
+  echo "  Models are downloaded from :tts config -> Voice"
 }

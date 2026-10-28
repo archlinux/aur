@@ -2,7 +2,7 @@
 # vim: ft=sh:
 
 pkgname=tabook
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,8 @@ optdepends=(
   'zenity: graphical file picker for the `o` open-file dialog'
   'kdialog: graphical file picker (KDE alternative to zenity)'
   'piper-tts: local neural TTS engine for :tts command (AUR: yay -S piper-tts)'
+  'sherpa-onnx: ONNX TTS engine for :tts — no Python, covers Russian VITS/MMS models'
+  'espeak-ng: compact system TTS fallback for :tts'
 )
 # Prebuilt per-arch release tarballs (single-file JS bundle + Rust native
 # module, which also owns the SQLite DB via rusqlite), produced by
@@ -26,8 +28,8 @@ optdepends=(
 # release workflow before publishing to AUR.
 source_x86_64=("tabook-${pkgver}-linux-x64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-x64.tar.zst")
 source_aarch64=("tabook-${pkgver}-linux-arm64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-arm64.tar.zst")
-sha256sums_x86_64=('799aaa2d872ad35677fff88afee6c6c8b23ed14194e98310525bf1d4ce25d343')
-sha256sums_aarch64=('0b1b6d07f4efcc25f395b28e576569547031cc7b7acfdb7834b029c094564eca')
+sha256sums_x86_64=('d9010328d4280545db8350af1747646d979184cf78e8c1364baf21b1733dd8c6')
+sha256sums_aarch64=('3c8953d984d79c3a363ecc35d60c64d63992bf1a25457cb0b9e820cb941d76cc')
 
 package() {
   # The tarball carries tabook.bundle.mjs, node_modules/ (@tabook/native Rust
