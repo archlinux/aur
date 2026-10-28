@@ -6,7 +6,7 @@ __pkgname=flow
 # for new nightly builds update the line below with:
 #   PKGVER=${VERSION#v}; sed -i "s/^pkgver=.*/pkgver=${PKGVER//-/.}/" PKGBUILD
 # where VERSION is the upstream nightly build tag
-pkgver=0.7.2.1858.gc109b4d0
+pkgver=0.7.2.1885.g9d2700d5
 pkgrel=1
 pkgdesc="a programmer's text editor"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
