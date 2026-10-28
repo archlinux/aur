@@ -1,9 +1,9 @@
-# Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# Contributor: Aikawa Yataro <aikawayataro at protonmail dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Rikarnto Bariampa <richard1996ba@gmail.com>
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
-# Contributor: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
