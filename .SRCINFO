@@ -1,0 +1,18 @@
+pkgbase = xfce4-nightlight-plugin-git
+	pkgdesc = XFCE panel plugin similar to GNOME's Quick Settings menu
+	pkgver = r72.611c300
+	pkgrel = 1
+	url = https://github.com/Alperen42v/extra-xfce4-plugins/tree/main/nightlight-plugin
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = xfce4-panel
+	provides = xfce4-nightlight-plugin
+	conflicts = xfce4-nightlight-plugin
+	source = git+https://github.com/Alperen42v/extra-xfce4-plugins
+	sha512sums = SKIP
+
+pkgname = xfce4-nightlight-plugin-git
