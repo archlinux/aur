@@ -1,0 +1,26 @@
+Bluetooth: allow an explicit local module package version
+
+Retain upstream MODULE_VERSION unless source preparation supplies a local
+BT_BACKPORT_VERSION. A distinct, newer numeric version allows DKMS 2.8.7
+to install a local backport without its same-version skip or --force.
+This identifies the package; it does not claim support for another ABI.
+
+Source: Linux 7.2 drivers/bluetooth/{btusb,btmtk}.c
+SPDX-License-Identifier: GPL-2.0-or-later
+
+--- a/btusb.c
++++ b/btusb.c
+@@ -4755,1 +4755,5 @@
++#ifdef BT_BACKPORT_VERSION
++MODULE_VERSION(BT_BACKPORT_VERSION);
++#else
+ MODULE_VERSION(VERSION);
++#endif
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -1650,1 +1650,5 @@
++#ifdef BT_BACKPORT_VERSION
++MODULE_VERSION(BT_BACKPORT_VERSION);
++#else
+ MODULE_VERSION(VERSION);
++#endif

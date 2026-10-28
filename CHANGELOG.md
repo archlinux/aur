@@ -5,6 +5,13 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.16-4] - 2026-10-28
+
+### Packaging
+
+- Warn at install time when the MT7927 WiFi firmware is missing, on the DEB, RPM and `make install` paths. Only the Arch `.install` script did this, so an Ubuntu or Fedora user whose `linux-firmware` predates MR !1055 installed cleanly and then got `Direct firmware load ... failed with error -2` with no hint why, now that the package no longer ships the WiFi blobs (#120). The check lives in `check-wifi-firmware.sh`, installed beside `dkms-post-remove.sh`, and always exits 0 so it cannot fail an install. It looks for both WiFi blobs as `.bin`, `.bin.zst` or `.bin.xz`
+- Includes the Bluetooth-only Linux 6.8 build path from #118 (`BUILD_WIFI=no`, `PREPARE_FIRMWARE=no`, six `mt6639-bt-compat-*` patches). The default package builds the same way as before: sources prepare with no fuzz or rejects and `btusb`/`btmtk` compile warning-free on 7.2.9. Only the author's MSI B850MPOWER on 6.8.0-138-generic has run the Bluetooth-only path, and a real AUTOINSTALL or uninstall of that package has not been run. `dkms.conf` now requires DKMS to provide `kernelver` instead of falling back to `uname -r`
+
 ## [2.16-3] - 2026-10-05
 
 ### Packaging

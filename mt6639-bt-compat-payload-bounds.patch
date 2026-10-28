@@ -1,0 +1,83 @@
+Bluetooth: btmtk: validate firmware descriptor and payload bounds
+
+Reject truncated descriptor tables and section payloads before issuing
+WMT download commands. Bound the fixed-width build timestamp print.
+Retain upstream protocol and section selection.
+
+Source: Linux 7.2 drivers/bluetooth/btmtk.c
+SPDX-License-Identifier: ISC
+
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -147,7 +147,8 @@
+ 	const struct firmware *fw;
+ 	const u8 *fw_ptr;
+ 	const u8 *fw_bin_ptr;
+-	int err, dlen, i, status;
++	int err, dlen, status;
++	u32 i;
+ 	u8 flag, first_block, retry;
+ 	u32 section_num, dl_size, section_offset;
+ 	u8 cmd[64];
+@@ -156,6 +157,12 @@
+ 	if (err < 0) {
+ 		bt_dev_err(hdev, "Failed to load firmware file (%d)", err);
+ 		return err;
++	}
++
++	/* Validate the complete descriptor table before dereferencing it. */
++	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE) {
++		err = -EINVAL;
++		goto err_release_fw;
+ 	}
+
+ 	fw_ptr = fw->data;
+@@ -163,18 +170,27 @@
+ 	hdr = (struct btmtk_patch_header *)fw_ptr;
+ 	globaldesc = (struct btmtk_global_desc *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE);
+ 	section_num = le32_to_cpu(globaldesc->section_num);
+-
+-	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %s",
++	if (section_num > (fw->size - MTK_FW_ROM_PATCH_HEADER_SIZE -
++			   MTK_FW_ROM_PATCH_GD_SIZE) / MTK_FW_ROM_PATCH_SEC_MAP_SIZE) {
++		err = -EINVAL;
++		goto err_release_fw;
++	}
++
++	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %.16s",
+ 		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
+
+ 	for (i = 0; i < section_num; i++) {
+ 		first_block = 1;
+ 		fw_ptr = fw_bin_ptr;
+ 		sectionmap = (struct btmtk_section_map *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
+-			      MTK_FW_ROM_PATCH_GD_SIZE + MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
++			      MTK_FW_ROM_PATCH_GD_SIZE + (size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
+
+ 		section_offset = le32_to_cpu(sectionmap->secoffset);
+ 		dl_size = le32_to_cpu(sectionmap->bin_info_spec.dlsize);
++		if (section_offset > fw->size || dl_size > fw->size - section_offset) {
++			err = -EINVAL;
++			goto err_release_fw;
++		}
+
+ 		/* MT6639: only download sections where dlmode byte0 == 0x01,
+ 		 * matching the Windows driver behavior which skips WiFi/other
+@@ -191,7 +207,7 @@
+ 				memcpy(cmd + 1,
+ 				       fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
+ 				       MTK_FW_ROM_PATCH_GD_SIZE +
+-				       MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i +
++				       (size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i +
+ 				       MTK_SEC_MAP_COMMON_SIZE,
+ 				       MTK_SEC_MAP_NEED_SEND_SIZE);
+
+@@ -233,7 +249,7 @@
+ 			wmt_params.op = BTMTK_WMT_PATCH_DWNLD;
+
+ 			while (dl_size > 0) {
+-				dlen = min_t(int, 250, dl_size);
++				dlen = min_t(u32, 250, dl_size);
+ 				if (first_block == 1) {
+ 					flag = 1;
+ 					first_block = 0;

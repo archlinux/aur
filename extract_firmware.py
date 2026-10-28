@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
+import argparse
 import os
 import struct
-import sys
 import zipfile
 
 # All firmware blobs to extract from mtkwlan.dat
@@ -34,7 +34,9 @@ def extract_by_name(data, name, output_path):
         entry_pos += 1
 
     # Skip 14-digit numeric timestamp if present
-    if all(48 <= b <= 57 for b in data[entry_pos : entry_pos + 14]):
+    if len(data[entry_pos : entry_pos + 14]) == 14 and all(
+        48 <= b <= 57 for b in data[entry_pos : entry_pos + 14]
+    ):
         entry_pos += 14
 
     # Align to 4-byte boundary
@@ -48,6 +50,9 @@ def extract_by_name(data, name, output_path):
 
     data_offset = struct.unpack_from("<I", data, entry_pos)[0]
     data_size = struct.unpack_from("<I", data, entry_pos + 4)[0]
+
+    if data_size == 0 or data_offset > len(data) or data_size > len(data) - data_offset:
+        raise RuntimeError(f"Invalid payload bounds for '{name}': offset={data_offset}, size={data_size}")
 
     blob = data[data_offset : data_offset + data_size]
 
@@ -66,7 +71,7 @@ def extract_by_name(data, name, output_path):
     print(f"Extracted {name}: {len(blob)} bytes -> {output_path}")
 
 
-def extract_all(input_path, output_dir):
+def extract_all(input_path, output_dir, bluetooth_only=False):
     """Extract all known firmware blobs to a directory.
 
     input_path can be a .zip file (reads mtkwlan.dat from it) or a raw
@@ -81,16 +86,15 @@ def extract_all(input_path, output_dir):
 
     os.makedirs(output_dir, exist_ok=True)
 
-    for name in FIRMWARE_BLOBS:
+    for name in FIRMWARE_BLOBS[:1] if bluetooth_only else FIRMWARE_BLOBS:
         output_path = os.path.join(output_dir, name)
         extract_by_name(data, name, output_path)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("usage: extract_firmware.py <driver.zip or mtkwlan.dat> <output-dir>")
-        print("  Extracts all firmware blobs to output-dir.")
-        print("  Input can be the driver ZIP (mtkwlan.dat read from it) or raw mtkwlan.dat.")
-        sys.exit(1)
-
-    extract_all(sys.argv[1], sys.argv[2])
+    parser = argparse.ArgumentParser(description="Extract MediaTek firmware from a driver ZIP or mtkwlan.dat")
+    parser.add_argument("input_path")
+    parser.add_argument("output_dir")
+    parser.add_argument("--bluetooth-only", action="store_true")
+    args = parser.parse_args()
+    extract_all(args.input_path, args.output_dir, args.bluetooth_only)

@@ -1,0 +1,108 @@
+Bluetooth: btmtk: add explicit MT6639 diagnostic test mode
+
+Enable with btmtk.mt6639_diagnostics=1. Log initialization stage boundaries
+and at most 32 section descriptors, not firmware payloads or every packet.
+In this mode suppress automatic MT6639 hardware resets so a failed test
+does not immediately attempt the reset path implicated in USB disappearance.
+Normal mode retains upstream reset behavior. This is a diagnostic mode,
+not a claim that firmware initialization is fixed.
+
+Source: Linux 7.2 drivers/bluetooth/btmtk.c
+SPDX-License-Identifier: ISC
+
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -19,6 +19,12 @@
+ #include "btmtk.h"
+
+ #define VERSION "0.1"
++
++/* Explicit test mode: bounded logs, no automatic MT6639 hardware reset. */
++static bool mt6639_diagnostics;
++module_param(mt6639_diagnostics, bool, 0444);
++MODULE_PARM_DESC(mt6639_diagnostics,
++	"Log MT6639 initialization stages and suppress automatic hardware resets");
+
+ /* It is for mt79xx download rom patch*/
+ #define MTK_FW_ROM_PATCH_HEADER_SIZE	32
+@@ -179,6 +185,10 @@
+ 	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %.16s",
+ 		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
+
++	if (mt6639_diagnostics && dev_id == 0x6639)
++		bt_dev_info(hdev, "MT6639 diag: firmware %s bytes=%zu sections=%u",
++			    fwname, fw->size, section_num);
++
+ 	for (i = 0; i < section_num; i++) {
+ 		first_block = 1;
+ 		fw_ptr = fw_bin_ptr;
+@@ -196,6 +206,11 @@
+ 		 * matching the Windows driver behavior which skips WiFi/other
+ 		 * sections that would cause the chip to hang.
+ 		 */
++		if (mt6639_diagnostics && dev_id == 0x6639 && i < 32)
++			bt_dev_info(hdev, "MT6639 diag: section=%u offset=%u bytes=%u mode=%u",
++				    i, section_offset, dl_size,
++				    le32_to_cpu(sectionmap->bin_info_spec.dlmodecrctype) & 0xff);
++
+ 		if (dev_id == 0x6639 && dl_size > 0 &&
+ 		    (le32_to_cpu(sectionmap->bin_info_spec.dlmodecrctype) & 0xff) != 0x01)
+ 			continue;
+@@ -282,6 +297,8 @@
+ 			}
+ 		}
+ next_section:
++		if (mt6639_diagnostics && dev_id == 0x6639 && i < 32)
++			bt_dev_info(hdev, "MT6639 diag: section=%u completed", i);
+ 		continue;
+ 	}
+ 	/* Wait a few moments for firmware activation done */
+@@ -409,6 +426,11 @@
+ {
+ 	struct btmtk_data *reset_work = hci_get_priv(hdev);
+ 	int err;
++
++	if (mt6639_diagnostics && reset_work->dev_id == 0x6639) {
++		bt_dev_warn(hdev, "MT6639 diag: automatic hardware reset suppressed");
++		return;
++	}
+
+ 	hci_dev_lock(hdev);
+
+@@ -1389,6 +1411,9 @@
+ 	}
+
+ 	btmtk_data->dev_id = dev_id;
++	if (mt6639_diagnostics && dev_id == 0x6639)
++		bt_dev_info(hdev, "MT6639 diag: device=%08x fw_version=%08x flavor=%u",
++			    dev_id, fw_version, fw_flavor);
+
+ 	err = btmtk_register_coredump(hdev, btmtk_data->drv_name, fw_version);
+ 	if (err < 0)
+@@ -1436,12 +1461,17 @@
+ 			return err;
+ 		}
+
++		if (mt6639_diagnostics && dev_id == 0x6639)
++			bt_dev_info(hdev, "MT6639 diag: firmware download completed");
++
+ 		/* It's Device EndPoint Reset Option Register */
+ 		err = btmtk_usb_uhw_reg_write(hdev, MTK_EP_RST_OPT,
+ 					      MTK_EP_RST_IN_OUT_OPT);
+ 		if (err < 0)
+ 			return err;
+
++		if (mt6639_diagnostics && dev_id == 0x6639)
++			bt_dev_info(hdev, "MT6639 diag: enabling Bluetooth protocol");
+ 		/* Enable Bluetooth protocol */
+ 		param = 1;
+ 		wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+@@ -1456,6 +1486,8 @@
+ 			return err;
+ 		}
+
++		if (mt6639_diagnostics && dev_id == 0x6639)
++			bt_dev_info(hdev, "MT6639 diag: Bluetooth protocol enabled");
+ 		hci_set_msft_opcode(hdev, 0xFD30);
+ 		hci_set_aosp_capable(hdev);
+

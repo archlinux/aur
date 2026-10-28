@@ -96,6 +96,12 @@ Requires kernel 6.17+ and DKMS.
 | Artix Linux | 6.18+ | `make install` |
 | Linux Mint 22.2 (Ubuntu 24.04) | 6.17+ | `make install` |
 
+A Bluetooth-only backport has been validated on MSI B850MPOWER (`0489:e110`)
+with Ubuntu 22.04.5 and kernel `6.8.0-138-generic`; WiFi support still requires
+kernel 6.17+.
+See [the Linux 6.8 Bluetooth documentation](docs/linux-6.8-bluetooth.md) for
+build instructions and the full validation record.
+
 ## Naming guide
 
 MediaTek naming is confusing - see

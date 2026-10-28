@@ -1,0 +1,66 @@
+Bluetooth: btmtk: retain runtime PM during WMT response polling
+
+Keep the interface awake for the complete vendor command transaction,
+not only for command submission. Cancel receive polling on failure
+before its event buffer can be reused by the next transaction. Include
+WMT operation and flag in timeout diagnostics.
+
+This addresses a lifecycle defect, not a verified fix for MT6639 hang.
+Source: Linux 7.2 drivers/bluetooth/btmtk.c
+SPDX-License-Identifier: ISC
+
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -652,6 +652,7 @@
+ 	struct btmtk_hci_wmt_cmd *wc;
+ 	struct btmtk_wmt_hdr *hdr;
+ 	int err;
++	bool pm_held = false;
+
+ 	/* Send the WMT command and wait until the WMT event returns */
+ 	hlen = sizeof(*hdr) + wmt_params->dlen;
+@@ -681,18 +682,17 @@
+ 	if (err < 0)
+ 		goto err_free_wc;
+
++	pm_held = true;
+ 	err = __hci_cmd_send(hdev, 0xfc6f, hlen, wc);
+
+ 	if (err < 0) {
+ 		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+-		usb_autopm_put_interface(data->intf);
+ 		goto err_free_wc;
+ 	}
+
+ 	/* Submit control IN URB on demand to process the WMT event */
+ 	err = btmtk_usb_submit_wmt_recv_urb(hdev);
+
+-	usb_autopm_put_interface(data->intf);
+
+ 	if (err < 0)
+ 		goto err_free_wc;
+@@ -710,7 +710,8 @@
+ 				  TASK_UNINTERRUPTIBLE, HCI_INIT_TIMEOUT);
+
+ 	if (err) {
+-		bt_dev_err(hdev, "Execution of wmt command timed out");
++		bt_dev_err(hdev, "WMT timeout: op=0x%02x flag=0x%02x len=%u",
++			   wmt_params->op, wmt_params->flag, wmt_params->dlen);
+ 		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+ 		err = -ETIMEDOUT;
+ 		goto err_free_wc;
+@@ -775,6 +776,14 @@
+ 	data->evt_skb = NULL;
+ err_free_wc:
+ 	clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
++	/* Stop a timed-out poll before another command can reuse evt_skb. */
++	if (err < 0) {
++		usb_kill_anchored_urbs(data->ctrl_anchor);
++		kfree_skb(data->evt_skb);
++		data->evt_skb = NULL;
++	}
++	if (pm_held)
++		usb_autopm_put_interface(data->intf);
+ 	kfree(wc);
+ 	return err;
+ }

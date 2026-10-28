@@ -49,6 +49,7 @@ dkms add     -m %{dkms_name} -v %{version} --rpm_safe_upgrade &&
 dkms build   -m %{dkms_name} -v %{version} --rpm_safe_upgrade &&
 dkms install -m %{dkms_name} -v %{version} --rpm_safe_upgrade --force ||
 true
+%{_usrsrc}/%{dkms_name}-%{version}/check-wifi-firmware.sh || :
 
 %preun
 dkms remove -m %{dkms_name} -v %{version} --rpm_safe_upgrade --all || :

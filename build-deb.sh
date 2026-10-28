@@ -60,6 +60,8 @@ if [ "$1" = "configure" ]; then
     dkms add -m "${DKMS_NAME}" -v "${DKMS_VERSION}" || true
     dkms build -m "${DKMS_NAME}" -v "${DKMS_VERSION}" || true
     dkms install -m "${DKMS_NAME}" -v "${DKMS_VERSION}" --force || true
+    CHECK="/usr/src/${DKMS_NAME}-${DKMS_VERSION}/check-wifi-firmware.sh"
+    if [ -x "${CHECK}" ]; then "${CHECK}" || true; fi
 fi
 EOF
 sed -i "s/@VERSION@/${VERSION}/" "${STAGEDIR}/DEBIAN/postinst"
