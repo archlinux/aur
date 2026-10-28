@@ -6,7 +6,7 @@
 pkgname=scarletnx-git
 pkgver=r2548.d42b41d
 pkgrel=1
-pkgdesc='Static recompiler for Switch games, with an OS and GPU runtime on Vulkan'
+pkgdesc='Static recompiler that turns ARM64 and ARM32 programs into native code, like FEX-Emu in reverse'
 arch=('x86_64' 'aarch64')
 url='https://github.com/scarletnx/ScarletNX'
 # ScarletNX, the AGB board (MPL-2.0), and what links into it statically: FFmpeg (LGPL), OpenSSL, hactool, lz4, zstd,

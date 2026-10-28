@@ -1,5 +1,5 @@
 pkgbase = scarletnx-git
-	pkgdesc = Static recompiler for Switch games, with an OS and GPU runtime on Vulkan
+	pkgdesc = Static recompiler that turns ARM64 and ARM32 programs into native code, like FEX-Emu in reverse
 	pkgver = r2548.d42b41d
 	pkgrel = 1
 	url = https://github.com/scarletnx/ScarletNX
