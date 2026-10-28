@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -15,19 +15,20 @@ license=('GPL-3.0-or-later')
 # bundles mbelib at all (dlopen is the only way). If the system libraries ever prove
 # unusable, fall back to the vendored codec2: drop the codec2 depend and remove
 # -DDECT2_BUNDLE_CODEC2=OFF below.
-depends=('ffmpeg' 'glibc' 'libgcc' 'libstdc++' 'glfw' 'hackrf' 'hicolor-icon-theme' 'libusb' 'soapysdr'
-         # dlopen'd at run time, so namcap reports them as "may not be needed" - that is expected
-         'codec2'   # FreeDV / M17 voice (dlopen'd, replaces vendored third_party/codec2)
-         'mbelib')  # DMR / P25 / NXDN / dPMR / D-STAR voice (dlopen'd, upstream ships no copy since 0.2.8)
+depends=('ffmpeg' 'glibc' 'libgcc' 'libstdc++' 'glfw' 'hackrf' 'hicolor-icon-theme' 'libusb' 'soapysdr')
 makedepends=('cmake' 'pkgconf' 'rust')  # rust: core protocol/FEC/file/net layers are Rust-only since 0.2.8
-optdepends=('zenity: file dialogs'
+optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /usr/lib)'
+            'mbelib: DMR/P25/NXDN/dPMR/D-STAR voice (dlopened at run time, searched in /usr/lib)'
+            'zenity: file dialogs'
             'soapyrtlsdr: RTL-SDR support through SoapySDR'
             'soapyairspy: Airspy support through SoapySDR'
             'soapysdrplay: SDRplay support through SoapySDR'
-            'onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)')
+            'onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)'
+            'faad2: HE-AAC SBR/PS decoding for DAB/DAB+ (dlopened at run time)'
+            'libfdk-aac: xHE-AAC (USAC) decoding for DRM (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ebe08d7213127be7dd666fee62bcaa6d1f6f389ca8316953d67e9f63731fedef')
+sha256sums=('87d510d03751fd1780718ae089f82add82c55f151c78869e109af8fa550e65f3')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
