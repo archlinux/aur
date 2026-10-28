@@ -1,6 +1,6 @@
 pkgbase = tempest-desktop-bin
 	pkgdesc = Cross-platform remote access client for SSH, RDP, VNC, SFTP and K8s (official binary)
-	pkgver = 3.17.2
+	pkgver = 3.17.4
 	pkgrel = 1
 	url = https://gotempest.app
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = tempest-desktop-bin
 	conflicts = tempest-desktop
 	options = !strip
 	options = !debug
-	source_x86_64 = tempest-desktop_3.17.2_amd64.deb::https://download.gotempest.app/tempest-desktop_3.17.2_amd64.deb
-	sha512sums_x86_64 = 7f28d7c788344fffeb51c95524a4303ccdf116fe67d21a3c34dd9bf3ceec61d5666c1ce7f93257d7989889c8bc064e9f9fca8d53fc750b8e82e5e4c3b039d535
-	source_aarch64 = tempest-desktop_3.17.2_arm64.deb::https://download.gotempest.app/tempest-desktop_3.17.2_arm64.deb
-	sha512sums_aarch64 = aa916092999d27d38e726d4d653cd6579937c10e49b49910a92b15ceef578d698b0258297ea4003fb90c70c2b60b982dc48840a22d1501e0cb9dcb53f9703c43
+	source_x86_64 = tempest-desktop_3.17.4_amd64.deb::https://download.gotempest.app/tempest-desktop_3.17.4_amd64.deb
+	sha512sums_x86_64 = f9a6a49c6cbe6f63e385651914dd6d55c0e9dd2515d053d6d34924f6faaf8b6291ca5b03e5c60153bf975569e614a0fd7e5a4a45ccbc7e8a4c7b00d4af470804
+	source_aarch64 = tempest-desktop_3.17.4_arm64.deb::https://download.gotempest.app/tempest-desktop_3.17.4_arm64.deb
+	sha512sums_aarch64 = 8b873f5f67e84410d965f75323fcaaf27527e961105b228b58bb24f9c5c9f0538050dae2a8881b535dd3ede3435c7df23fc6da4d4404f5e7094e82b04690bafd
 
 pkgname = tempest-desktop-bin
