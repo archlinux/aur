@@ -1,4 +1,6 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=xf86-input-libinput-phoenix
 pkgver=1.5.0
