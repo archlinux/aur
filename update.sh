@@ -36,12 +36,13 @@ EOF
 sed -i "s/^_realver=.*/_realver=\"${REALVER}\"/" PKGBUILD
 sed -i "s/^pkgver=.*/pkgver=${PKGVER}/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
-if [[ -f muse.sh && -f muse-session && -f muse-mcp && -f muse-stats ]]; then
+if [[ -f muse.sh && -f muse-session && -f muse-mcp && -f muse-stats && -f muse-import ]]; then
   SHA256_WRAPPER=$(sha256sum muse.sh | cut -d' ' -f1)
   SHA256_SESSION=$(sha256sum muse-session | cut -d' ' -f1)
   SHA256_MCP=$(sha256sum muse-mcp | cut -d' ' -f1)
   SHA256_STATS=$(sha256sum muse-stats | cut -d' ' -f1)
-  rewrite_array "sha256sums" "sha256sums=('${SHA256_WRAPPER}' '${SHA256_SESSION}' '${SHA256_MCP}' '${SHA256_STATS}')"
+  SHA256_IMPORT=$(sha256sum muse-import | cut -d' ' -f1)
+  rewrite_array "sha256sums" "sha256sums=('${SHA256_WRAPPER}' '${SHA256_SESSION}' '${SHA256_MCP}' '${SHA256_STATS}' '${SHA256_IMPORT}')"
 fi
 rewrite_array "sha256sums_x86_64" "sha256sums_x86_64=('${SHA256_X86}')"
 rewrite_array "sha256sums_aarch64" "sha256sums_aarch64=('${SHA256_ARM}')"

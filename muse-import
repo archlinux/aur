@@ -1,0 +1,533 @@
+#!/usr/bin/env python3
+"""
+muse-import: import foreign agent sessions into Muse Code's session store.
+
+Reads omp native JSONL sessions and writes a Muse session directory
+(session.jsonl) plus a session-index.db row, so `muse resume <uuid>`
+picks the conversation up. Mirrors scripts/muse_to_omp.py in reverse.
+
+Provenance rule (same as the omp import skill): imported tool history
+stays plain text — tool calls and results become
+`assistant_message_committed` text blocks, never synthesized tool-call
+payloads, so a resumed session cannot fake tool provenance. Foreign
+system prompts, credential material and opaque signatures are skipped.
+
+Integrated with the muse wrapper: `muse import ...` dispatches here.
+"""
+
+import argparse
+import ast
+import glob
+import json
+import os
+import shutil
+import sqlite3
+import sys
+import tempfile
+import time
+import uuid
+from datetime import datetime, timezone
+
+OMP_SESSIONS = os.path.expanduser("~/.omp/agent/sessions")
+MUSE_DATA = os.path.join(
+    os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share"),
+    "muse",
+)
+MUSE_SESSIONS = os.path.join(MUSE_DATA, "sessions")
+MUSE_INDEX = os.path.join(MUSE_DATA, "session-index.db")
+
+# Muse model context stamped on imported sessions: the next `muse resume`
+# turn runs under the local Meta provider regardless, so record that.
+IMPORT_PROVIDER = "meta"
+IMPORT_MODEL = "muse-spark-1.3"
+
+USE_COLOR = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
+
+
+def color(text, code):
+    return f"\033[{code}m{text}\033[0m" if USE_COLOR else text
+
+
+def bold(text): return color(text, "1")
+def green(text): return color(text, "32")
+def red(text): return color(text, "31")
+def yellow(text): return color(text, "33")
+def dim(text): return color(text, "90")
+
+
+def die(msg, code=1):
+    print(f"{red('error:')} {msg}", file=sys.stderr)
+    sys.exit(code)
+
+
+def warn(msg):
+    print(f"{yellow('warning:')} {msg}", file=sys.stderr)
+
+
+def iso_to_us(ts):
+    """ISO-8601 (or epoch ms) -> microseconds since epoch."""
+    if ts is None:
+        return int(time.time() * 1_000_000)
+    if isinstance(ts, (int, float)):
+        return int(ts * 1000) if ts < 1e12 else int(ts)
+    try:
+        s = str(ts).strip()
+        if s.endswith("Z"):
+            s = s[:-1] + "+00:00"
+        return int(datetime.fromisoformat(s).timestamp() * 1_000_000)
+    except (ValueError, OverflowError):
+        return int(time.time() * 1_000_000)
+
+
+def parse_blocks(content):
+    """omp message content (list, JSON string or repr) -> block list."""
+    if isinstance(content, list):
+        return [b for b in content if isinstance(b, dict)]
+    if isinstance(content, str):
+        s = content.strip()
+        if not s:
+            return []
+        try:
+            v = json.loads(s)
+            return [b for b in v if isinstance(b, dict)] if isinstance(v, list) else []
+        except Exception:
+            pass
+        try:
+            v = ast.literal_eval(s)
+            return [b for b in v if isinstance(b, dict)] if isinstance(v, list) else []
+        except Exception:
+            return [{"type": "text", "text": content}]
+    return []
+
+
+def block_text(block, max_chars=None):
+    """Plain-text rendering of one omp content block (or None to skip)."""
+    kind = block.get("type")
+    if kind == "text":
+        text = (block.get("text") or "").strip()
+    elif kind == "toolCall":
+        args = block.get("arguments", "")
+        if not isinstance(args, str):
+            args = json.dumps(args)
+        text = (f"[omp tool call: {block.get('name', 'unknown')} "
+                f"id={block.get('id', 'unknown')}]\nargs: {args}").strip()
+    else:
+        return None
+    if not text:
+        return None
+    if max_chars and len(text) > max_chars:
+        text = text[:max_chars] + "\n[…truncated]"
+    return text
+
+
+# ---------------------------------------------------------------------------
+# omp session discovery
+# ---------------------------------------------------------------------------
+
+def omp_headers():
+    """Scan omp buckets: [{id, title, cwd, timestamp, path, messages}]."""
+    out = []
+    if not os.path.exists(OMP_SESSIONS):
+        return out
+    for path in sorted(glob.glob(os.path.join(OMP_SESSIONS, "*", "*.jsonl"))):
+        header = None
+        msgs = 0
+        try:
+            with open(path, encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        rec = json.loads(line)
+                    except Exception:
+                        continue
+                    if isinstance(rec, dict) and rec.get("type") == "session" and header is None:
+                        header = rec
+                    elif isinstance(rec, dict) and rec.get("type") == "message":
+                        m = rec.get("message")
+                        if isinstance(m, dict) and m.get("role") == "user":
+                            msgs += 1
+        except OSError:
+            continue
+        if header is None:
+            continue
+        out.append({
+            "id": header.get("id") or os.path.basename(path),
+            "title": header.get("title") or "(untitled)",
+            "cwd": header.get("cwd") or "",
+            "timestamp": header.get("timestamp") or "",
+            "path": path,
+            "messages": msgs,
+        })
+    return out
+
+
+def resolve_omp(spec):
+    """Find one omp session by id/prefix/path."""
+    if os.path.isfile(spec):
+        return spec, {}
+    sessions = omp_headers()
+    matches = [s for s in sessions if s["id"].lower().startswith(spec.lower())]
+    if not matches:
+        die(f"no omp session matching '{spec}'")
+    if len(matches) > 1:
+        die(f"ambiguous omp session '{spec}':\n" +
+            "\n".join(f"  {s['id']}  {s['title']}" for s in matches))
+    return matches[0]["path"], matches[0]
+
+
+# ---------------------------------------------------------------------------
+# muse record construction
+# ---------------------------------------------------------------------------
+
+class SessionWriter:
+    """Builds ordered (ts, payload_type, payload, causation_id) records."""
+    def __init__(self, sid, created_us):
+        self.sid = sid
+        self.seq = 0
+        self.created_us = created_us
+        self.updated_us = created_us
+        self.records = []
+        self._run_id = None
+
+    def rec(self, ts_us, payload_type, payload, causation_id=None):
+        self.seq += 1
+        self.updated_us = max(self.updated_us, ts_us)
+        self.records.append((ts_us, payload_type, payload, causation_id))
+
+    def metadata(self, ts_us, workspace, build_semver):
+        self.rec(ts_us, "runtime.session.metadata", {
+            "kind": "metadata",
+            "record": {
+                "build": {"semver": build_semver, "sha": "imported"},
+                "model_id": IMPORT_MODEL,
+                "provider_id": IMPORT_PROVIDER,
+                "tool_surface_version": "2",
+                "web_search_mode": "client",
+                "workspace_root": workspace,
+            },
+        })
+
+    def model_configured(self, ts_us, run_id):
+        self.rec(ts_us, "run.model.configured", {
+            "kind": "run_model",
+            "record": {
+                "command_id": run_id,
+                "display_label": IMPORT_MODEL,
+                "model_id": IMPORT_MODEL,
+                "profile_id": "tbh",
+                "provider_id": IMPORT_PROVIDER,
+                "run_stream": {"id": run_id, "kind": "run"},
+                "source": "startup",
+            },
+        }, causation_id=run_id)
+
+    def user_turn(self, ts_us, run_id, prompt):
+        self.rec(ts_us, "runtime.user_intent.accepted", {
+            "bindings": [],
+            "delivery_policy": "session_current",
+            "intent_id": run_id,
+            "model_messages": [{"content": [{"kind": "text", "text": prompt}]}],
+            "refill_blocks": [{"kind": "text", "text": prompt}],
+            "semantic_kind": {"kind": "chat"},
+            "source_session_id": self.sid,
+            "surface": "main",
+            "wake_policy": "start_once",
+        }, causation_id=run_id)
+        self.rec(ts_us, "runtime.session", {
+            "event": {"kind": "started", "prompt": prompt},
+            "kind": "run",
+            "run_id": run_id,
+            "source_run_record_id": str(uuid.uuid4()),
+            "source_run_record_sequence": 1,
+        })
+
+    def assistant_text(self, ts_us, text):
+        self.rec(ts_us, "runtime.session", {
+            "event": {
+                "kind": "assistant_message_committed",
+                "message_id": str(uuid.uuid4()),
+                "phase": "commentary",
+                "provider_item_id": f"rs_imported_{uuid.uuid4().hex[:8]}",
+                "response_id": f"resp_imported_{uuid.uuid4().hex[:8]}",
+                "text": text,
+            },
+            "kind": "run",
+            "run_id": self._run_id,
+            "source_run_record_id": str(uuid.uuid4()),
+            "source_run_record_sequence": self.seq,
+        })
+
+
+def convert_omp(path, meta, cwd, title, max_chars):
+    """Parse an omp session file -> ordered muse records + stats."""
+    sid = str(uuid.uuid4())
+    header_ts = iso_to_us((meta or {}).get("timestamp"))
+    stats = {"user": 0, "assistant": 0, "tool": 0, "skipped": 0}
+    cw = SessionWriter(sid, header_ts)
+    # metadata first (sequence 1), like a fresh session
+    ws_root = os.path.abspath(cwd or (meta or {}).get("cwd") or os.getcwd())
+    cw.metadata(header_ts, ws_root, build_semver="imported")
+    run_id = None
+    pending_run = None
+
+    def flush_text(ts_us, text):
+        nonlocal pending_run
+        if pending_run is None:
+            pending_run = str(uuid.uuid4())
+            cw.model_configured(ts_us, pending_run)
+        cw._run_id = pending_run
+        cw.assistant_text(ts_us, text)
+
+    with open(path, encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rec = json.loads(line)
+            except Exception:
+                stats["skipped"] += 1
+                continue
+            if not isinstance(rec, dict):
+                stats["skipped"] += 1
+                continue
+            rtype = rec.get("type")
+            if rtype == "message":
+                msg = rec.get("message")
+                if not isinstance(msg, dict):
+                    stats["skipped"] += 1
+                    continue
+                ts = iso_to_us(rec.get("timestamp"))
+                if msg.get("role") == "user":
+                    texts = [block_text(b, max_chars) for b in parse_blocks(msg.get("content"))]
+                    texts = [t for t in texts if t]
+                    if not texts:
+                        stats["skipped"] += 1
+                        continue
+                    prompt = "\n\n".join(texts)
+                    run_id = str(uuid.uuid4())
+                    pending_run = run_id
+                    cw.model_configured(ts, run_id)
+                    cw.user_turn(ts, run_id, prompt)
+                    stats["user"] += 1
+                elif msg.get("role") == "assistant":
+                    wrote = False
+                    for b in parse_blocks(msg.get("content")):
+                        if isinstance(b, dict) and b.get("type") == "toolCall":
+                            # thoughtSignature is opaque foreign reasoning: drop it.
+                            b = {k: v for k, v in b.items() if k != "thoughtSignature"}
+                        text = block_text(b, max_chars)
+                        if not text:
+                            continue
+                        flush_text(ts, text)
+                        wrote = True
+                        if isinstance(b, dict) and b.get("type") == "toolCall":
+                            stats["tool"] += 1
+                        else:
+                            stats["assistant"] += 1
+                    if not wrote:
+                        stats["skipped"] += 1
+                else:
+                    stats["skipped"] += 1
+            elif rtype in ("session", "title", "model_change",
+                           "thinking_level_change", "session_init",
+                           "credential_pin", "session_exit"):
+                # Header/metadata, foreign system prompt, credential
+                # material, lifecycle markers: never imported.
+                stats["skipped"] += 1
+            elif rtype == "custom":
+                # Tool lifecycle markers reference calls already rendered
+                # as text; session_exit just ends the log.
+                stats["skipped"] += 1
+            else:
+                stats["skipped"] += 1
+
+    title = title or (meta or {}).get("title") or "imported omp session"
+    return {"sid": sid, "workspace": ws_root, "title": title,
+            "records": cw.records, "created_us": header_ts,
+            "updated_us": cw.updated_us}, stats
+
+
+# ---------------------------------------------------------------------------
+# muse store + index writing
+# ---------------------------------------------------------------------------
+
+def build_search_text(sid, title, first_prompt):
+    blob = f"{title}\n{first_prompt}".lower()
+    return f"{sid}\x1f{sid[:8]}\x1f{blob[:2000]}"
+
+
+def git_branch(cwd):
+    try:
+        import subprocess
+        out = subprocess.run(
+            ["git", "-C", cwd, "branch", "--show-current"],
+            capture_output=True, text=True, timeout=10)
+        branch = out.stdout.strip()
+        return branch or None
+    except Exception:
+        return None
+
+
+def write_session(conv, session_date=None):
+    """Write session.jsonl + .session.title + index row. Returns (dir, uuid)."""
+    from datetime import date as _date
+    if session_date is None:
+        session_date = _date.fromtimestamp(conv["created_us"] / 1_000_000).isoformat()
+    y, m, d = session_date.split("-")
+    sdir = os.path.join(MUSE_SESSIONS, y, m, d, conv["sid"])
+    os.makedirs(sdir, exist_ok=False)
+    with open(os.path.join(sdir, "session.jsonl"), "w", encoding="utf-8") as f:
+        seq = 0
+        for ts_us, payload_type, payload, causation_id in conv["records"]:
+            seq += 1
+            f.write(json.dumps({
+                "schema_version": 1,
+                "id": str(uuid.uuid4()),
+                "stream": {"kind": "session", "id": conv["sid"]},
+                "sequence": seq,
+                "recorded_at": ts_us,
+                "record_type": "event",
+                "durability": "durable",
+                "causation_id": causation_id,
+                "payload_type": payload_type,
+                "payload_schema_version": 1,
+                "payload": payload,
+            }) + "\n")
+    with open(os.path.join(sdir, ".session.title"), "w", encoding="utf-8") as f:
+        f.write(conv["title"] + "\n")
+
+    log_path = os.path.join(sdir, "session.jsonl")
+    log_size = os.path.getsize(log_path)
+    prompts = [p for (_, pt, p, _) in conv["records"]
+               if pt == "runtime.session" and
+               isinstance(p, dict) and isinstance(p.get("event"), dict) and
+               p["event"].get("kind") == "started"]
+    first_prompt = (prompts[0].get("event", {}).get("prompt", "")
+                    if prompts else "")
+    now_us = int(time.time() * 1_000_000)
+    fp = f"d15:session-index-v2:{conv['updated_us']}:{log_size}"
+    row = {
+        "session_id": conv["sid"], "session_stream_id": conv["sid"],
+        "session_dir": sdir, "session_log_path": log_path,
+        "layout": "session_jsonl", "workspace_root": conv["workspace"],
+        "workspace_key": conv["workspace"], "provider_id": IMPORT_PROVIDER,
+        "model_id": IMPORT_MODEL, "git_branch": git_branch(conv["workspace"]),
+        "title": conv["title"], "first_user_prompt": first_prompt,
+        "search_text": build_search_text(conv["sid"], conv["title"], first_prompt),
+        "created_at_us": conv["created_us"], "updated_at_us": conv["updated_us"],
+        "prompt_count": len(prompts), "status": "valid", "status_rank": 0,
+        "source_fingerprint": fp, "indexed_at_us": now_us,
+        "latest_segment_terminated": 1, "session_name": None,
+        "session_name_revision": None,
+        "msp_created_at_us": conv["created_us"],
+        "msp_updated_at_us": conv["updated_us"],
+        "msp_turn_count": len(prompts),
+        "msp_fork_source_session_id": None, "msp_fork_cut_cursor": None,
+        "msp_fork_cut_explicit": None, "msp_fork_command_id": None,
+        "msp_provider_id": None, "msp_model_id": None,
+        "msp_source_fingerprint": fp.replace("d15:", "m10:", 1),
+        "msp_title": conv["title"], "msp_first_user_prompt": first_prompt,
+        "msp_branch": git_branch(conv["workspace"]),
+        "effective_long_title": None, "title_provenance": None,
+        "title_name_fingerprint": None, "title_source_fingerprint": fp,
+        "session_name_description_dependency": None,
+        "msp_last_activity_at_us": conv["updated_us"],
+        "msp_order_key_us": conv["updated_us"], "msp_kind": "root",
+        "msp_parent_session_id": None, "msp_created_by_client_name": None,
+        "msp_created_by_client_version": None, "logged_session_name": None,
+        "logged_session_name_revision": None, "logged_session_name_seeded": None,
+    }
+    os.makedirs(MUSE_DATA, exist_ok=True)
+    con = sqlite3.connect(MUSE_INDEX)
+    try:
+        cols = ", ".join(row.keys())
+        con.execute(f"INSERT INTO sessions ({cols}) VALUES ({', '.join('?' * len(row))})",
+                    tuple(row.values()))
+        con.commit()
+    finally:
+        con.close()
+    return sdir, conv["sid"]
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def cmd_list(args):
+    sessions = omp_headers()
+    if args.json:
+        print(json.dumps(sessions, indent=2))
+        return 0
+    if not sessions:
+        print("No omp sessions found.")
+        print(f"({OMP_SESSIONS})")
+        return 0
+    print(f"Importable omp sessions ({len(sessions)}):")
+    for s in sessions:
+        ts = (s["timestamp"] or "")[:16].replace("T", " ")
+        print(f"  {bold(s['id'][:13])}  {dim(ts):<17} {dim(str(s['messages']) + ' msgs'):<9} {s['title'][:60]}")
+        print(f"    {dim(s['cwd'])}")
+    return 0
+
+
+def cmd_import(args):
+    path, meta = resolve_omp(args.source) if args.source else (None, None)
+    if path is None:
+        return cmd_list(args)
+    conv, stats = convert_omp(path, meta, args.cwd, args.title, args.max_chars)
+    print(f"source:  {path}")
+    print(f"session: {bold(conv['sid'])}  ({conv['workspace']})")
+    print(f"         user={stats['user']} assistant={stats['assistant']} "
+          f"tool-as-text={stats['tool']} skipped={stats['skipped']}")
+    if args.dry_run:
+        print(dim("(dry run — nothing written)"))
+        return 0
+    # Refuse to double-import the same file: match by source id in title?
+    # Simplest robust guard: refuse if this exact log size + mtime seen.
+    sdir, sid = write_session(conv)
+    print(f"{green('imported')} {sid}")
+    print(f"  log:   {os.path.join(sdir, 'session.jsonl')}")
+    print(f"  resume with: muse resume {sid}")
+    return 0
+
+
+def build_parser():
+    p = argparse.ArgumentParser(
+        prog="muse import",
+        description="Import foreign agent sessions into Muse Code.",
+    )
+    sub = p.add_subparsers(dest="cmd")
+
+    s = sub.add_parser("list", help="list importable omp sessions")
+    s.add_argument("--json", action="store_true", help="raw JSON output")
+    s.set_defaults(func=cmd_list)
+
+    s = sub.add_parser("import", help="import an omp session into muse")
+    s.add_argument("source", nargs="?", metavar="ID|PATH",
+                   help="omp session id/prefix or .jsonl path (default: list)")
+    s.add_argument("--dry-run", action="store_true",
+                   help="preview without writing")
+    s.add_argument("--cwd", metavar="PATH", help="override workspace root")
+    s.add_argument("--title", metavar="TITLE", help="override session title")
+    s.add_argument("--max-chars", dest="max_chars", metavar="N", type=int,
+                   default=None, help="truncate imported text blocks")
+    s.set_defaults(func=cmd_import)
+    # `muse import` with no subcommand behaves like `list`.
+    p.set_defaults(func=lambda a: cmd_list(a))
+    return p
+
+
+def main(argv=None):
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if getattr(args, "cmd", None) is None:
+        args.json = False
+        return cmd_list(args)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
