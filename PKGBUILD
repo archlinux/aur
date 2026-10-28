@@ -2,7 +2,7 @@
 
 pkgname=pdf-tui-bin
 _pkgname=pdf-tui
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Terminal PDF reader built with ratatui and terminal graphics protocols."
 arch=('x86_64')
@@ -18,11 +18,11 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip')
-source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('e9fa610d20866746e248ed089e4f953b1b0280c5d78a4eb15bfa185041049e0e')
+source=("$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu.tar.gz")
+sha256sums=('4aa1bea57bf8d86aba735bd8fba0b17a9a3ea6b3727868d61e540a29ce0795a2')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
+  cd "$srcdir/$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu"
 
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
