@@ -1,6 +1,6 @@
 pkgbase = abb-agent
 	pkgdesc = Replacement for the Synology Active Backup for Business Linux agent: any distro and kernel, first-class btrfs, bare-metal restore (https://github.com/rylos/abb-agent)
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/rylos/abb-agent
 	install = abb-agent.install
@@ -14,7 +14,7 @@ pkgbase = abb-agent
 	conflicts = abb-agent-bin
 	options = !lto
 	backup = etc/abb-agent.toml
-	source = abb-agent-0.2.11.tar.gz::https://github.com/rylos/abb-agent/archive/v0.2.11.tar.gz
-	sha256sums = 523311d951ef0b386d8a404ad7204a0b18d69592ec7c712a99509fd2b5fb0362
+	source = abb-agent-0.2.12.tar.gz::https://github.com/rylos/abb-agent/archive/v0.2.12.tar.gz
+	sha256sums = 61f066dd0bba2029c4ec8f8d2664824de4f0e500228aa1bb52393cc3f7d8d811
 
 pkgname = abb-agent
