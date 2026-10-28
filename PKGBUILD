@@ -15,9 +15,9 @@ conflicts=('r-rig')
 options=('!debug')
 provides_x86_64=("r-rig=${pkgver}")
 provides_aarch64=("r-rig=${pkgver}")
-source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/r-lib/rig/releases/download/v${pkgver}/rig-linux-x86_64-${pkgver}.tar.gz"
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/r-lib/rig/releases/download/v${pkgver}/rig-linux-x86_64-${pkgver}.tar.gz"
                 "https://raw.githubusercontent.com/r-lib/rig/refs/tags/v${pkgver}/LICENSE")
-source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/r-lib/rig/releases/download/v${pkgver}/rig-linux-aarch64-${pkgver}.tar.gz"
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/r-lib/rig/releases/download/v${pkgver}/rig-linux-aarch64-${pkgver}.tar.gz"
                  "https://raw.githubusercontent.com/r-lib/rig/refs/tags/v${pkgver}/LICENSE")
 
 package() {
@@ -30,5 +30,5 @@ package() {
 
 sha256sums_x86_64=('757b5b7886b09a8a97f35ab6e71546b68044d323ffbcaa68adcbe818409af156'
                    '6cd5c8d39a38fe457509cb88b5ab333f078c7b05014d27dfebeb69fd4b490db2')
-sha256sums_aarch64=('757b5b7886b09a8a97f35ab6e71546b68044d323ffbcaa68adcbe818409af156'
+sha256sums_aarch64=('2b796885bc0398ae7700f8c95847a855e29c359769f31e1993569274316fb508'
                     '6cd5c8d39a38fe457509cb88b5ab333f078c7b05014d27dfebeb69fd4b490db2')
