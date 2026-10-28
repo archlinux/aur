@@ -1,6 +1,6 @@
 pkgbase = nordvpn-gui
 	pkgdesc = GUI for NordVPN
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://nordvpn.com
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = nordvpn-gui
 	depends = gtk3
 	depends = hicolor-icon-theme
 	options = !debug
-	source = nordvpn-gui-6.0.1::https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/6.0.1.tar.gz
+	source = nordvpn-gui-6.0.2::https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/6.0.2.tar.gz
 	source = nordvpn-gui.desktop
-	sha256sums = 4185919aff43270e5170feb8f123c456954260961cf2265aaa5e5376b97c1997
+	sha256sums = e12fde3a1e17bdd44fcf1f5749ec65ffd697fb6b5087ce895f87630f3f2683d6
 	sha256sums = a9db53b6c1b5894bf8acf1dac3b63031377fcad3f9695ad190cce8e7d3032705
 
 pkgname = nordvpn-gui
