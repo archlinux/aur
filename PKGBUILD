@@ -16,6 +16,7 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++' 'icu' 'openssl' 'fontconfig'
          'vulkan-icd-loader' 'libglvnd' 'libx11' 'libice' 'libsm' 'libxcursor'
          'libxext' 'libxi' 'libxrandr' 'libxkbcommon' 'wayland')
+optdepends=('vulkan-driver: the GPU driver the Vulkan loader needs')
 provides=('sharpemu')
 conflicts=('sharpemu')
 options=('!strip')

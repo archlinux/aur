@@ -22,6 +22,7 @@ pkgbase = sharpemu-bin
 	depends = libxrandr
 	depends = libxkbcommon
 	depends = wayland
+	optdepends = vulkan-driver: the GPU driver the Vulkan loader needs
 	provides = sharpemu
 	conflicts = sharpemu
 	noextract = sharpemu-0.0.6-mono-linux-x64.tar.gz
