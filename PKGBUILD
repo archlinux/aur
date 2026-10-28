@@ -2,13 +2,18 @@
 
 pkgname=cso-thumbnailer
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A thumbnailer for "application/x-compressed-iso" MIME type PSP software files'
 arch=('x86_64')
 url='https://coding.homdworks.org/sateallia/cso-thumbnailer'
 license=('MIT')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://coding.homdworks.org/sateallia/cso-thumbnailer/archive/${pkgver}.tar.gz")
+
+prepare() {
+    cd "${pkgname}"
+    sed -i 's|/usr/local/bin/|/usr/bin/|g' cso.thumbnailer
+}
 
 build() {
     cd "${pkgname}"
