@@ -32,11 +32,12 @@ package_dotnet-runtime-8.0-bin() {
     'libstdc++'
     'glibc'
     'icu'
+    'krb5'
     'libunwind'
     'zlib'
     'openssl'
   )
-  optdepends=('lttng-ust: CoreCLR tracing')
+  optdepends=('lttng-ust2.12: CoreCLR tracing')
   provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-8.0")
   conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-8.0")
 
@@ -71,6 +72,8 @@ package_dotnet-sdk-8.0-bin() {
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
+  install -dm 755 "${pkgdir}"/usr/share/dotnet/metadata/workloads/"${_sdkver}"
+  touch "${pkgdir}"/usr/share/dotnet/metadata/workloads/"${_sdkver}"/userlocal
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-8.0-bin
 }
 

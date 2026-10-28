@@ -29,10 +29,11 @@ pkgname = dotnet-runtime-8.0-bin
 	depends = libstdc++
 	depends = glibc
 	depends = icu
+	depends = krb5
 	depends = libunwind
 	depends = zlib
 	depends = openssl
-	optdepends = lttng-ust: CoreCLR tracing
+	optdepends = lttng-ust2.12: CoreCLR tracing
 	provides = dotnet-runtime=8.0.33
 	provides = dotnet-runtime-8.0
 	conflicts = dotnet-runtime=8.0.33
