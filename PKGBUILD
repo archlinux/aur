@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=zenoh-c
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="C API for Zenoh"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'ninja' 'rust')
 source=("https://github.com/eclipse-zenoh/zenoh-c/archive/$pkgver.tar.gz")
-sha256sums=('e22447dbbd3543e4b1869cb607baf68975159ac529f0e9c0edfd4db4d6d52fc3')
+sha256sums=('766bd6220749c6743bf3715af74afdf5ae129525fac9b3a372b74070fe1704d4')
 
 _builddir="build-${pkgver}"
 
