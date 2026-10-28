@@ -1,6 +1,6 @@
 pkgbase = python-pyskani
 	pkgdesc = PyO3 bindings and Python interface to skani, a method for fast fast genomic identity calculation using sparse chaining
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/althonos/pyskani
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pyskani
 	makedepends = python-maturin
 	makedepends = cargo
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyskani/pyskani-0.2.0.tar.gz
-	sha256sums = 270bbc09fb1115208348f2456b859149f91b9d9867c1526c4d379aef232c9bc9
+	source = https://files.pythonhosted.org/packages/source/p/pyskani/pyskani-0.3.0.tar.gz
+	sha256sums = 663114278d04c586c2684ce8111699884be1122bcef7d2e892a64886938e8e17
 
 pkgname = python-pyskani
