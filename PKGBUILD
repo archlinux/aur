@@ -1,6 +1,6 @@
 # Maintainer: Daan Hessen <daanhessen@notbadcompany.com>
 pkgname=vector-find
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Vector Find: fast GTK4 file manager with nvim-style keys, a terminal panel and Lua config'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 )
 options=('!lto')
 source=("vector-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('806d851ea1b493f674d906f2b7dc7eb2edf18fd16df14626997dc312deed6a8a')
+sha256sums=('201ce7228e3095c759ffe303bf98a71afcebe8c34d63dce2024903aa99ffa1cb')
 
 prepare() {
   cd "vector-$pkgver"
