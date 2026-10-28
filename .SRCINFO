@@ -1,0 +1,18 @@
+pkgbase = notesearch-rag
+	pkgdesc = Hybrid dense + BM25 search over markdown memory notes, as a CLI and an MCP server (Claude Code, LM Studio)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JSkier21/notesearch-rag
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-requests
+	source = notesearch-rag-0.1.0.tar.gz::https://github.com/JSkier21/notesearch-rag/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ef7d160e3efb7afc682f18f108bb36b3841722e67f1daa629b6d8ff077cd6a4b
+
+pkgname = notesearch-rag
