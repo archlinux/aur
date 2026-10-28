@@ -1,0 +1,70 @@
+--- a/src/qt/qtPal.cpp
++++ b/src/qt/qtPal.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <QApplication>
+ #include <QFile>
++#include <QFileInfo>
+ #include <QFileDialog>
+ #include <QThread>
+ #include <QAudioOutput>
+@@ -124,9 +125,19 @@
+     static int one = 1;
+     application = new QApplication(one, argv); // suppress passing additional arguments
+ 
+-    QDir settingsDir(QCoreApplication::applicationDirPath() + "/_settings");
++    // Resolve the executable symlink before taking its directory.
++    const QString executablePath =
++        QFileInfo(QCoreApplication::applicationFilePath()).canonicalFilePath();
++    const QString applicationDir = executablePath.isEmpty()
++        ? QCoreApplication::applicationDirPath()
++        : QFileInfo(executablePath).absolutePath();
++
++    ::basePath = applicationDir.toUtf8().constData();
++    ::basePath += '/';
++
++    QDir settingsDir(applicationDir + "/_settings");
+     if (settingsDir.exists()) {
+-        QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::applicationDirPath());
++        QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, applicationDir);
+         QCoreApplication::setOrganizationName("_settings");
+     } else
+         QCoreApplication::setOrganizationName("Emu80");
+@@ -199,9 +210,6 @@
+ 
+     g_renderHelper = new RenderHelper(nullptr);
+ 
+-    ::basePath = application->applicationDirPath().toUtf8().constData();
+-    ::basePath += '/';
+-
+     QString systemLangCode = QLocale::system().name().split('_').first();
+ 
+     QString langCode = locale.split('_').first();
+@@ -221,7 +229,7 @@
+         return true;
+ 
+     translator = new QTranslator();
+-    QString translationsDir = langCode == "en" || langCode == "ru" ? ":/translations" : qApp->applicationDirPath() + "/translations";
++    QString translationsDir = langCode == "en" || langCode == "ru" ? ":/translations" : QString::fromUtf8(palGetBasePath().c_str()) + "translations";
+     if (translator->load("emu80_" + langCode, translationsDir)) {
+         application->installTranslator(translator);
+         return true;
+--- a/src/qt/qtSettingsDialog.cpp
++++ b/src/qt/qtSettingsDialog.cpp
+@@ -25,6 +25,7 @@
+ #include "ui_qtSettingsDialog.h"
+ 
+ #include "qtMainWindow.h"
++#include "qtPal.h"
+ 
+ #include "../EmuCalls.h"
+ 
+@@ -1290,7 +1291,7 @@
+ 
+ void SettingsDialog::loadLanguages()
+ {
+-    QString translationsDir = qApp->applicationDirPath() + "/translations";
++    QString translationsDir = QString::fromUtf8(palGetBasePath().c_str()) + "translations";
+ 
+     QDir dir(translationsDir);
+     if (!dir.exists())
