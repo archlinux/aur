@@ -4,16 +4,18 @@
 
 pkgname=sharpemu-bin
 pkgver=0.0.6_mono
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental PlayStation 5 emulator (prebuilt)"
 arch=('x86_64')
 url="https://github.com/sharpemu/sharpemu"
 license=('GPL-2.0-or-later')
-# The self-contained .NET binary bundles its own libglfw.so.3, which in turn
-# dlopens the X11/Wayland client libraries at runtime.
-depends=('glibc' 'gcc-libs' 'icu' 'openssl' 'vulkan-icd-loader'
-         'libx11' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr'
-         'libxkbcommon' 'wayland')
+# A self-contained single-file .NET app: SDL3, Skia and HarfBuzz are packed
+# into the binary, FFmpeg sits in plugins/. What it loads from the system: ICU
+# and OpenSSL for .NET, fontconfig for Skia, the X11 libraries and libGL for
+# the Avalonia window, Wayland and xkbcommon for SDL3, and the Vulkan loader.
+depends=('glibc' 'libgcc' 'libstdc++' 'icu' 'openssl' 'fontconfig'
+         'vulkan-icd-loader' 'libglvnd' 'libx11' 'libice' 'libsm' 'libxcursor'
+         'libxext' 'libxi' 'libxrandr' 'libxkbcommon' 'wayland')
 provides=('sharpemu')
 conflicts=('sharpemu')
 options=('!strip')
