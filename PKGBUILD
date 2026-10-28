@@ -4,14 +4,15 @@
 
 pkgname=zapzap-bin
 pkgver=7.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp desktop client written in PyQt6 + PyQt6-WebEngine (upstream wheel)"
 arch=('any')
 url="https://github.com/rafatosta/zapzap"
 license=('GPL-3.0-or-later')
-depends=('python' 'python-pyqt6' 'python-pyqt6-webengine' 'python-dbus'
-         'qt6-wayland')
-optdepends=('hunspell: spell check')
+# The wheel asks for PyQt6 and PyQt6-WebEngine only. D-Bus goes through
+# PyQt6's QtDBus, and Qt's Wayland support is part of qt6-base. Spell check
+# takes Qt WebEngine's .bdic files, which the app downloads itself.
+depends=('python' 'python-pyqt6' 'python-pyqt6-webengine')
 provides=('zapzap')
 conflicts=('zapzap')
 source=("zapzap-${pkgver}-py3-none-any.whl::${url}/releases/download/${pkgver}/zapzap-${pkgver}-py3-none-any.whl"
