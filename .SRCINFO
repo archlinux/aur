@@ -1,6 +1,6 @@
 pkgbase = vector-find
 	pkgdesc = Vector Find: fast GTK4 file manager with nvim-style keys, a terminal panel and Lua config
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Not-Bad-Company/vector
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = vector-find
 	conflicts = vector-fm
 	replaces = vector-fm
 	options = !lto
-	source = vector-0.3.0.tar.gz::https://github.com/Not-Bad-Company/vector/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 1f3077fcee7e7e8d9d43a251d40f69867e756eb675e42c55cda7c3c9ecf72d79
+	source = vector-0.3.1.tar.gz::https://github.com/Not-Bad-Company/vector/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = e7e51c12e43a1213c4bb01e9f1e3741d989c560ead97a683f375addda2d21ff4
 
 pkgname = vector-find
