@@ -1646,7 +1646,7 @@
         {
           "name": "COMMENT",
           "order": 8,
-          "retrieval_value": "COMMENT=(\\S+)",
+          "retrieval_value": "COMMENT=(.*?) OTHER=",
           "override_target": false,
           "new_target": null,
           "retrieval_method": null,
@@ -1679,7 +1679,7 @@
         {
           "name": "LOG DATE",
           "order": 2,
-          "retrieval_value": "LOG DATE=(.+)",
+          "retrieval_value": "LOG_DATE=(.+)",
           "override_target": false,
           "new_target": null,
           "retrieval_method": null,
@@ -1750,7 +1750,7 @@
       "name": "CRON TAB TASKS",
       "retrieval_method": "BASH",
       "retrieval_output": "REGX",
-      "target": "grep -rh --include=\"*\" -E \"^[^#]\" /etc/cron.d/ /etc/crontab /var/spool/cron/ /var/spool/cron/crontabs/ 2>/dev/null | grep -v \"^$\" | while read line; do echo \"$line\" | python3 -c \"import sys,re; l=sys.stdin.read().strip(); f=l.split(); is_sys=len(f)>=6 and not re.match(r'^[\\*0-9,\\-/]+$',f[5] if len(f)>5 else ''); m,h,dom,month,dow=(f[0],f[1],f[2],f[3],f[4]) if len(f)>=5 else ('','','','',''); user=f[5] if is_sys and len(f)>5 else ''; cmd=' '.join(f[6:]) if is_sys and len(f)>6 else ' '.join(f[5:]) if len(f)>5 else ''; print(f'MINUTE={m} HOUR={h} DOM={dom} MONTH={month} DOW={dow} USER={user} CRON={cmd}') if len(f)>=5 else None\"; done",
+      "target": "grep -rH --include=\"*\" -E \"^[^#]\" /etc/cron.d/ /etc/crontab /var/spool/cron/ 2>/dev/null | grep -v \"^$\" | while read line; do echo \"$line\" | python3 -c \"import sys; p,_,l=sys.stdin.read().strip().partition(':'); f=l.split(); is_sys=not p.startswith('/var/spool/cron/'); m,h,dom,month,dow=(f[0],f[1],f[2],f[3],f[4]) if len(f)>=5 else ('','','','',''); user=(f[5] if len(f)>5 else '') if is_sys else p.split('/')[-1]; cmd=' '.join(f[6:]) if is_sys and len(f)>6 else ' '.join(f[5:]) if len(f)>5 else ''; print(f'MINUTE={m} HOUR={h} DOM={dom} MONTH={month} DOW={dow} USER={user} CRON={cmd}') if len(f)>=5 else None\"; done",
       "fields": [
         {
           "name": "MINUTE",
@@ -1833,7 +1833,7 @@
       "name": "RUNNING PROCESS",
       "retrieval_method": "BASH",
       "retrieval_output": "REGX",
-      "target": "ps aux | tail -n +2 | python3 -c \"import sys,datetime; months={'Jan':'01','Feb':'02','Mar':'03','Apr':'04','May':'05','Jun':'06','Jul':'07','Aug':'08','Sep':'09','Oct':'10','Nov':'11','Dec':'12'}; now=datetime.datetime.now(); [print('USERNAME='+f[0]+' PROCESSID='+f[1]+' CPUUSAGE='+f[2]+' PROCESSMEMORY='+f[3]+' VIRTUALMEMORY='+f[4]+' TTY='+f[6]+' STARTED='+(now.strftime('%Y-')+months.get(f[8][:3],'00')+'-'+f[8][3:]+' '+f[9] if f[8][:3] in months else now.strftime('%Y-%m-%d')+' '+f[8])+' COMMANDLINE='+' '.join(f[10:])) for line in sys.stdin for f in [line.split()] if len(f)>=11]\"",
+      "target": "LC_ALL=C ps -eo user=,pid=,pcpu=,pmem=,vsz=,tty=,lstart=,args= | python3 -c \"import sys,datetime; [print('USERNAME='+f[0]+' PROCESSID='+f[1]+' CPUUSAGE='+f[2]+' PROCESSMEMORY='+f[3]+' VIRTUALMEMORY='+f[4]+' TTY='+f[5]+' STARTED='+datetime.datetime.strptime(' '.join(f[7:11]),'%b %d %H:%M:%S %Y').strftime('%Y-%m-%d %H:%M')+' COMMANDLINE='+' '.join(f[11:])) for line in sys.stdin for f in [line.split()] if len(f)>=12]\"",
       "fields": [
         {
           "name": "USERNAME",
@@ -1878,7 +1878,7 @@
         {
           "name": "PROCESS MEMORY",
           "order": 5,
-          "retrieval_value": "PROCESSMEMORY=(.+)",
+          "retrieval_value": "PROCESSMEMORY=(\\S+)",
           "override_target": false,
           "new_target": null,
           "retrieval_method": null,
@@ -1888,7 +1888,7 @@
         {
           "name": "TTY",
           "order": 6,
-          "retrieval_value": "TTY=(\\S)",
+          "retrieval_value": "TTY=(\\S+)",
           "override_target": false,
           "new_target": null,
           "retrieval_method": null,
