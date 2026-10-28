@@ -1,10 +1,10 @@
 pkgbase = liblinear
 	pkgdesc = A Library for Large Linear Classification
 	pkgver = 2.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.csie.ntu.edu.tw/~cjlin/liblinear/
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = gcc
 	makedepends = python-build
 	makedepends = python-installer

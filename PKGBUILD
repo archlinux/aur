@@ -12,11 +12,11 @@
 pkgbase=liblinear
 pkgname=(liblinear python-liblinear)
 pkgver=2.50
-pkgrel=1
+pkgrel=2
 pkgdesc="A Library for Large Linear Classification"
 arch=('x86_64')
 url="https://www.csie.ntu.edu.tw/~cjlin/liblinear/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs' 'python-scipy')
 makedepends=('gcc' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz")
