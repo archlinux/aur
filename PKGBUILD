@@ -2,13 +2,13 @@
 
 pkgname=aria2-next
 pkgver=3.0.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Maintained aria2 fork with extensive bug fixes and modernized architecture"
 arch=($CARCH)
 url="https://github.com/AnInsomniacy/aria2-next"
 license=('GPL-2.0-or-later')
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname} rayburst)
+conflicts=(${pkgname} rayburst)
 #replaces=(${pkgname})
 depends=(
     c-ares
@@ -37,7 +37,7 @@ makedepends=(
     pkgconf
     spdlog
 )
-optdepends=('motrix-next: A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust')
+optdepends=()
 backup=()
 options=()
 #install=${pkgname}.install
