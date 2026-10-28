@@ -1,4 +1,4 @@
-# Installs the en-US help of the bundled modules into $PSHOME. It has to be run with the
+# Installs the en-US help of the core and bundled modules into $PSHOME. It has to be run with the
 # PowerShell being packaged.
 #
 # As help is installed in the module location, the core help pages would become orphaned files
@@ -12,6 +12,10 @@ $ErrorActionPreference = 'Stop'
 
 # Only look at the modules of $PSHOME, so modules of the same name installed elsewhere are ignored
 $env:PSModulePath = Join-Path $PSHOME Modules
-$modules = (Get-ChildItem -Directory -Path $env:PSModulePath).Name
+$modules = @(
+    # Microsoft.PowerShell.Core is a snap-in without a module folder, it has the about_ topics
+    'Microsoft.PowerShell.Core'
+    (Get-ChildItem -Directory -Path $env:PSModulePath).Name
+)
 
 Update-Help -Module $modules -UICulture en-US -Scope AllUsers

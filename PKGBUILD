@@ -27,7 +27,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -54,7 +54,9 @@ _psresourcegetver="1.2.0"
 _psreadlinever="2.4.5"
 depends=(
   dotnet-runtime-"$_dotnetsdkver"
+  glibc
   libgcc
+  libstdc++
   # xdg-utils are indirectly needed for System.Diagnostics.Process() with
   # ProcessStartInfo.UseShellExecute (see src/System/Diagnostics/Process.Linux.cs of the dotnet runtime)
   # PowerShell relies on this for its invoke logic, c.f. src/System.Management.Automation/namespaces/FileSystemProvider.cs
@@ -125,7 +127,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '2a183bbbdbc42f55328f462bed4fce0752291395ae91c263e11e921c312f94d0c99b2180fce1e4f98e9e33af68fe83d8138217abe4a995fc7a52f442f20b7422'
             'c980d27b69778a0fc398ae6993cc44de42d1e85322ab0d63cd4e6611276f1ff7ae427013a7c63201a7320d56fda6eea0b8e53b2628572562ade832441e9667a1'
             '8957d27f6ffb10f237522e547d570526e81f8ef06bbce377890db5f68e1e62d1c0afbc90ebfd2c9b34b9ff122e6a4aff67353a6a2a81772d1983130068259e03'
-            '4560d42b8232c7770d11a2fba6a86b378f592e0d8ea196271b863c40e93c9dd3fd4b9c0b12ecfed994a571297a281ff0c1c6380ee4f9edf9039abfce2e59aeb3'
+            '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
             '355d5bdb418cf2f9b7f19c9a4433fc350aca62e707669b9cb2b6661d9a12828e60158b8f58a8600e9566c09750f0c47c4144ec20af8681c8aba87a8718f227f5')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
         '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
@@ -143,7 +145,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '8f501e2b35ebba03da6cdec49a2055640bba8a8fcedbdefc5c29b7c307217c4feeda08f20406cca3224a4f2761ca8cab786aaea63fdb0e8e9ac42e6745897490'
         '098c9546a4f6216794da81067b2e60e44c1a6f45fc249aee1764af61d867ae55c5a5931f2bb973a15d49920c3b3526a64eeecc15b9df2ceadc6b9c7e895593d6'
         '3c5ef9d88acdf18178731960b1bd49fee1dbcf32dec1d7bdbd91182c15dc068a8eecd637a94a2fe74f243e000740f7b3ede0bd78619d8bd058fa46367eb2ded7'
-        'a6dd3599d2930dfa2ce3db725a428305196e5ef52c42dd88ac5d47f852f27e0ad6577f7ef6b7a12ff3a9548bcb31254a973dc2dccbfa222ee50816620cf32976'
+        '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
         '84ab1ef0c546607fa509e4c71ab8528d5a6ff8b120a0dca14ccd7ec0ae39706cbb6c0e0cb65360dd14b74bb225b393c85d70d813602d1877efa4d720cc193374')
 
 # Sets up the environment shared by prepare(), build() and check()
