@@ -1,0 +1,377 @@
+diff --git a/src/gui/kernel/qguiapplication.cpp b/src/gui/kernel/qguiapplication.cpp
+index 447498d262..57f0a13cb4 100644
+--- a/src/gui/kernel/qguiapplication.cpp
++++ b/src/gui/kernel/qguiapplication.cpp
+@@ -3456,7 +3456,7 @@ void QGuiApplicationPrivate::processScreenLogicalDotsPerInchChange(QWindowSystem
+ 
+     for (QWindow *window : QGuiApplication::allWindows())
+         if (window->screen() == e->screen)
+-            QWindowPrivate::get(window)->updateDevicePixelRatio();
++            QWindowPrivate::get(window)->handleScaleChange();
+ 
+     resetCachedDevicePixelRatio();
+ }
+diff --git a/src/gui/kernel/qhighdpiscaling.cpp b/src/gui/kernel/qhighdpiscaling.cpp
+index 15a9afa337..257428a052 100644
+--- a/src/gui/kernel/qhighdpiscaling.cpp
++++ b/src/gui/kernel/qhighdpiscaling.cpp
+@@ -233,7 +233,7 @@ bool QHighDpiScaling::m_active = false; //"overall active" - is there any scale
+ bool QHighDpiScaling::m_usePlatformPluginDpi = false; // use scale factor based on platform plugin DPI
+ bool QHighDpiScaling::m_platformPluginDpiScalingActive  = false; // platform plugin DPI gives a scale factor > 1
+ bool QHighDpiScaling::m_globalScalingActive = false; // global scale factor is active
+-bool QHighDpiScaling::m_screenFactorSet = false; // QHighDpiScaling::setScreenFactor has been used
++bool QHighDpiScaling::m_screenFactorSet = false; // a per-screen scale factor != 1 is in use
+ bool QHighDpiScaling::m_usePhysicalDpi = false;
+ QVector<QHighDpiScaling::ScreenFactor> QHighDpiScaling::m_screenFactors;
+ QHighDpiScaling::DpiAdjustmentPolicy QHighDpiScaling::m_dpiAdjustmentPolicy = QHighDpiScaling::DpiAdjustmentPolicy::Unset;
+@@ -361,6 +361,14 @@ qreal QHighDpiScaling::roundScaleFactor(qreal rawFactor)
+     return roundedFactor;
+ }
+ 
++static std::optional<qreal> platformScreenFactor(const QPlatformScreen *screen)
++{
++    const std::optional<qreal> factor = screen->highDpiScaleFactor();
++    if (!factor)
++        return std::nullopt;
++    return QHighDpiScaling::roundScaleFactor(*factor);
++}
++
+ QDpi QHighDpiScaling::effectiveLogicalDpi(const QPlatformScreen *screen, qreal rawFactor, qreal roundedFactor)
+ {
+     // Apply DPI adjustment policy, if needed. If enabled this will change the
+@@ -502,6 +510,13 @@ void QHighDpiScaling::updateHighDpiScaling()
+         }
+     }
+ 
++    if (!m_screenFactorSet) {
++        const auto screens = QGuiApplication::screens();
++        m_screenFactorSet = std::any_of(screens.cbegin(), screens.cend(), [](const QScreen *screen) {
++            return !qFuzzyCompare(platformScreenFactor(screen->handle()).value_or(qreal(1)), qreal(1));
++        });
++    }
++
+     // Check if any screens (now) has a scale factor != 1 and set
+     // m_platformPluginDpiScalingActive if so.
+     if (m_usePlatformPluginDpi && !m_platformPluginDpiScalingActive ) {
+@@ -596,6 +611,9 @@ qreal QHighDpiScaling::screenSubfactor(const QPlatformScreen *screen)
+     if (!screen)
+         return factor;
+ 
++    if (const std::optional<qreal> platformFactor = platformScreenFactor(screen))
++        return *platformFactor;
++
+     // Unlike the other code where factors are combined by multiplication,
+     // factors from QT_SCREEN_SCALE_FACTORS takes precedence over the factor
+     // computed from platform plugin DPI. The rationale is that the user is
+diff --git a/src/gui/kernel/qplatformscreen.cpp b/src/gui/kernel/qplatformscreen.cpp
+index da1ca285ad..55d855f8b9 100644
+--- a/src/gui/kernel/qplatformscreen.cpp
++++ b/src/gui/kernel/qplatformscreen.cpp
+@@ -186,6 +186,18 @@ qreal QPlatformScreen::devicePixelRatio() const
+     return 1.0;
+ }
+ 
++std::optional<qreal> QPlatformScreen::highDpiScaleFactor() const
++{
++    Q_D(const QPlatformScreen);
++    return d->highDpiScaleFactor;
++}
++
++void QPlatformScreen::setHighDpiScaleFactor(std::optional<qreal> factor)
++{
++    Q_D(QPlatformScreen);
++    d->highDpiScaleFactor = factor;
++}
++
+ /*!
+     Reimplement this function in subclass to return the vertical refresh rate
+     of the screen, in Hz.
+diff --git a/src/gui/kernel/qplatformscreen.h b/src/gui/kernel/qplatformscreen.h
+index cbe05934dc..2ed9c42c7e 100644
+--- a/src/gui/kernel/qplatformscreen.h
++++ b/src/gui/kernel/qplatformscreen.h
+@@ -28,6 +28,8 @@
+ #include <QtGui/qwindowdefs.h>
+ #include <qpa/qplatformpixmap.h>
+ 
++#include <optional>
++
+ QT_BEGIN_NAMESPACE
+ 
+ 
+@@ -87,6 +89,7 @@ public:
+     virtual QDpi logicalDpi() const;
+     virtual QDpi logicalBaseDpi() const;
+     virtual qreal devicePixelRatio() const;
++    std::optional<qreal> highDpiScaleFactor() const;
+ 
+     virtual qreal refreshRate() const;
+ 
+@@ -130,6 +133,7 @@ public:
+ 
+ protected:
+     void resizeMaximizedWindows();
++    void setHighDpiScaleFactor(std::optional<qreal> factor);
+ 
+     QScopedPointer<QPlatformScreenPrivate> d_ptr;
+ 
+diff --git a/src/gui/kernel/qplatformscreen_p.h b/src/gui/kernel/qplatformscreen_p.h
+index a8c2b4e6bc..1fc4df217b 100644
+--- a/src/gui/kernel/qplatformscreen_p.h
++++ b/src/gui/kernel/qplatformscreen_p.h
+@@ -21,6 +21,8 @@
+ #include <QtCore/qpointer.h>
+ #include <QtCore/qnativeinterface.h>
+ 
++#include <optional>
++
+ QT_BEGIN_NAMESPACE
+ 
+ class QScreen;
+@@ -29,6 +31,7 @@ class QPlatformScreenPrivate
+ {
+ public:
+     QPointer<QScreen> screen;
++    std::optional<qreal> highDpiScaleFactor;
+ };
+ 
+ // ----------------- QNativeInterface -----------------
+diff --git a/src/gui/kernel/qwindow.cpp b/src/gui/kernel/qwindow.cpp
+index 1e9f63b7a0..ba1063e87c 100644
+--- a/src/gui/kernel/qwindow.cpp
++++ b/src/gui/kernel/qwindow.cpp
+@@ -239,21 +239,8 @@ void QWindowPrivate::init(QWindow *parent, QScreen *targetScreen)
+     requestedFormat = QSurfaceFormat::defaultFormat();
+     devicePixelRatio = connectScreen->devicePixelRatio();
+ 
+-    QObject::connect(q, &QWindow::screenChanged, q, [q, this](QScreen *){
+-        // We may have changed scaling; trigger resize event if needed,
+-        // except on Windows, where we send resize events during WM_DPICHANGED
+-        // event handling. FIXME: unify DPI change handling across all platforms.
+-#ifndef Q_OS_WIN
+-        if (const auto *handle = q->handle()) {
+-            QWindowSystemInterfacePrivate::GeometryChangeEvent gce(q,
+-                        QHighDpi::fromNativeWindowGeometry(handle->QPlatformWindow::geometry(), q),
+-                        QHighDpi::fromNativePixels(handle->geometry(), q));
+-            QGuiApplicationPrivate::processGeometryChangeEvent(&gce);
+-        }
+-#else
+-        Q_UNUSED(q);
+-#endif
+-        updateDevicePixelRatio();
++    QObject::connect(q, &QWindow::screenChanged, q, [this](QScreen *){
++        handleScaleChange();
+     });
+ 
+     if (parentWindow) {
+@@ -1468,6 +1455,23 @@ bool QWindowPrivate::updateDevicePixelRatio()
+     return true;
+ }
+ 
++void QWindowPrivate::handleScaleChange()
++{
++    // We may have changed scaling; trigger resize event if needed,
++    // except on Windows, where we send resize events during WM_DPICHANGED
++    // event handling. FIXME: unify DPI change handling across all platforms.
++#ifndef Q_OS_WIN
++    Q_Q(QWindow);
++    if (const auto *handle = q->handle()) {
++        QWindowSystemInterfacePrivate::GeometryChangeEvent gce(q,
++                    QHighDpi::fromNativeWindowGeometry(handle->QPlatformWindow::geometry(), q),
++                    QHighDpi::fromNativePixels(handle->geometry(), q));
++        QGuiApplicationPrivate::processGeometryChangeEvent(&gce);
++    }
++#endif
++    updateDevicePixelRatio();
++}
++
+ Qt::WindowState QWindowPrivate::effectiveState(Qt::WindowStates state)
+ {
+     if (state & Qt::WindowMinimized)
+diff --git a/src/gui/kernel/qwindow_p.h b/src/gui/kernel/qwindow_p.h
+index a35c4a9a90..2502990512 100644
+--- a/src/gui/kernel/qwindow_p.h
++++ b/src/gui/kernel/qwindow_p.h
+@@ -111,6 +111,7 @@ public:
+     { positionAutomatic = resizeAutomatic = a; }
+ 
+     bool updateDevicePixelRatio();
++    void handleScaleChange();
+ 
+     static QWindowPrivate *get(QWindow *window) { return window->d_func(); }
+ 
+diff --git a/src/plugins/platforms/xcb/qxcbatom.cpp b/src/plugins/platforms/xcb/qxcbatom.cpp
+index 062839f182..8e6da1b353 100644
+--- a/src/plugins/platforms/xcb/qxcbatom.cpp
++++ b/src/plugins/platforms/xcb/qxcbatom.cpp
+@@ -208,6 +208,7 @@ static const char *xcb_atomnames = {
+     "EDID\0"
+     "EDID_DATA\0"
+     "XFree86_DDC_EDID1_RAWDATA\0"
++    "DPI\0"
+     "_ICC_PROFILE\0"
+     "_KDE_NET_WM_APPMENU_SERVICE_NAME\0"
+     "_KDE_NET_WM_APPMENU_OBJECT_PATH\0"
+diff --git a/src/plugins/platforms/xcb/qxcbatom.h b/src/plugins/platforms/xcb/qxcbatom.h
+index 07eb1cc275..230c4ea5ee 100644
+--- a/src/plugins/platforms/xcb/qxcbatom.h
++++ b/src/plugins/platforms/xcb/qxcbatom.h
+@@ -214,6 +214,8 @@ public:
+         AtomEDID_DATA,
+         AtomXFree86_DDC_EDID1_RAWDATA,
+ 
++        AtomDPI,
++
+         Atom_ICC_PROFILE,
+ 
+         // AppMenu
+diff --git a/src/plugins/platforms/xcb/qxcbconnection.cpp b/src/plugins/platforms/xcb/qxcbconnection.cpp
+index 0a6ac915d7..257d4197b9 100644
+--- a/src/plugins/platforms/xcb/qxcbconnection.cpp
++++ b/src/plugins/platforms/xcb/qxcbconnection.cpp
+@@ -720,8 +720,11 @@ void QXcbConnection::handleXcbEvent(xcb_generic_event_t *event)
+         for (QXcbVirtualDesktop *virtualDesktop : std::as_const(m_virtualDesktops))
+             virtualDesktop->handleXFixesSelectionNotify(notify_event);
+     } else if (isXRandrType(response_type, XCB_RANDR_NOTIFY)) {
+-        if (!isAtLeastXRandR15())
+-            updateScreens(reinterpret_cast<xcb_randr_notify_event_t *>(event));
++        auto notify_event = reinterpret_cast<xcb_randr_notify_event_t *>(event);
++        if (notify_event->subCode == XCB_RANDR_NOTIFY_OUTPUT_PROPERTY)
++            handleOutputPropertyChange(notify_event->u.op);
++        else if (!isAtLeastXRandR15())
++            updateScreens(notify_event);
+     } else if (isXRandrType(response_type, XCB_RANDR_SCREEN_CHANGE_NOTIFY)) {
+         if (!isAtLeastXRandR15()) {
+             auto change_event = reinterpret_cast<xcb_randr_screen_change_notify_event_t *>(event);
+diff --git a/src/plugins/platforms/xcb/qxcbconnection.h b/src/plugins/platforms/xcb/qxcbconnection.h
+index c6a334a27a..e835bb8025 100644
+--- a/src/plugins/platforms/xcb/qxcbconnection.h
++++ b/src/plugins/platforms/xcb/qxcbconnection.h
+@@ -216,6 +216,7 @@ private:
+     QXcbScreen* findScreenForOutput(xcb_window_t rootWindow, xcb_randr_output_t output) const;
+     QXcbVirtualDesktop* virtualDesktopForRootWindow(xcb_window_t rootWindow) const;
+     void updateScreens(const xcb_randr_notify_event_t *event);
++    void handleOutputPropertyChange(const xcb_randr_output_property_t &property);
+     bool checkOutputIsPrimary(xcb_window_t rootWindow, xcb_randr_output_t output);
+     void updateScreen(QXcbScreen *screen, const xcb_randr_output_change_t &outputChange);
+     QXcbScreen *createScreen(QXcbVirtualDesktop *virtualDesktop,
+diff --git a/src/plugins/platforms/xcb/qxcbconnection_screens.cpp b/src/plugins/platforms/xcb/qxcbconnection_screens.cpp
+index e68d413422..c483ffa61b 100644
+--- a/src/plugins/platforms/xcb/qxcbconnection_screens.cpp
++++ b/src/plugins/platforms/xcb/qxcbconnection_screens.cpp
+@@ -160,6 +160,15 @@ void QXcbConnection::updateScreens(const xcb_randr_notify_event_t *event)
+     }
+ }
+ 
++void QXcbConnection::handleOutputPropertyChange(const xcb_randr_output_property_t &property)
++{
++    if (property.atom != atom(QXcbAtom::AtomDPI))
++        return;
++
++    if (QXcbScreen *screen = findScreenForOutput(property.window, property.output))
++        screen->updateHighDpiScaleFactor();
++}
++
+ bool QXcbConnection::checkOutputIsPrimary(xcb_window_t rootWindow, xcb_randr_output_t output)
+ {
+     auto primary = Q_XCB_REPLY(xcb_randr_get_output_primary, xcb_connection(), rootWindow);
+diff --git a/src/plugins/platforms/xcb/qxcbscreen.cpp b/src/plugins/platforms/xcb/qxcbscreen.cpp
+index 2eda466377..4d8e8540d3 100644
+--- a/src/plugins/platforms/xcb/qxcbscreen.cpp
++++ b/src/plugins/platforms/xcb/qxcbscreen.cpp
+@@ -517,6 +517,7 @@ QXcbScreen::QXcbScreen(QXcbConnection *connection, QXcbVirtualDesktop *virtualDe
+         m_sizeMillimeters = virtualDesktop->physicalSize();
+ 
+     updateColorSpaceAndEdid();
++    updateHighDpiScaleFactor();
+ }
+ 
+ void QXcbScreen::updateColorSpaceAndEdid()
+@@ -601,6 +602,7 @@ void QXcbScreen::setMonitor(xcb_randr_monitor_info_t *monitorInfo, xcb_timestamp
+         m_mode = XCB_NONE;
+         m_outputName = defaultName();
+         // TODO: Send an event to the QScreen instance that the screen changed its name
++        updateHighDpiScaleFactor();
+         return;
+     }
+ 
+@@ -684,6 +686,7 @@ void QXcbScreen::setMonitor(xcb_randr_monitor_info_t *monitorInfo, xcb_timestamp
+     }
+ 
+     updateColorSpaceAndEdid();
++    updateHighDpiScaleFactor();
+ }
+ 
+ QString QXcbScreen::defaultName()
+@@ -890,6 +893,7 @@ void QXcbScreen::setOutput(xcb_randr_output_t outputId,
+     m_outputName = getOutputName(outputInfo);
+     m_outputSizeMillimeters = outputInfo ? QSizeF(outputInfo->mm_width, outputInfo->mm_height) : QSizeF();
+     // TODO: Send an event to the QScreen instance that the screen changed its name
++    updateHighDpiScaleFactor();
+ }
+ 
+ void QXcbScreen::updateGeometry(xcb_timestamp_t timestamp)
+@@ -981,6 +985,19 @@ void QXcbScreen::updateRefreshRate(xcb_randr_mode_t mode)
+     }
+ }
+ 
++void QXcbScreen::updateHighDpiScaleFactor()
++{
++    const std::optional<qreal> factor = readHighDpiScaleFactor();
++    if (factor == highDpiScaleFactor())
++        return;
++
++    setHighDpiScaleFactor(factor);
++    if (QScreen *screen = QPlatformScreen::screen()) {
++        const QDpi dpi = logicalDpi();
++        QWindowSystemInterface::handleScreenLogicalDotsPerInchChange(screen, dpi.first, dpi.second);
++    }
++}
++
+ static inline bool translate(xcb_connection_t *connection, xcb_window_t child, xcb_window_t parent,
+                              int *x, int *y)
+ {
+@@ -1103,6 +1120,23 @@ QByteArray QXcbScreen::getEdid() const
+     return result;
+ }
+ 
++std::optional<qreal> QXcbScreen::readHighDpiScaleFactor() const
++{
++    if (!connection()->isAtLeastXRandR12() || m_output == XCB_NONE)
++        return std::nullopt;
++
++    auto reply = Q_XCB_REPLY(xcb_randr_get_output_property, xcb_connection(),
++                             m_output, atom(QXcbAtom::AtomDPI), XCB_ATOM_INTEGER, 0, 1, false, false);
++    if (!reply || reply->type != XCB_ATOM_INTEGER || reply->format != 32 || reply->num_items != 1)
++        return std::nullopt;
++
++    const int32_t dpi = *reinterpret_cast<const int32_t *>(xcb_randr_get_output_property_data(reply.get()));
++    if (dpi <= 0)
++        return std::nullopt;
++
++    return dpi / logicalBaseDpi().first;
++}
++
+ static inline void formatRect(QDebug &debug, const QRect r)
+ {
+     debug << r.width() << 'x' << r.height()
+diff --git a/src/plugins/platforms/xcb/qxcbscreen.h b/src/plugins/platforms/xcb/qxcbscreen.h
+index e34bb9d38c..3fc96665af 100644
+--- a/src/plugins/platforms/xcb/qxcbscreen.h
++++ b/src/plugins/platforms/xcb/qxcbscreen.h
+@@ -181,6 +181,7 @@ public:
+     void updateGeometry(xcb_timestamp_t timestamp = XCB_TIME_CURRENT_TIME);
+     void updateAvailableGeometry();
+     void updateRefreshRate(xcb_randr_mode_t mode);
++    void updateHighDpiScaleFactor();
+ 
+     QFontEngine::HintStyle hintStyle() const { return m_virtualDesktop->hintStyle(); }
+     QFontEngine::SubpixelAntialiasingType subpixelType() const { return m_virtualDesktop->subpixelType(); }
+@@ -195,6 +196,7 @@ private:
+     void updateColorSpaceAndEdid();
+     QByteArray getOutputProperty(xcb_atom_t atom) const;
+     QByteArray getEdid() const;
++    std::optional<qreal> readHighDpiScaleFactor() const;
+ 
+     QXcbVirtualDesktop *m_virtualDesktop;
+     xcb_randr_monitor_info_t *m_monitor;
