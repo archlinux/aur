@@ -1,0 +1,19 @@
+pkgbase = dotnet-jsonschema-net-7
+	pkgdesc = JSON Schema built on System.Text.Json, 7.x (NuGet package)
+	pkgver = 7.4.0
+	pkgrel = 1
+	url = https://github.com/json-everything/json-everything
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	depends = dotnet-jsonpointer-net-5
+	provides = dotnet-jsonschema-net=7.4.0
+	source = json-everything::git+https://github.com/json-everything/json-everything.git#commit=a3c4e63e075f595e4039d6424a77765a6761f7d0
+	source = git+https://github.com/json-schema-org/JSON-Schema-Test-Suite.git
+	sha512sums = fe263e1a8bd8c2b0ce93755ed0799082477d0dc5846ecc0bed639511b8dcafd84e763e95fdb915d8529a04ecdc69cf22b89965bc198cf1da733dff6dabaf5e1b
+	sha512sums = SKIP
+	b2sums = decbc256fbb5e6c5d4acdbadeb6b333dceb0d121c69d2834bed75749b29f75b71046dd8b8d102cb66e901b2da5a8a5c955c8eec4a42ce0ecfb8e7cedc71d3c0a
+	b2sums = SKIP
+
+pkgname = dotnet-jsonschema-net-7
