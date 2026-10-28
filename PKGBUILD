@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal RSS reader built Ratatui."
 
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('e67b6eea785a0e3daf5c85c2ecba92fcdb9d50d62342c60ca5508ee58ba4441b'
+sha256sums=('a1b6566c1d1e3396178177e6befeb91f1514ab181b020ad98788da4c921144ec'
             '4320c24a046044a23f671a465cae91ab841a78c129d4299269614ac7df7d160d')
-sha256sums_x86_64=('2d55ef96ac4601dfbf2c1f02d3ea65032b9163759cc0c95af3ba1de290e773e5')
-sha256sums_aarch64=('22e3bd6b5f9f9f519125913afad7f98259bd7625986eb014883e58ead800aa82')
+sha256sums_x86_64=('b3e6ed8efe4c9e3c7c13c40c331671e2a1a04fc491856590221a0104e9d982e3')
+sha256sums_aarch64=('10bcf9b62954a4b679dd4b55ff656d9ad13abca734ab1d568c9ba49183e59eb5')
 
 
 package() {
