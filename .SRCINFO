@@ -1,6 +1,6 @@
 pkgbase = nuvio-desktop-bin
 	pkgdesc = Desktop media app to browse, organize, and play media from sources you add
-	pkgver = 0.1.32alpha
+	pkgver = 0.1.33alpha
 	pkgrel = 1
 	url = https://github.com/NuvioMedia/NuvioDesktop
 	arch = x86_64
@@ -32,10 +32,10 @@ pkgbase = nuvio-desktop-bin
 	provides = nuvio-desktop
 	conflicts = nuvio
 	conflicts = nuvio-desktop
-	noextract = nuvio-0.1.32-alpha.deb
+	noextract = nuvio-0.1.33-alpha.deb
 	options = !strip
 	options = !debug
-	source = nuvio-0.1.32-alpha.deb::https://github.com/NuvioMedia/NuvioDesktop/releases/download/0.1.32-alpha/Nuvio-Linux-x86_64-0.1.32-alpha.deb
-	sha256sums = eb524fc9b0bc23aca2b97299325e61249517c89592bac450b9dac1a824fa4da8
+	source = nuvio-0.1.33-alpha.deb::https://github.com/NuvioMedia/NuvioDesktop/releases/download/0.1.33-alpha/Nuvio-Linux-x86_64-0.1.33-alpha.deb
+	sha256sums = 15bac6dbc6b1e4291b7e53dcc95a054774559c2fad2d38810b14cf7f3f84caf1
 
 pkgname = nuvio-desktop-bin
