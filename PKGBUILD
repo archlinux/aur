@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=whodb-cli-bin
-pkgver=0.136.0
+pkgver=0.138.0
 _cli=whodb-cli
 pkgrel=1
 pkgdesc='Database management CLI with a TUI and an MCP server (prebuilt)'
@@ -18,9 +18,9 @@ _release="${url}/releases/download/${pkgver}"
 source_x86_64=("${_cli}-${pkgver}-linux-amd64::${_release}/${_cli}-linux-amd64")
 source_aarch64=("${_cli}-${pkgver}-linux-arm64::${_release}/${_cli}-linux-arm64")
 source_armv7h=("${_cli}-${pkgver}-linux-armv7::${_release}/${_cli}-linux-armv7")
-sha256sums_x86_64=('c98475946908ebc007e75307c51141347dcb135b08467694678f2f162a75dfca')
-sha256sums_aarch64=('e60a981e96d06bf246352adf5e2910e15b3479cec00f0bf68198a0e1b9c1a375')
-sha256sums_armv7h=('09674bdac77572a89eeb3479b1eb4a899747f8759f151e0fbbb9b4a3230a5186')
+sha256sums_x86_64=('ce36f4b3cb535119a59b3e764c64537c0d3fcf0483c8fcf678da71339dbc823e')
+sha256sums_aarch64=('fea566bffd3c4f0d4b2670a769d9776a47d586620c63c7dea19617c7ef601f70')
+sha256sums_armv7h=('105cdd2e44aac813eadde003df6868de244be7bf1a6806868e19eac564bb68b4')
 
 package() {
   install -Dm755 "${_cli}-${pkgver}"-linux-* "${pkgdir}/usr/bin/whodb"
