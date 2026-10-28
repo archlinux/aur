@@ -1,6 +1,6 @@
 pkgbase = flutter-git
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
-	pkgver = 3.50.0.0.2.pre.r92244.7ebd8154adf
+	pkgver = 3.50.0.0.2.pre.r92259.087a1b62b89
 	pkgrel = 1
 	url = https://flutter.io
 	install = flutter.install
