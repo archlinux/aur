@@ -1,6 +1,6 @@
 pkgbase = wfweb-appimage
 	pkgdesc = Headless wfview fork: control Icom transceivers from a web browser (AppImage release)
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/adecarolis/wfweb
 	arch = x86_64
@@ -11,16 +11,16 @@ pkgbase = wfweb-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = zlib
-	provides = wfweb=0.9.3
+	provides = wfweb=0.9.4
 	conflicts = wfweb
-	noextract = wfweb_0.9.3-x86_64.AppImage
+	noextract = wfweb_0.9.4-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = LICENSE-0.9.3::https://raw.githubusercontent.com/adecarolis/wfweb/v0.9.3/LICENSE
+	source = LICENSE-0.9.4::https://raw.githubusercontent.com/adecarolis/wfweb/v0.9.4/LICENSE
 	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
-	source_x86_64 = wfweb_0.9.3-x86_64.AppImage::https://github.com/adecarolis/wfweb/releases/download/v0.9.3/wfweb_0.9.3-x86_64.AppImage
-	sha256sums_x86_64 = 30d45834c9f160e95cec8634156b31dcff272c3a639b620231ef86a9b5f86730
-	source_aarch64 = wfweb_0.9.3-aarch64.AppImage::https://github.com/adecarolis/wfweb/releases/download/v0.9.3/wfweb_0.9.3-aarch64.AppImage
-	sha256sums_aarch64 = ea4982918e24f1522173960368bfecdcdbaacfe293dca5891516eac5be9243dd
+	source_x86_64 = wfweb_0.9.4-x86_64.AppImage::https://github.com/adecarolis/wfweb/releases/download/v0.9.4/wfweb_0.9.4-x86_64.AppImage
+	sha256sums_x86_64 = 061fb80bcfa585ba87ded0ae65112f826271eebf83f67b9905eb54c719ad5739
+	source_aarch64 = wfweb_0.9.4-aarch64.AppImage::https://github.com/adecarolis/wfweb/releases/download/v0.9.4/wfweb_0.9.4-aarch64.AppImage
+	sha256sums_aarch64 = 94b8e77f3306e204dc5496bc56704206ca26dea09c9534d8cdee380a86b3eeb8
 
 pkgname = wfweb-appimage
