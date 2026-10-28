@@ -1,7 +1,7 @@
 # Maintainer: javy
 
 pkgname=libepub
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="C library for creating EPUB files"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('git' 'gcc' 'make')
 provides=('libepub')
 conflicts=('libepub')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('c408c2b48913e4b29fe7f72ab3e35ca36afac5fd406ec0f14f1d6bf4b0b07e1a1ee32f43bb4810edd6de8a16facd401d23aa2732af86ae085f8f73d40cb7eaf3')
+sha512sums=('72a6011d5e072135239ce47ca1f44f0a6926f074b0e91b76df367703f29f65499dea98a51e280a6750a5edff41ee1a50a7053e0dcf146d252c7d27f6f6ce56d2')
 
 build() {
   cd "${pkgname}"
