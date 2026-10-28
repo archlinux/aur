@@ -1,6 +1,6 @@
 pkgname=python-vllm-omni
 _pkgname=vllm-omni
-pkgver=0.30.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="A framework for efficient model inference with omni-modality models "
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
 
 
 source=("git+https://github.com/vllm-project/vllm-omni.git#tag=v${pkgver}")
-sha256sums=('02bc5d16c71f0c2cd551e8c0ecbe75946d8c512a8ec80332fc0a91b67385a345')
+sha256sums=('73abdb0f231eab378a3b13a1b7d1831b8707f561a48bc6d69b7e8947e86b1e53')
 
 prepare() {
   cd "$srcdir/$_pkgname"
