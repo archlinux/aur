@@ -270,8 +270,15 @@ prepare() {
   # backported to 7.6, so drop this patch with 7.7
   patch -Np1 -i "$srcdir/psmodulepath-combined-paths.patch"
 
-  # CIM (Microsoft.Management.Infrastructure) is closed source and only usable on Windows,
-  # so put it behind #if !UNIX like upstream does for WMI and ADSI and don't ship it
+  # CIM (Microsoft.Management.Infrastructure, MMI) is only usable on Windows and isn't open source,
+  # although its NuGet package claims MIT:
+  # - The PowerShell team says "MMI.dll is not Open Source (and no plans to be OSS)", see
+  #   https://github.com/PowerShell/PowerShell/issues/8397. The repository the package links to,
+  #   PowerShell/MMI, has been archived since 2020.
+  # - Its Microsoft.Management.Infrastructure.Runtime.Win package comes under the Microsoft Software
+  #   License Terms instead, which only allow using it with PowerShell and forbid redistributing it, see
+  #   https://github.com/PowerShell/PowerShell/issues/28027 and #20798
+  # So put it behind #if !UNIX like upstream does for WMI and ADSI and don't ship it
   patch -Np1 -i "$srcdir/cim-windows-only.patch"
 
   # We first determine the exact SDK and runtime versions for later usage
