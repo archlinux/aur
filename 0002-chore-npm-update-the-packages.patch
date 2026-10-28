@@ -1,0 +1,104 @@
+From feb02b5921d389eaddf3af4c023c5389832138e4 Mon Sep 17 00:00:00 2001
+From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+Date: Wed, 28 Oct 2026 19:27:25 +0300
+Subject: [PATCH 2/2] chore(npm): update the packages
+
+---
+ package-lock.json | 33 +++++++++++++++++----------------
+ package.json      |  2 +-
+ 2 files changed, 18 insertions(+), 17 deletions(-)
+
+diff --git a/package-lock.json b/package-lock.json
+index 32132b8..5aa8e34 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,26 +1,27 @@
+ {
+   "name": "toaster",
+-  "version": "0.4.13",
++  "version": "0.4.22",
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+       "name": "toaster",
+-      "version": "0.4.13",
++      "version": "0.4.22",
++      "license": "MIT",
+       "dependencies": {
+         "@mediapipe/tasks-vision": "0.10.35"
+       },
+       "devDependencies": {
+         "@electron/packager": "20.3.0",
+-        "electron": "44.7.0"
++        "electron": "^44.10.0"
+       }
+     },
+     "node_modules/@electron-internal/extract-zip": {
+-      "version": "1.0.5",
+-      "resolved": "https://registry.npmjs.org/@electron-internal/extract-zip/-/extract-zip-1.0.5.tgz",
+-      "integrity": "sha512-+bqFCP98pLI0Tt0XQo1TmlXtwjWchISndDOxCkEcIuUgXWpBnLyRI+2DU+mesvnMMX6L1XDqYNA0lXNDHd/yiA==",
++      "version": "1.0.6",
++      "resolved": "https://registry.npmjs.org/@electron-internal/extract-zip/-/extract-zip-1.0.6.tgz",
++      "integrity": "sha512-/aQLgFDdCSnwChfUwqekSmE1q2dCTzhUy5saIHBb5vyYn5LzWaKPaIz1wM0lDMCZYBoIG4svJNvAJb6vkI8BuA==",
+       "dev": true,
+-      "license": "BSD-2-Clause",
++      "license": "MIT",
+       "engines": {
+         "node": ">=22.12.0"
+       }
+@@ -78,9 +79,9 @@
+       }
+     },
+     "node_modules/@electron/osx-sign": {
+-      "version": "2.7.1",
+-      "resolved": "https://registry.npmjs.org/@electron/osx-sign/-/osx-sign-2.7.1.tgz",
+-      "integrity": "sha512-VZ7Ei2PpqBxPU0Kf1evYSiQKCaluIy6t/DSlNpYZQX0z27KwNNHuJR1bz3Pqj1DIL5EySD8RlH2PRrsrfLEdKg==",
++      "version": "2.7.2",
++      "resolved": "https://registry.npmjs.org/@electron/osx-sign/-/osx-sign-2.7.2.tgz",
++      "integrity": "sha512-BD5ZyKDzzC1PLzWQCl1nw+X2/ErRCJGEIPwtjfOnCH+8KRLfBe/Vr9khUuEJC5bbrVACl8uO2Q2O/UqOzrcFgw==",
+       "dev": true,
+       "license": "BSD-2-Clause",
+       "dependencies": {
+@@ -302,9 +303,9 @@
+       }
+     },
+     "node_modules/electron": {
+-      "version": "44.7.0",
+-      "resolved": "https://registry.npmjs.org/electron/-/electron-44.7.0.tgz",
+-      "integrity": "sha512-aUq9/zLAAFYc+a9gy6cd0C3Y/N/RmovLCD8TV8LhIzNhuND6HEgsu96jJz9cbAxvckSPv+Trf2PKEjktoZgFkw==",
++      "version": "44.10.0",
++      "resolved": "https://registry.npmjs.org/electron/-/electron-44.10.0.tgz",
++      "integrity": "sha512-ss4pCfrQKV4TWkuVYtWB4HmeysPZgB96cSYNKYZv1UVCRP4vQMGNW5oopFbvx6Bbfce1XtP5pm5RDuKehp0svQ==",
+       "dev": true,
+       "license": "MIT",
+       "dependencies": {
+@@ -672,9 +673,9 @@
+       }
+     },
+     "node_modules/undici": {
+-      "version": "7.30.0",
+-      "resolved": "https://registry.npmjs.org/undici/-/undici-7.30.0.tgz",
+-      "integrity": "sha512-dkrQXeHSaoamnItlYbmzG0wFYrM0ZwDxCIg0A7aKjTyyhh9svRzCNFEzV+Vm05/yehjCzjDZ31KXfGEjYSztDQ==",
++      "version": "7.30.1",
++      "resolved": "https://registry.npmjs.org/undici/-/undici-7.30.1.tgz",
++      "integrity": "sha512-03KrMbjIFDWQR5RNPrSw3bd1r12JpyFQl9/yxjUbJtqkjmllqC5lFjZh6ujeuJCKr8EOQvRW872Oy/az+nLYxg==",
+       "dev": true,
+       "license": "MIT",
+       "optional": true,
+diff --git a/package.json b/package.json
+index 05a8ff2..0a048d7 100644
+--- a/package.json
++++ b/package.json
+@@ -16,7 +16,7 @@
+   },
+   "devDependencies": {
+     "@electron/packager": "20.3.0",
+-    "electron": "44.7.0"
++    "electron": "^44.10.0"
+   },
+   "dependencies": {
+     "@mediapipe/tasks-vision": "0.10.35"
+-- 
+2.54.0
+

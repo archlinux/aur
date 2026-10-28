@@ -1,18 +1,24 @@
 pkgbase = toaster
 	pkgdesc = Hears whatever is playing and writes it out as live Strudel code, with visuals
-	pkgver = 0.4.21
+	pkgver = 0.4.22
 	pkgrel = 1
 	url = https://github.com/StopBanning/toaster
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
+	makedepends = patch
 	depends = electron44
 	options = !debug
-	source = toaster-0.4.21.tar.gz::https://github.com/StopBanning/toaster/archive/refs/tags/v0.4.21.tar.gz
+	source = toaster-0.4.22.tar.gz::https://github.com/StopBanning/toaster/archive/refs/tags/v0.4.22.tar.gz
 	source = toaster.desktop
-	sha256sums = 03f744dfc65efaa9318e6ff60aa5514ea229bf4066005b5cf8b00bac675bf0da
+	source = 0001-clean-remove-the-auto-update-functionality.patch
+	source = 0002-chore-npm-update-the-packages.patch
+	sha256sums = 8cd425d535e75b3f703ff378caa21d191d0db90e41d4db16b4225f76c13ed382
 	sha256sums = d8716162035147616f5702802e039456968fa2d594c070d4a6ede66845caa01c
+	sha256sums = b041091b7237bb7291e594997ace7e205e111afdbf452c77eb9c1adb33578e03
+	sha256sums = bde59f367f5f56aa616800ac916c6580c6cec523129983c52bed65a6c887c806
 
 pkgname = toaster
