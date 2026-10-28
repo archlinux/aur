@@ -2,7 +2,7 @@ pkgbase = chiaki-ng-bin
 	pkgdesc = Free and Open Source PlayStation Remote Play client (upstream AppImage)
 	pkgver = 1.10.0
 	pkgrel = 2
-	url = https://streetpea.github.io/chiaki-ng/
+	url = https://chiaki-ng.github.io/chiaki-ng/
 	arch = x86_64
 	license = LicenseRef-AGPL-3.0-only-OpenSSL
 	depends = glibc
@@ -26,7 +26,6 @@ pkgbase = chiaki-ng-bin
 	depends = hicolor-icon-theme
 	optdepends = intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]
 	optdepends = libva-intel-driver: vaapi backend for Intel GPUs [<= Haswell]
-	optdepends = libva-mesa-driver: vaapi backend for AMD GPUs
 	provides = chiaki-ng
 	provides = chiaki
 	conflicts = chiaki-ng
@@ -34,8 +33,8 @@ pkgbase = chiaki-ng-bin
 	noextract = chiaki-ng-bin-1.10.0.AppImage
 	options = !strip
 	options = !debug
-	source = chiaki-ng-bin-1.10.0.AppImage::https://github.com/streetpea/chiaki-ng/releases/download/v1.10.0/chiaki-ng.AppImage_x86_64
-	source = COPYING-1.10.0::https://raw.githubusercontent.com/streetpea/chiaki-ng/v1.10.0/COPYING
+	source = chiaki-ng-bin-1.10.0.AppImage::https://github.com/chiaki-ng/chiaki-ng/releases/download/v1.10.0/chiaki-ng.AppImage_x86_64
+	source = COPYING-1.10.0::https://raw.githubusercontent.com/chiaki-ng/chiaki-ng/v1.10.0/COPYING
 	sha256sums = cac42c21a19a111f2f0729bb9eef7d3878c6d2a4f06e017d383aff2aba719fd3
 	sha256sums = fff3acb5eddbde97746cc1ad2082a1e95f50c2315a8748b26b8a81a499d8d216
 

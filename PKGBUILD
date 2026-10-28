@@ -7,7 +7,7 @@ pkgver=1.10.0
 pkgrel=2
 pkgdesc="Free and Open Source PlayStation Remote Play client (upstream AppImage)"
 arch=('x86_64')
-url="https://streetpea.github.io/chiaki-ng/"
+url="https://chiaki-ng.github.io/chiaki-ng/"
 license=('LicenseRef-AGPL-3.0-only-OpenSSL')
 # the AppImage bundles Qt6, ffmpeg, SDL and the rest of the stack; these are
 # what is left over
@@ -15,14 +15,14 @@ depends=('glibc' 'gcc-libs' 'zlib' 'bzip2' 'brotli' 'expat' 'libgpg-error'
          'e2fsprogs' 'fontconfig' 'freetype2' 'alsa-lib' 'libx11' 'libxcb'
          'libdrm' 'libva' 'libglvnd' 'mesa' 'vulkan-icd-loader'
          'hicolor-icon-theme')
+# mesa carries the vaapi backend for AMD GPUs
 optdepends=('intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]'
-            'libva-intel-driver: vaapi backend for Intel GPUs [<= Haswell]'
-            'libva-mesa-driver: vaapi backend for AMD GPUs')
+            'libva-intel-driver: vaapi backend for Intel GPUs [<= Haswell]')
 provides=('chiaki-ng' 'chiaki')
 conflicts=('chiaki-ng' 'chiaki')
 options=('!strip' '!debug')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/streetpea/chiaki-ng/releases/download/v${pkgver}/chiaki-ng.AppImage_x86_64"
-        "COPYING-${pkgver}::https://raw.githubusercontent.com/streetpea/chiaki-ng/v${pkgver}/COPYING")
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/chiaki-ng/chiaki-ng/releases/download/v${pkgver}/chiaki-ng.AppImage_x86_64"
+        "COPYING-${pkgver}::https://raw.githubusercontent.com/chiaki-ng/chiaki-ng/v${pkgver}/COPYING")
 noextract=("${pkgname}-${pkgver}.AppImage")
 sha256sums=('cac42c21a19a111f2f0729bb9eef7d3878c6d2a4f06e017d383aff2aba719fd3' 'fff3acb5eddbde97746cc1ad2082a1e95f50c2315a8748b26b8a81a499d8d216')
 
