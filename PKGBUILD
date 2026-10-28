@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Zarić <salexandarz@github.com>
 pkgname=mail-badge-notifier-git
 pkgver=r7.a73a6fd
-pkgrel=3
+pkgrel=4
 pkgdesc="Unread mail taskbar badges for Thunderbird/Betterbird with headless systemd service and GUI wrapper"
 arch=('x86_64' 'aarch64')
 url="https://github.com/salexandarz/mail-badge-notifier"
@@ -19,27 +19,21 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/mail-badge-notifier/addon"
-  python3 -m zipfile -c ../mail-badge-bridge.xpi manifest.json background.js
-}
-
 package() {
   cd "$srcdir/mail-badge-notifier"
 
+  install -d "$pkgdir/usr/share/$pkgname"
+
+  # Install helper scripts and source files
   install -Dm755 install.sh "$pkgdir/usr/share/$pkgname/install.sh"
   install -Dm755 uninstall.sh "$pkgdir/usr/share/$pkgname/uninstall.sh"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm755 mail_badge_bridge.py "$pkgdir/usr/share/$pkgname/mail_badge_bridge.py"
 
-  mkdir -p "$pkgdir/usr/share/$pkgname/helper" "$pkgdir/usr/share/$pkgname/addon"
-  cp -r helper/* "$pkgdir/usr/share/$pkgname/helper/"
-  cp -r addon/* "$pkgdir/usr/share/$pkgname/addon/"
-
+  # Install pre-compiled XPI if present or build artifacts
   if [ -f mail-badge-bridge.xpi ]; then
     install -Dm644 mail-badge-bridge.xpi "$pkgdir/usr/share/$pkgname/mail-badge-bridge.xpi"
   fi
 
-  # Return working directory to $srcdir before exiting the fakeroot environment
+  # Return working directory to $srcdir before exiting fakeroot
   cd "$srcdir"
 }
