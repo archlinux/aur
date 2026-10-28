@@ -1,20 +1,22 @@
 pkgbase = libassert
 	pkgdesc = The most over-engineered C++ assertion library
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeremy-rifkin/libassert
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
-	makedepends = make
-	makedepends = cpptrace
+	makedepends = git
 	depends = cpptrace
-	depends = fmt
+	depends = libcpptrace.so
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	depends = libstdc++
+	depends = libstdc++.so
 	optdepends = fmt: libfmt integration
-	provides = libassert
-	conflicts = libassert
-	source = libassert::git+https://github.com/jeremy-rifkin/libassert.git#tag=v2.2.1
-	sha256sums = SKIP
+	provides = libassert.so
+	source = git+https://github.com/jeremy-rifkin/libassert.git#tag=v2.2.1
+	sha256sums = cba32ed0a8906d80d1fc4836b9afb2515a367d94d8364a1f513acb74cb4fd81f
 
 pkgname = libassert
