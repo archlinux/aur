@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.156
-pkgrel=3
+pkgrel=4
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -13,17 +13,18 @@ depends=('alsa-lib'
          'dbus'
          'expat'
          'fontconfig'
-         'gcc-libs'
          'glib2'
          'gtk3'
          'hicolor-icon-theme'
          'krb5'
          'libcups'
+         'libgcc'
          'libglvnd'
          'libice'
          'libpipewire'
          'libpulse'
          'libsm'
+         'libstdc++'
          'libva'
          'libx11'
          'libxcb'
