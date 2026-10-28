@@ -19,7 +19,7 @@
 #   alembic      -> python-alembic
 #   defusedxml   -> python-defusedxml
 pkgname=sysmanage-agent
-pkgver=3.12.0.8
+pkgver=3.12.0.15
 pkgrel=1
 pkgdesc="Cross-platform system management agent for SysManage"
 arch=('any')
@@ -41,7 +41,7 @@ depends=(
 makedepends=('python-setuptools')
 backup=('etc/sysmanage-agent.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bceverly/sysmanage-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0dad1f0b7ad53069b1b53b7d1b9c3052d705537060165f35ac55cc7fc52c718d')
+sha256sums=('4e87ce7d9199363968576faeb866866c9b26c73dfb4ba7d7baebd5e03539d82f')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
