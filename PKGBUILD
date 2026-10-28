@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=daftar-bin
-pkgver=0.4.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A native GTK app and a command line for an Obsidian vault in a Git repository"
 arch=(x86_64)
@@ -9,12 +9,15 @@ url="https://github.com/parham-alvani/notes-linux"
 license=('GPL-3.0-only')
 depends=(gtk4 libadwaita webkitgtk-6.0 gtksourceview5 vte4 pango cairo glib2 graphene libsoup3 gcc-libs glibc)
 optdepends=('git: syncing the vault'
-            'neovim: the Neovim editing mode')
+            'neovim: the Neovim editing mode'
+            'librsvg: SVG pictures in the editor'
+            'webp-pixbuf-loader: WebP pictures in the editor'
+            'libavif: AVIF pictures in the editor')
 provides=('daftar' 'daftar-cli')
 conflicts=('daftar' 'daftar-cli' 'daftar-cli-bin')
 source=("https://github.com/parham-alvani/notes-linux/releases/download/v${pkgver}/daftar-${pkgver}-x86_64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/parham-alvani/notes-linux/v${pkgver}/LICENSE")
-sha256sums=('fd9132981a0ac1a789c7fcbdbe91870ba1391a2bc4eadea50b01f3d9622621ec'
+sha256sums=('d2292ebd362f937f6b3e23a3f8e0b8f34b35195e408a7a171d1adca6914692f2'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
