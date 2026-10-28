@@ -10,8 +10,10 @@ pkgdesc="Record and edit product demos: cut pauses, add zooms and captions (upst
 arch=('x86_64')
 url="https://tenzen.studio"
 license=('LicenseRef-proprietary')
-depends=('gtk3' 'nss' 'alsa-lib' 'ffmpeg' 'python-xlib')
-optdepends=('libpulse: record system audio')
+# libpipewire: the helper that records the screen on Wayland links it
+depends=('gtk3' 'nss' 'alsa-lib' 'libpipewire' 'ffmpeg' 'python-xlib')
+optdepends=('libpulse: record system audio'
+            'xdg-desktop-portal: screen recording on Wayland')
 makedepends=('ostree' 'asar')
 provides=('capture-studio')
 # called tenzen-studio-bin on the AUR before
