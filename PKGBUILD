@@ -18,8 +18,12 @@ validpgpkeys=('39FFA93CAE9C6AFC212AD00202325448204E452A') # Carl Schwan
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=None
     cmake --build build
+}
+
+check() {
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
