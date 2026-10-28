@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=roleboi
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A small role management Discord bot."
 arch=("x86_64")
