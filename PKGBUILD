@@ -1,27 +1,17 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Creator: aksr <aksr at t-com dot me>
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 pkgname=skalibs-git
-pkgver=2.3.10.0.r5.g70697ef
+pkgver=2.16.0.0.r2.g4fbc763
 pkgrel=1
-epoch=
 pkgdesc="A general-purpose low-level C library."
 arch=('i686' 'x86_64')
 url="http://www.skarnet.org/software/skalibs/"
 license=('ISC')
-groups=()
-depends=('')
 makedepends=('git')
-optdepends=()
-checkdepends=()
 provides=('skalibs')
 conflicts=('skalibs')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
 source=("$pkgname::git+git://git.skarnet.org/skalibs")
-noextract=()
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -39,4 +29,3 @@ package() {
   make DESTDIR="$pkgdir/" install
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
-
