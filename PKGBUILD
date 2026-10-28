@@ -9,12 +9,17 @@
 # 直接 `npm run build` 会在 Linux 上报：
 #   Office runtime: unsupported native target linux/x64
 #
-# 本 PKGBUILD 因此不执行上游 `npm run build`，而是分步执行，并采用社区 Linux
-# 打包工程 ethanrise/dsh-desktop（MIT）的两个适配脚本（按固定版本随包提供，
-# 不修改上游源码）：
-#   - dsh-linux-patch-deps.mjs：修复 libreoffice-kit 在 asar 下的探测，
-#     让 Linux 能走 WASM 回退；
-#   - dsh-linux-after-pack.cjs：替换上游 afterPack，跳过 Office 运行时校验。
+# 本 PKGBUILD 因此不执行上游 `npm run build`，而是分步执行，并附加三个辅助脚本
+# （随包提供）：
+#   - dsh-linux-patch-deps.mjs（社区 ethanrise/dsh-desktop，MIT）：修复
+#     libreoffice-kit 在 asar 下的探测，让 Linux 能走 WASM 回退；
+#   - dsh-linux-after-pack.cjs（同上）：替换上游 afterPack，跳过 Office 运行时校验；
+#   - dsh-linux-about-menu.mjs（本包自带）：上游只在 macOS 应用菜单里放“关于”，
+#     Linux 的 Harness 菜单只有“检查更新…”，看不到版本号。该脚本在构建前给
+#     src/main/index.ts 的非 darwin 菜单补入“关于 DSH Desktop”，复用上游
+#     showAbout() 显示桌面端与内置 Harness 版本；同时隐藏关于面板里的“版本切换”
+#     按钮（上游版本目录只含 macOS/Windows 产物，Linux 上无法使用）。两处改动
+#     都只在源码匹配时生效，不匹配则自动跳过并告警。
 #
 # 由于上游未提供 Linux 版 Office Python 载荷，本包**不包含 Office 运行时**，
 # DOCX/PPTX/XLSX 技能不可用；PPT 编辑/渲染仍可用。
@@ -39,7 +44,7 @@
 
 pkgname=dsh-desktop-git
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
@@ -92,11 +97,13 @@ options=('!strip')
 source=("$pkgname::git+https://github.com/dataelement/dsh-desktop.git"
         'dsh-desktop.desktop'
         'dsh-linux-after-pack.cjs'
-        'dsh-linux-patch-deps.mjs')
+        'dsh-linux-patch-deps.mjs'
+        'dsh-linux-about-menu.mjs')
 sha256sums=('SKIP'
             'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea'
             '8683aefb28c9a23f29acc58dd9269b4cbc288ff754315b507a7d9120574aafb6'
-            'cdddf8134576a201f8cdca2f4b707b95bed0859a5891b9690e013cab5272d806')
+            'cdddf8134576a201f8cdca2f4b707b95bed0859a5891b9690e013cab5272d806'
+            'eb956d34d87bfc331dcb7ecc1a960a7d1594a5ae8fbd599a1d73f65259aa7f2a')
 
 # 最新 v 前缀 release tag（按版本号降序取第一个）
 _latest_tag() {
@@ -138,6 +145,9 @@ build() {
 
   # 上游 office:prepare / afterPack 仅支持 macOS/Windows，见文件头说明。
   node "$srcdir/dsh-linux-patch-deps.mjs" .
+
+  # Linux 菜单补“关于”并隐藏关于面板的“版本切换”，见文件头说明
+  node "$srcdir/dsh-linux-about-menu.mjs" .
 
   # 不打包 Office 运行时（上游无 Linux 载荷）；空目录用于满足 extraResources
   rm -rf .build/office-runtime
@@ -182,3 +192,8 @@ package() {
   # 许可证
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('SKIP'
+            'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea'
+            '8683aefb28c9a23f29acc58dd9269b4cbc288ff754315b507a7d9120574aafb6'
+            'cdddf8134576a201f8cdca2f4b707b95bed0859a5891b9690e013cab5272d806'
+            'eb956d34d87bfc331dcb7ecc1a960a7d1594a5ae8fbd599a1d73f65259aa7f2a')
