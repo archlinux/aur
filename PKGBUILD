@@ -3,7 +3,7 @@
 _pkgauthor=noborus
 _pkgname=guesswidth
 pkgdesc='Guess the width (fwf) output without delimiters in commands that output to the terminal.'
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgname=${_pkgname}-bin
 
@@ -25,9 +25,9 @@ source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_38
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('afcb1af4d492525f0eab04b3f2c28781710393d6b0f932521f87b531a99680ff'
             '4c0f3a18ed3b0abcd5ae6ed620ec4da1c034d6f0995419ab7c23b662b90d1495')
-sha256sums_x86_64=('8ea34b07b4da7ff013ceea8be8b32c34b68e477d86011f0167b9a39c23da4f47')
-sha256sums_i686=('bcaae285ad2f6af790bca491bea077dff35b1a8b881cc696907118ce1f015b42')
-sha256sums_aarch64=('188ea3979c123c89c610b8d099d6b196249682574b990053a2c421b1c64b0d60')
+sha256sums_x86_64=('799445946f0663419f7b3a1e966a27a54ea83172560482f9a06c9c76fe987b2d')
+sha256sums_i686=('15d90c5fdd2ed476a17422d4a950d95c01b24c1e6e94654d8ce29621a9dde4f1')
+sha256sums_aarch64=('bef971d1747794af1e635c674c1bc2c9d7ec2a5324cf8c69d2ccf1e7035293ac')
 
 build() {
   cd "${srcdir}/" || exit
