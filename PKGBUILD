@@ -11,7 +11,7 @@ url="https://github.com/shy1132/VacuumTube"
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib' 'libnotify' 'libxss' 'libxtst' 'xdg-utils'
          'at-spi2-core' 'util-linux-libs' 'libsecret')
-optdepends=('libappindicator-gtk3: tray icon support')
+optdepends=('libappindicator: tray icon support')
 provides=('vacuumtube')
 conflicts=('vacuumtube')
 options=('!strip' '!debug')
