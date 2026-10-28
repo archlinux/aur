@@ -11,7 +11,7 @@
 
 pkgname=waydroid-a17-nvidia-bin
 pkgver=20261028.2
-pkgrel=1
+pkgrel=2
 _tag=a17-20261028-2
 _wn_sha=29ffa3a237b0d79a751748bd9bb82c50dd577808      # waydroid-nvidia v0.2.0-rc10 release notes commit
 _wn_tag=v0.2.0-rc10
@@ -27,6 +27,7 @@ depends=(
   'gtk3' 'python-dbus' 'pulse-native-provider'
   'binutils'   # readelf: the setup checks guest ABI and SONAMEs
   'e2fsprogs'  # debugfs: the release gate reads the bionic runtime from system.img
+  'erofs-utils'  # dump.erofs: the release gate reads vendor.img
   'util-linux' # unshare (gate), mount idmap (shared folders)
   # host Venus renderer (venus driver mode)
   'libepoxy' 'libdrm' 'mesa' 'libx11' 'expat' 'vulkan-icd-loader'

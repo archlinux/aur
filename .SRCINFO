@@ -1,7 +1,7 @@
 pkgbase = waydroid-a17-nvidia-bin
 	pkgdesc = Waydroid for Android 17 (WayDroid-ATV) with NVIDIA acceleration: NVK + ANGLE vendor image, freeform cards, host IME and clipboard
 	pkgver = 20261028.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cagedbird043/waydroid-a17-nvidia
 	install = waydroid-a17-nvidia.install
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = waydroid-a17-nvidia-bin
 	depends = pulse-native-provider
 	depends = binutils
 	depends = e2fsprogs
+	depends = erofs-utils
 	depends = util-linux
 	depends = libepoxy
 	depends = libdrm
