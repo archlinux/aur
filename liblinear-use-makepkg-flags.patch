@@ -1,0 +1,36 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,7 @@
+ CXX ?= g++
+ CC ?= gcc
+-CFLAGS = -Wall -Wconversion -O3 -fPIC
++CFLAGS += -Wall -Wconversion -fPIC
++CXXFLAGS += -Wall -Wconversion -fPIC
+ LIBS = blas/blas.a
+ #LIBS = -lblas
+ SHVER = 6
+@@ -14,19 +15,19 @@
+ all: train predict
+ 
+ lib: linear.o newton.o blas/blas.a
+-	$(CXX) $(SHARED_LIB_FLAG) linear.o newton.o blas/blas.a -o liblinear.so.$(SHVER)
++	$(CXX) $(CXXFLAGS) $(SHARED_LIB_FLAG) linear.o newton.o blas/blas.a -o liblinear.so.$(SHVER) $(LDFLAGS)
+ 
+ train: newton.o linear.o train.c blas/blas.a
+-	$(CXX) $(CFLAGS) -o train train.c newton.o linear.o $(LIBS)
++	$(CXX) $(CXXFLAGS) -o train train.c newton.o linear.o $(LIBS) $(LDFLAGS)
+ 
+ predict: newton.o linear.o predict.c blas/blas.a
+-	$(CXX) $(CFLAGS) -o predict predict.c newton.o linear.o $(LIBS)
++	$(CXX) $(CXXFLAGS) -o predict predict.c newton.o linear.o $(LIBS) $(LDFLAGS)
+ 
+ newton.o: newton.cpp newton.h
+-	$(CXX) $(CFLAGS) -c -o newton.o newton.cpp
++	$(CXX) $(CXXFLAGS) -c -o newton.o newton.cpp
+ 
+ linear.o: linear.cpp linear.h
+-	$(CXX) $(CFLAGS) -c -o linear.o linear.cpp
++	$(CXX) $(CXXFLAGS) -c -o linear.o linear.cpp
+ 
+ blas/blas.a: blas/*.c blas/*.h
+ 	make -C blas OPTFLAGS='$(CFLAGS)' CC='$(CC)';

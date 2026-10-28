@@ -18,8 +18,14 @@ arch=('x86_64')
 url="https://www.csie.ntu.edu.tw/~cjlin/liblinear/"
 license=('BSD-3-Clause')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha256sums=('e5eeafe2159c41148b59304da2ba0ed12648e3d491ce2b9625058e174e96ca29')
+source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz"
+        "liblinear-use-makepkg-flags.patch")
+sha256sums=('e5eeafe2159c41148b59304da2ba0ed12648e3d491ce2b9625058e174e96ca29'
+            'f9895c818447c60701e1ccc72f05285c7f12cc37e935b493a54139541be15e26')
+
+prepare() {
+    patch -d "${pkgbase}-${pkgver}" -Np1 -i "${srcdir}/liblinear-use-makepkg-flags.patch"
+}
 
 build() {
     cd "${pkgbase}-${pkgver}"
