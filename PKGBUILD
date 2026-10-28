@@ -2,7 +2,7 @@
 # Contributor: weselben <bengottwaldi04 at gmail dot com>
 
 pkgname=gomodel
-pkgver=0.1.108
+pkgver=0.1.109
 pkgrel=1
 pkgdesc="High-performance AI gateway with caching, cost tracking, budgets, rate limits, virtual models and plugins"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ENTERPILOT/GoModel/arch
         "gomodel-user.service"
         "gomodel.sysusers"
         "gomodel.tmpfiles")
-sha256sums=('de831cba34fe6766e3cf32486d508657a2c9c649d779a8fd17a64d10a22d2e5e'
-            '1154950a316a45f80f9fa6009c2f42c11b8cde447ab04d338d98a7af809c42fd'
+sha256sums=('9aa2f76cd15abab2b99a31a5acd8f654d348794d2d7e48c689a327f3967f6eaf'
+            'e8b21b47a9ebbf5afdc6c997d9ac139641a08effcf6c1ed2b1e3a0abd669c9e9'
             'e6c2719a296d21e39793d572959efb0356c3f98ad47e9a2c98f21f6e6c2c64f6'
             'fe63ac54caa66676e59bfa5044ebe1372e3cc5546ac68fac9bde4ddb19f82973'
             '0381e411b3245933da1fe3c7021de4727c7f596c55464c993333153d57781ad3'
