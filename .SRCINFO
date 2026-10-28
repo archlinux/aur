@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 156.0.8078.47
+	pkgver = 156.0.8078.73
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -84,13 +84,13 @@ pkgbase = ungoogled-chromium
 	optdepends = qt6-base: Qt support
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce
 	optdepends = upower: Battery Status API support
-	provides = chromium=156.0.8078.47
-	provides = chromedriver=156.0.8078.47
+	provides = chromium=156.0.8078.73
+	provides = chromedriver=156.0.8078.73
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-156.0.8078.47-lite.tar.xz
-	source = ungoogled-chromium-156.0.8078.47-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/156.0.8078.47-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-156.0.8078.73-lite.tar.xz
+	source = ungoogled-chromium-156.0.8078.73-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/156.0.8078.73-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
@@ -113,8 +113,8 @@ pkgbase = ungoogled-chromium
 	source = enable-widevine-arm64.patch
 	source = use-oauth2-client-switches-as-default.patch
 	source = glibc-2.42-baud-rate-fix.patch
-	sha256sums = 28432028890ef70e1f2e9db880c500907ad1b04f5ae6b655a3f394b9f2eaa705
-	sha256sums = acf73f8fab3fa7a4977f54e4e51b206eaf6cc425c2294ecc4dc8023fd093bd2d
+	sha256sums = cfdf8def1207b81af1231e5170bf849896cd353e72220ca05d93432e31551d59
+	sha256sums = d93b1e40e3ce0a1a3a96d107240f1367fe5336b87fbe55a18af82e337d7cc85c
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
