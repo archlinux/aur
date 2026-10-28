@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.156
-pkgrel=1
+pkgrel=2
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -55,14 +55,13 @@ options=('!strip' '!debug')
 
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage"
         'LICENSE')
-sha256sums=('827f991a6b4b94c3c07dc7403b7dd6fbceff353e787e4c5967772a30021cdcb0')
-
+sha256sums=('827f991a6b4b94c3c07dc7403b7dd6fbceff353e787e4c5967772a30021cdcb0'
+            '8826596bcd18e3b9019b7bc065a0d22429e7447b2940c64ce500c22c7746a93e')
 prepare() {
     chmod +x "${srcdir}/Root-${pkgver}-x86_64.AppImage"
     "${srcdir}/Root-${pkgver}-x86_64.AppImage" --appimage-extract
     chmod go-w squashfs-root
 
-    # X-AppImage-Version must equal pkgver: the URL is versionless (2026-10-27).
     shipped=$(sed -n 's/^X-AppImage-Version=//p' "${srcdir}"/squashfs-root/*.desktop | head -n 1)
     if [ "$shipped" != "$pkgver" ]; then
         printf 'payload is version %s, pkgver is %s\n' "${shipped:-unknown}" "$pkgver" >&2
@@ -91,7 +90,7 @@ WRAPPER_EOF
     install -Dm644 "${srcdir}/squashfs-root/Root.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/rootapp.png"
 
     install -dm755 "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/rootapp.desktop" <<'EOF'
+    cat > "${pkgdir}/usr/share/applications/rootapp-app.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Root
