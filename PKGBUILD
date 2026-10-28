@@ -4,7 +4,7 @@
 # Edit the template in the tide repository, not this file.
 
 pkgname=tide-bin
-pkgver=1.3.0
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Terminal RSS reader built with Bubble Tea"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ source=("LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/tide-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/tide-linux-aarch64.tar.gz")
 sha256sums=('7ded3abde5f4be92306e0ee24c6db97b1825e4eaa1b8fd473669c521f5a409dd')
-sha256sums_x86_64=('a81f32d318e9d9daa1c4f06821596aecad45421220189be389cb80cffc04b6cd')
-sha256sums_aarch64=('9294fed25fd241c8dcbf7a6acbbb37cd8aa6b36fb0d233a9521182063e078af2')
+sha256sums_x86_64=('3d0cdb4ddabb6617dd1db83e3e93d44016dda5d61eac1b3a9da1753210a83a7f')
+sha256sums_aarch64=('fe8484ac68d3733a8d7c092aa645274db72688756f27d2acd2e97ee3cd9d232d')
 
 package() {
   install -Dm755 "$srcdir/tide-linux-$CARCH" "$pkgdir/usr/bin/tide"
