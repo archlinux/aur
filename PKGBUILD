@@ -2,9 +2,9 @@
 
 _name=tree-sitter-powershell
 pkgname=python-tree-sitter-powershell
-pkgver=0.26.5
-pkgrel=4
-_commit=d398441825243b00e317e87e1829b9d6a3e54ce0
+pkgver=0.26.6
+pkgrel=1
+_commit=65ea6919e816a7ac142acec7ee72757f89db8439
 pkgdesc="Powershell grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/airbus-cert/tree-sitter-powershell"
@@ -17,7 +17,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/airbus-cert/tree-sitter-powershell/archive/${_commit}.tar.gz")
-sha256sums=('a74fe59e93f76796b2593babeaaf352ed5598933ae22df9cbf8c6828c9d5f9cd')
+sha256sums=('ce077de1a8537476750152afa984346a65519b7b795348cc8fb7f1e0e28e4a4a')
 
 build() {
     cd "${_name}-${_commit}"
