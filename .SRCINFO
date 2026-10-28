@@ -1,7 +1,7 @@
 pkgbase = doors-git
 	pkgdesc = Wayland compositor inspired by bspwm
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dawn.wine/CreeperFace/doors
 	install = doors-git.install
 	arch = x86_64

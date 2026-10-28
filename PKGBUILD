@@ -47,10 +47,16 @@ build() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "$_pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  install -Dm644 "$_pkgname/examples/arch/doorsrc" "$pkgdir/etc/doors/doorsrc"
-  install -Dm644 "$_pkgname/examples/arch/doorshkrc" "$pkgdir/etc/doors/doorshkrc"
-  install -Dm644 doors-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/doors-portals.conf"
-  install -Dm644 doors-session.target "$pkgdir/usr/lib/systemd/user/doors-session.target"
+    DESTDIR="$pkgdir" ninja -C build install
+    install -Dm644 "$_pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 "$_pkgname/examples/arch/doorsrc" "$pkgdir/etc/doors/doorsrc"
+    install -Dm644 "$_pkgname/examples/arch/doorshkrc" "$pkgdir/etc/doors/doorshkrc"
+    install -Dm644 doors-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/doors-portals.conf"
+    install -Dm644 doors-session.target "$pkgdir/usr/lib/systemd/user/doors-session.target"
+
+    # Convert POD documentation to man pages and install them.
+    install -d "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/man/man5"
+    pod2man -s 1 -c "doors" -r "doors" "$_pkgname/docs/doorsctl.pod" "$pkgdir/usr/share/man/man1/doorsctl.1"
+    pod2man -s 5 -c "doors" -r "doors" "$_pkgname/docs/doorshkrc.pod" "$pkgdir/usr/share/man/man5/doorshkrc.5"
+    pod2man -s 5 -c "doors" -r "doors" "$_pkgname/docs/doorsrc.pod" "$pkgdir/usr/share/man/man5/doorsrc.5"
 }
