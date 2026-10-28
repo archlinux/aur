@@ -1,6 +1,6 @@
 # Maintainer: Quark Contributors <https://github.com/0xnullsect0r/Quark>
 pkgname=quark
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Train and run your own Llama 4-style MoE coding LLM on your own hardware"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'cuda: fastest backend on NVIDIA GPUs (toolkit must not be newer than the driver)'
   'vulkan-driver: GPU acceleration on AMD, Intel and NVIDIA via Vulkan'
 )
-provides=('quark' 'quark-chat' 'quark-code')
+provides=('quark' 'quark-chat' 'quark-code' 'quark-cli')
 conflicts=('quark-git' 'quark-bin')
 # Disable LTO: ring 0.17's hand-written C/ASM sources are compiled by the `cc`
 # crate inside ring's build.rs.  Arch's system LTO injects -flto=auto into
@@ -23,7 +23,7 @@ conflicts=('quark-git' 'quark-bin')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/0xnullsect0r/Quark/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('78cb93927675a9d0ecedfaf2c3afd1f4cccffd22d34c640d49a80416cfb4d4b3')
+sha256sums=('874a5d39d00101ed61606ad81d913fd5fef5da5f6694f28dd1e4d99812af23ba')
 
 build() {
   cd "Quark-${pkgver}"
@@ -42,6 +42,7 @@ package() {
   install -Dm755 target/release/quark      "${pkgdir}/usr/bin/quark"
   install -Dm755 target/release/quark-chat "${pkgdir}/usr/bin/quark-chat"
   install -Dm755 target/release/quark-code "${pkgdir}/usr/bin/quark-code"
+  install -Dm755 target/release/quark-cli  "${pkgdir}/usr/bin/quark-cli"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/quark.desktop" << 'DESKTOP'
 [Desktop Entry]
