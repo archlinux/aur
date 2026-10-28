@@ -1,14 +1,15 @@
 # Maintainer: lyj <lyj404@gmail.com>
 pkgname=bettbox-bin
 pkgver=1.19.7
-pkgrel=1
-pkgdesc="基于 Mihomo（Clash.Meta 内核）的多平台代理客户端"
+pkgrel=2
+pkgdesc="Another Better Network Toolbox"
 arch=('x86_64' 'aarch64')
 url="https://github.com/appshubcc/Bettbox"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
   'libayatana-appindicator'
+  'libayatana-indicator'
   'libkeybinder3'
 )
 optdepends=('polkit: TUN 模式授权（配合 polkit 规则免密调用 resolvectl）')

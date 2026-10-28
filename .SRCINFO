@@ -1,7 +1,7 @@
 pkgbase = bettbox-bin
-	pkgdesc = 基于 Mihomo（Clash.Meta 内核）的多平台代理客户端
+	pkgdesc = Another Better Network Toolbox
 	pkgver = 1.19.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/appshubcc/Bettbox
 	install = bettbox.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = bettbox-bin
 	license = GPL-3.0-or-later
 	depends = gtk3
 	depends = libayatana-appindicator
+	depends = libayatana-indicator
 	depends = libkeybinder3
 	optdepends = polkit: TUN 模式授权（配合 polkit 规则免密调用 resolvectl）
 	options = !strip
