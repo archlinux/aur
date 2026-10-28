@@ -3,7 +3,7 @@
 pkgname=stably-orca-git
 _gitname=orca
 pkgver=1.1.30.r0.g0000000
-pkgrel=3
+pkgrel=4
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (built from main)"
 arch=('x86_64')
 url="https://github.com/stablyai/orca"
@@ -27,6 +27,8 @@ makedepends=(
   # Upstream's config/scripts/install-electron-package-binary.mjs shells out
   # to the `unzip` CLI to extract the Electron archive. Not in base-devel.
   'unzip'
+  # Headers for the native Wayland clipboard helper compiled in build().
+  'wayland'
 )
 provides=('stably-orca')
 conflicts=('stably-orca' 'stably-orca-bin')
@@ -74,26 +76,58 @@ prepare() {
   # host's glibc, so on Arch it legitimately records GLIBC_2.42 and
   # GLIBC_ABI_DT_RELR and the gate kills the build. Build host and target host
   # are the same rolling-release system, so the floor is meaningless for us —
-  # replace the checker with a no-op.
+  # turn the checker into a no-op. Keep the module's other exports: the
+  # Wayland clipboard build and packaging hooks use collectNativeBinaries().
   local gate='config/scripts/verify-linux-glibc-floor.cjs'
-  if [[ ! -f "${gate}" ]]; then
-    echo "ERROR: expected upstream ${gate}, not found."
+  if [[ ! -f "${gate}" ]] || ! grep -q '^module.exports = {' "${gate}"; then
+    echo "ERROR: expected upstream ${gate} with a module.exports object, not found."
     echo "Upstream may have moved or dropped the glibc floor gate. Re-check the"
     echo "afterPack hook in config/electron-builder.config.cjs and update this PKGBUILD."
     return 1
   fi
-  cat > "${gate}" <<'EOF'
-// Replaced by the stably-orca-git PKGBUILD. See the prepare() comment: the
+  cat >> "${gate}" <<'EOF'
+
+// Appended by the stably-orca-git PKGBUILD. See the prepare() comment: the
 // upstream Ubuntu 20.04 glibc floor does not apply to natives compiled
 // against the same Arch system they will run on.
-module.exports = { verifyLinuxGlibcFloor: () => {} }
+module.exports.verifyLinuxGlibcFloor = () => {}
 EOF
+}
+
+# Upstream's build:native compiles native/wayland-clipboard inside an Ubuntu
+# 20.04 Docker image to hit its glibc floor. There is no Docker in a makepkg
+# chroot, and the floor does not apply here (see prepare()), so compile it with
+# the host toolchain using upstream's flags and write the fingerprint stamp
+# that makes config/scripts/build-wayland-clipboard.mjs skip its Docker step.
+_build_wayland_clipboard() {
+  local src='native/wayland-clipboard'
+  local out="${src}/.build/x64/orca-wayland-clipboard"
+  local script='config/scripts/build-wayland-clipboard.mjs'
+  if [[ ! -f "${src}/wayland-clipboard.c" || ! -f "${script}" ]]; then
+    echo "ERROR: upstream Wayland clipboard helper sources moved."
+    echo "Re-check build:native (config/scripts/build-native-for-platform.mjs) and update this PKGBUILD."
+    return 1
+  fi
+  mkdir -p "${out%/*}"
+  gcc ${CFLAGS} -O2 -Wall -Wextra -fstack-protector-strong \
+    -fPIE -pie ${LDFLAGS} -Wl,-z,relro,-z,now \
+    "${src}/wayland-clipboard.c" "${src}/x11-clipboard-publisher.c" -ldl -o "${out}"
+  node --input-type=module -e "
+    import { writeFileSync } from 'node:fs'
+    import { waylandClipboardFingerprint } from './${script}'
+    writeFileSync('${out}.sha256', waylandClipboardFingerprint(process.cwd(), 'x64'))
+  "
 }
 
 build() {
   cd "${srcdir}/${_gitname}"
   # Electron + node-pty need a working C toolchain and Python, covered by base-devel + makedepends.
   pnpm install --frozen-lockfile
+  # build:desktop:assets ends with build:mobile-web, which bundles mobile/
+  # (React Native/Expo) into out/mobile-web. mobile/ is its own pnpm project,
+  # excluded from the root workspace, so it needs a separate install.
+  pnpm --dir mobile install --frozen-lockfile
+  _build_wayland_clipboard
   # Reproduce upstream's build:linux but restrict electron-builder to the
   # AppImage target. Upstream's script also builds a .deb via bundled fpm,
   # whose ruby wants libcrypt.so.1 (not shipped on Arch). We only consume
