@@ -1,6 +1,6 @@
 pkgbase = iwe-bin
 	pkgdesc = Markdown knowledge graph – CLI, LSP and MCP servers for notes
-	pkgver = 0.29.1
+	pkgver = 0.29.2
 	pkgrel = 1
 	url = https://github.com/iwe-org/iwe
 	arch = x86_64
@@ -8,18 +8,18 @@ pkgbase = iwe-bin
 	license = Apache-2.0
 	depends = gcc-libs
 	depends = glibc
-	provides = iwe=0.29.1
-	provides = iwes=0.29.1
-	provides = iwec=0.29.1
+	provides = iwe=0.29.2
+	provides = iwes=0.29.2
+	provides = iwec=0.29.2
 	conflicts = iwe
 	conflicts = iwes
 	conflicts = iwec
 	options = !debug
-	source = LICENSE-APACHE::https://raw.githubusercontent.com/iwe-org/iwe/iwe-v0.29.1/LICENSE-APACHE
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/iwe-org/iwe/iwe-v0.29.2/LICENSE-APACHE
 	sha256sums = cbf05ab61c79f63823ae7ce980ed10d70408a754f2a02982f615f09b3d5e3ebd
-	source_x86_64 = https://github.com/iwe-org/iwe/releases/download/iwe-v0.29.1/iwe-v0.29.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 40e723d313eee18c8780e7dd8b9aeb127637b74c9e418cd66e84ec7f0edca3f7
-	source_aarch64 = https://github.com/iwe-org/iwe/releases/download/iwe-v0.29.1/iwe-v0.29.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b10ddb7b1112584b79d59f3ab3300397493324a333376a154bac550f7272dfd8
+	source_x86_64 = https://github.com/iwe-org/iwe/releases/download/iwe-v0.29.2/iwe-v0.29.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2a6e9774280a8dafd176a8b61adcbf176254119b505948bc08f611c5a9a1b348
+	source_aarch64 = https://github.com/iwe-org/iwe/releases/download/iwe-v0.29.2/iwe-v0.29.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 38fb11c1b5ced27d768951bdda3e95e5ff2ab571b38e2ebe407a0fbf50d50bef
 
 pkgname = iwe-bin
