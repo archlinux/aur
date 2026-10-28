@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/rig-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('4b91a08f16f93cdc23b86ebe6ac5986faf810dd78874698606b0b8985c3613b07e9749d1a4ce5dfa1b0582ad6024ee0be5ef8243477e6a07fb33b7359fe28d6b')
+sha512sums=('3037e85b06fd3064b60246edb8624b26bc485d52fa5fd6dd95b5aa1ff3a8722295b6fd1c0a5a87c4984948bc40f16a440747b6136e9e9f0c4b2596b379fce4e9')
