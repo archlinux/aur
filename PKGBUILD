@@ -2,7 +2,7 @@
 
 _pkgbase=rime-frost
 pkgname=${_pkgbase}-git
-pkgver=r465.9921a59
+pkgver=r505.14e8580
 pkgrel=1
 pkgdesc="Rime 配置：白霜词库 | 蒹葭苍苍，白露为霜。基于雾凇拼音重制的，更纯净、词频准确、智能的词库。"
 arch=("any")
