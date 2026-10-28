@@ -1,0 +1,24 @@
+pkgbase = herakleo-bin
+	pkgdesc = Desktop IPTV player for M3U lists and Xtream Codes (prebuilt)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/crstian19/herakleo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkitgtk-6.0
+	depends = gtk4
+	depends = libsoup3
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = glibc
+	optdepends = mpv: default video player
+	optdepends = vlc: alternative video player
+	optdepends = celluloid: alternative video player
+	optdepends = haruna: alternative video player
+	provides = herakleo
+	conflicts = herakleo
+	conflicts = herakleo-wails
+	source = https://github.com/crstian19/herakleo/releases/download/v0.1.1/herakleo-0.1.1-linux-x86_64.tar.gz
+	sha256sums = a9e16457353e5349da9791ea4f72459b9039c765bd178038f7d4eb87154eabb6
+
+pkgname = herakleo-bin
