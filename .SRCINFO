@@ -1,0 +1,16 @@
+pkgbase = merman
+	pkgdesc = Mermaid.js, but headless, in Rust
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/Latias94/merman
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = merman-0.9.2.tar.gz::https://github.com/Latias94/merman/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = 423fd38280312c90bcb525ae214998497f935a3a8d3715d1b8bfc555084c076d
+
+pkgname = merman
