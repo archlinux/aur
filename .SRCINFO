@@ -1,0 +1,17 @@
+pkgbase = hyprcurtain
+	pkgdesc = Stream Hyprland to Moonlight on a private headless output
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ColtNovak/hyprcurtain
+	arch = any
+	license = MIT
+	depends = hyprland
+	depends = hyprlock
+	depends = sunshine
+	depends = jq
+	depends = curl
+	depends = util-linux
+	source = hyprcurtain-1.0.tar.gz::https://github.com/ColtNovak/hyprcurtain/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 029f784b742d9898c93606e0c68f0f4e07cfd67c69fa471e3c6ffc924ce17802
+
+pkgname = hyprcurtain
