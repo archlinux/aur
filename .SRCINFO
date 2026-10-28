@@ -1,6 +1,6 @@
 pkgbase = sonolith
 	pkgdesc = YouTube Music desktop client
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/opecko/sonolith
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = sonolith
 	optdepends = gnome-keyring: stores the login cookie (Secret Service)
 	provides = ytdesk
 	conflicts = sonolith-bin
-	conflicts = ytdesk<2.3.0
-	conflicts = ytdesk-bin<2.3.0
+	conflicts = ytdesk<2.4.0
+	conflicts = ytdesk-bin<2.4.0
 	replaces = ytdesk
 	options = !lto
 	options = !debug
-	source = sonolith-2.3.0.tar.gz::https://github.com/opecko/sonolith/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = 415e1c315e51c3a8937c972c9d5a39bc04d08caaaa81419133fed088a0b2cf1f
+	source = sonolith-2.4.0.tar.gz::https://github.com/opecko/sonolith/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = 13fc43a840b83b4fe3eaee614379de650719b7403af3c1d3a78ff466ea150a73
 
 pkgname = sonolith
