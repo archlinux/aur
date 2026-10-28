@@ -3,7 +3,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=buildozer-bin
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_aarch64+=(
   "${pkgname}-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64"
 )
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('3513b8b23619f5fb7ccad546e955af6e318475582ce7b6f2b47b634bd3b8dcbd')
-sha256sums_aarch64=('add0e7e45e10231746c6bb193e466361183dfe9d2df8f951b62c49a047508f30')
+sha256sums_x86_64=('0cfa2633184880ad5139bad3133fdf1a11ce3b7d37ba3eae9a85374a613c4779')
+sha256sums_aarch64=('82bc376fafedd281579beb400be430d4c3f0104c1a8502d10e0cb7ec2c8cb5bd')
 
 package() {
   cd "${srcdir}" || exit
