@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64' 'aarch64')
@@ -14,18 +14,23 @@ optdepends=(
     'xray: system Xray-core binary (managed runtime used automatically if absent)'
 )
 install=whoisthat.install
+# ring (pulled in by rustls/ureq) ships precompiled assembly archives. Arch's
+# makepkg injects -flto=auto into CFLAGS/CXXFLAGS/LDFLAGS for the `lto` option;
+# the ring objects then lose their ring_core_* symbols at the final Rust link.
+# Disable makepkg LTO for this package (Cargo itself is not LTO-enabled).
+options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v${pkgver}.tar.gz")
 # The "Publish to AUR" workflow pins the real released-tag digest.
-sha256sums=('024a83de4ba683face2bae5b20794dfb6d9c6aaaa98ec5f715e20144636a00c9')
+sha256sums=('7f66cf7f696b1909c8d49e0739948a9329277a637b19d5db5061e2f658b57c42')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     cd core/core
-    go build -o whoisthat-core
+    go build -trimpath -o whoisthat-core
     cd ../..
 
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
