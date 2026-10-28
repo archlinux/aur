@@ -3,7 +3,7 @@
 pkgname=sherpa-onnx-piper-voice-ru-ruslan
 _model=vits-piper-ru_RU-ruslan-medium
 pkgver=20251202
-pkgrel=1
+pkgrel=2
 pkgdesc="Russian Piper TTS voice ruslan (medium quality) in sherpa-onnx format"
 arch=('any')
 url="https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models"
@@ -16,5 +16,4 @@ sha256sums=('0690b1cad01f86e8db9ba988af24898bdc1af774e23cb2e46b9c730269b6fd83')
 package() {
   install -d "${pkgdir}/usr/share/sherpa-onnx"
   cp -r --no-preserve=ownership "${_model}" "${pkgdir}/usr/share/sherpa-onnx/"
-  install -Dm644 "${_model}/MODEL_CARD" "${pkgdir}/usr/share/licenses/${pkgname}/MODEL_CARD"
 }

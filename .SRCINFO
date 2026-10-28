@@ -1,7 +1,7 @@
 pkgbase = sherpa-onnx-piper-voice-ru-ruslan
 	pkgdesc = Russian Piper TTS voice ruslan (medium quality) in sherpa-onnx format
 	pkgver = 20251202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models
 	arch = any
 	license = CC-BY-NC-SA-4.0
