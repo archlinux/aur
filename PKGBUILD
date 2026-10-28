@@ -1,6 +1,6 @@
 # Maintainer: Mehmet Ozgur Bayhan <mozgurbayhan@gmail.com>
 pkgname=wdb
-pkgver=0.0.38
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Watchdog for disk and RAM usage in the system tray'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-2.0-only' 'GPL-3.0-only')
 depends=('bash' 'yad' 'zenity')
 optdepends=('libnotify: desktop notifications')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/api/v4/projects/mozgurbayhan%2Fwdb/packages/generic/wdb/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('fb7734905ee5fcad418c2b66183adc1450ca94f2c0664256608d6fd71094f058')
+sha256sums=('e8eab6833e394ea29091fd43054cbf84bfc576c4e8ebd054bb7b02131c9deb0a')
 
 package() {
     cd "$pkgname-$pkgver"
