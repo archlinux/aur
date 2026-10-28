@@ -3,8 +3,8 @@
 _prgname=redumper-gui
 pkgname=redumper-gui
 epoch=
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='A cross-platform digital fidget spinner and GUI for redumper. Package built from tagged release source.'
 arch=(x86_64)
 url='https://github.com/Deterous/Redumper-GUI'
@@ -13,7 +13,7 @@ license=('GPL-3.0')
 # The GUI is pre-packaged with a supported and recommended version of redumper therefore, this must be present on the system. Generally this follows redumper git upstream builds.
 
 provides=('redumper')
-_redumperver=b766
+_redumperver=b769
 
 conflicts=(
     "redumper-gui-bin"
@@ -33,8 +33,8 @@ source=(
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/README.md"
 )
 
-sha256sums=('05fb27caa2714ed2bc4fa3da2278997f0e8740f4e1d07cf0fa4b83d0e57440fd'
-'db3be33dbe7015d020875942fa780dbeb8524c15b8428b3c6b1e28f104428fa2'
+sha256sums=('dd74f4db58e76df67cb4352b63bfde25834906f523ef12b045dc90aa02b2e270'
+'801eb7f0c78e47ce6522e2f0ead6e0f688edff733e1dbf4975f422c3bc2b470e'
 'SKIP'
 'SKIP')
 
