@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=context-bin
-pkgver=20261010.0
+pkgver=20261028.0
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for deterministic repository context (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=('context.bash' 'context.fish' '_context' 'LICENSE')
 source_x86_64=("context-${pkgver}-linux-${CARCH}.tar.gz::$url/releases/download/${pkgver}/context-${pkgver}-linux-${CARCH}.tar.gz")
 source_aarch64=("context-${pkgver}-linux-${CARCH}.tar.gz::$url/releases/download/${pkgver}/context-${pkgver}-linux-${CARCH}.tar.gz")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=('ee1ae5cae2543dcdfe9bfeb1f9b16e7077d0cb69ff1b3103097a09d4a803eb9a')
-sha256sums_aarch64=('6298ee40c52123e8e89ea3a7aa39c07ff1325f2d89c1bbd941edc7f50402bc8d')
+sha256sums_x86_64=('e039874fe39fcc0175b2f97ee4e0108d350dfccaa3e5e341582298f85ae1a2e6')
+sha256sums_aarch64=('b35120209cc0620aaa1df8dc948d4123143869b42c68cbcb0f216dc068d370ee')
 
 package() {
   install -Dm755 context "$pkgdir/usr/bin/context"
