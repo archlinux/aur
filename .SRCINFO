@@ -1,6 +1,6 @@
 pkgbase = vector-view
 	pkgdesc = Vector View: GTK4 viewer for images, videos (mpv), PDFs and office documents
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/Not-Bad-Company/vector
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = vector-view
 	optdepends = libjxl: JPEG XL images
 	optdepends = librsvg: SVG images
 	options = !lto
-	source = vector-0.3.2.tar.gz::https://github.com/Not-Bad-Company/vector/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 806d851ea1b493f674d906f2b7dc7eb2edf18fd16df14626997dc312deed6a8a
+	source = vector-0.3.3.tar.gz::https://github.com/Not-Bad-Company/vector/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 201ce7228e3095c759ffe303bf98a71afcebe8c34d63dce2024903aa99ffa1cb
 
 pkgname = vector-view

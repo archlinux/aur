@@ -1,6 +1,6 @@
 # Maintainer: Daan Hessen <daanhessen@notbadcompany.com>
 pkgname=vector-view
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Vector View: GTK4 viewer for images, videos (mpv), PDFs and office documents'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ optdepends=(
 )
 options=('!lto')
 source=("vector-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('806d851ea1b493f674d906f2b7dc7eb2edf18fd16df14626997dc312deed6a8a')
+sha256sums=('201ce7228e3095c759ffe303bf98a71afcebe8c34d63dce2024903aa99ffa1cb')
 
 prepare() {
   cd "vector-$pkgver"
