@@ -1,6 +1,4 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgbase=gtk4-phoenix
 pkgname=(
@@ -11,7 +9,7 @@ pkgname=(
 )
 _commit=8ac3c6c16a3382f9039262b981d3421fe3b793cd
 pkgver=4.25.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A fork of gtk with support for per-monitor fractional scaling on X11"
 url="https://www.gtk.org/"
