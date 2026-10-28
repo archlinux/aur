@@ -4,8 +4,8 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=fluxer-bin
-# Upstream versions are date-based: this is the build of 2026-09-20 at
-# 04:13:03 UTC. They sort above the 0.0.x scheme the package used before.
+# Upstream versions are date-based (see pkg.sh). They sort above the 0.0.x
+# scheme the package used before.
 pkgver=2026.1026.24218
 pkgrel=1
 pkgdesc="Fluxer Desktop Application"
