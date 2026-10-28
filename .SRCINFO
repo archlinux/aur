@@ -1,0 +1,36 @@
+pkgbase = python-lightgbm-cpu-only
+	pkgdesc = LightGBM Python bindings with CPU/OpenMP support, without GPU or CUDA
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = https://github.com/lightgbm-org/LightGBM
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-scikit-build-core
+	makedepends = binutils
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-narwhals
+	depends = gcc-libs
+	depends = glibc
+	optdepends = python-scikit-learn: scikit-learn estimator interface
+	optdepends = python-pandas: pandas DataFrame support
+	optdepends = python-matplotlib: plotting utilities
+	optdepends = python-graphviz: tree visualization
+	optdepends = python-dask: distributed data interfaces
+	optdepends = python-distributed: Dask distributed execution
+	optdepends = python-joblib: optional parallelism helpers
+	optdepends = python-psutil: optional system resource queries
+	provides = python-lightgbm=4.7.0
+	conflicts = python-lightgbm
+	conflicts = python-lightgbm-cl
+	conflicts = python-lightgbm-cuda
+	conflicts = python-lightgbm-nacci
+	source = https://files.pythonhosted.org/packages/source/l/lightgbm/lightgbm-4.7.0.tar.gz
+	sha256sums = f8e20f682c9aabd000bcf4a7ed8aa6f473c1adfecccae34ec24e823d156f4af0
+
+pkgname = python-lightgbm-cpu-only
