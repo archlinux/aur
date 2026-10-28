@@ -1,6 +1,6 @@
 pkgbase = music-tui-bin
 	pkgdesc = Terminal music player backed by MPD, with covers, synced lyrics and a visualizer.
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/WindustH/music-tui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = music-tui-bin
 	conflicts = music-tui-stable
 	conflicts = music-tui-git
 	options = !strip
-	source = music-tui-0.1.12-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/music-tui/releases/download/v0.1.12/music-tui-0.1.12-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = e1b8ca0bbd6b959793ce3f44d79619cf2f102e36d58ba5f2b4e5a4e68e203af5
+	source = music-tui-0.1.13-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/music-tui/releases/download/v0.1.13/music-tui-0.1.13-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ceaecf24b1e39de9e96bb05c978bbe49d8db559dd111f6b77f91ae44100c7266
 
 pkgname = music-tui-bin

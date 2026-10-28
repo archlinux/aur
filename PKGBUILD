@@ -2,7 +2,7 @@
 
 pkgname=music-tui-bin
 _pkgname=music-tui
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Terminal music player backed by MPD, with covers, synced lyrics and a visualizer."
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=('mpd' 'chafa' 'sqlite')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-stable" "$_pkgname-git")
 options=('!strip')
-source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('e1b8ca0bbd6b959793ce3f44d79619cf2f102e36d58ba5f2b4e5a4e68e203af5')
+source=("$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu.tar.gz")
+sha256sums=('ceaecf24b1e39de9e96bb05c978bbe49d8db559dd111f6b77f91ae44100c7266')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
+  cd "$srcdir/$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu"
 
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
