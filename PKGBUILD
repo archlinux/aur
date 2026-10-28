@@ -1,5 +1,5 @@
 pkgname=bricscad-fr_fr
-pkgver=26.2.08
+pkgver=27.1.05
 pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=(python-requests python-progressbar python-typing_extensions)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=10284
+_version=10397
 
 ### Check rpm dependencies
 #sudo pacman -S rpm-tools
@@ -31,11 +31,9 @@ package() {
     cp -dr --no-preserve=ownership ./var "${pkgdir}"/
     # Allow creation of licence file for anyone
     chmod -R 757 "${pkgdir}"/var/bricsys
-    # libxml2 symlink
-    ln -s /usr/lib/libxml2.so "${pkgdir}"/opt/bricsys/bricscad/v26/libxml2.so.2
     # Clean src for future build, prevent leftover file from previous versions
     rm -rf "${srcdir}"
 }
 
 md5sums=('b4348f91eb39c9a58ebec2c1967a3138'
-         '70477e41d0ffe7bf2b10e74ca390c9cb')
+         'e22ef5caa5cdf6aad38fd4bf536b1a99')
