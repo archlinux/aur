@@ -3,11 +3,11 @@
 
 _pkgbase=vosulay
 pkgname=${_pkgbase}-bin
-pkgver=1.2.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='In-game overlay for vosu and tosu-compatible counters (binary release)'
 arch=('x86_64')
-url='https://github.com/shiruviaa/vosulay'
+url='https://github.com/18-lab-dev/vosulay'
 license=('MIT' 'BSD-3-Clause' 'CC-BY-4.0')
 depends=(
     'alsa-lib'
@@ -38,8 +38,8 @@ provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 options=('!strip' '!debug')
 _pkgfile="${_pkgbase}-${pkgver}-1-${CARCH}.pkg.tar.zst"
-source=("${_pkgfile}::https://github.com/shiruviaa/vosulay/releases/download/v${pkgver}/${_pkgfile}")
-sha256sums=('1f0680adbc92c37e2641ce86df2fd444b85b550c361d40b3bd14fdbd69cac4e6')
+source=("${_pkgfile}::${url}/releases/download/v${pkgver}/${_pkgfile}")
+sha256sums=('79f562834ebe1b43de696dff3072984fc800974bda6c705e26056dc106ccc29a')
 
 package() {
     bsdtar -xf "${srcdir}/${_pkgfile}" \

@@ -1,8 +1,8 @@
 pkgbase = vosulay-bin
 	pkgdesc = In-game overlay for vosu and tosu-compatible counters (binary release)
-	pkgver = 1.2.1
+	pkgver = 1.5.2
 	pkgrel = 1
-	url = https://github.com/shiruviaa/vosulay
+	url = https://github.com/18-lab-dev/vosulay
 	arch = x86_64
 	license = MIT
 	license = BSD-3-Clause
@@ -34,7 +34,7 @@ pkgbase = vosulay-bin
 	conflicts = vosulay
 	options = !strip
 	options = !debug
-	source = vosulay-1.2.1-1-x86_64.pkg.tar.zst::https://github.com/shiruviaa/vosulay/releases/download/v1.2.1/vosulay-1.2.1-1-x86_64.pkg.tar.zst
-	sha256sums = 1f0680adbc92c37e2641ce86df2fd444b85b550c361d40b3bd14fdbd69cac4e6
+	source = vosulay-1.5.2-1-x86_64.pkg.tar.zst::https://github.com/18-lab-dev/vosulay/releases/download/v1.5.2/vosulay-1.5.2-1-x86_64.pkg.tar.zst
+	sha256sums = 79f562834ebe1b43de696dff3072984fc800974bda6c705e26056dc106ccc29a
 
 pkgname = vosulay-bin
