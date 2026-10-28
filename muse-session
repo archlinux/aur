@@ -54,6 +54,19 @@ def check_lock(session_dir):
         pass
     return False, None
 
+BOOKMARK_FILENAME = ".session.bookmark"
+
+def is_bookmarked(session_dir):
+    return os.path.exists(os.path.join(session_dir, BOOKMARK_FILENAME))
+
+def set_bookmark(session_dir, on=True):
+    p = os.path.join(session_dir, BOOKMARK_FILENAME)
+    if on:
+        with open(p, "w", encoding="utf-8") as f:
+            f.write("bookmarked\n")
+    elif os.path.exists(p):
+        os.remove(p)
+
 def get_session_info(session_dir):
     uuid = os.path.basename(session_dir)
     jsonl_path = os.path.join(session_dir, "session.jsonl")
@@ -126,6 +139,7 @@ def get_session_info(session_dir):
         "workspace": workspace,
         "prompt": first_prompt or "(no prompt)",
         "custom_title": custom_title,
+        "bookmarked": is_bookmarked(session_dir),
         "created_at": created_at,
         "size_bytes": total_bytes,
         "is_locked": is_locked,
@@ -145,6 +159,106 @@ def find_all_sessions():
             session_dirs.append(p)
     return [get_session_info(d) for d in session_dirs]
 
+# ---------------------------------------------------------------------------
+# Full-text search over session event logs (results cached per directory mtime)
+# ---------------------------------------------------------------------------
+
+TEXT_FIELD_NAMES = {"text", "command", "output", "prompt", "description", "title"}
+MAX_CHUNK_CHARS = 2000
+
+_text_cache = {}
+
+def iter_record_texts(obj, depth=0):
+    """Yield human-readable strings from a parsed jsonl record."""
+    if depth > 8:
+        return
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k in TEXT_FIELD_NAMES and isinstance(v, str) and v.strip():
+                yield v[:MAX_CHUNK_CHARS]
+            elif isinstance(v, (dict, list)):
+                yield from iter_record_texts(v, depth + 1)
+    elif isinstance(obj, list):
+        for v in obj:
+            if isinstance(v, (dict, list)):
+                yield from iter_record_texts(v, depth + 1)
+
+def iter_session_texts(session_dir):
+    """Yield text chunks from a session's logs (main + subagent runs)."""
+    try:
+        mtime = os.path.getmtime(os.path.join(session_dir, "session.jsonl"))
+    except OSError:
+        mtime = 0
+    key = (session_dir, mtime)
+    if key in _text_cache:
+        yield from _text_cache[key]
+        return
+    chunks = []
+    paths = [os.path.join(session_dir, "session.jsonl")]
+    paths += glob.glob(os.path.join(session_dir, "subagent", "*", "session.jsonl"))
+    for p in paths:
+        try:
+            with open(p, "r", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        rec = json.loads(line)
+                    except Exception:
+                        continue
+                    chunks.extend(iter_record_texts(rec))
+        except OSError:
+            pass
+    _text_cache[key] = chunks
+    yield from chunks
+
+def search_sessions(query, sessions=None):
+    """Case-insensitive full-text search. Returns [{session, matches, snippet}]."""
+    q = query.lower()
+    out = []
+    for s in (sessions if sessions is not None else find_all_sessions()):
+        hits = 0
+        snippet = None
+        for chunk in iter_session_texts(s["path"]):
+            low = chunk.lower()
+            if q in low:
+                hits += low.count(q)
+                if snippet is None:
+                    idx = low.find(q)
+                    start = max(0, idx - 60)
+                    snippet = chunk[start:start + 160].replace("\n", " ").strip()
+        for field in (s["prompt"], s["custom_title"] or "", s["workspace"], s["uuid"]):
+            if q in field.lower():
+                hits += 1
+                if snippet is None:
+                    snippet = field.replace("\n", " ")[:160]
+        if hits:
+            out.append({"session": s, "matches": hits, "snippet": snippet or ""})
+    out.sort(key=lambda r: r["matches"], reverse=True)
+    return out
+
+def resolve_session(sessions, target):
+    """Single session by UUID prefix, or None (errors already printed)."""
+    t = target.lower()
+    matches = [s for s in sessions if s["uuid"].lower().startswith(t)]
+    if not matches:
+        print(red(f"Error: No session matching '{target}' found."), file=sys.stderr)
+        return None
+    if len(matches) > 1:
+        print(red(f"Error: Ambiguous session ID '{target}'. Matches:"), file=sys.stderr)
+        for m in matches:
+            print(f"  {m['uuid']}", file=sys.stderr)
+        return None
+    return matches[0]
+
+def parse_iso_date(val, name):
+    try:
+        return datetime.strptime(val, "%Y-%m-%d").date()
+    except ValueError:
+        print(red(f"Error: Invalid --{name} date '{val}' (want YYYY-MM-DD)."), file=sys.stderr)
+        sys.exit(2)
+
 def format_size(bytes_val):
     if bytes_val < 1024:
         return f"{bytes_val} B"
@@ -159,10 +273,11 @@ def session_visual_lines(s, width):
     dt_str = s["created_at"].strftime("%Y-%m-%d %H:%M")
     sz_str = format_size(s["size_bytes"])
     prompt_clean = s["prompt"].replace("\n", " ").strip()
+    mark = "[★] " if s.get("bookmarked") else ""
     if s["custom_title"]:
-        head = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | [tag] {s['custom_title']} ({s['workspace']})"
+        head = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | {mark}[tag] {s['custom_title']} ({s['workspace']})"
     else:
-        head = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | {s['workspace']}"
+        head = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | {mark}{s['workspace']}"
     lines = [head[:width - 1]]
     if prompt_clean:
         wrapped = textwrap.wrap(prompt_clean, width=max(10, width - 7),
@@ -181,6 +296,20 @@ def cmd_list(args):
     elif args.cwd:
         cwd = os.path.abspath(os.getcwd())
         sessions = [s for s in sessions if os.path.abspath(s["workspace"]) == cwd]
+
+    if args.bookmarked:
+        sessions = [s for s in sessions if s.get("bookmarked")]
+
+    if args.after:
+        cutoff = parse_iso_date(args.after, "after")
+        sessions = [s for s in sessions if s["created_at"].date() >= cutoff]
+    if args.before:
+        cutoff = parse_iso_date(args.before, "before")
+        sessions = [s for s in sessions if s["created_at"].date() <= cutoff]
+
+    if args.search:
+        q = args.search.lower()
+        sessions = [r["session"] for r in search_sessions(args.search, sessions)]
 
     if args.last:
         sessions = sessions[:1]
@@ -202,6 +331,8 @@ def cmd_list(args):
     for s in sessions:
         dt_str = dim(s["created_at"].strftime("%Y-%m-%d %H:%M"))
         uuid_str = cyan(s["uuid"])
+        if s.get("bookmarked"):
+            uuid_str += yellow(" [★]")
         if s["is_locked"]:
             uuid_str += yellow(f" [LOCKED:PID {s['lock_pid']}]")
         size_str = green(format_size(s["size_bytes"]))
@@ -238,6 +369,8 @@ def cmd_info(args):
     print(f"{bold('Session UUID:')}    {cyan(s['uuid'])}")
     if s["custom_title"]:
         print(f"{bold('Custom Title:')}    {yellow(s['custom_title'])}")
+    if s.get("bookmarked"):
+        print(f"{bold('Bookmarked:')}      {yellow('yes [★]')}")
     print(f"{bold('Created/Active:')}  {s['created_at'].strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{bold('Workspace:')}       {s['workspace']}")
     print(f"{bold('Model ID:')}        {s['model_id']}")
@@ -278,6 +411,43 @@ def cmd_rename(args):
         f.write(new_title + "\n")
 
     print(green(f"Renamed session {cyan(s['uuid'])} to: {yellow(new_title)}"))
+
+def cmd_search(args):
+    sessions = find_all_sessions()
+    if args.workspace:
+        ws_target = os.path.abspath(args.workspace)
+        sessions = [s for s in sessions if os.path.abspath(s["workspace"]) == ws_target]
+    elif args.cwd:
+        cwd = os.path.abspath(os.getcwd())
+        sessions = [s for s in sessions if os.path.abspath(s["workspace"]) == cwd]
+
+    results = search_sessions(args.query, sessions)
+    if not results:
+        if not args.quiet:
+            print(f"No sessions matching '{args.query}'.")
+        return
+    if args.quiet:
+        for r in results:
+            print(r["session"]["uuid"])
+        return
+    print(f"{bold('MATCHES'):<9} {bold('DATE & TIME'):<17} {bold('SESSION UUID')}  {bold('SNIPPET')}")
+    print(dim("-" * 96))
+    for r in results:
+        s = r["session"]
+        mark = yellow(" [★]") if s.get("bookmarked") else ""
+        print(f"{green(str(r['matches'])):<9} {dim(s['created_at'].strftime('%Y-%m-%d %H:%M')):<17} {cyan(s['uuid'][:13])}{mark}")
+        print(f"{'':<9} {dim('└─▶')} {r['snippet'][:80]}")
+    print(dim("-" * 96))
+    print(f"Total: {bold(str(len(results)))} matching session(s).")
+
+def cmd_bookmark(args, on):
+    sessions = find_all_sessions()
+    s = resolve_session(sessions, args.session_id)
+    if s is None:
+        sys.exit(1)
+    set_bookmark(s["path"], on)
+    verb = "Bookmarked" if on else "Removed bookmark from"
+    print(green(f"{verb} session {cyan(s['uuid'])}."))
 
 def parse_older_than(val):
     m = re.match(r"^(\d+)([dwmy]?)$", val.lower())
@@ -458,6 +628,9 @@ def show_help_modal(stdscr):
         ("HOTKEY ACTIONS", ""),
         ("  Enter           ", "Resume highlighted session immediately (muse resume <UUID>)"),
         ("  F2 / r          ", "Rename session (stores custom label in .session.title)"),
+        ("  /               ", "Full-text search session logs (empty query clears filter)"),
+        ("  b               ", "Bookmark / unbookmark highlighted session (.session.bookmark)"),
+        ("  B               ", "Toggle bookmarked-only filter"),
         ("  F4 / d / Del    ", "Delete session permanently (prompts for confirmation [y/N])"),
         ("  i               ", "Inspect full metadata, prompt, model, and disk path"),
         ("  w               ", "Toggle workspace filter (All Workspaces vs Current Working Directory)"),
@@ -541,6 +714,9 @@ def run_curses_tui(stdscr):
         curses.init_pair(5, curses.COLOR_RED, -1)                    # Warning / Errors
 
     cwd_filter = False
+    bookmarked_only = False
+    search_query = None
+    search_uuids = None  # uuid set for search_query, computed on entry
     status_msg = ""
     status_color = 0
 
@@ -558,18 +734,28 @@ def run_curses_tui(stdscr):
         if cwd_filter:
             sessions = [s for s in all_sessions if os.path.abspath(s["workspace"]) == cwd_path]
         else:
-            sessions = all_sessions
+            sessions = list(all_sessions)
+        if bookmarked_only:
+            sessions = [s for s in sessions if s["bookmarked"]]
+        if search_uuids is not None:
+            sessions = [s for s in sessions if s["uuid"] in search_uuids]
 
         h, w = stdscr.getmaxyx()
         stdscr.erase()
 
         # Header
-        filter_text = f"[Filter: Current Workspace ({cwd_path})]" if cwd_filter else "[Filter: All Workspaces]"
+        filters = []
+        filters.append(f"Workspace: {'CWD' if cwd_filter else 'All'}")
+        if bookmarked_only:
+            filters.append("Bookmarked only")
+        if search_query:
+            filters.append(f"Search: '{search_query}'")
+        filter_text = "[Filter: " + " | ".join(filters) + "]"
         header = f" Muse Code Session Manager — {len(sessions)} session(s) {filter_text}"
         stdscr.addstr(0, 0, header[:w-1].ljust(w-1), curses.A_BOLD | curses.color_pair(1))
 
         # Footer
-        footer = " [Enter] Resume  [F2/r] Rename  [F4/d] Delete  [i] Info  [w] Filter  [?] Help  [q] Quit "
+        footer = " [Enter] Resume [F2/r] Rename [F4/d] Del [i] Info [w] Filter [b] Mark [B] ★Only [/] Search [?] Help [q] Quit "
         stdscr.addstr(h - 1, 0, footer[:w-1].ljust(w-1), curses.A_REVERSE)
 
         # Status Message if any
@@ -586,6 +772,17 @@ def run_curses_tui(stdscr):
                 break
             elif key in (ord('w'), ord('W')):
                 cwd_filter = not cwd_filter
+            elif key in (ord('B'),):
+                bookmarked_only = not bookmarked_only
+            elif key == ord('/'):
+                search_query = curses_readline(stdscr, h - 2, 0, "Search sessions (empty clears): ", max_len=80)
+                if search_query:
+                    stdscr.addstr(h - 2, 0, " Scanning session logs...".ljust(w - 1), curses.A_DIM)
+                    stdscr.refresh()
+                    search_uuids = {r["session"]["uuid"] for r in search_sessions(search_query, all_sessions)}
+                else:
+                    search_query = None
+                    search_uuids = None
             elif key in (ord('?'), ord('h'), ord('H'), curses.KEY_F1):
                 show_help_modal(stdscr)
             continue
@@ -669,6 +866,35 @@ def run_curses_tui(stdscr):
             cwd_filter = not cwd_filter
             selected_idx = 0
             top_idx = 0
+
+        # Bookmarked-only toggle
+        elif key in (ord('B'),):
+            bookmarked_only = not bookmarked_only
+            selected_idx = 0
+            top_idx = 0
+
+        # Full-text search (empty query clears)
+        elif key == ord('/'):
+            q = curses_readline(stdscr, h - 2, 0, "Search sessions (empty clears): ", max_len=80)
+            if q:
+                stdscr.addstr(h - 2, 0, " Scanning session logs...".ljust(w - 1), curses.A_DIM)
+                stdscr.refresh()
+                search_uuids = {r["session"]["uuid"] for r in search_sessions(q, all_sessions)}
+                search_query = q
+            else:
+                search_query = None
+                search_uuids = None
+            selected_idx = 0
+            top_idx = 0
+
+        # Bookmark toggle on selected session
+        elif key in (ord('b'),):
+            if sessions:
+                s = sessions[selected_idx]
+                set_bookmark(s["path"], not s["bookmarked"])
+                s["bookmarked"] = not s["bookmarked"]
+                status_msg = ("Bookmarked " if s["bookmarked"] else "Unmarked ") + s["uuid"][:8]
+                status_color = curses.color_pair(4)
 
         # Info
         elif key in (ord('i'), ord('I')):
@@ -762,6 +988,7 @@ def print_exhaustive_help():
   Directory Contents per Session:
     • {bold("session.jsonl")}               Verbatim JSON Lines event log of all turns
     • {bold(".session.title")}              Custom name/label set via rename
+    • {bold(".session.bookmark")}            Presence flag set via bookmark (starred sessions)
     • {bold(".session.lock")}               Liveness lock containing PID of running agent
     • {bold(".msp-view-v1/")}               Cache folder used by Muse for fast TUI resumes
     • {bold("approval-review/")}            Recorded security/tool approval reviews
@@ -777,11 +1004,12 @@ def print_exhaustive_help():
     {yellow("Home / End")}          Jump to first / last session
     {yellow("Enter")}               {bold("Resume")} highlighted session ({dim("muse resume <UUID>")})
     {yellow("F2 / r")}              {bold("Rename")} session (set custom title tag)
+    {yellow("/")}                   {bold("Search")} full text of session logs (empty query clears)
+    {yellow("b")}                   {bold("Bookmark")} toggle on highlighted session ([★] marker)
+    {yellow("B")}                   {bold("Filter")} toggle: bookmarked sessions only
     {yellow("F4 / d / Del")}        {bold("Delete")} session (prompts for confirmation [y/N])
     {yellow("i")}                   {bold("Inspect")} full metadata in modal dialog
     {yellow("w")}                   {bold("Filter")} toggle: All Workspaces vs Current Working Dir
-    {yellow("? / h / F1")}          Open interactive {bold("Help")} reference
-    {yellow("q / Esc")}             {bold("Quit")} back to your terminal shell
 
 {bold("CLI SUBCOMMANDS & EXAMPLES")}
 
@@ -793,6 +1021,10 @@ def print_exhaustive_help():
      $ {green("muse sessions list")}                    List all sessions with size & prompt
      $ {green("muse sessions list --cwd")}              Filter to current directory workspace
      $ {green("muse sessions list -w /path/to/repo")}   Filter to specific workspace
+     $ {green("muse sessions list --search 'auth bug'")} Full-text search prompts, tool calls, outputs
+     $ {green("muse sessions list --bookmarked")}       Show only bookmarked sessions
+     $ {green("muse sessions list --after 2026-09-01 --before 2026-10-01")}
+                                                       Date range filter (YYYY-MM-DD)
      $ {green("muse sessions list --last")}             Show only the most recent session
      $ {green("muse sessions list -q")}                 Print only session UUIDs (script-friendly)
 
@@ -803,7 +1035,16 @@ def print_exhaustive_help():
   {bold("4. Inspect Session Metadata:")}
      $ {green("muse sessions info <UUID>")}             Show full path, model, size, lock PID
 
-  {bold("5. Delete Sessions:")}
+  {bold("5. Search Session Logs:")}
+     $ {green("muse sessions search 'mcp handshake'")}  Full-text search with match counts + snippets
+     $ {green("muse sessions search 'panic' --cwd")}    Search within current workspace only
+     $ {green("muse sessions search 'x' -q")}           Print only matching session UUIDs
+
+  {bold("6. Bookmark Sessions:")}
+     $ {green("muse sessions bookmark <UUID>")}         Star a session (persists as .session.bookmark)
+     $ {green("muse sessions unbookmark <UUID>")}       Remove the star
+
+  {bold("7. Delete Sessions:")}
      $ {green("muse sessions delete <UUID>")}           Delete a session by UUID or prefix
      $ {green("muse sessions delete --last")}           Delete the most recent session
      $ {green("muse sessions delete --cwd")}            Delete all sessions for current workspace
@@ -843,6 +1084,10 @@ def main():
     p_list = subparsers.add_parser("list", aliases=["ls"], help="List stored sessions")
     p_list.add_argument("--cwd", action="store_true", help="Filter by current working directory workspace")
     p_list.add_argument("-w", "--workspace", help="Filter by workspace path")
+    p_list.add_argument("--search", metavar="QUERY", help="Full-text search session logs")
+    p_list.add_argument("--bookmarked", action="store_true", help="Show only bookmarked sessions")
+    p_list.add_argument("--after", metavar="YYYY-MM-DD", help="Only sessions on/after this date")
+    p_list.add_argument("--before", metavar="YYYY-MM-DD", help="Only sessions on/before this date")
     p_list.add_argument("--last", action="store_true", help="Show only the most recent session")
     p_list.add_argument("-q", "--quiet", action="store_true", help="Only output session UUIDs")
 
@@ -872,6 +1117,19 @@ def main():
     # help subcommand
     p_help = subparsers.add_parser("help", aliases=["manual"], help="Show comprehensive manual and documentation")
 
+    # search
+    p_search = subparsers.add_parser("search", help="Full-text search session logs")
+    p_search.add_argument("query", help="Case-insensitive substring to find in prompts, tool calls, outputs")
+    p_search.add_argument("--cwd", action="store_true", help="Search current working directory workspace only")
+    p_search.add_argument("-w", "--workspace", help="Search a specific workspace only")
+    p_search.add_argument("-q", "--quiet", action="store_true", help="Only output matching session UUIDs")
+
+    # bookmark / unbookmark
+    p_bm = subparsers.add_parser("bookmark", help="Star a session for quick filtering")
+    p_bm.add_argument("session_id", help="Session UUID or prefix")
+    p_ubm = subparsers.add_parser("unbookmark", help="Remove a session's star")
+    p_ubm.add_argument("session_id", help="Session UUID or prefix")
+
     args = parser.parse_args()
 
     if not args.command:
@@ -883,6 +1141,10 @@ def main():
             args.workspace = None
             args.last = False
             args.quiet = False
+            args.search = None
+            args.bookmarked = False
+            args.after = None
+            args.before = None
             cmd_list(args)
     elif args.command in ("help", "manual"):
         print_exhaustive_help()
@@ -896,6 +1158,12 @@ def main():
         cmd_rename(args)
     elif args.command in ("delete", "rm"):
         cmd_delete(args)
+    elif args.command == "search":
+        cmd_search(args)
+    elif args.command == "bookmark":
+        cmd_bookmark(args, True)
+    elif args.command == "unbookmark":
+        cmd_bookmark(args, False)
 
 if __name__ == "__main__":
     main()

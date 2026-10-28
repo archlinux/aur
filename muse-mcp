@@ -4,11 +4,12 @@ muse-mcp: configure Muse Code MCP servers and import them from other agents.
 
 Reads MCP server definitions from opencode, Codex CLI, Claude Code and
 Antigravity (agy) configs and merges them into ~/.config/muse/settings.json
-under the canonical `mcpServers` key. Other settings.json keys are left
-untouched. A legacy `mcp_servers` key is merged into `mcpServers` on the
-next write: carrying both keys makes the native loader drop every MCP
-server ("MCP configuration error ... MCP is disabled"), so this tool never
-leaves both behind and never stores the same name twice.
+under the canonical `mcp_servers` key (per the official Muse Code docs).
+Other settings.json keys are left untouched. A camelCase `mcpServers` alias
+is honored on read and merged into `mcp_servers` on the next write:
+carrying both keys makes the native loader drop every MCP server, so this
+tool never leaves both behind and never stores the same name twice. Every
+write also ensures `"schema_version": 1`, which the native loader requires.
 
 Integrated with the muse wrapper: `muse mcp ...` dispatches here.
 """
@@ -19,8 +20,12 @@ import json
 import os
 import shlex
 import shutil
+import subprocess
 import sys
 import tempfile
+import threading
+import time
+import urllib.request
 
 try:
     import tomllib
@@ -74,6 +79,11 @@ def load_settings():
 
 
 def save_settings(data):
+    # The native loader rejects settings.json without "schema_version": 1,
+    # so every write path goes through here and fills it in when missing.
+    # An explicitly set (non-1) value is left alone to fail loudly natively
+    # rather than being silently rewritten.
+    data.setdefault("schema_version", 1)
     d = os.path.dirname(MUSE_SETTINGS)
     if d:
         os.makedirs(d, exist_ok=True)
@@ -95,12 +105,13 @@ def save_settings(data):
         raise
 
 
-# Native settings use the camelCase key. A legacy snake_case key is still
-# honored on read, but both keys at once makes the native loader drop the
-# whole MCP member, so every write path migrates legacy entries into the
-# canonical key first and re-imports stay idempotent.
-CANONICAL_KEY = "mcpServers"
-LEGACY_KEY = "mcp_servers"
+# The official docs declare the snake_case key. The camelCase alias is what
+# older Muse Code releases wrote, and the native loader still honors each
+# key on its own — but both keys at once makes it drop the whole MCP
+# member, so every write path migrates alias entries into the canonical key
+# first and re-imports stay idempotent.
+CANONICAL_KEY = "mcp_servers"
+LEGACY_KEY = "mcpServers"
 
 
 def server_maps(data):
@@ -162,7 +173,7 @@ def migrate_legacy_key(settings):
 
 
 def to_muse_entry(srv):
-    """Convert a normalized server dict to a muse mcpServers entry."""
+    """Convert a normalized server dict to a muse mcp_servers entry."""
     entry = {
         "transport": "stdio" if srv["transport"] == "stdio" else "streamable_http",
         "enabled": srv["enabled"],
@@ -606,6 +617,140 @@ def cmd_remove(args):
     print(f"{green('removed')} {args.name}")
     return 0
 
+INIT_REQ = {
+    "jsonrpc": "2.0",
+    "id": "muse-mcp-check",
+    "method": "initialize",
+    "params": {
+        "protocolVersion": "2024-11-05",
+        "capabilities": {},
+        "clientInfo": {"name": "muse-mcp-check", "version": "1"},
+    },
+}
+
+def _readline_timeout(stream, timeout):
+    """Read one line or return None on timeout/error."""
+    out = []
+    def _t():
+        try:
+            out.append(stream.readline())
+        except Exception as e:  # noqa: BLE001 - report as failure
+            out.append(e)
+    th = threading.Thread(target=_t, daemon=True)
+    th.start()
+    th.join(timeout)
+    if not out:
+        return None
+    return out[0] if not isinstance(out[0], Exception) else out[0]
+
+def check_stdio(entry, timeout):
+    """Spawn the server, send MCP initialize, expect a JSON-RPC reply."""
+    cmd = [entry.get("command")] + list(entry.get("args", []))
+    if not cmd[0]:
+        return False, "no command configured", 0
+    env = dict(os.environ)
+    env.update(entry.get("env", {}) or {})
+    start = time.monotonic()
+    try:
+        proc = subprocess.Popen(
+            cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL, env=env, text=True,
+        )
+    except (OSError, FileNotFoundError) as e:
+        return False, f"spawn failed: {e}", 0
+    try:
+        try:
+            proc.stdin.write(json.dumps(INIT_REQ) + "\n")
+            proc.stdin.flush()
+        except (BrokenPipeError, OSError) as e:
+            return False, f"stdin write failed: {e}", 0
+        raw = _readline_timeout(proc.stdout, timeout)
+        elapsed_ms = int((time.monotonic() - start) * 1000)
+        if raw is None:
+            return False, f"no reply within {timeout}s", elapsed_ms
+        try:
+            resp = json.loads(raw) if isinstance(raw, str) else {}
+        except json.JSONDecodeError:
+            return False, "non-JSON reply", elapsed_ms
+        if isinstance(resp, dict) and ("result" in resp or "error" in resp):
+            return True, "ok", elapsed_ms
+        return False, "unexpected reply shape", elapsed_ms
+    finally:
+        try:
+            proc.kill()
+        except OSError:
+            pass
+        proc.wait()
+
+def check_remote(entry, timeout):
+    """POST MCP initialize to the streamable-HTTP endpoint."""
+    url = entry.get("url")
+    if not url:
+        return False, "no url configured", 0
+    body = json.dumps(INIT_REQ).encode("utf-8")
+    headers = {"Content-Type": "application/json",
+               "Accept": "application/json, text/event-stream"}
+    for k, v in (entry.get("headers", {}) or {}).items():
+        headers[k] = v
+    start = time.monotonic()
+    try:
+        req = urllib.request.Request(url, data=body, headers=headers, method="POST")
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            status = resp.status
+            payload = resp.read(65536).decode("utf-8", errors="replace")
+    except Exception as e:  # noqa: BLE001 - any failure is a failed check
+        return False, f"{type(e).__name__}: {e}", int((time.monotonic() - start) * 1000)
+    elapsed_ms = int((time.monotonic() - start) * 1000)
+    if '"result"' in payload or '"error"' in payload or "jsonrpc" in payload:
+        return True, "ok", elapsed_ms
+    return False, f"HTTP {status} without JSON-RPC body", elapsed_ms
+
+def cmd_check(args):
+    """Handshake every configured server; exit non-zero on any failure."""
+    settings = load_settings()
+    servers = muse_servers(settings)
+    if args.names:
+        unknown = [n for n in args.names if n not in servers]
+        if unknown:
+            die(f"unknown server(s): {', '.join(unknown)}")
+        names = [n for n in args.names if n in servers]
+    else:
+        names = sorted(servers)
+    if not names:
+        print("No MCP servers configured in muse.")
+        return 0
+    results = {}
+    for name in names:
+        e = servers[name]
+        enabled = e.get("enabled", True)
+        if not enabled and not args.all:
+            results[name] = {"ok": None, "detail": "skipped (disabled)",
+                             "latency_ms": 0, "transport": e.get("transport", "?")}
+            continue
+        if e.get("transport", "stdio") == "stdio":
+            ok, detail, ms = check_stdio(e, args.timeout)
+        else:
+            ok, detail, ms = check_remote(e, args.timeout)
+        results[name] = {"ok": ok, "detail": detail, "latency_ms": ms,
+                         "transport": e.get("transport", "?")}
+    if args.json:
+        print(json.dumps(results, indent=2))
+    else:
+        print(f"MCP server health ({len(results)}):")
+        for name in names:
+            r = results[name]
+            if r["ok"] is None:
+                print(f"  {dim('SKIP')} {name}  {dim(r['detail'])}")
+            elif r["ok"]:
+                print(f"  {green('OK')} {name}  {dim(r['transport'] + f' · {r['latency_ms']}ms')}")
+            else:
+                print(f"  {red('FAIL')} {name}  {r['detail']}")
+    failed = [n for n, r in results.items() if r["ok"] is False]
+    if failed:
+        print(f"{red('failed:')} {', '.join(failed)}", file=sys.stderr)
+        return 1
+    return 0
+
 
 def cmd_export(args):
     """Dump muse servers as portable Claude-style {"mcpServers": {...}} JSON."""
@@ -635,7 +780,7 @@ muse-mcp manual
 ===============
 
 Import MCP servers from other coding agents into Muse Code, and manage the
-muse `mcpServers` block in ~/.config/muse/settings.json.
+muse `mcp_servers` block in ~/.config/muse/settings.json.
 
 SOURCES (auto-detected)
   opencode  ~/.config/opencode/opencode.json[c], ./opencode.json[c]
@@ -648,20 +793,27 @@ WORKFLOW
   2. `muse mcp import agy --dry-run`   preview what would be added
   3. `muse mcp import agy`        merge into muse settings.json
   4. `muse mcp list`              verify
+  5. `muse mcp check`             handshake every server (import shows
+                                  what's configured; check shows what works)
 
 NOTES
   * Existing muse servers are never overwritten unless --force is given.
     Re-running an import only adds new names, never duplicates.
-  * Servers live under the canonical `mcpServers` key. A legacy
-    `mcp_servers` key is merged into it on the next write (same name in
-    both keeps the `mcpServers` entry); carrying both keys makes the
-    native loader drop every MCP server, so this tool never leaves
-    both behind.
+  * Servers live under the canonical `mcp_servers` key (official docs).
+    A camelCase `mcpServers` alias is merged into it on the next write
+    (same name in both keeps the `mcp_servers` entry); carrying both keys
+    makes the native loader drop every MCP server, so this tool never
+    leaves both behind.
+  * Every write ensures `"schema_version": 1`, which the native loader
+    requires; other settings.json keys are left untouched.
   * A backup (settings.json.bak) is written before every change.
   * Remote (http/sse) servers import as transport 'streamable_http';
     verify them in muse afterwards — that mapping is best effort.
   * Env values (possibly secrets) are copied verbatim; only the count of
     env vars is shown in listings, never the values.
+  * `check` spawns stdio servers with an MCP initialize handshake and
+    POSTs initialize to remote endpoints; disabled servers are skipped
+    unless --all is given. Exits non-zero if any server fails.
   * MUSE_SETTINGS env var overrides the settings.json path (for testing).
 """
 
@@ -729,6 +881,13 @@ def build_parser():
     s = sub.add_parser("remove", help="remove a muse MCP server")
     s.add_argument("name")
     s.set_defaults(func=cmd_remove)
+
+    s = sub.add_parser("check", help="handshake every server, report health")
+    s.add_argument("names", nargs="*", metavar="NAME", help="only check these servers")
+    s.add_argument("--all", action="store_true", help="include disabled servers")
+    s.add_argument("--timeout", metavar="SEC", type=float, default=15, help="per-server timeout (default: 15)")
+    s.add_argument("--json", action="store_true", help="machine-readable output")
+    s.set_defaults(func=cmd_check)
 
     s = sub.add_parser("export", help="dump muse servers as portable Claude-style JSON")
     s.set_defaults(func=cmd_export)

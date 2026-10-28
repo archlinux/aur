@@ -1,0 +1,268 @@
+#!/usr/bin/env python3
+"""
+muse-stats: token usage and cost dashboard for Muse Code sessions.
+
+Aggregates model_completed token records from session event logs
+(main runs plus subagent runs, attributed to the parent session),
+groups by day (from the date-partitioned store layout) and by model,
+and appends the subscription allowance from `muse usage` (best effort).
+
+Read-only: never writes to the session store or settings.json.
+
+Integrated with the muse wrapper: `muse stats ...` dispatches here.
+"""
+
+import signal
+
+import argparse
+import glob
+import json
+import os
+import subprocess
+import sys
+from collections import defaultdict
+from datetime import date, datetime
+USE_COLOR = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
+
+
+def color(text, code):
+    return f"\033[{code}m{text}\033[0m" if USE_COLOR else text
+
+
+
+
+def bold(text): return color(text, "1")
+def green(text): return color(text, "32")
+def red(text): return color(text, "31")
+def yellow(text): return color(text, "33")
+def dim(text): return color(text, "90")
+
+
+def die(msg, code=1):
+    print(f"{red('error:')} {msg}", file=sys.stderr)
+    sys.exit(code)
+
+
+def get_sessions_dir():
+    xdg_data = os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share")
+    return os.path.join(xdg_data, "muse", "sessions")
+
+
+def fmt_num(n):
+    if n >= 1_000_000:
+        return f"{n / 1_000_000:.2f}M"
+    if n >= 1_000:
+        return f"{n / 1_000:.1f}k"
+    return str(n)
+
+
+def session_dirs():
+    base = get_sessions_dir()
+    if not os.path.exists(base):
+        return []
+    return sorted(
+        p for p in glob.glob(os.path.join(base, "*", "*", "*", "*"))
+        if os.path.isdir(p) and not os.path.basename(p).startswith(".")
+    )
+
+
+def iter_usage_events(session_dir):
+    """Yield (usage_dict, model) from model_completed events.
+
+    Subagent runs are attributed to the parent session.
+    """
+    paths = [os.path.join(session_dir, "session.jsonl")]
+    paths += glob.glob(os.path.join(session_dir, "subagent", "*", "session.jsonl"))
+    for p in paths:
+        try:
+            f = open(p, "r", errors="ignore")
+        except OSError:
+            continue
+        with f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    rec = json.loads(line)
+                except Exception:
+                    continue
+                if not isinstance(rec, dict):
+                    continue
+                payload = rec.get("payload", {})
+                if not isinstance(payload, dict):
+                    continue
+                event = payload.get("event", {})
+                if not isinstance(event, dict):
+                    continue
+                if event.get("kind") != "model_completed":
+                    continue
+                usage = event.get("usage")
+                if not isinstance(usage, dict):
+                    continue
+                yield usage, event.get("model", "unknown")
+
+
+def dir_date(session_dir):
+    """Date from the YYYY/MM/DD store layout; None if unparseable."""
+    parts = session_dir.rstrip(os.sep).split(os.sep)[-4:-1]
+    try:
+        return date(int(parts[0]), int(parts[1]), int(parts[2])).isoformat()
+    except (ValueError, IndexError):
+        return None
+
+
+def collect(since=None):
+    per_day = defaultdict(lambda: defaultdict(int))
+    per_model = defaultdict(lambda: defaultdict(int))
+    per_session = {}
+    total = defaultdict(int)
+    total_steps = 0
+    sessions_seen = 0
+    for d in session_dirs():
+        day = dir_date(d)
+        if day is None:
+            continue
+        if since and day < since:
+            continue
+        uuid = os.path.basename(d)
+        sess = per_session.setdefault(uuid, defaultdict(int))
+        sess["day"] = day
+        sessions_seen += 1
+        for usage, model in iter_usage_events(d):
+            inp = int(usage.get("input_tokens", 0) or 0)
+            out = int(usage.get("output_tokens", 0) or 0)
+            rea = int(usage.get("reasoning_tokens", 0) or 0)
+            for bucket in (per_day[day], per_model[model], sess, total):
+                bucket["input"] += inp
+                bucket["output"] += out
+                bucket["reasoning"] += rea
+                bucket["total"] += inp + out
+            total_steps += 1
+    total["steps"] = total_steps
+    return {
+        "total": dict(total),
+        "sessions_seen": sessions_seen,
+        "by_day": {k: dict(v) for k, v in sorted(per_day.items())},
+        "by_model": {k: dict(v) for k, v in
+                     sorted(per_model.items(), key=lambda kv: kv[1]["total"], reverse=True)},
+        "by_session": {k: dict(v) for k, v in
+                       sorted(per_session.items(), key=lambda kv: kv[1]["total"], reverse=True)},
+    }
+
+
+def get_allowance():
+    """Best-effort subscription allowance via `muse usage --json`."""
+    try:
+        out = subprocess.run(
+            ["muse", "usage", "--json"], capture_output=True, text=True, timeout=30
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if out.returncode != 0:
+        return None
+    try:
+        data = json.loads(out.stdout)
+    except Exception:
+        return None
+    return data.get("allowance")
+
+
+def render_human(data, allowance, top_n=10, show_days=14):
+    t = data["total"]
+    print(f"{bold('Muse usage totals')}")
+    print(f"  sessions with logs:  {t.get('sessions_seen', data['sessions_seen'])}")
+    print(f"  model steps:         {t.get('steps', 0)}")
+    print(f"  input tokens:        {green(fmt_num(t.get('input', 0)))}")
+    print(f"  output tokens:       {green(fmt_num(t.get('output', 0)))}")
+    print(f"  reasoning tokens:    {dim(fmt_num(t.get('reasoning', 0)))}")
+    print(f"  total tokens:        {bold(fmt_num(t.get('total', 0)))}")
+    if allowance:
+        w = allowance.get("weekly", {})
+        win = allowance.get("window", {})
+        print(f"\n{bold('Subscription allowance')} ({allowance.get('tier', '?')})")
+        if win:
+            print(f"  window: {win.get('usedPercent', '?')}% used", end="")
+            if win.get("resetsAtMs"):
+                print(f", resets {dim(fmt_eta(win['resetsAtMs']))}", end="")
+            print()
+        if w:
+            print(f"  weekly: {w.get('usedPercent', '?')}% used", end="")
+            if w.get("resetsAtMs"):
+                print(f", resets {dim(fmt_eta(w['resetsAtMs']))}", end="")
+            print()
+    days = list(data["by_day"].items())[-show_days:]
+    if days:
+        print(f"\n{bold('By day')} (last {len(days)})")
+        print(f"  {'DATE':<12} {'INPUT':>9} {'OUTPUT':>9} {'TOTAL':>9}")
+        for d, v in days:
+            print(f"  {d:<12} {fmt_num(v.get('input', 0)):>9} "
+                  f"{fmt_num(v.get('output', 0)):>9} {bold(fmt_num(v.get('total', 0))):>9}")
+    if data["by_model"]:
+        print(f"\n{bold('By model')}")
+        print(f"  {'MODEL':<22} {'INPUT':>9} {'OUTPUT':>9} {'TOTAL':>9}")
+        for m, v in data["by_model"].items():
+            print(f"  {m:<22} {fmt_num(v.get('input', 0)):>9} "
+                  f"{fmt_num(v.get('output', 0)):>9} {bold(fmt_num(v.get('total', 0))):>9}")
+    sess = list(data["by_session"].items())[:top_n]
+    if sess:
+        print(f"\n{bold('Top sessions')} (top {len(sess)})")
+        for uuid, v in sess:
+            print(f"  {dim(v.get('day', '?'))}  {uuid[:13]}  {bold(fmt_num(v.get('total', 0)))} tokens")
+
+
+def fmt_eta(ms):
+    try:
+        dt = datetime.fromtimestamp(ms / 1000) - datetime.now()
+    except (OSError, OverflowError, ValueError):
+        return "?"
+    if dt.total_seconds() < 0:
+        return "soon"
+    h, rem = divmod(int(dt.total_seconds()), 3600)
+    d, h = divmod(h, 24)
+    if d:
+        return f"in {d}d {h}h"
+    if h:
+        m = rem // 60
+        return f"in {h}h {m}m"
+    return f"in {rem // 60}m"
+
+
+def build_parser():
+    p = argparse.ArgumentParser(
+        prog="muse stats",
+        description="Token usage dashboard for Muse Code sessions.",
+    )
+    p.add_argument("--json", action="store_true", help="machine-readable output")
+    p.add_argument("--since", metavar="YYYY-MM-DD", help="only sessions on/after this date")
+    p.add_argument("--top", metavar="N", type=int, default=10, help="top sessions to show (default: 10)")
+    p.add_argument("--days", metavar="N", type=int, default=14, help="days to show (default: 14)")
+    p.add_argument("--no-allowance", action="store_true", help="skip `muse usage` lookup")
+    return p
+
+
+def main(argv=None):
+    try:
+        signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+    except (AttributeError, ValueError):
+        pass
+    args = build_parser().parse_args(argv)
+    if args.since:
+        try:
+            datetime.strptime(args.since, "%Y-%m-%d")
+        except ValueError:
+            die(f"invalid --since '{args.since}' (want YYYY-MM-DD)", code=2)
+    data = collect(since=args.since)
+    allowance = None if args.no_allowance else get_allowance()
+    if args.json:
+        out = dict(data)
+        if allowance is not None:
+            out["allowance"] = allowance
+        print(json.dumps(out, indent=2))
+        return 0
+    render_human(data, allowance, top_n=args.top, show_days=args.days)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

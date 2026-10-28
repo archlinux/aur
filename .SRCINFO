@@ -1,7 +1,7 @@
 pkgbase = muse-code-bin
 	pkgdesc = Terminal-based AI coding agent powered by Meta's Muse Spark (dev.meta.ai)
 	pkgver = 1.4.14.r7309.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.meta.ai
 	arch = x86_64
 	arch = aarch64
@@ -21,9 +21,11 @@ pkgbase = muse-code-bin
 	source = muse.sh
 	source = muse-session
 	source = muse-mcp
-	sha256sums = aac85fec4903d64cb26e076096b8029652ab0c116b0bd14dbbfc3b26cfdcebbe
-	sha256sums = 273aaf905396ac7ff943cae8e846c478787c84a0fa3d763d16d8167ea542b0e3
-	sha256sums = 65cff61e4bbb8939903c680f3cbf04d881214de23805d993c42eea2c5d1c82a7
+	source = muse-stats
+	sha256sums = 7d30375709e18c9e761df64ede7f00cf36791d2efd783468985f47732f5ba954
+	sha256sums = a1fe34c465c57feccf4bc4eeb992f96827815a475d840753a8f0a974ddae2f94
+	sha256sums = 4de84ac87ab129d081a064c11f2d55226c9c1ae478897cd02b17c0c28adbf7c0
+	sha256sums = e1b73add774113722e0452c860f83bc4ec3e8d5189897c302cd8856a681fa050
 	source_x86_64 = muse-code-bin-1.4.14.r7309.1-x86_64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=1.4.14-R7309.1&file=muse-x86-linux
 	sha256sums_x86_64 = 0809aac7cb58d18f5022b6d05e02aa1974683c0ec430e5f04d25b60ed17de2da
 	source_aarch64 = muse-code-bin-1.4.14.r7309.1-aarch64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=1.4.14-R7309.1&file=muse-aarch64-linux

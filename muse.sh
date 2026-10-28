@@ -39,7 +39,7 @@ if [[ "${1:-}" == "mcp" ]]; then
   # native `mcp login/logout` for OAuth) falls through to the real binary
   # below, preserving "$@" (including the leading "mcp").
   case "${2:-}" in
-    ""|list|status|import|add|enable|disable|remove|export|help)
+    ""|list|status|import|add|enable|disable|remove|check|export|help)
       shift
       MCP_HELPER="${PREFIX}/lib/muse/muse-mcp"
       if [[ ! -x "${MCP_HELPER}" ]]; then
@@ -51,6 +51,27 @@ if [[ "${1:-}" == "mcp" ]]; then
         fi
       fi
       exec "${MCP_HELPER}" "$@"
+      ;;
+  esac
+fi
+
+if [[ "${1:-}" == "stats" ]]; then
+  # No native `stats` subcommand exists; intercept only our helper's own
+  # flags and pass anything else through, so a future native `stats`
+  # keeps working by default.
+  case "${2:-}" in
+    ""|--json|--since|--since=*|--top|--top=*|--days|--days=*|--no-allowance|-h|--help)
+      shift
+      STATS_HELPER="${PREFIX}/lib/muse/muse-stats"
+      if [[ ! -x "${STATS_HELPER}" ]]; then
+        SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+        if [[ -x "${SCRIPT_DIR}/../lib/muse/muse-stats" ]]; then
+          STATS_HELPER="${SCRIPT_DIR}/../lib/muse/muse-stats"
+        elif [[ -x "${SCRIPT_DIR}/muse-stats" ]]; then
+          STATS_HELPER="${SCRIPT_DIR}/muse-stats"
+        fi
+      fi
+      exec "${STATS_HELPER}" "$@"
       ;;
   esac
 fi
