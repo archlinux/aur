@@ -3,12 +3,21 @@
 # Upstream Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-gnome
 pkgname=('shelly-gnome' 'shelly-gnome-flatpak-backend')
-pkgver=3.1.2.gnome1
+pkgver=3.1.9.gnome1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Terrabade/Shelly-ALPM-GNOME"
 license=('GPL-3.0-only')
-makedepends=('git' 'pkgconf' 'gtk4' 'libadwaita' 'zig>=0.16' 'clang' 'gettext' 'flatpak' 'ripgrep' 'go-md2man')
+makedepends=('libarchive' 'curl' 'sqlite' 'gnupg' 'git' 'pkgconf' 'gtk4' 'libadwaita' 'zig=0.16.0' 'clang' 'gettext' 'flatpak' 'ripgrep' 'go-md2man')
+
+# Keep package metadata tied to the compiled native backend variant.
+_shelly_libalpm=${SHELLY_LIBALPM:-true}
+case $_shelly_libalpm in
+  true) _shelly_native_depends=('pacman'); _shelly_native_optdepends=() ;;
+  false) _shelly_native_depends=(); _shelly_native_optdepends=('pacman: package-owner lookup for pacfile merging') ;;
+  *) printf 'SHELLY_LIBALPM must be true or false\n' >&2; return 1 ;;
+esac
+makedepends+=('binutils' "${_shelly_native_depends[@]}")
 
 # Source tarball from GitHub release
 # Upstream lists shellybuild.conf, the two .desktop files and
@@ -18,7 +27,7 @@ makedepends=('git' 'pkgconf' 'gtk4' 'libadwaita' 'zig>=0.16' 'clang' 'gettext' '
 # stays down to PKGBUILD + .SRCINFO.
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('1fc9cf0a7a82c59b7b1a884717bc5522a7a72f92263a0c8156f2cee85aa49ba7')
+sha256sums=('8912e3bf004ac5ff10a8e209ec9a3310eb43ccb1f5a275d2c8ae5133ce04dc8d')
 # GitHub sanitises '+' to '-' in the archive's root directory, so the extracted
 # tree is Shelly-ALPM-GNOME-3.0.0-9.gnome1 even though the tag is v3.0.0+9.gnome1.
 _source_dir="Shelly-ALPM-GNOME-${pkgver//+/-}"
@@ -41,7 +50,7 @@ build() {
     -Dcpu=baseline \
     -Doptimize=ReleaseSafe)
 
-  (cd Shelly.Cli.Zig && zig build --verbose \
+  (cd Shelly.Cli.Zig && zig build -Dlibalpm="${_shelly_libalpm}" --verbose \
     --prefix "${srcdir}/${_source_dir}/out-cli" \
     --cache-dir "${srcdir}/zig-cache" \
     --global-cache-dir "${srcdir}/zig-global-cache" \
@@ -89,10 +98,10 @@ check() {
   (cd Shelly.Flatpak.Backend && zig build test abi-test integration-test \
     --cache-dir "${srcdir}/zig-cache" \
     --global-cache-dir "${srcdir}/zig-global-cache")
-  (cd Shelly.PackageManager && zig build flatpak-test \
+  (cd Shelly.PackageManager && zig build -Dlibalpm="${_shelly_libalpm}" flatpak-test \
     --cache-dir "${srcdir}/zig-cache" \
     --global-cache-dir "${srcdir}/zig-global-cache")
-  (cd Shelly.Cli.Zig && zig build test \
+  (cd Shelly.Cli.Zig && zig build -Dlibalpm="${_shelly_libalpm}" test \
     --cache-dir "${srcdir}/zig-cache" \
     --global-cache-dir "${srcdir}/zig-global-cache")
 }
@@ -103,7 +112,7 @@ package_shelly-gnome() {
   conflicts=('shelly' 'shelly-bin' 'shelly-git')
   backup=('etc/shellybuild.conf')
   depends=(
-      'pacman'
+      "${_shelly_native_depends[@]}"
       'gtk4'
       'libadwaita'
       'glib2'
@@ -115,17 +124,20 @@ package_shelly-gnome() {
       'dbus'
       'glibc'
       'libarchive'
+    'curl'
+    'sqlite'
       'dconf'
       'gnupg'
       'zstd'
       'json-glib'
   )
   optdepends=(
-      'arch-install-scripts: provision fresh roots for --isolated builds'
+      "${_shelly_native_optdepends[@]}"
       'fish: Fish shell completions'
       'zsh: Zsh shell completions'
       'libstarfish: dependency viewer for arch packages'
       'shelly-gnome-flatpak-backend: Flatpak package management support'
+      'util-linux: isolate fresh-root provisioning for --isolated builds'
       'fuse2: run AppImages that require FUSE 2'
   )
 
@@ -133,6 +145,17 @@ package_shelly-gnome() {
   install -Dm755 out-notifications/bin/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
   install -Dm755 out/bin/Shelly_Ui_Gtk "$pkgdir/usr/bin/shelly-ui"
   install -Dm755 out-cli/bin/shelly "$pkgdir/usr/bin/shelly"
+  local shelly_dynamic
+  shelly_dynamic=$(LC_ALL=C readelf -d "$pkgdir/usr/bin/shelly") || return 1
+  if [[ $shelly_dynamic != *'Shared library: [libsqlite3.so.0]'* ]]; then
+    printf 'Shelly CLI must directly depend on libsqlite3.so.0 (#2059)\n' >&2
+    return 1
+  fi
+  if [[ $_shelly_libalpm == true && $shelly_dynamic != *libalpm.so* ]] ||
+     [[ $_shelly_libalpm == false && $shelly_dynamic == *libalpm.so* ]]; then
+    printf 'Shelly binary does not match SHELLY_LIBALPM package metadata\n' >&2
+    return 1
+  fi
   install -Dm755 out-key/bin/shelly-key "$pkgdir/usr/bin/shelly-key"
   install -Dm644 "$srcdir/${_source_dir}/shellybuild.conf" "$pkgdir/etc/shellybuild.conf"
 
