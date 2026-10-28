@@ -22,8 +22,12 @@ pkgver() {
 build() {
     cmake -B build -S kio-s3 \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=None
     cmake --build build
+}
+
+check() {
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
