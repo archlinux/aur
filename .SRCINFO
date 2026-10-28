@@ -1,7 +1,7 @@
 pkgbase = whoisthat
 	pkgdesc = Modern terminal-based VPN client with Xray-core backend
-	pkgver = 0.14.3
-	pkgrel = 4
+	pkgver = 0.14.4
+	pkgrel = 1
 	url = https://github.com/kvunoff/whoisthat
 	install = whoisthat.install
 	arch = x86_64
@@ -16,7 +16,8 @@ pkgbase = whoisthat
 	optdepends = iptables: legacy firewall backend for TUN mode
 	optdepends = polkit: pkexec-based capability setup from the TUI
 	optdepends = xray: system Xray-core binary (managed runtime used automatically if absent)
-	source = whoisthat-0.14.3.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v0.14.3.tar.gz
-	sha256sums = 86c655bb1af2a49335f51a04b1c333d7f7c647d66906c6244aa2ebb00585b809
+	options = !lto
+	source = whoisthat-0.14.4.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v0.14.4.tar.gz
+	sha256sums = 90541c5c4679442418a077839232c280200225965629b9dbeab33605d6e9a972
 
 pkgname = whoisthat
