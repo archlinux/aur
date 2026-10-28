@@ -6,7 +6,7 @@
 # pkgver and sha256sums are rewritten and pushed to the AUR by the release workflow
 # (publish-aur-oversea in .github/workflows/apply-release.yml). Do not edit them by hand.
 pkgname=aceround-apply-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="AceRound Auto Apply — AI job applications on company career sites, in your own browser, with every step visible"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("aceround-apply-${pkgver}-amd64.deb::https://dl.aceround.app/apply/aceround-apply-${pkgver}-amd64.deb")
 noextract=("aceround-apply-${pkgver}-amd64.deb")
-sha256sums=('d0c5ac78d147bba8c9de0affd05ebb9b4eeea6858eaa6e11a3029f876f6af34b')
+sha256sums=('a87705c89d1b8ec15335b5eabda020c3e001030b75a70ebed0cd4b065ab9e501')
 
 package() {
   cd "$srcdir"

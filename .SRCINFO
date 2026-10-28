@@ -1,6 +1,6 @@
 pkgbase = aceround-apply-bin
 	pkgdesc = AceRound Auto Apply — AI job applications on company career sites, in your own browser, with every step visible
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://www.aceround.app/auto-apply
 	install = aceround-apply-bin.install
@@ -10,10 +10,10 @@ pkgbase = aceround-apply-bin
 	depends = gtk3
 	provides = aceround-apply
 	conflicts = aceround-apply
-	noextract = aceround-apply-0.3.3-amd64.deb
+	noextract = aceround-apply-0.3.4-amd64.deb
 	options = !strip
 	options = !debug
-	source = aceround-apply-0.3.3-amd64.deb::https://dl.aceround.app/apply/aceround-apply-0.3.3-amd64.deb
-	sha256sums = d0c5ac78d147bba8c9de0affd05ebb9b4eeea6858eaa6e11a3029f876f6af34b
+	source = aceround-apply-0.3.4-amd64.deb::https://dl.aceround.app/apply/aceround-apply-0.3.4-amd64.deb
+	sha256sums = a87705c89d1b8ec15335b5eabda020c3e001030b75a70ebed0cd4b065ab9e501
 
 pkgname = aceround-apply-bin
