@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A fast, interactive CLI for finding and redacting secrets in your codebase"
 
-pkgver=0.4.8
+pkgver=0.5.0
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -27,9 +27,9 @@ options=('!strip')
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('5e3a17bca32b3b6aa491f5fdd3c819e6e391c06d63b3eadc2f9700f867d51dd1')
-sha256sums_i686=('951b676f66a215ef04514e7110d007e79c16af23a6bc7c72b03c70b77a309f7f')
-sha256sums_aarch64=('267b792252ae9faca5e15d8d3365839cb19096f2b7b080a092a51ebe081da3e4')
+sha256sums_x86_64=('e716f612654bb9ff67f530b70c3327f722051b7e466b53720e78fae4a1f89297')
+sha256sums_i686=('ca4e18f0720dc7f6782d4f3c5533ff0545317bc1b5c17a4763461887a27cd896')
+sha256sums_aarch64=('b0c63225bd619120574427ac49be1f9c1048639219ede03fc76d55b1b5e6b005')
 
 
 package() {
