@@ -1,5 +1,5 @@
 pkgname=zeldaladxhd-bin
-pkgver=v2.0.7
+pkgver=v2.0.9
 pkgrel=1
 scriptver=1.0.2.1
 _pkgrel_x86_64=1
@@ -12,8 +12,8 @@ options=('!strip')
 license=('GPL')
 makedepends=('unzip')
 sha256sums=('6969cafeb166010d974314ee8ad6491ab111794a189a670d7963644d7ca4d53a')
-sha256sums_x86_64=('c140c3fe6e43047fcb04b1e2a3709a1cdca14400df5c0b499fd212be8328a29a')
-sha256sums_aarch64=('7bbdbf268fef231aa1334c8b9e732ccbb846748305244f12516196eaf41f623d')
+sha256sums_x86_64=('ab9db80313aa0801a06ccf310a2586ab1f6e2fad41793936487b4626ce217b15')
+sha256sums_aarch64=('778c72c6587c448955f12a2fd03fc8becc3a2c19020dc5bde84f7a43b7cf763c')
 source=("https://gitlab.com/linuxbombay/zeldaladxhd/zeldaladxhd/-/archive/$scriptver/zeldaladxhd-$scriptver.tar.bz2")
 source_x86_64=("https://gitlab.com/linuxbombay/zeldaladxhd/binaries/$pkgver/-/raw/main/LADXHD.Patcher.$pkgver-Linux-x64.7z")
 source_aarch64=("https://gitlab.com/linuxbombay/zeldaladxhd/binaries/$pkgver/-/raw/main/LADXHD.Patcher.$pkgver-Linux-arm64.7z")
