@@ -25,5 +25,9 @@ package() {
 	cd "${pkgdir}/" || exit
 
 	tar -xvf "${srcdir}/${_pkgname}-${pkgver}.tzst"
+
 	rm -rf .{BUILDINFO,MTREE,PKGINFO}
+
+	mv "${pkgdir}/usr/share/doc/${_pkgname}/" "${pkgdir}/usr/share/doc/${pkgname}/"
+	mv "${pkgdir}/usr/share/licenses/${_pkgname}/" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
