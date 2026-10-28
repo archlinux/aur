@@ -1,8 +1,8 @@
 pkgname=clash-nyanpasu-bin
 _pkgname=clash-nyanpasu
-_upstream_tag=v2.0.0-rc.3
-_source_url=https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0-rc.3/Clash.Nyanpasu_2.0.0-rc.3_amd64.deb
-pkgver=2.0.0rc.3
+_upstream_tag=v2.0.0
+_source_url=https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v2.0.0/Clash.Nyanpasu_2.0.0_amd64.deb
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-appimage' 'clash-nyanpasu')
 provides=('clash-nyanpasu')
 optdepends=('clash-rs: custom protocol network proxy, coding with rust')
 source=("${_pkgname}-${pkgver}-${CARCH}.deb::${_source_url}")
-sha256sums=('be551809bff0b320394b5b3acdb90e682b01873cde9f5ed8afaff389cd634491')
+sha256sums=('866dd2cda0a34d2cca29fec43b58be350a70dd6513d6e5ccbcdfcc7ba4bb5425')
 
 package() {
   local -a data_archives=("${srcdir}"/data.tar.*)
