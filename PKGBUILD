@@ -114,6 +114,7 @@ sha256sums=(
 )
 
 _nvm_env() {
+  export HOME="$SRCDEST/node-home"
   export NVM_DIR="$SRCDEST/node-nvm"
 
   # set up nvm
