@@ -1,6 +1,6 @@
 pkgbase = figcraft-bin
 	pkgdesc = Open-source interface design and prototyping app, Figma alternative (prebuilt binary)
-	pkgver = 0.11.2
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/storytold/figcraft
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = figcraft-bin
 	provides = figcraft
 	conflicts = figcraft
 	options = !strip
-	source_x86_64 = figcraft-0.11.2-linux-x86_64.tar.gz::https://github.com/storytold/figcraft/releases/download/v0.11.2/figcraft-0.11.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 69d21d0d3717738f9da79d04bc86c152e9b8f919e6395ae97b1cb56b36cde2b9
-	source_aarch64 = figcraft-0.11.2-linux-aarch64.tar.gz::https://github.com/storytold/figcraft/releases/download/v0.11.2/figcraft-0.11.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = b19df731c1746f3dd1631209b68c8819f60e9cda927958f5b9a5c872f98b133a
+	source_x86_64 = figcraft-0.12.1-linux-x86_64.tar.gz::https://github.com/storytold/figcraft/releases/download/v0.12.1/figcraft-0.12.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 00a29f4cc382807d840f5d3e9b59f4c8829356789afbb956a0964918295e49dd
+	source_aarch64 = figcraft-0.12.1-linux-aarch64.tar.gz::https://github.com/storytold/figcraft/releases/download/v0.12.1/figcraft-0.12.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 72269287aafcfd681100a30e0ec80619a383c75f8e1b845ff73973754d5d1e59
 
 pkgname = figcraft-bin
