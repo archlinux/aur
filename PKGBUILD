@@ -100,6 +100,12 @@ build() {
   # This is not ideal but it is a workaround until the underlying issue in FS is fixed.
   CPPFLAGS=${CPPFLAGS//_GLIBCXX_ASSERTIONS/_NO_GLIBCXX_ASSERTIONS}
   CXXFLAGS=${CXXFLAGS//_GLIBCXX_ASSERTIONS/_NO_GLIBCXX_ASSERTIONS}
+
+  # Firestorm builds with -Werror. Without LTO, GCC 16 reports false positives for -Warray-bounds (in
+  # llviewerassetstorage.cpp and particleeditor.cpp); current Firestorm master also trips -Wformat-truncation
+  # (in lldatapacker.cpp). With LTO these checks don't run at compile time, so whether the build failed
+  # depended on the user's lto option and on the AUR helper (Shelly doesn't use LTO). Keep these two as warnings.
+  CXXFLAGS+=" -Wno-error=array-bounds -Wno-error=format-truncation"
   export CPPFLAGS CXXFLAGS
 
 

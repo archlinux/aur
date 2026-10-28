@@ -1,6 +1,12 @@
 Packaging changes for the firestorm AUR package, newest first.
 Firestorm's own release notes: https://www.firestormviewer.org/category/news/
 
+2026-10-28  7.2.5.81788-1
+  * Fixed the build without LTO, for example with `!lto` in makepkg.conf or
+    with AUR helpers that don't use LTO such as Shelly. GCC 16 reports false
+    -Warray-bounds warnings there, which Firestorm's -Werror turned into
+    errors. They are now kept as warnings.
+
 2026-10-27  7.2.5.81788-1
   * Update to Firestorm 7.2.5.81788.
   * secondlife:// and hop:// links now open in Firestorm (the desktop entry
