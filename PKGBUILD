@@ -1,16 +1,18 @@
-# Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
+# Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=carl-calendar
 _pkgname=carl
 pkgver=0.6.0
-pkgrel=1
-makedepends=('rust' 'cargo')
+pkgrel=2
+makedepends=('rust' 'cargo' 'git')
 depends=('glibc' 'gcc-libs')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="A colorful commandline calendar with ical support. Similar to cal, but with more features."
+arch=('i686' 'x86_64' 'armv7h')
+pkgdesc="A colorful commandline calendar with ical support. Similar to cal, but
+ with more features."
 license=('MIT' 'CC0-1.0')
-url="https://github.com/b1rger/carl"
-source=("$url/archive/refs/tags/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('1399bf0aadc44efb92f76a7eef6158a6a19799fe0aab82946c417b166a95bbfe')
+url="https://codeberg.org/birger/carl"
+options=("!debug")
+source=("${_pkgname}-${pkgver}::git+${url}.git")
+sha256sums=('SKIP')
 install="carl.install"
 
 prepare() {

@@ -1,4 +1,4 @@
-[carl]
+[carl-calendar]
 source = "git"
-git = "https://github.com/b1rger/carl.git"
+git = "https://codeberg.org/birger/carl.git"
 prefix = "v"

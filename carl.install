@@ -19,7 +19,7 @@ post_install() {
     # Check if the user home exists
     for userhome in /home/*; do
         if [ -d "$userhome" ]; then
-            # Cria um arquivo na home de cada usuário
+            # Creates a file at the home of each user
             if [ ! -f "$userhome/.config/carl/config.toml" ]; then
                 mkdir -p "$userhome/.config/carl"
                 cd "$userhome/.config/carl" || return 1; echo "folder not found in $userhome"
