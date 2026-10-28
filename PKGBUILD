@@ -9,7 +9,7 @@
 #   3. Commit PKGBUILD + .SRCINFO to the AUR repo
 
 pkgname=chest-backup-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 install=chest-backup.install
 pkgdesc="Full-stack backup manager with web UI and scheduling (precompiled)"
