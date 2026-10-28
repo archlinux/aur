@@ -1,7 +1,7 @@
 # Maintainer: Snoopey
 pkgname=omnigent-desktop
-pkgver=0.19.1
-pkgrel=3
+pkgver=0.20.0
+pkgrel=1
 pkgdesc='Desktop client for collaborating with AI agents'
 arch=('x86_64')
 url='https://github.com/omnigent-ai/omnigent'
@@ -18,7 +18,7 @@ replaces=('omnigent<=0.17.0-2')
 options=('!strip' '!debug')
 source=("omnigent-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'omnigent-desktop' 'omnigent-desktop.desktop')
-sha256sums=('8c04e7704bdf2fb32312f850c2e749b148f96b9fb3b8233041f11e283c5e3b29'
+sha256sums=('7979ee4e87509b286b2418671f38d89ac7b028ce0ab5c882c8618f154b08396f'
             '8393e46f4aac97b93894ca4ef7068fd78ad6f809b3339576171abda089d24654' 'c6eac7eefe6ab74a06f452e1ab106e25e8780c7044dfc337a742b35d9ed354fe')
 
 prepare() {
