@@ -1,11 +1,10 @@
 pkgbase = dragon-media-backend
 	pkgdesc = Qt C++ library intended for desktop music players
 	pkgver = 0.82.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/libraries/dragon-media-backend
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = libpipewire
 	makedepends = libpulse
@@ -20,7 +19,7 @@ pkgbase = dragon-media-backend
 	optdepends = libpipewire: PipeWire integration
 	optdepends = libpulse: PulseAudio integration
 	source = https://invent.kde.org/libraries/dragon-media-backend/-/archive/v0.82.1/dragon-media-backend-v0.82.1.tar.gz
-	source = https://raw.githubusercontent.com/mborgerding/kissfft/refs/heads/master/kissfft.hh
+	source = https://github.com/mborgerding/kissfft/blob/f3fd3a58f1b98972d0f06a1db775a984198cb788/kissfft.hh
 	sha256sums = c2ab06a44568092888d28be75090dc2020fdb710b71ccf80979cb50a67f850c0
 	sha256sums = 0a31467599b981d784f53a944c19e6991aa96eee703ab424d648e436b2718a8d
 
