@@ -1,38 +1,47 @@
+
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
 pkgname=anihot-app
-pkgver=6.2.5
-pkgrel=2
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
 url="https://github.com/MrGlany/AniHotAppPC"
 license=('custom')
 
-depends=('glibc' 'gtk3' 'bash' 'sqlite' 'mpv')
+depends=(
+    'glibc'
+    'gtk3'
+    'bash'
+    'sqlite'
+    'mpv'
+    'desktop-file-utils'
+)
 
 install="${pkgname}.install"
 options=('!debug')
 
 source=(
     "anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
-    "${pkgname}.install"
 )
 
 sha256sums=(
-    '27287bd1ce55bf0707123f59567474d0c569ada68a2425ea0cd6cc9f90e8e41e'
-    '0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763'
+    '2b4057ad9d56d9a52ec27884b1d16530c9d65389efc17b179c207accdf52ba3d'
 )
 
 package() {
     cd "$srcdir"
 
-    # Do NOT install the built-in updater.
-    # The updater may become out of sync with the AUR package version.
-
     # Application files
     install -d "$pkgdir/usr/lib/$pkgname"
 
-    cp -r lib data "$pkgdir/usr/lib/$pkgname"
+    # Copy application data
+    cp -a data "$pkgdir/usr/lib/$pkgname/"
+
+    # Copy top-level application libraries only.
+    # Exclude bundled mpv and its dependencies from lib/mpv/.
+    install -d "$pkgdir/usr/lib/$pkgname/lib"
+    cp -a lib/*.so "$pkgdir/usr/lib/$pkgname/lib/"
 
     # Main application binary
     install -Dm755 "AniHot App" \
@@ -65,10 +74,18 @@ EOF
 
     # Application icon
     install -Dm644 \
-        "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png"
+        "$srcdir/share/icons/hicolor/1024x1024/apps/com.anihot.anihot.png" \
+        "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/com.anihot.anihot.png"
 
-    # License, if present in the archive
+    # Preserve licenses for the multimedia libraries,
+    # even though the bundled mpv libraries are not installed.
+    if [[ -d "$srcdir/share/licenses/libmpv" ]]; then
+        install -d "$pkgdir/usr/share/licenses/$pkgname/libmpv"
+        cp -a "$srcdir/share/licenses/libmpv/." \
+            "$pkgdir/usr/share/licenses/$pkgname/libmpv/"
+    fi
+
+    # Root license, if present
     if [[ -f "$srcdir/LICENSE" ]]; then
         install -Dm644 "$srcdir/LICENSE" \
             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
