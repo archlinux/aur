@@ -3,7 +3,7 @@
 # Contributor: Marcus Kida <aur@kimar.mozmail.com>
 
 pkgname=connectiq-sdk-manager
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="Garmin Connect IQ SDK Manager"
 arch=('x86_64')
