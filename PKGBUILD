@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.57
-pkgver=1.0.0beta57
+_tag=v1.0.0-beta.58
+pkgver=1.0.0beta58
 pkgrel=1
 pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,9 @@ depends=(
     'niri'
     'quickshell'
     'qt6-5compat'
+    # Qt Quick draws the shell through Vulkan when a driver answers
+    # (scripts/vulkan), and through OpenGL when none does.
+    'vulkan-icd-loader'
     'python'
     # The calendar's recurrences, and the feed addresses it keeps in the
     # keyring (scripts/calendar, secret-tool).
@@ -99,6 +102,7 @@ optdepends=(
     'gnome-online-accounts: the calendars of Google, Microsoft, Nextcloud and WebDAV accounts in the clock'
     'gnome-online-accounts-gtk: adding those accounts outside GNOME Settings'
     'gamemode: performance mode, on by itself while a game runs'
+    'vulkan-driver: the shell drawn through Vulkan, a third lighter than OpenGL (vulkan-radeon, vulkan-intel, nvidia-utils)'
 )
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
@@ -108,7 +112,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('e8c3c970b4556ea14a940d697df3516ecd16e7e4b0a28fcd3377b271a4c73732')
+sha256sums=('5bf1dd60684ff4dd8db04478fa532d70d79fd8dd3d0c2aafd57929092ec01886')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
