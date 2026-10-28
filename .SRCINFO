@@ -1,12 +1,12 @@
 pkgbase = poc-pinger
 	pkgdesc = Reports TCP connect latency - poc-app demo binary, versioned independently by multicz
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/goabonga/poc-app
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = poc-app-0.4.0.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/pinger-v0.4.0.tar.gz
-	sha256sums = c63cb591ec56e35d96eb3f599c6d8b384f224630acbecb6623408a4d0f611218
+	source = poc-app-0.5.0.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/pinger-v0.5.0.tar.gz
+	sha256sums = 4f5092f51b6f7999bac106936ac940a50662fbece59ddcb59b30bf0c969c1cd6
 
 pkgname = poc-pinger
