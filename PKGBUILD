@@ -291,7 +291,7 @@ prepare() {
   # although its NuGet package claims MIT:
   # - The PowerShell team says "MMI.dll is not Open Source (and no plans to be OSS)", see
   #   https://github.com/PowerShell/PowerShell/issues/8397. The repository the package links to,
-  #   PowerShell/MMI, has been archived since 2020.
+  #   PowerShell/MMI, has been archived since 2024.
   # - Its Microsoft.Management.Infrastructure.Runtime.Win package comes under the Microsoft Software
   #   License Terms instead, which only allow using it with PowerShell and forbid redistributing it, see
   #   https://github.com/PowerShell/PowerShell/issues/28027 and #20798
