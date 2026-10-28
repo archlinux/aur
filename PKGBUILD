@@ -3,15 +3,15 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=gtasks
-pkgver=0.13.0
-pkgrel=3
+pkgver=0.13.1
+pkgrel=1
 pkgdesc="A CLI client for Google Tasks, written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BRO3886/gtasks"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='30b6abe6546077e738f85592955a9249aa8a4589'
+_commit='7f4e14e5259087810874c1f4456e470c16f04ac8'
 source=("git+https://github.com/BRO3886/gtasks.git#commit=$_commit")
 sha256sums=('SKIP')
 
