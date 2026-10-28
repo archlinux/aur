@@ -3,7 +3,7 @@
 
 pkgname=suricata-nfqueue
 _pkgname=suricata
-pkgver=8.0.5
+pkgver=8.0.7
 pkgrel=1
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('x86_64')
@@ -23,9 +23,9 @@ backup=('etc/suricata/suricata.yaml'
         'etc/suricata/threshold.config')
 source=(https://www.openinfosecfoundation.org/download/${_pkgname}-${pkgver}.tar.gz{,.sig}
         suricata-update.{service,timer})
-sha256sums=('04cad79a2a91499a729e41bfb570060c3cedb94cd5a5584d79582ebd18574ee0'
+sha256sums=('a9d46a9c8f40e81f8a6df3ecc2c5a9a8e8da985876299108d92da547c013ba8c'
             'SKIP'
-            '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
+            '4eda042694c62a7eaa8457696916302725251ea9295bebd37b4c5686dc82aebd'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
 

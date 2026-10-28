@@ -3,5 +3,5 @@ Description=Suricata rules downloader
 After=network.target
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/usr/bin/suricata-update "--reload-command='kill -USR2 $$(cat /run/suricata/suricata.pid)'"
