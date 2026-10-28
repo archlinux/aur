@@ -2,7 +2,7 @@
 
 _pkgname=tde-session
 pkgname=tde-session-bin
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64)
@@ -52,7 +52,7 @@ conflicts=("$_pkgname")
 # Built by the release workflow of the sources' repository, from the tag.
 source=("$_pkgname-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.zst")
 noextract=("$_pkgname-$pkgver-x86_64.tar.zst")
-sha256sums=('e045f9be9212dd642d6d85ea3becffe11a77cf6b2f25a382bccf68071c6a6ca2')
+sha256sums=('bf5d70fc08c5ab218c8048ea68af1f2dbba9cd5aa8d1e0e0376ebe95fc1d476f')
 
 package() {
   bsdtar -xf "$_pkgname-$pkgver-x86_64.tar.zst" -C "$pkgdir"
