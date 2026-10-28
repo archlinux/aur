@@ -2,18 +2,31 @@
 pkgname=pdfapps-bin
 _pkgname=pdfapps
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, offline, subscription-free PDF editor (PyInstaller binary)"
 arch=('x86_64')
 url="https://nelsonduarte.github.io/PDFApps/"
 license=('MIT')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+# The bundle does not carry these: QtGui links libGL/libEGL (libglvnd); the
+# xcb platform plugin links libxcb-icccm (xcb-util-wm), libxcb-keysyms,
+# libxcb-{xkb,shape} (from libxcb) and libxkbcommon-x11; the wayland plugin
+# links libwayland-{client,cursor,egl}; the linuxfb and eglfs-kms plugins link
+# libdrm.so.2. fontconfig ships no font, so without a ttf-font provider the UI
+# falls back to a font with broken spacing.
 depends=(
     'glibc'
     'fontconfig'
     'libxcb'
     'libxkbcommon'
+    'libxkbcommon-x11'
+    'xcb-util-keysyms'
+    'xcb-util-wm'
+    'libglvnd'
+    'wayland'
+    'libdrm'
+    'ttf-font'
 )
 optdepends=(
     'tesseract: OCR text recognition'
@@ -23,14 +36,15 @@ optdepends=(
     'tesseract-data-fra: French OCR'
     'tesseract-data-deu: German OCR'
     'ghostscript: advanced PDF compression'
+    'xdg-utils: open the output folder'
 )
 source=(
     "$_pkgname-$pkgver.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v$pkgver/PDFApps-Linux.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/LICENSE"
-    "$_pkgname.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/flatpak/io.github.nelsonduarte.PDFApps.desktop"
-    "$_pkgname.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml"
-    "$_pkgname.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/icon_512.png"
-    "$_pkgname.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/pdfapps.svg"
+    "$_pkgname-$pkgver.LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/LICENSE"
+    "$_pkgname-$pkgver.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/flatpak/io.github.nelsonduarte.PDFApps.desktop"
+    "$_pkgname-$pkgver.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml"
+    "$_pkgname-$pkgver.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/icon_512.png"
+    "$_pkgname-$pkgver.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/pdfapps.svg"
 )
 sha256sums=(
     'b56ecc76325f13707db27613258ec422db0ef2c93d01a0771745eaec40ddb893'
@@ -50,19 +64,19 @@ package() {
     ln -s "/opt/$_pkgname/PDFApps" "$pkgdir/usr/bin/$_pkgname"
 
     # Desktop file (must reference the launcher we created)
-    install -Dm644 "$srcdir/$_pkgname.desktop" \
+    install -Dm644 "$srcdir/$_pkgname-$pkgver.desktop" \
         "$pkgdir/usr/share/applications/io.github.nelsonduarte.PDFApps.desktop"
 
     # AppStream metainfo
-    install -Dm644 "$srcdir/$_pkgname.metainfo.xml" \
+    install -Dm644 "$srcdir/$_pkgname-$pkgver.metainfo.xml" \
         "$pkgdir/usr/share/metainfo/io.github.nelsonduarte.PDFApps.metainfo.xml"
 
     # Icons
-    install -Dm644 "$srcdir/$_pkgname.png" \
+    install -Dm644 "$srcdir/$_pkgname-$pkgver.png" \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.nelsonduarte.PDFApps.png"
-    install -Dm644 "$srcdir/$_pkgname.svg" \
+    install -Dm644 "$srcdir/$_pkgname-$pkgver.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.nelsonduarte.PDFApps.svg"
 
     # License
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$_pkgname-$pkgver.LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
