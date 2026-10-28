@@ -1,7 +1,7 @@
 pkgbase = moonbit-bin
 	pkgdesc = Intelligent developer platform for Cloud and Edge using WASM
 	pkgver = 0.1.20261023
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.moonbitlang.com/
 	arch = x86_64
 	license = unknown
@@ -11,6 +11,7 @@ pkgbase = moonbit-bin
 	depends = git
 	provides = moonbit
 	conflicts = moonbit
+	conflicts = moon-bin
 	options = !debug
 	source = https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz#filename=moonbit-bin-0.1.20261023-linux-x86_64.tar.gz
 	source = https://cli.moonbitlang.cn/cores/core-latest.tar.gz#filename=moonbit-core-0.1.20261023.tar.gz

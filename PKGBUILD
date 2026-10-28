@@ -1,13 +1,13 @@
 pkgname=moonbit-bin
 pkgver=0.1.20261023
-pkgrel=1
+pkgrel=2
 pkgdesc="Intelligent developer platform for Cloud and Edge using WASM"
 arch=('x86_64')
 url="https://www.moonbitlang.com/"
 license=('unknown')
 depends=('tar' 'glibc' 'gcc-libs' 'git')
 provides=("moonbit")
-conflicts=("moonbit")
+conflicts=("moonbit" "moon-bin")
 options=('!debug')
 _origin="https://cli.moonbitlang.com"
 # MoonBit's install script builds .../binaries/$version/ and .../cores/core-$version.tar.gz,
