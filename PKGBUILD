@@ -13,9 +13,9 @@
 pkgbase=slipmat-git
 pkgname=('slipmat-daemon-git' 'slipmat-git' 'climat-git')
 _pkgname=slipmat
-pkgver=0.10.0.r143.g11064e0
+pkgver=0.12.0.r0.g6bc5490
 pkgrel=1
-arch=('x86_64')          # Widevine on Linux is x86_64 only
+arch=('x86_64' 'aarch64')
 url="https://github.com/SoftARV/Slipmat"
 license=('GPL-3.0-or-later')
 # `libpulse` is needed to *build*, not only to run: both the daemon and climat
@@ -103,11 +103,15 @@ package_slipmat-daemon-git() {
         sidecar/queue-identity.js \
         sidecar/node_modules "$pkgdir/usr/share/slipmat/sidecar/"
 
-  # Prebuilt binaries for architectures this package is not for — 7 MB of
-  # arm64, ia32, darwin and win32 shipped inside one npm dependency. They also
-  # make `strip` complain during packaging, which is how they were noticed.
+  # Prebuilt binaries for architectures this package is not for make `strip`
+  # complain during packaging, which is how they were noticed.
+  case "$CARCH" in
+    x86_64) local node_arch=x64 ;;
+    aarch64) local node_arch=arm64 ;;
+    *) printf 'Unsupported architecture: %s\n' "$CARCH" >&2; return 1 ;;
+  esac
   find "$pkgdir/usr/share/slipmat/sidecar" -name '*.node' \
-    ! -name '*linux-x64-gnu*' -delete
+    ! -name "*linux-$node_arch-gnu*" -delete
 
   # **Optional, and deliberately not enabled.** The first client to start finds
   # no daemon and starts one, so nobody has to run `systemctl` to play music.
