@@ -1,4 +1,4 @@
-# Maintainer: apnea <27015 at riseup dot net>
+# Maintainer: agony <27015 at riseup dot net>
 # Contributor: MoetaYuko <loli at yuko dot moe>
 # Contributor: jiuren <qiuwei1987@gmail.com>
 # Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
