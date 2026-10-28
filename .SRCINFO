@@ -1,0 +1,22 @@
+pkgbase = dtspretty-git
+	pkgdesc = Tool for pretty-printing decompiled device tree/ dts files.
+	pkgver = r16.20260322.e2d1e91
+	pkgrel = 1
+	url = https://github.com/stolen/dtspretty
+	install = dtspretty.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3
+	depends = python-fdt
+	depends = python-yaml
+	provides = dtspretty
+	provides = python-dtspretty
+	conflicts = dtspretty
+	conflicts = python-dtspretty
+	source = dtspretty::git+https://github.com/stolen/dtspretty.git
+	source = dtspretty.install
+	sha256sums = SKIP
+	sha256sums = 6436f09850fa919abc24b8af62b9e638f01b79409b3e548102ed6111c3a45faf
+
+pkgname = dtspretty-git

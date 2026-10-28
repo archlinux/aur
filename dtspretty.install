@@ -1,0 +1,7 @@
+post_install() {
+  printf '%s\n' "To use 'dtspretty', you also would need to specify some '-r <rules>.yaml'. Bundled ones are installed in '/usr/share/dtspretty/rules/'. You need to specify the full path to the '.yaml' file."
+}
+
+post_upgrade() {
+  post_install "$@"
+}
