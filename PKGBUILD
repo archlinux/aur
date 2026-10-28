@@ -4,7 +4,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=buildifier-bin
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_aarch64+=(
   "${pkgname}-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64"
 )
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('31b6a8aa1e5c746696788f428729701770ad91925873d8256cb885c60e12c77e')
-sha256sums_aarch64=('38d2ed845f560b4a16ddee41de906508a95f8dc85b04e0851b0a71e3a70d3890')
+sha256sums_x86_64=('470844069d710d0b7740e55007071c63e4d00be89a833dce5d1a91790e84dc28')
+sha256sums_aarch64=('e33b41bdb36eca5dfa69647333f4f148272654b98cddcea12f38fac5ec0a00ff')
 
 package() {
   cd "${srcdir}" || exit
