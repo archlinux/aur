@@ -1,0 +1,63 @@
+pkgbase = git-credential-email
+	pkgdesc = Git credential helpers and send-email backends for OAuth 2.0 mail providers
+	pkgver = 5.9.5
+	pkgrel = 1
+	url = https://github.com/AdityaGarg8/git-credential-email
+	arch = any
+	license = Apache-2.0
+	license = GPL-3.0-only
+	depends = git
+	depends = perl-authen-sasl
+	depends = perl-io-socket-ssl
+	depends = python
+	depends = python-keyring
+	depends = python-requests
+	source = git-credential-email-5.9.5.tar.gz::https://github.com/AdityaGarg8/git-credential-email/archive/refs/tags/v5.9.5.tar.gz
+	sha256sums = 883996bc82fb627ff6df7787df41d199b52562a7990a68270adc2402c8c67d0f
+
+pkgname = git-credential-gmail
+	pkgdesc = Git credential helper for Gmail accounts
+	license = Apache-2.0
+	optdepends = python-pyqt6-webengine: in-app browser for the OAuth 2.0 flow
+	optdepends = python-qrcode: render authorisation URLs as QR codes
+
+pkgname = git-credential-outlook
+	pkgdesc = Git credential helper for Microsoft Outlook accounts
+	license = Apache-2.0
+	optdepends = python-pyqt6-webengine: in-app browser for the OAuth 2.0 flow
+	optdepends = python-qrcode: render authorisation URLs as QR codes
+
+pkgname = git-credential-yahoo
+	pkgdesc = Git credential helper for Yahoo accounts
+	license = Apache-2.0
+	optdepends = python-pyqt6-webengine: in-app browser for the OAuth 2.0 flow
+	optdepends = python-qrcode: render authorisation URLs as QR codes
+
+pkgname = git-credential-aol
+	pkgdesc = Git credential helper for AOL accounts
+	license = Apache-2.0
+	optdepends = python-pyqt6-webengine: in-app browser for the OAuth 2.0 flow
+	optdepends = python-qrcode: render authorisation URLs as QR codes
+
+pkgname = git-msgraph
+	pkgdesc = Git helper to use Microsoft Graph API instead of SMTP to send emails
+	license = Apache-2.0
+	optdepends = python-pyqt6-webengine: in-app browser for the OAuth 2.0 flow
+	optdepends = python-qrcode: render authorisation URLs as QR codes
+
+pkgname = git-protonmail
+	pkgdesc = Git helper to use ProtonMail API to send emails
+	license = GPL-3.0-only
+	depends = git
+	depends = perl-authen-sasl
+	depends = perl-io-socket-ssl
+	depends = python
+	depends = python-keyring
+	depends = python-requests
+	depends = python-bcrypt
+	depends = python-cryptography
+	depends = python-pgpy
+	depends = python-pyasn1
+	depends = python-requests-toolbelt
+	depends = python-typing_extensions
+	optdepends = python-pyqt6-webengine: in-app browser for solving CAPTCHAs
