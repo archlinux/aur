@@ -10,7 +10,7 @@ makedepends=('rust' 'clang')
 options=(!lto)
 install=hdas.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f7b20acab9996416d6f8a40206f6247b9b700610c052615d81669d9d8c64415b')
+sha256sums=('7bf65f4e03e90a29258393fe1fcee955ab1d5356109412f630e849e2e27bca64')
 
 build() {
     cd "$pkgname-$pkgver"
