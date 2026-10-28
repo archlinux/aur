@@ -1,0 +1,15 @@
+pkgbase = mp4ff
+	pkgdesc = Tools for parsing and manipulating MP4/ISOBMFF files
+	pkgver = 0.61.0
+	pkgrel = 1
+	url = https://github.com/Eyevinn/mp4ff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = mp4ff::git+https://github.com/Eyevinn/mp4ff.git#tag=v0.61.0
+	sha256sums = c37d251eaf8269100e4c85a22a14c34a507c6f4ac56dcf6249e6209938274f25
+
+pkgname = mp4ff
