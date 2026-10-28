@@ -1,0 +1,61 @@
+# Arch-Sense: let members of the `arch-sense` group drive the laptop without sudo.
+#
+# Shipped by the arch-sense package (see docs/adr/0001). Every grant below names
+# one file and adds group write to it; nothing else changes and nothing is made
+# world-writable. Group members can:
+#   - change Linuwu-Sense controls (fans, battery, USB charging, lighting, ...)
+#   - set the Thermal Profile
+#   - send lighting reports to the PH16-71-family USB keyboard (Chicony 04f2:0117)
+#
+# Named 71-, not 70-, so a leftover v1 file at /etc/udev/rules.d/70-arch-sense.rules
+# cannot shadow it.
+
+ACTION=="remove", GOTO="arch_sense_end"
+
+# --- Linuwu-Sense attributes ---------------------------------------------------
+# The attribute folders are created while the driver probes the acer-wmi platform
+# device, so they exist by the "bind" event at module load and by the "add" event
+# replayed at boot. TEST skips the attributes this laptop doesn't have.
+SUBSYSTEM!="platform", GOTO="arch_sense_platform_end"
+KERNEL!="acer-wmi", GOTO="arch_sense_platform_end"
+DRIVER!="acer-wmi", GOTO="arch_sense_platform_end"
+
+# Predator Sense
+TEST=="predator_sense/backlight_timeout", RUN+="/usr/bin/chgrp arch-sense %S%p/predator_sense/backlight_timeout", RUN+="/usr/bin/chmod g+w %S%p/predator_sense/backlight_timeout"
+TEST=="predator_sense/battery_calibration", RUN+="/usr/bin/chgrp arch-sense %S%p/predator_sense/battery_calibration", RUN+="/usr/bin/chmod g+w %S%p/predator_sense/battery_calibration"
+TEST=="predator_sense/battery_limiter", RUN+="/usr/bin/chgrp arch-sense %S%p/predator_sense/battery_limiter", RUN+="/usr/bin/chmod g+w %S%p/predator_sense/battery_limiter"
+TEST=="predator_sense/boot_animation_sound", RUN+="/usr/bin/chgrp arch-sense %S%p/predator_sense/boot_animation_sound", RUN+="/usr/bin/chmod g+w %S%p/predator_sense/boot_animation_sound"
+TEST=="predator_sense/fan_speed", RUN+="/usr/bin/chgrp arch-sense %S%p/predator_sense/fan_speed", RUN+="/usr/bin/chmod g+w %S%p/predator_sense/fan_speed"
+TEST=="predator_sense/lcd_override", RUN+="/usr/bin/chgrp arch-sense %S%p/predator_sense/lcd_override", RUN+="/usr/bin/chmod g+w %S%p/predator_sense/lcd_override"
+TEST=="predator_sense/usb_charging", RUN+="/usr/bin/chgrp arch-sense %S%p/predator_sense/usb_charging", RUN+="/usr/bin/chmod g+w %S%p/predator_sense/usb_charging"
+
+# Nitro Sense (legacy Nitro models lack lcd_override and boot_animation_sound)
+TEST=="nitro_sense/backlight_timeout", RUN+="/usr/bin/chgrp arch-sense %S%p/nitro_sense/backlight_timeout", RUN+="/usr/bin/chmod g+w %S%p/nitro_sense/backlight_timeout"
+TEST=="nitro_sense/battery_calibration", RUN+="/usr/bin/chgrp arch-sense %S%p/nitro_sense/battery_calibration", RUN+="/usr/bin/chmod g+w %S%p/nitro_sense/battery_calibration"
+TEST=="nitro_sense/battery_limiter", RUN+="/usr/bin/chgrp arch-sense %S%p/nitro_sense/battery_limiter", RUN+="/usr/bin/chmod g+w %S%p/nitro_sense/battery_limiter"
+TEST=="nitro_sense/boot_animation_sound", RUN+="/usr/bin/chgrp arch-sense %S%p/nitro_sense/boot_animation_sound", RUN+="/usr/bin/chmod g+w %S%p/nitro_sense/boot_animation_sound"
+TEST=="nitro_sense/fan_speed", RUN+="/usr/bin/chgrp arch-sense %S%p/nitro_sense/fan_speed", RUN+="/usr/bin/chmod g+w %S%p/nitro_sense/fan_speed"
+TEST=="nitro_sense/lcd_override", RUN+="/usr/bin/chgrp arch-sense %S%p/nitro_sense/lcd_override", RUN+="/usr/bin/chmod g+w %S%p/nitro_sense/lcd_override"
+TEST=="nitro_sense/usb_charging", RUN+="/usr/bin/chgrp arch-sense %S%p/nitro_sense/usb_charging", RUN+="/usr/bin/chmod g+w %S%p/nitro_sense/usb_charging"
+
+# Four-Zone keyboard lighting
+TEST=="four_zoned_kb/four_zone_mode", RUN+="/usr/bin/chgrp arch-sense %S%p/four_zoned_kb/four_zone_mode", RUN+="/usr/bin/chmod g+w %S%p/four_zoned_kb/four_zone_mode"
+TEST=="four_zoned_kb/per_zone_mode", RUN+="/usr/bin/chgrp arch-sense %S%p/four_zoned_kb/per_zone_mode", RUN+="/usr/bin/chmod g+w %S%p/four_zoned_kb/per_zone_mode"
+
+# The legacy ACPI Thermal Profile file, registered during the same probe.
+TEST=="/sys/firmware/acpi/platform_profile", RUN+="/usr/bin/chgrp arch-sense /sys/firmware/acpi/platform_profile", RUN+="/usr/bin/chmod g+w /sys/firmware/acpi/platform_profile"
+
+LABEL="arch_sense_platform_end"
+
+# --- Thermal Profile -----------------------------------------------------------
+# acer-wmi's platform-profile class device. The kernel may re-create the legacy file
+# when profile handlers come and go, which resets its owner, so grant it again here.
+SUBSYSTEM=="platform-profile", ATTR{name}=="acer-wmi", RUN+="/usr/bin/chgrp arch-sense %S%p/profile", RUN+="/usr/bin/chmod g+w %S%p/profile"
+SUBSYSTEM=="platform-profile", ATTR{name}=="acer-wmi", TEST=="/sys/firmware/acpi/platform_profile", RUN+="/usr/bin/chgrp arch-sense /sys/firmware/acpi/platform_profile", RUN+="/usr/bin/chmod g+w /sys/firmware/acpi/platform_profile"
+
+# --- USB HID keyboard ----------------------------------------------------------
+# The usbfs node lighting reports are sent through. 0664 is udev's default for USB
+# devices plus group write.
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="04f2", ATTR{idProduct}=="0117", GROUP="arch-sense", MODE="0664"
+
+LABEL="arch_sense_end"

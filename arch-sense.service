@@ -1,0 +1,17 @@
+[Unit]
+Description=Arch-Sense — Restore saved keyboard lighting at boot
+# Linuwu-Sense replays its own Four-Zone state while it loads, and
+# systemd-modules-load waits for that load to finish (even when udev got to the
+# module first), so starting after it puts Saved Lighting on the keys last.
+# After udev's coldplug, the USB keyboard has been announced too. The unit runs
+# as root, so it needn't wait for the udev rules to hand the arch-sense group its
+# permissions; and nothing but `systemctl enable` ever pulls it in.
+After=systemd-modules-load.service systemd-udev-trigger.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/arch-sense --apply
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

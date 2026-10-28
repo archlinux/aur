@@ -1,0 +1,3 @@
+# Saved Lighting lives here; the arch-sense group may write it, and new files
+# inherit the group (setgid).
+d /var/lib/arch-sense 2775 root arch-sense -

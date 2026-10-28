@@ -1,0 +1,3 @@
+# The group the arch-sense udev rules hand the hardware controls to.
+# Join it with `sudo usermod -aG arch-sense $USER`, then log out and back in.
+g arch-sense - - -
