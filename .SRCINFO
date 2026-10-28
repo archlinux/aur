@@ -1,5 +1,5 @@
 pkgbase = kqalc-bin
-	pkgdesc = Full qalculate power in KRunner
+	pkgdesc = Full qalculate power in KRunner (prebuilt)
 	pkgver = 0.2.3
 	pkgrel = 2
 	url = https://github.com/noctuum/kqalc

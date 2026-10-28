@@ -2,7 +2,7 @@
 pkgname=kqalc-bin
 pkgver=0.2.3
 pkgrel=2
-pkgdesc="Full qalculate power in KRunner"
+pkgdesc="Full qalculate power in KRunner (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/noctuum/kqalc"
 license=('GPL-2.0-only')
