@@ -5,7 +5,7 @@ _pkgname=sing-box
 _pkgver=1.15.0-alpha.13-cagedbird.20261028094851.f942d2532
 pkgver=1.15.0_alpha.13_cagedbird.20261028094851.f942d2532
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='The universal proxy platform with native Clash subscription support (cagedbird binary build)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/cagedbird043/sing-box'
@@ -21,14 +21,14 @@ optdepends=('sing-geosite-rule-set: GeoSite rule sets'
 _release_tag="v${_pkgver}"
 _release_url="${url}/releases/download/${_release_tag}"
 _raw_url="${url}/raw/${_release_tag}"
-source=("config.json::${_raw_url}/release/config/config.json"
-        "sing-box.service::${_raw_url}/release/config/sing-box.service"
-        "sing-box@.service::${_raw_url}/release/config/sing-box@.service"
-        "sing-box-split-dns.xml::${_raw_url}/release/config/sing-box-split-dns.xml"
-        "sing-box-network-recover::${_raw_url}/release/config/sing-box-network-recover"
-        "sing-box-config-pull::${_raw_url}/release/config/sing-box-config-pull"
-        "sing-box-config-pull.service::${_raw_url}/release/config/sing-box-config-pull.service"
-        "sing-box-config-pull.timer::${_raw_url}/release/config/sing-box-config-pull.timer")
+source=("config.json-${_pkgver}::${_raw_url}/release/config/config.json"
+        "sing-box.service-${_pkgver}::${_raw_url}/release/config/sing-box.service"
+        "sing-box@.service-${_pkgver}::${_raw_url}/release/config/sing-box@.service"
+        "sing-box-split-dns.xml-${_pkgver}::${_raw_url}/release/config/sing-box-split-dns.xml"
+        "sing-box-network-recover-${_pkgver}::${_raw_url}/release/config/sing-box-network-recover"
+        "sing-box-config-pull-${_pkgver}::${_raw_url}/release/config/sing-box-config-pull"
+        "sing-box-config-pull.service-${_pkgver}::${_raw_url}/release/config/sing-box-config-pull.service"
+        "sing-box-config-pull.timer-${_pkgver}::${_raw_url}/release/config/sing-box-config-pull.timer")
 source_x86_64=("${_pkgname}-cagedbird-linux-amd64-${_pkgver}.tar.gz::${_release_url}/${_pkgname}-cagedbird-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-cagedbird-linux-arm64-${_pkgver}.tar.gz::${_release_url}/${_pkgname}-cagedbird-linux-arm64.tar.gz")
 sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
@@ -43,14 +43,14 @@ sha256sums_x86_64=('a95e52713b951b2cb7339a1a21fd3f45ff8a73b547bee4218b5a619b8441
 sha256sums_aarch64=('5731a4bc7496ef3a156193c9fbcd41e605fb91edef60c598260c379cad35ff05')
 
 package() {
-    install -Dm644 "config.json" "${pkgdir}/etc/sing-box/config.json"
-    install -Dm644 "sing-box.service" "${pkgdir}/usr/lib/systemd/system/sing-box.service"
-    install -Dm644 "sing-box@.service" "${pkgdir}/usr/lib/systemd/system/sing-box@.service"
-    install -Dm644 "sing-box-split-dns.xml" "${pkgdir}/usr/share/dbus-1/system.d/sing-box-split-dns.conf"
-    install -Dm755 "sing-box-network-recover" "${pkgdir}/usr/lib/NetworkManager/dispatcher.d/90-sing-box-recover"
-    install -Dm755 "sing-box-config-pull" "${pkgdir}/usr/lib/sing-box/sing-box-config-pull"
-    install -Dm644 "sing-box-config-pull.service" "${pkgdir}/usr/lib/systemd/system/sing-box-config-pull.service"
-    install -Dm644 "sing-box-config-pull.timer" "${pkgdir}/usr/lib/systemd/system/sing-box-config-pull.timer"
+    install -Dm644 "config.json-${_pkgver}" "${pkgdir}/etc/sing-box/config.json"
+    install -Dm644 "sing-box.service-${_pkgver}" "${pkgdir}/usr/lib/systemd/system/sing-box.service"
+    install -Dm644 "sing-box@.service-${_pkgver}" "${pkgdir}/usr/lib/systemd/system/sing-box@.service"
+    install -Dm644 "sing-box-split-dns.xml-${_pkgver}" "${pkgdir}/usr/share/dbus-1/system.d/sing-box-split-dns.conf"
+    install -Dm755 "sing-box-network-recover-${_pkgver}" "${pkgdir}/usr/lib/NetworkManager/dispatcher.d/90-sing-box-recover"
+    install -Dm755 "sing-box-config-pull-${_pkgver}" "${pkgdir}/usr/lib/sing-box/sing-box-config-pull"
+    install -Dm644 "sing-box-config-pull.service-${_pkgver}" "${pkgdir}/usr/lib/systemd/system/sing-box-config-pull.service"
+    install -Dm644 "sing-box-config-pull.timer-${_pkgver}" "${pkgdir}/usr/lib/systemd/system/sing-box-config-pull.timer"
 
     declare -A arch_map=([x86_64]='amd64' [aarch64]='arm64')
     cd "${srcdir}/${_pkgname}-cagedbird-linux-${arch_map[$CARCH]}"
