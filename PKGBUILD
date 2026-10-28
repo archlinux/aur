@@ -4,8 +4,8 @@
 # (repository is being renamed to claude-desktop-extra; the old URL redirects)
 
 pkgname=claude-desktop-extra
-pkgver=3.6556.2
-pkgrel=7
+pkgver=4.29.0
+pkgrel=1
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -58,10 +58,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v3.6556.2-7/claude-desktop-3.6556.2-linux.tar.gz")
-sha256sums_x86_64=('4033edb77c45bcb7468fae864b92bb2d2fc1d7c771458ab763fc81360b7b0b07')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v3.6556.2-7/claude-desktop-3.6556.2-linux-aarch64.tar.gz")
-sha256sums_aarch64=('f23f86d50d2afa72b5660a06a5674cfed339eb856b8dae993d89f04f6c4f576b')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.29.0/claude-desktop-4.29.0-linux.tar.gz")
+sha256sums_x86_64=('6fb31b092dd2b4f3bd22e30b224b1fc67e29977e642a524c01f1b28b58d39097')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.29.0/claude-desktop-4.29.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('a590306bdfa4a9e8c84b51c9c2bc464f02940a8bddc082b5c0a3879d6b19b021')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -70,8 +70,8 @@ package() {
     # Install the official Claude Desktop tree VERBATIM (from the tarball's
     # claude-desktop/ dir): the Electron runtime (binary, chrome-sandbox, .so
     # files, paks, Chromium locales, snapshots), resources/ with our patched
-    # app.asar + app.asar.unpacked + upstream app resources (ion-dist, virtiofsd,
-    # locale JSONs, cowork-linux-helper) + our CU bridges. The tree is verbatim
+    # app.asar + app.asar.unpacked + upstream app resources (ion-dist.asar, virtiofsd,
+    # cowork-linux-helper; locale JSONs live inside app.asar) + our CU bridges. The tree is verbatim
     # except: the Electron entrypoint is ALREADY renamed to "claude", app.asar is
     # our patched build, and the CU bridges are added. Electron auto-loads the
     # exe-adjacent resources/app.asar (OnlyLoadAppFromAsar fuse), so no resources/
