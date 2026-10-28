@@ -1,14 +1,14 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=fastercap
-pkgver=6.0.9
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="Three- and two-dimensional capacitance extraction"
 arch=('x86_64')
-_git_url="https://github.com/martinjankoehler/FasterCap"
+_git_url="https://github.com/iic-jku/FasterCap"
 url="https://www.fastfieldsolvers.com/fastercap.htm"
 license=('LGPL-2.1-or-later')
 depends=(
-	'blas'
+	'openblas'
 	'libstdc++'
 	'libgomp'
 	'libgcc'
@@ -21,23 +21,17 @@ makedepends=(
 	'cmake'
 	'pkg-config'
 	'wxwidgets-gtk3'
+	'cblas'
 )
 options=()
 source=(
 	"${pkgname}::git+${_git_url}#tag=v${pkgver}"
-	"git+https://github.com/martinjankoehler/LinAlgebra#commit=f0ac995736ac3adb73aef67e9ae164a5029a1cd9"
-	"git+https://github.com/ediloren/Geometry#commit=de03ffebfd5013b96102bd60f71c8fe8b73870e2"
-	"0001-fastercap-use-pkg-config-to-find-BLAS.patch"
+	"git+https://github.com/iic-jku/LinAlgebra#commit=c240583108de50758eb9eaa561ad8b6a734f0e08"
+	"git+https://github.com/iic-jku/Geometry#commit=d85b854c20c4089028c3da104c99bcfdfccad957"
 )
-b2sums=('bc13206a3f3051eb2694be1db6abc3df2889fc63eb924353d5a4a0ab86f56b49385a3533257e21b1f4f978cbedb69fe4ca489f60440124e9d5c38bc7814f834e'
-        'a3b8ce40ea54e1f9e4e6e3a761580255257318c29cf6c167f1dea8c68a4b4aebcfc6d6f2a689404a1e9698b0f0c25f553c4a7b9a14515793c5e31ab02f29dd47'
-        '569da9e446152eddb6fc414848aee074b386d089ee11cf33e681faa385c5e388d64be43e7d5892320b7d342210472e83acb068f98e9a4e2786737fcea4f722cc'
-        '864a261c8249bb5c7f984b07708ccad87aa779a6a5060880259b64879a87cbed41a5edd9b562bbfb0bb373973ce4de559442f4758fafb1f6a9d8cd7fbb79793e')
-prepare() {
-	# Patch FasterCap
-	cd "${pkgname}"
-	git apply "../0001-fastercap-use-pkg-config-to-find-BLAS.patch"
-}
+b2sums=('5746f37decdc4558e116147c65a9cd5a0cd420829e82a9afc732030000bf4aecf8a7cc6cdf6ef4a9e030912bb2d6dfa64d6ae0d13ad867d836c5127e3efb8d08'
+        '2f9153f511986e342db67f37d95b26986432c1e2f176a6bf8483ea8abdab62d6e2fdf44c48da11f178abfdc34638af3818293eb587e5e8d96faa2a3389ee5b3c'
+        'bd28a092f6703303f846121dbdcd4667ba2e3464b35a7cad24daab49dc0edebb42a176e229c6c1813f1b1c60d408263a824a4300a622eec37dc113b6fcd5d3f7')
 
 build() {
 	local cmake_options=(
@@ -47,10 +41,10 @@ build() {
 		-D CMAKE_BUILD_TYPE=None
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D FASTFIELDSOLVERS_HEADLESS=ON
+		-D BLA_VENDOR="OpenBLAS"
 	)
 	cmake "${cmake_options[@]}"
 	cmake --build build
-		
 }
 
 package() {

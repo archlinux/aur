@@ -3,3 +3,4 @@
 !.SRCINFO
 !*.patch
 !.gitignore
+!.nvchecker.toml

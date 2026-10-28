@@ -1,0 +1,4 @@
+[fastercap]
+source = "git"
+git = "https://github.com/iic-jku/FasterCap.git"
+prefix = "v"
