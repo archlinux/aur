@@ -1,6 +1,6 @@
 pkgbase = git-protection
 	pkgdesc = Spawn a new program with .git mounted as read-only
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/git-protection
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = git-protection
 	makedepends = libsimple
 	depends = git
 	depends = libsimple
-	source = git-protection-1.0.tar.gz::https://codeberg.org/maandree/git-protection/archive/1.0.tar.gz
-	sha256sums = 852a3fced9517f6509e973b14a0e06ba465f73259bdd81fb86ddf957cb5583b5
+	source = git-protection-1.0.1.tar.gz::https://codeberg.org/maandree/git-protection/archive/1.0.1.tar.gz
+	sha256sums = 90bb71de56198f4365b25e593a604f946d02156862778148d2f72b2bdd9800f8
 
 pkgname = git-protection
