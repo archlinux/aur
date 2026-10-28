@@ -1,8 +1,8 @@
 # Maintainer: Yasir Hassan <abdulebaroo@gmail.com>
 pkgname=hush-git
-pkgver=0.2.0.r4.g2eb4350
+pkgver=0.3.0.r1.g8191c47
 pkgrel=1
-pkgdesc='Quiet Hyprland rice: Quickshell shell, matugen themes and wallpapers'
+pkgdesc='Dynamic island shell for Hyprland, built on Quickshell: bar, launcher, notifications, control center, lock and login in one pill'
 arch=(any)
 url='https://github.com/sirrryasir/hush'
 license=(MIT)
