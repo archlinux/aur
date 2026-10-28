@@ -1,0 +1,16 @@
+pkgbase = obs-hyperate-plugin
+	pkgdesc = OBS Studio plugin for real-time HypeRate heart rate sources and filters
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/alexholzreiter/obs-hyperate-plugin
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = obs-studio
+	depends = libwebsockets
+	source = obs-hyperate-plugin-0.1.12.tar.gz::https://github.com/alexholzreiter/obs-hyperate-plugin/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = 9b8e3d2a087e5c5db5023f8c07a64c519efc4c77324c6e0a41bc4ebf8225c2d6
+
+pkgname = obs-hyperate-plugin
