@@ -1,6 +1,6 @@
 pkgbase = kimi-code-desktop-bin
 	pkgdesc = Kimi Code Desktop - GUI client for the Kimi Code agent (prebuilt binary)
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://kimi.com/code
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = kimi-code-desktop-bin
 	depends = at-spi2-core
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: tray icon
-	noextract = KimiCode-1.1.4-linux-amd64.deb
+	noextract = KimiCode-1.2.0-linux-amd64.deb
 	options = !strip
-	source_x86_64 = KimiCode-1.1.4-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.1.4/KimiCode-1.1.4-linux-amd64.deb
-	sha512sums_x86_64 = 9debc9cc258f25e2ed7481eac6c7c7ef172570a958286c3c3d273e5af85b513a234c131f138c4a205f426563dab7b26bf869f8cb70daef6d0e9f150e8d2fb750
+	source_x86_64 = KimiCode-1.2.0-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.2.0/KimiCode-1.2.0-linux-amd64.deb
+	sha512sums_x86_64 = 50fd04fd56c59ca3beb3bd67194be10ed276ca4134cfc5fed74f529a63c0bd98de1ee54efb2bdf6fc9fbf27dc2fad3a5858732237aae7ea80572d444b27e7be7
 
 pkgname = kimi-code-desktop-bin
