@@ -1,0 +1,10 @@
+post_install() {
+  echo ">>> Start Pocketdesk now and at every sign-in:"
+  echo ">>>   systemctl --user enable --now pocketdesk"
+  echo ">>> Then open Pocketdesk from the app menu and pair your phone from its Pair page."
+}
+
+post_upgrade() {
+  echo ">>> Restart the server to run the new version:"
+  echo ">>>   systemctl --user restart pocketdesk"
+}
