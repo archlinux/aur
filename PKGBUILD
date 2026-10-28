@@ -5,29 +5,31 @@
 
 pkgname=python-thinc
 _pkg="${pkgname#python-}"
-pkgver=8.3.14
+pkgver=10.0.0
 pkgrel=1
-pkgdesc='Practical Machine Learning for NLP'
-arch=('x86_64' 'aarch64')
-url='https://github.com/explosion/thinc'
-license=('MIT')
+pkgdesc="Practical Machine Learning for NLP"
+arch=("x86_64" "aarch64")
+url="https://github.com/explosion/thinc"
+license=("MIT")
 depends=(
-	'python-blis'
-	'python-catalogue'
-	'python-confection'
-	'python-cymem'
-	'python-murmurhash'
-	'python-numpy>=2.0'
-	'python-packaging'
-	'python-pathy'
-	'python-preshed'
-	'python-pydantic'
-	'python-srsly'
-	'python-wasabi')
-makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('python-cupy' 'python-pytorch' 'python-tensorflow')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('35d26c2d3138f6c08bd7c192f493a01e00513b8439ffaf4ce9d2def9b31e6dfa')
+	"python-blis"
+	"python-catalogue"
+	"python-confection"
+	"python-cymem"
+    "python-h5py"
+	"python-murmurhash"
+	"python-numpy>=2.0"
+	"python-packaging"
+	"python-pathy"
+	"python-preshed"
+	"python-pydantic"
+	"python-srsly"
+	"python-wasabi"
+)
+makedepends=("cython" "python-build" "python-installer" "python-setuptools" "python-wheel")
+optdepends=("python-cupy" "python-pytorch" "python-tensorflow")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkg}-${pkgver}.tar.gz")
+sha256sums=("fca954898365f66d9a128eccec51c0151c4298d9bdd6ca2d7094a0686f674b3f")
 
 build() {
 	cd "${_pkg}-${pkgver}"
