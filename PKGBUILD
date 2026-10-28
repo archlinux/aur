@@ -6,7 +6,7 @@
 
 pkgname=lastpass-cli
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LastPass command line interface tool"
 arch=('x86_64')
 url="https://lastpass.com/"
@@ -15,8 +15,8 @@ depends=('openssl' 'curl' 'libxml2')
 makedepends=('asciidoc' 'cmake' 'bash-completion')
 optdepends=('xclip: clipboard support'
             'pinentry: securely read passwords')
-source=("https://github.com/lastpass/lastpass-cli/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('68d10a43a59d5aa376dc08a5624ef3ee405e40191fc3558f4db4043e7d1f7939')
+source=("https://github.com/lastpass/lastpass-cli/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('b65b9c951a9a17b87b8ac0500808c716ef8e5fe6e70f1fd44f23b8385aa30984')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
