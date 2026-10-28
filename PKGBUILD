@@ -6,8 +6,9 @@ pkgdesc="KIO worker for Amazon S3 and compatible storage"
 arch=('x86_64')
 url="https://invent.kde.org/network/kio-s3"
 license=('GPL-2.0-or-later AND CC0-1.0')
-depends=('kio' 'ki18n' 'aws-sdk-cpp' 'kirigami-addons')
-makedepends=('extra-cmake-modules' 'cmake' 'kdoctools' 'kcmutils')
+depends=('aws-sdk-cpp-core' 'aws-sdk-cpp-s3' 'glibc' 'kcmutils' 'kconfig' 'kcoreaddons' 'ki18n' 'kio'
+         'kirigami' 'kirigami-addons' 'libstdc++' 'qt6-base' 'qt6-declarative')
+makedepends=('extra-cmake-modules' 'cmake' 'kdoctools')
 conflicts=('kio-s3-git')
 source=("https://download.kde.org/stable/kio-s3/$pkgname-$pkgver.tar.xz")
 sha256sums=('ce2c71ad99b553a89a0b265e1817b594ff688c3a9ddaa39a7a49046ba77211aa')
