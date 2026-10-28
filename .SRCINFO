@@ -1,19 +1,18 @@
 pkgbase = lyfy
 	pkgdesc = Declarative system maintenance and Git-backed host state for Arch Linux
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/partanskiy/lyfy
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = python
 	depends = glibc
 	depends = libgcc
 	depends = git
 	depends = pacman
 	depends = systemd
 	options = !debug
-	source = lyfy-0.1.0.tar.gz::https://github.com/partanskiy/lyfy/releases/download/v0.1.0/lyfy-v0.1.0-source.tar.gz
-	sha256sums = ba06631f48ec8583b99d0a74164e8ecc992dad61bbd0e98b10e4ab8716e6c4c2
+	source = lyfy-0.1.1.tar.gz::https://github.com/partanskiy/lyfy/releases/download/v0.1.1/lyfy-v0.1.1-source.tar.gz
+	sha256sums = cbbfa3fab01f170c2c0adeb8e235b9e8ec0f569b5d46b07d1e3cf68f897b8035
 
 pkgname = lyfy
