@@ -6,7 +6,7 @@ _appname=${_gitname%-tui}
 pkgname=${_appname}-bin
 pkgdesc="🖱️ Modern mouse-first terminal file manager"
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -38,10 +38,10 @@ sha256sums=('f667ce20255b2d4ff9dcb64f5b3fcf401d41846f637e5a9236f8ed365c63712d'
             'f14cf1f2e4b37e488cb1a0b73a2043f5a2045453052a3d98a5811ea05e3fa7a9'
             'd9da7748c6941a0a5ea0c77ffdada2b98eddd99245db443f3a78957c68b644f0'
             'e76dc74f3a2d18002ebe4273b4e044a5a03c9aa5bd3bf552c91471fecdc4c601'
-            '1a1cfef34f4ceb5f6433f18293db05a8ea732d2bbe02608ecbd4552e0e847103'
+            '4779613dff4a1cc90941770fcebc907cebb7092cdcc907c4b7cc07d1f886a79c'
             'b2d4efd70a3897fa8ccfa35574c646be83ad2fd1459cf0e5661d2f48187cad4f')
-sha256sums_x86_64=('b3d9a7cf8855501d79cbef230eedc730ec8a84acaaa8cf5b33be5cd9282c6d0e')
-sha256sums_aarch64=('03643e71718fdeabf15b1ca90e7f4a85119aaec013c6489b0c2cbf2fa9430e1f')
+sha256sums_x86_64=('5b3db69950a1a12addd14fc3c310fe29805ad0b0295fdf2d484004c518bc4d9f')
+sha256sums_aarch64=('a198a1cb593a0cc53731e6693c35dc81b8645e8e408503907be05c831e1e3d8d')
 
 
 package() {
