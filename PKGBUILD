@@ -5,7 +5,7 @@
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.21.2.r7047.g41952ea
+pkgver=5.21.2.r7052.gda74ff6
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -78,6 +78,7 @@ package() {
   install -Dm644 _system-bridge "$pkgdir/usr/share/zsh/site-functions/_system-bridge"
   install -Dm644 system-bridge.fish "$pkgdir/usr/share/fish/vendor_completions.d/system-bridge.fish"
   install -Dm644 .scripts/linux/system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
+  install -Dm644 .scripts/linux/60-system-bridge-rapl.rules "$pkgdir/usr/lib/udev/rules.d/60-system-bridge-rapl.rules"
   install -Dm644 .resources/system-bridge-dimmed.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
   install -Dm644 .resources/system-bridge-dimmed-16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/system-bridge.png"
   install -Dm644 .resources/system-bridge-dimmed-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/system-bridge.png"
