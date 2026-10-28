@@ -1,6 +1,6 @@
 pkgbase = command-code-desktop
 	pkgdesc = Desktop app for Command Code, an AI coding agent that learns your coding taste
-	pkgver = 0.1.58
+	pkgver = 0.1.60
 	pkgrel = 1
 	url = https://commandcode.ai/desktop
 	install = command-code-desktop.install
@@ -20,9 +20,9 @@ pkgbase = command-code-desktop
 	replaces = commandcode-bin
 	options = !strip
 	options = !debug
-	source = command-code-desktop-0.1.58.deb::https://github.com/CommandCodeAI/desktop/releases/download/v0.1.58/CommandCode-0.1.58-amd64.deb
+	source = command-code-desktop-0.1.60.deb::https://github.com/CommandCodeAI/desktop/releases/download/v0.1.60/CommandCode-0.1.60-amd64.deb
 	source = LICENSE-command-code
-	sha256sums = ec1a138cf2927d67026dc96c6879ce0f04590ebc774572ce7cf686a342814442
+	sha256sums = a26168f5ba646cb1e281008e9be92827a94bcc389dada65c75c14b90930d122e
 	sha256sums = 0ecb7f651dd3c281515717e87240db1e417cd846cd521b4661512868d2f03768
 
 pkgname = command-code-desktop
