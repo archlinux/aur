@@ -1,6 +1,6 @@
 pkgbase = cpuinf-git
 	pkgdesc = tiny CPU-Z clone for x86 linux
-	pkgver = r1.6dedcdc
+	pkgver = r3.36ab133
 	pkgrel = 1
 	url = https://github.com/Naharashu/cpuinf
 	arch = x86_64
@@ -8,13 +8,15 @@ pkgbase = cpuinf-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = mold
-	makedepends = cpuinfo
-	makedepends = fltk
 	depends = glibc
+	depends = cpuinfo
+	depends = cairo
+	depends = fltk
+	depends = gcc-libs
 	provides = cpuinf
 	conflicts = cpuinf
-	source = cpuinf-git::git+ssh://git@github.com/Naharashu/cpuinf.git
+	options = !debug
+	source = cpuinf-git::git+https://github.com/Naharashu/cpuinf.git
 	md5sums = SKIP
 
 pkgname = cpuinf-git

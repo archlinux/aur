@@ -1,16 +1,17 @@
 pkgname=cpuinf-git
-pkgver=r1.6dedcdc
+pkgver=r3.36ab133
 pkgrel=1
 pkgdesc="tiny CPU-Z clone for x86 linux"
 arch=('x86_64')
 url="https://github.com/Naharashu/cpuinf"
 license=('MIT')
-depends=('glibc')
-makedepends=('git' 'cmake' 'ninja' 'mold' 'cpuinfo' 'fltk')
+depends=('glibc' 'cpuinfo' 'cairo' 'fltk' 'gcc-libs')
+makedepends=('git' 'cmake' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("cpuinf-git::git+ssh://git@github.com/Naharashu/cpuinf.git")
+source=("${pkgname}::git+https://github.com/Naharashu/cpuinf.git")
 md5sums=('SKIP')
+options=('!debug')
 
 pkgver() {
   cd "${pkgname}"
@@ -27,4 +28,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"  
 }
