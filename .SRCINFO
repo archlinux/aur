@@ -1,6 +1,6 @@
 pkgbase = mrstreamer-bin
 	pkgdesc = IPTV player for Xtream Codes and M3U subscriptions, with live TV, programme guide, movies and series
-	pkgver = 0.0.20
+	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://mrstreamer.app
 	arch = x86_64
@@ -40,15 +40,15 @@ pkgbase = mrstreamer-bin
 	optdepends = libnotify: desktop notifications
 	optdepends = libpulse: PulseAudio or PipeWire audio
 	optdepends = org.freedesktop.secrets: credential storage in the desktop keyring
-	provides = mrstreamer=0.0.20
+	provides = mrstreamer=0.0.21
 	conflicts = mrstreamer
 	conflicts = mr-streamer
 	conflicts = mr-streamer-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/Mr-Streamer-OSS/MrStreamer/releases/download/v0.0.20/Mr-Streamer-0.0.20-linux-amd64.deb
-	source = mrstreamer-LICENSE::https://raw.githubusercontent.com/Mr-Streamer-OSS/MrStreamer/c06de83c04af7436bed62078d93857ff9c1fed30/LICENSE
-	sha256sums = 7c216ec653341148c720b07afb57644b6afa27341ac36055bc64dc49479e33f9
+	source = https://github.com/Mr-Streamer-OSS/MrStreamer/releases/download/v0.0.21/Mr-Streamer-0.0.21-linux-amd64.deb
+	source = mrstreamer-LICENSE::https://raw.githubusercontent.com/Mr-Streamer-OSS/MrStreamer/a57ec34a524357805defa6431aa45eb0c8c757eb/LICENSE
+	sha256sums = cb39cafcbe753af2ce09c882fab748c2e034437e856a6e391d1ad256d861836a
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = mrstreamer-bin
