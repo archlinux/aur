@@ -26,7 +26,7 @@ optdepends=(
   'noto-fonts-cjk: 中文界面字体'
 )
 
-sha256sums_x86_64=('976222ebdce31c7ee81201afcee51b37bca235e080101628ad1f516ce8933ed3'
+sha256sums_x86_64=('b916c9907c8727c3f6a8304dbc5b35d499241fb21be75cda5614a24789f06264'
                    'ead5138c4441ea1cc242d402e10037812e02b04b893d6d0638379ae04c1dac8e'
                    '7dea83d1504ef9f7ff6bd7276d04711a0a6a4c99f2c6798dfe09f267d6c1b81d'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
