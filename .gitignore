@@ -28,4 +28,5 @@ PSResourceGet/
 Microsoft.PowerShell.Archive/
 PSReadLine/
 Pager/
+MarkdownRender/
 ThreadJob/

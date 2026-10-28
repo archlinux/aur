@@ -1,7 +1,7 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework
 	pkgver = 7.6.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://microsoft.com/PowerShell
 	install = powershell.install
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = powershell
 	checkdepends = procps-ng
 	checkdepends = xclip
 	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-jsonschema-net-7
+	makedepends = dotnet-markdig
 	makedepends = dotnet-newtonsoft-json
 	makedepends = cmake
 	makedepends = gtest
@@ -46,6 +48,7 @@ pkgbase = powershell
 	source = git+https://github.com/PowerShell/Microsoft.PowerShell.Archive.git#commit=87428e309898a728fb0287eab31b5cd214ceb9ba
 	source = git+https://github.com/PowerShell/PSReadLine.git#tag=v2.4.5
 	source = git+https://github.com/PowerShell/Pager.git#commit=965675f549dfa074eb02a47ca6d6e07d0ee7771f
+	source = git+https://github.com/PowerShell/MarkdownRender.git#commit=c216c18b1fb275aec0a3e84094bd0e1a4c5da685
 	source = git+https://github.com/PowerShell/ThreadJob.git#commit=21d19c867ef05d22fe70aa39e45ab0c479a930e0
 	source = psmodulepath-combined-paths.patch
 	source = cim-windows-only.patch
@@ -65,6 +68,7 @@ pkgbase = powershell
 	sha512sums = 6c3004608cc1d2089712e8400001a4557c0de8e1e7e755184cd3e683e6b2ba497f373c1f77cd3a52d2fcd2045ee089957095d54fb899e02bf7185cbe8ad17ccd
 	sha512sums = 4b4ac87e70c04e4d85ac4b772024c3cf5aec574259654bc9f58f9d06cccacfd84d68415de87e5804f7beb33ae8679b47d58221a014c7b55e960eba93e70cfaae
 	sha512sums = 177593575d59629bb9f8020a52205c9617170b3212033ab21787d8739ac3af3d283b706ee607f29d6473415cee9ed5a8d23a4d53e90d52360a72f796f9b1bda8
+	sha512sums = f5527cf012bd495bc54107e446448b12895d78c0f1653ec29b9dc1110d028cdc36feef7dbc281ae70aae14b735156024ccaac3f3049f7cf4a7555116eaf3eef6
 	sha512sums = 50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42
 	sha512sums = 79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423
 	sha512sums = 96ce607ab0c3d5a8d1670913d09ebc5575cad958fc427641b9d2c9e6982997c6659c6f20d9c0df1ebae57c77bc9efcf43fff39753a9821efad5b0dd35f190999
@@ -84,6 +88,7 @@ pkgbase = powershell
 	b2sums = 55a484f6d835a08384349ed04649ab41730aa0619129b1aacf21431021b238810051885eec49d503627b75ee3864202e0aa4caaa0a3588692d5a9c8dffa19f42
 	b2sums = fd6b6f6044b8b9f2581a21f5cfb6c4e030ea895cbc8c0498925632f0d863cb272b9fc061134c14aece172d82a6f0a0f4f663ee4aa4169f6912b0c6e746af2eb4
 	b2sums = 83ae40c17c7c8f2f201049f81def4081262077f90e703cc2e7dcbb52f777b4476053a87861d572f9b24da0977496f15e148b1130c14951854f5b9fb60d2c9962
+	b2sums = 63222fc3995a2090c72804bcdb4f9389f0aea2d05c780698dae0648e53b512236e3c91c3bbe0777df9330c45bb40ab2cf080b4bf9403064f069657ee522ddec3
 	b2sums = c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170
 	b2sums = a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a
 	b2sums = 8384011144b56696fbbf47a2c751cfbdbcb1f0de858da784c98128838fe86a3fd0affca03fc62377d8e2b3af3ba413c1c8cdcde5c89d73bb20a706c5796aefe4

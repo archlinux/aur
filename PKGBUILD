@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -49,6 +49,8 @@ _archivecommit="87428e309898a728fb0287eab31b5cd214ceb9ba"
 _threadjobcommit="21d19c867ef05d22fe70aa39e45ab0c479a930e0"
 # - Microsoft.PowerShell.Pager 1.0.0, a dependency of PSReadLine: last commit of the archived repository
 _pagercommit="965675f549dfa074eb02a47ca6d6e07d0ee7771f"
+# Microsoft.PowerShell.MarkdownRender 7.2.1: last commit of its repository
+_markdownrendercommit="c216c18b1fb275aec0a3e84094bd0e1a4c5da685"
 _psresourcegetver="1.2.0"
 _psreadlinever="2.4.5"
 depends=(
@@ -69,6 +71,8 @@ optdepends=('openssh: PowerShell Remoting over ssh'
 makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
   # Libraries built from source, see _nuget_feeds()
+  dotnet-jsonschema-net-7
+  dotnet-markdig
   dotnet-newtonsoft-json
   cmake
   gtest
@@ -105,6 +109,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/Microsoft.PowerShell.Archive.git#commit=$_archivecommit"
   "git+https://github.com/PowerShell/PSReadLine.git#tag=v$_psreadlinever"
   "git+https://github.com/PowerShell/Pager.git#commit=$_pagercommit"
+  "git+https://github.com/PowerShell/MarkdownRender.git#commit=$_markdownrendercommit"
   "git+https://github.com/PowerShell/ThreadJob.git#commit=$_threadjobcommit"
   "psmodulepath-combined-paths.patch"
   "cim-windows-only.patch"
@@ -124,6 +129,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '6c3004608cc1d2089712e8400001a4557c0de8e1e7e755184cd3e683e6b2ba497f373c1f77cd3a52d2fcd2045ee089957095d54fb899e02bf7185cbe8ad17ccd'
             '4b4ac87e70c04e4d85ac4b772024c3cf5aec574259654bc9f58f9d06cccacfd84d68415de87e5804f7beb33ae8679b47d58221a014c7b55e960eba93e70cfaae'
             '177593575d59629bb9f8020a52205c9617170b3212033ab21787d8739ac3af3d283b706ee607f29d6473415cee9ed5a8d23a4d53e90d52360a72f796f9b1bda8'
+            'f5527cf012bd495bc54107e446448b12895d78c0f1653ec29b9dc1110d028cdc36feef7dbc281ae70aae14b735156024ccaac3f3049f7cf4a7555116eaf3eef6'
             '50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42'
             '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
             '96ce607ab0c3d5a8d1670913d09ebc5575cad958fc427641b9d2c9e6982997c6659c6f20d9c0df1ebae57c77bc9efcf43fff39753a9821efad5b0dd35f190999'
@@ -143,6 +149,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '55a484f6d835a08384349ed04649ab41730aa0619129b1aacf21431021b238810051885eec49d503627b75ee3864202e0aa4caaa0a3588692d5a9c8dffa19f42'
         'fd6b6f6044b8b9f2581a21f5cfb6c4e030ea895cbc8c0498925632f0d863cb272b9fc061134c14aece172d82a6f0a0f4f663ee4aa4169f6912b0c6e746af2eb4'
         '83ae40c17c7c8f2f201049f81def4081262077f90e703cc2e7dcbb52f777b4476053a87861d572f9b24da0977496f15e148b1130c14951854f5b9fb60d2c9962'
+        '63222fc3995a2090c72804bcdb4f9389f0aea2d05c780698dae0648e53b512236e3c91c3bbe0777df9330c45bb40ab2cf080b4bf9403064f069657ee522ddec3'
         'c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170'
         'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
         '8384011144b56696fbbf47a2c751cfbdbcb1f0de858da784c98128838fe86a3fd0affca03fc62377d8e2b3af3ba413c1c8cdcde5c89d73bb20a706c5796aefe4'
@@ -180,17 +187,27 @@ _nupkg_info() {
 #   we're building and running with ($1 is its runtime version). This includes the runtime, apphost and
 #   crossgen packs. Arch Linux ARM has no source-built .NET.
 # - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*).
-#   All references to them are set to the installed version.
+#   References to them are set to the installed version with the same major version, or the newest
+#   installed one if there's none, so a newer major version installed alongside doesn't break the build.
 # - nuget.org for everything else
 _nuget_feeds() {
   local _systemfeed=/usr/share/dotnet/nuget-packages
-  local _systempackages=() _localpackages=() _nupkg _id _version _artifacts
+  local _systempackages=() _localpackages=() _nupkg _id _version _artifacts _csproj _reference
+  local -A _systemversions=()
   for _nupkg in "$_systemfeed"/*.nupkg; do
     [[ -f "$_nupkg" ]] || continue
     read -r _id _version < <(_nupkg_info "$_nupkg")
-    _systempackages+=("$_id")
-    find . -type f -name "*.csproj" -exec sed -i -E \
-      's|(<PackageReference Include="'"${_id//./\\.}"'" Version=")[^"]*"|\1'"$_version"'"|' {} +
+    [[ -v "_systemversions[$_id]" ]] || _systempackages+=("$_id")
+    _systemversions[$_id]+="$_version"$'\n'
+  done
+  for _id in "${_systempackages[@]}"; do
+    while IFS=: read -r _csproj _reference; do
+      _reference="${_reference##*Version=\"}"
+      _reference="${_reference%\"}"
+      _version=$(grep -E "^${_reference%%.*}\." <<<"${_systemversions[$_id]}" | sort -V | tail -1 || true)
+      [[ -n "$_version" ]] || _version=$(grep . <<<"${_systemversions[$_id]}" | sort -V | tail -1)
+      sed -i -E 's|(<PackageReference Include="'"${_id//./\\.}"'" Version=")[^"]*"|\1'"$_version"'"|' "$_csproj"
+    done < <(grep -rHoE '<PackageReference Include="'"${_id//./\\.}"'" Version="[^"]+"' --include='*.csproj' .)
   done
 
   mkdir -p "$srcdir/nuget-local"
@@ -292,6 +309,19 @@ prepare() {
   rm global.json
   dotnet new globaljson --sdk-version "$_sdkver"
 
+  # Microsoft.PowerShell.MarkdownRender used to be part of this repository, until it moved into its own
+  # and was used as package from nuget.org (#14090). It's put back and used as project again.
+  local _markdownrender=src/Microsoft.PowerShell.MarkdownRender
+  local _utility=src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj
+  local _markdownrenderver
+  _markdownrenderver=$(sed -n -E 's|.*<PackageReference Include="Microsoft.PowerShell.MarkdownRender" Version="([^"]+)".*|\1|p' "$_utility")
+  cp -r "$srcdir/MarkdownRender/src" "$_markdownrender"
+  sed -i -e 's|<DelaySign>true</DelaySign>|<PublicSign>true</PublicSign>|' \
+    -e 's|<TargetFramework>|<Version>'"$_markdownrenderver"'</Version>\n    &|' \
+    "$_markdownrender/Microsoft.PowerShell.MarkdownRender.csproj"
+  sed -i -E 's|<PackageReference Include="Microsoft.PowerShell.MarkdownRender" Version="[^"]+" />|<ProjectReference Include="../Microsoft.PowerShell.MarkdownRender/Microsoft.PowerShell.MarkdownRender.csproj" />|' \
+    "$_utility"
+
   ## Switch-PSNugetConfig()
   _nuget_feeds "$_runtimever"
   sed -i -e 's|<add key="powershell".*$|<add key="psgallery" value="https://www.powershellgallery.com/api/v2/" />|g' \
@@ -300,6 +330,12 @@ prepare() {
   sed -i -e 's|</configuration>|  <packageSourceMapping>\n    <clear />\n  </packageSourceMapping>\n</configuration>|' \
     src/Modules/nuget.config \
     test/tools/Modules/nuget.config
+
+  # Packages from the system feed may satisfy a dependency with a newer version than its minimum
+  # (e.g. Json.More.Net 2.2.0 for JsonPointer.Net's >= 2.1.1), keep that a warning
+  # shellcheck disable=SC2016
+  sed -i 's|<TreatWarningsAsErrors>true</TreatWarningsAsErrors>|&\n    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1603</WarningsNotAsErrors>|' \
+    PowerShell.Common.props test/Test.Common.props
 
   # There's no point to run analyzers in a PKGBUILD
   sed -i -e '/PackageReference/d' Analyzers.props
