@@ -337,6 +337,9 @@ function Invoke-ReadyToRunCompiler {
     )
     $platformNames = [System.Collections.Generic.HashSet[string]]::new([string[]] $platformAssemblies.BaseName, [StringComparer]::OrdinalIgnoreCase)
 
+    # The images are for the architecture PowerShell runs on, e.g. x64 or arm64
+    $targetArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
+
     foreach ($module in Get-ChildItem -Directory -Path $ModulePath) {
         # PSReadLine's netstd Polyfiller is only loaded by Windows PowerShell, PowerShell 7 uses net6plus
         $assemblies = @(Get-ChildItem -Recurse -File -Path $module.FullName -Filter '*.dll' |
@@ -350,7 +353,7 @@ function Invoke-ReadyToRunCompiler {
             $references = @($platformAssemblies) + @($assemblies | Where-Object FullName -NE $assembly.FullName)
             $referenceArgs = foreach ($reference in $references) { '-r', $reference.FullName }
             $output = "$($assembly.FullName).r2r"
-            & $Crossgen2Path $assembly.FullName --out $output --targetos linux --targetarch x64 -O @referenceArgs | Out-Host
+            & $Crossgen2Path $assembly.FullName --out $output --targetos linux --targetarch $targetArch -O @referenceArgs | Out-Host
             if ($LASTEXITCODE -ne 0) {
                 throw "crossgen2 failed for $($assembly.FullName) with exit code $LASTEXITCODE"
             }

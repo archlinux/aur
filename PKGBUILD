@@ -28,15 +28,13 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform automation and configuration tool/framework"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
 license=('MIT')
 options=('!debug')
 _dotnetsdkver="10.0"
-# RID of the source-built .NET, whose packs come with dotnet-source-built-artifacts
-_rid="arch-x64"
 # PowerShell-Native has no tag for the version PowerShell uses (700.0.2), it was published from this commit
 _psnativecommit="f24d5494b373de20ec3e3d2fdc7c3fc98af1f9f1"
 # The modules PowerShell bundles (src/Modules/PSGalleryModules.csproj) are built from source as well.
@@ -70,13 +68,17 @@ optdepends=('openssh: PowerShell Remoting over ssh'
   'powershell-editor-services: Language server and debug adapter for PowerShell editor support')
 makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
-  dotnet-source-built-artifacts-"$_dotnetsdkver"
+  # Libraries built from source, see _nuget_feeds()
+  dotnet-newtonsoft-json
   cmake
   gtest
   git
   rsync
-  ruby-ronn
+  ruby-ronn-ng
 )
+# Arch Linux ARM has no .NET packages, there it's Microsoft's build from the AUR (dotnet-core-bin)
+# and the runtime packs come from nuget.org
+makedepends_x86_64=(dotnet-source-built-artifacts-"$_dotnetsdkver")
 checkdepends=(
   # ASP.NET is needed for test/tools/WebListener
   aspnet-targeting-pack-"$_dotnetsdkver"
@@ -127,9 +129,9 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '96ce607ab0c3d5a8d1670913d09ebc5575cad958fc427641b9d2c9e6982997c6659c6f20d9c0df1ebae57c77bc9efcf43fff39753a9821efad5b0dd35f190999'
             '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
             '2a183bbbdbc42f55328f462bed4fce0752291395ae91c263e11e921c312f94d0c99b2180fce1e4f98e9e33af68fe83d8138217abe4a995fc7a52f442f20b7422'
-            'fa5e7218102fd109f9757273440a8cd5c04520dd306170150e8fc71aba2184df6149382fae98805f541370819aafbadf44c9928c91a7b6c40ff015a8d81b9c0e'
+            'd2a3483119d88d8f6cacc04733dbe34f6291cad33fc9ebee7ceed91dd6968c2a517b078558ec1935393cf7f012e99125d99f546f5bfd1ed4f67d3b02c9c9573e'
             'b864725927d490e054a8d5d27f36b165998d6bdf2f8a50b65798313fe199533b4c1c91728f09114009ff484c5224db1f55bde8a89266045ceda212402d5b5a9e'
-            '0cd2eda2ffe66782a6a4ed2135559924358c656999800b6034e6b8ef4c50591509518897afec25236fdab9e47887fcbef538b1f4e7295b395bb63a19aeeac6e2'
+            '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
             '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
             '355d5bdb418cf2f9b7f19c9a4433fc350aca62e707669b9cb2b6661d9a12828e60158b8f58a8600e9566c09750f0c47c4144ec20af8681c8aba87a8718f227f5')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
@@ -146,9 +148,9 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '8384011144b56696fbbf47a2c751cfbdbcb1f0de858da784c98128838fe86a3fd0affca03fc62377d8e2b3af3ba413c1c8cdcde5c89d73bb20a706c5796aefe4'
         '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
         '8f501e2b35ebba03da6cdec49a2055640bba8a8fcedbdefc5c29b7c307217c4feeda08f20406cca3224a4f2761ca8cab786aaea63fdb0e8e9ac42e6745897490'
-        '523c20d3934a20d8a557ba3325b45a5a10fcb86c99777814398b114e9c86befb30ecdee1a58019eb831a6397bcd714583962a499a4d489e7c54a301d2b0fdbe1'
+        '574ebc423744f2f72234b02666ef1c1add075cf37296a66ec00b94034130414fcf32e0048d0d65700318d5f59b1fd1d15c9409eacec31535374e5c65bac6f02c'
         '597218622a8435107bdba07ca1db412b4240dd416acea6bf1334ae02fd94d7f1950e9a5d006bede2ed1f5588e842045dffa6362e03e45644f5a7ebc03fbe566f'
-        '35d997b3a0a577d8cfb99ab700c5d30c3e781fdc1d50b8fca56af02c05033710a049818dbd9853c87e95f04e1771828e39b7b21c81a2ba6984a98896b1582e59'
+        '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
         '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
         '84ab1ef0c546607fa509e4c71ab8528d5a6ff8b120a0dca14ccd7ec0ae39706cbb6c0e0cb65360dd14b74bb225b393c85d70d813602d1877efa4d720cc193374')
 
@@ -160,6 +162,81 @@ _dotnet_env() {
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
+  # RID of the .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's build
+  _rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+}
+
+# Prints the ID and version of a NuGet package ($1)
+_nupkg_info() {
+  local _nuspec
+  _nuspec="$(bsdtar -xOf "$1" '*.nuspec')"
+  printf '%s %s\n' \
+    "$(sed -n -E 's|.*<id>([^<]+)</id>.*|\1|p' <<<"$_nuspec" | head -1)" \
+    "$(sed -n -E 's|.*<version>([^<]+)</version>.*|\1|p' <<<"$_nuspec" | head -1)"
+}
+
+# Writes the nuget.config of the PowerShell repository. Packages are taken from:
+# - dotnet-source-built-artifacts, the packages of the source-built .NET, so they exactly match the .NET
+#   we're building and running with ($1 is its runtime version). This includes the runtime, apphost and
+#   crossgen packs. Arch Linux ARM has no source-built .NET.
+# - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*).
+#   All references to them are set to the installed version.
+# - nuget.org for everything else
+_nuget_feeds() {
+  local _systemfeed=/usr/share/dotnet/nuget-packages
+  local _systempackages=() _localpackages=() _nupkg _id _version _artifacts
+  for _nupkg in "$_systemfeed"/*.nupkg; do
+    [[ -f "$_nupkg" ]] || continue
+    read -r _id _version < <(_nupkg_info "$_nupkg")
+    _systempackages+=("$_id")
+    find . -type f -name "*.csproj" -exec sed -i -E \
+      's|(<PackageReference Include="'"${_id//./\\.}"'" Version=")[^"]*"|\1'"$_version"'"|' {} +
+  done
+
+  mkdir -p "$srcdir/nuget-local"
+  for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
+    [[ -f "$_artifacts" ]] || continue
+    bsdtar -xf "$_artifacts" -C "$srcdir/nuget-local" '*.nupkg'
+  done
+  for _nupkg in "$srcdir"/nuget-local/*.nupkg; do
+    [[ -f "$_nupkg" ]] || continue
+    read -r _id _version < <(_nupkg_info "$_nupkg")
+    if [[ "$_version" == "$1" ]] && [[ ! " ${_systempackages[*]} " == *" $_id "* ]]; then
+      _localpackages+=("$_id")
+    fi
+  done
+
+  {
+    cat <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="dotnet-source-built" value="$srcdir/nuget-local" />
+    <add key="dotnet-packages" value="$_systemfeed" />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+  </packageSources>
+  <packageSourceMapping>
+    <clear />
+EOF
+    if ((${#_localpackages[@]})); then
+      echo '    <packageSource key="dotnet-source-built">'
+      printf '      <package pattern="%s" />\n' "${_localpackages[@]}"
+      echo '    </packageSource>'
+    fi
+    if ((${#_systempackages[@]})); then
+      echo '    <packageSource key="dotnet-packages">'
+      printf '      <package pattern="%s" />\n' "${_systempackages[@]}"
+      echo '    </packageSource>'
+    fi
+    cat <<EOF
+    <packageSource key="nuget.org">
+      <package pattern="*" />
+    </packageSource>
+  </packageSourceMapping>
+</configuration>
+EOF
+  } >nuget.config
 }
 
 prepare() {
@@ -209,40 +286,7 @@ prepare() {
   dotnet new globaljson --sdk-version "$_sdkver"
 
   ## Switch-PSNugetConfig()
-  # Packages of the source-built .NET are taken from dotnet-source-built-artifacts, so that they exactly
-  # match the .NET we're building and running with. This includes the runtime, apphost and crossgen packs.
-  # Everything else comes from the public nuget.org feed.
-  local _artifacts=(/usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz)
-  mkdir -p "$srcdir/nuget-local"
-  bsdtar -xf "${_artifacts[0]}" -C "$srcdir/nuget-local" '*.nupkg'
-  local _localpackages=() _nupkg _nuspec _id _version
-  for _nupkg in "$srcdir"/nuget-local/*.nupkg; do
-    _nuspec="$(bsdtar -xOf "$_nupkg" '*.nuspec')"
-    _id="$(sed -n -E 's|.*<id>([^<]+)</id>.*|\1|p' <<<"$_nuspec" | head -1)"
-    _version="$(sed -n -E 's|.*<version>([^<]+)</version>.*|\1|p' <<<"$_nuspec" | head -1)"
-    if [[ "$_version" == "$_runtimever" ]]; then
-      _localpackages+=("$_id")
-    fi
-  done
-  cat >nuget.config <<EOF
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <clear />
-    <add key="dotnet-source-built" value="$srcdir/nuget-local" />
-    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
-  </packageSources>
-  <packageSourceMapping>
-    <clear />
-    <packageSource key="dotnet-source-built">
-$(printf '      <package pattern="%s" />\n' "${_localpackages[@]}")
-    </packageSource>
-    <packageSource key="nuget.org">
-      <package pattern="*" />
-    </packageSource>
-  </packageSourceMapping>
-</configuration>
-EOF
+  _nuget_feeds "$_runtimever"
   sed -i -e 's|<add key="powershell".*$|<add key="psgallery" value="https://www.powershellgallery.com/api/v2/" />|g' \
     src/Modules/nuget.config \
     test/tools/Modules/nuget.config
@@ -285,28 +329,17 @@ EOF
 
       if [[ -f "${_runtimepath}/${_packname}.dll" ]]; then
         sed -i -E 's|.*"'"$_packname"'".*|<FrameworkReference Include="'"$_packname"'"/>|' "$_csproj"
-      elif [[ "$_packname" =~ runtime\..* ]] && [[ ! "$_packname" == *"linux-x64"* ]]; then
+      elif [[ "$_packname" =~ runtime\..* ]] && [[ ! "$_packname" == *"linux-${_rid#*-}"* ]]; then
         sed -i "/\"${_packname}\"/d" "$_csproj"
       fi
     done < <(grep PackageReference "$_csproj")
   done < <(find . -type f -name "*.csproj")
 
-  dotnet new tool-manifest --force
-  dotnet tool install dotnet-outdated-tool
-  dotnet tool restore
-
   # Align all references to .NET runtime packages (versioned like the runtime itself) with the
-  # version of the source-built .NET, and keep dotnet outdated from upgrading them again.
+  # version of the .NET we're building with.
   # Other .NET packages like System.ServiceModel.* use build numbers as patch version (e.g. 10.0.652802).
   find . -type f -name "*.csproj" -exec sed -i -E \
     's|(<PackageReference Include="[^"]+" Version=")'"${_dotnetsdkver//./\\.}"'\.[0-9]{1,3}"|\1'"$_runtimever"'"|' {} +
-  local _outdated_excludes=() _package
-  while read -r _package; do
-    _outdated_excludes+=(--exclude "$_package")
-  done < <(grep -rhoE '<PackageReference Include="[^"]+" Version="'"${_runtimever//./\\.}"'"' --include='*.csproj' . |
-    sed -E 's/.*Include="([^"]+)".*/\1/' | sort -u)
-  dotnet outdated --upgrade --exclude "JsonSchema.Net" "${_outdated_excludes[@]}"
-  dotnet outdated --upgrade --version-lock major --include "JsonSchema.Net"
 
   # Replicating build.psm1:Start-PSBuild()
   ## Restore-PSPackage()
