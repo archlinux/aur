@@ -4,14 +4,16 @@
 
 pkgname=faugus-launcher-bin
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and lightweight app for running Windows games using UMU-Launcher (upstream binary)"
 arch=('any')
 url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
+# Upstream's own list (packaging/arch/PKGBUILD). No umu-launcher: the app
+# downloads its own umu-run into the user's data folder and only runs that.
 depends=('gtk4' 'libadwaita' 'libmanette' 'icoextract' 'python'
          'python-gobject' 'python-requests' 'python-pillow' 'python-vdf'
-         'python-psutil' 'python-dbus' 'umu-launcher')
+         'python-psutil')
 optdepends=('mangohud: performance overlay'
             'gamemode: feral gamemode integration')
 provides=('faugus-launcher')
