@@ -1,0 +1,17 @@
+pkgbase = pombes-cleaner
+	pkgdesc = A simple interactive Pacman cache cleaner for Arch Linux
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/pombes-cleaner
+	arch = any
+	license = MIT
+	depends = bash
+	depends = pacman-contrib
+	depends = sudo
+	depends = coreutils
+	source = pombes-cleaner.sh
+	source = LICENSE
+	sha256sums = f3778c3887ff4b154b0813d9cc133ce83630a85eb2dcb250552af98668448995
+	sha256sums = a37931cbf6c89f5e32b290f5e37ce816169a525ce0838a54d2bebd0b1282764e
+
+pkgname = pombes-cleaner
