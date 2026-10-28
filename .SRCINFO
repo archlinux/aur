@@ -1,6 +1,6 @@
 pkgbase = agentics-agentboard
 	pkgdesc = Agentics AgentBoard - the desktop PowerBoard host, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher
-	pkgver = 0.3.327
+	pkgver = 0.3.328
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = agentics-agentboard
 	depends = agentics
 	options = !strip
 	options = !debug
-	source = agentics-agentboard-0.3.327-x86_64::https://repo.agentics.co.za/x86_64/agentics-agentboard-0.3.327-x86_64
-	sha512sums = f8626346a8b2063a8284154b465ffa78a2f724d32b16abd4516c34977624e7026380ad37f7ff22175e0c9e5bb88a5f6b9f95e8bdc77ed7ee3157e263ea50e7c5
+	source = agentics-agentboard-0.3.328-x86_64::https://repo.agentics.co.za/x86_64/agentics-agentboard-0.3.328-x86_64
+	sha512sums = e3320281d2750feb1947e4831bfa8237fc12be7ff1f8b3e34f906c262ad597b71b3b8c33f4b525d660acc686a070ba2b94d25a21286d852734f26fb660f61a74
 
 pkgname = agentics-agentboard
