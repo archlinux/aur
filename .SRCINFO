@@ -1,0 +1,124 @@
+pkgbase = at1ass-shell-git
+	pkgdesc = Config-first Quickshell desktop shell for Hyprland
+	pkgver = r297.91abb810
+	pkgrel = 1
+	url = https://github.com/At1ass/shell
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = qt6-base>=6.8
+	makedepends = qt6-declarative>=6.8
+	makedepends = libical>=4.0
+	makedepends = libqalculate
+	makedepends = lm_sensors
+	makedepends = rapidfuzz-cpp
+	makedepends = glib2
+	makedepends = libsecret
+	source = shell::git+https://github.com/At1ass/shell.git
+	source = mcu::git+https://github.com/material-foundation/material-color-utilities.git#commit=07b2c68508039e178bcf1317ad0cf0af4c36be0f
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = at1ass-shell-git
+	pkgdesc = Config-first desktop shell for Hyprland
+	arch = any
+	depends = at1ass-shell-plugins-git=r297.91abb810
+	depends = quickshell>=0.3.2
+	depends = hyprland>=0.56
+	depends = qt6-base>=6.8
+	depends = qt6-declarative>=6.8
+	depends = qt6-wayland
+	depends = qt6-svg
+	depends = app2unit
+	depends = xdg-terminal-exec
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = gawk
+	depends = grep
+	depends = sed
+	depends = glib2
+	depends = systemd
+	depends = pam
+	depends = util-linux
+	depends = which
+	depends = hicolor-icon-theme
+	depends = ttf-roboto
+	depends = ttf-dejavu
+	depends = ttf-material-symbols-variable
+	optdepends = ca-certificates: HTTPS trust for weather and remote wallpaper sources
+	optdepends = xdg-utils: external URL opening from calendar links
+	optdepends = pipewire-pulse: PulseAudio applications on the optional PipeWire audio graph
+	optdepends = xdg-desktop-portal: source picker and portal-based recording
+	optdepends = xdg-desktop-portal-hyprland: Hyprland screencast portal backend
+	optdepends = pipewire: audio graph and volume controls (running service required)
+	optdepends = wireplumber: PipeWire device and stream policy
+	optdepends = networkmanager: Wi-Fi, Ethernet and VPN control (running service required)
+	optdepends = bluez: Bluetooth control (running bluetooth service required)
+	optdepends = upower: battery and power-device status through the UPower service
+	optdepends = gnome-keyring: Secret Service provider for persistent network credentials; alternatives supported
+	optdepends = networkmanager-openvpn: OpenVPN authentication helper
+	optdepends = nm-connection-editor: external network profile editor
+	optdepends = blueman: external Bluetooth manager
+	optdepends = pwvucontrol: advanced audio controls
+	optdepends = grim: screenshot capture
+	optdepends = wl-clipboard: screenshot and clipboard copying; cliphist ingestion
+	optdepends = swappy: screenshot annotation
+	optdepends = cliphist: clipboard history (external wl-paste watcher required)
+	optdepends = gpu-screen-recorder: recording and gsr-cli control; gsr-cli must be available
+	optdepends = procps-ng: recording process detection (pgrep)
+	optdepends = ddcutil: DDC/CI monitor brightness (device permissions required)
+	optdepends = hyprsunset: night-light temperature control
+	optdepends = curl: remote wallpaper downloads
+	optdepends = qt6-imageformats: additional wallpaper and image codecs
+	optdepends = hypridle: idle locking and suspend integration
+	optdepends = vdirsyncer: external CalDAV synchronization
+	optdepends = uwsm: optional graphical-session and environment management
+	provides = at1ass-shell=r297.91abb810
+	conflicts = at1ass-shell
+
+pkgname = at1ass-shell-plugins-git
+	pkgdesc = Native QML modules for the at1ass desktop shell
+	license = GPL-3.0-or-later
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = libical>=4.0
+	depends = libqalculate
+	depends = lm_sensors
+	depends = glib2
+	depends = libsecret
+	optdepends = nvidia-utils: NVIDIA GPU statistics through optional dynamically loaded NVML
+	provides = at1ass-shell-plugins=r297.91abb810
+	conflicts = at1ass-shell-plugins
+
+pkgname = at1ass-shell-greeter-git
+	pkgdesc = Optional greetd greeter for the at1ass desktop shell
+	arch = any
+	depends = at1ass-shell-plugins-git=r297.91abb810
+	depends = quickshell>=0.3.2
+	depends = hyprland>=0.56
+	depends = greetd
+	depends = bash
+	depends = qt6-base>=6.8
+	depends = qt6-declarative>=6.8
+	depends = qt6-wayland
+	depends = qt6-svg
+	depends = systemd
+	depends = ttf-roboto
+	depends = ttf-dejavu
+	depends = ttf-material-symbols-variable
+	optdepends = greetd-regreet: fallback if the Quickshell greeter fails
+	optdepends = upower: optional battery status in the greeter
+	provides = at1ass-shell-greeter=r297.91abb810
+	conflicts = at1ass-shell-greeter
+	backup = etc/greetd/greeter.json
+	backup = etc/greetd/hyprland-greeter.conf
