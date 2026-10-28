@@ -1,0 +1,14 @@
+pkgbase = ocy
+	pkgdesc = Simple project cleaner CLI for removing temporary build files
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/alexd6631/ocy
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = ocy-0.2.1.tar.gz::https://static.crates.io/crates/ocy/ocy-0.2.1.crate
+	sha256sums = dbe4c0442837029a207b6972692eb34056e2b8c0f622a3f72551fa652af3df2f
+
+pkgname = ocy
