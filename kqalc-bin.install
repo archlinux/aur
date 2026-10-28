@@ -1,6 +1,6 @@
 post_install() {
   echo "Restart KRunner to pick up the new runner:"
-  echo "  kquitapp6 krunner && kstart6 krunner"
+  echo "  systemctl --user restart plasma-krunner.service"
 }
 
 post_upgrade() {
