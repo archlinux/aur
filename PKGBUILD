@@ -6,8 +6,8 @@
 
 pkgname=python-torchaudio-rocm
 _pkgname=audio
-pkgver=2.11.0
-pkgrel=3
+pkgver=2.11.1
+pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (with ROCm/HIP support)"
 arch=('x86_64')
 url="https://github.com/pytorch/audio"
@@ -40,7 +40,7 @@ provides=('python-torchaudio' "python-torchaudio=${pkgver}")
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('599ec24e7e1eef476ef21f0178e33da00e2434f930ba42e9cc20bf4002220486')
+sha256sums=('594db84c91cb795a13853d1ee457d0f874dd95838b6f029eaaf518fb3838cdf5')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
