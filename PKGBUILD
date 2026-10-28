@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -150,7 +150,7 @@ source=(
   "security-state--intermediates-${_tag}.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
 )
 noextract=("security-state--intermediates-${_tag}.zip")
-sha256sums=('6ee6cd3c1966c554202d0642108902608ce97fea562781d4c8ec503ed14f4492'
+sha256sums=('69d6ee5a599ba169f25337fba14d9fa7fd66b0590dc77e16d002fc8a7acaf845'
             '91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25'
             'SKIP'
             '9b522f126c7eaa4798ad548d2aac1c154bd19281ddf6e76526b19d11961a1c8f'

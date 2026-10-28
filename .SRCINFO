@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
 	pkgver = 153.6.0.100
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	arch = x86_64
@@ -95,7 +95,7 @@ pkgbase = konform-browser
 	source = default192x192.png
 	source = security-state--intermediates-153.6.0.100.zip::https://codeberg.org/konform-browser/source/releases/download/153.6.0.100/security-state--intermediates.zip
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 6ee6cd3c1966c554202d0642108902608ce97fea562781d4c8ec503ed14f4492
+	sha256sums = 69d6ee5a599ba169f25337fba14d9fa7fd66b0590dc77e16d002fc8a7acaf845
 	sha256sums = 91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25
 	sha256sums = SKIP
 	sha256sums = 9b522f126c7eaa4798ad548d2aac1c154bd19281ddf6e76526b19d11961a1c8f
