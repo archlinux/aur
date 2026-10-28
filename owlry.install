@@ -23,6 +23,15 @@ post_upgrade() {
 
 EOF
             ;;
+        *)
+            cat <<'EOF'
+
+  Restart the running user daemon after an upgrade so the UI and daemon use
+  the same IPC activation schema:
+      systemctl --user restart owlry.service
+
+EOF
+            ;;
     esac
 }
 
