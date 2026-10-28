@@ -1,0 +1,17 @@
+pkgbase = mp4ff-git
+	pkgdesc = Tools for parsing and manipulating MP4/ISOBMFF files (git version)
+	pkgver = r1278.d5f2a9f
+	pkgrel = 1
+	url = https://github.com/Eyevinn/mp4ff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = mp4ff
+	conflicts = mp4ff
+	source = mp4ff::git+https://github.com/Eyevinn/mp4ff.git
+	sha256sums = SKIP
+
+pkgname = mp4ff-git
