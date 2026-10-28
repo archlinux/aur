@@ -14,6 +14,22 @@ EOF
 
 post_upgrade() {
   # $1 = new version, $2 = old version.
+  if [ "$(vercmp "$2" 0.5.0)" -lt 0 ]; then
+    cat <<'EOF'
+==> whispy 0.5.0: new speech engine, Parakeet
+
+   This package now ships whispy-stt, which runs NVIDIA Parakeet (parakeet-ultra):
+   ~6x faster than whisper, better punctuation, and nothing typed on silence.
+   Your config keeps the whisper engine until you switch:
+
+      1. whispy-daemon settings   -> Engine -> Parakeet -> s
+         (or set  engine = "parakeet"  under [stt] in ~/.config/whispy/config.toml)
+      2. whispy-daemon setup model    # downloads parakeet-ultra (~740 MB)
+      3. systemctl --user restart whispy-daemon
+
+   Parakeet covers 25 European languages; stay on whisper if you need others.
+EOF
+  fi
   if [ "$(vercmp "$2" 0.4.0)" -lt 0 ]; then
     cat <<'EOF'
 ==> whispy 0.4.0
