@@ -4,7 +4,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=ripperx-git
-pkgver=3.1.0.r246.20261020.590433a
+pkgver=3.1.1.r249.20261028.2571d88
 pkgrel=1
 pkgdesc="GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3."
 arch=(
@@ -15,23 +15,28 @@ license=('GPL-2.0-only')
 #url="http://ripperx.sourceforge.net/"
 url="https://codeberg.org/thothix/ripperx"
 depends=(
-  'gcc-libs'
   'glib2>=2.6'
   'glibc'
   'gtk2>=2.6'
+  'libgcc_s.so'
   'libgdk_pixbuf-2.0.so'
+  'libpango-1.0.so'
+  'libstdc++.so'
   'taglib>=1.9.1'
 )
 makedepends=(
   'git'
-  'autoconf>=2.60'
-  'automake'
+  'cmake'
+  'ninja'
   'gdk-pixbuf2'
   'gettext>=0.15'
+  'libgcc'
   'libtool'
+  'libstdc++'
+  'pango'
 )
-conflicts=("ripperx")
-provides=("ripperx=${pkgver}")
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 source=(
   "${pkgname%-git}::git+https://codeberg.org/thothix/ripperx.git"
   "ripperx_desktopfile-iconname.patch"
@@ -73,7 +78,6 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname%-git}"
   local _CFLAGSADDITIONS
   _CFLAGSADDITIONS=" -fpermissive"
   CFLAGS+="${_CFLAGSADDITIONS}"
@@ -81,26 +85,25 @@ build() {
   export CFLAGS
   export CXXFLAGS
 
-  ./bootstrap
-  ./configure \
-    --prefix=/usr \
-    --enable-nls \
-    --disable-debug
+  cmake \
+    -S ripperx -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDISABLE_DEPRECATED=OFF \
+    -DENABLE_NLS=ON
 
-  make -j1
+  cmake --build build
 }
 
 package() {
+  DESTDIR="$pkgdir" cmake --install build
+
+  # Fix icon name:
+  mv -v "${pkgdir}"/usr/share/pixmaps/ripperX-icon.xpm "${pkgdir}"/usr/share/pixmaps/ripperX.xpm
+
   cd "${pkgname%-git}"
-
-  make DESTDIR="$pkgdir" install
-
-  install -Dvm0644 ripperX.desktop "$pkgdir"/usr/share/applications/ripperX.desktop
-  install -Dvm0644 src/xpms/ripperX-icon.xpm "$pkgdir"/usr/share/pixmaps/ripperX.xpm
-  # Symlink icon into /usr/share/icons, since ripperx package version 2.8.0-5 had it there. To not break custom desktop setups.
-  install -dvm0755 "$pkgdir"/usr/share/icons
-  ln -svr "$pkgdir"/usr/share/pixmaps/ripperX.xpm "$pkgdir"/usr/share/icons/ripperX.xpm
-
-  install -Dvm0644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}"  git.log BUGS CHANGELOG.md FAQ README README.* TODO
+  # Install git log -- other files are already installed into '/usr/share/doc/ripperX/' by upstream install routine:
+  install -Dvm0644 -t "${pkgdir}/usr/share/doc/ripperX"          git.log
+  # Install license:
   install -Dvm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
 }
