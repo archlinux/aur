@@ -1,6 +1,6 @@
 pkgbase = chan-desktop
 	pkgdesc = Desktop terminal multiplexer and workspace manager
-	pkgver = 0.113.0
+	pkgver = 0.114.0
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = chan-desktop
 	depends = systemd
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
-	provides = chan=0.113.0
+	provides = chan=0.114.0
 	conflicts = chan
 	options = !lto
-	source = chan-0.113.0.tar.gz::https://github.com/fiorix/chan/archive/v0.113.0.tar.gz
-	sha256sums = 158020c77d591f2a70670757754ebab20133fc8aec3ac23844779ae407853071
+	source = chan-0.114.0.tar.gz::https://github.com/fiorix/chan/archive/v0.114.0.tar.gz
+	sha256sums = 4b55bb9657b1fe333872e7aea2e28d463213a28fa0bcf6f80f2dbccb1a9eb875
 
 pkgname = chan-desktop
