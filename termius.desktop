@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Termius
+Comment=Desktop SSH Client
+Exec=termius %U
+Terminal=false
+Type=Application
+Icon=termius
+StartupNotify=true
+StartupWMClass=Termius
+MimeType=x-scheme-handler/termius;
+Categories=System;TerminalEmulator;

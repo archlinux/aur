@@ -1,76 +1,53 @@
-# Maintainer: Ivan Gabaldon <aur[at]inetol.net>
-
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
-#! This package is NOT checked by checksums, careful... !#
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
 pkgname=termius-deb
-_pkgname=Termius
-pkgver=9.22.1
+pkgver=10.2.1
 pkgrel=1
-pkgdesc='Desktop SSH Client (deb release)'
+pkgdesc='Desktop SSH Client'
 arch=('x86_64')
-url='https://termius.com'
-license=('LicenseRef-Termius')
-makedepends=('links')
-_electron=electron21
-provides=("${pkgname//-deb}")
-conflicts=("${pkgname//-deb}" "${pkgname//-deb/'-beta'}")
-source=("${pkgname//-deb}-rolling.deb::https://autoupdate.termius.com/linux/$_pkgname.deb"
-        "${pkgname//-deb}.sh")
-b2sums=('SKIP'
-        '16be5f2c2d1134875ac9a284138d2fc6d2133f3588d4efd34422be1c99caddf37e88c53c8b1a1286de0e6ae0d2a806983c2bf91abcff269295fc487bdde56051')
+url='https://www.termius.com/'
+license=('custom')
+conflicts=('termius')
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs'
+         'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libnotify' 'libsecret'
+         'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes'
+         'libxkbcommon' 'libxrandr' 'libxss' 'libxtst' 'mesa' 'nspr' 'nss'
+         'pango' 'systemd-libs' 'util-linux-libs' 'xdg-utils')
+optdepends=('libappindicator-gtk3: system tray integration'
+            'org.freedesktop.secrets: credential storage service')
+options=('!strip' '!debug')
+source=("${pkgname}-${pkgver}-amd64.deb::https://deb.termius.com/pool/main/t/termius-app/termius-app_${pkgver}_amd64.deb"
+        'termius.desktop'
+        'tos.html')
+sha256sums=('e24024d7d13c39bed9a9dfd97d8cb8718cd275ce0ccc9d3e084b6726f5b53078'
+            'd97e5258351d06107a0d0816542841d1d61609c0308a5074695dc5c5de0a6268'
+            '51978a30942b337918e18690f9c93dc28eb06d54eafc21bb6b29e6ef428083cb')
 
 prepare() {
-    sed -i "s|@ELECTRON@|$_electron|" "${pkgname//-deb}.sh"
-
-    mkdir -p "${pkgname//-deb}-rolling/"
-    bsdtar -xpf 'data.tar.xz' -C "${pkgname//-deb}-rolling/"
-
-    # Convert
-    cd "${pkgname//-deb}-rolling/"
-
-    links -width 80 -dump 'https://termius.com/terms-of-use' | sed -n '/Terms and Conditions/,/Last updated:/p' > "opt/$_pkgname/resources/LICENSE"
-
-    cat "../${pkgname//-deb}.sh" > "opt/$_pkgname/resources/${pkgname//-deb}"
-
-    mv "usr/share/applications/${pkgname//-deb/'-app'}.desktop" "opt/$_pkgname/resources/${pkgname//-deb}.desktop"
-    sed -i -e "s|Exec=.*|Exec=/usr/bin/${pkgname//-deb} %U|" -e "s|Icon=.*|Icon=${pkgname//-deb}|" "opt/$_pkgname/resources/${pkgname//-deb}.desktop"
-
-    mv "usr/share/icons/hicolor/512x512/apps/${pkgname//-deb/'-app'}.png" "opt/$_pkgname/resources/${pkgname//-deb}.png"
-}
-
-pkgver() {
-    mkdir -p "${pkgname//-deb}-control/"
-    bsdtar -xpf 'control.tar.gz' -C "${pkgname//-deb}-control/"
-
-    grep 'Version:' "${pkgname//-deb}-control/control" | awk '{print $2}'
+    mkdir -p "${srcdir}/upstream"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/upstream"
+    test -x "${srcdir}/upstream/opt/Termius/termius-app"
+    test -f "${srcdir}/upstream/opt/Termius/chrome-sandbox"
 }
 
 package() {
-    depends=("$_electron-bin"
-             'gcc-libs'
-             'glib2'
-             'glibc'
-             'libsecret'
-             'systemd-libs'
-             'zlib')
+    install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
+    cp -a --reflink=never "${srcdir}/upstream/opt/Termius" "${pkgdir}/opt/termius"
 
-    optdepends=('libappindicator-gtk3: Systray indicator support')
+    chmod 755 "${pkgdir}/opt/termius/termius-app"
+    chmod 755 "${pkgdir}/opt/termius/chrome_crashpad_handler"
+    chmod 4755 "${pkgdir}/opt/termius/chrome-sandbox"
+    ln -s /opt/termius/termius-app "${pkgdir}/usr/bin/termius"
 
-    install -d "$pkgdir/opt/${pkgname//-deb}/"
-    cp -a "${pkgname//-deb}-rolling/opt/$_pkgname/resources/." "$pkgdir/opt/${pkgname//-deb}/"
-
-    chmod 755 "$pkgdir/opt/${pkgname//-deb}/${pkgname//-deb}"
-
-    install -d "$pkgdir/usr/bin/"
-    ln -s "/opt/${pkgname//-deb}/${pkgname//-deb}" "$pkgdir/usr/bin/${pkgname//-deb}"
-
-    install -d "$pkgdir/usr/share/applications/"
-    ln -s "/opt/${pkgname//-deb}/${pkgname//-deb}.desktop" "$pkgdir/usr/share/applications/${pkgname//-deb}.desktop"
-
-    install -d "$pkgdir/usr/share/icons/"
-    ln -s "/opt/${pkgname//-deb}/${pkgname//-deb}.png" "$pkgdir/usr/share/icons/${pkgname//-deb}.png"
-
-    install -d "$pkgdir/usr/share/licenses/${pkgname//-deb}/"
-    ln -s "/opt/${pkgname//-deb}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname//-deb}/LICENSE"
+    install -Dm644 "${srcdir}/termius.desktop" \
+        "${pkgdir}/usr/share/applications/termius.desktop"
+    local icon size
+    for icon in "${srcdir}"/upstream/usr/share/icons/hicolor/*/apps/termius-app.png; do
+        size=${icon%/apps/*}
+        size=${size##*/}
+        install -Dm644 "$icon" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}/apps/termius.png"
+    done
+    install -Dm644 "${srcdir}/tos.html" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/tos.html"
+    install -Dm644 "${srcdir}/upstream/opt/Termius/LICENSE.electron.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
 }

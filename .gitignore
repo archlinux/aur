@@ -1,5 +1,4 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!termius.sh
+*.deb
+*.xz
+src/
+pkg/
