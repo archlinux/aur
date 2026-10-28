@@ -2,7 +2,7 @@
 
 _pkgname=geogebra
 pkgname="${_pkgname}-html"
-pkgver=5.4.933.1
+pkgver=5.4.934.0
 pkgrel=1
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet (HTML files only)"
 arch=("any")
@@ -12,7 +12,7 @@ optdepends=("caddy: for serving ${_pkgname} HTML files"
             "nginx: for serving ${_pkgname} HTML files"
             "traefik: for serving ${_pkgname} HTML files")
 source=("${_pkgname}-${pkgver}.zip::https://download.geogebra.org/installers/${pkgver%.*.*}/geogebra-math-apps-bundle-${pkgver//./-}.zip")
-sha256sums=('409095947e065bce5bde20b8a6d56a60e2b3cb3cce6947e817a802513515ec0c')
+sha256sums=('bb55da6967d949949204c20b598bd5c6dc2116100b1908efd9461ffa7f6ce1d0')
 
 package() {
     cd GeoGebra/HTML5/5.0

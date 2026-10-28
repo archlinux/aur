@@ -1,6 +1,6 @@
 pkgbase = geogebra-html
 	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet (HTML files only)
-	pkgver = 5.4.933.1
+	pkgver = 5.4.934.0
 	pkgrel = 1
 	url = https://www.geogebra.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = geogebra-html
 	optdepends = caddy: for serving geogebra HTML files
 	optdepends = nginx: for serving geogebra HTML files
 	optdepends = traefik: for serving geogebra HTML files
-	source = geogebra-5.4.933.1.zip::https://download.geogebra.org/installers/5.4/geogebra-math-apps-bundle-5-4-933-1.zip
-	sha256sums = 409095947e065bce5bde20b8a6d56a60e2b3cb3cce6947e817a802513515ec0c
+	source = geogebra-5.4.934.0.zip::https://download.geogebra.org/installers/5.4/geogebra-math-apps-bundle-5-4-934-0.zip
+	sha256sums = bb55da6967d949949204c20b598bd5c6dc2116100b1908efd9461ffa7f6ce1d0
 
 pkgname = geogebra-html
