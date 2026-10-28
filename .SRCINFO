@@ -1,6 +1,6 @@
 pkgbase = ccgui-bin
 	pkgdesc = Multi-engine AI coding desktop client (prebuilt binary)
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/zhukunpenglinyutong/desktop-cc-gui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = ccgui-bin
 	depends = gst-plugins-good
 	provides = ccgui
 	conflicts = ccgui
-	noextract = ccgui_1.1.7_amd64.AppImage
+	noextract = ccgui_1.1.8_amd64.AppImage
 	options = !strip
-	source = ccgui_1.1.7_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v1.1.7/CC.GUI_1.1.7_amd64.AppImage
-	sha256sums = 1f4169bdc5caf660fb7c3ddfb7e1cf43e0bcb517b2271049bda716360b6f7c32
+	source = ccgui_1.1.8_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v1.1.8/CC.GUI_1.1.8_amd64.AppImage
+	sha256sums = 501bb702d881f383c357c5d47576eb21b47d4ba5ca8c565a3b9faddf92e1f5f2
 
 pkgname = ccgui-bin
