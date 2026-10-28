@@ -1,6 +1,6 @@
 # Maintainer: yancat <yancat_aur@icloud.com>
 pkgname=yancat-countdown-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=2
 url='https://github.com/yan-cat/countdown'
 license=('GPL-3.0-only')
