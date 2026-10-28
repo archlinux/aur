@@ -1,12 +1,12 @@
 # Maintainer: linux4life <age3dude@gmail.com>
 pkgname=front-porch-ai-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A chilled out frontend for KoboldCPP"
 arch=('x86_64')
 url="https://github.com/linux4life1/front-porch-AI"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'glib2' 'libsecret')
+depends=('gtk3' 'glib2' 'libsecret' 'gst-plugins-base' 'gst-plugins-good' 'xdg-user-dirs')
 provides=('front-porch-ai')
 conflicts=('front-porch-ai')
 options=('!strip' '!debug')
