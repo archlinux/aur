@@ -14,6 +14,7 @@ pkgbase = nightcap-git
 	makedepends = vulkan-headers
 	depends = capstone
 	depends = curl
+	depends = ffmpeg
 	depends = fontconfig
 	depends = gcc-libs
 	depends = glib2

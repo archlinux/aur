@@ -11,6 +11,7 @@ license=('Apache-2.0')
 depends=(
   'capstone'
   'curl'
+  'ffmpeg'
   'fontconfig'
   'gcc-libs'
   'glib2'
