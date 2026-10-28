@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=scpdiscord
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="A very customisable Discord bot + SCP:SL plugin combo."
 arch=("x86_64")
