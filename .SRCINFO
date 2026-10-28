@@ -1,0 +1,16 @@
+pkgbase = rsql-bin
+	pkgdesc = Command line SQL interface for relational databases and common data file formats (prebuilt)
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/theseus-rs/rsql
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = rsql=0.21.0
+	conflicts = rsql
+	source_x86_64 = rsql_cli-0.21.0-x86_64.tar.xz::https://github.com/theseus-rs/rsql/releases/download/v0.21.0/rsql_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 79a5807607a5e2e7d6816d6a5ed31182c9f6ff2bf3500d1c35cda621779daf7c
+
+pkgname = rsql-bin
