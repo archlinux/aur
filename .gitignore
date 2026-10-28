@@ -1,0 +1,5 @@
+bigscreen-ui/
+pkg/
+src/
+
+*.zst
