@@ -3,10 +3,10 @@
 pkgname=dumpzilla-git
 _pkgname=${pkgname%-git}
 pkgver=r45.01479f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract All Forensic Interesting Information Of Firefox, Iceweasel And Seamonkey"
 arch=('any')
-url="https://web.archive.org/web/20250201061909/http://www.dumpzilla.org/"
+url="https://github.com/Busindre/dumpzilla"
 license=('GPL')
 groups=()
 depends=('python' 'python-lz4' 'python-magic')
