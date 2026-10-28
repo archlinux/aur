@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/emutastic-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=emutastic-bin
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Beautiful retro game library and emulation frontend (libretro)"
 arch=('x86_64')
@@ -17,7 +17,8 @@ conflicts=('emutastic')
 # base plugins, and without it LibVLC h264 decode (every snap video) is unavailable.
 depends=('libvlc' 'vlc-plugins-base' 'vlc-plugin-ffmpeg' 'ffmpeg' 'sdl3' 'fontconfig')
 optdepends=('vlc-plugins-video-output: hardware-accelerated snap previews on some setups'
-            'libsecret: keep the cloud-sync sign-in in the desktop keyring')
+            'libsecret: keep the cloud-sync sign-in in the desktop keyring'
+            'vulkan-icd-loader: the Xbox core (Midway Verdant) draws with Vulkan')
 options=('!strip')   # self-contained .NET bundle — stripping breaks it
 # The icon ships INSIDE the .dll as an Avalonia resource (not loose in the publish
 # tarball), so fetch it from the repo at the tag — same as LICENSE. %20 = the space
@@ -25,7 +26,7 @@ options=('!strip')   # self-contained .NET bundle — stripping breaks it
 source=("$url/releases/download/v$pkgver/Emutastic-$pkgver-linux-x64.tar.gz"
         "$url/raw/v$pkgver/LICENSE"
         "emutastic-logo.png::$url/raw/v$pkgver/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png")
-sha256sums=('42342b238a2776b5ebe7f438ad3ff087508587321743128ffe081c98ae173d47'
+sha256sums=('e2a9a1df651e656d6586d85aaeab172a0dabee2f33edc5a617aaae1b469c8036'
             'SKIP'
             'SKIP')
 # The release tarball unpacks flat (top-level "./"), which would mix the publish
