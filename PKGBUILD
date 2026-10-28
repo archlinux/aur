@@ -10,7 +10,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/LoonixTools/face-unlock"
 license=('GPL-3.0-or-later' 'MIT' 'Apache-2.0')
 depends=('bash' 'coreutils' 'gawk' 'grep' 'sed' 'gettext' 'systemd' 'systemd-libs' 'pam' 'polkit'
-         'opencv' 'qt6-base' 'qt6-declarative' 'layer-shell-qt' 'ki18n')
+         'opencv' 'qt6-base' 'qt6-declarative' 'wayland' 'layer-shell-qt' 'ki18n'
+         'glibc' 'libgcc' 'libstdc++' 'hicolor-icon-theme')
 makedepends=('cmake' 'scdoc')
 optdepends=('hyprpolkitagent: password windows on Hyprland and Niri')
 # The old name.
