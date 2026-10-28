@@ -3,8 +3,8 @@
 # Contributor: mis
 # Contributor: oslik
 pkgname=solvespace
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="A parametric 3d CAD program"
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 prepare() {
     cd "${srcdir}/${pkgname}"
     git submodule update --init extlib/{libdxfrw,mimalloc,eigen}
-    mkdir build
+    mkdir -p build
 }
 
 build() {
