@@ -1,5 +1,5 @@
 pkgname=lith
-pkgver=2.0.46
+pkgver=2.0.47
 pkgrel=1
 pkgdesc='Maple Story 2 launcher'
 arch=('x86_64')
@@ -8,7 +8,7 @@ depends=('umu-launcher')
 
 _bin_name="Lith.Launcher-${pkgver}-x64.AppImage"
 source=("https://github.com/LithMS/Lith-Artifacts/releases/download/v${pkgver}/${_bin_name}")
-sha256sums=('f4ef7a57dd3761285714820faf2cb7cec4475b62985a7627bb509e267762134f')
+sha256sums=('8130b3ee8302f8af5f68513bbdf4b1071e08003b42fa86a8c2be709eb017e33b')
 
 package() {
     install -Dm 755 "${srcdir}/${_bin_name}" "${pkgdir}/usr/bin/${pkgname}"
