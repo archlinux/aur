@@ -3,7 +3,7 @@
 _author=backslash-app
 _basename=backslash
 pkgname=${_basename}-bin
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A lightning-fast command launcher that helps you launch commands, run apps, and streamline your workflow—all while embracing the quirky spirit of Linux!"
 
@@ -15,24 +15,20 @@ conflicts=("${_basename}")
 provides=("${_basename}")
 
 makedepends=('tar')
-depends=('python' 'hicolor-icon-theme')
+depends=('glibc' 'libgcc' 'gtk4' 'glib2' 'python' 'gdk-pixbuf2' 'pango' 'graphene' 'hicolor-icon-theme')
 optdepends=('perl: Fetching stock market info for the emStocks plugin'
             'htmldoc: Rendering HTML documents')
 
 options=('!strip' '!debug')
 
 source_x86_64=("https://github.com/${_author}/${_basename}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb")
-sha256sums_x86_64=('0b7784bd41fde9481c5ddb4ab69b9f7debae0767d1239bcb668c26841b772172')
+sha256sums_x86_64=('eca1518c17c5ec4dc9f9c69cb7834236b991ec48448e88b8f20057b07b58d69f')
 
 package() {
     cd "${pkgdir}"
 
     # this extracts all into the pkgdir
     tar xf "${srcdir}/data.tar.gz"
-
-    # symlink
-    install -dm755 "${pkgdir}/usr/bin/"
-    ln -sf "/opt/${_basename}/${_basename}" "${pkgdir}/usr/bin/${_basename}"
 
     # licence
     mv "${pkgdir}/usr/share/licenses/${_basename}" "${pkgdir}/usr/share/licenses/${pkgname}"
