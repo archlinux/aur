@@ -1,0 +1,17 @@
+pkgbase = dotnet-jsonpointer-net-5
+	pkgdesc = JSON Pointer built on System.Text.Json, 5.x (NuGet package)
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://github.com/json-everything/json-everything
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	depends = dotnet-humanizer-core-2
+	depends = dotnet-json-more-net-2
+	provides = dotnet-jsonpointer-net=5.3.1
+	source = json-everything::git+https://github.com/json-everything/json-everything.git#commit=af4b9eaf34b783cdb51e2607ae7fddedb0664b41
+	sha512sums = 2efbd8bc89545fd23c6b5710880c99ab7e46fb7e3ac348bac34ffcb6a7bcea5454c6f4fdb85bdc3ea14240e880202d843935d7712693fbc9783ed6d4c8bbef40
+	b2sums = 3435dc951551c84ba276c65288e96618a0321beccfb5c4a42f09e28131976a6b876e535885c9817c865eb1e090d729ddef79c192e83cdd092a994320ed64dff3
+
+pkgname = dotnet-jsonpointer-net-5
