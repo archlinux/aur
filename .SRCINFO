@@ -1,6 +1,6 @@
 pkgbase = shoin
 	pkgdesc = A no-clutter terminal Markdown editor with modal editing
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/nol00p/Shoin
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = shoin
 	provides = shoin
 	options = !lto
 	options = !strip
-	source = shoin-0.1.9.tgz::https://github.com/nol00p/Shoin/archive/v0.1.9.tar.gz
-	sha256sums = 1cff57ab93d6f46c577b47b71d94c0461a2b49d3561e7d4973ab6ff9a6a2e2c3
+	source = shoin-0.2.0.tgz::https://github.com/nol00p/Shoin/archive/v0.2.0.tar.gz
+	sha256sums = 80664d95772a42b05b1f4cb865076d2c8732f166baa74c4a4c7f4a34c9c1cdb6
 
 pkgname = shoin
