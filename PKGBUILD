@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="Free, open-source desktop Git client with visual history, GitHub workflows, conflict resolution, secret scanning and optional AI-assisted commits"
 
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${_barch[0]}.deb")
-sha256sums=('d0b836ce42ef17d2605b1f68a1ec32e3f966a60ac7a34f937473f4935f67624b'
+sha256sums=('b4bb2684f96eb8590b2cc4454ca478210cac529bec420ae4102943b9387e4d5b'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('84f061331b6c1328830951e40ee8316ecf0381f301e6516ea536ad2939371381')
+sha256sums_x86_64=('b92d4bed2a3090d64c670ef1ca5976cb91b1c5579ac5902e31dfa15e6757d2a8')
 
 
 package() {
