@@ -1,0 +1,4 @@
+post_install() {
+  echo 'Next, as your user:  hush install  (links the config into ~/.config, applies a theme)'
+  echo 'Optional login screen:  sudo /usr/share/hush/sddm/install.sh'
+}
