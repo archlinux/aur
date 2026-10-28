@@ -5,7 +5,7 @@ pkgver=1.4.2.r0.g9fa985d
 pkgrel=1
 pkgdesc="An imitation of sudo, using run0 internally - WARNING: !!! THIS REPLACES SUDO !!!"
 arch=('any')
-url="https://github.com/LordGrimmauld/run0-sudo-shim"
+url="https://github.com/GrimmTheShrimp/run0-sudo-shim"
 license=('BSD-3-Clause')
 depends=('systemd>=256.0')
 makedepends=('git' 'rust')
