@@ -1,0 +1,16 @@
+pkgbase = powerlevel11k
+	pkgdesc = Powerlevel10k continuation for all shells
+	pkgver = 1.0.0_alpha.1
+	pkgrel = 1
+	url = https://github.com/Qaaxaap/powerlevel11k
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cmake
+	makedepends = gettext
+	makedepends = pkg-config
+	makedepends = libssh2
+	source = powerlevel11k-1.0.0-alpha.1.tar.gz::https://github.com/Qaaxaap/powerlevel11k/archive/v1.0.0-alpha.1.tar.gz
+	sha256sums = 2730195bf556dd766fe8171b640261d255cf40327dc6f647ece008e61b77b6e3
+
+pkgname = powerlevel11k
