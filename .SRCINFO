@@ -1,0 +1,20 @@
+pkgbase = xfce4-extras-menu-plugin-git
+	pkgdesc = XFCE panel plugin similar to GNOME's Quick Settings menu
+	pkgver = r72.611c300
+	pkgrel = 1
+	url = https://github.com/Alperen42v/extra-xfce4-plugins/tree/main/extras-menu-plugin
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = xfce4-panel
+	depends = brightnessctl
+	depends = libpulse
+	provides = xfce4-extras-menu-plugin
+	conflicts = xfce4-extras-menu-plugin
+	source = git+https://github.com/Alperen42v/extra-xfce4-plugins
+	sha512sums = SKIP
+
+pkgname = xfce4-extras-menu-plugin-git
