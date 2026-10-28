@@ -1,12 +1,12 @@
 pkgbase = navicat-premium-lite
 	pkgdesc = Navicat Premium Lite
-	pkgver = 17.3.10
+	pkgver = 18.0.3
 	pkgrel = 1
 	url = https://www.navicat.com/products/navicat-premium-lite
 	arch = x86_64
 	license = proprietary
-	source_x86_64 = navicat-premium-lite-en-x86_64-17.3.10.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-x86_64.AppImage
-	source_x86_64 = navicat-premium-lite-cs-x86_64-17.3.10.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-x86_64.AppImage
+	source_x86_64 = navicat-premium-lite-en-x86_64-18.0.3.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-x86_64.AppImage
+	source_x86_64 = navicat-premium-lite-cs-x86_64-18.0.3.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-x86_64.AppImage
 	sha256sums_x86_64 = 37116265c9ce389e1d804cbf9a35deb4c76221ebf134fcf015aa63f141e9f399
 	sha256sums_x86_64 = 97519ae417f4431756c28d46611fc191321874783b536395758c57b31062060d
 

@@ -1,6 +1,6 @@
 pkgbase=navicat-premium-lite
 pkgname=("${pkgbase}-en" "${pkgbase}-zh-cn")
-pkgver=17.3.10
+pkgver=18.0.3
 pkgrel=1
 pkgdesc="Navicat Premium Lite"
 arch=('x86_64')
