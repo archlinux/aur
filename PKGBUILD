@@ -1,17 +1,16 @@
 # Maintainer: tux_peng <jpenguin@fastmail.com>
-# Personal-use packaging recipe for the upstream font archive.
-# Check the archive's font-by-font licenses before redistribution.
+# Personal-use packaging recipe. Check per-font licenses before redistribution.
 
 pkgname=ttf-niek-fonts-mac
 pkgver=2.8
 pkgrel=1
 pkgdesc="Font collection from Niek's fonts-extractor (mac) archive"
 arch=('any')
-url="https://github.com/Niek/fonts-extractor/releases/tag/v${pkgver}"
+url="https://github.com/Niek/fonts-extractor"
 license=('custom:upstream-font-licenses')
 depends=('fontconfig')
-makedepends=('unzip')
-source=("https://github.com/Niek/fonts-extractor/releases/download/v${pkgver}/fonts-mac.zip")
+source=("fonts-mac-$pkgver.zip::https://github.com/Niek/fonts-extractor/releases/download/v${pkgver}/fonts-mac.zip")
+noextract=("fonts-mac-$pkgver.zip")
 sha256sums=('6ae7ff7cfef557675108b7447fab8848497dbadc7a788909feeba234be3701aa')
 
 prepare() {
