@@ -1,0 +1,5 @@
+[dotnet-markdig]
+source = "github"
+github = "xoofx/markdig"
+use_max_tag = true
+exclude_regex = ".*-.*"

@@ -1,0 +1,14 @@
+pkgbase = dotnet-markdig
+	pkgdesc = Fast, powerful, CommonMark compliant, extensible Markdown processor for .NET (NuGet packages)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/xoofx/markdig
+	arch = any
+	license = BSD-2-Clause
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	source = git+https://github.com/xoofx/markdig.git#tag=1.5.0
+	sha512sums = 25a1e3b7985b0bc8246bd325e8945af9ccfce63a9e7d79c2dc4d11f4f619e52848637a71b6a0b57dce2ebaebc52333af6fe1240ddbb6a38223af9100a517f63c
+	b2sums = 4b065e921c8f9fc29e0a3fa64dea863fa4ba9b6d6ce6138e565a8d949a30b9fea1569c0571d1a6af53fb74cc779ddc60366342ec47bc7c4f36b181af2eb59d7d
+
+pkgname = dotnet-markdig
