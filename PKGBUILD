@@ -16,7 +16,7 @@ sha256sums=('6ae7ff7cfef557675108b7447fab8848497dbadc7a788909feeba234be3701aa')
 
 prepare() {
   mkdir -p archive
-  bsdtar -xf "fonts-android-$pkgver.zip" -C archive
+  bsdtar -xf "fonts-mac-$pkgver.zip" -C archive
 }
 
 package() {
