@@ -24,15 +24,8 @@ optdepends=('python-neovim: for Python 3 plugin support (see :help provider-pyth
 provides=("$_pkgname=${pkgver/\+*/}" 'vim-plugin-runtime')
 conflicts=("$_pkgname")
 _date="$(date -u +%Y%m%d)"
-case "$CARCH" in
-x86_64)
-	architecture="x86_64"
-	;;
-aarch64)
-	architecture="arm64"
-	;;
-esac
-source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-${architecture}.tar.gz"
+_arch="${CARCH/aarch64/arm64}"
+source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-${_arch}.tar.gz"
 	"$pkgname-archlinux.vim"
 	"$pkgname-sysinit.vim")
 b2sums=('SKIP'
@@ -41,14 +34,14 @@ b2sums=('SKIP'
 install=$pkgname.install
 
 pkgver() {
-	cd "$srcdir/nvim-linux-${architecture}"
+	cd "$srcdir/nvim-linux-${_arch}"
 	./bin/nvim --version | awk 'NR == 1 { sub("NVIM v", ""); gsub("-", "+"); print $1 }'
 }
 
 prepare() {
 	if [[ -n "$CHECKSUM" ]]; then
 		tar_shad256=$(sha256sum $_pkgname-"$_date".tar.gz | awk '{print $1}')
-		git_assets_shad256=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/tags/nightly" | jq -r --arg name "nvim-linux-${architecture}.tar.gz" '.assets[] | select(.name == $name) | .digest' | awk '{sub(/^sha256:/, ""); print}')
+		git_assets_shad256=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/tags/nightly" | jq -r --arg name "nvim-linux-${_arch}.tar.gz" '.assets[] | select(.name == $name) | .digest' | awk '{sub(/^sha256:/, ""); print}')
 		if [ "$tar_shad256" != "$git_assets_shad256" ]; then
 			echo "SHA256 sum mismatch for $_pkgname-$_date.tar.gz"
 			exit 1
@@ -57,7 +50,7 @@ prepare() {
 }
 
 check() {
-	cd nvim-linux-${architecture}
+	cd "nvim-linux-${_arch}"
 	./bin/nvim --version
 	./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
@@ -67,7 +60,7 @@ package() {
 	install -Dm644 $pkgname-sysinit.vim "$pkgdir/etc/xdg/nvim/sysinit.vim"
 	install -Dm644 $pkgname-archlinux.vim "$pkgdir/usr/share/nvim/archlinux.vim"
 
-	cd nvim-linux-${architecture}
+	cd "nvim-linux-${_arch}"
 	install -Dm755 bin/nvim -t "$pkgdir/usr/bin/"
 	cp -r lib share "$pkgdir/usr/"
 
