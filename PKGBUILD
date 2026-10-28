@@ -1,7 +1,7 @@
 # Maintainer: Biryukov Nikita <n.biryukov.04@gmail.com>
 pkgname=wwal-git
 _pkgname=wwal
-pkgver=1.1.0.r0.g0e7ee35
+pkgver=1.1.0.r1.g58d2d41
 pkgrel=1
 pkgdesc="Fast Wayland wallpaper, video, shader, and Steam Workshop engine with Material You color extraction"
 arch=('x86_64' 'aarch64')
@@ -43,10 +43,17 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local _paths=(src include protocols shaders completions meson.build meson_options.txt)
+  local _sha
+  _sha=$(git log -n 1 --format=%h --abbrev=7 -- "${_paths[@]}")
+  [[ -z "$_sha" ]] && _sha=$(git rev-parse --short=7 HEAD)
+  if git describe --tags --abbrev=0 >/dev/null 2>&1; then
+    local _tag _rev
+    _tag=$(git describe --tags --abbrev=0)
+    _rev=$(git rev-list --count "${_tag}..HEAD" -- "${_paths[@]}")
+    printf "%s.r%s.g%s" "${_tag#v}" "${_rev}" "${_sha}" | sed 's/-/./g'
   else
-    printf "1.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "1.1.0.r%s.g%s" "$(git rev-list --count HEAD -- "${_paths[@]}")" "${_sha}"
   fi
 }
 
