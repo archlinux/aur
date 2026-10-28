@@ -1,5 +1,5 @@
 pkgbase = gtk4-phoenix
-	pkgdesc = GObject-based multi-platform GUI toolkit
+	pkgdesc = A fork of gtk with support for per-monitor fractional scaling on X11
 	pkgver = 4.25.0
 	pkgrel = 1
 	epoch = 1
@@ -84,7 +84,7 @@ pkgname = gtk4-phoenix
 	conflicts = gtk4
 
 pkgname = gtk4-phoenix-demos
-	pkgdesc = GObject-based multi-platform GUI toolkit (demo applications)
+	pkgdesc = A fork of gtk with support for per-monitor fractional scaling on X11 (demo applications)
 	depends = cairo
 	depends = dconf
 	depends = fontconfig
@@ -124,7 +124,7 @@ pkgname = gtk4-phoenix-demos
 	conflicts = gtk4-demos
 
 pkgname = gtk4-phoenix-docs
-	pkgdesc = GObject-based multi-platform GUI toolkit (documentation)
+	pkgdesc = A fork of gtk with support for per-monitor fractional scaling on X11 (documentation)
 	depends = 
 	provides = gtk4-docs=1:4.25.0
 	conflicts = gtk4-docs
