@@ -1,0 +1,24 @@
+pkgbase = weasis-git
+	pkgdesc = Weasis DICOM medical viewer (built from git master)
+	pkgver = r3948.32fef3339
+	pkgrel = 1
+	url = https://github.com/nroduit/Weasis
+	arch = x86_64
+	arch = aarch64
+	license = EPL-2.0
+	license = Apache-2.0
+	makedepends = git
+	makedepends = maven
+	makedepends = java-environment-openjdk=27
+	makedepends = unzip
+	makedepends = dpkg
+	makedepends = fakeroot
+	makedepends = rpm-tools
+	provides = weasis
+	conflicts = weasis
+	conflicts = weasis-bin
+	options = !strip
+	source = weasis-git::git+https://github.com/nroduit/Weasis.git
+	sha256sums = SKIP
+
+pkgname = weasis-git
