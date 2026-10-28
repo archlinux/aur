@@ -3,7 +3,7 @@
 # Maintainer: Sebastian Steinbeißer <sebastian dot steinbeisser at googlemail dot com>
 
 pkgname='docker-scout'
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="Docker Scout is a set of software supply chain features integrated into Docker's user interfaces and command line interface (CLI)."
 url='https://github.com/docker/scout-cli'
@@ -25,14 +25,14 @@ bump_version() {
   # update the checksums
   updpkgsums
   # recreate the SRCINFO
-  makepkg --printsrcinfo > .SRCINFO
+  makepkg --printsrcinfo >.SRCINFO
 }
 
 source_aarch64=("${pkgname}_${pkgver}_arm64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums_aarch64=('3da088c321f55ddf2c2d1c5c9d49c66673b7a978a8b2b65f6a1ca9a3944dc3cd')
-sha256sums_x86_64=('815207e27559fd3d7dddfe778e86f0aeb823eeb24b3cd79d00bc5cd8dfd0724d')
+sha256sums_aarch64=('aeddeca10e51be71430f49edf8b313915f4d4ab092297a6e42ddbe188dfb6caa')
+sha256sums_x86_64=('47917e325d7dd29f33678c7be7fc07dcbc1f424799f5397ce2cb3274c0421a72')
 
 package() {
   # bin
