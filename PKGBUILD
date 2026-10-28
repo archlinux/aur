@@ -1,6 +1,6 @@
 # Maintainer: Cenk Kılıç <cenk1cenk2cenk3@gmail.com>
 pkgname=hyprpilot-bin
-pkgver=4.0.2 # x-release-please-version
+pkgver=4.1.0 # x-release-please-version
 pkgrel=1
 pkgdesc="Config-driven CLI launcher that execs the vendor's native agent CLI (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.zst::https://github.com/hyprpilot/hyprpilot/releas
 # always carries real checksums against the freshly-uploaded
 # tarball). Local-build path: run `updpkgsums` manually after a
 # pkgver edit.
-b2sums=('0ee74f4d2b69d19c663587eac91a6219c7ce4e855424d62c45a633404884a60ca59159a7421980fb8684e4966b33013e9bf5b062e082aba6a5ccf7f78f06bf46')
+b2sums=('0dab9e65f546c6bd6c3c64305ec7598c1bce3a77d0b026bc094040d75887b719b5b3de7ee5534525fad0ed9274a7635b95f3e0240cb4ee38de5f79b5aba1ea27')
 
 package() {
   cd "$srcdir/hyprpilot"
