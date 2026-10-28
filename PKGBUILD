@@ -65,6 +65,15 @@ build() {
         x86_64) local arch_flags='-march=native -mtune=native' ;;
         aarch64) local arch_flags='-mcpu=native' ;;
     esac
+    # CPM takes a package's folder in its cache as downloaded once the folder exists, so a configure that stopped
+    # during a download leaves one that each later build fails on. The cache is complete only after a configure that
+    # finished: without that mark, start it again. The build folder too, whose CMake cache names the CPM it loaded
+    # (CPM_DIRECTORY): a CPM elsewhere then returns before it defines anything
+    local cpm_cache="$srcdir/cpm-cache"
+    if [[ ! -e "$cpm_cache/.complete" ]]; then
+        rm -rf "$cpm_cache" build
+    fi
+    rm -f "$cpm_cache/.complete"
     # SNX_DEPLOY off: a build of the runtime otherwise copies it next to each game in the data folder of $HOME.
     # The O level is the project's (RelWithDebInfo's -O2 -g, after CFLAGS). The flags go in as -D, since CMake reads
     # CFLAGS only when it makes the build folder, which a rebuild keeps
@@ -73,10 +82,12 @@ build() {
         -DCMAKE_C_FLAGS="$CFLAGS $arch_flags" \
         -DCMAKE_CXX_FLAGS="$CXXFLAGS $arch_flags" \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCPM_SOURCE_CACHE="$cpm_cache" \
         -DSNX_DEPLOY=OFF \
         -DSNX_TRACY=OFF \
         -DBUILD_TESTING=OFF \
         -Wno-dev
+    touch "$cpm_cache/.complete"
     cmake --build build
 }
 
