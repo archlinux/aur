@@ -48,7 +48,7 @@ pkgver() {
 prepare() {
 	if [[ -n "$CHECKSUM" ]]; then
 		tar_shad256=$(sha256sum $_pkgname-"$_date".tar.gz | awk '{print $1}')
-		git_assets_shad256=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/tags/nightly" | jq -r ".assets[] | select(.name == 'nvim-linux-${architecture}.tar.gz') | .digest" | awk '{sub(/^sha256:/, ""); print}')
+		git_assets_shad256=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/tags/nightly" | jq -r --arg name "nvim-linux-${architecture}.tar.gz" '.assets[] | select(.name == $name) | .digest' | awk '{sub(/^sha256:/, ""); print}')
 		if [ "$tar_shad256" != "$git_assets_shad256" ]; then
 			echo "SHA256 sum mismatch for $_pkgname-$_date.tar.gz"
 			exit 1
