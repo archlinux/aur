@@ -8,6 +8,8 @@ url="https://github.com/m-uvex/loaf-fm"
 license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('git' 'cargo' 'rust' 'cmake' 'ninja' 'pkgconf' 'clang')
+# GCC LTO objects from the cxx-qt C++ side can't be linked by rustc
+options=('!lto')
 optdepends=('7zip: zip/7z/rar/iso and encrypted archives'
             'udisks2: mount, eject and unlock drives'
             'ffmpegthumbnailer: video thumbnails'

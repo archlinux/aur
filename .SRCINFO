@@ -29,6 +29,7 @@ pkgbase = loaf-fm-git
 	provides = loaf
 	conflicts = loaf-fm
 	conflicts = loaf
+	options = !lto
 	source = loaf-fm-git::git+https://github.com/m-uvex/loaf-fm.git#branch=main
 	sha256sums = SKIP
 
