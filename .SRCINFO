@@ -1,8 +1,9 @@
 pkgbase = slipmat
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/SoftARV/Slipmat
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = nodejs
@@ -15,8 +16,8 @@ pkgbase = slipmat
 	makedepends = libpulse
 	options = !debug
 	options = !lto
-	source = slipmat-0.11.0.tar.gz::https://github.com/SoftARV/Slipmat/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = ad026864baeea9d8f16b35539bbc903cda7df4c368962294167e3bd5115667d9
+	source = slipmat-0.12.0.tar.gz::https://github.com/SoftARV/Slipmat/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = 9cc4b9528a34132a015b36e63813f03c5971ef4ff498d8226fefaf9fe1b32b54
 
 pkgname = slipmat-daemon
 	pkgdesc = Slipmat's playback daemon and hidden Chromium sidecar
@@ -32,7 +33,7 @@ pkgname = slipmat-daemon
 
 pkgname = slipmat
 	pkgdesc = A native GNOME client for Apple Music
-	depends = slipmat-daemon=0.11.0-1
+	depends = slipmat-daemon=0.12.0-1
 	depends = gtk4
 	depends = libadwaita
 	depends = librsvg
@@ -40,6 +41,6 @@ pkgname = slipmat
 
 pkgname = climat
 	pkgdesc = Winamp-style Apple Music in a terminal; needs a graphical session
-	depends = slipmat-daemon=0.11.0-1
+	depends = slipmat-daemon=0.12.0-1
 	depends = libpulse
 	depends = hicolor-icon-theme

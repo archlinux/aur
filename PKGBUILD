@@ -2,15 +2,15 @@
 
 pkgbase=slipmat
 pkgname=('slipmat-daemon' 'slipmat' 'climat')
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
-arch=('x86_64')          # Widevine on Linux is x86_64 only
+arch=('x86_64' 'aarch64')
 url="https://github.com/SoftARV/Slipmat"
 license=('GPL-3.0-or-later')
 makedepends=('cargo' 'nodejs' 'npm' 'git' 'pkgconf' 'librsvg'
              'gtk4' 'libadwaita' 'libpulse')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ad026864baeea9d8f16b35539bbc903cda7df4c368962294167e3bd5115667d9')
+sha256sums=('9cc4b9528a34132a015b36e63813f03c5971ef4ff498d8226fefaf9fe1b32b54')
 options=('!debug' '!lto')
 
 prepare() {
@@ -45,8 +45,13 @@ package_slipmat-daemon() {
         sidecar/queue-identity.js \
         sidecar/node_modules "$pkgdir/usr/share/slipmat/sidecar/"
 
+  case "$CARCH" in
+    x86_64) local node_arch=x64 ;;
+    aarch64) local node_arch=arm64 ;;
+    *) printf 'Unsupported architecture: %s\n' "$CARCH" >&2; return 1 ;;
+  esac
   find "$pkgdir/usr/share/slipmat/sidecar" -name '*.node' \
-    ! -name '*linux-x64-gnu*' -delete
+    ! -name "*linux-$node_arch-gnu*" -delete
 
   install -Dm644 packaging/systemd/slipmatd.service \
     "$pkgdir/usr/lib/systemd/user/slipmatd.service"
