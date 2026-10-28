@@ -1,6 +1,6 @@
 # Maintainer: ca-x <https://github.com/ca-x>
 pkgname=lightos-remoted-bin
-pkgver=0.1.20
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='Cross-platform Rust remote desktop host for browser clients (Linux binary)'
 arch=('x86_64')
@@ -23,9 +23,9 @@ source=("aquamarine-0.15.1-${_aqcommit}.tar.gz::https://codeload.github.com/hypr
         'aquamarine-wayland.patch' 'lightos-remoted-bin.install')
 sha256sums=('975a3479b458722ec2e34e5fed9cdd46f77fa70485431f70093693532f685ff3'
             'c905d0cb7abb194e2772b4a655bd834b7f198f92b38de228040d37e4cc492986'
-            'ef58b026b3c9f73cf6dfd4c9682b5c5e6e440ff8a68cb41b86e7c425d281c265')
-sha256sums_x86_64=('bf3f4d9a6442049136bf7b9683da7382867e46b5b49f6cf82dbd9b9f41f1ebf4'
-                   'f4f26160fdefa747c634f680a5a92e85c890cd6caeedfa41f83789594baa2a72')
+            'f31d2a33bae7aeecf890e927e8575f6768a2ebfa0d21da3a26c0b81e79b81c78')
+sha256sums_x86_64=('77cf64158c713fbea7fd79ccbdb92f5c5e88277ef854966e6ee095ccbbab261e'
+                   '0edc9df1af1638ec05662f1adcfa017d84ac4c02602793add95e3017b8446d6c')
 source_x86_64=("${_bundle}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz"
                "${_bundle}-${pkgver}.tar.gz.sha256::${url}/releases/download/v${pkgver}/${_bundle}.tar.gz.sha256")
 

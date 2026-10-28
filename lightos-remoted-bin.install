@@ -1,15 +1,25 @@
 #!/usr/bin/env bash
+_lightos_remoted_package_hook() {
+    case ${LIGHTOS_REMOTED_PACKAGE_STAGE_ONLY-0} in
+        0) /usr/lib/lightos-remoted/lightos-remoted install-service "$1" ;;
+        1)
+            [[ $1 == --package-managed ]] || return 0
+            /usr/lib/lightos-remoted/lightos-remoted install-service --package-managed --stage-only
+            ;;
+        *) printf '%s\n' 'LIGHTOS_REMOTED_PACKAGE_STAGE_ONLY must be 0 or 1' >&2; return 1 ;;
+    esac
+}
 pre_upgrade() {
-    /usr/lib/lightos-remoted/lightos-remoted install-service --snapshot || return 1
+    _lightos_remoted_package_hook --snapshot
 }
 post_install() {
-    /usr/lib/lightos-remoted/lightos-remoted install-service --package-managed || return 1
+    _lightos_remoted_package_hook --package-managed
 }
 post_upgrade() {
-    /usr/lib/lightos-remoted/lightos-remoted install-service --package-managed || return 1
+    _lightos_remoted_package_hook --package-managed
 }
 pre_remove() {
     # Preserve mapped owner/transport binaries and GUI processes until they exit.
     # Keep a payload snapshot and configuration for deliberate cleanup.
-    /usr/lib/lightos-remoted/lightos-remoted install-service --remove || return 1
+    _lightos_remoted_package_hook --remove
 }
