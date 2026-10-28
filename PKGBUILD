@@ -10,8 +10,10 @@ depends=('aws-sdk-cpp-core' 'aws-sdk-cpp-s3' 'glibc' 'kcmutils' 'kconfig' 'kcore
          'kirigami' 'kirigami-addons' 'libstdc++' 'qt6-base' 'qt6-declarative')
 makedepends=('extra-cmake-modules' 'cmake' 'kdoctools')
 conflicts=('kio-s3-git')
-source=("https://download.kde.org/stable/kio-s3/$pkgname-$pkgver.tar.xz")
-sha256sums=('ce2c71ad99b553a89a0b265e1817b594ff688c3a9ddaa39a7a49046ba77211aa')
+source=("https://download.kde.org/stable/kio-s3/$pkgname-$pkgver.tar.xz"{,.sig})
+sha256sums=('ce2c71ad99b553a89a0b265e1817b594ff688c3a9ddaa39a7a49046ba77211aa'
+            'SKIP')
+validpgpkeys=('39FFA93CAE9C6AFC212AD00202325448204E452A') # Carl Schwan
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \

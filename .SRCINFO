@@ -23,6 +23,9 @@ pkgbase = kio-s3
 	depends = qt6-declarative
 	conflicts = kio-s3-git
 	source = https://download.kde.org/stable/kio-s3/kio-s3-1.0.2.tar.xz
+	source = https://download.kde.org/stable/kio-s3/kio-s3-1.0.2.tar.xz.sig
+	validpgpkeys = 39FFA93CAE9C6AFC212AD00202325448204E452A
 	sha256sums = ce2c71ad99b553a89a0b265e1817b594ff688c3a9ddaa39a7a49046ba77211aa
+	sha256sums = SKIP
 
 pkgname = kio-s3
