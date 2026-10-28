@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=oasdiff
-pkgver=1.34.1
+pkgver=1.35.0
 pkgrel=1
 pkgdesc='Diff and breaking changes for OpenAPI specifications'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 checkdepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ebcf119ebc942694f4c3a9c0dfc9c6c6d401d803efb525a77aa973104e7b68d9')
+sha256sums=('976468914e9b36d1daeca3336841e55249b3af7bf2aabb29bd2c8ed768e8ddd0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
