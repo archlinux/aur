@@ -1,6 +1,6 @@
 pkgbase = lemon-studio-git
 	pkgdesc = A free and open-source digital audio workstation written in Rust
-	pkgver = 0.0.0
+	pkgver = r901.g60034ab
 	pkgrel = 1
 	url = https://github.com/ItsAlphaNeon/Lemon-Studio
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = lemon-studio-git
 	optdepends = xorg-xwayland: X11 plug-in windows on Wayland desktops
 	optdepends = pipewire-alsa: route ALSA audio through PipeWire
 	optdepends = pulseaudio-alsa: route ALSA audio through PulseAudio
-	provides = lemon-studio=0.0.0
+	provides = lemon-studio=r901.g60034ab
 	conflicts = lemon-studio
 	source = git+https://github.com/ItsAlphaNeon/Lemon-Studio.git#branch=main
 	sha256sums = SKIP
