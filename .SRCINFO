@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-privacy-indicator
 	pkgdesc = Privacy indicator for the COSMIC Desktop
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/D-Brox/cosmic-ext-applet-privacy-indicator
 	arch = x86_64
 	license = GPL3

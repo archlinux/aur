@@ -2,7 +2,7 @@
 
 pkgname=cosmic-ext-applet-privacy-indicator
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy indicator for the COSMIC Desktop"
 arch=('x86_64')
 url="https://github.com/D-Brox/cosmic-ext-applet-privacy-indicator"
@@ -28,13 +28,15 @@ prepare() {
   cd "$pkgname-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "$pkgname-$pkgver"
   
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
   just build-release --frozen
 }
 
