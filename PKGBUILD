@@ -1,6 +1,6 @@
 # Maintainer: Mare Devi <me@maredevi.moe>
 pkgname=astro-editor-bin
-pkgver=1.0.17
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="A schema-aware markdown editor for Astro content collections"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 provides=('astro-editor')
 conflicts=('astro-editor')
 source=("${pkgname}-${pkgver}.deb::https://github.com/dannysmith/astro-editor/releases/download/v${pkgver}/Astro.Editor_${pkgver}_amd64.deb")
-sha256sums=('1a24f1e477f45bcee856e04a0721cbff48200413cdbfdb5165866d3c207a2bd6')
+sha256sums=('638d413f63843d4cb0a18a63b958b5ee53db061948457f4d795cbe30d9d99e08')
 
 package() {
   tar -xzf data.tar.gz -C "${pkgdir}"
