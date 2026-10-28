@@ -5,10 +5,10 @@
 
 _pkgname=openh264
 pkgname=lib32-openh264
-pkgver=2.6.0
-pkgrel=2
-# https://github.com/cisco/openh264/blob/v2.6.0/Makefile#L33
-_gtestver=1.8.1
+pkgver=2.7.0
+pkgrel=1
+# https://github.com/cisco/openh264/blob/v2.7.0/Makefile#L33
+_gtestver=1.15.2
 pkgdesc='H.264 encoder and decoder (32-bit)'
 arch=('x86_64')
 url='https://www.openh264.org/'
@@ -21,9 +21,9 @@ makedepends=(
     'nasm')
 provides=('libopenh264.so')
 source=("https://github.com/cisco/openh264/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        "https://github.com/google/googletest/archive/release-${_gtestver}/googletest-${_gtestver}.tar.gz")
-sha256sums=('558544ad358283a7ab2930d69a9ceddf913f4a51ee9bf1bfb9e377322af81a69'
-            '9bf1fe5182a604b4135edc1a425ae356c9ad15e9b23f9f12a02e80184c3a249c')
+        "https://github.com/google/googletest/archive/v${_gtestver}/googletest-${_gtestver}.tar.gz")
+sha256sums=('5178775c8b440073e70920e97d195efff721c0e56d0a78cc82c919e95d54924d'
+            '7b42b4d6ed48810c5362c265a17faebe90dc2373c885e5216439d37927f02926')
 
 # ENABLE64BIT=No selects the upstream 32-bit target (adds -m32 to CFLAGS/LDFLAGS).
 # ENABLEPIC=Yes defines X86_32_PICASM, without which the x86 asm emits text
@@ -36,7 +36,7 @@ _make_options=(
     SHAREDLIB_DIR='/usr/lib32')
 
 prepare() {
-    ln -sf "../googletest-release-${_gtestver}" "${_pkgname}-${pkgver}/gtest"
+    ln -sf "../googletest-${_gtestver}" "${_pkgname}-${pkgver}/gtest"
 }
 
 build() {

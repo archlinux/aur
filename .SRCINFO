@@ -1,18 +1,18 @@
 pkgbase = lib32-openh264
 	pkgdesc = H.264 encoder and decoder (32-bit)
-	pkgver = 2.6.0
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://www.openh264.org/
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = nasm
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = openh264=2.6.0
+	depends = openh264=2.7.0
 	provides = libopenh264.so
-	source = https://github.com/cisco/openh264/archive/v2.6.0/openh264-2.6.0.tar.gz
-	source = https://github.com/google/googletest/archive/release-1.8.1/googletest-1.8.1.tar.gz
-	sha256sums = 558544ad358283a7ab2930d69a9ceddf913f4a51ee9bf1bfb9e377322af81a69
-	sha256sums = 9bf1fe5182a604b4135edc1a425ae356c9ad15e9b23f9f12a02e80184c3a249c
+	source = https://github.com/cisco/openh264/archive/v2.7.0/openh264-2.7.0.tar.gz
+	source = https://github.com/google/googletest/archive/v1.15.2/googletest-1.15.2.tar.gz
+	sha256sums = 5178775c8b440073e70920e97d195efff721c0e56d0a78cc82c919e95d54924d
+	sha256sums = 7b42b4d6ed48810c5362c265a17faebe90dc2373c885e5216439d37927f02926
 
 pkgname = lib32-openh264
