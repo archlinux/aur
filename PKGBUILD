@@ -1,7 +1,7 @@
 # Maintainer: arosario513
 pkgname=oxipass-tui-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A terminal-based password manager"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arosario513/oxipass-tui"
@@ -14,8 +14,8 @@ source=("LICENSE::https://raw.githubusercontent.com/arosario513/oxipass-tui/v${p
 source_x86_64=("oxipass-tui::https://github.com/arosario513/oxipass-tui/releases/download/v${pkgver}/oxipass-tui-x86_64-unknown-linux-gnu")
 source_aarch64=("oxipass-tui::https://github.com/arosario513/oxipass-tui/releases/download/v${pkgver}/oxipass-tui-aarch64-unknown-linux-gnu")
 sha256sums=('e1aa170c2892a29d9fb5377cd798b90c773c49d89cd9254fb5e94730cf99380a')
-sha256sums_x86_64=('22124342e828bacc74e33e1485f536f1d5367ad66341285d465b23e8aed6584c')
-sha256sums_aarch64=('45eebdb7be769003e4a17867c289b3f436582602cc1188a3adeade5f8133cb98')
+sha256sums_x86_64=('a6e3b35db8fde277b54ca088fa558eabeefae719e690051764cf1a38fba1ebe2')
+sha256sums_aarch64=('e96a317c6c6b89bedc77e1bf7898bc6dd855818e25a2b5fbf6d056e47bf84350')
 
 package() {
     install -Dm755 oxipass-tui "${pkgdir}/usr/bin/oxipass-tui"
