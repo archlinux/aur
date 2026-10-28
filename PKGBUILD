@@ -486,9 +486,18 @@ build() {
     )
   fi
 
-  # Optional compiler cache, used by the self-hosted CI runner.
-  if [[ -n ${CEF_VAAPI_SCCACHE:-} ]] && command -v sccache >/dev/null; then
-    _flags+=('cc_wrapper="sccache"')
+  # Optional C/C++ compiler cache. Fail rather than silently bypass an opt-in.
+  # Chromium invokes rustc directly via its own wrapper, not Cargo/RUSTC_WRAPPER.
+  if [[ ${CEF_VAAPI_SCCACHE:-0} == 1 ]]; then
+    command -v sccache >/dev/null || {
+      echo 'ERROR: CEF_VAAPI_SCCACHE=1 requires sccache in PATH' >&2
+      return 1
+    }
+    _flags+=(
+      'cc_wrapper="sccache"'
+      'use_remoteexec=false' # reclient and cc_wrapper are mutually exclusive
+      'strip_absolute_paths_from_debug_symbols=true'
+    )
   fi
 
   _validate_cef_vaapi_invariants
