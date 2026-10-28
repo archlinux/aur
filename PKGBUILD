@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=emaki
-pkgver=0.3.2 # renovate: datasource=github-releases depName=alkaline-software/emaki
+pkgver=0.4.0 # renovate: datasource=github-releases depName=alkaline-software/emaki
 pkgrel=1
 pkgdesc="An agentic development environment"
 url="https://github.com/alkaline-software/emaki"
@@ -57,4 +57,4 @@ EOF
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('7818bd030d3cf438bd77b36c1c4af62babc1ce47e0af85cce05210bbe832a031ef0ce3ebe2fdf7442da1eabfc0452b0581004881f5ce9a64205032b26e0d9507')
+sha512sums=('60a0454afba967076eadefc675bea95fc3a4f0b655974c34574997b53f2fd1bbe80eb75e0b32c0b86180b42dae6429f874355136d0f822b9ed6f3512e225c5c6')
