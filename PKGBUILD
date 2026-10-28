@@ -38,7 +38,7 @@
 
 
 pkgname=dsh-desktop-git
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)'
 arch=('x86_64')
@@ -131,6 +131,10 @@ build() {
   export npm_config_fund=false
 
   npm ci
+
+  # 上游 CI 在打包前用 release tag 覆盖 package.json 版本（仓库内固定为旧号），
+  # 这里同样处理，避免应用内版本号落后于包版本
+  npm version --no-git-tag-version --allow-same-version "$pkgver"
 
   # 上游 office:prepare / afterPack 仅支持 macOS/Windows，见文件头说明。
   node "$srcdir/dsh-linux-patch-deps.mjs" .

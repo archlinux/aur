@@ -1,6 +1,6 @@
 pkgbase = dsh-desktop-git
 	pkgdesc = Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/dataelement/dsh-desktop
 	install = dsh-desktop-git.install
