@@ -1,7 +1,7 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
 pkgver=0.1.42
-pkgrel=2
+pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
 url="https://github.com/musqz/archcanary"
