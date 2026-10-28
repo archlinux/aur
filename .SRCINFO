@@ -1,0 +1,33 @@
+pkgbase = uuplugin-dns-patched-bin
+	pkgdesc = UU Steam Deck Linux plugin patched to preserve Tailscale DNS
+	pkgver = 14.2.2
+	pkgrel = 1
+	url = https://github.com/Koswu/uuplugin-dns-patched
+	arch = x86_64
+	license = LicenseRef-UU
+	license = 0BSD
+	makedepends = python
+	depends = iproute2
+	depends = iptables
+	depends = kmod
+	depends = systemd
+	optdepends = tailscale: Tailnet connectivity and split DNS
+	provides = uuplugin-bin=14.2.2
+	provides = uuplugin
+	conflicts = uuplugin-bin
+	conflicts = uuplugin
+	options = !strip
+	options = !debug
+	backup = etc/uuplugin/uu.conf
+	source = uuplugin-14.2.2.tar.gz::https://uurouter.gdl.netease.com/uuplugin/steam-deck-plugin-x86_64/v14.2.2/uu.tar.gz
+	source = patch_uuplugin_tailnet.py
+	source = test_uuplugin_patch.py
+	source = uuplugin.service
+	source = LICENSE
+	sha256sums = 6881c8bd388630edfdbceef1f723bf43cf75b0ce5122ee891e99d2fb86c96652
+	sha256sums = 0573a865b7ff2e799d5882119af9369b6b566770d40a1b36581569a168b51902
+	sha256sums = d39477cdae3ccfc35cc12af1f9968ceef6e43cdf49a83b1659ba7c0d4f8037cb
+	sha256sums = c2831cbf26bb3629adbed3cb10efcc7a64f54b337496aa126e68195947f110e7
+	sha256sums = d1cc264c9506464f18e849cb22e58842aaba5250a1815ee77456d6d661c0f979
+
+pkgname = uuplugin-dns-patched-bin

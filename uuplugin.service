@@ -1,0 +1,11 @@
+[Unit]
+Description=UU Steam Deck Plugin with Tailnet DNS compatibility patch
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/etc/uuplugin
+ExecStart=/usr/bin/uuplugin /etc/uuplugin/uu.conf
+
+[Install]
+WantedBy=multi-user.target

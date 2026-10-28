@@ -1,0 +1,10 @@
+/.agents/
+/.aws/
+/.codex/
+/src/
+/pkg/
+/*.tar.gz
+/*.pkg.tar.*
+/*.src.tar.*
+__pycache__/
+*.py[cod]
