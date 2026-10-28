@@ -1,0 +1,14 @@
+--- a/src/command.C
++++ b/src/command.C
+@@ -3426,9 +3426,9 @@ rxvt_term::process_color_seq (int report, int color, c
+         snprintf (rgba_str, sizeof (rgba_str), "rgb:%04x/%04x/%04x", c.r, c.g, c.b);
+ 
+       if (IN_RANGE_INC (color, minCOLOR, maxTermCOLOR))
+-        tt_printf ("\033]%d;%d;%s%c", report, color - minCOLOR, rgba_str, resp);
++        tt_printf ("\033]%d;%d;%s\033\\", report, color - minCOLOR, rgba_str);
+       else
+-        tt_printf ("\033]%d;%s%c", report, rgba_str, resp);
++        tt_printf ("\033]%d;%s\033\\", report, rgba_str, resp);
+     }
+   else
+     set_window_color (color, str);

@@ -1,0 +1,4 @@
+[rxvt-unicode]
+source = "regex"
+url = "https://dist.schmorp.de/rxvt-unicode/"
+regex = 'rxvt-unicode-([\d\.]+).tar.bz2'
