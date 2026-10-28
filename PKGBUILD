@@ -1,6 +1,6 @@
 # Maintainer: Daan Hessen <daanhessen@notbadcompany.com>
 pkgname=vector-fm
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Fast GTK4 file manager with nvim-style keys, a terminal panel and Lua config'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('777b4ebfe97e7acfd123dc17fc1a0613f8019cf4a24abde02da8899a7ab6c4bd')
+sha256sums=('607f60ef4a28ad36d3cb07badae7828c2fa167fd6d668dbd8e45c7d3264ee9ea')
 
 prepare() {
   cd "vector-$pkgver"
