@@ -8,7 +8,7 @@
 # tarball of the local checkout, since an unreleased version has none).
 
 pkgname=arch-sense
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Control center for Linuwu-Sense Acer laptops: thermal profiles, fans, battery and keyboard lighting"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   'arch-sense.tmpfiles'
   '71-arch-sense.rules'
 )
-sha256sums=('512fbf7c52660eba8c9939324ec90aa94131c69135cf131cdceda70c3a1fe9bd'
+sha256sums=('3774f1f14bb83a738376438d97b405567a66563ca05485edd9d38068778a7645'
             'c14e3915fb71c2909e30217439ca9a2a2b275c787ccc9fefbdc1e4471c4eb1d7'
             'fda5d014e6980d2ae73a42366182fb46337022c0588a6e81c7635651673c6d67'
             '3bb028afeba660ee71b8510a05ef848d2700597b6083873578488fe9742cf3c1'
