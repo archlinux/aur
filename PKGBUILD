@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=cloudflare-cf
 _npmname=cf
-pkgver=1.0.0_beta.24
+pkgver=1.0.0_beta.25
 _npmver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Agentic command-line interface for the entire Cloudflare API"
@@ -18,7 +18,7 @@ optdepends=('cloudflared: use the system binary for tunnels instead of a downloa
 conflicts=('cloudfoundry-cli' 'cloudfoundry6-cli')
 source=("$_npmname-$_npmver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('f31e9893a164200efac565cc6cb79eb0612f51b9f2eb71b2265a090082e4e0b7')
+sha256sums=('45e2c4bd80ff1f822f7d9c09a44abac8fb71551bd2710839322eab688b89b45c')
 # Keep the bundled prebuilt workerd and sharp binaries untouched.
 options=('!strip' '!debug')
 
