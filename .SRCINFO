@@ -1,0 +1,22 @@
+pkgbase = xfce4-caffeine-plugin-git
+	pkgdesc = Xfce panel plugin that keeps your screen from locking/sleeping.
+	pkgver = r72.611c300
+	pkgrel = 1
+	url = https://github.com/Alperen42v/extra-xfce4-plugins/tree/main/caffeine-plugin
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = xfce4-panel
+	provides = xfce4-caffeine-plugin
+	conflicts = xfce4-caffeine-plugin
+	source = git+https://github.com/Alperen42v/extra-xfce4-plugins
+	source = Makefile.patch
+	source = xfce4panel-includes.patch
+	sha512sums = SKIP
+	sha512sums = 5fdfe5d42711fddc699e39c4e6e30d7016c161fed7f51c4705eff0a7b0ab87e10895596bafb23e799e62efb3fd7e4831274661fdf88e1c96abb6b567c82506ec
+	sha512sums = dc25a616c28c5ab9e52f06295ddeae0a8e686f6ce97b293311b46bed703d5b902cee82c44115039846032259d09f2401697e0f9e67637d35a43b31746370c25c
+
+pkgname = xfce4-caffeine-plugin-git

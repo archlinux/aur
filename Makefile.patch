@@ -1,0 +1,37 @@
+diff -Naur ./caffeine-plugin.orig/Makefile ./caffeine-plugin/Makefile
+--- ./caffeine-plugin.orig/Makefile	2026-10-28 09:50:28.793109728 -0400
++++ ./caffeine-plugin/Makefile	2026-10-28 09:52:50.260431892 -0400
+@@ -121,22 +121,14 @@
+ 		echo "installed translation $$lang"; \
+ 	done
+ 
+-# Copies each bundled default icon into ICONS_DIR unless it already
+-# exists there, so existing customizations are never overwritten.
+-# $(DESTDIR) is intentionally omitted for the per-user (non-root) case -
+-# those are per-user runtime files a package manager shouldn't own; for
+-# the root case ICONS_DIR is already a proper system path.
++# Copies each bundled default icon into ICONS_DIR
+ install-default-icons:
+-	install -d $(ICONS_DIR)
++	install -d "$(DESTDIR)$(ICONS_DIR)"
+ 	@for f in $(DEFAULT_ICONS_SRC)/*.png; do \
+ 		[ -e "$$f" ] || continue; \
+ 		name=$$(basename "$$f"); \
+-		if [ -f "$(ICONS_DIR)/$$name" ]; then \
+-			echo "keeping existing $(ICONS_DIR)/$$name (not overwritten)"; \
+-		else \
+-			install -m 644 "$$f" "$(ICONS_DIR)/$$name"; \
+-			echo "installed default icon $(ICONS_DIR)/$$name"; \
+-		fi; \
++		install -m 644 "$$f" "$(DESTDIR)$(ICONS_DIR)/$$name"; \
++		echo "installed default icon $(ICONS_DIR)/$$name"; \
+ 	done
+ 
+ uninstall:
+@@ -164,4 +156,4 @@
+ 		msgmerge --update --backup=none "$$po" $(PODIR)/$(GETTEXT_PACKAGE).pot; \
+ 	done
+ 
+-.PHONY: all install install-default-icons install-translations uninstall clean pot update-po
+\ No newline at end of file
++.PHONY: all install install-default-icons install-translations uninstall clean pot update-po

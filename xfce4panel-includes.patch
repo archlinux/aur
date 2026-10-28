@@ -1,0 +1,26 @@
+diff -Naur ./caffeine-plugin.orig/panel-plugin/caffeine.h ./caffeine-plugin/panel-plugin/caffeine.h
+--- ./caffeine-plugin.orig/panel-plugin/caffeine.h	2026-10-28 09:58:22.232720913 -0400
++++ ./caffeine-plugin/panel-plugin/caffeine.h	2026-10-28 09:59:04.660492654 -0400
+@@ -14,9 +14,7 @@
+ #endif
+ #include <glib/gi18n-lib.h>
+ 
+-#include <libxfce4panel/xfce-panel-plugin.h>
+-#include <libxfce4panel/xfce-panel-convenience.h>
+-#include <libxfce4panel/xfce-panel-macros.h>
++#include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "caffeine-icons.h"
+ 
+diff -Naur ./caffeine-plugin.orig/panel-plugin/caffeine-prefs.h ./caffeine-plugin/panel-plugin/caffeine-prefs.h
+--- ./caffeine-plugin.orig/panel-plugin/caffeine-prefs.h	2026-10-28 09:58:22.232720913 -0400
++++ ./caffeine-plugin/panel-plugin/caffeine-prefs.h	2026-10-28 09:59:04.656812907 -0400
+@@ -3,7 +3,7 @@
+ 
+ #include <glib.h>
+ #include <gtk/gtk.h>
+-#include <libxfce4panel/xfce-panel-plugin.h>
++#include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "caffeine.h"
+ 
