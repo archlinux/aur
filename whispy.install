@@ -13,7 +13,27 @@ EOF
 }
 
 post_upgrade() {
-  # $1 = new version, $2 = old version. Only the 0.2.x -> 0.3 jump needs a note.
+  # $1 = new version, $2 = old version.
+  if [ "$(vercmp "$2" 0.4.0)" -lt 0 ]; then
+    cat <<'EOF'
+==> whispy 0.4.0
+
+   - Fixes garbled transcripts on PipeWire 1.6 (audio was read byte-swapped).
+     Restart the daemon to pick it up:
+
+          systemctl --user restart whispy-daemon
+
+   - New settings screen: `whispy-daemon settings` (microphone with a level
+     meter and a test dictation, language, typing, auto-stop, history).
+   - Omarchy: update the bar widget (a click now opens the settings) with
+
+          whispy-daemon setup omarchy
+
+     and, to put it where Omarchy's dictation icon was:
+
+          omarchy bar move whispy.dictation --after omarchy.indicators
+EOF
+  fi
   if [ "$(vercmp "$2" 0.3.0)" -lt 0 ]; then
     cat <<'EOF'
 ==> whispy 0.3.0: two things to do after this upgrade

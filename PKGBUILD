@@ -1,6 +1,6 @@
 # Maintainer: Riccardo Romoli <romoliriccardo.rr@gmail.com>
 pkgname=whispy
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="System-wide push-to-talk dictation for Hyprland/Omarchy, Wayland and X11, powered by whisper.cpp"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('quickshell: dictation pill overlay UI (Wayland layer-shell)'
 options=('!lto')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('22b5923a84d95dd57d2432b0831b6c744ed45e3379dcbbdec6ca6ec56badda7a')
+sha256sums=('ddd3b3589737f2857d77d96188f5be729466c165fad7d89dce4d1f10767fbe67')
 
 # whisper.cpp (Vulkan) and the ggml model are NOT shipped in this package — they
 # are too large / hardware-specific. `whispy-daemon setup` bootstraps them on
