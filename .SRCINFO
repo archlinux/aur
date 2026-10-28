@@ -1,0 +1,19 @@
+pkgbase = gemini-api-cli-bin
+	pkgdesc = Official command-line interface for the Google Gemini API (prebuilt binary)
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/google-gemini/gemini-api-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gemini-api-cli=0.4.4
+	provides = gemini-api=0.4.4
+	conflicts = gemini-api-cli
+	conflicts = gemini-api
+	options = !strip
+	source_x86_64 = gemini-api-cli-bin-0.4.4-x86_64.tar.gz::https://github.com/google-gemini/gemini-api-cli/releases/download/v0.4.4/gemini-api_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 976c0c7241c0d577f535249cf670c8e43503d34fbacd04fd0b008d98c34b6078
+	source_aarch64 = gemini-api-cli-bin-0.4.4-aarch64.tar.gz::https://github.com/google-gemini/gemini-api-cli/releases/download/v0.4.4/gemini-api_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 53edd2cda106f06db4e8edf466269fce7448a5deff98d5fd158639ded6412f64
+
+pkgname = gemini-api-cli-bin
