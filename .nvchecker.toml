@@ -1,0 +1,5 @@
+# Releases of the same major version from nuget.org, see the PKGBUILD for why newer ones aren't packaged here
+[dotnet-json-more-net-2]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/json.more.net/index.json"
+filter = '.versions | map(select(startswith("2.") and (contains("-") | not))) | last'

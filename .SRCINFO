@@ -1,0 +1,15 @@
+pkgbase = dotnet-json-more-net-2
+	pkgdesc = Extended functionality for System.Text.Json, 2.x (NuGet package)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/json-everything/json-everything
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	provides = dotnet-json-more-net=2.2.0
+	source = json-everything::git+https://github.com/json-everything/json-everything.git#commit=f53d4d27eeed6a73d377bf4188175f0b8a46f856
+	sha512sums = b7ec594e732d53e73beb3f957abab14ed0e2a6866bc08d682c00c8de6b3cb508cc43051fb91191fa09365e85f6b511fd75715ec72ec622268316bdf6321010b5
+	b2sums = 533f4c089f938eb943c38c6bbe60e3fad78b0830c069aab2903c078e6646af41a3a204215574c919cdeaf0dfd683b9f25b9ebf52bd790f96e5d93b357d3e7c09
+
+pkgname = dotnet-json-more-net-2
