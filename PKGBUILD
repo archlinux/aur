@@ -12,13 +12,13 @@ provides=('fern')
 conflicts=('fern')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v${pkgver}/fern_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('162becd7587fa0e06dd56d4ea86c8cb9362e12d2813f37e0a72b93cab489dc5d')
+sha256sums_aarch64=('eb80fbf5d49cb49a89fb6073c61395c5a183c99f8b6b5b25127d893218aafb99')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v${pkgver}/fern_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('1ee1a22433a543d323683539a4c07ec28851d7f71233a17435777945ec00c333')
+sha256sums_i686=('95a8ee4a7a1b6c2ae92b9c4c0cdd751a23add97a0ca5142a63cf8e283936136e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v${pkgver}/fern_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('37c1aa419c3fe7b9c5362561a4c71cea1e67d8700229f99b3f5ffebe7045e595')
+sha256sums_x86_64=('f320fa5a02f14c6a4a3450357eb62928d10ebe0e19ab411bd05b54cfeb3b04e5')
 
 package() {
   install -Dm755 "./fern" "${pkgdir}/usr/bin/fern"
