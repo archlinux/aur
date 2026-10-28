@@ -6,7 +6,7 @@
 # matches `pkgver`.
 
 pkgname=gpu-screen-recorder-gpui-bin
-pkgver=5.7.10
+pkgver=5.7.12
 pkgrel=1
 pkgdesc="GPUI (Rust) frontend for gpu-screen-recorder (prebuilt binary)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=(
 provides=('gpu-screen-recorder-gpui')
 conflicts=('gpu-screen-recorder-gpui')
 source=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/gpu-screen-recorder-gpui-$pkgver-x86_64-archlinux.tar.gz")
-sha256sums=('5a0968651777f6593748448d4cd4c1aa43e9c92d4438d13895aefce69e7773dd')
+sha256sums=('f429dce00569f70eba3b27ef2b3ee3514140e6f6717c95335751ea86fadd0b03')
 # The binary was already stripped when the release tarball was built.
 options=('!debug' '!strip')
 

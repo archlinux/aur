@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-gpui-bin
 	pkgdesc = GPUI (Rust) frontend for gpu-screen-recorder (prebuilt binary)
-	pkgver = 5.7.10
+	pkgver = 5.7.12
 	pkgrel = 1
 	url = https://github.com/Coobyk/gpu-screen-recorder-gpui
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gpu-screen-recorder-gpui-bin
 	conflicts = gpu-screen-recorder-gpui
 	options = !debug
 	options = !strip
-	source = gpu-screen-recorder-gpui-bin-5.7.10-x86_64.tar.gz::https://github.com/Coobyk/gpu-screen-recorder-gpui/releases/download/v5.7.10/gpu-screen-recorder-gpui-5.7.10-x86_64-archlinux.tar.gz
-	sha256sums = 5a0968651777f6593748448d4cd4c1aa43e9c92d4438d13895aefce69e7773dd
+	source = gpu-screen-recorder-gpui-bin-5.7.12-x86_64.tar.gz::https://github.com/Coobyk/gpu-screen-recorder-gpui/releases/download/v5.7.12/gpu-screen-recorder-gpui-5.7.12-x86_64-archlinux.tar.gz
+	sha256sums = f429dce00569f70eba3b27ef2b3ee3514140e6f6717c95335751ea86fadd0b03
 
 pkgname = gpu-screen-recorder-gpui-bin
