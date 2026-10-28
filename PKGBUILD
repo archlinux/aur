@@ -2,7 +2,7 @@
 pkgname=memos-bin
 pkgver=0.31.0
 pkgrel=2
-pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
+pkgdesc="Privacy-first, lightweight note-taking service (prebuilt)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/usememos/memos"
 license=('MIT')

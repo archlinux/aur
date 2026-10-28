@@ -1,5 +1,5 @@
 pkgbase = memos-bin
-	pkgdesc = A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts.
+	pkgdesc = Privacy-first, lightweight note-taking service (prebuilt)
 	pkgver = 0.31.0
 	pkgrel = 2
 	url = https://github.com/usememos/memos
