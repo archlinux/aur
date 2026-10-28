@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=solidcraft
-pkgver=0.24.1
+pkgver=0.25.1
 pkgrel=1
 url="https://$pkgname.io"
 _url="https://github.com/tangency-labs/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('3243ef1b312c6fe9f7fd90eab4d7f55ec05f5d3cfb8bd220f8372480d6536d8c')
+sha256sums=('a488096db6cf6160e1f8b253dc2c97a45bfb37f6cd53eee14fbe3a2aac5b6ee0')
 
 _srcenv() {
 	cd "$_archive"
@@ -49,11 +49,11 @@ package() {
 	depends+=(libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "assets/platforms/linux/ai.storyteller.$pkgname.desktop"
-	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "assets/platforms/linux/ai.storyteller.$pkgname.mime.xml"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "./assets/platforms/linux/io.tangencylabs.$pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "assets/platforms/linux/io.tangencylabs.$pkgname.mime.xml"
 	for s in ${_icons[@]}; do
 		local dim="${s}x${s}"
-		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/icons/app/linux/exports/hicolor/$dim/apps/ai.storyteller.$pkgname.png
+		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/icons/app/linux/exports/hicolor/$dim/apps/io.tangencylabs.$pkgname.png
 	done
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
