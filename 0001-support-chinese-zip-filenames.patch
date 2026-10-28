@@ -1,0 +1,1436 @@
+diff --git a/README.cn.md b/README.cn.md
+new file mode 100644
+index 00000000..1600e7c7
+--- /dev/null
++++ b/README.cn.md
+@@ -0,0 +1,41 @@
++# File Roller CN
++
++基于 GNOME File Roller 44.7 的中文文件名支持版本，Arch Linux 包名为 `file-roller-cn`。
++
++## 安装
++
++```sh
++yay -S file-roller-cn
++```
++
++它提供并替代 `file-roller`，安装后程序仍叫 `file-roller`，可从文件管理器正常打开压缩包。
++
++## 文件名支持
++
++单文件 ZIP、CBZ 使用 libarchive 后端，不受系统是否安装 7zip、unzip 影响。归档的 Unicode 路径扩展与有效 UTF-8 文件名优先保留，其余文件名尝试从 GB18030 转成 UTF-8。GB18030 覆盖 GBK 和 GB2312，转换失败时再尝试 ZIP 的传统 CP437 编码。解压后的名称为 UTF-8，文件内容不作转码；新建、编辑后的 ZIP 写入 Unicode 文件名。
++
++编码转换同时用于列表、选择解压、完整解压和归档编辑。支持密码 ZIP 的读取，以及 AES-256 ZIP 的创建和编辑。分卷 ZIP 沿用上游 7-Zip 后端，需要安装 `7zip`；本次中文编码修复面向单文件 ZIP/CBZ。其他格式沿用上游后端。
++
++旧压缩包未记录编码时存在歧义，默认策略面向中文文件名。可为非 UTF-8 的旧文件名指定其他编码，例如：
++
++```sh
++FILE_ROLLER_FILENAME_ENCODING=WINDOWS-1252 file-roller archive.zip
++```
++
++有效 UTF-8 和归档中已解析出的 Unicode 名称仍优先保留。环境变量应在启动程序前设置；若已有 File Roller 进程，先关闭已有窗口和后台实例，再用上述命令启动。
++
++带归档备注或文件备注的 ZIP 可以读取、解压，但拒绝编辑，以免 libarchive 重写时丢失备注。目录结构无法安全识别（例如特殊的尾随数据）时也拒绝编辑并保留原文件。
++
++## 构建与验证
++
++需要 GTK4、libadwaita、GLib、libarchive >= 3.2、Meson、Ninja，测试还需要 zlib 开发文件。Arch 打包文件位于 `packaging/arch/`。
++
++```sh
++meson setup build --prefix=/usr -Dlibarchive=enabled
++meson compile -C build
++meson test -C build --print-errorlogs
++```
++
++测试构造实际 ZIP 字节，覆盖 GB2312、GBK、GB18030 扩展字符、有/无 UTF-8 标记、Unicode 扩展字段、混合编码、GBK 尾字节 `0x5c`、选择解压、删除、目录越界、指定编码及无效编码。密码测试覆盖 GBK 名称的 AES ZIP、错误密码、加密创建和重命名、编辑失败时原文件保持不变。另有分卷 ZIP、完整性/CRC 检查、备注保护和 C locale 的回归测试。
++
++AUR 发布的是公开上游固定版本源码与补丁，无需访问公司源码仓库。上游项目和 GPL-2.0-or-later 许可见 `README.md`、`COPYING`。
+diff --git a/meson.build b/meson.build
+index f4a2abb0..23c0f0b4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -11,7 +11,7 @@ gtk4_version = '>=4.8.1'
+ hdy_version = '>=1.5.0'
+ nautilus_version = '>=43.beta'
+ json_glib_version = '>=0.14.0'
+-libarchive_version = '>=3.1.900a'
++libarchive_version = '>=3.2.0'
+ 
+ gnome = import('gnome')
+ i18n = import('i18n')
+diff --git a/src/fr-archive-libarchive.c b/src/fr-archive-libarchive.c
+index 14045729..a7c56d9e 100644
+--- a/src/fr-archive-libarchive.c
++++ b/src/fr-archive-libarchive.c
+@@ -21,6 +21,8 @@
+ 
+ #include <config.h>
+ #include <sys/types.h>
++#include <errno.h>
++#include <locale.h>
+ #include <unistd.h>
+ #include <pwd.h>
+ #include <grp.h>
+@@ -163,23 +165,11 @@ fr_archive_libarchive_get_capabilities (FrArchive  *archive,
+ 		return capabilities;
+ 	}
+ 
+-	/* give priority to 7z, unzip and zip that supports ZIP files better. */
++	/* Keep ZIP names identical when listing, extracting and rewriting,
++	 * regardless of whether 7-Zip or Info-ZIP is installed. */
+ 	if ((strcmp (mime_type, "application/zip") == 0)
+ 	    || (strcmp (mime_type, "application/x-cbz") == 0))
+-	{
+-		if (_g_program_is_available ("7zz", TRUE)
+-		    || _g_program_is_available ("7zzs", TRUE)
+-		    || _g_program_is_available ("7z", TRUE)) {
+-			return capabilities;
+-		}
+-		if (!_g_program_is_available ("unzip", TRUE)) {
+-			capabilities |= FR_ARCHIVE_CAN_READ;
+-		}
+-		if (!_g_program_is_available ("zip", TRUE)) {
+-			capabilities |= FR_ARCHIVE_CAN_WRITE;
+-		}
+-		return capabilities;
+-	}
++		return capabilities | FR_ARCHIVE_CAN_READ_WRITE | FR_ARCHIVE_CAN_ENCRYPT;
+ 
+ 	/* give priority to utilities that support RAR files better. */
+ 	if ((strcmp (mime_type, "application/vnd.rar") == 0)
+@@ -228,6 +218,35 @@ fr_archive_libarchive_get_packages (FrArchive  *archive,
+ }
+ 
+ 
++/* libarchive converts explicitly Unicode names through LC_CTYPE. Use a
++ * thread-local UTF-8 locale, without changing the GUI/process locale. */
++typedef struct {
++	locale_t previous;
++	locale_t utf8;
++} ArchiveLocale;
++
++static void
++archive_locale_clear (ArchiveLocale *scope)
++{
++	if (scope->utf8 != (locale_t) 0) {
++		uselocale (scope->previous);
++		freelocale (scope->utf8);
++	}
++}
++
++G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC (ArchiveLocale, archive_locale_clear)
++
++static ArchiveLocale
++archive_locale_init (void)
++{
++	ArchiveLocale scope = { 0 };
++	scope.utf8 = newlocale (LC_CTYPE_MASK, "C.UTF-8", (locale_t) 0);
++	if (scope.utf8 != (locale_t) 0)
++		scope.previous = uselocale (scope.utf8);
++	return scope;
++}
++
++
+ /* LoadData */
+ 
+ 
+@@ -242,6 +261,7 @@ typedef struct {
+ 	void               *buffer;
+ 	gssize              buffer_size;
+ 	GError             *error;
++	char               *password;
+ } LoadData;
+ 
+ 
+@@ -261,6 +281,8 @@ load_data_free (LoadData *load_data)
+ 	_g_object_unref (load_data->result);
+ 	_g_object_unref (load_data->istream);
+ 	g_free (load_data->buffer);
++	g_free (load_data->password);
++	g_clear_error (&load_data->error);
+ 	g_free (load_data);
+ }
+ 
+@@ -404,6 +426,9 @@ load_data_close (struct archive *a,
+ }
+ 
+ 
++static GError *_g_error_new_from_archive_error (const char *s);
++
++
+ static int
+ create_read_object (LoadData        *load_data,
+                     _archive_read_ctx **a)
+@@ -411,6 +436,8 @@ create_read_object (LoadData        *load_data,
+ 	*a = archive_read_new ();
+ 	archive_read_support_filter_all (*a);
+ 	archive_read_support_format_all (*a);
++	if ((load_data->password != NULL) && (*load_data->password != 0))
++		archive_read_add_passphrase (*a, load_data->password);
+ 
+ 	archive_read_set_open_callback (*a, load_data_open);
+ 	archive_read_set_read_callback (*a, load_data_read);
+@@ -419,7 +446,79 @@ create_read_object (LoadData        *load_data,
+ 	archive_read_set_skip_callback (*a, load_data_skip);
+ 	archive_read_set_callback_data (*a, load_data);
+ 
+-	return archive_read_open1 (*a);
++	int r = archive_read_open1 (*a);
++	if ((r != ARCHIVE_OK) && (load_data->error == NULL))
++		load_data->error = _g_error_new_from_archive_error (archive_error_string (*a));
++	return r;
++}
++
++
++/* Decode before any selection, path safety checks, or archive rewrite.
++ * Libarchive has already applied ZIP's UTF-8 flag and Unicode path extras.
++ * On Unix it otherwise preserves legacy filename bytes. */
++static char *
++zip_name_to_utf8 (const char *name,
++                  GError    **error)
++{
++	const char *encoding;
++	char *converted;
++
++	if ((name == NULL) || g_utf8_validate (name, -1, NULL))
++		return NULL;
++
++	encoding = g_getenv ("FILE_ROLLER_FILENAME_ENCODING");
++	if ((encoding == NULL) || (*encoding == 0)) {
++		converted = g_convert (name, -1, "UTF-8", "GB18030", NULL, NULL, NULL);
++		if (converted == NULL)
++			converted = g_convert (name, -1, "UTF-8", "CP437", NULL, NULL, error);
++	}
++	else
++		converted = g_convert (name, -1, "UTF-8", encoding, NULL, NULL, error);
++
++	return converted;
++}
++
++
++static int
++read_next_header (struct archive        *a,
++                  struct archive_entry **entry)
++{
++	int r = archive_read_next_header (a, entry);
++	g_autoptr (GError) error = NULL;
++	g_autofree char *pathname = NULL;
++	g_autofree char *symlink = NULL;
++	g_autofree char *hardlink = NULL;
++
++	if ((r != ARCHIVE_OK)
++	    || ((archive_format (a) & ARCHIVE_FORMAT_BASE_MASK) != ARCHIVE_FORMAT_ZIP))
++		return r;
++
++	if (archive_entry_pathname (*entry) == NULL) {
++		archive_set_error (a, EILSEQ, "Missing archive entry pathname");
++		return ARCHIVE_FATAL;
++	}
++
++	pathname = zip_name_to_utf8 (archive_entry_pathname (*entry), &error);
++	if (error == NULL)
++		symlink = zip_name_to_utf8 (archive_entry_symlink (*entry), &error);
++	if (error == NULL)
++		hardlink = zip_name_to_utf8 (archive_entry_hardlink (*entry), &error);
++	if (error != NULL) {
++		archive_set_error (a, EILSEQ, "Cannot decode archive filename: %s", error->message);
++		return ARCHIVE_FATAL;
++	}
++
++	if (pathname != NULL) {
++		/* GBK can use 0x5c as a trail byte: split Windows paths only
++		 * after decoding, never by replacing raw backslash bytes. */
++		g_strdelimit (pathname, "\\", '/');
++		archive_entry_set_pathname (*entry, pathname);
++	}
++	if (symlink != NULL)
++		archive_entry_set_symlink (*entry, symlink);
++	if (hardlink != NULL)
++		archive_entry_set_hardlink (*entry, hardlink);
++	return ARCHIVE_OK;
+ }
+ 
+ 
+@@ -456,7 +555,9 @@ _g_error_new_from_archive_error (const char *s)
+ 	msg = (s != NULL) ? g_locale_to_utf8 (s, -1, NULL, NULL, NULL) : NULL;
+ 	if (msg == NULL)
+ 		msg = g_strdup ("Fatal error");
+-	error = g_error_new_literal (FR_ERROR, FR_ERROR_COMMAND_ERROR, msg);
++	error = g_error_new_literal (FR_ERROR,
++		((s != NULL) && ((strstr (s, "passphrase") != NULL) || (strstr (s, "Passphrase") != NULL)))
++		? FR_ERROR_ASK_PASSWORD : FR_ERROR_COMMAND_ERROR, msg);
+ 
+ 	return error;
+ }
+@@ -467,6 +568,7 @@ list_archive_thread (GSimpleAsyncResult *result,
+ 		     GObject            *object,
+ 		     GCancellable       *cancellable)
+ {
++	g_auto (ArchiveLocale) locale = archive_locale_init ();
+ 	g_autoptr (LoadData) load_data = NULL;
+ 	g_autoptr (_archive_read_ctx) a = NULL;
+ 	struct archive_entry *entry;
+@@ -479,10 +581,11 @@ list_archive_thread (GSimpleAsyncResult *result,
+ 
+ 	r = create_read_object (load_data, &a);
+ 	if (r != ARCHIVE_OK) {
++		g_simple_async_result_set_from_error (result, load_data->error);
+ 		return;
+ 	}
+ 
+-	while ((r = archive_read_next_header (a, &entry)) == ARCHIVE_OK) {
++	while ((r = read_next_header (a, &entry)) == ARCHIVE_OK) {
+ 		FrFileData *file_data;
+ 		const char *pathname;
+ 
+@@ -490,6 +593,7 @@ list_archive_thread (GSimpleAsyncResult *result,
+ 			break;
+ 
+ 		file_data = fr_file_data_new ();
++		file_data->encrypted = archive_entry_is_encrypted (entry) > 0;
+ 
+ 		if (archive_entry_size_is_set (entry)) {
+ 			FrArchiveLibarchivePrivate *private = fr_archive_libarchive_get_instance_private (FR_ARCHIVE_LIBARCHIVE (load_data->archive));
+@@ -556,6 +660,7 @@ fr_archive_libarchive_list (FrArchive           *archive,
+ 	load_data_init (load_data);
+ 
+ 	load_data->archive = g_object_ref (archive);
++	load_data->password = g_strdup (password);
+ 	load_data->cancellable = _g_object_ref (cancellable);
+ 	load_data->result = g_simple_async_result_new (G_OBJECT (archive),
+ 						       callback,
+@@ -570,6 +675,53 @@ fr_archive_libarchive_list (FrArchive           *archive,
+ }
+ 
+ 
++/* -- integrity test -- */
++
++static void
++test_archive_thread (GSimpleAsyncResult *result, GObject *object, GCancellable *cancellable)
++{
++	g_auto (ArchiveLocale) locale = archive_locale_init ();
++	g_autoptr (LoadData) data = g_simple_async_result_get_op_res_gpointer (result);
++	g_autoptr (_archive_read_ctx) reader = NULL;
++	struct archive_entry *entry;
++	int r = create_read_object (data, &reader);
++
++	if (r == ARCHIVE_OK) {
++		while ((r = read_next_header (reader, &entry)) == ARCHIVE_OK) {
++			const void *buffer;
++			size_t size;
++			int64_t offset;
++			while (!g_cancellable_is_cancelled (cancellable)
++			       && (r = archive_read_data_block (reader, &buffer, &size, &offset)) == ARCHIVE_OK)
++				;
++			if ((r != ARCHIVE_EOF) || g_cancellable_is_cancelled (cancellable))
++				break;
++		}
++	}
++	if (data->error == NULL)
++		g_cancellable_set_error_if_cancelled (cancellable, &data->error);
++	if ((data->error == NULL) && (r != ARCHIVE_EOF))
++		data->error = _g_error_new_from_archive_error (archive_error_string (reader));
++	if (data->error != NULL)
++		g_simple_async_result_set_from_error (result, data->error);
++}
++
++static void
++fr_archive_libarchive_test (FrArchive *archive, const char *password,
++                            GCancellable *cancellable, GAsyncReadyCallback callback,
++                            gpointer user_data)
++{
++	LoadData *data = g_new0 (LoadData, 1);
++	load_data_init (data);
++	data->archive = g_object_ref (archive);
++	data->password = g_strdup (password);
++	data->cancellable = _g_object_ref (cancellable);
++	data->result = g_simple_async_result_new (G_OBJECT (archive), callback, user_data, fr_archive_test);
++	g_simple_async_result_set_op_res_gpointer (data->result, data, NULL);
++	g_simple_async_result_run_in_thread (data->result, test_archive_thread, G_PRIORITY_DEFAULT, cancellable);
++}
++
++
+ /* -- extract -- */
+ 
+ 
+@@ -775,6 +927,7 @@ extract_archive_thread (GSimpleAsyncResult *result,
+ 			GObject            *object,
+ 			GCancellable       *cancellable)
+ {
++	g_auto (ArchiveLocale) locale = archive_locale_init ();
+ 	g_autoptr (ExtractData) extract_data = NULL;
+ 	LoadData             *load_data;
+ 	g_autoptr (GHashTable) checked_folders = NULL;
+@@ -790,6 +943,7 @@ extract_archive_thread (GSimpleAsyncResult *result,
+ 
+ 	r = create_read_object (load_data, &a);
+ 	if (r != ARCHIVE_OK) {
++		g_simple_async_result_set_from_error (result, load_data->error);
+ 		return;
+ 	}
+ 
+@@ -799,7 +953,7 @@ extract_archive_thread (GSimpleAsyncResult *result,
+ 	symlinks = g_hash_table_new_full (g_file_hash, (GEqualFunc) g_file_equal, g_object_unref, NULL);
+ 	fr_archive_progress_set_total_files (load_data->archive, extract_data->n_files_to_extract);
+ 
+-	while ((r = archive_read_next_header (a, &entry)) == ARCHIVE_OK) {
++	while ((r = read_next_header (a, &entry)) == ARCHIVE_OK) {
+ 		const char    *pathname;
+ 		g_autofree char * fullpath = NULL;
+ 		const char    *relative_path;
+@@ -1091,6 +1245,7 @@ fr_archive_libarchive_extract_files (FrArchive           *archive,
+ 
+ 	load_data = LOAD_DATA (extract_data);
+ 	load_data->archive = g_object_ref (archive);
++	load_data->password = g_strdup (password);
+ 	load_data->cancellable = _g_object_ref (cancellable);
+ 	load_data->result = g_simple_async_result_new (G_OBJECT (archive),
+ 						       callback,
+@@ -1216,6 +1371,8 @@ save_data_free (SaveData *save_data)
+ 	g_hash_table_unref (save_data->groupnames);
+ 	g_hash_table_unref (save_data->usernames);
+ 	_g_object_unref (save_data->ostream);
++	if (save_data->tmp_file != NULL)
++		g_file_delete (save_data->tmp_file, NULL, NULL);
+ 	_g_object_unref (save_data->tmp_file);
+ 	load_data_free (LOAD_DATA (save_data));
+ }
+@@ -1279,16 +1436,8 @@ save_data_close (struct archive *a,
+ 		_g_error_free (error);
+ 	}
+ 
+-	if (load_data->error == NULL)
+-		g_file_move (save_data->tmp_file,
+-			     fr_archive_get_file (load_data->archive),
+-			     G_FILE_COPY_OVERWRITE | G_FILE_COPY_TARGET_DEFAULT_PERMS,
+-			     load_data->cancellable,
+-			     NULL,
+-			     NULL,
+-			     &load_data->error);
+-	else
+-		g_file_delete (save_data->tmp_file, NULL, NULL);
++	/* The caller commits the temporary file only after checking both
++	 * the reader and writer results. A close callback also runs on error. */
+ 
+ 	return ARCHIVE_OK;
+ }
+@@ -1363,6 +1512,14 @@ _archive_write_set_format_from_context (struct archive *a,
+ 	else if (_g_str_equal (mime_type, "application/zip")
+ 	    || _g_str_equal (mime_type, "application/x-cbz")) {
+ 		archive_write_set_format_zip (a);
++		if ((save_data->password != NULL) && (*save_data->password != 0)) {
++			int r = archive_write_set_passphrase (a, save_data->password);
++			if (r == ARCHIVE_OK)
++				r = archive_write_set_format_option (a, "zip", "encryption", "aes256");
++			if (r != ARCHIVE_OK)
++				LOAD_DATA (save_data)->error = _g_error_new_from_archive_error (archive_error_string (a));
++		}
++
+ 	}
+ 
+ 	/* set the filter */
+@@ -1615,11 +1772,143 @@ _archive_write_file (struct archive       *b,
+ }
+ 
+ 
++/* libarchive does not expose ZIP archive/file comments. Refuse an edit that
++ * would silently discard them. Read only the directory, not file payloads. */
++static guint16
++zip_uint16 (const guint8 *p)
++{
++	return p[0] | ((guint16) p[1] << 8);
++}
++
++static guint32
++zip_uint32 (const guint8 *p)
++{
++	guint32 value;
++	memcpy (&value, p, sizeof value);
++	return GUINT32_FROM_LE (value);
++}
++
++static guint64
++zip_uint64 (const guint8 *p)
++{
++	guint64 value;
++	memcpy (&value, p, sizeof value);
++	return GUINT64_FROM_LE (value);
++}
++
++static gboolean
++zip_read_at (GInputStream *stream, goffset offset, void *buffer, gsize size,
++             GCancellable *cancellable, GError **error)
++{
++	gsize bytes;
++	if (!g_seekable_seek (G_SEEKABLE (stream), offset, G_SEEK_SET, cancellable, error)
++	    || !g_input_stream_read_all (stream, buffer, size, &bytes, cancellable, error))
++		return FALSE;
++	if (bytes != size) {
++		g_set_error_literal (error, FR_ERROR, FR_ERROR_COMMAND_ERROR, "Truncated ZIP directory");
++		return FALSE;
++	}
++	return TRUE;
++}
++
++static gboolean
++zip_can_rewrite (LoadData *data)
++{
++	g_autoptr (GInputStream) stream = NULL;
++	g_autofree guint8 *tail = NULL;
++	guint8 locator[20], header[56];
++	goffset size, end, position;
++	guint64 directory_size, entries;
++	gssize found = -1;
++	gsize tail_size;
++
++	if (!_g_str_equal (data->archive->mime_type, "application/zip")
++	    && !_g_str_equal (data->archive->mime_type, "application/x-cbz"))
++		return TRUE;
++	stream = G_INPUT_STREAM (g_file_read (fr_archive_get_file (data->archive), data->cancellable, &data->error));
++	if (stream == NULL) {
++		if (g_error_matches (data->error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
++			g_clear_error (&data->error); /* creating a new ZIP */
++			return TRUE;
++		}
++		return FALSE;
++	}
++	if (!g_seekable_seek (G_SEEKABLE (stream), 0, G_SEEK_END, data->cancellable, &data->error))
++		return FALSE;
++	size = g_seekable_tell (G_SEEKABLE (stream));
++	tail_size = MIN (size, 65535 + 22);
++	tail = g_malloc (tail_size);
++	if (!zip_read_at (stream, size - tail_size, tail, tail_size, data->cancellable, &data->error))
++		return FALSE;
++	for (gssize i = (gssize) tail_size - 22; i >= 0; i--)
++		if ((zip_uint32 (tail + i) == 0x06054b50)
++		    && (i + 22 + zip_uint16 (tail + i + 20) == tail_size)) {
++			/* An EOCD-looking sequence can itself occur in a comment.
++			 * Reject any such commented candidate rather than losing it. */
++			if (zip_uint16 (tail + i + 20) != 0)
++				goto comments;
++			if (found < 0)
++				found = i;
++		}
++	if (found < 0)
++		goto invalid_directory;
++	if (zip_uint16 (tail + found + 20) != 0)
++		goto comments;
++	end = size - tail_size + found;
++	directory_size = zip_uint32 (tail + found + 12);
++	entries = zip_uint16 (tail + found + 10);
++	if (end >= 20) {
++		if (!zip_read_at (stream, end - 20, locator, sizeof locator, data->cancellable, &data->error))
++			return FALSE;
++		if (zip_uint32 (locator) == 0x07064b50) {
++			guint64 zip64_offset = zip_uint64 (locator + 8);
++			if ((end < 76) || (zip64_offset > (guint64) (end - 76)))
++				goto invalid_directory;
++			if (!zip_read_at (stream, zip64_offset, header, sizeof header, data->cancellable, &data->error))
++				return FALSE;
++			if ((zip_uint32 (header) != 0x06064b50) || (zip_uint64 (header + 4) < 44))
++				goto invalid_directory;
++			entries = zip_uint64 (header + 32);
++			directory_size = zip_uint64 (header + 40);
++			end = zip64_offset;
++		}
++	}
++	if ((directory_size > (guint64) end) || (entries > directory_size / 46))
++		goto invalid_directory;
++	position = end - directory_size;
++	for (guint64 i = 0; i < entries; i++) {
++		if (position > end - 46)
++			goto invalid_directory;
++		if (!zip_read_at (stream, position, header, 46, data->cancellable, &data->error))
++			return FALSE;
++		if (zip_uint32 (header) != 0x02014b50)
++			goto invalid_directory;
++		if (zip_uint16 (header + 32) != 0)
++			goto comments;
++		position += 46 + zip_uint16 (header + 28) + zip_uint16 (header + 30);
++		if (position > end)
++			goto invalid_directory;
++	}
++	if ((position != end) || ((entries == 0) && (end != 0)))
++		goto invalid_directory;
++	return TRUE;
++comments:
++	g_set_error_literal (&data->error, FR_ERROR, FR_ERROR_COMMAND_ERROR,
++	                    "Editing ZIP archives with comments is not supported; the original archive was kept unchanged");
++	return FALSE;
++invalid_directory:
++	g_set_error_literal (&data->error, FR_ERROR, FR_ERROR_COMMAND_ERROR,
++	                    "Cannot safely rewrite this ZIP directory; the original archive was kept unchanged");
++	return FALSE;
++}
++
++
+ static void
+ save_archive_thread (GSimpleAsyncResult *result,
+ 		     GObject            *object,
+ 		     GCancellable       *cancellable)
+ {
++	g_auto (ArchiveLocale) locale = archive_locale_init ();
+ 	g_autoptr (SaveData) save_data = NULL;
+ 	LoadData             *load_data;
+ 	g_autoptr (_archive_read_ctx) a = NULL;
+@@ -1629,10 +1918,24 @@ save_archive_thread (GSimpleAsyncResult *result,
+ 
+ 	save_data = g_simple_async_result_get_op_res_gpointer (result);
+ 	load_data = LOAD_DATA (save_data);
++	if (!zip_can_rewrite (load_data)) {
++		g_simple_async_result_set_from_error (result, load_data->error);
++		return;
++	}
+ 
+ 	save_data->b = b = archive_write_new ();
+ 	_archive_write_set_format_from_context (b, save_data);
+-	archive_write_open (b, save_data, save_data_open, save_data_write, save_data_close);
++	if (load_data->error != NULL) {
++		g_simple_async_result_set_from_error (result, load_data->error);
++		return;
++	}
++	rb = archive_write_open (b, save_data, save_data_open, save_data_write, save_data_close);
++	if (rb != ARCHIVE_OK) {
++		if (load_data->error == NULL)
++			load_data->error = _g_error_new_from_archive_error (archive_error_string (b));
++		g_simple_async_result_set_from_error (result, load_data->error);
++		return;
++	}
+ 	archive_write_set_bytes_in_last_block (b, 1);
+ 
+ 	create_read_object (load_data, &a);
+@@ -1640,7 +1943,7 @@ save_archive_thread (GSimpleAsyncResult *result,
+ 	if (save_data->begin_operation != NULL)
+ 		save_data->begin_operation (save_data, save_data->user_data);
+ 
+-	while ((load_data->error == NULL) && (ra = archive_read_next_header (a, &r_entry)) == ARCHIVE_OK) {
++	while ((load_data->error == NULL) && (ra = read_next_header (a, &r_entry)) == ARCHIVE_OK) {
+ 		g_autoptr (_archive_entry_ctx) w_entry = NULL;
+ 		WriteAction           action;
+ 
+@@ -1700,6 +2003,15 @@ save_archive_thread (GSimpleAsyncResult *result,
+ 		load_data->error =  _g_error_new_from_archive_error (archive_error_string (b));
+ 	if (load_data->error == NULL)
+ 		g_cancellable_set_error_if_cancelled (cancellable, &load_data->error);
++	/* Commit only a completely read and successfully closed archive.
++	 * In particular, an undecodable later entry must not replace the
++	 * original with the prefix written before that entry. */
++	if (load_data->error == NULL)
++		g_file_move (save_data->tmp_file,
++		             fr_archive_get_file (load_data->archive),
++		             G_FILE_COPY_OVERWRITE | G_FILE_COPY_TARGET_DEFAULT_PERMS,
++		             cancellable, NULL, NULL, &load_data->error);
++
+ 	if (load_data->error != NULL)
+ 		g_simple_async_result_set_from_error (result, load_data->error);
+ }
+@@ -1728,6 +2040,7 @@ _fr_archive_libarchive_save (FrArchive          *archive,
+ 
+ 	load_data = LOAD_DATA (save_data);
+ 	load_data->archive = g_object_ref (archive);
++	load_data->password = g_strdup (password);
+ 	load_data->cancellable = _g_object_ref (cancellable);
+ 	load_data->result = result;
+ 
+@@ -2082,9 +2395,10 @@ _rename_files_entry_action (SaveData             *save_data,
+ 	pathname = archive_entry_pathname (w_entry);
+ 	new_pathname = g_hash_table_lookup (rename_data->files_to_rename, pathname);
+ 	if (new_pathname != NULL) {
++		g_autofree char *old_pathname = g_strdup (pathname);
+ 		archive_entry_set_pathname (w_entry, new_pathname);
+ 		rename_data->n_files_to_rename--;
+-		g_hash_table_remove (rename_data->files_to_rename, pathname);
++		g_hash_table_remove (rename_data->files_to_rename, old_pathname);
+ 		fr_archive_progress_inc_completed_files (load_data->archive, 1);
+ 	}
+ 
+@@ -2330,6 +2644,7 @@ fr_archive_libarchive_class_init (FrArchiveLibarchiveClass *klass)
+ 	archive_class->get_capabilities = fr_archive_libarchive_get_capabilities;
+ 	archive_class->get_packages = fr_archive_libarchive_get_packages;
+ 	archive_class->list = fr_archive_libarchive_list;
++	archive_class->test_integrity = fr_archive_libarchive_test;
+ 	archive_class->extract_files = fr_archive_libarchive_extract_files;
+ 	archive_class->add_files = fr_archive_libarchive_add_files;
+ 	archive_class->remove_files = fr_archive_libarchive_remove_files;
+@@ -2345,6 +2660,8 @@ fr_archive_libarchive_init (FrArchiveLibarchive *self)
+ {
+ 	FrArchive *base = FR_ARCHIVE (self);
+ 
++	base->propPassword = TRUE;
++	base->propTest = TRUE;
+ 	base->propAddCanReplace = TRUE;
+ 	base->propAddCanUpdate = TRUE;
+ 	base->propAddCanStoreFolders = TRUE;
+diff --git a/src/fr-archive.c b/src/fr-archive.c
+index 34007e72..b1e46510 100644
+--- a/src/fr-archive.c
++++ b/src/fr-archive.c
+@@ -34,6 +34,7 @@
+ #include "fr-file-data.h"
+ #include "fr-archive.h"
+ #include "fr-command.h"
++#include "fr-command-7z.h"
+ #include "fr-enum-types.h"
+ #include "fr-error.h"
+ #include "fr-marshal.h"
+@@ -674,6 +675,42 @@ open_data_complete_with_error (OpenData *load_data,
+ }
+ 
+ 
++/* libarchive's GInputStream reader cannot join split ZIP volumes. Keep
++ * the upstream 7-Zip backend for these rather than extracting a prefix. */
++static gboolean
++is_split_zip (GFile *file, const char *mime_type)
++{
++	g_autofree char *name = NULL;
++	g_autofree char *lower = NULL;
++	g_autoptr (GFile) parent = NULL;
++	gsize length;
++	if (!_g_str_equal (mime_type, "application/zip")
++	    && !_g_str_equal (mime_type, "application/x-cbz"))
++		return FALSE;
++	name = g_file_get_basename (file);
++	lower = g_ascii_strdown (name, -1);
++	length = strlen (lower);
++	if (g_str_has_suffix (lower, ".001")
++	    || ((length > 4) && (lower[length - 4] == '.') && (lower[length - 3] == 'z')
++	        && g_ascii_isdigit (lower[length - 2]) && g_ascii_isdigit (lower[length - 1])))
++		return TRUE;
++	if (!g_str_has_suffix (lower, ".zip"))
++		return FALSE;
++	parent = g_file_get_parent (file);
++	if (parent == NULL)
++		return FALSE;
++	const char *extensions[] = { ".z01", ".Z01" };
++	for (guint i = 0; i < G_N_ELEMENTS (extensions); i++) {
++		g_autofree char *stem = g_strndup (name, length - 4);
++		g_autofree char *volume_name = g_strconcat (stem, extensions[i], NULL);
++		g_autoptr (GFile) volume = g_file_get_child (parent, volume_name);
++		if (g_file_query_exists (volume, NULL))
++			return TRUE;
++	}
++	return FALSE;
++}
++
++
+ static FrArchive *
+ create_archive_to_load_archive (GFile      *file,
+ 			        const char *mime_type)
+@@ -691,6 +728,11 @@ create_archive_to_load_archive (GFile      *file,
+ 	requested_capabilities = FR_ARCHIVE_CAN_READ_WRITE;
+ 	archive_type = fr_get_archive_type_from_mime_type (mime_type, requested_capabilities);
+ 
++	if (is_split_zip (file, mime_type)
++	    && (_g_program_is_available ("7zzs", TRUE) || _g_program_is_available ("7zz", TRUE)
++	        || _g_program_is_available ("7z", TRUE) || _g_program_is_available ("7za", TRUE)))
++		archive_type = fr_command_7z_get_type ();
++
+ 	/* if no command was found, remove the write capability and try again */
+ 
+ 	if (archive_type == 0) {
+diff --git a/src/meson.build b/src/meson.build
+index 5d9e1c73..395c2873 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -50,7 +50,6 @@ source_files = files(
+   'glib-utils.c',
+   'gtk-utils.c',
+   'java-utils.c',
+-  'main.c',
+   'open-file.c',
+   'preferences.c',
+   'rar-utils.c',
+@@ -128,6 +127,7 @@ fr_exe = executable(
+   'file-roller',
+   sources: [
+     config_file,
++    'main.c',
+     source_files,
+     gresource_files,
+     marshal_files,
+@@ -210,3 +210,48 @@ test(
+ 
+ subdir('commands')
+ subdir('sh')
++
++if use_libarchive
++  archive_encoding_test = executable(
++    'test-archive-encoding',
++    sources: [config_file, 'test-archive-encoding.c', source_files,
++              gresource_files, marshal_files, enum_files],
++    dependencies: [libm_dep, thread_dep, glib_dep, gthread_dep, gtk_dep,
++                   libadwaita_dep, libarchive_dep, dependency('zlib'),
++                   use_json_glib ? libjson_glib_dep : [],
++                   use_native_appchooser ? libportal_dep : [],
++                   use_native_appchooser ? libportal_gtk4_dep : []],
++    include_directories: config_inc,
++    c_args: c_args,
++  )
++  encoding_test_env = [
++    'LC_ALL=C.UTF-8', 'GSETTINGS_BACKEND=memory',
++    'GSETTINGS_SCHEMA_DIR=' + join_paths(meson.project_build_root(), 'data'),
++  ]
++  test(
++    'archive-encoding', archive_encoding_test,
++    args: ['-x', '/archive/override', '-x', '/archive/invalid-encoding'],
++    env: encoding_test_env + ['FILE_ROLLER_FILENAME_ENCODING='],
++    timeout: 60,
++  )
++  test(
++    'archive-encoding-override', archive_encoding_test,
++    args: ['-p', '/archive/override'],
++    env: encoding_test_env + ['FILE_ROLLER_FILENAME_ENCODING=WINDOWS-1252'],
++    timeout: 60,
++  )
++  test(
++    'archive-encoding-invalid', archive_encoding_test,
++    args: ['-p', '/archive/invalid-encoding'],
++    env: encoding_test_env + ['FILE_ROLLER_FILENAME_ENCODING=INVALID-ENCODING'],
++    timeout: 60,
++  )
++  test(
++    'archive-encoding-c-locale', archive_encoding_test,
++    args: ['-p', '/archive/encoding/3'],
++    env: ['LC_ALL=C', 'GSETTINGS_BACKEND=memory', 'FILE_ROLLER_FILENAME_ENCODING=',
++          'GSETTINGS_SCHEMA_DIR=' + join_paths(meson.project_build_root(), 'data')],
++    timeout: 60,
++  )
++
++endif
+diff --git a/src/test-archive-encoding.c b/src/test-archive-encoding.c
+new file mode 100644
+index 00000000..388e938a
+--- /dev/null
++++ b/src/test-archive-encoding.c
+@@ -0,0 +1,631 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++#include <config.h>
++#include <locale.h>
++#include <glib.h>
++#include <gio/gio.h>
++#include <glib/gstdio.h>
++#include <archive.h>
++#include <archive_entry.h>
++#include <zlib.h>
++#include "fr-archive.h"
++#include "fr-archive-libarchive.h"
++#include "fr-init.h"
++#include "fr-error.h"
++#include "gio-utils.h"
++#include "file-utils.h"
++
++/* Build actual ZIP headers: no charset conversion by the fixture writer. */
++typedef struct {
++	const char *name;
++	const char *encoding;
++	guint16 flags;
++	const char *unicode_name;
++} ZipName;
++
++static void
++le16 (GByteArray *bytes, guint16 value)
++{
++	value = GUINT16_TO_LE (value);
++	g_byte_array_append (bytes, (guint8 *) &value, 2);
++}
++
++static void
++le32 (GByteArray *bytes, guint32 value)
++{
++	value = GUINT32_TO_LE (value);
++	g_byte_array_append (bytes, (guint8 *) &value, 4);
++}
++
++static void
++zip_header (GByteArray *bytes, const char *name, guint16 flags,
++	    GByteArray *extra, gboolean central, guint32 offset, const char *comment)
++{
++	le32 (bytes, central ? 0x02014b50 : 0x04034b50);
++	if (central)
++		le16 (bytes, 20); /* DOS host */
++	le16 (bytes, 20);
++	le16 (bytes, flags);
++	le16 (bytes, 0); /* stored */
++	le16 (bytes, 0);
++	le16 (bytes, 33); /* 1980-01-01 */
++	le32 (bytes, 0x3610a686); /* CRC32("hello") */
++	le32 (bytes, 5);
++	le32 (bytes, 5);
++	le16 (bytes, strlen (name));
++	le16 (bytes, extra->len);
++	if (central) {
++		le16 (bytes, comment != NULL ? strlen (comment) : 0);
++		le16 (bytes, 0);
++		le16 (bytes, 0);
++		le32 (bytes, 0);
++		le32 (bytes, offset);
++	}
++	g_byte_array_append (bytes, (guint8 *) name, strlen (name));
++	g_byte_array_append (bytes, extra->data, extra->len);
++	if (central && (comment != NULL))
++		g_byte_array_append (bytes, (guint8 *) comment, strlen (comment));
++}
++
++static void
++write_zip_full (const char *path, const ZipName *names, guint count,
++                const char *archive_comment, const char *file_comment)
++{
++	g_autoptr (GByteArray) local = g_byte_array_new ();
++	g_autoptr (GByteArray) central = g_byte_array_new ();
++	g_autoptr (GError) error = NULL;
++	for (guint i = 0; i < count; i++) {
++		g_autofree char *raw = g_convert (names[i].name, -1, names[i].encoding, "UTF-8", NULL, NULL, &error);
++		g_autoptr (GByteArray) extra = g_byte_array_new ();
++		g_assert_no_error (error);
++		if (names[i].unicode_name != NULL) {
++			le16 (extra, 0x7075);
++			le16 (extra, 5 + strlen (names[i].unicode_name));
++			g_byte_array_append (extra, (const guint8 *) "\1", 1);
++			le32 (extra, crc32 (0, (guint8 *) raw, strlen (raw)));
++			g_byte_array_append (extra, (guint8 *) names[i].unicode_name, strlen (names[i].unicode_name));
++		}
++		zip_header (central, raw, names[i].flags, extra, TRUE, local->len, file_comment);
++		zip_header (local, raw, names[i].flags, extra, FALSE, 0, NULL);
++		g_byte_array_append (local, (const guint8 *) "hello", 5);
++	}
++	guint32 offset = local->len;
++	g_byte_array_append (local, central->data, central->len);
++	le32 (local, 0x06054b50);
++	le16 (local, 0);
++	le16 (local, 0);
++	le16 (local, count);
++	le16 (local, count);
++	le32 (local, central->len);
++	le32 (local, offset);
++	le16 (local, archive_comment != NULL ? strlen (archive_comment) : 0);
++	if (archive_comment != NULL)
++		g_byte_array_append (local, (guint8 *) archive_comment, strlen (archive_comment));
++	g_assert_true (g_file_set_contents (path, (char *) local->data, local->len, &error));
++	g_assert_no_error (error);
++}
++
++static void
++write_zip (const char *path, const ZipName *names, guint count)
++{
++	write_zip_full (path, names, count, NULL, NULL);
++}
++
++typedef struct {
++	GMainLoop *loop;
++	FrArchive *archive;
++	GError *error;
++} Result;
++
++static void
++opened (GObject *source, GAsyncResult *result, gpointer user_data)
++{
++	Result *state = user_data;
++	state->archive = fr_archive_open_finish (G_FILE (source), result, &state->error);
++	g_main_loop_quit (state->loop);
++}
++
++static void
++completed (GObject *source, GAsyncResult *result, gpointer user_data)
++{
++	Result *state = user_data;
++	fr_archive_operation_finish (FR_ARCHIVE (source), result, &state->error);
++	g_main_loop_quit (state->loop);
++}
++
++static FrArchive *
++open_zip (const char *path, Result *state, GCancellable *cancel)
++{
++	g_autoptr (GFile) file = g_file_new_for_path (path);
++	fr_archive_open (file, cancel, opened, state);
++	g_main_loop_run (state->loop);
++	g_assert_no_error (state->error);
++	g_assert_nonnull (state->archive);
++	return state->archive;
++}
++
++static void
++check_archive (const ZipName *names, guint count, gboolean selected)
++{
++	g_autoptr (GError) error = NULL;
++	g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++	g_autofree char *zip = g_build_filename (tmp, "sample.zip", NULL);
++	g_autofree char *out = g_build_filename (tmp, "out", NULL);
++	g_autoptr (GFile) dest = g_file_new_for_path (out);
++	g_autoptr (GFile) root = g_file_new_for_path (tmp);
++	g_autoptr (GCancellable) cancel = g_cancellable_new ();
++	Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++	g_assert_no_error (error);
++	write_zip (zip, names, count);
++	g_assert_cmpint (g_mkdir (out, 0700), ==, 0);
++	g_autoptr (FrArchive) archive = open_zip (zip, &state, cancel);
++	fr_archive_list (archive, NULL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_assert_no_error (state.error);
++	g_assert_cmpuint (archive->files->len, ==, count);
++	for (guint i = 0; i < count; i++) {
++		const char *expected = names[i].unicode_name ? names[i].unicode_name : names[i].name;
++		g_assert_true (g_hash_table_contains (archive->files_hash, expected));
++	}
++	GList *files = selected ? g_list_append (NULL, (gpointer) names[0].name) : NULL;
++	fr_archive_extract (archive, files, dest, "/", FALSE, TRUE, FALSE, NULL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_list_free (files);
++	g_assert_no_error (state.error);
++	for (guint i = 0; i < count; i++) {
++		const char *name = names[i].unicode_name ? names[i].unicode_name : names[i].name;
++		g_autofree char *path = g_build_filename (out, name, NULL);
++		g_autofree char *contents = NULL;
++		if (selected && i > 0) {
++			g_assert_false (g_file_test (path, G_FILE_TEST_EXISTS));
++			continue;
++		}
++		g_assert_true (g_file_get_contents (path, &contents, NULL, &error));
++		g_assert_no_error (error);
++		g_assert_cmpstr (contents, ==, "hello");
++	}
++	if ((count > 1) && !selected) {
++		GList *removed = g_list_append (NULL, (gpointer) names[0].name);
++		fr_archive_remove (archive, removed, FR_COMPRESSION_NORMAL, cancel, completed, &state);
++		g_main_loop_run (state.loop);
++		g_list_free (removed);
++		g_assert_no_error (state.error);
++		fr_archive_list (archive, NULL, cancel, completed, &state);
++		g_main_loop_run (state.loop);
++		g_assert_no_error (state.error);
++		g_assert_cmpuint (archive->files->len, ==, count - 1);
++		g_assert_false (g_hash_table_contains (archive->files_hash, names[0].name));
++		for (guint i = 1; i < count; i++)
++			g_assert_true (g_hash_table_contains (archive->files_hash, names[i].name));
++	}
++	g_main_loop_unref (state.loop);
++	g_assert_true (_g_file_remove_directory (root, NULL, &error));
++	g_assert_no_error (error);
++}
++
++static void
++test_encoding (gconstpointer data)
++{
++	const ZipName *name = data;
++	check_archive (name, 1, FALSE);
++}
++
++static void
++test_mixed (void)
++{
++	const ZipName names[] = {
++		{ "中文目录/表格 ①.txt", "GBK", 0, NULL },
++		{ "简体中文.txt", "GB2312", 0, NULL },
++		{ "扩展字符𠀀.txt", "GB18030", 0, NULL },
++		{ "日本語😀.txt", "UTF-8", 0x800, NULL },
++		{ "plain.txt", "UTF-8", 0, NULL },
++	};
++	check_archive (names, G_N_ELEMENTS (names), FALSE);
++	check_archive (names, G_N_ELEMENTS (names), TRUE);
++}
++
++static void
++test_backend (void)
++{
++	g_assert_cmpuint (fr_get_archive_type_from_mime_type ("application/zip", FR_ARCHIVE_CAN_READ_WRITE), ==, FR_TYPE_ARCHIVE_LIBARCHIVE);
++	g_assert_cmpuint (fr_get_archive_type_from_mime_type ("application/x-cbz", FR_ARCHIVE_CAN_READ_WRITE), ==, FR_TYPE_ARCHIVE_LIBARCHIVE);
++}
++
++static void
++write_encrypted_zip (const char *path)
++{
++	struct archive *writer = archive_write_new ();
++	struct archive_entry *entry = archive_entry_new ();
++	g_assert_cmpint (archive_write_set_format_zip (writer), ==, ARCHIVE_OK);
++	g_assert_cmpint (archive_write_set_format_option (writer, "zip", "hdrcharset", "GBK"), ==, ARCHIVE_OK);
++	g_assert_cmpint (archive_write_set_passphrase (writer, "secret"), ==, ARCHIVE_OK);
++	g_assert_cmpint (archive_write_set_options (writer, "zip:encryption=aes256"), ==, ARCHIVE_OK);
++	g_assert_cmpint (archive_write_open_filename (writer, path), ==, ARCHIVE_OK);
++	archive_entry_set_pathname (entry, "加密中文.txt");
++	archive_entry_set_filetype (entry, AE_IFREG);
++	archive_entry_set_perm (entry, 0600);
++	archive_entry_set_size (entry, 5);
++	g_assert_cmpint (archive_write_header (writer, entry), ==, ARCHIVE_OK);
++	g_assert_cmpint (archive_write_data (writer, "hello", 5), ==, 5);
++	g_assert_cmpint (archive_write_close (writer), ==, ARCHIVE_OK);
++	archive_entry_free (entry);
++	archive_write_free (writer);
++}
++
++static void
++test_password_read (void)
++{
++	g_autoptr (GError) error = NULL;
++	g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++	g_autofree char *zip = g_build_filename (tmp, "encrypted.zip", NULL);
++	g_autofree char *out = g_build_filename (tmp, "out", NULL);
++	g_autofree char *extracted = g_build_filename (out, "加密中文.txt", NULL);
++	g_autofree char *contents = NULL;
++	g_autoptr (GFile) dest = g_file_new_for_path (out);
++	g_autoptr (GFile) root = g_file_new_for_path (tmp);
++	g_autoptr (GCancellable) cancel = g_cancellable_new ();
++	Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++	g_assert_no_error (error);
++	write_encrypted_zip (zip);
++	g_assert_cmpint (g_mkdir (out, 0700), ==, 0);
++	g_autoptr (FrArchive) archive = open_zip (zip, &state, cancel);
++	fr_archive_list (archive, NULL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_assert_no_error (state.error);
++	g_assert_cmpuint (archive->files->len, ==, 1);
++	FrFileData *file = g_ptr_array_index (archive->files, 0);
++	g_assert_true (file->encrypted);
++	const char *passwords[] = { NULL, "wrong", "secret" };
++	for (guint i = 0; i < G_N_ELEMENTS (passwords); i++) {
++		fr_archive_extract (archive, NULL, dest, "/", FALSE, TRUE, FALSE, passwords[i], cancel, completed, &state);
++		g_main_loop_run (state.loop);
++		if (i < 2) {
++			g_assert_error (state.error, FR_ERROR, FR_ERROR_ASK_PASSWORD);
++			g_clear_error (&state.error);
++		}
++		else
++			g_assert_no_error (state.error);
++	}
++	g_assert_true (g_file_get_contents (extracted, &contents, NULL, &error));
++	g_assert_no_error (error);
++	g_assert_cmpstr (contents, ==, "hello");
++	g_autofree char *before = NULL;
++	g_autofree char *after = NULL;
++	gsize before_len, after_len;
++	g_assert_true (g_file_get_contents (zip, &before, &before_len, &error));
++	g_assert_no_error (error);
++	GList *renamed = g_list_append (NULL, "加密中文.txt");
++	for (guint i = 0; i < 2; i++) {
++		fr_archive_set_password (archive, i == 0 ? "wrong" : "secret");
++		fr_archive_rename (archive, renamed, "加密中文.txt", "重命名.txt", "/", FALSE, FALSE,
++		                   "加密中文.txt", cancel, completed, &state);
++		g_main_loop_run (state.loop);
++		if (i == 0) {
++			g_assert_error (state.error, FR_ERROR, FR_ERROR_ASK_PASSWORD);
++			g_clear_error (&state.error);
++			g_assert_true (g_file_get_contents (zip, &after, &after_len, &error));
++			g_assert_no_error (error);
++			g_assert_cmpmem (before, before_len, after, after_len);
++		}
++		else
++			g_assert_no_error (state.error);
++	}
++	g_list_free (renamed);
++	fr_archive_list (archive, "secret", cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_assert_no_error (state.error);
++	g_assert_true (g_hash_table_contains (archive->files_hash, "重命名.txt"));
++	file = g_ptr_array_index (archive->files, 0);
++	g_assert_true (file->encrypted);
++	g_main_loop_unref (state.loop);
++	g_assert_true (_g_file_remove_directory (root, NULL, &error));
++	g_assert_no_error (error);
++}
++
++static void
++test_password_write (void)
++{
++	g_autoptr (GError) error = NULL;
++	g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++	g_autofree char *zip = g_build_filename (tmp, "created.zip", NULL);
++	g_autofree char *source = g_build_filename (tmp, "中文.txt", NULL);
++	g_autoptr (GFile) root = g_file_new_for_path (tmp);
++	g_autoptr (GFile) file = g_file_new_for_path (source);
++	g_autoptr (GFile) archive_file = g_file_new_for_path (zip);
++	g_autoptr (GCancellable) cancel = g_cancellable_new ();
++	Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++	g_assert_no_error (error);
++	g_assert_true (g_file_set_contents (source, "hello", 5, &error));
++	g_assert_no_error (error);
++	g_autoptr (FrArchive) archive = fr_archive_create (archive_file, "application/zip");
++	g_assert_nonnull (archive);
++	g_assert_true (fr_archive_is_capable_of (archive, FR_ARCHIVE_CAN_ENCRYPT));
++	GList *files = g_list_append (NULL, file);
++	fr_archive_add_files (archive, files, root, "/", FALSE, FALSE, "secret", FALSE,
++	                      FR_COMPRESSION_NORMAL, 0, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_list_free (files);
++	g_assert_no_error (state.error);
++	/* Independent reader: the created data must require a password. */
++	for (guint i = 0; i < 2; i++) {
++		struct archive *reader = archive_read_new ();
++		struct archive_entry *entry;
++		char buffer[8] = { 0 };
++		archive_read_support_format_zip (reader);
++		if (i == 1)
++			archive_read_add_passphrase (reader, "secret");
++		g_assert_cmpint (archive_read_open_filename (reader, zip, 10240), ==, ARCHIVE_OK);
++		g_assert_cmpint (archive_read_next_header (reader, &entry), ==, ARCHIVE_OK);
++		g_assert_cmpint (archive_entry_is_encrypted (entry), ==, 1);
++		if (i == 0)
++			g_assert_cmpint (archive_read_data (reader, buffer, 8), <, 0);
++		else {
++			g_assert_cmpint (archive_read_data (reader, buffer, 8), ==, 5);
++			g_assert_cmpstr (buffer, ==, "hello");
++		}
++		archive_read_free (reader);
++	}
++	g_main_loop_unref (state.loop);
++	g_assert_true (_g_file_remove_directory (root, NULL, &error));
++	g_assert_no_error (error);
++}
++
++static void
++test_override (void)
++{
++	const ZipName name = { "café.txt", "WINDOWS-1252", 0, NULL };
++	if (g_strcmp0 (g_getenv ("FILE_ROLLER_FILENAME_ENCODING"), "WINDOWS-1252") != 0) {
++		g_test_skip ("Run the archive-encoding-override Meson test for this case");
++		return;
++	}
++	check_archive (&name, 1, FALSE);
++}
++
++static void
++test_path_safety (void)
++{
++	const ZipName names[] = {
++		{ "../逃逸.txt", "GBK", 0, NULL },
++		{ "中文/../../逃逸.txt", "GBK", 0, NULL },
++		{ "正常中文.txt", "GBK", 0, NULL },
++	};
++	g_autoptr (GError) error = NULL;
++	g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++	g_autofree char *zip = g_build_filename (tmp, "unsafe.zip", NULL);
++	g_autofree char *out = g_build_filename (tmp, "out", NULL);
++	g_autofree char *escape = g_build_filename (tmp, "逃逸.txt", NULL);
++	g_autofree char *valid = g_build_filename (out, "正常中文.txt", NULL);
++	g_autoptr (GFile) root = g_file_new_for_path (tmp);
++	g_autoptr (GFile) dest = g_file_new_for_path (out);
++	g_autoptr (GCancellable) cancel = g_cancellable_new ();
++	Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++	g_assert_no_error (error);
++	write_zip (zip, names, G_N_ELEMENTS (names));
++	g_assert_cmpint (g_mkdir (out, 0700), ==, 0);
++	g_autoptr (FrArchive) archive = open_zip (zip, &state, cancel);
++	fr_archive_extract (archive, NULL, dest, "/", FALSE, TRUE, FALSE, NULL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_assert_no_error (state.error);
++	g_assert_false (g_file_test (escape, G_FILE_TEST_EXISTS));
++	g_assert_true (g_file_test (valid, G_FILE_TEST_IS_REGULAR));
++	g_main_loop_unref (state.loop);
++	g_assert_true (_g_file_remove_directory (root, NULL, &error));
++	g_assert_no_error (error);
++}
++
++static void
++test_invalid_encoding (void)
++{
++	const ZipName name = { "中文.txt", "GBK", 0, NULL };
++	g_autoptr (GError) error = NULL;
++	g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++	g_autofree char *zip = g_build_filename (tmp, "sample.zip", NULL);
++	g_autoptr (GFile) root = g_file_new_for_path (tmp);
++	g_autoptr (GCancellable) cancel = g_cancellable_new ();
++	Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++	g_assert_no_error (error);
++	write_zip (zip, &name, 1);
++	g_autoptr (FrArchive) archive = open_zip (zip, &state, cancel);
++	fr_archive_list (archive, NULL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_assert_error (state.error, FR_ERROR, FR_ERROR_COMMAND_ERROR);
++	g_assert_nonnull (strstr (state.error->message, "Cannot decode archive filename"));
++	g_clear_error (&state.error);
++	g_autofree char *before = NULL;
++	g_autofree char *after = NULL;
++	gsize before_len, after_len;
++	g_assert_true (g_file_get_contents (zip, &before, &before_len, &error));
++	g_assert_no_error (error);
++	GList *removed = g_list_append (NULL, "missing.txt");
++	fr_archive_remove (archive, removed, FR_COMPRESSION_NORMAL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_list_free (removed);
++	g_assert_error (state.error, FR_ERROR, FR_ERROR_COMMAND_ERROR);
++	g_clear_error (&state.error);
++	g_assert_true (g_file_get_contents (zip, &after, &after_len, &error));
++	g_assert_no_error (error);
++	g_assert_cmpmem (before, before_len, after, after_len);
++	g_main_loop_unref (state.loop);
++	g_assert_true (_g_file_remove_directory (root, NULL, &error));
++	g_assert_no_error (error);
++}
++
++static void
++test_comments (void)
++{
++	const ZipName names[] = {
++		{ "保留.txt", "GBK", 0, NULL },
++		{ "删除.txt", "GBK", 0, NULL },
++	};
++	for (guint i = 0; i < 4; i++) {
++		g_autoptr (GError) error = NULL;
++		g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++		g_autofree char *zip = g_build_filename (tmp, "comments.zip", NULL);
++		g_autofree char *before = NULL;
++		g_autofree char *after = NULL;
++		gsize before_len, after_len;
++		g_autoptr (GFile) root = g_file_new_for_path (tmp);
++		g_autoptr (GCancellable) cancel = g_cancellable_new ();
++		Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++		g_assert_no_error (error);
++		write_zip_full (zip, names, G_N_ELEMENTS (names), (i == 0 || i == 3) ? "Archive note" : NULL,
++		                (i == 1 || i == 2) ? "File note" : NULL);
++		if (i >= 2) {
++			g_autofree char *bytes = NULL;
++			gsize length;
++			g_assert_true (g_file_get_contents (zip, &bytes, &length, &error));
++			g_assert_no_error (error);
++			if (i == 2) {
++				memset (bytes + length - 14, 0, 4); /* underreported entries */
++				g_assert_true (g_file_set_contents (zip, bytes, length, &error));
++			}
++			else {
++				g_autoptr (GByteArray) ambiguous = g_byte_array_new ();
++				const guint8 fake_end[22] = { 0x50, 0x4b, 0x05, 0x06 };
++				bytes[length - strlen ("Archive note") - 2] = strlen ("Archive note") + 22;
++				g_byte_array_append (ambiguous, (guint8 *) bytes, length);
++				g_byte_array_append (ambiguous, fake_end, sizeof fake_end);
++				g_assert_true (g_file_set_contents (zip, (char *) ambiguous->data, ambiguous->len, &error));
++			}
++			g_assert_no_error (error);
++		}
++		g_assert_true (g_file_get_contents (zip, &before, &before_len, &error));
++		g_assert_no_error (error);
++		g_autoptr (FrArchive) archive = open_zip (zip, &state, cancel);
++		GList *removed = g_list_append (NULL, "删除.txt");
++		fr_archive_remove (archive, removed, FR_COMPRESSION_NORMAL, cancel, completed, &state);
++		g_main_loop_run (state.loop);
++		g_list_free (removed);
++		g_assert_error (state.error, FR_ERROR, FR_ERROR_COMMAND_ERROR);
++		g_assert_nonnull (strstr (state.error->message, i == 2 ? "Cannot safely" : "comments"));
++		g_clear_error (&state.error);
++		g_assert_true (g_file_get_contents (zip, &after, &after_len, &error));
++		g_assert_no_error (error);
++		g_assert_cmpmem (before, before_len, after, after_len);
++		g_main_loop_unref (state.loop);
++		g_assert_true (_g_file_remove_directory (root, NULL, &error));
++		g_assert_no_error (error);
++	}
++}
++
++static void
++test_integrity (void)
++{
++	const ZipName name = { "中文.txt", "GBK", 0, NULL };
++	for (guint i = 0; i < 2; i++) {
++		g_autoptr (GError) error = NULL;
++		g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++		g_autofree char *zip = g_build_filename (tmp, "sample.zip", NULL);
++		g_autoptr (GFile) root = g_file_new_for_path (tmp);
++		g_autoptr (GCancellable) cancel = g_cancellable_new ();
++		Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++		g_assert_no_error (error);
++		write_zip (zip, &name, 1);
++		if (i == 1) {
++			g_autofree char *bytes = NULL;
++			gsize length;
++			g_assert_true (g_file_get_contents (zip, &bytes, &length, &error));
++			g_assert_no_error (error);
++			char *payload = g_strstr_len (bytes + 30, length - 30, "hello");
++			/* Headers contain NULs, so find the known payload after filename. */
++			if (payload == NULL)
++				payload = bytes + 30 + (guint8) bytes[26] + ((guint8) bytes[27] << 8);
++			*payload = 'x';
++			g_assert_true (g_file_set_contents (zip, bytes, length, &error));
++			g_assert_no_error (error);
++		}
++		g_autoptr (FrArchive) archive = open_zip (zip, &state, cancel);
++		g_assert_true (archive->propTest);
++		fr_archive_test (archive, NULL, cancel, completed, &state);
++		g_main_loop_run (state.loop);
++		if (i == 0)
++			g_assert_no_error (state.error);
++		else {
++			g_assert_error (state.error, FR_ERROR, FR_ERROR_COMMAND_ERROR);
++			g_clear_error (&state.error);
++		}
++		g_main_loop_unref (state.loop);
++		g_assert_true (_g_file_remove_directory (root, NULL, &error));
++		g_assert_no_error (error);
++	}
++}
++
++static void
++test_split (void)
++{
++	g_autofree char *sevenz = g_find_program_in_path ("7z");
++	if (sevenz == NULL) {
++		g_test_skip ("7zip is required to exercise split ZIP compatibility");
++		return;
++	}
++	g_autoptr (GError) error = NULL;
++	g_autofree char *tmp = g_dir_make_tmp ("file-roller-cn-XXXXXX", &error);
++	g_autofree char *source = g_build_filename (tmp, "data.bin", NULL);
++	g_autofree char *volume = g_build_filename (tmp, "split.zip.001", NULL);
++	g_autofree char *out = g_build_filename (tmp, "out", NULL);
++	g_autofree char *extracted = g_build_filename (out, "data.bin", NULL);
++	g_autofree char *contents = NULL;
++	gsize length;
++	char bytes[20000] = { 0 };
++	g_autoptr (GFile) root = g_file_new_for_path (tmp);
++	g_autoptr (GFile) dest = g_file_new_for_path (out);
++	g_autoptr (GCancellable) cancel = g_cancellable_new ();
++	Result state = { g_main_loop_new (NULL, FALSE), NULL, NULL };
++	g_assert_no_error (error);
++	g_assert_true (g_file_set_contents (source, bytes, sizeof bytes, &error));
++	g_assert_no_error (error);
++	char *args[] = { sevenz, "a", "-tzip", "-mx=0", "-v8k", "split.zip", "data.bin", NULL };
++	int status;
++	g_assert_true (g_spawn_sync (tmp, args, NULL, G_SPAWN_STDOUT_TO_DEV_NULL,
++	                            NULL, NULL, NULL, NULL, &status, &error));
++	g_assert_no_error (error);
++	g_assert_true (g_spawn_check_wait_status (status, &error));
++	g_assert_no_error (error);
++	g_assert_cmpint (g_mkdir (out, 0700), ==, 0);
++	g_autoptr (FrArchive) archive = open_zip (volume, &state, cancel);
++	fr_archive_list (archive, NULL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_assert_no_error (state.error);
++	fr_archive_extract (archive, NULL, dest, "/", FALSE, TRUE, FALSE, NULL, cancel, completed, &state);
++	g_main_loop_run (state.loop);
++	g_assert_no_error (state.error);
++	g_assert_true (g_file_get_contents (extracted, &contents, &length, &error));
++	g_assert_no_error (error);
++	g_assert_cmpmem (bytes, sizeof bytes, contents, length);
++	g_main_loop_unref (state.loop);
++	g_assert_true (_g_file_remove_directory (root, NULL, &error));
++	g_assert_no_error (error);
++}
++
++int
++main (int argc, char **argv)
++{
++	static const ZipName cases[] = {
++		{ "中文目录/测试文件.txt", "GB2312", 0, NULL },
++		{ "中文目录/表格 ①.txt", "GBK", 0, NULL },
++		{ "扩展字符𠀀.txt", "GB18030", 0, NULL },
++		{ "UTF8目录/中文😀.txt", "UTF-8", 0x800, NULL },
++		{ "没有标记的中文.txt", "UTF-8", 0, NULL },
++		{ "legacy.txt", "UTF-8", 0, "Unicode目录/正确😀.txt" },
++		{ "中文.txt", "GBK", 0, "优先Unicode😀.txt" },
++		{ "plain.txt", "UTF-8", 0, NULL },
++		{ "café.txt", "CP437", 0, NULL },
++	};
++	setlocale (LC_ALL, "");
++	g_test_init (&argc, &argv, NULL);
++	fr_initialize_data ();
++	for (guint i = 0; i < G_N_ELEMENTS (cases); i++) {
++		g_autofree char *name = g_strdup_printf ("/archive/encoding/%u", i);
++		g_test_add_data_func (name, &cases[i], test_encoding);
++	}
++	g_test_add_func ("/archive/mixed-and-selected", test_mixed);
++	g_test_add_func ("/archive/backend", test_backend);
++	g_test_add_func ("/archive/override", test_override);
++	g_test_add_func ("/archive/invalid-encoding", test_invalid_encoding);
++	g_test_add_func ("/archive/path-safety", test_path_safety);
++	g_test_add_func ("/archive/comments", test_comments);
++	g_test_add_func ("/archive/integrity", test_integrity);
++	g_test_add_func ("/archive/split", test_split);
++	g_test_add_func ("/archive/password-read", test_password_read);
++	g_test_add_func ("/archive/password-write", test_password_write);
++	return g_test_run ();
++}

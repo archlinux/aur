@@ -1,0 +1,46 @@
+pkgbase = file-roller-cn
+	pkgdesc = GNOME archive manager with GBK/GB2312/GB18030 ZIP filename support
+	pkgver = 44.7
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/file-roller-cn
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = yelp-tools
+	makedepends = zlib
+	depends = dconf
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = json-glib
+	depends = libadwaita
+	depends = libarchive>=3.2.0
+	depends = libgcc
+	depends = libnautilus-extension
+	depends = pango
+	optdepends = 7zip: 7z archive support
+	optdepends = arj: arj archive support
+	optdepends = binutils: ar archive support
+	optdepends = bzip3: bzip3 compression support
+	optdepends = cdrtools: ISO image support
+	optdepends = cpio: cpio archive support
+	optdepends = dpkg: deb archive support
+	optdepends = lhasa: LHA/LZA archive support
+	optdepends = lrzip: lrzip compression support
+	optdepends = rpmextract: rpm archive support
+	optdepends = squashfs-tools: squashfs image support
+	optdepends = unace: ACE archive support
+	optdepends = unrar: better RAR archive support
+	optdepends = zip: additional ZIP archive support
+	optdepends = unzip: additional ZIP archive support
+	provides = file-roller=44.7
+	conflicts = file-roller
+	options = !debug
+	source = https://download.gnome.org/sources/file-roller/44/file-roller-44.7.tar.xz
+	source = 0001-support-chinese-zip-filenames.patch
+	sha256sums = 67cada96a2409c859f378e82fbe868b0e9c00a69e6b7b885d542c64ea2a1297d
+	sha256sums = e6af662afef3bce4ab65721320ea921df37e441024c45c7362cdc07098486bf6
+
+pkgname = file-roller-cn
