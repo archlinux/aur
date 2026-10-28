@@ -2,7 +2,7 @@
 # Contributor: weselben <bengottwaldi04 at gmail dot com>
 
 pkgname=gomodel-git
-pkgver=0.1.109.r2.g6d27388
+pkgver=0.1.108.r0.g9fbdd78
 pkgver=0.1.109.r2.g6d27388
 pkgrel=1
 pkgdesc="High-performance AI gateway (git main build, quasi-nightly)"
