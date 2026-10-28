@@ -1,0 +1,15 @@
+pkgbase = pgstream
+	pkgdesc = PostgreSQL replication with DDL changes
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/xataio/pgstream
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	depends = postgresql-libs
+	source = pgstream-1.5.0.tar.gz::https://github.com/xataio/pgstream/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 910256b63eb68266cb734a1f5ef4ec253b51ecfd90d88d7c44daa225d8c361a9
+
+pkgname = pgstream
