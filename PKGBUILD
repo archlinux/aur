@@ -1,10 +1,10 @@
 # Maintainer: stelzo <stelzo@steado.de>
 pkgname=minot
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64' 'aarch64')
-url="https://codeberg.org/stelzo/minot"
+url="https://minot.steado.tech"
 license=('MIT' 'Apache-2.0')
 depends=('libgcc' 'glibc')
 makedepends=('cargo' 'git')
