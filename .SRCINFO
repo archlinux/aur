@@ -1,6 +1,6 @@
 pkgbase = redumper-gui-bin
 	pkgdesc = A cross-platform digital fidget spinner and GUI for redumper.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Deterous/Redumper-GUI
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = redumper-gui-bin
 	conflicts = redumper-bin
 	conflicts = redumper-git
 	conflicts = redumper
-	source = https://github.com/Deterous/Redumper-GUI/releases/download/v1.1.0/Redumper-GUI-Linux-x64.tar.gz
+	source = https://github.com/Deterous/Redumper-GUI/releases/download/v1.1.1/Redumper-GUI-Linux-x64.tar.gz
 	source = https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/LICENSE
 	source = https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/README.md
-	sha256sums = ac503a8300fdbf6fdc707085a82464df3af0304611f36a845519e4aa5c082b10
+	sha256sums = 46aa861c35c46215925606a4c71472b02f44f4eaa9c54d3c99be8668e05d5398
 	sha256sums = SKIP
 	sha256sums = SKIP
 
