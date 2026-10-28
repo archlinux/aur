@@ -1,6 +1,6 @@
 pkgbase = ember
 	pkgdesc = Ember — a minimal AUR helper written in Ruby
-	pkgver = 2.9
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/syuvi211/ember
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ember
 	license = GPL-3.0-or-later
 	depends = ruby
 	depends = git
-	source = ember-2.9.tar.gz::https://github.com/syuvi211/ember/archive/refs/tags/v2.9.tar.gz
+	source = ember-3.0.tar.gz::https://github.com/syuvi211/ember/archive/refs/tags/v3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ember
