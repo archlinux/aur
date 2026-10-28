@@ -1,0 +1,15 @@
+pkgbase = flashpack
+	pkgdesc = Cross-platform Qt6 GUI for adb and fastboot
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/flashpack
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = android-tools
+	source = flashpack-0.1.0.tar.gz::https://github.com/user14923929/flashpack/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 2ffce9c7de4e5e4e8e50f768bf20a936715baae8876ab5049df944dfeb456016
+
+pkgname = flashpack
