@@ -1,6 +1,6 @@
 # Maintainer: patcito
 pkgname=prettymux
-pkgver=0.2.60
+pkgver=0.2.61
 pkgrel=1
 pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'json-glib')
 makedepends=('meson' 'ninja' 'gcc' 'zig' 'git')
 source=(
   "prettymux::git+https://github.com/patcito/prettymux.git"
-  "ghostty::git+https://github.com/patcito/ghostty.git#branch=linux-embedded-platform"
+  "ghostty::git+https://github.com/patcito/ghostty.git#commit=bd604e89a70455c99ecc7ed38a6ffe16c20a8871"
 )
 sha256sums=('SKIP' 'SKIP')
 

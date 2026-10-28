@@ -1,6 +1,6 @@
 pkgbase = prettymux
 	pkgdesc = GPU-accelerated terminal multiplexer
-	pkgver = 0.2.60
+	pkgver = 0.2.61
 	pkgrel = 1
 	url = https://github.com/patcito/prettymux
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = prettymux
 	depends = json-glib
 	options = !debug
 	source = prettymux::git+https://github.com/patcito/prettymux.git
-	source = ghostty::git+https://github.com/patcito/ghostty.git#branch=linux-embedded-platform
+	source = ghostty::git+https://github.com/patcito/ghostty.git#commit=bd604e89a70455c99ecc7ed38a6ffe16c20a8871
 	sha256sums = SKIP
 	sha256sums = SKIP
 
