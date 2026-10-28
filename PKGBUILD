@@ -2,7 +2,7 @@
 # Maintainer: Lantern Team <dev@getlantern.org>
 
 pkgname='lantern-headless-bin'
-pkgver=1.2.6
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='Lantern Headless Client
 '
@@ -13,10 +13,10 @@ provides=('lantern-headless')
 conflicts=('lantern-headless')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/getlantern/lantern-headless-client/releases/download/v${pkgver}/lantern-headless_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('f310fd2f1e5c46563eba4f609a1e0105abd119370ad95ca965eba5ad1d971736')
+sha256sums_aarch64=('542b6a4fd3daa6e4f5428a85e2c2dcd701b0b54dab67cec42447c92d60d8b6e6')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/getlantern/lantern-headless-client/releases/download/v${pkgver}/lantern-headless_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('55c9af54f0d366f38702b527c433b19fcf5f3fb902a54c2f6766c9ae4064db3f')
+sha256sums_x86_64=('5c5d9ea2c8721f8dd8b9894e153dd69da059ea81e46e720fb88007ec41584570')
 
 package() {
   install -Dm755 "./lantern-headless" "${pkgdir}/usr/bin/lantern-headless"
