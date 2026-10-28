@@ -1,15 +1,14 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=termtastic-git
-pkgver=1.0.0.alpha4.r7.g9aec15c
+pkgver=1.0.0.alpha5.r6.g5ec99e2
 pkgrel=1
 pkgdesc='Feature-rich handmade Meshtastic console client'
 arch=('x86_64' 'aarch64')
 url='https://github.com/acelot/termtastic'
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 depends=('gcc-libs')
-optdepends=(
-)
+optdepends=()
 makedepends=('cargo' 'git')
 provides=('termtastic')
 conflicts=('termtastic')
