@@ -5,7 +5,7 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='7.0.0'
+pkgver='7.1.0'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -20,7 +20,7 @@ license=('Apache')
 source=(
     "https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
-sha256sums=('3580962861589c0b69efd6b385ff92ad8fdf688c91d1a0edc1a83278205e28e8')
+sha256sums=('6c1eacb22f3465af8edcdd814318e5e23a4cf3b8fc2e50a2525d2b2b3bf44016')
 pkgdesc='Remote terminal for the busy and impatient'
 
 prepare() {
