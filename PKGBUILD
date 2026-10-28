@@ -5,10 +5,10 @@
 _name=rusticlone
 pkgname=$_name-bin
 # Set by .github/workflows/aur.yml at each release.
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Scheduled 3-2-1-1-0 backups for computers and servers built on rustic profiles, with UI and notifications"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url="https://github.com/AlphaJack/rusticlone"
 license=('AGPL-3.0-or-later')
 depends=('rustic')
@@ -18,10 +18,8 @@ options=('!strip' '!debug')
 backup=("etc/$_name/$_name.env")
 source_x86_64=("$pkgname-$pkgver-x86_64-unknown-linux-musl.tar.gz::$url/releases/download/v$pkgver/$_name-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-unknown-linux-musl.tar.gz::$url/releases/download/v$pkgver/$_name-aarch64-unknown-linux-musl.tar.gz")
-source_armv7h=("$pkgname-$pkgver-armv7-unknown-linux-musleabihf.tar.gz::$url/releases/download/v$pkgver/$_name-armv7-unknown-linux-musleabihf.tar.gz")
-b2sums_x86_64=('73c90d03297c9f5662bf1a5bf706dc7a089d631bf5a1aa69f77475eadf67b4aee100dd53ff2dc4e330ce5ccdf064fd57d278828a0f6bbf83497b1e4c9cbfdadf')
-b2sums_aarch64=('62568fce7af3fe22003fb467b61cc0b8265ab7cdc8220dcf2eb7700829301ef904a1f4ab9755ec0b447ea53ce8ea327db450c8a9d73c5f9132bc99df0698dda6')
-b2sums_armv7h=('d09dd414b4e513cd4f5eb43fd558b950e8df3eae80da9350ce612bf880ac75a5fd01d712a536a6bd833bb4dcc83318ec7379f0f2aec7b7710a812523d2198518')
+b2sums_x86_64=('28fa1c736417e3f141e32b0178d171172b21f489587210f67f52a6cff6d563383edec36fe6a4e0532a55610f71db64f83920c7aa15fd894a0bae2d077ef8a39e')
+b2sums_aarch64=('feb8e3543af52f690562884dd0e6abbf35ae25fcddb4cf384871ecdf6830fddfa18b53e141bd13291794778c79bfab535cc128a1705dbfc025f2bb733abda6b4')
 
 
 _completion(){
@@ -34,7 +32,6 @@ package(){
  case "$CARCH" in
   "x86_64") target="x86_64-unknown-linux-musl" ;;
   "aarch64") target="aarch64-unknown-linux-musl" ;;
-  "armv7h") target="armv7-unknown-linux-musleabihf" ;;
  esac
  cd "$srcdir/$_name-$target"
  install -D -m 755 $_name "$pkgdir/usr/bin/$_name"
