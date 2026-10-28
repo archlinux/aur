@@ -1,10 +1,10 @@
 # Maintainer: gonwex <gonwe at qq dot com>
 
 pkgname=perplexity-bin
-pkgver=26.10.2
-pkgrel=2
-_build=122020
-_sha256=b822c81624be379a0694bcdb9c1e06f7c1b142ce4bcd97a5c35605227b6e98dc
+pkgver=26.10.3
+pkgrel=1
+_build=131497
+_sha256=57911c12a51aff9f459dc30f13e479402753623183a7b13509574c21777384b8
 pkgdesc='Official Perplexity desktop app and Portable Computer for Linux'
 arch=('x86_64')
 url='https://www.perplexity.ai/hub/products/portable-computer'
