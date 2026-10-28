@@ -11,6 +11,6 @@ source=(v$_imagever.tar.gz::https://github.com/golang/image/archive/refs/tags/v$
 b2sums=(2ed2cd0b0ee50a8bed1b489813755cfca98ce6374ad5782ca5518c8b36cc85931de631b4db5e7ef51d49226a8221fcedd2b58204c724c67c4bc4fcfc797d57fd)
 
 package() {
-	install -Dm 644 image-$_imagever/font/gofont/ttfs/*.ttf -t $pkgdir/usr/share/fonts/go
-	install -Dm 644 image-$_imagever/font/gofont/ttfs/README $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm 644 image-$_imagever/font/gofont/ttfs/*.ttf -t $pkgdir/usr/share/fonts/go
+    install -Dm 644 image-$_imagever/font/gofont/ttfs/README $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
