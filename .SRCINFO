@@ -1,0 +1,178 @@
+pkgbase = xorg-server-phoenix
+	pkgver = 26.1.99.1
+	pkgrel = 1
+	url = https://github.com/dec05eba/xserver
+	arch = x86_64
+	groups = xorg
+	license = LicenseRef-Adobe-Display-PostScript
+	license = BSD-3-Clause
+	license = LicenseRef-DEC-3-Clause
+	license = HPND
+	license = LicenseRef-HPND-sell-MIT-disclaimer-xserver
+	license = HPND-sell-variant
+	license = ICU
+	license = ISC
+	license = MIT
+	license = MIT-open-group
+	license = NTP
+	license = SGI-B-2.0
+	license = SMLNJ
+	license = X11
+	license = X11-distribute-modifications-variant
+	makedepends = xorgproto
+	makedepends = pixman
+	makedepends = libx11
+	makedepends = mesa
+	makedepends = mesa-libgl
+	makedepends = xtrans
+	makedepends = libxkbfile
+	makedepends = libxfont2
+	makedepends = libpciaccess
+	makedepends = libxv
+	makedepends = libxcvt
+	makedepends = libxmu
+	makedepends = libxrender
+	makedepends = libxi
+	makedepends = libxaw
+	makedepends = libxtst
+	makedepends = libxres
+	makedepends = xorg-xkbcomp
+	makedepends = xorg-util-macros
+	makedepends = xorg-font-util
+	makedepends = libepoxy
+	makedepends = xcb-util
+	makedepends = xcb-util-image
+	makedepends = xcb-util-renderutil
+	makedepends = xcb-util-wm
+	makedepends = xcb-util-keysyms
+	makedepends = libxshmfence
+	makedepends = libunwind
+	makedepends = systemd
+	makedepends = meson
+	makedepends = git
+	source = xorg-server-28e439d4acba2f472cd6553f74a6bd445073e34e.tar.gz::https://github.com/dec05eba/xserver/archive/28e439d4acba2f472cd6553f74a6bd445073e34e.tar.gz
+	source = xvfb-run
+	source = xvfb-run.1
+	source = 0001-Revert_damage_Unlink_a_damage_from_the_list_it_was_actually.patch
+	sha512sums = 8079fac3f7d98338627ef6b733c14a71078a4b6088f44b7dce50b37e3624afecd5a57471355581dd9bdc51542cd1f3a703d35f4968660dcec77e24c3f3c32069
+	sha512sums = 672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49
+	sha512sums = de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22
+	sha512sums = 5b749d10a968ba37b6ff59a459e80e6799e750d00f4b043b93033f9deb152cbb3fbb49cab7b2be2bc650ecf7fad5b4f0bbdaa80f40da017f074ee436d59ae4c3
+
+pkgname = xorg-server-phoenix
+	pkgdesc = A fork of the Xorg server with HDR and proper multimonitor support
+	install = xorg-server.install
+	depends = libepoxy
+	depends = libxfont2
+	depends = pixman
+	depends = xorg-server-common
+	depends = libunwind
+	depends = dbus
+	depends = libgl
+	depends = xf86-input-libinput-phoenix
+	depends = nettle
+	depends = libxdmcp
+	depends = sh
+	depends = glibc
+	depends = libxau
+	depends = systemd-libs
+	depends = libtirpc
+	depends = libpciaccess
+	depends = libdrm
+	depends = libxshmfence
+	depends = libxcvt
+	provides = xorg-server=26.1.99.1
+	provides = X-ABI-VIDEODRV_VERSION=28.0
+	provides = X-ABI-XINPUT_VERSION=26.0
+	provides = X-ABI-EXTENSION_VERSION=11.0
+	provides = x-server
+	conflicts = xorg-server
+	conflicts = nvidia-utils<=331.20
+	conflicts = glamor-egl
+	conflicts = xf86-video-modesetting
+	replaces = glamor-egl
+	replaces = xf86-video-modesetting
+
+pkgname = xorg-server-xephyr-phoenix
+	pkgdesc = A nested X server that runs as an X application
+	depends = libxfont2
+	depends = libgl
+	depends = libepoxy
+	depends = libunwind
+	depends = systemd-libs
+	depends = pixman
+	depends = xorg-server-common
+	depends = xcb-util-image
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = nettle
+	depends = libtirpc
+	depends = xcb-util
+	depends = libxdmcp
+	depends = libx11
+	depends = libxau
+	depends = libxshmfence
+	depends = glibc
+	provides = xorg-server-xephyr=26.1.99.1
+	conflicts = xorg-server-xephyr
+
+pkgname = xorg-server-xvfb-phoenix
+	pkgdesc = Virtual framebuffer X server
+	license = MIT
+	license = GPL-2.0-only
+	depends = libxfont2
+	depends = libunwind
+	depends = pixman
+	depends = xorg-server-common
+	depends = xorg-xauth
+	depends = libgl
+	depends = nettle
+	depends = libtirpc
+	depends = systemd-libs
+	depends = libxdmcp
+	depends = sh
+	depends = glibc
+	depends = libxau
+	provides = xorg-server-xvfb=26.1.99.1
+	conflicts = xorg-server-xvfb
+
+pkgname = xorg-server-xnest-phoenix
+	pkgdesc = A nested X server that runs as an X application
+	depends = libxfont2
+	depends = libunwind
+	depends = libxext
+	depends = pixman
+	depends = xorg-server-common
+	depends = nettle
+	depends = libtirpc
+	depends = systemd-libs
+	depends = libxdmcp
+	depends = glibc
+	depends = libx11
+	depends = libxau
+	provides = xorg-server-xnest=26.1.99.1
+	conflicts = xorg-server-xnest
+
+pkgname = xorg-server-common-phoenix
+	pkgdesc = Xorg server common files
+	depends = xkeyboard-config
+	depends = xorg-xkbcomp
+	depends = xorg-setxkbmap
+	provides = xorg-server-common=26.1.99.1
+	conflicts = xorg-server-common
+
+pkgname = xorg-server-devel-phoenix
+	pkgdesc = Development files for the X.Org X server
+	depends = xorgproto
+	depends = mesa
+	depends = libpciaccess
+	depends = pixman
+	depends = xorg-util-macros
+	provides = xorg-server-devel=26.1.99.1
+	conflicts = xorg-server-devel
+
+pkgname = xorg-server-src-phoenix
+	pkgdesc = Source files of the X.Org X server
+	provides = xorg-server-src=26.1.99.1
+	conflicts = xorg-server-src
