@@ -5,7 +5,7 @@
 
 basename='rq'
 pkgname=python-${basename}
-pkgver=2.12
+pkgver=3.0
 pkgrel=1
 pkgdesc="Simple job queues for Python"
 
@@ -18,7 +18,7 @@ makedepends=('python-hatch' 'python-installer')
 depends=('python' 'python-click' 'python-croniter' 'python-redis' 'python-setproctitle' 'python-typing_extensions' 'python-greenlet')
 
 source=("${basename}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('44909b860af739a185f58831f4a38bbf19d733ba13433b2614585fbc2d75f055')
+sha256sums=('a183ac3186be3b0be0663e4a5064aa4cf16e9e5c8a5d46d94d7a060fa0741ee2')
 
 build() {
     cd "${srcdir}/${basename}-${pkgver}"
