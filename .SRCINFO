@@ -1,0 +1,37 @@
+pkgbase = python-xgboost-cpu-only
+	pkgdesc = XGBoost Python bindings built from source for CPU/OpenMP, without CUDA or NCCL
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://github.com/dmlc/xgboost
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-scikit-build-core
+	makedepends = python-packaging
+	makedepends = binutils
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = gcc-libs
+	depends = glibc
+	optdepends = python-pandas: pandas DataFrame support
+	optdepends = python-scikit-learn: scikit-learn estimator interface
+	optdepends = python-matplotlib: plotting utilities
+	optdepends = python-graphviz: tree visualization
+	optdepends = python-pyarrow: Arrow table input
+	optdepends = python-dask: Dask integration
+	optdepends = python-distributed: Dask cluster execution
+	optdepends = python-packaging: optional Dask integration
+	provides = python-xgboost=3.4.1
+	provides = python-xgboost-cpu=3.4.1
+	conflicts = python-xgboost
+	conflicts = python-xgboost-cuda
+	conflicts = python-xgboost-git
+	conflicts = python-xgboost-cpu-nacci
+	source = xgboost-src-3.4.1.tar.gz::https://github.com/dmlc/xgboost/releases/download/v3.4.1/xgboost-src-3.4.1.tar.gz
+	sha256sums = 34a5cb99a67bb98b44f204767eeeae642b65a86b2ecfca60082e4d74fd4d169a
+
+pkgname = python-xgboost-cpu-only
