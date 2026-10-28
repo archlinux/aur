@@ -2,15 +2,16 @@
 """
 muse-import: import foreign agent sessions into Muse Code's session store.
 
-Reads omp native JSONL sessions and writes a Muse session directory
-(session.jsonl) plus a session-index.db row, so `muse resume <uuid>`
-picks the conversation up. Mirrors scripts/muse_to_omp.py in reverse.
+Reads omp, Antigravity/agy and OpenCode sessions, normalizes them to
+plain-text turns, and writes a Muse session directory (session.jsonl)
+plus a session-index.db row, so `muse resume <uuid>` picks the
+conversation up.
 
 Provenance rule (same as the omp import skill): imported tool history
-stays plain text — tool calls and results become
-`assistant_message_committed` text blocks, never synthesized tool-call
-payloads, so a resumed session cannot fake tool provenance. Foreign
-system prompts, credential material and opaque signatures are skipped.
+stays plain text — tool calls and results become `assistant_message_committed`
+text blocks, never synthesized tool-call payloads, so a resumed session
+cannot fake tool provenance. Foreign system prompts, credential material
+and opaque reasoning blobs are dropped, skipped counts reported.
 
 Integrated with the muse wrapper: `muse import ...` dispatches here.
 """
@@ -20,6 +21,7 @@ import ast
 import glob
 import json
 import os
+import re
 import shutil
 import sqlite3
 import sys
@@ -29,6 +31,15 @@ import uuid
 from datetime import datetime, timezone
 
 OMP_SESSIONS = os.path.expanduser("~/.omp/agent/sessions")
+AGY_BRAIN_ROOTS = [
+    os.path.expanduser("~/.gemini/antigravity-cli/brain"),
+    os.path.expanduser("~/.gemini/antigravity/brain"),
+    os.path.expanduser("~/.gemini/Antigravity/brain"),
+]
+AGY_SUMMARY_DB = os.path.expanduser(
+    "~/.gemini/antigravity-cli/conversation_summaries.db")
+OPENCODE_DB = os.path.expanduser("~/.local/share/opencode/opencode.db")
+
 MUSE_DATA = os.path.join(
     os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share"),
     "muse",
@@ -36,7 +47,7 @@ MUSE_DATA = os.path.join(
 MUSE_SESSIONS = os.path.join(MUSE_DATA, "sessions")
 MUSE_INDEX = os.path.join(MUSE_DATA, "session-index.db")
 
-# Muse model context stamped on imported sessions: the next `muse resume`
+# Muse model context stamped on imported sessions. The next `muse resume`
 # turn runs under the local Meta provider regardless, so record that.
 IMPORT_PROVIDER = "meta"
 IMPORT_MODEL = "muse-spark-1.3"
@@ -65,11 +76,16 @@ def warn(msg):
 
 
 def iso_to_us(ts):
-    """ISO-8601 (or epoch ms) -> microseconds since epoch."""
+    """ISO-8601, epoch ms/s/us -> microseconds since epoch."""
     if ts is None:
         return int(time.time() * 1_000_000)
     if isinstance(ts, (int, float)):
-        return int(ts * 1000) if ts < 1e12 else int(ts)
+        ts = int(ts)
+        if ts >= 1e15:
+            return ts
+        if ts >= 1e12:
+            return ts * 1000
+        return ts * 1_000_000
     try:
         s = str(ts).strip()
         if s.endswith("Z"):
@@ -79,59 +95,427 @@ def iso_to_us(ts):
         return int(time.time() * 1_000_000)
 
 
-def parse_blocks(content):
-    """omp message content (list, JSON string or repr) -> block list."""
-    if isinstance(content, list):
-        return [b for b in content if isinstance(b, dict)]
-    if isinstance(content, str):
-        s = content.strip()
-        if not s:
-            return []
-        try:
-            v = json.loads(s)
-            return [b for b in v if isinstance(b, dict)] if isinstance(v, list) else []
-        except Exception:
-            pass
-        try:
-            v = ast.literal_eval(s)
-            return [b for b in v if isinstance(b, dict)] if isinstance(v, list) else []
-        except Exception:
-            return [{"type": "text", "text": content}]
-    return []
-
-
-def block_text(block, max_chars=None):
-    """Plain-text rendering of one omp content block (or None to skip)."""
-    kind = block.get("type")
-    if kind == "text":
-        text = (block.get("text") or "").strip()
-    elif kind == "toolCall":
-        args = block.get("arguments", "")
-        if not isinstance(args, str):
-            args = json.dumps(args)
-        text = (f"[omp tool call: {block.get('name', 'unknown')} "
-                f"id={block.get('id', 'unknown')}]\nargs: {args}").strip()
-    else:
-        return None
-    if not text:
-        return None
+def trunc(text, max_chars):
     if max_chars and len(text) > max_chars:
-        text = text[:max_chars] + "\n[…truncated]"
+        return text[:max_chars] + "\n[…truncated]"
     return text
 
 
 # ---------------------------------------------------------------------------
-# omp session discovery
+# Readers: each returns (meta, turns, stats) where a turn is
+# ("user"|"assistant"|"tool", text, ts_us) and meta holds
+# {id, title, cwd, timestamp}. Tool history is always pre-rendered text.
+# ---------------------------------------------------------------------------
+
+def read_omp(path, max_chars=None):
+    meta = {"id": os.path.basename(path), "title": "", "cwd": "",
+            "timestamp": None}
+    turns, stats = [], {"user": 0, "assistant": 0, "tool": 0, "skipped": 0}
+
+    def parse_blocks(content):
+        if isinstance(content, list):
+            return [b for b in content if isinstance(b, dict)]
+        if isinstance(content, str):
+            s = content.strip()
+            if not s:
+                return []
+            for loads in (json.loads, ast.literal_eval):
+                try:
+                    v = loads(s)
+                    if isinstance(v, list):
+                        return [b for b in v if isinstance(b, dict)]
+                    break
+                except Exception:
+                    continue
+            return [{"type": "text", "text": content}]
+        return []
+
+    def block_text(block):
+        kind = block.get("type")
+        if kind == "text":
+            text = (block.get("text") or "").strip()
+        elif kind == "toolCall":
+            args = block.get("arguments", "")
+            if not isinstance(args, str):
+                args = json.dumps(args)
+            text = (f"[omp tool call: {block.get('name', 'unknown')} "
+                    f"id={block.get('id', 'unknown')}]\nargs: {args}").strip()
+        else:
+            return None
+        if not text:
+            return None
+        return trunc(text, max_chars)
+
+    with open(path, encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rec = json.loads(line)
+            except Exception:
+                stats["skipped"] += 1
+                continue
+            if not isinstance(rec, dict):
+                stats["skipped"] += 1
+                continue
+            if rec.get("type") == "session":
+                meta.update({"id": rec.get("id", meta["id"]),
+                             "title": rec.get("title", ""),
+                             "cwd": rec.get("cwd", ""),
+                             "timestamp": rec.get("timestamp")})
+                continue
+            if rec.get("type") != "message":
+                # session_init (foreign system prompt), credential pins,
+                # lifecycle markers: never imported.
+                stats["skipped"] += 1
+                continue
+            msg = rec.get("message")
+            if not isinstance(msg, dict):
+                stats["skipped"] += 1
+                continue
+            ts = iso_to_us(msg.get("timestamp") or rec.get("timestamp"))
+            if msg.get("role") == "user":
+                texts = [block_text(b) for b in parse_blocks(msg.get("content"))
+                         if isinstance(b, dict) and b.get("type") == "text"]
+                texts = [t for t in texts if t]
+                if not texts:
+                    stats["skipped"] += 1
+                    continue
+                turns.append(("user", "\n\n".join(texts), ts))
+                stats["user"] += 1
+            elif msg.get("role") == "assistant":
+                wrote = False
+                for b in parse_blocks(msg.get("content")):
+                    if not isinstance(b, dict):
+                        continue
+                    if b.get("type") == "toolCall":
+                        # thoughtSignature is opaque foreign reasoning: drop it.
+                        b = {k: v for k, v in b.items()
+                             if k != "thoughtSignature"}
+                        text = block_text(b)
+                        if text:
+                            turns.append(("tool", text, ts))
+                            stats["tool"] += 1
+                            wrote = True
+                    else:
+                        text = block_text(b)
+                        if text:
+                            turns.append(("assistant", text, ts))
+                            stats["assistant"] += 1
+                            wrote = True
+                if not wrote:
+                    stats["skipped"] += 1
+            else:
+                stats["skipped"] += 1
+    return meta, turns, stats
+
+
+def strip_user_wrapper(text):
+    m = re.fullmatch(
+        r"\s*<USER_REQUEST>\n?(.*?)\n?\s*(</USER_REQUEST>)?\s*$",
+        text, re.DOTALL)
+    return m.group(1) if m else text
+
+
+def read_agy(path, cid, max_chars=None):
+    meta = {"id": cid or os.path.basename(path), "title": "",
+            "cwd": "", "timestamp": None}
+    turns, stats = [], {"user": 0, "assistant": 0, "tool": 0, "skipped": 0}
+    # Title/workspace from the summaries db (best effort).
+    try:
+        con = sqlite3.connect(f"file:{AGY_SUMMARY_DB}?mode=ro", uri=True)
+        row = con.execute(
+            "SELECT title, workspace_uris FROM conversation_summaries"
+            " WHERE conversation_id = ?", (meta["id"],)).fetchone()
+        con.close()
+        if row:
+            meta["title"] = row[0] or ""
+            uris = (row[1] or "").split(",")
+            for u in uris:
+                u = u.strip()
+                if u.startswith("file://"):
+                    meta["cwd"] = u[len("file://"):]
+                    break
+    except Exception:
+        pass
+
+    def emit(kind, text, ts):
+        text = (text or "").strip()
+        if not text:
+            return False
+        turns.append((kind, trunc(text, max_chars), ts))
+        return True
+
+    with open(path, encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                step = json.loads(line)
+            except Exception:
+                stats["skipped"] += 1
+                continue
+            t = step.get("type", "GENERIC")
+            ts = iso_to_us(step.get("created_at"))
+            if meta["timestamp"] is None:
+                meta["timestamp"] = step.get("created_at")
+            if t == "USER_INPUT":
+                if emit("user", strip_user_wrapper(step.get("content", "")), ts):
+                    stats["user"] += 1
+                else:
+                    stats["skipped"] += 1
+            elif t in ("PLANNER_RESPONSE", "GENERIC"):
+                text = step.get("content") or step.get("thinking") or ""
+                if text.strip() and emit("assistant", text, ts):
+                    stats["assistant"] += 1
+                else:
+                    stats["skipped"] += 1
+                calls = step.get("tool_calls")
+                if isinstance(calls, str):
+                    try:
+                        calls = ast.literal_eval(calls)
+                    except Exception:
+                        calls = None
+                if isinstance(calls, list):
+                    for c in calls:
+                        if not isinstance(c, dict):
+                            continue
+                        args = c.get("args", "")
+                        if not isinstance(args, str):
+                            args = json.dumps(args)
+                        if emit("tool",
+                                f"[agy tool: {c.get('name', 'unknown')}]\n"
+                                f"args: {args}", ts):
+                            stats["tool"] += 1
+            elif t == "CHECKPOINT":
+                # Compaction summary: kept as labeled narrative context.
+                if emit("assistant", "[compaction]\n" + (step.get("content") or ""), ts):
+                    stats["assistant"] += 1
+                else:
+                    stats["skipped"] += 1
+            elif t in ("SYSTEM_MESSAGE", "CONVERSATION_HISTORY",
+                       "ERROR_MESSAGE"):
+                # Foreign system content: never imported.
+                stats["skipped"] += 1
+            else:
+                # Other MODEL tool-result types (VIEW_FILE, RUN_COMMAND,
+                # GREP_SEARCH, ...): kept as labeled text.
+                text = step.get("content") or step.get("thinking") or ""
+                if text.strip() and emit(
+                        "assistant", f"[agy {t.lower()}]\n{text}", ts):
+                    stats["assistant"] += 1
+                else:
+                    stats["skipped"] += 1
+    if not meta["title"]:
+        meta["title"] = f"antigravity {meta['id'][:8]}"
+    return meta, turns, stats
+
+
+def read_opencode(db_path, session_id, max_chars=None):
+    meta = {"id": session_id, "title": "", "cwd": "", "timestamp": None}
+    turns, stats = [], {"user": 0, "assistant": 0, "tool": 0, "skipped": 0}
+
+    def emit(kind, text, ts):
+        text = (text or "").strip()
+        if not text:
+            return False
+        turns.append((kind, trunc(text, max_chars), ts))
+        return True
+
+    con = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    try:
+        tables = {r[0] for r in
+                  con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+        # Prefix match first (list view truncates ids); exact match wins ties.
+        like = (session_id.replace("\\", "\\\\").replace("%", "\\%")
+                .replace("_", "\\_") + "%")
+        full_id, multi = None, []
+        for t in ("session_v2", "session"):
+            if t not in tables:
+                continue
+            rows = [r[0] for r in con.execute(
+                f"SELECT id FROM {t} WHERE id LIKE ? ESCAPE '\\'", (like,)).fetchall()]
+            exact = [r for r in rows if r == session_id]
+            if exact:
+                full_id = exact[0]
+                break
+            if len(rows) == 1 and full_id is None:
+                full_id = rows[0]
+            elif len(rows) > 1:
+                multi.extend(rows)
+        if full_id is None:
+            if multi:
+                die(f"ambiguous opencode session '{session_id}':\n" +
+                    "\n".join(f"  {c}" for c in multi[:10]))
+            die(f"no opencode session {session_id!r} in {db_path}")
+        session_id = full_id
+        if "session_v2" in tables:
+            row = con.execute(
+                "SELECT id, title, directory, time_created FROM session_v2"
+                " WHERE id=?", (session_id,)).fetchone()
+            if row is None:
+                die(f"no opencode session {session_id!r} in {db_path}")
+            meta.update({"id": row[0], "title": row[1] or "",
+                         "cwd": row[2] or "",
+                         "timestamp": row[3] / 1000 if row[3] else None})
+            msgs = con.execute(
+                "SELECT type, time_created, data FROM session_message"
+                " WHERE session_id=? ORDER BY seq", (session_id,)).fetchall()
+            for mtype, tms, data in msgs:
+                try:
+                    d = json.loads(data)
+                except Exception:
+                    stats["skipped"] += 1
+                    continue
+                ts = iso_to_us(tms)
+                if mtype == "user":
+                    if emit("user", d.get("text", ""), ts):
+                        stats["user"] += 1
+                    else:
+                        stats["skipped"] += 1
+                elif mtype == "assistant":
+                    wrote = False
+                    for b in d.get("content", []) or []:
+                        if not isinstance(b, dict):
+                            continue
+                        bt = b.get("type")
+                        if bt == "text":
+                            if emit("assistant", b.get("text", ""), ts):
+                                stats["assistant"] += 1
+                                wrote = True
+                        elif bt == "reasoning":
+                            # Plaintext foreign reasoning: kept labeled,
+                            # same call as the omp skill's [OpenCode reasoning].
+                            if emit("assistant",
+                                    "[opencode reasoning]\n" + (b.get("text") or ""), ts):
+                                stats["assistant"] += 1
+                                wrote = True
+                        elif bt == "tool":
+                            st = b.get("state", {}) or {}
+                            inp = st.get("input", "")
+                            if not isinstance(inp, str):
+                                inp = json.dumps(inp)
+                            if emit("tool",
+                                    f"[opencode tool: {b.get('name', 'unknown')} "
+                                    f"id={b.get('id', 'unknown')}]\nargs: {inp}", ts):
+                                stats["tool"] += 1
+                                wrote = True
+                            for c in (st.get("content") or []):
+                                if isinstance(c, dict) and c.get("type") == "text":
+                                    if emit("assistant", c.get("text", ""), ts):
+                                        stats["assistant"] += 1
+                        else:
+                            stats["skipped"] += 1
+                    if not wrote:
+                        stats["skipped"] += 1
+                else:
+                    stats["skipped"] += 1
+        elif "session" in tables:
+            row = con.execute(
+                "SELECT id, title, directory FROM session WHERE id=?",
+                (session_id,)).fetchone()
+            if row is None:
+                die(f"no opencode session {session_id!r} in {db_path}")
+            meta.update({"id": row[0], "title": row[1] or "",
+                         "cwd": row[2] or ""})
+            msgs = con.execute(
+                "SELECT id, time_created, data FROM message"
+                " WHERE session_id=? ORDER BY time_created, rowid",
+                (session_id,)).fetchall()
+            for mid, tms, data in msgs:
+                try:
+                    m = json.loads(data)
+                except Exception:
+                    stats["skipped"] += 1
+                    continue
+                ts = iso_to_us(tms)
+                role = m.get("role")
+                parts = con.execute(
+                    "SELECT data FROM part WHERE message_id=?"
+                    " ORDER BY time_created, rowid", (mid,)).fetchall()
+                if role == "user":
+                    texts = [json.loads(p[0]).get("text", "") for p in parts
+                             if _part_text(p[0])]
+                    texts = [t for t in texts if t and t.strip()]
+                    if texts and emit("user", "\n\n".join(texts), ts):
+                        stats["user"] += 1
+                    else:
+                        stats["skipped"] += 1
+                elif role == "assistant":
+                    wrote = False
+                    for (pdata,) in parts:
+                        try:
+                            b = json.loads(pdata)
+                        except Exception:
+                            continue
+                        if not isinstance(b, dict):
+                            continue
+                        bt = b.get("type")
+                        if bt == "text":
+                            if emit("assistant", b.get("text", ""), ts):
+                                stats["assistant"] += 1
+                                wrote = True
+                        elif bt == "reasoning":
+                            if emit("assistant",
+                                    "[opencode reasoning]\n" + (b.get("text") or ""), ts):
+                                stats["assistant"] += 1
+                                wrote = True
+                        elif bt == "tool":
+                            st = b.get("state", {}) or {}
+                            inp = st.get("input", "")
+                            if not isinstance(inp, str):
+                                inp = json.dumps(inp)
+                            if emit("tool",
+                                    f"[opencode tool: {b.get('tool', 'unknown')} "
+                                    f"id={b.get('callID', 'unknown')}]\nargs: {inp}", ts):
+                                stats["tool"] += 1
+                                wrote = True
+                            for c in (st.get("output") or st.get("content") or []):
+                                if isinstance(c, str) and c.strip():
+                                    if emit("assistant", c, ts):
+                                        stats["assistant"] += 1
+                                elif isinstance(c, dict) and c.get("type") == "text":
+                                    if emit("assistant", c.get("text", ""), ts):
+                                        stats["assistant"] += 1
+                        elif bt == "patch":
+                            files = b.get("files", [])
+                            if emit("assistant",
+                                    "[opencode patch]\n" + "\n".join(map(str, files)), ts):
+                                stats["assistant"] += 1
+                                wrote = True
+                        elif bt in ("step-start", "step-finish", "compaction"):
+                            stats["skipped"] += 1
+                        else:
+                            stats["skipped"] += 1
+        else:
+            die(f"{db_path} has neither session_v2 nor session tables")
+    finally:
+        con.close()
+    if not meta["title"]:
+        meta["title"] = f"opencode {meta['id'][:13]}"
+    return meta, turns, stats
+
+
+def _part_text(pdata):
+    try:
+        b = json.loads(pdata)
+    except Exception:
+        return ""
+    return b.get("text", "") if isinstance(b, dict) else ""
+
+
+# ---------------------------------------------------------------------------
+# Source registry: listing + resolving per agent
 # ---------------------------------------------------------------------------
 
 def omp_headers():
-    """Scan omp buckets: [{id, title, cwd, timestamp, path, messages}]."""
     out = []
     if not os.path.exists(OMP_SESSIONS):
         return out
     for path in sorted(glob.glob(os.path.join(OMP_SESSIONS, "*", "*.jsonl"))):
-        header = None
-        msgs = 0
+        header, msgs = None, 0
         try:
             with open(path, encoding="utf-8", errors="ignore") as f:
                 for line in f:
@@ -142,9 +526,11 @@ def omp_headers():
                         rec = json.loads(line)
                     except Exception:
                         continue
-                    if isinstance(rec, dict) and rec.get("type") == "session" and header is None:
+                    if not isinstance(rec, dict):
+                        continue
+                    if rec.get("type") == "session" and header is None:
                         header = rec
-                    elif isinstance(rec, dict) and rec.get("type") == "message":
+                    elif rec.get("type") == "message":
                         m = rec.get("message")
                         if isinstance(m, dict) and m.get("role") == "user":
                             msgs += 1
@@ -152,29 +538,184 @@ def omp_headers():
             continue
         if header is None:
             continue
-        out.append({
-            "id": header.get("id") or os.path.basename(path),
-            "title": header.get("title") or "(untitled)",
-            "cwd": header.get("cwd") or "",
-            "timestamp": header.get("timestamp") or "",
-            "path": path,
-            "messages": msgs,
-        })
+        out.append({"id": header.get("id") or os.path.basename(path),
+                    "title": header.get("title") or "(untitled)",
+                    "cwd": header.get("cwd") or "",
+                    "timestamp": header.get("timestamp") or "",
+                    "path": path, "messages": msgs})
     return out
 
 
-def resolve_omp(spec):
-    """Find one omp session by id/prefix/path."""
+def agy_headers():
+    out = []
+    for root in AGY_BRAIN_ROOTS:
+        if not os.path.exists(root):
+            continue
+        for cid in sorted(os.listdir(root)):
+            tpath = os.path.join(root, cid, ".system_generated", "logs",
+                                 "transcript_full.jsonl")
+            if not os.path.isfile(tpath):
+                continue
+            title, cwd, ts, msgs = "", "", "", 0
+            try:
+                con = sqlite3.connect(f"file:{AGY_SUMMARY_DB}?mode=ro", uri=True)
+                row = con.execute(
+                    "SELECT title, workspace_uris, last_user_input_time FROM"
+                    " conversation_summaries WHERE conversation_id=?",
+                    (cid,)).fetchone()
+                con.close()
+                if row:
+                    title = row[0] or ""
+                    for u in (row[1] or "").split(","):
+                        u = u.strip()
+                        if u.startswith("file://"):
+                            cwd = u[len("file://"):]
+                            break
+                    ts = str(row[2] or "")
+            except Exception:
+                pass
+            try:
+                with open(tpath, encoding="utf-8", errors="ignore") as f:
+                    for line in f:
+                        if '"USER_INPUT"' in line:
+                            msgs += 1
+            except OSError:
+                pass
+            out.append({"id": cid, "title": title or f"antigravity {cid[:8]}",
+                        "cwd": cwd, "timestamp": ts, "path": tpath,
+                        "messages": msgs})
+    return out
+
+
+def opencode_headers(db_path=None):
+    db_path = db_path or OPENCODE_DB
+    out = []
+    if not os.path.exists(db_path):
+        return out
+    try:
+        con = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    except Exception:
+        return out
+    try:
+        tables = {r[0] for r in con.execute(
+            "SELECT name FROM sqlite_master WHERE type='table'")}
+        if "session_v2" in tables:
+            for sid, title, d, tc in con.execute(
+                    "SELECT id, title, directory, time_created FROM session_v2"
+                    " ORDER BY time_created DESC"):
+                ts = (datetime.fromtimestamp(tc / 1000, tz=timezone.utc).isoformat()
+                      if tc else "")
+                out.append({"id": sid, "title": title or f"opencode {sid[:13]}",
+                            "cwd": d or "", "timestamp": ts,
+                            "messages": con.execute(
+                                "SELECT COUNT(*) FROM session_message"
+                                " WHERE session_id=? AND type='user'",
+                                (sid,)).fetchone()[0]})
+        elif "session" in tables:
+            for sid, title, d in con.execute("SELECT id, title, directory FROM session"):
+                out.append({"id": sid, "title": title or f"opencode {sid[:13]}",
+                            "cwd": d or "", "timestamp": "",
+                            "messages": con.execute(
+                                "SELECT COUNT(*) FROM message m WHERE m.session_id=?"
+                                " AND json_extract(m.data, '$.role')='user'",
+                                (sid,)).fetchone()[0]})
+    except Exception:
+        pass
+    finally:
+        con.close()
+    return out
+
+
+SOURCES = {
+    "omp": {"desc": "omp native sessions (~/.omp/agent/sessions)",
+            "headers": omp_headers},
+    "agy": {"desc": "Antigravity brain transcripts (~/.gemini/.../brain)",
+            "headers": agy_headers},
+    "opencode": {"desc": "OpenCode sessions (~/.local/share/opencode/opencode.db)",
+                 "headers": opencode_headers},
+}
+
+
+def sniff_path(path):
+    """Guess the source of a .jsonl file from its first records."""
+    try:
+        with open(path, encoding="utf-8", errors="ignore") as f:
+            for _ in range(5):
+                line = f.readline().strip()
+                if not line:
+                    continue
+                try:
+                    rec = json.loads(line)
+                except Exception:
+                    continue
+                if not isinstance(rec, dict):
+                    continue
+                t = rec.get("type", "")
+                if isinstance(t, str) and t.isupper():
+                    return "agy"
+                if t in ("session", "message") and isinstance(rec.get("message"), dict):
+                    return "omp"
+                if t == "session" and rec.get("version") == 3 and "cwd" in rec:
+                    return "omp"
+    except OSError:
+        pass
+    return None
+
+
+def resolve_source(spec, hint=None, db_path=None):
+    """Resolve ID/prefix/path -> (source, path_or_id, meta)."""
+    if hint and hint not in SOURCES:
+        die(f"unknown source '{hint}' (choose from: {', '.join(SOURCES)})", code=2)
     if os.path.isfile(spec):
-        return spec, {}
-    sessions = omp_headers()
-    matches = [s for s in sessions if s["id"].lower().startswith(spec.lower())]
-    if not matches:
-        die(f"no omp session matching '{spec}'")
-    if len(matches) > 1:
+        if spec.endswith(".db"):
+            die("pass an opencode session id (use list --source opencode to browse),"
+                " not the .db file itself")
+        kind = hint or sniff_path(spec)
+        if kind == "agy":
+            m = re.search(r"brain[\\/]([0-9a-f-]{36})[\\/]", spec.replace(os.sep, "/"))
+            meta = {"id": m.group(1) if m else spec, "title": "",
+                    "cwd": "", "timestamp": None}
+            return "agy", spec, meta
+        meta = {"id": os.path.basename(spec), "title": "",
+                "cwd": "", "timestamp": None}
+        return "omp", spec, meta
+    if hint:
+        if hint == "opencode":
+            return "opencode", spec, {"id": spec}
+        if hint == "agy":
+            for root in AGY_BRAIN_ROOTS:
+                p = os.path.join(root, spec, ".system_generated", "logs",
+                                 "transcript_full.jsonl")
+                if os.path.isfile(p):
+                    return "agy", p, {"id": spec}
+            cands = [s for s in agy_headers() if s["id"].startswith(spec)]
+            if len(cands) == 1:
+                return "agy", cands[0]["path"], {"id": cands[0]["id"]}
+            die(f"no agy conversation matching '{spec}'"
+                + (f" (candidates: {', '.join(c['id'][:13] for c in cands)})" if cands else ""))
+        headers = omp_headers()
+        matches = [s for s in headers if s["id"].lower().startswith(spec.lower())]
+        if len(matches) == 1:
+            return "omp", matches[0]["path"], matches[0]
+        if not matches:
+            die(f"no omp session matching '{spec}'")
         die(f"ambiguous omp session '{spec}':\n" +
             "\n".join(f"  {s['id']}  {s['title']}" for s in matches))
-    return matches[0]["path"], matches[0]
+    # No hint: ses_* ids are opencode, else search omp then agy.
+    if spec.startswith("ses_"):
+        return "opencode", spec, {"id": spec}
+    headers = omp_headers()
+    matches = [s for s in headers if s["id"].lower().startswith(spec.lower())]
+    if len(matches) == 1:
+        return "omp", matches[0]["path"], matches[0]
+    if len(matches) > 1:
+        die(f"ambiguous omp session '{spec}' (use --source to disambiguate)")
+    cands = [s for s in agy_headers() if s["id"].startswith(spec)]
+    if len(cands) == 1:
+        return "agy", cands[0]["path"], {"id": cands[0]["id"]}
+    if cands:
+        die(f"ambiguous agy conversation '{spec}' (use --source to disambiguate)")
+    die(f"no omp/agy session matching '{spec}' (opencode ids start with ses_; pass --source opencode)")
 
 
 # ---------------------------------------------------------------------------
@@ -196,11 +737,11 @@ class SessionWriter:
         self.updated_us = max(self.updated_us, ts_us)
         self.records.append((ts_us, payload_type, payload, causation_id))
 
-    def metadata(self, ts_us, workspace, build_semver):
+    def metadata(self, ts_us, workspace):
         self.rec(ts_us, "runtime.session.metadata", {
             "kind": "metadata",
             "record": {
-                "build": {"semver": build_semver, "sha": "imported"},
+                "build": {"semver": "imported", "sha": "imported"},
                 "model_id": IMPORT_MODEL,
                 "provider_id": IMPORT_PROVIDER,
                 "tool_surface_version": "2",
@@ -260,99 +801,60 @@ class SessionWriter:
         })
 
 
-def convert_omp(path, meta, cwd, title, max_chars):
-    """Parse an omp session file -> ordered muse records + stats."""
+def convert_turns(kind, meta, turns, cwd, title):
+    """Turns + source meta -> muse session records."""
     sid = str(uuid.uuid4())
-    header_ts = iso_to_us((meta or {}).get("timestamp"))
-    stats = {"user": 0, "assistant": 0, "tool": 0, "skipped": 0}
+    header_ts = iso_to_us(meta.get("timestamp"))
     cw = SessionWriter(sid, header_ts)
-    # metadata first (sequence 1), like a fresh session
-    ws_root = os.path.abspath(cwd or (meta or {}).get("cwd") or os.getcwd())
-    cw.metadata(header_ts, ws_root, build_semver="imported")
+    ws_root = os.path.abspath(cwd or meta.get("cwd") or os.getcwd())
+    cw.metadata(header_ts, ws_root)
+    stats = {"user": 0, "assistant": 0, "tool": 0, "skipped": 0}
     run_id = None
-    pending_run = None
 
     def flush_text(ts_us, text):
-        nonlocal pending_run
-        if pending_run is None:
-            pending_run = str(uuid.uuid4())
-            cw.model_configured(ts_us, pending_run)
-        cw._run_id = pending_run
+        nonlocal run_id
+        if run_id is None:
+            run_id = str(uuid.uuid4())
+            cw.model_configured(ts_us, run_id)
+        cw._run_id = run_id
         cw.assistant_text(ts_us, text)
 
-    with open(path, encoding="utf-8", errors="ignore") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                rec = json.loads(line)
-            except Exception:
-                stats["skipped"] += 1
-                continue
-            if not isinstance(rec, dict):
-                stats["skipped"] += 1
-                continue
-            rtype = rec.get("type")
-            if rtype == "message":
-                msg = rec.get("message")
-                if not isinstance(msg, dict):
-                    stats["skipped"] += 1
-                    continue
-                ts = iso_to_us(rec.get("timestamp"))
-                if msg.get("role") == "user":
-                    texts = [block_text(b, max_chars) for b in parse_blocks(msg.get("content"))]
-                    texts = [t for t in texts if t]
-                    if not texts:
-                        stats["skipped"] += 1
-                        continue
-                    prompt = "\n\n".join(texts)
-                    run_id = str(uuid.uuid4())
-                    pending_run = run_id
-                    cw.model_configured(ts, run_id)
-                    cw.user_turn(ts, run_id, prompt)
-                    stats["user"] += 1
-                elif msg.get("role") == "assistant":
-                    wrote = False
-                    for b in parse_blocks(msg.get("content")):
-                        if isinstance(b, dict) and b.get("type") == "toolCall":
-                            # thoughtSignature is opaque foreign reasoning: drop it.
-                            b = {k: v for k, v in b.items() if k != "thoughtSignature"}
-                        text = block_text(b, max_chars)
-                        if not text:
-                            continue
-                        flush_text(ts, text)
-                        wrote = True
-                        if isinstance(b, dict) and b.get("type") == "toolCall":
-                            stats["tool"] += 1
-                        else:
-                            stats["assistant"] += 1
-                    if not wrote:
-                        stats["skipped"] += 1
-                else:
-                    stats["skipped"] += 1
-            elif rtype in ("session", "title", "model_change",
-                           "thinking_level_change", "session_init",
-                           "credential_pin", "session_exit"):
-                # Header/metadata, foreign system prompt, credential
-                # material, lifecycle markers: never imported.
-                stats["skipped"] += 1
-            elif rtype == "custom":
-                # Tool lifecycle markers reference calls already rendered
-                # as text; session_exit just ends the log.
-                stats["skipped"] += 1
-            else:
-                stats["skipped"] += 1
-
-    title = title or (meta or {}).get("title") or "imported omp session"
-    return {"sid": sid, "workspace": ws_root, "title": title,
+    for tkind, text, ts in turns:
+        text = (text or "").strip()
+        if not text:
+            stats["skipped"] += 1
+            continue
+        if tkind == "user":
+            run_id = str(uuid.uuid4())
+            cw.model_configured(ts, run_id)
+            cw.user_turn(ts, run_id, text)
+        else:
+            flush_text(ts, text)
+    final_title = title or meta.get("title") or f"{kind} import"
+    return {"sid": sid, "workspace": ws_root, "title": final_title,
             "records": cw.records, "created_us": header_ts,
             "updated_us": cw.updated_us}, stats
 
 
-# ---------------------------------------------------------------------------
-# muse store + index writing
-# ---------------------------------------------------------------------------
+
+
+def convert_source(kind, spec_path, meta, cwd, title, max_chars, db_path=None):
+    """Read turns from any source and build muse records."""
+    if kind == "opencode":
+        meta2, turns, rstats = read_opencode(db_path or OPENCODE_DB,
+                                            meta.get("id"), max_chars)
+        meta = meta2
+    elif kind == "agy":
+        meta2, turns, rstats = read_agy(spec_path, meta.get("id"), max_chars)
+        meta = meta2
+    else:
+        meta2, turns, rstats = read_omp(spec_path, max_chars)
+        meta = {**meta, **{k: v for k, v in meta2.items() if v}}
+    conv, cstats = convert_turns(kind, meta, turns, cwd, title)
+    stats = {k: rstats.get(k, 0) + cstats.get(k, 0) for k in
+             ("user", "assistant", "tool", "skipped")}
+    return conv, stats
+
 
 def build_search_text(sid, title, first_prompt):
     blob = f"{title}\n{first_prompt}".lower()
@@ -457,36 +959,47 @@ def write_session(conv, session_date=None):
 # ---------------------------------------------------------------------------
 
 def cmd_list(args):
-    sessions = omp_headers()
-    if args.json:
-        print(json.dumps(sessions, indent=2))
-        return 0
-    if not sessions:
-        print("No omp sessions found.")
-        print(f"({OMP_SESSIONS})")
-        return 0
-    print(f"Importable omp sessions ({len(sessions)}):")
-    for s in sessions:
-        ts = (s["timestamp"] or "")[:16].replace("T", " ")
-        print(f"  {bold(s['id'][:13])}  {dim(ts):<17} {dim(str(s['messages']) + ' msgs'):<9} {s['title'][:60]}")
-        print(f"    {dim(s['cwd'])}")
+    wanted = [args.source] if args.source else list(SOURCES)
+    for w in wanted:
+        if w not in SOURCES:
+            die(f"unknown source '{w}' (choose from: {', '.join(SOURCES)})", code=2)
+    total = 0
+    for name in wanted:
+        if name == "opencode":
+            sessions = opencode_headers(args.db)
+        else:
+            sessions = SOURCES[name]["headers"]()
+        total += len(sessions)
+        if args.json:
+            print(json.dumps({name: sessions}, indent=2))
+            continue
+        if not sessions:
+            print(f"No {name} sessions found.")
+            continue
+        print(f"Importable {name} sessions ({len(sessions)}):")
+        for s in sessions:
+            ts = str(s.get("timestamp") or "")[:16].replace("T", " ")
+            print(f"  {bold(s['id'][:13])}  {dim(ts):<17} {dim(str(s.get('messages', '?')) + ' msgs'):<9} {(s.get('title') or '')[:60]}")
+            if s.get("cwd"):
+                print(f"    {dim(s['cwd'])}")
+    if total == 0 and not args.json:
+        print("(no importable sessions in any known store)")
     return 0
 
 
 def cmd_import(args):
-    path, meta = resolve_omp(args.source) if args.source else (None, None)
-    if path is None:
+    if not args.source:
         return cmd_list(args)
-    conv, stats = convert_omp(path, meta, args.cwd, args.title, args.max_chars)
-    print(f"source:  {path}")
+    kind, spec, meta = resolve_source(args.source, args.from_source, args.db)
+    conv, stats = convert_source(kind, spec, meta, args.cwd, args.title,
+                                 args.max_chars, args.db)
+    print(f"source [{kind}]:  {spec}")
     print(f"session: {bold(conv['sid'])}  ({conv['workspace']})")
     print(f"         user={stats['user']} assistant={stats['assistant']} "
           f"tool-as-text={stats['tool']} skipped={stats['skipped']}")
     if args.dry_run:
         print(dim("(dry run — nothing written)"))
         return 0
-    # Refuse to double-import the same file: match by source id in title?
-    # Simplest robust guard: refuse if this exact log size + mtime seen.
     sdir, sid = write_session(conv)
     print(f"{green('imported')} {sid}")
     print(f"  log:   {os.path.join(sdir, 'session.jsonl')}")
@@ -501,13 +1014,20 @@ def build_parser():
     )
     sub = p.add_subparsers(dest="cmd")
 
-    s = sub.add_parser("list", help="list importable omp sessions")
+    s = sub.add_parser("list", help="list importable foreign sessions")
+    s.add_argument("--source", choices=list(SOURCES),
+                   help="only this source (default: all found)")
+    s.add_argument("--db", metavar="PATH",
+                   help="opencode db path (default: ~/.local/share/opencode/opencode.db)")
     s.add_argument("--json", action="store_true", help="raw JSON output")
     s.set_defaults(func=cmd_list)
 
-    s = sub.add_parser("import", help="import an omp session into muse")
+    s = sub.add_parser("import", help="import a foreign session into muse")
     s.add_argument("source", nargs="?", metavar="ID|PATH",
-                   help="omp session id/prefix or .jsonl path (default: list)")
+                   help="session id/prefix or file path (default: list)")
+    s.add_argument("--from", dest="from_source", choices=list(SOURCES),
+                   help="force source intead of auto-detect")
+    s.add_argument("--db", metavar="PATH", help="opencode db path")
     s.add_argument("--dry-run", action="store_true",
                    help="preview without writing")
     s.add_argument("--cwd", metavar="PATH", help="override workspace root")
@@ -525,6 +1045,8 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if getattr(args, "cmd", None) is None:
         args.json = False
+        args.source = None
+        args.db = None
         return cmd_list(args)
     return args.func(args)
 
