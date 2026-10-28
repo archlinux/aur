@@ -186,6 +186,8 @@ prepare() {
   # Fix startup crash when PSModulePath is already set and powershell.config.json
   # contains multiple paths, e.g. when starting pwsh from pwsh
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/20706
+  # Fixed upstream in 7.7 by https://github.com/PowerShell/PowerShell/pull/26565, which isn't
+  # backported to 7.6, so drop this patch with 7.7
   patch -Np1 -i "$srcdir/psmodulepath-combined-paths.patch"
 
   # CIM (Microsoft.Management.Infrastructure) is closed source and only usable on Windows,
