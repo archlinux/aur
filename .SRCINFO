@@ -1,6 +1,6 @@
 pkgbase = course2md-gui-bin
 	pkgdesc = Native desktop app to turn course videos into illustrated notes
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/mizorewww/course2md
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = course2md-gui-bin
 	provides = course2md-gui
 	conflicts = course2md-gui
 	options = !strip
-	source = course2md-gui-bin-2.0.0.tar.gz::https://github.com/mizorewww/course2md/releases/download/v2.0.0/course2md-desktop-linux-x86_64.tar.gz
-	sha256sums = 58519663c0d66e304f26921f16cfb9cbee357e734a4a3a004913b98f2747ee34
+	source = course2md-gui-bin-2.0.1.tar.gz::https://github.com/mizorewww/course2md/releases/download/v2.0.1/course2md-desktop-linux-x86_64.tar.gz
+	sha256sums = 3e6e929ba233dc63a5657d585f1d6e6a1ee8503f87d06a05d6f278487f5e1f96
 
 pkgname = course2md-gui-bin

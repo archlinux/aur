@@ -1,7 +1,7 @@
 # Maintainer: mizorewww <mizorewww@users.noreply.github.com>
 # Generated from course2md/packaging/aur/PKGBUILD-gui.template on release.
 pkgname=course2md-gui-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Native desktop app to turn course videos into illustrated notes'
 arch=(x86_64)
@@ -21,17 +21,16 @@ provides=(course2md-gui)
 conflicts=(course2md-gui)
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/course2md-desktop-linux-x86_64.tar.gz")
-sha256sums=('58519663c0d66e304f26921f16cfb9cbee357e734a4a3a004913b98f2747ee34')
+sha256sums=('3e6e929ba233dc63a5657d585f1d6e6a1ee8503f87d06a05d6f278487f5e1f96')
 
 package() {
     cd "${srcdir}/course2md-desktop-linux-x86_64"
     # Keep the tested engine beside the GUI, without owning /usr/bin/course2md.
     install -Dm755 course2md-desktop "${pkgdir}/usr/lib/course2md-desktop/course2md-desktop"
     install -Dm755 course2md "${pkgdir}/usr/lib/course2md-desktop/course2md"
-    # 自带 yt-dlp（包内可选资产）：与可执行文件同目录，PATH 里的 yt-dlp 仍是兜底
-    if [ -f yt-dlp ]; then
-        install -Dm755 yt-dlp "${pkgdir}/usr/lib/course2md-desktop/yt-dlp"
-    fi
+    # The archive's bundled ffmpeg/ffprobe, uv, llama.cpp/ and yt-dlp/ stay
+    # out: the package uses Arch's (depends/optdepends), which the engine
+    # finds on PATH when none is beside it.
     install -dm755 "${pkgdir}/usr/bin"
     ln -s ../lib/course2md-desktop/course2md-desktop "${pkgdir}/usr/bin/course2md-desktop"
     install -Dm644 course2md.desktop "${pkgdir}/usr/share/applications/course2md.desktop"
