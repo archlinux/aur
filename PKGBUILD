@@ -20,9 +20,10 @@
 # Other tests have side effects or try to install test modules to the
 # CurrentUser scope.
 #
-# While they can work in a normal build, I would strongly recommend to
-# build PowerShell in a clean chroot (e.g. with pkgctl build) to prevent
-# such issues and keep the home of the user building the package clean.
+# check() therefore runs the tests with a HOME and XDG folders of their
+# own in $srcdir. System-wide state like modules in
+# /usr/local/share/powershell/Modules can still affect them, so building
+# in a clean chroot (e.g. with pkgctl build) remains the safest option.
 #######################################################################
 
 pkgname=powershell
@@ -405,6 +406,20 @@ build() {
 }
 
 check() {
+  # Run the tests with a home of their own, so they neither see the profiles, modules and configs
+  # of the user building the package, nor leave their own files behind in the user's home.
+  # Some tests expect the config folder of PowerShell to exist already, and Get-ChildItem.Tests.ps1
+  # expects the home to have visible content like any real home.
+  # The timezone is fixed as well, some tests depend on it.
+  rm -rf "$srcdir/test-home"
+  export HOME="$srcdir/test-home"
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_DATA_HOME="$HOME/.local/share"
+  export XDG_CACHE_HOME="$HOME/.cache"
+  export XDG_STATE_HOME="$HOME/.local/state"
+  export TZ=UTC
+  mkdir -p "$XDG_CONFIG_HOME/powershell" "$HOME/Documents"
+
   ctest --test-dir build-psl-native --output-on-failure
 
   _dotnet_env
@@ -415,14 +430,6 @@ check() {
   cd test/powershell || exit
   # In Pester 4.x, deleting tests is unfortunately the only fine grained option
   # to disable tests.
-
-  # There's a bunch of tests that use $env:HOME to create or work with files
-  # there as a temporary directory. We edit the tests to use the Pester TestDrive instead.
-  # Start-Transcript.Tests.ps1 is excluded, since it looks for the result of
-  # the Start-Transcript cmdlet at its default locations and needs $env:HOME for that.
-  # shellcheck disable=SC2016
-  grep -R -l -Z --include="*.Tests.ps1" --exclude="Start-Transcript.Tests.ps1" '$env:HOME' . |
-    xargs -0 sed -i 's/$env:HOME/$TestDrive/g'
 
   # These tests use Pesters TestDrive in a way that it doesn't work on Linux
   # shellcheck disable=SC2016
@@ -435,17 +442,13 @@ check() {
   # A fix seems to queued for the next release.
   rm Modules/Microsoft.PowerShell.Utility/Test-Json.Tests.ps1
 
-  # Test contains a logic error
-  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27503
-  rm Host/PSVersionTable.Tests.ps1
-
-  # Test is broken on systems with UTC+2 or greater
-  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27500
-  rm Modules/Microsoft.PowerShell.Utility/ConvertTo-Json.Tests.ps1
-
   # Test is broken due to a logic error not considering timezone aliases
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27502
   rm Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
+
+  # The tests delete help files from $PSHOME, and some only pass when run on their own, as tests
+  # that ran earlier in the same session change which help content Get-Help finds
+  rm engine/Help/HelpSystem.Tests.ps1
 
   # Test requires DSCv3 being available
   # DSCv3 is not part of the PowerShell Core anymore and needs to be installed
@@ -456,26 +459,6 @@ check() {
   # For an fxdependent Release build, it has the wrong list of files
   # and it will be inconsistent. This only makes sense in the context of their CI.
   rm Host/Startup.Tests.ps1
-
-  # This test relies on a dependency being loaded that wouldn't be on optimised Unix builds
-  rm engine/Basic/TypeResolution.Tests.ps1
-
-  # These tests ensure that no experimental features are enabled in a stable build.
-  # Problem: They can be enabled via powershell.config.json or by invoking
-  # Enable-ExperimentalFeature, which in turn will create that config.
-  # If a user did so, these tests will break. Config files are by design not bypassable.
-  rm engine/ExperimentalFeature/ExperimentalFeature.Basic.Tests.ps1
-  rm engine/ExperimentalFeature/Get-ExperimentalFeature.Tests.ps1
-
-  # Test is dependent on the locale of the system
-  # Breaks if culture is Invariant Language (Invariant Country)
-  # this happens if LANG=C.UTF-8, which is the default in chroot builds
-  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27532
-  rm engine/Help/HelpSystem.Tests.ps1
-
-  # Creates a new ~/.profile, and while it should normally move it back, there were reports of
-  # this being broken. It's also a pretty questionable idea to do this in general outside of CI.
-  rm Host/ConsoleHost.Tests.ps1
 
   # We disable telemetry by default, which the telemetry tests don't expect.
   rm engine/Basic/Telemetry.Tests.ps1
@@ -514,8 +497,13 @@ check() {
   cp test/tools/NamedPipeConnection/src/Microsoft.PowerShell.NamedPipeConnection.psd1 \
     test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection
 
+  # Some tests change $PSHOME, so they run with a copy of the publish folder package() installs
+  local _test_pshome="$srcdir/test-pshome"
+  rm -rf "$_test_pshome"
+  cp -a "$_publish_path" "$_test_pshome"
+
   # Add the test tools and pwsh to path
-  export PATH="$_publish_path:$PWD/bin${PATH:+:${PATH}}"
+  export PATH="$_test_pshome:$PWD/bin${PATH:+:${PATH}}"
 
   # Restore the required modules for the tests
   dotnet restore test/tools/Modules/PSGalleryTestModules.csproj
