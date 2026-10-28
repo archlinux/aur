@@ -1,6 +1,6 @@
 pkgbase = aulos-bin
 	pkgdesc = A modern music player: local library, Subsonic, MPD, podcasts, radio and a MilkDrop visualizer (binary release)
-	pkgver = 0.15.3
+	pkgver = 0.15.5
 	pkgrel = 1
 	url = https://github.com/M0Rf30/aulos
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = aulos-bin
 	conflicts = aulos
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/M0Rf30/aulos/releases/download/0.15.3/aulos-0.15.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3c768e20825b62d573caaf8aec4804bb935a7ae06e7bca3095369164ad9e4dab
-	source_aarch64 = https://github.com/M0Rf30/aulos/releases/download/0.15.3/aulos-0.15.3-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f78012dac8291d7e1e9b5532faf4b4ff8522d2301bd3c6efb1941569cbebfdf0
+	source_x86_64 = https://github.com/M0Rf30/aulos/releases/download/0.15.5/aulos-0.15.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0d69be5df99302c519320aec2ef6f0f6cf4a4598236a29e749f680e51d3643cc
+	source_aarch64 = https://github.com/M0Rf30/aulos/releases/download/0.15.5/aulos-0.15.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 87962c20a60abc24300b8d24783caa40fdca2991797b6a4290703941ce026664
 
 pkgname = aulos-bin
