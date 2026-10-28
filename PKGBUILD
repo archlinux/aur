@@ -3,9 +3,9 @@
 _pkgname="bugwarrior"
 _branch="develop"
 # renovate: pkgName=https://github.com/GothenburgBitFactory/bugwarrior depName=bugwarrior-git branch=develop
-_commit=4ed78ac2734e0979268d41ff22ef8b6d4a7a40ee
+_commit=dd36105e8473be696abac2f19dfd2f7385cd6cc3
 pkgname="${_pkgname}-git"
-pkgver=1690.4ed78ac
+pkgver=1691.dd36105
 pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
