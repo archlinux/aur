@@ -1,7 +1,7 @@
 pkgbase = diagng
 	pkgdesc = Client for mobile baseband Diag interfaces - Successor for QCSuper
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/P1sec/DiagNG
 	arch = any
 	license = GPL-3.0-or-later
@@ -25,10 +25,10 @@ pkgbase = diagng
 	depends = diagmond
 	depends = wireshark-qt
 	depends = android-tools
-	provides = python-diagng=0.1.3
+	provides = python-diagng=0.1.5
 	conflicts = python-diagng
 	options = !strip
-	source = DiagNG-0.1.3.tar.gz::https://github.com/P1sec/DiagNG/archive/refs/tags/0.1.3.tar.gz
-	sha256sums = 151ddfe43f9ece2b8b98bdc1436c6f055832232ab4057ff44c05db6b64acae46
+	source = DiagNG-0.1.5.tar.gz::https://github.com/P1sec/DiagNG/archive/refs/tags/0.1.5.tar.gz
+	sha256sums = 64bfd6eb57c9f7464b952353007ef7e9c467ddd2697c3c48e3ef51b3c862f104
 
 pkgname = diagng
