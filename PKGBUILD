@@ -71,7 +71,7 @@ source-repository-package
   version)
     rm cabal.project.freeze && cp ../cabal.project.freeze .
     if ! grep "any\.pandoc ==$_pandoc_ver,$" cabal.project.freeze; then
-      echo 'Freezefile out of date, regenerate it with:'
+      echo 'Freezefile out of date, delete it, then regenerate it with:'
       echo
       echo " cabal freeze --constraint pandoc==$_pandoc_ver"
       exit 1
