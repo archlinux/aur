@@ -4,11 +4,11 @@
 pkgbase=shelly-gnome
 pkgname=('shelly-gnome' 'shelly-gnome-flatpak-backend')
 pkgver=3.1.9.gnome1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/Terrabade/Shelly-ALPM-GNOME"
 license=('GPL-3.0-only')
-makedepends=('libarchive' 'curl' 'sqlite' 'gnupg' 'git' 'pkgconf' 'gtk4' 'libadwaita' 'zig=0.16.0' 'clang' 'gettext' 'flatpak' 'ripgrep' 'go-md2man')
+makedepends=('libarchive' 'curl' 'sqlite' 'gnupg' 'git' 'pkgconf' 'gtk4' 'libadwaita' 'zig0.16' 'clang' 'gettext' 'flatpak' 'ripgrep' 'go-md2man')
 
 # Keep package metadata tied to the compiled native backend variant.
 _shelly_libalpm=${SHELLY_LIBALPM:-true}
@@ -32,7 +32,19 @@ sha256sums=('8912e3bf004ac5ff10a8e209ec9a3310eb43ccb1f5a275d2c8ae5133ce04dc8d')
 # tree is Shelly-ALPM-GNOME-3.0.0-9.gnome1 even though the tag is v3.0.0+9.gnome1.
 _source_dir="Shelly-ALPM-GNOME-${pkgver//+/-}"
 
+# Upstream pins makedepends on 'zig=0.16.0', which nothing satisfies now that
+# Arch's zig package is 0.17. The versioned zig0.16 packages (CachyOS's
+# zig0.16, the AUR's zig0.16-bin) install the toolchain as /usr/bin/zig-0.16,
+# so put a plain 'zig' for it first on PATH and leave upstream's build lines as
+# they are.
+_use_zig016() {
+  mkdir -p "$srcdir/zig-0.16-bin"
+  ln -sf /usr/bin/zig-0.16 "$srcdir/zig-0.16-bin/zig"
+  export PATH="$srcdir/zig-0.16-bin:$PATH"
+}
+
 build() {
+  _use_zig016
   cd "$srcdir/${_source_dir}"
 
   (cd Shelly.Flatpak.Backend && zig build --verbose \
@@ -93,6 +105,7 @@ build() {
 }
 
 check() {
+  _use_zig016
   cd "$srcdir/${_source_dir}"
 
   (cd Shelly.Flatpak.Backend && zig build test abi-test integration-test \

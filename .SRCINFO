@@ -1,6 +1,6 @@
 pkgbase = shelly-gnome
 	pkgver = 3.1.9.gnome1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Terrabade/Shelly-ALPM-GNOME
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = shelly-gnome
 	makedepends = pkgconf
 	makedepends = gtk4
 	makedepends = libadwaita
-	makedepends = zig=0.16.0
+	makedepends = zig0.16
 	makedepends = clang
 	makedepends = gettext
 	makedepends = flatpak
