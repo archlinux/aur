@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=q2
-pkgver=0.35.0 # renovate: datasource=github-releases depName=quarto-dev/q2
+pkgver=0.36.0 # renovate: datasource=github-releases depName=quarto-dev/q2
 pkgrel=1
 pkgdesc="Quarto 2 [experimental]"
 url="https://github.com/quarto-dev/q2"
@@ -36,4 +36,4 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('1047da0a5e1f65ea53e870acb67a12f4b1944fb878eaf3f72b237bbd7e51f4bea270489e0ef4d17ad70d114801bac1bb39d97b91556141f53166a64c2d85297d')
+sha512sums=('3862d86fbb0473b4d54ac878dcd2138703c2fa73ebbf9f4fd999cae8a1a672c2ac727273e57fc532229661b937afd5ee517dbf87ae2cc9e9389a0ba282af4d82')
