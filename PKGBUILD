@@ -3,7 +3,7 @@
 pkgname=sherpa-onnx-piper-voice-ru-denis
 _model=vits-piper-ru_RU-denis-medium
 pkgver=20251202
-pkgrel=1
+pkgrel=2
 pkgdesc="Russian Piper TTS voice denis (medium quality) in sherpa-onnx format"
 arch=('any')
 url="https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models"
@@ -16,5 +16,4 @@ sha256sums=('efa4c18e0b5e32b81d1b6df36b9d312831e5d545200e27848ef926a4cd930300')
 package() {
   install -d "${pkgdir}/usr/share/sherpa-onnx"
   cp -r --no-preserve=ownership "${_model}" "${pkgdir}/usr/share/sherpa-onnx/"
-  install -Dm644 "${_model}/MODEL_CARD" "${pkgdir}/usr/share/licenses/${pkgname}/MODEL_CARD"
 }
