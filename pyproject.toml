@@ -1,0 +1,17 @@
+[project]
+name = "gemini-api-mcp"
+version = "0.1.0"
+description = "Model Context Protocol (MCP) server helper for the Google Gemini API CLI (gemini-api)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "mcp>=2.0.0",
+]
+
+[project.scripts]
+gemini-api-mcp = "gemini_api_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
