@@ -1,0 +1,22 @@
+pkgbase = tui-translator
+	pkgdesc = Keyboard-first terminal translator powered by DeepL
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/talhacaglar/tui-translator
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-textual
+	depends = python-deepl
+	depends = python-pyperclip
+	depends = python-dotenv
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	source = tui-translator-2.1.0.tar.gz::https://github.com/talhacaglar/tui-translator/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = bcc08b217dddfec2f8b97c13686b13a14958ec22d85591ae054307b2f80c0c84
+
+pkgname = tui-translator
