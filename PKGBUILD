@@ -3,7 +3,7 @@
 # https://github.com/BlackCatDevel0per
 
 pkgname=scalingo-bin
-pkgver=1.50.0
+pkgver=1.51.0
 pkgrel=1
 pkgdesc="Command Line client for Scalingo PaaS"
 arch=("x86_64" "aarch64")
@@ -16,8 +16,8 @@ options=(!strip !debug)
 source_x86_64=("https://github.com/Scalingo/cli/releases/download/${pkgver}/scalingo_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/Scalingo/cli/releases/download/${pkgver}/scalingo_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=("8a912cd7ab17c41dbd0646be1477bb7b3b48d9251f490a703d472fa11da3aafd")
-sha256sums_aarch64=("01aa461476aad8ab46a03906fe44c87bb955d4f842b113760068438b83b3bb68")
+sha256sums_x86_64=("9750ddda530494989e9193584d07de87d9ed7d0b963968740bb208894446567d")
+sha256sums_aarch64=("accf17b6d55a04235c92af1f3ccb48da0208cbd6f7dddd3c80abe8c38ee3f1e0")
 
 package() {
 	cd ${srcdir}/scalingo_${pkgver}_linux_*64
