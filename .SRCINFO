@@ -1,7 +1,7 @@
 pkgbase = polyversal-patcher
 	pkgdesc = A utility script for installing Committee of Zero patches for Science Adventure titles
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher
 	arch = any
 	license = MIT

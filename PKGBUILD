@@ -2,7 +2,7 @@
 
 pkgname='polyversal-patcher'
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility script for installing Committee of Zero patches for Science Adventure titles"
 arch=('any')
 url="https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher"
@@ -36,5 +36,5 @@ package() {
     # Documentation
     local _docdir="$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 ./README.md "$_docdir/README.md"
-    cp -r ./docs "$_docdir/"
+    install -Dm644 -t "$_docdir/docs" ./docs/*.md
 }
