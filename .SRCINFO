@@ -1,0 +1,13 @@
+pkgbase = niek-fonts-extractor-mac
+	pkgdesc = Font collection from Niek's fonts-extractor (mac) archive
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://github.com/Niek/fonts-extractor/releases/tag/v2.8
+	arch = any
+	license = custom:upstream-font-licenses
+	makedepends = unzip
+	depends = fontconfig
+	source = https://github.com/Niek/fonts-extractor/releases/download/v2.8/fonts-mac.zip
+	sha256sums = 6ae7ff7cfef557675108b7447fab8848497dbadc7a788909feeba234be3701aa
+
+pkgname = niek-fonts-extractor-mac
