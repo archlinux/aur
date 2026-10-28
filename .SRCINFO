@@ -1,6 +1,6 @@
 pkgbase = ty-bin
 	pkgdesc = Extremely fast Python type checker and language server (prebuilt binary)
-	pkgver = 0.0.93
+	pkgver = 0.0.94
 	pkgrel = 1
 	url = https://github.com/astral-sh/ty
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = ty-bin
 	license = MIT
 	depends = glibc
 	depends = libgcc
-	provides = ty=0.0.93
+	provides = ty=0.0.94
 	conflicts = ty
 	options = !strip
 	options = !debug
-	source = LICENSE-0.0.93::https://raw.githubusercontent.com/astral-sh/ty/0.0.93/LICENSE
+	source = LICENSE-0.0.94::https://raw.githubusercontent.com/astral-sh/ty/0.0.94/LICENSE
 	sha256sums = 860e3d7a86b84e6a7012c7a635fc64df475cebc6cce34dfeb73a5982ec58176c
-	source_x86_64 = ty-bin-0.0.93-x86_64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.93/ty-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 23fc3cd0528af7699b62b720ffb515857bb0a2379324808977d784f4e4571b04
-	source_aarch64 = ty-bin-0.0.93-aarch64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.93/ty-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0711e41013f6ad386273f63575efc31feb1fda75ffc9ed3efcd7bf226ec8b912
-	source_armv7h = ty-bin-0.0.93-armv7h.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.93/ty-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = bb2bf97b78de57bbdbca364933370830131004c8978e8b91e0d4670fccc0faf8
+	source_x86_64 = ty-bin-0.0.94-x86_64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.94/ty-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4213096cf7985ed5866428a7afe7dc96f5200bb1913b8b27464b03cf0831ede6
+	source_aarch64 = ty-bin-0.0.94-aarch64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.94/ty-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ba90c093d3d810986ae5162e91a70d6c0c6248d755f7ce89463df14d6957a433
+	source_armv7h = ty-bin-0.0.94-armv7h.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.94/ty-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 32cb7224153e8afac7fa80fcc2b9dc67e10675a7439f3523495ff4f3487e8e6c
 
 pkgname = ty-bin
