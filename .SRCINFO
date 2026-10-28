@@ -1,6 +1,6 @@
 pkgbase = kqalc-bin
 	pkgdesc = Full qalculate power in KRunner
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 2
 	url = https://github.com/noctuum/kqalc
 	install = kqalc-bin.install
@@ -12,9 +12,9 @@ pkgbase = kqalc-bin
 	optdepends = xclip: clipboard support on X11
 	provides = kqalc
 	conflicts = kqalc
-	source_x86_64 = https://github.com/noctuum/kqalc/releases/download/v0.2.2/kqalc_0.2.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 74521412b1e4e782f1977db6c6d7d5c9c5f0549b89984550cc92c7a153c20204
-	source_aarch64 = https://github.com/noctuum/kqalc/releases/download/v0.2.2/kqalc_0.2.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1a5624fcce56a6e01d3e5bde088334bec1b929b5b9f6dd78e4af2bda9b515885
+	source_x86_64 = https://github.com/noctuum/kqalc/releases/download/v0.2.3/kqalc_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = edb847be72799a06df769a78f03d99bec4ba566d4a367783b97d80255382ac77
+	source_aarch64 = https://github.com/noctuum/kqalc/releases/download/v0.2.3/kqalc_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 15a5d5f65e5866e59adc81cffd48a1a3309b98a183861e2b449db5e3f0881601
 
 pkgname = kqalc-bin

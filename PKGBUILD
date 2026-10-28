@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=kqalc-bin
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Full qalculate power in KRunner"
 arch=('x86_64' 'aarch64')
 url="https://github.com/noctuum/kqalc"
@@ -16,8 +16,8 @@ conflicts=('kqalc')
 install=kqalc-bin.install
 source_x86_64=("${url}/releases/download/v${pkgver}/kqalc_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/kqalc_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('74521412b1e4e782f1977db6c6d7d5c9c5f0549b89984550cc92c7a153c20204')
-sha256sums_aarch64=('1a5624fcce56a6e01d3e5bde088334bec1b929b5b9f6dd78e4af2bda9b515885')
+sha256sums_x86_64=('edb847be72799a06df769a78f03d99bec4ba566d4a367783b97d80255382ac77')
+sha256sums_aarch64=('15a5d5f65e5866e59adc81cffd48a1a3309b98a183861e2b449db5e3f0881601')
 
 package() {
   install -Dm755 kqalc "${pkgdir}/usr/bin/kqalc"
