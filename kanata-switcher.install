@@ -1,3 +1,113 @@
+#!/usr/bin/env bash
+# Also installed as /usr/lib/kanata-switcher/gnome-setup for normal-user retries.
+gnome-setup() (
+    local version checksum tool work destination installing=0 installed=0 file
+    local -a extra_sources=()
+    ((EUID != 0)) || { printf 'Run GNOME setup as your normal user, without sudo.\n' >&2; exit 1; }
+    [[ $HOME == /* && $HOME != / ]] || exit 1
+    {
+        IFS= read -r version && IFS= read -r checksum
+    } < "${1:-/usr/share/kanata-switcher/source-info}" || exit 1
+    [[ $version =~ ^[0-9]+([.][0-9]+)+$ && $checksum =~ ^[[:xdigit:]]{128}$ ]] || exit 1
+    for tool in curl b2sum bsdtar glib-compile-schemas gnome-extensions; do
+        command -v "$tool" >/dev/null || { printf 'GNOME setup requires %s.\n' "$tool" >&2; exit 1; }
+    done
+    umask 077
+    destination=${XDG_DATA_HOME:-$HOME/.local/share}/gnome-shell/extensions/kanata-switcher@7mind.io
+    mkdir -p -- "${destination%/*}" || exit 1
+    # Same filesystem as the extension: moving the old entry aside is atomic.
+    work=$(mktemp -d "${destination%/*}/.kanata-gnome.XXXXXX") || exit 1
+    # shellcheck disable=SC2329 # Invoked by the EXIT trap.
+    gnome-cleanup() {
+        if (( !installed )) && { ((installing)) || [[ -e $work/previous || -L $work/previous ]]; }; then
+            if [[ -e $destination || -L $destination ]]; then
+                mv -- "$destination" "$work/failed" || {
+                    printf 'Could not remove failed extension; recovery files kept at %s\n' "$work" >&2
+                    return 1
+                }
+            fi
+            if [[ -e $work/previous || -L $work/previous ]]; then
+                mv -- "$work/previous" "$destination" || {
+                    printf 'Could not restore previous extension; backup kept at %s/previous\n' "$work" >&2
+                    return 1
+                }
+            fi
+        fi
+        rm -rf -- "$work"
+    }
+    trap gnome-cleanup EXIT
+    trap 'exit 130' INT
+    trap 'exit 143' TERM HUP
+    export TMPDIR="$work" XDG_CACHE_HOME="$work"
+    curl --fail --silent --show-error --location --proto '=https' --proto-redir '=https' \
+        --connect-timeout 15 --max-time 120 --output "$work/source.tar.gz" \
+        "https://github.com/7mind/kanata-switcher/archive/refs/tags/v$version.tar.gz" || exit 1
+    printf '%s  %s\n' "$checksum" "$work/source.tar.gz" | b2sum --check --status || exit 1
+    bsdtar -xf "$work/source.tar.gz" -C "$work" "kanata-switcher-$version/src/gnome-extension" || exit 1
+    cd "$work/kanata-switcher-$version/src/gnome-extension" || exit 1
+    glib-compile-schemas schemas || exit 1
+    for file in *.js; do
+        [[ $file == extension.js || $file == prefs.js ]] || extra_sources+=("--extra-source=$file")
+    done
+    gnome-extensions pack . --force "${extra_sources[@]}" --out-dir="$work" || exit 1
+    if [[ -e $destination || -L $destination ]]; then
+        mv -- "$destination" "$work/previous" || exit 1
+    fi
+    installing=1
+    gnome-extensions install --force "$work/kanata-switcher@7mind.io.shell-extension.zip" || exit 1
+    installed=1
+    printf '  ==> Matching GNOME extension installed for %s.\n' "$USER"
+)
+
+gnome-session-setup() {
+    local sessions session properties key value active remote class type desktop uid selected=''
+    local account name account_uid home
+    command -v loginctl >/dev/null && command -v runuser >/dev/null && command -v getent >/dev/null || return 1
+    sessions=$(loginctl list-sessions --no-legend --no-pager) || return 1
+    while read -r session _; do
+        [[ -n $session ]] || continue
+        properties=$(loginctl show-session "$session" --no-pager \
+            --property=Active --property=Remote --property=Class --property=Type --property=Desktop --property=User) || return 1
+        active='' remote='' class='' type='' desktop='' uid=''
+        while IFS='=' read -r key value; do
+            case $key in
+                Active) active=$value ;;
+                Remote) remote=$value ;;
+                Class) class=$value ;;
+                Type) type=$value ;;
+                Desktop) desktop=${value,,} ;;
+                User) uid=$value ;;
+            esac
+        done <<< "$properties"
+        [[ $active == yes && $remote == no && $class == user && ( $type == wayland || $type == x11 ) ]] || continue
+        [[ -n $desktop && $uid =~ ^[0-9]+$ ]] || return 1
+        [[ $desktop =~ (^|[:\;[:space:]])gnome($|[:\;[:space:]]) ]] || continue
+        ((uid >= 1000 && uid != 65534)) || continue
+        [[ -z $selected || $selected == "$uid" ]] || return 1
+        selected=$uid
+    done <<< "$sessions"
+    [[ -n $selected ]] || return 1
+    account=$(getent passwd "$selected") || return 1
+    IFS=: read -r name _ account_uid _ _ home _ <<< "$account"
+    [[ -n $name && $account_uid == "$selected" && $home == /* && $home != / ]] || return 1
+    runuser --user "$name" -- env -i PATH=/usr/bin:/bin HOME="$home" USER="$name" LOGNAME="$name" \
+        XDG_RUNTIME_DIR="/run/user/$selected" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$selected/bus" \
+        /usr/lib/kanata-switcher/gnome-setup
+}
+
+gnome-instructions() {
+    gnome-session-setup || printf '%s\n' \
+        '  ==> GNOME setup skipped or failed (no single eligible local session, missing tools, or setup error).' \
+        '  ==> GNOME users: from your own session, without sudo, retry:' \
+        '  ==>   /usr/lib/kanata-switcher/gnome-setup' \
+        '  ==> Requires curl, libarchive (bsdtar), coreutils, glib2, and gnome-shell; downloads verified release sources.'
+    printf '%s\n' \
+        '  ==> GNOME: after successful setup, Log out and back in to load the replacement extension.' \
+        '  ==> Then run as your normal user:' \
+        '  ==>   gnome-extensions enable kanata-switcher@7mind.io' \
+        '  ==>   systemctl --user restart kanata-switcher.service'
+}
+
 post_install() {
     cat <<'EOF'
 
@@ -13,9 +123,20 @@ post_install() {
   ==>   systemctl --user status kanata-switcher.service
 
 EOF
+    gnome-instructions
 }
 
 post_upgrade() {
-    echo '  ==> Restart the user service to load the upgraded binary:'
-    echo '  ==>   systemctl --user restart kanata-switcher.service'
+    printf '%s\n' \
+        '  ==> As your normal user, reload the updated service unit:' \
+        '  ==>   systemctl --user daemon-reload' \
+        '  ==> If the service was already enabled, refresh its enablement for the updated unit:' \
+        '  ==>   systemctl --user reenable kanata-switcher.service' \
+        '  ==> Non-GNOME users: restart the service when ready:' \
+        '  ==>   systemctl --user restart kanata-switcher.service'
+    gnome-instructions
 }
+
+if [[ ${BASH_SOURCE[0]} == "$0" ]]; then
+    gnome-setup "$@"
+fi

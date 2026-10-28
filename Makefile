@@ -18,7 +18,11 @@ update:
 	@$(CHECK_UPDATE); \
 	[[ $$current != "$$latest" ]] || exit 0; \
 	[[ $$(vercmp "$$latest" "$$current") == 1 ]] || { echo 'Refusing to downgrade' >&2; exit 1; }; \
-	git diff --quiet && git diff --cached --quiet || { echo 'Commit or stash local changes first' >&2; exit 1; }; \
+	git diff --cached --quiet && git diff --quiet -- . ':!PKGBUILD' ':!.SRCINFO' ':!Makefile' ':!update.sh' ':!kanata-switcher.install' && \
+	[[ -z $$(git ls-files --others --exclude-standard) ]] || { echo 'Refusing pre-staged or unrelated changes' >&2; exit 1; }; \
+	for file in PKGBUILD .SRCINFO Makefile update.sh kanata-switcher.install; do \
+		[[ -f $$file && ! -L $$file ]] || { echo "Refusing missing or symlinked $$file" >&2; exit 1; }; \
+	done; \
 	bash update.sh "$$latest"
 
 lint:
@@ -34,6 +38,7 @@ srcinfo:
 
 # Intentionally no build: the maintainer tests through the normal AUR user flow.
 publish: update lint
+	git diff --quiet && git diff --cached --quiet && test -z "$$(git ls-files --others --exclude-standard)"
 	git verify-commit HEAD
 	git push origin HEAD:master
 

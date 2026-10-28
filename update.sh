@@ -14,4 +14,4 @@ cp -- PKGBUILD Makefile kanata-switcher.install "$WORK/" || exit 1
     SRCDEST="$WORK" updpkgsums && env --unset=MAKEFLAGS make --no-print-directory lint srcinfo
 ) || exit 1
 mv -- "$WORK/PKGBUILD" PKGBUILD && mv -- "$WORK/.SRCINFO" .SRCINFO || exit 1
-git add -- PKGBUILD .SRCINFO && git commit --gpg-sign --message "feat: update to $LATEST_VERSION"
+git add -- PKGBUILD .SRCINFO Makefile update.sh kanata-switcher.install && git commit --gpg-sign --message "feat: update to $LATEST_VERSION"
