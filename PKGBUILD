@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='awoolt-bin'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A simple TUI for your openbao KV engines.'
 url='https://github.com/jon4hz/awoolt'
@@ -12,7 +12,7 @@ provides=('awoolt')
 conflicts=('awoolt')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/awoolt/releases/download/v${pkgver}/awoolt-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('aa7ed4e6c22db7349876d041ab48956f00d59f52dadb35024e43d93d08794559')
+sha256sums_x86_64=('293dbfb364539632da617675ff16b4780eb77b62425faafd81fadc158ded79ee')
 
 package() {
   # bin
