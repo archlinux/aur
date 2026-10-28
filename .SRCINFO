@@ -1,6 +1,6 @@
 pkgbase = prikk
 	pkgdesc = A version control system, built from the signed source tag
-	pkgver = 0.54.1
+	pkgver = 0.55.0
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/prikk
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = prikk
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	source = git+https://github.com/prikk-vcs/prikk.git#tag=0.54.1?signed
+	source = git+https://github.com/prikk-vcs/prikk.git#tag=0.55.0?signed
 	validpgpkeys = 25757DA6CBF7022C4E14CCAC1B3066B87DB99A34
 	sha256sums = SKIP
 

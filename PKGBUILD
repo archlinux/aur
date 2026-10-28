@@ -14,7 +14,7 @@
 # PKGBUILD(5) ("Using VCS Sources") documents SKIP as the correct sha256sums entry for a signature-
 # verified VCS source.
 pkgname=prikk
-pkgver=0.54.1
+pkgver=0.55.0
 pkgrel=1
 pkgdesc="A version control system, built from the signed source tag"
 arch=('x86_64' 'aarch64')
