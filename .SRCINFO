@@ -12,7 +12,7 @@ pkgbase = iso-commander-bin
 	conflicts = iso-commander
 	source = isocmd::https://github.com/siyia2/iso-commander/releases/download/v7.9.2/isocmd
 	source = isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/tags/v7.9.2/man/isocmd.1
-	md5sums = 543b2aeec406e150e0d19db368d96c8d
+	md5sums = f5f9925d9bc03d1eb8ec726506e15dcc
 	md5sums = e130e28f82b6ea9d1c15f8968c06cc75
 
 pkgname = iso-commander-bin
