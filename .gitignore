@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !shortcut.desktop
+!fix-application-dir-path.patch

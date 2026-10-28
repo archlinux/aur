@@ -1,16 +1,22 @@
 pkgname=emu80-qt
 _pkgname=emu80
 pkgver=4.0.571
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for bunch of Soviet PCs"
 arch=('x86_64')
 url="https://emu80.org/"
 license=("GPL-3.0-or-later")
 depends=("emu80-base>=${pkgver}" "qt6-base" "qt6-multimedia")
 makedepends=("base-devel")
-source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz" "shortcut.desktop")
+source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz" "shortcut.desktop" "fix-application-dir-path.patch")
 sha256sums=('9d0b632094af8af71bd84dafad8f76c97ee3752f3574dcefc3b9448c4e56bd91'
-            '049f824a4049d5a7b5d678aab9558180506e43138e5065ec0a114465edbe6d0e')
+            '049f824a4049d5a7b5d678aab9558180506e43138e5065ec0a114465edbe6d0e'
+            '3737d869b7b8a6132b8b8d96a695cedbb5076692cdd9236194de7bd14c97ba36')
+
+prepare() {
+	cd "emu80v4-${pkgver}"
+	patch --binary -Np1 -i "${srcdir}/fix-application-dir-path.patch"
+}
 
 build() {
 	cd "emu80v4-${pkgver}"

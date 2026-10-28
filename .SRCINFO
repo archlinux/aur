@@ -1,7 +1,7 @@
 pkgbase = emu80-qt
 	pkgdesc = Emulator for bunch of Soviet PCs
 	pkgver = 4.0.571
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emu80.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,7 +11,9 @@ pkgbase = emu80-qt
 	depends = qt6-multimedia
 	source = https://github.com/vpyk/emu80v4/archive/refs/tags/v4.0.571.tar.gz
 	source = shortcut.desktop
+	source = fix-application-dir-path.patch
 	sha256sums = 9d0b632094af8af71bd84dafad8f76c97ee3752f3574dcefc3b9448c4e56bd91
 	sha256sums = 049f824a4049d5a7b5d678aab9558180506e43138e5065ec0a114465edbe6d0e
+	sha256sums = 3737d869b7b8a6132b8b8d96a695cedbb5076692cdd9236194de7bd14c97ba36
 
 pkgname = emu80-qt
