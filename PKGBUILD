@@ -1,7 +1,7 @@
 # Maintainer: ca-x <https://github.com/ca-x>
 pkgname=lightos-remoted-bin
 pkgver=0.1.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform Rust remote desktop host for browser clients (Linux binary)'
 arch=('x86_64')
 url='https://github.com/ca-x/lightos-remote-desktop'
@@ -20,8 +20,10 @@ install=lightos-remoted-bin.install
 _aqcommit=f31c47a1b9d300847d8fc3108ad959448103dfc1
 _bundle=lightos-remoted-linux-x86_64
 source=("aquamarine-0.15.1-${_aqcommit}.tar.gz::https://codeload.github.com/hyprwm/aquamarine/tar.gz/${_aqcommit}"
+        "lightos-remoted-source-${pkgver}.tar.gz::https://codeload.github.com/ca-x/lightos-remote-desktop/tar.gz/refs/tags/v${pkgver}"
         'aquamarine-wayland.patch' 'lightos-remoted-bin.install')
 sha256sums=('975a3479b458722ec2e34e5fed9cdd46f77fa70485431f70093693532f685ff3'
+            'a1d0415b8961d62a01723a46e72fe9a2df40d9d798930b99acc7a792c1f4b001'
             'c905d0cb7abb194e2772b4a655bd834b7f198f92b38de228040d37e4cc492986'
             'f31d2a33bae7aeecf890e927e8575f6768a2ebfa0d21da3a26c0b81e79b81c78')
 sha256sums_x86_64=('77cf64158c713fbea7fd79ccbdb92f5c5e88277ef854966e6ee095ccbbab261e'
@@ -48,6 +50,7 @@ build() {
     cmake --build aq-build --target aquamarine
     readelf -d aq-build/libaquamarine.so.0.15.1 | grep -Fq 'Library soname: [libaquamarine.so.14]' || return 1
     readelf -d /usr/bin/Hyprland | grep -Fq 'Shared library: [libaquamarine.so.14]' || return 1
+    bash "lightos-remote-desktop-${pkgver}/scripts/build-hyprland-cursor.sh" "$srcdir/lightos-cursor.so" || return 1
 }
 
 package() {
@@ -58,6 +61,7 @@ package() {
     "$binary" install-service --print-unit session > "$units/lightos-remote-desktop-session.service" || return 1
     [[ -s $units/lightos-remote-desktop.service && -s $units/lightos-remote-desktop-session.service ]] || return 1
     install -Dm755 "${_bundle}/lightos-remoted" "$pkgdir/usr/lib/lightos-remoted/lightos-remoted"
+    install -Dm644 "$srcdir/lightos-cursor.so" "$pkgdir/usr/lib/lightos-remoted/lightos-cursor.so"
     install -Dm755 aq-build/libaquamarine.so.0.15.1 "$pkgdir/usr/lib/lightos-remoted/aquamarine/libaquamarine.so.14"
     install -Dm644 "aquamarine-${_aqcommit}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/aquamarine.txt"
     install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/share/doc/$pkgname"
