@@ -1,6 +1,6 @@
 # Maintainer: moss-ai fleet <noreply@paperclip.ing>
 pkgname=moss-ai
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Non-LLM brain-inspired AI: neuroevolution, SNN, few-shot learning, continual learning"
 arch=('any')

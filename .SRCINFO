@@ -1,6 +1,6 @@
 pkgbase = moss-ai
 	pkgdesc = Non-LLM brain-inspired AI: neuroevolution, SNN, few-shot learning, continual learning
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/Bingusfan360/moss-ai
 	arch = any
