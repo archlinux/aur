@@ -1,12 +1,12 @@
 # Maintainer: stelzo <stelzo@steado.de>
 pkgname=pelorus-bin
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Resource-aware Lidar-Inertial Odometry"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/stelzo/pelorus"
 license=('MIT' 'Apache-2.0')
-depends=('libgcc' 'glibc' 'minot>=0.13.0' 'minot<0.14.0' 'dedrunk' 'marina')
+depends=('libgcc' 'glibc' 'minot>=0.14.0' 'minot<0.15.0' 'dedrunk' 'marina')
 makedepends=()
 options=('!lto' '!strip' '!debug')
 source_x86_64=(
