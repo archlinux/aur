@@ -3,7 +3,7 @@
 # existing installs over (pacman offers to remove the old ytdesk-bin, which conflicts with sonolith-bin). Updated by
 # scripts/aur.sh until the package base is merged into sonolith-bin.
 pkgname=ytdesk-bin
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Transitional package: ytdesk is now Sonolith (sonolith-bin, prebuilt)"
 url='https://github.com/opecko/sonolith'

@@ -1,6 +1,6 @@
 pkgbase = ytdesk-bin
 	pkgdesc = Transitional package: ytdesk is now Sonolith (sonolith-bin, prebuilt)
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/opecko/sonolith
 	arch = any
