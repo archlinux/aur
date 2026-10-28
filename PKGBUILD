@@ -17,8 +17,7 @@ pkgdesc="A Library for Large Linear Classification"
 arch=('x86_64')
 url="https://www.csie.ntu.edu.tw/~cjlin/liblinear/"
 license=('BSD-3-Clause')
-depends=('gcc-libs' 'python-scipy')
-makedepends=('gcc' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz")
 sha256sums=('e5eeafe2159c41148b59304da2ba0ed12648e3d491ce2b9625058e174e96ca29')
 
@@ -31,6 +30,8 @@ build() {
 }
 
 package_liblinear() {
+    depends=('glibc' 'libgcc' 'libstdc++')
+
     cd "${pkgbase}-${pkgver}"
 
     local _sover
@@ -55,7 +56,8 @@ package_liblinear() {
 
 package_python-liblinear() {
     pkgdesc="Python bindings for liblinear"
-    depends=('liblinear' 'python' 'python-scipy')
+    depends=('glibc' 'libgcc' 'libstdc++' 'python' 'python-numpy' 'python-scipy')
+    optdepends=('python-numba: for enabling JIT compiler')
 
     cd "${pkgbase}-${pkgver}/python"
     python -m installer --destdir="${pkgdir}" dist/*.whl
