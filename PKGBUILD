@@ -10,7 +10,6 @@ url='https://github.com/Koswu/uuplugin-dns-patched'
 license=('LicenseRef-UU' '0BSD')
 depends=('iproute2' 'iptables' 'kmod' 'systemd')
 makedepends=('python')
-optdepends=('tailscale: Tailnet connectivity and split DNS')
 provides=("uuplugin-bin=${pkgver}" 'uuplugin')
 conflicts=('uuplugin-bin' 'uuplugin')
 backup=('etc/uuplugin/uu.conf')

@@ -11,7 +11,6 @@ pkgbase = uuplugin-dns-patched-bin
 	depends = iptables
 	depends = kmod
 	depends = systemd
-	optdepends = tailscale: Tailnet connectivity and split DNS
 	provides = uuplugin-bin=14.2.2
 	provides = uuplugin
 	conflicts = uuplugin-bin
