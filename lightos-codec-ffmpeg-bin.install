@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # Refresh cached encoder capabilities only for an already-running managed server.
 _refresh_lightos_codec_transport() {
+    case ${LIGHTOS_REMOTED_PACKAGE_STAGE_ONLY-0} in
+        0) ;;
+        1) return 0 ;;
+        *) printf '%s\n' 'LIGHTOS_REMOTED_PACKAGE_STAGE_ONLY must be 0 or 1' >&2; return 1 ;;
+    esac
     local service=lightos-remote-desktop.service pid executable fragment
     [[ -x /usr/lib/lightos-remoted/lightos-remoted ]] || return 0
     command -v systemctl >/dev/null || return 0
