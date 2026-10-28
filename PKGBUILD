@@ -1,11 +1,11 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=kio-s3
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="KIO worker for Amazon S3 and compatible storage"
 arch=('x86_64')
 url="https://invent.kde.org/network/kio-s3"
-license=('BSD-3-Clause' 'CC0-1.0' 'GPL-2.0-or-later')
+license=('GPL-2.0-or-later AND CC0-1.0')
 depends=('kio' 'ki18n' 'aws-sdk-cpp' 'kirigami-addons')
 makedepends=('extra-cmake-modules' 'cmake' 'kdoctools' 'kcmutils')
 conflicts=('kio-s3-git')

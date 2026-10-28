@@ -1,12 +1,10 @@
 pkgbase = kio-s3
 	pkgdesc = KIO worker for Amazon S3 and compatible storage
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/network/kio-s3
 	arch = x86_64
-	license = BSD-3-Clause
-	license = CC0-1.0
-	license = GPL-2.0-or-later
+	license = GPL-2.0-or-later AND CC0-1.0
 	makedepends = extra-cmake-modules
 	makedepends = cmake
 	makedepends = kdoctools
