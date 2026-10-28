@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MuData
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('072f54b1e8148c56e31ce35815665fdb')
-b2sums=('f6e1eee72b5b80aed39dc025c3ff0b64512ecc5344ef262c87c1d1caab2359a8cbe413d8050ccdf7f30ec6b3a327638fa9b092a83dfebee6861b2545f76ca4c3')
+md5sums=('b33ef69e2aaa4e6c856d29f0db5ad9d2')
+b2sums=('5b5364e99cc20cf8fb33f05a0afe5c9fd383d7c9ed25f66a282406daf1d81d0c91fbd9bee37ac247e6f117c401af79de3ebe85c607e1d647970f3a92780482d6')
 
 build() {
   mkdir build
