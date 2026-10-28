@@ -77,6 +77,49 @@ _notes--choices()
   done
 }
 
+_notes--paths()
+{
+  local _kind="$1" _cur="$2" _word="$3"
+
+  local _prefix="$_cur" _committed="${_cur%"$_word"}"
+  _prefix=${_prefix//\\/}; _prefix=${_prefix//\"/}; _prefix=${_prefix//\'/}
+  _committed=${_committed//\\/}; _committed=${_committed//\"/}; _committed=${_committed//\'/}
+
+  local _typed="" _dir="$_committed" _open="" _i
+  if [[ "$_word" == */* ]]; then
+    _typed="${_word%/*}/"
+    _dir="${_prefix%/*}/"
+    if [[ "$_cur" == "$_word" ]]; then
+      for ((_i = 0; _i < ${#_typed}; _i++)); do
+        case "$_open${_typed:_i:1}" in
+          \\|\"\\) ((_i += 1)) ;;
+          \"|\') _open="${_typed:_i:1}" ;;
+          \"\"|\'\') _open="" ;;
+        esac
+      done
+    fi
+  fi
+
+  local _path _names=() _rest="${_word#"$_typed"}"
+  while IFS= read -r _path; do
+    if [[ "$_path" == "$_dir"* ]]; then
+      _names+=("$_committed${_path#"$_dir"}")
+    elif [[ -z "$_committed" ]]; then
+      _names+=("$_path")
+      _typed="" _rest="" _open=""
+    fi
+  done < <(compgen "$_kind" -- "$_prefix")
+  if [[ -n "$_open" ]]; then
+    _typed+="$_open"
+    _rest="${_prefix##*/}"
+  fi
+
+  _notes--choices "${_cur%"$_word"}$_rest" "$_rest" "${_names[@]}"
+  for ((_i = 0; _i < ${#COMPREPLY[@]}; _i++)); do
+    COMPREPLY[_i]="$_typed${COMPREPLY[_i]}"
+  done
+}
+
 _notes()
 {
   local cur prev words cword i
@@ -322,7 +365,7 @@ _notes_read()
   # Flag value completions
   case "$prev" in
     --path)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
   esac
@@ -355,7 +398,7 @@ _notes_write()
   # Flag value completions
   case "$prev" in
     --path)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
   esac
@@ -392,7 +435,7 @@ _notes_delete()
   # Flag value completions
   case "$prev" in
     --path)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
   esac
@@ -425,7 +468,7 @@ _notes_move()
   # Flag value completions
   case "$prev" in
     --path)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
   esac
@@ -571,7 +614,7 @@ _notes_priority()
   # Flag value completions
   case "$prev" in
     --path)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
     --value)
@@ -610,7 +653,7 @@ _notes_open_agent()
   # Flag value completions
   case "$prev" in
     --path)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
     --mode)
@@ -729,7 +772,7 @@ _notes_capture()
   # Flag value completions
   case "$prev" in
     --config)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
   esac
@@ -768,7 +811,7 @@ _notes_daemon()
   # Flag value completions
   case "$prev" in
     --config)
-      COMPREPLY=( $(compgen -f -- "$cur") )
+      _notes--paths -f "$cur" "$_comp_word"
       return
       ;;
   esac
