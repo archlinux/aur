@@ -4,7 +4,7 @@
 _pkgname=quint
 pkgname="quint-bin"
 _orgname=informalsystems
-pkgver=0.33.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="An executable specification language with delightful tooling based on the temporal logic of actions (TLA)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("https://github.com/${_orgname}/${_pkgname}/raw/v${pkgver}/LICENSE")
 source_x86_64=("quint_${pkgver}_x86_64::https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/quint-linux-amd64")
 source_aarch64=("quint_${pkgver}_aarch64::https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/quint-linux-arm64")
 sha256sums=('0f8c4f9a99d4861ee62ade9a9526d09570844bdeab3e6bca500383d5ae7d9495')
-sha256sums_x86_64=('79eaa33aeb28a72681122656974557db553f4d01b792e22727075b41806db4d3')
-sha256sums_aarch64=('e99c0fcc88f4ebbda0dfa5f58257f91ddf1ad40cea452eb4770302fd24dab315')
+sha256sums_x86_64=('acd153075b7edc6fc8f889930c5ff3ebdf94ada381a45a26a2d41b18b9f10db7')
+sha256sums_aarch64=('ffc0549933db6787ffb932aa5c0e9a778018fe027e10d21ce4895c57502c11fc')
 
 package() {
     install -Dm755 "${srcdir}/quint_${pkgver}_${arch}" "${pkgdir}/usr/bin/quint"
