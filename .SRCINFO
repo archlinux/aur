@@ -1,7 +1,7 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
 	pkgver = 0.9.156
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rootapp.com
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -33,6 +33,7 @@ pkgbase = rootapp-bin
 	depends = libxi
 	depends = libxinerama
 	depends = libxkbcommon
+	depends = libxkbcommon-x11
 	depends = libxrandr
 	depends = libxss
 	depends = libxt
