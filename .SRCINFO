@@ -1,0 +1,13 @@
+pkgbase = ttf-niek-fonts-win
+	pkgdesc = Font collection from Niek's fonts-extractor (win) archive
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://github.com/Niek/fonts-extractor
+	arch = any
+	license = custom:upstream-font-licenses
+	depends = fontconfig
+	noextract = fonts-win-2.8.zip
+	source = fonts-win-2.8.zip::https://github.com/Niek/fonts-extractor/releases/download/v2.8/fonts-win.zip
+	sha256sums = 8c43aa9938ebb50c4686949b128e1b1b3a2258891ab5faaf2aef081edf55ab0d
+
+pkgname = ttf-niek-fonts-win
