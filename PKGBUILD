@@ -2,7 +2,7 @@
 
 _pkgname=music-tui
 pkgname=$_pkgname-git
-pkgver=0.1.12.r0.ge4e9358
+pkgver=0.1.13.r0.g5992836
 pkgrel=1
 pkgdesc="Terminal music player backed by MPD, with covers, synced lyrics and a visualizer."
 arch=('x86_64' 'aarch64')
