@@ -1,6 +1,6 @@
 pkgbase = sysforge
-	pkgdesc = Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds
-	pkgver = 3.5.0
+	pkgdesc = AUR helper that builds and tracks packages tuned to your CPU with PGO, BOLT and LTO
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/KeithRaghubar/sysforge
 	install = sysforge.install
@@ -20,10 +20,8 @@ pkgbase = sysforge
 	optdepends = zsh: zsh shell support
 	optdepends = glow: in-shell markdown rendering for docs
 	optdepends = zsh-completions: additional zsh completions
-	optdepends = clang: required for the LLVM build profile and sysforge run toolchain --compiler=llvm
-	optdepends = lld: required for the optimized build profile (-fuse-ld=lld)
-	optdepends = llvm: required for sysforge run toolchain --compiler=llvm (PGO bootstrap)
-	optdepends = compiler-rt: required for sysforge run toolchain --compiler=llvm
+	optdepends = clang: build packages and kernels with the LLVM profiles (pulls in llvm and compiler-rt)
+	optdepends = lld: link with -fuse-ld=lld (the LLVM and optimized profiles)
 	optdepends = mesa-utils: post-install mesa smoke check (eglinfo)
 	optdepends = vulkan-tools: post-install mesa smoke check (vulkaninfo)
 	conflicts = sysforge-git
@@ -32,10 +30,10 @@ pkgbase = sysforge
 	backup = etc/sysforge/packages.toml
 	backup = etc/sysforge/kernel.toml
 	backup = etc/sysforge/toolchain.toml
-	source = sysforge-3.5.0.tar.gz::https://github.com/KeithRaghubar/sysforge/archive/v3.5.0.tar.gz
-	source = sysforge-3.5.0.tar.gz.asc::https://github.com/KeithRaghubar/sysforge/releases/download/v3.5.0/sysforge-3.5.0.tar.gz.asc
+	source = sysforge-4.0.0.tar.gz::https://github.com/KeithRaghubar/sysforge/archive/v4.0.0.tar.gz
+	source = sysforge-4.0.0.tar.gz.asc::https://github.com/KeithRaghubar/sysforge/releases/download/v4.0.0/sysforge-4.0.0.tar.gz.asc
 	validpgpkeys = 23774499080F9288FEFB49CE7AAE22E6E1B4B22C
-	sha256sums = a9e99f76a79b537af1e75f7578c4aeffd5857fb472b06d345e395769e6b288ed
+	sha256sums = e9b748430796edfd4ed25f545d2415f4a00a97d88ad1ba9c24791efa1e1fbe69
 	sha256sums = SKIP
 
 pkgname = sysforge

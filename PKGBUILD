@@ -1,9 +1,9 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge
-pkgver=3.5.0
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds"
+pkgdesc="AUR helper that builds and tracks packages tuned to your CPU with PGO, BOLT and LTO"
 arch=('any')
 url="https://github.com/KeithRaghubar/sysforge"
 license=('MIT')
@@ -26,10 +26,8 @@ optdepends=(
     'zsh: zsh shell support'
     'glow: in-shell markdown rendering for docs'
     'zsh-completions: additional zsh completions'
-    'clang: required for the LLVM build profile and sysforge run toolchain --compiler=llvm'
-    'lld: required for the optimized build profile (-fuse-ld=lld)'
-    'llvm: required for sysforge run toolchain --compiler=llvm (PGO bootstrap)'
-    'compiler-rt: required for sysforge run toolchain --compiler=llvm'
+    'clang: build packages and kernels with the LLVM profiles (pulls in llvm and compiler-rt)'
+    'lld: link with -fuse-ld=lld (the LLVM and optimized profiles)'
     'mesa-utils: post-install mesa smoke check (eglinfo)'
     'vulkan-tools: post-install mesa smoke check (vulkaninfo)'
 )
@@ -50,7 +48,7 @@ backup=(
 validpgpkeys=('23774499080F9288FEFB49CE7AAE22E6E1B4B22C')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/sysforge-$pkgver.tar.gz.asc")
-sha256sums=('a9e99f76a79b537af1e75f7578c4aeffd5857fb472b06d345e395769e6b288ed'
+sha256sums=('e9b748430796edfd4ed25f545d2415f4a00a97d88ad1ba9c24791efa1e1fbe69'
             'SKIP')
 
 build() {
@@ -61,6 +59,9 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # MIT is not one of the common licenses, so the text ships with the package
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Man page
     install -Dm644 man/sysforge.1 "$pkgdir/usr/share/man/man1/sysforge.1"
