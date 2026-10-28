@@ -1,0 +1,9 @@
+<Project>
+  <!-- The SDK of the source-built .NET knows its own RID (arch-x64) for the apphost and runtime packs,
+       but not for the crossgen2 pack, so ReadyToRun would use the linux-x64 crossgen2 from nuget.org
+       instead of the source-built one -->
+  <ItemGroup>
+    <KnownCrossgen2Pack Update="@(KnownCrossgen2Pack)"
+                        Crossgen2RuntimeIdentifiers="%(Crossgen2RuntimeIdentifiers);$(NETCoreSdkRuntimeIdentifier)" />
+  </ItemGroup>
+</Project>

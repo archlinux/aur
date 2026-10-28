@@ -315,4 +315,48 @@ function Build-PackageManagementModule {
     Copy-Item -Recurse -Path (Join-Path $src 'out/PackageManagement/*') -Destination $moduleOut
 }
 
-Export-ModuleMember -Function Build-*
+<#
+.SYNOPSIS
+Compile the assemblies of the built modules to ReadyToRun images with crossgen2, like the SDK does for
+PublishReadyToRun. The SDK can't do it for these projects, as they target netstandard2.0 or .NET Framework.
+The images are compiled against the .NET runtime and $PSHOME, as that is what the modules run on.
+#>
+function Invoke-ReadyToRunCompiler {
+    param(
+        # The Modules folder of the PowerShell being built
+        [Parameter(Mandatory)] [string] $ModulePath,
+        [Parameter(Mandatory)] [string] $Crossgen2Path
+    )
+
+    # Assemblies the runtime or PowerShell itself provide are loaded from there instead of the module,
+    # so the module's copies are neither compiled nor used as references
+    $psHome = Split-Path -Parent (Resolve-Path -LiteralPath $ModulePath).ProviderPath
+    $platformAssemblies = @(
+        Get-ChildItem -File -Path ([System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()) -Filter '*.dll'
+        Get-ChildItem -File -Path $psHome -Filter '*.dll'
+    )
+    $platformNames = [System.Collections.Generic.HashSet[string]]::new([string[]] $platformAssemblies.BaseName, [StringComparer]::OrdinalIgnoreCase)
+
+    foreach ($module in Get-ChildItem -Directory -Path $ModulePath) {
+        # PSReadLine's netstd Polyfiller is only loaded by Windows PowerShell, PowerShell 7 uses net6plus
+        $assemblies = @(Get-ChildItem -Recurse -File -Path $module.FullName -Filter '*.dll' |
+                Where-Object { $_.Directory.Name -ne 'netstd' -and -not $platformNames.Contains($_.BaseName) })
+        $duplicates = $assemblies | Group-Object BaseName | Where-Object Count -GT 1
+        if ($duplicates) {
+            throw "Module $($module.Name) has more than one assembly named $($duplicates.Name -join ', ')"
+        }
+
+        foreach ($assembly in $assemblies) {
+            $references = @($platformAssemblies) + @($assemblies | Where-Object FullName -NE $assembly.FullName)
+            $referenceArgs = foreach ($reference in $references) { '-r', $reference.FullName }
+            $output = "$($assembly.FullName).r2r"
+            & $Crossgen2Path $assembly.FullName --out $output --targetos linux --targetarch x64 -O @referenceArgs | Out-Host
+            if ($LASTEXITCODE -ne 0) {
+                throw "crossgen2 failed for $($assembly.FullName) with exit code $LASTEXITCODE"
+            }
+            Move-Item -LiteralPath $output -Destination $assembly.FullName -Force
+        }
+    }
+}
+
+Export-ModuleMember -Function Build-*, Invoke-ReadyToRunCompiler

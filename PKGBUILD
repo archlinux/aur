@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -110,6 +110,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "nuget-modules.config"
   "powershell-modules.psm1"
   "build-modules.ps1"
+  "crossgen2-pack.targets"
   "update-help.ps1"
   "invoke-pester.ps1")
 sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
@@ -126,8 +127,9 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '96ce607ab0c3d5a8d1670913d09ebc5575cad958fc427641b9d2c9e6982997c6659c6f20d9c0df1ebae57c77bc9efcf43fff39753a9821efad5b0dd35f190999'
             '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
             '2a183bbbdbc42f55328f462bed4fce0752291395ae91c263e11e921c312f94d0c99b2180fce1e4f98e9e33af68fe83d8138217abe4a995fc7a52f442f20b7422'
-            'c980d27b69778a0fc398ae6993cc44de42d1e85322ab0d63cd4e6611276f1ff7ae427013a7c63201a7320d56fda6eea0b8e53b2628572562ade832441e9667a1'
-            '8957d27f6ffb10f237522e547d570526e81f8ef06bbce377890db5f68e1e62d1c0afbc90ebfd2c9b34b9ff122e6a4aff67353a6a2a81772d1983130068259e03'
+            'fa5e7218102fd109f9757273440a8cd5c04520dd306170150e8fc71aba2184df6149382fae98805f541370819aafbadf44c9928c91a7b6c40ff015a8d81b9c0e'
+            'b864725927d490e054a8d5d27f36b165998d6bdf2f8a50b65798313fe199533b4c1c91728f09114009ff484c5224db1f55bde8a89266045ceda212402d5b5a9e'
+            '0cd2eda2ffe66782a6a4ed2135559924358c656999800b6034e6b8ef4c50591509518897afec25236fdab9e47887fcbef538b1f4e7295b395bb63a19aeeac6e2'
             '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
             '355d5bdb418cf2f9b7f19c9a4433fc350aca62e707669b9cb2b6661d9a12828e60158b8f58a8600e9566c09750f0c47c4144ec20af8681c8aba87a8718f227f5')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
@@ -144,8 +146,9 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '8384011144b56696fbbf47a2c751cfbdbcb1f0de858da784c98128838fe86a3fd0affca03fc62377d8e2b3af3ba413c1c8cdcde5c89d73bb20a706c5796aefe4'
         '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
         '8f501e2b35ebba03da6cdec49a2055640bba8a8fcedbdefc5c29b7c307217c4feeda08f20406cca3224a4f2761ca8cab786aaea63fdb0e8e9ac42e6745897490'
-        '098c9546a4f6216794da81067b2e60e44c1a6f45fc249aee1764af61d867ae55c5a5931f2bb973a15d49920c3b3526a64eeecc15b9df2ceadc6b9c7e895593d6'
-        '3c5ef9d88acdf18178731960b1bd49fee1dbcf32dec1d7bdbd91182c15dc068a8eecd637a94a2fe74f243e000740f7b3ede0bd78619d8bd058fa46367eb2ded7'
+        '523c20d3934a20d8a557ba3325b45a5a10fcb86c99777814398b114e9c86befb30ecdee1a58019eb831a6397bcd714583962a499a4d489e7c54a301d2b0fdbe1'
+        '597218622a8435107bdba07ca1db412b4240dd416acea6bf1334ae02fd94d7f1950e9a5d006bede2ed1f5588e842045dffa6362e03e45644f5a7ebc03fbe566f'
+        '35d997b3a0a577d8cfb99ab700c5d30c3e781fdc1d50b8fca56af02c05033710a049818dbd9853c87e95f04e1771828e39b7b21c81a2ba6984a98896b1582e59'
         '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
         '84ab1ef0c546607fa509e4c71ab8528d5a6ff8b120a0dca14ccd7ec0ae39706cbb6c0e0cb65360dd14b74bb225b393c85d70d813602d1877efa4d720cc193374')
 
@@ -375,6 +378,8 @@ build() {
     "-p:ErrorOnDuplicatePublishOutputFiles=false"
     "-p:UseAppHost=true"
     "-p:RunAnalyzersDuringBuild=false"
+    # Use the source-built crossgen2 for ReadyToRun, see crossgen2-pack.targets
+    "-p:CustomAfterMicrosoftCommonTargets=$srcdir/crossgen2-pack.targets"
   )
 
   cd "$srcdir"/PowerShell/src/powershell-unix || exit
@@ -391,8 +396,10 @@ build() {
   ## Restore-PSModuleToBuild()
   # Instead of downloading the modules from the PowerShell Gallery, they're built from source
   # with the PowerShell we just built
+  # Their assemblies are compiled to ReadyToRun with the crossgen2 the publish above used
+  local _crossgen2=("$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_rid"/*/tools/crossgen2)
   "$_publish_path"/pwsh -NoProfile -NonInteractive -File "$srcdir/build-modules.ps1" \
-    -SourcePath "$srcdir" -OutputPath "$_publish_path/Modules"
+    -SourcePath "$srcdir" -OutputPath "$_publish_path/Modules" -Crossgen2Path "${_crossgen2[0]}"
 
   ## Build manpage
   # We have to build this, since the pregenerated file (that is also included in their official RPMs)

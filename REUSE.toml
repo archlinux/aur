@@ -5,6 +5,7 @@ path = [
     "PKGBUILD",
     "powershell-modules.psm1",
     "build-modules.ps1",
+    "crossgen2-pack.targets",
     "update-help.ps1",
     "invoke-pester.ps1",
     "nuget-modules.config",
