@@ -2,8 +2,8 @@
 # Contributor: weselben <bengottwaldi04 at gmail dot com>
 
 pkgname=gomodel-git
-pkgver=0.1.109.r0.g0c732e7
-pkgver=0.1.109.r0.g0c732e7
+pkgver=0.1.109.r2.g6d27388
+pkgver=0.1.109.r2.g6d27388
 pkgrel=1
 pkgdesc="High-performance AI gateway (git main build, quasi-nightly)"
 arch=('x86_64' 'aarch64')
