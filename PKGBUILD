@@ -1,13 +1,13 @@
 # Maintainer: Alexandre Berthaud <alexandre@berthaud.me>
 pkgname=render-cli-bin
-pkgver=2.31.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="The Official Render CLI (binary release)"
 arch=(x86_64)
 url="https://github.com/render-oss/cli"
 license=('Apache-2.0')
 source=("https://github.com/render-oss/cli/releases/download/v${pkgver}/cli_${pkgver}_linux_amd64.zip")
-sha256sums=('1cbebf1c0e083fd4410df7096fd76205bd5d6e81c7893f2587b34f1cfe2cdf85')
+sha256sums=('038bd9b47f8737b560bcddb3c5d59e04114b8ea002b05bba144e52e56e2a824e')
 
 package() {
   cd "${srcdir}"
