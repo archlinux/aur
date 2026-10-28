@@ -12,8 +12,8 @@ conflicts=('rpx')
 options=('!debug')
 provides_x86_64=("rpx=${pkgver}")
 provides_aarch64=("rpx=${pkgver}")
-source_x86_64=("${pkgname}-${pkgver}.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v${pkgver}/rpx-x86_64-unknown-linux-gnu.tar.xz")
-source_aarch64=("${pkgname}-${pkgver}.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v${pkgver}/rpx-aarch64-unknown-linux-gnu.tar.xz")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v${pkgver}/rpx-x86_64-unknown-linux-gnu.tar.xz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v${pkgver}/rpx-aarch64-unknown-linux-gnu.tar.xz")
 
 package() {
     cd "$srcdir"/rpx-*-unknown-linux-gnu
@@ -23,4 +23,4 @@ package() {
 }
 
 sha256sums_x86_64=('d877d9d4e4ea5889bdb97f7744ac5637c06eb80f323fe97759afd0a31526f4aa')
-sha256sums_aarch64=('d877d9d4e4ea5889bdb97f7744ac5637c06eb80f323fe97759afd0a31526f4aa')
+sha256sums_aarch64=('dc07cdf13a881d0c318a952e3bafc838c20691e1131f78af69651676adf9c50c')

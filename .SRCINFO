@@ -11,11 +11,11 @@ pkgbase = rpx-bin
 	depends = zlib
 	conflicts = rpx
 	options = !debug
-	source_x86_64 = rpx-bin-2.1.1.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v2.1.1/rpx-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = rpx-bin-2.1.1-x86_64.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v2.1.1/rpx-x86_64-unknown-linux-gnu.tar.xz
 	provides_x86_64 = rpx=2.1.1
 	sha256sums_x86_64 = d877d9d4e4ea5889bdb97f7744ac5637c06eb80f323fe97759afd0a31526f4aa
-	source_aarch64 = rpx-bin-2.1.1.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v2.1.1/rpx-aarch64-unknown-linux-gnu.tar.xz
+	source_aarch64 = rpx-bin-2.1.1-aarch64.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v2.1.1/rpx-aarch64-unknown-linux-gnu.tar.xz
 	provides_aarch64 = rpx=2.1.1
-	sha256sums_aarch64 = d877d9d4e4ea5889bdb97f7744ac5637c06eb80f323fe97759afd0a31526f4aa
+	sha256sums_aarch64 = dc07cdf13a881d0c318a952e3bafc838c20691e1131f78af69651676adf9c50c
 
 pkgname = rpx-bin
