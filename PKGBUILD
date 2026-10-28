@@ -4,20 +4,22 @@
 # workflow (scripts/linux-packages.mjs pkgbuild); change the template there, not this copy.
 
 pkgname=atc-bin
-pkgver=0.2.4
-_version=0.2.4
+pkgver=0.2.6
+_version=0.2.6
 pkgrel=1
 pkgdesc='Atomic Server: install an inference engine, pull a model, serve it over an OpenAI-compatible API (https://atomic.chat)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AtomicBot-ai/eye-cli'
 license=('Apache-2.0')
 depends=('glibc')
+# The server finds it on PATH for remote access; without it, the terminal UI and the web say how to install it.
+optdepends=('cloudflared: public remote access through a Cloudflare tunnel')
 provides=('atc')
 conflicts=('atc')
 # A Bun-compiled binary carries its program after the executable; stripping it cuts the program off.
 options=('!strip' '!debug')
 
-_base='https://github.com/AtomicBot-ai/eye-cli/releases/download/v0.2.4'
+_base='https://github.com/AtomicBot-ai/eye-cli/releases/download/v0.2.6'
 source=("LICENSE-${_version}::${_base}/LICENSE"
         "NOTICE-${_version}::${_base}/NOTICE"
         "THIRD_PARTY_NOTICES-${_version}.md::${_base}/THIRD_PARTY_NOTICES.md")
@@ -25,8 +27,8 @@ source=("LICENSE-${_version}::${_base}/LICENSE"
 source_x86_64=("atc-${_version}-x86_64::${_base}/atc-${_version}-x86_64-unknown-linux-gnu-baseline")
 source_aarch64=("atc-${_version}-aarch64::${_base}/atc-${_version}-aarch64-unknown-linux-gnu")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4' '0fc89a2d40a3f52c9e85f9430412cb6095360a1b5fa500afff596e59d5cafd7f' '94e193630e8b0921a74fb6472a4fb0ceefb990895018d8b46dc0a2cc18a7b328')
-sha256sums_x86_64=('863f00a8217a4eac50fc5dfb76c6930b2f82de3bc2ce08ac13382582b9e5197e')
-sha256sums_aarch64=('8c722481b281699a61496683c9228ce3aaf998d3982008553be7375896615792')
+sha256sums_x86_64=('d10e5dbb130cb3590fec026d0e53437a86e77db8e61647e8c6db48c1de13d634')
+sha256sums_aarch64=('88739f69df73706b3929f9901db3038228d8fb551f84b25981571f6ed21453a8')
 
 package() {
   install -Dm755 "${srcdir}/atc-${_version}-${CARCH}" "${pkgdir}/usr/bin/atc"
