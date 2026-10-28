@@ -1,0 +1,34 @@
+pkgbase = gpu-unlock
+	pkgdesc = Lifts the GeForce cap that halves FP16/BF16/TF32 tensor throughput on RTX 20/30/40 cards
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Zagitta/gpu-unlock
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = python
+	makedepends = zstd
+	makedepends = openssl
+	noextract = NVIDIA-Linux-x86_64-610.43.03-no-compat32.run
+	options = !strip
+	options = !debug
+	source = gpu-unlock-0532473b4b105ed216948ed9c5aaeab0fa5c734f.tar.gz::https://github.com/Zagitta/gpu-unlock/archive/0532473b4b105ed216948ed9c5aaeab0fa5c734f.tar.gz
+	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-610.43.03.tar.xz
+	source = https://download.nvidia.com/XFree86/Linux-x86_64/610.43.03/NVIDIA-Linux-x86_64-610.43.03-no-compat32.run
+	source = gpu-unlock-dkms.install
+	sha256sums = a8d30dac52fbc0f0720ef81616effa8c08965afd21873c7a7f26f8c8c55642cd
+	sha256sums = 7e118923c7a23edc36114d63273a46e3e04e9af98695a42203e7ac2dfe9fc1dc
+	sha256sums = e084451db730a6df29d3d74f655749c4d236e3c945f7d94b5205e84318fe2f90
+	sha256sums = 1b297cece7ea68599661c08540f1fbf7d33bea392c433b9b72822c314b870354
+
+pkgname = gpu-unlock-dkms
+	pkgdesc = Lifts the GeForce cap that halves FP16/BF16/TF32 tensor throughput on RTX 20/30/40 cards (DKMS module and initramfs hooks)
+	install = gpu-unlock-dkms.install
+	arch = any
+	depends = dkms
+	depends = gpu-unlock-firmware=2.0.0-1
+	backup = etc/mkinitcpio.conf.d/zz-gpu-unlock.conf
+
+pkgname = gpu-unlock-firmware
+	pkgdesc = Lifts the GeForce cap that halves FP16/BF16/TF32 tensor throughput on RTX 20/30/40 cards (firmware assets extracted from the NVIDIA installer)
+	license = GPL-2.0-only
+	license = LicenseRef-NVIDIA
