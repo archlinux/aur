@@ -1,19 +1,19 @@
 pkgbase = fern-bin
 	pkgdesc = Terminal UI markdown note-taking, journalling, and knowledge manager.
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://codeberg.org/InodeLabs/fern
 	license = AGPL-3.0-only
 	conflicts = fern
 	provides = fern
 	arch = aarch64
-	source_aarch64 = https://codeberg.org/InodeLabs/fern/releases/download/v1.7.2/fern_1.7.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = e64d0ec3bc7b18e6ac3953bfba8254a457612d45b81167768ca467c73f33e21c
+	source_aarch64 = fern-bin_1.8.0_aarch64.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v1.8.0/fern_1.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 162becd7587fa0e06dd56d4ea86c8cb9362e12d2813f37e0a72b93cab489dc5d
 	arch = i686
-	source_i686 = https://codeberg.org/InodeLabs/fern/releases/download/v1.7.2/fern_1.7.2_linux_386.tar.gz
-	sha256sums_i686 = 8d9631efb442c0d96264fc91488d30a6d4cf6281c45780e71e04ce7a27ced93a
+	source_i686 = fern-bin_1.8.0_i686.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v1.8.0/fern_1.8.0_linux_386.tar.gz
+	sha256sums_i686 = 1ee1a22433a543d323683539a4c07ec28851d7f71233a17435777945ec00c333
 	arch = x86_64
-	source_x86_64 = https://codeberg.org/InodeLabs/fern/releases/download/v1.7.2/fern_1.7.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9235ee2a5f85a0796aad510eba7d23d44b5a27a6b95f750b900cde7546001a34
+	source_x86_64 = fern-bin_1.8.0_x86_64.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v1.8.0/fern_1.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 37c1aa419c3fe7b9c5362561a4c71cea1e67d8700229f99b3f5ffebe7045e595
 	
 pkgname = fern-bin
