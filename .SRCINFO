@@ -1,12 +1,12 @@
 pkgbase = poc-hello
 	pkgdesc = Prints a greeting - poc-app demo binary, versioned independently by multicz
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/goabonga/poc-app
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = poc-app-0.3.0.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/hello-v0.3.0.tar.gz
-	sha256sums = 04fd922a3430507ef1e0737249b787e2c4908b79b7d03935553550ad460ee35a
+	source = poc-app-0.4.0.tar.gz::https://github.com/goabonga/poc-app/archive/refs/tags/hello-v0.4.0.tar.gz
+	sha256sums = cbbdb947f1edf2786a3a8c5702238eed3ccd9b8d20777ef1a6434d33b79f5634
 
 pkgname = poc-hello
