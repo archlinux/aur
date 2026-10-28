@@ -2,7 +2,7 @@
 # Binary variant — downloads the prebuilt Linux tarball from GitHub Releases,
 # itself repacked verbatim from xAI's official Linux .deb.
 pkgname=grokbot-linux-port-bin
-pkgver=0.77.0
+pkgver=0.78.1
 pkgrel=1
 pkgdesc="Grok Bot desktop agent (repacked from the official Linux .deb)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=('grok-bot')
 options=('!strip' '!debug')
 source_x86_64=("Grok_Bot_${pkgver}_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_x64.tar.gz")
 source_aarch64=("Grok_Bot_${pkgver}_linux_arm64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('96914e03c93ecfaa2822e4c873a4953ec32eced0296b302872fcd3fea61c1d05')
-sha256sums_aarch64=('08e1a4fdebdd815b94e7fc437ebd984cefa9c24265cd8fb352b15663ca1a7d2b')
+sha256sums_x86_64=('597907731db13bd3d898468a96df48da2f07663c04c790cc18f11a936297c5c3')
+sha256sums_aarch64=('df5d7315228ed7d133cac8fe83fc60fae90c2778d6e12cda8348ce53f2d26de4')
 
 package() {
   # Per-arch source arrays land the matching tarball under ${srcdir}; pick
