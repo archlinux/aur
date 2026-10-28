@@ -3,7 +3,7 @@
 
 pkgname=shiny-server-git
 _pkgname=${pkgname%-git}
-pkgver=1.5.23.1030.r0.gc3cae6c
+pkgver=1.5.24.1047.r2.g4445750
 pkgrel=1
 epoch=1
 pkgdesc="Host Shiny applications over the web"
@@ -22,10 +22,10 @@ source=("git+https://github.com/rstudio/shiny-server"
         "${_pkgname}.service"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=("SKIP"
-            "1dc3401a3d87ef27ae026dc45bc374c2763b2819384ef8f326b4b7a12201ef42"
-            "e56bfe2b7bf85fdc72d1080ab2d08a54c52928a0dc25cdbeff1302981aa18e30"
-            "27538c6961fdb70f168be6d7c5754c474dd221dff0dcf639181d5803d6646a54")
+sha256sums=('SKIP'
+            '1dc3401a3d87ef27ae026dc45bc374c2763b2819384ef8f326b4b7a12201ef42'
+            'e56bfe2b7bf85fdc72d1080ab2d08a54c52928a0dc25cdbeff1302981aa18e30'
+            '27538c6961fdb70f168be6d7c5754c474dd221dff0dcf639181d5803d6646a54')
 backup=('etc/shiny-server/shiny-server.conf')
  
 pkgver() {
