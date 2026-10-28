@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Zarić <salexandarz@github.com>
 pkgname=mail-badge-notifier-git
 pkgver=r26.beeb2e8
-pkgrel=5
+pkgrel=6
 pkgdesc="Unread mail taskbar badges for Thunderbird/Betterbird with headless systemd service and GUI wrapper"
 arch=('x86_64' 'aarch64')
 url="https://github.com/salexandarz/mail-badge-notifier"
