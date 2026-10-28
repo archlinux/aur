@@ -9,7 +9,7 @@
 #   https://downloads.cursor.com/grokbot/stable/<commit>/linux/x64/grok-bot_<version>_amd64.deb
 
 pkgname=grok-bot-cursor
-pkgver=0.77.0
+pkgver=0.78.1
 pkgrel=1
 pkgdesc='Grok Bot desktop agent'
 arch=('x86_64')
@@ -39,13 +39,13 @@ provides=('grok-bot' 'sand')
 conflicts=('grok-bot' 'grok-bot-bin' 'sand' 'grokbot-linux-port' 'grokbot-linux-port-bin')
 replaces=('grok-bot' 'grok-bot-bin')
 options=('!strip' '!debug')
-_commit=fe85646036572e2b9a531b337a0dcb56a32f9369
+_commit=72e130b4e6be3fdc47b97e809b6b420908ce2dd8
 source=(
     "grok-bot_${pkgver}_amd64.deb::https://downloads.cursor.com/grokbot/stable/${_commit}/linux/x64/grok-bot_${pkgver}_amd64.deb"
     grok-bot.sh
 )
 sha256sums=(
-    'b74f125e6adf3a25d296ef99a4a0047ab4b17afbfc8e9fddaa0e571dcefe433c'
+    '55d2a34cfff762342251ffa9b1321a70f08b603f227f886e18b2c1c5e73ded1d'
     '9b3cccfada1dbe44ce794177181515aaf328603484327ef72a914234544bfbf8'
 )
 noextract=("grok-bot_${pkgver}_amd64.deb")
@@ -63,7 +63,8 @@ package() {
     install -Dm755 grok-bot.sh "${pkgdir}/usr/bin/grok-bot"
     ln -s grok-bot "${pkgdir}/usr/bin/sand"
 
-    sed -i 's|^Exec=.*|Exec=grok-bot %U|' \
+    # Upstream uses "--" so file arguments are not parsed as grok-bot options.
+    sed -i 's|^Exec=.*|Exec=grok-bot -- %U|' \
         "${pkgdir}/usr/share/applications/grok-bot.desktop"
 
     install -Dm644 "${pkgdir}/opt/Grok Bot/LICENSE.electron.txt" \
