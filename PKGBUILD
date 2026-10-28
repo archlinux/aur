@@ -8,7 +8,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Diegovsky/riff"
 license=('MIT')
 depends=(gtk4 libadwaita alsa-lib libpulse)
-makedepends=(meson ninja cmake blueprint-compiler rust git)
+makedepends=(meson ninja cmake blueprint-compiler rust git 'java-runtime-headless>=11')
 options=(!lto)
 
 source=("$pkgname::git+https://github.com/Diegovsky/riff.git#commit=8eb94626b7ba4cb814d034adc2a28e304a3d8b59")

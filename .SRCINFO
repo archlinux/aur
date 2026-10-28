@@ -13,6 +13,7 @@ pkgbase = riff-client
 	makedepends = blueprint-compiler
 	makedepends = rust
 	makedepends = git
+	makedepends = java-runtime-headless>=11
 	depends = gtk4
 	depends = libadwaita
 	depends = alsa-lib
