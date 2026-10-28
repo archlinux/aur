@@ -3,7 +3,7 @@ pkgname=python-nv-one-logger-pytorch-lightning-integration
 _repo=nv-one-logger
 _tag=nv-one-logger-pytorch-lightning-integration-v2.3.0
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA OneLogger PyTorch Lightning integration: wires telemetry into Lightning trainers'
 arch=('any')
 url='https://github.com/NVIDIA/nv-one-logger'
@@ -21,10 +21,13 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("$_tag.tar.gz::https://github.com/NVIDIA/$_repo/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('d55275d6bd27cf7bc14d5a3c2d7abecbe630093196af5c4dfdc8af6e75e5680f')
+source=("$_tag.tar.gz::https://github.com/NVIDIA/$_repo/archive/refs/tags/$_tag.tar.gz"
+        "lightning-checkpoint-types.patch")
+sha256sums=('d55275d6bd27cf7bc14d5a3c2d7abecbe630093196af5c4dfdc8af6e75e5680f'
+            'a2b574e5a71eaebf4a3e2795c20d079405fd3de63675160feb80c89bff9a6522')
 
 prepare() {
+    patch -d "$_repo-$_tag" -p1 < "$srcdir/lightning-checkpoint-types.patch"
     # Replace upstream's pre-PEP-621 Poetry pyproject.toml with a
     # setuptools-backed one (poetry-core 2.x in Arch rejects the old
     # schema). Also drops upstream's `python <3.14` pin — see comment in

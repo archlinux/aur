@@ -1,0 +1,5 @@
+--- a/nv_one_logger/one_logger_pytorch_lightning_integration/src/nv_one_logger/training_telemetry/integration/pytorch_lightning.py
++++ b/nv_one_logger/one_logger_pytorch_lightning_integration/src/nv_one_logger/training_telemetry/integration/pytorch_lightning.py
+@@ -275 +275 @@
+-    def save_checkpoint(self, filepath: Union[str, Path], weights_only: bool = False, storage_options: Optional[Any] = None) -> None:
++    def save_checkpoint(self, filepath: Union[str, Path], weights_only: Optional[bool] = False, storage_options: Optional[Any] = None) -> None:
