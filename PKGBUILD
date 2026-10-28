@@ -1,26 +1,29 @@
 # Maintainer: Shiro836
-# waydroid-nvidia-bin — Waydroid with full NVIDIA GPU acceleration:
-# guest renders Vulkan/GL through Mesa Venus over a unix socket into the
-# host's proprietary NVIDIA driver (see the repo README for architecture).
+# waydroid-nvidia-bin — Waydroid with NVIDIA GPU acceleration. Driver modes (waydroid.cfg
+# nvidia_driver_mode): nvidia-prolapse (default: our Waydroid vendor image with Mesa NVK + our Rust RM
+# backend, ANGLE or our nvrm GLES, built from source) and venus (Mesa Venus over a socket to the host driver).
 #
 # Ships:
 #  - patched waydroid (python, built from source here — provides/conflicts
-#    waydroid; the patch makes the config generator emit our bind-mounts so
-#    they survive `waydroid upgrade`, and adds suspend_action=none)
+#    waydroid; patches/waydroid/0001 (bind-mounts that survive `waydroid upgrade`,
+#    suspend_action=none) + waydroid/0001-lxc-nvidia-native-mounts.patch (driver modes,
+#    the nvidia-prolapse mount generator, default mode on `waydroid init`))
+#  - nvidia-prolapse: our Waydroid vendor image (vendor-image/, as a Waydroid OTA zip + its channel JSON),
+#    the release bundle it was built from (CI-built payload + install-time gate programs) and the tools
+#    that gate, install and activate it (/usr/lib/waydroid-nvidia/{native,vendor}, packaging/native/install-native.sh)
 #  - host Venus renderer (virgl_test_server + virgl_render_server), CI-built
-#  - guest driver stack (Venus vulkan HAL, gralloc backend — CI-built;
-#    hwcomposer, ANGLE, surfaceflinger — prebuilt until their CI provisioning
-#    lands, see packaging/aur/PREREQS.md)
+#  - guest stack (Venus vulkan HAL, gralloc backend, hwcomposer, ANGLE, surfaceflinger), CI-built
 #
 # Every CI-built asset carries a SLSA provenance attestation:
 #   gh attestation verify <file> --repo Shiro836/waydroid-nvidia
 
 pkgname=waydroid-nvidia-bin
-pkgver=0.1.2
+# release assets are hashed by `updpkgsums` at tag time (packaging/aur/RELEASING.md step 3)
+pkgver=0.2.0
 pkgrel=1
-_tag=v0.1.2
+_tag=v0.2.0
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
-pkgdesc="Waydroid with NVIDIA GPU acceleration (Mesa Venus over vtest socket; needs the nvidia-open kernel modules)"
+pkgdesc="Waydroid with NVIDIA GPU acceleration (our vendor image: NVK + Rust RM backend in the container by default; Venus mode selectable)"
 arch=('x86_64')
 url="https://github.com/Shiro836/waydroid-nvidia"
 license=('GPL-3.0-or-later')
@@ -29,6 +32,8 @@ depends=(
   'lxc' 'python' 'python-gbinder>=1.3.0' 'python-gobject' 'nftables' 'dnsmasq'
   'gtk3' 'python-dbus' 'pulse-native-provider'
   'binutils' # readelf validates guest ABI and SONAME before setup installs it
+  'e2fsprogs' # debugfs: the nvidia-prolapse gate reads the bionic runtime from system.img
+  'util-linux' # unshare: the i686 gate cases run in their own PID namespace
   # host Venus renderer
   'libepoxy' 'libdrm' 'mesa' 'libx11' 'expat' 'vulkan-icd-loader'
 )
@@ -48,10 +53,16 @@ source=(
   "$url/releases/download/$_tag/waydroid-nvidia-host-x86_64-$_tag.tar.zst"
   "$url/releases/download/$_tag/waydroid-nvidia-guest-android-x86_64-$_tag.tar.zst"
   "$url/releases/download/$_tag/waydroid-nvidia-guest-prebuilts-$_tag.tar.zst"
+  "$url/releases/download/$_tag/waydroid-nvidia-native-x86_64-$_tag.tar.zst"
+  "$url/releases/download/$_tag/waydroid-nvidia-vendor-x86_64-$_tag.zip"
+  "$url/releases/download/$_tag/waydroid-nvidia-vendor-ota-$_tag.json"
   'wd-venus.service'
   'waydroid-venus.tmpfiles'
   'waydroid-nvidia-setup'
   'waydroid-nvidia.rules'
+  'waydroid-nvidia-gpu.rules'
+  'waydroid-nvidia-driver.hook'
+  'driver-update-note'
 )
 # Release guest tarballs preserve Android-relative paths. Both extract into the
 # same guest tree, but own disjoint paths (Mesa/gralloc vs ANGLE/HWC/SF).
@@ -59,20 +70,32 @@ noextract=(
   "waydroid-nvidia-host-x86_64-$_tag.tar.zst"
   "waydroid-nvidia-guest-android-x86_64-$_tag.tar.zst"
   "waydroid-nvidia-guest-prebuilts-$_tag.tar.zst"
+  "waydroid-nvidia-native-x86_64-$_tag.tar.zst"
+  "waydroid-nvidia-vendor-x86_64-$_tag.zip"
 )
-sha256sums=('6fa52429ba2dc9c569fea7c339fe8b096c9127e725d40696ccf96f9924d41f3d'
+# the zero sums are the seven release downloads (source tarball + four asset tarballs + vendor image zip and
+# channel JSON): updpkgsums at tag time
+sha256sums=('b643aa267e786c10d031a4d8bd89d37da7fc696bb2c43d633c37126a263b8545'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
-            '6372d4f78ff4e9442e32a60d9b1ead11f238124f5acd57a92bbb4fd74c9d61e8'
-            'c0a6ee7a69c6bc6075f7197d6c3cc2e213bf1b061b032f20da6f7441f8704574'
-            '61899f56c203b750d41f7c141a1ee264cb68241748cc9cda512ed45f2997cbd1'
+            '99d2814242e140d5ea91d3c23f4494500f3176e88746076ddae85a51d7d320b3'
+            '7b57a74940bb1e5db1056a0154d2875f3b498eb6ab645665f6f6e90869f906b7'
+            '7dd098c01e00159da66b3249872d48773bd3449aaae77eac23ab91fcabe3cedc'
+            '33c9f75fa216c53828e93e8fb2a4e63562e3ab27b24c81268879ee48390fccf8'
+            '692a0eeb45c288492f66ddba5b77ea15f00f88eca5354b048ec4b1e752aee29b'
+            '2940a04d71ba26e32f85ec7223b19344a89cb9ecaafde4a715aaf9cff4ee3c60'
             '4bc083ac6fc8d0d0fd31546f5abd9912ca1304571d5a6c9ee42351b1e745193f'
             '501db3b266f8a49f643d4054ba948ba40fcefe0fee1f3647bff955184acf533e'
-            'd56c2b9a8cb9ac2f4afd1afaebfa877171e78ad25fc666d5a46da5cc67db2083'
-            'cdceadba519c3e6dada147c1a628ca64bf7f49993f84f50cc9a52da57963c9fe')
+            '3c2baa9fccd224c596764bb829b7d4857fed5746e3ac2f5f50e91ae8c09fd21b'
+            'cdceadba519c3e6dada147c1a628ca64bf7f49993f84f50cc9a52da57963c9fe'
+            '79a173fc8bcd834330a57130a04d099af5c1e21b7d1a00796082de5772412f73'
+            '9cc06d40ecc2c6c256c07d22ec8d47e4888ef4a094fafaf988e222434e244b44'
+            '4dae95f4927b4f40ec8e0093b30b996ab5c5eff4da530eafd295cdac8b1987ff')
 
 prepare() {
   cd "waydroid-$_waydroid_sha"
   patch -p1 < "$srcdir/waydroid-nvidia-${_tag#v}/patches/waydroid/0001-nvidia-integration.patch"
+  patch -p1 < "$srcdir/waydroid-nvidia-${_tag#v}/waydroid/0001-lxc-nvidia-native-mounts.patch"
+  cmp "$srcdir/waydroid-nvidia-${_tag#v}/waydroid/nvidia_native.py" tools/helpers/nvidia_native.py
   cd "$srcdir"
   mkdir -p host guest
   bsdtar -C host  -xf "waydroid-nvidia-host-x86_64-$_tag.tar.zst"
@@ -119,10 +142,18 @@ package() {
   install -Dm755 guest/system/bin/surfaceflinger \
     "$pkgdir/usr/lib/waydroid-nvidia/guest/system/bin/surfaceflinger"
 
-  # 4. host integration
+  # 4. nvidia-prolapse: the vendor image + its release bundle + the tools that gate/install/activate it, root helper
+  bash "waydroid-nvidia-${_tag#v}/packaging/native/install-native.sh" "waydroid-nvidia-${_tag#v}" \
+    "waydroid-nvidia-native-x86_64-$_tag.tar.zst" "waydroid-nvidia-vendor-x86_64-$_tag.zip" \
+    "waydroid-nvidia-vendor-ota-$_tag.json" "$pkgdir" "$_tag"
+  install -Dm644 waydroid-nvidia-driver.hook "$pkgdir/usr/share/libalpm/hooks/90-waydroid-nvidia-driver.hook"
+  install -Dm755 driver-update-note "$pkgdir/usr/lib/waydroid-nvidia/driver-update-note"
+
+  # 5. host integration
   install -Dm644 wd-venus.service "$pkgdir/usr/lib/systemd/user/wd-venus.service"
   install -Dm644 waydroid-venus.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/waydroid-venus.conf"
   install -Dm755 waydroid-nvidia-setup "$pkgdir/usr/bin/waydroid-nvidia-setup"
   # udmabuf access for the seated user (wd-venus CPU-mappable gralloc buffers)
   install -Dm644 waydroid-nvidia.rules "$pkgdir/usr/lib/udev/rules.d/70-waydroid-nvidia.rules"
+  install -Dm644 waydroid-nvidia-gpu.rules "$pkgdir/usr/lib/udev/rules.d/70-waydroid-nvidia-gpu.rules"
 }

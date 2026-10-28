@@ -1,0 +1,10 @@
+#!/bin/sh
+# pacman PostTransaction note (waydroid-nvidia-driver.hook); never fails the transaction.
+mode=$(sed -n 's/^nvidia_driver_mode *= *//p' /var/lib/waydroid/waydroid.cfg 2>/dev/null | head -1)
+case "$mode" in
+    nvidia-prolapse)
+        echo "==> waydroid-nvidia: the NVIDIA driver changed. After rebooting into the new kernel module run"
+        echo "    sudo waydroid-nvidia-setup   (re-gates the nvidia-prolapse vendor image on the new module and"
+        echo "    regenerates the codec list; until then the Waydroid container refuses to start and names this remedy)" ;;
+esac
+exit 0

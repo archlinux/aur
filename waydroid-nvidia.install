@@ -1,24 +1,43 @@
 post_install() {
-    cat <<'EOF'
+    cat <<'MSG'
 waydroid-nvidia: next steps
-  1. waydroid init                      (download an image, as usual)
-  2. waydroid-nvidia-setup              (as root; add --refresh <hz> to match
-                                         your monitor, e.g. --refresh 144)
-  3. systemctl enable --now waydroid-container.service
-  4. systemctl --user enable --now wd-venus.service   (as your desktop user)
-  5. re-login once (udev uaccess rule for /dev/udmabuf), then
-     waydroid session start / launch Waydroid from the app menu
+  1. sudo waydroid-nvidia-setup          (runs `waydroid init` if needed, checks the host, tests the
+                                          nvidia-prolapse vendor image on your GPU and kernel module,
+                                          installs it next to the official system image (your official
+                                          vendor image is kept as a backup), activates it, starts the container;
+                                          -s GAPPS: Google apps, on a fresh install)
+  2. waydroid session start              (or launch Waydroid from the app menu)
 
-Requires the NVIDIA open kernel modules (nvidia-open / nvidia-open-dkms)
-with nvidia-drm.modeset=1. The closed kernel module (nvidia / nvidia-dkms)
-lacks the DMA-BUF support this stack needs; the userspace (nvidia-utils)
-is the same regular proprietary one either way.
-Verify binary provenance of the shipped blobs:
+Requires nvidia-drm.modeset=1. Venus mode instead: sudo waydroid-nvidia-setup --mode venus,
+then systemctl --user enable --now wd-venus.service and re-login once (udmabuf udev rule).
+Verify binary provenance of the release assets:
   gh attestation verify <asset> --repo Shiro836/waydroid-nvidia
-EOF
+MSG
 }
 
 post_upgrade() {
-    echo "waydroid-nvidia: re-run 'waydroid-nvidia-setup' to refresh the guest stack in /var/lib/waydroid"
-    echo "waydroid-nvidia: re-login (or: udevadm trigger /dev/udmabuf) so the new udmabuf udev rule takes effect"
+    echo "waydroid-nvidia: run 'sudo waydroid-nvidia-setup' to gate and install this release's vendor image"
+    echo "waydroid-nvidia: (the container refuses to start while the installed vendor image belongs to another release)"
+}
+
+pre_remove() {
+    # put the official vendor image back and return waydroid.cfg to stock Waydroid while the setup still exists
+    if grep -qx 'nvidia_prolapse_install = vendor-image' /var/lib/waydroid/waydroid.cfg 2>/dev/null; then
+        /usr/bin/waydroid-nvidia-setup --restore-official-vendor ||
+            echo "waydroid-nvidia: could not restore the official vendor image (see above); run 'sudo waydroid init -f' after the removal"
+    fi
+    # the container unit drop-in written by the setup points at tools this package removes
+    local dropin=/etc/systemd/system/waydroid-container.service.d/source-native.conf
+    if [ -f "$dropin" ] && grep -q /usr/lib/waydroid-nvidia/native "$dropin"; then
+        rm -f "$dropin"
+        systemctl daemon-reload 2>/dev/null || true
+        echo "waydroid-nvidia: removed $dropin"
+    fi
+}
+
+post_remove() {
+    cat <<'MSG'
+waydroid-nvidia: gate logs and old staged driver roots stay on disk; remove them with
+  sudo rm -rf /var/lib/waydroid-nvidia /var/lib/waydroid/nvidia-source-native-* /var/lib/waydroid/nvidia-prolapse
+MSG
 }
