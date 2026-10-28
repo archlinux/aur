@@ -1,0 +1,5 @@
+[dotnet-newtonsoft-json]
+source = "github"
+github = "JamesNK/Newtonsoft.Json"
+use_max_tag = true
+exclude_regex = ".*-.*"
