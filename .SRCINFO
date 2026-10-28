@@ -1,7 +1,7 @@
 pkgbase = orbis-reframe
 	pkgdesc = Native Linux editor for Insta360 360° footage: stitch, stabilize and reframe
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Schabo/orbis-reframe
 	arch = x86_64
 	license = GPL-3.0-or-later
