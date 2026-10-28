@@ -1,0 +1,13 @@
+pkgbase = ttf-niek-fonts-android
+	pkgdesc = Font collection from Niek's fonts-extractor (android) archive
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://github.com/Niek/fonts-extractor
+	arch = any
+	license = custom:upstream-font-licenses
+	depends = fontconfig
+	noextract = fonts-android-2.8.zip
+	source = fonts-android-2.8.zip::https://github.com/Niek/fonts-extractor/releases/download/v2.8/fonts-android.zip
+	sha256sums = 2a6b28b9a840e3250fa7fa0dee54a5d6b3695533e14c182388caca88cca062c8
+
+pkgname = ttf-niek-fonts-android
