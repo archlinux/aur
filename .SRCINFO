@@ -1,6 +1,6 @@
 pkgbase = liberica-jdk-11-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
-	pkgver = 11.0.33.0.2+5
+	pkgver = 11.0.33.0.3+7
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jdk-11.install
@@ -23,8 +23,8 @@ pkgbase = liberica-jdk-11-bin
 	provides = java-runtime-headless-openjdk=11
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = liberica-jdk-11-lite-bin=11.0.33.0.2+5
-	provides = liberica-jre-11-bin=11.0.33.0.2+5
+	provides = liberica-jdk-11-lite-bin=11.0.33.0.3+7
+	provides = liberica-jre-11-bin=11.0.33.0.3+7
 	backup = etc/liberica-jdk-11/logging.properties
 	backup = etc/liberica-jdk-11/management/jmxremote.access
 	backup = etc/liberica-jdk-11/management/jmxremote.password.template
@@ -39,13 +39,13 @@ pkgbase = liberica-jdk-11-bin
 	backup = etc/liberica-jdk-11/security/policy/unlimited/default_US_export.policy
 	backup = etc/liberica-jdk-11/security/policy/unlimited/default_local.policy
 	backup = etc/liberica-jdk-11/sound.properties
-	source_aarch64 = https://download.bell-sw.com/java/11.0.33.0.2+5/bellsoft-jdk11.0.33.0.2+5-linux-aarch64.tar.gz
-	sha1sums_aarch64 = e8acecb1aec0385d64a67f79d43df91727034115
-	source_armv7h = https://download.bell-sw.com/java/11.0.33.0.2+5/bellsoft-jdk11.0.33.0.2+5-linux-arm32-vfp-hflt.tar.gz
-	sha1sums_armv7h = 059920f98eff5d3cd2bc54aba8cd68ea630e1b58
-	source_armv8h = https://download.bell-sw.com/java/11.0.33.0.2+5/bellsoft-jdk11.0.33.0.2+5-linux-arm32-vfp-hflt.tar.gz
-	sha1sums_armv8h = 059920f98eff5d3cd2bc54aba8cd68ea630e1b58
-	source_x86_64 = https://download.bell-sw.com/java/11.0.33.0.2+5/bellsoft-jdk11.0.33.0.2+5-linux-amd64.tar.gz
-	sha1sums_x86_64 = 06b8f6ebb8d4be5b6a6e4870817286fc5b0aa1a9
+	source_aarch64 = https://download.bell-sw.com/java/11.0.33.0.3+7/bellsoft-jdk11.0.33.0.3+7-linux-aarch64.tar.gz
+	sha1sums_aarch64 = bf360aa865a38071f16a6ccb61071ee12a80ca46
+	source_armv7h = https://download.bell-sw.com/java/11.0.33.0.3+7/bellsoft-jdk11.0.33.0.3+7-linux-arm32-vfp-hflt.tar.gz
+	sha1sums_armv7h = 80aac380b0ff020302a236a639fe27b86e6da084
+	source_armv8h = https://download.bell-sw.com/java/11.0.33.0.3+7/bellsoft-jdk11.0.33.0.3+7-linux-arm32-vfp-hflt.tar.gz
+	sha1sums_armv8h = 80aac380b0ff020302a236a639fe27b86e6da084
+	source_x86_64 = https://download.bell-sw.com/java/11.0.33.0.3+7/bellsoft-jdk11.0.33.0.3+7-linux-amd64.tar.gz
+	sha1sums_x86_64 = 8139f5ca4af65f8bd201320f7788525a77c1ed0b
 
 pkgname = liberica-jdk-11-bin
