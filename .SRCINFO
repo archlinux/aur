@@ -1,6 +1,6 @@
 pkgbase = python-speechmatics-rt
 	pkgdesc = Speechmatics Real-Time API Client.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/speechmatics/speechmatics-python-sdk/tree/main/sdk/rt
 	arch = any
@@ -8,12 +8,11 @@ pkgbase = python-speechmatics-rt
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python
 	depends = python-websockets
 	depends = python-typing_extensions
 	optdepends = python-aiohttp: jwt
-	source = https://files.pythonhosted.org/packages/source/s/speechmatics-rt/speechmatics_rt-1.2.1.tar.gz
-	sha256sums = 8370f738cee9507fca18c8df88cf2cd029b7dc6810c8e854d35478241d080ca4
+	source = speechmatics-rt-1.2.2.tar.gz::https://github.com/speechmatics/speechmatics-python-sdk/archive/refs/tags/rt/v1.2.2.tar.gz
+	sha256sums = a3dc5a301852864a892c17b54e2114916f4bd7aeb80b665f7549e2eb3def98f4
 
 pkgname = python-speechmatics-rt

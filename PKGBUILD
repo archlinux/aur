@@ -2,29 +2,30 @@
 
 _name=speechmatics-rt
 pkgname=python-$_name
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Speechmatics Real-Time API Client."
 arch=('any')
-url="https://github.com/speechmatics/speechmatics-python-sdk/tree/main/sdk/rt"
+_repo='https://github.com/speechmatics/speechmatics-python-sdk'
+url="$_repo/tree/main/sdk/rt"
 license=('MIT')
 depends=('python'
          'python-websockets'
          'python-typing_extensions')
 makedepends=('python-setuptools'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 optdepends=('python-aiohttp: jwt')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('8370f738cee9507fca18c8df88cf2cd029b7dc6810c8e854d35478241d080ca4')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/rt/v$pkgver.tar.gz")
+sha256sums=('a3dc5a301852864a892c17b54e2114916f4bd7aeb80b665f7549e2eb3def98f4')
 
 build() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "speechmatics-python-sdk-rt-v$pkgver/sdk/rt"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "speechmatics-python-sdk-rt-v$pkgver/sdk/rt"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 ../../LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
