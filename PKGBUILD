@@ -1,5 +1,5 @@
 pkgname=socket
-pkgver=1.10.1
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='Command-line interface for socket.dev security analysis, compiled from source'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=(
 )
 provides=('socket-cli')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bb7a2cbc90a9cb832400c6119a146b442402918bf3baccea18b4f950c4a11a83')
+sha256sums=('287037ce4e45a914744ac687d281e1e62e45e0a01982ecfc57d00c07b018474f')
 
 build() {
   cd "${srcdir}/socket-cli-${pkgver}"
