@@ -4,6 +4,10 @@ version = 1
 path = [
     "PKGBUILD",
     "powershell-modules.psm1",
+    "build-modules.ps1",
+    "update-help.ps1",
+    "invoke-pester.ps1",
+    "nuget-modules.config",
     "README.md",
     "keys/**",
     ".SRCINFO",

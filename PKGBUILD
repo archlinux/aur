@@ -104,7 +104,11 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "psmodulepath-combined-paths.patch"
   "cim-windows-only.patch"
   "oneget-user-temp-folder.patch"
-  "powershell-modules.psm1")
+  "nuget-modules.config"
+  "powershell-modules.psm1"
+  "build-modules.ps1"
+  "update-help.ps1"
+  "invoke-pester.ps1")
 sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
             '673e931ea136511fa2c638035334a7ea1800aafb1d4100d94cf0adf1086888f765a3d92f9f294060c5f088eab4d4c12c2d70cc5dc5a4ec4f56b80f26d16cc644'
             '326b55c2eff49b21b427812c394afd000ef3e5b4da86dca087fb897e39e423be3b5c105e087f79da5dc39b0b268a9c0876f198ab67b845f31ee765caa4694aac'
@@ -118,7 +122,11 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
             '96ce607ab0c3d5a8d1670913d09ebc5575cad958fc427641b9d2c9e6982997c6659c6f20d9c0df1ebae57c77bc9efcf43fff39753a9821efad5b0dd35f190999'
             '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
-            'c980d27b69778a0fc398ae6993cc44de42d1e85322ab0d63cd4e6611276f1ff7ae427013a7c63201a7320d56fda6eea0b8e53b2628572562ade832441e9667a1')
+            '2a183bbbdbc42f55328f462bed4fce0752291395ae91c263e11e921c312f94d0c99b2180fce1e4f98e9e33af68fe83d8138217abe4a995fc7a52f442f20b7422'
+            'c980d27b69778a0fc398ae6993cc44de42d1e85322ab0d63cd4e6611276f1ff7ae427013a7c63201a7320d56fda6eea0b8e53b2628572562ade832441e9667a1'
+            '8957d27f6ffb10f237522e547d570526e81f8ef06bbce377890db5f68e1e62d1c0afbc90ebfd2c9b34b9ff122e6a4aff67353a6a2a81772d1983130068259e03'
+            '4560d42b8232c7770d11a2fba6a86b378f592e0d8ea196271b863c40e93c9dd3fd4b9c0b12ecfed994a571297a281ff0c1c6380ee4f9edf9039abfce2e59aeb3'
+            '355d5bdb418cf2f9b7f19c9a4433fc350aca62e707669b9cb2b6661d9a12828e60158b8f58a8600e9566c09750f0c47c4144ec20af8681c8aba87a8718f227f5')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
         '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
         'ce0b02fbdcb1b179f2b04cc230ac2c720563f33f09cb6787e706056638ea7c105cd4c35b4d8dc240cb08191107fe5d0053b9060705b9e4fb1da44e50763e0032'
@@ -132,7 +140,11 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
         '8384011144b56696fbbf47a2c751cfbdbcb1f0de858da784c98128838fe86a3fd0affca03fc62377d8e2b3af3ba413c1c8cdcde5c89d73bb20a706c5796aefe4'
         '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
-        '098c9546a4f6216794da81067b2e60e44c1a6f45fc249aee1764af61d867ae55c5a5931f2bb973a15d49920c3b3526a64eeecc15b9df2ceadc6b9c7e895593d6')
+        '8f501e2b35ebba03da6cdec49a2055640bba8a8fcedbdefc5c29b7c307217c4feeda08f20406cca3224a4f2761ca8cab786aaea63fdb0e8e9ac42e6745897490'
+        '098c9546a4f6216794da81067b2e60e44c1a6f45fc249aee1764af61d867ae55c5a5931f2bb973a15d49920c3b3526a64eeecc15b9df2ceadc6b9c7e895593d6'
+        '3c5ef9d88acdf18178731960b1bd49fee1dbcf32dec1d7bdbd91182c15dc068a8eecd637a94a2fe74f243e000740f7b3ede0bd78619d8bd058fa46367eb2ded7'
+        'a6dd3599d2930dfa2ce3db725a428305196e5ef52c42dd88ac5d47f852f27e0ad6577f7ef6b7a12ff3a9548bcb31254a973dc2dccbfa222ee50816620cf32976'
+        '84ab1ef0c546607fa509e4c71ab8528d5a6ff8b120a0dca14ccd7ec0ae39706cbb6c0e0cb65360dd14b74bb225b393c85d70d813602d1877efa4d720cc193374')
 
 prepare() {
   # libpsl-native is built from source instead of using the prebuilt Microsoft.PowerShell.Native package
@@ -153,17 +165,6 @@ prepare() {
   # On Unix, PackageManagement used /tmp/Microsoft.PackageManagement for all users,
   # making it unusable for everyone but the first user running it
   patch -Np1 -i "$srcdir/oneget-user-temp-folder.patch"
-
-  # The modules are built with nuget.org only, they don't need to match the .NET runtime
-  cat >"$srcdir/nuget-modules.config" <<EOF
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <clear />
-    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
-  </packageSources>
-</configuration>
-EOF
 
   cd "$srcdir"/PowerShell || exit
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
@@ -384,21 +385,9 @@ build() {
 
   ## Restore-PSModuleToBuild()
   # Instead of downloading the modules from the PowerShell Gallery, they're built from source
-  # with the PowerShell we just built, see powershell-modules.psm1
-  # shellcheck disable=SC2016
-  "$_publish_path"/pwsh -NoProfile -NonInteractive -Command '
-    $SourceDir = "'"$srcdir"'"
-    $ModulesDir = "'"$_publish_path/Modules"'"
-    Import-Module (Join-Path $SourceDir powershell-modules.psm1)
-    $nugetConfig = Join-Path $SourceDir nuget-modules.config
-    Build-PowerShellGetModule -SourcePath (Join-Path $SourceDir PowerShellGetv2) -OutputPath $ModulesDir
-    Build-PackageManagementModule -SourcePath (Join-Path $SourceDir oneget) -OutputPath $ModulesDir -NuGetConfig $nugetConfig
-    Build-PSResourceGetModule -SourcePath (Join-Path $SourceDir PSResourceGet) -OutputPath $ModulesDir -NuGetConfig $nugetConfig
-    Build-ArchiveModule -SourcePath (Join-Path $SourceDir Microsoft.PowerShell.Archive) -OutputPath $ModulesDir
-    Build-PSReadLineModule -SourcePath (Join-Path $SourceDir PSReadLine) -PagerSourcePath (Join-Path $SourceDir Pager) `
-      -OutputPath $ModulesDir -NuGetConfig $nugetConfig
-    Build-ThreadJobModule -SourcePath (Join-Path $SourceDir ThreadJob) -OutputPath $ModulesDir -NuGetConfig $nugetConfig
-  '
+  # with the PowerShell we just built
+  "$_publish_path"/pwsh -NoProfile -NonInteractive -File "$srcdir/build-modules.ps1" \
+    -SourcePath "$srcdir" -OutputPath "$_publish_path/Modules"
 
   ## Build manpage
   # We have to build this, since the pregenerated file (that is also included in their official RPMs)
@@ -409,35 +398,8 @@ build() {
   sed -i -e 's/>/\\>/g' -e 's/</\\</g' pwsh.1.ronn
   ronn -r "pwsh.1.ronn"
 
-  # Update Help
-  # As help is installed in the module location, the core help pages would become orphaned files
-  # otherwise, and every user on a machine would always need to download the help.
-  # Including them in the package also ensures they will have proper permissions.
-  #
-  # Help is only available as en-US UICulutre, see about_Updatable_Help.help.txt
-  #
-  # We also generate the powershell.config.json which will be installed later
-  # The config adds /usr/share/powershell/Modules as a working module folder in addition
-  # to the regular XDG-compliant /usr/local/share/powershell/Modules.
-  # Arch Packages are not allowed to use /usr/local, so this adds a convenient location
-  # to which PowerShell modules could be packaged and installed to.
-  cd "$_publish_path" || exit
-  # shellcheck disable=SC2016
-  ./pwsh -noprofile -command '
-    foreach($mod in (Get-ChildItem ./Modules)) {
-      Update-Help -Module $mod -UICulture en-US -Scope AllUsers
-    }
-
-    $modulepaths = @(
-      "/usr/local/share/powershell/Modules"
-      "/usr/share/powershell/Modules"
-      "/usr/lib/powershell-'"${pkgver:0:1}"'/Modules"
-    )
-    $psconfig = @{
-      PSModulePath = ([String]::Join([System.IO.Path]::PathSeparator, $modulepaths))
-    }
-    ConvertTo-Json $psconfig | Out-File '"$srcdir"'/powershell.config.json
-  '
+  # Install the help of the modules into the publish folder, see update-help.ps1
+  "$_publish_path"/pwsh -NoProfile -NonInteractive -File "$srcdir/update-help.ps1"
 }
 
 check() {
@@ -567,37 +529,8 @@ check() {
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
 
-  # shellcheck disable=SC2016
-  pwsh -noprofile -command '
-    $build_mods = New-Item -Type Directory -Name build-modules -Force
-    $pester_save_cmd = (Get-Content ./build.psm1) -match "Save-Module -Name Pester"
-    $pester_args = @{
-      Name = "Pester"
-      Path = $build_mods
-      Repository = "PSGallery"
-    }
-    foreach($sm_opt in ("MaximumVersion", "MinimumVersion")) {
-      $regexmatch = [Regex]::Match($pester_save_cmd, ("-{0}\s+(?<{0}>[\d\.]+)" -f $sm_opt))
-      if($regexmatch.Success) {
-        $pester_args += @{ $sm_opt = $regexmatch.Groups[$sm_opt].Value }
-      }
-    }
-    Save-Module @pester_args
-
-    $modulepaths = @(
-      $build_mods
-      (Join-Path $(Get-Location) "/test/tools/Modules")
-      $env:PSModulePath
-    )
-    $env:PSModulePath = [String]::Join([System.IO.Path]::PathSeparator, $modulepaths)
-
-    Import-Module Pester
-    Invoke-Pester -Show Header,Failed,Summary -EnableExit `
-      -OutputFormat NUnitXml -OutputFile pester-tests.xml `
-      -ExcludeTag @("Slow", "RequireSudoOnUnix") `
-      -Tag @("CI", "Feature") `
-      "test/powershell"
-  '
+  # Not -NonInteractive, some tests rely on prompts
+  pwsh -NoProfile -File "$srcdir/invoke-pester.ps1"
 
   ## Start-PSxUnit
   dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r "$_rid" --test-adapter-path:.
@@ -621,8 +554,16 @@ package() {
   # Install the man page
   install -Dm644 -t "$pkgdir/usr/share/man/man1" "$srcdir/PowerShell/assets/manpage/pwsh.1"
 
-  # Install the config symlink
-  install -Dm644 -t "$pkgdir/etc" "$srcdir/powershell.config.json"
+  # The config adds /usr/share/powershell/Modules as a working module folder in addition
+  # to the regular XDG-compliant /usr/local/share/powershell/Modules.
+  # Arch Packages are not allowed to use /usr/local, so this adds a convenient location
+  # to which PowerShell modules could be packaged and installed to.
+  install -dm755 "$pkgdir/etc"
+  cat >"$pkgdir/etc/powershell.config.json" <<EOF
+{
+  "PSModulePath": "/usr/local/share/powershell/Modules:/usr/share/powershell/Modules:/usr/lib/$pkgname-$_pkgnum/Modules"
+}
+EOF
   ln -s "/etc/powershell.config.json" "$pkgdir/usr/lib/$pkgname-$_pkgnum/powershell.config.json"
 
   install -dm755 "$pkgdir/usr/share/powershell/Modules"
