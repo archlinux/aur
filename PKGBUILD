@@ -2,50 +2,31 @@
 # Co-Maintainer: NyaKang <CoderKang@hotmail.com>
 
 pkgname=nyaterm-bin
-pkgver=1.3.2
-_pkgverfull=${pkgver}
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A modern, high-performance terminal workspace built with Tauri 2, React, and Rust"
+pkgdesc="Native GPUI terminal workspace with SSH, SFTP, RDP and VNC"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nyakang/nyaterm"
-license=('MIT')
+license=('Apache-2.0')
 options=(!debug)
-depends=(
-    bash
-    cairo
-    fontconfig
-    gdk-pixbuf2
-    glib2
-    gtk3
-    hicolor-icon-theme
-    libayatana-appindicator
-    libsoup3
-    systemd-libs
-    webkit2gtk-4.1
-)
-source=("LICENSE-MIT::$url/raw/v$_pkgverfull/LICENSE"
-        "nyaterm.sh")
-sha256sums=('baa8a0ccd4a43e998a0bd47172f03f548bcd0e8cb0f6689ca9ba8973b4d5ca49'
-            'aa3c571e680b3023cb62778c9c15e80491abaf23bd794018be1801ef581b6d49')
-sha256sums_x86_64=('985fe82b716815a3281092c17827a8552e38fa074fd9acf60ec8872dcb46a15c')
-sha256sums_aarch64=('4e47f79d2f2f654d9fa99af8e44d1ee313d51364418445f7e3c12446f4e5cf96')
-source_x86_64=("$pkgname-$_pkgverfull-$CARCH.deb::$url/releases/download/v$_pkgverfull/NyaTerm_${_pkgverfull}_linux_x64.deb")
-source_aarch64=("$pkgname-$_pkgverfull-aarch64.deb::$url/releases/download/v$_pkgverfull/NyaTerm_${_pkgverfull}_linux_arm64.deb")
+depends=('dbus' 'fontconfig' 'freetype2' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'openssl' 'systemd-libs' 'wayland' 'zstd')
+optdepends=('vulkan-icd-loader: Vulkan loader required by GPUI' 'vulkan-driver: hardware-specific Vulkan implementation')
+source=("LICENSE::$url/raw/v$pkgver/LICENSE")
+source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/NyaTerm_${pkgver}_linux_x64.deb")
+source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/NyaTerm_${pkgver}_linux_arm64.deb")
+sha256sums=('e0360c0b8e0dc3d944033910279d7736d72a51a6639278ede8807e74fe4c1de9')
+sha256sums_x86_64=('1d84af71b1286ab92d00c115149841c48b3f261755920c0fd0ce5cdfb4a7db85')
+sha256sums_aarch64=('927bb63b5ac4c5ccd26cfaf9bc938cab839b63253368f141c0ba556b01441b4e')
 
 package() {
-    # Extract the contents of data.tar.gz into the pkgdir itself
-    tar -xf data.tar.gz -C "$pkgdir"
-
-    # Move binary to lib and wrap with a launcher that sets
-    # WEBKIT_DISABLE_DMABUF_RENDERER=1 for Wayland compatibility
-    install -dm755 "$pkgdir/usr/lib/$pkgname"
-    mv "$pkgdir/usr/bin/nyaterm" "$pkgdir/usr/lib/$pkgname/nyaterm"
-    install -Dm755 "$srcdir/nyaterm.sh" "$pkgdir/usr/bin/nyaterm"
-
-    # Fix empty Categories so launcher displays correctly in DE menus
-    sed -i '/^Categories=/c\Categories=Network;TerminalEmulator;' \
-        "$pkgdir/usr/share/applications/NyaTerm.desktop"
-
-    # Install the license
-    install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local deb="$srcdir/$pkgname-$pkgver-$CARCH.deb"
+  local unpack="$srcdir/deb-payload"
+  rm -rf "$unpack"
+  mkdir -p "$unpack" "$pkgdir"
+  cd "$unpack"
+  ar x "$deb"
+  bsdtar -xf data.tar.* -C "$pkgdir"
+  install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s /opt/nyaterm/nyaterm "$pkgdir/usr/bin/nyaterm"
+  install -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
