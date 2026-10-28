@@ -45,8 +45,6 @@ pkgver() {
 }
 
 build() {
-	local libdir=$(python -c 'import site; print(site.getsitepackages()[0])')
-
 	arch-meson -D use_system_ncnn=true "$_plug" build
 	meson compile -C build
 }
