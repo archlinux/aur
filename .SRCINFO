@@ -1,6 +1,6 @@
 pkgbase = qmtui-bin
 	pkgdesc = Linux terminal qqmusic player (.NET 10 Native AOT pre-built package)
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/Viemean/qmtui
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = qmtui-bin
 	conflicts = qqmusic-tui-bin
 	replaces = qqmusic-tui
 	replaces = qqmusic-tui-bin
-	source_x86_64 = qmtui-0.4.8-linux-x86_64.tar.gz::https://github.com/Viemean/qmtui/releases/download/v0.4.8/qmtui-0.4.8-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 89c2c8ba139137ed5aeebf712bef4e415653b6837a7e1b1773485a251cb3d835
-	source_aarch64 = qmtui-0.4.8-linux-aarch64.tar.gz::https://github.com/Viemean/qmtui/releases/download/v0.4.8/qmtui-0.4.8-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 9449c780c6845d6dfd32680bd3246edc4d52e25ec3e20cf2930b99869e11c814
+	source_x86_64 = qmtui-0.4.9-linux-x86_64.tar.gz::https://github.com/Viemean/qmtui/releases/download/v0.4.9/qmtui-0.4.9-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 71f26c5c46af585350d8db07c39d99b2d0e0db6611182eb7c3b651436542fb86
+	source_aarch64 = qmtui-0.4.9-linux-aarch64.tar.gz::https://github.com/Viemean/qmtui/releases/download/v0.4.9/qmtui-0.4.9-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0949eda8f283b8cc10dd7cfd42162a93f9183a032c22aba0db36b23b9753ee14
 
 pkgname = qmtui-bin
