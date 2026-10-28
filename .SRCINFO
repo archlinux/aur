@@ -1,6 +1,6 @@
 pkgbase = conclave-bin
 	pkgdesc = Multi-agent pull request review with local coding agents
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/bornholm/conclave
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = conclave-bin
 	conflicts = conclave
 	provides = conclave
 	arch = aarch64
-	source_aarch64 = conclave-bin_0.20.0_aarch64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.20.0/conclave_0.20.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4fef628962174345d06e9db6a38f0f83085655e732a85d968e3a8c0958c26109
+	source_aarch64 = conclave-bin_0.21.0_aarch64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.21.0/conclave_0.21.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a28ce1710b59c79b943ca033e7535cbbb4c4dbe01a7d97f7a0b50b2d4151e948
 	arch = i686
-	source_i686 = conclave-bin_0.20.0_i686.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.20.0/conclave_0.20.0_linux_386.tar.gz
-	sha256sums_i686 = bdaf84462c6a1cf85c401915b65ba018e6279c91c8026be36ec5da6119395147
+	source_i686 = conclave-bin_0.21.0_i686.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.21.0/conclave_0.21.0_linux_386.tar.gz
+	sha256sums_i686 = 6e57d5b0c58e0353f782a32b49770464bbf06b4466b041ffdae420671707d4b2
 	arch = x86_64
-	source_x86_64 = conclave-bin_0.20.0_x86_64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.20.0/conclave_0.20.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8a9f139ea4641a7b93f4b254f8b4faf95bab87569c24e0606fd833728d7fd93d
+	source_x86_64 = conclave-bin_0.21.0_x86_64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v0.21.0/conclave_0.21.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8a81d2b0cd59e3e6f99d7a3e27889ad4585d346f7d7f908671710e1a6caf71e9
 	
 pkgname = conclave-bin
