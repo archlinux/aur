@@ -2,7 +2,7 @@
 
 pkgname=xf86-input-libinput-phoenix
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 _commit=ac862672e4d04e78f2b647af9d3d14544454e4b9
 _srcname=xf86-input-libinput-${_commit}
 pkgdesc="Generic input driver for the X.Org server based on libinput"
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('MIT')
 url="http://xorg.freedesktop.org/"
 depends=('libinput' 'glibc')
-makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=26.0' 'libxi' 'libx11' 'xorgproto' 'meson')
+makedepends=('xorg-server-devel-phoenix' 'libxi' 'libx11' 'xorgproto' 'meson')
 provides=("xf86-input-libinput=${pkgver}")
 conflicts=('xf86-input-libinput' 'xorg-server<1.19.0' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
 groups=('xorg-drivers')
