@@ -1,6 +1,6 @@
 pkgbase = itarmykit-bin
 	pkgdesc = Desktop shell for BaseTool load-testing workflows
-	pkgver = 2.4.14
+	pkgver = 2.4.15
 	pkgrel = 1
 	url = https://itarmy.com.ua
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = itarmykit-bin
 	provides = itarmykit
 	conflicts = itarmykit
 	options = !debug
-	source = itarmykit-2.4.14-amd64.deb::https://download.itarmy.com.ua/releases/2.4.14/itarmykit-linux-amd64.deb
-	sha256sums = b23a08aa29fa0adf64613570912cc2dbee2f59f9e7a6f865caed766df831fed7
+	source = itarmykit-2.4.15-amd64.deb::https://download.itarmy.com.ua/releases/2.4.15/itarmykit-linux-amd64.deb
+	sha256sums = 11e256bf84da10bf3edbfa1e0d310e33589746be77ae604df0c6520b14143ea8
 
 pkgname = itarmykit-bin
