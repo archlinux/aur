@@ -1,6 +1,6 @@
 pkgbase = dftd4
 	pkgdesc = A Generally Applicable Atomic-Charge Dependent London Dispersion Correction
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/dftd4/dftd4
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = dftd4
 	makedepends = python-setuptools
 	depends = blas
 	depends = lapack
-	source = dftd4-4.3.0.tar.gz::https://github.com/dftd4/dftd4/archive/refs/tags/v4.3.0.tar.gz
-	sha256sums = f904df226785644ce174f65c7235d0d5a7ead5861880f7b174dd92566522a14c
+	source = dftd4-4.3.1.tar.gz::https://github.com/dftd4/dftd4/archive/refs/tags/v4.3.1.tar.gz
+	sha256sums = 01651dd3df06f0875ed4e710ee82f7dcb621edb262d6d22068dea818b915f5da
 
 pkgname = dftd4
