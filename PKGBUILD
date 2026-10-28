@@ -3,7 +3,7 @@
 _author=conan-io
 _basename=conan
 pkgname=${_basename}-bin
-pkgver=2.33.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("${_github_url}/releases/download/${pkgver}/${_basename}-${pkgver
 source_aarch64=("${_github_url}/releases/download/${pkgver}/${_basename}-${pkgver}-linux-aarch64.tgz")
 sha256sums=('cb0cfe10fad4eeb3ec0c1482474ddae67dcf2b2715cfd58655f6d18e5ce92aac'
             'a773d64c701223fcf203bbc19c0ee7449d14e4c4fb552056c62aab0a72ccdcd0')
-sha256sums_x86_64=('0a78cd312af4b6ef6ea6e5ed7178ee4cfd827f124f2c5fb5b7d56eb4fcd4c132')
-sha256sums_aarch64=('a12a54c451a72dcf21904794c0090a4f133c9b5dd09ea964a53b51d7c84da94a')
+sha256sums_x86_64=('655177bf39c901ea6b532e02f55813eb03abaced931b5627307f1c8edc3627b6')
+sha256sums_aarch64=('1779d4b5fc62697a03bfb24b9ea502faf28cfb1a2801e243c192934446caf255')
 
 package() {
 	cd "${srcdir}/" || return 1
