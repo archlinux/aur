@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'EOF'
+==> Enable automatic recovery at boot and after suspend/hibernate:
+==>   sudo systemctl enable blue-yeti-autoreset.service blue-yeti-autoreset-resume.service
+EOF
+}
+
+post_upgrade() {
+  # 0.3.0 added a separate unit for resume; upgrades do not enable it.
+  if [ "$(vercmp "$2" 0.3.0)" -lt 0 ]; then
+    cat <<'EOF'
+==> blue-yeti-autoreset can now also recover the microphone after
+==> suspend/hibernate. Enable the new resume unit to use it:
+==>   sudo systemctl enable blue-yeti-autoreset-resume.service
+EOF
+  fi
+}
