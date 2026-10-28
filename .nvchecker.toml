@@ -1,0 +1,5 @@
+[loaf-fm-bin]
+source = "github"
+github = "m-uvex/loaf-fm"
+use_latest_release = true
+prefix = "v"
