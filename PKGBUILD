@@ -1,8 +1,9 @@
 # Maintainer: Atmosphera App <atmosphera-app@proton.me>
 
 pkgname=atmosphera
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
+_gitname="$pkgname-$pkgver"
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
 arch=('any')
 url="https://github.com/alexindigo/atmosphera"
@@ -39,16 +40,17 @@ provides=('atmosphera' 'xdg-desktop-portal-impl')
 conflicts=('atmosphera-git')
 install=atmosphera.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('38f48ea0c7be12c57e7ba6e0b30727f5581ff4a35e37ab8e8ab16f04a6896f9f')
+sha256sums=('e69dbb0aa3f8ba203859f3d8e0d57c067a3abf34e30cc4594a0c2006777c139c')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_gitname"
 
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
+  # Bake the real package version into the installed tree (About panel reads it)
+  echo "$pkgver" > "$pkgdir/etc/xdg/quickshell/atmosphera/VERSION"
   # Exclude dev tooling and temp files from the installed tree
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev" "$pkgdir/etc/xdg/quickshell/atmosphera/Scripts/dev"
-  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
 
   # Bundled per-process lock screen (the shell spawns it as
   # `qs -c atmosphera-lockscreen`): sibling config whose symlinks into the
@@ -59,13 +61,11 @@ package() {
   for d in Assets Bindings Commons Configs Helpers Modules Services Widgets builtin; do
     ln -sfn "../atmosphera/$d" "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen/$d"
   done
-
-  # Bake the packaged version for the shell's version detection
-  echo "$pkgver" > "$pkgdir/etc/xdg/quickshell/atmosphera/VERSION"
+  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
 
   # Install dispatcher to PATH (handlers resolved via SELF_DIR auto-detect)
   install -Dm755 Scripts/bash/atmosphera "$pkgdir/usr/local/bin/atmosphera"
-  # Multi-call symlinks: invoke as atmosphera-session etc. for backward compat
+  # Multi-call symlinks: invoke as atmoshera-session etc. for backward compat
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-session"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-settings"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-lock"
