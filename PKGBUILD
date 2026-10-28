@@ -1,7 +1,7 @@
 # Maintainer: pati <49492351+EmojiPati@users.noreply.github.com>
 
 pkgname=omp-bin
-pkgver=18.13.2
+pkgver=18.13.3
 pkgrel=1
 pkgdesc="oh-my-pi (omp): AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/can1357/oh-my-pi/v
 source_x86_64=("omp-${pkgver}-x86_64::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-x64")
 source_aarch64=("omp-${pkgver}-aarch64::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-arm64")
 sha256sums=('16c45f9d667442781f03fa198914cc39abcaa48ec5ed8f644643e554ca2fbf63')
-sha256sums_x86_64=('dc499ea63082181a4734e5a197d61f04394e7cc0191ef7ba192d110abca0d6c4')
-sha256sums_aarch64=('5a5f3d468a4e77b5570b516a96506046c168ec64922eda1dc4fc8db727d208d3')
+sha256sums_x86_64=('42d39fa8996fed9f999e26306e60e2fdbea0c0de0d0b2d68feba275f44c41d04')
+sha256sums_aarch64=('981f08df6c6344356b31aa696fdd810b8b5fa8c8851ba926d3940e793d47cc3a')
 
 package() {
     install -Dm755 "${srcdir}/omp-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/omp"
