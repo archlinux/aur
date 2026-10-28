@@ -5,7 +5,7 @@
 pkgname=pi-hole-core
 _pkgname=pi-hole
 pkgver=6.5
-pkgrel=3
+pkgrel=4
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('EUPL-1.2')
@@ -16,7 +16,6 @@ optdepends=()
 conflicts=('pi-hole-standalone' 'pi-hole-server')
 provides=('pi-hole-standalone' 'pi-hole-server')
 install=$pkgname.install
-backup=('etc/pihole/pihole.toml')
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz
         arch-core.patch
