@@ -1,0 +1,35 @@
+pkgbase = loaf-fm-git
+	pkgdesc = Material 3 Expressive File Manager built with Qt6 Quick and Rust (git)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/m-uvex/loaf-fm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = clang
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = 7zip: zip/7z/rar/iso and encrypted archives
+	optdepends = udisks2: mount, eject and unlock drives
+	optdepends = ffmpegthumbnailer: video thumbnails
+	optdepends = xdg-utils: open files with their default application
+	optdepends = libsecret: remember encrypted drive passphrases
+	optdepends = polkit: Open as Administrator
+	provides = loaf-fm
+	provides = loaf
+	conflicts = loaf-fm
+	conflicts = loaf
+	source = loaf-fm-git::git+https://github.com/m-uvex/loaf-fm.git#branch=main
+	sha256sums = SKIP
+
+pkgname = loaf-fm-git
