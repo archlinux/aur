@@ -1,0 +1,25 @@
+pkgbase = ceviribro
+	pkgdesc = Keyboard-first terminal translator powered by DeepL
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/talhacaglar/ceviribro
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-textual
+	depends = python-deepl
+	depends = python-pyperclip
+	depends = python-dotenv
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	provides = tui-translator
+	conflicts = tui-translator
+	replaces = tui-translator
+	source = ceviribro-3.0.0.tar.gz::https://github.com/talhacaglar/ceviribro/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 94c9a7a69587fc7f848dabde3ddc2a49c84ab5c74002190da0ad5086887be2f1
+
+pkgname = ceviribro
