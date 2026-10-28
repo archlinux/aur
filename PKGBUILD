@@ -11,10 +11,10 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-: ${_ffsrcvername:=140.17.0esr}
-: ${_ffbuild:=1}
-: ${_lwrelver:=102}
-: ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
+: ${_ffsrcvername:=153.6.0esr}
+: ${_ffbuild:=2}
+: ${_lwrelver:=100}
+: ${_l10n_commit=3ae91662ee285b44f21ef31b9cae722d132e28ea}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
   _srcver="${_ffsrcver}"
@@ -148,23 +148,15 @@ source=(
   "${__pkgname}.desktop"
   "default192x192.png"
   "security-state--intermediates-${_tag}.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
-  "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
-  "0002-Use-wasm32-wasip1-target.patch"
-  "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
-  "0004-skia-m142-update.patch.xz"
 )
 noextract=("security-state--intermediates-${_tag}.zip")
-sha256sums=('ff4405c4749cef5b9fca926c4ab7579e87e451736dff25712d6ceda678644757'
-            '4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33'
+sha256sums=('6ee6cd3c1966c554202d0642108902608ce97fea562781d4c8ec503ed14f4492'
+            '91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25'
             'SKIP'
-            '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
+            '9b522f126c7eaa4798ad548d2aac1c154bd19281ddf6e76526b19d11961a1c8f'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
-            '2fe9151f44f1da557deb1bb33c03984afd9f685a92960cd67c028be6c8e7be43'
-            '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
-            'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
-            '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
-            '01b8c0b1064f746ecd186e4b92767e92e4028519cfd3e0ea0637fb786cdec644')
+            'ab91a4abb6c9aaf116346f6b7d0cc2f5e396829d877aaea18ac218e678d347de')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -203,15 +195,6 @@ prepare() {
   ## </srcprep>
 
   cd $_srcdir
-
-  if [[ "${_ffsrcvername%%.*}" -lt 149  ]]; then
-    # Fix build with glibc 2.43
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-    patch -B .patchorigin -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-    patch -B .patchorigin -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
-    xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1
-    xzcat ../../0004-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
-  fi
 
   mv -b mozconfig ../mozconfig || true
 

@@ -5,4 +5,5 @@ firefox-*.source.tar.xz.asc
 firefox-l10n-*.tar.gz
 cache/
 pkg/
-src/
+src
+src-*
