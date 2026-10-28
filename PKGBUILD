@@ -7,7 +7,7 @@
 
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
-pkgver=3.3.0
+pkgver=3.4.1
 pkgrel=2
 pkgdesc="DDCcontrol is a software used to control monitor parameters, like brightness, contrast, RGB color levels and others"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('ddccontrol-db' 'libxml2' 'glib2')
 makedepends=('gtk3' 'intltool' 'glib2-devel' 'rust')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/releases/download/${pkgver}/ddccontrol-${pkgver}-vendor.tar.gz")
 options=('!libtool')
-sha512sums=('c71187f708e5c33ab198120257ae13db3b1edc77074d7825100c695ab0eb3ec745571a7f146d63e021650a853947d888e3b0291d3e3cb704d550c683d6a1f455')
+sha512sums=('a5ed61c426e5269d4a6343f3740a13d68bc7b81ec976c9e2907b80e6d9263e36688475e735ed5e72919fe9caee22d94052876a07efa7f3c67bb196ee52c9632e')
 
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
@@ -74,4 +74,5 @@ package_gddccontrol() {
 
 	# cleanups
 	rm "$pkgdir/usr/share/man/man1/ddccontrol.1"
+	rm "$pkgdir/usr/share/man/man1/ddccontrol-scanmonitor.1"
 }

@@ -1,6 +1,6 @@
 pkgbase = ddccontrol
 	pkgdesc = DDCcontrol is a software used to control monitor parameters, like brightness, contrast, RGB color levels and others
-	pkgver = 3.3.0
+	pkgver = 3.4.1
 	pkgrel = 2
 	url = https://github.com/ddccontrol/ddccontrol
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = ddccontrol
 	depends = libxml2
 	depends = glib2
 	options = !libtool
-	source = ddccontrol-3.3.0.tar.gz::https://github.com/ddccontrol/ddccontrol/releases/download/3.3.0/ddccontrol-3.3.0-vendor.tar.gz
-	sha512sums = c71187f708e5c33ab198120257ae13db3b1edc77074d7825100c695ab0eb3ec745571a7f146d63e021650a853947d888e3b0291d3e3cb704d550c683d6a1f455
+	source = ddccontrol-3.4.1.tar.gz::https://github.com/ddccontrol/ddccontrol/releases/download/3.4.1/ddccontrol-3.4.1-vendor.tar.gz
+	sha512sums = a5ed61c426e5269d4a6343f3740a13d68bc7b81ec976c9e2907b80e6d9263e36688475e735ed5e72919fe9caee22d94052876a07efa7f3c67bb196ee52c9632e
 
 pkgname = ddccontrol
 	install = ddccontrol.install
