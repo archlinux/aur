@@ -4,13 +4,13 @@
 _pkgname="material-kwin-decoration"
 pkgname="${_pkgname}-git"
 pkgver=r836.c7cff8f
-pkgrel=2
+pkgrel=3
 pkgdesc="Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support"
 url="https://github.com/guiodic/material-decoration"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
-depends=(kwin)
+depends=(kwin wayland)
 makedepends=(
   cmake
   extra-cmake-modules

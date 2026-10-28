@@ -1,7 +1,7 @@
 pkgbase = material-kwin-decoration-git
 	pkgdesc = Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support
 	pkgver = r836.c7cff8f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/guiodic/material-decoration
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,6 +11,7 @@ pkgbase = material-kwin-decoration-git
 	makedepends = vulkan-headers
 	makedepends = plasma-wayland-protocols>=1.15.0
 	depends = kwin
+	depends = wayland
 	optdepends = plasma-x11-session: for X11 support
 	optdepends = appmenu-gtk-module: gtk app support (X11)
 	optdepends = appmenu-gtk-module-wayland: gtk app support (Wayland)
