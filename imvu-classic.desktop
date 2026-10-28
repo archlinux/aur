@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IMVU Classic
+Comment=IMVU Classic Client
+Exec=imvu-classic
+Icon=imvu
+Terminal=false
+Type=Application
+Categories=Game;Network;

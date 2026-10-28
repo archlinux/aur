@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+export WINEPREFIX="$HOME/.local/share/imvu/desktop"
+export WINEARCH=win64
+export WINEDLLOVERRIDES="mscoree,mshtml="
+
+if [ ! -d "$WINEPREFIX" ]; then
+  mkdir -p "$WINEPREFIX"
+  wineboot -u
+fi
+
+if [ -f "$WINEPREFIX/drive_c/Program Files/IMVU/IMVUApp.exe" ]; then
+  wine "$WINEPREFIX/drive_c/Program Files/IMVU/IMVUApp.exe" "$@"
+elif [ -f "$WINEPREFIX/drive_c/Program Files (x86)/IMVU/IMVUApp.exe" ]; then
+  wine "$WINEPREFIX/drive_c/Program Files (x86)/IMVU/IMVUApp.exe" "$@"
+elif [ -f "$WINEPREFIX/drive_c/users/$USER/Local Settings/Application Data/Programs/imvu/IMVU.exe" ]; then
+  wine "$WINEPREFIX/drive_c/users/$USER/Local Settings/Application Data/Programs/imvu/IMVU.exe" "$@"
+elif [ -f "$WINEPREFIX/drive_c/users/$USER/AppData/Local/Programs/imvu/IMVU.exe" ]; then
+  wine "$WINEPREFIX/drive_c/users/$USER/AppData/Local/Programs/imvu/IMVU.exe" "$@"
+else
+  echo "IMVU Desktop doesn't appear to be installed in this prefix."
+  echo "Run the installer first with: imvu-desktop-setup"
+  exit 1
+fi

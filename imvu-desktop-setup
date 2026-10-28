@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+export WINEPREFIX="$HOME/.local/share/imvu/desktop"
+export WINEARCH=win64
+export WINEDLLOVERRIDES="mscoree,mshtml="
+mkdir -p "$WINEPREFIX"
+wineboot -u
+wine /usr/share/imvu/IMVUApp-BETA-15.6.1.exe

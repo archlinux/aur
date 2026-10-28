@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+export WINEPREFIX="$HOME/.local/share/imvu/classic"
+export WINEARCH=win32
+export WINEDLLOVERRIDES="mscoree,mshtml="
+mkdir -p "$WINEPREFIX"
+wineboot -u
+wine /usr/share/imvu/InstallIMVU_554.8.exe

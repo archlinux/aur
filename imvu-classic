@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+export WINEPREFIX="$HOME/.local/share/imvu/classic"
+export WINEARCH=win32
+export WINEDLLOVERRIDES="mscoree,mshtml="
+
+if [ ! -d "$WINEPREFIX" ]; then
+  mkdir -p "$WINEPREFIX"
+  wineboot -u
+fi
+
+if [ -f "$WINEPREFIX/drive_c/Program Files/IMVU/IMVUClient.exe" ]; then
+  wine "$WINEPREFIX/drive_c/Program Files/IMVU/IMVUClient.exe" "$@"
+elif [ -f "$WINEPREFIX/drive_c/Program Files (x86)/IMVU/IMVUClient.exe" ]; then
+  wine "$WINEPREFIX/drive_c/Program Files (x86)/IMVU/IMVUClient.exe" "$@"
+else
+  echo "IMVU Classic doesn't appear to be installed in this prefix."
+  echo "Run the installer first with: imvu-classic-setup"
+  exit 1
+fi
