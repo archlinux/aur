@@ -2,23 +2,24 @@
 # shellcheck disable=SC2034,SC2154
 # makepkg consumes package metadata and supplies srcdir/pkgdir.
 pkgname=lyfy
-pkgver=26.10.0
+pkgver=26.10.1
 pkgrel=1
 pkgdesc='Declarative system maintenance and Git-backed host state for Arch Linux'
 arch=('x86_64')
 url="https://github.com/partanskiy/$pkgname"
-license=('MIT')
-depends=('glibc' 'libgcc' 'git' 'pacman' 'systemd')
-optdepends=('sudo: request protected read-only scans with lint --elevate')
-makedepends=('cargo')
+license=('MIT' 'GPL-3.0-only')
+depends=('glibc' 'libgcc' 'git' 'pacman' 'systemd' 'libalpm.so' 'libarchive.so')
+optdepends=('sudo: authenticate interactive host lint and explicit --elevate scans')
+makedepends=('cargo' 'pkgconf')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('5d8d478fe0529fb2a9ad95d27e41f65fd0e0e5a99487964662a76c1fa0c97b1b')
+sha256sums=('e9100eaf4ed77208cf347adbe9fd1fefcdd1e685d886b2c820c2d3a405674ed0')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver" || return
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target x86_64-unknown-linux-gnu
+  test -s .cargo/config.toml && test -d vendor && test -s native-sources/VERSIONS || return 1
+  cargo fetch --frozen --target x86_64-unknown-linux-gnu
 }
 
 build() {
@@ -26,6 +27,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export LYFY_BUILD_VERSION="$pkgver"
+  export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--remap-path-prefix=$srcdir=/usr/src/debug/$pkgname"
   cargo build --frozen --release --target x86_64-unknown-linux-gnu --bin "$pkgname"
 }
 
@@ -34,6 +36,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export LYFY_BUILD_VERSION="$pkgver"
+  export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--remap-path-prefix=$srcdir=/usr/src/debug/$pkgname"
   cargo test --frozen --target x86_64-unknown-linux-gnu --all-features
   test "$("target/x86_64-unknown-linux-gnu/release/$pkgname" --version)" = "$pkgname $pkgver"
 }
@@ -42,6 +45,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver" || return
   install -Dm755 "target/x86_64-unknown-linux-gnu/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 DISTRIBUTION.md "$pkgdir/usr/share/licenses/$pkgname/DISTRIBUTION.md"
   install -Dm644 THIRD_PARTY_LICENSES.txt "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.txt"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 ARCHITECTURE.md "$pkgdir/usr/share/doc/$pkgname/ARCHITECTURE.md"
