@@ -8,12 +8,12 @@
 _pkgname=neovim
 pkgname=neovim-nightly-bin
 pkgver=0.13.0+dev+1959+g61e71ccf8a
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)'
 arch=('x86_64' 'aarch64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
-license=('custom:neovim')
+license=('Apache-2.0 AND LicenseRef-vim')
 depends=('hicolor-icon-theme')
 makedepends=('jq')
 optdepends=('python-neovim: for Python 3 plugin support (see :help provider-python)'
@@ -70,4 +70,8 @@ package() {
 	cd nvim-linux-${architecture}
 	install -Dm755 bin/nvim -t "$pkgdir/usr/bin/"
 	cp -r lib share "$pkgdir/usr/"
+
+	# :help license, the Vim license that LicenseRef-vim refers to
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
+	ln -s /usr/share/nvim/runtime/doc/uganda.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-vim"
 }
