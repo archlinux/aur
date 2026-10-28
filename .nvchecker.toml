@@ -1,0 +1,5 @@
+[icinga-php-thirdparty]
+source = "github"
+github = "icinga/icinga-php-thirdparty"
+use_max_tag = true
+prefix = "v"
