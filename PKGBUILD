@@ -1,7 +1,7 @@
 # Maintainer: Ismo Toijala <ismo.toijala@gmail.com>
 pkgname=python-simpleeval
 _name=${pkgname#python-}
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A simple, safe single expression evaluator library."
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(
 source=(
 	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
-sha256sums=('1e10e5f9fec597814444e20c0892ed15162fa214c8a88f434b5b077cf2fef85b')
+sha256sums=('b417f869c11f2de034eb919820a825f35d12ce99f63a43971947ce73679eb9ba')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"

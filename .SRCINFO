@@ -1,6 +1,6 @@
 pkgbase = python-simpleeval
 	pkgdesc = A simple, safe single expression evaluator library.
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/danthedeckie/simpleeval
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-simpleeval
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/simpleeval/simpleeval-1.0.7.tar.gz
-	sha256sums = 1e10e5f9fec597814444e20c0892ed15162fa214c8a88f434b5b077cf2fef85b
+	source = https://files.pythonhosted.org/packages/source/s/simpleeval/simpleeval-1.0.8.tar.gz
+	sha256sums = b417f869c11f2de034eb919820a825f35d12ce99f63a43971947ce73679eb9ba
 
 pkgname = python-simpleeval
