@@ -59,7 +59,7 @@ source-repository-package
       _sourceRepo jgm/pandoc "$_pandoc_commit" pandoc-cli
       _sourceRepo jgm/pandoc "$_pandoc_commit" pandoc-lua-engine
     }
-    if grep source-repository-package cabal.project; then
+    if grep source-repository-package cabal.project >/dev/null; then
       echo 'cabal.project is already configured with a source repository,'
       echo "can't confidently edit it to point to the correct commit."
       echo 'Make sure the following stanzas are present, then rerun with makepkg -e'
@@ -70,7 +70,7 @@ source-repository-package
     ;&
   version)
     rm cabal.project.freeze && cp ../cabal.project.freeze .
-    if ! grep "any\.pandoc ==$_pandoc_ver,$" cabal.project.freeze; then
+    if ! grep "any\.pandoc ==$_pandoc_ver,$" cabal.project.freeze >/dev/null; then
       echo 'Freezefile out of date, delete it, then regenerate it with:'
       echo
       echo " cabal freeze --constraint pandoc==$_pandoc_ver"
