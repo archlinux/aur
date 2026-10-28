@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=wolf-lang
-pkgver=0.2.35
+pkgver=0.2.36
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer'
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ options=('!debug')
 # names; build() is offline, so the checkout is a source here and dist is
 # handed it through WOLF_DIST_STD_SRC, which it refuses unless its HEAD is
 # the pin. A release that moves STD-PIN moves _stdpin with it.
-_stdpin=2386522eb059cca5a84108562c2c0a0e72345d34
+_stdpin=78b9d3cbc41d51db44d18c40b6694403644d1c83
 source=("git+https://github.com/wolffe-lang/wolf-lang.git#tag=v$pkgver"
         "wolf-std::git+https://github.com/wolffe-lang/wolf-std.git#commit=$_stdpin")
 sha256sums=('SKIP'
