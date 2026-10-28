@@ -1,0 +1,13 @@
+pkgbase = dotnet-roslyn
+	pkgdesc = The .NET Compiler Platform for C#, Microsoft.CodeAnalysis.Common and .CSharp (NuGet packages)
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://github.com/dotnet/roslyn
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	source = roslyn-35d9211b841e7613c1d2f8f5af6d628ace696c4c.tar.gz::https://github.com/dotnet/roslyn/archive/35d9211b841e7613c1d2f8f5af6d628ace696c4c.tar.gz
+	sha512sums = 4fe7d11a37a11f66721d9c1155409ab52e1a594b90999809e0efa37b4136797ad828cb1abcc06ac9885928812693e621f77da956ddcb582c6a16c9555c63bc83
+	b2sums = 9871ff6860d0cef76ba1dad7b8d6957f8528f2589bbe320f6e3d438022cb44f425b2cbaf1b17c43313bcce6562d418133383acc290f7b6d9bc558fedf0101349
+
+pkgname = dotnet-roslyn

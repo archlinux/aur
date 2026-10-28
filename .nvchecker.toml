@@ -1,0 +1,4 @@
+[dotnet-roslyn]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'
