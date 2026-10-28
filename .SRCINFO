@@ -1,7 +1,7 @@
 pkgbase = loaf-fm
 	pkgdesc = Material 3 Expressive File Manager built with Qt6 Quick and Rust
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m-uvex/loaf-fm
 	arch = x86_64
 	license = MIT
@@ -26,6 +26,7 @@ pkgbase = loaf-fm
 	optdepends = polkit: Open as Administrator
 	provides = loaf
 	conflicts = loaf
+	options = !lto
 	source = loaf-fm-0.2.1.tar.gz::https://github.com/m-uvex/loaf-fm/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = a87a3c5d6667260dea3f964935b5b6efb8a3a18e71488e25c2493425ad383d6a
 

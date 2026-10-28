@@ -1,13 +1,15 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 pkgname=loaf-fm
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Material 3 Expressive File Manager built with Qt6 Quick and Rust"
 arch=('x86_64')
 url="https://github.com/m-uvex/loaf-fm"
 license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('cargo' 'rust' 'cmake' 'ninja' 'pkgconf' 'clang')
+# GCC LTO objects from the cxx-qt C++ side can't be linked by rustc
+options=('!lto')
 optdepends=('7zip: zip/7z/rar/iso and encrypted archives'
             'udisks2: mount, eject and unlock drives'
             'ffmpegthumbnailer: video thumbnails'
