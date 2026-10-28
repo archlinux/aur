@@ -25,6 +25,6 @@ pkgbase = herakleo
 	options = !lto
 	options = !debug
 	source = herakleo-0.1.1.tar.gz::https://github.com/crstian19/herakleo/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = ed99d5db503e13c65a6bfa8bf40b8d77b87cad82963f503b4444f865cf9c7ad7
+	sha256sums = 4827fb5a13dedadc8201f16e4c0ae8b2bf78272f27037fa82a77729a2a6b2921
 
 pkgname = herakleo

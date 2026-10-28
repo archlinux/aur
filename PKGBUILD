@@ -39,7 +39,7 @@ replaces=('herakleo-wails')
 # makepkg's LTO flags break cgo
 options=('!lto' '!debug')
 source=("herakleo-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ed99d5db503e13c65a6bfa8bf40b8d77b87cad82963f503b4444f865cf9c7ad7')
+sha256sums=('4827fb5a13dedadc8201f16e4c0ae8b2bf78272f27037fa82a77729a2a6b2921')
 
 _goenv() {
   export GOPATH="$srcdir/gopath"
