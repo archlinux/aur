@@ -1,14 +1,14 @@
 # Maintainer: killab33z <killab33z @ hispagatos-dot-org>
 pkgname=usenet_reborn
-pkgver=0.2.2
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A terminal‑based (TUI) NNTP (Usenet) client written in Rust."
 arch=('any')
 url="https://git.sr.ht/~rek2/usenet_reborn"
 license=(GPL-3.0-only)
 makedepends=('cargo')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('5dd51b2c3667e141172dacd8d78728d8cbd24385a58f1afbbc8d8a9e475c41297f2c4ec4176449121ca9311ef72f0f89f9a36422eb98d8fb709bdab9c31e2057')
+sha512sums=('588a841ce30cdbdcfd36ddb045092f8c61577ba3e31642394ee8f96ab5f2dcdd8a21c2ebe19ba26deab6d106999b4abace75761c5556a497dac6b45ef11829ab')
 options=(!debug !lto)
 
 # https://wiki.archlinux.org/title/Rust_package_guidelines
