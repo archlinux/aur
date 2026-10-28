@@ -1,0 +1,16 @@
+pkgbase = wdb
+	pkgdesc = Watchdog for disk and RAM usage in the system tray
+	pkgver = 0.0.38
+	pkgrel = 1
+	url = https://gitlab.com/mozgurbayhan/wdb
+	arch = any
+	license = GPL-2.0-only
+	license = GPL-3.0-only
+	depends = bash
+	depends = yad
+	depends = zenity
+	optdepends = libnotify: desktop notifications
+	source = wdb-0.0.38.tar.gz::https://gitlab.com/api/v4/projects/mozgurbayhan%2Fwdb/packages/generic/wdb/0.0.38/wdb-0.0.38.tar.gz
+	sha256sums = fb7734905ee5fcad418c2b66183adc1450ca94f2c0664256608d6fd71094f058
+
+pkgname = wdb
