@@ -1,0 +1,18 @@
+pkgbase = termtastic-git
+	pkgdesc = Feature-rich handmade Meshtastic console client
+	pkgver = 1.0.0.alpha4.r7.g9aec15c
+	pkgrel = 1
+	url = https://github.com/acelot/termtastic
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = termtastic
+	conflicts = termtastic
+	options = !lto
+	source = termtastic-git::git+https://github.com/acelot/termtastic
+	sha256sums = SKIP
+
+pkgname = termtastic-git
