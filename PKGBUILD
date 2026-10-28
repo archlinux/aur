@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 # makepkg consumes package metadata and supplies srcdir/pkgdir.
 pkgname=lyfy
-pkgver=0.1.2
+pkgver=26.10.0
 pkgrel=1
 pkgdesc='Declarative system maintenance and Git-backed host state for Arch Linux'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('sudo: request protected read-only scans with lint --elevate')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('c84a2c3a2464e56370af2847d7edde018484eae5194402e13773a9cf740c731d')
+sha256sums=('5d8d478fe0529fb2a9ad95d27e41f65fd0e0e5a99487964662a76c1fa0c97b1b')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver" || return
