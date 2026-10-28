@@ -3,7 +3,7 @@
 pkgname=elph-nova-bin
 _pkgname=elph-nova
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A corporate communications hub designed for effective collaboration with colleagues"
 arch=("x86_64")
 # url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
@@ -17,7 +17,7 @@ sha256sums=('fd12cd2c16ab4be335290f7906feed8c2515df4be3178812221dec79efd3d0d0')
 prepare() {
   tar -xvf data.tar.xz
 
-  sed -i 's/Exec=.*/Exec="\/opt\/Elph Nova\/${_pkgname}" --no-sandbox --disable-site-per-process --disable-zygote --ozone-platform-hint=auto %U/' "usr/share/applications/${_pkgname}.desktop"
+  sed -i "s|Exec=.*|Exec=\"/opt/Elph Nova/${_pkgname}\" --no-sandbox --disable-site-per-process --disable-zygote --ozone-platform-hint=auto %U|" "usr/share/applications/${_pkgname}.desktop"
   sed -i 's/Categories=.*;/Categories=Chat;Network;InstantMessaging;/' "usr/share/applications/${_pkgname}.desktop"
 }
 
