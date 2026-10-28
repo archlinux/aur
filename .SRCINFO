@@ -1,6 +1,6 @@
 pkgbase = system-bridge
 	pkgdesc = A bridge for your systems
-	pkgver = 5.21.1
+	pkgver = 5.22.0
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/timmo001/system-bridge
@@ -25,7 +25,7 @@ pkgbase = system-bridge
 	conflicts = system-bridge-git
 	conflicts = system-bridge-git-debug
 	options = !strip
-	source = system-bridge-5.21.1.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.21.1.tar.gz
-	sha256sums = cae3f40698f912ea8f35036588cdb56b0c75c6a3c835a07086cd01dda85103df
+	source = system-bridge-5.22.0.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.22.0.tar.gz
+	sha256sums = c0061ce3e6be5eb37ec783ea2b7516aaa19fc113286b68f9f7b0c5edccd53aab
 
 pkgname = system-bridge

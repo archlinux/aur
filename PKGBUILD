@@ -5,13 +5,13 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.21.1
+pkgver=5.22.0
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.21.1.tar.gz")
-sha256sums=('cae3f40698f912ea8f35036588cdb56b0c75c6a3c835a07086cd01dda85103df')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.22.0.tar.gz")
+sha256sums=('c0061ce3e6be5eb37ec783ea2b7516aaa19fc113286b68f9f7b0c5edccd53aab')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -87,6 +87,7 @@ package() {
   install -Dm644 _system-bridge "$pkgdir/usr/share/zsh/site-functions/_system-bridge"
   install -Dm644 system-bridge.fish "$pkgdir/usr/share/fish/vendor_completions.d/system-bridge.fish"
   install -Dm644 .scripts/linux/system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
+  install -Dm644 .scripts/linux/60-system-bridge-rapl.rules "$pkgdir/usr/lib/udev/rules.d/60-system-bridge-rapl.rules"
   install -Dm644 .resources/system-bridge-dimmed.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
   install -Dm644 .resources/system-bridge-dimmed-16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/system-bridge.png"
   install -Dm644 .resources/system-bridge-dimmed-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/system-bridge.png"
