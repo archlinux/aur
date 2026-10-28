@@ -1,4 +1,4 @@
 post_install() {
-	printf "\nThis package includes an example of a snowflake config file\n"
-	printf "Append \"%%include /etc/tor/snowflake\" to the end of /etc/tor/torrc file to make Tor daemon use it\n\n"
+    printf "\nThis package includes an example of a snowflake config file\n"
+    printf "Append \"%%include /etc/tor/snowflake\" to the end of /etc/tor/torrc file to make Tor daemon use it\n\n"
 }
