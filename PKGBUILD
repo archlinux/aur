@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 # Maintainer: Eric Kochen <eric@getpurple.sh>
 pkgname=purple
-pkgver=3.31.1
+pkgver=3.32.0
 pkgrel=1
 pkgdesc='Terminal SSH manager with provider sync, tunnels, file transfer and containers'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=(!lto)
 conflicts=('purple-git' 'purple-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a6a4612b56c6857f82ffab17945b27323cfed8930840a8d41ee221ef55dc1176')
+sha256sums=('2d13c66968f6e5df4cc1c0df9bbf98862500b0796915e7f83d255af566db4f17')
 
 prepare() {
     cd "$pkgname-$pkgver"

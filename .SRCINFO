@@ -1,6 +1,6 @@
 pkgbase = purple
 	pkgdesc = Terminal SSH manager with provider sync, tunnels, file transfer and containers
-	pkgver = 3.31.1
+	pkgver = 3.32.0
 	pkgrel = 1
 	url = https://github.com/erickochen/purple
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = purple
 	conflicts = purple-git
 	conflicts = purple-bin
 	options = !lto
-	source = purple-3.31.1.tar.gz::https://github.com/erickochen/purple/archive/refs/tags/v3.31.1.tar.gz
-	sha256sums = a6a4612b56c6857f82ffab17945b27323cfed8930840a8d41ee221ef55dc1176
+	source = purple-3.32.0.tar.gz::https://github.com/erickochen/purple/archive/refs/tags/v3.32.0.tar.gz
+	sha256sums = 2d13c66968f6e5df4cc1c0df9bbf98862500b0796915e7f83d255af566db4f17
 
 pkgname = purple
