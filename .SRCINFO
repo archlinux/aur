@@ -1,0 +1,13 @@
+pkgbase = ttf-niek-fonts-office
+	pkgdesc = Font collection from Niek's fonts-extractor (office) archive
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://github.com/Niek/fonts-extractor
+	arch = any
+	license = custom:upstream-font-licenses
+	depends = fontconfig
+	noextract = fonts-office-2.8.zip
+	source = fonts-office-2.8.zip::https://github.com/Niek/fonts-extractor/releases/download/v2.8/fonts-office.zip
+	sha256sums = cd8c1877f24996a1451686d4841a3b13f0445b7bd194484d6ad1b42af1720e16
+
+pkgname = ttf-niek-fonts-office
