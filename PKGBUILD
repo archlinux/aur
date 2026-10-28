@@ -35,6 +35,20 @@ build() {
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "${pkgbase}-${pkgver}"
+    ./train -q heart_scale heart_scale.model
+    ./predict heart_scale heart_scale.model heart_scale.out
+
+    cd python
+    local _lib=(build/lib.*)
+    PYTHONPATH="${_lib[0]}" python -c '
+from liblinear.liblinearutil import predict, svm_read_problem, train
+y, x = svm_read_problem("../heart_scale")
+m = train(y[:200], x[:200], "-q")
+predict(y[200:], x[200:], m)'
+}
+
 package_liblinear() {
     depends=('glibc' 'libgcc' 'libstdc++')
 
