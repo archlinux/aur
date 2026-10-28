@@ -3,18 +3,19 @@
 pkgname=python-pytest-remotedata
 _pname=${pkgname#python-}
 _pyname=${_pname//-/_}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Pytest plugin used for controlling access to data files hosted online"
 arch=('any')
 url="https://github.com/astropy/pytest-remotedata"
 license=('BSD-3-Clause')
-depends=('python-pytest>=5.0' 'python-packaging')
-makedepends=('python-setuptools-scm'
+depends=('python-pytest>=7.2' 'python-packaging')
+makedepends=('python-hatchling'
+             'python-hatch-vcs'
              'python-build'
              'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('41f7b7f1baa039db1e768da3aee4d67d')
+md5sums=('0a7b9a476a2e7325a8902158adad8783')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -35,9 +36,12 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # ValueError: Pytest terminal summary report not found
-    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-    PYTHONPATH="${PWD}/build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # --remote-data #
+#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+#   PYTHONPATH="${PWD}/build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count # --remote-data # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # --remote-data #
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -m pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # --remote-data #
 #   python -m venv --system-site-packages test-env
 #   test-env/bin/python -m installer dist/*.whl
 #   test-env/bin/python -m pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # --remote-data #
