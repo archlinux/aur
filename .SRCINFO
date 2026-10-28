@@ -11,6 +11,7 @@ pkgbase = obs-plugin-input-overlay
 	makedepends = extra-cmake-modules
 	makedepends = wayland-protocols
 	makedepends = patchelf
+	makedepends = simde
 	depends = obs-studio
 	depends = libxtst
 	depends = libxkbfile
