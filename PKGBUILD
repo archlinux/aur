@@ -3,7 +3,7 @@ pkgname=raveo-ttf-hinted
 _raveover=1.1
 _nfver=3.4.0
 pkgver="${_raveover}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Raveo is a warmer modification of Inter with redrawn glyphs, distributed with optional hinting and Nerd Fonts patching.'
 arch=('any')
 url='https://github.com/jakubfoglar/raveo'
@@ -17,7 +17,7 @@ source=(
 		"make_features.py")
 sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
             'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'
-            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
 
 # ── FEATURE_DEFAULTS / FEATURE_FAMILY (both optional, empty by default) ──────
 #
