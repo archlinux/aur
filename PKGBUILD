@@ -7,10 +7,10 @@
 
 pkgname="superset-venv"
 _pkgname="apache-superset"
-pkgver=4.1.1
+pkgver=6.1.0
 # superset pins numpy, pandas and pyarrow versions without wheels for the system Python
 _python=3.12
-pkgrel=3
+pkgrel=1
 pkgdesc="A modern, enterprise-ready business intelligence web application (venv installation type)"
 url="https://superset.apache.org/"
 license=("Apache-2.0")
