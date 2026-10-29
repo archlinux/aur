@@ -1,6 +1,6 @@
 pkgbase = pikvm-bin
 	pkgdesc = PiKVM ATX power control — terminal UI and CLI
-	pkgver = 0.3.7
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/pikvm
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = pikvm-bin
 	optdepends = chafa: snapshot thumbnails (future grid view)
 	provides = pikvm
 	conflicts = pikvm
-	source_x86_64 = pikvm-bin-0.3.7-x86_64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.3.7/pikvm_0.3.7_linux_x86_64.tar.gz
-	sha256sums_x86_64 = a6d2110c211069ffbe86eb1f9eab23407bf1e6f623a4c50ad82b7d90b8f0e4f2
-	source_aarch64 = pikvm-bin-0.3.7-aarch64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.3.7/pikvm_0.3.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0eee413baca7af0afcdc09c246c4a1098c68aaa169fedfe71ec2702943389ba5
+	source_x86_64 = pikvm-bin-0.4.0-x86_64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.4.0/pikvm_0.4.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 63dfa466a8bd6a3694104a64ccd80ee011e354631c507fb2764060f0a94b3db2
+	source_aarch64 = pikvm-bin-0.4.0-aarch64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.4.0/pikvm_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5cea16bf67b1c920948978b2687c8e79972de3da5bf87fe8e40b33fd6844bb14
 
 pkgname = pikvm-bin
