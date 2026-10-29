@@ -2,8 +2,8 @@
 # Contributor K1412 <jonathan@opensides.be>
 
 pkgname="fusiondirectory"
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="A combination of system administrator and end user web interface, designed to handle LDAP based setups"
 url="http://fusiondirectory.org/"
 license=("GPL2")
@@ -36,7 +36,7 @@ source=("https://github.com/fusiondirectory/$pkgname/archive/refs/tags/fusiondir
         "http://script.aculo.us/dist/scriptaculous-js-1.9.0.zip"
         "$pkgname.php.ini"
         "$pkgname.tmpfiles")
-b2sums=('c0e021f9b4302e781640116097233465dd0768d4ef44c42f1051e307a341ea5cfa62bfd4c6690023e37dd7c9b5fe4b230a927c609bf530901f0f98c5623c1d29'
+b2sums=('7a5f5389255e81ca9a81f7377baf143fc92314afa45f85918c19f10f15070140e67f28cd5062baad01b1228df0ec57601bfd3b3a17c2617ef85c06b8b64650a5'
         '1d3b125eaeba7c9017cb02f91b9081aceb83c0cbedcb5e6d8e3bf75d7282cc8ca2392240621f06fad8d05af0801433a8572979d95a8a6f7fb2ad47c12f23a132'
         '44c6f9f67d2d10291ecbc5cdc652181d4e4e03ea68e559093ab5e6cf4cfd50ed5148dc840ca73e390d493652805f6ce945b8abb750a39a6a6fa7aa329aedb0bd'
         '01764572fbcb0a39b0130b20ab1bdad7d1cd2c1800dd51a91fb71a289c2630e0f6cb82d440a59218c8117eea366fdd463f92066f3ea8bcab2c9de42e377ef5d4')
