@@ -3,7 +3,7 @@ pkgname=ttf-commissioner-hinted
 _commver=1.012
 _nfver=3.5.1
 pkgver="${_commver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Commissioner, a low-contrast humanist sans with Flare/Volume/Weight axes and a separate italic, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/kosbarts/Commissioner'
@@ -35,7 +35,7 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '373d859f527adcf80933f9741af0595e708f591bdde5f2f01896aebd7d488750'
             'f09f7f4a7dbcc2b18c1bafeae56c5611d995066f0b1cbcfe84bb9890edc66d4f'
-            '4ec84fb46a423d54ee31fea446490c066e122aa802d24dfd722b8a0311309835'
+            '9dbe3d44aa0465e2c7da9a354b0135ff04327fe8524f2a430b486dc932711f53'
             '3f86a8d1100a69364b1035189143950de9c9963b217184048808ae29e88a6129')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -212,6 +212,11 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
+#                 Asked during the build as well (none / the recommended set /
+#                 a list of your own); the variables below are what an
+#                 unattended build uses. FEATURE_FAMILY stays environment-only
+#                 on purpose: it renames every file to one family, which would
+#                 merge the cuts a multi-family build installs.
 #
 #                 This font has little worth baking. The only candidate is
 #                     FEATURE_DEFAULTS="ss01"
@@ -320,11 +325,36 @@ _prompt_options() {
         "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
     fi
-    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
-      echo "  Baking ss01 makes the alternate G with a bar the default in every"
-      echo "  program (Chromium included); fontconfig alone reaches pango only."
-      _ask_yn "Bake ss01 (barred G) into the fonts" n
-      if [[ "$_yn" == true ]]; then FEATURE_DEFAULTS="ss01"; else FEATURE_DEFAULTS=""; fi
+    echo ""
+    echo "  ── OpenType features ────────────────────────────────────"
+    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
+    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
+    echo "  lookups into calt, which every program applies - the only way Chromium,"
+    echo "  Electron, Qt and LibreOffice honour one, since they never read"
+    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
+    _ask_choice "Bake features into calt" none \
+      "none:leave the fonts as upstream ships them (default)" \
+      "barred:ss01 - the alternate G with a bar" \
+      "custom:type the tag list yourself"
+    case $_choice in
+      none)    FEATURE_DEFAULTS="" ;;
+      barred)  FEATURE_DEFAULTS="ss01" ;;
+      custom)
+        echo "  Tags, comma or space separated (e.g. \"ss01\"):"
+        read -r -p "  > " _tags || _tags=""
+                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+        _tags="${_tags#,}"; _tags="${_tags%,}"
+        FEATURE_DEFAULTS="$_tags"
+        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
+        ;;
+    esac
+    if [[ -n "$FEATURE_DEFAULTS" ]]; then
+      echo ""
+      echo "A copy under another family name keeps the stock look available; set"
+      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"Commissioner Alt\") and"
+      echo "build again. Without it the packaged files keep their names and the"
+      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
     fi
     echo ""
   else

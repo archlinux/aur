@@ -392,6 +392,11 @@ one of those features, which is what `make_features.py` does and what
 FEATURE_DEFAULTS=ss01 makepkg -si     # the alternate G with a bar, in every app
 ```
 
+`makepkg` asks for this during the build: Enter bakes nothing, so a plain build
+is unchanged. `FEATURE_FAMILY` is not prompted for on purpose - it renames every
+file to one family, which would merge the cuts a multi-family build installs -
+so the variables below are what an unattended build, or a renamed copy, uses.
+
 There is almost nothing to bake here. Of the seventeen GSUB features, only
 `ss01` is a design decision that a user could want globally - and the
 Commissioner block in `~/.config/fontconfig/fonts.conf` already turns it on for
