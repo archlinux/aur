@@ -18,7 +18,9 @@ $nugetConfig = Join-Path $SourcePath nuget-modules.config
 
 Build-PowerShellGetModule -SourcePath (Join-Path $SourcePath PowerShellGetv2) -OutputPath $OutputPath
 Build-PackageManagementModule -SourcePath (Join-Path $SourcePath oneget) -OutputPath $OutputPath -NuGetConfig $nugetConfig
-Build-PSResourceGetModule -SourcePath (Join-Path $SourcePath PSResourceGet) -OutputPath $OutputPath -NuGetConfig $nugetConfig
+# PSResourceGet is built against the packages of the source-built .NET and the system feed, see the PKGBUILD
+Build-PSResourceGetModule -SourcePath (Join-Path $SourcePath PSResourceGet) -OutputPath $OutputPath `
+    -NuGetConfig (Join-Path $SourcePath PSResourceGet/nuget.config)
 Build-ArchiveModule -SourcePath (Join-Path $SourcePath Microsoft.PowerShell.Archive) -OutputPath $OutputPath
 Build-PSReadLineModule -SourcePath (Join-Path $SourcePath PSReadLine) -PagerSourcePath (Join-Path $SourcePath Pager) `
     -OutputPath $OutputPath -NuGetConfig $nugetConfig

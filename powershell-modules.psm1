@@ -181,6 +181,16 @@ function Get-ScriptArrayValue {
 
 <#
 .SYNOPSIS
+Return the assemblies of the .NET runtime and of $PSHOME (the PowerShell running this), which modules
+load from there instead of their own copies.
+#>
+function Get-PlatformAssembly {
+    Get-ChildItem -File -Path ([System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()) -Filter '*.dll'
+    Get-ChildItem -File -Path $PSHOME -Filter '*.dll'
+}
+
+<#
+.SYNOPSIS
 Microsoft.PowerShell.PSResourceGet, see doBuild.ps1 in its repository.
 #>
 function Build-PSResourceGetModule {
@@ -192,7 +202,8 @@ function Build-PSResourceGetModule {
 
     $moduleName = 'Microsoft.PowerShell.PSResourceGet'
     $project = Join-Path $SourcePath "src/code/$moduleName.csproj"
-    # Upstream publishes for its only target framework (net472), also for PowerShell 7
+    # Upstream publishes for its only target framework, .NET Framework, also for PowerShell 7. This is
+    # built for .NET instead (psresourceget-net10.patch).
     $framework = (Get-ProjectXml $project).SelectSingleNode('//TargetFrameworks').InnerText
     $publish = Publish-ModuleProject -Path $project -NuGetConfig $NuGetConfig -Framework $framework `
         -OutputPath (Join-Path $SourcePath 'publish')
@@ -209,10 +220,13 @@ function Build-PSResourceGetModule {
     foreach ($assembly in Get-ScriptArrayValue -Path $doBuild -VariableName 'assemblyNames') {
         Copy-Item -Path (Join-Path $publish "$assembly.dll") -Destination $moduleOut
     }
+    # Upstream's list of dependencies (depAssemblyNames) is the one of the .NET Framework build. These
+    # are the ones of the .NET build, except for the ones the runtime or PowerShell provide.
+    $skip = [System.Collections.Generic.HashSet[string]]::new([string[]] (Get-PlatformAssembly).BaseName, [StringComparer]::OrdinalIgnoreCase)
+    $skip.UnionWith([string[]] (Get-ScriptArrayValue -Path $doBuild -VariableName 'assemblyNames'))
     $dependencies = New-Item -ItemType Directory -Path (Join-Path $moduleOut 'dependencies')
-    foreach ($assembly in Get-ScriptArrayValue -Path $doBuild -VariableName 'depAssemblyNames') {
-        Copy-Item -Path (Join-Path $publish "$assembly.dll") -Destination $dependencies
-    }
+    Get-ChildItem -File -Path $publish -Filter '*.dll' | Where-Object { -not $skip.Contains($_.BaseName) } |
+        Copy-Item -Destination $dependencies
 }
 
 <#
@@ -330,11 +344,7 @@ function Invoke-ReadyToRunCompiler {
 
     # Assemblies the runtime or PowerShell itself provide are loaded from there instead of the module,
     # so the module's copies are neither compiled nor used as references
-    $psHome = Split-Path -Parent (Resolve-Path -LiteralPath $ModulePath).ProviderPath
-    $platformAssemblies = @(
-        Get-ChildItem -File -Path ([System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()) -Filter '*.dll'
-        Get-ChildItem -File -Path $psHome -Filter '*.dll'
-    )
+    $platformAssemblies = @(Get-PlatformAssembly)
     $platformNames = [System.Collections.Generic.HashSet[string]]::new([string[]] $platformAssemblies.BaseName, [StringComparer]::OrdinalIgnoreCase)
 
     # The images are for the architecture PowerShell runs on, e.g. x64 or arm64

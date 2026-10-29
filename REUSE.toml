@@ -8,6 +8,7 @@ path = [
     "crossgen2-pack.targets",
     "update-help.ps1",
     "invoke-pester.ps1",
+    "psresourceget-test.ps1",
     "nuget-modules.config",
     "README.md",
     "keys/**",
@@ -43,3 +44,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "OneGet contributors"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+    "psresourceget-net10.patch",
+]
+SPDX-FileCopyrightText = "Microsoft Corporation"
+SPDX-License-Identifier = "MIT"
