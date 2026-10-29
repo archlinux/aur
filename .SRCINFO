@@ -1,6 +1,6 @@
 pkgbase = solidcraft
 	pkgdesc = vibe coded clean-room reimplementation of Autodesk Fusion
-	pkgver = 0.25.1
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://solidcraft.io
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = solidcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/tangency-labs/solidcraft/archive/refs/tags/v0.25.1/solidcraft-0.25.1.tar.gz
-	sha256sums = a488096db6cf6160e1f8b253dc2c97a45bfb37f6cd53eee14fbe3a2aac5b6ee0
+	source = https://github.com/tangency-labs/solidcraft/archive/refs/tags/v0.26.1/solidcraft-0.26.1.tar.gz
+	sha256sums = 7c08a0301a63578a3aa0ef83b819a3334bc6dbd6c04c309f1455259049d3bf38
 
 pkgname = solidcraft
 	depends = glibc
