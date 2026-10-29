@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=superghidra
-pkgver=0.5.0
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Reverse-engineering suite for Ghidra: P-code lifting, Z3, binary diffing'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   'python-psutil: apply the CPU affinity and priority of each resource mode, and validate an emulator process by executable name'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('063c88c9270afcd9e724fc2fb5d04e8b205d7551233c63a3df36dc1a3e0acef6')
+sha256sums=('e23bb0b41a509de32b8ed3ca55e179b6e6e327317998e8e218a9704baad37e52')
 
 latestver() {
   curl -fsSL "https://pypi.org/pypi/${pkgname}/json" |
