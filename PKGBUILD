@@ -3,7 +3,7 @@
 pkgname="python-code2flow"
 _name="code2flow"
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualize your source code as DOT flowcharts"
 url="https://github.com/scottrogowski/code2flow"
 license=("MIT")
