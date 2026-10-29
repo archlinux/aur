@@ -1,0 +1,19 @@
+pkgbase = sweetidle-git
+	pkgdesc = Lightweight idle management daemon for Wayland compositors (latest git)
+	pkgver = 0.1.0.r1.g0440ffe
+	pkgrel = 1
+	url = https://github.com/naurissteins/sweetidle
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	optdepends = systemd: logind sleep/lock hooks and the bundled user service
+	provides = sweetidle
+	conflicts = sweetidle
+	options = !debug
+	source = git+https://github.com/naurissteins/sweetidle.git
+	sha256sums = SKIP
+
+pkgname = sweetidle-git
