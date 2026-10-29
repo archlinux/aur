@@ -4,10 +4,10 @@
 
 pkgname="python-django-easy-thumbnails"
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly configurable thumbnail creation and caching"
 url="https://github.com/SmileyChris/easy-thumbnails"
-depends=("python-django" "python-pillow")
+depends=("python" "python-django" "python-pillow")
 makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel")
 license=("BSD")
 arch=("any")
