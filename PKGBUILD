@@ -10,7 +10,7 @@ _nfver=3.5.1
 # families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -57,7 +57,7 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
             'e475b94e90c3e569d51a24b3355e854db5195b4e161384896b7637cd42a2564e'
             '4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0'
             '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
-            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
 
 # ── Versioning ──────────────────────────────────────────────────────────────
 #
@@ -180,17 +180,24 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
 #
 #                     FEATURE_DEFAULTS="ss06,cv07,case"
 #
-#                 (ss02 is already part of ss06. Add ss03 - the centred colon -
-#                 only to a build that leaves SF Mono out; the next note says
-#                 why.)
+#                 (ss02 is already part of ss06. ss03 - the centred colon -
+#                 is baked into every family that can draw it; SF Mono cannot,
+#                 so the build leaves it out there instead of failing. The
+#                 ss03 bullet below has the measurements.)
 #
 #                 THREE TRAPS, all measured on these fonts:
-#                 * ss03 is "vertically centred colon" in SF Pro but
-#                   "REMOVE the slash from the zero" in SF Mono, whose default
-#                   zero is the slashed one (3 contours against 2: Apple ships
-#                   the slashed zero as the default there and ss03 is the plain
-#                   variant). For a slashed zero in SF Pro use cv08; in SF Mono
-#                   you already have one.
+#                 * ss03 means two different things. In SF Pro Text, SF Pro
+#                   Display and SF Pro Rounded it is the centred colon
+#                   (colon -> colon.uc, one substitution). In SF Mono it is
+#                   "REMOVE the slash from the zero" (zero -> zero.1,
+#                   3 contours to 2) and the family has no colon.uc glyph at
+#                   all, so a centred colon is impossible there. New York
+#                   Small has neither: its centred colon is ss01.
+#                   That is what _FEATURE_SKIP is for - the tag is dropped for
+#                   the family that cannot honour it and baked into all the
+#                   others, so asking for it never costs a build. For a
+#                   slashed zero in SF Pro use cv08; in SF Mono you already
+#                   have one.
 #                 * the cvXX numbers are not the same across optical sizes. In
 #                   SF Pro Rounded cv01 is the six ALONE, cv02 the nine and
 #                   cv03 the open four, where SF Pro Text's cv01 is six+nine and
@@ -204,12 +211,16 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
 #                   SF Mono has no code ligatures in this release.
 #
 #                 A tag a family does not have is skipped for that file with a
-#                 note; a tag no file has is an error, so a typo cannot pass
-#                 silently. Never bake aalt (every alternate at once), ordn
-#                 (H2O -> H2º), smcp/c2sc or rtlm; make_features.py refuses the
-#                 first three unless --allow-risky is passed. Do not bake
-#                 tnum/frac/numr/dnom/sups/subs either: they are per-context
-#                 requests, and baking tnum would tabularise running prose.
+#                 note, and so is a tag that means something else there (see
+#                 _FEATURE_SKIP): every font gets what it can support out of
+#                 what you asked for, and nothing fails because one family
+#                 cannot honour a tag. A tag no font has at all is still an
+#                 error, so a typo cannot pass silently. Never bake aalt (every
+#                 alternate at once), ordn (H2O -> H2º), smcp/c2sc or rtlm;
+#                 make_features.py refuses the first three unless --allow-risky
+#                 is passed. Do not bake tnum/frac/numr/dnom/sups/subs either:
+#                 they are per-context requests, and baking tnum would
+#                 tabularise running prose.
 #
 #                 Prompted for, but after the family questions rather than with
 #                 the others: the useful answer depends on which families the
@@ -217,7 +228,8 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
 #                 un-slashing of the zero in SF Mono), so the menu offers the
 #                 set the fontconfig block uses, the same set plus ss03, or a
 #                 list of your own. Enter keeps the default, which bakes
-#                 nothing.
+#                 nothing. Choosing the colon set for a build that contains
+#                 SF Mono is allowed: that family simply does not get ss03.
 #
 #                 Nerd Fonts patched builds work too: font-patcher keeps every
 #                 GSUB feature (verified on a patched SF Pro Text and SF Mono).
@@ -694,7 +706,7 @@ _resolve_options() {
     _ask_choice "Bake features into calt" none \
       "none:leave the fonts as Apple ships them (default)" \
       "text:ss06,cv07,case - slashed zero, one-storey a, raised punctuation" \
-      "colon:text + ss03, centred colon everywhere (not with SF Mono)" \
+      "colon:text + ss03, centred colon - SF Mono is left alone" \
       "custom:type the tag list yourself"
     case $_choice in
       none)  FEATURE_DEFAULTS="" ;;
@@ -711,18 +723,17 @@ _resolve_options() {
         ;;
     esac
     if [[ -n "$FEATURE_DEFAULTS" ]]; then
-      # ss03 means two different things in the two families: catch the
-      # combination that silently un-slashes every zero in SF Mono.
+      # ss03 means two different things in the two families. Do not refuse the
+      # build and do not drop the tag for everyone: each family gets what it
+      # can support (_FEATURE_SKIP does the per-family part at build time).
       if [[ "$WANT_SF_MONO" == true && ",$FEATURE_DEFAULTS," == *,ss03,* ]]; then
-        if [[ "$_choice" == colon ]]; then
-          echo ""
-          echo "  ss03 is the centred colon in SF Pro, but in SF Mono it replaces"
-          echo "  the slashed zero with a plain one - and the slashed zero is the"
-          echo "  default there. Refusing to bake it into a build with SF Mono:"
-          echo "  pick 2, or answer 'no' to SF Mono and build again."
-          exit 1
-        fi
-        echo "  Warning: ss03 will also un-slash every zero in SF Mono."
+        echo ""
+        echo "  ss03 is the centred colon in SF Pro (colon -> colon.uc). SF Mono"
+        echo "  has no colon.uc glyph, and its ss03 replaces the slashed zero"
+        echo "  with a plain one instead - so SF Mono is left out of this tag,"
+        echo "  and every other family still gets it. Same rule for anything a"
+        echo "  family cannot do: each font gets what it can support out of"
+        echo "  your list, with a note in the build log."
       fi
       echo ""
       echo "  A renamed copy keeps the stock look available next to the new one"
@@ -839,6 +850,27 @@ _load_options() {
   done < "$srcdir/.build_opts"
 }
 
+# ── Tags that must not be baked into some families ──────────────────────────
+# Audit 2026-10-29 of the shipped fonts (make_features.py --list on each):
+#
+#   tag    SF Pro Text/Display/Rounded      SF Mono                New York
+#   ss03   colon -> colon.uc                zero -> zero.1         absent
+#          (the centred colon, 1 sub)       (un-slashes the zero,
+#                                           3 contours -> 2; there
+#                                           is no colon.uc glyph)
+#
+# One tag, two meanings. Baking ss03 into a mixed build gave SF Mono a change
+# nobody asked for; refusing the whole build threw the tag away for the
+# families that can do exactly what was asked. Neither is right, so the tag is
+# dropped for the family that cannot honour it and baked into all the others.
+#
+# Syntax: 'TAG=REGEX|reason'. The regex is tested against the family name, the
+# nameID 16 name and the file name, so 'SF ?Mono' also matches the patched
+# 'SFMono Nerd Font Mono' and survives FontForge's garbage in nameID 16.
+_FEATURE_SKIP=(
+  'ss03=SF ?Mono|SF Mono has no colon.uc glyph; its ss03 would replace the slashed zero with a plain one'
+)
+
 # _bake_features SRC: move the lookups of FEATURE_DEFAULTS into 'calt' on the
 # fonts this build ended up with (hinted, patched or plain) and write them to
 # $srcdir/featured. Last step on purpose: ttfautohint never sees the lookups,
@@ -856,8 +888,15 @@ _bake_features() {
   fi
   rm -rf "$srcdir/featured"; mkdir -p "$srcdir/featured"
   echo "==> Baking $FEATURE_DEFAULTS into calt..."
+  # A tag that means something else in one family is dropped there and baked
+  # into the rest (_FEATURE_SKIP): the build never fails because one family
+  # cannot honour a tag, and never loses the tag for the families that can.
+  local -a _skip=()
+  for _f in "${_FEATURE_SKIP[@]}"; do
+    _skip+=(--skip "$_f")
+  done
   python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
-    -o "$srcdir/featured" "${_files[@]}"
+    ${_skip[@]+"${_skip[@]}"} -o "$srcdir/featured" "${_files[@]}"
 
   # FEATURE_FAMILY is a suffix here, one per family, and it has to be applied
   # even to the families that carry none of the requested tags (SF Mono has no

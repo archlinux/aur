@@ -359,11 +359,9 @@ the variables below are what an unattended build uses.
 
 That is exactly the set the SF Pro Text block in `~/.config/fontconfig/fonts.conf`
 turns on for pango, so GTK, Chromium, Electron, Qt and LibreOffice then agree.
-(`ss02`, also active there, is already part of `ss06`. `ss03` — the centred colon
-— is the one tag left out on purpose: it is what makes a build that contains
-SF Mono dangerous, see the traps below. Add it to a build that selects only
-SF Pro, with `SF_PRO_SUBS`/`WANT_SF_MONO=false`, if you want the colon moved even
-between letters.)
+(`ss02`, also active there, is already part of `ss06`.) Add `ss03` — the centred
+colon — and the build gives it to every family that can draw it and quietly
+leaves SF Mono out, because that family cannot: see `_FEATURE_SKIP` below.
 
 ### What the fonts actually have
 
@@ -394,14 +392,63 @@ Three things worth knowing before choosing a set:
 - **The same tag means different things in different families.** `ss03` is the
   centred colon in SF Pro, but *removes the slash from the zero* in SF Mono —
   whose default zero is the slashed one (3 contours against 2: Apple ships the
-  slashed zero as the default there). For a slashed zero in SF Pro use `cv08`.
+  slashed zero as the default there), and the family has no `colon.uc` glyph at
+  all. For a slashed zero in SF Pro use `cv08`.
 - **The `cvXX` numbers shift between optical sizes**, as the table shows: one
   global list cannot mean "open four" everywhere. That is Apple's numbering.
 - **The families do not carry the same features at all.** SF Mono has only
   `c2sc ccmp locl smcp ss03 ss04` (no `liga`, no `calt`, and no code ligatures
-  in this release); New York Small has `c2sc calt ccmp locl onum smcp ss01 tnum`.
-  A tag a family lacks is skipped for that file with a note; a tag no file has
-  is an error, so a typo cannot pass silently.
+  in this release); New York Small has `c2sc calt ccmp locl onum smcp ss01 tnum`
+  — and its centred colon is `ss01`, not `ss03`.
+
+### A tag one family cannot honour does not cost you the build
+
+The rule is: **every font gets what it can support out of the list you asked
+for**. Nothing aborts, and nothing is dropped for everybody.
+
+- A tag the family does not have is skipped for that family, with a note.
+- A tag the family *has* but which means something else there is listed in
+  `_FEATURE_SKIP` in the PKGBUILD and skipped for that family only. Today that
+  is one rule:
+
+  ```sh
+  _FEATURE_SKIP=(
+    'ss03=SF ?Mono|SF Mono has no colon.uc glyph; its ss03 would replace the slashed zero with a plain one'
+  )
+  ```
+
+  The regex is matched against the family name, the `nameID 16` name and the
+  file name, so `SF ?Mono` also matches a Nerd Fonts-patched `SFMono Nerd Font
+  Mono` and survives FontForge's garbage in `nameID 16`.
+- A tag **no** font in the set has is still an error — that is a typo, not a
+  family limitation.
+
+`make_features.py` prints what it did, per file and then as a summary:
+
+```
+  SF-Pro-Text-Regular.otf: 'SF Pro Text' calt += ss06,cv07,case,ss03
+== summary
+  SF Mono                        12 file(s)  nothing it could use
+  SF Pro Text                    18 file(s)  ss06,cv07,case,ss03
+  'case' missing from 12 file(s), skipped there
+  'cv07' missing from 12 file(s), skipped there
+  'ss06' missing from 12 file(s), skipped there
+  'ss03' left out of 12 file(s) that have it: SF Mono has no colon.uc glyph;
+         its ss03 would replace the slashed zero with a plain one
+```
+
+Measured on the built package with `ss06,cv07,case,ss03` and SF Mono included:
+SF Pro Text gets `12:34` → `one two colon.uc three four` and `calt 0` puts the
+baseline colon back, while SF Mono's zero keeps its slash (35 points, 3
+contours) and its colon stays on the baseline — i.e. exactly what it ships. The
+same holds for a Nerd Fonts-patched build: `SFMono Nerd Font Mono` matches the
+rule through the file name, and all 12 files are left alone.
+
+One family is *not* covered by the rule and cannot be: New York Small's centred
+colon is `ss01`, not `ss03`, so choosing `ss03` leaves New York as it is. Ask for
+`ss03,ss01` if you build New York on its own and want the colon moved there too
+(`ss01` in SF Pro is the alternate six and nine, so do not combine the two on a
+set that has both).
 
 Never bake `aalt` (every alternate at once), `ordn` (`H2O` → `H2º`), `smcp`/`c2sc`
 (they would replace every lowercase letter) or `rtlm` (it mirrors the square root

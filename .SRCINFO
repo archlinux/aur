@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-apple-hinted
 	pkgdesc = Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes
 	pkgver = 22.0.5.4+nf3.5.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
@@ -50,6 +50,6 @@ pkgbase = nerd-fonts-apple-hinted
 	sha256sums = e475b94e90c3e569d51a24b3355e854db5195b4e161384896b7637cd42a2564e
 	sha256sums = 4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0
 	sha256sums = 066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6
-	sha256sums = 0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632
+	sha256sums = 200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e
 
 pkgname = nerd-fonts-apple-hinted
