@@ -1,7 +1,7 @@
 pkgbase = python-flask-appbuilder
 	pkgdesc = Simple and rapid application development framework, built on top of Flask
 	pkgver = 4.3.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dpgaspar/Flask-AppBuilder
 	arch = any
 	license = BSD
