@@ -2,8 +2,9 @@
 pkgname="powerlevel11k"
 pkgver="1.0.0_alpha.1"
 pkgdesc="Powerlevel10k continuation for all shells"
-pkgrel=1
-arch=("x86-64")
+pkgrel=2
+arch=("x86_64")
+conflicts=('powerlevel11k-git')
 url="https://github.com/Qaaxaap/powerlevel11k"
 license=("GPL-3.0-or-later")
 makedepends=('rust' 'cmake' 'gettext' 'pkg-config' 'libssh2')
