@@ -5,7 +5,7 @@
 _name=rusticlone
 pkgname=$_name-bin
 # Set by .github/workflows/aur.yml at each release.
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Scheduled 3-2-1-1-0 backups for computers and servers built on rustic profiles, with UI and notifications"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 backup=("etc/$_name/$_name.env")
 source_x86_64=("$pkgname-$pkgver-x86_64-unknown-linux-musl.tar.gz::$url/releases/download/v$pkgver/$_name-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-unknown-linux-musl.tar.gz::$url/releases/download/v$pkgver/$_name-aarch64-unknown-linux-musl.tar.gz")
-b2sums_x86_64=('28fa1c736417e3f141e32b0178d171172b21f489587210f67f52a6cff6d563383edec36fe6a4e0532a55610f71db64f83920c7aa15fd894a0bae2d077ef8a39e')
-b2sums_aarch64=('feb8e3543af52f690562884dd0e6abbf35ae25fcddb4cf384871ecdf6830fddfa18b53e141bd13291794778c79bfab535cc128a1705dbfc025f2bb733abda6b4')
+b2sums_x86_64=('8d8cd33486ea064bea8db83f083c35aab0e3ca03dd07ad018443565e9bc2ff04a483e166781a26bd9248863005e9952414a6098645c0eae780f526e2fd16fff9')
+b2sums_aarch64=('422a681ddd817a7c0c4201bbf45916c7a539af8cfb9b279674685b1d1fb336baeee782f8b3eee0bd69dd10a755ccd5834c6d501902d106ceb7681b167cbca30f')
 
 
 _completion(){
