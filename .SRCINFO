@@ -1,7 +1,7 @@
 pkgbase = mkdocs-macros-plugin
 	pkgdesc = MkDocs plugin to use variables and macros in markdown files
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fralau/mkdocs_macros_plugin
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = mkdocs-macros-plugin
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	depends = mkdocs
 	depends = python-jinja
 	depends = python-termcolor
