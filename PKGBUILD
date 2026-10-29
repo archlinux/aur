@@ -2,8 +2,8 @@
 # Co-maintainer: Evert Vorster <evorster at gmail dot com>
 
 pkgname="coqui-tts"
-pkgver=0.27.5
-pkgrel=2
+pkgver=0.28.0
+pkgrel=1
 pkgdesc="Deep learning for Text to Speech (hybrid venv)"
 arch=('any')
 url="https://github.com/idiap/coqui-ai-TTS"
@@ -41,7 +41,7 @@ build() {
 
   # Install coqui-tts and any deps not on the system (AUR-only packages).
   # uv will install newer deps into the venv as needed.
-  uv pip install 'coqui-tts==0.27.5'
+  uv pip install 'coqui-tts==0.28.0'
 
   _sp="venv/lib/python3.14/site-packages"
 
