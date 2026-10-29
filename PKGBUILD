@@ -6,12 +6,12 @@
 # for change request, PLEASE MAKE A PR ON GITHUB REPO, keep commenting here would be ignored
 
 pkgname=siyuan-bin
-pkgver=3.8.8
+pkgver=3.8.9
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
-license=("AGPL-3.0-only")
+license=("AGPL-3.0-or-later")
 options=("!strip" "!debug")
 depends=("fuse2")
 optdepends=('pandoc: docx export')
