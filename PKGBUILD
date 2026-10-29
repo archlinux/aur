@@ -1,34 +1,38 @@
+# PKGBUILD forked from https://aur.archlinux.org/packages/cargo-shear by:
 # Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
 
-pkgname=cargo-shear
-pkgver="1.14.0"
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
+_pkgname=cargo-shear
+pkgname=cargo-shear-git
+pkgver=1.14.0.r10.gc33ee7b
 pkgrel=1
 pkgdesc="Remove unused dependencies in a Rust project"
 arch=('x86_64')
 url="https://github.com/Boshen/cargo-shear"
 license=('MIT')
 depends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fb9a17c87d4398eba83ec0a3ae73476e302cd9c0083e037cc31ffc44409faf2bb98bb221d899704f2a9f114fb30ae98a6e9b036ce43b7fe8b445c176a2804643')
+source=("git+$url")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+b2sums=('SKIP')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+pkgver() {
+  git -C $_pkgname describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+  cd "$_pkgname"
+  cargo build --release
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  cargo test --release --locked -- --skip expand_cfg_test_dev_dep_via_macro
+  cd "$_pkgname"
+  cargo test --release -- --skip expand_cfg_test_dev_dep_via_macro
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$_pkgname"
+  install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
