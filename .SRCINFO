@@ -1,6 +1,6 @@
 pkgbase = lyfy
 	pkgdesc = Declarative system maintenance and Git-backed host state for Arch Linux
-	pkgver = 26.10.2
+	pkgver = 26.10.3
 	pkgrel = 1
 	url = https://github.com/partanskiy/lyfy
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = lyfy
 	depends = libarchive.so
 	optdepends = sudo: authenticate interactive host lint and explicit --elevate scans
 	options = !debug
-	source = lyfy-26.10.2.tar.gz::https://github.com/partanskiy/lyfy/releases/download/v26.10.2/lyfy-v26.10.2-source.tar.gz
-	sha256sums = 077160869e807e40b98e5239de3b51828fe3f165d734c0a4975ecee722382af4
+	source = lyfy-26.10.3.tar.gz::https://github.com/partanskiy/lyfy/releases/download/v26.10.3/lyfy-v26.10.3-source.tar.gz
+	sha256sums = b4eaa615bbb0348db18e3c7f684a23f36705d87345fe633b69a5b75cc03a23e1
 
 pkgname = lyfy

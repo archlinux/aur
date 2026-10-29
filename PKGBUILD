@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 # makepkg consumes package metadata and supplies srcdir/pkgdir.
 pkgname=lyfy
-pkgver=26.10.2
+pkgver=26.10.3
 pkgrel=1
 pkgdesc='Declarative system maintenance and Git-backed host state for Arch Linux'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('sudo: authenticate interactive host lint and explicit --elevate sca
 makedepends=('cargo' 'pkgconf')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('077160869e807e40b98e5239de3b51828fe3f165d734c0a4975ecee722382af4')
+sha256sums=('b4eaa615bbb0348db18e3c7f684a23f36705d87345fe633b69a5b75cc03a23e1')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver" || return
@@ -28,7 +28,7 @@ build() {
   export CARGO_TARGET_DIR=target
   export LYFY_BUILD_VERSION="$pkgver"
   export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--remap-path-prefix=$srcdir=/usr/src/debug/$pkgname"
-  cargo build --frozen --release --target x86_64-unknown-linux-gnu --bin "$pkgname"
+  cargo build --frozen --release --target x86_64-unknown-linux-gnu -p "$pkgname-cli" --bin "$pkgname"
 }
 
 check() {
@@ -37,7 +37,7 @@ check() {
   export CARGO_TARGET_DIR=target
   export LYFY_BUILD_VERSION="$pkgver"
   export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--remap-path-prefix=$srcdir=/usr/src/debug/$pkgname"
-  cargo test --frozen --target x86_64-unknown-linux-gnu --all-features
+  cargo test --frozen --workspace --target x86_64-unknown-linux-gnu --all-features
   test "$("target/x86_64-unknown-linux-gnu/release/$pkgname" --version)" = "$pkgname $pkgver"
 }
 
@@ -52,7 +52,7 @@ package() {
   install -Dm644 examples/config.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
   install -Dm644 "docs/man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 "docs/man/$pkgname.conf.5" "$pkgdir/usr/share/man/man5/$pkgname.conf.5"
-  for document in configuration rules lint storage; do
+  for document in configuration rules lint library storage; do
     install -Dm644 "docs/$document.md" "$pkgdir/usr/share/doc/$pkgname/$document.md"
   done
 }
