@@ -2,7 +2,7 @@
 
 pkgname="pix2tex"
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Using a ViT to convert images of equations into LaTeX code"
 url="https://github.com/lukas-blecher/LaTeX-OCR"
 license=("MIT")
@@ -13,7 +13,7 @@ conflicts=("python-pix2tex")
 depends=("pyside6" # gui
          "python"
          "python-albucore"
-         "python-albumentations"
+         "python-albumentationsx"
          "python-einops"
          #"python-fastapi" # api
          #"python-imagesize" # train
