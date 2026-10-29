@@ -3,8 +3,8 @@
 
 pkgname=python-flask-appbuilder
 _name=${pkgname#python-}
-pkgver=4.3.11
-pkgrel=3
+pkgver=5.3.0
+pkgrel=1
 arch=(any)
 pkgdesc="Simple and rapid application development framework, built on top of Flask"
 url="https://github.com/dpgaspar/Flask-AppBuilder"
