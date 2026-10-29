@@ -1,6 +1,6 @@
 pkgbase = zathura-markdown-git
 	pkgdesc = Markdown support for Zathura (cmark + MuPDF backend)
-	pkgver = 2026.05.10.r3.6589e98
+	pkgver = 2026.05.10.r4.b2891eb
 	pkgrel = 1
 	url = https://github.com/demetrio108/zathura-markdown
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zathura-markdown-git
 	makedepends = appstream-glib
 	makedepends = desktop-file-utils
 	depends = cairo
-	depends = cmark
+	depends = cmark-gfm
 	depends = girara
 	depends = glib2
 	depends = gumbo-parser

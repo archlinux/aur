@@ -2,13 +2,13 @@
 
 _pkgname=zathura-markdown
 pkgname=zathura-markdown-git
-pkgver=2026.05.10.r3.6589e98
+pkgver=2026.05.10.r4.b2891eb
 pkgrel=1
 pkgdesc="Markdown support for Zathura (cmark + MuPDF backend)"
 url="https://github.com/demetrio108/zathura-markdown"
 arch=('x86_64')
 license=('Zlib')
-depends=('cairo' 'cmark' 'girara' 'glib2' 'gumbo-parser' 'jbig2dec'
+depends=('cairo' 'cmark-gfm' 'girara' 'glib2' 'gumbo-parser' 'jbig2dec'
          'libjpeg-turbo' 'libmupdf' 'openjpeg2' 'openssl' 'zathura')
 makedepends=('meson' 'ninja' 'git' 'appstream' 'appstream-glib' 'desktop-file-utils')
 provides=("${_pkgname}")
