@@ -1,6 +1,6 @@
 pkgbase = moonlightweb-bin
 	pkgdesc = Stream your gaming PC to any device with a browser
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://moonlightweb.top/
 	install = moonlightweb-bin.install
@@ -24,7 +24,7 @@ pkgbase = moonlightweb-bin
 	depends = mesa
 	depends = pipewire
 	depends = libcap
-	source = moonlightweb-0.4.0.deb::https://github.com/linckosz/moonlight-web/releases/download/v0.4.0/moonlightweb-0.4.0-linux-x64.deb
-	sha256sums = 2b45481913a32d3aee37943fc3f4862f3ca025e2296750dafa5eef639cb25cd0
+	source = moonlightweb-0.4.1.deb::https://github.com/linckosz/moonlight-web/releases/download/v0.4.1/moonlightweb-0.4.1-linux-x64.deb
+	sha256sums = d88a86163f94033e3fef5fe95eadae3bdbba843e144332e4b9775423d21db495
 
 pkgname = moonlightweb-bin
