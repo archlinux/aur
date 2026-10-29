@@ -1,12 +1,12 @@
 pkgbase = ofxstatement
 	pkgdesc = Tool to convert proprietary bank statement to OFX format, suitable for importing to GnuCash
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kedder/ofxstatement
 	arch = any
 	license = GPL
 	makedepends = python-build
-	makedepends = python-packaging
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-installer
 	depends = python
