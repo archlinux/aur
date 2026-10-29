@@ -1,0 +1,22 @@
+pkgbase = fabricad-bin
+	pkgdesc = Fast, lightweight parametric 3D CAD (parts, assemblies, drawings) on Qt 6 and OpenCASCADE (prebuilt)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/maxDTM/fabricad
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = opencascade
+	depends = qt6-base
+	depends = qt6-svg
+	provides = fabricad=0.2.1
+	conflicts = fabricad
+	noextract = fabricad-0.2.1-1-x86_64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = fabricad-0.2.1-1-x86_64.tar.zst::https://github.com/maxDTM/fabricad/releases/download/v0.2.1/fabricad-0.2.1-1-x86_64.tar.zst
+	sha256sums_x86_64 = e0aa851608fb122545e65a59b39a73323d6eba3d5f17d081277eb75da7393c65
+
+pkgname = fabricad-bin
