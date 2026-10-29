@@ -3,7 +3,7 @@
 # Packages the release tarball. Updated per release with scripts/aur-release.sh in the upstream repo.
 pkgname=backupthing-bin
 _name=backupthing
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Compress phone photos and videos to AVIF/AV1 and back them up to Proton Drive"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('waybar: status bar module (snippet in /usr/share/backupthing/waybar
 provides=("$_name")
 conflicts=("$_name")
 source=("$url/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('6c24b756b0455330df1928da580996a3f3acd9bbf57e349f65526b29daea9df9')
+sha256sums=('8cc9fd834fd21a50d47d7d3db1170844489f75a5b9fa9a26231059b9ec721889')
 
 package() {
   cd "$_name-$pkgver"
