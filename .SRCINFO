@@ -1,6 +1,6 @@
 pkgbase = relic-vague-gtk-theme
 	pkgdesc = Vague GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
-	pkgver = 2026.06.25.r11.05bb2f9
+	pkgver = 2026.06.25.r9.95dc59b
 	pkgrel = 1
 	url = https://github.com/gaou-piou/Vague-GTK-Theme
 	arch = any
