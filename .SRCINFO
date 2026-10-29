@@ -1,0 +1,15 @@
+pkgbase = jellyfin-dinit
+	pkgdesc = dinit service script for Jellyfin
+	pkgver = 12.2
+	pkgrel = 1
+	url = https://jellyfin.org
+	arch = any
+	license = GPL-2.0-or-later
+	depends = dinit
+	depends = jellyfin-server
+	optdepends = jellyfin-web: web UI served by the server
+	backup = etc/dinit.d/jellyfin
+	source = jellyfin
+	sha256sums = e904df6f28d6a0d3e8db4ee0855528faa5ab5c1b6aa207af8d99b0254a912c6c
+
+pkgname = jellyfin-dinit

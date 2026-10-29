@@ -1,0 +1,10 @@
+type = process
+description = Jellyfin media server
+command = /usr/bin/jellyfin --webdir /usr/share/jellyfin-web --logdir /var/log/jellyfin --cachedir /var/cache/jellyfin --configdir /etc/jellyfin --datadir /var/lib/jellyfin
+run-as = jellyfin
+env-file = /etc/jellyfin/jellyfin.env
+working-dir = /var/lib/jellyfin
+rlimit-nofile = 65536
+logfile = /var/log/jellyfin/stdout.log
+restart = true
+smooth-recovery = true
