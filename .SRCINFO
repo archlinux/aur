@@ -1,11 +1,12 @@
 pkgbase = mkdocs-with-pdf
 	pkgdesc = Plugin to generate a single PDF file from a MkDocs repository
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/orzih/mkdocs-with-pdf
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	depends = mkdocs
 	depends = python-beautifulsoup4
 	depends = python-libsass
