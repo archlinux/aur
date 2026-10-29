@@ -1,6 +1,6 @@
 pkgbase = novabrowser-webkit-bin
 	pkgdesc = Keyboard-driven browser on WebKitGTK 6.0, configured in TypeScript (prebuilt)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Novaturiente/novabrowser-webkit
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = novabrowser-webkit-bin
 	conflicts = novabrowser-webkit-git
 	options = !strip
 	options = !debug
-	source = novabrowser-webkit-0.1.1-x86_64.tar.zst::https://github.com/Novaturiente/novabrowser-webkit/releases/download/v0.1.1/novabrowser-webkit-0.1.1-x86_64.tar.zst
-	sha256sums = 8013bad3a4e982d242d65f2a6374a1f5d04167bfd1f59bc206a7e4ae2ec7bdb7
+	source = novabrowser-webkit-0.1.2-x86_64.tar.zst::https://github.com/Novaturiente/novabrowser-webkit/releases/download/v0.1.2/novabrowser-webkit-0.1.2-x86_64.tar.zst
+	sha256sums = 831da82b32dbae1d6d6e3857ac38cc99e5cf6b6cf469616f424f0171ecbf122e
 
 pkgname = novabrowser-webkit-bin
