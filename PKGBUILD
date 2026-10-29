@@ -1,6 +1,6 @@
 # Maintainer: Marcel Leismann <info@marcelleismann.de>
 pkgname=sshmgr
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A simple, friendly SSH connection manager for the terminal"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('openssh')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2abb31edfe09ac89db89edc3b8ba43ef3f957fa09aec60395392c77d801df96e')
+sha256sums=('362c89c4e7f9b63cf5be91a61127fda81587717bffaf0b372a934d91650890db')
 
 prepare() {
     cd "$pkgname"

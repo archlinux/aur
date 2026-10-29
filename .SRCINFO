@@ -1,6 +1,6 @@
 pkgbase = sshmgr
 	pkgdesc = A simple, friendly SSH connection manager for the terminal
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://codeberg.org/lecram345/sshmgr
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sshmgr
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = openssh
-	source = sshmgr-0.1.1.tar.gz::https://codeberg.org/lecram345/sshmgr/archive/v0.1.1.tar.gz
-	sha256sums = 2abb31edfe09ac89db89edc3b8ba43ef3f957fa09aec60395392c77d801df96e
+	source = sshmgr-0.1.2.tar.gz::https://codeberg.org/lecram345/sshmgr/archive/v0.1.2.tar.gz
+	sha256sums = 362c89c4e7f9b63cf5be91a61127fda81587717bffaf0b372a934d91650890db
 
 pkgname = sshmgr
