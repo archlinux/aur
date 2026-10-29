@@ -1,0 +1,19 @@
+pkgbase = retroed-git
+	pkgdesc = General purpose tool suite for the Retro Engine (versions 1-5)
+	pkgver = 2.0.2.r49.g2b78ca0
+	pkgrel = 1
+	url = https://github.com/RSDKModding/RetroED
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python
+	makedepends = python-pytz
+	depends = qt5-base
+	depends = qt5-svg
+	depends = zlib
+	provides = retroed
+	conflicts = retroed
+	source = git+https://github.com/RSDKModding/RetroED.git
+	sha256sums = SKIP
+
+pkgname = retroed-git
