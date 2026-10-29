@@ -1,79 +1,55 @@
 # Maintainer: xtexecute <none@none>
 
 pkgname=fleshfetch
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Very early development clicker game based on GTK4, written in Python with modding support. This is a complete joke, if you couldn't tell."
+pkgdesc='Qt-based clicker game and Python modding framework'
 arch=('any')
-url="https://github.com/xtexecute/fleshfetch"
+url='https://github.com/xtexecute/fleshfetch'
 license=('MIT')
 
 depends=(
     'python'
-    'python-gobject'
-    'gtk4'
+    'pyside6>=6.8'
+    'qt6-declarative>=6.8'
+    'qt6-multimedia'
+    'qt6-multimedia-ffmpeg'
     'python-requests'
-    'python-pygame'
 )
 
 optdepends=(
     'python-pypresence: Discord Rich Presence support'
-    'libpulse: paplay fallback sound playback'
-    'alsa-utils: aplay fallback sound playback'
 )
-
-makedepends=('git')
 
 source=(
-    "$pkgname::git+https://github.com/xtexecute/fleshfetch.git#branch=main"
+    "$pkgname-$pkgver.zip::https://github.com/xtexecute/fleshfetch/releases/download/v$pkgver/ff_v${pkgver}_source.zip"
 )
-
-sha256sums=('SKIP')
+sha256sums=('aaae6858a83c0acc59a34ce337a7a26dac4204d5f01f9f4702efffe45bff8e7a')
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/fleshfetch"
 
-    # Main app modules
-    install -d "$pkgdir/usr/share/fleshfetch"
-    install -m644 \
-        bootstrap.py \
-        console_capture.py \
-        defaults.py \
-        fleshfetch.py \
-        leaderboard.py \
-        main.py \
-        mod_api.py \
-        paths.py \
-        rpc.py \
-        save_manager.py \
-        security.py \
-        ui.py \
-        "$pkgdir/usr/share/fleshfetch/"
+    install -dm755 "$pkgdir/usr/share/fleshfetch/mods"
+    for module in *.py; do
+        case "$module" in
+            *_OLD.py|build_*.py|package_source.py|restore_nuitka_payload.py|update_reference_14.py)
+                continue
+                ;;
+        esac
+        install -m644 "$module" "$pkgdir/usr/share/fleshfetch/"
+    done
 
-    # System-wide mods folder
-    install -d "$pkgdir/usr/share/fleshfetch/mods"
+    cp -r qml assets "$pkgdir/usr/share/fleshfetch/"
+    install -m644 flesh.png click.wav flesh.ico "$pkgdir/usr/share/fleshfetch/assets/"
+    install -m644 default.conf "$pkgdir/usr/share/fleshfetch/default.conf"
+    find "$pkgdir/usr/share/fleshfetch" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/share/fleshfetch" -type f -exec chmod 644 {} +
 
-    # Launcher
-    install -d "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/fleshfetch" <<'EOF'
-#!/bin/sh
-exec /usr/bin/python /usr/share/fleshfetch/main.py "$@"
-EOF
-    chmod 755 "$pkgdir/usr/bin/fleshfetch"
-
-    # Assets
-    install -d "$pkgdir/usr/share/fleshfetch/assets"
-    install -m644 flesh.png click.wav "$pkgdir/usr/share/fleshfetch/assets/"
-
-    # App icon
-    install -Dm644 flesh.png \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/dev.xtexecute.fleshfetch.png"
-
-    # Desktop entry
+    install -Dm755 fleshfetch "$pkgdir/usr/bin/fleshfetch"
     install -Dm644 dev.xtexecute.fleshfetch.desktop \
         "$pkgdir/usr/share/applications/dev.xtexecute.fleshfetch.desktop"
-
-    # License
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 dev.xtexecute.fleshfetch.png \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/dev.xtexecute.fleshfetch.png"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
