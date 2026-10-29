@@ -10,6 +10,26 @@ yay -S nuphyctl-bin
 paru -S nuphyctl-bin
 ```
 
+## Device permissions
+
+The package installs `70-nuphyctl.rules` to grant the active local seat user
+read/write access to NuPhy USB HID devices (vendor ID `19f5`) via systemd-logind.
+No root execution, extra group membership, or world-writable permissions are needed.
+Keyboards plugged in before login are covered too.
+
+Arch's standard pacman hook reloads udev rules and retriggers connected devices.
+If you have disabled automatic retriggering, replug the keyboard once or run:
+
+```bash
+sudo udevadm control --reload-rules
+sudo udevadm trigger --subsystem-match=hidraw --property-match=ID_VENDOR_ID=19f5 --action=change
+sudo udevadm settle
+```
+
+Access is limited to active local seat sessions, not SSH-only sessions.
+The rule is also shipped by upstream in newer release archives; when updating
+to one of those releases, keep the packaged rule in sync with upstream.
+
 ## Manual build
 
 ```bash

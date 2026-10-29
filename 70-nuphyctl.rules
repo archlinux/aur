@@ -1,0 +1,3 @@
+# Allow the active local seat user to access NuPhy USB HID devices.
+# Must sort before 73-seat-late.rules so its uaccess builtin applies the ACL.
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="19f5", TAG+="uaccess"
