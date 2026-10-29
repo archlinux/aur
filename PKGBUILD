@@ -1,9 +1,8 @@
-# Maintainer: envolution
+# Contributor: envolution
 # Contributor: Felix Uhl <aur@mail.felix-uhl.de>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: cantabile <cantabile dot desu at gmail dot com>
-# shellcheck shell=bash disable=SC2034,SC2154
-
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 pkgname=uswsusp-git
 _pkgname=uswsusp
 pkgver=1.0.libgcrypt.1.6.3+r522+g84d75e60b
@@ -23,9 +22,9 @@ source=(
   'uresume-hook'
   'uresume-install'
 )
-sha256sums=('SKIP'
-            '2662d879ca7a2339233c8bdce123f0d686397093759ca54f162a3577603587b0'
-            '9fe3e38301014b4c8597aec2041ad3c6d85e6935004cbd3ac93659d391db3157')
+b2sums=('SKIP'
+        'e90fe3f8f9b37696ed8640ff3a3c7862082d5a2e681ff9b350bc1619092ae9397bdf6f805c39f646c400f2a5353793a2ecbffff7e0215fa6f7ec31a36c85cd7f'
+        '02a68df72407fe2d48b90b14339564bdf635aae329aafd072edc640990b34bce13bdfd4c4b2f0a481d70e75e1cc5646be7d7ceee8f13bacabda79fcf34ffec01')
 
 pkgver() {
   cd suspend
