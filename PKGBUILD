@@ -8,7 +8,7 @@ _gitname='crabber'
 _giturl="https://github.com/auf-gg/${_gitname}"
 
 pkgname=crabber-git
-pkgver=0.2.0.r2.g57b7936
+pkgver=0.2.0.r7.g3251f19
 pkgrel=1
 pkgdesc='XMPP messenger built on GPUI (git version)'
 arch=('x86_64')
@@ -30,6 +30,7 @@ depends=(
   'alsa-lib'           # cpal
   'vulkan-icd-loader'  # gpui/blade
   'dbus'               # ksni, notify-rust
+  'noto-fonts-emoji'   # colour emojis (reactions, picker)
 )
 provides=('crabber')
 conflicts=('crabber' 'crabber-bin')
