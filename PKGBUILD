@@ -2,23 +2,23 @@
 
 _pkgname=fatrat
 pkgname="${_pkgname}-git"
-pkgver=1.2.0_beta2.60.g1b0dd1f
+pkgver=1.3.1.r104.g2b3dfda4
 pkgrel=1
 pkgdesc='Qt Download/Upload Manager'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://fatrat.dolezel.info'
 license=('GPL-3.0-only')
-depends=('curl' 'libtorrent-rasterbar' "qt5-"{tools,svg,webengine})
+depends=('qt6-svg' 'qt6-tools' 'pybind11' 'libtorrent-rasterbar')
 optdepends=('desktop-file-utils: add application to MIME database')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'npm' 'boost')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lubosd/fatrat.git#branch=develop")
+source=("git+https://github.com/lubosd/fatrat.git")
 sha256sums=("SKIP")
 
 pkgver() {
     cd ${_pkgname}
-    git describe --always | sed 's/-/./g'
+    git describe --always --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
@@ -26,19 +26,13 @@ build() {
     cd build
     cmake ../${_pkgname}/ \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DWITH_DOCUMENTATION=ON \
-          -DWITH_NLS=ON \
-          -DWITH_CURL=ON \
-          -DWITH_BITTORRENT=ON \
-          -DWITH_WEBINTERFACE=OFF
+          -DWITH_EVERYTHING=ON
     make
 }
 
 package() {
-    # actual installation
     cd build
     make DESTDIR="${pkgdir}" install
-    # license
     install -D -m644 "${srcdir}"/${_pkgname}/LICENSE \
       -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
