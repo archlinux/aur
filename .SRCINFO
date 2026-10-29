@@ -1,7 +1,7 @@
 pkgbase = python-auto-sklearn
 	pkgdesc = An automated machine learning toolkit and a drop-in replacement for a scikit-learn estimator
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/automl/auto-sklearn
 	arch = any
 	license = BSD-3

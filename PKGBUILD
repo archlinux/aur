@@ -3,7 +3,7 @@
 pkgname="python-auto-sklearn"
 _name="${pkgname/python-/}"
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated machine learning toolkit and a drop-in replacement for a scikit-learn estimator"
 url="https://github.com/automl/auto-sklearn"
 license=("BSD-3")
