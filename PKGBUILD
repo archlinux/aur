@@ -4,7 +4,7 @@
 pkgname=ttf-google-sans-hinted
 _nfver=3.4.0
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Sans fonts (GoogleSans, GoogleSansDisplay), optionally Nerd Fonts patched and/or ttfautohint hinted"
 url='https://flutter.googlesource.com/gallery-assets'
 arch=('any')
@@ -19,7 +19,8 @@ source=(
   "font-patcher-${_nfver}::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   'make_features.py'
 )
-sha256sums=('SKIP' 'SKIP'
+sha256sums=('d4e4731431e4f97b6046d5042270338a9527c18ccf733efbb8187eded97f18c3'
+            'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'
             '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
 
 # ── Build-time options (all settable via env vars) ──────────────────────────
@@ -40,8 +41,10 @@ sha256sums=('SKIP' 'SKIP'
 #  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango (see the
-#                 note below). Environment only: there is no prompt, because
-#                 this font has almost nothing worth baking. Audit of
+#                 note below). Asked during the build as well (none / the two
+#                 cosmetic ones / a list of your own), so it does not need the
+#                 environment - although this font has almost nothing worth
+#                 baking. Audit of
 #                 GoogleSans-Regular.ttf, shaping every codepoint with each
 #                 feature on and off:
 #                   case   52 subs, but it is NOT mild: it raises ( ) [ ] { }
@@ -89,6 +92,28 @@ _show()   { printf "  [%s] %s\n" "$1" "$2"; }
 # "|| _yn=''": at EOF (makepkg </dev/null, chroot, CI) read returns 1, and
 # makepkg runs build() with set -e, so the whole build used to abort here.
 _ask_yn() { local _default="${2:-n}"; read -p "  $1? (default: $_default) " _yn || _yn=""; _yn="${_yn:-$_default}"; }
+
+# _ask_choice TITLE DEFAULT KEY:description ... -> sets _choice to a KEY.
+# Enter (or EOF) keeps DEFAULT; anything else must be a listed number, so a
+# typo cannot silently pick something.
+_ask_choice() {
+  local _title="$1" _default="$2"; shift 2
+  local -a _items=("$@")
+  local _i _ans
+  echo "  $_title:"
+  for _i in "${!_items[@]}"; do
+    printf "    %d) %-10s %s%s\n" "$((_i + 1))" "${_items[$_i]%%:*}" "${_items[$_i]#*:}" \
+      "$([[ "${_items[$_i]%%:*}" == "$_default" ]] && echo "  (default)")"
+  done
+  while :; do
+    read -r -p "  > " _ans || _ans=""
+    if [[ -z "$_ans" ]]; then _choice="$_default"; return; fi
+    if [[ "$_ans" =~ ^[0-9]+$ ]] && (( _ans >= 1 && _ans <= ${#_items[@]} )); then
+      _choice="${_items[$((_ans - 1))]%%:*}"; return
+    fi
+    echo "  Enter 1-${#_items[@]}, or press Enter for $_default."
+  done
+}
 
 build() {
   # ══════════════════════════════════════════════════════════════════════════
@@ -142,6 +167,42 @@ build() {
 
   WANT_GOOGLE_SANS="${WANT_GOOGLE_SANS:-true}"
   WANT_GOOGLE_SANS_DISPLAY="${WANT_GOOGLE_SANS_DISPLAY:-true}"
+
+  # ── OpenType features ────────────────────────────────────────────────────
+  if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
+    echo ""
+    echo "  ── OpenType features ────────────────────────────────────"
+    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
+    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
+    echo "  lookups into calt, which every program applies - the only way Chromium,"
+    echo "  Electron, Qt and LibreOffice honour one, since they never read"
+    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
+    _ask_choice "Bake features into calt" none \
+      "none:leave the fonts as upstream ships them (default)" \
+      "cosmetic:ss01,ss02 - asterisk.num and colon.time, the only two that change little" \
+      "custom:type the tag list yourself"
+    case $_choice in
+      none)     FEATURE_DEFAULTS="" ;;
+      cosmetic) FEATURE_DEFAULTS="ss01,ss02" ;;
+      custom)
+        echo "  Tags, comma or space separated (e.g. \"ss01,ss02\"):"
+        read -r -p "  > " _tags || _tags=""
+                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+        _tags="${_tags#,}"; _tags="${_tags%,}"
+        FEATURE_DEFAULTS="$_tags"
+        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
+        ;;
+    esac
+    if [[ -n "$FEATURE_DEFAULTS" ]]; then
+      echo ""
+      echo "A copy under another family name keeps the stock look available; set"
+      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"Google Sans Alt\") and"
+      echo "build again. Without it the packaged files keep their names and the"
+      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
+    fi
+    echo ""
+  fi
   FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
   FEATURE_FAMILY="${FEATURE_FAMILY:-}"
   local _v
