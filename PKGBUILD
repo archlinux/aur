@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal UI for browsing 'Hacker News' - feeds, threaded comments, bookmarks."
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('36ba80e86c7830793e835db6863d0528408474cfcee0be4c6001f3c296de314b'
+sha256sums=('3f36cce88c5a8104ffa9361a3a4d46c3fe847a139940ad8ac66010b98f413f2d'
             '64453929f96a9207eac24361cc871149ac05d6590b8bd071d085b6a07ba740e7')
-sha256sums_x86_64=('d9c988b39ce0e4391e39055264cd1e2bd6737e7a38286058e9a15e57942e1f57')
-sha256sums_aarch64=('1322f987e393479124aa9adb725616ff9c86b93db57e20ff03acc7a16ccdda92')
+sha256sums_x86_64=('94bc39173ee7c056b3b0aa20434578c3fcfe8c2a53a75fba8698aa087d11ccec')
+sha256sums_aarch64=('f6a394758bfb86805c024a51f9871eb76c8f3ffa1039f4dd3a5b71d83ae5760a')
 
 
 package() {
