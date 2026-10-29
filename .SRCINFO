@@ -1,13 +1,12 @@
 pkgbase = python-ffmpeg-core
 	pkgdesc = Core runtime for typed-ffmpeg (DAG, compilation, IR layer)
 	pkgver = 4.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/ffmpeg-core/
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	depends = ffmpeg
 	depends = python-pytest
 	noextract = ffmpeg_core-4.6.2-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
