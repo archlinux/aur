@@ -1,5 +1,5 @@
 pkgbase = text-diff-view-bin
-	pkgdesc = Multi-platform text diff (text comparison) view electron app and web. Text-only.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Multi-platform text diff (text comparison) view electron app and web. Text-only.
 	pkgver = 1.10.6
 	pkgrel = 1
 	url = https://sandbox.saino.me/text-diff-view/
