@@ -1,0 +1,5 @@
+[age-plugin-fido2-hmac]
+source = "github"
+github = "olastor/age-plugin-fido2-hmac"
+use_max_tag = true
+prefix = "v"
