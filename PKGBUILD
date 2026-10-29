@@ -65,6 +65,8 @@ check() {
 
   cd "$pkgname" || exit
   # Arch has no comparable version ("Rolling Release") and no codename in /etc/os-release
+  # Upstream issue: https://github.com/PowerShell/DSC/issues/1777
+  # Upstream fix: https://github.com/PowerShell/DSC/pull/1778
   # shellcheck disable=SC2016
   sed -i -e "s/Context 'valid version constraints' {/Context 'valid version constraints' -Skip {/" \
     -e "s/Context 'codename property' -Skip:(-not \$IsLinux) {/Context 'codename property' -Skip {/" \
