@@ -2,7 +2,7 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 
 pkgname="shlink"
-pkgver=5.1.7
+pkgver=5.1.8
 pkgrel=1
 _phpver=8.5
 pkgdesc="The definitive self-hosted URL shortener"
@@ -18,7 +18,7 @@ optdepends=("mariadb: database"
             "apache: web server"
             "nginx: web server")
 source=("https://github.com/shlinkio/shlink/releases/download/v${pkgver}/${pkgname}${pkgver}_php${_phpver}_dist.zip")
-b2sums=('fbb912498bbabaa2de7d7f5713470a3a7852d281152be04a14a69adf0de3970f10f607913c645d8ce3a466fca0e86c05a31940f8be783032fa528de66d63a699')
+b2sums=('eb29195da470ac1fb423a99db05905bb7c1b57de31df39f9138f4b1caf917a6bb33db05755e69e3c55922a5786bf8e4705fb9f56f47d1b6e24550f5c2ceb6a90')
 install="$pkgname.install"
 options=("!strip")
 backup=("etc/webapps/shlink/generated_config.php")
