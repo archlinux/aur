@@ -6,7 +6,7 @@
 
 pkgname=litellm
 pkgver=1.106.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/BerriAI/litellm'
@@ -37,7 +37,8 @@ depends=('python'
          'libgcc')
 makedepends=('python-maturin'
              'python-build'
-             'python-installer')
+             'python-installer'
+             'python-wheel')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-granian: proxy'

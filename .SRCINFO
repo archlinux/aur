@@ -1,7 +1,7 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
 	pkgver = 1.106.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BerriAI/litellm
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = litellm
 	makedepends = python-maturin
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-fastuuid
 	depends = python-filelock
