@@ -1,6 +1,6 @@
 pkgbase = xresconv-gui-bin
 	pkgdesc = A GUI batch table conversion tool that conforms to the xresconv-conf specification, with xresloader as the conversion backend.
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/xresloader/xresconv-gui
 	arch = aarch64
@@ -14,17 +14,17 @@ pkgbase = xresconv-gui-bin
 	depends = libappindicator
 	depends = nodejs
 	depends = python
-	provides = xresconv-gui=3.1.0
+	provides = xresconv-gui=3.2.0
 	conflicts = xresconv-gui
 	options = !strip
 	options = !emptydirs
-	source = xresconv-gui-3.1.0.png::https://raw.githubusercontent.com/owent/xresconv-gui/v3.1.0/docs/logo.png
-	source = LICENSE-3.1.0::https://raw.githubusercontent.com/owent/xresconv-gui/v3.1.0/LICENSE
+	source = xresconv-gui-3.2.0.png::https://raw.githubusercontent.com/owent/xresconv-gui/v3.2.0/docs/logo.png
+	source = LICENSE-3.2.0::https://raw.githubusercontent.com/owent/xresconv-gui/v3.2.0/LICENSE
 	sha256sums = 7ed93f61f67710129b3756a2c50d9cdb316e8faae5b4080d9a5df93dc33bbfd4
 	sha256sums = 04855dd97336c31e617fba43527ab81b7745f7057641a05eaef99824ec564fb1
-	source_aarch64 = xresconv-gui-bin-3.1.0-aarch64.tar.zst::https://github.com/xresloader/xresconv-gui/releases/download/v3.1.0/xresconv-gui-3.1.0-linux-aarch64-bootstrap.tar.zst
-	sha256sums_aarch64 = 116021a33cd0f02e5b31c90d06374570b89694f707d1e053d1c3cc8add3c01e2
-	source_x86_64 = xresconv-gui-bin-3.1.0-x86_64.tar.zst::https://github.com/xresloader/xresconv-gui/releases/download/v3.1.0/xresconv-gui-3.1.0-linux-x86_64-bootstrap.tar.zst
-	sha256sums_x86_64 = ea35fd69c94327e71a61038cd6ddf78518c0e2457a194df847e2d35a679f60b8
+	source_aarch64 = xresconv-gui-bin-3.2.0-aarch64.tar.zst::https://github.com/xresloader/xresconv-gui/releases/download/v3.2.0/xresconv-gui-3.2.0-linux-aarch64-bootstrap.tar.zst
+	sha256sums_aarch64 = dcb6eaa07f6446800efbd2b1133b3ea346302e5eca1264857bee3ede683734aa
+	source_x86_64 = xresconv-gui-bin-3.2.0-x86_64.tar.zst::https://github.com/xresloader/xresconv-gui/releases/download/v3.2.0/xresconv-gui-3.2.0-linux-x86_64-bootstrap.tar.zst
+	sha256sums_x86_64 = 67f077161eebb9ad09ed41fde8034cee3f790808b7e0d77d2f331c8319a90bbb
 
 pkgname = xresconv-gui-bin

@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xresconv-gui-bin
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A GUI batch table conversion tool that conforms to the xresconv-conf specification, with xresloader as the conversion backend."
 arch=(
@@ -35,8 +35,8 @@ options=(
 )
 sha256sums=('7ed93f61f67710129b3756a2c50d9cdb316e8faae5b4080d9a5df93dc33bbfd4'
             '04855dd97336c31e617fba43527ab81b7745f7057641a05eaef99824ec564fb1')
-sha256sums_aarch64=('116021a33cd0f02e5b31c90d06374570b89694f707d1e053d1c3cc8add3c01e2')
-sha256sums_x86_64=('ea35fd69c94327e71a61038cd6ddf78518c0e2457a194df847e2d35a679f60b8')
+sha256sums_aarch64=('dcb6eaa07f6446800efbd2b1133b3ea346302e5eca1264857bee3ede683734aa')
+sha256sums_x86_64=('67f077161eebb9ad09ed41fde8034cee3f790808b7e0d77d2f331c8319a90bbb')
 prepare() {
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
