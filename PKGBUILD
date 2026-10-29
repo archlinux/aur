@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <GuoyiZhang at malacology dot net>
 
 pkgname="mkdocs-static-i18n-plugin"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="MkDocs i18n plugin using static translation markdown files"
 url="https://github.com/ultrabug/mkdocs-static-i18n"
@@ -11,7 +11,7 @@ arch=("any")
 depends=("mkdocs" "python-hatchling")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('72d4781611bf9ee87733b9e36fd6fc509c6849a13a884630c581992c9261588a224118aef2d980438a8aef1ae44fa061aa512e605261668a9746241c2d37c5f2')
+b2sums=('c79c27e79e2aebcc065bcfb2bb73cd91de890b75c563d3a9ea1aa70696156e8822aa02f0d7e22a5dc511151083ba0f3be174c22a6cd2bb3dec40681d1f2ca4d9')
 options=("!strip")
 
 build(){
