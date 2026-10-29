@@ -1,6 +1,6 @@
 pkgbase = passfox-host
 	pkgdesc = Native messaging host for passfox, the Firefox add-on that fills logins from pass
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/AuthenticSm1les/passfox
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = passfox-host
 	depends = pass
 	depends = python
 	optdepends = firefox: the passfox add-on, from addons.mozilla.org
-	source = passfox-0.6.0.tar.gz::https://github.com/AuthenticSm1les/passfox/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = c3eb3f60fe19d927f39b53ebca8bfb82ca0843cdb6ac6c664d95c63bf3e4f4b3
+	source = passfox-0.6.1.tar.gz::https://github.com/AuthenticSm1les/passfox/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = eba362cc7d0cc2dab99d0b9d1fdae48bad354b19a2880e8067739c8513a6104c
 
 pkgname = passfox-host
