@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname='五笔码表助手'
-pkgver=1.5.2
+pkgver=1.5.3
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://github.com/KyleBing/wubi-dict-editor"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'npm'
@@ -32,10 +32,12 @@ options=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.sh"
+    "${pkgname}.js"
+	"${pkgname}.sh"
 )
-sha256sums=('6e288bc6392c020d47cccac7faae36cb74eaa1b463a73a176f315bfc2f5201d7'
-            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
+sha256sums=('fd742094d43d91c5ed4e025fd06b3d2260dcaa6631cf1dadf3caf77124bd622a'
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -136,7 +138,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -165,7 +167,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     _icon_sizes=(16x16 32x32 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
