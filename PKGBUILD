@@ -2,7 +2,7 @@
 _appname=dashplayer
 pkgname="${_appname//hp/h-p}-bin"
 _pkgname=DashPlayer
-pkgver=6.14.0
+pkgver=6.16.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A video player designed specifically for English learning.一款专为英语学习打造的视频播放器"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('34c20cf42265a637b83a728b536b18e4d0420c23bccd2d552f014ec9c07f7aee'
+sha256sums=('c55a7c147bbd985e49191ed898f2b3c82be8013191f1c2fd6726a58fc22db46c'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
