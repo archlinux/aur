@@ -1,4 +1,5 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
+# Maintainer: fantasyzhjk <fantasyzhjk@outlook.com>
 pkgname="prismterminal"
 pkgver=1.1.29
 pkgrel=2
