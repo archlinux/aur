@@ -1,8 +1,8 @@
 # Maintainer: Hakan İSMAİL <hakanismail53@gmail.com>
 pkgname=rclone-manager
 appname='RClone.Manager'
-releasetag=0.3.4
-pkgver=0.3.4
+releasetag=0.3.5
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="User-friendly GUI for Rclone"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!strip' '!debug')
 # install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${releasetag}/${appname}_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${releasetag}/${appname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('7fa1e035ac6a4ce91549d51c8debb748a9803da166d4a08fe52ba91f972253c9')
-sha256sums_aarch64=('1b77a30cf8f6d07aab459171f324aea3761af7875c5ead4a3403b60de7429b67')
+sha256sums_x86_64=('44dad5d6384cbe33b7d1b46e4d286e5559c89c1f5949b475164d3ed8b37729a6')
+sha256sums_aarch64=('1de368106bb43a1e1c5c2653a4e726956f5b7c219f5a9139294a4c0973448850')
 package() {
   tar -xvf data.tar.gz -C "${pkgdir}"
   rm -f "${pkgdir}/usr/share/flatpak.metainfo.xml"
