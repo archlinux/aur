@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-gnome-clipboard-history-git
-pkgver=37.r263.gcb3cca8
+pkgver=37.r283.g1d4ef66
 pkgrel=1
 pkgdesc="Gnome Clipboard History is a Gnome extension that saves what you've copied into an easily accessible, searchable history panel."
 arch=('any')
@@ -10,6 +10,7 @@ license=(
   'MIT'
 )
 depends=(
+  dconf
   'gnome-shell>=1:48'
 )
 makedepends=(
@@ -52,14 +53,14 @@ package() {
   destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
-  bsdtar -xvf "bundle.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/"
+  bsdtar -xvf "bundle.zip" -C\
+    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/" --no-same-owner
 
   install -Dm644 "$destdir/schemas/$schema" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/schemas/"
 
-  cp -r "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale" "$pkgdir/usr/share/"
+  cp -r --no-preserve=ownership "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale" "$pkgdir/usr/share/"
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale/"
 
   install -Dm644 "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/LICENSE" -t \
