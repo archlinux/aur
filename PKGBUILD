@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.244
-pkgrel=1
+pkgrel=2
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -32,6 +32,7 @@ depends=(
   'python'
   'python-gobject'
   'systemd-libs'
+  'wayland'
   'zlib'
 )
 optdepends=(
@@ -146,7 +147,8 @@ replacements = [
         "  ensureBundledWaylandClipboard,\n"
         "  finalizePackagedWaylandClipboard\n"
         "} = require('./wayland-clipboard-resources.cjs')\n",
-        "",
+        "const { finalizePackagedWaylandClipboard } = "
+        "require('./wayland-clipboard-resources.cjs')\n",
     ),
     (
         "const {\n"
@@ -176,13 +178,6 @@ replacements = [
         "    }\n",
         "",
     ),
-    (
-        "      {\n"
-        "        from: 'native/wayland-clipboard/.build/${arch}/orca-wayland-clipboard',\n"
-        "        to: 'bin/orca-wayland-clipboard'\n"
-        "      },\n",
-        "",
-    ),
 ]
 for old, new in replacements:
     if data.count(old) != 1:
@@ -195,7 +190,12 @@ if data.count(start) != 1 or data.count(end) != 1:
     raise SystemExit("unexpected Linux runtime hook shape")
 start_index = data.index(start)
 end_index = data.index(end, start_index)
-data = data[:start_index] + data[end_index:]
+after_pack_linux = (
+    "    if (context.electronPlatformName === 'linux') {\n"
+    "      finalizePackagedWaylandClipboard(resourcesDir)\n"
+    "    }\n"
+)
+data = data[:start_index] + after_pack_linux + data[end_index:]
 
 runtime_probe = (
     "      if (appImageNodeRuntime) {\n"
@@ -231,6 +231,26 @@ build() {
       "$_electronmajor" "$electron_version" >&2
     return 1
   fi
+
+  local wayland_arch
+  case $CARCH in
+    x86_64) wayland_arch=x64 ;;
+    aarch64) wayland_arch=arm64 ;;
+    *)
+      printf 'ERROR: unsupported Wayland clipboard architecture %s\n' "$CARCH" >&2
+      return 1
+      ;;
+  esac
+  local wayland_out="native/wayland-clipboard/.build/$wayland_arch"
+  install -d "$wayland_out"
+  gcc \
+    -O2 -Wall -Wextra -Werror \
+    -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
+    -fPIE -pie -Wl,-z,relro,-z,now \
+    native/wayland-clipboard/wayland-clipboard.c \
+    native/wayland-clipboard/x11-clipboard-publisher.c \
+    -ldl \
+    -o "$wayland_out/orca-wayland-clipboard"
 
   local pnpm=("$srcdir/pnpm/pnpm")
 
@@ -316,6 +336,23 @@ PY
     --publish never \
     --config.electronDist="$electron_dist" \
     --config.electronVersion="$electron_version"
+}
+
+check() {
+  cd "$srcdir/orca-$_commit"
+
+  local wayland_arch
+  case $CARCH in
+    x86_64) wayland_arch=x64 ;;
+    aarch64) wayland_arch=arm64 ;;
+    *)
+      printf 'ERROR: unsupported Wayland clipboard architecture %s\n' "$CARCH" >&2
+      return 1
+      ;;
+  esac
+
+  python native/wayland-clipboard/protocol_test.py \
+    "native/wayland-clipboard/.build/$wayland_arch/orca-wayland-clipboard"
 }
 
 package() {
@@ -415,6 +452,10 @@ package() {
   fi
   [[ -x "$pkgdir/usr/lib/$pkgname/bin/orca-ide" ]] || {
     printf 'ERROR: packaged Orca CLI shim is missing\n' >&2
+    return 1
+  }
+  [[ -x "$pkgdir/usr/lib/$pkgname/bin/orca-wayland-clipboard" ]] || {
+    printf 'ERROR: packaged Wayland clipboard helper is missing\n' >&2
     return 1
   }
   [[ -f "$pkgdir/usr/lib/$pkgname/computer-use-linux/runtime.py" ]] || {
