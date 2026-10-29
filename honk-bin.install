@@ -1,0 +1,195 @@
+# honk rewrites several sysctls when it starts. pacman's post_remove runs after
+# the package's files are gone, so the values to restore must be captured at
+# install time — by then /etc/honk/config.dae may also have been replaced by the
+# administrator. Format: one "<key> <honk-writes> <original>" per line.
+_state=/var/lib/honk/.pkg-sysctl-backup
+_conf=/etc/honk/config.dae
+
+save_sysctl() {
+  local key=$1 honk_val=$2 orig
+  grep -q "^${key} " "$_state" 2>/dev/null && return 0
+  orig=$(sysctl -n "$key" 2>/dev/null) || return 0
+  [[ -n "$orig" ]] || return 0
+  mkdir -p "$(dirname "$_state")" 2>/dev/null || return 0
+  printf '%s %s %s\n' "$key" "$honk_val" "$orig" >> "$_state" 2>/dev/null || true
+}
+
+# Restore a key only when it still holds the value honk writes. A value the
+# administrator changed afterwards is left alone rather than overwritten.
+restore_all() {
+  local key honk_val orig cur
+  [[ -r "$_state" ]] || return 0
+  while read -r key honk_val orig; do
+    [[ -n "$key" && -n "$honk_val" && -n "$orig" ]] || continue
+    cur=$(sysctl -n "$key" 2>/dev/null) || continue
+    [[ "$cur" == "$honk_val" ]] || continue
+    [[ "$cur" == "$orig" ]] && continue
+    sysctl -qw "$key=$orig" 2>/dev/null || true
+  done < "$_state"
+}
+
+default_route_iface() {
+  ip -4 route show default 2>/dev/null | sed -n 's/.* dev \([^ ]*\).*/\1/p' | head -1
+}
+
+config_value() {
+  sed -n "s/^[[:space:]]*$1:[[:space:]]*//p" "$_conf" 2>/dev/null |
+    head -1 | tr -d "'\"" | cut -d, -f1 | tr -d '[:space:]'
+}
+
+# honk sets net.ipv4.ip_forward=1, net.ipv6.conf.all.forwarding=1,
+# <wan>.accept_ra=2 and <lan>.rp_filter=0.
+save_all_sysctls() {
+  # A running honk has already overwritten these, so whatever we read now is
+  # not the administrator's value. Refuse to record a polluted baseline.
+  if pgrep -x honk-core >/dev/null 2>&1; then
+    echo "warning: honk-core is running; sysctl restore values were NOT saved." >&2
+    echo "warning: stop it, remove this state file, and reinstall to enable restore:" >&2
+    echo "warning:   sudo systemctl stop honk-core && sudo rm -f $_state" >&2
+    return 0
+  fi
+
+  local wan lan
+  save_sysctl net.ipv4.ip_forward 1
+  save_sysctl net.ipv6.conf.all.forwarding 1
+
+  wan=$(config_value wan_interface)
+  if [[ -z "$wan" || "$wan" == "auto" ]]; then
+    wan=$(default_route_iface)
+  fi
+  lan=$(config_value lan_interface)
+  [[ -n "$wan" ]] && save_sysctl "net.ipv6.conf.${wan}.accept_ra" 2
+  [[ -n "$lan" ]] && save_sysctl "net.ipv4.conf.${lan}.rp_filter" 0
+  return 0
+}
+
+# honk leaves the daens netns, the instance lock, its bpffs pins and its
+# nftables table behind when it is force-killed; the next start then refuses to
+# bind NFQUEUE 320. A normal stop removes all of them by itself.
+remove_runtime_state() {
+  if [[ -e /var/run/netns/daens ]]; then
+    umount /var/run/netns/daens 2>/dev/null || true
+    rm -f /var/run/netns/daens
+  fi
+  rm -f /run/honk-core.lock
+
+  if mountpoint -q /sys/fs/bpf 2>/dev/null; then
+    # Only honk's own pins. bpftune and other tools pin under /sys/fs/bpf too,
+    # so match the names honk's object exports instead of clearing the mount.
+    local p
+    for p in /sys/fs/bpf/*; do
+      [[ -e "$p" ]] || continue
+      case "$(basename "$p")" in
+        UDP_DECISION_SEQUENCE|ROUTING_GENERATION_SEQUENCE|EVENT_RINGBUF|\
+        ROUTING_BITMAP|*_MAP|*_TRACK|ROUTING_*) rm -f "$p" 2>/dev/null || true ;;
+      esac
+    done
+  fi
+
+  # honk owns exactly this table and creates no other.
+  command -v nft >/dev/null 2>&1 && nft delete table inet honk_nfqueue 2>/dev/null
+  return 0
+}
+
+post_install() {
+  save_all_sysctls
+
+  # Load now so `honk-check` reports the real state instead of warning about
+  # something systemd-modules-load will fix at the next boot.
+  modprobe -a nfnetlink_queue nft_ct nft_queue 2>/dev/null || true
+
+  cat <<'EOF'
+
+  honk-bin (honk-core) is installed but NOT running yet.
+
+  Quick start
+  -----------
+  1. Check whether this machine can run it, and get the exact commands to fix
+     anything it reports:
+
+         honk-check
+         sudo honk-check      # adds BPF / sysctl / config detail
+
+  2. Review the configuration. It ships host-traffic-only, direct-only, with
+     the doona web UI bound to loopback:
+
+         sudoedit /etc/honk/config.dae
+
+     /etc/honk/config.dae.example is the full syntax reference.
+
+  3. Start it now, and at every boot:
+
+         sudo systemctl enable --now honk-core
+
+  4. Create the administrator account on the first visit to the web UI:
+
+         http://127.0.0.1:9527/ui/
+
+  What it changes on your machine
+  -------------------------------
+  * Loads eBPF and attaches TC hooks to the WAN interface, creates the
+    dae0/dae0peer pair and a 'daens' network namespace, writes sysctls,
+    and binds NFQUEUE 320.
+  * Stop any other transparent proxy first (Clash/Mihomo/sing-box/dae, or
+    anything with a TUN device): both would fight over the default route.
+    honk-check detects these.
+  * With the stock config only this host's traffic is intercepted. To proxy a
+    LAN, set lan_interface: and point it at your bridge.
+
+EOF
+}
+
+post_upgrade() {
+  # pre_upgrade stopped the daemon; put it back only if it had been enabled.
+  systemctl is-enabled --quiet honk-core.service 2>/dev/null &&
+    systemctl start honk-core.service 2>/dev/null
+
+  cat <<'EOF'
+
+  honk-bin upgraded. If pacman reported /etc/honk/config.dae.pacnew, diff it
+  before copying — the shipped defaults may have changed:
+
+      sudo pacdiff
+
+  Then verify the datapath again:
+
+      honk-check
+
+EOF
+}
+
+pre_remove() {
+  systemctl disable --now honk-core.service 2>/dev/null || true
+  # A clean stop tears down hooks, the nftables table and the netns itself.
+  sleep 1
+}
+
+post_remove() {
+  restore_all
+  remove_runtime_state
+
+  # Runtime data honk created; the package owns only /etc/honk and /usr.
+  rm -rf /var/lib/honk
+
+  cat <<'EOF'
+
+  honk-bin removed. Reverted:
+    - service stopped and disabled
+    - net.ipv4.ip_forward, net.ipv6.conf.all.forwarding, and the per-device
+      accept_ra / rp_filter honk set (only where the value was still honk's)
+    - /var/run/netns/daens, /run/honk-core.lock, honk's bpffs pins
+    - the inet honk_nfqueue nftables table
+    - /var/lib/honk (state db, caches, administrator account)
+
+  Kept on purpose:
+    - /etc/honk/config.dae, saved as .pacsave because you edited it
+    - nfnetlink_queue / nft_ct / nft_queue stay loaded until the next reboot;
+      firewalld, ufw and nftables share those modules.
+
+  If this machine was a LAN gateway, confirm forwarding is back the way you
+  want it:
+
+      sysctl net.ipv4.ip_forward net.ipv6.conf.all.forwarding
+
+EOF
+}

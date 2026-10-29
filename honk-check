@@ -1,0 +1,223 @@
+#!/usr/bin/env bash
+# honk-check — verify this machine can run honk-core and report what to fix.
+#
+#   honk-check            full check (re-run with sudo for BPF/sysctl details)
+#   honk-check --quiet    only print problems and the commands that fix them
+#
+# Exit status: 0 = no blocking problem found, 1 = at least one blocker.
+
+set -uo pipefail
+
+QUIET=0
+[[ "${1:-}" == "--quiet" ]] && QUIET=1
+
+RED=''; GREEN=''; YELLOW=''; BOLD=''; RESET=''
+if [[ -t 1 ]]; then
+  RED=$'\e[31m'; GREEN=$'\e[32m'; YELLOW=$'\e[33m'; BOLD=$'\e[1m'; RESET=$'\e[0m'
+fi
+
+problems=0
+warnings=0
+
+ok()   { (( QUIET )) || printf '  %s[ ok ]%s %s\n' "$GREEN" "$RESET" "$*"; }
+warn() { warnings=$((warnings + 1)); printf '  %s[warn]%s %s\n' "$YELLOW" "$RESET" "$*"; }
+bad()  { problems=$((problems + 1)); printf '  %s[FAIL]%s %s\n' "$RED" "$RESET" "$*"; }
+hint() { printf '         %s->%s %s\n' "$BOLD" "$RESET" "$*"; }
+sec()  { (( QUIET )) || printf '\n%s%s%s\n' "$BOLD" "$*" "$RESET"; }
+
+is_root=0
+[[ $EUID -eq 0 ]] && is_root=1
+
+# ---------------------------------------------------------------- kernel version
+sec "Kernel"
+krel=$(uname -r)
+kmajor=${krel%%.*}; krest=${krel#*.}; kminor=${krest%%.*}
+if (( kmajor > 6 || (kmajor == 6 && kminor >= 12) )); then
+  ok "Linux $krel (>= 6.12 required for compiled routing)"
+else
+  bad "Linux $krel is older than 6.12; honk refuses to attach its datapath"
+  hint "Install a newer kernel, e.g. linux-cachyos / linux-lts with a matching version"
+fi
+
+# ------------------------------------------------------------- kernel config
+sec "Kernel features"
+cfg=""
+if [[ -r /proc/config.gz ]]; then
+  cfg=$(zcat /proc/config.gz 2>/dev/null)
+elif [[ -r /boot/config-$krel ]]; then
+  cfg=$(cat /boot/config-$krel)
+fi
+
+if [[ -z "$cfg" ]]; then
+  warn "cannot read kernel config (/proc/config.gz or /boot/config-$krel)"
+  hint "sudo zcat /proc/config.gz | grep -E 'CONFIG_(BPF|CGROUP_BPF|NET_XGRESS)'"
+else
+  missing=()
+  for opt in CONFIG_BPF CONFIG_BPF_SYSCALL CONFIG_BPF_JIT CONFIG_CGROUP_BPF \
+             CONFIG_NET_SCHED CONFIG_NET_CLS_ACT CONFIG_NET_XGRESS CONFIG_NET_NS; do
+    grep -qE "^${opt}=(y|m)$" <<<"$cfg" || missing+=("$opt")
+  done
+  if (( ${#missing[@]} == 0 )); then
+    ok "eBPF datapath options present"
+  else
+    bad "kernel is missing: ${missing[*]}"
+    hint "Use a kernel built with these options (mainline, linux, linux-cachyos all have them)"
+  fi
+
+  nfq_missing=()
+  for opt in CONFIG_NF_TABLES CONFIG_NF_TABLES_INET CONFIG_NFT_CT CONFIG_NFT_QUEUE \
+             CONFIG_NETFILTER_NETLINK_QUEUE; do
+    grep -qE "^${opt}=(y|m)$" <<<"$cfg" || nfq_missing+=("$opt")
+  done
+  if (( ${#nfq_missing[@]} == 0 )); then
+    ok "NFQUEUE options present"
+  else
+    warn "NFQUEUE options missing: ${nfq_missing[*]}"
+    hint "Either use a kernel that has them, or set nfqueue_enable: false in /etc/honk/config.dae"
+  fi
+fi
+
+# ------------------------------------------------------------------- cgroup v2
+sec "cgroup"
+if [[ "$(stat -fc %T /sys/fs/cgroup 2>/dev/null)" == "cgroup2fs" ]]; then
+  ok "cgroup v2 mounted"
+else
+  bad "cgroup v2 is not mounted at /sys/fs/cgroup"
+  hint "Boot with systemd.unified_cgroup_hierarchy=1 (default on Arch)"
+fi
+
+# ------------------------------------------------------------------- bpffs
+sec "BPF filesystem"
+if mountpoint -q /sys/fs/bpf 2>/dev/null && [[ "$(findmnt -no FSTYPE /sys/fs/bpf 2>/dev/null)" == "bpf" ]]; then
+  ok "/sys/fs/bpf is a bpffs mount"
+else
+  bad "/sys/fs/bpf is not a bpffs mount; aya cannot pin maps there"
+  hint "sudo install -d -m 0755 /sys/fs/bpf"
+  hint "sudo mount -t bpf bpf /sys/fs/bpf"
+  hint "add 'bpf /sys/fs/bpf bpf defaults 0 0' to /etc/fstab to make it permanent"
+fi
+
+# -------------------------------------------------------------------- BTF
+sec "BTF"
+if [[ -r /sys/kernel/btf/vmlinux ]] || [[ -r /usr/lib/debug/boot/vmlinux ]]; then
+  ok "kernel BTF available"
+else
+  warn "no BTF found at /sys/kernel/btf/vmlinux or /usr/lib/debug/boot/vmlinux"
+  hint "Point HONK_VMLINUX_BTF at a vmlinux with BTF, or install the vmlinux-btf package"
+fi
+
+# ---------------------------------------------------------------- NFQUEUE modules
+sec "NFQUEUE modules"
+if grep -q '^nfnetlink_queue ' /proc/modules 2>/dev/null; then
+  ok "nfnetlink_queue loaded"
+else
+  warn "nfnetlink_queue is not loaded; honk falls back to disabled staging"
+  hint "sudo modprobe nfnetlink_queue nft_ct nft_queue"
+  hint "/usr/lib/modules-load.d/honk.conf from this package loads them at boot"
+fi
+
+# ---------------------------------------------------------------- configuration
+sec "Configuration"
+conf=/etc/honk/config.dae
+if [[ -r "$conf" ]]; then
+  ok "$conf is readable"
+  grep -qE '^\s*lan_interface\s*:' "$conf" \
+    && warn "lan_interface is set; LAN forwarding is proxied too (intended for a gateway)" \
+    || ok "no lan_interface: host traffic only"
+  if grep -qE 'geoip:|geosite:' "$conf"; then
+    found=0
+    for d in /var/lib/honk /usr/share/v2ray /usr/share/honk; do
+      [[ -f "$d/geoip.dat" && -f "$d/geosite.dat" ]] && found=1
+    done
+    (( found )) && ok "geoip.dat / geosite.dat found" || {
+      warn "config uses geoip:/geosite: but the data files are missing"
+      hint "sudo pacman -S v2ray-geoip v2ray-domain-list-community"
+    }
+  fi
+elif (( ! is_root )); then
+  # /etc/honk is 0700 root by package design, so an unprivileged run cannot
+  # tell "missing" from "not allowed to look".
+  warn "cannot inspect $conf as ${USER}"
+  hint "sudo honk-check"
+else
+  bad "$conf is missing"
+  hint "sudo cp /etc/honk/config.dae.example /etc/honk/config.dae"
+fi
+
+# ---------------------------------------------------------- conflicting proxies
+sec "Conflicting software"
+conflicts_found=0
+for pat in FlClash clash-verge sing-box mihomo xray v2ray dae; do
+  if pgrep -x "$pat" >/dev/null 2>&1; then
+    conflicts_found=1
+    warn "$pat is running"
+    hint "It also rewrites routes/TUN; stop it before starting honk: pkill -x $pat"
+  fi
+done
+if command -v ip >/dev/null; then
+  tun=$(ip -br link show type tun 2>/dev/null | awk '{print $1}' | tr '\n' ' ')
+  if [[ -n "$tun" ]]; then
+    conflicts_found=1
+    warn "TUN interface(s) present: $tun"
+    hint "A running TUN proxy will fight honk for the default route"
+  fi
+fi
+(( conflicts_found )) || ok "no competing transparent proxy detected"
+
+# ------------------------------------------------------------ stale honk state
+sec "Stale state"
+running=0
+pgrep -x honk-core >/dev/null 2>&1 && running=1
+
+if [[ -e /var/run/netns/daens ]]; then
+  if (( running )); then
+    ok "daens netns present (owned by the running honk-core)"
+  else
+    warn "leftover /var/run/netns/daens without a running honk-core"
+    hint "sudo umount /var/run/netns/daens && sudo rm -f /var/run/netns/daens"
+  fi
+fi
+if [[ -e /run/honk-core.lock ]] && (( ! running )); then
+  warn "stale /run/honk-core.lock; the next start would report a resource conflict"
+  hint "sudo rm -f /run/honk-core.lock"
+fi
+(( running )) && ok "honk-core running (pid $(pgrep -x honk-core | head -1))"
+(( running )) || (( QUIET )) || printf '  [ -- ] no stale honk state found\n'
+
+# ---------------------------------------------------------------------- service
+sec "Service"
+if systemctl list-unit-files honk-core.service >/dev/null 2>&1; then
+  if systemctl is-active --quiet honk-core.service; then
+    ok "honk-core.service active"
+  else
+    warn "honk-core.service is not active"
+    hint "sudo systemctl start honk-core && sudo journalctl -u honk-core -n 50"
+  fi
+  systemctl is-enabled --quiet honk-core.service 2>/dev/null \
+    && ok "honk-core.service enabled at boot" \
+    || { warn "honk-core.service is not enabled"; hint "sudo systemctl enable honk-core"; }
+else
+  bad "honk-core.service unit not installed"
+fi
+
+if command -v ss >/dev/null; then
+  if ss -tlnH 2>/dev/null | grep -q ':9527 '; then
+    ok "native API listening on :9527 -> http://127.0.0.1:9527/ui/"
+  elif (( running )); then
+    warn "honk-core runs but nothing listens on 9527"
+    hint "Check experimental.native_api in /etc/honk/config.dae"
+  fi
+fi
+
+# ------------------------------------------------------------------- summary
+printf '\n'
+if (( problems == 0 && warnings == 0 )); then
+  printf '%sAll checks passed.%s Open http://127.0.0.1:9527/ui/ to finish setup.\n' "$GREEN" "$RESET"
+elif (( problems == 0 )); then
+  printf '%sNo blocking problem.%s %d warning(s) above.\n' "$YELLOW" "$RESET" "$warnings"
+else
+  printf '%s%d blocking problem(s)%s, %d warning(s). See the hints above.\n' \
+    "$RED" "$problems" "$RESET" "$warnings"
+fi
+
+(( problems == 0 ))

@@ -1,0 +1,27 @@
+[Unit]
+Description=honk transparent proxy engine
+Documentation=https://github.com/daeuniverse/honk
+Wants=network-online.target
+After=network-online.target systemd-modules-load.service
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=notify
+User=root
+WorkingDirectory=/var/lib/honk
+StateDirectory=honk
+StateDirectoryMode=0700
+ExecStart=/usr/bin/honk-core --config /etc/honk/config.dae --disable-timestamp
+ExecReload=/usr/bin/honk-core reload
+Restart=on-failure
+RestartSec=2s
+TimeoutStartSec=120
+TimeoutStopSec=30s
+LimitNPROC=512
+LimitNOFILE=1048576
+LimitMEMLOCK=infinity
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

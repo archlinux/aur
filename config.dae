@@ -1,0 +1,31 @@
+global {
+    # Follows the interface owning the lowest-metric IPv4 default route, so a
+    # Wi-Fi <-> Ethernet switch or a DHCP renewal needs no config edit.
+    wan_interface: auto
+    data_dir: '/var/lib/honk'
+    log_level: info
+    dial_mode: domain
+    bootstrap_resolver: '1.1.1.1:53'
+    tcp_check_url: 'https://www.gstatic.com/generate_204'
+    tcp_check_http_method: HEAD
+    nfqueue_enable: true
+}
+
+routing {
+    # Start direct-only, verify the datapath, then add nodes and switch this to
+    # a group name. See /etc/honk/config.dae.example for a full reference.
+    fallback: direct
+}
+
+experimental {
+    native_api {
+        enabled: true
+        # Loopback only. Change to 0.0.0.0:9527 only behind a reverse proxy.
+        listen: '127.0.0.1:9527'
+        # First visit to /ui/ creates the administrator account; the password is
+        # stored in /var/lib/honk/state/honk.db, not in this file.
+        password_auth: true
+        config_write: true
+        ui: 'embedded'
+    }
+}
