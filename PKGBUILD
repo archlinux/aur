@@ -2,8 +2,8 @@
 
 pkgname="shot-scraper"
 _name=${pkgname#python-}
-pkgver=1.8
-pkgrel=3
+pkgver=1.12
+pkgrel=1
 pkgdesc="A command-line utility for taking automated screenshots of websites"
 url="https://shot-scraper.datasette.io/"
 license=("Apache-2.0")
