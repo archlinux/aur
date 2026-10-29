@@ -1,6 +1,6 @@
 pkgbase = wikistow-cli-bin
 	pkgdesc = Command-line client for your family's encrypted wiki, for people and their agents
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/skint007/wikistow
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = wikistow-cli-bin
 	conflicts = wikistow-cli
 	options = !strip
 	options = !debug
-	source = LICENSE-0.18.0::https://github.com/skint007/wikistow/releases/download/v0.18.0/LICENSE
+	source = LICENSE-0.18.1::https://github.com/skint007/wikistow/releases/download/v0.18.1/LICENSE
 	sha256sums = 49e9b16003c5e96891265ca2f912087102de955704eda32482dfe2c4b8fbafd6
-	source_x86_64 = wikistow-0.18.0-x86_64::https://github.com/skint007/wikistow/releases/download/v0.18.0/wikistow-linux-x64
-	sha256sums_x86_64 = 1d52cef1f53e5b0ae49a6127d85ed591712443f621fa1c82e998e8a9d7d69c2e
-	source_aarch64 = wikistow-0.18.0-aarch64::https://github.com/skint007/wikistow/releases/download/v0.18.0/wikistow-linux-arm64
-	sha256sums_aarch64 = 89aec2171caa351fb04767b5a7406c66abe05deeee0473a71b0de0fd4c904b7d
+	source_x86_64 = wikistow-0.18.1-x86_64::https://github.com/skint007/wikistow/releases/download/v0.18.1/wikistow-linux-x64
+	sha256sums_x86_64 = c1e51befb8525044b6fb9fe4d553072d120efadb185bfc24f27485bdd807cf17
+	source_aarch64 = wikistow-0.18.1-aarch64::https://github.com/skint007/wikistow/releases/download/v0.18.1/wikistow-linux-arm64
+	sha256sums_aarch64 = f9d76adc590cbef3fd022920b570a2e829f079c31e69d15affebc015f24e5ddd
 
 pkgname = wikistow-cli-bin
