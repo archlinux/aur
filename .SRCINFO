@@ -1,6 +1,6 @@
 pkgbase = mangowm-wlonly
 	pkgdesc = mangowm without scenefx
-	pkgver = 0.18.3
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://github.com/mangowm/mango/tree/wl-only
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = mangowm-wlonly
 	provides = wayland-compositor
 	conflicts = mangowm
 	conflicts = mangowm-git
-	source = mangowm-wlonly::git+https://github.com/mangowm/mango.git#commit=565b366154f42c38b4119bf6d42c960788b98c21
+	source = mangowm-wlonly::git+https://github.com/mangowm/mango.git#commit=8b37a8ca55e420c8de2d510586f6f0e3a9381435
 	md5sums = SKIP
 
 pkgname = mangowm-wlonly
