@@ -1,0 +1,1025 @@
+From b68770bbf8a26593b232ef123625e54dae4189ab Mon Sep 17 00:00:00 2001
+From: Shochraos <github@raiton.net>
+Date: Sat, 24 Oct 2026 16:17:42 +0200
+Subject: [PATCH] Implement RT3 support
+
+---
+ .github/workflows/ci.yml                      |  14 +-
+ .gitignore                                    |   2 +
+ CMakeLists.txt                                |  20 +-
+ CMakePresets.json                             |  35 ++
+ packages/arch/PKGBUILD                        |   8 +-
+ packages/arch/millennium.install              |   7 +
+ packages/nix/millennium.nix                   |  51 ++-
+ packages/nix/steam.nix                        |   4 +
+ scripts/install.sh                            |   9 +-
+ scripts/linux/destroy_devenv.sh               |   1 +
+ scripts/linux/setup_devenv.sh                 |   7 +
+ src/CMakeLists.txt                            |  29 +-
+ src/bootstrap/README.md                       |   7 +-
+ src/bootstrap/linux/CMakeLists.txt            |  25 +-
+ .../linux/libmillennium_bootstrap_x64.c       | 316 ++++++++++++++++++
+ src/bootstrap/linux/millennium_pvs64.cc       |  18 +
+ src/engine/backend_mgr.cc                     |   2 +-
+ src/include/millennium/plat_msg.h             |  10 +
+ src/instrumentation/internal/steam_hooks.cc   |  30 +-
+ src/platform/linux.cc                         |   4 +
+ src/system/environment.cc                     |  12 +
+ 21 files changed, 583 insertions(+), 28 deletions(-)
+ create mode 100644 src/bootstrap/linux/libmillennium_bootstrap_x64.c
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 5cd3fc5e5..f3f2cc824 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -176,7 +176,7 @@ jobs:
+         run: |
+           sudo dpkg --add-architecture i386
+           sudo apt-get update
+-          sudo apt-get install -y build-essential gcc-14 g++-14 gcc-14-multilib g++-14-multilib libc6-dev-i386 libgtk-3-dev ninja-build libpsl-dev:i386 libssl-dev:i386 pkg-config:i386
++          sudo apt-get install -y build-essential gcc-14 g++-14 gcc-14-multilib g++-14-multilib libc6-dev-i386 libgtk-3-dev ninja-build libpsl-dev:i386 libssl-dev:i386 pkg-config:i386 libxtst-dev libxi-dev libx11-dev libssl-dev rustc cargo
+ 
+       - name: Install CMake
+         uses: jwlawson/actions-setup-cmake@v2
+@@ -203,6 +203,9 @@ jobs:
+ 
+           cmake --build build --config Release -- -j$(nproc)
+ 
++          cmake --preset=linux-release-x64 -G "Ninja" -DGITHUB_ACTION_BUILD=ON
++          cmake --build build64 --config Release -- -j$(nproc)
++
+           mkdir -p ~/build/usr/lib/millennium
+           cp build/libmillennium_x86.so ~/build/usr/lib/millennium/
+           cp build/libmillennium_bootstrap_x86.so ~/build/usr/lib/millennium/
+@@ -210,6 +213,9 @@ jobs:
+           cp build/libmillennium_hhx64.so ~/build/usr/lib/millennium/
+           cp build/libmillennium_luavm_x86 ~/build/usr/lib/millennium/
+           cp build/libmillennium_pvs64 ~/build/usr/lib/millennium/
++          cp build64/libmillennium_x64.so ~/build/usr/lib/millennium/
++          cp build64/libmillennium_luavm_x64 ~/build/usr/lib/millennium/
++          cp build64/libmillennium_bootstrap_x64.so ~/build/usr/lib/millennium/
+ 
+       - name: Upload Build Artifact
+         uses: actions/upload-artifact@v4
+@@ -270,6 +276,9 @@ jobs:
+             "usr/lib/millennium/libmillennium_luavm_x86"
+             "usr/lib/millennium/libmillennium_bootstrap_hhx64.so"
+             "usr/lib/millennium/libmillennium_pvs64"
++            "usr/lib/millennium/libmillennium_x64.so"
++            "usr/lib/millennium/libmillennium_luavm_x64"
++            "usr/lib/millennium/libmillennium_bootstrap_x64.so"
+           )
+           MISSING=0
+           for f in "${REQUIRED[@]}"; do
+@@ -303,6 +312,9 @@ jobs:
+           check_arch "usr/lib/millennium/libmillennium_hhx64.so"           64 || ARCH_FAIL=1
+           check_arch "usr/lib/millennium/libmillennium_bootstrap_hhx64.so" 64 || ARCH_FAIL=1
+           check_arch "usr/lib/millennium/libmillennium_pvs64"              64 || ARCH_FAIL=1
++          check_arch "usr/lib/millennium/libmillennium_x64.so"             64 || ARCH_FAIL=1
++          check_arch "usr/lib/millennium/libmillennium_luavm_x64"          64 || ARCH_FAIL=1
++          check_arch "usr/lib/millennium/libmillennium_bootstrap_x64.so"   64 || ARCH_FAIL=1
+           [ $ARCH_FAIL -eq 0 ] || { echo "ERROR: binary architecture mismatch"; exit 1; }
+ 
+   release:
+diff --git a/.gitignore b/.gitignore
+index 03e4f504e..0d8e0e348 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,5 +1,7 @@
+ # Build files
+ **/build
++**/build64
++**/build64-*
+ src/typescript/.build-cache.json
+ src/typescript/.frontend.bin
+ 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 731874f32..affcef7fa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,19 +18,28 @@ elseif(APPLE)
+     set(MILLENNIUM_CHILD_HOOK_OUTPUT_NAME          "libmillennium_child_hook.dylib")
+ else()
+     # Linux build names
+-    set(MILLENNIUM_OUTPUT_NAME                     "libmillennium_x86.so"          )
++    if(MILLENNIUM_LINUX_X64)
++        set(MILLENNIUM_OUTPUT_NAME                 "libmillennium_x64.so"          )
++        set(MILLENNIUM_BOOTLOADER_OUTPUT_NAME      "libmillennium_bootstrap_x64.so")
++    else()
++        set(MILLENNIUM_OUTPUT_NAME                 "libmillennium_x86.so"          )
++        set(MILLENNIUM_BOOTLOADER_OUTPUT_NAME      "libmillennium_bootstrap_x86.so")
++    endif()
+     set(MILLENNIUM_HOOK_HELPER_OUTPUT_NAME         "libmillennium_hhx64.so"        )
+-    set(MILLENNIUM_BOOTLOADER_OUTPUT_NAME          "libmillennium_bootstrap_x86.so")
+ endif()
+ 
+ # Millennium lua host that runs the backend in a sandbox.
+ if(WIN32)
+     set(MILLENNIUM_RTB_NAME "millennium.luavm64")
+     set(MILLENNIUM_CRASH_HANDLER_NAME "millennium.crashhandler64")
++elseif(MILLENNIUM_LINUX_X64)
++    set(MILLENNIUM_RTB_NAME "libmillennium_luavm_x64")
+ else()
+     set(MILLENNIUM_RTB_NAME "libmillennium_luavm_x86")
+ endif()
+ 
++add_compile_definitions(__MILLENNIUM_RTB_NAME__="${MILLENNIUM_RTB_NAME}")
++
+ add_compile_definitions(__MILLENNIUM_OUTPUT_NAME__="${MILLENNIUM_OUTPUT_NAME}")
+ add_compile_definitions(__MILLENNIUM_HOOK_HELPER_OUTPUT_NAME__="${MILLENNIUM_HOOK_HELPER_OUTPUT_NAME}")
+ add_compile_definitions(__MILLENNIUM_BOOTLOADER_OUTPUT_NAME__="${MILLENNIUM_BOOTLOADER_OUTPUT_NAME}")
+@@ -54,13 +63,18 @@ else()
+ endif()
+ option(MILLENNIUM_BUILD_TO_STEAM_PATH "Build Millennium to Steam path" ${_build_to_steam_default})
+ option(MILLENNIUM_NIX_64BIT           "Build only the 64-bit Nix targets (hhx64 + bootstrap64 + pvs64)" OFF)
++option(MILLENNIUM_LINUX_X64           "Build the 64-bit Linux client tree (SteamRT3): main lib, lua host, x64 proxy" OFF)
++
++if(MILLENNIUM_LINUX_X64)
++    add_compile_definitions(MILLENNIUM_LINUX_X64)
++endif()
+ 
+ if(MILLENNIUM_BUILD_MAIN)
+     if(NOT MILLENNIUM_NIX_64BIT)
+         add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
+     endif()
+ 
+-    if(NOT DISTRO_NIX OR MILLENNIUM_NIX_64BIT)
++    if(NOT DISTRO_NIX OR MILLENNIUM_NIX_64BIT OR MILLENNIUM_LINUX_X64)
+         add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/instrumentation/loopback)
+     endif()
+ 
+diff --git a/CMakePresets.json b/CMakePresets.json
+index 273a0540c..37f6ea15b 100644
+--- a/CMakePresets.json
++++ b/CMakePresets.json
+@@ -147,6 +147,41 @@
+         "CMAKE_CXX_FLAGS": "-m32 -fdebug-prefix-map=${sourceDir}/= -fmacro-prefix-map=${sourceDir}/=",
+         "CMAKE_C_FLAGS": "-m32 -fdebug-prefix-map=${sourceDir}/= -fmacro-prefix-map=${sourceDir}/="
+       }
++    },
++    {
++      "name": "linux-debug-x64",
++      "inherits": "default",
++      "generator": "Ninja",
++      "binaryDir": "${sourceDir}/build64-debug",
++      "displayName": "linux-debug-x64",
++      "description": "Debug build for the SteamRT3 64-bit Steam client",
++      "cacheVariables": {
++        "MILLENNIUM_LINUX_X64": "ON",
++        "CMAKE_BUILD_TYPE": "Debug"
++      }
++    },
++    {
++      "name": "linux-release-x64",
++      "inherits": "default",
++      "generator": "Ninja",
++      "binaryDir": "${sourceDir}/build64",
++      "displayName": "linux-release-x64",
++      "description": "Release build for the SteamRT3 64-bit Steam client",
++      "cacheVariables": {
++        "MILLENNIUM_LINUX_X64": "ON",
++        "CMAKE_BUILD_TYPE": "Release"
++      }
++    },
++    {
++      "name": "linux-arch-pkgbuild-x64",
++      "inherits": "linux-release-x64",
++      "displayName": "linux-arch-pkgbuild-x64",
++      "description": "Arch Linux PKGBUILD build for SteamRT3 (RelWithDebInfo, remapped debug paths)",
++      "cacheVariables": {
++        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
++        "CMAKE_CXX_FLAGS": "-fdebug-prefix-map=${sourceDir}/= -fmacro-prefix-map=${sourceDir}/=",
++        "CMAKE_C_FLAGS": "-fdebug-prefix-map=${sourceDir}/= -fmacro-prefix-map=${sourceDir}/="
++      }
+     }
+   ]
+ }
+diff --git a/packages/arch/PKGBUILD b/packages/arch/PKGBUILD
+index 450361556..1ac0b6df0 100644
+--- a/packages/arch/PKGBUILD
++++ b/packages/arch/PKGBUILD
+@@ -8,7 +8,7 @@ arch=('x86_64')
+ url="https://github.com/SteamClientHomebrew/Millennium"
+ license=('MIT')
+ depends=('steam')
+-makedepends=('git' 'bun' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'rust' 'lib32-gcc-libs' 'lib32-openssl' 'lib32-libidn2' 'lib32-xz' 'lib32-zstd' 'lib32-brotli' 'lib32-libnghttp2' 'lib32-libpsl' 'libx11' 'libxtst')
++makedepends=('git' 'bun' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'rust' 'openssl' 'lib32-gcc-libs' 'lib32-openssl' 'lib32-libidn2' 'lib32-xz' 'lib32-zstd' 'lib32-brotli' 'lib32-libnghttp2' 'lib32-libpsl' 'libx11' 'libxi' 'libxtst')
+ install=millennium.install
+ source=("git+$url.git#commit=88fb7c16d04d162cb3e94beedb11a51705ec03fb")
+ sha256sums=('SKIP')
+@@ -20,6 +20,9 @@ build() {
+ 
+     cmake --preset linux-arch-pkgbuild
+     cmake --build build
++
++    cmake --preset linux-arch-pkgbuild-x64
++    cmake --build build64
+ }
+ 
+ package() {
+@@ -32,5 +35,8 @@ package() {
+     install -m755 build/libmillennium_luavm_x86 "$pkgdir/usr/lib/millennium/"
+     install -m755 build/libmillennium_bootstrap_hhx64.so "$pkgdir/usr/lib/millennium/"
+     install -m755 build/libmillennium_pvs64 "$pkgdir/usr/lib/millennium/"
++    install -m755 build64/libmillennium_x64.so "$pkgdir/usr/lib/millennium/"
++    install -m755 build64/libmillennium_luavm_x64 "$pkgdir/usr/lib/millennium/"
++    install -m755 build64/libmillennium_bootstrap_x64.so "$pkgdir/usr/lib/millennium/"
+     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/millennium/LICENSE.md"
+ }
+diff --git a/packages/arch/millennium.install b/packages/arch/millennium.install
+index 95acea065..113101d84 100644
+--- a/packages/arch/millennium.install
++++ b/packages/arch/millennium.install
+@@ -31,6 +31,12 @@ link_millennium() {
+ 
+     ln -sf /usr/lib/millennium/libmillennium_bootstrap_x86.so   "$steam/ubuntu12_32/libXtst.so.6"
+     ln -sf /usr/lib/millennium/libmillennium_bootstrap_hhx64.so "$steam/ubuntu12_64/libXtst.so.6"
++
++    # SteamRT3 runs the client inside a pressure-vessel container where /usr is not the host's,
++    # so the link has to go through /run/host. Created unconditionally: install hooks run once,
++    # and a user who opts into RT3 later would otherwise have no link at all.
++    mkdir -p "$steam/steamrt64"
++    ln -sf /run/host/usr/lib/millennium/libmillennium_bootstrap_x64.so "$steam/steamrt64/libXtst.so.6"
+ }
+ 
+ unlink_millennium() {
+@@ -39,6 +45,7 @@ unlink_millennium() {
+ 
+     rm -f "$steam/ubuntu12_32/libXtst.so.6"
+     rm -f "$steam/ubuntu12_64/libXtst.so.6"
++    rm -f "$steam/steamrt64/libXtst.so.6"
+     rm -f "$home/.steam/steam/.cef-enable-remote-debugging"
+ }
+ 
+diff --git a/packages/nix/millennium.nix b/packages/nix/millennium.nix
+index f303662b5..5226beb26 100644
+--- a/packages/nix/millennium.nix
++++ b/packages/nix/millennium.nix
+@@ -19,6 +19,15 @@
+   re2,
+   runCommand,
+ 
++  openssl,
++  curl,
++  minizip-ng,
++  bzip2,
++  xz,
++  zstd,
++  nlohmann_json,
++  zlib,
++
+   millennium-src,
+   ...
+ }:
+@@ -151,6 +160,9 @@ let
+     pname = "millennium-64";
+ 
+     nativeBuildInputs = commonBuild.nativeBuildInputs ++ [
++      bun
++      nodejs
++      patchelf
+       cargo
+       rustc
+     ];
+@@ -161,9 +173,34 @@ let
+       libXtst
+       re2
+       re2.dev
++      openssl
++      curl
++      minizip-ng
++      bzip2
++      xz
++      zstd
++      nlohmann_json
++      zlib
+     ];
+ 
+     postPatch = ''
++      export HOME=$TMPDIR
++
++      for dir in ${tsDirs}; do
++        if [ -d ${bunDeps}/$dir ]; then
++          mkdir -p "$(dirname "$dir")"
++          cp -r ${bunDeps}/$dir "$dir"
++          chmod -R u+w "$dir"
++        fi
++      done
++
++      mkdir -p src/typescript/ttc
++      cp -r ${bunDeps}/src/typescript/ttc/dist src/typescript/ttc/dist
++      chmod -R u+w src/typescript/ttc/dist
++
++      patchShebangs src/typescript/node_modules
++      ${tsBuildCmds}
++
+       mkdir -p src/instrumentation/loopback/.cargo
+       cat > src/instrumentation/loopback/.cargo/config.toml << 'EOF'
+       [source.crates-io]
+@@ -174,16 +211,24 @@ let
+       EOF
+     '';
+ 
+-    cmakeFlags = commonBuild.cmakeFlags ++ [ "-DMILLENNIUM_NIX_64BIT=ON" ];
++    cmakeFlags = commonBuild.cmakeFlags ++ [ "-DMILLENNIUM_LINUX_X64=ON" "-DDISTRO_NIX=ON" ];
+ 
+     installPhase = ''
+       runHook preInstall
+       mkdir -p $out/lib/
+-      install -Dm755 libmillennium_hhx64.so           $out/lib/libmillennium_hhx64.so
+-      install -Dm755 libmillennium_pvs64              $out/lib/libmillennium_pvs64
++      install -Dm755 libmillennium_x64.so            $out/lib/libmillennium_x64.so
++      install -Dm755 libmillennium_luavm_x64         $out/lib/libmillennium_luavm_x64
++      install -Dm755 libmillennium_bootstrap_x64.so  $out/lib/libmillennium_bootstrap_x64.so
++      install -Dm755 libmillennium_hhx64.so          $out/lib/libmillennium_hhx64.so
++      install -Dm755 libmillennium_pvs64             $out/lib/libmillennium_pvs64
+       install -Dm755 libmillennium_bootstrap_hhx64.so $out/lib/libmillennium_bootstrap_hhx64.so
+       runHook postInstall
+     '';
++
++    postFixup = ''
++      patchelf --force-rpath --set-rpath "$(patchelf --print-rpath $out/lib/libmillennium_x64.so)" $out/lib/libmillennium_x64.so
++      patchelf --force-rpath --set-rpath "$(patchelf --print-rpath $out/lib/libmillennium_bootstrap_x64.so)" $out/lib/libmillennium_bootstrap_x64.so
++    '';
+   });
+ in
+ runCommand "millennium-${version}" {
+diff --git a/packages/nix/steam.nix b/packages/nix/steam.nix
+index 7c43d7d2c..6d5d64a24 100644
+--- a/packages/nix/steam.nix
++++ b/packages/nix/steam.nix
+@@ -20,11 +20,15 @@ let
+   millenniumEnv = {
+     # consumed by millennium internally.
+     MILLENNIUM_RUNTIME_PATH = "${millennium}/lib/libmillennium_x86.so";
++    # SteamRT3 client: the x64 proxy reads this first.
++    MILLENNIUM_RUNTIME_PATH_X64 = "${millennium}/lib/libmillennium_x64.so";
+   };
+ 
+   millenniumProfile = ''
+     ln -sf ${millennium}/lib/libmillennium_bootstrap_x86.so "$HOME/.local/share/Steam/ubuntu12_32/libXtst.so.6"
+     ln -sf ${millennium}/lib/libmillennium_bootstrap_hhx64.so "$HOME/.local/share/Steam/ubuntu12_64/libXtst.so.6"
++    mkdir -p "$HOME/.local/share/Steam/steamrt64"
++    ln -sf ${millennium}/lib/libmillennium_bootstrap_x64.so "$HOME/.local/share/Steam/steamrt64/libXtst.so.6"
+   '';
+ 
+   upstreamArgs = removeAttrs args [
+diff --git a/scripts/install.sh b/scripts/install.sh
+index 117b703dd..7a3c5ddd4 100755
+--- a/scripts/install.sh
++++ b/scripts/install.sh
+@@ -174,25 +174,30 @@ install_millennium() {
+ post_install() {
+     sudo chmod +x /usr/lib/millennium/libmillennium_pvs64 2>/dev/null || true
+     sudo chmod +x /usr/lib/millennium/libmillennium_luavm_x86 2>/dev/null || true
++    sudo chmod +x /usr/lib/millennium/libmillennium_luavm_x64 2>/dev/null || true
+ 
+     log "installing for '${USER}'"
+ 
+     beta_file="${HOME}/.steam/steam/package/beta"
++    rt3_marker="${HOME}/.steam/steam/.steam-enable-steamrt64-client"
+ 
+     # make sure to force steam stable for the first install.
+     # if the user wants beta they can set it after install.
+     # normally its fine, but many users forget they have it enabled on first install,
+     # and then face issues.
+-    if [ -f "${beta_file}" ]; then
++    # users already on the SteamRT3 client need the beta channel: do not push them back to stable.
++    if [ -f "${beta_file}" ] && [ ! -e "${rt3_marker}" ]; then
+         log "removing beta '$(cat "${beta_file}")' in favor for stable."
+         rm "${beta_file}"
+     fi
+ 
+     # create symlinks for millenniums preload bootstraps.
+-    mkdir -p "${HOME}/.steam/steam/ubuntu12_32" "${HOME}/.steam/steam/ubuntu12_64"
++    mkdir -p "${HOME}/.steam/steam/ubuntu12_32" "${HOME}/.steam/steam/ubuntu12_64" "${HOME}/.steam/steam/steamrt64"
+     ln -sf /usr/lib/millennium/libmillennium_bootstrap_x86.so   "${HOME}/.steam/steam/ubuntu12_32/libXtst.so.6"
+     ln -sf /usr/lib/millennium/libmillennium_bootstrap_hhx64.so "${HOME}/.steam/steam/ubuntu12_64/libXtst.so.6"
+     ln -sf /usr/lib/millennium/libmillennium_hhx64.so           "${HOME}/.steam/steam/ubuntu12_64/libmillennium_hhx64.so"
++    # SteamRT3 runs the client inside a pressure-vessel container, so the link resolves through /run/host.
++    ln -sf /run/host/usr/lib/millennium/libmillennium_bootstrap_x64.so "${HOME}/.steam/steam/steamrt64/libXtst.so.6"
+ }
+ 
+ cleanup() {
+diff --git a/scripts/linux/destroy_devenv.sh b/scripts/linux/destroy_devenv.sh
+index 8ef156a47..00f4cf7c0 100755
+--- a/scripts/linux/destroy_devenv.sh
++++ b/scripts/linux/destroy_devenv.sh
+@@ -25,6 +25,7 @@ remove_if_symlink() {
+ 
+ remove_if_symlink "${U32}/libXtst.so.6"
+ remove_if_symlink "${U64}/libXtst.so.6"
++remove_if_symlink "${STEAM_DIR}/steamrt64/libXtst.so.6"
+ 
+ echo ""
+ echo "dev environment removed. restart Steam to apply."
+diff --git a/scripts/linux/setup_devenv.sh b/scripts/linux/setup_devenv.sh
+index 2f21e4576..f30168c44 100755
+--- a/scripts/linux/setup_devenv.sh
++++ b/scripts/linux/setup_devenv.sh
+@@ -65,6 +65,13 @@ echo ""
+ ln -sfv "${BOOTSTRAP_X86}" "${U32}/libXtst.so.6"
+ ln -sfv "${BOOTSTRAP_HHX64}" "${U64}/libXtst.so.6"
+ 
++# Optional: the SteamRT3 x64 payload only exists in a build tree configured with
++# -DMILLENNIUM_LINUX_X64=ON. Do not fail an x86-only build over it.
++if [ -f "${BUILD_DIR}/libmillennium_bootstrap_x64.so" ]; then
++    mkdir -p "${STEAM_DIR}/steamrt64"
++    ln -sfv "${BUILD_DIR}/libmillennium_bootstrap_x64.so" "${STEAM_DIR}/steamrt64/libXtst.so.6"
++fi
++
+ rm -f "${STEAM_DIR}/.cef-enable-remote-debugging"
+ 
+ echo ""
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1c5e729aa..de435c5b2 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -139,15 +139,18 @@ endif()
+ if(UNIX AND NOT APPLE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_GNU_SOURCE")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_GNU_SOURCE")
+-    set(CMAKE_LIBRARY_PATH "/usr/lib32;/lib32" CACHE STRING "32-bit library search paths" FORCE)
+-    set(CMAKE_FIND_ROOT_PATH "/usr/lib32;/lib32" CACHE STRING "32-bit find root path" FORCE)
+-    set(ZLIBNG_FOUND FALSE CACHE BOOL "Disable zlib-ng detection" FORCE)
+-    set(ZLIBNG_LIBRARY "" CACHE FILEPATH "Empty zlib-ng library path" FORCE)
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
+-    set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -m32")
+-    set(LUAJIT_BUILD_FLAGS "-m32" CACHE STRING "LuaJIT build flags" FORCE)
+-    set(LUAJIT_TARGET_FLAGS "-m32" CACHE STRING "LuaJIT target flags" FORCE)
++
++    if(NOT MILLENNIUM_LINUX_X64)
++        set(CMAKE_LIBRARY_PATH "/usr/lib32;/lib32" CACHE STRING "32-bit library search paths" FORCE)
++        set(CMAKE_FIND_ROOT_PATH "/usr/lib32;/lib32" CACHE STRING "32-bit find root path" FORCE)
++        set(ZLIBNG_FOUND FALSE CACHE BOOL "Disable zlib-ng detection" FORCE)
++        set(ZLIBNG_LIBRARY "" CACHE FILEPATH "Empty zlib-ng library path" FORCE)
++        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
++        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
++        set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -m32")
++        set(LUAJIT_BUILD_FLAGS "-m32" CACHE STRING "LuaJIT build flags" FORCE)
++        set(LUAJIT_TARGET_FLAGS "-m32" CACHE STRING "LuaJIT target flags" FORCE)
++    endif()
+ endif()
+ 
+ include(${MILLENNIUM_BASE}/scripts/cmake/bootstrap_deps.cmake)
+@@ -237,8 +240,12 @@ set_target_properties(Millennium PROPERTIES
+ if(WIN32)
+     set_target_properties(Millennium PROPERTIES NO_EXPORT TRUE)
+ elseif(UNIX AND NOT APPLE)
+-    set_target_properties(Millennium PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
+-    target_compile_options(Millennium PRIVATE -m32 -Wall -Wextra -Wpedantic -Werror -Wno-c++26-extensions)
++    if(MILLENNIUM_LINUX_X64)
++        target_compile_options(Millennium PRIVATE -Wall -Wextra -Wpedantic -Werror -Wno-c++26-extensions)
++    else()
++        set_target_properties(Millennium PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
++        target_compile_options(Millennium PRIVATE -m32 -Wall -Wextra -Wpedantic -Werror -Wno-c++26-extensions)
++    endif()
+ endif()
+ 
+ target_link_libraries(Millennium libcurl minizip nlohmann_json)
+diff --git a/src/bootstrap/README.md b/src/bootstrap/README.md
+index 1337d0fce..18d661316 100644
+--- a/src/bootstrap/README.md
++++ b/src/bootstrap/README.md
+@@ -2,8 +2,9 @@
+ > Note that all sub folders in this directory are "separate" projects from Millennium, they do not compile into the same binary.
+ > They are shims that are required for bootstrapping Millennium into Steam.
+ >
+-> -   Windows -> wsock32.dll
+-> -   Linux -> libXtst.so.6 proxy hook
+-> -   macOS (Install, default) -> `Steam Millennium.app` wrapper + runtime payload installed by `scripts/install_macos.sh`
++- Windows -> wsock32.dll
++- Linux (32-bit client, `ubuntu12_32/steam`) -> `libXtst.so.6` proxy hook (`libmillennium_bootstrap_x86.so`)
++- Linux (SteamRT3 64-bit client, `steamrt64/steam`) -> `libXtst.so.6` proxy hook (`libmillennium_bootstrap_x64.so`, built with `-DMILLENNIUM_LINUX_X64=ON`)
++- macOS (Install, default) -> `Steam Millennium.app` wrapper + runtime payload installed by `scripts/install_macos.sh`
+ > -   macOS (Legacy install) -> `libtier0_s.dylib` reexport proxy via `scripts/install_macos.sh --tier0-legacy`
+ > -   macOS (Debug) -> `steam_osx` wrapper + bootstrap dylib preload + `execve` reinjection into Steam main process + child hook that loads `hhx64` in Steam Helper
+diff --git a/src/bootstrap/linux/CMakeLists.txt b/src/bootstrap/linux/CMakeLists.txt
+index a3b482652..bbcfa10da 100644
+--- a/src/bootstrap/linux/CMakeLists.txt
++++ b/src/bootstrap/linux/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
+ project(unix-hooks LANGUAGES CXX)
+ set(CMAKE_C_STANDARD 11)
+ 
+-if(NOT MILLENNIUM_NIX_64BIT)
++if(NOT MILLENNIUM_NIX_64BIT AND NOT MILLENNIUM_LINUX_X64)
+     add_library(unix-hooks SHARED libmillennium_bootstrap.c)
+ 
+     if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+@@ -19,7 +19,7 @@ if(NOT MILLENNIUM_NIX_64BIT)
+     )
+ endif()
+ 
+-if(MILLENNIUM_NIX_64BIT OR NOT DISTRO_NIX)
++if(MILLENNIUM_NIX_64BIT OR MILLENNIUM_LINUX_X64 OR NOT DISTRO_NIX)
+     cmake_minimum_required(VERSION 3.10)
+     project(bootstrap64 C)
+     set(CMAKE_C_STANDARD 11)
+@@ -51,3 +51,24 @@ if(MILLENNIUM_NIX_64BIT OR NOT DISTRO_NIX)
+         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
+     )
+ endif()
++
++if(MILLENNIUM_LINUX_X64)
++    add_library(bootstrap_x64 SHARED libmillennium_bootstrap_x64.c)
++
++    target_compile_options(bootstrap_x64 PRIVATE -fvisibility=hidden -Wall -Wextra)
++
++    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
++        target_compile_definitions(bootstrap_x64 PRIVATE
++            MILLENNIUM_X64_PATH="$<TARGET_FILE:Millennium>"
++            MILLENNIUM_HHX64_PATH="$<TARGET_FILE:hhx64>"
++        )
++    endif()
++
++    target_link_options(bootstrap_x64 PRIVATE -Wl,--no-undefined -ldl)
++
++    set_target_properties(bootstrap_x64 PROPERTIES
++        PREFIX ""
++        OUTPUT_NAME "${MILLENNIUM_BOOTLOADER_OUTPUT_NAME}"
++        SUFFIX ""
++    )
++endif()
+diff --git a/src/bootstrap/linux/libmillennium_bootstrap_x64.c b/src/bootstrap/linux/libmillennium_bootstrap_x64.c
+new file mode 100644
+index 000000000..b466c8747
+--- /dev/null
++++ b/src/bootstrap/linux/libmillennium_bootstrap_x64.c
+@@ -0,0 +1,316 @@
++/**
++ * ==================================================
++ *   _____ _ _ _             _
++ *  |     |_| | |___ ___ ___|_|_ _ _____
++ *  | | | | | | | -_|   |   | | | |     |
++ *  |_|_|_|_|_|_|___|_|_|_|_|_|___|_|_|_|
++ *
++ * ==================================================
++ *
++ * Copyright (c) 2026 Project Millennium
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ */
++
++/**
++ * libmillennium_bootstrap_x64 — the SteamRT3 (64-bit Steam client) XTest proxy.
++ *
++ * Installed as <steam>/steamrt64/libXtst.so.6, so it is loaded into every 64-bit process
++ * that links libXtst: the client (via steamui.so / steamclient.so), the webhelper,
++ * streaming_client and vgui2_s.so. It forwards XTest to the runtime's real libXtst and
++ * dispatches Millennium injection by process:
++ *
++ *   steamrt64/steam            -> libmillennium_x64.so (StartMillennium)
++ *   steamwebhelper[.sh] chain  -> libmillennium_hhx64.so
++ *   anything else              -> XTest forwarding only
++ *
++ * A SteamRT3 install runs the client inside a pressure-vessel container, where
++ * /usr/lib/millennium does not exist. Paths are therefore resolved from this library's
++ * own location first, then from the environment, so a store path or a host path both work.
++ */
++#ifdef __linux__
++#include "shared.h"
++
++#include <fcntl.h>
++#include <libgen.h>
++
++#define MILLENNIUM_X64_LIBRARY_NAME "libmillennium_x64.so"
++#define MILLENNIUM_HHX64_LIBRARY_NAME "libmillennium_hhx64.so"
++#define MILLENNIUM_DEFAULT_LIBRARY_DIR "/usr/lib/millennium"
++
++static void* h_millennium = NULL;
++static void* h_hhx64 = NULL;
++static int b_has_loaded_millennium = 0;
++
++typedef int (*start_millennium_t)(void);
++typedef int (*stop_millennium_t)(void);
++
++#ifdef MILLENNIUM_X64_PATH
++static const char* get_millennium_library_path(void)
++{
++    return MILLENNIUM_X64_PATH;
++}
++#else
++static const char* get_millennium_library_path(void)
++{
++    static char path_buffer[PATH_MAX];
++    static int initialized = 0;
++
++    if (!initialized) {
++        const char* env_path = getenv("MILLENNIUM_RUNTIME_PATH_X64");
++        if (env_path && env_path[0]) {
++            snprintf(path_buffer, sizeof(path_buffer), "%s", env_path);
++        } else {
++            snprintf(path_buffer, sizeof(path_buffer), "%s/%s", MILLENNIUM_DEFAULT_LIBRARY_DIR, MILLENNIUM_X64_LIBRARY_NAME);
++        }
++        initialized = 1;
++    }
++    return path_buffer;
++}
++#endif
++
++/** Directory this proxy was loaded from, resolved through dladdr so it works inside a container. */
++static const char* get_own_directory(void)
++{
++    static char dir[PATH_MAX];
++    static int initialized = 0;
++
++    if (initialized) return dir[0] ? dir : NULL;
++
++    initialized = 1;
++    Dl_info info;
++    if (!dladdr((void*)get_own_directory, &info) || !info.dli_fname) return NULL;
++
++    char resolved[PATH_MAX];
++    if (!realpath(info.dli_fname, resolved)) return NULL;
++
++    snprintf(dir, sizeof(dir), "%s", resolved);
++    char* slash = strrchr(dir, '/');
++    if (!slash) {
++        dir[0] = '\0';
++        return NULL;
++    }
++    *slash = '\0';
++    return dir;
++}
++
++static const char* get_hhx64_path(void)
++{
++#ifdef MILLENNIUM_HHX64_PATH
++    return MILLENNIUM_HHX64_PATH;
++#else
++    static char path[PATH_MAX];
++    static int initialized = 0;
++
++    if (initialized) return path[0] ? path : NULL;
++    initialized = 1;
++
++    const char* dir = get_own_directory();
++    if (!dir) return NULL;
++
++    snprintf(path, sizeof(path), "%s/%s", dir, MILLENNIUM_HHX64_LIBRARY_NAME);
++    return path;
++#endif
++}
++
++static int cmdline_has_arg(const char* needle)
++{
++    char buffer[4096];
++    int fd = open("/proc/self/cmdline", O_RDONLY);
++    if (fd < 0) return 0;
++
++    ssize_t len = read(fd, buffer, sizeof(buffer) - 1);
++    close(fd);
++    if (len <= 0) return 0;
++
++    buffer[len] = '\0';
++    for (ssize_t offset = 0; offset < len; offset += (ssize_t)strlen(buffer + offset) + 1) {
++        if (strcmp(buffer + offset, needle) == 0) return 1;
++    }
++    return 0;
++}
++
++/** "steam" inside a steamrt64 directory, and not the -child-update-ui helper that reuses the same binary. */
++static int is_steam_client_process(void)
++{
++    char exe[PATH_MAX];
++    if (!get_process_path()) return 0;
++    if (!realpath(get_process_path(), exe)) return 0;
++
++    if (cmdline_has_arg("-child-update-ui")) return 0;
++
++    char copy[PATH_MAX];
++    snprintf(copy, sizeof(copy), "%s", exe);
++
++    char* file = basename(copy);
++    if (strcmp(file, "steam") != 0) return 0;
++
++    char parent[PATH_MAX];
++    snprintf(parent, sizeof(parent), "%s", exe);
++    char* dir = dirname(parent);
++
++    char dir_copy[PATH_MAX];
++    snprintf(dir_copy, sizeof(dir_copy), "%s", dir);
++    return strcmp(basename(dir_copy), "steamrt64") == 0;
++}
++
++static int is_webhelper_process(void)
++{
++    char* path = get_process_path();
++    return path != NULL && strstr(path, "steamwebhelper") != NULL;
++}
++
++/**
++ * The proxy satisfies the process's libXtst.so.6 dependency, so resolving by soname with
++ * RTLD_NOLOAD can return this library and recurse. The runtime's copy is opened by
++ * absolute path instead. All three candidates exist across steamrt3c and the SDK images.
++ */
++static void resolve_real_xtst(void)
++{
++    static const char* candidates[] = {
++        "/usr/lib/x86_64-linux-gnu/libXtst.so.6",
++        "/usr/lib64/libXtst.so.6",
++        "/usr/lib/libXtst.so.6",
++    };
++
++    for (size_t i = 0; i < sizeof(candidates) / sizeof(candidates[0]); i++) {
++        if (access(candidates[i], F_OK) != 0) continue;
++
++        h_xtst = dlopen(candidates[i], RTLD_LAZY | RTLD_GLOBAL);
++        if (h_xtst) return;
++        LOG_WARN("Failed to dlopen real libXtst at %s: %s", candidates[i], dlerror());
++    }
++
++    LOG_WARN("No real libXtst found; XTest forwarding is disabled in %s", get_process_path());
++}
++
++static int load_and_start_millennium(void)
++{
++    const char* path = get_millennium_library_path();
++    h_millennium = dlopen(path, RTLD_LAZY | RTLD_GLOBAL);
++
++    if (!h_millennium) {
++        /**
++         * On an FHS layout the configured path is /usr/lib/millennium, which does not exist inside the
++         * SteamRT3 container. The host root is reachable under /run/host, so retry there once.
++         */
++        char host_path[PATH_MAX];
++        if (path[0] == '/') {
++            snprintf(host_path, sizeof(host_path), "/run/host%s", path);
++            h_millennium = dlopen(host_path, RTLD_LAZY | RTLD_GLOBAL);
++            if (h_millennium) path = host_path;
++        }
++    }
++
++    if (!h_millennium) {
++        LOG_ERROR("Failed to dlopen %s: %s", path, dlerror());
++        return 0;
++    }
++
++    start_millennium_t fn_start = (start_millennium_t)dlsym_or_log(h_millennium, "StartMillennium");
++    if (!fn_start) {
++        dlclose(h_millennium);
++        h_millennium = NULL;
++        return 0;
++    }
++
++    int result = fn_start();
++    if (result < 0) {
++        LOG_ERROR("Failed to start Millennium: %d", result);
++        dlclose(h_millennium);
++        h_millennium = NULL;
++        return 0;
++    }
++
++    return 1;
++}
++
++static void stop_and_unload_millennium(void)
++{
++    if (!h_millennium) return;
++
++    stop_millennium_t fn_stop = (stop_millennium_t)dlsym(h_millennium, "StopMillennium");
++    if (fn_stop) {
++        int result = fn_stop();
++        if (result < 0) LOG_ERROR("Failed to stop Millennium: %d", result);
++    }
++
++    dlclose(h_millennium);
++    h_millennium = NULL;
++    b_has_loaded_millennium = 0;
++}
++
++static void load_webhelper_hook(void)
++{
++    const char* path = get_hhx64_path();
++    if (!path) {
++        LOG_ERROR("Failed to resolve hhx64 path");
++        return;
++    }
++
++    h_hhx64 = dlopen_or_log(path, RTLD_NOW | RTLD_GLOBAL);
++    if (!h_hhx64) return;
++
++    LOG_INFO("Loaded hhx64 from %s", path);
++}
++
++static void libmillennium_bootstrap_x64_init(void) __attribute__((constructor));
++static void libmillennium_bootstrap_x64_cleanup(void) __attribute__((destructor));
++
++static void proxy_at_exit_handler(void)
++{
++    if (b_has_loaded_millennium) stop_and_unload_millennium();
++}
++
++static void libmillennium_bootstrap_x64_init(void)
++{
++    resolve_real_xtst();
++
++    if (is_webhelper_process()) {
++        LOG_INFO("SteamRT3 bootstrap: webhelper process, loading hhx64");
++        load_webhelper_hook();
++        return;
++    }
++
++    if (!is_steam_client_process()) {
++        LOG_INFO("SteamRT3 bootstrap: forwarding XTest only for %s", get_process_path());
++        return;
++    }
++
++    LOG_INFO("SteamRT3 bootstrap: Steam client process, starting Millennium from %s", get_millennium_library_path());
++
++    if (!load_and_start_millennium()) return;
++
++    b_has_loaded_millennium = 1;
++    LOG_INFO("Started Millennium...");
++
++    if (atexit(proxy_at_exit_handler) != 0) {
++        LOG_ERROR("Failed to register atexit handler for Millennium cleanup");
++    }
++}
++
++static void libmillennium_bootstrap_x64_cleanup(void)
++{
++    if (h_xtst) dlclose(h_xtst);
++    if (h_hhx64) dlclose(h_hhx64);
++    if (!b_has_loaded_millennium) return;
++
++    stop_and_unload_millennium();
++}
++#endif
+diff --git a/src/bootstrap/linux/millennium_pvs64.cc b/src/bootstrap/linux/millennium_pvs64.cc
+index 1e81a7467..7d9d75d2b 100644
+--- a/src/bootstrap/linux/millennium_pvs64.cc
++++ b/src/bootstrap/linux/millennium_pvs64.cc
+@@ -90,6 +90,24 @@ int main(int argc, char* argv[])
+ 
+     unsetenv("PRESSURE_VESSEL_PREFIX");
+ 
++    /**
++     * SteamRT3 mode: the caller is already inside the pressure-vessel container, so there is no
++     * unruntime to exec. Reopen the FIFOs above and exec the real command directly.
++     */
++    const char* direct_exec = getenv("MILLENNIUM_PVS64_DIRECT_EXEC");
++    if (direct_exec && *direct_exec) {
++        unsetenv("MILLENNIUM_PVS64_DIRECT_EXEC");
++
++        if (argc < 2) {
++            fprintf(stderr, "[pvs64] ERROR: direct exec requested without a command\n");
++            return 1;
++        }
++
++        execv(argv[1], &argv[1]);
++        fprintf(stderr, "[pvs64] direct exec of %s failed: %s\n", argv[1], strerror(errno));
++        return 1;
++    }
++
+     if (!runtime_base || !*runtime_base) {
+         fprintf(stderr, "[pvs64] ERROR: PRESSURE_VESSEL_RUNTIME_BASE not set\n");
+         return 1;
+diff --git a/src/engine/backend_mgr.cc b/src/engine/backend_mgr.cc
+index 7638a7dd4..b6a9f2dd1 100644
+--- a/src/engine/backend_mgr.cc
++++ b/src/engine/backend_mgr.cc
+@@ -58,7 +58,7 @@ static std::string get_lua_host_exe()
+ #elif defined(_WIN32)
+     return (platform::get_millennium_bin_path() / "millennium.luavm64.exe").string();
+ #else
+-    return (platform::get_millennium_bin_path() / "libmillennium_luavm_x86").string();
++    return (platform::get_millennium_bin_path() / __MILLENNIUM_RTB_NAME__).string();
+ #endif
+ }
+ 
+diff --git a/src/include/millennium/plat_msg.h b/src/include/millennium/plat_msg.h
+index 9987b9853..62e01d418 100644
+--- a/src/include/millennium/plat_msg.h
++++ b/src/include/millennium/plat_msg.h
+@@ -60,7 +60,17 @@ static int show(const std::string title, const std::string message, platform::me
+     const std::string steam_path = platform::get_steam_path().generic_string();
+ 
+     char zenity_path[PATH_MAX];
++#if defined(MILLENNIUM_LINUX_X64)
++    char zenity_legacy[PATH_MAX];
++    snprintf(zenity_legacy, sizeof(zenity_legacy), "%s%s", steam_path.c_str(), "ubuntu12_32/steam-runtime/i386/usr/bin/zenity");
++    if (access(zenity_legacy, X_OK) == 0) {
++        snprintf(zenity_path, sizeof(zenity_path), "%s", zenity_legacy);
++    } else {
++        snprintf(zenity_path, sizeof(zenity_path), "%s", "zenity");
++    }
++#else
+     snprintf(zenity_path, sizeof(zenity_path), "%s%s", steam_path.c_str(), "ubuntu12_32/steam-runtime/i386/usr/bin/zenity");
++#endif
+ 
+     std::string cmd = zenity_path;
+ 
+diff --git a/src/instrumentation/internal/steam_hooks.cc b/src/instrumentation/internal/steam_hooks.cc
+index 51f9509e9..40f917b43 100644
+--- a/src/instrumentation/internal/steam_hooks.cc
++++ b/src/instrumentation/internal/steam_hooks.cc
+@@ -261,7 +261,15 @@ const char* Plat_HookedCreateSimpleProcess(const char* cmd, bool* matched = null
+         "Steam Helper";
+ #endif
+ 
+-    if (cmd_line.executable() != target_executable) {
++    const std::string_view executable = cmd_line.executable();
++
++    bool is_webhelper_target = executable == target_executable;
++#if defined(MILLENNIUM_LINUX_X64)
++    /** The SteamRT3 client launches the webhelper ELF directly, not the shell wrapper. */
++    is_webhelper_target = is_webhelper_target || executable == "steamwebhelper";
++#endif
++
++    if (!is_webhelper_target) {
+         logger.log("dispatching: {}", cmd_line.exec);
+         return cmd;
+     }
+@@ -398,7 +406,27 @@ const char* Plat_HookedCreateSimpleProcess(const char* cmd, bool* matched = null
+         if (create_pv_shim()) {
+             cmd_line.ensure_param("--millennium-loopback-ipc-fds", "5,6");
+             cmd_line.params.insert(cmd_line.params.begin(), cmd_line.exec);
++#if defined(MILLENNIUM_LINUX_X64)
++            /**
++             * The SteamRT3 client already runs inside its pressure-vessel container, so there is
++             * no pressure-vessel stage in front of the webhelper to impersonate. libmillennium_pvs64
++             * reopens the FIFOs on fds 3-6 and execs the command directly.
++             *
++             * The shim lives beside this library. On an FHS layout that is /usr/lib/millennium,
++             * which only exists on the host, so translate it through /run/host when needed.
++             */
++            std::string pvs64 = find_pvs64_binary();
++            if (access(pvs64.c_str(), X_OK) != 0) {
++                std::string host_path = "/run/host" + pvs64;
++                if (access(host_path.c_str(), X_OK) == 0) pvs64 = host_path;
++            }
++
++            cmd_line.params.insert(cmd_line.params.begin(), pvs64);
++            cmd_line.params.insert(cmd_line.params.begin(), "PRESSURE_VESSEL_PREFIX=" + g_pv_shim_dir);
++            cmd_line.params.insert(cmd_line.params.begin(), "MILLENNIUM_PVS64_DIRECT_EXEC=1");
++#else
+             cmd_line.params.insert(cmd_line.params.begin(), "PRESSURE_VESSEL_PREFIX=" + g_pv_shim_dir);
++#endif
+             cmd_line.exec = "/usr/bin/env";
+ 
+             if (g_cdp_pipe_change_efd < 0) {
+diff --git a/src/platform/linux.cc b/src/platform/linux.cc
+index 83dba6ca0..021d325c7 100644
+--- a/src/platform/linux.cc
++++ b/src/platform/linux.cc
+@@ -66,7 +66,11 @@ bool platform::should_setup_environment()
+ 
+     path[len] = '\0';
+ 
++#if defined(MILLENNIUM_LINUX_X64)
++    std::string steam_path = std::format("{}/.steam/steam/steamrt64/steam", std::getenv("HOME"));
++#else
+     std::string steam_path = std::format("{}/.steam/steam/ubuntu12_32/steam", std::getenv("HOME"));
++#endif
+     if (!is_same_path(path, steam_path.c_str())) {
+         logger.warn("[Millennium] Process is not running under Steam: {}", path);
+         return false;
+diff --git a/src/system/environment.cc b/src/system/environment.cc
+index cdde190a2..6e2219851 100644
+--- a/src/system/environment.cc
++++ b/src/system/environment.cc
+@@ -160,6 +160,17 @@ void platform::environment::setup()
+     const std::string dataDir   = environment::get("XDG_DATA_HOME",   std::format("{}/.local/share", homeDir));
+     const std::string stateDir  = environment::get("XDG_STATE_HOME",  std::format("{}/.local/state", homeDir));
+ 
++#if defined(MILLENNIUM_LINUX_X64)
++    std::map<std::string, std::string> environment_unix
++    {
++        { "OPENSSL_CONF",               "/dev/null" },
++        { "MILLENNIUM_RUNTIME_PATH_X64", environment::get("MILLENNIUM_RUNTIME_PATH_X64", "/usr/lib/millennium/libmillennium_x64.so") },
++        { "MILLENNIUM__STEAM_EXE_PATH", std::format("{}/.steam/steam/steamrt64/steam", homeDir) },
++        { "MILLENNIUM__PLUGINS_PATH",   std::format("{}/millennium/plugins",             dataDir) },
++        { "MILLENNIUM__CONFIG_PATH",    std::format("{}/millennium",                   configDir) },
++        { "MILLENNIUM__LOGS_PATH",      std::format("{}/millennium/logs",               stateDir) },
++    };
++#else
+     std::map<std::string, std::string> environment_unix
+     {
+         { "OPENSSL_CONF",              "/dev/null" },
+@@ -169,6 +180,7 @@ void platform::environment::setup()
+         { "MILLENNIUM__CONFIG_PATH",    std::format("{}/millennium",                   configDir) },
+         { "MILLENNIUM__LOGS_PATH",      std::format("{}/millennium/logs",               stateDir) },
+     };
++#endif
+     environment.insert(environment_unix.begin(), environment_unix.end());
+ #elif __APPLE__
+     const std::string homeDir   = platform::environment::get("HOME");

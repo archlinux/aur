@@ -6,7 +6,7 @@ _pkgname="millennium"
 pkgname="${_pkgname}-git"
 _Pkgname="Millennium"
 pkgver=v3.6.3.beta.1.r7.gd6a7822a
-pkgrel=1
+pkgrel=2
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead. (git-version, next branch)"
 arch=('x86_64')
 url="https://steambrew.app"
@@ -43,12 +43,12 @@ conflicts=(
 )
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
-    "https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/949.patch" # For the new SteamRT3 build
+    'https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/949.patch' # For the new SteamRT3 build
+    'reqhald-949.patch'
 )
-sha256sums=(
-    'SKIP'
-    '8f9f5c5ad2b8aa5bafd8e543e84d602def01c2dfb8a17ddccfdcc551a36d32fe'
-)
+sha256sums=('SKIP'
+            '8f9f5c5ad2b8aa5bafd8e543e84d602def01c2dfb8a17ddccfdcc551a36d32fe'
+            'be62f4369a359e47e6de90f5a14dcf1d7df23c1d8cc9049b594a50fa9055b98b')
 options=(!debug)
 install="${_pkgname}.install"
 
@@ -69,6 +69,10 @@ prepare() {
         git apply -v -3 "../${src}"
     done
 
+    LDFLAGS_NEW="${LDFLAGS//-lomp/}"
+    LDFLAGS_NEW="${LDFLAGS_NEW//-lpthread/}"
+
+    env LDFLAGS="${LDFLAGS_NEW}" \
     cmake               -GNinja --preset linux-arch-pkgbuild     .
 
     cmake               -GNinja --preset linux-arch-pkgbuild-x64 .

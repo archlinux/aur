@@ -1,0 +1,74 @@
+From 633c9a56946c1dbb3ef541b957eee6ff1e777fa4 Mon Sep 17 00:00:00 2001
+From: Toria <ninetailedtori@uwu.gal>
+Date: Thu, 29 Oct 2026 23:22:04 +0000
+Subject: [PATCH]
+ https://github.com/SteamClientHomebrew/Millennium/pull/949#issuecomment-6507995529
+
+Signed-off-by: Toria <ninetailedtori@uwu.gal>
+---
+ CMakePresets.json                 | 9 ++++++---
+ src/include/millennium/encoding.h | 9 +++------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/CMakePresets.json b/CMakePresets.json
+index 37f6ea15..799265e8 100644
+--- a/CMakePresets.json
++++ b/CMakePresets.json
+@@ -157,7 +157,8 @@
+       "description": "Debug build for the SteamRT3 64-bit Steam client",
+       "cacheVariables": {
+         "MILLENNIUM_LINUX_X64": "ON",
+-        "CMAKE_BUILD_TYPE": "Debug"
++        "CMAKE_BUILD_TYPE": "Debug",
++        "CMAKE_SHARED_LINKER_FLAGS": "-Wl,--disable-new-dtags,-rpath,/run/host/usr/lib64:/run/host/usr/lib"
+       }
+     },
+     {
+@@ -169,7 +170,8 @@
+       "description": "Release build for the SteamRT3 64-bit Steam client",
+       "cacheVariables": {
+         "MILLENNIUM_LINUX_X64": "ON",
+-        "CMAKE_BUILD_TYPE": "Release"
++        "CMAKE_BUILD_TYPE": "Release",
++        "CMAKE_SHARED_LINKER_FLAGS": "-Wl,--disable-new-dtags,-rpath,/run/host/usr/lib64:/run/host/usr/lib"
+       }
+     },
+     {
+@@ -180,7 +182,8 @@
+       "cacheVariables": {
+         "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+         "CMAKE_CXX_FLAGS": "-fdebug-prefix-map=${sourceDir}/= -fmacro-prefix-map=${sourceDir}/=",
+-        "CMAKE_C_FLAGS": "-fdebug-prefix-map=${sourceDir}/= -fmacro-prefix-map=${sourceDir}/="
++        "CMAKE_C_FLAGS": "-fdebug-prefix-map=${sourceDir}/= -fmacro-prefix-map=${sourceDir}/=",
++        "CMAKE_SHARED_LINKER_FLAGS": "-Wl,--disable-new-dtags,-rpath,/run/host/usr/lib64:/run/host/usr/lib"
+       }
+     }
+   ]
+diff --git a/src/include/millennium/encoding.h b/src/include/millennium/encoding.h
+index ea8ace58..ec1867a5 100644
+--- a/src/include/millennium/encoding.h
++++ b/src/include/millennium/encoding.h
+@@ -34,6 +34,7 @@
+ #include <sstream>
+ #include <iomanip>
+ #include <random>
++#include <format>
+
+ // https://stackoverflow.com/questions/180947/base64-decode-snippet-in-c
+
+@@ -141,10 +142,6 @@ inline std::string GenerateUUID()
+     for (int i = 0; i < 4; ++i)
+         data[i] = dis(gen);
+
+-    std::stringstream ss;
+-    ss << std::hex << std::setfill('0') << std::setw(8) << data[0] << "-" << std::setw(4) << ((data[1] >> 16) & 0xFFFF) << "-" << std::setw(4)
+-       << (((data[1] >> 0) & 0x0FFF) | 0x4000) << "-" << std::setw(4) << (((data[2] >> 16) & 0x3FFF) | 0x8000) << "-" << std::setw(4) << (data[2] & 0xFFFF) << std::setw(8)
+-       << data[3];
+-
+-    return ss.str();
++    return std::format("{:08x}-{:04x}-{:04x}-{:04x}-{:04x}{:08x}", data[0], (data[1] >> 16) & 0xFFFF,
++        ((data[1] >> 0) & 0x0FFF) | 0x4000, ((data[2] >> 16) & 0x3FFF) | 0x8000, data[2] & 0xFFFF, data[3]);
+ }
+--
+2.56.0
+
