@@ -10,7 +10,7 @@ _nfver=3.5.1
 # families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -43,17 +43,21 @@ source=(
 # a known-good hash (replace the 6th SKIP). The *.py helpers are vendored locally
 # (no network fetch), so they are covered by makepkg's local-file hashing —
 # fill these in with `updpkgsums`.
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
+            'c1d0e344ebadd66eb62f03f823784cce49f1787f56563fb098fca01fc554135c'
+            '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
+            '2760c62d502b77012c49517c2ea392ec2d4c647fe060985c927df48d105197b9'
+            '1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4'
+            '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
+            '151f00af692183a62146453b709f04240dfe72fdc7a1b98a833f664177eacd21'
+            '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
+            '77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc'
+            '980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194'
+            '1297a4be9504032cc3457c3d50f30a21c3101f4203f5dd545c8d4c19f4859600'
+            'e475b94e90c3e569d51a24b3355e854db5195b4e161384896b7637cd42a2564e'
+            '4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0'
+            '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
 
 # ── Versioning ──────────────────────────────────────────────────────────────
 #
@@ -207,11 +211,16 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 #                 tnum/frac/numr/dnom/sups/subs either: they are per-context
 #                 requests, and baking tnum would tabularise running prose.
 #
-#                 Not prompted for interactively, unlike the other options: one
-#                 list changes different glyphs in different families (the
-#                 cvXX/ss03 traps above), so this one is an explicit decision.
+#                 Prompted for, but after the family questions rather than with
+#                 the others: the useful answer depends on which families the
+#                 build contains (ss03 is the centred colon in SF Pro and the
+#                 un-slashing of the zero in SF Mono), so the menu offers the
+#                 set the fontconfig block uses, the same set plus ss03, or a
+#                 list of your own. Enter keeps the default, which bakes
+#                 nothing.
 #
-#                 Nerd Fonts patched builds work too: font-patcher keeps every#                 GSUB feature (verified on a patched SF Pro Text and SF Mono).
+#                 Nerd Fonts patched builds work too: font-patcher keeps every
+#                 GSUB feature (verified on a patched SF Pro Text and SF Mono).
 #                 FontForge does damage the name table, which is repaired by
 #                 fix_names.py before this step runs - without that repair the
 #                 font cannot be written back at all, because FontForge adds a
@@ -610,23 +619,6 @@ _resolve_options() {
   HINT_WINCOMPAT="${HINT_WINCOMPAT:-false}"
   HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
 
-  # ── Features baked into calt (see the header) ─────────────────────────────
-  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
-  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
-  for _v in ${FEATURE_DEFAULTS//,/ }; do
-    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
-      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss06)."; exit 1
-    fi
-  done
-  if [[ -n "$FEATURE_FAMILY" ]]; then
-    # Trailing whitespace would end up in the family name; a leading space is
-    # deliberate (" Alt" -> "SF Pro Text Alt").
-    FEATURE_FAMILY="${FEATURE_FAMILY%"${FEATURE_FAMILY##*[![:space:]]}"}"
-    if [[ ! "$FEATURE_FAMILY" =~ ^[[:space:]]*[A-Za-z0-9][A-Za-z0-9\ ._-]*$ ]]; then
-      echo "Error: FEATURE_FAMILY='$FEATURE_FAMILY' is not usable as a family suffix."; exit 1
-    fi
-  fi
-
   # ── Font family & subfamily selection ────────────────────────────────────
   if [[ "$_interactive" == true && \
         -z "${WANT_SF_PRO:-}${WANT_SF_COMPACT:-}${WANT_SF_MONO:-}${WANT_SF_ARABIC:-}${WANT_NY:-}" ]]; then
@@ -684,6 +676,77 @@ _resolve_options() {
 
   if [[ "$WANT_SF_PRO$WANT_SF_COMPACT$WANT_SF_MONO$WANT_SF_ARABIC$WANT_NY" != *true* ]]; then
     echo "Error: no font families selected. Aborting."; exit 1
+  fi
+
+  # ── Features baked into calt (see the header) ─────────────────────────────
+  # Asked here, after the family answers, because the recommendation depends on
+  # them: ss03 is the centred colon in SF Pro but the un-slashing of the zero in
+  # SF Mono, where the slashed zero IS the default (0 -> zero.1).
+  if [[ "$_interactive" == true && -z "${FEATURE_DEFAULTS:-}" ]]; then
+    echo ""
+    echo "  ── OpenType features ────────────────────────────────────"
+    echo "  A font cannot declare a feature \"on by default\": programs apply a"
+    echo "  fixed list (kern calt liga ...) and ignore the rest. Baking moves a"
+    echo "  feature's lookups into calt, which every program applies - the only"
+    echo "  way Chrome, Electron, Qt and LibreOffice honour one, since they"
+    echo "  never read fontconfig's fontfeatures. GTK is covered either way by"
+    echo "  the block in ~/.config/fontconfig/fonts.conf."
+    _ask_choice "Bake features into calt" none \
+      "none:leave the fonts as Apple ships them (default)" \
+      "text:ss06,cv07,case - slashed zero, one-storey a, raised punctuation" \
+      "colon:text + ss03, centred colon everywhere (not with SF Mono)" \
+      "custom:type the tag list yourself"
+    case $_choice in
+      none)  FEATURE_DEFAULTS="" ;;
+      text)  FEATURE_DEFAULTS="ss06,cv07,case" ;;
+      colon) FEATURE_DEFAULTS="ss06,cv07,case,ss03" ;;
+      custom)
+        echo "  Tags, comma or space separated (e.g. \"ss06,cv07,case\"):"
+        read -r -p "  > " _tags || _tags=""
+                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+        _tags="${_tags#,}"; _tags="${_tags%,}"
+        FEATURE_DEFAULTS="$_tags"
+        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
+        ;;
+    esac
+    if [[ -n "$FEATURE_DEFAULTS" ]]; then
+      # ss03 means two different things in the two families: catch the
+      # combination that silently un-slashes every zero in SF Mono.
+      if [[ "$WANT_SF_MONO" == true && ",$FEATURE_DEFAULTS," == *,ss03,* ]]; then
+        if [[ "$_choice" == colon ]]; then
+          echo ""
+          echo "  ss03 is the centred colon in SF Pro, but in SF Mono it replaces"
+          echo "  the slashed zero with a plain one - and the slashed zero is the"
+          echo "  default there. Refusing to bake it into a build with SF Mono:"
+          echo "  pick 2, or answer 'no' to SF Mono and build again."
+          exit 1
+        fi
+        echo "  Warning: ss03 will also un-slash every zero in SF Mono."
+      fi
+      echo ""
+      echo "  A renamed copy keeps the stock look available next to the new one"
+      echo "  (\"SF Pro Text\" and \"SF Pro Text Alt\"). Without it the packaged"
+      echo "  files keep their names and the features apply everywhere, with no"
+      echo "  way back except CSS \"calt\" 0."
+      _ask_yn "Also install a renamed copy (suffix ' Alt')" n
+      [[ "$_yn" =~ ^[yY]$ ]] && FEATURE_FAMILY=" Alt" || FEATURE_FAMILY=""
+    fi
+  fi
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss06)."; exit 1
+    fi
+  done
+  if [[ -n "$FEATURE_FAMILY" ]]; then
+    # Trailing whitespace would end up in the family name; a leading space is
+    # deliberate (" Alt" -> "SF Pro Text Alt").
+    FEATURE_FAMILY="${FEATURE_FAMILY%"${FEATURE_FAMILY##*[![:space:]]}"}"
+    if [[ ! "$FEATURE_FAMILY" =~ ^[[:space:]]*[A-Za-z0-9][A-Za-z0-9\ ._-]*$ ]]; then
+      echo "Error: FEATURE_FAMILY='$FEATURE_FAMILY' is not usable as a family suffix."; exit 1
+    fi
   fi
 
   # ── Build summary ─────────────────────────────────────────────────────────

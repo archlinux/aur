@@ -353,6 +353,10 @@ of those features. `make_features.py` does that into `calt`, and
 FEATURE_DEFAULTS="ss06,cv07,case" makepkg -si
 ```
 
+`makepkg` asks for this during the build (Enter = bake nothing), together
+with whether to install a renamed copy so the stock look stays available;
+the variables below are what an unattended build uses.
+
 That is exactly the set the SF Pro Text block in `~/.config/fontconfig/fonts.conf`
 turns on for pango, so GTK, Chromium, Electron, Qt and LibreOffice then agree.
 (`ss02`, also active there, is already part of `ss06`. `ss03` — the centred colon
