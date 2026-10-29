@@ -1,0 +1,15 @@
+pkgbase = queermoji-font
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://queermoji.pronouns.page/
+	arch = any
+	groups = fonts
+	license = OFL-1.1 AND ISC AND CC-BY-SA-4.0 AND MIT
+	source = queermoji-0.5.0.zip::https://queermoji.pronouns.page/Queermoji-0.5.0.zip
+	sha256sums = 42b73e4079b229806eb85737db6f737aa4b49a12f30d4a39e057cb44bdbd85b7
+
+pkgname = ttf-queermoji
+	provides = queermoji-font
+
+pkgname = woff-queermoji
+	provides = queermoji-font
