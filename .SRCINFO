@@ -1,16 +1,17 @@
 pkgbase = solarbg-git
 	pkgdesc = Sun altitude based wallpapers
-	pkgver = v1.2.0.r0.gb4bd1bf
-	pkgrel = 4
+	pkgver = 2.0.2.r0.g66965eb
+	pkgrel = 1
 	url = https://github.com/VardanHeroic/solarbg
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = npm
-	depends = nodejs>=16.0.0
+	depends = nodejs>=17.1.0
 	optdepends = feh: x11 tiling wm support,
 	optdepends = swaybg: wlroots based wayland compositors support
-	source = solarbg-git::git+https://github.com/VardanHeroic/solarbg.git
+	replaces = solarbg
+	source = solarbg-git::git+https://github.com/VardanHeroic/solarbg.git#branch=master
 	md5sums = SKIP
 
 pkgname = solarbg-git

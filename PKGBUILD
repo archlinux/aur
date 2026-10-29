@@ -1,18 +1,19 @@
-# Maintainer: Vardan Tarayan <tarayanvardan@gmail.com>
+# Maintainer: Vardan Tarayan <vardanheroic@gmail.com>
 pkgname='solarbg-git'
-pkgrel=4
-pkgver="v1.2.0.r0.gb4bd1bf"
+pkgrel=1
+pkgver=2.0.2.r0.g66965eb
 pkgdesc="Sun altitude based wallpapers "
-arch=('x86_64')
+arch=('any')
 url="https://github.com/VardanHeroic/solarbg"
-license=('GPL')
-depends=('nodejs>=16.0.0')
+license=('GPL-3.0-only')
+depends=('nodejs>=17.1.0')
 makedepends=('git' 'npm')
 optdepends=(
 	'feh: x11 tiling wm support',
 	'swaybg: wlroots based wayland compositors support')
-source=('solarbg-git::git+https://github.com/VardanHeroic/solarbg.git')
+source=('solarbg-git::git+https://github.com/VardanHeroic/solarbg.git#branch=master')
 md5sums=('SKIP')
+replaces=('solarbg')
 
 
 pkgver() {
@@ -22,18 +23,16 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	npm install --production
+	npm install --include=dev
+	npx tsc
 }
 
 package() {
 	cd "$pkgname"
-	appdir=/usr/lib/${pkgname} 
-	bindir=/usr/bin/
+	
+    local tarball
+    tarball=$(npm pack --silent --pack-destination "$srcdir")
 
-	install -d "${pkgdir}"${appdir}
-	cp -r * "${pkgdir}"${appdir}
-
-	install -d "${pkgdir}"${bindir}
-	cp scripts/solarbg "${pkgdir}"${bindir} 
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$tarball"
 
 }
