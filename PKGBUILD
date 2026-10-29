@@ -1,6 +1,6 @@
 # Maintainer: Wasylq <wasylq@protonmail.com>
 pkgname=moandrop
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Find and share subtitles for a video by what the file is, not what it is called'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('glibc' 'libgl' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland')
 makedepends=('go>=1.25')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4b94025feddfe7768b4a87fb8d00d128158c880c2d8c7b377c34c90db38c76b3')
+sha256sums=('c618ff4933de31d5dcbb02fa7e4638c26e7f9ff255a64d092ab974cf4249222e')
 
 build() {
     cd "MoanDrop-${pkgver}"
