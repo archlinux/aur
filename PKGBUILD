@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytmdesktop
-pkgver=2.0.12
+pkgver=2.1.0
 pkgrel=1
-_nodeversion=24
+_nodeversion=26
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.github.io"
@@ -11,6 +11,7 @@ depends=(
   'alsa-lib'
   'gtk3'
   'libnotify'
+  'libsecret'
   'libxtst'
   'nss'
   'xdg-utils'
@@ -18,17 +19,13 @@ depends=(
 makedepends=(
   'git'
   'nvm'
+  'pnpm'
   'python'
-  'yarn'
   'zip'
-)
-optdepends=(
-  'libgnome-keyring'
-  'lsb-release'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/refs/tags/v$pkgver.tar.gz"
         'youtube-music-desktop-app.desktop')
-sha256sums=('df26e425602f6e755591ccab317312c180cd10d639c5426b656315543ec90a81'
+sha256sums=('dde400bc5d345c61153c996569a151f2603495a2a17636b5d14929e20b59c57f'
             '90db79917962cd630c223e54bddd6e4150ec2d399a6cf5e75ffd9f83e926703c')
 
 _ensure_local_nvm() {
@@ -44,25 +41,23 @@ _ensure_local_nvm() {
 
 prepare() {
   cd "$pkgname-$pkgver"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export PNPM_HOME="$srcdir/pnpm-home"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
-  yarn config set enableTelemetry 0
-  yarn --immutable
+  pnpm install --frozen-lockfile
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export PNPM_HOME="$srcdir/pnpm-home"
   _ensure_local_nvm
-  yarn make --targets="@electron-forge/maker-zip"
+  pnpm make --targets="@electron-forge/maker-zip"
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -d "$pkgdir/opt/$pkgname"
   cp -r out/YouTube\ Music\ Desktop\ App-linux-x64/. "$pkgdir/opt/$pkgname"
-  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
   install -Dm644 src/assets/icons/ytmd.png \
     "$pkgdir/usr/share/pixmaps/youtube-music-desktop-app.png"
