@@ -3,7 +3,7 @@
 # Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
 
 _pkgname=googlesheets4
-_pkgver=1.1.2
+_pkgver=1.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,7 +20,6 @@ depends=(
   r-googledrive
   r-httr
   r-ids
-  r-lifecycle
   r-magrittr
   r-purrr
   r-rematch2
@@ -39,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('21094083f375d8f9d1499263de1d9ecc')
-b2sums=('9c90ca8625c34306ad7bd7355818d54aaa179d5dc5b7ade5137b3910f2ace864493d984ae4a5483a7c5d6e7bfdeb3b74e168030b010a4b1e9b77f477717c8fe6')
+md5sums=('bf92d615c0f33c62c3f7e916d43195c7')
+b2sums=('aed2b3da939b196f0b590801ccde46093287ca6a2521222134bcf68889e3281fd0d0e30b8093b5e350b766128fee690e9588ef577d44530e96974bee4fb8140d')
 
 build() {
   mkdir build
