@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
 pkgver=4.007
-pkgrel=4
+pkgrel=5
 pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
@@ -17,18 +17,21 @@ options=(!strip)
 source=("MiSans_Latin-${pkgver}.zip::https://hyperos.mi.com/font-download/MiSans_Latin.zip"
         "LICENSE.pdf::https://hyperos.mi.com/font-download/MiSans字体知识产权许可协议.pdf"
         "fix_weights.py"
-        "set_gasp.py")
+        "set_gasp.py"
+        "make_features.py")
 sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
             '4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86'
             'f7b025ab723a672e0c821c610251199d04a5342c265483eafeb35f3e5f0be45b'
-            '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99')
+            '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
 
 # ── Licensing note ──────────────────────────────────────────────────────────
 #
 # The MiSans license (§2.2) forbids adapting or redeveloping the fonts. This
 # PKGBUILD distributes no font files: it downloads Xiaomi's originals and hints
-# them locally on the user's machine, for that user's own use. You are
-# responsible for deciding whether that is acceptable to you.
+# (and, only if you ask, bakes OpenType features into) them locally on your own
+# machine, for your own use. You are responsible for deciding whether that is
+# acceptable to you.
 #
 # ── What this package does ──────────────────────────────────────────────────
 #
@@ -133,12 +136,57 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #               smooth   all sizes anti-aliased ({0xFFFF: 15}, symmetric flags)
 #               gridfit  all sizes gridfit+grayscale ({0xFFFF: 3})
 #
+#  ── Features every app can see (not just pango) ───────────────────────────
+#
+#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 Bake these GSUB features into the font's 'calt' feature, so
+#                 that EVERY renderer applies them, not only pango. For the
+#                 reason, see the note at the bottom of this block.
+#
+#                 Suggested set - the three the MiSans Latin block in
+#                 ~/.config/fontconfig/fonts.conf turns on for pango that do
+#                 not redesign a character:
+#                     FEATURE_DEFAULTS="case,ss01,ss07"
+#                   case   12 subs: ( ) [ ] { } « » ‹ › become .case forms,
+#                          raised to sit centred on CAPITAL height. This is a
+#                          look, not a fix: it applies to lowercase text too,
+#                          "a(b)c" included.
+#                   ss01   4 subs: period.round, colon.round, divide.round and
+#                          a straight comma - the round dots the typeface was
+#                          drawn for
+#                   ss07   8 subs: straight comma, semicolon and quotes
+#                 The config also enables ss08 (dial pad # and *), ss09
+#                 (MiType digits: it replaces the design of every digit, 1318
+#                 codepoints) and frac. Add them here if Chrome must look
+#                 exactly like GTK does, but know what they do: frac turns
+#                 "21/2" into 2½ (three-part dates such as 1/2/2026 are left
+#                 alone), and ss09 is a different numeral design.
+#                 Never aalt, ordn or the small caps: make_features.py refuses
+#                 those unless --allow-risky is passed.
+#
+#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
+#                 Install the result as this family instead, so the stock
+#                 MiSans Latin stays available. The name must not end in a
+#                 pango style word (Thin, Bold, Italic, ...).
+#
+#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
+#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
+#  only ask from page CSS. A shaper applies a fixed list of features whatever
+#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
+#  moving a feature's lookups into calt is the only way to make it the
+#  default in every program. Verified in Chromium: the baked font with no CSS
+#  at all is pixel-identical to the stock one with font-feature-settings
+#  listing the same tags. The escape hatch is CSS "calt" 0, which also drops
+#  MiSans' own contextual alternates.
+#
 #  Examples:
 #    makepkg -si                         (asks, when run from a terminal)
 #    makepkg -si </dev/null              (never asks: defaults only)
 #    HINT_PRESET=sharp makepkg -si       (asks everything except the preset)
 #    HINT_PRESET=custom HINT_MODE=qqs HINT_RANGE_MIN=6 makepkg -si
 #    FIX_WEIGHTS=false HINT_FAMILY_SUFFIX=" Hinted" makepkg -si
+#    FEATURE_DEFAULTS=case,ss01,ss07 makepkg -si
+#    FEATURE_DEFAULTS=ss09 FEATURE_FAMILY="MiSans Latin Alt" makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
 
 _fontdir="MiSans Latin/ttf"
@@ -149,7 +197,7 @@ _family="MiSans Latin"
 _opt_keys=(FIX_WEIGHTS HINT_REFERENCE HINT_PRESET HINT_MODE HINT_RANGE_MIN
            HINT_RANGE_MAX HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
-           HINT_FAMILY_SUFFIX GASP_MODE)
+           HINT_FAMILY_SUFFIX GASP_MODE FEATURE_DEFAULTS FEATURE_FAMILY)
 
 # _ask_yn QUESTION DEFAULT(y|n) -> sets _yn to true/false
 _ask_yn() {
@@ -214,6 +262,14 @@ _prompt_options() {
         "gridfit:all sizes gridfit + grayscale"
       GASP_MODE=$_choice
     fi
+    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
+      _ask_yn "Bake the pango features into the fonts (so Chrome gets them too)" n
+      if [[ "$_yn" == true ]]; then
+        FEATURE_DEFAULTS="case,ss01,ss07"
+      else
+        FEATURE_DEFAULTS=""
+      fi
+    fi
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
@@ -271,6 +327,8 @@ _resolve_options() {
   GASP_MODE="${GASP_MODE:-keep}"
   HINT_WINCOMPAT="${HINT_WINCOMPAT:-false}"
   HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
 
   if [[ ! "$HINT_MODE" =~ ^[nqs]{3}$ ]]; then
     echo "Error: HINT_MODE='$HINT_MODE' must be 3 chars from n/q/s (e.g. qsq)." >&2
@@ -300,6 +358,12 @@ _resolve_options() {
       *) echo "Error: $_v='${!_v}' must be true or false." >&2; exit 1 ;;
     esac
   done
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss01)." >&2
+      exit 1
+    fi
+  done
 }
 
 prepare() {
@@ -326,7 +390,7 @@ build() {
        "x-height=$HINT_XHEIGHT fallback=$HINT_FALLBACK_SCRIPT gasp=$GASP_MODE" \
        "ttfa-table=$HINT_TTFA_TABLE${HINT_FAMILY_SUFFIX:+ suffix='$HINT_FAMILY_SUFFIX'}"
 
-  rm -rf "$srcdir/work" "$srcdir/hinted"
+  rm -rf "$srcdir/work" "$srcdir/hinted" "$srcdir/featured"
   mkdir -p "$srcdir/work" "$srcdir/hinted"
   cp "$srcdir/$_fontdir/"*.ttf "$srcdir/work/"
 
@@ -376,13 +440,30 @@ build() {
     echo "==> Applying gasp mode '$GASP_MODE'..."
     python "$srcdir/set_gasp.py" "$GASP_MODE" "$srcdir/hinted/"*.ttf
   fi
+
+  # Last, on the finished files, so ttfautohint never sees the extra lookups.
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then
+    local _fam=()
+    [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
+    echo "==> Baking $FEATURE_DEFAULTS into calt" \
+         "${FEATURE_FAMILY:+(installed as '$FEATURE_FAMILY')}..."
+    python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+      "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$srcdir/hinted/"*.ttf
+  fi
 }
 
 package() {
   _resolve_options
 
-  install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname" "$srcdir/hinted/"*.ttf
+  local _out="$srcdir/hinted"
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then _out="$srcdir/featured"; fi
+  install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname" "$_out/"*.ttf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/LICENSE.pdf"
+
+  # The name the fontconfig snippet below must use: whatever this build
+  # installed. FEATURE_FAMILY replaces the whole family name, so it wins over
+  # HINT_FAMILY_SUFFIX (which ttfautohint had already rewritten).
+  local _conf_family="${FEATURE_FAMILY:-${_family}${HINT_FAMILY_SUFFIX:-}}"
 
   # Opt-in rendering tweak (see the header): full bytecode hinting for this
   # family only. Shipped in conf.avail and deliberately not enabled.
@@ -405,7 +486,7 @@ package() {
 <fontconfig>
   <match target="font">
     <test name="family" compare="eq">
-      <string>${_family}${HINT_FAMILY_SUFFIX:-}</string>
+      <string>${_conf_family}</string>
     </test>
 ${_prgtests%$'\n'}
     <edit name="hinting" mode="assign"><bool>true</bool></edit>
