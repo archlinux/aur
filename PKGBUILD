@@ -1,5 +1,5 @@
 pkgname=pcw-backend
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Backend for ProxyCoreWrapper"
 url='https://github.com/ProxyCoreWrapper/backend'
@@ -10,7 +10,7 @@ options=('!debug')
 depends=('glibc' 'systemd')
 makedepends=('git' 'rust' 'protobuf')
 
-source=("git+https://github.com/ProxyCoreWrapper/backend.git#tag=$pkgver")
+source=("git+https://github.com/ProxyCoreWrapper/backend.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
@@ -36,8 +36,8 @@ After=network.target
 Type=simple
 User=root
 Group=pcw
-ConfigurationDirectory=PCW
-RuntimeDirectory=PCW
+ConfigurationDirectory=pcw
+RuntimeDirectory=pcw
 StateDirectory=pcw-backend
 ExecStart=/usr/bin/pcw-backend
 Restart=on-failure
