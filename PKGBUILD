@@ -1,6 +1,6 @@
 # Maintainer: PandaDEV <contact@pandadev.net>
 pkgname=senden-bin
-pkgver=0.1.132
+pkgver=0.1.134
 pkgrel=1
 pkgdesc='Desktop client for Senden, the chat platform'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ options=('!strip' '!debug')
 noextract=("senden-${pkgver}-x86_64.zip" "senden-${pkgver}-aarch64.zip")
 source_x86_64=("senden-${pkgver}-x86_64.zip::https://senden-releases.objects.eplg.cloud/desktop/senden-electron-${pkgver}.zip")
 source_aarch64=("senden-${pkgver}-aarch64.zip::https://senden-releases.objects.eplg.cloud/desktop/senden-electron-${pkgver}-arm64.zip")
-sha256sums_x86_64=('beb2d97deb646be83040444d64f21d80d60c4e5ce3c33af12d5fbae07e30195d')
-sha256sums_aarch64=('44aed5b8a62f2846282e4168e2ac7325402129eeeb2bf3e0d58d719dbcf28652')
+sha256sums_x86_64=('a2230217a8f5b4a5e9e06fb221edbf08f54a95579dde272cc3f477aeeb91e851')
+sha256sums_aarch64=('730417e26dd8afd620cfe96abcca261899a36c9ede731b54dfefd78902b2b581')
 
 package() {
     install -dm755 "${pkgdir}/opt/senden"
