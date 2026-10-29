@@ -3,7 +3,7 @@
 
 pkgname=linksy-bin
 pkgver=0.9.16   # fallback, overridden by pkgver()
-pkgrel=3
+pkgrel=4
 pkgdesc="Your devices, connected: direct file/clipboard/screen/camera sharing between Linux and Android, no cloud"
 arch=('x86_64')
 url="https://github.com/LinkSy-mg/linksy-releases"
@@ -155,8 +155,9 @@ check() {
   #    The outer timeout (12s) sits beyond the check window (8s) so the kill
   #    can never race the liveness check.
   _smoke_home="$srcdir/linksyd-smoke-home"
+  rm -rf "$_smoke_home"
   mkdir -p "$_smoke_home"
-  HOME="$_smoke_home" timeout 12 usr/bin/linksyd --name aur-smoke-test --port 47201 >"$srcdir/linksyd-smoke.log" 2>&1 &
+  HOME="$_smoke_home" timeout 12 usr/bin/linksyd --name aur-smoke-test --port 47201 --socket "$_smoke_home/linksyd.sock" --data-dir "$_smoke_home/data" --download-dir "$_smoke_home/dl" --no-discovery --no-away >"$srcdir/linksyd-smoke.log" 2>&1 &
   _pid=$!
   _alive=1
   for _i in $(seq 1 16); do

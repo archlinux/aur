@@ -1,7 +1,7 @@
 pkgbase = linksy-bin
 	pkgdesc = Your devices, connected: direct file/clipboard/screen/camera sharing between Linux and Android, no cloud
 	pkgver = 0.9.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/LinkSy-mg/linksy-releases
 	install = linksy-bin.install
 	arch = x86_64
