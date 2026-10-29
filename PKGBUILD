@@ -19,9 +19,9 @@ build() {
     export GOPATH="$srcdir/gopath"
     cd "${srcdir}/ircdog" || exit
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
 
     go build \
         -trimpath \
