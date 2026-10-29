@@ -1,0 +1,30 @@
+pkgbase = nemo-speech-vulkan-nightly-bin
+	pkgdesc = Native speech recognition, synthesis, and translation with Vulkan support (nightly)
+	pkgver = 20261028.203448
+	pkgrel = 1
+	url = https://github.com/NVIDIA/NeMo-Speech.cpp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = MIT
+	license = MIT-0
+	license = GPL-3.0-or-later WITH GCC-exception-3.1
+	depends = glibc
+	depends = gcc-libs
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	optdepends = curl: model downloads
+	optdepends = alsa-lib: microphone capture through ALSA
+	optdepends = libpulse: microphone capture through PulseAudio
+	optdepends = jack: microphone capture through JACK
+	provides = nemo-speech=20261028.203448
+	conflicts = nemo-speech
+	options = !strip
+	options = !debug
+	source_x86_64 = nemo-speech-20261028.203448-linux-x86_64-vulkan.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-x86_64-vulkan.tar.gz
+	sha256sums_x86_64 = 0a733bd1fdae0ebf8280ef1a992a597d25bf72b54e4503342f3ec22efe9f8eaa
+	source_aarch64 = nemo-speech-20261028.203448-linux-aarch64-vulkan.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-aarch64-vulkan.tar.gz
+	sha256sums_aarch64 = 540e00893d100df93cba5ae320dc247bd621ee33557b11ae004bce935a0bf869
+
+pkgname = nemo-speech-vulkan-nightly-bin
