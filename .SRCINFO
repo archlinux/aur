@@ -1,6 +1,6 @@
 pkgbase = python-nv-one-logger-core
 	pkgdesc = NVIDIA OneLogger core: structured telemetry primitives for ML training jobs
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nv-one-logger
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-nv-one-logger-core
 	depends = python-strenum
 	depends = python-toml
 	depends = python-typing_extensions
-	source = nv-one-logger-core-v2.3.0.tar.gz::https://github.com/NVIDIA/nv-one-logger/archive/refs/tags/nv-one-logger-core-v2.3.0.tar.gz
-	sha256sums = e2be7db9f91b4f7ea692e67ec9665b7da00986a648356bd8fb50fa5f6fee22d2
+	source = https://files.pythonhosted.org/packages/source/n/nv_one_logger_core/nv_one_logger_core-2.3.1.tar.gz
+	sha256sums = cbb2f87604c78b96a302f32d87199902129d76153a73a20f8455a250b3246c1d
 
 pkgname = python-nv-one-logger-core

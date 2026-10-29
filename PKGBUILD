@@ -1,8 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=python-nv-one-logger-core
-_repo=nv-one-logger
-_tag=nv-one-logger-core-v2.3.0
-pkgver=2.3.0
+_srcname=nv_one_logger_core
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='NVIDIA OneLogger core: structured telemetry primitives for ML training jobs'
 arch=('any')
@@ -22,48 +21,23 @@ makedepends=(
     'python-wheel'
     'python-poetry-core'
 )
-source=("$_tag.tar.gz::https://github.com/NVIDIA/$_repo/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('e2be7db9f91b4f7ea692e67ec9665b7da00986a648356bd8fb50fa5f6fee22d2')
+source=("https://files.pythonhosted.org/packages/source/n/${_srcname}/${_srcname}-${pkgver}.tar.gz")
+sha256sums=('cbb2f87604c78b96a302f32d87199902129d76153a73a20f8455a250b3246c1d')
 
 prepare() {
-    # Upstream's pyproject.toml uses Poetry's pre-PEP-621 [tool.poetry]
-    # schema, which poetry-core 2.x (in Arch) rejects. Replace it with a
-    # minimal setuptools-backed PEP 621 pyproject — the source layout
-    # (src/nv_one_logger/...) is already setuptools-compatible.
-    cat > "$_repo-$_tag/nv_one_logger/one_logger_core/pyproject.toml" <<'EOF'
-[build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "nv-one-logger-core"
-version = "2.3.0"
-description = "NVIDIA OneLogger core: structured telemetry primitives for ML training jobs"
-readme = "README.md"
-license = "Apache-2.0"
-requires-python = ">=3.8"
-dependencies = [
-    "pydantic>=2.10.6",
-    "overrides>=7.7.0",
-    "StrEnum>=0.4.0",
-    "toml>=0.10.2",
-    "typing-extensions>=4.12.2",
-]
-
-[project.urls]
-Homepage = "https://github.com/NVIDIA/nv-one-logger"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-EOF
+    cd "$_srcname-$pkgver"
+    # Keep upstream metadata while allowing Arch's Poetry 2 build backend.
+    sed -i -e 's/\[project.urls\]/[tool.poetry.urls]/' \
+        -e 's/poetry-core>=1.9.1,<2.0.0/poetry-core>=1.9.1/' \
+        -e 's/, "python-semantic-release>=9.8.3,<10.0"//' pyproject.toml
 }
 
 build() {
-    cd "$_repo-$_tag/nv_one_logger/one_logger_core"
+    cd "$_srcname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_repo-$_tag/nv_one_logger/one_logger_core"
+    cd "$_srcname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
