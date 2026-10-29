@@ -115,6 +115,10 @@ prepare() {
 
   export COREPACK_HOME="$srcdir"/.corepack
   export PNPM_HOME="$srcdir"/.pnpm
+  export PATH="$srcdir"/.bin:"$PATH"
+
+  mkdir -p "$srcdir"/.bin
+  corepack enable --install-directory "$srcdir"/.bin
 
   pushd browser/$_pkgname > /dev/null
   corepack pnpm install --frozen-lockfile
