@@ -2,7 +2,7 @@
 
 pkgname=jsignpdf
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Digitally sign PDF documents with a graphical interface or command line'
 arch=('x86_64' 'aarch64')
 url='https://github.com/intoolswetrust/jsignpdf'
@@ -39,8 +39,10 @@ check() {
   export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
   export PATH="$JAVA_HOME/bin:$PATH"
 
+  # Upstream tests assert English diagnostics regardless of the host locale.
   mvn --batch-mode --no-transfer-progress \
-    -Dmaven.repo.local="$srcdir/.m2/repository" test
+    -Dmaven.repo.local="$srcdir/.m2/repository" \
+    -Duser.language=en -Duser.country=US test
   desktop-file-validate "$srcdir/jsignpdf.desktop"
 }
 
