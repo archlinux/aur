@@ -16,7 +16,7 @@ source=(
     "https://raw.githubusercontent.com/powerline/powerline/develop/LICENSE"
 )
 sha512sums=('f0c717daa852443a51b8e4ed980dc4965154b75c78965e3705ef7f8827c3702e6911ad99c1fcdfe9194ace4d1d2b5de3b35a85d9201220fea8c4ec51d89139b9'
-            '65ca72eeab47adb28c6cf9c09e19cf947e37890fd6baab605ce78930290c051841d5a34cdd24902d748442e7db16ee9fa40b87dba809a06deb99a87e6b9d4b39')
+            '837073c64e267a322b14ec88915c8583a3dbe4a60fd92e306402a3f0eddb147ff41f9860d257f3d5e32b0ee4db39b299fb3b7bbe59d6e6f102ec778cebe0bda4')
 
 package() {
     cd "${_archive_name}-${_commit_hash}"
