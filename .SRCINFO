@@ -1,7 +1,7 @@
 pkgbase = archvital-git
 	pkgdesc = Qt6/C++20 system monitor for Arch Linux
 	pkgver = r1.d5ea010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/T9Tuco/archvital
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = archvital-git
 	makedepends = gcc
 	depends = qt6-base
 	optdepends = nethogs: per-process network usage in the task manager
+	conflicts = archvital
 	source = archvital-git::git+https://github.com/T9Tuco/archvital.git
 	sha256sums = SKIP
 
