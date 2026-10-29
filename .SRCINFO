@@ -1,6 +1,6 @@
 pkgbase = kdeglance
 	pkgdesc = Quick Look-style file preview for KDE Plasma and Dolphin
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/AlexGraveler/KDEGlance
 	install = kdeglance.install
@@ -39,7 +39,7 @@ pkgbase = kdeglance
 	optdepends = openjpeg2: JPEG 2000 images
 	optdepends = fluidsynth: MIDI playback
 	optdepends = soundfont-fluid: General MIDI SoundFont for fluidsynth
-	source = https://github.com/AlexGraveler/KDEGlance/releases/download/v2.0.1/kdeglance-2.0.1.tar.gz
-	sha256sums = 2ba32f9417899ad8836af80b5403b41f5834d5877d9dfa1e69ac2821ffd56f0a
+	source = https://github.com/AlexGraveler/KDEGlance/releases/download/v2.0.2/kdeglance-2.0.2.tar.gz
+	sha256sums = 42c619d0c9dcf3a3cd017fb812460314c81a053f652a745c9a2eb64218d75fad
 
 pkgname = kdeglance

@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=kdeglance
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Quick Look-style file preview for KDE Plasma and Dolphin"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=('libreoffice: Office document previews'
             'soundfont-fluid: General MIDI SoundFont for fluidsynth')
 install=kdeglance.install
 source=("${url}/releases/download/v${pkgver}/kdeglance-${pkgver}.tar.gz")
-sha256sums=('2ba32f9417899ad8836af80b5403b41f5834d5877d9dfa1e69ac2821ffd56f0a')
+sha256sums=('42c619d0c9dcf3a3cd017fb812460314c81a053f652a745c9a2eb64218d75fad')
 
 build() {
   # The tests need LibreOffice, ImageMagick, qpdf and Node.js, so they are
