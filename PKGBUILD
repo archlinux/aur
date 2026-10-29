@@ -1,7 +1,7 @@
-# Maintainer: Ante Laurijssen <va2bbw@gmail.com>
+# Maintainer: va2bbw <antelaurijssen@gmail.com>
 pkgname=xara
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="A VARA-compatible HF/FM sound modem for Linux with a web UI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/x0rro/xara"
@@ -40,4 +40,4 @@ package() {
     install -Dm644 README.md \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-sha256sums=('26a52ce2a7f5107ed63ea956432c6d4009965a5603cf47ee76c9a33bbc3a96d2')
+sha256sums=('f4d0808fca912d15a93ff1eb9b1f4fe276c43858683f195ed33520714f93f93d')
