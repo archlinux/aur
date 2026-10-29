@@ -1,0 +1,13 @@
+pkgbase = dotnet-microsoft-identity-client
+	pkgdesc = Microsoft Authentication Library for .NET (MSAL.NET), Microsoft.Identity.Client and its extensions (NuGet packages)
+	pkgver = 4.92.0
+	pkgrel = 1
+	url = https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	source = microsoft-authentication-library-for-dotnet-2465fc31fa2b481b68660670e2becfd3fba7c631.tar.gz::https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/archive/2465fc31fa2b481b68660670e2becfd3fba7c631.tar.gz
+	sha512sums = 36916817a43a48932081f2758ebc792f0604cbc7f1cf73ca3f7b1517d8b72fb4c1fd6e3ae642daca4fc6ddc055b225cad00102026c3a8b959a6a219b8f723913
+	b2sums = a07b231b4684edc8f4622c21110da681973d31f40d235475255f198aa791c4c5e69e9170343909d1c55e70ff2e716783e0632ff300fbbcd8d242c727b5a17697
+
+pkgname = dotnet-microsoft-identity-client

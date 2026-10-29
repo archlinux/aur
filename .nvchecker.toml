@@ -1,0 +1,4 @@
+[dotnet-microsoft-identity-client]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'
