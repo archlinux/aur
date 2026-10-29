@@ -1,0 +1,37 @@
+pkgbase = gufo-git
+	pkgdesc = The Open Source Strix Halo AI engine (git version).
+	pkgver = 0.26.0.r12.ge011849c
+	pkgrel = 1
+	url = https://github.com/gufo-org/gufo
+	install = gufo-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = hipcub
+	makedepends = pkgconf
+	makedepends = rocm-llvm
+	makedepends = rocprim
+	makedepends = rocwmma
+	depends = curl
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	depends = hip-runtime-amd
+	depends = hipblas
+	depends = hipblaslt
+	depends = icu
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libwebp
+	depends = openssl
+	depends = rocblas
+	depends = rocprofiler
+	provides = gufo=0.26.0.r12.ge011849c
+	conflicts = gufo
+	options = !lto
+	options = !debug
+	source = gufo::git+https://github.com/gufo-org/gufo.git
+	sha256sums = SKIP
+
+pkgname = gufo-git

@@ -1,0 +1,10 @@
+post_install() {
+  echo "Generate an offline hipBLASLt tuning plan on your GPU:"
+  echo "  tune_hipblaslt --out /path/to/plans.bin"
+  echo "Set this environment variable before running gufo:"
+  echo "  export GUFO_HIPBLASLT_PLAN_CACHE=/path/to/plans.bin"
+}
+
+post_upgrade() {
+  post_install "$1"
+}
