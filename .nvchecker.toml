@@ -1,0 +1,4 @@
+[dotnet-vs-validation]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.validation/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'
