@@ -1,41 +1,29 @@
 # Maintainer: Panda <satodu@github.com>
 pkgname=bamboo-end-store-bin
-pkgver=1.4.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Modern community store for EndeavourOS and Arch Linux built with NativePHP"
+pkgdesc="Console-first software store for EndeavourOS and Arch (pacman, AUR, Flatpak, AppImage), Rust and Qt (prebuilt)"
 arch=('x86_64')
 url="https://github.com/satodu/bamboo-end-store"
 license=('MIT')
-depends=('fuse2' 'hicolor-icon-theme' 'gtk3' 'nss' 'libxcrypt-compat')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'hicolor-icon-theme')
+optdepends=('paru: AUR support'
+            'yay: AUR support'
+            'flatpak: Flatpak support'
+            'libnotify: desktop notifications'
+            'konsole: terminal used for installs'
+            'kitty: terminal used for installs'
+            'fuse2: run AppImages')
 provides=('bamboo-end-store')
 conflicts=('bamboo-end-store')
 options=('!strip')
-
-source=(
-    "${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/linux-unpacked.tar.xz"
-    "bamboo-end-store.desktop"
-    "icon.png"
-)
-
-sha256sums=('32f0f740d410581e6623ad2720e73fd98fe1e3c755a6112886c76067c94a3902'
-            '6e9e01d7b945b3faeb38f7b5be034d55c41a7e5786405e384646da84322b15be'
-            '4ab1f72cee29bcb6bc6fe9081e288f527944c03c4a207cc000fe2258b6e56939')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/bamboo-end-store-${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('aea4ba3046bda660c1b329142dcef2ce8aaa19e28ae21ca09473b8c45690abab')
 
 package() {
-    # 1. Cria a pasta em /opt e copia os arquivos extraídos
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -rp "${srcdir}/linux-unpacked/"* "${pkgdir}/opt/${pkgname}/"
-
-    # 2. Corrige permissões (essencial para que o usuário consiga ler recursos e bibliotecas)
-    chmod -R u+rwX,go+rX "${pkgdir}/opt/${pkgname}"
-
-    # 3. Cria o link simbólico para o executável no /usr/bin
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/bamboo-end-store" "${pkgdir}/usr/bin/bamboo-end-store"
-
-    # 4. Menu Desktop
-    install -Dm644 "${srcdir}/bamboo-end-store.desktop" "${pkgdir}/usr/share/applications/bamboo-end-store.desktop"
-
-    # 5. Ícone oficial do sistema
-    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/bamboo-end-store.png"
+    cd "${srcdir}/bamboo-end-store-${pkgver}-x86_64"
+    install -Dm755 bamboo-end-store "${pkgdir}/usr/bin/bamboo-end-store"
+    install -Dm644 bamboo-end-store.desktop "${pkgdir}/usr/share/applications/bamboo-end-store.desktop"
+    install -Dm644 bamboo-end-store.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/bamboo-end-store.png"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
