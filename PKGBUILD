@@ -2,8 +2,8 @@
 
 pkgbase=k230-burning-tool
 pkgname=k230-burning-tool
-pkgver=2.2.7
-pkgrel=2
+pkgver=2.2.8
+pkgrel=1
 groups=()
 pkgdesc="Kendryte K230 Flash Tool Cpp GUI version"
 arch=($CARCH)
@@ -39,7 +39,7 @@ source=(
     "git+https://github.com/kendryte747/libusb-cmake.git"
     "git+https://github.com/libusb/libusb.git"
 )
-sha256sums=('dec0d11a1343ebe4f7904a166478baaf8a24dd5481279ccb0cb14f6b843f7759'
+sha256sums=('9f0271ad92338969b67238d0da4a7619b90729dc2aace2f14f7f795075d81653'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -104,7 +104,7 @@ package() {
 
     sed -i 's/^#include "\.\//#include "/g' canaan-burn/include/public/*.h
 
-    install -vDm0644 gui/resources/icon.png ${pkgdir}/usr/share/icons/hicolor/256x256/${pkgname//-/}.png
+    install -vDm0644 gui/resources/icons/icon_256x256.png ${pkgdir}/usr/share/icons/hicolor/256x256/${pkgname//-/}.png
     install -vDm0644 canaan-burn/include/public/*.h -t ${pkgdir}/usr/include/lib${pkgname//-/}/
     install -vDm0644 Licenses/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm0644 "canaan-burn/LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}/canaan-burn/"
