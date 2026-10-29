@@ -5,7 +5,7 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="paperless-ngx: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
@@ -64,7 +64,8 @@ b2sums=('89739b9e78f63e0b9bc1ad596672d73d4265810d31ec7b0872e658e53c47717f7269fa3
         'f8de2bcb231a577b14eb2ff33b646d503d1b071cbc0f3916c37f425098c37ead94c6d86838f5f37066281ce5dea50cab2d4c18792f59039ae77168a058af6c18'
         '706718fee07c4d0b0af759b3054ee914a8492a3f1957b7354546da2ec333ab6581a4cd7f887c3d93181801cd253b685bffa7b11f590d9722e99317e63dd57fb8')
 backup=("etc/paperless.conf")
-options=("!strip")
+# a venv has no use for a -debug package, and collecting its sources takes minutes
+options=("!strip" "!debug")
 install="paperless.install"
 
 prepare(){

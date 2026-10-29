@@ -1,7 +1,7 @@
 pkgbase = paperless-ngx-venv
 	pkgdesc = paperless-ngx: scan, index and archive all your physical documents
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.paperless-ngx.com/
 	install = paperless.install
 	arch = x86_64
@@ -38,6 +38,7 @@ pkgbase = paperless-ngx-venv
 	conflicts = paperless-ngx
 	replaces = paperless-ngx
 	options = !strip
+	options = !debug
 	backup = etc/paperless.conf
 	source = https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.3.4/paperless-ngx-v3.3.4.tar.xz
 	source = paperless.conf
