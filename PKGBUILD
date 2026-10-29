@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.26.1
+pkgver=1.26.2
 _electronversion=44
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client."
@@ -20,12 +20,16 @@ depends=(
     'db5.3'
     'tidy'
 )
-source=("${pkgname%-bin}.sh")
+source=(
+    "${pkgname%-bin}.js"
+    "${pkgname%-bin}.sh"
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.x86_64.rpm")
-sha256sums=('a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953')
-sha256sums_aarch64=('1d56ca1ee2a68532a931a157941e33a74956d3aa85678480e2c3e632761b8619')
-sha256sums_x86_64=('2e05fc97dfa9b5b0e99a77953db5ab275de0bfefda2a1762534db9da2abeb3ae')
+sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+sha256sums_aarch64=('31ec6250dfc11a5c48a08ca26bd469b864ef92ba57b4fef2e2401e4fbfb73e39')
+sha256sums_x86_64=('94eea2db420faae4ee6a05ee65c7a6b7fa21ee19972a51bef67c02368eb30621')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -53,7 +57,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     _desktop_env="$(_get_current_desktop_env)"
     if [ "${_desktop_env}" = "gnome" ];then
@@ -63,7 +67,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do

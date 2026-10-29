@@ -1,6 +1,6 @@
 pkgbase = mailspring-bin
 	pkgdesc = A beautiful, fast and fully open source mail client.
-	pkgver = 1.26.1
+	pkgver = 1.26.2
 	pkgrel = 1
 	url = https://getmailspring.com/
 	arch = aarch64
@@ -10,13 +10,15 @@ pkgbase = mailspring-bin
 	depends = krb5
 	depends = db5.3
 	depends = tidy
-	provides = mailspring=1.26.1
+	provides = mailspring=1.26.2
 	conflicts = mailspring
+	source = mailspring.js
 	source = mailspring.sh
-	sha256sums = a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953
-	source_aarch64 = mailspring-1.26.1-aarch64.rpm::https://github.com/Foundry376/Mailspring/releases/download/1.26.1/mailspring-1.26.1-0.1.aarch64.rpm
-	sha256sums_aarch64 = 1d56ca1ee2a68532a931a157941e33a74956d3aa85678480e2c3e632761b8619
-	source_x86_64 = mailspring-1.26.1-x86_64.rpm::https://github.com/Foundry376/Mailspring/releases/download/1.26.1/mailspring-1.26.1-0.1.x86_64.rpm
-	sha256sums_x86_64 = 2e05fc97dfa9b5b0e99a77953db5ab275de0bfefda2a1762534db9da2abeb3ae
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
+	source_aarch64 = mailspring-1.26.2-aarch64.rpm::https://github.com/Foundry376/Mailspring/releases/download/1.26.2/mailspring-1.26.2-0.1.aarch64.rpm
+	sha256sums_aarch64 = 31ec6250dfc11a5c48a08ca26bd469b864ef92ba57b4fef2e2401e4fbfb73e39
+	source_x86_64 = mailspring-1.26.2-x86_64.rpm::https://github.com/Foundry376/Mailspring/releases/download/1.26.2/mailspring-1.26.2-0.1.x86_64.rpm
+	sha256sums_x86_64 = 94eea2db420faae4ee6a05ee65c7a6b7fa21ee19972a51bef67c02368eb30621
 
 pkgname = mailspring-bin
