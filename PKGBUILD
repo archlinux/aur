@@ -1,7 +1,7 @@
 # Maintainer: Paulo Fino <somepaulo@duck.com>
 
 pkgname=scribe-bin
-pkgver=0.3.20
+pkgver=0.3.35
 pkgrel=1
 pkgdesc='A native GNOME Markdown editor that renders your document as you type (upstream binary)'
 arch=('x86_64')
@@ -29,12 +29,12 @@ _debrel=1
 _debfile="scribe_${pkgver}-${_debrel}_amd64.deb"
 source=(
   "https://github.com/gnacho/scribe/releases/download/v${pkgver}/${_debfile}"
-  # The 0.3.20 .deb omits the new symbolic application icon.
+  # The upstream .deb still omits the symbolic application icon.
   "scribe-${pkgver}-symbolic.svg::https://raw.githubusercontent.com/gnacho/scribe/v${pkgver}/data/icons/hicolor/symbolic/apps/io.github.gnacho.Scribe-symbolic.svg"
 )
 noextract=("$_debfile")
 sha256sums=(
-  'ba778a65eda0ecd186dffedf126e38f3581dc8c7c8abe6cb6d9fac2f88b2e54c'
+  '7d12eac0ddfc75125c5de38b7f672181cce57818fe40842aebb2bb6b5888818d'
   '4c2870aeb700ce429d98e6e9a17229517d1bdf676c5a6043e76c4cecfc26e4eb'
 )
 
