@@ -4,7 +4,7 @@ pkgname=g0v0-robin-bin
 _pkgname=${pkgname%-bin}
 pkgver=2026.1022.1
 _pkgtag=v${pkgver}-g0v0
-pkgrel=1
+pkgrel=2
 pkgdesc="g0v0! -- free and open rhythm experience! (Robin pre-release channel)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
@@ -25,12 +25,12 @@ source=(
   "g0v0-uri-handler.desktop"
   "g0v0"
 )
-noextract=("${_pkgname}-${pkgver}-x86_64.AppImage" "${_pkgname}-${pkgver}-aarch64.AppImage")
+noextract=("${_pkgname}-${_pkgtag}-x86_64.AppImage" "${_pkgname}-${_pkgtag}-aarch64.AppImage")
 source_x86_64=(
-  "${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/${_pkgtag}/g0v0.AppImage"
+  "${_pkgname}-${_pkgtag}-x86_64.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/${_pkgtag}/g0v0.AppImage"
 )
 source_aarch64=(
-  "${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/${_pkgtag}/g0v0-arm64.AppImage"
+  "${_pkgname}-${_pkgtag}-aarch64.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/${_pkgtag}/g0v0-arm64.AppImage"
 )
 sha256sums=('c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '96276add86bd921e64255ce7e5487599dbe13e6e48e96a6af1a58cc99c187648'
@@ -43,7 +43,7 @@ sha256sums_aarch64=('04b801ef0de88b679dcf5141a075cd5219c2531454345f51dfd971bb894
 package() {
   cd "$srcdir"
 
-  install -Dm755 "${_pkgname}-${pkgver}-${CARCH}.AppImage" "$pkgdir/opt/g0v0/g0v0.AppImage"
+  install -Dm755 "${_pkgname}-${_pkgtag}-${CARCH}.AppImage" "$pkgdir/opt/g0v0/g0v0.AppImage"
   install -Dm755 -t "$pkgdir/usr/bin" g0v0
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/g0v0.png"
   install -Dm644 -t "$pkgdir/usr/share/applications" g0v0.desktop
