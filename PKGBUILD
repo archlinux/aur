@@ -2,7 +2,7 @@
 
 pkgname="quiqr-bin"
 pkgver=0.18.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Offline CMS with a Hugo Engine"
 url="https://quiqr.org/"
 license=("GPL3")
@@ -26,8 +26,7 @@ prepare(){
 }
 
 package(){
- cp -r "opt" "$pkgdir"
+ # since 0.22 the deb installs to /usr/lib/quiqr with the icon in pixmaps
  cp -r "usr" "$pkgdir"
- install -D -m 644  "$pkgdir/usr/share/icons/hicolor/0x0/apps/quiqr.png" "$pkgdir/usr/share/pixmaps/quiqr.png"
- rm -r "$pkgdir/usr/share/icons"
+ rm -r "$pkgdir/usr/share/lintian"
 }
