@@ -80,6 +80,101 @@ index 2e07a945a0..552ccf5a0d 100644
          }
  
          /// <summary>
+diff --git a/src/System.Management.Automation/DscSupport/ArgumentToConfigurationDataTransformationAttribute.cs b/src/System.Management.Automation/DscSupport/ArgumentToConfigurationDataTransformationAttribute.cs
+new file mode 100644
+index 0000000000..1469b4cf70
+--- /dev/null
++++ b/src/System.Management.Automation/DscSupport/ArgumentToConfigurationDataTransformationAttribute.cs
+@@ -0,0 +1,43 @@
++// Copyright (c) Microsoft Corporation.
++// Licensed under the MIT License.
++
++using System;
++using System.Management.Automation;
++
++namespace Microsoft.PowerShell.DesiredStateConfiguration
++{
++    /// <summary>
++    /// To make it easier to specify -ConfigurationData parameter, we add an ArgumentTransformationAttribute here.
++    /// When the input data is of type string and is valid path to a file that can be converted to hashtable, we do
++    /// the conversion and return the converted value. Otherwise, we just return the input data.
++    /// </summary>
++    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter, AllowMultiple = false)]
++    public sealed class ArgumentToConfigurationDataTransformationAttribute : ArgumentTransformationAttribute
++    {
++        /// <summary>
++        /// Convert a file of ConfigurationData into a hashtable.
++        /// </summary>
++        /// <param name="engineIntrinsics"></param>
++        /// <param name="inputData"></param>
++        /// <returns></returns>
++        public override object Transform(EngineIntrinsics engineIntrinsics, object inputData)
++        {
++            var configDataPath = inputData as string;
++            if (string.IsNullOrEmpty(configDataPath))
++            {
++                return inputData;
++            }
++
++            if (engineIntrinsics == null)
++            {
++                throw PSTraceSource.NewArgumentNullException(nameof(engineIntrinsics));
++            }
++
++            return PsUtils.EvaluatePowerShellDataFileAsModuleManifest(
++                      "ConfigurationData",
++                      configDataPath,
++                      engineIntrinsics.SessionState.Internal.ExecutionContext,
++                      skipPathValidation: false);
++        }
++    }
++}
+diff --git a/src/System.Management.Automation/DscSupport/CimDSCParser.cs b/src/System.Management.Automation/DscSupport/CimDSCParser.cs
+index 6160577beb..8ddb90f370 100644
+--- a/src/System.Management.Automation/DscSupport/CimDSCParser.cs
++++ b/src/System.Management.Automation/DscSupport/CimDSCParser.cs
+@@ -271,41 +271,6 @@ namespace Microsoft.PowerShell.DesiredStateConfiguration.Internal
+ 
+ namespace Microsoft.PowerShell.DesiredStateConfiguration
+ {
+-    /// <summary>
+-    /// To make it easier to specify -ConfigurationData parameter, we add an ArgumentTransformationAttribute here.
+-    /// When the input data is of type string and is valid path to a file that can be converted to hashtable, we do
+-    /// the conversion and return the converted value. Otherwise, we just return the input data.
+-    /// </summary>
+-    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter, AllowMultiple = false)]
+-    public sealed class ArgumentToConfigurationDataTransformationAttribute : ArgumentTransformationAttribute
+-    {
+-        /// <summary>
+-        /// Convert a file of ConfigurationData into a hashtable.
+-        /// </summary>
+-        /// <param name="engineIntrinsics"></param>
+-        /// <param name="inputData"></param>
+-        /// <returns></returns>
+-        public override object Transform(EngineIntrinsics engineIntrinsics, object inputData)
+-        {
+-            var configDataPath = inputData as string;
+-            if (string.IsNullOrEmpty(configDataPath))
+-            {
+-                return inputData;
+-            }
+-
+-            if (engineIntrinsics == null)
+-            {
+-                throw PSTraceSource.NewArgumentNullException(nameof(engineIntrinsics));
+-            }
+-
+-            return PsUtils.EvaluatePowerShellDataFileAsModuleManifest(
+-                      "ConfigurationData",
+-                      configDataPath,
+-                      engineIntrinsics.SessionState.Internal.ExecutionContext,
+-                      skipPathValidation: false);
+-        }
+-    }
+-
+     /// <summary>
+     /// <para>
+     /// Represents a communication channel to a CIM server.
 diff --git a/src/System.Management.Automation/System.Management.Automation.csproj b/src/System.Management.Automation/System.Management.Automation.csproj
 index ed4db4c81f..597913386a 100644
 --- a/src/System.Management.Automation/System.Management.Automation.csproj
