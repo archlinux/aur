@@ -1,11 +1,11 @@
 # Maintainer: Vendetta1871 <conqueror.v.v.v.v.v@gmail.com>
 
 pkgname=prismlauncher-offline-git
-pkgver=11.0.3.r7.gd393323fd
+pkgver=11.1.1.1
 pkgrel=1
 pkgdesc="Prism Launcher fork with offline account support enabled (git version)"
 arch=('x86_64')
-url="https://github.com/Diegiwg/PrismLauncher-Cracked"
+url="https://github.com/Vendetta1871/PrismLauncher-offline"
 license=('GPL-3.0-only')
 depends=(
     cmark
@@ -55,7 +55,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-    cd "$srcdir/PrismLauncher-Cracked"
+    cd "$srcdir/PrismLauncher-offline"
     if _desc=$(git describe --long --tags 2>/dev/null); then
         printf '%s' "$_desc" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     else
@@ -64,7 +64,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/PrismLauncher-Cracked"
+    cd "$srcdir/PrismLauncher-offline"
     git submodule init
     # use the clone makepkg already fetched instead of hitting the network again
     git config submodule.libraries/libnbtplusplus.url "$srcdir/libnbtplusplus"
@@ -75,7 +75,7 @@ prepare() {
 build() {
     export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
 
-    cmake -S PrismLauncher-Cracked -B build -G Ninja \
+    cmake -S PrismLauncher-offline -B build -G Ninja \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DLauncher_BUILD_PLATFORM='archlinux' \
@@ -91,6 +91,6 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 "$srcdir/PrismLauncher-Cracked/LICENSE" \
+    install -Dm644 "$srcdir/PrismLauncher-offline/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
