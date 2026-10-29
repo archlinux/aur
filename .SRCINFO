@@ -1,6 +1,6 @@
 pkgbase = yakuda-connect
 	pkgdesc = WiVRn VR management software with gaming optimization and OpenXR/OpenVR fixes
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/yakuda-connect
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = yakuda-connect
 	optdepends = cmake: xrBinder bauen (OpenXR-Tastenbelegung im Controls-Tab)
 	provides = yakuda-connect
 	conflicts = yakuda-connect-git
-	source = yakuda-connect-1.4.4.tar.gz::https://github.com/yakuda-stack/yakuda-connect/archive/refs/tags/v1.4.4.tar.gz
-	sha256sums = 6fe490838e35c7cf3cb1179be12b73c90a6b8682e5217de961d83c7f07e6107d
+	source = yakuda-connect-1.4.5.tar.gz::https://github.com/yakuda-stack/yakuda-connect/archive/refs/tags/v1.4.5.tar.gz
+	sha256sums = 98f90c67454f156702e6e92a8b0046f50bc6abee485cbc847d51fed0983b5b6d
 
 pkgname = yakuda-connect
