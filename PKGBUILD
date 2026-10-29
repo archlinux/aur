@@ -1,7 +1,7 @@
 # Maintainer: RainyPixel <me@bobchenkov.ru>
 
 pkgname=wallpaper-engine-kde-plugin-git
-pkgver=0.7.1.r757.g5500218
+pkgver=0.8.0.r760.g97fb7c6
 pkgrel=1
 pkgdesc="Wallpaper Engine integration for KDE Plasma 6 (native C++, no Python)"
 arch=('x86_64')
@@ -9,11 +9,17 @@ url="https://github.com/RainyPixel/wallpaper-engine-kde-plugin"
 license=('GPL-2.0-only')
 depends=(
     'libplasma'
+    'plasma-workspace'
+    'plasma5support'
+    'kirigami'
     'gst-libav'
     'mpv'
+    'ffmpeg'
     'qt6-declarative'
+    'qt6-multimedia'
     'qt6-websockets'
     'qt6-webchannel'
+    'qt6-webengine'
     'lz4'
     'vulkan-icd-loader'
 )
@@ -23,7 +29,6 @@ makedepends=(
     'ninja'
     'extra-cmake-modules'
     'vulkan-headers'
-    'plasma-workspace'
 )
 optdepends=(
     'vulkan-driver: Required for scene wallpapers'
@@ -35,7 +40,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "0.7.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.8.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
