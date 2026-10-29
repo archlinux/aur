@@ -1,7 +1,7 @@
 pkgbase = python-django-sortedm2m
 	pkgdesc = A transparent sorted ManyToMany field for django
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazzband/django-sortedm2m
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = python-django-sortedm2m
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
 	depends = python-django
 	source = python-django-sortedm2m-4.0.0::https://github.com/jazzband/django-sortedm2m/archive/refs/tags/4.0.0.tar.gz
 	sha256sums = b73bfa2d483f17149746fcea00f6e37a919074fd0d74e5cfc245d5c7c32492e3

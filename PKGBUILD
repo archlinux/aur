@@ -3,10 +3,10 @@
 
 pkgname="python-django-sortedm2m"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A transparent sorted ManyToMany field for django"
 url="https://github.com/jazzband/django-sortedm2m"
-depends=("python-django")
+depends=("python" "python-django")
 makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel")
 license=("BSD")
 arch=("any")
