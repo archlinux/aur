@@ -1,7 +1,7 @@
 pkgbase = mantpro-bin
 	pkgdesc = Sistema Integral de Mantenimiento Industrial (Cliente de Escritorio)
-	pkgver = 3.10.0
-	pkgrel = 2
+	pkgver = 3.10.1
+	pkgrel = 1
 	url = https://github.com/AnabasaSoft/MantPro
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,9 +10,9 @@ pkgbase = mantpro-bin
 	provides = mantpro
 	conflicts = mantpro
 	options = !strip
-	source_x86_64 = https://github.com/AnabasaSoft/MantPro/releases/download/v3.10.0/MantPro_Linux
+	source_x86_64 = https://github.com/AnabasaSoft/MantPro/releases/download/v3.10.1/MantPro_Linux
 	source_x86_64 = https://raw.githubusercontent.com/AnabasaSoft/MantPro/main/icono.png
-	sha256sums_x86_64 = 34067b6c646b5f35494431a97eb281dc920c559d1e40f7cf6e742b8d7791c0ea
+	sha256sums_x86_64 = 21e6a20f46897da7cb5a3162e4368007b9610b37934b77e10f4763fcf0667c28
 	sha256sums_x86_64 = 2bf0349b288d8b77834fdfdd1a036e6fb2b5927b6aea89ca0606c6369694d5e3
 
 pkgname = mantpro-bin
