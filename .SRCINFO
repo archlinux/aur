@@ -1,13 +1,14 @@
 pkgbase = python-flask-session
 	pkgdesc = Server side session extension for Flask
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/Flask-Session/
 	arch = any
 	license = BSD
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-installer
+	depends = python
 	depends = python-flask
 	depends = python-cachelib
 	depends = python-msgspec
