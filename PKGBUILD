@@ -34,6 +34,10 @@ build() {
         -mod=vendor \
         -ldflags="-linkmode=external -X main.Version=$_tag -X main.Revision=$revision -extldflags '$LDFLAGS'" \
         -o build
+
+    for _shell in bash zsh fish; do
+        build/ov --completion "$_shell" > "build/completion.$_shell"
+    done
 }
 
 check() {
@@ -43,7 +47,13 @@ check() {
 
 package() {
     cd "$pkgname"
+
     install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 ov.yaml ov-less.yaml ov-disable-default.yaml ov.plugin.zsh
+    install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 ov.yaml ov-less.yaml ov-disable-default.yaml
+
+    install -Dm644 build/completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 build/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    install -Dm644 build/completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
