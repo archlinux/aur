@@ -1,16 +1,17 @@
-# ele-messenger (the app and mesh service)
+# ele-messenger: the app and the mesh service
 
 post_install() {
     echo "==> Start the mesh service for your user (once):"
     echo "      systemctl --user enable --now elemesh"
     echo "==> Then open ELE Messenger and enter your mesh passphrase."
+    echo "==> To share this machine's mesh with phones, include"
+    echo "    /etc/nginx/snippets/ele-messenger-mesh.conf in an nginx server block."
 }
 
 post_upgrade() {
-    # Until 1.4.2 this package name was the server.
-    if [ "$(vercmp "$2" 1.4.2)" -lt 0 ] && ! pacman -Qq ele-messenger-server >/dev/null 2>&1; then
-        echo "==> ele-messenger is now the app and mesh service every machine installs."
-        echo "==> The server moved to ele-messenger-server: install it to keep this machine serving."
+    if [ "$(vercmp "$2" 1.5.0)" -lt 0 ]; then
+        echo "==> 1.5: the mesh is now the only chat; the separate server is gone."
+        echo "==> If this machine ran it, its data is left in /var/lib/ele-messenger."
     fi
     echo "==> Restart the mesh service to use the new version: systemctl --user restart elemesh"
 }
