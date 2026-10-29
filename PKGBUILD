@@ -4,12 +4,13 @@
 pkgname=python-flask-appbuilder
 _name=${pkgname#python-}
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Simple and rapid application development framework, built on top of Flask"
 url="https://github.com/dpgaspar/Flask-AppBuilder"
 license=("BSD")
 depends=(
+        "python"
         "python-apispec"
         "python-colorama"
         "python-click"
