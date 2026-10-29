@@ -1,2 +1,2 @@
 #!/bin/sh
-env APPIMAGELAUNCHER_DISABLE=1 OSU_EXTERNAL_UPDATE_PROVIDER=1 dotnet /opt/g0v0/g0v0!.dll "$@"
+exec env OSU_EXTERNAL_UPDATE_PROVIDER=1 OSU_EXTERNAL_UPDATE_STREAM=g0v0 dotnet /opt/g0v0/g0v0!.dll "$@"
