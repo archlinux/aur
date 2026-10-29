@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=4.3.0
+pkgver=4.3.1
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -22,10 +22,12 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "electron-builder.yml"
+    "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('a1f29d7f7133f531314bd70e39f38f41409ce22cc13188bbcb4d07271a642989'
+sha256sums=('ad0c536783a6b74e1e3493ed319d37a2467605e92e744fb827a69a4170e2dfaa'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
 _get_project_dir() {
 	local d
@@ -73,7 +75,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
@@ -98,7 +100,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname}"
 	cp -a "$(_get_app_dir)/resources/". "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "$(_get_project_dir)/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
