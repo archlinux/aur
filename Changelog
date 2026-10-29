@@ -1,3 +1,5 @@
-2.50.0-1 [2026-10-07]
-- Upgrade the integrated Screen Capture to version 2.3.8.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 155.0.8059.40.
+2.51.1-1 [2026-10-28]
+- Added support for per-user and per-machine installations through a single MSI, with enhanced security for SYSTEM-level operations, including download verification, safe file deletion, path validation, and crash-safe self-updates.
+- Added SHA-256 hashes for browser and Update Assistant releases to the manifests.
+- Removed the legacy Ulaa Updater from build and release scripts.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 156.0.8078.74.
