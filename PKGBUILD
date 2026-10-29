@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/T9Tuco/archvital"
 license=('MIT')
 depends=('qt6-base')
+optdepends=('nethogs: per-process network usage in the task manager')
 makedepends=('cmake' 'gcc')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')

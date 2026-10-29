@@ -8,6 +8,7 @@ pkgbase = archvital-git
 	makedepends = cmake
 	makedepends = gcc
 	depends = qt6-base
+	optdepends = nethogs: per-process network usage in the task manager
 	source = archvital-git::git+https://github.com/T9Tuco/archvital.git
 	sha256sums = SKIP
 
