@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pi-harness-bin
 _pkgname=Pi-Harness
-pkgver=2.3.5
+pkgver=2.3.6
 _electronversion=44
 pkgrel=1
 pkgdesc="Operational Superset Harness and Desktop Control Plane for Pi Coding Agent."
@@ -14,7 +14,6 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
     'npm'
-    'pi-coding-agent'
     'python'
     'python-packaging'
 )
@@ -27,7 +26,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ef045d23e7b6a0773e9b0a797d487b32a6747db2a6fa2467450283b75ad396c5'
+sha256sums=('d4664e7d13b068587d8c7f32dc90c36bcdf281dbd9e13636aa8c9bd3e8d65896'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_app_dir() {
