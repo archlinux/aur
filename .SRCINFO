@@ -1,7 +1,7 @@
 pkgbase = reinamanager-bin
 	pkgdesc = A lightweight galgame/visual-novel manager,Under development...
-	pkgver = 0.32.1
-	pkgrel = 2
+	pkgver = 0.32.2
+	pkgrel = 1
 	url = https://github.com/huoshen80/ReinaManager
 	arch = x86_64
 	arch = aarch64
@@ -21,9 +21,9 @@ pkgbase = reinamanager-bin
 	conflicts = reinamanager
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = ReinaManager_0.32.1_x86_64.deb::https://github.com/huoshen80/ReinaManager/releases/download/v0.32.1/ReinaManager_0.32.1_amd64.deb
-	sha256sums_x86_64 = e496da8438a5a65d5d9d91cb9adcdb5dc8c7a0028a8d0acab75e34d4bb7fa45d
-	source_aarch64 = ReinaManager_0.32.1_arm64.deb::https://github.com/huoshen80/ReinaManager/releases/download/v0.32.1/ReinaManager_0.32.1_arm64.deb
-	sha256sums_aarch64 = 44b4f896d64ecb18c98dfc760aec13ad3219d70c5810a41f077f1ff0b0d56d7c
+	source_x86_64 = ReinaManager_0.32.2_x86_64.deb::https://github.com/huoshen80/ReinaManager/releases/download/v0.32.2/ReinaManager_0.32.2_amd64.deb
+	sha256sums_x86_64 = 018893ea19e5d7ef4bcc6fa0cbec7b615aeca38aa5a75bd3dc31869d492a338e
+	source_aarch64 = ReinaManager_0.32.2_arm64.deb::https://github.com/huoshen80/ReinaManager/releases/download/v0.32.2/ReinaManager_0.32.2_arm64.deb
+	sha256sums_aarch64 = f79121c3078f5dfbc672713ed28219c11aa7468c6cda5ecfd00f9b7185169617
 
 pkgname = reinamanager-bin
