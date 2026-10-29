@@ -1,7 +1,7 @@
 pkgbase = mkdocs-redirects
 	pkgdesc = Open source plugin for Mkdocs page redirects
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datarobot/mkdocs-redirects
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = mkdocs-redirects
 	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = python-wheel
+	depends = python
 	depends = mkdocs>=1.1.1
 	conflicts = python-mkdocs-redirects-git
 	replaces = python-mkdocs-redirects-git
