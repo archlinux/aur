@@ -30,8 +30,8 @@ auto)
 	:
 	;;
 *)
-	echo "${0##*/}: 未知 Ozone 平台 '${_OZONE_HINT}' (可用: x11|wayland|auto), 按 x11 处理" >&2
+	echo "${0##*/}: Unknown Ozone platform '${_OZONE_HINT}' (available: x11|wayland|auto), falling back to x11" >&2
 	_OZONE_ARG=("--ozone-platform=x11")
 	;;
 esac
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --app "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" --app "${_RUNNAME}" "$@"
