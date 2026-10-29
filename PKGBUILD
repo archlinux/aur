@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seriation
-_pkgver=1.5.8
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,7 +18,6 @@ depends=(
   r-qap
   r-registry
   r-tsp
-  r-vegan
 )
 makedepends=(
   gcc-fortran
@@ -32,23 +31,34 @@ checkdepends=(
   r-umap
 )
 optdepends=(
+  r-cba
+  r-corrgram
+  r-corrplot
+  r-corrr
   r-dbscan
   r-dendextend
   r-dendser
   r-doparallel
+  r-dplyr
+  r-dt
   r-ga
   r-ggplot2
+  r-heatmaply
   r-keras
+  r-knitr
+  r-rmarkdown
   r-rtsne
   r-scales
   r-smacof
   r-tensorflow
   r-testthat
   r-umap
+  r-vegan
+  r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8efbd17b971359e43c9c2356171d9016')
-b2sums=('8dd51eba8782518a521f2d775073cbb564a517ac6e16f3ec48c7a5034ef31f1cc6134f945263d95ba0e69669546876cfabb78cc81451567599cceacc7e527c45')
+md5sums=('ac4c3b71dc79d24196c7921254e92092')
+b2sums=('b20341bc09db2fc17e7fb49c1ca55bd4bdc11264ab0d1f7f5edacd0befdc63991dfcaaad9d7d1da312b0f8dbd947b12f81b3f1c9b440967c81017b41727393d6')
 
 build() {
   mkdir build
