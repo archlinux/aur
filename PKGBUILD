@@ -3,7 +3,7 @@ pkgname=ttf-commissioner-hinted
 _commver=1.012
 _nfver=3.5.1
 pkgver="${_commver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Commissioner, a low-contrast humanist sans with Flare/Volume/Weight axes and a separate italic, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/kosbarts/Commissioner'
@@ -31,7 +31,7 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
             '4a7d88c77b4bc39ff84f2e058ba8f015636c50ce33588a86d9da97defe519933'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             'eed086f8bce3b73ef93475f0706e0978c8070a3bddd47a1e1ce74223beffbe27'
-            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632'
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '373d859f527adcf80933f9741af0595e708f591bdde5f2f01896aebd7d488750'
             'f09f7f4a7dbcc2b18c1bafeae56c5611d995066f0b1cbcfe84bb9890edc66d4f'
