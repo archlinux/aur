@@ -35,7 +35,7 @@ source=(
   "send-rebuild-reminder"
   "reminder.conf"
   "rebuild-reminder.hook"
-  "LICENSE"
+  "0BSD.txt"
 )
 sha256sums=('e489d64a239570f22b29fab3c3fbbba478816b3a1cf0a8f97e0f570bd97f118e'
             'c0338be975d092e5590fcbabd16805828a6d238b78f1a04047c3317e84eb80d4'
@@ -106,5 +106,5 @@ package_inputactions-kwin-alpm-hook() {
   install -Dm 644 "$srcdir/rebuild-reminder.hook" "$pkgdir/usr/share/libalpm/hooks/$pkgbase-rebuild-reminder.hook"
   install -Dm 755 "$srcdir/send-rebuild-reminder" -t "$pkgdir/usr/share/libalpm/scripts/"
   install -Dm 644 "$srcdir/reminder.conf" -t "$pkgdir/etc/$pkgbase"
-  install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/inputactions-kwin-alpm-hook/0BSD.txt"
+  install -Dm 644 "$srcdir/0BSD.txt" "$pkgdir/usr/share/licenses/inputactions-kwin-alpm-hook/0BSD.txt"
 }
