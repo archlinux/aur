@@ -1,7 +1,7 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
 
 pkgname=freehire-cli
-pkgver=0.26.3
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='CLI over the freehire job API for agents'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "disable-self-update.patch")
-sha256sums=('b859dbe9d64bf7a67a693938a237e6a7b85071c660690f9ece58cc1b3a969ee7'
+sha256sums=('ae77fcf15cda8fc9f459633a2d0184efef7f21cbf802587244812b4052fa5c86'
             '864a3c11939dfcd48fbe994d3771aa2a4f9d3e7332daa2e92b53fe02de212087')
 
 prepare() {
