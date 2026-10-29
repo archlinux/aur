@@ -2,7 +2,7 @@
 
 pkgname=jsignpdf
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Digitally sign PDF documents with a graphical interface or command line'
 arch=('x86_64' 'aarch64')
 url='https://github.com/intoolswetrust/jsignpdf'
@@ -33,18 +33,24 @@ build() {
     -DskipTests package
 }
 
-check() {
+check() (
   cd "$pkgname-$_tag"
 
   export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
   export PATH="$JAVA_HOME/bin:$PATH"
 
-  # Upstream tests assert English diagnostics regardless of the host locale.
-  mvn --batch-mode --no-transfer-progress \
-    -Dmaven.repo.local="$srcdir/.m2/repository" \
-    -Duser.language=en -Duser.country=US test
+  # Set the locale before any JVM caches it, including Surefire's forks.
+  # Keep user.home isolated and short: upstream derives a Blowfish key from it.
+  local test_home
+  test_home=$(mktemp -d /tmp/jsignpdf.XXXXXXXX) || return
+  trap 'rm -r -- "$test_home"' EXIT
+
+  LC_ALL=C.UTF-8 \
+  JAVA_TOOL_OPTIONS="${JAVA_TOOL_OPTIONS:+$JAVA_TOOL_OPTIONS }-Duser.language=en -Duser.country=US -Duser.home=\"$test_home\"" \
+    mvn --batch-mode --no-transfer-progress \
+      -Dmaven.repo.local="$srcdir/.m2/repository" test || return
   desktop-file-validate "$srcdir/jsignpdf.desktop"
-}
+)
 
 package() {
   # Resolve the JDK at build time before adding the runtime requirement.
