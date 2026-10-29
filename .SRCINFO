@@ -1,0 +1,19 @@
+pkgbase = clickhouse-cpp
+	pkgdesc = C++ client library for ClickHouse
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://github.com/ClickHouse/clickhouse-cpp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = lz4
+	depends = openssl
+	depends = zstd
+	source = clickhouse-cpp-2.6.2.tar.gz::https://github.com/ClickHouse/clickhouse-cpp/archive/refs/tags/v2.6.2.tar.gz
+	sha256sums = bac497857759e991fa4e1638bccf936cb36d10ad79273695a570272cc4891428
+
+pkgname = clickhouse-cpp
