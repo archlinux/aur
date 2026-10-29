@@ -1,0 +1,37 @@
+pkgbase = axolotl-apclient-git
+	pkgdesc = Lightweight Archipelago multiworld text client built with C++ and ImGui (git version)
+	pkgver = 0.1.5.r21.ga7c2620
+	pkgrel = 1
+	url = https://github.com/mooinglemur/axolotl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = nlohmann-json
+	depends = gcc-libs
+	depends = glibc
+	depends = glfw
+	depends = libglvnd
+	depends = fontconfig
+	depends = yaml-cpp
+	depends = libzip
+	depends = openssl
+	depends = zlib
+	provides = axolotl-apclient=0.1.5
+	conflicts = axolotl-apclient
+	source = git+https://github.com/mooinglemur/axolotl.git
+	source = imgui::git+https://github.com/ocornut/imgui.git
+	source = IXWebSocket::git+https://github.com/machinezone/IXWebSocket.git
+	source = sol2::git+https://github.com/ThePhD/sol2.git
+	source = lua::git+https://github.com/lua/lua.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = axolotl-apclient-git
