@@ -3,7 +3,7 @@
 _pkgname="qtengine"
 pkgname="$_pkgname"
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
@@ -45,6 +45,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DQT5_PLUGINDIR=lib/qt/plugins
     -Wno-dev
   )
 
