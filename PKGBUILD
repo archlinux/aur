@@ -4,7 +4,7 @@
 pkgname=tranalyzer
 pkgver=0.9.3
 _pkgver=lmw1
-pkgrel=5
+pkgrel=6
 pkgdesc='Lightweight flow generator and packet analyzer'
 arch=('x86_64' 'aarch64')
 url='https://tranalyzer.com'
@@ -26,6 +26,7 @@ optdepends=('graphviz: Required by some plugins'
             'libgcrypt: Required by nDPI'
             'clickhouse-cpp: Required by clickhouseSink'
             'cre2: Required by regex_re2'
+            'mongo-c-driver: Required by mongoSink'
             'ndpi: Required by nDPI')
 makedepends=('hyperscan'
              'ndpi'
@@ -33,6 +34,7 @@ makedepends=('hyperscan'
              'libgcrypt'
              'clickhouse-cpp'
              'cre2'
+             'mongo-c-driver'
              'libtool'
              'cmake'
              # default build backend of autogen.sh
@@ -44,6 +46,8 @@ prepare() {
   cd "${pkgname}2-${pkgver}"
   sed -i "29s|\.tranalyzer/plugins/|/usr/lib/tranalyzer/plugins|" tranalyzer2/src/tranalyzer.h
   sed -i "43s|.*|T2FMDIR=/usr/share/tranalyzer/scripts/t2fm|" scripts/t2fm/t2fm
+  # Arch has mongo-c-driver 2, which renamed libmongoc-1.0 to mongoc2
+  sed -i "s|dependency('libmongoc-1.0')|dependency('mongoc2')|" plugins/mongoSink/meson.build
   # meson looks for liblibhs.so otherwise
   sed -i "s|find_library('libhs'|find_library('hs'|" plugins/regexHyperscan/meson.build
   sed -i "7s|\$(dirname \"$\0\")|/usr/share/tranalyzer/scripts/tawk|" scripts/tawk/tawk 
@@ -55,9 +59,7 @@ prepare() {
 
 build() {
   cd "${pkgname}2-${pkgver}"
-  # mongoSink needs libmongoc-1.0, Arch only has mongo-c-driver 2 (mongoc2)
-  printf 'mongoSink\n' > ignored_plugins.txt
-  echo y | ./autogen.sh -a -I ignored_plugins.txt -p "${srcdir}/${pkgname}2-${pkgver}/build/plugins"
+  echo y | ./autogen.sh -a -p "${srcdir}/${pkgname}2-${pkgver}/build/plugins"
   gzip --force tranalyzer2/man/tranalyzer.1
   gzip --force scripts/t2conf/man/t2conf.1
   gzip --force scripts/t2fm/man/t2fm.1
