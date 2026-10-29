@@ -1,0 +1,13 @@
+pkgbase = libutf8
+	pkgdesc = UTF-8 encoding and decoding library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libutf8
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	source = libutf8-1.0.tar.gz::https://codeberg.org/maandree/libutf8/archive/1.0.tar.gz
+	sha256sums = 8ed3e6c3501450cf879f9eb09d12305bed965256f542407cb3d6e5664c8ddd4d
+
+pkgname = libutf8
