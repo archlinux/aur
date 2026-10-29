@@ -1,0 +1,4 @@
+[otf-colorsym]
+source = "git"
+git = "https://github.com/luisfrancisco/colorsym.git"
+prefix = "v"
