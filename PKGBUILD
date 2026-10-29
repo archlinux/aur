@@ -5,7 +5,7 @@
 
 pkgname=vscodium-electron-bin-marketplace
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Enable vscode marketplace in vscodium-electron-bin. Based on vscodium-electron-marketplace.'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
