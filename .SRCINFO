@@ -1,8 +1,8 @@
 pkgbase = wherry
 	pkgdesc = A modern dual-pane file manager with SFTP/FTP/FTPS support
 	pkgver = 0.1.0
-	pkgrel = 3
-	url = https://github.com/loki5512344ss/Wherry
+	pkgrel = 4
+	url = https://git.wihuk.pro/boba/Wherry
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo

@@ -2,10 +2,10 @@
 
 pkgname=wherry
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern dual-pane file manager with SFTP/FTP/FTPS support"
 arch=('x86_64')
-url='https://github.com/loki5512344ss/Wherry'
+url='https://git.wihuk.pro/boba/Wherry'
 license=('GPL3')
 depends=(
   'gcc-libs'
