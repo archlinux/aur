@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="exfat-resize"
-pkgver=1.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Grow an existing exFAT filesystem in a regular file or on a raw block device"
 arch=("x86_64" "aarch64")
@@ -20,7 +20,7 @@ options=(
   "!lto"
 )
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('a49eeafcf89b9f3fc9ff5727c0bd3b8e402ad78308dac1cbc6c5b1f3a61349cdc942b261433189de08e7ce8856d243750a07d566c5733014bda986022c1fffbe')
+b2sums=('533c8ba32117731bbb2050c2d34f4c9f33d6d1601a828ae5f25f3bcada200a8be0920b7d766141fa4889db18217b7c20d938e47d1811a14b20bde2afad6ea93c')
 
 build(){
   cmake -S "$pkgname-$pkgver" -B build \
