@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.156
-pkgrel=5
+pkgrel=6
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -53,8 +53,10 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-optdepends=('xdg-desktop-portal: file picker and screen-share dialogs'
-            'xdg-desktop-portal-gtk: file picker backend on non-KDE desktops'
+optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
+            'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
+            'xdg-desktop-portal-kde: file-picker and screen-share backend on KDE Plasma'
+            'xdg-desktop-portal-wlr: screen-share backend on wlroots compositors'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices')
 options=('!strip' '!debug')
 
