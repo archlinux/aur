@@ -28,6 +28,8 @@ sha256sums=('b32d99b6a8f02a16538bcade939b0a7edd7249e936aacefe336b5519447340c3'
 
 prepare() {
     cd "$_srcname-$pkgver"
+    # Shared namespace documentation is provided by python-nv-one-logger-core.
+    rm src/nv_one_logger/no_init.md
     # Keep upstream metadata while allowing Arch's Poetry 2 build backend.
     sed -i -e 's/\[project.urls\]/[tool.poetry.urls]/' \
         -e 's/poetry-core>=1.9.1,<2.0.0/poetry-core>=1.9.1/' \
