@@ -1,7 +1,7 @@
 pkgbase = python-pgsanity
 	pkgdesc = Check syntax of sql for PostgreSQL
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markdrago/pgsanity
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-pgsanity
 	makedepends = python-installer
 	makedepends = python-uv-build
 	makedepends = python-wheel
+	depends = python
 	options = !strip
 	source = https://pypi.org/packages/source/p/pgsanity/pgsanity-0.3.0.tar.gz
 	b2sums = 00f28c4eb54a808ca86204ab99e48e007f7fe11d5edfbf8ddec8f8dffa0682975082b81a5615d3bbd470527176e752ad9de7ab4408fc25dfbd250d5ff3bdb66f
