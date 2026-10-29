@@ -2,17 +2,17 @@
 
 _reponame=obs-ptz
 pkgname="$_reponame-controls"
-pkgver=0.18.2
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a PTZ Camera control dock"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/ptz-controls.1284/"
 license=(GPL-2.0-or-later)
 depends=("obs-studio>=31" "gcc-libs" "glibc" "qt6-base" "qt6-serialport" "sdl2")
-makedepends=("cmake" "git")
+makedepends=("cmake" "git" "simde")
 options=('debug')
 source=("$_reponame::git+https://github.com/glikely/$_reponame.git#tag=v$pkgver")
-sha256sums=("SKIP")
+sha256sums=('76ae0f96cecbb94d093dbb99fc69cad424f0e2ef8f6ecd5df3b735b146242532')
 
 build() {
   cmake -B build -S $_reponame \
