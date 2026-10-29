@@ -2,12 +2,12 @@
 
 pkgname="certbot-dns-porkbun"
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for certbot to obtain certificates using a DNS TXT record for Porkbun domains"
 arch=("any")
 license=("MIT")
 url="https://github.com/infinityofspace/certbot_dns_porkbun"
-depends=("certbot>=1.18.0"
+depends=("python" "certbot>=1.18.0"
          "python-dnspython"
          "python-pkb-client"
          "python-requests"
