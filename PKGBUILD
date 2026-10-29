@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=STRINGdb
-_pkgver=2.24.1
+_pkgver=2.24.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7ada6998456d199ddacd36125649209a')
-b2sums=('0c9ab08890e0dad907d51d47567a7ac7dfd913a809be675685010c4607b742dd2580013c8865ed625486aafb4cf3dcb142fcec5679374b0b4596e05530f2d9ee')
+md5sums=('52a16cd1ada236eee53d2cc734e341ce')
+b2sums=('98ed9f2053e54b6871772cda05dad6426352fbbc9e691d10f3508e728c06219c553063506271b076e197bfffbc9b6dd5bb06245780a335bbb774f0a8c94dcda4')
 
 build() {
   mkdir build
