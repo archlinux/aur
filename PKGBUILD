@@ -5,13 +5,13 @@
 # Contributor: Christopher Reimer <c.reimer1993@gmail.com>
 pkgname=texmacs
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs"
 arch=(x86_64)
 url="https://www.${pkgname}.org"
 license=(GPL-3.0-or-later)
 # do not remove texlive-basic dependency, as it is needed!
-depends=(freetype2 guile1.8 libxext perl python qt5-svg texlive-basic)
+depends=(freetype2 guile1.8 libxext perl python qt6-base qt6-5compat qt6-svg texlive-basic)
 makedepends=(ghostscript cmake)
 optdepends=('fig2dev: convert images using fig2ps'
   'gawk: conversion of some files'
@@ -28,8 +28,9 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DGUILECONFIG_EXECUTABLE=/usr/bin/guile-config1.8 \
-    -Wno-dev
+    -DSCHEME_IMPL=guile-1.8 \
+    -DTEXMACS_GUI=Qt6 \
+    -Wno-author
   cmake --build build
 }
 
