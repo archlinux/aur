@@ -1,0 +1,14 @@
+pkgbase = dotnet-wcf
+	pkgdesc = WCF client libraries for .NET, System.ServiceModel.* and System.Web.Services.Description (NuGet packages)
+	pkgver = 10.1.0
+	pkgrel = 1
+	url = https://github.com/dotnet/wcf
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = jq
+	source = wcf-12702d51d9758687726bc4056729aeb58fbbf717.tar.gz::https://github.com/dotnet/wcf/archive/12702d51d9758687726bc4056729aeb58fbbf717.tar.gz
+	sha512sums = 6d9f45dc7ae2495c34256ca91528761e55ae30a671c801608041ce007365a4772b71002739929c7f181a8ed7209a2fab16ac4d8bf35f8f8d7212697434f5aaec
+	b2sums = d9f8df046cdc539b77b82ef8c16293ca4eaa50fcc949411c38895eed8e909e7bf525bd0e69eb2bd6150b6c8d4317528414a1d49e645666049d58f26356146385
+
+pkgname = dotnet-wcf

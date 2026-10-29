@@ -1,0 +1,4 @@
+[dotnet-wcf]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/system.servicemodel.primitives/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'
