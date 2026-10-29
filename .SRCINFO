@@ -1,0 +1,22 @@
+pkgbase = zkapi-clientd-bin
+	pkgdesc = Local inference API with private prepaid zkAPI access
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/ethereum/zkapi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ca-certificates
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = openssl>=3
+	optdepends = systemd: user service management
+	options = !strip
+	provides = zkapi-clientd
+	conflicts = zkapi-clientd
+	source_x86_64 = zkapi-clientd_0.1.6_linux_amd64.tar.gz::https://github.com/ethereum/zkapi/releases/download/clientd-v0.1.6/zkapi-clientd_0.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 41f9df6c24fd1e1491bc21fcc5be89289525c01f5a850bd64326a85152bbff95
+	source_aarch64 = zkapi-clientd_0.1.6_linux_arm64.tar.gz::https://github.com/ethereum/zkapi/releases/download/clientd-v0.1.6/zkapi-clientd_0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 41549a752cdffdace74cdabd872ad71190d7509a9b307e54f5ee0e5f863b7cdf
+
+pkgname = zkapi-clientd-bin
