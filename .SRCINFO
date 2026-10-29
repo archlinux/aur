@@ -1,8 +1,8 @@
 pkgbase = wherry-bin
 	pkgdesc = A modern dual-pane file manager with SFTP/FTP/FTPS support (pre-compiled)
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/loki5512344/Wherry
+	pkgrel = 3
+	url = https://git.wihuk.pro/boba/Wherry
 	arch = x86_64
 	license = GPL3
 	depends = gcc-libs
@@ -16,7 +16,10 @@ pkgbase = wherry-bin
 	depends = openssl
 	depends = libssh2
 	depends = dbus
-	source = https://github.com/loki5512344/Wherry/releases/download/v0.1.0/wherry-v0.1.0-x86_64-linux.tar.gz
-	sha256sums = d00bedf0ea2890a18d5c506880a33f4bd87eeec2228309279a3d06b1657a7b5e
+	source = https://git.wihuk.pro/boba/Wherry/releases/download/v0.1.0/wherry-v0.1.0-x86_64-linux.tar.gz
+	source = https://git.wihuk.pro/boba/Wherry/releases/download/v0.1.0/wherry-v0.1.0-x86_64-linux.tar.gz.asc
+	validpgpkeys = CB67D9090663FFB2E21E0CB0253067914055423B
+	sha256sums = 686fb6d52e090404b0be44b566f2f914cf91bede437cf4141c1e59496d925ee9
+	sha256sums = SKIP
 
 pkgname = wherry-bin
