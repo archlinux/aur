@@ -1,6 +1,6 @@
 pkgbase = fusiondirectory-plugins
 	pkgdesc = FusionDirectory core plugins
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://fusiondirectory.org/
 	install = fusiondirectory-plugins.install
@@ -9,7 +9,7 @@ pkgbase = fusiondirectory-plugins
 	makedepends = schema2ldif
 	depends = fusiondirectory
 	options = !strip
-	source = fusiondirectory-plugins-1.4.tar.gz::https://github.com/fusiondirectory/fusiondirectory-plugins/archive/refs/tags/fusiondirectory-1.4.tar.gz
-	b2sums = e1902641e23a550ad0908d40efac2c55a7085693e5a424f7fa21257d1aa74799f2956451eb822e03f39eeaf27375c35fdb91dce18627a7b12201943226d26b21
+	source = fusiondirectory-plugins-1.5.tar.gz::https://github.com/fusiondirectory/fusiondirectory-plugins/archive/refs/tags/fusiondirectory-1.5.tar.gz
+	b2sums = 405842faea0923e1085a42b10bdf2e559b889a76b74030d2f02c0b5c2796ed1fe95585d971e9ad6124485a87ad8453c1adb81bdbb99aa9bc0e7189d56e359ad2
 
 pkgname = fusiondirectory-plugins

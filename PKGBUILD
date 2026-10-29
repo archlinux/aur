@@ -2,7 +2,7 @@
 # Contributor K1412 <jonathan@opensides.be>
 
 pkgname="fusiondirectory-plugins"
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="FusionDirectory core plugins"
 url="http://fusiondirectory.org/"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/fusiondirectory/$pkgname/ar
         #"WebAuthn.tar.gz::https://github.com/lbuchs/WebAuthn/archive/refs/heads/master.tar.gz"
         #"otphp.tar.gz::https://github.com/Spomky-Labs/otphp/archive/refs/tags/v10.0.1.tar.gz"
        )
-b2sums=('e1902641e23a550ad0908d40efac2c55a7085693e5a424f7fa21257d1aa74799f2956451eb822e03f39eeaf27375c35fdb91dce18627a7b12201943226d26b21')
+b2sums=('405842faea0923e1085a42b10bdf2e559b889a76b74030d2f02c0b5c2796ed1fe95585d971e9ad6124485a87ad8453c1adb81bdbb99aa9bc0e7189d56e359ad2')
             #'78a6f197960e64d3a82de95c2264113bb7140df65c255f57786d8c248bdf1125'
             #'54f22631b429ae59c9a1fbe6ebb176bb55a4e1a4778110321acca6e48fe65fff'
 install="$pkgname.install"
