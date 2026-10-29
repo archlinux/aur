@@ -3,7 +3,7 @@
 
 pkgname="mimic"
 pkgver=0.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast, local, neural text to speech system for Mycroft"
 url="https://mycroft.ai/mimic-3/"
 license=("AGPL3")
