@@ -1,10 +1,11 @@
 pkgbase = rumur-git
 	pkgdesc = Yet another Murphi model checker
-	pkgver = 2019.12.22.r0.ga1b6d61
+	pkgver = 2026.09.13.r45.g7182ac14
 	pkgrel = 1
 	url = https://github.com/Smattr/rumur
 	arch = x86_64
 	license = custom:UNLICENSE
+	checkdepends = python-pytest
 	checkdepends = valgrind
 	checkdepends = z3
 	makedepends = git
@@ -21,4 +22,3 @@ pkgbase = rumur-git
 	sha256sums = SKIP
 
 pkgname = rumur-git
-
