@@ -4,12 +4,13 @@
 
 pkgname=mkv-extractor-qt
 pkgver=26.10.18a
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='https://github.com/Hizoka76/MKV-Extractor-Qt6'
 license=('GPL-3.0-or-later')
-depends=('python-pyqt6'
+depends=('python'
+         'pyside6'
          'mkvtoolnix-cli'
          'hicolor-icon-theme')
 makedepends=('git'
