@@ -5,6 +5,7 @@ pkgbase = powerlevel11k-git
 	url = https://github.com/Qaaxaap/powerlevel11k
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = rust
 	makedepends = cmake
 	makedepends = gettext

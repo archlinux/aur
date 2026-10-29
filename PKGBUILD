@@ -7,7 +7,7 @@ arch=("x86_64")
 conflicts=('powerlevel11k')
 url="https://github.com/Qaaxaap/powerlevel11k"
 license=("GPL-3.0-or-later")
-makedepends=('rust' 'cmake' 'gettext' 'pkg-config' 'libssh2')
+makedepends=('git' 'rust' 'cmake' 'gettext' 'pkg-config' 'libssh2')
 source=("powerlevel11k::git+https://github.com/Qaaxaap/powerlevel11k.git")
 sha256sums=('SKIP')
 
