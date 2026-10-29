@@ -3,7 +3,7 @@
 pkgname=ccgui-bin
 _pkgname=ccgui
 _appname=ccgui
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc='Multi-engine AI coding desktop client (prebuilt binary)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 noextract=("${_appname}_${pkgver}_amd64.AppImage")
 sha256sums=(
-  '501bb702d881f383c357c5d47576eb21b47d4ba5ca8c565a3b9faddf92e1f5f2'
+  '8f4d363ea995f50feec3d2e29687abc0dbf223d532629f12c7ec39d53c9f7dbd'
 )
 
 package() {
