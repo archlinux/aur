@@ -1,6 +1,6 @@
 pkgbase = kero-bin
 	pkgdesc = Cross-platform native terminal app optimized for agents
-	pkgver = 2.1.24
+	pkgver = 2.1.25
 	pkgrel = 1
 	url = https://kero.sh
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = kero-bin
 	conflicts = kero
 	options = !strip
 	options = !debug
-	source_x86_64 = kero_2.1.24_amd64.deb::https://github.com/egoist/kero/releases/download/v2.1.24/kero_2.1.24_amd64.deb
-	sha256sums_x86_64 = 441d9bb9336c7eff5c5ec4771beea75192f60bc5d5f725702a50bd03a391e76a
-	source_aarch64 = kero_2.1.24_arm64.deb::https://github.com/egoist/kero/releases/download/v2.1.24/kero_2.1.24_arm64.deb
-	sha256sums_aarch64 = 051118abac7866ed84cf75a0582c3e276ea3afee835eba1f72ccbcca6ba720bc
+	source_x86_64 = kero_2.1.25_amd64.deb::https://github.com/egoist/kero/releases/download/v2.1.25/kero_2.1.25_amd64.deb
+	sha256sums_x86_64 = 725cb7f03820bba8c6519fa146f96b25eed3a59047502773da3b95d6d4bd1f96
+	source_aarch64 = kero_2.1.25_arm64.deb::https://github.com/egoist/kero/releases/download/v2.1.25/kero_2.1.25_arm64.deb
+	sha256sums_aarch64 = 43eea92ff92fcaf7528dfbca5b881a2568a82ce45b4c95c0df35c68b97b91fe2
 
 pkgname = kero-bin
