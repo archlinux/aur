@@ -2,8 +2,8 @@
 # Upstream does not provide an Arch package; this wraps the official
 # prebuilt AppImage from the v0.6.0 GitHub release.
 pkgname=wifi-heatmapper-bin
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="Measure Wi-Fi signal strength and throughput and draw heat maps on a floor plan (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/hnykda/wifi-heatmapper"
@@ -13,7 +13,7 @@ optdepends=('iperf3: throughput (speed) measurement against an iperf3 server')
 provides=('wifi-heatmapper')
 conflicts=('wifi-heatmapper')
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/hnykda/wifi-heatmapper/releases/download/v${pkgver}/WiFi.Heatmapper_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('e43c5311baa827daa09af323bbce1f22fecbdbfa05ff39b8e3cc935c2561fbd5')
+sha256sums_x86_64=('6851e967f9669dabea496ecd91e4744950a598df0c23a5687f7048cf5abbec2a')
 options=('!strip')
 
 package() {
