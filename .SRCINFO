@@ -1,7 +1,7 @@
 pkgbase = ossec-hids-local
 	pkgdesc = Open Source Host-based Intrusion Detection System - Standalone
-	pkgver = 3.8.0
-	pkgrel = 4
+	pkgver = 4.4.1
+	pkgrel = 1
 	url = https://www.ossec.net/
 	install = ossec-hids-local.install
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = ossec-hids-local
 	backup = var/lib/ossec-hids/rules/local_rules.xml
 	source = ossec-hids.config
 	source = ossec-hids.logrotate
-	source = https://github.com/ossec/ossec-hids/archive/refs/tags/3.8.0.tar.gz
+	source = https://github.com/ossec/ossec-hids/archive/refs/tags/4.4.1.tar.gz
 	sha256sums = 0bec7dcff9c899f075d9cc5ad158ca2cb3776ee39bbd52767feba9f73e0d42e6
 	sha256sums = 077a1382f5b1b07854007dd8525011c30566ac8d52db421d3723218ab747d34b
-	sha256sums = bd857a2dd7d0559ef59b4a9ec276f3a8ade6830f8aed257e8f4a62106cfe5f38
+	sha256sums = 1428d38fd1bff0f7fa40ca4358ef56173342a73f054c3d9342fc039ee63997d1
 
 pkgname = ossec-hids-local
