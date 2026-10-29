@@ -1,7 +1,7 @@
 # Maintainer: Rakosn1cek <rakosn1cek@zohomail.eu>
 
 pkgname=mise-browser-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Minimalist, privacy-focused, keyboard-centric web browser engineered for Linux"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "Mise-logo128.png"
     "Mise-logo256.png"
 )
-sha256sums_x86_64=('e55b45f1c7a29f6f683c43c685ff07077ebe77399999d808b96c446c567ca41a')
+sha256sums_x86_64=('54d26a665f70a45b4e8fdc13d9c11fadd678839a99038e646a25cd9796622abd')
 sha256sums=(
     'e8c1c58f6e99c0e2db178b2a71038e6c8d1ce4e7d93afa84188e5e7d01d6d8bd'
     'ddef96e67b27c0d5e414b00eca783f6870035f355d1e951268b737b37bdaf068'
