@@ -1,6 +1,6 @@
 # Maintainer: Micraow <micraow@users.noreply.github.com>
 pkgname=wpsdav-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Mount WPS/Kdocs cloud storage as a WebDAV endpoint"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip' '!debug')
 source=("wpsdav-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/wpsdav_${pkgver}_linux_amd64.tar.gz")
 # Replace SKIP with the checksum published in the release's
 # checksums-sha256.txt before submitting/updating the AUR package.
-sha256sums=('d4b323ce1b50786157168782a285fe3be9014364f56b4f0af4a70d8829194b0d')
+sha256sums=('491064929c727a4f38b7f622f7539d02df35df84be3d04b4f96fa616651218bd')
 
 package() {
   install -Dm755 "${srcdir}/wpsdav" "${pkgdir}/usr/bin/wpsdav"
