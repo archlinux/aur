@@ -4,12 +4,12 @@
 pkgname=python-apscheduler
 _name=apscheduler
 pkgver=3.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 url="https://github.com/agronholm/apscheduler"
 license=('MIT')
 arch=('any')
-depends=('python-setuptools' 'python-six' 'python-pytz' 'python-tzlocal')
+depends=('python' 'python-setuptools' 'python-six' 'python-pytz' 'python-tzlocal')
 makedepends=("python-build" "python-packaging" "python-wheel" "python-installer" "python-setuptools-scm")
 optdepends=(
   'python-twisted: For schedulers/twisted'
