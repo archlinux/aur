@@ -2,8 +2,8 @@
 
 pkgname="python-shandy-sqlfmt"
 _pkgname="${pkgname/python-/}"
-pkgver=0.30.0
-pkgrel=2
+pkgver=0.32.0
+pkgrel=1
 pkgdesc="An opinionated CLI tool that formats your SQL files"
 url="https://pypi.org/project/shandy-sqlfmt/"
 license=("Apache-2.0")
@@ -26,7 +26,7 @@ makedepends=("python-build"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname/-/_}-${pkgver}.tar.gz")
-b2sums=('ce4512a9d1ebc928bb0dcc1f20a9668ab8ed830a93b65177d25f1c63aec95dbe2e5cee62c397065792bb45690050c7794cf82f2b957e0dd0fbb457e322df68c7')
+b2sums=('9120db43b68971bad4bbc1a6fc5760648dcf6d1190403f90e2d7302dffc90c34e5fa477309391779d7b5de47ba813f48d7cb601c54c8b7efdd7d93a6dc32862b')
 
 build(){
  cd "${_pkgname/-/_}-$pkgver"
