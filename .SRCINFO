@@ -1,0 +1,25 @@
+pkgbase = lavanda-gtk-theme-fixed-git
+	pkgdesc = Lavanda GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
+	pkgver = 2024.04.28.r17.g108131a.f7.0c09bae
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Lavanda-gtk-theme
+	install = lavanda-gtk-theme-fixed.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-themes-extra
+	depends = gtk3
+	optdepends = gtk-engine-murrine: GTK 2 support
+	optdepends = colloid-icon-theme: Recommended icon theme
+	provides = lavanda-gtk-theme
+	conflicts = lavanda-gtk-theme
+	conflicts = lavanda-gtk-theme-git
+	options = !strip
+	options = !debug
+	source = lavanda-gtk-theme::git+https://github.com/vinceliuice/Lavanda-gtk-theme.git
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lavanda-gtk-theme-fixed-git
