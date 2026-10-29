@@ -3,26 +3,56 @@
 pkgname=relic-gruvbox-gtk-theme
 _repo=Gruvbox-GTK-Theme
 _commit=578cd220b5ff6e86b078a6111d26bb20ec8c733f
-_fixes=2026.10.23
-pkgver=2025.10.23
-pkgrel=5
+_date=2025.10.23
+pkgver=2025.10.23.r11.05bb2f9
+pkgrel=1
 pkgdesc='Gruvbox GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
 license=('GPL-3.0-only')
 depends=('gnome-themes-extra')
 optdepends=('gtk-engine-murrine: GTK 2 support')
-makedepends=('sassc')
+makedepends=('git' 'sassc')
 conflicts=('gruvbox-gtk-theme-git')
 options=('!strip' '!debug' '!emptydirs')
-source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz"
-        "relic-gtk-fixes-${_fixes}.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/${_fixes}.tar.gz")
-sha256sums=('f45da23a6c4123148cf8f78983e391a86c2e2ee1b7a80aa66790f148cb9619bd'
-            'a9c132c3a5952c1d2bb826554187f0bfec982fe2b4841bf2649843bb07774db0')
+source=("${_repo}-${_commit}.tar.gz::https://github.com/gaou-piou/${_repo}/archive/${_commit}.tar.gz")
+sha256sums=('f45da23a6c4123148cf8f78983e391a86c2e2ee1b7a80aa66790f148cb9619bd')
+# The fixes follow the main branch of gtk-theme-fixes, so a change there needs no package update;
+# pkgver() records which commit a build took. local_build=true: they come from a gtk-theme-fixes/
+# working tree in a parent directory of this PKGBUILD instead (uncommitted changes included).
+if [[ ${local_build:-} != true ]]; then
+  source+=('gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git')
+  sha256sums+=('SKIP')
+fi
+
+_local_fixes() {
+  local d=$startdir
+  until [[ -d $d/gtk-theme-fixes/generic || $d == / ]]; do d=$(dirname "$d"); done
+  if [[ ! -d $d/gtk-theme-fixes/generic ]]; then
+    error "local_build: no gtk-theme-fixes/ in a parent directory of $startdir"
+    return 1
+  fi
+  printf '%s\n' "$d/gtk-theme-fixes"
+}
+
+pkgver() {
+  local fixes=gtk-theme-fixes
+  if [[ ${local_build:-} == true ]]; then
+    fixes=$(_local_fixes) || return 1
+  fi
+  printf '%s.r%s.%s' "$_date" "$(git -C "$fixes" rev-list --count HEAD)" "$(git -C "$fixes" rev-parse --short=7 HEAD)"
+}
 
 prepare() {
   local sass="${_repo}-${_commit}/themes/src/sass"
-  local fixes="relic-gtk-fixes-${_fixes}"
+  local fixes=gtk-theme-fixes
+  if [[ ${local_build:-} == true ]]; then
+    local d
+    d=$(_local_fixes) || return 1
+    warning "local_build: fixes from $d (uncommitted changes included)"
+    rm -rf "$fixes" && mkdir "$fixes"
+    cp -r "$d/generic" "$d/relic" "$fixes/"
+  fi
 
   cp "${fixes}/generic/fixes-3.0.scss" "${sass}/_fixes-3.0.scss"
   cp "${fixes}/generic/fixes-4.0.scss" "${sass}/_fixes-4.0.scss"
