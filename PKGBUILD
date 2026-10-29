@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=herdr-core-bin
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Background server that keeps Herdr terminals and coding agents running'
 url='https://herdr.dev/core/'
 arch=(
@@ -12,12 +12,10 @@ license=(
     'Apache-2.0'
 )
 provides=(
-    "herdr-core=$pkgver"
-    "hc=$pkgver"
+    "${pkgname%-bin}=$pkgver"
 )
 conflicts=(
-    'herdr-core'
-    'hc'
+    "${pkgname%-bin}"
 )
 options=(
     '!strip'

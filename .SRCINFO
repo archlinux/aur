@@ -1,15 +1,13 @@
 pkgbase = herdr-core-bin
 	pkgdesc = Background server that keeps Herdr terminals and coding agents running
 	pkgver = 0.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://herdr.dev/core/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	provides = herdr-core=0.1.13
-	provides = hc=0.1.13
 	conflicts = herdr-core
-	conflicts = hc
 	options = !strip
 	options = !debug
 	source = LICENSE::https://raw.githubusercontent.com/herdrdev/herdr-core/master/LICENSE
