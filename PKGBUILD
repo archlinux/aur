@@ -2,27 +2,29 @@
 
 pkgname=qt6-mpvqml
 _projname=mpvqml
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Bridge between MPV (libmpv + MpvQt) and Qt6 QML"
+pkgdesc="Qt6 QML video player element backed by libmpv"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexindigo/mpvqml"
-license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-declarative' 'mpv' 'mpvqt')
+license=('GPL-3.0-or-later AND LGPL-3.0-only')
+depends=('qt6-base' 'qt6-declarative' 'mpv')
 makedepends=('cmake')
 conflicts=('qt6-mpvqml-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48067261b346d7c5f0b7916f979824de5490cb783150ec35e6d844c5dc0a9542')
+sha256sums=('f172fa15a999cba29b00e2cc091b653c5224369caad4f7902df306d0641f809c')
 
 build() {
     cmake -B build -S "${srcdir}/${_projname}-${pkgver}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TEST_MODE=OFF \
-        -DCMAKE_SKIP_RPATH=ON \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
+    install -dm755 "${pkgdir}/usr/share/licenses"
+    ln -s ../mpvqml/licenses "${pkgdir}/usr/share/licenses/${pkgname}"
 }
