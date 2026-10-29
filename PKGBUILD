@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Yarikov <dmitry@yarikov.com>
 pkgname=kvn-bin
-pkgver=0.35.1
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Terminal VPN client for Arch Linux with vim navigation"
 arch=('x86_64')
@@ -16,18 +16,14 @@ optdepends=(
 )
 provides=('kvn' 'kvn-tui')
 conflicts=('kvn' 'kvn-tui')
-source=("https://github.com/yarikov/kvn/releases/download/v0.35.1/kvn-0.35.1-x86_64-linux.tar.gz")
-sha256sums=('2a92be96846543bf6b20b69d133a388ed302907a83e8354ae22a9a29427d92b5')
+options=('!debug' '!strip')
+source=("https://github.com/yarikov/kvn/releases/download/v0.36.0/kvn-0.36.0-x86_64-linux.tar.gz")
+sha256sums=('f6c2dfbca742497acf6c90ae2c90388d7c009d96dbb572ac0106291281a75f84')
 
 package() {
-    cd "kvn-tui-0.35.1-x86_64-linux"
-    install -Dm755 kvn-tui "$pkgdir/usr/bin/kvn-tui"
-    ln -s kvn-tui "$pkgdir/usr/bin/kvn"
-    install -dm755 "$pkgdir/usr/lib/kvn/migrations"
-    for migration in migrations/*.sh; do
-        [[ -f "$migration" ]] || continue
-        install -m755 "$migration" "$pkgdir/usr/lib/kvn/migrations/"
-    done
+    cd "kvn-0.36.0-x86_64-linux"
+    install -Dm755 kvn "$pkgdir/usr/bin/kvn"
+    ln -s kvn "$pkgdir/usr/bin/kvn-tui"
     install -Dm644 kvn-tui.service "$pkgdir/usr/lib/systemd/user/kvn-tui.service"
     install -Dm644 kvn-tui-sing-box-capabilities.hook \
         "$pkgdir/usr/share/libalpm/hooks/kvn-tui-sing-box-capabilities.hook"
