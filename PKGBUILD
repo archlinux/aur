@@ -1,13 +1,13 @@
 # Maintainer: Niko Lowry <niko@neeks.me>
 #
-# Template. The release workflow fills in 0.9.5 and the
+# Template. The release workflow fills in 0.9.6 and the
 # @SHA256_*@ checksums and attaches the result to the release, so
 # this file is never edited by hand per release.
 #
 # Prebuilt binaries, hence the AUR -bin naming convention.
 
 pkgname=saxby-bin
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Local-first LLM routing daemon"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ _stage="saxby-${pkgver}"
 source_x86_64=("${_base}/v${pkgver}/${_stage}-linux-x64.tar.gz")
 source_aarch64=("${_base}/v${pkgver}/${_stage}-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('3d513fefa15a6dc87ec2dfc69fc6d77833e81d821b3562203a41800a73738cd0')
-sha256sums_aarch64=('47f82c92d8435193fcb01dbfc50d5bc626cf7b62f03bf0c2136e4ec5bf04963e')
+sha256sums_x86_64=('1beecfb148b4b3d7f5e04db4affb5ae5a09416b9c705a5f4129a96b2d5bf7517')
+sha256sums_aarch64=('181ee475f54016ee04212b1ed448f12647568f21ac909a5c8ad82b2b6e080146')
 
 package() {
     local target
