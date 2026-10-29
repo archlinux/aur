@@ -3,14 +3,13 @@
 pkgname=motrix-git
 _debname="app.${pkgname%-git}.native"
 _pkgname=Motrix
-pkgver=2.0.0.beta.47.r10.ga4a867d
-_electronversion=44
+pkgver=2.1.0.r1.g6aae744
+_electronversion=45
 _nodeversion=24
 pkgrel=1
 pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc."
 arch=(
     'aarch64'
-    'armv7h'
     'x86_64'
 )
 url="https://motrix.app/"
@@ -38,10 +37,12 @@ optdepends=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -121,7 +122,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     _ensure_local_nvm
     _set_build_env
     sed -i -e "
@@ -129,13 +130,6 @@ prepare() {
         s/Icon=${_debname}/Icon=${pkgname%-git}/g
     " "flatpak/${_debname}.desktop"
     sed -i "s/${_debname}/${pkgname%-git}/g" "flatpak/${_debname}.metainfo.xml"
-    local _rp="'/usr/lib/${pkgname%-git}'"
-    find src -type f -name '*.ts' -exec sed -i \
-        -e "s|: process\.resourcesPath,|: ${_rp},|g" \
-        -e "s|path\.join(process\.resourcesPath,|path.join(${_rp},|g" \
-        -e "s|path\.join(process\.resourcesPath |path.join(${_rp} |g" \
-        -e "s|(process\.resourcesPath |(${_rp} |g" \
-        {} +
     rustup update stable
     rustup default stable
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
@@ -165,7 +159,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     install -Dm644 "$(_get_project_dir)/flatpak/${_debname}.desktop" \
