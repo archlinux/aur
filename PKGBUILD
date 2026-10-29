@@ -2,7 +2,7 @@
 
 _name=e2b
 pkgname=python-$_name
-pkgver=2.61.0
+pkgver=2.62.0
 pkgrel=1
 pkgdesc='E2B SDK that give agents cloud environments.'
 arch=('any')
@@ -31,7 +31,7 @@ checkdepends=('python-pytest'
               'python-pytest-timeout')
 source=("$_name::git+$_repo.git#tag=@$_name/python-sdk@$pkgver"
         'connectrpc-0.13.patch')
-sha256sums=('beae02bc22567c41f43cf664ce7a2780a23c889849774261303bcb8451387b9d'
+sha256sums=('f10782cbf06d3bb7ff115bb5ed5fa1fda33d0ea01b89a8d1d3b3b2b53b4c303f'
             '236e115ef19bcb2e5ff03e2009098d17ff8d4fd4a69cf5f977aec1ef234af6b8')
 
 prepare() {
