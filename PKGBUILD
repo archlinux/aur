@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.2.1.3
+pkgver=3.2.2.0
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -33,7 +33,7 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('17e374eb3e2167e9eb6d36ab50ed64798a7fc03aeeac1fd52878518772d7f1ea')
+sha256sums=('fa94876cfbd4c817deaba81ced8bad4af2956689faf4085f277b20197cd70b4e')
 
 _srcdir="OpenImageIO-${pkgver}"
 _architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
@@ -55,6 +55,7 @@ prepare() {
 	cd "${_srcdir}"
 	sed -i 's|/MANIFEST:NO||' 'src/cmake/fancy_add_executable.cmake'
 	#sed -i 's/os.path.join(OIIO_BUILD_ROOT, "bin", app)/os.path.join(OIIO_BUILD_ROOT, "bin", app, ".exe")/' 'testsuite/runtest.py'
+	sed -i '/#include <memory>/a #define strerror_r(errno,buf,len) strerror_s(buf,len,errno)' 'src/raw.imageio/rawinput.cpp'
 }
 
 build() {
