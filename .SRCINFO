@@ -1,12 +1,12 @@
 pkgbase = smarty3
 	pkgdesc = A PHP template engine
-	pkgver = 3.1.39
+	pkgver = 3.1.48
 	pkgrel = 1
 	url = http://www.smarty.net
 	arch = any
 	license = LGPL
 	depends = php>=5.2
-	source = https://github.com/smarty-php/smarty/archive/v3.1.39.tar.gz
-	sha256sums = d89ed84ed9bdf2697df9fb867acb03514ddafc8322e1b31860168adec91e70c2
+	source = https://github.com/smarty-php/smarty/archive/v3.1.48.tar.gz
+	sha256sums = 6a8a7d35b9be33c3a9fcf70df8a3b3652f0388f8015dda259ed04ff49fe38b4c
 
 pkgname = smarty3
