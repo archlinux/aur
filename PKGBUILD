@@ -1,6 +1,6 @@
 # Maintainer: HexRebel (AUR: rebellen) <200467570+HexRebel@users.noreply.github.com>
 pkgname=mascot
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Shimeji-style desktop mascots for Wayland that you can talk to (a chat bubble for local or hosted language models)"
 arch=('x86_64')
