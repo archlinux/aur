@@ -3,7 +3,7 @@ _java=25
 _pkgname=galleon
 pkgname="${_pkgname}-bin"
 # renovate: datasource=github-releases depName=wildfly/galleon extractVersion=^(?<version>.*)\.Final$
-pkgver=7.0.11
+pkgver=7.0.12
 pkgrel=1
 pkgdesc="Provisioning tool designed to create and maintain software distributions that consist of one or more products"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/wildfly/galleon'
 license=('custom')
 depends=("java-runtime>=${_java}")
 source=("https://github.com/wildfly/${_pkgname}/releases/download/${pkgver}.Final/${_pkgname}-${pkgver}.Final.zip")
-sha256sums=('4bb8d928d1c4a609e0ff49cfd2b49c2eb92e28b208c92b8d153a079a3b897186')
+sha256sums=('962eeea29c9d047931d3b1f192b877757012eee97c5bcca46055c018de204508')
 
 package() {
     cd "${_pkgname}-${pkgver}.Final"
