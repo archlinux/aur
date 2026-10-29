@@ -1,6 +1,6 @@
 pkgbase = grabit-git
 	pkgdesc = Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors (git)
-	pkgver = 0.8.0.r346.g95f6f1d
+	pkgver = 0.8.0.r347.g8886bb8
 	pkgrel = 1
 	url = https://heliopolis.live/creations/grabit
 	arch = x86_64
