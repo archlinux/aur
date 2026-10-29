@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eu
+
+./make-info
+git add .SRCINFO
