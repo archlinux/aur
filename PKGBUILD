@@ -4,13 +4,12 @@
 pkgname=tranalyzer
 pkgver=0.9.3
 _pkgver=lmw1
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight flow generator and packet analyzer'
 arch=('x86_64' 'aarch64')
 url='https://tranalyzer.com'
 license=('GPL3')
 depends=('libpcap'
-         'mongo-c-driver'
          'postgresql-libs'
          'mariadb-libs'
          'sqlite'
@@ -21,8 +20,13 @@ optdepends=('graphviz: Required by some plugins'
             'gnuplot: Required by gpq3x, plot_monitoring'
             'p0f: Required by osStat'
             'rrdtool: Required by rrdmonitor, rrdplot'
-            'inotify-tools: Required by t2dmon')
-makedepends=('mongo-c-driver'
+            'inotify-tools: Required by t2dmon'
+            'hyperscan: Required by regexHyperscan'
+            're2: Required by regex_re2'
+            'ndpi: Required by nDPI')
+makedepends=('hyperscan'
+             're2'
+             'ndpi'
              'libtool'
              'cmake'
              # default build backend of autogen.sh
@@ -43,7 +47,9 @@ prepare() {
 
 build() {
   cd "${pkgname}2-${pkgver}"
-  echo y | ./autogen.sh -a -p "${srcdir}/${pkgname}2-${pkgver}/build/plugins"
+  # mongoSink needs libmongoc-1.0, Arch only has mongo-c-driver 2 (mongoc2)
+  printf 'mongoSink\n' > ignored_plugins.txt
+  echo y | ./autogen.sh -a -I ignored_plugins.txt -p "${srcdir}/${pkgname}2-${pkgver}/build/plugins"
   gzip --force tranalyzer2/man/tranalyzer.1
   gzip --force scripts/t2conf/man/t2conf.1
   gzip --force scripts/t2fm/man/t2fm.1
