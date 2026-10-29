@@ -1,11 +1,14 @@
 pkgbase = git-remote-rclone
 	pkgdesc = Git remote helper for rclone-supported services
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/datalad/git-remote-rclone
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = git
 	depends = rclone
