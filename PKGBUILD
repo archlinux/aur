@@ -3,7 +3,7 @@
 
 pkgname='perl-cookie-baker'
 pkgver='0.12'
-pkgrel='2'
+pkgrel='2.1'
 pkgdesc="Cookie string generator / parser"
 arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')

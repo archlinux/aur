@@ -1,7 +1,7 @@
 pkgbase = perl-cookie-baker
 	pkgdesc = Cookie string generator / parser
 	pkgver = 0.12
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://metacpan.org/dist/Cookie-Baker
 	arch = any
 	license = Artistic-1.0-Perl
