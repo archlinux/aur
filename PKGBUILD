@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=klive-ide-bin
 _pkgname='Klive IDE'
-pkgver=0.64.0
-_electronversion=44
+pkgver=0.65.0
+_electronversion=45
 pkgrel=1
 pkgdesc="A retro computer emulator and IDE for Z80 lovers."
 arch=(
@@ -17,19 +17,18 @@ depends=(
     "electron${_electronversion}"
     'ffmpeg'
 )
-makedepends=(
-    'asar'
-)
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Dotneteer/kliveide/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/KliveIdeSetup-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/KliveIdeSetup-${pkgver}-x86_64.AppImage")
 sha256sums=('ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_aarch64=('f149fcb2982d3fc5432d434ccdfe28052141a4831a3090bc91316e64d22ebf2f')
-sha256sums_x86_64=('cdd8e32830b5beea50ad34059bb2a370e60861ebb5515998d76130ab5718a0d2')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+sha256sums_aarch64=('f6b562b572ac4b4c5d54cac9614af9b26110b65ce46c10cba5032819fcfafd83')
+sha256sums_x86_64=('c7af1786ca457ef1d3786e91c02ff5a941f7e6c94c3bceeea8e5769b1f4b2b4d')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -46,7 +45,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
@@ -57,15 +56,12 @@ prepare() {
     _check_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
     find "$(_get_app_dir)/resources" -type d -perm 700 -exec chmod 755 {} +
-    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
     local _archffmpeg=$([[ "${CARCH}" == "aarch64" ]] && echo linux-arm64 || echo linux-x64)
     ln -sf "/usr/bin/ffmpeg" "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/@ffmpeg-installer/${_archffmpeg}/ffmpeg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
