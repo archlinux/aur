@@ -1,4 +1,4 @@
-# Maintainer: Rafael Escobar <rafael@paemuri.com>
+# Maintainer: Rafael Zichia <rafael@paemuri.com>
 
 pkgname=ttfe
 pkgver=1.0.0
