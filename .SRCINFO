@@ -1,11 +1,13 @@
 pkgbase = odoo-venv
 	pkgdesc = Open Source Apps To Grow Your Business
 	pkgver = 20.0.20261029
-	pkgrel = 2
+	pkgrel = 3
 	url = https://odoo.com/
 	install = odoo.install
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = LGPL-3.0-only
+	makedepends = uv
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-setuptools

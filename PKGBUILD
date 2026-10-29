@@ -4,12 +4,12 @@
 
 pkgname="odoo-venv"
 _major=20.0
-pkgrel=2
-# updated automatically via pkgver()
+pkgrel=3
+# set by aur-updater from the newest nightly of $_major
 pkgver=20.0.20261029
 pkgdesc="Open Source Apps To Grow Your Business"
 url="https://odoo.com/"
-arch=("any")
+arch=("x86_64" "aarch64")
 license=("LGPL-3.0-only")
 provides=("odoo" "odoo${_major/.*/}")
 replaces=("odoo")
@@ -18,7 +18,8 @@ depends=("python")
 optdepends=("postgresql: local database"
             "wkhtmltopdf: generate PDFs")
 # pg_config is needed to build psycopg2 from source
-makedepends=("python-build"
+makedepends=("uv"
+             "python-build"
              "python-wheel"
              "python-setuptools"
              "postgresql-libs")
@@ -40,11 +41,6 @@ install="odoo.install"
 # a venv has no use for a -debug package, and collecting its sources takes minutes
 options=("!strip" "!debug")
 
-pkgver(){
- # retrieve date from the most recent archive
- curl "https://nightly.odoo.com/$_major/nightly/src/" | grep -oP 'odoo_\K(\d{2}\.\d{1}.\d{8})'| sort | tail -1
-}
-
 prepare(){
  # extract manually to avoid a folder name that includes the download date
  rm -rf "odoo-$_major"
@@ -57,28 +53,31 @@ build(){
  python -m build --no-isolation --wheel
 }
 
+_strip_pkgdir() {
+ # remove mentions of $pkgdir in files and symlinks
+ grep -RIlZ "$pkgdir" "$pkgdir" | xargs -0 -r sed -i "s|$pkgdir||g"
+ find "$pkgdir" -type l -print0 |
+  while IFS= read -r -d '' _link; do
+   _target=$(readlink -- "$_link")
+   if [[ $_target == "$pkgdir"/* ]]; then
+    ln -sfn "${_target#"$pkgdir"}" "$_link"
+   fi
+  done
+}
+
 package(){
  cd "odoo-$_major"
 
- # create virtual environment
- export PIP_DISABLE_PIP_VERSION_CHECK=1
+ # virtual environment with the system Python, odoo and its requirements
+ export UV_CACHE_DIR="$srcdir/uv-cache"
+ export UV_LINK_MODE=copy
+ export UV_NO_INSTALLER_METADATA=1
+ export UV_PYTHON_DOWNLOADS=never
  export PYTHONDONTWRITEBYTECODE=1
- python -m venv "$pkgdir/usr/share/odoo/venv"
- source "$pkgdir/usr/share/odoo/venv/bin/activate"
-
- # install odoo and dependencies using pip
- "$pkgdir/usr/share/odoo/venv/bin/"pip install --upgrade pip installer
- "$pkgdir/usr/share/odoo/venv/bin/"pip install -r "requirements.txt"
- "$pkgdir/usr/share/odoo/venv/bin/"python -m installer dist/*.whl
-
- # remove references to pkgdir
- find "$pkgdir/usr/share/odoo/venv/bin" -maxdepth 1 -type f -exec sed -i "s|${pkgdir}/|/|g" {} +
- find "$pkgdir/usr/share/odoo/venv/pyvenv.cfg" -maxdepth 1 -type f -exec sed -i "s|${pkgdir}/|/|g" {} +
- find "$pkgdir/usr/share/odoo/venv" -type f -name "*.py[co]" -delete
- find "$pkgdir/usr/share/odoo/venv" -type d -name "__pycache__" -delete
-
- # exit virtual environment
- deactivate
+ uv venv --python /usr/bin/python "$pkgdir/usr/share/odoo/venv"
+ uv pip install --python "$pkgdir/usr/share/odoo/venv/bin/python" -r "requirements.txt" dist/*.whl
+ _strip_pkgdir
+ find "$pkgdir/usr/share/odoo/venv" -type d -name "__pycache__" -prune -exec rm -r {} +
 
  # executable
  install -d "$pkgdir/usr/bin"
