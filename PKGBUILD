@@ -1,6 +1,6 @@
 # Maintainer: oom <master@spicebrains.com>
 pkgname=ie-r
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Instant Eyedropper Reborn — pixel-perfect color picker"
 arch=('x86_64')
@@ -8,7 +8,6 @@ url="https://github.com/miaupaw/ie-r"
 license=('custom')
 depends=(
     'wayland'
-    'pipewire'
     'libxkbcommon'
     'dbus'
     'fontconfig'
@@ -24,7 +23,7 @@ makedepends=(
     'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('37bbac810bc7c1b7a8750336bc1236371493201a829c5ea25e21bb81a5de0cb2')
+sha256sums=('8d9effc75c27ae32b311896b5d74c5dd87ab9d85585413b1aeacc431cea58f24')
 
 build() {
     cd "$pkgname-$pkgver"
