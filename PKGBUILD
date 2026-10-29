@@ -3,7 +3,7 @@
 _sdk=10.0
 _name="FsAutoComplete"
 pkgname="${_name,,}"
-pkgver=0.86.0
+pkgver=0.86.1
 pkgrel=1
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=("dotnet-sdk-${_sdk}" 'sh')
 makedepends=("dotnet-sdk-${_sdk}")
 conflicts=("${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d75a98edc8cc6bf9f79b0541659aeeef77932272aa2e0a42aa0c67a86381d21c')
+sha256sums=('bbb3d99c9a61f00eb7548529fdb2229e64558267a82d459b6338ec96c1ffcc77')
 
 _dotnet_env() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
