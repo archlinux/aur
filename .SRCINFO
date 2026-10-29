@@ -18,7 +18,7 @@ pkgbase = ttf-google-sans-hinted
 	source = fonts.tar.gz::https://flutter.googlesource.com/gallery-assets/+archive/refs/heads/master/lib/fonts.tar.gz
 	source = font-patcher-3.4.0::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
 	source = make_features.py
-	sha256sums = d4e4731431e4f97b6046d5042270338a9527c18ccf733efbb8187eded97f18c3
+	sha256sums = SKIP
 	sha256sums = a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760
 	sha256sums = 200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e
 

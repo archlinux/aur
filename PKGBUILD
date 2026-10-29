@@ -19,7 +19,10 @@ source=(
   "font-patcher-${_nfver}::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   'make_features.py'
 )
-sha256sums=('d4e4731431e4f97b6046d5042270338a9527c18ccf733efbb8187eded97f18c3'
+# gitiles builds the archive on every request and stamps each entry with the
+# download time, so its checksum changes every time - even for a pinned commit.
+# The archive is SKIPped here; prepare() checks the fonts themselves instead.
+sha256sums=('SKIP'
             'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'
             '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
 
@@ -78,6 +81,30 @@ sha256sums=('d4e4731431e4f97b6046d5042270338a9527c18ccf733efbb8187eded97f18c3'
 #    NERD_PATCH=false HINTING=false WANT_GOOGLE_SANS_DISPLAY=false makepkg -si
 #    FEATURE_DEFAULTS=ss01 makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
+
+# sha256 of the upstream TTFs (see the note above sha256sums). When Google
+# updates the fonts, prepare() fails here: refresh this list, bump pkgver.
+_font_sums=(
+  '804fdad80c0a5bf7ea7a2396f7368abbcb4d948f31f0ac88b199dc4c18ef3391  GoogleSans-Bold.ttf'
+  'c22e02ace4469ff22340fc1c90c10e9414910f3dadf51e91c50445000b843bea  GoogleSans-BoldItalic.ttf'
+  '011fbabfe51a86e81401ffa3eb87df74dec15ad38e75b9ade8460f6ca630e657  GoogleSans-Italic.ttf'
+  '8e72f9df72eddef9a75aa93b0972c35491bab52d65c32714fe004b75bd7b5271  GoogleSans-Medium.ttf'
+  'cefc41078b3da17b5c1aa9ccf8507b911e50b42005f70f18a7128eb47d3285f7  GoogleSans-MediumItalic.ttf'
+  'f8914b020e2c78fe86ca14198095455139f08047b8b52ab69003cb5af35cbbc0  GoogleSans-Regular.ttf'
+  '842e6578c478336a0ecd49ed7779bb67cd2dfb4188aff9a7e24fd6ed868eac2a  GoogleSansDisplay-Bold.ttf'
+  '603682b81c56ddd52af4a22eb5e1f9d82cea836ea5d0016f1611a447b0a39569  GoogleSansDisplay-BoldItalic.ttf'
+  '4af7c400d97c640a2e12155734637f65beacc0a4c51853b676e785faae1af417  GoogleSansDisplay-Italic.ttf'
+  '40c1436cb0e94370dee18db4f09e3eb8e199713919adb33295536e6c26d9b74d  GoogleSansDisplay-Medium.ttf'
+  '2419ca16947c7e974a537f8e887a73d67ec2c8ac7dd1f6fc47b1a22f4d56a68f  GoogleSansDisplay-MediumItalic.ttf'
+  'c1b3bd356f209f250345f33413fe659d8f0634fb15bb2b640b2eee24708978fd  GoogleSansDisplay-Regular.ttf'
+)
+
+prepare() {
+  cd "$srcdir"
+  printf '%s\n' "${_font_sums[@]}" | sha256sum -c --quiet - || {
+    echo "Error: the upstream fonts changed - update _font_sums and pkgver."; exit 1
+  }
+}
 
 _validate_hint_mode() {
   if [[ ! "$HINT_MODE" =~ ^[nqs]{3}$ ]]; then
