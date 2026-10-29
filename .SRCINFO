@@ -1,6 +1,6 @@
 pkgbase = rdap
-	pkgdesc = A modern RDAP (Registration Data Access Protocol) client
-	pkgver = 1.0.4
+	pkgdesc = RDAP (Registration Data Access Protocol) client and API server
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/xtomcom/rdap
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = rdap
 	provides = rdap
 	conflicts = rdap
 	options = !lto
-	source = rdap-1.0.4.tar.gz::https://github.com/xtomcom/rdap/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = ef48d1a4e6c9bbb8b69e2d2c8f6ab37acb6cdbc8b87379682d2aebabfc12a3a1
+	backup = etc/default/rdap
+	source = rdap-1.1.0.tar.gz::https://github.com/xtomcom/rdap/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = de751363b9bd5df31fbf3b12e64daf7d9283858e0888a713a172dda6804b6c3c
 
 pkgname = rdap
