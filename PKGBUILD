@@ -3,7 +3,7 @@
 # release (pkgver + checksums refreshed, then pushed to the AUR). It installs
 # the official prebuilt, statically linked musl binary from GitHub Releases.
 pkgname=kobe-bin
-pkgver=0.61.1
+pkgver=0.62.0
 pkgrel=1
 pkgdesc='CLI for pools of pre-warmed Kubernetes virtual clusters (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('kobe')
 conflicts=('kobe')
 source_x86_64=("kobe-$pkgver-x86_64.tar.gz::https://github.com/kunobi-ninja/kobe/releases/download/v$pkgver/kobe-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("kobe-$pkgver-aarch64.tar.gz::https://github.com/kunobi-ninja/kobe/releases/download/v$pkgver/kobe-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('5fd6b4430023d5809695f668470443561dcf5c8f03241819d775c2d0b117387b')
-sha256sums_aarch64=('c31d3f4307b3c9b67b08d7841af6cd206502d375389a57c610406f6f64b13747')
+sha256sums_x86_64=('6a3ceaace9e7b7de2198b5361ec439dc237a53fe5e14cceb6f2faa5e23dabf6f')
+sha256sums_aarch64=('48b71cc654c28ed86ad53e5b19976244d0297b5721b8c6cd3430e22f9bcee10e')
 
 package() {
   install -Dm0755 "$srcdir/kobe" "$pkgdir/usr/bin/kobe"
