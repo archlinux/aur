@@ -1,6 +1,6 @@
 pkgbase = parra-bin
 	pkgdesc = Wallpaper daemon with compositor-driven effects, for wlr-layer-shell
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Uyanide/parra
 	arch = x86_64
@@ -9,14 +9,15 @@ pkgbase = parra-bin
 	depends = libgcc
 	depends = libglvnd
 	depends = wayland
-	optdepends = hyprland: compositor with partial feature support
-	optdepends = niri: compositor with full feature support
-	provides = parra=0.2.0
+	optdepends = hyprland>=0.57.0: compositor with partial feature support
+	optdepends = niri>=26.04: compositor with full feature support
+	provides = parra=0.2.1
+	conflicts = parra
 	options = !debug
-	source = parra-0.2.0.tar.gz::https://github.com/Uyanide/parra/releases/download/v0.2.0/parra-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	source = parra-0.2.0-LICENSE::https://raw.githubusercontent.com/Uyanide/parra/refs/tags/v0.2.0/LICENSE
-	source = parra-0.2.0-service::https://raw.githubusercontent.com/Uyanide/parra/refs/tags/v0.2.0/examples/parra.service
-	sha512sums = 96a239594a3298eab7767acb63a7c60ddb8ab60a92668e50fe7f448a01d5b6696311d737b5c8db3af1ff13e83db23b9637758b3c3bf5dc34f26acf3544d885da
+	source = parra-0.2.1.tar.gz::https://github.com/Uyanide/parra/releases/download/v0.2.1/parra-v0.2.1-x86_64-unknown-linux-gnu.tar.gz
+	source = parra-0.2.1-LICENSE::https://raw.githubusercontent.com/Uyanide/parra/refs/tags/v0.2.1/LICENSE
+	source = parra-0.2.1-service::https://raw.githubusercontent.com/Uyanide/parra/refs/tags/v0.2.1/examples/parra.service
+	sha512sums = a000b4a9b8dd6005ab1205d6784f097634a802a11e7be9d62d0b9c076102c90ea0277f6a12ab54624ec9b240f589cc2aad5a4ad419a16d9ba90f2b7aff843960
 	sha512sums = 81df58be436e450e36805ee5b9330f0f0a5060206b86bfb9bcd2ebe9d3c5e25106322ba7b1e4f96e85dc7958efff84a51322710bbef7e27df5598625202d8b89
 	sha512sums = 6f62c5a184d2abd31de195060a9eb0d32aa6d1cce580860ada5946436bdf59e90d5bb2a073e761c751c4dec1df2dc536c7f9280c519db8019d0265deabe7d850
 
