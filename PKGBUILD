@@ -17,7 +17,7 @@ optdepends=('bun: faster UI dependency install + build (auto-used when installed
             'redis: distributed rate limiting and response cache backend'
             'postgresql: cost/history storage backend')
 install=gomodel.install
-source=("${pkgname}::git+${url}.git#branch=main"
+source=("${pkgname}::git+${url}.git#commit=c8cf3a6cd4e81d5fe4ee8925b44ace0382e5300b"
         "plugin-message-format-4.4.0.tgz::https://registry.npmjs.org/@inlang/plugin-message-format/-/plugin-message-format-4.4.0.tgz"
         "plugin-m-function-matcher-2.2.6.tgz::https://registry.npmjs.org/@inlang/plugin-m-function-matcher/-/plugin-m-function-matcher-2.2.6.tgz"
         "gomodel-user.service")

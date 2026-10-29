@@ -19,7 +19,7 @@ pkgbase = gomodel-git
 	provides = gomodel
 	conflicts = gomodel
 	options = !lto
-	source = gomodel-git::git+https://github.com/ENTERPILOT/GoModel.git#branch=main
+	source = gomodel-git::git+https://github.com/ENTERPILOT/GoModel.git#commit=c8cf3a6cd4e81d5fe4ee8925b44ace0382e5300b
 	source = plugin-message-format-4.4.0.tgz::https://registry.npmjs.org/@inlang/plugin-message-format/-/plugin-message-format-4.4.0.tgz
 	source = plugin-m-function-matcher-2.2.6.tgz::https://registry.npmjs.org/@inlang/plugin-m-function-matcher/-/plugin-m-function-matcher-2.2.6.tgz
 	source = gomodel-user.service
