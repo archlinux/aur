@@ -6,12 +6,12 @@ pkgname=plasmazones-bin
 # pkgver/pkgrel are placeholders; CI overwrites them with the release tag
 # before publishing. See packaging/arch/update-aur.sh.
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 # The GitHub release the tarball is downloaded from. v$pkgver for a normal
 # release; a rebuild-only republish lives on its own v$pkgver-r$pkgrel
 # release, because a published release is immutable and cannot take new
 # assets. CI rewrites this alongside pkgver/pkgrel.
-_release=v3.5.3
+_release=v3.5.3-r2
 pkgdesc='Window snapping, tiling and scrolling for KDE Plasma (binary)'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
@@ -53,7 +53,7 @@ optdepends=(
 provides=('plasmazones')
 conflicts=('plasmazones' 'plasmazones-git')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/releases/download/$_release/plasmazones-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('54a5e94d1b2387aaaba376e9484bf86a9145c9409579a3cea55d3c84352ccb5b')
+sha256sums=('b01cceaa348a0d16394fb1872a05117eb11f4e0a60d1629c3dfa54bc50dd39c4')
 install=plasmazones.install
 
 package() {
