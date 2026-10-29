@@ -1,0 +1,7 @@
+# The version of the .NET runtime of Arch Linux, which the native library is built for
+[dotnet-system-io-ports-native]
+source = "archpkg"
+archpkg = "dotnet-runtime-10.0"
+strip_release = true
+from_pattern = '^(\d+\.\d+\.\d+)\..*'
+to_pattern = '\1'

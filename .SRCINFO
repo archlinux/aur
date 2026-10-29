@@ -1,0 +1,22 @@
+pkgbase = dotnet-system-io-ports-native
+	pkgdesc = Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)
+	pkgver = 10.0.13
+	pkgrel = 1
+	url = https://github.com/dotnet/runtime
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = python
+	makedepends = dotnet-sdk-10.0
+	makedepends = clang
+	makedepends = cmake
+	makedepends = lld
+	options = !debug
+	source = runtime-6aa72daa24f66c01c3d7b6a32519e9d21396deec.tar.gz::https://github.com/dotnet/runtime/archive/6aa72daa24f66c01c3d7b6a32519e9d21396deec.tar.gz
+	source = check-serial.py
+	sha512sums = 58c92aaa08d3f8ff4af9eb2c75b0d1559d62c23b6043d534e8bcb5cfb371446e5ceb0dd49dc9d11bfb3a8adfc4e66d78bd79c7af84661cffa2d51909fdda5e82
+	sha512sums = 3adc51044f248b82d2a67fa2c791d665bffcb3ff01d89ba48473609d82c74524c2cad11db2114b585503ae03b728855a859a1a0bbe41db669d76ef43d65d18b0
+	b2sums = 993176a52c72dd0ba44d76c08ee72ff926e688c8bb9b9121c4fbbbbfe92286ae51516ec6d4ac37ebc4f09670fb7d027719012c6b513251c1166434c260cee914
+	b2sums = 7ceceec33d6581bb88c4b08f596aacf16ce7d7e25e036cdd81e217c978ad8ce66fc1003c86a302b26e11ccc088fc66c2594952573b0431c7d51b4f7c42013da5
+
+pkgname = dotnet-system-io-ports-native
