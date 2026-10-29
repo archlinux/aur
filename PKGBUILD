@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A fast, native Markdown editor"
 
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'hicolor-ic
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('9fd0842e5033a6a89c2d9cc606d45ba077742e4bb5613c1d0041813e0b4eba05')
+sha256sums_x86_64=('9bbb059ee17e30d81a9f2eb94c8bb9fb98bf6934cf9b1ead7c75a104ef147606')
 
 
 case ${CARCH} in
