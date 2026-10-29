@@ -1,6 +1,6 @@
 # Maintainer: Omar <https://github.com/sazardev>
 pkgname=shiki-bin
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="TUI note-taking app with a Yazi-inspired three-pane layout and git-backed notebooks"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('shiki')
 conflicts=('shiki')
 source=("https://github.com/sazardev/shiki/releases/download/v${pkgver}/shiki-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('a067bdaba965e92732ba4f01a6dad27563da11aaa68d318e60d770074f5419ab')
+sha256sums=('dd1f679a18c629d12277ff6cf5242294743792c1bff7793e321e7c8f66d45b53')
 
 package() {
   cd "shiki-v${pkgver}-x86_64-unknown-linux-gnu"
