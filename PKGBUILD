@@ -1,8 +1,8 @@
 pkgname=emu80-git
-_commit=e5cfece
+_commit=78d8b66
 _pkgver=4.0.575
 pkgver=${_pkgver}.${_commit}
-pkgrel=2
+pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs. Git version"
 arch=('x86_64')
 url="https://emu80.org/"
@@ -13,8 +13,8 @@ source=("${pkgname}::git+https://github.com/vpyk/emu80v4.git#commit=${_commit}"
   "shortcut.desktop"
   "fix-application-dir-path.patch")
 sha256sums=('SKIP'
-  '7206828b1279e8387454da6f31bf74ff7319c89f79a6abc396508a6f263db59b'
-  'f8d726db8243972378c0dc2ce7c2bfb047f0c0b0b6532a69234fc3ee6f9b2802')
+            '7206828b1279e8387454da6f31bf74ff7319c89f79a6abc396508a6f263db59b'
+            'f8d726db8243972378c0dc2ce7c2bfb047f0c0b0b6532a69234fc3ee6f9b2802')
 
 prepare() {
   cd "${pkgname}"
