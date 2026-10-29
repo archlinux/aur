@@ -38,7 +38,8 @@ config_value() {
 }
 
 # honk sets net.ipv4.ip_forward=1, net.ipv6.conf.all.forwarding=1,
-# <wan>.accept_ra=2 and <lan>.rp_filter=0.
+# net.core.{r,w}mem_max=16777216, <wan>.accept_ra=2 and <lan>.rp_filter=0.
+# (The daens namespace sysctls need no restore: the namespace is destroyed.)
 save_all_sysctls() {
   # A running honk has already overwritten these, so whatever we read now is
   # not the administrator's value. Refuse to record a polluted baseline.
@@ -52,6 +53,8 @@ save_all_sysctls() {
   local wan lan
   save_sysctl net.ipv4.ip_forward 1
   save_sysctl net.ipv6.conf.all.forwarding 1
+  save_sysctl net.core.rmem_max 16777216
+  save_sysctl net.core.wmem_max 16777216
 
   wan=$(config_value wan_interface)
   if [[ -z "$wan" || "$wan" == "auto" ]]; then
