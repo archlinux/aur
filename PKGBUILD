@@ -2,9 +2,9 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.70.1.r0.g2610190
-_electronversion=42
-_nodeversion=22
+pkgver=3.70.2.r32.gdb812e9
+_electronversion=45
+_nodeversion=24
 pkgrel=1
 pkgdesc="The swiss army knife of lossless video/audio editing.Using system-wide ffmpeg."
 arch=('x86_64')
@@ -30,10 +30,12 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh"
+    "${pkgname%-git}.js"
+	"${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -140,10 +142,9 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     _ensure_local_nvm
     _set_build_env
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -e "
         s/\/app\/bin\/run.sh/${pkgname%-git}/g;
         s/${_appname}/${pkgname%-git}/g
@@ -167,12 +168,11 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-git}/ffmpeg"
     ln -sf "/usr/bin/ffprobe" "${pkgdir}/usr/lib/${pkgname%-git}/ffprobe"
-    install -Dm644 "$(_get_project_dir)/icon-build/app-512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/icon-build/app-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
     install -Dm644 "$(_get_project_dir)/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "$(_get_project_dir)/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-git}.appdata.xml"
 }
