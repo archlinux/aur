@@ -1,10 +1,11 @@
 pkgbase = relic-material-gtk-theme
 	pkgdesc = Material GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
-	pkgver = 2025.10.23
-	pkgrel = 5
+	pkgver = 2025.10.23.r11.05bb2f9
+	pkgrel = 1
 	url = https://github.com/gaou-piou/Material-GTK-Themes
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	makedepends = sassc
 	depends = gnome-themes-extra
 	optdepends = gtk-engine-murrine: GTK 2 support
@@ -15,8 +16,8 @@ pkgbase = relic-material-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Material-GTK-Themes-55f4639ad6a9128f885305a60d230c5842711259.tar.gz::https://github.com/gaou-piou/Material-GTK-Themes/archive/55f4639ad6a9128f885305a60d230c5842711259.tar.gz
-	source = relic-gtk-fixes-2026.10.23.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.23.tar.gz
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
 	sha256sums = ac2ebe17d88623b49ea28b644fe3e11add4fb16e5e898595356e762cce44f53d
-	sha256sums = a9c132c3a5952c1d2bb826554187f0bfec982fe2b4841bf2649843bb07774db0
+	sha256sums = SKIP
 
 pkgname = relic-material-gtk-theme
