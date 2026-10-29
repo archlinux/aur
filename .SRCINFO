@@ -1,15 +1,14 @@
 pkgbase = ipinfo-cli
 	pkgdesc = Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data)
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://ipinfo.io
 	arch = x86_64
-	arch = armv7h
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = ipinfo-cli-3.3.3.tar.gz::https://github.com/ipinfo/cli/archive/ipinfo-3.3.3.tar.gz
-	sha256sums = 6227811eb7eb8da2931f66b1d4fe52e664610a101246ca6340a66a02723bce5d
+	source = ipinfo-cli-3.3.4.tar.gz::https://github.com/ipinfo/cli/archive/ipinfo-3.3.4.tar.gz
+	sha256sums = 1cb2eeec72224d527a78e787ab51639d2fcefb21915e10842e66ec4acb699148
 
 pkgname = ipinfo-cli
