@@ -1,7 +1,7 @@
 pkgbase = mkdocs-mermaid2-plugin
 	pkgdesc = A Mermaid graphs plugin for MkDocs
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fralau/mkdocs-mermaid2-plugin
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = mkdocs-mermaid2-plugin
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	depends = mkdocs
 	depends = python-jsbeautifier
 	depends = python-beautifulsoup4
