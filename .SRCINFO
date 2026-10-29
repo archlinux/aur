@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-vibecheck-bin
 	pkgdesc = GNOME Shell extension showing remaining Claude plan usage in the top bar and on a desktop card
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/SelfRef/vibecheck
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-vibecheck-bin
 	optdepends = claude-code: usage data source and sign-in
 	provides = gnome-shell-extension-vibecheck
 	conflicts = gnome-shell-extension-vibecheck
-	noextract = gnome-shell-extension-vibecheck-bin-1.1.1.zip
-	source = gnome-shell-extension-vibecheck-bin-1.1.1.zip::https://github.com/SelfRef/vibecheck/releases/download/v1.1.1/vibecheck@selfref.dev.shell-extension.zip
-	sha256sums = 807e2ad2715470063f4eca7d8cdeea4b7e886b7f5b8b9a7d2b7f673779066f04
+	noextract = gnome-shell-extension-vibecheck-bin-1.2.0.zip
+	source = gnome-shell-extension-vibecheck-bin-1.2.0.zip::https://github.com/SelfRef/vibecheck/releases/download/v1.2.0/vibecheck@selfref.dev.shell-extension.zip
+	sha256sums = 34052569e6ea77e878c870ad2d4f98532380195b56e7ceb517cec7c5b2499ccc
 
 pkgname = gnome-shell-extension-vibecheck-bin
