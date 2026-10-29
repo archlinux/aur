@@ -2,9 +2,9 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=tranalyzer
-pkgver=0.9.3
+pkgver=0.9.4
 _pkgver=lmw1
-pkgrel=6
+pkgrel=1
 pkgdesc='Lightweight flow generator and packet analyzer'
 arch=('x86_64' 'aarch64')
 url='https://tranalyzer.com'
@@ -41,7 +41,7 @@ makedepends=('hyperscan'
              # default build backend of autogen.sh
              'meson')
 source=("${pkgname}-${pkgver}.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-${pkgver}${_pkgver}.tar.gz")
-b2sums=('af51a2699896fadb93515c31faa6c4474647328faee621dd240ecf1b37ccfaaeb1c991f7b32f8416aa6f6a3c252fa7407805d52f8359873b9f8708f495c92294')
+b2sums=('0c34fd46c3ee2551c54e3376af9cd8b8ea2a52e98eba00010f7e1e2154ff0c18d1e4e3d202a757849b90aedab5890e03c69a527fa787a65575a318e0437904a8')
 
 prepare() {
   cd "${pkgname}2-${pkgver}"

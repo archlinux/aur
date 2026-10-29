@@ -1,7 +1,7 @@
 pkgbase = tranalyzer
 	pkgdesc = Lightweight flow generator and packet analyzer
-	pkgver = 0.9.3
-	pkgrel = 6
+	pkgver = 0.9.4
+	pkgrel = 1
 	url = https://tranalyzer.com
 	arch = x86_64
 	arch = aarch64
@@ -35,7 +35,7 @@ pkgbase = tranalyzer
 	optdepends = clickhouse-cpp: Required by clickhouseSink
 	optdepends = cre2: Required by regex_re2
 	optdepends = ndpi: Required by nDPI
-	source = tranalyzer-0.9.3.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-0.9.3lmw1.tar.gz
-	b2sums = af51a2699896fadb93515c31faa6c4474647328faee621dd240ecf1b37ccfaaeb1c991f7b32f8416aa6f6a3c252fa7407805d52f8359873b9f8708f495c92294
+	source = tranalyzer-0.9.4.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-0.9.4lmw1.tar.gz
+	b2sums = 0c34fd46c3ee2551c54e3376af9cd8b8ea2a52e98eba00010f7e1e2154ff0c18d1e4e3d202a757849b90aedab5890e03c69a527fa787a65575a318e0437904a8
 
 pkgname = tranalyzer
