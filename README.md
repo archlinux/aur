@@ -393,11 +393,16 @@ FEATURE_DEFAULTS=ss01 makepkg -si     # the alternate G with a bar, in every app
 ```
 
 There is almost nothing to bake here. Of the seventeen GSUB features, only
-`ss01` is a design decision that a user could want globally:
+`ss01` is a design decision that a user could want globally - and the
+Commissioner block in `~/.config/fontconfig/fonts.conf` already turns it on for
+pango. That is the inconsistency this option fixes: GTK applications show the
+barred G today, Chromium, Electron and Qt do not, because they never read
+`fontfeatures`. Bake `ss01` and all of them agree; comment the line out in
+`fonts.conf` and none of them show it.
 
 | tag | effect | bake? |
 |---|---|---|
-| `ss01` | alternate `G` **with a bar**: `G Ĝ Ğ Ġ Ģ Ǧ` to `.ss01` forms | yes, if you like it |
+| `ss01` | alternate `G` **with a bar**: `G Ĝ Ğ Ġ Ģ Ǧ` to `.ss01` forms | yes - `fonts.conf` already asks for it in pango |
 | `ss02` | `б` to the Serbian form - the same substitution `locl` does for `lang="sr"` | **no**: it would give Russian text the Serbian letter |
 | `case`, `tnum`, `frac`, `sups`, `subs`, `sinf`, `numr`, `dnom`, `pnum` | per-context requests (raised punctuation, tabular figures, fractions) | only per context |
 | `ordn`, `aalt` | `H2O` to `H2º`, every alternate at once | **never** (`make_features.py` refuses them) |
