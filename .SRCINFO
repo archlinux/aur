@@ -1,0 +1,24 @@
+pkgbase = jasper-gtk-theme-fixed-git
+	pkgdesc = Jasper GTK theme, Dracula colors, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
+	pkgver = r121.gec9f301.f7.0c09bae
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Jasper-gtk-theme
+	install = jasper-gtk-theme-fixed.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-themes-extra
+	optdepends = gtk-engine-murrine: GTK 2 support
+	provides = jasper-gtk-theme
+	conflicts = jasper-gtk-theme
+	conflicts = jasper-gtk-theme-git
+	conflicts = nephrite-gtk-theme
+	options = !strip
+	options = !debug
+	source = jasper-gtk-theme::git+https://github.com/vinceliuice/Jasper-gtk-theme.git
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = jasper-gtk-theme-fixed-git

@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "Libadwaita apps use their own style; to give them Jasper's gtk-4.0 theme, link it into your"
+  echo "config folder (replace Jasper-Dark-Dracula with the variant you use):"
+  echo ""
+  echo "  mkdir -p ~/.config/gtk-4.0"
+  echo "  ln -sf /usr/share/themes/Jasper-Dark-Dracula/gtk-4.0/{assets,gtk.css,gtk-dark.css} ~/.config/gtk-4.0/"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
