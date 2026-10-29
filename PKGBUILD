@@ -1,7 +1,7 @@
 # Maintainer: onlymash <fiepi.dev@gmail.com>
 pkgname=wavetune-git
 _pkgname=wavetune
-pkgver=r9.gcd022e7
+pkgver=r15.gafef552
 pkgrel=1
 pkgdesc="Unofficial wireless headset control center for Linux (git version)"
 arch=('x86_64' 'aarch64')
@@ -21,6 +21,7 @@ depends=(
 )
 optdepends=(
     'gnome-shell: GNOME Quick Settings panel integration'
+    'gnome-shell-extension-appindicator: system tray icon support on GNOME'
 )
 makedepends=(
     'cargo'
