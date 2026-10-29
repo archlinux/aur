@@ -1,12 +1,12 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.1.1` and the `@SHA256_*@` placeholders are
+# Prebuilt binary package. `0.2.0` and the `@SHA256_*@` placeholders are
 # substituted by .github/workflows/aur.yaml from the published release
 # assets, and the result is pushed to the AUR. Edit this template, never the
 # PKGBUILD in the AUR repository: that one is regenerated at every release.
 
 pkgname=bee-agent
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A minimal, headless Rust agent runtime implementing ACPv2. (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -26,9 +26,9 @@ options=('!strip' '!debug')
 # leaves an unrecognised extension alone rather than trying to extract it, so
 # these name it plainly and `package()` installs it directly.
 source_x86_64=("bee-$pkgver-x86_64::$url/releases/download/$pkgver/bee_${pkgver}_linux-amd64")
-sha256sums_x86_64=('2df7aed319313fad44d8b2210a6b188292e3f85728aea169669c72ca6ba28399')
+sha256sums_x86_64=('2d6ce9d2fba8a1ffa69864ef1436b128859cee6ba462277b078ef2f4f004ccec')
 source_aarch64=("bee-$pkgver-aarch64::$url/releases/download/$pkgver/bee_${pkgver}_linux-arm64")
-sha256sums_aarch64=('ae9fb7ba1bb0c5f8d6832c597f9410d8d28a210aa2d167866e1de895c2157809')
+sha256sums_aarch64=('aa744da06949374272fde5c2fd255bb0237fb3cb28ee0b13a8234f47f8f9786b')
 
 # Fetched separately: the raw binary asset carries no licence file, and MIT
 # is not one of the licences Arch keeps in /usr/share/licenses/common.

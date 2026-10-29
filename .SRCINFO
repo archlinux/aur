@@ -1,6 +1,6 @@
 pkgbase = bee-agent
 	pkgdesc = A minimal, headless Rust agent runtime implementing ACPv2. (prebuilt binary)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/noirbizarre/bee
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = bee-agent
 	conflicts = bee-bin
 	options = !strip
 	options = !debug
-	source = LICENSE-0.1.1::https://github.com/noirbizarre/bee/raw/0.1.1/LICENSE
+	source = LICENSE-0.2.0::https://github.com/noirbizarre/bee/raw/0.2.0/LICENSE
 	sha256sums = 579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e
-	source_x86_64 = bee-0.1.1-x86_64::https://github.com/noirbizarre/bee/releases/download/0.1.1/bee_0.1.1_linux-amd64
-	sha256sums_x86_64 = 2df7aed319313fad44d8b2210a6b188292e3f85728aea169669c72ca6ba28399
-	source_aarch64 = bee-0.1.1-aarch64::https://github.com/noirbizarre/bee/releases/download/0.1.1/bee_0.1.1_linux-arm64
-	sha256sums_aarch64 = ae9fb7ba1bb0c5f8d6832c597f9410d8d28a210aa2d167866e1de895c2157809
+	source_x86_64 = bee-0.2.0-x86_64::https://github.com/noirbizarre/bee/releases/download/0.2.0/bee_0.2.0_linux-amd64
+	sha256sums_x86_64 = 2d6ce9d2fba8a1ffa69864ef1436b128859cee6ba462277b078ef2f4f004ccec
+	source_aarch64 = bee-0.2.0-aarch64::https://github.com/noirbizarre/bee/releases/download/0.2.0/bee_0.2.0_linux-arm64
+	sha256sums_aarch64 = aa744da06949374272fde5c2fd255bb0237fb3cb28ee0b13a8234f47f8f9786b
 
 pkgname = bee-agent
