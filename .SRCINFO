@@ -1,6 +1,6 @@
 pkgbase = parrot-tts
 	pkgdesc = A free, offline, private AI text-to-speech desktop app built on Rust 🦜
-	pkgver = 26.2.4
+	pkgver = 26.10.1
 	pkgrel = 1
 	url = https://github.com/rishiskhare/parrot
 	arch = x86_64
@@ -31,13 +31,13 @@ pkgbase = parrot-tts
 	depends = libpulse
 	depends = libsonic
 	depends = pcaudiolib
+	depends = libappindicator-gtk3
 	optdepends = wtype: Wayland support
 	optdepends = xdotool: X11 support
 	conflicts = parrot-tts-bin
 	options = !lto
-	source = parrot-tts-26.2.4::git+https://github.com/rishiskhare/parrot.git#tag=629f2d3ae1edb7503989b532e169d448cd185dd8
-	source = 8ce31099def80f90c02f9f96a7073fd24bcdcd8a.patch
-	sha256sums = 97f60cf359997fc45c4d6f305e9ad792c4f2c799bfaf6597c60a5dd61d8b04b3
-	sha256sums = f24e22ec2facb2f155307cdab57c1b44456de2f555a8cd69e716fecb14ae06b3
+	options = !debug
+	source = parrot-tts-26.10.1::git+https://github.com/rishiskhare/parrot.git#tag=85f702e3593d5b9c7bcb753a051297382ebbe4cb
+	sha256sums = 2af2f3742456a588cbe0fe32d1a88775814ebd34038f8f680c54b824e7dfce2b
 
 pkgname = parrot-tts

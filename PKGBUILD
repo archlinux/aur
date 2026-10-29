@@ -2,11 +2,11 @@
 
 pkgname=parrot-tts
 _pkgname="${pkgname%%-*}"
-pkgver=26.2.4
+pkgver=26.10.1
 pkgrel=1
 pkgdesc="A free, offline, private AI text-to-speech desktop app built on Rust 🦜"
 url="https://github.com/rishiskhare/parrot"
-_tag=629f2d3ae1edb7503989b532e169d448cd185dd8
+_tag=85f702e3593d5b9c7bcb753a051297382ebbe4cb
 license=("MIT")
 arch=("x86_64" "aarch64")
 depends=(
@@ -24,6 +24,7 @@ depends=(
   libpulse
   libsonic
   pcaudiolib
+  libappindicator-gtk3
 )
 
 makedepends=(
@@ -39,7 +40,7 @@ makedepends=(
   shaderc
   vulkan-headers
 )
-options=('!lto')
+options=('!lto' '!debug')
 
 optdepends=(
   'wtype: Wayland support'
@@ -48,17 +49,10 @@ optdepends=(
 
 source=(
   "$pkgname-$pkgver::git+$url.git#tag=$_tag"
-  8ce31099def80f90c02f9f96a7073fd24bcdcd8a.patch
 )
 
 conflicts=("$pkgname-bin")
-sha256sums=('97f60cf359997fc45c4d6f305e9ad792c4f2c799bfaf6597c60a5dd61d8b04b3'
-            'f24e22ec2facb2f155307cdab57c1b44456de2f555a8cd69e716fecb14ae06b3')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -p1 < ../8ce31099def80f90c02f9f96a7073fd24bcdcd8a.patch
-}
+sha256sums=('2af2f3742456a588cbe0fe32d1a88775814ebd34038f8f680c54b824e7dfce2b')
 
 build() {
   cd "$pkgname-$pkgver"
