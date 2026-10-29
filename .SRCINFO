@@ -1,0 +1,13 @@
+pkgbase = dotnet-pluralize-net
+	pkgdesc = Pluralize or singularize any English word, Pluralize.NET (NuGet package)
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = https://github.com/sarathkcm/Pluralize.NET
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	source = Pluralize.NET-5ccb647784d439fc20ce8f1b5b15b790da29148b.tar.gz::https://github.com/sarathkcm/Pluralize.NET/archive/5ccb647784d439fc20ce8f1b5b15b790da29148b.tar.gz
+	sha512sums = 98e2d494147e92962c1fdf63b560e14462eda7c0cfdb7fc2cd247c5f177ce3cc7a3cb8b3ecb83494876301c5d69f371cb8d01a13ccfc25b7e8245cfb4d3dcf63
+	b2sums = 0659c39c9a86512af83405aa872571eea841472d7bc8653b42f15f2af6596b8b0a6d7096176783d87f0999005a85ac100b411f12c63cac1f9abb31683aa91061
+
+pkgname = dotnet-pluralize-net

@@ -1,0 +1,5 @@
+# The package is built from the latest commit, upstream hasn't released the fixes since 1.0.2
+[dotnet-pluralize-net]
+source = "git"
+git = "https://github.com/sarathkcm/Pluralize.NET.git"
+use_commit = true
