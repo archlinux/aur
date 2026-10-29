@@ -2,7 +2,7 @@
 # Your computer should have a little guy in it.
 pkgbase=gremlincore
 pkgname=('gremlincore' 'meatbag')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 arch=('any')
 url="https://github.com/KohlJary/gremlincore"
@@ -29,9 +29,6 @@ package_gremlincore() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   # meatbag is its own package.
   rm -rf "$pkgdir$(_site)/meatbag" "$pkgdir/usr/bin/meatbag"
-  # init's templates (a wheel doesn't carry them); init.templates_dir() looks here.
-  install -d "$pkgdir/usr/share/gremlincore"
-  cp -r --no-preserve=ownership templates "$pkgdir/usr/share/gremlincore/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
