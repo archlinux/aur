@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=2.0.11.r0.g3d49f52
+pkgver=2.1.0.r0.geb7c5d9
 pkgrel=1
-_nodeversion=24
+_nodeversion=26
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.github.io"
@@ -12,6 +12,7 @@ depends=(
   'alsa-lib'
   'gtk3'
   'libnotify'
+  'libsecret'
   'libxtst'
   'nss'
   'xdg-utils'
@@ -19,13 +20,9 @@ depends=(
 makedepends=(
   'git'
   'nvm'
+  'pnpm'
   'python'
-  'yarn'
   'zip'
-)
-optdepends=(
-  'libgnome-keyring'
-  'lsb-release'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -52,25 +49,23 @@ _ensure_local_nvm() {
 
 prepare() {
   cd "${pkgname%-git}"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export PNPM_HOME="$srcdir/pnpm-home"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
-  yarn config set enableTelemetry 0
-  yarn --immutable
+  pnpm install --frozen-lockfile
 }
 
 build() {
   cd "${pkgname%-git}"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export PNPM_HOME="$srcdir/pnpm-home"
   _ensure_local_nvm
-  yarn make --targets="@electron-forge/maker-zip"
+  pnpm make --targets="@electron-forge/maker-zip"
 }
 
 package() {
   cd "${pkgname%-git}"
   install -d "$pkgdir/opt/${pkgname%-git}"
   cp -r out/YouTube\ Music\ Desktop\ App-linux-x64/. "$pkgdir/opt/${pkgname%-git}"
-  chmod 4755 "$pkgdir/opt/${pkgname%-git}/chrome-sandbox"
 
   install -Dm644 src/assets/icons/ytmd.png \
     "$pkgdir/usr/share/pixmaps/youtube-music-desktop-app.png"
