@@ -3,7 +3,7 @@
 
 pkgname=linksy-bin
 pkgver=0.9.16   # fallback, overridden by pkgver()
-pkgrel=1
+pkgrel=2
 pkgdesc="Your devices, connected: direct file/clipboard/screen/camera sharing between Linux and Android, no cloud"
 arch=('x86_64')
 url="https://github.com/LinkSy-mg/linksy-releases"
@@ -61,49 +61,61 @@ pkgver() {
 }
 
 prepare() {
-  _deb="linksy_${pkgver}_amd64.deb"
-  # resolve asset URL via API first (handles %2F tag encoding), fall back to the
-  # direct URL. These lookups are optional with fallbacks; guard with || true so
-  # a rate-limited/unreachable API cannot abort prepare() under makepkg's set -e.
-  _url_api=$(curl -sL "https://api.github.com/repos/LinkSy-mg/linksy-releases/releases/tags/linux-v${pkgver}" \
-    | jq -r ".assets[] | select(.name==\"${_deb}\") | .browser_download_url" 2>/dev/null) || true
-  _urls=()
-  [[ -n "$_url_api" && "$_url_api" != "null" ]] && _urls+=("$_url_api")
-  _urls+=("https://github.com/LinkSy-mg/linksy-releases/releases/download/linux-v${pkgver}/${_deb}")
+  # Upstream (>=0.9.x) split the payload into TWO debs:
+  #   linksy-common_<ver>_amd64.deb  -> service, CLI, screen helper, icons, desktop entry
+  #   linksy_<ver>_amd64.deb          -> GTK GUI app (linksy-app)
+  # Both are needed for a complete package.
+  _common_deb="linksy-common_${pkgver}_amd64.deb"
+  _app_deb="linksy_${pkgver}_amd64.deb"
 
-  # cache-aware: reuse cached deb when it exists and is valid
-  _ok=0
-  if [[ -f "$srcdir/$_deb" ]]; then
-    if bsdtar -tf "$srcdir/$_deb" >/dev/null 2>&1; then
+  _fetch_deb() {
+    local _deb=$1 _ok=0 _u _u_api
+    if [[ -f "$srcdir/$_deb" ]] && bsdtar -tf "$srcdir/$_deb" >/dev/null 2>&1; then
       echo "Using cached $_deb"
       _ok=1
     else
-      rm -f "$srcdir"/linksy_*_amd64.deb
+      rm -f "$srcdir/$_deb"
+      _u_api=$(curl -sL "https://api.github.com/repos/LinkSy-mg/linksy-releases/releases/tags/linux-v${pkgver}" \
+        | jq -r ".assets[] | select(.name==\"${_deb}\") | .browser_download_url" 2>/dev/null) || true
+      local _urls=()
+      [[ -n "$_u_api" && "$_u_api" != "null" ]] && _urls+=("$_u_api")
+      _urls+=("https://github.com/LinkSy-mg/linksy-releases/releases/download/linux-v${pkgver}/${_deb}")
+      for _u in "${_urls[@]}"; do
+        echo "Fetching $_u ..."
+        if curl -fL -o "$srcdir/$_deb" "$_u" && bsdtar -tf "$srcdir/$_deb" >/dev/null 2>&1; then
+          _ok=1
+          break
+        fi
+        rm -f "$srcdir/$_deb"
+      done
     fi
-  fi
-  if [[ $_ok -eq 0 ]]; then
-    for _u in "${_urls[@]}"; do
-      echo "Fetching $_u ..."
-      if curl -fL -o "$srcdir/$_deb" "$_u" && bsdtar -tf "$srcdir/$_deb" >/dev/null 2>&1; then
-        _ok=1
-        break
-      fi
-    done
-  fi
-  [[ $_ok -eq 1 ]] || { echo "Failed to fetch a valid linksy deb for ${pkgver}" >&2; exit 1; }
+    [[ $_ok -eq 1 ]] || { echo "Failed to fetch a valid $_deb for ${pkgver}" >&2; return 1; }
 
-  # verify against upstream SHA256SUMS when available (integrity of artifact chain)
-  _sums_url="https://github.com/LinkSy-mg/linksy-releases/releases/download/linux-v${pkgver}/SHA256SUMS"
-  _want=$(curl -fsSL "$_sums_url" 2>/dev/null | awk -v f="$_deb" '$2==f {print $1}') || true
-  _have=$(sha256sum "$srcdir/$_deb" | awk '{print $1}')
-  if [[ -n "$_want" ]]; then
-    [[ "$_want" == "$_have" ]] || { echo "SHA256 mismatch vs upstream SHA256SUMS" >&2; exit 1; }
-    echo "SHA256 verified against upstream SHA256SUMS"
-  fi
+    local _want _have
+    _want=$(curl -fsSL "https://github.com/LinkSy-mg/linksy-releases/releases/download/linux-v${pkgver}/SHA256SUMS" 2>/dev/null \
+      | awk -v f="$_deb" '$2==f {print $1}') || true
+    _have=$(sha256sum "$srcdir/$_deb" | awk '{print $1}')
+    if [[ -n "$_want" ]]; then
+      [[ "$_want" == "$_have" ]] || { echo "SHA256 mismatch for $_deb" >&2; return 1; }
+      echo "SHA256 verified: $_deb"
+    fi
+  }
 
-  bsdtar -xf "$srcdir/$_deb" -C "$srcdir"
-  [[ -f "$srcdir/data.tar.xz" ]] || { echo "data.tar.xz missing from deb" >&2; exit 1; }
-  bsdtar -xf "$srcdir/data.tar.xz" -C "$srcdir"
+  _fetch_deb "$_common_deb" || exit 1
+  _fetch_deb "$_app_deb" || exit 1
+
+  # Extract each deb's control+data into its own temp dir, then merge the data
+  # payloads into $srcdir so the tree matches the old single-deb layout.
+  for _pair in "common:$_common_deb" "app:$_app_deb"; do
+    _label=${_pair%%:*}
+    _deb=${_pair#*:}
+    _tmp="$srcdir/.deb-$_label"
+    rm -rf "$_tmp"
+    mkdir -p "$_tmp"
+    bsdtar -xf "$srcdir/$_deb" -C "$_tmp"
+    [[ -f "$_tmp/data.tar.xz" ]] || { echo "data.tar.xz missing in $_deb" >&2; exit 1; }
+    bsdtar -xf "$_tmp/data.tar.xz" -C "$srcdir"
+  done
   [[ -d "$srcdir/usr" ]] || { echo "deb payload missing usr/ tree" >&2; exit 1; }
 }
 
@@ -167,7 +179,13 @@ check() {
 }
 
 package() {
-  bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
+  # Merge both upstream payloads into the package.
+  for _label in common app; do
+    _tmp="$srcdir/.deb-$_label"
+    if [[ -f "$_tmp/data.tar.xz" ]]; then
+      bsdtar -xf "$_tmp/data.tar.xz" -C "$pkgdir"
+    fi
+  done
 
   # deb postinst equivalents handled at system level (not inside the chroot-ish package()):
   #  - systemctl --global enable linksyd.service  -> linksy-bin.install post_install
@@ -181,5 +199,6 @@ package() {
     install -Dm644 /dev/null "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     echo "AGPL-3.0-only — see $url" > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi
-  chmod 0755 "$pkgdir/usr/bin/linksy" "$pkgdir/usr/bin/linksy-app" "$pkgdir/usr/bin/linksy-screen" "$pkgdir/usr/libexec/linksy/"*
+  chmod 0755 "$pkgdir/usr/bin/linksy" "$pkgdir/usr/bin/linksy-app" "$pkgdir/usr/bin/linksy-screen" \
+    "$pkgdir/usr/bin/linksyd" "$pkgdir/usr/bin/linksy-open" "$pkgdir/usr/libexec/linksy/"* 2>/dev/null || true
 }
