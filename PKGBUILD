@@ -1,5 +1,5 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Gemini 3 Flash.
+# Created with assistance from GLM 5.3 Flash.
 # Upstream: WinterSnowfall <https://github.com/WinterSnowfall/d7vk>
 
 pkgname=d7vk-bin
