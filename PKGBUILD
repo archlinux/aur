@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=amazon-ssm-agent-bin
-pkgver=3.3.5538.0
+pkgver=3.3.5678.0
 pkgrel=1
 pkgdesc="Amazon SSM Agent for managing EC2 Instances using the SSM APIs. See: https://aws.amazon.com/documentation/systems-manager/ for details"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(${pkgname}-${pkgver}-x86_64.deb::https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/${pkgver}/debian_amd64/${pkgname%-bin}.deb)
 # Checksums
-sha256sums=('d0330f570309ad3468c75f5b12da95d394385680de820f1f2628506244a4ab6d')
+sha256sums=('5b440c321273d3d83a0669e993a4999368035e7ab9876bea5c99a33a8d51f9b3')
 noextract=()
 # We set options here to superseed the default makepkg.conf options. We dont whant debug build or strip debug info from the package. Its not relevant for a binary repackage of the upstream package.
 options=(!debug !strip)
