@@ -1,7 +1,7 @@
 pkgbase = dotnet-roslyn
 	pkgdesc = The .NET Compiler Platform for C#, Microsoft.CodeAnalysis.Common and .CSharp (NuGet packages)
 	pkgver = 5.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/roslyn
 	arch = any
 	license = MIT

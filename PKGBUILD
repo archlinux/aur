@@ -4,7 +4,7 @@
 
 pkgname=dotnet-roslyn
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The .NET Compiler Platform for C#, Microsoft.CodeAnalysis.Common and .CSharp (NuGet packages)"
 arch=('any')
 url='https://github.com/dotnet/roslyn'
@@ -29,13 +29,15 @@ _dotnet_env() {
   export DOTNET_NOLOGO=1
 
   # Versions as in the official build, see eng/Versions.props. The repository information usually
-  # comes from git.
+  # comes from git, which would find the repository this PKGBUILD is in instead.
   _build_arguments=(
     --configuration Release
     -p:OfficialBuildId="$_officialbuildid"
     -p:DotNetFinalVersionKind=release
     -p:RepositoryCommit="$_commit"
     -p:RepositoryUrl="$url"
+    -p:SourceRevisionId="$_commit"
+    -p:EnableSourceControlManagerQueries=false
   )
 }
 
