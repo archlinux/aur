@@ -5,8 +5,8 @@
 
 pkgname=python-tatsu
 _name="tatsu"
-pkgver=5.13.2
-pkgrel=2
+pkgver=5.24.0
+pkgrel=1
 pkgdesc="TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python"
 arch=("any")
 url="https://github.com/neogeny/TatSu"
@@ -15,7 +15,7 @@ depends=("python")
 optdepends=("python-colorama" "python-rich")
 makedepends=("python-build" "python-installer" "python-wheel" "python-hatchling")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('66c46670fc83d73d6a0fe7c310d857f035582783195dfc150afe858b4b3e67369cc1bdddcd47bed4b93835697d89a951124cd184df6f51b8780d4105d96f6748')
+b2sums=('a85daa2b770b237d4ca6ae94bab54324dc5b24c691c49da5b38e9651d23a0316ca7d5080f3c51d4ac00bc9d60c69542600ae8ffc85eb0648fe6590964829daeb')
 
 build(){
  cd "$_name-$pkgver"
