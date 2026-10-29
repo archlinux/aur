@@ -483,6 +483,43 @@ python measure.py Geologica-Regular.ttf slight '{}' 10,11,12
 
 ---
 
+## 5. Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+
+fontconfig's `fontfeatures` is read by pango/GTK only: Chromium, Electron, Qt
+and LibreOffice shape text without it, and in a browser only the page CSS can
+ask for a feature. A font cannot declare one "on by default" either - a shaper
+applies a fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`). So the
+only way to make a feature the default everywhere is to move its lookups into
+one of those features, which is what `make_features.py` does and what
+`FEATURE_DEFAULTS` runs as the last build step:
+
+```sh
+FEATURE_DEFAULTS=ss01 makepkg -si     # cursive a/g in every app, Chrome included
+```
+
+`ss01` is the cursive `a` and `g` (42 glyphs, the same substitution the `CRSV`
+axis performs). The Geologica block in `~/.config/fontconfig/fonts.conf`
+already turns it on for pango, so baking it is what makes Chrome, Electron, Qt
+and LibreOffice show the same thing with no CSS and no config. It is the same
+result `GEO_UI_FEATURES=ss01` gives to the *Geologica UI* copy, except that it
+applies to whatever this build installs: the variable font, the statics, or a
+Nerd Fonts build.
+
+| tag | effect | bake? |
+|---|---|---|
+| `ss01` | cursive `a`/`g`, identical to `CRSV=1` | yes, if you like it |
+| `tnum` | tabular figures (the default figures are proportional: `1` is 814 units, `0` is 1296) | only for tables and code |
+| `case` | a subset of the Greek `calt` rules - a no-op while `calt` is on | pointless |
+| `pnum` | no-op unless `tnum` is on | pointless |
+| `frac`, `sups`, `ordn`, `aalt` | fractions, superscripts, `H2O` to `H2º`, every alternate at once | **never** |
+
+Measured on the built package, 44 px, `Gg a αγ Agenda`: baked with no CSS is
+**pixel-identical** to stock Geologica with `font-feature-settings: "ss01" 1`
+(0 differing pixels), 5305 pixels differ from the stock font, and `"calt" 0`
+restores the stock glyphs exactly. `FEATURE_FAMILY="Geologica Cursive"`
+installs it as a second family; it cannot be combined with `GEO_UI_WEIGHT`,
+since both would rename the same file.
+
 ## Differences from the sibling packages
 
 - **The default master is Thin**, so the variable bytecode's blue zones are

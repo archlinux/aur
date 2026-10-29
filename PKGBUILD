@@ -4,7 +4,7 @@ _geover=1.010
 _geocommit=685f38d7c9e86b0c8530204c97ddcaf6558dd17b
 _nfver=3.5.1
 pkgver="${_geover}"
-pkgrel=4
+pkgrel=5
 pkgdesc='Geologica, a humanist-geometric sans with Sharp/Cursive/Slant/Weight axes, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/geologica'
@@ -19,6 +19,7 @@ source=(
   "font-patcher-${_nfver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   "make_statics.py"
   "make_ui.py"
+  "make_features.py"
   "set_gasp.py"
   "measure.py"
   "79-geologica-families.conf"
@@ -31,10 +32,11 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '53d9a3969632b52c7afc5b1968aab4b583c7933641ce3394735705a0cb8e450b'
             '5844c645e7d4f9a445be4ec9c049d2b84fa450efbf0179b47add06533561c478'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             'cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1'
             'be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c'
-            '2d418f47f4b4ff37e489a5c3b69b128ffb4dc25319af0085a0a743ef90569bcc'
+            'ea9d1775f12125ff0fa3dcb4817fdf5d20d6a6265f2bcb2bed87caabdd4c9552'
             '1acf0491c2a831a87e1cb09e1a8151dabc02bdf80e33807c7b52ed07be2e5028')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -201,6 +203,47 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #               smooth   all sizes anti-aliased ({0xFFFF: 15})
 #               gridfit  all sizes gridfit+grayscale ({0xFFFF: 3})
 #
+#  ── Features every app can see (not just pango) ───────────────────────────
+#
+#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 Bake these GSUB features into the font's 'calt' feature, so
+#                 that EVERY renderer applies them, not only pango. For the
+#                 reason, see the note at the bottom of this block.
+#
+#                 The one that matters here is
+#                     FEATURE_DEFAULTS="ss01"
+#                 ss01 = the cursive a and g, the same 42 glyphs the CRSV axis
+#                 produces. fontconfig already turns it on for pango (see the
+#                 Geologica block in ~/.config/fontconfig/fonts.conf); baking
+#                 it makes Chromium, Electron, Qt and LibreOffice show the
+#                 same thing with no CSS and no config. This is what
+#                 GEO_UI_FEATURES does to the "Geologica UI" copy, except that
+#                 FEATURE_DEFAULTS applies to whatever this build installs:
+#                 the variable font, the statics, or the Nerd Fonts build.
+#                 tnum and case are the only other candidates (proportional
+#                 figures are the default, so tnum is a per-context request);
+#                 never aalt or ordn, which make_features.py refuses.
+#
+#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
+#                 Install the result as this family instead, so the stock
+#                 Geologica stays available. The name must not end in a pango
+#                 style word (Thin, Bold, Italic, ...). It cannot be combined
+#                 with GEO_UI_WEIGHT: both would rename the same file.
+#                 With a rename, the shipped 79-geologica-families.conf stops
+#                 matching (its <test family="Geologica">), so the "Geologica
+#                 Sharp"/"Geologica Cursive" names are not applied to it; the
+#                 axes are still there, under the new name.
+#
+#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
+#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
+#  only ask from page CSS. A shaper applies a fixed list of features whatever
+#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
+#  moving a feature's lookups into calt is the only way to make it the
+#  default in every program. Verified in Chromium: the baked font with no CSS
+#  at all is pixel-identical to the stock one with font-feature-settings
+#  listing the same tags. CSS can still say "calt" 0, which also drops
+#  Geologica's own calt rules (Greek caps setting, ano teleia, f.calt/j.calt).
+#
 #  Examples:
 #    makepkg -si                              (asks, when run from a terminal)
 #    makepkg -si </dev/null                   (never asks: defaults only)
@@ -209,10 +252,12 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #    HINT_PRESET=balanced makepkg -si
 #    GEO_UI_WEIGHT=100 makepkg -si           (Thin as the desktop font)
 #    GEO_UI_WEIGHT=300 GEO_UI_FEATURES=ss01 makepkg -si
+#    FEATURE_DEFAULTS=ss01 makepkg -si        (cursive a/g in every app)
 #    NERD_PATCH=true STATIC_WEIGHTS="400 500 700" makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
 
-_opt_keys=(GEO_VARIANT GEO_UI_WEIGHT GEO_UI_FEATURES STATIC_WEIGHTS STATIC_ITALIC STATIC_SHRP NERD_PATCH
+_opt_keys=(GEO_VARIANT GEO_UI_WEIGHT GEO_UI_FEATURES FEATURE_DEFAULTS FEATURE_FAMILY
+           STATIC_WEIGHTS STATIC_ITALIC STATIC_SHRP NERD_PATCH
            HINTING HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX
            HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
@@ -274,6 +319,10 @@ _prompt_options() {
       _ask_yn "Cursive a/g (ss01) by default in Geologica UI, also in browsers" n
       [[ "$_yn" == true ]] && GEO_UI_FEATURES=ss01 || GEO_UI_FEATURES=""
     fi
+    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
+      _ask_yn "Bake cursive a/g (ss01) into the installed fonts, for every app" n
+      if [[ "$_yn" == true ]]; then FEATURE_DEFAULTS="ss01"; else FEATURE_DEFAULTS=""; fi
+    fi
     if [[ -z "${HINTING:-}" ]]; then
       _ask_yn "Hint with ttfautohint (n = unhinted, as upstream)" y; HINTING=$_yn
     fi
@@ -319,6 +368,8 @@ _resolve_options() {
   GEO_VARIANT="${GEO_VARIANT:-variable}"
   GEO_UI_WEIGHT="${GEO_UI_WEIGHT:-none}"
   GEO_UI_FEATURES="${GEO_UI_FEATURES:-}"
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
   STATIC_WEIGHTS="${STATIC_WEIGHTS:-100 200 300 400 500 600 700 800 900}"
   STATIC_ITALIC="${STATIC_ITALIC:-true}"
   STATIC_SHRP="${STATIC_SHRP:-0}"
@@ -359,6 +410,17 @@ _resolve_options() {
   if [[ "$GEO_UI_WEIGHT" != none && "$GEO_VARIANT" != variable ]]; then
     echo "==> Note: \"Geologica UI\" needs the variable font; GEO_UI_WEIGHT ignored."
     GEO_UI_WEIGHT=none
+  fi
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss01)." >&2
+      exit 1
+    fi
+  done
+  if [[ -n "$FEATURE_FAMILY" && "$GEO_UI_WEIGHT" != none ]]; then
+    echo "Error: FEATURE_FAMILY=\"$FEATURE_FAMILY\" would rename both the main font and" >&2
+    echo "  the Geologica UI copy to the same family. Use one or the other." >&2
+    exit 1
   fi
   for _v in $STATIC_WEIGHTS; do
     case "$_v" in
@@ -425,6 +487,21 @@ prepare() {
   fi
 }
 
+# _bake_features SRCDIR: move the lookups of FEATURE_DEFAULTS into calt, on the
+# files this build ended up with, into $srcdir/featured. Last step on purpose:
+# ttfautohint never sees the extra lookups. Note that the Geologica UI copy is
+# already baked by make_ui.py when GEO_UI_FEATURES is set; merging the same
+# lookups twice is a no-op.
+_bake_features() {
+  local _src="$1" _fam=()
+  [[ -n "$FEATURE_DEFAULTS" ]] || return 0
+  [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
+  echo "==> Baking $FEATURE_DEFAULTS into calt" \
+       "${FEATURE_FAMILY:+(installed as '$FEATURE_FAMILY')}..."
+  python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+    "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$_src"/*.ttf
+}
+
 build() {
   _resolve_options
 
@@ -439,7 +516,7 @@ build() {
          "ttfa-table=$HINT_TTFA_TABLE${HINT_FAMILY_SUFFIX:+ suffix='$HINT_FAMILY_SUFFIX'}"
   fi
 
-  rm -rf "$srcdir/selected" "$srcdir/patched" "$srcdir/hinted"
+  rm -rf "$srcdir/selected" "$srcdir/patched" "$srcdir/hinted" "$srcdir/featured"
   mkdir -p "$srcdir/selected" "$srcdir/patched" "$srcdir/hinted"
 
   # ── Step 1: select ──────────────────────────────────────────────────────────
@@ -490,6 +567,7 @@ build() {
   fi
 
   if [[ "$HINTING" != true ]]; then
+    _bake_features "$_hintsrc"
     return 0
   fi
 
@@ -547,6 +625,8 @@ PY
     echo "==> Applying gasp mode '$GASP_MODE'..."
     python "$srcdir/set_gasp.py" "$GASP_MODE" "$srcdir/hinted/"*.ttf
   fi
+
+  _bake_features "$srcdir/hinted"
 }
 
 package() {
@@ -558,6 +638,7 @@ package() {
   elif [[ "$NERD_PATCH" == true ]]; then
     _out="$srcdir/patched"
   fi
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then _out="$srcdir/featured"; fi
   if ! compgen -G "$_out/*.ttf" >/dev/null; then
     echo "Error: no fonts to install in $_out." >&2; exit 1
   fi
