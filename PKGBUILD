@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-caldavzap"
-pkgver=1.5.3
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="CalDAVZap plugin for RoundCube Webmailer"
 url="https://github.com/Offerel/roundcube_caldavzap"
@@ -9,7 +9,7 @@ license=("AGPL3")
 arch=("any")
 depends=("roundcubemail")
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('14ee8a6d1639cdaa3e9b5721aac0d44ff2a5890107888984af8f5fac4b4a2593782b2dc7128f6a9d1c7e97f184209c0ae5a3052d7ce11b910e972940bdfc1966')
+b2sums=('dd05a5df1de34117603ef904702fb62775f17902b09e0e15dac6b5189b9702318898fcb1b21f85f444f131b6d107cd5e3bf3ba980b55cac226569a2c6a202793')
 backup=("etc/webapps/roundcubemail/plugins/caldavzap/config.inc.php")
 
 package(){
