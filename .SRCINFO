@@ -1,6 +1,6 @@
 pkgbase = open-git-control-bin
 	pkgdesc = Free, open-source desktop Git client with visual history, GitHub workflows, conflict resolution, secret scanning and optional AI-assisted commits
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://github.com/timbornemann/Open-Git-Control
 	arch = x86_64
@@ -34,11 +34,11 @@ pkgbase = open-git-control-bin
 	provides = open-git-control
 	conflicts = open-git-control
 	options = !strip
-	source = README-3.2.2.md::https://raw.githubusercontent.com/timbornemann/Open-Git-Control/v3.2.2/README.md
-	source = LICENSE-3.2.2::https://raw.githubusercontent.com/timbornemann/Open-Git-Control/v3.2.2/LICENSE
-	sha256sums = b4bb2684f96eb8590b2cc4454ca478210cac529bec420ae4102943b9387e4d5b
+	source = README-3.2.3.md::https://raw.githubusercontent.com/timbornemann/Open-Git-Control/v3.2.3/README.md
+	source = LICENSE-3.2.3::https://raw.githubusercontent.com/timbornemann/Open-Git-Control/v3.2.3/LICENSE
+	sha256sums = 581685fee6113ae4499c1a4e94709d9b4d049ba2a990da1188ee80e0ffe82d64
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = open-git-control-x86_64-3.2.2.deb::https://github.com/timbornemann/Open-Git-Control/releases/download/v3.2.2/Open-Git-Control-3.2.2-linux-amd64.deb
-	sha256sums_x86_64 = b92d4bed2a3090d64c670ef1ca5976cb91b1c5579ac5902e31dfa15e6757d2a8
+	source_x86_64 = open-git-control-x86_64-3.2.3.deb::https://github.com/timbornemann/Open-Git-Control/releases/download/v3.2.3/Open-Git-Control-3.2.3-linux-amd64.deb
+	sha256sums_x86_64 = ad92ec0548606db5feb4559d5f4abd4a28c8cbe011f4ddbe90e032093ce728b6
 
 pkgname = open-git-control-bin
