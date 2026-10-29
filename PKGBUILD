@@ -4,7 +4,7 @@ pkgname=relic-tokyonight-gtk-theme
 _repo=Tokyonight-GTK-Theme
 _commit=6c340e058e84c1975a038a8e5d1e384477225dc0
 _date=2025.10.23
-pkgver=2025.10.23.r11.05bb2f9
+pkgver=2025.10.23.r9.95dc59b
 pkgrel=1
 pkgdesc='Tokyo Night GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
@@ -35,12 +35,15 @@ _local_fixes() {
   printf '%s\n' "$d/gtk-theme-fixes"
 }
 
+# <theme commit date>.r<count>.<commit>: the commits of gtk-theme-fixes that change the files this
+# package uses (generic/, relic/), so other themes' fixes leave the version alone
 pkgver() {
   local fixes=gtk-theme-fixes
   if [[ ${local_build:-} == true ]]; then
     fixes=$(_local_fixes) || return 1
   fi
-  printf '%s.r%s.%s' "$_date" "$(git -C "$fixes" rev-list --count HEAD)" "$(git -C "$fixes" rev-parse --short=7 HEAD)"
+  printf '%s.r%s.%s' "$_date" "$(git -C "$fixes" rev-list --count HEAD -- generic relic)" \
+    "$(git -C "$fixes" log -1 --format=%h --abbrev=7 HEAD -- generic relic)"
 }
 
 prepare() {
