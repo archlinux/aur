@@ -1,7 +1,7 @@
 pkgbase = ttf-roboto-flex-hinted
 	pkgdesc = Roboto Flex, the 13-axis variable Roboto, hinted with ttfautohint for FreeType, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)
 	pkgver = 3.200
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/googlefonts/roboto-flex
 	arch = any
 	license = OFL-1.1
@@ -32,7 +32,7 @@ pkgbase = ttf-roboto-flex-hinted
 	sha256sums = 0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99
 	sha256sums = 7cafc2f26e6490e58987f13f2a4f25334f2b30a28f89741f1eaa5bf144e3f51c
 	sha256sums = 38abb99dc9daaa04f43441f3036baff81270f2636c52772fba72c7454c44e2f9
-	sha256sums = f30c6fc884bb2f49b4d9a2956c07d054c78dbd99ed7305ab64ec8d918902ebb7
+	sha256sums = f4bd71980ee86291bcef2e1199734a068fb9c633f47087a016519487842eb863
 	sha256sums = ed3710d5143d2724a3e9ff0248738033eb4c5a43941767309abf535efb65d656
 
 pkgname = ttf-roboto-flex-hinted

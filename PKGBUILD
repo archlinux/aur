@@ -3,7 +3,7 @@ pkgname=ttf-roboto-flex-hinted
 _flexver=3.200
 _nfver=3.5.1
 pkgver="${_flexver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Roboto Flex, the 13-axis variable Roboto, hinted with ttfautohint for FreeType, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/roboto-flex'
@@ -33,7 +33,7 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '7cafc2f26e6490e58987f13f2a4f25334f2b30a28f89741f1eaa5bf144e3f51c'
             '38abb99dc9daaa04f43441f3036baff81270f2636c52772fba72c7454c44e2f9'
-            'f30c6fc884bb2f49b4d9a2956c07d054c78dbd99ed7305ab64ec8d918902ebb7'
+            'f4bd71980ee86291bcef2e1199734a068fb9c633f47087a016519487842eb863'
             'ed3710d5143d2724a3e9ff0248738033eb4c5a43941767309abf535efb65d656')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -160,6 +160,11 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
+#                 Asked during the build as well (none / the recommended set /
+#                 a list of your own); the variables below are what an
+#                 unattended build uses. FEATURE_FAMILY stays environment-only
+#                 on purpose: it renames every file to one family, which would
+#                 merge the cuts a multi-family build installs.
 #
 #                 Roboto Flex has only four GSUB features - liga, locl, pnum,
 #                 rvrn - so there is exactly one candidate:
@@ -268,11 +273,36 @@ _prompt_options() {
         "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
     fi
-    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
-      echo "  Roboto Flex ships TABULAR figures. Baking pnum gives proportional"
-      echo "  figures in every program, Chromium included, not only in pango."
-      _ask_yn "Bake pnum (proportional figures) into the fonts" n
-      if [[ "$_yn" == true ]]; then FEATURE_DEFAULTS="pnum"; else FEATURE_DEFAULTS=""; fi
+    echo ""
+    echo "  ── OpenType features ────────────────────────────────────"
+    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
+    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
+    echo "  lookups into calt, which every program applies - the only way Chromium,"
+    echo "  Electron, Qt and LibreOffice honour one, since they never read"
+    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
+    _ask_choice "Bake features into calt" none \
+      "none:leave the fonts as upstream ships them (default)" \
+      "pnum:pnum - proportional figures instead of the tabular default" \
+      "custom:type the tag list yourself"
+    case $_choice in
+      none)    FEATURE_DEFAULTS="" ;;
+      pnum)    FEATURE_DEFAULTS="pnum" ;;
+      custom)
+        echo "  Tags, comma or space separated (e.g. \"pnum\"):"
+        read -r -p "  > " _tags || _tags=""
+                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+        _tags="${_tags#,}"; _tags="${_tags%,}"
+        FEATURE_DEFAULTS="$_tags"
+        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
+        ;;
+    esac
+    if [[ -n "$FEATURE_DEFAULTS" ]]; then
+      echo ""
+      echo "A copy under another family name keeps the stock look available; set"
+      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"Roboto Flex Alt\") and"
+      echo "build again. Without it the packaged files keep their names and the"
+      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
     fi
     echo ""
   else
