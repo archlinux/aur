@@ -1,6 +1,6 @@
 pkgbase = katana-tui-bin
 	pkgdesc = Unofficial terminal client for Nonograms Katana user puzzles (prebuilt binary)
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/ArkadyBuryakov/katana-desktop
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = katana-tui-bin
 	provides = katana-tui
 	conflicts = katana-tui
 	options = !strip
-	source_x86_64 = katana-tui-1.1.4-x86_64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.4/katana-tui-1.1.4-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 1be15f3d9fc6cc6b707efd5e11e8ed65a91557236c1bd95a88f9e186de4a28c0
-	source_aarch64 = katana-tui-1.1.4-aarch64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.4/katana-tui-1.1.4-linux-aarch64.tar.gz
-	sha256sums_aarch64 = c3813664c531757fbe68299d796b24e2e153ad10415554bd98418571d4f0df7a
+	source_x86_64 = katana-tui-1.1.5-x86_64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.5/katana-tui-1.1.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e055742bc16ad1f7cdbb9fec9467a01b6ca591c2c47033d142045698637b8cd8
+	source_aarch64 = katana-tui-1.1.5-aarch64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.5/katana-tui-1.1.5-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 9a414f7709bda573986415268447a89a22e9d72c42f303835d13731208d877f1
 
 pkgname = katana-tui-bin
