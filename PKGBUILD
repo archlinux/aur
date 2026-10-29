@@ -6,6 +6,8 @@ _commit=a0f69cc33299dc97267c3507fe8a001aecc46b0f
 _date=2026.06.25
 pkgver=2026.06.25.r9.95dc59b
 pkgrel=1
+# 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
+epoch=1
 pkgdesc='Catppuccin GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
