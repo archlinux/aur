@@ -1,13 +1,13 @@
 pkgbase = hyprpilot-bin
 	pkgdesc = Config-driven CLI launcher that execs the vendor's native agent CLI (prebuilt binary)
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/hyprpilot/hyprpilot
 	arch = x86_64
 	license = MIT
 	provides = hyprpilot
 	conflicts = hyprpilot-git
-	source = hyprpilot-bin-4.2.0.tar.zst::https://github.com/hyprpilot/hyprpilot/releases/download/v4.2.0/hyprpilot-v4.2.0-x86_64-unknown-linux-gnu.tar.zst
-	b2sums = 4343f61f1ebaf79a24e5cd759d9ce34f6cc4ebf7fa1f554689bd070bac0c4be27ef4df499c334b6c84baa80b1ef6f1a3d4a09db726fe61865461cfe9852aaf32
+	source = hyprpilot-bin-4.3.0.tar.zst::https://github.com/hyprpilot/hyprpilot/releases/download/v4.3.0/hyprpilot-v4.3.0-x86_64-unknown-linux-gnu.tar.zst
+	b2sums = ba7ae7f46ebf9e68882a73f0dae1579eb3ac0077646e29850112714fdb37795ea343376954c5025b3c9cd2f2363faa9819413b73696e076a1216b006385adaee
 
 pkgname = hyprpilot-bin
