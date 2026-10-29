@@ -21,6 +21,7 @@ depends=(
   'libglvnd'
   'libplacebo'
   'libpng'
+  'libsecret'
   'libsoup3'
   'libutf8proc'
   'libyaml'
