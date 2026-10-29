@@ -4,7 +4,7 @@
 
 pkgname=fluxer-canary-bin
 pkgver=2026.1026.22540
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluxer Canary Desktop Application"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
@@ -13,8 +13,10 @@ license=('AGPL-3.0-only')
 depends=('gtk3' 'nss' 'alsa-lib' 'libpipewire' 'systemd-libs')
 options=('!strip')
 
-source=("fluxer-canary.desktop")
-sha256sums=('0435d76ef93c99abd3f772984aa4d535149900c3a810ffba1676f3a4c98134ac')
+# Upstream's .deb entry, with our paths. Its name is the app's desktopName:
+# Wayland windows and fluxer:// links look the entry up by it.
+source=("app.fluxer.FluxerDesktopCanary.desktop")
+sha256sums=('51cd326b0e89ca07d9f54e901689ac4fa6792a3c520e9416ceb5e2c41ed0800f')
 
 source_x86_64=("fluxer-canary-${pkgver}-x64.tar.gz::https://pkgs.fluxer.com/desktop/canary/linux/x64/${pkgver}/tar_gz")
 sha256sums_x86_64=('a869b7dd808ecbf37b09e6369a38750fae13f5a30b2e56665f6e387ca06baf84')
@@ -45,8 +47,8 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/$pkgname/fluxer-canary" "$pkgdir/usr/bin/fluxer-canary"
 
-    install -Dm644 "$srcdir/fluxer-canary.desktop" \
-        "$pkgdir/usr/share/applications/fluxer-canary.desktop"
+    install -Dm644 "$srcdir/app.fluxer.FluxerDesktopCanary.desktop" \
+        -t "$pkgdir/usr/share/applications"
 
     # Take the sized icons (128x128.png, ...) and skip icon.png and the
     # tray templates. A miss would leave the .desktop entry without an icon.
