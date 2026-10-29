@@ -2,7 +2,7 @@
 
 pkgname="cre2"
 pkgver=0.3.6
-pkgrel=3
+pkgrel=4
 pkgdesc="C language wrapper for RE2, the regular expressions library from Google"
 arch=("x86_64" "aarch64")
 url="https://github.com/marcomaggi/cre2"
@@ -19,6 +19,8 @@ prepare(){
  sed -i 's/AX_CXX_COMPILE_STDCXX_11(noext,mandatory)/AX_CXX_COMPILE_STDCXX(17,noext,mandatory)/' configure.ac
  # the release lacks the helper generating version.texi, skip the info manual
  sed -i '/^info_TEXINFOS/d; /^doc_cre2_TEXINFOS/d' Makefile.am
+ # strlen is used without its header, which current GCC no longer pulls in indirectly
+ sed -i '/#include "cre2.h"/a #include <cstring>' src/cre2.cpp
  autoreconf -fi
 }
 
