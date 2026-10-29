@@ -3,7 +3,7 @@ pkgname=raveo-ttf-hinted
 _raveover=1.1
 _nfver=3.4.0
 pkgver="${_raveover}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Raveo is a warmer modification of Inter with redrawn glyphs, distributed with optional hinting and Nerd Fonts patching.'
 arch=('any')
 url='https://github.com/jakubfoglar/raveo'
@@ -40,7 +40,9 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 #                    nothing here - which is exactly what the Raveo Variable
 #                    block in ~/.config/fontconfig/fonts.conf used to ask for.
 #                    Suggested: leave it empty. "tnum" would make the figures
-#                    tabular everywhere, "case" raises the brackets.
+#                    tabular everywhere, "case" raises the brackets. The build
+#                    asks this too (none / a list of your own), so the variable
+#                    is only needed for unattended builds.
 #
 #  FEATURE_FAMILY  "Name"  Install as another family instead of in place, so
 #                    the stock Raveo stays available.
@@ -140,6 +142,32 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 		HINTING=false
 	fi
 
+	# ── OpenType features ────────────────────
+	# A font cannot declare a feature "on by default": programs apply a fixed
+	# list (kern calt liga ...) and ignore the rest, so moving a feature's
+	# lookups into calt (the step below) is the only way to make it the default
+	# in Chromium, Electron, Qt and LibreOffice - they never read fontconfig.
+	# GTK is covered by the fontconfig block either way. Raveo has almost
+	# nothing to bake: no ssXX, no cvXX, no zero, no smcp (see the header).
+	if [[ -t 0 && -z "${FEATURE_DEFAULTS:-}" ]]; then
+		echo "Bake OpenType features into the fonts' calt?"
+		echo "  1) none    leave the fonts as upstream ships them (default)"
+		echo "  2) custom  type the tag list yourself (e.g. case,tnum)"
+		read -p "  1-2 (default: 1) " _feat_ans || _feat_ans=""
+		if [[ "${_feat_ans:-1}" == 2 ]]; then
+			read -p "  Tags, comma or space separated: " _tags || _tags=""
+			_tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+			while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+			_tags="${_tags#,}"; _tags="${_tags%,}"
+			FEATURE_DEFAULTS="$_tags"
+			if [[ -z "$FEATURE_DEFAULTS" ]]; then
+				echo "  Nothing entered - baking nothing."
+			else
+				echo "  A copy under another family name keeps the stock look available;"
+				echo "  set FEATURE_FAMILY to the name for it (e.g. Raveo Alt) and build again."
+			fi
+		fi
+	fi
 	# ── Step 3: bake features (FEATURE_DEFAULTS; empty = skip) ────────────────
 	# Last step, on the files that will be installed, so ttfautohint never sees
 	# the extra lookups.
