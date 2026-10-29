@@ -1,0 +1,36 @@
+pkgbase = kdeconnect-minimal
+	pkgdesc = KDE Connect daemon and CLI without KIO, Kirigami, Bluetooth or the GUI apps
+	pkgver = 26.08.2
+	pkgrel = 1
+	url = https://github.com/totti786/kdeconnect-minimal
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = dbus
+	depends = glib2
+	depends = glibc
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kdbusaddons
+	depends = kguiaddons
+	depends = ki18n
+	depends = knotifications
+	depends = kwindowsystem
+	depends = libei
+	depends = libstdc++
+	depends = libxkbcommon
+	depends = openssl
+	depends = pulseaudio-qt
+	depends = qt6-base
+	depends = solid
+	depends = wayland
+	optdepends = sshfs: browse the phone filesystem (sftp plugin)
+	provides = kdeconnect=26.08.2
+	conflicts = kdeconnect
+	source = kdeconnect-minimal::git+https://github.com/totti786/kdeconnect-minimal.git#tag=v26.08.2-minimal.1
+	sha256sums = SKIP
+
+pkgname = kdeconnect-minimal
