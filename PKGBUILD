@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=agentboard
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Tiny realtime kanban board for AI agents and the humans watching them'
 arch=('any')
@@ -46,7 +46,7 @@ EOF
         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('ef2cfeb2dc27c5d91a928af90c7362b10c10b29e9ae086d2b102068b3c7264b4'
+sha256sums=('50c85d324b3718a231b90d5e0adefc255720297b77f07cbc8dc2d825ac14fb1f'
             '3237f5ecac432f99453e6d8d345b6e4764a22f1781c96e02dc9e89777b9c23c1'
             'de40f3bdd7bd3bfbd51f696ef04cb32f868839c18c666f75e8c10090d784c497'
             '458b9129ebdf51ad8d8734f0e433a02f792e9804890e749e25de0a109a51401f')

@@ -1,16 +1,16 @@
 pkgbase = agentboard
 	pkgdesc = Tiny realtime kanban board for AI agents and the humans watching them
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://agentboard.win
 	arch = any
 	license = MIT
 	depends = nodejs>=24
-	source = agentboard-0.1.12.tar.gz::https://github.com/backmeupplz/agentboard/archive/refs/tags/v0.1.12.tar.gz
+	source = agentboard-0.1.13.tar.gz::https://github.com/backmeupplz/agentboard/archive/refs/tags/v0.1.13.tar.gz
 	source = markdown-it-15.0.2.tgz::https://registry.npmjs.org/markdown-it/-/markdown-it-15.0.2.tgz
 	source = LICENSE::https://raw.githubusercontent.com/backmeupplz/agentboard/e71e9fc9e527d313f0b2d6180399f55ca40f59d8/LICENSE
 	source = agentboard.service
-	sha256sums = ef2cfeb2dc27c5d91a928af90c7362b10c10b29e9ae086d2b102068b3c7264b4
+	sha256sums = 50c85d324b3718a231b90d5e0adefc255720297b77f07cbc8dc2d825ac14fb1f
 	sha256sums = 3237f5ecac432f99453e6d8d345b6e4764a22f1781c96e02dc9e89777b9c23c1
 	sha256sums = de40f3bdd7bd3bfbd51f696ef04cb32f868839c18c666f75e8c10090d784c497
 	sha256sums = 458b9129ebdf51ad8d8734f0e433a02f792e9804890e749e25de0a109a51401f
