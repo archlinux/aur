@@ -1,6 +1,6 @@
 pkgbase = kerminal-bin
 	pkgdesc = Modern Terminal Emulator & SSH Manager
-	pkgver = 2.6.9
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/klpod221/kerminal
 	install = kerminal-bin.install
@@ -17,7 +17,7 @@ pkgbase = kerminal-bin
 	depends = hicolor-icon-theme
 	provides = kerminal
 	conflicts = kerminal
-	source_x86_64 = kerminal-x86_64-2.6.9.deb::https://github.com/klpod221/kerminal/releases/download/v2.6.9/Kerminal_2.6.9_amd64.deb
-	sha256sums_x86_64 = 30c6de7e2e64905a29634e0592861d4a7447a80d6aa55f3308def676bccbe470
+	source_x86_64 = kerminal-x86_64-2.7.0.deb::https://github.com/klpod221/kerminal/releases/download/v2.7.0/Kerminal_2.7.0_amd64.deb
+	sha256sums_x86_64 = d72486c7063c6e8e4389adf474f88c78ab32de199691b985e3b4e1c195104c0b
 
 pkgname = kerminal-bin
