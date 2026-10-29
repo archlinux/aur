@@ -1,0 +1,5 @@
+[age-plugin-openpgp-card]
+source = "github"
+github = "wiktor-k/age-plugin-openpgp-card"
+use_max_tag = true
+prefix = "v"
