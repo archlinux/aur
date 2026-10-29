@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: mileswithtails_ <gabmaykin@bk.ru>
 
 pkgname=retroed-git
 pkgver=2.0.2.r49.g2b78ca0
