@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="fawltydeps"
-pkgver=0.18.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Python dependency checker"
 url="https://github.com/tweag/FawltyDeps"
@@ -18,7 +18,7 @@ depends=("python"
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('e1cf94f4a86ba1528cf1db45c5697f9c28c0de54537b0aa60257a77c80e938cdfb327de4402d16c4a9a14b67e4451c648de9c1b3789299f83a34073aae65083d')
+b2sums=('09c32c0f9ad08351f37edeb6b615d4d9c032527a5d49759102f7256866fdf5832ee8ffa68b2737ef72d1818849362a848db8ab072824376ae6993877f429f08b')
 
 build(){
  cd "$pkgname-$pkgver"
