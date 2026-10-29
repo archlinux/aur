@@ -1,0 +1,294 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c5228de6..1ab065be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -436,20 +436,9 @@ else()
+ endif()
+ target_link_libraries(${LIB_NAME} PUBLIC nlohmann_json::nlohmann_json)
+ 
+-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/deps/jsoncons/CMakeLists.txt")
+-  # Don't build jsoncons unit tests as they are causing compilation issues and
+-  # won't be executed either way
+-  if(OS_MACOS)
+-    cmake_policy(SET CMP0077 NEW)
+-  endif()
+-  set(JSONCONS_BUILD_TESTS
+-      OFF
+-      CACHE BOOL "" FORCE)
+-
+-  add_subdirectory(deps/jsoncons EXCLUDE_FROM_ALL)
+-  target_link_libraries(${LIB_NAME} PRIVATE jsoncons)
+-  target_compile_definitions(${LIB_NAME} PRIVATE JSONPATH_SUPPORT=1)
+-endif()
++find_path(JSONCONS_INCLUDE_DIR jsoncons/json.hpp REQUIRED)
++target_include_directories(${LIB_NAME} PRIVATE "${JSONCONS_INCLUDE_DIR}")
++target_compile_definitions(${LIB_NAME} PRIVATE JSONPATH_SUPPORT=1)
+ 
+ find_package(CURL QUIET)
+ find_package(Libcurl QUIET)
+diff --git a/plugins/base/CMakeLists.txt b/plugins/base/CMakeLists.txt
+index 0a33baca..19737601 100644
+--- a/plugins/base/CMakeLists.txt
++++ b/plugins/base/CMakeLists.txt
+@@ -228,7 +228,6 @@ add_definitions(-DASIO_STANDALONE)
+ target_include_directories(
+   ${LIB_NAME}
+   PUBLIC "${ADVSS_SOURCE_DIR}/deps/asio/include"
+-         "${ADVSS_SOURCE_DIR}/deps/websocketpp"
+          "${ADVSS_SOURCE_DIR}/deps/obs-websocket/lib")
+ 
+ setup_advss_plugin(${PROJECT_NAME})
+diff --git a/plugins/http/CMakeLists.txt b/plugins/http/CMakeLists.txt
+index f4af791e..c51ac82c 100644
+--- a/plugins/http/CMakeLists.txt
++++ b/plugins/http/CMakeLists.txt
+@@ -4,16 +4,7 @@ project(advanced-scene-switcher-http)
+ # --- Check requirements ---
+ 
+ get_target_property(ADVSS_SOURCE_DIR advanced-scene-switcher-lib SOURCE_DIR)
+-set(CPP_HTTPLIB_DIR "${ADVSS_SOURCE_DIR}/deps/cpp-httplib")
+-if(NOT EXISTS "${CPP_HTTPLIB_DIR}/CMakeLists.txt")
+-  message(WARNING "cpp-httplib directory \"${CPP_HTTPLIB_DIR}\" not found!\n"
+-                  "HTTP support will be disabled!")
+-  return()
+-endif()
+-if(NOT TARGET httplib)
+-  add_subdirectory("${CPP_HTTPLIB_DIR}" "${CPP_HTTPLIB_DIR}/build"
+-                   EXCLUDE_FROM_ALL)
+-endif()
++find_path(CPP_HTTPLIB_DIR httplib.h REQUIRED)
+ 
+ if(OS_MACOS OR OS_WINDOWS)
+   set(OPENSSL_USE_STATIC_LIBS
+diff --git a/plugins/midi/CMakeLists.txt b/plugins/midi/CMakeLists.txt
+index 1d27eae6..bf0b4c60 100644
+--- a/plugins/midi/CMakeLists.txt
++++ b/plugins/midi/CMakeLists.txt
+@@ -3,6 +3,14 @@ project(advanced-scene-switcher-midi)
+ 
+ # --- Check libremidi requirements ---
+ 
++option(ADVSS_SYSTEM_LIBREMIDI "Use the system libremidi" ON)
++if(ADVSS_SYSTEM_LIBREMIDI)
++  find_package(libremidi CONFIG REQUIRED)
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(PIPEWIRE REQUIRED IMPORTED_TARGET libpipewire-0.3)
++  find_path(READERWRITERQUEUE_INCLUDE_DIR readerwriterqueue.h PATH_SUFFIXES readerwriterqueue REQUIRED)
++  add_library(${PROJECT_NAME} MODULE)
++else()
+ get_target_property(ADVSS_SOURCE_DIR advanced-scene-switcher-lib SOURCE_DIR)
+ set(LIBREMIDI_DIR "${ADVSS_SOURCE_DIR}/deps/libremidi")
+ 
+@@ -45,6 +53,8 @@ else()
+   endif()
+ endif()
+ 
++endif()
++
+ target_sources(
+   ${PROJECT_NAME}
+   PRIVATE macro-condition-midi.cpp macro-condition-midi.hpp
+@@ -53,6 +63,11 @@ target_sources(
+ 
+ setup_advss_plugin(${PROJECT_NAME})
+ set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
+-target_include_directories(${PROJECT_NAME} PRIVATE "${LIBREMIDI_DIR}/include")
+-target_link_libraries(${PROJECT_NAME} PRIVATE libremidi)
++if(ADVSS_SYSTEM_LIBREMIDI)
++  target_include_directories(${PROJECT_NAME} PRIVATE "${READERWRITERQUEUE_INCLUDE_DIR}")
++  target_link_libraries(${PROJECT_NAME} PRIVATE libremidi PkgConfig::PIPEWIRE)
++else()
++  target_include_directories(${PROJECT_NAME} PRIVATE "${LIBREMIDI_DIR}/include")
++  target_link_libraries(${PROJECT_NAME} PRIVATE libremidi)
++endif()
+ install_advss_plugin(${PROJECT_NAME})
+diff --git a/plugins/speech/CMakeLists.txt b/plugins/speech/CMakeLists.txt
+index 0d56947a..b13f7c58 100644
+--- a/plugins/speech/CMakeLists.txt
++++ b/plugins/speech/CMakeLists.txt
+@@ -3,121 +3,7 @@ project(advanced-scene-switcher-speech)
+ 
+ # --- Check requirements ---
+ 
+-get_target_property(ADVSS_SOURCE_DIR advanced-scene-switcher-lib SOURCE_DIR)
+-set(WHISPER_DIR "${ADVSS_SOURCE_DIR}/deps/whisper.cpp")
+-if(NOT EXISTS "${WHISPER_DIR}/CMakeLists.txt")
+-  message(WARNING "whisper.cpp directory \"${WHISPER_DIR}\" not found!\n"
+-                  "Speech condition will be disabled!\n\n"
+-                  "Clone whisper.cpp into: ${WHISPER_DIR}")
+-  return()
+-endif()
+-
+-set(WHISPER_BUILD_TESTS
+-    OFF
+-    CACHE BOOL "" FORCE)
+-set(WHISPER_BUILD_EXAMPLES
+-    OFF
+-    CACHE BOOL "" FORCE)
+-set(BUILD_SHARED_LIBS
+-    OFF
+-    CACHE BOOL "" FORCE)
+-
+-# Vulkan GPU backend. Auto-enabled when VULKAN_SDK is set (e.g. in CI).
+-option(ADVSS_SPEECH_VULKAN "Use Vulkan GPU backend for speech recognition" OFF)
+-
+-if(NOT ADVSS_SPEECH_VULKAN AND DEFINED ENV{VULKAN_SDK})
+-  set(ADVSS_SPEECH_VULKAN ON)
+-endif()
+-
+-if(ADVSS_SPEECH_VULKAN)
+-  set(GGML_VULKAN
+-      ON
+-      CACHE BOOL "" FORCE)
+-endif()
+-
+-# Suppress warnings-as-errors on all targets in a whisper.cpp source subtree.
+-function(_advss_whisper_suppress_werror dir)
+-  get_property(
+-    _subdirs
+-    DIRECTORY "${dir}"
+-    PROPERTY SUBDIRECTORIES)
+-  foreach(_sub IN LISTS _subdirs)
+-    _advss_whisper_suppress_werror("${_sub}")
+-  endforeach()
+-  get_property(
+-    _targets
+-    DIRECTORY "${dir}"
+-    PROPERTY BUILDSYSTEM_TARGETS)
+-  foreach(_target IN LISTS _targets)
+-    get_target_property(_type ${_target} TYPE)
+-    if(_type STREQUAL "INTERFACE_LIBRARY" OR _type STREQUAL "UTILITY")
+-      continue()
+-    endif()
+-    get_target_property(_opts ${_target} COMPILE_OPTIONS)
+-    if(_opts)
+-      list(FILTER _opts EXCLUDE REGEX "^-Werror")
+-      list(REMOVE_ITEM _opts /WX)
+-      set_target_properties(${_target} PROPERTIES COMPILE_OPTIONS "${_opts}")
+-    endif()
+-    target_compile_options(
+-      ${_target}
+-      PRIVATE $<$<C_COMPILER_ID:GNU,Clang,AppleClang>:-Wno-error
+-              -Wno-shorten-64-to-32
+-              -Wno-ambiguous-macro
+-              -Wno-unused-parameter
+-              -Wno-unreachable-code
+-              -Wno-unguarded-availability-new>
+-              $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-Wno-error
+-              -Wno-shorten-64-to-32
+-              -Wno-ambiguous-macro
+-              -Wno-unused-parameter
+-              -Wno-unreachable-code
+-              -Wno-unguarded-availability-new>
+-              $<$<C_COMPILER_ID:MSVC>:/WX->
+-              $<$<CXX_COMPILER_ID:MSVC>:/WX->)
+-  endforeach()
+-endfunction()
+-
+-set(_advss_saved_werror ${CMAKE_COMPILE_WARNING_AS_ERROR})
+-set(_advss_saved_pic ${CMAKE_POSITION_INDEPENDENT_CODE})
+-set(CMAKE_COMPILE_WARNING_AS_ERROR OFF)
+-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+-if(NOT TARGET whisper)
+-  add_subdirectory("${WHISPER_DIR}" "${CMAKE_BINARY_DIR}/whisper.cpp"
+-                   EXCLUDE_FROM_ALL)
+-  _advss_whisper_suppress_werror("${WHISPER_DIR}")
+-  # ggml-metal's .m files use manual retain/release; disable ARC on that target.
+-  if(TARGET ggml-metal)
+-    set_target_properties(ggml-metal
+-                          PROPERTIES XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC NO)
+-    target_compile_options(ggml-metal
+-                           PRIVATE $<$<COMPILE_LANGUAGE:OBJC>:-fno-objc-arc>)
+-  endif()
+-endif()
+-set(CMAKE_COMPILE_WARNING_AS_ERROR ${_advss_saved_werror})
+-set(CMAKE_POSITION_INDEPENDENT_CODE ${_advss_saved_pic})
+-
+-# ggml-vulkan finds SPIRV-Headers but does not link it.
+-if(ADVSS_SPEECH_VULKAN
+-   AND TARGET ggml-vulkan
+-   AND TARGET SPIRV-Headers::SPIRV-Headers)
+-  target_link_libraries(ggml-vulkan PRIVATE SPIRV-Headers::SPIRV-Headers)
+-endif()
+-
+-# OBS deps ship older Vulkan headers; put the SDK headers first so ggml-vulkan
+-# sees the full API.
+-if(ADVSS_SPEECH_VULKAN
+-   AND TARGET ggml-vulkan
+-   AND DEFINED ENV{VULKAN_SDK})
+-  if(WIN32)
+-    set(_vk_sdk_include "$ENV{VULKAN_SDK}/Include")
+-  else()
+-    set(_vk_sdk_include "$ENV{VULKAN_SDK}/include")
+-  endif()
+-  if(EXISTS "${_vk_sdk_include}")
+-    target_include_directories(ggml-vulkan BEFORE PRIVATE "${_vk_sdk_include}")
+-  endif()
+-endif()
++find_package(whisper REQUIRED)
+ 
+ # --- End of section ---
+ 
+@@ -130,7 +16,6 @@ target_sources(
+ setup_advss_plugin(${PROJECT_NAME})
+ set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE "${WHISPER_DIR}")
+ target_link_libraries(${PROJECT_NAME} PRIVATE whisper)
+ 
+ install_advss_plugin(${PROJECT_NAME})
+diff --git a/plugins/twitch/CMakeLists.txt b/plugins/twitch/CMakeLists.txt
+index 36da9577..2069fc6e 100644
+--- a/plugins/twitch/CMakeLists.txt
++++ b/plugins/twitch/CMakeLists.txt
+@@ -4,16 +4,7 @@ project(advanced-scene-switcher-twitch)
+ # --- Check requirements ---
+ 
+ get_target_property(ADVSS_SOURCE_DIR advanced-scene-switcher-lib SOURCE_DIR)
+-set(CPP_HTTPLIB_DIR "${ADVSS_SOURCE_DIR}/deps/cpp-httplib")
+-if(NOT EXISTS "${CPP_HTTPLIB_DIR}/CMakeLists.txt")
+-  message(WARNING "cpp-httplib directory \"${CPP_HTTPLIB_DIR}\" not found!\n"
+-                  "Twitch support will be disabled!")
+-  return()
+-endif()
+-if(NOT TARGET httplib)
+-  add_subdirectory("${CPP_HTTPLIB_DIR}" "${CPP_HTTPLIB_DIR}/build"
+-                   EXCLUDE_FROM_ALL)
+-endif()
++find_path(CPP_HTTPLIB_DIR httplib.h REQUIRED)
+ 
+ if(OS_MACOS OR OS_WINDOWS)
+   set(OPENSSL_USE_STATIC_LIBS
+@@ -48,7 +39,7 @@ target_compile_definitions(
+                           ASIO_HAS_OPENSSSL=1)
+ target_include_directories(
+   ${PROJECT_NAME} PUBLIC "${ADVSS_SOURCE_DIR}/deps/asio/include"
+-                         "${ADVSS_SOURCE_DIR}/deps/websocketpp")
++)
+ if(OS_MACOS)
+   target_compile_definitions(
+     ${PROJECT_NAME} PRIVATE CPPHTTPLIB_USE_CERTS_FROM_MACOSX_KEYCHAIN=1)
+diff --git a/plugins/video/CMakeLists.txt b/plugins/video/CMakeLists.txt
+index 2ad6297a..bc320f13 100644
+--- a/plugins/video/CMakeLists.txt
++++ b/plugins/video/CMakeLists.txt
+@@ -5,7 +5,7 @@ project(advanced-scene-switcher-opencv)
+ 
+ get_target_property(ADVSS_SOURCE_DIR advanced-scene-switcher-lib SOURCE_DIR)
+ 
+-find_package(OpenCV)
++find_package(OpenCV REQUIRED)
+ if(NOT OpenCV_FOUND)
+   message(
+     WARNING
+@@ -30,6 +30,10 @@ if(OS_LINUX AND NOT Leptonica_FOUND)
+   endif()
+ endif()
+ 
++if(NOT Leptonica_FOUND OR NOT Tesseract_FOUND)
++  message(FATAL_ERROR "OCR support requires Leptonica and Tesseract")
++endif()
++
+ # --- Check cascade classifier availability ---
+ # CascadeClassifier was moved to the xobjdetect contrib module in OpenCV 5
+ if(OpenCV_VERSION_MAJOR LESS 5

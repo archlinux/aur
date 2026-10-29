@@ -1,6 +1,6 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
-	pkgver = 1.36.1
+	pkgver = 1.37.0
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
 	arch = x86_64
@@ -12,10 +12,11 @@ pkgbase = obs-advanced-scene-switcher
 	makedepends = curl
 	makedepends = libxss
 	makedepends = libxtst
-	makedepends = openssl
 	makedepends = websocketpp
 	makedepends = nlohmann-json
 	makedepends = simde
+	makedepends = cpp-httplib>=0.63.0
+	makedepends = jsoncons>=1.10.0
 	depends = obs-studio>=31.1.1
 	depends = glibc
 	depends = gcc-libs
@@ -28,21 +29,23 @@ pkgbase = obs-advanced-scene-switcher
 	depends = qt6-base
 	depends = tesseract
 	depends = paho-mqtt-cpp
-	optdepends = curl: Remote file access feature
+	depends = paho-mqtt-c
+	depends = libusb
+	depends = openssl
+	depends = whisper-cpp>=1.9.5
+	optdepends = curl: remote file access
 	optdepends = libxss: X screensaver related features
 	optdepends = libxtst: X key press related features
-	optdepends = openssl: Needed for Twitch features
-	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.36.1
-	source = libremidi::git+https://github.com/celtera/libremidi.git#tag=v5.4.3
-	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
-	source = DetectLibraryType.cmake
-	source = FindLeptonica.cmake
-	source = FindTesseract.cmake
-	sha256sums = 2a0ad62ae334b8bc59edb4c8833cef502214121cdf7409ac108d35bf6dea9c4d
-	sha256sums = 96c3583ca49180c35091be66b9a670af88aafe842c1cf948c9b6e79bea2e0269
+	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#commit=e136086ca3588146796195399150a5aa2dd349b9
+	source = system-libraries.patch
 	sha256sums = SKIP
-	sha256sums = 81fccf8bcfadaf3bc6c1a67321376a1d37e20be05284660bdee6f61ef64ee8f7
-	sha256sums = 21444991ea07c75ebe4b78d10ab58e96326b2371147bb3c639ad4311026d1501
-	sha256sums = 908aee4fccba9ef2ff9796e22a8ccd7eff5bb7f74feca409feca474e038bf843
+	sha256sums = b32f1fdd2e91dcff3eb792a6da6b36bdf7aa5c4ceff607620e05553b37fd5ca1
+	optdepends_x86_64 = libpipewire: PipeWire MIDI backend
+	makedepends_x86_64 = boost
+	makedepends_x86_64 = libpipewire
+	makedepends_x86_64 = readerwriterqueue
+	makedepends_x86_64 = libremidi>=4.5.0
+	source_aarch64 = libremidi::git+https://github.com/celtera/libremidi.git#commit=73e6ea40de1a1ee35f16022e70fecfb45ae4061d
+	sha256sums_aarch64 = SKIP
 
 pkgname = obs-advanced-scene-switcher
