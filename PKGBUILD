@@ -24,9 +24,9 @@ build() {
 
     GIT_COMMIT="$(git rev-parse HEAD)" # 2>/dev/null)"
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
 
     go build \
         -trimpath \
