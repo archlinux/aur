@@ -1,8 +1,8 @@
 # Maintainer: Hakan İSMAİL <hakanismail53@gmail.com>
 # Pure web server build: no GTK, WebKit, tray or X11 libraries.
 pkgname=rclone-manager-server
-releasetag=0.3.4
-pkgver=0.3.4
+releasetag=0.3.5
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Manage Rclone from your browser (pure web server, no GUI libraries)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ optdepends=('rclone: for cloud storage operations'
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/headless-v${releasetag}/server-linux-x86_64-${pkgver}.zip")
 source_aarch64=("${url}/releases/download/headless-v${releasetag}/server-linux-aarch64-${pkgver}.zip")
-sha256sums_x86_64=('2c4526d2f93fb5861d423ae3136d6f4e60a0d93b2d3cdda5c373ca41d2251135')
-sha256sums_aarch64=('89b872e4588ba9099e940a3e828522570f75a9a4b16e82c2fef58d8e7136ed84')
+sha256sums_x86_64=('9dc9805fedd0ed60d23e201dfb09d48f09f2fa3de14c279e5f5b2e9a1cac3abb')
+sha256sums_aarch64=('ce1cbc7e96a43ef324a0b9adabfd6f4f1eface7041e6a84ff13c25af56da1925')
 
 package() {
   cd "${srcdir}/rclone-manager-server"
