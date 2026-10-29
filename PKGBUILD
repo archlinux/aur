@@ -2,7 +2,7 @@
 
 pkgname="aider-chat-venv"
 pkgver=0.86.2
-pkgrel=2
+pkgrel=3
 pkgdesc="AI pair programming in your terminal (installed with uv)"
 url="https://github.com/Aider-AI/aider"
 license=("Apache-2.0")
@@ -10,7 +10,8 @@ arch=("any")
 provides=("aider-chat")
 conflicts=("aider-chat")
 makedepends=("jq" "uv")
-options=("!strip")
+# a venv has no use for a -debug package, and collecting its sources takes minutes
+options=("!strip" "!debug")
 
 pkgver(){
  curl -s "https://pypi.org/pypi/aider-chat/json" | jq -r '.info.version'
