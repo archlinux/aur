@@ -1,6 +1,6 @@
 pkgbase = whichllm
 	pkgdesc = Auto-detect your hardware and rank local LLMs by what actually fits and performs best
-	pkgver = 0.5.21
+	pkgver = 0.5.23
 	pkgrel = 1
 	url = https://github.com/Andyyyy64/whichllm
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = whichllm
 	depends = python-dbgpu
 	optdepends = python-nvidia-ml-py: NVIDIA GPU detection via NVML (pulls in nvidia-utils)
 	conflicts = whichllm-git
-	source = whichllm-0.5.21.tar.gz::https://github.com/Andyyyy64/whichllm/archive/refs/tags/v0.5.21.tar.gz
-	sha256sums = b2ecfb997bba909163083912dc2e329d3b1d8913b84bfdb1c60659d3fed3c6b6
+	source = whichllm-0.5.23.tar.gz::https://github.com/Andyyyy64/whichllm/archive/refs/tags/v0.5.23.tar.gz
+	sha256sums = 46a23f10e94df3ed0383181dc100d1b83a956c6c3ad76fc9dd96bb03075a5ac4
 
 pkgname = whichllm
