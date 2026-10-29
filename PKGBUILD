@@ -2,7 +2,7 @@
 # Maintainer: Nicholas W. Heyer <nick at heyer dot app>
 
 pkgname='icebath-bin'
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Tiling agentic harness and netrunner toolkit'
 url='https://icebath.app'
@@ -12,10 +12,10 @@ provides=('icebath')
 conflicts=('icebath')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nickheyer/icebath/releases/download/v${pkgver}/icebath_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ad78fdee59bfd2502a2a0a4f1e4e41cd022162f93b61939d957cf06165c1cfe7')
+sha256sums_aarch64=('838320732ea96a18355b9e9af16648222bf7bee8e5b5fa17a5d58309bda472b6')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nickheyer/icebath/releases/download/v${pkgver}/icebath_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ae0f59cc897a22cdb1af31033748fee04bb25f5ed8d4a4b916ab917171d96a8d')
+sha256sums_x86_64=('4d7df56ce0beae175b1b2aa5c617fa302f2c8ea59ace3bc15b978f0458d8329f')
 
 package() {
   install -Dm755 ./icebath "${pkgdir}/usr/bin/icebath"
