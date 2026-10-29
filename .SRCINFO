@@ -1,6 +1,6 @@
 pkgbase = caelestia-shell-plugins-git
 	pkgdesc = Caelestia Shell with the plugin system (git)
-	pkgver = 2.5.0.r144.g572f7f6
+	pkgver = 2.5.0.r147.gbdb304f
 	pkgrel = 1
 	url = https://github.com/deeadly137/caelestia-plugins
 	arch = x86_64
