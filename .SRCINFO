@@ -1,6 +1,6 @@
 pkgbase = open-pdf-studio-bin
 	pkgdesc = a lightweight, native desktop application that provides professional-grade PDF annotation, markup, and editing tools without subscriptions, telemetry, or bloatware.
-	pkgver = 2026.43.4
+	pkgver = 2026.44.0
 	pkgrel = 1
 	url = https://github.com/OpenAEC-Foundation/open-pdf-studio
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = open-pdf-studio-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = open-pdf-studio=2026.43.4
+	provides = open-pdf-studio=2026.44.0
 	conflicts = open-pdf-studio
-	source = open-pdf-studio-2026.43.4.deb::https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v2026.43.4/Open.PDF.Studio_2026.43.4_amd64.deb
-	sha256sums = fef90e35ae2f98e3fbeeffde98faeb171fe2ec6e29854bf9cff20d866aa653da
+	source = open-pdf-studio-2026.44.0.deb::https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v2026.44.0/Open.PDF.Studio_2026.44.0_amd64.deb
+	sha256sums = c0500abd5d391a3679ee10e4da41dc94e06a107705b87467343057ed66de38c0
 
 pkgname = open-pdf-studio-bin
