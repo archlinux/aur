@@ -2,7 +2,7 @@
 # Release package: builds the tag v$pkgver from GitHub.
 # To package the committed HEAD of this checkout instead, run: cd packaging && makepkg -p PKGBUILD.local -f
 pkgname=pg_sift
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='CTID-bitmap full-text search index with BM25 ranking for PostgreSQL'
 arch=('x86_64')
