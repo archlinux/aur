@@ -4,7 +4,7 @@
 
 pkgname=dotnet-wcf
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WCF client libraries for .NET, System.ServiceModel.* and System.Web.Services.Description (NuGet packages)"
 arch=('any')
 url='https://github.com/dotnet/wcf'
@@ -39,13 +39,16 @@ _dotnet_env() {
   export DOTNET_INSTALL_DIR
 
   # The .NET Framework builds would need prebuilt reference assemblies, and package validation the
-  # previous release from nuget.org. The repository information usually comes from git.
+  # previous release from nuget.org. The repository information usually comes from
+  # git, which would find the repository this PKGBUILD is in instead.
   _build_arguments=(
     --configuration Release
     -p:NetFrameworkVersion=
     -p:EnablePackageValidation=false
     -p:RepositoryCommit="$_commit"
     -p:RepositoryUrl="$url"
+    -p:SourceRevisionId="$_commit"
+    -p:EnableSourceControlManagerQueries=false
   )
   if [[ -f "$srcdir/syndication-version" ]]; then
     _build_arguments+=(-p:SystemServiceModelSyndicationPackageVersion="$(<"$srcdir/syndication-version")")

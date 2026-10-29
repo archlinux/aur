@@ -1,7 +1,7 @@
 pkgbase = dotnet-wcf
 	pkgdesc = WCF client libraries for .NET, System.ServiceModel.* and System.Web.Services.Description (NuGet packages)
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/wcf
 	arch = any
 	license = MIT
