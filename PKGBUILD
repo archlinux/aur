@@ -2,7 +2,7 @@
 
 _plug=bore
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r45.cf48ee8
+pkgver=r69.465c293
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -21,21 +21,23 @@ pkgver() {
 }
 
 prepare() {
-    cd "${_plug}"
+  cd "${_plug}"
     
-    arch-meson --buildtype=release -Dlibtype=vapoursynth build
+  arch-meson --buildtype=release -Dlibtype=vapoursynth build
 }
 
 build() {
-    cd "${_plug}"
-    meson compile -C build
+  cd "${_plug}"
+  meson compile -C build
 }
 
 package(){
   cd "${_plug}"
-  
-  meson install -C build --destdir "${pkgdir}"
 
+  local _plugindir
+  _plugindir=$(python -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+
+  install -Dm755 "build/libbore.so" "${pkgdir}/${_plugindir}/libbore.so"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

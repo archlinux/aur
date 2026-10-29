@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bore-git
 	pkgdesc = Plugin for VapourSynth: bore (GIT version)
-	pkgver = r45.cf48ee8
+	pkgver = r69.465c293
 	pkgrel = 1
 	url = https://github.com/OpusGang/bore
 	arch = x86_64
