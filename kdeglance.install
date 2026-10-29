@@ -1,0 +1,18 @@
+# The viewer runs as a D-Bus service of each logged-in user. Stop it, so the
+# next preview starts the new binary.
+_stop_viewer() {
+  pkill -TERM -x kdeglance >/dev/null 2>&1 || true
+}
+
+post_install() {
+  echo ">>> KDEGlance: restart Dolphin, then select a file and press Space."
+}
+
+post_upgrade() {
+  _stop_viewer
+  echo ">>> KDEGlance: restart Dolphin to load the new version."
+}
+
+pre_remove() {
+  _stop_viewer
+}
