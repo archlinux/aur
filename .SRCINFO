@@ -1,11 +1,12 @@
 pkgbase = mkdocs-cinder
 	pkgdesc = A clean, responsive MkDocs theme
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourcefoundry.org/cinder/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	depends = mkdocs
 	provides = mkdocs-cinder
 	conflicts = python-mkdocs-cinder
