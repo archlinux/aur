@@ -2,8 +2,8 @@
 
 pkgname="python-shillelagh"
 _pkgname="${pkgname/python-/}"
-pkgver=1.2.14
-pkgrel=2
+pkgver=1.4.5
+pkgrel=1
 pkgdesc="Making it easy to query APIs via SQL"
 url="https://github.com/betodealmeida/shillelagh/"
 license=("MIT")
@@ -25,7 +25,7 @@ makedepends=("python-build"
              "python-pyscaffold")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname/-/_}-${pkgver}.tar.gz")
-b2sums=('d89ddf8af58eca5d89488b8005a8f444db83c93f0b0f413507f25883c1abeffa7cefb6b1f132548c0ce68a6acc5babcec98efb9342c075b4b02fcc95d78c2a6c')
+b2sums=('c9b1d71734fda175671dadc1233dfc9c0253036b36e36b07e1f0e7263cea21f2fcd09cb19c567c783862e7145c6dc57543727f92246193de77cb797ec1d85c34')
 
 prepare(){
  cd "${_pkgname/-/_}-$pkgver"
