@@ -2,7 +2,7 @@
 
 pkgname=g0v0-bin
 pkgver=2026.1022.1
-pkgrel=1
+pkgrel=2
 pkgdesc="g0v0! -- free and open rhythm experience! (a community project based on osu!lazer codebase)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
@@ -25,18 +25,18 @@ source=(
 )
 noextract=("g0v0.AppImage" "g0v0-arm64.AppImage")
 source_x86_64=(
-  "g0v0.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/v2026.910.2-g0v0/g0v0.AppImage"
+  "g0v0.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/v2026.1022.1-g0v0/g0v0.AppImage"
 )
 source_aarch64=(
-  "g0v0-arm64.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/v2026.910.2-g0v0/g0v0-arm64.AppImage"
+  "g0v0-arm64.AppImage::https://github.com/GooGuTeam/g0v0/releases/download/v2026.1022.1-g0v0/g0v0-arm64.AppImage"
 )
 sha256sums=('c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '96276add86bd921e64255ce7e5487599dbe13e6e48e96a6af1a58cc99c187648'
             'b1d3d8ad2b05ff2f461d15ff8fd73ce6ffbb75568dae2bd123b0599292259c53'
             'dfbe774cb090a23f4000859dd9bb6c79717e20d091737893b915a55db5b4965a'
             'c0bd38cd53bb8dd9a268828412901011bddd92d0529e7fcf7bf198c3803ccdd8')
-sha256sums_x86_64=('9561c7983e9faba675bc5e170df6dcb6606a1aad371bf61790cc8cf7948d807e')
-sha256sums_aarch64=('dd9b4e33ed024f2b5694102f6f3b0e6931e35947b0290cf0264fa7d8ff48ecd6')
+sha256sums_x86_64=('da91491dcc5979e8f79156f11cfa92ed90ceee66b5763a882633ee0db44cc809')
+sha256sums_aarch64=('04b801ef0de88b679dcf5141a075cd5219c2531454345f51dfd971bb894d07e8')
 
 package() {
   cd "$srcdir"
