@@ -1,6 +1,6 @@
 pkgbase = capacities-appimage
 	pkgdesc = Personal Knowledge Management app - A studio for your mind
-	pkgver = 1.72.6
+	pkgver = 1.72.7
 	pkgrel = 1
 	url = https://capacities.io/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = capacities-appimage
 	depends = hicolor-icon-theme
 	depends = fuse2
 	provides = capacities
-	noextract = capacities-1.72.6-x86_64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.6.AppImage
-	noextract = capacities-1.72.6-aarch64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.6-arm64.AppImage
+	noextract = capacities-1.72.7-x86_64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.7.AppImage
+	noextract = capacities-1.72.7-aarch64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.7-arm64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = capacities-1.72.6-x86_64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.6.AppImage
-	sha256sums_x86_64 = 9df860ca343daa75b1a322a63410d5c47083c964942892865125ae6b8c4a3348
-	source_aarch64 = capacities-1.72.6-aarch64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.6-arm64.AppImage
-	sha256sums_aarch64 = c3fc9a325f52c9af91c1299b246eb2959b80eab80b4fde96d69ac1965955eb43
+	source_x86_64 = capacities-1.72.7-x86_64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.7.AppImage
+	sha256sums_x86_64 = fa825ab6780272f816212f92b4f2a908bb459d7e4f549006305ec268b3c53290
+	source_aarch64 = capacities-1.72.7-aarch64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.72.7-arm64.AppImage
+	sha256sums_aarch64 = 4943329d91bce9975236a0605cee9c1a631bb2e29055fef4d4ca006714a0a362
 
 pkgname = capacities-appimage
