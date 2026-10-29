@@ -1,7 +1,7 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=tmog-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Task Manager TMOG, a native system monitor and task manager (precompiled binary)"
 arch=('x86_64')
 url="https://tmog.org"
@@ -17,7 +17,7 @@ optdepends=(
 provides=('tmog-task-manager')
 conflicts=('tmog-task-manager')
 source=("https://tmog.org/rtm/downloads/TaskManagerOG-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('c995267281a1616f121643610a382dae49384d90440ddeb482d1a4546a49dd1b')
+sha256sums=('38480031482ca1ca9d98953bcccad64de547b8adc4bc4bb679cb71767db9c1b0')
 options=('!strip')
 
 package() {
