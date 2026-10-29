@@ -1,6 +1,6 @@
 pkgbase = whispy
 	pkgdesc = System-wide push-to-talk dictation for Hyprland/Omarchy, Wayland and X11, powered by Parakeet or whisper.cpp
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Ceereals/whispy
 	install = whispy.install
@@ -26,7 +26,7 @@ pkgbase = whispy
 	optdepends = xclip: clipboard paste mode on X11
 	optdepends = xsel: clipboard paste mode on X11 (xclip alternative)
 	options = !lto
-	source = whispy-0.5.0.tar.gz::https://github.com/Ceereals/whispy/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = b53f8ab55f8beeec44a8f81194c9d0691899c3447d4f111fae6d96294c3f7983
+	source = whispy-0.5.1.tar.gz::https://github.com/Ceereals/whispy/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 69007f183cae01bf669934e52ceda25187a957f42e10e94713bef90e89f540d3
 
 pkgname = whispy

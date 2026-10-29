@@ -1,6 +1,6 @@
 # Maintainer: Riccardo Romoli <romoliriccardo.rr@gmail.com>
 pkgname=whispy
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="System-wide push-to-talk dictation for Hyprland/Omarchy, Wayland and X11, powered by Parakeet or whisper.cpp"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('quickshell: dictation pill overlay UI (Wayland layer-shell)'
 options=('!lto')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b53f8ab55f8beeec44a8f81194c9d0691899c3447d4f111fae6d96294c3f7983')
+sha256sums=('69007f183cae01bf669934e52ceda25187a957f42e10e94713bef90e89f540d3')
 
 # The speech models are NOT shipped in this package (too large); neither is
 # whisper.cpp (built per machine). `whispy-daemon setup` downloads the model for
