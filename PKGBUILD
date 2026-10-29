@@ -2,7 +2,7 @@
 # Maintainer: Nicholas W. Heyer <nick at heyer dot app>
 
 pkgname='icebath'
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Tiling agentic harness and netrunner toolkit'
 url='https://icebath.app'
@@ -13,7 +13,7 @@ conflicts=('icebath-bin')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/nickheyer/icebath/releases/download/v${pkgver}/icebath-${pkgver}.tar.gz")
-sha256sums=('eeced32e64102f1acc838318d8c28a62e865a48f37adba5a55d8835068efcd14')
+sha256sums=('e6ed726ecc6cee81e54d6049a7efa87707fcde3809500e13b68532928da6925f')
 prepare() {
   go mod download
 }
