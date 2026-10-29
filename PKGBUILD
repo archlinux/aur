@@ -3,13 +3,13 @@
 _appname="harlequin_mysql"
 pkgname="${_appname//_/-}"
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The MySQL adapter for Harlequin"
 url="https://harlequin.sh/"
 _github_url="https://github.com/tconbeer/harlequin-mysql"
 license=("MIT")
 arch=("any")
-depends=("harlequin" "python-mysql-connector")
+depends=("python" "harlequin" "python-mysql-connector")
 makedepends=("python-build"
              "python-installer"
              "python-poetry"

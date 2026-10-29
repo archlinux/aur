@@ -1,7 +1,7 @@
 pkgbase = harlequin-mysql
 	pkgdesc = The MySQL adapter for Harlequin
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://harlequin.sh/
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = harlequin-mysql
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = python-wheel
+	depends = python
 	depends = harlequin
 	depends = python-mysql-connector
 	options = !strip
