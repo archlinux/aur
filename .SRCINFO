@@ -1,7 +1,7 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework
 	pkgver = 7.6.9
-	pkgrel = 10
+	pkgrel = 11
 	url = https://microsoft.com/PowerShell
 	install = powershell.install
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = powershell
 	makedepends = dotnet-newtonsoft-json
 	makedepends = dotnet-roslyn
 	makedepends = dotnet-system-data-sqlclient
+	makedepends = dotnet-system-io-ports-native
 	makedepends = dotnet-wcf
 	makedepends = cmake
 	makedepends = gtest

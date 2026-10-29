@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=10
+pkgrel=11
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -76,6 +76,7 @@ makedepends=(
   dotnet-newtonsoft-json
   dotnet-roslyn
   dotnet-system-data-sqlclient
+  dotnet-system-io-ports-native
   dotnet-wcf
   cmake
   gtest
