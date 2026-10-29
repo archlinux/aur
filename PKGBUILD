@@ -3,7 +3,7 @@ pkgname=ttf-inter-hinted
 _interver=4.1
 _nfver=3.5.1
 pkgver="${_interver}"
-pkgrel=5
+pkgrel=6
 pkgdesc='Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)'
 arch=('any')
 url='https://rsms.me/inter/'
@@ -32,7 +32,7 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc'
             '980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194'
-            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
 
 # ── What this package does ──────────────────────────────────────────────────
 #
