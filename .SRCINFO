@@ -1,6 +1,6 @@
 pkgbase = relic-material-gtk-theme
 	pkgdesc = Material GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
-	pkgver = 2025.10.23.r11.05bb2f9
+	pkgver = 2025.10.23.r9.95dc59b
 	pkgrel = 1
 	url = https://github.com/gaou-piou/Material-GTK-Themes
 	arch = any
