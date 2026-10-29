@@ -1,7 +1,7 @@
 pkgbase = cre2
 	pkgdesc = C language wrapper for RE2, the regular expressions library from Google
 	pkgver = 0.3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marcomaggi/cre2
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = cre2
 	makedepends = autoconf-archive
 	makedepends = automake
 	makedepends = libtool
-	makedepends = texinfo
 	depends = gcc-libs
 	depends = glibc
 	depends = re2
