@@ -1,0 +1,20 @@
+pkgbase = open-idea-bin
+	pkgdesc = An open-source IDE inspired by IntelliJ IDEA, rebuilt in Rust
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = https://github.com/l0ng-ai/openidea
+	arch = x86_64
+	license = Apache-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl
+	provides = openidea
+	provides = open-idea
+	conflicts = openidea
+	conflicts = open-idea
+	options = !strip
+	options = !debug
+	source_x86_64 = OpenIDEA_0.1.23_amd64.deb::https://github.com/l0ng-ai/openidea/releases/download/v0.1.23/OpenIDEA_0.1.23_amd64.deb
+	sha256sums_x86_64 = 1c16b8b1972268bf0e3588e1545fea2d6b613ee586a46a1e05544de4e1cc888d
+
+pkgname = open-idea-bin
