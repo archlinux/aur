@@ -111,11 +111,69 @@ for group, deps in opt.items():
 }
 
 makepkg -do
+# 已在 [extra] 仓库 python-opentelemetry-contrib 中维护的包，以及迁移到其它仓库的
+# opentelemetry-util-genai，从本 AUR 分包中剔除，避免与官方仓库重复提供。
+_ignore="opentelemetry-util-genai
+opentelemetry-distro
+opentelemetry-exporter-credential-provider-gcp
+opentelemetry-exporter-richconsole
+opentelemetry-instrumentation
+opentelemetry-instrumentation-aiohttp-client
+opentelemetry-instrumentation-aiohttp-server
+opentelemetry-instrumentation-aiopg
+opentelemetry-instrumentation-asgi
+opentelemetry-instrumentation-asyncio
+opentelemetry-instrumentation-asyncpg
+opentelemetry-instrumentation-aws-lambda
+opentelemetry-instrumentation-boto3sqs
+opentelemetry-instrumentation-botocore
+opentelemetry-instrumentation-click
+opentelemetry-instrumentation-dbapi
+opentelemetry-instrumentation-django
+opentelemetry-instrumentation-exceptions
+opentelemetry-instrumentation-falcon
+opentelemetry-instrumentation-fastapi
+opentelemetry-instrumentation-flask
+opentelemetry-instrumentation-grpc
+opentelemetry-instrumentation-httpx
+opentelemetry-instrumentation-jinja2
+opentelemetry-instrumentation-logging
+opentelemetry-instrumentation-mysql
+opentelemetry-instrumentation-mysqlclient
+opentelemetry-instrumentation-pika
+opentelemetry-instrumentation-psycopg
+opentelemetry-instrumentation-psycopg2
+opentelemetry-instrumentation-pymongo
+opentelemetry-instrumentation-pymysql
+opentelemetry-instrumentation-redis
+opentelemetry-instrumentation-requests
+opentelemetry-instrumentation-sqlalchemy
+opentelemetry-instrumentation-sqlite3
+opentelemetry-instrumentation-starlette
+opentelemetry-instrumentation-structlog
+opentelemetry-instrumentation-system-metrics
+opentelemetry-instrumentation-threading
+opentelemetry-instrumentation-tornado
+opentelemetry-instrumentation-urllib
+opentelemetry-instrumentation-urllib3
+opentelemetry-instrumentation-wsgi
+opentelemetry-processor-baggage
+opentelemetry-propagator-aws-xray
+opentelemetry-propagator-ot-trace
+opentelemetry-resource-detector-azure
+opentelemetry-resource-detector-containerid
+opentelemetry-resourcedetector-gcp
+opentelemetry-sdk-extension-aws
+opentelemetry-util-http"
+
+# 用行尾锚点精确匹配目录名，避免 opentelemetry-instrumentation 误伤 opentelemetry-instrumentation-* 等保留包
+_ignore_pat="$(printf '%s\n' "$_ignore" | sed 's/$/$/' | paste -sd'|')"
 infos=$(find "src/${pkgbase}" -mindepth 2 -type f -name "pyproject.toml" |
     grep -vP '.git|_template' |
     sed -e "s|^src/${pkgbase}/||g" -e "s|/pyproject.toml$||g" |
     tr 'A-Z' 'a-z' |
-    sort -u
+    sort -u |
+    grep -vE "($_ignore_pat)"
 )
 _gen_pkgname > $tmp_pkgname
 _gen_pkgdescs > $tmp_pkgdescs
