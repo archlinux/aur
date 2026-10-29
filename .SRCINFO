@@ -1,6 +1,6 @@
 pkgbase = pcw-backend
 	pkgdesc = Backend for ProxyCoreWrapper
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ProxyCoreWrapper/backend
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = pcw-backend
 	makedepends = protobuf
 	depends = glibc
 	depends = systemd
-	source = git+https://github.com/ProxyCoreWrapper/backend.git#tag=0.1.1
+	options = !debug
+	source = git+https://github.com/ProxyCoreWrapper/backend.git#tag=v0.1.2
 	sha256sums = SKIP
 
 pkgname = pcw-backend
