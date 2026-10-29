@@ -5,7 +5,7 @@ set -euo pipefail
 
 cd "$(dirname "$(readlink -f "$0")")"
 
-for cmd in curl jq updpkgsums makepkg; do
+for cmd in curl jq updpkgsums makepkg bsdtar strings; do
   command -v "$cmd" >/dev/null || { echo "error: '$cmd' not found (updpkgsums is in pacman-contrib)" >&2; exit 1; }
 done
 
@@ -34,6 +34,19 @@ echo "Updating cap-bin: $current -> $latest"
 
 sed -i -e "s/^pkgver=.*/pkgver=$latest/" -e "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 updpkgsums
+
+# Keep _onnxver (used for the bundled onnxruntime's license) in sync with the .deb
+onnxver=$(bsdtar -xOf "cap-bin-$latest.deb" 'data.tar*' \
+  | bsdtar -xOf - '*usr/lib/cap/libonnxruntime.so.1' \
+  | strings -n 5 | grep -m1 -xE '[0-9]+\.[0-9]+\.[0-9]+' || true)
+if [[ -z $onnxver ]]; then
+  echo "warning: could not detect bundled onnxruntime version, check _onnxver manually" >&2
+elif [[ $onnxver != "$(sed -n 's/^_onnxver=//p' PKGBUILD)" ]]; then
+  echo "Bundled onnxruntime changed, updating _onnxver to $onnxver"
+  sed -i "s/^_onnxver=.*/_onnxver=$onnxver/" PKGBUILD
+  updpkgsums
+fi
+
 makepkg --printsrcinfo > .SRCINFO
 
 echo

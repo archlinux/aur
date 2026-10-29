@@ -3,3 +3,7 @@
 !.SRCINFO
 !upkg.sh
 !.gitignore
+!LICENSE
+!LICENSES/
+!LICENSES/0BSD.txt
+!REUSE.toml
