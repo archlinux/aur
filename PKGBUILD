@@ -7,13 +7,13 @@
 # with no Rust or Node build, see tutabridge-desktop-bin.
 pkgname=tutabridge-desktop-git
 pkgver=0.r0.0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Local IMAP/SMTP bridge for Tuta encrypted email (desktop app)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/spartanz51/tutabridge"
 license=('GPL-3.0-or-later')
-depends=('webkit2gtk-4.1' 'gtk3' 'dbus')
-makedepends=('rust' 'cargo' 'git' 'cmake' 'nasm' 'pkgconf' 'nodejs' 'npm')
+depends=('webkit2gtk-4.1' 'gtk3' 'dbus' 'libayatana-appindicator')
+makedepends=('python' 'rust' 'cargo' 'git' 'cmake' 'nasm' 'pkgconf' 'nodejs' 'npm')
 optdepends=('gnome-keyring: persist the Tuta session across reboots (Secret Service)'
             'kwallet: alternative Secret Service provider')
 provides=('tutabridge-desktop')
@@ -35,7 +35,9 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	# The Tuta Rust SDK is a git submodule and the build needs it.
+	git submodule sync
 	git submodule update --init --recursive
+	python scripts/sdk-prepare.py
 	# Fetch crates and frontend packages up-front so build() runs offline.
 	export CARGO_HOME="$srcdir/cargo-home"
 	cargo fetch --locked
