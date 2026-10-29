@@ -3,12 +3,13 @@
 pkgname="dkimpy-milter"
 pkgver=1.2.3
 _rev=-2
-pkgrel=3
+pkgrel=4
 pkgdesc="DomainKeys Identified Mail (DKIM) milter in Python, with support for ed25519 signatures"
 url="https://launchpad.net/dkimpy-milter"
 license=("GPL2")
 arch=("any")
 depends=("python" "python-authres" "python-pynacl" "python-dkim" "python-dnspython" "python-pymilter" "libmilter")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 optdepends=("postfix: for sending mail")
 source=("https://salsa.debian.org/python-team/packages/dkimpy-milter/-/archive/debian/$pkgver$_rev/dkimpy-milter-debian-$pkgver$_rev.tar.gz"
         "$pkgname.sysusers"

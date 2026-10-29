@@ -1,11 +1,15 @@
 pkgbase = dkimpy-milter
 	pkgdesc = DomainKeys Identified Mail (DKIM) milter in Python, with support for ed25519 signatures
 	pkgver = 1.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/dkimpy-milter
 	install = dkimpy-milter.install
 	arch = any
 	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-authres
 	depends = python-pynacl
