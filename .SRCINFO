@@ -1,0 +1,22 @@
+pkgbase = dotnet-vs-threading
+	pkgdesc = Async synchronization primitives, async collections, TPL and dataflow extensions, Microsoft.VisualStudio.Threading.Only (NuGet package)
+	pkgver = 18.12.1
+	pkgrel = 1
+	url = https://github.com/microsoft/vs-threading
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-vs-validation
+	makedepends = jq
+	makedepends = python
+	source = vs-threading-816950dca421b07df18e26aa75adcf09a35a0db6.tar.gz::https://github.com/microsoft/vs-threading/archive/816950dca421b07df18e26aa75adcf09a35a0db6.tar.gz
+	source = MSFT.snk::https://raw.githubusercontent.com/dotnet/arcade/94f797268292122de4b6344d6265fad658c53703/src/Microsoft.DotNet.Arcade.Sdk/tools/snk/MSFT.snk
+	source = lcl-to-resx.py
+	sha512sums = d8e5bf92bb94d4a01e29c104f2f0d41330e7aa3413d8de981ddd73a0c4e10a394e7ed8b406dd01b981e5266a5fea6050ea036616c210ddcd4406adae824bb0c7
+	sha512sums = 98c02c09b9fed2ad77d8403efa5788053abb66a9c6c2cb8dd5d15ce49daf25e3a128b9b281fa2bc79e7cfc33adfbbfff6901b63fc9b882a890c13737892e71e1
+	sha512sums = ca10f8c7baf1539c0caed487474b5d2d9f44e6b148aff5cbb4188a9ec1499c6eb114e47d3a2b290fd284114536743029d434118f8cfc3b3141cff0bde2325fea
+	b2sums = b2f3c835c7b97159cb5b36c90cbbcd61ae4f0d3e930beb0e93e05431676e3f7aaea7a5a0f530b79f9a249f22302520be2405b886d6be932dea1af5923c936f6e
+	b2sums = df52cdab9f311499106f30869455797a02345bf43fd01e942fbb0312228660c88122fba00188484cb03616dfa4b234a83e73f132377c94169f2a26da175ff2ee
+	b2sums = 7fc316c06dd01bf38ff9142892147201f59fc70226775e8b04479d64c2a96dca91a5bbc56d29a147867abb5f70c8adbed3a2710489b5a8f609a447e52f2adee8
+
+pkgname = dotnet-vs-threading
