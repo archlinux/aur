@@ -4,12 +4,12 @@
 # 官方源码自 2026-09 已正式合入 Linux 支持（PR #90）：
 # 1. 源码直接使用官方仓库（qingjian-team/qingjian），全树构建。
 # 2. Rust Server 官方二进制名为 qingjian-linux-server（打包提供 qingjian-server 软链接兼容），并提供 qingjian-settings 设置程序。
-# 3. 数据包使用官方 release 发布的版本化 tag（data-v7），sha256 与官方 data.lock 一致，内置含章神经整句模型。
+# 3. 数据包使用官方 release 发布的版本化 tag（data-v8），sha256 与官方 data.lock 一致，内置含章神经整句模型。
 # 4. 资源文件安装至 /usr/share/qingjian/resources/，匹配官方 paths.rs 自动发现机制。
 
 pkgname=fcitx5-qingjian-git
 _pkgname=fcitx5-qingjian
-pkgver=0.2.1.r109.gc97ff2b6
+pkgver=0.3.1.r102.g96a021ed
 pkgrel=1
 pkgdesc="青简输入法 Linux/Fcitx5 官方支持版（Rust Server + Fcitx5 插件 + 离线数据模型）"
 arch=('x86_64')
@@ -23,12 +23,12 @@ install="${_pkgname}.install"
 
 source=(
   "qingjian::git+https://github.com/qingjian-team/qingjian.git"
-  "qingjian-data-v7.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v7/qingjian-data.tar.gz"
+  "qingjian-data-v8.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v8/qingjian-data.tar.gz"
   "qingjian-server.service"
 )
-noextract=("qingjian-data-v7.tar.gz")
+noextract=("qingjian-data-v8.tar.gz")
 sha256sums=('SKIP'
-            'e259f8bc2a5456c92484c5d4362ca56b3e46b3d2e1a0d463788091a039d79e40'
+            'c8aef81032b8cb2ca9f66e53a13f530b540c0ea5570ac5a9876dc71838868116'
             '819c81dfaa4308ea9c3a84b16bcee5672ebc4d1c737a676cc42367ea929e4bd6')
 
 pkgver() {
@@ -74,7 +74,7 @@ package() {
   install -dm755 "${resdir}"
 
   # 解包词库和模型数据并清理 macOS 隐藏元数据
-  bsdtar --no-xattrs --no-mac-metadata -xzf "${srcdir}/qingjian-data-v7.tar.gz" -C "${resdir}"
+  bsdtar --no-xattrs --no-mac-metadata -xzf "${srcdir}/qingjian-data-v8.tar.gz" -C "${resdir}"
   find "${resdir}/data" -name '._*' -delete
 
   # 复制辅助资源（表情、等级词典等）
