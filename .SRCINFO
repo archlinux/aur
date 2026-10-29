@@ -1,6 +1,6 @@
 pkgbase = opentracker-cli
 	pkgdesc = CLI for tracking AI provider usage limits
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/wsmajt/opentracker
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = opentracker-cli
 	makedepends = go
 	provides = opentracker
 	conflicts = opentracker
-	source = opentracker-cli-1.5.0.tar.gz::https://github.com/wsmajt/opentracker/archive/v1.5.0.tar.gz
-	sha256sums = f3db9e19af3a44b84cb08e0b206dc376c50537b3b1ea32a7424ae52c518f9df1
+	source = opentracker-cli-1.5.1.tar.gz::https://github.com/wsmajt/opentracker/archive/v1.5.1.tar.gz
+	sha256sums = bf4270f2b9e5829ddcbcbcec543d600fc42b023920cefdfda1a079e02d3ef547
 
 pkgname = opentracker-cli
