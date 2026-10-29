@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-common"
   "${_binname[@]}"
 )
-pkgver=2.32.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=(
@@ -28,7 +28,7 @@ _pkgsrc="${pkgbase}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('4deaadb325119ec5d7c1a3b6689aaf22fe25aa8242b38ef429048cb3fe413ad2')
+sha256sums=('def13ecd860971cf79010ff6993b0fbca983ec10277477669aae5eb9b798cd35')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
