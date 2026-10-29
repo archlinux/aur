@@ -6,6 +6,8 @@ _commit=578cd220b5ff6e86b078a6111d26bb20ec8c733f
 _date=2025.10.23
 pkgver=2025.10.23.r9.95dc59b
 pkgrel=1
+# 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
+epoch=1
 pkgdesc='Gruvbox GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
