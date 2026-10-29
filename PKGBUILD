@@ -3,11 +3,11 @@
 _pkgname="qtengine"
 pkgname="$_pkgname"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 depends=(
   kcolorscheme
   kconfig
