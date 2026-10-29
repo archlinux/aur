@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=syng-bin
 _pkgname=Syng
-pkgver=2.5.2
+pkgver=2.6.0
 _zhsname='词应'
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops."
@@ -24,15 +24,16 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('d06a599e2e6a5960d34c8fa3b7e708ccc506625f7963458ebff830dc4bd3ba72')
-sha256sums_x86_64=('d1528b9c13997bcd47f5226061dd715b362753ffadb651c7f8a5ab3089a28f95')
+sha256sums_aarch64=('8318f1a6b1e352244b4132de8ad5e921a9269efbf04eab4f27b68dfcb13edd01')
+sha256sums_x86_64=('582b075a512800ac2582d7e13d4e37f01b71827759f0a0616f1a895c32691617')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/
         3i\Name[zh_CN]=${_zhsname}
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
+    local _icon_dir="${srcdir}/usr/share/icons/hicolor"
+	[[ -d "${_icon_dir}/256x256@2" && ! -d "${_icon_dir}/512x512" ]] && mv "${_icon_dir}/256x256@2" "${_icon_dir}/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
