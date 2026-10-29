@@ -2,9 +2,9 @@
 
 pkgname="mkdocs-charts-plugin"
 _pkgname="${pkgname}"
-pkgver=0.0.10
+pkgver=0.0.13
 _sdist=mkdocs_charts_plugin
-pkgrel=2
+pkgrel=1
 pkgdesc="Mkdocs plugin to add vegalite charts to your pages"
 url="https://github.com/timvink/mkdocs-charts-plugin"
 license=("MIT")
