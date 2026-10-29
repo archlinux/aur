@@ -1,0 +1,104 @@
+--- a/scribus/CMakeLists.txt
++++ b/scribus/CMakeLists.txt
+@@ -291,7 +291,7 @@
+ )
+ 
+ #if(WANT_QTADS)
+-target_link_libraries(${EXE_NAME} PUBLIC qtadvanceddocking-qt${QT_VERSION_MAJOR})
++target_link_libraries(${EXE_NAME} PUBLIC ads::qtadvanceddocking-qt6)
+ #endif()
+ 
+ if(WITH_TESTS)
+--- a/scribus/third_party/CMakeLists.txt
++++ b/scribus/third_party/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ #if(WANT_QTADS)
+-add_subdirectory(Qt-Advanced-Docking-System)
++find_package(qtadvanceddocking-qt6 5.1.1 REQUIRED)
++set_property(TARGET ads::qtadvanceddocking-qt6 PROPERTY IMPORTED_GLOBAL TRUE)
+ #endif()
+ 
+ if(HAVE_OSG)
+--- a/scribus/scribus.cpp
++++ b/scribus/scribus.cpp
+@@ -275,10 +275,10 @@
+ #include "util.h"
+ #include "util_file.h"
+ #include "util_formats.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/ads_globals.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/DockAreaWidget.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/DockManager.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/IconProvider.h"
++#include "ads_globals.h"
++#include "DockAreaWidget.h"
++#include "DockManager.h"
++#include "IconProvider.h"
+ #include "vgradient.h"
+ 
+ #ifdef HAVE_SVNVERSION
+--- a/scribus/manager/dock_manager.h
++++ b/scribus/manager/dock_manager.h
+@@ -28,7 +28,7 @@
+ 
+ #include "prefscontext.h"
+ #include "scribusapi.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/DockManager.h"
++#include "DockManager.h"
+ 
+ using namespace ads;
+ 
+--- a/scribus/manager/dock_manager.cpp
++++ b/scribus/manager/dock_manager.cpp
+@@ -26,7 +26,7 @@
+ #include "dock_manager.h"
+ 
+ #include <QMenu>
+-#include "third_party/Qt-Advanced-Docking-System/src/DockAreaWidget.h"
++#include "DockAreaWidget.h"
+ #include "ui/docks/dock_centralwidget.h"
+ 
+ #include "iconmanager.h"
+--- a/scribus/plugins/shapes/shapepalette.cpp
++++ b/scribus/plugins/shapes/shapepalette.cpp
+@@ -32,7 +32,7 @@
+ #include "scribusXml.h"
+ #include "selection.h"
+ #include "shapepalette.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/DockAreaWidget.h"
++#include "DockAreaWidget.h"
+ #include "ui/scmessagebox.h"
+ #include "util.h"
+ #include "util_math.h"
+--- a/scribus/ui/docks/dock_panelbase.h
++++ b/scribus/ui/docks/dock_panelbase.h
+@@ -21,7 +21,7 @@
+ #define DOCK_PANELBASE_H
+ 
+ #include "scribusapi.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/DockWidget.h"
++#include "DockWidget.h"
+ using namespace ads;
+ 
+ class PrefsContext;
+--- a/scribus/ui/docks/dock_panelbase.cpp
++++ b/scribus/ui/docks/dock_panelbase.cpp
+@@ -26,7 +26,7 @@
+ #include "prefsfile.h"
+ #include "prefsmanager.h"
+ #include "scribusapp.h"
+-#include "third_party/Qt-Advanced-Docking-System/src/DockWidgetTab.h"
++#include "DockWidgetTab.h"
+ 
+ DockPanelBase::DockPanelBase(const QString &title, QString iconName, QWidget *parent)
+ 	: CDockWidget(title, parent)
+--- a/scribus/ui/docks/dock_centralwidget.h
++++ b/scribus/ui/docks/dock_centralwidget.h
+@@ -20,7 +20,7 @@
+ #ifndef DOCK_CENTRALWIDGET_H
+ #define DOCK_CENTRALWIDGET_H
+ 
+-#include "third_party/Qt-Advanced-Docking-System/src/DockWidget.h"
++#include "DockWidget.h"
+ 
+ class DockCentralWidget : public ads::CDockWidget
+ {
