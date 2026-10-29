@@ -1,6 +1,6 @@
 pkgbase = eternalterminal
 	pkgdesc = Remote terminal for the busy and impatient
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://mistertea.github.io/EternalTerminal/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = eternalterminal
 	depends = libsodium
 	depends = protobuf
 	depends = curl
-	source = https://github.com/MisterTea/EternalTerminal/archive/et-v7.1.0.tar.gz
-	sha256sums = 6c1eacb22f3465af8edcdd814318e5e23a4cf3b8fc2e50a2525d2b2b3bf44016
+	source = https://github.com/MisterTea/EternalTerminal/archive/et-v7.1.1.tar.gz
+	sha256sums = 7f5ab26f5cc18e66184d806648a2437c447b549ca106a7e6107f793435e39270
 
 pkgname = eternalterminal-client
 	pkgdesc = Re-Connectable Terminal connection. Includes only the client.
@@ -22,10 +22,12 @@ pkgname = eternalterminal-client
 
 pkgname = eternalterminal-server
 	pkgdesc = Re-Connectable Terminal connection. Includes only the server.
+	install = et-systemd.install
 	conflicts = eternalterminal
 	conflicts = eternalterminal-client
 
 pkgname = eternalterminal
 	pkgdesc = Re-Connectable Terminal connection. Includes both client and server.
+	install = et-systemd.install
 	conflicts = eternalterminal-client
 	conflicts = eternalterminal-server

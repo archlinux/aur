@@ -5,7 +5,7 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='7.1.0'
+pkgver='7.1.1'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -20,7 +20,7 @@ license=('Apache')
 source=(
     "https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
-sha256sums=('6c1eacb22f3465af8edcdd814318e5e23a4cf3b8fc2e50a2525d2b2b3bf44016')
+sha256sums=('7f5ab26f5cc18e66184d806648a2437c447b549ca106a7e6107f793435e39270')
 pkgdesc='Remote terminal for the busy and impatient'
 
 prepare() {
@@ -53,6 +53,7 @@ package_eternalterminal-client() {
 }
 
 package_eternalterminal-server() {
+	install=et-systemd.install
 	pkgdesc='Re-Connectable Terminal connection. Includes only the server.'
 	conflicts=('eternalterminal' 'eternalterminal-client')
 
@@ -66,6 +67,7 @@ package_eternalterminal-server() {
 }
 
 package_eternalterminal() {
+	install=et-systemd.install
 	pkgdesc='Re-Connectable Terminal connection. Includes both client and server.'
 	conflicts=('eternalterminal-client' 'eternalterminal-server')
 
