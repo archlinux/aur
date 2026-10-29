@@ -2,7 +2,7 @@
 # The CLI release (.github/workflows/aur.yml) sets pkgver and sha256sums and pushes
 # this file with its .SRCINFO to ssh://aur@aur.archlinux.org/lynxprompt.git.
 pkgname=lynxprompt
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='CLI for LynxPrompt - Generate, sync, and manage AI IDE configuration files (AGENTS.md, CLAUDE.md, .cursorrules, and more)'
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL-3.0-or-later')
 depends=('nodejs>=18')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('8d345f6d07fc37a8ef82151a5269b421d55c1580df3f3439ac1c56919be776f7')
+sha256sums=('cbe5785c5594ab79cc2ebb5a88ddc6debfc3032d9d0dbe96a02db02fceceef09')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
