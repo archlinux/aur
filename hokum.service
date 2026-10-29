@@ -13,6 +13,8 @@ BusName=org.freedesktop.Notifications
 ExecCondition=/bin/sh -c '[ -n "$WAYLAND_DISPLAY" ]'
 ExecStart=/usr/bin/hokum service
 Restart=on-failure
+# 78: this desktop can't run Hokum as it is (no layer-shell, or its shell keeps the name).
+RestartPreventExitStatus=78
 RestartSec=2
 
 [Install]

@@ -10,7 +10,7 @@
 # runs first owns org.freedesktop.Notifications, and hokum.service stops
 # mako, dunst, and swaync when it starts.
 pkgname=hokum-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Hokum: a freedesktop notification daemon for Wayland layer-shell compositors'
 arch=('x86_64' 'aarch64')
@@ -29,14 +29,14 @@ source=(
   'hokum.desktop'
   'LICENSE'
 )
-source_x86_64=("hokum-${pkgver}-linux-x64::https://anoma.ly/release/hokum/files/0c5daeb65b974edb6f85e3854a33e1729470c021bce5d83c6a0484b987c4fdfe/hokum")
-source_aarch64=("hokum-${pkgver}-linux-arm64::https://anoma.ly/release/hokum/files/063caeab50e9ca099ffce44dc51f62a1d0915df810a1386cce9940fc5a2f8fad/hokum")
-sha256sums=('3c612f12f425359719be5e47a52f6cfcf2129333d856fac119b57de96d184e39'
+source_x86_64=("hokum-${pkgver}-linux-x64::https://anoma.ly/release/hokum/files/e00c8c6ebd0cfb7c53d535d6fab7ec02c2f42bb24c4057c178f8201253276d45/hokum")
+source_aarch64=("hokum-${pkgver}-linux-arm64::https://anoma.ly/release/hokum/files/e18e7e0fc812ba7efdfa97580b25c7a483e5982e92b3321ad6d3ec5a7408e695/hokum")
+sha256sums=('b727bc7906ea476f2555b143a550af48227addbdac807d562b946510c1efb20b'
             'e83761aacd0d5ec5207e594564fdaa5677def9928ba07fcadb51f1c042c62034'
             'a2f5db48078f9d8109c6d53502313ff9639643ea07a7a968e99d9c4802198335'
             'b1fe69afe2f6fe0884efc8936dab69bbdf3a319b3828a965ee1304fbd6a60021')
-sha256sums_x86_64=('0c5daeb65b974edb6f85e3854a33e1729470c021bce5d83c6a0484b987c4fdfe')
-sha256sums_aarch64=('063caeab50e9ca099ffce44dc51f62a1d0915df810a1386cce9940fc5a2f8fad')
+sha256sums_x86_64=('e00c8c6ebd0cfb7c53d535d6fab7ec02c2f42bb24c4057c178f8201253276d45')
+sha256sums_aarch64=('e18e7e0fc812ba7efdfa97580b25c7a483e5982e92b3321ad6d3ec5a7408e695')
 
 package() {
   local target=x64
