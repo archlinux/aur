@@ -10,3 +10,5 @@
 !font_meta.py
 !fix_weights.py
 !add_stat.py
+!fix_names.py
+!make_features.py

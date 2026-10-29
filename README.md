@@ -334,6 +334,133 @@ baseline.
   darkening) makes dark-on-light text much lighter: GSK ink 13.1 with darkening,
   11.8 without, vs 17.9 by default. Rejected either way.
 
+## Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+
+Everything above is about hinting. This section is about the other half of what
+makes text look right: OpenType features, and the fact that most programs never
+see the ones `~/.config/fontconfig/fonts.conf` asks for.
+
+fontconfig's `fontfeatures` property is read by pango/GTK only. Chromium,
+Electron, Qt, LibreOffice and kitty shape text without it, and in a browser only
+the page CSS can ask for a feature. A font cannot declare a feature "on by
+default" either: a shaper applies a fixed list (`ccmp locl mark mkmk kern calt
+liga clig rlig`) and ignores what the LangSys happens to register. So the only
+way to make a feature the default *everywhere* is to move its lookups into one
+of those features. `make_features.py` does that into `calt`, and
+`FEATURE_DEFAULTS` runs it as the last build step:
+
+```sh
+FEATURE_DEFAULTS="ss06,cv07,case" makepkg -si
+```
+
+That is exactly the set the SF Pro Text block in `~/.config/fontconfig/fonts.conf`
+turns on for pango, so GTK, Chromium, Electron, Qt and LibreOffice then agree.
+(`ss02`, also active there, is already part of `ss06`. `ss03` — the centred colon
+— is the one tag left out on purpose: it is what makes a build that contains
+SF Mono dangerous, see the traps below. Add it to a build that selects only
+SF Pro, with `SF_PRO_SUBS`/`WANT_SF_MONO=false`, if you want the colon moved even
+between letters.)
+
+### What the fonts actually have
+
+The `cvXX` names below are the fonts' own UI labels, read out of the name table
+through the `cvXX` FeatureParams — Apple documents them inside the font:
+
+| tag | SF Pro Text / Display | SF Pro Rounded |
+|---|---|---|
+| `cv01` | straight-sided six and nine | straight-sided **six** only |
+| `cv02` | open four | straight-sided **nine** |
+| `cv03` | seriffed capital J | **open four** |
+| `cv04` | vertically centred colon | vertically centred colon |
+| `cv05` | seriffed capital I | seriffed capital I |
+| `cv06` | tailed lowercase l | tailed lowercase l |
+| `cv07` | one-storey a | one-storey a |
+| `cv08` | slashed zero | slashed zero |
+| `cv09` | small dollar sign | dollar sign, third form |
+| `cv12` | serifed digit one | serifed digit one |
+| `cv13` | wide square root | — |
+
+`ss01`–`ss07` are Apple's duplicates of the same substitutions, for apps that
+cannot ask for `cvXX`: `ss01`=cv01, `ss02`=cv02, `ss03`=cv04, `ss04`=open
+currency signs, `ss06`=the union of 0 4 6 9 I J l, `ss07`=cv07. `ss09` and
+`ss12`–`ss17` are private-use SF Symbols variants and do nothing to text.
+
+Three things worth knowing before choosing a set:
+
+- **The same tag means different things in different families.** `ss03` is the
+  centred colon in SF Pro, but *removes the slash from the zero* in SF Mono —
+  whose default zero is the slashed one (3 contours against 2: Apple ships the
+  slashed zero as the default there). For a slashed zero in SF Pro use `cv08`.
+- **The `cvXX` numbers shift between optical sizes**, as the table shows: one
+  global list cannot mean "open four" everywhere. That is Apple's numbering.
+- **The families do not carry the same features at all.** SF Mono has only
+  `c2sc ccmp locl smcp ss03 ss04` (no `liga`, no `calt`, and no code ligatures
+  in this release); New York Small has `c2sc calt ccmp locl onum smcp ss01 tnum`.
+  A tag a family lacks is skipped for that file with a note; a tag no file has
+  is an error, so a typo cannot pass silently.
+
+Never bake `aalt` (every alternate at once), `ordn` (`H2O` → `H2º`), `smcp`/`c2sc`
+(they would replace every lowercase letter) or `rtlm` (it mirrors the square root
+for RTL); `make_features.py` refuses the first three. `tnum`/`frac`/`numr`/`dnom`/
+`sups`/`subs` are per-context requests, not defaults.
+
+### The fonts' own `calt` is not empty
+
+`~/.config/fontconfig/fonts.conf` used to call SF Pro's `calt` "an empty shell: 4
+lookups, 0 substitutions". That is wrong, and the error only shows up in a
+*contextual* test: `calt` centres the colon **between two digits**, and in SF Pro
+it also swaps the florin when it sits next to a digit or a slash:
+
+```
+12:34   calt on: one two colon.uc three four   calt off: one two colon three four
+1:a     no change (needs digits on both sides)
+ƒ0      calt on: florinsign zero               calt off: fhook zero
+```
+
+SF Pro Text, SF Pro Display, SF Pro Rounded and New York Small all do the colon;
+SF Mono has no `calt` at all, so a colon there stays on the baseline at all
+times. Baking features *adds* lookups to that `calt`, so the colon rule keeps
+working — but `font-feature-settings: "calt" 0` turns it off together with the
+baked features. Measured in Chromium at 48 px on `0O 4 a (Α) [Β] 12:34 Iily Jj`:
+baked with no CSS is **0 differing pixels** from stock plus
+`font-feature-settings: "ss06" 1, "cv07" 1, "case" 1`, 5696 pixels differ from
+the stock font, and with `"calt" 0` on both fonts the difference is again **0** —
+the 146 pixels left over against stock are the colon, not a leak.
+
+### `FEATURE_FAMILY` is a suffix here
+
+The single-family packages take a full new name; this one builds up to thirteen
+families at once, so `FEATURE_FAMILY=" Alt"` appends to each family name
+(`SF Pro Text Alt`, `SF Mono Alt`) and to the PostScript names
+(`SFProTextAlt-Regular`). Families that carry none of the requested tags are
+renamed too, so nothing collides with the stock install. The value must not end
+in a pango style word (`Bold`, `Thin`, `Italic`, …). The shipped
+`80-nerd-fonts-apple-hinted.conf` reads the family names out of the packaged
+fonts, so it covers the renamed families; a fontconfig rule or page CSS that
+names `SF Pro Text` no longer matches.
+
+### Nerd Fonts patched builds
+
+font-patcher keeps every GSUB feature (verified on a patched SF Pro Text and SF
+Mono: `cv01`–`cv13`, `ss01`–`ss17`, `case`, and their substitutions survive), so
+baking works on the patched path too. FontForge does damage the *name* table,
+though, and both symptoms break something:
+
+- `nameID 16`/`17` get FontForge's own strings (`sage.fill\n`). fontconfig
+  prefers 16 over 1, so a patched SF Pro advertised
+  `最攀਀ऀ攀砀挀氀愀洀愀琀椀漀渀洀愀爀欀⸀洀` as its family — and the
+  `80-nerd-fonts-apple-hinted.conf` generated for such a build listed that name,
+  so the bytecode-hinting rule never matched a real font.
+- FontForge adds a duplicate Mac-Roman copy of Apple's 60 KB licence string,
+  which pushes the name table past the format's 64 KB limit (92 KB of strings).
+  Past that no tool can write the font back out — fontTools fails with
+  `ValueError: Value 91040 does not fit in format H for offset` — so baking
+  would not be possible at all.
+
+`fix_names.py` repairs both: it copies nameID 1/2 into 16/17 and drops the
+duplicate Mac licence records, but only when the table really does not compile,
+so fonts that are fine are left byte-for-byte alone.
+
 ## Verifying on your own system
 
 1. **Effective GTK4 settings:** see the Python snippet in §4.

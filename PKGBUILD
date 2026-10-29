@@ -5,8 +5,12 @@ _nfver=3.5.1
 # found inside the selected Apple fonts, plus the Nerd Fonts patcher version
 # (e.g. 22.0.5.4+nf3.5.1). The literal here is only a placeholder for the first
 # run and for tooling that parses the PKGBUILD without executing it.
+# NOTE: makepkg writes the resolved pkgver back into this file and resets
+# pkgrel to 1 when it changes. After a build that selected a subset of the
+# families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
+# committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -30,6 +34,8 @@ source=(
   "font_meta.py"
   "fix_weights.py"
   "add_stat.py"
+  "fix_names.py"
+  "make_features.py"
 )
 # Apple re-spins the DMGs without versioning, so those legitimately stay SKIP —
 # the real identity check is pkgver(), which reads the version out of the font
@@ -38,6 +44,8 @@ source=(
 # (no network fetch), so they are covered by makepkg's local-file hashing —
 # fill these in with `updpkgsums`.
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -131,6 +139,105 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 #               sized    MS strategy: <=8 grayscale, 9-16 gridfit, 17+ both
 #               smooth   all sizes anti-aliased ({0xFFFF:15}; gftools style)
 #               gridfit  all sizes gridfit+grayscale ({0xFFFF:3})
+#
+#  ── Features every app can see (not just pango) ───────────────────────────
+#
+#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 Bake these GSUB features into the font's 'calt' feature, so
+#                 that EVERY renderer applies them - Chromium, Electron, Qt,
+#                 LibreOffice, kitty - and not only pango, the one client that
+#                 reads fontconfig's fontfeatures. See "Why calt" below.
+#
+#                 What the Apple fonts actually have (audited 2026-10-29 with
+#                 fontTools 4.68 and HarfBuzz 15.0 against the installed faces;
+#                 the cv names are the fonts' own UI labels, read out of the
+#                 name table through the cvXX FeatureParams):
+#
+#                   cv01  straight-sided six and nine     cv02  open four
+#                   cv03  seriffed capital J              cv04  centred colon
+#                   cv05  seriffed capital I              cv06  tailed lowercase l
+#                   cv07  one-storey a                    cv08  slashed zero
+#                   cv09  small dollar sign               cv12  serifed digit one
+#                   cv13  wide square root                cv10/11  $ and +
+#                   ss01-ss07  Apple's duplicates of cv01/02/04/03/05/06/07, for
+#                              apps that cannot ask for cvXX. ss06 is the union
+#                              (0 4 6 9 I J l), ss04 opens the currency signs.
+#                   ss09, ss12-ss17  private-use symbol variants, not text
+#                   case   raises 21 punctuation glyphs to cap height
+#                   tnum   tabular figures
+#                   frac, numr, dnom, sups, subs, ordn   per-context only
+#                   smcp/c2sc  real small caps: they would replace EVERY
+#                              lowercase letter with a cap-height one
+#                   rtlm   mirrors the square root for RTL - never bake it
+#
+#                 ~/.config/fontconfig/fonts.conf turns on case, ss02, ss03,
+#                 ss06 and cv07 for SF Pro Text, for pango only. This is the
+#                 set that makes the other renderers agree with GTK:
+#
+#                     FEATURE_DEFAULTS="ss06,cv07,case"
+#
+#                 (ss02 is already part of ss06. Add ss03 - the centred colon -
+#                 only to a build that leaves SF Mono out; the next note says
+#                 why.)
+#
+#                 THREE TRAPS, all measured on these fonts:
+#                 * ss03 is "vertically centred colon" in SF Pro but
+#                   "REMOVE the slash from the zero" in SF Mono, whose default
+#                   zero is the slashed one (3 contours against 2: Apple ships
+#                   the slashed zero as the default there and ss03 is the plain
+#                   variant). For a slashed zero in SF Pro use cv08; in SF Mono
+#                   you already have one.
+#                 * the cvXX numbers are not the same across optical sizes. In
+#                   SF Pro Rounded cv01 is the six ALONE, cv02 the nine and
+#                   cv03 the open four, where SF Pro Text's cv01 is six+nine and
+#                   cv02 is four. One global list therefore changes different
+#                   glyphs in different families - that is Apple's numbering,
+#                   not a bug here. Check any font with:
+#                       python3 make_features.py --list /usr/share/fonts/apple/FONT
+#                 * the families differ in what they carry at all: SF Mono has
+#                   only c2sc ccmp locl smcp ss03 ss04 (no liga, no calt), New
+#                   York Small only c2sc calt ccmp locl onum smcp ss01 tnum.
+#                   SF Mono has no code ligatures in this release.
+#
+#                 A tag a family does not have is skipped for that file with a
+#                 note; a tag no file has is an error, so a typo cannot pass
+#                 silently. Never bake aalt (every alternate at once), ordn
+#                 (H2O -> H2º), smcp/c2sc or rtlm; make_features.py refuses the
+#                 first three unless --allow-risky is passed. Do not bake
+#                 tnum/frac/numr/dnom/sups/subs either: they are per-context
+#                 requests, and baking tnum would tabularise running prose.
+#
+#                 Not prompted for interactively, unlike the other options: one
+#                 list changes different glyphs in different families (the
+#                 cvXX/ss03 traps above), so this one is an explicit decision.
+#
+#                 Nerd Fonts patched builds work too: font-patcher keeps every#                 GSUB feature (verified on a patched SF Pro Text and SF Mono).
+#                 FontForge does damage the name table, which is repaired by
+#                 fix_names.py before this step runs - without that repair the
+#                 font cannot be written back at all, because FontForge adds a
+#                 duplicate Mac-Roman copy of Apple's 60 KB licence string and
+#                 pushes the name table past the format's 64 KB limit.
+#
+#  FEATURE_FAMILY  "Suffix"  (default: empty = edit the fonts in place)
+#                 NOTE: the value is a SUFFIX here, unlike in the single-family
+#                 packages (ttf-inter-hinted, ttf-geologica-hinted, ...), because
+#                 one build installs up to thirteen families. " Alt" installs
+#                 SF Pro Text as "SF Pro Text Alt" and SF Mono as "SF Mono Alt",
+#                 so the stock names stay available and every family keeps its
+#                 own identity - including the families that carry none of the
+#                 requested tags, which are renamed too so nothing collides.
+#                 It must not end in a pango style word (Bold, Thin, Italic,
+#                 ...); fix_names.py refuses those.
+#                 The shipped 80-$pkgname.conf reads the family names out of the
+#                 packaged fonts, so renamed families are covered there; a
+#                 fontconfig block or page CSS that names "SF Pro Text" is not.
+#
+#  Why calt: a shaper applies a fixed list of features whatever a font declares
+#  (ccmp locl mark mkmk kern calt liga clig rlig), and fontconfig's fontfeatures
+#  is read by pango/GTK only. Moving a feature's lookups into calt is therefore
+#  the only way to make it the default in every program. The lookups stay in the
+#  font, so font-feature-settings: "calt" 0 still turns them all off again - but
+#  asking for the individual tag ("-cv07") no longer switches just that one.
 #
 #  Font family selection:
 #  WANT_SF_PRO      true/false   (default: true)
@@ -503,6 +610,23 @@ _resolve_options() {
   HINT_WINCOMPAT="${HINT_WINCOMPAT:-false}"
   HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
 
+  # ── Features baked into calt (see the header) ─────────────────────────────
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss06)."; exit 1
+    fi
+  done
+  if [[ -n "$FEATURE_FAMILY" ]]; then
+    # Trailing whitespace would end up in the family name; a leading space is
+    # deliberate (" Alt" -> "SF Pro Text Alt").
+    FEATURE_FAMILY="${FEATURE_FAMILY%"${FEATURE_FAMILY##*[![:space:]]}"}"
+    if [[ ! "$FEATURE_FAMILY" =~ ^[[:space:]]*[A-Za-z0-9][A-Za-z0-9\ ._-]*$ ]]; then
+      echo "Error: FEATURE_FAMILY='$FEATURE_FAMILY' is not usable as a family suffix."; exit 1
+    fi
+  fi
+
   # ── Font family & subfamily selection ────────────────────────────────────
   if [[ "$_interactive" == true && \
         -z "${WANT_SF_PRO:-}${WANT_SF_COMPACT:-}${WANT_SF_MONO:-}${WANT_SF_ARABIC:-}${WANT_NY:-}" ]]; then
@@ -582,6 +706,9 @@ _resolve_options() {
   else
     printf "  HINTING:       false\n"
   fi
+  printf "  FEATURES:      %s%s\n" \
+    "${FEATURE_DEFAULTS:-<none baked>}" \
+    "${FEATURE_FAMILY:+  (family suffix '$FEATURE_FAMILY')}"
   echo ""
   _show "$( [[ "$WANT_SF_PRO"     == true ]] && echo "x" || echo " " )" "SF Pro      ${SF_PRO_SUBS:+(subfamilies: $SF_PRO_SUBS)}"
   _show "$( [[ "$WANT_SF_COMPACT" == true ]] && echo "x" || echo " " )" "SF Compact  ${SF_COMPACT_SUBS:+(subfamilies: $SF_COMPACT_SUBS)}"
@@ -609,6 +736,8 @@ _resolve_options() {
     echo "HINT_WINCOMPAT=$HINT_WINCOMPAT"
     echo "HINT_TTFA_TABLE=$HINT_TTFA_TABLE"
     echo "GASP_MODE=$GASP_MODE"
+    echo "FEATURE_DEFAULTS=$FEATURE_DEFAULTS"
+    echo "FEATURE_FAMILY=$FEATURE_FAMILY"
     echo "WANT_SF_PRO=$WANT_SF_PRO"
     echo "WANT_SF_COMPACT=$WANT_SF_COMPACT"
     echo "WANT_SF_MONO=$WANT_SF_MONO"
@@ -639,6 +768,7 @@ _load_options() {
       NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
+      FEATURE_DEFAULTS|FEATURE_FAMILY| \
       WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY| \
       SF_PRO_SUBS|SF_COMPACT_SUBS|NY_SUBS)
         printf -v "$_k" '%s' "$_v" ;;
@@ -646,9 +776,38 @@ _load_options() {
   done < "$srcdir/.build_opts"
 }
 
+# _bake_features SRC: move the lookups of FEATURE_DEFAULTS into 'calt' on the
+# fonts this build ended up with (hinted, patched or plain) and write them to
+# $srcdir/featured. Last step on purpose: ttfautohint never sees the lookups,
+# and the gasp pass has already run.
+_bake_features() {
+  local _src="$1" _f
+  local -a _files=()
+  [[ -n "$FEATURE_DEFAULTS" ]] || return 0
+  for _f in "$_src"/*.ttf "$_src"/*.otf; do
+    [[ -f "$_f" ]] || continue
+    _files+=("$_f")
+  done
+  if (( ${#_files[@]} == 0 )); then
+    echo "Error: FEATURE_DEFAULTS is set but $_src holds no fonts." >&2; exit 1
+  fi
+  rm -rf "$srcdir/featured"; mkdir -p "$srcdir/featured"
+  echo "==> Baking $FEATURE_DEFAULTS into calt..."
+  python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+    -o "$srcdir/featured" "${_files[@]}"
+
+  # FEATURE_FAMILY is a suffix here, one per family, and it has to be applied
+  # even to the families that carry none of the requested tags (SF Mono has no
+  # ss06/cv07/case but still must not collide with the stock install). Renaming
+  # is therefore a separate pass over the result rather than --family.
+  if [[ -n "$FEATURE_FAMILY" ]]; then
+    echo "==> Installing as family suffix '$FEATURE_FAMILY'..."
+    python "$srcdir/fix_names.py" --suffix "$FEATURE_FAMILY" "$srcdir/featured/"*
+  fi
+}
+
 prepare() {
   _resolve_options
-
   # ══════════════════════════════════════════════════════════════════════════
   # Step 1 — Extract fonts from Apple DMG archives (selected families only)
   # ══════════════════════════════════════════════════════════════════════════
@@ -840,6 +999,21 @@ build() {
     fi
     echo "==> Patched $_patched_count font(s)."
 
+    # FontForge (and therefore font-patcher) writes garbage into nameID 16/17,
+    # which fontconfig prefers over nameID 1: a patched SF Pro would advertise
+    # "最攀਀ऀ攀砀..." as its family. It also adds a duplicate Mac-Roman copy of
+    # Apple's 60 KB licence string, which pushes the name table past the
+    # format's 64 KB limit - past that no tool, fontTools included, can write
+    # the font back out, so every later step would fail. Repair it now.
+    local -a _pfix=()
+    for _f in "$srcdir/patched/"*.otf "$srcdir/patched/"*.ttf; do
+      [[ -f "$_f" ]] && _pfix+=("$_f")
+    done
+    if (( ${#_pfix[@]} )); then
+      echo "==> Repairing the name table font-patcher wrote..."
+      parallel --will-cite -j"$(nproc)" python "$srcdir/fix_names.py" ::: "${_pfix[@]}"
+    fi
+
     # The ttfautohint engine needs TrueType glyf outlines, so convert any patched
     # OTFs to TTF in place. (The cff engine only runs when NERD_PATCH=false, so a
     # patched tree never feeds it.)
@@ -963,54 +1137,64 @@ build() {
     fi
   fi
 
+  # ══════════════════════════════════════════════════════════════════════════
+  # Step 7 — Bake FEATURE_DEFAULTS into calt (see the header)
+  # ══════════════════════════════════════════════════════════════════════════
+  # Last, so ttfautohint and set_gasp.py work on the unmodified font. package()
+  # installs from $srcdir/featured when this ran.
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then
+    local _out="$srcdir/selected"
+    if [[ "$HINTING" == true ]]; then
+      _out="$srcdir/patched/hinted"
+    elif [[ "$NERD_PATCH" == true ]]; then
+      _out="$srcdir/patched"
+    fi
+    _bake_features "$_out"
+  fi
 }
 
 package() {
   # Reuse the single source of truth written by prepare(); makepkg runs each
   # function in a fresh shell, so nothing is inherited.
-  local HINTING NERD_PATCH WANT_VARIABLE HINT_ENGINE
+  local HINTING NERD_PATCH WANT_VARIABLE HINT_ENGINE FEATURE_DEFAULTS
   _load_options
+
+  # Step 7 of build() wrote the baked fonts here; they are the final artefacts.
+  local _baked=false
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then
+    if compgen -G "$srcdir/featured/*.ttf" >/dev/null || \
+       compgen -G "$srcdir/featured/*.otf" >/dev/null; then
+      _baked=true
+    else
+      echo "Error: FEATURE_DEFAULTS was set but $srcdir/featured is empty."; exit 1
+    fi
+  fi
 
   install -d "$pkgdir/usr/share/fonts/apple"
 
-  if [[ "$HINTING" == true ]]; then
-    # Hinted output (TTF and/or OTF for the cff engine) lives in patched/hinted/.
-    # Fail loud if it is empty — never silently ship a fontless package.
-    if compgen -G "$srcdir/patched/hinted/*.ttf" >/dev/null; then
-      install -m644 "$srcdir/patched/hinted/"*.ttf "$pkgdir/usr/share/fonts/apple"
-    fi
-    if compgen -G "$srcdir/patched/hinted/*.otf" >/dev/null; then
-      install -m644 "$srcdir/patched/hinted/"*.otf "$pkgdir/usr/share/fonts/apple"
-    fi
-    if ! compgen -G "$pkgdir/usr/share/fonts/apple/*" >/dev/null; then
-      echo "Error: hinting was requested but produced no fonts."; exit 1
-    fi
-
+  # Where the fonts to install live. Step 7 wrote the baked copies to
+  # $srcdir/featured, which already contains exactly what this build would have
+  # installed otherwise.
+  local _src="$srcdir/selected" _allow_ttf="$WANT_VARIABLE"
+  if [[ "$_baked" == true ]]; then
+    _src="$srcdir/featured"; _allow_ttf=true
+  elif [[ "$HINTING" == true ]]; then
+    _src="$srcdir/patched/hinted"; _allow_ttf=true
   elif [[ "$NERD_PATCH" == true ]]; then
-    # Patched but not hinted: font-patcher emits TTF for TTF inputs and OTF for
-    # OTF inputs (e.g. SF Mono), so install both. patched/hinted/ doesn't exist
-    # on this path, so the shallow globs won't pick up hinted output.
-    if compgen -G "$srcdir/patched/*.ttf" >/dev/null; then
-      install -m644 "$srcdir/patched/"*.ttf "$pkgdir/usr/share/fonts/apple"
-    fi
-    if compgen -G "$srcdir/patched/*.otf" >/dev/null; then
-      install -m644 "$srcdir/patched/"*.otf "$pkgdir/usr/share/fonts/apple"
-    fi
-    if ! compgen -G "$pkgdir/usr/share/fonts/apple/*" >/dev/null; then
-      echo "Error: patching was requested but produced no fonts."; exit 1
-    fi
+    # font-patcher emits TTF for TTF inputs and OTF for OTF inputs (e.g. SF
+    # Mono), so install both.
+    _src="$srcdir/patched"; _allow_ttf=true
+  fi
 
-  else
-    # No patching, no hinting: install selected fonts directly.
-    if compgen -G "$srcdir/selected/*.otf" >/dev/null; then
-      install -m644 "$srcdir/selected/"*.otf "$pkgdir/usr/share/fonts/apple"
-    fi
-    if [[ "$WANT_VARIABLE" == true ]] && compgen -G "$srcdir/selected/*.ttf" >/dev/null; then
-      install -m644 "$srcdir/selected/"*.ttf "$pkgdir/usr/share/fonts/apple"
-    fi
-    if ! compgen -G "$pkgdir/usr/share/fonts/apple/*" >/dev/null; then
-      echo "Error: no fonts were installed."; exit 1
-    fi
+  if compgen -G "$_src/*.otf" >/dev/null; then
+    install -m644 "$_src/"*.otf "$pkgdir/usr/share/fonts/apple"
+  fi
+  if [[ "$_allow_ttf" == true ]] && compgen -G "$_src/*.ttf" >/dev/null; then
+    install -m644 "$_src/"*.ttf "$pkgdir/usr/share/fonts/apple"
+  fi
+  # Fail loud: never silently ship a fontless package.
+  if ! compgen -G "$pkgdir/usr/share/fonts/apple/*" >/dev/null; then
+    echo "Error: no fonts were installed from $_src."; exit 1
   fi
 
   # Opt-in rendering tweak (see the header): bytecode hinting for the families
