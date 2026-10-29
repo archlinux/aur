@@ -5,7 +5,7 @@
 pkgname=dotnet-system-data-sqlclient
 _nugetid=System.Data.SqlClient
 pkgver=4.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The legacy SQL Server data provider for .NET, System.Data.SqlClient (NuGet package)"
 arch=('any')
 url='https://github.com/dotnet/maintenance-packages'
@@ -33,12 +33,14 @@ _dotnet_env() {
   export DOTNET_INSTALL_DIR
 
   # Package validation would need the previous release from nuget.org. The repository information
-  # usually comes from git.
+  # usually comes from git, which would find the repository this PKGBUILD is in instead.
   _build_arguments=(
     --configuration Release
     -p:EnablePackageValidation=false
     -p:RepositoryCommit="$_commit"
     -p:RepositoryUrl="$url"
+    -p:SourceRevisionId="$_commit"
+    -p:EnableSourceControlManagerQueries=false
   )
   # The source-built Arcade is a newer version than upstream's (8.x), keep its frameworks and use its
   # build tasks

@@ -1,7 +1,7 @@
 pkgbase = dotnet-system-data-sqlclient
 	pkgdesc = The legacy SQL Server data provider for .NET, System.Data.SqlClient (NuGet package)
 	pkgver = 4.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/maintenance-packages
 	arch = any
 	license = MIT
