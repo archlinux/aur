@@ -1,6 +1,6 @@
 pkgbase = herakleo-bin
 	pkgdesc = Desktop IPTV player for M3U lists and Xtream Codes (prebuilt)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/crstian19/herakleo
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = herakleo-bin
 	provides = herakleo
 	conflicts = herakleo
 	conflicts = herakleo-wails
-	source = https://github.com/crstian19/herakleo/releases/download/v0.2.0/herakleo-0.2.0-linux-x86_64.tar.gz
-	sha256sums = 912a121f45c17da308563218ea38a296e3efca6a3c74f393850664ef14b01971
+	source = https://github.com/crstian19/herakleo/releases/download/v0.3.0/herakleo-0.3.0-linux-x86_64.tar.gz
+	sha256sums = 96dea93e4df5e276a665e3d864b9dc5d1262052cf6dc6591c636d1a603d71154
 
 pkgname = herakleo-bin
