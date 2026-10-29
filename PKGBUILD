@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ripes-bin
 _pkgname=Ripes
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mortbopet/Ripes/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2ab9f0739a86b0172ed512ab0f4c88e896db02e31db9f5e98db450b6b302bd26'
+sha256sums=('cda993447e3415e82630c00bc777caf7dd1c57acb84c42e5cb32184a5e722ccb'
             '2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078'
             'b80c5b20834e078e65c85efa803ba60c0f79c4b203466727eb1c0d5652403f49')
 prepare() {
