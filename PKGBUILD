@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 pkgname=pipdeptree
-pkgver=4.2.8
+pkgver=4.2.12
 pkgrel=1
 pkgdesc="Command line utility to show dependency tree of Python packages"
 arch=('x86_64' 'aarch64')
@@ -17,14 +17,19 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'cython'
   'meson-python'
   'python-build'
+  'python-hatch-fancy-pypi-readme'
   'python-installer'
   'python-ninja'
+  'python-patchelf'
+  'python-setuptools-scm'
+  'python-scikit-build-core'
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1e4752231c890e18488629678b8f2792d9f23155ed6f1476d2fd61d49ae8a932')
+sha256sums=('e4a48d6fbd9691a13683ecd1e419ba5f83c37fe09eb1ebfb35109300c6c0b0bc')
 
 prepare() {
   cd "$pkgname-$pkgver"
