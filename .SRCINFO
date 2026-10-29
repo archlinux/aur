@@ -1,0 +1,22 @@
+pkgbase = herdr-core-bin
+	pkgdesc = Background server that keeps Herdr terminals and coding agents running
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://herdr.dev/core/
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = herdr-core=0.1.13
+	provides = hc=0.1.13
+	conflicts = herdr-core
+	conflicts = hc
+	options = !strip
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/herdrdev/herdr-core/master/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = herdr-core-bin-0.1.13-x86_64.tar.gz::https://releases.herdr.dev/core/0.1.13/herdr-core-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d0dbfdd6e060832c629a6aed03687165479baceab5a5545a103490d0e4adab8c
+	source_aarch64 = herdr-core-bin-0.1.13-aarch64.tar.gz::https://releases.herdr.dev/core/0.1.13/herdr-core-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 82abc30deaf6e7daeca3c60eefc12708f0210f945c28062674be71fcfde17bd5
+
+pkgname = herdr-core-bin
