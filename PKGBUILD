@@ -20,7 +20,7 @@ optdepends=(
 # Rust uses (lld) cannot read: every aws_lc symbol came out undefined.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/foxkyong/liveside/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f14d33f61410d2b94828b0b07f81e6f29d65d70a8a2c8241619badc7e1c8c679')
 
 prepare() {
   cd "$pkgname-$pkgver"

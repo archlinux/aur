@@ -21,6 +21,6 @@ pkgbase = liveside
 	optdepends = python: the example bot
 	options = !lto
 	source = liveside-0.9.0.tar.gz::https://github.com/foxkyong/liveside/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = f14d33f61410d2b94828b0b07f81e6f29d65d70a8a2c8241619badc7e1c8c679
 
 pkgname = liveside
