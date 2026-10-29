@@ -13,7 +13,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/spartanz51/tutabridge"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'dbus')
-makedepends=('rust' 'cargo' 'git' 'cmake' 'nasm' 'dbus' 'pkgconf')
+makedepends=('python' 'rust' 'cargo' 'git' 'cmake' 'nasm' 'dbus' 'pkgconf')
 optdepends=('gnome-keyring: persist the Tuta session across reboots (Secret Service)'
             'kwallet: alternative Secret Service provider')
 provides=('tutabridge')
@@ -35,7 +35,9 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	# The Tuta Rust SDK is a git submodule and the build needs it.
+	git submodule sync
 	git submodule update --init --recursive
+	python scripts/sdk-prepare.py
 	# Fetch crates up-front so build() can run fully offline (--frozen).
 	export CARGO_HOME="$srcdir/cargo-home"
 	cargo fetch --locked
