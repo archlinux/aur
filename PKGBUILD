@@ -1,7 +1,7 @@
 # Maintainer: João Figueiredo <jf.mundox@gmail.com>
 
 pkgname=dragon-media-backend-git
-pkgver=0.83.0_r428.g049f78a
+pkgver=0.83.0_r429.g7020017
 pkgrel=1
 pkgdesc='Qt C++ library intended for desktop music players'
 url="https://invent.kde.org/libraries/${pkgname%-git}"
@@ -14,7 +14,7 @@ makedepends=(git extra-cmake-modules-git libpipewire libpulse)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+$url.git"
-         https://raw.githubusercontent.com/mborgerding/kissfft/refs/heads/master/kissfft.hh) # The kissfft package is missing this header
+         https://github.com/mborgerding/kissfft/blob/f3fd3a58f1b98972d0f06a1db775a984198cb788/kissfft.hh) # The kissfft package is missing this header
 sha256sums=('SKIP'
             '0a31467599b981d784f53a944c19e6991aa96eee703ab424d648e436b2718a8d')
 pkgver() {

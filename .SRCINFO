@@ -1,6 +1,6 @@
 pkgbase = dragon-media-backend-git
 	pkgdesc = Qt C++ library intended for desktop music players
-	pkgver = 0.83.0_r428.g049f78a
+	pkgver = 0.83.0_r429.g7020017
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/dragon-media-backend
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = dragon-media-backend-git
 	provides = dragon-media-backend
 	conflicts = dragon-media-backend
 	source = git+https://invent.kde.org/libraries/dragon-media-backend.git
-	source = https://raw.githubusercontent.com/mborgerding/kissfft/refs/heads/master/kissfft.hh
+	source = https://github.com/mborgerding/kissfft/blob/f3fd3a58f1b98972d0f06a1db775a984198cb788/kissfft.hh
 	sha256sums = SKIP
 	sha256sums = 0a31467599b981d784f53a944c19e6991aa96eee703ab424d648e436b2718a8d
 
