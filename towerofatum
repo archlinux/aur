@@ -14,4 +14,6 @@ if [ -z "$ATUM_NO_LAUNCHER" ] && [ -x /opt/towerofatum/TowerOfAtumLauncher ] && 
 fi
 state="${XDG_STATE_HOME:-$HOME/.local/state}/towerofatum"
 mkdir -p "$state"
+# The last session's log stays as client-prev.log (the launcher does the same: Launcher/Core/GameStarter.cs).
+[ -f "$state/client.log" ] && mv -f "$state/client.log" "$state/client-prev.log"
 exec /opt/towerofatum/TowerOfAtum -logFile "$state/client.log" "$@"
