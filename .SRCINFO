@@ -1,8 +1,8 @@
 pkgbase = nogforge
 	pkgdesc = Packages the KognogOS way, in a terminal, on top of nog: installed apps, search, install, readable updates and clean-up for repositories, AUR, Flatpak and Snap. Arch Linux / KognogOS, any desktop or none, works on a text console
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
-	url = https://github.com/jetomev/nogforge
+	url = https://github.com/jetomev/forge-suite/tree/main/nogforge
 	arch = any
 	license = GPL3
 	checkdepends = desktop-file-utils
@@ -14,10 +14,10 @@ pkgbase = nogforge
 	optdepends = archlinux-appstream-data: app names and category badges
 	optdepends = flatpak: the Flatpak pages (shown only when it is installed)
 	optdepends = snapd: the Snap pages (shown only when it is installed)
-	source = nogforge-1.5.0.tar.gz::https://github.com/jetomev/nogforge/releases/download/v1.5.0/nogforge-1.5.0.tar.gz
-	source = nogforge-1.5.0.tar.gz.asc::https://github.com/jetomev/nogforge/releases/download/v1.5.0/nogforge-1.5.0.tar.gz.asc
+	source = nogforge-1.6.0.tar.gz::https://github.com/jetomev/forge-suite/releases/download/nogforge-v1.6.0/nogforge-1.6.0.tar.gz
+	source = nogforge-1.6.0.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/nogforge-v1.6.0/nogforge-1.6.0.tar.gz.asc
 	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
-	sha256sums = 71196eb3c622fbafe0b03e23962a718b84de55ec7bd29cb87c4b032120fdd589
+	sha256sums = 66008380e54d005a5ac1bef119bb297d573ab0196f228a41b1b3077e0625f61d
 	sha256sums = SKIP
 
 pkgname = nogforge

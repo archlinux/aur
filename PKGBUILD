@@ -2,14 +2,16 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nogforge
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Packages the KognogOS way, in a terminal, on top of nog: installed apps, search, install, readable updates and clean-up for repositories, AUR, Flatpak and Snap. Arch Linux / KognogOS, any desktop or none, works on a text console"
 arch=('any')
-url="https://github.com/jetomev/nogforge"
+# nogForge lives in the Forge Suite repository since 2026-10-22 (D-60); releases are tagged nogforge-vX.Y.Z there
+_repo="https://github.com/jetomev/forge-suite"
+url="${_repo}/tree/main/nogforge"
 license=('GPL3')
 # nog 2.0.0: the every-source rows (`list`, `search --json`) and the maintenance
-# report (`clean --json`) nogForge 1.5.0 reads. forgekit 0.10.0: the menu's keys,
+# report (`clean --json`) nogForge reads since 1.5.0. forgekit 0.10.0: the menu's keys,
 # the run window. Both are on the AUR first: dependency order.
 depends=('python' 'python-textual' 'python-rich' 'python-forgekit>=0.10.0' 'nog>=2.0.0')
 # 1.5.0 (#16): the launcher entry is validated in check()
@@ -19,9 +21,9 @@ checkdepends=('desktop-file-utils')
 optdepends=('archlinux-appstream-data: app names and category badges'
             'flatpak: the Flatpak pages (shown only when it is installed)'
             'snapd: the Snap pages (shown only when it is installed)')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('71196eb3c622fbafe0b03e23962a718b84de55ec7bd29cb87c4b032120fdd589'
+source=("${pkgname}-${pkgver}.tar.gz::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::${_repo}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
+sha256sums=('66008380e54d005a5ac1bef119bb297d573ab0196f228a41b1b3077e0625f61d'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
