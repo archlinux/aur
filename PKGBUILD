@@ -2,14 +2,14 @@
 
 pkgname="sqlite-web"
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based SQLite database browser"
 url="https://github.com/coleifer/sqlite-web"
 license=("MIT")
 arch=("any")
 provides=("sqlite_web")
 conflicts=("python-sqlite-web")
-depends=("python-flask"
+depends=("python" "python-flask"
          "python-peewee"
          "python-pygments")
 makedepends=("python-build"
