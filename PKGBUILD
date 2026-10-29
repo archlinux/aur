@@ -1,6 +1,6 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 pkgname=wine-nvidia-libs-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="SveSop's NVIDIA CUDA/NVENC/OptiX Wine modules (binary release, fakedll layout)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${_asset}::https://github.com/SveSop/nvidia-libs/releases/download/v${p
 )
 
 
-sha256sums=('ca672f8e1ac3ffa2df1c02ffe5608e725eda168c0b5c6f498cb005439bbe4e85'
+sha256sums=('2135837086b07d87a421efe99804db00c4d8304c37329a1c4fd628c5a6202317'
             '12a0cba1f5cf6489e5ecee7ebab5ad9f60fa2b78dc6507afeb848f43d039e751')
 
 package() {

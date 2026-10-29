@@ -1,6 +1,6 @@
 pkgbase = wine-nvidia-libs-bin
 	pkgdesc = SveSop's NVIDIA CUDA/NVENC/OptiX Wine modules (binary release, fakedll layout)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/SveSop/nvidia-libs
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = wine-nvidia-libs-bin
 	conflicts = wine-nvenc-git
 	conflicts = wine-nvoptix-git
 	conflicts = wine-nvidia-libs-git
-	source = nvidia-libs-v1.0.3-fakedll.tar.xz::https://github.com/SveSop/nvidia-libs/releases/download/v1.0.3/nvidia-libs-v1.0.3-fakedll.tar.xz
-	source = LICENSE::https://raw.githubusercontent.com/SveSop/nvidia-libs/v1.0.3/LICENSE
-	sha256sums = ca672f8e1ac3ffa2df1c02ffe5608e725eda168c0b5c6f498cb005439bbe4e85
+	source = nvidia-libs-v1.0.4-fakedll.tar.xz::https://github.com/SveSop/nvidia-libs/releases/download/v1.0.4/nvidia-libs-v1.0.4-fakedll.tar.xz
+	source = LICENSE::https://raw.githubusercontent.com/SveSop/nvidia-libs/v1.0.4/LICENSE
+	sha256sums = 2135837086b07d87a421efe99804db00c4d8304c37329a1c4fd628c5a6202317
 	sha256sums = 12a0cba1f5cf6489e5ecee7ebab5ad9f60fa2b78dc6507afeb848f43d039e751
 
 pkgname = wine-nvidia-libs-bin
