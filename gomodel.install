@@ -5,16 +5,9 @@ post_install() {
   cat <<EOF
 
 gomodel installed (git build of upstream main). The default config needs NO
-editing to start.
+editing to start. Manual steps below; copy-paste one-liner at the bottom.
 
---- Quick setup (copy ONE line) -------------------------------------------
-
-Per-user (only your session, starts at login):
-  mkdir -p ~/.config/gomodel && printf 'GOMODEL_ENCRYPTION_KEY=%s\n' "$(openssl rand -base64 32)" > ~/.config/gomodel/env && chmod 600 ~/.config/gomodel/env && systemctl --user enable --now gomodel
-
-Then check:  curl -s localhost:8080/healthz
-
---- Details ---------------------------------------------------------------
+--- Manual setup ----------------------------------------------------------
 
 Per-user service (starts at login; secrets load from the env file at
 unit start, i.e. at login for default.target units):
@@ -30,6 +23,13 @@ Plugins (needs the 'go' package, optdepend):
   gomodel plugin build -o ~/.local/share/gomodel/plugins/foo.so ./my-plugin
   Enable in config: plugins: { enabled: true, search_paths: [...], load: [...] }
   The .so must be built with the same 'go' version as this package was.
+
+--- Quick setup (copy ONE line) -------------------------------------------
+
+Per-user (only your session, starts at login):
+  mkdir -p ~/.config/gomodel && printf 'GOMODEL_ENCRYPTION_KEY=%s\n' "$(openssl rand -base64 32)" > ~/.config/gomodel/env && chmod 600 ~/.config/gomodel/env && systemctl --user enable --now gomodel
+
+Then check:  curl -s localhost:8080/healthz
 
 ----------------------------------------------------------------------------
 
