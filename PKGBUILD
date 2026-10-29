@@ -1,8 +1,8 @@
 # Maintainer: David Kantun <dkantun@gmail.com>
 
 pkgname=libria
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
 arch=('x86_64')
 url="https://github.com/Gargadon/libria"
@@ -18,7 +18,7 @@ provides=("${pkgname}")
 # GCC LTO objects from ring cannot be linked by Rust's lld linker.
 options=('!lto')
 source=("${url}/archive/v${pkgver}.tar.gz" 'system-browser.patch')
-sha256sums=('34c3ba9494e721f9d8b293b10216b03253e916d92b56ad8521147ad916378dbe'
+sha256sums=('5f92a31ff521fc52bcf951051da564cb3c683777580c8be1391b4374618306a8'
             'a42cb5f76fe73df5c4db57ad5a82a0dae1e506dc6567ef702a847ae93c9f2446')
 
 prepare() {
