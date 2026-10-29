@@ -1,13 +1,13 @@
 pkgbase = python-shandy-sqlfmt
 	pkgdesc = An opinionated CLI tool that formats your SQL files
 	pkgver = 0.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/shandy-sqlfmt/
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry
+	makedepends = python-hatchling
 	makedepends = python-wheel
 	depends = python
 	depends = python-click

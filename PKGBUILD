@@ -3,7 +3,7 @@
 pkgname="python-shandy-sqlfmt"
 _pkgname="${pkgname/python-/}"
 pkgver=0.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated CLI tool that formats your SQL files"
 url="https://pypi.org/project/shandy-sqlfmt/"
 license=("Apache-2.0")
@@ -22,7 +22,7 @@ depends=("python"
         )
 makedepends=("python-build"
              "python-installer"
-             "python-poetry"
+             "python-hatchling"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname/-/_}-${pkgver}.tar.gz")
