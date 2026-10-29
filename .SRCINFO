@@ -1,6 +1,6 @@
 pkgbase = rustconn-appimage
 	pkgdesc = Modern GTK4 connection manager for SSH, RDP, VNC and SPICE (AppImage)
-	pkgver = 0.24.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
@@ -49,15 +49,15 @@ pkgbase = rustconn-appimage
 	optdepends = virt-viewer: External SPICE client
 	optdepends = waypipe: Wayland application forwarding over SSH
 	optdepends = xorg-xwayland: Run the upstream X11 AppImage on Wayland
-	provides = rustconn=0.24.0
+	provides = rustconn=0.24.1
 	conflicts = rustconn
-	noextract = RustConn-0.24.0-x86_64.AppImage
+	noextract = RustConn-0.24.1-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = https://github.com/totoshko88/RustConn/releases/download/v0.24.0/RustConn-0.24.0-x86_64.AppImage
+	source = https://github.com/totoshko88/RustConn/releases/download/v0.24.1/RustConn-0.24.1-x86_64.AppImage
 	source = io.github.totoshko88.RustConn-rdp.xml
 	source = io.github.totoshko88.RustConn-vv.xml
-	sha256sums = 630f0a0bfa1be955d9c7e2ac2debb85070697d17a96aa7f9a9bebba151951c54
+	sha256sums = 68d8bd7a214402af837b7bca0c3bf507ec159177ebeb1de7f7ebabf7854bf497
 	sha256sums = 6752641f8272fae15901cc4de4052514e846821fbeba797baa8d81850d508cda
 	sha256sums = e833e539337e3a348f21a6757f015bfc7994df0789771880550350f0d04c45f0
 
