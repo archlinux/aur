@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.2.13
+pkgver=1.3.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Desktop app for Jasper Knowledge Management."
@@ -15,7 +15,6 @@ depends=(
     "electron${_electronversion}"
     'docker'
     'docker-compose'
-    'nodejs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -23,7 +22,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('423e81522069eb36111cb8c56c2f39b793f684d5a54be6f238c545778b54bedc'
+sha256sums=('110f03f3d3213eb88107609ef5b0e1d03e447d03e2b8e377f4e578be12d851ef'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
