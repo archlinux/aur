@@ -1,0 +1,16 @@
+pkgbase = models
+	pkgdesc = TUI and CLI for browsing AI models, benchmarks, coding agents and provider statuses
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/reyamira/models
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = models-0.14.1.tar.gz::https://github.com/reyamira/models/archive/refs/tags/v0.14.1.tar.gz
+	sha256sums = 74361e3fde193772cd0db2ce4c9394487e437c4d7e416ebfafb0af661291d58a
+
+pkgname = models
