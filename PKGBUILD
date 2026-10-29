@@ -7,7 +7,7 @@
 pkgbase=droidcam
 pkgname=(droidcam v4l2loopback-dc-dkms)
 _name=droidcam-linux-client
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 epoch=1
 pkgdesc="A tool to turn your phone/tablet into a wireless/usb webcam"
@@ -20,55 +20,60 @@ optdepends=('android-tools: for Android USB connection'
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "dkms.conf"
         "${pkgbase}.conf")
-sha256sums=('00ec96ec7a660e4e3ffb2adc536d14af89c635766dadbf53326c1216187021f8'
+sha256sums=('2850f52d1d779e037f833fdf68518c31a88981d0897743ebdb9a2c8492e8033f'
             '20de9d14877732f2f75c21bdd4c335c71dcaeccab4ce348c6c0a210f622ceed2'
             '1d4b3ff98b4af9de77a24d1b6fad6e004deadf1f157eb800aa878ba1e7693dac')
 
 prepare() {
-  # Generate the module loading configuration files
-  echo "options v4l2loopback_dc width=640 height=480" >| "${pkgbase}.modprobe.conf"
+    cd "${_name}-${pkgver}"
+    sed -i 's|/opt/droidcam-icon.png|/usr/share/pixmaps/droidcam.png|' src/droidcam.c
+    sed -e 's|/usr/local/bin/||' \
+        -e 's|/opt/droidcam-icon.png|droidcam|' \
+        -i droidcam.desktop
+    sed -i "s/@PKGVER@/${pkgver}/" "${srcdir}/dkms.conf"
 
-  sed "s/@PKGVER@/${pkgver}/" -i dkms.conf
-
-  cd "${_name}-${pkgver}"
-  sed 's|/opt/droidcam-icon.png|/usr/share/pixmaps/droidcam.png|' -i src/droidcam.c
-  sed -e 's|/usr/local/bin/||' -e 's|/opt/droidcam-icon.png|droidcam|' -i droidcam.desktop
+    # Generate the module loading configuration files
+    echo "options v4l2loopback_dc width=640 height=480" >|"v4l2loopback/${pkgbase}.modprobe.conf"
 }
 
 build() {
-  cd "${_name}-${pkgver}"
-
-  # All JPEG* parameters are needed to use shared version of libturbojpeg instead of
-  # static one.
-  #
-  # Also libusbmuxd requires an override while linking.
-  make JPEG_DIR='/usr/lib' JPEG_INCLUDE='/usr/include' USBMUXD='-lusbmuxd-2.0'
+    cd "${_name}-${pkgver}"
+    # All JPEG* parameters are needed to use shared version of libturbojpeg instead of static one.
+    # Also libusbmuxd requires an override while linking.
+    make JPEG_DIR='/usr/lib' JPEG_INCLUDE='/usr/include' USBMUXD='-lusbmuxd-2.0'
 }
 
 package_droidcam() {
-  depends=('alsa-lib' 'ffmpeg' 'glib2' 'glibc' 'gtk3' 'libappindicator-gtk3' 'libjpeg-turbo' 'libusbmuxd' 'libx11' 'pango' 'speex' 'V4L2LOOPBACK-MODULE')
+    depends=('alsa-lib'
+             'ffmpeg'
+             'glib2'
+             'glibc'
+             'gtk3'
+             'libappindicator-gtk3'
+             'libjpeg-turbo'
+             'libusbmuxd'
+             'libx11'
+             'pango'
+             'speex'
+             'V4L2LOOPBACK-MODULE')
 
-  cd "${_name}-${pkgver}"
-  # Install droidcam program files
-  install -Dm755 "${pkgname}" "${pkgname}-cli" -t "${pkgdir}/usr/bin"
-  install -Dm644 icon2.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm644 "${srcdir}/${pkgname}.conf" -t "${pkgdir}/etc/modules-load.d"
+    cd "${_name}-${pkgver}"
+    install -Dm755 "${pkgname}" "${pkgname}-cli" -t "${pkgdir}/usr/bin"
+    install -Dm644 icon2.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}.conf" -t "${pkgdir}/etc/modules-load.d"
 }
 
 package_v4l2loopback-dc-dkms() {
-  pkgdesc='v4l2-loopback kernel module - DroidCam version'
-  arch=('any')
-  depends=('dkms')
-  provides=('V4L2LOOPBACK-MODULE')
-  backup=("etc/modprobe.d/${pkgbase}.conf")
+    pkgdesc='v4l2-loopback kernel module - DroidCam version'
+    arch=('any')
+    depends=('dkms')
+    provides=('V4L2LOOPBACK-MODULE')
+    backup=("etc/modprobe.d/${pkgbase}.conf")
 
-  _pkgname='v4l2loopback-dc'
+    _pkgname='v4l2loopback-dc'
 
-  # Install module loading configuration
-  install -Dm644 "${pkgbase}.modprobe.conf" "${pkgdir}/etc/modprobe.d/${pkgbase}.conf"
-
-  # Install module source
-  cd "${_name}-${pkgver}/v4l2loopback"
-  install -Dm644 Makefile test.c v4l2loopback-dc.c "${srcdir}/dkms.conf" -t "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+    cd "${_name}-${pkgver}/v4l2loopback"
+    install -Dm644 "${pkgbase}.modprobe.conf" "${pkgdir}/etc/modprobe.d/${pkgbase}.conf"
+    install -Dm644 Makefile test.c v4l2loopback-dc.c "${srcdir}/dkms.conf" -t "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 }
