@@ -1,77 +1,47 @@
 # Maintainer: Josh Dye <jpenguin@duck.com>
+#
+# Fonts are downloaded from Apple at build time. Apple's license does not
+# allow redistributing the font files, so share this recipe, NOT the built
+# package.
+
 pkgname=apple-sf-fonts
 pkgver=2026.01.20
-pkgrel=1
-pkgdesc="Apple San Francisco, SF Compact, SF Mono, NY, and regional fonts"
+pkgrel=2
+pkgdesc="Apple San Francisco, SF Compact, SF Mono, New York, and regional fonts"
 arch=('any')
 url="https://developer.apple.com/fonts/"
-license=('custom')
-depends=('p7zip' 'cpio')
-source=(
-  "SF-Pro.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
-  "SF-Compact.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg"
-  "SF-Mono.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg"
-  "NY.dmg::https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
-  "SF-Arabic.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg"
-  "SF-Armenian.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Armenian.dmg"
-  "SF-Georgian.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Georgian.dmg"
-  "SF-Hebrew.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Hebrew.dmg"
-)
+license=('LicenseRef-Apple-SF-Fonts')
+makedepends=('7zip' 'libarchive')
 
-# No checksums for brevity; add sha256sums in a real PKGBUILD
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+_dl=https://devimages-cdn.apple.com/design/resources/download
+_dmgs=(SF-Pro SF-Compact SF-Mono NY SF-Arabic SF-Armenian SF-Georgian SF-Hebrew)
 
-prepare() {
-  # Nothing to prepare
-  true
-}
+source=("extract-dmg.sh")
+noextract=()
+sha256sums=('dcd1091cb6a61ef98996aaa9c3025b3b7dd661d1486a39078d0e975264a45bd6')
+for _d in "${_dmgs[@]}"; do
+  source+=("$_d.dmg::$_dl/$_d.dmg")
+  noextract+=("$_d.dmg")
+  sha256sums+=('SKIP')   # Apple URLs are unversioned; pin after downloading
+done
 
 build() {
-  # Helper to extract a font package from a dmg
-  extract_font() {
-    local dmg=$1
-    local pkg_dir=$2
-    local pkg_name=$3
-    local payload_dir=$4
+  local d
+  rm -rf extracted
+  for d in "${_dmgs[@]}"; do
+    bash "$srcdir/extract-dmg.sh" "$srcdir/$d.dmg" "$srcdir/extracted/$d"
+  done
 
-    # Extract the .pkg from the dmg
-    7z e "$dmg" "$pkg_dir/$pkg_name.pkg"
-
-    # Extract the Payload cpio archive from the .pkg
-    7z e "$pkg_name.pkg" "$payload_dir/Payload"
-
-    # Extract the actual font files
-    7z x "./Payload"
-    cpio -idv < "./Payload~"
-
-    # Clean up temporary files
-    rm -f ./Payload* ./Pay* "$pkg_name.pkg"
-  }
-
-  # SF Pro
-  extract_font "SF-Pro.dmg" "SFProFonts" "SF Pro Fonts" "SFProFonts.pkg"
-
-  # SF Compact
-  extract_font "SF-Compact.dmg" "SFCompactFonts" "SF Compact Fonts" "SFCompactFonts.pkg"
-
-  # SF Mono
-  extract_font "SF-Mono.dmg" "SFMonoFonts" "SF Mono Fonts" "SFMonoFonts.pkg"
-
-  # NY
-  extract_font "NY.dmg" "NYFonts" "NY Fonts" "NYFonts.pkg"
-
-  # Regional fonts
-  extract_font "SF-Arabic.dmg" "SFArabicFonts" "SF Arabic Fonts" "SFArabicFonts.pkg"
-  extract_font "SF-Armenian.dmg" "SFArmenianFonts" "SF Armenian Fonts" "SFArmenianFonts.pkg"
-  extract_font "SF-Georgian.dmg" "SFGeorgianFonts" "SF Georgian Fonts" "SFGeorgianFonts.pkg"
-  extract_font "SF-Hebrew.dmg" "SFHebrewFonts" "SF Hebrew Fonts" "SFHebrewFonts.pkg"
+  if [[ -z $(find extracted -type f \( -iname '*.ttf' -o -iname '*.otf' -o -iname '*.ttc' \) -print -quit) ]]; then
+    echo "ERROR: no font files found after extraction" >&2
+    return 1
+  fi
 }
 
 package() {
-  # Install all extracted .ttf/.otf files into the package
-  mkdir -p "$pkgdir/usr/share/fonts/AppleSF"
-  install -Dm644 Library/Fonts/*.ttf Library/Fonts/*.otf "$pkgdir/usr/share/fonts/AppleSF/"
-
-  # Optional: create a fontconfig cache at install time
-  # (pacman will run fc-cache automatically)
+  local f
+  while IFS= read -r -d '' f; do
+    install -Dm644 "$f" "$pkgdir/usr/share/fonts/$pkgname/${f##*/}"
+  done < <(find "$srcdir/extracted" -type f \
+    \( -iname '*.ttf' -o -iname '*.otf' -o -iname '*.ttc' \) -print0)
 }
