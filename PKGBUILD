@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <nomadx@users.noreply.github.com>
 pkgname=privacybit
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Privacy audit for Linux desktops"
 arch=('x86_64' 'aarch64')
