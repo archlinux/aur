@@ -1,9 +1,9 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkdocs-mermaid2-plugin"
-pkgver=1.1.0
+pkgver=1.2.3
 _sdist=mkdocs_mermaid2_plugin
-pkgrel=2
+pkgrel=1
 pkgdesc="A Mermaid graphs plugin for MkDocs"
 url="https://github.com/fralau/mkdocs-mermaid2-plugin"
 license=("MIT")
