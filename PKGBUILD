@@ -2,7 +2,7 @@
 
 pkgname=wherry
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern dual-pane file manager with SFTP/FTP/FTPS support"
 arch=('x86_64')
 url='https://git.wihuk.pro/boba/Wherry'
@@ -20,12 +20,13 @@ depends=(
   'libssh2'
   'dbus'
 )
-makedepends=('cargo' 'pkg-config')
+makedepends=('cargo' 'pkg-config' 'git')
 optdepends=('mold: faster linking')
-source=("$pkgname-$pkgver.tar.gz::https://git.wihuk.pro/boba/Wherry/archive/v$pkgver.tar.gz")
-sha256sums=('ffb32d9e03e3261d042c7b8f8a00fc3874929f0a0ceb7cad1487523eaf14f82a')
+source=("git+https://git.wihuk.pro/boba/Wherry.git#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('CB67D9090663FFB2E21E0CB0253067914055423B')  # loki5512344
 
-_repodir="wherry"
+_repodir="Wherry"
 
 prepare() {
   cd "$srcdir/$_repodir"
