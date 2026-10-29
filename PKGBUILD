@@ -2,7 +2,7 @@
 
 pkgname="cre2"
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="C language wrapper for RE2, the regular expressions library from Google"
 arch=("x86_64" "aarch64")
 url="https://github.com/marcomaggi/cre2"
@@ -14,7 +14,8 @@ sha256sums=('faae21540e7889b811263942726aa1edce6b8d42c37e15d8e211da8a1a3bc43b')
 
 prepare(){
  cd "$pkgname-$pkgver"
- # current re2 is built on abseil and needs C++17
+ # current re2 is built on abseil and needs C++17, the bundled macro only knows 11 and 14
+ cp /usr/share/aclocal/ax_cxx_compile_stdcxx.m4 meta/autoconf/m4_ax_cxx_compile_stdcxx.m4
  sed -i 's/AX_CXX_COMPILE_STDCXX_11(noext,mandatory)/AX_CXX_COMPILE_STDCXX(17,noext,mandatory)/' configure.ac
  autoreconf -fi
 }
