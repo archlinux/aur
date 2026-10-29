@@ -24,6 +24,7 @@
 
 pkgname=sccache-jetm
 _upstream=sccache
+_target=x86_64-unknown-linux-gnu
 pkgver=0.19.0
 pkgrel=1
 pkgdesc='Shared compilation cache - build with distributed-compile fixes'
@@ -53,10 +54,8 @@ source=(
   "$_upstream-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "${_patches[@]}"
 )
-sha256sums=(
-  '2da079033cd19fd8e2a09f56f9a7d9d1a72d591ff3acdc47d95b920145cf2671'
-  '1585533763ec311f6564bf4c247189135acd5e4507b1960053ffe21d8c5f7d94'  # 0001-jetm-carry.patch
-)
+sha256sums=('2da079033cd19fd8e2a09f56f9a7d9d1a72d591ff3acdc47d95b920145cf2671'
+            '1585533763ec311f6564bf4c247189135acd5e4507b1960053ffe21d8c5f7d94')
 
 prepare() {
   cd "$_upstream-$pkgver"
@@ -80,12 +79,17 @@ build() {
   # Cluster fix: target znver4 (Zen 4) so the binary runs on both the Zen 5
   # scheduler/build host and the Zen 4 build node. A native (znver5) build
   # SIGILLs on Zen 4. znver5 is ISA-backward-compatible with znver4.
-  RUSTFLAGS="${RUSTFLAGS} -C target-cpu=znver4" cargo build --release --frozen --features all,dist-server
+  #
+  # --target keeps RUSTFLAGS off build scripts and proc macros, which run on the
+  # build host. Without it they are compiled for znver4 too and SIGILL on any
+  # other CPU, as the GitHub runner did on the first CI build.
+  RUSTFLAGS="${RUSTFLAGS} -C target-cpu=znver4" \
+    cargo build --release --frozen --features all,dist-server --target "$_target"
 }
 
 package() {
   cd "$_upstream-$pkgver"
-  install -Dt "$pkgdir/usr/bin" target/release/sccache{,-dist}
+  install -Dt "$pkgdir/usr/bin" "target/$_target/release/"sccache{,-dist}
   install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 README.md docs/*
 }
 
