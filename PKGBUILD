@@ -102,8 +102,8 @@ package() {
   install -d "${pkgdir}/usr/share/${pkgname}"
   cp -avR scripts/ "${pkgdir}/usr/share/${pkgname}/"
 
-  install -Dm644 scripts/completions/* -t "${pkgdir}/usr/share/bash-completion/completions/"
-  install -Dm644 scripts/completions/* -t "${pkgdir}/usr/share/zsh/site-functions/"
+  install -Dm644 scripts/completions/bash/* -t "${pkgdir}/usr/share/bash-completion/completions/"
+  install -Dm644 scripts/completions/zsh/* -t "${pkgdir}/usr/share/zsh/site-functions/"
   install -Dm644 scripts/t2_aliases -t "${pkgdir}/usr/share/bash-completion/completions/"
 
   for script in b64ex fpsGplt gpq3x osStat plot_monitoring protStat statGplt t2alive t2caplist t2dmon t2flowstat t2plot t2stat t2timeline t2viz topNStat; do
