@@ -1,7 +1,7 @@
 # Maintainer: prankstr <prankstr@users.noreply.github.com>
 # Keep depends/optdepends/options in sync across vibepanel, vibepanel-bin, and vibepanel-git.
 pkgname=vibepanel
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="A GTK4 panel for Wayland with notifications, OSD, and quick settings"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=('power-profiles-daemon: power profile switching in battery popover'
 options=(!lto !debug)
 conflicts=('vibepanel-bin' 'vibepanel-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/prankstr/vibepanel/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8b0adafc197a241c768e598d33df48ccd7e0395bf598de0a0fd2d67109758309')
+sha256sums=('999375815359fe984447e0a1129a13ecf2d45031e06194f47f8e885424abb96b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
