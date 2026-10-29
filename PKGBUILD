@@ -2,7 +2,7 @@
 # Public source by default. tools/build-arch.sh builds a committed local checkout.
 pkgbase=at1ass-shell-git
 pkgname=(at1ass-shell-git at1ass-shell-plugins-git at1ass-shell-greeter-git)
-pkgver=r297.91abb810
+pkgver=0.1.0.r2.g612d52e2
 pkgrel=1
 pkgdesc='Config-first Quickshell desktop shell for Hyprland'
 arch=(x86_64)
@@ -19,7 +19,9 @@ sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd shell
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    local _description
+    _description=$(git describe --tags --long --match 'v[0-9]*' --abbrev=8) || return
+    printf '%s\n' "$_description" | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
@@ -57,6 +59,7 @@ package_at1ass-shell-git() {
         'networkmanager: Wi-Fi, Ethernet and VPN control (running service required)'
         'bluez: Bluetooth control (running bluetooth service required)'
         'upower: battery and power-device status through the UPower service'
+        'accountsservice: shared user avatars for dashboard and greeter'
         'gnome-keyring: Secret Service provider for persistent network credentials; alternatives supported'
         'networkmanager-openvpn: OpenVPN authentication helper'
         'nm-connection-editor: external network profile editor'
@@ -110,7 +113,8 @@ package_at1ass-shell-greeter-git() {
     depends=("at1ass-shell-plugins-git=${pkgver}" 'quickshell>=0.3.2' 'hyprland>=0.56'
              greetd bash 'qt6-base>=6.8' 'qt6-declarative>=6.8' qt6-wayland qt6-svg systemd
              ttf-roboto ttf-dejavu ttf-material-symbols-variable)
-    optdepends=('greetd-regreet: fallback if the Quickshell greeter fails'
+    optdepends=('accountsservice: selected-user avatar from the system account service'
+                'greetd-regreet: fallback if the Quickshell greeter fails'
                 'upower: optional battery status in the greeter')
     provides=("at1ass-shell-greeter=${pkgver}")
     conflicts=(at1ass-shell-greeter)

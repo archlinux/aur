@@ -1,6 +1,6 @@
 pkgbase = at1ass-shell-git
 	pkgdesc = Config-first Quickshell desktop shell for Hyprland
-	pkgver = r297.91abb810
+	pkgver = 0.1.0.r2.g612d52e2
 	pkgrel = 1
 	url = https://github.com/At1ass/shell
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = at1ass-shell-git
 pkgname = at1ass-shell-git
 	pkgdesc = Config-first desktop shell for Hyprland
 	arch = any
-	depends = at1ass-shell-plugins-git=r297.91abb810
+	depends = at1ass-shell-plugins-git=0.1.0.r2.g612d52e2
 	depends = quickshell>=0.3.2
 	depends = hyprland>=0.56
 	depends = qt6-base>=6.8
@@ -60,6 +60,7 @@ pkgname = at1ass-shell-git
 	optdepends = networkmanager: Wi-Fi, Ethernet and VPN control (running service required)
 	optdepends = bluez: Bluetooth control (running bluetooth service required)
 	optdepends = upower: battery and power-device status through the UPower service
+	optdepends = accountsservice: shared user avatars for dashboard and greeter
 	optdepends = gnome-keyring: Secret Service provider for persistent network credentials; alternatives supported
 	optdepends = networkmanager-openvpn: OpenVPN authentication helper
 	optdepends = nm-connection-editor: external network profile editor
@@ -78,7 +79,7 @@ pkgname = at1ass-shell-git
 	optdepends = hypridle: idle locking and suspend integration
 	optdepends = vdirsyncer: external CalDAV synchronization
 	optdepends = uwsm: optional graphical-session and environment management
-	provides = at1ass-shell=r297.91abb810
+	provides = at1ass-shell=0.1.0.r2.g612d52e2
 	conflicts = at1ass-shell
 
 pkgname = at1ass-shell-plugins-git
@@ -97,13 +98,13 @@ pkgname = at1ass-shell-plugins-git
 	depends = glib2
 	depends = libsecret
 	optdepends = nvidia-utils: NVIDIA GPU statistics through optional dynamically loaded NVML
-	provides = at1ass-shell-plugins=r297.91abb810
+	provides = at1ass-shell-plugins=0.1.0.r2.g612d52e2
 	conflicts = at1ass-shell-plugins
 
 pkgname = at1ass-shell-greeter-git
 	pkgdesc = Optional greetd greeter for the at1ass desktop shell
 	arch = any
-	depends = at1ass-shell-plugins-git=r297.91abb810
+	depends = at1ass-shell-plugins-git=0.1.0.r2.g612d52e2
 	depends = quickshell>=0.3.2
 	depends = hyprland>=0.56
 	depends = greetd
@@ -116,9 +117,10 @@ pkgname = at1ass-shell-greeter-git
 	depends = ttf-roboto
 	depends = ttf-dejavu
 	depends = ttf-material-symbols-variable
+	optdepends = accountsservice: selected-user avatar from the system account service
 	optdepends = greetd-regreet: fallback if the Quickshell greeter fails
 	optdepends = upower: optional battery status in the greeter
-	provides = at1ass-shell-greeter=r297.91abb810
+	provides = at1ass-shell-greeter=0.1.0.r2.g612d52e2
 	conflicts = at1ass-shell-greeter
 	backup = etc/greetd/greeter.json
 	backup = etc/greetd/hyprland-greeter.conf
