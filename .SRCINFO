@@ -1,0 +1,27 @@
+pkgbase = nemo-speech-cpu-nightly-bin
+	pkgdesc = Native speech recognition, synthesis, and translation with CPU support (nightly)
+	pkgver = 20261028.203448
+	pkgrel = 1
+	url = https://github.com/NVIDIA/NeMo-Speech.cpp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = MIT
+	license = MIT-0
+	license = GPL-3.0-or-later WITH GCC-exception-3.1
+	depends = glibc
+	optdepends = curl: model downloads
+	optdepends = alsa-lib: microphone capture through ALSA
+	optdepends = libpulse: microphone capture through PulseAudio
+	optdepends = jack: microphone capture through JACK
+	provides = nemo-speech=20261028.203448
+	conflicts = nemo-speech
+	options = !strip
+	options = !debug
+	source_x86_64 = nemo-speech-20261028.203448-linux-x86_64-cpu.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-x86_64-cpu.tar.gz
+	sha256sums_x86_64 = 12b9c8f0f0280731c0a5d47eef1f1380499b688038c872661ff9cd935d27a974
+	source_aarch64 = nemo-speech-20261028.203448-linux-aarch64-cpu.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-aarch64-cpu.tar.gz
+	sha256sums_aarch64 = a2b196af8b5f56e9d01ec362f8ff8ce8f6effb82726f6f280d37428de8491d1c
+
+pkgname = nemo-speech-cpu-nightly-bin
