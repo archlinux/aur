@@ -1,3 +1,7 @@
 post_upgrade() {
-	ln -s "/usr/share/yaabsa/yaabsa" "/usr/bin/yaabsa" || true
+	ln -v -s "/usr/share/yaabsa/yaabsa" "/usr/bin/yaabsa" || true
+}
+
+post_remove() {
+	rm -v "/usr/bin/yaabsa" || true
 }

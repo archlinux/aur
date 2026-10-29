@@ -3,7 +3,7 @@
 
 # add relevant files
 !.gitignore
+!.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
 !yaabsa.install
-!.nvchecker.toml
