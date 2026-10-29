@@ -7,7 +7,10 @@
 #
 # AmbientCapabilities grants the bind to port 443 without setcap on the
 # binary, so replacing the binary on upgrade does not lose it. Set
-# TEPHRO_LISTEN or edit /var/lib/tephro/tephro.toml to listen elsewhere.
+# TEPHRO_LISTEN or edit /var/lib/tephro/default/tephro.toml to listen elsewhere.
+# The instance lives in /var/lib/tephro/default; tephro-server@.service runs
+# more of them beside it, /var/lib/tephro/<name> each. An instance kept in
+# /var/lib/tephro itself moves into default at its first start.
 # `systemctl reload tephro-server` re-reads tephro.toml for the settings that can
 # change live (the log names the rest, which need a restart).
 # `sudo tephro-server admin upgrade` replaces /usr/local/bin/tephro-server with the newest
@@ -25,7 +28,7 @@ Wants=network-online.target
 Type=simple
 User=tephro
 Group=tephro
-Environment=TEPHRO_DATA_DIR=/var/lib/tephro
+Environment=TEPHRO_DATA_DIR=/var/lib/tephro/default
 Environment=TEPHRO_LISTEN=0.0.0.0:443
 ExecStart=/usr/local/bin/tephro-server serve
 ExecReload=/bin/kill -HUP $MAINPID
