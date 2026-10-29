@@ -2,7 +2,7 @@
 
 pkgname=beellama.cpp-cuda
 _pkgname=beellama.cpp
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="DFlash & TurboQuant fork of llama.cpp — up to 3x faster generation and 7.5x more KV cache (CUDA)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
   "beellama.conf"
   "beellama.service"
 )
-sha256sums=('0f687910b12f93b0fc83dfecf7f66582da3aa1304c5046177aee1acdd4f58f79'
+sha256sums=('70804696a26095a62c291f3c2b57570ddb53dfaea9fa2758bd6b70a2a8a8e660'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             'b019eb0dbc511f0e411214650184d1fb1fb39a40bce0f418d53dd71bf244e01b')
 
