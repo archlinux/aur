@@ -2,7 +2,7 @@
 
 pkgname="mkdocs-with-pdf"
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin to generate a single PDF file from a MkDocs repository"
 url="https://github.com/orzih/mkdocs-with-pdf"
 license=("MIT")
@@ -10,16 +10,16 @@ arch=("any")
 conflicts=("python-mkdocs-with-pdf-git")
 replaces=("python-mkdocs-with-pdf-git")
 depends=("python" "mkdocs" "python-beautifulsoup4" "python-libsass" "python-weasyprint")
-makedepends=("python-setuptools")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5977570d90296f67a1e622bbf6b23d931ff31765e035bf015de363cf808e467c')
 
 build(){
  cd "$pkgname-$pkgver"
- python setup.py build
+ python -m build --wheel --no-isolation
 }
 
 package(){
  cd "$pkgname-$pkgver"
- python setup.py install --root="$pkgdir" --optimize=1
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
