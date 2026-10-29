@@ -5,7 +5,7 @@ _pkgname=bayesian-ssh
 pkgname=${_pkgname}-bin
 pkgdesc="A fast multi environment ssh connexion manager"
 
-pkgver=2.13.9
+pkgver=2.14.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,7 +26,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 sha256sums=('b9836a6627fcb346bc64e118b2ff89f31ea834398cd30721e62855bd31199dbe'
             '4ffc8ce5d9038e4f6794d227048cd6e73873a25e92992b233f7201e3581128d9')
-sha256sums_x86_64=('1673851f110cabda30fc1fcbc0dca563caf05167a502ea5c92633a36ac198d83')
+sha256sums_x86_64=('470fd25db7dd8d6319c11cad65e0334a8f0b5b10166dea7682831eac986660a7')
 
 
 package() {
