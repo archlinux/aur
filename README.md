@@ -179,6 +179,71 @@ and makes the text lighter and softer, which is why it is turned off.
 
 ---
 
+## Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+
+fontconfig's `fontfeatures` is read by pango and GTK only. Chromium, Electron,
+Qt, LibreOffice, kitty and Firefox ignore it, and in a browser the page CSS is
+the only way to ask for a feature. Inter's own list of stylistic sets is
+useless there: Inter has 14 `cvXX` variants and eight `ssXX` sets, and none of
+them reach Chrome unless the page says so.
+
+A font cannot declare a feature on by default, either: the shaper applies a
+fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`) no matter what the
+`LangSys` registers. So the only remaining lever is to move a feature's
+lookups into one of those features. `make_features.py` does exactly that, and
+`FEATURE_DEFAULTS` runs it as the last build step (after hinting, on the
+finished files):
+
+```sh
+INTER_VARIANT=variable \
+FEATURE_DEFAULTS="zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13" \
+makepkg -si
+```
+
+That list is the same one the Inter block in `~/.config/fontconfig/fonts.conf`
+turns on for pango, so Chrome renders what GTK renders.
+
+| tag | what it changes | note |
+|---|---|---|
+| `zero` | slashed zero | |
+| `ss01` | open digits: flat-top 3, open 4 6 9 | covers `cv02 cv03 cv04 cv09` |
+| `ss03` | round quotes and commas | |
+| `cv01` | 1 with a flag and a base | |
+| `cv05` | l with a tail | the l / I / 1 disambiguation |
+| `cv06` | simplified u, no spur | |
+| `cv11` | single-storey a | **not in the italic**: skipped there |
+| `cv12` `cv13` | compact f, compact t | |
+
+`calt` is the carrier, not `ccmp`/`locl`/`rvrn`: those run in an earlier stage,
+so the substituted glyphs would no longer be seen by composition and
+localization. A cut that lacks a tag skips it (Inter's italic has no `cv11`);
+a tag that no file in the set has is an error.
+
+Measured on the built package, 60 px, `a1l0 Oo 1234 fi ffl -> «ΑΒ» H2O`:
+
+| render | width | |
+|---|---|---|
+| stock Inter, no CSS | 805.61 px | |
+| stock Inter + `font-feature-settings` listing the nine tags | 807.31 px | |
+| **baked Inter, no CSS at all** | **807.31 px** | identical to the row above |
+| baked Inter + `"calt" 0` | 813.64 px | off switch, see below |
+
+Chromium (SVG text rasterised to a canvas and compared pixel by pixel):
+baked-vs-CSS **0 differing pixels** out of 1000x80, and asking for the same
+tags again on the baked font changes nothing. So the font, not the page,
+decides.
+
+Two things to know before enabling it:
+
+- **`"calt" 0` is a blunt off switch.** It drops Inter's own contextual
+  alternates too: the `->` arrow and the capital-height `- : ( ) [ ] | >` next
+  to capitals and digits. That is why the table row above is 813.64 and not
+  805.61.
+- **fontconfig can no longer turn a single feature off.** `-cv11` in
+  `fonts.conf` does nothing once `cv11`'s lookups belong to `calt`. With
+  `FEATURE_FAMILY="Inter Single"` the fonts install under a second family
+  instead, and the stock Inter keeps all its switches.
+
 ## Differences from nerd-fonts-apple-hinted
 
 - Inter's best bytecode preset is `natural` (`n`). For SF Pro Text it is

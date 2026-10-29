@@ -3,7 +3,7 @@ pkgname=ttf-inter-hinted
 _interver=4.1
 _nfver=3.5.1
 pkgver="${_interver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)'
 arch=('any')
 url='https://rsms.me/inter/'
@@ -22,6 +22,7 @@ source=(
   "set_gasp.py"
   "cff_hint.py"
   "dedup_blues.py"
+  "make_features.py"
 )
 noextract=("font-patcher-${_nfver}.zip")
 sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
@@ -30,7 +31,8 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
             '151f00af692183a62146453b709f04240dfe72fdc7a1b98a833f664177eacd21'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc'
-            '980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194')
+            '980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
 
 # ── What this package does ──────────────────────────────────────────────────
 #
@@ -156,12 +158,57 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 #               smooth   all sizes anti-aliased ({0xFFFF: 15})
 #               gridfit  all sizes gridfit+grayscale ({0xFFFF: 3})
 #
+#  ── Features every app can see (not just pango) ───────────────────────────
+#
+#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 Bake these GSUB features into the font's 'calt' feature, so
+#                 that EVERY renderer applies them, not only pango. For the
+#                 reason, see the note at the bottom of this block.
+#
+#                 Suggested set - the same one the Inter block in
+#                 ~/.config/fontconfig/fonts.conf turns on for pango, so that
+#                 Chromium renders what GTK renders:
+#                     FEATURE_DEFAULTS="zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13"
+#                   zero   slashed zero (0 vs O)
+#                   ss01   open digits: flat-top 3, open 4 6 9 (cv02/cv03/cv04/cv09)
+#                   ss03   round quotes and commas
+#                   cv01   1 with a flag and a base
+#                   cv05   l with a tail, so l / I / 1 cannot be confused
+#                   cv06   simplified u without the spur
+#                   cv11   single-storey a, like Greek alpha
+#                   cv12   compact f   (cv13 compact t)
+#                 A cut that does not have a tag simply skips it: Inter's
+#                 italic has no cv11 (its a stays double-storey), so a set
+#                 that names cv11 still builds. A tag that no file has is an
+#                 error.
+#                 Never aalt, ordn, salt or the small caps: make_features.py
+#                 refuses those unless --allow-risky is passed.
+#
+#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
+#                 Install the result as this family instead, so the stock
+#                 Inter stays available. The name must not end in a pango
+#                 style word (Thin, Bold, Italic, ...): pango would drop it.
+#
+#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
+#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
+#  only ask from page CSS. A shaper applies a fixed list of features whatever
+#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
+#  moving a feature's lookups into calt is the only way to make it the
+#  default in every program. Verified in Chromium: the baked font with no CSS
+#  at all is pixel-identical to stock Inter with font-feature-settings
+#  listing the same tags. The escape hatch is CSS "calt" 0, which also drops
+#  Inter's own contextual alternates (the -> arrow, capital-height
+#  punctuation next to capitals). Pair FEATURE_DEFAULTS with
+#  FEATURE_FAMILY if you want to keep both looks on the machine.
+#
 #  Examples:
 #    makepkg -si                              (asks, when run from a terminal)
 #    makepkg -si </dev/null                   (never asks: defaults only)
 #    INTER_VARIANT=variable makepkg -si       (asks everything else)
 #    WANT_DISPLAY=true HINT_PRESET=balanced makepkg -si
 #    NERD_PATCH=true HINT_FAMILY_SUFFIX=" Hinted" makepkg -si
+#    INTER_VARIANT=variable FEATURE_DEFAULTS=zero,ss01,cv05,cv11 makepkg -si
+#    FEATURE_DEFAULTS=cv11 FEATURE_FAMILY="Inter Single" makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
 
 # Every option _resolve_options() understands, and so the only keys
@@ -169,7 +216,8 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 _opt_keys=(INTER_VARIANT WANT_INTER WANT_DISPLAY NERD_PATCH HINTING HINT_ENGINE
            HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX HINT_LIMIT
            HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT HINT_FALLBACK_SCRIPT
-           HINT_WINCOMPAT HINT_TTFA_TABLE HINT_FAMILY_SUFFIX GASP_MODE)
+           HINT_WINCOMPAT HINT_TTFA_TABLE HINT_FAMILY_SUFFIX GASP_MODE
+           FEATURE_DEFAULTS FEATURE_FAMILY)
 
 # _ask_yn QUESTION DEFAULT(y|n) -> sets _yn to true/false
 _ask_yn() {
@@ -240,6 +288,14 @@ _prompt_options() {
         "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
     fi
+    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
+      _ask_yn "Bake the pango features into the fonts (so Chrome gets them too)" n
+      if [[ "$_yn" == true ]]; then
+        FEATURE_DEFAULTS="zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13"
+      else
+        FEATURE_DEFAULTS=""
+      fi
+    fi
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
@@ -282,6 +338,8 @@ _resolve_options() {
   HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
   HINT_DEFAULT_SCRIPT="${HINT_DEFAULT_SCRIPT:-latn}"
   HINT_FALLBACK_SCRIPT="${HINT_FALLBACK_SCRIPT:-latn}"
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
 
   case "$INTER_VARIANT" in
     ttf|otf|variable) ;;
@@ -351,6 +409,12 @@ _resolve_options() {
     keep|sized|smooth|gridfit) ;;
     *) echo "Error: GASP_MODE='$GASP_MODE' invalid (keep|sized|smooth|gridfit)." >&2; exit 1 ;;
   esac
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. cv11)." >&2
+      exit 1
+    fi
+  done
 }
 
 prepare() {
@@ -374,7 +438,8 @@ build() {
          "ttfa-table=$HINT_TTFA_TABLE${HINT_FAMILY_SUFFIX:+ suffix='$HINT_FAMILY_SUFFIX'}"
   fi
 
-  rm -rf "$srcdir/selected" "$srcdir/converted" "$srcdir/patched" "$srcdir/hinted"
+  rm -rf "$srcdir/selected" "$srcdir/converted" "$srcdir/patched" "$srcdir/hinted" \
+         "$srcdir/featured"
   mkdir -p "$srcdir/selected" "$srcdir/converted" "$srcdir/patched" "$srcdir/hinted"
 
   # ── Step 1: select ──────────────────────────────────────────────────────────
@@ -492,6 +557,19 @@ build() {
     echo "==> Applying gasp mode '$GASP_MODE'..."
     python "$srcdir/set_gasp.py" "$GASP_MODE" "$srcdir/hinted/"*.ttf
   fi
+
+  # ── Step 6: bake features into calt ────────────────────────────────────────
+  # Last, on the finished files, so hinting never sees the extra lookups.
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then
+    local _fsrc="$srcdir/selected" _fam=()
+    if [[ "$HINTING" == true ]]; then _fsrc="$srcdir/hinted"
+    elif [[ "$NERD_PATCH" == true ]]; then _fsrc="$srcdir/patched"; fi
+    [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
+    echo "==> Baking $FEATURE_DEFAULTS into calt" \
+         "${FEATURE_FAMILY:+(installed as '$FEATURE_FAMILY')}..."
+    python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+      "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$_fsrc"/*.[ot]tf
+  fi
 }
 
 package() {
@@ -503,6 +581,7 @@ package() {
   elif [[ "$NERD_PATCH" == true ]]; then
     _out="$srcdir/patched"
   fi
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then _out="$srcdir/featured"; fi
   if ! compgen -G "$_out/*.[ot]tf" >/dev/null; then
     echo "Error: no fonts to install in $_out." >&2; exit 1
   fi
