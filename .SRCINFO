@@ -1,0 +1,25 @@
+pkgbase = magnetic-gtk-theme-fixed-git
+	pkgdesc = Magnetic GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
+	pkgver = r53.g6d315e6.f7.0c09bae
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Magnetic-gtk-theme
+	install = magnetic-gtk-theme-fixed.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-themes-extra
+	depends = gtk3
+	optdepends = gtk-engine-murrine: GTK 2 support
+	optdepends = colloid-icon-theme: Recommended icon theme
+	provides = magnetic-gtk-theme
+	conflicts = magnetic-gtk-theme
+	conflicts = magnetic-gtk-theme-git
+	options = !strip
+	options = !debug
+	source = magnetic-gtk-theme::git+https://github.com/vinceliuice/Magnetic-gtk-theme.git
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = magnetic-gtk-theme-fixed-git
