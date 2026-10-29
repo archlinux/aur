@@ -3,7 +3,7 @@
 
 pkgname=saber
 _name=com.adilhanney.saber
-pkgver=1.37.0
+pkgver=1.37.1
 _flutter=3.47.6
 pkgrel=1
 pkgdesc="The cross-platform notes app built for handwriting"
@@ -28,7 +28,7 @@ depends=('at-spi2-core'
          'zenity')
 makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'ninja' 'rustup')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('67c0836de80e362ee3404385f679767973d3388ca152b1f21e9ef4f75adb47a5')
+sha256sums=('0fc16ad40785dedf843c409f87ae1e5fc8f6695d3e280f6125fdef0d7f4b62bd')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
