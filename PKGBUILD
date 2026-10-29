@@ -4,7 +4,7 @@
 pkgname=tranalyzer
 pkgver=0.9.3
 _pkgver=lmw1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight flow generator and packet analyzer'
 arch=('x86_64' 'aarch64')
 url='https://tranalyzer.com'
@@ -24,7 +24,9 @@ optdepends=('graphviz: Required by some plugins'
             'inotify-tools: Required by t2dmon')
 makedepends=('mongo-c-driver'
              'libtool'
-             'cmake')
+             'cmake'
+             # default build backend of autogen.sh
+             'meson')
 source=("${pkgname}-${pkgver}.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-${pkgver}${_pkgver}.tar.gz")
 b2sums=('af51a2699896fadb93515c31faa6c4474647328faee621dd240ecf1b37ccfaaeb1c991f7b32f8416aa6f6a3c252fa7407805d52f8359873b9f8708f495c92294')
 

@@ -1,7 +1,7 @@
 pkgbase = tranalyzer
 	pkgdesc = Lightweight flow generator and packet analyzer
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tranalyzer.com
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = tranalyzer
 	makedepends = mongo-c-driver
 	makedepends = libtool
 	makedepends = cmake
+	makedepends = meson
 	depends = libpcap
 	depends = mongo-c-driver
 	depends = postgresql-libs
