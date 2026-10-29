@@ -74,15 +74,25 @@ remove_runtime_state() {
   rm -f /run/honk-core.lock
 
   if mountpoint -q /sys/fs/bpf 2>/dev/null; then
-    # Only honk's own pins. bpftune and other tools pin under /sys/fs/bpf too,
-    # so match the names honk's object exports instead of clearing the mount.
-    local p
-    for p in /sys/fs/bpf/*; do
-      [[ -e "$p" ]] || continue
-      case "$(basename "$p")" in
-        UDP_DECISION_SEQUENCE|ROUTING_GENERATION_SEQUENCE|EVENT_RINGBUF|\
-        ROUTING_BITMAP|*_MAP|*_TRACK|ROUTING_*) rm -f "$p" 2>/dev/null || true ;;
-      esac
+    # Exact names exported by honk's eBPF object. bpftune, systemd and other
+    # tools pin under /sys/fs/bpf too, so this must not be a pattern match.
+    local pin pins=(
+      UDP_DECISION_SEQUENCE ROUTING_GENERATION_SEQUENCE EVENT_RINGBUF
+      DATAPATH_STATE_MAP DATAPATH_FLAGS_MAP ADMISSION_PRESSURE
+      FLOW_INCARNATION_SEQUENCE RETIRE_ACTIVE RETIRE_FENCE RETIRE_GRACE_ROOT
+      TCP_LIVE_PINS TCP_SOCKET_BINDING TCP_PUBLISHING
+      REDIRECT_TRACK CLIENT_REPLY_TRACK NEW_FLOW_RATE FRAG_VERDICT
+      ROUTING_HANDOFF_MAP ROUTE_TRACE_SEQUENCE ROUTE_TRACE_MAP
+      ROUTING_POLICY_ROOT ROUTING_TEST_INPUT ROUTING_TEST_OUTPUT
+      SOCKET_IDENTITY CONN_STATE_MAP CONN_STATE_OCCUPANCY AUX_OCCUPANCY
+      BPF_STATS_MAP OUTBOUND_STATS FLOW_EXPIRY_HINT PKT_SCRATCH_KEY
+      CONNTRACK_ARGS_MAP PARSE_CTX_MAP UDP_DECISION_SCRATCH_MAP
+      CONNTRACK_SNAPSHOT_MAP OUTBOUND_CONNECTIVITY_MAP LISTEN_SOCKET_MAP
+      UDP_DECISION_EPOCH UDP_DECISION_INFLIGHT UDP_DECISION_RETIRE_FENCE
+      TCP_REQUEST_BINDINGS REQUEST_FENCE COOKIE_PID_MAP
+    )
+    for pin in "${pins[@]}"; do
+      rm -f "/sys/fs/bpf/$pin" 2>/dev/null
     done
   fi
 
