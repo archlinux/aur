@@ -1,6 +1,6 @@
 pkgbase = wavetune-git
 	pkgdesc = Unofficial wireless headset control center for Linux (git version)
-	pkgver = r15.gafef552
+	pkgver = r20.g27aa04a
 	pkgrel = 1
 	url = https://github.com/onlymash/WaveTune
 	arch = x86_64

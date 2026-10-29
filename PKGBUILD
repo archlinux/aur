@@ -1,7 +1,7 @@
 # Maintainer: onlymash <fiepi.dev@gmail.com>
 pkgname=wavetune-git
 _pkgname=wavetune
-pkgver=r15.gafef552
+pkgver=r20.g27aa04a
 pkgrel=1
 pkgdesc="Unofficial wireless headset control center for Linux (git version)"
 arch=('x86_64' 'aarch64')
