@@ -6,7 +6,7 @@ _appname=Prism
 pkgname=${_gitname}-bin
 pkgdesc="The fast, beautiful, open-source download manager for Windows, macOS and Linux — Up to 32 connections, browser integration, video & MP3 downloads, crash-safe resume"
 
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ source=("BROWSER-EXTENSION-${pkgver}.md::${_ghurlraw}/docs/guide/browser-extensi
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname,,}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.deb")
 sha256sums=('c5f34aaaf1ecf1a3970f955fb56effac4deebe0c17664f17a8fd4ccb1b7d829d'
-            'a4af410be58ceb1be2842b93f083dcd30f5e4868a16f606b1efc6fbc383c07d8'
+            '5b0d153c66a683179ed8bb18d7b07b24c7f190ef4d30f91acb2a8ecddab02e06'
             '25a36f52335b77308ed7ed587d1b70e074e1757d997686ef6eb936952c5da956')
-sha256sums_x86_64=('f17c9f964d776b478f3e4ee61c9bb6ca4d9f24283d37baeb7bd713a5d8bf66f2')
+sha256sums_x86_64=('36ab842be31aaef619d9a45c396b8136b077e6e60823f567434eba7697b97131')
 
 
 package() {
