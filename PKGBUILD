@@ -2,7 +2,7 @@
 
 pkgname="python-smac"
 _name="smac"
-pkgver=2.1.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A Versatile Bayesian Optimization Package for Hyperparameter Optimization"
 url="https://github.com/automl/SMAC3"
@@ -25,7 +25,7 @@ depends=("python"
          "python-pyaml")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('8a7f57f7c9157edb239fbfaac4d685525d109511d13a4ee66962a9e0fc59057418683991a82e634501755fb02941ab9a6917d05f7ebf04a68460caf7b55463a6')
+b2sums=('ec944370779539e50941e7694f5a47251a88db70cabbc8b4608fed82643ae4ba2a303a098ab34e59f251309f270cd4435d4bac09b3414f2e79dfddd1d6d0decd')
 options=("!strip")
 
 build(){
