@@ -3,7 +3,7 @@
 pkgname="workout-tracker-bin"
 _pkgname="${pkgname%-bin}"
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities"
 url="https://github.com/jovandeginste/workout-tracker"
 license=("MIT")
@@ -29,7 +29,6 @@ package(){
  # binary
  install -D -m 755 "workout-tracker"                -t "$pkgdir/usr/bin"
  install -D -m 755 "wt-debug"                       -t "$pkgdir/usr/bin"
- install -D -m 755 "fitbit-sync"                    -t "$pkgdir/usr/bin"
  # app data
  install -d -m 750                                  "$pkgdir/var/lib/$_pkgname"
  # configuration
