@@ -3,7 +3,7 @@ pkgname=raveo-ttf-hinted
 _raveover=1.1
 _nfver=3.4.0
 pkgver="${_raveover}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Raveo is a warmer modification of Inter with redrawn glyphs, distributed with optional hinting and Nerd Fonts patching.'
 arch=('any')
 url='https://github.com/jakubfoglar/raveo'
@@ -13,9 +13,39 @@ makedepends=('python' 'fontforge' 'parallel' 'ttfautohint')
 conflicts=('raveo-ttf')
 source=(
 		"Raveo.${_raveover}.zip::https://github.com/jakubfoglar/raveo/releases/download/v${_raveover}/Raveo.${_raveover}.zip"
-		"font-patcher-$_nfver::https://github.com/ryanoasis/nerd-fonts/releases/download/v$_nfver/FontPatcher.zip")
+		"font-patcher-$_nfver::https://github.com/ryanoasis/nerd-fonts/releases/download/v$_nfver/FontPatcher.zip"
+		"make_features.py")
 sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
-            'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760')
+            'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
+
+# ── FEATURE_DEFAULTS / FEATURE_FAMILY (both optional, empty by default) ──────
+#
+#  FEATURE_DEFAULTS  "tag,tag,..."  Bake these GSUB features into the font's
+#                    'calt' feature, so that EVERY renderer applies them, not
+#                    only pango. fontconfig's fontfeatures is read by pango/GTK
+#                    alone; Chromium, Electron, Qt and LibreOffice ignore it, and
+#                    a browser can only ask from page CSS. A shaper applies a
+#                    fixed list of features whatever the font declares, so
+#                    moving a feature's lookups into calt is the only way to
+#                    make it a default.
+#
+#                    Be aware that Raveo 1.1 has almost nothing to bake. Audited
+#                    with fontTools + HarfBuzz: calt (only the nerd-font PUA
+#                    substitutions), case (parens/brackets to .case forms),
+#                    ccmp, dlig (nothing fires), ordn (nothing fires), pnum
+#                    (no-op), tnum (tabular figures and .tf spaced punctuation).
+#                    There are NO ssXX, cvXX, zero or smcp features at all, so
+#                    a tag set copied from Inter (zero,ss01,ss03,cv01,...) does
+#                    nothing here - which is exactly what the Raveo Variable
+#                    block in ~/.config/fontconfig/fonts.conf used to ask for.
+#                    Suggested: leave it empty. "tnum" would make the figures
+#                    tabular everywhere, "case" raises the brackets.
+#
+#  FEATURE_FAMILY  "Name"  Install as another family instead of in place, so
+#                    the stock Raveo stays available.
+#
+#  Never aalt/ordn/salt: make_features.py refuses those without --allow-risky.
 
 	FONT_TYPE=""
 	HINTING=false
@@ -23,11 +53,24 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 	NERD=false
 
 	build(){
-	# Prompt for font type preference
-	echo "Do you prefer Variable Fonts or Static TTF Fonts?"
-	select font_type in "Variable Font (TTF)" "Static OTF Fonts"; do
-		break
-	done
+	# Prompt for font type preference. Without a TTY (makepkg </dev/null,
+	# chroot, CI, an AUR helper's non-interactive build) nothing is read:
+	# FONT_TYPE / NERD / HINTING / HINT_MODE from the environment win, and the
+	# defaults below apply. makepkg runs build() with set -e, so a read at EOF
+	# used to abort the whole build.
+	if [[ -t 0 ]]; then
+		echo "Do you prefer Variable Fonts or Static TTF Fonts?"
+		select font_type in "Variable Font (TTF)" "Static OTF Fonts"; do
+			break
+		done
+	else
+		echo "==> Non-interactive build (no TTY): using the environment / defaults."
+		case "${FONT_TYPE:-variable}" in
+			variable) font_type="Variable Font (TTF)" ;;
+			otf|static) font_type="Static OTF Fonts" ;;
+			*) font_type="$FONT_TYPE" ;;
+		esac
+	fi
 
 	# Set the font type variable
 	case $font_type in
@@ -44,9 +87,15 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 	esac
 
 	# Prompt for Nerd Fonts patching preference
-	echo "Do you want to patch the fonts with Nerd Fonts glyphs? (y/n)"
-	read -p "(default: n) " _nerd_answer
-	_nerd_answer=${_nerd_answer:-n}
+	if [[ -t 0 ]]; then
+		echo "Do you want to patch the fonts with Nerd Fonts glyphs? (y/n)"
+		read -p "(default: n) " _nerd_answer || _nerd_answer=""
+	fi
+	if [[ -n "${NERD:-}" ]]; then
+		_nerd_answer=$([[ "$NERD" == true || "$NERD" == y ]] && echo y || echo n)
+	else
+		_nerd_answer=${_nerd_answer:-n}
+	fi
 	if [[ $_nerd_answer == y ]]; then
 		NERD=true
 	else
@@ -54,8 +103,13 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 	fi
 
 	# Prompt for hinting preference
-	echo "Do you want to enable font hinting? (y/n)"
-	read -p "(default: n) " _hint_answer
+	if [[ -t 0 ]]; then
+		echo "Do you want to enable font hinting? (y/n)"
+		read -p "(default: n) " _hint_answer || _hint_answer=""
+	fi
+	if [[ -n "${HINTING:-}" ]]; then
+		_hint_answer=$([[ "$HINTING" == true || "$HINTING" == y ]] && echo y || echo n)
+	fi
 
 	# Set default value if no input
 	_hint_answer=${_hint_answer:-n}
@@ -71,17 +125,27 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 		HINTING=true
 
 		# Prompt for hint mode preference
-		echo "Select ttfautohint mode:"
-		select _hint_mode in "Balanced (qqq)" "Aggressive (sss)" "HiDPI (nnn)"; do
-			case $_hint_mode in
-				"Balanced (qqq)") HINT_MODE="qqq"; break;;
-				"Aggressive (sss)") HINT_MODE="sss"; break;;
-				"HiDPI (nnn)") HINT_MODE="nnn"; break;;
-			esac
-		done
+		if [[ -t 0 && -z "${HINT_MODE:-}" ]]; then
+			echo "Select ttfautohint mode:"
+			select _hint_mode in "Balanced (qqq)" "Aggressive (sss)" "HiDPI (nnn)"; do
+				case $_hint_mode in
+					"Balanced (qqq)") HINT_MODE="qqq"; break;;
+					"Aggressive (sss)") HINT_MODE="sss"; break;;
+					"HiDPI (nnn)") HINT_MODE="nnn"; break;;
+				esac
+			done
+		fi
+		HINT_MODE="${HINT_MODE:-qqq}"
 	else
 		HINTING=false
 	fi
+
+	# ── Step 3: bake features (FEATURE_DEFAULTS; empty = skip) ────────────────
+	# Last step, on the files that will be installed, so ttfautohint never sees
+	# the extra lookups.
+	FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+	FEATURE_FAMILY="${FEATURE_FAMILY:-}"
+	rm -rf "$srcdir/featured"
 
 	# Print variables for debugging
 	echo "FONT_TYPE:  $FONT_TYPE"
@@ -161,6 +225,13 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 		fi
 	fi
 
+	if [[ -n "$FEATURE_DEFAULTS" ]]; then
+		_fam=()
+		[[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
+		echo "==> Baking $FEATURE_DEFAULTS into calt${FEATURE_FAMILY:+ (as '$FEATURE_FAMILY')}..."
+		python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+			"${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$srcdir/forinstall/"*.[ot]tf
+	fi
 }
 
 package() {
@@ -170,9 +241,13 @@ package() {
 	install -D -m644 "$srcdir/raveo/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
 	install -d -m755 "$pkgdir/usr/share/fonts/raveo"
-	if ls "${srcdir}/forinstall"/*.ttf > /dev/null 2>&1; then
-		install -D -m644 "$srcdir/forinstall"/*.ttf "$pkgdir/usr/share/fonts/raveo"
-	elif ls "${srcdir}/forinstall"/*.otf > /dev/null 2>&1; then
-		install -D -m644 "$srcdir/forinstall"/*.otf "$pkgdir/usr/share/fonts/raveo"
+	# Baked copies, when the build made them (package() runs in its own shell,
+	# so the directory existing is the state).
+	_src="$srcdir/forinstall"
+	if ls "${srcdir}/featured"/*.[ot]tf > /dev/null 2>&1; then _src="$srcdir/featured"; fi
+	if ls "$_src"/*.ttf > /dev/null 2>&1; then
+		install -D -m644 "$_src"/*.ttf "$pkgdir/usr/share/fonts/raveo"
+	elif ls "$_src"/*.otf > /dev/null 2>&1; then
+		install -D -m644 "$_src"/*.otf "$pkgdir/usr/share/fonts/raveo"
 	fi
 }
