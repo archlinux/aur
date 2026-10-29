@@ -1,7 +1,7 @@
 pkgbase = dbt-core
 	pkgdesc = Tool for data analysts to build analytics the way engineers build applications
 	pkgver = 2.0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.getdbt.com/
 	arch = x86_64
 	arch = aarch64

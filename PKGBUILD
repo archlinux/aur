@@ -3,7 +3,7 @@
 
 pkgname="dbt-core"
 pkgver=2.0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=("x86_64" "aarch64")
 url="https://www.getdbt.com/"
@@ -32,6 +32,7 @@ build(){
  export RUSTUP_TOOLCHAIN=stable
  export CARGO_TARGET_DIR="$srcdir/target"
  # upstream uses a single codegen unit, which compiles the final crate on one core
+ export CARGO_PROFILE_RELEASE_LTO=off
  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
  python -m build --wheel --no-isolation
 }
