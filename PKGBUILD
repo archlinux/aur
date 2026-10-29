@@ -2,7 +2,7 @@
 # Maintainer: Praxidike_Kore <praxidike dot kore at protonmail dot com>
 
 pkgname="gcs-bin"
-pkgver=5.55.0
+pkgver=5.56.0
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"
@@ -12,7 +12,7 @@ provides=("gcs")
 conflicts=("gcs")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/richardwilkes/gcs/releases/download/v$pkgver/gcs-$pkgver-linux-amd64.tgz"
         "LICENSE")
-b2sums=('f3d53faedda39daeff642db3134bc63a6d64c91c6e4148ab9b5e137727675805219803b7e22086d2ad13edef7ea3848a373aa6a9a6e222f311b64b06c7b83b04'
+b2sums=('db71e86d1e0467a4e71783e5fa3223937592d91a2d4c3213bc873f6e36f5e3f0117af449222b18df2a504c1f1440471f08078e950baff2d2d7790a1d7dc719b5'
         'b82bb30ed70c0464e93eae9c9cfc68995a192d2675fdbdcb2fc5459b4ac9a404f1cb41eb693817caa73b46ec6e8023641e08673f684f6b7dae979548ade0402c')
 
 package(){
