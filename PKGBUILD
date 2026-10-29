@@ -4,7 +4,7 @@
 pkgname=ttf-google-sans-hinted
 _nfver=3.4.0
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Google Sans fonts (GoogleSans, GoogleSansDisplay), optionally Nerd Fonts patched and/or ttfautohint hinted"
 url='https://flutter.googlesource.com/gallery-assets'
 arch=('any')
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('d4e4731431e4f97b6046d5042270338a9527c18ccf733efbb8187eded97f18c3'
             'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'
-            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
 
 # ── Build-time options (all settable via env vars) ──────────────────────────
 #
