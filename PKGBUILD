@@ -1,7 +1,7 @@
 # Maintainer: Pasical <pasicalyang@gmail.com>
 # Rendered by Everywhere-AUR/scripts/sync_release.py; submit out/PKGBUILD.
 pkgname=everywhere-bin
-pkgver=0.9.0canary.20261028.29
+pkgver=0.9.0canary.20261029.30
 pkgrel=1
 pkgdesc='Context-aware AI assistant for your desktop'
 arch=('x86_64' 'aarch64')
@@ -11,15 +11,15 @@ depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'icu' 'fontconfig' 'libx11' 'libice
 optdepends=('grim: Hyprland screenshot capture' 'wl-clipboard: Wayland text-selection monitoring' 'libnotify: desktop notifications')
 provides=('everywhere')
 conflicts=('everywhere')
-_upstream_tag='v0.9.0-canary.20261028.29'
+_upstream_tag='v0.9.0-canary.20261029.30'
 _mirror_repository='pasical/Everywhere-AUR'
 _base="https://github.com/${_mirror_repository}/releases/download/${_upstream_tag}"
 source=("${_base}/LICENSE" "${_base}/Everywhere-icon.png")
 sha256sums=('1afb97b109ac6dc78fee57f86e854abe75bbdffb12b40d36c91084b12efa96a2' 'ef52179d078f3ee23a1eec9ded2dbb8a9529de49dd4412375fea7566f9f83c34')
-source_x86_64=("${_base}/Everywhere-Linux-x64-v0.9.0-canary.20261028.29.tar.zst")
-sha256sums_x86_64=('08de1f2cfe25e8cda0d2b6444c686fb04195e1bb4fd2ddf64b737c5e82d254a8')
-source_aarch64=("${_base}/Everywhere-Linux-arm64-v0.9.0-canary.20261028.29.tar.zst")
-sha256sums_aarch64=('6d563edfd43545b88d9407c0aa171dabba7591fef237aa74ca4e53f86b7cb735')
+source_x86_64=("${_base}/Everywhere-Linux-x64-v0.9.0-canary.20261029.30.tar.zst")
+sha256sums_x86_64=('1cd1ec34c84c8346bad0e2ec7f4f9c22b09f6c1a28703bc08535fdb94fe11867')
+source_aarch64=("${_base}/Everywhere-Linux-arm64-v0.9.0-canary.20261029.30.tar.zst")
+sha256sums_aarch64=('ef8c227f866099df6a6bb396d734f78f506a357293e58efbc5406c919d5ebf8f')
 noextract=("Everywhere-Linux-x64-${_upstream_tag}.tar.zst" "Everywhere-Linux-arm64-${_upstream_tag}.tar.zst")
 
 package() {
