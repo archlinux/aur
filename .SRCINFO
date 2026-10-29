@@ -1,6 +1,6 @@
 pkgbase = ps5upload-bin
 	pkgdesc = All-in-one PS5 companion app for uploading, installing and managing games over the network (prebuilt)
-	pkgver = 9.0.1
+	pkgver = 9.2.2
 	pkgrel = 1
 	url = https://github.com/phantomptr/ps5upload
 	arch = x86_64
@@ -17,17 +17,17 @@ pkgbase = ps5upload-bin
 	depends = libgcc
 	depends = libsoup3
 	depends = webkit2gtk-4.1
-	provides = ps5upload=9.0.1
+	provides = ps5upload=9.2.2
 	conflicts = ps5upload
 	options = !strip
 	options = !debug
-	source = UnRAR-license-9.0.1.txt::https://raw.githubusercontent.com/phantomptr/ps5upload/v9.0.1/LICENSES/UnRAR-license.txt
-	source = UnRAR-exception-9.0.1.md::https://raw.githubusercontent.com/phantomptr/ps5upload/v9.0.1/LICENSES/UnRAR-exception.md
+	source = UnRAR-license-9.2.2.txt::https://raw.githubusercontent.com/phantomptr/ps5upload/v9.2.2/LICENSES/UnRAR-license.txt
+	source = UnRAR-exception-9.2.2.md::https://raw.githubusercontent.com/phantomptr/ps5upload/v9.2.2/LICENSES/UnRAR-exception.md
 	sha256sums = d462353c1ec39604430d578dba3076833cf5af897d1542b3b052b38cfde2e2d0
 	sha256sums = 366a2d887158e9bbb11a408c909ea9fa9d61544b269280686ac27ce52b9e7f02
-	source_x86_64 = ps5upload-bin-9.0.1-x86_64.deb::https://github.com/phantomptr/ps5upload/releases/download/v9.0.1/PS5Upload-9.0.1-linux-x64.deb
-	sha256sums_x86_64 = 330c0f486f9d9409ce88b798303bdd59ca96a58eb3a793610e1d27a39b03ca11
-	source_aarch64 = ps5upload-bin-9.0.1-aarch64.deb::https://github.com/phantomptr/ps5upload/releases/download/v9.0.1/PS5Upload-9.0.1-linux-arm64.deb
-	sha256sums_aarch64 = df04568d80bf6c488f680aacb2e14283dd0ab9097e79dc917e531519d0c13fca
+	source_x86_64 = ps5upload-bin-9.2.2-x86_64.deb::https://github.com/phantomptr/ps5upload/releases/download/v9.2.2/PS5Upload-9.2.2-linux-x64.deb
+	sha256sums_x86_64 = 791f41bb0715bb0e64d7c095d331b9d6810eb1f6cb28ed588659879b14fd5ffb
+	source_aarch64 = ps5upload-bin-9.2.2-aarch64.deb::https://github.com/phantomptr/ps5upload/releases/download/v9.2.2/PS5Upload-9.2.2-linux-arm64.deb
+	sha256sums_aarch64 = ce97a259c3d51f2be979272a65c2fb7ea40cb99612ea00701153602e2ba09d62
 
 pkgname = ps5upload-bin
