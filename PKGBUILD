@@ -7,7 +7,7 @@
 _pkgorg=codeberg.org/mipi
 _pkgname=alise
 pkgname=${_pkgname}-git
-pkgver=0.6.0.r0.g818e599
+pkgver=0.7.0.r0.gca89810
 pkgrel=1
 pkgdesc="Declarative Arch Linux installer in Guile Scheme"
 arch=(any)
