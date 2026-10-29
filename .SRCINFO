@@ -1,7 +1,7 @@
 pkgbase = g0v0-robin
 	pkgdesc = g0v0! -- free and open rhythm experience! (Robin pre-release channel)
 	pkgver = 2026.1022.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GooGuTeam/g0v0
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = g0v0-robin
 	conflicts = g0v0-git
 	options = !strip
 	options = !debug
-	source = g0v0-robin-2026.1022.1.tar.gz::https://github.com/GooGuTeam/g0v0/archive/refs/tags/v2026.1022.1-g0v0.tar.gz
+	source = g0v0-robin-v2026.1022.1-g0v0.tar.gz::https://github.com/GooGuTeam/g0v0/archive/refs/tags/v2026.1022.1-g0v0.tar.gz
 	source = icon.png
 	source = https://raw.githubusercontent.com/GooGuTeam/g0v0-resources/master/LICENCE.md
 	source = g0v0.desktop

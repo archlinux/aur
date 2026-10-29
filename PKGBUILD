@@ -4,7 +4,7 @@ pkgname=g0v0-robin
 _pkgname=${pkgname%-bin}
 pkgver=2026.1022.1
 _pkgtag=v${pkgver}-g0v0
-pkgrel=1
+pkgrel=2
 pkgdesc="g0v0! -- free and open rhythm experience! (Robin pre-release channel)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
@@ -20,7 +20,7 @@ provides=(g0v0)
 conflicts=(g0v0 g0v0-bin g0v0-robin-bin g0v0-git)
 options=(!strip !debug)
 source=(
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/GooGuTeam/g0v0/archive/refs/tags/${_pkgtag}.tar.gz"
+  "${_pkgname}-${_pkgtag}.tar.gz::https://github.com/GooGuTeam/g0v0/archive/refs/tags/${_pkgtag}.tar.gz"
   "icon.png"
   "https://raw.githubusercontent.com/GooGuTeam/g0v0-resources/master/LICENCE.md"
   "g0v0.desktop"
