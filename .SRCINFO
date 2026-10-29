@@ -1,7 +1,7 @@
 pkgbase = greenpass
 	pkgdesc = Scriptable green pass / Digital Covid Certificate verifier
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/berdav/greenpass
 	arch = any
 	license = LGPL3
@@ -9,6 +9,7 @@ pkgbase = greenpass
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	depends = python-base45
 	depends = python-bs4
 	depends = python-cbor2

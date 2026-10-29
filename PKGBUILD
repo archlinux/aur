@@ -2,12 +2,12 @@
 
 pkgname="greenpass"
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scriptable green pass / Digital Covid Certificate verifier"
 url="https://github.com/berdav/greenpass"
 license=("LGPL3")
 arch=("any")
-depends=("python-base45"
+depends=("python" "python-base45"
          "python-bs4"
          "python-cbor2"
          "python-colorama"
