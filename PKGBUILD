@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.156
-pkgrel=7
+pkgrel=8
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -53,12 +53,16 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
+# optdepends: D-Bus probes in dbus-monitor --session and the LibVLC P/Invoke table (2026-10-29).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
             'xdg-desktop-portal-kde: file-picker and screen-share backend on KDE Plasma'
             'xdg-desktop-portal-wlr: screen-share backend on wlroots compositors'
-            'pipewire-pulse: PulseAudio-compatible server for voice and audio devices')
+            'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
+            'gamemode: GameMode daemon for performance mode during calls and streams'
+            'vlc-plugin-ffmpeg: video and stream playback through LibVLC'
+            'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio')
 options=('!strip' '!debug')
 
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage"
