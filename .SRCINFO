@@ -1,6 +1,6 @@
 pkgbase = sable-bin
 	pkgdesc = A Matrix client
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://git.sable.moe/SableClient/sable-next
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = sable-bin
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	provides = sable=2.2.1
+	provides = sable=2.2.2
 	conflicts = sable
 	options = !strip
 	options = !debug
-	noextract = sable-bin-2.2.1-amd64.deb
-	source_x86_64 = sable-bin-2.2.1-amd64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/v2.2.1/sable-2.2.1-amd64.deb
-	sha256sums_x86_64 = 3709d718ff383fda76ff98524b68f144af8672392162d048435125424c48782f
+	noextract = sable-bin-2.2.2-amd64.deb
+	source_x86_64 = sable-bin-2.2.2-amd64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/v2.2.2/sable-2.2.2-amd64.deb
+	sha256sums_x86_64 = f7a2b36bcdb46b3fe33b3a56fdb7d39c85d50909c42e3d42a13feda900a6bc30
 
 pkgname = sable-bin
