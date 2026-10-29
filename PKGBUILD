@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=caffeine-applet-git
-pkgver=r17.ade6a2b
+pkgver=0.1.3.r0.g43c44c2
 pkgrel=1
-pkgdesc="A simple COSMIC applet that prevents your system from going idle by creating a systemd-inhibit lock session."
+pkgdesc="An applet for the COSMIC desktop that prevents your system from going idle"
 arch=('x86_64' 'aarch64')
 url="https://github.com/codevardhan/caffeine-applet"
 license=('MIT')
@@ -12,12 +12,14 @@ makedepends=(
   'git'
   'just'
 )
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/codevardhan/caffeine-applet.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
