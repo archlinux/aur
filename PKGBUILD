@@ -3,13 +3,13 @@
 _appname="harlequin_odbc"
 pkgname="${_appname//_/-}"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An ODBC adapter for Harlequin"
 url="https://harlequin.sh/"
 _github_url="https://github.com/tconbeer/harlequin-postgres"
 license=("MIT")
 arch=("any")
-depends=("harlequin" "python-pyodbc" "unixodbc")
+depends=("python" "harlequin" "python-pyodbc" "unixodbc")
 makedepends=("python-build"
              "python-installer"
              "python-poetry"
