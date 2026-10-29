@@ -1,6 +1,6 @@
 pkgbase = openshell
 	pkgdesc = The safe, private runtime for autonomous AI agents.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/NVIDIA/OpenShell
 	install = openshell.install
@@ -21,7 +21,7 @@ pkgbase = openshell
 	conflicts = openshell-bin
 	conflicts = openshell-git
 	options = !lto
-	source = openshell-0.1.5.tar.gz::https://github.com/NVIDIA/OpenShell/archive/refs/tags/v0.1.5.tar.gz
-	b2sums = f1abe6e0958fc6950a874acb728206a28a21618cdd95cdbeebb257769a793f89c96c02d86261ba4ba41aef2ab0a41131335983ee46db356069faccfa01dc759a
+	source = openshell-0.1.6.tar.gz::https://github.com/NVIDIA/OpenShell/archive/refs/tags/v0.1.6.tar.gz
+	b2sums = d3c812bc0210d9189c4c63e0ebbcd96b67eb7e37b2de86b741e617dd0170723141b6feaec050b68f2cc05b14742b80507938a7fdebb5107bd1f5f27509362ac3
 
 pkgname = openshell
