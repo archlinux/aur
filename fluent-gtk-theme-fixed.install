@@ -1,0 +1,10 @@
+post_install() {
+  echo ""
+  echo "Firefox theme: copy it from /usr/share/doc/fluent-gtk-theme/firefox/, see"
+  echo "https://github.com/vinceliuice/Fluent-gtk-theme/blob/master/src/firefox"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

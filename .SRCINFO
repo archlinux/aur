@@ -1,0 +1,30 @@
+pkgbase = fluent-gtk-theme-fixed-git
+	pkgdesc = Fluent design GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
+	pkgver = 2025.04.17.r44.g7a49a46.f7.0c09bae
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Fluent-gtk-theme
+	install = fluent-gtk-theme-fixed.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gnome-shell
+	makedepends = sassc
+	makedepends = setconf
+	depends = gnome-themes-extra
+	depends = gtk3
+	optdepends = gtk-engine-murrine: GTK 2 support
+	optdepends = fluent-icon-theme: Matching icon theme
+	optdepends = fluent-cursor-theme: Matching cursor theme
+	provides = fluent-gtk-theme
+	conflicts = fluent-gtk-theme
+	conflicts = fluent-gtk-theme-git
+	options = !strip
+	options = !debug
+	source = fluent-gtk-theme::git+https://github.com/vinceliuice/Fluent-gtk-theme.git
+	source = wallpaper::git+https://github.com/vinceliuice/Fluent-gtk-theme.git#branch=Wallpaper
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fluent-gtk-theme-fixed-git
