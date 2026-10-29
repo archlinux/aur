@@ -1,0 +1,2 @@
+#!/bin/sh
+exec env OSU_EXTERNAL_UPDATE_PROVIDER=1 OSU_EXTERNAL_UPDATE_STREAM=robin dotnet /opt/g0v0/g0v0!.dll "$@"
