@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=forgetools-bin
 _pkgname=ForgeTools
-pkgver=0.2.0
+pkgver=0.2.1
 _electronversion=44
 pkgrel=1
 pkgdesc="Offline developer utilities in one desktop app. Format, decode, convert and generate without anything you paste leaving your machine."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('55a9743927f87e0465a030c6b9ebee728b03fb838057935db59b32c4263210c1'
+sha256sums=('366c8d8e90caa8b94bb42b60b0f7bbcdd44af7fb14a6ad3a05b5bc4e01311e8a'
             '0dc10cba97dc9bc07084efac452895efbdd0b469dc4a384e9c10fedc1691617b'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
