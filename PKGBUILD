@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgname=ddinfo-tools
 _dotnet_version=10.0
-pkgver=0.13.7.1
+pkgver=0.14.0.0
 pkgrel=1
 pkgdesc='Cross-platform Devil Daggers modding tools, practice tools, and custom leaderboards client'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(glibc libgcc glib2 libstdc++ "dotnet-runtime-${_dotnet_version}" gtk3)
 makedepends=("dotnet-sdk-${_dotnet_version}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NoahStolk/ddinfo-tools/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b81a4e3c55ac263d0b96e7d134ab3dbe96b6de0f3d311f003fedc603d9b64478')
+sha256sums=('f32ba4f928f791810c36f82ed672a5d66d45fdf5e89a5b4bd9ebc8c95df1efc6')
 
 build() {
 	cd "$pkgname-$pkgver/scripts"
