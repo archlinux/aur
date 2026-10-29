@@ -2,7 +2,7 @@
 # pkgver and sha256sums are filled in by .github/workflows/release.yml on each release.
 pkgname=katana-tui
 _srcname=katana-desktop
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Unofficial terminal client for Nonograms Katana user puzzles"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto')  # makepkg's C LTO flags break ring's objects at link time
 source=("$_srcname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('877c6577bff4555e1baaea035870c48fa0ec4edc87354dacfa591955b383c82a')
+sha256sums=('5a63de8ead3c34840e8b47cd54882241680e93bbfaa63b26bce8d50c7b9ac45c')
 _features=(--no-default-features --features tui)  # the terminal frontend alone: no webview
 
 prepare() {
