@@ -1,7 +1,7 @@
 pkgbase = odoo-venv
 	pkgdesc = Open Source Apps To Grow Your Business
 	pkgver = 18.0.20241229
-	pkgrel = 1
+	pkgrel = 2
 	url = https://odoo.com/
 	install = odoo.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = odoo-venv
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = postgresql-libs
 	depends = python
 	optdepends = postgresql: local database
 	optdepends = wkhtmltopdf: generate PDFs

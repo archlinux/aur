@@ -4,7 +4,7 @@
 
 pkgname="odoo-venv"
 _major=18.0
-pkgrel=1
+pkgrel=2
 # updated automatically via pkgver()
 pkgver=18.0.20241229
 pkgdesc="Open Source Apps To Grow Your Business"
@@ -17,9 +17,11 @@ conflicts=("odoo" "odoo-nightly" "odoo18-nightly")
 depends=("python")
 optdepends=("postgresql: local database"
             "wkhtmltopdf: generate PDFs")
+# pg_config is needed to build psycopg2 from source
 makedepends=("python-build"
              "python-wheel"
-             "python-setuptools")
+             "python-setuptools"
+             "postgresql-libs")
 source=("https://nightly.odoo.com/$_major/nightly/src/odoo_$_major.latest.tar.gz"
         "odoo.conf"
         "odoo.logrotate"
