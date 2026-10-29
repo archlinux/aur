@@ -1,0 +1,17 @@
+pkgbase = elevenlabs-web-cli-bin
+	pkgdesc = Terminal CLI for ElevenLabs
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Microck/elevenlabs-web-cli
+	license = MIT
+	depends = ca-certificates
+	conflicts = elevenlabs-web-cli
+	provides = elevenlabs-web-cli
+	arch = aarch64
+	source_aarch64 = elevenlabs-web-cli-bin_0.1.1_aarch64.tar.gz::https://github.com/Microck/elevenlabs-web-cli/releases/download/v0.1.1/elevenlabs_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f2d0605d3115f535c7ef71749c45b2be5042b64705311813e0ac1c78a76b271
+	arch = x86_64
+	source_x86_64 = elevenlabs-web-cli-bin_0.1.1_x86_64.tar.gz::https://github.com/Microck/elevenlabs-web-cli/releases/download/v0.1.1/elevenlabs_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = c08a87d36e047855740341aaf8201b836116ee10ad207c62fbe42c2b09c34646
+	
+pkgname = elevenlabs-web-cli-bin
