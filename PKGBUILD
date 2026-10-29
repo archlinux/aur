@@ -1,7 +1,7 @@
 # Maintainer: onlymash <fiepi.dev@gmail.com>
 pkgname=wavetune-git
 _pkgname=wavetune
-pkgver=r6.g0e58965
+pkgver=r9.gcd022e7
 pkgrel=1
 pkgdesc="Unofficial wireless headset control center for Linux (git version)"
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,9 @@ depends=(
     'libadwaita'
     'libgcc'
     'pango'
+)
+optdepends=(
+    'gnome-shell: GNOME Quick Settings panel integration'
 )
 makedepends=(
     'cargo'
