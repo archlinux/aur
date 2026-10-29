@@ -1,0 +1,233 @@
+pkgbase = zen-browser-i18n
+	pkgver = 1.23b
+	pkgrel = 1
+	url = https://zen-browser.app
+	arch = any
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = cbindgen
+	makedepends = clang
+	makedepends = dbus
+	makedepends = diffutils
+	makedepends = ffmpeg
+	makedepends = gtk3
+	makedepends = libpulse
+	makedepends = libxss
+	makedepends = libxt
+	makedepends = lld
+	makedepends = llvm
+	makedepends = mesa
+	makedepends = nasm
+	makedepends = nodejs
+	makedepends = python
+	makedepends = wasi-compiler-rt
+	makedepends = wasi-libc
+	makedepends = wasi-libc++
+	makedepends = wasi-libc++abi
+	makedepends = yasm
+	source = zen-source-1.23b.tar.zst::https://github.com/zen-browser/desktop/releases/download/1.23b/zen.source.tar.zst
+	source = 0004-Use-wasm32-wasip1-target.patch
+	source = Use-Zen-langpack-EID.patch
+	sha256sums = c2a2f7853f939f1a5f510c885d450564e5bcf6957453c1ff3adb0ea595b872aa
+	sha256sums = 28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89
+	sha256sums = 90ee92d93beeeeb8d0838f51312d9a2ece17631cdf0a2d2fdc96a5e6be898018
+
+pkgname = zen-browser-i18n-ar
+	pkgdesc = Arabic language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-bg
+	pkgdesc = Bulgarian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-bs
+	pkgdesc = Bosnian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-ca
+	pkgdesc = Catalan language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-cs
+	pkgdesc = Czech language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-cy
+	pkgdesc = Welsh language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-da
+	pkgdesc = Danish language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-de
+	pkgdesc = German language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-el
+	pkgdesc = Greek language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-en-gb
+	pkgdesc = English (British) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-es-es
+	pkgdesc = Spanish (Spain) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-et
+	pkgdesc = Estonian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-fa
+	pkgdesc = Persian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-fi
+	pkgdesc = Finnish language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-fr
+	pkgdesc = French language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-ga-ie
+	pkgdesc = Irish language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-he
+	pkgdesc = Hebrew language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-hu
+	pkgdesc = Hungarian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-id
+	pkgdesc = Indonesian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-is
+	pkgdesc = Icelandic language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-it
+	pkgdesc = Italian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-ja
+	pkgdesc = Japanese language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-ko
+	pkgdesc = Korean language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-lt
+	pkgdesc = Lithuanian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-nb-no
+	pkgdesc = Norwegian (Bokmål) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-nl
+	pkgdesc = Dutch language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-nn-no
+	pkgdesc = Norwegian (Nynorsk) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-pl
+	pkgdesc = Polish language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-pt-br
+	pkgdesc = Portuguese (Brazilian) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-pt-pt
+	pkgdesc = Portuguese (Portugal) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-ro
+	pkgdesc = Romanian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-ru
+	pkgdesc = Russian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-sk
+	pkgdesc = Slovak language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-sv-se
+	pkgdesc = Swedish language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-th
+	pkgdesc = Thai language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-tr
+	pkgdesc = Turkish language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-uk
+	pkgdesc = Ukrainian language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-vi
+	pkgdesc = Vietnamese language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-zh-cn
+	pkgdesc = Chinese (Simplified) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1
+
+pkgname = zen-browser-i18n-zh-tw
+	pkgdesc = Chinese (Traditional) language pack for Zen Browser
+	depends = zen-browser>=1.23b
+	provides = zen-browser-i18n=1.23b-1

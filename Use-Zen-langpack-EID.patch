@@ -1,0 +1,11 @@
+--- a/browser/locales/Makefile.in
++++ b/browser/locales/Makefile.in
+@@ -17,7 +17,7 @@
+ 
+ ZIP_IN ?= $(ABS_DIST)/$(PACKAGE)
+ 
+-MOZ_LANGPACK_EID = langpack-$(AB_CD)@$(MOZ_LANGPACK_EID_HOST)
++MOZ_LANGPACK_EID = langpack-$(AB_CD)@zen-browser.app
+ 
+ # Required for l10n.mk - defines a list of app sub dirs that should
+ # be included in langpack xpis.
