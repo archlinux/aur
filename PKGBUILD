@@ -2,7 +2,7 @@
 
 pkgname=pdf-tui-bin
 _pkgname=pdf-tui
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="Terminal PDF reader built with ratatui and terminal graphics protocols."
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip')
 source=("$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('4aa1bea57bf8d86aba735bd8fba0b17a9a3ea6b3727868d61e540a29ce0795a2')
+sha256sums=('8549874a91de9cc6e8b9d463609759292549519e1011a3acfd148721d9c5c69b')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu"
