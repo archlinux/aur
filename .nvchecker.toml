@@ -1,0 +1,4 @@
+[dotnet-system-reactive]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/system.reactive/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'

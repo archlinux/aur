@@ -1,0 +1,14 @@
+pkgbase = dotnet-system-reactive
+	pkgdesc = Reactive Extensions (Rx) for .NET, System.Reactive (NuGet package)
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/dotnet/reactive
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = perl
+	source = reactive-cf59bed2247fdd8f8c3c6fe05c328934518c0c96.tar.gz::https://github.com/dotnet/reactive/archive/cf59bed2247fdd8f8c3c6fe05c328934518c0c96.tar.gz
+	sha512sums = 29b580b595c63a0c5ba54cc54d89651b99328d199fb3488b0c865e8a98689176229ca1d1af38eb74e0ecb0d27a40fd5d3045314ed716005b27cd06d8b9bbfd22
+	b2sums = 5da8b0350cbf0f26a95ca300b7d6011bf1e9c1a966f9e88bf5b1a0b210546478fbfb85b295e8abb887c4dd8a94cc6c1a979e82f99cbcb8254612159d5b1832b7
+
+pkgname = dotnet-system-reactive
