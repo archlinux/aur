@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
 pkgver=4.007
-pkgrel=5
+pkgrel=6
 pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
@@ -142,6 +142,11 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
+#                 Asked during the build as well (none / the recommended set /
+#                 a list of your own); the variables below are what an
+#                 unattended build uses. FEATURE_FAMILY stays environment-only
+#                 on purpose: it renames every file to one family, which would
+#                 merge the cuts a multi-family build installs.
 #
 #                 Suggested set - the three the MiSans Latin block in
 #                 ~/.config/fontconfig/fonts.conf turns on for pango that do
@@ -262,13 +267,36 @@ _prompt_options() {
         "gridfit:all sizes gridfit + grayscale"
       GASP_MODE=$_choice
     fi
-    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
-      _ask_yn "Bake the pango features into the fonts (so Chrome gets them too)" n
-      if [[ "$_yn" == true ]]; then
-        FEATURE_DEFAULTS="case,ss01,ss07"
-      else
-        FEATURE_DEFAULTS=""
-      fi
+    echo ""
+    echo "  ── OpenType features ────────────────────────────────────"
+    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
+    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
+    echo "  lookups into calt, which every program applies - the only way Chromium,"
+    echo "  Electron, Qt and LibreOffice honour one, since they never read"
+    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
+    _ask_choice "Bake features into calt" none \
+      "none:leave the fonts as upstream ships them (default)" \
+      "pango:case,ss01,ss07 - the set the fonts.conf block turns on: raised punctuation, two alternates" \
+      "custom:type the tag list yourself"
+    case $_choice in
+      none)    FEATURE_DEFAULTS="" ;;
+      pango)   FEATURE_DEFAULTS="case,ss01,ss07" ;;
+      custom)
+        echo "  Tags, comma or space separated (e.g. \"case,ss01,ss07\"):"
+        read -r -p "  > " _tags || _tags=""
+                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+        _tags="${_tags#,}"; _tags="${_tags%,}"
+        FEATURE_DEFAULTS="$_tags"
+        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
+        ;;
+    esac
+    if [[ -n "$FEATURE_DEFAULTS" ]]; then
+      echo ""
+      echo "A copy under another family name keeps the stock look available; set"
+      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"MiSans Latin Alt\") and"
+      echo "build again. Without it the packaged files keep their names and the"
+      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
     fi
     echo ""
   else
