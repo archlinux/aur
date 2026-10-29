@@ -1,6 +1,6 @@
 pkgbase = hihat-git
 	pkgdesc = A free, open-source, and modern music player for local libraries. No ads, no accounts, no internet — just your music.
-	pkgver = 2.3.6.r5.gc72bf7e
+	pkgver = 2.4.0.r0.g11b93cb
 	pkgrel = 1
 	url = https://github.com/johnnyshankman/hihat
 	arch = any
@@ -9,14 +9,15 @@ pkgbase = hihat-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
-	makedepends = curl
 	makedepends = jq
 	depends = electron42
 	provides = hihat
 	conflicts = hihat
 	source = hihat.git::git+https://github.com/johnnyshankman/hihat.git
+	source = hihat.js
 	source = hihat.sh
 	sha256sums = SKIP
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
 
 pkgname = hihat-git
