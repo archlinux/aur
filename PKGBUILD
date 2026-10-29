@@ -6,8 +6,8 @@ pkgbase=xorg-server-phoenix
 pkgname=('xorg-server-phoenix' 'xorg-server-xephyr-phoenix' 'xorg-server-xvfb-phoenix' 'xorg-server-xnest-phoenix'
          'xorg-server-common-phoenix' 'xorg-server-devel-phoenix' 'xorg-server-src-phoenix')
 pkgver=26.1.99.1
-pkgrel=1
-_commit=28e439d4acba2f472cd6553f74a6bd445073e34e
+pkgrel=2
+_commit=470c2e6cf8922b7c04f25126439cfdc625cb60aa
 _srcname=xserver-${_commit}
 _upstreamname=xorg-server
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(${_upstreamname}-${_commit}.tar.gz::https://github.com/dec05eba/xserver/
         xvfb-run.1
         0001-Revert_damage_Unlink_a_damage_from_the_list_it_was_actually.patch
 )
-sha512sums=('8079fac3f7d98338627ef6b733c14a71078a4b6088f44b7dce50b37e3624afecd5a57471355581dd9bdc51542cd1f3a703d35f4968660dcec77e24c3f3c32069'
+sha512sums=('749b474992cb9810e592ba7e4f44fc225f6a7fcbe81919cceeef407650028fa0443e58abe6c46bbbfc13e1e13bf6c73d1edeba102cd7c97756d5f9594cab89c7'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
             '5b749d10a968ba37b6ff59a459e80e6799e750d00f4b043b93033f9deb152cbb3fbb49cab7b2be2bc650ecf7fad5b4f0bbdaa80f40da017f074ee436d59ae4c3')
