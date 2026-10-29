@@ -1,19 +1,20 @@
 post_install() {
-    systemctl daemon-reload >/dev/null 2>&1 || true
-    systemctl enable squawker-vpn-helper.service >/dev/null 2>&1 || true
-    systemctl restart squawker-vpn-helper.service >/dev/null 2>&1 || \
-        systemctl start squawker-vpn-helper.service >/dev/null 2>&1 || true
+    systemctl daemon-reload
+    systemctl enable --now squawker-vpn-helper.service
 }
 
 post_upgrade() {
-    post_install
+    systemctl daemon-reload
+
+    if systemctl is-active --quiet squawker-vpn-helper.service; then
+        systemctl restart squawker-vpn-helper.service
+    fi
 }
 
 pre_remove() {
-    systemctl stop squawker-vpn-helper.service >/dev/null 2>&1 || true
-    systemctl enable squawker-vpn-helper.service >/dev/null 2>&1 || true
+    systemctl disable --now squawker-vpn-helper.service
 }
 
 post_remove() {
-    systemctl daemon-reload >/dev/null 2>&1 || true
+    systemctl daemon-reload
 }

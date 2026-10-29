@@ -1,62 +1,74 @@
 #!/usr/bin/env python3
 
 """
-Checks whether a new version of Squawker VPN is available.
+Check whether a new Squawker VPN version is available upstream.
 
-Fetches the latest upstream version from TryHackMe endpoint and
-compares it with the installed package version reported by pacman.
+Fetches the latest version from TryHackMe's latest.json endpoint
+and compares it with pkgver in the local PKGBUILD.
 
-Intended for use by the AUR package maintainer when checking for
-upstream releases.
+Intended for use by the AUR package maintainer.
 """
 
 import json
-import urllib.request
-import subprocess
 import re
+import urllib.error
+import urllib.request
+from pathlib import Path
 
 LATEST_URL = "https://squawker-vpn.vm.tryhackme.com/latest.json"
-PACKAGE = "squawker-vpn-bin"
-
+PKGBUILD = Path(__file__).resolve().parent / "PKGBUILD"
 
 def get_latest_version():
-    with urllib.request.urlopen(LATEST_URL, timeout=10) as response:
+    request = urllib.request.Request(
+        LATEST_URL,
+        headers={"User-Agent": "squawkver"},
+    )
+
+    with urllib.request.urlopen(request, timeout=10) as response:
         data = json.load(response)
 
-    return data["version"]
+    version = data.get("version")
+
+    if not isinstance(version, str) or not re.fullmatch(
+        r"\d+(?:\.\d+)+", version
+    ):
+        raise ValueError("Upstream returned an invalid version")
+
+    return version
 
 
-def get_installed_version():
-    try:
-        result = subprocess.run(
-            ["pacman", "-Q", PACKAGE],
-            capture_output=True,
-            text=True,
-            check=True,
-        )
+def get_pkgbuild_version():
+    content = PKGBUILD.read_text(encoding="utf-8")
+    match = re.search(r"^pkgver=(\S+)\s*$", content, re.MULTILINE)
 
-        # Output: squawker-vpn-bin 1.0.0-2
-        version = result.stdout.split()[-1]
+    if not match:
+        raise ValueError("Could not find pkgver in PKGBUILD")
 
-        # Convert 1.0.0-2 -> 1.0.0
-        return re.sub(r"-\d+$", "", version)
-
-    except subprocess.CalledProcessError:
-        return None
+    return match.group(1)
 
 
 def main():
-    latest = get_latest_version()
-    installed = get_installed_version()
+    try:
+        latest = get_latest_version()
+        current = get_pkgbuild_version()
+    except (
+        urllib.error.URLError,
+        TimeoutError,
+        json.JSONDecodeError,
+        OSError,
+        ValueError,
+    ) as error:
+        print(f"ERROR: {error}")
+        raise SystemExit(1)
 
-    print(f"Latest version: {latest}")
+    print(f"PKGBUILD version: {current}")
+    print(f"Latest upsteam version: {latest}")
 
-    if installed is None:
-        print("Squawker VPN is not installed")
-    elif installed != latest:
-        print(f"New version available: {installed} -> {latest}")
+    if current == latest:
+        print("PKGBUILD is up to date.")
     else:
-        print("Already up to date")
+        print(f"Version mismatch: {current} -> {latest}")
+        print("Update pkgver and verify the source URLs and checksums!")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 pkgbase = squawker-vpn-bin
 	pkgdesc = TryHackMe Squawker VPN Client
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tryhackme.com
 	install = squawker-vpn-bin.install
 	arch = x86_64
