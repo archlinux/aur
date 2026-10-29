@@ -43,7 +43,7 @@ pkgname=cross-cleaner-bin
 # name. Only the archive is renamed, because GitHub calls it
 # v${pkgver}.tar.gz and ../PKGBUILD already established the longer name.
 # ---AUR-VERSION-BEGIN---
-pkgver=2.0.4.5.1
+pkgver=2.0.4.6
 pkgrel=1
 source_x86_64=(
     "cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz"
@@ -52,10 +52,10 @@ source_x86_64=(
     "https://github.com/Cross-Cleaner/Cross-Cleaner/releases/download/v${pkgver}/Linux-Cross_Cleaner_CLI-no-updater"
 )
 sha256sums_x86_64=(
-    '685ba02acbafa13ae90c5a9a12393cd65748f3425483015e49860f375d1fa6e7'
-    '745a23f989eb4301d827f6120a68edd744de4088aef0b84ae6f77e3209b827ae'
-    'aa5e9878800ee411befad10d6e1d2ab6a90ecd2929403e670d9d09b777380efa'
-    '1a6e83a836a309151146b347c031d414016dc1541fb0520be811ae99e18445e2'
+    '6f8b2abb045b40ee8d64a2e26a36868db9bb97ede0f4e9611eda19bbbde69a2d'
+    '7b4be63ab7c8b35f9f86d52f5210f747212cfdc03c7e6d7fc2aa6e9025ba8964'
+    '699a14acee731224c1ab765669f2361a36ec10721c0d8ed997d996d23f4e65d3'
+    '2f6e1a5f9fceb0032198b7cb22031bee5151232ac62ffc6daa41640897a3c93e'
 )
 source_aarch64=(
     "cross-cleaner-v${pkgver}.tar.gz::https://github.com/Cross-Cleaner/Cross-Cleaner/archive/refs/tags/v${pkgver}.tar.gz"
@@ -64,10 +64,10 @@ source_aarch64=(
     "https://github.com/Cross-Cleaner/Cross-Cleaner/releases/download/v${pkgver}/Linux-Arm64-Cross_Cleaner_CLI-no-updater"
 )
 sha256sums_aarch64=(
-    '685ba02acbafa13ae90c5a9a12393cd65748f3425483015e49860f375d1fa6e7'
-    'af2a3cccd11e9fdc482279e1437385d0ed901e22df89921c93a0063cdfcbe4a9'
-    '3e5af3921c6c13bbffd51a525120c9ad18e7034effdcdf40a727f526e7592f8c'
-    'e0b0f2a94eb2c976114dafb88ff968f4af3398f237903b208508253824247995'
+    '6f8b2abb045b40ee8d64a2e26a36868db9bb97ede0f4e9611eda19bbbde69a2d'
+    'd79f2b51583d2eec1d4c101a922aa215c3d98f438b06e62f3bf7c0953d6595f3'
+    'c096f79a77b76f7bc29906c8d6260ba9bf36a8754ffdc27c939afb7e8150e6df'
+    '8b5859f2f0b3de3e5ef1a1ee8109ef95382d145f48db8a4f384d293b7ce522e2'
 )
 # ---AUR-VERSION-END---
 pkgdesc='Addon-style system cleanup tool that removes temporary files, cache and other system junk (prebuilt binaries)'
