@@ -1,0 +1,4 @@
+[dotnet-nerdbank-streams]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/nerdbank.streams/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'
