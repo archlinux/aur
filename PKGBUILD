@@ -3,7 +3,7 @@
 pkgbase=ddnsto-bin
 pkgname=(ddnsto-bin ddnsto-micro-bin)
 _name=${pkgname%-bin}
-pkgver=4.2.6
+pkgver=4.2.8
 pkgrel=1
 pkgdesc="DDNSTO is a stable, fast and easy-to-use intranet penetration tool"
 arch=(
@@ -26,8 +26,8 @@ source=(
     "ddnsto-bin.install"
     "ddnsto-micro-bin.install"
 )
-sha256sums=('4521d0b2ffeb35c4f539380c604c5d40577cb03d3938c98064324c098c276a3b'
-            '90b0531d6d76edbb5d2e76f87bef5b2fba6a23d521d679dabc2f02fe91f82ee2'
+sha256sums=('3bf7ada14448b5aa04afa171e497f85d0b8bb4adcf2209991e52ef5826d4e975'
+            '1f02efa595df4740312eb633da1453b8ab8abc0e6b3bf33285a878430c0e7f3b'
             '99d7c3c20776645a08de44062cea1b32fd37288e35d61821e90c45e132dd5f14'
             '57f54bcf6013b0a2fe03923d4119a36cb8c6584f70b07dbd6d0c1d31f4fe8d72'
             'b068dcd630d7ce9a3b0bf904340f9438572d84cd4c75ad49102a274a4be37dd6'
