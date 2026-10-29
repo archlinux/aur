@@ -12,7 +12,7 @@ provides=('concentre' 'pomodorolm')
 conflicts=('pomodorolm' 'pomodorolm-bin')
 replaces=('pomodorolm-bin')
 source=("https://github.com/vjousse/concentre/releases/download/app-v$pkgver/pomodorolm_${pkgver}_amd64.deb")
-sha256sums=('aadb6c0d3c57e6e3368deea18cca52efb4caf76b9625dd691bc7296d0919b1ba')
+sha256sums=('9e41e9b27b90656a58b22e1d3ae3e31b056fa43a54f9c93b9314c7aa05219917')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
