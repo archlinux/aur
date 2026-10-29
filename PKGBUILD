@@ -9,7 +9,7 @@
 
 pkgname="ossec-hids-server"
 pkgver=3.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Source Host-based Intrusion Detection System - Server only"
 url="https://www.ossec.net/"
 license=("GPL2")
@@ -17,6 +17,7 @@ arch=("x86_64" "aarch64" "armv7h")
 provides=("ossec-hids-server")
 conflicts=("ossec-hids-agent" "ossec-hids-local")
 depends=("geoip"
+         "libmaxminddb"
          "inotify-tools"
          "libprocps"
          "openssl")
