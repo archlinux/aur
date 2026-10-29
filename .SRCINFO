@@ -1,7 +1,7 @@
 pkgbase = ossec-hids-local
 	pkgdesc = Open Source Host-based Intrusion Detection System - Standalone
 	pkgver = 3.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.ossec.net/
 	install = ossec-hids-local.install
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = ossec-hids-local
 	makedepends = sqlite
 	makedepends = zlib
 	depends = geoip
+	depends = libmaxminddb
 	depends = inotify-tools
 	depends = libprocps
 	depends = openssl
