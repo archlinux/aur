@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-o-tiling
-pkgver=2.12.01
-pkgrel=2
+pkgver=2.13.00
+pkgrel=1
 pkgdesc="Auto-tiling extension for GNOME Shell with active hint border, customizable workspace overview and theme consistency."
 arch=('any')
 url="https://github.com/oliwebd/o-tiling"
@@ -14,7 +14,7 @@ makedepends=(
   'zip'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01a120f966b8d67d9f1a33518ff22044830302c450f2defdac799808e72ffcf0')
+sha256sums=('960a07aafb8c9da751daa3baf400ec318c1ecff17cf5c1d40fb51bc58d665d8b')
 
 prepare() {
   cd "o-tiling-$pkgver"
