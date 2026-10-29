@@ -1,9 +1,9 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="metabase-driver-teradata"
-_pkgvermetabase=0.46.6
-_pkgverjdbc=17.10
-pkgver=1.1.6
+_pkgvermetabase=0.61.1
+_pkgverjdbc=20.00
+pkgver=1.1.19
 pkgrel=1
 pkgdesc="Teradata driver for Metabase"
 arch=("any")
@@ -11,7 +11,7 @@ url="https://github.com/swisscom-bigdata/metabase-teradata-driver"
 license=("EPL")
 depends=("metabase")
 source=("$url/releases/download/$pkgver-metabase-v$_pkgvermetabase-teradata-jdbc-$_pkgverjdbc/teradata.metabase-driver.jar")
-sha256sums=('495ec87b6a4ecca1225ed087aa27a9a6219178cf5ec278c10ede61627d025fbc')
+sha256sums=('97ebb52b4b155a2444fbdbfa1d282929410096d881df603f6b2b0314caf7d812')
 noextract=("teradata.metabase-driver.jar")
 options=("!strip")
 
