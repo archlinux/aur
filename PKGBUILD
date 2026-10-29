@@ -15,7 +15,7 @@ provides=('sysclet')
 conflicts=('sysclet-git')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Run updpkgsums once the tag is pushed; GitHub's tag archive is the source.
+# After a new tag, bump pkgver and run updpkgsums; the source is the tag archive.
 sha256sums=('dabb67510db298cbe9b431df1d45cf6e2702eb20ba01e8e3523c4ed6f4d3b774')
 
 _goenv() {
