@@ -1,7 +1,7 @@
 pkgbase = python-flask-appbuilder
 	pkgdesc = Simple and rapid application development framework, built on top of Flask
 	pkgver = 4.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpgaspar/Flask-AppBuilder
 	arch = any
 	license = BSD
@@ -34,7 +34,7 @@ pkgbase = python-flask-appbuilder
 	depends = python-authlib
 	depends = python-flask-openid
 	depends = python-flask-talisman
-	source = https://pypi.org/packages/source/F/Flask-AppBuilder/Flask-AppBuilder-4.3.11.tar.gz
-	b2sums = 0f2f72146cbf361eab7e8f5ec481444044b1d392a8e0194e58b03787500fc29391eb385ed21b26b159a1cd699acfe5a214a6e68cf3b11ea7521e47279a7cd4ca
+	source = https://files.pythonhosted.org/packages/source/f/flask_appbuilder/flask_appbuilder-4.3.11.tar.gz
+	b2sums = de8bbe2b6f47104ccd2a2fba16c22292fff82cc8ac1d01fa45049ec2c70ae174ab8b96ac47e757aae19b50f2f1f5534e135323cb7a519ec419bdd11ffcc6721d
 
 pkgname = python-flask-appbuilder
