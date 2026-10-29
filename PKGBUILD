@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-ffmpeg-core
 epoch=
-pkgver=4.5
+pkgver=4.6.2
 pkgrel=1
 pkgdesc='Core runtime for typed-ffmpeg (DAG, compilation, IR layer)'
 arch=(any)
@@ -20,11 +20,11 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/cb/d2/47f176d4d5ccc29cce495aba0250939e72699b804ca1d7880450e6cf955d/ffmpeg_core-4.5-py3-none-any.whl)
-md5sums+=(5b143f6e631b1df062c1deaba86ab7bb)
-noextract+=(ffmpeg_core-4.5-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/04/35/139f8a9ed3889e647fc2e1bfd549cc781da0c547a81150b76053c339972a/ffmpeg_core-4.6.2-py3-none-any.whl)
+sha256sums+=(1e7978aa8b671ec8ecf657faad80d0293b8f6e822bd5eee27223b4b03e07fac1)
+noextract+=(ffmpeg_core-4.6.2-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(3ddc9ea27f7286b3d3de7cbf734ffd09)
+sha256sums+=(e687b87339cc18b54910412d36672366a3728733ea0ce4a7ebdbc7187e7be4c8)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
