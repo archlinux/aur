@@ -3,7 +3,7 @@
 pkgname="toc"
 _pkgname="tableofcontents"
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate a table of contents from the comments of a file"
 url="https://github.com/AlphaJack/toc"
 license=("GPL3")

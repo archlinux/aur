@@ -1,7 +1,7 @@
 pkgbase = toc
 	pkgdesc = Generate a table of contents from the comments of a file
 	pkgver = 2.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlphaJack/toc
 	arch = any
 	license = GPL3
