@@ -1,5 +1,4 @@
 [tartube]
-source = "github"
-github = "axcore/tartube"
-use_max_tag = true
+source = "git"
+git = "https://github.com/axcore/tartube.git"
 prefix = "v"
