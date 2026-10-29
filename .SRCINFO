@@ -1,17 +1,28 @@
 pkgbase = jna
-	pkgdesc = Access native libraries with pure Java code.
-	pkgver = 5.17.0
+	pkgdesc = Java Native Access library
+	pkgver = 5.19.1
 	pkgrel = 1
 	url = https://github.com/java-native-access/jna
-	arch = any
-	license = LGPL
-	license = custom:Apache
-	depends = java-runtime
-	source = https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar
-	source = https://raw.githubusercontent.com/java-native-access/jna/master/AL2.0
-	source = https://raw.githubusercontent.com/java-native-access/jna/master/LGPL2.1
-	sha256sums = b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0
-	sha256sums = 0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594
-	sha256sums = eea173a556abac0370461e57e12aab266894ea6be3874c2be05fd87871f75449
+	arch = x86_64
+	license = Apache-2.0 OR LGPL-2.1-or-later
+	makedepends = ant
+	makedepends = git
+	makedepends = java-environment>=8
+	makedepends = libx11
+	makedepends = libxt
+	makedepends = pkgconf
+	depends = glibc
+	depends = java-runtime>=8
+	depends = libffi.so
+	source = jna-5.19.1::git+https://github.com/java-native-access/jna.git#tag=5.19.1
+	source = jna-disable-full-jar.patch
+	source = jna-disable-native-jar.patch
+	source = jna-native-ldflags.patch
+	source = jna-use-system-library.patch
+	sha256sums = fb672b61c1af3acd40b9906bb4cbf9a762a921045a4e71a8f1ff784b5948857a
+	sha256sums = e2dc08dd85e5e7a328def500f2f73783cb4169389158d868c7f34bfe0868abbc
+	sha256sums = 39ba650dd7ae5c62a21752187a92c17e87f0aeed5d59c3d2d38e5b153077a822
+	sha256sums = ada01ef35a301b4dde0076e49ab5cbc92eeb7ff201da1bd4418a2d1dc00ef3af
+	sha256sums = a9aec274a697c1dc0e8b1a5fde9db514e23074731e3517d6d78553c93eee863a
 
 pkgname = jna
