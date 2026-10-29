@@ -1,0 +1,13 @@
+pkgbase = fake-home-git
+	pkgdesc = Banish your programs that don't respect XDG base directory
+	pkgver = v0.1.0.3.r2.gd1afa2b
+	pkgrel = 1
+	url = https://github.com/superluserdo/fake-home
+	arch = any
+	license = GPL-3.0-or-later
+	provides = fake-home
+	conflicts = fake-home
+	source = fake-home-git::git+https://github.com/superluserdo/fake-home.git
+	sha256sums = SKIP
+
+pkgname = fake-home-git
