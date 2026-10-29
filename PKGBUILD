@@ -1,6 +1,6 @@
 # Maintainer: Panda <satodu@github.com>
 pkgname=bamboo-end-store
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Console-first software store for EndeavourOS and Arch (pacman, AUR, Flatpak, AppImage), Rust and Qt"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('paru: AUR support'
 conflicts=('bamboo-end-store-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9633142f150476f6d837bea66694b7aa7a319cd88963518d9742a0ad6578522e')
+sha256sums=('aa0b8722af66214cd01267f7a58fe835cb4f0c05335196ef9d83cd3951429991')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
