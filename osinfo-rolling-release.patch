@@ -1,0 +1,207 @@
+From 4c6e6abd3dc50a14c6b22894a9b834d00c89300e Mon Sep 17 00:00:00 2001
+From: Copilot <198982749+Copilot@users.noreply.github.com>
+Date: Wed, 28 Oct 2026 13:40:52 -0700
+Subject: [PATCH] Fix OSInfo assertions and tests for rolling-release
+ distributions (#1778)
+
+* Initial plan
+
+* Fix OSInfo absent-property checks and rolling-release tests
+
+Co-authored-by: SteveL-MSFT <11859881+SteveL-MSFT@users.noreply.github.com>
+
+* Fix per-case OSInfo version test skips
+
+Co-authored-by: SteveL-MSFT <11859881+SteveL-MSFT@users.noreply.github.com>
+
+---------
+
+Co-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>
+Co-authored-by: SteveL-MSFT <11859881+SteveL-MSFT@users.noreply.github.com>
+---
+ lib/dsc-lib-osinfo/src/lib.rs           | 66 ++++++++++++++++++++-----
+ resources/osinfo/tests/osinfo.tests.ps1 | 40 ++++++++++-----
+ 2 files changed, 81 insertions(+), 25 deletions(-)
+
+diff --git a/lib/dsc-lib-osinfo/src/lib.rs b/lib/dsc-lib-osinfo/src/lib.rs
+index 7ee7bdc84..3ce28aa12 100644
+--- a/lib/dsc-lib-osinfo/src/lib.rs
++++ b/lib/dsc-lib-osinfo/src/lib.rs
+@@ -184,43 +184,83 @@ pub fn perform_test(input_json: &str) -> Result<OsInfo, String> {
+     // name is ignored for test since it's only generated for export and not a property of the actual OS state.
+     let actual = OsInfo::new(false);
+ 
++    Ok(test_state(&desired, actual))
++}
++
++fn test_state(desired: &OsInfo, actual: OsInfo) -> OsInfo {
+     let mut in_desired_state = true;
+ 
+     if let Some(ref desired_family) = desired.family
+-        && let Some(ref actual_family) = actual.family
+-        && desired_family != actual_family {
++        && actual.family.as_ref() != Some(desired_family) {
+             in_desired_state = false;
+         }
+ 
+     if let Some(ref desired_version) = desired.version
+-        && let Some(ref actual_version) = actual.version
+-        && !version_matches(desired_version, actual_version) {
++        && actual.version.as_ref().is_none_or(|actual_version| !version_matches(desired_version, actual_version)) {
+             in_desired_state = false;
+         }
+ 
+     if let Some(ref desired_edition) = desired.edition
+-        && let Some(ref actual_edition) = actual.edition
+-        && actual_edition != desired_edition {
++        && actual.edition.as_ref() != Some(desired_edition) {
+             in_desired_state = false;
+         }
+ 
+     if let Some(ref desired_codename) = desired.codename
+-        && let Some(ref actual_codename) = actual.codename
+-        && actual_codename != desired_codename {
++        && actual.codename.as_ref() != Some(desired_codename) {
+             in_desired_state = false;
+         }
+ 
+     if let Some(desired_bitness) = desired.bitness
+-        && let Some(actual_bitness) = actual.bitness
+-        && actual_bitness != desired_bitness {
++        && actual.bitness != Some(desired_bitness) {
+             in_desired_state = false;
+         }
+ 
+     if let Some(ref desired_architecture) = desired.architecture
+-        && let Some(ref actual_architecture) = actual.architecture
+-        && actual_architecture != desired_architecture {
++        && actual.architecture.as_ref() != Some(desired_architecture) {
+             in_desired_state = false;
+         }
+ 
+-    Ok(OsInfo { in_desired_state: Some(in_desired_state), ..actual })
++    OsInfo { in_desired_state: Some(in_desired_state), ..actual }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use serde_json::json;
++
++    #[test]
++    fn requested_properties_must_be_present() {
++        let state = json!({
++            "family": "Linux",
++            "version": "Rolling Release",
++            "edition": "Example Edition",
++            "codename": "example",
++            "bitness": 64,
++            "architecture": "x86_64"
++        });
++
++        for property in ["family", "version", "edition", "codename", "bitness", "architecture"] {
++            let desired: OsInfo = serde_json::from_value(json!({ property: state[property] })).unwrap();
++            let actual: OsInfo = serde_json::from_value(state.clone()).unwrap();
++            assert_eq!(test_state(&desired, actual).in_desired_state, Some(true), "{property}");
++
++            let mut missing = state.clone();
++            missing.as_object_mut().unwrap().remove(property);
++            let actual: OsInfo = serde_json::from_value(missing).unwrap();
++            assert_eq!(test_state(&desired, actual).in_desired_state, Some(false), "{property}");
++        }
++    }
++
++    #[test]
++    fn rolling_release_without_optional_properties_matches() {
++        let actual: OsInfo = serde_json::from_value(json!({
++            "family": "Linux",
++            "version": "Rolling Release",
++            "bitness": 64,
++            "architecture": "x86_64"
++        })).unwrap();
++        let desired: OsInfo = serde_json::from_value(json!({ "version": "Rolling Release" })).unwrap();
++        let result = test_state(&desired, actual.clone());
++        assert_eq!(result, OsInfo { in_desired_state: Some(true), ..actual });
++    }
+ }
+diff --git a/resources/osinfo/tests/osinfo.tests.ps1 b/resources/osinfo/tests/osinfo.tests.ps1
+index f7b5ed262..1b9117157 100644
+--- a/resources/osinfo/tests/osinfo.tests.ps1
++++ b/resources/osinfo/tests/osinfo.tests.ps1
+@@ -62,14 +62,15 @@ Describe 'osinfo test subcommand version operator tests' {
+     BeforeDiscovery {
+         $osGetResult = dsc resource get -r Microsoft/OSInfo | ConvertFrom-Json
+         $currentVersion = $osGetResult.actualState.version
++        $skipVersionOperators = $currentVersion -notmatch '^[0-9]'
+ 
+         $versionTestCases = @(
+-            @{ constraint = $currentVersion;          expectedState = $true;  description = 'exact version without operator' }
+-            @{ constraint = "= $currentVersion";      expectedState = $true;  description = 'exact version with = operator' }
+-            @{ constraint = ">= $currentVersion";     expectedState = $true;  description = '>= current version' }
+-            @{ constraint = "<= $currentVersion";     expectedState = $true;  description = '<= current version' }
+-            @{ constraint = "> $currentVersion";      expectedState = $false; description = '> current version' }
+-            @{ constraint = "< $currentVersion";      expectedState = $false; description = '< current version' }
++            @{ constraint = $currentVersion;          expectedState = $true;  description = 'exact version without operator'; skip = $false }
++            @{ constraint = "= $currentVersion";      expectedState = $true;  description = 'exact version with = operator'; skip = $skipVersionOperators }
++            @{ constraint = ">= $currentVersion";     expectedState = $true;  description = '>= current version'; skip = $skipVersionOperators }
++            @{ constraint = "<= $currentVersion";     expectedState = $true;  description = '<= current version'; skip = $skipVersionOperators }
++            @{ constraint = "> $currentVersion";      expectedState = $false; description = '> current version'; skip = $skipVersionOperators }
++            @{ constraint = "< $currentVersion";      expectedState = $false; description = '< current version'; skip = $skipVersionOperators }
+         )
+ 
+         $invalidSyntaxCases = @(
+@@ -80,11 +81,13 @@ Describe 'osinfo test subcommand version operator tests' {
+     }
+ 
+     Context 'valid version constraints' {
+-        It 'version constraint "<constraint>" (<description>) should report inDesiredState = <expectedState>' -ForEach $versionTestCases {
+-            $json = "{`"version`": `"$constraint`"}"
+-            $out = $json | dsc resource test -r Microsoft/OSInfo -f - | ConvertFrom-Json
+-            $LASTEXITCODE | Should -Be 0
+-            $out.inDesiredState | Should -Be $expectedState
++        foreach ($versionTestCase in $versionTestCases) {
++            It 'version constraint "<constraint>" (<description>) should report inDesiredState = <expectedState>' -ForEach @($versionTestCase) -Skip:$versionTestCase.skip {
++                $json = "{`"version`": `"$constraint`"}"
++                $out = $json | dsc resource test -r Microsoft/OSInfo -f - | ConvertFrom-Json
++                $LASTEXITCODE | Should -Be 0
++                $out.inDesiredState | Should -Be $expectedState
++            }
+         }
+     }
+ 
+@@ -99,6 +102,10 @@ Describe 'osinfo test subcommand version operator tests' {
+ }
+ 
+ Describe 'osinfo test subcommand property tests' {
++    BeforeDiscovery {
++        $hasCodename = -not [string]::IsNullOrEmpty((dsc resource get -r Microsoft/OSInfo | ConvertFrom-Json).actualState.codename)
++    }
++
+     BeforeAll {
+         $actual = (dsc resource get -r Microsoft/OSInfo | ConvertFrom-Json).actualState
+     }
+@@ -119,7 +126,7 @@ Describe 'osinfo test subcommand property tests' {
+         }
+     }
+ 
+-    Context 'codename property' -Skip:(-not $IsLinux) {
++    Context 'codename property' -Skip:(-not $hasCodename) {
+         It 'should be in desired state when codename matches actual' {
+             $json = @{ codename = $actual.codename } | ConvertTo-Json -Compress
+             $out = $json | dsc resource test -r Microsoft/OSInfo -f - | ConvertFrom-Json
+@@ -135,6 +142,15 @@ Describe 'osinfo test subcommand property tests' {
+         }
+     }
+ 
++    It 'should not be in desired state when a requested codename is not reported' -Skip:$hasCodename {
++        $json = @{ codename = 'nonexistentcodename' } | ConvertTo-Json -Compress
++        $out = $json | dsc resource test -r Microsoft/OSInfo -f - | ConvertFrom-Json
++        $LASTEXITCODE | Should -Be 0
++        $out.inDesiredState | Should -BeFalse
++        $out.actualState._inDesiredState | Should -BeFalse
++        $out.differingProperties | Should -Contain 'codename'
++    }
++
+     Context 'bitness property' {
+         It 'should be in desired state when bitness matches actual' {
+             $json = @{ bitness = [int]$actual.bitness } | ConvertTo-Json -Compress

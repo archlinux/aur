@@ -13,3 +13,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+  "osinfo-rolling-release.patch",
+]
+SPDX-FileCopyrightText = "Microsoft Corporation"
+SPDX-License-Identifier = "MIT"
