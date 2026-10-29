@@ -1,6 +1,6 @@
 pkgbase = sysclet-git
 	pkgdesc = Generate ANSI text headers from TheDraw TDF fonts
-	pkgver = r37.g3772816
+	pkgver = 0.3.0.r0.gbe80e64
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/sysclet
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sysclet-git
 	license = GPL-3.0-only
 	license = custom
 	makedepends = git
-	makedepends = go
+	makedepends = go>=2:1.26.10
 	optdepends = wl-clipboard: copy snippets from Wayland sessions
 	optdepends = xclip: copy snippets from X11 sessions
 	optdepends = xsel: copy snippets from X11 sessions
