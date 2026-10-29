@@ -1,19 +1,20 @@
 pkgbase = lucent
-	pkgdesc = A blazing-fast, D-Bus activated Wayland notification daemon
-	pkgver = 1.1.0
+	pkgdesc = The lightest notification daemon for Wayland
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/CPT-Dawn/Lucent
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	depends = cairo
+	depends = pango
 	depends = glib2
-	depends = gtk4
-	depends = gtk4-layer-shell
 	depends = dbus
+	depends = libgcc
+	depends = glibc
 	provides = lucent
-	conflicts = lucent-git
-	source = https://github.com/CPT-Dawn/Lucent/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 2e77c3903a3563de8b8a02f365243659cacd01716ef4a4cd327f3f7fbf962d78
+	source = https://github.com/CPT-Dawn/Lucent/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 5dc25ddab8ddc41e9c57457d8c868e2b67a202d63bd16498fe6936857498a655
 
 pkgname = lucent
