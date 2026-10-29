@@ -2,9 +2,9 @@
 
 pkgname="mkdocs-macros-plugin"
 _pkgname="$pkgname"
-pkgver=1.0.5
+pkgver=1.5.0
 _sdist=mkdocs_macros_plugin
-pkgrel=2
+pkgrel=1
 pkgdesc="MkDocs plugin to use variables and macros in markdown files"
 url="https://github.com/fralau/mkdocs_macros_plugin"
 license=("MIT")
