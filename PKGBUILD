@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mactahoe-gtk-theme-fixed-git
 _name=mactahoe-gtk-theme
-pkgver=2026.09.10.r7.g1e45e19.f13.fd98304
+pkgver=2026.09.10.r7.g1e45e19.f7.8d3878b
 pkgrel=1
 pkgdesc='MacTahoe GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)'
 arch=('any')
@@ -36,7 +36,8 @@ _local_fixes() {
   printf '%s\n' "$d/gtk-theme-fixes"
 }
 
-# <theme version>.f<fixes commit count>.<fixes commit>
+# <theme version>.f<count>.<commit>: the commits of gtk-theme-fixes that change the files this
+# package uses (generic/, mactahoe/), so other themes' fixes leave the version alone
 pkgver() {
   local fixes="$srcdir/gtk-theme-fixes"
   if [[ ${local_build:-} == true ]]; then
@@ -44,7 +45,8 @@ pkgver() {
   fi
   printf '%s.f%s.%s' \
     "$(git -C "$srcdir/${_name}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')" \
-    "$(git -C "$fixes" rev-list --count HEAD)" "$(git -C "$fixes" rev-parse --short=7 HEAD)"
+    "$(git -C "$fixes" rev-list --count HEAD -- generic mactahoe)" \
+    "$(git -C "$fixes" log -1 --format=%h --abbrev=7 HEAD -- generic mactahoe)"
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = mactahoe-gtk-theme-fixed-git
 	pkgdesc = MacTahoe GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
-	pkgver = 2026.09.10.r7.g1e45e19.f13.fd98304
+	pkgver = 2026.09.10.r7.g1e45e19.f7.8d3878b
 	pkgrel = 1
 	url = https://github.com/vinceliuice/MacTahoe-gtk-theme
 	install = mactahoe-gtk-theme-fixed.install
