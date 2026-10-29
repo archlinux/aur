@@ -3,7 +3,7 @@
 _author=backslash-app
 _basename=backslash
 pkgname=${_basename}-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A lightning-fast command launcher that helps you launch commands, run apps, and streamline your workflow—all while embracing the quirky spirit of Linux!"
 
@@ -22,7 +22,7 @@ optdepends=('perl: Fetching stock market info for the emStocks plugin'
 options=('!strip' '!debug')
 
 source_x86_64=("https://github.com/${_author}/${_basename}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb")
-sha256sums_x86_64=('eca1518c17c5ec4dc9f9c69cb7834236b991ec48448e88b8f20057b07b58d69f')
+sha256sums_x86_64=('d3846b7bf2a29be76d98ac4a67662677b440ce130f41f89d4fe7c81a26acd919')
 
 package() {
     cd "${pkgdir}"

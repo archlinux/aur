@@ -1,6 +1,6 @@
 pkgbase = backslash-bin
 	pkgdesc = A lightning-fast command launcher that helps you launch commands, run apps, and streamline your workflow—all while embracing the quirky spirit of Linux!
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/backslash-app/backslash
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = backslash-bin
 	conflicts = backslash
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/backslash-app/backslash/releases/download/v0.6.0/backslash_0.6.0_amd64.deb
-	sha256sums_x86_64 = eca1518c17c5ec4dc9f9c69cb7834236b991ec48448e88b8f20057b07b58d69f
+	source_x86_64 = https://github.com/backslash-app/backslash/releases/download/v0.6.1/backslash_0.6.1_amd64.deb
+	sha256sums_x86_64 = d3846b7bf2a29be76d98ac4a67662677b440ce130f41f89d4fe7c81a26acd919
 
 pkgname = backslash-bin
