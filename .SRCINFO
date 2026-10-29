@@ -1,6 +1,6 @@
 pkgbase = neferwl-git
 	pkgdesc = A Wayland compositor that spends its frames on your apps, not on itself (git version)
-	pkgver = 0.12.0.r0.gd642db2
+	pkgver = 0.13.0.r0.ge865f04
 	pkgrel = 1
 	url = https://git.bnema.dev/neferwl
 	install = neferwl.install
