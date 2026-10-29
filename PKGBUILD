@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=designcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Page layout and desktop publishing (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -26,15 +26,15 @@ source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storyto
         "$_pkgname-$pkgver-OFL-SourceSerif4.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/assets/fonts/OFL-SourceSerif4.txt")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('f020b2933f2a3769896c1ebdde8c745022006022fc7be49c62be703d7949dec1'
+sha256sums=('cd88e55637a6aa3f49e4629b83e856e94cd6d028d44ca75f12878f0c564d622e'
             '68fb0e786130f8ead0350a352f66d7027d0f8a8ebebcf30d51de9146405f670e'
             'eb3f3cfc6437fd370e31ca8449c7312314c191d15347bd70934d9ce2df5331bd'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464')
-sha256sums_x86_64=('5314d46bc520cf54835a2d1293351be1fed116228e055393019729f04e0f99c2')
-sha256sums_aarch64=('6d75213f93c0db35edf88d84b8ab1382be413f87aca5bdbce88d3485e774d8f5')
+sha256sums_x86_64=('25c87be759d35a81ca44e1f625ed4304b16e5aab6a03a1051bca498a81bfc547')
+sha256sums_aarch64=('81bfc265d5e353ca5fe6be3dc18db0383526c3cdbc7328f4c85a44f2c3d0d046')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
