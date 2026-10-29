@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=findlibs
 pkgname=python-${_name}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A Python package that searches for shared libraries on various platforms"
 arch=(any)
@@ -19,7 +19,7 @@ checkdepends=(
     python-pytest
 )
 source=($_name::git+https://github.com/ecmwf/$_name.git#tag=$pkgver)
-b2sums=('c8b5ac72cd78d25276b10f0e3c6ec6def565e37ca9efa21cb1d640733bf6833de706c7e75c1370b3a4473f5a47db3c9e890daee4fc12d256fc83067660a929e7')
+b2sums=('cfda2520614d08c9b7c1e3264169c8fff9f1ff33b33ac2a770d7084d877bc4e7c9680defc0a276c217cfdd91b286597264b98f1c167166c9c9499a42ae22466e')
 
 build() {
     cd $_name
