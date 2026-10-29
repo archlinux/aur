@@ -1,7 +1,7 @@
 pkgbase = xsnow-bin
 	pkgdesc = Let it snow on your desktop
 	pkgver = 3.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ratrabbit.nl/ratrabbit/xsnow/
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = xsnow-bin
 	conflicts = xsnow-comp-patch-git
 	source_x86_64 = http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_3.8.6-1_amd64.deb
 	b2sums_x86_64 = f1828f1f54db88b5d00c034ac6a9b65505d035cb1bdc505cdd8e95af712b959a0a28a8356f878deecbcd5550066465633d6bffe82b17d753fb5858800aef2609
-	source_aarch64 = http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_3.8.6-1+b1_arm64.deb
+	source_aarch64 = http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_3.8.6-1_arm64.deb
 	b2sums_aarch64 = 314b6e3732dce037c0af89e7c2f95f40bf8e1e7159b80e06f656816b0fcffab67b1b34049fe1be85f115160267d90d5cdea21e1e9b5ba4deba5f37139d3337d3
 
 pkgname = xsnow-bin
