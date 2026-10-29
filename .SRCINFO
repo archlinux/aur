@@ -1,0 +1,26 @@
+pkgbase = orchis-theme-fixed-git
+	pkgdesc = Orchis, a Material Design GTK theme, Dracula colors, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
+	pkgver = 2026.07.07.r5.ga4c48a4.f7.0c09bae
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Orchis-theme
+	install = orchis-theme-fixed.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = sassc
+	depends = gtk3
+	depends = gnome-themes-extra
+	optdepends = gtk-engine-murrine: GTK 2 support
+	optdepends = kvantum-theme-orchis: Matching Kvantum theme
+	optdepends = tela-circle-icon-theme: Recommended icon theme
+	provides = orchis-theme
+	conflicts = orchis-theme
+	conflicts = orchis-theme-git
+	options = !strip
+	options = !debug
+	source = orchis-theme::git+https://github.com/vinceliuice/Orchis-theme.git
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = orchis-theme-fixed-git
