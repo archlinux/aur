@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=effectcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Motion graphics and visual effects compositor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -25,14 +25,14 @@ source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storyto
         "$_pkgname-$pkgver-OFL-NotoSerif.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/assets/fonts/OFL-NotoSerif.txt")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('b58d5fdf0f7f90236118eb81903f765a4644eea9d3ac7eeaa552732d1b337111'
+sha256sums=('c7ecb79db5a35e749c037773c9867d07f6ff598edce3d72bd443b4d00f24e0be'
             '7ee27fdb49f96a969ab80d5f800d8422aa17cb39d1cca286d18aa6227d8c7628'
             '6f7a100b47da67df0c9e8e06397a7222766932c36cdebeff2e89cb2cd2917b85'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a')
-sha256sums_x86_64=('cd7ace0d74734b79e851f18537c14b2953b7feb5da240f5005e6805476a15292')
-sha256sums_aarch64=('6963ed3f1a4bf3ba078c6d57e9893ac9bd557297029aeaeae380f6f5c8555023')
+sha256sums_x86_64=('94d1d85691d54ba57fa86e04872fbcc426c33d1bd364f1fc976b1f607344880b')
+sha256sums_aarch64=('16afef1cf2e8ff1e48712f462f7f9732696d81f7f81978c0a7ac0f7c092aa5a8')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
