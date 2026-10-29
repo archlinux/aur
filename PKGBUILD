@@ -3,7 +3,7 @@
 _appname="harlequin_mysql"
 pkgname="${_appname//_/-}"
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The MySQL adapter for Harlequin"
 url="https://harlequin.sh/"
 _github_url="https://github.com/tconbeer/harlequin-mysql"
@@ -12,7 +12,7 @@ arch=("any")
 depends=("python" "harlequin" "python-mysql-connector")
 makedepends=("python-build"
              "python-installer"
-             "python-poetry"
+             "python-hatchling"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_appname::1}/${_appname}/${_appname}-${pkgver}.tar.gz")
