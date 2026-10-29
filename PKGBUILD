@@ -7,7 +7,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
-pkgver=26.10.21
+pkgver=26.10.29
 pkgrel=1
 pkgdesc="Proxy platform with XTLS support"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "xray.tmpfiles"
         "xray.service"
         "xray@.service")
-sha512sums=('fc1a0130c6e55e1ce46c033b48a45b44045aa908d1c4fbd5d263a6657d02144404bf7c3b77b0c6aead5419e9253539bce8c9c22ffeed38dff6f2a23299d7503f'
+sha512sums=('0985aaddcf730ab7337bb84d61b6918646f1b5b14eef9d4dfeeb956d317abfa985aa0443ee7cb75c039bc2615742138ddff41f04455caae76a042c936fa95015'
             '7758155970f3f042409b50393fe71959d40356afd1cf5cf3e9747c346c76f981918022583942f4f1667293182493ac23d4a5d143d917e17c277bc400622ab847'
             '8d7c38c098ef3dd159df677473f9c1cbec91c0c03fb462239936195a30caf89e2bb922d2a83c6584757c379d828b2ed5737cbb98734c51b13267e4b6c1014b41'
             'e6d9352bdbfd39d7468af62b699567da2af79cd7b5323035d397f1631207580de61dd9c37ac0927eb54a2f3c04d8d6540247c1930e890c5bfa81ff3c70fff601'
