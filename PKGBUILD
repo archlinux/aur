@@ -14,13 +14,14 @@ b2sums=('a9a652435dd1c861730aa94f7a188995ad92b5e608197601971b1cea38003d0f352ea8f
 
 prepare() {
     cd "$pkgname"
-    mkdir build/
+    go mod vendor
+    mkdir -p build/
 }
 
 build() {
     cd "$pkgname"
 
-    local revision="$(git rev-parse --short "$_tag")"
+    local revision="$(git rev-parse --short HEAD)"
 
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
@@ -30,8 +31,7 @@ build() {
     go build \
         -trimpath \
         -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
+        -mod=vendor \
         -ldflags="-linkmode=external -X main.Version=$_tag -X main.Revision=$revision -extldflags '$LDFLAGS'" \
         -o build
 }
