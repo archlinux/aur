@@ -1,7 +1,7 @@
 pkgbase = harlequin-postgres
 	pkgdesc = The Postgres adapter for Harlequin
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://harlequin.sh/
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = harlequin-postgres
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = python-wheel
+	depends = python
 	depends = harlequin
 	depends = python-psycopg-pool
 	options = !strip

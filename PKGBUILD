@@ -3,13 +3,13 @@
 _appname="harlequin_postgres"
 pkgname="${_appname//_/-}"
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Postgres adapter for Harlequin"
 url="https://harlequin.sh/"
 _github_url="https://github.com/tconbeer/harlequin-postgres"
 license=("MIT")
 arch=("any")
-depends=("harlequin" "python-psycopg-pool")
+depends=("python" "harlequin" "python-psycopg-pool")
 makedepends=("python-build"
              "python-installer"
              "python-poetry"
