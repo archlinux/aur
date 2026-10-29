@@ -1,8 +1,8 @@
 # Maintainer: ixaxaar <https://aur.archlinux.org/account/ixaxaar/>
 pkgname=aiyou
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Export, maintain and analyze all your AI coding-agent chat history in one git-versioned store"
+pkgdesc="Teach every AI agent who you are: extract your personality and working style from your chats into a me skill, kept current with your approval"
 arch=('x86_64' 'aarch64')
 url="https://github.com/geniusrise/you"
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'git')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/geniusrise/you/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a83a4553545bca85ca39e04811103ae73f004bb3420b59cccec5363a7d61c66d')
+sha256sums=('e67edc18eef30ae625033c7e08001bf01855155dd03422f8f5223b7ca21edf45')
 
 prepare() {
     cd "you-$pkgver"
