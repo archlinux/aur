@@ -1,0 +1,20 @@
+pkgbase = fake-systemd-bin
+	pkgdesc = systemctl and journalctl compatibility layer for systems without systemd (prebuilt static binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/0cool-f/fake-systemd
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = fake-systemd
+	provides = systemctl
+	conflicts = fake-systemd
+	conflicts = systemd
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/0cool-f/fake-systemd/releases/download/v0.1.0/fake-systemd-0.1.0-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 500edd067471b2d6229e0b3459d52ef7145da3212721cacbf8f2c60fcb3715ac
+	source_aarch64 = https://github.com/0cool-f/fake-systemd/releases/download/v0.1.0/fake-systemd-0.1.0-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = e971a697d1d517d988e96d1b061192b6c1468a809f627b809c930336f96c0711
+
+pkgname = fake-systemd-bin
