@@ -1,6 +1,6 @@
 pkgbase = katana-desktop-bin
 	pkgdesc = Unofficial desktop client for Nonograms Katana user puzzles (prebuilt binary)
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/ArkadyBuryakov/katana-desktop
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = katana-desktop-bin
 	provides = katana-desktop
 	conflicts = katana-desktop
 	options = !strip
-	source_x86_64 = katana-desktop-1.1.4-x86_64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.4/katana-desktop-1.1.4-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e716dcd4cf6582aee603a4930e6cc7a596b7ea0cf1028894e7c8a551316204ee
-	source_aarch64 = katana-desktop-1.1.4-aarch64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.4/katana-desktop-1.1.4-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 9d6d275e20348f713cc11aed88f9b333983410ab8013ea37e5784fe1117f384b
+	source_x86_64 = katana-desktop-1.1.5-x86_64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.5/katana-desktop-1.1.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d712c69ae26a3ce80c77456d76c51f788bc9b5bf72821451b146994ac78c6a39
+	source_aarch64 = katana-desktop-1.1.5-aarch64.tar.gz::https://github.com/ArkadyBuryakov/katana-desktop/releases/download/v1.1.5/katana-desktop-1.1.5-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 90c68a6b75be8d899c7d59777cf480326d85d3526d0f8e118934f05f5bb7d524
 
 pkgname = katana-desktop-bin
