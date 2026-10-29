@@ -1,8 +1,9 @@
 pkgbase = reinamanager
 	pkgdesc = A lightweight galgame/visual-novel manager,Under development...
-	pkgver = 0.32.0
+	pkgver = 0.32.2
 	pkgrel = 1
 	url = https://github.com/huoshen80/ReinaManager
+	install = hint.install
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-only
@@ -23,7 +24,8 @@ pkgbase = reinamanager
 	options = !lto
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/huoshen80/ReinaManager/archive/refs/tags/v0.32.0.zip
-	sha256sums = 8aff3ac964b7d499977accf76411c80f2f5671f3d3e5d0bb3736812bfcda5012
+	source = https://github.com/huoshen80/ReinaManager/archive/refs/tags/v0.32.2.zip
+	sha256sums = 2ba5a8f97c8208604667ca632c77796ed265a52e1842fdba41e52a47ee414eac
+	sha256sums = 68cd2b33e0be67f881a0a539debbc9a242a079177ba38b83256648b2f1c78dad
 
 pkgname = reinamanager
