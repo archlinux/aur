@@ -4,7 +4,7 @@
 pkgname=ttf-google-sans-hinted
 _nfver=3.4.0
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Sans fonts (GoogleSans, GoogleSansDisplay), optionally Nerd Fonts patched and/or ttfautohint hinted"
 url='https://flutter.googlesource.com/gallery-assets'
 arch=('any')
@@ -17,8 +17,10 @@ provides=('ttf-google-sans' 'ttf-font-nerd')
 source=(
   'fonts.tar.gz::https://flutter.googlesource.com/gallery-assets/+archive/refs/heads/master/lib/fonts.tar.gz'
   "font-patcher-${_nfver}::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
+  'make_features.py'
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
 
 # ── Build-time options (all settable via env vars) ──────────────────────────
 #
@@ -35,9 +37,43 @@ sha256sums=('SKIP' 'SKIP')
 #  WANT_GOOGLE_SANS          true/false  (default: true)
 #  WANT_GOOGLE_SANS_DISPLAY  true/false  (default: true)
 #
+#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 Bake these GSUB features into the font's 'calt' feature, so
+#                 that EVERY renderer applies them, not only pango (see the
+#                 note below). Environment only: there is no prompt, because
+#                 this font has almost nothing worth baking. Audit of
+#                 GoogleSans-Regular.ttf, shaping every codepoint with each
+#                 feature on and off:
+#                   case   52 subs, but it is NOT mild: it raises ( ) [ ] { }
+#                          to capital height AND turns every digit into a
+#                          .cap (cap-height) digit: "100%" -> one.cap
+#                          zero.cap zero.cap percent.cap. Not a default.
+#                   ss01   one sub: * -> asterisk.num (numeral height)
+#                   ss02   one sub: : -> colon.time
+#                   tnum   tabular figures plus .tf spaced punctuation; the
+#                          font's default figures are proportional
+#                   smcp, c2sc  real small caps - never as a default
+#                   aalt, dlig, frac, lnum, pnum  change nothing in this build
+#                 So: nothing to bake for a better desktop font. The option
+#                 is here so that FEATURE_DEFAULTS/tag sets behave the same in
+#                 every package of this family, and for the occasional
+#                 "ss01 everywhere" experiment.
+#
+#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
+#                 Install the result as this family instead, so the stock
+#                 Google Sans stays available.
+#
+#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
+#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
+#  only ask from page CSS. A shaper applies a fixed list of features whatever
+#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
+#  moving a feature's lookups into calt is the only way to make it the
+#  default in every program. CSS can still say "calt" 0.
+#
 #  Non-interactive examples:
 #    NERD_PATCH=true HINTING=true HINT_MODE=qqq makepkg -si
 #    NERD_PATCH=false HINTING=false WANT_GOOGLE_SANS_DISPLAY=false makepkg -si
+#    FEATURE_DEFAULTS=ss01 makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
 
 _validate_hint_mode() {
@@ -50,7 +86,9 @@ _validate_hint_mode() {
 }
 
 _show()   { printf "  [%s] %s\n" "$1" "$2"; }
-_ask_yn() { local _default="${2:-n}"; read -p "  $1? (default: $_default) " _yn; _yn="${_yn:-$_default}"; }
+# "|| _yn=''": at EOF (makepkg </dev/null, chroot, CI) read returns 1, and
+# makepkg runs build() with set -e, so the whole build used to abort here.
+_ask_yn() { local _default="${2:-n}"; read -p "  $1? (default: $_default) " _yn || _yn=""; _yn="${_yn:-$_default}"; }
 
 build() {
   # ══════════════════════════════════════════════════════════════════════════
@@ -84,7 +122,7 @@ build() {
         "Balanced (qqq)")   HINT_MODE=qqq; break ;;
         "HiDPI (nnn)")      HINT_MODE=nnn; break ;;
         "Aggressive (sss)") HINT_MODE=sss; break ;;
-        "Custom") read -p "  Enter 3-char mode (e.g. qsq): " HINT_MODE; break ;;
+        "Custom") read -p "  Enter 3-char mode (e.g. qsq): " HINT_MODE || HINT_MODE=qqq; break ;;
       esac
     done
   fi
@@ -104,6 +142,14 @@ build() {
 
   WANT_GOOGLE_SANS="${WANT_GOOGLE_SANS:-true}"
   WANT_GOOGLE_SANS_DISPLAY="${WANT_GOOGLE_SANS_DISPLAY:-true}"
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
+  local _v
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss01)."; exit 1
+    fi
+  done
 
   if [[ "$WANT_GOOGLE_SANS$WANT_GOOGLE_SANS_DISPLAY" != *true* ]]; then
     echo "Error: no font families selected. Aborting."; exit 1
@@ -184,18 +230,33 @@ build() {
     done
   fi
 
+  # ══════════════════════════════════════════════════════════════════════════
+  # Step 4 — Bake features into calt (FEATURE_DEFAULTS; empty = skip)
+  # Last, on the finished files, so ttfautohint never sees the extra lookups.
+  # ══════════════════════════════════════════════════════════════════════════
+  local _fsrc="$_hintsrc" _fam=()
+  [[ "$HINTING" == true ]] && _fsrc="$srcdir/patched/hinted"
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then
+    [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
+    echo "==> Baking $FEATURE_DEFAULTS into calt${FEATURE_FAMILY:+ (as '$FEATURE_FAMILY')}..."
+    python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+      "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$_fsrc"/*.ttf
+  fi
+
   # Persist state for package()
-  printf "%s\n%s\n" "$HINTING" "$NERD_PATCH" > "$srcdir/.build_state"
+  printf "%s\n%s\n%s\n" "$HINTING" "$NERD_PATCH" "$FEATURE_DEFAULTS" > "$srcdir/.build_state"
 }
 
 package() {
-  local HINTING NERD_PATCH
-  { read -r HINTING; read -r NERD_PATCH; } \
-    < "$srcdir/.build_state" 2>/dev/null || { HINTING=false; NERD_PATCH=false; }
+  local HINTING NERD_PATCH FEATURE_DEFAULTS
+  { read -r HINTING; read -r NERD_PATCH; read -r FEATURE_DEFAULTS; } \
+    < "$srcdir/.build_state" 2>/dev/null || { HINTING=false; NERD_PATCH=false; FEATURE_DEFAULTS=""; }
 
   install -d "$pkgdir/usr/share/fonts/TTF"
 
-  if [[ "$HINTING" == true ]]; then
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then
+    install -m644 "$srcdir/featured/"*.ttf "$pkgdir/usr/share/fonts/TTF"
+  elif [[ "$HINTING" == true ]]; then
     install -m644 "$srcdir/patched/hinted/"*.ttf "$pkgdir/usr/share/fonts/TTF"
   elif [[ "$NERD_PATCH" == true ]]; then
     install -m644 "$srcdir/patched/"*.ttf "$pkgdir/usr/share/fonts/TTF"
