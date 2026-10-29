@@ -1,0 +1,55 @@
+pkgbase = colloid-gtk-theme-fixed-git
+	pkgdesc = Colloid GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
+	pkgver = 2026.08.08.r3.gfe11342.f7.0c09bae
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Colloid-gtk-theme
+	install = colloid-gtk-theme-fixed.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-themes-extra
+	optdepends = colloid-cursors: Matching cursor theme
+	optdepends = colloid-icon-theme: Matching icon theme
+	optdepends = gtk-engine-murrine: GTK 2 support
+	options = !strip
+	options = !debug
+	source = colloid-gtk-theme::git+https://github.com/vinceliuice/Colloid-gtk-theme.git
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = colloid-gtk-theme-fixed-git
+	provides = colloid-gtk-theme
+	conflicts = colloid-gtk-theme
+	conflicts = colloid-gtk-theme-git
+
+pkgname = colloid-catppuccin-gtk-theme-fixed-git
+	pkgdesc = Colloid GTK theme, Catppuccin colors, with GTK 3/4 geometry fixes
+	provides = colloid-catppuccin-gtk-theme
+	conflicts = colloid-catppuccin-gtk-theme
+	conflicts = colloid-catppuccin-gtk-theme-git
+
+pkgname = colloid-dracula-gtk-theme-fixed-git
+	pkgdesc = Colloid GTK theme, Dracula colors, with GTK 3/4 geometry fixes
+	provides = colloid-dracula-gtk-theme
+	conflicts = colloid-dracula-gtk-theme
+	conflicts = colloid-dracula-gtk-theme-git
+
+pkgname = colloid-everforest-gtk-theme-fixed-git
+	pkgdesc = Colloid GTK theme, Everforest colors, with GTK 3/4 geometry fixes
+	provides = colloid-everforest-gtk-theme
+	conflicts = colloid-everforest-gtk-theme
+	conflicts = colloid-everforest-gtk-theme-git
+
+pkgname = colloid-gruvbox-gtk-theme-fixed-git
+	pkgdesc = Colloid GTK theme, Gruvbox colors, with GTK 3/4 geometry fixes
+	provides = colloid-gruvbox-gtk-theme
+	conflicts = colloid-gruvbox-gtk-theme
+	conflicts = colloid-gruvbox-gtk-theme-git
+
+pkgname = colloid-nord-gtk-theme-fixed-git
+	pkgdesc = Colloid GTK theme, Nord colors, with GTK 3/4 geometry fixes
+	provides = colloid-nord-gtk-theme
+	conflicts = colloid-nord-gtk-theme
+	conflicts = colloid-nord-gtk-theme-git
