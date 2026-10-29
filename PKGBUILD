@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.8.8
+pkgver=3.8.9
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -32,10 +32,12 @@ makedepends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.sh"
+    "${pkgname}.js"
+	"${pkgname}.sh"
 )
-sha256sums=('dc527e9c24af29e98d61b627bbefa30d0fd4a9faccd43f2a0e8844f5729f0358'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+sha256sums=('c19fe24131179e78130b52b838dfdbca9075740ad6d739ded37f186c72e87a1f'
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -116,7 +118,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -150,11 +152,11 @@ build() {
     go build --tags fts5 -o "../app/${_KERNEL_DIR}/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "$(_get_project_dir)/app"
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config=${_CFG_FILE} "
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
 	for _icons in "${_icon_sizes[@]}";do
