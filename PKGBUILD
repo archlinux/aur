@@ -9,7 +9,7 @@
 
 pkgname="ossec-hids-agent"
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Host-based Intrusion Detection System - Agent only"
 url="https://www.ossec.net/"
 license=("GPL2")
@@ -31,11 +31,9 @@ makedepends=(
         "zlib")
 source=("ossec-hids.config"
         "ossec-hids.logrotate"
-        "patch-makefile.patch"
         "https://github.com/ossec/ossec-hids/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('bd5c74db93a8dfd939463d606813028a8c1e16d72920ced4a635019e68c1d4bc'
             '077a1382f5b1b07854007dd8525011c30566ac8d52db421d3723218ab747d34b'
-            'f0810da503622ba27dd2c4108f6c9b88b6664c51e473aae2ecfc1897f6d1d234'
             'bd857a2dd7d0559ef59b4a9ec276f3a8ade6830f8aed257e8f4a62106cfe5f38')
 # why no configuration files in /etc and logs in /var/log? https://groups.google.com/g/wazuh/c/0HDde9QcOgI
 backup=("var/lib/ossec-hids/etc/ossec.conf"
@@ -52,8 +50,15 @@ prepare(){
  source "$srcdir/ossec-hids.config"
  export USER_INSTALL_TYPE=agent
 
- # patches
- patch --forward --strip=1 --input="$srcdir/patch-makefile.patch"
+ # Makefile: no localtime/resolv.conf copies, inotify, no adduser (sysusers), no coverage
+ # sed by content instead of a patch, so it survives line changes between releases
+ sed -i "src/Makefile" \
+     -e 's/^INSTALL_LOCALTIME?=yes/INSTALL_LOCALTIME=no/' \
+     -e 's/^INSTALL_RESOLVCONF?=yes/INSTALL_RESOLVCONF=no/' \
+     -e 's/^USE_INOTIFY=no/USE_INOTIFY=yes/' \
+     -e '/\.\/init\/adduser\.sh /d' \
+     -e 's/^CFLAGS_TEST = -g -O0 --coverage/CFLAGS_TEST = -g -O0/' \
+     -e 's/^\(\.PHONY: test run_tests build_tests test_valgrind\) test_coverage/\1/'
 
  # version
  cat > "etc/ossec-init.conf" <<CONTENT
