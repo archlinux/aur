@@ -3,7 +3,7 @@
 # Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
 
 _pkgname=googledrive
-_pkgver=2.1.2
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,14 +35,12 @@ checkdepends=(
 optdepends=(
   r-curl
   r-dplyr
-  r-knitr
-  r-rmarkdown
   r-spelling
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8aeb39196ae48307a903bba1e5d73fa5')
-b2sums=('620dc264b9c7b97ed2cf8059dfcdad09e011fa50aee7a39e0448c25c64028cabe9e4b940619089eb93c3e3518c6e616bbd39f800ba956318f3476422d4f89d89')
+md5sums=('1fb09b1ba4fed95d93b03406bb0447f5')
+b2sums=('37819a62249e0b5c05c748a9afebe7508cc2a1e98afed80eeb83c1012185990ca1f05c949157f53895c16077558a5a0a804d36d1f544484718728fc1228310a2')
 
 build() {
   mkdir build

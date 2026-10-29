@@ -1,6 +1,6 @@
 pkgbase = r-googledrive
 	pkgdesc = An Interface to Google Drive
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=googledrive
 	arch = any
@@ -24,12 +24,10 @@ pkgbase = r-googledrive
 	depends = r-withr
 	optdepends = r-curl
 	optdepends = r-dplyr
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/googledrive_2.1.2.tar.gz
-	md5sums = 8aeb39196ae48307a903bba1e5d73fa5
-	b2sums = 620dc264b9c7b97ed2cf8059dfcdad09e011fa50aee7a39e0448c25c64028cabe9e4b940619089eb93c3e3518c6e616bbd39f800ba956318f3476422d4f89d89
+	source = https://cran.r-project.org/src/contrib/googledrive_2.2.0.tar.gz
+	md5sums = 1fb09b1ba4fed95d93b03406bb0447f5
+	b2sums = 37819a62249e0b5c05c748a9afebe7508cc2a1e98afed80eeb83c1012185990ca1f05c949157f53895c16077558a5a0a804d36d1f544484718728fc1228310a2
 
 pkgname = r-googledrive
