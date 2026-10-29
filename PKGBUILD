@@ -3,7 +3,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=3.1.0
+pkgver=3.1.1
 #_pkgver=${pkgver/.0}
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
@@ -54,7 +54,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch'
 #       'doc-use-local.patch')
-md5sums=('fd0fadf5aee79b226359021e33525b0b')
+md5sums=('ec6c25dd643321e9821ca0befed17739')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
