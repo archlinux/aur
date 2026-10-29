@@ -1,7 +1,7 @@
 pkgbase = gomodel-git
 	pkgdesc = High-performance AI gateway (git main build, quasi-nightly)
 	pkgver = 0.1.109.r11.gc8cf3a6c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ENTERPILOT/GoModel
 	install = gomodel.install
 	arch = x86_64
