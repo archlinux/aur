@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='keylightd-tray-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='System tray application for controlling Key Lights via keylightd'
 url='https://github.com/jmylchreest/keylightd'
@@ -14,13 +14,13 @@ optdepends=('keylightd: for local socket connection')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd-tray_${pkgver}_linux_arm64.tar.gz"
                  "${pkgname}_${pkgver}_aarch64_sbom.spdx.json::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd-tray_${pkgver}_linux_arm64_sbom.spdx.json")
-sha256sums_aarch64=('3a3d83db1d008711f22b95c20f7ff13a9b010a92de27addca0339c138b157ecc'
-                    '433188f214a71ba428ef12fea808f512d09e7fc3eabdb5e1615b92e51ce387e4')
+sha256sums_aarch64=('8c56b9557cb260939eb15e5013039759c6616660299c6e717d3fc9a604d2842e'
+                    '872d24061546b425f8b9f8070613ddd866a390e6dcbbce60f797cdcaa529c8e1')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd-tray_${pkgver}_linux_amd64.tar.gz"
                "${pkgname}_${pkgver}_x86_64_sbom.spdx.json::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd-tray_${pkgver}_linux_amd64_sbom.spdx.json")
-sha256sums_x86_64=('54fec30dad78259757e37a7c177f529cb8e474276d951003864b6afd3ca14eaf'
-                   'ae9b6995ee40c590e3d90bbdfd48bb082322109db325a0162cf2f18bb913c173')
+sha256sums_x86_64=('ecf14571587166143e1b9db77828e75b0db08e9272b83e0c06a0fe3a9ab40be5'
+                   '3aaf944f0aa7a18a3d390725e1f874e53773b42a3b052222c9249193c1bc60cc')
 
 package() {
   # binary
