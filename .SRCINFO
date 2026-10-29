@@ -1,6 +1,6 @@
 pkgbase = locus-system-monitor
 	pkgdesc = Watch resources and end processes
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sachesi/locus
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = locus-system-monitor
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = glibc
-	source = locus-0.1.0.tar.gz::https://github.com/sachesi/locus/archive/v0.1.0/locus-0.1.0.tar.gz
-	sha256sums = 57de79464065be0f4e206cc139d7add376ba2296da99fab531bb67dff767c322
+	source = locus-0.1.1.tar.gz::https://github.com/sachesi/locus/archive/v0.1.1/locus-0.1.1.tar.gz
+	sha256sums = 50975504c8c6d85b4b1196ac36b5ac645e98d3d1f7b21005622e66fe063d0496
 
 pkgname = locus-system-monitor
