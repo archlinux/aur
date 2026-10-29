@@ -1,7 +1,7 @@
 pkgbase = python-configspace
 	pkgdesc = Creation and manipulation of parameter configuration spaces for automated algorithm configuration and hyperparameter tuning
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/automl/ConfigSpace
 	arch = any
 	license = BSD-3
@@ -18,7 +18,7 @@ pkgbase = python-configspace
 	depends = python-more-itertools
 	depends = python-oldest-supported-numpy
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/c/configspace/configspace-0.7.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/configspace/configspace-1.2.2.tar.gz
 	b2sums = 5c7aecc6e2b72ecc948b270edc266de7ab79022f98ffe200089fb8e83ff4f83d3a99a45ca7aab367914f0d08ae81e5a21398250365e550b5c66eeb816bbd63f9
 
 pkgname = python-configspace

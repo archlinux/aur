@@ -2,9 +2,9 @@
 
 pkgname="python-configspace"
 _name="ConfigSpace"
-pkgver=0.7.1
+pkgver=1.2.2
 _sdist=configspace
-pkgrel=2
+pkgrel=1
 pkgdesc="Creation and manipulation of parameter configuration spaces for automated algorithm configuration and hyperparameter tuning"
 url="https://github.com/automl/ConfigSpace"
 license=("BSD-3")
