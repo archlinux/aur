@@ -14,13 +14,13 @@
 # agnostic and pinned to their own upstream version.
 
 pkgname=workbuddy-international
-_pkgver=5.8.4.41366630
-_build=73952edb
+_pkgver=5.9.3.42398134
+_build=d4692421
 _electronver=37.10.3
 _cn_pkgver=5.6.2.40046327
 _cn_build=c7b525f3
 pkgver=${_pkgver}_${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
@@ -67,10 +67,10 @@ sha256sums=('6e8c6154b013e26cb2f8f2c3646b206a135cd0060e67f86298c1d2b23c10a1c3'
             '6fcbfa4cba8e730e603b68fcca484c7963aacdaf56a3f6c5c47ff320a5189e85'
             '43164499524650222076bae69b7cb21d3e3e4a954c7c56426474267a554a2f33'
             'aa036c1f37d070f14a551bcba2133390710da46bd91225dfd366711bb5a3b6ec')
-sha256sums_x86_64=('5767e48a9f3cf374489adedc857c539eb83de54d3cfc72c0f3192883f6d390ee'
+sha256sums_x86_64=('e9aab6b8a138db360563e0fdce87d8930301630426f22744343833d5184045c4'
                    'c0b4edd6bd9858cda4cf7ab299e69a2d3ecd2e5fcca78507bc0851ba35614660'
                    '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523')
-sha256sums_aarch64=('0b805783a732c7c9816aebe972d97effe24d678cae89821e06270cd8661056c3'
+sha256sums_aarch64=('053917758e0f231909a0e6811ece461dc84267af2a8c531e7681c9dbf74419ad'
                     '37a228821184136fa86a8727bec19ab400524dd7d4bca78937de5d50704592d1'
                     '561822578435d382a06d0a0b079a4b157f68b588c9fe72d589e2a88b2fd155fa')
 
