@@ -11,7 +11,7 @@ depends=(
   jellyfin-server
 )
 optdepends=(
-  'jellyfin-server: web UI served by the server'
+  'jellyfin-web: web UI served by the server'
 )
 backup=(etc/conf.d/jellyfin)
 source=(
