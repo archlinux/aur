@@ -1,12 +1,12 @@
 pkgbase = ttf-lxgw-bright
 	pkgdesc = A merged font of Ysabeau and LXGW WenKai.
-	pkgver = 5.528
+	pkgver = 26.10.22
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwBright
 	arch = any
 	license = OFL-1.1
-	source = ttf-lxgw-bright-5.528.tar.gz::https://github.com/lxgw/LxgwBright/archive/refs/tags/v5.528.tar.gz
-	sha256sums = fd222c9f2a7fdea2057166cb5d862d8a8ae6cb9cb66f11e39569652e3f5fa856
+	source = ttf-lxgw-bright-26.10.22.tar.gz::https://github.com/lxgw/LxgwBright/archive/refs/tags/26.10.22.tar.gz
+	sha256sums = 402c8e8ac243656ab37a496073910ee36035fe7c9064db7d8ab0f8413ea1f807
 
 pkgname = ttf-lxgw-bright
 
