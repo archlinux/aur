@@ -4,7 +4,7 @@
 # Contributor: Icelk <main at icelk.dev>
 
 pkgname=vscodium-electron-bin-marketplace
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='Enable vscode marketplace in vscodium-electron-bin. Based on vscodium-electron-marketplace.'
 arch=('any')
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 source=('vscodium-electron-bin-marketplace.hook'
         'patch.py')
  sha256sums=('2432be58df9b34c2e6864721ac2832911621b8e7e8f9c7d87a48e24faef0dd86'
-          '324851b109c0bb86ad939cb868c0092020ba8369eef6c805ad8a2b66891f3824')
+          'd55351836d0d24e2baac51b06e641badb82a39c6feaae6c322ab35c8e30c5446')
 
 package() {
   depends=('vscodium-electron-bin' 'python')
