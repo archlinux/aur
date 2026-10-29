@@ -1,6 +1,6 @@
 pkgbase = parallel-git
 	pkgdesc = A shell tool for executing jobs in parallel
-	pkgver = 20260922.r0.ga316b743
+	pkgver = 20261022.r0.g63ed3aec
 	pkgrel = 1
 	url = https://www.gnu.org/software/parallel/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = parallel-git
 	source = 0001-Remove-citation-things.patch
 	source = 0002-skip-rst-pdf-generation.patch
 	sha256sums = SKIP
-	sha256sums = 109ac44952c3c38857471a151a321bceea13db92786afac70b976194adf7215c
+	sha256sums = c46542f8473c8eb78333b476989c6d0802725fdcce89949fafd029496d053a23
 	sha256sums = 85eae9f01bdb8d7ab14b0a3e266ae7e9d5582b77b2a81493225daddedab87e7e
 
 pkgname = parallel-git
