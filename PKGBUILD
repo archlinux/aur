@@ -45,8 +45,8 @@ b2sums=('af51a2699896fadb93515c31faa6c4474647328faee621dd240ecf1b37ccfaaeb1c991f
 
 prepare() {
   cd "${pkgname}2-${pkgver}"
-  sed -i "29s|\.tranalyzer/plugins/|/usr/lib/tranalyzer/plugins|" tranalyzer2/src/tranalyzer.h
-  sed -i "43s|.*|T2FMDIR=/usr/share/tranalyzer/scripts/t2fm|" scripts/t2fm/t2fm
+  sed -i 's|^#define PLUGIN_FOLDER "\.tranalyzer/plugins/"|#define PLUGIN_FOLDER "/usr/lib/tranalyzer/plugins"|' tranalyzer2/src/tranalyzer.h
+  sed -i 's|^T2FMDIR="$(dirname "${0}")"$|T2FMDIR=/usr/share/tranalyzer/scripts/t2fm|' scripts/t2fm/t2fm
   # the cre2 bundled with regex_re2 uses strlen without including <cstring>
   sed -i '0,/^#include/s//#include <cstring>\n#include/' plugins/regex_re2/src/cre2/src/cre2.cpp
   # meson looks for liblibhs.so otherwise
@@ -63,6 +63,7 @@ build() {
   # mongoSink includes <bson.h> and <mongoc.h>, mongo-c-driver 2 moved them to <bson/bson.h> and <mongoc/mongoc.h>
   printf 'mongoSink\n' > ignored_plugins.txt
   echo y | ./autogen.sh -a -I ignored_plugins.txt -p "${srcdir}/${pkgname}2-${pkgver}/build/plugins"
+  make -C utils/t2b2t
   gzip --force tranalyzer2/man/tranalyzer.1
   gzip --force scripts/t2conf/man/t2conf.1
   gzip --force scripts/t2fm/man/t2fm.1
@@ -74,7 +75,7 @@ package() {
   cd "${pkgname}2-${pkgver}"
   install -d "${pkgdir}/usr/lib/${pkgname}/"
   cp -avR build/plugins "${pkgdir}/usr/lib/${pkgname}/"
-  install -Dm755 tranalyzer2/src/tranalyzer -t "${pkgdir}/usr/bin"
+  install -Dm755 tranalyzer2/build/tranalyzer -t "${pkgdir}/usr/bin"
   install -Dm755 utils/t2b2t/t2b2t -t "${pkgdir}/usr/bin"
   install -Dm755 utils/t2whois/t2whois -t "${pkgdir}/usr/bin"
 
@@ -112,7 +113,7 @@ package() {
   ln -s /usr/share/tranalyzer/scripts/tawk/tawk "${pkgdir}/usr/bin/"
   ln -s /usr/share/tranalyzer/scripts/t2fm/t2fm "${pkgdir}/usr/bin/"
 
-  sed -i "641s|.*|T2HOME=/usr/share/tranalyzer|" "${pkgdir}/usr/share/${pkgname}/scripts/t2utils.sh"
+  sed -i 's|^    T2HOME="$(${readlink_f} "${T2HOME}")"$|    T2HOME=/usr/share/tranalyzer|' "${pkgdir}/usr/share/${pkgname}/scripts/t2utils.sh"
   # sed -i '114,133d' "${pkgdir}/usr/share/${pkgname}/scripts/t2doc"
   # sed -i "88s|.*|folder=\"/usr/share/doc/tranalyzer/\$name/\"|" "${pkgdir}/usr/share/${pkgname}/scripts/t2doc"
   # sed -i "82s|.*|folder=\"/usr/share/doc/tranalyzer/\"|" "${pkgdir}/usr/share/${pkgname}/scripts/t2doc"
