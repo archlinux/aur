@@ -2,7 +2,7 @@
 
 pkgname=fleshfetch
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-based clicker game and Python modding framework'
 arch=('any')
 url='https://github.com/xtexecute/fleshfetch'
@@ -25,6 +25,11 @@ source=(
     "$pkgname-$pkgver.zip::https://github.com/xtexecute/fleshfetch/releases/download/v$pkgver/ff_v${pkgver}_source.zip"
 )
 sha256sums=('aaae6858a83c0acc59a34ce337a7a26dac4204d5f01f9f4702efffe45bff8e7a')
+
+prepare() {
+    # Release ZIPs made on Windows may contain a CRLF shebang.
+    sed -i 's/\r$//' "$srcdir/fleshfetch/fleshfetch"
+}
 
 package() {
     cd "$srcdir/fleshfetch"

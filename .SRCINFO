@@ -1,7 +1,7 @@
 pkgbase = fleshfetch
 	pkgdesc = Qt-based clicker game and Python modding framework
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtexecute/fleshfetch
 	arch = any
 	license = MIT
