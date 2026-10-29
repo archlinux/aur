@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=serial-studio
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
@@ -53,14 +53,13 @@ backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('da883c111e1edd0c79add96ec85273410498cddd93687c1ab8e82a714ea9e9ac')
+sha256sums=('dbe6d562da26b2af72d75590d0e29f574bc40af5576bf6d0587ac75abffb44da')
 noextract=()
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     sed -i -e 's/^X-AppImage.*//g' app/deploy/linux/serial-studio-gpl3.desktop
-    git cherry-pick -n 7678839b8c835fb9a5be7d2573b4cee550aba23c
 }
 
 build() {
