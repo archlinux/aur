@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-liboqs
 _name=liboqs-python
-pkgver=0.16.0.1
+pkgver=0.16.0.2
 pkgrel=1
 pkgdesc="Python 3 bindings for liboqs"
 arch=(any)
@@ -22,8 +22,8 @@ checkdepends=(
     python-pyasn1
     python-pyasn1-alt-modules
 )
-source=($_name::git+https://github.com/open-quantum-safe/$_name.git#commit=35eceb69d2b363cb0421085cf1ae1c682dee1acc)
-b2sums=('2bb2ae70ffbba0c916e19fa166ddc3c6a2946ef5e94802a48ad6fab2f90efce2f0c7a0ff30f1cdf6627efbd9560a280e792028d2a971de01a2de710a8c1626f9')
+source=($_name::git+https://github.com/open-quantum-safe/$_name.git#tag=$pkgver)
+b2sums=('3f8b2d006c2c091cc01671a99ede1762bc00a728d1171b583dd5206a162b5bff3067f6b06d420dc2c33f8528d099f33b06e22c9f52dd0eafa0597625fdeac246')
 
 build() {
     cd $_name
