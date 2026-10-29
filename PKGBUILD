@@ -1,6 +1,6 @@
 # Maintainer: smiley <smiley@archlinux.org>
 pkgname=passfox-host
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Native messaging host for passfox, the Firefox add-on that fills logins from pass"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MPL-2.0')
 depends=('pass' 'python')
 optdepends=('firefox: the passfox add-on, from addons.mozilla.org')
 source=("passfox-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('46e34767075b40fae44e413874eb73127b023652c00ae732e81b3dbd767f3b29')
+sha256sums=('b7b35b38f9198c42c639dd07788c3dd945be1faf8813ba9a58d4e9c2d5a577fe')
 
 package() {
   cd "passfox-$pkgver"
