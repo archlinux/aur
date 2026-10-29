@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=samrewritten
-pkgver=1.4.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
@@ -11,7 +11,7 @@ depends=('gtk4')
 makedepends=('cargo' 'pkg-config')
 optdepends=('libadwaita: for Adwaita styling')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PaulCombal/SamRewritten/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('77b9990b043a06b39676ddc946ae220cb1d5f5bc538f42178ad7c7245bcec833')
+sha256sums=('e1f71af60f5ed0b0adc924b697efc892bd34fb3345d9efa6d07881c85813c44e')
 
 prepare() {
 	cd "${srcdir}/SamRewritten-${pkgver}"
