@@ -1,23 +1,24 @@
 pkgbase = python-x690
 	pkgdesc = Pure Python X.690 implementation
-	pkgver = 1.0.0.post1
-	pkgrel = 3
-	url = https://pypi.org/project/x690
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/exhuma/x690
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-importlib-metadata
-	depends = python-pytest
 	depends = python-t61codec
 	provides = python-x690
 	conflicts = python-x690
 	options = !strip
 	options = !debug
-	source = x690-1.0.0.post1.tar.gz::https://files.pythonhosted.org/packages/source/x/x690/x690-1.0.0.post1.tar.gz
-	sha256sums = 3a2a8a4e479079188aa6e847814981286b8f1c19569898fa3fe573ee0ce05349
+	source = x690::git+https://github.com/exhuma/x690.git#tag=v2.0.0
+	sha256sums = 33c345c707f001c769321d7d15faff79935fbf3adad043169d8a07063e4097c7
 
 pkgname = python-x690
