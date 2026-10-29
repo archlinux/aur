@@ -6,6 +6,8 @@ _commit=f0212f2aa0d3d6cc0b313020d2d0122f313eafc9
 _date=2025.10.23
 pkgver=2025.10.23.r9.95dc59b
 pkgrel=1
+# 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
+epoch=1
 pkgdesc='Nightfox GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
