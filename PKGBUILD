@@ -1,12 +1,13 @@
 # Maintainer: T9Tuco <tucot9@tuta.io>
 pkgname=archvital
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Qt6/C++20 system monitor for Arch Linux"
 arch=('x86_64')
 url="https://github.com/T9Tuco/archvital"
 license=('MIT')
 depends=('qt6-base')
+optdepends=('nethogs: per-process network usage in the task manager')
 makedepends=('cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/T9Tuco/archvital/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
