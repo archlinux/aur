@@ -1,12 +1,12 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.156
-pkgrel=6
+pkgrel=7
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# depends: DT_NEEDED of all 18 ELFs plus by-name dlopen probes, resolved in core+extra (2026-10-28).
+# depends: DT_NEEDED of all 18 ELFs plus by-name dlopen probes, resolved in core+extra (2026-10-29).
 depends=('alsa-lib'
          'at-spi2-core'
          'cairo'
@@ -54,6 +54,7 @@ depends=('alsa-lib'
 provides=('rootapp')
 conflicts=('rootapp')
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
+            'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
             'xdg-desktop-portal-kde: file-picker and screen-share backend on KDE Plasma'
             'xdg-desktop-portal-wlr: screen-share backend on wlroots compositors'
@@ -83,9 +84,14 @@ package() {
 
     rm -f "${pkgdir}/opt/${pkgname}/usr/bin/Root.dbg"
 
+    if [ ! -x "${pkgdir}/opt/${pkgname}/usr/bin/Root" ]; then
+        printf 'payload has no executable usr/bin/Root, the wrapper would exec nothing\n' >&2
+        return 1
+    fi
+
     install -dm755 "${pkgdir}/usr/bin"
     # Payload mkdirs "Root Communications", "Sentry" and ".sentry-native" beside its exe and
-    # exits 0 when that fails, so it needs a user-writable runtime dir (verified 2026-10-28).
+    # exits 0 when that fails, so it needs a user-writable runtime dir (strace, 2026-10-29).
     cat > "${pkgdir}/usr/bin/rootapp" <<'WRAPPER_EOF'
 #!/bin/sh
 set -eu
