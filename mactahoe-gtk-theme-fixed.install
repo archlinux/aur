@@ -1,0 +1,10 @@
+post_install() {
+  echo ""
+  echo "Firefox / LibreWolf / Floorp theme: close the browsers and run as your user:"
+  echo "  mactahoe-firefox-theme"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,25 @@
+pkgbase = mactahoe-gtk-theme-fixed-git
+	pkgdesc = MacTahoe GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
+	pkgver = 2026.09.10.r7.g1e45e19.f13.fd98304
+	pkgrel = 1
+	url = https://github.com/vinceliuice/MacTahoe-gtk-theme
+	install = mactahoe-gtk-theme-fixed.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gnome-shell
+	makedepends = sassc
+	depends = gnome-themes-extra
+	depends = gtk3
+	optdepends = gtk-engine-murrine: GTK 2 support
+	provides = mactahoe-gtk-theme
+	conflicts = mactahoe-gtk-theme
+	conflicts = mactahoe-gtk-theme-git
+	options = !strip
+	options = !debug
+	source = mactahoe-gtk-theme::git+https://github.com/vinceliuice/MacTahoe-gtk-theme.git
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mactahoe-gtk-theme-fixed-git
