@@ -1,6 +1,6 @@
 pkgbase = crier-bin
 	pkgdesc = Simple push notification tool - works on LAN (TCP) or across the internet (MQTT)
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/crier
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = crier-bin
 	depends = libgcc
 	provides = crier
 	conflicts = crier
-	source_x86_64 = crier-x86_64-0.2.3.tgz::https://github.com/skorotkiewicz/crier/releases/download/0.2.3/crier-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 14c227cc8a1213706ca64faf237669a918e958ebc4aef60b77e0381bfc25402c
-	source_aarch64 = crier-aarch64-0.2.3.tgz::https://github.com/skorotkiewicz/crier/releases/download/0.2.3/crier-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 3edc9aed89e624264fff3d09f108a19e9616b3db93a4c3e9c35790e934eea0fd
+	source_x86_64 = crier-x86_64-0.3.0.tgz::https://github.com/skorotkiewicz/crier/releases/download/v0.3.0/crier-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 965c1ab8870d390e3399a2657fb82c4d8a8719e066cccefbb69f9a9a847dcaa1
+	source_aarch64 = crier-aarch64-0.3.0.tgz::https://github.com/skorotkiewicz/crier/releases/download/v0.3.0/crier-v0.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1073b61376c540132059cfe132d0304b807a219c2460c05aeb0b8766832c3b41
 
 pkgname = crier-bin
