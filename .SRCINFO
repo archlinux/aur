@@ -1,13 +1,14 @@
 pkgbase = mkdocs-material-pymdownx-extras
 	pkgdesc = MkDocs Material additions used for pymdownx documentation
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facelessuser/mkdocs_pymdownx_material_extras
 	arch = any
 	license = MIT
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
+	depends = python
 	depends = mkdocs-material>=8.3.3
 	provides = mkdocs-pymdownx-material-extras
 	conflicts = python-mkdocs-material-pymdownx-extras-git
