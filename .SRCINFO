@@ -1,0 +1,24 @@
+pkgbase = python-chgnet
+	pkgdesc = Pretrained Universal Neural Network Potential for Charge-informed Atomistic Modeling
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/CederGroupHub/chgnet
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cython
+	depends = python>=3.10
+	depends = python-pytorch
+	depends = python-numpy
+	depends = python-pymatgen-core
+	depends = python-ase
+	depends = python-nvidia-ml-py
+	depends = cython
+	depends = python-typing_extensions
+	source = chgnet-0.4.2.tar.gz::https://github.com/CederGroupHub/chgnet/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 753f32c1e30044be85e9c7a126d30f231520c5fdc7a558bf48c369392c247681
+
+pkgname = python-chgnet
