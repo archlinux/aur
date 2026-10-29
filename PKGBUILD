@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="yourls-sleeky"
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A sleek and simple frontend & backend theme for YOURLS"
 url="https://sleeky.flynntes.com"
@@ -9,7 +9,7 @@ license=("MIT")
 arch=("any")
 depends=("yourls")
 source=("https://github.com/Flynntes/Sleeky/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b49964f0af7ec709bfe0c32c508e4479af2f629181dc302b6c88de93fd87e926')
+sha256sums=('1d73c3e162bb956755bc21a6249e885cb0addf2848ff9ff258b97efbf311c704')
 backup=("etc/webapps/yourls/frontend/config.php")
 
 prepare(){
