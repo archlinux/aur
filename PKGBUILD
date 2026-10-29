@@ -1,6 +1,6 @@
 # Maintainer: xenoz <https://github.com/sreevarshan-xenoz>
 pkgname=pocketdesk
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Your Linux or Windows desktop on your Android phone: screen, input, clipboard, files and notifications over LAN, Tailscale or the internet"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=pocketdesk.install
 # link cannot read (undefined ring_core_* symbols).
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('77a3203772a9826d40f558b12a728e22d129a80cc8be9ff6d1e3cc99a75c1ade')
+sha256sums=('9d5a4dfbacfa04ba6985eda576326f63e3ede1e376209a4cd355caf5a4cf3a6b')
 
 # GitHub names the unpacked folder after the repository, not the package.
 _src="Pocketdesk-${pkgver}"
