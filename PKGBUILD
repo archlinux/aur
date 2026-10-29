@@ -3,12 +3,13 @@
 _pkgname=opentubex
 _ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-nightly-bin
-pkgver=0.37.0nightly.2527
+pkgver=0.37.0.nightly.2527
 pkgrel=1
-# The old .nightly. versions sort after stable versions of the same release.
+# Nightlies follow the release they are numbered after, so 0.37.0.nightly.2527
+# sorts between 0.37.0 and 0.37.1. Earlier versions of this package used epoch 1.
 epoch=1
-if [[ "$pkgver" == *nightly.* ]]; then
-    _tag="v${pkgver/nightly./-nightly-}"
+if [[ "$pkgver" == *.nightly.* ]]; then
+    _tag="v${pkgver/.nightly./-nightly-}"
     _asset_version=${_tag#v}
 else
     _tag="v${pkgver}-beta"
