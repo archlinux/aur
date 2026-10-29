@@ -3,7 +3,7 @@
 
 pkgname="dbt-core"
 pkgver=2.0.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=("x86_64" "aarch64")
 url="https://www.getdbt.com/"
@@ -16,7 +16,8 @@ makedepends=("cargo"
              "protobuf"
              "python-build"
              "python-installer"
-             "python-maturin")
+             "python-maturin"
+             "python-wheel")
 options=("!lto")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz")
 b2sums=('bac2b52d7ca01d476cad49fc61cf425413201228a0eed79df7e1c8a44cb917fe738f0f36fc2539ca9e202fc6dd0c1669f1f384fa4878ad90e41934977fe919d5')
