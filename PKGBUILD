@@ -3,7 +3,7 @@
 
 pkgname="dbt-core"
 pkgver=2.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=("x86_64" "aarch64")
 url="https://www.getdbt.com/"
@@ -13,6 +13,7 @@ depends=("python"
          "python-mashumaro"
          "python-msgpack")
 makedepends=("cargo"
+             "protobuf"
              "python-build"
              "python-installer"
              "python-maturin")
