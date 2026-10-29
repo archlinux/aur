@@ -2,8 +2,8 @@
 
 pkgname="python-degiro-connector"
 _name="degiro_connector"
-pkgver=3.0.11
-pkgrel=2
+pkgver=3.0.36
+pkgrel=1
 pkgdesc="Yet another library to access Degiro's API"
 url="https://github.com/Chavithra/degiro-connector"
 license=("BSD-3")
@@ -18,7 +18,7 @@ depends=("python"
          "python-wrapt")
 makedepends=("python-build" "python-installer" "python-wheel" "python-poetry")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('ab7d3a6f77d0d0e3f224d47c9c2ac3864b910792a7b21cb72b00f19fbf13a454e13f2a8bb51bb5c189985fb3e8d800a46a9c46cee3cf5d7dbbc05dea5689b4a3')
+b2sums=('37cb7a45f9c0e9ff5bebc8f61e507533d5baf6044649f0415d5f8c8d8acdd6d72f0935f9a3019d4c6187ebd191b03f354dc022cdd5c2db9ab56bad0e91960bbd')
 options=("!strip")
 
 build(){
