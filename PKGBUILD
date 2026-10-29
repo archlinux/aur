@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rowel-bin
 _pkgname=Rowel
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Free Offline-first Password Manager."
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
     'libappindicator'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('8d1ded9b53878a4e6d4e62bfbc2d6a2e72fff295d1a555e78dcf77a3267305b1')
+sha256sums=('1cc9685243cceb6c2f221ddb96e979149b8d068c53d4c3945d9cdc2473426337')
 prepare() {
     sed -i "s/Categories=/Categories=System;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     local _icon_dir="${srcdir}/usr/share/icons/hicolor"
