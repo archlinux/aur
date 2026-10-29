@@ -1,0 +1,22 @@
+pkgbase = opencode-studio
+	pkgdesc = Local GUI for managing OpenCode configurations (MCP, skills, plugins, auth, profiles)
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/Microck/opencode-studio
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22
+	depends = hicolor-icon-theme
+	optdepends = opencode: the OpenCode CLI managed by Studio
+	options = !strip
+	source = opencode-studio-2.5.1.tar.gz::https://github.com/Microck/opencode-studio/archive/refs/tags/v2.5.1.tar.gz
+	source = opencode-studio.sh
+	source = opencode-studio.desktop
+	source = LICENSE
+	sha256sums = bafdcc4677fd36472f3f2394243f0175b40095da2a6f201b82f9afb7c97fbf05
+	sha256sums = 157ade89329aa28a1ae016dafd3ebfe9a15a6311fd5e2745155fe78112868e1e
+	sha256sums = d45166e04c2e00c3022e81ee8589c91af8d1b145a1a76cc096c753d07c1180c1
+	sha256sums = 0839da86c99f1925089db74e2dda71b102be8b29bc1a905ad20e3c13b71f1a77
+
+pkgname = opencode-studio

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OpenCode Studio
+Comment=Local GUI for managing OpenCode configurations
+Exec=opencode-studio
+Icon=opencode-studio
+Categories=Development;Utility;
+Terminal=false
