@@ -378,6 +378,38 @@ python measure.py Commissioner-Italic.ttf slight '{}' 10,11,12
 
 ---
 
+## 5. Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+
+fontconfig's `fontfeatures` is read by pango/GTK only: Chromium, Electron, Qt
+and LibreOffice shape text without it, and in a browser only the page CSS can
+ask for a feature. A font cannot declare one "on by default" either - a shaper
+applies a fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`). So the
+only way to make a feature the default everywhere is to move its lookups into
+one of those features, which is what `make_features.py` does and what
+`FEATURE_DEFAULTS` runs as the last build step:
+
+```sh
+FEATURE_DEFAULTS=ss01 makepkg -si     # the alternate G with a bar, in every app
+```
+
+There is almost nothing to bake here. Of the seventeen GSUB features, only
+`ss01` is a design decision that a user could want globally:
+
+| tag | effect | bake? |
+|---|---|---|
+| `ss01` | alternate `G` **with a bar**: `G Ĝ Ğ Ġ Ģ Ǧ` to `.ss01` forms | yes, if you like it |
+| `ss02` | `б` to the Serbian form - the same substitution `locl` does for `lang="sr"` | **no**: it would give Russian text the Serbian letter |
+| `case`, `tnum`, `frac`, `sups`, `subs`, `sinf`, `numr`, `dnom`, `pnum` | per-context requests (raised punctuation, tabular figures, fractions) | only per context |
+| `ordn`, `aalt` | `H2O` to `H2º`, every alternate at once | **never** (`make_features.py` refuses them) |
+
+Measured on the built package, 44 px, `Greece Gg ĜĞ Γγ`: the baked font with
+no CSS at all is **pixel-identical** to the stock font with
+`font-feature-settings: "ss01" 1` (0 differing pixels out of 1200x96), 191
+pixels differ from the stock font, and `"calt" 0` brings the stock glyphs back
+exactly. `FEATURE_FAMILY="Commissioner Barred"` installs it as a second family
+instead, so both looks stay available - note that the shipped
+`79-commissioner-families.conf` keeps testing for the old name then.
+
 ## Differences from the sibling packages
 
 - **Two variable files, not one.** Upstream keeps the italic as its own file

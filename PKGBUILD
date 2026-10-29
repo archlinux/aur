@@ -3,7 +3,7 @@ pkgname=ttf-commissioner-hinted
 _commver=1.012
 _nfver=3.5.1
 pkgver="${_commver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Commissioner, a low-contrast humanist sans with Flare/Volume/Weight axes and a separate italic, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/kosbarts/Commissioner'
@@ -18,6 +18,7 @@ source=(
   "OFL.txt::https://raw.githubusercontent.com/kosbarts/Commissioner/${_commver}/OFL.txt"
   "font-patcher-${_nfver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   "make_statics.py"
+  "make_features.py"
   "set_gasp.py"
   "measure.py"
   "79-commissioner-families.conf"
@@ -30,10 +31,11 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
             '4a7d88c77b4bc39ff84f2e058ba8f015636c50ce33588a86d9da97defe519933'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             'eed086f8bce3b73ef93475f0706e0978c8070a3bddd47a1e1ce74223beffbe27'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '373d859f527adcf80933f9741af0595e708f591bdde5f2f01896aebd7d488750'
             'f09f7f4a7dbcc2b18c1bafeae56c5611d995066f0b1cbcfe84bb9890edc66d4f'
-            '7c40d541e807419c658a49839d1815b6965a5c14c287739560c85e936280ec65'
+            'd544bb8a3ced515253ffc995a134bb297ae6266a6d21107f2a119a11cbece1c9'
             '3f86a8d1100a69364b1035189143950de9c9963b217184048808ae29e88a6129')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -204,6 +206,47 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
 #               smooth   all sizes anti-aliased ({0xFFFF: 15})
 #               gridfit  all sizes gridfit+grayscale ({0xFFFF: 3})
 #
+#  ── Features every app can see (not just pango) ───────────────────────────
+#
+#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 Bake these GSUB features into the font's 'calt' feature, so
+#                 that EVERY renderer applies them, not only pango. For the
+#                 reason, see the note at the bottom of this block.
+#
+#                 This font has little worth baking. The only candidate is
+#                     FEATURE_DEFAULTS="ss01"
+#                 ss01   the alternate G WITH A BAR (G and its five accented
+#                        forms, nothing else). It is a design decision, and it
+#                        is the one substitution here that a page cannot ask
+#                        for in a comment: with it baked, every program shows
+#                        the barred G, including Chromium.
+#                 Do not bake ss02: б -> the Serbian form is what locl already
+#                 does for text tagged as Serbian, and baking it would give
+#                 Russian text the Serbian letter. Not aalt or ordn either
+#                 (H2O -> H2º); make_features.py refuses those unless
+#                 --allow-risky is passed.
+#                 Everything else (case, tnum, frac, sups) is a per-context
+#                 request, not a default: baking tnum would tabularise the
+#                 figures of running text.
+#
+#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
+#                 Install the result as this family instead, so the stock
+#                 Commissioner stays available. The name must not end in a
+#                 pango style word (Thin, Bold, Italic, ...). With a rename the
+#                 shipped 79-commissioner-families.conf no longer matches
+#                 (its <test family="Commissioner"> stops applying); the axes
+#                 are still there, under the new name.
+#
+#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
+#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
+#  only ask from page CSS. A shaper applies a fixed list of features whatever
+#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
+#  moving a feature's lookups into calt is the only way to make it the
+#  default in every program. Verified in Chromium: the baked font with no CSS
+#  at all is pixel-identical to the stock one with font-feature-settings
+#  listing the same tags. CSS can still say "calt" 0, which also drops the
+#  font's own contextual alternates.
+#
 #  Examples:
 #    makepkg -si                              (asks, when run from a terminal)
 #    makepkg -si </dev/null                   (never asks: defaults only)
@@ -218,7 +261,8 @@ _opt_keys=(COMM_VARIANT STATIC_WEIGHTS STATIC_ITALIC STATIC_VOICES NERD_PATCH
            HINTING HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX
            HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
-           HINT_FAMILY_SUFFIX HINT_INTEGER_PPEM GASP_MODE)
+           HINT_FAMILY_SUFFIX HINT_INTEGER_PPEM GASP_MODE
+           FEATURE_DEFAULTS FEATURE_FAMILY)
 
 # _ask_yn QUESTION DEFAULT(y|n) -> sets _yn to true/false
 _ask_yn() {
@@ -276,6 +320,12 @@ _prompt_options() {
         "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
     fi
+    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
+      echo "  Baking ss01 makes the alternate G with a bar the default in every"
+      echo "  program (Chromium included); fontconfig alone reaches pango only."
+      _ask_yn "Bake ss01 (barred G) into the fonts" n
+      if [[ "$_yn" == true ]]; then FEATURE_DEFAULTS="ss01"; else FEATURE_DEFAULTS=""; fi
+    fi
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
@@ -319,6 +369,8 @@ _resolve_options() {
   HINT_INTEGER_PPEM="${HINT_INTEGER_PPEM:-false}"
   HINT_DEFAULT_SCRIPT="${HINT_DEFAULT_SCRIPT:-latn}"
   HINT_FALLBACK_SCRIPT="${HINT_FALLBACK_SCRIPT:-latn}"
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
 
   case "$COMM_VARIANT" in
     variable|static) ;;
@@ -394,6 +446,12 @@ _resolve_options() {
     keep|sized|smooth|gridfit) ;;
     *) echo "Error: GASP_MODE='$GASP_MODE' invalid (keep|sized|smooth|gridfit)." >&2; exit 1 ;;
   esac
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss01)." >&2
+      exit 1
+    fi
+  done
 }
 
 prepare() {
@@ -405,6 +463,20 @@ prepare() {
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
   fi
+}
+
+# _bake_features SRCDIR: move the lookups of FEATURE_DEFAULTS into calt, on the
+# files this build ended up with (hinted, patched or plain), into
+# $srcdir/featured. Last step on purpose: ttfautohint never sees the extra
+# lookups.
+_bake_features() {
+  local _src="$1" _fam=()
+  [[ -n "$FEATURE_DEFAULTS" ]] || return 0
+  [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
+  echo "==> Baking $FEATURE_DEFAULTS into calt" \
+       "${FEATURE_FAMILY:+(installed as '$FEATURE_FAMILY')}..."
+  python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+    "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$_src"/*.ttf
 }
 
 build() {
@@ -476,6 +548,7 @@ build() {
   fi
 
   if [[ "$HINTING" != true ]]; then
+    _bake_features "$_hintsrc"
     return 0
   fi
 
@@ -532,6 +605,8 @@ PY
     echo "==> Applying gasp mode '$GASP_MODE'..."
     python "$srcdir/set_gasp.py" "$GASP_MODE" "$srcdir/hinted/"*.ttf
   fi
+
+  _bake_features "$srcdir/hinted"
 }
 
 package() {
@@ -543,6 +618,7 @@ package() {
   elif [[ "$NERD_PATCH" == true ]]; then
     _out="$srcdir/patched"
   fi
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then _out="$srcdir/featured"; fi
   if ! compgen -G "$_out/*.ttf" >/dev/null; then
     echo "Error: no fonts to install in $_out." >&2; exit 1
   fi
