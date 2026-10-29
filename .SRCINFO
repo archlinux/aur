@@ -1,7 +1,7 @@
 pkgbase = pdfapps-bin
 	pkgdesc = Fast, offline, subscription-free PDF editor (PyInstaller binary)
-	pkgver = 1.15.1
-	pkgrel = 2
+	pkgver = 1.15.2
+	pkgrel = 1
 	url = https://nelsonduarte.github.io/PDFApps/
 	arch = x86_64
 	license = MIT
@@ -24,18 +24,18 @@ pkgbase = pdfapps-bin
 	optdepends = tesseract-data-deu: German OCR
 	optdepends = ghostscript: advanced PDF compression
 	optdepends = xdg-utils: open the output folder
-	provides = pdfapps=1.15.1
+	provides = pdfapps=1.15.2
 	conflicts = pdfapps
-	source = pdfapps-1.15.1.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.15.1/PDFApps-Linux.tar.gz
-	source = pdfapps-1.15.1.LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.1/LICENSE
-	source = pdfapps-1.15.1.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.1/flatpak/io.github.nelsonduarte.PDFApps.desktop
-	source = pdfapps-1.15.1.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.1/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml
-	source = pdfapps-1.15.1.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.1/icon_512.png
-	source = pdfapps-1.15.1.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.1/pdfapps.svg
-	sha256sums = b56ecc76325f13707db27613258ec422db0ef2c93d01a0771745eaec40ddb893
+	source = pdfapps-1.15.2.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.15.2/PDFApps-Linux.tar.gz
+	source = pdfapps-1.15.2.LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/LICENSE
+	source = pdfapps-1.15.2.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/data/io.github.nelsonduarte.PDFApps.desktop
+	source = pdfapps-1.15.2.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/data/io.github.nelsonduarte.PDFApps.metainfo.xml
+	source = pdfapps-1.15.2.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/icon_512.png
+	source = pdfapps-1.15.2.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/pdfapps.svg
+	sha256sums = cb4c7ed4b7aab74d4da4c4102e4548ea5f614ca5f966eb9d6798c2c78c575cf9
 	sha256sums = 7db363c32a832c173e807e3737b50425dd2554acf93b25715a68483c4ff68c51
 	sha256sums = 0d7610911a09ee9c5ff3770de433bc61c31d81825ff433e8c42e46eedc6324b5
-	sha256sums = ae2e2bf56c06fcd0e16c2812375055d0184de7302abbcfff40723d178e631a35
+	sha256sums = 3279e023ea7614156987eed77df284e77b95f8b598b9f8e716393f209400315c
 	sha256sums = 79800a6233787dc82b3ea31c7de75be10149e387d1180029ec14e59301663c77
 	sha256sums = 97d82b76f38a287d8eaaee1f295ed3848052f35855439a44f57197854ac20361
 

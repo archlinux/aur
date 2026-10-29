@@ -1,8 +1,8 @@
 # Maintainer: Nelson Duarte <nelsonduarte@github.com>
 pkgname=pdfapps-bin
 _pkgname=pdfapps
-pkgver=1.15.1
-pkgrel=2
+pkgver=1.15.2
+pkgrel=1
 pkgdesc="Fast, offline, subscription-free PDF editor (PyInstaller binary)"
 arch=('x86_64')
 url="https://nelsonduarte.github.io/PDFApps/"
@@ -41,16 +41,16 @@ optdepends=(
 source=(
     "$_pkgname-$pkgver.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v$pkgver/PDFApps-Linux.tar.gz"
     "$_pkgname-$pkgver.LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/LICENSE"
-    "$_pkgname-$pkgver.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/flatpak/io.github.nelsonduarte.PDFApps.desktop"
-    "$_pkgname-$pkgver.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml"
+    "$_pkgname-$pkgver.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/data/io.github.nelsonduarte.PDFApps.desktop"
+    "$_pkgname-$pkgver.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/data/io.github.nelsonduarte.PDFApps.metainfo.xml"
     "$_pkgname-$pkgver.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/icon_512.png"
     "$_pkgname-$pkgver.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/pdfapps.svg"
 )
 sha256sums=(
-    'b56ecc76325f13707db27613258ec422db0ef2c93d01a0771745eaec40ddb893'
+    'cb4c7ed4b7aab74d4da4c4102e4548ea5f614ca5f966eb9d6798c2c78c575cf9'
     '7db363c32a832c173e807e3737b50425dd2554acf93b25715a68483c4ff68c51'
     '0d7610911a09ee9c5ff3770de433bc61c31d81825ff433e8c42e46eedc6324b5'
-    'ae2e2bf56c06fcd0e16c2812375055d0184de7302abbcfff40723d178e631a35'
+    '3279e023ea7614156987eed77df284e77b95f8b598b9f8e716393f209400315c'
     '79800a6233787dc82b3ea31c7de75be10149e387d1180029ec14e59301663c77'
     '97d82b76f38a287d8eaaee1f295ed3848052f35855439a44f57197854ac20361'
 )
