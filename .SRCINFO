@@ -1,6 +1,6 @@
 pkgbase = ele-messenger
 	pkgdesc = Household chat that keeps working without internet, router or power: one mesh over Bluetooth, Wi-Fi and the tailnet
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/thefangeddeity/ele-messenger
 	install = ele-messenger-app.install
@@ -29,7 +29,7 @@ pkgbase = ele-messenger
 	replaces = ele-messenger-server
 	options = !lto
 	backup = etc/nginx/snippets/ele-messenger-mesh.conf
-	source = ele-messenger-1.5.0.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = b3fcf518b78f2e0126d6f57d6433de51e723f52620e175b53cf04dfb42385f67
+	source = ele-messenger-1.5.1.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = d4ca1507ba236e323058ffd4a589ea4e05472f6f2273044c33da21794bbc3490
 
 pkgname = ele-messenger
