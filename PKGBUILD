@@ -13,7 +13,7 @@
 
 pkgname=strata-terminal-bin
 _relver=0.2.7
-pkgver=0.1.52
+pkgver=0.1.53
 pkgrel=1
 pkgdesc='Strata Terminal: run Qwen3.8-Flash-Next and DeepSeek V4.1-Flash locally with an OpenAI/Anthropic-compatible API (prebuilt)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
 )
 noextract=("strata-terminal-${pkgver}-linux-x86_64.tar.gz")
 sha256sums=('949b9b0aada7476006469e58ee4ffb0e0f68c2d9137e90a356757b61a09d37f0'
-            '399fcc8f2d232b2f7ab7df82d863874a4b815019ced877a24f68a47ffc8110a0')
+            '6f746e48d3abfd2c660fe460336ece5c66caf75610771f819e279de6e7adfe65')
 
 package() {
   install -dm755 "${pkgdir}/opt/strata-terminal"
