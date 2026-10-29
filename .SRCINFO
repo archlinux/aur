@@ -1,0 +1,20 @@
+pkgbase = dotnet-omnisharp-extensions
+	pkgdesc = Language Server Protocol and Debug Adapter Protocol for .NET, OmniSharp.Extensions.* (NuGet packages)
+	pkgver = 0.19.11
+	pkgrel = 1
+	url = https://github.com/OmniSharp/csharp-language-server-protocol
+	arch = any
+	license = MIT
+	makedepends = dotnet-mediatr-12
+	makedepends = dotnet-nerdbank-streams
+	makedepends = dotnet-newtonsoft-json
+	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-system-reactive
+	makedepends = dotnet-vs-threading
+	makedepends = dotnet-vs-validation
+	makedepends = jq
+	source = csharp-language-server-protocol-a601a66c59e570d297e83987aff79038c5449724.tar.gz::https://github.com/OmniSharp/csharp-language-server-protocol/archive/a601a66c59e570d297e83987aff79038c5449724.tar.gz
+	sha512sums = cc3e223c5dc2e0096495722e485a296c790cd88a5e55b6990e8e0ab5acfef14ae13ae499616a2e8ccc488f81ac9efaaa5e21961bd5c464d28ba11fc0e5faacfc
+	b2sums = bc564390c993b2cd14c38c909ae485846214569130d604c6242b5e28af9c62c7954496156373fde793e4cfbfbdd0737c013deab0ba464d0f1bfbbe686246e30e
+
+pkgname = dotnet-omnisharp-extensions

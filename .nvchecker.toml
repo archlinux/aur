@@ -1,0 +1,4 @@
+[dotnet-omnisharp-extensions]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/omnisharp.extensions.languageserver/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'
