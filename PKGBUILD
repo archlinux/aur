@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 _pkgname=VNote
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now."
 arch=('x86_64')
@@ -34,19 +34,15 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('37ead8a0d19c98d333c212fd59213603e30965b5ee53edb996749fb95f9061c8'
+sha256sums=('cdc732b0c069b41cb9abd0b67f780ac29728b5ae626e3a8650f98ba99613939c'
             '7feea40a0bd1a6668b2acf9adccf1678fb1f0c00f02fd688699cc51e92ca95da')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+	rm -rf "${srcdir}/squashfs-root"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
     find "${srcdir}/squashfs-root/usr/share/doc" -type f -perm 777 -exec chmod 444 {} +
