@@ -1,6 +1,6 @@
 pkgbase = factorio
 	pkgdesc = A 2D game about building and maintaining factories (stable branch).
-	pkgver = 2.1.23
+	pkgver = 2.1.24
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = x86_64
