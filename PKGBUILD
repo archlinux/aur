@@ -34,14 +34,10 @@ provides=("${pkgname%-cli}")
 source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('ccb04b41cae2455852839bdaef94456fadc4254619b97a8736f71a0b031dcffe')
 
-prepare() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-}
-
 build() {
     local cmake_options=(
         -B build
-        -S "${PROJECT_DIR_NAME:-$pkgbase-$pkgver}"
+        -S "${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
         -G Ninja
         -D CMAKE_BUILD_TYPE=Release
         -D CMAKE_INSTALL_PREFIX=/usr
