@@ -1,0 +1,14 @@
+pkgbase = zero-breach-toolkit
+	pkgdesc = Offline spyware-triage scanner: checks local device traces against published mercenary-spyware IOC feeds
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/interplains/Zero-Breach-Toolkit
+	arch = any
+	license = Apache-2.0
+	depends = python
+	optdepends = android-tools: adb access for Android acquisition (AndroidQF workflow)
+	optdepends = python-cryptography: decrypt encrypted iPhone backups
+	source = zero-breach-toolkit.py::https://github.com/interplains/Zero-Breach-Toolkit/releases/download/v0.1.11/zero-breach-toolkit.py
+	sha256sums = 91254ab664f343f66a5116074f766ed48db732e7ebbcbeab082e41a60a46912d
+
+pkgname = zero-breach-toolkit
