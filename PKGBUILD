@@ -3,7 +3,7 @@
 
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
-pkgver=5.20.1
+pkgver=5.21.0
 pkgrel=1
 pkgdesc='State-of-the-art pretrained models for inference and training'
 arch=('any')
@@ -33,29 +33,29 @@ optdepends=(
   'python-hf-xet: xethub support'
 )
 source=(
-  "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
+  "python-transformers-pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v${pkgver%%.0}.tar.gz"
 )
-sha256sums=('5a6b684fb12f97031a45f1af21ab69484d2535af415740c590b99ce5160b4df6')
+sha256sums=('a3f3f7cf0110434ee061513fb75710880e2761c35ba8746179d21340f81b3b83')
 
 prepare() {
-  cd "transformers-$pkgver"
+  cd "transformers-${pkgver%%.0}"
   # Remove annoying dependency check on `tokenizers`.
   sed -i '/tokenizers/c\    "tokenizers": "tokenizers",' \
       src/transformers/dependency_versions_table.py
 }
 
 build() {
-  python -m build -nw "transformers-$pkgver"
+  python -m build -nw "transformers-${pkgver%%.0}"
 }
 
 check() {
-  cd "transformers-$pkgver"
+  cd "transformers-${pkgver%%.0}"
   PYTHONPATH=$PWD/src python -c 'import transformers'
 }
 
 package() {
-  cd "transformers-$pkgver"
+  cd "transformers-${pkgver%%.0}"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-    $srcdir/$_pkgname-$pkgver/dist/transformers-$pkgver-*-*.whl
+    $srcdir/$_pkgname-${pkgver%%.0}/dist/transformers-$pkgver-*-*.whl
 }
