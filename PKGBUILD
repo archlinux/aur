@@ -10,11 +10,11 @@ _pkgname="apache-superset"
 pkgver=4.1.1
 # superset pins numpy, pandas and pyarrow versions without wheels for the system Python
 _python=3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern, enterprise-ready business intelligence web application (venv installation type)"
 url="https://superset.apache.org/"
 license=("Apache-2.0")
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 provides=("superset")
 conflicts=("superset")
 makedepends=("uv")
@@ -36,6 +36,18 @@ backup=("etc/superset/env"
 options=("!strip" "!debug")
 install="superset.install"
 
+_strip_pkgdir() {
+ # remove mentions of $pkgdir in files and symlinks
+ grep -RIlZ "$pkgdir" "$pkgdir" | xargs -0 -r sed -i "s|$pkgdir||g"
+ find "$pkgdir" -type l -print0 |
+  while IFS= read -r -d '' _link; do
+   _target=$(readlink -- "$_link")
+   if [[ $_target == "$pkgdir"/* ]]; then
+    ln -sfn "${_target#"$pkgdir"}" "$_link"
+   fi
+  done
+}
+
 package(){
  install -d -m 750 "$pkgdir/etc/superset"
  install -d -m 750 "$pkgdir/var/lib/superset"
@@ -50,20 +62,14 @@ package(){
  # standalone Python and virtual environment, both inside the package
  local share="$pkgdir/usr/share/superset"
  export UV_CACHE_DIR="$srcdir/uv-cache"
+ export UV_LINK_MODE=copy
+ export UV_NO_INSTALLER_METADATA=1
  export UV_PYTHON_INSTALL_DIR="$share/python"
  export PYTHONDONTWRITEBYTECODE=1
  uv python install --no-bin "$_python"
  uv venv --python "$_python" --python-preference only-managed "$share/venv"
  uv pip install --python "$share/venv/bin/python" "$_pkgname==$pkgver" gevent Pillow
- # remove references to pkgdir
- find "$share" -type l | while read -r link; do
-  target=$(readlink "$link")
-  if [[ $target == "$pkgdir"/* ]]; then
-   ln -sfn "${target#"$pkgdir"}" "$link"
-  fi
- done
- find "$share/venv/bin" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
- sed -i "s#${pkgdir}/#/#g" "$share/venv/pyvenv.cfg"
+ _strip_pkgdir
  find "$share" -type f -name "*.py[co]" -delete
  find "$share" -type d -name "__pycache__" -delete
 }
