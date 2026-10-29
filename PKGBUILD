@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 # makepkg consumes package metadata and supplies srcdir/pkgdir.
 pkgname=lyfy
-pkgver=26.10.1
+pkgver=26.10.2
 pkgrel=1
 pkgdesc='Declarative system maintenance and Git-backed host state for Arch Linux'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('sudo: authenticate interactive host lint and explicit --elevate sca
 makedepends=('cargo' 'pkgconf')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('e9100eaf4ed77208cf347adbe9fd1fefcdd1e685d886b2c820c2d3a405674ed0')
+sha256sums=('077160869e807e40b98e5239de3b51828fe3f165d734c0a4975ecee722382af4')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver" || return
@@ -52,7 +52,7 @@ package() {
   install -Dm644 examples/config.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
   install -Dm644 "docs/man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 "docs/man/$pkgname.conf.5" "$pkgdir/usr/share/man/man5/$pkgname.conf.5"
-  for document in configuration rules storage; do
+  for document in configuration rules lint storage; do
     install -Dm644 "docs/$document.md" "$pkgdir/usr/share/doc/$pkgname/$document.md"
   done
 }
