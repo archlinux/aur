@@ -1,6 +1,6 @@
 # Maintainer: Mészáros Zoltán <contact.mesonotes@gmail.com>
 pkgname=mesonotes-bin
-pkgver=1.0.24
+pkgver=1.0.26
 pkgrel=1
 pkgdesc="Notes, tasks, boards, canvases and writing on your own computer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('mesonotes')
 conflicts=('mesonotes')
 options=('!strip' '!debug')
 source=("mesonotes-${pkgver}-amd64.deb::https://gitlab.com/api/v4/projects/linuxmind%2Fmesonotes/packages/generic/mesonotes/${pkgver}/mesonotes-${pkgver}-amd64.deb")
-sha256sums=('b7faa7bcda9bd893072baee2d91a608498ac51ce021416d611fa7c640dae0a4b')
+sha256sums=('5b156ade314bf104bf5928733f6c4d0c963762115a28c2f6b7f7fad4836e4ada')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
