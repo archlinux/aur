@@ -2,7 +2,9 @@
 
 pkgname="ldap-user-manager"
 pkgver=1.11
-pkgrel=1
+# upstream renamed the project to luminary in 2.0
+_srcname=luminary
+pkgrel=2
 pkgdesc="A PHP web-based interface for LDAP user account management and self-service password change"
 url="https://github.com/wheelybird/ldap-user-manager"
 license=("MIT")
@@ -10,7 +12,7 @@ arch=("any")
 depends=("php")
 makedepends=("composer")
 optdepends=("openldap: LDAP server")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/wheelybird/ldap-user-manager/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wheelybird/$_srcname/archive/refs/tags/v$pkgver.tar.gz"
         "config.env.php")
 sha256sums=('71f464670bec4736f2369e7bdba7152887ca2b8be1a593a97456fd46b042a1b5'
             'f38f5fb62435791422dadca7bf683dc12fe2d482f9594a13a6d33df00b72cf28')
@@ -19,7 +21,7 @@ options=("!strip")
 
 prepare(){
  # include environmental variables
- cd "$pkgname-$pkgver"
+ cd "$_srcname-$pkgver"
  sed -i "www/includes/config.inc.php" \
      -e 's|<?php|<?php\n\ninclude ("config.env.php");|'
  # user maximum integer available
@@ -32,7 +34,7 @@ prepare(){
 }
 
 package(){
- cd "$pkgname-$pkgver"
+ cd "$_srcname-$pkgver"
  install -d "$pkgdir/usr/share/webapps/ldap-user-manager"
  cp -r "www"/* "$pkgdir/usr/share/webapps/ldap-user-manager"
  install -D -o root -g http -m 640 "$srcdir/config.env.php" "$pkgdir/etc/webapps/ldap-user-manager/config.env.php"
