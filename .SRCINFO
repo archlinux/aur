@@ -1,6 +1,6 @@
 pkgbase = gkey-config
 	pkgdesc = Configuration tool for the gaming keys of Logitech G keyboards (hid-lg-g15)
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/Lordbooker/gkey-config
 	install = gkey-config.install
@@ -18,7 +18,7 @@ pkgbase = gkey-config
 	optdepends = qt6-translations: translated standard buttons in the configuration tool
 	conflicts = linux-g13-driver
 	conflicts = linux-g13-driver-git
-	source = gkey-config-1.5.0.tar.gz::https://github.com/Lordbooker/gkey-config/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 1859c5a1a1655d2aa45a42df56e260da453aaf7fa5717212e26407025bf6bef7
+	source = gkey-config-1.6.0.tar.gz::https://github.com/Lordbooker/gkey-config/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 38b315d9494e29680e7947566e768f4dbfc1807ac77872e2ddfa8ed5bd7db499
 
 pkgname = gkey-config
