@@ -1,0 +1,17 @@
+pkgbase = age-plugin-fido2-hmac
+	pkgdesc = Age plugin to encrypt files with FIDO2 tokens using the hmac-secret extension
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/olastor/age-plugin-fido2-hmac
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = libfido2
+	optdepends = age: age encryption tool
+	optdepends = rage: Rust implementation of age
+	source = age-plugin-fido2-hmac-0.5.0.tar.gz::https://github.com/olastor/age-plugin-fido2-hmac/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = dfdc7df03f444411bd531435f604b96c133350201e90b006e437829759d39883
+
+pkgname = age-plugin-fido2-hmac
