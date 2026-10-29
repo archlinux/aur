@@ -5,26 +5,26 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-typed-ffmpeg
 epoch=
-pkgver=4.5
+pkgver=4.6.2
 pkgrel=1
 pkgdesc='Modern Python & TypeScript FFmpeg wrappers with comprehensive typing (latest version)'
 arch=(any)
 url=https://pypi.org/project/typed-ffmpeg/
 license=(MIT)
-depends=(python 'python-typed-ffmpeg-v9=4.5')
+depends=(python 'python-typed-ffmpeg-v9=4.6.2')
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
-md5sums=(SKIP)
+sha256sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/dc/87/2798afeb9a7691e5f12d1fc00dbd08dec0b1fe5880a1125e669cf7d429ac/typed_ffmpeg-4.5-py3-none-any.whl)
-md5sums+=(31b45e2dc5b79348629320899a789e5b)
-noextract+=(typed_ffmpeg-4.5-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/79/7f/ed05bb237ed6eb477c6bfbd3b9a71ef38ae95efb5e9d789c4f60bb62eb07/typed_ffmpeg-4.6.2-py3-none-any.whl)
+sha256sums+=(9fd1caa1cadfe6bd0b40411f9212c4291e9ff6fd7e5b77991be3b588ec0a1088)
+noextract+=(typed_ffmpeg-4.6.2-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(e4761ae89d23a3f9a0ac3c39c13262dd)
+sha256sums+=(cef60dffcf8f30ea92c0ef4a4240ffac8f11f302997ff242ef82fa9376a4fcf9)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
