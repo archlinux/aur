@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=tmxr-bin
 _pkgname=tmxr
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="tmux-style terminal multiplexer for Linux, macOS and Windows (binary release)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("tmxr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/tmxr/releases/download/v${pkgver}/tmxr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("tmxr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/tmxr/releases/download/v${pkgver}/tmxr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('24ba8efa08bff3901006a95dd62f83cc135f91f58398cb876187cd1617da3092')
-sha256sums_aarch64=('2458387a26bc7409526c4446a9b03563e151fd8223dcbfc58b8c45c792d7c38e')
+sha256sums_x86_64=('35bd53d9758e379e0361a4e65567cef78b2a901745e0e37d9fa2b15c4af729fe')
+sha256sums_aarch64=('7473089d513e32c902db91e47c3558b92e09abe1f95693d2e5e0828c13640295')
 
 package() {
     install -Dm755 "$srcdir/tmxr" "$pkgdir/usr/bin/tmxr"
