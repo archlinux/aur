@@ -1,6 +1,6 @@
 pkgbase = pi-ext-web-access
 	pkgdesc = Web search, URL fetching, and content extraction extension for pi coding agent
-	pkgver = 0.45.0
+	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://github.com/nicobailon/pi-web-access
 	install = pi-ext.install
@@ -11,7 +11,7 @@ pkgbase = pi-ext-web-access
 	optdepends = pi-coding-agent-git
 	options = !strip
 	options = !debug
-	source = pi-ext-web-access-0.45.0.tar.gz::https://github.com/nicobailon/pi-web-access/archive/refs/tags/v0.45.0.tar.gz
-	sha256sums = 66286030ca825fb08b4b6b9fa2064a77ac0679786c6419668dcd0976750179f5
+	source = pi-ext-web-access-0.46.0.tar.gz::https://github.com/nicobailon/pi-web-access/archive/refs/tags/v0.46.0.tar.gz
+	sha256sums = 8f1a53d98d9266d1e1ba94154a5dfa679d3f0c06735407d1e650e6789a054d4a
 
 pkgname = pi-ext-web-access
