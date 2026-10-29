@@ -2,8 +2,8 @@
 
 pkgname="python-pgsanity"
 _name="${pkgname#python-}"
-pkgver=0.2.9
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Check syntax of sql for PostgreSQL"
 arch=(any)
 url="https://github.com/markdrago/pgsanity"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=("python-build" "python-installer" "python-uv-build" "python-wheel")
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('d1ae0d2f08f2fd5188882fabc68f09f532230e9689602ad195dfe0cf39172760c7e26c1989489a60cf03ceeec4b75b367bfcbcc99f0c9e6ea381000b4af3c41a')
+b2sums=('00f28c4eb54a808ca86204ab99e48e007f7fe11d5edfbf8ddec8f8dffa0682975082b81a5615d3bbd470527176e752ad9de7ab4408fc25dfbd250d5ff3bdb66f')
 options=("!strip")
 
 build(){
