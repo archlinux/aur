@@ -1,6 +1,6 @@
 pkgbase = runa-bin
 	pkgdesc = A fast and lightweight terminal file manager written in Rust
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/runa-fm/runa
 	changelog = CHANGELOG.md
@@ -10,9 +10,9 @@ pkgbase = runa-bin
 	depends = libgcc
 	provides = runa
 	conflicts = runa
-	source_x86_64 = runa-bin-0.15.0-x86_64-gnu.tar.gz::https://github.com/runa-fm/runa/releases/download/v0.15.0/runa-linux-x86_64-gnu.tar.gz
-	sha256sums_x86_64 = cffa32221aeb2abd26813dff3a87a13fa1847228e1d77c58ed9fc8c252892fc3
-	source_aarch64 = runa-bin-0.15.0-aarch64-gnu.tar.gz::https://github.com/runa-fm/runa/releases/download/v0.15.0/runa-linux-aarch64-gnu.tar.gz
-	sha256sums_aarch64 = 0cef6c94b13ca39469c6dc933ee0fd0e9a5162023c0e7be0274be70acb6f12c7
+	source_x86_64 = runa-bin-0.15.1-x86_64-gnu.tar.gz::https://github.com/runa-fm/runa/releases/download/v0.15.1/runa-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = 86330aa6e793438abd8e151631367c93d620740654201ba7ab046ecf5a05c81f
+	source_aarch64 = runa-bin-0.15.1-aarch64-gnu.tar.gz::https://github.com/runa-fm/runa/releases/download/v0.15.1/runa-linux-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = bf1a5db68fd322ecbf50ea55020ddc5ce053c55b56b2afd04cba91169981516d
 
 pkgname = runa-bin

@@ -3,7 +3,7 @@
 
 pkgname=runa-bin
 _name=runa
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A fast and lightweight terminal file manager written in Rust"
 arch=(x86_64 aarch64)
@@ -15,8 +15,8 @@ conflicts=(runa)
 changelog=CHANGELOG.md
 source_x86_64=("$pkgname-$pkgver-x86_64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-x86_64-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-aarch64-gnu.tar.gz")
-sha256sums_x86_64=('cffa32221aeb2abd26813dff3a87a13fa1847228e1d77c58ed9fc8c252892fc3')
-sha256sums_aarch64=('0cef6c94b13ca39469c6dc933ee0fd0e9a5162023c0e7be0274be70acb6f12c7')
+sha256sums_x86_64=('86330aa6e793438abd8e151631367c93d620740654201ba7ab046ecf5a05c81f')
+sha256sums_aarch64=('bf1a5db68fd322ecbf50ea55020ddc5ce053c55b56b2afd04cba91169981516d')
 
 package() {
     cd "runa-linux-$CARCH-gnu"
