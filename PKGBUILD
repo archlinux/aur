@@ -2,7 +2,7 @@
 # Contributor: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 pkgname=httptoolkit-git
 _pkgname='HTTP Toolkit Desktop'
-pkgver=1.27.3.r0.g71c10c7
+pkgver=1.27.4.r0.g4494a2c
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -32,10 +32,12 @@ options=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -89,7 +91,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -114,7 +116,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "$(_get_project_dir)/src/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
