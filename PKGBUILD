@@ -1,6 +1,6 @@
 # Maintainer: HexRebel (AUR: rebellen) <200467570+HexRebel@users.noreply.github.com>
 pkgname=mascot
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Shimeji-style desktop mascots for Wayland that you can talk to (a chat bubble for local or hosted language models)"
 arch=('x86_64')
@@ -8,6 +8,7 @@ url="https://github.com/HexRebel/mascot"
 license=('GPL-2.0-or-later' 'CC0-1.0' 'LicenseRef-Shimeji')
 depends=('wayland' 'libarchive' 'python' 'python-pillow' 'quickshell' 'aichat')
 makedepends=('git' 'wayland-protocols' 'uthash')
+install=mascot.install
 optdepends=('ollama: local language models'
             'curl: keep a local model loaded while the bubble is open'
             'ttf-nerd-fonts-symbols: the icons in the chat bubble'
