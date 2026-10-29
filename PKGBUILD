@@ -1,6 +1,6 @@
 # Maintainer: Brуan Childs <godeater[at]𝚐mail[dot]com>
 pkgname=terraform-pug-bin
-pkgver=0.3.2
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='A TUI for terraform power users'
 arch=(x86_64)
@@ -10,8 +10,8 @@ makedepends=('unzip')
 realpkgname=pug-bin
 source=("${url}/releases/download/v${pkgver}/${realpkgname/-bin/}_${pkgver}_linux_amd64.zip")
 noextract=('${realpkgname/-bin/}_${pkgver}_linux_amd64.zip')
-b2sums=('8f15719c39e776269dc0aca1af8c28fb7caffae2a706ce71c4635ea26ebcf2a3c506563d1ebed0a7c6c90002fff5f73f5298f315e19b671804c357c8088663f4')
-sha512sums=('8242e838ada8b78dcd2635824a6e695ff2754fd27850b8b1f8f219daee53c21f5879e7748fd3292cf55d5f153f4fd37a29436c44fad26b1cc51350970e942311')
+b2sums=('48e38a84f3fc10d828cc364b50fc97ad97501d3f548d785b955cc885b6e1809f14e400b48b6bfde610337fdf2e5062f0a3b9ab46df44aa6eff8a6f9aff5edd13')
+sha512sums=('2309657fd025235910544e4a19ca15b92f0da861d9cbb4bedf51b524c45f609c017557eb9e596ebb6fde172eccf963a205094b58e10f86afbe793976494985c6')
 
 prepare() {
   unzip -d ${srcdir}/${realpkgname/-bin/}_${pkgver}_${pkgrel} ${realpkgname/-bin/}_${pkgver}_linux_amd64.zip
