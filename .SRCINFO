@@ -1,6 +1,6 @@
 pkgbase = lightos-codec-ffmpeg-bin
 	pkgdesc = Optional Arch-native FFmpeg hardware H.264 worker for LightOS remote desktop
-	pkgver = 0.1.22
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://github.com/ca-x/lightos-remote-desktop
 	install = lightos-codec-ffmpeg-bin.install
@@ -22,7 +22,7 @@ pkgbase = lightos-codec-ffmpeg-bin
 	depends = libavutil.so=61-64
 	depends = libswscale.so=10-64
 	optdepends = lightos-remoted-bin: Remote desktop service that discovers this optional worker
-	provides = lightos-codec-ffmpeg=0.1.22
+	provides = lightos-codec-ffmpeg=0.1.23
 	conflicts = lightos-codec-ffmpeg
 	options = !strip
 	options = !debug
@@ -30,9 +30,9 @@ pkgbase = lightos-codec-ffmpeg-bin
 	source = validate-arch-codec.py
 	sha256sums = 0b269f4269f4d39719f6654e8e094ff6bf9672a0d0dda92411000a16126e3bae
 	sha256sums = b1a16652f3ffef6185f0636da9c6fc9bbc665ffb9c0a7dc98776373b1b4b1a91
-	source_x86_64 = lightos-codec-ffmpeg-linux-x86_64-archlinux-0.1.22.tar.gz::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.22/lightos-codec-ffmpeg-linux-x86_64-archlinux.tar.gz
-	source_x86_64 = lightos-codec-ffmpeg-linux-x86_64-archlinux-0.1.22.tar.gz.sha256::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.22/lightos-codec-ffmpeg-linux-x86_64-archlinux.tar.gz.sha256
-	sha256sums_x86_64 = 3a7b79f70228001eea3c98f88dc7d8d6e86a41cb2320ba560d0033f9b77e9fc5
-	sha256sums_x86_64 = bd27527f5e9014be38db1536995742415bc4c319756f8bad07106c1855b92e20
+	source_x86_64 = lightos-codec-ffmpeg-linux-x86_64-archlinux-0.1.23.tar.gz::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.23/lightos-codec-ffmpeg-linux-x86_64-archlinux.tar.gz
+	source_x86_64 = lightos-codec-ffmpeg-linux-x86_64-archlinux-0.1.23.tar.gz.sha256::https://github.com/ca-x/lightos-remote-desktop/releases/download/v0.1.23/lightos-codec-ffmpeg-linux-x86_64-archlinux.tar.gz.sha256
+	sha256sums_x86_64 = ed63938cc977042aaf78ffd40468c3384f091ce45464a8abc27ba95d8caee0ed
+	sha256sums_x86_64 = cb690b637a12cbc050c5a4f22cd02761e25e746fbcdc792045164be843bd77cd
 
 pkgname = lightos-codec-ffmpeg-bin
