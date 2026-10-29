@@ -1,10 +1,11 @@
 pkgbase = relic-osaka-gtk-theme
 	pkgdesc = Osaka GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
-	pkgver = 2025.10.23
-	pkgrel = 5
+	pkgver = 2025.10.23.r11.05bb2f9
+	pkgrel = 1
 	url = https://github.com/gaou-piou/Osaka-GTK-Theme
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	makedepends = sassc
 	depends = gnome-themes-extra
 	optdepends = gtk-engine-murrine: GTK 2 support
@@ -13,8 +14,8 @@ pkgbase = relic-osaka-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Osaka-GTK-Theme-0faa853682a45868c9e08a5354a4761a187cf101.tar.gz::https://github.com/gaou-piou/Osaka-GTK-Theme/archive/0faa853682a45868c9e08a5354a4761a187cf101.tar.gz
-	source = relic-gtk-fixes-2026.10.23.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.23.tar.gz
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
 	sha256sums = 7a7b782d7caefb8d7fc317feb77500a50476862e5801bacf8869e59894e95963
-	sha256sums = a9c132c3a5952c1d2bb826554187f0bfec982fe2b4841bf2649843bb07774db0
+	sha256sums = SKIP
 
 pkgname = relic-osaka-gtk-theme
