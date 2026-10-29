@@ -2,7 +2,7 @@
 # Contributor K1412 <swaelens.jonathan@openmailbox.org>
 
 pkgname="smarty3-gettext"
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Gettext support for Smarty"
 url='https://github.com/smarty-gettext/smarty-gettext'
@@ -10,7 +10,7 @@ licence='LGPL'
 arch=('any')
 depends=('smarty3')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('06a4c7b7f6745e1227b4b5181d15836f8e0af46a776903c9edd9cda09300ebd4')
+sha256sums=('4cbef8da2eb1ba28c863844bc3f8fe98c0b90ede17b086cc4bb01875a1dfcb4c')
 
 package(){
  cd "smarty-gettext-$pkgver"

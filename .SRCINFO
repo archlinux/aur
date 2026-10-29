@@ -1,11 +1,11 @@
 pkgbase = smarty3-gettext
 	pkgdesc = Gettext support for Smarty
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/smarty-gettext/smarty-gettext
 	arch = any
 	depends = smarty3
-	source = https://github.com/smarty-gettext/smarty-gettext/archive/1.6.2.tar.gz
-	sha256sums = 06a4c7b7f6745e1227b4b5181d15836f8e0af46a776903c9edd9cda09300ebd4
+	source = https://github.com/smarty-gettext/smarty-gettext/archive/1.7.0.tar.gz
+	sha256sums = 4cbef8da2eb1ba28c863844bc3f8fe98c0b90ede17b086cc4bb01875a1dfcb4c
 
 pkgname = smarty3-gettext
