@@ -1,10 +1,11 @@
 pkgbase = relic-rosepine-gtk-theme
 	pkgdesc = Rosé Pine GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
-	pkgver = 2025.10.23
-	pkgrel = 5
+	pkgver = 2025.10.23.r11.05bb2f9
+	pkgrel = 1
 	url = https://github.com/gaou-piou/Rose-Pine-GTK-Theme
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	makedepends = sassc
 	depends = gnome-themes-extra
 	optdepends = gtk-engine-murrine: GTK 2 support
@@ -13,8 +14,8 @@ pkgbase = relic-rosepine-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Rose-Pine-GTK-Theme-c4fdfa62a9eb6941a36b2cd5026fc64123aaa0dd.tar.gz::https://github.com/gaou-piou/Rose-Pine-GTK-Theme/archive/c4fdfa62a9eb6941a36b2cd5026fc64123aaa0dd.tar.gz
-	source = relic-gtk-fixes-2026.10.23.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.23.tar.gz
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
 	sha256sums = 9410203a7c2d4362c5e8696279e9c9d7b7925b97fd1cb5b1d0890fd6f99ebc58
-	sha256sums = a9c132c3a5952c1d2bb826554187f0bfec982fe2b4841bf2649843bb07774db0
+	sha256sums = SKIP
 
 pkgname = relic-rosepine-gtk-theme
