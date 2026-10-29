@@ -3,7 +3,7 @@
 
 pkgname=linksy-bin
 pkgver=0.9.16   # fallback, overridden by pkgver()
-pkgrel=2
+pkgrel=3
 pkgdesc="Your devices, connected: direct file/clipboard/screen/camera sharing between Linux and Android, no cloud"
 arch=('x86_64')
 url="https://github.com/LinkSy-mg/linksy-releases"
@@ -100,6 +100,10 @@ prepare() {
       echo "SHA256 verified: $_deb"
     fi
   }
+
+  # Drop any stale payload from a previous/partial build so we never merge
+  # old-version binaries into the new package.
+  rm -rf "$srcdir/usr" "$srcdir/data.tar.xz" "$srcdir/.deb-common" "$srcdir/.deb-app"
 
   _fetch_deb "$_common_deb" || exit 1
   _fetch_deb "$_app_deb" || exit 1
