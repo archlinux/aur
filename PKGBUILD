@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jan-bin
 _pkgname=Jan
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Jan is bringing the best of open-source AI in an easy-to-use product. Download and run LLMs with full control and privacy."
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a414913bf0c3057b97cfe7a8b48674425318ff2e23a5aded5630ba2607697378'
+sha256sums=('ed8b23d763a0fa99bc87c400ace65ebd448f1b066596cc0b8ec0d18bd8842c38'
             '5111c45e21dd8590d5b44093045778946195d3036c83416db69498a12be0e912')
 prepare() {
     sed -i -e "
