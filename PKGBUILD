@@ -6,13 +6,13 @@
 # prebuilt binaries).
 
 pkgname=gabbro-bin
-pkgver=0.1.0_alpha.23
+pkgver=0.1.0_alpha.24
 pkgrel=1
 _pkgver=${pkgver//_/-}   # tag/filename form: 0.1.0-alpha.N
 pkgdesc="Quantum-resistant password manager"
 arch=('x86_64')
 url="https://github.com/gabbro-foss/gabbro"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'LicenseRef-Gabbro-Logo')
 depends=('gtk3' 'libfido2' 'libcbor' 'pcsclite')
 optdepends=('xdg-desktop-portal-gtk: native file dialogs (open/save/pick folder)'
             'pcscd: NFC YubiKey support (running pcscd required)')
@@ -21,9 +21,11 @@ conflicts=('gabbro')
 options=('!strip' '!debug')   # prebuilt bundle; don't strip or split debug symbols
 install=gabbro-bin.install
 source=("gabbro-${_pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${_pkgver}/gabbro-${_pkgver}-linux-x86_64.tar.gz"
-        "LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v${_pkgver}/LICENSE")
-sha256sums=('c02f2667e4c860506dc6fb6547ef08752081d84d1088b922a25e2fba946a690e'
-            '9eb52965f51761109c61c9f91ed4c2ab4017c1d8b14bbb02fb178dbaf1346545')
+        "LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v${_pkgver}/LICENSE"
+        "LOGO_LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v${_pkgver}/LOGO_LICENSE")
+sha256sums=('8d0da9fae0db8dbb0c32264fd239a9c28da064123cafca11bceb3607b95c05ba'
+            '9eb52965f51761109c61c9f91ed4c2ab4017c1d8b14bbb02fb178dbaf1346545'
+            'a828b5d94881882de39eaf811ba6ddcf559331bd28b37b02b2b076315195887d')
 
 package() {
   # Self-contained Flutter bundle -> /usr/lib/gabbro (must stay together).
@@ -75,4 +77,6 @@ CONF
   # The repo LICENSE carries a copyright holder line that Arch's shared common GPL3 file
   # does not -- so we ship it rather than rely on that shortcut.
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # The logo is not GPL (all rights reserved): its notice ships beside LICENSE.
+  install -Dm644 "$srcdir/LOGO_LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LOGO_LICENSE"
 }
