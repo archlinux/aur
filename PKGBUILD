@@ -3,23 +3,24 @@
 pkgname="mkdocs-charts-plugin"
 _pkgname="${pkgname}"
 pkgver=0.0.10
-pkgrel=1
+_sdist=mkdocs_charts_plugin
+pkgrel=2
 pkgdesc="Mkdocs plugin to add vegalite charts to your pages"
 url="https://github.com/timvink/mkdocs-charts-plugin"
 license=("MIT")
 arch=("any")
 depends=("mkdocs" "pymdown-extensions")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('7e3da74645c7ecf4b4a7d4a848622bbeaa672bf2174c18a3e46273d3d02f2ec43a59ca959050790bed16e3ddea29412145d5c54577c205291cad26877d811061')
+source=("https://files.pythonhosted.org/packages/source/${_sdist::1}/${_sdist}/${_sdist}-${pkgver}.tar.gz")
+b2sums=('3237b645b3bb82fbaa36452b2b80c86935408e70f2646cad82f44612325bca33815ff1c41e2cbbbd3a8b79c473e5aead04f1d452a7d00a33fffbbfd64313471e')
 
 build(){
- cd "$_pkgname-$pkgver"
+ cd "${_sdist}-${pkgver}"
  python -m build --wheel --no-isolation
 }
 
 package(){
- cd "$_pkgname-$pkgver"
+ cd "${_sdist}-${pkgver}"
  python -m installer --destdir="$pkgdir" dist/*.whl
  install -D -m 664 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
