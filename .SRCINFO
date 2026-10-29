@@ -1,6 +1,6 @@
 pkgbase = mcp-toolbox-git
 	pkgdesc = MCP server for databases (git version)
-	pkgver = r2355.494092a
+	pkgver = r2356.426fb4e
 	pkgrel = 1
 	url = https://github.com/googleapis/mcp-toolbox
 	arch = x86_64
