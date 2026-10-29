@@ -47,9 +47,6 @@ prepare() {
   git config submodule.3rdparty/flag-icons.url "$srcdir/flag-icons"
 
   git -c protocol.file.allow=always submodule update
-
-  # Fix linker error due to missing symbol from abseil
-  sed -i 's|"Protobuf" REQUIRED|"Protobuf" CONFIG REQUIRED|' src/CMakeLists.txt
 }
 
 build() {
