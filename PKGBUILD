@@ -3,7 +3,7 @@
 pkgname="python-pynisher"
 _name="pynisher"
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to limit the resources used by functions using subprocesses"
 url="https://github.com/automl/pynisher"
 license=("BSD-3")

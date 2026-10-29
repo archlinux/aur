@@ -1,7 +1,7 @@
 pkgbase = python-pynisher
 	pkgdesc = A library to limit the resources used by functions using subprocesses
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/automl/pynisher
 	arch = any
 	license = BSD-3
