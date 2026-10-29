@@ -1,6 +1,6 @@
 # Maintainer: Micraow <micraow@users.noreply.github.com>
 pkgname=wpsdav-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Mount WPS/Kdocs cloud storage as a WebDAV endpoint"
 arch=('x86_64')
@@ -12,11 +12,15 @@ options=('!strip' '!debug')
 source=("wpsdav-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/wpsdav_${pkgver}_linux_amd64.tar.gz")
 # Replace SKIP with the checksum published in the release's
 # checksums-sha256.txt before submitting/updating the AUR package.
-sha256sums=('91943e1ba39ef164f87b37b3d6151d8ca2ae68392432012dc407cb878cbb6722')
+sha256sums=('d4b323ce1b50786157168782a285fe3be9014364f56b4f0af4a70d8829194b0d')
 
 package() {
   install -Dm755 "${srcdir}/wpsdav" "${pkgdir}/usr/bin/wpsdav"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "${srcdir}/config.example.json" "${pkgdir}/usr/share/doc/${pkgname}/config.example.json"
+  # systemd --user unit (present in release archives from 0.1.1 on)
+  if [ -f "${srcdir}/wpsdav.service" ]; then
+    install -Dm644 "${srcdir}/wpsdav.service" "${pkgdir}/usr/lib/systemd/user/wpsdav.service"
+  fi
 }
