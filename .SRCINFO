@@ -1,17 +1,18 @@
 pkgbase = qt6-mpvqml-git
-	pkgdesc = Bridge between MPV (libmpv + MpvQt) and Qt6 QML
-	pkgver = 1.0.r0.g0000000
-	pkgrel = 1
+	pkgdesc = Qt6 QML video player element backed by libmpv
+	pkgver = 0.2.0.r0.gdb659c2
+	pkgrel = 2
+	epoch = 1
 	url = https://github.com/alexindigo/mpvqml
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-or-later AND LGPL-3.0-only
 	makedepends = cmake
 	makedepends = git
 	depends = qt6-base
+	depends = qt6-declarative
 	depends = mpv
-	depends = mpvqt
-	provides = qt6-mpvqml
+	provides = qt6-mpvqml=0.2.0
 	conflicts = qt6-mpvqml
 	source = qt6-mpvqml-git::git+https://github.com/alexindigo/mpvqml.git
 	sha256sums = SKIP
