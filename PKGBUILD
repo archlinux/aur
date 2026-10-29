@@ -4,14 +4,14 @@
 pkgname="python-textual-textarea"
 _pkgname="${pkgname/python-/}"
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A text area (multi-line input) with syntax highlighting for Textual"
 
 url="https://pypi.org/project/textual-textarea/"
 license=("MIT")
 arch=("any")
 
-makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
+makedepends=("python-build" "python-installer" "python-hatchling" "python-wheel")
 depends=("python" "python-rich" "python-textual" "python-pyperclip" "python-tree-sitter")
 
 options=("!strip")
