@@ -1,6 +1,186 @@
-Mullvad Browser 15.0.26 - October 20 2026
+Mullvad Browser 16.0 - October 28 2026
  * All Platforms
-   * Bug 45397: Update CA intermediates and other settings dumps [tor-browser]
+   * Updated Firefox to 153.6.0esr
+   * Updated NoScript to 13.6.37.1984
+   * Bug 446: Implement persistent-mode backend [mullvad-browser]
+   * Bug 483: Add the "No AI" version of DuckDuckGo to available search engines [mullvad-browser]
+   * Bug 489: Drop about:rights [mullvad-browser]
+   * Bug 502: Some bugs in the about popup [mullvad-browser]
+   * Bug 514: Revert New Identity commit [mullvad-browser]
+   * Bug 516: Use CSS size and space tokens in mullvad-browser [mullvad-browser]
+   * Bug 534: Migrate DoH DNS to Quad9 provider [mullvad-browser]
+   * Bug 535: Use config to hide settings in mullvad browser [mullvad-browser]
+   * Bug 537: Automatically migrate Mullvad DoH provider to Quad9 [mullvad-browser]
+   * Bug 538: Notify user of DoH provider migration in message bar [mullvad-browser]
+   * Bug 549: Update DoH UI in about:settings [mullvad-browser]
+   * Bug 565: Update the selector to hide the help button in about:addons [mullvad-browser]
+   * Bug 569: Remove Firefox branding from about:preferences [mullvad-browser]
+   * Bug 576: Update about:preferences after redesign [mullvad-browser]
+   * Bug 580: Migrate hiding feedbackPage menuitem to Mullvad Browser patchset [mullvad-browser]
+   * Bug 581: Change the "Review settings" button destination [mullvad-browser]
+   * Bug 43640: Poor screen reader experience when opening preferences and scrolling to element [tor-browser]
+   * Bug 43824: Switch resource:// modules to use moz-src: [tor-browser]
+   * Bug 44118: Decide how to deal with upstream feature gates in a RR world [tor-browser]
+   * Bug 44257: Disable locale-based font rules as a defense-in-depth [tor-browser]
+   * Bug 44289: RFPHelper console error when `--toolbar-field-color` is set to `inherit` [tor-browser]
+   * Bug 44302: Fix the flags of some about pages [tor-browser]
+   * Bug 44439: Remove translate action from urlbar [tor-browser]
+   * Bug 44459: Letterboxing content alignment setting is missing styling [tor-browser]
+   * Bug 44460: Payment methods and addresses setting headings are visible in settings [tor-browser]
+   * Bug 44511: Make sure new search suggest features are disabled for 16.0 [tor-browser]
+   * Bug 44520: Make sure "Firefox labs" is hidden by default [tor-browser]
+   * Bug 44522: Move common changes to about dialog to base-browser [tor-browser]
+   * Bug 44528: Make sure desktop IP Protection is disabled on desktop [tor-browser]
+   * Bug 44535: Letterboxing background colour is no longer used [tor-browser]
+   * Bug 44560: Customize the flags for alternate 'Application Data' directories [tor-browser]
+   * Bug 44562: Set the new online Suggest prefs to false [tor-browser]
+   * Bug 44571: Disable restrict_to_adults for potential fingerprintability [tor-browser]
+   * Bug 44629: Add a search suggestion warning in the settings [tor-browser]
+   * Bug 44630: Use settings config to hide settings, rather than data-hidden-from-search or commenting out [tor-browser]
+   * Bug 44647: Clean up patch for `SearchEngineSelector.sys.mjs`. [tor-browser]
+   * Bug 44685: Use border radius for letterboxing [tor-browser]
+   * Bug 44706: creating a new profiles causes crash ENOTTY [tor-browser]
+   * Bug 44709: Hide the AI settings panel [tor-browser]
+   * Bug 44710: Hide about:preferences#translations [tor-browser]
+   * Bug 44755: Trusted Types (Firefox 148 and above) + Web Workers broken on Safer Level [tor-browser]
+   * Bug 44763: Disable WebGPU until audited [tor-browser]
+   * Bug 44764: Hide some AI settings using browser.ai.control.default [tor-browser]
+   * Bug 44765: Restore the limited sidebar description [tor-browser]
+   * Bug 44767: Safer Level's worker patching throws on new about:blank frames with Trusted Types [tor-browser]
+   * Bug 44778: Safer Level: xray causes patched TrustedTypePolicy instances to be unusable by content. [tor-browser]
+   * Bug 44793: `privacy.spoof_english` console error in about:preferences [tor-browser]
+   * Bug 44795: Revert BB 27604 patch as not needed anymore [tor-browser]
+   * Bug 44801: Redact onion origins from Location.ancestorOrigins. [tor-browser]
+   * Bug 44802: Hide the "safe browsing" settings [tor-browser]
+   * Bug 44811: Remove the lock on pdfjs.disable. [tor-browser]
+   * Bug 44814: Disable trustpanel until our new designs are ready [tor-browser]
+   * Bug 44815: Disable harmful addon URL blocking [tor-browser]
+   * Bug 44828: Remove browser module references from toolkit/modules/ActorManagerParent.sys.mjs [tor-browser]
+   * Bug 44829: Hide the settings privacy card [tor-browser]
+   * Bug 44830: Migrate our home page adjustments to the settings config [tor-browser]
+   * Bug 44832: Hide the Firefox mascot in about:neterror [tor-browser]
+   * Bug 44847: Drop letterboxing sidebar rounded corner logic [tor-browser]
+   * Bug 44857: Drop `browser.display.use_system_colors` from our preference list [tor-browser]
+   * Bug 44865: Block chrome://*/locale/* to content [tor-browser]
+   * Bug 44870: Remove legacy branch from gitlab templates [tor-browser]
+   * Bug 44896: Drop privacy.partition.network_state [tor-browser]
+   * Bug 44902: Error in privacy preference initialisation due to missing `dataCollectionViewProfilesMultiProfileBackupWarning` [tor-browser]
+   * Bug 44903: Use the `support-page` instead of `tor-manual-page` in `moz-support-link` [tor-browser]
+   * Bug 44955: Use `context-fill` for `about-wordmark.svg` [tor-browser]
+   * Bug 44956: Switch colours in letterboxing setting icons to match the tab-alignment icons [tor-browser]
+   * Bug 44990: CI failing due to dubious ownership of cached repo [tor-browser]
+   * Bug 45037: Potential runtime errors in the search service when changing JS status [tor-browser]
+   * Bug 45039: Make it easier to test ProfileDataUpgrader customization [tor-browser]
+   * Bug 45047: Cross-site oracle via worklet rejection error in Safer Mode [tor-browser]
+   * Bug 45072: Disable XSLT already for 16.0 [tor-browser]
+   * Bug 45073: Review preference changes between Firefox 141 and 153 [tor-browser]
+   * Bug 45079: Move letterboxing to the appearance setting pane [tor-browser]
+   * Bug 45080: Keep the Reporting API disabled. [tor-browser]
+   * Bug 45083: Error in about:preferences due to ipprotection missing [tor-browser]
+   * Bug 45123: Disable profile backup for 16.0 [tor-browser]
+   * Bug 45131: Security level is using an unsafe getBoolPref [tor-browser]
+   * Bug 45132: nsAppFileLocationProvider.cpp: use of undeclared identifier 'XRE_EXECUTABLE_FILE' [tor-browser]
+   * Bug 45133: Disable `browser.toolbars.share-button.enabled` [tor-browser]
+   * Bug 45157: Grant "access local files" permission to NoScript (Firefox 153 and above) [tor-browser]
+   * Bug 45168: Hide the history search option, again [tor-browser]
+   * Bug 45169: Cannot open history sidebar in private browsing window [tor-browser]
+   * Bug 45171: Disable split view for 16.0 [tor-browser]
+   * Bug 45176: Add "Request English" to the website language config [tor-browser]
+   * Bug 45177: Remove websiteSpoofEnglishControl [tor-browser]
+   * Bug 45185: Disable network also in the Rust implementation of the remote settings client [tor-browser]
+   * Bug 45186: Remove duplicate alert roles in moz-message-bar [tor-browser]
+   * Bug 45187: Disable private browsing "delete downloaded files" feature [tor-browser]
+   * Bug 45195: Modify our calls to openPreferences to work with the new settings [tor-browser]
+   * Bug 45201: Convert security level settings to the new config [tor-browser]
+   * Bug 45208: Switch on the setting redesign [tor-browser]
+   * Bug 45209: Remove mention of "sync" from new settings [tor-browser]
+   * Bug 45211: Add settings for protections from third party applications [tor-browser]
+   * Bug 45228: Drop browser.urlbar.update2.engineAliasRefresh [tor-browser]
+   * Bug 45232: Spoof picture-in-picture sizes under RFP [tor-browser]
+   * Bug 45249: Remove the duplicate "Verified by" from the old site identity panel [tor-browser]
+   * Bug 45278: Explicitly disable WebXR [tor-browser]
+   * Bug 45336: Pass --disable-proxy-direct-failover in our mozconfigs [tor-browser]
+   * Bug 45360: Port our language preference customization to the new settings design [tor-browser]
+   * Bug 45403: Ensure RemoteSetting dumps are loaded ASAP [tor-browser]
+   * Bug 45410: Incomplete Safer Level propagation to nested workers [tor-browser]
+   * Bug 41713: Try to find a component for bugs found with commits in triage spreadsheets [tor-browser-build]
+   * Bug 41742: Make the Mullvad Browser publishing script work even if the BB branch being missing [tor-browser-build]
+   * Bug 41846: Sign alpha releases using new gpg subkey [tor-browser-build]
+ * Windows
+   * Bug 552: ABI::Windows::Graphics::Capture::IID_IGraphicsCaptureSession2 is used again in wgc_capture_session.cc [mullvad-browser]
+   * Bug 555: Fix our wchar_t to char conversion in desktop_capture_utils.cc [mullvad-browser]
+   * Bug 563: Hide the fox icon in about:pdf [mullvad-browser]
+   * Bug 44461: Window controls are missing on Windows [tor-browser]
+   * Bug 44513: Backport Bugzilla 2059471: Do not spoof screen orientation when it is locked [tor-browser]
+   * Bug 44633: Move D3D11 function from local webrtc changes to tbb webrtc patches [tor-browser]
+   * Bug 44745: Change how we hide SSO setting for windows [tor-browser]
+   * Bug 44862: Fontvis is missing Segoe MDL2 Assets [tor-browser]
+   * Bug 45144: Do not offer to make the browser a PDF viewer when in portable mode [tor-browser]
+   * Bug 45243: Disable taskbar tabs [tor-browser]
+   * Bug 45293: Set widget.windows.tablet_detection_override to -1 [tor-browser]
+ * macOS
+   * Bug 44728: Bundled fonts are broken on macOS when the GPU process is enabled [tor-browser]
+   * Bug 45108: Artifact generation fails due to missing .DS_Store in the branding directories [tor-browser]
+ * Linux
+   * Bug 44050: Change the domain in DBus interfaces [tor-browser]
+   * Bug 44410: Use system's size for UI font on Linux [tor-browser]
+   * Bug 44521: Disable widget.wayland.fractional-scale.enabled [tor-browser]
+   * Bug 45048: Backport Bugzilla 2041887: Crash in [@ libfontconfig.so.1] after users upgraded to fontconfig 2.18.0 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 501: Support Firefox nightly tags in publishing automation for RR-based alphas [mullvad-browser]
+     * Bug 44452: Improve tb-dev range-diff and diff-diff [tor-browser]
+     * Bug 44498: Update translations CI to account for 1.0 version gap between alpha and stable [tor-browser]
+     * Bug 45224: Enable Rust linter in CI [tor-browser]
+     * Bug 45334: Update marionette harness to accept multiple tags [tor-browser]
+     * Bug 31860: Start using LTO for firefox project [tor-browser-build]
+     * Bug 40903: Make xz multi-threaded [tor-browser-build]
+     * Bug 41427: Drop the openURL property from the update [tor-browser-build]
+     * Bug 41647: Add a XZ_DEFAULTS to set_default_env [tor-browser-build]
+     * Bug 41660: Add a Firefox target to build unpatched Firefox in tor-browser-build [tor-browser-build]
+     * Bug 41662: Add python-zstandard to desktop containers [tor-browser-build]
+     * Bug 41664: Investigate and fix issue with unexpected build_id changes [tor-browser-build]
+     * Bug 41668: Build mozharness.zip when building dev artifacts [tor-browser-build]
+     * Bug 41678: Use set -u and set -o pipefail [tor-browser-build]
+     * Bug 41685: Add henry to list of taggers in relevant projects. [tor-browser-build]
+     * Bug 41687: Add single `make list_toolchain_updates` command to list all toolchain updates [tor-browser-build]
+     * Bug 41690: Merge list_toolchain_updates-firefox-* commands into one [tor-browser-build]
+     * Bug 41693: Drop base-browser targets [tor-browser-build]
+     * Bug 41707: firefox-l10n fails to build with `fetch_locale: 1: set: Illegal option -o pipefail` [tor-browser-build]
+     * Bug 41726: Check in list_toolchain_updates that the sha512sum we have for the macOS SDK is the same as Mozilla [tor-browser-build]
+     * Bug 41727: Split the list_toolchain_updates_checks script in two [tor-browser-build]
+     * Bug 41728: Update projects/application-services/list_toolchain_updates_checks to check nss sha256sum [tor-browser-build]
+     * Bug 41778: Remove base-browser from protected-branches.py [tor-browser-build]
+     * Bug 41780: Create sha256sums-unsigned-build.txt in artifacts/$platform directories [tor-browser-build]
+     * Bug 41786: Add comment to rbm.local.conf.example warning about potential recursive loops in tmp_dir definition [tor-browser-build]
+     * Bug 41806: `make list_toolchain_updates` should check var/firefox_platform_version [tor-browser-build]
+     * Bug 41807: Incorrectly generated Bugzilla query link in generate-bugzilla-triage-csv.py [tor-browser-build]
+     * Bug 41823: Add versions information to the toolchain list update [tor-browser-build]
+     * Bug 41838: Update personal_access_tokens URL in tools/fetch_changelogs.py [tor-browser-build]
+     * Bug 41844: Add scripts to backup/deploy signing keys on signing machines [tor-browser-build]
+     * Bug 41860: Change GCC sources mirror to https://gcc.gnu.org [tor-browser-build]
+     * Bug 41898: Separate MB and TB toolchain archives in https://nightlies.tbb.torproject.org/nightly-builds/toolchains/ [tor-browser-build]
+     * Bug 40093: Make it easy to get the sha256sum of an input_files file [rbm]
+     * Bug 40096: `container extract` is showing confusing error when target directory already exists [rbm]
+     * Bug 40100: The GZIP variable makes set -u fail [rbm]
+     * Bug 40103: Allow having multiple tmp_dir values [rbm]
+     * Bug 40106: Improve error message in case of recursive definition [rbm]
+   * Windows + macOS
+     * Bug 41535: Update macOS and Windows containers to Debian trixie [tor-browser-build]
+   * Windows
+     * Bug 44853: Update target in mozconfig-windows-x86_64 and mozconfig-windows-i686 [tor-browser]
+     * Bug 41810: Define GetAddrInfoExCancel on mingw [tor-browser-build]
+     * Bug 41877: `make list_toolchain_updates` is not checking windows-app-sdk [tor-browser-build]
+     * Bug 41878: Update the Windows app SDK and add some additional DLLs [tor-browser-build]
+   * macOS
+     * Bug 41665: Update macos signing wrapper for new executable gpu-helper.app [tor-browser-build]
+     * Bug 41773: Change the position of -mindepth when creating the dmg [tor-browser-build]
+     * Bug 41793: Stop copying permissions from .mar in dmg2mar [tor-browser-build]
+   * Linux
+     * Bug 41627: Firefox build system needs a more recent version of OpenSSL on Linux [tor-browser-build]
+     * Bug 41632: Ship Linux aarch64 builds in Alpha Release Channel [tor-browser-build]
+     * Bug 41639: Remove linux-arm target [tor-browser-build]
+     * Bug 41640: Clean the GCC config file [tor-browser-build]
 
 Mullvad Browser 15.0.25 - October 13 2026
  * All Platforms
@@ -80,18 +260,6 @@ Mullvad Browser 15.0.16 - June 16 2026
  * All Platforms
    * Updated Firefox to 140.12.0esr
    * Updated NoScript to 13.6.24.1984
-   * Updated uBlock Origin to 1.71.0
-   * Bug 553: Rebase Mullvad Browser stable onto 140.12.0esr [mullvad-browser]
-   * Bug 45044: NS 13.6.19.902 DocStartInjection regressed [tor-browser]
-   * Bug 45054: Backport Security Fixes from Firefox 152 [tor-browser]
- * Build System
-   * All Platforms
-     * Bug 41802: Remove the tor daemon requirement for signing [tor-browser-build]
-
-Mullvad Browser 15.0.16 - June 15 2026
- * All Platforms
-   * Updated Firefox to 140.12.0esr
-   * Updated NoScript to 13.6.23.1984
    * Updated uBlock Origin to 1.71.0
    * Bug 553: Rebase Mullvad Browser stable onto 140.12.0esr [mullvad-browser]
    * Bug 45044: NS 13.6.19.902 DocStartInjection regressed [tor-browser]
@@ -355,341 +523,387 @@ Mullvad Browser 15.0 - October 28 2025
      * Bug 41561: Ship Noto Color Emoji on Linux [tor-browser-build]
      * Bug 41569: Use var/display_name in .desktop files [tor-browser-build]
 
-Mullvad Browser 15.0a4 - October 16 2025
+Mullvad Browser 14.5.8 - October 14 2025
  * All Platforms
-   * Updated Firefox to 140.4.0esr
    * Updated NoScript to 13.2.1
    * Updated Mullvad Browser Extension to 0.9.5
    * Updated uBlock Origin to 1.66.4
-   * Bug 477: Rebase Mullvad Browser Alpha onto 140.4.0esr [mullvad-browser]
-   * Bug 478: Update to the Mullvad Browser extension to 0.9.5 [mullvad-browser]
-   * Bug 19741: Opensearch (contextual search) does not obey FPI [tor-browser]
-   * Bug 43850: Modify the Contrast Control settings for RFP [tor-browser]
-   * Bug 43869: Hide pens with RFP [tor-browser]
-   * Bug 43900: Open newtab rather than firefoxview when unloading the last tab [tor-browser]
-   * Bug 44107: Switch tab search action is missing an icon [tor-browser]
-   * Bug 44108: Fix the new history sidebar [tor-browser]
-   * Bug 44123: Do not trim protocol off of URLs ever [tor-browser]
-   * Bug 44153: Test search engines [tor-browser]
-   * Bug 44159: Change or hide the sidebar settings description [tor-browser]
-   * Bug 44177: Remove more urlbar actions [tor-browser]
-   * Bug 44178: Search preservation does not work with duckduckgo in safest security level [tor-browser]
-   * Bug 44187: TLS session tickets leak Private Browsing mode [tor-browser]
-   * Bug 44213: Reduce linkability concerns of the "Search with" contextual search action [tor-browser]
-   * Bug 44214: Update letterboxing to reflect changes in ESR 140 [tor-browser]
-   * Bug 44215: Hide Firefox home settings in about:preferences [tor-browser]
-   * Bug 44221: Backport MozBug 1984333 Bump Spoofed Processor Count [tor-browser]
-   * Bug 44234: No images in PDF [tor-browser]
+   * Bug 44239: DDG HTML page and search results displayed incorrectly with Safest security setting [tor-browser]
    * Bug 44240: Typo on dom.security.https_first_add_exception_on_failure [tor-browser]
-   * Bug 44242: Hand over Security Level's WebAssembly controls to NoScript [tor-browser]
-   * Bug 44262: Disable adding search engines from HTML forms [tor-browser]
- * Linux
-   * Bug 44227: Some CJK characters cannot be rendered by Tor which uses the Noto font family [tor-browser]
-   * Bug 41586: Replace Noto CJK with Jigmo on Linux [tor-browser-build]
- * Build System
-   * All Platforms
-     * Bug 41373: Remove `_ALL` from mar filenames [tor-browser-build]
-     * Bug 41568: Update instructions for manually building 7zip [tor-browser-build]
-     * Bug 41579: Add zip to the list of Tor Browser Build dependencies [tor-browser-build]
-     * Bug 41588: Restore legacy channel support in projects/release/update_responses_config.yml [tor-browser-build]
-     * Bug 41589: Backport tor-browser-build-browser#41270: Add updater rewriterules to make 13.5.7 a watershed [tor-browser-build]
-   * Windows
-     * Bug 44167: Move the nsis-uninstall.patch to tor-browser repository [tor-browser]
-   * macOS
-     * Bug 41571: Work-around to prevent older 7z versions to break rcodesign. [tor-browser-build]
-   * Linux
-     * Bug 41558: Share descriptions between Linux packages and archives [tor-browser-build]
-     * Bug 41569: Use var/display_name in .desktop files [tor-browser-build]
+   * Bug 44244: Backport Security Fixes from Firefox 144 [tor-browser]
 
-Mullvad Browser 15.0a3 - September 18 2025
+Mullvad Browser 14.5.7 - September 16 2025
  * All Platforms
-   * Updated Firefox to 140.3.0esr
    * Updated uBlock Origin to 1.66.0
-   * Bug 463: Fix typo in MimeType entry in .desktop file included in deb/rpm package (application/xhtml_xml instead of application/xhtml+xml) [mullvad-browser]
-   * Bug 468: Drop the Metager search engine [mullvad-browser]
-   * Bug 43009: Backport Bug 1973265 - Put WebCodecs API behind RFP Target [tor-browser]
-   * Bug 43093: Refactor the patch to disable LaterRun [tor-browser]
-   * Bug 43525: Check if our search engine customization still works after ESR 140 transition [tor-browser]
-   * Bug 43664: Review Mozilla 1842832: Move the private browsing toggle to initial install dialog [tor-browser]
-   * Bug 43745: Review Mozilla 1842838:  [meta] HEVC (H265) playback related bugs. See the support status on the User Story. [tor-browser]
-   * Bug 43770: Bugzilla 1958070: More BrowserGlue simplification/splitting [tor-browser]
-   * Bug 43966: Notify the user when they are in a custom security level (desktop) [tor-browser]
-   * Bug 44142: Missing document_pdf.svg from our branding directories [tor-browser]
    * Bug 44199: Backport Security Fixes from Firefox 143 [tor-browser]
-   * Bug 41563: Do not copy Noto Color Emoji on Windows [tor-browser-build]
- * Linux
-   * Bug 43950: Review Mozilla 1894818: Support HEVC playback on Linux [tor-browser]
-   * Bug 43959: Make Noto Color Emoji the default emoji font on Linux [tor-browser]
+   * Bug 41462: Backport #40994 and #41280: Add support in signing scripts to sign release for some archs only & Update download-android-*.json files for android-only releases [tor-browser-build]
+   * Bug 41543: mmdebstrap-image fails to build bookworm images on maint-14.5 [tor-browser-build]
  * Build System
-   * All Platforms
-     * Bug 41064: Update tools/signing/README and add a tools/signing/machines-setup/README [tor-browser-build]
    * Linux
-     * Bug 41561: Ship Noto Color Emoji on Linux [tor-browser-build]
+     * Bug 41560: Backport mullvad-browser#463: Fix typo in MimeType entry in .desktop file  included in deb/rpm package [tor-browser-build]
 
-Mullvad Browser 15.0a2 - August 29 2025
+Mullvad Browser 14.5.6 - August 19 2025
  * All Platforms
-   * Updated Firefox to 140.2.0esr
+   * Updated Firefox to 128.14.0esr
    * Updated NoScript to 13.0.9
-   * Bug 451: The restart to apply button doesn't work [mullvad-browser]
-   * Bug 460: Rebase Mullvad Browser alpha onto 140.2.0esr [mullvad-browser]
-   * Bug 43111: Delete our webextensions for search engines when Bug 1885953 is fixed upstream [tor-browser]
-   * Bug 43728: Update search engine icon sizes [tor-browser]
-   * Bug 43795: Restore the URL classifier XPCOM components. [tor-browser]
-   * Bug 43844: Security level shield icon should be flipped for RTL locales [tor-browser]
-   * Bug 43864: Remove features from the unified search button [tor-browser]
-   * Bug 43874: Incorporate our unified extension button hiding logic into mozilla's changes for ESR 140 [tor-browser]
-   * Bug 43902: Hide Sidebar buttons [tor-browser]
-   * Bug 43903: Report broken site is disabled rather than hidden [tor-browser]
-   * Bug 44030: Security Level selector does not get confirmation before restarting [tor-browser]
-   * Bug 44034: Update string used for checkbox on New Identity confirmation dialog [tor-browser]
-   * Bug 44040: Modify nsIPrompt and the commonDialog code to allow destructive buttons [tor-browser]
+   * Bug 459: Rebase Mullvad Browser onto 128.14.0esr [mullvad-browser]
    * Bug 44041: Letterboxing causes greyed out alert background to be mis-aligned [tor-browser]
-   * Bug 44045: Drop AI and machine learning components [tor-browser]
    * Bug 44048: Backport Bug 1979608 [tor-browser]
-   * Bug 44090: Several of our XUL pages cause a crash because of missing CSP [tor-browser]
    * Bug 44100: Backport Security Fixes from Firefox 142 [tor-browser]
-   * Bug 44106: Make sure background tasks are not used for shutdown cleanup [tor-browser]
-   * Bug 44125: Do not offer to save signatures by default in Private Browsing Mode [tor-browser]
-   * Bug 44140: Align PDF changes to 140esr [tor-browser]
- * Windows
-   * Bug 44046: Replace BASE_BROWSER_UPDATE with BASE_BROWSER_VERSION in the font visibility list [tor-browser]
-   * Bug 44062: Force touch enabled on Windows and Android [tor-browser]
  * Build System
    * All Platforms
-     * Bug 44067: Move --enable-geckodriver only to Linux-only mozconfigs [tor-browser]
-     * Bug 44103: git's export-subst is a reproducibility problem [tor-browser]
-     * Bug 44104: Don't run linter when there are no overall changes [tor-browser]
-     * Bug 26408: Make MAR signature checks clearer when creating incremental MAR files [tor-browser-build]
-     * Bug 40697: Delete repackage_browser.sh [tor-browser-build]
-     * Bug 40698: Update locale in tbb_version.json [tor-browser-build]
-     * Bug 41517: Add morgan's key to the setup account on the signing machine [tor-browser-build]
      * Bug 41529: Automate publishing browser release branch and tags to Mullvad repository [tor-browser-build]
-     * Bug 41534: Copy geckodriver only for Linux x86-64 [tor-browser-build]
-     * Bug 41539: Update Ubuntu version used to run mmdebstrap to 24.04.3 [tor-browser-build]
-     * Bug 40087: Downloaded files getting stricter permissions than expected [rbm]
-   * macOS
-     * Bug 41527: Update libdmg-hfsplus and enable LZMA compression on dmgs [tor-browser-build]
-     * Bug 41538: Bump macOS SDK to 15.5 [tor-browser-build]
 
-Mullvad Browser 15.0a1 - July 29 2025
+Mullvad Browser 14.5.5 - July 22 2025
  * All Platforms
-   * Updated Firefox to 140.1.0esr
-   * Updated NoScript to 13.0.8
+   * Updated Firefox to 128.13.0esr
    * Updated uBlock Origin to 1.65.0
-   * Bug 457: Rebase Mullvad Browser Alpha onto 140.1esr [mullvad-browser]
-   * Bug 42738: Tidy up the commit structure for browser updates UI [tor-browser]
-   * Bug 43397: Click to play should override "Any capability blocked in the top document must be blocked in its subdocuments too" [tor-browser]
-   * Bug 43590: Move letterboxing rules out of browser/base/content/browser.css [tor-browser]
-   * Bug 43610: Use newer CSS variable names for ESR 140 [tor-browser]
-   * Bug 43629: All migrations in _migrateUIBB are run for new profiles [tor-browser]
-   * Bug 43635: Console noise due to the x-load capability not being localized [tor-browser]
-   * Bug 43638: Fix up our `<command>` elements [tor-browser]
-   * Bug 43772: Do not use official branding for BB/TB/MB [tor-browser]
-   * Bug 43776: Set branding files for l10n merging [tor-browser]
-   * Bug 43886: Fix new tab for ESR 140 [tor-browser]
-   * Bug 43905: base-browser.ftl missing from about:addons [tor-browser]
-   * Bug 43906: Extension.sys.mjs change in the wrong commit [tor-browser]
-   * Bug 43929: two about:tor pages opened after update [tor-browser]
-   * Bug 43947: Console error from ContentBlockingPrefs.init [tor-browser]
-   * Bug 43989: Switch off AI chatbot preference [tor-browser]
+   * Bug 453: Rebase Mulvad Browser Stable onto 128.13.0esr [mullvad-browser]
    * Bug 43993: Backport Security Fixes from Firefox 141 [tor-browser]
- * Windows
-   * Bug 440: Make abseil use win32 thread model on mingw [mullvad-browser]
+
+Mullvad Browser 14.5.4 - June 23 2025
+ * All Platforms
+   * Updated Firefox to 128.12.0esr
+   * Updated NoScript to 13.0.8
+   * Bug 450: Rebase Mullvad Browser stable onto 128.12.0esr [mullvad-browser]
+   * Bug 43782: Add new UX flow for changing security level (Desktop) [tor-browser]
+   * Bug 43783: Tighten up the SecurityLevel module to enforce new UX flow [tor-browser]
+   * Bug 43784: Get confirmation from NoScript that settings are applied [tor-browser]
+   * Bug 43911: Backport security fixes from Firefox 140 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41477: Update keyring/boklm.gpg for new subkeys (2025) [tor-browser-build]
+     * Bug 41498: Update keyring/morgan.gpg with updated public key [tor-browser-build]
+
+Mullvad Browser 14.5.3 - May 26 2025
+ * All Platforms
+   * Updated Firefox to 128.11.0esr
+   * Updated NoScript to 13.0.6
+   * Bug 439: Rebase Mullvad Browser stable onto 128.11.0esr [mullvad-browser]
+   * Bug 43811: Backport security fixes from Firefox 139 [tor-browser]
+
+Mullvad Browser 14.5.2 - May 18 2025
+ * All Platforms
+   * Updated Firefox to 128.10.1esr
+   * Updated NoScript to 12.6
+   * Updated uBlock Origin to 1.64.0
+   * Bug 438: Rebase Mullvad Browser stable onto 128.10.1 [mullvad-browser]
+   * Bug 43397: Click to play should override "Any capability blocked in the top document must be blocked in its subdocuments too" [tor-browser]
+   * Bug 43635: Console noise due to the x-load capability not being localized [tor-browser]
+   * Bug 43738: Backport Bugzilla 1947157: Move linux security warning content into own page [tor-browser]
+   * Bug 41460: Add brizental to the list of people who can sign Tor Browser and Mullvad Browser tags [tor-browser-build]
  * Build System
    * All Platforms
      * Bug 43777: Disable ./mach telemetry [tor-browser]
-     * Bug 43891: Update the translation CI to use the new mozilla versions [tor-browser]
-     * Bug 34434: Remove unused variables from rbm.conf [tor-browser-build]
-     * Bug 40994: Add support in do-all-signing to sign release for some archs only [tor-browser-build]
-     * Bug 41227: Update projects/common/list_toolchain_updates-common-firefox-geckoview to include check for binutils [tor-browser-build]
-     * Bug 41435: Skip update-responses update entries for versions without incremental or full update mar [tor-browser-build]
-     * Bug 41444: Build artifacts to support artifact builds of Tor/Muillvad/Base Browser [tor-browser-build]
-     * Bug 41448: Update toolchains for Firefox ESR 140 [tor-browser-build]
      * Bug 41449: Add prefix to update-responses xml files [tor-browser-build]
      * Bug 41451: When update-responses contains multiple versions, .htaccess only has one no-update.xml redirect [tor-browser-build]
      * Bug 41452: Skip update-responses xml files for versions which don't have incrementals [tor-browser-build]
-     * Bug 41457: Set mar IDs as env variables in tor-browser-build [tor-browser-build]
-     * Bug 41459: Update taskcluster/ci paths in README and comments [tor-browser-build]
-     * Bug 41460: Add brizental to the list of people who can sign Tor Browser and Mullvad Browser tags [tor-browser-build]
-     * Bug 41465: Disable development artifacts generation by default, keep it enabled for nightly builds [tor-browser-build]
-     * Bug 41467: Remove list_toolchain_updates-firefox-android from Makefile [tor-browser-build]
-     * Bug 41477: Update keyring/boklm.gpg for new subkeys (2025) [tor-browser-build]
-     * Bug 41478: Add vim and others missing basic tools to base container image [tor-browser-build]
-     * Bug 41496: Clean up unused projects [tor-browser-build]
-     * Bug 41498: Update keyring/morgan.gpg with updated public key [tor-browser-build]
-     * Bug 41501: cargo_vendor generated archive maintains timestamps [tor-browser-build]
-     * Bug 40084: Always use bash for the debug terminal [rbm]
-   * macOS
-     * Bug 41503: Error 403 when downloading macOS SDK [tor-browser-build]
-   * Linux
-     * Bug 41458: Ship geckodriver only on Linux [tor-browser-build]
-     * Bug 41488: Disable sys/random.h for Node.js [tor-browser-build]
 
-Mullvad Browser 14.5a6 - April 08 2025
+Mullvad Browser 14.5.1 - April 29 2025
  * All Platforms
-   * Updated Firefox to 128.9.0esr
-   * Updated uBlock Origin to 1.63.2
-   * Bug 410: Update learn more link text in about:mullvad-browser [mullvad-browser]
-   * Bug 411: Use the same logic in about:mullvad-browser as the about dialog for the release notes [mullvad-browser]
-   * Bug 417: Rebase Mullvad Browser Alpha onto 128.9.0esr [mullvad-browser]
-   * Bug 419: Create a Mullvad Browser version of migrateUI [mullvad-browser]
-   * Bug 41919: Add temporarily visible web content-size overlay after resizing window when letterboxing is enabled [tor-browser]
-   * Bug 43322: Stop blocking all fonts in FontFace [tor-browser]
-   * Bug 43601: Backport security fixes from Firefox 137 [tor-browser]
- * Linux
-   * Bug 415: Load apparmor profile when configuring deb package [mullvad-browser]
+   * Updated Firefox to 128.10.0esr
+   * Bug 421: Rebase Mullvad Browser release onto 128.10.0esr [mullvad-browser]
+   * Bug 43659: Set new tabs to default to Tor Browser Home (about:tor) on desktop [tor-browser]
+   * Bug 43672: Incorrect initial letterbox size when the interface font size is 13px. [tor-browser]
+   * Bug 43691: Backport security fixes from Firefox 138 [tor-browser]
  * Build System
    * All Platforms
-     * Bug 41365: Indent download*.json files [tor-browser-build]
-     * Bug 41409: Create a script for quickly setting up protected branches [tor-browser-build]
-     * Bug 41419: Add comment in downloads.json to mention that the file is deprecated, and that download-$platform.json should be used instead [tor-browser-build]
-     * Bug 41420: Update the changelog script for label updates [tor-browser-build]
-     * Bug 40083: rbm creates out/$project directories with mode 0700 [rbm]
-   * macOS
-     * Bug 41403: The rcodesign step has a wrong dmg name in alpha [tor-browser-build]
+     * Bug 41435: Skip update-responses update entries for versions without incremental or full update mar [tor-browser-build]
 
-Mullvad Browser 14.5a5 - March 21 2025
+Mullvad Browser 14.5 - April 15 2025
  * All Platforms
-   * Updated uBlock Origin to 1.63.0
-   * Bug 412: Link the release page in the about dialog and clean brand-related preferences [mullvad-browser]
-   * Bug 41051: Replace Noto Sans Myanmar with Pyidaungsu [tor-browser]
-   * Bug 41755: Show the link to about:support in the help menu [tor-browser]
-   * Bug 42670: Letterboxing visible even if disable with tiled window managers [tor-browser]
- * Build System
-   * All Platforms
-     * Bug 41394: Fix upload-update_responses-to-staticiforme for mullvadbrowser [tor-browser-build]
-     * Bug 41401: Replace Noto Sans Myanmar with Pyidaungsu [tor-browser-build]
-   * Linux
-     * Bug 41397: Building mullvad-browser no longer generates .deb or .rpm packages [tor-browser-build]
-
-Mullvad Browser 14.5a4 - March 12 2025
- * All Platforms
-   * Updated Firefox to 128.8.0esr
-   * Bug 393: Rebase Mullvad Browser Alpha onto 128.8.0esr [mullvad-browser]
-   * Bug 395: Set Mullvad Leta as default search engine [mullvad-browser]
-   * Bug 404: Incorrect information in `about:rights` [mullvad-browser]
-   * Bug 43205: newwin / letterboxing rounding with subpixels is off [tor-browser]
-   * Bug 43551: Backport Mozilla Bug 1924070 - modify H.264 extradata to match sample conversion code.... [tor-browser]
- * Linux
-   * Bug 394: Missing package when try to install Mullvad Browser in Debian Trixie [mullvad-browser]
-   * Bug 30970: Different window borders in XFCE can lead to different, not rounded window sizes [tor-browser]
- * Build System
-   * All Platforms
-     * Bug 40799: Remove legacy locale iteration in build and signing scripts [tor-browser-build]
-     * Bug 41040: Add configuration to rbm.conf to select channel and platforms [tor-browser-build]
-     * Bug 41363: Change update-response generation script to create one commit per OS+arch tuple [tor-browser-build]
-     * Bug 41374: Remove support for migrate_archs and migrate_langs in update_responses [tor-browser-build]
-     * Bug 41380: Update kick-devmole script to use Mullvad's new GitHub action [tor-browser-build]
-     * Bug 41381: Usability improvements for the browser commit tagging script [tor-browser-build]
-     * Bug 41382: Replace gitlab templates ReleasePrep label references with Apps::Type::ReleasePreparation [tor-browser-build]
-     * Bug 41383: Add clairehurst to list of accepted firefox/geckoview signers [tor-browser-build]
-     * Bug 41389: Remove need to update set-config.tbb-version [tor-browser-build]
-     * Bug 40082: With `fetch: if_needed`, rbm is doing a git fetch when it shouldn't, when using a fixed commit [rbm]
-
-Mullvad Browser 14.5a3 - February 10 2025
- * All Platforms
-   * Updated Firefox to 128.7.0esr
-   * Updated uBlock Origin to 1.62.0
    * Bug 312: Apply Alpha and Nightly branding to unstable release channels [mullvad-browser]
    * Bug 324: Figure out how to handle string differences between mullvad release and mullvad tip [mullvad-browser]
-   * Bug 41065: navigator.storage "best effort" + "persistent" leak partitionSize/totalSpace entropy [tor-browser]
-   * Bug 43308: Only allow "about:" pages to have access to contentaccessible branding assets [tor-browser]
+   * Bug 410: Update learn more link text in about:mullvad-browser [mullvad-browser]
+   * Bug 411: Use the same logic in about:mullvad-browser as the about dialog for the release notes [mullvad-browser]
+   * Bug 412: Link the release page in the about dialog and clean brand-related preferences [mullvad-browser]
+   * Bug 419: Create a Mullvad Browser version of migrateUI [mullvad-browser]
+   * Bug 41051: Replace Noto Sans Myanmar with Pyidaungsu [tor-browser]
+   * Bug 41755: Show the link to about:support in the help menu [tor-browser]
+   * Bug 41919: Add temporarily visible web content-size overlay after resizing window when letterboxing is enabled [tor-browser]
+   * Bug 42670: Letterboxing visible even if disable with tiled window managers [tor-browser]
+   * Bug 42739: Fix localization in the profile error dialog [tor-browser]
+   * Bug 43189: Remove privacy.resistFingerprinting.spoofOsInUserAgentHeader machinery entirely [tor-browser]
+   * Bug 43205: newwin / letterboxing rounding with subpixels is off [tor-browser]
+   * Bug 43257: NoScript-blocked content placeholders causing slow downs [tor-browser]
    * Bug 43323: Expose a stable asset from chrome:// to identify Tor, Base, and Mullvad Browser [tor-browser]
-   * Bug 43386: Extension requests expose Firefox's minor version and custom app name [tor-browser]
-   * Bug 43451: Backport security fixes from Firefox 135 [tor-browser]
+   * Bug 43334: Developer Tools lacks data for Responsive Design Mode and Compatibility [tor-browser]
+   * Bug 43340: Support linux-aarch64 dev builds [tor-browser]
+   * Bug 43551: Backport Mozilla Bug 1924070 - modify H.264 extradata to match sample conversion code. [tor-browser]
+   * Bug 43632: Letterboxing size indicator may display data from a background tab [tor-browser]
+   * Bug 43642: New tab shows letterboxing size indicator [tor-browser]
+   * Bug 43653: privacy.resistFingerprinting.spoofOsInUserAgentHeader is still in our pref file even though we ripped out the code [tor-browser]
  * Windows
    * Bug 43402: set browser.startup.blankWindow false [tor-browser]
- * macOS
-   * Bug 43468: ScreenCaptureKit framework should be a weak link [tor-browser]
  * Linux
-   * Bug 41297: Add video codecs dependencies (recommends) on the Debian package [tor-browser-build]
- * Build System
-   * All Platforms
-     * Bug 41281: Better dev defaults for fetch variable [tor-browser-build]
-     * Bug 41324: Improve build signing ergonomics [tor-browser-build]
-     * Bug 41358: Update sign-tag script to handle rapid-release nightly branches [tor-browser-build]
-     * Bug 40079: Make `fetch: if_needed` fetch existing branches [rbm]
-   * macOS
-     * Bug 41350: Increase timeout in rcodesign-notary-submit [tor-browser-build]
-
-Mullvad Browser 14.5a2 - January 14 2025
- * All Platforms
-   * Updated Firefox to 128.6.0esr
-   * Updated NoScript to 12.1.1
-   * Bug 389: Rebase Mullvad Browser alpha onto 128.6.0esr [mullvad-browser]
-   * Bug 43176: noscript-marker CSP warnings in the console [tor-browser]
-   * Bug 43269: NoScript localization issue [tor-browser]
-   * Bug 43282: Unable to click/tap/select anything adjacent the WebGL placeholders [tor-browser]
-   * Bug 43296: NoScript-blocked video content placeholder is not centered [tor-browser]
-   * Bug 43334: Developer Tools lacks data for Responsive Design Mode and Compatibility [tor-browser]
-   * Bug 43338: Custom zoom + "Zoom text only" breaks pdfjs [tor-browser]
-   * Bug 43340: Support linux-aarch64 dev builds [tor-browser]
-   * Bug 43352: Failing connection attempts to multicast IPv6 ff00:::443 logged during NoScript updates [tor-browser]
-   * Bug 43366: Do not use system accent color in inputs [tor-browser]
-   * Bug 43384: Backport security fixes from Firefox 134 [tor-browser]
- * Linux
-   * Bug 43236: High refresh rate detectable by websites when Wayland (MOZ_ENABLE_WAYLAND=1) is used [tor-browser]
-   * Bug 43330: System fonts leak when emptying the allow list on Linux [tor-browser]
-   * Bug 41311: AppArmor profile fails on Debian stable [tor-browser-build]
- * Build System
-   * All Platforms
-     * Bug 43373: Do not run all CI jobs for scheduled jobs. [tor-browser]
-     * Bug 41340: Update kick_devmole_build script with Mullvad's new GitHub workflow endpoint [tor-browser-build]
-     * Bug 41343: Add signing step to clean some files such as test artifacts [tor-browser-build]
-     * Bug 40081: Support apt option for not installing recommended dependencies [rbm]
-   * Windows + macOS
-     * Bug 41349: Wrong copyright year makes build non-reproducible [tor-browser-build]
-   * macOS
-     * Bug 41325: Newer versions of 7z fail to extract our dmg files because of the /Applications symlink [tor-browser-build]
-     * Bug 41327: Print more logs when make_full_update.sh failed to generate mar file in dmg2mar [tor-browser-build]
-   * Linux
-     * Bug 41329: Do not install python2.7-minimal in the linux-aarch64 firefox container [tor-browser-build]
-     * Bug 41331: Make update_responses find linux-aarch64 mar files [tor-browser-build]
-     * Bug 41335: linux-package project is not getting the channel target in testbuilds [tor-browser-build]
-
-Mullvad Browser 14.5a1 - November 25 2024
- * All Platforms
-   * Updated Firefox to 128.5.0esr
-   * Updated NoScript to 11.5.2
-   * Updated Mullvad Browser Extension to 0.9.3
-   * Updated uBlock Origin to 1.61.2
-   * Bug 383: Rebase MB alpha onto 128.5.0esr [mullvad-browser]
-   * Bug 32668: NoScript default whitelist re-appears on clicking NoScript Options / Reset [tor-browser]
-   * Bug 42125: lock RFP part 2 [tor-browser]
-   * Bug 42739: Fix localization in the profile error dialog [tor-browser]
-   * Bug 43257: NoScript-blocked content placeholders causing slow downs [tor-browser]
-   * Bug 43258: NoScript Lifecycle error on extension updates [tor-browser]
-   * Bug 43313: Backport security fixes from Firefox 133 [tor-browser]
- * macOS
-   * Bug 43165: Disable Microsoft SSO on macOS [MozBug 1768724] [tor-browser]
- * Linux
+   * Bug 415: Load apparmor profile when configuring deb package [mullvad-browser]
+   * Bug 30970: Different window borders in XFCE can lead to different, not rounded window sizes [tor-browser]
    * Bug 41799: Make lack of fonts.conf less of a footgun [tor-browser]
    * Bug 43140: Ship our FontConfig configuration with the browser [tor-browser]
+   * Bug 43330: System fonts leak when emptying the allow list on Linux [tor-browser]
+   * Bug 41297: Add video codecs dependencies (recommends) on the Debian package [tor-browser-build]
    * Bug 41298: Remove `--detach` parameter from .desktop files [tor-browser-build]
    * Bug 41312: Remove comment in start-browser about --class and --name parameters [tor-browser-build]
-   * Bug 41313: Show waiting cursor while app opens [tor-browser-build]
  * Build System
    * All Platforms
      * Bug 43295: Update MR templates [tor-browser]
-     * Bug 40996: Do not version the .nobackup files [tor-browser-build]
-     * Bug 41284: Update relprep.py script to not synchronise changelogs between channels [tor-browser-build]
-     * Bug 41288: Use exec_noco option when using exec [tor-browser-build]
-     * Bug 41300: Add bea, clairehurst, and jwilde to tb_builders [tor-browser-build]
+     * Bug 43373: Do not run all CI jobs for scheduled jobs. [tor-browser]
+     * Bug 40799: Remove legacy locale iteration in build and signing scripts [tor-browser-build]
+     * Bug 41040: Add configuration to rbm.conf to select channel and platforms [tor-browser-build]
+     * Bug 41281: Better dev defaults for fetch variable [tor-browser-build]
+     * Bug 41288: Avoid unneeded git checkouts when possible [tor-browser-build]
      * Bug 41304: Add a browser commit tag+signing script [tor-browser-build]
      * Bug 41306: Container dependencies are sorted before resolving templates [tor-browser-build]
      * Bug 41307: Container dependencies are not filtered for duplicates [tor-browser-build]
      * Bug 41315: Fix the Mullvad Extension update in relprep.py [tor-browser-build]
-     * Bug 41321: Update PieroV's expired keys [tor-browser-build]
+     * Bug 41358: Update sign-tag script to handle rapid-release nightly branches [tor-browser-build]
+     * Bug 41363: Change update-response generation script to create one commit per OS+arch tuple [tor-browser-build]
+     * Bug 41365: Indent download*.json files [tor-browser-build]
+     * Bug 41374: Remove support for migrate_archs and migrate_langs in update_responses [tor-browser-build]
+     * Bug 41381: Usability improvements for the browser commit tagging script [tor-browser-build]
+     * Bug 41382: Replace gitlab templates ReleasePrep label references with Apps::Type::ReleasePreparation [tor-browser-build]
+     * Bug 41389: Remove need to update set-config.tbb-version [tor-browser-build]
+     * Bug 41394: Fix upload-update_responses-to-staticiforme for mullvadbrowser [tor-browser-build]
+     * Bug 41401: Replace Noto Sans Myanmar with Pyidaungsu [tor-browser-build]
+     * Bug 41409: Create a script for quickly setting up protected branches [tor-browser-build]
+     * Bug 41419: Add comment in downloads.json to mention that the file is deprecated, and that download-$platform.json should be used instead [tor-browser-build]
      * Bug 40006: Add option to avoid doing a git checkout when using the exec template function [rbm]
+     * Bug 40079: Make `fetch: if_needed` fetch existing branches [rbm]
+     * Bug 40081: Support apt option for not installing recommended dependencies [rbm]
+     * Bug 40082: With `fetch: if_needed`, rbm is doing a git fetch when it shouldn't, when using a fixed commit [rbm]
+     * Bug 40083: rbm creates out/$project directories with mode 0700 [rbm]
+   * Windows + macOS
+     * Bug 41349: Wrong copyright year makes build non-reproducible [tor-browser-build]
+    * macOS
+     * Bug 41403: The rcodesign step has a wrong dmg name in alpha [tor-browser-build]
    * Linux
      * Bug 41266: Build the Tor and Mullvad Browsers for aarch64 Linux [tor-browser-build]
+     * Bug 41329: Do not install python2.7-minimal in the linux-aarch64 firefox container [tor-browser-build]
+     * Bug 41331: Make update_responses find linux-aarch64 mar files [tor-browser-build]
+     * Bug 41335: linux-package project is not getting the channel target in testbuilds [tor-browser-build]
+     * Bug 41397: Building mullvad-browser no longer generates .deb or .rpm packages [tor-browser-build]
 
-Mullvad Browser 14.0a9 - October 08 2024
+Mullvad Browser 14.0.9 - April 01 2025
  * All Platforms
+   * Updated Firefox to 128.9.0esr
+   * Updated uBlock Origin to 1.63.2
+   * Bug 416: Rebase Mullvad Browser stable onto 128.9.0esr [mullvad-browser]
+   * Bug 43601: Backport security fixes from Firefox 137 [tor-browser]
+ * macOS + Linux
+   * Bug 404: Incorrect information in `about:rights` [mullvad-browser]
+ * Build System
+   * All Platforms
+     * Bug 41420: Update the changelog script for label updates [tor-browser-build]
+   * macOS + Linux
+     * Bug 41375: Backport Bug 41374+40799: Remove support for migrate_archs and migrate_langs in update_responses + Remove legacy locale iteration in update-responses and dmg2mar [tor-browser-build]
+     * Bug 41378: Backport Bug 41363: Make separate update_responses commit for each platform [tor-browser-build]
+     * Bug 41383: Add clairehurst to list of accepted firefox/geckoview signers [tor-browser-build]
+
+Mullvad Browser 14.0.8 - March 27 2025
+ * Windows
+   * Bug 404: Incorrect information in `about:rights` [mullvad-browser]
+   * Bug 43592: Backport security fixes from Firefox 128.8.1esr [tor-browser]
+ * Build System
+   * Windows
+     * Bug 41375: Backport Bug 41374+40799: Remove support for migrate_archs and migrate_langs in update_responses + Remove legacy locale iteration in update-responses and dmg2mar [tor-browser-build]
+     * Bug 41378: Backport Bug 41363: Make separate update_responses commit for each platform [tor-browser-build]
+     * Bug 41383: Add clairehurst to list of accepted firefox/geckoview signers [tor-browser-build]
+
+Mullvad Browser 14.0.7 - March 04 2025
+ * All Platforms
+   * Updated Firefox to 128.8.0esr
+   * Bug 395: Set Mullvad Leta as default search engine [mullvad-browser]
+   * Bug 398: Rebase Mullvad Browser release onto Firefox 128.8.0esr [mullvad-browser]
+   * Bug 403: Backport Bugzilla 1915093: Don't prefetch HTTPS RR if proxyDNS is enabled [mullvad-browser]
+   * Bug 43536: Backport security fixes from Firefox 136 [tor-browser]
+ * macOS
+   * Bug 43468: ScreenCaptureKit framework should be a weak link [tor-browser]
+ * Linux
+   * Bug 394: Missing package when try to install Mullvad Browser in Debian Trixie [mullvad-browser]
+ * Build System
+   * All Platforms
+     * Bug 41380: Update kick-devmole script to use Mullvad's new GitHub action [tor-browser-build]
+   * Linux
+     * Bug 41385: Copy only libstdc++.so.6 on Linux [tor-browser-build]
+
+Mullvad Browser 14.0.5 - February 04 2025
+ * All Platforms
+   * Updated Firefox to 128.7.0esr
+   * Updated Mullvad Browser Extension to 0.9.4
+   * Updated uBlock Origin to 1.62.0
+   * Bug 390: Rebase Mullvad Browser release onto Firefox 128.7.0esr [mullvad-browser]
+   * Bug 41065: navigator.storage "best effort" + "persistent" leak partitionSize/totalSpace entropy [tor-browser]
+   * Bug 43386: Extension requests expose Firefox's minor version and custom app name [tor-browser]
+   * Bug 43451: Backport security fixes from Firefox 135 [tor-browser]
+ * Linux
+   * Bug 43236: High refresh rate detectable by websites when Wayland (MOZ_ENABLE_WAYLAND=1) is used [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41324: Improve build signing ergonomics [tor-browser-build]
+     * Bug 41343: Add signing step to clean some files such as test artifacts [tor-browser-build]
+     * Bug 41350: Increase timeout in rcodesign-notary-submit [tor-browser-build]
+
+Mullvad Browser 14.0.4 - January 07 2025
+ * All Platforms
+   * Updated Firefox to 128.6.0esr
+   * Updated NoScript to 12.1.1
+   * Updated uBlock Origin to 1.61.2
+   * Bug 359: Remove 13.5 mullvad-browser fluent files from translation [mullvad-browser]
+   * Bug 388: Rebase Mullvad Browser stable onto Firefox 128.6.0esr [mullvad-browser]
+   * Bug 42125: lock RFP part 2 [tor-browser]
+   * Bug 43176: noscript-marker CSP warnings in the console [tor-browser]
+   * Bug 43269: NoScript localization issue [tor-browser]
+   * Bug 43282: Unable to click/tap/select anything adjacent the WebGL placeholders [tor-browser]
+   * Bug 43296: NoScript-blocked video content placeholder is not centered [tor-browser]
+   * Bug 43338: Custom zoom + "Zoom text only" breaks pdfjs [tor-browser]
+   * Bug 43352: Failing connection attempts to multicast IPv6 ff00:::443 logged during NoScript updates [tor-browser]
+   * Bug 43366: Do not use system accent color in inputs [tor-browser]
+   * Bug 43384: Backport security fixes from Firefox 134 [tor-browser]
+ * Linux
+   * Bug 41311: AppArmor profile fails on Debian stable [tor-browser-build]
+   * Bug 41313: Show waiting cursor while app opens [tor-browser-build]
+ * Build System
+   * All Platforms
+     * Bug 41321: Update PieroV's expired keys [tor-browser-build]
+     * Bug 41340: Update kick_devmole_build script with Mullvad's new GitHub workflow endpoint [tor-browser-build]
+   * macOS
+     * Bug 41325: Newer versions of 7z fail to extract our dmg files because of the /Applications symlink [tor-browser-build]
+     * Bug 41327: Print more logs when make_full_update.sh failed to generate mar file in dmg2mar [tor-browser-build]
+
+Mullvad Browser 14.0.3 - November 25 2024
+ * All Platforms
+   * Updated Firefox to 128.5.0esr
+   * Updated uBlock Origin to 1.61.0
+   * Bug 382: Rebase Mullvad Browser stable onto Firefox 128.5.0esr [mullvad-browser]
+   * Bug 43313: Backport security fixes from Firefox 133 [tor-browser]
+ * macOS
+   * Bug 43165: Disable Microsoft SSO on macOS [MozBug 1768724] [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 40996: Do not version the .nobackup files [tor-browser-build]
+     * Bug 41284: Update relprep.py script to not synchronise changelogs between channels [tor-browser-build]
+     * Bug 41300: Add bea, clairehurst, and jwilde to tb_builders [tor-browser-build]
+     * Bug 41315: Fix the Mullvad Extension update in relprep.py [tor-browser-build]
+
+Mullvad Browser 14.0 - November 13 2024
+ * All Platforms
+   * Updated Firefox to 128.4.0esr
+   * Updated NoScript to 11.5.2
+   * Updated Mullvad Browser Extension to 0.9.3
+   * Bug 328: Provide search engine icons [mullvad-browser]
+   * Bug 329: Remove the Security Levels icon from the toolbar [mullvad-browser]
+   * Bug 344: set media.navigator.enabled = true [mullvad-browser]
+   * Bug 349: Tidy up mullvad Fluent files [mullvad-browser]
+   * Bug 30543: compat: make spoofed orientation reflect spoofed screen dimensions [1607032 + 1918202] [tor-browser]
+   * Bug 30862: 10ms time precision via EXSLT date-time function [tor-browser]
+   * Bug 32668: NoScript default whitelist re-appears on clicking NoScript Options / Reset [tor-browser]
+   * Bug 40147: Re-enable Picture-in-Picture mode [tor-browser]
+   * Bug 41309: Re-enable screenshots component [tor-browser]
+   * Bug 41817: Add more color aliases that take dark mode into account [tor-browser]
+   * Bug 42070: Backport Bugzilla 1834307 and hide smooth-scroll UX [tor-browser]
+   * Bug 42255: pdfjs.disabled used to be part of RFP until Bug 1838415; lock pref to false in stable [tor-browser]
+   * Bug 42356: Review 000-tor-browser.js and 001-base-profile.js for 128 [tor-browser]
+   * Bug 42362: "New window" missing from File menu [tor-browser]
+   * Bug 42596: Several console errors: Console.maxLogLevelPref used with a non-existing pref: [tor-browser]
+   * Bug 42601: Check Bug 1894779: Allow font-face urls to be resource:// urls and relax CORS for resource:// URLs [tor-browser]
+   * Bug 42603: Remove safebrowsing URLs [tor-browser]
+   * Bug 42611: Set clipboard.imageAsFile.enabled to false [tor-browser]
+   * Bug 42617: Restore the HTML form on DDG when using safest in 128 [tor-browser]
+   * Bug 42630: Review LaterRun in 128 [tor-browser]
+   * Bug 42640: Disable Firefox Flame button due to unknown interactions with New Identity [tor-browser]
+   * Bug 42641: Move from panel-footer class to moz-button-group [tor-browser]
+   * Bug 42644: toolbar rules in panelUI-shared.css are unneccessary [tor-browser]
+   * Bug 42646: Remove migrations for security.certerrors.mitm.auto_enable_enterprise_roots [tor-browser]
+   * Bug 42647: "Switching to a new device" regressed on 128 [tor-browser]
+   * Bug 42653: The Neterror page has a checkbox to report iframe origin errors to TPO [tor-browser]
+   * Bug 42665: Drop "Learn More" spacing [tor-browser]
+   * Bug 42667: Add description-deemphasized class to our additions to about:preferences [tor-browser]
+   * Bug 42679: Use a more robust approach to hide the "tracking protection" urlbar button [tor-browser]
+   * Bug 42683: Create script to generate issue triage csv's from bugzilla query and git scraping [tor-browser]
+   * Bug 42684: Disable network prefetch [tor-browser]
+   * Bug 42685: compat: ESR128: enable textmetrics [tor-browser]
+   * Bug 42687: Disable Privacy-Preserving Attribution [tor-browser]
+   * Bug 42699: Drop level="top" attribute from panels [tor-browser]
+   * Bug 42704: Drop the badged="true" attribute from security level button [tor-browser]
+   * Bug 42705: Update our preferences to account for new line height [tor-browser]
+   * Bug 42718: Remove the firefox-view button from UI, even when always-on private-browsing mode is disabled [tor-browser]
+   * Bug 42730: Make RemoteSettings use only local dumps [tor-browser]
+   * Bug 42735: Disable recent search suggestions [tor-browser]
+   * Bug 42740: Stop trying to hide "Restore previous session" [tor-browser]
+   * Bug 42742: Inconsistent use of "New private window" vs "New window" [tor-browser]
+   * Bug 42745: Remove some residuals from update scripts [tor-browser]
+   * Bug 42764: Unconditionally disable find-bar transition animation [tor-browser]
+   * Bug 42777: Remove 'Website Privacy Preferences' and ensure sensible default prefs [tor-browser]
+   * Bug 42814: Opt out from Firefox relay by default. [tor-browser]
+   * Bug 42831: Remove the shopping components [tor-browser]
+   * Bug 42867: Disable contentRelevancy component [tor-browser]
+   * Bug 42872: Disable translations until audited and solved the UX problems [tor-browser]
+   * Bug 43054: check bounceTrackingProtection in PB mode does not persist to disk [tor-browser]
+   * Bug 43072: moz-message-bar does not get announced on Orca screen-reader [tor-browser]
+   * Bug 43083: Backport fix for Mozilla 1436462 [tor-browser]
+   * Bug 43103: Verify whether an update is unsupported before choosing one [tor-browser]
+   * Bug 43109: Remove mention of Firefox Relay from settings [tor-browser]
+   * Bug 43117: Hide 'Always underline links' option [tor-browser]
+   * Bug 43134: Backport Bugzilla 1436226 Hardcode VP8/VP9 [tor-browser]
+   * Bug 43144: Ensure non-privacy browsing also sets the GPC header [tor-browser]
+   * Bug 43163: Disable offscreen canvas until verified it is not fingerprintable [tor-browser]
+   * Bug 43164: Prevent search-bar from being auto-hidden when not used for awhile [tor-browser]
+   * Bug 43178: Audit fingerprinting overrides (MozBug 1834274) [tor-browser]
+   * Bug 43184: Backport Bugzilla 1922294: RFP: fixup square spoofed orientation [tor-browser]
    * Bug 43197: Disable automatic exception for HTTPS-First [tor-browser]
-   * Bug 43201: Security fixes from Firefox 131.0.2 [tor-browser]
-  * Build System
-   * Bug 41260: Don't set legacy version for Mullvad Browser [tor-browser-build]
+   * Bug 43209: UI freezes when clipboard is empty after screen lock [tor-browser]
+   * Bug 43217: Fullscreen videos have rounded letterboxing corners [tor-browser]
+   * Bug 43257: NoScript-blocked content placeholders causing slow downs [tor-browser]
+   * Bug 43258: NoScript Lifecycle error on extension updates [tor-browser]
+   * Bug 41248: Check and update bundled font versions [tor-browser-build]
+ * Windows + macOS
+   * Bug 43021: Revert the OS deprecation notification introduced in #42347 [tor-browser]
+ * Windows
+   * Bug 43051: windows: remove UI for "open Tor Browser automatically when computer starts" [tor-browser]
+ * macOS
+   * Bug 42494: mac: add Arial Black and Arial Narrow to allowlist [tor-browser]
+ * Linux
+   * Bug 42773: Replace ~ with the original HOME [tor-browser]
+   * Bug 43092: Disable Wayland by default in 14.0 [tor-browser]
+   * Bug 43101: Security features warning links to Firefox installation support page with incomplete info [tor-browser]
+   * Bug 43141: Hardcode Arimo as a system-ui font [tor-browser]
+   * Bug 43196: Remove the vendor name from the "is playing media" notification on Linux [tor-browser]
+   * Bug 41237: Add some aliases to our Linux font config for compatibility [tor-browser-build]
+ * Build System
+   * All Platforms
+     * Bug 43157: Move tb-dev to base-browser [tor-browser]
+     * Bug 41096: Set SOURCE_DATE_EPOCH in the default env variables [tor-browser-build]
+     * Bug 41155: Update toolchains for ESR128 [tor-browser-build]
+     * Bug 41156: Split the Rust configuration options [tor-browser-build]
+     * Bug 41176: Update list of people with github commit access in MB issue templates [tor-browser-build]
+     * Bug 41188: Upgrade binutils to 2.41 [tor-browser-build]
+     * Bug 41236: Remove binutils when not needed [tor-browser-build]
+     * Bug 41256: tools/signing/upload-update_responses-to-staticiforme should regenerate update-responses when it already exists [tor-browser-build]
+     * Bug 41259: Skip versions which don't set incremental_from when generating incrementals [tor-browser-build]
+     * Bug 41260: Don't set legacy version for Mullvad Browser [tor-browser-build]
+     * Bug 41274: Improve fetch_changelogs.py for major releases [tor-browser-build]
+     * Bug 41279: Add @pierov and @ma1 as new signers [tor-browser-build]
+     * Bug 41289: Fix single-browser in relprep.py [tor-browser-build]
+   * Windows + macOS
+     * Bug 41197: Modify update-responses to prevent upgrades on unsupported Windows and macOS versions [tor-browser-build]
+   * Windows
+     * Bug 29318: Drop mingw-w64/gcc toolchain [tor-browser-build]
+     * Bug 29320: Use mingw-w64/clang toolchain to build Rust [tor-browser-build]
+     * Bug 41296: Implement missing Windows headers required for building cross-compiling WebRTC with mingw [tor-browser-build]
+   * Linux
+     * Bug 41013: Add a README to each project [tor-browser-build]
+     * Bug 41222: link_old_mar_filenames still referenced in torbrowser-incrementals-{release,alpha}-unsigned [tor-browser-build]
+     * Bug 41243: Add own apparmor profile to deb package [tor-browser-build]
+     * Bug 41282: Add SSL to our custom Python for MozBug 1924022 [tor-browser-build]
+
+Mullvad Browser 13.5.9 - October 28 2024
+ * All Platforms
+   * Updated Firefox to 115.17.0esr
+   * Updated NoScript to 11.4.42
+   * Bug 43174: Issue with custom home page on local filesystem [tor-browser]
+   * Bug 43207: Backport Mozbug 1886222 [tor-browser]
+   * Bug 43240: Backport security fixes from Firefox 132 [tor-browser]
+   * Bug 41273: relprep.py: bump Firefox and GV to a (yet) non-existing tag when the last one does not match HEAD [tor-browser-build]
 
 Mullvad Browser 13.5.7 - October 08 2024
  * All Platforms

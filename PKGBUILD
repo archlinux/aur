@@ -9,7 +9,7 @@
 # Please discuss bugs in AUR comments before reporting them upstream!
 
 pkgname=mullvad-browser-bin
-pkgver=15.0.26
+pkgver=16.0
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -76,7 +76,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('30a91fa579e2831a320841f0861313fda8fb5e772675498046959668de278079'
+sha256sums=('aa571c6dc00aad214af9a92e414f3a6bd9e12139b4819f5af2f3aaaa3d9f4aa3'
             'SKIP'
             '9e1a8b33705972bd372be3af3bdf3039297e6d568e53dcf2e3da03f6f2f2aadd'
             '6e218bdd9c442143088dec784d898f2668e36ae55f6cde45038408bc2bd59488')
