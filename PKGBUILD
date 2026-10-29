@@ -4,7 +4,7 @@
 
 pkgname="odoo-venv"
 _major=20.0
-pkgrel=1
+pkgrel=2
 # updated automatically via pkgver()
 pkgver=20.0.20261029
 pkgdesc="Open Source Apps To Grow Your Business"
@@ -37,7 +37,8 @@ b2sums=('SKIP'
         'f899025f7637aaed2d231de33e5c2d2a831f21f038cb86b9794f9f75224f6eb14b6c9baf95663278ae15568a80ac49354446202232f38577991a24d332373b53')
 backup=("etc/odoo/odoo.conf")
 install="odoo.install"
-options=("!strip")
+# a venv has no use for a -debug package, and collecting its sources takes minutes
+options=("!strip" "!debug")
 
 pkgver(){
  # retrieve date from the most recent archive

@@ -1,7 +1,7 @@
 pkgbase = odoo-venv
 	pkgdesc = Open Source Apps To Grow Your Business
 	pkgver = 20.0.20261029
-	pkgrel = 1
+	pkgrel = 2
 	url = https://odoo.com/
 	install = odoo.install
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = odoo-venv
 	replaces = odoo
 	noextract = odoo_20.0.latest.tar.gz
 	options = !strip
+	options = !debug
 	backup = etc/odoo/odoo.conf
 	source = https://nightly.odoo.com/20.0/nightly/src/odoo_20.0.latest.tar.gz
 	source = odoo.conf
