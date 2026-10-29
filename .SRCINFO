@@ -1,6 +1,6 @@
 pkgbase = mavernix
 	pkgdesc = A lightweight Wayland desktop session with a classic look
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Mavernix/mavernix
 	arch = x86_64
@@ -49,12 +49,12 @@ pkgbase = mavernix
 	optdepends = wl-clipboard: pictures of the screen into the clipboard
 	optdepends = brightnessctl: brightness keys
 	optdepends = playerctl: media keys
-	optdepends = network-manager-applet: choosing a wireless network
+	optdepends = network-manager-applet: asking for a network password NetworkManager needs again, and networks that sign in with a user name or a certificate
 	optdepends = dex: starting the programs in ~/.config/autostart
 	optdepends = hwdata: the graphics card's name in About This Computer
 	optdepends = xdg-desktop-portal-gtk: file choosers for sandboxed programs
 	optdepends = xdg-desktop-portal-wlr: screen sharing
-	source = mavernix-0.2.0.tar.gz::https://github.com/Mavernix/mavernix/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 80ea036b2c212fe129b95325b5398dd04da1381ff57d50297c16ce0d7ed37cfa
+	source = mavernix-0.2.1.tar.gz::https://github.com/Mavernix/mavernix/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 45822d4320c93d4c779b8f3a2459d64904c197942fb5b32c6d4db526a0a8f9bd
 
 pkgname = mavernix

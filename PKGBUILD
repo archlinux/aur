@@ -1,7 +1,7 @@
 # Maintainer: pruefsumme <194605914+pruefsumme@users.noreply.github.com>
 
 pkgname=mavernix
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A lightweight Wayland desktop session with a classic look'
 arch=('x86_64')
@@ -32,14 +32,14 @@ optdepends=(
   'wl-clipboard: pictures of the screen into the clipboard'
   'brightnessctl: brightness keys'
   'playerctl: media keys'
-  'network-manager-applet: choosing a wireless network'
+  'network-manager-applet: asking for a network password NetworkManager needs again, and networks that sign in with a user name or a certificate'
   'dex: starting the programs in ~/.config/autostart'
   "hwdata: the graphics card's name in About This Computer"
   'xdg-desktop-portal-gtk: file choosers for sandboxed programs'
   'xdg-desktop-portal-wlr: screen sharing'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('80ea036b2c212fe129b95325b5398dd04da1381ff57d50297c16ce0d7ed37cfa')
+sha256sums=('45822d4320c93d4c779b8f3a2459d64904c197942fb5b32c6d4db526a0a8f9bd')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
