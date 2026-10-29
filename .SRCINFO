@@ -1,7 +1,7 @@
 pkgbase = mkdocs-mermaid2-plugin
 	pkgdesc = A Mermaid graphs plugin for MkDocs
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fralau/mkdocs-mermaid2-plugin
 	arch = any
 	license = MIT
