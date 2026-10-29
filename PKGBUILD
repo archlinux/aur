@@ -2,9 +2,9 @@
 
 pkgname="python-flask-openid"
 _name=Flask-OpenID
-pkgver=1.3.0
+pkgver=1.3.1
 _sdist=flask_openid
-pkgrel=4
+pkgrel=1
 pkgdesc="OpenID support for Flask"
 arch=(any)
 url="https://github.com/pallets-eco/flask-openid"
