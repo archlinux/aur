@@ -1,0 +1,13 @@
+pkgbase = dotnet-mediatr-12
+	pkgdesc = Simple mediator implementation in .NET, MediatR 12 and MediatR.Contracts (NuGet packages)
+	pkgver = 12.5.0
+	pkgrel = 1
+	url = https://github.com/jbogard/MediatR
+	arch = any
+	license = Apache-2.0
+	makedepends = dotnet-sdk-10.0
+	source = MediatR-8a64581e2570e7410c5f44835d9ea112beccbe6b.tar.gz::https://github.com/jbogard/MediatR/archive/8a64581e2570e7410c5f44835d9ea112beccbe6b.tar.gz
+	sha512sums = 9923173eb9f1225c0535294cd4eff087440acdde2861c3a68182d9badc9e4c2312d69e0981404d31c97df652dc6cca1116f87cc5f8d8a6defe5ea1c116270809
+	b2sums = 7b4b97f6bf51ab9d32c48b624be2a26f3a000b6a6ef49df83dd46e7ea31a591bd45afc88f5f3d32daeb8fed7175014035feec70afa35d5318a5633a805dd9420
+
+pkgname = dotnet-mediatr-12
