@@ -2,7 +2,7 @@
 
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=dethumb
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Thumbnailer for Linux .desktop files and Windows .exe binaries'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('libgcc' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f804a13505884b2e943db00a46f906bac4da0b626ac96aa3c7bbc91ff7e3e5ae')
+sha256sums=('51e77eabef5d78dc764a8775d4617942cea8d172ffdb91ed2cf5cd2abab9bad6')
 
 prepare() {
   cd "$pkgname-$pkgver"

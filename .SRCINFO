@@ -1,6 +1,6 @@
 pkgbase = dethumb
 	pkgdesc = Thumbnailer for Linux .desktop files and Windows .exe binaries
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/sachesi/dethumb
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dethumb
 	makedepends = cargo
 	depends = libgcc
 	depends = glibc
-	source = dethumb-0.3.3.tar.gz::https://github.com/sachesi/dethumb/archive/v0.3.3/dethumb-0.3.3.tar.gz
-	sha256sums = f804a13505884b2e943db00a46f906bac4da0b626ac96aa3c7bbc91ff7e3e5ae
+	source = dethumb-0.3.4.tar.gz::https://github.com/sachesi/dethumb/archive/v0.3.4/dethumb-0.3.4.tar.gz
+	sha256sums = 51e77eabef5d78dc764a8775d4617942cea8d172ffdb91ed2cf5cd2abab9bad6
 
 pkgname = dethumb
