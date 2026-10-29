@@ -4,12 +4,13 @@
 pkgname=python-pyscaffold
 _pkg=pyscaffold
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python project template generator with batteries included"
 url="https://github.com/pyscaffold/pyscaffold"
 arch=('any')
 license=('MIT')
 depends=(
+         'python'
 	'python-appdirs'
 	'python-configupdater'
 	'python-packaging'

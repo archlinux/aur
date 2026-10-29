@@ -1,7 +1,7 @@
 pkgbase = python-pyscaffold
 	pkgdesc = Python project template generator with batteries included
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyscaffold/pyscaffold
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-pyscaffold
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx
 	makedepends = python-wheel
+	depends = python
 	depends = python-appdirs
 	depends = python-configupdater
 	depends = python-packaging
