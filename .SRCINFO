@@ -1,6 +1,6 @@
 pkgbase = see-cli
 	pkgdesc = Command-line client for the S.EE content sharing platform
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sdotee/cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = see-cli
 	conflicts = see-cli
 	conflicts = see-cli-bin
 	options = !lto
-	source = see-cli-1.2.0.tar.gz::https://github.com/sdotee/cli/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 42685723422664ed923db28fd1437809011f860358dd5e3aaa28fd9bd461721d
+	source = see-cli-1.4.0.tar.gz::https://github.com/sdotee/cli/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 5e45cfb3f5eda41879cabcf3199ceef8a8858d8406007eed2e06ffca8c8a2411
 
 pkgname = see-cli
