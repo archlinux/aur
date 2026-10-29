@@ -8,15 +8,16 @@
 pkgname="superset-venv"
 _pkgname="apache-superset"
 pkgver=4.1.1
-pkgrel=1
+# superset pins numpy, pandas and pyarrow versions without wheels for the system Python
+_python=3.12
+pkgrel=2
 pkgdesc="A modern, enterprise-ready business intelligence web application (venv installation type)"
 url="https://superset.apache.org/"
 license=("Apache-2.0")
-arch=("any")
+arch=("x86_64")
 provides=("superset")
 conflicts=("superset")
-depends=("python")
-makedepends=("jq")
+makedepends=("uv")
 source=("superset.bin"
         "superset.env"
         "superset.conf"
@@ -31,12 +32,9 @@ b2sums=('4cf278dd529b778356452eeb6e6d9c105dae977a28eadc1c7fbed3755eaaa1aa853fcb4
         '90f6eab47fd21a9c062490e1d3add85245125d7809afe260d0dada93f336a5b41a5ce003923bf1fc392ab4e6002db76f3d1e8296ed23ffec79c9a02c6ec9012d')
 backup=("etc/superset/env"
         "etc/superset/superset_config.py")
-options=("!strip")
+# a venv has no use for a -debug package, and collecting its sources takes minutes
+options=("!strip" "!debug")
 install="superset.install"
-
-pkgver(){
- curl -s "https://pypi.org/pypi/apache-superset/json" | jq -r ".info.version"
-}
 
 package(){
  install -d -m 750 "$pkgdir/etc/superset"
@@ -49,18 +47,23 @@ package(){
  install -D -m 644 "$srcdir/superset.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/superset.conf"
  install -D -m 644 "$srcdir/superset.service"   "$pkgdir/usr/lib/systemd/system/superset.service"
  
- # create virtual environment
- export PIP_DISABLE_PIP_VERSION_CHECK=1
+ # standalone Python and virtual environment, both inside the package
+ local share="$pkgdir/usr/share/superset"
+ export UV_CACHE_DIR="$srcdir/uv-cache"
+ export UV_PYTHON_INSTALL_DIR="$share/python"
  export PYTHONDONTWRITEBYTECODE=1
- python -m venv "$pkgdir/usr/share/superset/venv"
- source "$pkgdir/usr/share/superset/venv/bin/activate"
- # install superset and dependencies using pip
- "$pkgdir/usr/share/superset/venv/bin/"pip install -I apache-superset gevent Pillow
+ uv python install --no-bin "$_python"
+ uv venv --python "$_python" --python-preference only-managed "$share/venv"
+ uv pip install --python "$share/venv/bin/python" "$_pkgname==$pkgver" gevent Pillow
  # remove references to pkgdir
- find "$pkgdir/usr/share/superset/venv/bin" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
- find "$pkgdir/usr/share/superset/venv/pyvenv.cfg" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
- find "$pkgdir/usr/share/superset/venv" -type f -name "*.py[co]" -delete
- find "$pkgdir/usr/share/superset/venv" -type d -name "__pycache__" -delete
- # exit virtual environment
- deactivate
+ find "$share" -type l | while read -r link; do
+  target=$(readlink "$link")
+  if [[ $target == "$pkgdir"/* ]]; then
+   ln -sfn "${target#"$pkgdir"}" "$link"
+  fi
+ done
+ find "$share/venv/bin" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
+ sed -i "s#${pkgdir}/#/#g" "$share/venv/pyvenv.cfg"
+ find "$share" -type f -name "*.py[co]" -delete
+ find "$share" -type d -name "__pycache__" -delete
 }
