@@ -1,7 +1,7 @@
 # Maintainer: Vincent Jousse <vincent@jousse.org> - https://vincent.jousse.org
 pkgname=concentre-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Focus timer with a visual countdown and tray icon (formerly Pomodorolm)"
 arch=('x86_64')
 url="https://github.com/vjousse/concentre"

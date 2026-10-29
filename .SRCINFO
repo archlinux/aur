@@ -1,7 +1,7 @@
 pkgbase = concentre-bin
 	pkgdesc = Focus timer with a visual countdown and tray icon (formerly Pomodorolm)
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vjousse/concentre
 	arch = x86_64
 	license = AGPL-3.0-only
