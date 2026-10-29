@@ -1,14 +1,12 @@
-# Maintainer: Seraphim Pardee <me at srp dot life>
-
 pkgname=rlshim-git
-pkgver=1.4.0.r0.g714cd71
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A lightweight, native Linux launcher for RuneLite. (Git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/RdrSeraphim/rlshim"
 license=('BSD-2-Clause')
-depends=('libsecret' 'openssl' 'glfw' 'glibc' 'java-runtime>=11')
-makedepends=('cmake' 'clang' 'git' 'make' 'pkgconf' 'curl' 'libx11' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr')
+depends=('libsecret' 'gcc-libs' 'glibc' 'java-runtime>=11')
+makedepends=('cargo' 'git' 'make' 'pkgconf' 'curl')
 provides=('rlshim')
 conflicts=('rlshim')
 source=("git+https://github.com/RdrSeraphim/rlshim.git")
@@ -21,11 +19,10 @@ pkgver() {
 
 build() {
     cd rlshim
-    CXX=clang++ CC=clang cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build build -j$(nproc)
+    cargo build --release --locked
 }
 
 package() {
     cd rlshim
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" PREFIX=/usr make install
 }
