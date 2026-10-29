@@ -1,13 +1,14 @@
 pkgbase = python-peewee-migrate
 	pkgdesc = Simple migration engine for Peewee
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klen/peewee_migrate
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-uv-build
+	depends = python
 	depends = python-peewee>=4.4
 	depends = python-click
 	provides = peewee-migrate
