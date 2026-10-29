@@ -1,7 +1,7 @@
 # Maintainer: tuklu
 # The CI release binary, so installing needs no Go and no GTK binding compile.
 pkgname=nzlauncher-bin
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Launcher for Hyprland that learns how you use it (prebuilt)"
 arch=('x86_64')
@@ -29,8 +29,8 @@ source=("nzlauncher-$pkgver::$url/releases/download/v$pkgver/nzlauncher-linux-am
         "nzlauncher-gtk-$pkgver::$url/releases/download/v$pkgver/nzlauncher-gtk-linux-amd64"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/tuklu/nZlauncher/v$pkgver/LICENSE"
         "nzlauncher-$pkgver.service::https://raw.githubusercontent.com/tuklu/nZlauncher/v$pkgver/packaging/systemd/nzlauncher.service")
-sha256sums=('cbc60357a0ebfb35c4c32e51df230427992d818c7bb4239c8f0aad883f988a8e'
-            '3e208a3ca8a79efc54e545c681f7d3caccf2ceb5239a787cf1c58d8c0c6fd560'
+sha256sums=('ac6d34cc68cce4a0b9607eec1547cfed537de14ce26976879d92a42e2be8d037'
+            '242962689b3988eba1efa1ebced02a91aea1137e59fa66afd735724c29efd056'
             'cffff6a257a267deefebc1866d636e5f1bd098550007dcd75e8de8fbb38375dc'
             '0a66c4572ddf8c6759815f211d3838a5bdb91da3f971cda0ddfe7b6fcb9b1c9d')
 
