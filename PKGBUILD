@@ -3,7 +3,7 @@
 # Contributor: David McInnis <davidm@eagles.ewu.edu>
 
 pkgname="python-django-easy-thumbnails"
-pkgver=2.8.5
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Highly configurable thumbnail creation and caching"
 url="https://github.com/SmileyChris/easy-thumbnails"
@@ -12,7 +12,7 @@ makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel
 license=("BSD")
 arch=("any")
 source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5d9b53a18644f550b9c0d4e179146cfadfcc1d735024116a7e8890c7d738fe0b')
+sha256sums=('f4cc71fd0d21cb63a62c6bf1b9b7eb419b7f7aa219afab512d2c08bd4b6b9a94')
 
 build(){
  cd "easy-thumbnails-$pkgver"

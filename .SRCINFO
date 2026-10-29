@@ -1,6 +1,6 @@
 pkgbase = python-django-easy-thumbnails
 	pkgdesc = Highly configurable thumbnail creation and caching
-	pkgver = 2.8.5
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/SmileyChris/easy-thumbnails
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-django-easy-thumbnails
 	makedepends = python-wheel
 	depends = python-django
 	depends = python-pillow
-	source = python-django-easy-thumbnails-2.8.5::https://github.com/SmileyChris/easy-thumbnails/archive/refs/tags/2.8.5.tar.gz
-	sha256sums = 5d9b53a18644f550b9c0d4e179146cfadfcc1d735024116a7e8890c7d738fe0b
+	source = python-django-easy-thumbnails-2.10.1::https://github.com/SmileyChris/easy-thumbnails/archive/refs/tags/2.10.1.tar.gz
+	sha256sums = f4cc71fd0d21cb63a62c6bf1b9b7eb419b7f7aa219afab512d2c08bd4b6b9a94
 
 pkgname = python-django-easy-thumbnails
