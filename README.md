@@ -27,8 +27,7 @@ sudo udevadm settle
 ```
 
 Access is limited to active local seat sessions, not SSH-only sessions.
-The rule is also shipped by upstream in newer release archives; when updating
-to one of those releases, keep the packaged rule in sync with upstream.
+The rule is installed directly from the upstream release archive.
 
 ## Manual build
 
