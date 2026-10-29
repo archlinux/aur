@@ -2,7 +2,7 @@
 
 pkgname="legit"
 epoch=1
-pkgver=0.2.2
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A git web frontend written in Go"
 arch=("x86_64" "armv7h" "aarch64")
@@ -12,8 +12,8 @@ depends=("git")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 		"config-example.yaml")
-b2sums=("fc3a094cbab7b9f1d705a66bcfddceea4ade9bffaaea29a6714a0729317cf172309cf1037ed0a2c8daff139553b07fc8ab8e0e3de7877e32ebafee996ace26e3"
-        "2bdf55ddb91350dcb6281128c24bfb479dfa6ce66f5b2b3fd1d9df42b63572f0bcc5f8dec385fdea0732b263a064de647adc3e4752142f3b45d3abfd80fd1c7a")
+b2sums=('03a9889942583fe7e134c2c841c4735a2a9769c5cb38f0757f0bb2a7027bc472fbf096da89489da4d00342eac9197f0b0d387d1724b644a7532f8b9d451732f2'
+        '2bdf55ddb91350dcb6281128c24bfb479dfa6ce66f5b2b3fd1d9df42b63572f0bcc5f8dec385fdea0732b263a064de647adc3e4752142f3b45d3abfd80fd1c7a')
 options=("!strip")
 
 prepare(){
