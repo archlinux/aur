@@ -1,7 +1,7 @@
 pkgbase = mpv-phoenix
 	pkgdesc = A fork of mpv with HDR support on X11
 	pkgver = 0.41.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/dec05eba/mpv
 	arch = x86_64
@@ -62,7 +62,7 @@ pkgbase = mpv-phoenix
 	conflicts = mpv
 	options = !emptydirs
 	source = mpv-ad0e943a93854a888d1bea22ed25e6b1f2dc1b18.tar.gz::https://github.com/dec05eba/mpv/archive/ad0e943a93854a888d1bea22ed25e6b1f2dc1b18.tar.gz
-	sha256sums = 4bdf7127e77cfaa3c560ed557235874d21ded5f2abb977b5983d6af73a45b379
+	sha256sums = 1aae7a3948bdf589b17a5a61b2bb7af692a80fa88450e36bc0be2057348a65d0
 
 pkgname = mpv-phoenix
 	depends = alsa-lib
