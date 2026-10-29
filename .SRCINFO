@@ -1,6 +1,6 @@
 pkgbase = openstamanager
 	pkgdesc = Il software gestionale open source per l'assistenza tecnica e la fatturazione
-	pkgver = 2.4.22
+	pkgver = 2.10.4
 	pkgrel = 1
 	url = https://www.openstamanager.com/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = openstamanager
 	optdepends = nginx: web server
 	options = !strip
 	backup = etc/webapps/openstamanager/config.inc.php
-	source = https://github.com/devcode-it/openstamanager/releases/download/v2.4.22/openstamanager-2.4.22.zip
-	sha256sums = SKIP
+	source = https://github.com/devcode-it/openstamanager/releases/download/v2.10.4/openstamanager-2.10.4.zip
+	sha256sums = 0b5ba44086a68a459ee3aa5d4b6db6580afb8075f5eb357425a29d7dc4bde122
 
 pkgname = openstamanager
-

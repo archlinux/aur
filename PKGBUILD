@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="openstamanager"
-pkgver=2.4.22
+pkgver=2.10.4
 pkgrel=1
 pkgdesc="Il software gestionale open source per l'assistenza tecnica e la fatturazione"
 url="https://www.openstamanager.com/"
@@ -12,7 +12,7 @@ optdepends=("mariadb: database"
             "apache: web server"
             "nginx: web server")
 source=("https://github.com/devcode-it/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.zip")
-sha256sums=("SKIP")
+sha256sums=('0b5ba44086a68a459ee3aa5d4b6db6580afb8075f5eb357425a29d7dc4bde122')
 backup=("etc/webapps/$pkgname/config.inc.php")
 options=("!strip")
 
