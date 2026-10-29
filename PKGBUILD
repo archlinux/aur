@@ -127,7 +127,7 @@ EOF
 
   cd "$_pkgsrc"
 
-  : ${_fvm_version=$(grep -Pom1 'flutter: \K[0-9\.]+' ".tool_versions.yaml")}
+  : ${_fvm_version=$(grep -Pom1 '"flutter": "\K[0-9\.]+' ".fvmrc")}
 
   fvm install "$_fvm_version"
   fvm use "$_fvm_version" --force
