@@ -25,7 +25,7 @@ conflicts=('sable')
 options=('!strip' '!debug')
 noextract=("${pkgname}-${pkgver}-amd64.deb")
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/sable-${pkgver}-amd64.deb")
-sha256sums_x86_64=('b2313f264b4496af0beeeb84309a3d32c088ea752296843d2784e19faa30963e')
+sha256sums_x86_64=('4b324c97ee03ab11bdc5ef79cf23d2f0f4d252903eeab3240c069a6c9177f57f')
 
 package() {
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-amd64.deb" 'data.tar*' \
