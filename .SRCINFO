@@ -1,6 +1,6 @@
 pkgbase = okshell
 	pkgdesc = A customizable shell for Hyprland
-	pkgver = 0.12.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/JohnOberhauser/OkShell
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = okshell
 	depends = upower
 	depends = wf-recorder
 	options = !lto
-	source = okshell-0.12.2.tar.gz::https://github.com/JohnOberhauser/OkShell/archive/v0.12.2.tar.gz
-	sha256sums = 73248bb22975e1bbac523d2a6874cc1642e591a5322d37966bdd17aaeeccd7bd
+	source = okshell-0.13.0.tar.gz::https://github.com/JohnOberhauser/OkShell/archive/v0.13.0.tar.gz
+	sha256sums = 76960d7d6bc968b5bf6cdbfa71ba3b6dd95f561f5461d9a8e8718f4c187221cb
 
 pkgname = okshell
