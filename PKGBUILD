@@ -3,7 +3,7 @@ pkgname=ttf-inter-hinted
 _interver=4.1
 _nfver=3.5.1
 pkgver="${_interver}"
-pkgrel=4
+pkgrel=5
 pkgdesc='Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)'
 arch=('any')
 url='https://rsms.me/inter/'
@@ -164,6 +164,11 @@ sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
+#                 Asked during the build as well (none / the recommended set /
+#                 a list of your own); the variables below are what an
+#                 unattended build uses. FEATURE_FAMILY stays environment-only
+#                 on purpose: it renames every file to one family, which would
+#                 merge the cuts a multi-family build installs.
 #
 #                 Suggested set - the same one the Inter block in
 #                 ~/.config/fontconfig/fonts.conf turns on for pango, so that
@@ -288,13 +293,36 @@ _prompt_options() {
         "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
     fi
-    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
-      _ask_yn "Bake the pango features into the fonts (so Chrome gets them too)" n
-      if [[ "$_yn" == true ]]; then
-        FEATURE_DEFAULTS="zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13"
-      else
-        FEATURE_DEFAULTS=""
-      fi
+    echo ""
+    echo "  ── OpenType features ────────────────────────────────────"
+    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
+    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
+    echo "  lookups into calt, which every program applies - the only way Chromium,"
+    echo "  Electron, Qt and LibreOffice honour one, since they never read"
+    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
+    _ask_choice "Bake features into calt" none \
+      "none:leave the fonts as upstream ships them (default)" \
+      "pango:zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13 - the set the fonts.conf block turns on: slashed zero, single-storey a, alternates" \
+      "custom:type the tag list yourself"
+    case $_choice in
+      none)    FEATURE_DEFAULTS="" ;;
+      pango)   FEATURE_DEFAULTS="zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13" ;;
+      custom)
+        echo "  Tags, comma or space separated (e.g. \"zero,ss01,cv11\"):"
+        read -r -p "  > " _tags || _tags=""
+                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+        _tags="${_tags#,}"; _tags="${_tags%,}"
+        FEATURE_DEFAULTS="$_tags"
+        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
+        ;;
+    esac
+    if [[ -n "$FEATURE_DEFAULTS" ]]; then
+      echo ""
+      echo "A copy under another family name keeps the stock look available; set"
+      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"Inter Alt\") and"
+      echo "build again. Without it the packaged files keep their names and the"
+      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
     fi
     echo ""
   else

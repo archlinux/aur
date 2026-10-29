@@ -192,7 +192,12 @@ fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`) no matter what the
 `LangSys` registers. So the only remaining lever is to move a feature's
 lookups into one of those features. `make_features.py` does exactly that, and
 `FEATURE_DEFAULTS` runs it as the last build step (after hinting, on the
-finished files):
+finished files).
+
+`makepkg` asks for this during the build: Enter bakes nothing, so a plain build
+is unchanged. `FEATURE_FAMILY` is not prompted for on purpose - it renames every
+file to one family, which would merge the cuts a multi-family build installs -
+so the variables below are what an unattended build, or a renamed copy, uses.
 
 ```sh
 INTER_VARIANT=variable \
