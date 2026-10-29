@@ -1,6 +1,6 @@
 pkgbase = nzlauncher-bin
 	pkgdesc = Launcher for Hyprland that learns how you use it (prebuilt)
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/tuklu/nZlauncher
 	arch = x86_64
@@ -26,12 +26,12 @@ pkgbase = nzlauncher-bin
 	conflicts = nzlauncher-git
 	options = !strip
 	options = !debug
-	source = nzlauncher-0.4.2::https://github.com/tuklu/nZlauncher/releases/download/v0.4.2/nzlauncher-linux-amd64
-	source = nzlauncher-gtk-0.4.2::https://github.com/tuklu/nZlauncher/releases/download/v0.4.2/nzlauncher-gtk-linux-amd64
-	source = LICENSE-0.4.2::https://raw.githubusercontent.com/tuklu/nZlauncher/v0.4.2/LICENSE
-	source = nzlauncher-0.4.2.service::https://raw.githubusercontent.com/tuklu/nZlauncher/v0.4.2/packaging/systemd/nzlauncher.service
-	sha256sums = 7a382454ae7ea744acba87dbe4ef4614a532c19eab825ab51a287724dff5a1fe
-	sha256sums = 8d6aece6178c6f82cdce056dac2616298d4040d69f3d9e33d5ed33288f6cb6ec
+	source = nzlauncher-0.4.3::https://github.com/tuklu/nZlauncher/releases/download/v0.4.3/nzlauncher-linux-amd64
+	source = nzlauncher-gtk-0.4.3::https://github.com/tuklu/nZlauncher/releases/download/v0.4.3/nzlauncher-gtk-linux-amd64
+	source = LICENSE-0.4.3::https://raw.githubusercontent.com/tuklu/nZlauncher/v0.4.3/LICENSE
+	source = nzlauncher-0.4.3.service::https://raw.githubusercontent.com/tuklu/nZlauncher/v0.4.3/packaging/systemd/nzlauncher.service
+	sha256sums = cbc60357a0ebfb35c4c32e51df230427992d818c7bb4239c8f0aad883f988a8e
+	sha256sums = 3e208a3ca8a79efc54e545c681f7d3caccf2ceb5239a787cf1c58d8c0c6fd560
 	sha256sums = cffff6a257a267deefebc1866d636e5f1bd098550007dcd75e8de8fbb38375dc
 	sha256sums = 0a66c4572ddf8c6759815f211d3838a5bdb91da3f971cda0ddfe7b6fcb9b1c9d
 
