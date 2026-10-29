@@ -3,10 +3,10 @@
 # Contributor: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname="odoo-venv"
-_major=18.0
-pkgrel=2
+_major=20.0
+pkgrel=1
 # updated automatically via pkgver()
-pkgver=18.0.20241229
+pkgver=20.0.20261029
 pkgdesc="Open Source Apps To Grow Your Business"
 url="https://odoo.com/"
 arch=("any")
