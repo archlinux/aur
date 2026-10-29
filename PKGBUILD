@@ -97,6 +97,7 @@ package() {
     -db "${pkgdir}"/usr/share/fritzing/fritzing-parts/parts.db \
     -pp "${pkgdir}"/usr/share/fritzing/fritzing-parts \
     -f  "${pkgdir}"/usr/share/fritzing \
-    -platform offscreen
+    -platform offscreen \
+    || [ -s "${pkgdir}"/usr/share/fritzing/fritzing-parts/parts.db ]
   rm -rf "${pkgdir}"/usr/share/fritzing/fritzing-parts/.git{,ignore}
 }
