@@ -1,6 +1,6 @@
 pkgbase = wmpulsemixer
 	pkgdesc = A simple PulseAudio mixer for WindowMaker
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/polletfa/wmpulsemixer
 	arch = i686
@@ -11,8 +11,9 @@ pkgbase = wmpulsemixer
 	depends = libxpm
 	depends = libx11
 	depends = libpulse
+	depends = gtk3
 	options = !debug
-	source = wmpulsemixer-0.1.4.tar.gz::https://github.com/polletfa/wmpulsemixer/archive/refs/tags/0.1.4.tar.gz
-	sha256sums = 876a47f731d9fa9b4ceff2ec8051556a0dc844b7106174bbb67525381b174752
+	source = wmpulsemixer-0.2.0.tar.gz::https://github.com/polletfa/wmpulsemixer/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 4b5529e5cce3808c07a94e2d869327fe6a1440b1536fa60a81162957da7c3000
 
 pkgname = wmpulsemixer

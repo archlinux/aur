@@ -3,3 +3,5 @@
 *.tar.gz
 *.tar.xz
 *.tar.zst
+.cache
+compile_commands.json
