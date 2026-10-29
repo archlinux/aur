@@ -8,7 +8,11 @@
 
 pkgname=zenworks
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
+PACKAGER="Zenworks Delphi"
+# the source's tag: $pkgver, or a hotfix's own (0.1.9-2) for a pkgrel that
+# brings new source rather than a recipe fix alone — release.sh sets it
+_tag=0.1.9-2
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
 url="https://github.com/kbuckleys/Zenworks"
@@ -77,14 +81,14 @@ optdepends=(
 conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ca840df0274629e79a7fd2f7ed405fd31bd6f107c81e37403851e050fe95bcd7')
+source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
+sha256sums=('f2ab5ba428714477a565a00eff42b99d65d06ca680b874ac17420584564d90f6')
 
 package() {
   # the tarball's directory is named after the repository, as GitHub has
   # it now (renamed ZENWORKS → Zenworks after 0.0.7-1 was built): read
   # from $url, so a rename cannot break the build again
-  cd "${url##*/}-$pkgver"
+  cd "${url##*/}-$_tag"
   local share="$pkgdir/usr/share/zenworks"
 
   install -dm755 "$share"
