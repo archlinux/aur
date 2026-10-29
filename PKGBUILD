@@ -9,7 +9,7 @@
 #   3. Commit PKGBUILD + .SRCINFO to the AUR repo
 
 pkgname=chest-backup-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 install=chest-backup.install
 pkgdesc="Full-stack backup manager with web UI and scheduling (precompiled)"
@@ -45,6 +45,7 @@ package() {
     cp -r "$src" "$app/node_modules/$rel"
   done
 
+  install -Dm644 package.json "$app/package.json"
   install -Dm644 chest-backup.default.json "$app/chest-backup.default.json"
   install -Dm644 .env.default "$app/.env.default"
   install -Dm644 chest-backup.json.example "$app/chest-backup.json.example"
