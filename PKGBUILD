@@ -1,7 +1,7 @@
 # Maintainer: y0no <2242427+y0no@users.noreply.github.com>
 
 pkgname=elixiroffice-bin
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Offline office suite with a Microsoft Office-style interface (beta)"
 arch=('x86_64')
@@ -51,7 +51,7 @@ options=('!debug' '!strip')
 _deb="ElixirOffice-${pkgver}-linux-amd64.deb"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_deb}")
 noextract=("${_deb}")
-sha256sums_x86_64=('94661c907c6e80fbfe9cfb92e492f2d19a588e639469739d1f3cdfc331af55ca')
+sha256sums_x86_64=('256b145c2dc5686453a9715be5ab99f743ca8d0caf056427115f79715ee6f7b0')
 
 package() {
   bsdtar -xOf "${srcdir}/${_deb}" data.tar.gz |
