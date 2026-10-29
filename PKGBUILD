@@ -1,31 +1,48 @@
 # Maintainer: Luke Alonso <lalonso@gmail.com>
+# Contributor: Ragu Manjegowda <github.com/ragu-manjegowda>
 pkgname=openconnect-gp-git
 _pkgname=openconnect
-pkgver=40a377d4fc3c2cfa16b7408b769d43bcac7c21e8
-pkgrel=2
-pkgdesc="Open client for Cisco AnyConnect VPN, with minor fixes for the existing upstream GlobalProtect support"
+pkgver=70d1e79d1e55849dfc71dcc199b1edb535b547e4
+pkgrel=3
+pkgdesc="Open client for Cisco AnyConnect VPN with GlobalProtect CAS and external-browser support"
 arch=('i686' 'x86_64')
-license=('GPL')
-url="http://www.infradead.org/openconnect.html"
-depends=('libproxy' 'vpnc' 'pcsclite' 'trousers' 'stoken' 'oath-toolkit')
+license=('LGPL-2.1-only')
+url="https://www.infradead.org/openconnect.html"
+depends=('glibc' 'krb5' 'libproxy' 'libxml2' 'lz4' 'oath-toolkit' 'openssl'
+         'pcsclite' 'stoken' 'vpnc' 'zlib')
+optdepends=('xdg-utils: open the default browser for GlobalProtect authentication')
 makedepends=('intltool' 'python' 'git' 'autoconf' 'automake' 'libtool')
 options=('!emptydirs')
-provides=($_pkgname 'libopenconnect.so')
-conflicts=($_pkgname)
-commit=40a377d4fc3c2cfa16b7408b769d43bcac7c21e8
-source=("$pkgname::git+https://github.com/lukealonso/openconnectgp.git/#commit=$commit")
-md5sums=('SKIP')
+provides=("$_pkgname" 'libopenconnect.so')
+conflicts=("$_pkgname")
+commit=70d1e79d1e55849dfc71dcc199b1edb535b547e4
+# Community changes from ragu-manjegowda/openconnect-git-gp at 250113c1f0e2.
+source=("$pkgname::git+https://gitlab.com/openconnect/openconnect.git/#commit=$commit"
+        'gp-cas-callback.patch'
+        'gp-browser-safety.patch'
+        'gp_browser_helper.c'
+        'gp_browser_helper.desktop')
+sha256sums=('SKIP'
+            '2aabe3e2e5bf3b3c272a73b2c7ca411781c53bdf28b61c0963d18a7b9103c036'
+            '16aa297d2bdeba37f77fde88b0e809d1300cac296b74749b585cf4adbfbcc3dd'
+            '9fab2b7cee50c1a83816cb5377c25a258d182cab558d089a441dbc6607a144e0'
+            'a4a0f71834f2f6b61a68bde087803fcb8fd07cc7ef957a22674c3f1ecdb5704c')
 
 pkgver() {
-  echo $commit
+  echo "$commit"
+}
+
+prepare() {
+  cd "$pkgname"
+  cp "$srcdir/gp_browser_helper.c" "$srcdir/gp_browser_helper.desktop" .
+  patch -p1 < "$srcdir/gp-cas-callback.patch"
+  patch -p1 < "$srcdir/gp-browser-safety.patch"
 }
 
 build() {
-  cd $pkgname
-  find . -name "libtool" -o -name "ltmain.sh" -o -name "aclocal.m4" -o -name "config.guess" -o -name "config.sub" | xargs rm -f
+  cd "$pkgname"
 
   ./autogen.sh
-  autoreconf -fi
 
   PYTHON=/usr/bin/python ./configure --prefix=/usr \
       --sbindir=/usr/bin \
@@ -37,19 +54,15 @@ build() {
   sed -i -e "s/ -shared / $LDFLAGS\0 /g" libtool
   sed -i 's|update-desktop-database|true|' Makefile
 
-  export MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
   make V=0
 }
 
+check() {
+  cd "$pkgname"
+  make check
+}
+
 package() {
-  cd $pkgname
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
-}
-
-post_install() {
-    update-desktop-database -q
-}
-
-post_remove() {
-    update-desktop-database -q
 }

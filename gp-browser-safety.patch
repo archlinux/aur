@@ -1,0 +1,74 @@
+--- a/auth-globalprotect.c
++++ b/auth-globalprotect.c
+@@ -122,7 +122,11 @@
+ 		fclose(fptr);
+ 		return -ENOMEM;
+ 	}
+-	fread(data, size, 1, fptr);
++	if (fread(data, 1, size, fptr) != (size_t)size || ferror(fptr)) {
++		fclose(fptr);
++		free(data);
++		return -EIO;
++	}
+ 	fclose(fptr);
+ 
+ 	if (strstr(data, "cas-as=")) {
+@@ -1104,21 +1108,23 @@
+ 		goto finish;
+ 
+ 	wd = inotify_add_watch(fd, oc_cache_dir, IN_CLOSE_WRITE);
+-	if (wd == -1)
+-		vpn_progress(vpninfo, PRG_DEBUG, "Could not watch : %s\n", oc_cache_dir);
+-	else
++	if (wd == -1) {
++		ret = -errno;
++		vpn_progress(vpninfo, PRG_ERR, "Could not watch : %s\n", oc_cache_dir);
++		goto finish;
++	} else
+ 		vpn_progress(vpninfo, PRG_DEBUG, "Watching : %s\n", oc_cache_dir);
+ 
+ 	if (vpninfo->open_ext_browser)
+ 		ret = vpninfo->open_ext_browser(vpninfo, uri, vpninfo->cbdata);
+ #ifdef HAVE_POSIX_SPAWN
+-	else if (vpninfo->external_browser) {
++	else {
+ 		pid_t pid;
+-		char *browser_argv[] = { (char *)vpninfo->external_browser, uri, NULL };
++		const char *browser = vpninfo->external_browser ? vpninfo->external_browser : "xdg-open";
++		char *browser_argv[] = { (char *)browser, uri, NULL };
+ 		int err;
+ 
+-		err = posix_spawn(&pid, vpninfo->external_browser, NULL, NULL,
+-				  browser_argv, environ);
++		err = posix_spawnp(&pid, browser, NULL, NULL, browser_argv, environ);
+ 		if (err) {
+ 			errno = err;
+ 			vpn_perror(vpninfo, _("Spawn browser"));
+@@ -1126,16 +1132,11 @@
+ 		} else
+ 			ret = 0;
+ 	}
+-#endif
++#else
+ 	else {
+-		char *spawn;
+-		if (asprintf(&spawn, "xdg-open \"%s\"&", uri) < 0) {
+-			ret = -ENOMEM;
+-			goto finish;
+-		}
+-		ret = system(spawn);
+-		free(spawn);
++		ret = -EOPNOTSUPP;
+ 	}
++#endif
+ 
+ 	if (ret) {
+ 		vpn_progress(vpninfo, PRG_ERR,
+@@ -1154,6 +1155,7 @@
+ 				usleep(100000);
+ 				continue;
+ 			}
++			ret = -errno;
+ 			goto finish;
+ 		}
+ 

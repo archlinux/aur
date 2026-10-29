@@ -1,0 +1,435 @@
+diff --git a/Makefile.am b/Makefile.am
+index a12798a..53765d5 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,13 +19,22 @@ endif
+ lib_LTLIBRARIES = libopenconnect.la
+ sbin_PROGRAMS = openconnect
+ man8_MANS = openconnect.8
+-bin_PROGRAMS :=
++bin_PROGRAMS := gp_browser_helper
+ sbin_SCRIPTS :=
+ noinst_PROGRAMS :=
+ 
+ AM_CFLAGS = @WFLAGS@
+ AM_CPPFLAGS = -DLOCALEDIR="\"$(localedir)\""
+ 
++gp_browser_helper_SOURCES = gp_browser_helper.c
++
++desktopdir = $(datadir)/applications
++dist_desktop_DATA = gp_browser_helper.desktop
++install-data-hook:
++	if which update-desktop-database>/dev/null 2>&1 ; then \
++		update-desktop-database; \
++	fi
++
+ openconnect_SOURCES = xml.c main.c
+ openconnect_CFLAGS = $(AM_CFLAGS) $(SSL_CFLAGS) $(DTLS_SSL_CFLAGS) \
+ 	$(LIBXML2_CFLAGS) $(JSON_CFLAGS) $(LIBPROXY_CFLAGS) \
+diff --git a/auth-globalprotect.c b/auth-globalprotect.c
+index 8d09427..0466c91 100644
+--- a/auth-globalprotect.c
++++ b/auth-globalprotect.c
+@@ -21,6 +21,21 @@
+ 
+ #include <ctype.h>
+ #include <errno.h>
++#include <fcntl.h>
++#include <sys/stat.h>
++#include <unistd.h>
++
++#ifndef _WIN32
++#include <pwd.h>
++#include <sys/inotify.h>
++
++#define MAX_EVENTS 2
++#define LEN_NAME 32
++#define EVENT_SIZE (sizeof(struct inotify_event))
++#define BUF_LEN (MAX_EVENTS * (EVENT_SIZE + LEN_NAME))
++#endif
++
++#define GP_DATA_FILE "globalprotect.dat"
+ 
+ struct login_context {
+ 	char *username;				/* Username that has already succeeded in some form */
+@@ -28,9 +43,110 @@ struct login_context {
+ 	char *portal_userauthcookie;		/* portal-userauthcookie (from global-protect/getconfig.esp) */
+ 	char *portal_prelogonuserauthcookie;	/* portal-prelogonuserauthcookie (from global-protect/getconfig.esp) */
+ 	char *region;				/* Region (typically 2 characters, e.g. DE, US) */
++	int cas_auth;				/* CAS auth requested by the server */
+ 	struct oc_auth_form *form;
+ };
+ 
++static char *get_user_cache_dir(void)
++{
++	char *cache_dir, *home;
++	int cache_dir_len;
++
++#ifndef _WIN32
++	struct passwd *pw = getpwuid(getuid());
++	if (!pw || !pw->pw_dir)
++		return NULL;
++	home = strdup(pw->pw_dir);
++#else
++	home = strdup("");
++#endif
++	if (!home)
++		return NULL;
++
++	cache_dir_len = strlen(home) + strlen("/.cache/openconnect/") + 1;
++	cache_dir = malloc(cache_dir_len);
++	if (!cache_dir) {
++		free(home);
++		return NULL;
++	}
++	snprintf(cache_dir, cache_dir_len, "%s/.cache/openconnect/", home);
++	free(home);
++
++#ifndef _WIN32
++	mkdir(cache_dir, 0700);
++#else
++	CreateDirectory(cache_dir, NULL);
++#endif
++	return cache_dir;
++}
++
++static char *gp_callback_value(char *data, const char *name)
++{
++	char *start, *end, *value;
++	size_t name_len = strlen(name);
++
++	start = strstr(data, name);
++	if (!start || start[name_len] != '=')
++		return NULL;
++	start += name_len + 1;
++	end = strchr(start, '&');
++	value = end ? strndup(start, end - start) : strdup(start);
++	if (value)
++		urldecode_inplace(value);
++	return value;
++}
++
++static int parse_callback_file(struct openconnect_info *vpninfo, const char *data_file)
++{
++	FILE *fptr;
++	char *data, *username = NULL, *token = NULL;
++	long size;
++	int ret = -EINVAL;
++
++	fptr = fopen(data_file, "r");
++	if (!fptr) {
++		vpn_progress(vpninfo, PRG_INFO, "Failed to open file %s\n", data_file);
++		return -EINVAL;
++	}
++
++	fseek(fptr, 0L, SEEK_END);
++	size = ftell(fptr);
++	fseek(fptr, 0L, SEEK_SET);
++	if (size < 0) {
++		fclose(fptr);
++		return -EINVAL;
++	}
++
++	data = calloc(1, size + 1);
++	if (!data) {
++		fclose(fptr);
++		return -ENOMEM;
++	}
++	fread(data, size, 1, fptr);
++	fclose(fptr);
++
++	if (strstr(data, "cas-as=")) {
++		username = gp_callback_value(data, "un");
++		token = gp_callback_value(data, "token");
++		if (!username || !token)
++			goto out;
++
++		vpn_progress(vpninfo, PRG_INFO, "CAS method for user %s\n", username);
++		free(vpninfo->sso_username);
++		free(vpninfo->sso_cookie_value);
++		vpninfo->sso_username = username;
++		vpninfo->sso_cookie_value = token;
++		username = token = NULL;
++		ret = 0;
++	}
++
++out:
++	free(username);
++	free(token);
++	free(data);
++	return ret;
++}
++
+ void gpst_common_headers(struct openconnect_info *vpninfo,
+ 			 struct oc_text_buf *buf)
+ {
+@@ -82,6 +198,8 @@ static int parse_prelogin_xml(struct openconnect_info *vpninfo, xmlNode *xml_nod
+ 	struct oc_form_opt *opt, *opt2;
+ 	char *prompt = NULL, *username_label = NULL, *password_label = NULL;
+ 	char *s = NULL, *saml_method = NULL, *saml_path = NULL;
++	int default_browser = 0;
++	int cas_auth = 0;
+ 	int result = -EINVAL;
+ 
+ 	if (!xmlnode_is_named(xml_node, "prelogin-response"))
+@@ -94,8 +212,14 @@ static int parse_prelogin_xml(struct openconnect_info *vpninfo, xmlNode *xml_nod
+ 		xmlnode_get_trimmed_val(xml_node, "username-label", &username_label);
+ 		xmlnode_get_trimmed_val(xml_node, "password-label", &password_label);
+ 		xmlnode_get_trimmed_val(xml_node, "region", &ctx->region);
++		if (xmlnode_is_named(xml_node, "saml-default-browser"))
++			default_browser = xmlnode_bool_or_int_value(xml_node);
++		if (xmlnode_is_named(xml_node, "cas-auth"))
++			cas_auth = xmlnode_bool_or_int_value(xml_node);
+ 		/* XX: should we save the certificate username from <ccusername/> ? */
+ 	}
++	if (default_browser)
++		ctx->cas_auth = cas_auth;
+ 
+ 	if (saml_method && s) {
+ 		/* Allow the legacy workflow (no GUI setting up open_webview) to keep working */
+@@ -148,7 +272,7 @@ static int parse_prelogin_xml(struct openconnect_info *vpninfo, xmlNode *xml_nod
+ 					saml_method, saml_path);
+ 
+ 			/* Legacy flow (when not called by n-m-oc) */
+-			if (!vpninfo->open_webview) {
++			if (!vpninfo->open_webview && !(default_browser && vpninfo->proto->handle_external_browser)) {
+ 				vpn_progress(vpninfo,
+ 					PRG_ERR, _("When SAML authentication is complete, specify destination form field by appending field_name to login URL.\n"));
+ 				goto out;
+@@ -750,9 +874,24 @@ static int gpst_login(struct openconnect_info *vpninfo, int portal, struct login
+ 			append_opt(request_body, "preferred-ip", vpninfo->ip_info.addr);
+ 		if (vpninfo->ip_info.addr6)
+ 			append_opt(request_body, "preferred-ipv6", vpninfo->ip_info.addr);
+-		if (ctx->form->action)
+-			append_opt(request_body, "inputStr", ctx->form->action);
+-		append_form_opts(vpninfo, ctx->form, request_body);
++		if (ctx->cas_auth && ctx->form->opts && ctx->form->opts->next) {
++			struct oc_form_opt *user_opt = ctx->form->opts;
++			struct oc_form_opt *token_opt = ctx->form->opts->next;
++			vpn_progress(vpninfo, PRG_INFO,
++				     "GlobalProtect CAS login fields: user=%s len=%zu, passwd=omitted, token=%s len=%zu\n",
++				     user_opt->_value && user_opt->_value[0] ? "set" : "empty",
++				     user_opt->_value ? strlen(user_opt->_value) : 0,
++				     token_opt->_value && token_opt->_value[0] ? "set" : "empty",
++				     token_opt->_value ? strlen(token_opt->_value) : 0);
++			if (user_opt->_value && user_opt->_value[0])
++				append_opt(request_body, user_opt->name, user_opt->_value);
++			if (token_opt->_value && token_opt->_value[0])
++				append_opt(request_body, "token", token_opt->_value);
++		} else {
++			if (ctx->form->action)
++				append_opt(request_body, "inputStr", ctx->form->action);
++			append_form_opts(vpninfo, ctx->form, request_body);
++		}
+ 		if ((result = buf_error(request_body)))
+ 			goto out;
+ 
+@@ -770,6 +909,8 @@ static int gpst_login(struct openconnect_info *vpninfo, int portal, struct login
+ 			/* Invalid username/password; reuse same form, but blank,
+ 			 * unless we just did a blind retry.
+ 			 */
++			if (ctx->cas_auth)
++				goto out;
+ 			nuke_opt_values(ctx->form->opts);
+ 			if (!blind_retry)
+ 				goto got_form;
+@@ -893,3 +1034,153 @@ out:
+ 	free(xml_buf);
+ 	return result;
+ }
++
++int gpst_handle_external_browser(struct openconnect_info *vpninfo)
++{
++	int ret = -EINVAL;
++	char *data_file = NULL, *uri = NULL, *oc_cache_dir = NULL;
++#ifndef _WIN32
++	int fd = -1;
++#endif
++
++	oc_cache_dir = get_user_cache_dir();
++	if (!oc_cache_dir)
++		return -ENOMEM;
++
++	if (asprintf(&data_file, "%s/%s", oc_cache_dir, GP_DATA_FILE) < 0) {
++		ret = -ENOMEM;
++		goto finish;
++	}
++
++	if (vpninfo->sso_login && strncmp(vpninfo->sso_login, "data:text/html;base64,", 22) == 0) {
++		int len, tmp_file_len;
++		void *out = openconnect_base64_decode(&len, vpninfo->sso_login + 22);
++		char *tmp_file;
++		FILE *file;
++
++		if (!out)
++			goto finish;
++
++		tmp_file_len = strlen(oc_cache_dir) + strlen("/saml.html") + 1;
++		tmp_file = malloc(tmp_file_len);
++		if (!tmp_file) {
++			free(out);
++			ret = -ENOMEM;
++			goto finish;
++		}
++		strcpy(tmp_file, oc_cache_dir);
++		strcat(tmp_file, "/saml.html");
++		file = fopen(tmp_file, "w");
++		if (!file) {
++			free(out);
++			free(tmp_file);
++			goto finish;
++		}
++		fwrite(out, 1, len, file);
++		fclose(file);
++		free(out);
++
++		if (asprintf(&uri, "file:///%s", tmp_file) < 0)
++			ret = -ENOMEM;
++		free(tmp_file);
++		if (!uri)
++			goto finish;
++	} else if (vpninfo->sso_login) {
++		uri = strdup(vpninfo->sso_login);
++		if (!uri) {
++			ret = -ENOMEM;
++			goto finish;
++		}
++	} else
++		goto finish;
++
++#ifndef _WIN32
++	int wd;
++
++	fd = inotify_init();
++	if (fd < 0)
++		goto finish;
++	if (fcntl(fd, F_SETFL, O_NONBLOCK) < 0)
++		goto finish;
++
++	wd = inotify_add_watch(fd, oc_cache_dir, IN_CLOSE_WRITE);
++	if (wd == -1)
++		vpn_progress(vpninfo, PRG_DEBUG, "Could not watch : %s\n", oc_cache_dir);
++	else
++		vpn_progress(vpninfo, PRG_DEBUG, "Watching : %s\n", oc_cache_dir);
++
++	if (vpninfo->open_ext_browser)
++		ret = vpninfo->open_ext_browser(vpninfo, uri, vpninfo->cbdata);
++#ifdef HAVE_POSIX_SPAWN
++	else if (vpninfo->external_browser) {
++		pid_t pid;
++		char *browser_argv[] = { (char *)vpninfo->external_browser, uri, NULL };
++		int err;
++
++		err = posix_spawn(&pid, vpninfo->external_browser, NULL, NULL,
++				  browser_argv, environ);
++		if (err) {
++			errno = err;
++			vpn_perror(vpninfo, _("Spawn browser"));
++			ret = -err;
++		} else
++			ret = 0;
++	}
++#endif
++	else {
++		char *spawn;
++		if (asprintf(&spawn, "xdg-open \"%s\"&", uri) < 0) {
++			ret = -ENOMEM;
++			goto finish;
++		}
++		ret = system(spawn);
++		free(spawn);
++	}
++
++	if (ret) {
++		vpn_progress(vpninfo, PRG_ERR,
++			     _("Failed to spawn external browser for %s\n"),
++			     vpninfo->sso_login);
++		goto finish;
++	}
++
++	while (1) {
++		int i = 0, length;
++		char buffer[BUF_LEN];
++
++		length = read(fd, buffer, BUF_LEN);
++		if (length < 0) {
++			if (errno == EAGAIN || errno == EWOULDBLOCK) {
++				usleep(100000);
++				continue;
++			}
++			goto finish;
++		}
++
++		while (i < length) {
++			struct inotify_event *event = (struct inotify_event *)&buffer[i];
++
++			if (event->len && (event->mask & IN_CLOSE_WRITE) &&
++			    !(event->mask & IN_ISDIR) && !strcmp(event->name, GP_DATA_FILE)) {
++				vpn_progress(vpninfo, PRG_INFO, "The file %s was written.\n", event->name);
++				ret = parse_callback_file(vpninfo, data_file);
++				goto finish;
++			}
++			i += EVENT_SIZE + event->len;
++		}
++	}
++#else
++	vpn_progress(vpninfo, PRG_INFO, "Proper callback data handling missing on Windows\n");
++	ret = -EINVAL;
++#endif
++
++finish:
++#ifndef _WIN32
++	if (fd >= 0)
++		close(fd);
++#endif
++	free(uri);
++	free(oc_cache_dir);
++	free(data_file);
++	return ret;
++}
+diff --git a/library.c b/library.c
+index b5e74e9..e7d037d 100644
+--- a/library.c
++++ b/library.c
+@@ -328,6 +328,7 @@ static const struct vpn_proto openconnect_protos[] = {
+ 		.add_http_headers = gpst_common_headers,
+ 		.obtain_cookie = gpst_obtain_cookie,
+ 		.sso_detect_done = gpst_sso_detect_done,
++		.handle_external_browser = gpst_handle_external_browser,
+ 		.udp_protocol = "ESP",
+ #ifdef HAVE_ESP
+ 		.udp_setup = esp_setup,
+@@ -1860,8 +1861,10 @@ retry:
+ 		vpninfo->sso_cookie_value = NULL;
+ 		vpninfo->sso_username = NULL;
+ 
++		if (vpninfo->proto->handle_external_browser) {
++			ret = vpninfo->proto->handle_external_browser(vpninfo);
+ 		/* Handle the special Cisco external browser mode */
+-		if (vpninfo->sso_browser_mode && !strcmp(vpninfo->sso_browser_mode, "external")) {
++		} else if (vpninfo->sso_browser_mode && !strcmp(vpninfo->sso_browser_mode, "external")) {
+ 			ret = handle_external_browser(vpninfo);
+ 		} else if (vpninfo->open_webview) {
+ 			ret = vpninfo->open_webview(vpninfo, vpninfo->sso_login, vpninfo->cbdata);
+diff --git a/openconnect-internal.h b/openconnect-internal.h
+index abf45bb..945a1d0 100644
+--- a/openconnect-internal.h
++++ b/openconnect-internal.h
+@@ -837,6 +837,9 @@ struct vpn_proto {
+ 	/* This checks if SSO authentication is complete */
+ 	int (*sso_detect_done)(struct openconnect_info *vpninfo, const struct oc_webview_result *result);
+ 
++	/* This handles protocol-specific external-browser SSO flows */
++	int (*handle_external_browser)(struct openconnect_info *vpninfo);
++
+ 	/* Establish the TCP connection (and obtain configuration) */
+ 	int (*tcp_connect)(struct openconnect_info *vpninfo);
+ 
+@@ -1388,6 +1391,7 @@ int array_bye(struct openconnect_info *vpninfo, const char *reason);
+ 
+ /* auth-globalprotect.c */
+ int gpst_obtain_cookie(struct openconnect_info *vpninfo);
++int gpst_handle_external_browser(struct openconnect_info *vpninfo);
+ void gpst_common_headers(struct openconnect_info *vpninfo, struct oc_text_buf *buf);
+ int gpst_bye(struct openconnect_info *vpninfo, const char *reason);
+ const char *gpst_os_name(struct openconnect_info *vpninfo);

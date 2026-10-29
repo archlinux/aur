@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=OpenConnect Browser Helper for GlobalProtect
+Type=Application
+Terminal=false
+NoDisplay=true
+Exec=gp_browser_helper %u
+MimeType=x-scheme-handler/globalprotectcallback;
