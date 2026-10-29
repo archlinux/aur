@@ -1,9 +1,9 @@
-# Maintainer: tuxxx <nzb_tuxxx@proton.me>
+# Maintainer: tuxxx <tuxxx@tuta.io>
 
 pkgname=sparrow-wallet-reproducible
 _pkgname=sparrow-wallet
-pkgver=2.5.5
-_jdkver=25.0.2_10
+pkgver=2.5.6
+_jdkver=25.0.5_8
 _jdkmajor="${_jdkver%%[^0-9]*}"
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (reproducible build)"
@@ -55,11 +55,11 @@ source=(
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
 )
-sha256sums=('80811b538111a070ad3a8b2a9cbe5f1ca608473801d4892f1a7f4eabc1e824e5'
-            '7e8a59bf7e7293bd924518dda8ea7747696634297de54878c1c5f5cdb528559d'
+sha256sums=('9edc1a7be6d67ba5c2391b44ad2791468fa74ebe028484b551a4d8de3dcf83e6'
+            '6085a16a86feb48a637fa69f0ec4a92e1b0c1f0edb4ba76d677a0a158984ef15'
             'SKIP'
             'SKIP'
-            '987387933b64b9833846dee373b640440d3e1fd48a04804ec01a6dbf718e8ab8')
+            '68982529869257d0ee6b824ec5aa270ff8b118bb438670da0b97ebdab178d7fb')
 
 prepare() {
     cd "$srcdir/sparrow"
