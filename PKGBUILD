@@ -2,12 +2,13 @@
 
 pkgname='sonarqube-cli'
 pkgver=1.11.0.16877
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for SonarQube Server and SonarQube Cloud"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SonarSource/sonarqube-cli"
 license=('LGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'icu')
+options=('!strip')
 makedepends=('bun')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('3d40f113b6684bf244590c9582a06196fa557780837db0bfb54845d37b517af1')
