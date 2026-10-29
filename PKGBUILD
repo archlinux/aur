@@ -1,7 +1,7 @@
 # Maintainer: Rafael Just <rafaeljust at proton dot me>
 pkgname="powerlevel11k-git"
 pkgver=r341.609c215
-pkgdesc="Powerlevel10k continuation for all shells"
+pkgdesc="Powerlevel10k continuation for all shells. (git version)"
 pkgrel=1
 arch=("x86_64")
 conflicts=('powerlevel11k')
