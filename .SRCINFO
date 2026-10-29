@@ -1,0 +1,24 @@
+pkgbase = defaultappsforge
+	pkgdesc = Which app opens what: links, email, calendar, pictures, music, video, PDFs, files and more; web apps (Gmail, Google Calendar) as choices. Any Linux, any desktop or none, works on a text console (Forge Suite)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jetomev/forge-suite/tree/main/defaultappsforge
+	arch = any
+	license = GPL3
+	checkdepends = desktop-file-utils
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	depends = python-forgekit>=0.10.0
+	depends = nog
+	optdepends = xdg-utils: the system's guess for each job, and the default browser for web apps
+	optdepends = xdg-terminal-exec: the default terminal entry
+	optdepends = nogforge: Find more… opens it already searching
+	optdepends = alacritty: Find more… opens nogForge in it
+	source = defaultappsforge-1.0.0.tar.gz::https://github.com/jetomev/forge-suite/releases/download/defaultappsforge-v1.0.0/defaultappsforge-1.0.0.tar.gz
+	source = defaultappsforge-1.0.0.tar.gz.asc::https://github.com/jetomev/forge-suite/releases/download/defaultappsforge-v1.0.0/defaultappsforge-1.0.0.tar.gz.asc
+	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+	sha256sums = a2f1273b7a143fce6db5df58b018a5b56f50cb5148157c99303fb8439289bb4f
+	sha256sums = SKIP
+
+pkgname = defaultappsforge

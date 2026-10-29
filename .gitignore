@@ -1,0 +1,10 @@
+# makepkg working files. An AUR repository carries packaging only --
+# PKGBUILD, .SRCINFO and any local patches. Sources are fetched and
+# verified at build time from the signed GitHub release assets.
+pkg/
+src/
+*.tar.gz
+*.tar.gz.asc
+*.tar.zst
+*.pkg.tar.zst
+*.log
