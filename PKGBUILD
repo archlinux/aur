@@ -4,7 +4,7 @@ _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.visualstudio.CodeOSS
-pkgver=1.143.17183
+pkgver=1.143.17232
 _electronversion=43
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of Visual Studio Code."
@@ -49,8 +49,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
-sha256sums_aarch64=('a2dbdb086213f03f6d78a735af9d1ebe17bab521bccc852b181140d5f31609c6')
-sha256sums_x86_64=('6d773aada6afc84f2c5005c48ad001a794c40cabe08a998566199ea3e245f1b4')
+sha256sums_aarch64=('d8577b91499510db932ebece29953ecc55ab94e248923eabd8b20ca8dec16677')
+sha256sums_x86_64=('2e7a6ca072782a22f19deae29d9c6ded3b63c723565264c7d2ea38c295d14323')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
