@@ -1,7 +1,7 @@
 pkgbase = veracrypt-console-bin
 	pkgdesc = Disk encryption with strong security based on TrueCrypt - headless console only
-	pkgver = 1.26.14
-	pkgrel = 3
+	pkgver = 1.26.29
+	pkgrel = 1
 	url = https://www.veracrypt.fr/
 	install = veracrypt.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = veracrypt-console-bin
 	conflicts = veracrypt-git
 	conflicts = veracrypt-git-no-gost
 	conflicts = veracrypt-trans
-	source_x86_64 = veracrypt-console-bin-1.26.14-amd64.deb::https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-console-1.26.14-Debian-11-amd64.deb
-	b2sums_x86_64 = 0d799f9e9b5c982c987170520304264fca347ab462ad21584ba942404187368ce2c8a59fb3c060a0505f3cca907a4d617bd26b419812f0cc4bc3394a45bb813e
+	source_x86_64 = veracrypt-console-bin-1.26.29-amd64.deb::https://launchpad.net/veracrypt/trunk/1.26.29/+download/veracrypt-console-1.26.29-Debian-11-amd64.deb
+	b2sums_x86_64 = 13981bf63a9bc962ad974936130d356fa3362db445ffcdc29f7aa7cd80de60be1029bf1c1eb6a3adcc772b312f0226d5b7ac53b7bf01c2b55379e5a861f7dfac
 
 pkgname = veracrypt-console-bin

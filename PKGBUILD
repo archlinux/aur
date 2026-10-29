@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="veracrypt-console-bin"
-pkgver=1.26.14
-pkgrel=3
+pkgver=1.26.29
+pkgrel=1
 pkgdesc="Disk encryption with strong security based on TrueCrypt - headless console only"
 url="https://www.veracrypt.fr/"
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=("veracrypt" "veracrypt-git" "veracrypt-git-no-gost" "veracrypt-trans"
 depends=("fuse2>=2.8.0" "libsm" "device-mapper")
 optdepends=("sudo: mounting encrypted volumes as nonroot users")
 source_x86_64=("$pkgname-$pkgver-amd64.deb::https://launchpad.net/veracrypt/trunk/$pkgver/+download/${pkgname/-bin/}-$pkgver-Debian-11-amd64.deb")
-b2sums_x86_64=('0d799f9e9b5c982c987170520304264fca347ab462ad21584ba942404187368ce2c8a59fb3c060a0505f3cca907a4d617bd26b419812f0cc4bc3394a45bb813e')
+b2sums_x86_64=('13981bf63a9bc962ad974936130d356fa3362db445ffcdc29f7aa7cd80de60be1029bf1c1eb6a3adcc772b312f0226d5b7ac53b7bf01c2b55379e5a861f7dfac')
 install="veracrypt.install"
 
 prepare(){
