@@ -1,10 +1,21 @@
 # Switching between abb-agent, abb-agent-bin and abb-agent-git removes the old package first:
-# pacman keeps a modified configuration as .pacsave and installs the template, which only has
-# comments. Without this the next backup would take every disk and leave nothing out.
+# pacman keeps a modified configuration as .pacsave and installs the template. Without this the
+# next backup would take every disk and leave nothing out. The configuration is put back only
+# while /etc/abb-agent.toml is still the template (the copy in /usr/share/abb-agent; without
+# it: nothing but comments, blank lines and [section] lines).
 restore_config() {
   conf=/etc/abb-agent.toml
+  template=/usr/share/abb-agent/abb-agent.toml
   [ -f "$conf.pacsave" ] || return 0
-  if grep -qvE '^[[:space:]]*(#|$)' "$conf" 2>/dev/null; then
+  if [ -f "$template" ]; then
+    # sha256sum: coreutils is always there, cmp (diffutils) may not be.
+    [ "$(sha256sum <"$conf" 2>/dev/null)" = "$(sha256sum <"$template")" ] && pristine=1 || pristine=0
+  elif grep -qvE '^[[:space:]]*(#.*|\[[A-Za-z_]+\][[:space:]]*(#.*)?)?$' "$conf" 2>/dev/null; then
+    pristine=0
+  else
+    pristine=1
+  fi
+  if [ "$pristine" = 0 ]; then
     echo "==> abb-agent: $conf.pacsave is an older configuration: compare it with $conf"
     return 0
   fi
@@ -21,7 +32,7 @@ post_install() {
   cat <<'MSG'
 ==> abb-agent is installed but does nothing yet. To set it up:
     1. Pair with the NAS:  sudo abb-agent connect -a <nas> -u <dsm user>
-    2. Edit /etc/abb-agent.toml: it contains only comments; choose the disks
+    2. Edit /etc/abb-agent.toml: every setting is commented out; choose the disks
        (e.g. disks = ["system"]), schedule, excluded subvolumes and hooks.
     3. Start the service:  sudo systemctl enable --now abb-agent
        and, if you exclude subvolumes:  sudo systemctl enable abb-agent-fixup
