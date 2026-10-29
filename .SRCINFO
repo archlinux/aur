@@ -1,17 +1,21 @@
 pkgbase = kohl
 	pkgdesc = RoboKohl: a model playing Kohl, files included. Personality loose, judgment stone-cold sober.
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/KohlJary/kohl
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = bash
-	depends = gremlincore
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = gremlincore>=0.1.1
 	depends = claude-code
 	provides = more-hands
+	provides = robokohl
 	conflicts = greg
-	source = git+https://github.com/KohlJary/kohl.git#tag=v0.1.0
+	source = git+https://github.com/KohlJary/kohl.git#tag=v0.1.2
 	sha256sums = SKIP
 
 pkgname = kohl

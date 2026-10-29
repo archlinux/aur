@@ -1,29 +1,30 @@
 # Maintainer: Kohlbern Jary <kohlbern@gmail.com>
 # A tired, tired meatbag. There's only one of me. Now there's more.
 pkgname=kohl
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="RoboKohl: a model playing Kohl, files included. Personality loose, judgment stone-cold sober."
 arch=('any')
 url="https://github.com/KohlJary/kohl"
 license=('MIT')
-depends=('bash' 'gremlincore' 'claude-code')
-provides=('more-hands')
+depends=('python' 'gremlincore>=0.1.1' 'claude-code')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
+provides=('more-hands' 'robokohl')
 conflicts=('greg')
 source=("git+$url.git#tag=v$pkgver")
-makedepends=('git')
 sha256sums=('SKIP')
+
+build() {
+  cd "$pkgname"
+  # Arch's hatchling is newer than the PyPI cap; the cap is about PyPI metadata only.
+  python -m build --wheel --no-isolation --skip-dependency-check
+}
 
 package() {
   cd "$pkgname"
-  local share="$pkgdir/usr/share/kohl"
-  install -Dm755 kohl "$pkgdir/usr/bin/kohl"
-  sed -i "s/@VERSION@/$pkgver/" "$pkgdir/usr/bin/kohl"
-  install -Dm644 WAKE.md README.md KNOWN_ISSUES.md -t "$share"
-  install -Dm644 persona/*.md -t "$share/persona"
-  install -Dm644 commands/*.md -t "$share/commands"
-  install -Dm644 ledger/*.jsonl -t "$share/ledger"
-  install -Dm644 .claude-plugin/plugin.json -t "$share/.claude-plugin"
+  # One launcher for the AUR and PyPI: the persona ships inside the package
+  # (site-packages/kohl/share), read-only.
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # You can't own life. Four words. It's in the README.
 }
