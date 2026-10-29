@@ -1,6 +1,6 @@
 # Maintainer: Nelson Duarte <nelsonduarte@github.com>
 pkgname=pdfapps
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Fast, offline, subscription-free PDF editor with 13 built-in tools"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
     'ghostscript: advanced PDF compression'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nelsonduarte/PDFApps/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('75774bf68e54e38b5a0c946961671aa36bb4e82551e0c0a22b46d5d7851fb71f')
+sha256sums=('b8e2a2fd9f5bb66daead1095eb487d20f97b8825d5c853c30d67ffa5b39424c6')
 
 package() {
     cd "$srcdir/PDFApps-$pkgver"
@@ -48,11 +48,11 @@ EOF
     chmod +x "$pkgdir/usr/bin/$pkgname"
 
     # Desktop file
-    install -Dm644 flatpak/io.github.nelsonduarte.PDFApps.desktop \
+    install -Dm644 data/io.github.nelsonduarte.PDFApps.desktop \
         "$pkgdir/usr/share/applications/io.github.nelsonduarte.PDFApps.desktop"
 
     # AppStream metainfo
-    install -Dm644 flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml \
+    install -Dm644 data/io.github.nelsonduarte.PDFApps.metainfo.xml \
         "$pkgdir/usr/share/metainfo/io.github.nelsonduarte.PDFApps.metainfo.xml"
 
     # Icons
