@@ -1,3 +1,6 @@
 Millennium/
+pkg/
+src/
+millennium-*.pkg.tar*
 curl-install.sh
 *.patch

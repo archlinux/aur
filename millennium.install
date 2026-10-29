@@ -16,22 +16,42 @@ remove_deprecated_patches() {
     fi
 }
 
+for_each_steam_user() {
+    local callback="$1"
+    getent passwd | while IFS=: read -r _ _ uid _ _ home _; do
+        [ "$uid" -ge 1000 ] || continue
+        [ -d "$home/.local/share/Steam" ] || continue
+        "$callback" "$home"
+    done
+}
+
+link_millennium() {
+    local home="$1"
+    local steam="$home/.local/share/Steam"
+
+    ln -sf /usr/lib/millennium/libmillennium_bootstrap_x86.so   "$steam/ubuntu12_32/libXtst.so.6"
+    ln -sf /usr/lib/millennium/libmillennium_bootstrap_hhx64.so "$steam/ubuntu12_64/libXtst.so.6"
+
+    # SteamRT3 runs the client inside a pressure-vessel container where /usr is not the host's,
+    # so the link has to go through /run/host. Created unconditionally: install hooks run once,
+    # and a user who opts into RT3 later would otherwise have no link at all.
+    mkdir -p "$steam/steamrt64"
+    ln -sf /run/host/usr/lib/millennium/libmillennium_bootstrap_x64.so "$steam/steamrt64/libXtst.so.6"
+}
+
+unlink_millennium() {
+    local home="$1"
+    local steam="$home/.local/share/Steam"
+
+    rm -f "$steam/ubuntu12_32/libXtst.so.6"
+    rm -f "$steam/ubuntu12_64/libXtst.so.6"
+    rm -f "$steam/steamrt64/libXtst.so.6"
+    rm -f "$home/.steam/steam/.cef-enable-remote-debugging"
+}
+
 post_install() {
-    if [ -n "$SUDO_USER" ]; then
-        USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
-    else
-        USER_HOME="$HOME"
-    fi
-
-    # Remove any deprecated patches from the Steam binary
     remove_deprecated_patches
-
-    # Link millennium to the Steam runtime
-    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
-    ln -s /usr/lib/millennium/libmillennium_bootstrap_86x.so "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
-
-    # Setup Steam remote debugging
-    touch "${USER_HOME}/.steam/steam/.cef-enable-remote-debugging"
+    for_each_steam_user link_millennium
 }
 
 post_upgrade() {
@@ -39,20 +59,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    if [ -n "$SUDO_USER" ]; then
-        USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
-    else
-        USER_HOME="$HOME"
-    fi
-
-    # Remove the symlink created during post_install
-    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
-
-    # Remove the symlinks created during post_install
-    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
-    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libXtst.so.6"
-    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libmillennium_hhx64.so"
-
-    # Clean up legacy marker if present
-    rm -f "${USER_HOME}/.steam/steam/.cef-enable-remote-debugging"
+    for_each_steam_user unlink_millennium
 }
