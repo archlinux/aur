@@ -1,0 +1,22 @@
+pkgbase = python-fastuuid-bin
+	pkgdesc = Python bindings to Rust's UUID library (prebuilt wheel)
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/fastuuid/fastuuid
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = python-installer
+	depends = gcc-libs
+	depends = glibc
+	depends = python>=3.14
+	depends = python<3.15
+	provides = python-fastuuid=0.14.0
+	conflicts = python-fastuuid
+	noextract = fastuuid-0.14.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/cp314/f/fastuuid/fastuuid-0.14.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums_x86_64 = a8a0dfea3972200f72d4c7df02c8ac70bad1bb4c58d7e0ec1e6f341679073a7f
+	source_aarch64 = https://files.pythonhosted.org/packages/cp314/f/fastuuid/fastuuid-0.14.0-cp314-cp314-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+	sha256sums_aarch64 = aa75b6657ec129d0abded3bec745e6f7ab642e6dba3a5272a68247e85f5f316f
+
+pkgname = python-fastuuid-bin
