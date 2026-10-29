@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-b2sumssums=('fe8b6d46b2b713cf87637abd7173d42e9cfce89c1d397b2815be888f12b36c06')
+b2sums=('fe8b6d46b2b713cf87637abd7173d42e9cfce89c1d397b2815be888f12b36c06')
 
 package() {
 	npm install -g \

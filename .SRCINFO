@@ -8,5 +8,6 @@ pkgbase = diagnostic-languageserver
 	makedepends = npm
 	depends = nodejs
 	source = https://registry.npmjs.org/diagnostic-languageserver/-/diagnostic-languageserver-1.15.0.tgz
+	b2sums = fe8b6d46b2b713cf87637abd7173d42e9cfce89c1d397b2815be888f12b36c06
 
 pkgname = diagnostic-languageserver
