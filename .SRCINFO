@@ -1,6 +1,6 @@
 pkgbase = chest-backup
 	pkgdesc = Full-stack backup manager with web UI and scheduling
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/valens-dev/chest-backup
 	install = chest-backup.install
@@ -12,7 +12,7 @@ pkgbase = chest-backup
 	makedepends = python
 	depends = bun
 	optdepends = docker: container-based backup sources (sqlite-container, postgres-container)
-	source = chest-backup-1.0.1.tar.gz::https://github.com/valens-dev/chest-backup/archive/v1.0.1.tar.gz
-	sha256sums = d021c026889b0ee4fe7e79111dff34408ff0c11a87d239b597beb7f2e9ba6697
+	source = chest-backup-1.0.3.tar.gz::https://github.com/valens-dev/chest-backup/archive/v1.0.3.tar.gz
+	sha256sums = 45d6053cb89c42f3dcf8820e11a729c7abba384f8d12d8505cbf87caa57d290b
 
 pkgname = chest-backup

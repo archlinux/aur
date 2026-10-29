@@ -9,7 +9,7 @@
 #   3. Commit PKGBUILD + .SRCINFO to the AUR repo
 
 pkgname=chest-backup
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 install=chest-backup.install
 pkgdesc="Full-stack backup manager with web UI and scheduling"
@@ -28,7 +28,7 @@ optdepends=(
   'docker: container-based backup sources (sqlite-container, postgres-container)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/valens-dev/chest-backup/archive/v$pkgver.tar.gz")
-sha256sums=('d021c026889b0ee4fe7e79111dff34408ff0c11a87d239b597beb7f2e9ba6697')
+sha256sums=('45d6053cb89c42f3dcf8820e11a729c7abba384f8d12d8505cbf87caa57d290b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
