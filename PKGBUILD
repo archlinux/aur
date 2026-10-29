@@ -2,7 +2,7 @@
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 _app_id="com.bktus.$pkgname"
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A modern OpenPGP tool with a unique dual-engine core"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/corrosion-rs/corrosion.git'
         'git+https://github.com/lua/lua.git'
         'git+https://git.bktus.com/gpgfrontend/vmime.git')
-sha256sums=('be07ff4822037940fbc608aba9225ef2c904cca27fe2300f679688585f647a6e'
+sha256sums=('eb30b8a7e497d717daeca9550f2accc257496f2824b139415a8cec22fe97f16c'
             'SKIP'
             'SKIP'
             'SKIP'
