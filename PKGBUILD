@@ -1,5 +1,5 @@
 pkgname=oranglauncher
-pkgver=8.5
+pkgver=8.5.1
 pkgrel=1
 pkgdesc="Orange Launcher for Arch Linux (built from source with Nuitka)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=("OrangLaunch-${pkgver}.tar.gz::https://github.com/Orang-Studio/OrangLaun
         "orange.png"
         "LICENSE"
         "oranglauncher-mime.xml")
-sha256sums=('ec114c43ff2ca44d5831ae105d5bab9ae5a3637910726d4e04307e946a17a961'
+sha256sums=('ed315180e426ba632c4dfe720557a84061c515ff4eee74b32774eeb6a3cf3b95'
             'f9aca31c4c3e1e789c7047fed380019744cf13a1e03d7857ac0f7b488d8cc607'
             '23d8bec255eee86f4843603b5e46d1dada47ce30b05efb79fa1dd0ec4e781df0'
             'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968'
