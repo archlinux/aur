@@ -1,6 +1,6 @@
 pkgbase = deepseek-harness-bin
 	pkgdesc = DeepSeek Harness CLI and agent harness
-	pkgver = 0.2.1rc.2
+	pkgver = 0.2.1rc.4
 	pkgrel = 1
 	url = https://github.com/deepseek-ai/deepseek-harness
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = deepseek-harness-bin
 	conflicts = deepseek-harness
 	conflicts = deepseek-harness-git
 	options = !strip
-	source = dsh-0.2.1-rc.2.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-0.2.1-rc.2.tgz
-	sha256sums = 40e3d025c0240c4316ff42dee9bedc7709c0fb38aea10543b47076ed2af52e1d
+	source = dsh-0.2.1-rc.4.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-0.2.1-rc.4.tgz
+	sha256sums = 1fddead34d3c943b7a4eed1d614e14fa19925803455e28c5141645caf4b02d13
 
 pkgname = deepseek-harness-bin
