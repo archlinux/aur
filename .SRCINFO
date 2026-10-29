@@ -1,6 +1,6 @@
 pkgbase = mercury-modem
 	pkgdesc = Digital Radio OFDM HF modem protocol for ARQ data connections
-	pkgver = 1.9.20
+	pkgver = 1.9.21
 	pkgrel = 1
 	url = https://github.com/Rhizomatica/mercury
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mercury-modem
 	depends = hamlib
 	depends = hidapi
 	backup = etc/mercury/mercury.ini
-	source = mercury-1.9.20.tar.gz::https://github.com/Rhizomatica/mercury/archive/refs/tags/v1.9.20.tar.gz
-	sha256sums = 43edf9c056c6617e5d4e0547746a8f4eb87729b4bedfb16189dc849dfc622898
+	source = mercury-1.9.21.tar.gz::https://github.com/Rhizomatica/mercury/archive/refs/tags/v1.9.21.tar.gz
+	sha256sums = 785a84463581ba89420ff1a18b3f4ea88f92f2176fc13d16b899c1dbfdb883cd
 
 pkgname = mercury-modem
