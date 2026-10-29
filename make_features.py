@@ -29,18 +29,30 @@ Two things to know before you use it:
     every alternate, ordn turns H2O into H2O with an ordinal o, frac turns
     21/2 into two and a half) are refused unless --allow-risky is given.
 
+One tag can also mean different things in different fonts of the same set.
+Apple's ss03 is the centred colon in SF Pro and "un-slash the zero" in SF
+Mono; asking for it must not fail the build and must not be dropped for the
+fonts that can do what was asked. --skip names those cases, and every font
+gets exactly the tags it supports out of the requested list.
+
 Usage
 -----
     make_features.py --list FONT...
     make_features.py --features cv11,cv05 -o OUTDIR FONT...
     make_features.py --features cv11,cv05 --family "Inter Alt" -o OUTDIR FONT...
+    make_features.py --features ss03 --skip 'ss03=SF ?Mono|it un-slashes the zero there' ...
 
 OUTDIR is a directory; each output keeps its input file name. With --family
 the font also gets a new family name, so it can be installed next to the
 untouched original instead of replacing it.
+
+--skip TAG=REGEX[|WHY] (repeatable) leaves TAG out of the fonts whose family
+name or file name matches REGEX, and bakes it into all the others. The reason
+is printed, and so is a per-family summary of what each font ended up with.
 """
 import argparse
 import os
+import re
 import sys
 
 from fontTools.ttLib import TTFont
@@ -61,6 +73,70 @@ RISKY = {
     "hlig": "historical ligatures",
     "hist": "historical forms",
 }
+
+
+class SkipRule:
+    """A tag that must not be baked into some fonts of the set.
+
+    The same tag can mean different things in different families: Apple's
+    ss03 is colon->colon.uc in SF Pro and zero->zero.1 in SF Mono. Baking it
+    into a mixed set would give one family a change nobody asked for, while
+    refusing it would throw the tag away for the families that can do exactly
+    what was asked. Neither is right, so the tag is baked where it means what
+    it should and dropped (with the reason printed) where it does not.
+    """
+
+    def __init__(self, raw):
+        if "=" not in raw:
+            sys.exit(f"make_features.py: --skip '{raw}': expected TAG=REGEX")
+        tag, spec = raw.split("=", 1)
+        self.raw = raw
+        self.tag = tag.strip()
+        self.why = ""
+        if "|" in spec:
+            spec, self.why = spec.split("|", 1)
+        if not self.tag:
+            sys.exit(f"make_features.py: --skip '{raw}': no tag before '='")
+        try:
+            self.regex = re.compile(spec)
+        except re.error as e:
+            sys.exit(f"make_features.py: --skip '{raw}': bad regex: {e}")
+        self.hits = 0
+
+    def matches(self, ident):
+        return self.regex.search(ident) is not None
+
+
+def identity(font, path):
+    """Everything that names this font, for SkipRule matching.
+
+    The file name is included because Nerd Fonts-patched fonts carry
+    FontForge's own strings in nameID 16 ("sage.fill"), so the family name
+    alone is not reliable there, and because the patched name drops the space
+    ("SFMono Nerd Font Mono") - a rule written as 'SF ?Mono' matches both.
+    """
+    parts = [os.path.basename(path)]
+    for nid in (1, 16):
+        value = font["name"].getDebugName(nid)
+        if value:
+            parts.append(value)
+    return "  ".join(parts)
+
+
+def family_of(font):
+    """The name to show in the summary: the typographic family if it is
+    readable, else the legacy one.
+
+    nameID 16 first so a weight does not split the summary into one line per
+    style ("Inter", not "Inter Black"), but only when it is plain ASCII:
+    font-patcher leaves FontForge's own internal strings in nameID 16
+    ('sage.fill'), which fix_names.py repairs only after this script has run.
+    """
+    for nid in (16, 1):
+        value = font["name"].getDebugName(nid)
+        if value and value.isascii() and value.isprintable():
+            return value
+    return "?"
 
 
 def records_of(gsub, tag):
@@ -202,11 +278,19 @@ def main():
     ap.add_argument("--list", action="store_true",
                     help="list the features the font has, with script coverage")
     ap.add_argument("--allow-risky", action="store_true")
+    ap.add_argument("--skip", action="append", default=[], metavar="TAG=REGEX[|WHY]",
+                    help="leave TAG out of the fonts whose family or file name "
+                         "matches REGEX, and bake it everywhere else (repeatable). "
+                         "For a tag that means something else in another family.")
     ap.add_argument("-o", "--outdir", help="output directory (default: in place)")
     a = ap.parse_args()
 
     tags = [t for t in a.features.replace(",", " ").split()]
     present = {t: [] for t in tags}          # tags found, per tag
+    rules = [SkipRule(r) for r in a.skip]
+    dropped = {}                             # tag -> [(file, why)]
+    absent_in = {}                           # tag -> [files without it]
+    results = []                             # (family, applied tags, file)
 
     for path in a.fonts:
         if not os.path.exists(path):
@@ -244,9 +328,29 @@ def main():
         # file, but complain if no file has it at all (that is a typo).
         missing = [t for t in tags if t not in have]
         for tag in missing:
-            print(f"  note: {os.path.basename(path)} has no '{tag}' "
-                  f"feature; skipped for this file")
+            absent_in.setdefault(tag, []).append(os.path.basename(path))
+            if len(a.fonts) == 1:
+                print(f"  note: {os.path.basename(path)} has no '{tag}' "
+                      f"feature; skipped for this file")
         file_tags = [t for t in tags if t in have]
+
+        # Then the tags that are present but must not be baked here (see
+        # SkipRule): applied to every other font of the set instead.
+        ident = identity(font, path)
+        short = os.path.basename(path)
+        kept = []
+        for tag in file_tags:
+            hit = next((r for r in rules if r.tag == tag and r.matches(ident)), None)
+            if hit is None:
+                kept.append(tag)
+            else:
+                hit.hits += 1
+                dropped.setdefault(tag, []).append((short, hit.why))
+                if len(a.fonts) == 1:
+                    print(f"  note: {short}: '{tag}' left out on purpose"
+                          + (f" - {hit.why}" if hit.why else ""))
+        file_tags = kept
+
         for tag in file_tags:
             present[tag].append(os.path.basename(path))
             if tag in RISKY and not a.allow_risky:
@@ -262,6 +366,7 @@ def main():
                 out = os.path.join(a.outdir, os.path.basename(path))
                 with open(path, "rb") as fi, open(out, "wb") as fo:
                     fo.write(fi.read())
+            results.append((family_of(font), (), short))
             continue
 
         if a.target not in have:
@@ -310,10 +415,37 @@ def main():
         arrow = f" (was {base!r})" if base else ""
         print(f"  {os.path.basename(out)}: {name!r}{arrow} "
               f"{a.target}{created} += {detail}")
+        results.append((family_of(font), tuple(file_tags), short))
 
+    # ---- what each family ended up with --------------------------------
+    # Only for a set: with one file the lines above already say everything.
+    if a.features and len(a.fonts) > 1 and results:
+        print("== summary")
+        groups = {}
+        for fam, applied, base in results:
+            groups.setdefault((fam, applied), []).append(base)
+        for (fam, applied), files in sorted(groups.items()):
+            what = ",".join(applied) if applied else "nothing it could use"
+            print(f"  {fam:<28} {len(files):3} file(s)  {what}")
+        for tag in sorted(absent_in):
+            print(f"  '{tag}' missing from {len(absent_in[tag])} file(s), "
+                  f"skipped there")
+        for tag in sorted(dropped):
+            why = next((w for _, w in dropped[tag] if w), "")
+            print(f"  '{tag}' left out of {len(dropped[tag])} file(s) that have it"
+                  + (f": {why}" if why else ""))
+        for rule in rules:
+            if rule.hits == 0:
+                print(f"  note: --skip '{rule.raw}' matched no font in this set")
 
-
-    absent = [t for t in tags if not present[t]]
+    # A tag every font refused (only possible through --skip) is not a typo,
+    # it is a tag this set cannot honour; a tag no font has at all is.
+    never = [t for t in tags if dropped.get(t) and not present[t]]
+    if never:
+        print(f"  note: {', '.join(never)}: every font in this set that has it "
+              f"was excluded, so nothing was baked for it - not a typo, the "
+              f"families simply cannot do what the tag means elsewhere")
+    absent = [t for t in tags if not present[t] and not dropped.get(t)]
     if absent:
         sys.exit(f"make_features.py: no font in this set has "
                  f"{', '.join(absent)}; nothing was baked for it")

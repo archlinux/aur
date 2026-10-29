@@ -4,7 +4,7 @@ _geover=1.010
 _geocommit=685f38d7c9e86b0c8530204c97ddcaf6558dd17b
 _nfver=3.5.1
 pkgver="${_geover}"
-pkgrel=6
+pkgrel=7
 pkgdesc='Geologica, a humanist-geometric sans with Sharp/Cursive/Slant/Weight axes, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/geologica'
@@ -32,7 +32,7 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '53d9a3969632b52c7afc5b1968aab4b583c7933641ce3394735705a0cb8e450b'
             '5844c645e7d4f9a445be4ec9c049d2b84fa450efbf0179b47add06533561c478'
-            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632'
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             'cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1'
             'be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c'
