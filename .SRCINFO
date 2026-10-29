@@ -1,7 +1,7 @@
 pkgbase = python-baikal
 	pkgdesc = A graph-based functional API for building complex scikit-learn pipelines
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alegonz/baikal
 	arch = any
 	license = BSD-3

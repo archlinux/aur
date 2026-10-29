@@ -3,7 +3,7 @@
 pkgname="python-baikal"
 _name="${pkgname/python-/}"
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A graph-based functional API for building complex scikit-learn pipelines"
 url="https://github.com/alegonz/baikal"
 license=("BSD-3")
