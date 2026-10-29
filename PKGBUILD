@@ -3,7 +3,7 @@
 pkgname="dkimpy-milter"
 pkgver=1.2.3
 _rev=-2
-pkgrel=2
+pkgrel=3
 pkgdesc="DomainKeys Identified Mail (DKIM) milter in Python, with support for ed25519 signatures"
 url="https://launchpad.net/dkimpy-milter"
 license=("GPL2")
