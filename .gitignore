@@ -1,0 +1,7 @@
+# Ignore all makepkg build trees, bare git mirrors, logs, and built packages
+*
+
+# Track only AUR packaging files
+!.gitignore
+!.SRCINFO
+!PKGBUILD
