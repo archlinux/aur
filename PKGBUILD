@@ -1,4 +1,5 @@
-# Maintainer: Your AUR Username <your.email@example.com>
+# Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
+
 pkgname=zero-breach-toolkit
 pkgver=0.1.11
 pkgrel=1
