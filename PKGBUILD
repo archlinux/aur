@@ -12,20 +12,19 @@ _qt=qt6
 groups=()
 depends=(
     sh
-    gcc-libs
     glibc
-    graphicsmagick
     hicolor-icon-theme
-    imagemagick
+    libgcc
+    libstdc++
     ngspice
     python
     python-numpy
     python-matplotlib
     #     python-parse
     $_qt-base
-    $_qt-charts
     $_qt-svg
-    octave)
+    octave
+)
 makedepends=(
     cmake
     dos2unix
@@ -41,6 +40,7 @@ makedepends=(
     mesa
     flex
     bison
+    $_qt-charts
     $_qt-tools
 )
 optdepends=(
