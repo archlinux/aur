@@ -6,6 +6,8 @@ _commit=0faa853682a45868c9e08a5354a4761a187cf101
 _date=2025.10.23
 pkgver=2025.10.23.r9.95dc59b
 pkgrel=1
+# 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
+epoch=1
 pkgdesc='Osaka GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes'
 arch=('any')
 url="https://github.com/gaou-piou/${_repo}"
