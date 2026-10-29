@@ -1,6 +1,6 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = b769
+	pkgver = b770
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = redumper-bin
 	conflicts = redumper-gui
 	conflicts = redumper-git
 	conflicts = redumper
-	source = https://github.com/superg/redumper/releases/download/b769/redumper-b769-linux-x64.zip
+	source = https://github.com/superg/redumper/releases/download/b770/redumper-b770-linux-x64.zip
 	source = https://raw.githubusercontent.com/superg/redumper/main/README.md
 	source = https://raw.githubusercontent.com/superg/redumper/main/LICENSE
-	sha256sums = 801eb7f0c78e47ce6522e2f0ead6e0f688edff733e1dbf4975f422c3bc2b470e
+	sha256sums = 53bc7815d318b18c468fd47d04bd1d5644133a16c5a55cda040d12c45912ca9b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
