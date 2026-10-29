@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname="perl-sys-mmap"
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc="Use mmap to map in a file as a Perl variable"
 url="https://metacpan.org/release/Sys-Mmap"
@@ -11,7 +11,7 @@ license=("PerlArtistic" "GPL")
 arch=("any")
 depends=("perl")
 source=("https://cpan.metacpan.org/authors/id/T/TO/TODDR/Sys-Mmap-$pkgver.tar.gz")
-sha256sums=("1820ce2c89f1ab7357644f8db0f49f142f54526250fb1e235db10aa80f15e2cf")
+sha256sums=('fdec18081928b0b3ff688ec8b5d2d9bd1ffc81c2c3eb1fb3c1c56aac48a96f4c')
 options=("!emptydirs")
 
 build(){
