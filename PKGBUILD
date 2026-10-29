@@ -4,7 +4,7 @@ pkgbase=python-cdshealpix
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A healpix manipulation library"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ checkdepends=('python-pytest-benchmark'
               'python-matplotlib'
               'python-astropy-healpix')   # matplotlib
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('644a43fa05f677af0e491aa02e31c116')
+md5sums=('1fb574e29402a15f76d0144620153020')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -48,7 +48,8 @@ build() {
 
 #   msg "Building Docs"
 #   mkdir -p dist/lib
-#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-cp$(get_pyver)-cp$(get_pyver)-linux_${CARCH}.whl -C dist/lib
+##  bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-cp$(get_pyver)-cp$(get_pyver)-linux_${CARCH}.whl -C dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-cp*-linux_${CARCH}.whl -C dist/lib
 #   PYTHONPATH="../dist/lib" make -C docs html
 }
 
@@ -56,12 +57,13 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-cp$(get_pyver)-cp$(get_pyver)-linux_${CARCH}.whl -C dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-cp$(get_pyver)-cp$(get_pyver)-linux_${CARCH}.whl -C dist/lib
+    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-cp*-linux_${CARCH}.whl -C dist/lib
     pytest dist/lib || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-cdshealpix() {
-    depends=('python>=3.8' 'python-astropy')
+    depends=('python>=3.9' 'python-astropy')
 #   optdepends=('python-cdshealpix-doc: Documentation for CDSHealpix')
     cd ${srcdir}/${_pyname}-${pkgver}
 
