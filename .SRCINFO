@@ -1,7 +1,7 @@
 pkgbase = python-configspace
 	pkgdesc = Creation and manipulation of parameter configuration spaces for automated algorithm configuration and hyperparameter tuning
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/automl/ConfigSpace
 	arch = any
 	license = BSD-3
