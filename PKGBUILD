@@ -1,7 +1,7 @@
 # Maintainer: Kohlbern Jary <kohlbern@gmail.com>
 # A tired, tired meatbag. There's only one of me. Now there's more.
 pkgname=kohl
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="RoboKohl: a model playing Kohl, files included. Personality loose, judgment stone-cold sober."
 arch=('any')
