@@ -3,44 +3,38 @@
 
 pkgname="dbt-core"
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
-arch=("any")
+arch=("x86_64" "aarch64")
 url="https://www.getdbt.com/"
-license=("Apache")
-makedepends=("python")
-depends=(
-         "python-agate"
-         "python-betterproto-git"
-         "python-click"
-         "python-colorama"
-         "python-dbt-extractor-git"
-         "python-hologram"
-         "python-isodate"
-         "python-jinja"
-         "python-logbook"
+license=("Apache-2.0")
+# since 2.0 the Python package is the Rust engine (Fusion), built with maturin
+depends=("python"
          "python-mashumaro"
-         "python-minimal-snowplow-tracker"
-         "python-networkx"
-         "python-packaging"
-         "python-pathspec"
-         "python-protobuf"
-         "python-psycopg2"
-         "python-pytz"
-         "python-pyyaml"
-         "python-requests"
-         "python-sqlparse"
-         "python-typing_extensions"
-)
+         "python-msgpack")
+makedepends=("cargo"
+             "python-build"
+             "python-installer"
+             "python-maturin")
+options=("!lto")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz")
 b2sums=('bac2b52d7ca01d476cad49fc61cf425413201228a0eed79df7e1c8a44cb917fe738f0f36fc2539ca9e202fc6dd0c1669f1f384fa4878ad90e41934977fe919d5')
 
+prepare(){
+ cd "dbt-$pkgver"
+ export RUSTUP_TOOLCHAIN=stable
+ cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
+
 build(){
- cd "$pkgname-$pkgver"
- python -m build --wheel --no-isolation core
+ cd "dbt-$pkgver/crates/dbt-sa-python"
+ export RUSTUP_TOOLCHAIN=stable
+ export CARGO_TARGET_DIR="$srcdir/target"
+ python -m build --wheel --no-isolation
 }
 
 package(){
- cd "$pkgname-$pkgver"
- python -m installer --destdir="$pkgdir" core/dist/*.whl
+ cd "dbt-$pkgver/crates/dbt-sa-python"
+ python -m installer --destdir="$pkgdir" dist/*.whl
+ install -D -m 644 "$srcdir/dbt-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
