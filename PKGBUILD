@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbz2-rs-sys
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc="An implementation of bzip2 in pure Rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://github.com/trifectatechfoundation/libbzip2-rs"
@@ -10,7 +10,7 @@ license=('bzip2-1.0.6')
 makedepends=('cargo' 'cargo-c')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/trifectatechfoundation/libbzip2-rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c31bb5791769cabff1d70ab7f05eec6a71b78cba5b317f767e367982c5286efe')
+sha256sums=('e28c36fcc1b9125a448b5586a3c6ea85f55f9d7d86dd15da97d630c4f00c811b')
 
 
 prepare() {
@@ -19,7 +19,9 @@ prepare() {
   if [ ! -f "Cargo.lock" ]; then
     cargo update
   fi
-  cargo fetch
+  cargo fetch \
+    --locked \
+    --target host-tuple
 }
 
 check() {
