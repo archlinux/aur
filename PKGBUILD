@@ -3,7 +3,7 @@
 
 pkgname="harlequin"
 pkgver=2.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The SQL IDE for Your Terminal"
 url="https://harlequin.sh/"
 license=("MIT")
@@ -31,6 +31,10 @@ depends=('python'
          'python-black'
          'python-ruff'
          'mypy')
+makedepends=('python-build'
+             'python-installer'
+             'python-hatchling'
+             'python-wheel')
 optdepends=('harlequin-mysql: MySQL support'
             'harlequin-postgres: Postgres support'
             'harlequin-odbc: ODBC support')
@@ -57,9 +61,10 @@ package() {
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     cd "${pkgdir}"
 
-    patch -p1 < ../../fix-warnings.patch
+    patch -p1 < "${srcdir}/fix-warnings.patch"
 
-    sed -e 's/VALID_THEMES\.pop("[^"]*")/# &/ ' -i "./usr/lib/python3.14/site-packages/harlequin/colors.py"
+    sed -e 's/VALID_THEMES\.pop("[^"]*")/# &/ ' -i ".${site_packages}/harlequin/colors.py"
 }
