@@ -1,0 +1,16 @@
+pkgbase = mfile-bin
+	pkgdesc = Fast, static file(1) replacement with an embedded content-type model
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DawnMagnet/mfile
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	options = !strip
+	options = !debug
+	source_x86_64 = mfile-bin-0.1.0-x86_64.tar.gz::https://github.com/DawnMagnet/mfile/releases/download/v0.1.0/mfile_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0022781691d94c0ceb1ea09df92ca5bce45c5404c2d487e3710276f0ece3d65e
+	source_aarch64 = mfile-bin-0.1.0-aarch64.tar.gz::https://github.com/DawnMagnet/mfile/releases/download/v0.1.0/mfile_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 280bcb4d3d8f7fcdef2c4e97535ef7ebfe970095d5243f922e0758b13868988b
+
+pkgname = mfile-bin
