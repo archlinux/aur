@@ -277,6 +277,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
   # On Unix, PackageManagement used /tmp/Microsoft.PackageManagement for all users,
   # making it unusable for everyone but the first user running it
+  # Upstream discussion: https://github.com/PowerShell/PowerShell/issues/15330
   patch -Np1 -i "$srcdir/oneget-user-temp-folder.patch"
 
   cd "$srcdir"/PowerShell || exit
@@ -534,11 +535,12 @@ check() {
 
   # The tests delete help files from $PSHOME, and some only pass when run on their own, as tests
   # that ran earlier in the same session change which help content Get-Help finds
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28274
   rm engine/Help/HelpSystem.Tests.ps1
 
   # Test requires DSCv3 being available
   # DSCv3 is not part of the PowerShell Core anymore and needs to be installed
-  # See https://github.com/PowerShell/DSC
+  # See https://github.com/PowerShell/DSC and the `powershell-dsc` AUR package.
   rm dsc/dsc.profileresource.Tests.ps1
 
   # Test is extremely build dependent
@@ -546,7 +548,7 @@ check() {
   # and it will be inconsistent. This only makes sense in the context of their CI.
   rm Host/Startup.Tests.ps1
 
-  # We disable telemetry by default, which the telemetry tests don't expect.
+  # Our build does not include telemetry, so the associated tests fail of course.
   rm engine/Basic/Telemetry.Tests.ps1
 
   cd ../.. || exit
@@ -595,7 +597,7 @@ check() {
   dotnet restore test/tools/Modules/PSGalleryTestModules.csproj
   _copymodules "test/tools/Modules/PSGalleryTestModules.csproj" "$PWD/test/tools/Modules"
 
-  # Some tests are locale dependent, so we need to ensure
+  # Some tests are locale dependent, so we need to ensure the en-US locale is being used.
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
 
