@@ -65,6 +65,7 @@ build() {
     -DCMAKE_PREFIX_PATH=/opt/rocm \
     -DCMAKE_HIP_COMPILER=/opt/rocm/lib/llvm/bin/clang++ \
     -DCMAKE_HIP_ARCHITECTURES=gfx1151 \
+    -DGPU_TARGETS=gfx1151 \
     -DENGINE_ENABLE_HIP=ON \
     -DBUILD_TESTING=OFF \
     -DGUFO_BUILD_TOOLS=ON \
