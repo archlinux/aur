@@ -3,11 +3,11 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=kdeglance-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 # Upstream's own package release in the asset name, synced by pkg.sh. It moves
 # when upstream rebuilds a version that has already shipped.
-_relver=3
+_relver=1
 pkgdesc="Quick Look-style file preview for KDE Plasma and Dolphin (upstream binary, needs an x86-64-v3 CPU)"
 arch=('x86_64')
 url="https://github.com/AlexGraveler/KDEGlance"
@@ -35,7 +35,7 @@ install=kdeglance.install
 # The release asset is a pacman package built by upstream on CachyOS from its
 # packaging/arch/PKGBUILD. makepkg extracts it, only its usr/ is taken.
 source=("${url}/releases/download/v${pkgver}/kdeglance-${pkgver}-${_relver}-x86_64.pkg.tar.zst")
-sha256sums=('7cca89a9cabade7f278c478252d3f54e83f655837f0ba8d3ac7b7d2dc3a94c3f')
+sha256sums=('4557e74e2bed503ca14b319570f51c4bd2d552007216032d2c0efb172964b165')
 
 prepare() {
   # The viewer is built for x86-64-v3, and glibc refuses to start it on an
