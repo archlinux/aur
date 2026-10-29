@@ -1,7 +1,7 @@
 pkgbase = mkdocs-macros-plugin
 	pkgdesc = MkDocs plugin to use variables and macros in markdown files
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fralau/mkdocs_macros_plugin
 	arch = any
 	license = MIT
