@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="xsnow"
-pkgver=3.9.0
+pkgver=3.9.6
 pkgrel=1
 pkgdesc="Let it snow on your desktop"
 url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
@@ -10,7 +10,7 @@ arch=("x86_64" "i386" "armv7h" "aarch64")
 conflicts=("xsnow-bin" "xsnow-legacy" "xsnow-comp-patch-git")
 depends=("atk" "cairo" "gtk3" "gsl" "libx11" "libxpm" "libxml2")
 source=("https://www.ratrabbit.nl/downloads/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('15bea3ac436631e9914db7941cc2f475dd2353fb20b4d4d736182edeeeef8ae605431ad9d9b9bd876e88a33186355ea51dd718dba8b1097681d2df3a379a2817')
+b2sums=('0a486db5250ed4ac2477e395599a4dfd7a99c222ee1a9248f587f147194f6789aec400dc1d347a7b2148a25d090760da77e10702a499d8bb9ab534803b36ceb7')
 
 build(){
  cd $pkgname-$pkgver
