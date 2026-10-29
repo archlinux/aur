@@ -5,7 +5,7 @@
 # SRS is an independent project, not affiliated with SIV or its author.
 
 pkgname=srs-sysinfo
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 558 report items, user guide, CPU and GPU burn-in, benchmarks"
 arch=('x86_64')
@@ -41,10 +41,11 @@ optdepends=(
   'rocm-hip-runtime: ROCm / HIP back end of GPU Burnin and the GPU Compute comparison (loaded at run time; hipblas for the library rows)'
   'opencl-icd-loader: OpenCL back end of GPU Burnin and the GPU Compute comparison (loaded at run time; plus an OpenCL driver)'
   'clblast: OpenCL matrix library rows of the GPU benchmarks (loaded at run time)'
-  'cuda: CUDA back end of GPU Burnin and the GPU Compute comparison (NVIDIA; loaded at run time)'
+  'nvidia-utils: CUDA back end of GPU Burnin and the GPU Compute comparison (NVIDIA driver library libcuda, loaded at run time; ZLUDA works instead on AMD)'
+  'cuda: NVIDIA runtime compiler (libnvrtc) for SRS CUDA kernels, only a fallback since 2.3 (not needed with ZLUDA; may remove ZLUDA); can be installed later from Options'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ebc0dfcf7623b45e3c205e92efc51b71bd2f9d5356f335eeb3d5d9b4567db93f')
+sha256sums=('7facc898c886b04085fe27b6129219922c7e638db4b04b1769117b471bb14e48')
 
 build() {
   cd "$pkgname-$pkgver"

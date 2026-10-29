@@ -1,6 +1,6 @@
 pkgbase = srs-sysinfo
 	pkgdesc = Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 558 report items, user guide, CPU and GPU burn-in, benchmarks
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/eugenesflanagin-spec/srs-sysinfo
 	arch = x86_64
@@ -43,8 +43,9 @@ pkgbase = srs-sysinfo
 	optdepends = rocm-hip-runtime: ROCm / HIP back end of GPU Burnin and the GPU Compute comparison (loaded at run time; hipblas for the library rows)
 	optdepends = opencl-icd-loader: OpenCL back end of GPU Burnin and the GPU Compute comparison (loaded at run time; plus an OpenCL driver)
 	optdepends = clblast: OpenCL matrix library rows of the GPU benchmarks (loaded at run time)
-	optdepends = cuda: CUDA back end of GPU Burnin and the GPU Compute comparison (NVIDIA; loaded at run time)
-	source = srs-sysinfo-2.2.2.tar.gz::https://github.com/eugenesflanagin-spec/srs-sysinfo/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = ebc0dfcf7623b45e3c205e92efc51b71bd2f9d5356f335eeb3d5d9b4567db93f
+	optdepends = nvidia-utils: CUDA back end of GPU Burnin and the GPU Compute comparison (NVIDIA driver library libcuda, loaded at run time; ZLUDA works instead on AMD)
+	optdepends = cuda: NVIDIA runtime compiler (libnvrtc) for SRS CUDA kernels, only a fallback since 2.3 (not needed with ZLUDA; may remove ZLUDA); can be installed later from Options
+	source = srs-sysinfo-2.3.0.tar.gz::https://github.com/eugenesflanagin-spec/srs-sysinfo/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 7facc898c886b04085fe27b6129219922c7e638db4b04b1769117b471bb14e48
 
 pkgname = srs-sysinfo
