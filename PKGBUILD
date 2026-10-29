@@ -3,7 +3,7 @@
 
 pkgname=gomodel
 pkgver=0.1.109
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance AI gateway with caching, cost tracking, budgets, rate limits, virtual models and plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ENTERPILOT/GoModel"
