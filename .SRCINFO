@@ -1,0 +1,14 @@
+pkgbase = dotnet-system-data-sqlclient
+	pkgdesc = The legacy SQL Server data provider for .NET, System.Data.SqlClient (NuGet package)
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = https://github.com/dotnet/maintenance-packages
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = jq
+	source = maintenance-packages-84b081710c66cc560b77d4de38cee493c3a38e9d.tar.gz::https://github.com/dotnet/maintenance-packages/archive/84b081710c66cc560b77d4de38cee493c3a38e9d.tar.gz
+	sha512sums = 1aaf6686b04a0ef15dc6228bfa0d8026065bc6a2bffcaac0d26754b6e27b029c1d895d84891e896545c9d6460e71f0b760cbd609f4fb54bc66b350cb2a98eb30
+	b2sums = 4aed705ecd4cad427cd7d1fd7ff1bbebcfa14cdf34d9a4ec1c9b90a1b92ed042dd244216b1599c45d92db9cee7753c7bfc73d784505dbc6e8340c42a49a4e580
+
+pkgname = dotnet-system-data-sqlclient

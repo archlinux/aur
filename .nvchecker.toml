@@ -1,0 +1,4 @@
+[dotnet-system-data-sqlclient]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/system.data.sqlclient/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'
