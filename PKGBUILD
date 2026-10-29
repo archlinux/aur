@@ -2,7 +2,7 @@
 
 pkgname=g0v0
 pkgver=2026.1022.1
-pkgrel=1
+pkgrel=2
 pkgdesc="g0v0! -- free and open rhythm experience! (a community project based on osu!lazer codebase)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
@@ -18,14 +18,14 @@ provides=(g0v0)
 conflicts=(g0v0-bin g0v0-git)
 options=(!strip !debug)
 source=(
-  "g0v0-2026.923.0.tar.gz::https://github.com/GooGuTeam/g0v0/archive/refs/tags/v2026.923.0-g0v0.tar.gz"
+  "g0v0-2026.1022.1.tar.gz::https://github.com/GooGuTeam/g0v0/archive/refs/tags/v2026.1022.1-g0v0.tar.gz"
   "icon.png"
   "https://raw.githubusercontent.com/GooGuTeam/g0v0-resources/master/LICENCE.md"
   "g0v0.desktop"
   "g0v0-uri-handler.desktop"
   "g0v0"
 )
-sha256sums=('33b5ac3e9bbadfba43220f6963a6197b7b3d12f8bea6d999e7f0bf07dea3a0f4'
+sha256sums=('7db2b2c90c203c3d2dab656f1951e85122a9002db9b8d829b5e7ee52e1ea54a8'
             'c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '96276add86bd921e64255ce7e5487599dbe13e6e48e96a6af1a58cc99c187648'
             'b1d3d8ad2b05ff2f461d15ff8fd73ce6ffbb75568dae2bd123b0599292259c53'
