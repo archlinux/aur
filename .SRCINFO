@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-gnome-clipboard-history-git
 	license = MIT
 	makedepends = git
 	makedepends = zip
-	depends = gnome-shell>=1:46
+	depends = gnome-shell>=1:48
 	provides = gnome-shell-extension-gnome-clipboard-history
 	conflicts = gnome-shell-extension-gnome-clipboard-history
 	conflicts = gnome-shell-extension-clipboard-indicator-git

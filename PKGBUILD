@@ -10,7 +10,7 @@ license=(
   'MIT'
 )
 depends=(
-  'gnome-shell>=1:46'
+  'gnome-shell>=1:48'
 )
 makedepends=(
   'git'

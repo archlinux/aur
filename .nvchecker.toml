@@ -1,0 +1,4 @@
+[gnome-shell-extension-gnome-clipboard-history-git]
+source      = "git"
+git         = "https://github.com/SUPERCILEX/gnome-clipboard-history.git"
+use_commit  = true

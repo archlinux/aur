@@ -1,5 +1,16 @@
+# Ignore everything
 *
-!PKGBUILD
+
+# But not these files...
 !.gitignore
+!PKGBUILD
 !.SRCINFO
-!chroot-build.sh
+!LICENSE
+!.nvchecker.toml
+!/keys
+!/keys/pgp
+!/keys/pgp/*.asc
+!/LICENSES
+!/LICENSES/*.txt
+!REUSE.toml
+!*.patch
