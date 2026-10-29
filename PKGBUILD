@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=storagesifter
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A fast, GPU-accelerated disk-usage treemap visualizer'
 arch=(x86_64)
@@ -20,7 +20,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 optdepends=('xdg-utils: open file manager/links from within the app')
 source=(https://github.com/Fopull-LLC/StorageSifter/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('7e0c513518aaab89cde4afd54ee2d3c21d614279f61ca7dbb467c21def9d1448191fc68d0c8cc46e81edcea6d7c24cd67ff3c4e1f895a4cd3eedad794326e0f8')
+b2sums=('49760c46cb1ec439593d87b4eb719e821a8a93e3f2d6ec7c7464ddcb470af7c077192376440dafa89aa5afdc341bd7cee8d1820a526cffda57fddda9cbeaa946')
 
 prepare() {
     cd StorageSifter-$pkgver
