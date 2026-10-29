@@ -1,6 +1,6 @@
 pkgbase = edamame-bin
 	pkgdesc = A Terminal Markdown editor that stays rendered while you edit
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/mijowi/edamame
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = edamame-bin
 	provides = edamame
 	conflicts = edamame
 	options = !strip
-	source_x86_64 = edamame-x86_64-0.1.6.txz::https://github.com/mijowi/edamame/releases/download/v0.1.6/edamame-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 81db5aa77387e2c9c9e7a3e7f8648ca42b12ca02463e18b732863fef16a4a105
-	source_aarch64 = edamame-aarch64-0.1.6.txz::https://github.com/mijowi/edamame/releases/download/v0.1.6/edamame-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 425fa2d71740ebab319340b888fdb87f58f0ed16079b80bbf10a327c554e2835
+	source_x86_64 = edamame-x86_64-0.1.7.txz::https://github.com/mijowi/edamame/releases/download/v0.1.7/edamame-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 7962f15a2d9f758b1161fb5c836a0bb2fd5331ef5ef24e3c2e55e4584f8d7eee
+	source_aarch64 = edamame-aarch64-0.1.7.txz::https://github.com/mijowi/edamame/releases/download/v0.1.7/edamame-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 33d3c471976d2ddb5f232482e860bfcf8d839520b4d671af4349bcf680c62e33
 
 pkgname = edamame-bin
