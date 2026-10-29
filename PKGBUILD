@@ -1,71 +1,53 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=python-nv-one-logger-pytorch-lightning-integration
-_repo=nv-one-logger
-_tag=nv-one-logger-pytorch-lightning-integration-v2.3.0
-pkgver=2.3.0
-pkgrel=2
+_srcname=nv_one_logger_pytorch_lightning_integration
+pkgver=2.3.1
+pkgrel=1
 pkgdesc='NVIDIA OneLogger PyTorch Lightning integration: wires telemetry into Lightning trainers'
 arch=('any')
 url='https://github.com/NVIDIA/nv-one-logger'
 license=('Apache-2.0')
 depends=(
-    'python>=3.9'                              # upstream pins <3.14 but no real 3.14 ABI break observed
-    'python-nv-one-logger-core'                # AUR
-    'python-nv-one-logger-training-telemetry'  # AUR
+    'python>=3.9'
+    'python-nv-one-logger-core>=2.3.1'                # AUR
+    'python-nv-one-logger-training-telemetry>=2.3.1'  # AUR
     'python-strenum'                           # AUR
-    'python-lightning'                         # AUR
+    'python-setuptools>=79.0.0'
+    'python-lightning>=2.2.0'
 )
 makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
-    'python-setuptools'
+    'python-poetry-core'
 )
-source=("$_tag.tar.gz::https://github.com/NVIDIA/$_repo/archive/refs/tags/$_tag.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/n/${_srcname}/${_srcname}-${pkgver}.tar.gz"
         "lightning-checkpoint-types.patch")
-sha256sums=('d55275d6bd27cf7bc14d5a3c2d7abecbe630093196af5c4dfdc8af6e75e5680f'
-            'a2b574e5a71eaebf4a3e2795c20d079405fd3de63675160feb80c89bff9a6522')
+sha256sums=('b32d99b6a8f02a16538bcade939b0a7edd7249e936aacefe336b5519447340c3'
+            '67a3717c7224021e99201abfbce16c9dc84017b09c2856b2c635f7a892f2f6e0')
 
 prepare() {
-    patch -d "$_repo-$_tag" -p1 < "$srcdir/lightning-checkpoint-types.patch"
-    # Replace upstream's pre-PEP-621 Poetry pyproject.toml with a
-    # setuptools-backed one (poetry-core 2.x in Arch rejects the old
-    # schema). Also drops upstream's `python <3.14` pin — see comment in
-    # the original pyproject; no real 3.14 ABI break observed in this
-    # subpackage's code.
-    cat > "$_repo-$_tag/nv_one_logger/one_logger_pytorch_lightning_integration/pyproject.toml" <<'EOF'
-[build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "nv-one-logger-pytorch-lightning-integration"
-version = "2.3.0"
-description = "NVIDIA OneLogger PyTorch Lightning integration"
-readme = "README.md"
-license = "Apache-2.0"
-requires-python = ">=3.9"
-dependencies = [
-    "nv-one-logger-core>=2.3.0",
-    "nv-one-logger-training-telemetry>=2.3.0",
-    "StrEnum>=0.4.0",
-    "lightning>=2.2.0",
-]
-
-[project.urls]
-Homepage = "https://github.com/NVIDIA/nv-one-logger"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-EOF
+    cd "$_srcname-$pkgver"
+    # Keep upstream metadata while allowing Arch's Poetry 2 build backend.
+    sed -i -e 's/\[project.urls\]/[tool.poetry.urls]/' \
+        -e 's/poetry-core>=1.9.1,<2.0.0/poetry-core>=1.9.1/' \
+        -e 's/, "python-semantic-release>=9.8.3,<10.0"//' pyproject.toml
+    # The Arch build and import checks exercise the system Python version.
+    sed -i 's/python = ">=3.9,<3.14"/python = ">=3.9"/' pyproject.toml
+    patch -Np1 -i "$srcdir/lightning-checkpoint-types.patch"
 }
 
 build() {
-    cd "$_repo-$_tag/nv_one_logger/one_logger_pytorch_lightning_integration"
+    cd "$_srcname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
+check() {
+    PYTHONPATH="$srcdir/$_srcname-$pkgver/src" python -c \
+        'from nv_one_logger.training_telemetry.integration.pytorch_lightning import OneLoggerPTLTrainer'
+}
+
 package() {
-    cd "$_repo-$_tag/nv_one_logger/one_logger_pytorch_lightning_integration"
+    cd "$_srcname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

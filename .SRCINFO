@@ -1,22 +1,23 @@
 pkgbase = python-nv-one-logger-pytorch-lightning-integration
 	pkgdesc = NVIDIA OneLogger PyTorch Lightning integration: wires telemetry into Lightning trainers
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://github.com/NVIDIA/nv-one-logger
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
+	makedepends = python-poetry-core
 	depends = python>=3.9
-	depends = python-nv-one-logger-core
-	depends = python-nv-one-logger-training-telemetry
+	depends = python-nv-one-logger-core>=2.3.1
+	depends = python-nv-one-logger-training-telemetry>=2.3.1
 	depends = python-strenum
-	depends = python-lightning
-	source = nv-one-logger-pytorch-lightning-integration-v2.3.0.tar.gz::https://github.com/NVIDIA/nv-one-logger/archive/refs/tags/nv-one-logger-pytorch-lightning-integration-v2.3.0.tar.gz
+	depends = python-setuptools>=79.0.0
+	depends = python-lightning>=2.2.0
+	source = https://files.pythonhosted.org/packages/source/n/nv_one_logger_pytorch_lightning_integration/nv_one_logger_pytorch_lightning_integration-2.3.1.tar.gz
 	source = lightning-checkpoint-types.patch
-	sha256sums = d55275d6bd27cf7bc14d5a3c2d7abecbe630093196af5c4dfdc8af6e75e5680f
-	sha256sums = a2b574e5a71eaebf4a3e2795c20d079405fd3de63675160feb80c89bff9a6522
+	sha256sums = b32d99b6a8f02a16538bcade939b0a7edd7249e936aacefe336b5519447340c3
+	sha256sums = 67a3717c7224021e99201abfbce16c9dc84017b09c2856b2c635f7a892f2f6e0
 
 pkgname = python-nv-one-logger-pytorch-lightning-integration
