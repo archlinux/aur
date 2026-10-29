@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev-autobuild-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
-	pkgver = 2.5.9+autobuild.1028.3953e12
+	pkgver = 2.5.9+autobuild.1029.de22706
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
@@ -19,7 +19,7 @@ pkgbase = clash-verge-rev-autobuild-bin
 	conflicts = clash-verge-bin
 	conflicts = clash-verge-rev-bin
 	options = !strip
-	source_x86_64 = Clash.Verge_2.5.9+autobuild.1028.3953e12_amd64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.5.9+autobuild.1028.3953e12_amd64.deb
-	sha256sums_x86_64 = 19905b68007b98c3260deaf2d851f4a74ed0479686bdf92a395d35e97de2f935
+	source_x86_64 = Clash.Verge_2.5.9+autobuild.1029.de22706_amd64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.5.9+autobuild.1029.de22706_amd64.deb
+	sha256sums_x86_64 = 5b476777e706b0c5759b28acfc7a40826a756aab801d7ff7073b028883237408
 
 pkgname = clash-verge-rev-autobuild-bin
