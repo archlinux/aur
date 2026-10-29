@@ -1,8 +1,9 @@
 pkgbase = opentubex-bin
 	pkgdesc = A highly customizable, privacy-focused desktop YouTube client
-	pkgver = 0.37.0
+	pkgver = 0.37.1
 	pkgrel = 1
 	url = https://opentubex.org
+	changelog = opentubex.changelog
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
@@ -13,9 +14,9 @@ pkgbase = opentubex-bin
 	conflicts = opentubex
 	options = !strip
 	options = staticlibs
-	source_x86_64 = opentubex-bin-0.37.0-amd64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.0-beta/opentubex_0.37.0_beta_amd64.deb
-	sha256sums_x86_64 = e3c147803d0de1d5255765d459a94c8bd80efe5203c1d1425826236ea44fe8ad
-	source_aarch64 = opentubex-bin-0.37.0-arm64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.0-beta/opentubex_0.37.0_beta_arm64.deb
-	sha256sums_aarch64 = 285ac39993a24ca48d0a6bedca74eaade201c40b9db369f9bb6c8445401ee77b
+	source_x86_64 = opentubex-bin-0.37.1-amd64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.1-beta/opentubex_0.37.1_beta_amd64.deb
+	sha256sums_x86_64 = f48ae05f42dd783456461c81636686ee41857951568f52c57e3a64503d18f2c6
+	source_aarch64 = opentubex-bin-0.37.1-arm64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.1-beta/opentubex_0.37.1_beta_arm64.deb
+	sha256sums_aarch64 = b1c020ad32b938521519da2b0d45d2ff601affb3ae74cbd74dae99d65207ef2a
 
 pkgname = opentubex-bin

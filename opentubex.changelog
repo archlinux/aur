@@ -1,0 +1,204 @@
+opentubex (0.37.1) stable; urgency=medium
+
+  [ More improvements ]
+  * Queued videos now show their length, music badge, views and upload date like
+    playlist videos. A ⋮ menu moves or removes them, and dragging slides the
+    other videos aside.
+  * Removed the "Match top bar with main color" setting, which made the header
+    hard to read with many themes
+  * Added configurable SponsorBlock submission shortcuts, with ; to start or end
+    a segment and ' to open the submission menu.
+  * The buttons below the video are easier to tap on touch screens
+  * Quick Settings now start with playback speed and watch history instead of
+    language, region, main color and thumbnail size. If you never customized
+    Quick Settings, you get the new set automatically.
+  * DeArrow now has its own section in Add-ons settings, and SponsorBlock's
+    excluded channels only appear while SponsorBlock is enabled.
+  * Player settings are now grouped into sections, and long select labels are no
+    longer cut off
+  * The date, views and category below the video now use icons, like video
+    cards.
+  * Tooltips now use your theme's colors, font and corner rounding instead of
+    the plain system style
+  * F-Droid, SideStore, Flatpak and FlatPark listings now show what's new in
+    each stable release, and the deb, rpm and AUR packages include it as their
+    changelog
+  * Dragging the seek bar shows a strip of frames around where you'll land, and
+    fullscreen swipe-to-seek now shows the same seek bar preview instead of a
+    popup in the middle of the screen.
+  * Round icon buttons, such as Share, Refresh and the download actions, now use
+    soft tinted backgrounds instead of bright filled circles with shadows
+  * On Android, links from other sites shared with OpenTubeX now open with
+    yt-dlp, and video links from popular sites such as Instagram, TikTok and
+    Reddit can open directly in the app
+  * Show verified and official artist badges, YouTube's search spelling
+    corrections, the music credited in a video, shared community posts,
+    information panels under videos, hashtag video and channel counts, and a
+    Music tab on Trending
+  * On Android, syncs now finish while the app is in the background, changes
+    made while it is hidden reach your other devices without reopening it, and
+    returning to the app no longer shows a false "Sync failed: timed out"
+    message.
+  * Press B to add the current video to your quick bookmark playlist or remove
+    it, and Shift+S to save it to a playlist
+  * Hashtag pages have a Shorts tab that keeps loading more Shorts
+  * While dragging the seek bar, pull up past the middle of the strip of frames
+    to seek precisely through longer videos, drag back down to return to normal
+    seeking, and press Esc to cancel the drag.
+  * Choose how much video loads ahead, stays loaded for rewinding, and must load
+    before playing, with Data Saver, Default and Smooth Playback presets in
+    Settings → Advanced → Buffering
+  * New Always use backup media server setting in Advanced settings loads videos
+    from YouTube's backup server right away, for example when your internet
+    provider's cache is often slow
+  * Import Playlists can import several YouTube Takeout playlist CSVs at once,
+    with their original titles and descriptions when you also select
+    playlists.csv
+  * New Pause on Stream Recovery setting: when the player recovers from a stream
+    error, it pauses and keeps the error on screen with a Copy button until you
+    dismiss it
+  * The Android and iOS apps keep tab thumbnails and channel avatars after a
+    restart and show them offline, and you can see and clear this cache in
+    Storage settings
+  * The Seek history menu shows how long ago you left each position.
+  * The Add to playlist prompt shows which videos you're adding, and its search,
+    switches and sort fit in one row
+  * Recommended for you now draws on your whole watch history and saved videos
+    instead of repeating suggestions based on the same few videos, and uses more
+    specific searches and topic labels
+  * The comment filter and reload buttons are now the same size as the refresh
+    button on the subscriptions pages
+  * On Android, background tabs now stay loaded until memory runs low
+    (adjustable in Advanced settings), tab previews no longer turn black while a
+    page is loading, and the tab organizer button no longer stays highlighted
+    after you pick a tab.
+  * The Playback speed, Zoom, Volume boost and Theatre mode tiles in the player
+    menu are highlighted while they are changed from their defaults
+  * Sync finishes faster after small changes, and with an updated sync server, a
+    watch history edit uploads only that entry instead of your whole history
+  * The "Playing in Picture-in-Picture" message is now larger, centered on the
+    player and shown with an icon
+
+  [ Fixed bugs ]
+  * Pinching on Android no longer zooms the app interface with WebViews such as
+    Vanadium
+  * With the custom title bar, middle-clicking the empty tab strip opens a tab
+    again on Windows, maximized Settings no longer puts buttons under the window
+    controls, the screen's top edge reaches the tabs of a maximized window, and
+    the window controls no longer cover a Full Window video on Windows
+  * Android: Fullscreen entered by rotating the phone stays on when the next
+    video starts
+  * The resolution menu lists every codec a video is available in, including
+    ones your device can only decode in software, such as AV1 on GPUs without
+    AV1 decoding.
+  * Keep video tab titles when a channel loads behind the video, and restore
+    channel names when returning to their pages
+  * Fixed missing comments and video descriptions when Android restores an open
+    video at startup.
+  * Fixed repeated player reloads, videos failing to load without thumbnail
+    previews, and broken channel lists when video or TV-show details are
+    incomplete.
+  * Fixed comment sorting and reload buttons looking enabled while offline.
+  * Retry timed-out stream format checks before completing playlist preloading.
+  * Fixed overflowing playlist thumbnail controls with a three-dot menu for
+    reorder and remove actions. Playlist videos now show icon-labeled metadata
+    like the queue and retain available view counts. Playlist positions appear
+    in the top-left corner of each thumbnail.
+  * Fixed unnecessary SABR player reloads caused by split stream headers and
+    limited buffering of oversized stream responses.
+  * Fixed gray watch-page action icons so they use the light or dark theme
+    foreground color.
+  * Videos played through Invidious no longer show a false age-restricted badge
+  * Fixed Load More on Home stopping after 96 videos, downloaded playlist videos
+    streaming online after Next, missing Shorts notifications on Android while
+    the app is closed, missing notifications for channels outside the active
+    profile, SRT files with dot timestamps failing to load, playlist searches
+    carrying over to the next playlist, Yattee error toasts on videos with
+    comments turned off, and hidden windows not returning from the macOS Dock.
+  * The description's "...more" and copy buttons no longer show through the
+    share menu and other video toolbar menus
+  * With theatre as the default viewing mode, chapters, the transcript and
+    SponsorBlock open below the video again when the watch page has no sidebar
+  * Swiping between tabs on the app bar no longer makes the incoming page jump
+    to a different scroll position on Android
+  * Subscribing to a channel no longer opens its subscription settings when you
+    only have one profile.
+  * The player preview in Customize interface now shows the center play button
+    and the player menu while playing, and matches the compact controls and menu
+    on phones and narrow windows
+  * Videos on Android and iOS no longer wait up to 25 seconds for a SABR
+    countdown before they start playing.
+  * On narrow screens, the buttons below the video now split into one row per
+    group instead of wrapping with a stray divider
+  * Android: yt-dlp playback works after a fresh install even when GitHub limits
+    update requests, because the app bundles a current yt-dlp and updates it
+    without GitHub's rate-limited API
+  * Tab Organizer previews on Android no longer miss channel banners and avatars
+    that load after the page.
+  * Fixed Android downloads and other yt-dlp features disappearing when the
+    saved download history file was empty
+  * Videos now start when YouTube's assigned media server doesn't respond, for
+    example an unreachable cache at your internet provider, because OpenTubeX
+    switches to the backup server YouTube names
+  * Volume, brightness and speed indicators appear over the video instead of the
+    middle of the screen when the queue or another side panel is open in
+    fullscreen
+  * Links in update release notes open in your browser again, and imported
+    settings, backups and remote content are handled more safely. Download
+    templates and the IP block recovery script are no longer exported, backed up
+    or synced
+  * Fixed a thin line of the page showing between the minimized player and the
+    navigation bar on Android when UI Scale isn't 100%
+  * Fixed YouTube Takeout ZIP imports finding no data when the export was in a
+    language other than English
+  * Linux: OpenTubeX no longer shows a main process error when the desktop
+    session starts it while D-Bus is still slow, such as when KDE Plasma
+    restores the previous session at login, and KDE Wayland minimize detection
+    now recovers in that case
+  * Links in prompts, fullscreen player panels and expanded Super Chat messages
+    open in your browser, and theme author links open once and follow your
+    External Link Handling setting
+  * Managed yt-dlp and FFmpeg downloads now say when antivirus software removed
+    or blocked the downloaded file, and their error messages are translated
+  * The Settings window header border no longer gets thinner after scrolling a
+    settings page
+  * Player submenu titles, including Caption Appearance, are now vertically
+    centered in their headers
+  * AiSList now hides or flags collaboration videos when any of their channels
+    is on the list
+  * Search results now show upload times for auto-generated Topic videos
+  * The Shorts transcript panel no longer shows a second scrollbar or cuts off
+    its last lines.
+  * Jumping to a setting from Account activity no longer opens its help tooltip,
+    which got stuck at the top of the window
+  * Scheduled live streams and premieres now stay where they were announced in
+    the New feed, Home, the Live tab and Invidious feeds when Show Scheduled
+    Live Streams / Premieres First is off
+  * The buttons at the bottom of the captions menu now have rounded corners that
+    fit inside the player menu
+  * Videos released to everyone after a members-only period now show their
+    public release date in Subscriptions and Home recommendations
+  * Pressing Esc while a dialog or the command palette is open over a fullscreen
+    video now closes it instead of leaving the app stuck behind a cut-off dialog
+  * Members-only videos no longer appear on channel pages, in search, related
+    videos or Home unless you turn on "Members only" in that channel's
+    subscription settings
+  * The music visualizer no longer goes flat on Android when a track is played
+    again after it ends
+  * Seeking a paused video that still shows its thumbnail now shows the video at
+    the new position
+  * YouTube links in a channel's About tab open in OpenTubeX instead of the
+    browser
+  * The grid player menu no longer grows to the full height of the player, and
+    its pages keep their header in view while you scroll long lists like audio
+    tracks or caption languages
+  * Videos no longer loop through the server countdown for minutes when YouTube
+    stops sending media after the first minute
+  * Recently ended live streams without any built-in formats now fall back to
+    yt-dlp or show an error instead of leaving the player area empty
+  * Fixed the app staying offline when a network blocks the internet check,
+    Invidious playlists on the watch page stopping after the first page, and
+    YouTube Takeout imports cutting video titles or adding extra text to video
+    IDs
+
+ -- OpenTubeX contributors <info@opentubex.org>  Thu, 29 Oct 2026 22:32:04 +0000
