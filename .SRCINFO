@@ -1,6 +1,6 @@
 pkgbase = kraken-workbench-bin
 	pkgdesc = Reverse-engineering workbench on Ghidra's decompiler: analyse, patch and rewrite binaries, with an AI assistant
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Adam-AtlasSoftware/kraken
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = kraken-workbench-bin
 	conflicts = kraken-workbench
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Adam-AtlasSoftware/kraken/releases/download/v0.1.0/kraken-0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 94ba14e370e56ae8ed113801cb1c8b2cee3602400ddbe051c3d45476f1e67950
+	source_x86_64 = https://github.com/Adam-AtlasSoftware/kraken/releases/download/v0.2.0/kraken-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6d1d23c49b814b34d131bd205bf9cc4e8b94fde4bb9be0ad7142d405a51a2797
 
 pkgname = kraken-workbench-bin
