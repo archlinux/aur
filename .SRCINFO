@@ -1,7 +1,7 @@
 pkgbase = plasmazones
 	pkgdesc = Window snapping, tiling and scrolling for KDE Plasma
 	pkgver = 3.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fuddlesworth/PlasmaZones
 	install = plasmazones.install
 	arch = x86_64

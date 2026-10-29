@@ -8,7 +8,7 @@ pkgname=plasmazones
 # pkgver/pkgrel are placeholders; CI rewrites them against the release tag
 # before publishing. See packaging/arch/update-aur.sh.
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Window snapping, tiling and scrolling for KDE Plasma'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
