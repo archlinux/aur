@@ -32,6 +32,7 @@ SPDX-License-Identifier = "0BSD"
 path = [
     "psmodulepath-combined-paths.patch",
     "cim-windows-only.patch",
+    "system-drawing-windows-only.patch",
 ]
 SPDX-FileCopyrightText = "PowerShell contributors"
 SPDX-License-Identifier = "MIT"

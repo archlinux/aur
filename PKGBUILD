@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=8
+pkgrel=9
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -115,6 +115,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/ThreadJob.git#commit=$_threadjobcommit"
   "psmodulepath-combined-paths.patch"
   "cim-windows-only.patch"
+  "system-drawing-windows-only.patch"
   "oneget-user-temp-folder.patch"
   "nuget-modules.config"
   "powershell-modules.psm1"
@@ -135,6 +136,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42'
             '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
             '96ce607ab0c3d5a8d1670913d09ebc5575cad958fc427641b9d2c9e6982997c6659c6f20d9c0df1ebae57c77bc9efcf43fff39753a9821efad5b0dd35f190999'
+            'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
             '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
             '2a183bbbdbc42f55328f462bed4fce0752291395ae91c263e11e921c312f94d0c99b2180fce1e4f98e9e33af68fe83d8138217abe4a995fc7a52f442f20b7422'
             'd2a3483119d88d8f6cacc04733dbe34f6291cad33fc9ebee7ceed91dd6968c2a517b078558ec1935393cf7f012e99125d99f546f5bfd1ed4f67d3b02c9c9573e'
@@ -155,6 +157,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         'c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170'
         'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
         '8384011144b56696fbbf47a2c751cfbdbcb1f0de858da784c98128838fe86a3fd0affca03fc62377d8e2b3af3ba413c1c8cdcde5c89d73bb20a706c5796aefe4'
+        'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
         '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
         '8f501e2b35ebba03da6cdec49a2055640bba8a8fcedbdefc5c29b7c307217c4feeda08f20406cca3224a4f2761ca8cab786aaea63fdb0e8e9ac42e6745897490'
         '574ebc423744f2f72234b02666ef1c1add075cf37296a66ec00b94034130414fcf32e0048d0d65700318d5f59b1fd1d15c9409eacec31535374e5c65bac6f02c'
@@ -300,6 +303,13 @@ prepare() {
   #   https://github.com/PowerShell/PowerShell/issues/28027 and #20798
   # So put it behind #if !UNIX like upstream does for WMI and ADSI and don't ship it
   patch -Np1 -i "$srcdir/cim-windows-only.patch"
+
+  # System.Drawing.Common only supports Windows since .NET 6, see
+  # https://learn.microsoft.com/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only
+  # (the switch to enable it elsewhere is gone since .NET 7). It's only used by Out-Printer, which is
+  # only available on Windows, so don't ship it either. Microsoft.Windows.Compatibility would bring it
+  # in as dependency, so it's pruned from the restores (PowerShell.Common.props, test/Test.Common.props).
+  patch -Np1 -i "$srcdir/system-drawing-windows-only.patch"
 
   # We first determine the exact SDK and runtime versions for later usage
   local _sdkver _runtimever _runtimepath
