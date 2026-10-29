@@ -1,0 +1,19 @@
+pkgbase = age-plugin-openpgp-card
+	pkgdesc = Age plugin for using ed25519 on OpenPGP Card devices (YubiKeys, Nitrokeys)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/wiktor-k/age-plugin-openpgp-card
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = pcsclite
+	optdepends = ccid: generic USB smart card reader driver
+	optdepends = age: age encryption tool
+	optdepends = rage: Rust implementation of age
+	source = age-plugin-openpgp-card-0.1.2.tar.gz::https://github.com/wiktor-k/age-plugin-openpgp-card/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = ad96bf09753be937f81f58a17450bd3b50e115a511ce8d1e7eefb4557c9a54c8
+
+pkgname = age-plugin-openpgp-card
