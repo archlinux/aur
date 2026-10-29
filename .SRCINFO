@@ -1,6 +1,6 @@
 pkgbase = waytator
 	pkgdesc = Screenshot and screen recording tool with an image and video editor
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/faetalize/waytator
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = waytator
 	optdepends = xdg-desktop-portal: screen recording, and screenshots on compositors without wlr-screencopy
 	optdepends = gifski: better looking GIF export
 	options = !debug
-	source = waytator-1.5.0.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 50de9bb2fd83799e31701c5c1da3edf00d124b7753630c6e6bd2d28cdbf01d11
+	source = waytator-1.5.1.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = 58506f65e2fe27082be2d0fec60b7ba6d33c8468036b5da8a5bc4d62919da856
 
 pkgname = waytator

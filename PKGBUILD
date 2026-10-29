@@ -1,7 +1,7 @@
 # Maintainer: faetalize
 
 pkgname=waytator
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Screenshot and screen recording tool with an image and video editor'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('tesseract: OCR support'
 makedepends=('meson' 'ninja' 'pkgconf' 'wayland-protocols' 'libdrm')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('50de9bb2fd83799e31701c5c1da3edf00d124b7753630c6e6bd2d28cdbf01d11')
+sha256sums=('58506f65e2fe27082be2d0fec60b7ba6d33c8468036b5da8a5bc4d62919da856')
 
 build() {
   local meson_options=(
