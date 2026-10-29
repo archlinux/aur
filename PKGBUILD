@@ -4,7 +4,7 @@ _geover=1.010
 _geocommit=685f38d7c9e86b0c8530204c97ddcaf6558dd17b
 _nfver=3.5.1
 pkgver="${_geover}"
-pkgrel=5
+pkgrel=6
 pkgdesc='Geologica, a humanist-geometric sans with Sharp/Cursive/Slant/Weight axes, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/geologica'
@@ -36,7 +36,7 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             'cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1'
             'be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c'
-            'ea9d1775f12125ff0fa3dcb4817fdf5d20d6a6265f2bcb2bed87caabdd4c9552'
+            '64de6e9f4d9d8c52aaa01a9064b9d26886e85324e30d8b406b8d5d7440338b59'
             '1acf0491c2a831a87e1cb09e1a8151dabc02bdf80e33807c7b52ed07be2e5028')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -209,6 +209,11 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
+#                 Asked during the build as well (none / the recommended set /
+#                 a list of your own); the variables below are what an
+#                 unattended build uses. FEATURE_FAMILY stays environment-only
+#                 on purpose: it renames every file to one family, which would
+#                 merge the cuts a multi-family build installs.
 #
 #                 The one that matters here is
 #                     FEATURE_DEFAULTS="ss01"
@@ -319,9 +324,36 @@ _prompt_options() {
       _ask_yn "Cursive a/g (ss01) by default in Geologica UI, also in browsers" n
       [[ "$_yn" == true ]] && GEO_UI_FEATURES=ss01 || GEO_UI_FEATURES=""
     fi
-    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
-      _ask_yn "Bake cursive a/g (ss01) into the installed fonts, for every app" n
-      if [[ "$_yn" == true ]]; then FEATURE_DEFAULTS="ss01"; else FEATURE_DEFAULTS=""; fi
+    echo ""
+    echo "  ── OpenType features ────────────────────────────────────"
+    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
+    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
+    echo "  lookups into calt, which every program applies - the only way Chromium,"
+    echo "  Electron, Qt and LibreOffice honour one, since they never read"
+    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
+    _ask_choice "Bake features into calt" none \
+      "none:leave the fonts as upstream ships them (default)" \
+      "cursive:ss01 - cursive a and g, the shape the CRSV axis draws" \
+      "custom:type the tag list yourself"
+    case $_choice in
+      none)    FEATURE_DEFAULTS="" ;;
+      cursive) FEATURE_DEFAULTS="ss01" ;;
+      custom)
+        echo "  Tags, comma or space separated (e.g. \"ss01\"):"
+        read -r -p "  > " _tags || _tags=""
+                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
+        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
+        _tags="${_tags#,}"; _tags="${_tags%,}"
+        FEATURE_DEFAULTS="$_tags"
+        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
+        ;;
+    esac
+    if [[ -n "$FEATURE_DEFAULTS" ]]; then
+      echo ""
+      echo "A copy under another family name keeps the stock look available; set"
+      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"Geologica Alt\") and"
+      echo "build again. Without it the packaged files keep their names and the"
+      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
     fi
     if [[ -z "${HINTING:-}" ]]; then
       _ask_yn "Hint with ttfautohint (n = unhinted, as upstream)" y; HINTING=$_yn
