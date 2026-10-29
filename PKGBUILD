@@ -1,13 +1,13 @@
 # Maintainer: mak <mak@localhost>
 #
-# Online (Lantern Engine 0.9.37, current upstream release):
+# Online (Lantern Engine 0.9.38, current upstream release):
 # The stock Linux engine/out/bb-start skips online.configure_online(), so this
 # package is offline out of the box. The local Linux fix is intentionally not
 # baked into the AUR recipe; see ~/ports/aur/README.md ("Online fix") and
 # reapply it after every upgrade. In Lantern Engine keep "Disable HTTP
 # Requests" OFF, and never share hd_token/thd_token.
 pkgname=bloodborne-lantern-engine-linux-bin
-pkgver=0.9.37
+pkgver=0.9.38
 pkgrel=1
 pkgdesc="Bloodborne PC port (Lantern Engine Linux, needs your own game dump)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("LanternEngine-v${pkgver}-linux-x64.tar.gz::https://github.com/Awakencha
         'bloodborne-pc'
         'bloodborne-pc.desktop'
         'bloodborne-pc.png')
-sha256sums=('e638358e0efcdee62418a52dcc02c27a83e840dcb3d2a9d56e5f8b967b13fc27'
+sha256sums=(8e2e6707cef777859cca2994b68a3dfccbb03426f11c739b0ee3c11b8467e5f7
             'a0372a6b63d5592a4c63f5814ca9cef821f471a17012fc30df7e6756d01cbc4f'
             'a461c2435b0e5e275c34e0e5e8b53761f8b60d320ea144f49e4eee77aa086b57'
             '43acf16390fd766a90d7c19f3c5b80803ae6b354cecc15ff5e60fbb39d6c1abb')
