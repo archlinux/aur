@@ -7,7 +7,7 @@ pkgname=fluxer-bin
 # Upstream versions are date-based (see pkg.sh). They sort above the 0.0.x
 # scheme the package used before.
 pkgver=2026.1026.24218
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluxer Desktop Application"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
@@ -21,8 +21,10 @@ provides=('fluxer')
 conflicts=('fluxer')
 options=('!strip')
 
-source=("fluxer.desktop")
-sha256sums=('981daa8015b823fef254bb8e79fe6b28f77dda02cdc374796443bd64f5041de1')
+# Upstream's .deb entry, with our paths. Its name is the app's desktopName:
+# Wayland windows and fluxer:// links look the entry up by it.
+source=("app.fluxer.FluxerDesktop.desktop")
+sha256sums=('d14f917714dd3cb1bfe84911f973690fba79ee04b1dffb88a88d75581c38c3f7')
 
 source_x86_64=("fluxer-${pkgver}-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/${pkgver}/tar_gz")
 sha256sums_x86_64=('abaf2a5aa41d69c2864219af826ff4c314fb64d183f361817ec17e66413370cb')
@@ -53,7 +55,7 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/$pkgname/fluxer" "$pkgdir/usr/bin/fluxer"
 
-    install -Dm644 "$srcdir/fluxer.desktop" "$pkgdir/usr/share/applications/fluxer.desktop"
+    install -Dm644 "$srcdir/app.fluxer.FluxerDesktop.desktop" -t "$pkgdir/usr/share/applications"
 
     # The bundle carries a full icon set, named after the size it holds.
     # The glob takes those and leaves icon.png and the tray templates, which

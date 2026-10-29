@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Fluxer
-Comment=Fluxer Desktop App
-Exec=/usr/bin/fluxer
-Icon=fluxer
-Terminal=false
-Type=Application
-Categories=Network;
