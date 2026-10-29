@@ -1,6 +1,6 @@
 pkgbase = icebath
 	pkgdesc = Tiling agentic harness and netrunner toolkit
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://icebath.app
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = icebath
 	conflicts = icebath-bin
 	provides = icebath
 	
-	source = icebath_1.0.6.tar.gz::https://github.com/nickheyer/icebath/releases/download/v1.0.6/icebath-1.0.6.tar.gz
-	sha256sums = f14ac1c9c10fe137d06fe873396ebf98f974b01df6cb401aca4430b722995354
+	source = icebath_1.0.7.tar.gz::https://github.com/nickheyer/icebath/releases/download/v1.0.7/icebath-1.0.7.tar.gz
+	sha256sums = ce04a7d1e9fcdb07f6b981bf2a0f49e0b1aaac0ab5a1ed383f0cd7e1c159308c
 	
 pkgname = icebath
