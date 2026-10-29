@@ -3,7 +3,7 @@
 # Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
 
 _pkgname=gargle
-_pkgver=1.6.1
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,6 +19,7 @@ depends=(
   r-jsonlite
   r-lifecycle
   r-openssl
+  r-r6
   r-rappdirs
   r-rlang
   r-withr
@@ -35,13 +36,12 @@ optdepends=(
   r-httpuv
   r-knitr
   r-rmarkdown
-  r-sodium
   r-spelling
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a0ca8a66d77f1417539ad13bb3e85b5d')
-b2sums=('9b735551b157178a8ed70cbb41741ba38341cb26a10828f37ef24980dcfda523795a85a978a2c453ab74277f8160861e9c8a7d393ca4be0b1c08cbc20c08887b')
+md5sums=('a9fa47dd8abb7187360f09c9a48261ab')
+b2sums=('2c2d3cc9989ee11dc0009cec1479ec31a403dde1d70ddd9a183e36ae65dcfb732479c18b5c44c79e8645ab3b8eb6d59585c378e40cd061f2016c24f510290ff9')
 
 build() {
   mkdir build
