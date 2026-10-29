@@ -259,6 +259,42 @@ to 62 px in pango-view.
 
 ---
 
+## 4b. Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+
+fontconfig's `fontfeatures` is read by pango/GTK only: Chromium, Electron, Qt
+and LibreOffice shape text without it, and in a browser only the page CSS can
+ask for a feature. A font cannot declare one "on by default" either - a shaper
+applies a fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`). So the
+only way to make a feature the default everywhere is to move its lookups into
+one of those features, which is what `make_features.py` does and what
+`FEATURE_DEFAULTS` runs as the last build step.
+
+This font has four GSUB features - `liga`, `locl`, `pnum`, `rvrn` - so there is
+exactly one candidate:
+
+```sh
+FEATURE_DEFAULTS=pnum makepkg -si     # proportional figures in every app
+```
+
+Roboto Flex ships **tabular figures** as its default: a column of numbers lines
+up, and `1111 0000 8888` is 14872 units wide where proportional figures make it
+13192 - the same number `font-feature-settings: "pnum" 1` gives in Chromium
+(measured on the built package, wght 400: stock 239.30 px, stock + CSS 206.14,
+baked with no CSS 206.14, baked + `"calt" 0` 239.30).
+
+Two things are different from the other packages here:
+
+- Roboto Flex has **no `calt` at all**, so `make_features.py` creates one and
+  registers it for every language. That keeps the CSS off switch identical
+  across the family (`"calt" 0`), at the cost of a `calt` feature that contains
+  only `pnum`.
+- With `pnum` baked there is no way back to tabular figures *from CSS* except
+  `"calt" 0`: this font has no `tnum`, the tabular forms are the defaults, so
+  `font-feature-settings: "tnum"` has nothing to switch to. Use
+  `FEATURE_FAMILY="Roboto Flex Proportional"` if you want both on the machine.
+  The shipped `79-roboto-flex-families.conf` and `81-roboto-flex-italic.conf`
+  keep testing for `Roboto Flex`, so they do not match a renamed family.
+
 ## Verifying on your own system
 
 ```sh

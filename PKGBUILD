@@ -3,7 +3,7 @@ pkgname=ttf-roboto-flex-hinted
 _flexver=3.200
 _nfver=3.5.1
 pkgver="${_flexver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Roboto Flex, the 13-axis variable Roboto, hinted with ttfautohint for FreeType, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/roboto-flex'
@@ -17,6 +17,7 @@ source=(
   "OFL-${_flexver}.txt::https://raw.githubusercontent.com/googlefonts/roboto-flex/${_flexver}/OFL.txt"
   "font-patcher-${_nfver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   "make_statics.py"
+  "make_features.py"
   "set_gasp.py"
   "79-roboto-flex-families.conf"
   "81-roboto-flex-italic.conf"
@@ -28,10 +29,11 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
             '454ec26838f2b8f2e2588e759dd3742577e0d305d3359a7b81c86641fcab7d21'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '94a0ee1553e70911c9fbf24991632f85ebe7b0f6ae666ece8fc5a26590f9770c'
+            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '7cafc2f26e6490e58987f13f2a4f25334f2b30a28f89741f1eaa5bf144e3f51c'
             '38abb99dc9daaa04f43441f3036baff81270f2636c52772fba72c7454c44e2f9'
-            '714b4e099545fabbadfb9eeeda513d6e15790c251ba4d6bffd909d790b063be1'
+            'f30c6fc884bb2f49b4d9a2956c07d054c78dbd99ed7305ab64ec8d918902ebb7'
             'ed3710d5143d2724a3e9ff0248738033eb4c5a43941767309abf535efb65d656')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -152,19 +154,63 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
 #                          /usr/share/fontconfig/conf.default (default: true;
 #                          variable only). false still ships it in conf.avail.
 #
+#  ── Features every app can see (not just pango) ───────────────────────────
+#
+#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 Bake these GSUB features into the font's 'calt' feature, so
+#                 that EVERY renderer applies them, not only pango. For the
+#                 reason, see the note at the bottom of this block.
+#
+#                 Roboto Flex has only four GSUB features - liga, locl, pnum,
+#                 rvrn - so there is exactly one candidate:
+#                     FEATURE_DEFAULTS="pnum"
+#                 pnum = PROPORTIONAL figures. This font ships TABULAR figures
+#                 as its default (a column of numbers lines up, and "1111 0000"
+#                 is 11% wider than it needs to be), so baking pnum is what a
+#                 text face normally wants. Measured: "1111 0000 8888" goes
+#                 from 14872 to 13192 units at wght 400, identical to asking
+#                 for pnum from CSS.
+#                 Two caveats. This font has no calt at all, so make_features.py
+#                 CREATES one and registers it for every language - harmless,
+#                 and it keeps the CSS off switch the same as in the other
+#                 packages. And with pnum baked, CSS can no longer ask for
+#                 tabular figures with "tnum": this font has no tnum, the
+#                 tabular forms ARE the defaults, so the only way back is
+#                 "calt" 0 (which costs nothing here: the created calt holds
+#                 only pnum). Pair it with FEATURE_FAMILY if you want both.
+#                 Never aalt or ordn: make_features.py refuses those.
+#
+#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
+#                 Install the result as this family instead, so the stock
+#                 Roboto Flex stays available. The name must not end in a
+#                 pango style word (Thin, Bold, Italic, ...). The shipped
+#                 79-roboto-flex-families.conf and 81-roboto-flex-italic.conf
+#                 keep testing for "Roboto Flex", so they stop matching a
+#                 renamed family; the axes are still there, under the new name.
+#
+#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
+#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
+#  only ask from page CSS. A shaper applies a fixed list of features whatever
+#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
+#  moving a feature's lookups into calt is the only way to make it the
+#  default in every program. Verified in Chromium: the baked font with no CSS
+#  at all is pixel-identical to the stock one with font-feature-settings
+#  listing the same tags, and "calt" 0 brings the stock metrics back.
+#
 #  Examples:
 #    makepkg -si                              (asks, when run from a terminal)
 #    makepkg -si </dev/null                   (never asks: defaults only)
 #    HINT_PRESET=natural makepkg -si
 #    FLEX_VARIANT=static STATIC_WIDTHS="75 100" makepkg -si
 #    NERD_PATCH=true STATIC_WEIGHTS="400 500 700" makepkg -si
+#    FEATURE_DEFAULTS=pnum makepkg -si        (proportional figures everywhere)
 # ────────────────────────────────────────────────────────────────────────────
 
 _opt_keys=(FLEX_VARIANT STATIC_WEIGHTS STATIC_WIDTHS STATIC_ITALIC STATIC_OPSZ
            NERD_PATCH HINTING HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX
            HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE HINT_FAMILY_SUFFIX
-           GASP_MODE ITALIC_FIX)
+           GASP_MODE ITALIC_FIX FEATURE_DEFAULTS FEATURE_FAMILY)
 
 # _ask_yn QUESTION DEFAULT(y|n) -> sets _yn to true/false
 _ask_yn() {
@@ -222,6 +268,12 @@ _prompt_options() {
         "custom:use the HINT_* environment variables"
       HINT_PRESET=$_choice
     fi
+    if [[ -z "${FEATURE_DEFAULTS:-}" ]]; then
+      echo "  Roboto Flex ships TABULAR figures. Baking pnum gives proportional"
+      echo "  figures in every program, Chromium included, not only in pango."
+      _ask_yn "Bake pnum (proportional figures) into the fonts" n
+      if [[ "$_yn" == true ]]; then FEATURE_DEFAULTS="pnum"; else FEATURE_DEFAULTS=""; fi
+    fi
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
@@ -266,6 +318,8 @@ _resolve_options() {
   HINT_DEFAULT_SCRIPT="${HINT_DEFAULT_SCRIPT:-latn}"
   HINT_FALLBACK_SCRIPT="${HINT_FALLBACK_SCRIPT:-latn}"
   ITALIC_FIX="${ITALIC_FIX:-true}"
+  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
 
   case "$FLEX_VARIANT" in
     variable|static) ;;
@@ -341,6 +395,12 @@ _resolve_options() {
     keep|sized|smooth|gridfit) ;;
     *) echo "Error: GASP_MODE='$GASP_MODE' invalid (keep|sized|smooth|gridfit)." >&2; exit 1 ;;
   esac
+  for _v in ${FEATURE_DEFAULTS//,/ }; do
+    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
+      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. pnum)." >&2
+      exit 1
+    fi
+  done
 }
 
 prepare() {
@@ -352,6 +412,19 @@ prepare() {
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
   fi
+}
+
+# _bake_features SRCDIR: move the lookups of FEATURE_DEFAULTS into calt, on the
+# files this build ended up with, into $srcdir/featured. Last step on purpose:
+# ttfautohint never sees the extra lookups.
+_bake_features() {
+  local _src="$1" _fam=()
+  [[ -n "$FEATURE_DEFAULTS" ]] || return 0
+  [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
+  echo "==> Baking $FEATURE_DEFAULTS into calt" \
+       "${FEATURE_FAMILY:+(installed as '$FEATURE_FAMILY')}..."
+  python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+    "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$_src"/*.ttf
 }
 
 build() {
@@ -369,7 +442,7 @@ build() {
          "ttfa-table=$HINT_TTFA_TABLE${HINT_FAMILY_SUFFIX:+ suffix='$HINT_FAMILY_SUFFIX'}"
   fi
 
-  rm -rf "$srcdir/selected" "$srcdir/patched" "$srcdir/hinted"
+  rm -rf "$srcdir/selected" "$srcdir/patched" "$srcdir/hinted" "$srcdir/featured"
   mkdir -p "$srcdir/selected" "$srcdir/patched" "$srcdir/hinted"
 
   # ── Step 1: select ──────────────────────────────────────────────────────────
@@ -426,6 +499,7 @@ build() {
   fi
 
   if [[ "$HINTING" != true ]]; then
+    _bake_features "$_hintsrc"
     return 0
   fi
 
@@ -464,6 +538,8 @@ build() {
     echo "==> Applying gasp mode '$GASP_MODE'..."
     python "$srcdir/set_gasp.py" "$GASP_MODE" "$srcdir/hinted/"*.ttf
   fi
+
+  _bake_features "$srcdir/hinted"
 }
 
 package() {
@@ -475,6 +551,7 @@ package() {
   elif [[ "$NERD_PATCH" == true ]]; then
     _out="$srcdir/patched"
   fi
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then _out="$srcdir/featured"; fi
   if ! compgen -G "$_out/*.ttf" >/dev/null; then
     echo "Error: no fonts to install in $_out." >&2; exit 1
   fi
