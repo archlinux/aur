@@ -1,7 +1,7 @@
 pkgbase = fcitx5-wetypex
 	pkgdesc = Native Linux compatibility layer for WeType on Fcitx5
 	pkgver = 2.2.3.657
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/panxuc/fcitx5-wetypex
 	install = fcitx5-wetypex.install
 	arch = x86_64
@@ -39,10 +39,10 @@ pkgbase = fcitx5-wetypex
 	depends = polkit
 	optdepends = fcitx5-configtool: manage input methods
 	options = !debug
-	source = fcitx5-wetypex-2.2.3.657.tar.gz::https://github.com/panxuc/fcitx5-wetypex/releases/download/v2.2.3.657-13/fcitx5-wetypex-2.2.3.657.tar.gz
+	source = fcitx5-wetypex-2.2.3.657.tar.gz::https://github.com/panxuc/fcitx5-wetypex/releases/download/v2.2.3.657-14/fcitx5-wetypex-2.2.3.657.tar.gz
 	source = https://curl.se/download/curl-8.22.0.tar.xz
 	source = libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b
-	sha256sums = ff92fa9beb9a1f22fc287df38899a6ec4305577e5754af491fd3e90072c24057
+	sha256sums = a2ed25d3805678fe2a8e4d633cef4641f5fa9fde26ee3d3461e6177a4e1bd291
 	sha256sums = f7ef3ae8a22e521f289803fe93543eb64c329b58aa73a9e224dfd915a2a5f4f7
 	sha256sums = SKIP
 
