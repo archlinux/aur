@@ -1,6 +1,6 @@
 pkgbase = wpsdav-bin
 	pkgdesc = Mount WPS/Kdocs cloud storage as a WebDAV endpoint
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Micraow/WPS-DAV
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wpsdav-bin
 	conflicts = wpsdav-git
 	options = !strip
 	options = !debug
-	source = wpsdav-0.1.2.tar.gz::https://github.com/Micraow/WPS-DAV/releases/download/v0.1.2/wpsdav_0.1.2_linux_amd64.tar.gz
-	sha256sums = 491064929c727a4f38b7f622f7539d02df35df84be3d04b4f96fa616651218bd
+	source = wpsdav-0.1.3.tar.gz::https://github.com/Micraow/WPS-DAV/releases/download/v0.1.3/wpsdav_0.1.3_linux_amd64.tar.gz
+	sha256sums = d982141431b79d409d22a1442f6024a7a3382f1b9a52b45941c6477341019184
 
 pkgname = wpsdav-bin
