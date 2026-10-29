@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
 pkgver=4.007
-pkgrel=6
+pkgrel=7
 pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
@@ -23,7 +23,7 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
             '4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86'
             'f7b025ab723a672e0c821c610251199d04a5342c265483eafeb35f3e5f0be45b'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
-            '0723caa5f49782372701905a5acbc577cb7437a87fd30d9b30524a499a505632')
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
 
 # ── Licensing note ──────────────────────────────────────────────────────────
 #
