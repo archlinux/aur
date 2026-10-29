@@ -1,12 +1,12 @@
 # Maintainer: satodu <sato.du@gmail.com>
 pkgname=kappa-file-manager
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Brutalist file manager for Ryoku OS (Rust core, Quickshell UI); independent community project'
 arch=('x86_64' 'aarch64')
 url='https://github.com/satodu/kappa-file-manager'
 license=('0BSD')
-depends=('quickshell' 'ryoku-desktop' 'xdg-utils' 'udisks2' 'gcc-libs' 'glibc')
+depends=('quickshell' 'ryoku-desktop' 'xdg-utils' 'glib2' 'udisks2' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 optdepends=('kdeconnect: phone pairing, ping, ring and sharing'
             'kio-fuse: browse phone folders as local files'
@@ -16,7 +16,7 @@ optdepends=('kdeconnect: phone pairing, ping, ring and sharing'
             'ghostty: default terminal for "Open terminal here" (any terminal in $TERMINAL also works)')
 _tag="v${pkgver//_/-}"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('5eeb547a65fe675e4cf553bb939a58ee5f8f2a082484e9ee7761ced72acda353')
+sha256sums=('617259bc97ac7b5222b8c0dddb87370f4cbc09e2eb540cd70ef7fc83b07a40c1')
 
 prepare() {
   cd "$pkgname-${pkgver//_/-}"
