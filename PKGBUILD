@@ -1,11 +1,11 @@
 # Maintainer: mdmrk <mariodavo.20@gmail.com>
 
 pkgname=kytyps5-nightly-bin
-pkgver=2026.10.29.5e837a9
+pkgver=2026.10.29.5eab0ec
 pkgrel=1
 _appname=kytyps5
-_tag=KytyPS5-2026-10-29-5e837a9
-_commit=5e837a9beac82c031868eaad9348d6a48245fb99
+_tag=KytyPS5-2026-10-29-5eab0ec
+_commit=5eab0ec73855acdf776f5c0669911e2f5ddfb743
 pkgdesc="PlayStation 5 emulator (upstream nightly binary release)"
 arch=('x86_64')
 url="https://github.com/KytyPS5/KytyPS5"
@@ -58,7 +58,7 @@ source=(
   "$_appname.desktop"
 )
 sha256sums=(
-  '6de121bf20764550dfe179df175ac36f204eeff79c76b5600454b6c873f5bb20'
+  '75844650f73d41f44266ccd1aa83093e014124a487b0c2f98d0e7e5bbdae8279'
   'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
   '1bbcea0e75b3ac77b4711a12eefa3a3b7dfea43528fc0730af3178ba5cd55396'
   '76a381bd4ccf3801d1c850c3bf9903e6d11a480eb6eb5938cdab3d8e949fe857'
