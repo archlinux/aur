@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+"""
+Checks whether a new version of Squawker VPN is available.
+
+Fetches the latest upstream version from TryHackMe endpoint and
+compares it with the installed package version reported by pacman.
+
+Intended for use by the AUR package maintainer when checking for
+upstream releases.
+"""
+
+import json
+import urllib.request
+import subprocess
+import re
+
+LATEST_URL = "https://squawker-vpn.vm.tryhackme.com/latest.json"
+PACKAGE = "squawker-vpn-bin"
+
+
+def get_latest_version():
+    with urllib.request.urlopen(LATEST_URL, timeout=10) as response:
+        data = json.load(response)
+
+    return data["version"]
+
+
+def get_installed_version():
+    try:
+        result = subprocess.run(
+            ["pacman", "-Q", PACKAGE],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+        # Output: squawker-vpn-bin 1.0.0-2
+        version = result.stdout.split()[-1]
+
+        # Convert 1.0.0-2 -> 1.0.0
+        return re.sub(r"-\d+$", "", version)
+
+    except subprocess.CalledProcessError:
+        return None
+
+
+def main():
+    latest = get_latest_version()
+    installed = get_installed_version()
+
+    print(f"Latest version: {latest}")
+
+    if installed is None:
+        print("Squawker VPN is not installed")
+    elif installed != latest:
+        print(f"New version available: {installed} -> {latest}")
+    else:
+        print("Already up to date")
+
+
+if __name__ == "__main__":
+    main()
