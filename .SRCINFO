@@ -1,6 +1,6 @@
 pkgbase = scribe-bin
 	pkgdesc = A native GNOME Markdown editor that renders your document as you type (upstream binary)
-	pkgver = 0.3.20
+	pkgver = 0.3.35
 	pkgrel = 1
 	url = https://github.com/gnacho/scribe
 	arch = x86_64
@@ -17,15 +17,15 @@ pkgbase = scribe-bin
 	depends = libadwaita>=1.5
 	depends = libgcc
 	depends = pango
-	provides = scribe=0.3.20
+	provides = scribe=0.3.35
 	conflicts = scribe
 	conflicts = scribe-git
-	noextract = scribe_0.3.20-1_amd64.deb
+	noextract = scribe_0.3.35-1_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/gnacho/scribe/releases/download/v0.3.20/scribe_0.3.20-1_amd64.deb
-	source = scribe-0.3.20-symbolic.svg::https://raw.githubusercontent.com/gnacho/scribe/v0.3.20/data/icons/hicolor/symbolic/apps/io.github.gnacho.Scribe-symbolic.svg
-	sha256sums = ba778a65eda0ecd186dffedf126e38f3581dc8c7c8abe6cb6d9fac2f88b2e54c
+	source = https://github.com/gnacho/scribe/releases/download/v0.3.35/scribe_0.3.35-1_amd64.deb
+	source = scribe-0.3.35-symbolic.svg::https://raw.githubusercontent.com/gnacho/scribe/v0.3.35/data/icons/hicolor/symbolic/apps/io.github.gnacho.Scribe-symbolic.svg
+	sha256sums = 7d12eac0ddfc75125c5de38b7f672181cce57818fe40842aebb2bb6b5888818d
 	sha256sums = 4c2870aeb700ce429d98e6e9a17229517d1bdf676c5a6043e76c4cecfc26e4eb
 
 pkgname = scribe-bin
