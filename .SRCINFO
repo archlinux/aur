@@ -2,6 +2,7 @@ pkgbase = relic-kanagawa-gtk-theme
 	pkgdesc = Kanagawa GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
 	pkgver = 2025.10.23.r9.95dc59b
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/gaou-piou/Kanagawa-GKT-Theme
 	arch = any
 	license = GPL-3.0-only
