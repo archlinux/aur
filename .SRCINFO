@@ -1,10 +1,11 @@
 pkgbase = relic-vague-gtk-theme
 	pkgdesc = Vague GTK theme by Fausto-Korpsvart (archived upstream), with the relic GTK 3/4 geometry fixes
-	pkgver = 2026.06.25
-	pkgrel = 5
+	pkgver = 2026.06.25.r11.05bb2f9
+	pkgrel = 1
 	url = https://github.com/gaou-piou/Vague-GTK-Theme
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	makedepends = sassc
 	depends = gnome-themes-extra
 	optdepends = gtk-engine-murrine: GTK 2 support
@@ -13,8 +14,8 @@ pkgbase = relic-vague-gtk-theme
 	options = !debug
 	options = !emptydirs
 	source = Vague-GTK-Theme-a2e5b05f8bb0137cfb71c9fadd546888c0a7337a.tar.gz::https://github.com/gaou-piou/Vague-GTK-Theme/archive/a2e5b05f8bb0137cfb71c9fadd546888c0a7337a.tar.gz
-	source = relic-gtk-fixes-2026.10.23.tar.gz::https://github.com/gaou-piou/relic-gtk-fixes/archive/refs/tags/2026.10.23.tar.gz
+	source = gtk-theme-fixes::git+https://github.com/gaou-piou/gtk-theme-fixes.git
 	sha256sums = ebf947bcbc99a2297e94b199b54577ce424ad3ce886635a175c7021b0cf481aa
-	sha256sums = a9c132c3a5952c1d2bb826554187f0bfec982fe2b4841bf2649843bb07774db0
+	sha256sums = SKIP
 
 pkgname = relic-vague-gtk-theme
