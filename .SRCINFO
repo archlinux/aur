@@ -1,6 +1,6 @@
 pkgbase = greenmask-git
 	pkgdesc = PostgreSQL dump, anonymization and restore tool (git version)
-	pkgver = r602.3a1befc
+	pkgver = r613.a29edd8
 	pkgrel = 1
 	url = https://github.com/GreenmaskIO/greenmask
 	arch = x86_64
