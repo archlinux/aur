@@ -2,7 +2,7 @@
 
 pkgname="python-tpot2"
 _name="TPOT2"
-pkgver=0.1.7a0
+pkgver=0.1.9a0
 pkgrel=1
 pkgdesc="A Python Automated Machine Learning tool that optimizes machine learning pipelines using genetic programming"
 url="https://epistasislab.github.io/tpot2/"
@@ -32,7 +32,7 @@ depends=("python"
          )
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('860c779c8c439a607f82e46d99cf1552f486c071c6a0c3f62e0c2e8149440873bdebbb1eb3804af537eb03d812822c39b3cf236b65e7dce00d19218eef212dcf')
+b2sums=('8db6b59dc331f43f828232a49e4a949ab1e1a8d1f69a5327d7547e58d0afad5c709afb7e3e932bf4e376a1228cf5804c32956a8868c7fbfb2d7972380b98c920')
 options=("!strip")
 
 build(){
