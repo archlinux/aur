@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libpldm
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
@@ -10,11 +10,11 @@ url="https://github.com/openbmc/libpldm"
 license=('Apache-2.0')
 groups=()
 depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
 )
 makedepends=(
+    doxygen
     git
     gtest
     meson
@@ -32,7 +32,7 @@ install=
 changelog=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('b578148a8caa4db104580b237dd621c2c560082acfa3f1a2516797c7635f7f0d')
+sha256sums=('4e1d45ebacd2ae9b516c395468121ebd35c21cb5160207be68b6e0a073c15b02')
 #validpgpkeys=()
 
 prepare() {
