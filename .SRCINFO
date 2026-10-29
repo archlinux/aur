@@ -1,7 +1,7 @@
 pkgbase = mkdocs-macros-plugin
 	pkgdesc = MkDocs plugin to use variables and macros in markdown files
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fralau/mkdocs_macros_plugin
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = mkdocs-macros-plugin
 	depends = python-dateutil
 	conflicts = python-mkdocs-macros-plugin-git
 	replaces = python-mkdocs-macros-plugin-git
-	source = https://files.pythonhosted.org/packages/source/m/mkdocs-macros-plugin/mkdocs-macros-plugin-1.0.5.tar.gz
-	b2sums = f984cced060f09060bd63c7c204799dd9b318fa98229b2a86b034165190a76ccac7c8d37bf084c56ba0673105a818c0a0d210121d01e6b677349488aa0730160
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_macros_plugin/mkdocs_macros_plugin-1.0.5.tar.gz
+	b2sums = 05bc8f9f61553536a85b80cf80eb4810ae123792fd55d628f69179c7fac9dd30d1bbcf47f4c3c0514020f0d4e0a212e0c5c346900c0756901387c371e0e0cd30
 
 pkgname = mkdocs-macros-plugin

@@ -3,7 +3,8 @@
 pkgname="mkdocs-macros-plugin"
 _pkgname="$pkgname"
 pkgver=1.0.5
-pkgrel=1
+_sdist=mkdocs_macros_plugin
+pkgrel=2
 pkgdesc="MkDocs plugin to use variables and macros in markdown files"
 url="https://github.com/fralau/mkdocs_macros_plugin"
 license=("MIT")
@@ -12,15 +13,15 @@ conflicts=("python-mkdocs-macros-plugin-git")
 replaces=("python-mkdocs-macros-plugin-git")
 depends=("mkdocs" "python-jinja" "python-termcolor" "python-yaml" "python-dateutil")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('f984cced060f09060bd63c7c204799dd9b318fa98229b2a86b034165190a76ccac7c8d37bf084c56ba0673105a818c0a0d210121d01e6b677349488aa0730160')
+source=("https://files.pythonhosted.org/packages/source/${_sdist::1}/${_sdist}/${_sdist}-${pkgver}.tar.gz")
+b2sums=('05bc8f9f61553536a85b80cf80eb4810ae123792fd55d628f69179c7fac9dd30d1bbcf47f4c3c0514020f0d4e0a212e0c5c346900c0756901387c371e0e0cd30')
 
 build(){
- cd "$pkgname-$pkgver"
+ cd "${_sdist}-${pkgver}"
  python -m build --wheel --no-isolation
 }
 
 package(){
- cd "$pkgname-$pkgver"
+ cd "${_sdist}-${pkgver}"
  python -m installer --destdir="$pkgdir" dist/*.whl
 }
