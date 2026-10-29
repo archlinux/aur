@@ -1,19 +1,22 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=rumur
-pkgver=2024.05.07
+pkgver=2026.09.13
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
+# GCC 16.2.1 ICEs in ipa.cc:remove_unreachable_nodes when -O3 is combined
+# with LTO. Arch's default -O2 -flto is fine. Uncomment if building with -O3.
+#options=('!lto')
 url="https://github.com/Smattr/rumur"
 license=('custom:UNLICENSE')
 depends=('gmp' 'python')
 makedepends=('cmake' 'bison>=3.3.2' 'flex')
-checkdepends=('valgrind' 'z3')
+checkdepends=('python-pytest' 'valgrind' 'z3')
 optdepends=('z3: Preferred SMT solver'
             'cvc4: Alternative SMT solver')
 source=("https://github.com/Smattr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bf09d11c173280cd4893f7fa452fa3bebe5ad9aae44ea2750e56772acc6ad092')
+sha256sums=('f5cd322cae6af1473ce31ece08ff15e028f37f25da15973d88b87a3c77b995cd')
 
 prepare() {
   rm -rf build/CMakeCache.txt
@@ -24,14 +27,14 @@ build() {
   cd build
   cmake "../$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
 check() {
   cd build
   # The test needs about 1 hour
-  #env PATH="${PWD}/rumur:${PWD}/murphi2c:${PWD}/murphi2murphi:${PWD}/murphi2uclid:${PWD}/murphi2xml:${PWD}/tests/murphi-comment-ls${PATH:+:$PATH}" "../$pkgname-$pkgver/tests/run-tests.py"
+  #make check
 }
 
 package() {
