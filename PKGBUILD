@@ -3,7 +3,7 @@
 
 pkgname="coqui-tts"
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Deep learning for Text to Speech (hybrid venv)"
 arch=('any')
 url="https://github.com/idiap/coqui-ai-TTS"
@@ -11,7 +11,7 @@ license=('MPL-2.0')
 provides=("tts" "python-tts")
 conflicts=("tts" "python-tts")
 replaces=("python-tts" "tts")
-depends=('uv'
+depends=('python' 'uv'
          'python-pytorch-cuda'
          'python-torchaudio'
          'python-torchcodec'
