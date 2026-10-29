@@ -1,7 +1,7 @@
 # Maintainer: Marco Ziliani (rylos)
 pkgname=abb-agent-bin
 _pkgname=abb-agent
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Replacement for the Synology Active Backup for Business Linux agent: any distro and kernel, first-class btrfs, bare-metal restore (https://github.com/rylos/abb-agent)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ backup=('etc/abb-agent.toml')
 install=abb-agent.install
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz"
                "$_pkgname-$pkgver-x86_64.tar.gz.asc::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz.asc")
-sha256sums_x86_64=('ec1357d5ca5ea477cdba7227209efde1d210f2c65ef0e41c8c6acf6954080a03' 'SKIP')
+sha256sums_x86_64=('b352ffc8754d833e2ab30ac4014966ff791aef3449840f502047d4e17a597599' 'SKIP')
 # Release signing key: https://github.com/rylos.gpg
 validpgpkeys=('B903BF2CD82C9EA45C9FB35DE2E8944F09676A61')
 
@@ -24,7 +24,10 @@ package() {
   install -Dm755 abb-restore "$pkgdir/usr/bin/abb-restore"
   install -Dm644 abb-agent.service "$pkgdir/usr/lib/systemd/system/abb-agent.service"
   install -Dm644 abb-agent-fixup.service "$pkgdir/usr/lib/systemd/system/abb-agent-fixup.service"
+  install -Dm644 abb-agent.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/abb-agent.conf"
   install -Dm644 abb-agent.toml "$pkgdir/etc/abb-agent.toml"
+  # The pristine template: abb-agent.install compares /etc/abb-agent.toml with it.
+  install -Dm644 abb-agent.toml "$pkgdir/usr/share/$_pkgname/abb-agent.toml"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
