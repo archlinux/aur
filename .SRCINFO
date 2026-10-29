@@ -1,0 +1,18 @@
+pkgbase = okc
+	pkgdesc = Command-line client for the Muse Spark Open Kernel Challenge
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://openkernelchallenge.dev
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-proprietary
+	depends = ca-certificates
+	optdepends = git: "okc serve init" fetches the pinned SGLang with git
+	options = !strip
+	options = !debug
+	source_x86_64 = okc_0.7.2_x86_64.gz::https://openkernelchallenge.dev/okc/0.7.2/okc-linux-amd64.gz
+	sha256sums_x86_64 = 151719b64903bc996abc37b9f09a05c658f2e4665d0dc15a25ff6cc78f124a49
+	source_aarch64 = okc_0.7.2_aarch64.gz::https://openkernelchallenge.dev/okc/0.7.2/okc-linux-arm64.gz
+	sha256sums_aarch64 = cf51ce9defe357712ed050e4d35b883e3e2f3ec1ea6df5b4852d9b0493fd9653
+
+pkgname = okc
