@@ -1,6 +1,6 @@
 pkgbase = hyprwhspr
 	pkgdesc = System-wide speech-to-text for Linux desktops
-	pkgver = 1.49.2
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://github.com/goodroot/hyprwhspr
 	install = hyprwhspr.install
@@ -31,7 +31,7 @@ pkgbase = hyprwhspr
 	optdepends = cmake: accelerated pywhispercpp source builds
 	optdepends = git: accelerated pywhispercpp source builds
 	optdepends = base-devel: accelerated pywhispercpp source builds
-	source = hyprwhspr-1.49.2.tar.gz::https://github.com/goodroot/hyprwhspr/archive/refs/tags/v1.49.2.tar.gz
-	sha256sums = 9784d2199f2df17276ca1dc811eb827d42581a0000e9f411eaaa9e51cb5f7b32
+	source = hyprwhspr-1.50.0.tar.gz::https://github.com/goodroot/hyprwhspr/archive/refs/tags/v1.50.0.tar.gz
+	sha256sums = 3ab9d0d3b4257aec0df95b3326e927bfdb8942fda79279f4da920b3bd5789a82
 
 pkgname = hyprwhspr
