@@ -2,7 +2,7 @@
 
 pkgname="quiqr-bin"
 pkgver=0.18.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Offline CMS with a Hugo Engine"
 url="https://quiqr.org/"
 license=("GPL3")
@@ -21,7 +21,8 @@ b2sums_x86_64=('978b69af8e0b25a9c324fe505b1d1f4770da98fad13adfb1727f9e3f63dfc98f
 options=("!strip")
 
 prepare(){
- tar -xf "data.tar.xz"
+ # compression of the data archive changes between releases
+ tar -xf data.tar.*
 }
 
 package(){
