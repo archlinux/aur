@@ -1,0 +1,20 @@
+pkgbase = cre2
+	pkgdesc = C language wrapper for RE2, the regular expressions library from Google
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/marcomaggi/cre2
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = autoconf
+	makedepends = autoconf-archive
+	makedepends = automake
+	makedepends = libtool
+	makedepends = texinfo
+	depends = gcc-libs
+	depends = glibc
+	depends = re2
+	source = cre2-0.3.6.tar.gz::https://github.com/marcomaggi/cre2/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = faae21540e7889b811263942726aa1edce6b8d42c37e15d8e211da8a1a3bc43b
+
+pkgname = cre2
