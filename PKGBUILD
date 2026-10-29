@@ -1,7 +1,7 @@
 # Maintainer: Music Player Contributors <https://github.com/selfAnnihilator/kaze>
 pkgname=kaze
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A calm, intelligent local music player"
 arch=('x86_64')
 url="https://github.com/selfAnnihilator/kaze"
@@ -32,9 +32,24 @@ sha256sums=(
     'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c'
 )
 
-prepare() {
-    # A rustup package can satisfy makedepends without an installed toolchain.
-    # Check the executable toolchain before spending time on the frontend build.
+_ensure_rust_toolchain() {
+    if cargo --version >/dev/null 2>&1 && rustc --version >/dev/null 2>&1; then
+        return 0
+    fi
+
+    # Arch's rustup provides rust even when no toolchain is configured.
+    # Select stable for this build without changing the user's default/overrides.
+    if command -v rustup >/dev/null 2>&1; then
+        export RUSTUP_TOOLCHAIN=stable
+        if ! cargo --version >/dev/null 2>&1 || ! rustc --version >/dev/null 2>&1; then
+            msg "Installing the stable Rust toolchain needed to build Kaze..."
+            if ! rustup toolchain install stable --profile minimal --no-self-update; then
+                error "Could not install stable Rust. Check the download error above and retry."
+                return 1
+            fi
+        fi
+    fi
+
     if ! cargo --version >/dev/null 2>&1 || ! rustc --version >/dev/null 2>&1; then
         error "Kaze needs a working Rust toolchain (Cargo and rustc)."
         error "Fresh Arch installation: install rust with 'sudo pacman -Syu --needed rust'."
@@ -44,7 +59,13 @@ prepare() {
     fi
 }
 
+prepare() {
+    _ensure_rust_toolchain || return 1
+}
+
 build() {
+    # makepkg may run build in a different shell from prepare (also with --noextract).
+    _ensure_rust_toolchain || return 1
     cd "$pkgname-$pkgver"
     npm ci
     npm run build
