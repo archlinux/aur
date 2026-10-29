@@ -1,5 +1,5 @@
 pkgname=banchoxterm
-pkgver=1.2.5
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Multi-protocol terminal emulator and remote session manager'
 arch=('x86_64')
@@ -10,11 +10,12 @@ makedepends=('cmake' 'ninja' 'qt6-tools' 'desktop-file-utils' 'pkgconf')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Gargadon/banchoxterm/archive/refs/tags/v${pkgver}.tar.gz"
   'qtermwidget::git+https://github.com/Gargadon/qtermwidget.git'
-  'libssh2::git+https://github.com/libssh2/libssh2.git'
+  # The SSH BREAK adapter uses private APIs from this upstream-pinned version.
+  'libssh2::git+https://github.com/libssh2/libssh2.git#tag=libssh2-1.11.1'
   'libsodium::git+https://github.com/jedisct1/libsodium.git'
   'libvncserver::git+https://github.com/LibVNC/libvncserver.git'
 )
-sha256sums=('3daf55cdc075be89966f7981dbedd03c174a01344c908379e26834b6e45fcc10'
+sha256sums=('dc9238da6e36b6fa240844c93d877691524d0e5c0c17129f48fa9679177985b0'
             'SKIP'
             'SKIP'
             'SKIP'
