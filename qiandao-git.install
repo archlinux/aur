@@ -3,7 +3,7 @@
 
 post_install() {
     cat << EOF
-    NOTE: Make sure the SQLite database path is /var/lib/qiandao/database.db.
+    NOTE: The SQLite database is stored in the working directory (service: /var/lib/qiandao/database.db).
 EOF
 }
 

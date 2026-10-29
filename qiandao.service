@@ -17,6 +17,7 @@ PrivateDevices=true
 ProtectKernelTunables=true
 ProtectControlGroups=true
 NoNewPrivileges=true
+WorkingDirectory=/var/lib/qiandao
 ReadWritePaths=/var/lib/qiandao
 ExecStart=/usr/bin/qiandao-run
 
