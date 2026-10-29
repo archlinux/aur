@@ -1,0 +1,30 @@
+pkgbase = xepher-git
+	pkgdesc = Xepher — WeeChat plugin for XMPP/Jabber protocol (git master)
+	pkgver = 1.1.0.r0.g31d1738
+	pkgrel = 1
+	url = https://github.com/ekollof/xepher
+	arch = x86_64
+	arch = aarch64
+	license = MPL2
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	depends = weechat>=4.3
+	depends = libstrophe
+	depends = libxml2
+	depends = lmdb
+	depends = libsignal-protocol-c
+	depends = libomemo-c
+	depends = gpgme
+	depends = fmt
+	depends = curl
+	depends = openssl
+	provides = xepher=1.1.0.r0.g31d1738
+	conflicts = xepher
+	source = git+https://github.com/ekollof/xepher.git
+	sha256sums = SKIP
+
+pkgname = xepher-git
