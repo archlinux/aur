@@ -2,8 +2,8 @@
 
 pkgname="mkdocs-redirects"
 _name=${pkgname#python-}
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Open source plugin for Mkdocs page redirects"
 url="https://github.com/datarobot/mkdocs-redirects"
 license=("MIT")
