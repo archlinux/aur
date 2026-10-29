@@ -31,7 +31,7 @@
      "deps/uvwasi",
      "//third_party/zlib",
      "//third_party/brotli:dec",
-@@ -202,6 +212,19 @@
+@@ -202,6 +212,17 @@
    public_configs = [ ":node_lib_config" ]
    include_dirs = [ "src" ]
    libs = []
@@ -40,11 +40,9 @@
 +      ":cares",
 +      ":nghttp2",
 +    ]
-+    libs += [ "http_parser" ]
 +  } else {
 +    deps += [
 +      "deps/cares",
-+      "deps/http_parser",
 +      "deps/nghttp2",
 +    ]
 +  }

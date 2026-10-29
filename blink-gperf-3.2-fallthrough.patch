@@ -1,0 +1,17 @@
+diff --git a/third_party/blink/renderer/build/scripts/gperf.py b/third_party/blink/renderer/build/scripts/gperf.py
+index 34b18c9f9d..4b6e4e8c4e 100644
+--- a/third_party/blink/renderer/build/scripts/gperf.py
++++ b/third_party/blink/renderer/build/scripts/gperf.py
+@@ -38,8 +38,10 @@ def generate_gperf(gperf_path, gperf_input, gperf_args):
+         # -Wimplicit-fallthrough needs an explicit fallthrough statement,
+         # so replace gperf's /*FALLTHROUGH*/ comment with the statement.
+         # https://savannah.gnu.org/bugs/index.php?53029
+-        gperf_output = gperf_output.replace('/*FALLTHROUGH*/',
+-                                            '  [[fallthrough]];')
++        # gperf 3.2 and later emit the statement themselves.
++        if '[[fallthrough]]' not in gperf_output:
++            gperf_output = gperf_output.replace('/*FALLTHROUGH*/',
++                                                '  [[fallthrough]];')
+         # -Wpointer-to-int-cast warns about casting pointers to smaller ints
+         # Replace {(int)(long)&(foo), bar} with
+         # {static_cast<int>(reinterpret_cast<uintptr_t>(&(foo)), bar}
