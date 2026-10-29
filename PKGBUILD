@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="puncia"
-pkgver=0.24
+pkgver=0.42
 pkgrel=1
 pkgdesc="The Panthera(P.)uncia of Cybersecurity - Subdomain & Exploit Hunter powered by AI"
 url="https://pypi.org/project/puncia/"
@@ -10,7 +10,7 @@ arch=("any")
 depends=("python-requests")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('8dc5acfb7ca4f973d1eba0a37ee626697c0df9ac35834b739d048a1d2c59e0714e3cfc8fcd94768022be6a2f15a5032c0b38563b6ddbc1ffb08e649bb6927aba')
+b2sums=('4164e587585850eb5e16b67c858e0b7cb5f2ca9b71cfe74f91e6f06dd795369b94e5329fa26680886f253aa6bded9bdcb186756f6b2b5b7b69d5c85597ef4d3d')
 
 build(){
  cd "$pkgname-$pkgver"
