@@ -1,7 +1,7 @@
 # Maintainer: Borys Kharchenko <arximus88@gmail.com>
 
 pkgname=figma-linux-next-bin
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Unofficial Figma desktop app for Linux with bundled Electron — prebuilt binary"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
   "figma-linux-next.desktop"
 )
 sha256sums=(
-  'f2296cbba29b325d3051e99c9b8d58ad8eb3116c6d789cbcda3d34e01724d49e'
+  'fa43c90995e4acbe0651b7d154bf2346f186f3217e38b163ca8315a3cceff491'
   'SKIP'
 )
 noextract=("figma-linux-next-${pkgver}.zip")
