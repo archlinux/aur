@@ -13,14 +13,14 @@
 # webkit2gtk-4.1 headers at build time.
 
 pkgname=nuvio-linux-git
-pkgver=r3705.g5e18596a
+pkgver=r3786.ge33e19bef
 pkgrel=1
 pkgdesc="Nuvio desktop media player — upstream source packaged for Arch Linux (git)"
 arch=('x86_64')
 url="https://github.com/NuvioMedia/NuvioDesktop"
 license=('GPL3')
 depends=('mpv' 'webkit2gtk-4.1' 'gtk3' 'glibc' 'gcc-libs' 'libx11' 'libxcomposite' 'libxext' 'libxrender' 'libxi' 'libxtst')
-makedepends=('git' 'jdk21-temurin' 'gcc' 'mpv' 'webkit2gtk-4.1' 'gtk3' 'libxcomposite' 'libxext')
+makedepends=('git' 'jdk21-temurin' 'gcc' 'mpv' 'webkit2gtk-4.1' 'gtk3' 'libxcomposite' 'libxext' 'cmake')
 install=nuvio-linux-git.install
 provides=('nuvio-linux')
 conflicts=('nuvio-linux' 'nuvio-linux-bin')
