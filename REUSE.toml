@@ -20,6 +20,8 @@ path = [
   "*.timer",
   "*.desktop",
   "*.hook",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

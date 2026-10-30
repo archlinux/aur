@@ -6,7 +6,7 @@
 
 pkgname="modsecurity-crs"
 pkgver=4.30.0
-pkgrel=3
+pkgrel=4
 pkgdesc="OWASP ModSecurity Core Rule Set"
 _modsecver=3.0.17
 url="https://github.com/coreruleset/coreruleset"
