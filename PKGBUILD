@@ -2,7 +2,7 @@
 
 pkgname=figcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.0.r11.g9ec80bf
+pkgver=0.12.1.r504.ge4a7e89
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
@@ -32,6 +32,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
