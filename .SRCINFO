@@ -1,7 +1,7 @@
 pkgbase = ieumoffice-bin
 	pkgdesc = IeumOffice - desktop office suite for DOCX/XLSX/PPTX/PDF/HWP/Markdown (prebuilt binary)
-	pkgver = 0.12.8
-	pkgrel = 2
+	pkgver = 0.12.9
+	pkgrel = 1
 	url = https://ieumoffice.com
 	arch = x86_64
 	license = Apache-2.0
@@ -20,9 +20,9 @@ pkgbase = ieumoffice-bin
 	conflicts = ieumoffice
 	options = !strip
 	options = !debug
-	source = https://github.com/pblsketch/openoffice/releases/download/v0.12.8/ieumoffice-0.12.8.x86_64.rpm
-	source = https://raw.githubusercontent.com/pblsketch/openoffice/v0.12.8/LICENSE
-	sha512sums = 272ba9528a05db35cf1425acbdb62de79b67da856ad7f1382cc2e7f7e40bb4487b899061c89adcfcbc215d5bed839722ccab9840855eba4111ffaf72dd0a504b
+	source = https://github.com/pblsketch/openoffice/releases/download/v0.12.9/ieumoffice-0.12.9.x86_64.rpm
+	source = https://raw.githubusercontent.com/pblsketch/openoffice/v0.12.9/LICENSE
+	sha512sums = 41316bfc024519cb1465db402a6360b6289b309c804de26e20dc7969cd59cc906e77241c23e581cfa60645e9d48a5ab6feb21b0d4c09e1607a7a56d145be3425
 	sha512sums = e351f5ca50c8c31fb7c97043090d20afe7a3a1d725123f3e811236b7a83b1e7f2443ebf58e2cbd229e2b8d5a9ebc8c04c7c06bdacb8fa88973b9aaf1696e8811
 
 pkgname = ieumoffice-bin
