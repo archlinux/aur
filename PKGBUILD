@@ -5,7 +5,7 @@
 
 pkgname=sonic-screenlocker
 pkgver=6.8.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Library and components for secure lock screen architecture'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-screenlocker'
