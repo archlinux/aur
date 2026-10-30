@@ -26,6 +26,8 @@ url="https://github.com/Alice39s/xmtr"
 license=('Apache-2.0' 'MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'libcap')
+# Arch LTO drops ring's C symbols at link time; upstream already enables LTO itself.
+options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 

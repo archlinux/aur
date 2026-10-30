@@ -25,6 +25,7 @@ pkgbase = xmtr
 	makedepends = libcap
 	depends = glibc
 	depends = gcc-libs
+	options = !lto
 	source = xmtr-0.3.1.tar.gz::https://github.com/Alice39s/xmtr/archive/refs/tags/v0.3.1.tar.gz
 	sha256sums = b8ca6583f1cb2b1835cf95db744459afa974772521bf9e998706bb1b430f443f
 
