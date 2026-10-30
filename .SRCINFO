@@ -1,16 +1,16 @@
 pkgbase = fuzzynote-bin
 	pkgdesc = Terminal-based, hyper-fast, CRDT-backed, collaborative note-taking tool
-	pkgver = 0.46.2
+	pkgver = 0.47.4
 	pkgrel = 1
 	url = https://github.com/Sambigeara/fuzzynote
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
-	provides = fuzzynote=0.46.2
+	provides = fuzzynote=0.47.4
 	conflicts = fuzzynote
-	source_aarch64 = fuzzynote-0.46.2-aarch64.tar.gz::https://github.com/Sambigeara/fuzzynote/releases/download/v0.46.2/fzn-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 19e0f8cfe1d53e688648b70e21ba5ba850cdf772643c568f231494d81cb80a1c
-	source_x86_64 = fuzzynote-0.46.2-x86_64.tar.gz::https://github.com/Sambigeara/fuzzynote/releases/download/v0.46.2/fzn-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = a96491f170ebad7ab764e0cdf870c2218d236b81584233fdaecf025b8fd38bca
+	source_aarch64 = fuzzynote-0.47.4-aarch64.tar.gz::https://github.com/Sambigeara/fuzzynote/releases/download/v0.47.4/fzn-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = c57e7b0d7ce45a00fea73fefd17e2c5105a7bfe7d4f38b8f0317050649bbcdfc
+	source_x86_64 = fuzzynote-0.47.4-x86_64.tar.gz::https://github.com/Sambigeara/fuzzynote/releases/download/v0.47.4/fzn-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 41b7c079b4cf3874ad4954c0977b7108328fc2af046c66ec3b1fda5b6009021b
 
 pkgname = fuzzynote-bin
