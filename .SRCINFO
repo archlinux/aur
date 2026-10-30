@@ -1,6 +1,6 @@
 pkgbase = zerus-ade-nightly-bin
 	pkgdesc = Agent development environment for AI coding agents across machines (nightly)
-	pkgver = 0.47.0.r3133.g7967641.n31
+	pkgver = 0.47.0.r3543.g2b43554.n32
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = zerus-ade-nightly-bin
 	optdepends = npm: install Codex and DeepSeek Harness from Accounts
 	optdepends = git: Git repository and worktree features
 	optdepends = systemd: user service autostart and isolated DeepSeek scopes
-	provides = zerus=0.47.0.r3133.g7967641.n31
+	provides = zerus=0.47.0.r3543.g2b43554.n32
 	provides = hgs
 	provides = hgs-tray
 	conflicts = zerus
@@ -38,7 +38,7 @@ pkgbase = zerus-ade-nightly-bin
 	conflicts = zerus-ade-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/ufna/zerus/releases/download/nightly-40825403150/zerus-0.47.0.r3133.g7967641.n31-arch-x86_64.tar.gz
-	sha256sums = 3ff98c51acc3bcd9b4565942b9a30abe024a100ea85b25eb308c0d0084e6f029
+	source = https://github.com/ufna/zerus/releases/download/nightly-41010440828/zerus-0.47.0.r3543.g2b43554.n32-arch-x86_64.tar.gz
+	sha256sums = 460094464b3f0dd4b3a144ab29da41ab8bb017eca0538e5475aca0d41011824a
 
 pkgname = zerus-ade-nightly-bin
