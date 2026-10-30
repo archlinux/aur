@@ -1,6 +1,21 @@
 pipewire-control-center: what changed in each AUR release, newest first.
 Every change in full: https://github.com/knightinfected/PipeWireController/blob/main/CHANGELOG.md
 
+0.6.3-1 (2026-10-30)
+  Search the whole app, and a fix for the line under the headers.
+
+  - Search: the button at the top of every page, or Ctrl+K, finds a page,
+    a setting, a device, an app that is playing, or anything you have set
+    up, and opens its page with that row in view.
+  - Fixed: the line under the sidebar's header sat 3 pixels below the one
+    under the page's header on the default theme, and further off with a
+    custom GTK theme or larger text (#32).
+
+  When you upgrade:
+  - Nothing to do. In a narrow window the slider-style button now leaves
+    the header first to make room for search; it is also in
+    Preferences → General.
+
 0.6.2-1 (2026-10-29)
   The Equalizer, Devices and Patchbay redesigned, Preferences with start at
   login, a balance and a volume for every channel, and 17 bug fixes.

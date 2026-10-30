@@ -12,7 +12,7 @@
 # v0.5.0 is the first release carrying the rename (v0.4.0 still ships the old
 # filenames, so this package cannot be built against it).
 pkgname=pipewire-control-center
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 # NB the AUR rejects a pkgdesc over 255 characters ("pkgdesc field too long",
 # hook declined) — the first push of this package hit exactly that at 275. Keep
@@ -39,7 +39,7 @@ optdepends=('noise-suppression-for-voice: RNNoise noise-cancelling mic template'
             'lsp-plugins-lv2: extra LV2 plugins for effect racks'
             'carla: bridge VST3/CLAP plugins into the graph via the patchbay')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('335d01817baa33227e25179c83bbb1d4ffe6e5da6b48f99416a997c8cdeb7d59')
+sha256sums=('c7f1be9c2f64ad83b6bcb14c10160366724c5209a4610bc5e9ac73eb6c13305b')
 
 package() {
   cd "PipeWireController-$pkgver"
