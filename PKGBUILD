@@ -9,7 +9,7 @@
 #
 pkgname=1panel-v2-bin
 _upver=v2.3.2
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="1Panel v2, a modern open source linux panel (official binary)"
 arch=('x86_64' 'aarch64')

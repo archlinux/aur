@@ -1,6 +1,6 @@
 pkgbase = 1panel-v2-bin
 	pkgdesc = 1Panel v2, a modern open source linux panel (official binary)
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/1Panel-dev/1Panel
 	install = 1panel-v2-bin.install
