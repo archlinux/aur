@@ -376,6 +376,37 @@ check() {
     --configuration Release -p:EnforceCodeStyleInBuild=false -p:TreatWarningsAsErrors=false
 }
 
+# Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
+# restored from a remote feed like nuget.org into $1, so no prebuilt binary slips in instead of one built
+# from source
+_check_prebuilt() {
+  local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0
+  local _binaries=(-type f '(' -name '*.dll' -o -name '*.exe' -o -name '*.so' -o -name '*.so.*' -o -name '*.dylib' ')')
+  local -A _prebuilt=()
+  while IFS= read -r -d '' _metadata; do
+    grep -qE '"source": *"https?://' "$_metadata" || continue
+    while IFS= read -r -d '' _file; do
+      _prebuilt[$(sha256sum <"$_file")]="${_file#"$1"/}"
+    done < <(find "${_metadata%/*}" "${_binaries[@]}" -print0)
+  done < <(find "$1" -name .nupkg.metadata -print0)
+
+  rm -rf "$_extracted"
+  mkdir -p "$_extracted"
+  while IFS= read -r -d '' _file; do
+    mkdir -p "$_extracted/${_file#"$pkgdir"/}"
+    bsdtar -xf "$_file" -C "$_extracted/${_file#"$pkgdir"/}"
+  done < <(find "$pkgdir" -type f -name '*.nupkg' -print0)
+  while IFS= read -r -d '' _file; do
+    _hash=$(sha256sum <"$_file")
+    if [[ -v "_prebuilt[$_hash]" ]]; then
+      echo "Prebuilt binary: ${_file#"$_extracted"/} is ${_prebuilt[$_hash]}" >&2
+      _found=1
+    fi
+  done < <(find "$pkgdir" "$_extracted" "${_binaries[@]}" -print0)
+  rm -rf "$_extracted"
+  return "$_found"
+}
+
 package() {
   install -dm755 "$pkgdir/usr/share/powershell/Modules"
   cp -r "$srcdir"/PowerShellEditorServices/module/{PSScriptAnalyzer,PowerShellEditorServices} \
@@ -387,4 +418,6 @@ package() {
 
   install -Dm644 "$srcdir/PowerShellEditorServices/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/PSScriptAnalyzer/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/PSScriptAnalyzer-LICENSE"
+
+  _check_prebuilt "$srcdir/nuget"
 }
