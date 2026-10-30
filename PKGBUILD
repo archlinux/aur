@@ -29,6 +29,8 @@ pkgver() {
 
 build() {
     cd invidious-companion
+    sed -i 's|/home/invidious/invidious-companion|/usr/lib/invidious/|g' invidious-companion.service
+    sed -i 's|BindPaths=/home/invidious/tmp|#BindPaths=/home/invidious/tmp|g' invidious-companion.service
     deno task compile
 }
 
