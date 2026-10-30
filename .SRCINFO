@@ -1,7 +1,7 @@
 pkgbase = jna-bin
 	pkgdesc = Java Native Access (jna.jar) and cross-platform mappings (jna-platform.jar), prebuilt from Maven Central
 	pkgver = 5.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/java-native-access/jna
 	arch = any
 	license = LGPL-2.1-or-later

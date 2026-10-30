@@ -1,7 +1,7 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=jna-bin
 pkgver=5.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Java Native Access (jna.jar) and cross-platform mappings (jna-platform.jar), prebuilt from Maven Central"
 arch=('any')
 url='https://github.com/java-native-access/jna'
@@ -22,7 +22,7 @@ sha256sums=('4fb141dd8ef6b0585ffceea4bc49602fbc6312fa977e2c488794ea3e6aafecae'
 
 package() {
   install -Dm644 "${srcdir}/jna-${pkgver}.jar" "${pkgdir}/usr/share/java/jna/jna.jar"
-  install -Dm644 "${srcdir}/jna-platform-${pkgver}.jar" "${pkgdir}/usr/share/java/jna-platform.jar"
+  install -Dm644 "${srcdir}/jna-platform-${pkgver}.jar" "${pkgdir}/usr/share/java/jna/jna-platform.jar"
   install -Dm644 "${srcdir}/AL2.0"   "${pkgdir}/usr/share/licenses/${pkgname}/AL2.0"
   install -Dm644 "${srcdir}/LGPL2.1" "${pkgdir}/usr/share/licenses/${pkgname}/LGPL2.1"
 }
