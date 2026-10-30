@@ -3,10 +3,10 @@
 _pkgbase=conflux
 pkgname="$_pkgbase-bin"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Background file-sync daemon syncing local directories to multiple remotes'
 arch=('x86_64' 'aarch64')
-url='https://github.com/SelfRef/conflux'
+url='https://github.com/AperteDev/conflux'
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'openssl' 'zlib')
 provides=("$_pkgbase")
