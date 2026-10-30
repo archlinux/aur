@@ -1,7 +1,7 @@
 # Maintainer: w568w <w568w at outlook dot com>
 
 pkgname=qqtui
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal frontend using the native Linux QQ service'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/w568w/qqtui'
 license=('MPL-2.0')
 depends=('glibc' 'gcc-libs' 'sqlite>=3.51.2' 'systemd' 'dbus' 'xorg-server-xvfb'
          'xorg-xauth' 'xorg-xkbcomp' 'tigervnc' 'novnc'
-         'linuxqq=5:3.2.34_53644')
+         'linuxqq=5:3.2.35_54395')
 options=('!lto')
 makedepends=('cargo')
 checkdepends=('nodejs' 'python')
@@ -20,7 +20,7 @@ optdepends=('kitty: inline images and animations'
             'xclip: X11 clipboard'
             'xdg-utils: open files and links in external applications')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('27f981dc7d1f5a416efc4ccbc8375600e1c04802004ad04385b27757d788911f')
+sha256sums=('5673dc11f7e001d216fcb713018d7e3dcee28998d4d481e0a8ecdbb2281b926b')
 
 prepare() {
   cd "qqtui-$pkgver"
