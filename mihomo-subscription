@@ -440,6 +440,17 @@ def looks_like_raw_subscription(text: str) -> bool:
     return False
 
 
+def normalize_node(node: dict[str, Any]) -> dict[str, Any]:
+    node = copy.deepcopy(node)
+    # Some YAML subscriptions emit null for optional Hysteria2 bandwidths.
+    # Mihomo's inline provider decoder rejects null; omission uses core defaults.
+    if node.get("type") == "hysteria2":
+        for field in ("up", "down"):
+            if node.get(field) is None:
+                node.pop(field, None)
+    return node
+
+
 def extract_proxies(text: str, source_id: str) -> list[dict[str, Any]]:
     try:
         document = yaml.safe_load(text)
@@ -469,7 +480,7 @@ def extract_proxies(text: str, source_id: str) -> list[dict[str, Any]]:
                 f"来源 {source_id} 的第 {index + 1} 个节点不是映射对象"
             )
 
-        node = copy.deepcopy(item)
+        node = normalize_node(item)
         name = node.get("name")
         node_type = node.get("type")
 
@@ -647,7 +658,7 @@ def load_cached_payload(cache_file: Path, source_id: str) -> list[dict[str, Any]
     ):
         raise SubscriptionError(f"来源 {source_id} 的缓存节点无效：{cache_file}")
 
-    return cached["payload"]
+    return [normalize_node(node) for node in cached["payload"]]
 
 
 def build_candidate(
