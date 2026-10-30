@@ -1,7 +1,7 @@
 # Maintainer: Daniel Grasso
 
 pkgname=wayland-scroll-factor
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Touchpad scroll and gesture tuning for Wayland (GNOME)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=wayland-scroll-factor.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/daniel-g-carrasco/wayland-scroll-factor/archive/refs/tags/v$pkgver.tar.gz")
 # TODO(release): replace with the real sha256 of the v1.0.0 tarball once the
 # tag exists (run updpkgsums), then regenerate .SRCINFO with makepkg.
-sha256sums=('ded61c7351491aac92f9ecc55e7fb5b397ef6325942d1a66856faf7ac6fa1e4e')
+sha256sums=('e2c9d74378f77547c81210b6c126dd3805d06637573c08bab0126f13bb1d6bf0')
 
 build() {
   cd "$pkgname-$pkgver"

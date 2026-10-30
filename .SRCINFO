@@ -1,6 +1,6 @@
 pkgbase = wayland-scroll-factor
 	pkgdesc = Touchpad scroll and gesture tuning for Wayland (GNOME)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/daniel-g-carrasco/wayland-scroll-factor
 	install = wayland-scroll-factor.install
@@ -16,7 +16,7 @@ pkgbase = wayland-scroll-factor
 	depends = python-gobject
 	optdepends = libinput-tools: for wsf doctor diagnostics
 	options = !debug
-	source = wayland-scroll-factor-1.0.0.tar.gz::https://github.com/daniel-g-carrasco/wayland-scroll-factor/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = ded61c7351491aac92f9ecc55e7fb5b397ef6325942d1a66856faf7ac6fa1e4e
+	source = wayland-scroll-factor-1.0.1.tar.gz::https://github.com/daniel-g-carrasco/wayland-scroll-factor/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = e2c9d74378f77547c81210b6c126dd3805d06637573c08bab0126f13bb1d6bf0
 
 pkgname = wayland-scroll-factor
