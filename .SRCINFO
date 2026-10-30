@@ -1,7 +1,7 @@
 pkgbase = pypkjs
 	pkgdesc = PebbleKit JS phone-app simulator, used by pebble-tool's managed QEMU emulator for JS/sensor emulation
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coredevices/pypkjs
 	arch = any
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = pypkjs
 	depends = python-websocket-client
 	depends = python-libpebble2
 	depends = python-netaddr
-	depends = python-stpyv8
+	depends = python-quickjs-ng
 	source = https://files.pythonhosted.org/packages/09/3f/578ae59babf9ddbd8528bd440afbfa322ce1674aa0a6ff98759099642a61/pypkjs-3.0.3.tar.gz
 	sha256sums = 655b5144a10ead744dd37628af043cae87ca54c95149dcc16407e0115584ca44
 
