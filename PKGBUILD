@@ -2,7 +2,7 @@
 
 _name=openinference-semantic-conventions
 pkgname=python-$_name
-pkgver=0.1.42
+pkgver=0.1.43
 pkgrel=1
 pkgdesc="OpenInference Semantic Conventions."
 arch=('any')
@@ -12,14 +12,13 @@ license=('Apache-2.0')
 depends=('python')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 checkdepends=('python-pytest')
-source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('500bb816812969cc76b8efe927a5a1847e8c2717f6e25e10918816368457fcae')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
+sha256sums=('effac920b3a33283ad9da08c4af2c732e67fdde7ce87f2990f332920f1615c37')
 
 build() {
-  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}"
   python -m build --wheel --no-isolation
 }
 
@@ -28,11 +27,11 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}"
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
