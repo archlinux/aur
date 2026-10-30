@@ -1,6 +1,6 @@
 pkgbase = materialcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Substance Designer (Git HEAD)
-	pkgver = 0.4.0.r20.gcae0fd3
+	pkgver = 0.5.0.r4.g6307ce2
 	pkgrel = 1
 	url = https://github.com/PiJellyPin/MaterialCraft
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = materialcraft-git
 	makedepends = git
 	depends = glibc
 	depends = libgcc
-	provides = materialcraft=0.4.0.r20.gcae0fd3
+	provides = materialcraft=0.5.0.r4.g6307ce2
 	conflicts = materialcraft
 	source = git+https://github.com/PiJellyPin/MaterialCraft.git
 	sha256sums = SKIP

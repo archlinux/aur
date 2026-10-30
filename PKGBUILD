@@ -2,7 +2,7 @@
 
 _pkgname=MaterialCraft
 pkgname=materialcraft-git
-pkgver=0.4.0.r20.gcae0fd3
+pkgver=0.5.0.r4.g6307ce2
 pkgrel=1
 url="https://github.com/PiJellyPin/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Substance Designer (Git HEAD)'
@@ -30,6 +30,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
