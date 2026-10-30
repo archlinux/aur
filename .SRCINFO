@@ -1,6 +1,6 @@
 pkgbase = pocket-tts-git
 	pkgdesc = Kyutai's pocket-sized text-to-speech on the CPU, without Python (git version)
-	pkgver = r206.77c3d76
+	pkgver = r207.b20753a
 	pkgrel = 1
 	url = https://github.com/kyutai-labs/pocket-tts
 	arch = x86_64
