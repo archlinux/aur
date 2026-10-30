@@ -1,0 +1,21 @@
+pkgbase = nano-j2me-git
+	pkgdesc = J2ME (CLDC 1.1 / MIDP 2.0) runtime and desktop emulator client (git master)
+	pkgver = 0.5.2.r0.gbea5022
+	pkgrel = 1
+	url = https://github.com/lucinhu/nano_j2me
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = sdl2
+	depends = curl
+	depends = zlib
+	optdepends = retroarch: run the bundled libretro core
+	provides = nano-j2me=0.5.2.r0.gbea5022
+	conflicts = nano-j2me
+	source = git+https://github.com/lucinhu/nano_j2me.git
+	sha256sums = SKIP
+
+pkgname = nano-j2me-git
