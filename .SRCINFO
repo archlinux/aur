@@ -1,6 +1,6 @@
 pkgbase = ccbaga-bin
 	pkgdesc = Claude maintenance and isolated fingerprint browser toolkit
-	pkgver = 0.2.49
+	pkgver = 0.2.50
 	pkgrel = 1
 	url = https://github.com/liseami/CCBaga
 	arch = x86_64
@@ -39,13 +39,13 @@ pkgbase = ccbaga-bin
 	depends = zsh
 	optdepends = wl-clipboard: Wayland clipboard support
 	optdepends = xclip: X11 clipboard support
-	provides = ccbaga=0.2.49
+	provides = ccbaga=0.2.50
 	conflicts = ccbaga
 	options = !strip
 	options = !debug
-	source = https://github.com/liseami/CCBaga/releases/download/v0.2.49/CCBaga-0.2.49-linux-x86_64.pkg.tar.zst
-	source = ccbaga-0.2.49-LICENSE.lobehub.txt::https://raw.githubusercontent.com/liseami/CCBaga/v0.2.49/assets/ai-icons/LICENSE.lobehub.txt
-	sha256sums = 1750c54c4d49b3e0afc4092c67de0582b42aa95fa452445d58fa34c42a92eebc
+	source = https://github.com/liseami/CCBaga/releases/download/v0.2.50/CCBaga-0.2.50-linux-x86_64.pkg.tar.zst
+	source = ccbaga-0.2.50-LICENSE.lobehub.txt::https://raw.githubusercontent.com/liseami/CCBaga/v0.2.50/assets/ai-icons/LICENSE.lobehub.txt
+	sha256sums = f7e4977af824e576590c10995c2c98cea9b4070c9c4ed6afdc929cfeb3c55544
 	sha256sums = add9d7531d1b21646317a8958e38fc727506fa39d24bdecb44154d943c82753a
 
 pkgname = ccbaga-bin
