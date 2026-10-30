@@ -1,6 +1,6 @@
 pkgbase = panache-bin
 	pkgdesc = A language server, formatter, and linter for Quarto and other Markdown flavors
-	pkgver = 3.17.1
+	pkgver = 3.17.2
 	pkgrel = 1
 	url = https://github.com/jolars/panache
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = panache-bin
 	provides = panache
 	conflicts = panache
 	options = !strip
-	source_x86_64 = panache-3.17.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v3.17.1/panache-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 64509993b0eb4091fc34a0f667565377af29436014bbba05947b327a275013b6
-	source_aarch64 = panache-3.17.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v3.17.1/panache-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a14dac6febe97e697963f706bdad5fd27d98d4364d1b25e53917ab5d41ac12fc
+	source_x86_64 = panache-3.17.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v3.17.2/panache-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d54a9872ae09bc2d99c7844696cc721b5e7b9cc782aaa06b59805b5aff5fc329
+	source_aarch64 = panache-3.17.2-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v3.17.2/panache-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f5bfd216c60a67a274c1d25becb3009e73bb40d8e03d10eb230d0ba7e627a1db
 
 pkgname = panache-bin
