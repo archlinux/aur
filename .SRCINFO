@@ -1,6 +1,6 @@
 pkgbase = fieldcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Dassault Systems Abaqus (Git HEAD)
-	pkgver = 0.7.0.r167.g7d9c027
+	pkgver = 0.7.0.r264.gaf132a5
 	pkgrel = 1
 	url = https://tangency-labs.github.io/fieldcraft/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fieldcraft-git
 	makedepends = git
 	depends = glibc
 	depends = libgcc
-	provides = fieldcraft=0.7.0.r167.g7d9c027
+	provides = fieldcraft=0.7.0.r264.gaf132a5
 	conflicts = fieldcraft
 	source = git+https://github.com/tangency-labs/fieldcraft.git
 	sha256sums = SKIP

@@ -2,7 +2,7 @@
 
 pkgname=fieldcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.7.0.r167.g7d9c027
+pkgver=0.7.0.r264.gaf132a5
 pkgrel=1
 url="https://tangency-labs.github.io/$_pkgname/"
 _url="https://github.com/tangency-labs/$_pkgname"
@@ -31,6 +31,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
