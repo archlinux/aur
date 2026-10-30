@@ -14,7 +14,7 @@ pkgname=(ionix-base-git ionix-desktop-git ionix-server-git)
 # Placeholder: aur-publish.sh patches this to the real r<count>.<hash> before
 # generating .SRCINFO. Keep it in the r-scheme: a bare 0.1.0 would sort *newer*
 # than every r-version if it ever reached the AUR unpatched.
-pkgver=r4.f1359d2
+pkgver=r5.c9e72b7
 pkgrel=1
 pkgdesc="Ionix system files"
 arch=('any')
