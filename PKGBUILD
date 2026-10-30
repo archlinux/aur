@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=modrinth-enhanced
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Modrinth App without ads or telemetry, with offline and Ely.by accounts and Linux fixes"
 arch=('x86_64')
@@ -24,9 +24,9 @@ options=('!lto' '!debug')
 # the patches were exported against (patches/base.txt); pkg.sh reads both.
 # A new revision of the patches on the same release is tagged v0.21.2-2, which
 # pkgver spells 0.21.2.r2.
-_tag="v0.22.0"
-_upstream="v0.22.0"
-_base="v0.22.0"
+_tag="v0.22.1"
+_upstream="v0.22.1"
+_base="v0.22.1"
 # With the NVIDIA driver WebKitGTK paces the app with a 60 fps timer whatever
 # the monitor's refresh rate. vblank-shim.c, preloaded by modrinth-enhanced.sh,
 # paces it at the monitor's rate instead and keeps the app on X11, the only
@@ -40,7 +40,7 @@ if [[ "$_base" != "$_upstream" ]]; then
   source+=("modrinth-code-${_base}.tar.gz::https://github.com/modrinth/code/archive/refs/tags/${_base}.tar.gz")
   noextract+=("modrinth-code-${_base}.tar.gz")
 fi
-sha256sums=('5932ab650daecacd2eadec0b133e29530ca2669e4a00026d2c260918d255baa4' 'd98d354465cddcc65918e11649c04a3a2eb3580286e05b110fb9154a9ea76a5d' '0190921b8ff2fb1deec3209cba71c01541ca1f013e3ba41680f1636e185fd455' 'b24872f82645c52ee4804599cd678d138876fb193c754403fa9c5cf92bd745b9')
+sha256sums=('f8a7b47fc9cc7aa3805482da31357cc89ac8dc1e3acf3400167f4fbe32902d00' '38191475d8cb2e5826556552ea384bb95a9e773641c1451a6b6ebc4253b4cfea' '0190921b8ff2fb1deec3209cba71c01541ca1f013e3ba41680f1636e185fd455' 'b24872f82645c52ee4804599cd678d138876fb193c754403fa9c5cf92bd745b9')
 
 prepare() {
   # What upstream's scripts/prepare.sh does with two shallow tags: apply the
