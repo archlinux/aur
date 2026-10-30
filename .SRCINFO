@@ -1,6 +1,6 @@
 pkgbase = nginx-ui-bin
 	pkgdesc = Yet another WebUI for Nginx.
-	pkgver = 2.9.0
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://nginxui.com/
 	arch = aarch64
@@ -9,16 +9,16 @@ pkgbase = nginx-ui-bin
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = nginx
-	provides = nginx-ui=2.9.0
+	provides = nginx-ui=2.9.2
 	conflicts = nginx-ui
 	options = !strip
-	source_aarch64 = nginx-ui-2.9.0-aarch64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.0/nginx-ui-linux-arm64-v8a.tar.gz
+	source_aarch64 = nginx-ui-2.9.2-aarch64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.2/nginx-ui-linux-arm64-v8a.tar.gz
 	sha256sums_aarch64 = 2720fb07a43e69e14e62d8aa264d09c609aa9a18d5ee466f7f9866a17dd38509
-	source_armv7h = nginx-ui-2.9.0-armv7h.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.0/nginx-ui-linux-arm32-v7a.tar.gz
+	source_armv7h = nginx-ui-2.9.2-armv7h.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.2/nginx-ui-linux-arm32-v7a.tar.gz
 	sha256sums_armv7h = 3862074e7db1eac628b17a35cf42c74fef24ec6a111627554e47ec70a13a9ca8
-	source_i686 = nginx-ui-2.9.0-i686.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.0/nginx-ui-linux-32.tar.gz
+	source_i686 = nginx-ui-2.9.2-i686.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.2/nginx-ui-linux-32.tar.gz
 	sha256sums_i686 = 18e7df77018ecff0a4647518d0b185769714f12689f6c6c1699026ccca3d59cf
-	source_x86_64 = nginx-ui-2.9.0-x86_64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.0/nginx-ui-linux-64.tar.gz
+	source_x86_64 = nginx-ui-2.9.2-x86_64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.9.2/nginx-ui-linux-64.tar.gz
 	sha256sums_x86_64 = 4983e72129500b392733fc005bee73074db4e1b10d37ed3fab392ac0af02df4c
 
 pkgname = nginx-ui-bin

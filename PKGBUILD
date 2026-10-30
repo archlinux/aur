@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nginx-ui-bin
 _pkgname='Nginx UI'
-pkgver=2.9.0
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Yet another WebUI for Nginx."
 arch=(
