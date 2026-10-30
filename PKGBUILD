@@ -3,7 +3,7 @@
 pkgname=pacvis-git
 _pkgname=pacvis
 pkgver=0.2.7.r12.g34f7494
-pkgrel=2
+pkgrel=3
 pkgdesc="Visualize pacman local database using Vis.js, inspired by pacgraph"
 arch=('any')
 url="https://github.com/farseerfc/pacvis"
@@ -32,6 +32,7 @@ package () {
     cd "$srcdir/$_pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 "pacvis@.service" "${pkgdir}/usr/lib/systemd/system/pacvis@.service"
+    install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
