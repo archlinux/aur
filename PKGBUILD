@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-frameworks-quick-ui
-pkgver=6.31.0
+pkgver=6.31.0.1
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=('x86_64')
@@ -29,7 +29,7 @@ provides=('kirigami')
 conflicts=('kirigami')
 groups=('sonicde-frameworks')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('46c2f384ef49940e13ba733cf6b05136894404f6f461de88ea63a9082a282b9c')
+sha256sums=('0d4bcd8e9f17ed19e235f440ea841c837a903a61b41affcfa4f5e77bc0869c92')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
