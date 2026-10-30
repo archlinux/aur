@@ -1,6 +1,6 @@
 pkgbase = inter-doom
-	pkgdesc = Small, functional and simple Doom source port, created with help, efforts and bits of code from people around the world
-	pkgver = 8.3
+	pkgdesc = International Doom. Small, functional and simple Doom, Heretic, Hexen source port, created with help, efforts and bits of code from people around the world
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
@@ -9,16 +9,23 @@ pkgbase = inter-doom
 	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = cmake
+	depends = hicolor-icon-theme
+	depends = glibc
 	depends = sdl2>=2.0.18
 	depends = sdl2_mixer>=2.0.2
-	depends = sdl2_net>=2.0.0
 	depends = libsamplerate
 	depends = fluidsynth
 	optdepends = doom1-wad: Doom shareware game data
+	optdepends = heretic1-wad: Heretic shareware game data
+	optdepends = hexen1-wad: Hexen demo game data
+	provides = inter-heretic=9.1
+	provides = inter-hexen=9.1
+	conflicts = inter-heretic
+	conflicts = inter-hexen
 	conflicts = inter-doom-git
-	source = inter-doom-8.3.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/8.3.tar.gz
-	source = 001_install_rule.patch
-	b2sums = c465ccdbc3cb2a0ace4033cb009dc3852feee1864e75aabe88f9e6e5c18476d0832855b46f819ec9486862e1288c375f504d6cae6f2dacab9e56cf53f63a0a24
-	b2sums = a36374d1e2a2f59a767f317431986e23406a7af8105c7c86f3061c3a40fdc46535e1349e91155e127a5f6f86ce782c62ccee474f7cba28434ea5cfaa6d1ee6e6
+	conflicts = inter-heretic-git
+	conflicts = inter-hexen-git
+	source = inter-doom-9.1.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/9.1.tar.gz
+	b2sums = f950f1161a0b5a211f06d231dc575f70d1715f693a74e02e618f9da18dc628efa503d519b876f94d35dfe1b1c7ba7ffcd4f9f0dd3d0fb1ec162d7100986d1d4c
 
 pkgname = inter-doom
