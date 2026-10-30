@@ -1,6 +1,6 @@
 pkgbase = lotti-bin
 	pkgdesc = A private logbook with a staff of personal AI assistants. Agents read what you record and propose what to do next — you approve the changes. End-to-end encrypted sync between your own devices — servers only ever see ciphertext. Local AI optional.
-	pkgver = 1.1.67+4455
+	pkgver = 1.1.70+4458
 	pkgrel = 1
 	url = https://matthiasn.github.io/lotti/
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = lotti-bin
 	depends = gstreamer
 	depends = gst-plugins-base-libs
 	depends = ffmpeg
-	provides = lotti=1.1.67+4455
+	provides = lotti=1.1.70+4458
 	conflicts = lotti
-	source = lotti-1.1.67+4455-x86_64.AppImage::https://github.com/matthiasn/lotti/releases/download/1.1.67+4455/Lotti-1.1.67-x86_64.AppImage
+	source = lotti-1.1.70+4458-x86_64.AppImage::https://github.com/matthiasn/lotti/releases/download/1.1.70+4458/Lotti-1.1.70-x86_64.AppImage
 	source = lotti.sh
-	sha256sums = adc78ed74da5e8cce31a5f9fa49cc25d374f0c882799fd467fb9ac93a311f409
+	sha256sums = 74008faf06120355bd310afa2d799ff12d7c913ea675106a922524dc2de53e1d
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = lotti-bin
