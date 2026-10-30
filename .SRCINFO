@@ -1,10 +1,11 @@
 pkgbase = go2train-bin
-	pkgdesc = Go2Train - Online Language Learning App (Unofficial)
+	pkgdesc = Online language learning app (unofficial package)
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go2train.co/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-go2train
+	license = MIT
 	depends = glibc
 	depends = gtk3
 	depends = libnotify
@@ -23,7 +24,8 @@ pkgbase = go2train-bin
 	optdepends = lsb-release: For distro info
 	provides = go2train
 	conflicts = go2train
-	source = go2train_1.0.3.deb::https://g2ns.ir/e
+	options = !debug
+	source = go2train_1.0.3.deb::https://train-apks.file.g2storage.com/production/desktop/linux/linux_1.0.3.deb
 	sha256sums = 11ab4e935882975d9cf569e61d0427286aab2a6325956c1658d3a9f9f5e05a49
 
 pkgname = go2train-bin
