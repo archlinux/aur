@@ -1,6 +1,6 @@
 pkgbase = mesonotes-bin
 	pkgdesc = Notes, tasks, boards, canvases and writing on your own computer
-	pkgver = 1.0.27
+	pkgver = 1.0.29
 	pkgrel = 1
 	url = https://linuxmind.gitlab.io/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mesonotes-bin
 	conflicts = mesonotes
 	options = !strip
 	options = !debug
-	source = mesonotes-1.0.27-amd64.deb::https://gitlab.com/api/v4/projects/linuxmind%2Fmesonotes/packages/generic/mesonotes/1.0.27/mesonotes-1.0.27-amd64.deb
-	sha256sums = 11d5590db8f82f6ca78b42fc2ad6522615164446b3e3a77b8b6b149c041d9b56
+	source = mesonotes-1.0.29-amd64.deb::https://gitlab.com/api/v4/projects/linuxmind%2Fmesonotes/packages/generic/mesonotes/1.0.29/mesonotes-1.0.29-amd64.deb
+	sha256sums = 6538833b1fb614bf207798daa7feb3b4586d5df266eaa282dbb4f470c032e9cd
 
 pkgname = mesonotes-bin
