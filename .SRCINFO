@@ -1,6 +1,6 @@
 pkgbase = chrome-devtools-axi
 	pkgdesc = AXI-compliant chrome-devtools-mcp wrapper with contextual suggestions
-	pkgver = 0.1.45
+	pkgver = 0.1.46
 	pkgrel = 1
 	url = https://github.com/kunchenguid/chrome-devtools-axi
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = chrome-devtools-axi
 	depends = nodejs
 	depends = chrome-devtools-mcp
 	options = !debug
-	source = chrome-devtools-axi-0.1.45.tgz::https://registry.npmjs.org/chrome-devtools-axi/-/chrome-devtools-axi-0.1.45.tgz
-	sha512sums = 2703d6714ad872c8fef2b555a4d928a0b1f47e4223ea5c513c0f6e28490de54919a752d4c8e1f35b418d52c0d493276ac09f146b108292d2552ce1e71f859056
+	source = chrome-devtools-axi-0.1.46.tgz::https://registry.npmjs.org/chrome-devtools-axi/-/chrome-devtools-axi-0.1.46.tgz
+	sha512sums = 4ba9c542ed7b8648e505d23d79e282cc2ec554ccf2016f64855a4dfe3a6691aea6886ec201bf8c8da196d4de8762b68da70f2bf0fb2a0f853334ea4d1cc4af16
 
 pkgname = chrome-devtools-axi
