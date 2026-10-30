@@ -60,10 +60,10 @@ _dotnet_env() {
 # prepare() found them there, otherwise from Microsoft's dotnet-eng feed and nuget.org like upstream.
 _nuget_config() {
   local _arcade=(Microsoft.DotNet.Arcade.Sdk Microsoft.DotNet.XliffTasks) _local=() _feed
-  local _dotneteng="dotnet-eng=https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json"
+  local _dotneteng=("dotnet-eng=https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json")
   # dotnet-eng is among the given feeds for everything, or only used for Arcade
   if [[ " $* " == *" dotnet-eng="* ]]; then
-    _dotneteng=
+    _dotneteng=()
     _arcade=()
   fi
   if [[ -f "$srcdir/arcade-version" ]]; then
@@ -79,7 +79,7 @@ _nuget_config() {
     <clear />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
 EOF
-    for _feed in $_dotneteng "$@"; do
+    for _feed in "${_dotneteng[@]}" "$@"; do
       echo "    <add key=\"${_feed%%=*}\" value=\"${_feed#*=}\" />"
     done
     echo '  </packageSources>'
