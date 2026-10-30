@@ -6,7 +6,7 @@
 
 pkgname=sonic-mobile-interface
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SonicDE interface for mobile devices'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-mobile-interface'
