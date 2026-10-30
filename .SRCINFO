@@ -1,6 +1,6 @@
 pkgbase = iventoy-bin
 	pkgdesc = An enhanced version of the PXE server
-	pkgver = 1.0.48
+	pkgver = 1.0.49
 	pkgrel = 1
 	url = https://www.iventoy.com
 	install = iventoy.install
@@ -15,9 +15,9 @@ pkgbase = iventoy-bin
 	sha256sums = ef27beecddc5a9650194e8b033ae0b3172f29a9bf352cfff079a61ece86a3263
 	sha256sums = 7d0c73aa37f35ec8b8ab2b32ba415b3efed0e1f1a677f64f64349f102d173562
 	sha256sums = 4f2180dc7afdeebf062bc6cbf8186c652394196cd264608a314a196c4ece809c
-	source_x86_64 = iventoy-1.0.48-x86_64.tar.gz::https://github.com/ventoy/PXE/releases/download/v1.0.48/iventoy-1.0.48-linux-x86_64-free.tar.gz
-	sha256sums_x86_64 = 0eace50ed2a2c238cf5a5219699681df207ec16c74cb4a6e17f78b829ab78f2b
-	source_aarch64 = iventoy-1.0.48-aarch64.tar.gz::https://github.com/ventoy/PXE/releases/download/v1.0.48/iventoy-1.0.48-linux-arm64-trial.tar.gz
-	sha256sums_aarch64 = e1b899e51e7bf95ee3ead5a971928a0453a8a95acaaddf7777ead5d2bd34bdd7
+	source_x86_64 = iventoy-1.0.49-x86_64.tar.gz::https://github.com/ventoy/PXE/releases/download/v1.0.49/iventoy-1.0.49-linux-x86_64-free.tar.gz
+	sha256sums_x86_64 = 5f7983b9c8139c55812ad5a75e9f5b72dda53fd201546cbbc6455b9df0a0f342
+	source_aarch64 = iventoy-1.0.49-aarch64.tar.gz::https://github.com/ventoy/PXE/releases/download/v1.0.49/iventoy-1.0.49-linux-arm64-trial.tar.gz
+	sha256sums_aarch64 = 6d46714f2119b72bbbad184e88543de0769e5ae8109cc3db06f3381cfff59650
 
 pkgname = iventoy-bin
