@@ -7,7 +7,7 @@
 
 pkgname=sonic-power-management
 pkgver=6.8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Manages the power consumption settings of a SonicDE Shell'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-power-management'
