@@ -2,7 +2,7 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=2.5.5
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
@@ -59,30 +59,30 @@ makedepends=(
     'meson'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('680857cedde1b47d6043dad216d9fe919233b7184d171d5b106a0cfeaa25a263')
+sha256sums=('4af9a354def209c35d0ca65a3bbab6e9202d7ed4eaf73e7bc9e0db19007e8d13')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
 
     sed -i 's/import LOOT.loot as loot/import loot/' 'src/LOOT/loot_sorter.py'
 
-    pushd "native/amethyst_filegraph"
+    pushd "native/amethyst_filegraph" >/dev/null
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
-    popd
+    popd >/dev/null
 }
 
 build() {
     cd "${_pkgname}-${pkgver}"
 
     # Build amethyst_filegraph
-    pushd "native/amethyst_filegraph"
+    pushd "native/amethyst_filegraph" >/dev/null
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1 # https://github.com/ChrisDKN/Amethyst-Mod-Manager/issues/442#issuecomment-5483308285
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
     cp -f "${CARGO_TARGET_DIR}/release/libamethyst_filegraph.so" "../../src/amethyst_filegraph.abi3.so"
-    popd
+    popd >/dev/null
 
     # Build amethyst laucher
     arch-meson ./ build
