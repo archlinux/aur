@@ -1,25 +1,25 @@
 pkgbase = matlab-mcp-server-bin
 	pkgdesc = Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://www.mathworks.com/products/matlab-mcp-server.html
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = matlab-release>=R2020b
 	depends = sh
-	provides = matlab-mcp-server=0.15.0
-	provides = matlab-mcp-core-server=0.15.0
-	provides = matlab-mcp-core-server-bin=0.15.0
+	provides = matlab-mcp-server=0.16.0
+	provides = matlab-mcp-core-server=0.16.0
+	provides = matlab-mcp-core-server-bin=0.16.0
 	conflicts = matlab-mcp-server
 	conflicts = matlab-mcp-core-server
 	replaces = matlab-mcp-core-server-bin<=0.10.1-1
 	source = matlab-mcp-server.sh
-	source = matlab-mcp-server-0.15.0-README.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.15.0/README.md
-	source = matlab-mcp-server-0.15.0-LICENSE.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.15.0/LICENSE.md
+	source = matlab-mcp-server-0.16.0-README.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.16.0/README.md
+	source = matlab-mcp-server-0.16.0-LICENSE.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.16.0/LICENSE.md
 	sha256sums = baf366fb285ace6191a4abef69f003b3135c16ff9df043b274abaa4edc8df1bf
-	sha256sums = 98e42f5b8795913cb3e3225b3a83a75f20709192601ad1c7c158cd38fea6c2f5
+	sha256sums = 54587f19c33dd4c05abf971abc1a3a7240514d8e70d284cbb770d5f523483be8
 	sha256sums = 2cb440d3a47c8ea1ea975d7b15175b87ec31173ab671d073112520d065ec4625
-	source_x86_64 = matlab-mcp-server-0.15.0-x86_64::https://github.com/matlab/matlab-mcp-server/releases/download/v0.15.0/matlab-mcp-server-linux-x64
-	sha256sums_x86_64 = 82eb7343f0613aba2de0a9d9e3eed13adb9a6474c548cec60830db0376da8b80
+	source_x86_64 = matlab-mcp-server-0.16.0-x86_64::https://github.com/matlab/matlab-mcp-server/releases/download/v0.16.0/matlab-mcp-server-linux-x64
+	sha256sums_x86_64 = 3af767ac99a542b5e98aa28ba32e0702200257a325c6fea049e81c4bd5f0cb1f
 
 pkgname = matlab-mcp-server-bin
