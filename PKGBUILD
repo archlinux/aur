@@ -3,8 +3,8 @@
 _pkgauthor=shenwei356
 _pkgname=brename
 pkgname=${_pkgname}-bin
-pkgver=2.14.0
-pkgrel=2
+pkgver=2.15.0
+pkgrel=1
 pkgdesc='A practical cross-platform command-line tool for safely batch renaming files/directories via regular expression'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -19,12 +19,12 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
-sha256sums=('f9e68922f8df986308a5b2ca519f58be740bc885bbd1fc71dc53c348d20f7f5b'
-            'f3c7db2e48e9bde683be6e7c0969b1a012e09af0751ec96c5d8be476cba885b9'
-            '9376b08733dcf9cebe2219d9c286715b85b8fbb2b1b27298554a33e7fabcc6c6')
-sha256sums_x86_64=('969635a953727c4009728b24deee3b488b002694ff8298b0228489b34ad10e5c')
-sha256sums_i686=('203939277429887d4fc14444cc3776095ca920cef3440119be52dc23436d21f4')
-sha256sums_aarch64=('91b96b99b42e4574950b753c9b1585b47ef4ca6c1c4dc4112c54ceaa1719ffd6')
+sha256sums=('6614854202608ae15ef1af8120372408b08181e354645b7f44eab46f31ae0f1d'
+            'a1688ef66ebfecad0adbf176c5f1d7e9c587483ab7201b88fd957a8c0d10dca3'
+            'af40aa7d2e1f8f5137b7127a2e4c42d0510c0ed77f12e29ecec34702e680e66a')
+sha256sums_x86_64=('450883da31edf58a12f6aa5dea56c054de852cd081322828914776062b616c4b')
+sha256sums_i686=('9f537af1d1a591236664650a0fc9874d740483243ead83d6288c99a47fa69846')
+sha256sums_aarch64=('204d14afa55d2fc301f935fe999e5874cf8ddfa8d02fb33e5ec2d9689793210b')
 
 package() {
   cd "${srcdir}/" || exit
