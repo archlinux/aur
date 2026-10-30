@@ -1,6 +1,6 @@
 pkgbase = mailspring-git
 	pkgdesc = A beautiful, fast and fully open source mail client.
-	pkgver = 1.26.0.r59.gd1c7985
+	pkgver = 1.26.2.r106.g52e4958
 	pkgrel = 1
 	url = https://getmailspring.com/
 	arch = x86_64
@@ -10,13 +10,32 @@ pkgbase = mailspring-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = jq
+	makedepends = cmake
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkgconf
+	makedepends = tidy
+	makedepends = ctemplate
+	makedepends = cyrus-sasl
+	makedepends = icu
 	depends = electron44
 	depends = db5.3
-	provides = mailspring=1.26.0
+	depends = glib2
+	depends = openssl
+	depends = curl
+	depends = libxml2
+	depends = xz
+	depends = c-ares
+	depends = util-linux-libs
+	provides = mailspring=1.26.2
 	conflicts = mailspring
+	options = !strip
 	source = mailspring.git::git+https://github.com/Foundry376/Mailspring.git
+	source = mailspring.js
 	source = mailspring.sh
 	sha256sums = SKIP
-	sha256sums = a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
 
 pkgname = mailspring-git

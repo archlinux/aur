@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-git
 _pkgname=Mailspring
-pkgver=1.26.0.r59.gd1c7985
+pkgver=1.26.2.r106.g52e4958
 _electronversion=44
 _nodeversion=22
 pkgrel=1
@@ -15,6 +15,13 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
     'db5.3'
+    'glib2'
+    'openssl'
+    'curl'
+    'libxml2'
+    'xz'
+    'c-ares'
+    'util-linux-libs'
 )
 makedepends=(
     'npm'
@@ -22,13 +29,25 @@ makedepends=(
     'nvm'
     'gendesk'
     'jq'
+    'cmake'
+    'autoconf'
+    'automake'
+    'libtool'
+    'pkgconf'
+    'tidy'
+    'ctemplate'
+    'cyrus-sasl'
+    'icu'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
+options=('!strip')
 sha256sums=('SKIP'
-            'a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -59,7 +78,7 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_npm_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -74,7 +93,45 @@ _set_build_env() {
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_audit=false
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
+	# 原生模块(better-sqlite3 等)需针对 electron 编译，node-gyp 会下载 electron headers。
+	# 默认源 electronjs.org 在本机直连被 TLS 重置(ECONNRESET)，改走 npmmirror 镜像。
+	export npm_config_runtime=electron
+	export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+	export npm_config_disturl="https://cdn.npmmirror.com/binaries/electron"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
+}
+_build_mailsync() {
+	local _etpan_prefix _msdir _appdir
+	_msdir="$(_get_project_dir)/mailsync"
+	_etpan_prefix="${srcdir}/libetpan-build"
+	_appdir="$(_get_project_dir)/app"
+	export CPATH="${_etpan_prefix}/include${CPATH:+:${CPATH}}"
+	export LIBRARY_PATH="${_etpan_prefix}/lib${LIBRARY_PATH:+:${LIBRARY_PATH}}"
+
+	cd "${_msdir}/Vendor/libetpan"
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix="${_etpan_prefix}" --enable-static --with-openssl
+	make -j"$(nproc)"
+	make install
+	cd "${_msdir}/Vendor/mailcore2"
+	mkdir -p build
+	cd build
+	cmake .. -DCMAKE_PREFIX_PATH="${_etpan_prefix}" -DCMAKE_BUILD_TYPE=Release
+	make MailCore
+	cd "${_msdir}"
+	cmake . -DCMAKE_PREFIX_PATH="${_etpan_prefix}" -DCMAKE_BUILD_TYPE=Release
+	make
+	install -Dm755 "${_msdir}/mailsync" "${_appdir}/mailsync.bin"
+	cat > "${_appdir}/mailsync" <<'EOF'
+#!/bin/bash
+set -e
+set -o pipefail
+SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+export SASL_PATH="/usr/lib/sasl2"
+export LD_LIBRARY_PATH="${SCRIPTPATH}:${LD_LIBRARY_PATH}"
+exec "${SCRIPTPATH}/mailsync.bin" "$@"
+EOF
+	chmod 755 "${_appdir}/mailsync"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -84,19 +141,20 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    _set_build_env
-    git submodule deinit -f --all 2>/dev/null; rm -rf mailsync/* || true
+    _set_npm_build_env
+    git submodule update --depth=1 --init --recursive
     sed -i "/await createRpmInstaller/d" app/build/build.js
     sed -i "1a exit 0" app/script/mkdeb
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     sed -i "s/tmpdir,/tmpdir,\n    electronDist: process.env.ELECTRON_DIST,/" app/build/build.js
     export NODE_ENV=development
     npm install
+    _build_mailsync
 }
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_npm_build_env
     export NODE_ENV=production
     npm run build
 }
