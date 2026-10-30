@@ -14,7 +14,7 @@ license=('MIT AND OFL-1.1 AND ISC AND Apache-2.0 AND CC-BY-SA-4.0')
 depends=(
   'greetd'
   'glibc'
-  'vgshell-quickshell>=0.3.2.r7.g2b4501a-2'
+  'vgshell-quickshell>=0.3.2.r7.g2b4501a-3'
   'hyprland>=0.56'
   'bash'
   'coreutils'

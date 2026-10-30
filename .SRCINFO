@@ -9,7 +9,7 @@ pkgbase = vgshell-git
 	makedepends = git
 	depends = greetd
 	depends = glibc
-	depends = vgshell-quickshell>=0.3.2.r7.g2b4501a-2
+	depends = vgshell-quickshell>=0.3.2.r7.g2b4501a-3
 	depends = hyprland>=0.56
 	depends = bash
 	depends = coreutils
