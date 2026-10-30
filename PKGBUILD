@@ -1,5 +1,5 @@
 pkgname=v6asm-bin
-pkgver=2026.10.17
+pkgver=2026.10.28
 pkgrel=1
 pkgdesc="CLI Intel 8080/Z80 assembler and FDD image tool for Vector-06c. Binary release"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip' '!debug')
 _archive="v6asm-${pkgver}-linux-x86_64"
 source=("${_archive}.tar.gz::${url}/releases/download/v${pkgver}/${_archive}.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/parallelno/v6asm/v${pkgver}/LICENSE")
-sha256sums=('d08b12133fa63af61ad1f6450e6238cce8dff28cd7ffb856fbb92ff561d34c16'
+sha256sums=('045d30b0114ff5ce2687a0692f678d4686945f832a694164f84b646e5cbdc4c2'
             '678a2b915391edae5152d35537723c846066be268c8b36a8502703379356cb44')
 
 package() {

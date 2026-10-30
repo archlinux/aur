@@ -1,21 +1,21 @@
 pkgbase = v6asm-bin
 	pkgdesc = CLI Intel 8080/Z80 assembler and FDD image tool for Vector-06c. Binary release
-	pkgver = 2026.10.17
+	pkgver = 2026.10.28
 	pkgrel = 1
 	url = https://github.com/parallelno/v6asm
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = libgcc
-	provides = v6asm=2026.10.17
-	provides = v6fdd=2026.10.17
+	provides = v6asm=2026.10.28
+	provides = v6fdd=2026.10.28
 	conflicts = v6asm
 	conflicts = v6fdd
 	options = !strip
 	options = !debug
-	source = v6asm-2026.10.17-linux-x86_64.tar.gz::https://github.com/parallelno/v6asm/releases/download/v2026.10.17/v6asm-2026.10.17-linux-x86_64.tar.gz
-	source = LICENSE-2026.10.17::https://raw.githubusercontent.com/parallelno/v6asm/v2026.10.17/LICENSE
-	sha256sums = d08b12133fa63af61ad1f6450e6238cce8dff28cd7ffb856fbb92ff561d34c16
+	source = v6asm-2026.10.28-linux-x86_64.tar.gz::https://github.com/parallelno/v6asm/releases/download/v2026.10.28/v6asm-2026.10.28-linux-x86_64.tar.gz
+	source = LICENSE-2026.10.28::https://raw.githubusercontent.com/parallelno/v6asm/v2026.10.28/LICENSE
+	sha256sums = 045d30b0114ff5ce2687a0692f678d4686945f832a694164f84b646e5cbdc4c2
 	sha256sums = 678a2b915391edae5152d35537723c846066be268c8b36a8502703379356cb44
 
 pkgname = v6asm-bin
