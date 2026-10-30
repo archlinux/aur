@@ -1,0 +1,32 @@
+pkgbase = pivra
+	pkgdesc = Native GNOME JPEG/PNG image viewer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/onbeskarakterli/Pivra
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = desktop-file-utils
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = python>=3.11
+	depends = gtk4>=4.16
+	depends = libadwaita>=1.2
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = gnome-desktop-4
+	depends = glycin
+	depends = bubblewrap
+	depends = libseccomp
+	depends = lcms2
+	depends = fontconfig
+	depends = cairo
+	depends = graphene
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	source = pivra-0.1.0.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/18b9bc2e021aeeeb02dc42198db4522a67ed9e1b.tar.gz
+	source = collect-licenses.py
+	sha256sums = f8a31e5569ead7ae90b4a292c108ddfd77a45bc59327d2af10e88dc6d459cbf9
+	sha256sums = e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201
+
+pkgname = pivra
