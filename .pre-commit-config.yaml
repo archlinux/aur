@@ -1,0 +1,140 @@
+# Checks of the AUR packages for pre-commit (https://pre-commit.com, the pre-commit package), run before
+# each commit after `pre-commit install`. Every package has a copy of this file (templates/package in
+# the repository of the packages), so it works on its own as well. The hooks use the tools of the Arch
+# Linux packages named in brackets, nothing is downloaded.
+repos:
+  - repo: local
+    hooks:
+      - id: no-downloads
+        name: no downloaded or built files
+        language: fail
+        entry: Downloaded and built files belong into .gitignore
+        files: \.(nupkg|vsix|zip|jar|tar|tgz|gz|bz2|xz|zst|deb|rpm|dll|exe|so)$
+
+      - id: srcinfo
+        name: .SRCINFO is up to date (pacman)
+        language: system
+        entry: >-
+          bash -c 'status=0; for pkgbuild; do dir=$(dirname "$pkgbuild");
+          if ! (cd "$dir" && makepkg --printsrcinfo | cmp -s - .SRCINFO); then
+          echo "$dir/.SRCINFO is out of date: makepkg --printsrcinfo > .SRCINFO"; status=1; fi;
+          done; exit "$status"' --
+        files: (^|/)PKGBUILD$
+
+      # PKGBUILDs and .install files are sourced by bash, scripts say their shell in the shebang
+      - id: shfmt-pacman
+        name: shfmt, PKGBUILD and .install (shfmt)
+        language: system
+        entry: shfmt --write
+        files: (^|/)PKGBUILD$|\.install$
+      - id: shfmt
+        name: shfmt (shfmt)
+        language: system
+        entry: shfmt --write
+        types: [shell]
+        exclude: (^|/)PKGBUILD$
+      - id: shellcheck-pacman
+        name: shellcheck, PKGBUILD and .install (shellcheck)
+        language: system
+        entry: shellcheck --shell=bash
+        files: (^|/)PKGBUILD$|\.install$
+      - id: shellcheck
+        name: shellcheck (shellcheck)
+        language: system
+        entry: shellcheck
+        types: [shell]
+        exclude: (^|/)PKGBUILD$
+      - id: shellharden-pacman
+        name: shellharden, PKGBUILD and .install (shellharden)
+        language: system
+        entry: shellharden --check
+        files: (^|/)PKGBUILD$|\.install$
+      - id: shellharden
+        name: shellharden (shellharden)
+        language: system
+        entry: shellharden --check
+        types: [shell]
+        exclude: (^|/)PKGBUILD$
+      # termux-language-server exits with 0 on findings and has false positives so far, so it only runs on
+      # request: pre-commit run --hook-stage manual termux-language-server
+      - id: termux-language-server
+        name: termux-language-server, PKGBUILD and .install (termux-language-server)
+        language: system
+        entry: >-
+          bash -c 'out=$(termux-language-server --check "$@" 2>&1); status=$?;
+          [[ -z "$out" ]] || { printf "%s\n" "$out"; status=1; }; exit "$status"' --
+        files: (^|/)PKGBUILD$|\.install$
+        stages: [manual]
+
+      - id: ruff-check
+        name: ruff check (ruff)
+        language: system
+        entry: ruff check --fix
+        types: [python]
+      - id: ruff-format
+        name: ruff format (ruff)
+        language: system
+        entry: ruff format
+        types: [python]
+
+      - id: biome
+        name: biome check (biome)
+        language: system
+        entry: biome check --write --no-errors-on-unmatched
+        types_or: [javascript, ts, json]
+
+      - id: tombi-format
+        name: tombi format (tombi)
+        language: system
+        entry: tombi format --offline
+        types: [toml]
+      - id: tombi-lint
+        name: tombi lint (tombi)
+        language: system
+        entry: tombi lint --offline
+        types: [toml]
+
+      # systemd-lsp exits with 0 on findings
+      - id: systemd-lsp
+        name: systemd-lsp (systemd-lsp)
+        language: system
+        entry: >-
+          bash -c 'out=$(systemd-lsp "$@" 2>&1); status=$?; printf "%s\n" "$out";
+          if grep -qE "(warning|error)" <<<"$out"; then status=1; fi; exit "$status"' --
+        files: \.(service|socket|timer|target|mount|automount|swap|path|slice|scope)$
+
+      # Paragraphs and list items may be long lines, one per item, instead of wrapped at 80 characters
+      - id: rumdl-fmt
+        name: rumdl fmt (rumdl)
+        language: system
+        entry: rumdl fmt --config 'MD013.paragraphs = false'
+        types: [markdown]
+      - id: rumdl-check
+        name: rumdl check (rumdl)
+        language: system
+        entry: rumdl check --config 'MD013.paragraphs = false'
+        types: [markdown]
+
+      - id: psscriptanalyzer
+        name: PSScriptAnalyzer (powershell-editor-services)
+        language: system
+        entry: >-
+          pwsh -NoProfile -NonInteractive -CommandWithArgs '$results = foreach ($path in $args) {
+          Invoke-ScriptAnalyzer -Path $path }; $results | Format-Table ScriptName, Line, Severity, RuleName,
+          Message -AutoSize -Wrap | Out-String -Width 200; exit [int][bool]$results'
+        types: [powershell]
+
+      # The formatters take care of the indentation of the languages they know, the indent size of
+      # e.g. comments or embedded XML is up to the author. License texts stay as they are.
+      - id: editorconfig-checker
+        name: editorconfig-checker (editorconfig-checker)
+        language: system
+        entry: editorconfig-checker -disable-indent-size
+        types: [text]
+        exclude: (^|/)LICENSES/
+
+      - id: reuse
+        name: reuse lint-file (reuse)
+        language: system
+        entry: reuse lint-file
+        types: [file]
