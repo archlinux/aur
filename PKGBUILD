@@ -5,7 +5,7 @@
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.23.3.r7127.g6fbcdee
+pkgver=5.23.3.r7129.g7e2e344
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
