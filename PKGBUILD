@@ -10,9 +10,9 @@
 #PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2026.2.1.8
-_subver='rabbit1'
-pkgrel=2
+pkgver=2026.2.2.8
+_subver='rabbit2'
+pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
@@ -50,7 +50,7 @@ source=(
   "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${_subver}-linux.tar.gz"
   "${pkgname}.desktop"
 )
-sha256sums=('f8775c67cf899d9133712a2d7ee3ef7231e07fb16dbe0544c47e5f5babd5931b'
+sha256sums=('b47fdcc0703019618a7afd5ad1822cafc5de66bed984640be2977a0fdb538304'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f')
 
 if [ "${CARCH}" = "i686" ]; then
