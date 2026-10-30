@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
-pkgname=linuwux-runtime
-pkgver=26.09.28.3
+pkgname=linuwux-runtime 
+pkgver=26.09.28.4
 pkgrel=1
 pkgdesc="Lightweight Rust compatibility runtime for Windows games running through Wine and Proton"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   "linuwux"
 )
 sha256sums=(
-  '7485fb87517299216bdbd6c598bc8a46a5997ca6a422c7eee55706b17850ca54'
+  '5ad6f3aefe8de4e9502d94bf0de9a5c0a6a9a858d284229396b129364b3ac97b'
   '6bdba2db509b50fa98db60440087cdcf87a28d7c33cb68b1d1a2eb675c3c93da'
 )
 
