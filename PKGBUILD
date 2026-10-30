@@ -1,9 +1,9 @@
-# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
-#
 # PKGBUILD forked from https://aur.archlinux.org/packages/exercism by:
 # Maintainer: Severen Redwood <sev@severen.dev>
 # Maintainer: Kevin Stolp <kevinstolp@gmail.com>
 # Contributor: Federico Squartini <federico.squartini at gmail dot com>
+
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 _pkgname=exercism
 pkgname=exercism-git
 pkgver=3.5.9.r0.g4223e01
@@ -15,6 +15,8 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go")
 source=("git+$url")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 b2sums=('SKIP')
 
 pkgver() {

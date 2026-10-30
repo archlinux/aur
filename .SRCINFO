@@ -7,6 +7,8 @@ pkgbase = exercism-git
 	license = MIT
 	makedepends = go
 	depends = glibc
+	provides = exercism
+	conflicts = exercism
 	source = git+https://github.com/exercism/cli
 	b2sums = SKIP
 
