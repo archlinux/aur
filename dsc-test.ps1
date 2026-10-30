@@ -1,4 +1,6 @@
 # Runs the Rust and Pester tests of DSC with upstream's build helpers
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '',
+    Justification = 'Test-ProjectWithPester runs Pester from its module, which only sees a global PesterPreference')]
 param(
     # The DSC repository, which has to be built already
     [Parameter(Mandatory)] [string] $SourcePath,
