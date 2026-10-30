@@ -1,14 +1,14 @@
 pkgbase = rhythmbox-album-shuffle
 	pkgdesc = Continuous album shuffle plugin for Rhythmbox
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/username227/Rhythmbox-Album-Shuffle
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = rhythmbox
 	depends = libpeas
 	depends = python-gobject
-	source = rhythmbox-album-shuffle-1.2.0.tar.gz::https://github.com/username227/Rhythmbox-Album-Shuffle/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 19a01d5795af275e270f8a17e78592bd4649cbd0e6328912610cf9df62e73ab1
+	source = rhythmbox-album-shuffle-1.5.0.tar.gz::https://github.com/username227/Rhythmbox-Album-Shuffle/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 65b160741278ae692ca69377d309e3f1386e52f4bd768e81f3d2fd8d4f3c8c52
 
 pkgname = rhythmbox-album-shuffle
