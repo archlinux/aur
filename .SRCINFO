@@ -1,0 +1,12 @@
+pkgbase = hdd_sound-git
+	pkgdesc = Play mechanical HDD sounds in Linux linked to real disk activity
+	pkgver = r9.83e34ba
+	pkgrel = 1
+	url = https://github.com/floriangit/hdd_sound
+	arch = x86_64
+	license = MIT
+	depends = libpulse
+	source = git+https://github.com/floriangit/hdd_sound.git
+	sha256sums = SKIP
+
+pkgname = hdd_sound-git
