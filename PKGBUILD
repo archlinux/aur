@@ -2,7 +2,7 @@
 
 _pkgname=remmina-plugin-ultraviewer
 pkgname="${_pkgname}-git"
-pkgver=0.2.0.r15.g5a83a8b
+pkgver=0.2.1.r0.g939bf27
 pkgrel=1
 pkgdesc="UltraViewer remote desktop protocol plugin for Remmina"
 arch=('x86_64')
