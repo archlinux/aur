@@ -3,7 +3,7 @@
 _pkgauthor=jmelahman
 _pkgname=git-orchard
 pkgname=${_pkgname}-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A command-line utility for managing git trees including worktrees and subtrees'
 
@@ -20,8 +20,8 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('59d73e8d8444a1bf43eeff089186674935cffd1dfe759af9fb1982866fccec8e')
-sha256sums_aarch64=('23b2352b9cea1f7e791057e79422125a89660808e1c9d2291cce6ca0b2005910')
+sha256sums_x86_64=('7eaab7854472aff6e602957c909b26f3286cc92716da67a2f1bb53da9211f03c')
+sha256sums_aarch64=('10cebaab2167ca875727493087dcd87462c0355dbc95459f0a37208e55bdb377')
 
 
 package() {
