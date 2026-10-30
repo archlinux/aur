@@ -1,6 +1,6 @@
 # Maintainer: Radek Podgorny <radek@podgorny.cz>
 pkgname=unpalm
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Linux palm rejection filter for touchpads"
 arch=('x86_64')
