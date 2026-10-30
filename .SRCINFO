@@ -1,6 +1,6 @@
 pkgbase = ttcli-bin
 	pkgdesc = TickTick CLI: tasks, lists, pomodoro/focus over the private web API.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/ttcli
 	license = MIT
@@ -9,13 +9,13 @@ pkgbase = ttcli-bin
 	conflicts = ttcli-git
 	provides = ttcli
 	arch = aarch64
-	source_aarch64 = ttcli-bin_0.5.0_aarch64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.5.0/ttcli_0.5.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = b302084d952bc4b006acb1af5ad678164e782a583ee37e894745649fc07f0ab9
+	source_aarch64 = ttcli-bin_0.6.0_aarch64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.6.0/ttcli_0.6.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 323f2c12d2255f549db3c7feefb89a90100416f41be0c0fbca2983ffa0b201e9
 	arch = armv7h
-	source_armv7h = ttcli-bin_0.5.0_armv7h.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.5.0/ttcli_0.5.0_Linux_armv7.tar.gz
-	sha256sums_armv7h = a26162f7a9cf4c3b043d3783fbbe416052c7701fd0079d912fcbfcc5258750c4
+	source_armv7h = ttcli-bin_0.6.0_armv7h.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.6.0/ttcli_0.6.0_Linux_armv7.tar.gz
+	sha256sums_armv7h = aa0429f3dab01b78e72f17eceb3e1dedeec725039cedc19029a0a0eb48efe667
 	arch = x86_64
-	source_x86_64 = ttcli-bin_0.5.0_x86_64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.5.0/ttcli_0.5.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 499f59eea6eb23bbf5530c8ef10c9a630682e0991a0fcd9a3af97bb3898bd5e1
+	source_x86_64 = ttcli-bin_0.6.0_x86_64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.6.0/ttcli_0.6.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c534f592905ee55f59d30019a6ab16716fd109ea14dbdeeaf8e27fcbdc799389
 	
 pkgname = ttcli-bin
