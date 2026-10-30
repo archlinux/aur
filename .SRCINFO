@@ -1,0 +1,16 @@
+pkgbase = python-checktestdata
+	pkgdesc = Python reimplementation of the DOMjudge checktestdata input validation tool
+	pkgver = 2026.9.2
+	pkgrel = 1
+	url = https://github.com/mzuenni/pyctd
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-versioningit
+	depends = python
+	source = https://pypi.org/packages/source/c/checktestdata/checktestdata-2026.9.2.tar.gz
+	sha256sums = 3f7f59f5ea4d675ff2520f930a506ac6b5063e6a74d7356e9b8e61960bd4cab3
+
+pkgname = python-checktestdata
