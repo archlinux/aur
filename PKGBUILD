@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.27.1
+pkgver=1.27.2
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'libgcc' 'libstdc++' 'libgomp' 'libgfortran' 'readline' 'curl' 
 makedepends=('gcc-fortran' 'cmake' 'boost' 'java-environment')
 options=('!lto')
 source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-v${pkgver}-src-with-submodules.zip")
-sha256sums=('4e41ad73b11e47bab5dac54aa83c6bb4edc4a37188ebd93433dee1c02cc17227')
+sha256sums=('b724e7deba511d888c29f7e150abb2865522cdf9bb39d2ed84c653cbdffd20e6')
 
 prepare() {
   cd "$srcdir/OpenModelica-v${pkgver}"
