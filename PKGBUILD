@@ -2,7 +2,7 @@
 ##If you spot any issues, please don't hesitate to email me.
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop-clang
-pkgver=7.3.3.0
+pkgver=7.3.3.1
 pkgrel=1
 pkgdesc='yukigram-desktop,build much faster&less memory requirment with clang'
 arch=('x86_64')
@@ -105,7 +105,7 @@ source=(
 sha512sums=('3e76971f5ac1c8b4f29c867cf2a6e52f5eb71e479533daaaef26ba8bf53c10c6dd0abc09bb99ec213582546a50fa5306b2bcad023e85024979ebf04603c48540'
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
-            '7b46649f0dc7e5135397b40368be3d3b5fcdeb3f024cf1d6d12584d4679601c06c60665366d789e546843d385aaa9f2c48cbc8420d011d75a8f03e52871a9eae'
+            'bc0f209f205fcfb08b0867f93b55f7896d67f014cf00b9fa2bf53b6c9892ac1f26d92293eaf6ddbb2fc0ff87e9c7826812e0f83f764dabe502a2a3c9d004e232'
             '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
             '392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72')
 

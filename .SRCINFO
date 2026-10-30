@@ -1,6 +1,6 @@
 pkgbase = yukigram-desktop-clang
 	pkgdesc = yukigram-desktop,build much faster&less memory requirment with clang
-	pkgver = 7.3.3.0
+	pkgver = 7.3.3.1
 	pkgrel = 1
 	url = https://github.com/yukigram/yukigram
 	arch = x86_64
@@ -84,13 +84,13 @@ pkgbase = yukigram-desktop-clang
 	source = https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.3/tdesktop-7.3.3-full.tar.gz
 	source = git+https://github.com/tdlib/td.git#tag=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 	source = wallet-engine-0.0.7.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v0.0.7.tar.gz
-	source = https://github.com/yukigram/yukigram/archive/refs/tags/v7.3.3.0.tar.gz
+	source = https://github.com/yukigram/yukigram/archive/refs/tags/v7.3.3.1.tar.gz
 	source = https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
 	source = 0000-Fix-Pony-fix-lang-res-file-loc.patch
 	sha512sums = 3e76971f5ac1c8b4f29c867cf2a6e52f5eb71e479533daaaef26ba8bf53c10c6dd0abc09bb99ec213582546a50fa5306b2bcad023e85024979ebf04603c48540
 	sha512sums = dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2
 	sha512sums = f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6
-	sha512sums = 7b46649f0dc7e5135397b40368be3d3b5fcdeb3f024cf1d6d12584d4679601c06c60665366d789e546843d385aaa9f2c48cbc8420d011d75a8f03e52871a9eae
+	sha512sums = bc0f209f205fcfb08b0867f93b55f7896d67f014cf00b9fa2bf53b6c9892ac1f26d92293eaf6ddbb2fc0ff87e9c7826812e0f83f764dabe502a2a3c9d004e232
 	sha512sums = 79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b
 	sha512sums = 392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72
 
