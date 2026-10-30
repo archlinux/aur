@@ -1,4 +1,4 @@
-# Maintainer: CPT_Dawn <dev@cptdawn.dev>
+# Maintainer: CPT_Dawn <ping@cptdawn.dev>
 #
 # Builds Arch-Sense from the tagged GitHub release tarball. The release workflow
 # (.github/workflows/release.yml) bumps pkgver and the tarball checksum (the FIRST
