@@ -2,8 +2,8 @@
 
 pkgname=sing-box-cagedbird-bin
 _pkgname=sing-box
-_pkgver=1.15.0-alpha.13-cagedbird.20261030043201.23f6fb6ce
-pkgver=1.15.0_alpha.13_cagedbird.20261030043201.23f6fb6ce
+_pkgver=1.15.0-alpha.13-cagedbird.20261030204403.b481393b2
+pkgver=1.15.0_alpha.13_cagedbird.20261030204403.b481393b2
 epoch=1
 pkgrel=1
 pkgdesc='The universal proxy platform with native Clash subscription support (cagedbird binary build)'
@@ -27,6 +27,7 @@ source=("config.json-${_pkgver}::${_raw_url}/release/config/config.json"
         "sing-box-split-dns.xml-${_pkgver}::${_raw_url}/release/config/sing-box-split-dns.xml"
         "sing-box-network-recover-${_pkgver}::${_raw_url}/release/config/sing-box-network-recover"
         "sing-box-config-pull-${_pkgver}::${_raw_url}/release/config/sing-box-config-pull"
+        "sing-box-update-${_pkgver}::${_raw_url}/release/config/sing-box-update"
         "sing-box-config-pull.service-${_pkgver}::${_raw_url}/release/config/sing-box-config-pull.service"
         "sing-box-config-pull.timer-${_pkgver}::${_raw_url}/release/config/sing-box-config-pull.timer")
 source_x86_64=("${_pkgname}-cagedbird-linux-amd64-${_pkgver}.tar.gz::${_release_url}/${_pkgname}-cagedbird-linux-amd64.tar.gz")
@@ -36,11 +37,12 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             'c246af05df1d89da50edc8c6de8b077907974fe614ab64bd43151f79ab4e0158'
             'ba33c0c5bfdc5cd68b44c576cd97b33f0bfa0198e66ff8f34f21e706e97fda9e'
             '2a6970a742c8a9b9a582fc65921545d15c45fc342aea45a0d4fc0d1b2952e288'
-            '302c60f8b73705f4b1382c0bf35698d63b7b56940c62167f70cbb86a2efe32db'
+            '1b790f92bb0fdb2e911cf5c02e1ba6029ce1bfb27f3319b5158c305f28693b47'
+            '41a8bd7e2968e85101b3057dc46b356583ee528df5595700acc4290dd492c993'
             'b0fab6d2d3107ab03a5be0fe4fa10afb42c1efea0203cb96cf6091d28492c903'
             '2419da22721c800e886c6d075fd081f107c698b2e1e89fc5111d31bad33f72fc')
-sha256sums_x86_64=('504bbee0561249a76836a5d2ac7c09a81a7f0696b522ab8d2ab541b5ba2d1cbc')
-sha256sums_aarch64=('86b2f9eefda90ffe43f31bb6b73a53d231271b0a4006761b90cb51194255fa66')
+sha256sums_x86_64=('e05431d99bc231f25f3629ea41ec8795f7d2f8a912bf8dea446c8944423d9a2b')
+sha256sums_aarch64=('3afccf59659c2b864eedfad65dce5b6b7ca5a892031b5115360252fffe52dcf7')
 
 package() {
     install -Dm644 "config.json-${_pkgver}" "${pkgdir}/etc/sing-box/config.json"
@@ -49,6 +51,7 @@ package() {
     install -Dm644 "sing-box-split-dns.xml-${_pkgver}" "${pkgdir}/usr/share/dbus-1/system.d/sing-box-split-dns.conf"
     install -Dm755 "sing-box-network-recover-${_pkgver}" "${pkgdir}/usr/lib/NetworkManager/dispatcher.d/90-sing-box-recover"
     install -Dm755 "sing-box-config-pull-${_pkgver}" "${pkgdir}/usr/lib/sing-box/sing-box-config-pull"
+    install -Dm755 "sing-box-update-${_pkgver}" "${pkgdir}/usr/bin/sing-box-update"
     install -Dm644 "sing-box-config-pull.service-${_pkgver}" "${pkgdir}/usr/lib/systemd/system/sing-box-config-pull.service"
     install -Dm644 "sing-box-config-pull.timer-${_pkgver}" "${pkgdir}/usr/lib/systemd/system/sing-box-config-pull.timer"
 
