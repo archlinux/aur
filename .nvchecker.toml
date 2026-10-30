@@ -1,0 +1,5 @@
+["nemo-speech-cuda13-bin"]
+source = "github"
+github = "NVIDIA/NeMo-Speech.cpp"
+use_latest_release = true
+prefix = "v"
