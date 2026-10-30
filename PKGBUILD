@@ -3,15 +3,15 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=nature-sounds
-pkgver=0.2.8
-pkgrel=3
+pkgver=0.2.9
+pkgrel=1
 pkgdesc="A lightweight, nature sounds player for the command-line."
 arch=('x86_64' 'aarch64')
 url="https://github.com/jmelahman/nature-sounds"
 license=('MIT')
 depends=('alsa-utils')
 makedepends=('gcc' 'git' 'go')
-_commit='7f823a6e14e7670d308b4c7149501d6dfcc24e8d'
+_commit='7f21756e51082b4ac7c2f562dd449e94a78f623b'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
