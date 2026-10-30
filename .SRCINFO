@@ -1,6 +1,6 @@
 pkgbase = openidea-bin
 	pkgdesc = Open-source IntelliJ IDEA-style IDE rebuilt in Rust
-	pkgver = 0.1.23
+	pkgver = 0.1.26
 	pkgrel = 1
 	url = https://github.com/l0ng-ai/openidea
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = openidea-bin
 	conflicts = openidea
 	options = !strip
 	options = !debug
-	source = OpenIDEA-0.1.23-1.x86_64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v0.1.23/OpenIDEA-0.1.23-1.x86_64.rpm
+	source = OpenIDEA-0.1.26-1.x86_64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v0.1.26/OpenIDEA-0.1.26-1.x86_64.rpm
 	source = LICENSE
-	sha256sums = 5e8d17e94291c45fdb5639ff04e734495ca3bcbe4cc265b960e9ad6c4d60b21e
+	sha256sums = e326ef81e3e3847a2d7bcb4bb8d41dad596f0f3ba70cbe0a3df238adc5c543a7
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 
 pkgname = openidea-bin
