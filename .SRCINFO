@@ -9,7 +9,7 @@ pkgbase = icon-theme-toolkit
 	depends = gtk3
 	depends = gdk-pixbuf2
 	optdepends = icoutils: поддержка импорта/экспорта ICO
-	source = icon-theme-toolkit-1.0.tar.gz::https://github.com/nestoris/icon-theme-toolkit/archive/v1.0.1.tar.gz
-	sha256sums = SKIP
+	source = icon-theme-toolkit-1.0.1.tar.gz::https://github.com/nestoris/icon-theme-toolkit/archive/1.0.1.tar.gz
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
 
 pkgname = icon-theme-toolkit

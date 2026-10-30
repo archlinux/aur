@@ -10,7 +10,7 @@ depends=('gjs' 'gtk3' 'gdk-pixbuf2')
 optdepends=('icoutils: поддержка импорта/экспорта ICO')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')   # при первом запуске замените на реальную сумму
+sha256sums=('d41735e12a5f1ddcf12a4f7957d4b176c3982e6de5f2e15e6f9b0ba801cb48c0')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
