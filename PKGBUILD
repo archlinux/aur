@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=scheme-langserver
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="A language server for Scheme"
 # Chez fasl objects are machine specific (ta6le).
@@ -12,7 +12,7 @@ depends=('chez-scheme')
 makedepends=('akku')
 conflicts=("${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('530efee9fe0eefdec51f83e1dee1b36babab2989c464018ec9c3e90bb5410004')
+sha256sums=('2d2f79ebda08e5a57c6b5eb921c2221f89fc0014213946b4933bdf0e8d5c2703')
 
 _libdirs() {
     printf '%s::%s' "${srcdir}/${pkgname}-${pkgver}/.akku/lib" \
@@ -33,6 +33,12 @@ prepare() {
     # is what upstream's Chez build installs. Arch names the binary `chez`.
     printf '#!/bin/sh\n\nexec /usr/bin/chez "$@"\n' > .akku/bin/scheme
     chmod 755 .akku/bin/scheme
+
+    # Upstream added top-level forms to run.ss and bin/log-debug.sps in
+    # 2.1.11 without updating the expected counts in this test.
+    sed -i -e 's/(test-equal 28 \(.*"\.\/run\.ss"\)/(test-equal 30 \1/' \
+           -e 's/(test-equal 7 \(.*"\.\/bin\/log-debug\.sps"\)/(test-equal 8 \1/' \
+        tests/analysis/test-tokenizer.sps
 }
 
 build() {
