@@ -1,6 +1,6 @@
 pkgbase = vedi
 	pkgdesc = Pager for colored text; select with the keyboard and copy
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/dlh/vedi
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = vedi
 	conflicts = vedi
 	provides = vedi
 	
-	source = vedi_2.5.3.tar.gz::https://github.com/dlh/vedi/releases/download/v2.5.3/vedi-2.5.3.tar.gz
-	sha256sums = 49610dd592b61d0b4a82a59ed6c52fcb94b8e5828e7459837bb1bbe49c084221
+	source = vedi_2.5.4.tar.gz::https://github.com/dlh/vedi/releases/download/v2.5.4/vedi-2.5.4.tar.gz
+	sha256sums = 67794e3ed82864a924166d99740fce2450318526fef471ecae6b71e661adab1e
 	
 pkgname = vedi
