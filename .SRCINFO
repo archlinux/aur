@@ -1,13 +1,13 @@
 pkgbase = obs-aitum-stream-suite
 	pkgdesc = Plugin for OBS Studio to add Aitum
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aitum.tv/products/stream-suite
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = cmake
 	depends = obs-studio
-	source = src::git+https://github.com/Aitum/obs-aitum-stream-suite.git#tag=1.2.5
+	source = git+https://github.com/Aitum/obs-aitum-stream-suite.git#tag=1.2.5
 	sha256sums = SKIP
 
 pkgname = obs-aitum-stream-suite
