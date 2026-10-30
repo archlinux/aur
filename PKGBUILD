@@ -2,7 +2,7 @@
 
 pkgname=pdfcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.11.0.r819.g80b7d21
+pkgver=0.15.0.r123.g1d1cbc4
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
@@ -33,6 +33,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
