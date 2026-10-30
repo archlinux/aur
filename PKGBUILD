@@ -2,7 +2,7 @@
 
 pkgname='mts-linkchats'
 pkgver=0.91.0
-pkgrel=2
+pkgrel=1
 pkgdesc='MTS Linkchats desktop application based on Electron and React'
 arch=('x86_64')
 license=('custom:proprietary')
