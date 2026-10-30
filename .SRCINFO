@@ -1,0 +1,26 @@
+pkgbase = frost
+	pkgdesc = Local browser file manager for Linux desktops
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/0atxl/frost
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = node-gyp
+	makedepends = pkgconf
+	depends = nodejs>=22.13
+	depends = python
+	depends = python-gobject
+	depends = glib2
+	depends = gvfs
+	depends = dbus
+	depends = libvips
+	optdepends = gvfs-smb: SMB shares
+	options = !debug
+	source = frost::git+https://github.com/0atxl/frost.git#commit=581218f09fa23d247566862f698ea1cdf783ada2
+	source = node-addon-api::git+https://github.com/nodejs/node-addon-api.git#commit=6babc960154752f686a7dca8e712991a976a754b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = frost
