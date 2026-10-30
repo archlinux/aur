@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-desktop
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ conflicts=('cww' 'chatwithwork-desktop-bin' 'chatwithwork-desktop-git')
 # empty.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/chatwithwork-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fa04d4840314f9d267d5adfcf49fc50ff7dffc7668773939b7ce42ad1177c333')
+sha256sums=('92fa2bbd17c39502b49df958d11395fe068de07c058506d873a88c79cfa61339')
 
 prepare() {
   cd "${srcdir}/chatwithwork-desktop-${pkgver}"
