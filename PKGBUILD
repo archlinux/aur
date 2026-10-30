@@ -2,20 +2,20 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='tuios-tml-bin'
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Show TML documents in the terminal'
-url='https://tuios.dev'
+url='https://tuios.dev/'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('tml')
 conflicts=('tml')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tml_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a533d1cc4f4782be30f12fef1ef9339e81d7a88ef2d3cd99029c2288e3e7ec63')
+sha256sums_aarch64=('7078ea27f973f250c7ef4630c503c35b2b93fbd0b166c551dbcbbe41e3b662cc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tml_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('123032ee78951da98811e2515fc26304c4b2d0d71a3d1ada921f3b5ee6535e3a')
+sha256sums_x86_64=('7801fe7e015976e9cdc8a4ee23e1454686839e3e02a482abcee788c91dc7b069')
 
 package() {
   install -Dm755 "./tml" "${pkgdir}/usr/bin/tml"
